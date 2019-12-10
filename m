@@ -1,65 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F20DA1183D6
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 10:42:54 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B760118558
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 11:42:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B08D85B04;
-	Tue, 10 Dec 2019 09:42:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EE31587657;
+	Tue, 10 Dec 2019 10:42:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rthpgtfJSHmA; Tue, 10 Dec 2019 09:42:52 +0000 (UTC)
+	with ESMTP id gc5evKkwDu0c; Tue, 10 Dec 2019 10:42:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E8A97852E9;
-	Tue, 10 Dec 2019 09:42:51 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 25D1A8763C;
+	Tue, 10 Dec 2019 10:42:21 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A66D41BF2A0
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 09:42:49 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 499191BF291
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 10:42:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A386E87D60
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 09:42:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3EFDD8698E
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 10:42:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tZKVegDhy8bJ
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 09:42:47 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C0F0987D09
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 09:42:47 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2576920663;
- Tue, 10 Dec 2019 09:42:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1575970967;
- bh=pIVrN6KwCGZNLd5wKNsSI0T3xIqA0duUdzXcDBxItVI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=UwjVfT7UgsNTQws6gNEnlOZi9hXSpnBGsJr8xT4f06dodKNxzN1Jecx95ROiEQMWD
- fdZd9FoSG//osat2CDH0BJ0g+GH7W6pmbrtp7CjBsA+59L61MRKsANKJAkzjvgAhzz
- pTS+hxrCc0t/kQQ6Ue5JKhSHgThWCU27dkYs+ZRI=
-Date: Tue, 10 Dec 2019 10:42:44 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Christian.Gromm@microchip.com
-Subject: Re: [PATCH RFC 2/6] staging: most: rename core.h to most.h
-Message-ID: <20191210094244.GA3638653@kroah.com>
-References: <1574697096-2942-1-git-send-email-christian.gromm@microchip.com>
- <1574697096-2942-3-git-send-email-christian.gromm@microchip.com>
- <20191206143528.GA32126@kroah.com>
- <1575897968.2957.4.camel@microchip.com>
+ with ESMTP id AqdKzI22A2OZ for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 10:42:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
+ [209.85.216.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3BE8B8761A
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 10:42:18 +0000 (UTC)
+Received: by mail-pj1-f68.google.com with SMTP id l4so7251619pjt.5
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 02:42:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=kfdQQeeLkcakBGBCZLadlJ1Gb6o3OJURT7E+WRswKJ4=;
+ b=UkxmP9mxRXTpS8hT7YgShz2dcmP5Hwuqr2jD3WSGJ07fm4fm+lPoO9zMD+Zvi3djZr
+ zM+8T3oWM2JVrYhcTfAykTmzzCnhoKjtu4Zes0V/pqrwXR8nLTLKTAU6sIVfhT1okOmW
+ 55ztvGctEHx/cIOzl3BRQKwnHP2BCnNvrgFzYX7W+sVztMrPlLQ/VTqo1PT3l8V9hr64
+ z8S54c4gW7y5vZnsE3TCdaaK88Mz8SpPXBmwese0apssXggOKhO5Lc9P+s5rc6wqqxQw
+ aKRtUoiowJ//JLoPVtDjRBrokwibIk3gQgbIXML4PgZVwfvE4WAUt9Es2K4AINj4WoRm
+ 3U5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=kfdQQeeLkcakBGBCZLadlJ1Gb6o3OJURT7E+WRswKJ4=;
+ b=GxgOZPYcf6Ex6LHGkCM3t75/zp+RZTk6zNlRJCX3iF4M/GdiWfpOpcZ6T7Wv5jkT4d
+ 02NnW67DOlEzJ17yYI79e6RezQQVJoftiOHnGlz2MRYeafOJ4SR2T6ABsBKWKUKIawJA
+ uR0cd8y/4d9Fn/J9yKsRMQhlK0Suw1U6aaBU2pL+yYo3gvxBeWiTC8l1WRbTNuDKDXoJ
+ wll+61L3hAqFUUxCcxewWRFbWu5I7Q28FBd0pxpWoJjXl5FrZukbBd35k0InghLb53OZ
+ XzvuL9VYpCx5/oNLFl5ov/uKyEz/0HqICjy/rwtrOqzAjQYsZKZIojMst7LoD6VHS9S6
+ cEaA==
+X-Gm-Message-State: APjAAAXH5F8WTp2sNl3F+J7lAlxqA/Lg3ZURachEvEN52/s8BOjlPrj9
+ +zZ4SLAIjqHEHTCBLHa7PBA=
+X-Google-Smtp-Source: APXvYqwu+tTCvyc9M4sHHFPFQ80Mkvn4JOQJ9Afdczl4FWLtBn8MV1Rpo6aKaRC84TjVx5vssAJ3mQ==
+X-Received: by 2002:a17:902:ff10:: with SMTP id
+ f16mr3996110plj.312.1575974537741; 
+ Tue, 10 Dec 2019 02:42:17 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ a26sm2993251pfo.5.2019.12.10.02.42.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 Dec 2019 02:42:16 -0800 (PST)
+Subject: Re: [PATCH 1/2] staging: octeon: delete driver
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+References: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <6f934497-0635-7aa0-e7d5-ed2c4cc48d2d@roeck-us.net>
+Date: Tue, 10 Dec 2019 02:42:14 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1575897968.2957.4.camel@microchip.com>
+In-Reply-To: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,48 +90,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Branden Bonaby <brandonbonaby94@gmail.com>,
+ Giovanni Gherdovich <bobdc9664@seznam.cz>, Paul Burton <paulburton@kernel.org>,
+ Aaro Koskinen <aaro.koskinen@iki.fi>, Florian Westphal <fw@strlen.de>,
+ YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
+ "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
+ David Daney <ddaney@caviumnetworks.com>, Julia Lawall <julia.lawall@lip6.fr>,
+ Sandro Volery <sandro@volery.com>, Geert Uytterhoeven <geert@linux-m68k.org>,
+ Valery Ivanov <ivalery111@gmail.com>,
+ =?UTF-8?Q?Petr_=c5=a0tetiar?= <ynezz@true.cz>,
+ "David S. Miller" <davem@davemloft.net>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Wambui Karuga <wambui.karugax@gmail.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Dec 09, 2019 at 01:25:17PM +0000, Christian.Gromm@microchip.com wrote:
-> On Fr, 2019-12-06 at 15:35 +0100, Greg KH wrote:
-> > EXTERNAL EMAIL: Do not click links or open attachments unless you
-> > know the content is safe
-> > 
-> > On Mon, Nov 25, 2019 at 04:51:32PM +0100, Christian Gromm wrote:
-> > > 
-> > > This patch renames the core header file core.h to most.h. The
-> > > intention
-> > > behind this is to have a meaningful name once this file is moved to
-> > > the
-> > > /include/linux directory.
-> > Does everything in this .h file have to be exposed to the whole
-> > kernel?
-> > Are there any things in here that are local only to the most "core"
-> > code?
-> > 
-> > If this whole thing is public, you might want to clean up your naming
-> > of
-> > some structures:
-> 
-> Yes, those structs are needed by modules registering with the core.
-> 
-> Do you want me to reroll v2 of this set with these changes or to wait
-> for more comments to come?
-
-Please resend, I doubt there is anything else going to be reviewed on
-this at the moment.
-
-Note, I applied the first patch in this series already, no need to
-resend that.
-
-thanks,
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gMTIvMTAvMTkgMToxNSBBTSwgR3JlZyBLcm9haC1IYXJ0bWFuIHdyb3RlOgo+IFRoaXMgZHJp
+dmVyIGhhcyBiZWVuIGluIHRoZSB0cmVlIHNpbmNlIDIwMDkgd2l0aCBubyByZWFsIG1vdmVtZW50
+IHRvIGdldAo+IGl0IG91dC4gIE5vdyBpdCBpcyBzdGFydGluZyB0byBjYXVzZSBidWlsZCBpc3N1
+ZXMgYW5kIG90aGVyIHByb2JsZW1zIGZvcgo+IHBlb3BsZSB3aG8gd2FudCB0byBmaXggY29kaW5n
+IHN0eWxlIHByb2JsZW1zLCBidXQgY2FuIG5vdCBhY3R1YWxseSBidWlsZAo+IGl0Lgo+IAo+IEFz
+IG5vdGhpbmcgaXMgaGFwcGVuaW5nIGhlcmUsIGp1c3QgZGVsZXRlIHRoZSBtb2R1bGUgZW50aXJl
+bHkuCj4gCj4gUmVwb3J0ZWQtYnk6IEd1ZW50ZXIgUm9lY2sgPGxpbnV4QHJvZWNrLXVzLm5ldD4K
+PiBDYzogRGF2aWQgRGFuZXkgPGRkYW5leUBjYXZpdW1uZXR3b3Jrcy5jb20+Cj4gQ2M6ICJEYXZp
+ZCBTLiBNaWxsZXIiIDxkYXZlbUBkYXZlbWxvZnQubmV0Pgo+IENjOiAiTWF0dGhldyBXaWxjb3gg
+KE9yYWNsZSkiIDx3aWxseUBpbmZyYWRlYWQub3JnPgo+IENjOiBHdWVudGVyIFJvZWNrIDxsaW51
+eEByb2Vjay11cy5uZXQ+Cj4gQ2M6IFl1ZUhhaWJpbmcgPHl1ZWhhaWJpbmdAaHVhd2VpLmNvbT4K
+PiBDYzogQWFybyBLb3NraW5lbiA8YWFyby5rb3NraW5lbkBpa2kuZmk+Cj4gQ2M6IFdhbWJ1aSBL
+YXJ1Z2EgPHdhbWJ1aS5rYXJ1Z2F4QGdtYWlsLmNvbT4KPiBDYzogSnVsaWEgTGF3YWxsIDxqdWxp
+YS5sYXdhbGxAbGlwNi5mcj4KPiBDYzogRmxvcmlhbiBXZXN0cGhhbCA8ZndAc3RybGVuLmRlPgo+
+IENjOiBHZWVydCBVeXR0ZXJob2V2ZW4gPGdlZXJ0QGxpbnV4LW02OGsub3JnPgo+IENjOiBCcmFu
+ZGVuIEJvbmFieSA8YnJhbmRvbmJvbmFieTk0QGdtYWlsLmNvbT4KPiBDYzogIlBldHIgxaB0ZXRp
+YXIiIDx5bmV6ekB0cnVlLmN6Pgo+IENjOiBTYW5kcm8gVm9sZXJ5IDxzYW5kcm9Adm9sZXJ5LmNv
+bT4KPiBDYzogUGF1bCBCdXJ0b24gPHBhdWxidXJ0b25Aa2VybmVsLm9yZz4KPiBDYzogRGFuIENh
+cnBlbnRlciA8ZGFuLmNhcnBlbnRlckBvcmFjbGUuY29tPgo+IENjOiBHaW92YW5uaSBHaGVyZG92
+aWNoIDxib2JkYzk2NjRAc2V6bmFtLmN6Pgo+IENjOiBWYWxlcnkgSXZhbm92IDxpdmFsZXJ5MTEx
+QGdtYWlsLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBs
+aW51eGZvdW5kYXRpb24ub3JnPgoKQWNrZWQtYnk6IEd1ZW50ZXIgUm9lY2sgPGxpbnV4QHJvZWNr
+LXVzLm5ldD4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2Ry
+aXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2
+LWRldmVsCg==
