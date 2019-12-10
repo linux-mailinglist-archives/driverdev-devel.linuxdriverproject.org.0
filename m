@@ -1,83 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B760118558
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 11:42:25 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 129231185D1
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 12:06:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE31587657;
-	Tue, 10 Dec 2019 10:42:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5AF1185CD8;
+	Tue, 10 Dec 2019 11:06:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gc5evKkwDu0c; Tue, 10 Dec 2019 10:42:22 +0000 (UTC)
+	with ESMTP id VG76pobO7YkA; Tue, 10 Dec 2019 11:06:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 25D1A8763C;
-	Tue, 10 Dec 2019 10:42:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8FF4A85D48;
+	Tue, 10 Dec 2019 11:06:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 499191BF291
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 10:42:19 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E6F431BF45A
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 11:06:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3EFDD8698E
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 10:42:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E2F77220C4
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 11:06:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AqdKzI22A2OZ for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 10:42:18 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
- [209.85.216.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3BE8B8761A
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 10:42:18 +0000 (UTC)
-Received: by mail-pj1-f68.google.com with SMTP id l4so7251619pjt.5
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 02:42:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=kfdQQeeLkcakBGBCZLadlJ1Gb6o3OJURT7E+WRswKJ4=;
- b=UkxmP9mxRXTpS8hT7YgShz2dcmP5Hwuqr2jD3WSGJ07fm4fm+lPoO9zMD+Zvi3djZr
- zM+8T3oWM2JVrYhcTfAykTmzzCnhoKjtu4Zes0V/pqrwXR8nLTLKTAU6sIVfhT1okOmW
- 55ztvGctEHx/cIOzl3BRQKwnHP2BCnNvrgFzYX7W+sVztMrPlLQ/VTqo1PT3l8V9hr64
- z8S54c4gW7y5vZnsE3TCdaaK88Mz8SpPXBmwese0apssXggOKhO5Lc9P+s5rc6wqqxQw
- aKRtUoiowJ//JLoPVtDjRBrokwibIk3gQgbIXML4PgZVwfvE4WAUt9Es2K4AINj4WoRm
- 3U5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=kfdQQeeLkcakBGBCZLadlJ1Gb6o3OJURT7E+WRswKJ4=;
- b=GxgOZPYcf6Ex6LHGkCM3t75/zp+RZTk6zNlRJCX3iF4M/GdiWfpOpcZ6T7Wv5jkT4d
- 02NnW67DOlEzJ17yYI79e6RezQQVJoftiOHnGlz2MRYeafOJ4SR2T6ABsBKWKUKIawJA
- uR0cd8y/4d9Fn/J9yKsRMQhlK0Suw1U6aaBU2pL+yYo3gvxBeWiTC8l1WRbTNuDKDXoJ
- wll+61L3hAqFUUxCcxewWRFbWu5I7Q28FBd0pxpWoJjXl5FrZukbBd35k0InghLb53OZ
- XzvuL9VYpCx5/oNLFl5ov/uKyEz/0HqICjy/rwtrOqzAjQYsZKZIojMst7LoD6VHS9S6
- cEaA==
-X-Gm-Message-State: APjAAAXH5F8WTp2sNl3F+J7lAlxqA/Lg3ZURachEvEN52/s8BOjlPrj9
- +zZ4SLAIjqHEHTCBLHa7PBA=
-X-Google-Smtp-Source: APXvYqwu+tTCvyc9M4sHHFPFQ80Mkvn4JOQJ9Afdczl4FWLtBn8MV1Rpo6aKaRC84TjVx5vssAJ3mQ==
-X-Received: by 2002:a17:902:ff10:: with SMTP id
- f16mr3996110plj.312.1575974537741; 
- Tue, 10 Dec 2019 02:42:17 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- a26sm2993251pfo.5.2019.12.10.02.42.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Dec 2019 02:42:16 -0800 (PST)
-Subject: Re: [PATCH 1/2] staging: octeon: delete driver
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-References: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <6f934497-0635-7aa0-e7d5-ed2c4cc48d2d@roeck-us.net>
-Date: Tue, 10 Dec 2019 02:42:14 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.1
+ with ESMTP id eEiOPvEgi99a for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 11:06:42 +0000 (UTC)
+X-Greylist: delayed 00:07:59 by SQLgrey-1.7.6
+Received: from smtp114.ord1c.emailsrvr.com (smtp114.ord1c.emailsrvr.com
+ [108.166.43.114])
+ by silver.osuosl.org (Postfix) with ESMTPS id D64B62000E
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 11:06:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
+ s=20190322-9u7zjiwi; t=1575975523;
+ bh=s930yeVuZ/OBWf+Xggci74+j0vX0OnxEmUgFeVwwphc=;
+ h=Subject:To:From:Date:From;
+ b=Oar1jshLInKThEcIkjd+TTC0hkswIxu8mjRLLJkdqqPyb9/9EzmYS98epw011eOuz
+ quFMLQdzII3KAY7BFOO9EAPPxfPBxlfXj+GFqv1+vV+y1ZqtEJVbNcmrVLygKsbcsS
+ 4dydcRmMkOimaloGXfiBr9Zidg1dfW1P1OAMqbTI=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1575975523;
+ bh=s930yeVuZ/OBWf+Xggci74+j0vX0OnxEmUgFeVwwphc=;
+ h=Subject:To:From:Date:From;
+ b=Bjj9V8IyStZQSOYzOtC39eOZ+CdyL5otXWSI/4e3msEnu6MaIvFuFWvXfzF7X+RXo
+ 56qBkMZ0qzOSakrhprRDxpI3R3GPcCgkrMq9gGv0qMBtA5a+c5+MtIYKARIBMxvta8
+ SwmCoz79zPBh81//PHyG0J4CkQiww5v/W7kGaRko=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp23.relay.ord1c.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id 29CA9400EE; 
+ Tue, 10 Dec 2019 05:58:41 -0500 (EST)
+X-Sender-Id: abbotti@mev.co.uk
+Received: from [10.0.0.173] (remote.quintadena.com [81.133.34.160])
+ (using TLSv1.2 with cipher AES128-SHA) by 0.0.0.0:465 (trex/5.7.12);
+ Tue, 10 Dec 2019 05:58:42 -0500
+Subject: Re: [PATCH] staging: comedi: comedi_test: return error when
+ comedi_test_init fails
+To: Chuhong Yuan <hslester96@gmail.com>
+References: <20191210091451.23505-1-hslester96@gmail.com>
+From: Ian Abbott <abbotti@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <ca049de4-92f1-409c-6aa7-9c2ddc336638@mev.co.uk>
+Date: Tue, 10 Dec 2019 10:58:40 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
-Content-Language: en-US
+In-Reply-To: <20191210091451.23505-1-hslester96@gmail.com>
+Content-Language: en-GB
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,46 +79,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Branden Bonaby <brandonbonaby94@gmail.com>,
- Giovanni Gherdovich <bobdc9664@seznam.cz>, Paul Burton <paulburton@kernel.org>,
- Aaro Koskinen <aaro.koskinen@iki.fi>, Florian Westphal <fw@strlen.de>,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- David Daney <ddaney@caviumnetworks.com>, Julia Lawall <julia.lawall@lip6.fr>,
- Sandro Volery <sandro@volery.com>, Geert Uytterhoeven <geert@linux-m68k.org>,
- Valery Ivanov <ivalery111@gmail.com>,
- =?UTF-8?Q?Petr_=c5=a0tetiar?= <ynezz@true.cz>,
- "David S. Miller" <davem@davemloft.net>,
- Dan Carpenter <dan.carpenter@oracle.com>,
- Wambui Karuga <wambui.karugax@gmail.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, Cheah Kok Cheong <thrust73@gmail.com>,
+ linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMTIvMTAvMTkgMToxNSBBTSwgR3JlZyBLcm9haC1IYXJ0bWFuIHdyb3RlOgo+IFRoaXMgZHJp
-dmVyIGhhcyBiZWVuIGluIHRoZSB0cmVlIHNpbmNlIDIwMDkgd2l0aCBubyByZWFsIG1vdmVtZW50
-IHRvIGdldAo+IGl0IG91dC4gIE5vdyBpdCBpcyBzdGFydGluZyB0byBjYXVzZSBidWlsZCBpc3N1
-ZXMgYW5kIG90aGVyIHByb2JsZW1zIGZvcgo+IHBlb3BsZSB3aG8gd2FudCB0byBmaXggY29kaW5n
-IHN0eWxlIHByb2JsZW1zLCBidXQgY2FuIG5vdCBhY3R1YWxseSBidWlsZAo+IGl0Lgo+IAo+IEFz
-IG5vdGhpbmcgaXMgaGFwcGVuaW5nIGhlcmUsIGp1c3QgZGVsZXRlIHRoZSBtb2R1bGUgZW50aXJl
-bHkuCj4gCj4gUmVwb3J0ZWQtYnk6IEd1ZW50ZXIgUm9lY2sgPGxpbnV4QHJvZWNrLXVzLm5ldD4K
-PiBDYzogRGF2aWQgRGFuZXkgPGRkYW5leUBjYXZpdW1uZXR3b3Jrcy5jb20+Cj4gQ2M6ICJEYXZp
-ZCBTLiBNaWxsZXIiIDxkYXZlbUBkYXZlbWxvZnQubmV0Pgo+IENjOiAiTWF0dGhldyBXaWxjb3gg
-KE9yYWNsZSkiIDx3aWxseUBpbmZyYWRlYWQub3JnPgo+IENjOiBHdWVudGVyIFJvZWNrIDxsaW51
-eEByb2Vjay11cy5uZXQ+Cj4gQ2M6IFl1ZUhhaWJpbmcgPHl1ZWhhaWJpbmdAaHVhd2VpLmNvbT4K
-PiBDYzogQWFybyBLb3NraW5lbiA8YWFyby5rb3NraW5lbkBpa2kuZmk+Cj4gQ2M6IFdhbWJ1aSBL
-YXJ1Z2EgPHdhbWJ1aS5rYXJ1Z2F4QGdtYWlsLmNvbT4KPiBDYzogSnVsaWEgTGF3YWxsIDxqdWxp
-YS5sYXdhbGxAbGlwNi5mcj4KPiBDYzogRmxvcmlhbiBXZXN0cGhhbCA8ZndAc3RybGVuLmRlPgo+
-IENjOiBHZWVydCBVeXR0ZXJob2V2ZW4gPGdlZXJ0QGxpbnV4LW02OGsub3JnPgo+IENjOiBCcmFu
-ZGVuIEJvbmFieSA8YnJhbmRvbmJvbmFieTk0QGdtYWlsLmNvbT4KPiBDYzogIlBldHIgxaB0ZXRp
-YXIiIDx5bmV6ekB0cnVlLmN6Pgo+IENjOiBTYW5kcm8gVm9sZXJ5IDxzYW5kcm9Adm9sZXJ5LmNv
-bT4KPiBDYzogUGF1bCBCdXJ0b24gPHBhdWxidXJ0b25Aa2VybmVsLm9yZz4KPiBDYzogRGFuIENh
-cnBlbnRlciA8ZGFuLmNhcnBlbnRlckBvcmFjbGUuY29tPgo+IENjOiBHaW92YW5uaSBHaGVyZG92
-aWNoIDxib2JkYzk2NjRAc2V6bmFtLmN6Pgo+IENjOiBWYWxlcnkgSXZhbm92IDxpdmFsZXJ5MTEx
-QGdtYWlsLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBs
-aW51eGZvdW5kYXRpb24ub3JnPgoKQWNrZWQtYnk6IEd1ZW50ZXIgUm9lY2sgPGxpbnV4QHJvZWNr
-LXVzLm5ldD4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2Ry
-aXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2
-LWRldmVsCg==
+On 10/12/2019 09:14, Chuhong Yuan wrote:
+> comedi_test_init() forgets to return error when it fails.
+> Modify the return value to fix it.
+> 
+> Fixes: 9ff7400bd38c ("Staging: comedi: drivers: comedi_test: Add auto-configuration capability")
+> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+> ---
+>   drivers/staging/comedi/drivers/comedi_test.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/comedi/drivers/comedi_test.c b/drivers/staging/comedi/drivers/comedi_test.c
+> index ef4c7c8a2b71..133ed99a89f1 100644
+> --- a/drivers/staging/comedi/drivers/comedi_test.c
+> +++ b/drivers/staging/comedi/drivers/comedi_test.c
+> @@ -799,12 +799,14 @@ static int __init comedi_test_init(void)
+>   	if (!config_mode) {
+>   		ctcls = class_create(THIS_MODULE, CLASS_NAME);
+>   		if (IS_ERR(ctcls)) {
+> +			ret = PTR_ERR(ctcls);
+>   			pr_warn("comedi_test: unable to create class\n");
+>   			goto clean3;
+>   		}
+>   
+>   		ctdev = device_create(ctcls, NULL, MKDEV(0, 0), NULL, DEV_NAME);
+>   		if (IS_ERR(ctdev)) {
+> +			ret = PTR_ERR(ctdev);
+>   			pr_warn("comedi_test: unable to create device\n");
+>   			goto clean2;
+>   		}
+> @@ -826,7 +828,7 @@ static int __init comedi_test_init(void)
+>   clean3:
+>   	ctcls = NULL;
+>   
+> -	return 0;
+> +	return ret;
+>   }
+>   module_init(comedi_test_init);
+>   
+> 
+
+I suspect the current behaviour was by design because the module is not 
+completely broken if it fails to create the "comedi_test" device.  The 
+module will just behave as if the "noauto" module parameter (which sets 
+the 'config_mode' variable) was set to "true" if there is an error 
+during class or device creation.  That's probably why the kernel log 
+messages are written with 'pr_warn()' rather than 'pr_err()'.
+
+As long as the core "comedi" module has been loaded with the 
+"comedi_num_legacy_minors" module parameter set to a non-zero value, it 
+would still be possible to configure one of the "legacy" comedi devices 
+to use the "comedi_test" driver via the COMEDI_DEVCONFIG ioctl.
+
+However, returning an error might be preferable here, especially since 
+the comedi core module's "comedi_num_legacy_minors" parameter defaults 
+to zero.
+
+I'm happy with the change of behaviour, but would suggest changing the 
+'pr_warn()' calls to 'pr_err()' to match this change.
+
+-- 
+-=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
+-=( MEV Ltd. is a company registered in England & Wales. )=-
+-=( Registered number: 02862268.  Registered address:    )=-
+-=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
