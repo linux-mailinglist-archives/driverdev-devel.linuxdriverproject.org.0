@@ -1,72 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 129231185D1
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 12:06:49 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD0B31186FC
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 12:48:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5AF1185CD8;
-	Tue, 10 Dec 2019 11:06:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F2BAA87BFF;
+	Tue, 10 Dec 2019 11:48:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VG76pobO7YkA; Tue, 10 Dec 2019 11:06:46 +0000 (UTC)
+	with ESMTP id 4R-IbLX+9A+P; Tue, 10 Dec 2019 11:48:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8FF4A85D48;
-	Tue, 10 Dec 2019 11:06:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 01C9787C14;
+	Tue, 10 Dec 2019 11:48:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E6F431BF45A
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 11:06:43 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 866801BF45A
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 11:48:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E2F77220C4
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 11:06:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4CED787C89
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 11:48:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eEiOPvEgi99a for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 11:06:42 +0000 (UTC)
-X-Greylist: delayed 00:07:59 by SQLgrey-1.7.6
-Received: from smtp114.ord1c.emailsrvr.com (smtp114.ord1c.emailsrvr.com
- [108.166.43.114])
- by silver.osuosl.org (Postfix) with ESMTPS id D64B62000E
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 11:06:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
- s=20190322-9u7zjiwi; t=1575975523;
- bh=s930yeVuZ/OBWf+Xggci74+j0vX0OnxEmUgFeVwwphc=;
- h=Subject:To:From:Date:From;
- b=Oar1jshLInKThEcIkjd+TTC0hkswIxu8mjRLLJkdqqPyb9/9EzmYS98epw011eOuz
- quFMLQdzII3KAY7BFOO9EAPPxfPBxlfXj+GFqv1+vV+y1ZqtEJVbNcmrVLygKsbcsS
- 4dydcRmMkOimaloGXfiBr9Zidg1dfW1P1OAMqbTI=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1575975523;
- bh=s930yeVuZ/OBWf+Xggci74+j0vX0OnxEmUgFeVwwphc=;
- h=Subject:To:From:Date:From;
- b=Bjj9V8IyStZQSOYzOtC39eOZ+CdyL5otXWSI/4e3msEnu6MaIvFuFWvXfzF7X+RXo
- 56qBkMZ0qzOSakrhprRDxpI3R3GPcCgkrMq9gGv0qMBtA5a+c5+MtIYKARIBMxvta8
- SwmCoz79zPBh81//PHyG0J4CkQiww5v/W7kGaRko=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp23.relay.ord1c.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 29CA9400EE; 
- Tue, 10 Dec 2019 05:58:41 -0500 (EST)
-X-Sender-Id: abbotti@mev.co.uk
-Received: from [10.0.0.173] (remote.quintadena.com [81.133.34.160])
- (using TLSv1.2 with cipher AES128-SHA) by 0.0.0.0:465 (trex/5.7.12);
- Tue, 10 Dec 2019 05:58:42 -0500
-Subject: Re: [PATCH] staging: comedi: comedi_test: return error when
- comedi_test_init fails
-To: Chuhong Yuan <hslester96@gmail.com>
-References: <20191210091451.23505-1-hslester96@gmail.com>
-From: Ian Abbott <abbotti@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <ca049de4-92f1-409c-6aa7-9c2ddc336638@mev.co.uk>
-Date: Tue, 10 Dec 2019 10:58:40 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ with ESMTP id TsAjqq+AlYYe for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 11:48:01 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
+ [209.85.167.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CCE2A87BFF
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 11:48:00 +0000 (UTC)
+Received: by mail-lf1-f65.google.com with SMTP id n12so13474121lfe.3
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 03:48:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=fo/kQPoTgufoLl6OwS4X1boPbPzO5kmha82cPWUC2hI=;
+ b=LhugNgu8o92+22bGlUfYqY/JtThBqn7XXQGowTIJIgtzRXlHu4+L8lS48itTqwTmsa
+ Zx60cm3qJo3VxLX2ugJWSCdaUfMmRQ4DesjuiqhphzLWKmxLGh8iqqtvGIzl9YSmaybu
+ u2yh3K3u9HFthMe5j/ihpK8g8iT/Le97CT6gGJ1txZm4oqGbdAyhKC1g2CXopSwBbm+S
+ xkLBdxv9LLxPt3bQDbahlkFr7OfSx7NkHE19L5A+Dl7Zhhp5PbUFzAmCh1+RhpNNVHpp
+ oUJ2s4TDBj9XXwxzjOMBYAbbDCux1UbU+9a73viwwkpYPVlZiU6NKr2q3yYvNAGO2+1K
+ N6FQ==
+X-Gm-Message-State: APjAAAW5EwWX/8br0Lg3VqZtftiy6puFe82P9JyXKSkukB47cfWlHTeX
+ qD5KqbsXqhOyiTK8wSanUTE=
+X-Google-Smtp-Source: APXvYqxRUBIZ41AnH3QnCgB0Q1gJnSjg59UHuxgq9xRqKYyhr1qDqMrwe00Je2S+QZyu/YP+ZLbnuA==
+X-Received: by 2002:ac2:4849:: with SMTP id 9mr18316401lfy.11.1575978478770;
+ Tue, 10 Dec 2019 03:47:58 -0800 (PST)
+Received: from xi.terra (c-14b8e655.07-184-6d6c6d4.bbcust.telenor.se.
+ [85.230.184.20])
+ by smtp.gmail.com with ESMTPSA id e21sm1757836lfc.63.2019.12.10.03.47.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Dec 2019 03:47:58 -0800 (PST)
+Received: from johan by xi.terra with local (Exim 4.92.3)
+ (envelope-from <johan@xi.terra>)
+ id 1iedzk-0001LN-An; Tue, 10 Dec 2019 12:48:00 +0100
+From: Johan Hovold <johan@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 0/2] staging: fix USB altsetting bugs
+Date: Tue, 10 Dec 2019 12:47:49 +0100
+Message-Id: <20191210114751.5119-1-johan@kernel.org>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
-In-Reply-To: <20191210091451.23505-1-hslester96@gmail.com>
-Content-Language: en-GB
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,77 +77,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Cheah Kok Cheong <thrust73@gmail.com>,
- linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devel@driverdev.osuosl.org,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ linux-usb@vger.kernel.org, Johan Hovold <johan@kernel.org>,
+ linux-kernel@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 10/12/2019 09:14, Chuhong Yuan wrote:
-> comedi_test_init() forgets to return error when it fails.
-> Modify the return value to fix it.
-> 
-> Fixes: 9ff7400bd38c ("Staging: comedi: drivers: comedi_test: Add auto-configuration capability")
-> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
-> ---
->   drivers/staging/comedi/drivers/comedi_test.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/comedi/drivers/comedi_test.c b/drivers/staging/comedi/drivers/comedi_test.c
-> index ef4c7c8a2b71..133ed99a89f1 100644
-> --- a/drivers/staging/comedi/drivers/comedi_test.c
-> +++ b/drivers/staging/comedi/drivers/comedi_test.c
-> @@ -799,12 +799,14 @@ static int __init comedi_test_init(void)
->   	if (!config_mode) {
->   		ctcls = class_create(THIS_MODULE, CLASS_NAME);
->   		if (IS_ERR(ctcls)) {
-> +			ret = PTR_ERR(ctcls);
->   			pr_warn("comedi_test: unable to create class\n");
->   			goto clean3;
->   		}
->   
->   		ctdev = device_create(ctcls, NULL, MKDEV(0, 0), NULL, DEV_NAME);
->   		if (IS_ERR(ctdev)) {
-> +			ret = PTR_ERR(ctdev);
->   			pr_warn("comedi_test: unable to create device\n");
->   			goto clean2;
->   		}
-> @@ -826,7 +828,7 @@ static int __init comedi_test_init(void)
->   clean3:
->   	ctcls = NULL;
->   
-> -	return 0;
-> +	return ret;
->   }
->   module_init(comedi_test_init);
->   
-> 
+We had quite a few drivers using the first alternate setting instead of
+the current one when doing descriptor sanity checks. This is mostly an
+issue on kernels with panic_on_warn set due to a WARN() in
+usb_submit_urb(), but since we've started backporting such fixes (e.g.
+as reported by syzbot), I've marked these for stable as well.
 
-I suspect the current behaviour was by design because the module is not 
-completely broken if it fails to create the "comedi_test" device.  The 
-module will just behave as if the "noauto" module parameter (which sets 
-the 'config_mode' variable) was set to "true" if there is an error 
-during class or device creation.  That's probably why the kernel log 
-messages are written with 'pr_warn()' rather than 'pr_err()'.
+Johan
 
-As long as the core "comedi" module has been loaded with the 
-"comedi_num_legacy_minors" module parameter set to a non-zero value, it 
-would still be possible to configure one of the "legacy" comedi devices 
-to use the "comedi_test" driver via the COMEDI_DEVCONFIG ioctl.
 
-However, returning an error might be preferable here, especially since 
-the comedi core module's "comedi_num_legacy_minors" parameter defaults 
-to zero.
+Johan Hovold (2):
+  staging: rtl8188eu: fix interface sanity check
+  staging: rtl8712: fix interface sanity check
 
-I'm happy with the change of behaviour, but would suggest changing the 
-'pr_warn()' calls to 'pr_err()' to match this change.
+ drivers/staging/rtl8188eu/os_dep/usb_intf.c | 2 +-
+ drivers/staging/rtl8712/usb_intf.c          | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 -- 
--=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
--=( MEV Ltd. is a company registered in England & Wales. )=-
--=( Registered number: 02862268.  Registered address:    )=-
--=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
+2.24.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
