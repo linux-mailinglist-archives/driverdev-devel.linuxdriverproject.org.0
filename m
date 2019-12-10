@@ -1,59 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6E71118BF7
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 16:05:22 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B4D8486B02;
-	Tue, 10 Dec 2019 15:05:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id udGrQSINcfTf; Tue, 10 Dec 2019 15:05:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B97A9854EF;
-	Tue, 10 Dec 2019 15:05:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6A7221BF591
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 15:05:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 881CB11909E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 20:32:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5A7398772E
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 15:05:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D0F4487C05;
+	Tue, 10 Dec 2019 19:32:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pvOhR34W18-3; Tue, 10 Dec 2019 19:32:02 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id B071987BF1;
+	Tue, 10 Dec 2019 19:32:01 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 43CFC1BF2F2
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 19:31:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 3C2B822735
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 19:31:59 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id czTxTThYAo6w for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 15:05:16 +0000 (UTC)
+ with ESMTP id Rw81dlkViObw for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 19:31:58 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E055987678
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 15:05:16 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 412212077B;
- Tue, 10 Dec 2019 15:05:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1575990316;
- bh=zjpR6mzgWEYNOC5i8S3s2v+cVWeb1veFQnXVvd7C9WM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mFfc1Kx35VXEu+JTgQ75InlIAmrK+nlpkkcfc/6INoMObL5h3hh+ViyC/IhtF5j3b
- pe3HUFSE/ziy2olbE9hD+VoTw5p+t2jUt5gXMCkrjiJ8JHiMbf0i50kxKixUecTW/O
- 5BIelfRd9psVv3n5/6qb0sWcOcP3gorrqvbgskIw=
-Date: Tue, 10 Dec 2019 16:05:14 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Sven Leykauf <sven_leykauf1@web.de>
-Subject: Re: [PATCH 2/3] staging: sm750fb: Fix Avoid CamelCase
-Message-ID: <20191210150514.GA4052772@kroah.com>
-References: <20191208132852.1557-1-sven_leykauf1@web.de>
- <20191208132852.1557-2-sven_leykauf1@web.de>
+Received: from emh06.mail.saunalahti.fi (emh06.mail.saunalahti.fi
+ [62.142.5.116])
+ by silver.osuosl.org (Postfix) with ESMTPS id CCA5D22786
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 19:31:57 +0000 (UTC)
+Received: from darkstar.musicnaut.iki.fi (85-76-143-83-nat.elisa-mobile.fi
+ [85.76.143.83])
+ by emh06.mail.saunalahti.fi (Postfix) with ESMTP id 7D47230056;
+ Tue, 10 Dec 2019 21:31:54 +0200 (EET)
+Date: Tue, 10 Dec 2019 21:31:54 +0200
+From: Aaro Koskinen <aaro.koskinen@iki.fi>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 2/2] staging: octeon-usb: delete the octeon usb host
+ controller driver
+Message-ID: <20191210193153.GB18225@darkstar.musicnaut.iki.fi>
+References: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
+ <20191210091509.3546251-2-gregkh@linuxfoundation.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191208132852.1557-2-sven_leykauf1@web.de>
+In-Reply-To: <20191210091509.3546251-2-gregkh@linuxfoundation.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,27 +60,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Daniel Bauer <daniel.j.bauer@fau.de>,
- linux-kernel@i4.cs.fau.de
+Cc: devel@driverdev.osuosl.org, Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Sumit Pundir <pundirsumit11@gmail.com>, linux-kernel@vger.kernel.org,
+ David Daney <ddaney.cavm@gmail.com>,
+ "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>,
+ Laura Lazzati <laura.lazzati.15@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Dec 08, 2019 at 02:28:59PM +0100, Sven Leykauf wrote:
-> Change names of variables and functions into proper names,
-> according to coding style.
+Hi,
 
-Do one thing at a time here.  Like just the functions in a single file.
-Or a single structure's fields.  As it is, this is impossible to review
-and I think you got things a bit "odd" in places for some of these
-renames but it's hard to tease out from the large patch.
+On Tue, Dec 10, 2019 at 10:15:09AM +0100, Greg Kroah-Hartman wrote:
+> This driver was merged back in 2013 and shows no progress toward every
+> being merged into the "correct" part of the kernel.
 
-Please break this up into smaller pieces and resend.
+Do you mean all the patches since 2013 were "no progress"? Thanks.
 
-thanks,
+> The code doesn't even build for anyone unless you have the specific
+> hardware platform selected, so odds are it doesn't even work anymore.
 
-greg k-h
+I used it in production almost a decade with no issues with unpatched
+mainline kernel. All reported issues were fixed. Last kernel I ran
+was v5.3.
+
+> Remove it for now and is someone comes along that has the hardware and
+> is willing to fix it up, it can be reverted.
+
+Probably the next one who tries it, should try add support in
+dwc2. Originally the maintainer of that driver did not prefer this,
+maybe the current one does not mind...
+
+A.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
