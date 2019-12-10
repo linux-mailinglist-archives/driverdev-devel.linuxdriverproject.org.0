@@ -1,56 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B37EB119356
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 22:10:08 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 26B0211935D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 22:10:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6235322816;
-	Tue, 10 Dec 2019 21:10:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B0F2287CCB;
+	Tue, 10 Dec 2019 21:10:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oWTdcMZZ-ieZ; Tue, 10 Dec 2019 21:10:05 +0000 (UTC)
+	with ESMTP id ArbVMRmHE4CT; Tue, 10 Dec 2019 21:10:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8B27F22786;
-	Tue, 10 Dec 2019 21:10:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AB34987C8A;
+	Tue, 10 Dec 2019 21:10:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D3DB01BF580
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:10:02 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 41E3B1BF580
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:10:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D09A087113
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:10:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3C87987C8A
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 21:10:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y6nfWUcPtNhA for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 21:10:02 +0000 (UTC)
+ with ESMTP id bm5PEYTsoC2m for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 21:10:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 636C8870C7
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 21:10:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9B1A287C7E
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 21:10:25 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 72327246A4;
- Tue, 10 Dec 2019 21:10:01 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B60172077B;
+ Tue, 10 Dec 2019 21:10:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1576012202;
- bh=jTpiUlKsyB/ccCAr0py+oekD/sHAUrfYfWldZKhQytQ=;
+ s=default; t=1576012225;
+ bh=pDb99hDHnLaIQT5+IsVMp+MuY1aORJ5mKqZBYwYdPOI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=S5S6Vkbrfe3foMZUaOFNqxo9GIRqiEZ5yUoqdjT7hADF4BXuQtRzo5xohxd7+PQR9
- K4bALqV3/3ERnXl8+g4jbZuFjGq6YgWMGTih+Vp+8Z606ey0sRV4+ahkmBdqx7lMQy
- +jnCDpqEovf/grBGJ8Osl3hquoA+Njx+tNjBdoC8=
+ b=tK+H1tzd2f6QJYRM10FV0BQOWxIdCa7PcB1bzzSFEpmYwTSfc6axC4OM95bUezzQK
+ fyqFwGIfavKx+e9C2OIFh0IPoL50INauhb3uCtmI2q3YapMpZm6NUQmmKl5iE4D8Ya
+ zEpCDpthwRU/np4F62og/ObXsb4at2Q2WGC9egA0=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 155/350] staging: wilc1000: potential corruption
- in wilc_parse_join_bss_param()
-Date: Tue, 10 Dec 2019 16:04:20 -0500
-Message-Id: <20191210210735.9077-116-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 175/350] staging: wilc1000: check if device is
+ initialzied before changing vif
+Date: Tue, 10 Dec 2019 16:04:40 -0500
+Message-Id: <20191210210735.9077-136-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191210210735.9077-1-sashal@kernel.org>
 References: <20191210210735.9077-1-sashal@kernel.org>
@@ -69,45 +69,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless@vger.kernel.org, Adham Abozaeid <adham.abozaeid@microchip.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Sasha Levin <sashal@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ linux-wireless@vger.kernel.org, Adham Abozaeid <adham.abozaeid@microchip.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Dan Carpenter <dan.carpenter@oracle.com>
+From: Adham Abozaeid <adham.abozaeid@microchip.com>
 
-[ Upstream commit d59dc92f1bccd5acde793aebdbb4f7121cf3f9af ]
+[ Upstream commit 6df6f3849bb8f317bf2d52711aacea4292237ede ]
 
-The "rates_len" value needs to be capped so that the memcpy() doesn't
-copy beyond the end of the array.
+When killing hostapd, the interface is closed which deinitializes the
+device, then change virtual interface is called.
+This change checks if the device is initialized before sending the
+interface change command to the device
 
-Fixes: c5c77ba18ea6 ("staging: wilc1000: Add SDIO/SPI 802.11 driver")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-Reviewed-by: Adham Abozaeid <adham.abozaeid@microchip.com>
-Link: https://lore.kernel.org/r/20191017091832.GB31278@mwanda
+Signed-off-by: Adham Abozaeid <adham.abozaeid@microchip.com>
+Link: https://lore.kernel.org/r/20191028184019.31194-1-adham.abozaeid@microchip.com
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/wilc1000/wilc_hif.c | 2 ++
- 1 file changed, 2 insertions(+)
+ .../staging/wilc1000/wilc_wfi_cfgoperations.c  | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/wilc_hif.c b/drivers/staging/wilc1000/wilc_hif.c
-index d3d9ea284816a..77d0732f451be 100644
---- a/drivers/staging/wilc1000/wilc_hif.c
-+++ b/drivers/staging/wilc1000/wilc_hif.c
-@@ -473,6 +473,8 @@ void *wilc_parse_join_bss_param(struct cfg80211_bss *bss,
- 	rates_ie = cfg80211_find_ie(WLAN_EID_SUPP_RATES, ies->data, ies->len);
- 	if (rates_ie) {
- 		rates_len = rates_ie[1];
-+		if (rates_len > WILC_MAX_RATES_SUPPORTED)
-+			rates_len = WILC_MAX_RATES_SUPPORTED;
- 		param->supp_rates[0] = rates_len;
- 		memcpy(&param->supp_rates[1], rates_ie + 2, rates_len);
- 	}
+diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+index 22f21831649bd..c3cd6f389a989 100644
+--- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
++++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+@@ -1419,8 +1419,10 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
+ 		if (vif->iftype == WILC_AP_MODE || vif->iftype == WILC_GO_MODE)
+ 			wilc_wfi_deinit_mon_interface(wl, true);
+ 		vif->iftype = WILC_STATION_MODE;
+-		wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
+-					WILC_STATION_MODE, vif->idx);
++
++		if (wl->initialized)
++			wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
++						WILC_STATION_MODE, vif->idx);
+ 
+ 		memset(priv->assoc_stainfo.sta_associated_bss, 0,
+ 		       WILC_MAX_NUM_STA * ETH_ALEN);
+@@ -1432,8 +1434,10 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
+ 		priv->wdev.iftype = type;
+ 		vif->monitor_flag = 0;
+ 		vif->iftype = WILC_CLIENT_MODE;
+-		wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
+-					WILC_STATION_MODE, vif->idx);
++
++		if (wl->initialized)
++			wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
++						WILC_STATION_MODE, vif->idx);
+ 		break;
+ 
+ 	case NL80211_IFTYPE_AP:
+@@ -1450,8 +1454,10 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
+ 		dev->ieee80211_ptr->iftype = type;
+ 		priv->wdev.iftype = type;
+ 		vif->iftype = WILC_GO_MODE;
+-		wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
+-					WILC_AP_MODE, vif->idx);
++
++		if (wl->initialized)
++			wilc_set_operation_mode(vif, wilc_get_vif_idx(vif),
++						WILC_AP_MODE, vif->idx);
+ 		break;
+ 
+ 	default:
 -- 
 2.20.1
 
