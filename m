@@ -1,49 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0900118A86
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 15:14:12 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BDB29118B54
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 15:42:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 792C486A2B;
-	Tue, 10 Dec 2019 14:14:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 575FE806E0;
+	Tue, 10 Dec 2019 14:42:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WdY3aWgPBrJr; Tue, 10 Dec 2019 14:14:10 +0000 (UTC)
+	with ESMTP id iCmdTnTF0FmX; Tue, 10 Dec 2019 14:42:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0ED69868A8;
-	Tue, 10 Dec 2019 14:14:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E21FA875AD;
+	Tue, 10 Dec 2019 14:42:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E91781BF3AB
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 14:14:07 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B9841BF3AB
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 14:42:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E5C72880CA
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 14:14:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 355D186FC1
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 14:42:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZzgUjxJWpBYt for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 14:14:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 06DCF88091
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 14:14:07 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 26925AF79;
- Tue, 10 Dec 2019 14:14:05 +0000 (UTC)
-From: Takashi Iwai <tiwai@suse.de>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH for-5.6 4/4] staging: bcm2835-audio: Drop superfluous ioctl
- PCM ops
-Date: Tue, 10 Dec 2019 15:13:56 +0100
-Message-Id: <20191210141356.18074-5-tiwai@suse.de>
-X-Mailer: git-send-email 2.16.4
-In-Reply-To: <20191210141356.18074-1-tiwai@suse.de>
+ with ESMTP id Yx2VHQ-ADE4T for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 14:42:30 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A430A868AD
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 14:42:30 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0CD3720828;
+ Tue, 10 Dec 2019 14:42:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1575988950;
+ bh=fo4Ig2GCo7sLhJYHhhz6hQKFMZeSD+SQc5ZCTQZ7Fn0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=QINYYuE12L3diIi6rGVdGnWyLYKBuPqFUs0uVK/eE9fFntivkXgtFqNJz79s/Amzo
+ CP/k3h66us6DwLCAGXrdMFcLzNJRccUJEh/gm/Oqlu80FRmNIB7jVrVGh1LZbvZM4V
+ E05DjsWMZiF+6Gcm61gok6fQPnYpSfyei6rLgvQc=
+Date: Tue, 10 Dec 2019 15:42:28 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Takashi Iwai <tiwai@suse.de>
+Subject: Re: [PATCH for-5.6 0/4] staging: ALSA PCM API updates
+Message-ID: <20191210144228.GA3937513@kroah.com>
 References: <20191210141356.18074-1-tiwai@suse.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191210141356.18074-1-tiwai@suse.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,43 +69,27 @@ Cc: devel@driverdev.osuosl.org, alsa-devel@alsa-project.org,
  Florian Fainelli <f.fainelli@gmail.com>, Scott Branden <sbranden@broadcom.com>,
  Ray Jui <rjui@broadcom.com>, linux-kernel@vger.kernel.org,
  bcm-kernel-feedback-list@broadcom.com
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-PCM core deals the empty ioctl field now as default.
-Let's kill the redundant lines.
+On Tue, Dec 10, 2019 at 03:13:52PM +0100, Takashi Iwai wrote:
+> Hi,
+> 
+> this is a patch set to adapt the latest ALSA PCM API to staging
+> drivers.  Basically these are merely cleanups, as shown in diffstat,
+> and there should be no functional changes.
+> 
+> As the corresponding ALSA PCM API change is found in 5.5-rc1, please
+> apply these on 5.5-rc1 or later.  Or if you prefer, I can merge them
+> through sound tree, too.  Let me know.
 
-Signed-off-by: Takashi Iwai <tiwai@suse.de>
----
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c | 2 --
- 1 file changed, 2 deletions(-)
+Because of some future most driver changes that will be happening
+(hopefully soon), I'll just take all of these in the staging tree now,
+thanks!
 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
-index 97726b190bc5..33485184a98a 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
-@@ -305,7 +305,6 @@ snd_bcm2835_pcm_pointer(struct snd_pcm_substream *substream)
- static const struct snd_pcm_ops snd_bcm2835_playback_ops = {
- 	.open = snd_bcm2835_playback_open,
- 	.close = snd_bcm2835_playback_close,
--	.ioctl = snd_pcm_lib_ioctl,
- 	.prepare = snd_bcm2835_pcm_prepare,
- 	.trigger = snd_bcm2835_pcm_trigger,
- 	.pointer = snd_bcm2835_pcm_pointer,
-@@ -315,7 +314,6 @@ static const struct snd_pcm_ops snd_bcm2835_playback_ops = {
- static const struct snd_pcm_ops snd_bcm2835_playback_spdif_ops = {
- 	.open = snd_bcm2835_playback_spdif_open,
- 	.close = snd_bcm2835_playback_close,
--	.ioctl = snd_pcm_lib_ioctl,
- 	.prepare = snd_bcm2835_pcm_prepare,
- 	.trigger = snd_bcm2835_pcm_trigger,
- 	.pointer = snd_bcm2835_pcm_pointer,
--- 
-2.16.4
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
