@@ -2,58 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 068FA118B61
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 15:45:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A6E71118BF7
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 16:05:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 458B486AAC;
-	Tue, 10 Dec 2019 14:45:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B4D8486B02;
+	Tue, 10 Dec 2019 15:05:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kNSEBydjl3fK; Tue, 10 Dec 2019 14:45:37 +0000 (UTC)
+	with ESMTP id udGrQSINcfTf; Tue, 10 Dec 2019 15:05:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9FD0486A8F;
-	Tue, 10 Dec 2019 14:45:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B97A9854EF;
+	Tue, 10 Dec 2019 15:05:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DDB0B1BF3AB
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 14:45:33 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6A7221BF591
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 15:05:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BDEFC877CE
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 14:45:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5A7398772E
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 15:05:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lOfqAtxp+rme for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 14:45:33 +0000 (UTC)
+ with ESMTP id czTxTThYAo6w for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 15:05:16 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 43F4887866
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 14:45:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E055987678
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 15:05:16 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8AFE520637;
- Tue, 10 Dec 2019 14:45:32 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 412212077B;
+ Tue, 10 Dec 2019 15:05:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1575989133;
- bh=wa7yJNfjIp5sDx/0cLfRUnYkDGTvPydEo/wUmksPNeo=;
+ s=default; t=1575990316;
+ bh=zjpR6mzgWEYNOC5i8S3s2v+cVWeb1veFQnXVvd7C9WM=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=s3p9V088l5UmQvrRyPLPOrKWzwU/zsvbdfsKo4WnpFFD4Mq2lkzl4d4DYaE/fEAmI
- /uziwZkVLDE5olHJsXW85E734u/ocjpb4YuCrcs0NvYbH5OgDTr2DtZdnG1Rf7hFCc
- A2esX/iIwdlZ/XqpMe7IdPheuv8Za9MRufEp/Rds=
-Date: Tue, 10 Dec 2019 15:45:30 +0100
+ b=mFfc1Kx35VXEu+JTgQ75InlIAmrK+nlpkkcfc/6INoMObL5h3hh+ViyC/IhtF5j3b
+ pe3HUFSE/ziy2olbE9hD+VoTw5p+t2jUt5gXMCkrjiJ8JHiMbf0i50kxKixUecTW/O
+ 5BIelfRd9psVv3n5/6qb0sWcOcP3gorrqvbgskIw=
+Date: Tue, 10 Dec 2019 16:05:14 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Julian Preis <julian.preis@fau.de>
-Subject: Re: [PATCH] drivers/staging/exfat: Fix spelling mistakes
-Message-ID: <20191210144530.GA3975980@kroah.com>
-References: <n>
- <20191210140430.5000-1-julian.preis@fau.de>
+To: Sven Leykauf <sven_leykauf1@web.de>
+Subject: Re: [PATCH 2/3] staging: sm750fb: Fix Avoid CamelCase
+Message-ID: <20191210150514.GA4052772@kroah.com>
+References: <20191208132852.1557-1-sven_leykauf1@web.de>
+ <20191208132852.1557-2-sven_leykauf1@web.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191210140430.5000-1-julian.preis@fau.de>
+In-Reply-To: <20191208132852.1557-2-sven_leykauf1@web.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,33 +66,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Johannes Weidner <johannes.weidner@fau.de>,
- valdis.kletnieks@vt.edu
+Cc: devel@driverdev.osuosl.org, Daniel Bauer <daniel.j.bauer@fau.de>,
+ linux-kernel@i4.cs.fau.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Dec 10, 2019 at 03:04:30PM +0100, Julian Preis wrote:
-> Fix spelling mistakes in exfat_core.c and exfat_super.c.
-> 
-> Co-developed-by: Johannes Weidner <johannes.weidner@fau.de>
-> Signed-off-by: Johannes Weidner <johannes.weidner@fau.de>
-> Signed-off-by: Julian Preis <julian.preis@fau.de>
-> ---
->  drivers/staging/exfat/exfat_core.c  |  6 +++---
->  drivers/staging/exfat/exfat_super.c | 10 +++++-----
->  2 files changed, 8 insertions(+), 8 deletions(-)
+On Sun, Dec 08, 2019 at 02:28:59PM +0100, Sven Leykauf wrote:
+> Change names of variables and functions into proper names,
+> according to coding style.
 
+Do one thing at a time here.  Like just the functions in a single file.
+Or a single structure's fields.  As it is, this is impossible to review
+and I think you got things a bit "odd" in places for some of these
+renames but it's hard to tease out from the large patch.
 
-What changed from the previous version(s) of this patch?  Always
-properly version your patch and describe what changed from the previous
-version below the --- line as is documented.
-
-Why the odd email threading?
-
-And why are you not using the output of get_maintainer.pl to figure out
-who to cc:?
+Please break this up into smaller pieces and resend.
 
 thanks,
 
