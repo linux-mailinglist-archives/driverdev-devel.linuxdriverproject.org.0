@@ -1,77 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C9CE117E16
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 04:15:53 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 20E478788C;
-	Tue, 10 Dec 2019 03:15:51 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K6avy9AvX8Mn; Tue, 10 Dec 2019 03:15:50 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 07E7987881;
-	Tue, 10 Dec 2019 03:15:48 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 985851BF995
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 03:15:45 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FB2C118302
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 10:06:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8FD5687D89
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 03:15:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BCA1687E56;
+	Tue, 10 Dec 2019 09:06:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yqLMe2oatYAE; Tue, 10 Dec 2019 09:06:55 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4866E87CB5;
+	Tue, 10 Dec 2019 09:06:54 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 632D21BF2A0
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 09:06:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5EE1485F7E
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 09:06:52 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fJ6E1TKspZy0 for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 03:15:45 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1BD9C87D05
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 03:15:45 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id q16so6663102plr.10
- for <devel@driverdev.osuosl.org>; Mon, 09 Dec 2019 19:15:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Lf7Lv6WHD6eyJBTAis1s6gLEc0xY5Sw43153FEhgxHY=;
- b=UlD66aZIOc19ZMVj8QYV3fX/ai5uFQ8LKhkdKHZXDBcoLNMKGficgmJVcQJ+ltNkkT
- G74hEQFVbnD9CtFpMJ01wDVtH1diWO2KVLfTPZo3KDG/DPoov/AEwX1GlR7XAsUfdMmh
- 8C/jq9+2T8P1AYVlWyBsia739jJWAsP3MhJRcvmifa85lN8Ke1RWg1AWyJi/kaBfdPif
- 7CXNW0Xii82zXcxeoIxcqI8Z2G66ATSr4nmQNvDWf5Gb2j3dfyvrPmbAtS9g7zApBFRq
- V6dDhc42VgAKAoTPosgBRdbFWzYTKttjOTUjWvg368hg7UVsVj624kKrpGpEFeBhSd38
- /Mlg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Lf7Lv6WHD6eyJBTAis1s6gLEc0xY5Sw43153FEhgxHY=;
- b=JNVzTdlWFjMTquVhZcTZAUPJ0cxgq513D3RqpiNb6stlo0tzR5ChXp1eRmZ+kd9Bov
- UB+BOcCyWpuCqcGJtzO7Q8I/wKK+Ymx8xe/F0dNKXlCGUKWsbhCF6iTplPQWJ5baY62O
- BXVrZ0O3Rcyj7I25Jb5VANYwZLTj2CIUx5Sa/FMcLQBiAzxfgq1SkC5VHGWYujmP+pZJ
- duSqYilHcUizrP8tUgxYsLSyOYN4BkFGTRcl8g0KcrgLdr9MWllnyYsq8JG/4jhVrlr5
- jcpF2tjJNdbbHOBkU2HXIGVsKagU7jY9drj2OqMuUDOK0sYd0hQmMegn9sSu+If/NGme
- eA5Q==
-X-Gm-Message-State: APjAAAVwqnFO5LTxb4KpF/2Wvr13LOYkxymqBQqkSriS5sqw0mhRAxF/
- JTSOTbNSbGlpLlln+NLWzs4=
-X-Google-Smtp-Source: APXvYqw6mz5BYHxyl3UuHtCTak44jFFwX9tNEgwxnu+7tW4HubuglsACfHAh2B9Jbg005M+aViqFzQ==
-X-Received: by 2002:a17:902:7c0a:: with SMTP id
- x10mr33699831pll.168.1575947744695; 
- Mon, 09 Dec 2019 19:15:44 -0800 (PST)
-Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([202.120.40.82])
- by smtp.gmail.com with ESMTPSA id i127sm942717pfe.54.2019.12.09.19.15.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Dec 2019 19:15:43 -0800 (PST)
-From: Chuhong Yuan <hslester96@gmail.com>
-To: 
-Subject: [PATCH v2] media: allegro: add the missed check for v4l2_m2m_ctx_init
-Date: Tue, 10 Dec 2019 11:15:32 +0800
-Message-Id: <20191210031532.18603-1-hslester96@gmail.com>
-X-Mailer: git-send-email 2.24.0
+ with ESMTP id l1WF-9C6h-0M for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 09:06:48 +0000 (UTC)
+X-Greylist: delayed 00:07:05 by SQLgrey-1.7.6
+Received: from mail.dev.tdt.de (host-88-217-225-28.customer.m-online.net
+ [88.217.225.28])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7B6A8854C2
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 09:06:48 +0000 (UTC)
+Received: from mail.dev.tdt.de (localhost [IPv6:::1])
+ by mail.dev.tdt.de (Postfix) with ESMTP id 487A8203AF;
+ Tue, 10 Dec 2019 08:59:29 +0000 (UTC)
 MIME-Version: 1.0
+Date: Tue, 10 Dec 2019 09:59:29 +0100
+From: Martin Schiller <ms@dev.tdt.de>
+To: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH 4/4] [RFC] staging/net: move AF_X25 into drivers/staging
+Organization: TDT AG
+In-Reply-To: <CAK8P3a25UGV1KS1ufZsyQJk1+9Rp9is0x6eOU7pr5Xf6Z3N2gA@mail.gmail.com>
+References: <20191209151256.2497534-1-arnd@arndb.de>
+ <20191209151256.2497534-4-arnd@arndb.de>
+ <20191209.102950.2248756181772063368.davem@davemloft.net>
+ <CAK8P3a25UGV1KS1ufZsyQJk1+9Rp9is0x6eOU7pr5Xf6Z3N2gA@mail.gmail.com>
+Message-ID: <407acd92c92c3ba04578da89b1a0f191@dev.tdt.de>
+X-Sender: ms@dev.tdt.de
+User-Agent: Roundcube Webmail/1.1.5
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,59 +61,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Chuhong Yuan <hslester96@gmail.com>,
- Michael Tretter <m.tretter@pengutronix.de>, linux-kernel@vger.kernel.org,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: driverdevel <devel@driverdev.osuosl.org>, linux-x25@vger.kernel.org,
+ gregkh <gregkh@linuxfoundation.org>, "R.J.Dunlop" <bob.dunlop@farsite.com>,
+ linux-kernel@vger.kernel.org, Kevin Curtis <kevin.curtis@farsite.com>,
+ Eric Biggers <ebiggers@kernel.org>, Networking <netdev@vger.kernel.org>,
+ Andrew Hendry <andrew.hendry@gmail.com>, Qiang Zhao <qiang.zhao@nxp.com>,
+ David Miller <davem@davemloft.net>, khc@pm.waw.pl
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-allegro_open() misses a check for v4l2_m2m_ctx_init().
-Add a check and error handling code to fix it.
+On 2019-12-09 20:26, Arnd Bergmann wrote:
+> On Mon, Dec 9, 2019 at 7:29 PM David Miller <davem@davemloft.net> 
+> wrote:
+>> 
+>> From: Arnd Bergmann <arnd@arndb.de>
+>> Date: Mon,  9 Dec 2019 16:12:56 +0100
+>> 
+>> > syzbot keeps finding issues in the X.25 implementation that nobody is
+>> > interested in fixing.  Given that all the x25 patches of the past years
+>> > that are not global cleanups tend to fix user-triggered oopses, is it
+>> > time to just retire the subsystem?
+>> 
+>> I have a bug fix that I'm currently applying to 'net' right now 
+>> actually:
+>> 
+>>         https://patchwork.ozlabs.org/patch/1205973/
+>> 
+>> So your proposal might be a bit premature.
+> 
+> Ok, makes sense. Looking back in the history, I also see other bugfixes
+> from the same author.
+> 
+> Adding Martin Schiller to Cc: for a few questions:
+> 
+> - What hardware are you using for X.25?
 
-Fixes: f20387dfd065 ("media: allegro: add Allegro DVT video IP core driver")
-Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
----
-Changes in v2:
-  - Fix the use-after-free in v1.
+I would say that X.25 is (at least in Germany) not dead yet. For 
+example, it is
+still used in the railway network of the Deutsche Bahn AG in many 
+different
+areas. [1]
 
- drivers/staging/media/allegro-dvt/allegro-core.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+We deliver products for this and use the Linux X.25 stack with some 
+bugfixes
+and extensions that I would like to get upstream.
 
-diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
-index 6f0cd0784786..66736beb67af 100644
---- a/drivers/staging/media/allegro-dvt/allegro-core.c
-+++ b/drivers/staging/media/allegro-dvt/allegro-core.c
-@@ -2270,6 +2270,7 @@ static int allegro_open(struct file *file)
- 	struct allegro_channel *channel = NULL;
- 	struct v4l2_ctrl_handler *handler;
- 	u64 mask;
-+	int ret;
- 
- 	channel = kzalloc(sizeof(*channel), GFP_KERNEL);
- 	if (!channel)
-@@ -2341,6 +2342,14 @@ static int allegro_open(struct file *file)
- 	channel->fh.m2m_ctx = v4l2_m2m_ctx_init(dev->m2m_dev, channel,
- 						allegro_queue_init);
- 
-+	if (IS_ERR(channel->fh.m2m_ctx)) {
-+		ret = PTR_ERR(channel->fh.m2m_ctx);
-+		v4l2_fh_del(&channel->fh);
-+		v4l2_fh_exit(&channel->fh);
-+		kfree(channel);
-+		return ret;
-+	}
-+
- 	return 0;
- }
- 
--- 
-2.24.0
+As hardware/interfaces we use X.21bis/G.703 adapters, which are 
+connected via
+HDLC_X25 and LAPB. Also for this there are extensions and bugfixes, 
+which I
+would like to include in the kernel.
+
+> - Would you be available to be listed in the MAINTAINERS file
+>   as a contact for net/x25?
+
+Yes, you can add me to the MAINTAINERS file.
+I have only limited time, but I will try to follow all requests 
+concerning this
+subsystem.
+
+> - Does your bug fix address the latest issue found by syzbot[1],
+>   or do you have an idea to fix it if not?
+
+I don't have a direct solution for the concrete problem mentioned above, 
+but at
+first sight I would say that the commit 95d6ebd53c79 ("net/x25: fix
+use-after-free in x25_device_event()") holds the wrong lock 
+(&x25_list_lock).
+Shouldn't this be the lock &x25_neigh_list_lock as in x25_get_neigh(), 
+where
+x25_neigh_hold() is called?
+
+> 
+>         Arnd
+> 
+> [1]
+> https://lore.kernel.org/netdev/CAK8P3a0LdF+aQ1hnZrVKkNBQaum0WqW1jyR7_Eb+JRiwyHWr6Q@mail.gmail.com/
 
 _______________________________________________
 devel mailing list
