@@ -1,59 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DF5611877E
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 13:01:27 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52A6F1188ED
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Dec 2019 13:55:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DB80785F72;
-	Tue, 10 Dec 2019 12:01:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 54BA4221FF;
+	Tue, 10 Dec 2019 12:55:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l8D9Wv0w_-zX; Tue, 10 Dec 2019 12:01:25 +0000 (UTC)
+	with ESMTP id v5CCI3n--xFq; Tue, 10 Dec 2019 12:55:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F11D985F49;
-	Tue, 10 Dec 2019 12:01:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 33201204DF;
+	Tue, 10 Dec 2019 12:55:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 830C81BF981
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 12:01:23 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 07EAB1BF329
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 12:55:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7C99785F50
- for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 12:01:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id F211B221AB
+ for <devel@linuxdriverproject.org>; Tue, 10 Dec 2019 12:55:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id If_JOlaACxQp for <devel@linuxdriverproject.org>;
- Tue, 10 Dec 2019 12:01:23 +0000 (UTC)
+ with ESMTP id ICVPewg6-mrm for <devel@linuxdriverproject.org>;
+ Tue, 10 Dec 2019 12:55:18 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0ADA785F49
- for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 12:01:23 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3008920726;
- Tue, 10 Dec 2019 12:01:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1575979282;
- bh=rjM38HyV7X4Jc0xazOMgdtH5goM5XesQuqArDXIboDM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=AXDFjJefm9aQ3sxtR1LKPNgzfZluVJFkzzSwO8ik6SniAiDJNQnRPKVZx9SItAVpp
- 3WA9ypIGTiEkvIx/sEW0i4hd0MkC8DsAzpiyUCRI2JgA5HUctbDj6/0XxPsRAu1cR5
- 2bE/oLO+8h3LKlD2oxD23hIFPxCMS3maLun0JeWI=
-Date: Tue, 10 Dec 2019 13:01:20 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Sandro Volery <sandro@volery.com>
+Received: from mxout017.mail.hostpoint.ch (mxout017.mail.hostpoint.ch
+ [217.26.49.177])
+ by silver.osuosl.org (Postfix) with ESMTPS id 20379204DF
+ for <devel@driverdev.osuosl.org>; Tue, 10 Dec 2019 12:55:17 +0000 (UTC)
+Received: from [10.0.2.46] (helo=asmtp013.mail.hostpoint.ch)
+ by mxout017.mail.hostpoint.ch with esmtp (Exim 4.92.3 (FreeBSD))
+ (envelope-from <sandro@volery.com>)
+ id 1ief1x-000Mw2-Mt; Tue, 10 Dec 2019 13:54:21 +0100
+Received: from [83.150.60.147] (helo=[10.167.67.21])
+ by asmtp013.mail.hostpoint.ch with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3 (FreeBSD))
+ (envelope-from <sandro@volery.com>)
+ id 1ief1x-0001ma-Ja; Tue, 10 Dec 2019 13:54:21 +0100
+X-Authenticated-Sender-Id: sandro@volery.com
+From: Sandro Volery <sandro@volery.com>
+Mime-Version: 1.0 (1.0)
 Subject: Re: [PATCH 1/2] staging: octeon: delete driver
-Message-ID: <20191210120120.GA3779155@kroah.com>
-References: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
- <EFBFCF4B-745B-4B1B-A176-08CE8CADBFEA@volery.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <EFBFCF4B-745B-4B1B-A176-08CE8CADBFEA@volery.com>
+Date: Tue, 10 Dec 2019 13:54:19 +0100
+Message-Id: <AF642334-CD43-417E-B924-D59517D21E2D@volery.com>
+References: <20191210120120.GA3779155@kroah.com>
+In-Reply-To: <20191210120120.GA3779155@kroah.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+X-Mailer: iPhone Mail (17B111)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,21 +71,22 @@ Cc: devel@driverdev.osuosl.org, Branden Bonaby <brandonbonaby94@gmail.com>,
  David Daney <ddaney@caviumnetworks.com>, Julia Lawall <julia.lawall@lip6.fr>,
  Geert Uytterhoeven <geert@linux-m68k.org>,
  Dan Carpenter <dan.carpenter@oracle.com>, Valery Ivanov <ivalery111@gmail.com>,
- Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>,
+ =?utf-8?Q?Petr_=C5=A0tetiar?= <ynezz@true.cz>,
  "David S. Miller" <davem@davemloft.net>, Guenter Roeck <linux@roeck-us.net>,
  Wambui Karuga <wambui.karugax@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Dec 10, 2019 at 12:40:54PM +0100, Sandro Volery wrote:
-> Doesn't octeon have drivers out of staging already?
-> What is this module for?
-
-I have no idea :(
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CldlbGwgaWYgZG9jdW1lbnRhdGlvbiBpcyBtaXNzaW5nIHRoZW4gaXQncyB0aGVpciBmYXVsdC4u
+IApHbyBhaGVhZCBhbmQgZGVsZXRlIGl0LCBldmVuIHRobyBpdCBraWxscyBtZSBzaW5jZSBteSBm
+aXJzdCAKcGF0Y2ggd2FzIGluIHRoZXJlIDopCgpTYW5kcm8gVgoKPiBPbiAxMCBEZWMgMjAxOSwg
+YXQgMTM6MDEsIEdyZWcgS3JvYWgtSGFydG1hbiA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+
+IHdyb3RlOgo+IAo+IO+7v09uIFR1ZSwgRGVjIDEwLCAyMDE5IGF0IDEyOjQwOjU0UE0gKzAxMDAs
+IFNhbmRybyBWb2xlcnkgd3JvdGU6Cj4+IERvZXNuJ3Qgb2N0ZW9uIGhhdmUgZHJpdmVycyBvdXQg
+b2Ygc3RhZ2luZyBhbHJlYWR5Pwo+PiBXaGF0IGlzIHRoaXMgbW9kdWxlIGZvcj8KPiAKPiBJIGhh
+dmUgbm8gaWRlYSA6KAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcK
+aHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpdmVyZGV2LWRldmVsCg==
