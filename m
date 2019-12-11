@@ -1,95 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9DE311A505
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Dec 2019 08:23:23 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 56EFB11A51E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Dec 2019 08:31:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F2B512051B;
-	Wed, 11 Dec 2019 07:23:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 74DA586C2E;
+	Wed, 11 Dec 2019 07:31:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CARPqa9Xt23Z; Wed, 11 Dec 2019 07:23:21 +0000 (UTC)
+	with ESMTP id MGOq8DgTvzGh; Wed, 11 Dec 2019 07:31:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6430E204F0;
-	Wed, 11 Dec 2019 07:23:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0FA5C86BAE;
+	Wed, 11 Dec 2019 07:31:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9A2221BF3C3
- for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 07:23:16 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DD0281BF3C3
+ for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 07:31:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9558E204D6
- for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 07:23:16 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D75E886F85
+ for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 07:31:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jdLs5NFzsgkT for <devel@linuxdriverproject.org>;
- Wed, 11 Dec 2019 07:23:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by silver.osuosl.org (Postfix) with ESMTPS id CF0AF204CE
- for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 07:23:15 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xBB7EYeL106024;
- Wed, 11 Dec 2019 07:23:08 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=ly12157iHdm2LNcwiJ046REPVygJhzSMcv5KEc9fs6I=;
- b=HPfHwAfr+R7uuP/vB8zTTkruHNibcK33E7n66Ne26gqHl/ylG0Zm1+3CAzcFeFPUjG7J
- yqpxfgZjTnMxCbrn17WVXj5nICB1gGA9CpNH4431xJhdJBi/uiMAomDOyAeV8w78GWoX
- 9CkDCVkPxb9IQs7BKpJ6nn/Nm2UHg5vsMuNLH+8AJH4poPmfcsbJF5DFzHiPvxpAqh/O
- F2YmthVP3J7ReaP72wC/N8UAmPQ6Pn9pb9WCTy4t+Cpw4JbcLJkweOVPJPTPVU50V9Kr
- YOf45BbIHwj84G6Ai85gAvzC6ZYdgKIyZFgwRR+VEpjTnfQ+1X3foz3cz7OLFYRCEX6B Cg== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2wr4qrjprh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 11 Dec 2019 07:23:08 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xBB7Etc6177177;
- Wed, 11 Dec 2019 07:23:07 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 2wtqdu3y2y-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 11 Dec 2019 07:23:07 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id xBB7MjnW030170;
- Wed, 11 Dec 2019 07:22:49 GMT
-Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 10 Dec 2019 23:22:45 -0800
-Date: Wed, 11 Dec 2019 10:22:33 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Aaro Koskinen <aaro.koskinen@iki.fi>
-Subject: Re: [PATCH 1/2] staging: octeon: delete driver
-Message-ID: <20191211072233.GB2070@kadam>
-References: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
- <EFBFCF4B-745B-4B1B-A176-08CE8CADBFEA@volery.com>
- <20191210120120.GA3779155@kroah.com>
- <20191210194659.GC18225@darkstar.musicnaut.iki.fi>
- <20191210201515.GA16912@roeck-us.net>
- <20191210214848.GA5834@darkstar.musicnaut.iki.fi>
+ with ESMTP id folgb0i1eJ9G for <devel@linuxdriverproject.org>;
+ Wed, 11 Dec 2019 07:31:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B1A7E86F58
+ for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 07:31:39 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 088F92077B;
+ Wed, 11 Dec 2019 07:31:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1576049499;
+ bh=hzi59ZxXCtn7N9u9Q1/ZsXgqE+JPAgMDiGZkiykAq3Y=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=AqhM4EM74IqmrdcSyqwzP0zvfddYOBw3VGWlO7KbkNlDcEnsH8Fd4foqvb3+v5FHj
+ oi0/VcKwejR8KAsItACMcW/2Dy6QV4sIwLlJwJJJhRz839G+2Tua+hHqhNpJqkFQ1C
+ /SWUpgJYJbIKDlpVeCoFvY3VKardOOuIBvifC6rU=
+Date: Wed, 11 Dec 2019 08:31:36 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Scott Schafer <schaferjscott@gmail.com>
+Subject: Re: [PATCH] staging: qlge: Fix multiple WARNING and CHECK relating
+ to formatting
+Message-ID: <20191211073136.GB397938@kroah.com>
+References: <20191211014759.4749-1-schaferjscott@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191210214848.GA5834@darkstar.musicnaut.iki.fi>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9467
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-1912110062
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9467
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-1912110062
+In-Reply-To: <20191211014759.4749-1-schaferjscott@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,55 +66,73 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Branden Bonaby <brandonbonaby94@gmail.com>,
- Florian Westphal <fw@strlen.de>, Paul Burton <paulburton@kernel.org>,
- Giovanni Gherdovich <bobdc9664@seznam.cz>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Julia Lawall <julia.lawall@lip6.fr>, Sandro Volery <sandro@volery.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Valery Ivanov <ivalery111@gmail.com>,
- Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>,
- "David S. Miller" <davem@davemloft.net>, Guenter Roeck <linux@roeck-us.net>,
- Wambui Karuga <wambui.karugax@gmail.com>
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, linux-kernel@vger.kernel.org,
+ Manish Chopra <manishc@marvell.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Dec 10, 2019 at 11:48:49PM +0200, Aaro Koskinen wrote:
-> On Tue, Dec 10, 2019 at 12:15:15PM -0800, Guenter Roeck wrote:
-> > On Tue, Dec 10, 2019 at 09:46:59PM +0200, Aaro Koskinen wrote:
-> > > On Tue, Dec 10, 2019 at 01:01:20PM +0100, Greg Kroah-Hartman wrote:
-> > > > I have no idea :(
-> > > 
-> > > It's stated in the TODO file you are deleting (visible in your
-> > > patch): "This driver is functional and supports Ethernet on
-> > > OCTEON+/OCTEON2/OCTEON3 chips at least up to CN7030."
-> > > 
-> > > This includes e.g. some D-Link routers and Uniquiti EdgeRouters. You
-> > > can check from /proc/cpuinfo if you are running on this MIPS SoC.
-> > 
-> > It also results in "mips:allmodconfig" build failures in mainline
-> > and is for that reason being marked as BROKEN. Unfortunately,
-> > misguided attempts to clean it up had the opposite effect.
+On Tue, Dec 10, 2019 at 07:47:59PM -0600, Scott Schafer wrote:
+> CHECK: Please don't use multiple blank lines
+> CHECK: Blank lines aren't necessary before a close brace '}'
+> CHECK: Blank lines aren't necessary after an open brace '{'
+> WARNING: Missing a blank line after declarations
+> CHECK: No space is necessary after a cast
+> CHECK: braces {} should be used on all arms of this statement
+> CHECK: Unbalanced braces around else statement
+> WARNING: please, no space before tabs
+> CHECK: spaces preferred around that '/' (ctx:VxV)
+> CHECK: spaces preferred around that '+' (ctx:VxV)
+> CHECK: spaces preferred around that '%' (ctx:VxV)
+> CHECK: spaces preferred around that '|' (ctx:VxV)
+> CHECK: spaces preferred around that '*' (ctx:VxV)
+> WARNING: Unnecessary space before function pointer arguments
+> WARNING: please, no spaces at the start of a line
+> WARNING: Block comments use a trailing */ on a separate line
+> ERROR: trailing whitespace
 > 
-> This was because of stubs hack added by someone - people who do not run
-> or care about the hardware can now break it for others with their
-> silly x86 "compile test"s.
+> In files qlge.h, qlge_dbg.c, qlge_ethtool.c, qlge_main.c, and qlge_mpi.c
+> 
+> Signed-off-by: Scott Schafer <schaferjscott@gmail.com>
+> ---
+>  drivers/staging/qlge/qlge.h         |  45 ++++++-------
+>  drivers/staging/qlge/qlge_dbg.c     |  41 ++++++-----
+>  drivers/staging/qlge/qlge_ethtool.c |  20 ++++--
+>  drivers/staging/qlge/qlge_main.c    | 101 ++++++++++++++--------------
+>  drivers/staging/qlge/qlge_mpi.c     |  37 +++++-----
+>  5 files changed, 125 insertions(+), 119 deletions(-)
 
-Compile tests are nice in theory for finding static analysis bugs but
-often they introduce static checker false positives because we don't
-initialize *param variables in the stub functions.
+Hi,
 
-And those compat stubs in particular were a headache to review.  We
-broke the build a couple times, but we *almost* broke the build a *lot*
-of times...
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
-regards,
-dan carpenter
+You are receiving this message because of the following common error(s)
+as indicated below:
 
+- Your patch did many different things all at once, making it difficult
+  to review.  All Linux kernel patches need to only do one thing at a
+  time.  If you need to do multiple things (such as clean up all coding
+  style issues in a file/driver), do it in a sequence of patches, each
+  one doing only one thing.  This will make it easier to review the
+  patches to ensure that they are correct, and to help alleviate any
+  merge issues that larger patches can cause.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
