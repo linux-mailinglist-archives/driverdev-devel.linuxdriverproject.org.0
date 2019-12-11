@@ -1,80 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8462711A96C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Dec 2019 11:59:20 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D31211AA97
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Dec 2019 13:17:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B50A86C8F;
-	Wed, 11 Dec 2019 10:59:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4467B87E2F;
+	Wed, 11 Dec 2019 12:17:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KV2heSRF2o2D; Wed, 11 Dec 2019 10:59:18 +0000 (UTC)
+	with ESMTP id KGMerbovzZ8Y; Wed, 11 Dec 2019 12:17:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DB8B986AD2;
-	Wed, 11 Dec 2019 10:59:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 730B787E01;
+	Wed, 11 Dec 2019 12:17:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AF20F1BF20D
- for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 10:59:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CAB051BF4D5
+ for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 12:17:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ABA788853B
- for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 10:59:15 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C78F386E48
+ for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 12:17:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nl-GJCYJHcqG for <devel@linuxdriverproject.org>;
- Wed, 11 Dec 2019 10:59:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E5CC988538
- for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 10:59:14 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id g17so23540221wro.2
- for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 02:59:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ZJ6q3Z6ceKXrm+SRlu2SJJixCZ2doGfehevk1AA5ByM=;
- b=K1ojBJTpeL2Wboiq1cJE1Qq1n1g2bh/8V9dHPWgDVEGYy3w7g72D4KX55XVKKdXmbK
- twQeRiS4RHTOb+jek8lMpidtbUZHZ56k/3uCiXXG5/+Hkw/rxpi9nXFgX2fFiuSZt9gx
- 33t0fTYw2WNQcXFMUfbK17IUcJIqUG/f7ENFXDkP/+HZFFhEV/HUUyHXlqyaRHTlZqP+
- W1hQAb3DcSM8/OMvm51Xzaphnh3Jfeo+cHO0F9nvSfAt5q5JciBAe7LhcaGyG570Cgc+
- 6ckP1RX5m9u+nWZ060GCRdifB5D99LuUhnhQKM7RWCVZCXEGwohrxalOaTxi1DYQbRQS
- L75Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ZJ6q3Z6ceKXrm+SRlu2SJJixCZ2doGfehevk1AA5ByM=;
- b=DK1492DC8g1GAyzJstI0i3LLsSXE79Kq+/qb6/JyObKyCH+l5R5guVM9D1IvUTRuYY
- YUaVp5TEN5FqoM61q98JT90v5q8AUSA0yflrWmwMRWKmxG/rLzqYFvXw6pVFLFaDgKjn
- tNJRsthb8/AXr+fJL00GjupGAFTEJASL/mU4gszfem0cy4YkeDn1gYwCi48IgWWYOS1V
- 8QjiG1nygqapDUPM63pSlQsX6IQ7Me4ND47Ovakrg3p0YH4iZ593p20eo7HqPdwdjGFm
- BEPUNO3B2DBaO+FXDq4Jg2vb7ZngWN1PzRSS3NFyEWfUMnfA7BWxUol1DkpFq8dkGWs/
- oHSw==
-X-Gm-Message-State: APjAAAVdj1OZXr3J28yInSkW9yjFR4W5CPI8u+gGJTFIDtJxaW/pQ5wd
- /lC9fOgNSdmNUHfUUHx5In4=
-X-Google-Smtp-Source: APXvYqzYgisCayrNKaxODP8N7xFYdT2hZz1hxEtmhPqbWlMtOUVzxlgJNwPz8lQm54UI/lwzuPutcw==
-X-Received: by 2002:adf:dc86:: with SMTP id r6mr3304746wrj.68.1576061953285;
- Wed, 11 Dec 2019 02:59:13 -0800 (PST)
-Received: from arch-thunder.localdomain (a109-49-46-234.cpe.netcabo.pt.
- [109.49.46.234])
- by smtp.gmail.com with ESMTPSA id o19sm1215640wmc.18.2019.12.11.02.59.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Dec 2019 02:59:12 -0800 (PST)
-Date: Wed, 11 Dec 2019 10:59:08 +0000
-From: Rui Miguel Silva <rmfrfs@gmail.com>
-To: Chuhong Yuan <hslester96@gmail.com>
-Subject: Re: [PATCH] media: imx7-mipi-csis: Add the missed
- v4l2_async_notifier_cleanup in remove
-Message-ID: <20191211105908.dw4lnuble3ejlnil@arch-thunder.localdomain>
-References: <20191209085828.16183-1-hslester96@gmail.com>
+ with ESMTP id C0Kk3BQF4nAd for <devel@linuxdriverproject.org>;
+ Wed, 11 Dec 2019 12:17:27 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2067486DB0
+ for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 12:17:27 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6ADEA214D8;
+ Wed, 11 Dec 2019 12:17:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1576066646;
+ bh=1n4dRkvvdCKETj6YqGunEjOSbdyLrGPyEqXt3M6/6wg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=THftVLfHvoU6YrX83eDiFEHMqmQzvJgd5DeuwSKhX2F4lhHXMy+pikZZxyRETijp3
+ kESWxqIVEK0BKR/gxeZZm9zuT6lD22QmeIKDUw9Cp0JkHxatXzo3qrCedCfutgWWAH
+ IZpPzdBjNzNsHQheWPxZC3At7oJRHln1BdIH3CcA=
+Date: Wed, 11 Dec 2019 13:17:24 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: "Chng, Jack Ping" <jack.ping.chng@linux.intel.com>
+Subject: Re: FW: [PATCH v2] staging: intel-gwdpa: gswip: Introduce Gigabit
+ Ethernet Switch (GSWIP) device driver
+Message-ID: <20191211121724.GA514307@kroah.com>
+References: <5f85180573a3fb20238d6a340cdd990f140ed6f0.1576054234.git.jack.ping.chng@intel.com>
+ <20191211092738.GA505511@kroah.com>
+ <BYAPR11MB317606F8BE2B60C4BAD872F1DE5A0@BYAPR11MB3176.namprd11.prod.outlook.com>
+ <c26e56cf-eb04-5992-252a-e66f6029d6ac@linux.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191209085828.16183-1-hslester96@gmail.com>
+In-Reply-To: <c26e56cf-eb04-5992-252a-e66f6029d6ac@linux.intel.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,52 +69,96 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org,
- NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, cheol.yong.kim@intel.com,
+ andriy.shevchenko@intel.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, davem@davemloft.net,
+ mallikarjunax.reddy@linux.intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Chuhong,
-Thanks for the patch.
-
-On Mon, Dec 09, 2019 at 04:58:28PM +0800, Chuhong Yuan wrote:
-> All drivers in imx call v4l2_async_notifier_cleanup() after unregistering
-> the notifier except this driver.
-> This should be a miss and we need to add the call to fix it.
+On Wed, Dec 11, 2019 at 06:37:42PM +0800, Chng, Jack Ping wrote:
+> Hi Greg,
 > 
-> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
-
-Reviewed-by: Rui Miguel Silva <rmfrfs@gmail.com>
-
-------
-Cheers,
-     Rui
-> ---
->  drivers/staging/media/imx/imx7-mipi-csis.c | 1 +
->  1 file changed, 1 insertion(+)
+> > -----Original Message-----
+> > From: Greg KH <gregkh@linuxfoundation.org>
+> > Sent: Wednesday, December 11, 2019 5:28 PM
+> > To: Chng, Jack Ping <jack.ping.chng@intel.com>
+> > Cc: devel@driverdev.osuosl.org; Kim, Cheol Yong <cheol.yong.kim@intel.com>; Shevchenko, Andriy <andriy.shevchenko@intel.com>; netdev@vger.kernel.org; linux-kernel@vger.kernel.org; Amireddy Mallikarjuna reddy <mallikarjunax.reddy@linux.intel.com>; davem@davemloft.net
+> > Subject: Re: [PATCH v2] staging: intel-gwdpa: gswip: Introduce Gigabit Ethernet Switch (GSWIP) device driver
+> > 
+> > On Wed, Dec 11, 2019 at 04:57:28PM +0800, Jack Ping CHNG wrote:
+> > > This driver enables the Intel's LGM SoC GSWIP block.
+> > > GSWIP is a core module tailored for L2/L3/L4+ data plane and QoS functions.
+> > > It allows CPUs and other accelerators connected to the SoC datapath to
+> > > enqueue and dequeue packets through DMAs.
+> > > Most configuration values are stored in tables such as Parsing and
+> > > Classification Engine tables, Buffer Manager tables and Pseudo MAC
+> > > tables.
+> > Odd line wrapping :(
+> > 
+> > > Signed-off-by: Jack Ping CHNG <jack.ping.chng@intel.com>
+> > > Signed-off-by: Amireddy Mallikarjuna reddy
+> > > <mallikarjunax.reddy@linux.intel.com>
+> > > ---
+> > > Changes on v2:
+> > > - Renamed intel-dpa to intel-gwdpa
+> > > - Added intel-gwdpa.txt(Intel Gateway Datapath Architecture)
+> > > - Added TODO (upstream plan)
+> > 
+> > > +Upstream plan
+> > > +--------------
+> > > +
+> > > +      GSWIP  CQM  PP  DPM     DCDP
+> > > +        |     |    |   |        |
+> > > +        |     |    |   |        |
+> > > +        V     V    V   V        V
+> > > +        -------------------------------------( drivers/staging/intel-gwdpa/* )
+> > > +                            |  (move to soc folder)
+> > > +                            V
+> > > +                    -------------------------(
+> > > + drivers/soc/intel/gwdpa-*/* )
+> > > +
+> > > +                            Eth driver  Wireless/
+> > > +                                |       WAN driver
+> > > +                                |         |
+> > > +                                V         V
+> > > +                             ----------------( drivers/net/ethernet/intel )
+> > > +                                             ( drivers/net/wireless )
+> > > +                                             ( drivers/net/wan)
+> > > +
+> > > +* Each driver will have a TODO list.
+> > Again, what kind of plan is this?  It's just a "these files need to be moved to this location" plan?
+> > 
+> > Why not do that today?
+> > 
+> > What is keeping this code from being accepted in the "correct" place today?  And why do you want it in staging?  You know it takes even more work to do things here, right?  Are you ready to sign up for that work (hint, you didn't add your names to the MAINTAINER file, so I worry about that...)
 > 
-> diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
-> index 99166afca071..2bfa85bb84e7 100644
-> --- a/drivers/staging/media/imx/imx7-mipi-csis.c
-> +++ b/drivers/staging/media/imx/imx7-mipi-csis.c
-> @@ -1105,6 +1105,7 @@ static int mipi_csis_remove(struct platform_device *pdev)
->  	mipi_csis_debugfs_exit(state);
->  	v4l2_async_unregister_subdev(&state->mipi_sd);
->  	v4l2_async_notifier_unregister(&state->subdev_notifier);
-> +	v4l2_async_notifier_cleanup(&state->subdev_notifier);
->  
->  	pm_runtime_disable(&pdev->dev);
->  	mipi_csis_pm_suspend(&pdev->dev, true);
-> -- 
-> 2.24.0
+> Thanks for the reply.
 > 
+> We are trying to upstream the datapath code for Intel new NoC gateway
+> (please refer to intel-gwdpa.txt at the end of the patch). It consists of
+> ethernet, WIFI and passive optics handling. Since the code is quite huge, we
+> have broken it into parts for internal review.
+> 
+> As we have seen past upstream example such as fsl/dpaa, we thought that it
+> is better for us to start the upstreaming of the driver into staging folder
+> to get feedback from the community.
+> 
+> Is this the right approach? Or do we upstream all the drivers into
+> drivers/soc folder when we have all the drivers ready?
+
+Why is drivers/soc/ the place to put networking drivers?
+
+Please please please work with the Intel Linux kernel developers who
+know how to do this type of thing and do not require the kernel
+community to teach you all the proper development model and methods
+here.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
