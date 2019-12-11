@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCA4111BB60
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Dec 2019 19:16:17 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 95BC211BB63
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Dec 2019 19:16:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 461B28861A;
-	Wed, 11 Dec 2019 18:16:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 47FC086D64;
+	Wed, 11 Dec 2019 18:16:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 90xN3U8r9-Dh; Wed, 11 Dec 2019 18:16:15 +0000 (UTC)
+	with ESMTP id RJ-vKZ-bpYWY; Wed, 11 Dec 2019 18:16:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7C28888619;
-	Wed, 11 Dec 2019 18:16:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 99E9E86D4D;
+	Wed, 11 Dec 2019 18:16:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1989B1BF473
- for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 18:15:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A7B81BF473
+ for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 18:15:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0EB0C88619
- for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 18:15:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7F7C987F34
+ for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 18:15:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7CsnNjv4xETV for <devel@linuxdriverproject.org>;
- Wed, 11 Dec 2019 18:15:39 +0000 (UTC)
+ with ESMTP id 9BodTxxH1oQT for <devel@linuxdriverproject.org>;
+ Wed, 11 Dec 2019 18:15:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-yw1-f66.google.com (mail-yw1-f66.google.com
- [209.85.161.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6D0028860D
- for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 18:15:39 +0000 (UTC)
-Received: by mail-yw1-f66.google.com with SMTP id 10so9308124ywv.5
- for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 10:15:39 -0800 (PST)
+Received: from mail-yw1-f67.google.com (mail-yw1-f67.google.com
+ [209.85.161.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D339687F30
+ for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 18:15:40 +0000 (UTC)
+Received: by mail-yw1-f67.google.com with SMTP id u139so9276056ywf.13
+ for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 10:15:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+x/b256hi/BiDL31JHY2PQmq0IAPIM+EJHKCtlj8/GQ=;
- b=fX6sP+zsfo7QiNbgczb4g4RwNHoCbsE1Qdyiv+e78chsM5SpDb4VEhKpowEc//NJoF
- FjK35PxJAduy/TX/48sMOL3RShtFhvUhNwsxT+kqQaC0P0K8epI0Z9BONFqdXhvqaS+Z
- JdChIJ1NIBh4GYo0JeyRRonR7dGvME5szcK+5dxOzjyME0JL+5hqPSLt0c3rVPZ/CA/k
- TPT3c9y4uC/H5pA25FeD5hZNcBfMikGd+GN2ODylL4gQzHbNIveYNbU3TCBOyxk7Oodl
- 3ncupRw6DqkxFFMCl21ApGz5DExaUQ+K3+3oorm/IcwlBs/ngNQvTk+jo09qZUQCAVn2
- CgQw==
+ bh=nwGdO4R8lji1D/r7NSUfswqgTgfKAYEWc+q0aQAaY34=;
+ b=aUxLEcZUouXI6SiOx6pzGdSVCiQx8vK4DJHmtxf40D8r2b8eE/Z7eFcVMho5BCcp5X
+ TWAopBJt6oZEaDrtyeLOmvzBUHni/LGxL7s3zooI5vp3hz+tf/sIY36AZ4ujyxRHdSM1
+ JW/i27mPlMCELPmiKLsbGaquGB0q4X7u10AVk6/TmUCwWN03CUXliusqyzdUQzTaTKm8
+ EmnzAmMs5HpqAoAL5Uh8/pasMHdghdduGWBgA4X5VWID+DVGHsYkcLwljb9EYVaya0T3
+ HlMFB3Nr7xLUmO3wfvrHAAHOSmPCjq6O5tjrX4lfjqHKVrh+78yKijz5Zl8ajfsy/tBN
+ RoIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+x/b256hi/BiDL31JHY2PQmq0IAPIM+EJHKCtlj8/GQ=;
- b=qFIHI3p6ZKZkzy9kWX/o0BLf/sv392xJa6H1601ao67eTzKzy6iJxnxt9vvYYvuF8J
- CVlONN0BeFph8mZuYXvSs006qtVFmMtDut62pLhkGRxePZXqYxOzZejPl6flMrfwyUpH
- sU3K5MVU1bwQNwPHMa9jGHH488BrB0of9vnvSK0wC4StUWIavigcSyQgiY3w9jaHqT6O
- 94Xcxhb5AqPB7Q3qdFEwFB2GQwAQlFflbA91A4cxrDkAFkPq/+cYT6mc5wcNa386yU6e
- dA+WtA3XcsbBWerWhJM2cPET7ueZK/+BlSN4Bv/IL9seKtfkfzu+ZNEXJzpCAb+LlDf3
- /Jsw==
-X-Gm-Message-State: APjAAAXqXmiMZZtYSCTW58/TjPtG0P7vyG9tAsS6Yde1UXP7M72mUsXc
- Cbc4PuHg4P46pYb7dQRcsFo=
-X-Google-Smtp-Source: APXvYqy+8SSiMyc2gSAf5nlC+pArO37lD4CnuaJdfKdo8miRp32JKEQHg5OHDfOWK1+LzEnk0ZTCWg==
-X-Received: by 2002:a81:ad1a:: with SMTP id l26mr852793ywh.481.1576088138380; 
- Wed, 11 Dec 2019 10:15:38 -0800 (PST)
+ bh=nwGdO4R8lji1D/r7NSUfswqgTgfKAYEWc+q0aQAaY34=;
+ b=B1KNRSZtCv46zEnMhUd/DIJoLqVFH6up0iKQX8Nn2OQ5wwkgSy6n4sSEkGlq8xRDMy
+ Cfanr72ezlMT+ic23x9jam6IdnmFIaxy0YoSstYX2iNw8l4YThqecDqPCkb1xhSQUm4p
+ N1PJHngAeLM/aGdL7YbYoHcWc3W/6rT2X60qGbFIQ34Yl9S3dXwoF4YlAnPZupyqj9+V
+ LjA/8j0EpGO1lrDmIipGEiUAsUsvuIG2rESwRXm1qxDAQVjl2u2PmuBRMI0wpax2gr8K
+ 5E+TLQUZ+XltoTN/ojC45zoAquFa6cMqKpt5rxEVCrCPkCXL1/Ca9UVO/z6H78hqnMJK
+ mQMg==
+X-Gm-Message-State: APjAAAXl9czFDosUfq1TwhDcGCSFUFbBKBklmhaWpBfUBWQVt6DlRTjt
+ FUVdlC8vohhMmIQ2lIIvfqw=
+X-Google-Smtp-Source: APXvYqyozxGB2X1nuGDB7dAEJrbGUelIJWseYKoI5+DIGHJRwfsZF4g4z3Za9/kKACyVGBgBVB3tMw==
+X-Received: by 2002:a0d:d2c2:: with SMTP id u185mr875765ywd.211.1576088139917; 
+ Wed, 11 Dec 2019 10:15:39 -0800 (PST)
 Received: from karen ([2604:2d80:d68a:cf00:a4bc:8e08:1748:387f])
- by smtp.gmail.com with ESMTPSA id i84sm1341120ywc.43.2019.12.11.10.15.37
+ by smtp.gmail.com with ESMTPSA id f134sm1304186ywb.68.2019.12.11.10.15.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Dec 2019 10:15:37 -0800 (PST)
+ Wed, 11 Dec 2019 10:15:39 -0800 (PST)
 From: Scott Schafer <schaferjscott@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 22/23] staging: qlge: Fix CHECK: Unbalanced braces around
- else statement
-Date: Wed, 11 Dec 2019 12:12:51 -0600
-Message-Id: <943bad431329fc77f515158444c6d06fbeeb66fe.1576086080.git.schaferjscott@gmail.com>
+Subject: [PATCH v2 23/23] staging: qlge: Fix WARNING: Avoid multiple line
+ dereference
+Date: Wed, 11 Dec 2019 12:12:52 -0600
+Message-Id: <f2e9384f0940fb7e57649a8ea8493abae2c220ee.1576086080.git.schaferjscott@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1576086080.git.schaferjscott@gmail.com>
 References: <cover.1576086080.git.schaferjscott@gmail.com>
@@ -94,42 +94,43 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix CHECK: Unbalanced braces around else statement in file qlge_mpi.c
+Fix WARNING: Avoid multiple line dereference in qlge_main.c
 
 Signed-off-by: Scott Schafer <schaferjscott@gmail.com>
 ---
- drivers/staging/qlge/qlge_mpi.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/staging/qlge/qlge_main.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/qlge/qlge_mpi.c b/drivers/staging/qlge/qlge_mpi.c
-index ba8ce3506a59..c9d45c8feabe 100644
---- a/drivers/staging/qlge/qlge_mpi.c
-+++ b/drivers/staging/qlge/qlge_mpi.c
-@@ -244,12 +244,12 @@ static int ql_idc_cmplt_aen(struct ql_adapter *qdev)
- 		netif_err(qdev, drv, qdev->ndev,
- 			  "Could not read MPI, resetting RISC!\n");
- 		ql_queue_fw_error(qdev);
--	} else
-+	} else {
- 		/* Wake up the sleeping mpi_idc_work thread that is
- 		 * waiting for this event.
- 		 */
- 		complete(&qdev->ide_completion);
--
-+	}
- 	return status;
- }
+diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
+index 102da1fe9899..725db7262a9a 100644
+--- a/drivers/staging/qlge/qlge_main.c
++++ b/drivers/staging/qlge/qlge_main.c
+@@ -399,9 +399,8 @@ static int ql_set_mac_addr_reg(struct ql_adapter *qdev, u8 *addr, u32 type,
+ 			 * the route field to NIC core.
+ 			 */
+ 			cam_output = (CAM_OUT_ROUTE_NIC |
+-				      (qdev->
+-				       func << CAM_OUT_FUNC_SHIFT) |
+-					(0 << CAM_OUT_CQ_ID_SHIFT));
++				      (qdev->func << CAM_OUT_FUNC_SHIFT) |
++				      (0 << CAM_OUT_CQ_ID_SHIFT));
+ 			if (qdev->ndev->features & NETIF_F_HW_VLAN_CTAG_RX)
+ 				cam_output |= CAM_OUT_RV;
+ 			/* route to NIC core */
+@@ -3428,10 +3427,9 @@ static int ql_request_irq(struct ql_adapter *qdev)
+ 				     &qdev->rx_ring[0]);
+ 			status =
+ 			    request_irq(pdev->irq, qlge_isr,
+-					test_bit(QL_MSI_ENABLED,
+-						 &qdev->
+-						 flags) ? 0 : IRQF_SHARED,
+-					intr_context->name, &qdev->rx_ring[0]);
++					test_bit(QL_MSI_ENABLED, &qdev->flags)
++					? 0 : IRQF_SHARED, intr_context->name,
++					&qdev->rx_ring[0]);
+ 			if (status)
+ 				goto err_irq;
  
-@@ -353,8 +353,7 @@ static int ql_aen_lost(struct ql_adapter *qdev, struct mbox_params *mbcp)
- 	status = ql_get_mb_sts(qdev, mbcp);
- 	if (status) {
- 		netif_err(qdev, drv, qdev->ndev, "Lost AEN broken!\n");
--	}
--	else {
-+	} else {
- 		int i;
- 
- 		netif_err(qdev, drv, qdev->ndev, "Lost AEN detected.\n");
 -- 
 2.20.1
 
