@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3769911BB54
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Dec 2019 19:15:59 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BF88B23335;
-	Wed, 11 Dec 2019 18:15:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vp2LE6LVH4PQ; Wed, 11 Dec 2019 18:15:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5D2F9232FA;
-	Wed, 11 Dec 2019 18:15:56 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8D7F41BF473
- for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 18:15:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id EE1DB11BB55
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Dec 2019 19:16:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6F879885A3
- for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 18:15:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7FD4888638;
+	Wed, 11 Dec 2019 18:15:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JI4VdcheIpi4; Wed, 11 Dec 2019 18:15:59 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id CA408885A3;
+	Wed, 11 Dec 2019 18:15:58 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E6091BF473
+ for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 18:15:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id ECE1186D26
+ for <devel@linuxdriverproject.org>; Wed, 11 Dec 2019 18:15:25 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s21XXCQsfDtF for <devel@linuxdriverproject.org>;
- Wed, 11 Dec 2019 18:15:23 +0000 (UTC)
+ with ESMTP id QncwbOLqdEVH for <devel@linuxdriverproject.org>;
+ Wed, 11 Dec 2019 18:15:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-yw1-f52.google.com (mail-yw1-f52.google.com
- [209.85.161.52])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 96F2D8861E
- for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 18:15:23 +0000 (UTC)
-Received: by mail-yw1-f52.google.com with SMTP id v84so2956462ywa.4
- for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 10:15:23 -0800 (PST)
+Received: from mail-yw1-f66.google.com (mail-yw1-f66.google.com
+ [209.85.161.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2B5D185F5D
+ for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 18:15:25 +0000 (UTC)
+Received: by mail-yw1-f66.google.com with SMTP id s187so9288957ywe.10
+ for <devel@driverdev.osuosl.org>; Wed, 11 Dec 2019 10:15:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=u0Uagrgs6mVpulGeA6eJiVL8yArUOnTFSWyALd4g4YI=;
- b=ujnadWGq0oPO4Of9IgCS6nRRjtnRxlgyhTiuXznJvRjdGLIrxjGN+ZT6YSaJ/zzjF9
- gys/f3FNf1guI/EXs76WKwwYGC63+7vrBH1MNwRZ88xWKb6wtqWl7COkEKkv8FW3FXOX
- tWJ3VGYfxF17jJOgC4YnSeXBj8pCc3ac5LdI/SeqA9GR2WhRe/tyzADhh4xxKwqIX+iT
- +jCu0ebQ1nTYc5lq44r4F2MeazAcD2TfV9y52U4vKn0XDxoUOIgdemT6RYHq/wFZp/zJ
- xK3k+ujCpJ3nMoGdEPnN6+cg7Ot5AT13wBzbIDiXLuHBs8S2JsUMnK4I5qK2h0uNdTMg
- MIlA==
+ bh=AltD7NJ0HtBITKXh/Q98jUiSNgIROsA0NlBEZ+kMmy0=;
+ b=KGKPCHz8bCGVGi8gtpGiJVmaMmvc6YAWgorKsOHn7gW03R04TaJ9cCZvarLBSHXwvP
+ cQ2ToUrDjCvWOLs0QXN25mLahqf+n3UeoY6pQkYSvY+GY/SMjPpaKc68Do0zAlPGULou
+ DeVigjPSLKGnvxo1WZy9ZzRo3GuEEH8T+kC8QXH54+pB33vitgf4UFN+gvQ6IbkAckMs
+ 6be+awe846PXtkZYFTJieQhV8rZfBNYVr8/5UedkIQZK+O7sBt5Q2TaOGRM+JmgjdSBN
+ KDK2s/SN7oWotx1pFlzg2zbi5kTzLINTfboHpe9L9LSLlWG8ne9Nk1NhXIIF5+NlpTVX
+ 8hAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=u0Uagrgs6mVpulGeA6eJiVL8yArUOnTFSWyALd4g4YI=;
- b=AL+nZemFt2W1X1kYC8rdQobUyoCIH4UcznVerYIq5E0uoqdwtQrjjgVZKty97JJnou
- gzFlef733u9sRdAu5Fg0E/VCj9xrOXKwLFaMZb+ruFGavWN+FaWp27U2pQ7hMglpENcC
- XXoUNTr8GljR/6jWb1Xlwbwvj+8q73S3zRhfa6squiJm5r/ONmp5fm3UpiWyG5gzs3bf
- lGea2P24H+m0N013+4nelFQykEp3PnLZtumWvqfXMu29k3an8A1lP9Fm9jaYPW2BMDpT
- fIH2RVriW6+zzLpJc2QiK0uN3NusX38VA1sGLxzh/UIhEL6fCbv709cXTPbmDFipUWkl
- 4NDQ==
-X-Gm-Message-State: APjAAAWrSi9jwrKpSd7JoKIBzz8d6RMxczrysQAgPi8t4p7zUmkCI0NP
- efotP6MYCBz/pJcytn7a8aI=
-X-Google-Smtp-Source: APXvYqxaALhyOvpU2ztGTYuOkeBXT/aFJSRD+TPM9gWmXKO27dD4VNr3Uybg0sFaUhMuVEhzABEEyg==
-X-Received: by 2002:a81:85c4:: with SMTP id v187mr820499ywf.445.1576088122451; 
- Wed, 11 Dec 2019 10:15:22 -0800 (PST)
+ bh=AltD7NJ0HtBITKXh/Q98jUiSNgIROsA0NlBEZ+kMmy0=;
+ b=lkPldpqLFbEIeVVgsA3oBz6PRP4aoB6K9hj4OCSOnVFPkugyL+cX01Zm/hnFUUr6pT
+ 2y4ltzdU+SqO9HLIQOOkRpJuiWdXmbvMfPwyVHjFKjymQqz5luB+JYHvx9fAyay88l+J
+ LyFJYcxyA76+4Vrjp96Vjl4EwstBjv/t9EKRFHkvkonKWiySiu6LWY5b00gz5vVd/5Aa
+ tLjedfiPNDdOAFKIrDZTBrt0fmE9t4gGE8Hf+EapLaQ01J897pI5ItTGDc/rFvT7z0e2
+ JSIRNnvR1p/HQD8yH//WWGCCklK2MAZn5AegvuTrtZtt5B/fO0coglLoWFgW6GpajIEx
+ dPlA==
+X-Gm-Message-State: APjAAAWHdDMhoC+xVfTFKa8lD30xBKEBajAzU6XmckEax4wk2wM0z9ac
+ QvZCn9dDB1xJyxcRLlqDp0c=
+X-Google-Smtp-Source: APXvYqx0upN00DK83okn8lbD1jrmyl6jEtD9VuYn6RnO7G5sOkOZNKEPXbMMsWvtE1gxb/3oOR/GqA==
+X-Received: by 2002:a0d:ca50:: with SMTP id m77mr910883ywd.4.1576088124175;
+ Wed, 11 Dec 2019 10:15:24 -0800 (PST)
 Received: from karen ([2604:2d80:d68a:cf00:a4bc:8e08:1748:387f])
- by smtp.gmail.com with ESMTPSA id k30sm1328927ywh.94.2019.12.11.10.15.21
+ by smtp.gmail.com with ESMTPSA id e204sm1290134ywe.92.2019.12.11.10.15.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Dec 2019 10:15:22 -0800 (PST)
+ Wed, 11 Dec 2019 10:15:23 -0800 (PST)
 From: Scott Schafer <schaferjscott@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 12/23] staging: qlge: Fix WARNING: please,
- no space before tabs in qlge.h
-Date: Wed, 11 Dec 2019 12:12:41 -0600
-Message-Id: <13546a2ebc6686da094b23ab576c4388fa61268b.1576086080.git.schaferjscott@gmail.com>
+Subject: [PATCH v2 13/23] staging: qlge: Fix CHECK: spaces preferred around
+ that (ctx:VxV)
+Date: Wed, 11 Dec 2019 12:12:42 -0600
+Message-Id: <a6f197d39478dc6955834412e20b4aed7c7141a2.1576086080.git.schaferjscott@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1576086080.git.schaferjscott@gmail.com>
 References: <cover.1576086080.git.schaferjscott@gmail.com>
@@ -94,76 +94,131 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix WARNING: please, no space before tabs in qlge.h
+Fix CHECK: spaces preferred around that (ctx:VxV) in qlge.h and
+qlge_main.c
 
 Signed-off-by: Scott Schafer <schaferjscott@gmail.com>
 ---
- drivers/staging/qlge/qlge.h | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ drivers/staging/qlge/qlge.h      |  6 +++---
+ drivers/staging/qlge/qlge_main.c | 18 +++++++++---------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/staging/qlge/qlge.h b/drivers/staging/qlge/qlge.h
-index ede767a70b10..63642cb9e624 100644
+index 63642cb9e624..9ab4c7ce7714 100644
 --- a/drivers/staging/qlge/qlge.h
 +++ b/drivers/staging/qlge/qlge.h
-@@ -16,8 +16,8 @@
- /*
-  * General definitions...
-  */
--#define DRV_NAME  	"qlge"
--#define DRV_STRING 	"QLogic 10 Gigabit PCI-E Ethernet Driver "
-+#define DRV_NAME	"qlge"
-+#define DRV_STRING	"QLogic 10 Gigabit PCI-E Ethernet Driver "
- #define DRV_VERSION	"1.00.00.35"
+@@ -59,7 +59,7 @@
+ #define MAX_CQ 128
+ #define DFLT_COALESCE_WAIT 100	/* 100 usec wait for coalescing */
+ #define MAX_INTER_FRAME_WAIT 10	/* 10 usec max interframe-wait for coalescing */
+-#define DFLT_INTER_FRAME_WAIT (MAX_INTER_FRAME_WAIT/2)
++#define DFLT_INTER_FRAME_WAIT (MAX_INTER_FRAME_WAIT / 2)
+ #define UDELAY_COUNT 3
+ #define UDELAY_DELAY 100
  
- #define WQ_ADDR_ALIGN	0x3	/* 4 byte alignment */
-@@ -1076,8 +1076,8 @@ struct tx_buf_desc {
-  * IOCB Definitions...
-  */
+@@ -1366,7 +1366,7 @@ struct tx_ring_desc {
+ 	struct tx_ring_desc *next;
+ };
  
--#define OPCODE_OB_MAC_IOCB 			0x01
--#define OPCODE_OB_MAC_TSO_IOCB		0x02
-+#define OPCODE_OB_MAC_IOCB			0x01
-+#define OPCODE_OB_MAC_TSO_IOCB			0x02
- #define OPCODE_IB_MAC_IOCB			0x20
- #define OPCODE_IB_MPI_IOCB			0x21
- #define OPCODE_IB_AE_IOCB			0x3f
-@@ -1179,8 +1179,8 @@ struct ib_mac_iocb_rsp {
- #define IB_MAC_IOCB_RSP_M_MASK	0x60	/* Multicast info */
- #define IB_MAC_IOCB_RSP_M_NONE	0x00	/* Not mcast frame */
- #define IB_MAC_IOCB_RSP_M_HASH	0x20	/* HASH mcast frame */
--#define IB_MAC_IOCB_RSP_M_REG 	0x40	/* Registered mcast frame */
--#define IB_MAC_IOCB_RSP_M_PROM 	0x60	/* Promiscuous mcast frame */
-+#define IB_MAC_IOCB_RSP_M_REG	0x40	/* Registered mcast frame */
-+#define IB_MAC_IOCB_RSP_M_PROM	0x60	/* Promiscuous mcast frame */
- #define IB_MAC_IOCB_RSP_B	0x80	/* Broadcast frame */
- 	u8 flags2;
- #define IB_MAC_IOCB_RSP_P	0x01	/* Promiscuous frame */
-@@ -1200,8 +1200,8 @@ struct ib_mac_iocb_rsp {
- #define IB_MAC_IOCB_RSP_M_NONE	0x00	/* No RSS match */
- #define IB_MAC_IOCB_RSP_M_IPV4	0x04	/* IPv4 RSS match */
- #define IB_MAC_IOCB_RSP_M_IPV6	0x02	/* IPv6 RSS match */
--#define IB_MAC_IOCB_RSP_M_TCP_V4 	0x05	/* TCP with IPv4 */
--#define IB_MAC_IOCB_RSP_M_TCP_V6 	0x03	/* TCP with IPv6 */
-+#define IB_MAC_IOCB_RSP_M_TCP_V4	0x05	/* TCP with IPv4 */
-+#define IB_MAC_IOCB_RSP_M_TCP_V6	0x03	/* TCP with IPv6 */
- #define IB_MAC_IOCB_RSP_V4	0x08	/* IPV4 */
- #define IB_MAC_IOCB_RSP_V6	0x10	/* IPV6 */
- #define IB_MAC_IOCB_RSP_IH	0x20	/* Split after IP header */
-@@ -1238,10 +1238,10 @@ struct ib_ae_iocb_rsp {
- #define SOFT_ECC_ERROR_EVENT       0x07
- #define MGMT_ERR_EVENT             0x08
- #define TEN_GIG_MAC_EVENT          0x09
--#define GPI0_H2L_EVENT       	0x10
--#define GPI0_L2H_EVENT       	0x20
--#define GPI1_H2L_EVENT       	0x11
--#define GPI1_L2H_EVENT       	0x21
-+#define GPI0_H2L_EVENT		0x10
-+#define GPI0_L2H_EVENT		0x20
-+#define GPI1_H2L_EVENT		0x11
-+#define GPI1_L2H_EVENT		0x21
- #define PCI_ERR_ANON_BUF_RD        0x40
- 	u8 q_id;
- 	__le32 reserved[15];
+-#define QL_TXQ_IDX(qdev, skb) (smp_processor_id()%(qdev->tx_ring_count))
++#define QL_TXQ_IDX(qdev, skb) (smp_processor_id() % (qdev->tx_ring_count))
+ 
+ struct tx_ring {
+ 	/*
+@@ -1790,7 +1790,7 @@ struct ql_reg_dump {
+ 
+ 	/* segment 34 */
+ 	struct mpi_coredump_segment_header ets_seg_hdr;
+-	u32 ets[8+2];
++	u32 ets[8 + 2];
+ };
+ 
+ struct ql_mpi_coredump {
+diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
+index 4dc4edbb2de5..38d217ae4002 100644
+--- a/drivers/staging/qlge/qlge_main.c
++++ b/drivers/staging/qlge/qlge_main.c
+@@ -706,7 +706,7 @@ static int ql_get_8000_flash_params(struct ql_adapter *qdev)
+ 
+ 	size = sizeof(struct flash_params_8000) / sizeof(u32);
+ 	for (i = 0; i < size; i++, p++) {
+-		status = ql_read_flash_word(qdev, i+offset, p);
++		status = ql_read_flash_word(qdev, i + offset, p);
+ 		if (status) {
+ 			netif_err(qdev, ifup, qdev->ndev,
+ 				  "Error reading flash.\n");
+@@ -769,7 +769,7 @@ static int ql_get_8012_flash_params(struct ql_adapter *qdev)
+ 		return -ETIMEDOUT;
+ 
+ 	for (i = 0; i < size; i++, p++) {
+-		status = ql_read_flash_word(qdev, i+offset, p);
++		status = ql_read_flash_word(qdev, i + offset, p);
+ 		if (status) {
+ 			netif_err(qdev, ifup, qdev->ndev,
+ 				  "Error reading flash.\n");
+@@ -1544,7 +1544,7 @@ static void ql_process_mac_rx_page(struct ql_adapter *qdev,
+ 			struct iphdr *iph =
+ 				(struct iphdr *)((u8 *)addr + hlen);
+ 			if (!(iph->frag_off &
+-				htons(IP_MF|IP_OFFSET))) {
++				htons(IP_MF | IP_OFFSET))) {
+ 				skb->ip_summed = CHECKSUM_UNNECESSARY;
+ 				netif_printk(qdev, rx_status, KERN_DEBUG,
+ 					     qdev->ndev,
+@@ -1651,7 +1651,7 @@ static void ql_process_mac_rx_skb(struct ql_adapter *qdev,
+ 			struct iphdr *iph = (struct iphdr *)skb->data;
+ 
+ 			if (!(iph->frag_off &
+-				htons(IP_MF|IP_OFFSET))) {
++				htons(IP_MF | IP_OFFSET))) {
+ 				skb->ip_summed = CHECKSUM_UNNECESSARY;
+ 				netif_printk(qdev, rx_status, KERN_DEBUG,
+ 					     qdev->ndev,
+@@ -1940,7 +1940,7 @@ static void ql_process_mac_split_rx_intr(struct ql_adapter *qdev,
+ 			struct iphdr *iph = (struct iphdr *)skb->data;
+ 
+ 			if (!(iph->frag_off &
+-				htons(IP_MF|IP_OFFSET))) {
++				htons(IP_MF | IP_OFFSET))) {
+ 				skb->ip_summed = CHECKSUM_UNNECESSARY;
+ 				netif_printk(qdev, rx_status, KERN_DEBUG, qdev->ndev,
+ 					     "TCP checksum done!\n");
+@@ -4560,7 +4560,7 @@ static void ql_timer(struct timer_list *t)
+ 		return;
+ 	}
+ 
+-	mod_timer(&qdev->timer, jiffies + (5*HZ));
++	mod_timer(&qdev->timer, jiffies + (5 * HZ));
+ }
+ 
+ static int qlge_probe(struct pci_dev *pdev,
+@@ -4632,7 +4632,7 @@ static int qlge_probe(struct pci_dev *pdev,
+ 	 * the bus goes dead
+ 	 */
+ 	timer_setup(&qdev->timer, ql_timer, TIMER_DEFERRABLE);
+-	mod_timer(&qdev->timer, jiffies + (5*HZ));
++	mod_timer(&qdev->timer, jiffies + (5 * HZ));
+ 	ql_link_off(qdev);
+ 	ql_display_dev_info(ndev);
+ 	atomic_set(&qdev->lb_count, 0);
+@@ -4766,7 +4766,7 @@ static void qlge_io_resume(struct pci_dev *pdev)
+ 		netif_err(qdev, ifup, qdev->ndev,
+ 			  "Device was not running prior to EEH.\n");
+ 	}
+-	mod_timer(&qdev->timer, jiffies + (5*HZ));
++	mod_timer(&qdev->timer, jiffies + (5 * HZ));
+ 	netif_device_attach(ndev);
+ }
+ 
+@@ -4828,7 +4828,7 @@ static int qlge_resume(struct pci_dev *pdev)
+ 			return err;
+ 	}
+ 
+-	mod_timer(&qdev->timer, jiffies + (5*HZ));
++	mod_timer(&qdev->timer, jiffies + (5 * HZ));
+ 	netif_device_attach(ndev);
+ 
+ 	return 0;
 -- 
 2.20.1
 
