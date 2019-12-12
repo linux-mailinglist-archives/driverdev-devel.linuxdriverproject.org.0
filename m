@@ -1,93 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9581B11D259
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Dec 2019 17:32:06 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD4CC11D6D8
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Dec 2019 20:09:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8208C20485;
-	Thu, 12 Dec 2019 16:32:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6F924871B6;
+	Thu, 12 Dec 2019 19:09:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EzAgP6yVTPKP; Thu, 12 Dec 2019 16:32:03 +0000 (UTC)
+	with ESMTP id hACyhQ6eMK6w; Thu, 12 Dec 2019 19:09:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 36EC620115;
-	Thu, 12 Dec 2019 16:32:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 94C3E871A0;
+	Thu, 12 Dec 2019 19:09:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C20B51BF3D8
- for <devel@linuxdriverproject.org>; Thu, 12 Dec 2019 16:31:59 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CAF561BF340
+ for <devel@linuxdriverproject.org>; Thu, 12 Dec 2019 19:09:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BE2348839C
- for <devel@linuxdriverproject.org>; Thu, 12 Dec 2019 16:31:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C71458574F
+ for <devel@linuxdriverproject.org>; Thu, 12 Dec 2019 19:09:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qMEDvhg3OaEs for <devel@linuxdriverproject.org>;
- Thu, 12 Dec 2019 16:31:59 +0000 (UTC)
+ with ESMTP id ZdopKfcIVekE for <devel@linuxdriverproject.org>;
+ Thu, 12 Dec 2019 19:09:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0C7C887EF8
- for <devel@driverdev.osuosl.org>; Thu, 12 Dec 2019 16:31:58 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xBCGMKph142384;
- Thu, 12 Dec 2019 16:31:58 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=1Me3TBEuSHGpaj+SzUfnUPEsajZ9tscnXl2BKzzAHAo=;
- b=Mc3B9sTmqgyhNVLCEl8Z8AWM+4aWiWhZiD4hQGAJbIeXfc8Lvoj6FoHXkbvrPHLl+VkB
- +x9isSX6UYVdMNKpYqkUzXe+2/j30zglR0VKakb0u2wCyromovCgLRUIzYfGoLGTgUWS
- mwNJWqLjF9LF3yS7fb8snEk/7dvtemVwO6f1gYxNxuPkYjkYolqxSjXPxTZGqPFc2qcD
- 3zAg+ve5jEZfHfUei4O6fHnn1vF49wbgWkHbAFFyov08AUf/FLGXcdDa89Fmpel514a5
- 0uI3FYGkb9XPm/N+WJIhRmXGau6Tkr016LmK7SZmtLq9IrLIu03eaeTf0g6uu7o/sgki lA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 2wr41qm5cn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 12 Dec 2019 16:31:58 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xBCGTUMO155730;
- Thu, 12 Dec 2019 16:31:57 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3020.oracle.com with ESMTP id 2wumw0b25d-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 12 Dec 2019 16:31:57 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id xBCGVvGw026605;
- Thu, 12 Dec 2019 16:31:57 GMT
-Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 12 Dec 2019 08:31:56 -0800
-Date: Thu, 12 Dec 2019 19:31:49 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Scott Schafer <schaferjscott@gmail.com>
-Subject: Re: [PATCH v2 11/23] staging: qlge: Fix CHECK: braces {} should be
- used on all arms of this statement
-Message-ID: <20191212163149.GA1873@kadam>
-References: <cover.1576086080.git.schaferjscott@gmail.com>
- <0e1fc1a16725094676fdab63d3a24a986309a759.1576086080.git.schaferjscott@gmail.com>
- <20191212121206.GB1895@kadam> <20191212150200.GA8219@karen>
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 83206851C0
+ for <devel@driverdev.osuosl.org>; Thu, 12 Dec 2019 19:09:04 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id q9so3580772wmj.5
+ for <devel@driverdev.osuosl.org>; Thu, 12 Dec 2019 11:09:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=IxK9FtGpYJeOUfvnF7MggY9vmvu7+uyxyDOUYBGOZPw=;
+ b=XShq7tcKoeE+Txh1DEN5WhLp0eR/w69ZPSSfE+iXxHgHs0gOju6ZXq+p1U1RcRKBWV
+ Pf+WEL7yhcSNaso+niPZhq2I8ig9HcwcmRZj7C4V/UAuLNCRpAZKF9uNqdj4kI6+qitF
+ wssJMmQKMq541gCc68PXUiZilDMwnSycahaOS/M8D87+Jx+RGR+vA4bDuWm2rJNcMcaI
+ XYnurMLbUaQz1lQ1tReQLskTknW118Rbuf61l+6gaoVBCXcTiXVGR8QggDfpmKcnGAiY
+ ScpzgnYUw8E4wE6BVOB7oojAGJ256kAey11+LG3HL4J6s1/0DZfZmQKGk6BLrKGcA65Q
+ lHAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=IxK9FtGpYJeOUfvnF7MggY9vmvu7+uyxyDOUYBGOZPw=;
+ b=eoUyNxo9/QfQEdAnw7nMx+6287b5omrfYwtkZRLkcP4N7oe+IOUhAFL8wMw/EjZ/Fs
+ qa58eNwMX36/+b9J9dOpVmkUeZ79wmT4SRXfByVLWhFZWuP7R2GS8B0mVWjsY5dy/I1K
+ XlOYUzU9HBvS8EV96gYpLLU6e9zgMBac3UGnc/IJChTTHDdH9bwwn29Pzxqc74ji0rzD
+ vSPhxpgnTQg4Xe9T1XI9ddwHIB7TFlSsZMBf7I5ubdEs9tgiQNOCXz81H1ptBJyb/WbG
+ 2OMKVbfl5sKVW7FWaJ792+l99RYvT37hVK/uDB9DcQ+L8G0AFHxy8LXCWt0dz5xNN3Ul
+ Lkyg==
+X-Gm-Message-State: APjAAAViYv5Og6R7ID0QO6O76U9zenMijACwRz7ip3CZUgEPMF9ytvRj
+ w6irMFQ2HPn74d9YuJIoAMw=
+X-Google-Smtp-Source: APXvYqwsF9/+E9ejZwZFR/MJTQSnIfDekPVMn7yz+SlJiFAcLzJ1ytlyj48O3iuSD4HZvW680PcnvQ==
+X-Received: by 2002:a1c:2705:: with SMTP id n5mr8858556wmn.68.1576177742710;
+ Thu, 12 Dec 2019 11:09:02 -0800 (PST)
+Received: from arch-thunder.localdomain (a109-49-46-234.cpe.netcabo.pt.
+ [109.49.46.234])
+ by smtp.gmail.com with ESMTPSA id o66sm3322584wmo.20.2019.12.12.11.09.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Dec 2019 11:09:01 -0800 (PST)
+Date: Thu, 12 Dec 2019 19:08:58 +0000
+From: Rui Miguel Silva <rmfrfs@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] media: imx7-mipi-csis: Add the missed
+ v4l2_async_notifier_cleanup in remove
+Message-ID: <20191212190858.nslwdcjpbjnrfvq2@arch-thunder.localdomain>
+References: <20191209085828.16183-1-hslester96@gmail.com>
+ <20191212115134.GA1895@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191212150200.GA8219@karen>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9469
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-1912120128
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9469
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-1912120127
+In-Reply-To: <20191212115134.GA1895@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,44 +88,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
- Manish Chopra <manishc@marvell.com>, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Chuhong Yuan <hslester96@gmail.com>,
+ linux-kernel@vger.kernel.org, NXP Linux Team <linux-imx@nxp.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Steve Longerbeam <slongerbeam@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Dec 12, 2019 at 09:02:00AM -0600, Scott Schafer wrote:
-> On Thu, Dec 12, 2019 at 03:12:06PM +0300, Dan Carpenter wrote:
-> > On Wed, Dec 11, 2019 at 12:12:40PM -0600, Scott Schafer wrote:
-> > > @@ -351,8 +352,9 @@ static int ql_aen_lost(struct ql_adapter *qdev, struct mbox_params *mbcp)
-> > >  	mbcp->out_count = 6;
-> > >  
-> > >  	status = ql_get_mb_sts(qdev, mbcp);
-> > > -	if (status)
-> > > +	if (status) {
-> > >  		netif_err(qdev, drv, qdev->ndev, "Lost AEN broken!\n");
-> > > +	}
-> > >  	else {
+Hi Dan,
+Thanks for the inputs.
+On Thu, Dec 12, 2019 at 02:51:34PM +0300, Dan Carpenter wrote:
+> On Mon, Dec 09, 2019 at 04:58:28PM +0800, Chuhong Yuan wrote:
+> > All drivers in imx call v4l2_async_notifier_cleanup() after
+> > unregistering the notifier except this driver.  This should be a
+> > miss and we need to add the call to fix it.
 > > 
-> > The close } should be on the same line as the else.
+> > Signed-off-by: Chuhong Yuan <hslester96@gmail.com> ---
+> > drivers/staging/media/imx/imx7-mipi-csis.c | 1 +
+> >  1 file changed, 1 insertion(+)
 > > 
-> > >  		int i;
-> > >  
-> > 
-> > regards,
-> > dan carpenter
+> > diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c
+> > b/drivers/staging/media/imx/imx7-mipi-csis.c index
+> > 99166afca071..2bfa85bb84e7 100644 ---
+> > a/drivers/staging/media/imx/imx7-mipi-csis.c +++
+> > b/drivers/staging/media/imx/imx7-mipi-csis.c @@ -1105,6 +1105,7 @@
+> > static int mipi_csis_remove(struct platform_device *pdev)
+> > mipi_csis_debugfs_exit(state);
+> > v4l2_async_unregister_subdev(&state->mipi_sd);
+> > v4l2_async_notifier_unregister(&state->subdev_notifier); +
+> > v4l2_async_notifier_cleanup(&state->subdev_notifier);
+> >  
 > 
-> this was fixed in patch 22
+> In this case the "state->subdev_notifier" was never initialized or
+> used so both v4l2_async_notifier_unregister() and
+> v4l2_async_notifier_cleanup() are no-ops.
 
-The truth is that I don't care at all about tiny typos like this, but
-in the future then the right way to fix these is to create a separate
-patch for this, and the use git rebase to fold it back into this patch.
-It's a pretty straight forward process.
+I have applied this patch on top of Steve's series [0], since by the
+timeline I was expecting to be applied before this one, that series
+adds a bound notifier, even though, it is not named the same, eheh.
 
-regards,
-dan carpenter
+That trigged me to think that this cleanup was correct since a
+notifier was initialized in probe.
+
+But as you say, it is a no-ops in the end.
+
+@Steve, that said, it looks that in [0], you will need to add some
+unregister and cleanup for the notifiers that you are adding in
+several places.
+
+A patch to fix this will follow.
+
+------
+Cheers,
+     Rui
+
+
+
+[0]: https://patchwork.kernel.org/project/linux-media/list/?series=207517
+
+> 
+> We should just delete "subdev_notifier".
+> 
+> regards, dan carpenter
+> 
+> _______________________________________________ devel mailing list
+> devel@linuxdriverproject.org
+> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
