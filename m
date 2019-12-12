@@ -1,50 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3822411CB8D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Dec 2019 11:57:43 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 246A111CB97
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Dec 2019 11:58:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2940E8700D;
-	Thu, 12 Dec 2019 10:57:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BED4C84B62;
+	Thu, 12 Dec 2019 10:58:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ORFbMpuE6Aoj; Thu, 12 Dec 2019 10:57:40 +0000 (UTC)
+	with ESMTP id 3DBerjFJ_R7i; Thu, 12 Dec 2019 10:58:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5A62386F21;
-	Thu, 12 Dec 2019 10:57:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3AFB9845A4;
+	Thu, 12 Dec 2019 10:58:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E3C671BF3B0
- for <devel@linuxdriverproject.org>; Thu, 12 Dec 2019 10:57:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 012C41BF3B0
+ for <devel@linuxdriverproject.org>; Thu, 12 Dec 2019 10:57:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9CBFB204FE
- for <devel@linuxdriverproject.org>; Thu, 12 Dec 2019 10:57:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F18A086230
+ for <devel@linuxdriverproject.org>; Thu, 12 Dec 2019 10:57:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uCI4VcNlDRDF for <devel@linuxdriverproject.org>;
- Thu, 12 Dec 2019 10:57:37 +0000 (UTC)
+ with ESMTP id PWC1InnRm6+e for <devel@linuxdriverproject.org>;
+ Thu, 12 Dec 2019 10:57:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx1.suse.de (mx2.suse.de [195.135.220.15])
- by silver.osuosl.org (Postfix) with ESMTPS id 3C597204D5
- for <devel@driverdev.osuosl.org>; Thu, 12 Dec 2019 10:57:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E167986214
+ for <devel@driverdev.osuosl.org>; Thu, 12 Dec 2019 10:57:57 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id D787CAFDF;
- Thu, 12 Dec 2019 10:57:34 +0000 (UTC)
-Message-ID: <099cb6558e9a10c1fce73e34484c0eaf21293e61.camel@suse.de>
-Subject: Re: [PATCH for-5.6 2/4] staging: bcm2835-audio: Use managed buffer
- allocation
+ by mx1.suse.de (Postfix) with ESMTP id 6CFDAAEC1;
+ Thu, 12 Dec 2019 10:57:56 +0000 (UTC)
+Message-ID: <9f0d4eb964f3f18ff18c0c2697ff1a681639ce58.camel@suse.de>
+Subject: Re: [PATCH for-5.6 4/4] staging: bcm2835-audio: Drop superfluous
+ ioctl PCM ops
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: Takashi Iwai <tiwai@suse.de>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>
-Date: Thu, 12 Dec 2019 11:57:33 +0100
-In-Reply-To: <20191210141356.18074-3-tiwai@suse.de>
+Date: Thu, 12 Dec 2019 11:57:55 +0100
+In-Reply-To: <20191210141356.18074-5-tiwai@suse.de>
 References: <20191210141356.18074-1-tiwai@suse.de>
- <20191210141356.18074-3-tiwai@suse.de>
+ <20191210141356.18074-5-tiwai@suse.de>
 User-Agent: Evolution 3.34.2 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -63,23 +63,23 @@ Cc: devel@driverdev.osuosl.org, alsa-devel@alsa-project.org,
  Florian Fainelli <f.fainelli@gmail.com>, Scott Branden <sbranden@broadcom.com>,
  Ray Jui <rjui@broadcom.com>, linux-kernel@vger.kernel.org,
  bcm-kernel-feedback-list@broadcom.com
-Content-Type: multipart/mixed; boundary="===============6012630599514123669=="
+Content-Type: multipart/mixed; boundary="===============5832540883950184186=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============6012630599514123669==
+--===============5832540883950184186==
 Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-KDe450wmkzJFlREF+n28"
+	protocol="application/pgp-signature"; boundary="=-g0TJqR5cdhbPOzOoFy6+"
 
 
---=-KDe450wmkzJFlREF+n28
+--=-g0TJqR5cdhbPOzOoFy6+
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 On Tue, 2019-12-10 at 15:13 +0100, Takashi Iwai wrote:
-> Clean up the driver with the new managed buffer allocation API.
-> The hw_params and hw_free callbacks became superfluous and dropped.
+> PCM core deals the empty ioctl field now as default.
+> Let's kill the redundant lines.
 >=20
 > Signed-off-by: Takashi Iwai <tiwai@suse.de>
 
@@ -88,27 +88,27 @@ Reviewed-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Thanks!
 
 
---=-KDe450wmkzJFlREF+n28
+--=-g0TJqR5cdhbPOzOoFy6+
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3yHR0ACgkQlfZmHno8
-x/7T1wf9HqdO2587apiYerHZt0Jf/EfpHtnps8r5NNLydl8BXf/nNo9Nnfb7E6vE
-tamYcG/rVIzfWZ2aBeIaG1jxrfKwZFrTy8T+djPw4Y94x8HTLf7S+qhJs+ppzFHo
-wAF3hzz25fUWCG0z1q2bEQXm4qmc5Irhdy/o9rESwdVF5Z3w+1XGo3J9HIDj4bKw
-bKl63amT+yioLN4/cetU9IkEm2TUqKwR3qlH0TZz0EvCiXoOGR2t5kzT92YrROJL
-Rxw/PyZ7gqJ4DM6fQ6aWUzo+/p82ASRfrfi0456846zQVShb7zYNAud7fODTsELR
-aIt52MtSc3sl2zjH+jbV+U3hRV8Vkw==
-=acj8
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3yHTMACgkQlfZmHno8
+x/4wugf+NmAk0UkDbFiLmoISfbHMhP+QF9xsW4TglreylmVopMkzBgb7rGFwpf+c
+lYB4ggdHpr4CfCZlYS4C5eKUa6KxCs4cqhQgkJqWkMrSQ3xNWzyrblVr7uA+yz17
+3HtdAB6wE83Hh7zrJgvcQPASSXlziK2JryotwDHjpqGixTRAYmAIueTMIiP8j/+Y
+SWzx6QZY4CduTjIYjDgOIE+12GB2w4NJ/n4UCJ0nBXF4jth6FE6VbqPqQ2zylgYJ
+W/XW/w3yJ1ebgDRmriOGNS2vBG/L8ASuiI4RnnXWa1jLMd75IPnGBAgvIOCRnkQk
+NKRgdGsILjMZhoEISnha3z3jvYUmTQ==
+=IRls
 -----END PGP SIGNATURE-----
 
---=-KDe450wmkzJFlREF+n28--
+--=-g0TJqR5cdhbPOzOoFy6+--
 
 
---===============6012630599514123669==
+--===============5832540883950184186==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -119,5 +119,5 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============6012630599514123669==--
+--===============5832540883950184186==--
 
