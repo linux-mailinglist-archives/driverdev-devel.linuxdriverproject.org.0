@@ -2,82 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4089611DBFA
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Dec 2019 03:06:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E2B1811DED4
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Dec 2019 08:47:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BD16B88A51;
-	Fri, 13 Dec 2019 02:06:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 87A3A88AD3;
+	Fri, 13 Dec 2019 07:47:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VepRagGhQ1Is; Fri, 13 Dec 2019 02:06:16 +0000 (UTC)
+	with ESMTP id VBSNlAe2bjPO; Fri, 13 Dec 2019 07:47:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B8103889D1;
-	Fri, 13 Dec 2019 02:06:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9BAA4889F0;
+	Fri, 13 Dec 2019 07:47:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DBB6A1BF298
- for <devel@linuxdriverproject.org>; Fri, 13 Dec 2019 02:06:07 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A63091BF2FE
+ for <devel@linuxdriverproject.org>; Fri, 13 Dec 2019 07:47:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D374B204AA
- for <devel@linuxdriverproject.org>; Fri, 13 Dec 2019 02:06:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A0825889F0
+ for <devel@linuxdriverproject.org>; Fri, 13 Dec 2019 07:47:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZLu9ymesqiQv for <devel@linuxdriverproject.org>;
- Fri, 13 Dec 2019 02:06:07 +0000 (UTC)
+ with ESMTP id iHyz-tX+mLVL for <devel@linuxdriverproject.org>;
+ Fri, 13 Dec 2019 07:47:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by silver.osuosl.org (Postfix) with ESMTPS id BA5E5203BD
- for <devel@driverdev.osuosl.org>; Fri, 13 Dec 2019 02:06:06 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id q6so4864450wro.9
- for <devel@driverdev.osuosl.org>; Thu, 12 Dec 2019 18:06:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=Mw8EW83cosmiQE+UaosVXBv03NWKkPkaFOtzv1VzjCQ=;
- b=cjNnXVtnvtQia0K2KbhpLNAeEdFH/d2hkcA3VosxGkyt0uAqWt5HknuHvpO2ogvMrh
- mUr4MPckkTku/7nAY6yNBsTDkXq1avIVBqnS+A1Y2vJJqXDlpMnDZn5u5WvFBF+hHSV/
- 3z3MrjSDKThP07L5GVZW0PoETKrdpgABSKtpotwmdhOBSpmuVhxqj529df18n0uT4jug
- Pt+6jqA6MMq9G7wHMT6d+DWsNNYqqsAzpVdBOW53p8F6c/qd24cEVAv4K9AiSTkI4ewb
- sbx8NBEuCf4fxnVH2iWPZ2o0IlhrX74IanwEZbf8E2UYAOdHnIzqFBzNAzaj5hJHHTQs
- GQaw==
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 71419889D5
+ for <devel@driverdev.osuosl.org>; Fri, 13 Dec 2019 07:47:38 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id t14so5463621wmi.5
+ for <devel@driverdev.osuosl.org>; Thu, 12 Dec 2019 23:47:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vTSxvUqfa6FoEiQTgKaCRKQ961VVqjF3zVcNDPTqeUQ=;
+ b=FygEFXPkvDTEqQFNc95GmEPQFaOALol3FJZVABII8mgatRtgdG31UxBB+q2f85tioV
+ YaDq76YgKg19kavCxLDGCXYdqM9e4pt1+h8vMM1af+h493sGTqtu8x0x0Y7pDZ9rZODl
+ D0Tmu44OHSSAi7XTfiw3ezo4lLtG/fvqKXr9UP1I7ioXEwEcTuWWl+MwWhGJYbEnMq+w
+ ALx7B4du4u7jUwnaaQoo9t+S3X/fO96NeqeTQ28Ffuy5wSsYUMg78UyAtuMEUmLPhSNZ
+ lUUoOAhyKE5fSjw0CUYEi+vy/hxr1Eua69Uhw+w3KzjGJP3OD8JUBE+JCzVqCd/mRebH
+ 8ZnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=Mw8EW83cosmiQE+UaosVXBv03NWKkPkaFOtzv1VzjCQ=;
- b=moamvrWMtBhsN0Rt3T8KzNc79zneQILtXsj+F9c42tJQnHD5KtEHQO2yxUmLT++BU1
- Ir458/qe3TNG5GYgzFXPAw7X6QQSkQ00g9cd2ziptWzwoUBv3Ytyi5RG1Z+37OMUka6F
- /ZVHcmljtLOT/eNbYOw7G1ytbP5KqrNSrE6JAfZt6Uj45zFNdkrsVi6WCPUu8FVk/BH7
- lU4/4HwAlRfTqnm7bj/AYoZrVWtcNfyR5pptl89ggLdDdULkTcxwe1TmWc91cOwaqVWs
- za0w7OTTBpgl2uCndkhb25XmxzZc6ekmNUrGkJCzMv1HhICgdnfiZOVB1GdFCsI11Xs5
- WaAQ==
-X-Gm-Message-State: APjAAAUrDF1uxlLv8ipVIWAjGhMeWoJHcqmQ3+846ky1mHhGNYpgBxPB
- 6rYVWR/Z20fevpETVKHrsMA=
-X-Google-Smtp-Source: APXvYqwkL9mwmuap/aBeos1lalFh1j9+Rp5XcBDUgY5eMnCzHtDZyckNfu5KNghiABEB2x1ki7xfLw==
-X-Received: by 2002:adf:fd84:: with SMTP id d4mr9574903wrr.211.1576202764985; 
- Thu, 12 Dec 2019 18:06:04 -0800 (PST)
-Received: from [172.30.89.135] (sjewanfw1-nat.mentorg.com. [139.181.7.34])
- by smtp.gmail.com with ESMTPSA id l22sm8087934wmj.42.2019.12.12.18.06.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Dec 2019 18:06:04 -0800 (PST)
-Subject: Re: [PATCH] media: imx7-mipi-csis: remove subdev_notifier
-To: Rui Miguel Silva <rui.silva@linaro.org>, Hans Verkuil
- <hverkuil@xs4all.nl>, Dan Carpenter <dan.carpenter@oracle.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-References: <20191212191714.812249-1-rmfrfs@gmail.com>
-From: Steve Longerbeam <slongerbeam@gmail.com>
-Message-ID: <90fd1ef5-7807-2de1-c4c8-73fc29688b0d@gmail.com>
-Date: Thu, 12 Dec 2019 18:06:01 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vTSxvUqfa6FoEiQTgKaCRKQ961VVqjF3zVcNDPTqeUQ=;
+ b=r/1H/y7CV6imqwZRnWZWTybGlkdjeC1Fd5LZiKSaK/33dvQVIJHdX7OSlPh7Mi/EHa
+ vLAOQmKXQstDcoMPLo5mSmd0f4WIK4WibXrFtAQZHSTQQpHUDfF/x/P5l+mmXuG8QFeD
+ F5+Mkbs7gVa+DkJX0/VoRXsauL97LyZSH5atIu/fQwohPElZfGVlAuryGgqIxe1upgsp
+ pwRnx1BWgeftIGD/ZftirDy5v1qPmIWNxS6jzQ8L7+UVamFqfJV5TvS8HB6xpK+lKUOF
+ qC490OLTEArZ5Q67pEdy8zPPCWPkgP9ZgIsPmKcvmCSyDvxCBS6wDHoeh+8jHOwSlwoC
+ 7KkQ==
+X-Gm-Message-State: APjAAAU7amKXvy1uKcafTYF1fiHugyOyqtAFA3IoEETAV22Pv2DGajIG
+ p8sdVt3SIxycsUHODCLLs2ckijitUKM0aSJzJJnhQA==
+X-Google-Smtp-Source: APXvYqwNVH+CrxZcMnxSwclo0S3v7qgeIyd4KN1mrRn3wdEhUWxce27y0yPjv6LZIAM/PDIfAV+2naYwlAPl2eY/5zg=
+X-Received: by 2002:a7b:cd84:: with SMTP id y4mr1059323wmj.57.1576223256882;
+ Thu, 12 Dec 2019 23:47:36 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191212191714.812249-1-rmfrfs@gmail.com>
-Content-Language: en-US
+References: <20191204141159.1432387-1-colin.king@canonical.com>
+ <20191205080611.GY93017@google.com>
+In-Reply-To: <20191205080611.GY93017@google.com>
+From: Maxime Jourdan <mjourdan@baylibre.com>
+Date: Fri, 13 Dec 2019 08:47:26 +0100
+Message-ID: <CAMO6naxT0syj74xvcectWXyVGmHfOU341A+15tC+GW4hsq+yJQ@mail.gmail.com>
+Subject: Re: [PATCH] media: meson: add missing allocation failure check on
+ new_buf
+To: Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,53 +82,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Kevin Hilman <khilman@baylibre.com>,
+ kernel-janitors@vger.kernel.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Colin King <colin.king@canonical.com>, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-
-On 12/12/19 11:17 AM, Rui Miguel Silva wrote:
-> It was defined a notifier in the csi_state structure that is never
-> allocated. And besides that it's unregister in the remove, even though
-> it is a no-op, just remove both.
+On Thu, Dec 5, 2019 at 9:06 AM Sergey Senozhatsky
+<sergey.senozhatsky.work@gmail.com> wrote:
 >
-> Fixes: 7807063b862b ("media: staging/imx7: add MIPI CSI-2 receiver subdev for i.MX7")
-> Reported-by: Hans Verkuil <hverkuil@xs4all.nl>
-> Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
-> Suggested-by: Philipp Zabel <p.zabel@pengutronix.de>
-> Signed-off-by: Rui Miguel Silva <rmfrfs@gmail.com>
+> On (19/12/04 14:11), Colin King wrote:
+> [..]
+> > diff --git a/drivers/staging/media/meson/vdec/vdec.c b/drivers/staging/media/meson/vdec/vdec.c
+> > index 0a1a04fd5d13..8dd1396909d7 100644
+> > --- a/drivers/staging/media/meson/vdec/vdec.c
+> > +++ b/drivers/staging/media/meson/vdec/vdec.c
+> > @@ -133,6 +133,8 @@ vdec_queue_recycle(struct amvdec_session *sess, struct vb2_buffer *vb)
+> >       struct amvdec_buffer *new_buf;
+> >
+> >       new_buf = kmalloc(sizeof(*new_buf), GFP_KERNEL);
+> > +     if (!new_buf)
+> > +             return;
+> >       new_buf->vb = vb;
 
-Reviewed-by: Steve Longerbeam <slongerbeam@gmail.com>
+Thanks for the patch Colin.
 
-> ---
->   drivers/staging/media/imx/imx7-mipi-csis.c | 3 ---
->   1 file changed, 3 deletions(-)
 >
-> diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
-> index 99166afca071..383abecb3bec 100644
-> --- a/drivers/staging/media/imx/imx7-mipi-csis.c
-> +++ b/drivers/staging/media/imx/imx7-mipi-csis.c
-> @@ -251,8 +251,6 @@ struct csi_state {
->   
->   	struct mipi_csis_event events[MIPI_CSIS_NUM_EVENTS];
->   
-> -	struct v4l2_async_notifier subdev_notifier;
-> -
->   	struct csis_hw_reset hw_reset;
->   	struct regulator *mipi_phy_regulator;
->   	bool sink_linked;
-> @@ -1104,7 +1102,6 @@ static int mipi_csis_remove(struct platform_device *pdev)
->   
->   	mipi_csis_debugfs_exit(state);
->   	v4l2_async_unregister_subdev(&state->mipi_sd);
-> -	v4l2_async_notifier_unregister(&state->subdev_notifier);
->   
->   	pm_runtime_disable(&pdev->dev);
->   	mipi_csis_pm_suspend(&pdev->dev, true);
+> So the buffer is not getting recycled? IOW is leaked?
+>
+>         -ss
 
+The "recycle" mechanism in the meson vdec is a way to tell the
+firmware that "hey, both userspace and kernel are done using this
+buffer, you can start using it again".
+
+Not queuing it for recycling means that the firmware won't use this
+buffer again, it's not desirable of course, but if there is no memory
+left to allocate a simple list element then there are bigger problems
+at hand.
+
+Either way, failing this allocation and returning instantly doesn't
+leak anything or do any damage kernel-side.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
