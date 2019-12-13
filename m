@@ -1,45 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB77C11E32D
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Dec 2019 13:06:01 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91FED11E32F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Dec 2019 13:06:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6A67D88549;
-	Fri, 13 Dec 2019 12:06:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E89A288B80;
+	Fri, 13 Dec 2019 12:06:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uwuxTBjqUcIz; Fri, 13 Dec 2019 12:06:00 +0000 (UTC)
+	with ESMTP id nDQaqI1vPLsA; Fri, 13 Dec 2019 12:06:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7041288518;
-	Fri, 13 Dec 2019 12:05:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D3EF188B98;
+	Fri, 13 Dec 2019 12:06:09 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0466F1BF9C8
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 047031BF9CB
  for <driverdev-devel@linuxdriverproject.org>;
  Fri, 13 Dec 2019 12:05:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E464887297
+ by whitealder.osuosl.org (Postfix) with ESMTP id DE6D288514
  for <driverdev-devel@linuxdriverproject.org>;
  Fri, 13 Dec 2019 12:05:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tDwkY15EXDDi
+ with ESMTP id L-by0gmLG9+0
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Dec 2019 12:05:13 +0000 (UTC)
+ Fri, 13 Dec 2019 12:05:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
- [216.71.150.166])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A051E872E8
+Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
+ [68.232.153.233])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1C8E58843F
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Dec 2019 12:05:12 +0000 (UTC)
-Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
+ Fri, 13 Dec 2019 12:05:14 +0000 (UTC)
+Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
  Christian.Gromm@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
  envelope-from="Christian.Gromm@microchip.com";
  x-sender="Christian.Gromm@microchip.com";
  x-conformance=spf_only; x-record-type="v=spf1";
@@ -47,39 +47,39 @@ Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
  a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
  include:servers.mcsv.net include:mktomail.com
  include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa5.microchip.iphmx.com: no sender
+Received-SPF: None (esa3.microchip.iphmx.com: no sender
  authenticity information available from domain of
  postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
  envelope-from="Christian.Gromm@microchip.com";
  x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa5.microchip.iphmx.com;
+Authentication-Results: esa3.microchip.iphmx.com;
  dkim=none (message not signed) header.i=none;
  spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: 6s+i8VLW/vtZJMzAMO6Fn7UkWCKvoqpMyZp03ju83qujz2ZnEQxHXxndKZA41HPtISHFC03qEh
- R6M/CGdHTILpuO6gPjascu+G7CZ8giNaAIrZPFDg4zNiGwHKEg8azGS6AmPC5VqzitQolR0gnY
- h7VyNrJBR80J5seJNKbA0JczbOkdw5axyFWj8rYFbgytHh+X/eeqJuykN00YyrqCCEXaCJ+nTX
- CxpduaifjlrbnqQvp/Q0ar+9707/zLxes3wQPiRCyOAKxni1fGaelvbn9aMLlXJz/3YGp60Aok
- 0oc=
-X-IronPort-AV: E=Sophos;i="5.69,309,1571727600"; d="scan'208";a="58898040"
+IronPort-SDR: bF4Op79t6UQy13J8Jylj4wIiWUrPRqZCJPTkxtHDOQ+V3lI5He0QUx5Yq+9oBWhXWL7Z+RTtqy
+ MPcnMqyDUyNGx649SgyjZzeVsvDiFyyWwLRsaKP3dxD78lsoWAWBFIG4OLGKh+TH9xZX6PnPPA
+ bX4JY1qVLvK0WZT5Tjz+xj+oX99aPJf2ZUXBks3kjUMISIOv+ZDeOpaAjRSwa6Zskky9wLABDX
+ DpaJkMIFccnFxJW8SeTScMjfB5ILyFOpa7oN24izffJiYrymq4A0dPn+bZp5FiLe0Z7IRLHEoC
+ +lk=
+X-IronPort-AV: E=Sophos;i="5.69,309,1571727600"; d="scan'208";a="60276013"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 13 Dec 2019 05:05:12 -0700
+ by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 13 Dec 2019 05:05:13 -0700
 Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
  chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 13 Dec 2019 05:05:11 -0700
+ 15.1.1713.5; Fri, 13 Dec 2019 05:05:13 -0700
 Received: from localhost.localdomain (10.10.85.251) by
  chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Fri, 13 Dec 2019 05:05:11 -0700
+ 15.1.1713.5 via Frontend Transport; Fri, 13 Dec 2019 05:05:12 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH RFC v2 5/9] staging: most: configfs: reduce array size
-Date: Fri, 13 Dec 2019 13:04:18 +0100
-Message-ID: <1576238662-16512-6-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH RFC v2 6/9] staging: most: use angle brackets in include path
+Date: Fri, 13 Dec 2019 13:04:19 +0100
+Message-ID: <1576238662-16512-7-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1576238662-16512-1-git-send-email-christian.gromm@microchip.com>
 References: <1576238662-16512-1-git-send-email-christian.gromm@microchip.com>
@@ -103,52 +103,99 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch reduces the size of the arrays inside the mdev_link struct to
-a reasonable value.
+This patch replaces the double quotes in all include paths
+with angle brackets.
 
-Reported-by: Joe Perches <joe@perches.com>
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 ---
 v2:
-	This patch has been added to the series.
 
- drivers/staging/most/configfs.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+ drivers/staging/most/cdev/cdev.c   | 2 +-
+ drivers/staging/most/dim2/dim2.c   | 2 +-
+ drivers/staging/most/i2c/i2c.c     | 2 +-
+ drivers/staging/most/net/net.c     | 2 +-
+ drivers/staging/most/usb/usb.c     | 2 +-
+ drivers/staging/most/video/video.c | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/most/configfs.c b/drivers/staging/most/configfs.c
-index 9fbcadf..9818f6c 100644
---- a/drivers/staging/most/configfs.c
-+++ b/drivers/staging/most/configfs.c
-@@ -12,6 +12,8 @@
- #include <linux/configfs.h>
- #include <most/most.h>
+diff --git a/drivers/staging/most/cdev/cdev.c b/drivers/staging/most/cdev/cdev.c
+index 9ce2f23..59f346d 100644
+--- a/drivers/staging/most/cdev/cdev.c
++++ b/drivers/staging/most/cdev/cdev.c
+@@ -16,7 +16,7 @@
+ #include <linux/kfifo.h>
+ #include <linux/uaccess.h>
+ #include <linux/idr.h>
+-#include "most/most.h"
++#include <most/most.h>
  
-+#define MAX_STRING_SIZE 80
-+
- struct mdev_link {
- 	struct config_item item;
- 	struct list_head list;
-@@ -22,13 +24,13 @@ struct mdev_link {
- 	u16 subbuffer_size;
- 	u16 packets_per_xact;
- 	u16 dbr_size;
--	char datatype[PAGE_SIZE];
--	char direction[PAGE_SIZE];
--	char name[PAGE_SIZE];
--	char device[PAGE_SIZE];
--	char channel[PAGE_SIZE];
--	char comp[PAGE_SIZE];
--	char comp_params[PAGE_SIZE];
-+	char datatype[MAX_STRING_SIZE];
-+	char direction[MAX_STRING_SIZE];
-+	char name[MAX_STRING_SIZE];
-+	char device[MAX_STRING_SIZE];
-+	char channel[MAX_STRING_SIZE];
-+	char comp[MAX_STRING_SIZE];
-+	char comp_params[MAX_STRING_SIZE];
- };
+ #define CHRDEV_REGION_SIZE 50
  
- static struct list_head mdev_link_list;
+diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
+index e15e847..9eb10fc 100644
+--- a/drivers/staging/most/dim2/dim2.c
++++ b/drivers/staging/most/dim2/dim2.c
+@@ -21,7 +21,7 @@
+ #include <linux/sched.h>
+ #include <linux/kthread.h>
+ 
+-#include "most/most.h"
++#include <most/most.h>
+ #include "hal.h"
+ #include "errors.h"
+ #include "sysfs.h"
+diff --git a/drivers/staging/most/i2c/i2c.c b/drivers/staging/most/i2c/i2c.c
+index d4606ac..d07719c 100644
+--- a/drivers/staging/most/i2c/i2c.c
++++ b/drivers/staging/most/i2c/i2c.c
+@@ -14,7 +14,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/err.h>
+ 
+-#include "most/most.h"
++#include <most/most.h>
+ 
+ enum { CH_RX, CH_TX, NUM_CHANNELS };
+ 
+diff --git a/drivers/staging/most/net/net.c b/drivers/staging/most/net/net.c
+index e3dd337..db42732 100644
+--- a/drivers/staging/most/net/net.c
++++ b/drivers/staging/most/net/net.c
+@@ -15,7 +15,7 @@
+ #include <linux/list.h>
+ #include <linux/wait.h>
+ #include <linux/kobject.h>
+-#include "most/most.h"
++#include <most/most.h>
+ 
+ #define MEP_HDR_LEN 8
+ #define MDP_HDR_LEN 16
+diff --git a/drivers/staging/most/usb/usb.c b/drivers/staging/most/usb/usb.c
+index 69756ca..491b38e 100644
+--- a/drivers/staging/most/usb/usb.c
++++ b/drivers/staging/most/usb/usb.c
+@@ -23,7 +23,7 @@
+ #include <linux/dma-mapping.h>
+ #include <linux/etherdevice.h>
+ #include <linux/uaccess.h>
+-#include "most/most.h"
++#include <most/most.h>
+ 
+ #define USB_MTU			512
+ #define NO_ISOCHRONOUS_URB	0
+diff --git a/drivers/staging/most/video/video.c b/drivers/staging/most/video/video.c
+index 0f45b04..9e9e45a 100644
+--- a/drivers/staging/most/video/video.c
++++ b/drivers/staging/most/video/video.c
+@@ -21,7 +21,7 @@
+ #include <media/v4l2-ctrls.h>
+ #include <media/v4l2-fh.h>
+ 
+-#include "most/most.h"
++#include <most/most.h>
+ 
+ #define V4L2_CMP_MAX_INPUT  1
+ 
 -- 
 2.7.4
 
