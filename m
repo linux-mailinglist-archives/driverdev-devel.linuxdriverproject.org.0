@@ -2,82 +2,86 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 21B6D11DF5E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Dec 2019 09:23:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F153C11E32B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Dec 2019 13:05:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AA67C87210;
-	Fri, 13 Dec 2019 08:23:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5030B872D8;
+	Fri, 13 Dec 2019 12:05:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LqErBLN4KTes; Fri, 13 Dec 2019 08:23:20 +0000 (UTC)
+	with ESMTP id 9Ni2Xmq_UlAM; Fri, 13 Dec 2019 12:05:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D440E871BF;
-	Fri, 13 Dec 2019 08:23:18 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CA78B872C2;
+	Fri, 13 Dec 2019 12:05:45 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0DB011BF3F2
- for <devel@linuxdriverproject.org>; Fri, 13 Dec 2019 08:23:17 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 24B6F1BF2AE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 13 Dec 2019 12:05:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 094C7889D1
- for <devel@linuxdriverproject.org>; Fri, 13 Dec 2019 08:23:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0992386D9B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 13 Dec 2019 12:05:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r2IKRdYVIyU0 for <devel@linuxdriverproject.org>;
- Fri, 13 Dec 2019 08:23:15 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9AB328897F
- for <devel@driverdev.osuosl.org>; Fri, 13 Dec 2019 08:23:15 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id w15so5663326wru.4
- for <devel@driverdev.osuosl.org>; Fri, 13 Dec 2019 00:23:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernelci-org.20150623.gappssmtp.com; s=20150623;
- h=message-id:date:mime-version:content-transfer-encoding:subject:to
- :from:cc; bh=/n6svHz4Nhwr1guA/nXjQOEhBSqpjVu2FY23vRyinvU=;
- b=FRSVUotMIJofxJad/rZd7kCJ8Y7nXijudcSlKE9KGrNXfQbf0qtrcvP6GPUu3YvXJ2
- BiW5Hhs2oTf82oiFB8RL/dV6UAFltH1KR/GaLhUgLzwZJoWUYpJ/l43oOnHAcRpSP8GZ
- 6fxM5EQ3cSeJOOtqsD6B/bXhEP54ndI69Rrp3zpUDKjYyByNOFBhSgBf2+AZzPPkSX+p
- 59y2oQ5yxoIcSC/lPwT4OntZ0sSH2BgNz5sRmbH2cbZRRnt24LUdQmExZzXPlTxQePZq
- RyBVzlc81ZCMrQXlGyg78vV7Q/ie0PN2ZzSxixnrXe5H3tIh6BaEgfVQLBKGISoUtVm+
- 8CGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:date:mime-version
- :content-transfer-encoding:subject:to:from:cc;
- bh=/n6svHz4Nhwr1guA/nXjQOEhBSqpjVu2FY23vRyinvU=;
- b=HzWuUBwmpuSunUi9BgULIJiEQ8DLOLGaEkD/CFgXJK79POKpwQgymqBv8dOP0jsj7m
- KM7sXIm9iie6VoJtXO3dJyBRim7mvuOPR8SK1zWY7zSsIvGs5VXdJUYAhjFJNa40xY6v
- cpqgI/P7oAlYJ4TVF7lgWEH1C3cMDveTEhWyo2TVPb9o5X+PgYPQ2MstIMtIhKXPnO0q
- GKdA06Ih+/1gh1jUOtUzuQDzACqKCaa2ON6WedJhWeVbzS4z0UI7AOPYo/QKWTIgBrnD
- 2tW9M802dqwLNfwSNw8Gy7DwemK4PWFfsgQ/rM7sgt3IrKZ39UVZhjYoV57Nqr3mZKg2
- q3XA==
-X-Gm-Message-State: APjAAAVXKkZ5w4TEZ1lv7vLFTLHRds38x5UCEcn2RD0H1q7dtmbHWPC5
- sjYeZ+CdLPk77ThKFxwVNCrZRg==
-X-Google-Smtp-Source: APXvYqw8LEasSSVzxxkPAJSe2ZPAvuQ6jkwCYqjirQWYgIzMOERgeGXsFyA7cLLFA+xpj1ofR4kPZw==
-X-Received: by 2002:a5d:6048:: with SMTP id j8mr11177829wrt.41.1576225394047; 
- Fri, 13 Dec 2019 00:23:14 -0800 (PST)
-Received: from [148.251.42.114] ([2a01:4f8:201:9271::2])
- by smtp.gmail.com with ESMTPSA id 5sm9237421wrh.5.2019.12.13.00.23.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Dec 2019 00:23:13 -0800 (PST)
-Message-ID: <5df34a71.1c69fb81.74136.f165@mx.google.com>
-Date: Fri, 13 Dec 2019 00:23:13 -0800 (PST)
+ with ESMTP id bccKLj4QCwBx
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 13 Dec 2019 12:05:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa6.microchip.iphmx.com (esa6.microchip.iphmx.com
+ [216.71.154.253])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 43F9D8733B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 13 Dec 2019 12:05:07 +0000 (UTC)
+Received-SPF: Pass (esa6.microchip.iphmx.com: domain of
+ Christian.Gromm@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
+ envelope-from="Christian.Gromm@microchip.com";
+ x-sender="Christian.Gromm@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
+ include:servers.mcsv.net include:mktomail.com
+ include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa6.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
+ envelope-from="Christian.Gromm@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa6.microchip.iphmx.com;
+ dkim=none (message not signed) header.i=none;
+ spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: G6JGDCg4ZpW+A4VL2qhbfXHXpZAUJ4T1D5xfV59gOM+BP30m6jETpr8bK9pVVMY5waDnSQGukJ
+ /bam/8cwkmbxS0M4c4MSMxfWO/XB2kCdVkqQ+lDntQP0QYe8ySJi5JTByF+Issx7pXwQrOAoDC
+ zL5eCD63sb4r10XL8SEi9q+S8ZznR735neTzRuA2guE1S9mv+s1boQqt0PtKN6MM/oybDuLMSC
+ 3LUq74IQVRBsXDun2aC8yh7wJopKFrytM2fJhujM4IhhvRlL335m9dP1ySq0R9X/goy1vh6jYd
+ URA=
+X-IronPort-AV: E=Sophos;i="5.69,309,1571727600"; d="scan'208";a="57666919"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 13 Dec 2019 05:05:06 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Fri, 13 Dec 2019 05:05:06 -0700
+Received: from localhost.localdomain (10.10.85.251) by
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
+ 15.1.1713.5 via Frontend Transport; Fri, 13 Dec 2019 05:05:05 -0700
+From: Christian Gromm <christian.gromm@microchip.com>
+To: <gregkh@linuxfoundation.org>
+Subject: [PATCH RFC v2 0/9] staging: most: move core module out of staging
+Date: Fri, 13 Dec 2019 13:04:13 +0100
+Message-ID: <1576238662-16512-1-git-send-email-christian.gromm@microchip.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-X-Kernelci-Report-Type: bisect
-X-Kernelci-Kernel: v5.5-rc1-399-g9626c50a1d3d
-X-Kernelci-Tree: next
-X-Kernelci-Branch: pending-fixes
-X-Kernelci-Lab-Name: lab-baylibre
-Subject: next/pending-fixes bisection: boot on meson-gxl-s905x-khadas-vim
-To: broonie@kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- khilman@baylibre.com, tomeu.vizoso@collabora.com, enric.balletbo@collabora.com,
- mgalka@collabora.com, guillaume.tucker@collabora.com,
- YueHaibing <yuehaibing@huawei.com>, Randy Dunlap <rdunlap@infradead.org>
-From: "kernelci.org bot" <bot@kernelci.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,115 +94,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "kernelci.org bot" <bot@kernelci.org>,
- linux-kernel@vger.kernel.org, Jaroslav Kysela <perex@perex.cz>,
- Joe Perches <joe@perches.com>, Thomas Gleixner <tglx@linutronix.de>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Christian Gromm <christian.gromm@microchip.com>,
+ driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-* This automated bisection report was sent to you on the basis  *
-* that you may be involved with the breaking commit it has      *
-* found.  No manual investigation has been done to verify it,   *
-* and the root cause of the problem may be somewhere else.      *
-*                                                               *
-* If you do send a fix, please include this trailer:            *
-*   Reported-by: "kernelci.org bot" <bot@kernelci.org>          *
-*                                                               *
-* Hope this helps!                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+The MOST driver was pushed to the staging area with kernel 4.3. Since then
+it has encountered many refinements by the community and should be ready
+for an upstream audit and to be moved out of the staging area. Since the
+driver consists of multiple modules the core module is about to go first
+and the other modules will follow subsequently. This patchset executes the
+necessary steps to move the core module out of staging.
 
-next/pending-fixes bisection: boot on meson-gxl-s905x-khadas-vim
+v2:
+Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+	- use -M option to create patches
 
-Summary:
-  Start:      9626c50a1d3d Merge remote-tracking branch 'pinctrl-intel-fixes/fixes'
-  Details:    https://kernelci.org/boot/id/5df2d947024b891c56960f1b
-  Plain log:  https://storage.kernelci.org//next/pending-fixes/v5.5-rc1-399-g9626c50a1d3d/arm64/defconfig/gcc-8/lab-baylibre/boot-meson-gxl-s905x-khadas-vim.txt
-  HTML log:   https://storage.kernelci.org//next/pending-fixes/v5.5-rc1-399-g9626c50a1d3d/arm64/defconfig/gcc-8/lab-baylibre/boot-meson-gxl-s905x-khadas-vim.html
-  Result:     2f4d984b9544 staging: hp100: Fix build error without ETHERNET
+Christian Gromm (9):
+  staging: most: rename core.h to most.h
+  staging: most: rename struct core_component
+  staging: most: rename enum mbo_status_flags
+  staging: most: configfs: use strlcpy
+  staging: most: configfs: reduce array size
+  staging: most: use angle brackets in include path
+  staging: most: move core files out of the staging area
+  staging: most: Documentation: update ABI description
+  staging: most: Documentation: move ABI description files out of
+    staging area
 
-Checks:
-  revert:     PASS
-  verify:     PASS
+ .../ABI/testing/configfs-most                      |  8 -----
+ .../ABI/testing/sysfs-bus-most                     | 24 ++-------------
+ drivers/Kconfig                                    |  1 +
+ drivers/Makefile                                   |  1 +
+ drivers/most/Kconfig                               | 15 ++++++++++
+ drivers/most/Makefile                              |  4 +++
+ drivers/{staging => }/most/configfs.c              | 32 +++++++++++---------
+ drivers/{staging => }/most/core.c                  | 34 +++++++++++-----------
+ drivers/staging/most/Kconfig                       |  6 ++--
+ drivers/staging/most/Makefile                      |  5 ----
+ drivers/staging/most/cdev/cdev.c                   |  4 +--
+ drivers/staging/most/dim2/dim2.c                   |  2 +-
+ drivers/staging/most/i2c/i2c.c                     |  2 +-
+ drivers/staging/most/net/net.c                     |  6 ++--
+ drivers/staging/most/sound/sound.c                 |  8 ++---
+ drivers/staging/most/usb/usb.c                     |  2 +-
+ drivers/staging/most/video/video.c                 |  6 ++--
+ .../staging/most/core.h => include/linux/most.h    | 24 +++++++--------
+ 18 files changed, 89 insertions(+), 95 deletions(-)
+ rename drivers/staging/most/Documentation/ABI/configfs-most.txt => Documentation/ABI/testing/configfs-most (94%)
+ rename drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt => Documentation/ABI/testing/sysfs-bus-most (92%)
+ create mode 100644 drivers/most/Kconfig
+ create mode 100644 drivers/most/Makefile
+ rename drivers/{staging => }/most/configfs.c (96%)
+ rename drivers/{staging => }/most/core.c (98%)
+ rename drivers/staging/most/core.h => include/linux/most.h (95%)
 
-Parameters:
-  Tree:       next
-  URL:        git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
-  Branch:     pending-fixes
-  Target:     meson-gxl-s905x-khadas-vim
-  CPU arch:   arm64
-  Lab:        lab-baylibre
-  Compiler:   gcc-8
-  Config:     defconfig
-  Test suite: boot
+-- 
+2.7.4
 
-Breaking commit found:
-
--------------------------------------------------------------------------------
-commit 2f4d984b9544e03ef9435a750f4cc7de1df61051
-Author: YueHaibing <yuehaibing@huawei.com>
-Date:   Wed Nov 13 10:13:06 2019 +0800
-
-    staging: hp100: Fix build error without ETHERNET
-    
-    It should depends on ETHERNET, otherwise building fails:
-    
-    drivers/staging/hp/hp100.o: In function `hp100_pci_remove':
-    hp100.c:(.text+0x165): undefined reference to `unregister_netdev'
-    hp100.c:(.text+0x214): undefined reference to `free_netdev'
-    
-    Fixes: 52340b82cf1a ("hp100: Move 100BaseVG AnyLAN driver to staging")
-    Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-    Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
-    Link: https://lore.kernel.org/r/20191113021306.35464-1-yuehaibing@huawei.com
-    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-diff --git a/drivers/staging/hp/Kconfig b/drivers/staging/hp/Kconfig
-index fb395cfe6b92..f20ab21a6b2a 100644
---- a/drivers/staging/hp/Kconfig
-+++ b/drivers/staging/hp/Kconfig
-@@ -6,6 +6,7 @@
- config NET_VENDOR_HP
- 	bool "HP devices"
- 	default y
-+	depends on ETHERNET
- 	depends on ISA || EISA || PCI
- 	---help---
- 	  If you have a network (Ethernet) card belonging to this class, say Y.
--------------------------------------------------------------------------------
-
-
-Git bisection log:
-
--------------------------------------------------------------------------------
-git bisect start
-# good: [37d4e84f765bb3038ddfeebdc5d1cfd7e1ef688f] Merge tag 'ceph-for-5.5-rc2' of git://github.com/ceph/ceph-client
-git bisect good 37d4e84f765bb3038ddfeebdc5d1cfd7e1ef688f
-# bad: [9626c50a1d3daecad647af5f45f4f91fadb610fc] Merge remote-tracking branch 'pinctrl-intel-fixes/fixes'
-git bisect bad 9626c50a1d3daecad647af5f45f4f91fadb610fc
-# good: [82ef4500432fecdff6c857e46caf61cee9d0e250] Merge remote-tracking branch 'driver-core.current/driver-core-linus'
-git bisect good 82ef4500432fecdff6c857e46caf61cee9d0e250
-# bad: [60b91f6383bc97ea632b0f4c2887500755614de4] Merge remote-tracking branch 'omap-fixes/fixes'
-git bisect bad 60b91f6383bc97ea632b0f4c2887500755614de4
-# bad: [843fc1ab17e0cc8580b6555a29aea083ee9af8b8] Merge remote-tracking branch 'staging.current/staging-linus'
-git bisect bad 843fc1ab17e0cc8580b6555a29aea083ee9af8b8
-# bad: [74ca34118a0e05793935d804ccffcedd6eb56596] staging: rtl8188eu: fix interface sanity check
-git bisect bad 74ca34118a0e05793935d804ccffcedd6eb56596
-# good: [bd41c445b7b96e46efb799ff33bdf870479488cf] iio: imu: st_lsm6dsx: do not power-off accel if events are enabled
-git bisect good bd41c445b7b96e46efb799ff33bdf870479488cf
-# bad: [2f4d984b9544e03ef9435a750f4cc7de1df61051] staging: hp100: Fix build error without ETHERNET
-git bisect bad 2f4d984b9544e03ef9435a750f4cc7de1df61051
-# good: [7347f09a198a045d5f6ea5e9c8fcc1db98e5a854] Merge tag 'iio-fixes-for-5.5a' of git://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus
-git bisect good 7347f09a198a045d5f6ea5e9c8fcc1db98e5a854
-# good: [1184fd9966702a5a1cea73bdb6fe646b961c387c] staging: exfat: properly support discard in clr_alloc_bitmap()
-git bisect good 1184fd9966702a5a1cea73bdb6fe646b961c387c
-# good: [453a4b6d8e1bdff2b8e1f56f4b8a8ef6d36b0e77] staging: fbtft: Do not hardcode SPI CS polarity inversion
-git bisect good 453a4b6d8e1bdff2b8e1f56f4b8a8ef6d36b0e77
-# first bad commit: [2f4d984b9544e03ef9435a750f4cc7de1df61051] staging: hp100: Fix build error without ETHERNET
--------------------------------------------------------------------------------
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
