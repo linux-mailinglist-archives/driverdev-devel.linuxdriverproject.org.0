@@ -1,48 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9954811F3E9
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Dec 2019 21:17:31 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2265B20469;
-	Sat, 14 Dec 2019 20:17:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G+c7sLEvzH8s; Sat, 14 Dec 2019 20:17:29 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0A0B020348;
-	Sat, 14 Dec 2019 20:17:29 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7895F1BF342
- for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:17:26 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2673911F3EA
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Dec 2019 21:17:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 75D27861FE
- for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:17:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C30FB865AB;
+	Sat, 14 Dec 2019 20:17:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0mvakaEam6sp; Sat, 14 Dec 2019 20:17:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6766A861FE;
+	Sat, 14 Dec 2019 20:17:35 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6155C1BF342
+ for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:17:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5E58A87447
+ for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:17:33 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xh_wg2FZn-Hq for <devel@linuxdriverproject.org>;
- Sat, 14 Dec 2019 20:17:26 +0000 (UTC)
+ with ESMTP id mOurLaR5M2QG for <devel@linuxdriverproject.org>;
+ Sat, 14 Dec 2019 20:17:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from faui03.informatik.uni-erlangen.de
  (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E5B0686193
- for <devel@driverdev.osuosl.org>; Sat, 14 Dec 2019 20:17:25 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4EEB7878AC
+ for <devel@driverdev.osuosl.org>; Sat, 14 Dec 2019 20:17:31 +0000 (UTC)
 Received: from faui04e.informatik.uni-erlangen.de
- (faui04e.informatik.uni-erlangen.de [131.188.30.135])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id B56A424144E;
- Sat, 14 Dec 2019 21:17:24 +0100 (CET)
+ (faui04e.informatik.uni-erlangen.de [IPv6:2001:638:a000:4130:131:188:30:135])
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 19BB524151C;
+ Sat, 14 Dec 2019 21:17:30 +0100 (CET)
 Received: by faui04e.informatik.uni-erlangen.de (Postfix, from userid 28475)
- id A56B33C1272; Sat, 14 Dec 2019 21:17:24 +0100 (CET)
+ id 0BB343C1272; Sat, 14 Dec 2019 21:17:29 +0100 (CET)
 From: Sven Leykauf <sven_leykauf1@web.de>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH v2 23/24] sm750fb: Fix Avoid CamelCase
-Date: Sat, 14 Dec 2019 21:10:03 +0100
-Message-Id: <20191214200937.10795-23-sven_leykauf1@web.de>
+Subject: [PATCH v2 24/24] sm750fb: Fix Overlong Line Issues
+Date: Sat, 14 Dec 2019 21:10:05 +0100
+Message-Id: <20191214200937.10795-24-sven_leykauf1@web.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191214200937.10795-1-sven_leykauf1@web.de>
 References: <20191214200937.10795-1-sven_leykauf1@web.de>
@@ -66,46 +66,102 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change names of enumeration members and a function prototype parameter,
-according to coding style.
-
-Patch upholds compileability.
+Fix issues of newly introduced overlong lines, due to name enlargement
+within the former two patches.
 
 Co-developed-by: Daniel Bauer <daniel.j.bauer@fau.de>
 Signed-off-by: Daniel Bauer <daniel.j.bauer@fau.de>
 Signed-off-by: Sven Leykauf <sven_leykauf1@web.de>
 ---
- drivers/staging/sm750fb/ddk750_power.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/sm750fb/ddk750_dvi.c    | 24 ++++++++++++------------
+ drivers/staging/sm750fb/ddk750_sii164.c |  3 ++-
+ drivers/staging/sm750fb/sm750_accel.c   |  8 +++++---
+ 3 files changed, 19 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
-index 7002567a47d2..d43942d6a5aa 100644
---- a/drivers/staging/sm750fb/ddk750_power.h
-+++ b/drivers/staging/sm750fb/ddk750_power.h
-@@ -3,10 +3,10 @@
- #define DDK750_POWER_H__
- 
- enum dpms {
--	crtDPMS_ON = 0x0,
--	crtDPMS_STANDBY = 0x1,
--	crtDPMS_SUSPEND = 0x2,
--	crtDPMS_OFF = 0x3,
-+	CRT_DPMS_ON = 0x0,
-+	CRT_DPMS_STANDBY = 0x1,
-+	CRT_DPMS_SUSPEND = 0x2,
-+	CRT_DPMS_OFF = 0x3,
+diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
+index 930f56d91474..1536e252e37c 100644
+--- a/drivers/staging/sm750fb/ddk750_dvi.c
++++ b/drivers/staging/sm750fb/ddk750_dvi.c
+@@ -13,20 +13,20 @@
+  */
+ static struct dvi_ctrl_device g_dcft_supported_dvi_controller[] = {
+ #ifdef DVI_CTRL_SII164
+-	{
+-		.pfn_init = sii164_init_chip,
+-		.pfn_get_vendor_id = sii164_get_vendor_id,
+-		.pfn_get_device_id = sii164_get_device_id,
++{
++	.pfn_init = sii164_init_chip,
++	.pfn_get_vendor_id = sii164_get_vendor_id,
++	.pfn_get_device_id = sii164_get_device_id,
+ #ifdef SII164_FULL_FUNCTIONS
+-		.pfn_reset_chip = sii164_reset_chip,
+-		.pfn_get_chip_string = sii164_get_chip_string,
+-		.pfn_set_power = sii164_set_power,
+-		.pfn_enable_hot_plug_detection = sii164_enable_hot_plug_detection,
+-		.pfn_is_connected = sii164_is_connected,
+-		.pfn_check_interrupt = sii164_check_interrupt,
+-		.pfn_clear_interrupt = sii164_clear_interrupt,
++	.pfn_reset_chip = sii164_reset_chip,
++	.pfn_get_chip_string = sii164_get_chip_string,
++	.pfn_set_power = sii164_set_power,
++	.pfn_enable_hot_plug_detection = sii164_enable_hot_plug_detection,
++	.pfn_is_connected = sii164_is_connected,
++	.pfn_check_interrupt = sii164_check_interrupt,
++	.pfn_clear_interrupt = sii164_clear_interrupt,
+ #endif
+-	},
++},
+ #endif
  };
  
- #define set_DAC(off) {							\
-@@ -15,7 +15,7 @@ enum dpms {
+diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
+index f36b9e012cd9..de911e4d245f 100644
+--- a/drivers/staging/sm750fb/ddk750_sii164.c
++++ b/drivers/staging/sm750fb/ddk750_sii164.c
+@@ -302,7 +302,8 @@ void sii164_set_power(unsigned char power_up)
+  *      This function selects the mode of the hot plug detection.
+  */
+ static
+-void sii164_select_hot_plug_detection_mode(enum sii164_hot_plug_mode hot_plug_mode)
++void sii164_select_hot_plug_detection_mode(enum sii164_hot_plug_mode
++					   hot_plug_mode)
+ {
+ 	unsigned char detect_reg;
+ 
+diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
+index e347d6b5508c..870d74a07c8f 100644
+--- a/drivers/staging/sm750fb/sm750_accel.c
++++ b/drivers/staging/sm750fb/sm750_accel.c
+@@ -18,7 +18,8 @@
+ 
+ #include "sm750.h"
+ #include "sm750_accel.h"
+-static inline void write_dpr(struct lynx_accel *accel, int offset, u32 reg_value)
++static inline void write_dpr(struct lynx_accel *accel,
++			     int offset, u32 reg_value)
+ {
+ 	writel(reg_value, accel->dpr_base + offset);
  }
+@@ -354,7 +355,7 @@ int sm750_hw_imageblit(struct lynx_accel *accel, const char *p_srcbuf,
+ 	write_dpr(accel, DE_PITCH,
+ 		  ((d_pitch / byte_per_pixel << DE_PITCH_DESTINATION_SHIFT) &
+ 		   DE_PITCH_DESTINATION_MASK) |
+-		  (d_pitch / byte_per_pixel & DE_PITCH_SOURCE_MASK)); /* dpr10 */
++		  (d_pitch / byte_per_pixel & DE_PITCH_SOURCE_MASK));/* dpr10 */
  
- void ddk750_set_dpms(enum dpms state);
--void sm750_set_power_mode(unsigned int powerMode);
-+void sm750_set_power_mode(unsigned int power_mode);
- void sm750_set_current_gate(unsigned int gate);
+ 	/*
+ 	 * Screen Window width in Pixels.
+@@ -396,7 +397,8 @@ int sm750_hw_imageblit(struct lynx_accel *accel, const char *p_srcbuf,
+ 	for (i = 0; i < height; i++) {
+ 		/* For each line, send the data in chunks of 4 bytes */
+ 		for (j = 0; j < (ul_4_bytes_per_scan / 4); j++)
+-			write_dp_port(accel, *(unsigned int *)(p_srcbuf + (j * 4)));
++			write_dp_port(accel,
++				      *(unsigned int *)(p_srcbuf + (j * 4)));
  
- /*
+ 		if (ul_bytes_remain) {
+ 			memcpy(aj_remain, p_srcbuf + ul_4_bytes_per_scan,
 -- 
 2.20.1
 
