@@ -2,47 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03F0B11F3E3
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Dec 2019 21:16:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E39CE11F3E4
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Dec 2019 21:16:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1941E20471;
-	Sat, 14 Dec 2019 20:16:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 807E320483;
+	Sat, 14 Dec 2019 20:16:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O9P3Kme9CQPw; Sat, 14 Dec 2019 20:16:46 +0000 (UTC)
+	with ESMTP id krKEzn8Ek0a2; Sat, 14 Dec 2019 20:16:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D2C3920435;
-	Sat, 14 Dec 2019 20:16:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3B4072043A;
+	Sat, 14 Dec 2019 20:16:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 515D91BF342
- for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:16:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BC1AA1BF342
+ for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:16:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4DCF120348
- for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:16:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B88412041E
+ for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:16:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PgAtL85nG0Td for <devel@linuxdriverproject.org>;
- Sat, 14 Dec 2019 20:16:41 +0000 (UTC)
+ with ESMTP id FUA+QmyFCS0k for <devel@linuxdriverproject.org>;
+ Sat, 14 Dec 2019 20:16:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from faui03.informatik.uni-erlangen.de
  (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by silver.osuosl.org (Postfix) with ESMTPS id 28B2820110
- for <devel@driverdev.osuosl.org>; Sat, 14 Dec 2019 20:16:41 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 7EE9720348
+ for <devel@driverdev.osuosl.org>; Sat, 14 Dec 2019 20:16:50 +0000 (UTC)
 Received: from faui04e.informatik.uni-erlangen.de
  (faui04e.informatik.uni-erlangen.de [IPv6:2001:638:a000:4130:131:188:30:135])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id E781C24144E;
- Sat, 14 Dec 2019 21:16:39 +0100 (CET)
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 48D3C24144E;
+ Sat, 14 Dec 2019 21:16:49 +0100 (CET)
 Received: by faui04e.informatik.uni-erlangen.de (Postfix, from userid 28475)
- id DBB783C1272; Sat, 14 Dec 2019 21:16:39 +0100 (CET)
+ id 38FE13C1272; Sat, 14 Dec 2019 21:16:49 +0100 (CET)
 From: Sven Leykauf <sven_leykauf1@web.de>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH v2 18/24] sm750fb: Fix Avoid CamelCase
-Date: Sat, 14 Dec 2019 21:09:53 +0100
-Message-Id: <20191214200937.10795-18-sven_leykauf1@web.de>
+Subject: [PATCH v2 19/24] sm750fb: Fix Avoid CamelCase
+Date: Sat, 14 Dec 2019 21:09:55 +0100
+Message-Id: <20191214200937.10795-19-sven_leykauf1@web.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191214200937.10795-1-sven_leykauf1@web.de>
 References: <20191214200937.10795-1-sven_leykauf1@web.de>
@@ -66,150 +66,124 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change names of local variables, according to coding style.
+Change names of function prototypes and function implementation,
+according to coding style.
 Patch upholds compileability.
+
+Dependencies: sm750_cursor.h
+	      sm750_cursor.c
+	      sm750.c
 
 Co-developed-by: Daniel Bauer <daniel.j.bauer@fau.de>
 Signed-off-by: Daniel Bauer <daniel.j.bauer@fau.de>
 Signed-off-by: Sven Leykauf <sven_leykauf1@web.de>
 ---
- drivers/staging/sm750fb/sm750_accel.c | 46 +++++++++++++--------------
- 1 file changed, 23 insertions(+), 23 deletions(-)
+ drivers/staging/sm750fb/sm750.c        |  8 ++++----
+ drivers/staging/sm750fb/sm750_cursor.c | 10 +++++-----
+ drivers/staging/sm750fb/sm750_cursor.h | 10 +++++-----
+ 3 files changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
-index 85ba131c7ef6..e347d6b5508c 100644
---- a/drivers/staging/sm750fb/sm750_accel.c
-+++ b/drivers/staging/sm750fb/sm750_accel.c
-@@ -90,7 +90,7 @@ int sm750_hw_fillrect(struct lynx_accel *accel,
- 		      u32 x, u32 y, u32 width, u32 height,
- 		      u32 color, u32 rop)
- {
--	u32 deCtrl;
-+	u32 de_ctrl;
+diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
+index a5dd3f899e42..e5e5c71ca37a 100644
+--- a/drivers/staging/sm750fb/sm750.c
++++ b/drivers/staging/sm750fb/sm750.c
+@@ -120,12 +120,12 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
  
- 	if (accel->de_wait() != 0) {
- 		/*
-@@ -122,11 +122,11 @@ int sm750_hw_fillrect(struct lynx_accel *accel,
- 		  ((width << DE_DIMENSION_X_SHIFT) & DE_DIMENSION_X_MASK) |
- 		  (height & DE_DIMENSION_Y_ET_MASK)); /* dpr8 */
+ 	sm750_hw_cursor_disable(cursor);
+ 	if (fbcursor->set & FB_CUR_SETSIZE)
+-		sm750_hw_cursor_setSize(cursor,
++		sm750_hw_cursor_set_size(cursor,
+ 					fbcursor->image.width,
+ 					fbcursor->image.height);
  
--	deCtrl = DE_CONTROL_STATUS | DE_CONTROL_LAST_PIXEL |
-+	de_ctrl = DE_CONTROL_STATUS | DE_CONTROL_LAST_PIXEL |
- 		DE_CONTROL_COMMAND_RECTANGLE_FILL | DE_CONTROL_ROP_SELECT |
- 		(rop & DE_CONTROL_ROP_MASK); /* dpr0xc */
+ 	if (fbcursor->set & FB_CUR_SETPOS)
+-		sm750_hw_cursor_setPos(cursor,
++		sm750_hw_cursor_set_pos(cursor,
+ 				       fbcursor->image.dx - info->var.xoffset,
+ 				       fbcursor->image.dy - info->var.yoffset);
  
--	write_dpr(accel, DE_CONTROL, deCtrl);
-+	write_dpr(accel, DE_CONTROL, de_ctrl);
- 	return 0;
- }
+@@ -141,11 +141,11 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
+ 		     ((info->cmap.green[fbcursor->image.bg_color] & 0xfc00) >> 5) |
+ 		     ((info->cmap.blue[fbcursor->image.bg_color] & 0xf800) >> 11);
  
-@@ -153,9 +153,9 @@ int sm750_hw_copyarea(struct lynx_accel *accel,
- 		      unsigned int width, unsigned int height,
- 		      unsigned int rop2)
- {
--	unsigned int nDirection, de_ctrl;
-+	unsigned int n_direction, de_ctrl;
- 
--	nDirection = LEFT_TO_RIGHT;
-+	n_direction = LEFT_TO_RIGHT;
- 	/* Direction of ROP2 operation: 1 = Left to Right, (-1) = Right to Left */
- 	de_ctrl = 0;
- 
-@@ -173,7 +173,7 @@ int sm750_hw_copyarea(struct lynx_accel *accel,
- 			 *	+----------+
- 			 */
- 
--			nDirection = BOTTOM_TO_TOP;
-+			n_direction = BOTTOM_TO_TOP;
- 		} else if (sy > dy) {
- 			/*  +----------+
- 			 *  |D         |
-@@ -185,7 +185,7 @@ int sm750_hw_copyarea(struct lynx_accel *accel,
- 			 *	+----------+
- 			 */
- 
--			nDirection = TOP_TO_BOTTOM;
-+			n_direction = TOP_TO_BOTTOM;
- 		} else {
- 			/* sy == dy */
- 
-@@ -198,7 +198,7 @@ int sm750_hw_copyarea(struct lynx_accel *accel,
- 				 * +------+---+------+
- 				 */
- 
--				nDirection = RIGHT_TO_LEFT;
-+				n_direction = RIGHT_TO_LEFT;
- 			} else {
- 			/* sx > dx */
- 
-@@ -210,12 +210,12 @@ int sm750_hw_copyarea(struct lynx_accel *accel,
- 				 * +------+---+------+
- 				 */
- 
--				nDirection = LEFT_TO_RIGHT;
-+				n_direction = LEFT_TO_RIGHT;
- 			}
- 		}
+-		sm750_hw_cursor_setColor(cursor, fg, bg);
++		sm750_hw_cursor_set_color(cursor, fg, bg);
  	}
  
--	if ((nDirection == BOTTOM_TO_TOP) || (nDirection == RIGHT_TO_LEFT)) {
-+	if ((n_direction == BOTTOM_TO_TOP) || (n_direction == RIGHT_TO_LEFT)) {
- 		sx += width - 1;
- 		sy += height - 1;
- 		dx += width - 1;
-@@ -277,7 +277,7 @@ int sm750_hw_copyarea(struct lynx_accel *accel,
- 		  (height & DE_DIMENSION_Y_ET_MASK)); /* dpr08 */
+ 	if (fbcursor->set & (FB_CUR_SETSHAPE | FB_CUR_SETIMAGE)) {
+-		sm750_hw_cursor_setData(cursor,
++		sm750_hw_cursor_set_data(cursor,
+ 					fbcursor->rop,
+ 					fbcursor->image.data,
+ 					fbcursor->mask);
+diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
+index 43e6f52c2551..3ee3bf78f7a5 100644
+--- a/drivers/staging/sm750fb/sm750_cursor.c
++++ b/drivers/staging/sm750fb/sm750_cursor.c
+@@ -58,13 +58,13 @@ void sm750_hw_cursor_disable(struct lynx_cursor *cursor)
+ 	poke32(HWC_ADDRESS, 0);
+ }
  
- 	de_ctrl = (rop2 & DE_CONTROL_ROP_MASK) | DE_CONTROL_ROP_SELECT |
--		((nDirection == RIGHT_TO_LEFT) ? DE_CONTROL_DIRECTION : 0) |
-+		((n_direction == RIGHT_TO_LEFT) ? DE_CONTROL_DIRECTION : 0) |
- 		DE_CONTROL_COMMAND_BITBLT | DE_CONTROL_STATUS;
- 	write_dpr(accel, DE_CONTROL, de_ctrl); /* dpr0c */
- 
-@@ -319,17 +319,17 @@ int sm750_hw_imageblit(struct lynx_accel *accel, const char *p_srcbuf,
- 		       u32 byte_per_pixel, u32 dx, u32 dy, u32 width,
- 		       u32 height, u32 f_color, u32 b_color, u32 rop2)
+-void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h)
++void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h)
  {
--	unsigned int ulBytesPerScan;
--	unsigned int ul4BytesPerScan;
--	unsigned int ulBytesRemain;
-+	unsigned int ul_bytes_per_scan;
-+	unsigned int ul_4_bytes_per_scan;
-+	unsigned int ul_bytes_remain;
- 	unsigned int de_ctrl = 0;
--	unsigned char ajRemain[4];
-+	unsigned char aj_remain[4];
- 	int i, j;
+ 	cursor->w = w;
+ 	cursor->h = h;
+ }
  
- 	start_bit &= 7; /* Just make sure the start bit is within legal range */
--	ulBytesPerScan = (width + start_bit + 7) / 8;
--	ul4BytesPerScan = ulBytesPerScan & ~3;
--	ulBytesRemain = ulBytesPerScan & 3;
-+	ul_bytes_per_scan = (width + start_bit + 7) / 8;
-+	ul_4_bytes_per_scan = ul_bytes_per_scan & ~3;
-+	ul_bytes_remain = ul_bytes_per_scan & 3;
+-void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
++void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y)
+ {
+ 	u32 reg;
  
- 	if (accel->de_wait() != 0)
- 		return -1;
-@@ -395,13 +395,13 @@ int sm750_hw_imageblit(struct lynx_accel *accel, const char *p_srcbuf,
- 	/* Write MONO data (line by line) to 2D Engine data port */
- 	for (i = 0; i < height; i++) {
- 		/* For each line, send the data in chunks of 4 bytes */
--		for (j = 0; j < (ul4BytesPerScan / 4); j++)
-+		for (j = 0; j < (ul_4_bytes_per_scan / 4); j++)
- 			write_dp_port(accel, *(unsigned int *)(p_srcbuf + (j * 4)));
+@@ -73,7 +73,7 @@ void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
+ 	poke32(HWC_LOCATION, reg);
+ }
  
--		if (ulBytesRemain) {
--			memcpy(ajRemain, p_srcbuf + ul4BytesPerScan,
--			       ulBytesRemain);
--			write_dp_port(accel, *(unsigned int *)ajRemain);
-+		if (ul_bytes_remain) {
-+			memcpy(aj_remain, p_srcbuf + ul_4_bytes_per_scan,
-+			       ul_bytes_remain);
-+			write_dp_port(accel, *(unsigned int *)aj_remain);
- 		}
+-void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
++void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg)
+ {
+ 	u32 reg = (fg << HWC_COLOR_12_2_RGB565_SHIFT) &
+ 		HWC_COLOR_12_2_RGB565_MASK;
+@@ -82,7 +82,7 @@ void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
+ 	poke32(HWC_COLOR_3, 0xffe0);
+ }
  
- 		p_srcbuf += src_delta;
+-void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
++void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
+ 			     const u8 *pcol, const u8 *pmsk)
+ {
+ 	int i, j, count, pitch, offset;
+@@ -132,7 +132,7 @@ void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
+ 	}
+ }
+ 
+-void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
++void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
+ 			      const u8 *pcol, const u8 *pmsk)
+ {
+ 	int i, j, count, pitch, offset;
+diff --git a/drivers/staging/sm750fb/sm750_cursor.h b/drivers/staging/sm750fb/sm750_cursor.h
+index b59643dd61ed..8a1e81b8248d 100644
+--- a/drivers/staging/sm750fb/sm750_cursor.h
++++ b/drivers/staging/sm750fb/sm750_cursor.h
+@@ -5,11 +5,11 @@
+ /* hw_cursor_xxx works for voyager,718 and 750 */
+ void sm750_hw_cursor_enable(struct lynx_cursor *cursor);
+ void sm750_hw_cursor_disable(struct lynx_cursor *cursor);
+-void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h);
+-void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y);
+-void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg);
+-void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
++void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h);
++void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y);
++void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg);
++void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
+ 			     const u8 *data, const u8 *mask);
+-void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
++void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
+ 			      const u8 *data, const u8 *mask);
+ #endif
 -- 
 2.20.1
 
