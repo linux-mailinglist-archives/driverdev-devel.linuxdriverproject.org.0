@@ -1,48 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 982D911F3D3
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Dec 2019 21:13:48 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5508611F3D5
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Dec 2019 21:14:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3C6DE87E88;
-	Sat, 14 Dec 2019 20:13:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E8AB8876CC;
+	Sat, 14 Dec 2019 20:14:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bvqgsavSjWiY; Sat, 14 Dec 2019 20:13:46 +0000 (UTC)
+	with ESMTP id b3yVzuPCNgiw; Sat, 14 Dec 2019 20:14:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 723B388178;
-	Sat, 14 Dec 2019 20:13:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 46B61876A4;
+	Sat, 14 Dec 2019 20:14:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8526D1BF342
- for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:13:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 280A31BF342
+ for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:14:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 822BB87653
- for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:13:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2528487653
+ for <devel@linuxdriverproject.org>; Sat, 14 Dec 2019 20:14:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DJu9iExwUt1g for <devel@linuxdriverproject.org>;
- Sat, 14 Dec 2019 20:13:43 +0000 (UTC)
+ with ESMTP id 9BVydEn32TPL for <devel@linuxdriverproject.org>;
+ Sat, 14 Dec 2019 20:14:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from faui03.informatik.uni-erlangen.de
  (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7151C872E9
- for <devel@driverdev.osuosl.org>; Sat, 14 Dec 2019 20:13:43 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 12579872E9
+ for <devel@driverdev.osuosl.org>; Sat, 14 Dec 2019 20:14:11 +0000 (UTC)
 Received: from faui04e.informatik.uni-erlangen.de
- (faui04e.informatik.uni-erlangen.de [131.188.30.135])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id E5C8E24144E;
- Sat, 14 Dec 2019 21:13:41 +0100 (CET)
+ (faui04e.informatik.uni-erlangen.de [IPv6:2001:638:a000:4130:131:188:30:135])
+ by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id D51FB24144E;
+ Sat, 14 Dec 2019 21:14:09 +0100 (CET)
 Received: by faui04e.informatik.uni-erlangen.de (Postfix, from userid 28475)
- id D5C263C1272; Sat, 14 Dec 2019 21:13:41 +0100 (CET)
+ id C32523C1272; Sat, 14 Dec 2019 21:14:09 +0100 (CET)
 From: Sven Leykauf <sven_leykauf1@web.de>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH v2 07/24] sm750fb: Fix Avoid CamelCase
-Date: Sat, 14 Dec 2019 21:09:30 +0100
-Message-Id: <20191214200937.10795-7-sven_leykauf1@web.de>
+Subject: [PATCH v2 08/24] sm750fb: Fix Avoid CamelCase
+Date: Sat, 14 Dec 2019 21:09:33 +0100
+Message-Id: <20191214200937.10795-8-sven_leykauf1@web.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191214200937.10795-1-sven_leykauf1@web.de>
 References: <20191214200937.10795-1-sven_leykauf1@web.de>
@@ -66,174 +66,219 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change names of macros, according to coding style.
+Change function prototype names, according to coding style.
 
 Patch upholds compileability.
+
+Dependencies: sm750.h
+	      sm750.c
+	      sm750_hw.c
 
 Co-developed-by: Daniel Bauer <daniel.j.bauer@fau.de>
 Signed-off-by: Daniel Bauer <daniel.j.bauer@fau.de>
 Signed-off-by: Sven Leykauf <sven_leykauf1@web.de>
 ---
- drivers/staging/sm750fb/ddk750_sii164.c | 48 ++++++++++++-------------
- 1 file changed, 24 insertions(+), 24 deletions(-)
+ drivers/staging/sm750fb/sm750.c    | 12 +++++------
+ drivers/staging/sm750fb/sm750.h    | 30 ++++++++++++++--------------
+ drivers/staging/sm750fb/sm750_hw.c | 32 +++++++++++++++---------------
+ 3 files changed, 37 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
-index e70d2048cd62..f36b9e012cd9 100644
---- a/drivers/staging/sm750fb/ddk750_sii164.c
-+++ b/drivers/staging/sm750fb/ddk750_sii164.c
-@@ -12,11 +12,11 @@
- #define USE_HW_I2C
- 
- #ifdef USE_HW_I2C
--    #define i2cWriteReg sm750_hw_i2c_write_reg
--    #define i2cReadReg  sm750_hw_i2c_read_reg
-+    #define i2c_write_reg sm750_hw_i2c_write_reg
-+    #define i2c_read_reg  sm750_hw_i2c_read_reg
- #else
--    #define i2cWriteReg sm750_sw_i2c_write_reg
--    #define i2cReadReg  sm750_sw_i2c_read_reg
-+    #define i2c_write_reg sm750_sw_i2c_write_reg
-+    #define i2c_read_reg  sm750_sw_i2c_read_reg
- #endif
- 
- /* SII164 Vendor and Device ID */
-@@ -39,9 +39,9 @@ unsigned short sii164_get_vendor_id(void)
- {
- 	unsigned short vendor_id;
- 
--	vendor_id = ((unsigned short)i2cReadReg(SII164_I2C_ADDRESS,
-+	vendor_id = ((unsigned short)i2c_read_reg(SII164_I2C_ADDRESS,
- 					       SII164_VENDOR_ID_HIGH) << 8) |
--		   (unsigned short)i2cReadReg(SII164_I2C_ADDRESS,
-+		   (unsigned short)i2c_read_reg(SII164_I2C_ADDRESS,
- 					      SII164_VENDOR_ID_LOW);
- 
- 	return vendor_id;
-@@ -58,9 +58,9 @@ unsigned short sii164_get_device_id(void)
- {
- 	unsigned short device_id;
- 
--	device_id = ((unsigned short)i2cReadReg(SII164_I2C_ADDRESS,
-+	device_id = ((unsigned short)i2c_read_reg(SII164_I2C_ADDRESS,
- 					       SII164_DEVICE_ID_HIGH) << 8) |
--		   (unsigned short)i2cReadReg(SII164_I2C_ADDRESS,
-+		   (unsigned short)i2c_read_reg(SII164_I2C_ADDRESS,
- 					      SII164_DEVICE_ID_LOW);
- 
- 	return device_id;
-@@ -176,7 +176,7 @@ long sii164_init_chip(unsigned char edge_select,
- 		else
- 			config |= SII164_CONFIGURATION_VSYNC_AS_IS;
- 
--		i2cWriteReg(SII164_I2C_ADDRESS, SII164_CONFIGURATION, config);
-+		i2c_write_reg(SII164_I2C_ADDRESS, SII164_CONFIGURATION, config);
- 
- 		/*
- 		 * De-skew enabled with default 111b value.
-@@ -214,7 +214,7 @@ long sii164_init_chip(unsigned char edge_select,
- 			config |= SII164_DESKEW_8_STEP;
- 			break;
- 		}
--		i2cWriteReg(SII164_I2C_ADDRESS, SII164_DESKEW, config);
-+		i2c_write_reg(SII164_I2C_ADDRESS, SII164_DESKEW, config);
- 
- 		/* Enable/Disable Continuous Sync. */
- 		if (continuous_sync_enable == 0)
-@@ -231,12 +231,12 @@ long sii164_init_chip(unsigned char edge_select,
- 		/* Set the PLL Filter value */
- 		config |= ((pll_filter_value & 0x07) << 1);
- 
--		i2cWriteReg(SII164_I2C_ADDRESS, SII164_PLL, config);
-+		i2c_write_reg(SII164_I2C_ADDRESS, SII164_PLL, config);
- 
- 		/* Recover from Power Down and enable output. */
--		config = i2cReadReg(SII164_I2C_ADDRESS, SII164_CONFIGURATION);
-+		config = i2c_read_reg(SII164_I2C_ADDRESS, SII164_CONFIGURATION);
- 		config |= SII164_CONFIGURATION_POWER_NORMAL;
--		i2cWriteReg(SII164_I2C_ADDRESS, SII164_CONFIGURATION, config);
-+		i2c_write_reg(SII164_I2C_ADDRESS, SII164_CONFIGURATION, config);
- 
- 		return 0;
+diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
+index 59568d18ce23..504e873f1f54 100644
+--- a/drivers/staging/sm750fb/sm750.c
++++ b/drivers/staging/sm750fb/sm750.c
+@@ -372,9 +372,9 @@ static int lynxfb_ops_set_par(struct fb_info *info)
+ 		pr_err("pixel bpp format not satisfied\n.");
+ 		return ret;
  	}
-@@ -283,17 +283,17 @@ void sii164_set_power(unsigned char power_up)
- {
- 	unsigned char config;
- 
--	config = i2cReadReg(SII164_I2C_ADDRESS, SII164_CONFIGURATION);
-+	config = i2c_read_reg(SII164_I2C_ADDRESS, SII164_CONFIGURATION);
- 	if (power_up == 1) {
- 		/* Power up the chip */
- 		config &= ~SII164_CONFIGURATION_POWER_MASK;
- 		config |= SII164_CONFIGURATION_POWER_NORMAL;
--		i2cWriteReg(SII164_I2C_ADDRESS, SII164_CONFIGURATION, config);
-+		i2c_write_reg(SII164_I2C_ADDRESS, SII164_CONFIGURATION, config);
- 	} else {
- 		/* Power down the chip */
- 		config &= ~SII164_CONFIGURATION_POWER_MASK;
- 		config |= SII164_CONFIGURATION_POWER_DOWN;
--		i2cWriteReg(SII164_I2C_ADDRESS, SII164_CONFIGURATION, config);
-+		i2c_write_reg(SII164_I2C_ADDRESS, SII164_CONFIGURATION, config);
- 	}
+-	ret = hw_sm750_crtc_setMode(crtc, var, fix);
++	ret = hw_sm750_crtc_set_mode(crtc, var, fix);
+ 	if (!ret)
+-		ret = hw_sm750_output_setMode(output, var, fix);
++		ret = hw_sm750_output_set_mode(output, var, fix);
+ 	return ret;
  }
  
-@@ -306,7 +306,7 @@ void sii164_select_hot_plug_detection_mode(enum sii164_hot_plug_mode hot_plug_mo
- {
- 	unsigned char detect_reg;
- 
--	detect_reg = i2cReadReg(SII164_I2C_ADDRESS, SII164_DETECT) &
-+	detect_reg = i2c_read_reg(SII164_I2C_ADDRESS, SII164_DETECT) &
- 		    ~SII164_DETECT_MONITOR_SENSE_OUTPUT_FLAG;
- 	switch (hot_plug_mode) {
- 	case SII164_HOTPLUG_DISABLE:
-@@ -325,7 +325,7 @@ void sii164_select_hot_plug_detection_mode(enum sii164_hot_plug_mode hot_plug_mo
- 		break;
+@@ -574,7 +574,7 @@ static int lynxfb_ops_check_var(struct fb_var_screeninfo *var,
+ 		return -ENOMEM;
  	}
  
--	i2cWriteReg(SII164_I2C_ADDRESS, SII164_DETECT, detect_reg);
-+	i2c_write_reg(SII164_I2C_ADDRESS, SII164_DETECT, detect_reg);
+-	return hw_sm750_crtc_checkMode(crtc, var);
++	return hw_sm750_crtc_check_mode(crtc, var);
  }
  
- /*
-@@ -338,7 +338,7 @@ void sii164_enable_hot_plug_detection(unsigned char enable_hot_plug)
- {
- 	unsigned char detect_reg;
+ static int lynxfb_ops_setcolreg(unsigned int regno,
+@@ -607,7 +607,7 @@ static int lynxfb_ops_setcolreg(unsigned int regno,
+ 		red >>= 8;
+ 		green >>= 8;
+ 		blue >>= 8;
+-		ret = hw_sm750_setColReg(crtc, regno, red, green, blue);
++		ret = hw_sm750_set_col_reg(crtc, regno, red, green, blue);
+ 		goto exit;
+ 	}
  
--	detect_reg = i2cReadReg(SII164_I2C_ADDRESS, SII164_DETECT);
-+	detect_reg = i2c_read_reg(SII164_I2C_ADDRESS, SII164_DETECT);
+@@ -668,10 +668,10 @@ static int sm750fb_set_drv(struct lynxfb_par *par)
+ 	crtc->ywrapstep = 0;
  
- 	/* Depending on each DVI controller, need to enable the hot plug based
- 	 * on each individual chip design.
-@@ -361,7 +361,7 @@ unsigned char sii164_is_connected(void)
- {
- 	unsigned char hot_plug_value;
+ 	output->proc_setBLANK = (sm750_dev->revid == SM750LE_REVISION_ID) ?
+-				 hw_sm750le_setBLANK : hw_sm750_setBLANK;
++				 hw_sm750le_set_blank : hw_sm750_set_blank;
+ 	/* chip specific phase */
+ 	sm750_dev->accel.de_wait = (sm750_dev->revid == SM750LE_REVISION_ID) ?
+-				    hw_sm750le_deWait : hw_sm750_deWait;
++				    hw_sm750le_de_wait : hw_sm750_de_wait;
+ 	switch (sm750_dev->dataflow) {
+ 	case sm750_simul_pri:
+ 		output->paths = sm750_pnc;
+diff --git a/drivers/staging/sm750fb/sm750.h b/drivers/staging/sm750fb/sm750.h
+index ce90adcb449d..b538d1dd4a89 100644
+--- a/drivers/staging/sm750fb/sm750.h
++++ b/drivers/staging/sm750fb/sm750.h
+@@ -186,26 +186,26 @@ static inline unsigned long ps_to_hz(unsigned int psvalue)
  
--	hot_plug_value = i2cReadReg(SII164_I2C_ADDRESS, SII164_DETECT) &
-+	hot_plug_value = i2c_read_reg(SII164_I2C_ADDRESS, SII164_DETECT) &
- 		       SII164_DETECT_HOT_PLUG_STATUS_MASK;
- 	if (hot_plug_value == SII164_DETECT_HOT_PLUG_STATUS_ON)
- 		return 1;
-@@ -381,7 +381,7 @@ unsigned char sii164_check_interrupt(void)
- {
- 	unsigned char detect_reg;
+ int hw_sm750_map(struct sm750_dev *sm750_dev, struct pci_dev *pdev);
+ int hw_sm750_inithw(struct sm750_dev *sm750_dev, struct pci_dev *pdev);
+-void hw_sm750_initAccel(struct sm750_dev *sm750_dev);
+-int hw_sm750_deWait(void);
+-int hw_sm750le_deWait(void);
++void hw_sm750_init_accel(struct sm750_dev *sm750_dev);
++int hw_sm750_de_wait(void);
++int hw_sm750le_de_wait(void);
  
--	detect_reg = i2cReadReg(SII164_I2C_ADDRESS, SII164_DETECT) &
-+	detect_reg = i2c_read_reg(SII164_I2C_ADDRESS, SII164_DETECT) &
- 		    SII164_DETECT_MONITOR_STATE_MASK;
- 	if (detect_reg == SII164_DETECT_MONITOR_STATE_CHANGE)
- 		return 1;
-@@ -398,9 +398,9 @@ void sii164_clear_interrupt(void)
- 	unsigned char detect_reg;
+-int hw_sm750_output_setMode(struct lynxfb_output *output,
+-			    struct fb_var_screeninfo *var,
+-			    struct fb_fix_screeninfo *fix);
++int hw_sm750_output_set_mode(struct lynxfb_output *output,
++			     struct fb_var_screeninfo *var,
++			     struct fb_fix_screeninfo *fix);
  
- 	/* Clear the MDI interrupt */
--	detect_reg = i2cReadReg(SII164_I2C_ADDRESS, SII164_DETECT);
--	i2cWriteReg(SII164_I2C_ADDRESS, SII164_DETECT,
--		    detect_reg | SII164_DETECT_MONITOR_STATE_CLEAR);
-+	detect_reg = i2c_read_reg(SII164_I2C_ADDRESS, SII164_DETECT);
-+	i2c_write_reg(SII164_I2C_ADDRESS, SII164_DETECT,
-+		      detect_reg | SII164_DETECT_MONITOR_STATE_CLEAR);
+-int hw_sm750_crtc_checkMode(struct lynxfb_crtc *crtc,
+-			    struct fb_var_screeninfo *var);
++int hw_sm750_crtc_check_mode(struct lynxfb_crtc *crtc,
++			     struct fb_var_screeninfo *var);
+ 
+-int hw_sm750_crtc_setMode(struct lynxfb_crtc *crtc,
+-			  struct fb_var_screeninfo *var,
+-			  struct fb_fix_screeninfo *fix);
++int hw_sm750_crtc_set_mode(struct lynxfb_crtc *crtc,
++			   struct fb_var_screeninfo *var,
++			   struct fb_fix_screeninfo *fix);
+ 
+-int hw_sm750_setColReg(struct lynxfb_crtc *crtc, ushort index,
+-		       ushort red, ushort green, ushort blue);
++int hw_sm750_set_col_reg(struct lynxfb_crtc *crtc, ushort index,
++			 ushort red, ushort green, ushort blue);
+ 
+-int hw_sm750_setBLANK(struct lynxfb_output *output, int blank);
+-int hw_sm750le_setBLANK(struct lynxfb_output *output, int blank);
++int hw_sm750_set_blank(struct lynxfb_output *output, int blank);
++int hw_sm750le_set_blank(struct lynxfb_output *output, int blank);
+ int hw_sm750_pan_display(struct lynxfb_crtc *crtc,
+ 			 const struct fb_var_screeninfo *var,
+ 			 const struct fb_info *info);
+diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
+index ea1d3d4efbc2..a83299f1c33b 100644
+--- a/drivers/staging/sm750fb/sm750_hw.c
++++ b/drivers/staging/sm750fb/sm750_hw.c
+@@ -175,14 +175,14 @@ int hw_sm750_inithw(struct sm750_dev *sm750_dev, struct pci_dev *pdev)
+ 
+ 	/* init 2d engine */
+ 	if (!sm750_dev->accel_off)
+-		hw_sm750_initAccel(sm750_dev);
++		hw_sm750_init_accel(sm750_dev);
+ 
+ 	return 0;
  }
  
- #endif
+-int hw_sm750_output_setMode(struct lynxfb_output *output,
+-			    struct fb_var_screeninfo *var,
+-			    struct fb_fix_screeninfo *fix)
++int hw_sm750_output_set_mode(struct lynxfb_output *output,
++			     struct fb_var_screeninfo *var,
++			     struct fb_fix_screeninfo *fix)
+ {
+ 	int ret;
+ 	enum disp_output disp_set;
+@@ -221,8 +221,8 @@ int hw_sm750_output_setMode(struct lynxfb_output *output,
+ 	return ret;
+ }
+ 
+-int hw_sm750_crtc_checkMode(struct lynxfb_crtc *crtc,
+-			    struct fb_var_screeninfo *var)
++int hw_sm750_crtc_check_mode(struct lynxfb_crtc *crtc,
++			     struct fb_var_screeninfo *var)
+ {
+ 	struct sm750_dev *sm750_dev;
+ 	struct lynxfb_par *par = container_of(crtc, struct lynxfb_par, crtc);
+@@ -247,9 +247,9 @@ int hw_sm750_crtc_checkMode(struct lynxfb_crtc *crtc,
+ }
+ 
+ /* set the controller's mode for @crtc charged with @var and @fix parameters */
+-int hw_sm750_crtc_setMode(struct lynxfb_crtc *crtc,
+-			  struct fb_var_screeninfo *var,
+-			  struct fb_fix_screeninfo *fix)
++int hw_sm750_crtc_set_mode(struct lynxfb_crtc *crtc,
++			   struct fb_var_screeninfo *var,
++			   struct fb_fix_screeninfo *fix)
+ {
+ 	int ret, fmt;
+ 	u32 reg;
+@@ -372,8 +372,8 @@ int hw_sm750_crtc_setMode(struct lynxfb_crtc *crtc,
+ 	return ret;
+ }
+ 
+-int hw_sm750_setColReg(struct lynxfb_crtc *crtc, ushort index,
+-		       ushort red, ushort green, ushort blue)
++int hw_sm750_set_col_reg(struct lynxfb_crtc *crtc, ushort index,
++			 ushort red, ushort green, ushort blue)
+ {
+ 	static unsigned int add[] = {PANEL_PALETTE_RAM, CRT_PALETTE_RAM};
+ 
+@@ -382,7 +382,7 @@ int hw_sm750_setColReg(struct lynxfb_crtc *crtc, ushort index,
+ 	return 0;
+ }
+ 
+-int hw_sm750le_setBLANK(struct lynxfb_output *output, int blank)
++int hw_sm750le_set_blank(struct lynxfb_output *output, int blank)
+ {
+ 	int dpms, crtdb;
+ 
+@@ -423,7 +423,7 @@ int hw_sm750le_setBLANK(struct lynxfb_output *output, int blank)
+ 	return 0;
+ }
+ 
+-int hw_sm750_setBLANK(struct lynxfb_output *output, int blank)
++int hw_sm750_set_blank(struct lynxfb_output *output, int blank)
+ {
+ 	unsigned int dpms, pps, crtdb;
+ 
+@@ -476,7 +476,7 @@ int hw_sm750_setBLANK(struct lynxfb_output *output, int blank)
+ 	return 0;
+ }
+ 
+-void hw_sm750_initAccel(struct sm750_dev *sm750_dev)
++void hw_sm750_init_accel(struct sm750_dev *sm750_dev)
+ {
+ 	u32 reg;
+ 
+@@ -506,7 +506,7 @@ void hw_sm750_initAccel(struct sm750_dev *sm750_dev)
+ 	sm750_dev->accel.de_init(&sm750_dev->accel);
+ }
+ 
+-int hw_sm750le_deWait(void)
++int hw_sm750le_de_wait(void)
+ {
+ 	int i = 0x10000000;
+ 	unsigned int mask = DE_STATE2_DE_STATUS_BUSY | DE_STATE2_DE_FIFO_EMPTY |
+@@ -523,7 +523,7 @@ int hw_sm750le_deWait(void)
+ 	return -1;
+ }
+ 
+-int hw_sm750_deWait(void)
++int hw_sm750_de_wait(void)
+ {
+ 	int i = 0x10000000;
+ 	unsigned int mask = SYSTEM_CTRL_DE_STATUS_BUSY |
 -- 
 2.20.1
 
