@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F08E2122BBD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Dec 2019 13:36:20 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9244A122BC3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Dec 2019 13:37:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CDBB3863D5;
-	Tue, 17 Dec 2019 12:36:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 509DB85F88;
+	Tue, 17 Dec 2019 12:37:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B0VJGTUyE5Oq; Tue, 17 Dec 2019 12:36:18 +0000 (UTC)
+	with ESMTP id UeY1u4aLq1b9; Tue, 17 Dec 2019 12:37:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7243A857D8;
-	Tue, 17 Dec 2019 12:36:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3282885F54;
+	Tue, 17 Dec 2019 12:37:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7EFE81BF2F1
- for <devel@linuxdriverproject.org>; Tue, 17 Dec 2019 12:36:13 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0CCB01BF2F1
+ for <devel@linuxdriverproject.org>; Tue, 17 Dec 2019 12:37:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5BA9987861
- for <devel@linuxdriverproject.org>; Tue, 17 Dec 2019 12:36:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 05D9585727
+ for <devel@linuxdriverproject.org>; Tue, 17 Dec 2019 12:37:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JKxJDqTuZeqH for <devel@linuxdriverproject.org>;
- Tue, 17 Dec 2019 12:36:12 +0000 (UTC)
+ with ESMTP id HEf0xkd81xAN for <devel@linuxdriverproject.org>;
+ Tue, 17 Dec 2019 12:37:27 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 328FC87860
- for <devel@driverdev.osuosl.org>; Tue, 17 Dec 2019 12:36:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 704F38506C
+ for <devel@driverdev.osuosl.org>; Tue, 17 Dec 2019 12:37:27 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 61696206D8;
- Tue, 17 Dec 2019 12:36:11 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id CDDD02082E;
+ Tue, 17 Dec 2019 12:37:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1576586171;
- bh=B7h76drzd6gyW48HzKwrGBmdAS3OiSGmCCDzI4QGaKI=;
+ s=default; t=1576586247;
+ bh=5YvBsHQOxmA34K9T0xQbE8k/6MwlrTqIfOTtiy0crqQ=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=cX82lLzPKCfZGg+79MXAntIsqijJY92TduKqfDQ0Q2kBtpEeoh31St5pPYq/uxfOp
- Sncy45woPUxOY5bQXi8jgHZJsJOyi+QDGutqsEFoVe6XNzAOrfZonrEcnQoSwMZzRH
- k3fvgAamTDQFIklI4oGO9urS09oEsPPXtYZNaZi4=
-Date: Tue, 17 Dec 2019 13:36:09 +0100
+ b=tFJ9Bp/jjS+N+ugpvcJknjz0PJbPGNVm6bFMd2sM5JS3YxixU8QIQzJ8XIh+84n0Y
+ A/Ju4Z6SD4f5NfLFW56sMhfFLjZE7T3Tp8QGm5dQOh2CsF+NmX2od75jzHXi4eZx2l
+ yRm273w/A/s4geYWSOnM2VRJmpGPLCDhQJn8/V+o=
+Date: Tue, 17 Dec 2019 13:37:25 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Scott Schafer <schaferjscott@gmail.com>
-Subject: Re: [PATCH v2 03/23] staging: qlge: Fix WARNING: Missing a blank
+Subject: Re: [PATCH v2 04/23] staging: qlge: Fix WARNING: Missing a blank
  line after declarations
-Message-ID: <20191217123609.GA3161277@kroah.com>
+Message-ID: <20191217123725.GA3161766@kroah.com>
 References: <cover.1576086080.git.schaferjscott@gmail.com>
- <e15a6fd67d39af57fa6309037bb0c7a747c52353.1576086080.git.schaferjscott@gmail.com>
+ <815a27ebb89b7a08e616fddbe0583eabd3c4401b.1576086080.git.schaferjscott@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <e15a6fd67d39af57fa6309037bb0c7a747c52353.1576086080.git.schaferjscott@gmail.com>
+In-Reply-To: <815a27ebb89b7a08e616fddbe0583eabd3c4401b.1576086080.git.schaferjscott@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,8 +75,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Dec 11, 2019 at 12:12:32PM -0600, Scott Schafer wrote:
-> Fix WARNING: Missing a blank line after declarations for the follig
+On Wed, Dec 11, 2019 at 12:12:33PM -0600, Scott Schafer wrote:
+> Fix WARNING: Missing a blank line after declarations in the following
 > files:
 > qlge.h
 > qlge_dbg.c
@@ -85,31 +85,25 @@ On Wed, Dec 11, 2019 at 12:12:32PM -0600, Scott Schafer wrote:
 > 
 > Signed-off-by: Scott Schafer <schaferjscott@gmail.com>
 > ---
->  drivers/staging/qlge/qlge.h      |  1 +
->  drivers/staging/qlge/qlge_dbg.c  |  5 +++++
->  drivers/staging/qlge/qlge_main.c | 13 +++++++++++++
->  drivers/staging/qlge/qlge_mpi.c  |  6 ++++++
->  4 files changed, 25 insertions(+)
+>  drivers/staging/qlge/qlge.h      |  2 +-
+>  drivers/staging/qlge/qlge_dbg.c  | 10 +++++-----
+>  drivers/staging/qlge/qlge_main.c | 26 +++++++++++++-------------
+>  drivers/staging/qlge/qlge_mpi.c  | 12 ++++++------
+>  4 files changed, 25 insertions(+), 25 deletions(-)
 > 
 > diff --git a/drivers/staging/qlge/qlge.h b/drivers/staging/qlge/qlge.h
-> index 4bc5d5fce9bf..89502a8300f6 100644
+> index 89502a8300f6..d45c53a053c2 100644
 > --- a/drivers/staging/qlge/qlge.h
 > +++ b/drivers/staging/qlge/qlge.h
-> @@ -2227,6 +2227,7 @@ static inline void ql_write_db_reg_relaxed(u32 val, void __iomem *addr)
+> @@ -2227,7 +2227,7 @@ static inline void ql_write_db_reg_relaxed(u32 val, void __iomem *addr)
 >  static inline u32 ql_read_sh_reg(__le32  *addr)
 >  {
 >  	u32 reg;
-> +	
+> -	
+> +
 
-You are adding trailing whitespace on every one of your newlines you are
-adding :(
-
-I suggest using an editor that shows this up as a bright red mark, it
-makes it more obvious you are doing something wrong.
-
-Also try running checkpatch.pl on the patches you are writing to make
-sure you do not add more errors/warnings when you are trying to fix them
-up.
+The description of this patch is NOT what this patch is doing.  It's
+fixing up the mess you added in the previous patch :(
 
 thanks,
 
