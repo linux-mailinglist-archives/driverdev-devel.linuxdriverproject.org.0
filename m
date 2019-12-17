@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7EBC9121FC7
-	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Dec 2019 01:31:46 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5537B1222B9
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Dec 2019 04:52:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 82E8086A2B;
-	Tue, 17 Dec 2019 00:31:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2085B204D1;
+	Tue, 17 Dec 2019 03:52:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yKA5kIKj9CVq; Tue, 17 Dec 2019 00:31:43 +0000 (UTC)
+	with ESMTP id plGcHvYMwyRU; Tue, 17 Dec 2019 03:52:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B68186A36;
-	Tue, 17 Dec 2019 00:31:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 13D0A2049B;
+	Tue, 17 Dec 2019 03:52:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6D41A1BF999
- for <devel@linuxdriverproject.org>; Tue, 17 Dec 2019 00:31:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5CCA71BF966
+ for <devel@linuxdriverproject.org>; Tue, 17 Dec 2019 03:52:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5E70388343
- for <devel@linuxdriverproject.org>; Tue, 17 Dec 2019 00:31:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4DC9F86C3A
+ for <devel@linuxdriverproject.org>; Tue, 17 Dec 2019 03:52:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WCzaxsij98Zx for <devel@linuxdriverproject.org>;
- Tue, 17 Dec 2019 00:31:39 +0000 (UTC)
+ with ESMTP id SU2YIyYWaKXI for <devel@linuxdriverproject.org>;
+ Tue, 17 Dec 2019 03:52:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 51A288833D
- for <devel@driverdev.osuosl.org>; Tue, 17 Dec 2019 00:31:39 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2EF0E86BC1
+ for <devel@driverdev.osuosl.org>; Tue, 17 Dec 2019 03:52:07 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Dec 2019 16:31:38 -0800
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 Dec 2019 19:51:41 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,323,1571727600"; 
- d="gz'50?scan'50,208,50";a="205294886"
+X-IronPort-AV: E=Sophos;i="5.69,324,1571727600"; 
+ d="gz'50?scan'50,208,50";a="416684461"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 16 Dec 2019 16:31:36 -0800
+ by fmsmga006.fm.intel.com with ESMTP; 16 Dec 2019 19:51:39 -0800
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1ih0lz-0009yD-HL; Tue, 17 Dec 2019 08:31:35 +0800
-Date: Tue, 17 Dec 2019 08:30:42 +0800
+ id 1ih3tb-000Fdd-1l; Tue, 17 Dec 2019 11:51:39 +0800
+Date: Tue, 17 Dec 2019 11:51:16 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:device_h_splitup 3/7] drivers//base/devtmpfs.c:362:5:
- error: conflicting types for 'devtmpfs_mount'
-Message-ID: <201912170838.mKWvnWqt%lkp@intel.com>
+Subject: [driver-core:device_h_splitup 3/7] init/do_mounts.c:689:2: error:
+ too few arguments to function 'devtmpfs_mount'
+Message-ID: <201912171159.vzeZR6xd%lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="7vtlmsewzeohp36v"
+Content-Type: multipart/mixed; boundary="alyplgmaik54v6el"
 Content-Disposition: inline
 User-Agent: NeoMutt/20170113 (1.7.2)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -72,7 +72,7 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---7vtlmsewzeohp36v
+--alyplgmaik54v6el
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -93,47 +93,84 @@ Reported-by: kbuild test robot <lkp@intel.com>
 
 All errors (new ones prefixed by >>):
 
->> drivers//base/devtmpfs.c:362:5: error: conflicting types for 'devtmpfs_mount'
-    int devtmpfs_mount(void)
-        ^~~~~~~~~~~~~~
-   In file included from include/linux/node.h:18:0,
-                    from include/linux/cpu.h:17,
-                    from include/linux/perf_event.h:50,
-                    from include/linux/trace_events.h:10,
-                    from include/trace/syscall.h:7,
-                    from include/linux/syscalls.h:85,
-                    from drivers//base/devtmpfs.c:17:
-   include/linux/device.h:1667:12: note: previous declaration of 'devtmpfs_mount' was here
+   init/do_mounts.c: In function 'prepare_namespace':
+>> init/do_mounts.c:689:2: error: too few arguments to function 'devtmpfs_mount'
+     devtmpfs_mount();
+     ^~~~~~~~~~~~~~
+   In file included from include/linux/cdev.h:8:0,
+                    from include/linux/tty_driver.h:245,
+                    from include/linux/tty.h:9,
+                    from init/do_mounts.c:6:
+   include/linux/device.h:1667:12: note: declared here
     extern int devtmpfs_mount(const char *mntdir);
                ^~~~~~~~~~~~~~
 
-vim +/devtmpfs_mount +362 drivers//base/devtmpfs.c
+vim +/devtmpfs_mount +689 init/do_mounts.c
 
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  357  
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  358  /*
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  359   * If configured, or requested by the commandline, devtmpfs will be
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  360   * auto-mounted after the kernel mounted the root filesystem.
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  361   */
-5e787dbf659fe7 Dominik Brodowski 2018-10-23 @362  int devtmpfs_mount(void)
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  363  {
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  364  	int err;
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  365  
-fc14f2fef682df Al Viro           2010-07-25  366  	if (!mount_dev)
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  367  		return 0;
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  368  
-2780f1ff6aec0c Al Viro           2011-06-27  369  	if (!thread)
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  370  		return 0;
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  371  
-5e787dbf659fe7 Dominik Brodowski 2018-10-23  372  	err = do_mount("devtmpfs", "dev", "devtmpfs", MS_SILENT, NULL);
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  373  	if (err)
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  374  		printk(KERN_INFO "devtmpfs: error mounting %i\n", err);
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  375  	else
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  376  		printk(KERN_INFO "devtmpfs: mounted\n");
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  377  	return err;
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  378  }
-2b2af54a5bb6f7 Kay Sievers       2009-04-30  379  
+^1da177e4c3f41 Linus Torvalds     2005-04-16  632  
+^1da177e4c3f41 Linus Torvalds     2005-04-16  633  /*
+^1da177e4c3f41 Linus Torvalds     2005-04-16  634   * Prepare the namespace - decide what/where to mount, load ramdisks, etc.
+^1da177e4c3f41 Linus Torvalds     2005-04-16  635   */
+^1da177e4c3f41 Linus Torvalds     2005-04-16  636  void __init prepare_namespace(void)
+^1da177e4c3f41 Linus Torvalds     2005-04-16  637  {
+^1da177e4c3f41 Linus Torvalds     2005-04-16  638  	int is_floppy;
+^1da177e4c3f41 Linus Torvalds     2005-04-16  639  
+^1da177e4c3f41 Linus Torvalds     2005-04-16  640  	if (root_delay) {
+^1da177e4c3f41 Linus Torvalds     2005-04-16  641  		printk(KERN_INFO "Waiting %d sec before mounting root device...\n",
+^1da177e4c3f41 Linus Torvalds     2005-04-16  642  		       root_delay);
+^1da177e4c3f41 Linus Torvalds     2005-04-16  643  		ssleep(root_delay);
+^1da177e4c3f41 Linus Torvalds     2005-04-16  644  	}
+^1da177e4c3f41 Linus Torvalds     2005-04-16  645  
+216773a787c3c4 Arjan van de Ven   2009-02-14  646  	/*
+216773a787c3c4 Arjan van de Ven   2009-02-14  647  	 * wait for the known devices to complete their probing
+216773a787c3c4 Arjan van de Ven   2009-02-14  648  	 *
+216773a787c3c4 Arjan van de Ven   2009-02-14  649  	 * Note: this is a potential source of long boot delays.
+216773a787c3c4 Arjan van de Ven   2009-02-14  650  	 * For example, it is not atypical to wait 5 seconds here
+216773a787c3c4 Arjan van de Ven   2009-02-14  651  	 * for the touchpad of a laptop to initialize.
+216773a787c3c4 Arjan van de Ven   2009-02-14  652  	 */
+216773a787c3c4 Arjan van de Ven   2009-02-14  653  	wait_for_device_probe();
+d779249ed4cb3b Greg Kroah-Hartman 2006-07-18  654  
+^1da177e4c3f41 Linus Torvalds     2005-04-16  655  	md_run_setup();
+^1da177e4c3f41 Linus Torvalds     2005-04-16  656  
+^1da177e4c3f41 Linus Torvalds     2005-04-16  657  	if (saved_root_name[0]) {
+^1da177e4c3f41 Linus Torvalds     2005-04-16  658  		root_device_name = saved_root_name;
+2d62f488585405 Adrian Hunter      2008-01-31  659  		if (!strncmp(root_device_name, "mtd", 3) ||
+2d62f488585405 Adrian Hunter      2008-01-31  660  		    !strncmp(root_device_name, "ubi", 3)) {
+e9482b4374e259 Joern Engel        2006-05-30  661  			mount_block_root(root_device_name, root_mountflags);
+e9482b4374e259 Joern Engel        2006-05-30  662  			goto out;
+e9482b4374e259 Joern Engel        2006-05-30  663  		}
+^1da177e4c3f41 Linus Torvalds     2005-04-16  664  		ROOT_DEV = name_to_dev_t(root_device_name);
+^1da177e4c3f41 Linus Torvalds     2005-04-16  665  		if (strncmp(root_device_name, "/dev/", 5) == 0)
+^1da177e4c3f41 Linus Torvalds     2005-04-16  666  			root_device_name += 5;
+^1da177e4c3f41 Linus Torvalds     2005-04-16  667  	}
+^1da177e4c3f41 Linus Torvalds     2005-04-16  668  
+^1da177e4c3f41 Linus Torvalds     2005-04-16  669  	if (initrd_load())
+^1da177e4c3f41 Linus Torvalds     2005-04-16  670  		goto out;
+^1da177e4c3f41 Linus Torvalds     2005-04-16  671  
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  672  	/* wait for any asynchronous scanning to complete */
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  673  	if ((ROOT_DEV == 0) && root_wait) {
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  674  		printk(KERN_INFO "Waiting for root device %s...\n",
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  675  			saved_root_name);
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  676  		while (driver_probe_done() != 0 ||
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  677  			(ROOT_DEV = name_to_dev_t(saved_root_name)) == 0)
+39a0e975c37dee Jungseung Lee      2016-12-12  678  			msleep(5);
+216773a787c3c4 Arjan van de Ven   2009-02-14  679  		async_synchronize_full();
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  680  	}
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  681  
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  682  	is_floppy = MAJOR(ROOT_DEV) == FLOPPY_MAJOR;
+cc1ed7542c8c26 Pierre Ossman      2007-07-15  683  
+^1da177e4c3f41 Linus Torvalds     2005-04-16  684  	if (is_floppy && rd_doload && rd_load_disk(0))
+^1da177e4c3f41 Linus Torvalds     2005-04-16  685  		ROOT_DEV = Root_RAM0;
+^1da177e4c3f41 Linus Torvalds     2005-04-16  686  
+^1da177e4c3f41 Linus Torvalds     2005-04-16  687  	mount_root();
+^1da177e4c3f41 Linus Torvalds     2005-04-16  688  out:
+5e787dbf659fe7 Dominik Brodowski  2018-10-23 @689  	devtmpfs_mount();
+cccaa5e33525fc Dominik Brodowski  2018-10-23  690  	do_mount(".", "/", NULL, MS_MOVE, NULL);
+a16fe33ab5572e Dominik Brodowski  2018-03-11  691  	ksys_chroot(".");
+^1da177e4c3f41 Linus Torvalds     2005-04-16  692  }
+57f150a58c40cd Rob Landley        2013-09-11  693  
 
-:::::: The code at line 362 was first introduced by commit
+:::::: The code at line 689 was first introduced by commit
 :::::: 5e787dbf659fe77d56215be74044f85e01b3920f devtmpfs: use do_mount() instead of ksys_mount()
 
 :::::: TO: Dominik Brodowski <linux@dominikbrodowski.net>
@@ -143,12 +180,12 @@ fc14f2fef682df Al Viro           2010-07-25  366  	if (!mount_dev)
 0-DAY kernel test infrastructure                 Open Source Technology Center
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
 
---7vtlmsewzeohp36v
+--alyplgmaik54v6el
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICGwc+F0AAy5jb25maWcAlDzbkts2su/5CpXzkjwkOzO2Jzl7ah5AEpSwIgmaADXSvLCU
+H4sICIpF+F0AAy5jb25maWcAlDzbkts2su/5CpXzkjwkOzO2Jzl7ah5AEpSwIgmaADXSvLCU
 sexM7Vy8GnkT//3pBm+NCymfKld52N1oAo2+A9SPP/y4YF9PL0/708P9/vHx2+Lz4flw3J8O
 HxefHh4P/7tI5KKQesEToX8F4uzh+evf/3jYX79bvP/1/a8Xvxzvrxbrw/H58LiIX54/PXz+
 CqMfXp5/+PEH+PcjAJ++AKPjPxc46JdHHP/L5/v7xU/LOP558RsyAcJYFqlYNnHcCNUA5uZb
@@ -1181,7 +1218,7 @@ z6nCeh84J+cuDO54qGZ+i2uDve+lBGd4zVnU9Aw0Luw8GoGdg5kJ1sQzQ7+ZAPp8Kjv3MLAv
 A1VPGjmiz4yjALhN0GbJYx+Qkat3N6cLSf/BqyyMN5XjVf/slF5VGZINZ47WpVVE1efOBWO7
 LmsnRaeB2etdkWY3gMMy4FbNWR7EpYBpwSZoOzq8FGGDJzhYz/8DFpv6nQNuAwA=
 
---7vtlmsewzeohp36v
+--alyplgmaik54v6el
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1192,4 +1229,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---7vtlmsewzeohp36v--
+--alyplgmaik54v6el--
