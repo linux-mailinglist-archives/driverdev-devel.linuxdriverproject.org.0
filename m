@@ -2,75 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FEB61260CC
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Dec 2019 12:27:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DD8F126542
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Dec 2019 15:53:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1957688686;
-	Thu, 19 Dec 2019 11:27:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A259688672;
+	Thu, 19 Dec 2019 14:53:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F8Gh8a+-RScz; Thu, 19 Dec 2019 11:27:40 +0000 (UTC)
+	with ESMTP id G-rb8MVtnEAM; Thu, 19 Dec 2019 14:53:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 21A38885BD;
-	Thu, 19 Dec 2019 11:27:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 072138757C;
+	Thu, 19 Dec 2019 14:53:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 090CE1BF409
- for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 11:27:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 49AF41BF2C4
+ for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 14:53:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 04B17203C7
- for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 11:27:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 45ED220368
+ for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 14:53:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id osMDYKw7gGwg for <devel@linuxdriverproject.org>;
- Thu, 19 Dec 2019 11:27:07 +0000 (UTC)
-X-Greylist: delayed 00:25:14 by SQLgrey-1.7.6
-Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
- [209.85.222.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 6320B2038D
- for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 11:27:07 +0000 (UTC)
-Received: by mail-qk1-f196.google.com with SMTP id c17so4326525qkg.7
- for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 03:27:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=r4FrNo5LLEspvU9m0EiGD3eytJBEaYUVyq8SH3ZcE3o=;
- b=C0W0Svkg0Llp9ZQuiZFYuGlJcklhQKzim592wdhPRyuZfzvO6Sy8GmgRlXLBdYyg8M
- CnrXmmjidsnz1OPlJ7lXISjmdDSwrtPul+4xso+ezWUJxWZKbQLz/mVUb+ZLF+eH9bTQ
- u75sjyRdj/GEuKHBsLnLOh9VFM4yqIFq36tZDoF6mvyeqaatSfPS9TCEk4HMmDsOFcz0
- WNHxhb1zWXDPywtVLafp3q4kuWplraaVjhNkKR/AiGQMnOon2GZ66zSaq0dyvqUj5U8D
- WAhrOKJsCtgkz2d5eRKxlVtMQKHP0XMUdWi5RzJITjwMjKCCJmwKqBNgL0SfgwQBAczw
- lsog==
+ with ESMTP id s9imJJqB0fmu for <devel@linuxdriverproject.org>;
+ Thu, 19 Dec 2019 14:53:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 27BE92035B
+ for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 14:53:46 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id y11so6272052wrt.6
+ for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 06:53:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=01d2gKZkJOH7YhD865nJbGooLC6bhXHzXr9512PTLlc=;
+ b=BxnoeLQes+YjrmmG4OTy/48AZHav+Dt5GpOaL3hMU+F4oppqTj8h4gqN2IGwBNYDh/
+ yYO/r7jtiLxS6CGumCLBPxdBDA8wyWbdKXfMmpAtdRJph6b/3NTE6A1uCOWiydC/VYGW
+ Aa++D0PiA+2zJBCMCVTF8m0JsHF6zwmPg0/3r60X7zmQ6xOqGxYam8CsiR/XXgzcqL5M
+ 00b6iwhISyn5bTb7iAskcftlCcbODZgn9wL2ybxTRhq3iisB1FccX7E9xgg3bY2CfmRJ
+ zzz9UuxUnpJ0W/Wk5hY3wCQhcfg8bRUkpAL2gm2RqkdspDJU82bm1ywStdKTaWgi7Nsz
+ RqYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=r4FrNo5LLEspvU9m0EiGD3eytJBEaYUVyq8SH3ZcE3o=;
- b=h1fWtk3a94EOcaBxYy5rsdPsytYe9MFHllWu3QJN08z73oBeCJHn4sD/CccS+RJsMA
- f0ZQDF1pI8OzMfVXoSoW2sBJyE8ZOc8OUfikcA5bdpEdDsjjPrhuz64JyuZVezzvJOk1
- szmVebZYy7DYV/uxhik0TgHVgj3ytY7llBMO/pMsA47HNwA4LEKLT+HUDa8SNFvlkCVd
- t34v0feYVc7HqZvbb8vky3zaBsaswgzmOnmfvHFYKQ4GJJ6WIQkEqV7i9+PKiRijBJKk
- SBYDaPz/e5wP+mU4s8D3+VYn3py1Iw25XGuHrAiXFHE0Q1LfeagGEML1qqL4oclbxGDn
- AprA==
-X-Gm-Message-State: APjAAAVzE793S19HiFn9yIvxHZuK+UWQ72ppNuYVmmmIWqnKRffOqCzy
- dBhwOJ3iF1JrztFi8wo/c6gJ0c4E8LWpFOZE41SMLOEP
-X-Google-Smtp-Source: APXvYqy4PaZdM7lBnMAneYnTWwRA+ttNw2J5709a9anujnDKaPB/StYNQhpvIdo1lY7WcNj00iKtDkcKHWISHo02XbM=
-X-Received: by 2002:a37:6fc4:: with SMTP id k187mr7098160qkc.21.1576753312007; 
- Thu, 19 Dec 2019 03:01:52 -0800 (PST)
-MIME-Version: 1.0
-References: <20191215183047.9414-1-digetx@gmail.com>
- <20191215183047.9414-2-digetx@gmail.com>
-In-Reply-To: <20191215183047.9414-2-digetx@gmail.com>
-From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Date: Thu, 19 Dec 2019 12:01:41 +0100
-Message-ID: <CAMpxmJUmLOZoKeeo4XMVEOWKRgwfS4O2szVboY-qTTYXg_aTVg@mail.gmail.com>
-Subject: Re: [PATCH v1 1/3] gpio: tegra: Use generic
- readl_relaxed/writel_relaxed accessors
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=01d2gKZkJOH7YhD865nJbGooLC6bhXHzXr9512PTLlc=;
+ b=ZIDCGxRPD5EnnbtkdHaLO45dMTsXYqbIsKVCKXLycEVpRdteHL04rks4Xw7LJha1GU
+ PnRyYKA6v4L+j6g0Sy4ly/6c5VUxDXIjdILB3Um+MaaZGsyeQyTEfymGNb3vv15GR+lF
+ qtq35cPzfwbKw9rhguxIx0kUKL47O5klLv1RdROe+WrxzMkThzKbHErON5dNBwyZ96q0
+ HpkuUnugaRSdtUMi/IOmG1w8uo+EV8qH8KrWLGsQ0crXpzHuwXP1DKEdCMba17OdWeLw
+ DyDgwHOZJWKMLrG5zNvCYtzS/nS+TkZnllTsxBORAASocvx/zBiz055IcOfPBL+99Exb
+ Wqlw==
+X-Gm-Message-State: APjAAAU80NU90ewteQUOewNgiRQNkxUDVTAa4DEOihWf0/9DUVnvEJiM
+ Hl1y3dsGK5deY64Fr3EOL2w=
+X-Google-Smtp-Source: APXvYqxtcDi/kFePMXlvYf2lp9TovOeQHaEGqXYMgs/QzTIXtDNWbb4uLwN21d0Buj8R8pQZwYj0ug==
+X-Received: by 2002:adf:fd91:: with SMTP id d17mr10409326wrr.340.1576767224435; 
+ Thu, 19 Dec 2019 06:53:44 -0800 (PST)
+Received: from localhost (pD9E518ED.dip0.t-ipconnect.de. [217.229.24.237])
+ by smtp.gmail.com with ESMTPSA id o1sm6728363wrn.84.2019.12.19.06.53.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Dec 2019 06:53:42 -0800 (PST)
+Date: Thu, 19 Dec 2019 15:53:41 +0100
+From: Thierry Reding <thierry.reding@gmail.com>
 To: Dmitry Osipenko <digetx@gmail.com>
+Subject: Re: [PATCH v1 0/3] Tegra GPIO: Minor code clean up
+Message-ID: <20191219145341.GL1440537@ulmo>
+References: <20191215183047.9414-1-digetx@gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <20191215183047.9414-1-digetx@gmail.com>
+User-Agent: Mutt/1.13.1 (2019-12-14)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,39 +85,96 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Linus Walleij <linus.walleij@linaro.org>,
- LKML <linux-kernel@vger.kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- linux-gpio <linux-gpio@vger.kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, linux-gpio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-tegra@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============1655083522576652243=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-bmllZHouLCAxNSBncnUgMjAxOSBvIDE5OjMxIERtaXRyeSBPc2lwZW5rbyA8ZGlnZXR4QGdtYWls
-LmNvbT4gbmFwaXNhxYIoYSk6Cj4KPiBUaGVyZSBpcyBubyBwb2ludCBpbiB1c2luZyBvbGQtc3R5
-bGUgcmF3IGFjY2Vzc29ycywgdGhlIGdlbmVyaWMgYWNjZXNzb3JzCj4gZG8gdGhlIHNhbWUgdGhp
-bmcgYW5kIGFsc28gdGFrZSBpbnRvIGFjY291bnQgQ1BVIGVuZGlhbm5lc3MuIFRlZ3JhIFNvQ3Mg
-ZG8KPiBub3Qgc3VwcG9ydCBiaWctZW5kaWFuIG1vZGUgaW4gdGhlIHVwc3RyZWFtIGtlcm5lbCwg
-YnV0IGxldCdzIHN3aXRjaCBhd2F5Cj4gZnJvbSB0aGUgb3V0ZGF0ZWQgdGhpbmdzIGFueXdheSwg
-anVzdCB0byBrZWVwIGNvZGUgdXAtdG8tZGF0ZS4KPgo+IFNpZ25lZC1vZmYtYnk6IERtaXRyeSBP
-c2lwZW5rbyA8ZGlnZXR4QGdtYWlsLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncGlvL2dwaW8tdGVn
-cmEuYyB8IDQgKystLQo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0
-aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3Bpby9ncGlvLXRlZ3JhLmMgYi9kcml2
-ZXJzL2dwaW8vZ3Bpby10ZWdyYS5jCj4gaW5kZXggNmZkZmU0YzUzMDNlLi5mNmEzODJmYmQxMmQg
-MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tdGVncmEuYwo+ICsrKyBiL2RyaXZlcnMv
-Z3Bpby9ncGlvLXRlZ3JhLmMKPiBAQCAtOTYsMTIgKzk2LDEyIEBAIHN0cnVjdCB0ZWdyYV9ncGlv
-X2luZm8gewo+ICBzdGF0aWMgaW5saW5lIHZvaWQgdGVncmFfZ3Bpb193cml0ZWwoc3RydWN0IHRl
-Z3JhX2dwaW9faW5mbyAqdGdpLAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICB1MzIgdmFsLCB1MzIgcmVnKQo+ICB7Cj4gLSAgICAgICBfX3Jhd193cml0ZWwodmFsLCB0Z2kt
-PnJlZ3MgKyByZWcpOwo+ICsgICAgICAgd3JpdGVsX3JlbGF4ZWQodmFsLCB0Z2ktPnJlZ3MgKyBy
-ZWcpOwo+ICB9Cj4KPiAgc3RhdGljIGlubGluZSB1MzIgdGVncmFfZ3Bpb19yZWFkbChzdHJ1Y3Qg
-dGVncmFfZ3Bpb19pbmZvICp0Z2ksIHUzMiByZWcpCj4gIHsKPiAtICAgICAgIHJldHVybiBfX3Jh
-d19yZWFkbCh0Z2ktPnJlZ3MgKyByZWcpOwo+ICsgICAgICAgcmV0dXJuIHJlYWRsX3JlbGF4ZWQo
-dGdpLT5yZWdzICsgcmVnKTsKPiAgfQo+Cj4gIHN0YXRpYyB1bnNpZ25lZCBpbnQgdGVncmFfZ3Bp
-b19jb21wb3NlKHVuc2lnbmVkIGludCBiYW5rLCB1bnNpZ25lZCBpbnQgcG9ydCwKPiAtLQo+IDIu
-MjQuMAo+CgpUaGUgZW50aXJlIHNlcmllcyBsb29rcyBnb29kIHRvIG1lLCBidXQgSSdsbCB3YWl0
-IGZvciBUaGllcnJ5J3MgYWNrcwpqdXN0IGluIGNhc2UuCgpCYXJ0Cl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBs
-aW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+
+--===============1655083522576652243==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="yQDbd2FCF2Yhw41T"
+Content-Disposition: inline
+
+
+--yQDbd2FCF2Yhw41T
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Dec 15, 2019 at 09:30:44PM +0300, Dmitry Osipenko wrote:
+> Hello,
+>=20
+> I was investigating why CPU hangs during of GPIO driver suspend and in
+> the end it turned out that it is a Broadcom WiFi driver problem because
+> it keeps OOB wake-interrupt enabled while WLAN interface is DOWN and this
+> may cause a bit weird CPU hang on writing to INT_ENB register during of
+> GPIO driver suspend. Meanwhile I also noticed that a few things could be
+> improved in the driver, that's what this small series addresses.
+>=20
+> Dmitry Osipenko (3):
+>   gpio: tegra: Use generic readl_relaxed/writel_relaxed accessors
+>   gpio: tegra: Properly handle irq_set_irq_wake() error
+>   gpio: tegra: Use NOIRQ phase for suspend/resume
+>=20
+>  drivers/gpio/gpio-tegra.c | 21 ++++++++++-----------
+>  1 file changed, 10 insertions(+), 11 deletions(-)
+
+Patches look good:
+
+Reviewed-by: Thierry Reding <treding@nvidia.com>
+
+I also applied this series on top of v5.5-rc1 and ran it through our
+test system:
+
+    Test results:
+        13 builds:  13 pass, 0 fail
+        22 boots:   22 pass, 0 fail
+        34 tests:   34 pass, 0 fail
+
+    Linux version:  5.5.0-rc1-g3d0b4fced39e
+    Boards tested:  tegra124-jetson-tk1, tegra186-p2771-0000,
+                    tegra194-p2972-0000, tegra20-ventana,
+                    tegra210-p2371-2180, tegra30-cardhu-a04
+
+All tests passing, so:
+
+Tested-by: Thierry Reding <treding@nvidia.com>
+
+--yQDbd2FCF2Yhw41T
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl37jvMACgkQ3SOs138+
+s6HZYA/+KkwZWvDrOQ/xInN24cWeziIx62H3vJwfR9+Tjbdww4+9yMeMtj5ZWqMy
+fXJZ5t/UokIk+x9MoUYHUIOB6Iv0JhobZ9vWW9IikMfPKbHUPsQI8PrDG5Irnqxg
+AehGhD5Z11O3CSR/N1AEP5iv5udWFuhcb23FJMBNYhNxx7+DfU0iDJ54BmRKoaTG
+xWH5wBIJIXR06J80bJUaJezl5yocm6I7LgC/rzbiM1R+8hNz/nkyLoon5MEJOvUy
+dfNNn+2upmavuoG+EMcZgKCHPHb8CILSciNrcDmSp2EP1/OOYgm9urytQRrnHwWn
+0a/P//Zasnmb7kUYqcSNa9b8xD7aZ/lMS2zvLmtWHeF9uQigJtxmeFcFEU/DofeV
+LMfxE+ePRof2N7EztSgOxpVqS6V0OMzr5TquUq9d0CxDVkfzq1LHZO+9XY4MCTzi
+xD+Ncn/te+xJmLoiXMMVOnlpa4e3BzO583aBMAR6cLwzNHRhKOAhCws1pxieH9aR
+Bg2vGbwkrDK4c2AouHoNROlu/DN2n+GVhlH+b93P0xRJJAvgvwOhuUnwYj4Nt4Hf
+oTWbSN9AVBRSBQQdnH4R3N6idMPj4SInVWWF2jgvl5IJGGWOtKQCHYI/TmFmu69i
+LKcAZPJjK+eOdWMaoCrhnv0QMN7Of+4Rhx1OLSRm9MX9QF40E6I=
+=CltG
+-----END PGP SIGNATURE-----
+
+--yQDbd2FCF2Yhw41T--
+
+--===============1655083522576652243==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============1655083522576652243==--
