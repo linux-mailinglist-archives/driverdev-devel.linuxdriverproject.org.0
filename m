@@ -1,78 +1,85 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DD8F126542
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Dec 2019 15:53:52 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A97281265B2
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Dec 2019 16:26:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A259688672;
-	Thu, 19 Dec 2019 14:53:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 311D786FA3;
+	Thu, 19 Dec 2019 15:26:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G-rb8MVtnEAM; Thu, 19 Dec 2019 14:53:50 +0000 (UTC)
+	with ESMTP id MMg-RO_w8tvr; Thu, 19 Dec 2019 15:26:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 072138757C;
-	Thu, 19 Dec 2019 14:53:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0730186EC7;
+	Thu, 19 Dec 2019 15:26:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 49AF41BF2C4
- for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 14:53:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 105DB1BF599
+ for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 15:25:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 45ED220368
- for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 14:53:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 09F58203D5
+ for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 15:25:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s9imJJqB0fmu for <devel@linuxdriverproject.org>;
- Thu, 19 Dec 2019 14:53:46 +0000 (UTC)
+ with ESMTP id OPddWBfkG-F8 for <devel@linuxdriverproject.org>;
+ Thu, 19 Dec 2019 15:25:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 27BE92035B
- for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 14:53:46 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id y11so6272052wrt.6
- for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 06:53:46 -0800 (PST)
+Received: from mail-lj1-f193.google.com (mail-lj1-f193.google.com
+ [209.85.208.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id E1A8B20379
+ for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 15:25:55 +0000 (UTC)
+Received: by mail-lj1-f193.google.com with SMTP id e28so6665937ljo.9
+ for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 07:25:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=01d2gKZkJOH7YhD865nJbGooLC6bhXHzXr9512PTLlc=;
- b=BxnoeLQes+YjrmmG4OTy/48AZHav+Dt5GpOaL3hMU+F4oppqTj8h4gqN2IGwBNYDh/
- yYO/r7jtiLxS6CGumCLBPxdBDA8wyWbdKXfMmpAtdRJph6b/3NTE6A1uCOWiydC/VYGW
- Aa++D0PiA+2zJBCMCVTF8m0JsHF6zwmPg0/3r60X7zmQ6xOqGxYam8CsiR/XXgzcqL5M
- 00b6iwhISyn5bTb7iAskcftlCcbODZgn9wL2ybxTRhq3iisB1FccX7E9xgg3bY2CfmRJ
- zzz9UuxUnpJ0W/Wk5hY3wCQhcfg8bRUkpAL2gm2RqkdspDJU82bm1ywStdKTaWgi7Nsz
- RqYA==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=yqXyqCEU/X28oi4oNMERZW19vUW8+ITl1VJ657B32AQ=;
+ b=F63mDoYG+4XNcwtFC5rbojj7p2G1SYZ2dSzGNihTpA6GQ5Eaq8AB4BevQ7HB/YXE6L
+ JDsuyeAN1tABCdOus9JeI0o/m29KUb42zGru4W+kyZENE1F078cKFExWKODh76lPV9v/
+ lKVRrBfEFEy0G2UoGF7HPeLjNCOFcuB8pD1z3i1060LdMdG/3hkFVVQlEdSjG5oIWdMD
+ 4sRASqkHA5CGV/yTgttZnRKAWK7dR07tZSzFVLMvsXNYqVF6I5ihnPzbPFE+jAv0sAxw
+ 2Y+10PXQHiPIpy3+7u2QJafe17FzsmQt6Cwwd+xIEM5CPQOft72hxhno5U1Q6bOu5f8d
+ 0KbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=01d2gKZkJOH7YhD865nJbGooLC6bhXHzXr9512PTLlc=;
- b=ZIDCGxRPD5EnnbtkdHaLO45dMTsXYqbIsKVCKXLycEVpRdteHL04rks4Xw7LJha1GU
- PnRyYKA6v4L+j6g0Sy4ly/6c5VUxDXIjdILB3Um+MaaZGsyeQyTEfymGNb3vv15GR+lF
- qtq35cPzfwbKw9rhguxIx0kUKL47O5klLv1RdROe+WrxzMkThzKbHErON5dNBwyZ96q0
- HpkuUnugaRSdtUMi/IOmG1w8uo+EV8qH8KrWLGsQ0crXpzHuwXP1DKEdCMba17OdWeLw
- DyDgwHOZJWKMLrG5zNvCYtzS/nS+TkZnllTsxBORAASocvx/zBiz055IcOfPBL+99Exb
- Wqlw==
-X-Gm-Message-State: APjAAAU80NU90ewteQUOewNgiRQNkxUDVTAa4DEOihWf0/9DUVnvEJiM
- Hl1y3dsGK5deY64Fr3EOL2w=
-X-Google-Smtp-Source: APXvYqxtcDi/kFePMXlvYf2lp9TovOeQHaEGqXYMgs/QzTIXtDNWbb4uLwN21d0Buj8R8pQZwYj0ug==
-X-Received: by 2002:adf:fd91:: with SMTP id d17mr10409326wrr.340.1576767224435; 
- Thu, 19 Dec 2019 06:53:44 -0800 (PST)
-Received: from localhost (pD9E518ED.dip0.t-ipconnect.de. [217.229.24.237])
- by smtp.gmail.com with ESMTPSA id o1sm6728363wrn.84.2019.12.19.06.53.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Dec 2019 06:53:42 -0800 (PST)
-Date: Thu, 19 Dec 2019 15:53:41 +0100
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Dmitry Osipenko <digetx@gmail.com>
-Subject: Re: [PATCH v1 0/3] Tegra GPIO: Minor code clean up
-Message-ID: <20191219145341.GL1440537@ulmo>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=yqXyqCEU/X28oi4oNMERZW19vUW8+ITl1VJ657B32AQ=;
+ b=LnW/Bjv2LM4SKPdt+RsLqaEjmJINHQIfvhyDr+cKPM+4e+R1F3cX76oVEpD9fj22xu
+ 3XS4PSOraGDCzhnElbTp2reXOT6IHHH3IMo57X3zWcQscRbIZItWlr+JxeyMCzVsSwwU
+ yrEjO2drvkSls1q2QzKRG86hbrSwqnGBK8iT9uB1zwlhrgSJ8a/PRMMAvE/PqeO3jaQD
+ DaHub7ZMMSqnkS2KuYRVIJKk/2WHlNVKPUZhqG+8ym6F2fjuitrOUxblu1vxdWc4CvP4
+ 0MnxxYt4BgpCO4TP58lMuSlsmYaWGoqbg+cesK46md0YPO8kbU6uK4wwrWhKKK8cXi2A
+ I8qg==
+X-Gm-Message-State: APjAAAWly1EVGDVHKBRHqkJ635d2ODGB+Q0XmlL3l82vwAIdrYpSNX36
+ cx4JPawEJviL2xYMb0BJuMA=
+X-Google-Smtp-Source: APXvYqy5diovob/ZJdsyh0gLijnyKUDNXGbYOijwkRSTKNzQJaAtxAWV4K6nd87cOjuAx212Bmq/jA==
+X-Received: by 2002:a2e:81c7:: with SMTP id s7mr6419075ljg.3.1576769153989;
+ Thu, 19 Dec 2019 07:25:53 -0800 (PST)
+Received: from [192.168.2.145] (79-139-233-37.dynamic.spd-mgts.ru.
+ [79.139.233.37])
+ by smtp.googlemail.com with ESMTPSA id e9sm2922774ljp.87.2019.12.19.07.25.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Dec 2019 07:25:53 -0800 (PST)
+Subject: Re: [PATCH v1 1/3] gpio: tegra: Use generic
+ readl_relaxed/writel_relaxed accessors
+To: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 References: <20191215183047.9414-1-digetx@gmail.com>
+ <20191215183047.9414-2-digetx@gmail.com>
+ <CAMpxmJUmLOZoKeeo4XMVEOWKRgwfS4O2szVboY-qTTYXg_aTVg@mail.gmail.com>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <1e214577-1abe-22e6-ca55-2e9806fdb9b0@gmail.com>
+Date: Thu, 19 Dec 2019 18:25:52 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.0
 MIME-Version: 1.0
-In-Reply-To: <20191215183047.9414-1-digetx@gmail.com>
-User-Agent: Mutt/1.13.1 (2019-12-14)
+In-Reply-To: <CAMpxmJUmLOZoKeeo4XMVEOWKRgwfS4O2szVboY-qTTYXg_aTVg@mail.gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,96 +92,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-gpio@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-tegra@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============1655083522576652243=="
+Cc: devel@driverdev.osuosl.org, Linus Walleij <linus.walleij@linaro.org>,
+ LKML <linux-kernel@vger.kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-gpio <linux-gpio@vger.kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============1655083522576652243==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="yQDbd2FCF2Yhw41T"
-Content-Disposition: inline
-
-
---yQDbd2FCF2Yhw41T
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sun, Dec 15, 2019 at 09:30:44PM +0300, Dmitry Osipenko wrote:
-> Hello,
->=20
-> I was investigating why CPU hangs during of GPIO driver suspend and in
-> the end it turned out that it is a Broadcom WiFi driver problem because
-> it keeps OOB wake-interrupt enabled while WLAN interface is DOWN and this
-> may cause a bit weird CPU hang on writing to INT_ENB register during of
-> GPIO driver suspend. Meanwhile I also noticed that a few things could be
-> improved in the driver, that's what this small series addresses.
->=20
-> Dmitry Osipenko (3):
->   gpio: tegra: Use generic readl_relaxed/writel_relaxed accessors
->   gpio: tegra: Properly handle irq_set_irq_wake() error
->   gpio: tegra: Use NOIRQ phase for suspend/resume
->=20
->  drivers/gpio/gpio-tegra.c | 21 ++++++++++-----------
->  1 file changed, 10 insertions(+), 11 deletions(-)
-
-Patches look good:
-
-Reviewed-by: Thierry Reding <treding@nvidia.com>
-
-I also applied this series on top of v5.5-rc1 and ran it through our
-test system:
-
-    Test results:
-        13 builds:  13 pass, 0 fail
-        22 boots:   22 pass, 0 fail
-        34 tests:   34 pass, 0 fail
-
-    Linux version:  5.5.0-rc1-g3d0b4fced39e
-    Boards tested:  tegra124-jetson-tk1, tegra186-p2771-0000,
-                    tegra194-p2972-0000, tegra20-ventana,
-                    tegra210-p2371-2180, tegra30-cardhu-a04
-
-All tests passing, so:
-
-Tested-by: Thierry Reding <treding@nvidia.com>
-
---yQDbd2FCF2Yhw41T
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl37jvMACgkQ3SOs138+
-s6HZYA/+KkwZWvDrOQ/xInN24cWeziIx62H3vJwfR9+Tjbdww4+9yMeMtj5ZWqMy
-fXJZ5t/UokIk+x9MoUYHUIOB6Iv0JhobZ9vWW9IikMfPKbHUPsQI8PrDG5Irnqxg
-AehGhD5Z11O3CSR/N1AEP5iv5udWFuhcb23FJMBNYhNxx7+DfU0iDJ54BmRKoaTG
-xWH5wBIJIXR06J80bJUaJezl5yocm6I7LgC/rzbiM1R+8hNz/nkyLoon5MEJOvUy
-dfNNn+2upmavuoG+EMcZgKCHPHb8CILSciNrcDmSp2EP1/OOYgm9urytQRrnHwWn
-0a/P//Zasnmb7kUYqcSNa9b8xD7aZ/lMS2zvLmtWHeF9uQigJtxmeFcFEU/DofeV
-LMfxE+ePRof2N7EztSgOxpVqS6V0OMzr5TquUq9d0CxDVkfzq1LHZO+9XY4MCTzi
-xD+Ncn/te+xJmLoiXMMVOnlpa4e3BzO583aBMAR6cLwzNHRhKOAhCws1pxieH9aR
-Bg2vGbwkrDK4c2AouHoNROlu/DN2n+GVhlH+b93P0xRJJAvgvwOhuUnwYj4Nt4Hf
-oTWbSN9AVBRSBQQdnH4R3N6idMPj4SInVWWF2jgvl5IJGGWOtKQCHYI/TmFmu69i
-LKcAZPJjK+eOdWMaoCrhnv0QMN7Of+4Rhx1OLSRm9MX9QF40E6I=
-=CltG
------END PGP SIGNATURE-----
-
---yQDbd2FCF2Yhw41T--
-
---===============1655083522576652243==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1655083522576652243==--
+MTkuMTIuMjAxOSAxNDowMSwgQmFydG9zeiBHb2xhc3pld3NraSDQv9C40YjQtdGCOgo+IG5pZWR6
+LiwgMTUgZ3J1IDIwMTkgbyAxOTozMSBEbWl0cnkgT3NpcGVua28gPGRpZ2V0eEBnbWFpbC5jb20+
+IG5hcGlzYcWCKGEpOgo+Pgo+PiBUaGVyZSBpcyBubyBwb2ludCBpbiB1c2luZyBvbGQtc3R5bGUg
+cmF3IGFjY2Vzc29ycywgdGhlIGdlbmVyaWMgYWNjZXNzb3JzCj4+IGRvIHRoZSBzYW1lIHRoaW5n
+IGFuZCBhbHNvIHRha2UgaW50byBhY2NvdW50IENQVSBlbmRpYW5uZXNzLiBUZWdyYSBTb0NzIGRv
+Cj4+IG5vdCBzdXBwb3J0IGJpZy1lbmRpYW4gbW9kZSBpbiB0aGUgdXBzdHJlYW0ga2VybmVsLCBi
+dXQgbGV0J3Mgc3dpdGNoIGF3YXkKPj4gZnJvbSB0aGUgb3V0ZGF0ZWQgdGhpbmdzIGFueXdheSwg
+anVzdCB0byBrZWVwIGNvZGUgdXAtdG8tZGF0ZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogRG1pdHJ5
+IE9zaXBlbmtvIDxkaWdldHhAZ21haWwuY29tPgo+PiAtLS0KPj4gIGRyaXZlcnMvZ3Bpby9ncGlv
+LXRlZ3JhLmMgfCA0ICsrLS0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIg
+ZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby10ZWdyYS5j
+IGIvZHJpdmVycy9ncGlvL2dwaW8tdGVncmEuYwo+PiBpbmRleCA2ZmRmZTRjNTMwM2UuLmY2YTM4
+MmZiZDEyZCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tdGVncmEuYwo+PiArKysg
+Yi9kcml2ZXJzL2dwaW8vZ3Bpby10ZWdyYS5jCj4+IEBAIC05NiwxMiArOTYsMTIgQEAgc3RydWN0
+IHRlZ3JhX2dwaW9faW5mbyB7Cj4+ICBzdGF0aWMgaW5saW5lIHZvaWQgdGVncmFfZ3Bpb193cml0
+ZWwoc3RydWN0IHRlZ3JhX2dwaW9faW5mbyAqdGdpLAo+PiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgdTMyIHZhbCwgdTMyIHJlZykKPj4gIHsKPj4gLSAgICAgICBfX3Jhd193
+cml0ZWwodmFsLCB0Z2ktPnJlZ3MgKyByZWcpOwo+PiArICAgICAgIHdyaXRlbF9yZWxheGVkKHZh
+bCwgdGdpLT5yZWdzICsgcmVnKTsKPj4gIH0KPj4KPj4gIHN0YXRpYyBpbmxpbmUgdTMyIHRlZ3Jh
+X2dwaW9fcmVhZGwoc3RydWN0IHRlZ3JhX2dwaW9faW5mbyAqdGdpLCB1MzIgcmVnKQo+PiAgewo+
+PiAtICAgICAgIHJldHVybiBfX3Jhd19yZWFkbCh0Z2ktPnJlZ3MgKyByZWcpOwo+PiArICAgICAg
+IHJldHVybiByZWFkbF9yZWxheGVkKHRnaS0+cmVncyArIHJlZyk7Cj4+ICB9Cj4+Cj4+ICBzdGF0
+aWMgdW5zaWduZWQgaW50IHRlZ3JhX2dwaW9fY29tcG9zZSh1bnNpZ25lZCBpbnQgYmFuaywgdW5z
+aWduZWQgaW50IHBvcnQsCj4+IC0tCj4+IDIuMjQuMAo+Pgo+IAo+IFRoZSBlbnRpcmUgc2VyaWVz
+IGxvb2tzIGdvb2QgdG8gbWUsIGJ1dCBJJ2xsIHdhaXQgZm9yIFRoaWVycnkncyBhY2tzCj4ganVz
+dCBpbiBjYXNlLgoKVGhhbmsgeW91IHZlcnkgbXVjaCBmb3IgdGFraW5nIGEgbG9vayBhdCB0aGUg
+cGF0Y2hlcyEKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2Ry
+aXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2
+LWRldmVsCg==
