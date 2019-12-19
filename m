@@ -1,52 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE693126865
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Dec 2019 18:48:16 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 358902372E;
-	Thu, 19 Dec 2019 17:48:15 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pcRhfb8mcsg6; Thu, 19 Dec 2019 17:48:14 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E2C3823509;
-	Thu, 19 Dec 2019 17:48:13 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 68B0C1BF2C7
- for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 17:48:11 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C6B8126F58
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Dec 2019 22:07:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 659AC886A4
- for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 17:48:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C64BE887B3;
+	Thu, 19 Dec 2019 21:07:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id x1H67q7CC3sQ; Thu, 19 Dec 2019 21:07:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id EFBA287DA1;
+	Thu, 19 Dec 2019 21:07:14 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 926E91BF42D
+ for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 21:07:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8EDBA87062
+ for <devel@linuxdriverproject.org>; Thu, 19 Dec 2019 21:07:13 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3M7BxIpqFljz for <devel@linuxdriverproject.org>;
- Thu, 19 Dec 2019 17:48:10 +0000 (UTC)
-X-Greylist: delayed 00:07:19 by SQLgrey-1.7.6
-Received: from mout02.posteo.de (mout02.posteo.de [185.67.36.142])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 01EFB88687
- for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 17:48:09 +0000 (UTC)
-Received: from submission (posteo.de [89.146.220.130]) 
- by mout02.posteo.de (Postfix) with ESMTPS id 14D762400FC
- for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 18:40:47 +0100 (CET)
-Received: from customer (localhost [127.0.0.1])
- by submission (posteo.de) with ESMTPSA id 47dzgL4SfTz9rxM;
- Thu, 19 Dec 2019 18:40:46 +0100 (CET)
-Date: Thu, 19 Dec 2019 18:40:45 +0100 (CET)
-From: Marc Dietrich <marvin24@gmx.de>
-X-X-Sender: lucile@macbook-pro.fritz.box
-To: Xidong Wang <wangxidong_97@163.com>
-Subject: Re: [PATCH 1/1] staging: nvec: check return value
-In-Reply-To: <1576648598-12257-1-git-send-email-wangxidong_97@163.com>
-Message-ID: <alpine.OSX.2.21.1912191837580.5811@macbook-pro.fritz.box>
-References: <1576648598-12257-1-git-send-email-wangxidong_97@163.com>
-User-Agent: Alpine 2.21 (OSX 202 2017-01-01)
+ with ESMTP id RUw2omsyXXJK for <devel@linuxdriverproject.org>;
+ Thu, 19 Dec 2019 21:07:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from standard7.doveserver.com (standard7.doveserver.com
+ [67.220.187.210])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0769587059
+ for <devel@driverdev.osuosl.org>; Thu, 19 Dec 2019 21:07:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=joeblasc0.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=5nz6drlcwLkkcnrPddyhNVU4n5QUNNiisMSZ45MDcC0=; b=u0u6wwYfguTg57pAJZ9RXmBeeG
+ Qkbguf20kkNzaUL+cT+0k5XkImbBDSZjMQ83lC+wIs+LqQd981ugWMFLv63Qih1P4uDATEKJc3ODw
+ HT0lg4WVYJcP35zWAx7hKMSNEg3mj/F97SL4wwCqgZcv4UaZxxTe/T+ktwBskh1vVaduHOKRJoXHm
+ C27sWwLFC+zy8nWUbcJRH/C6KSGCaKfsSU50eCnfyF2jx+Q3ty9lNDb4ow9/x4WH0yVQA89iSEjhn
+ nhOm8++PB2t0Po9mJ4NgyGqkStn5ZFM4ANnDmOoFmMc8wlLBE4hhsUe30rBpsXIkqbnumsj4LFaPN
+ xiHyfdTw==;
+Received: from [172.107.168.105] (port=49612 helo=gmail.com)
+ by standard7.doveserver.com with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92)
+ (envelope-from <info@gmail.com>) id 1ihnrZ-00DUaH-GX
+ for devel@driverdev.osuosl.org; Thu, 19 Dec 2019 05:56:37 +0100
+From: Mr Lili <info@gmail.com>
+To: devel@driverdev.osuosl.org
+Subject: hello
+Date: 18 Dec 2019 22:59:14 -0800
+Message-ID: <20191218225913.8695B5DE085B4872@gmail.com>
 MIME-Version: 1.0
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - standard7.doveserver.com
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - gmail.com
+X-Get-Message-Sender-Via: standard7.doveserver.com: authenticated_id:
+ 4thuser@joeblasc0.com
+X-Authenticated-Sender: standard7.doveserver.com: 4thuser@joeblasc0.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,48 +79,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
- ac100@lists.launchpad.net
+Reply-To: songlile110@gmail.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Xidong,
+Hello,
 
-On Wed, 18 Dec 2019, Xidong Wang wrote:
-
-> In nvec_kbd_probe(), the return value of devm_input_allocate_device()
-> should be checked before it is used.
->
-> Signed-off-by: Xidong Wang <wangxidong_97@163.com>
-
-looks good to me. Thanks!
-
-Acked-by: Marc Dietrich <marvin24@gmx.de>
-
-> ---
-> drivers/staging/nvec/nvec_kbd.c | 2 ++
-> 1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/staging/nvec/nvec_kbd.c b/drivers/staging/nvec/nvec_kbd.c
-> index 01dbb66..386d619 100644
-> --- a/drivers/staging/nvec/nvec_kbd.c
-> +++ b/drivers/staging/nvec/nvec_kbd.c
-> @@ -123,6 +123,8 @@ static int nvec_kbd_probe(struct platform_device *pdev)
-> 		keycodes[j++] = extcode_tab_us102[i];
->
-> 	idev = devm_input_allocate_device(&pdev->dev);
-> +	if (!idev)
-> +		return -ENOMEM;
-> 	idev->name = "nvec keyboard";
-> 	idev->phys = "nvec";
-> 	idev->evbit[0] = BIT_MASK(EV_KEY) | BIT_MASK(EV_REP) | BIT_MASK(EV_LED);
-> -- 
-> 2.7.4
->
->
+My name is Mr.Song Lile (I work with a Bank as an account officer 
+in the
+Treasury/Credit Control Unit) I want to solicit your attention to 
+receive the money on my behalf.
+The purpose of my contacting you is because you live in outside 
+Hong Kong.
+When you reply this message, I will send you the full details and 
+more
+information about myself and the funds.
+Thank you.
+Kindest regards,
+Mr.Song Lile
+songlile110@gmail.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
