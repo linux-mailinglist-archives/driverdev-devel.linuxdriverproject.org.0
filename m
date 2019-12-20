@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE9771283A9
-	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Dec 2019 22:15:44 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 567711283AB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Dec 2019 22:16:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8529387463;
-	Fri, 20 Dec 2019 21:15:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 468168836A;
+	Fri, 20 Dec 2019 21:16:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2jD0ROSywPyE; Fri, 20 Dec 2019 21:15:43 +0000 (UTC)
+	with ESMTP id OkwQQT7KYeQw; Fri, 20 Dec 2019 21:16:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B39987440;
-	Fri, 20 Dec 2019 21:15:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 13CC088365;
+	Fri, 20 Dec 2019 21:16:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B47EF1BF358
- for <devel@linuxdriverproject.org>; Fri, 20 Dec 2019 21:15:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C7D6E1BF358
+ for <devel@linuxdriverproject.org>; Fri, 20 Dec 2019 21:16:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 958CB2578F
- for <devel@linuxdriverproject.org>; Fri, 20 Dec 2019 21:15:37 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C43E522718
+ for <devel@linuxdriverproject.org>; Fri, 20 Dec 2019 21:16:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ONsKI6eQyFeT for <devel@linuxdriverproject.org>;
- Fri, 20 Dec 2019 21:15:37 +0000 (UTC)
+ with ESMTP id UPnWo2Q8ehZR for <devel@linuxdriverproject.org>;
+ Fri, 20 Dec 2019 21:16:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by silver.osuosl.org (Postfix) with ESMTPS id BC1042036C
- for <devel@driverdev.osuosl.org>; Fri, 20 Dec 2019 21:15:36 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id b6so10756020wrq.0
- for <devel@driverdev.osuosl.org>; Fri, 20 Dec 2019 13:15:36 -0800 (PST)
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id D467C2036C
+ for <devel@driverdev.osuosl.org>; Fri, 20 Dec 2019 21:16:02 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id p17so10613713wmb.0
+ for <devel@driverdev.osuosl.org>; Fri, 20 Dec 2019 13:16:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:subject:to:cc:message-id:date:user-agent:mime-version
  :content-language:content-transfer-encoding;
- bh=FLht3eUWNXs6lo9p5N6z2g5upmRAxQH3eB+FrBn/Kgc=;
- b=K0RdfDG6HBVHeVm4klEa3HTNSoqWmdeDnLjAZnzUMCUx6CuiRWJV33bxJLY3HAxPg3
- s/jgNAT5E3HwhA2DkToLyYDL9YeSOPtXR07In96Iwm2o7acrpKkyTexGUWY8WD3OqZA1
- oHVMCIv1X5gK6W2emDQepLJcx87Jt2Da3eKt4fM0KEkm+XTGBRn1gFaJrg6v37Bf0rWk
- ua+tc7h5irsbflU/FBP2ySKHo2cWf1ICbXaOsOweBEfmrODbdL3HXorfM8Cw5wv8wi7C
- mBP/Mn5SA3J7vW2OgljeTFv8bfAbULMHKG4KbibMJ+na0awZU1+5w9ZtyyYqsFNP8zCF
- sqng==
+ bh=zideRvbQya3S6yG2bNBBG470vEvEA3jLiVBYuDsMFeM=;
+ b=g7VP7YDeKo02oWgqpA4AvkZ2F9tzOvpnZVkfBVHwPBpIW9h33WCWxyt2e8kHuV/6rA
+ BLCy3tep7X5/J3NSMHgVKRwfMUbjXpiGLbFS3NbCHvwP0nDMiZeaiQ1nu8vlc+NR0fiD
+ mSVhL73fKwXE0oM0IP6lUXpQ8y2opZOIFZdu2bim4KzVmxmd8qAgFaFbUBk31PIsMh86
+ 56MNnUjvhw/t1PKcqMZ6+wQO1skBpaCAKJemXY2OpuCFDR2TBTnEdI/A7DyzI0b1QS06
+ 7g+21aT3AMlwFSWQBl9RhjLuoM6KCGgQZbFkcNp16MF3k2hV7Qs7rPPmybOdk0ASvyE6
+ HLvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=FLht3eUWNXs6lo9p5N6z2g5upmRAxQH3eB+FrBn/Kgc=;
- b=i9uwCqyEk9Td0Z6JU6VPQXm4ElmacTxa603cnze/wn1zadoscOU2oDeAgp3OfU7iAl
- rYahu3YsKfWB8bgUleVqZnIE3tSPXfUByLLlRvJNRxZPugXIEJYH1GeUzo0dp9CoVNj6
- YGyMUx4O0NeWgs/BbNNiEX+nrRP3WEo1rpHje+5C8Wf2F0yv6zd4DgsOPFKabZNgPDIw
- JoDrbspC2Hf6K/WCkYykig9UDowj0gTRXEXRjjh5U3efmolZ3szFUekj2b8MQXuZYdE4
- F6X0xqQ0mrMfhscc2HUikZsBfWZPnBOwcKIPkBlnONIk5Dc3JttH5NVe97Y7xLHfnEMr
- ltxA==
-X-Gm-Message-State: APjAAAUeN6NZznYcAtSyWQpS8XtkrC1W8g2elTyWlZF/Cu0QXLhH3vsV
- 43LmRF25ZolBqbNbgRJRkRNcJ99X
-X-Google-Smtp-Source: APXvYqyKMmz1OMIXF+g+uS6vq8IyZPozcmqrVQeWnM5ZH8BxmmyhbQbIi2dxgM9y8nOCUBt9wYnhlQ==
-X-Received: by 2002:a5d:6211:: with SMTP id y17mr17090318wru.344.1576876535163; 
- Fri, 20 Dec 2019 13:15:35 -0800 (PST)
+ bh=zideRvbQya3S6yG2bNBBG470vEvEA3jLiVBYuDsMFeM=;
+ b=DhrvrqP+oCk16TtB3WE85mYZEsJHhtFoG0f2Xl3Tde+2C4evC08Sxhd0GqfcplPpwB
+ yt2jo05Z2SmnZY0iPJbawPnlYBE/R1B89iKYZU5w9aRhfEOR43jspuJg800mItGgtU/6
+ sAArGvH4RusWqwEQg1ghB06C6cFqTlVwOvLDtqsNBMx6jvZZmxdCxYaSlbhmwfH/ZMsn
+ USoVscS91KEumjibHTJqb+3dkxlEQwaEAM7F+DS7XOw9oklbDa/bnmyh88nMky6otqMb
+ I/58BPiqvgUt6oINkaDRGLQutSIb4Lrv9bHoqReqf8JQHnbI3RydKuK2coXaiPLwyb3T
+ 4mkw==
+X-Gm-Message-State: APjAAAVm57aXe5oZu7M5C5KfNmEXMYLP/x8NXN2F3Q5YJ+8Z2aVri+uH
+ M30Yyppya2dVFEoBX+Y/vnK9e2oT
+X-Google-Smtp-Source: APXvYqzAbrRAKoMNr0uA0TaX4Tsvd0x591QShVQode8m8axXVTfwbDZHRip3f+IjdfU3X8fM1zkX1Q==
+X-Received: by 2002:a1c:8116:: with SMTP id c22mr17965072wmd.27.1576876561238; 
+ Fri, 20 Dec 2019 13:16:01 -0800 (PST)
 Received: from [192.168.43.18] (92.40.248.136.threembb.co.uk. [92.40.248.136])
  by smtp.gmail.com with ESMTPSA id
- g199sm11800298wmg.12.2019.12.20.13.15.33
+ o7sm10564701wmh.11.2019.12.20.13.15.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Dec 2019 13:15:34 -0800 (PST)
+ Fri, 20 Dec 2019 13:16:00 -0800 (PST)
 From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH 4/5] staging: vt6656: remove bool from vnt_radio_power_on ret
+Subject: [PATCH 5/5] staging: vt6656: set usb_set_intfdata on driver fail.
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Message-ID: <cc52b67c-9ef8-3e57-815a-44d10701919e@gmail.com>
-Date: Fri, 20 Dec 2019 21:15:33 +0000
+Message-ID: <6de448d7-d833-ef2e-dd7b-3ef9992fee0e@gmail.com>
+Date: Fri, 20 Dec 2019 21:15:59 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.0
 MIME-Version: 1.0
@@ -92,26 +92,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The driver uses logical only error checking a bool true would flag error.
+intfdata will contain stale pointer when the device is detached after
+failed initialization when referenced in vt6656_disconnect
 
+Provide driver access to it here and NULL it.
+
+Cc: stable <stable@vger.kernel.org>
 Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- drivers/staging/vt6656/card.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/vt6656/device.h   | 1 +
+ drivers/staging/vt6656/main_usb.c | 1 +
+ drivers/staging/vt6656/wcmd.c     | 1 +
+ 3 files changed, 3 insertions(+)
 
-diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index 56cd77fd9ea0..7958fc165462 100644
---- a/drivers/staging/vt6656/card.c
-+++ b/drivers/staging/vt6656/card.c
-@@ -719,7 +719,7 @@ int vnt_radio_power_off(struct vnt_private *priv)
-  */
- int vnt_radio_power_on(struct vnt_private *priv)
- {
--	int ret = true;
-+	int ret = 0;
+diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
+index 6074ceda78bf..50e1c8918040 100644
+--- a/drivers/staging/vt6656/device.h
++++ b/drivers/staging/vt6656/device.h
+@@ -259,6 +259,7 @@ struct vnt_private {
+ 	u8 mac_hw;
+ 	/* netdev */
+ 	struct usb_device *usb;
++	struct usb_interface *intf;
  
- 	vnt_exit_deep_sleep(priv);
+ 	u64 tsf_time;
+ 	u8 rx_rate;
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index 4a5d741f94f5..9cb924c54571 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -992,6 +992,7 @@ vt6656_probe(struct usb_interface *intf, const struct usb_device_id *id)
+ 	priv = hw->priv;
+ 	priv->hw = hw;
+ 	priv->usb = udev;
++	priv->intf = intf;
  
+ 	vnt_set_options(priv);
+ 
+diff --git a/drivers/staging/vt6656/wcmd.c b/drivers/staging/vt6656/wcmd.c
+index 3eb2f11a5de1..2c5250ca2801 100644
+--- a/drivers/staging/vt6656/wcmd.c
++++ b/drivers/staging/vt6656/wcmd.c
+@@ -99,6 +99,7 @@ void vnt_run_command(struct work_struct *work)
+ 		if (vnt_init(priv)) {
+ 			/* If fail all ends TODO retry */
+ 			dev_err(&priv->usb->dev, "failed to start\n");
++			usb_set_intfdata(priv->intf, NULL);
+ 			ieee80211_free_hw(priv->hw);
+ 			return;
+ 		}
 -- 
 2.24.0
 _______________________________________________
