@@ -1,51 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D954C1285ED
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Dec 2019 01:15:55 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AED1C128C23
+	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Dec 2019 02:19:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 44D928742D;
-	Sat, 21 Dec 2019 00:15:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DCE9720500;
+	Sun, 22 Dec 2019 01:19:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R4R-KDD8Ziyh; Sat, 21 Dec 2019 00:15:53 +0000 (UTC)
+	with ESMTP id MrDZOco31-IE; Sun, 22 Dec 2019 01:19:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E41F087402;
-	Sat, 21 Dec 2019 00:15:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E8E73204B2;
+	Sun, 22 Dec 2019 01:19:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0B9AD1BF9C8
- for <devel@linuxdriverproject.org>; Sat, 21 Dec 2019 00:15:50 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1CE541BF25B
+ for <devel@linuxdriverproject.org>; Sun, 22 Dec 2019 01:19:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 00D2B88A38
- for <devel@linuxdriverproject.org>; Sat, 21 Dec 2019 00:15:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1977586200
+ for <devel@linuxdriverproject.org>; Sun, 22 Dec 2019 01:19:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w0AOr77meNsd for <devel@linuxdriverproject.org>;
- Sat, 21 Dec 2019 00:15:47 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1940188A2D
- for <devel@driverdev.osuosl.org>; Sat, 21 Dec 2019 00:15:47 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <colin.king@canonical.com>)
- id 1iiSQq-0003Lv-B8; Sat, 21 Dec 2019 00:15:44 +0000
-From: Colin King <colin.king@canonical.com>
-To: =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-Subject: [PATCH][next] staging: wfx: check for memory allocation failures from
- wfx_alloc_hif
-Date: Sat, 21 Dec 2019 00:15:43 +0000
-Message-Id: <20191221001543.15255-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.24.0
+ with ESMTP id Bvk3OKDI7owr for <devel@linuxdriverproject.org>;
+ Sun, 22 Dec 2019 01:19:14 +0000 (UTC)
+X-Greylist: delayed 00:30:56 by SQLgrey-1.7.6
+Received: from relay.tapes.rs.gov.br (relay.tapes.rs.gov.br [186.208.189.211])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5472085FA1
+ for <devel@driverdev.osuosl.org>; Sun, 22 Dec 2019 01:19:14 +0000 (UTC)
+Received: from relay.tapes.rs.gov.br (localhost.localdomain [127.0.0.1])
+ by relay.tapes.rs.gov.br (MAILA NETWORKS) with ESMTP id 1F8B15E3208;
+ Sat, 21 Dec 2019 21:35:50 -0300 (-03)
+Received: from mail.tapes.rs.gov.br (mail.tapes.rs.gov.br [172.16.207.98])
+ by relay.tapes.rs.gov.br (MAILA NETWORKS) with ESMTP id 05BBD5E187F;
+ Sat, 21 Dec 2019 21:35:49 -0300 (-03)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.tapes.rs.gov.br (Postfix) with ESMTP id A69FA13C3954;
+ Sat, 21 Dec 2019 21:35:40 -0300 (-03)
+Received: from mail.tapes.rs.gov.br ([127.0.0.1])
+ by localhost (mail.tapes.rs.gov.br [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id os55AL1B7ZKO; Sat, 21 Dec 2019 21:35:38 -0300 (-03)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.tapes.rs.gov.br (Postfix) with ESMTP id D819313C1C23;
+ Sat, 21 Dec 2019 20:20:07 -0300 (-03)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.tapes.rs.gov.br D819313C1C23
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tapes.rs.gov.br;
+ s=F7D81972-B7E0-11E6-B070-76F4540BF914; t=1576970408;
+ bh=biEHBP5vh+ocbbp6wcnog5kTCnMA8zm1dzb6dpqgOkc=;
+ h=Date:From:Message-ID:MIME-Version;
+ b=BMH+/yh8fQikiefp8NOZIgTDBnYp/dyp55ChARnfqrAqP3ozmAB4t0EdyRVepgllJ
+ vrwsumh2VehL/0+xUMlPJIGKDybnRRU8IAWbpWMPH/+KvTGZ9IuUdXw0Mr5guWjHK7
+ SHQIjS1zaLK7LcjJYlxSRqhY2wc8EhwMTTMZYVk8Lm1zHkWBeO88A/Th9ZMbAWTEHB
+ TvSO3v91BqtutLp1rZZyee2xGJJsGApgnAO6L3x91fDNVdTARy1VehjlURgRRtIbf/
+ 0S9ZRjj/4TMZQOkWJeguvCH4cpaOaqqhSvOQGHmNZH4PWLXzcBzvdnrJ4cjXKW0oqD
+ zaGzdG3ndW72A==
+X-Virus-Scanned: amavisd-new at mail.tapes.rs.gov.br
+Received: from mail.tapes.rs.gov.br ([127.0.0.1])
+ by localhost (mail.tapes.rs.gov.br [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id G_U0FGIBaP0J; Sat, 21 Dec 2019 20:20:06 -0300 (-03)
+Received: from mail.tapes.rs.gov.br (mail.pmtapes.com.br [172.16.207.98])
+ by mail.tapes.rs.gov.br (Postfix) with ESMTP id A97E113C0946;
+ Sat, 21 Dec 2019 19:36:58 -0300 (-03)
+Date: Sat, 21 Dec 2019 20:36:58 -0200 (BRST)
+From: Major Dennis Hornbeck <creas@tapes.rs.gov.br>
+Message-ID: <333668463.535990.1576967818383.JavaMail.zimbra@tapes.rs.gov.br>
+Subject: 
 MIME-Version: 1.0
+X-Originating-IP: [197.237.36.86]
+X-Mailer: Zimbra 8.8.12_GA_3866 (zclient/8.8.12_GA_3866)
+Thread-Index: t86FgXCbFvOno+eVnn8RX0QxXM5I9A==
+Thread-Topic: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,111 +85,17 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Major Dennis Hornbeck <hornbeckmajordennis637@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
-
-Currently calls to wfx_alloc_hif are not checking for a null return
-when a memory allocation fails and this leads to null pointer
-dereferencing issues.  Fix this by adding null pointer checks and
-returning passing down -ENOMEM errors where necessary. The error
-checking in the current driver is a bit sparse, so this may need
-some extra attention later if required.
-
-Fixes: f95a29d40782 ("staging: wfx: add HIF commands helpers")
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/staging/wfx/hif_tx.c |  6 ++++++
- drivers/staging/wfx/sta.c    | 13 +++++++------
- 2 files changed, 13 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/wfx/hif_tx.c b/drivers/staging/wfx/hif_tx.c
-index 8a34a52dd5b9..d8e159670eae 100644
---- a/drivers/staging/wfx/hif_tx.c
-+++ b/drivers/staging/wfx/hif_tx.c
-@@ -366,6 +366,9 @@ int hif_set_edca_queue_params(struct wfx_vif *wvif, u16 queue,
- 	struct hif_req_edca_queue_params *body = wfx_alloc_hif(sizeof(*body),
- 							       &hif);
- 
-+	if (!body)
-+		return -ENOMEM;
-+
- 	WARN_ON(arg->aifs > 255);
- 	body->aifsn = arg->aifs;
- 	body->cw_min = cpu_to_le16(arg->cw_min);
-@@ -390,6 +393,9 @@ int hif_set_pm(struct wfx_vif *wvif, bool ps, int dynamic_ps_timeout)
- 	struct hif_msg *hif;
- 	struct hif_req_set_pm_mode *body = wfx_alloc_hif(sizeof(*body), &hif);
- 
-+	if (!body)
-+		return -ENOMEM;
-+
- 	if (ps) {
- 		body->pm_mode.enter_psm = 1;
- 		// Firmware does not support more than 128ms
-diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-index 9a61478d98f8..c08d691fe870 100644
---- a/drivers/staging/wfx/sta.c
-+++ b/drivers/staging/wfx/sta.c
-@@ -316,6 +316,7 @@ int wfx_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- {
- 	struct wfx_dev *wdev = hw->priv;
- 	struct wfx_vif *wvif = (struct wfx_vif *) vif->drv_priv;
-+	int ret = 0;
- 
- 	WARN_ON(queue >= hw->queues);
- 
-@@ -326,10 +327,10 @@ int wfx_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	if (wvif->vif->type == NL80211_IFTYPE_STATION) {
- 		hif_set_uapsd_info(wvif, wvif->uapsd_mask);
- 		if (wvif->setbssparams_done && wvif->state == WFX_STATE_STA)
--			wfx_update_pm(wvif);
-+			ret = wfx_update_pm(wvif);
- 	}
- 	mutex_unlock(&wdev->conf_mutex);
--	return 0;
-+	return ret;
- }
- 
- int wfx_set_rts_threshold(struct ieee80211_hw *hw, u32 value)
-@@ -1322,7 +1323,7 @@ int wfx_config(struct ieee80211_hw *hw, u32 changed)
- 	if (changed & IEEE80211_CONF_CHANGE_PS) {
- 		wvif = NULL;
- 		while ((wvif = wvif_iterate(wdev, wvif)) != NULL)
--			wfx_update_pm(wvif);
-+			ret = wfx_update_pm(wvif);
- 		wvif = wdev_to_wvif(wdev, 0);
- 	}
- 
-@@ -1333,7 +1334,7 @@ int wfx_config(struct ieee80211_hw *hw, u32 changed)
- 
- int wfx_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- {
--	int i;
-+	int i, ret = 0;
- 	struct wfx_dev *wdev = hw->priv;
- 	struct wfx_vif *wvif = (struct wfx_vif *) vif->drv_priv;
- 
-@@ -1417,9 +1418,9 @@ int wfx_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 		else
- 			hif_set_block_ack_policy(wvif, 0x00, 0x00);
- 		// Combo force powersave mode. We can re-enable it now
--		wfx_update_pm(wvif);
-+		ret = wfx_update_pm(wvif);
- 	}
--	return 0;
-+	return ret;
- }
- 
- void wfx_remove_interface(struct ieee80211_hw *hw,
--- 
-2.24.0
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgotLSAKSSBhbSBpbiB0aGUgbWlsaXRhcnkgdW5pdCBoZXJlIGluIEFmZ2hhbmlzdGFuLCB3ZSBo
+YXZlIHNvbWUgYW1vdW50IG9mIGZ1bmRzIHRoYXQgd2Ugd2FudCB0byBtb3ZlIG91dCBvZiB0aGUg
+Y291bnRyeS4gTXkgcGFydG5lcnMgYW5kIEkgbmVlZCBhIGdvb2QgcGFydG5lciBzb21lb25lIHdl
+IGNhbiB0cnVzdC4gSXQgaXMgcmlzayBmcmVlIGFuZCBsZWdhbC4gUmVwbHkgZm9yIG1vcmUgZGV0
+YWlscy7CoMKgUmVnYXJkcyxNYWpvciBEZW5uaXMgSG9ybmJlY2suCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxA
+bGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVj
+dC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
