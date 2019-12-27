@@ -1,77 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8194E12B34A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Dec 2019 09:42:23 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1288E12B602
+	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Dec 2019 18:01:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5B8D28557B;
-	Fri, 27 Dec 2019 08:42:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8270E85ABE;
+	Fri, 27 Dec 2019 17:01:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IMeLhM-D0cDm; Fri, 27 Dec 2019 08:42:21 +0000 (UTC)
+	with ESMTP id ikb3qPggpBjS; Fri, 27 Dec 2019 17:01:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3CFE985567;
-	Fri, 27 Dec 2019 08:42:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AF75485AB5;
+	Fri, 27 Dec 2019 17:01:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 62A661BF327
- for <devel@linuxdriverproject.org>; Fri, 27 Dec 2019 08:42:16 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7CEAC1BF2A0
+ for <devel@linuxdriverproject.org>; Fri, 27 Dec 2019 17:01:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5EFE88553C
- for <devel@linuxdriverproject.org>; Fri, 27 Dec 2019 08:42:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 77B2285AB5
+ for <devel@linuxdriverproject.org>; Fri, 27 Dec 2019 17:01:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id N3JrycRBAKQ9 for <devel@linuxdriverproject.org>;
- Fri, 27 Dec 2019 08:42:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
- [209.85.160.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A7A83854B3
- for <devel@driverdev.osuosl.org>; Fri, 27 Dec 2019 08:42:15 +0000 (UTC)
-Received: by mail-qt1-f195.google.com with SMTP id l12so24092730qtq.12
- for <devel@driverdev.osuosl.org>; Fri, 27 Dec 2019 00:42:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=Anodsp7HhKNo2COqD0EzVnUmrpQEB4ruVuLqYxaKVKI=;
- b=FaaKKhNodJIMTsMa8679JHazvL379a59zpE7JGE0WoT0ajb/r5nQioatXVOK/0zGUi
- Lt0c2EdHg+Kwhl8f6XHqugkkAFEnNaYPB1PCp9UP+Ii4gvDO+b6xckebXtExVzDgUyb8
- A7wTmOPvmse7VdGVShYgiKcHBmdBAzDhKspsoO1V/4XeIHZnN5DN2KC44kmqxRCI8/oy
- rwvWuS4hg+JkdO2sQ35dq4IgklE0VcbhSKkRNnhIrAbTsNqotAo4E+FA8DeyGXq7ekhm
- r1j6sREdX0j1PqO+x9lR2+zre0aJUqPuyDB4NW7v4KUBVIpSk5YV79+o4/uiJ4h3f7Q4
- W6DA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=Anodsp7HhKNo2COqD0EzVnUmrpQEB4ruVuLqYxaKVKI=;
- b=dNaNPE/DTzsi//qRUbv86fjpmbN0n7dNYBmY0M69ZOp5q+P0yPEuD1k46sDHkqvy5P
- vgsOSZcUcOtQnezuuzjenMT32A+MXAVoKugK5pOfLh6mENWlm0ZCNtCsa4PIYx1MUO5F
- /8eV1hbzq/8KJfib8vSPPu5DYFMr+fo01QYpAMiW0GafTh2S/TBSRAlSyG8V9SUYSYKH
- Ng9PfNNtygg4Nimtyfgc6hmXVZ3ylYlS2sjSA6chEYCfFXqeSyEeoYUfjIUTTuc7uHkj
- WWm5zFCRue7MvVdsYT85JH2fjFZbA8A8Q0NdR9ZA7IjBPLWn5BmFyW9BLd5ud2NuvHG0
- B34Q==
-X-Gm-Message-State: APjAAAXPFUcrEMup6eNikhGCgLWS9FNbJg9dhmp4DQzOnMVNmlcu9iL/
- mW9O9fH1NMPIyuI852zdBXk=
-X-Google-Smtp-Source: APXvYqxoXNxINuI+zJVJWk5IUvkPkuygIji6JWYiWR32IMWCk44nVD+LOYBFTBvJK/tNSiqTtgfHJw==
-X-Received: by 2002:ac8:6f04:: with SMTP id g4mr36752946qtv.314.1577436134769; 
- Fri, 27 Dec 2019 00:42:14 -0800 (PST)
-Received: from mandalore.localdomain
- (pool-71-244-100-50.phlapa.fios.verizon.net. [71.244.100.50])
- by smtp.gmail.com with ESMTPSA id g62sm9499559qkd.25.2019.12.27.00.42.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Dec 2019 00:42:14 -0800 (PST)
-Date: Fri, 27 Dec 2019 03:41:55 -0500
-From: Matthew Hanzelik <mrhanzelik@gmail.com>
-To: gregkh@linuxfoundation.com, christian.gromm@microchip.com
-Subject: [PATCH v2] Staging: most: core: Fix SPDX License Identifier style
- issue
-Message-ID: <20191227084155.xpmv2thwrrsij5kx@mandalore.localdomain>
+ with ESMTP id cjt6cv5WOXPO for <devel@linuxdriverproject.org>;
+ Fri, 27 Dec 2019 17:01:15 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp107.ord1d.emailsrvr.com (smtp107.ord1d.emailsrvr.com
+ [184.106.54.107])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id ABC7385AA1
+ for <devel@driverdev.osuosl.org>; Fri, 27 Dec 2019 17:01:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
+ s=20190322-9u7zjiwi; t=1577466075;
+ bh=8ASEO9nb1s4EYQzxV1kAkTa3727cqCnOOe7ocLSymVg=;
+ h=From:To:Subject:Date:From;
+ b=Bf56xgAvmL+QWeNgo80a0UXrlRzHeyeHDNmXeUc44xtLpAIBESlCTFLgob9yR8x6F
+ hvaOP2uYWw8eIz7QozWPrz2WDZdtVlbXmnX/o5tJ/7x7vyuqD7SpsY/CtjN/illg6P
+ BPvLtqigFx+uzQtgoKvAmKc7cbQYd6L2FRTq8Qvg=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1577466075;
+ bh=8ASEO9nb1s4EYQzxV1kAkTa3727cqCnOOe7ocLSymVg=;
+ h=From:To:Subject:Date:From;
+ b=EE4Dtcpfgy7khxaSo8J06m4OOlR5f7Dfq3OD/ptrNjgndvs687adT/fwEfE1V4lGt
+ MWDlBnnclaZUtJIsFkk9wz/Rua3HJyZY4czq3/9iwkOz7djtErb2zE3qGpWcbXLwbQ
+ nHUnnfMUE1mzKvWBARAX5pBL3jxIXNiR8MMvy8aE=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp6.relay.ord1d.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id EB661E0408; 
+ Fri, 27 Dec 2019 12:01:13 -0500 (EST)
+X-Sender-Id: abbotti@mev.co.uk
+Received: from konata.homenet (redmecca.plus.com [80.229.15.156])
+ (using TLSv1.2 with cipher DHE-RSA-AES128-GCM-SHA256)
+ by 0.0.0.0:465 (trex/5.7.12); Fri, 27 Dec 2019 12:01:14 -0500
+From: Ian Abbott <abbotti@mev.co.uk>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH] staging: comedi: adv_pci1710: fix AI channels 16-31 for
+ PCI-1713
+Date: Fri, 27 Dec 2019 17:00:54 +0000
+Message-Id: <20191227170054.32051-1-abbotti@mev.co.uk>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,33 +74,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: Dmytro Fil <monkdaf@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, Ian Abbott <abbotti@mev.co.uk>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed a style issue with the SPDX License Identifier style.
+The Advantech PCI-1713 has 32 analog input channels, but an incorrect
+bit-mask in the definition of the `PCI171X_MUX_CHANH(x)` and
+PCI171X_MUX_CHANL(x)` macros is causing channels 16 to 31 to be aliases
+of channels 0 to 15.  Change the bit-mask value from 0xf to 0xff to fix
+it.  Note that the channel numbers will have been range checked already,
+so the bit-mask isn't really needed.
 
-Signed-off-by: Matthew Hanzelik <mrhanzelik@gmail.com>
+Fixes: 92c65e5553ed ("staging: comedi: adv_pci1710: define the mux control register bits")
+Reported-by: Dmytro Fil <monkdaf@gmail.com>
+Cc: <stable@vger.kernel.org> # v4.5+
+Signed-off-by: Ian Abbott <abbotti@mev.co.uk>
 ---
-Changes in v2:
-  - Fix trailing space in patch diff
+ drivers/staging/comedi/drivers/adv_pci1710.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/most/core.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/most/core.h b/drivers/staging/most/core.h
-index 49859aef98df..1380e7586376 100644
---- a/drivers/staging/most/core.h
-+++ b/drivers/staging/most/core.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * most.h - API for component and adapter drivers
-  *
---
+diff --git a/drivers/staging/comedi/drivers/adv_pci1710.c b/drivers/staging/comedi/drivers/adv_pci1710.c
+index dbff0f7e7cf5..ddc0dc93d08b 100644
+--- a/drivers/staging/comedi/drivers/adv_pci1710.c
++++ b/drivers/staging/comedi/drivers/adv_pci1710.c
+@@ -46,8 +46,8 @@
+ #define PCI171X_RANGE_UNI	BIT(4)
+ #define PCI171X_RANGE_GAIN(x)	(((x) & 0x7) << 0)
+ #define PCI171X_MUX_REG		0x04	/* W:   A/D multiplexor control */
+-#define PCI171X_MUX_CHANH(x)	(((x) & 0xf) << 8)
+-#define PCI171X_MUX_CHANL(x)	(((x) & 0xf) << 0)
++#define PCI171X_MUX_CHANH(x)	(((x) & 0xff) << 8)
++#define PCI171X_MUX_CHANL(x)	(((x) & 0xff) << 0)
+ #define PCI171X_MUX_CHAN(x)	(PCI171X_MUX_CHANH(x) | PCI171X_MUX_CHANL(x))
+ #define PCI171X_STATUS_REG	0x06	/* R:   status register */
+ #define PCI171X_STATUS_IRQ	BIT(11)	/* 1=IRQ occurred */
+-- 
 2.24.1
 
 _______________________________________________
