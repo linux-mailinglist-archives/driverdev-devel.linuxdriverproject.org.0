@@ -2,75 +2,71 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36AF712CB27
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Dec 2019 23:32:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0822912CBF6
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Dec 2019 03:41:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 527F182D5F;
-	Sun, 29 Dec 2019 22:32:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 40F6984AD8;
+	Mon, 30 Dec 2019 02:41:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8UtMJph5SgHb; Sun, 29 Dec 2019 22:32:06 +0000 (UTC)
+	with ESMTP id BOVlKhnoGAOC; Mon, 30 Dec 2019 02:41:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D88B482404;
-	Sun, 29 Dec 2019 22:32:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 02810838F6;
+	Mon, 30 Dec 2019 02:40:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9573E1BF429
- for <devel@linuxdriverproject.org>; Sun, 29 Dec 2019 22:32:04 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A2D8C1BF340
+ for <devel@linuxdriverproject.org>; Mon, 30 Dec 2019 02:40:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8F56B20013
- for <devel@linuxdriverproject.org>; Sun, 29 Dec 2019 22:32:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9C62F84896
+ for <devel@linuxdriverproject.org>; Mon, 30 Dec 2019 02:40:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3zRu5iX-SBcW for <devel@linuxdriverproject.org>;
- Sun, 29 Dec 2019 22:32:04 +0000 (UTC)
+ with ESMTP id 9bnIfKtQ8kSB for <devel@linuxdriverproject.org>;
+ Mon, 30 Dec 2019 02:40:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by silver.osuosl.org (Postfix) with ESMTPS id DED531FEE0
- for <devel@driverdev.osuosl.org>; Sun, 29 Dec 2019 22:32:03 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id d18so25891691qtj.10
- for <devel@driverdev.osuosl.org>; Sun, 29 Dec 2019 14:32:03 -0800 (PST)
+Received: from mail-il1-f196.google.com (mail-il1-f196.google.com
+ [209.85.166.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1448B84580
+ for <devel@driverdev.osuosl.org>; Mon, 30 Dec 2019 02:40:57 +0000 (UTC)
+Received: by mail-il1-f196.google.com with SMTP id p8so26811062iln.12
+ for <devel@driverdev.osuosl.org>; Sun, 29 Dec 2019 18:40:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=f0XyFhJxaSBsnLc48u6S2zxUb8AEk9qkcHvQljdmaTU=;
- b=AEzg80a4E/lCAAF6qfluK2eflndpb9glCkRlugCIji4phnCLE+0W2wIJ02plJqYent
- Jo6nvfIBtX6sJO1WlPmf25BoARnvJL02Y85423L9EGtRGWEDnlpvSXe4Qv7cgt3Lw8tb
- 82/+A/IdCZ4gizrtBYmbcDFzOhBAEOfrfgpL4VaehSFZ9IRtyV36xLGGmBKYR71S3C6F
- qawZPxmfhLWHkS32iBgCDhRk2X5MvyIpj4ta1qCmN8XIQaxy/d1FD1q/IfmWBzYdXRHh
- HCiO7xWpa3o5KE/7+NFlC6Mt1mJF6RsMbcedZxgMGbG5khDb6s7nowKOcYxT+6cWHTAj
- tscQ==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=cCgjmSxLWlMql57U+O40bnMOsF2pBGMu0xtRuJWN4EM=;
+ b=JYxCpUju7whmqChlUImK0eLoehpPQf9A6AtH17cAfokzxA4z97UwKas4EW/igtDXEU
+ wHvMAUNEWNbpCWG3YkVOUpzpBED0lD9Gj3XzCy0y3rhK527WFXKzG5wizHgqU9Q+fcf4
+ 5/JA71Fu/M0LPiMOfnueWOzXcBI02YTuHYInUH0XaASgZahnleBT+x8C9rrcuzn8ztPZ
+ w0RAHf9tNkNvhRMlM6piylfTGCR1KQYh1HKSERtAdcxVj0y1/WiF76McTGJ4RfZ+YLi3
+ 4DT7N+VTX4tw92LPg6j914+Ri22kkAMtsbskV06WGNhqZOEJxo+hketHxjWtc8wJMeqX
+ roNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=f0XyFhJxaSBsnLc48u6S2zxUb8AEk9qkcHvQljdmaTU=;
- b=BD9k6sXd/pgqIip9WXM3ILp3HP8AS28TdTFtDoPiHIbiEPcwe3adI/oQVswxQMkDcs
- sdIqV8wrpwV0KPfnGxJHhmpT5R28cTTi5W1OPSeqBQwJNWeCTiNaDJ3D53jWyvnHJ1pD
- b6gjN+Ydl6RJmdl+/Qgwx+HnIUx0h8ExPK+DXAY0GDvQYHnmkJRKz2ymDMetezodbBx2
- nMp/VERk4EGi8ojf5CFNKPmUJOAs6laY/2r01nxP253N485sNUEmEQFewVMw58wZa3BD
- GegoTll3lBiyM4xFm0iykg1PbOaqQEDkl04KXzNK8NblhGLXjjwPaU6zpWh1IRhkNllL
- 0y1g==
-X-Gm-Message-State: APjAAAXVl1MsmuTatEp/SaG7PbkrZ6p555RVA3SPL6UTq6MH4jw0LyWO
- E60Lrlojh7hfxJwGnrZKrSk=
-X-Google-Smtp-Source: APXvYqxpO+UY6xVlvhzPdiabPUnPbh8CPhFUncrdCpDDSKhobmLc9XNWrPctZmFvwn7U0eUKlvgoCg==
-X-Received: by 2002:ac8:32ec:: with SMTP id a41mr47149306qtb.235.1577658723029; 
- Sun, 29 Dec 2019 14:32:03 -0800 (PST)
-Received: from mandalore.localdomain
- (pool-71-244-100-50.phlapa.fios.verizon.net. [71.244.100.50])
- by smtp.gmail.com with ESMTPSA id p185sm11897433qkd.126.2019.12.29.14.32.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 29 Dec 2019 14:32:02 -0800 (PST)
-Date: Sun, 29 Dec 2019 17:31:42 -0500
-From: Matthew Hanzelik <mrhanzelik@gmail.com>
-To: jerome.pouiller@silabs.com, gregkh@linuxfoundation.org
-Subject: [PATCH v3] Staging: wfx: Fix style issues with hif_rx.c
-Message-ID: <20191229223142.5pxmmu7sfwdtcn7d@mandalore.localdomain>
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=cCgjmSxLWlMql57U+O40bnMOsF2pBGMu0xtRuJWN4EM=;
+ b=jXn+zgqdIECSsN8/BYbCZAi64t7lIx6HtfSIk04m7JH/zylA7N1po2MfIj34Cxv8cM
+ TbTMJnkJfKnPkfCg8npcLWUOfsfaK3MEBY6+GBu8A7X4u4hBw2tCzrltMdDNalFQcJNb
+ P5UWOpMkV+m0Xs113jjSm6v7J1cKgWcWaCqmMEu1HIXB9834jxBAp/pwZYXbUORl+CEU
+ v4tp1QsOZS36SzE6idSTqsWUeaKLqC4hV0ViqQnFViXUHjq8TCZyGHH9HjRUoUalIr9Y
+ 1ulsYu71rZQIeWoTxVxyOqtgFXhRxaqnEZcFuwqxEL1K0opTnwql15MahQqFDHf7/PXT
+ or8Q==
+X-Gm-Message-State: APjAAAU85HKdAedk51BxT92xkVHyk4M1EPnyMzmPBq16orAMZ+/Cr7g9
+ qcJh4byoQm4kcnf+oPnN0t3sGpt7fpdDfOk+VjM=
+X-Google-Smtp-Source: APXvYqylhALD+jp03RLgOT+/3dc6JEGYqZZa/NQbXWZahfHhqg7N54FIF0i9o3JG07LVPlx1Doc0iFIs9wJ9dMSFW6g=
+X-Received: by 2002:a92:ca82:: with SMTP id t2mr56664410ilo.242.1577673656457; 
+ Sun, 29 Dec 2019 18:40:56 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
+Received: by 2002:ac0:da0d:0:0:0:0:0 with HTTP; Sun, 29 Dec 2019 18:40:55
+ -0800 (PST)
+From: "Mr. Moon David" <pjius001@gmail.com>
+Date: Mon, 30 Dec 2019 02:40:55 +0000
+Message-ID: <CAA0xNFB2P-0XVQ4cG4FxWLx7-tudCa+xwsWOqw5h0O3uGcb_7w@mail.gmail.com>
+Subject: Greetings
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,53 +79,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Reply-To: moon.david001@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix the 80 line limit warning on line 79 of hif_rx.c.
+Dear Sir/Madam,
 
-Also fixes the missing blank line warning on line 305 of hif_rx.c after
-the declaration of size_t len.
+I have investor that want to invest $6.8 Billion into a  company that
+needs fund  for expansion only.He can not invest the money to new
+Companies that want to start up but into Companies that has been
+making good profits but needs funds for EXPANSION. He can only invest
+in start up if the investment proposal is realistic. The investor is a
+former Petroleum Minister.
 
-Signed-off-by: Matthew Hanzelik <mrhanzelik@gmail.com>
----
-Changes in v2
- - Make the commit message less vague.
+His Area of concentrations are Real Estate, Biotech,Textiles ,
+Information technology, Pharmaceuticals , Oil & Energy Industries,
+Mining &Metals Industry, Management Consulting Industry ,Maritime
+industry, Hospital & Health Care Industry, Consumer Services Industry,
+International Trade and Development Industry ,Gambling & Casinos
+Industry, Electrical/Electronic Manufacturing Industry, Insurance
+Industry, Chemical industries, Marketing and Advertising Industry,
+Leisure, Travel & Tourism Industry, Agriculture, Aviation, Retail,
+Import and Export, Trade and development industry, Real Estate &
+Construction Industry and any other viable investment opportunities.
 
-Changes in v3
- - Place the break after the cast operator instead of breaking the line up.
+If you recommend a Company to take loan or investment funds from from
+my client the investor, me and you will be entitled to 5% of any
+amount received by the Company from the investor but if you are taking
+the fund directly as a company i will be entitled to 2.5% and you will
+retain 2.5% as Global Finder's fee commission. There will be a face to
+face meeting between the investor and the investee after signing (MOU)
+the (AORI) should not be less than 3% per annul if it's loan or direct
+project financing.
 
- drivers/staging/wfx/hif_rx.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Look for a reliable Company that need funding and we can easily make
+5% of the amount received from the investor but we need to maintain
+absolute confidentiality in the transaction as the fund provider want
+to remain silent, so you have to keep it highly confidential between
+us.
 
-diff --git a/drivers/staging/wfx/hif_rx.c b/drivers/staging/wfx/hif_rx.c
-index 820de216be0c..b31ef02ea5d4 100644
---- a/drivers/staging/wfx/hif_rx.c
-+++ b/drivers/staging/wfx/hif_rx.c
-@@ -76,7 +76,8 @@ static int hif_multi_tx_confirm(struct wfx_dev *wdev, struct hif_msg *hif,
- 				void *buf)
- {
- 	struct hif_cnf_multi_transmit *body = buf;
--	struct hif_cnf_tx *buf_loc = (struct hif_cnf_tx *) &body->tx_conf_payload;
-+	struct hif_cnf_tx *buf_loc =
-+		(struct hif_cnf_tx *) &body->tx_conf_payload;
- 	struct wfx_vif *wvif = wdev_to_wvif(wdev, hif->interface);
- 	int count = body->num_tx_confs;
- 	int i;
-@@ -302,6 +303,7 @@ static int hif_exception_indication(struct wfx_dev *wdev,
- 				    struct hif_msg *hif, void *buf)
- {
- 	size_t len = hif->len - 4; // drop header
-+
- 	dev_err(wdev->dev, "firmware exception\n");
- 	print_hex_dump_bytes("Dump: ", DUMP_PREFIX_NONE, buf, len);
- 	wdev->chip_frozen = 1;
---
-2.24.1
+I will need the company profile and the project summary of the company
+that will need funding to present to my investor.
 
+I look forward to hearing from you.
+Mr. Moon David.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
