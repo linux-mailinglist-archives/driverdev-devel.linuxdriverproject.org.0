@@ -1,47 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31E3C12EB9A
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jan 2020 22:59:40 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E652B8666C;
-	Thu,  2 Jan 2020 21:59:37 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v6cAtS9ug5Qa; Thu,  2 Jan 2020 21:59:37 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A636186404;
-	Thu,  2 Jan 2020 21:59:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6BD271BF20F
- for <devel@linuxdriverproject.org>; Thu,  2 Jan 2020 21:59:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1309212EC98
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jan 2020 23:20:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 68CB485BC8
- for <devel@linuxdriverproject.org>; Thu,  2 Jan 2020 21:59:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9468B85CA8;
+	Thu,  2 Jan 2020 22:20:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ai4KZqoupTAn; Thu,  2 Jan 2020 22:20:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 54B3085B2F;
+	Thu,  2 Jan 2020 22:20:06 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B95721BF414
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  2 Jan 2020 22:20:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id AEA0D859C2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  2 Jan 2020 22:20:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id capLzNk6HxHA for <devel@linuxdriverproject.org>;
- Thu,  2 Jan 2020 21:59:33 +0000 (UTC)
+ with ESMTP id v7ktFijcF-GA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  2 Jan 2020 22:20:04 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail2.rbpf.bs (rbpf.bs [24.51.93.195])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A6CAB85B3D
- for <devel@linuxdriverproject.org>; Thu,  2 Jan 2020 21:59:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E366786477
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  2 Jan 2020 22:20:03 +0000 (UTC)
 Received: from unknown (HELO User) ([103.133.108.245])
- by mail2.rbpf.bs with SMTP; 02 Jan 2020 16:58:17 -0500
+ by mail2.rbpf.bs with SMTP; 02 Jan 2020 17:19:50 -0500
 From: "Mr. Peter Brook"<pbrook@occ.co.uk>
 Subject: The Abandoned Project!  
-Date: Thu, 2 Jan 2020 13:58:25 -0800
+Date: Thu, 2 Jan 2020 14:19:57 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200102215934.68CB485BC8@fraxinus.osuosl.org>
+Message-Id: <20200102222004.AEA0D859C2@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
