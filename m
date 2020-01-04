@@ -1,61 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B43F5130387
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Jan 2020 17:25:37 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 75172130384
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Jan 2020 17:24:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 220EC86A07;
-	Sat,  4 Jan 2020 16:25:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A2D6F85552;
+	Sat,  4 Jan 2020 16:24:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Is5k-UzMmXdS; Sat,  4 Jan 2020 16:25:33 +0000 (UTC)
+	with ESMTP id PTGihfsoHoUH; Sat,  4 Jan 2020 16:24:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B43538696A;
-	Sat,  4 Jan 2020 16:25:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6B01285516;
+	Sat,  4 Jan 2020 16:24:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0BF201BF48D
- for <devel@linuxdriverproject.org>; Sat,  4 Jan 2020 16:25:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 45FB91BF48D
+ for <devel@linuxdriverproject.org>; Sat,  4 Jan 2020 16:24:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0926A859FC
- for <devel@linuxdriverproject.org>; Sat,  4 Jan 2020 16:25:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4283585516
+ for <devel@linuxdriverproject.org>; Sat,  4 Jan 2020 16:24:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dCGC_ILt9N3j for <devel@linuxdriverproject.org>;
- Sat,  4 Jan 2020 16:25:28 +0000 (UTC)
+ with ESMTP id bEGnwWcJiiQI for <devel@linuxdriverproject.org>;
+ Sat,  4 Jan 2020 16:24:31 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from condef-09.nifty.com (condef-09.nifty.com [202.248.20.74])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 936DC85552
- for <devel@driverdev.osuosl.org>; Sat,  4 Jan 2020 16:25:28 +0000 (UTC)
-Received: from conuserg-12.nifty.com ([10.126.8.75])by condef-09.nifty.com
- with ESMTP id 004GM6Io023961
+Received: from condef-07.nifty.com (condef-07.nifty.com [202.248.20.72])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E570D8508E
+ for <devel@driverdev.osuosl.org>; Sat,  4 Jan 2020 16:24:30 +0000 (UTC)
+Received: from conuserg-12.nifty.com ([10.126.8.75])by condef-07.nifty.com
+ with ESMTP id 004GM69V024360
  for <devel@driverdev.osuosl.org>; Sun, 5 Jan 2020 01:22:06 +0900
 Received: from grover.flets-west.jp (softbank126093102113.bbtec.net
  [126.93.102.113]) (authenticated)
- by conuserg-12.nifty.com with ESMTP id 004GLdDO002506;
- Sun, 5 Jan 2020 01:21:39 +0900
-DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-12.nifty.com 004GLdDO002506
+ by conuserg-12.nifty.com with ESMTP id 004GLdDP002506;
+ Sun, 5 Jan 2020 01:21:40 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-12.nifty.com 004GLdDP002506
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
- s=dec2015msa; t=1578154899;
- bh=inGRar/36DuAvId9san8la6FXfoLzIDHO0k/ekyTCzk=;
- h=From:To:Cc:Subject:Date:From;
- b=oBklGmFOApViN6lRtO/l5EJXmd+Kd1MlnRq0rHNF0dt7I/lvZvSFwg+mEtDGOc6Ws
- HHVvt1+BRoPl3JgY6z2hv8EEz6iqhzq2Z1/HTLUp/t3ryjIWT4BrAOtQ1TdNkkOTJP
- vHxeOvau22MHGM70WWbhz6uwUNpmUPSwm0tf4EQfM7M6U0reXvVnSGHBBJRm8nr1W0
- h5Z/nd7Fn034CSsIAw29cz1PpFWSG8dGFGwCR1Cazb+4Uh7ny0MXdp9W2ond5yunij
- 9/7lC5OAWquwR6Msgcl8Cmcoqz4V31Pqhiz5kqGSZDc5zhPwhVvyZaqDrVbkDdb3US
- UiWUOsatXIDGQ==
+ s=dec2015msa; t=1578154900;
+ bh=uQKrLBOYgdFdcVp9fop+HlNYZJ0MosPKWndzy3BrPf0=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=BYTorUDxystZm/sbdTyyqXpDOrUR7PIOW5+NWbBQHwhIR9C0TS4dmwTSNuunMCEdt
+ H2Zm4lxEJEgm/xfPNhG/Xua9HnFKSMliCnC6QfGPLtZ6fVHPMbmNnHRoNKUXefuLmG
+ d4SWMKkk7U+BLEm5t7SOEBlJBuqEVybxV974Dj4W4yg4G/KhXSQIOER7iEDXu5lzTH
+ 8oSEBmIZryXh5cATb5Jk7xE29XZ7U98VWbbP8jmf1SejA4MiVaAw+H0fm7EX35Djcz
+ OU5LLo02IzxqqWAEwaiMUAsNA/6bBLhgU8uqiEyXn9FLNEY8vqzQ4ysQTC33JsOMtS
+ YOKkjhnPEs03w==
 X-Nifty-SrcIP: [126.93.102.113]
 From: Masahiro Yamada <masahiroy@kernel.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/3] staging: rtl8192u: remove unused Makefile
-Date: Sun,  5 Jan 2020 01:21:34 +0900
-Message-Id: <20200104162136.19170-1-masahiroy@kernel.org>
+Subject: [PATCH 2/3] staging: rtl8192u: remove header include path to
+ ieee80211/
+Date: Sun,  5 Jan 2020 01:21:35 +0900
+Message-Id: <20200104162136.19170-2-masahiroy@kernel.org>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200104162136.19170-1-masahiroy@kernel.org>
+References: <20200104162136.19170-1-masahiroy@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,49 +79,71 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-drivers/staging/rtl8192u/ieee80211/Makefile is not used at all.
-All the build rules are described in drivers/staging/rtl8192u/Makefile.
+There is no need to add "ccflags-y += -I $(srctree)/$(src)/ieee80211"
+just for including "dot11d.h".
+
+Use the correct relative path for the #include "..." directive.
 
 Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
 ---
 
- drivers/staging/rtl8192u/ieee80211/Makefile | 27 ---------------------
- 1 file changed, 27 deletions(-)
- delete mode 100644 drivers/staging/rtl8192u/ieee80211/Makefile
+ drivers/staging/rtl8192u/Makefile      | 1 -
+ drivers/staging/rtl8192u/r8192U_core.c | 2 +-
+ drivers/staging/rtl8192u/r8192U_wx.c   | 2 +-
+ drivers/staging/rtl8192u/r819xU_phy.c  | 2 +-
+ 4 files changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/Makefile b/drivers/staging/rtl8192u/ieee80211/Makefile
-deleted file mode 100644
-index 0d4d6489f767..000000000000
---- a/drivers/staging/rtl8192u/ieee80211/Makefile
-+++ /dev/null
-@@ -1,27 +0,0 @@
--# SPDX-License-Identifier: GPL-2.0
--NIC_SELECT = RTL8192U
--
--ccflags-y := -O2
--ccflags-y += -DJACKSON_NEW_8187 -DJACKSON_NEW_RX
--
--ieee80211-rsl-objs := ieee80211_rx.o \
--		      ieee80211_softmac.o \
--		      ieee80211_tx.o \
--		      ieee80211_wx.o \
--		      ieee80211_module.o \
--		      ieee80211_softmac_wx.o\
--		      rtl819x_HTProc.o\
--		      rtl819x_TSProc.o\
--		      rtl819x_BAProc.o\
--		      dot11d.o
--
--ieee80211_crypt-rsl-objs := ieee80211_crypt.o
--ieee80211_crypt_tkip-rsl-objs := ieee80211_crypt_tkip.o
--ieee80211_crypt_ccmp-rsl-objs := ieee80211_crypt_ccmp.o
--ieee80211_crypt_wep-rsl-objs := ieee80211_crypt_wep.o
--
--obj-m +=ieee80211-rsl.o
--obj-m +=ieee80211_crypt-rsl.o
--obj-m +=ieee80211_crypt_wep-rsl.o
--obj-m +=ieee80211_crypt_tkip-rsl.o
--obj-m +=ieee80211_crypt_ccmp-rsl.o
+diff --git a/drivers/staging/rtl8192u/Makefile b/drivers/staging/rtl8192u/Makefile
+index dcd51bf4aed3..a7e5d3d91d9c 100644
+--- a/drivers/staging/rtl8192u/Makefile
++++ b/drivers/staging/rtl8192u/Makefile
+@@ -7,7 +7,6 @@ ccflags-y += -O2
+ ccflags-y += -DCONFIG_FORCE_HARD_FLOAT=y
+ ccflags-y += -DJACKSON_NEW_8187 -DJACKSON_NEW_RX
+ ccflags-y += -DTHOMAS_BEACON -DTHOMAS_TASKLET -DTHOMAS_SKB -DTHOMAS_TURBO
+-ccflags-y += -I $(srctree)/$(src)/ieee80211
+ 
+ r8192u_usb-y := r8192U_core.o r8180_93cx6.o r8192U_wx.o		\
+ 		  r8190_rtl8256.o r819xU_phy.o r819xU_firmware.o	\
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index 7e2cabd16e88..00fdcbf64b0b 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -60,7 +60,7 @@ double __extendsfdf2(float a)
+ #include <linux/seq_file.h>
+ /* FIXME: check if 2.6.7 is ok */
+ 
+-#include "dot11d.h"
++#include "ieee80211/dot11d.h"
+ /* set here to open your trace code. */
+ u32 rt_global_debug_component = COMP_DOWN	|
+ 				COMP_SEC	|
+diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
+index 5822bb7984b9..0118edb0b9ab 100644
+--- a/drivers/staging/rtl8192u/r8192U_wx.c
++++ b/drivers/staging/rtl8192u/r8192U_wx.c
+@@ -23,7 +23,7 @@
+ #include "r8192U.h"
+ #include "r8192U_hw.h"
+ 
+-#include "dot11d.h"
++#include "ieee80211/dot11d.h"
+ #include "r8192U_wx.h"
+ 
+ #define RATE_COUNT 12
+diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
+index c04d8eca0cfb..555e52522be6 100644
+--- a/drivers/staging/rtl8192u/r819xU_phy.c
++++ b/drivers/staging/rtl8192u/r819xU_phy.c
+@@ -7,7 +7,7 @@
+ #include "r8192U_dm.h"
+ #include "r819xU_firmware_img.h"
+ 
+-#include "dot11d.h"
++#include "ieee80211/dot11d.h"
+ #include <linux/bitops.h>
+ 
+ static u32 RF_CHANNEL_TABLE_ZEBRA[] = {
 -- 
 2.17.1
 
