@@ -1,58 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3C7E1303A1
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Jan 2020 17:38:21 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B68811303D4
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Jan 2020 19:11:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C374D87DA6;
-	Sat,  4 Jan 2020 16:38:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A2EB4203BE;
+	Sat,  4 Jan 2020 18:11:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FawR7aTjSfDk; Sat,  4 Jan 2020 16:38:19 +0000 (UTC)
+	with ESMTP id kWrOXrjzP7Vc; Sat,  4 Jan 2020 18:11:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0679887BEE;
-	Sat,  4 Jan 2020 16:38:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BDDE420455;
+	Sat,  4 Jan 2020 18:11:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4F69F1BF48D
- for <devel@linuxdriverproject.org>; Sat,  4 Jan 2020 16:38:17 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F5441BF475
+ for <devel@linuxdriverproject.org>; Sat,  4 Jan 2020 18:11:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4C0E287BEE
- for <devel@linuxdriverproject.org>; Sat,  4 Jan 2020 16:38:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3C0EB86742
+ for <devel@linuxdriverproject.org>; Sat,  4 Jan 2020 18:11:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dhsccHCa3EiG for <devel@linuxdriverproject.org>;
- Sat,  4 Jan 2020 16:38:16 +0000 (UTC)
+ with ESMTP id hDGkefPmqy-Z for <devel@linuxdriverproject.org>;
+ Sat,  4 Jan 2020 18:11:22 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from conuserg-08.nifty.com (conuserg-08.nifty.com [210.131.2.75])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 64D1F86BE2
- for <devel@driverdev.osuosl.org>; Sat,  4 Jan 2020 16:38:16 +0000 (UTC)
-Received: from grover.flets-west.jp (softbank126093102113.bbtec.net
- [126.93.102.113]) (authenticated)
- by conuserg-08.nifty.com with ESMTP id 004GbK3g014547;
- Sun, 5 Jan 2020 01:37:20 +0900
-DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-08.nifty.com 004GbK3g014547
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
- s=dec2015msa; t=1578155840;
- bh=eVPEihLHvjWVdkHTKHyBtb7lWwnPyh5OmidubGr2h+E=;
- h=From:To:Cc:Subject:Date:From;
- b=Owo0KpWI83RZ8ZIBybFOknpo+F6+l2b9sd9skrV+L5JShGTDTyH3852v4juZhVduw
- MYyMytG0KGrPXjglbxSzotesdmp02vJs8Pp8C+BB5QpuxjgZy+/CLoMs8/71OP77hv
- DQ/122xP4fAb3xFvAnupptg93HsPxbvR/36nxuzEfQgAG6t+I6/zQZTYfUCbsyxlar
- YIVQfOTfH/ittgEWac2QJWPRdZzASkEMuSVJj6FcQFvS+Lb12aTxRe3GFk67a/3IQ7
- lbPOIiKPBsVdLPHDBDiMbawTVplbnYQaTTLF7CvyF8uHvKxXyMiOIqLhxvuhXMzsLM
- lADupzK04bneA==
-X-Nifty-SrcIP: [126.93.102.113]
-From: Masahiro Yamada <masahiroy@kernel.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: rts5208: remove unneeded header include path
-Date: Sun,  5 Jan 2020 01:37:10 +0900
-Message-Id: <20200104163710.21582-1-masahiroy@kernel.org>
-X-Mailer: git-send-email 2.17.1
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4452685B8A
+ for <devel@driverdev.osuosl.org>; Sat,  4 Jan 2020 18:11:22 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7A9CE222C4;
+ Sat,  4 Jan 2020 18:11:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1578161481;
+ bh=Ptj9u9fQjF9EMK9Gro45UkvbIInUQxphp5m/v+6NImw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=g2B78S1hC6LXyJqfrO9ggU9Ty6ZwAGzxexn63SYAAVg6Szlwi5Y5F9XE4qlaHnucY
+ hc6fOadlD6vCx+TsjPj//yvDsmxRW6Sgx+nrelhg+cAW7tciBaCUf2pCvxh7Hcii1h
+ ExIZ/hN52IPdS+W2IWtyleYnNQk8rU8xilPTfzhM=
+Date: Sat, 4 Jan 2020 19:11:17 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Masahiro Yamada <masahiroy@kernel.org>
+Subject: Re: [PATCH] staging: most: remove header include path to
+ drivers/staging
+Message-ID: <20200104181117.GA1479922@kroah.com>
+References: <20200104161827.18960-1-masahiroy@kernel.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200104161827.18960-1-masahiroy@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,40 +66,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Masahiro Yamada <masahiroy@kernel.org>,
- Mukesh Ojha <mojha@codeaurora.org>, linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-A header include path without $(srctree)/ is suspicous because it does
-not work with O= builds.
+On Sun, Jan 05, 2020 at 01:18:27AM +0900, Masahiro Yamada wrote:
+> There is no need to add "ccflags-y += -I $(srctree)/drivers/staging"
+> just for including <most/core.h>.
+> 
+> Use the #include "..." directive with the correct relative path.
+> 
+> Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
+> ---
+> 
+>  drivers/staging/most/Makefile       | 1 -
+>  drivers/staging/most/cdev/Makefile  | 1 -
+>  drivers/staging/most/cdev/cdev.c    | 3 ++-
+>  drivers/staging/most/configfs.c     | 3 ++-
+>  drivers/staging/most/core.c         | 3 ++-
+>  drivers/staging/most/dim2/Makefile  | 1 -
+>  drivers/staging/most/dim2/dim2.c    | 2 +-
+>  drivers/staging/most/i2c/Makefile   | 1 -
+>  drivers/staging/most/i2c/i2c.c      | 2 +-
+>  drivers/staging/most/net/Makefile   | 1 -
+>  drivers/staging/most/net/net.c      | 3 ++-
+>  drivers/staging/most/sound/Makefile | 1 -
+>  drivers/staging/most/sound/sound.c  | 3 ++-
+>  drivers/staging/most/usb/Makefile   | 1 -
+>  drivers/staging/most/usb/usb.c      | 3 ++-
+>  drivers/staging/most/video/Makefile | 1 -
+>  drivers/staging/most/video/video.c  | 2 +-
+>  17 files changed, 15 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/staging/most/Makefile b/drivers/staging/most/Makefile
+> index 85ea5a434ced..20a99ecb37c4 100644
+> --- a/drivers/staging/most/Makefile
+> +++ b/drivers/staging/most/Makefile
+> @@ -2,7 +2,6 @@
+>  obj-$(CONFIG_MOST) += most_core.o
+>  most_core-y := core.o
+>  most_core-y += configfs.o
+> -ccflags-y += -I $(srctree)/drivers/staging/
+>  
+>  obj-$(CONFIG_MOST_CDEV)	+= cdev/
+>  obj-$(CONFIG_MOST_NET)	+= net/
 
-I can build drivers/staging/rts5208/ without this include path.
+This all was done on purpose to make a follow-on patch much simpler that
+I didn't end up taking as it still needed more work.
 
-Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
----
+But I do agree with it, we shouldn't be abusing ccflags here, I'll go
+queue this up in a day or so, thanks for this.
 
- drivers/staging/rts5208/Makefile | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/staging/rts5208/Makefile b/drivers/staging/rts5208/Makefile
-index 6a934c41c738..3c9e9797d3d9 100644
---- a/drivers/staging/rts5208/Makefile
-+++ b/drivers/staging/rts5208/Makefile
-@@ -1,7 +1,5 @@
- # SPDX-License-Identifier: GPL-2.0
- obj-$(CONFIG_RTS5208) := rts5208.o
- 
--ccflags-y := -Idrivers/scsi
--
- rts5208-y := rtsx.o rtsx_chip.o rtsx_transport.o rtsx_scsi.o \
- 	rtsx_card.o general.o sd.o xd.o ms.o spi.o
--- 
-2.17.1
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
