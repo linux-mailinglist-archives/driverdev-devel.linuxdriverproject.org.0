@@ -1,60 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF1631309A7
-	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Jan 2020 20:45:50 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF7271309AB
+	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Jan 2020 20:46:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DE4B5859CC;
-	Sun,  5 Jan 2020 19:45:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4F024203F2;
+	Sun,  5 Jan 2020 19:46:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HVLf2s8I4170; Sun,  5 Jan 2020 19:45:48 +0000 (UTC)
+	with ESMTP id 32mt7EM1VAid; Sun,  5 Jan 2020 19:46:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B68A385785;
-	Sun,  5 Jan 2020 19:45:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 116D2203AF;
+	Sun,  5 Jan 2020 19:46:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AAC6D1BF405
- for <devel@linuxdriverproject.org>; Sun,  5 Jan 2020 19:45:45 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0D8881BF405
+ for <devel@linuxdriverproject.org>; Sun,  5 Jan 2020 19:46:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A373A85785
- for <devel@linuxdriverproject.org>; Sun,  5 Jan 2020 19:45:45 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 07D2E87397
+ for <devel@linuxdriverproject.org>; Sun,  5 Jan 2020 19:46:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vONA5nGgGVzV for <devel@linuxdriverproject.org>;
- Sun,  5 Jan 2020 19:45:45 +0000 (UTC)
+ with ESMTP id D0Rnm6iEq42B for <devel@linuxdriverproject.org>;
+ Sun,  5 Jan 2020 19:46:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3CADB856E9
- for <devel@driverdev.osuosl.org>; Sun,  5 Jan 2020 19:45:45 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 98F768738A
+ for <devel@driverdev.osuosl.org>; Sun,  5 Jan 2020 19:46:50 +0000 (UTC)
 Received: from kernel.org (unknown [104.132.0.74])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EA1E4207FD;
- Sun,  5 Jan 2020 19:45:44 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 52B8A206E6;
+ Sun,  5 Jan 2020 19:46:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1578253545;
- bh=a2DYDSKJQ5NN4MoqXJFvtIJW4KgdLPd/k5EjqG4ijyE=;
+ s=default; t=1578253610;
+ bh=2qzC2UMI2DIxIBRnPl5K9OcJa0SeoY/dfiK9tSsqfdE=;
  h=In-Reply-To:References:Cc:To:Subject:From:Date:From;
- b=fb7pKj1Zw0roOSixtCX/Nwgey01QuXJqB1o2revTKOwo4wmTRzWv/bwAfqHa9ndvG
- snwrlQJGNXzz6OYNsQOPMwhVs/O65Utk9ypuuKe7gNMPRFRyEhKqmP6AFVvQ2uQ5mH
- QD6ulUJpIznTJfwGrCAA6jk56k9DmFQYWYwQD/fg=
+ b=AGOf4Vmz9GJc4lYsYQ/Z/o6wpzbxi/IJLhVTqvmTgq16nxRHSJw4t8nPCvD/jQEgR
+ uSy8Jx1jqyZgO4xLa7M3G4lwRtRXo6+y0MX/QOCKkWVy6Dt+C7pV9GSZbeycVxoqSR
+ gaskqhV9OuCbxr0K0XGW0HopVi+9cKrtexEzfgMk=
 MIME-Version: 1.0
-In-Reply-To: <9d8288380a387418b01396147a98b9d197a3992b.1574922435.git.shubhrajyoti.datta@xilinx.com>
+In-Reply-To: <a0880cfbbcc729171a37e2a3bc27680efb06e398.1574922435.git.shubhrajyoti.datta@xilinx.com>
 References: <cover.1574922435.git.shubhrajyoti.datta@xilinx.com>
- <9d8288380a387418b01396147a98b9d197a3992b.1574922435.git.shubhrajyoti.datta@xilinx.com>
+ <a0880cfbbcc729171a37e2a3bc27680efb06e398.1574922435.git.shubhrajyoti.datta@xilinx.com>
 To: devel@driverdev.osuosl.org, linux-clk@vger.kernel.org,
  linux-kernel@vger.kernel.org, shubhrajyoti.datta@gmail.com
-Subject: Re: [PATCH v3 09/10] staging: clocking-wizard: Delete the driver from
- the staging
+Subject: Re: [PATCH v3 10/10] clk: clock-wizard: Fix the compilation failure
 From: Stephen Boyd <sboyd@kernel.org>
 User-Agent: alot/0.8.1
-Date: Sun, 05 Jan 2020 11:45:44 -0800
-Message-Id: <20200105194544.EA1E4207FD@mail.kernel.org>
+Date: Sun, 05 Jan 2020 11:46:49 -0800
+Message-Id: <20200105194650.52B8A206E6@mail.kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,21 +75,15 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Quoting shubhrajyoti.datta@gmail.com (2019-11-27 22:36:16)
+Quoting shubhrajyoti.datta@gmail.com (2019-11-27 22:36:17)
 > From: Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
 > 
-> Delete the driver from the staging as it is in drivers/clk.
-> 
-> Signed-off-by: Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
+> After 90b6c5c73 (clk: Remove CLK_IS_BASIC clk flag)
+> The CLK_IS_BASIC is deleted. Adapt the driver for the same.
 
-Can all these patches in this series apply to the staging paths and be
-picked up by Greg? Then when the driver is ready to be moved out of
-staging I would like to see one patch that removes the driver from
-staging and adds it to drivers/clk/ so we can be certain the diff is
-minimal.
-
-Feel free to add me and linux-clk to the review of the clocking-wizard
-driver patches. I will review the driver patches that way.
+I don't see any CLK_IS_BASIC in the tree right now, so did it get
+reintroduced by this patch series? Can you squash this into whatever
+patch introduces CLK_IS_BASIC usage?
 
 _______________________________________________
 devel mailing list
