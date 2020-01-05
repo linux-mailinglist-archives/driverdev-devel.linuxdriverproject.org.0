@@ -1,76 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC9461309B2
-	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Jan 2020 20:50:14 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B23151309B4
+	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Jan 2020 20:50:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 275A285D2B;
-	Sun,  5 Jan 2020 19:50:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6F97E203BF;
+	Sun,  5 Jan 2020 19:50:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xbGsr63ya2Kt; Sun,  5 Jan 2020 19:50:12 +0000 (UTC)
+	with ESMTP id NP4CGJskffXz; Sun,  5 Jan 2020 19:50:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 98966857FB;
-	Sun,  5 Jan 2020 19:50:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BE2BE203AF;
+	Sun,  5 Jan 2020 19:50:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4AE7F1BF405
- for <devel@linuxdriverproject.org>; Sun,  5 Jan 2020 19:50:09 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 780321BF405
+ for <devel@linuxdriverproject.org>; Sun,  5 Jan 2020 19:50:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4781A8527F
- for <devel@linuxdriverproject.org>; Sun,  5 Jan 2020 19:50:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 732E2203AC
+ for <devel@linuxdriverproject.org>; Sun,  5 Jan 2020 19:50:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yFi9Ew0h9Fx5 for <devel@linuxdriverproject.org>;
- Sun,  5 Jan 2020 19:50:08 +0000 (UTC)
+ with ESMTP id megdhcWNlh4G for <devel@linuxdriverproject.org>;
+ Sun,  5 Jan 2020 19:50:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
  [209.85.221.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5E5F584D3B
- for <devel@driverdev.osuosl.org>; Sun,  5 Jan 2020 19:50:08 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id q6so47332309wro.9
- for <devel@driverdev.osuosl.org>; Sun, 05 Jan 2020 11:50:08 -0800 (PST)
+ by silver.osuosl.org (Postfix) with ESMTPS id 6C3E82034B
+ for <devel@driverdev.osuosl.org>; Sun,  5 Jan 2020 19:50:09 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id w15so34828233wru.4
+ for <devel@driverdev.osuosl.org>; Sun, 05 Jan 2020 11:50:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Iij3qjxWkQG+3uOoAuJWUOMDKz1pzUhkPrQmnHM7jWE=;
- b=TB1EOi43+oLzttIYXmzTrmW2QNAvo/lt+JbCbNg1yYzODu/WAGIN8+0Lk/SGfEyzD5
- ZzW59GMyZYoJSknuGE6thHCY1Qp1BBpQsbjAh2WcNNtBcaftxvb9E6kxOvagz/c8lJHK
- W4JmnYF2B2EsAFI6JjrjF+VIhXLXfil1IYyuXgs63lYLNOBNu2DNs/Yu0eQwLJiEBVO4
- gRX7BWesWgPpsduvZc9i6TZykShpgIm1iB6R8p7BT4RogrjOpsZq6s6JZQn73Fvzz0nl
- fnsxp2/ABLW4UTl9DJsEqahmw24MeIbdiUQlM1G8IPfiNudpbPfTdvFHydCm5ek4AmTi
- gW2g==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=NHs7aC8wKxxQ1KYTS0Lt8AmWzqctfuFR0vRBtJMaHp0=;
+ b=u9UGmjI98W4SbE+8AR6XF5UlmeEnahbrKOcABdVsge/5rqrJZ9L9GmsCn9bjockgSe
+ e5hHKK61RlZj8/vKNJrSQd3CgojDSFcvDXTAuVZdewzM15+Pl593YSmWF+Gza9VO9+66
+ S/K1abLY2ux0jcMaEN/WLshwqUbLXhg3qT2ITBc2zuL84hRJysMNuiz2pO17uNsxwwN7
+ XJ3s5AJu9xaG4MhC9QX87Q6Ie3PTfoD7ZC+9HOj7Bo9lk064KCGEf4G1JxiMI4Cf17Fp
+ lMCjbJ8yGzzpo0XC2qNrvd5DnjNdSp6/U8uWQcwOYWItefrEgM2AB68sYBTGcByx5bFi
+ LXOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Iij3qjxWkQG+3uOoAuJWUOMDKz1pzUhkPrQmnHM7jWE=;
- b=P58g4Y6NmTaHM1LkLUBAtVENQqdVgRw9STnUYZz64c0DeruKgAjBq/ytH1lCa9FXIX
- mt3WzPcEeD991Z0gf+exOsbBpi5xpugcEVRJDQW8xhoT7gMyW39KAFq8lSsxPMOYWrDd
- AQWsuqrWq/Uc7kSRYxk4y4x2I9/jsjXbxxXbfOZ9Dtb1QQPhP1W3QGG0cSLoRZ9yD3Ig
- pfTJ7Qf6NCXUwJeC5qiDCvdEHxzYCVifUj2XXKVv6a70touOh5rzw8sPSoOvBfBuUdEB
- rOX4yVqifCr3Llbn1urk5ilxlJv7oLPqD2EXnwDpweBnonqnG7nDDRYNsA7kqbdKPKJ6
- qukw==
-X-Gm-Message-State: APjAAAUQrMhIssCq170URtiMLWBHWQaCT8WZoF4T9p/ry7VlcwCWtBO1
- TYtbsNROdNtX+9FgazVUIDs=
-X-Google-Smtp-Source: APXvYqx/LBmFIx3aKR6e+BIKFe0NmngTQ+O2YW74Hev1r14oqUV5TL5+5GmXsLpNPUdbf+XlHZZqjg==
-X-Received: by 2002:adf:ef03:: with SMTP id e3mr102874539wro.216.1578253806638; 
- Sun, 05 Jan 2020 11:50:06 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=NHs7aC8wKxxQ1KYTS0Lt8AmWzqctfuFR0vRBtJMaHp0=;
+ b=L95cyM/o7AlVKW66SnMiWtEVqwfM0PrLYkZRvBI4Sem+ZQVoltnSn1TGpy6w/F/Qp8
+ b5sKX8fYDeIPAA4RybcXTMcxwN23Pg4Sy6B7cr8r3Pqq2+ozUg9EADC2Po/T1w9dTL5U
+ 7nAeKz8oQYQz10ijaBRe3Zcjw4rSJ0hGJa6uDM/L2JwjvtAPUwhqItxazW8Gf1P5Xr5L
+ 6xRpM6CK0+ddbE8bczvGqkD8cTtfH2If8Dz6maWJOwL3GzLb4il5uImLN2zMO1+b7MBM
+ x+Skhy+H6hMgTQEROnTnA+WU/jG+r1w5mLxTC533O+kDMPFXGfOPUA+aY7bmBrmpHOdB
+ okWw==
+X-Gm-Message-State: APjAAAVBWSQDt2OtXbDFf7rY6Pqkil/+rXEuP1lLPKhcpcv4klTOM3ku
+ 97BHwXYc6HiRBcxxetdY0mU=
+X-Google-Smtp-Source: APXvYqyCLkyjUR73TqjhKU80IrH5ADa98gj+c1NFLXI7ZYwKTse0DbqwxBCDe3Oq/BBi5d425rP5Bw==
+X-Received: by 2002:adf:f288:: with SMTP id k8mr105177993wro.301.1578253807894; 
+ Sun, 05 Jan 2020 11:50:07 -0800 (PST)
 Received: from localhost.localdomain
  (dslb-002-204-140-065.002.204.pools.vodafone-ip.de. [2.204.140.65])
- by smtp.gmail.com with ESMTPSA id s3sm20549653wmh.25.2020.01.05.11.50.05
+ by smtp.gmail.com with ESMTPSA id s3sm20549653wmh.25.2020.01.05.11.50.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Jan 2020 11:50:06 -0800 (PST)
+ Sun, 05 Jan 2020 11:50:07 -0800 (PST)
 From: Michael Straube <straube.linux@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 1/2] staging: rtl8188eu: remove else after return
-Date: Sun,  5 Jan 2020 20:49:35 +0100
-Message-Id: <20200105194936.5477-1-straube.linux@gmail.com>
+Subject: [PATCH 2/2] staging: rtl8188eu: refactor
+ rtl88eu_dm_update_rx_idle_ant()
+Date: Sun,  5 Jan 2020 20:49:36 +0100
+Message-Id: <20200105194936.5477-2-straube.linux@gmail.com>
 X-Mailer: git-send-email 2.24.1
+In-Reply-To: <20200105194936.5477-1-straube.linux@gmail.com>
+References: <20200105194936.5477-1-straube.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,61 +94,83 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove else after return in rtl88eu_dm_antenna_diversity() to improve
-readability and clear a checkpatch warning.
-
-WARNING: else is not generally useful after a break or return
+Refactor rtl88eu_dm_update_rx_idle_ant() to reduce indentation level
+and clear line over 80 characters checkpatch warnings.
 
 Signed-off-by: Michael Straube <straube.linux@gmail.com>
 ---
- drivers/staging/rtl8188eu/hal/odm_rtl8188e.c | 26 +++++++++++---------
- 1 file changed, 14 insertions(+), 12 deletions(-)
+ drivers/staging/rtl8188eu/hal/odm_rtl8188e.c | 56 ++++++++++----------
+ 1 file changed, 29 insertions(+), 27 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/hal/odm_rtl8188e.c b/drivers/staging/rtl8188eu/hal/odm_rtl8188e.c
-index 251bd8aba3b1..7bfba7692ab8 100644
+index 7bfba7692ab8..a55a0d8b9fb7 100644
 --- a/drivers/staging/rtl8188eu/hal/odm_rtl8188e.c
 +++ b/drivers/staging/rtl8188eu/hal/odm_rtl8188e.c
-@@ -303,6 +303,7 @@ void rtl88eu_dm_antenna_diversity(struct odm_dm_struct *dm_odm)
+@@ -154,35 +154,37 @@ void rtl88eu_dm_update_rx_idle_ant(struct odm_dm_struct *dm_odm, u8 ant)
+ 	struct adapter *adapter = dm_odm->Adapter;
+ 	u32 default_ant, optional_ant;
  
- 	if (!(dm_odm->SupportAbility & ODM_BB_ANT_DIV))
- 		return;
-+
- 	if (!dm_odm->bLinked) {
- 		ODM_RT_TRACE(dm_odm, ODM_COMP_ANT_DIV, ODM_DBG_LOUD,
- 			     ("ODM_AntennaDiversity_88E(): No Link.\n"));
-@@ -318,19 +319,20 @@ void rtl88eu_dm_antenna_diversity(struct odm_dm_struct *dm_odm)
- 			dm_fat_tbl->bBecomeLinked = dm_odm->bLinked;
- 		}
- 		return;
--	} else {
--		if (!dm_fat_tbl->bBecomeLinked) {
--			ODM_RT_TRACE(dm_odm, ODM_COMP_ANT_DIV, ODM_DBG_LOUD,
--				     ("Need to Turn on HW AntDiv\n"));
--			phy_set_bb_reg(adapter, ODM_REG_IGI_A_11N, BIT(7), 1);
--			phy_set_bb_reg(adapter, ODM_REG_CCK_ANTDIV_PARA1_11N,
--				       BIT(15), 1);
--			if (dm_odm->AntDivType == CG_TRX_HW_ANTDIV)
--				phy_set_bb_reg(adapter, ODM_REG_TX_ANT_CTRL_11N,
--					       BIT(21), 1);
--			dm_fat_tbl->bBecomeLinked = dm_odm->bLinked;
+-	if (dm_fat_tbl->RxIdleAnt != ant) {
+-		if (ant == MAIN_ANT) {
+-			default_ant = (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) ?
+-				       MAIN_ANT_CG_TRX : MAIN_ANT_CGCS_RX;
+-			optional_ant = (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) ?
+-					AUX_ANT_CG_TRX : AUX_ANT_CGCS_RX;
+-		} else {
+-			default_ant = (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) ?
+-				       AUX_ANT_CG_TRX : AUX_ANT_CGCS_RX;
+-			optional_ant = (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) ?
+-					MAIN_ANT_CG_TRX : MAIN_ANT_CGCS_RX;
 -		}
++	if (dm_fat_tbl->RxIdleAnt == ant)
++		return;
+ 
+-		if (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) {
+-			phy_set_bb_reg(adapter, ODM_REG_RX_ANT_CTRL_11N,
+-				       BIT(5) | BIT(4) | BIT(3), default_ant);
+-			phy_set_bb_reg(adapter, ODM_REG_RX_ANT_CTRL_11N,
+-				       BIT(8) | BIT(7) | BIT(6), optional_ant);
+-			phy_set_bb_reg(adapter, ODM_REG_ANTSEL_CTRL_11N,
+-				       BIT(14) | BIT(13) | BIT(12), default_ant);
+-			phy_set_bb_reg(adapter, ODM_REG_RESP_TX_11N,
+-				       BIT(6) | BIT(7), default_ant);
+-		} else if (dm_odm->AntDivType == CGCS_RX_HW_ANTDIV) {
+-			phy_set_bb_reg(adapter, ODM_REG_RX_ANT_CTRL_11N,
+-				       BIT(5) | BIT(4) | BIT(3), default_ant);
+-			phy_set_bb_reg(adapter, ODM_REG_RX_ANT_CTRL_11N,
+-				       BIT(8) | BIT(7) | BIT(6), optional_ant);
+-		}
++	if (ant == MAIN_ANT) {
++		default_ant = (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) ?
++			       MAIN_ANT_CG_TRX : MAIN_ANT_CGCS_RX;
++		optional_ant = (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) ?
++				AUX_ANT_CG_TRX : AUX_ANT_CGCS_RX;
++	} else {
++		default_ant = (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) ?
++			       AUX_ANT_CG_TRX : AUX_ANT_CGCS_RX;
++		optional_ant = (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) ?
++				MAIN_ANT_CG_TRX : MAIN_ANT_CGCS_RX;
  	}
 +
-+	if (!dm_fat_tbl->bBecomeLinked) {
-+		ODM_RT_TRACE(dm_odm, ODM_COMP_ANT_DIV, ODM_DBG_LOUD,
-+			     ("Need to Turn on HW AntDiv\n"));
-+		phy_set_bb_reg(adapter, ODM_REG_IGI_A_11N, BIT(7), 1);
-+		phy_set_bb_reg(adapter, ODM_REG_CCK_ANTDIV_PARA1_11N,
-+			       BIT(15), 1);
-+		if (dm_odm->AntDivType == CG_TRX_HW_ANTDIV)
-+			phy_set_bb_reg(adapter, ODM_REG_TX_ANT_CTRL_11N,
-+				       BIT(21), 1);
-+		dm_fat_tbl->bBecomeLinked = dm_odm->bLinked;
++	if (dm_odm->AntDivType == CG_TRX_HW_ANTDIV) {
++		phy_set_bb_reg(adapter, ODM_REG_RX_ANT_CTRL_11N,
++			       BIT(5) | BIT(4) | BIT(3), default_ant);
++		phy_set_bb_reg(adapter, ODM_REG_RX_ANT_CTRL_11N,
++			       BIT(8) | BIT(7) | BIT(6), optional_ant);
++		phy_set_bb_reg(adapter, ODM_REG_ANTSEL_CTRL_11N,
++			       BIT(14) | BIT(13) | BIT(12), default_ant);
++		phy_set_bb_reg(adapter, ODM_REG_RESP_TX_11N,
++			       BIT(6) | BIT(7), default_ant);
++	} else if (dm_odm->AntDivType == CGCS_RX_HW_ANTDIV) {
++		phy_set_bb_reg(adapter, ODM_REG_RX_ANT_CTRL_11N,
++			       BIT(5) | BIT(4) | BIT(3), default_ant);
++		phy_set_bb_reg(adapter, ODM_REG_RX_ANT_CTRL_11N,
++			       BIT(8) | BIT(7) | BIT(6), optional_ant);
 +	}
 +
- 	if ((dm_odm->AntDivType == CG_TRX_HW_ANTDIV) ||
- 	    (dm_odm->AntDivType == CGCS_RX_HW_ANTDIV))
- 		rtl88eu_dm_hw_ant_div(dm_odm);
+ 	dm_fat_tbl->RxIdleAnt = ant;
+ }
+ 
 -- 
 2.24.1
 
