@@ -1,114 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 143F8131AEC
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Jan 2020 23:00:06 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 30629131BEE
+	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Jan 2020 23:59:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2BF418679E;
-	Mon,  6 Jan 2020 22:00:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C665D227CD;
+	Mon,  6 Jan 2020 22:59:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Sr-eKfWyzyZy; Mon,  6 Jan 2020 22:00:03 +0000 (UTC)
+	with ESMTP id X604+yysoRUu; Mon,  6 Jan 2020 22:59:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 91E6D866E5;
-	Mon,  6 Jan 2020 22:00:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 81F422279B;
+	Mon,  6 Jan 2020 22:59:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 499A71BF20D
- for <devel@linuxdriverproject.org>; Mon,  6 Jan 2020 22:00:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B23C31BF20D
+ for <devel@linuxdriverproject.org>; Mon,  6 Jan 2020 22:59:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 411C622720
- for <devel@linuxdriverproject.org>; Mon,  6 Jan 2020 22:00:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id ADA4620487
+ for <devel@linuxdriverproject.org>; Mon,  6 Jan 2020 22:59:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lPjwdpdBMFOg for <devel@linuxdriverproject.org>;
- Mon,  6 Jan 2020 21:59:58 +0000 (UTC)
-X-Greylist: delayed 00:14:35 by SQLgrey-1.7.6
-Received: from EUR05-VI1-obe.outbound.protection.outlook.com
- (mail-vi1eur05on2050.outbound.protection.outlook.com [40.107.21.50])
- by silver.osuosl.org (Postfix) with ESMTPS id 08508204E4
- for <devel@driverdev.osuosl.org>; Mon,  6 Jan 2020 21:59:57 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NUwYM6ZE2AMlhO3szRhlXHBMDEj229iw0a1BrtzrZO9ublz+UYne6AfZAM7V4VaJqh938B8JeUVMGkY2UMell5HYhltTPtFkXstp9LBFGvCVQMxE8lbxinHsXz586Y1lREeYEhcvWpUa+jrjdf+EoYrtHIZmz/migGowEwhWmborvVJhyLejN84vnm/WrzTWGf2e1SajFw3pMrqt6TmidY1a4ck14MFmBwnMFJxkrCisI5u5H52KiwkeKaJND+YcCbTXjrzACmqv3usmuG6ePpid9Lb6qXOl2MT/+kU3J2N4Mrtry8zB5K2P/fU0KApLOPRKmWth5y+ePhrzigNPzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Gvjs+rXZrZsXLPctegPht/ltNqL/RJEn/xT1ze+XDew=;
- b=OjTnpW/bTb4LLZ0GrVZnDbjbOj6EzQrJ5KymAv3wdH5sTH8XMBWK+iVbuV3fLVgjpHHt0wm/oKgecUqmF4G/Df5BYDg+o9ixQcshj+2t9Yus9r8C0jsarv8oN9izU/672gn+rhUBTPsiXCw4QRs8baA6rEGjMZj0krsrlTuPPugMKlzeI7693ZJkOwUEIxx6q+Iunte3fHwiu6W9wlEaS1PYptugn/6mxG1l6fW8bCA//yKLgJuE9OeUXZNRKghJgACuwsjrOKlCr+cEjUSlWQo0xbSZCfGqMbhP0L9yMVqt2nGkC/CZuOeZIv6wn7hXEqX3HJE9lDhDZJ28Wfgoow==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=itdev.co.uk; dmarc=pass action=none header.from=itdev.co.uk;
- dkim=pass header.d=itdev.co.uk; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=itdevltd.onmicrosoft.com; s=selector2-itdevltd-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Gvjs+rXZrZsXLPctegPht/ltNqL/RJEn/xT1ze+XDew=;
- b=YIQeOHZXIMeTamX3M9FMnjd55N24yxOHm11lHWvPAIzXIr5bc+t27AzxQomK3I4UFyfC1Ymvk/I+YMGfhMWgCAsQyfsayP4gL/s/OJ9PorWvVzQtXCO/annpLKlu4eT9isupKqUyCAwzAJCPelKAh++4Z2n95gpXFH3POG5oWGE=
-Received: from DBBPR08MB4491.eurprd08.prod.outlook.com (20.179.44.144) by
- DBBPR08MB4838.eurprd08.prod.outlook.com (10.255.79.202) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2602.12; Mon, 6 Jan 2020 21:45:20 +0000
-Received: from DBBPR08MB4491.eurprd08.prod.outlook.com
- ([fe80::11b4:6ffd:de3:a862]) by DBBPR08MB4491.eurprd08.prod.outlook.com
- ([fe80::11b4:6ffd:de3:a862%5]) with mapi id 15.20.2602.015; Mon, 6 Jan 2020
- 21:45:20 +0000
-Received: from jiffies (54.37.17.75) by LO2P265CA0222.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:b::18) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2602.11 via Frontend
- Transport; Mon, 6 Jan 2020 21:45:19 +0000
-From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH 1/5] staging: vt6656: Fix non zero logical return of,
- usb_control_msg
-Thread-Topic: [PATCH 1/5] staging: vt6656: Fix non zero logical return of,
- usb_control_msg
-Thread-Index: AQHVwiS5TJ/e4byEDUuwSY/vq1EUWafeMOMA
-Date: Mon, 6 Jan 2020 21:45:20 +0000
-Message-ID: <20200106214518.GB54084@jiffies>
-References: <08e88842-6f78-a2e3-a7a0-139fec960b2b@gmail.com>
- <20200103105734.GD3911@kadam>
-In-Reply-To: <20200103105734.GD3911@kadam>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: LO2P265CA0222.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:b::18) To DBBPR08MB4491.eurprd08.prod.outlook.com
- (2603:10a6:10:d2::16)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=quentin.deslandes@itdev.co.uk; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [54.37.17.75]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 8c8e472a-9d72-43a1-88f8-08d792f1b9f1
-x-ms-traffictypediagnostic: DBBPR08MB4838:
-x-microsoft-antispam-prvs: <DBBPR08MB48388B45F4C3CED25A31757AB33C0@DBBPR08MB4838.eurprd08.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 0274272F87
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(346002)(376002)(396003)(366004)(39830400003)(136003)(199004)(189003)(66476007)(4326008)(33716001)(64756008)(66556008)(66946007)(66446008)(33656002)(6916009)(54906003)(316002)(8936002)(81156014)(44832011)(1076003)(9576002)(508600001)(5660300002)(8676002)(81166006)(52116002)(2906002)(6666004)(86362001)(26005)(55016002)(6496006)(9686003)(53546011)(956004)(71200400001)(16526019)(186003)(55236004);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DBBPR08MB4838;
- H:DBBPR08MB4491.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: itdev.co.uk does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 3vI+U8icpobYKZ6VITfCFTIDn0tWOSCPAK5U4uhFcgdIMllg3Hrg6V3Qz/n82MxGFy3WuZZZuuRrTiPxB7ZJxh6zwsl7ZYg8jqjLeZwIVOmoRfykyQkVGtDIlSb2/rEGky5CiJTIl8Zg60Mmkz3/1Dab1SN/A52THQhz0OIy7+X4MNDm5+q6Rmw1p5nm0jyy3PelL1hrLr9NsQFgjK5SNTi7ReFdySaXCJfWkI1QBe0YTzthbdlwyKpCq4cdZ9zuM9hqfvdPWiS733FLfZrI2oJd9CPKLQg8x88o4/SZR9u1IG9ZfAyt11bbuNafFMcymtMMaeVulK2UeWOC1gPtobIq+jLk67aoilRgITsvhL9KuzObzdjyirTyNEuQyw6xseBEaLOvu7Vy1+qPMTqWZ9afTI85fMz4EST2A3LC7Jwjlf6dFP90FsnfnBNjlhbo
-x-ms-exchange-transport-forked: True
-Content-ID: <021625D9A06F694C97F53D7AA0CA1D14@eurprd08.prod.outlook.com>
+ with ESMTP id 0qgGOWb78SoE for <devel@linuxdriverproject.org>;
+ Mon,  6 Jan 2020 22:59:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
+ [209.85.208.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id 36AA92279B
+ for <devel@driverdev.osuosl.org>; Mon,  6 Jan 2020 22:59:14 +0000 (UTC)
+Received: by mail-lj1-f194.google.com with SMTP id u71so52634805lje.11
+ for <devel@driverdev.osuosl.org>; Mon, 06 Jan 2020 14:59:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=C0KNG+0OExH+PgE3Je4nnY6Td9Ccw4KBccd9DW70NKo=;
+ b=F1W6FrjBpZ29K0G9T9CoWndO9TPARRdTZkCrQ+TZ6DnirL28X/Ao01Xngla2oAx8aD
+ wZg6KYQYKH495KPdcHL0gPBqyRskLBesIDSTE2LPxinAoggI0DaNjYwa6+9jREEcZgZW
+ qSm6vVsfwPwEU+8R2hR9CdCbg1FILYS7Y85J0xzQbXGcGanAZ6VUxW6/JvhIPDPQIf+y
+ 7VWfuWdwEEL4LQV5mals5C2khcjyQksim3mb2q/O5Qt7Df3ojZbW8A90z+ROMB/hjTzW
+ kAgoeDeN5DHHqv5zQSJ9m7pMwOMWBTjjssM5TxjH7MILgz8N6clZFh/F+CKbj7y9cQc5
+ 6AHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=C0KNG+0OExH+PgE3Je4nnY6Td9Ccw4KBccd9DW70NKo=;
+ b=qzPei9NWjjOQANqIMIBWnZ0RZ1Jyr5FxGbqUqFubskq7AP0UCOWDmis+sH87qmKK/e
+ nOS8bB/ySTDBx/nyZNYj9Gh8FmL0uecKf9wmsRDaViYrVe+vjE2AR17AyHtoe5948nvx
+ pPiMj2F4zfGHNNR0YwOnyOCeCTA4F51xIdMK2qAiFU5qsEY88+Rk6j2JG0IA2TZevO/q
+ oe0qhyqcVMB+B0W1D3tqa18nFqLJr9JpFV6g3VrP4LZ81RAbZt+T8hfb4/503kkD0QCV
+ b7BHjdb+j2IewPTSiPJbTk24jfQvoC93/efwOf3neqPwN3i7hs1efLaLofgWBjYE+M6K
+ LZ1w==
+X-Gm-Message-State: APjAAAUNWtBLwJVf6Kb+vFXIxJpCJvzpky9VtFvcaADVrxtKi276j4zn
+ qJ1CCz8VBgNlOs3v9NPoD35VaqdFYky3QV1x9Yx8Pw==
+X-Google-Smtp-Source: APXvYqzDJbaUismLGujeor0umiyYbHuGqsL7l41pJ5HBf+0/0CpHdmcEUNRW/RHFYfBWr5eT4fcWBMlE9u0L9WYEDME=
+X-Received: by 2002:a2e:85cd:: with SMTP id h13mr59765545ljj.191.1578351552102; 
+ Mon, 06 Jan 2020 14:59:12 -0800 (PST)
 MIME-Version: 1.0
-X-OriginatorOrg: itdev.co.uk
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8c8e472a-9d72-43a1-88f8-08d792f1b9f1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jan 2020 21:45:20.2821 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 2d2930c4-2251-45b4-ad79-3582c5f41740
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 4P466se7kjJsnd9ojW3m3k3AnBZ5TK2ne8GoN3s9Dr2cFgphs2Ub14U+MnFe43Xo/DDcEZbPkRoFTgmnlGXgYylQp7uhwatD90Vl2t45kIc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB4838
+References: <20191215183047.9414-1-digetx@gmail.com>
+In-Reply-To: <20191215183047.9414-1-digetx@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 6 Jan 2020 23:59:01 +0100
+Message-ID: <CACRpkdYAKS50-CNmE0nRNQanFxKejoHrwxho3fZXROoLZUb4+Q@mail.gmail.com>
+Subject: Re: [PATCH v1 0/3] Tegra GPIO: Minor code clean up
+To: Dmitry Osipenko <digetx@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,75 +79,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Malcolm Priestley <tvboxspy@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
+Cc: devel@driverdev.osuosl.org,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 01/03/20 13:58:08, Dan Carpenter wrote:
-> On Fri, Dec 20, 2019 at 09:14:59PM +0000, Malcolm Priestley wrote:
-> > Starting with commit 59608cb1de1856
-> > ("staging: vt6656: clean function's error path in usbpipe.c")
-> > the usb control functions have returned errors throughout driver
-> > with only logical variable checking.
-> 
-> Use the Fixes tag for this.
-> 
-> Fixes: 59608cb1de18 ("staging: vt6656: clean function's error path in usbpipe.c")
-> 
-> 12 digits to the hash.  Add Quentin to the CC list.
-> 
-> > 
-> > However, usb_control_msg return the amount of bytes transferred
-> > this means that normal operation causes errors.
-> > 
-> > Correct the return function so only return zero when transfer
-> > is successful.
-> > 
-> > Cc: stable <stable@vger.kernel.org> # v5.3+
-> > Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
-> > ---
-> >  drivers/staging/vt6656/usbpipe.c | 8 ++++++--
-> >  1 file changed, 6 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
-> > index d3304df6bd53..488ebd98773d 100644
-> > --- a/drivers/staging/vt6656/usbpipe.c
-> > +++ b/drivers/staging/vt6656/usbpipe.c
-> > @@ -59,7 +59,9 @@ int vnt_control_out(struct vnt_private *priv, u8 request, u16 value,
-> >  
-> >  	kfree(usb_buffer);
-> >  
-> > -	if (ret >= 0 && ret < (int)length)
-> > +	if (ret == (int)length)
-> 
-> No need for this cast (no need in the original either).
-> 
-> > +		ret = 0;
-> > +	else
-> >  		ret = -EIO;
-> 
-> It would be better to preserve the error codes from usb_control_msg().
-> 
-> 	if (ret == length)
-> 		ret = 0;
-> 	else if (ret >= 0)
-> 		ret = -EIO;
-> 
-> regards,
-> dan carpenter
-> 
+On Sun, Dec 15, 2019 at 7:31 PM Dmitry Osipenko <digetx@gmail.com> wrote:
 
-Thanks for CC.
+> I was investigating why CPU hangs during of GPIO driver suspend and in
+> the end it turned out that it is a Broadcom WiFi driver problem because
+> it keeps OOB wake-interrupt enabled while WLAN interface is DOWN and this
+> may cause a bit weird CPU hang on writing to INT_ENB register during of
+> GPIO driver suspend. Meanwhile I also noticed that a few things could be
+> improved in the driver, that's what this small series addresses.
+>
+> Dmitry Osipenko (3):
+>   gpio: tegra: Use generic readl_relaxed/writel_relaxed accessors
+>   gpio: tegra: Properly handle irq_set_irq_wake() error
+>   gpio: tegra: Use NOIRQ phase for suspend/resume
 
-Nice catch. Dan is right, we should forward any error code from
-usb_control_msg().
+All three patches applied with Thierry's review/test tag.
 
-Regards,
-Quentin Deslandes
+Yours,
+Linus Walleij
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
