@@ -1,53 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5AE571328F5
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jan 2020 15:33:55 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A7CF8852CF;
-	Tue,  7 Jan 2020 14:33:53 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xpB9XsifWcDE; Tue,  7 Jan 2020 14:33:51 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AAA1084E1A;
-	Tue,  7 Jan 2020 14:33:50 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 051151BF20B
- for <devel@linuxdriverproject.org>; Tue,  7 Jan 2020 14:33:48 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A51C9132978
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jan 2020 16:01:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 01FBE2038F
- for <devel@linuxdriverproject.org>; Tue,  7 Jan 2020 14:33:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 846D3203F4;
+	Tue,  7 Jan 2020 15:01:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8EnJgYG1i7ql; Tue,  7 Jan 2020 15:01:31 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 5146C20392;
+	Tue,  7 Jan 2020 15:01:29 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 47A521BF20D
+ for <devel@linuxdriverproject.org>; Tue,  7 Jan 2020 15:01:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 442928741F
+ for <devel@linuxdriverproject.org>; Tue,  7 Jan 2020 15:01:26 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KLpj8NGCgaKM for <devel@linuxdriverproject.org>;
- Tue,  7 Jan 2020 14:33:45 +0000 (UTC)
+ with ESMTP id FmpDIo8HfBBd for <devel@linuxdriverproject.org>;
+ Tue,  7 Jan 2020 15:01:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from faui03.informatik.uni-erlangen.de
- (faui03.informatik.uni-erlangen.de [131.188.30.103])
- by silver.osuosl.org (Postfix) with ESMTPS id 885FA20010
- for <devel@driverdev.osuosl.org>; Tue,  7 Jan 2020 14:33:45 +0000 (UTC)
-Received: from faui01j.informatik.uni-erlangen.de
- (faui01j.informatik.uni-erlangen.de [IPv6:2001:638:a000:4160:131:188:60:136])
- by faui03.informatik.uni-erlangen.de (Postfix) with ESMTP id 8B4E4241732;
- Tue,  7 Jan 2020 15:33:42 +0100 (CET)
-Received: by faui01j.informatik.uni-erlangen.de (Postfix, from userid 66565)
- id 854BFC8120D; Tue,  7 Jan 2020 15:33:42 +0100 (CET)
-From: Julian Preis <julian.preis@fau.de>
-To: 
-Subject: [PATCH v4] drivers/staging/exfat/exfat_super.c: Clean up ffsCamelCase
- function names
-Date: Tue,  7 Jan 2020 15:33:37 +0100
-Message-Id: <20200107143337.11419-1-julian.preis@fau.de>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <y>
-References: <y>
+Received: from lb2-smtp-cloud7.xs4all.net (lb2-smtp-cloud7.xs4all.net
+ [194.109.24.28])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 123F48733D
+ for <devel@driverdev.osuosl.org>; Tue,  7 Jan 2020 15:01:23 +0000 (UTC)
+Received: from [IPv6:2001:420:44c1:2577:cd88:93ae:ae73:3d6c]
+ ([IPv6:2001:420:44c1:2577:cd88:93ae:ae73:3d6c])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id oqM8iLQnaN9dwoqMCiVvtj; Tue, 07 Jan 2020 16:01:21 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1578409281; bh=dlauqvpQGYg8gIzE7vt8zEOQtKQRNLpz0TQmKxid07E=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=v8NiblhlR4I4zf8BhwkynPxs+nkGAGPktfWgiHivQwkx7TB+rzag5U979DVi4ZXCe
+ 1yaoGIh3JzsfAv0i8+c7U9BjMFDmwuSQuudtjjDjyMI3XQyl0xc/0J/79sJ+MmjrXH
+ kUUO3XY+/WTVBzXDfEYkZAxj7VmqmlcaFEAiIglPOlNkPhepLHJRU8GZ7Ysxm7orSU
+ HaZB0hjCKJyf7t8Bo/X7K7a5Lbj0ZYVSFUSZ3mTN+umHbNG0Sofz8QnKFDR8usZYXk
+ 7+J50Zx7Rsgfj+AWbOIQmweCO/pGvJacXvUtYg1L+Wn/6+4Z+J0zOVf//pIeczWBKl
+ IPSWSUB5Wtnig==
+Subject: Re: [PATCH v2 2/4] media: cedrus: hevc: Add support for scaling matrix
+To: Jernej Skrabec <jernej.skrabec@siol.net>, mchehab@kernel.org,
+ mripard@kernel.org, paul.kocialkowski@bootlin.com
+References: <20191213160428.54303-1-jernej.skrabec@siol.net>
+ <20191213160428.54303-3-jernej.skrabec@siol.net>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <4ac91ed5-a220-6a04-b1da-de27a306f8f2@xs4all.nl>
+Date: Tue, 7 Jan 2020 16:01:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
+In-Reply-To: <20191213160428.54303-3-jernej.skrabec@siol.net>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfJY5ZdhhQ3Y8+/P4/PuY0Rn2kVBZ9dF7xWsX+alTuLCOoBo1MAlmbGpH0BJQwiEfcX6mzWQWrw43Fjb6azKuPYOyiu4d7kpHVAdU3P3+owyW7rCWaFj9
+ Yo5I5K9KdiH4FpoxJ+LNc/gaGo0Vrm1HKcYty/e1/OWe2fLePr0Yg4he6atVOFXLCuYNa0BQXJLxW7mcgahVHXT2/kH8YuSLKSkukPeJBGY0p3w7saI+EqQL
+ RHN6+VAvLPX977K6NMUM0h2VFDoP2P41iZ+3OdacAJwmhtnaf2//gGMpgFqPGODlM4GKippmALkM2OU+3GVbmfHTWHKHgDNZvlITCZSJidsoi/jM/9Uavk9b
+ XizEZJO1Z2s4FRuEgwrNEu7oHOZLO7QIyguPGRmyp30KQK9eGABAVwfBgsskrnRAWyjOLP0bZeh8kzgQiJqRsXPpo9+M7xTSVEIb8wy+VC9XiYiDu1xp6UUL
+ NrpAlDKzgUlelznxL9ypi53wqkEnFOsTSHtkMvPzz1sb8dRBFe2YYZt3Wr5BwfskLOaZfy2ORwNKevMohp7mdqwLAxRI1QvTA+1vw52yZtiAef3nTOvU380S
+ 3SYh+e9/DzAlmFhzm9iyZ090/WzsYi+xPyzq0CksIxpm6g==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,422 +77,182 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, valdis.kletnieks@vt.edu,
- Johannes Weidner <johannes.weidner@fau.de>, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, linux-fsdevel@vger.kernel.org,
- Julian Preis <julian.preis@fau.de>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, wens@csie.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rename every instance of <ffsCamelCaseExample> to <ffs_camel_case_example>
-in file exfat_super.c. Fix resulting overlong lines.
+On 12/13/19 5:04 PM, Jernej Skrabec wrote:
+> HEVC frames may use scaling list feature. Add support for it.
+> 
+> Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
+> ---
+>  drivers/staging/media/sunxi/cedrus/cedrus.c   |  7 ++
+>  drivers/staging/media/sunxi/cedrus/cedrus.h   |  1 +
+>  .../staging/media/sunxi/cedrus/cedrus_dec.c   |  2 +
+>  .../staging/media/sunxi/cedrus/cedrus_h265.c  | 70 ++++++++++++++++++-
+>  .../staging/media/sunxi/cedrus/cedrus_regs.h  |  2 +
+>  5 files changed, 81 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
+> index c6ddd46eff82..bf68bc6b20c8 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
+> @@ -116,6 +116,13 @@ static const struct cedrus_control cedrus_controls[] = {
+>  		.codec		= CEDRUS_CODEC_H265,
+>  		.required	= true,
+>  	},
+> +	{
+> +		.cfg = {
+> +			.id	= V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX,
+> +		},
+> +		.codec		= CEDRUS_CODEC_H265,
+> +		.required	= true,
 
-Co-developed-by: Johannes Weidner <johannes.weidner@fau.de>
-Signed-off-by: Johannes Weidner <johannes.weidner@fau.de>
-Signed-off-by: Julian Preis <julian.preis@fau.de>
----
-Changes in v4:
-- Resolve name conflicts for functions create_file, move_file, remove_file and
-  create_dir by adding a "ffs_" prefix  for these four functions.
+Should this be true? This means that existing applications are now
+suddenly required to always pass the scaling matrix for every buffer.
 
-Changes in v3:
-- Change renaming from <ffs_camel_case_example> to <camel_case_example>
+Especially since the commit log says: 'HEVC frames *may* use scaling list
+feature', indicating that this is an optional feature.
 
-Changes in v2:
-- Add email recipients according to get_maintainer.pl
-- Add patch versions
-- Use in-reply-to
----
- drivers/staging/exfat/exfat_super.c | 97 +++++++++++++++--------------
- 1 file changed, 49 insertions(+), 48 deletions(-)
+Regards,
 
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index 744344a2521c..9561144972b7 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -343,7 +343,7 @@ static inline void exfat_save_attr(struct inode *inode, u32 attr)
- 		EXFAT_I(inode)->fid.attr = attr & (ATTR_RWMASK | ATTR_READONLY);
- }
- 
--static int ffsMountVol(struct super_block *sb)
-+static int mount_vol(struct super_block *sb)
- {
- 	int i, ret;
- 	struct pbr_sector_t *p_pbr;
-@@ -439,7 +439,7 @@ static int ffsMountVol(struct super_block *sb)
- 	return ret;
- }
- 
--static int ffsUmountVol(struct super_block *sb)
-+static int umount_vol(struct super_block *sb)
- {
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 	int err = 0;
-@@ -479,7 +479,7 @@ static int ffsUmountVol(struct super_block *sb)
- 	return err;
- }
- 
--static int ffsGetVolInfo(struct super_block *sb, struct vol_info_t *info)
-+static int get_vol_info(struct super_block *sb, struct vol_info_t *info)
- {
- 	int err = 0;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
-@@ -509,7 +509,7 @@ static int ffsGetVolInfo(struct super_block *sb, struct vol_info_t *info)
- 	return err;
- }
- 
--static int ffsSyncVol(struct super_block *sb, bool do_sync)
-+static int sync_vol(struct super_block *sb, bool do_sync)
- {
- 	int err = 0;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
-@@ -534,7 +534,7 @@ static int ffsSyncVol(struct super_block *sb, bool do_sync)
- /*  File Operation Functions                                            */
- /*----------------------------------------------------------------------*/
- 
--static int ffsLookupFile(struct inode *inode, char *path, struct file_id_t *fid)
-+static int lookup_file(struct inode *inode, char *path, struct file_id_t *fid)
- {
- 	int ret, dentry, num_entries;
- 	struct chain_t dir;
-@@ -621,8 +621,8 @@ static int ffsLookupFile(struct inode *inode, char *path, struct file_id_t *fid)
- 	return ret;
- }
- 
--static int ffsCreateFile(struct inode *inode, char *path, u8 mode,
--			 struct file_id_t *fid)
-+static int ffs_create_file(struct inode *inode, char *path, u8 mode,
-+			   struct file_id_t *fid)
- {
- 	struct chain_t dir;
- 	struct uni_name_t uni_name;
-@@ -662,8 +662,8 @@ static int ffsCreateFile(struct inode *inode, char *path, u8 mode,
- 	return ret;
- }
- 
--static int ffsReadFile(struct inode *inode, struct file_id_t *fid, void *buffer,
--		       u64 count, u64 *rcount)
-+static int read_file(struct inode *inode, struct file_id_t *fid, void *buffer,
-+		     u64 count, u64 *rcount)
- {
- 	s32 offset, sec_offset, clu_offset;
- 	u32 clu;
-@@ -788,8 +788,8 @@ static int ffsReadFile(struct inode *inode, struct file_id_t *fid, void *buffer,
- 	return ret;
- }
- 
--static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
--			void *buffer, u64 count, u64 *wcount)
-+static int write_file(struct inode *inode, struct file_id_t *fid,
-+		      void *buffer, u64 count, u64 *wcount)
- {
- 	bool modified = false;
- 	s32 offset, sec_offset, clu_offset;
-@@ -1031,7 +1031,7 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
- 	return ret;
- }
- 
--static int ffsTruncateFile(struct inode *inode, u64 old_size, u64 new_size)
-+static int truncate_file(struct inode *inode, u64 old_size, u64 new_size)
- {
- 	s32 num_clusters;
- 	u32 last_clu = CLUSTER_32(0);
-@@ -1167,8 +1167,8 @@ static void update_parent_info(struct file_id_t *fid,
- 	}
- }
- 
--static int ffsMoveFile(struct inode *old_parent_inode, struct file_id_t *fid,
--		       struct inode *new_parent_inode, struct dentry *new_dentry)
-+static int ffs_move_file(struct inode *old_parent_inode, struct file_id_t *fid,
-+			 struct inode *new_parent_inode,
-+			 struct dentry *new_dentry)
- {
- 	s32 ret;
- 	s32 dentry;
-@@ -1296,7 +1296,7 @@ static int ffsMoveFile(struct inode *old_parent_inode, struct file_id_t *fid,
- 	return ret;
- }
- 
--static int ffsRemoveFile(struct inode *inode, struct file_id_t *fid)
-+static int ffs_remove_file(struct inode *inode, struct file_id_t *fid)
- {
- 	s32 dentry;
- 	int ret = 0;
-@@ -1360,7 +1360,7 @@ static int ffsRemoveFile(struct inode *inode, struct file_id_t *fid)
- 
- #if 0
- /* Not currently wired up */
--static int ffsSetAttr(struct inode *inode, u32 attr)
-+static int set_attr(struct inode *inode, u32 attr)
- {
- 	u32 type;
- 	int ret = 0;
-@@ -1435,7 +1435,7 @@ static int ffsSetAttr(struct inode *inode, u32 attr)
- }
- #endif
- 
--static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
-+static int read_stat(struct inode *inode, struct dir_entry_t *info)
- {
- 	s32 count;
- 	int ret = 0;
-@@ -1565,7 +1565,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 	return ret;
- }
- 
--static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
-+static int write_stat(struct inode *inode, struct dir_entry_t *info)
- {
- 	int ret = 0;
- 	struct timestamp_t tm;
-@@ -1638,7 +1638,7 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
- 	return ret;
- }
- 
--static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
-+static int map_cluster(struct inode *inode, s32 clu_offset, u32 *clu)
- {
- 	s32 num_clusters, num_alloced;
- 	bool modified = false;
-@@ -1778,7 +1778,8 @@ static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
- /*  Directory Operation Functions                                       */
- /*----------------------------------------------------------------------*/
- 
--static int ffsCreateDir(struct inode *inode, char *path, struct file_id_t *fid)
-+static int ffs_create_dir(struct inode *inode, char *path,
-+			  struct file_id_t *fid)
- {
- 	int ret = 0;
- 	struct chain_t dir;
-@@ -1818,7 +1819,7 @@ static int ffsCreateDir(struct inode *inode, char *path, struct file_id_t *fid)
- 	return ret;
- }
- 
--static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
-+static int read_dir(struct inode *inode, struct dir_entry_t *dir_entry)
- {
- 	int i, dentry, clu_offset;
- 	int ret = 0;
-@@ -2005,7 +2006,7 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
- 	return ret;
- }
- 
--static int ffsRemoveDir(struct inode *inode, struct file_id_t *fid)
-+static int ffs_remove_dir(struct inode *inode, struct file_id_t *fid)
- {
- 	s32 dentry;
- 	int ret = 0;
-@@ -2114,7 +2115,7 @@ static int exfat_readdir(struct file *filp, struct dir_context *ctx)
- 	EXFAT_I(inode)->fid.size = i_size_read(inode);
- 	EXFAT_I(inode)->fid.rwoffset = cpos >> DENTRY_SIZE_BITS;
- 
--	err = ffsReadDir(inode, &de);
-+	err = read_dir(inode, &de);
- 	if (err) {
- 		/* at least we tried to read a sector
- 		 * move cpos to next sector position (should be aligned)
-@@ -2235,7 +2236,7 @@ static int exfat_create(struct inode *dir, struct dentry *dentry, umode_t mode,
- 
- 	pr_debug("%s entered\n", __func__);
- 
--	err = ffsCreateFile(dir, (u8 *)dentry->d_name.name, FM_REGULAR, &fid);
-+	err = ffs_create_file(dir, (u8 *)dentry->d_name.name, FM_REGULAR, &fid);
- 	if (err)
- 		goto out;
- 
-@@ -2282,7 +2283,7 @@ static int exfat_find(struct inode *dir, struct qstr *qname,
- 	if (qname->len == 0)
- 		return -ENOENT;
- 
--	err = ffsLookupFile(dir, (u8 *)qname->name, fid);
-+	err = lookup_file(dir, (u8 *)qname->name, fid);
- 	if (err)
- 		return -ENOENT;
- 
-@@ -2332,8 +2333,8 @@ static struct dentry *exfat_lookup(struct inode *dir, struct dentry *dentry,
- 			err = -ENOMEM;
- 			goto error;
- 		}
--		ffsReadFile(dir, &fid, EXFAT_I(inode)->target,
--			    i_size_read(inode), &ret);
-+		read_file(dir, &fid, EXFAT_I(inode)->target,
-+			  i_size_read(inode), &ret);
- 		*(EXFAT_I(inode)->target + i_size_read(inode)) = '\0';
- 	}
- 
-@@ -2402,7 +2403,7 @@ static int exfat_unlink(struct inode *dir, struct dentry *dentry)
- 
- 	EXFAT_I(inode)->fid.size = i_size_read(inode);
- 
--	err = ffsRemoveFile(dir, &(EXFAT_I(inode)->fid));
-+	err = ffs_remove_file(dir, &(EXFAT_I(inode)->fid));
- 	if (err)
- 		goto out;
- 
-@@ -2444,15 +2445,15 @@ static int exfat_symlink(struct inode *dir, struct dentry *dentry,
- 
- 	pr_debug("%s entered\n", __func__);
- 
--	err = ffsCreateFile(dir, (u8 *)dentry->d_name.name, FM_SYMLINK, &fid);
-+	err = ffs_create_file(dir, (u8 *)dentry->d_name.name, FM_SYMLINK, &fid);
- 	if (err)
- 		goto out;
- 
- 
--	err = ffsWriteFile(dir, &fid, (char *)target, len, &ret);
-+	err = write_file(dir, &fid, (char *)target, len, &ret);
- 
- 	if (err) {
--		ffsRemoveFile(dir, &fid);
-+		ffs_remove_file(dir, &fid);
- 		goto out;
- 	}
- 
-@@ -2508,7 +2509,7 @@ static int exfat_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
- 
- 	pr_debug("%s entered\n", __func__);
- 
--	err = ffsCreateDir(dir, (u8 *)dentry->d_name.name, &fid);
-+	err = ffs_create_dir(dir, (u8 *)dentry->d_name.name, &fid);
- 	if (err)
- 		goto out;
- 
-@@ -2559,7 +2560,7 @@ static int exfat_rmdir(struct inode *dir, struct dentry *dentry)
- 
- 	EXFAT_I(inode)->fid.size = i_size_read(inode);
- 
--	err = ffsRemoveDir(dir, &(EXFAT_I(inode)->fid));
-+	err = ffs_remove_dir(dir, &(EXFAT_I(inode)->fid));
- 	if (err)
- 		goto out;
- 
-@@ -2608,8 +2609,8 @@ static int exfat_rename(struct inode *old_dir, struct dentry *old_dentry,
- 
- 	EXFAT_I(old_inode)->fid.size = i_size_read(old_inode);
- 
--	err = ffsMoveFile(old_dir, &(EXFAT_I(old_inode)->fid), new_dir,
--			  new_dentry);
-+	err = ffs_move_file(old_dir, &(EXFAT_I(old_inode)->fid), new_dir,
-+			    new_dentry);
- 	if (err)
- 		goto out;
- 
-@@ -2766,7 +2767,7 @@ static void exfat_truncate(struct inode *inode, loff_t old_size)
- 	if (EXFAT_I(inode)->fid.start_clu == 0)
- 		goto out;
- 
--	err = ffsTruncateFile(inode, old_size, i_size_read(inode));
-+	err = truncate_file(inode, old_size, i_size_read(inode));
- 	if (err)
- 		goto out;
- 
-@@ -2902,7 +2903,7 @@ static int exfat_file_release(struct inode *inode, struct file *filp)
- 	struct super_block *sb = inode->i_sb;
- 
- 	EXFAT_I(inode)->fid.size = i_size_read(inode);
--	ffsSyncVol(sb, false);
-+	sync_vol(sb, false);
- 	return 0;
- }
- 
-@@ -2957,7 +2958,7 @@ static int exfat_bmap(struct inode *inode, sector_t sector, sector_t *phys,
- 
- 	EXFAT_I(inode)->fid.size = i_size_read(inode);
- 
--	err = ffsMapCluster(inode, clu_offset, &cluster);
-+	err = map_cluster(inode, clu_offset, &cluster);
- 
- 	if (!err && (cluster != CLUSTER_32(~0))) {
- 		*phys = START_SECTOR(cluster) + sec_offset;
-@@ -3150,7 +3151,7 @@ static int exfat_fill_inode(struct inode *inode, struct file_id_t *fid)
- 
- 	memcpy(&(EXFAT_I(inode)->fid), fid, sizeof(struct file_id_t));
- 
--	ffsReadStat(inode, &info);
-+	read_stat(inode, &info);
- 
- 	EXFAT_I(inode)->i_pos = 0;
- 	EXFAT_I(inode)->target = NULL;
-@@ -3266,7 +3267,7 @@ static int exfat_write_inode(struct inode *inode, struct writeback_control *wbc)
- 	exfat_time_unix2fat(&inode->i_ctime, &info.CreateTimestamp);
- 	exfat_time_unix2fat(&inode->i_atime, &info.AccessTimestamp);
- 
--	ffsWriteStat(inode, &info);
-+	write_stat(inode, &info);
- 
- 	return 0;
- }
-@@ -3304,7 +3305,7 @@ static void exfat_put_super(struct super_block *sb)
- 	if (__is_sb_dirty(sb))
- 		exfat_write_super(sb);
- 
--	ffsUmountVol(sb);
-+	umount_vol(sb);
- 
- 	sb->s_fs_info = NULL;
- 	exfat_free_super(sbi);
-@@ -3317,7 +3318,7 @@ static void exfat_write_super(struct super_block *sb)
- 	__set_sb_clean(sb);
- 
- 	if (!sb_rdonly(sb))
--		ffsSyncVol(sb, true);
-+		sync_vol(sb, true);
- 
- 	__unlock_super(sb);
- }
-@@ -3329,7 +3330,7 @@ static int exfat_sync_fs(struct super_block *sb, int wait)
- 	if (__is_sb_dirty(sb)) {
- 		__lock_super(sb);
- 		__set_sb_clean(sb);
--		err = ffsSyncVol(sb, true);
-+		err = sync_vol(sb, true);
- 		__unlock_super(sb);
- 	}
- 
-@@ -3344,7 +3345,7 @@ static int exfat_statfs(struct dentry *dentry, struct kstatfs *buf)
- 	struct vol_info_t info;
- 
- 	if (p_fs->used_clusters == UINT_MAX) {
--		if (ffsGetVolInfo(sb, &info) == -EIO)
-+		if (get_vol_info(sb, &info) == -EIO)
- 			return -EIO;
- 
- 	} else {
-@@ -3646,7 +3647,7 @@ static int exfat_read_root(struct inode *inode)
- 
- 	EXFAT_I(inode)->target = NULL;
- 
--	ffsReadStat(inode, &info);
-+	read_stat(inode, &info);
- 
- 	inode->i_uid = sbi->options.fs_uid;
- 	inode->i_gid = sbi->options.fs_gid;
-@@ -3713,10 +3714,10 @@ static int exfat_fill_super(struct super_block *sb, void *data, int silent)
- 	sb_min_blocksize(sb, 512);
- 	sb->s_maxbytes = 0x7fffffffffffffffLL;    /* maximum file size */
- 
--	ret = ffsMountVol(sb);
-+	ret = mount_vol(sb);
- 	if (ret) {
- 		if (!silent)
--			pr_err("[EXFAT] ffsMountVol failed\n");
-+			pr_err("[EXFAT] mount_vol failed\n");
- 
- 		goto out_fail;
- 	}
-@@ -3756,7 +3757,7 @@ static int exfat_fill_super(struct super_block *sb, void *data, int silent)
- 	return 0;
- 
- out_fail2:
--	ffsUmountVol(sb);
-+	umount_vol(sb);
- out_fail:
- 	if (root_inode)
- 		iput(root_inode);
--- 
-2.20.1
+	Hans
+
+> +	},
+>  	{
+>  		.cfg = {
+>  			.id	= V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE,
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h b/drivers/staging/media/sunxi/cedrus/cedrus.h
+> index 96765555ab8a..d945f4f0ff2d 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus.h
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
+> @@ -73,6 +73,7 @@ struct cedrus_h265_run {
+>  	const struct v4l2_ctrl_hevc_sps			*sps;
+>  	const struct v4l2_ctrl_hevc_pps			*pps;
+>  	const struct v4l2_ctrl_hevc_slice_params	*slice_params;
+> +	const struct v4l2_ctrl_hevc_scaling_matrix	*scaling_matrix;
+>  };
+>  
+>  struct cedrus_run {
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> index 4a2fc33a1d79..327ed6c264dc 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> @@ -66,6 +66,8 @@ void cedrus_device_run(void *priv)
+>  			V4L2_CID_MPEG_VIDEO_HEVC_PPS);
+>  		run.h265.slice_params = cedrus_find_control_data(ctx,
+>  			V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS);
+> +		run.h265.scaling_matrix = cedrus_find_control_data(ctx,
+> +			V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX);
+>  		break;
+>  
+>  	default:
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> index 6945dc74e1d7..888bfd5ca224 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> @@ -220,6 +220,69 @@ static void cedrus_h265_pred_weight_write(struct cedrus_dev *dev,
+>  	}
+>  }
+>  
+> +static void cedrus_h265_write_scaling_list(struct cedrus_ctx *ctx,
+> +					   struct cedrus_run *run)
+> +{
+> +	const struct v4l2_ctrl_hevc_scaling_matrix *scaling;
+> +	struct cedrus_dev *dev = ctx->dev;
+> +	u32 i, j, k, val;
+> +
+> +	scaling = run->h265.scaling_matrix;
+> +
+> +	cedrus_write(dev, VE_DEC_H265_SCALING_LIST_DC_COEF0,
+> +		     (scaling->scaling_list_dc_coef_32x32[1] << 24) |
+> +		     (scaling->scaling_list_dc_coef_32x32[0] << 16) |
+> +		     (scaling->scaling_list_dc_coef_16x16[1] << 8) |
+> +		     (scaling->scaling_list_dc_coef_16x16[0] << 0));
+> +
+> +	cedrus_write(dev, VE_DEC_H265_SCALING_LIST_DC_COEF1,
+> +		     (scaling->scaling_list_dc_coef_16x16[5] << 24) |
+> +		     (scaling->scaling_list_dc_coef_16x16[4] << 16) |
+> +		     (scaling->scaling_list_dc_coef_16x16[3] << 8) |
+> +		     (scaling->scaling_list_dc_coef_16x16[2] << 0));
+> +
+> +	cedrus_h265_sram_write_offset(dev, VE_DEC_H265_SRAM_OFFSET_SCALING_LISTS);
+> +
+> +	for (i = 0; i < 6; i++)
+> +		for (j = 0; j < 8; j++)
+> +			for (k = 0; k < 8; k += 4) {
+> +				val = ((u32)scaling->scaling_list_8x8[i][j + (k + 3) * 8] << 24) |
+> +				      ((u32)scaling->scaling_list_8x8[i][j + (k + 2) * 8] << 16) |
+> +				      ((u32)scaling->scaling_list_8x8[i][j + (k + 1) * 8] << 8) |
+> +				      scaling->scaling_list_8x8[i][j + k * 8];
+> +				cedrus_write(dev, VE_DEC_H265_SRAM_DATA, val);
+> +			}
+> +
+> +	for (i = 0; i < 2; i++)
+> +		for (j = 0; j < 8; j++)
+> +			for (k = 0; k < 8; k += 4) {
+> +				val = ((u32)scaling->scaling_list_32x32[i][j + (k + 3) * 8] << 24) |
+> +				      ((u32)scaling->scaling_list_32x32[i][j + (k + 2) * 8] << 16) |
+> +				      ((u32)scaling->scaling_list_32x32[i][j + (k + 1) * 8] << 8) |
+> +				      scaling->scaling_list_32x32[i][j + k * 8];
+> +				cedrus_write(dev, VE_DEC_H265_SRAM_DATA, val);
+> +			}
+> +
+> +	for (i = 0; i < 6; i++)
+> +		for (j = 0; j < 8; j++)
+> +			for (k = 0; k < 8; k += 4) {
+> +				val = ((u32)scaling->scaling_list_16x16[i][j + (k + 3) * 8] << 24) |
+> +				      ((u32)scaling->scaling_list_16x16[i][j + (k + 2) * 8] << 16) |
+> +				      ((u32)scaling->scaling_list_16x16[i][j + (k + 1) * 8] << 8) |
+> +				      scaling->scaling_list_16x16[i][j + k * 8];
+> +				cedrus_write(dev, VE_DEC_H265_SRAM_DATA, val);
+> +			}
+> +
+> +	for (i = 0; i < 6; i++)
+> +		for (j = 0; j < 4; j++) {
+> +			val = ((u32)scaling->scaling_list_4x4[i][j + 12] << 24) |
+> +			      ((u32)scaling->scaling_list_4x4[i][j + 8] << 16) |
+> +			      ((u32)scaling->scaling_list_4x4[i][j + 4] << 8) |
+> +			      scaling->scaling_list_4x4[i][j];
+> +			cedrus_write(dev, VE_DEC_H265_SRAM_DATA, val);
+> +		}
+> +}
+> +
+>  static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+>  			      struct cedrus_run *run)
+>  {
+> @@ -499,7 +562,12 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+>  
+>  	/* Scaling list. */
+>  
+> -	reg = VE_DEC_H265_SCALING_LIST_CTRL0_DEFAULT;
+> +	if (sps->flags & V4L2_HEVC_SPS_FLAG_SCALING_LIST_ENABLED) {
+> +		cedrus_h265_write_scaling_list(ctx, run);
+> +		reg = VE_DEC_H265_SCALING_LIST_CTRL0_FLAG_ENABLED;
+> +	} else {
+> +		reg = VE_DEC_H265_SCALING_LIST_CTRL0_DEFAULT;
+> +	}
+>  	cedrus_write(dev, VE_DEC_H265_SCALING_LIST_CTRL0, reg);
+>  
+>  	/* Neightbor information address. */
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_regs.h b/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
+> index 7beb03d3bb39..0d9449fe2b28 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
+> @@ -492,6 +492,8 @@
+>  #define VE_DEC_H265_ENTRY_POINT_OFFSET_ADDR	(VE_ENGINE_DEC_H265 + 0x64)
+>  #define VE_DEC_H265_TILE_START_CTB		(VE_ENGINE_DEC_H265 + 0x68)
+>  #define VE_DEC_H265_TILE_END_CTB		(VE_ENGINE_DEC_H265 + 0x6c)
+> +#define VE_DEC_H265_SCALING_LIST_DC_COEF0	(VE_ENGINE_DEC_H265 + 0x78)
+> +#define VE_DEC_H265_SCALING_LIST_DC_COEF1	(VE_ENGINE_DEC_H265 + 0x7c)
+>  
+>  #define VE_DEC_H265_LOW_ADDR			(VE_ENGINE_DEC_H265 + 0x80)
+>  
+> 
 
 _______________________________________________
 devel mailing list
