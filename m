@@ -1,92 +1,104 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45B72134617
-	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jan 2020 16:24:38 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90CEB1347E1
+	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jan 2020 17:25:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 810E920525;
-	Wed,  8 Jan 2020 15:24:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0DAD485E6F;
+	Wed,  8 Jan 2020 16:25:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RWSjHFYfkYVI; Wed,  8 Jan 2020 15:24:36 +0000 (UTC)
+	with ESMTP id COuaYeC7He6H; Wed,  8 Jan 2020 16:25:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6B8C6204B6;
-	Wed,  8 Jan 2020 15:24:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BEF6585B81;
+	Wed,  8 Jan 2020 16:25:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 59C601BF332
- for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 15:24:33 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A277C1BF82B
+ for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 16:25:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5619A20458
- for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 15:24:33 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9A62687D33
+ for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 16:25:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QuVZ465GIf58 for <devel@linuxdriverproject.org>;
- Wed,  8 Jan 2020 15:24:32 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by silver.osuosl.org (Postfix) with ESMTPS id B1842203DA
- for <devel@driverdev.osuosl.org>; Wed,  8 Jan 2020 15:24:32 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 008F9xWt159803;
- Wed, 8 Jan 2020 15:24:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=OlgYEcq3FlsS4ZFGG5PlJ0Gf0bxFSWE6Vx1/vHMVE6s=;
- b=cic+ZN8r6FOx5i8acTnJbILtV8gW8mvRdoRvZFBiywm3QWkVMA2j/NQ5DVJGikAlBRjl
- 2YnRZ20NCPLLs1OCCLh2ogRLMlUPJTHpR4U0j9RVrc2+6yQTYpDBL2z+PC2ArJRtdAYu
- sq5ORMSDIoKlQs6KBt7WOJ1de3e8C3zqhrRyDF++uvIJbuR1wLSIbgunSE3Lm41VjPG8
- jhs7zXgISR7BY4Om7pxZNph59mtYDbzi805DjrNXUNJNlQ6f4Lw4h6DlmTCegsHfvaty
- bB4wf1i0QBMf8B8cHRKoUFcPMfzwLYgNFtivaWd0xTC7F8sUcmULb4miD+8F0K46Y/0G ug== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 2xakbqvgb5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 08 Jan 2020 15:24:30 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 008F9wE8175344;
- Wed, 8 Jan 2020 15:24:29 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3020.oracle.com with ESMTP id 2xcqbp8r0a-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 08 Jan 2020 15:24:29 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 008FORdq011993;
- Wed, 8 Jan 2020 15:24:27 GMT
-Received: from kadam (/10.175.168.130) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 08 Jan 2020 07:24:26 -0800
-Date: Wed, 8 Jan 2020 18:24:18 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH] media: hantro: remove a pointless NULL check
-Message-ID: <20200108152418.GH27042@kadam>
-References: <20200108053534.6rwxk2httwoflbgv@kili.mountain>
- <1118f946572b3da0562fa1c0347fceaeda93f38f.camel@collabora.com>
- <20200108151809.GG27042@kadam>
+ with ESMTP id t29gYUWNxFuc for <devel@linuxdriverproject.org>;
+ Wed,  8 Jan 2020 16:25:39 +0000 (UTC)
+X-Greylist: delayed 00:14:26 by SQLgrey-1.7.6
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com
+ (mail-vi1eur05on2114.outbound.protection.outlook.com [40.107.21.114])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 52C7487D14
+ for <devel@driverdev.osuosl.org>; Wed,  8 Jan 2020 16:25:39 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=odRMS8Fa2jSnFpcehvyjAFpnmTZdOdYukuUmkIdT13la8Ia2BqG9/MT2xQk/8ISnzDoquRk2yfgX8Vtd1k6QQ6LraiFWjROEjRvIVOrB1+MyhHjWZUBh+llZV1iR6oJP1t4BSjh4on5SpMBtC9XyLzupDjXPrfy8DiU5gXiCZ4YaQSAZEr8nB8x7Gtig/2cfy7caZlBD1qBab1yLicH5KPfI0hJzUEKh91VXi4/WekxyKEKez67h09n9VdZG0p01Vc7ANLKPOUvEtvSnFsMAYjiLB5KfArA4OEPYlYWPgkrn4SkRAIOTEODNTwwU2G7UhtuOk4Foci1RYttBt8WJIQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JvOHxOTqy1Hi6qakSLyQqpXe/nPMBCh9fxZIFbD2Lrg=;
+ b=gt//p+j2E9lNZEbY7JReYV7b8aVF4jyhmWvbPq+AElf6rKfuIgG6Yh0FXdVCm93ZqaCjHkizquqxoRFND0sSW26wSxKS/m0CgvfU/X7g5OfzKMk+doWwnGUzaxjHx76CTGMWV5lKWkD6XlEpg2YhnCdu7UvRpv09oUHvEFXd19VUZWe2prBEkliqqNXl2N0tJHqk1JDOT9gsUJxE0HUKcu/oW6AW+rDLnti6bP7PhpCbkzZlW0CmkH7DsuCSPMl1SCBkJEJmbFZP7yYng6AI2bIqsaV+vOYp3jfUFXKZ5IndGKUJ9BYNgW3tT/I5sWfG8t2FQk+h6n/WS//7mFmPQw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nokia.com; dmarc=pass action=none header.from=nokia.com;
+ dkim=pass header.d=nokia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nokia.onmicrosoft.com; 
+ s=selector1-nokia-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JvOHxOTqy1Hi6qakSLyQqpXe/nPMBCh9fxZIFbD2Lrg=;
+ b=iWEsdkNjCRMR/Q4ewu0cNnSQANNixP7+2QY/AclEHtfXYtm7gC+g5Jer0hsyH6JwuCnTxSB7wmio+odYcEX++FjsPjLG3DOOPHpONV/v7+/CVj/PaMlWOQJxGW7EmpYPQp76ZqmqeGkdGVIHFZMs9+60740V2/iCLg660JF9PYw=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=alexander.sverdlin@nokia.com; 
+Received: from VI1PR07MB5040.eurprd07.prod.outlook.com (20.177.203.20) by
+ VI1PR07MB5454.eurprd07.prod.outlook.com (20.178.81.157) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2623.6; Wed, 8 Jan 2020 16:11:11 +0000
+Received: from VI1PR07MB5040.eurprd07.prod.outlook.com
+ ([fe80::20c4:7ce8:f735:316e]) by VI1PR07MB5040.eurprd07.prod.outlook.com
+ ([fe80::20c4:7ce8:f735:316e%2]) with mapi id 15.20.2644.006; Wed, 8 Jan 2020
+ 16:11:11 +0000
+From: Alexander X Sverdlin <alexander.sverdlin@nokia.com>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH] staging: octeon: Drop on uncorrectable alignment or FCS error
+Date: Wed,  8 Jan 2020 17:10:42 +0100
+Message-Id: <20200108161042.253618-1-alexander.sverdlin@nokia.com>
+X-Mailer: git-send-email 2.24.0
+X-ClientProxiedBy: HE1PR0402CA0017.eurprd04.prod.outlook.com
+ (2603:10a6:3:d0::27) To VI1PR07MB5040.eurprd07.prod.outlook.com
+ (2603:10a6:803:9c::20)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200108151809.GG27042@kadam>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9493
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-2001080128
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9493
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-2001080128
+Received: from ulegcpsvdell.emea.nsn-net.net (131.228.32.181) by
+ HE1PR0402CA0017.eurprd04.prod.outlook.com (2603:10a6:3:d0::27) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2602.12 via Frontend Transport; Wed, 8 Jan 2020 16:11:10 +0000
+X-Mailer: git-send-email 2.24.0
+X-Originating-IP: [131.228.32.181]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: 6afef9c0-8621-4a44-22a9-08d794556089
+X-MS-TrafficTypeDiagnostic: VI1PR07MB5454:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <VI1PR07MB5454BA4E0427D25F59FDEDB8883E0@VI1PR07MB5454.eurprd07.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Forefront-PRVS: 02760F0D1C
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10019020)(376002)(346002)(366004)(39860400002)(136003)(396003)(199004)(189003)(81166006)(316002)(54906003)(8676002)(86362001)(81156014)(186003)(16526019)(2906002)(8936002)(6506007)(6916009)(52116002)(4326008)(6512007)(26005)(5660300002)(6486002)(66476007)(1076003)(36756003)(66556008)(6666004)(2616005)(478600001)(66946007)(956004);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:VI1PR07MB5454;
+ H:VI1PR07MB5040.eurprd07.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+Received-SPF: None (protection.outlook.com: nokia.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Wjj6/Xcwzwy8RkO9IUhFnxWy2igiem8JdgUGNBokHgTC187GRhGJJbFoLbiH9nnZg42LAkwVjfgGKXeEXp6ZeqOLX26t9fiybncmVGPYtBfDKGXbPS2KRXDMkuWSDyoyEj/jgR1XfJhyGhe6+LBTDOIwKdMUq0VsGV002PLErEP2GIPDMOuvTzofNhUqM1H/cYata02N/Pjp3h1RzQMw7zJbo75iLNULa+rqDC4kpyN+eyeteDj4zVCf9tlDgJrZ/OfRoCfjSieXTap7z7yPNk9uVVgO94CfPOtjdPiUxh4xVHWf0uwHHuouzyjp+2nBGkSpVnZSMN3kbTXTlPihsvDGeEnTeYtmXq2Fat9YtXBTvv7+RrhFDMuY7JR1/C72gihVq3cEuyWgzrJH06nCO3yuep2qeQ5fV0ttJj7+6lJZom5PanTlI+PuSSu9bO3o
+X-OriginatorOrg: nokia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6afef9c0-8621-4a44-22a9-08d794556089
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jan 2020 16:11:11.0514 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5d471751-9675-428d-917b-70f44f9630b0
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: TL6yenyC+qdzkPSwtOzgvckY5B4dIT2loOCgEY0o3espwQK8p1UoTVt1NlXNyBP8kzm5i3EYINA03m3ue5c7g2jljz6vQ46SnBhsujg6x6g=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR07MB5454
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,54 +111,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, kernel-janitors@vger.kernel.org,
- linux-media@vger.kernel.org
+Cc: Aaro Koskinen <aaro.koskinen@iki.fi>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ralf Baechle <ralf@linux-mips.org>,
+ Alexander Sverdlin <alexander.sverdlin@nokia.com>, netdev@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jan 08, 2020 at 06:18:09PM +0300, Dan Carpenter wrote:
-> On Wed, Jan 08, 2020 at 12:08:21PM -0300, Ezequiel Garcia wrote:
-> > Hi Dan,
-> > 
-> > Thanks for the patch.
-> > 
-> > On Wed, 2020-01-08 at 08:35 +0300, Dan Carpenter wrote:
-> > > This can't be NULL and we've already dereferenced it so let's remove
-> > > the check.
-> > > 
-> > > Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-> > > ---
-> > >  drivers/staging/media/hantro/hantro_v4l2.c | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-> > > index 85af1b96fd34..0198bcda26b7 100644
-> > > --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> > > +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> > > @@ -688,7 +688,7 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
-> > >  	return ret;
-> > >  
-> > >  err_codec_exit:
-> > > -	if (ctx->codec_ops && ctx->codec_ops->exit)
-> > > +	if (ctx->codec_ops->exit)
-> > 
-> > Since you are here, can you remove the other unneeded
-> > checks in the driver?
-> > 
-> 
-> There is only one more, but yes, I should remove it as well.
+From: Alexander Sverdlin <alexander.sverdlin@nokia.com>
 
-Actually the other check is required.
+Currently in case of alignment or FCS error if the packet cannot be
+corrected it's still not dropped. Report the error properly and drop the
+packet while making the code around a little bit more readable.
 
-Let's just leave this one as well.  It doesn't hurt anything and it
-makes the code more future proof.
+Fixes: 80ff0fd3ab ("Staging: Add octeon-ethernet driver files.")
+Signed-off-by: Alexander Sverdlin <alexander.sverdlin@nokia.com>
+---
+ drivers/staging/octeon/ethernet-rx.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-regards,
-dan carpenter
-
+diff --git a/drivers/staging/octeon/ethernet-rx.c b/drivers/staging/octeon/ethernet-rx.c
+index 2c16230..edee9b5 100644
+--- a/drivers/staging/octeon/ethernet-rx.c
++++ b/drivers/staging/octeon/ethernet-rx.c
+@@ -69,15 +69,17 @@ static inline int cvm_oct_check_rcv_error(struct cvmx_wqe *work)
+ 	else
+ 		port = work->word1.cn38xx.ipprt;
+ 
+-	if ((work->word2.snoip.err_code == 10) && (work->word1.len <= 64)) {
++	if ((work->word2.snoip.err_code == 10) && (work->word1.len <= 64))
+ 		/*
+ 		 * Ignore length errors on min size packets. Some
+ 		 * equipment incorrectly pads packets to 64+4FCS
+ 		 * instead of 60+4FCS.  Note these packets still get
+ 		 * counted as frame errors.
+ 		 */
+-	} else if (work->word2.snoip.err_code == 5 ||
+-		   work->word2.snoip.err_code == 7) {
++		return 0;
++
++	if (work->word2.snoip.err_code == 5 ||
++	    work->word2.snoip.err_code == 7) {
+ 		/*
+ 		 * We received a packet with either an alignment error
+ 		 * or a FCS error. This may be signalling that we are
+@@ -125,14 +127,12 @@ static inline int cvm_oct_check_rcv_error(struct cvmx_wqe *work)
+ 				return 1;
+ 			}
+ 		}
+-	} else {
+-		printk_ratelimited("Port %d receive error code %d, packet dropped\n",
+-				   port, work->word2.snoip.err_code);
+-		cvm_oct_free_work(work);
+-		return 1;
+ 	}
+ 
+-	return 0;
++	printk_ratelimited("Port %d receive error code %d, packet dropped\n",
++			   port, work->word2.snoip.err_code);
++	cvm_oct_free_work(work);
++	return 1;
+ }
+ 
+ static void copy_segments_to_skb(struct cvmx_wqe *work, struct sk_buff *skb)
+-- 
+2.4.6
 
 _______________________________________________
 devel mailing list
