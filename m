@@ -2,52 +2,71 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B59413453F
-	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jan 2020 15:43:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 89D2D13454F
+	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jan 2020 15:47:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2F0E387D39;
-	Wed,  8 Jan 2020 14:43:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 439A787D28;
+	Wed,  8 Jan 2020 14:47:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VqgXFdWqaumE; Wed,  8 Jan 2020 14:43:46 +0000 (UTC)
+	with ESMTP id 9bugn2hi4F19; Wed,  8 Jan 2020 14:47:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5DC6D87A60;
-	Wed,  8 Jan 2020 14:43:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AAB5D87A60;
+	Wed,  8 Jan 2020 14:46:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0B1F51BF28A
- for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 14:43:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 44BA61BF28A
+ for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 14:46:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 02F47203D8
- for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 14:43:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4150987A4D
+ for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 14:46:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SW4a1qae5xXo for <devel@linuxdriverproject.org>;
- Wed,  8 Jan 2020 14:43:41 +0000 (UTC)
+ with ESMTP id xcW3XaX6+Lvl for <devel@linuxdriverproject.org>;
+ Wed,  8 Jan 2020 14:46:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay3-d.mail.gandi.net (relay3-d.mail.gandi.net
- [217.70.183.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 394AD203AD
- for <devel@driverdev.osuosl.org>; Wed,  8 Jan 2020 14:43:41 +0000 (UTC)
-X-Originating-IP: 90.76.211.102
-Received: from aptenodytes (lfbn-tou-1-1151-102.w90-76.abo.wanadoo.fr
- [90.76.211.102])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 03BCE6001B;
- Wed,  8 Jan 2020 14:43:36 +0000 (UTC)
-Date: Wed, 8 Jan 2020 15:43:36 +0100
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: Re: [PATCH v2 1/4] media: uapi: hevc: Add scaling matrix control
-Message-ID: <20200108144336.GB229960@aptenodytes>
+Received: from lb2-smtp-cloud9.xs4all.net (lb2-smtp-cloud9.xs4all.net
+ [194.109.24.26])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 46FBE87A34
+ for <devel@driverdev.osuosl.org>; Wed,  8 Jan 2020 14:46:56 +0000 (UTC)
+Received: from [IPv6:2001:420:44c1:2577:919a:30e7:f323:4bf1]
+ ([IPv6:2001:420:44c1:2577:919a:30e7:f323:4bf1])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id pCbiibkeHT6sRpCbliI6kY; Wed, 08 Jan 2020 15:46:54 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1578494814; bh=AsR4xjN/awnmLfBnEaGevlZtxpg0jILGUFkca1kabWw=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=mGMsL66YR3goe/PCP20bW/gn1Dt8R9x9Yu3i8Ao07aaB+1yyCS4qLaX2cywawjDYw
+ VFp1anSq+ltepYElqNpGp0sFE5Fz6T5bh+y+8OQJda6CSuhUSIO0ybAkGbwwWAVj6E
+ hIED2JuZ3fQhYqyZAO7MRg9obMjJUU0ESnWbN4MzQbuoOwluOt3i0NhSEnfT29+RRZ
+ 2tl8s7Bk/TBcFogdAI7oygh/jw/XCKQvDam5RMISdk21U6lMWEGTBK9BIfp2I4UnWP
+ t8eAJEa0RPBIRHCX6S8WC7T82bYpAETFNZ6nhdAiLOSbHnEo710QQnyfsKUEhffZSO
+ 9pQ0Yaa/lfJnw==
+Subject: Re: [PATCH v2 2/4] media: cedrus: hevc: Add support for scaling matrix
+To: =?UTF-8?Q?Jernej_=c5=a0krabec?= <jernej.skrabec@siol.net>,
+ mchehab@kernel.org, mripard@kernel.org, paul.kocialkowski@bootlin.com
 References: <20191213160428.54303-1-jernej.skrabec@siol.net>
- <20191213160428.54303-2-jernej.skrabec@siol.net>
- <20200108151157.17cf9774@kernel.org>
+ <20191213160428.54303-3-jernej.skrabec@siol.net>
+ <4ac91ed5-a220-6a04-b1da-de27a306f8f2@xs4all.nl>
+ <2627039.Y6S9NjorxK@jernej-laptop>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <46364792-7eaf-0a51-b8f8-db376cc2dbe2@xs4all.nl>
+Date: Wed, 8 Jan 2020 15:46:50 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200108151157.17cf9774@kernel.org>
+In-Reply-To: <2627039.Y6S9NjorxK@jernej-laptop>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfKRC0OyPIqq609LUChtv5Wk1gFYQQNCtG6b78bPxuhkz3rv7y43BQx134IbARXUoQtrnXNn499dv9gNyPKmdOVTZKnoQdjaaBU0tiH5BCYigH3Iue9Ow
+ 7Lq+h4swuvzZzmR+3Eq/vaBTjs4FW4afxL3fkHM3p5tu8fGdk55n+PfaG2pgdcZBTRR6t3u58XTsFRv0yC6C3OUI1SYXkGZz96lwpSqxxSerjFdevI5T6Mvv
+ L3UGCx2Q/Im6DjSdOwOt9iwmgoz3GfvDnfMYpJKW88ZiBzBkFU+CQFAdrC3lPHksSF3nBb3MlEh8CXsGmIarf5DG3Y9mlzSpAuu133jSnuIXlTQ+pZcw72mL
+ ClQbvGV3xGsYACf9paqQ5RLH4sBK46ybrRGvrjLPmOxoUhYvWEAiK4FMHrAiY/Oa8ajlcgaVpX0PIQNANdHw2DBSBPIVaK9JOB9MSDUs3D9chrq8hEjIl4Nl
+ La2waBIg4PYn0NPOgpL7+mOzVVYVv+SFo32sW1arVt3UCeP1qGbC2o1prX0anqaAk56YOpryL/Z4WVJXKplpUYVToSKxReHxWvxF9zHJpsfXlLU0Jvncl9ro
+ qSPdn7CfQPKvQ/y/gPa1D73CA0vYuhRL9+G6uh9Vl63X1Q==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,130 +79,154 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, mripard@kernel.org,
- hverkuil@xs4all.nl, wens@csie.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============1518656598831496308=="
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, wens@csie.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============1518656598831496308==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="xgyAXRrhYN0wYx8y"
-Content-Disposition: inline
-
-
---xgyAXRrhYN0wYx8y
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi Mauro,
-
-On Wed 08 Jan 20, 15:11, Mauro Carvalho Chehab wrote:
-> Em Fri, 13 Dec 2019 17:04:25 +0100
-> Jernej Skrabec <jernej.skrabec@siol.net> escreveu:
->=20
-> > HEVC has a scaling matrix concept. Add support for it.
->=20
-> > +struct v4l2_ctrl_hevc_scaling_matrix {
-> > +	__u8	scaling_list_4x4[6][16];
-> > +	__u8	scaling_list_8x8[6][64];
-> > +	__u8	scaling_list_16x16[6][64];
-> > +	__u8	scaling_list_32x32[2][64];
-> > +	__u8	scaling_list_dc_coef_16x16[6];
-> > +	__u8	scaling_list_dc_coef_32x32[2];
-> > +};
->=20
-> I never looked at HEVC spec, but the above seems really weird.
->=20
-> Please correct me if I am wrong, but each of the above matrixes
-> is independent, and the driver will use just one of the above on
-> any specific time (for a given video output node), right?
-
-I am not too sure about what the specification really entails, but it is my
-understanding that HEVC allows simultaneous block sizes between 4x4 and 32x=
-32
-to exist within the same coding tree and slice. That suggests that it makes
-sense to have specific coefficients for each case.
-
-Note that the hardware also has distinct registers for each scaling list.
-
-Cheers,
-
-Paul
-
-> If so, why would userspace be forced to update lots of matrixes, if would
-> likely use just one at a given time?
->=20
-> IMO, the proper way would be, instead, to use an uAPI like:
->=20
-> /*
->  * Actually, as this is uAPI, we will use a fixed size integer type, like
->  *  unsigned int
->  */
-> enum hevc_scaling_matrix_type {
-> 	HEVC_SCALING_MATRIX_4x4,
-> 	HEVC_SCALING_MATRIX_8x8,
-> ...
-> 	HEVC_SCALING_MATRIX_DC_COEF_32x32,
-> };
->=20
-> struct v4l2_ctrl_hevc_scaling_matrix {
-> 	__u32	scaling_type 		/* as defined by enum hevc_scaling_matrix_type */
->=20
-> 	union {
-> 		__u8	scaling_list_4x4[6][16];
-> 		__u8	scaling_list_8x8[6][64];
-> 		__u8	scaling_list_16x16[6][64];
-> 		__u8	scaling_list_32x32[2][64];
-> 		__u8	scaling_list_dc_coef_16x16[6];
-> 		__u8	scaling_list_dc_coef_32x32[2];
-> 	};
-> };
->=20
-> And let the core use a default for each scaling matrix, if userspace does=
-n't
-> set it.
->=20
->=20
->=20
-> Cheers,
-> Mauro
-
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
-
---xgyAXRrhYN0wYx8y
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl4V6pgACgkQ3cLmz3+f
-v9F7hQf/XAlLHjAzimIvRq2xlPR1NvyAr7jDe7fBqBk3L9lKzKcKlvkzuOd/DQd7
-/zm4Z01MtrhbBQvcufpIH0L4LFVyMIwNUoMoRP2ds+yt2fG9Pdc66yJG+mWdq370
-vZtDY5ExsIOrt7moQfB3XQ9/6TnEMMb7H+/u/g9GsuQ8JxlMnuo11xxoCjUfznZ+
-RCwBNxrBfD4sB5ZAl27J4lUiSisKQm/vP2k3WlWs/XWpEJYsNqij2juBFfFjlReQ
-t5qzEHJFEg3Q1p9JxjbTODWsVDw9NcIB+9n36nYIgwr0EhyY6hGtfAVgCcQ9cF/J
-rkslVxMZS9Qq6vCfzn7leATtsAQ1Mg==
-=HWQs
------END PGP SIGNATURE-----
-
---xgyAXRrhYN0wYx8y--
-
---===============1518656598831496308==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1518656598831496308==--
+T24gMS83LzIwIDY6MTAgUE0sIEplcm5laiDFoGtyYWJlYyB3cm90ZToKPiBIaSEKPiAKPiBEbmUg
+dG9yZWssIDA3LiBqYW51YXIgMjAyMCBvYiAxNjowMToxNiBDRVQgamUgSGFucyBWZXJrdWlsIG5h
+cGlzYWwoYSk6Cj4+IE9uIDEyLzEzLzE5IDU6MDQgUE0sIEplcm5laiBTa3JhYmVjIHdyb3RlOgo+
+Pj4gSEVWQyBmcmFtZXMgbWF5IHVzZSBzY2FsaW5nIGxpc3QgZmVhdHVyZS4gQWRkIHN1cHBvcnQg
+Zm9yIGl0Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEplcm5laiBTa3JhYmVjIDxqZXJuZWouc2ty
+YWJlY0BzaW9sLm5ldD4KPj4+IC0tLQo+Pj4KPj4+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3Vu
+eGkvY2VkcnVzL2NlZHJ1cy5jICAgfCAgNyArKwo+Pj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9z
+dW54aS9jZWRydXMvY2VkcnVzLmggICB8ICAxICsKPj4+ICAuLi4vc3RhZ2luZy9tZWRpYS9zdW54
+aS9jZWRydXMvY2VkcnVzX2RlYy5jICAgfCAgMiArCj4+PiAgLi4uL3N0YWdpbmcvbWVkaWEvc3Vu
+eGkvY2VkcnVzL2NlZHJ1c19oMjY1LmMgIHwgNzAgKysrKysrKysrKysrKysrKysrLQo+Pj4gIC4u
+Li9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfcmVncy5oICB8ICAyICsKPj4+ICA1
+IGZpbGVzIGNoYW5nZWQsIDgxIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPj4+Cj4+PiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXMuYwo+
+Pj4gYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1cy5jIGluZGV4Cj4+
+PiBjNmRkZDQ2ZWZmODIuLmJmNjhiYzZiMjBjOCAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvc3Rh
+Z2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzLmMKPj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzLmMKPj4+IEBAIC0xMTYsNiArMTE2LDEzIEBAIHN0
+YXRpYyBjb25zdCBzdHJ1Y3QgY2VkcnVzX2NvbnRyb2wgY2VkcnVzX2NvbnRyb2xzW10KPj4+ID0g
+ez4gCj4+PiAgCQkuY29kZWMJCT0gQ0VEUlVTX0NPREVDX0gyNjUsCj4+PiAgCQkucmVxdWlyZWQJ
+PSB0cnVlLAo+Pj4gIAkKPj4+ICAJfSwKPj4+Cj4+PiArCXsKPj4+ICsJCS5jZmcgPSB7Cj4+PiAr
+CQkJLmlkCT0gCj4gVjRMMl9DSURfTVBFR19WSURFT19IRVZDX1NDQUxJTkdfTUFUUklYLAo+Pj4g
+KwkJfSwKPj4+ICsJCS5jb2RlYwkJPSBDRURSVVNfQ09ERUNfSDI2NSwKPj4+ICsJCS5yZXF1aXJl
+ZAk9IHRydWUsCj4+Cj4+IFNob3VsZCB0aGlzIGJlIHRydWU/IFRoaXMgbWVhbnMgdGhhdCBleGlz
+dGluZyBhcHBsaWNhdGlvbnMgYXJlIG5vdwo+PiBzdWRkZW5seSByZXF1aXJlZCB0byBhbHdheXMg
+cGFzcyB0aGUgc2NhbGluZyBtYXRyaXggZm9yIGV2ZXJ5IGJ1ZmZlci4KPj4KPj4gRXNwZWNpYWxs
+eSBzaW5jZSB0aGUgY29tbWl0IGxvZyBzYXlzOiAnSEVWQyBmcmFtZXMgKm1heSogdXNlIHNjYWxp
+bmcgbGlzdAo+PiBmZWF0dXJlJywgaW5kaWNhdGluZyB0aGF0IHRoaXMgaXMgYW4gb3B0aW9uYWwg
+ZmVhdHVyZS4KPiAKPiBUcnVlLiBDYW4geW91IGZpeCB0aGlzIHdoZW4gYXBwbHlpbmcgaWYgdGhp
+cyBpcyB0aGUgb25seSBpc3N1ZT8KCkkgcmVhbGl6ZWQgdGhhdCBhZnRlciBjaGFuZ2luZyB0aGlz
+IHRvIGZhbHNlLCB5b3UgYWxzbyBuZWVkIHRvIGRvY3VtZW50CndoYXQgaGFwcGVucyBpZiB5b3Ug
+ZG8gTk9UIHNldCB0aGlzIGNvbnRyb2wgaW4gdGhlIHJlcXVlc3QuCgpEb2VzIGl0IGZhbGwgYmFj
+ayB0byBkZWZhdWx0IHZhbHVlcz8gSXQgbG9va3MgbGlrZSB0aGUgSEVWQyBzcGVjIGRlZmluZXMK
+c29tZSBkZWZhdWx0cyAoaWYgSSB1bmRlcnN0YW5kIGl0IGNvcnJlY3RseSkuCgpSZWdhcmRzLAoK
+CUhhbnMKCj4gCj4gQmVzdCByZWdhcmRzLAo+IEplcm5lago+IAo+Pgo+PiBSZWdhcmRzLAo+Pgo+
+PiAJSGFucwo+Pgo+Pj4gKwl9LAo+Pj4KPj4+ICAJewo+Pj4gIAkKPj4+ICAJCS5jZmcgPSB7Cj4+
+PiAgCQkKPj4+ICAJCQkuaWQJPSAKPiBWNEwyX0NJRF9NUEVHX1ZJREVPX0hFVkNfREVDT0RFX01P
+REUsCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRy
+dXMvY2VkcnVzLmgKPj4+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRy
+dXMuaCBpbmRleAo+Pj4gOTY3NjU1NTVhYjhhLi5kOTQ1ZjRmMGZmMmQgMTAwNjQ0Cj4+PiAtLS0g
+YS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1cy5oCj4+PiArKysgYi9k
+cml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1cy5oCj4+PiBAQCAtNzMsNiAr
+NzMsNyBAQCBzdHJ1Y3QgY2VkcnVzX2gyNjVfcnVuIHsKPj4+Cj4+PiAgCWNvbnN0IHN0cnVjdCB2
+NGwyX2N0cmxfaGV2Y19zcHMJCQkqc3BzOwo+Pj4gIAljb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX2hl
+dmNfcHBzCQkJKnBwczsKPj4+ICAJY29uc3Qgc3RydWN0IHY0bDJfY3RybF9oZXZjX3NsaWNlX3Bh
+cmFtcwkqc2xpY2VfcGFyYW1zOwo+Pj4KPj4+ICsJY29uc3Qgc3RydWN0IHY0bDJfY3RybF9oZXZj
+X3NjYWxpbmdfbWF0cml4CQo+ICpzY2FsaW5nX21hdHJpeDsKPj4+Cj4+PiAgfTsKPj4+ICAKPj4+
+ICBzdHJ1Y3QgY2VkcnVzX3J1biB7Cj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2RlYy5jCj4+PiBiL2RyaXZlcnMvc3RhZ2luZy9t
+ZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2RlYy5jIGluZGV4Cj4+PiA0YTJmYzMzYTFkNzkuLjMy
+N2VkNmMyNjRkYyAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9j
+ZWRydXMvY2VkcnVzX2RlYy5jCj4+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkv
+Y2VkcnVzL2NlZHJ1c19kZWMuYwo+Pj4gQEAgLTY2LDYgKzY2LDggQEAgdm9pZCBjZWRydXNfZGV2
+aWNlX3J1bih2b2lkICpwcml2KQo+Pj4KPj4+ICAJCQlWNEwyX0NJRF9NUEVHX1ZJREVPX0hFVkNf
+UFBTKTsKPj4+ICAJCQo+Pj4gIAkJcnVuLmgyNjUuc2xpY2VfcGFyYW1zID0gY2VkcnVzX2ZpbmRf
+Y29udHJvbF9kYXRhKGN0eCwKPj4+ICAJCQo+Pj4gIAkJCVY0TDJfQ0lEX01QRUdfVklERU9fSEVW
+Q19TTElDRV9QQVJBTVMpOwo+Pj4KPj4+ICsJCXJ1bi5oMjY1LnNjYWxpbmdfbWF0cml4ID0gY2Vk
+cnVzX2ZpbmRfY29udHJvbF9kYXRhKGN0eCwKPj4+ICsJCQlWNEwyX0NJRF9NUEVHX1ZJREVPX0hF
+VkNfU0NBTElOR19NQVRSSVgpOwo+Pj4KPj4+ICAJCWJyZWFrOwo+Pj4gIAkKPj4+ICAJZGVmYXVs
+dDoKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2Nl
+ZHJ1c19oMjY1LmMKPj4+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRy
+dXNfaDI2NS5jIGluZGV4Cj4+PiA2OTQ1ZGM3NGUxZDcuLjg4OGJmZDVjYTIyNCAxMDA2NDQKPj4+
+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gyNjUuYwo+
+Pj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NS5j
+Cj4+PiBAQCAtMjIwLDYgKzIyMCw2OSBAQCBzdGF0aWMgdm9pZCBjZWRydXNfaDI2NV9wcmVkX3dl
+aWdodF93cml0ZShzdHJ1Y3QKPj4+IGNlZHJ1c19kZXYgKmRldiw+IAo+Pj4gIAl9Cj4+PiAgCj4+
+PiAgfQo+Pj4KPj4+ICtzdGF0aWMgdm9pZCBjZWRydXNfaDI2NV93cml0ZV9zY2FsaW5nX2xpc3Qo
+c3RydWN0IGNlZHJ1c19jdHggKmN0eCwKPj4+ICsJCQkJCSAgIHN0cnVjdCBjZWRydXNfcnVuIAo+
+ICpydW4pCj4+PiArewo+Pj4gKwljb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfc2NhbGluZ19t
+YXRyaXggKnNjYWxpbmc7Cj4+PiArCXN0cnVjdCBjZWRydXNfZGV2ICpkZXYgPSBjdHgtPmRldjsK
+Pj4+ICsJdTMyIGksIGosIGssIHZhbDsKPj4+ICsKPj4+ICsJc2NhbGluZyA9IHJ1bi0+aDI2NS5z
+Y2FsaW5nX21hdHJpeDsKPj4+ICsKPj4+ICsJY2VkcnVzX3dyaXRlKGRldiwgVkVfREVDX0gyNjVf
+U0NBTElOR19MSVNUX0RDX0NPRUYwLAo+Pj4gKwkJICAgICAoc2NhbGluZy0+c2NhbGluZ19saXN0
+X2RjX2NvZWZfMzJ4MzJbMV0gPDwgMjQpIHwKPj4+ICsJCSAgICAgKHNjYWxpbmctPnNjYWxpbmdf
+bGlzdF9kY19jb2VmXzMyeDMyWzBdIDw8IDE2KSB8Cj4+PiArCQkgICAgIChzY2FsaW5nLT5zY2Fs
+aW5nX2xpc3RfZGNfY29lZl8xNngxNlsxXSA8PCA4KSB8Cj4+PiArCQkgICAgIChzY2FsaW5nLT5z
+Y2FsaW5nX2xpc3RfZGNfY29lZl8xNngxNlswXSA8PCAwKSk7Cj4+PiArCj4+PiArCWNlZHJ1c193
+cml0ZShkZXYsIFZFX0RFQ19IMjY1X1NDQUxJTkdfTElTVF9EQ19DT0VGMSwKPj4+ICsJCSAgICAg
+KHNjYWxpbmctPnNjYWxpbmdfbGlzdF9kY19jb2VmXzE2eDE2WzVdIDw8IDI0KSB8Cj4+PiArCQkg
+ICAgIChzY2FsaW5nLT5zY2FsaW5nX2xpc3RfZGNfY29lZl8xNngxNls0XSA8PCAxNikgfAo+Pj4g
+KwkJICAgICAoc2NhbGluZy0+c2NhbGluZ19saXN0X2RjX2NvZWZfMTZ4MTZbM10gPDwgOCkgfAo+
+Pj4gKwkJICAgICAoc2NhbGluZy0+c2NhbGluZ19saXN0X2RjX2NvZWZfMTZ4MTZbMl0gPDwgMCkp
+Owo+Pj4gKwo+Pj4gKwljZWRydXNfaDI2NV9zcmFtX3dyaXRlX29mZnNldChkZXYsCj4+PiBWRV9E
+RUNfSDI2NV9TUkFNX09GRlNFVF9TQ0FMSU5HX0xJU1RTKTsgKwo+Pj4gKwlmb3IgKGkgPSAwOyBp
+IDwgNjsgaSsrKQo+Pj4gKwkJZm9yIChqID0gMDsgaiA8IDg7IGorKykKPj4+ICsJCQlmb3IgKGsg
+PSAwOyBrIDwgODsgayArPSA0KSB7Cj4+PiArCQkJCXZhbCA9ICgodTMyKXNjYWxpbmctCj4+IHNj
+YWxpbmdfbGlzdF84eDhbaV1baiArIChrICsgMykgKiA4XSA8PCAyNCkgfAo+Pj4gKwkJCQkgICAg
+ICAoKHUzMilzY2FsaW5nLQo+PiBzY2FsaW5nX2xpc3RfOHg4W2ldW2ogKyAoayArIDIpICogOF0g
+PDwgMTYpIHwKPj4+ICsJCQkJICAgICAgKCh1MzIpc2NhbGluZy0KPj4gc2NhbGluZ19saXN0Xzh4
+OFtpXVtqICsgKGsgKyAxKSAqIDhdIDw8IDgpIHwKPj4+ICsJCQkJICAgICAgc2NhbGluZy0KPj4g
+c2NhbGluZ19saXN0Xzh4OFtpXVtqICsgayAqIDhdOwo+Pj4gKwkJCQljZWRydXNfd3JpdGUoZGV2
+LCAKPiBWRV9ERUNfSDI2NV9TUkFNX0RBVEEsIHZhbCk7Cj4+PiArCQkJfQo+Pj4gKwo+Pj4gKwlm
+b3IgKGkgPSAwOyBpIDwgMjsgaSsrKQo+Pj4gKwkJZm9yIChqID0gMDsgaiA8IDg7IGorKykKPj4+
+ICsJCQlmb3IgKGsgPSAwOyBrIDwgODsgayArPSA0KSB7Cj4+PiArCQkJCXZhbCA9ICgodTMyKXNj
+YWxpbmctCj4+IHNjYWxpbmdfbGlzdF8zMngzMltpXVtqICsgKGsgKyAzKSAqIDhdIDw8IDI0KSB8
+Cj4+PiArCQkJCSAgICAgICgodTMyKXNjYWxpbmctCj4+IHNjYWxpbmdfbGlzdF8zMngzMltpXVtq
+ICsgKGsgKyAyKSAqIDhdIDw8IDE2KSB8Cj4+PiArCQkJCSAgICAgICgodTMyKXNjYWxpbmctCj4+
+IHNjYWxpbmdfbGlzdF8zMngzMltpXVtqICsgKGsgKyAxKSAqIDhdIDw8IDgpIHwKPj4+ICsJCQkJ
+ICAgICAgc2NhbGluZy0KPj4gc2NhbGluZ19saXN0XzMyeDMyW2ldW2ogKyBrICogOF07Cj4+PiAr
+CQkJCWNlZHJ1c193cml0ZShkZXYsIAo+IFZFX0RFQ19IMjY1X1NSQU1fREFUQSwgdmFsKTsKPj4+
+ICsJCQl9Cj4+PiArCj4+PiArCWZvciAoaSA9IDA7IGkgPCA2OyBpKyspCj4+PiArCQlmb3IgKGog
+PSAwOyBqIDwgODsgaisrKQo+Pj4gKwkJCWZvciAoayA9IDA7IGsgPCA4OyBrICs9IDQpIHsKPj4+
+ICsJCQkJdmFsID0gKCh1MzIpc2NhbGluZy0KPj4gc2NhbGluZ19saXN0XzE2eDE2W2ldW2ogKyAo
+ayArIDMpICogOF0gPDwgMjQpIHwKPj4+ICsJCQkJICAgICAgKCh1MzIpc2NhbGluZy0KPj4gc2Nh
+bGluZ19saXN0XzE2eDE2W2ldW2ogKyAoayArIDIpICogOF0gPDwgMTYpIHwKPj4+ICsJCQkJICAg
+ICAgKCh1MzIpc2NhbGluZy0KPj4gc2NhbGluZ19saXN0XzE2eDE2W2ldW2ogKyAoayArIDEpICog
+OF0gPDwgOCkgfAo+Pj4gKwkJCQkgICAgICBzY2FsaW5nLQo+PiBzY2FsaW5nX2xpc3RfMTZ4MTZb
+aV1baiArIGsgKiA4XTsKPj4+ICsJCQkJY2VkcnVzX3dyaXRlKGRldiwgCj4gVkVfREVDX0gyNjVf
+U1JBTV9EQVRBLCB2YWwpOwo+Pj4gKwkJCX0KPj4+ICsKPj4+ICsJZm9yIChpID0gMDsgaSA8IDY7
+IGkrKykKPj4+ICsJCWZvciAoaiA9IDA7IGogPCA0OyBqKyspIHsKPj4+ICsJCQl2YWwgPSAoKHUz
+MilzY2FsaW5nLT5zY2FsaW5nX2xpc3RfNHg0W2ldW2ogKyAKPiAxMl0gPDwgMjQpIHwKPj4+ICsJ
+CQkgICAgICAoKHUzMilzY2FsaW5nLT5zY2FsaW5nX2xpc3RfNHg0W2ldW2ogKyAKPiA4XSA8PCAx
+NikgfAo+Pj4gKwkJCSAgICAgICgodTMyKXNjYWxpbmctPnNjYWxpbmdfbGlzdF80eDRbaV1baiAr
+IAo+IDRdIDw8IDgpIHwKPj4+ICsJCQkgICAgICBzY2FsaW5nLT5zY2FsaW5nX2xpc3RfNHg0W2ld
+W2pdOwo+Pj4gKwkJCWNlZHJ1c193cml0ZShkZXYsIFZFX0RFQ19IMjY1X1NSQU1fREFUQSwgCj4g
+dmFsKTsKPj4+ICsJCX0KPj4+ICt9Cj4+PiArCj4+Pgo+Pj4gIHN0YXRpYyB2b2lkIGNlZHJ1c19o
+MjY1X3NldHVwKHN0cnVjdCBjZWRydXNfY3R4ICpjdHgsCj4+PiAgCj4+PiAgCQkJICAgICAgc3Ry
+dWN0IGNlZHJ1c19ydW4gKnJ1bikKPj4+ICAKPj4+ICB7Cj4+Pgo+Pj4gQEAgLTQ5OSw3ICs1NjIs
+MTIgQEAgc3RhdGljIHZvaWQgY2VkcnVzX2gyNjVfc2V0dXAoc3RydWN0IGNlZHJ1c19jdHggKmN0
+eCwKPj4+Cj4+PiAgCS8qIFNjYWxpbmcgbGlzdC4gKi8KPj4+Cj4+PiAtCXJlZyA9IFZFX0RFQ19I
+MjY1X1NDQUxJTkdfTElTVF9DVFJMMF9ERUZBVUxUOwo+Pj4gKwlpZiAoc3BzLT5mbGFncyAmIFY0
+TDJfSEVWQ19TUFNfRkxBR19TQ0FMSU5HX0xJU1RfRU5BQkxFRCkgewo+Pj4gKwkJY2VkcnVzX2gy
+NjVfd3JpdGVfc2NhbGluZ19saXN0KGN0eCwgcnVuKTsKPj4+ICsJCXJlZyA9IFZFX0RFQ19IMjY1
+X1NDQUxJTkdfTElTVF9DVFJMMF9GTEFHX0VOQUJMRUQ7Cj4+PiArCX0gZWxzZSB7Cj4+PiArCQly
+ZWcgPSBWRV9ERUNfSDI2NV9TQ0FMSU5HX0xJU1RfQ1RSTDBfREVGQVVMVDsKPj4+ICsJfQo+Pj4K
+Pj4+ICAJY2VkcnVzX3dyaXRlKGRldiwgVkVfREVDX0gyNjVfU0NBTElOR19MSVNUX0NUUkwwLCBy
+ZWcpOwo+Pj4gIAkKPj4+ICAJLyogTmVpZ2h0Ym9yIGluZm9ybWF0aW9uIGFkZHJlc3MuICovCj4+
+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2Vk
+cnVzX3JlZ3MuaAo+Pj4gYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1
+c19yZWdzLmggaW5kZXgKPj4+IDdiZWIwM2QzYmIzOS4uMGQ5NDQ5ZmUyYjI4IDEwMDY0NAo+Pj4g
+LS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfcmVncy5oCj4+
+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19yZWdzLmgK
+Pj4+IEBAIC00OTIsNiArNDkyLDggQEAKPj4+Cj4+PiAgI2RlZmluZSBWRV9ERUNfSDI2NV9FTlRS
+WV9QT0lOVF9PRkZTRVRfQUREUgkoVkVfRU5HSU5FX0RFQ19IMjY1ICsgCj4gMHg2NCkKPj4+ICAj
+ZGVmaW5lIFZFX0RFQ19IMjY1X1RJTEVfU1RBUlRfQ1RCCQkoVkVfRU5HSU5FX0RFQ19IMjY1ICsg
+Cj4gMHg2OCkKPj4+ICAjZGVmaW5lIFZFX0RFQ19IMjY1X1RJTEVfRU5EX0NUQgkJKFZFX0VOR0lO
+RV9ERUNfSDI2NSArIAo+IDB4NmMpCj4+Pgo+Pj4gKyNkZWZpbmUgVkVfREVDX0gyNjVfU0NBTElO
+R19MSVNUX0RDX0NPRUYwCShWRV9FTkdJTkVfREVDX0gyNjUgKyAKPiAweDc4KQo+Pj4gKyNkZWZp
+bmUgVkVfREVDX0gyNjVfU0NBTElOR19MSVNUX0RDX0NPRUYxCShWRV9FTkdJTkVfREVDX0gyNjUg
+KyAKPiAweDdjKQo+Pj4KPj4+ICAjZGVmaW5lIFZFX0RFQ19IMjY1X0xPV19BRERSCQkJKFZFX0VO
+R0lORV9ERUNfSDI2NSArIAo+IDB4ODApCj4gCj4gCj4gCj4gCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGlu
+dXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
