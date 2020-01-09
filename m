@@ -1,85 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78335134F2B
-	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jan 2020 22:55:33 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED4AA135400
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Jan 2020 09:01:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 28F1120781;
-	Wed,  8 Jan 2020 21:55:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 204C585BBD;
+	Thu,  9 Jan 2020 08:01:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rFnClqhV9giW; Wed,  8 Jan 2020 21:55:30 +0000 (UTC)
+	with ESMTP id iiNrZDd3aB6o; Thu,  9 Jan 2020 08:01:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0F9E41FFFF;
-	Wed,  8 Jan 2020 21:55:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4117586822;
+	Thu,  9 Jan 2020 08:01:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A28131BF5AD
- for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 21:55:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F5511BF330
+ for <devel@linuxdriverproject.org>; Thu,  9 Jan 2020 08:01:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 98FF48698E
- for <devel@linuxdriverproject.org>; Wed,  8 Jan 2020 21:55:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 298BF868F6
+ for <devel@linuxdriverproject.org>; Thu,  9 Jan 2020 08:01:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S5qOPwYbXgvI for <devel@linuxdriverproject.org>;
- Wed,  8 Jan 2020 21:55:25 +0000 (UTC)
+ with ESMTP id ChJlAz2Lw8iy for <devel@linuxdriverproject.org>;
+ Thu,  9 Jan 2020 08:01:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9998084F4F
- for <devel@driverdev.osuosl.org>; Wed,  8 Jan 2020 21:55:25 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id m24so590942wmc.3
- for <devel@driverdev.osuosl.org>; Wed, 08 Jan 2020 13:55:25 -0800 (PST)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 61DBE85BBD
+ for <devel@driverdev.osuosl.org>; Thu,  9 Jan 2020 08:01:44 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id i6so2991425pfc.1
+ for <devel@driverdev.osuosl.org>; Thu, 09 Jan 2020 00:01:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=B/miDvuPrnQYzlt4HuGny92Yb8vnKvzEblzzLeQBG2s=;
- b=UNi55vQPeAz+tXf6IpBz3USE1uWzU8WM2Xth74Qvid5qqaLJPvccQBKc3IjlgneoFt
- SUPogeVai6oBW/nBFove5Iw0qwc8Fe87ffi/f7IEzb9y/bXaPWgHSPJj4Yozod1IqlC8
- zuimspEYbQeKD+9PNe7w1lbTZIwNXcNQEvwWy8ZswZ+RAxKW1ESUy3zRFNla/m3DnRf+
- 6b5/Ifb6ZLDbokFdTL9hF16q3bfJ4/T0/Y3oph09VjGCFbOrE6KxVzYwolvRGgFhA/ZR
- oaFKSZP73/HXcgby5q5OL47OpnLBrh/1ZLs0LK6FdcaP54zPRCW009NIMNGa/kyGcHyo
- BwoA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rnct3rScuo5UCOrZPVZUn6yaCZ4Hz2wyB5PJl2dXsyQ=;
+ b=lepqg45iW0x0wIXzB9W1OISEWmZF8wGXjcpktX5kTjFE9A/zNltobhwCGrIT9SCeZT
+ vbTg1L38xmQ7S2IjvKnDbq6OTnY8mNqWjopnVUclb6wn1psZgD8QUaNBV1qeHbpmqE9M
+ DWWZtCsiW2J18ax3sTRNO0HoiATt/m6isRFl62RXJlfEvLnm2wk0lBumEX4jWDaTsIrZ
+ J6ZVYRFs85Rr6WVN6Nv+pQ4DZG5piMclU/QWVnlbdeeHN5PcRV0E6zxz8/eJPbE1wXuv
+ a4nlnUTY+ZO5MDAsnS7CTYnLI55KZw3DBOWwwkCCLvqLqWVy8iZRXrpYFEGfE+gW5gt8
+ ylVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=B/miDvuPrnQYzlt4HuGny92Yb8vnKvzEblzzLeQBG2s=;
- b=PkUx3nxJWyjkuGcEwjJYvngIyqKjy+LGRWMrbSJSmT06TypFEDe17dHDXz4AFZk33I
- lhMgyJF0Rt86/gFqPBxLUNHomhvzHo7d0t0myUm8y/KVCbLRrs/EDJaUG+CWMAAifssR
- tXhE6+RKROtiD/fm8ThC/ltI9c54U7nawTi0b6a3dI5pwxCcJ5CxwDl8BxKl2P7eoKUT
- 6gvAA8NnkwRnR3husPQlOxr6r8xxJCnq/43Ufxk+87v7iSIRVw8xhDlHGZD+509IaBBZ
- 3Ec1pPqX7HF6u60w8ReCtNGyf22ejObSlYYctyynYdY6m9m0aKpcDjNs1H+ESeSkSnZV
- wGiw==
-X-Gm-Message-State: APjAAAWZ20eocxmC0YDNCs0ny++zw+fcH6zEZqoHgOQNdsvehInbVNhR
- 4mVMFd21t8q1w03y8MWroXDRd4o/
-X-Google-Smtp-Source: APXvYqyOY8An2693Ie5iIGosvFGBOcCQjpX7USBmT4Fn96OuBlxleKHBHxEDa93fBZlcNMOH4UDOsA==
-X-Received: by 2002:a7b:ce98:: with SMTP id q24mr742673wmj.41.1578520523749;
- Wed, 08 Jan 2020 13:55:23 -0800 (PST)
-Received: from [192.168.43.18] (188.29.164.206.threembb.co.uk.
- [188.29.164.206])
- by smtp.gmail.com with ESMTPSA id q14sm534375wmj.14.2020.01.08.13.55.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jan 2020 13:55:23 -0800 (PST)
-Subject: Re: [PATCH 1/5] staging: vt6656: Fix non zero logical return of,
- usb_control_msg
-To: Quentin Deslandes <quentin.deslandes@itdev.co.uk>,
- Dan Carpenter <dan.carpenter@oracle.com>
-References: <08e88842-6f78-a2e3-a7a0-139fec960b2b@gmail.com>
- <20200103105734.GD3911@kadam> <20200106214518.GB54084@jiffies>
-From: Malcolm Priestley <tvboxspy@gmail.com>
-Message-ID: <0a4738e9-425c-4e1b-8e8d-ca3499a29c6d@gmail.com>
-Date: Wed, 8 Jan 2020 21:55:21 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
+ bh=rnct3rScuo5UCOrZPVZUn6yaCZ4Hz2wyB5PJl2dXsyQ=;
+ b=qzwSamT4T3HRaq6Pzzr+4KXdJSJ/usxnRJw2WXwYOxFRfDEXoMGz+KLdm1Ugh8r11Z
+ azpz5Rn5LbXH2WWlvVIo/T+UX0DcG512JR4KiVfcMH9Q3JMG8zcT9iAHJDovVicP4UVa
+ kxtVn5lLbhoiFyeXobYbVaxpEh1+/UQHWvx2+ppsKx2OpAJJmllN3UgFdonS4Y3yXXUp
+ rSE6MZ4aDc0SWKKx0rQ3h/tX7eb34a+sQ1SYVKo5xmJT7bsllHRNu6ZUwheYMWBnRiLb
+ tFrRzG8FISxxGDRHU7KCzG++Ruq4wtKUtRKQOl/BSXecT/ZNcmxHnOSTs/XyuUz09vvA
+ LhzQ==
+X-Gm-Message-State: APjAAAXckW/WMnYfyaQS686CO6eZrfYkLejqsoy/eptoO0IfV1Tr+z7A
+ iCQO/NSD/b84UecSpt6LVfogSUQO+Dj3NQ==
+X-Google-Smtp-Source: APXvYqyXZgRI88AzUaKA5gkc6klLUtcliBwJ8O3HqkjQM5lsLt+BQzm1FAYECTQpDgENRC+rUjLFww==
+X-Received: by 2002:a63:7705:: with SMTP id s5mr9628789pgc.379.1578556903816; 
+ Thu, 09 Jan 2020 00:01:43 -0800 (PST)
+Received: from localhost.localdomain ([240e:379:970:fa70::fa3])
+ by smtp.gmail.com with ESMTPSA id 100sm1861175pjo.17.2020.01.09.00.01.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 09 Jan 2020 00:01:43 -0800 (PST)
+From: Chuanhong Guo <gch981213@gmail.com>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH] staging: mt7621-dts: fix register range of memc node in
+ mt7621.dtsi
+Date: Thu,  9 Jan 2020 16:00:03 +0800
+Message-Id: <20200109080120.362110-1-gch981213@gmail.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-In-Reply-To: <20200106214518.GB54084@jiffies>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,81 +84,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Weijie Gao <hackpascal@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ NeilBrown <neil@brown.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 06/01/2020 21:45, Quentin Deslandes wrote:
-> On 01/03/20 13:58:08, Dan Carpenter wrote:
->> On Fri, Dec 20, 2019 at 09:14:59PM +0000, Malcolm Priestley wrote:
->>> Starting with commit 59608cb1de1856
->>> ("staging: vt6656: clean function's error path in usbpipe.c")
->>> the usb control functions have returned errors throughout driver
->>> with only logical variable checking.
->>
->> Use the Fixes tag for this.
->>
->> Fixes: 59608cb1de18 ("staging: vt6656: clean function's error path in usbpipe.c")
->>
->> 12 digits to the hash.  Add Quentin to the CC list.
->>
->>>
->>> However, usb_control_msg return the amount of bytes transferred
->>> this means that normal operation causes errors.
->>>
->>> Correct the return function so only return zero when transfer
->>> is successful.
->>>
->>> Cc: stable <stable@vger.kernel.org> # v5.3+
->>> Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
->>> ---
->>>  drivers/staging/vt6656/usbpipe.c | 8 ++++++--
->>>  1 file changed, 6 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
->>> index d3304df6bd53..488ebd98773d 100644
->>> --- a/drivers/staging/vt6656/usbpipe.c
->>> +++ b/drivers/staging/vt6656/usbpipe.c
->>> @@ -59,7 +59,9 @@ int vnt_control_out(struct vnt_private *priv, u8 request, u16 value,
->>>  
->>>  	kfree(usb_buffer);
->>>  
->>> -	if (ret >= 0 && ret < (int)length)
->>> +	if (ret == (int)length)
->>
->> No need for this cast (no need in the original either).
->>
->>> +		ret = 0;
->>> +	else
->>>  		ret = -EIO;
->>
->> It would be better to preserve the error codes from usb_control_msg().
->>
->> 	if (ret == length)
->> 		ret = 0;
->> 	else if (ret >= 0)
->> 		ret = -EIO;
->>
->> regards,
->> dan carpenter
->>
-> 
-> Thanks for CC.
-> 
-> Nice catch. Dan is right, we should forward any error code from
-> usb_control_msg().
+The memc node from mt7621.dtsi has incorrect register resource.
+Fix it according to the programming guide.
 
-This is already in linux-next.
+Signed-off-by: Weijie Gao <hackpascal@gmail.com>
+Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+---
+ drivers/staging/mt7621-dts/mt7621.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-So I will do a fix up patch by the end of this cycle.
+diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
+index a4c08110094b..d89d68ffa7bc 100644
+--- a/drivers/staging/mt7621-dts/mt7621.dtsi
++++ b/drivers/staging/mt7621-dts/mt7621.dtsi
+@@ -138,7 +138,7 @@ i2s: i2s@a00 {
+ 
+ 		memc: memc@5000 {
+ 			compatible = "mtk,mt7621-memc";
+-			reg = <0x300 0x100>;
++			reg = <0x5000 0x1000>;
+ 		};
+ 
+ 		cpc: cpc@1fbf0000 {
+-- 
+2.24.1
 
-Regards
-
-
-Malcolm
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
