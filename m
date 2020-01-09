@@ -1,76 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED4AA135400
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Jan 2020 09:01:50 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59AA7135BA1
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Jan 2020 15:46:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 204C585BBD;
-	Thu,  9 Jan 2020 08:01:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CD90A2153B;
+	Thu,  9 Jan 2020 14:46:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iiNrZDd3aB6o; Thu,  9 Jan 2020 08:01:48 +0000 (UTC)
+	with ESMTP id BstS1OlTNgLL; Thu,  9 Jan 2020 14:46:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4117586822;
-	Thu,  9 Jan 2020 08:01:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0E6BC21511;
+	Thu,  9 Jan 2020 14:46:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2F5511BF330
- for <devel@linuxdriverproject.org>; Thu,  9 Jan 2020 08:01:45 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A65151BF86B
+ for <devel@linuxdriverproject.org>; Thu,  9 Jan 2020 14:46:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 298BF868F6
- for <devel@linuxdriverproject.org>; Thu,  9 Jan 2020 08:01:45 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 844998818D
+ for <devel@linuxdriverproject.org>; Thu,  9 Jan 2020 14:46:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ChJlAz2Lw8iy for <devel@linuxdriverproject.org>;
- Thu,  9 Jan 2020 08:01:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 61DBE85BBD
- for <devel@driverdev.osuosl.org>; Thu,  9 Jan 2020 08:01:44 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id i6so2991425pfc.1
- for <devel@driverdev.osuosl.org>; Thu, 09 Jan 2020 00:01:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rnct3rScuo5UCOrZPVZUn6yaCZ4Hz2wyB5PJl2dXsyQ=;
- b=lepqg45iW0x0wIXzB9W1OISEWmZF8wGXjcpktX5kTjFE9A/zNltobhwCGrIT9SCeZT
- vbTg1L38xmQ7S2IjvKnDbq6OTnY8mNqWjopnVUclb6wn1psZgD8QUaNBV1qeHbpmqE9M
- DWWZtCsiW2J18ax3sTRNO0HoiATt/m6isRFl62RXJlfEvLnm2wk0lBumEX4jWDaTsIrZ
- J6ZVYRFs85Rr6WVN6Nv+pQ4DZG5piMclU/QWVnlbdeeHN5PcRV0E6zxz8/eJPbE1wXuv
- a4nlnUTY+ZO5MDAsnS7CTYnLI55KZw3DBOWwwkCCLvqLqWVy8iZRXrpYFEGfE+gW5gt8
- ylVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rnct3rScuo5UCOrZPVZUn6yaCZ4Hz2wyB5PJl2dXsyQ=;
- b=qzwSamT4T3HRaq6Pzzr+4KXdJSJ/usxnRJw2WXwYOxFRfDEXoMGz+KLdm1Ugh8r11Z
- azpz5Rn5LbXH2WWlvVIo/T+UX0DcG512JR4KiVfcMH9Q3JMG8zcT9iAHJDovVicP4UVa
- kxtVn5lLbhoiFyeXobYbVaxpEh1+/UQHWvx2+ppsKx2OpAJJmllN3UgFdonS4Y3yXXUp
- rSE6MZ4aDc0SWKKx0rQ3h/tX7eb34a+sQ1SYVKo5xmJT7bsllHRNu6ZUwheYMWBnRiLb
- tFrRzG8FISxxGDRHU7KCzG++Ruq4wtKUtRKQOl/BSXecT/ZNcmxHnOSTs/XyuUz09vvA
- LhzQ==
-X-Gm-Message-State: APjAAAXckW/WMnYfyaQS686CO6eZrfYkLejqsoy/eptoO0IfV1Tr+z7A
- iCQO/NSD/b84UecSpt6LVfogSUQO+Dj3NQ==
-X-Google-Smtp-Source: APXvYqyXZgRI88AzUaKA5gkc6klLUtcliBwJ8O3HqkjQM5lsLt+BQzm1FAYECTQpDgENRC+rUjLFww==
-X-Received: by 2002:a63:7705:: with SMTP id s5mr9628789pgc.379.1578556903816; 
- Thu, 09 Jan 2020 00:01:43 -0800 (PST)
-Received: from localhost.localdomain ([240e:379:970:fa70::fa3])
- by smtp.gmail.com with ESMTPSA id 100sm1861175pjo.17.2020.01.09.00.01.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Jan 2020 00:01:43 -0800 (PST)
-From: Chuanhong Guo <gch981213@gmail.com>
-To: devel@driverdev.osuosl.org
-Subject: [PATCH] staging: mt7621-dts: fix register range of memc node in
- mt7621.dtsi
-Date: Thu,  9 Jan 2020 16:00:03 +0800
-Message-Id: <20200109080120.362110-1-gch981213@gmail.com>
-X-Mailer: git-send-email 2.24.1
+ with ESMTP id ecH6fB2yRwdv for <devel@linuxdriverproject.org>;
+ Thu,  9 Jan 2020 14:46:45 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.siol.net (mailoutvs19.siol.net [185.57.226.210])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6F8C988187
+ for <devel@driverdev.osuosl.org>; Thu,  9 Jan 2020 14:46:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTP id 313305220DE;
+ Thu,  9 Jan 2020 15:46:42 +0100 (CET)
+X-Virus-Scanned: amavisd-new at psrvmta09.zcs-production.pri
+Received: from mail.siol.net ([127.0.0.1])
+ by localhost (psrvmta09.zcs-production.pri [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id Jkx5YzaTqnNS; Thu,  9 Jan 2020 15:46:41 +0100 (CET)
+Received: from mail.siol.net (localhost [127.0.0.1])
+ by mail.siol.net (Postfix) with ESMTPS id B7B3452123B;
+ Thu,  9 Jan 2020 15:46:41 +0100 (CET)
+Received: from jernej-laptop.localnet (unknown [194.6.237.34])
+ (Authenticated sender: jernej.skrabec@siol.net)
+ by mail.siol.net (Postfix) with ESMTPA id 93E4E5220DE;
+ Thu,  9 Jan 2020 15:46:40 +0100 (CET)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH v2 3/4] media: uapi: hevc: Add segment address field
+Date: Thu, 09 Jan 2020 15:46:40 +0100
+Message-ID: <4523910.31r3eYUQgx@jernej-laptop>
+In-Reply-To: <20200108153126.49698491@kernel.org>
+References: <20191213160428.54303-1-jernej.skrabec@siol.net>
+ <20191213160428.54303-4-jernej.skrabec@siol.net>
+ <20200108153126.49698491@kernel.org>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -84,38 +68,126 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Weijie Gao <hackpascal@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- NeilBrown <neil@brown.name>
+Cc: devel@driverdev.osuosl.org, hverkuil@xs4all.nl, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The memc node from mt7621.dtsi has incorrect register resource.
-Fix it according to the programming guide.
+Hi!
 
-Signed-off-by: Weijie Gao <hackpascal@gmail.com>
-Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
----
- drivers/staging/mt7621-dts/mt7621.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Dne sreda, 08. januar 2020 ob 15:31:26 CET je Mauro Carvalho Chehab 
+napisal(a):
+> Em Fri, 13 Dec 2019 17:04:27 +0100
+> 
+> Jernej Skrabec <jernej.skrabec@siol.net> escreveu:
+> > If HEVC frame consists of multiple slices, segment address has to be
+> > known in order to properly decode it.
+> > 
+> > Add segment address field to slice parameters.
+> > 
+> > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
+> > ---
+> > 
+> >  Documentation/media/uapi/v4l/ext-ctrls-codec.rst | 5 ++++-
+> >  include/media/hevc-ctrls.h                       | 5 ++++-
+> >  2 files changed, 8 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> > b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst index
+> > aab1451e54d4..5415d5babcc2 100644
+> > --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> > +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> > @@ -3975,6 +3975,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+> > 
+> >      * - __u32
+> >      
+> >        - ``data_bit_offset``
+> >        - Offset (in bits) to the video data in the current slice data.
+> > 
+> > +    * - __u32
+> > +      - ``slice_segment_addr``
+> > +      -
+> > 
+> >      * - __u8
+> >      
+> >        - ``nal_unit_type``
+> >        -
+> > 
+> > @@ -4052,7 +4055,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+> > 
+> >        - ``num_rps_poc_lt_curr``
+> >        - The number of reference pictures in the long-term set.
+> >      
+> >      * - __u8
+> > 
+> > -      - ``padding[7]``
+> > +      - ``padding[5]``
+> > 
+> >        - Applications and drivers must set this to zero.
+> >      
+> >      * - struct :c:type:`v4l2_hevc_dpb_entry`
+> >      
+> >        - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+> > 
+> > diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+> > index 1592e52c3614..3e2e32098312 100644
+> > --- a/include/media/hevc-ctrls.h
+> > +++ b/include/media/hevc-ctrls.h
+> > @@ -167,6 +167,9 @@ struct v4l2_ctrl_hevc_slice_params {
+> > 
+> >  	__u32	bit_size;
+> >  	__u32	data_bit_offset;
+> > 
+> > +	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header 
+*/
+> > +	__u32	slice_segment_addr;
+> > +
+> 
+> Why are you adding it in the middle of the data? This will break any
+> existing userspace code that might be relying on it.
+> 
+> Ok, I know that this header is not yet under include/uapi,and there's a
+> warning on it for letting people know that it shouldn't be used anywhere.
+> 
+> Still, people might be using it.
 
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index a4c08110094b..d89d68ffa7bc 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -138,7 +138,7 @@ i2s: i2s@a00 {
- 
- 		memc: memc@5000 {
- 			compatible = "mtk,mt7621-memc";
--			reg = <0x300 0x100>;
-+			reg = <0x5000 0x1000>;
- 		};
- 
- 		cpc: cpc@1fbf0000 {
--- 
-2.24.1
+I did it that way to keep fields aligned. Cedrus is currently the only 
+mainlined driver to use this structure and userspace users are also very rare 
+at this time.
+
+Anyway, not all HEVC features are supported at this time, which means that 
+this structure might grow. Once that happens, you'll lose binary compatibility 
+anyway, but source compatibility should be fine.
+
+Best regards,
+Jernej
+
+> 
+> >  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
+> >  	__u8	nal_unit_type;
+> >  	__u8	nuh_temporal_id_plus1;
+> > 
+> > @@ -200,7 +203,7 @@ struct v4l2_ctrl_hevc_slice_params {
+> > 
+> >  	__u8	num_rps_poc_st_curr_after;
+> >  	__u8	num_rps_poc_lt_curr;
+> > 
+> > -	__u8	padding;
+> > +	__u8	padding[5];
+> > 
+> >  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header 
+*/
+> >  	struct v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> 
+> Cheers,
+> Mauro
+
+
+
 
 _______________________________________________
 devel mailing list
