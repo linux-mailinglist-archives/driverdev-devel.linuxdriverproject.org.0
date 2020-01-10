@@ -1,72 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B25D136036
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Jan 2020 19:34:54 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D8AC1366EB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Jan 2020 06:48:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BBD21883D7;
-	Thu,  9 Jan 2020 18:34:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 07E6A220A2;
+	Fri, 10 Jan 2020 05:48:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id riUU93U7tcFV; Thu,  9 Jan 2020 18:34:52 +0000 (UTC)
+	with ESMTP id wjGRjevmhAHd; Fri, 10 Jan 2020 05:48:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 18766883CD;
-	Thu,  9 Jan 2020 18:34:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CA746203FC;
+	Fri, 10 Jan 2020 05:48:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6CABA1BF41F
- for <devel@linuxdriverproject.org>; Thu,  9 Jan 2020 18:34:49 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 078A61BF867
+ for <devel@linuxdriverproject.org>; Fri, 10 Jan 2020 05:48:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6602885FD0
- for <devel@linuxdriverproject.org>; Thu,  9 Jan 2020 18:34:49 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E95402040A
+ for <devel@linuxdriverproject.org>; Fri, 10 Jan 2020 05:48:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m8hzINs8h1Lb for <devel@linuxdriverproject.org>;
- Thu,  9 Jan 2020 18:34:48 +0000 (UTC)
+ with ESMTP id t8jnH6Xxm2PI for <devel@linuxdriverproject.org>;
+ Fri, 10 Jan 2020 05:48:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f193.google.com (mail-il1-f193.google.com
- [209.85.166.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 58EE585FC9
- for <devel@linuxdriverproject.org>; Thu,  9 Jan 2020 18:34:48 +0000 (UTC)
-Received: by mail-il1-f193.google.com with SMTP id g12so6541826ild.2
- for <devel@linuxdriverproject.org>; Thu, 09 Jan 2020 10:34:48 -0800 (PST)
+Received: from mail-il1-f196.google.com (mail-il1-f196.google.com
+ [209.85.166.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5DC3A203FC
+ for <devel@driverdev.osuosl.org>; Fri, 10 Jan 2020 05:48:43 +0000 (UTC)
+Received: by mail-il1-f196.google.com with SMTP id t2so838616ilq.9
+ for <devel@driverdev.osuosl.org>; Thu, 09 Jan 2020 21:48:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=wjEPAcCB9ChJWBCWxQyuWyaFPQyw6HCZ2YKBaBbQkbo=;
- b=pQMBW8hxBMmeFCxSXq9sRTmwa3TC5YJgx6VrEoMNH/3IVK1hnJ8TW6rdt+DPRq3NxE
- fTOAFaXoLjuqcAYtQzlC1kPmOE93opz17Rni3rWTYwki/mcwsnpGs3uVehvrKOpUVxkI
- UxB83rSb0HNNA1y7W5IvCvIonJtxy+Wqozk86kMPNrH95kTfrJJyqXdBKyKYTCsVfLSn
- wyoNIi7m9R/Ej8rIeQPTZyA0MUk6zl8jy5/F2GrJIAWaH7Ym/BjRit1fs/6hWk46UmGr
- OttLoRkaWz9B+PX/2NJNzEtehpZRaKs+WFOuT0DpSToKZDPyKieb7JZ+CqCM0+KTO0hr
- 3W1g==
+ bh=Rjbe3pVeMfYVPdmVklZ4b2stSqI32LIYp+bn/8NyJvk=;
+ b=EoAwwPzFbgiRsnUUlRUB+7PJJ+AVZHBFZNa4oCuKjMjk+VX3Rv2gZbyhXN98TCybTp
+ PBy780Tq3Cc85A26X3EBT40XqHi5MP8JYXCBKUJTpVdv+mjZJclSIhKHV9rm/XDTpl7M
+ pogDXUI57E7l/V53iccUYgAa4PaavVy7nShf4RmWB0IE7/kqJjd6I8VvNt2ctkpey0R+
+ 1P1p6c8oKVlnSQXlMUAi135eUVdE04l+Q90e7lKwQtGYJ82TLEIGidP2aCh97qQNG1lT
+ ZFlNPcgAPgefpssYMKSK06CNKTHVPFDbFE9kDTsdVLG7mDguNqf1JVIxvkbzEer0qljW
+ za/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
- bh=wjEPAcCB9ChJWBCWxQyuWyaFPQyw6HCZ2YKBaBbQkbo=;
- b=kRpzuEBpoWinfTdFMDDBbz1ao+TFVK8nDMcradQdZfvXQ661gTmIFOCCc+5f3tszdA
- bU69j4blLzmTM+cJXY63/jE/tQvw42qoDq9fnO5dp07NMm4tNpxQMczVF3eYrg5zyAYh
- J5TdBnj/iRLBgKryRI0Sy1RoQ9xUPufZkeyvuE7PlDM3Xq7VG8S1MhZP7PK38D7EK3pM
- bZ98vH8UmCFiBCzXos5jJgIxRaoeb410vuvLWaJ6okKweN4RDRNGmqg21nKW3pNFJDWn
- YqGQd/RtaSeTTl4Rdlyr+Jw0dNENAAr9TLPP+FGuOPnoy1sxdZ0scWd2aK/gZWWWN+Fn
- ehWA==
-X-Gm-Message-State: APjAAAWkRcCkvVE9f2mpHJwFjElpJeThf79Wi8iTwZl7Xp0Y2T5wXHcj
- SlIsc5GXTlhhcirCmDRS0g18BY6fMEW7OQyplw==
-X-Google-Smtp-Source: APXvYqzPcgEqy/UGcvw+szKEiM0VaEjnX7fwkO30Av2/M9e6bXiXUI/RQHy3q3nygxb3nJxeGdE/EBvUn/fXOlnYzME=
-X-Received: by 2002:a92:c9cc:: with SMTP id k12mr10057788ilq.269.1578594887753; 
- Thu, 09 Jan 2020 10:34:47 -0800 (PST)
+ bh=Rjbe3pVeMfYVPdmVklZ4b2stSqI32LIYp+bn/8NyJvk=;
+ b=XpMN4A900EZ07TmSPT/0Pw1Bhvft0Zzfo9WLVdjSOVSGAqcgsVIf6Hfu8MjdONKVnk
+ 7pfb36UpbTedeODkL+iVyacz583XjdrQs+MKpz9EjASTXz4Cpd016UNoZ0KvfK9i5uuz
+ lHAUo17npB4SVL9SQ5YFGlnJWAgpl+dkKdzgOEr57cXagfcSPDJIrCyLCT5HI0kXX66r
+ Mqq/IT72HDu07OGRtk7cn/yNnFa74b1/04BWaCSOwU8fl80lFpu2bTXOKuGi26bYDffv
+ 7YD26goxKrHJtyXio5/K6mcD9SwwpBpYOQG6QbF3IDXVIQ56KkQA0oHvmGXd6H//TFKO
+ 0fEg==
+X-Gm-Message-State: APjAAAVeanl8uier0aaKp2n/7yiJeP0U/p6yXl+Xb/8ib2laqRJjpEI+
+ mUEk9LeqjOY8+Ls0UpCfzJHD1F1/0UkdGwGiSzs=
+X-Google-Smtp-Source: APXvYqztB2tRw2ad2QXbllKeG/4TbBhrIvR8Z+5VOpuvHjHh/nEyJnHbZsp+T6UyLpdn9NDXHAcoHLsG1NRP6Fk7hU4=
+X-Received: by 2002:a92:cacb:: with SMTP id m11mr1224941ilq.133.1578635322667; 
+ Thu, 09 Jan 2020 21:48:42 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a02:6603:0:0:0:0:0 with HTTP;
- Thu, 9 Jan 2020 10:34:47 -0800 (PST)
-From: "MS. MARYANNA B. THOMASON" <info.zennitbankplcnigerian@gmail.com>
-Date: Thu, 9 Jan 2020 19:34:47 +0100
-Message-ID: <CABHzvrn=UW_o-qo5ChQhN+=1Ub0d5iYTxS3mMPNz0fzLqwQGdw@mail.gmail.com>
-Subject: CONTACT DIPLOMATIC MIKE BENZ TO RECEIVE YOUR ATM MASTER CARD WORTH
- $12.8MILLION US DOLLARS,
+Received: by 2002:a92:1704:0:0:0:0:0 with HTTP;
+ Thu, 9 Jan 2020 21:48:42 -0800 (PST)
+From: Rick Schaech <julianlfrd@gmail.com>
+Date: Fri, 10 Jan 2020 01:48:42 -0400
+Message-ID: <CACEXX6iYj=4E8eSGLr31Q0_Jma6Ytc=_giqA-A_VDwbVD291eA@mail.gmail.com>
+Subject: I wait for your swift response
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -80,38 +79,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mikebenz550@aol.com
+Reply-To: rickschaech@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-ATTN DEAR.
+Dear, I'm Mr Rick Schaech, I am the General Account Auditor, Though i
+know we have not meet each other before but sometimes in life God have
+a reason of bringing two people from two different countries together
+as business partners or life partners.
 
-CONTACT DIPLOMATIC MIKE BENZ TO RECEIVE YOUR ATM MASTER CARD WORTH
-$12.8MILLION US DOLLARS,
-CONTACT HIM ON THIS EMAIL ADDRESS
+My dear friend, I have the sum of 15.7 Million USD i wish to put in
+your name due to the death of my late client who died several years
+ago as his next of kin column still remain blank. Though the internet
+medium is highly abuse these days but am assuring you that this
+transaction is legitimate and I am contacting you that we may have a
+deal, note for your cooperation and collaboration 40% of the sum will
+be for you while the other 60% will be for me as well. I wait for your
+swift response for more details. please forward your response to my
+personal E-mail: rickschaech@gmail.com
 
-EMAIL/ mikebenz550@aol.com
-PHONE (720) 928-6289 TEXT HIM AS YOU CONTACT HIM TODAY OK.
-
-HE IS WAITING TO HEAR FROM YOU NOW. WITH YOUR FULL DELIVERY ADDRESS
-SUCH AS YOUR LISTED BELOW.
-YOUR FULL NAME
-ADDRESS
-TELEPHONE NUMBERS
-
-I WAIT TO HEAR FROM YOU ONCE YOU RECEIVE YOUR ATM MASTER CARD WOTH
-$12.800,000MILLION US DOLLARS FROM MR. MIKE BENZ TODAY, NOTE YOU ARE
-JUST REQUIRED TO SEND HIM $25.00 ONCE YOU CONTACT HER FOR YOUR ATM
-MASTER CARD DELIVERY FEE.
-
-ASK HIM HOW YOU CAN SEND THE DELIVERY FEE OF $25.00 ONLY TO HIM
-IMMEDIATELY TO ENABLE HIM DELIVER TO YOUR HOUSE ADDRESS VERY URGENT
-TODAY OK. THIS IS ONLY HELP I CAN YOU TO RECEIVE YOUR FUNDS NOW OK.
-
-THANKS FOR YOUR COPPERATION.
-MS. MARYANNA B. THOMASON
+Yours sincerely,
+Rick Schaech.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
