@@ -1,47 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BF841378F1
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Jan 2020 23:05:46 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AA591378F3
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Jan 2020 23:05:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E283E885A3;
-	Fri, 10 Jan 2020 22:05:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 682ED86C94;
+	Fri, 10 Jan 2020 22:05:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u3HlDU0ibxw1; Fri, 10 Jan 2020 22:05:43 +0000 (UTC)
+	with ESMTP id VEsCbDXWsDie; Fri, 10 Jan 2020 22:05:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 246448857D;
-	Fri, 10 Jan 2020 22:05:43 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 39A3E86C77;
+	Fri, 10 Jan 2020 22:05:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E4B941BF3CA
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 10 Jan 2020 22:05:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 121BD1BF9B9
+ for <devel@linuxdriverproject.org>; Fri, 10 Jan 2020 22:05:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E1B29203A5
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 10 Jan 2020 22:05:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 09AF220243
+ for <devel@linuxdriverproject.org>; Fri, 10 Jan 2020 22:05:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id loiOuXResvkL
- for <driverdev-devel@linuxdriverproject.org>;
+ with ESMTP id 1ScE-x1-rcCN for <devel@linuxdriverproject.org>;
  Fri, 10 Jan 2020 22:05:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail2.rbpf.bs (rbpf.bs [24.51.93.195])
- by silver.osuosl.org (Postfix) with ESMTP id 5F54220243
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 10 Jan 2020 22:05:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BA6D6203A0
+ for <devel@linuxdriverproject.org>; Fri, 10 Jan 2020 22:05:39 +0000 (UTC)
 Received: from unknown (HELO globalfinance.com) ([103.133.108.245])
- by mail2.rbpf.bs with ESMTP; 10 Jan 2020 17:00:37 -0500
+ by mail2.rbpf.bs with ESMTP; 10 Jan 2020 17:04:45 -0500
 From: Derek Langston <dereklangston@globalfinance.com>
-To: driverdev-devel@linuxdriverproject.org
+To: devel@linuxdriverproject.org
 Subject: Are you interested in this Investment Opportunity??
-Date: 10 Jan 2020 14:00:30 -0800
-Message-ID: <20200110140030.A53EDAC5AB1348F8@globalfinance.com>
+Date: 10 Jan 2020 14:04:38 -0800
+Message-ID: <20200110140438.4598BC0748A2581A@globalfinance.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
