@@ -1,77 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2AE55138405
-	for <lists+driverdev-devel@lfdr.de>; Sun, 12 Jan 2020 00:35:30 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46D2513849A
+	for <lists+driverdev-devel@lfdr.de>; Sun, 12 Jan 2020 03:39:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0E5D787A72;
-	Sat, 11 Jan 2020 23:35:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4873085644;
+	Sun, 12 Jan 2020 02:39:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1OKo6MDdn5es; Sat, 11 Jan 2020 23:35:26 +0000 (UTC)
+	with ESMTP id cWADG2juZ5FV; Sun, 12 Jan 2020 02:39:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4E193879F5;
-	Sat, 11 Jan 2020 23:35:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3808C857B0;
+	Sun, 12 Jan 2020 02:39:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8825F1BF4E3
- for <devel@linuxdriverproject.org>; Sat, 11 Jan 2020 23:35:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 941111BF44C
+ for <devel@linuxdriverproject.org>; Sun, 12 Jan 2020 02:39:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 850D08503D
- for <devel@linuxdriverproject.org>; Sat, 11 Jan 2020 23:35:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8A63585640
+ for <devel@linuxdriverproject.org>; Sun, 12 Jan 2020 02:39:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id B6snvcGhAQJM for <devel@linuxdriverproject.org>;
- Sat, 11 Jan 2020 23:35:22 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
- [209.85.167.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2E41584FB6
- for <devel@driverdev.osuosl.org>; Sat, 11 Jan 2020 23:35:22 +0000 (UTC)
-Received: by mail-oi1-f196.google.com with SMTP id v140so5202502oie.0
- for <devel@driverdev.osuosl.org>; Sat, 11 Jan 2020 15:35:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=6nsqiMT9oMX01YJWr2NQaCFjUFg9E87lTHlKtmL/4JU=;
- b=jyDXLARC4k7VXdXWwWGocAv7u6XXI1C3kObhkXU7msPtMaC1AKSSX4qoZ0+hHGbEEc
- p6Q47yLsjt0o0908SGKRRiYTgx7Kub3t3oQzIqOIVPPQug++rKL5LoTHOWOwIFghzq/k
- tYjl79RptnOa38hS8LUdT0vnkZT5x4rm1pIvnpvYDQbpnLhEImOg5laNAV9ZMvMjAON0
- cnElF3OTMOvoyORRpX+GuclcTSdWeW4N5YGjGKnz1aNqWMkFzXyKMwqE+f+wyKWBISD+
- ArrhJdFnr2tNZbrrvqig3m9jjav2i/WRE1XpdXJVxNnJTGeawQqwheVAwpaojgoWW2Zf
- OrZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=6nsqiMT9oMX01YJWr2NQaCFjUFg9E87lTHlKtmL/4JU=;
- b=epRm+rilDBJ7zTzTXMUONIqI2rZVyeFdnZ434zJpAt3apksTNvsVeZ99XQ/+L0nzUN
- 5o9CIQJV9cqkO0oy4glW2LkvV12V3QbrrEVTG9H1cdvuYFTUIwHNrhrLbKiqFC3g9UMc
- mCs39kexrElL7BZ9c2WvhMmLMNXlIlS6v2oxpuYP7HuzkJGP7zaQN0eg4oYb5S7oMUrk
- MMetFW0PM/VSY47GKwHEfXnxTP4RERQF6hVyFQwQMhEqBp5065v4o4TQZTNwb918ZbJ0
- 5/7hbinGCsqmhvh51ObVDzOMLiAMBOaGaeLp1hSN0J4oN4oRg24JGcHXKJlDpaNxIrxc
- hoJQ==
-X-Gm-Message-State: APjAAAUxr6SgQUvfpyvShbaq1o9eq22t6B5f8iTChX77YjmRAwrvwz2L
- cVug4uBQrbMbUaJcLhFncZitTJTp3S/oxjziUWI=
-X-Google-Smtp-Source: APXvYqyUB0xeTnDpzHjEuZdGxoOL5/li0WIDrMMHdo+U4FwFwZTbhGAUZVZRm78WL5ug4KSpmT9xG14s300ZUTE+3dk=
-X-Received: by 2002:a05:6808:a11:: with SMTP id
- n17mr7456835oij.94.1578785721361; 
- Sat, 11 Jan 2020 15:35:21 -0800 (PST)
+ with ESMTP id RI0gb2w0pp3q for <devel@linuxdriverproject.org>;
+ Sun, 12 Jan 2020 02:39:53 +0000 (UTC)
+X-Greylist: delayed 00:20:03 by SQLgrey-1.7.6
+Received: from sonic301-12.consmr.mail.ne1.yahoo.com
+ (sonic301-12.consmr.mail.ne1.yahoo.com [66.163.184.245])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1C00C851C2
+ for <devel@driverdev.osuosl.org>; Sun, 12 Jan 2020 02:39:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1578796792; bh=3gwbdpD6fpTnU3AIhQs1dw9/oeXqxu71NA+1nQpVq+I=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=VsN7hrAc2GJrEw2PYSbR01fqNB0kzrczfYgdVA3+2IBgEW09VOrKxSaPrzTaUfJ4zEsJrUAlonN6kS8MeNZtwAmqXXSSj8hrThdBPvtkTWWujXhwK7taE+VFlQNB4XH4A+nWOBAq+e+3dXPDvW4LTyPpdvpqsmZ75/JFPE5fk+PiAQq60I2643Pc5UnYxjF7YLUWf2mnE6P0gCwu/94k82hrvqn7Fk7mq0JB7Sc+3ckY3u8//vw7tI5pgSL+ycbA7po6/rDBMFrkKqAtvDbj08kxEYgdl/Zr3EFm9lMn65hs86rCx9Dr7OvBayMrWZlMvvkWa/3Fi8jQnZbLqOh5Ow==
+X-YMail-OSG: R.ICC_AVM1l8G25f4oXoVMYWmw3nI48pMZd.O8v383czAIhXYE1bYctqYT39MxW
+ q9xLKFSVGdtJ3UMKeKCDGFv9BVwlm3V3_14nyRNDKqMJXilLAIVjFyhlEz7ExUP1KjNNIppeSfFp
+ LwTMaFK6_q2Ql8TuUovTjjLtI3JuvZe4d8clJLB8k5VwQcYvLsG_IE289dRP6.Di.8dEo99Rd.Ro
+ sYDYXk9Cl9c3fvLxFywz.FdIplhxDEdnExbV1eXfLS3t_8aMfOoafF54L5jDPIiwTiHNQw1w2gAD
+ uxC2nMqtlCtpKNXdxnxoMQauGKumckWakblULwOJysxZFYV6thRdh7wTSl6V4egU4VmsmW6NS5Um
+ hsbjmYpEytkSOVvXcaFk6U297mTTPjW8n9wqBaTegLUP20lSCkJKTfhOeg_0hGiv8NK_Xqhpb5cn
+ hs77dHOL7rlgbioawU84xNStmkSRUkt4qQOwk_aav.i5v9xCjV3VWAaoLtqXj2uPcyvVlIi8c004
+ JIUkrr3PlxebmkaOwvAv.ND.WC2NGOzf2jnkx0Z_Y4Y9eXqJb7xIpXqTzATv2o1qMWDezTa207BR
+ xTTZSF7YGlMP9vCw4_PUKc3Cv7MDHjkcQHsVVCz_ikxkwECGu__v4EGjFlJPVivks9qpzNjsrOS3
+ RGv1daOs6A5YFwTZGpJmxVulF1Yl2ce4sJKhbW45Rye6srurN3JiATKZDqL4OV8RRCUTvbgWQM7D
+ YYdN_sOSXFVywwEILs6IfY3UANbsUA0bv.1opwu9o3MILJfbCNtDsBqebYb48naBVwFguner35c9
+ mlyWNVLjxQ3.JAOiBICed08y_X26CLqujnjBIG8p.Dn12hnqPHljZv4Ey5Tgoja8SBRnc.maVtC2
+ rIoh3WU74gEyIKX8UIFiaoKCskM2vEpvEz9EsbfSAwhsgQNWwXT4OMr3UrnTCWo7zaNZ0euOD6qH
+ 2aCu1.N3AuKNPOWA6nwsZG8keWsgsXKPBOey18TGoiqTue3NkpVcekNtSnha6GAZhrlHTvNEaWNv
+ n7JogWchb3mOUSKX0ThQszftzQC8bOsPLxwngjkDPgUR41mQpaCAnnqcfbl3iF0UpfohVMLrx9dc
+ glK70T_MMZ0Cz1MEv7RM8WhAz3UUaL7G1R2GPHaOR9Jxe4_RiFTDplcGeTl1f6IPx6_G7xQuzdwb
+ R_Y16OQTJQ_ZKWN_y0_dt0DP.rXF4EnNrWD_ypQ8pMjbssX1uV.nCsnTzaQhJdeIv1Jlwc8I2RgG
+ V.XquixOxGCv8iPcqGBZwOPxJ2V2xXfxxKOQENTL40B.wwMydyM8CGCPOn.LC3IzEGMPsXiAV6Ky
+ jCqLtouAf2fdbgt_STOERHQ4zRd_q1CX_7TkzQg--
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic301.consmr.mail.ne1.yahoo.com with HTTP; Sun, 12 Jan 2020 02:39:52 +0000
+Date: Sun, 12 Jan 2020 02:17:49 +0000 (UTC)
+From: "Mrs. Maureen Hinckley" <qq85@bavfton.com>
+Message-ID: <493317656.10252380.1578795469275@mail.yahoo.com>
+Subject: 
 MIME-Version: 1.0
-Received: by 2002:a8a:87:0:0:0:0:0 with HTTP;
- Sat, 11 Jan 2020 15:35:20 -0800 (PST)
-In-Reply-To: <20200111175611.GA422540@kroah.com>
-References: <20200111121419.22669-1-linkinjeon@gmail.com>
- <20200111175611.GA422540@kroah.com>
-From: Namjae Jeon <linkinjeon@gmail.com>
-Date: Sun, 12 Jan 2020 08:35:20 +0900
-Message-ID: <CAKYAXd-+o-cmn17r0Z-k9gmrQW=8Pj_PDFNvG+jP8eCSPDbV9Q@mail.gmail.com>
-Subject: Re: [PATCH] staging: exfat: make staging/exfat and fs/exfat mutually
- exclusive
-To: Greg KH <gregkh@linuxfoundation.org>
+References: <493317656.10252380.1578795469275.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.14873 YMailNodin Mozilla/5.0 (Windows NT 10.0; Win64;
+ x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108
+ Safari/537.36 OPR/65.0.3467.78
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,53 +78,17 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, valdis.kletnieks@vt.edu,
- Namjae Jeon <namjae.jeon@samsung.com>, amir73il@gmail.com,
- linux-kernel@vger.kernel.org, linux-fsdevel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: maurhinck7@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-2020-01-12 2:56 GMT+09:00, Greg KH <gregkh@linuxfoundation.org>:
-> On Sat, Jan 11, 2020 at 09:14:19PM +0900, Namjae Jeon wrote:
->> From: Namjae Jeon <namjae.jeon@samsung.com>
->>
->> Make staging/exfat and fs/exfat mutually exclusive to select the one
->> between two same filesystem.
->>
->> Suggested-by: Amir Goldstein <amir73il@gmail.com>
->> Signed-off-by: Namjae Jeon <namjae.jeon@samsung.com>
->> ---
->>  drivers/staging/exfat/Kconfig | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/staging/exfat/Kconfig
->> b/drivers/staging/exfat/Kconfig
->> index 292a19dfcaf5..9a0fccec65d9 100644
->> --- a/drivers/staging/exfat/Kconfig
->> +++ b/drivers/staging/exfat/Kconfig
->> @@ -1,7 +1,7 @@
->>  # SPDX-License-Identifier: GPL-2.0
->>  config STAGING_EXFAT_FS
->>  	tristate "exFAT fs support"
->> -	depends on BLOCK
->> +	depends on BLOCK && !EXFAT_FS
->
-> There is no such symbol in the kernel tree, so this isn't going to do
-> anything :(
->
-> When/if EXFAT_FS does show up, I will be glad to add this.  Or better
-> yet, just have this as part of the "real" exfat patchset, that would
-> make the most sense, right?
-Right,
-Thanks!
->
-> thanks,
->
-> greg k-h
->
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgpJIGFtIE1hdXJlZW4gSGluY2tsZXkgYW5kIG15IGZvdW5kYXRpb24gaXMgZG9uYXRpbmcgKEZp
+dmUgaHVuZHJlZCBhbmQgZmlmdHkgdGhvdXNhbmQgVVNEKSB0byB5b3UuIENvbnRhY3QgdXMgdmlh
+IG15IGVtYWlsIGF0IChtYXVyaGluY2s3QGdtYWlsLmNvbSkgZm9yIGZ1cnRoZXIgZGV0YWlscy4K
+CkJlc3QgUmVnYXJkcywKTXJzLiBNYXVyZWVuIEhpbmNrbGV5LApDb3B5cmlnaHQgwqkyMDIwIFRo
+ZSBNYXVyZWVuIEhpbmNrbGV5IEZvdW5kYXRpb24gQWxsIFJpZ2h0cyBSZXNlcnZlZC4KX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBs
+aXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRy
+aXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
