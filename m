@@ -2,76 +2,93 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D0AD138B8A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Jan 2020 07:00:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 36ED61393AD
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Jan 2020 15:28:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 07E802045A;
-	Mon, 13 Jan 2020 06:00:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 629D42043E;
+	Mon, 13 Jan 2020 14:28:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bv3mQG03iyqL; Mon, 13 Jan 2020 06:00:11 +0000 (UTC)
+	with ESMTP id 6hex12qmNGO6; Mon, 13 Jan 2020 14:28:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F035F2043A;
-	Mon, 13 Jan 2020 06:00:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BDE8120417;
+	Mon, 13 Jan 2020 14:28:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B6F9C1BF3EF
- for <devel@linuxdriverproject.org>; Mon, 13 Jan 2020 06:00:07 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 257211BF388
+ for <devel@linuxdriverproject.org>; Mon, 13 Jan 2020 14:28:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B348086C8B
- for <devel@linuxdriverproject.org>; Mon, 13 Jan 2020 06:00:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 18E7684E2E
+ for <devel@linuxdriverproject.org>; Mon, 13 Jan 2020 14:28:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1UOynQTbTAFX for <devel@linuxdriverproject.org>;
- Mon, 13 Jan 2020 06:00:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3746E86A2E
- for <devel@driverdev.osuosl.org>; Mon, 13 Jan 2020 06:00:07 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id az3so3381426plb.11
- for <devel@driverdev.osuosl.org>; Sun, 12 Jan 2020 22:00:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=BZudNU1j/GxZrYgiqrSmCxqZu+3g41iMiIQCkxkhVAY=;
- b=H1bh6tmx268zowtgeJ2z3BDM7/Dc5ajaVde9nFJzlNrrToUQMQlpj5eUkGdvyqavrd
- W8yhGyjgcqMWC8QgQRCI6m0vvZKwmIM8eMkgYJiGAtr0X2zPVrxCiKsUqXDrSTm4dPE+
- 0lV0v2SiP0/KybQJudeecXv2MHIF0XXC8z+aIbzguaYst4nPTu3F9w58ou67Qc7KPQgh
- f0XbHjz+7KRET83fUAQTd8vV7JW9Sq7sy/7/pvXwN/N1CHEuLnsx4F58Am5xcbTU+Ssn
- /vHs0Xam5LNkVGvBJJ6Ky76/gBKYsVb64eM/aZRisX8DpYnLDY0j297x1D83wN4SDESH
- PqHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=BZudNU1j/GxZrYgiqrSmCxqZu+3g41iMiIQCkxkhVAY=;
- b=U+YEn+wGyDWIHo4tsbx1qml9N+AuG1XYaiXfLhq8h4pMQeWErcTHZXQBhBj/VzgJHt
- kFhZFGvmb9kywOpsSL7DKsgFR6oCaZ5oTs4tejTNylGNsCDqkHoXHsbH2Lkmki86aPhr
- Wclw7IX0uzwmnjfoVrOVh5hpBLJ77+MuUTUFOPNx5S1zT6opvl/UNwb9eyEHooNmVikf
- YXbuYIU33B5dvI0n+x6flicnq+riEBD4LhLHxcz8zQ/Fhwffuhh9h1cOdesRIQ636J6Y
- 8UkAPpNpcywmDuwEQ2kBZOmCFKOXZCa7F0Sa/La0OQ76WuiUnQmXmSgTPHLqZgM2tcii
- i6dg==
-X-Gm-Message-State: APjAAAVoVBiZpK0I8edcFgcaJuSUxfWEYRELme3VjVVXkrsP8rJHkgC+
- S7yZsYA8HJHIWUUj2pM2m9A=
-X-Google-Smtp-Source: APXvYqyhCJDT2p9yUG+p4vnlHW0qO1CJmu0Rv1esgppxvSv5rAQVvQCAD+ZHU3mFnj6W8b1RIhPu7w==
-X-Received: by 2002:a17:90a:330f:: with SMTP id
- m15mr20053801pjb.24.1578895206878; 
- Sun, 12 Jan 2020 22:00:06 -0800 (PST)
-Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([202.120.40.82])
- by smtp.gmail.com with ESMTPSA id u23sm12182518pfm.29.2020.01.12.22.00.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Jan 2020 22:00:06 -0800 (PST)
-From: Chuhong Yuan <hslester96@gmail.com>
-To: 
-Subject: [PATCH v3] media: allegro: add missed checks in allegro_open()
-Date: Mon, 13 Jan 2020 13:59:51 +0800
-Message-Id: <20200113055951.8718-1-hslester96@gmail.com>
-X-Mailer: git-send-email 2.24.1
+ with ESMTP id nWTnISLbHtAP for <devel@linuxdriverproject.org>;
+ Mon, 13 Jan 2020 14:28:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.13])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D2AD784353
+ for <devel@driverdev.osuosl.org>; Mon, 13 Jan 2020 14:28:05 +0000 (UTC)
+Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
+ mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1MS4ab-1jFunO26Yd-00TY9y; Mon, 13 Jan 2020 15:15:01 +0100
+Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id 9578164E74F;
+ Mon, 13 Jan 2020 14:15:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at cetitec.com
+Received: from mail.cetitecgmbh.com ([127.0.0.1])
+ by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
+ [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id gxXippCj9pKV; Mon, 13 Jan 2020 15:15:00 +0100 (CET)
+Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id 469E564F41A;
+ Mon, 13 Jan 2020 15:15:00 +0100 (CET)
+Received: from pflmari.corp.cetitec.com (10.10.2.141) by
+ PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
+ id 15.0.1320.4; Mon, 13 Jan 2020 15:15:00 +0100
+Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
+ id DF1DB804E9; Mon, 13 Jan 2020 15:14:59 +0100 (CET)
+Date: Mon, 13 Jan 2020 15:14:59 +0100
+From: Alex Riesen <alexander.riesen@cetitec.com>
+To: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Subject: [PATCH 0/8] media: i2c: adv748x: add support for HDMI audio
+Message-ID: <20200113141459.GA3606@pflmari>
+Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
+ Kieran Bingham <kieran.bingham@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-renesas-soc@vger.kernel.org
 MIME-Version: 1.0
+Content-Disposition: inline
+X-Originating-IP: [10.10.2.141]
+X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
+ PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
+X-EsetResult: clean, is OK
+X-EsetId: 37303A29536F936F657D64
+X-Provags-ID: V03:K1:WRn8kDWvZJBZV9XEgaD3WUPXDBg4Z7NvFJjTF4aIMVraTsReI3K
+ ZcsHHb4pG6K4QW6TmSwNunYqt6h5vAqCzkLEAEt9VoSiY6t982MwHJjy/h/bWdFA9fLqdWY
+ O24c0J+NcsX/+TqxgVvxNG11l5+I2NY7YuLbeatvNuNRy7ockntQgEsQpx8yPBURsRFtCsx
+ 25EduWThKhIb/PDEDDR0Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:NcCQI9A5+Og=:XMEvLM9tS8WGB+aMO8q5dC
+ uuTCS99piGghNfPouYESC4HmjeND5VwGyx8auOyUHluR/de92luKhOOgdpHWbXaWCgzeqrck+
+ lHvlixAlATcqvr7S67oN0DKlFNgZxC89DVTieAZHqTkn5Sxu7MsdgTjxaQ0queZOPfalrBGh4
+ BZjxmiolUI3mvzL6oojeeslegPbf1h7oaWwa20vkUVZrv4HNNBQKdYoeZERO5HVkMwiyojJJf
+ CEVNuklGVPIMip2tp41SUjNPgoM/wuaX1j8h+WkXUfHzFwtghBZCA4vYP9DRcTw0KXqoT3+HL
+ XIc7s0UCOmEjwBnfoBlk5TJ119GemJB+rRg7YWw/tzL4jt/U5skErymTJHuLO0woSELA8Zp7g
+ UdfBKfqQX5Egz5lF4KXByCiJhsroBI9wIypxytDcvonUi8i8lw14fPHrbmtr9k5Y5bU+eLkD+
+ 06kCkbe8mxcfmjN+NmrJsBSC77CEiqy0+6HQMRkeyO9vqlYH5lRJV2l/xnoZA6BX4H5z8PXJr
+ HEPzONbyKe1NfXj5wVX+SzWh/FX9eB8Kq3sOmRbsUrino+E8DJjg1QArmI106wZDcj1gSaH0H
+ 4q7CmMg1yq7V10yNMtwUxRI5dmRO/ZjFSL/ISXqMMBY2vBnkDlLNzJeiXYFoxtG9cbQsr/1fu
+ MObdHd8bunhAWbNAAzLgvEIqHiErbrFF6umNn4MFdAsB+QAAkn9QFY/FAlIz5wdSUal1H6UQq
+ bzgG3VDF8Bp88PFd3fY7L3k9ftrgPkjDPYfyNLChq6SmeBRcOaYcph1FOE7Fq2upzATcgNLsC
+ Qq4nHVpDkIqxqpVQhRvnQG3MPQX8oYKZQC1eJS6WHAACpoQju2p6fxubzm4BkV/Pb6JHiyQA/
+ ub2SIybCgow3vRu3jPlPqa9QCTbt7w11QmS/71FvE=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,87 +101,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Chuhong Yuan <hslester96@gmail.com>,
- Michael Tretter <m.tretter@pengutronix.de>, linux-kernel@vger.kernel.org,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
+Cc: Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-allegro_open() misses checks for v4l2_m2m_ctx_init() and results of
-v4l2_ctrl_new* calls.
-Add checks and error handlers to fix the problems.
+This adds minimal support for controlling the audio output I2S port available
+on ADV7481 and ADV7482 HDMI decoder devices by ADI. The port carries audio
+signal from the decoded HDMI stream.
 
-Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
----
-Changes in v3:
-  - Make code cleaner.
-  - Add a check for handler->error.
+An ADV7482 on the Renesas Salvator-X ES1.1 was used during development of this
+code.
 
- .../staging/media/allegro-dvt/allegro-core.c  | 24 +++++++++++++++----
- 1 file changed, 20 insertions(+), 4 deletions(-)
+Alex Riesen (8):
+  media: adv748x: add a device-specific wrapper for register block read
+  media: adv748x: add audio mute control and output selection ioctls
+  media: adv748x: add log_status ioctl
+  media: adv748x: reserve space for the audio (I2S) port in the driver
+    structures
+  media: adv748x: add an ASoC DAI definition to the driver
+  media: adv748x: reduce amount of code for bitwise modification of
+    device registers
+  dt-bindings: adv748x: add information about serial audio interface
+    (I2S/TDM)
+  arm64: dts: renesas: salvator: add a connection from adv748x codec
+    (HDMI input) to the R-Car SoC
 
-diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
-index 6f0cd0784786..e86001e42963 100644
---- a/drivers/staging/media/allegro-dvt/allegro-core.c
-+++ b/drivers/staging/media/allegro-dvt/allegro-core.c
-@@ -2270,15 +2270,12 @@ static int allegro_open(struct file *file)
- 	struct allegro_channel *channel = NULL;
- 	struct v4l2_ctrl_handler *handler;
- 	u64 mask;
-+	int ret;
- 
- 	channel = kzalloc(sizeof(*channel), GFP_KERNEL);
- 	if (!channel)
- 		return -ENOMEM;
- 
--	v4l2_fh_init(&channel->fh, vdev);
--	file->private_data = &channel->fh;
--	v4l2_fh_add(&channel->fh);
--
- 	init_completion(&channel->completion);
- 
- 	channel->dev = dev;
-@@ -2328,6 +2325,11 @@ static int allegro_open(struct file *file)
- 			V4L2_CID_MIN_BUFFERS_FOR_OUTPUT,
- 			1, 32,
- 			1, 1);
-+	if (handler->error != 0) {
-+		ret = handler->error;
-+		goto error;
-+	}
-+
- 	channel->fh.ctrl_handler = handler;
- 
- 	channel->mcu_channel_id = -1;
-@@ -2341,7 +2343,21 @@ static int allegro_open(struct file *file)
- 	channel->fh.m2m_ctx = v4l2_m2m_ctx_init(dev->m2m_dev, channel,
- 						allegro_queue_init);
- 
-+	if (IS_ERR(channel->fh.m2m_ctx)) {
-+		ret = PTR_ERR(channel->fh.m2m_ctx);
-+		goto error;
-+	}
-+
-+	v4l2_fh_init(&channel->fh, vdev);
-+	file->private_data = &channel->fh;
-+	v4l2_fh_add(&channel->fh);
-+
- 	return 0;
-+
-+error:
-+	v4l2_ctrl_handler_free(handler);
-+	kfree(channel);
-+	return ret;
- }
- 
- static int allegro_release(struct file *file)
+ .../devicetree/bindings/media/i2c/adv748x.txt |  13 +-
+ .../dts/renesas/r8a7795-es1-salvator-x.dts    |  24 +-
+ .../boot/dts/renesas/salvator-common.dtsi     |  35 +-
+ drivers/media/i2c/adv748x/adv748x-core.c      |  54 +++
+ drivers/media/i2c/adv748x/adv748x-hdmi.c      | 355 ++++++++++++++++++
+ drivers/media/i2c/adv748x/adv748x.h           |  53 ++-
+ 6 files changed, 523 insertions(+), 11 deletions(-)
+
 -- 
-2.24.1
-
+2.24.1.508.g91d2dafee0
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
