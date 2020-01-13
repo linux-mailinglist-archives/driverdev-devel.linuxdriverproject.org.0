@@ -2,60 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D0C6139391
+	by mail.lfdr.de (Postfix) with ESMTPS id EE41D139392
 	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Jan 2020 15:21:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D0BD3859C1;
-	Mon, 13 Jan 2020 14:21:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8D12685932;
+	Mon, 13 Jan 2020 14:21:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EYoWPkpDUaUQ; Mon, 13 Jan 2020 14:21:08 +0000 (UTC)
+	with ESMTP id c0jdzSuOdUwB; Mon, 13 Jan 2020 14:21:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3476185821;
-	Mon, 13 Jan 2020 14:21:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 066C2858D3;
+	Mon, 13 Jan 2020 14:21:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 49A831BF388
- for <devel@linuxdriverproject.org>; Mon, 13 Jan 2020 14:21:06 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C468C1BF388
+ for <devel@linuxdriverproject.org>; Mon, 13 Jan 2020 14:21:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 461B884DDD
- for <devel@linuxdriverproject.org>; Mon, 13 Jan 2020 14:21:06 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BD30D86370
+ for <devel@linuxdriverproject.org>; Mon, 13 Jan 2020 14:21:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kntF4JP-hn6D for <devel@linuxdriverproject.org>;
- Mon, 13 Jan 2020 14:21:05 +0000 (UTC)
+ with ESMTP id f7nStlnWChXU for <devel@linuxdriverproject.org>;
+ Mon, 13 Jan 2020 14:21:06 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.135])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 43C8184C99
- for <devel@driverdev.osuosl.org>; Mon, 13 Jan 2020 14:21:05 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.134])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 57807862B2
+ for <devel@driverdev.osuosl.org>; Mon, 13 Jan 2020 14:21:06 +0000 (UTC)
 Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mq1GE-1jVEoL1Rkg-00nAr8; Mon, 13 Jan 2020 15:15:47 +0100
+ mrelayeu.kundenserver.de (mreue011 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1MtwIW-1jeZI32dDQ-00uJAi; Mon, 13 Jan 2020 15:15:51 +0100
 Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id 09B8564F293;
- Mon, 13 Jan 2020 14:15:47 +0000 (UTC)
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id 56FA764F293;
+ Mon, 13 Jan 2020 14:15:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at cetitec.com
 Received: from mail.cetitecgmbh.com ([127.0.0.1])
  by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
  [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MpW3x8_PgRq7; Mon, 13 Jan 2020 15:15:46 +0100 (CET)
+ with ESMTP id Cy68gE_GQgSA; Mon, 13 Jan 2020 15:15:51 +0100 (CET)
 Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id 3D7C264D641;
- Mon, 13 Jan 2020 15:15:46 +0100 (CET)
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id 0556764D641;
+ Mon, 13 Jan 2020 15:15:51 +0100 (CET)
 Received: from pflmari.corp.cetitec.com (10.10.2.141) by
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1320.4; Mon, 13 Jan 2020 15:15:46 +0100
+ id 15.0.1320.4; Mon, 13 Jan 2020 15:15:51 +0100
 Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id E583A804E9; Mon, 13 Jan 2020 15:15:45 +0100 (CET)
-Date: Mon, 13 Jan 2020 15:15:45 +0100
+ id ACF2D804E9; Mon, 13 Jan 2020 15:15:50 +0100 (CET)
+Date: Mon, 13 Jan 2020 15:15:50 +0100
 From: Alex Riesen <alexander.riesen@cetitec.com>
 To: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: [PATCH 6/8] media: adv748x: reduce amount of code for bitwise
- modification of device registers
-Message-ID: <20200113141545.GG3606@pflmari>
+Subject: [PATCH 7/8] dt-bindings: adv748x: add information about serial audio
+ interface (I2S/TDM)
+Message-ID: <20200113141550.GH3606@pflmari>
 Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  Kieran Bingham <kieran.bingham@ideasonboard.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -74,24 +74,24 @@ X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
 X-EsetResult: clean, is OK
 X-EsetId: 37303A29536F936F657D64
-X-Provags-ID: V03:K1:/85G/aaVRJTZkr6Gku52togdEm1yvKqdKcF2c6D9t/wZUMxfwf+
- ueDyXqBfeWDjMif7FvC+VnxwEbJgUx3FyGyTzatFR1guD9V4uw2RNoDaNeH/Nwnp0pV4896
- DESxa+kfbQ+uqth3DkTy9kl+NvJsPVifiYh/OpUX30+bAkg2vu/QBJ2kTzX9Sh27m1aE5S2
- 7B6hcDjYeJBDE0WrhNmsg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:a14mzvNFETo=:ibaG5VJcZ+JNQewiekfFnV
- htrPJeZGPpEv7wIgyW8ds82z8wt+//ckykAQGzYH1+GcD8teXgV2ha8Jzw4lCdFWomnXpyj3l
- GdXDa3nexmV8mw2re56Vw/uOrtFB9KbHB0PVf3ZIxuh3WRC7fjbEu05gQkiBBsgJkw8HTnYtp
- CS11GingGFTwTzwDZxwc/Dtb460+C1rPy4sg04zT71PZP5oQW5MQWVyy9o8S+VOujdqUdZ3Os
- y+awzkQ09LiTzaeyQpvconDmUKzt0QhpVYoThMwvOwnBa6Sfj5wJTfawa+6JC5/R77DbA8477
- p5c4n4ezi/gVSZggmmL2FXAcknMTLEif+3ICKtXxqwSJKV7jLjbx2CTkX6rgX3QeEE9QEJhA6
- P/SkgYqtmAJGePpWXqR/HMyZZD/vRSKwS57fe+9unoGsPIaCLtn9vxGLOfe5ZMdq/q4feioq+
- gvlsluv0svwQJvwxURO7EsMfwvIeugJIC2aGFjPKVIYjwGpCEcz4fmNT6tWRQ74qjfieiG69Y
- rn36+rQwS2Oe8LFFB0il7X+S5hmgUDa0IBrnfW864Ekajf1NzcKNJk25OiFyiH2TOl6P6JOOe
- mgPJNAYXJkBLk2L9pk/H3COjzyHAQkY4vkMbBj1Cv+kviR9xbpxTXFpwO0tdZLNvyswaT4Q5y
- +w8GPMkY2GFjhsq+BgJBJTonVVWPb2DtV2Q3B5FmyJ3nf+iV6s2g6Rh6JbjGMbPp4tBeLpCoh
- dHYBOhbfB6kHJ8f/cLlyhyVe5PkBaQUavZ2Xqm7+H83AtvzGevexjel5djpS346nyXVfeMJmh
- er9V9/GAcwgaNrsfC/gtfjgOGyqiZxPX9V3G5MEPg/Z/NUNudcfZYBnr5h1ayOIkRcHGUfD4p
- lqhauV8iYXM4x+O0tO3ZY/EWaIoROI+rKpKOj9ThU=
+X-Provags-ID: V03:K1:3UWAIQ3PRfLO3SwbaMk2tmknBL5osw0uZ9NNz1XG25ufDyVB987
+ Rnh6LNFpwA3UZYI6ufAhoe4a8NtVJEBSoSefoOWiac4vzKPdAmaGA4uud+7nVPLtU+hwlKB
+ ivmJWe3VtUSjoh29NJQYrX4aCjT9VPfn5H6VWbIKyeCuKF/LKs4ZBDoy4NoDeIe820DTsAX
+ l1pZXy2FDQa7eBA3kGxXA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:X36LSpL9UeE=:JhDpizHQtVCq2YEPeSFQl1
+ frD7dgNShuiSxCY7Lak+2pHZ9AdpAro7xOOXJAffgm2TdK5Bsxpek/sHULuLDPuDg4nHzvuss
+ I4I1Xgrqjf+0h85UyTmkFLZk8YpDyV38OIf4NShwXii11bniAm3I1L7/vnAheKP4whf72u7Kz
+ igjthw/fY/d9GicwavJI+osUvkzwdjTm0gDj9fxJSnMwvBkfA8+v1RVDrYLx7ZLdrOuasaBpc
+ iLhAEFAIud05dAIgS5/F5KblRNytIPEEaCU7/Sfy6JBnS06FXTzTDnKYA/9tJBmNHGp/Tjp5I
+ sjYQOV9R5Pt2n08PxhIgcjuNXGNqEonKSrYRNSA5JyozD8tzH+QsItmwA2HSxICnk3T7D7AkC
+ 9Hx6H4i5ELq329EuqBeUKc8PgdxFbTArgPABsYZeDFIULYZQ4Ya6q8XPF6t0vaExaBk31qdV2
+ n4Gek1IB04MSP5J3lp+I7vJhrWuaPjN7sixPVT8GPzJCbcjSVvtyAi9Bkfmicv+XTUbm0sfMD
+ qf2csVYjv/3/9J7CRwH98nDl73xvOqgp7wXQWvNEaOfu2zVQwZWfA268xt2seCetHfc8rTmH7
+ hWHH4J90LeoeJ8O3oay70Mk6o6w9bS0pL8oP6fgB+dDg/4XL2xN4ZP5fsEbGaMaQ/BQZ3rWXc
+ z7hCaZndmJQdJUomIC5kBAJ1TZh9MalwwjXjrPYgKoEU+SoCjnnXzMRVj5S+IeQJueVl6dDYy
+ xltBxi/0ljWem09uVVHJwucWLLW+JqL/ekVtooLaYxV6WO+V3XBXpEFjFv4+ajecgFmCEjiMD
+ K5/4f8mhz1QJIb2tgTAuHsshMRmZWRCA/IL6/DQ81Byswv282bOOnYuRGjRqwaRfZcepffL2T
+ zrmS3VdAwzH87fpd3Mj7NYkVVTBZa3y7Y/cVlzKpc=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,41 +115,50 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The regmap provides corresponding routine (regmap_update_bits) already
-wrapped for this device earlier.
+As the driver has some support for the audio interface of the device,
+the bindings file should mention it.
 
 Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
 ---
- drivers/media/i2c/adv748x/adv748x.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ .../devicetree/bindings/media/i2c/adv748x.txt       | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
-index 5db06410f102..ab3f754542fe 100644
---- a/drivers/media/i2c/adv748x/adv748x.h
-+++ b/drivers/media/i2c/adv748x/adv748x.h
-@@ -432,7 +432,7 @@ int adv748x_update_bits(struct adv748x_state *state, u8 page, u8 reg,
+diff --git a/Documentation/devicetree/bindings/media/i2c/adv748x.txt b/Documentation/devicetree/bindings/media/i2c/adv748x.txt
+index 4f91686e54a6..c42dffb37a82 100644
+--- a/Documentation/devicetree/bindings/media/i2c/adv748x.txt
++++ b/Documentation/devicetree/bindings/media/i2c/adv748x.txt
+@@ -2,7 +2,9 @@
  
- #define io_read(s, r) adv748x_read(s, ADV748X_PAGE_IO, r)
- #define io_write(s, r, v) adv748x_write(s, ADV748X_PAGE_IO, r, v)
--#define io_clrset(s, r, m, v) io_write(s, r, (io_read(s, r) & ~m) | v)
-+#define io_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_IO, r, m, v)
- #define io_update(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_IO, r, m, v)
+ The ADV7481 and ADV7482 are multi format video decoders with an integrated
+ HDMI receiver. They can output CSI-2 on two independent outputs TXA and TXB
+-from three input sources HDMI, analog and TTL.
++from three input sources HDMI, analog and TTL. There is also support for an
++I2S compatible interface connected to the audio processor of the HDMI decoder.
++The interface has TDM capability (8 slots, 32 bits, left or right justified).
  
- #define hdmi_read(s, r) adv748x_read(s, ADV748X_PAGE_HDMI, r)
-@@ -450,11 +450,11 @@ int adv748x_update_bits(struct adv748x_state *state, u8 page, u8 reg,
+ Required Properties:
  
- #define sdp_read(s, r) adv748x_read(s, ADV748X_PAGE_SDP, r)
- #define sdp_write(s, r, v) adv748x_write(s, ADV748X_PAGE_SDP, r, v)
--#define sdp_clrset(s, r, m, v) sdp_write(s, r, (sdp_read(s, r) & ~m) | v)
-+#define sdp_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_SDP, r, m, v)
+@@ -47,6 +49,7 @@ are numbered as follows.
+ 	  TTL		sink		9
+ 	  TXA		source		10
+ 	  TXB		source		11
++	  I2S		source		12
  
- #define cp_read(s, r) adv748x_read(s, ADV748X_PAGE_CP, r)
- #define cp_write(s, r, v) adv748x_write(s, ADV748X_PAGE_CP, r, v)
--#define cp_clrset(s, r, m, v) cp_write(s, r, (cp_read(s, r) & ~m) | v)
-+#define cp_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_CP, r, m, v)
- 
- #define tx_read(t, r) adv748x_read(t->state, t->page, r)
- #define tx_write(t, r, v) adv748x_write(t->state, t->page, r, v)
+ The digital output port nodes, when present, shall contain at least one
+ endpoint. Each of those endpoints shall contain the data-lanes property as
+@@ -113,4 +116,12 @@ Example:
+ 				remote-endpoint = <&csi20_in>;
+ 			};
+ 		};
++
++		port@c {
++			reg = <12>;
++
++			adv7482_i2s: endpoint {
++				remote-endpoint = <&i2s_in>;
++			};
++		};
+ 	};
 -- 
 2.24.1.508.g91d2dafee0
 
