@@ -1,58 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55EF713AD87
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jan 2020 16:23:05 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C2E313AE22
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jan 2020 16:58:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 05DCF8601E;
-	Tue, 14 Jan 2020 15:23:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 56E162051D;
+	Tue, 14 Jan 2020 15:58:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hBBMM6K+U75p; Tue, 14 Jan 2020 15:23:03 +0000 (UTC)
+	with ESMTP id cC91-NvZKgKU; Tue, 14 Jan 2020 15:58:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1065F85629;
-	Tue, 14 Jan 2020 15:22:59 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 8668420513;
+	Tue, 14 Jan 2020 15:58:07 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1594B1BF574
- for <devel@linuxdriverproject.org>; Tue, 14 Jan 2020 15:22:57 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DB9F71BF574
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 14 Jan 2020 15:58:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0FB7184ADE
- for <devel@linuxdriverproject.org>; Tue, 14 Jan 2020 15:22:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D7B812050C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 14 Jan 2020 15:58:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EqfFZoT70Rq9 for <devel@linuxdriverproject.org>;
- Tue, 14 Jan 2020 15:22:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 29689820C9
- for <devel@driverdev.osuosl.org>; Tue, 14 Jan 2020 15:22:52 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5C73E2467D;
- Tue, 14 Jan 2020 15:22:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579015372;
- bh=9ONsXseL7vnPhow6rBf8Rwy7QYNR2g1suzafCfQHXSk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=XkObdN6QZyL7qMxqhY0CAJQQ0sjY3N8DpwRxUhEzAeC7xnJ3/Iug79uQYo3uwuU2F
- ogbuVetlDLA9ETMJDdIEW15hjtaUpveO5gU2AkrPMIAtSFZQV0xcfV5k0D+TnjJay5
- w4tfgTsqJb8Rc02Ry5a8qZSK7Y8zwKKeTusf244A=
-Date: Tue, 14 Jan 2020 16:22:49 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Martin Fuzzey <martin.fuzzey@flowbird.group>
-Subject: Re: [PATCH] binder: fix log spam for existing debugfs file creation.
-Message-ID: <20200114152249.GA2041689@kroah.com>
-References: <1578671054-5982-1-git-send-email-martin.fuzzey@flowbird.group>
+ with ESMTP id uoFjm9ld7mNH
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 14 Jan 2020 15:58:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
+ [216.71.150.166])
+ by silver.osuosl.org (Postfix) with ESMTPS id B964820508
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 14 Jan 2020 15:58:03 +0000 (UTC)
+Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
+ Christian.Gromm@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
+ envelope-from="Christian.Gromm@microchip.com";
+ x-sender="Christian.Gromm@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
+ include:servers.mcsv.net include:mktomail.com
+ include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa5.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
+ envelope-from="Christian.Gromm@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa5.microchip.iphmx.com;
+ dkim=none (message not signed) header.i=none;
+ spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: HQUuORJYzMpMVsp1QvdsdnCogH/CPoarAdLqdwnDSPonyKkBLg07/6hHISSVj8wp6rL6InvkQt
+ MbZ+oV4cUSW7+ltleF/yEC9BiXZ4Ahs3GxlZT/VGJuOGYKwh2EHIfFwtQucA5NUVmy4UieAWTr
+ OU3yGWy8AjCVVaT6D9guxXZEFTOo3+qjXHt9LGpbMU56I/6nZWlkTViH6zhSzWBXdZsLyaN6Lp
+ MiFsU2AFqPZJhep2Cij14NtaCdBLuf2QUoKW9QAfwBg3rttYPUNstPJzB+cgSu+w6c7LDjsAaE
+ GW0=
+X-IronPort-AV: E=Sophos;i="5.69,433,1571727600"; d="scan'208";a="61883081"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 14 Jan 2020 08:58:02 -0700
+Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Tue, 14 Jan 2020 08:58:02 -0700
+Received: from localhost.localdomain (10.10.85.251) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server id
+ 15.1.1713.5 via Frontend Transport; Tue, 14 Jan 2020 08:58:00 -0700
+From: Christian Gromm <christian.gromm@microchip.com>
+To: <gregkh@linuxfoundation.org>
+Subject: [PATCH RFC v3 0/9] staging: most: move core module out of staging
+Date: Tue, 14 Jan 2020 16:57:49 +0100
+Message-ID: <1579017478-3339-1-git-send-email-christian.gromm@microchip.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1578671054-5982-1-git-send-email-martin.fuzzey@flowbird.group>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,40 +94,72 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- linux-kernel@vger.kernel.org,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+Cc: Christian Gromm <christian.gromm@microchip.com>,
+ driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jan 10, 2020 at 04:44:01PM +0100, Martin Fuzzey wrote:
-> Since commit 43e23b6c0b01 ("debugfs: log errors when something goes wrong")
-> debugfs logs attempts to create existing files.
-> 
-> However binder attempts to create multiple debugfs files with
-> the same name when a single PID has multiple contexts, this leads
-> to log spamming during an Android boot (17 such messages during
-> boot on my system).
-> 
-> Fix this by checking if we already know the PID and only create
-> the debugfs entry for the first context per PID.
-> 
-> Do the same thing for binderfs for symmetry.
-> 
-> Signed-off-by: Martin Fuzzey <martin.fuzzey@flowbird.group>
+The MOST driver was pushed to the staging area with kernel 4.3. Since then
+it has encountered many refinements by the community and should be ready
+for an upstream audit and to be moved out of the staging area. Since the
+driver consists of multiple modules the core module is about to go first
+and the other modules will follow subsequently. This patchset executes the
+necessary steps to move the core module out of staging.
 
-Does this need a "Fixes:" and cc: stable tag?
+v2:
+Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+	- use -M option to create patches
+v3:
+Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+	- fix date range in comment section of core.c
+	- move code to free up memory to release funtions
+	- remove noisy log messages
+	- use dev_* functions for logging
 
-And it would be good to get a review from the binder maintainer(s) to
-see if this is sane or not...
+Christian Gromm (9):
+  staging: most: core: fix date in file comment
+  staging: most: core: use dev_* function for logging
+  staging: most: core: remove noisy log messages
+  staging: most: move interface dev to private section
+  staging: most: usb: check for NULL device
+  staging: most: change storage class of struct mostcore
+  staging: most: move core files out of the staging area
+  staging: most: Documentation: update ABI description
+  staging: most: Documentation: move ABI description files out of
+    staging area
 
-thanks,
+ .../ABI/testing/configfs-most                      |   8 -
+ .../ABI/testing/sysfs-bus-most                     |  24 +--
+ drivers/Kconfig                                    |   1 +
+ drivers/Makefile                                   |   1 +
+ drivers/most/Kconfig                               |  15 ++
+ drivers/most/Makefile                              |   4 +
+ drivers/{staging => }/most/configfs.c              |   2 +-
+ drivers/{staging => }/most/core.c                  | 187 ++++++++++++---------
+ drivers/staging/most/Kconfig                       |   6 +-
+ drivers/staging/most/Makefile                      |   5 -
+ drivers/staging/most/cdev/cdev.c                   |   2 +-
+ drivers/staging/most/dim2/dim2.c                   |   4 +-
+ drivers/staging/most/i2c/i2c.c                     |   2 +-
+ drivers/staging/most/net/net.c                     |   2 +-
+ drivers/staging/most/sound/sound.c                 |   2 +-
+ drivers/staging/most/usb/usb.c                     |  11 +-
+ drivers/staging/most/video/video.c                 |   2 +-
+ {drivers/staging/most => include/linux}/most.h     |   6 +-
+ 18 files changed, 148 insertions(+), 136 deletions(-)
+ rename drivers/staging/most/Documentation/ABI/configfs-most.txt => Documentation/ABI/testing/configfs-most (94%)
+ rename drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt => Documentation/ABI/testing/sysfs-bus-most (92%)
+ create mode 100644 drivers/most/Kconfig
+ create mode 100644 drivers/most/Makefile
+ rename drivers/{staging => }/most/configfs.c (99%)
+ rename drivers/{staging => }/most/core.c (90%)
+ rename {drivers/staging/most => include/linux}/most.h (99%)
 
-greg k-h
+-- 
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
