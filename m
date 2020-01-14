@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8E6713B20E
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jan 2020 19:26:11 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 534B213B211
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jan 2020 19:26:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 786C0864B8;
-	Tue, 14 Jan 2020 18:26:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9B42A85F56;
+	Tue, 14 Jan 2020 18:26:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cIP2p9M1cQZP; Tue, 14 Jan 2020 18:26:08 +0000 (UTC)
+	with ESMTP id Tk6n4Ia6sQRL; Tue, 14 Jan 2020 18:26:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3DBF7864CB;
-	Tue, 14 Jan 2020 18:26:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D1DBA85F57;
+	Tue, 14 Jan 2020 18:26:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B92491BF847
- for <devel@linuxdriverproject.org>; Tue, 14 Jan 2020 18:26:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 941BD1BF847
+ for <devel@linuxdriverproject.org>; Tue, 14 Jan 2020 18:26:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B5F1387327
- for <devel@linuxdriverproject.org>; Tue, 14 Jan 2020 18:26:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 90B3F87327
+ for <devel@linuxdriverproject.org>; Tue, 14 Jan 2020 18:26:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NF5jsS+l5x2H for <devel@linuxdriverproject.org>;
- Tue, 14 Jan 2020 18:25:56 +0000 (UTC)
+ with ESMTP id tbCdSoImYkmu for <devel@linuxdriverproject.org>;
+ Tue, 14 Jan 2020 18:25:58 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp104.ord1c.emailsrvr.com (smtp104.ord1c.emailsrvr.com
- [108.166.43.104])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C20D784BAD
- for <devel@driverdev.osuosl.org>; Tue, 14 Jan 2020 18:25:56 +0000 (UTC)
+Received: from smtp109.ord1c.emailsrvr.com (smtp109.ord1c.emailsrvr.com
+ [108.166.43.109])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8C82B85077
+ for <devel@driverdev.osuosl.org>; Tue, 14 Jan 2020 18:25:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1579026356;
- bh=U8O4XraV/OP74ldPzZCy+o/m+44W+fvsVTt44J60PdU=;
+ s=20190130-41we5z8j; t=1579026358;
+ bh=x97t4sVCLec0AUkyNkrph7ut/gSYCSeAr+g7v3AiIVs=;
  h=From:To:Subject:Date:From;
- b=V9FtwKzOUXzx8fUEGFs6vqdaklj4zOrcUfXcbpqqmfJsxjMnWTIxwhpmDX3tLyvCx
- V01hpsrwaNv5KSaOIWrjHReKNEmRHYZmdgFpV2ozKPyRn9Pft7gic4wOvyc7n2GlDn
- MoOye02qz74Hl7gYz8lYIJcC+yg6CJthH6+tpYK8=
+ b=EH4oqtkSvIzVRUoYf9m/iInrr7YCBCTkZgHOPMDyXTpDEBvjCpoIjT5RlDVylKj+M
+ Bdl5aCHZeA7AsP7NNbm3bZR3yBXgzvTVJBBcjzbcmT5xKoCok1r2rK/xBiXDTXSEWC
+ KdPu3BBfoT2yW+FZ0IeWW3dZAZv8hjSlBEDmZLl4=
 X-Auth-ID: abbotti@mev.co.uk
 Received: by smtp6.relay.ord1c.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id C8D53A0281; 
- Tue, 14 Jan 2020 13:25:54 -0500 (EST)
+ abbotti-AT-mev.co.uk) with ESMTPSA id 06F8FA0108; 
+ Tue, 14 Jan 2020 13:25:56 -0500 (EST)
 X-Sender-Id: abbotti@mev.co.uk
 Received: from ian-deb.inside.mev.co.uk (remote.quintadena.com [81.133.34.160])
  (using TLSv1.2 with cipher DHE-RSA-AES128-GCM-SHA256)
- by 0.0.0.0:465 (trex/5.7.12); Tue, 14 Jan 2020 13:25:56 -0500
+ by 0.0.0.0:465 (trex/5.7.12); Tue, 14 Jan 2020 13:25:58 -0500
 From: Ian Abbott <abbotti@mev.co.uk>
 To: devel@driverdev.osuosl.org
-Subject: [PATCH 1/2] staging: comedi: ni_routes: fix null dereference in
- ni_find_route_source()
-Date: Tue, 14 Jan 2020 18:25:31 +0000
-Message-Id: <20200114182532.132058-2-abbotti@mev.co.uk>
+Subject: [PATCH 2/2] staging: comedi: ni_routes: allow partial routing
+ information
+Date: Tue, 14 Jan 2020 18:25:32 +0000
+Message-Id: <20200114182532.132058-3-abbotti@mev.co.uk>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200114182532.132058-1-abbotti@mev.co.uk>
 References: <20200114182532.132058-1-abbotti@mev.co.uk>
@@ -77,50 +77,82 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In `ni_find_route_source()`, `tables->route_values` gets dereferenced.
-However it is possible that `tables->route_values` is `NULL`, leading to
-a null pointer dereference.  `tables->route_values` will be `NULL` if
-the call to `ni_assign_device_routes()` during board initialization
-returned an error due to missing device family routing information or
-missing board-specific routing information.  For example, there is
-currently no board-specific routing information provided for the
-PCIe-6251 board and several other boards, so those are affected by this
-bug.
+This patch fixes a regression on setting up asynchronous commands to use
+external trigger sources when board-specific routing information is
+missing.
 
-The bug is triggered when `ni_find_route_source()` is called via
-`ni_check_trigger_arg()` or `ni_check_trigger_arg_roffs()` when checking
-the arguments for setting up asynchronous commands.  Fix it by returning
-`-EINVAL` if `tables->route_values` is `NULL`.
+`ni_find_device_routes()` (called via `ni_assign_device_routes()`) finds
+the table of register values for the device family and the set of valid
+routes for the specific board.  If both are found,
+`tables->route_values` is set to point to the table of register values
+for the device family and `tables->valid_routes` is set to point to the
+list of valid routes for the specific board.  If either is not found,
+both `tables->route_values` and `tables->valid_routes` are left set at
+their initial null values (initialized by `ni_assign_device_routes()`)
+and the function returns `-ENODATA`.
 
-Even with this fix, setting up asynchronous commands to use external
-trigger sources for boards with missing routing information will still
-fail gracefully.  Since `ni_find_route_source()` only depends on the
-device family routing information, it would be better if that was made
-available even if the board-specific routing information is missing.
-That will be addressed by another patch.
+Returning an error results in some routing functionality being disabled.
+Unfortunately, leaving `table->route_values` set to `NULL` also breaks
+the setting up of asynchronous commands that are configured to use
+external trigger sources.  Calls to `ni_check_trigger_arg()` or
+`ni_check_trigger_arg_roffs()` while checking the asynchronous command
+set-up would result in a null pointer dereference if
+`table->route_values` is `NULL`.  The null pointer dereference is fixed
+in another patch, but it now results in failure to set up the
+asynchronous command.  That is a regression from the behavior prior to
+commit 347e244884c3 ("staging: comedi: tio: implement global tio/ctr
+routing") and commit 56d0b826d39f ("staging: comedi: ni_mio_common:
+implement new routing for TRIG_EXT").
 
-Fixes: 4bb90c87abbe ("staging: comedi: add interface to ni routing table information")
+Change `ni_find_device_routes()` to set `tables->route_values` and/or
+`tables->valid_routes` to valid information even if the other one can
+only be set to `NULL` due to missing information.  The function will
+still return an error in that case.  This should result in
+`tables->valid_routes` being valid for all currently supported device
+families even if the board-specific routing information is missing.
+That should be enough to fix the regression on setting up asynchronous
+commands to use external triggers for boards with missing routing
+information.
+
+Fixes: 347e244884c3 ("staging: comedi: tio: implement global tio/ctr routing")
+Fixes: 56d0b826d39f ("staging: comedi: ni_mio_common: implement new routing for TRIG_EXT").
 Cc: <stable@vger.kernel.org> # 4.20+
 Cc: Spencer E. Olson <olsonse@umich.edu>
 Signed-off-by: Ian Abbott <abbotti@mev.co.uk>
 ---
- drivers/staging/comedi/drivers/ni_routes.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/staging/comedi/drivers/ni_routes.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/comedi/drivers/ni_routes.c b/drivers/staging/comedi/drivers/ni_routes.c
-index 673d732dcb8f..9627bd1d2a78 100644
+index 9627bd1d2a78..8f398b30f5bf 100644
 --- a/drivers/staging/comedi/drivers/ni_routes.c
 +++ b/drivers/staging/comedi/drivers/ni_routes.c
-@@ -487,6 +487,9 @@ int ni_find_route_source(const u8 src_sel_reg_value, int dest,
- {
- 	int src;
+@@ -72,9 +72,6 @@ static int ni_find_device_routes(const char *device_family,
+ 		}
+ 	}
  
-+	if (!tables->route_values)
-+		return -EINVAL;
+-	if (!rv)
+-		return -ENODATA;
+-
+ 	/* Second, find the set of routes valid for this device. */
+ 	for (i = 0; ni_device_routes_list[i]; ++i) {
+ 		if (memcmp(ni_device_routes_list[i]->device, board_name,
+@@ -84,12 +81,12 @@ static int ni_find_device_routes(const char *device_family,
+ 		}
+ 	}
+ 
+-	if (!dr)
+-		return -ENODATA;
+-
+ 	tables->route_values = rv;
+ 	tables->valid_routes = dr;
+ 
++	if (!rv || !dr)
++		return -ENODATA;
 +
- 	dest = B(dest); /* subtract NI names offset */
- 	/* ensure we are not going to under/over run the route value table */
- 	if (dest < 0 || dest >= NI_NUM_NAMES)
+ 	return 0;
+ }
+ 
 -- 
 2.24.1
 
