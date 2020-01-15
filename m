@@ -1,77 +1,111 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0ED8F13BD23
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jan 2020 11:12:35 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FE9E13BF3D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jan 2020 13:12:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B14E485E8D;
-	Wed, 15 Jan 2020 10:12:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DA9F020524;
+	Wed, 15 Jan 2020 12:12:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id llbQsl9gElV4; Wed, 15 Jan 2020 10:12:29 +0000 (UTC)
+	with ESMTP id vVmOk8yR7q0E; Wed, 15 Jan 2020 12:12:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 486B185D8D;
-	Wed, 15 Jan 2020 10:12:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C84C720517;
+	Wed, 15 Jan 2020 12:12:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0BCB01BF2E4
- for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 10:12:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4D9BB1BF5A0
+ for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 12:12:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F30F884B62
- for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 10:12:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 47BEA87812
+ for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 12:12:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LaRrnsig2PFH for <devel@linuxdriverproject.org>;
- Wed, 15 Jan 2020 10:12:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5AB9683F08
- for <devel@driverdev.osuosl.org>; Wed, 15 Jan 2020 10:12:15 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id x184so8317741pfb.3
- for <devel@driverdev.osuosl.org>; Wed, 15 Jan 2020 02:12:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=nO18urJdX03zMsCtxN5PDbUx1QevamzVjKXTZ+QJcYA=;
- b=ssHrk6c5ruBQTJYA01vD04T40VjYXgxdKRbXJRpsmRs/kdJ+s8wU7esG9MF59PdCQF
- x+uNxrk1FdlmpHYZViQb70pzynLC1PdSHqVdm2xXo1BL4O7Nm9H71kY3yU5tPMzz0Lo3
- 766hdD4noLkKI3KjZ5xWTx6cXIWFxwoq7SBHsUsTuCMTHEhWEm2EAHkFmTVnc6hQM6gt
- Xa77TfI4cKrmTQKbNpldyTx7rOOoei6FrN+i5nYiNDFWjEDRlKxd8TrIT9ZqVVS7F85w
- ZpuaeDRXnIDvJBcLkEWsD2NRUf9x5GfOp+8/WTmcmrEjxfuWMmfv0kAiC4JU/KTIyVUa
- qx+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=nO18urJdX03zMsCtxN5PDbUx1QevamzVjKXTZ+QJcYA=;
- b=K3sTS0sUXS3XHFRUyA7uPKrLN+K+zz5yIGKkz52iRnjhM8iw1Sq/Sfc9nzdhZNapOO
- leJdCNAsSIhC/iTYjBydu+e0IUSqXWqdCQCaSV7VMg+V36zPf/TZf+Wq51lVpd9Jdf+1
- xNTVXffz/9fktODmLQ63nb9PjARCK2s2VA/SFe8K0lcrminn2SSDUXeSQlujOohplRpC
- REeErlhKnJ5V6MogG9oycen3u7+LunWrSmWWRyqqygTGMYR+o1D59usZG8TBK1AjN9Tv
- PYGMyDORJf/1p/HAUfJVcawJaPuKT6p6L85ybfhZX8vC5B3/ZDHdJvWKyo7GrDSgGX8S
- K2BA==
-X-Gm-Message-State: APjAAAUJWtJiM9+7IUfJEeldVkTyrh/QFqhu2siPY06YeVZDuh4XH4yu
- +xyTABh4Bo4kYP5w8PGrCeI=
-X-Google-Smtp-Source: APXvYqwbtqmrR744QPVDLEoXogIaZwOe8/1ms74bczD1fzISn+1frOC+f7Q/+RZVk6beDgB7ci2D2A==
-X-Received: by 2002:aa7:9d87:: with SMTP id f7mr30244349pfq.138.1579083134930; 
- Wed, 15 Jan 2020 02:12:14 -0800 (PST)
-Received: from localhost.localdomain (125-237-41-215-adsl.sparkbb.co.nz.
- [125.237.41.215])
- by smtp.gmail.com with ESMTPSA id x21sm21069446pfn.164.2020.01.15.02.12.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Jan 2020 02:12:14 -0800 (PST)
-Date: Wed, 15 Jan 2020 23:12:08 +1300
-From: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8192u: replace printk with natdev_<LEVEL>
- statements in ieee80211
-Message-ID: <20200115101208.GA683742@localhost.localdomain>
+ with ESMTP id ZBH0xI3FWD7b for <devel@linuxdriverproject.org>;
+ Wed, 15 Jan 2020 12:12:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2081.outbound.protection.outlook.com [40.107.92.81])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5510B85E1A
+ for <devel@driverdev.osuosl.org>; Wed, 15 Jan 2020 12:12:10 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=cSEiceMOmW3KCumByskhGJ4XNqNs27PFytLrEKQQ5CIgTPo3SjolX1VSq0moGeEaK8wYKDucZXJxS8byZVMgFAoHDIyRQUnm+77XD6uMRjWcIggXQ4SV0CDJRTfzXgpCjNH4XaTlMV8y/aEzKxJwQVtCnCrniQu0aehBIS/6mRMQvbo21bRcQAvOplrSRRY6MVBv9l/B/FAi1ZFYk4yJeWcunom7tAdtt/uqyE0PvxlLnKBeqUrQ1+5YzODiGI5y867Wp99vMoiQ0hBIBSFDc2S28B53X8ulcrElVkdgwBhnJVDbrw0z36rcuQfXspsuJYkJayoceNqttD97QjzGVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JkPBTof0cTcLxzfDeiNiJ0va31UOcbnIUlWzqHwtwII=;
+ b=Vfpr257m51KDPAKtyX5dnM784WRxOBwt185UBCk5T4Z4rVl9s2wkJNrz2+ElVeLd/0I6/jittA6Ve8l8pcJGsz3frrKR5y3HU+JBosTshObu6TwIiD1dEaJ3hVY6hJByc7aeqJ81KEy8mvm9vYUb1PiG6HiZIt9O8cBhgNJGdqMEa/Sm4tjVS6GD4D6+TRNOq1z+68LBs65pOw7W3sV9p8ks+eXQ77Aj6bNFVRwg1GD/K3gsxyudx0jRxyyniyuTsvhaR4yFPxmFYJTap+5ipODNtZ2hJCyw84k4C4+AlTc5TZ1hYGRIEYO2d6RtwPtq5xs6GsMbhizGkgOMa0jM2Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JkPBTof0cTcLxzfDeiNiJ0va31UOcbnIUlWzqHwtwII=;
+ b=KQvBiU3fN3WlP34BODxMGzj0nhmKJw1Bkk8UKgEpampEeCC1pCk8X9KPZWwkznyqR5fu7iiQQdyIoJQsdUTDviQjjOAOiz6dgO/iFi1RH2k5aPiOJhCHnVZhejDhKQL/VYHuxIbEt+5sFjq3Ip4Y1US+CMmDpgjZ/NrSTNrVa8k=
+Received: from MN2PR11MB4063.namprd11.prod.outlook.com (10.255.180.22) by
+ MN2PR11MB3934.namprd11.prod.outlook.com (10.255.180.212) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2644.20; Wed, 15 Jan 2020 12:12:08 +0000
+Received: from MN2PR11MB4063.namprd11.prod.outlook.com
+ ([fe80::f46c:e5b4:2a85:f0bf]) by MN2PR11MB4063.namprd11.prod.outlook.com
+ ([fe80::f46c:e5b4:2a85:f0bf%4]) with mapi id 15.20.2623.018; Wed, 15 Jan 2020
+ 12:12:08 +0000
+Received: from pc-42.silabs.com (37.71.187.125) by
+ PR2PR09CA0009.eurprd09.prod.outlook.com (2603:10a6:101:16::21) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2644.18 via Frontend Transport; Wed, 15 Jan 2020 12:12:06 +0000
+From: =?utf-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <Jerome.Pouiller@silabs.com>
+To: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
+Subject: [PATCH 00/65] Simplify and improve the wfx driver
+Thread-Topic: [PATCH 00/65] Simplify and improve the wfx driver
+Thread-Index: AQHVy50BYfh2z0UfGE+rivOPHKtpUQ==
+Date: Wed, 15 Jan 2020 12:12:07 +0000
+Message-ID: <20200115121041.10863-1-Jerome.Pouiller@silabs.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: PR2PR09CA0009.eurprd09.prod.outlook.com
+ (2603:10a6:101:16::21) To MN2PR11MB4063.namprd11.prod.outlook.com
+ (2603:10b6:208:13f::22)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Jerome.Pouiller@silabs.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-mailer: git-send-email 2.25.0
+x-originating-ip: [37.71.187.125]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 3f5f6eee-1a07-4e5b-e633-08d799b423fa
+x-ms-traffictypediagnostic: MN2PR11MB3934:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <MN2PR11MB3934D05FFE4C61D5882734A193370@MN2PR11MB3934.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-forefront-prvs: 02830F0362
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(39850400004)(396003)(136003)(376002)(366004)(346002)(199004)(189003)(54906003)(110136005)(86362001)(956004)(107886003)(2616005)(316002)(36756003)(71200400001)(52116002)(7696005)(478600001)(8936002)(81156014)(8676002)(4326008)(81166006)(6486002)(2906002)(26005)(66946007)(16526019)(186003)(5660300002)(66574012)(1076003)(66556008)(64756008)(66446008)(85182001)(66476007)(85202003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB3934;
+ H:MN2PR11MB4063.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: silabs.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: aoUNAvXHlyg/jTyk0ju8Ic30OuLCZmMgHYnqpLXCQ1L9zeTYqCRAfDfFZw6U+kNCqijpcVu9AtFqhdMaIvgQdhc4cefpVN2+Y8uK63qSNKUj+6qqHJjNtqd69Ocy4xt/8K/WOXMdaI/E61EJ0Y7yY325hWvgUljWsbhN0tJwB/r5WAOPU3t6GaU0S4OfYwkD/3cHl6L9+vVdJj0SNYHCD1xxh4be0eRViJ4cLBnfZK6kUmvolC1EvpLikzqGGhZTNTg2zaSXCpxJ+JqvVmR2ycUWdUtsoOcdRlSSLDSlvpl7UGjFrnFn9827BbkAhQ/ObxYWWMuhcHL9ILUsI7Zg+9FcNUnBn/h61B8f534kbI/eNyA0h/lBFg0iLHIHajq+7FtRzGQANH8qbrGSpTLllhJoCtsJoT0xCN1QWbV57rTemFY4YeY9YvUdyY3hVb+6
+Content-ID: <2915B7D3973F5144BBD9C7BE480632D6@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3f5f6eee-1a07-4e5b-e633-08d799b423fa
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jan 2020 12:12:07.8459 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: yNY65ludIqcsJe7+mF+EJ0EZVjKnlyAMHUFDev0bK7WbVm/YYVJa5TFRTiNeenTbNX+oLStF/Fjwk0ztrzyQgg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3934
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,233 +118,99 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, paulo.miguel.almeida.rodenas@gmail.com,
- puranjay12@gmail.com, linux-kernel@vger.kernel.org, sanjana99reddy99@gmail.com,
- bhanusreemahesh@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Checkpatch reports 'WARNING: printk() should include KERN_<LEVEL>
-facility level'. Fix this by specifying a relevant KERN_<LEVEL> value
-for each line in which it was missing.
-
-Once they are fixed, checkpatch reports 'WARNING: Prefer [subsystem eg:
-netdev]_dbg([subsystem]dev, ... then dev_dbg(dev, ... then
-pr_debug(...  to printk(KERN_DEBUG ...'. Fix this by replacing
-relevant printk_<level> statements with their netdev_<level>
-equivalent.
-
-Signed-off-by: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.com>
----
- .../staging/rtl8192u/ieee80211/ieee80211_rx.c | 62 +++++++++----------
- 1 file changed, 30 insertions(+), 32 deletions(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 00fea127bdc3..e101f7b13c7e 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -232,8 +232,7 @@ ieee80211_rx_frame_mgmt(struct ieee80211_device *ieee, struct sk_buff *skb,
- 
- 	#ifdef NOT_YET
- 	if (ieee->iw_mode == IW_MODE_MASTER) {
--		printk(KERN_DEBUG "%s: Master mode not yet supported.\n",
--		       ieee->dev->name);
-+		netdev_dbg(ieee->dev, "Master mode not yet supported.\n");
- 		return 0;
- /*
-   hostap_update_sta_ps(ieee, (struct hostap_ieee80211_hdr_4addr *)
-@@ -261,9 +260,9 @@ ieee80211_rx_frame_mgmt(struct ieee80211_device *ieee, struct sk_buff *skb,
- 
- 	    if (ieee->iw_mode == IW_MODE_MASTER) {
- 		if (type != WLAN_FC_TYPE_MGMT && type != WLAN_FC_TYPE_CTRL) {
--			printk(KERN_DEBUG "%s: unknown management frame "
-+			netdev_dbg(skb->dev, "unknown management frame "
- 			       "(type=0x%02x, stype=0x%02x) dropped\n",
--			       skb->dev->name, type, stype);
-+			       type, stype);
- 			return -1;
- 		}
- 
-@@ -271,8 +270,8 @@ ieee80211_rx_frame_mgmt(struct ieee80211_device *ieee, struct sk_buff *skb,
- 		return 0;
- 	}
- 
--	printk(KERN_DEBUG "%s: hostap_rx_frame_mgmt: management frame "
--	       "received in non-Host AP mode\n", skb->dev->name);
-+	netdev_dbg(skb->dev, "hostap_rx_frame_mgmt: management frame "
-+	       "received in non-Host AP mode\n");
- 	return -1;
- 	#endif
- }
-@@ -349,9 +348,9 @@ ieee80211_rx_frame_decrypt(struct ieee80211_device *ieee, struct sk_buff *skb,
- 	if (ieee->tkip_countermeasures &&
- 	    strcmp(crypt->ops->name, "TKIP") == 0) {
- 		if (net_ratelimit()) {
--			printk(KERN_DEBUG "%s: TKIP countermeasures: dropped "
-+			netdev_dbg(ieee->dev, "TKIP countermeasures: dropped "
- 			       "received packet from %pM\n",
--			       ieee->dev->name, hdr->addr2);
-+			       hdr->addr2);
- 		}
- 		return -1;
- 	}
-@@ -397,9 +396,9 @@ ieee80211_rx_frame_decrypt_msdu(struct ieee80211_device *ieee, struct sk_buff *s
- 	res = crypt->ops->decrypt_msdu(skb, keyidx, hdrlen, crypt->priv);
- 	atomic_dec(&crypt->refcnt);
- 	if (res < 0) {
--		printk(KERN_DEBUG "%s: MSDU decryption/MIC verification failed"
-+		netdev_dbg(ieee->dev, "MSDU decryption/MIC verification failed"
- 		       " (SA=%pM keyidx=%d)\n",
--		       ieee->dev->name, hdr->addr2, keyidx);
-+		       hdr->addr2, keyidx);
- 		return -1;
- 	}
- 
-@@ -749,7 +748,8 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
- 	kfree(prxbIndicateArray);
- }
- 
--static u8 parse_subframe(struct sk_buff *skb,
-+static u8 parse_subframe(struct ieee80211_device *ieee,
-+			 struct sk_buff *skb,
- 			 struct ieee80211_rx_stats *rx_stats,
- 			 struct ieee80211_rxb *rxb, u8 *src, u8 *dst)
- {
-@@ -810,11 +810,11 @@ static u8 parse_subframe(struct sk_buff *skb,
- 			nSubframe_Length = (nSubframe_Length >> 8) + (nSubframe_Length << 8);
- 
- 			if (skb->len < (ETHERNET_HEADER_SIZE + nSubframe_Length)) {
--				printk("%s: A-MSDU parse error!! pRfd->nTotalSubframe : %d\n",\
--						__func__, rxb->nr_subframes);
--				printk("%s: A-MSDU parse error!! Subframe Length: %d\n", __func__, nSubframe_Length);
--				printk("nRemain_Length is %d and nSubframe_Length is : %d\n", skb->len, nSubframe_Length);
--				printk("The Packet SeqNum is %d\n", SeqNum);
-+				netdev_dbg(ieee->dev, "A-MSDU parse error!! pRfd->nTotalSubframe : %d\n",
-+					   rxb->nr_subframes);
-+				netdev_dbg(ieee->dev, "A-MSDU parse error!! Subframe Length: %d\n", nSubframe_Length);
-+				netdev_dbg(ieee->dev, "nRemain_Length is %d and nSubframe_Length is : %d\n", skb->len, nSubframe_Length);
-+				netdev_dbg(ieee->dev, "The Packet SeqNum is %d\n", SeqNum);
- 				return 0;
- 			}
- 
-@@ -904,8 +904,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 	stats = &ieee->stats;
- 
- 	if (skb->len < 10) {
--		printk(KERN_INFO "%s: SKB length < 10\n",
--		       dev->name);
-+		netdev_info(dev, "SKB length < 10\n");
- 		goto rx_dropped;
- 	}
- 
-@@ -919,7 +918,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 
- 	if (HTCCheck(ieee, skb->data)) {
- 		if (net_ratelimit())
--			printk("find HTCControl\n");
-+			netdev_warn(dev, "find HTCControl\n");
- 		hdrlen += 4;
- 		rx_stats->bContainHTC = true;
- 	}
-@@ -1113,7 +1112,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 
- 	if (ieee->host_decrypt && (fc & IEEE80211_FCTL_WEP) &&
- 	    (keyidx = ieee80211_rx_frame_decrypt(ieee, skb, crypt)) < 0) {
--		printk("decrypt frame error\n");
-+		netdev_dbg(ieee->dev, "decrypt frame error\n");
- 		goto rx_dropped;
- 	}
- 
-@@ -1141,9 +1140,8 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 			flen -= hdrlen;
- 
- 		if (frag_skb->tail + flen > frag_skb->end) {
--			printk(KERN_WARNING "%s: host decrypted and "
--			       "reassembled frame did not fit skb\n",
--			       dev->name);
-+			netdev_warn(dev, "host decrypted and "
-+			       "reassembled frame did not fit skb\n");
- 			ieee80211_frag_cache_invalidate(ieee, hdr);
- 			goto rx_dropped;
- 		}
-@@ -1178,7 +1176,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 	 * encrypted/authenticated */
- 	if (ieee->host_decrypt && (fc & IEEE80211_FCTL_WEP) &&
- 	    ieee80211_rx_frame_decrypt_msdu(ieee, skb, keyidx, crypt)) {
--		printk("==>decrypt msdu error\n");
-+		netdev_dbg(ieee->dev, "==>decrypt msdu error\n");
- 		goto rx_dropped;
- 	}
- 
-@@ -1250,7 +1248,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 		goto rx_dropped;
- 	/* to parse amsdu packets */
- 	/* qos data packets & reserved bit is 1 */
--	if (parse_subframe(skb, rx_stats, rxb, src, dst) == 0) {
-+	if (parse_subframe(ieee, skb, rx_stats, rxb, src, dst) == 0) {
- 		/* only to free rxb, and not submit the packets to upper layer */
- 		for (i = 0; i < rxb->nr_subframes; i++) {
- 			dev_kfree_skb(rxb->subframes[i]);
-@@ -1863,7 +1861,7 @@ int ieee80211_parse_info_param(struct ieee80211_device *ieee,
- 				info_element->data[0] == 0x00 &&
- 				info_element->data[1] == 0x13 &&
- 				info_element->data[2] == 0x74)) {
--				printk("========>%s(): athros AP is exist\n", __func__);
-+				netdev_dbg(ieee->dev, "========> athros AP is exist\n");
- 				network->atheros_cap_exist = true;
- 			} else
- 				network->atheros_cap_exist = false;
-@@ -1980,8 +1978,8 @@ int ieee80211_parse_info_param(struct ieee80211_device *ieee,
- 			}
- 			break;
- 		case MFIE_TYPE_QOS_PARAMETER:
--			printk(KERN_ERR
--			       "QoS Error need to parse QOS_PARAMETER IE\n");
-+			netdev_err(ieee->dev,
-+				   "QoS Error need to parse QOS_PARAMETER IE\n");
- 			break;
- 
- 		case MFIE_TYPE_COUNTRY:
-@@ -2357,14 +2355,14 @@ static inline void ieee80211_process_probe_response(
- 			if (IS_COUNTRY_IE_VALID(ieee)) {
- 				// Case 1: Country code
- 				if (!is_legal_channel(ieee, network->channel)) {
--					printk("GetScanInfo(): For Country code, filter probe response at channel(%d).\n", network->channel);
-+					netdev_warn(ieee->dev, "GetScanInfo(): For Country code, filter probe response at channel(%d).\n", network->channel);
- 					goto out;
- 				}
- 			} else {
- 				// Case 2: No any country code.
- 				// Filter over channel ch12~14
- 				if (network->channel > 11) {
--					printk("GetScanInfo(): For Global Domain, filter probe response at channel(%d).\n", network->channel);
-+					netdev_warn(ieee->dev, "GetScanInfo(): For Global Domain, filter probe response at channel(%d).\n", network->channel);
- 					goto out;
- 				}
- 			}
-@@ -2372,14 +2370,14 @@ static inline void ieee80211_process_probe_response(
- 			if (IS_COUNTRY_IE_VALID(ieee)) {
- 				// Case 1: Country code
- 				if (!is_legal_channel(ieee, network->channel)) {
--					printk("GetScanInfo(): For Country code, filter beacon at channel(%d).\n", network->channel);
-+					netdev_warn(ieee->dev, "GetScanInfo(): For Country code, filter beacon at channel(%d).\n", network->channel);
- 					goto out;
- 				}
- 			} else {
- 				// Case 2: No any country code.
- 				// Filter over channel ch12~14
- 				if (network->channel > 14) {
--					printk("GetScanInfo(): For Global Domain, filter beacon at channel(%d).\n", network->channel);
-+					netdev_warn(ieee->dev, "GetScanInfo(): For Global Domain, filter beacon at channel(%d).\n", network->channel);
- 					goto out;
- 				}
- 			}
--- 
-2.24.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKSGVs
+bG8gYWxsLAoKVGhpcyBwdWxsIHJlcXVlc3QgaXMgZmluYWxseSBiaWdnZXIgdGhhbiBJIGV4cGVj
+dGVkLCBzb3JyeS4KCkl0IGNvbnRhaW5zIDIgbWFpbiB0b3BpY3M6CiAgLSBTaW1wbGlmeSBoYW5k
+bGluZyBvZiBzdGF0aW9ucyBpbiBwb3dlciBzYXZlIG1vZGUuIE1vc3Qgb2YgdGhlIHdvcmsKICAg
+IHdhcyByZWR1bmRhbnQgd2l0aCBtYWM4MDIxMS4gSSBoYXZlIHNhdmVkIHBsZW50eSBvZiBsaW5l
+cyBvZiBjb2RlCiAgICBieSB1c2luZyB0aGUgbWFjODAyMTEgQVBJIGJldHRlci4KICAtIENvbnRp
+bnVlIHRvIGNsZWFybHkgc2VwYXJhdGUgaGFyZHdhcmUgaW50ZXJmYWNlIGZyb20gdGhlIHJlc3Qg
+b2YKICAgIHRoZSBkcml2ZXIuIFRoZSBiaWdnZXN0IHBhcnQgb2YgdGhpcyBjbGVhbi11cCBpcyBk
+b25lLiBJdCBpcyBub3cKICAgIHBvc3NpYmxlIHRvIGxvb2sgYXQgdGhlIHdhcm5pbmcgcmFpc2Vk
+IGJ5IHNwYXJzZSBhbmQgZml4CiAgICBzdXBwb3J0IGZvciBiaWcgZW5kaWFuIGhvc3RzLgoKSsOp
+csO0bWUgUG91aWxsZXIgKDY1KToKICBzdGFnaW5nOiB3Zng6IHJldmVydCB1bmV4cGVjdGVkIGNo
+YW5nZSBpbiBkZWJ1Z2ZzIG91dHB1dAogIHN0YWdpbmc6IHdmeDogbWFrZSBoaWZfc2NhbigpIHVz
+YWdlIGNsZWFyZXIKICBzdGFnaW5nOiB3Zng6IGFkZCBtaXNzaW5nIFBST0JFX1JFU1BfT0ZGTE9B
+RCBmZWF0dXJlCiAgc3RhZ2luZzogd2Z4OiBzZW5kIHJhdGUgcG9saWNpZXMgb25lIGJ5IG9uZQog
+IHN0YWdpbmc6IHdmeDogc2ltcGxpZnkgaGlmX3NldF90eF9yYXRlX3JldHJ5X3BvbGljeSgpIHVz
+YWdlCiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSBoaWZfc2V0X291dHB1dF9wb3dlcigpIHVzYWdl
+CiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSBoaWZfc2V0X3JjcGlfcnNzaV90aHJlc2hvbGQoKSB1
+c2FnZQogIHN0YWdpbmc6IHdmeDogc2ltcGxpZnkgaGlmX3NldF9hcnBfaXB2NF9maWx0ZXIoKSB1
+c2FnZQogIHN0YWdpbmc6IHdmeDogc2ltcGxpZnkgaGlmX3N0YXJ0KCkgdXNhZ2UKICBzdGFnaW5n
+OiB3Zng6IHVzZSBzcGVjaWFsaXplZCBzdHJ1Y3RzIGZvciBISUYgYXJndW1lbnRzCiAgc3RhZ2lu
+Zzogd2Z4OiByZXRyaWV2ZSBhbXBkdV9kZW5zaXR5IGZyb20gc3RhLT5odF9jYXAKICBzdGFnaW5n
+OiB3Zng6IHJldHJpZXZlIGdyZWVuZmllbGQgbW9kZSBmcm9tIHN0YS0+aHRfY2FwIGFuZCBic3Nf
+Y29uZgogIHN0YWdpbmc6IHdmeDogZHJvcCBzdHJ1Y3Qgd2Z4X2h0X2luZm8KICBzdGFnaW5nOiB3
+Zng6IGRyb3Agd2Rldi0+b3V0cHV0X3Bvd2VyCiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSB3Znhf
+Y29uZmlnKCkKICBzdGFnaW5nOiB3Zng6IHJlbmFtZSB3ZnhfdXBsb2FkX2JlYWNvbigpCiAgc3Rh
+Z2luZzogd2Z4OiBzaW1wbGlmeSB3ZnhfdXBsb2FkX2FwX3RlbXBsYXRlcygpCiAgc3RhZ2luZzog
+d2Z4OiBzaW1wbGlmeSB3ZnhfdXBkYXRlX2JlYWNvbmluZygpCiAgc3RhZ2luZzogd2Z4OiBmaXgg
+X193ZnhfZmx1c2goKSB3aGVuIGRyb3AgPT0gZmFsc2UKICBzdGFnaW5nOiB3Zng6IHNpbXBsaWZ5
+IHdmeF9mbHVzaCgpCiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSB1cGRhdGUgb2YgRFRJTSBwZXJp
+b2QKICBzdGFnaW5nOiB3Zng6IGRyb3Agd3ZpZi0+ZHRpbV9wZXJpb2QKICBzdGFnaW5nOiB3Zng6
+IGRyb3Agd3ZpZi0+ZW5hYmxlX2JlYWNvbgogIHN0YWdpbmc6IHdmeDogZHJvcCB3dmlmLT5jcW1f
+cnNzaV90aG9sZAogIHN0YWdpbmc6IHdmeDogZHJvcCB3dmlmLT5zZXRic3NwYXJhbXNfZG9uZQog
+IHN0YWdpbmc6IHdmeDogZHJvcCB3Znhfc2V0X2N0c193b3JrKCkKICBzdGFnaW5nOiB3Zng6IFNT
+SUQgc2hvdWxkIGJlIHByb3ZpZGVkIHRvIGhpZl9zdGFydCgpIGV2ZW4gaWYgaGlkZGVuCiAgc3Rh
+Z2luZzogd2Z4OiBzaW1wbGlmeSBoaWZfdXBkYXRlX2llKCkKICBzdGFnaW5nOiB3Zng6IHNpbXBs
+aWZ5IGhpZl9qb2luKCkKICBzdGFnaW5nOiB3Zng6IHNpbXBsaWZ5IGhpZl9zZXRfYXNzb2NpYXRp
+b25fbW9kZSgpCiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSBoaWZfc2V0X3VjX21jX2JjX2NvbmRp
+dGlvbigpCiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSBoaWZfbWliX3VjX21jX2JjX2RhdGFfZnJh
+bWVfY29uZGl0aW9uCiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSBoaWZfbWliX3NldF9kYXRhX2Zp
+bHRlcmluZwogIHN0YWdpbmc6IHdmeDogc2ltcGxpZnkgaGlmX3NldF9kYXRhX2ZpbHRlcmluZygp
+CiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSBoaWZfc2V0X21hY19hZGRyX2NvbmRpdGlvbigpCiAg
+c3RhZ2luZzogd2Z4OiBzaW1wbGlmeSBoaWZfc2V0X2NvbmZpZ19kYXRhX2ZpbHRlcigpCiAgc3Rh
+Z2luZzogd2Z4OiBzaW1wbGlmeSB3Znhfc2V0X21jYXN0X2ZpbHRlcigpCiAgc3RhZ2luZzogd2Z4
+OiBzaW1wbGlmeSB3ZnhfdXBkYXRlX2ZpbHRlcmluZygpCiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlm
+eSB3Znhfc2Nhbl9jb21wbGV0ZSgpCiAgc3RhZ2luZzogd2Z4OiB1cGRhdGUgcG93ZXItc2F2ZSBw
+ZXIgaW50ZXJmYWNlCiAgc3RhZ2luZzogd2Z4OiB3aXRoIG11bHRpcGxlIHZpZnMsIGZvcmNlIFBT
+IG9ubHkgaWYgY2hhbm5lbHMgZGlmZmVycwogIHN0YWdpbmc6IHdmeDogZG8gbm90IHVwZGF0ZSB1
+YXBzZCBpZiBub3QgbmVjZXNzYXJ5CiAgc3RhZ2luZzogd2Z4OiBmaXggY2FzZSB3aGVyZSBSVFMg
+dGhyZXNob2xkIGlzIDAKICBzdGFnaW5nOiB3Zng6IGZpeCBwb3NzaWJsZSBvdmVyZmxvdyBvbiBq
+aWZmaWVzIGNvbXBhcmFpc29uCiAgc3RhZ2luZzogd2Z4OiByZW1vdmUgaGFuZGxpbmcgb2YgImVh
+cmx5X2RhdGEiCiAgc3RhZ2luZzogd2Z4OiByZWxvY2F0ZSAiYnVmZmVyZWQiIGluZm9ybWF0aW9u
+IHRvIHN0YV9wcml2CiAgc3RhZ2luZzogd2Z4OiBmaXggYnNzX2xvc3MKICBzdGFnaW5nOiB3Zng6
+IGZpeCBSQ1UgdXNhZ2UKICBzdGFnaW5nOiB3Zng6IHNpbXBsaWZ5IHdmeF9zZXRfdGltX2ltcGwo
+KQogIHN0YWdpbmc6IHdmeDogc2ltcGxpZnkgdGhlIGxpbmstaWQgYWxsb2NhdGlvbgogIHN0YWdp
+bmc6IHdmeDogY2hlY2sgdGhhdCBubyB0eCBpcyBwZW5kaW5nIGJlZm9yZSByZWxlYXNlIHN0YQog
+IHN0YWdpbmc6IHdmeDogcmVwbGFjZSB3ZnhfdHhfZ2V0X3RpZCgpIHdpdGggaWVlZTgwMjExX2dl
+dF90aWQoKQogIHN0YWdpbmc6IHdmeDogcHNwb2xsX21hc2sgbWFrZSBubyBzZW5zZQogIHN0YWdp
+bmc6IHdmeDogc3RhIGFuZCBkdGltCiAgc3RhZ2luZzogd2Z4OiBmaXJtd2FyZSBuZXZlciByZXR1
+cm4gUFMgc3RhdHVzIGZvciBzdGF0aW9ucwogIHN0YWdpbmc6IHdmeDogc2ltcGxpZnkgd2Z4X3N1
+c3BlbmRfcmVzdW1lX21jKCkKICBzdGFnaW5nOiB3Zng6IHNpbXBsaWZ5IGhhbmRsaW5nIG9mIElF
+RUU4MDIxMV9UWF9DVExfU0VORF9BRlRFUl9EVElNCiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSB3
+ZnhfcHNfbm90aWZ5X3N0YSgpCiAgc3RhZ2luZzogd2Z4OiBlbnN1cmUgdGhhdCBwYWNrZXRfaWQg
+aXMgdW5pcXVlCiAgc3RhZ2luZzogd2Z4OiByZW1vdmUgdW51c2VkIGRvX3Byb2JlCiAgc3RhZ2lu
+Zzogd2Z4OiByZW1vdmUgY2hlY2sgZm9yIGludGVyZmFjZSBzdGF0ZQogIHN0YWdpbmc6IHdmeDog
+c2ltcGxpZnkgaGlmX2hhbmRsZV90eF9kYXRhKCkKICBzdGFnaW5nOiB3Zng6IHNpbXBsaWZ5IHdm
+eF90eF9xdWV1ZV9nZXRfbnVtX3F1ZXVlZCgpCiAgc3RhZ2luZzogd2Z4OiBzaW1wbGlmeSBoaWZf
+bXVsdGlfdHhfY29uZmlybSgpCiAgc3RhZ2luZzogd2Z4OiB1cGRhdGUgVE9ETwoKIGRyaXZlcnMv
+c3RhZ2luZy93ZngvVE9ETyAgICAgICAgICB8ICAxMiArLQogZHJpdmVycy9zdGFnaW5nL3dmeC9k
+YXRhX3J4LmMgICAgIHwgIDc3ICstLS0KIGRyaXZlcnMvc3RhZ2luZy93ZngvZGF0YV90eC5jICAg
+ICB8IDMxNSArKystLS0tLS0tLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2RhdGFfdHguaCAgICAg
+fCAgMjUgLQogZHJpdmVycy9zdGFnaW5nL3dmeC9kZWJ1Zy5jICAgICAgIHwgICAyICstCiBkcml2
+ZXJzL3N0YWdpbmcvd2Z4L2hpZl9hcGlfY21kLmggfCAgIDMgKy0KIGRyaXZlcnMvc3RhZ2luZy93
+ZngvaGlmX2FwaV9taWIuaCB8ICAyMiArLQogZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfcnguYyAg
+ICAgIHwgIDIwICstCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl90eC5jICAgICAgfCAgNDkgKy0K
+IGRyaXZlcnMvc3RhZ2luZy93ZngvaGlmX3R4LmggICAgICB8ICAxMSArLQogZHJpdmVycy9zdGFn
+aW5nL3dmeC9oaWZfdHhfbWliLmggIHwgMTU3ICsrKysrLS0KIGRyaXZlcnMvc3RhZ2luZy93Zngv
+bWFpbi5jICAgICAgICB8ICAgNyArLQogZHJpdmVycy9zdGFnaW5nL3dmeC9xdWV1ZS5jICAgICAg
+IHwgMjA2ICsrKy0tLS0tLQogZHJpdmVycy9zdGFnaW5nL3dmeC9xdWV1ZS5oICAgICAgIHwgIDEw
+ICstCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L3NjYW4uYyAgICAgICAgfCAgMTQgKy0KIGRyaXZlcnMv
+c3RhZ2luZy93Zngvc2Nhbi5oICAgICAgICB8ICAgNSArLQogZHJpdmVycy9zdGFnaW5nL3dmeC9z
+dGEuYyAgICAgICAgIHwgNzM1ICsrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogZHJpdmVy
+cy9zdGFnaW5nL3dmeC9zdGEuaCAgICAgICAgIHwgIDEzICstCiBkcml2ZXJzL3N0YWdpbmcvd2Z4
+L3dmeC5oICAgICAgICAgfCAgMjUgKy0KIDE5IGZpbGVzIGNoYW5nZWQsIDUyNiBpbnNlcnRpb25z
+KCspLCAxMTgyIGRlbGV0aW9ucygtKQoKLS0gCjIuMjUuMAoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4
+ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
