@@ -2,148 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 358DA13C8B3
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jan 2020 17:05:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BF5D813C9E5
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jan 2020 17:45:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B24B687939;
-	Wed, 15 Jan 2020 16:04:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CE926877F1;
+	Wed, 15 Jan 2020 16:45:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZxNu92eYov+V; Wed, 15 Jan 2020 16:04:58 +0000 (UTC)
+	with ESMTP id Lti7aJYSDbtH; Wed, 15 Jan 2020 16:45:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3968F877A0;
-	Wed, 15 Jan 2020 16:04:54 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3F305857B2;
+	Wed, 15 Jan 2020 16:45:30 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3BB921BF2BF
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 Jan 2020 16:04:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E25FE1BF2BF
+ for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 16:45:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 37D4584155
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 Jan 2020 16:04:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D8DF685E25
+ for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 16:45:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JwZI_MaZY-Jd
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 Jan 2020 16:04:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
- [216.71.150.166])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1A3D385EB8
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 Jan 2020 16:04:36 +0000 (UTC)
-Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
- Christian.Gromm@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="Christian.Gromm@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
- include:servers.mcsv.net include:mktomail.com
- include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa5.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
- envelope-from="Christian.Gromm@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa5.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: 69FJEuNt8Cxk1Q5fNyg60dFmFef8/So5dK1riuKuKLApKNMPQq6sUWXnhgg/mj9kVFXj9sc4Pp
- kAIpDZ2kwiUo1xebQ31ryQeyG7htMpNqx/YUx0nsyMK9d2Vxt4A07VjiU01p6SubQ4MIwhpYQf
- nitXU910MIVuf8MLUNRvkp3PVabz314QTJKTQPDcrdIbb2lobFEU0g+RqNt+DgZELrZkSezjus
- DHTwA7GjvzJKFpcFMIYs7CgPm0BXygNEQsqK1TKkEOpJC959aA6T2X4rffnnQ4oLgf36A8kzTh
- R5c=
-X-IronPort-AV: E=Sophos;i="5.70,323,1574146800"; d="scan'208";a="62023935"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 15 Jan 2020 09:04:22 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 15 Jan 2020 09:04:21 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Wed, 15 Jan 2020 09:04:21 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WnvC1c0roKfGBooRfK2Vb+IjpAMKF9nf7okaat/M30JX21SVO1bD1CZzgcEZWIyRDcVCxhyzzvcWnpnnc1n6kCRCdJ0ipDzpSZ9TnPugD9rriv+lA70tnZtNXoEsp7huwxqwb5Ri86Kz5UgGlGI3rCk/QmRv8WBgomMAAsqyRasaQn/Insm+rxdo1T5C6Dw+sQYmVxJx4fVxC9Sc4lE9XBmTKAw8XF+SNyyvQSnWpU8LcwMgtAYnhEmbfdlHuk1BIBn4LFuiWuifXA8NUeQ0NBOBhNTiYInzWlzOiBdODigFnuYAUL+9JDieCjw5lkRBQLAJl/Al0xi8IRpjOo0Z8A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=h4HOGAyduNvv5IIw+K8YhRTsSyPvjETVkqsepe1aoBg=;
- b=oIuGeDPLuPYurhnpKNp0dAe2n3Eo7950qRDq36HX7rgcpQBUtR+c/HRSuZ9FZZkecW+vwpGqTw8dUrS4zz/yYrcZkDZk3YzuXNVCs76FHg6Oarxv2RVrD+nz2F59c5JkTYMOJQnHjKh9WMC8on6kTNgC+3ug2wHorUfwSQj83M/rVAhi4kaSHhf/0UPFA6kkaIu2BkNzCukdW7S/4o9mfrEB0BT+vMc3Z6UtKXqeSprnhGdxfLgrtOx7d5RXAK69wFcYRXuM0pw8Np1QRuEUVSrZBqAQmmT2ldJfy+d39a/PmUtG6pNKSRp7B80t8G+Pq+t0hIgx23uOu4G7DiIJEw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=h4HOGAyduNvv5IIw+K8YhRTsSyPvjETVkqsepe1aoBg=;
- b=A0fVARuD78bekBBzMovC8GeVlStcMIoMxyxeRnjlkq0DhBGign+ZHWWMZzC/KaZzAcw9SN83QNQmExWQ9MW4/zLwlFwXyaR2crGDT5XcFtWrNWtwcPXL1QZtn15MfamsJGm8ujUy8dvgEGE8x2dG5SIgDMpfDDrE9pssVvfzarc=
-Received: from MN2PR11MB3710.namprd11.prod.outlook.com (20.178.252.147) by
- MN2PR11MB4430.namprd11.prod.outlook.com (52.135.39.89) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2623.9; Wed, 15 Jan 2020 16:04:19 +0000
-Received: from MN2PR11MB3710.namprd11.prod.outlook.com
- ([fe80::41f4:f9c9:fca6:8ba2]) by MN2PR11MB3710.namprd11.prod.outlook.com
- ([fe80::41f4:f9c9:fca6:8ba2%4]) with mapi id 15.20.2623.018; Wed, 15 Jan 2020
- 16:04:19 +0000
-From: <Christian.Gromm@microchip.com>
-To: <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH RFC v3 4/9] staging: most: move interface dev to private
- section
-Thread-Topic: [PATCH RFC v3 4/9] staging: most: move interface dev to private
- section
-Thread-Index: AQHVyvNybiROVHNIrEykAbNgPtOcvKfrpYcAgABAEQA=
-Date: Wed, 15 Jan 2020 16:04:19 +0000
-Message-ID: <0f71adefe079f5bc1c0ca777c0b8553f46ccea3a.camel@microchip.com>
-References: <1579017478-3339-1-git-send-email-christian.gromm@microchip.com>
- <1579017478-3339-5-git-send-email-christian.gromm@microchip.com>
- <20200115121712.GA3394319@kroah.com>
-In-Reply-To: <20200115121712.GA3394319@kroah.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [62.154.213.229]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 1bc26a98-433b-49f8-9cf4-08d799d49477
-x-ms-traffictypediagnostic: MN2PR11MB4430:
-x-microsoft-antispam-prvs: <MN2PR11MB4430EFDF043ED4BC4FB7FF7EF8370@MN2PR11MB4430.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 02830F0362
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(136003)(346002)(366004)(396003)(39860400002)(376002)(199004)(189003)(6512007)(5660300002)(36756003)(2906002)(186003)(26005)(2616005)(71200400001)(66946007)(6506007)(316002)(76116006)(81166006)(8676002)(86362001)(81156014)(66446008)(91956017)(66556008)(4326008)(6916009)(478600001)(64756008)(66476007)(8936002)(6486002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB4430;
- H:MN2PR11MB3710.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: wIBUlIFtJyKpTTTdN/cL4yHrKrzxoPjFqCMPHzKZI8wvUd+qhqviuMbkIXrjxJ8xtg3uk1qyTJKc+A+9f7x5k+rh3P1A1uehQ2PMFxqr9VaKWn6z9J0+DOEE9BhZx1j0eUDpkE3NvIe/JRefQnCfsTv/40Hd42oWCqsY3Kq5eI8Qu4lxR9K5Ji0K8h62p6qCDgDkKFYySQJu2Fh6Cr5MEwoQe/ectYnN7V4sCzi4b8nWwGLr3vR+Kl66KhkrgQNF0qepJ4ZIOGIRbB5oCNwBNNwRkDbS0VXzMz2U+gkLE00TcNU01aT5HuGd7ASDegZGVD80ydoqYjwmp2EcMaPedHC2NgwRfQjwOojolUmKtg2CsE/e0OJH+pufElX0L2YpmEZiDvVfxKG8L9Q+BahlJY2TyRb0czULfBBifc1VgIivLWIJ7QNZqLYrdiAugiob
-x-ms-exchange-transport-forked: True
-Content-ID: <A845498B033C144BB06CB8D680FCA20E@namprd11.prod.outlook.com>
-MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1bc26a98-433b-49f8-9cf4-08d799d49477
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jan 2020 16:04:19.7169 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: a32OBI98yJZQwhxtDVpN92GVGEDbThiY8+dfKex6zSlLD1kOwFrbqx18+s7LfCyuOtYqA6cW4H1kE+UFD0hWMBFJmjzcad6G092KoAVBIes=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4430
+ with ESMTP id EFFqRfqmAaCN for <devel@linuxdriverproject.org>;
+ Wed, 15 Jan 2020 16:45:22 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from conuserg-09.nifty.com (conuserg-09.nifty.com [210.131.2.76])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6D27D84A6C
+ for <devel@driverdev.osuosl.org>; Wed, 15 Jan 2020 16:45:22 +0000 (UTC)
+Received: from grover.flets-west.jp (softbank126093102113.bbtec.net
+ [126.93.102.113]) (authenticated)
+ by conuserg-09.nifty.com with ESMTP id 00FGivO6011079;
+ Thu, 16 Jan 2020 01:44:57 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-09.nifty.com 00FGivO6011079
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1579106697;
+ bh=SZOkYphT7E9GHjXKlgV0QDCeNekw7U6rZwFuYSvNizY=;
+ h=From:To:Cc:Subject:Date:From;
+ b=lx0ln1tP6OWFky+GojsB/NB82j+COpWI/RRYP8E8JvKhGC0+W3VmISGmKk0JzRu20
+ 6T5YjGFgNyG/mUf6BInQa2RW84MR/ix0cDo0fv9sN/IHYvDZuVnIDESalqMhOIGgcK
+ YUzSoUmhVnwIE9KSNOsy/7h3rp2Y9jr9D62IKYFQCxRgSKgO36Q09hqtjEtJvDsvYJ
+ n5AfMXRtb1cIVxujBoqX0bm8NJfXTZV+hnjHfD6CjU2dhOJLn+JgdvkATwbyIAI5cd
+ J90vyX2mxOmWpHG3ge+atVdTS0YOxaXG5WpOygW17cpakQZrkaSWRmrLKUWefCcRlk
+ qizmzh+kUmj2A==
+X-Nifty-SrcIP: [126.93.102.113]
+From: Masahiro Yamada <masahiroy@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+Subject: [PATCH v2] staging: most: remove header include path to
+ drivers/staging
+Date: Thu, 16 Jan 2020 01:44:51 +0900
+Message-Id: <20200115164451.13203-1-masahiroy@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -156,62 +66,244 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org
+Cc: Masahiro Yamada <masahiroy@kernel.org>, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 2020-01-15 at 13:17 +0100, Greg KH wrote:
-> EXTERNAL EMAIL: Do not click links or open attachments unless you
-> know the content is safe
-> 
-> On Tue, Jan 14, 2020 at 04:57:53PM +0100, Christian Gromm wrote:
-> > This patch moves the struct device of the interface structure to
-> > its
-> > private section, because only the core should access it directly.
-> > For
-> > other entities an API is provided.
-> 
-> This feels "wrong".
-> 
-> Shouldn't the struct device in this structure be the thing that is
-> handling the reference counting and sysfs integration for this
-> structure?
+There is no need to add "ccflags-y += -I $(srctree)/drivers/staging"
+just for including <most/most.h>.
 
-Yes, that's right.
+Use the #include "..." directive with the correct relative path.
 
->   To put it as a "pointer" in a private section of the
-> structure feels like it is now backwards.
-> 
-> What is this helping with?  Who was messing with the device structure
-> here that needed to not mess with it?
+Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
+---
 
-Well, it's not that somebody was messing with it. It's just the
-fact that somebody could. 
+Changes in v2:
+ - rebase on linux-next
 
-> 
-> It's good that you are now releasing the memory for the device
-> structure
-> properly, but this still feels really wrong.  What is keeping the
-> lifetime of this structure now that the device is removed from it?
+ drivers/staging/most/Makefile       | 1 -
+ drivers/staging/most/cdev/Makefile  | 1 -
+ drivers/staging/most/cdev/cdev.c    | 3 ++-
+ drivers/staging/most/configfs.c     | 3 ++-
+ drivers/staging/most/core.c         | 3 ++-
+ drivers/staging/most/dim2/Makefile  | 1 -
+ drivers/staging/most/dim2/dim2.c    | 2 +-
+ drivers/staging/most/i2c/Makefile   | 1 -
+ drivers/staging/most/i2c/i2c.c      | 2 +-
+ drivers/staging/most/net/Makefile   | 1 -
+ drivers/staging/most/net/net.c      | 3 ++-
+ drivers/staging/most/sound/Makefile | 1 -
+ drivers/staging/most/sound/sound.c  | 3 ++-
+ drivers/staging/most/usb/Makefile   | 1 -
+ drivers/staging/most/usb/usb.c      | 3 ++-
+ drivers/staging/most/video/Makefile | 1 -
+ drivers/staging/most/video/video.c  | 2 +-
+ 17 files changed, 15 insertions(+), 17 deletions(-)
 
-It's the most_dev structure of the of USB module (or any other lower
-adapter driver), which embeds the most_interface sturcture that 
-contained the dev struct (which I moved to the private section).
+diff --git a/drivers/staging/most/Makefile b/drivers/staging/most/Makefile
+index 85ea5a434ced..20a99ecb37c4 100644
+--- a/drivers/staging/most/Makefile
++++ b/drivers/staging/most/Makefile
+@@ -2,7 +2,6 @@
+ obj-$(CONFIG_MOST) += most_core.o
+ most_core-y := core.o
+ most_core-y += configfs.o
+-ccflags-y += -I $(srctree)/drivers/staging/
+ 
+ obj-$(CONFIG_MOST_CDEV)	+= cdev/
+ obj-$(CONFIG_MOST_NET)	+= net/
+diff --git a/drivers/staging/most/cdev/Makefile b/drivers/staging/most/cdev/Makefile
+index 9f4a8b8c9c27..ef90cd71994a 100644
+--- a/drivers/staging/most/cdev/Makefile
++++ b/drivers/staging/most/cdev/Makefile
+@@ -2,4 +2,3 @@
+ obj-$(CONFIG_MOST_CDEV) += most_cdev.o
+ 
+ most_cdev-objs := cdev.o
+-ccflags-y += -I $(srctree)/drivers/staging/
+diff --git a/drivers/staging/most/cdev/cdev.c b/drivers/staging/most/cdev/cdev.c
+index 59f346d1f4af..71943d17f825 100644
+--- a/drivers/staging/most/cdev/cdev.c
++++ b/drivers/staging/most/cdev/cdev.c
+@@ -16,7 +16,8 @@
+ #include <linux/kfifo.h>
+ #include <linux/uaccess.h>
+ #include <linux/idr.h>
+-#include <most/most.h>
++
++#include "../most.h"
+ 
+ #define CHRDEV_REGION_SIZE 50
+ 
+diff --git a/drivers/staging/most/configfs.c b/drivers/staging/most/configfs.c
+index 9818f6c8b22a..034ab96ef69e 100644
+--- a/drivers/staging/most/configfs.c
++++ b/drivers/staging/most/configfs.c
+@@ -10,7 +10,8 @@
+ #include <linux/slab.h>
+ #include <linux/init.h>
+ #include <linux/configfs.h>
+-#include <most/most.h>
++
++#include "most.h"
+ 
+ #define MAX_STRING_SIZE 80
+ 
+diff --git a/drivers/staging/most/core.c b/drivers/staging/most/core.c
+index af542ed6c7f0..4958921f3bb3 100644
+--- a/drivers/staging/most/core.c
++++ b/drivers/staging/most/core.c
+@@ -21,7 +21,8 @@
+ #include <linux/kthread.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/idr.h>
+-#include <most/most.h>
++
++#include "most.h"
+ 
+ #define MAX_CHANNELS	64
+ #define STRING_SIZE	80
+diff --git a/drivers/staging/most/dim2/Makefile b/drivers/staging/most/dim2/Makefile
+index 116f04d69244..861adacf6c72 100644
+--- a/drivers/staging/most/dim2/Makefile
++++ b/drivers/staging/most/dim2/Makefile
+@@ -2,4 +2,3 @@
+ obj-$(CONFIG_MOST_DIM2) += most_dim2.o
+ 
+ most_dim2-objs := dim2.o hal.o sysfs.o
+-ccflags-y += -I $(srctree)/drivers/staging/
+diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
+index 9eb10fc0903e..15c6aa8fa1ea 100644
+--- a/drivers/staging/most/dim2/dim2.c
++++ b/drivers/staging/most/dim2/dim2.c
+@@ -21,7 +21,7 @@
+ #include <linux/sched.h>
+ #include <linux/kthread.h>
+ 
+-#include <most/most.h>
++#include "../most.h"
+ #include "hal.h"
+ #include "errors.h"
+ #include "sysfs.h"
+diff --git a/drivers/staging/most/i2c/Makefile b/drivers/staging/most/i2c/Makefile
+index 2b3769dc19e7..71099dd0f85b 100644
+--- a/drivers/staging/most/i2c/Makefile
++++ b/drivers/staging/most/i2c/Makefile
+@@ -2,4 +2,3 @@
+ obj-$(CONFIG_MOST_I2C) += most_i2c.o
+ 
+ most_i2c-objs := i2c.o
+-ccflags-y += -I $(srctree)/drivers/staging/
+diff --git a/drivers/staging/most/i2c/i2c.c b/drivers/staging/most/i2c/i2c.c
+index d07719c38fc9..2980f7065846 100644
+--- a/drivers/staging/most/i2c/i2c.c
++++ b/drivers/staging/most/i2c/i2c.c
+@@ -14,7 +14,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/err.h>
+ 
+-#include <most/most.h>
++#include "../most.h"
+ 
+ enum { CH_RX, CH_TX, NUM_CHANNELS };
+ 
+diff --git a/drivers/staging/most/net/Makefile b/drivers/staging/most/net/Makefile
+index f0ac64dee71b..1582c97eb204 100644
+--- a/drivers/staging/most/net/Makefile
++++ b/drivers/staging/most/net/Makefile
+@@ -2,4 +2,3 @@
+ obj-$(CONFIG_MOST_NET) += most_net.o
+ 
+ most_net-objs := net.o
+-ccflags-y += -I $(srctree)/drivers/staging/
+diff --git a/drivers/staging/most/net/net.c b/drivers/staging/most/net/net.c
+index db4273256ce8..8218c9a06cb5 100644
+--- a/drivers/staging/most/net/net.c
++++ b/drivers/staging/most/net/net.c
+@@ -15,7 +15,8 @@
+ #include <linux/list.h>
+ #include <linux/wait.h>
+ #include <linux/kobject.h>
+-#include <most/most.h>
++
++#include "../most.h"
+ 
+ #define MEP_HDR_LEN 8
+ #define MDP_HDR_LEN 16
+diff --git a/drivers/staging/most/sound/Makefile b/drivers/staging/most/sound/Makefile
+index a3d086c6ca70..f0cd9d8d213e 100644
+--- a/drivers/staging/most/sound/Makefile
++++ b/drivers/staging/most/sound/Makefile
+@@ -2,4 +2,3 @@
+ obj-$(CONFIG_MOST_SOUND) += most_sound.o
+ 
+ most_sound-objs := sound.o
+-ccflags-y += -I $(srctree)/drivers/staging/
+diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
+index 23baf4bd7c12..44cf2334834f 100644
+--- a/drivers/staging/most/sound/sound.c
++++ b/drivers/staging/most/sound/sound.c
+@@ -17,7 +17,8 @@
+ #include <sound/pcm_params.h>
+ #include <linux/sched.h>
+ #include <linux/kthread.h>
+-#include <most/most.h>
++
++#include "../most.h"
+ 
+ #define DRIVER_NAME "sound"
+ #define STRING_SIZE	80
+diff --git a/drivers/staging/most/usb/Makefile b/drivers/staging/most/usb/Makefile
+index 83cf2ead7122..c2b207339aec 100644
+--- a/drivers/staging/most/usb/Makefile
++++ b/drivers/staging/most/usb/Makefile
+@@ -2,4 +2,3 @@
+ obj-$(CONFIG_MOST_USB) += most_usb.o
+ 
+ most_usb-objs := usb.o
+-ccflags-y += -I $(srctree)/drivers/staging/
+diff --git a/drivers/staging/most/usb/usb.c b/drivers/staging/most/usb/usb.c
+index 491b38e91e9d..35217ca65cbb 100644
+--- a/drivers/staging/most/usb/usb.c
++++ b/drivers/staging/most/usb/usb.c
+@@ -23,7 +23,8 @@
+ #include <linux/dma-mapping.h>
+ #include <linux/etherdevice.h>
+ #include <linux/uaccess.h>
+-#include <most/most.h>
++
++#include "../most.h"
+ 
+ #define USB_MTU			512
+ #define NO_ISOCHRONOUS_URB	0
+diff --git a/drivers/staging/most/video/Makefile b/drivers/staging/most/video/Makefile
+index 2d857d3cbcc8..856175fec8b6 100644
+--- a/drivers/staging/most/video/Makefile
++++ b/drivers/staging/most/video/Makefile
+@@ -2,4 +2,3 @@
+ obj-$(CONFIG_MOST_VIDEO) += most_video.o
+ 
+ most_video-objs := video.o
+-ccflags-y += -I $(srctree)/drivers/staging/
+diff --git a/drivers/staging/most/video/video.c b/drivers/staging/most/video/video.c
+index 9e9e45ac386e..d32ae49d617b 100644
+--- a/drivers/staging/most/video/video.c
++++ b/drivers/staging/most/video/video.c
+@@ -21,7 +21,7 @@
+ #include <media/v4l2-ctrls.h>
+ #include <media/v4l2-fh.h>
+ 
+-#include <most/most.h>
++#include "../most.h"
+ 
+ #define V4L2_CMP_MAX_INPUT  1
+ 
+-- 
+2.17.1
 
-The thing that might be confusing is that the place, where the parent 
-structure with the device is being allocated, is not the same where
-the device actually gets registered with the kernel. These are two
-different kernel modules actually.
-
-thanks,
-Chris
-
-> 
-> thanks,
-> 
-> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
