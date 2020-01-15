@@ -2,89 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6606D13B982
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jan 2020 07:23:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A0C4413BA3A
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jan 2020 08:15:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 047B1877A0;
-	Wed, 15 Jan 2020 06:23:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 49EC287216;
+	Wed, 15 Jan 2020 07:15:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NwBP6F63qMM9; Wed, 15 Jan 2020 06:23:45 +0000 (UTC)
+	with ESMTP id esh4obp+CG5g; Wed, 15 Jan 2020 07:15:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4120386C7A;
-	Wed, 15 Jan 2020 06:23:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F3D2A870DF;
+	Wed, 15 Jan 2020 07:15:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 96BB41BF85D
- for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 06:23:43 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 53B561BF38C
+ for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 07:15:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 91C60203A4
- for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 06:23:43 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 50FFB85FC0
+ for <devel@linuxdriverproject.org>; Wed, 15 Jan 2020 07:15:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GwjkqVishSvP for <devel@linuxdriverproject.org>;
- Wed, 15 Jan 2020 06:23:42 +0000 (UTC)
+ with ESMTP id A38gKuTUgGfp for <devel@linuxdriverproject.org>;
+ Wed, 15 Jan 2020 07:15:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by silver.osuosl.org (Postfix) with ESMTPS id 4F76720370
- for <devel@driverdev.osuosl.org>; Wed, 15 Jan 2020 06:23:42 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00F6IA70084140;
- Wed, 15 Jan 2020 06:23:41 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=lD4x1TlaeH2ctZq8DWNQ5strjiTPiE6LC+mIWYAjbrc=;
- b=DbGFgpIkWl2ok/PjUIUfmXrr8s9sXrDv8FOmqOyZiqTXbtjNkVigNPiycZpK4w9F1asd
- QdSYFlXSvpc73UZF7sasnPqhpmaFupviR4a/vm/tFueNwprQcZxHK2xvxQTP3xpvo8wm
- /A2WNNmkUPPmFVWu+syGlYSA5aE66JDP1HIfLwp6ncUeqUiXm80blZ6CDUMUqmyTo7hT
- S17EqFwgi0MvTXyt9lVmOjhFCEu57b6tk0Z655cbFK2aff5wFjdlAt8/v6/vzR6C6YW6
- 0P13yftBPdByhLB/NxhTqmOgeSgM0oI3yaz92S9FiCotH3YgGMFsp+XVUpqMqqrJgMJU Yw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 2xf73tt89f-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 15 Jan 2020 06:23:41 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00F6IrS3123196;
- Wed, 15 Jan 2020 06:21:40 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 2xh315rsj4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 15 Jan 2020 06:21:40 +0000
-Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 00F6Lco6025667;
- Wed, 15 Jan 2020 06:21:39 GMT
-Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 14 Jan 2020 22:21:37 -0800
-Date: Wed, 15 Jan 2020 09:21:56 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Felipe Cardoso Resende <felipecardoso.fcr@gmail.com>
-Subject: Re: [PATCH] Remove warning: "dubious: x | !y" detected by sparse
-Message-ID: <20200115062156.GF3719@kadam>
-References: <20200115012515.GA16012@felipe-pc>
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DF36C85F8D
+ for <devel@driverdev.osuosl.org>; Wed, 15 Jan 2020 07:15:31 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 Jan 2020 23:15:31 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,321,1574150400"; d="scan'208";a="424925778"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga006.fm.intel.com with ESMTP; 14 Jan 2020 23:15:30 -0800
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1irctl-000FHX-MP; Wed, 15 Jan 2020 15:15:29 +0800
+Date: Wed, 15 Jan 2020 15:13:49 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-next] BUILD INCOMPLETE
+ d40310f65771b3a1eb9af34af433136887a64251
+Message-ID: <5e1ebbad.jpi1yeuFXy4/5wXK%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200115012515.GA16012@felipe-pc>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9500
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-2001150051
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9500
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-2001150051
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,44 +63,192 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Geordan Neukum <gneukum1@gmail.com>, Hao Xu <haoxu.linuxkernel@gmail.com>,
- Jamal Shareef <jamal.k.shareef@gmail.com>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add a subsystem prefix to the subject.  "Staging: kpc2000:"
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-next
+branch HEAD: d40310f65771b3a1eb9af34af433136887a64251  Merge 5.5-rc6 into staging-next
 
-On Tue, Jan 14, 2020 at 10:25:15PM -0300, Felipe Cardoso Resende wrote:
-> The way I chose to remove the warning was to define a macro to
-> make it clear if a flag will be enable or not.
-> 
-> Let me know if you would prefer it to be done in a different way.
-> 
+TIMEOUT after 2885m
 
-All this should go under the --- cut off because we don't want it in the
-final git history.
 
-> Signed-off-by: Felipe Cardoso Resende <felipecardoso.fcr@gmail.com>
-> ---
-  ^^^
+Sorry we cannot finish the testset for your branch within a reasonable time.
+It's our fault -- either some build server is down or some build worker is busy
+doing bisects for _other_ trees. The branch will get more complete coverage and
+possible error reports when our build infrastructure is restored or catches up.
+There will be no more build success notification for this branch head, but you
+can expect reasonably good test coverage after waiting for 1 day.
 
-The commit message should be something like.  "Sparse complains about
-"dubious: x | !y".  This patch adds some macros to make Sparse happy and
-the code more readable.
+configs timed out: 14
 
-I like the patch.  enable_flag_if() is slightly weird because normally
-the condition would come first.  It feels sort of like Perl or something
-to put the condition afterwards.  But this patch is very small and self
-contained so it's fine.
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                              allnoconfig
+mips                             allyesconfig
+mips                      fuloong2e_defconfig
+s390                             allmodconfig
+s390                             allyesconfig
+s390                          debug_defconfig
+s390                                defconfig
+s390                       zfcpdump_defconfig
 
-Just fix up the subject and the commit message and resend.
+configs tested: 143
+configs skipped: 0
 
-regards,
-dan carpenter
+s390                              allnoconfig
+s390                             alldefconfig
+sparc64              randconfig-a001-20200113
+microblaze           randconfig-a001-20200113
+nios2                randconfig-a001-20200113
+c6x                  randconfig-a001-20200113
+h8300                randconfig-a001-20200113
+parisc                         b180_defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+alpha                               defconfig
+csky                                defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+xtensa               randconfig-a001-20200114
+parisc                            allnoconfig
+parisc                            allyesonfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+i386                             alldefconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+x86_64               randconfig-h001-20200115
+x86_64               randconfig-h002-20200115
+x86_64               randconfig-h003-20200115
+i386                 randconfig-h001-20200115
+i386                 randconfig-h002-20200115
+i386                 randconfig-h003-20200115
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+sparc                            allyesconfig
+csky                 randconfig-a001-20200113
+openrisc             randconfig-a001-20200113
+s390                 randconfig-a001-20200113
+sh                   randconfig-a001-20200113
+xtensa               randconfig-a001-20200113
+arc                  randconfig-a001-20200114
+arm                  randconfig-a001-20200114
+arm64                randconfig-a001-20200114
+ia64                 randconfig-a001-20200114
+powerpc              randconfig-a001-20200114
+sparc                randconfig-a001-20200114
+i386                 randconfig-h001-20200114
+i386                 randconfig-h002-20200114
+i386                 randconfig-h003-20200114
+csky                 randconfig-a001-20200114
+openrisc             randconfig-a001-20200114
+s390                 randconfig-a001-20200114
+sh                   randconfig-a001-20200114
+arm                              allmodconfig
+arm64                            allmodconfig
+c6x                  randconfig-a001-20200114
+h8300                randconfig-a001-20200114
+microblaze           randconfig-a001-20200114
+nios2                randconfig-a001-20200114
+sparc64              randconfig-a001-20200114
+mips                      malta_kvm_defconfig
+mips                             allmodconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+ia64                                defconfig
+x86_64               randconfig-f001-20200114
+x86_64               randconfig-f002-20200114
+x86_64               randconfig-f003-20200114
+i386                 randconfig-f001-20200114
+i386                 randconfig-f002-20200114
+i386                 randconfig-f003-20200114
+i386                 randconfig-d002-20200112
+x86_64               randconfig-d002-20200112
+x86_64               randconfig-d003-20200112
+i386                 randconfig-d001-20200112
+i386                 randconfig-d003-20200112
+x86_64               randconfig-d001-20200112
+x86_64               randconfig-b002-20200114
+i386                 randconfig-b001-20200114
+i386                 randconfig-b002-20200114
+i386                 randconfig-b003-20200114
+i386                 randconfig-g001-20200114
+i386                 randconfig-g002-20200114
+x86_64               randconfig-g003-20200114
+x86_64               randconfig-g001-20200114
+i386                 randconfig-g003-20200114
+x86_64               randconfig-g002-20200114
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                             defconfig
+x86_64               randconfig-c001-20200112
+x86_64               randconfig-c002-20200112
+x86_64               randconfig-c003-20200112
+i386                 randconfig-c001-20200112
+i386                 randconfig-c002-20200112
+i386                 randconfig-c003-20200112
 
+---
+0-DAY kernel test infrastructure                 Open Source Technology Center
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
