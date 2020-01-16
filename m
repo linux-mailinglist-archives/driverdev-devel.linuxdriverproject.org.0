@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E01E13EF67
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 19:15:31 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C8D7713EF65
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 19:15:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DAA6A86C46;
-	Thu, 16 Jan 2020 18:15:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6D58E87F44;
+	Thu, 16 Jan 2020 18:15:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WuA6T4QPQedc; Thu, 16 Jan 2020 18:15:28 +0000 (UTC)
+	with ESMTP id a8baLjdGo1QK; Thu, 16 Jan 2020 18:15:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E46A286B3C;
-	Thu, 16 Jan 2020 18:15:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1291487B6D;
+	Thu, 16 Jan 2020 18:15:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 845461BF3D5
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 18:15:21 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 143D11BF3D5
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 18:15:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 80AF720482
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 18:15:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 10894869F8
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 18:15:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EvRjFK7L+Qay for <devel@linuxdriverproject.org>;
- Thu, 16 Jan 2020 18:15:16 +0000 (UTC)
+ with ESMTP id xkVBrVDT3Tb0 for <devel@linuxdriverproject.org>;
+ Thu, 16 Jan 2020 18:15:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 209BB20510
- for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 18:15:16 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8AE43863D0
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 18:15:10 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Jan 2020 10:15:15 -0800
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 Jan 2020 10:15:09 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,327,1574150400"; d="scan'208";a="424143479"
+X-IronPort-AV: E=Sophos;i="5.70,327,1574150400"; d="scan'208";a="243376283"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 16 Jan 2020 10:15:14 -0800
+ by orsmga002.jf.intel.com with ESMTP; 16 Jan 2020 10:15:08 -0800
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1is9fl-0003s9-Vc; Fri, 17 Jan 2020 02:15:13 +0800
-Date: Fri, 17 Jan 2020 02:13:59 +0800
+ id 1is9ff-0003LY-U1; Fri, 17 Jan 2020 02:15:07 +0800
+Date: Fri, 17 Jan 2020 02:14:55 +0800
 From: kbuild test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-linus] BUILD SUCCESS
- 9fea3a40f6b07de977a2783270c8c3bc82544d45
-Message-ID: <5e20a7e7.wWcvsxFx7lmiaKBB%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 793769120b109e3cec536bb8f5b6f9ef959c315f
+Message-ID: <5e20a81f.3qLj+JqXYnIcF8kz%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -69,10 +69,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
-branch HEAD: 9fea3a40f6b07de977a2783270c8c3bc82544d45  staging: comedi: ni_routes: allow partial routing information
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 793769120b109e3cec536bb8f5b6f9ef959c315f  staging: most: core: remove noisy log messages
 
-elapsed time: 682m
+elapsed time: 681m
 
 configs tested: 148
 configs skipped: 0
