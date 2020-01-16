@@ -1,56 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B70F813E468
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 18:08:25 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F8B713E4DC
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 18:11:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 895EB86BDB;
-	Thu, 16 Jan 2020 17:08:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3A47687EC4;
+	Thu, 16 Jan 2020 17:11:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lk9222Q0H9ya; Thu, 16 Jan 2020 17:08:23 +0000 (UTC)
+	with ESMTP id A7PGJHzpxeZC; Thu, 16 Jan 2020 17:11:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4EDBF86A4F;
-	Thu, 16 Jan 2020 17:08:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 05EF487EA7;
+	Thu, 16 Jan 2020 17:11:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E79A41BF2B0
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 17:08:15 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C20AF1BF2B0
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 17:11:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E4A5686388
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 17:08:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BE11B203AF
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 17:11:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C9sHH5OGIAzq for <devel@linuxdriverproject.org>;
- Thu, 16 Jan 2020 17:08:09 +0000 (UTC)
+ with ESMTP id DaCiSSPD+juU for <devel@linuxdriverproject.org>;
+ Thu, 16 Jan 2020 17:11:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 35DBD86502
- for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 17:08:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id AF71D20031
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 17:11:10 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F2C4F2467C;
- Thu, 16 Jan 2020 17:08:05 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6808024694;
+ Thu, 16 Jan 2020 17:11:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579194487;
- bh=mpGL97m6k814QXjnL2ki81L3W3OZi3I9xyhDVPmMuY8=;
+ s=default; t=1579194670;
+ bh=60NeydsyNRZmBePJiIoUojEbDfMld1Pha7HAOLhDSA0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SbaaxJ3Q+Jzm0nOtelDq9GMhzjTvOZUJg06BXlhfCkgz/SStqP2ZKyJpwLWAn8Fav
- MTfyZ/F9b9zubMqRpCojSSbfCHd4JNESSd70INixALx1lr0j61Fydx4i77RNb2Pb/9
- idiy7S71KaIOgSioSGeq3LWK+U9KatuXU4zoLxYk=
+ b=Pm+9oclYRzsgUaEEmzmTkHeccCuviZneXB/bIAsCvR/SeXPeVgxCIGBc+XCsv7gNd
+ MKIBffT/WX7YH9JHdTXYs0YxEuZyBRWHxpgYrMOGolEfGMq2irUOIu/riMdtn8fWcj
+ 15T2xG7dn4RmavZoY1iRyGc1NwXSjKqMOqC7nuVQ=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 387/671] media: Staging: media: Release the
- correct resource in an error handling path
-Date: Thu, 16 Jan 2020 12:00:25 -0500
-Message-Id: <20200116170509.12787-124-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 518/671] staging: greybus: light: fix a couple
+ double frees
+Date: Thu, 16 Jan 2020 12:02:36 -0500
+Message-Id: <20200116170509.12787-255-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200116170509.12787-1-sashal@kernel.org>
 References: <20200116170509.12787-1-sashal@kernel.org>
@@ -69,64 +69,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- linux-media@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ greybus-dev@lists.linaro.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+From: Dan Carpenter <dan.carpenter@oracle.com>
 
-[ Upstream commit 3b6471c7becd06325eb5e701cc2602b2edbbc7b6 ]
+[ Upstream commit 329101244f214952606359d254ae883b7109e1a5 ]
 
-'res' is reassigned several times in the function and if we 'goto
-error_unmap', its value is not the returned value of 'request_mem_region()'
-anymore.
+The problem is in gb_lights_request_handler().  If we get a request to
+change the config then we release the light with gb_lights_light_release()
+and re-allocated it.  However, if the allocation fails part way through
+then we call gb_lights_light_release() again.  This can lead to a couple
+different double frees where we haven't cleared out the original values:
 
-Introduce a new 'struct resource *' variable (i.e. res2) to keep a pointer
-to the right resource, if needed in the error handling path.
+	gb_lights_light_v4l2_unregister(light);
+	...
+	kfree(light->channels);
+	kfree(light->name);
 
-Fixes: 4b4eda001704 ("Staging: media: Unmap and release region obtained by ioremap_nocache")
+I also made a small change to how we set "light->channels_count = 0;".
+The original code handled this part fine and did not cause a use after
+free but it was sort of complicated to read.
 
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Fixes: 2870b52bae4c ("greybus: lights: add lights implementation")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+Acked-by: Rui Miguel Silva <rmfrfs@gmail.com>
+Link: https://lore.kernel.org/r/20190829122839.GA20116@mwanda
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/davinci_vpfe/dm365_ipipe.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/greybus/light.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-index 95942768639c..7bf2648affc0 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-@@ -1777,7 +1777,7 @@ vpfe_ipipe_init(struct vpfe_ipipe_device *ipipe, struct platform_device *pdev)
- 	struct media_pad *pads = &ipipe->pads[0];
- 	struct v4l2_subdev *sd = &ipipe->subdev;
- 	struct media_entity *me = &sd->entity;
--	struct resource *res, *memres;
-+	struct resource *res, *res2, *memres;
+diff --git a/drivers/staging/greybus/light.c b/drivers/staging/greybus/light.c
+index 010ae1e9c7fb..40680eaf3974 100644
+--- a/drivers/staging/greybus/light.c
++++ b/drivers/staging/greybus/light.c
+@@ -1098,21 +1098,21 @@ static void gb_lights_channel_release(struct gb_channel *channel)
+ static void gb_lights_light_release(struct gb_light *light)
+ {
+ 	int i;
+-	int count;
  
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 4);
- 	if (!res)
-@@ -1791,11 +1791,11 @@ vpfe_ipipe_init(struct vpfe_ipipe_device *ipipe, struct platform_device *pdev)
- 	if (!ipipe->base_addr)
- 		goto error_release;
+ 	light->ready = false;
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 6);
--	if (!res)
-+	res2 = platform_get_resource(pdev, IORESOURCE_MEM, 6);
-+	if (!res2)
- 		goto error_unmap;
--	ipipe->isp5_base_addr = ioremap_nocache(res->start,
--						resource_size(res));
-+	ipipe->isp5_base_addr = ioremap_nocache(res2->start,
-+						resource_size(res2));
- 	if (!ipipe->isp5_base_addr)
- 		goto error_unmap;
+-	count = light->channels_count;
+-
+ 	if (light->has_flash)
+ 		gb_lights_light_v4l2_unregister(light);
++	light->has_flash = false;
  
+-	for (i = 0; i < count; i++) {
++	for (i = 0; i < light->channels_count; i++)
+ 		gb_lights_channel_release(&light->channels[i]);
+-		light->channels_count--;
+-	}
++	light->channels_count = 0;
++
+ 	kfree(light->channels);
++	light->channels = NULL;
+ 	kfree(light->name);
++	light->name = NULL;
+ }
+ 
+ static void gb_lights_release(struct gb_lights *glights)
 -- 
 2.20.1
 
