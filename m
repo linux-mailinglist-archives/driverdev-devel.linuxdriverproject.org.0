@@ -1,56 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4D1113E418
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 18:06:15 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B70F813E468
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 18:08:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5D43486500;
-	Thu, 16 Jan 2020 17:06:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 895EB86BDB;
+	Thu, 16 Jan 2020 17:08:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zZv-1mQAqd6M; Thu, 16 Jan 2020 17:06:10 +0000 (UTC)
+	with ESMTP id lk9222Q0H9ya; Thu, 16 Jan 2020 17:08:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3AAEB864BD;
-	Thu, 16 Jan 2020 17:06:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4EDBF86A4F;
+	Thu, 16 Jan 2020 17:08:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D21BA1BF2B0
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 17:06:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E79A41BF2B0
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 17:08:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CD04386444
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 17:06:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E4A5686388
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 17:08:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W_IjIdTSTAeE for <devel@linuxdriverproject.org>;
- Thu, 16 Jan 2020 17:05:59 +0000 (UTC)
+ with ESMTP id C9sHH5OGIAzq for <devel@linuxdriverproject.org>;
+ Thu, 16 Jan 2020 17:08:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 54FDF86388
- for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 17:05:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 35DBD86502
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 17:08:07 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 165B2205F4;
- Thu, 16 Jan 2020 17:05:58 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id F2C4F2467C;
+ Thu, 16 Jan 2020 17:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579194359;
- bh=O658uSSxWwmoGFnHthtFfmzLKgcANu2grOllItCu8B8=;
+ s=default; t=1579194487;
+ bh=mpGL97m6k814QXjnL2ki81L3W3OZi3I9xyhDVPmMuY8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=isjkQwNNzSo5oMcVOIK0IC6wIcKBDlZzlTzyYoqKBBy8ZlUdvj2ZboDKyI46OfT2w
- PlPbthE1pIElBsEhrUz8xSJU1hQ3WvkT7us+3TqcudV8zmfEaemYaNz1ERqbujG4S1
- KmN0wvRTA/vQg0+4fHa9KeYxd2W4vpBeH7UIAZZA=
+ b=SbaaxJ3Q+Jzm0nOtelDq9GMhzjTvOZUJg06BXlhfCkgz/SStqP2ZKyJpwLWAn8Fav
+ MTfyZ/F9b9zubMqRpCojSSbfCHd4JNESSd70INixALx1lr0j61Fydx4i77RNb2Pb/9
+ idiy7S71KaIOgSioSGeq3LWK+U9KatuXU4zoLxYk=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 296/671] staging: android: vsoc: fix
- copy_from_user overrun
-Date: Thu, 16 Jan 2020 11:58:54 -0500
-Message-Id: <20200116170509.12787-33-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 387/671] media: Staging: media: Release the
+ correct resource in an error handling path
+Date: Thu, 16 Jan 2020 12:00:25 -0500
+Message-Id: <20200116170509.12787-124-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200116170509.12787-1-sashal@kernel.org>
 References: <20200116170509.12787-1-sashal@kernel.org>
@@ -69,39 +69,68 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- Dan Carpenter <dan.carpenter@oracle.com>,
- =?UTF-8?q?Vincent=20Stehl=C3=A9?= <vincent.stehle@laposte.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogVmluY2VudCBTdGVobMOpIDx2aW5jZW50LnN0ZWhsZUBsYXBvc3RlLm5ldD4KClsgVXBz
-dHJlYW0gY29tbWl0IDA2MGVhNDI3MWE4MjI3MGJlNmQ0NGU4ZTlhZWZlOGYxNTVmYjU2MjYgXQoK
-VGhlIGBucC0+cGVybWlzc2lvbicgc3RydWN0dXJlIGlzIHNtYWxsZXIgdGhhbiB0aGUgYG5wJyBz
-dHJ1Y3R1cmUgYnV0CnNpemVvZigqbnApIHdvcnRoIG9mIGRhdGEgaXMgY29waWVkIGluIHRoZXJl
-LiBGaXggdGhlIHNpemUgcGFzc2VkIHRvCmNvcHlfZnJvbV91c2VyKCkgdG8gYXZvaWQgb3ZlcnJ1
-bi4KCkZpeGVzOiAzZDJlYzlkY2Q1NTMgKCJzdGFnaW5nOiBBbmRyb2lkOiBBZGQgJ3Zzb2MnIGRy
-aXZlciBmb3IgY3V0dGxlZmlzaC4iKQpTaWduZWQtb2ZmLWJ5OiBWaW5jZW50IFN0ZWhsw6kgPHZp
-bmNlbnQuc3RlaGxlQGxhcG9zdGUubmV0PgpDYzogR3JlZyBLcm9haC1IYXJ0bWFuIDxncmVna2hA
-bGludXhmb3VuZGF0aW9uLm9yZz4KUmV2aWV3ZWQtYnk6IERhbiBDYXJwZW50ZXIgPGRhbi5jYXJw
-ZW50ZXJAb3JhY2xlLmNvbT4KU2lnbmVkLW9mZi1ieTogR3JlZyBLcm9haC1IYXJ0bWFuIDxncmVn
-a2hAbGludXhmb3VuZGF0aW9uLm9yZz4KU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hh
-bEBrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvc3RhZ2luZy9hbmRyb2lkL3Zzb2MuYyB8IDMgKyst
-CiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9zdGFnaW5nL2FuZHJvaWQvdnNvYy5jIGIvZHJpdmVycy9zdGFnaW5nL2Fu
-ZHJvaWQvdnNvYy5jCmluZGV4IDIyNTcxYWJjYWE0ZS4uMDM0ZDg2ODY5NzcyIDEwMDY0NAotLS0g
-YS9kcml2ZXJzL3N0YWdpbmcvYW5kcm9pZC92c29jLmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL2Fu
-ZHJvaWQvdnNvYy5jCkBAIC0yNjAsNyArMjYwLDggQEAgZG9fY3JlYXRlX2ZkX3Njb3BlZF9wZXJt
-aXNzaW9uKHN0cnVjdCB2c29jX2RldmljZV9yZWdpb24gKnJlZ2lvbl9wLAogCWF0b21pY190ICpv
-d25lcl9wdHIgPSBOVUxMOwogCXN0cnVjdCB2c29jX2RldmljZV9yZWdpb24gKm1hbmFnZWRfcmVn
-aW9uX3A7CiAKLQlpZiAoY29weV9mcm9tX3VzZXIoJm5wLT5wZXJtaXNzaW9uLCAmYXJnLT5wZXJt
-LCBzaXplb2YoKm5wKSkgfHwKKwlpZiAoY29weV9mcm9tX3VzZXIoJm5wLT5wZXJtaXNzaW9uLAor
-CQkJICAgJmFyZy0+cGVybSwgc2l6ZW9mKG5wLT5wZXJtaXNzaW9uKSkgfHwKIAkgICAgY29weV9m
-cm9tX3VzZXIoJm1hbmFnZWRfZmQsCiAJCQkgICAmYXJnLT5tYW5hZ2VkX3JlZ2lvbl9mZCwgc2l6
-ZW9mKG1hbmFnZWRfZmQpKSkgewogCQlyZXR1cm4gLUVGQVVMVDsKLS0gCjIuMjAuMQoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBs
-aXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRy
-aXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+
+[ Upstream commit 3b6471c7becd06325eb5e701cc2602b2edbbc7b6 ]
+
+'res' is reassigned several times in the function and if we 'goto
+error_unmap', its value is not the returned value of 'request_mem_region()'
+anymore.
+
+Introduce a new 'struct resource *' variable (i.e. res2) to keep a pointer
+to the right resource, if needed in the error handling path.
+
+Fixes: 4b4eda001704 ("Staging: media: Unmap and release region obtained by ioremap_nocache")
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/staging/media/davinci_vpfe/dm365_ipipe.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+index 95942768639c..7bf2648affc0 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+@@ -1777,7 +1777,7 @@ vpfe_ipipe_init(struct vpfe_ipipe_device *ipipe, struct platform_device *pdev)
+ 	struct media_pad *pads = &ipipe->pads[0];
+ 	struct v4l2_subdev *sd = &ipipe->subdev;
+ 	struct media_entity *me = &sd->entity;
+-	struct resource *res, *memres;
++	struct resource *res, *res2, *memres;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 4);
+ 	if (!res)
+@@ -1791,11 +1791,11 @@ vpfe_ipipe_init(struct vpfe_ipipe_device *ipipe, struct platform_device *pdev)
+ 	if (!ipipe->base_addr)
+ 		goto error_release;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 6);
+-	if (!res)
++	res2 = platform_get_resource(pdev, IORESOURCE_MEM, 6);
++	if (!res2)
+ 		goto error_unmap;
+-	ipipe->isp5_base_addr = ioremap_nocache(res->start,
+-						resource_size(res));
++	ipipe->isp5_base_addr = ioremap_nocache(res2->start,
++						resource_size(res2));
+ 	if (!ipipe->isp5_base_addr)
+ 		goto error_unmap;
+ 
+-- 
+2.20.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
