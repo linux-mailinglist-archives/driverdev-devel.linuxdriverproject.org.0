@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0E0213E1D4
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 17:53:21 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC53413E252
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 17:55:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7B99386A26;
-	Thu, 16 Jan 2020 16:53:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5413F87EBB;
+	Thu, 16 Jan 2020 16:55:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 10f5QMiq44oe; Thu, 16 Jan 2020 16:53:19 +0000 (UTC)
+	with ESMTP id 9hjdfoVPvZHU; Thu, 16 Jan 2020 16:55:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B0C5686AE5;
-	Thu, 16 Jan 2020 16:53:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A98BB87EBA;
+	Thu, 16 Jan 2020 16:55:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E6A031BF3DB
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 16:53:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 247171BF3DB
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 16:55:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E32F221FAD
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 16:53:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2104321574
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 16:55:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nBC6uIDOfVdg for <devel@linuxdriverproject.org>;
- Thu, 16 Jan 2020 16:53:04 +0000 (UTC)
+ with ESMTP id 4x06Wf9biu-H for <devel@linuxdriverproject.org>;
+ Thu, 16 Jan 2020 16:55:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 4827A21FA9
- for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 16:53:04 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id E2CEA2156E
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 16:55:40 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 332462073A;
- Thu, 16 Jan 2020 16:53:03 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1D4DE214AF;
+ Thu, 16 Jan 2020 16:55:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579193584;
- bh=Tnd+SAke6nIVxhIP5axtAjn7GdI/o/v7fMl1nJaRVNs=;
+ s=default; t=1579193739;
+ bh=LHmIffoarcO4UGzeOXpDU+X/XkVbG5AvRE/bVGXREaI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=mgcd8RxBJumX0/yNtan2KKToa+Lrfl/tOOjQYGWHifF89aakOk49IPTxeFH26ywZw
- 02jZjsYiA/gFwk1/DqCmPOU5oq7iC0fzlmzgUb+Z1jScL1p8DYqRne8BxfwW5jUFrz
- I0q9tWpXx4KD4QoRxzhZzv3311/GStToFFHveLCE=
+ b=vk1VFZd/wreID4VxEmxWG7v1NubeBw4+DkDRJaqeroHBy4rtHtkJcAELN8HjDN+Hn
+ VcJohB08AVoll4Kg4AURlij3F36jJPxwH4cZxlyZL6rdZvutiQOCyq9DZ9PbuvAJcO
+ M7ZD2yCFe6l+MbJcAc1lbl/FffE/dZELbRu1Lpoo=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 125/205] media: hantro: Set H264 FIELDPIC_FLAG_E
- flag correctly
-Date: Thu, 16 Jan 2020 11:41:40 -0500
-Message-Id: <20200116164300.6705-125-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 031/671] staging: comedi: ni_mio_common: protect
+ register write overflow
+Date: Thu, 16 Jan 2020 11:44:22 -0500
+Message-Id: <20200116165502.8838-31-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200116164300.6705-1-sashal@kernel.org>
-References: <20200116164300.6705-1-sashal@kernel.org>
+In-Reply-To: <20200116165502.8838-1-sashal@kernel.org>
+References: <20200116165502.8838-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -69,49 +69,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Jonas Karlman <jonas@kwiboo.se>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ian Abbott <abbotti@mev.co.uk>, devel@driverdev.osuosl.org,
+ "Spencer E. Olson" <olsonse@umich.edu>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Jonas Karlman <jonas@kwiboo.se>
+From: "Spencer E. Olson" <olsonse@umich.edu>
 
-[ Upstream commit a2cbf80a842add9663522bf898cf13cb2ac4e423 ]
+[ Upstream commit 1cbca5852d6c16e85a21487a15d211195aacd4a1 ]
 
-The FIELDPIC_FLAG_E bit should be set when field_pic_flag exists in stream,
-it is currently set based on field_pic_flag of current frame.
-The PIC_FIELDMODE_E bit is correctly set based on the field_pic_flag.
+Fixes two problems introduced as early as
+commit 03aef4b6dc12  ("Staging: comedi: add ni_mio_common code"):
+(1) Ensures that the last four bits of NISTC_RTSI_TRIGB_OUT_REG register is
+    not unduly overwritten on e-series devices.  On e-series devices, the
+    first three of the last four bits are reserved.  The last bit defines
+    the output selection of the RGOUT0 pin, otherwise known as
+    RTSI_Sub_Selection.  For m-series devices, these last four bits are
+    indeed used as the output selection of the RTSI7 pin (and the
+    RTSI_Sub_Selection bit for the RGOUT0 pin is moved to the
+    RTSI_Trig_Direction register.
+(2) Allows all 4 RTSI_BRD lines to be treated as valid sources for RTSI
+    lines.
 
-Fix this by setting the FIELDPIC_FLAG_E bit when frame_mbs_only is not set.
+This patch also cleans up the ni_get_rtsi_routing command for readability.
 
-Fixes: dea0a82f3d22 ("media: hantro: Add support for H264 decoding on G1")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+Fixes: 03aef4b6dc12  ("Staging: comedi: add ni_mio_common code")
+Signed-off-by: Spencer E. Olson <olsonse@umich.edu>
+Reviewed-by: Ian Abbott <abbotti@mev.co.uk>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/hantro/hantro_g1_h264_dec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../staging/comedi/drivers/ni_mio_common.c    | 24 +++++++++++++------
+ 1 file changed, 17 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-index 636bf972adcf..5f29b7a836db 100644
---- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-@@ -63,7 +63,7 @@ static void set_params(struct hantro_ctx *ctx)
- 	/* always use the matrix sent from userspace */
- 	reg |= G1_REG_DEC_CTRL2_TYPE1_QUANT_E;
+diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
+index d799b1b55de3..747518c29542 100644
+--- a/drivers/staging/comedi/drivers/ni_mio_common.c
++++ b/drivers/staging/comedi/drivers/ni_mio_common.c
+@@ -4984,7 +4984,10 @@ static int ni_valid_rtsi_output_source(struct comedi_device *dev,
+ 	case NI_RTSI_OUTPUT_G_SRC0:
+ 	case NI_RTSI_OUTPUT_G_GATE0:
+ 	case NI_RTSI_OUTPUT_RGOUT0:
+-	case NI_RTSI_OUTPUT_RTSI_BRD_0:
++	case NI_RTSI_OUTPUT_RTSI_BRD(0):
++	case NI_RTSI_OUTPUT_RTSI_BRD(1):
++	case NI_RTSI_OUTPUT_RTSI_BRD(2):
++	case NI_RTSI_OUTPUT_RTSI_BRD(3):
+ 		return 1;
+ 	case NI_RTSI_OUTPUT_RTSI_OSC:
+ 		return (devpriv->is_m_series) ? 1 : 0;
+@@ -5005,11 +5008,18 @@ static int ni_set_rtsi_routing(struct comedi_device *dev,
+ 		devpriv->rtsi_trig_a_output_reg |= NISTC_RTSI_TRIG(chan, src);
+ 		ni_stc_writew(dev, devpriv->rtsi_trig_a_output_reg,
+ 			      NISTC_RTSI_TRIGA_OUT_REG);
+-	} else if (chan < 8) {
++	} else if (chan < NISTC_RTSI_TRIG_NUM_CHAN(devpriv->is_m_series)) {
+ 		devpriv->rtsi_trig_b_output_reg &= ~NISTC_RTSI_TRIG_MASK(chan);
+ 		devpriv->rtsi_trig_b_output_reg |= NISTC_RTSI_TRIG(chan, src);
+ 		ni_stc_writew(dev, devpriv->rtsi_trig_b_output_reg,
+ 			      NISTC_RTSI_TRIGB_OUT_REG);
++	} else if (chan != NISTC_RTSI_TRIG_OLD_CLK_CHAN) {
++		/* probably should never reach this, since the
++		 * ni_valid_rtsi_output_source above errors out if chan is too
++		 * high
++		 */
++		dev_err(dev->class_dev, "%s: unknown rtsi channel\n", __func__);
++		return -EINVAL;
+ 	}
+ 	return 2;
+ }
+@@ -5025,12 +5035,12 @@ static unsigned int ni_get_rtsi_routing(struct comedi_device *dev,
+ 	} else if (chan < NISTC_RTSI_TRIG_NUM_CHAN(devpriv->is_m_series)) {
+ 		return NISTC_RTSI_TRIG_TO_SRC(chan,
+ 					      devpriv->rtsi_trig_b_output_reg);
+-	} else {
+-		if (chan == NISTC_RTSI_TRIG_OLD_CLK_CHAN)
+-			return NI_RTSI_OUTPUT_RTSI_OSC;
+-		dev_err(dev->class_dev, "bug! should never get here?\n");
+-		return 0;
++	} else if (chan == NISTC_RTSI_TRIG_OLD_CLK_CHAN) {
++		return NI_RTSI_OUTPUT_RTSI_OSC;
+ 	}
++
++	dev_err(dev->class_dev, "%s: unknown rtsi channel\n", __func__);
++	return -EINVAL;
+ }
  
--	if (slices[0].flags &  V4L2_H264_SLICE_FLAG_FIELD_PIC)
-+	if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY))
- 		reg |= G1_REG_DEC_CTRL2_FIELDPIC_FLAG_E;
- 	vdpu_write_relaxed(vpu, reg, G1_REG_DEC_CTRL2);
- 
+ static int ni_rtsi_insn_config(struct comedi_device *dev,
 -- 
 2.20.1
 
