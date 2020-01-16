@@ -1,56 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1AD413DDF0
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 15:48:03 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DEEA13E1CF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 17:53:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8BA712156C;
-	Thu, 16 Jan 2020 14:48:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C991986B67;
+	Thu, 16 Jan 2020 16:53:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qSjR-d2lzskY; Thu, 16 Jan 2020 14:48:01 +0000 (UTC)
+	with ESMTP id JEtt3OhKo6jq; Thu, 16 Jan 2020 16:53:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E3C1321553;
-	Thu, 16 Jan 2020 14:47:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 633148682A;
+	Thu, 16 Jan 2020 16:53:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CD9F31BF334
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 14:47:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B76291BF3DB
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 16:53:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CA7DA86283
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 14:47:57 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B4A49864B5
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 16:53:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nGmkyYmC5BtU for <devel@linuxdriverproject.org>;
- Thu, 16 Jan 2020 14:47:52 +0000 (UTC)
+ with ESMTP id cveBsWM9ZnkS for <devel@linuxdriverproject.org>;
+ Thu, 16 Jan 2020 16:53:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 90EFF8626D
- for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 14:47:52 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Jan 2020 06:47:52 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,326,1574150400"; d="scan'208";a="398296480"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 16 Jan 2020 06:47:50 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1is6R4-000C7S-Ev; Thu, 16 Jan 2020 22:47:50 +0800
-Date: Thu, 16 Jan 2020 22:47:29 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- a37f4958f7b63d2b3cd17a76151fdfc29ce1da5f
-Message-ID: <5e207781.7yTCddAqjY+NtbUY%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5E23F864BD
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 16:53:01 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3B604205F4;
+ Thu, 16 Jan 2020 16:53:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1579193581;
+ bh=2Q9Q4pExj05WwTW9qKCbxEahwlpn9K6XUKlq3Krbhz4=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Jy9EBFGRrhYu8/kKJr8+WfZ0VLKTfkmWPVW1gUR+lmlwYTib90l33Gm32P6yMK5Ol
+ nb8CH1EK5DHtJ3vYsZgSxxnA9ymlaN6mP8lFM+Ixm+n3vkyFprYfVIZEu2ID3ltGsY
+ fVcXDz5SIxbo5/PFuymxXbpbC5BU7zcF2gZrLBJQ=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.4 123/205] media: cedrus: Use correct H264 8x8
+ scaling list
+Date: Thu, 16 Jan 2020 11:41:38 -0500
+Message-Id: <20200116164300.6705-123-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200116164300.6705-1-sashal@kernel.org>
+References: <20200116164300.6705-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,168 +69,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: a37f4958f7b63d2b3cd17a76151fdfc29ce1da5f  debugfs: Return -EPERM when locked down
+From: Jonas Karlman <jonas@kwiboo.se>
 
-elapsed time: 1833m
+[ Upstream commit a6b8feae7c88343212686120740cf7551dd16e08 ]
 
-configs tested: 141
-configs skipped: 0
+Documentation now defines the expected order of scaling lists,
+change to use correct indices.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-parisc                            allnoconfig
-parisc                            allyesonfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-alpha                randconfig-a001-20200116
-m68k                 randconfig-a001-20200116
-mips                 randconfig-a001-20200116
-nds32                randconfig-a001-20200116
-parisc               randconfig-a001-20200116
-riscv                randconfig-a001-20200116
-x86_64               randconfig-b001-20200116
-x86_64               randconfig-b002-20200116
-x86_64               randconfig-b003-20200116
-i386                 randconfig-b001-20200116
-i386                 randconfig-b002-20200116
-i386                 randconfig-b003-20200116
-i386                             alldefconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-arc                  randconfig-a001-20200116
-arm                  randconfig-a001-20200116
-arm64                randconfig-a001-20200116
-ia64                 randconfig-a001-20200116
-powerpc              randconfig-a001-20200116
-sparc                randconfig-a001-20200116
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-x86_64               randconfig-f001-20200116
-x86_64               randconfig-f002-20200116
-x86_64               randconfig-f003-20200116
-i386                 randconfig-f001-20200116
-i386                 randconfig-f002-20200116
-i386                 randconfig-f003-20200116
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-s390                             alldefconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-csky                 randconfig-a001-20200116
-openrisc             randconfig-a001-20200116
-s390                 randconfig-a001-20200116
-sh                   randconfig-a001-20200116
-xtensa               randconfig-a001-20200116
-x86_64               randconfig-c001-20200116
-x86_64               randconfig-c002-20200116
-x86_64               randconfig-c003-20200116
-i386                 randconfig-c001-20200116
-i386                 randconfig-c002-20200116
-i386                 randconfig-c003-20200116
-x86_64               randconfig-d001-20200116
-x86_64               randconfig-d002-20200116
-x86_64               randconfig-d003-20200116
-i386                 randconfig-d001-20200116
-i386                 randconfig-d002-20200116
-i386                 randconfig-d003-20200116
-x86_64               randconfig-g001-20200116
-x86_64               randconfig-g002-20200116
-x86_64               randconfig-g003-20200116
-i386                 randconfig-g001-20200116
-i386                 randconfig-g002-20200116
-i386                 randconfig-g003-20200116
-
+Fixes: 6eb9b758e307 ("media: cedrus: Add H264 decoding support")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
+ drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+index 08c6c9c410cc..c07526c12629 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+@@ -244,8 +244,8 @@ static void cedrus_write_scaling_lists(struct cedrus_ctx *ctx,
+ 			       sizeof(scaling->scaling_list_8x8[0]));
+ 
+ 	cedrus_h264_write_sram(dev, CEDRUS_SRAM_H264_SCALING_LIST_8x8_1,
+-			       scaling->scaling_list_8x8[3],
+-			       sizeof(scaling->scaling_list_8x8[3]));
++			       scaling->scaling_list_8x8[1],
++			       sizeof(scaling->scaling_list_8x8[1]));
+ 
+ 	cedrus_h264_write_sram(dev, CEDRUS_SRAM_H264_SCALING_LIST_4x4,
+ 			       scaling->scaling_list_4x4,
+-- 
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
