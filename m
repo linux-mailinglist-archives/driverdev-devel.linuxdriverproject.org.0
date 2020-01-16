@@ -1,56 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8D7713EF65
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 19:15:23 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3CEAA13F0DF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jan 2020 19:25:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6D58E87F44;
-	Thu, 16 Jan 2020 18:15:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AE6CD865C1;
+	Thu, 16 Jan 2020 18:25:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a8baLjdGo1QK; Thu, 16 Jan 2020 18:15:21 +0000 (UTC)
+	with ESMTP id DtEKPUD436Dw; Thu, 16 Jan 2020 18:25:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1291487B6D;
-	Thu, 16 Jan 2020 18:15:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A0F6D864F4;
+	Thu, 16 Jan 2020 18:25:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 143D11BF3D5
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 18:15:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B53121BF3D5
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 18:25:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 10894869F8
- for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 18:15:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id ADD0C86B3C
+ for <devel@linuxdriverproject.org>; Thu, 16 Jan 2020 18:25:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xkVBrVDT3Tb0 for <devel@linuxdriverproject.org>;
- Thu, 16 Jan 2020 18:15:10 +0000 (UTC)
+ with ESMTP id S9SdwmMbUwgY for <devel@linuxdriverproject.org>;
+ Thu, 16 Jan 2020 18:25:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8AE43863D0
- for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 18:15:10 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Jan 2020 10:15:09 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,327,1574150400"; d="scan'208";a="243376283"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 16 Jan 2020 10:15:08 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1is9ff-0003LY-U1; Fri, 17 Jan 2020 02:15:07 +0800
-Date: Fri, 17 Jan 2020 02:14:55 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 793769120b109e3cec536bb8f5b6f9ef959c315f
-Message-ID: <5e20a81f.3qLj+JqXYnIcF8kz%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from sonic314-20.consmr.mail.ir2.yahoo.com
+ (sonic314-20.consmr.mail.ir2.yahoo.com [77.238.177.146])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3964A86B43
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jan 2020 18:25:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1579199103; bh=XH5496/BTTf0SF6FN2/IXMW6b+5aYIhMlERPJWSTRUA=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=TSB6WJ/NLKzfZMqB/t+DRwvvWbqJurQCyt9aUMBgYCFNsT9IfH9ktUHq0L/0Fk9UXdzBYjaABvNPUoiXCCaPs35X40t0/hEAUzTmzgmuUX1msMmdeI3vNTVrFtsphfuCRJpQtEXX/LmS4w2x07R1wk04Vv3s6hYfLrIj153WNEF9Z2bVKP+2AjGgyoOEuisqXmSktsEVJ7BrcIInakNp/bFRIi2fn0GOW19iKHeO1l8Z++g+OV3pNTAwWbQX41D1tSZqQTxqQfwK04Nnz8gojRzvkB6wgft/8CKeXu1fkvmDLlSUwJAc3mCfM2Xn1NCCqoLFbvppUEpC5Z0KRMOh2g==
+X-YMail-OSG: IqS0IEQVM1nmpyQTtf9f2FMW4ImK5UVXlhYjhoBS8bWTGjnjwLiwGcWD3T4dIFx
+ lwqKGFWNRDkd.W4N0Qq5YjTRk7KQ4HGWCBbHoMORCraj_13DhQaAHJprFjs_oF6EqLdTVsdWY7Bg
+ q7vWfZdCFo_m33j1viJhLxUhVwWvUdPbzVAoTXk4RojEsIpfCRgia6M0teqn9PFHCzaTRAyRP0od
+ iDvmqs95cLT3jmGGUy3zsCWbWus3JC.MxY2W3sIXyVVsc29z5c4U4Wh5_Kp58LHEDekDrLCg0X0Z
+ 1tFG3QATThZiIn093i6yKCydUpx9GGTZfl.Jr_g2UbD3v4vsVXvGHoi_vN3fmfg1v0G.09qD9kIr
+ Hefq_kx9_giW6r1xuXmWJ7hIpP5GLEbfAwrkt7cxfA7YgK5IQMommmXxWr4PTqfrr5qslc0Fm0N0
+ J6GbcK3ykewV.AM5CDl9qPtdSGQ6RCzymY9g7dmi_.NCEhjcbnqiaei4AT.pJJAd6BGKDo.ffTuT
+ sc.z3_tuxpfeT3_w545H3tjGW2NDVPqi_UgCq3zP5iFWPWQ9nHoCsU84Uy1DR6oofjogH6MV81el
+ _IWb_wK1jEqunymSvEY8sbl.J9xBwoARGbpxfLIHcfnu.SzlZ3nZVb_o8l8X0VonoVBiQoAVBB_u
+ sZHJzne9hZGV7fE8tbCM17WCewBlvMFWRBB85m1FJSIljGywdyJwXi8gP2xxQgouDfYia4Pc3t60
+ bW161AoMUCneTuxmJMntixoqZfOSPgsBB5MJe.k5OXaNXXxp0moboqCulPOm90wYbcStn4wfCrZV
+ UEQF.VYZz0_PaBPU7d3qhe6bbl5IviPDG7PhaJ3AC6SgTPPEm3HuIzCX8Ay_4UvwDVQpV1y7smlF
+ V.nHnpUgjr4hZUSwb.cTqHTC9yEo2TYz1NGDaXLFgruTWRPaj7yg9RuG.stXQk1EWyyT1LvNww0b
+ w7RpjHXGTvYds1dyRJ.zk0huFLSNJu8H0V8u9paEET9CD8Ie6ZXEYNfyipDsBg6ZVUQZXPFrCA4G
+ HzMZXY0Ex.2cBHGuqNMpA5LIFKUSbhaE4Mu8U1CYX8HquBITpBDzxMUhBaemKFmFuOwJNDDO7pET
+ lP_St2byMiY3ydmC01DdOth6kp1UapsxIfgDmRPNPavY2hSLzZKY5lZNzAw1KzYskdLkT9VFbii4
+ 6M614BIIrcbrG4zOVHfxR_rVZCkGZkT4OCDnJthdy9v4zzJT3qM3R8k1pNgd1aEG03l2dbLbiU1J
+ TilukbBGkDn6Od5t7qpwaQpAfmQT2HQ8LH6GsSUgQLEHtGXUlI6eCvg7Rma1vBI4w6WJdXtsh
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic314.consmr.mail.ir2.yahoo.com with HTTP; Thu, 16 Jan 2020 18:25:03 +0000
+Date: Thu, 16 Jan 2020 18:24:58 +0000 (UTC)
+From: Vivian David <ritajohnson1998@yahoo.com>
+Message-ID: <1270509417.21209122.1579199098646@mail.yahoo.com>
+Subject: I Need Your Help
 MIME-Version: 1.0
+References: <1270509417.21209122.1579199098646.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.14873 YMailNodin Mozilla/5.0 (Windows NT 5.1;
+ rv:52.0) Gecko/20100101 Firefox/52.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,175 +76,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: viviandavid925@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
-branch HEAD: 793769120b109e3cec536bb8f5b6f9ef959c315f  staging: most: core: remove noisy log messages
 
-elapsed time: 681m
 
-configs tested: 148
-configs skipped: 0
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
-parisc                            allnoconfig
-parisc                            allyesonfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-x86_64               randconfig-b001-20200116
-x86_64               randconfig-b002-20200116
-x86_64               randconfig-b003-20200116
-i386                 randconfig-b001-20200116
-i386                 randconfig-b002-20200116
-i386                 randconfig-b003-20200116
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-alpha                randconfig-a001-20200116
-m68k                 randconfig-a001-20200116
-mips                 randconfig-a001-20200116
-nds32                randconfig-a001-20200116
-parisc               randconfig-a001-20200116
-riscv                randconfig-a001-20200116
-s390                             alldefconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-i386                             alldefconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-x86_64               randconfig-d001-20200116
-x86_64               randconfig-d002-20200116
-x86_64               randconfig-d003-20200116
-i386                 randconfig-d001-20200116
-i386                 randconfig-d002-20200116
-i386                 randconfig-d003-20200116
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-x86_64               randconfig-a001-20200116
-x86_64               randconfig-a002-20200116
-x86_64               randconfig-a003-20200116
-i386                 randconfig-a001-20200116
-i386                 randconfig-a002-20200116
-i386                 randconfig-a003-20200116
-arc                  randconfig-a001-20200116
-arm                  randconfig-a001-20200116
-arm64                randconfig-a001-20200116
-ia64                 randconfig-a001-20200116
-powerpc              randconfig-a001-20200116
-sparc                randconfig-a001-20200116
-arc                  randconfig-a001-20200117
-arm                  randconfig-a001-20200117
-arm64                randconfig-a001-20200117
-ia64                 randconfig-a001-20200117
-powerpc              randconfig-a001-20200117
-sparc                randconfig-a001-20200117
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-x86_64               randconfig-d001-20200117
-x86_64               randconfig-d002-20200117
-x86_64               randconfig-d003-20200117
-i386                 randconfig-d001-20200117
-i386                 randconfig-d002-20200117
-i386                 randconfig-d003-20200117
-alpha                randconfig-a001-20200117
-m68k                 randconfig-a001-20200117
-mips                 randconfig-a001-20200117
-nds32                randconfig-a001-20200117
-parisc               randconfig-a001-20200117
-riscv                randconfig-a001-20200117
-x86_64               randconfig-e001-20200117
-x86_64               randconfig-e002-20200117
-x86_64               randconfig-e003-20200117
-i386                 randconfig-e001-20200117
-i386                 randconfig-e002-20200117
-i386                 randconfig-e003-20200117
+Frankly, I know it may sounded very strange to you, because I contacted you because you are a complete stranger
 
----
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
+I am the only child of my parents. During the post-election civil and political crisis in our country, my parents were killed by heartless military personnel who supported the president who lost the election and refuses to resign. Luckily for me, I was at school when this tragedy occurred in my family. But thank God Almighty because I never knew I could survive the shock of losing my family almost. My father deposited in one of the major financial institutions, the sum of eight million and six hundred thousand dollars
+
+my late father had a written agreement with the financial institution that I should be 29 years before I could have the fund, or business partner or guarantor of business. To ensure that money is invested in a very lucrative. As I write to you, I'm only 19, and life here is so hard to deal with. There is no chance of me waiting until 29 years before I go ahead for the claim the fund,
+
+I want you to act as my business partner so that the Fund is launched to you by request and I could move on to your country and we both have money invested in a good profitable trading area of your choice so I am interested in Real estate the business.I promise to give 30% of the fund.
+
+Thanking you a lot in anticipation of your quick response. I will give you details in my next mail after receiving your acceptance mail to help me ,
+
+Yours sincerely
+Miss Vivian David
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
