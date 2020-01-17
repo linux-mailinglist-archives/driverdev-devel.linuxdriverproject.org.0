@@ -1,55 +1,44 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEC07140CAE
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Jan 2020 15:38:14 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AEE9C141224
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Jan 2020 21:12:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 66F94868DC;
-	Fri, 17 Jan 2020 14:38:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 08D4986E69;
+	Fri, 17 Jan 2020 20:12:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6DHnzQXQBOlY; Fri, 17 Jan 2020 14:38:10 +0000 (UTC)
+	with ESMTP id vND7Q1WW+lid; Fri, 17 Jan 2020 20:12:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 00E96868D5;
-	Fri, 17 Jan 2020 14:38:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 27A91855D3;
+	Fri, 17 Jan 2020 20:12:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4344E1BF40F
- for <devel@linuxdriverproject.org>; Fri, 17 Jan 2020 14:38:08 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 794C01BF3EC
+ for <devel@linuxdriverproject.org>; Fri, 17 Jan 2020 20:12:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3489C8807C
- for <devel@linuxdriverproject.org>; Fri, 17 Jan 2020 14:38:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 759B32002E
+ for <devel@linuxdriverproject.org>; Fri, 17 Jan 2020 20:12:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZJX5tV4szgHp for <devel@linuxdriverproject.org>;
- Fri, 17 Jan 2020 14:38:07 +0000 (UTC)
+ with ESMTP id jZT5OygNVTz2 for <devel@linuxdriverproject.org>;
+ Fri, 17 Jan 2020 20:12:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F212B88091
- for <devel@driverdev.osuosl.org>; Fri, 17 Jan 2020 14:38:06 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Jan 2020 06:38:06 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,330,1574150400"; d="scan'208";a="249266651"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 17 Jan 2020 06:38:05 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1isSlB-000Idb-4k; Fri, 17 Jan 2020 22:38:05 +0800
-Date: Fri, 17 Jan 2020 22:37:02 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 270f104ba26f0498aff85e5b002e2f4c2249c04b
-Message-ID: <5e21c68e.CFcuS2vXcSRuFfgj%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3172920021
+ for <devel@driverdev.osuosl.org>; Fri, 17 Jan 2020 20:12:49 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: koike) with ESMTPSA id 84B4F293C5F
+From: Helen Koike <helen.koike@collabora.com>
+To: linux-media@vger.kernel.org
+Subject: [PATCH] staging: media: rkisp1: make links immutable by default
+Date: Fri, 17 Jan 2020 17:12:18 -0300
+Message-Id: <20200117201218.3745311-1-helen.koike@collabora.com>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -63,191 +52,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ tfiga@chromium.org, niklas.soderlund@ragnatech.se,
+ Helen Koike <helen.koike@collabora.com>, laurent.pinchart@ideasonboard.com,
+ hverkuil-cisco@xs4all.nl, kernel@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
-branch HEAD: 270f104ba26f0498aff85e5b002e2f4c2249c04b  staging: wfx: update TODO
+The only places which make sese to allow users to enable or disable
+links are:
 
-elapsed time: 892m
+* between sensors and isp:
+So users can select which sensor should be used while streaming
 
-configs tested: 164
-configs skipped: 0
+* between isp and the resizers:
+              |
+              v here
+rkisp1_isp:2 -> rkisp1_resizer_mainpath -> rkisp1_mainpath (capture)
+            \-> rkisp1_resizer_selfpath -> rkisp1_selfpath (capture)
+              ^ here
+              |
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+So users can disable one of the capture paths when unused, to avoid
+worring about matching formats.
 
-x86_64               randconfig-g001-20200117
-x86_64               randconfig-g002-20200117
-x86_64               randconfig-g003-20200117
-i386                 randconfig-g001-20200117
-i386                 randconfig-g002-20200117
-i386                 randconfig-g003-20200117
-ia64                                defconfig
-powerpc                             defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-parisc                            allnoconfig
-parisc                            allyesonfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-csky                 randconfig-a001-20200117
-openrisc             randconfig-a001-20200117
-s390                 randconfig-a001-20200117
-sh                   randconfig-a001-20200117
-xtensa               randconfig-a001-20200117
-arc                  randconfig-a001-20200117
-arm                  randconfig-a001-20200117
-arm64                randconfig-a001-20200117
-ia64                 randconfig-a001-20200117
-powerpc              randconfig-a001-20200117
-sparc                randconfig-a001-20200117
-c6x                  randconfig-a001-20200117
-h8300                randconfig-a001-20200117
-microblaze           randconfig-a001-20200117
-nios2                randconfig-a001-20200117
-sparc64              randconfig-a001-20200117
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-alpha                randconfig-a001-20200117
-m68k                 randconfig-a001-20200117
-mips                 randconfig-a001-20200117
-nds32                randconfig-a001-20200117
-parisc               randconfig-a001-20200117
-riscv                randconfig-a001-20200117
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64               randconfig-c001-20200117
-x86_64               randconfig-c002-20200117
-x86_64               randconfig-c003-20200117
-i386                 randconfig-c001-20200117
-i386                 randconfig-c002-20200117
-i386                 randconfig-c003-20200117
-i386                             alldefconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-x86_64               randconfig-e001-20200117
-x86_64               randconfig-e002-20200117
-x86_64               randconfig-e003-20200117
-i386                 randconfig-e001-20200117
-i386                 randconfig-e002-20200117
-i386                 randconfig-e003-20200117
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-s390                             alldefconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-x86_64               randconfig-a001-20200117
-x86_64               randconfig-a002-20200117
-x86_64               randconfig-a003-20200117
-i386                 randconfig-a001-20200117
-i386                 randconfig-a002-20200117
-i386                 randconfig-a003-20200117
-x86_64               randconfig-h001-20200117
-x86_64               randconfig-h002-20200117
-x86_64               randconfig-h003-20200117
-i386                 randconfig-h001-20200117
-i386                 randconfig-h002-20200117
-i386                 randconfig-h003-20200117
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-x86_64               randconfig-b001-20200117
-x86_64               randconfig-b002-20200117
-x86_64               randconfig-b003-20200117
-i386                 randconfig-b001-20200117
-i386                 randconfig-b002-20200117
-i386                 randconfig-b003-20200117
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-x86_64               randconfig-f001-20200117
-x86_64               randconfig-f002-20200117
-x86_64               randconfig-f003-20200117
-i386                 randconfig-f001-20200117
-i386                 randconfig-f002-20200117
-i386                 randconfig-f003-20200117
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-x86_64               randconfig-d001-20200117
-x86_64               randconfig-d002-20200117
-x86_64               randconfig-d003-20200117
-i386                 randconfig-d001-20200117
-i386                 randconfig-d002-20200117
-i386                 randconfig-d003-20200117
-arm                              allmodconfig
-arm64                            allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
+Make the following links immutable to simplify userspace:
+
+rkisp1_resizer_mainpath -> rkisp1_mainpath
+rkisp1_resizer_selfpath -> rkisp1_selfpath
+rkisp1_params           -> rkisp1_isp
+rkisp1_isp              -> rkisp1_stats
+
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
 
 ---
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
+This is the topology graph after disabling all the links with
+media -r
+http://col.la/rkisp1immutable
+
+Dashed links are the only one can can be enabled/disabled, the others
+are immutable.
+
+ drivers/staging/media/rkisp1/rkisp1-dev.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
+index 558126e66465..4030d5e71af1 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-dev.c
++++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
+@@ -145,14 +145,15 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+ 		flags = 0;
+ 	}
+ 
+-	flags = MEDIA_LNK_FL_ENABLED;
++	flags = MEDIA_LNK_FL_ENABLED | MEDIA_LNK_FL_IMMUTABLE;
+ 
+ 	/* create ISP->RSZ->CAP links */
+ 	for (i = 0; i < 2; i++) {
+ 		source = &rkisp1->isp.sd.entity;
+ 		sink = &rkisp1->resizer_devs[i].sd.entity;
+ 		ret = media_create_pad_link(source, RKISP1_ISP_PAD_SOURCE_VIDEO,
+-					    sink, RKISP1_RSZ_PAD_SINK, flags);
++					    sink, RKISP1_RSZ_PAD_SINK,
++					    MEDIA_LNK_FL_ENABLED);
+ 		if (ret)
+ 			return ret;
+ 
+-- 
+2.24.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
