@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D572141941
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jan 2020 20:55:19 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA56D141944
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jan 2020 20:55:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 80DE88560C;
-	Sat, 18 Jan 2020 19:55:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4021B87DB1;
+	Sat, 18 Jan 2020 19:55:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WjC0N9A00gS0; Sat, 18 Jan 2020 19:55:17 +0000 (UTC)
+	with ESMTP id Eped+52wjEqQ; Sat, 18 Jan 2020 19:55:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D90885531;
-	Sat, 18 Jan 2020 19:55:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 819B487CC9;
+	Sat, 18 Jan 2020 19:55:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 371481BF45A
- for <devel@linuxdriverproject.org>; Sat, 18 Jan 2020 19:55:14 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 380541BF45A
+ for <devel@linuxdriverproject.org>; Sat, 18 Jan 2020 19:55:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2EAF120130
- for <devel@linuxdriverproject.org>; Sat, 18 Jan 2020 19:55:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3504285C4C
+ for <devel@linuxdriverproject.org>; Sat, 18 Jan 2020 19:55:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0Vu29WiFQZYE for <devel@linuxdriverproject.org>;
- Sat, 18 Jan 2020 19:55:13 +0000 (UTC)
+ with ESMTP id Lxg6L2nXIufk for <devel@linuxdriverproject.org>;
+ Sat, 18 Jan 2020 19:55:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
  [209.85.128.67])
- by silver.osuosl.org (Postfix) with ESMTPS id F074F20110
- for <devel@driverdev.osuosl.org>; Sat, 18 Jan 2020 19:55:12 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id a5so10620460wmb.0
- for <devel@driverdev.osuosl.org>; Sat, 18 Jan 2020 11:55:12 -0800 (PST)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4E14285C0B
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jan 2020 19:55:14 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id 20so10859860wmj.4
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jan 2020 11:55:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=eM0XrNuGjQFOSpo+CZClXSAP8gXCw6sp9uQ5zawRgtI=;
- b=IwKVDQ8JkIHm1b7AigJDfK4SmLviI6HnzRsLfL5aA2kxFduiJpmQgW0Jg5lImk5zVZ
- 6hHF962TrC54WZNuTwgrzKvkOqtyYxptb7VBNouO/yMe0Lmja8L5F5Y8Ha0//mmGtsbN
- uOftkFPjGH+OVkhr0DUkwqxrKfrBCdZK19rPUVRXWjSHLoKrW3WKvbhwMAhLEv2oZz7I
- jeUw/0ZVdCX7HFcmCgpH+wzZEZqhVauYOBBlK6b8IbkTizoaX5Qtg6bOiO5BlD+NAO8E
- HLxgPLP1gsKpccJ1AjDhcAKFw//kcEvSD6zdrY99LCZrTnCpXJmi1GCcnc63YeIf7RRQ
- 5u3A==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=hxN8NgQyJPLhiFmmBvyQRdEWEtV2Q5inuy5tn3SfqVM=;
+ b=U1lNqSZYAuKktYU80diBlGP7MleOGvm300d0W4cVYR+MgqwkvQdlV2uETKL0WItUkb
+ LaI5ROeO4AUJ+wm/mLnFODmUZjKxlcw1Z+Wx062wt9W8KRC+qBpNBI2dA95LsGyGwxje
+ b4b0n2vY22dak0KJChhwg04lfAlKd6lzYL//iYqsy0PWdXvArh6BQW7q81ouUaQj6zBO
+ YtNbuBpRO5le14ReFWuqNPodMVuMZ8c6T2pB1FPbRE358lvdsppkQrCvyOHx2LKxczOc
+ SIBIhLDZ2FMhm9Nft73iQ8UHOdjoXsZxrvPbaNrPZ8zKysZyI+i6AlpQgywAzl0LAB/E
+ +kWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=eM0XrNuGjQFOSpo+CZClXSAP8gXCw6sp9uQ5zawRgtI=;
- b=eNny637FhE2xL/gWkara4vP5nxgJ1kLrarmzGQqqqr31qEKliwUjA/AqkC+RHgg9aG
- aOw8PqeLHxqX+c+5XQ7dpCSpBBm/NIQpRH/eWXEPIofqBcth4DQQ4DaanUv2+6f0VuE9
- 05tnd6rcXA13zUIDRrKYqM/qe0eh9FoVPogz2Mp91DI5Uu4Lus5jk+IrB9WiYy0lM3hS
- GnqxaTIeTXwM+qc4X2jy+zvrS2xniADhK55yJYdnO6QiT2K2hmr4XqD6MsGlfQr47far
- yrs67YbBHaVAwBlxc0IUtiQWKdbvfYsZpLQJPHww5QJHoZgpcgbAgQAgGvig5gHJjTpu
- pr4w==
-X-Gm-Message-State: APjAAAU+PSUO/Ax+Xz29MQir0Vf8NCbtkalBK/EJ5GOgGfy0pVjryWBr
- zDMmekkCWjUGm8fLvk1YnP8=
-X-Google-Smtp-Source: APXvYqwMBqLoaxtd7GUtIPi9YaNzM/dA1ehyBk5DdKCzfkfHtgLcs8qbzHDs6Qe396P9B4fJ1rm34g==
-X-Received: by 2002:a1c:44d5:: with SMTP id
- r204mr10884223wma.122.1579377311339; 
- Sat, 18 Jan 2020 11:55:11 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=hxN8NgQyJPLhiFmmBvyQRdEWEtV2Q5inuy5tn3SfqVM=;
+ b=TP1jHzixXHE6RNsuc8xo/uUofk/kL6bp1V7vKV9MNgxeb9LlhN7BFPFRYgp57VB5au
+ cMKSSNWtNP3p2BMC5lV1qH7yT8740XTK9x/AWmfUBsc2sHuIheRMj0jJR38GN3KP8MXl
+ vshL/TX8aLuOx7koPo84q+ILS/5aL+0exVVNYBL2Y7GZVlZMYr7iQdO7jmB+RQGQoxIn
+ tNZwW/UV5xH4l1r0FKumplapwegvL4rvTTjhx2xX4ZJ7QFsbxrIVJukx3u3CeGxo5zxr
+ iXxahrpAQurU76cdH2k7O8j+0a57BVB7OMzskc0yQE4UIUKZ6XXAbZOnYHUKLg9i+sNL
+ iUdA==
+X-Gm-Message-State: APjAAAUdjVbxErc8d8DyM7LptvuAUb5iidksDwk/rHMALzPzBgaSqvTW
+ M6M7fsHXx/yTztu5RNr83a0=
+X-Google-Smtp-Source: APXvYqxWZhFkri3wgMk+sETjBnzCD2pFHkdpv8YCz1RGqBaIs1RuAQIPM/zKnFner/3RPlyj6Tsn0Q==
+X-Received: by 2002:a05:600c:10cd:: with SMTP id
+ l13mr11212572wmd.102.1579377312738; 
+ Sat, 18 Jan 2020 11:55:12 -0800 (PST)
 Received: from localhost.localdomain
  (dslb-002-204-143-199.002.204.pools.vodafone-ip.de. [2.204.143.199])
- by smtp.gmail.com with ESMTPSA id z3sm39877523wrs.94.2020.01.18.11.55.10
+ by smtp.gmail.com with ESMTPSA id z3sm39877523wrs.94.2020.01.18.11.55.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 18 Jan 2020 11:55:10 -0800 (PST)
+ Sat, 18 Jan 2020 11:55:12 -0800 (PST)
 From: Michael Straube <straube.linux@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 1/3] staging: rtl8192e: simplify rtl92e_evm_db_to_percent()
-Date: Sat, 18 Jan 2020 20:53:03 +0100
-Message-Id: <20200118195305.16685-1-straube.linux@gmail.com>
+Subject: [PATCH 2/3] staging: rtl8192u: simplify rtl819x_evm_dbtopercentage()
+Date: Sat, 18 Jan 2020 20:53:04 +0100
+Message-Id: <20200118195305.16685-2-straube.linux@gmail.com>
 X-Mailer: git-send-email 2.24.1
+In-Reply-To: <20200118195305.16685-1-straube.linux@gmail.com>
+References: <20200118195305.16685-1-straube.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -92,21 +94,21 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use clamp() to simplify function rtl92e_evm_db_to_percent() and reduce
-object file size.
+Use clamp() to simplify function rtl819x_evm_dbtopercentage() and
+reduce object file size.
 
 Signed-off-by: Michael Straube <straube.linux@gmail.com>
 ---
- drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 11 ++---------
+ drivers/staging/rtl8192u/r8192U_core.c | 11 ++---------
  1 file changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-index dace81a7d1ba..caf36b6bf0dc 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-@@ -1973,18 +1973,11 @@ u8 rtl92e_rx_db_to_percent(s8 antpower)
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index 00fdcbf64b0b..a40ce0d7a467 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -3954,18 +3954,11 @@ static u8 rtl819x_query_rxpwrpercentage(s8 antpower)
  
- u8 rtl92e_evm_db_to_percent(s8 value)
+ static u8 rtl819x_evm_dbtopercentage(s8 value)
  {
 -	s8 ret_val;
 +	s8 ret_val = clamp(-value, 0, 33) * 3;
