@@ -1,55 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78E48142110
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Jan 2020 01:19:53 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D94A81424D1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Jan 2020 09:11:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 76F2886E2C;
-	Mon, 20 Jan 2020 00:19:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CD5C02042E;
+	Mon, 20 Jan 2020 08:11:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hPnL7UdniWUT; Mon, 20 Jan 2020 00:19:51 +0000 (UTC)
+	with ESMTP id oI-+8kJ6d7R2; Mon, 20 Jan 2020 08:11:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A97DC86DB0;
-	Mon, 20 Jan 2020 00:19:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7002820419;
+	Mon, 20 Jan 2020 08:11:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7A3961BF4D7
- for <devel@linuxdriverproject.org>; Mon, 20 Jan 2020 00:19:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C2EE31BF20F
+ for <devel@linuxdriverproject.org>; Mon, 20 Jan 2020 08:11:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7675120014
- for <devel@linuxdriverproject.org>; Mon, 20 Jan 2020 00:19:49 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BF1B120415
+ for <devel@linuxdriverproject.org>; Mon, 20 Jan 2020 08:11:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZdHCn0Xj3cOU for <devel@linuxdriverproject.org>;
- Mon, 20 Jan 2020 00:19:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id 37E2E20009
- for <devel@driverdev.osuosl.org>; Mon, 20 Jan 2020 00:19:48 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Jan 2020 16:19:47 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,339,1574150400"; d="scan'208";a="306779456"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 19 Jan 2020 16:19:46 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1itKnB-0003Zc-Kb; Mon, 20 Jan 2020 08:19:45 +0800
-Date: Mon, 20 Jan 2020 08:18:49 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 7b2d7faa09fcbd0184634544f732f4b2da0b20a8
-Message-ID: <5e24f1e9.XRK/NupZeW6k1mAS%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id duAywP3yr0F8 for <devel@linuxdriverproject.org>;
+ Mon, 20 Jan 2020 08:11:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [198.137.202.133])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4FDFF20408
+ for <devel@driverdev.osuosl.org>; Mon, 20 Jan 2020 08:11:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+ From:Date:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=tfnr7fgwUzY0661lGsqsca78ntQOx3kYCD8AbDmh97I=; b=cioTpemugEnAmmctrZODuxm5/
+ s65pdNxpMaD19a79SmIp/2bv445UqvB83Q/GnSNwfkqYLwoYZShJag/REWd+MR9JN5J/KSrO3EvzD
+ E9SCPOFedoVrfsox0Rc9VgqEqrZv0NRKGtXfLTmOETDyZe+zFe/EBF+a6C5dYil2qhLKwVbaXsjPR
+ 9f9uP7UnDz8b0KXvUbAsgsbs7AZLYUPKYxO9myCaSn57n8b+TG4nPUfLpw2BXfQRMIiRtPPUSB7xD
+ vq/SMTGx1m7Fl3h3UF4cfXKtDIva9hUhPsai/7ksru3pgVtIlKwiIsBUN9E4AWjvq5XQ3RlDJ4+us
+ 5kEVEGOrQ==;
+Received: from [179.179.33.167] (helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1itS9M-00067O-G3; Mon, 20 Jan 2020 08:11:09 +0000
+Date: Mon, 20 Jan 2020 09:10:50 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Zhang Xiaoxu <zhangxiaoxu5@huawei.com>
+Subject: Re: [PATCH v2] media: staging: rkisp1: The rkisp1 should be
+ depended on CONFIG_OF
+Message-ID: <20200120091050.490a4910@kernel.org>
+In-Reply-To: <20200114021720.30826-1-zhangxiaoxu5@huawei.com>
+References: <20200114021720.30826-1-zhangxiaoxu5@huawei.com>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -63,190 +69,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
-branch HEAD: 7b2d7faa09fcbd0184634544f732f4b2da0b20a8  Merge tag 'iio-for-5.6b' of git://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-next
+Em Tue, 14 Jan 2020 10:17:20 +0800
+Zhang Xiaoxu <zhangxiaoxu5@huawei.com> escreveu:
 
-elapsed time: 337m
+> If 'CONFIG_VIDEO_ROCKCHIP_ISP1' configured but no 'CONFIG_OF', the
+> default configuration maybe:
+>   # CONFIG_OF is not set
+>   CONFIG_PHY_ROCKCHIP_DPHY_RX0=y
+>   CONFIG_VIDEO_ROCKCHIP_ISP1=y
+> 
+> This will cause the following compilation errors:
+>   drivers/staging/media/rkisp1/rkisp1-isp.o:
+>       In function `rkisp1_mipi_csi2_start.isra.5':
+>   rkisp1-isp.c:(.text+0x1238):
+>       undefined reference to `phy_mipi_dphy_get_default_config'
+>   make: *** [vmlinux] Error 1
+> 
+> Signed-off-by: Zhang Xiaoxu <zhangxiaoxu5@huawei.com>
+> ---
+>  drivers/staging/media/rkisp1/Kconfig | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/Kconfig b/drivers/staging/media/rkisp1/Kconfig
+> index b859a493caba..23080b7f07a6 100644
+> --- a/drivers/staging/media/rkisp1/Kconfig
+> +++ b/drivers/staging/media/rkisp1/Kconfig
+> @@ -3,7 +3,7 @@
+>  config VIDEO_ROCKCHIP_ISP1
+>  	tristate "Rockchip Image Signal Processing v1 Unit driver"
+>  	depends on VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API
+> -	depends on ARCH_ROCKCHIP || COMPILE_TEST
+> +	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
 
-configs tested: 163
-configs skipped: 0
+Makes sense. Yet, I would prefer to have this as:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+  	depends on VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API && OF
+	depends on ARCH_ROCKCHIP || COMPILE_TEST
 
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-c6x                  randconfig-a001-20200120
-h8300                randconfig-a001-20200120
-microblaze           randconfig-a001-20200120
-nios2                randconfig-a001-20200120
-sparc64              randconfig-a001-20200120
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-x86_64               randconfig-d001-20200120
-x86_64               randconfig-d002-20200120
-x86_64               randconfig-d003-20200120
-i386                 randconfig-d001-20200120
-i386                 randconfig-d002-20200120
-i386                 randconfig-d003-20200120
-arm                              allmodconfig
-arm64                            allmodconfig
-csky                 randconfig-a001-20200120
-openrisc             randconfig-a001-20200120
-s390                 randconfig-a001-20200120
-sh                   randconfig-a001-20200120
-xtensa               randconfig-a001-20200120
-s390                             alldefconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-i386                             allyesconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-x86_64               randconfig-f001-20200120
-x86_64               randconfig-f002-20200120
-x86_64               randconfig-f003-20200120
-i386                 randconfig-f001-20200120
-i386                 randconfig-f002-20200120
-i386                 randconfig-f003-20200120
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-i386                             alldefconfig
-i386                              allnoconfig
-i386                                defconfig
-parisc                            allnoconfig
-parisc                            allyesonfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-x86_64               randconfig-b001-20200120
-x86_64               randconfig-b002-20200120
-x86_64               randconfig-b003-20200120
-i386                 randconfig-b001-20200120
-i386                 randconfig-b002-20200120
-i386                 randconfig-b003-20200120
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-alpha                randconfig-a001-20200120
-m68k                 randconfig-a001-20200120
-mips                 randconfig-a001-20200120
-nds32                randconfig-a001-20200120
-parisc               randconfig-a001-20200120
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64               randconfig-h001-20200120
-x86_64               randconfig-h002-20200120
-x86_64               randconfig-h003-20200120
-i386                 randconfig-h001-20200120
-i386                 randconfig-h002-20200120
-i386                 randconfig-h003-20200120
-x86_64               randconfig-a001-20200120
-x86_64               randconfig-a002-20200120
-x86_64               randconfig-a003-20200120
-i386                 randconfig-a001-20200120
-i386                 randconfig-a002-20200120
-i386                 randconfig-a003-20200120
-x86_64               randconfig-e001-20200120
-x86_64               randconfig-e002-20200120
-x86_64               randconfig-e003-20200120
-i386                 randconfig-e001-20200120
-i386                 randconfig-e002-20200120
-i386                 randconfig-e003-20200120
-sparc64                          allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-x86_64               randconfig-g001-20200120
-x86_64               randconfig-g002-20200120
-x86_64               randconfig-g003-20200120
-i386                 randconfig-g001-20200120
-i386                 randconfig-g002-20200120
-i386                 randconfig-g003-20200120
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-arc                  randconfig-a001-20200120
-arm                  randconfig-a001-20200120
-arm64                randconfig-a001-20200120
-ia64                 randconfig-a001-20200120
-powerpc              randconfig-a001-20200120
-sparc                randconfig-a001-20200120
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-x86_64               randconfig-c001-20200120
-x86_64               randconfig-c002-20200120
-x86_64               randconfig-c003-20200120
-i386                 randconfig-c001-20200120
-i386                 randconfig-c002-20200120
-i386                 randconfig-c003-20200120
+Just to let the arch-specific/compile test dependency line clearer.
 
----
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
+>  	select VIDEOBUF2_DMA_CONTIG
+>  	select VIDEOBUF2_VMALLOC
+>  	select V4L2_FWNODE
+
+
+Cheers,
+Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
