@@ -1,123 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73719146219
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Jan 2020 07:44:12 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0B3214622A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Jan 2020 07:52:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 63AF68685A;
-	Thu, 23 Jan 2020 06:44:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 75B8F22053;
+	Thu, 23 Jan 2020 06:52:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m6XXgTIKcL7w; Thu, 23 Jan 2020 06:44:09 +0000 (UTC)
+	with ESMTP id Gyl7zH8YBLYu; Thu, 23 Jan 2020 06:52:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0DF06868DC;
-	Thu, 23 Jan 2020 06:44:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2757D20457;
+	Thu, 23 Jan 2020 06:52:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DAA471BF3BB
- for <devel@linuxdriverproject.org>; Thu, 23 Jan 2020 06:44:06 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CE4B51BF3BB
+ for <devel@linuxdriverproject.org>; Thu, 23 Jan 2020 06:52:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D48B9882BD
- for <devel@linuxdriverproject.org>; Thu, 23 Jan 2020 06:44:06 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C751E86ECC
+ for <devel@linuxdriverproject.org>; Thu, 23 Jan 2020 06:52:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jxCgyemGYgE2 for <devel@linuxdriverproject.org>;
- Thu, 23 Jan 2020 06:44:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx05.melco.co.jp (mx05.melco.co.jp [192.218.140.145])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3A469882BB
- for <devel@driverdev.osuosl.org>; Thu, 23 Jan 2020 06:44:05 +0000 (UTC)
-Received: from mr05.melco.co.jp (mr05 [133.141.98.165])
- by mx05.melco.co.jp (Postfix) with ESMTP id 00AFB3A4289;
- Thu, 23 Jan 2020 15:44:03 +0900 (JST)
-Received: from mr05.melco.co.jp (unknown [127.0.0.1])
- by mr05.imss (Postfix) with ESMTP id 483CRQ6LkrzRk1F;
- Thu, 23 Jan 2020 15:44:02 +0900 (JST)
-Received: from mf03_second.melco.co.jp (unknown [192.168.20.183])
- by mr05.melco.co.jp (Postfix) with ESMTP id 483CRQ62QHzRk0m;
- Thu, 23 Jan 2020 15:44:02 +0900 (JST)
-Received: from mf03.melco.co.jp (unknown [133.141.98.183])
- by mf03_second.melco.co.jp (Postfix) with ESMTP id 483CRQ66zCzRk3x;
- Thu, 23 Jan 2020 15:44:02 +0900 (JST)
-Received: from JPN01-TY1-obe.outbound.protection.outlook.com (unknown
- [104.47.93.56])
- by mf03.melco.co.jp (Postfix) with ESMTP id 483CRQ5nPwzRk3C;
- Thu, 23 Jan 2020 15:44:02 +0900 (JST)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HGT0GrIOazlkvahbhhSjX13gi/KKqiq9ojgvv5eIZ8dUfgD2ibGw34mlaLD4YszSHrkkKOsME6KLvGtq+iOZGoXMtVaSGGqCdSRqlnxKFShpAc9RweXOk8Rq5DFLcb/QqT/vIGY7xQ1bG9TWm93vZ3ATV0ZQQrfFCgBXNes0PGhw/mVNQ0smboruHl6WQv07tj0wf+1HRkdBCZwdfeKOlXX3gnAEISpRhfhBttkpCLw+NbVFowAOV/5I+wly6tcLladOze5xgcpwKksviYzmHoaOKMUnCEOc+8zExUcydUsKlV97jiMhXm1S9R5vEp9VC1dq8Ug8D43pAUAKOOZkcg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=22vIouoSaJD1XurebmWnctMZsH2Yy9nbsZ+t+Vwq61M=;
- b=jf1h8VtDCf8Uit0vR8JuECGY2wLXgnRJjzBkJknadJlDh38TEdrNE1IVz7jvRg3buUZf3ViHZwQmkrHWnDI+9R74O6Fum+SksqCGgHPgM8lMJvi4TXVAoRlywshsSelvQ0A4yxGhXuH2+6p3C0h1a5lJvb/+dMNrc43/6yUl1QkJrc56RSc6R1b4wHjanGkkCFtmiG/X6bqOJI3Y5Cq5WfrnTu579J7SkLmj7r8H9FhLjTX5HqKNr1hG22Jix0D8Z84BlNqLVmf6h4zv+QFK/lgLeFxhOWw8zfLxwcGxUdG3eMrNte5rPrmGo8yVzCtze1WZWGsB5zGLSxUEqv00gg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=dc.mitsubishielectric.co.jp; dmarc=pass action=none
- header.from=dc.mitsubishielectric.co.jp; dkim=pass
- header.d=dc.mitsubishielectric.co.jp; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mitsubishielectricgroup.onmicrosoft.com;
- s=selector2-mitsubishielectricgroup-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=22vIouoSaJD1XurebmWnctMZsH2Yy9nbsZ+t+Vwq61M=;
- b=KRpnWVEau7xJAkgdpLwM1JlyL0wmMQ5ZY4YUTx38jiG80H4RecExodLWd9EYwFlRiBals9byZyBkaWqxGzScWAVpDP5jicbVJAr94u7EKIV3iwFW9Chr/09ZO5lKfzPuYBKH+SRmE8q2uSn0O7dY3/npktoXLO9k8reqUcMN83Q=
-Received: from OSAPR01MB1569.jpnprd01.prod.outlook.com (52.134.230.138) by
- OSAPR01MB3858.jpnprd01.prod.outlook.com (20.178.103.79) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2644.18; Thu, 23 Jan 2020 06:44:02 +0000
-Received: from OSAPR01MB1569.jpnprd01.prod.outlook.com
- ([fe80::bc6c:d572:daca:8f1b]) by OSAPR01MB1569.jpnprd01.prod.outlook.com
- ([fe80::bc6c:d572:daca:8f1b%6]) with mapi id 15.20.2644.028; Thu, 23 Jan 2020
- 06:44:02 +0000
-From: "Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp"
+ with ESMTP id PxpwIbioeCim for <devel@linuxdriverproject.org>;
+ Thu, 23 Jan 2020 06:52:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E64E486E1D
+ for <devel@driverdev.osuosl.org>; Thu, 23 Jan 2020 06:52:19 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00N6iNau091086;
+ Thu, 23 Jan 2020 06:52:16 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=corp-2019-08-05;
+ bh=NuRcXMlTm8Bb5dohmxmth9jGE9hSFEME+bJF931/IlY=;
+ b=X48zT7VWXjkmD8/T/ZcSh3QdpAlYNFaOBryEn4nUdJ9m447I9rpzp+bVvA48pqyH8tbu
+ XWyLwYF+6+xukcX0Jq98Lie60CHAyXIslNVItjdGxTyvqGdurUqrK3SEbSxCW1iblvRW
+ ECNFGDz/vbBOLnfWHxh3qJXYkE50laFe7+DC3w+6J0KjWwX4l6fen7WXvRFJrpqrQNum
+ TDiTl7oltyDh1j7bXx2equjI+Qj0cLgRVsV4UeBP3RggEUKqTpo4Epq9Pp5a/VcXZQ7R
+ dqJjd3X1Z7VRFm8YbS9L5FKPMJ3p5sGDEnlaFiqNoNbQpoDCTz4G+FTPZyv/nLVFPteG rg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 2xksyqg8nf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 23 Jan 2020 06:52:16 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00N6iI3l097074;
+ Thu, 23 Jan 2020 06:52:16 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 2xpq0vs8rj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 23 Jan 2020 06:52:15 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 00N6qEhW020600;
+ Thu, 23 Jan 2020 06:52:14 GMT
+Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 22 Jan 2020 22:52:13 -0800
+Date: Thu, 23 Jan 2020 09:52:05 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: "Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp"
  <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-To: 'Greg Kroah-Hartman' <gregkh@linuxfoundation.org>
-Subject: RE: [PATCH] staging: exfat: remove fs_func struct.
-Thread-Topic: [PATCH] staging: exfat: remove fs_func struct.
-Thread-Index: AQHVzP7IYX4lyHjFbkaPkfH+o2iOrqf2af+AgAFosWA=
-Date: Thu, 23 Jan 2020 06:38:53 +0000
-Deferred-Delivery: Thu, 23 Jan 2020 06:43:52 +0000
-Message-ID: <OSAPR01MB1569F24512678DEA1C175504900F0@OSAPR01MB1569.jpnprd01.prod.outlook.com>
+Subject: Re: [PATCH] staging: exfat: remove fs_func struct.
+Message-ID: <20200123065205.GH1847@kadam>
 References: <20200117062046.20491-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
  <20200122085737.GA2511011@kroah.com>
-In-Reply-To: <20200122085737.GA2511011@kroah.com>
-Accept-Language: ja-JP, en-US
-Content-Language: ja-JP
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-melpop: 1
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp; 
-x-originating-ip: [121.80.0.163]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 3af2b68d-4140-4a27-0b06-08d79fcfa215
-x-ms-traffictypediagnostic: OSAPR01MB3858:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <OSAPR01MB3858EFEF096D31441328A5C2900F0@OSAPR01MB3858.jpnprd01.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 029174C036
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(346002)(136003)(366004)(396003)(39860400002)(376002)(199004)(189003)(8676002)(52536014)(66556008)(66476007)(86362001)(66946007)(64756008)(2906002)(76116006)(33656002)(81156014)(4744005)(5660300002)(66446008)(316002)(81166006)(478600001)(6506007)(6916009)(9686003)(8936002)(55016002)(71200400001)(186003)(26005)(7696005)(4326008)(6666004)(54906003)(95630200002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:OSAPR01MB3858;
- H:OSAPR01MB1569.jpnprd01.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:0; MX:1; 
-received-spf: None (protection.outlook.com: dc.MitsubishiElectric.co.jp does
- not designate permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ChgAaa1tmqzYzDSVPdHieFWHdH1Pic/lkno75dFicEWPsSIbdGvh2OCimnGDVM3d+z7UQ+uDYj/aZDXxc+wsKxr+HjGAnvHMlJ/5u728az4SCNneSNxxsq4hwsfstslzDJ30Q5WAh7qe8bNM0410ZZ5ocPacJP//3pX1Na8U5QRChkXB33f4yRAuKB2y0V5Sce/lp/y1Sh1ax4ns4WoSa0VCIZ7g18Lh9J/Hv7PT1hszpDdLvYMJ5Do+cr3FBKoijhjvvNtVeJPkclIdTGttqbsG4tQ6Ok54G0I4te3HpTFU96CJP3uFvwW0o9eECrs9yBZuGb09/CN00LH6vzg0jU7Ukv7eMrnlxBrONUKTKdeF7A0PRoFJsYOktakM29rzLoAl+qoJxGu4INJz2y19hgQh6kt/J8xzkRNTuZMVcMdQgePTcfc2jFkylnoEgRHZTOdQ3uWt7ZohRHoFT3sf5TFZbuxL6u360XqprmDR+8Q0Gk71vTKd0iJCWKwypXDMGWy0e1E1FxiX7xKOweZyznZwBHyPSse2hPhUKCk92V4=
+ <OSAPR01MB1569F24512678DEA1C175504900F0@OSAPR01MB1569.jpnprd01.prod.outlook.com>
 MIME-Version: 1.0
-X-OriginatorOrg: dc.MitsubishiElectric.co.jp
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3af2b68d-4140-4a27-0b06-08d79fcfa215
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jan 2020 06:44:02.1579 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: c5a75b62-4bff-4c96-a720-6621ce9978e5
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: /crYYsOCiKu4JpkITeWkLkOc85INIiJHdSLNKNa3id+PpQNLgDboXxvTJ/D9PHPo/eA/t+uaoaqDvVyFS1jK6Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSAPR01MB3858
+Content-Disposition: inline
+In-Reply-To: <OSAPR01MB1569F24512678DEA1C175504900F0@OSAPR01MB1569.jpnprd01.prod.outlook.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9508
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1911140001 definitions=main-2001230057
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9508
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
+ definitions=main-2001230057
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -132,37 +102,36 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: "'devel@driverdev.osuosl.org'" <devel@driverdev.osuosl.org>,
  'Valdis Kletnieks' <valdis.kletnieks@vt.edu>,
- "Motai.Hirotaka@aj.MitsubishiElectric.co.jp"
- <Motai.Hirotaka@aj.MitsubishiElectric.co.jp>,
- "'linux-kernel@vger.kernel.org'" <linux-kernel@vger.kernel.org>,
  "Mori.Takahiro@ab.MitsubishiElectric.co.jp"
  <Mori.Takahiro@ab.MitsubishiElectric.co.jp>,
+ 'Greg Kroah-Hartman' <gregkh@linuxfoundation.org>,
+ "'linux-kernel@vger.kernel.org'" <linux-kernel@vger.kernel.org>,
+ "Motai.Hirotaka@aj.MitsubishiElectric.co.jp"
+ <Motai.Hirotaka@aj.MitsubishiElectric.co.jp>,
  "'linux-fsdevel@vger.kernel.org'" <linux-fsdevel@vger.kernel.org>
-Content-Type: text/plain; charset="iso-2022-jp"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello, Greg.
-
-Thank you for the quick reply.
-
-> Also the patch does not apply to the linux-next tree at all, so I can't take it.
-The patch I sent was based on the master branch of “https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/”
-and its tag was v5.5-rc6.
-
-> Also the patch does not apply to the linux-next tree at all, so I can't take it.  Please rebase and resend.
-I will send a new patch based on the latest master branch of “https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git”.
-
-
-By the way, could you answer below questions for my sending patches in future?
-1. Which repository and branch should be based when creating a new patch?
-2. How do I inform you about a base on which I create a patch?
-
---
-Best regards,
-Kohada Tetsuhiro <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gVGh1LCBKYW4gMjMsIDIwMjAgYXQgMDY6Mzg6NTNBTSArMDAwMCwgS29oYWRhLlRldHN1aGly
+b0BkYy5NaXRzdWJpc2hpRWxlY3RyaWMuY28uanAgd3JvdGU6Cj4gSGVsbG8sIEdyZWcuCj4gCj4g
+VGhhbmsgeW91IGZvciB0aGUgcXVpY2sgcmVwbHkuCj4gCj4gPiBBbHNvIHRoZSBwYXRjaCBkb2Vz
+IG5vdCBhcHBseSB0byB0aGUgbGludXgtbmV4dCB0cmVlIGF0IGFsbCwgc28gSSBjYW4ndCB0YWtl
+IGl0Lgo+IFRoZSBwYXRjaCBJIHNlbnQgd2FzIGJhc2VkIG9uIHRoZSBtYXN0ZXIgYnJhbmNoIG9m
+IOKAnGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2dyZWdr
+aC9zdGFnaW5nLmdpdC/igJ0KPiBhbmQgaXRzIHRhZyB3YXMgdjUuNS1yYzYuCj4gCj4gPiBBbHNv
+IHRoZSBwYXRjaCBkb2VzIG5vdCBhcHBseSB0byB0aGUgbGludXgtbmV4dCB0cmVlIGF0IGFsbCwg
+c28gSSBjYW4ndCB0YWtlIGl0LiAgUGxlYXNlIHJlYmFzZSBhbmQgcmVzZW5kLgo+IEkgd2lsbCBz
+ZW5kIGEgbmV3IHBhdGNoIGJhc2VkIG9uIHRoZSBsYXRlc3QgbWFzdGVyIGJyYW5jaCBvZiDigJxo
+dHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9uZXh0L2xpbnV4
+LW5leHQuZ2l04oCdLgo+IAo+IAo+IEJ5IHRoZSB3YXksIGNvdWxkIHlvdSBhbnN3ZXIgYmVsb3cg
+cXVlc3Rpb25zIGZvciBteSBzZW5kaW5nIHBhdGNoZXMgaW4gZnV0dXJlPwo+IDEuIFdoaWNoIHJl
+cG9zaXRvcnkgYW5kIGJyYW5jaCBzaG91bGQgYmUgYmFzZWQgd2hlbiBjcmVhdGluZyBhIG5ldyBw
+YXRjaD8KPiAyLiBIb3cgZG8gSSBpbmZvcm0geW91IGFib3V0IGEgYmFzZSBvbiB3aGljaCBJIGNy
+ZWF0ZSBhIHBhdGNoPwoKQWx3YXlzIGJhc2UgaXQgb24gc3RhZ2luZy1uZXh0IG9yIGxpbnV4LW5l
+eHQuCgpObyBuZWVkIHRvIGluZm9ybSB1cy4gIElmIGl0IGRvZXNuJ3QgYXBwbHkgR3JlZyB3aWxs
+IGVtYWlsIHlvdS4KCnJlZ2FyZHMsCmRhbiBjYXJwZW50ZXIKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51
+eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
