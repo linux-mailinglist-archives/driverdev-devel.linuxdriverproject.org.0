@@ -1,45 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 745BD146D12
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Jan 2020 16:38:49 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4ADEC146D15
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Jan 2020 16:38:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 61EC6221D9;
-	Thu, 23 Jan 2020 15:38:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EFB7487633;
+	Thu, 23 Jan 2020 15:38:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id D9chnwe1I-Ok; Thu, 23 Jan 2020 15:38:46 +0000 (UTC)
+	with ESMTP id UFe+cBvejJ6g; Thu, 23 Jan 2020 15:38:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 470AB203F5;
-	Thu, 23 Jan 2020 15:38:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1B60587646;
+	Thu, 23 Jan 2020 15:38:46 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ACB2B1BF3B9
+ by ash.osuosl.org (Postfix) with ESMTP id 590861BF3B9
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 23 Jan 2020 15:38:36 +0000 (UTC)
+ Thu, 23 Jan 2020 15:38:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A5A95882CC
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4448B882EB
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 23 Jan 2020 15:38:36 +0000 (UTC)
+ Thu, 23 Jan 2020 15:38:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SltD-wRDui0C
+ with ESMTP id 8MRK74LYHS+U
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 23 Jan 2020 15:38:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
+ [68.232.149.84])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E3B6D882CC
  for <driverdev-devel@linuxdriverproject.org>;
  Thu, 23 Jan 2020 15:38:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
- [68.232.154.123])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DD91788309
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 23 Jan 2020 15:38:35 +0000 (UTC)
-Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
+Received-SPF: Pass (esa2.microchip.iphmx.com: domain of
  Christian.Gromm@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
  envelope-from="Christian.Gromm@microchip.com";
  x-sender="Christian.Gromm@microchip.com";
  x-conformance=spf_only; x-record-type="v=spf1";
@@ -47,39 +47,39 @@ Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
  a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
  include:servers.mcsv.net include:mktomail.com
  include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa4.microchip.iphmx.com: no sender
+Received-SPF: None (esa2.microchip.iphmx.com: no sender
  authenticity information available from domain of
  postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
  envelope-from="Christian.Gromm@microchip.com";
  x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa4.microchip.iphmx.com;
+Authentication-Results: esa2.microchip.iphmx.com;
  dkim=none (message not signed) header.i=none;
  spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: bMqZnZDEraJBxE8nIYON0pkYG69kMWsh9rQ4mO00Db7QAJXzQyBJ/ScP87JLrxQZ5t9B1RvuhQ
- Gu6NhqU9z3TLQ5KNGUr65czbprxQNlHSSDnMuLbV91LknnhY01r4BCY16nYr5TMIoy7e70wKgq
- H4L3nE3O63RionxHjRqPHPzxnnmZDF8MsEJCSyxpdX1UsNtdGQHvkBvKOMMtMf1HNPtPzJfzFU
- D+0tLZNVwDPziAo1ircyG4XYuGU2fk+JCCb3C0u3N2MBZeB4FeVenPEJFSba9l8NDFu5NgOmlp
- nGU=
-X-IronPort-AV: E=Sophos;i="5.70,354,1574146800"; d="scan'208";a="61987997"
+IronPort-SDR: lNC8a+4Eic8DcT9sx8XmcmQ1KFyjkCNu9k1izPf+I0AJuGlhxRLsDA40aRUFGC3EXfedlcsHd1
+ pX4ftFqtFc78HgVoEMfvP4sxKIwf+Cv4uvXftApu0iiKMgUCWLKghmeMnJaM7UiEp2pVJD/YnE
+ H6yawOigVZ0NzrZCd8HwP8yE3Y0RE8RDLdzxBlXaEedlzoQDaghj4q1/i/d+mi7PN4AEScOd6t
+ ppHisw0JbaaqhT3ZjZPsdV+gvg5fxmQkBgn/tLjIdTu2fl37quFdTB9L8nQf7h9EGVuJa1y84n
+ qoE=
+X-IronPort-AV: E=Sophos;i="5.70,354,1574146800"; d="scan'208";a="63535604"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 23 Jan 2020 08:38:35 -0700
+ by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 23 Jan 2020 08:38:36 -0700
 Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
  chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 23 Jan 2020 08:38:34 -0700
+ 15.1.1713.5; Thu, 23 Jan 2020 08:38:36 -0700
 Received: from localhost.localdomain (10.10.85.251) by
  chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Thu, 23 Jan 2020 08:38:34 -0700
+ 15.1.1713.5 via Frontend Transport; Thu, 23 Jan 2020 08:38:35 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH v4 05/10] staging: most: core: fix logging messages
-Date: Thu, 23 Jan 2020 16:38:21 +0100
-Message-ID: <1579793906-5054-6-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH v4 06/10] staging: next: configfs: fix release link
+Date: Thu, 23 Jan 2020 16:38:22 +0100
+Message-ID: <1579793906-5054-7-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1579793906-5054-1-git-send-email-christian.gromm@microchip.com>
 References: <1579793906-5054-1-git-send-email-christian.gromm@microchip.com>
@@ -103,142 +103,78 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the module's logging messages.
+The functions link_destroy and link_release are both deleting list items.
+link_release, however, does not check whether a certain link has already
+been deleted from the list by function link_destroy. By fixing this
+this patch prevents a kernel crash when removing the configuration
+directory of a link that already has been destroyed.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 ---
 v4:
-	This patch has beed added to the series
+	This patch has been added to the series
 
- drivers/staging/most/core.c | 28 +++++++++++++---------------
- 1 file changed, 13 insertions(+), 15 deletions(-)
+ drivers/staging/most/configfs.c | 26 +++++++++++++++++++-------
+ 1 file changed, 19 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/most/core.c b/drivers/staging/most/core.c
-index a59a35c5..13ab4eece 100644
---- a/drivers/staging/most/core.c
-+++ b/drivers/staging/most/core.c
-@@ -142,7 +142,7 @@ static void flush_channel_fifos(struct most_channel *c)
- 	spin_unlock_irqrestore(&c->fifo_lock, hf_flags);
- 
- 	if (unlikely((!list_empty(&c->fifo) || !list_empty(&c->halt_fifo))))
--		dev_warn(&c->dev, "fifo | trash fifo not empty\n");
-+		dev_warn(&c->dev, "Channel or trash fifo not empty\n");
+diff --git a/drivers/staging/most/configfs.c b/drivers/staging/most/configfs.c
+index 9818f6c..982d1a1 100644
+--- a/drivers/staging/most/configfs.c
++++ b/drivers/staging/most/configfs.c
+@@ -127,6 +127,8 @@ static ssize_t mdev_link_create_link_store(struct config_item *item,
+ 		return ret;
+ 	list_add_tail(&mdev_link->list, &mdev_link_list);
+ 	mdev_link->create_link = tmp;
++	mdev_link->destroy_link = false;
++
+ 	return count;
  }
  
- /**
-@@ -628,7 +628,7 @@ int most_set_cfg_datatype(char *mdev, char *mdev_ch, char *buf)
- 	}
- 
- 	if (i == ARRAY_SIZE(ch_data_type))
--		dev_warn(&c->dev, "invalid attribute settings\n");
-+		dev_warn(&c->dev, "Invalid attribute settings\n");
- 	return 0;
+@@ -142,13 +144,16 @@ static ssize_t mdev_link_destroy_link_store(struct config_item *item,
+ 		return ret;
+ 	if (!tmp)
+ 		return count;
+-	mdev_link->destroy_link = tmp;
++
+ 	ret = most_remove_link(mdev_link->device, mdev_link->channel,
+ 			       mdev_link->comp);
+ 	if (ret)
+ 		return ret;
+ 	if (!list_empty(&mdev_link_list))
+ 		list_del(&mdev_link->list);
++
++	mdev_link->destroy_link = tmp;
++
+ 	return count;
  }
  
-@@ -798,7 +798,7 @@ static int hdm_enqueue_thread(void *data)
- 		mutex_unlock(&c->nq_mutex);
+@@ -377,13 +382,20 @@ static void mdev_link_release(struct config_item *item)
+ 	struct mdev_link *mdev_link = to_mdev_link(item);
+ 	int ret;
  
- 		if (unlikely(ret)) {
--			dev_err(&c->dev, "hdm enqueue failed\n");
-+			dev_err(&c->dev, "Buffer enqueue failed\n");
- 			nq_hdm_mbo(mbo);
- 			c->hdm_enqueue_task = NULL;
- 			return 0;
-@@ -925,7 +925,7 @@ static int arm_mbo_chain(struct most_channel *c, int dir,
- void most_submit_mbo(struct mbo *mbo)
- {
- 	if (WARN_ONCE(!mbo || !mbo->context,
--		      "bad mbo or missing channel reference\n"))
-+		      "Bad buffer or missing channel reference\n"))
- 		return;
- 
- 	nq_hdm_mbo(mbo);
-@@ -944,8 +944,6 @@ static void most_write_completion(struct mbo *mbo)
- 	struct most_channel *c;
- 
- 	c = mbo->context;
--	if (mbo->status == MBO_E_INVAL)
--		dev_warn(&c->dev, "Tx MBO status: invalid\n");
- 	if (unlikely(c->is_poisoned || (mbo->status == MBO_E_CLOSE)))
- 		trash_mbo(mbo);
- 	else
-@@ -1104,14 +1102,14 @@ int most_start_channel(struct most_interface *iface, int id,
- 		goto out; /* already started by another component */
- 
- 	if (!try_module_get(iface->mod)) {
--		dev_err(&c->dev, "failed to acquire HDM lock\n");
-+		dev_err(&c->dev, "Failed to acquire HDM lock\n");
- 		mutex_unlock(&c->start_mutex);
- 		return -ENOLCK;
+-	if (!list_empty(&mdev_link_list)) {
+-		ret = most_remove_link(mdev_link->device, mdev_link->channel,
+-				       mdev_link->comp);
+-		if (ret && (ret != -ENODEV))
+-			pr_err("Removing link failed.\n");
+-		list_del(&mdev_link->list);
++	if (mdev_link->destroy_link)
++		goto free_item;
++
++	ret = most_remove_link(mdev_link->device, mdev_link->channel,
++			       mdev_link->comp);
++	if (ret) {
++		pr_err("Removing link failed.\n");
++		goto free_item;
  	}
++
++	if (!list_empty(&mdev_link_list))
++		list_del(&mdev_link->list);
++
++free_item:
+ 	kfree(to_mdev_link(item));
+ }
  
- 	c->cfg.extra_len = 0;
- 	if (c->iface->configure(c->iface, c->channel_id, &c->cfg)) {
--		dev_err(&c->dev, "channel configuration failed. Go check settings...\n");
-+		dev_err(&c->dev, "Channel configuration failed. Go check settings...\n");
- 		ret = -EINVAL;
- 		goto err_put_module;
- 	}
-@@ -1185,7 +1183,7 @@ int most_stop_channel(struct most_interface *iface, int id,
- 
- 	c->is_poisoned = true;
- 	if (c->iface->poison_channel(c->iface, c->channel_id)) {
--		dev_err(&c->dev, "Cannot stop channel %d of mdev %s\n", c->channel_id,
-+		dev_err(&c->dev, "Failed to stop channel %d of interface %s\n", c->channel_id,
- 			c->iface->description);
- 		mutex_unlock(&c->start_mutex);
- 		return -EAGAIN;
-@@ -1195,7 +1193,7 @@ int most_stop_channel(struct most_interface *iface, int id,
- 
- #ifdef CMPL_INTERRUPTIBLE
- 	if (wait_for_completion_interruptible(&c->cleanup)) {
--		dev_err(&c->dev, "Interrupted while clean up ch %d\n", c->channel_id);
-+		dev_err(&c->dev, "Interrupted while cleaning up channel %d\n", c->channel_id);
- 		mutex_unlock(&c->start_mutex);
- 		return -EINTR;
- 	}
-@@ -1292,7 +1290,7 @@ int most_register_interface(struct most_interface *iface)
- 
- 	id = ida_simple_get(&mdev_id, 0, 0, GFP_KERNEL);
- 	if (id < 0) {
--		dev_err(iface->dev, "Failed to alloc mdev ID\n");
-+		dev_err(iface->dev, "Failed to allocate device ID\n");
- 		return id;
- 	}
- 
-@@ -1309,7 +1307,7 @@ int most_register_interface(struct most_interface *iface)
- 	iface->dev->groups = interface_attr_groups;
- 	dev_set_drvdata(iface->dev, iface);
- 	if (device_register(iface->dev)) {
--		dev_err(iface->dev, "registering iface->dev failed\n");
-+		dev_err(iface->dev, "Failed to register interface device\n");
- 		kfree(iface->p);
- 		put_device(iface->dev);
- 		ida_simple_remove(&mdev_id, id);
-@@ -1353,7 +1351,7 @@ int most_register_interface(struct most_interface *iface)
- 		mutex_init(&c->nq_mutex);
- 		list_add_tail(&c->list, &iface->p->channel_list);
- 		if (device_register(&c->dev)) {
--			dev_err(&c->dev, "registering c->dev failed\n");
-+			dev_err(&c->dev, "Failed to register channel device\n");
- 			goto err_free_most_channel;
- 		}
- 	}
-@@ -1462,12 +1460,12 @@ static int __init most_init(void)
- 
- 	err = bus_register(&mostbus);
- 	if (err) {
--		pr_err("Cannot register most bus\n");
-+		pr_err("Failed to register most bus\n");
- 		return err;
- 	}
- 	err = driver_register(&mostbus_driver);
- 	if (err) {
--		pr_err("Cannot register core driver\n");
-+		pr_err("Failed to register core driver\n");
- 		goto err_unregister_bus;
- 	}
- 	configfs_init();
 -- 
 2.7.4
 
