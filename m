@@ -1,73 +1,140 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC77B1465BB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Jan 2020 11:27:05 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5858314686F
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Jan 2020 13:51:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4EC598587D;
-	Thu, 23 Jan 2020 10:27:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CA99A2201C;
+	Thu, 23 Jan 2020 12:51:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9nkg+A8MCsHW; Thu, 23 Jan 2020 10:27:02 +0000 (UTC)
+	with ESMTP id n9bpF-gqZnW6; Thu, 23 Jan 2020 12:51:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CBC4788330;
-	Thu, 23 Jan 2020 10:26:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BBF80220DD;
+	Thu, 23 Jan 2020 12:51:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 46B301BF2C7
- for <devel@linuxdriverproject.org>; Thu, 23 Jan 2020 10:26:57 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5EB781BF3C6
+ for <devel@linuxdriverproject.org>; Thu, 23 Jan 2020 12:51:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3F3A6872F8
- for <devel@linuxdriverproject.org>; Thu, 23 Jan 2020 10:26:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 50398883A4
+ for <devel@linuxdriverproject.org>; Thu, 23 Jan 2020 12:51:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zGBQhslGacvw for <devel@linuxdriverproject.org>;
- Thu, 23 Jan 2020 10:26:54 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx05.melco.co.jp (mx05.melco.co.jp [192.218.140.145])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 095588704C
- for <devel@driverdev.osuosl.org>; Thu, 23 Jan 2020 10:26:53 +0000 (UTC)
-Received: from mr05.melco.co.jp (mr05 [133.141.98.165])
- by mx05.melco.co.jp (Postfix) with ESMTP id 102CC3A4468;
- Thu, 23 Jan 2020 19:26:52 +0900 (JST)
-Received: from mr05.melco.co.jp (unknown [127.0.0.1])
- by mr05.imss (Postfix) with ESMTP id 483JNW6ydKzRk1F;
- Thu, 23 Jan 2020 19:26:51 +0900 (JST)
-Received: from mf03_second.melco.co.jp (unknown [192.168.20.183])
- by mr05.melco.co.jp (Postfix) with ESMTP id 483JNW6f02zRjtp;
- Thu, 23 Jan 2020 19:26:51 +0900 (JST)
-Received: from mf03.melco.co.jp (unknown [133.141.98.183])
- by mf03_second.melco.co.jp (Postfix) with ESMTP id 483JNW6qZNzRk1c;
- Thu, 23 Jan 2020 19:26:51 +0900 (JST)
-Received: from tux532.tad.melco.co.jp (unknown [133.141.243.226])
- by mf03.melco.co.jp (Postfix) with ESMTP id 483JNW62NwzRjxB;
- Thu, 23 Jan 2020 19:26:51 +0900 (JST)
-Received: from tux532.tad.melco.co.jp
- by tux532.tad.melco.co.jp (unknown) with ESMTP id 00NAQpZp018360;
- Thu, 23 Jan 2020 19:26:51 +0900
-Received: from tux390.tad.melco.co.jp (tux390.tad.melco.co.jp [127.0.0.1])
- by postfix.imss70 (Postfix) with ESMTP id 9580817E075;
- Thu, 23 Jan 2020 19:26:51 +0900 (JST)
-Received: from tux554.tad.melco.co.jp (tux100.tad.melco.co.jp [10.168.7.223])
- by tux390.tad.melco.co.jp (Postfix) with ESMTP id 893D617E073;
- Thu, 23 Jan 2020 19:26:51 +0900 (JST)
-Received: from tux554.tad.melco.co.jp
- by tux554.tad.melco.co.jp (unknown) with ESMTP id 00NAQpNr030556;
- Thu, 23 Jan 2020 19:26:51 +0900
-From: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-To: Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v3] staging: exfat: remove fs_func struct.
-Date: Thu, 23 Jan 2020 19:24:45 +0900
-Message-Id: <20200123102445.123033-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-X-Mailer: git-send-email 2.25.0
+ with ESMTP id 5EFWngJb2UXK for <devel@linuxdriverproject.org>;
+ Thu, 23 Jan 2020 12:51:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
+ [68.232.147.91])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B647B88402
+ for <devel@driverdev.osuosl.org>; Thu, 23 Jan 2020 12:51:15 +0000 (UTC)
+Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
+ Ajay.Kathat@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
+ x-record-type="v=spf1"; x-record-text="v=spf1 mx
+ a:ushub1.microchip.com a:smtpout.microchip.com
+ -exists:%{i}.spf.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa1.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa1.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: 0eeL+rWl+0q4eUPkEEAe7TsdKnGw7MDuu7EnLo2hK5KX+d7uJ0h3ZU/K+YDuMdlnL4biBXHjuE
+ btzRvFWotfhw7WX0hl83KRA6HDOw19p4MgmmN1md8SdxVnnlcl0H7ej0szK0yzYxQVd6tBSCW8
+ VsxoxGrN78OJYw3KAqECCbpOdp3Wo7OqCPo6Eb3ysHxqX6H5o43F1d25f4qSwUbjBuIwEXyGan
+ qRNC8CUW351Wl1kqtSN1eoXjKaLqZb86u7CVOdJ6h82HYN1M5wsVAZ/rrn4mps5FTNfjwfY8ga
+ F4w=
+X-IronPort-AV: E=Sophos;i="5.70,353,1574146800"; d="scan'208";a="65725542"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 23 Jan 2020 05:50:52 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Thu, 23 Jan 2020 05:50:52 -0700
+Received: from NAM02-BL2-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Thu, 23 Jan 2020 05:50:52 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=StEpnUPkOPu7N4Hh/BJNZA8jwrZjwIBO1KB4pHHv4FQ72M+PvzhZnuHn8W1M0M7wKTFakEM/YO94Fa1RbK01zqvbKbIxqTH4E/DwT8HkO1mgCGDTNYbkyoeSVk0K4S33FfNo9aoA80jbkpLr/GS8nt+gkQLkcgWLMYam0QCBkix3rYEv6zQToOfwUOi0sT4OHtwEeW1f7pWpe6o3+ikgJHyJYHVLJuheRDFmkoFHcs59BszZKf2huk7dz2vYA+O9gTYPhJh14AfElZr7w6nLRog4XhiUt+dDXKGfSoczJxXntve65aCdt7r+WHs2gHZFw3+uUNIdwlEGK3d8hAtJIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6P/np4wgG4C6hjSQBwpdjYBqxlJMLFE8j1paJgaNcuE=;
+ b=bKKPHwIpY+USq7Zw2+dkiKXDHBNSkRodlIQfk8zXA4J/X+GniidAJ4U+ZM/DwEya6oQyM8UBnJAihGLi8Ww9TQ1Vh4OpccAAW1Yr1lOk0jHyvHbqtuHihEvmNIqlJQMRqWzC4gWdPhNS/d6e7+VerTtIbiQdmCWoNbj0ENg96AqAd+oL5rebTYNicps2MDeNP/ZlcRaKjn3IcIWm19Z/I0QtXSolXs5sWYha2Q7RrZmV4bNnwTn1kuG2UWlMrYwlGD1mQ/cEwR/25XTjoG3JwOA3Bq2ZE8fu+9ydAzjLich4kO8v8o8t4xNuIekSGyh2hh/p/V/DVnIHF/YgoNOTbA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6P/np4wgG4C6hjSQBwpdjYBqxlJMLFE8j1paJgaNcuE=;
+ b=L7o0BX/nk6NZij9GU8qLjL43ki3E+9lku32hFiWCISmVSJaWTx7B/5/cXoRiRpFvuEHaHb9qA0g57ff5/9SXKpcX88901rxoYO+Nt7uEec2ML+hYheh7lEcz7txzOZTd02r380nkAk9ocQP/kMRA3HsanXThxW7OgzkEGleifXY=
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com (10.255.129.78) by
+ BN6PR11MB1507.namprd11.prod.outlook.com (10.172.20.147) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2644.20; Thu, 23 Jan 2020 12:50:48 +0000
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::584d:cea5:1dfc:7e61]) by BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::584d:cea5:1dfc:7e61%3]) with mapi id 15.20.2644.028; Thu, 23 Jan 2020
+ 12:50:48 +0000
+From: <Ajay.Kathat@microchip.com>
+To: <linux-wireless@vger.kernel.org>
+Subject: [PATCH 1/2] staging: wilc1000: return zero on success and non-zero on
+ function failure
+Thread-Topic: [PATCH 1/2] staging: wilc1000: return zero on success and
+ non-zero on function failure
+Thread-Index: AQHV0eu8bTZ/RdN5BkGJQfFUn4Ja4g==
+Date: Thu, 23 Jan 2020 12:50:47 +0000
+Message-ID: <20200123182129.4053-1-ajay.kathat@microchip.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: git-send-email 2.17.1
+x-originating-ip: [121.244.27.38]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 8ff1edeb-bdbc-4a9f-cf2c-08d7a002dea5
+x-ms-traffictypediagnostic: BN6PR11MB1507:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BN6PR11MB1507FE94B84A7EBA9C7064FEE30F0@BN6PR11MB1507.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:46;
+x-forefront-prvs: 029174C036
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(396003)(376002)(136003)(39860400002)(346002)(366004)(199004)(189003)(26005)(30864003)(5660300002)(36756003)(2906002)(107886003)(4326008)(6916009)(54906003)(6486002)(186003)(478600001)(316002)(86362001)(6506007)(81156014)(8676002)(71200400001)(66556008)(76116006)(91956017)(2616005)(66446008)(66946007)(66476007)(64756008)(6512007)(966005)(81166006)(8936002)(1076003)(559001)(569006);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1507;
+ H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: aLzc6Nc9hjV+Hi4CSJ1GYrIY96YMN4Kq2PEHUZg24++OWZ+j1rCpuO4YiooqjpFvJCofZ5hS1NSLVBwlXZcsddyoVInxYXL1TZsjwzH2L1/IGSaHJXKbWW05m672tvXMUolZf7wbO7nOpVQDotag7gVByZzFNHCxJCLfo2TSMCaxi4qzKKabuINs+I7zx+JbUVBV2JJp0pZHpa1OJvufWG/EPMFczn8JVaFnz5p1C2QtF57RH2a7dMTAZ86RxzaPcwqAsfghwEPbSCg/xvDLHMG/S02INXBNtFQViNyDnQEDXlNSjxrbk6TFlRzCZm5RIpe41zDmzKrmDmqwUjVFY85hFdMNJTsTYqGRM+lWPtvp3F4ZQqUxK/Acr9AWIC3h5whRvZdmn4fVhiXURfYiNCiqFr+Fbp3iJewIKigwI5IgI9Z73+jd+aiBxsK/oYpOTPflrCLQt60Vx7Ukd5ZVUpyNWg0DnLqpy1RZxQ6p9mSlNQtuUig/Rf28RY0bTYCbTf+PvTBbVm8QdFBQrLNxJQ==
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8ff1edeb-bdbc-4a9f-cf2c-08d7a002dea5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jan 2020 12:50:47.9673 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ccEJW6Y54QsXGgBrwWeXkNZ6AZT0Gh2lZmHcH0M86FJrRvUEPkZ/FcCls4hyc3MOB1e90kskYqcjcx+/GsiB2BWSEkla1TGzUl68u+s94go=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1507
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,1100 +147,1407 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp,
- Mori.Takahiro@ab.MitsubishiElectric.co.jp,
- motai.hirotaka@aj.mitsubishielectric.co.jp
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
+ Adham.Abozaeid@microchip.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: "Tetsuhiro Kohada" <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+From: Ajay Singh <ajay.kathat@microchip.com>
 
-Remove 'fs_func struct' and change indirect calls to direct calls.
+Some of the HIF layer API's return zero for failure and non-zero for
+success condition. Now, modified the functions to return zero for success
+and non-zero for failure as its recommended approach suggested in [1].
 
-The following issues are described in exfat's TODO.
-> Create helper function for exfat_set_entry_time () and
-> exfat_set_entry_type () because it's sort of ugly to be calling the same functionn directly and other code calling through  the fs_func struc ponters ...
+1. https://lore.kernel.org/driverdev-devel/20191113183322.a54mh2w6dulklgsd@kili.mountain/
 
-The fs_func struct was used for switching the helper functions of fat16/fat32/exfat.
-Now, it has lost the role of switching, just making the code less readable.
-
-Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
 ---
-Changes in v3:
-- Add patch versions.
+ drivers/staging/wilc1000/netdev.c |  45 +++-----
+ drivers/staging/wilc1000/sdio.c   | 178 +++++++++++++-----------------
+ drivers/staging/wilc1000/spi.c    | 138 ++++++++++++-----------
+ drivers/staging/wilc1000/wlan.c   |  75 +++++++------
+ 4 files changed, 197 insertions(+), 239 deletions(-)
 
-Changes in v2:
-- Rebase to the 'linux-next' tree.
-- Change signature to full name.
-
- drivers/staging/exfat/exfat.h       |  79 +++++-----
- drivers/staging/exfat/exfat_core.c  | 214 +++++++++++-----------------
- drivers/staging/exfat/exfat_super.c | 119 ++++++++--------
- 3 files changed, 178 insertions(+), 234 deletions(-)
-
-diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index 3865c17027..4d87360fab 100644
---- a/drivers/staging/exfat/exfat.h
-+++ b/drivers/staging/exfat/exfat.h
-@@ -516,49 +516,6 @@ struct buf_cache_t {
- 	struct buffer_head   *buf_bh;
- };
- 
--struct fs_func {
--	s32	(*alloc_cluster)(struct super_block *sb, s32 num_alloc,
--				 struct chain_t *p_chain);
--	void	(*free_cluster)(struct super_block *sb, struct chain_t *p_chain,
--				s32 do_relse);
--	s32	(*count_used_clusters)(struct super_block *sb);
--
--	s32	(*init_dir_entry)(struct super_block *sb, struct chain_t *p_dir,
--				  s32 entry, u32 type, u32 start_clu, u64 size);
--	s32	(*init_ext_entry)(struct super_block *sb, struct chain_t *p_dir,
--				  s32 entry, s32 num_entries,
--				  struct uni_name_t *p_uniname,
--				  struct dos_name_t *p_dosname);
--	s32	(*find_dir_entry)(struct super_block *sb, struct chain_t *p_dir,
--				  struct uni_name_t *p_uniname, s32 num_entries,
--				  struct dos_name_t *p_dosname, u32 type);
--	void	(*delete_dir_entry)(struct super_block *sb,
--				    struct chain_t *p_dir, s32 entry,
--				    s32 offset, s32 num_entries);
--	void	(*get_uni_name_from_ext_entry)(struct super_block *sb,
--					       struct chain_t *p_dir, s32 entry,
--					       u16 *uniname);
--	s32	(*count_ext_entries)(struct super_block *sb,
--				     struct chain_t *p_dir, s32 entry,
--				     struct dentry_t *p_entry);
--	s32	(*calc_num_entries)(struct uni_name_t *p_uniname);
--
--	u32	(*get_entry_type)(struct dentry_t *p_entry);
--	void	(*set_entry_type)(struct dentry_t *p_entry, u32 type);
--	u32	(*get_entry_attr)(struct dentry_t *p_entry);
--	void	(*set_entry_attr)(struct dentry_t *p_entry, u32 attr);
--	u8	(*get_entry_flag)(struct dentry_t *p_entry);
--	void	(*set_entry_flag)(struct dentry_t *p_entry, u8 flag);
--	u32	(*get_entry_clu0)(struct dentry_t *p_entry);
--	void	(*set_entry_clu0)(struct dentry_t *p_entry, u32 clu0);
--	u64	(*get_entry_size)(struct dentry_t *p_entry);
--	void	(*set_entry_size)(struct dentry_t *p_entry, u64 size);
--	void	(*get_entry_time)(struct dentry_t *p_entry,
--				  struct timestamp_t *tp, u8 mode);
--	void	(*set_entry_time)(struct dentry_t *p_entry,
--				  struct timestamp_t *tp, u8 mode);
--};
--
- struct fs_info_t {
- 	u32      drv;                    /* drive ID */
- 	u32      vol_type;               /* volume FAT type */
-@@ -597,7 +554,6 @@ struct fs_info_t {
- 
- 	u32 dev_ejected;	/* block device operation error flag */
- 
--	struct fs_func *fs_func;
- 	struct mutex v_mutex;
- 
- 	/* FAT cache */
-@@ -829,5 +785,40 @@ int exfat_bdev_write(struct super_block *sb, sector_t secno,
- 	       struct buffer_head *bh, u32 num_secs, bool sync);
- int exfat_bdev_sync(struct super_block *sb);
- 
-+/* cluster operation functions */
-+s32 exfat_alloc_cluster(struct super_block *sb, s32 num_alloc,
-+			struct chain_t *p_chain);
-+void exfat_free_cluster(struct super_block *sb, struct chain_t *p_chain,
-+			s32 do_relse);
-+s32 exfat_count_used_clusters(struct super_block *sb);
-+
-+/* dir operation functions */
-+s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
-+			 struct uni_name_t *p_uniname, s32 num_entries,
-+			 struct dos_name_t *p_dosname, u32 type);
-+void exfat_delete_dir_entry(struct super_block *sb, struct chain_t *p_dir,
-+			    s32 entry, s32 order, s32 num_entries);
-+void exfat_get_uni_name_from_ext_entry(struct super_block *sb,
-+				       struct chain_t *p_dir, s32 entry,
-+				       u16 *uniname);
-+s32 exfat_count_ext_entries(struct super_block *sb, struct chain_t *p_dir,
-+			    s32 entry, struct dentry_t *p_entry);
-+s32 exfat_calc_num_entries(struct uni_name_t *p_uniname);
-+
-+/* dir entry getter/setter */
-+u32 exfat_get_entry_type(struct dentry_t *p_entry);
-+u32 exfat_get_entry_attr(struct dentry_t *p_entry);
-+void exfat_set_entry_attr(struct dentry_t *p_entry, u32 attr);
-+u8 exfat_get_entry_flag(struct dentry_t *p_entry);
-+void exfat_set_entry_flag(struct dentry_t *p_entry, u8 flags);
-+u32 exfat_get_entry_clu0(struct dentry_t *p_entry);
-+void exfat_set_entry_clu0(struct dentry_t *p_entry, u32 start_clu);
-+u64 exfat_get_entry_size(struct dentry_t *p_entry);
-+void exfat_set_entry_size(struct dentry_t *p_entry, u64 size);
-+void exfat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
-+			  u8 mode);
-+void exfat_set_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
-+			  u8 mode);
-+
- extern const u8 uni_upcase[];
- #endif /* _EXFAT_H */
-diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
-index 36a4102c05..07b460d013 100644
---- a/drivers/staging/exfat/exfat_core.c
-+++ b/drivers/staging/exfat/exfat_core.c
-@@ -249,8 +249,8 @@ static u32 test_alloc_bitmap(struct super_block *sb, u32 clu)
- 	return CLUSTER_32(~0);
- }
- 
--static s32 exfat_alloc_cluster(struct super_block *sb, s32 num_alloc,
--			       struct chain_t *p_chain)
-+s32 exfat_alloc_cluster(struct super_block *sb, s32 num_alloc,
-+			struct chain_t *p_chain)
+diff --git a/drivers/staging/wilc1000/netdev.c b/drivers/staging/wilc1000/netdev.c
+index 960dbc8d5173..0f48e74aa3ea 100644
+--- a/drivers/staging/wilc1000/netdev.c
++++ b/drivers/staging/wilc1000/netdev.c
+@@ -183,7 +183,7 @@ static int wilc_wlan_get_firmware(struct net_device *dev)
  {
- 	s32 num_clusters = 0;
- 	u32 hint_clu, new_clu, last_clu = CLUSTER_32(~0);
-@@ -328,8 +328,8 @@ static s32 exfat_alloc_cluster(struct super_block *sb, s32 num_alloc,
- 	return num_clusters;
- }
+ 	struct wilc_vif *vif = netdev_priv(dev);
+ 	struct wilc *wilc = vif->wilc;
+-	int chip_id, ret = 0;
++	int chip_id;
+ 	const struct firmware *wilc_firmware;
+ 	char *firmware;
  
--static void exfat_free_cluster(struct super_block *sb, struct chain_t *p_chain,
--			       s32 do_relse)
-+void exfat_free_cluster(struct super_block *sb, struct chain_t *p_chain,
-+			s32 do_relse)
- {
- 	s32 num_clusters = 0;
- 	u32 clu;
-@@ -434,7 +434,7 @@ s32 count_num_clusters(struct super_block *sb, struct chain_t *p_chain)
- 	return count;
- }
+@@ -198,14 +198,11 @@ static int wilc_wlan_get_firmware(struct net_device *dev)
  
--static s32 exfat_count_used_clusters(struct super_block *sb)
-+s32 exfat_count_used_clusters(struct super_block *sb)
- {
- 	int i, map_i, map_b, count = 0;
- 	u8 k;
-@@ -499,7 +499,7 @@ s32 load_alloc_bitmap(struct super_block *sb)
- 			if (!ep)
- 				return -ENOENT;
- 
--			type = p_fs->fs_func->get_entry_type((struct dentry_t *)ep);
-+			type = exfat_get_entry_type((struct dentry_t *)ep);
- 
- 			if (type == TYPE_UNUSED)
- 				break;
-@@ -745,7 +745,7 @@ s32 load_upcase_table(struct super_block *sb)
- 			if (!ep)
- 				return -ENOENT;
- 
--			type = p_fs->fs_func->get_entry_type((struct dentry_t *)ep);
-+			type = exfat_get_entry_type((struct dentry_t *)ep);
- 
- 			if (type == TYPE_UNUSED)
- 				break;
-@@ -787,7 +787,7 @@ void free_upcase_table(struct super_block *sb)
-  *  Directory Entry Management Functions
-  */
- 
--static u32 exfat_get_entry_type(struct dentry_t *p_entry)
-+u32 exfat_get_entry_type(struct dentry_t *p_entry)
- {
- 	struct file_dentry_t *ep = (struct file_dentry_t *)p_entry;
- 
-@@ -862,56 +862,56 @@ static void exfat_set_entry_type(struct dentry_t *p_entry, u32 type)
+ 	if (request_firmware(&wilc_firmware, firmware, wilc->dev) != 0) {
+ 		netdev_err(dev, "%s - firmware not available\n", firmware);
+-		ret = -1;
+-		goto fail;
++		return -EINVAL;
  	}
+ 	wilc->firmware = wilc_firmware;
+ 
+-fail:
+-
+-	return ret;
++	return 0;
  }
  
--static u32 exfat_get_entry_attr(struct dentry_t *p_entry)
-+u32 exfat_get_entry_attr(struct dentry_t *p_entry)
- {
- 	struct file_dentry_t *ep = (struct file_dentry_t *)p_entry;
+ static int wilc_start_firmware(struct net_device *dev)
+@@ -215,7 +212,7 @@ static int wilc_start_firmware(struct net_device *dev)
+ 	int ret = 0;
  
- 	return (u32)GET16_A(ep->attr);
- }
+ 	ret = wilc_wlan_start(wilc);
+-	if (ret < 0)
++	if (ret)
+ 		return ret;
  
--static void exfat_set_entry_attr(struct dentry_t *p_entry, u32 attr)
-+void exfat_set_entry_attr(struct dentry_t *p_entry, u32 attr)
- {
- 	struct file_dentry_t *ep = (struct file_dentry_t *)p_entry;
+ 	if (!wait_for_completion_timeout(&wilc->sync_event,
+@@ -238,7 +235,7 @@ static int wilc1000_firmware_download(struct net_device *dev)
  
- 	SET16_A(ep->attr, (u16)attr);
- }
+ 	ret = wilc_wlan_firmware_download(wilc, wilc->firmware->data,
+ 					  wilc->firmware->size);
+-	if (ret < 0)
++	if (ret)
+ 		return ret;
  
--static u8 exfat_get_entry_flag(struct dentry_t *p_entry)
-+u8 exfat_get_entry_flag(struct dentry_t *p_entry)
- {
- 	struct strm_dentry_t *ep = (struct strm_dentry_t *)p_entry;
- 
- 	return ep->flags;
- }
- 
--static void exfat_set_entry_flag(struct dentry_t *p_entry, u8 flags)
-+void exfat_set_entry_flag(struct dentry_t *p_entry, u8 flags)
- {
- 	struct strm_dentry_t *ep = (struct strm_dentry_t *)p_entry;
- 
- 	ep->flags = flags;
- }
- 
--static u32 exfat_get_entry_clu0(struct dentry_t *p_entry)
-+u32 exfat_get_entry_clu0(struct dentry_t *p_entry)
- {
- 	struct strm_dentry_t *ep = (struct strm_dentry_t *)p_entry;
- 
- 	return GET32_A(ep->start_clu);
- }
- 
--static void exfat_set_entry_clu0(struct dentry_t *p_entry, u32 start_clu)
-+void exfat_set_entry_clu0(struct dentry_t *p_entry, u32 start_clu)
- {
- 	struct strm_dentry_t *ep = (struct strm_dentry_t *)p_entry;
- 
- 	SET32_A(ep->start_clu, start_clu);
- }
- 
--static u64 exfat_get_entry_size(struct dentry_t *p_entry)
-+u64 exfat_get_entry_size(struct dentry_t *p_entry)
- {
- 	struct strm_dentry_t *ep = (struct strm_dentry_t *)p_entry;
- 
- 	return GET64_A(ep->valid_size);
- }
- 
--static void exfat_set_entry_size(struct dentry_t *p_entry, u64 size)
-+void exfat_set_entry_size(struct dentry_t *p_entry, u64 size)
- {
- 	struct strm_dentry_t *ep = (struct strm_dentry_t *)p_entry;
- 
-@@ -919,8 +919,8 @@ static void exfat_set_entry_size(struct dentry_t *p_entry, u64 size)
- 	SET64_A(ep->size, size);
- }
- 
--static void exfat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
--				 u8 mode)
-+void exfat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
-+			  u8 mode)
- {
- 	u16 t = 0x00, d = 0x21;
- 	struct file_dentry_t *ep = (struct file_dentry_t *)p_entry;
-@@ -948,8 +948,8 @@ static void exfat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *t
- 	tp->year = (d >> 9);
- }
- 
--static void exfat_set_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
--				 u8 mode)
-+void exfat_set_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
-+			  u8 mode)
- {
- 	u16 t, d;
- 	struct file_dentry_t *ep = (struct file_dentry_t *)p_entry;
-@@ -1088,20 +1088,19 @@ static s32 exfat_init_ext_entry(struct super_block *sb, struct chain_t *p_dir,
+ 	release_firmware(wilc->firmware);
+@@ -417,7 +414,7 @@ static int wilc_init_fw_config(struct net_device *dev, struct wilc_vif *vif)
  	return 0;
+ 
+ fail:
+-	return -1;
++	return -EINVAL;
  }
  
--static void exfat_delete_dir_entry(struct super_block *sb, struct chain_t *p_dir,
--				   s32 entry, s32 order, s32 num_entries)
-+void exfat_delete_dir_entry(struct super_block *sb, struct chain_t *p_dir,
-+			    s32 entry, s32 order, s32 num_entries)
- {
- 	int i;
- 	sector_t sector;
- 	struct dentry_t *ep;
--	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
- 	for (i = order; i < num_entries; i++) {
- 		ep = get_entry_in_dir(sb, p_dir, entry + i, &sector);
- 		if (!ep)
- 			return;
- 
--		p_fs->fs_func->set_entry_type(ep, TYPE_DELETED);
-+		exfat_set_entry_type(ep, TYPE_DELETED);
- 		exfat_buf_modify(sb, sector);
- 	}
- }
-@@ -1366,7 +1365,7 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
- 		goto err_out;
- 
- 	ep = (struct dentry_t *)(buf + off);
--	entry_type = p_fs->fs_func->get_entry_type(ep);
-+	entry_type = exfat_get_entry_type(ep);
- 
- 	if ((entry_type != TYPE_FILE) && (entry_type != TYPE_DIR))
- 		goto err_out;
-@@ -1396,7 +1395,7 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
- 		 * instead of copying whole sector, we will check every entry.
- 		 * this will provide minimum stablity and consistency.
- 		 */
--		entry_type = p_fs->fs_func->get_entry_type(ep);
-+		entry_type = exfat_get_entry_type(ep);
- 
- 		if ((entry_type == TYPE_UNUSED) || (entry_type == TYPE_DELETED))
- 			goto err_out;
-@@ -1540,7 +1539,7 @@ static s32 search_deleted_or_unused_entry(struct super_block *sb,
- 			if (!ep)
- 				return -1;
- 
--			type = p_fs->fs_func->get_entry_type(ep);
-+			type = exfat_get_entry_type(ep);
- 
- 			if (type == TYPE_UNUSED) {
- 				num_empty++;
-@@ -1614,7 +1613,7 @@ static s32 find_empty_entry(struct inode *inode, struct chain_t *p_dir, s32 num_
- 		clu.flags = p_dir->flags;
- 
- 		/* (1) allocate a cluster */
--		ret = p_fs->fs_func->alloc_cluster(sb, 1, &clu);
-+		ret = exfat_alloc_cluster(sb, 1, &clu);
- 		if (ret < 1)
- 			return -EIO;
- 
-@@ -1650,8 +1649,8 @@ static s32 find_empty_entry(struct inode *inode, struct chain_t *p_dir, s32 num_
- 					      fid->entry + 1, &sector);
- 			if (!ep)
- 				return -ENOENT;
--			p_fs->fs_func->set_entry_size(ep, size);
--			p_fs->fs_func->set_entry_flag(ep, p_dir->flags);
-+			exfat_set_entry_size(ep, size);
-+			exfat_set_entry_flag(ep, p_dir->flags);
- 			exfat_buf_modify(sb, sector);
- 
- 			update_dir_checksum(sb, &fid->dir,
-@@ -1690,9 +1689,9 @@ static s32 extract_uni_name_from_name_entry(struct name_dentry_t *ep, u16 *unina
-  * -1 : (root dir, ".") it is the root dir itself
-  * -2 : entry with the name does not exist
-  */
--static s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
--				struct uni_name_t *p_uniname, s32 num_entries,
--				struct dos_name_t *p_dosname, u32 type)
-+s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
-+			 struct uni_name_t *p_uniname, s32 num_entries,
-+			 struct dos_name_t *p_dosname, u32 type)
- {
- 	int i = 0, dentry = 0, num_ext_entries = 0, len, step;
- 	s32 order = 0;
-@@ -1736,7 +1735,7 @@ static s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 			if (!ep)
- 				return -2;
- 
--			entry_type = p_fs->fs_func->get_entry_type(ep);
-+			entry_type = exfat_get_entry_type(ep);
- 			step = 1;
- 
- 			if ((entry_type == TYPE_UNUSED) || (entry_type == TYPE_DELETED)) {
-@@ -1833,21 +1832,20 @@ static s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
- 	return -2;
- }
- 
--static s32 exfat_count_ext_entries(struct super_block *sb, struct chain_t *p_dir,
--				   s32 entry, struct dentry_t *p_entry)
-+s32 exfat_count_ext_entries(struct super_block *sb, struct chain_t *p_dir,
-+			    s32 entry, struct dentry_t *p_entry)
- {
- 	int i, count = 0;
- 	u32 type;
- 	struct file_dentry_t *file_ep = (struct file_dentry_t *)p_entry;
- 	struct dentry_t *ext_ep;
--	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
- 	for (i = 0, entry++; i < file_ep->num_ext; i++, entry++) {
- 		ext_ep = get_entry_in_dir(sb, p_dir, entry, NULL);
- 		if (!ext_ep)
- 			return -1;
- 
--		type = p_fs->fs_func->get_entry_type(ext_ep);
-+		type = exfat_get_entry_type(ext_ep);
- 		if ((type == TYPE_EXTEND) || (type == TYPE_STREAM))
- 			count++;
- 		else
-@@ -1885,7 +1883,7 @@ s32 count_dos_name_entries(struct super_block *sb, struct chain_t *p_dir,
- 			if (!ep)
- 				return -ENOENT;
- 
--			entry_type = p_fs->fs_func->get_entry_type(ep);
-+			entry_type = exfat_get_entry_type(ep);
- 
- 			if (entry_type == TYPE_UNUSED)
- 				return count;
-@@ -1941,7 +1939,7 @@ bool is_dir_empty(struct super_block *sb, struct chain_t *p_dir)
- 			if (!ep)
- 				break;
- 
--			type = p_fs->fs_func->get_entry_type(ep);
-+			type = exfat_get_entry_type(ep);
- 
- 			if (type == TYPE_UNUSED)
- 				return true;
-@@ -1985,9 +1983,8 @@ s32 get_num_entries_and_dos_name(struct super_block *sb, struct chain_t *p_dir,
- 				 struct dos_name_t *p_dosname)
- {
- 	s32 num_entries;
--	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
--	num_entries = p_fs->fs_func->calc_num_entries(p_uniname);
-+	num_entries = exfat_calc_num_entries(p_uniname);
- 	if (num_entries == 0)
- 		return -EINVAL;
- 
-@@ -1996,14 +1993,13 @@ s32 get_num_entries_and_dos_name(struct super_block *sb, struct chain_t *p_dir,
- 	return 0;
- }
- 
--static void exfat_get_uni_name_from_ext_entry(struct super_block *sb,
--					      struct chain_t *p_dir, s32 entry,
--					      u16 *uniname)
-+void exfat_get_uni_name_from_ext_entry(struct super_block *sb,
-+				       struct chain_t *p_dir, s32 entry,
-+				       u16 *uniname)
- {
- 	int i;
- 	struct dentry_t *ep;
- 	struct entry_set_cache_t *es;
--	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
- 	es = get_entry_set_in_dir(sb, p_dir, entry, ES_ALL_ENTRIES, &ep);
- 	if (!es || es->num_entries < 3) {
-@@ -2021,7 +2017,7 @@ static void exfat_get_uni_name_from_ext_entry(struct super_block *sb,
- 	 * So, the index of first file-name dentry should start from 2.
- 	 */
- 	for (i = 2; i < es->num_entries; i++, ep++) {
--		if (p_fs->fs_func->get_entry_type(ep) == TYPE_EXTEND)
-+		if (exfat_get_entry_type(ep) == TYPE_EXTEND)
- 			extract_uni_name_from_name_entry((struct name_dentry_t *)
- 							 ep, uniname, i);
- 		else
-@@ -2033,7 +2029,7 @@ static void exfat_get_uni_name_from_ext_entry(struct super_block *sb,
- 	release_entry_set(es);
- }
- 
--static s32 exfat_calc_num_entries(struct uni_name_t *p_uniname)
-+s32 exfat_calc_num_entries(struct uni_name_t *p_uniname)
- {
- 	s32 len;
- 
-@@ -2101,36 +2097,6 @@ s32 resolve_path(struct inode *inode, char *path, struct chain_t *p_dir,
- 	return 0;
- }
- 
--/*
-- *  File Operation Functions
-- */
--static struct fs_func exfat_fs_func = {
--	.alloc_cluster = exfat_alloc_cluster,
--	.free_cluster = exfat_free_cluster,
--	.count_used_clusters = exfat_count_used_clusters,
--
--	.init_dir_entry = exfat_init_dir_entry,
--	.init_ext_entry = exfat_init_ext_entry,
--	.find_dir_entry = exfat_find_dir_entry,
--	.delete_dir_entry = exfat_delete_dir_entry,
--	.get_uni_name_from_ext_entry = exfat_get_uni_name_from_ext_entry,
--	.count_ext_entries = exfat_count_ext_entries,
--	.calc_num_entries = exfat_calc_num_entries,
--
--	.get_entry_type = exfat_get_entry_type,
--	.set_entry_type = exfat_set_entry_type,
--	.get_entry_attr = exfat_get_entry_attr,
--	.set_entry_attr = exfat_set_entry_attr,
--	.get_entry_flag = exfat_get_entry_flag,
--	.set_entry_flag = exfat_set_entry_flag,
--	.get_entry_clu0 = exfat_get_entry_clu0,
--	.set_entry_clu0 = exfat_set_entry_clu0,
--	.get_entry_size = exfat_get_entry_size,
--	.set_entry_size = exfat_set_entry_size,
--	.get_entry_time = exfat_get_entry_time,
--	.set_entry_time = exfat_set_entry_time,
--};
--
- s32 exfat_mount(struct super_block *sb, struct pbr_sector_t *p_pbr)
- {
- 	struct bpbex_t *p_bpb = (struct bpbex_t *)p_pbr->bpb;
-@@ -2174,8 +2140,6 @@ s32 exfat_mount(struct super_block *sb, struct pbr_sector_t *p_pbr)
- 	p_fs->clu_srch_ptr = 2;
- 	p_fs->used_clusters = UINT_MAX;
- 
--	p_fs->fs_func = &exfat_fs_func;
--
- 	return 0;
- }
- 
-@@ -2188,7 +2152,6 @@ s32 create_dir(struct inode *inode, struct chain_t *p_dir,
- 	struct dos_name_t dos_name;
- 	struct super_block *sb = inode->i_sb;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
--	struct fs_func *fs_func = p_fs->fs_func;
- 
- 	ret = get_num_entries_and_dos_name(sb, p_dir, p_uniname, &num_entries,
- 					   &dos_name);
-@@ -2205,7 +2168,7 @@ s32 create_dir(struct inode *inode, struct chain_t *p_dir,
- 	clu.flags = (p_fs->vol_type == EXFAT) ? 0x03 : 0x01;
- 
- 	/* (1) allocate a cluster */
--	ret = fs_func->alloc_cluster(sb, 1, &clu);
-+	ret = exfat_alloc_cluster(sb, 1, &clu);
- 	if (ret < 0)
- 		return ret;
- 	else if (ret == 0)
-@@ -2219,13 +2182,13 @@ s32 create_dir(struct inode *inode, struct chain_t *p_dir,
- 
- 	/* (2) update the directory entry */
- 	/* make sub-dir entry in parent directory */
--	ret = fs_func->init_dir_entry(sb, p_dir, dentry, TYPE_DIR, clu.dir,
--				      size);
-+	ret = exfat_init_dir_entry(sb, p_dir, dentry, TYPE_DIR, clu.dir,
-+				   size);
- 	if (ret != 0)
- 		return ret;
- 
--	ret = fs_func->init_ext_entry(sb, p_dir, dentry, num_entries, p_uniname,
--				      &dos_name);
-+	ret = exfat_init_ext_entry(sb, p_dir, dentry, num_entries, p_uniname,
-+				   &dos_name);
- 	if (ret != 0)
- 		return ret;
- 
-@@ -2253,7 +2216,6 @@ s32 create_file(struct inode *inode, struct chain_t *p_dir,
- 	struct dos_name_t dos_name;
- 	struct super_block *sb = inode->i_sb;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
--	struct fs_func *fs_func = p_fs->fs_func;
- 
- 	ret = get_num_entries_and_dos_name(sb, p_dir, p_uniname, &num_entries,
- 					   &dos_name);
-@@ -2269,13 +2231,13 @@ s32 create_file(struct inode *inode, struct chain_t *p_dir,
- 	/* fill the dos name directory entry information of the created file.
- 	 * the first cluster is not determined yet. (0)
- 	 */
--	ret = fs_func->init_dir_entry(sb, p_dir, dentry, TYPE_FILE | mode,
--				      CLUSTER_32(0), 0);
-+	ret = exfat_init_dir_entry(sb, p_dir, dentry, TYPE_FILE | mode,
-+				   CLUSTER_32(0), 0);
- 	if (ret != 0)
- 		return ret;
- 
--	ret = fs_func->init_ext_entry(sb, p_dir, dentry, num_entries, p_uniname,
--				      &dos_name);
-+	ret = exfat_init_ext_entry(sb, p_dir, dentry, num_entries, p_uniname,
-+				   &dos_name);
- 	if (ret != 0)
- 		return ret;
- 
-@@ -2302,8 +2264,6 @@ void remove_file(struct inode *inode, struct chain_t *p_dir, s32 entry)
- 	sector_t sector;
- 	struct dentry_t *ep;
- 	struct super_block *sb = inode->i_sb;
--	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
--	struct fs_func *fs_func = p_fs->fs_func;
- 
- 	ep = get_entry_in_dir(sb, p_dir, entry, &sector);
- 	if (!ep)
-@@ -2312,7 +2272,7 @@ void remove_file(struct inode *inode, struct chain_t *p_dir, s32 entry)
- 	exfat_buf_lock(sb, sector);
- 
- 	/* exfat_buf_lock() before call count_ext_entries() */
--	num_entries = fs_func->count_ext_entries(sb, p_dir, entry, ep);
-+	num_entries = exfat_count_ext_entries(sb, p_dir, entry, ep);
- 	if (num_entries < 0) {
- 		exfat_buf_unlock(sb, sector);
- 		return;
-@@ -2322,7 +2282,7 @@ void remove_file(struct inode *inode, struct chain_t *p_dir, s32 entry)
- 	exfat_buf_unlock(sb, sector);
- 
- 	/* (1) update the directory entry */
--	fs_func->delete_dir_entry(sb, p_dir, entry, 0, num_entries);
-+	exfat_delete_dir_entry(sb, p_dir, entry, 0, num_entries);
- }
- 
- s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
-@@ -2333,8 +2293,6 @@ s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
- 	struct dos_name_t dos_name;
- 	struct dentry_t *epold, *epnew;
- 	struct super_block *sb = inode->i_sb;
--	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
--	struct fs_func *fs_func = p_fs->fs_func;
- 
- 	epold = get_entry_in_dir(sb, p_dir, oldentry, &sector_old);
- 	if (!epold)
-@@ -2343,8 +2301,8 @@ s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
- 	exfat_buf_lock(sb, sector_old);
- 
- 	/* exfat_buf_lock() before call count_ext_entries() */
--	num_old_entries = fs_func->count_ext_entries(sb, p_dir, oldentry,
--						     epold);
-+	num_old_entries = exfat_count_ext_entries(sb, p_dir, oldentry,
-+						  epold);
- 	if (num_old_entries < 0) {
- 		exfat_buf_unlock(sb, sector_old);
- 		return -ENOENT;
-@@ -2372,10 +2330,10 @@ s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
- 		}
- 
- 		memcpy((void *)epnew, (void *)epold, DENTRY_SIZE);
--		if (fs_func->get_entry_type(epnew) == TYPE_FILE) {
--			fs_func->set_entry_attr(epnew,
--						fs_func->get_entry_attr(epnew) |
--						ATTR_ARCHIVE);
-+		if (exfat_get_entry_type(epnew) == TYPE_FILE) {
-+			exfat_set_entry_attr(epnew,
-+					     exfat_get_entry_attr(epnew) |
-+					     ATTR_ARCHIVE);
- 			fid->attr |= ATTR_ARCHIVE;
- 		}
- 		exfat_buf_modify(sb, sector_new);
-@@ -2396,33 +2354,33 @@ s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
- 		exfat_buf_modify(sb, sector_new);
- 		exfat_buf_unlock(sb, sector_old);
- 
--		ret = fs_func->init_ext_entry(sb, p_dir, newentry,
--					      num_new_entries, p_uniname,
--					      &dos_name);
-+		ret = exfat_init_ext_entry(sb, p_dir, newentry,
-+					   num_new_entries, p_uniname,
-+					   &dos_name);
- 		if (ret != 0)
- 			return ret;
- 
--		fs_func->delete_dir_entry(sb, p_dir, oldentry, 0,
--					  num_old_entries);
-+		exfat_delete_dir_entry(sb, p_dir, oldentry, 0,
-+				       num_old_entries);
- 		fid->entry = newentry;
- 	} else {
--		if (fs_func->get_entry_type(epold) == TYPE_FILE) {
--			fs_func->set_entry_attr(epold,
--						fs_func->get_entry_attr(epold) |
--						ATTR_ARCHIVE);
-+		if (exfat_get_entry_type(epold) == TYPE_FILE) {
-+			exfat_set_entry_attr(epold,
-+					     exfat_get_entry_attr(epold) |
-+					     ATTR_ARCHIVE);
- 			fid->attr |= ATTR_ARCHIVE;
- 		}
- 		exfat_buf_modify(sb, sector_old);
- 		exfat_buf_unlock(sb, sector_old);
- 
--		ret = fs_func->init_ext_entry(sb, p_dir, oldentry,
--					      num_new_entries, p_uniname,
--					      &dos_name);
-+		ret = exfat_init_ext_entry(sb, p_dir, oldentry,
-+					   num_new_entries, p_uniname,
-+					   &dos_name);
- 		if (ret != 0)
- 			return ret;
- 
--		fs_func->delete_dir_entry(sb, p_dir, oldentry, num_new_entries,
--					  num_old_entries);
-+		exfat_delete_dir_entry(sb, p_dir, oldentry, num_new_entries,
-+				       num_old_entries);
- 	}
- 
- 	return 0;
-@@ -2437,23 +2395,21 @@ s32 move_file(struct inode *inode, struct chain_t *p_olddir, s32 oldentry,
- 	struct dos_name_t dos_name;
- 	struct dentry_t *epmov, *epnew;
- 	struct super_block *sb = inode->i_sb;
--	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
--	struct fs_func *fs_func = p_fs->fs_func;
- 
- 	epmov = get_entry_in_dir(sb, p_olddir, oldentry, &sector_mov);
- 	if (!epmov)
- 		return -ENOENT;
- 
- 	/* check if the source and target directory is the same */
--	if (fs_func->get_entry_type(epmov) == TYPE_DIR &&
--	    fs_func->get_entry_clu0(epmov) == p_newdir->dir)
-+	if (exfat_get_entry_type(epmov) == TYPE_DIR &&
-+	    exfat_get_entry_clu0(epmov) == p_newdir->dir)
- 		return -EINVAL;
- 
- 	exfat_buf_lock(sb, sector_mov);
- 
- 	/* exfat_buf_lock() before call count_ext_entries() */
--	num_old_entries = fs_func->count_ext_entries(sb, p_olddir, oldentry,
--						     epmov);
-+	num_old_entries = exfat_count_ext_entries(sb, p_olddir, oldentry,
-+						  epmov);
- 	if (num_old_entries < 0) {
- 		exfat_buf_unlock(sb, sector_mov);
- 		return -ENOENT;
-@@ -2480,9 +2436,9 @@ s32 move_file(struct inode *inode, struct chain_t *p_olddir, s32 oldentry,
- 	}
- 
- 	memcpy((void *)epnew, (void *)epmov, DENTRY_SIZE);
--	if (fs_func->get_entry_type(epnew) == TYPE_FILE) {
--		fs_func->set_entry_attr(epnew, fs_func->get_entry_attr(epnew) |
--					ATTR_ARCHIVE);
-+	if (exfat_get_entry_type(epnew) == TYPE_FILE) {
-+		exfat_set_entry_attr(epnew, exfat_get_entry_attr(epnew) |
-+				     ATTR_ARCHIVE);
- 		fid->attr |= ATTR_ARCHIVE;
- 	}
- 	exfat_buf_modify(sb, sector_new);
-@@ -2502,12 +2458,12 @@ s32 move_file(struct inode *inode, struct chain_t *p_olddir, s32 oldentry,
- 	exfat_buf_modify(sb, sector_new);
- 	exfat_buf_unlock(sb, sector_mov);
- 
--	ret = fs_func->init_ext_entry(sb, p_newdir, newentry, num_new_entries,
--				      p_uniname, &dos_name);
-+	ret = exfat_init_ext_entry(sb, p_newdir, newentry, num_new_entries,
-+				   p_uniname, &dos_name);
- 	if (ret != 0)
- 		return ret;
- 
--	fs_func->delete_dir_entry(sb, p_olddir, oldentry, 0, num_old_entries);
-+	exfat_delete_dir_entry(sb, p_olddir, oldentry, 0, num_old_entries);
- 
- 	fid->dir.dir = p_newdir->dir;
- 	fid->dir.size = p_newdir->size;
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index 128ca4403d..b81d2a87b8 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -492,7 +492,7 @@ static int ffsGetVolInfo(struct super_block *sb, struct vol_info_t *info)
- 	mutex_lock(&p_fs->v_mutex);
- 
- 	if (p_fs->used_clusters == UINT_MAX)
--		p_fs->used_clusters = p_fs->fs_func->count_used_clusters(sb);
-+		p_fs->used_clusters = exfat_count_used_clusters(sb);
- 
- 	info->FatType = p_fs->vol_type;
- 	info->ClusterSize = p_fs->cluster_size;
-@@ -565,8 +565,8 @@ static int ffsLookupFile(struct inode *inode, char *path, struct file_id_t *fid)
- 		goto out;
- 
- 	/* search the file name for directories */
--	dentry = p_fs->fs_func->find_dir_entry(sb, &dir, &uni_name, num_entries,
--					       &dos_name, TYPE_ALL);
-+	dentry = exfat_find_dir_entry(sb, &dir, &uni_name, num_entries,
-+				      &dos_name, TYPE_ALL);
- 	if (dentry < -1) {
- 		ret = -ENOENT;
- 		goto out;
-@@ -595,18 +595,18 @@ static int ffsLookupFile(struct inode *inode, char *path, struct file_id_t *fid)
- 		}
- 		ep2 = ep + 1;
- 
--		fid->type = p_fs->fs_func->get_entry_type(ep);
-+		fid->type = exfat_get_entry_type(ep);
- 		fid->rwoffset = 0;
- 		fid->hint_last_off = -1;
--		fid->attr = p_fs->fs_func->get_entry_attr(ep);
-+		fid->attr = exfat_get_entry_attr(ep);
- 
--		fid->size = p_fs->fs_func->get_entry_size(ep2);
-+		fid->size = exfat_get_entry_size(ep2);
- 		if ((fid->type == TYPE_FILE) && (fid->size == 0)) {
- 			fid->flags = (p_fs->vol_type == EXFAT) ? 0x03 : 0x01;
- 			fid->start_clu = CLUSTER_32(~0);
- 		} else {
--			fid->flags = p_fs->fs_func->get_entry_flag(ep2);
--			fid->start_clu = p_fs->fs_func->get_entry_clu0(ep2);
-+			fid->flags = exfat_get_entry_flag(ep2);
-+			fid->start_clu = exfat_get_entry_clu0(ep2);
- 		}
- 
- 		release_entry_set(es);
-@@ -886,9 +886,9 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
- 			new_clu.flags = fid->flags;
- 
- 			/* (1) allocate a chain of clusters */
--			num_alloced = p_fs->fs_func->alloc_cluster(sb,
--								   num_alloc,
--								   &new_clu);
-+			num_alloced = exfat_alloc_cluster(sb,
-+							  num_alloc,
-+							  &new_clu);
- 			if (num_alloced == 0)
- 				break;
- 			if (num_alloced < 0) {
-@@ -991,18 +991,18 @@ static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
- 		goto err_out;
- 	ep2 = ep + 1;
- 
--	p_fs->fs_func->set_entry_time(ep, tm_current(&tm), TM_MODIFY);
--	p_fs->fs_func->set_entry_attr(ep, fid->attr);
-+	exfat_set_entry_time(ep, tm_current(&tm), TM_MODIFY);
-+	exfat_set_entry_attr(ep, fid->attr);
- 
- 	if (modified) {
--		if (p_fs->fs_func->get_entry_flag(ep2) != fid->flags)
--			p_fs->fs_func->set_entry_flag(ep2, fid->flags);
-+		if (exfat_get_entry_flag(ep2) != fid->flags)
-+			exfat_set_entry_flag(ep2, fid->flags);
- 
--		if (p_fs->fs_func->get_entry_size(ep2) != fid->size)
--			p_fs->fs_func->set_entry_size(ep2, fid->size);
-+		if (exfat_get_entry_size(ep2) != fid->size)
-+			exfat_set_entry_size(ep2, fid->size);
- 
--		if (p_fs->fs_func->get_entry_clu0(ep2) != fid->start_clu)
--			p_fs->fs_func->set_entry_clu0(ep2, fid->start_clu);
-+		if (exfat_get_entry_clu0(ep2) != fid->start_clu)
-+			exfat_set_entry_clu0(ep2, fid->start_clu);
- 	}
- 
- 	update_dir_checksum_with_entry_set(sb, es);
-@@ -1108,13 +1108,13 @@ static int ffsTruncateFile(struct inode *inode, u64 old_size, u64 new_size)
- 		}
- 	ep2 = ep + 1;
- 
--	p_fs->fs_func->set_entry_time(ep, tm_current(&tm), TM_MODIFY);
--	p_fs->fs_func->set_entry_attr(ep, fid->attr);
-+	exfat_set_entry_time(ep, tm_current(&tm), TM_MODIFY);
-+	exfat_set_entry_attr(ep, fid->attr);
- 
--	p_fs->fs_func->set_entry_size(ep2, new_size);
-+	exfat_set_entry_size(ep2, new_size);
- 	if (new_size == 0) {
--		p_fs->fs_func->set_entry_flag(ep2, 0x01);
--		p_fs->fs_func->set_entry_clu0(ep2, CLUSTER_32(0));
-+		exfat_set_entry_flag(ep2, 0x01);
-+		exfat_set_entry_clu0(ep2, CLUSTER_32(0));
- 	}
- 
- 	update_dir_checksum_with_entry_set(sb, es);
-@@ -1127,7 +1127,7 @@ static int ffsTruncateFile(struct inode *inode, u64 old_size, u64 new_size)
- 	}
- 
- 	/* (3) free the clusters */
--	p_fs->fs_func->free_cluster(sb, &clu, 0);
-+	exfat_free_cluster(sb, &clu, 0);
- 
- 	/* hint information */
- 	fid->hint_last_off = -1;
-@@ -1217,7 +1217,7 @@ static int ffsMoveFile(struct inode *old_parent_inode, struct file_id_t *fid,
- 		goto out2;
- 	}
- 
--	if (p_fs->fs_func->get_entry_attr(ep) & ATTR_READONLY) {
-+	if (exfat_get_entry_attr(ep) & ATTR_READONLY) {
- 		ret = -EPERM;
- 		goto out2;
- 	}
-@@ -1237,7 +1237,7 @@ static int ffsMoveFile(struct inode *old_parent_inode, struct file_id_t *fid,
- 		if (!ep)
- 			goto out;
- 
--		entry_type = p_fs->fs_func->get_entry_type(ep);
-+		entry_type = exfat_get_entry_type(ep);
- 
- 		if (entry_type == TYPE_DIR) {
- 			struct chain_t new_clu;
-@@ -1274,12 +1274,12 @@ static int ffsMoveFile(struct inode *old_parent_inode, struct file_id_t *fid,
- 		if (!ep)
- 			goto out;
- 
--		num_entries = p_fs->fs_func->count_ext_entries(sb, p_dir,
--							       new_entry, ep);
-+		num_entries = exfat_count_ext_entries(sb, p_dir,
-+						      new_entry, ep);
- 		if (num_entries < 0)
- 			goto out;
--		p_fs->fs_func->delete_dir_entry(sb, p_dir, new_entry, 0,
--						num_entries + 1);
-+		exfat_delete_dir_entry(sb, p_dir, new_entry, 0,
-+				       num_entries + 1);
- 	}
- out:
- #ifndef CONFIG_STAGING_EXFAT_DELAYED_SYNC
-@@ -1324,7 +1324,7 @@ static int ffsRemoveFile(struct inode *inode, struct file_id_t *fid)
- 		goto out;
- 	}
- 
--	if (p_fs->fs_func->get_entry_attr(ep) & ATTR_READONLY) {
-+	if (exfat_get_entry_attr(ep) & ATTR_READONLY) {
- 		ret = -EPERM;
- 		goto out;
- 	}
-@@ -1338,7 +1338,7 @@ static int ffsRemoveFile(struct inode *inode, struct file_id_t *fid)
- 	clu_to_free.flags = fid->flags;
- 
- 	/* (2) free the clusters */
--	p_fs->fs_func->free_cluster(sb, &clu_to_free, 0);
-+	exfat_free_cluster(sb, &clu_to_free, 0);
- 
- 	fid->size = 0;
- 	fid->start_clu = CLUSTER_32(~0);
-@@ -1398,7 +1398,7 @@ static int ffsSetAttr(struct inode *inode, u32 attr)
- 		goto out;
- 	}
- 
--	type = p_fs->fs_func->get_entry_type(ep);
-+	type = exfat_get_entry_type(ep);
- 
- 	if (((type == TYPE_FILE) && (attr & ATTR_SUBDIR)) ||
- 	    ((type == TYPE_DIR) && (!(attr & ATTR_SUBDIR)))) {
-@@ -1415,7 +1415,7 @@ static int ffsSetAttr(struct inode *inode, u32 attr)
- 
- 	/* set the file attribute */
- 	fid->attr = attr;
--	p_fs->fs_func->set_entry_attr(ep, attr);
-+	exfat_set_entry_attr(ep, attr);
- 
- 	update_dir_checksum_with_entry_set(sb, es);
- 	release_entry_set(es);
-@@ -1502,9 +1502,9 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 	ep2 = ep + 1;
- 
- 	/* set FILE_INFO structure using the acquired struct dentry_t */
--	info->Attr = p_fs->fs_func->get_entry_attr(ep);
-+	info->Attr = exfat_get_entry_attr(ep);
- 
--	p_fs->fs_func->get_entry_time(ep, &tm, TM_CREATE);
-+	exfat_get_entry_time(ep, &tm, TM_CREATE);
- 	info->CreateTimestamp.Year = tm.year;
- 	info->CreateTimestamp.Month = tm.mon;
- 	info->CreateTimestamp.Day = tm.day;
-@@ -1513,7 +1513,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 	info->CreateTimestamp.Second = tm.sec;
- 	info->CreateTimestamp.MilliSecond = 0;
- 
--	p_fs->fs_func->get_entry_time(ep, &tm, TM_MODIFY);
-+	exfat_get_entry_time(ep, &tm, TM_MODIFY);
- 	info->ModifyTimestamp.Year = tm.year;
- 	info->ModifyTimestamp.Month = tm.mon;
- 	info->ModifyTimestamp.Day = tm.day;
-@@ -1528,13 +1528,13 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 	/* XXX this is very bad for exfat cuz name is already included in es.
- 	 * API should be revised
- 	 */
--	p_fs->fs_func->get_uni_name_from_ext_entry(sb, &fid->dir, fid->entry,
--						   uni_name.name);
-+	exfat_get_uni_name_from_ext_entry(sb, &fid->dir, fid->entry,
-+					  uni_name.name);
- 	nls_uniname_to_cstring(sb, info->Name, &uni_name);
- 
- 	info->NumSubdirs = 2;
- 
--	info->Size = p_fs->fs_func->get_entry_size(ep2);
-+	info->Size = exfat_get_entry_size(ep2);
- 
- 	release_entry_set(es);
- 
-@@ -1602,7 +1602,7 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
- 	}
- 	ep2 = ep + 1;
- 
--	p_fs->fs_func->set_entry_attr(ep, info->Attr);
-+	exfat_set_entry_attr(ep, info->Attr);
- 
- 	/* set FILE_INFO structure using the acquired struct dentry_t */
- 	tm.sec  = info->CreateTimestamp.Second;
-@@ -1611,7 +1611,7 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
- 	tm.day  = info->CreateTimestamp.Day;
- 	tm.mon  = info->CreateTimestamp.Month;
- 	tm.year = info->CreateTimestamp.Year;
--	p_fs->fs_func->set_entry_time(ep, &tm, TM_CREATE);
-+	exfat_set_entry_time(ep, &tm, TM_CREATE);
- 
- 	tm.sec  = info->ModifyTimestamp.Second;
- 	tm.min  = info->ModifyTimestamp.Minute;
-@@ -1619,9 +1619,9 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
- 	tm.day  = info->ModifyTimestamp.Day;
- 	tm.mon  = info->ModifyTimestamp.Month;
- 	tm.year = info->ModifyTimestamp.Year;
--	p_fs->fs_func->set_entry_time(ep, &tm, TM_MODIFY);
-+	exfat_set_entry_time(ep, &tm, TM_MODIFY);
- 
--	p_fs->fs_func->set_entry_size(ep2, info->Size);
-+	exfat_set_entry_size(ep2, info->Size);
- 
- 	update_dir_checksum_with_entry_set(sb, es);
- 	release_entry_set(es);
-@@ -1704,7 +1704,7 @@ static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
- 		new_clu.flags = fid->flags;
- 
- 		/* (1) allocate a cluster */
--		num_alloced = p_fs->fs_func->alloc_cluster(sb, 1, &new_clu);
-+		num_alloced = exfat_alloc_cluster(sb, 1, &new_clu);
- 		if (num_alloced < 0) {
+ static void wlan_deinitialize_threads(struct net_device *dev)
+@@ -497,14 +494,12 @@ static int wilc_wlan_initialize(struct net_device *dev, struct wilc_vif *vif)
+ 		wl->close = 0;
+ 
+ 		ret = wilc_wlan_init(dev);
+-		if (ret < 0)
+-			return -EIO;
++		if (ret)
++			return ret;
+ 
+ 		ret = wlan_initialize_threads(dev);
+-		if (ret < 0) {
+-			ret = -EIO;
++		if (ret)
+ 			goto fail_wilc_wlan;
+-		}
+ 
+ 		if (wl->gpio_irq && init_irq(dev)) {
  			ret = -EIO;
- 			goto out;
-@@ -1744,13 +1744,11 @@ static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
- 
- 		/* (3) update directory entry */
- 		if (modified) {
--			if (p_fs->fs_func->get_entry_flag(ep) != fid->flags)
--				p_fs->fs_func->set_entry_flag(ep, fid->flags);
--
--			if (p_fs->fs_func->get_entry_clu0(ep) != fid->start_clu)
--				p_fs->fs_func->set_entry_clu0(ep,
--							      fid->start_clu);
-+			if (exfat_get_entry_flag(ep) != fid->flags)
-+				exfat_set_entry_flag(ep, fid->flags);
- 
-+			if (exfat_get_entry_clu0(ep) != fid->start_clu)
-+				exfat_set_entry_clu0(ep, fid->start_clu);
+@@ -518,22 +513,17 @@ static int wilc_wlan_initialize(struct net_device *dev, struct wilc_vif *vif)
+ 			goto fail_irq_init;
  		}
  
- 		update_dir_checksum_with_entry_set(sb, es);
-@@ -1831,7 +1829,6 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
- 	struct dentry_t *ep;
- 	struct super_block *sb = inode->i_sb;
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
--	struct fs_func *fs_func = p_fs->fs_func;
- 	struct file_id_t *fid = &(EXFAT_I(inode)->fid);
+-		if (wilc_wlan_get_firmware(dev)) {
+-			ret = -EIO;
++		ret = wilc_wlan_get_firmware(dev);
++		if (ret)
+ 			goto fail_irq_enable;
+-		}
  
- 	/* check the validity of pointer parameters */
-@@ -1913,7 +1910,7 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
- 				ret = -ENOENT;
- 				goto out;
+ 		ret = wilc1000_firmware_download(dev);
+-		if (ret < 0) {
+-			ret = -EIO;
++		if (ret)
+ 			goto fail_irq_enable;
+-		}
+ 
+ 		ret = wilc_start_firmware(dev);
+-		if (ret < 0) {
+-			ret = -EIO;
++		if (ret)
+ 			goto fail_irq_enable;
+-		}
+ 
+ 		if (wilc_wlan_cfg_get(vif, 1, WID_FIRMWARE_VERSION, 1, 0)) {
+ 			int size;
+@@ -545,11 +535,10 @@ static int wilc_wlan_initialize(struct net_device *dev, struct wilc_vif *vif)
+ 			firmware_ver[size] = '\0';
+ 			netdev_dbg(dev, "Firmware Ver = %s\n", firmware_ver);
+ 		}
+-		ret = wilc_init_fw_config(dev, vif);
+ 
+-		if (ret < 0) {
++		ret = wilc_init_fw_config(dev, vif);
++		if (ret) {
+ 			netdev_err(dev, "Failed to configure firmware\n");
+-			ret = -EIO;
+ 			goto fail_fw_start;
+ 		}
+ 		wl->initialized = true;
+@@ -600,11 +589,11 @@ static int wilc_mac_open(struct net_device *ndev)
+ 	netdev_dbg(ndev, "MAC OPEN[%p]\n", ndev);
+ 
+ 	ret = wilc_init_host_int(ndev);
+-	if (ret < 0)
++	if (ret)
+ 		return ret;
+ 
+ 	ret = wilc_wlan_initialize(ndev, vif);
+-	if (ret < 0) {
++	if (ret) {
+ 		wilc_deinit_host_int(ndev);
+ 		return ret;
+ 	}
+diff --git a/drivers/staging/wilc1000/sdio.c b/drivers/staging/wilc1000/sdio.c
+index 319e039380b0..ca99335687c4 100644
+--- a/drivers/staging/wilc1000/sdio.c
++++ b/drivers/staging/wilc1000/sdio.c
+@@ -273,7 +273,7 @@ static int wilc_sdio_set_func0_csa_address(struct wilc *wilc, u32 adr)
+ 	ret = wilc_sdio_cmd52(wilc, &cmd);
+ 	if (ret) {
+ 		dev_err(&func->dev, "Failed cmd52, set 0x10c data...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+ 	cmd.address = 0x10d;
+@@ -281,7 +281,7 @@ static int wilc_sdio_set_func0_csa_address(struct wilc *wilc, u32 adr)
+ 	ret = wilc_sdio_cmd52(wilc, &cmd);
+ 	if (ret) {
+ 		dev_err(&func->dev, "Failed cmd52, set 0x10d data...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+ 	cmd.address = 0x10e;
+@@ -289,11 +289,9 @@ static int wilc_sdio_set_func0_csa_address(struct wilc *wilc, u32 adr)
+ 	ret = wilc_sdio_cmd52(wilc, &cmd);
+ 	if (ret) {
+ 		dev_err(&func->dev, "Failed cmd52, set 0x10e data...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+-	return 1;
+-fail:
+ 	return 0;
+ }
+ 
+@@ -311,7 +309,7 @@ static int wilc_sdio_set_func0_block_size(struct wilc *wilc, u32 block_size)
+ 	ret = wilc_sdio_cmd52(wilc, &cmd);
+ 	if (ret) {
+ 		dev_err(&func->dev, "Failed cmd52, set 0x10 data...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+ 	cmd.address = 0x11;
+@@ -319,11 +317,9 @@ static int wilc_sdio_set_func0_block_size(struct wilc *wilc, u32 block_size)
+ 	ret = wilc_sdio_cmd52(wilc, &cmd);
+ 	if (ret) {
+ 		dev_err(&func->dev, "Failed cmd52, set 0x11 data...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+-	return 1;
+-fail:
+ 	return 0;
+ }
+ 
+@@ -347,18 +343,16 @@ static int wilc_sdio_set_func1_block_size(struct wilc *wilc, u32 block_size)
+ 	ret = wilc_sdio_cmd52(wilc, &cmd);
+ 	if (ret) {
+ 		dev_err(&func->dev, "Failed cmd52, set 0x110 data...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 	cmd.address = 0x111;
+ 	cmd.data = (u8)(block_size >> 8);
+ 	ret = wilc_sdio_cmd52(wilc, &cmd);
+ 	if (ret) {
+ 		dev_err(&func->dev, "Failed cmd52, set 0x111 data...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+-	return 1;
+-fail:
+ 	return 0;
+ }
+ 
+@@ -384,19 +378,18 @@ static int wilc_sdio_write_reg(struct wilc *wilc, u32 addr, u32 data)
+ 		cmd.address = addr;
+ 		cmd.data = data;
+ 		ret = wilc_sdio_cmd52(wilc, &cmd);
+-		if (ret) {
++		if (ret)
+ 			dev_err(&func->dev,
+ 				"Failed cmd 52, read reg (%08x) ...\n", addr);
+-			goto fail;
+-		}
+ 	} else {
+ 		struct sdio_cmd53 cmd;
+ 
+ 		/**
+ 		 *      set the AHB address
+ 		 **/
+-		if (!wilc_sdio_set_func0_csa_address(wilc, addr))
+-			goto fail;
++		ret = wilc_sdio_set_func0_csa_address(wilc, addr);
++		if (ret)
++			return ret;
+ 
+ 		cmd.read_write = 1;
+ 		cmd.function = 0;
+@@ -407,18 +400,12 @@ static int wilc_sdio_write_reg(struct wilc *wilc, u32 addr, u32 data)
+ 		cmd.buffer = (u8 *)&data;
+ 		cmd.block_size = sdio_priv->block_size;
+ 		ret = wilc_sdio_cmd53(wilc, &cmd);
+-		if (ret) {
++		if (ret)
+ 			dev_err(&func->dev,
+ 				"Failed cmd53, write reg (%08x)...\n", addr);
+-			goto fail;
+-		}
+ 	}
+ 
+-	return 1;
+-
+-fail:
+-
+-	return 0;
++	return ret;
+ }
+ 
+ static int wilc_sdio_write(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
+@@ -470,14 +457,15 @@ static int wilc_sdio_write(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
+ 		cmd.buffer = buf;
+ 		cmd.block_size = block_size;
+ 		if (addr > 0) {
+-			if (!wilc_sdio_set_func0_csa_address(wilc, addr))
+-				goto fail;
++			ret = wilc_sdio_set_func0_csa_address(wilc, addr);
++			if (ret)
++				return ret;
+ 		}
+ 		ret = wilc_sdio_cmd53(wilc, &cmd);
+ 		if (ret) {
+ 			dev_err(&func->dev,
+ 				"Failed cmd53 [%x], block send...\n", addr);
+-			goto fail;
++			return ret;
+ 		}
+ 		if (addr > 0)
+ 			addr += nblk * block_size;
+@@ -493,21 +481,18 @@ static int wilc_sdio_write(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
+ 		cmd.block_size = block_size;
+ 
+ 		if (addr > 0) {
+-			if (!wilc_sdio_set_func0_csa_address(wilc, addr))
+-				goto fail;
++			ret = wilc_sdio_set_func0_csa_address(wilc, addr);
++			if (ret)
++				return ret;
+ 		}
+ 		ret = wilc_sdio_cmd53(wilc, &cmd);
+ 		if (ret) {
+ 			dev_err(&func->dev,
+ 				"Failed cmd53 [%x], bytes send...\n", addr);
+-			goto fail;
++			return ret;
+ 		}
+ 	}
+ 
+-	return 1;
+-
+-fail:
+-
+ 	return 0;
+ }
+ 
+@@ -528,14 +513,15 @@ static int wilc_sdio_read_reg(struct wilc *wilc, u32 addr, u32 *data)
+ 		if (ret) {
+ 			dev_err(&func->dev,
+ 				"Failed cmd 52, read reg (%08x) ...\n", addr);
+-			goto fail;
++			return ret;
+ 		}
+ 		*data = cmd.data;
+ 	} else {
+ 		struct sdio_cmd53 cmd;
+ 
+-		if (!wilc_sdio_set_func0_csa_address(wilc, addr))
+-			goto fail;
++		ret = wilc_sdio_set_func0_csa_address(wilc, addr);
++		if (ret)
++			return ret;
+ 
+ 		cmd.read_write = 0;
+ 		cmd.function = 0;
+@@ -550,16 +536,11 @@ static int wilc_sdio_read_reg(struct wilc *wilc, u32 addr, u32 *data)
+ 		if (ret) {
+ 			dev_err(&func->dev,
+ 				"Failed cmd53, read reg (%08x)...\n", addr);
+-			goto fail;
++			return ret;
+ 		}
+ 	}
+ 
+ 	le32_to_cpus(data);
+-
+-	return 1;
+-
+-fail:
+-
+ 	return 0;
+ }
+ 
+@@ -612,14 +593,15 @@ static int wilc_sdio_read(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
+ 		cmd.buffer = buf;
+ 		cmd.block_size = block_size;
+ 		if (addr > 0) {
+-			if (!wilc_sdio_set_func0_csa_address(wilc, addr))
+-				goto fail;
++			ret = wilc_sdio_set_func0_csa_address(wilc, addr);
++			if (ret)
++				return ret;
+ 		}
+ 		ret = wilc_sdio_cmd53(wilc, &cmd);
+ 		if (ret) {
+ 			dev_err(&func->dev,
+ 				"Failed cmd53 [%x], block read...\n", addr);
+-			goto fail;
++			return ret;
+ 		}
+ 		if (addr > 0)
+ 			addr += nblk * block_size;
+@@ -635,21 +617,18 @@ static int wilc_sdio_read(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
+ 		cmd.block_size = block_size;
+ 
+ 		if (addr > 0) {
+-			if (!wilc_sdio_set_func0_csa_address(wilc, addr))
+-				goto fail;
++			ret = wilc_sdio_set_func0_csa_address(wilc, addr);
++			if (ret)
++				return ret;
+ 		}
+ 		ret = wilc_sdio_cmd53(wilc, &cmd);
+ 		if (ret) {
+ 			dev_err(&func->dev,
+ 				"Failed cmd53 [%x], bytes read...\n", addr);
+-			goto fail;
++			return ret;
+ 		}
+ 	}
+ 
+-	return 1;
+-
+-fail:
+-
+ 	return 0;
+ }
+ 
+@@ -661,7 +640,7 @@ static int wilc_sdio_read(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
+ 
+ static int wilc_sdio_deinit(struct wilc *wilc)
+ {
+-	return 1;
++	return 0;
+ }
+ 
+ static int wilc_sdio_init(struct wilc *wilc, bool resume)
+@@ -686,15 +665,16 @@ static int wilc_sdio_init(struct wilc *wilc, bool resume)
+ 	ret = wilc_sdio_cmd52(wilc, &cmd);
+ 	if (ret) {
+ 		dev_err(&func->dev, "Fail cmd 52, enable csa...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+ 	/**
+ 	 *      function 0 block size
+ 	 **/
+-	if (!wilc_sdio_set_func0_block_size(wilc, WILC_SDIO_BLOCK_SIZE)) {
++	ret = wilc_sdio_set_func0_block_size(wilc, WILC_SDIO_BLOCK_SIZE);
++	if (ret) {
+ 		dev_err(&func->dev, "Fail cmd 52, set func 0 block size...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 	sdio_priv->block_size = WILC_SDIO_BLOCK_SIZE;
+ 
+@@ -710,7 +690,7 @@ static int wilc_sdio_init(struct wilc *wilc, bool resume)
+ 	if (ret) {
+ 		dev_err(&func->dev,
+ 			"Fail cmd 52, set IOE register...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+ 	/**
+@@ -727,7 +707,7 @@ static int wilc_sdio_init(struct wilc *wilc, bool resume)
+ 		if (ret) {
+ 			dev_err(&func->dev,
+ 				"Fail cmd 52, get IOR register...\n");
+-			goto fail;
++			return ret;
+ 		}
+ 		if (cmd.data == 0x2)
+ 			break;
+@@ -735,15 +715,16 @@ static int wilc_sdio_init(struct wilc *wilc, bool resume)
+ 
+ 	if (loop <= 0) {
+ 		dev_err(&func->dev, "Fail func 1 is not ready...\n");
+-		goto fail;
++		return -EINVAL;
+ 	}
+ 
+ 	/**
+ 	 *      func 1 is ready, set func 1 block size
+ 	 **/
+-	if (!wilc_sdio_set_func1_block_size(wilc, WILC_SDIO_BLOCK_SIZE)) {
++	ret = wilc_sdio_set_func1_block_size(wilc, WILC_SDIO_BLOCK_SIZE);
++	if (ret) {
+ 		dev_err(&func->dev, "Fail set func 1 block size...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+ 	/**
+@@ -757,16 +738,17 @@ static int wilc_sdio_init(struct wilc *wilc, bool resume)
+ 	ret = wilc_sdio_cmd52(wilc, &cmd);
+ 	if (ret) {
+ 		dev_err(&func->dev, "Fail cmd 52, set IEN register...\n");
+-		goto fail;
++		return ret;
+ 	}
+ 
+ 	/**
+ 	 *      make sure can read back chip id correctly
+ 	 **/
+ 	if (!resume) {
+-		if (!wilc_sdio_read_reg(wilc, 0x1000, &chipid)) {
++		ret = wilc_sdio_read_reg(wilc, 0x1000, &chipid);
++		if (ret) {
+ 			dev_err(&func->dev, "Fail cmd read chip id...\n");
+-			goto fail;
++			return ret;
+ 		}
+ 		dev_err(&func->dev, "chipid (%08x)\n", chipid);
+ 		if ((chipid & 0xfff) > 0x2a0)
+@@ -777,10 +759,6 @@ static int wilc_sdio_init(struct wilc *wilc, bool resume)
+ 			 sdio_priv->has_thrpt_enh3);
+ 	}
+ 
+-	return 1;
+-
+-fail:
+-
+ 	return 0;
+ }
+ 
+@@ -806,7 +784,7 @@ static int wilc_sdio_read_size(struct wilc *wilc, u32 *size)
+ 	tmp |= (cmd.data << 8);
+ 
+ 	*size = tmp;
+-	return 1;
++	return 0;
+ }
+ 
+ static int wilc_sdio_read_int(struct wilc *wilc, u32 *int_status)
+@@ -865,7 +843,7 @@ static int wilc_sdio_read_int(struct wilc *wilc, u32 *int_status)
+ 
+ 	*int_status = tmp;
+ 
+-	return 1;
++	return 0;
+ }
+ 
+ static int wilc_sdio_clear_int_ext(struct wilc *wilc, u32 val)
+@@ -909,10 +887,10 @@ static int wilc_sdio_clear_int_ext(struct wilc *wilc, u32 val)
+ 				dev_err(&func->dev,
+ 					"Failed cmd52, set 0xf8 data (%d) ...\n",
+ 					__LINE__);
+-				goto fail;
++				return ret;
  			}
--			type = fs_func->get_entry_type(ep);
-+			type = exfat_get_entry_type(ep);
+ 		}
+-		return 1;
++		return 0;
+ 	}
+ 	if (sdio_priv->irq_gpio) {
+ 		/* has_thrpt_enh2 uses register 0xf8 to clear interrupts. */
+@@ -926,7 +904,6 @@ static int wilc_sdio_clear_int_ext(struct wilc *wilc, u32 val)
+ 		if (flags) {
+ 			int i;
  
- 			if (type == TYPE_UNUSED)
+-			ret = 1;
+ 			for (i = 0; i < sdio_priv->nint; i++) {
+ 				if (flags & 1) {
+ 					struct sdio_cmd52 cmd;
+@@ -942,15 +919,12 @@ static int wilc_sdio_clear_int_ext(struct wilc *wilc, u32 val)
+ 						dev_err(&func->dev,
+ 							"Failed cmd52, set 0xf8 data (%d) ...\n",
+ 							__LINE__);
+-						goto fail;
++						return ret;
+ 					}
+ 				}
+-				if (!ret)
+-					break;
+ 				flags >>= 1;
+ 			}
+-			if (!ret)
+-				goto fail;
++
+ 			for (i = sdio_priv->nint; i < MAX_NUM_INT; i++) {
+ 				if (flags & 1)
+ 					dev_err(&func->dev,
+@@ -985,11 +959,9 @@ static int wilc_sdio_clear_int_ext(struct wilc *wilc, u32 val)
+ 			dev_err(&func->dev,
+ 				"Failed cmd52, set 0xf6 data (%d) ...\n",
+ 				__LINE__);
+-			goto fail;
++			return ret;
+ 		}
+ 	}
+-	return 1;
+-fail:
+ 	return 0;
+ }
+ 
+@@ -1001,12 +973,12 @@ static int wilc_sdio_sync_ext(struct wilc *wilc, int nint)
+ 
+ 	if (nint > MAX_NUM_INT) {
+ 		dev_err(&func->dev, "Too many interrupts (%d)...\n", nint);
+-		return 0;
++		return -EINVAL;
+ 	}
+ 	if (nint > MAX_NUN_INT_THRPT_ENH2) {
+ 		dev_err(&func->dev,
+ 			"Cannot support more than 5 interrupts when has_thrpt_enh2=1.\n");
+-		return 0;
++		return -EINVAL;
+ 	}
+ 
+ 	sdio_priv->nint = nint;
+@@ -1014,15 +986,15 @@ static int wilc_sdio_sync_ext(struct wilc *wilc, int nint)
+ 	/**
+ 	 *      Disable power sequencer
+ 	 **/
+-	if (!wilc_sdio_read_reg(wilc, WILC_MISC, &reg)) {
++	if (wilc_sdio_read_reg(wilc, WILC_MISC, &reg)) {
+ 		dev_err(&func->dev, "Failed read misc reg...\n");
+-		return 0;
++		return -EINVAL;
+ 	}
+ 
+ 	reg &= ~BIT(8);
+-	if (!wilc_sdio_write_reg(wilc, WILC_MISC, reg)) {
++	if (wilc_sdio_write_reg(wilc, WILC_MISC, reg)) {
+ 		dev_err(&func->dev, "Failed write misc reg...\n");
+-		return 0;
++		return -EINVAL;
+ 	}
+ 
+ 	if (sdio_priv->irq_gpio) {
+@@ -1033,59 +1005,59 @@ static int wilc_sdio_sync_ext(struct wilc *wilc, int nint)
+ 		 *      interrupt pin mux select
+ 		 **/
+ 		ret = wilc_sdio_read_reg(wilc, WILC_PIN_MUX_0, &reg);
+-		if (!ret) {
++		if (ret) {
+ 			dev_err(&func->dev, "Failed read reg (%08x)...\n",
+ 				WILC_PIN_MUX_0);
+-			return 0;
++			return ret;
+ 		}
+ 		reg |= BIT(8);
+ 		ret = wilc_sdio_write_reg(wilc, WILC_PIN_MUX_0, reg);
+-		if (!ret) {
++		if (ret) {
+ 			dev_err(&func->dev, "Failed write reg (%08x)...\n",
+ 				WILC_PIN_MUX_0);
+-			return 0;
++			return ret;
+ 		}
+ 
+ 		/**
+ 		 *      interrupt enable
+ 		 **/
+ 		ret = wilc_sdio_read_reg(wilc, WILC_INTR_ENABLE, &reg);
+-		if (!ret) {
++		if (ret) {
+ 			dev_err(&func->dev, "Failed read reg (%08x)...\n",
+ 				WILC_INTR_ENABLE);
+-			return 0;
++			return ret;
+ 		}
+ 
+ 		for (i = 0; (i < 5) && (nint > 0); i++, nint--)
+ 			reg |= BIT((27 + i));
+ 		ret = wilc_sdio_write_reg(wilc, WILC_INTR_ENABLE, reg);
+-		if (!ret) {
++		if (ret) {
+ 			dev_err(&func->dev, "Failed write reg (%08x)...\n",
+ 				WILC_INTR_ENABLE);
+-			return 0;
++			return ret;
+ 		}
+ 		if (nint) {
+ 			ret = wilc_sdio_read_reg(wilc, WILC_INTR2_ENABLE, &reg);
+-			if (!ret) {
++			if (ret) {
+ 				dev_err(&func->dev,
+ 					"Failed read reg (%08x)...\n",
+ 					WILC_INTR2_ENABLE);
+-				return 0;
++				return ret;
+ 			}
+ 
+ 			for (i = 0; (i < 3) && (nint > 0); i++, nint--)
+ 				reg |= BIT(i);
+ 
+ 			ret = wilc_sdio_read_reg(wilc, WILC_INTR2_ENABLE, &reg);
+-			if (!ret) {
++			if (ret) {
+ 				dev_err(&func->dev,
+ 					"Failed write reg (%08x)...\n",
+ 					WILC_INTR2_ENABLE);
+-				return 0;
++				return ret;
+ 			}
+ 		}
+ 	}
+-	return 1;
++	return 0;
+ }
+ 
+ /* Global sdio HIF function table */
+diff --git a/drivers/staging/wilc1000/spi.c b/drivers/staging/wilc1000/spi.c
+index 4b883a933b44..3ffc7b4fddf6 100644
+--- a/drivers/staging/wilc1000/spi.c
++++ b/drivers/staging/wilc1000/spi.c
+@@ -88,11 +88,6 @@ static u8 crc7(u8 crc, const u8 *buffer, u32 len)
+ #define CMD_SINGLE_READ				0xca
+ #define CMD_RESET				0xcf
+ 
+-#define N_OK					1
+-#define N_FAIL					0
+-#define N_RESET					-1
+-#define N_RETRY					-2
+-
+ #define DATA_PKT_SZ_256				256
+ #define DATA_PKT_SZ_512				512
+ #define DATA_PKT_SZ_1K				1024
+@@ -299,7 +294,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 	u32 len2;
+ 	u8 rsp;
+ 	int len = 0;
+-	int result = N_OK;
++	int result = 0;
+ 	int retry;
+ 	u8 crc[2];
+ 
+@@ -387,11 +382,11 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 		break;
+ 
+ 	default:
+-		result = N_FAIL;
++		result = -EINVAL;
+ 		break;
+ 	}
+ 
+-	if (result != N_OK)
++	if (result)
+ 		return result;
+ 
+ 	if (!spi_priv->crc_off)
+@@ -424,7 +419,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 	if (len2 > ARRAY_SIZE(wb)) {
+ 		dev_err(&spi->dev, "spi buffer size too small (%d) (%zu)\n",
+ 			len2, ARRAY_SIZE(wb));
+-		return N_FAIL;
++		return -EINVAL;
+ 	}
+ 	/* zero spi write buffers. */
+ 	for (wix = len; wix < len2; wix++)
+@@ -433,7 +428,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 
+ 	if (wilc_spi_tx_rx(wilc, wb, rb, len2)) {
+ 		dev_err(&spi->dev, "Failed cmd write, bus error...\n");
+-		return N_FAIL;
++		return -EINVAL;
+ 	}
+ 
+ 	/*
+@@ -448,7 +443,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 		dev_err(&spi->dev,
+ 			"Failed cmd response, cmd (%02x), resp (%02x)\n",
+ 			cmd, rsp);
+-		return N_FAIL;
++		return -EINVAL;
+ 	}
+ 
+ 	/*
+@@ -458,7 +453,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 	if (rsp != 0x00) {
+ 		dev_err(&spi->dev, "Failed cmd state response state (%02x)\n",
+ 			rsp);
+-		return N_FAIL;
++		return -EINVAL;
+ 	}
+ 
+ 	if (cmd == CMD_INTERNAL_READ || cmd == CMD_SINGLE_READ ||
+@@ -485,7 +480,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 		if (retry <= 0) {
+ 			dev_err(&spi->dev,
+ 				"Error, data read response (%02x)\n", rsp);
+-			return N_RESET;
++			return -EAGAIN;
+ 		}
+ 	}
+ 
+@@ -501,7 +496,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 		} else {
+ 			dev_err(&spi->dev,
+ 				"buffer overrun when reading data.\n");
+-			return N_FAIL;
++			return -EINVAL;
+ 		}
+ 
+ 		if (!spi_priv->crc_off) {
+@@ -514,7 +509,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 			} else {
+ 				dev_err(&spi->dev,
+ 					"buffer overrun when reading crc.\n");
+-				return N_FAIL;
++				return -EINVAL;
+ 			}
+ 		}
+ 	} else if ((cmd == CMD_DMA_READ) || (cmd == CMD_DMA_EXT_READ)) {
+@@ -540,7 +535,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 			if (wilc_spi_rx(wilc, &b[ix], nbytes)) {
+ 				dev_err(&spi->dev,
+ 					"Failed block read, bus err\n");
+-				return N_FAIL;
++				return -EINVAL;
+ 			}
+ 
+ 			/*
+@@ -549,7 +544,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 			if (!spi_priv->crc_off && wilc_spi_rx(wilc, crc, 2)) {
+ 				dev_err(&spi->dev,
+ 					"Failed block crc read, bus err\n");
+-				return N_FAIL;
++				return -EINVAL;
+ 			}
+ 
+ 			ix += nbytes;
+@@ -581,14 +576,14 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 				if (wilc_spi_rx(wilc, &rsp, 1)) {
+ 					dev_err(&spi->dev,
+ 						"Failed resp read, bus err\n");
+-					result = N_FAIL;
++					result = -EINVAL;
+ 					break;
+ 				}
+ 				if (((rsp >> 4) & 0xf) == 0xf)
+ 					break;
+ 			} while (retry--);
+ 
+-			if (result == N_FAIL)
++			if (result)
  				break;
-@@ -1922,9 +1919,9 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
- 				continue;
  
- 			exfat_buf_lock(sb, sector);
--			dir_entry->Attr = fs_func->get_entry_attr(ep);
-+			dir_entry->Attr = exfat_get_entry_attr(ep);
- 
--			fs_func->get_entry_time(ep, &tm, TM_CREATE);
-+			exfat_get_entry_time(ep, &tm, TM_CREATE);
- 			dir_entry->CreateTimestamp.Year = tm.year;
- 			dir_entry->CreateTimestamp.Month = tm.mon;
- 			dir_entry->CreateTimestamp.Day = tm.day;
-@@ -1933,7 +1930,7 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
- 			dir_entry->CreateTimestamp.Second = tm.sec;
- 			dir_entry->CreateTimestamp.MilliSecond = 0;
- 
--			fs_func->get_entry_time(ep, &tm, TM_MODIFY);
-+			exfat_get_entry_time(ep, &tm, TM_MODIFY);
- 			dir_entry->ModifyTimestamp.Year = tm.year;
- 			dir_entry->ModifyTimestamp.Month = tm.mon;
- 			dir_entry->ModifyTimestamp.Day = tm.day;
-@@ -1946,8 +1943,8 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
- 			       sizeof(struct date_time_t));
- 
- 			*uni_name.name = 0x0;
--			fs_func->get_uni_name_from_ext_entry(sb, &dir, dentry,
--							     uni_name.name);
-+			exfat_get_uni_name_from_ext_entry(sb, &dir, dentry,
-+							  uni_name.name);
- 			nls_uniname_to_cstring(sb, dir_entry->Name, &uni_name);
- 			exfat_buf_unlock(sb, sector);
- 
-@@ -1957,7 +1954,7 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
- 				goto out;
+ 			/*
+@@ -597,7 +592,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 			if (wilc_spi_rx(wilc, &b[ix], nbytes)) {
+ 				dev_err(&spi->dev,
+ 					"Failed block read, bus err\n");
+-				result = N_FAIL;
++				result = -EINVAL;
+ 				break;
  			}
  
--			dir_entry->Size = fs_func->get_entry_size(ep);
-+			dir_entry->Size = exfat_get_entry_size(ep);
+@@ -607,7 +602,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 			if (!spi_priv->crc_off && wilc_spi_rx(wilc, crc, 2)) {
+ 				dev_err(&spi->dev,
+ 					"Failed block crc read, bus err\n");
+-				result = N_FAIL;
++				result = -EINVAL;
+ 				break;
+ 			}
  
- 			/* hint information */
- 			if (dir.dir == CLUSTER_32(0)) { /* FAT16 root_dir */
-@@ -2047,7 +2044,7 @@ static int ffsRemoveDir(struct inode *inode, struct file_id_t *fid)
- 	remove_file(inode, &dir, dentry);
+@@ -623,7 +618,7 @@ static int spi_data_write(struct wilc *wilc, u8 *b, u32 sz)
+ 	struct spi_device *spi = to_spi_device(wilc->dev);
+ 	struct wilc_spi *spi_priv = wilc->bus_data;
+ 	int ix, nbytes;
+-	int result = 1;
++	int result = 0;
+ 	u8 cmd, order, crc[2] = {0};
  
- 	/* (2) free the clusters */
--	p_fs->fs_func->free_cluster(sb, &clu_to_free, 1);
-+	exfat_free_cluster(sb, &clu_to_free, 1);
+ 	/*
+@@ -651,7 +646,7 @@ static int spi_data_write(struct wilc *wilc, u8 *b, u32 sz)
+ 		if (wilc_spi_tx(wilc, &cmd, 1)) {
+ 			dev_err(&spi->dev,
+ 				"Failed data block cmd write, bus error...\n");
+-			result = N_FAIL;
++			result = -EINVAL;
+ 			break;
+ 		}
  
- 	fid->size = 0;
- 	fid->start_clu = CLUSTER_32(~0);
+@@ -661,7 +656,7 @@ static int spi_data_write(struct wilc *wilc, u8 *b, u32 sz)
+ 		if (wilc_spi_tx(wilc, &b[ix], nbytes)) {
+ 			dev_err(&spi->dev,
+ 				"Failed data block write, bus error...\n");
+-			result = N_FAIL;
++			result = -EINVAL;
+ 			break;
+ 		}
+ 
+@@ -671,7 +666,7 @@ static int spi_data_write(struct wilc *wilc, u8 *b, u32 sz)
+ 		if (!spi_priv->crc_off) {
+ 			if (wilc_spi_tx(wilc, crc, 2)) {
+ 				dev_err(&spi->dev, "Failed data block crc write, bus error...\n");
+-				result = N_FAIL;
++				result = -EINVAL;
+ 				break;
+ 			}
+ 		}
+@@ -700,7 +695,7 @@ static int spi_internal_write(struct wilc *wilc, u32 adr, u32 dat)
+ 	cpu_to_le32s(&dat);
+ 	result = spi_cmd_complete(wilc, CMD_INTERNAL_WRITE, adr, (u8 *)&dat, 4,
+ 				  0);
+-	if (result != N_OK)
++	if (result)
+ 		dev_err(&spi->dev, "Failed internal write cmd...\n");
+ 
+ 	return result;
+@@ -713,14 +708,14 @@ static int spi_internal_read(struct wilc *wilc, u32 adr, u32 *data)
+ 
+ 	result = spi_cmd_complete(wilc, CMD_INTERNAL_READ, adr, (u8 *)data, 4,
+ 				  0);
+-	if (result != N_OK) {
++	if (result) {
+ 		dev_err(&spi->dev, "Failed internal read cmd...\n");
+-		return 0;
++		return result;
+ 	}
+ 
+ 	le32_to_cpus(data);
+ 
+-	return 1;
++	return result;
+ }
+ 
+ /********************************************
+@@ -744,7 +739,7 @@ static int wilc_spi_write_reg(struct wilc *wilc, u32 addr, u32 data)
+ 	}
+ 
+ 	result = spi_cmd_complete(wilc, cmd, addr, (u8 *)&data, 4, clockless);
+-	if (result != N_OK)
++	if (result)
+ 		dev_err(&spi->dev, "Failed cmd, write reg (%08x)...\n", addr);
+ 
+ 	return result;
+@@ -759,23 +754,23 @@ static int wilc_spi_write(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
+ 	 * has to be greated than 4
+ 	 */
+ 	if (size <= 4)
+-		return 0;
++		return -EINVAL;
+ 
+ 	result = spi_cmd_complete(wilc, CMD_DMA_EXT_WRITE, addr, NULL, size, 0);
+-	if (result != N_OK) {
++	if (result) {
+ 		dev_err(&spi->dev,
+ 			"Failed cmd, write block (%08x)...\n", addr);
+-		return 0;
++		return result;
+ 	}
+ 
+ 	/*
+ 	 * Data
+ 	 */
+ 	result = spi_data_write(wilc, buf, size);
+-	if (result != N_OK)
++	if (result)
+ 		dev_err(&spi->dev, "Failed block data write...\n");
+ 
+-	return 1;
++	return result;
+ }
+ 
+ static int wilc_spi_read_reg(struct wilc *wilc, u32 addr, u32 *data)
+@@ -792,14 +787,14 @@ static int wilc_spi_read_reg(struct wilc *wilc, u32 addr, u32 *data)
+ 	}
+ 
+ 	result = spi_cmd_complete(wilc, cmd, addr, (u8 *)data, 4, clockless);
+-	if (result != N_OK) {
++	if (result) {
+ 		dev_err(&spi->dev, "Failed cmd, read reg (%08x)...\n", addr);
+-		return 0;
++		return result;
+ 	}
+ 
+ 	le32_to_cpus(data);
+ 
+-	return 1;
++	return 0;
+ }
+ 
+ static int wilc_spi_read(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
+@@ -808,15 +803,13 @@ static int wilc_spi_read(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
+ 	int result;
+ 
+ 	if (size <= 4)
+-		return 0;
++		return -EINVAL;
+ 
+ 	result = spi_cmd_complete(wilc, CMD_DMA_EXT_READ, addr, buf, size, 0);
+-	if (result != N_OK) {
++	if (result)
+ 		dev_err(&spi->dev, "Failed cmd, read block (%08x)...\n", addr);
+-		return 0;
+-	}
+ 
+-	return 1;
++	return result;
+ }
+ 
+ /********************************************
+@@ -830,7 +823,7 @@ static int wilc_spi_deinit(struct wilc *wilc)
+ 	/*
+ 	 * TODO:
+ 	 */
+-	return 1;
++	return 0;
+ }
+ 
+ static int wilc_spi_init(struct wilc *wilc, bool resume)
+@@ -840,13 +833,14 @@ static int wilc_spi_init(struct wilc *wilc, bool resume)
+ 	u32 reg;
+ 	u32 chipid;
+ 	static int isinit;
++	int ret;
+ 
+ 	if (isinit) {
+-		if (!wilc_spi_read_reg(wilc, 0x1000, &chipid)) {
++		ret = wilc_spi_read_reg(wilc, 0x1000, &chipid);
++		if (ret)
+ 			dev_err(&spi->dev, "Fail cmd read chip id...\n");
+-			return 0;
+-		}
+-		return 1;
++
++		return ret;
+ 	}
+ 
+ 	/*
+@@ -858,7 +852,8 @@ static int wilc_spi_init(struct wilc *wilc, bool resume)
+ 	 * way to reset
+ 	 */
+ 	/* the SPI to it's initial value. */
+-	if (!spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg)) {
++	ret = spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg);
++	if (ret) {
+ 		/*
+ 		 * Read failed. Try with CRC off. This might happen when module
+ 		 * is removed but chip isn't reset
+@@ -866,24 +861,26 @@ static int wilc_spi_init(struct wilc *wilc, bool resume)
+ 		spi_priv->crc_off = 1;
+ 		dev_err(&spi->dev,
+ 			"Failed read with CRC on, retrying with CRC off\n");
+-		if (!spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg)) {
++		ret = spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg);
++		if (ret) {
+ 			/*
+ 			 * Read failed with both CRC on and off,
+ 			 * something went bad
+ 			 */
+ 			dev_err(&spi->dev, "Failed internal read protocol\n");
+-			return 0;
++			return ret;
+ 		}
+ 	}
+ 	if (spi_priv->crc_off == 0) {
+ 		reg &= ~0xc; /* disable crc checking */
+ 		reg &= ~0x70;
+ 		reg |= (0x5 << 4);
+-		if (!spi_internal_write(wilc, WILC_SPI_PROTOCOL_OFFSET, reg)) {
++		ret = spi_internal_write(wilc, WILC_SPI_PROTOCOL_OFFSET, reg);
++		if (ret) {
+ 			dev_err(&spi->dev,
+ 				"[wilc spi %d]: Failed internal write reg\n",
+ 				__LINE__);
+-			return 0;
++			return ret;
+ 		}
+ 		spi_priv->crc_off = 1;
+ 	}
+@@ -891,14 +888,15 @@ static int wilc_spi_init(struct wilc *wilc, bool resume)
+ 	/*
+ 	 * make sure can read back chip id correctly
+ 	 */
+-	if (!wilc_spi_read_reg(wilc, 0x1000, &chipid)) {
++	ret = wilc_spi_read_reg(wilc, 0x1000, &chipid);
++	if (ret) {
+ 		dev_err(&spi->dev, "Fail cmd read chip id...\n");
+-		return 0;
++		return ret;
+ 	}
+ 
+ 	isinit = 1;
+ 
+-	return 1;
++	return 0;
+ }
+ 
+ static int wilc_spi_read_size(struct wilc *wilc, u32 *size)
+@@ -930,7 +928,7 @@ static int wilc_spi_sync_ext(struct wilc *wilc, int nint)
+ 
+ 	if (nint > MAX_NUM_INT) {
+ 		dev_err(&spi->dev, "Too many interrupts (%d)...\n", nint);
+-		return 0;
++		return -EINVAL;
+ 	}
+ 
+ 	spi_priv->nint = nint;
+@@ -939,58 +937,58 @@ static int wilc_spi_sync_ext(struct wilc *wilc, int nint)
+ 	 * interrupt pin mux select
+ 	 */
+ 	ret = wilc_spi_read_reg(wilc, WILC_PIN_MUX_0, &reg);
+-	if (!ret) {
++	if (ret) {
+ 		dev_err(&spi->dev, "Failed read reg (%08x)...\n",
+ 			WILC_PIN_MUX_0);
+-		return 0;
++		return ret;
+ 	}
+ 	reg |= BIT(8);
+ 	ret = wilc_spi_write_reg(wilc, WILC_PIN_MUX_0, reg);
+-	if (!ret) {
++	if (ret) {
+ 		dev_err(&spi->dev, "Failed write reg (%08x)...\n",
+ 			WILC_PIN_MUX_0);
+-		return 0;
++		return ret;
+ 	}
+ 
+ 	/*
+ 	 * interrupt enable
+ 	 */
+ 	ret = wilc_spi_read_reg(wilc, WILC_INTR_ENABLE, &reg);
+-	if (!ret) {
++	if (ret) {
+ 		dev_err(&spi->dev, "Failed read reg (%08x)...\n",
+ 			WILC_INTR_ENABLE);
+-		return 0;
++		return ret;
+ 	}
+ 
+ 	for (i = 0; (i < 5) && (nint > 0); i++, nint--)
+ 		reg |= (BIT((27 + i)));
+ 
+ 	ret = wilc_spi_write_reg(wilc, WILC_INTR_ENABLE, reg);
+-	if (!ret) {
++	if (ret) {
+ 		dev_err(&spi->dev, "Failed write reg (%08x)...\n",
+ 			WILC_INTR_ENABLE);
+-		return 0;
++		return ret;
+ 	}
+ 	if (nint) {
+ 		ret = wilc_spi_read_reg(wilc, WILC_INTR2_ENABLE, &reg);
+-		if (!ret) {
++		if (ret) {
+ 			dev_err(&spi->dev, "Failed read reg (%08x)...\n",
+ 				WILC_INTR2_ENABLE);
+-			return 0;
++			return ret;
+ 		}
+ 
+ 		for (i = 0; (i < 3) && (nint > 0); i++, nint--)
+ 			reg |= BIT(i);
+ 
+ 		ret = wilc_spi_read_reg(wilc, WILC_INTR2_ENABLE, &reg);
+-		if (!ret) {
++		if (ret) {
+ 			dev_err(&spi->dev, "Failed write reg (%08x)...\n",
+ 				WILC_INTR2_ENABLE);
+-			return 0;
++			return ret;
+ 		}
+ 	}
+ 
+-	return 1;
++	return 0;
+ }
+ 
+ /* Global spi HIF function table */
+diff --git a/drivers/staging/wilc1000/wlan.c b/drivers/staging/wilc1000/wlan.c
+index c32af7076012..b904eda42806 100644
+--- a/drivers/staging/wilc1000/wlan.c
++++ b/drivers/staging/wilc1000/wlan.c
+@@ -534,7 +534,7 @@ int wilc_wlan_handle_txq(struct wilc *wilc, u32 *txq_count)
+ 	func = wilc->hif_func;
+ 	do {
+ 		ret = func->hif_read_reg(wilc, WILC_HOST_TX_CTRL, &reg);
+-		if (!ret)
++		if (ret)
+ 			break;
+ 
+ 		if ((reg & 0x1) == 0)
+@@ -548,7 +548,7 @@ int wilc_wlan_handle_txq(struct wilc *wilc, u32 *txq_count)
+ 		}
+ 	} while (!wilc->quit);
+ 
+-	if (!ret)
++	if (ret)
+ 		goto out_release_bus;
+ 
+ 	timeout = 200;
+@@ -557,16 +557,16 @@ int wilc_wlan_handle_txq(struct wilc *wilc, u32 *txq_count)
+ 					 WILC_VMM_TBL_RX_SHADOW_BASE,
+ 					 (u8 *)vmm_table,
+ 					 ((i + 1) * 4));
+-		if (!ret)
++		if (ret)
+ 			break;
+ 
+ 		ret = func->hif_write_reg(wilc, WILC_HOST_VMM_CTL, 0x2);
+-		if (!ret)
++		if (ret)
+ 			break;
+ 
+ 		do {
+ 			ret = func->hif_read_reg(wilc, WILC_HOST_VMM_CTL, &reg);
+-			if (!ret)
++			if (ret)
+ 				break;
+ 			if ((reg >> 2) & 0x1) {
+ 				entries = ((reg >> 3) & 0x3f);
+@@ -579,19 +579,19 @@ int wilc_wlan_handle_txq(struct wilc *wilc, u32 *txq_count)
+ 			break;
+ 		}
+ 
+-		if (!ret)
++		if (ret)
+ 			break;
+ 
+ 		if (entries == 0) {
+ 			ret = func->hif_read_reg(wilc, WILC_HOST_TX_CTRL, &reg);
+-			if (!ret)
++			if (ret)
+ 				break;
+ 			reg &= ~BIT(0);
+ 			ret = func->hif_write_reg(wilc, WILC_HOST_TX_CTRL, reg);
+ 		}
+ 	} while (0);
+ 
+-	if (!ret)
++	if (ret)
+ 		goto out_release_bus;
+ 
+ 	if (entries == 0) {
+@@ -654,7 +654,7 @@ int wilc_wlan_handle_txq(struct wilc *wilc, u32 *txq_count)
+ 	acquire_bus(wilc, WILC_BUS_ACQUIRE_AND_WAKEUP);
+ 
+ 	ret = func->hif_clear_int_ext(wilc, ENABLE_TX_VMM);
+-	if (!ret)
++	if (ret)
+ 		goto out_release_bus;
+ 
+ 	ret = func->hif_block_tx_ext(wilc, 0, txb, offset);
+@@ -771,7 +771,7 @@ static void wilc_wlan_handle_isr_ext(struct wilc *wilc, u32 int_status)
+ 
+ 	wilc->hif_func->hif_clear_int_ext(wilc, DATA_INT_CLR | ENABLE_RX_VMM);
+ 	ret = wilc->hif_func->hif_block_rx_ext(wilc, 0, buffer, size);
+-	if (!ret)
++	if (ret)
+ 		return;
+ 
+ 	offset += size;
+@@ -832,7 +832,7 @@ int wilc_wlan_firmware_download(struct wilc *wilc, const u8 *buffer,
+ 			memcpy(dma_buffer, &buffer[offset], size2);
+ 			ret = wilc->hif_func->hif_block_tx(wilc, addr,
+ 							   dma_buffer, size2);
+-			if (!ret)
++			if (ret)
+ 				break;
+ 
+ 			addr += size2;
+@@ -841,17 +841,15 @@ int wilc_wlan_firmware_download(struct wilc *wilc, const u8 *buffer,
+ 		}
+ 		release_bus(wilc, WILC_BUS_RELEASE_ONLY);
+ 
+-		if (!ret) {
+-			ret = -EIO;
++		if (ret)
+ 			goto fail;
+-		}
+ 	} while (offset < buffer_size);
+ 
+ fail:
+ 
+ 	kfree(dma_buffer);
+ 
+-	return (ret < 0) ? ret : 0;
++	return ret;
+ }
+ 
+ int wilc_wlan_start(struct wilc *wilc)
+@@ -868,26 +866,26 @@ int wilc_wlan_start(struct wilc *wilc)
+ 	}
+ 	acquire_bus(wilc, WILC_BUS_ACQUIRE_ONLY);
+ 	ret = wilc->hif_func->hif_write_reg(wilc, WILC_VMM_CORE_CFG, reg);
+-	if (!ret) {
++	if (ret) {
+ 		release_bus(wilc, WILC_BUS_RELEASE_ONLY);
+-		return -EIO;
++		return ret;
+ 	}
+ 	reg = 0;
+ 	if (wilc->io_type == WILC_HIF_SDIO && wilc->dev_irq_num)
+ 		reg |= WILC_HAVE_SDIO_IRQ_GPIO;
+ 
+ 	ret = wilc->hif_func->hif_write_reg(wilc, WILC_GP_REG_1, reg);
+-	if (!ret) {
++	if (ret) {
+ 		release_bus(wilc, WILC_BUS_RELEASE_ONLY);
+-		return -EIO;
++		return ret;
+ 	}
+ 
+ 	wilc->hif_func->hif_sync_ext(wilc, NUM_INT_EXT);
+ 
+ 	ret = wilc->hif_func->hif_read_reg(wilc, 0x1000, &chipid);
+-	if (!ret) {
++	if (ret) {
+ 		release_bus(wilc, WILC_BUS_RELEASE_ONLY);
+-		return -EIO;
++		return ret;
+ 	}
+ 
+ 	wilc->hif_func->hif_read_reg(wilc, WILC_GLB_RESET_0, &reg);
+@@ -902,7 +900,7 @@ int wilc_wlan_start(struct wilc *wilc)
+ 	wilc->hif_func->hif_read_reg(wilc, WILC_GLB_RESET_0, &reg);
+ 	release_bus(wilc, WILC_BUS_RELEASE_ONLY);
+ 
+-	return (ret < 0) ? ret : 0;
++	return ret;
+ }
+ 
+ int wilc_wlan_stop(struct wilc *wilc, struct wilc_vif *vif)
+@@ -913,33 +911,33 @@ int wilc_wlan_stop(struct wilc *wilc, struct wilc_vif *vif)
+ 	acquire_bus(wilc, WILC_BUS_ACQUIRE_AND_WAKEUP);
+ 
+ 	ret = wilc->hif_func->hif_read_reg(wilc, WILC_GP_REG_0, &reg);
+-	if (!ret) {
++	if (ret) {
+ 		netdev_err(vif->ndev, "Error while reading reg\n");
+ 		release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
+-		return -EIO;
++		return ret;
+ 	}
+ 
+ 	ret = wilc->hif_func->hif_write_reg(wilc, WILC_GP_REG_0,
+ 					(reg | WILC_ABORT_REQ_BIT));
+-	if (!ret) {
++	if (ret) {
+ 		netdev_err(vif->ndev, "Error while writing reg\n");
+ 		release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
+-		return -EIO;
++		return ret;
+ 	}
+ 
+ 	ret = wilc->hif_func->hif_read_reg(wilc, WILC_FW_HOST_COMM, &reg);
+-	if (!ret) {
++	if (ret) {
+ 		netdev_err(vif->ndev, "Error while reading reg\n");
+ 		release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
+-		return -EIO;
++		return ret;
+ 	}
+ 	reg = BIT(0);
+ 
+ 	ret = wilc->hif_func->hif_write_reg(wilc, WILC_FW_HOST_COMM, reg);
+-	if (!ret) {
++	if (ret) {
+ 		netdev_err(vif->ndev, "Error while writing reg\n");
+ 		release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
+-		return -EIO;
++		return ret;
+ 	}
+ 
+ 	release_bus(wilc, WILC_BUS_RELEASE_ALLOW_SLEEP);
+@@ -1112,10 +1110,11 @@ int wilc_send_config_pkt(struct wilc_vif *vif, u8 mode, struct wid *wids,
+ 	return ret;
+ }
+ 
+-static u32 init_chip(struct net_device *dev)
++static int init_chip(struct net_device *dev)
+ {
+ 	u32 chipid;
+-	u32 reg, ret = 0;
++	u32 reg;
++	int ret = 0;
+ 	struct wilc_vif *vif = netdev_priv(dev);
+ 	struct wilc *wilc = vif->wilc;
+ 
+@@ -1125,18 +1124,18 @@ static u32 init_chip(struct net_device *dev)
+ 
+ 	if ((chipid & 0xfff) != 0xa0) {
+ 		ret = wilc->hif_func->hif_read_reg(wilc, 0x1118, &reg);
+-		if (!ret) {
++		if (ret) {
+ 			netdev_err(dev, "fail read reg 0x1118\n");
+ 			goto release;
+ 		}
+ 		reg |= BIT(0);
+ 		ret = wilc->hif_func->hif_write_reg(wilc, 0x1118, reg);
+-		if (!ret) {
++		if (ret) {
+ 			netdev_err(dev, "fail write reg 0x1118\n");
+ 			goto release;
+ 		}
+ 		ret = wilc->hif_func->hif_write_reg(wilc, 0xc0000, 0x71);
+-		if (!ret) {
++		if (ret) {
+ 			netdev_err(dev, "fail write reg 0xc0000\n");
+ 			goto release;
+ 		}
+@@ -1186,7 +1185,7 @@ int wilc_wlan_init(struct net_device *dev)
+ 
+ 	wilc->quit = 0;
+ 
+-	if (!wilc->hif_func->hif_init(wilc, false)) {
++	if (wilc->hif_func->hif_init(wilc, false)) {
+ 		ret = -EIO;
+ 		goto fail;
+ 	}
+@@ -1207,12 +1206,12 @@ int wilc_wlan_init(struct net_device *dev)
+ 		goto fail;
+ 	}
+ 
+-	if (!init_chip(dev)) {
++	if (init_chip(dev)) {
+ 		ret = -EIO;
+ 		goto fail;
+ 	}
+ 
+-	return 1;
++	return 0;
+ 
+ fail:
+ 
 -- 
-2.25.0
-
+2.24.0
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
