@@ -1,47 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E196148A47
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jan 2020 15:46:45 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D27C148A49
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jan 2020 15:46:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EBB5486DA3;
-	Fri, 24 Jan 2020 14:46:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2CE7D877F4;
+	Fri, 24 Jan 2020 14:46:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1lq0Ba4wDdFz; Fri, 24 Jan 2020 14:46:41 +0000 (UTC)
+	with ESMTP id CRJKSe6S6vkP; Fri, 24 Jan 2020 14:46:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A404786D92;
-	Fri, 24 Jan 2020 14:46:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A9A2E86519;
+	Fri, 24 Jan 2020 14:46:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 16CCD1BF3AE
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:46:35 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7F7551BF3AE
+ for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:46:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1397F203EE
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:46:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7C65D86519
+ for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:46:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H+DhUr4aWd3A for <devel@linuxdriverproject.org>;
- Fri, 24 Jan 2020 14:46:34 +0000 (UTC)
+ with ESMTP id iXpLIvU-315T for <devel@linuxdriverproject.org>;
+ Fri, 24 Jan 2020 14:46:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by silver.osuosl.org (Postfix) with ESMTPS id 55CB120336
- for <devel@driverdev.osuosl.org>; Fri, 24 Jan 2020 14:46:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3A2F1862F4
+ for <devel@driverdev.osuosl.org>; Fri, 24 Jan 2020 14:46:35 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id EDCB1B138;
- Fri, 24 Jan 2020 14:46:32 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id C9402AFA8;
+ Fri, 24 Jan 2020 14:46:33 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 05/22] staging: vc04_services: Delete blocked_count in struct
- vchiq_arm_state
-Date: Fri, 24 Jan 2020 15:45:59 +0100
-Message-Id: <20200124144617.2213-6-nsaenzjulienne@suse.de>
+Subject: [PATCH 06/22] staging: vc04_services: get rid of
+ vchiq_platform_use_suspend_timer()
+Date: Fri, 24 Jan 2020 15:46:00 +0100
+Message-Id: <20200124144617.2213-7-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200124144617.2213-1-nsaenzjulienne@suse.de>
 References: <20200124144617.2213-1-nsaenzjulienne@suse.de>
@@ -65,41 +65,242 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The variable is always 0. So delete it an all the code conditional to
-it.
+The function always returns 0, delete the function and all code
+conditional to it.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 2 --
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h | 2 --
- 2 files changed, 4 deletions(-)
+ .../interface/vchiq_arm/vchiq_2835_arm.c      | 11 ---
+ .../interface/vchiq_arm/vchiq_arm.c           | 84 ++-----------------
+ .../interface/vchiq_arm/vchiq_arm.h           | 16 +---
+ 3 files changed, 7 insertions(+), 104 deletions(-)
 
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+index ca30bfd52919..1ffb2aea947c 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+@@ -284,17 +284,6 @@ vchiq_platform_videocore_wanted(struct vchiq_state *state)
+ {
+ 	return 1; // autosuspend not supported - videocore always wanted
+ }
+-
+-int
+-vchiq_platform_use_suspend_timer(void)
+-{
+-	return 0;
+-}
+-void
+-vchiq_dump_platform_use_state(struct vchiq_state *state)
+-{
+-	vchiq_log_info(vchiq_arm_log_level, "Suspend timer not in use");
+-}
+ void
+ vchiq_platform_handle_timeout(struct vchiq_state *state)
+ {
 diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-index 9264bb5d0bbe..4545df573c90 100644
+index 4545df573c90..a75d5092cc73 100644
 --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
 +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-@@ -2266,8 +2266,6 @@ vchiq_videocore_wanted(struct vchiq_state *state)
- 	if (!arm_state)
- 		/* autosuspend not supported - always return wanted */
- 		return 1;
--	else if (arm_state->blocked_count)
--		return 1;
- 	else if (!arm_state->videocore_use_count)
- 		/* usage count zero - check for override unless we're forcing */
- 		return vchiq_platform_videocore_wanted(state);
+@@ -48,9 +48,6 @@
+ int vchiq_arm_log_level = VCHIQ_LOG_DEFAULT;
+ int vchiq_susp_log_level = VCHIQ_LOG_ERROR;
+ 
+-#define SUSPEND_TIMER_TIMEOUT_MS 100
+-#define SUSPEND_RETRY_TIMER_TIMEOUT_MS 1000
+-
+ #define VC_SUSPEND_NUM_OFFSET 3 /* number of values before idle which are -ve */
+ static const char *const suspend_state_names[] = {
+ 	"VC_SUSPEND_FORCE_CANCELED",
+@@ -79,8 +76,6 @@ static const char *const resume_state_names[] = {
+  * requested */
+ #define FORCE_SUSPEND_TIMEOUT_MS 200
+ 
+-static void suspend_timer_callback(struct timer_list *t);
+-
+ struct user_service {
+ 	struct vchiq_service *service;
+ 	void *userdata;
+@@ -2384,12 +2379,7 @@ vchiq_arm_init_state(struct vchiq_state *state,
+ 		 * completion while videocore is suspended. */
+ 		set_resume_state(arm_state, VC_RESUME_RESUMED);
+ 
+-		arm_state->suspend_timer_timeout = SUSPEND_TIMER_TIMEOUT_MS;
+-		arm_state->suspend_timer_running = 0;
+ 		arm_state->state = state;
+-		timer_setup(&arm_state->suspend_timer, suspend_timer_callback,
+-			    0);
+-
+ 		arm_state->first_connect = 0;
+ 
+ 	}
+@@ -2517,27 +2507,6 @@ set_resume_state(struct vchiq_arm_state *arm_state,
+ 	}
+ }
+ 
+-/* should be called with the write lock held */
+-inline void
+-start_suspend_timer(struct vchiq_arm_state *arm_state)
+-{
+-	del_timer(&arm_state->suspend_timer);
+-	arm_state->suspend_timer.expires = jiffies +
+-		msecs_to_jiffies(arm_state->suspend_timer_timeout);
+-	add_timer(&arm_state->suspend_timer);
+-	arm_state->suspend_timer_running = 1;
+-}
+-
+-/* should be called with the write lock held */
+-static inline void
+-stop_suspend_timer(struct vchiq_arm_state *arm_state)
+-{
+-	if (arm_state->suspend_timer_running) {
+-		del_timer(&arm_state->suspend_timer);
+-		arm_state->suspend_timer_running = 0;
+-	}
+-}
+-
+ static inline int
+ need_resume(struct vchiq_state *state)
+ {
+@@ -2626,28 +2595,6 @@ vchiq_platform_check_suspend(struct vchiq_state *state)
+ 	return;
+ }
+ 
+-void
+-vchiq_check_suspend(struct vchiq_state *state)
+-{
+-	struct vchiq_arm_state *arm_state = vchiq_platform_get_arm_state(state);
+-
+-	if (!arm_state)
+-		goto out;
+-
+-	vchiq_log_trace(vchiq_susp_log_level, "%s", __func__);
+-
+-	write_lock_bh(&arm_state->susp_res_lock);
+-	if (arm_state->vc_suspend_state != VC_SUSPEND_SUSPENDED &&
+-			arm_state->first_connect &&
+-			!vchiq_videocore_wanted(state)) {
+-		vchiq_arm_vcsuspend(state);
+-	}
+-	write_unlock_bh(&arm_state->susp_res_lock);
+-
+-out:
+-	vchiq_log_trace(vchiq_susp_log_level, "%s exit", __func__);
+-}
+-
+ /* This function should be called with the write lock held */
+ int
+ vchiq_check_resume(struct vchiq_state *state)
+@@ -2702,9 +2649,6 @@ vchiq_use_internal(struct vchiq_state *state, struct vchiq_service *service,
+ 	}
+ 
+ 	write_lock_bh(&arm_state->susp_res_lock);
+-
+-	stop_suspend_timer(arm_state);
+-
+ 	local_uc = ++arm_state->videocore_use_count;
+ 	local_entity_uc = ++(*entity_uc);
+ 
+@@ -2799,15 +2743,11 @@ vchiq_release_internal(struct vchiq_state *state, struct vchiq_service *service)
+ 	--(*entity_uc);
+ 
+ 	if (!vchiq_videocore_wanted(state)) {
+-		if (vchiq_platform_use_suspend_timer()) {
+-			start_suspend_timer(arm_state);
+-		} else {
+-			vchiq_log_info(vchiq_susp_log_level,
+-				"%s %s count %d, state count %d - suspending",
+-				__func__, entity, *entity_uc,
+-				arm_state->videocore_use_count);
+-			vchiq_arm_vcsuspend(state);
+-		}
++		vchiq_log_info(vchiq_susp_log_level,
++			"%s %s count %d, state count %d - suspending",
++			__func__, entity, *entity_uc,
++			arm_state->videocore_use_count);
++		vchiq_arm_vcsuspend(state);
+ 	} else
+ 		vchiq_log_trace(vchiq_susp_log_level,
+ 			"%s %s count %d, state count %d",
+@@ -2902,17 +2842,6 @@ vchiq_instance_set_trace(struct vchiq_instance *instance, int trace)
+ 	instance->trace = (trace != 0);
+ }
+ 
+-static void suspend_timer_callback(struct timer_list *t)
+-{
+-	struct vchiq_arm_state *arm_state =
+-					from_timer(arm_state, t, suspend_timer);
+-	struct vchiq_state *state = arm_state->state;
+-
+-	vchiq_log_info(vchiq_susp_log_level,
+-		"%s - suspend timer expired - check suspend", __func__);
+-	vchiq_check_suspend(state);
+-}
+-
+ enum vchiq_status
+ vchiq_use_service(unsigned int handle)
+ {
+@@ -3028,8 +2957,6 @@ vchiq_dump_service_use_state(struct vchiq_state *state)
+ 		"--- Overall vchiq instance use count %d", vc_use_count);
+ 
+ 	kfree(service_data);
+-
+-	vchiq_dump_platform_use_state(state);
+ }
+ 
+ enum vchiq_status
+@@ -3059,7 +2986,6 @@ vchiq_check_service(struct vchiq_service *service)
+ 			arm_state->videocore_use_count,
+ 			suspend_state_names[arm_state->vc_suspend_state +
+ 						VC_SUSPEND_NUM_OFFSET]);
+-		vchiq_dump_service_use_state(service->state);
+ 	}
+ out:
+ 	return ret;
 diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h
-index 6bab241313b8..35889a65b17f 100644
+index 35889a65b17f..6daeb3e4f4b1 100644
 --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h
 +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h
-@@ -70,8 +70,6 @@ struct vchiq_arm_state {
- 	*/
- 	int peer_use_count;
+@@ -54,9 +54,6 @@ struct vchiq_arm_state {
+ 	enum vc_resume_status vc_resume_state;
  
--	int blocked_count;
+ 	struct vchiq_state *state;
+-	struct timer_list suspend_timer;
+-	int suspend_timer_timeout;
+-	int suspend_timer_running;
+ 
+ 	/* Global use count for videocore.
+ 	** This is equal to the sum of the use counts for all services.  When
+@@ -121,20 +118,14 @@ vchiq_platform_suspend(struct vchiq_state *state);
+ extern int
+ vchiq_platform_videocore_wanted(struct vchiq_state *state);
+ 
+-extern int
+-vchiq_platform_use_suspend_timer(void);
 -
- 	/* Flag to indicate that the first vchiq connect has made it through.
- 	** This means that both sides should be fully ready, and we should
- 	** be able to suspend after this point.
+ extern void
+ vchiq_dump_platform_use_state(struct vchiq_state *state);
+ 
+-extern void
+-vchiq_dump_service_use_state(struct vchiq_state *state);
+-
+ extern struct vchiq_arm_state*
+ vchiq_platform_get_arm_state(struct vchiq_state *state);
+ 
+-extern int
+-vchiq_videocore_wanted(struct vchiq_state *state);
++extern struct vchiq_arm_state*
++vchiq_platform_get_arm_state(struct vchiq_state *state);
+ 
+ extern enum vchiq_status
+ vchiq_use_internal(struct vchiq_state *state, struct vchiq_service *service,
+@@ -166,7 +157,4 @@ extern void
+ set_resume_state(struct vchiq_arm_state *arm_state,
+ 		 enum vc_resume_status new_state);
+ 
+-extern void
+-start_suspend_timer(struct vchiq_arm_state *arm_state);
+-
+ #endif /* VCHIQ_ARM_H */
 -- 
 2.25.0
 
