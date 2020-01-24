@@ -1,63 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 51AC21475D3
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jan 2020 01:59:45 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 64A2C221FF;
-	Fri, 24 Jan 2020 00:59:42 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IDe+UwQv3Cw4; Fri, 24 Jan 2020 00:59:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D9FD12039D;
-	Fri, 24 Jan 2020 00:59:39 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BB60F1BF20B
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 00:59:36 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 368941475E1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jan 2020 02:05:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ABB0B84069
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 00:59:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 21F8B86BF2;
+	Fri, 24 Jan 2020 01:05:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IdmsKleyLcwz; Fri, 24 Jan 2020 01:05:09 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CAE3586B85;
+	Fri, 24 Jan 2020 01:05:08 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 257D21BF321
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 24 Jan 2020 01:05:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 0F55F2041C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 24 Jan 2020 01:05:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rbEiPCKWLNvU for <devel@linuxdriverproject.org>;
- Fri, 24 Jan 2020 00:59:35 +0000 (UTC)
+ with ESMTP id spufZKw0sb07
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 24 Jan 2020 01:05:04 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from email.4thparty.co.kr (email.4thparty.co.kr [175.126.207.101])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8C6E9835DF
- for <devel@driverdev.osuosl.org>; Fri, 24 Jan 2020 00:59:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 4DE602039D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 24 Jan 2020 01:05:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by email.4thparty.co.kr (Postfix) with ESMTP id 31F1A2D80377A;
- Fri, 24 Jan 2020 09:57:21 +0900 (KST)
+ by email.4thparty.co.kr (Postfix) with ESMTP id 579162D821109;
+ Fri, 24 Jan 2020 10:02:13 +0900 (KST)
 Received: from email.4thparty.co.kr ([127.0.0.1])
  by localhost (email.4thparty.co.kr [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id SGQoei7x2S00; Fri, 24 Jan 2020 09:57:20 +0900 (KST)
+ with ESMTP id pAfjPrQ8_YtD; Fri, 24 Jan 2020 10:02:12 +0900 (KST)
 Received: from localhost (localhost [127.0.0.1])
- by email.4thparty.co.kr (Postfix) with ESMTP id 9CA1C2D800095;
- Fri, 24 Jan 2020 09:57:20 +0900 (KST)
+ by email.4thparty.co.kr (Postfix) with ESMTP id 781102D8047B6;
+ Fri, 24 Jan 2020 10:02:12 +0900 (KST)
 X-Virus-Scanned: amavisd-new at email.4thparty.co.kr
 Received: from email.4thparty.co.kr ([127.0.0.1])
  by localhost (email.4thparty.co.kr [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id jdAvUioBEV2M; Fri, 24 Jan 2020 09:57:20 +0900 (KST)
+ with ESMTP id 3ZXpb79FWK8G; Fri, 24 Jan 2020 10:02:12 +0900 (KST)
 Received: from User (ip83.ip-51-77-0.eu [51.77.0.83])
- by email.4thparty.co.kr (Postfix) with ESMTPA id E240C2D800091;
- Fri, 24 Jan 2020 09:56:52 +0900 (KST)
+ by email.4thparty.co.kr (Postfix) with ESMTPA id 1CC222D803634;
+ Fri, 24 Jan 2020 10:01:41 +0900 (KST)
 From: "Google Corporation"<miseon@4thparty.co.kr>
 Subject: Greetings from Google
-Date: Thu, 23 Jan 2020 16:57:03 -0800
+Date: Thu, 23 Jan 2020 17:01:53 -0800
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="----=_NextPart_000_011A_01C2AA85.1653B6B0"
+ boundary="----=_NextPart_000_009B_01C2AA85.5AF4E8CE"
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2800.1081
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
-Message-Id: <20200124005652.E240C2D800091@email.4thparty.co.kr>
+Message-Id: <20200124010142.1CC222D803634@email.4thparty.co.kr>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,7 +80,7 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This is a multi-part message in MIME format.
 
-------=_NextPart_000_011A_01C2AA85.1653B6B0
+------=_NextPart_000_009B_01C2AA85.5AF4E8CE
 Content-Type: text/plain;
 	charset="Windows-1251"
 Content-Transfer-Encoding: 7bit
@@ -96,7 +100,7 @@ Sincerely,
 Sundar Pichai
 CEO, Google Inc.
 
-------=_NextPart_000_011A_01C2AA85.1653B6B0
+------=_NextPart_000_009B_01C2AA85.5AF4E8CE
 Content-Type: image/jpeg;
 	name="Conventional View.jpg"
 Content-Transfer-Encoding: base64
@@ -9598,7 +9602,7 @@ oooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACii
 igAooooAKKKKACiiigAooooAKKKKACjpRRQAUUUUAFFFFABRRRQAUUUUAFFF
 FABRRRQAUUUUAFFFFAH/2Q==
 
-------=_NextPart_000_011A_01C2AA85.1653B6B0
+------=_NextPart_000_009B_01C2AA85.5AF4E8CE
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -9609,6 +9613,7 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
-------=_NextPart_000_011A_01C2AA85.1653B6B0--
+------=_NextPart_000_009B_01C2AA85.5AF4E8CE--
+
 
 
