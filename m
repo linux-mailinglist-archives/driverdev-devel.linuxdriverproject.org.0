@@ -2,55 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A3EF1486F1
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jan 2020 15:19:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EEF0D14870A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jan 2020 15:20:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B704B22816;
-	Fri, 24 Jan 2020 14:19:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9AE1322817;
+	Fri, 24 Jan 2020 14:20:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y1CBYNFXro+C; Fri, 24 Jan 2020 14:19:56 +0000 (UTC)
+	with ESMTP id b4MOK6Ea-kYT; Fri, 24 Jan 2020 14:20:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C49F1203C9;
-	Fri, 24 Jan 2020 14:19:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DA1D0226B0;
+	Fri, 24 Jan 2020 14:20:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CF1511BF3AE
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:19:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AE4051BF3AE
+ for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:20:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CBD3F8805D
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:19:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 00C7186422
+ for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:19:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fBNZNBtFDGug for <devel@linuxdriverproject.org>;
- Fri, 24 Jan 2020 14:19:52 +0000 (UTC)
+ with ESMTP id Vr_QGROUs3GT for <devel@linuxdriverproject.org>;
+ Fri, 24 Jan 2020 14:19:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2BF7387B8A
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:19:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 980BE863F2
+ for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:19:57 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 26DD6214AF;
- Fri, 24 Jan 2020 14:19:51 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9A000222D9;
+ Fri, 24 Jan 2020 14:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579875592;
- bh=k0aumnbrqCMxTMcKbWxpE6ulJ7XIf9IouyX88SrEoyI=;
+ s=default; t=1579875597;
+ bh=aKN1cLa8sPeUp3tC/bVgjb/jUPiF5rYOujaxSFcWfus=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=H46BXj15HysI4KkSEbIvNHm9pfOBhTI47Lky4S4ijq3Ux+hf7A1UkL8PrENhK6MR6
- pCZE3nQFw3/fjpT4FNahTld2y65m7wafvNKkQFKLo08hHGnJ6jejtpKK5gQVgntPSC
- z6FpjgW3WSbMunc2haNfdaIYpHqKXXotMAKVnAmI=
+ b=oI4nQESoqZyjn7VsZ33X+ON5uUYshx7VeRd1Fw0jmtS1bajR9uQqZg4EnNaVFML17
+ cCyT6MKr/KMhOgcCzxvdMJ8k++qIVMRgorScoNcU69sNwH8QElANfkDVkj+xiuQ3Nk
+ PPL5AeDIUdzvFEr3RWzyajhoQAHZY7VQl2D5jSII=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 081/107] hv_netvsc: Fix memory leak when removing
- rndis device
-Date: Fri, 24 Jan 2020 09:17:51 -0500
-Message-Id: <20200124141817.28793-81-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 086/107] scsi: storvsc: Correctly set number of
+ hardware queues for IDE disk
+Date: Fri, 24 Jan 2020 09:17:56 -0500
+Message-Id: <20200124141817.28793-86-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200124141817.28793-1-sashal@kernel.org>
 References: <20200124141817.28793-1-sashal@kernel.org>
@@ -69,72 +69,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- Haiyang Zhang <haiyangz@microsoft.com>, devel@linuxdriverproject.org,
- Mohammed Gamal <mgamal@redhat.com>, "David S . Miller" <davem@davemloft.net>
+Cc: Sasha Levin <sashal@kernel.org>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>, linux-scsi@vger.kernel.org,
+ Ming Lei <ming.lei@redhat.com>, devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Mohammed Gamal <mgamal@redhat.com>
+From: Long Li <longli@microsoft.com>
 
-[ Upstream commit 536dc5df2808efbefc5acee334d3c4f701790ec0 ]
+[ Upstream commit 7b571c19d4c0b78d27dd3bf1f3c42e4032390af6 ]
 
-kmemleak detects the following memory leak when hot removing
-a network device:
+Commit 0ed881027690 ("scsi: storvsc: setup 1:1 mapping between hardware
+queue and CPU queue") introduced a regression for disks attached to
+IDE. For these disks the host VSP only offers one VMBUS channel. Setting
+multiple queues can overload the VMBUS channel and result in performance
+drop for high queue depth workload on system with large number of CPUs.
 
-unreferenced object 0xffff888083f63600 (size 256):
-  comm "kworker/0:1", pid 12, jiffies 4294831717 (age 1113.676s)
-  hex dump (first 32 bytes):
-    00 40 c7 33 80 88 ff ff 00 00 00 00 10 00 00 00  .@.3............
-    00 00 00 00 ad 4e ad de ff ff ff ff 00 00 00 00  .....N..........
-  backtrace:
-    [<00000000d4a8f5be>] rndis_filter_device_add+0x117/0x11c0 [hv_netvsc]
-    [<000000009c02d75b>] netvsc_probe+0x5e7/0xbf0 [hv_netvsc]
-    [<00000000ddafce23>] vmbus_probe+0x74/0x170 [hv_vmbus]
-    [<00000000046e64f1>] really_probe+0x22f/0xb50
-    [<000000005cc35eb7>] driver_probe_device+0x25e/0x370
-    [<0000000043c642b2>] bus_for_each_drv+0x11f/0x1b0
-    [<000000005e3d09f0>] __device_attach+0x1c6/0x2f0
-    [<00000000a72c362f>] bus_probe_device+0x1a6/0x260
-    [<0000000008478399>] device_add+0x10a3/0x18e0
-    [<00000000cf07b48c>] vmbus_device_register+0xe7/0x1e0 [hv_vmbus]
-    [<00000000d46cf032>] vmbus_add_channel_work+0x8ab/0x1770 [hv_vmbus]
-    [<000000002c94bb64>] process_one_work+0x919/0x17d0
-    [<0000000096de6781>] worker_thread+0x87/0xb40
-    [<00000000fbe7397e>] kthread+0x333/0x3f0
-    [<000000004f844269>] ret_from_fork+0x3a/0x50
+Fix it by leaving the number of hardware queues to 1 (default value) for
+IDE disks.
 
-rndis_filter_device_add() allocates an instance of struct rndis_device
-which never gets deallocated as rndis_filter_device_remove() sets
-net_device->extension which points to the rndis_device struct to NULL,
-leaving the rndis_device dangling.
-
-Since net_device->extension is eventually freed in free_netvsc_device(),
-we refrain from setting it to NULL inside rndis_filter_device_remove()
-
-Signed-off-by: Mohammed Gamal <mgamal@redhat.com>
-Reviewed-by: Haiyang Zhang <haiyangz@microsoft.com>
-Signed-off-by: David S. Miller <davem@davemloft.net>
+Fixes: 0ed881027690 ("scsi: storvsc: setup 1:1 mapping between hardware queue and CPU queue")
+Link: https://lore.kernel.org/r/1578960516-108228-1-git-send-email-longli@linuxonhyperv.com
+Reviewed-by: Ming Lei <ming.lei@redhat.com>
+Signed-off-by: Long Li <longli@microsoft.com>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/hyperv/rndis_filter.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/scsi/storvsc_drv.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/hyperv/rndis_filter.c b/drivers/net/hyperv/rndis_filter.c
-index f81e58267a6ee..b9e44bb22289c 100644
---- a/drivers/net/hyperv/rndis_filter.c
-+++ b/drivers/net/hyperv/rndis_filter.c
-@@ -1436,8 +1436,6 @@ void rndis_filter_device_remove(struct hv_device *dev,
- 	/* Halt and release the rndis device */
- 	rndis_filter_halt_device(net_dev, rndis_dev);
+diff --git a/drivers/scsi/storvsc_drv.c b/drivers/scsi/storvsc_drv.c
+index 542d2bac2922c..5087ed6afbdc3 100644
+--- a/drivers/scsi/storvsc_drv.c
++++ b/drivers/scsi/storvsc_drv.c
+@@ -1835,9 +1835,11 @@ static int storvsc_probe(struct hv_device *device,
+ 	 */
+ 	host->sg_tablesize = (stor_device->max_transfer_bytes >> PAGE_SHIFT);
+ 	/*
++	 * For non-IDE disks, the host supports multiple channels.
+ 	 * Set the number of HW queues we are supporting.
+ 	 */
+-	host->nr_hw_queues = num_present_cpus();
++	if (!dev_is_ide)
++		host->nr_hw_queues = num_present_cpus();
  
--	net_dev->extension = NULL;
--
- 	netvsc_device_remove(dev);
- }
- 
+ 	/*
+ 	 * Set the error handler work queue.
 -- 
 2.20.1
 
