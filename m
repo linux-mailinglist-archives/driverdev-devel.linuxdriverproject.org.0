@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6360A148720
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jan 2020 15:21:10 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9448A148734
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jan 2020 15:21:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 06B9222730;
-	Fri, 24 Jan 2020 14:21:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 49DE48835D;
+	Fri, 24 Jan 2020 14:21:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F9dnIDe72Xw0; Fri, 24 Jan 2020 14:21:08 +0000 (UTC)
+	with ESMTP id oRUGru1k-1JO; Fri, 24 Jan 2020 14:21:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 35770203EC;
-	Fri, 24 Jan 2020 14:21:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 763F28805D;
+	Fri, 24 Jan 2020 14:21:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EA3161BF3AE
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:21:04 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6FFB71BF3AE
+ for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:21:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E6522203C9
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:21:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6CDEE8765A
+ for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:21:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kg-wiNwYgQoT for <devel@linuxdriverproject.org>;
- Fri, 24 Jan 2020 14:21:04 +0000 (UTC)
+ with ESMTP id snoVZHEGtMR0 for <devel@linuxdriverproject.org>;
+ Fri, 24 Jan 2020 14:21:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 459C82035B
- for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:21:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C56F687658
+ for <devel@linuxdriverproject.org>; Fri, 24 Jan 2020 14:21:51 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 471642087E;
- Fri, 24 Jan 2020 14:21:03 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C946321556;
+ Fri, 24 Jan 2020 14:21:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579875664;
- bh=Lm4TMMTrCrjyhWS8DD1qBTELzqdN6Jn68xYLu48n62M=;
+ s=default; t=1579875711;
+ bh=JacYCh+mGWW/F/w+j0QpaISIlwxB72yrB1+Wv1wznAU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=u0pvxSWzUiF5z5Z2+cQOk4v83iIbQA29hItLbMoWpZcU4ekPWibA+4wJnN8j38UiX
- s+uSdXdta/O/8DdCS7H7bCJuThcSV72otMRbHBSkIAefAp/cVDtvF2FkuaLQ4xcCt/
- pzBZ/36jI0Ok12Q59Y7TX9umDSDC/SUQ90nPh/zA=
+ b=1YALEhSrm+7/TqfiGbiZLaOgOUYtYmFnOXevbzK16AHkYPexjjKpgpHJj3+ZWx5s8
+ 3LTsJ0H0qYSxF4ZMKzjTzExHPOn/ygEiZYK7MxNisbsIBVllgnHU067ZYkjypOrXZu
+ aMDpWi+lBb/WjYuiev+91jh8ad0y0+9TvjV2Jd0A=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 44/56] hv_netvsc: Fix memory leak when removing
+Subject: [PATCH AUTOSEL 4.14 27/32] hv_netvsc: Fix memory leak when removing
  rndis device
-Date: Fri, 24 Jan 2020 09:20:00 -0500
-Message-Id: <20200124142012.29752-44-sashal@kernel.org>
+Date: Fri, 24 Jan 2020 09:21:14 -0500
+Message-Id: <20200124142119.30484-27-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200124142012.29752-1-sashal@kernel.org>
-References: <20200124142012.29752-1-sashal@kernel.org>
+In-Reply-To: <20200124142119.30484-1-sashal@kernel.org>
+References: <20200124142119.30484-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -123,12 +123,12 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 deletions(-)
 
 diff --git a/drivers/net/hyperv/rndis_filter.c b/drivers/net/hyperv/rndis_filter.c
-index f47e36ac42a7f..dd91834f841d5 100644
+index b19557c035f25..aa0bbffe49005 100644
 --- a/drivers/net/hyperv/rndis_filter.c
 +++ b/drivers/net/hyperv/rndis_filter.c
-@@ -1375,8 +1375,6 @@ void rndis_filter_device_remove(struct hv_device *dev,
+@@ -1331,8 +1331,6 @@ void rndis_filter_device_remove(struct hv_device *dev,
  	/* Halt and release the rndis device */
- 	rndis_filter_halt_device(net_dev, rndis_dev);
+ 	rndis_filter_halt_device(rndis_dev);
  
 -	net_dev->extension = NULL;
 -
