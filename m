@@ -2,74 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA6331495E1
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jan 2020 14:15:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CA0A1495F4
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jan 2020 14:34:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1293F8772C;
-	Sat, 25 Jan 2020 13:15:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D0E3487708;
+	Sat, 25 Jan 2020 13:34:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8UnakO9NxQvp; Sat, 25 Jan 2020 13:15:44 +0000 (UTC)
+	with ESMTP id 9+wDuFHOQlvz; Sat, 25 Jan 2020 13:34:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E1E1E876A2;
-	Sat, 25 Jan 2020 13:15:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3458A876BD;
+	Sat, 25 Jan 2020 13:34:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 67B2E1BF27F
- for <devel@linuxdriverproject.org>; Sat, 25 Jan 2020 13:15:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6EE0D1BF27F
+ for <devel@linuxdriverproject.org>; Sat, 25 Jan 2020 13:34:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 61AEB86CA7
- for <devel@linuxdriverproject.org>; Sat, 25 Jan 2020 13:15:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1997584FDD
+ for <devel@linuxdriverproject.org>; Sat, 25 Jan 2020 13:34:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CZk4wSEhKnkw for <devel@linuxdriverproject.org>;
- Sat, 25 Jan 2020 13:15:42 +0000 (UTC)
+ with ESMTP id ZmAPtA-O8kca for <devel@linuxdriverproject.org>;
+ Sat, 25 Jan 2020 13:34:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 09C1B86CA5
- for <devel@driverdev.osuosl.org>; Sat, 25 Jan 2020 13:15:42 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id p14so2546780pfn.4
- for <devel@driverdev.osuosl.org>; Sat, 25 Jan 2020 05:15:42 -0800 (PST)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F16FF84F58
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jan 2020 13:34:46 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id s64so2648090pgb.9
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jan 2020 05:34:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=3QVXWFxwGX7QiCNvy96Dga4mKxwmEj2CJq1V24a5GDQ=;
- b=utalDz0DtbPvdQB+fVEPFCD9uAV+diqbxtaE6nLAPAT4Rv551mgKHVL52z54ilOP+j
- 4NdcGGy4Iu8oF+pQNUPDtS2yL8kLE8H3HxIniwYOhxp/9iBOjDanzLIe8WSpyQbuWuFv
- pQ1eFhZINDOMd9Y6XOi8/9/pWlyVR5D9FynQbAWlV1+2hE1YJqWkBT4hDHnastA81fhF
- M2KvZwldi1zv1Srpm9cUteUYxO5Ylxvd5WbQhVX3I4wZfePzgtz0LZmb16gUguApSH5B
- KKcGGB0tZHazknx1GB/9swxz927Sw3gZsZsQSpCirB9JeI8mUN3bxlxe1/GXAUNf6Snl
- 5bBQ==
+ :user-agent; bh=tNpax35bpayHCHzZcmmIYibH2bvx/xD5uxze2SDaHUw=;
+ b=syjGSNlfVZKnp2hxifURfMNCVAmZ1supGURNmPeuMwlDw0hQEgG4fdbPE7TrxrzbPp
+ MgDqfF1859dOucZ+WKIScH0BVSAfzJ2boQJuWduL6vV7IGsD0CGCR0tqYJNfOpsia5F4
+ GWvRDzaff4rSKh7NweagYFgGdpGPsglwYBmc+mf2HAbm+vTDVmNQzO2yAVKZzREu+GTO
+ NDeX3UaCwwDviMviMJONqnkQ6NCq0RUpOh/UgUPu6buwTEPHa3bkKgoWzYRmAq+HeExj
+ OKbtChVFVNcxwK9Noc/X8WbWQmeM6ZTLI8Hdv4CdsAhL9U7wH+qwiLzGrgV0A+b0n4JY
+ JzzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=3QVXWFxwGX7QiCNvy96Dga4mKxwmEj2CJq1V24a5GDQ=;
- b=FpDmp11omokDMBtB2tK/FKSEfswbL8EMOnf5jms1eGYaERujpSD67yDLydheq6IVmX
- san40l6eslwWyMBAXj0spr1J2H+ozEgpUNzXPu8M+ktsiu0InrUpZPjMrKMn50zC/1H/
- Rp5D5zyxW/roelUokYjwTVm3+QheYjiYlHLgCSW/QZba0/KBcKsHLNwbPak8sqdeZgjb
- U0jzgvSgf5LeNS22dkIYNdpOqyBh3pv30Ud4L5H/ZgOVgy5BulJ+8br7WlDT3aJogZBY
- /KrWFA+j6hKkVng3ETN6xN652SLT3aC1/74Q//3I1NJvi8jiXHTxiL4sRyzgwgy4qM85
- MDzQ==
-X-Gm-Message-State: APjAAAXaqNTHCS6HsW/I50ErYqXo1B2wz9EfHzAMa2/kN4Y9USPbri5P
- 9hQ6owNf/ykC8d4bwjjiVGE=
-X-Google-Smtp-Source: APXvYqz8fKPgyFBdtF4tRUmTiUa5qf+2L3gDnSZV4kLyc14yiXiCILJRmIvrCRDA3OsHpTeJ+oOfyQ==
-X-Received: by 2002:a63:34cc:: with SMTP id b195mr8099939pga.268.1579958141494; 
- Sat, 25 Jan 2020 05:15:41 -0800 (PST)
+ bh=tNpax35bpayHCHzZcmmIYibH2bvx/xD5uxze2SDaHUw=;
+ b=gsxpUZXFtXZz+R7rT9i+BCPntpDy7K4KdFZqcpLQHcQrRYoUByRZfBHYXbNHrndttF
+ yqj1JvkaA9hKy/1v4aQqyS15aULXkUQ1eDzJclxZZHcf/LxRpBXAqOC51AzMcQFVhTaE
+ u8wSXrWNzLgugWLFqpXfbu3CWP8TCzYaJD86/SgLPjaca2yKi+ZlEoEo2Mrylvdr4czz
+ nN2R3HIrvv4d5ft7wJUGznkeTEuove9ic2JoGQAHPllH0gX6hV59Jex8kWmcJjyOjXli
+ sCWE8WxEF1K3yTGy15HMEXzAuJQwd2k5xprXCK3NnB6TGjMghge6lOfNAx36aP5z3Crq
+ NjUg==
+X-Gm-Message-State: APjAAAVntCIG4l98bdFXkaM2P+7kMyMQtKq7ghyR2rKqLAl4GPXz1inM
+ 1cqAKvKANnnW809dfAGdjQQ=
+X-Google-Smtp-Source: APXvYqw37uxMtb0KLfugrMcUPIi36U6kK68Otehdjy5yDKWFy5ta6tTHXjA06yr31iAPKGeIndec4w==
+X-Received: by 2002:a63:1d5f:: with SMTP id d31mr2144271pgm.159.1579959286506; 
+ Sat, 25 Jan 2020 05:34:46 -0800 (PST)
 Received: from google.com ([123.201.163.7])
- by smtp.gmail.com with ESMTPSA id c34sm9859242pgc.61.2020.01.25.05.15.39
+ by smtp.gmail.com with ESMTPSA id i3sm10212006pfo.72.2020.01.25.05.34.43
  (version=TLS1_2 cipher=AES128-SHA bits=128/128);
- Sat, 25 Jan 2020 05:15:41 -0800 (PST)
-Date: Sat, 25 Jan 2020 18:45:35 +0530
+ Sat, 25 Jan 2020 05:34:45 -0800 (PST)
+Date: Sat, 25 Jan 2020 19:04:38 +0530
 From: Saurav Girepunje <saurav.girepunje@gmail.com>
-To: hsweeten@visionengravers.com, gregkh@linuxfoundation.org,
- saurav.girepunje@gmail.com, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: comedi: drivers: fix condition with no effect
-Message-ID: <20200125131535.GA4171@google.com>
+To: gregkh@linuxfoundation.org, nishkadg.linux@gmail.com,
+ wambui.karugax@gmail.com, julia.lawall@lip6.fr,
+ benniciemanuel78@gmail.com, saurav.girepunje@gmail.com,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: rtl8723bs: core: fix condition with no effect
+Message-ID: <20200125133438.GA4211@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.6.2-neo (NetBSD/sparc64)
@@ -96,26 +97,34 @@ WARNING: possible condition with no effect (if == else)
 
 Signed-off-by: Saurav Girepunje <saurav.girepunje@gmail.com>
 ---
-  drivers/staging/comedi/drivers/das1800.c | 6 ------
-  1 file changed, 6 deletions(-)
+  drivers/staging/rtl8723bs/core/rtw_mlme.c | 14 ++------------
+  1 file changed, 2 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/das1800.c b/drivers/staging/comedi/drivers/das1800.c
-index f16aa7e9..7ab72e8 100644
---- a/drivers/staging/comedi/drivers/das1800.c
-+++ b/drivers/staging/comedi/drivers/das1800.c
-@@ -1299,12 +1299,6 @@ static int das1800_attach(struct comedi_device *dev,
-  			outb(DAC(i), dev->iobase + DAS1800_SELECT);
-  			outw(0, dev->iobase + DAS1800_DAC);
-  		}
--	} else if (board->id == DAS1800_ID_AO) {
--		/*
--		 * 'ao' boards have waveform analog outputs that are not
--		 * currently supported.
--		 */
--		s->type		= COMEDI_SUBD_UNUSED;
-  	} else {
-  		s->type		= COMEDI_SUBD_UNUSED;
-  	}
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+index 71fcb46..5f110c3 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+@@ -2771,18 +2771,8 @@ void rtw_update_ht_cap(struct adapter *padapter, u8 *pie, uint ie_len, u8 channe
+  	DBG_871X("+rtw_update_ht_cap()\n");
+  
+  	/* maybe needs check if ap supports rx ampdu. */
+-	if (!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable == 1) {
+-		if (pregistrypriv->wifi_spec == 1) {
+-			/* remove this part because testbed AP should disable RX AMPDU */
+-			/* phtpriv->ampdu_enable = false; */
+-			phtpriv->ampdu_enable = true;
+-		} else {
+-			phtpriv->ampdu_enable = true;
+-		}
+-	} else if (pregistrypriv->ampdu_enable == 2) {
+-		/* remove this part because testbed AP should disable RX AMPDU */
+-		/* phtpriv->ampdu_enable = true; */
+-	}
++	if (!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable == 1)
++		phtpriv->ampdu_enable = true;
+  
+  	/* check Max Rx A-MPDU Size */
+  	len = 0;
 -- 
 1.9.1
 
