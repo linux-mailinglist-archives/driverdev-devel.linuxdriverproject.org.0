@@ -2,67 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09202149707
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jan 2020 18:50:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B5B5814971A
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jan 2020 19:13:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 87E5286974;
-	Sat, 25 Jan 2020 17:50:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8A15D86959;
+	Sat, 25 Jan 2020 18:13:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cLmncK-mItVn; Sat, 25 Jan 2020 17:50:05 +0000 (UTC)
+	with ESMTP id J7Kbh5L32E+c; Sat, 25 Jan 2020 18:13:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6F63F84C63;
-	Sat, 25 Jan 2020 17:50:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 451D7861D2;
+	Sat, 25 Jan 2020 18:13:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 843441BF33F
- for <devel@linuxdriverproject.org>; Sat, 25 Jan 2020 17:50:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C98BB1BF82D
+ for <devel@linuxdriverproject.org>; Sat, 25 Jan 2020 18:13:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 80F5F85F58
- for <devel@linuxdriverproject.org>; Sat, 25 Jan 2020 17:50:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C64A785B09
+ for <devel@linuxdriverproject.org>; Sat, 25 Jan 2020 18:13:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Z2jtAXnhxsI6 for <devel@linuxdriverproject.org>;
- Sat, 25 Jan 2020 17:50:02 +0000 (UTC)
+ with ESMTP id 4DJsoRiZcJmL for <devel@linuxdriverproject.org>;
+ Sat, 25 Jan 2020 18:13:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
- [209.85.222.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E9EC885F0B
- for <devel@driverdev.osuosl.org>; Sat, 25 Jan 2020 17:50:01 +0000 (UTC)
-Received: by mail-qk1-f193.google.com with SMTP id h23so5524054qkh.0
- for <devel@driverdev.osuosl.org>; Sat, 25 Jan 2020 09:50:01 -0800 (PST)
+Received: from mail-qv1-f68.google.com (mail-qv1-f68.google.com
+ [209.85.219.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 769E185CB8
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jan 2020 18:13:15 +0000 (UTC)
+Received: by mail-qv1-f68.google.com with SMTP id y8so2571156qvk.6
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jan 2020 10:13:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=3muEsSJhzMBr6bStz5/aZm1+29dYJOpxSAbwSPEf1Ns=;
- b=AXekawrU0Zv983Cm/0OdaLaIjCisK1FlyFq+FVw286xO2CaPlpYXJO1nWfkK+JTqri
- xqrGkxIB9SdvcYL8+3aM876Lw7DSxI/WYF5W2tIm2K1Yj/dwUTOSmbAXn9h/pFQA+1D7
- qMaBcTZgdMfuIMDbW4gsQxuKuUU262kQbCk+iKYQFRwOs9jz/ZlByY88LByJerZIZCt3
- qfWJBDKE5+JLhPuR/JdFa0VZi6mMWC+3aSqz4F0DMBC7WgxMEQCvsu6xKtmV3StZIvFC
- n0CizVBKRHEv9x5Zs/DdAasAXg1ViPedd9cH2V5HJeAOuV7g013/GQb2Q0CIOPwYBAsU
- qjJg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=E+cu/QJKN5uT8la7yZxdrY+Jr2Gm5Xc2nC3nhoLTrS8=;
+ b=UmeqDr3LtDrnKxoURMJ2NVNttinEbKnApSiJ5hecVmoSYF+NNk33LGrN5gpKI8h1j5
+ NiXJ+lhrh+TPUWIb4LPEvcRBR1isgyk+ns6dRIo+rQhYOV84VVRU5WtGJa/n1ANZunRr
+ ZX0xqcQdgyCLin0wRfCHP+rag/viDDNJHXdzdvii4YmrQAy6Ciu45C9NL0axmcVXyGdh
+ d1YU8KnvVqWruQhsitVxFu/ZND8SX6h0kn9V7+or2/Pio+OBh3jYEKTaof7f1I9RK9uq
+ IHamWzTJG2KjHBY7FkUIUgVlzbSeaR7DLnsZvAr6dW9a1ruqJl786deHrrIsohzxo6XF
+ w2wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=3muEsSJhzMBr6bStz5/aZm1+29dYJOpxSAbwSPEf1Ns=;
- b=RJFUYDRvKVcmIJICVEClOSi1VZF6QWjikYBci3xhociOK6kPJAtWzEnS0qwuvz03tF
- zbT2H+SJbwKaqE5DkugmisrW6HzhuzD9SSb3EX7MrTGKgRUxPenGHHguX7q2I7YOt2Xr
- YGD3jC7YzO0wnImurD8Ds6jzIfo5D8dAnIA1rXTezb4R5gSdFpEGQNymopfDGhb0KizA
- 75RE2AoN843wJBpCZzDtlkjzdM1V8X2oF72CYDXcOo8wparqhOyp5WbFV2VP04p/GVza
- Jo/z7k4i3H6oTXWrrXJq7q4A3xiNzseN3ml8CvznbmXjaalyEbV8hkpDmBO7+AhiOMAN
- T3Bg==
-X-Gm-Message-State: APjAAAW4fVYDnbsQ6kc1xAwcLWE9rA2BRCaOAnrEoyqdnJ+/iWAoR6KC
- Wd1F3ijz+SmIp4u1HeCPu8Y5oL1vxc4blBOgFc+V0Q==
-X-Google-Smtp-Source: APXvYqyuHRUV3EEiPIwNqXVWDHTD2j7oGUIxvgQxvkPsaqpwREVxmwDFmJUNlxddrAEetn2QRgCkSU7kOgkWwBmq7GE=
-X-Received: by 2002:a37:5841:: with SMTP id m62mr8660237qkb.256.1579974600650; 
- Sat, 25 Jan 2020 09:50:00 -0800 (PST)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=E+cu/QJKN5uT8la7yZxdrY+Jr2Gm5Xc2nC3nhoLTrS8=;
+ b=UzK0qzafX/xF/oDQNIGch4yEMzjtQDU2SknZvxjFH3apqPG+efuB8xzHqpHZ8IwBC6
+ so3Aq/y3nqM86CoZKX2Bf1kJ5BPwQyGRcd2ibPENRN4Ei750cHleg+Mqn+zrMCzviVGQ
+ 0SF+qvv72wEg2BfjJ69kLYSfUA+fxFGJZ4Vt+rHwBeMJBV56CQwClxWZsaSIHuKKa2f8
+ 2DGis5YhlhgHYe1bwFJ/Qq1DD4akDgAtKajlyJvpJMM06Is4iXH1IdsJE99pJfr1tI//
+ hSdWZIpwoopJpWoi7SRbDZWAl6hs6PoGe5GgBf2u14TNMvTWgoV+TjRWkxVjqekusPp5
+ ZG0Q==
+X-Gm-Message-State: APjAAAV/3b3SHnQ5g0s4MJzepCqOJn4VEXmtZ4kF8rHYY28rot8DUuPj
+ 62C9DQLyUftgDtCuPOtsFtzBC1DGu7HGlo65HuXOEg==
+X-Google-Smtp-Source: APXvYqxm7T6ryNnPOvvufckliHZ/8tFmlEyft2z6YJr6twfkmfUd/0M4VFP/t19+493a+jP4pEDKyHxXqo68wyWg2k8=
+X-Received: by 2002:a0c:ee91:: with SMTP id u17mr8846749qvr.22.1579975994183; 
+ Sat, 25 Jan 2020 10:13:14 -0800 (PST)
 MIME-Version: 1.0
+References: <CACT4Y+bg1UKXzZF4a9y+5CfNYRwBc5Gx+GjPS0Dhb1n-Qf50+g@mail.gmail.com>
+In-Reply-To: <CACT4Y+bg1UKXzZF4a9y+5CfNYRwBc5Gx+GjPS0Dhb1n-Qf50+g@mail.gmail.com>
 From: Dmitry Vyukov <dvyukov@google.com>
-Date: Sat, 25 Jan 2020 18:49:49 +0100
-Message-ID: <CACT4Y+bg1UKXzZF4a9y+5CfNYRwBc5Gx+GjPS0Dhb1n-Qf50+g@mail.gmail.com>
-Subject: binderfs interferes with syzkaller?
+Date: Sat, 25 Jan 2020 19:13:03 +0100
+Message-ID: <CACT4Y+bckC4k-EpWiCkD+BBo5ypmkcb2g8Axb62LnBbwJjcqdw@mail.gmail.com>
+Subject: Re: binderfs interferes with syzkaller?
 To: Christian Brauner <christian@brauner.io>,
  Hridya Valsaraju <hridya@google.com>, 
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -89,26 +92,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi binder maintainers,
+On Sat, Jan 25, 2020 at 6:49 PM Dmitry Vyukov <dvyukov@google.com> wrote:
+>
+> Hi binder maintainers,
+>
+> It seems that something has happened and now syzbot has 0 coverage in
+> drivers/android/binder.c:
+> https://storage.googleapis.com/syzkaller/cover/ci-upstream-kasan-gce-root.html
+> It covered at least something there before as it found some bugs in binder code.
+> I _suspect_ it may be related to introduction binderfs, but it's
+> purely based on the fact that binderfs changed lots of things there.
+> And I see it claims to be backward compatible.
+>
+> syzkaller strategy to reach binder devices is to use
+> CONFIG_ANDROID_BINDER_DEVICES to create a bunch of binderN devices (to
+> give each test process a private one):
+> https://github.com/google/syzkaller/blob/master/dashboard/config/upstream-kasan.config#L5671
+>
+> Then it knows how to open these /dev/binderN devices:
+> https://github.com/google/syzkaller/blob/master/sys/linux/dev_binder.txt#L22
+> and do stuff with them.
+>
+> Did these devices disappear or something?
 
-It seems that something has happened and now syzbot has 0 coverage in
-drivers/android/binder.c:
-https://storage.googleapis.com/syzkaller/cover/ci-upstream-kasan-gce-root.html
-It covered at least something there before as it found some bugs in binder code.
-I _suspect_ it may be related to introduction binderfs, but it's
-purely based on the fact that binderfs changed lots of things there.
-And I see it claims to be backward compatible.
+Oh, I see, it's backwards compatible if it's not enabled, right?
 
-syzkaller strategy to reach binder devices is to use
-CONFIG_ANDROID_BINDER_DEVICES to create a bunch of binderN devices (to
-give each test process a private one):
-https://github.com/google/syzkaller/blob/master/dashboard/config/upstream-kasan.config#L5671
+if (!IS_ENABLED(CONFIG_ANDROID_BINDERFS) &&
+    strcmp(binder_devices_param, "") != 0) {
+/*
+* Copy the module_parameter string, because we don't want to
+* tokenize it in-place.
+*/
+device_names = kstrdup(binder_devices_param, GFP_KERNEL);
+if (!device_names) {
+ret = -ENOMEM;
+goto err_alloc_device_names_failed;
+}
 
-Then it knows how to open these /dev/binderN devices:
-https://github.com/google/syzkaller/blob/master/sys/linux/dev_binder.txt#L22
-and do stuff with them.
+device_tmp = device_names;
+while ((device_name = strsep(&device_tmp, ","))) {
+ret = init_binder_device(device_name);
+if (ret)
+goto err_init_binder_device_failed;
+}
+}
 
-Did these devices disappear or something?
+And we enabled it because, well, enabling things generally gives more
+coverage. I guess I will disable CONFIG_ANDROID_BINDERFS for now to
+restore coverage in the binder itself.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
