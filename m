@@ -2,47 +2,46 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8509D14A9C8
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jan 2020 19:27:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FD7814AAB5
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jan 2020 20:46:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 71CB18648E;
-	Mon, 27 Jan 2020 18:27:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 167D4863D0;
+	Mon, 27 Jan 2020 19:46:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9v36eOwH8sK0; Mon, 27 Jan 2020 18:27:10 +0000 (UTC)
+	with ESMTP id Tdcssi8kYwjS; Mon, 27 Jan 2020 19:46:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 337E586429;
-	Mon, 27 Jan 2020 18:27:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A1A2286397;
+	Mon, 27 Jan 2020 19:46:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C2A7D1BF2EF
- for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 18:27:06 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 666891BF36F
+ for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 19:46:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BF47D878D7
- for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 18:27:06 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6381584D56
+ for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 19:46:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cvkxBgQRbNoX for <devel@linuxdriverproject.org>;
- Mon, 27 Jan 2020 18:27:05 +0000 (UTC)
+ with ESMTP id oyDq9I8uTVx3 for <devel@linuxdriverproject.org>;
+ Mon, 27 Jan 2020 19:46:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9C47B87404
- for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 18:27:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6645784D09
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 19:46:23 +0000 (UTC)
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id B231829257E
-Message-ID: <7cdd245cd5f4a12d02294581d9af42c723f038f0.camel@collabora.com>
-Subject: Re: [PATCH 1/4] media: hantro: Read be32 words starting at every
- fourth byte
+ (Authenticated sender: ezequiel) with ESMTPSA id 275AF293C15
+Message-ID: <e3a1df66cc4292a6a9b42f7eb6a5e4aa689cabbd.camel@collabora.com>
+Subject: Re: [PATCH 2/4] media: hantro: Use standard luma quantization table
 From: Ezequiel Garcia <ezequiel@collabora.com>
 To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, 
  devel@driverdev.osuosl.org
-Date: Mon, 27 Jan 2020 15:26:57 -0300
-In-Reply-To: <20200127143009.15677-2-andrzej.p@collabora.com>
+Date: Mon, 27 Jan 2020 16:46:13 -0300
+In-Reply-To: <20200127143009.15677-3-andrzej.p@collabora.com>
 References: <20200127143009.15677-1-andrzej.p@collabora.com>
- <20200127143009.15677-2-andrzej.p@collabora.com>
+ <20200127143009.15677-3-andrzej.p@collabora.com>
 Organization: Collabora
 User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
@@ -66,78 +65,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Hi Andrzej,
+
 On Mon, 2020-01-27 at 15:30 +0100, Andrzej Pietrasiewicz wrote:
-> Since (luma/chroma)_qtable is an array of unsigned char, indexing it
-> returns consecutive byte locations, but we are supposed to read the arrays
-> in four-byte words. Consequently, we should be pointing
-> get_unaligned_be32() at consecutive word locations instead.
+> The table is actually different in the document than in this file, so align
+> this file with the document.
 > 
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+> ---
+>  drivers/staging/media/hantro/hantro_jpeg.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/staging/media/hantro/hantro_jpeg.c b/drivers/staging/media/hantro/hantro_jpeg.c
+> index 125eb41f2ede..d3b381d00b23 100644
+> --- a/drivers/staging/media/hantro/hantro_jpeg.c
+> +++ b/drivers/staging/media/hantro/hantro_jpeg.c
+> @@ -23,17 +23,17 @@
+>  #define HUFF_CHROMA_AC_OFF	409
+>  
+>  /* Default tables from JPEG ITU-T.81
+> - * (ISO/IEC 10918-1) Annex K.3, I
+> + * (ISO/IEC 10918-1) Annex K, tables K.1 and K.2
+>   */
 
-Ouch!
-
-Seems we were too fast on that cleanup. Please add:
-
-Cc: stable@vger.kernel.org
-Fixes: 00c30f42c7595f "media: rockchip vpu: remove some unused vars"
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+I wonder if we shouldn't just have these tables
+in decimal instead of hexa, so they look exactly
+like the ones in the spec.
 
 Thanks,
 Ezequiel
 
-> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-> ---
->  drivers/staging/media/hantro/hantro_h1_jpeg_enc.c     | 9 +++++++--
->  drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c | 9 +++++++--
->  2 files changed, 14 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-> index 938b48d4d3d9..be787a045c7e 100644
-> --- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-> +++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-> @@ -67,12 +67,17 @@ hantro_h1_jpeg_enc_set_qtable(struct hantro_dev *vpu,
->  			      unsigned char *chroma_qtable)
->  {
->  	u32 reg, i;
-> +	__be32 *luma_qtable_p;
-> +	__be32 *chroma_qtable_p;
-> +
-> +	luma_qtable_p = (__be32 *)luma_qtable;
-> +	chroma_qtable_p = (__be32 *)chroma_qtable;
+>  static const unsigned char luma_q_table[] = {
+> -	0x10, 0x0b, 0x0a, 0x10, 0x7c, 0x8c, 0x97, 0xa1,
+> -	0x0c, 0x0c, 0x0e, 0x13, 0x7e, 0x9e, 0xa0, 0x9b,
+> -	0x0e, 0x0d, 0x10, 0x18, 0x8c, 0x9d, 0xa9, 0x9c,
+> -	0x0e, 0x11, 0x16, 0x1d, 0x97, 0xbb, 0xb4, 0xa2,
+> -	0x12, 0x16, 0x25, 0x38, 0xa8, 0x6d, 0x67, 0xb1,
+> -	0x18, 0x23, 0x37, 0x40, 0xb5, 0x68, 0x71, 0xc0,
+> +	0x10, 0x0b, 0x0a, 0x10, 0x18, 0x28, 0x33, 0x3d,
+> +	0x0c, 0x0c, 0x0e, 0x13, 0x1a, 0x3a, 0x3c, 0x37,
+> +	0x0e, 0x0d, 0x10, 0x18, 0x28, 0x39, 0x45, 0x38,
+> +	0x0e, 0x11, 0x16, 0x1d, 0x33, 0x57, 0x50, 0x3e,
+> +	0x12, 0x16, 0x25, 0x38, 0x44, 0x6d, 0x67, 0x4d,
+> +	0x18, 0x23, 0x37, 0x40, 0x51, 0x68, 0x71, 0x5c,
+>  	0x31, 0x40, 0x4e, 0x57, 0x67, 0x79, 0x78, 0x65,
+> -	0x48, 0x5c, 0x5f, 0x62, 0x70, 0x64, 0x67, 0xc7,
+> +	0x48, 0x5c, 0x5f, 0x62, 0x70, 0x64, 0x67, 0x63
+>  };
 >  
->  	for (i = 0; i < H1_JPEG_QUANT_TABLE_COUNT; i++) {
-> -		reg = get_unaligned_be32(&luma_qtable[i]);
-> +		reg = get_unaligned_be32(&luma_qtable_p[i]);
->  		vepu_write_relaxed(vpu, reg, H1_REG_JPEG_LUMA_QUAT(i));
->  
-> -		reg = get_unaligned_be32(&chroma_qtable[i]);
-> +		reg = get_unaligned_be32(&chroma_qtable_p[i]);
->  		vepu_write_relaxed(vpu, reg, H1_REG_JPEG_CHROMA_QUAT(i));
->  	}
->  }
-> diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c b/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
-> index 067892345b5d..bdb95652d6a8 100644
-> --- a/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
-> +++ b/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
-> @@ -98,12 +98,17 @@ rk3399_vpu_jpeg_enc_set_qtable(struct hantro_dev *vpu,
->  			       unsigned char *chroma_qtable)
->  {
->  	u32 reg, i;
-> +	__be32 *luma_qtable_p;
-> +	__be32 *chroma_qtable_p;
-> +
-> +	luma_qtable_p = (__be32 *)luma_qtable;
-> +	chroma_qtable_p = (__be32 *)chroma_qtable;
->  
->  	for (i = 0; i < VEPU_JPEG_QUANT_TABLE_COUNT; i++) {
-> -		reg = get_unaligned_be32(&luma_qtable[i]);
-> +		reg = get_unaligned_be32(&luma_qtable_p[i]);
->  		vepu_write_relaxed(vpu, reg, VEPU_REG_JPEG_LUMA_QUAT(i));
->  
-> -		reg = get_unaligned_be32(&chroma_qtable[i]);
-> +		reg = get_unaligned_be32(&chroma_qtable_p[i]);
->  		vepu_write_relaxed(vpu, reg, VEPU_REG_JPEG_CHROMA_QUAT(i));
->  	}
->  }
+>  static const unsigned char chroma_q_table[] = {
 > -- 
 > 2.17.1
 > 
