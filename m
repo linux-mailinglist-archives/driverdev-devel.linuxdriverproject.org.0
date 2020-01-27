@@ -1,48 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2AEA214C259
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Jan 2020 22:50:23 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD15314C2EB
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Jan 2020 23:21:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 560C320763;
-	Tue, 28 Jan 2020 21:50:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 66A9886DBD;
+	Tue, 28 Jan 2020 22:21:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AGqZaXXoEhuA; Tue, 28 Jan 2020 21:50:20 +0000 (UTC)
+	with ESMTP id Tw6ZQbv+oOXd; Tue, 28 Jan 2020 22:21:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0BA0F20656;
-	Tue, 28 Jan 2020 21:50:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3BEB484B8B;
+	Tue, 28 Jan 2020 22:21:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3FA961BF2F2
- for <devel@linuxdriverproject.org>; Tue, 28 Jan 2020 21:50:16 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 93A5B1BF5B4;
+ Tue, 28 Jan 2020 22:21:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 381D820656
- for <devel@linuxdriverproject.org>; Tue, 28 Jan 2020 21:50:16 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9034387FE7;
+ Tue, 28 Jan 2020 22:21:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b8+610CUeueC for <devel@linuxdriverproject.org>;
- Tue, 28 Jan 2020 21:50:16 +0000 (UTC)
+ with ESMTP id VeaWMMMzh+0V; Tue, 28 Jan 2020 22:21:27 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from gumh.com (unknown [89.36.212.5])
- by silver.osuosl.org (Postfix) with ESMTP id DC21D20551
- for <devel@driverdev.osuosl.org>; Tue, 28 Jan 2020 21:50:15 +0000 (UTC)
-Received: from User (unknown [103.99.1.171])
- by gumh.com (Postfix) with ESMTPA id 0C8C2BDCF5;
- Tue, 28 Jan 2020 16:33:40 -0500 (EST)
-From: "Thomas Au-Yeun"< koepp@elwood.ml>
-Subject: OUR FIRST PROJECT FOR THE YEAR 2020
-Date: Tue, 28 Jan 2020 13:33:53 -0800
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from server.btc-forum.com (unknown [5.45.73.102])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EDCCE87FE3;
+ Tue, 28 Jan 2020 22:21:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=btc-forum.com; s=mail; h=Message-Id:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Date:Subject:From:Reply-To:Sender:To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=2j87MykfJrpImIIFtswWkjOsYqJFOHxm/LZV/I2DBWQ=; b=q3cul8U0zVViQnCbRPRgrPbyoa
+ zvk1KPxnN02ge+yN6Ab4AG+kK6fkqCOMnp+407Xzz9DfvcDNCaCH1ngT0cVNKIxF7z32afqdS4HYQ
+ OIPOH8qaaZ0/cSOXFomKQ+2DSGVVd/r11zR9DlpFcULWMRpBaNR8vX4Vk4cF/0OdOe7s=;
+Received: from [193.56.28.114] (helo=User)
+ by server.btc-forum.com with esmtpa (Exim 4.89)
+ (envelope-from <administrator@btc-forum.com>)
+ id 1iw2RX-0001f4-JC; Mon, 27 Jan 2020 06:20:35 -0500
+From: "GORDON W"<administrator@btc-forum.com>
+Subject: HELLO
+Date: Mon, 27 Jan 2020 03:20:34 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200128215016.381D820656@silver.osuosl.org>
+Message-Id: <E1iw2RX-0001f4-JC@server.btc-forum.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,29 +65,17 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ppmc101@gmail.com
+Reply-To: kungwei7777@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good-day,
+I have a transaction that I believe will be of mutual benefits to both of us. kindly Contact me for more details as I want to be sure that my mail got to you before I can reveal more.
 
-               My name is Thomas Au-Yeun,I am one of the solicitors of Mrs. Carrie Perrodo, Co-Founder of Perenco, an Oil and gas exploration And production, natural gas and LNG trading and transportation, oil refining.
-I got your contact from online , Mrs. Carrie Perrodo is looking for a good contact to establish or sponsor a big Project outside her country.
+Best regards,
 
-Please get back to me in reply this project's verified e-mail address If accepted by you.E-mail: (ppmc101@gmail.com ).
-
-You can check about her bio-data page to get a proper understanding of her.
-https://en.wikipedia.org/wiki/Carrie_Perrodo
-
-
-Anticipating your communication.
-
-Regards
-
-Mr Thomas Au-Yeun
-FOR:Mrs Carrie Perrodo
+Gordon			
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
