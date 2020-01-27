@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3217914A1A5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jan 2020 11:15:12 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09DE314A1AB
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jan 2020 11:15:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BC765878F7;
-	Mon, 27 Jan 2020 10:15:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8A75385AD6;
+	Mon, 27 Jan 2020 10:15:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 59OZbVavufYS; Mon, 27 Jan 2020 10:15:10 +0000 (UTC)
+	with ESMTP id LbL11-ZvFPkR; Mon, 27 Jan 2020 10:15:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0797D878C8;
-	Mon, 27 Jan 2020 10:15:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AB75D84E68;
+	Mon, 27 Jan 2020 10:15:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EC16C1BF294
- for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 10:15:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C36771BF294
+ for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 10:15:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E8FAE85660
- for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 10:15:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BE85E20026
+ for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 10:15:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eruC6PoLP6xk for <devel@linuxdriverproject.org>;
- Mon, 27 Jan 2020 10:15:07 +0000 (UTC)
+ with ESMTP id 1UOfmKTSMB8W for <devel@linuxdriverproject.org>;
+ Mon, 27 Jan 2020 10:15:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 910B685657
- for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 10:15:07 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id u131so4900833pgc.10
- for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 02:15:07 -0800 (PST)
+Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
+ [209.85.216.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id AEBF820486
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 10:15:12 +0000 (UTC)
+Received: by mail-pj1-f68.google.com with SMTP id 12so1514589pjb.5
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 02:15:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=tfqT994o6hFKwC+NJH5VhBNOIvQ5NHGDSHAgoN5IQQg=;
- b=PYxFSJCOp4tSt1yqQ1Non9MhjGXhvzz0Q0c6Eo4PnLRd2QoSjU2mUZ0Tnf/q7M52U2
- EdBAxOQv+vy4khjwtzDYTucIWnVb09U3ZhooncfWRE1z9ZjPpNnOKjzIF3iB6zHcDGLj
- 9aHheSTFbL6ikPdph8gkwdt6pC8nVe4KjRNMsAPXNVtg8KtMcxhdare/0u8JJgKMOlUM
- cwMCYNwU0WYnZ69l8tOmYSwQhr1dnRbQdnolfL2dxQXIXovbYJhBTxO5wRnIainm7gNc
- mnhy+XSfDs9MciGvm0VsKBo3KNB1/LBQRCyt/SYGrNrrUvGSefn/y1q8Mc+ZtxHYk3Fw
- Hi2Q==
+ bh=+sMuF5qnUnN9Y8onz/B4zeL75IEd/ON79HtlJ1XRPFg=;
+ b=XvfG0jLHnDaERvZ+WHnA6vywBGhXrHvlvVwQUv0Fu1WZ7t0zp8NsGU5a79TLmuRaBB
+ iwIoJ68Yt2jM7poch61FpjmrNMxATkPBXcCBJWwlSTWJB5UQZ88YVS1cfJlPVbQjAn8R
+ 5z5b22IOLyq0OoTJh7cLUWuTdskuujTeyua0KrDNwgInvmIErZbLq8sy/ID9fdY8dFgs
+ pN3jPCzKBDX68gWQ+Fb7cmWaTeEZGx9h13gLS0aNc6ON2NFexL5S9d+0XLs9ridT6ybi
+ zoZjwzyNSHdgGVwE4Z22cYIh3UtS5m+cAImSt0VSHhZbn3x/GKQsSVGTqxJVJeFwnEuM
+ 2TCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=tfqT994o6hFKwC+NJH5VhBNOIvQ5NHGDSHAgoN5IQQg=;
- b=d0bv5/07IKkn3ALQI8ifdbcdEcZ61sprXZ1xnG+D719ZqYF0ezOIOR1bjtsw3g1Uoc
- IDW6zT8Ls9TnqTqGGJOBfaqTywdrCwPL97g17RZ9ZX7xN2B4F5luyFN7Jmd1NFCnKRPu
- 3GJs7ApE4WsfmJIQ4QI5GvZOG4Z8vyZD+PpC/IpFFaTEDAVwyKCXCcb/c01WGRK/Quoy
- VMDJU5qvv6BVHtM8Ol7BgEOwoqGoDnXcb8blAlAWA/N13GyC7IQ1I9lL1lgpxuVai3ND
- alO8VOCwNnReA1GKFLKV2gZ3C/o9DaP0jpLMPfJAqzLEw/6+ZRP8pq9YUEnaURn/3J9Y
- QPBg==
-X-Gm-Message-State: APjAAAWDsvF9Jfi4c85f9mGXSACFvPOYO2uekWcD98YPFWcxL9+R2p8u
- NldTfIDWIRPu+OUhkAjJEN4=
-X-Google-Smtp-Source: APXvYqwnlc/BTVD+zB2gkJ9TRRoZAjk4QyN2K+bRR20xZDRzGaJ5+E5yNuABM4OXiSgvvZwiMtkkaA==
-X-Received: by 2002:a62:7696:: with SMTP id
- r144mr15571402pfc.177.1580120107229; 
- Mon, 27 Jan 2020 02:15:07 -0800 (PST)
+ bh=+sMuF5qnUnN9Y8onz/B4zeL75IEd/ON79HtlJ1XRPFg=;
+ b=frVkdo7CwH9zIf8jHN+aeKSPTI58nwiY1h3vTVs97GWnf7n9zl0sNRfN7ajaG7rbNN
+ cQdnXlA+eczMx6HEfkxlqnA+pgRrLrReDVIhLa/l164YRnwumJHZ/xLHVmY2f0VCYFmH
+ BVk7GcJ/eSoIc052n0Co82nkSnrumOEnE39ZfPAxlnAMQGbi4f5wB1N5xWTzUHRhyEjt
+ 8V/vYmNB+pAYQ/GXDlGkI/cAy/ER1rGekJgziSvoXZ+Dz4FaOuXXp0wo3pXMBrC6c0Z8
+ L/k/N3K986To2cW4qzsAkYMFSfveZsaBvV1WSYzSr0yqlDnIYYCUpowhTVf7IUHRjXpy
+ 01qw==
+X-Gm-Message-State: APjAAAXaRo1p2c9wlBvmkOvPrA4eFXKXl12HtugdboudZ0MTsd0OblBH
+ qu3YHsxrxaunvgYljFZKUT8=
+X-Google-Smtp-Source: APXvYqwpspdRYPpxmAb+3sp5DfpMT0p35fOj7YL4PbTXIAGdRlX3cKuYysRJEfediyYGYOmDYq1j7w==
+X-Received: by 2002:a17:90a:c983:: with SMTP id
+ w3mr13584404pjt.121.1580120112342; 
+ Mon, 27 Jan 2020 02:15:12 -0800 (PST)
 Received: from localhost.localdomain ([2405:205:c902:a5e9:3956:8df2:aee5:9cf6])
- by smtp.gmail.com with ESMTPSA id s15sm15504138pgq.4.2020.01.27.02.15.02
+ by smtp.gmail.com with ESMTPSA id s15sm15504138pgq.4.2020.01.27.02.15.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jan 2020 02:15:06 -0800 (PST)
+ Mon, 27 Jan 2020 02:15:11 -0800 (PST)
 From: Pragat Pandya <pragat.pandya@gmail.com>
 To: valdis.kletnieks@vt.edu,
 	gregkh@linuxfoundation.org
-Subject: [PATCH 09/22] staging: exfat: Rename variable "Size" to "size"
-Date: Mon, 27 Jan 2020 15:43:30 +0530
-Message-Id: <20200127101343.20415-10-pragat.pandya@gmail.com>
+Subject: [PATCH 10/22] staging: exfat: Rename variable "SecSize" to "sec_size"
+Date: Mon, 27 Jan 2020 15:43:31 +0530
+Message-Id: <20200127101343.20415-11-pragat.pandya@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200127101343.20415-1-pragat.pandya@gmail.com>
 References: <20200127101343.20415-1-pragat.pandya@gmail.com>
@@ -94,7 +94,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change all the occurences of "Size" to "size" in exfat.
+Change all the occurrences of "SecSize" to "sec_size" in exfat.
 
 Signed-off-by: Pragat Pandya <pragat.pandya@gmail.com>
 ---
@@ -102,18 +102,18 @@ Signed-off-by: Pragat Pandya <pragat.pandya@gmail.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index 52f314d50b91..a228350acdb4 100644
+index a228350acdb4..58292495bb57 100644
 --- a/drivers/staging/exfat/exfat.h
 +++ b/drivers/staging/exfat/exfat.h
-@@ -233,7 +233,7 @@ struct date_time_t {
- 
- struct part_info_t {
- 	u32      offset;    /* start sector number of the partition */
--	u32      Size;      /* in sectors */
-+	u32      size;      /* in sectors */
+@@ -237,7 +237,7 @@ struct part_info_t {
  };
  
  struct dev_info_t {
+-	u32      SecSize;    /* sector size in bytes */
++	u32      sec_size;    /* sector size in bytes */
+ 	u32      DevSize;    /* block device size in sectors */
+ };
+ 
 -- 
 2.17.1
 
