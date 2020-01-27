@@ -2,49 +2,72 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FD7814AAB5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jan 2020 20:46:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB6C814ABE1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jan 2020 23:01:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 167D4863D0;
-	Mon, 27 Jan 2020 19:46:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2282D86797;
+	Mon, 27 Jan 2020 22:01:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Tdcssi8kYwjS; Mon, 27 Jan 2020 19:46:28 +0000 (UTC)
+	with ESMTP id vk+LlMjPiH3L; Mon, 27 Jan 2020 22:01:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A1A2286397;
-	Mon, 27 Jan 2020 19:46:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3BA5786410;
+	Mon, 27 Jan 2020 22:01:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 666891BF36F
- for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 19:46:25 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9457F1BF28C
+ for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 22:01:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6381584D56
- for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 19:46:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9066E8671A
+ for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 22:01:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oyDq9I8uTVx3 for <devel@linuxdriverproject.org>;
- Mon, 27 Jan 2020 19:46:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6645784D09
- for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 19:46:23 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 275AF293C15
-Message-ID: <e3a1df66cc4292a6a9b42f7eb6a5e4aa689cabbd.camel@collabora.com>
-Subject: Re: [PATCH 2/4] media: hantro: Use standard luma quantization table
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, 
- devel@driverdev.osuosl.org
-Date: Mon, 27 Jan 2020 16:46:13 -0300
-In-Reply-To: <20200127143009.15677-3-andrzej.p@collabora.com>
-References: <20200127143009.15677-1-andrzej.p@collabora.com>
- <20200127143009.15677-3-andrzej.p@collabora.com>
-Organization: Collabora
-User-Agent: Evolution 3.34.1-2 
-MIME-Version: 1.0
+ with ESMTP id i0m4VSTVjceK for <devel@linuxdriverproject.org>;
+ Mon, 27 Jan 2020 22:01:07 +0000 (UTC)
+X-Greylist: delayed 00:54:01 by SQLgrey-1.7.6
+Received: from mail-il1-f202.google.com (mail-il1-f202.google.com
+ [209.85.166.202])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B47BB86410
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 22:01:07 +0000 (UTC)
+Received: by mail-il1-f202.google.com with SMTP id z79so8796847ilf.4
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 14:01:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=CAH2JUZfxl1gXiFoCO0/GCKYjJBCGBSmgeGFBkbRVI0=;
+ b=vRafyqqdBsTOJgglJmYV5o0OlpyXwllJ3p28sfmm8WEusJw/8TTAuXROIItQFjhfru
+ FoTeyhiVZvrzp0JIm8RXe97PvQkILEt6fOIfd5MLGgbRHwVUGQteeanpwnUNFpDbUmET
+ yeUbkiANImftfw/XgIYW3iLbk9Ux/ghJ7Er+nvIxtGeyx3r4mpmfFWUtKxwkBLylRjuW
+ jzAHdXNaxHvnNn+PhPXHv3feb90RvDruMJozvNa2ceu9wpj55ZA+suoil28EMWaYbUp1
+ gY9llY8XBheRi/d3lSNUfkp4knvPXUGgFng3P5++sDeiWH/SxzYSdXyD/WICjNpLKhfy
+ d9VA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=CAH2JUZfxl1gXiFoCO0/GCKYjJBCGBSmgeGFBkbRVI0=;
+ b=LzALxe8Zk+LeaskHPYM/g+2KkAkSzG7JDFLc4K8At5Lw41vCk4M/qido2erQQ+oj57
+ EFehOpGkY+p1nDDA6gNwwM9mUCjkkI8Omqmn2BSgjFpDYNZ9Jg3voZQMCPvypnPMk5f1
+ gPuL0zYQMpN6jQQBXePulYZoo+/tXOwM2yCd+IvIXAqQYF88KGckM4kFyeyUDjIBVyC7
+ +y4p2EKzw768WwsZHib9y6ZoXF+q270jzeZgBfYPZZmEyeVXLSn8bn5kVYDnEzhmerFP
+ 3Kkr5SrPAtKUC0MkL8jpiezGv5GFamcq3545l/rQqFVI7iskK3OEWpA19qvfDvlKnUTj
+ vdCw==
+X-Gm-Message-State: APjAAAXYyYiv2PcVwAPoLHAr+zn5OKf8EbdV9K8LMi50m2zwPr1k3sbv
+ VeVF09Iqb5IBO4WEoo65E/0QIh06ow==
+X-Google-Smtp-Source: APXvYqxlVzkT24mENi5mvLCMmQUezkOaccKmD22akDDb2kZdKeiEAlnC02DJ2I9eq5Vhr5yinxSlLv5OQw==
+X-Received: by 2002:a63:4503:: with SMTP id s3mr21629876pga.311.1580158818711; 
+ Mon, 27 Jan 2020 13:00:18 -0800 (PST)
+Date: Mon, 27 Jan 2020 13:00:14 -0800
+Message-Id: <20200127210014.5207-1-tkjos@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.25.0.341.g760bfbb309-goog
+Subject: [PATCH] staging: android: ashmem: Disallow ashmem memory from being
+ remapped
+From: Todd Kjos <tkjos@google.com>
+To: tkjos@google.com, surenb@google.com, gregkh@linuxfoundation.org, 
+ arve@android.com, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+ maco@google.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,68 +80,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, kernel@collabora.com,
- linux-media@vger.kernel.org
+Cc: joel@joelfernandes.org, kernel-team@android.com,
+ stable <stable@vger.kernel.org>, Jann Horn <jannh@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Andrzej,
+From: Suren Baghdasaryan <surenb@google.com>
 
-On Mon, 2020-01-27 at 15:30 +0100, Andrzej Pietrasiewicz wrote:
-> The table is actually different in the document than in this file, so align
-> this file with the document.
-> 
-> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-> ---
->  drivers/staging/media/hantro/hantro_jpeg.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_jpeg.c b/drivers/staging/media/hantro/hantro_jpeg.c
-> index 125eb41f2ede..d3b381d00b23 100644
-> --- a/drivers/staging/media/hantro/hantro_jpeg.c
-> +++ b/drivers/staging/media/hantro/hantro_jpeg.c
-> @@ -23,17 +23,17 @@
->  #define HUFF_CHROMA_AC_OFF	409
->  
->  /* Default tables from JPEG ITU-T.81
-> - * (ISO/IEC 10918-1) Annex K.3, I
-> + * (ISO/IEC 10918-1) Annex K, tables K.1 and K.2
->   */
+When ashmem file is being mmapped the resulting vma->vm_file points to the
+backing shmem file with the generic fops that do not check ashmem
+permissions like fops of ashmem do. Fix that by disallowing mapping
+operation for backing shmem file.
 
-I wonder if we shouldn't just have these tables
-in decimal instead of hexa, so they look exactly
-like the ones in the spec.
+Reported-by: Jann Horn <jannh@google.com>
+Signed-off-by: Suren Baghdasaryan <surenb@google.com>
+Cc: stable <stable@vger.kernel.org> # 4.4,4.9,4.14,4.18,5.4
+Signed-off-by: Todd Kjos <tkjos@google.com>
+---
+ drivers/staging/android/ashmem.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-Thanks,
-Ezequiel
-
->  static const unsigned char luma_q_table[] = {
-> -	0x10, 0x0b, 0x0a, 0x10, 0x7c, 0x8c, 0x97, 0xa1,
-> -	0x0c, 0x0c, 0x0e, 0x13, 0x7e, 0x9e, 0xa0, 0x9b,
-> -	0x0e, 0x0d, 0x10, 0x18, 0x8c, 0x9d, 0xa9, 0x9c,
-> -	0x0e, 0x11, 0x16, 0x1d, 0x97, 0xbb, 0xb4, 0xa2,
-> -	0x12, 0x16, 0x25, 0x38, 0xa8, 0x6d, 0x67, 0xb1,
-> -	0x18, 0x23, 0x37, 0x40, 0xb5, 0x68, 0x71, 0xc0,
-> +	0x10, 0x0b, 0x0a, 0x10, 0x18, 0x28, 0x33, 0x3d,
-> +	0x0c, 0x0c, 0x0e, 0x13, 0x1a, 0x3a, 0x3c, 0x37,
-> +	0x0e, 0x0d, 0x10, 0x18, 0x28, 0x39, 0x45, 0x38,
-> +	0x0e, 0x11, 0x16, 0x1d, 0x33, 0x57, 0x50, 0x3e,
-> +	0x12, 0x16, 0x25, 0x38, 0x44, 0x6d, 0x67, 0x4d,
-> +	0x18, 0x23, 0x37, 0x40, 0x51, 0x68, 0x71, 0x5c,
->  	0x31, 0x40, 0x4e, 0x57, 0x67, 0x79, 0x78, 0x65,
-> -	0x48, 0x5c, 0x5f, 0x62, 0x70, 0x64, 0x67, 0xc7,
-> +	0x48, 0x5c, 0x5f, 0x62, 0x70, 0x64, 0x67, 0x63
->  };
->  
->  static const unsigned char chroma_q_table[] = {
-> -- 
-> 2.17.1
-> 
-> 
-
+diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
+index 74d497d39c5a..c6695354b123 100644
+--- a/drivers/staging/android/ashmem.c
++++ b/drivers/staging/android/ashmem.c
+@@ -351,8 +351,23 @@ static inline vm_flags_t calc_vm_may_flags(unsigned long prot)
+ 	       _calc_vm_trans(prot, PROT_EXEC,  VM_MAYEXEC);
+ }
+ 
++static int ashmem_vmfile_mmap(struct file *file, struct vm_area_struct *vma)
++{
++	/* do not allow to mmap ashmem backing shmem file directly */
++	return -EPERM;
++}
++
++static unsigned long
++ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
++				unsigned long len, unsigned long pgoff,
++				unsigned long flags)
++{
++	return current->mm->get_unmapped_area(file, addr, len, pgoff, flags);
++}
++
+ static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
+ {
++	static struct file_operations vmfile_fops;
+ 	struct ashmem_area *asma = file->private_data;
+ 	int ret = 0;
+ 
+@@ -393,6 +408,19 @@ static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
+ 		}
+ 		vmfile->f_mode |= FMODE_LSEEK;
+ 		asma->file = vmfile;
++		/*
++		 * override mmap operation of the vmfile so that it can't be
++		 * remapped which would lead to creation of a new vma with no
++		 * asma permission checks. Have to override get_unmapped_area
++		 * as well to prevent VM_BUG_ON check for f_ops modification.
++		 */
++		if (!vmfile_fops.mmap) {
++			vmfile_fops = *vmfile->f_op;
++			vmfile_fops.mmap = ashmem_vmfile_mmap;
++			vmfile_fops.get_unmapped_area =
++					ashmem_vmfile_get_unmapped_area;
++		}
++		vmfile->f_op = &vmfile_fops;
+ 	}
+ 	get_file(asma->file);
+ 
+-- 
+2.25.0.341.g760bfbb309-goog
 
 _______________________________________________
 devel mailing list
