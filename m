@@ -1,70 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7A9A149E81
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jan 2020 05:41:47 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EEA3E149F11
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jan 2020 07:43:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D654587820;
-	Mon, 27 Jan 2020 04:41:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A134F85A37;
+	Mon, 27 Jan 2020 06:43:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P5M4GbzwySgr; Mon, 27 Jan 2020 04:41:45 +0000 (UTC)
+	with ESMTP id 2FlF9GLPCEVp; Mon, 27 Jan 2020 06:43:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2725F8777B;
-	Mon, 27 Jan 2020 04:41:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A9A4B8531B;
+	Mon, 27 Jan 2020 06:43:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8780A1BF3D6
- for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 04:41:42 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E59701BF335
+ for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 06:43:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 80E4C86274
- for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 04:41:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E1BF0203AF
+ for <devel@linuxdriverproject.org>; Mon, 27 Jan 2020 06:43:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9aXdprtil+98 for <devel@linuxdriverproject.org>;
- Mon, 27 Jan 2020 04:41:42 +0000 (UTC)
+ with ESMTP id ozKmpKLXfBMT for <devel@linuxdriverproject.org>;
+ Mon, 27 Jan 2020 06:43:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic313-10.consmr.mail.ne1.yahoo.com
- (sonic313-10.consmr.mail.ne1.yahoo.com [66.163.185.33])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1963D82419
- for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 04:41:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1580100101; bh=8LAzAiQJxImzDJ0y6vnsDTSb4b/uaAsNN5wGkmBPsdE=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=sSdqLvUxXCYPnyIUCxVpzwayV3AmKuc7K1cuGjYiE3KkllH2PswFf2KimZ7AMEOiikcmW0Qq/K5x11k3jyd+F8Qh4Mo/6E8/zVwARtI5AoZ5xiJkRCbvw76WI2wkf7ULwrnQE1gGfGfN0mumnaOZYdV8W4wOG9wCRnh18ar1ub2az2VV5fAwjZMxFZKCkVuypB337gHjxJIoQcfec3MGmNustLamOI71DZ/KsqHMVRJ+7S8Nh0r6OW6k2aqkHcvKrUhEFXFqXtUbld78+KxB6TO18pTLn29m87rNM9i7Ox+EgF7pJLznsfbXZ4i9vTiM+Njgr8oL++p/5MSiYEDZBQ==
-X-YMail-OSG: 9dkauOMVM1lTGUooPsOHd3KKhwVtAv3fjQl3xVJQznBktkr8pyvmoKj_aVVPJr.
- V0XKw6mfDNazLLkOrVxLHKprPchMJ2CW_adG3mAPb7eQf5YiRCHEsEXk9JUs4_zKR5YQJOxS0x9a
- Xyr_p9xvMLL8jbBiBE0ClsUa9VDi4vK2rSWf2SENn5LuyhKsAThy7Z.uR0efiUK8_.JIAw3aLh41
- yGvPCqukKjxfIRVDtX2Q3x.PKZPGIjLlQAU1Wii0QGbDt9reO5ckRCghvodpTRNx3XG7g7yCKPgW
- LASfVadbmDTHMg5lHZWkpv2BEHymVaFp5TY1AiMxZL_MsVfEBJ348YGev.1pqzSLeBtQaaEZLy0X
- X2HrDxO.2G8ip9ipLEzq2Z918EjCesUnr39hbdiPzpbIzysGwZlNhphHqXpZEYhHQH8oJteN3o24
- 5Wv6Wqp1Wq.XY361meZHKJhZzoy_72gYSTjZNmeJSKpOxHv1cE1mizhlwLs0AX7B4iwgDTi3vGlC
- 5BvPzGi5SePHOoIgQ5rgHdco8Gc7kAWcpCLeVfmT_0LODpuQJj8p4P0lbivC_qmpdwGfK12qjVm9
- WucoxQT09brjU8z6ZjQ9hNviivb2d4kFqXO_dR0RQS8UdwoXkm0A0.kkysnf4xpAsxBkM0wvP_oM
- l8DTHENOQLSpIWZ.BtGSGiPM3mwc43z7QYv2gkE2P72d4uUcSGmCslG63pzjps5I.xUw4JIGPW1K
- XUl2tbkDCsArDSGWWy9PVCTI4E.gB97uScA.wgUKswQQXCOtHFBgWh56pqIwiPQfN4JIRdjYMDOV
- 8eBp_nAOMpbqYeddxHKbuwg_squk1abeqo32v4ERKK1RdNbFv9thZJNTMYduPJIz.B1.xBB4iRx3
- zASYzom.fG1j27diJV5zdl_UBEx3XMX44Sfd5GB.H.uRCvTQQc3dh338FMwTxEzmI0ms7IxfTlc7
- lCxezzi._73EV3n7W6Sk0TtRayCJSkZnC9YB58bb0SVZI7F3HYUNuhJ99zAM4JeCHi7TlZ8rMc0C
- aQXF2mWFRdZVJD9D.FdKtTG8QX2hzJVDTI7FM2vmKaC0wBCucL8056w9QZuw3e1N3MSJKUHfXwUb
- G5U0G9kL_lGSMNJnsTuvTpZslPp.PsVTX8KpJkczN77k1KHP3sCx79JfOZ9PbbD64lWXIRuGP5SR
- 0mysqFJCglpjBb3rM2KAeEqlSHU5Q70kfSUy52lCxYDyidt0fgsHerlPq.JmiYxkHMNZkGypRFsE
- ZZkwvxJuSDRnkomiCrWRFm6.23GadxaHWWYLRSbM1H6rC.w7RsPBFcZtBtJIziUtwQVgzYDyNRkz
- cFGyMrSZigblrMA--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic313.consmr.mail.ne1.yahoo.com with HTTP; Mon, 27 Jan 2020 04:41:41 +0000
-Date: Mon, 27 Jan 2020 04:31:38 +0000 (UTC)
-From: Peter Joe <peterjoe20116@gmail.com>
-Message-ID: <840741523.821893.1580099498365@mail.yahoo.com>
-Subject: Peter Joe
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2698D2038A
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jan 2020 06:43:40 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00R6hEek178135;
+ Mon, 27 Jan 2020 06:43:37 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=vMrJ91GMO1CD+aMStdBznA5LKGeM9s5PCFnZKiLM6Zg=;
+ b=MhroejlrkNIdtbIljVPw48Nka8wHrP2QJ09hldcb801d86I4e7O1TnDb/zx8cWcwF+4Y
+ 7aice71dKEwOa9SXGFjP5suwwh4smAfH51Bn0QTcja3BVk0t1g5PndBSCvaNNCWEWeN5
+ rxAcOHxGvGXZX39QdT8pWx3QtjguzGIEtySLaKIlB6hHOMepigQPorYeuaKfoNVzo1Ch
+ 4DFA0USJKORo8jJSQkbSiiNPYI8z/sMcpT37ihqFdsMzHi5VYDCyGx083EynRCA0m2rw
+ eH3D7qYJ+iQ3lesNFj1pNzsdd1qo4LzDheFTEe9iHPpLlG2d2VoUmYS4h8ew/K0jkVjn hg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 2xrd3twe5a-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Jan 2020 06:43:37 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00R6hVuu039799;
+ Mon, 27 Jan 2020 06:43:36 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3030.oracle.com with ESMTP id 2xryu8qh09-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Jan 2020 06:43:36 +0000
+Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 00R6gsKO003420;
+ Mon, 27 Jan 2020 06:42:54 GMT
+Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Sun, 26 Jan 2020 22:42:54 -0800
+Date: Mon, 27 Jan 2020 09:42:46 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+Subject: Re: [PATCH v3] staging: exfat: remove fs_func struct.
+Message-ID: <20200127064246.GO1847@kadam>
+References: <20200123102445.123033-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
 MIME-Version: 1.0
-References: <840741523.821893.1580099498365.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.15116 YMailNodin Mozilla/5.0 (Windows NT 6.1;
- rv:72.0) Gecko/20100101 Firefox/72.0
+Content-Disposition: inline
+In-Reply-To: <20200123102445.123033-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9512
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=980
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1911140001 definitions=main-2001270057
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9512
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
+ definitions=main-2001270057
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,18 +97,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: peterjoe121@hotmail.com
+Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ motai.hirotaka@aj.mitsubishielectric.co.jp,
+ Mori.Takahiro@ab.MitsubishiElectric.co.jp, linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear,
+Looks good to me.
 
-Did you receive the message i sent to you?
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-Regards,
-Peter Joe
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
