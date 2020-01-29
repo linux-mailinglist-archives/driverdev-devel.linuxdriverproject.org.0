@@ -1,81 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 070EE14C8DB
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jan 2020 11:40:55 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7749614C8FA
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jan 2020 11:51:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D32B386E15;
-	Wed, 29 Jan 2020 10:40:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6924421517;
+	Wed, 29 Jan 2020 10:51:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M6YgSj8CepaW; Wed, 29 Jan 2020 10:40:51 +0000 (UTC)
+	with ESMTP id sm6LSDYzQ4Ai; Wed, 29 Jan 2020 10:51:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2CB8086DEB;
-	Wed, 29 Jan 2020 10:40:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B9B3B2150A;
+	Wed, 29 Jan 2020 10:51:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 49ED81BF591
- for <devel@linuxdriverproject.org>; Wed, 29 Jan 2020 10:40:48 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5C0DD1BF591
+ for <devel@linuxdriverproject.org>; Wed, 29 Jan 2020 10:51:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 464CD88162
- for <devel@linuxdriverproject.org>; Wed, 29 Jan 2020 10:40:48 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 58AB385F52
+ for <devel@linuxdriverproject.org>; Wed, 29 Jan 2020 10:51:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cxCmhU1MD7lP for <devel@linuxdriverproject.org>;
- Wed, 29 Jan 2020 10:40:47 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BD13788127
- for <devel@driverdev.osuosl.org>; Wed, 29 Jan 2020 10:40:47 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id j7so1058752plt.1
- for <devel@driverdev.osuosl.org>; Wed, 29 Jan 2020 02:40:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=uzRHTQO3pKjBfSJ2Rfvh5FEUg0GL15o7FlclGpgfTy8=;
- b=mXXPkK8PdQ2HdiEfv6/GdfMm2GHaXIbrDmZE6DD7Ikgky9gFKICmwUhAGVv62RvaGo
- 0LvGo8bD2iL13nEuUbdsCGON79b56e0+xUNbWjsihsxRNealZEf4eLifUd+FdnG8xFEU
- SUx8GApPVHqVlym8IjGEYT0dVck16glEdhbRyhfeJwqSh3dYI3gjRSXSV82Bz8SoG7Ul
- DySpydLaiVdTS18v9FYxMhuNkyshDxDQi6NsoB3JiXQ5ItbffCpELITTXwAYvXHZIkjm
- ydLKgbfsJa8Zgr11su/bnscBM7IAWC6hA2ewzu51NYnSJRK44W9xTqA+Tu20YUu5M12M
- x5Cw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=uzRHTQO3pKjBfSJ2Rfvh5FEUg0GL15o7FlclGpgfTy8=;
- b=bIgoQedzkgwjTXox7p+mrbofPoRlojTx/hXld1iUyhs19bsFBOoDON/SeuKhV8DnTo
- Y0VyL55QFW1N0JH3LAXbymP9A+Dk5MDIYf+o49Ec9Q7zRRQYCXB0qqwJpD4XygfovM3z
- 8GncEROrJwqPl2PxwtseV/629EOzbE2PXaavQZx0O10WK6tWTx6h2Q286FTpu9LzvttZ
- TP2AMP9lY+Esrg7/CV664TfAW5IQjgHbl9YUxXXjOS4VJGRzKf84UEJPPN9igOyC8AD2
- wDVW2RHNtxxPSHsPXZRZEhRzoNxdedmwB8Jiuarsauoi2xFkzk8bx/pVxNxqSUknJ0Sk
- Esfw==
-X-Gm-Message-State: APjAAAXcjnhAeNwQVACr0dJI00KVYvtw8P6cCjACdWVNLu0NN4+H4LNZ
- LHR4t02j44xEIIsTSNtc+WM=
-X-Google-Smtp-Source: APXvYqwyd5UBrtC57QGpd9Ru9Ha2G15gvVk/UC14vHvGCkou957aoLuYoIipivd+xRp9PllidBEvXQ==
-X-Received: by 2002:a17:90a:2545:: with SMTP id
- j63mr10615588pje.128.1580294447327; 
- Wed, 29 Jan 2020 02:40:47 -0800 (PST)
-Received: from pragat-GL553VD ([2405:205:c92f:3ccd:49ce:a9e3:28b5:cf94])
- by smtp.googlemail.com with ESMTPSA id h3sm2319678pfr.15.2020.01.29.02.40.43
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 29 Jan 2020 02:40:46 -0800 (PST)
-Message-ID: <287916429826dd2f14d82f9b7b6b15a9cace2734.camel@gmail.com>
+ with ESMTP id U5WOfeUMNuyB for <devel@linuxdriverproject.org>;
+ Wed, 29 Jan 2020 10:51:00 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2A4F485F44
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jan 2020 10:50:15 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 85E1720720;
+ Wed, 29 Jan 2020 10:50:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1580295015;
+ bh=jHwJpm2yRmwh7TjlKXTA2UFU1Yy6KXRu81Yj3516AGA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=fjCiN/BJOb2/B7vg2e94h8DAzpYS3l38HMIdqnZ0MvLsLuQHXGF6CJ5LiGWk7Uy4n
+ skUSY0DwR78Yh17dtmt5PHQnlqrlBCKpZ/rjIqjPXikOg1KWUUffnnvkONMO0jSVct
+ r8eKt+0D1j/6ya7l0kBtiyMAQQbpZNhAP0Odd9dU=
+Date: Wed, 29 Jan 2020 11:50:12 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Pragat Pandya <pragat.pandya@gmail.com>
 Subject: Re: [PATCH 09/22] staging: exfat: Rename variable "Size" to "size"
-From: Pragat Pandya <pragat.pandya@gmail.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Date: Wed, 29 Jan 2020 16:10:39 +0530
-In-Reply-To: <20200127115741.GA1847@kadam>
+Message-ID: <20200129105012.GA3884393@kroah.com>
 References: <20200127101343.20415-1-pragat.pandya@gmail.com>
  <20200127101343.20415-10-pragat.pandya@gmail.com>
  <20200127115741.GA1847@kadam>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
-Mime-Version: 1.0
+ <287916429826dd2f14d82f9b7b6b15a9cace2734.camel@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <287916429826dd2f14d82f9b7b6b15a9cace2734.camel@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,48 +69,53 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, valdis.kletnieks@vt.edu,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- skhan@linuxfoundation.org, linux-fsdevel@vger.kernel.org,
- linux-kernel-mentees@lists.linuxfoundation.org
+ linux-kernel@vger.kernel.org, skhan@linuxfoundation.org,
+ linux-fsdevel@vger.kernel.org, linux-kernel-mentees@lists.linuxfoundation.org,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2020-01-27 at 14:57 +0300, Dan Carpenter wrote:
-> On Mon, Jan 27, 2020 at 03:43:30PM +0530, Pragat Pandya wrote:
-> > Change all the occurences of "Size" to "size" in exfat.
+On Wed, Jan 29, 2020 at 04:10:39PM +0530, Pragat Pandya wrote:
+> On Mon, 2020-01-27 at 14:57 +0300, Dan Carpenter wrote:
+> > On Mon, Jan 27, 2020 at 03:43:30PM +0530, Pragat Pandya wrote:
+> > > Change all the occurences of "Size" to "size" in exfat.
+> > > 
+> > > Signed-off-by: Pragat Pandya <pragat.pandya@gmail.com>
+> > > ---
+> > >  drivers/staging/exfat/exfat.h | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > 
+> > > diff --git a/drivers/staging/exfat/exfat.h
+> > > b/drivers/staging/exfat/exfat.h
+> > > index 52f314d50b91..a228350acdb4 100644
+> > > --- a/drivers/staging/exfat/exfat.h
+> > > +++ b/drivers/staging/exfat/exfat.h
+> > > @@ -233,7 +233,7 @@ struct date_time_t {
+> > >  
+> > >  struct part_info_t {
+> > >  	u32      offset;    /* start sector number of the partition */
+> > > -	u32      Size;      /* in sectors */
+> > > +	u32      size;      /* in sectors */
+> > >  };
 > > 
-> > Signed-off-by: Pragat Pandya <pragat.pandya@gmail.com>
-> > ---
-> >  drivers/staging/exfat/exfat.h | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > We just renamed all the struct members of this without changing any
+> > users.  Which suggests that this is unused and can be deleted.
 > > 
-> > diff --git a/drivers/staging/exfat/exfat.h
-> > b/drivers/staging/exfat/exfat.h
-> > index 52f314d50b91..a228350acdb4 100644
-> > --- a/drivers/staging/exfat/exfat.h
-> > +++ b/drivers/staging/exfat/exfat.h
-> > @@ -233,7 +233,7 @@ struct date_time_t {
-> >  
-> >  struct part_info_t {
-> >  	u32      offset;    /* start sector number of the partition */
-> > -	u32      Size;      /* in sectors */
-> > +	u32      size;      /* in sectors */
-> >  };
-> 
-> We just renamed all the struct members of this without changing any
-> users.  Which suggests that this is unused and can be deleted.
-> 
-> regards,
-> dan carpenter
-> 
-Can I just drop this commit from this patchset and do a separate patch
-to remove the unused structure?
+> > regards,
+> > dan carpenter
+> > 
+> Can I just drop this commit from this patchset and do a separate patch
+> to remove the unused structure?
 
-regards,
-pragat pandya
+Drop this one, and the other ones that touch this structure, and do a
+separate patch.  This series needs fixing up anyway, I can't take it
+as-is.
 
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
