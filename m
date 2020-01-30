@@ -1,74 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4097214D8AF
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jan 2020 11:11:52 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DF4914D8B4
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jan 2020 11:12:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C9B0D877D6;
-	Thu, 30 Jan 2020 10:11:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4D1A5226F5;
+	Thu, 30 Jan 2020 10:11:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nwAxxTxgF4Nn; Thu, 30 Jan 2020 10:11:50 +0000 (UTC)
+	with ESMTP id uvjgx95KjuKK; Thu, 30 Jan 2020 10:11:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EA30187688;
-	Thu, 30 Jan 2020 10:11:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 00495226D4;
+	Thu, 30 Jan 2020 10:11:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EBF6B1BF3EF
- for <devel@linuxdriverproject.org>; Thu, 30 Jan 2020 10:11:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4408E1BF3EF
+ for <devel@linuxdriverproject.org>; Thu, 30 Jan 2020 10:11:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E8A79881E2
- for <devel@linuxdriverproject.org>; Thu, 30 Jan 2020 10:11:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 40CC58822A
+ for <devel@linuxdriverproject.org>; Thu, 30 Jan 2020 10:11:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E37NVenu9uL5 for <devel@linuxdriverproject.org>;
- Thu, 30 Jan 2020 10:11:47 +0000 (UTC)
+ with ESMTP id 8YXWD9DIUvvy for <devel@linuxdriverproject.org>;
+ Thu, 30 Jan 2020 10:11:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 83C0C8571C
- for <devel@driverdev.osuosl.org>; Thu, 30 Jan 2020 10:11:47 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id 185so1255629pfv.3
- for <devel@driverdev.osuosl.org>; Thu, 30 Jan 2020 02:11:47 -0800 (PST)
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D0D5D8571C
+ for <devel@driverdev.osuosl.org>; Thu, 30 Jan 2020 10:11:52 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id gv17so1139350pjb.1
+ for <devel@driverdev.osuosl.org>; Thu, 30 Jan 2020 02:11:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=2PBKaHNbZPQSw/6pq7aba6IKrrBLpWG1Rl96OfumKs0=;
- b=EXCgN/GZcpZR8poY0LxdVM2/AuJlaC6csMBBu+fX6wHHTn0AhRPoa301cUn7AGRMMh
- +CJSBjmNDacLRQi9qNt5W5xkUhYjaEAJ/vOQfCJoBgS1PQzV3hCr7F0NmnLfA5mDLZ0G
- LeP00up7ZlMjU+4MjawxQI4aEh0DeKFYfFagfLU9ApBiaSG6gIXPSfG4xtLqlerVW1HA
- QVAJhI2IblCdCnMu1RNtk2cFPISH+S54iAO4JG6+2JelFHPTU5jcxLUHc/yQHKhU4kHr
- 9ylERID5tt+O8ZyQCj3nhBu8uh6SezhQ4pBXuLjag6sREAL/4zCK3w0K7mHopLlj4pWB
- +wSg==
+ bh=X6B408HVKqVgRddttBmZ/lvRWns0/HwPdIVXoXJfH4E=;
+ b=c7Ivzmp3oKr9rXKl5OoQ+47r/bqWcTqeLMbGis525KSXrrwn5BJAXMMnvQO+EazbD3
+ X5N2jpP6TPpE8o8Pt4eegtqRL8G+8OGJc2+VcTE/9JGHzn/CiJ0unLnKfyYp7MCG5FY8
+ rwUNbQtWuxAeXcDjZSQKQqBdFGC49jLIYcBVf08jjdq8nQRuVBMtZaCGyu51ylbvZW4m
+ QMQ3RAjCRwWUnI0KJtypR16+rL6mwc0xlHgSnTdTcYOHIBplOXXgWcDoGNNparelJ8Ez
+ 8Tek53F5EtaApt7IpJ3IXru3ktvF/2n3MduFNH38D3wpg+h5QMlvHvjTvUQWhdPxSgG1
+ KY7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=2PBKaHNbZPQSw/6pq7aba6IKrrBLpWG1Rl96OfumKs0=;
- b=gFH9Cw11sfPg2XOQY/JGXtk7jWnKiSNbQBBNwEoWqnCf0FPmvFDlEl0vPbXmUekzbF
- 92GpuVE8gVgxyNbZ8uSrCBJ6NSup0HZRRuOiK6ttL2y+uAc2coZtc4OXi2b2qq7eI1rI
- tjejB59CeyV4e7n2UEv+QfTvfjF3GlwYFmWVIQBN/IUbeR1sZ29pyCDSZHmQy1OaaR8i
- 3uCb8wDUrzY1a+mkmT+vInZHe2FMkbPue8WZD0vPXT60Ee8ytcFvHrjp/pWT/6YcxZAB
- aomuv2akyNx4adaP4Nmt66C1wumoGN01CIzpMMK3Ny342/bZ80WER0p7qnn4PKBQIXUo
- DZmA==
-X-Gm-Message-State: APjAAAUY5TeQ/UJ7P6vxyLwbWmTG98XZYWPAJpbg2jEmzW76xUWUl19q
- HhsT5IycIYKcyDS4KYJFHN0=
-X-Google-Smtp-Source: APXvYqzN9Et5YzVy6Vg3CItCuYZGt3G1cnM8Z+1QndaFnBbyD1nf8jIGfvN2GF27lVmKUHKgxv+unA==
-X-Received: by 2002:a62:1c95:: with SMTP id c143mr4092880pfc.219.1580379106512; 
- Thu, 30 Jan 2020 02:11:46 -0800 (PST)
+ bh=X6B408HVKqVgRddttBmZ/lvRWns0/HwPdIVXoXJfH4E=;
+ b=hh86Vupes6Bt3Q0tpFIvWfLL4k/QL8ZuZYCqWkQGaiqtt0AgtYApAuW3juZwbgtHRa
+ jOezzoftBbAUcsuR/EGre5qm4xrZptxFkOGLwEY4+UsDtW8D/jbiF2N982kUBLGitEu/
+ 2+pDZ7Xo4aNmBg/q8SSI6XEHHcUi342W5sIrpn83WCYCcPRikH5j85niO9kd/LuTroNU
+ eE0KJs8voTN0Biizaes2oaU4Gf5uY0r87+OHgV+UOrzR0pOoI78dgjFryZ19LgQNgYdu
+ PNnbwMDMwKimcdSJI/mmHh59x1kjEZqaPUQAlpSOBZCPCswzM/AOcjyJdImzy0+rPi76
+ QsKw==
+X-Gm-Message-State: APjAAAW3phiUXCS85xOMHslsCYS18IUphiVWfhNbiQJiUgv0P2gyCg+J
+ pCQFDdbOlwa1nWLWoynhMw4=
+X-Google-Smtp-Source: APXvYqyKkr61j+ElMfljiMs2BCzPRuQOnrAi43XYT2V9n8VWhg2yQWg72wstJF6J7ByCuUJYQ/ALuw==
+X-Received: by 2002:a17:902:8a89:: with SMTP id
+ p9mr3924542plo.286.1580379112493; 
+ Thu, 30 Jan 2020 02:11:52 -0800 (PST)
 Received: from localhost.localdomain ([2405:204:848d:d4b5:49ce:a9e3:28b5:cf94])
- by smtp.gmail.com with ESMTPSA id k21sm6239683pfa.63.2020.01.30.02.11.41
+ by smtp.gmail.com with ESMTPSA id k21sm6239683pfa.63.2020.01.30.02.11.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Jan 2020 02:11:45 -0800 (PST)
+ Thu, 30 Jan 2020 02:11:51 -0800 (PST)
 From: Pragat Pandya <pragat.pandya@gmail.com>
 To: valdis.kletnieks@vt.edu,
 	gregkh@linuxfoundation.org
-Subject: [PATCH 1/2] staging: exfat: Remove unused struct 'part_info_t'
-Date: Thu, 30 Jan 2020 15:41:17 +0530
-Message-Id: <20200130101118.15936-2-pragat.pandya@gmail.com>
+Subject: [PATCH 2/2] staging: exfat: Remove unused struct 'dev_info_t'
+Date: Thu, 30 Jan 2020 15:41:18 +0530
+Message-Id: <20200130101118.15936-3-pragat.pandya@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200130101118.15936-1-pragat.pandya@gmail.com>
 References: <20200130101118.15936-1-pragat.pandya@gmail.com>
@@ -93,8 +94,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove global declaration of unused struct "part_info_t".
-Structure "part_info_t" is defined in exfat.h and not referenced in any
+Remove global declaration of unused struct "dev_info_t".
+Structure "dev_info_t" is defined in exfat.h and not referenced in any
 other file.
 
 Signed-off-by: Pragat Pandya <pragat.pandya@gmail.com>
@@ -103,21 +104,21 @@ Signed-off-by: Pragat Pandya <pragat.pandya@gmail.com>
  1 file changed, 5 deletions(-)
 
 diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index 51c665a924b7..b29e2f5154ee 100644
+index b29e2f5154ee..1ae4ae4b3441 100644
 --- a/drivers/staging/exfat/exfat.h
 +++ b/drivers/staging/exfat/exfat.h
 @@ -231,11 +231,6 @@ struct date_time_t {
  	u16      MilliSecond;
  };
  
--struct part_info_t {
--	u32      Offset;    /* start sector number of the partition */
--	u32      Size;      /* in sectors */
+-struct dev_info_t {
+-	u32      SecSize;    /* sector size in bytes */
+-	u32      DevSize;    /* block device size in sectors */
 -};
 -
- struct dev_info_t {
- 	u32      SecSize;    /* sector size in bytes */
- 	u32      DevSize;    /* block device size in sectors */
+ struct vol_info_t {
+ 	u32      FatType;
+ 	u32      ClusterSize;
 -- 
 2.17.1
 
