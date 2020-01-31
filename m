@@ -1,48 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1075014E471
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jan 2020 22:12:33 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7127714E831
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jan 2020 06:22:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 43BBD878D8;
-	Thu, 30 Jan 2020 21:12:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8680886966;
+	Fri, 31 Jan 2020 05:22:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jZzBkvFpskNq; Thu, 30 Jan 2020 21:12:30 +0000 (UTC)
+	with ESMTP id OTlcZbuwdKiL; Fri, 31 Jan 2020 05:22:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7E601877E7;
-	Thu, 30 Jan 2020 21:12:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 91FD386398;
+	Fri, 31 Jan 2020 05:22:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 231511BF86B
- for <devel@linuxdriverproject.org>; Thu, 30 Jan 2020 21:12:26 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E98BF1BF36E
+ for <devel@linuxdriverproject.org>; Fri, 31 Jan 2020 05:22:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1F67D227DB
- for <devel@linuxdriverproject.org>; Thu, 30 Jan 2020 21:12:26 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E573A87E23
+ for <devel@linuxdriverproject.org>; Fri, 31 Jan 2020 05:22:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jJDqyD+9lSX8 for <devel@linuxdriverproject.org>;
- Thu, 30 Jan 2020 21:12:25 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from demo.mysmartsmc.com
- (ec2-13-250-228-31.ap-southeast-1.compute.amazonaws.com [13.250.228.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 025171FCA0
- for <devel@driverdev.osuosl.org>; Thu, 30 Jan 2020 21:12:24 +0000 (UTC)
-Received: from User (Unknown [193.56.28.114])
- by demo.mysmartsmc.com with ESMTPA ; Tue, 28 Jan 2020 03:25:22 +0530
-Message-ID: <2A309E50-F967-4BF8-B336-4A6D79150B15@demo.mysmartsmc.com>
-From: "GORDON W"<webmaster@mysmartsmc.com>
-Subject: HELLO  27/01/2020
-Date: Mon, 27 Jan 2020 13:55:24 -0800
+ with ESMTP id XS0Vp4DM7DwH for <devel@linuxdriverproject.org>;
+ Fri, 31 Jan 2020 05:22:40 +0000 (UTC)
+X-Greylist: delayed 00:07:04 by SQLgrey-1.7.6
+Received: from ls.graniteschools.org (gti.graniteschools.org [205.124.110.175])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 24CAF87E17
+ for <devel@driverdev.osuosl.org>; Fri, 31 Jan 2020 05:22:40 +0000 (UTC)
+Received: from [45.143.222.206] ([45.143.222.206]) by ls.graniteschools.org
+ with Microsoft SMTPSVC(7.0.6002.18222); 
+ Thu, 30 Jan 2020 22:15:12 -0700
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Content-Description: Mail message body
+Subject: dear beneficiary
+To: Recipients <perryedwards@yahoo.com>
+From: perryedwards@yahoo.com
+Date: Fri, 31 Jan 2020 06:15:08 +0100
+Message-ID: <ISWEB022NGqcuV0KiSd0000e87b@ls.graniteschools.org>
+X-OriginalArrivalTime: 31 Jan 2020 05:15:12.0308 (UTC)
+ FILETIME=[6A06AF40:01D5D7F5]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,18 +55,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: kungwei7777@gmail.com
+Reply-To: perryedwards0@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I have a transaction that I believe will be of mutual benefits to both of us. kindly Contact me for more details as I want to be sure that my mail got to you before I can reveal more.
+Dear Beneficiary, 
 
-Best regards,
+THIS IS FOR YOUR ATTENTION. 
 
-Gordon			
+I wish to notify you that you are the  beneficiary to the total sum of $10,600,000.00 Million (Ten Million Six Hundred Thousand United States Dollars). This is the sum deposited by my late client with the bank months before his eventual and unexpected dismise. 
 
+I am contacting you because you bear the surname identity and I can therefore present you as the beneficiary to the inheritance. I have no iota of doubt that you could receive these funds as you are qualified by your name identity. All the legal papers will be processed in your acceptance.
+
+In your acceptance of this deal, we request that you kindly forward to us your letter of acceptance; your current telephone and fax numbers and a forwarding address to enable us file necessary documents at our high court probate division for the release of this sum of money. 
+
+
+
+Yours Faithfully, 
+
+Mr. Perry Edwards.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
