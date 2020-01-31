@@ -1,48 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7127714E831
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jan 2020 06:22:47 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FFD714E833
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jan 2020 06:23:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8680886966;
-	Fri, 31 Jan 2020 05:22:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 98214875B9;
+	Fri, 31 Jan 2020 05:23:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OTlcZbuwdKiL; Fri, 31 Jan 2020 05:22:45 +0000 (UTC)
+	with ESMTP id wTbCIFMnWw5Y; Fri, 31 Jan 2020 05:23:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 91FD386398;
-	Fri, 31 Jan 2020 05:22:44 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8C70E8723D;
+	Fri, 31 Jan 2020 05:23:40 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E98BF1BF36E
- for <devel@linuxdriverproject.org>; Fri, 31 Jan 2020 05:22:41 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8D7521BF36E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 Jan 2020 05:23:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E573A87E23
- for <devel@linuxdriverproject.org>; Fri, 31 Jan 2020 05:22:41 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8988E203A7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 Jan 2020 05:23:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XS0Vp4DM7DwH for <devel@linuxdriverproject.org>;
- Fri, 31 Jan 2020 05:22:40 +0000 (UTC)
-X-Greylist: delayed 00:07:04 by SQLgrey-1.7.6
-Received: from ls.graniteschools.org (gti.graniteschools.org [205.124.110.175])
- by hemlock.osuosl.org (Postfix) with ESMTP id 24CAF87E17
- for <devel@driverdev.osuosl.org>; Fri, 31 Jan 2020 05:22:40 +0000 (UTC)
+ with ESMTP id 7LqtmbyNcoGZ
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 Jan 2020 05:23:35 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from ls.graniteschools.org (granitepeaks.org [205.124.110.175])
+ by silver.osuosl.org (Postfix) with ESMTP id 4F78A2043B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 Jan 2020 05:23:35 +0000 (UTC)
 Received: from [45.143.222.206] ([45.143.222.206]) by ls.graniteschools.org
  with Microsoft SMTPSVC(7.0.6002.18222); 
- Thu, 30 Jan 2020 22:15:12 -0700
+ Thu, 30 Jan 2020 22:16:18 -0700
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: dear beneficiary
 To: Recipients <perryedwards@yahoo.com>
 From: perryedwards@yahoo.com
-Date: Fri, 31 Jan 2020 06:15:08 +0100
-Message-ID: <ISWEB022NGqcuV0KiSd0000e87b@ls.graniteschools.org>
-X-OriginalArrivalTime: 31 Jan 2020 05:15:12.0308 (UTC)
- FILETIME=[6A06AF40:01D5D7F5]
+Date: Fri, 31 Jan 2020 06:16:12 +0100
+Message-ID: <ISWEB023l1GM3h3vLgA0000e88e@ls.graniteschools.org>
+X-OriginalArrivalTime: 31 Jan 2020 05:16:18.0997 (UTC)
+ FILETIME=[91C69E50:01D5D7F5]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
