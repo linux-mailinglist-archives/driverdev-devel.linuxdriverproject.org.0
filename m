@@ -1,70 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C50714F547
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Feb 2020 00:54:51 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C05E14F758
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Feb 2020 10:19:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0E254228E3;
-	Fri, 31 Jan 2020 23:54:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5AF3087238;
+	Sat,  1 Feb 2020 09:19:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZRrUZnPmKPtO; Fri, 31 Jan 2020 23:54:48 +0000 (UTC)
+	with ESMTP id Y6vxgwm4B5In; Sat,  1 Feb 2020 09:19:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 250F92046B;
-	Fri, 31 Jan 2020 23:54:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ED2B087236;
+	Sat,  1 Feb 2020 09:19:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D933B1BF847
- for <devel@linuxdriverproject.org>; Fri, 31 Jan 2020 23:54:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 89D0D1BF5DD
+ for <devel@linuxdriverproject.org>; Sat,  1 Feb 2020 09:19:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D52BD20459
- for <devel@linuxdriverproject.org>; Fri, 31 Jan 2020 23:54:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8673723280
+ for <devel@linuxdriverproject.org>; Sat,  1 Feb 2020 09:19:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k4opJXBN+dGb for <devel@linuxdriverproject.org>;
- Fri, 31 Jan 2020 23:54:44 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic309-25.consmr.mail.ir2.yahoo.com
- (sonic309-25.consmr.mail.ir2.yahoo.com [77.238.179.83])
- by silver.osuosl.org (Postfix) with ESMTPS id 6E09F20453
- for <devel@driverdev.osuosl.org>; Fri, 31 Jan 2020 23:54:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ymail.com; s=s2048;
- t=1580514882; bh=8xpm+cacAfAnFCbwSdgMceaBJxowNWaFZvEVU/zxgKw=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=UCCNlxHH3iJlkrdxHvfG7M878b2QIeru/4U//+BqFRtY5vmWYp05F6/SmfaNOwn/d8XDTrGP6nkPJ4LhrHjKYHeeRNHTYUJmWAvEN5V12rWx3aw+YqHfBQru9QMmrFl2ynEvqQ9JC+H6Zet8GqHGmePi6xb9a9rQ2PE27EotmgQgg2xQh7B176PwnXeLQKYAc8V071dZUIO/lSjT1HRvFZlLzhRum/SHaVoQBqbyGPhCstgd2Z4+qRD6mz26xqbKEawRJQubHJ1xAoUoZi5+5bE4LzUpBO3WZJJN1E/PT4NDV60OckJtkDiCEIjYxuf/pNV3ZweflyF1IKdkVAz+tw==
-X-YMail-OSG: c2M8CbYVM1m22KS003u6ma_xCQvSYLSCDoh0r.Cgf2BzgoFTmiilK5utrwdzOA2
- sJcsyS5e0sQhRxnua0rcRH2SVSfA_D8vC2BOmnihP08IBCN99zuIEMcd04BsrHG2sEX1N62KzpMK
- vdQov5J1HKqvKFKRRC8CizyWdVB5zZQs6F5GGoYhkbsB7geAyqDQIy2LSaP_vKXt_BbqYsCBwLnu
- iLeSZrpmlXRt0DU976lpG4nq50SEJx8dSMjTSY7ur_2cL9ym.5ar60TjoNgD4eYLb4b7nkWXQFJC
- RncVJWdNmPyqAA3d86x11lkvu2HZyobOwyzMK30flGwJ6LEsYUxxXYxhd7_92zAgXJLDQ_ZWGZDG
- xFBAJZ_iW9oVhWFJH2DXQtqph3FTkYxfoTfSVBdAxhNXTDIaBYoZa9F8TMFeQfCeUb5F6QcHDJ2k
- 1ARZed_YbDnrW9KQFVfM9QiJCeKOPnUwEsIQ4FAd6ML3zMX2fcxSlphkPaeCyuiSs6.t18s7gXoy
- YNuHrH6urAMzZByoVG2L7g01_pYWbuJh4aSu760KVeUsKOiHB15oE4jerR9o8RVh48g2lSWPu5zf
- 9KFkaXE1z7QiW2j0JozVKpO5bYBx0Mi0bO2mCLP0MCGV0t_QUlEB4CVIVc56Q9bMHXMogxDQeLxy
- XwvWS82bEA3mRWw2AonjqB_hRRaaJQkOnolrEhtP53VoVQdIZ.ZiZU2vglxwuuxftg6Hr9382_wn
- GAvj0VXyY9dL003cIdjap0yiUIAvI1r8pn9CYU_LJW7IHHeHxCdo.ppPQnvoA1ywXQfg_jY1CVEM
- cSd4neSgBe.Dauz1a.2P9ZFvHKVWExuiq.6jj1a8GcF8wjcz5LGjUYPUiJnTNlehBnrsaBjOG9h5
- nmFOhH1cLdQ5Ybq6nKfVGw4qdziNWVMh6Vv6ypwiTB0tq8qq5JzEfcN1dxzgQx2AKRkxLMwAMZqh
- R2oNiNyPYaQo_QmTFe3Q6mXQw7DolD0AV9owl9snpRmHnr42F0s_LvRktUYJP6gYRkUWfH7Ezeqx
- MWBOxOqI79MAAewln96GwNqGVLzPTpRaCZzTFD85Pj1qKBk1LOu.fxq7y5PyUYkfG6yvYCHEumAK
- ctT0GFIF_981SHqaBG0zRpLxGKyPEivxSdyN_NAu35gzJYw3I28S8x6YmsGKjdAbg5g8Ubx4So0Y
- 4aIqFTm4vyW8blvyu5r4XcnujoQ8OkjPx_W8UPAP2CxUxKJ75y28dBvZY3sB2Bgc7iTIs_tAX.05
- .60OR4Rvdypl4FpbkRVr1SEFjMhqDbbxo95N_83oSUd7rCheJ89CBfue0SDgE.KkNmhIAXy4TPmG
- T
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic309.consmr.mail.ir2.yahoo.com with HTTP; Fri, 31 Jan 2020 23:54:42 +0000
-Date: Fri, 31 Jan 2020 23:24:28 +0000 (UTC)
-From: Cherif Titi <husseinking@ymail.com>
-Message-ID: <109073422.41310.1580513068993@mail.yahoo.com>
-Subject: My Dear
+ with ESMTP id ppA2cIHjnl3d for <devel@linuxdriverproject.org>;
+ Sat,  1 Feb 2020 09:19:41 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.foescocursos.es (mail.foescocursos.es [146.255.98.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2E2A22042B
+ for <devel@driverdev.osuosl.org>; Sat,  1 Feb 2020 09:19:41 +0000 (UTC)
+Received: from 63.red-81-38-90.dynamicip.rima-tde.net
+ (63.red-81-38-90.dynamicip.rima-tde.net [81.38.90.63])
+ by mail.foescocursos.es (Postfix) with ESMTPSA id 3748FB2BFC
+ for <devel@driverdev.osuosl.org>; Sat,  1 Feb 2020 09:44:31 +0100 (CET)
+Authentication-Results: mail.foescocursos.es;
+ spf=pass (sender IP is 81.38.90.63) smtp.mailfrom=info@foescocursos.es
+ smtp.helo=63.red-81-38-90.dynamicip.rima-tde.net
+Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
 MIME-Version: 1.0
-References: <109073422.41310.1580513068993.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.15149 YMailNodin Mozilla/5.0 (Windows NT 6.1; Win64;
- x64; rv:72.0) Gecko/20100101 Firefox/72.0
+From: info@foescocursos.es
+To: devel@driverdev.osuosl.org
+Subject: Consulta FOESCO
+X-Mailer: Smart_Send_4_3_5
+Date: Sat, 1 Feb 2020 09:44:32 +0100
+Message-ID: <6640473938616781015862@DESKTOP-QI043RS>
+X-Priority: 1
+X-MSMail-Priority: High
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,42 +60,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: cheriftiti268@yahoo.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: info@foescocursos.es
+Content-Type: multipart/mixed; boundary="===============0232222093490656465=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
- My Dear
+--===============0232222093490656465==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-I am Miss cherif Titi,20 years old and the only daughter of my late parents Dr.Richard Tit. My father was a highly reputable real estate developer who operated in the capital city of Ivory coast during his days
-
-It is sad to say that he passed away mysteriously in UK during one of his business trips abroad year 12th. JUNE 12, 2014. Though his sudden death, But God knows the truth! My mother died when I was just 4 years old,and since then my father took me so special Before his death on JUNE 12, 2014 he called his secretary who accompanied him to the hospital and told him that he has the sum of Nine million,five hundred thousand United State Dollars.(USD$9.500,000) left in bank
-
-He further told him that he deposited the money in my name, and finally issued a written instruction to his lawyer whom he said is in possession of all the necessary legal documents to this fund
-
-I am just 20 years old and a university undergraduate and really don't know what to do. Now I want an account overseas where I can transfer this funds. This is because I have suffered a lot of set backs as a result of incessant political crisis here in Ivory coast. The death of my father actually brought sorrow to my life
-
-Dear, I am in a sincere desire of your humble assistance in this regards,Your suggestions and ideas will be highly regarded.
+FOESCO (Formaci=F3n Estatal Continua)
 
 
-Now permit me to ask these few questions:
 
-1. Can you honestly help me as your daughter
+Nos encontramos organizando el calendario de CURSOS BONIFICABLES 2020 para =
+empleados en activo.
 
-2. Can I completely trust you
-
-3. What percentage of the total amount in question will be good for you after the money is in your account
-
-Please contact me with my private email cheriftiti268@yahoo.com
+Es por ello que nos dirigimos a todas las empresas Espa=F1olas realizando l=
+a presente consulta.
 
 
-Please,Consider this and get back to me as soon as possible.
+Rogamos respond=E1is a este mismo correo electr=F3nico eligiendo una de las=
+ opciones que a continuaci=F3n indicamos:
 
 
-My sincere regards,
-Mrs.cherif TITI
+1 - Precisamos informaci=F3n para la PRESENTE convocatoria FEBRERO 2020
+
+2 - Precisamos informaci=F3n para el mes de.............(indicar mes)
+
+
+Todos los cursos se descuentan =EDntegramente del Cr=E9dito de Formaci=F3n =
+2020 que disponen las empresas.
+
+
+
+Agradecemos vuestra colaboraci=F3n y quedamos a la espera de vuestra respue=
+sta.
+=20
+
+Un cordial saludo.
+=20
+
+Alex Pons.
+Director FOESCO
+
+FOESCO Formaci=F3n Estatal Continua.
+www.foesco.com
+e-mail:	 cursos@foesco.com
+Tel.:	 91 032 37 94=20
+(Horario de 9h a 14h y de 16:30h a 21h de Lunes a Viernes)
+=20
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre. =
+ =20
+
+La informaci=F3n transmitida contiene informaci=F3n confidencial, por lo qu=
+e, si usted lo recibiera por error, por favor destr=FAyalo sin copiarlo, us=
+arlo ni distribuirlo, comunic=E1ndolo inmediatamente al emisor del mensaje.=
+ De conformidad con lo dispuesto en el Reglamento Europeo del 2016/679, del=
+ 27 de Abril de 2016 relativo a la protecci=F3n de las personas f=EDsicas e=
+n lo que respecta al tratamiento de datos personales y a la libre circulaci=
+=F3n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglament=
+o general de protecci=F3n de datos).
+
+
+Si no desea recibir mas informaci=F3n de FOESCO responda por favor con la p=
+alabra BAJA en el asunto.
+
+--===============0232222093490656465==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============0232222093490656465==--
