@@ -1,76 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2860315022D
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Feb 2020 09:02:40 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 72866204A5;
-	Mon,  3 Feb 2020 08:02:38 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SncZjNG1cnqo; Mon,  3 Feb 2020 08:02:37 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4BCB22049F;
-	Mon,  3 Feb 2020 08:02:36 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 468FC1BF36E
- for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 08:02:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1787D150363
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Feb 2020 10:31:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4017E854CC
- for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 08:02:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 83D88856E8;
+	Mon,  3 Feb 2020 09:31:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1ytq2wsGD59d; Mon,  3 Feb 2020 09:31:39 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EB96985660;
+	Mon,  3 Feb 2020 09:31:37 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1AC721BF286
+ for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 09:31:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 167A385C98
+ for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 09:31:35 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s6nl2dtL4tIQ for <devel@linuxdriverproject.org>;
- Mon,  3 Feb 2020 08:02:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx06.melco.co.jp (mx06.melco.co.jp [192.218.140.146])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 49CB2853E5
- for <devel@driverdev.osuosl.org>; Mon,  3 Feb 2020 08:02:33 +0000 (UTC)
-Received: from mr06.melco.co.jp (mr06 [133.141.98.164])
- by mx06.melco.co.jp (Postfix) with ESMTP id BE03A3A3516;
- Mon,  3 Feb 2020 17:02:31 +0900 (JST)
-Received: from mr06.melco.co.jp (unknown [127.0.0.1])
- by mr06.imss (Postfix) with ESMTP id 48B0fv4nQNzRkDF;
- Mon,  3 Feb 2020 17:02:31 +0900 (JST)
-Received: from mf04_second.melco.co.jp (unknown [192.168.20.184])
- by mr06.melco.co.jp (Postfix) with ESMTP id 48B0fv4TYjzRjwY;
- Mon,  3 Feb 2020 17:02:31 +0900 (JST)
-Received: from mf04.melco.co.jp (unknown [133.141.98.184])
- by mf04_second.melco.co.jp (Postfix) with ESMTP id 48B0fv4lKFzRk5n;
- Mon,  3 Feb 2020 17:02:31 +0900 (JST)
-Received: from tux532.tad.melco.co.jp (unknown [133.141.243.226])
- by mf04.melco.co.jp (Postfix) with ESMTP id 48B0fv4JkWzRk5j;
- Mon,  3 Feb 2020 17:02:31 +0900 (JST)
-Received: from tux532.tad.melco.co.jp
- by tux532.tad.melco.co.jp (unknown) with ESMTP id 01382VWC022519;
- Mon, 3 Feb 2020 17:02:31 +0900
-Received: from tux390.tad.melco.co.jp (tux390.tad.melco.co.jp [127.0.0.1])
- by postfix.imss70 (Postfix) with ESMTP id 47ECC17E075;
- Mon,  3 Feb 2020 17:02:31 +0900 (JST)
-Received: from tux554.tad.melco.co.jp (tadpost1.tad.melco.co.jp [10.168.7.223])
- by tux390.tad.melco.co.jp (Postfix) with ESMTP id 329B317E073;
- Mon,  3 Feb 2020 17:02:31 +0900 (JST)
-Received: from tux554.tad.melco.co.jp
- by tux554.tad.melco.co.jp (unknown) with ESMTP id 01382Rc2022824;
- Mon, 3 Feb 2020 17:02:31 +0900
-From: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-To: Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] staging: exfat: dedicate count_entries() to sub-dir
- counting.
-Date: Tue,  4 Feb 2020 01:31:18 +0900
-Message-Id: <20200203163118.31332-2-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-X-Mailer: git-send-email 2.25.0
-In-Reply-To: <20200203163118.31332-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-References: <20200203163118.31332-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-MIME-Version: 1.0
+ with ESMTP id 5GA9rnDCUG66 for <devel@linuxdriverproject.org>;
+ Mon,  3 Feb 2020 09:31:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AA13F85C45
+ for <devel@driverdev.osuosl.org>; Mon,  3 Feb 2020 09:31:33 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id t2so17030107wrr.1
+ for <devel@driverdev.osuosl.org>; Mon, 03 Feb 2020 01:31:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=rcK5gX39k7bDP30En74hDz2t8ifbaHw7QATZ4PpRTeU=;
+ b=KtRSEtwXUVSItz0gXLeiU6JgXLpbytR/cMLYF08+K1OVet7zsyVcixx6By8m8KND6U
+ HQZFPbB1khdN1TLh7pBY8ZXcDOhYcR/92sbzROOCfqe0Ras15mMJ8xL1DJ+9SO+G+Uf1
+ Y9IIBtkhn5O8n42Zc+iD2ftQk5LgLp6Hx1WozCqdK5vwYbstkh8/Kri4VkBbJB2KaolS
+ 5xR0JLTmg2zAfJIhwiI9RKQjYPDGq3NP6eU1XOrJiHbJ0ig70V2yMpcH46pL4klXoZgX
+ T1+PbTCf2QLFXLqm7QkLIqKEGaX6VEjNNdtsTu8e3BFuLrIuvdSibmBBbgb0EMzVsqq5
+ kh8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=rcK5gX39k7bDP30En74hDz2t8ifbaHw7QATZ4PpRTeU=;
+ b=EpXr7FTPcPLHwXxKjXNin3ezHCasl7PzDkzAvwBUYxkaz5iBsy5GpVXlpiX0xv14nZ
+ EB8h/15kY/FcedBEH1gbUwA8TOlgX+k9hhcafRjyjmoxxx/+e7PIX/eCodU4BSQltj7p
+ pgUAQXGBJ+F0SD/RyZfZGaXsLCXgTJ2qq3mnhII68QPnHTaAOjcFBaGTvxku4k5rSsfg
+ dA/LT5JGmgKeq355M7A68pQ9JK8yjWgKkYxkfHbfhYuPyRBwlhtya9c6GuoKA8xXniwB
+ jZO14L3DBtxe/AMprutUSYn1883fZN6fJAKj7Ibzo57hVJ9bKlU8PBn5phBxLpL6Gb2z
+ Dn5g==
+X-Gm-Message-State: APjAAAUB2dI8PGa4MOyBUinTlItiiM1ai4x1KJG/+k9lFaLo5L26IeXE
+ aQkax7fKADSpscGWUJ9csmI=
+X-Google-Smtp-Source: APXvYqxV7mfK34Grbx0uqjWGjcNDfZA4O8t/SOJ/Lf1ePMmzJ69rW4su3VICqdplhWpnR7qEnYlZVA==
+X-Received: by 2002:adf:f4cb:: with SMTP id h11mr14686868wrp.90.1580722291964; 
+ Mon, 03 Feb 2020 01:31:31 -0800 (PST)
+Received: from nsa-Precision-5530 ([91.180.85.7])
+ by smtp.googlemail.com with ESMTPSA id z3sm7554609wrs.32.2020.02.03.01.31.30
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 03 Feb 2020 01:31:31 -0800 (PST)
+Message-ID: <da82db5f81e116c7ecc36f5d9833b90b4f7cd15d.camel@gmail.com>
+Subject: Re: [PATCH 2/4] iio: imu: adis: Refactor adis_initial_startup
+From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
+To: Jonathan Cameron <jic23@kernel.org>, Alexandru Ardelean
+ <alexandru.ardelean@analog.com>
+Date: Mon, 03 Feb 2020 10:31:30 +0100
+In-Reply-To: <20200201170839.4ab98d8e@archlinux>
+References: <20200120142051.28533-1-alexandru.ardelean@analog.com>
+ <20200120142051.28533-2-alexandru.ardelean@analog.com>
+ <20200201170839.4ab98d8e@archlinux>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
+Mime-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,89 +88,146 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp,
- Mori.Takahiro@ab.MitsubishiElectric.co.jp,
- motai.hirotaka@aj.mitsubishielectric.co.jp
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, dragos.bogdan@analog.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-count_entries() function is only used to count sub-dirs.
-Clarify the role and rename to count_dir_entries().
-
-Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
----
- drivers/staging/exfat/exfat.h       | 2 +-
- drivers/staging/exfat/exfat_core.c  | 8 ++------
- drivers/staging/exfat/exfat_super.c | 4 ++--
- 3 files changed, 5 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index 62aba0feda12..be0ce8998cce 100644
---- a/drivers/staging/exfat/exfat.h
-+++ b/drivers/staging/exfat/exfat.h
-@@ -694,7 +694,7 @@ struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
- 					       u32 type,
- 					       struct dentry_t **file_ep);
- void release_entry_set(struct entry_set_cache_t *es);
--s32 count_entries(struct super_block *sb, struct chain_t *p_dir, u32 type);
-+s32 count_dir_entries(struct super_block *sb, struct chain_t *p_dir);
- void update_dir_checksum(struct super_block *sb, struct chain_t *p_dir,
- 			 s32 entry);
- void update_dir_checksum_with_entry_set(struct super_block *sb,
-diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
-index 188349eeef5f..a9c86aae688b 100644
---- a/drivers/staging/exfat/exfat_core.c
-+++ b/drivers/staging/exfat/exfat_core.c
-@@ -1854,7 +1854,7 @@ s32 exfat_count_ext_entries(struct super_block *sb, struct chain_t *p_dir,
- 	return count;
- }
- 
--s32 count_entries(struct super_block *sb, struct chain_t *p_dir, u32 type)
-+s32 count_dir_entries(struct super_block *sb, struct chain_t *p_dir)
- {
- 	int i, count = 0;
- 	s32 dentries_per_clu;
-@@ -1885,11 +1885,7 @@ s32 count_entries(struct super_block *sb, struct chain_t *p_dir, u32 type)
- 
- 			if (entry_type == TYPE_UNUSED)
- 				return count;
--			if (!(type & TYPE_CRITICAL_PRI) &&
--			    !(type & TYPE_BENIGN_PRI))
--				continue;
--
--			if ((type == TYPE_ALL) || (type == entry_type))
-+			if (entry_type == TYPE_DIR)
- 				count++;
- 		}
- 
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index ae666f79ff48..e706fdd667ed 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -1476,7 +1476,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 						p_fs->cluster_size_bits;
- 			}
- 
--			count = count_entries(sb, &dir, TYPE_DIR);
-+			count = count_dir_entries(sb, &dir);
- 			if (count < 0) {
- 				ret = count; /* propagate error upward */
- 				goto out;
-@@ -1543,7 +1543,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 			info->Size = (u64)count_num_clusters(sb, &dir) <<
- 					p_fs->cluster_size_bits;
- 
--		count = count_entries(sb, &dir, TYPE_DIR);
-+		count = count_dir_entries(sb, &dir);
- 		if (count < 0) {
- 			ret = count; /* propagate error upward */
- 			goto out;
--- 
-2.25.0
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGkgSm9uYXRoYW4sCgoKT24gU2F0LCAyMDIwLTAyLTAxIGF0IDE3OjA4ICswMDAwLCBKb25hdGhh
+biBDYW1lcm9uIHdyb3RlOgo+IE9uIE1vbiwgMjAgSmFuIDIwMjAgMTY6MjA6NDkgKzAyMDAKPiBB
+bGV4YW5kcnUgQXJkZWxlYW4gPGFsZXhhbmRydS5hcmRlbGVhbkBhbmFsb2cuY29tPiB3cm90ZToK
+PiAKPiA+IEZyb206IE51bm8gU8OhIDxudW5vLnNhQGFuYWxvZy5jb20+Cj4gPiAKPiA+IEFsbCB0
+aGUgQURJUyBkZXZpY2VzIHBlcmZvcm0sIGF0IHRoZSBiZWdpbm5pbmcsIGEgc2VsZiB0ZXN0IHRv
+IG1ha2UKPiA+IHN1cmUKPiA+IHRoZSBkZXZpY2UgaXMgaW4gYSBzYW5lIHN0YXRlLiBGdXJ0aGVy
+bW9yZSwgc29tZSBkcml2ZXJzIGFsc28gZG8gYQo+ID4gY2FsbAo+ID4gdG8gYGFkaXNfcmVzZXQo
+KWAgYmVmb3JlIHRoZSB0ZXN0IHdoaWNoIGlzIGFsc28gYSBnb29kIHByYWN0aWNlLgo+ID4gVGhp
+cwo+ID4gcGF0Y2ggdW5pZmllcyBhbGwgdGhvc2Ugb3BlcmF0aW9uIHNvIHRoYXQsIHRoZXJlJ3Mg
+bm8gbmVlZCBmb3IgY29kZQo+ID4gZHVwbGljYXRpb24uIEZ1cnRoZXJtb3JlLCB0aGUgcnN0IHBp
+biBpcyBhbHNvIGNoZWNrZWQgdG8gbWFrZSBzdXJlCj4gPiB0aGUKPiA+IGRldmljZSBpcyBub3Qg
+aW4gSFcgcmVzZXQuIE9uIHRvcCBvZiB0aGlzLCBzb21lIGRyaXZlcnMgYWxzbyByZWFkCj4gPiB0
+aGUKPiA+IGRldmljZSBwcm9kdWN0IGlkIGFuZCBjb21wYXJlIGl0IHdpdGggdGhlIGRldmljZSBi
+ZWluZyBwcm9iZWQgdG8KPiA+IG1ha2UKPiA+IHN1cmUgdGhlIGNvcnJlY3QgZGV2aWNlIGlzIGJl
+aW5nIGhhbmRsZWQuIFRoaXMgY2FuIGFsc28gYmUgcGFzc2VkCj4gPiB0byB0aGUKPiA+IGxpYnJh
+cnkgYnkgaW50cm9kdWNpbmcgYSB2YXJpYWJsZSBob2xkaW5nIHRoZSBQUk9EX0lEIHJlZ2lzdGVy
+IG9mCj4gPiB0aGUKPiA+IGRldmljZS4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogTnVubyBTw6Eg
+PG51bm8uc2FAYW5hbG9nLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IEFsZXhhbmRydSBBcmRlbGVh
+biA8YWxleGFuZHJ1LmFyZGVsZWFuQGFuYWxvZy5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2lp
+by9pbXUvS2NvbmZpZyAgICAgIHwgIDEgKwo+ID4gIGRyaXZlcnMvaWlvL2ltdS9hZGlzLmMgICAg
+ICAgfCA2MyArKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0KPiA+IC0tLS0tLQo+ID4gIGlu
+Y2x1ZGUvbGludXgvaWlvL2ltdS9hZGlzLmggfCAxNSArKysrKysrKy0KPiA+ICAzIGZpbGVzIGNo
+YW5nZWQsIDYxIGluc2VydGlvbnMoKyksIDE4IGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9paW8vaW11L0tjb25maWcgYi9kcml2ZXJzL2lpby9pbXUvS2NvbmZpZwo+
+ID4gaW5kZXggNjBiYjEwMjllNzU5Li42MzAzNmNmNDczYzcgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2
+ZXJzL2lpby9pbXUvS2NvbmZpZwo+ID4gKysrIGIvZHJpdmVycy9paW8vaW11L0tjb25maWcKPiA+
+IEBAIC04NSw2ICs4NSw3IEBAIGVuZG1lbnUKPiA+ICAKPiA+ICBjb25maWcgSUlPX0FESVNfTElC
+Cj4gPiAgCXRyaXN0YXRlCj4gPiArCWRlcGVuZHMgb24gR1BJT0xJQgo+ID4gIAloZWxwCj4gPiAg
+CSAgQSBzZXQgb2YgSU8gaGVscGVyIGZ1bmN0aW9ucyBmb3IgdGhlIEFuYWxvZyBEZXZpY2VzIEFE
+SVMqCj4gPiBkZXZpY2UgZmFtaWx5Lgo+ID4gIAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlv
+L2ltdS9hZGlzLmMgYi9kcml2ZXJzL2lpby9pbXUvYWRpcy5jCj4gPiBpbmRleCBkMDJiMTkxMWIw
+ZjIuLjFlY2E1MjcxMzgwZSAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvaWlvL2ltdS9hZGlzLmMK
+PiA+ICsrKyBiL2RyaXZlcnMvaWlvL2ltdS9hZGlzLmMKPiA+IEBAIC03LDYgKzcsNyBAQAo+ID4g
+ICAqLwo+ID4gIAo+ID4gICNpbmNsdWRlIDxsaW51eC9kZWxheS5oPgo+ID4gKyNpbmNsdWRlIDxs
+aW51eC9ncGlvL2NvbnN1bWVyLmg+Cj4gPiAgI2luY2x1ZGUgPGxpbnV4L211dGV4Lmg+Cj4gPiAg
+I2luY2x1ZGUgPGxpbnV4L2RldmljZS5oPgo+ID4gICNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4K
+PiA+IEBAIC0zNjUsMzYgKzM2Niw2NCBAQCBzdGF0aWMgaW50IGFkaXNfc2VsZl90ZXN0KHN0cnVj
+dCBhZGlzICphZGlzKQo+ID4gIH0KPiA+ICAKPiA+ICAvKioKPiA+IC0gKiBhZGlzX2luaXRhbF9z
+dGFydHVwKCkgLSBQZXJmb3JtcyBkZXZpY2Ugc2VsZi10ZXN0Cj4gPiArICogX19hZGlzX2luaXRp
+YWxfc3RhcnR1cCgpIC0gRGV2aWNlIGluaXRpYWwgc2V0dXAKPiA+ICAgKiBAYWRpczogVGhlIGFk
+aXMgZGV2aWNlCj4gPiAgICoKPiA+ICsgKiBUaGlzIGZ1bmN0aW9ucyBtYWtlcyBzdXJlIHRoZSBk
+ZXZpY2UgaXMgbm90IGluIHJlc2V0LCB2aWEgcnN0Cj4gPiBwaW4uCj4gPiArICogRnVydGhlcm1v
+cmUgaXQgcGVyZm9ybXMgYSBTVyByZXNldCAob25seSBpbiB0aGUgY2FzZSB3ZSBhcmUgbm90Cj4g
+PiBjb21pbmcgZnJvbQo+ID4gKyAqIHJlc2V0IGFscmVhZHkpIGFuZCBhIHNlbGYgdGVzdC4gSXQg
+YWxzbyBjb21wYXJlcyB0aGUgcHJvZHVjdCBpZAo+ID4gd2l0aCB0aGUKPiA+ICsgKiBkZXZpY2Ug
+aWQgaWYgdGhlIHByb2RfaWRfcmVnIHZhcmlhYmxlIGlzIHNldC4KPiA+ICsgKgo+ID4gICAqIFJl
+dHVybnMgMCBpZiB0aGUgZGV2aWNlIGlzIG9wZXJhdGlvbmFsLCBhIG5lZ2F0aXZlIGVycm9yIGNv
+ZGUKPiA+IG90aGVyd2lzZS4KPiA+ICAgKgo+ID4gICAqIFRoaXMgZnVuY3Rpb24gc2hvdWxkIGJl
+IGNhbGxlZCBlYXJseSBvbiBpbiB0aGUgZGV2aWNlCj4gPiBpbml0aWFsaXphdGlvbiBzZXF1ZW5j
+ZQo+ID4gICAqIHRvIGVuc3VyZSB0aGF0IHRoZSBkZXZpY2UgaXMgaW4gYSBzYW5lIGFuZCBrbm93
+biBzdGF0ZSBhbmQgdGhhdAo+ID4gaXQgaXMgdXNhYmxlLgo+ID4gICAqLwo+ID4gLWludCBhZGlz
+X2luaXRpYWxfc3RhcnR1cChzdHJ1Y3QgYWRpcyAqYWRpcykKPiA+ICtpbnQgX19hZGlzX2luaXRp
+YWxfc3RhcnR1cChzdHJ1Y3QgYWRpcyAqYWRpcykKPiA+ICB7Cj4gPiAgCWludCByZXQ7Cj4gPiAt
+Cj4gPiAtCW11dGV4X2xvY2soJmFkaXMtPnN0YXRlX2xvY2spOwo+ID4gKwlzdHJ1Y3QgZ3Bpb19k
+ZXNjICpncGlvOwo+ID4gKwljb25zdCBzdHJ1Y3QgYWRpc190aW1lb3V0ICp0aW1lb3V0cyA9IGFk
+aXMtPmRhdGEtPnRpbWVvdXRzOwo+ID4gKwljb25zdCBjaGFyICppaW9fbmFtZSA9IHNwaV9nZXRf
+ZGV2aWNlX2lkKGFkaXMtPnNwaSktPm5hbWU7Cj4gPiArCXUxNiBwcm9kX2lkLCBkZXZfaWQ7Cj4g
+PiArCj4gPiArCS8qIGNoZWNrIGlmIHRoZSBkZXZpY2UgaGFzIHJzdCBwaW4gbG93ICovCj4gPiAr
+CWdwaW8gPSBkZXZtX2dwaW9kX2dldF9vcHRpb25hbCgmYWRpcy0+c3BpLT5kZXYsICJyZXNldCIs
+Cj4gPiBHUElPRF9BU0lTKTsKPiA+ICsJaWYgKElTX0VSUihncGlvKSkgewo+ID4gKwkJcmV0dXJu
+IFBUUl9FUlIoZ3Bpbyk7Cj4gCj4gR2l2ZW4geW91IGFyZSByZXR1cm5pbmcgaGVyZSwgbm8gbmVl
+ZCBmb3IgZWxzZSB0byBmb2xsb3cKPiAKPiBpZiAoZ3Bpby4uLgo+IAoKRGVmaW5pdGVseS4uLgoK
+PiA+ICsJfSBlbHNlIGlmIChncGlvICYmIGdwaW9kX2dldF92YWx1ZV9jYW5zbGVlcChncGlvKSkg
+ewo+ID4gKwkJLyogYnJpbmcgZGV2aWNlIG91dCBvZiByZXNldCAqLwo+ID4gKwkJZ3Bpb2Rfc2V0
+X3ZhbHVlX2NhbnNsZWVwKGdwaW8sIDApOwo+IAo+IEhtbS4gU28gaXMgYSBzb2Z0d2FyZSByZXNl
+dCB0aGUgYmVzdCBvcHRpb24gaWYgd2UgaGF2ZSBhIGhhcmR3YXJlCj4gcmVzZXQKPiBsaW5lIGJ1
+dCBpdCdzIG5vdCBjdXJyZW50bHkgaW4gdGhlIHJlc2V0IG1vZGU/Cj4gCgpIbW0sIHRoYXQncyBh
+IGZhaXIgcXVlc3Rpb24uIE5vdyB0aGF0IEkgdGhpbmsgYWJvdXQgaXQsIGlmIHdlIGRvIGhhdmUg
+YQpncGlvIHdlIHNob3VsZCBqdXN0IGFzc3VtZSBpdCdzIGluIHJlc2V0IGFuZCBjYWxsCmBncGlv
+ZF9zZXRfdmFsdWVfY2Fuc2xlZXBgLiBTbywgSSBndWVzcyB3ZSBjb3VsZCBqdXN0IGRpdGNoIHRo
+ZQpgZ3Bpb2RfZ2V0X3ZhbHVlX2NhbnNsZWVwKGdwaW8pYCBwYXJ0LgoKPiA+ICsJCW1zbGVlcCh0
+aW1lb3V0cy0+cmVzZXRfbXMpOwo+ID4gKwl9IGVsc2Ugewo+ID4gKwkJcmV0ID0gX19hZGlzX3Jl
+c2V0KGFkaXMpOwo+ID4gKwkJaWYgKHJldCkKPiA+ICsJCQlyZXR1cm4gcmV0Owo+ID4gKwl9Cj4g
+PiAgCj4gPiAgCXJldCA9IGFkaXNfc2VsZl90ZXN0KGFkaXMpOwo+ID4gLQlpZiAocmV0KSB7Cj4g
+PiAtCQlkZXZfZXJyKCZhZGlzLT5zcGktPmRldiwgIlNlbGYtdGVzdCBmYWlsZWQsIHRyeWluZwo+
+ID4gcmVzZXQuXG4iKTsKPiA+IC0JCV9fYWRpc19yZXNldChhZGlzKTsKPiA+IC0JCXJldCA9IGFk
+aXNfc2VsZl90ZXN0KGFkaXMpOwo+ID4gLQkJaWYgKHJldCkgewo+ID4gLQkJCWRldl9lcnIoJmFk
+aXMtPnNwaS0+ZGV2LCAiU2Vjb25kIHNlbGYtdGVzdAo+ID4gZmFpbGVkLCBnaXZpbmcgdXAuXG4i
+KTsKPiA+IC0JCQlnb3RvIG91dF91bmxvY2s7Cj4gPiAtCQl9Cj4gPiAtCX0KPiA+ICsJaWYgKHJl
+dCkKPiA+ICsJCXJldHVybiByZXQ7Cj4gPiAgCj4gPiAtb3V0X3VubG9jazoKPiA+IC0JbXV0ZXhf
+dW5sb2NrKCZhZGlzLT5zdGF0ZV9sb2NrKTsKPiA+IC0JcmV0dXJuIHJldDsKPiA+ICsJaWYgKCFh
+ZGlzLT5kYXRhLT5wcm9kX2lkX3JlZykKPiA+ICsJCXJldHVybiAwOwo+ID4gKwo+ID4gKwlyZXQg
+PSBhZGlzX3JlYWRfcmVnXzE2KGFkaXMsIGFkaXMtPmRhdGEtPnByb2RfaWRfcmVnLAo+ID4gJnBy
+b2RfaWQpOwo+ID4gKwlpZiAocmV0KQo+ID4gKwkJcmV0dXJuIHJldDsKPiA+ICsKPiA+ICsJcmV0
+ID0gc3NjYW5mKGlpb19uYW1lLCAiYWRpcyVodVxuIiwgJmRldl9pZCk7Cj4gCj4gSG1tLiBJIGhh
+dmUgYSBnZW5lcmFsIGRpc2xpa2Ugb2YgcHVsbGluZyBwYXJ0IG5hbWUgc3RyaW5ncyBhcGFydCB0
+bwo+IGdldAo+IElEcy4gIEl0IHRlbmRzIHRvIGJyZWFrIHdoZW4gc29tZW9uZSBjb21lcyBhbG9u
+ZyBhbmQgYWRkcyBhIHBhcnQgd2l0aAo+IG5ldwo+IGJyYW5kaW5nLiAgUGVyaGFwcyBqdXN0IHB1
+dCBpdCBpbiB0aGUgcmVsZXZhbnQgZGV2aWNlIHBhcnQgc3BlY2lmaWMKPiBzdHJ1Y3R1cmVzCj4g
+ZGlyZWN0bHk/Cj4gCgpJJ2xsIGFkbWl0IHRoYXQgdGhpcyB0byBvcmllbnRhdGVkIHRvIEFESSBk
+ZXZpY2VzIGFuZCBJIGJhc2ljYWxseSBqdXN0CnRvb2sgd2hhdCBhbGwgdGhlIGRyaXZlcnMgd2Vy
+ZSBkb2luZyBhbmQgcGxhY2VkIGl0IGluc2lkZSB0aGUKbGlicmFyeS4uLgoKU28sIHlvdSBtZWFu
+IHBhc3NpbmcgdGhpcyB0byBlYWNoIGBjaGlwX2luZm9gIGFuZCB0aGVuIHBhc3NpbmcgaXQgdG8K
+dGhlIGxpYnJhcnkgdGhyb3VnaCBgYWRpc19kYXRhYD8KPiA+ICsJaWYgKHJldCAhPSAxKQo+ID4g
+KwkJcmV0dXJuIC1FSU5WQUw7Cj4gPiArCj4gPiArCWlmIChwcm9kX2lkICE9IGRldl9pZCkKPiA+
+ICsJCWRldl93YXJuKCZhZGlzLT5zcGktPmRldiwKPiA+ICsJCQkgIkRldmljZSBJRCgldSkgYW5k
+IHByb2R1Y3QgSUQoJXUpIGRvIG5vdAo+ID4gbWF0Y2guIiwKPiA+ICsJCQkgZGV2X2lkLCBwcm9k
+X2lkKTsKPiA+ICsKPiA+ICsJcmV0dXJuIDA7Cj4gPiAgfQo+ID4gLUVYUE9SVF9TWU1CT0xfR1BM
+KGFkaXNfaW5pdGlhbF9zdGFydHVwKTsKPiA+ICtFWFBPUlRfU1lNQk9MX0dQTChfX2FkaXNfaW5p
+dGlhbF9zdGFydHVwKTsKPiA+ICAKPiA+ICAvKioKPiA+ICAgKiBhZGlzX3NpbmdsZV9jb252ZXJz
+aW9uKCkgLSBQZXJmb3JtcyBhIHNpbmdsZSBzYW1wbGUgY29udmVyc2lvbgo+ID4gZGlmZiAtLWdp
+dCBhL2luY2x1ZGUvbGludXgvaWlvL2ltdS9hZGlzLmgKPiA+IGIvaW5jbHVkZS9saW51eC9paW8v
+aW11L2FkaXMuaAo+ID4gaW5kZXggZDIxYTAxM2QxMTIyLi5jNDNlNzkyMmFiMzIgMTAwNjQ0Cj4g
+PiAtLS0gYS9pbmNsdWRlL2xpbnV4L2lpby9pbXUvYWRpcy5oCj4gPiArKysgYi9pbmNsdWRlL2xp
+bnV4L2lpby9pbXUvYWRpcy5oCj4gPiBAQCAtNDEsNiArNDEsNyBAQCBzdHJ1Y3QgYWRpc190aW1l
+b3V0IHsKPiA+ICAgKiBAZ2xvYl9jbWRfcmVnOiBSZWdpc3RlciBhZGRyZXNzIG9mIHRoZSBHTE9C
+X0NNRCByZWdpc3Rlcgo+ID4gICAqIEBtc2NfY3RybF9yZWc6IFJlZ2lzdGVyIGFkZHJlc3Mgb2Yg
+dGhlIE1TQ19DVFJMIHJlZ2lzdGVyCj4gPiAgICogQGRpYWdfc3RhdF9yZWc6IFJlZ2lzdGVyIGFk
+ZHJlc3Mgb2YgdGhlIERJQUdfU1RBVCByZWdpc3Rlcgo+ID4gKyAqIEBwcm9kX2lkX3JlZzogUmVn
+aXN0ZXIgYWRkcmVzcyBvZiB0aGUgUFJPRF9JRCByZWdpc3Rlcgo+ID4gICAqIEBzZWxmX3Rlc3Rf
+cmVnOiBSZWdpc3RlciBhZGRyZXNzIHRvIHJlcXVlc3Qgc2VsZiB0ZXN0IGNvbW1hbmQKPiA+ICAg
+KiBAc3RhdHVzX2Vycm9yX21zZ3M6IEFycmF5IG9mIGVycm9yIG1lc3NnYWVzCj4gPiAgICogQHN0
+YXR1c19lcnJvcl9tYXNrOgo+ID4gQEAgLTU0LDYgKzU1LDcgQEAgc3RydWN0IGFkaXNfZGF0YSB7
+Cj4gPiAgCXVuc2lnbmVkIGludCBnbG9iX2NtZF9yZWc7Cj4gPiAgCXVuc2lnbmVkIGludCBtc2Nf
+Y3RybF9yZWc7Cj4gPiAgCXVuc2lnbmVkIGludCBkaWFnX3N0YXRfcmVnOwo+ID4gKwl1bnNpZ25l
+ZCBpbnQgcHJvZF9pZF9yZWc7Cj4gPiAgCj4gPiAgCXVuc2lnbmVkIGludCBzZWxmX3Rlc3RfbWFz
+azsKPiA+ICAJdW5zaWduZWQgaW50IHNlbGZfdGVzdF9yZWc7Cj4gPiBAQCAtMjk5LDYgKzMwMSw3
+IEBAIHN0YXRpYyBpbmxpbmUgaW50IGFkaXNfcmVhZF9yZWdfMzIoc3RydWN0IGFkaXMKPiA+ICph
+ZGlzLCB1bnNpZ25lZCBpbnQgcmVnLAo+ID4gIAo+ID4gIGludCBhZGlzX2VuYWJsZV9pcnEoc3Ry
+dWN0IGFkaXMgKmFkaXMsIGJvb2wgZW5hYmxlKTsKPiA+ICBpbnQgX19hZGlzX2NoZWNrX3N0YXR1
+cyhzdHJ1Y3QgYWRpcyAqYWRpcyk7Cj4gPiAraW50IF9fYWRpc19pbml0aWFsX3N0YXJ0dXAoc3Ry
+dWN0IGFkaXMgKmFkaXMpOwo+ID4gIAo+ID4gIHN0YXRpYyBpbmxpbmUgaW50IGFkaXNfY2hlY2tf
+c3RhdHVzKHN0cnVjdCBhZGlzICphZGlzKQo+ID4gIHsKPiA+IEBAIC0zMTEsNyArMzE0LDE3IEBA
+IHN0YXRpYyBpbmxpbmUgaW50IGFkaXNfY2hlY2tfc3RhdHVzKHN0cnVjdAo+ID4gYWRpcyAqYWRp
+cykKPiA+ICAJcmV0dXJuIHJldDsKPiA+ICB9Cj4gPiAgCj4gPiAtaW50IGFkaXNfaW5pdGlhbF9z
+dGFydHVwKHN0cnVjdCBhZGlzICphZGlzKTsKPiA+ICsvKiBsb2NrZWQgdmVyc2lvbiBvZiBfX2Fk
+aXNfaW5pdGlhbF9zdGFydHVwKCkgKi8KPiA+ICtzdGF0aWMgaW5saW5lIGludCBhZGlzX2luaXRp
+YWxfc3RhcnR1cChzdHJ1Y3QgYWRpcyAqYWRpcykKPiA+ICt7Cj4gPiArCWludCByZXQ7Cj4gPiAr
+Cj4gPiArCW11dGV4X2xvY2soJmFkaXMtPnN0YXRlX2xvY2spOwo+ID4gKwlyZXQgPSBfX2FkaXNf
+aW5pdGlhbF9zdGFydHVwKGFkaXMpOwo+ID4gKwltdXRleF91bmxvY2soJmFkaXMtPnN0YXRlX2xv
+Y2spOwo+ID4gKwo+ID4gKwlyZXR1cm4gcmV0Owo+ID4gK30KPiA+ICAKPiA+ICBpbnQgYWRpc19z
+aW5nbGVfY29udmVyc2lvbihzdHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2LAo+ID4gIAljb25zdCBz
+dHJ1Y3QgaWlvX2NoYW5fc3BlYyAqY2hhbiwgdW5zaWduZWQgaW50IGVycm9yX21hc2ssCj4gCj4g
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBt
+YWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2
+LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
