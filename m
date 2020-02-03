@@ -1,72 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E97241505BE
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Feb 2020 13:00:26 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D501B1505CD
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Feb 2020 13:03:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2BAC8204DF;
-	Mon,  3 Feb 2020 12:00:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 48D198783F;
+	Mon,  3 Feb 2020 12:03:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nMP4qEc1HApF; Mon,  3 Feb 2020 12:00:20 +0000 (UTC)
+	with ESMTP id ONAxPZvokiCG; Mon,  3 Feb 2020 12:03:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0BCBE2050C;
-	Mon,  3 Feb 2020 12:00:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 773D687816;
+	Mon,  3 Feb 2020 12:03:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 117F01BF5DA
- for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 12:00:05 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 132CE1BF5DA
+ for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 12:03:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0980F204E0
- for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 12:00:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0FE40877FF
+ for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 12:03:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AWbnqfVfzYJs for <devel@linuxdriverproject.org>;
- Mon,  3 Feb 2020 12:00:01 +0000 (UTC)
+ with ESMTP id m3FobTaNtMEs for <devel@linuxdriverproject.org>;
+ Mon,  3 Feb 2020 12:03:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from lb3-smtp-cloud8.xs4all.net (lb3-smtp-cloud8.xs4all.net
- [194.109.24.29])
- by silver.osuosl.org (Postfix) with ESMTPS id B564C2038A
- for <devel@driverdev.osuosl.org>; Mon,  3 Feb 2020 12:00:00 +0000 (UTC)
-Received: from [192.168.2.10] ([46.9.235.248])
- by smtp-cloud8.xs4all.net with ESMTPA
- id yaOQiSCJVn7E5yaOTi3b1s; Mon, 03 Feb 2020 12:59:58 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1580731198; bh=qnhyVG0KBRfYCvUMy524atjha1LD1Pr5StfWLiE8f28=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=tANZdcNYK+ILFjz2PL+KoMamy6AbwTOV1Xm8tBiPqXR4vJ64nE9Vt3bQNWzXnkCcw
- CTVoWzv0zbZpvU++6RmvjQHUcbKZWwSClJyGdWX+OoaiPvcLHY9Y0PQtouC8VwI68Q
- roEjyCGQIn+wneGw6xclZGjoZaa/nbX2kzDGFDfJI3kqlJzGA/ab1KrF9LdwwFYBhE
- G9/QH6NCqskfDT5NeJa+ZXD6wFiPthhCk6MkMyAdSeArMhptYYPYS4pV8jqLUFqLmy
- hpki3IBtcAMXgbP1Rui9IGP2ZZfQ3nuw8Ff4Np5Skp0gE+tFgo5RHJm9FtKBsUvlw4
- elVPyGCQsIn9w==
-Subject: Re: [PATCH] media: hantro: Support H264 profile control
-To: Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>
-References: <20191122051608.128717-1-hiroh@chromium.org>
- <767528be59275265072896e5c679e97575615fdd.camel@ndufresne.ca>
- <CAAFQd5D3OpAAtX7_0ktz4-aAgWN_G4YBQMR=Vwp7JPopjvRkRA@mail.gmail.com>
- <f5341ed837529bd38d466d4b655e261d64065912.camel@ndufresne.ca>
- <CAAFQd5Cpk8qG+VgE6+aznBmXu11YG0gNQyCRanZghds-TPKvyg@mail.gmail.com>
- <c88b2822-0dd2-8ea3-eb0b-262df5a30830@xs4all.nl>
- <8b10414a1c198a6e3bd5e131a72bd6f68466bea5.camel@ndufresne.ca>
- <CAAFQd5AZ1DTtz2myuO9YSwjMaxPme0BDNaOBo97tSHLbm4XWPg@mail.gmail.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <8a6a371d-17cd-eb32-779c-0669da5a8d5e@xs4all.nl>
-Date: Mon, 3 Feb 2020 12:59:54 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+Received: from huawei.com (lhrrgout.huawei.com [185.176.76.210])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 654708756C
+ for <devel@driverdev.osuosl.org>; Mon,  3 Feb 2020 12:03:43 +0000 (UTC)
+Received: from LHREML710-CAH.china.huawei.com (unknown [172.18.7.107])
+ by Forcepoint Email with ESMTP id 3CF4667FA7CBC00D936B;
+ Mon,  3 Feb 2020 12:03:40 +0000 (GMT)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ LHREML710-CAH.china.huawei.com (10.201.108.33) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Mon, 3 Feb 2020 12:03:39 +0000
+Received: from localhost (10.202.226.57) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Mon, 3 Feb 2020
+ 12:03:39 +0000
+Date: Mon, 3 Feb 2020 12:03:38 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
+Subject: Re: [PATCH 2/4] iio: imu: adis: Refactor adis_initial_startup
+Message-ID: <20200203120338.000044c1@Huawei.com>
+In-Reply-To: <da82db5f81e116c7ecc36f5d9833b90b4f7cd15d.camel@gmail.com>
+References: <20200120142051.28533-1-alexandru.ardelean@analog.com>
+ <20200120142051.28533-2-alexandru.ardelean@analog.com>
+ <20200201170839.4ab98d8e@archlinux>
+ <da82db5f81e116c7ecc36f5d9833b90b4f7cd15d.camel@gmail.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-In-Reply-To: <CAAFQd5AZ1DTtz2myuO9YSwjMaxPme0BDNaOBo97tSHLbm4XWPg@mail.gmail.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfKgEIUyQM84B5b99RtJdse6y6Orwd9OgeSkGnakeLhCwcAUgr1MPdtJiFYnBf2Zi6QE7Z6h247QLPmFd+ZNdQVZ7rn3ea/rS7FwSmObtKVteDYSekFyT
- s3SFvWME3qRxpJo0XVI39+GvZ+x8q16vcVGzvz20gBjqi3M1WO4KsFRvlGyhOGxoWt1yGREklKATntHKul98PHwU5vTQNVLXOk0rNJf3iLX+e8zr3jV72L1/
- 6WN6s6/jOmrve0Wur9DBPS4Kr1ag0uEcy97+fMu7CizAXdHTIqo/Hk9D57rsyAig+vcgDfHtQxXfx7/S9vXidep0/i+VFBs9ErqPFbY3UcGkQu49Vfu/LZm8
- paCU03WOaUhpP9MYFRnE5E/RKBWwi4m3UPnTo9EEIYELt9T2cS2AxDlITRpGhPQ9iWDbOMKvRSiPyDGmleJg5GnGxZZizcbCg9OWhDqxgXX5egUh5TA=
+X-Originating-IP: [10.202.226.57]
+X-ClientProxiedBy: lhreml745-chm.china.huawei.com (10.201.108.195) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,116 +70,314 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Hirokazu Honda <hiroh@chromium.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, linux-iio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dragos.bogdan@analog.com,
+ Alexandru Ardelean <alexandru.ardelean@analog.com>,
+ Jonathan Cameron <jic23@kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMi8zLzIwIDEyOjEzIFBNLCBUb21hc3ogRmlnYSB3cm90ZToKPiBPbiBTYXQsIEphbiAxOCwg
-MjAyMCBhdCAxMDozMSBQTSBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzQG5kdWZyZXNuZS5jYT4g
-d3JvdGU6Cj4+Cj4+IExlIHZlbmRyZWRpIDEwIGphbnZpZXIgMjAyMCDDoCAxMzozMSArMDEwMCwg
-SGFucyBWZXJrdWlsIGEgw6ljcml0IDoKPj4+IE9uIDExLzI5LzE5IDE6MTYgQU0sIFRvbWFzeiBG
-aWdhIHdyb3RlOgo+Pj4+IE9uIFNhdCwgTm92IDIzLCAyMDE5IGF0IDE6NTIgQU0gTmljb2xhcyBE
-dWZyZXNuZSA8bmljb2xhc0BuZHVmcmVzbmUuY2E+Cj4+Pj4gd3JvdGU6Cj4+Pj4+IExlIHNhbWVk
-aSAyMyBub3ZlbWJyZSAyMDE5IMOgIDAxOjAwICswOTAwLCBUb21hc3ogRmlnYSBhIMOpY3JpdCA6
-Cj4+Pj4+PiBPbiBTYXQsIE5vdiAyMywgMjAxOSBhdCAxMjowOSBBTSBOaWNvbGFzIER1ZnJlc25l
-IDxuaWNvbGFzQG5kdWZyZXNuZS5jYT4KPj4+Pj4+IHdyb3RlOgo+Pj4+Pj4+IExlIHZlbmRyZWRp
-IDIyIG5vdmVtYnJlIDIwMTkgw6AgMTQ6MTYgKzA5MDAsIEhpcm9rYXp1IEhvbmRhIGEgw6ljcml0
-IDoKPj4+Pj4+Pj4gVGhlIEhhbnRybyBHMSBkZWNvZGVyIHN1cHBvcnRzIEguMjY0IHByb2ZpbGVz
-IGZyb20gQmFzZWxpbmUgdG8gSGlnaCwKPj4+Pj4+Pj4gd2l0aAo+Pj4+Pj4+PiB0aGUgZXhjZXB0
-aW9uIG9mIHRoZSBFeHRlbmRlZCBwcm9maWxlLgo+Pj4+Pj4+Pgo+Pj4+Pj4+PiBFeHBvc2UgdGhl
-IFY0TDJfQ0lEX01QRUdfVklERU9fSDI2NF9QUk9GSUxFIGNvbnRyb2wsIHNvIHRoYXQgdGhlCj4+
-Pj4+Pj4+IGFwcGxpY2F0aW9ucyBjYW4gcXVlcnkgdGhlIGRyaXZlciBmb3IgdGhlIGxpc3Qgb2Yg
-c3VwcG9ydGVkCj4+Pj4+Pj4+IHByb2ZpbGVzLgo+Pj4+Pj4+Cj4+Pj4+Pj4gVGhhbmtzIGZvciB0
-aGlzIHBhdGNoLiBEbyB5b3UgdGhpbmsgd2UgY291bGQgYWxzbyBhZGQgdGhlIExFVkVMCj4+Pj4+
-Pj4gY29udHJvbAo+Pj4+Pj4+IHNvIHRoZSBwcm9maWxlL2xldmVsIGVudW1lcmF0aW9uIGJlY29t
-ZXMgY29tcGxldGUgPwo+Pj4+Pj4+Cj4+Pj4+Pj4gSSdtIHRoaW5raW5nIGl0IHdvdWxkIGJlIG5p
-Y2UgaWYgdGhlIHY0bDIgY29tcGxpYW5jZSB0ZXN0IG1ha2Ugc3VyZQo+Pj4+Pj4+IHRoYXQgY29k
-ZWNzIGRvIGltcGxlbWVudCB0aGVzZSBjb250cm9scyAoYm90aCBzdGF0ZWZ1bCBhbmQgc3RhdGVs
-ZXNzKSwKPj4+Pj4+PiBpdCdzIGVzc2VudGlhbCBmb3Igc3RhY2sgd2l0aCBzb2Z0d2FyZSBmYWxs
-YmFjaywgb3IgbXVsdGlwbGUgY2FwYWJsZQo+Pj4+Pj4+IGNvZGVjIGhhcmR3YXJlIGJ1dCB3aXRo
-IGRpZmZlcmVudCBjYXBhYmlsaXRpZXMuCj4+Pj4+Pj4KPj4+Pj4+Cj4+Pj4+PiBMZXZlbCBpcyBh
-IGRpZmZpY3VsdCBzdG9yeSwgYmVjYXVzZSBpdCBhbHNvIHNwZWNpZmllcyB0aGUgbnVtYmVyIG9m
-Cj4+Pj4+PiBtYWNyb2Jsb2NrcyBwZXIgc2Vjb25kLCBidXQgZm9yIGRlY29kZXJzIGxpa2UgdGhp
-cyB0aGUgbnVtYmVyIG9mCj4+Pj4+PiBtYWNyb2Jsb2NrcyBwZXIgc2Vjb25kIGl0IGNhbiBoYW5k
-bGUgZGVwZW5kcyBvbiB0aGluZ3MgdGhlIGRyaXZlcgo+Pj4+Pj4gbWlnaHQgYmUgbm90IGF3YXJl
-IG9mIC0gY2xvY2sgZnJlcXVlbmNpZXMsIEREUiB0aHJvdWdocHV0LCBzeXN0ZW0KPj4+Pj4+IGxv
-YWQsIGV0Yy4KPj4+Pj4+Cj4+Pj4+PiBNeSB0YWtlIG9uIHRoaXMgaXMgdGhhdCB0aGUgZGVjb2Rl
-ciBkcml2ZXIgc2hvdWxkIGFkdmVydGlzZSB0aGUKPj4+Pj4+IGhpZ2hlc3QgcmVzb2x1dGlvbiB0
-aGUgZGVjb2RlciBjYW4gaGFuZGxlIGR1ZSB0byBoYXJkd2FyZSBjb25zdHJhaW50cy4KPj4+Pj4+
-IFBlcmZvcm1hbmNlIHJlbGF0ZWQgdGhpbmdzIGRlcGVuZCBvbiB0aGUgaW50ZWdyYXRpb24gZGV0
-YWlscyBhbmQKPj4+Pj4+IHNob3VsZCBiZSBtYW5hZ2VkIGVsc2V3aGVyZS4gRm9yIGV4YW1wbGUg
-QW5kcm9pZCBhbmQgQ2hyb21lIE9TIG1hbmFnZQo+Pj4+Pj4gZXhwZWN0ZWQgZGVjb2RpbmcgcGVy
-Zm9ybWFuY2UgaW4gcGVyLWJvYXJkIGNvbmZpZ3VyYXRpb24gZmlsZXMuCj4+Pj4+Cj4+Pj4+IFdo
-ZW4geW91IHJlYWQgZGF0YXNoZWV0LCB0aGUgSFcgaXMgYWx3YXlzIHJhdGVkIHRvIG1heGltdW0g
-bGV2ZWwgKGFuZAo+Pj4+PiBpdCdzIGEgcmFuZ2UpIHdpdGggdGhlIGFzc3VtcHRpb24gb2YgYSBz
-aW5nbGUgc3RyZWFtLiBJdCBzZWVtcyBtdWNoCj4+Pj4+IGVhc2llciB0byBleHBvc2UgdGhpcyBh
-cy1pcywgc3RhdGljYWxseSB0aGVuIHRvIHN0YXJ0IGRvaW5nIHNvbWUgbWF0aAo+Pj4+PiB3aXRo
-IGRhdGEgdGhhdCBpc24ndCBmdWxseSBleHBvc2VkIHRvIHRoZSB1c2VyLiBUaGlzIGlzIGFib3V0
-IGZpbHRlcmluZwo+Pj4+PiBvZiBtdWx0aXBsZSBDT0RFQyBpbnN0YW5jZXMsIGl0IGRvZXMgbm90
-IG5lZWQgdG8gYmUgcm9ja2V0IHNjaWVuY2UsCj4+Pj4+IHNwZWNpYWxseSB0aGF0IHRoZSBhbW91
-bnQgb2YgbWlzc2luZyBkYXRhIGlzIGltcG9ydGFudCAoZS5nLiB1c2FnZSBvZgo+Pj4+PiB0aWxl
-cywgY29tcHJlc3Npb24sIElQUCBhbGwgaGF2ZSBhbiBpbXBhY3Qgb24gdGhlIGZpbmFsIHBlcmZv
-cm1hbmNlKS4KPj4+Pj4gQWxsIHdlIHdhbnQgdG8ga25vdyBpbiB1c2Vyc3BhY2UgaXMgaWYgdGhp
-cyBIVyBpcyBldmVuIHBvc3NpYmx5IGNhcGFibGUKPj4+Pj4gb2YgTEVWRUwgWCwgYW5kIGlmIG5v
-dCwgd2UnbGwgbG9vayBmb3IgYW5vdGhlciBvbmUuCj4+Pj4+Cj4+Pj4KPj4+PiBBZ3JlZWQsIG9u
-ZSBjb3VsZCBwb3RlbnRpYWxseSBkZWZpbmUgaXQgdGhpcyB3YXksIGJ1dCB3b3VsZCBpdCBiZQo+
-Pj4+IHJlYWxseSB1c2VmdWwgZm9yIHRoZSB1c2Vyc3BhY2UgYW5kIHRoZSB1c2Vycz8gSSBndWVz
-cyBpdCBjb3VsZCBlbmFibGUKPj4+PiBzbGlnaHRseSBmYXN0ZXIgZmFsbGJhY2sgdG8gc29mdHdh
-cmUgZGVjb2RpbmcgaW4gdGhlIGV4dHJlbWUgY2FzZSBvZgo+Pj4+IHRoZSBoYXJkd2FyZSBub3Qg
-c3VwcG9ydGluZyB0aGUgbGV2ZWwgYXQgYWxsLCBidXQgSSBzdXNwZWN0IHRoYXQgdGhlCj4+Pj4g
-bWFqb3JpdHkgb2YgY2FzZXMgd291bGQgYmUgdGhlIGhhcmR3YXJlIGp1c3QgYmVpbmcgdW51c2Fi
-bHkgc2xvdy4KPj4+Pgo+Pj4+IEFsc28sIGFzIEkgbWVudGlvbmVkIGJlZm9yZSwgd2UgYWxyZWFk
-eSByZXR1cm4gdGhlIHJhbmdlIG9mIHN1cHBvcnRlZAo+Pj4+IHJlc29sdXRpb25zLCB3aGljaCBp
-biBwcmFjdGljZSBzaG91bGQgbWFwIHRvIHRoZSBwYXJ0IG9mIHRoZSBsZXZlbAo+Pj4+IHRoYXQg
-bWF5IGRlcGVuZCBvbiBoYXJkd2FyZSBjYXBhYmlsaXRpZXMgcmF0aGVyIHRoYW4gcGVyZm9ybWFu
-Y2UsIHNvCj4+Pj4gZXhwb3NpbmcgbGV2ZWxzIGFzIHdlbGwgd291bGQgYWRkIHJlZHVuZGFuY3kg
-dG8gdGhlIGluZm9ybWF0aW9uCj4+Pj4gZXhwb3NlZC4KPj4+Cj4+PiBUaGVyZSBpcyBhIGxvdCBv
-ZiBkaXNjdXNzaW9uIGhlcmUsIGJ1dCBpdCBhbGwgcmV2b2x2ZXMgYXJvdW5kIGEgcG90ZW50aWFs
-Cj4+PiBMRVZFTCBjb250cm9sLgo+Pj4KPj4+IFNvIEkgZ2F0aGVyIGV2ZXJ5b25lIGlzIE9LIHdp
-dGggbWVyZ2luZyB0aGlzIHBhdGNoPwo+Pgo+PiBJJ20gb2sgd2l0aCB0aGlzLiBGb3IgbWUsIHRo
-ZSBsZXZlbCByZWZsZWN0cyB0aGUgcmVhbCB0aW1lIHBlcmZvcm1hbmNlCj4+IGNhcGFiaWxpdHkg
-YXMgZGVmaW5lIGluIHRoZSBzcGVjLCB3aGlsZSB0aGUgd2lkdGgvaGVpZ2h0IGNvbnN0cmFpbnRz
-IHVzdWFsbHkKPj4gcmVwcmVzZW50IGFuIGFkZHJlc3NpbmcgY2FwYWJpY2l0eSwgd2hpY2ggbWF5
-IG9yIG1heSBub3Qgb3BlcmF0ZSByZWFsLXRpbWUuCj4+Cj4gCj4gSSdkIGxpa2UgdG8gc2VlIHRo
-ZSBsZXZlbCBjb250cm9sIGRvY3VtZW50YXRpb24gaW1wcm92ZWQgYmVmb3JlIHdlCj4gc3RhcnQg
-YWRkaW5nIGl0IHRvIHRoZSBkcml2ZXJzLiBJJ2xsIGJlIG9rYXkgd2l0aCB0aGF0IHRoZW4gYXMg
-bG9uZyBhcwo+IHRoZSB2YWx1ZXMgYXJlIGV4cG9zZWQgaW4gYSBjb25zaXN0ZW50IGFuZCB3ZWxs
-IGRlZmluZWQgd2F5LiA6KQo+IAo+IEFzIGZvciB0aGlzIHBhdGNoLCBIYW5zLCBhcmUgeW91IGdv
-aW5nIHRvIGFwcGx5IGl0PwoKSXQncyBpbiBhIFBSIGZvciA1LjcuIEkgaGFkIGhvcGVkIGl0IHdv
-dWxkIGdvIGluIGZvciB2NS42LCBidXQgaXQgd2FzCnRvbyBsYXRlIGZvciB0aGF0LgoKUmVnYXJk
-cywKCglIYW5zCgo+IAo+IEJlc3QgcmVnYXJkcywKPiBUb21hc3oKPiAKPj4+Cj4+PiBJZiBub3Qs
-IGxldCBtZSBrbm93IGFzYXAuCj4+Pgo+Pj4gUmVnYXJkcywKPj4+Cj4+PiAgICAgICBIYW5zCj4+
-Pgo+Pj4+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBIaXJva2F6dSBIb25kYSA8aGlyb2hAY2hyb21pdW0u
-b3JnPgo+Pj4+Pj4+PiAtLS0KPj4+Pj4+Pj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8v
-aGFudHJvX2Rydi5jIHwgMTAgKysrKysrKysrKwo+Pj4+Pj4+PiAgMSBmaWxlIGNoYW5nZWQsIDEw
-IGluc2VydGlvbnMoKykKPj4+Pj4+Pj4KPj4+Pj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3Rh
-Z2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jCj4+Pj4+Pj4+IGIvZHJpdmVycy9zdGFnaW5n
-L21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKPj4+Pj4+Pj4gaW5kZXggNmQ5ZDQxMTcwODMyLi45
-Mzg3NjE5MjM1ZDggMTAwNjQ0Cj4+Pj4+Pj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9o
-YW50cm8vaGFudHJvX2Rydi5jCj4+Pj4+Pj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9o
-YW50cm8vaGFudHJvX2Rydi5jCj4+Pj4+Pj4+IEBAIC0zNTUsNiArMzU1LDE2IEBAIHN0YXRpYyBj
-b25zdCBzdHJ1Y3QgaGFudHJvX2N0cmwgY29udHJvbHNbXSA9IHsKPj4+Pj4+Pj4gICAgICAgICAg
-ICAgICAgICAgICAgIC5kZWYgPQo+Pj4+Pj4+PiBWNEwyX01QRUdfVklERU9fSDI2NF9TVEFSVF9D
-T0RFX0FOTkVYX0IsCj4+Pj4+Pj4+ICAgICAgICAgICAgICAgICAgICAgICAubWF4ID0KPj4+Pj4+
-Pj4gVjRMMl9NUEVHX1ZJREVPX0gyNjRfU1RBUlRfQ09ERV9BTk5FWF9CLAo+Pj4+Pj4+PiAgICAg
-ICAgICAgICAgIH0sCj4+Pj4+Pj4+ICsgICAgIH0sIHsKPj4+Pj4+Pj4gKyAgICAgICAgICAgICAu
-Y29kZWMgPSBIQU5UUk9fSDI2NF9ERUNPREVSLAo+Pj4+Pj4+PiArICAgICAgICAgICAgIC5jZmcg
-PSB7Cj4+Pj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAuaWQgPSBWNEwyX0NJRF9NUEVHX1ZJ
-REVPX0gyNjRfUFJPRklMRSwKPj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIC5taW4gPSBW
-NEwyX01QRUdfVklERU9fSDI2NF9QUk9GSUxFX0JBU0VMSU5FLAo+Pj4+Pj4+PiArICAgICAgICAg
-ICAgICAgICAgICAgLm1heCA9IFY0TDJfTVBFR19WSURFT19IMjY0X1BST0ZJTEVfSElHSCwKPj4+
-Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIC5tZW51X3NraXBfbWFzayA9Cj4+Pj4+Pj4+ICsg
-ICAgICAgICAgICAgICAgICAgICBCSVQoVjRMMl9NUEVHX1ZJREVPX0gyNjRfUFJPRklMRV9FWFRF
-TkRFRCksCj4+Pj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAuZGVmID0gVjRMMl9NUEVHX1ZJ
-REVPX0gyNjRfUFJPRklMRV9NQUlOLAo+Pj4+Pj4+PiArICAgICAgICAgICAgIH0KPj4+Pj4+Pj4g
-ICAgICAgfSwgewo+Pj4+Pj4+PiAgICAgICB9LAo+Pj4+Pj4+PiAgfTsKPj4KCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApk
-ZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJw
-cm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Mon, 3 Feb 2020 10:31:30 +0100
+Nuno S=E1 <noname.nuno@gmail.com> wrote:
+
+> Hi Jonathan,
+> =
+
+> =
+
+> On Sat, 2020-02-01 at 17:08 +0000, Jonathan Cameron wrote:
+> > On Mon, 20 Jan 2020 16:20:49 +0200
+> > Alexandru Ardelean <alexandru.ardelean@analog.com> wrote:
+> >   =
+
+> > > From: Nuno S=E1 <nuno.sa@analog.com>
+> > > =
+
+> > > All the ADIS devices perform, at the beginning, a self test to make
+> > > sure
+> > > the device is in a sane state. Furthermore, some drivers also do a
+> > > call
+> > > to `adis_reset()` before the test which is also a good practice.
+> > > This
+> > > patch unifies all those operation so that, there's no need for code
+> > > duplication. Furthermore, the rst pin is also checked to make sure
+> > > the
+> > > device is not in HW reset. On top of this, some drivers also read
+> > > the
+> > > device product id and compare it with the device being probed to
+> > > make
+> > > sure the correct device is being handled. This can also be passed
+> > > to the
+> > > library by introducing a variable holding the PROD_ID register of
+> > > the
+> > > device.
+> > > =
+
+> > > Signed-off-by: Nuno S=E1 <nuno.sa@analog.com>
+> > > Signed-off-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
+> > > ---
+> > >  drivers/iio/imu/Kconfig      |  1 +
+> > >  drivers/iio/imu/adis.c       | 63 ++++++++++++++++++++++++++----
+> > > ------
+> > >  include/linux/iio/imu/adis.h | 15 ++++++++-
+> > >  3 files changed, 61 insertions(+), 18 deletions(-)
+> > > =
+
+> > > diff --git a/drivers/iio/imu/Kconfig b/drivers/iio/imu/Kconfig
+> > > index 60bb1029e759..63036cf473c7 100644
+> > > --- a/drivers/iio/imu/Kconfig
+> > > +++ b/drivers/iio/imu/Kconfig
+> > > @@ -85,6 +85,7 @@ endmenu
+> > >  =
+
+> > >  config IIO_ADIS_LIB
+> > >  	tristate
+> > > +	depends on GPIOLIB
+> > >  	help
+> > >  	  A set of IO helper functions for the Analog Devices ADIS*
+> > > device family.
+> > >  =
+
+> > > diff --git a/drivers/iio/imu/adis.c b/drivers/iio/imu/adis.c
+> > > index d02b1911b0f2..1eca5271380e 100644
+> > > --- a/drivers/iio/imu/adis.c
+> > > +++ b/drivers/iio/imu/adis.c
+> > > @@ -7,6 +7,7 @@
+> > >   */
+> > >  =
+
+> > >  #include <linux/delay.h>
+> > > +#include <linux/gpio/consumer.h>
+> > >  #include <linux/mutex.h>
+> > >  #include <linux/device.h>
+> > >  #include <linux/kernel.h>
+> > > @@ -365,36 +366,64 @@ static int adis_self_test(struct adis *adis)
+> > >  }
+> > >  =
+
+> > >  /**
+> > > - * adis_inital_startup() - Performs device self-test
+> > > + * __adis_initial_startup() - Device initial setup
+> > >   * @adis: The adis device
+> > >   *
+> > > + * This functions makes sure the device is not in reset, via rst
+> > > pin.
+> > > + * Furthermore it performs a SW reset (only in the case we are not
+> > > coming from
+> > > + * reset already) and a self test. It also compares the product id
+> > > with the
+> > > + * device id if the prod_id_reg variable is set.
+> > > + *
+> > >   * Returns 0 if the device is operational, a negative error code
+> > > otherwise.
+> > >   *
+> > >   * This function should be called early on in the device
+> > > initialization sequence
+> > >   * to ensure that the device is in a sane and known state and that
+> > > it is usable.
+> > >   */
+> > > -int adis_initial_startup(struct adis *adis)
+> > > +int __adis_initial_startup(struct adis *adis)
+> > >  {
+> > >  	int ret;
+> > > -
+> > > -	mutex_lock(&adis->state_lock);
+> > > +	struct gpio_desc *gpio;
+> > > +	const struct adis_timeout *timeouts =3D adis->data->timeouts;
+> > > +	const char *iio_name =3D spi_get_device_id(adis->spi)->name;
+> > > +	u16 prod_id, dev_id;
+> > > +
+> > > +	/* check if the device has rst pin low */
+> > > +	gpio =3D devm_gpiod_get_optional(&adis->spi->dev, "reset",
+> > > GPIOD_ASIS);
+> > > +	if (IS_ERR(gpio)) {
+> > > +		return PTR_ERR(gpio);  =
+
+> > =
+
+> > Given you are returning here, no need for else to follow
+> > =
+
+> > if (gpio...
+> >   =
+
+> =
+
+> Definitely...
+> =
+
+> > > +	} else if (gpio && gpiod_get_value_cansleep(gpio)) {
+> > > +		/* bring device out of reset */
+> > > +		gpiod_set_value_cansleep(gpio, 0);  =
+
+> > =
+
+> > Hmm. So is a software reset the best option if we have a hardware
+> > reset
+> > line but it's not currently in the reset mode?
+> >   =
+
+> =
+
+> Hmm, that's a fair question. Now that I think about it, if we do have a
+> gpio we should just assume it's in reset and call
+> `gpiod_set_value_cansleep`. So, I guess we could just ditch the
+> `gpiod_get_value_cansleep(gpio)` part.
+
+Not sure I agree.   For example the driver may well have been unbound
+and rebound for some reason.
+
+I would argue you should just do a set / reset cycle with appropriate sleep
+in between.  If it's already set then no harm done, if it isn't you force
+a hardware reset.
+
+> =
+
+> > > +		msleep(timeouts->reset_ms);
+> > > +	} else {
+> > > +		ret =3D __adis_reset(adis);
+> > > +		if (ret)
+> > > +			return ret;
+> > > +	}
+> > >  =
+
+> > >  	ret =3D adis_self_test(adis);
+> > > -	if (ret) {
+> > > -		dev_err(&adis->spi->dev, "Self-test failed, trying
+> > > reset.\n");
+> > > -		__adis_reset(adis);
+> > > -		ret =3D adis_self_test(adis);
+> > > -		if (ret) {
+> > > -			dev_err(&adis->spi->dev, "Second self-test
+> > > failed, giving up.\n");
+> > > -			goto out_unlock;
+> > > -		}
+> > > -	}
+> > > +	if (ret)
+> > > +		return ret;
+> > >  =
+
+> > > -out_unlock:
+> > > -	mutex_unlock(&adis->state_lock);
+> > > -	return ret;
+> > > +	if (!adis->data->prod_id_reg)
+> > > +		return 0;
+> > > +
+> > > +	ret =3D adis_read_reg_16(adis, adis->data->prod_id_reg,
+> > > &prod_id);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	ret =3D sscanf(iio_name, "adis%hu\n", &dev_id);  =
+
+> > =
+
+> > Hmm. I have a general dislike of pulling part name strings apart to
+> > get
+> > IDs.  It tends to break when someone comes along and adds a part with
+> > new
+> > branding.  Perhaps just put it in the relevant device part specific
+> > structures
+> > directly?
+> >   =
+
+> =
+
+> I'll admit that this to orientated to ADI devices and I basically just
+> took what all the drivers were doing and placed it inside the
+> library...
+> =
+
+> So, you mean passing this to each `chip_info` and then passing it to
+> the library through `adis_data`?
+
+Yes.  People don't tend to expect strings to need to take a particular form,
+so pulling them apart in a library can give unexpected results...
+
+> > > +	if (ret !=3D 1)
+> > > +		return -EINVAL;
+> > > +
+> > > +	if (prod_id !=3D dev_id)
+> > > +		dev_warn(&adis->spi->dev,
+> > > +			 "Device ID(%u) and product ID(%u) do not
+> > > match.",
+> > > +			 dev_id, prod_id);
+> > > +
+> > > +	return 0;
+> > >  }
+> > > -EXPORT_SYMBOL_GPL(adis_initial_startup);
+> > > +EXPORT_SYMBOL_GPL(__adis_initial_startup);
+> > >  =
+
+> > >  /**
+> > >   * adis_single_conversion() - Performs a single sample conversion
+> > > diff --git a/include/linux/iio/imu/adis.h
+> > > b/include/linux/iio/imu/adis.h
+> > > index d21a013d1122..c43e7922ab32 100644
+> > > --- a/include/linux/iio/imu/adis.h
+> > > +++ b/include/linux/iio/imu/adis.h
+> > > @@ -41,6 +41,7 @@ struct adis_timeout {
+> > >   * @glob_cmd_reg: Register address of the GLOB_CMD register
+> > >   * @msc_ctrl_reg: Register address of the MSC_CTRL register
+> > >   * @diag_stat_reg: Register address of the DIAG_STAT register
+> > > + * @prod_id_reg: Register address of the PROD_ID register
+> > >   * @self_test_reg: Register address to request self test command
+> > >   * @status_error_msgs: Array of error messgaes
+> > >   * @status_error_mask:
+> > > @@ -54,6 +55,7 @@ struct adis_data {
+> > >  	unsigned int glob_cmd_reg;
+> > >  	unsigned int msc_ctrl_reg;
+> > >  	unsigned int diag_stat_reg;
+> > > +	unsigned int prod_id_reg;
+> > >  =
+
+> > >  	unsigned int self_test_mask;
+> > >  	unsigned int self_test_reg;
+> > > @@ -299,6 +301,7 @@ static inline int adis_read_reg_32(struct adis
+> > > *adis, unsigned int reg,
+> > >  =
+
+> > >  int adis_enable_irq(struct adis *adis, bool enable);
+> > >  int __adis_check_status(struct adis *adis);
+> > > +int __adis_initial_startup(struct adis *adis);
+> > >  =
+
+> > >  static inline int adis_check_status(struct adis *adis)
+> > >  {
+> > > @@ -311,7 +314,17 @@ static inline int adis_check_status(struct
+> > > adis *adis)
+> > >  	return ret;
+> > >  }
+> > >  =
+
+> > > -int adis_initial_startup(struct adis *adis);
+> > > +/* locked version of __adis_initial_startup() */
+> > > +static inline int adis_initial_startup(struct adis *adis)
+> > > +{
+> > > +	int ret;
+> > > +
+> > > +	mutex_lock(&adis->state_lock);
+> > > +	ret =3D __adis_initial_startup(adis);
+> > > +	mutex_unlock(&adis->state_lock);
+> > > +
+> > > +	return ret;
+> > > +}
+> > >  =
+
+> > >  int adis_single_conversion(struct iio_dev *indio_dev,
+> > >  	const struct iio_chan_spec *chan, unsigned int error_mask,  =
+
+> > =
+
+> >   =
+
+> =
+
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
