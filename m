@@ -1,60 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82AD815038A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Feb 2020 10:46:15 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E094E1503CD
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Feb 2020 11:04:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7AE7486091;
-	Mon,  3 Feb 2020 09:46:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6A99587804;
+	Mon,  3 Feb 2020 10:04:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hNRlMu1kojLv; Mon,  3 Feb 2020 09:46:13 +0000 (UTC)
+	with ESMTP id BGkpiJ0ktHbS; Mon,  3 Feb 2020 10:04:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5B4C8855D2;
-	Mon,  3 Feb 2020 09:46:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4AF6487553;
+	Mon,  3 Feb 2020 10:04:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C4CF51BF286
- for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 09:46:09 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6B23B1BF2B0
+ for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 10:04:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C183585660
- for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 09:46:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6798020242
+ for <devel@linuxdriverproject.org>; Mon,  3 Feb 2020 10:04:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Vxr0eobImWNR for <devel@linuxdriverproject.org>;
- Mon,  3 Feb 2020 09:46:09 +0000 (UTC)
+ with ESMTP id oRhsQwmKqg8D for <devel@linuxdriverproject.org>;
+ Mon,  3 Feb 2020 10:03:59 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 58AF885617
- for <devel@driverdev.osuosl.org>; Mon,  3 Feb 2020 09:46:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 3C68220115
+ for <devel@driverdev.osuosl.org>; Mon,  3 Feb 2020 10:03:59 +0000 (UTC)
 Received: from localhost (unknown [104.132.45.99])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B0C7F20661;
- Mon,  3 Feb 2020 09:46:08 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8E9DF20661;
+ Mon,  3 Feb 2020 10:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1580723169;
- bh=cpHcIJWnPoW9Yc4NIdLt3pSB5DRMOPWeMU4+QtlXytI=;
+ s=default; t=1580724239;
+ bh=HE3dTblfyQ8uQoBKjunFI7+IqlZYwXB7u32CZMMqjnY=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VPi54hf79xB31jQGtnplBbvd91IGSz6Obahowwq55VPERR9JttFzlbdh6bZ2nATDe
- XDSHv9/N6WVxdVUn7oCBXpsVpBYAwlIoz6USaJJNZYghQ00c9q/4cDlt5h6RlGZIaq
- N5w3uSg4aKtbsGfZWgDkARjyKR4T/IE+Ga5VTURg=
-Date: Mon, 3 Feb 2020 09:46:01 +0000
+ b=ogCTfLavVHI0mI7mX1RfggFNTW2gvgHlxjXeapTqU1ybHzAlIeQ2kxmMGYq4cAC1n
+ VukpmQY+ncKfzY6H1Ezz1KOFdqlplhnTb+RHzcQ5ETBT3t7h+KRbwalrlFBaAbCRJ+
+ WVnHMfgtWO4AO0RQ3PiBUqC5/TZgS8yPHbHDHXeA=
+Date: Mon, 3 Feb 2020 10:03:56 +0000
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH 1/2] staging: exfat: remove DOSNAMEs.
-Message-ID: <20200203094601.GA3040887@kroah.com>
-References: <20200203163118.31332-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
- <20200203080532.GF8731@bombadil.infradead.org>
- <20200203081559.GA3038628@kroah.com>
- <20200203082938.GG8731@bombadil.infradead.org>
+To: Noralf =?iso-8859-1?Q?Tr=F8nnes?= <noralf@tronnes.org>
+Subject: Re: fbtft: 5 years in staging
+Message-ID: <20200203100356.GB3056136@kroah.com>
+References: <a6cef26c-0f4b-47f0-d249-71f53891526b@tronnes.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200203082938.GG8731@bombadil.infradead.org>
+In-Reply-To: <a6cef26c-0f4b-47f0-d249-71f53891526b@tronnes.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,41 +64,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.mitsubishielectric.co.jp>,
- devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- linux-kernel@vger.kernel.org, motai.hirotaka@aj.mitsubishielectric.co.jp,
- Mori.Takahiro@ab.mitsubishielectric.co.jp, linux-fsdevel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: OSUOSL Drivers <devel@driverdev.osuosl.org>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ DRI Development <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Feb 03, 2020 at 12:29:38AM -0800, Matthew Wilcox wrote:
-> On Mon, Feb 03, 2020 at 08:15:59AM +0000, Greg Kroah-Hartman wrote:
-> > On Mon, Feb 03, 2020 at 12:05:32AM -0800, Matthew Wilcox wrote:
-> > > On Tue, Feb 04, 2020 at 01:31:17AM +0900, Tetsuhiro Kohada wrote:
-> > > > remove 'dos_name','ShortName' and related definitions.
-> > > > 
-> > > > 'dos_name' and 'ShortName' are definitions before VFAT.
-> > > > These are never used in exFAT.
-> > > 
-> > > Why are we still seeing patches for the exfat in staging?
-> > 
-> > Because people like doing cleanup patches :)
-> 
-> Sure, but I think people also like to believe that their cleanup patches
-> are making a difference.  In this case, they're just churning code that's
-> only weeks away from deletion.
-> 
-> > > Why are people not working on the Samsung code base?
-> > 
-> > They are, see the patches on the list, hopefully they get merged after
-> > -rc1 is out.
-> 
-> I meant the cleanup people.  Obviously _some_ people are working on the
-> Samsung codebase.
+On Sun, Feb 02, 2020 at 04:41:54PM +0100, Noralf Tr=F8nnes wrote:
+> Hi,
+> =
 
-We can't tell people to work on :)
+> Since I'm the original author of fbtft I thought I'd highlight a couple
+> of issues that's probably not well known.
+> =
+
+> Right after fbtft was added, fbdev was closed for new drivers[1] and
+> the fbdev maintainer wanted to remove fbtft as a consequence of that
+> decision, but Greg KH said he'd keep fbtft drivers in staging
+> "until a matching DRM driver is present in the tree"[2].
+
+<snip>
+
+Thanks for the great summary, much appreciated.
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
