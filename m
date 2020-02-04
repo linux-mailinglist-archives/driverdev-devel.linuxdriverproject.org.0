@@ -1,76 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD4D015174C
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Feb 2020 10:01:04 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C7EA815181F
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Feb 2020 10:47:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 529D286FB0;
-	Tue,  4 Feb 2020 09:01:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9DFB785070;
+	Tue,  4 Feb 2020 09:47:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RzBFLZW-BO9j; Tue,  4 Feb 2020 09:01:03 +0000 (UTC)
+	with ESMTP id WkQjQMcrABHz; Tue,  4 Feb 2020 09:47:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A66D586DD3;
-	Tue,  4 Feb 2020 09:01:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 43BE084C13;
+	Tue,  4 Feb 2020 09:47:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4BC5E1BF30A
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 09:01:00 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F0C731BF290
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 09:46:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 478752014A
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 09:01:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id ECAED86B2C
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 09:46:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bhcnNc+R6Vte for <devel@linuxdriverproject.org>;
- Tue,  4 Feb 2020 09:00:59 +0000 (UTC)
+ with ESMTP id I9aA49tNlMwK for <devel@linuxdriverproject.org>;
+ Tue,  4 Feb 2020 09:46:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by silver.osuosl.org (Postfix) with ESMTPS id B4D0B1FE0A
- for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 09:00:59 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id l24so9330359pgk.2
- for <devel@driverdev.osuosl.org>; Tue, 04 Feb 2020 01:00:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=i1Hdx03KpzIJqjLnNBsm/Ab9J3/wfB5FKXcb0BZf37c=;
- b=gdpVUwZQGp+PFX0HmzPpHsr4OR52mtM9cPrby2RkLoy7VLucoantTtPRh03D0ZUOlE
- BLGIVReOeQg5bSr2Grqo3YwCT1UedIVL/pxIAKiqlEV6QNQg6uDX6vqEDBeXZmfgFo0d
- a+REiyWTR2zoLWiPecytEmSUk0b23jcouNhfd7oTD2LBwQx0rTivE7FD2AK3E3E70k2S
- P842xQek2LaQswjaKu/z4l87jd/LkK8bBTBO2bOyGCYaDeHQ6r/9/odzEPMvw/Xq0AXU
- c6btJ32pKbFAuo7jzbyEh0rqCgwAUVl0uos1qUVDf/dC+Y2Bg3kfE3TSDDgCWABHpCZY
- 8EIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=i1Hdx03KpzIJqjLnNBsm/Ab9J3/wfB5FKXcb0BZf37c=;
- b=s/86nWxOKMDb4m2jadb4oEeCPMG3VkTNhFITaa7MHdUG4LZeG3G3WBUi/JiXsUT2aG
- PJYHWeNk382tjJHIcNUX5CcbapwdNgGBBIPQBYoWRvPU08NmCY2zGIQWqSLTFTaWzycQ
- q4377nMNvL2041bIP2bvAbPyxxyxIcC84GaXXkiEBhwuMBibncDYaCMkFMZ0gpDqRMe0
- koO/LqLUkB0gKuivYfTubpwP6m6ReUnBBsydaqh1EaOy8MRBnA1AwADLNGAmcUGwshm9
- l1pXnfr3j6EoQb83jcfu43btS4iPvGXVW+a22H8a+7IhMFcXdTfAB9x//5YacUkUrkDB
- HlCw==
-X-Gm-Message-State: APjAAAW2WzoNtbnvn5ir7L0vReJhB22zxD6CKISzOULyVUyn8QVpQDzU
- pPvbHmAlmj8dHm2Q0ur3qt4koAg5YVixiw==
-X-Google-Smtp-Source: APXvYqzXibLzgNJBHrGQYFI65lIG3QOgtpQMXx/kNDGLspr7gjJTVVudOKHU6y5WxUiy9RozMCMLcQ==
-X-Received: by 2002:a62:8601:: with SMTP id x1mr29872722pfd.0.1580806858980;
- Tue, 04 Feb 2020 01:00:58 -0800 (PST)
-Received: from localhost.localdomain ([240e:379:959:d990::fa3])
- by smtp.gmail.com with ESMTPSA id 72sm23144151pfw.7.2020.02.04.01.00.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Feb 2020 01:00:58 -0800 (PST)
-From: Chuanhong Guo <gch981213@gmail.com>
-To: devel@driverdev.osuosl.org
-Subject: [PATCH] staging: mt7621-dts: add dt node for 2nd/3rd uart on mt7621
-Date: Tue,  4 Feb 2020 16:59:31 +0800
-Message-Id: <20200204090022.123261-1-gch981213@gmail.com>
-X-Mailer: git-send-email 2.24.1
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 78B6B8523B
+ for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 09:46:59 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 0149h8wA127919;
+ Tue, 4 Feb 2020 09:46:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=LFXX5TW52Au4ETytZUXFf1LYC9hvm0znVke+Xqg410E=;
+ b=LqRKRqnvKs5OzNffZTUd7IVqNjkR95Oc+vxE9RoP2QNouUXApNtPrK3PUUIo8MDSWx4U
+ NwUbWIbQOSPFaKnOYGUwIbSMpos4FQGuDbaHT9RcohmYCblEDd9+9FUwRt8u0h97ekWj
+ ZDYmB0k989TjKoBI66wktZsU16frQJBh+dm6RClrAjjiE1E3XubhujyMDuHFTD6MZqBt
+ 7XrM8Ym85hUr026zYNKncVOK/4KarldDp808H4yFqbfLFLsSZcAjqqvet56IZw5aqs4e
+ TRtEnmUKANBtcmPqWvX0lyJTfL7wYAaOnnVsFDsPpzHY1RUFLjVxpE6nxv6ig99KlroT ig== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 2xwyg9hnkp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 04 Feb 2020 09:46:56 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 0149hBrx037783;
+ Tue, 4 Feb 2020 09:46:56 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 2xxvy2h2wy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 04 Feb 2020 09:46:56 +0000
+Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0149krpM017731;
+ Tue, 4 Feb 2020 09:46:54 GMT
+Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 04 Feb 2020 01:46:53 -0800
+Date: Tue, 4 Feb 2020 12:46:47 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Chuanhong Guo <gch981213@gmail.com>
+Subject: Re: [PATCH] staging: mt7621-dts: add dt node for 2nd/3rd uart on
+ mt7621
+Message-ID: <20200204094647.GS1778@kadam>
+References: <20200204090022.123261-1-gch981213@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200204090022.123261-1-gch981213@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9520
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=781
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1911140001 definitions=main-2002040072
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9520
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=841 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
+ definitions=main-2002040072
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,72 +98,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: NeilBrown <neil@brown.name>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, NeilBrown <neil@brown.name>,
+ linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There are 3 uarts on mt7621. This patch adds device tree node for
-2nd and 2rd ones.
+Please use ./scripts/get_maintainer.pl to pick the CC list and resend.
 
-Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
----
- drivers/staging/mt7621-dts/mt7621.dtsi | 38 ++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+The MAINTAINERS file says Matthias Brugger is supposed to be CC'd and
+a couple other email lists.
 
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index d89d68ffa7bc..cee23710d03b 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -166,6 +166,44 @@ uartlite: uartlite@c00 {
- 			no-loopback-test;
- 		};
- 
-+		uartlite2: uartlite@d00 {
-+			compatible = "ns16550a";
-+			reg = <0xd00 0x100>;
-+
-+			clock-frequency = <50000000>;
-+
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SHARED 27 IRQ_TYPE_LEVEL_HIGH>;
-+
-+			reg-shift = <2>;
-+			reg-io-width = <4>;
-+			no-loopback-test;
-+
-+			status = "disabled";
-+
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&uart2_pins>;
-+		};
-+
-+		uartlite3: uartlite@e00 {
-+			compatible = "ns16550a";
-+			reg = <0xe00 0x100>;
-+
-+			clock-frequency = <50000000>;
-+
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SHARED 28 IRQ_TYPE_LEVEL_HIGH>;
-+
-+			reg-shift = <2>;
-+			reg-io-width = <4>;
-+			no-loopback-test;
-+
-+			status = "disabled";
-+
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&uart3_pins>;
-+		};
-+
- 		spi0: spi@b00 {
- 			status = "disabled";
- 
--- 
-2.24.1
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
