@@ -1,91 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7EA815181F
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Feb 2020 10:47:06 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9DFB785070;
-	Tue,  4 Feb 2020 09:47:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WkQjQMcrABHz; Tue,  4 Feb 2020 09:47:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 43BE084C13;
-	Tue,  4 Feb 2020 09:47:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F0C731BF290
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 09:46:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BB4815184E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Feb 2020 10:59:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ECAED86B2C
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 09:46:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6753F86F88;
+	Tue,  4 Feb 2020 09:59:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PXcc+bDKV-fM; Tue,  4 Feb 2020 09:59:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id B1A6886CB6;
+	Tue,  4 Feb 2020 09:59:35 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7E5D31BF286
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 09:59:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7A3D920519
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 09:59:33 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I9aA49tNlMwK for <devel@linuxdriverproject.org>;
- Tue,  4 Feb 2020 09:46:59 +0000 (UTC)
+ with ESMTP id H5EXOA+AtSR7 for <devel@linuxdriverproject.org>;
+ Tue,  4 Feb 2020 09:59:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 78B6B8523B
- for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 09:46:59 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 0149h8wA127919;
- Tue, 4 Feb 2020 09:46:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=LFXX5TW52Au4ETytZUXFf1LYC9hvm0znVke+Xqg410E=;
- b=LqRKRqnvKs5OzNffZTUd7IVqNjkR95Oc+vxE9RoP2QNouUXApNtPrK3PUUIo8MDSWx4U
- NwUbWIbQOSPFaKnOYGUwIbSMpos4FQGuDbaHT9RcohmYCblEDd9+9FUwRt8u0h97ekWj
- ZDYmB0k989TjKoBI66wktZsU16frQJBh+dm6RClrAjjiE1E3XubhujyMDuHFTD6MZqBt
- 7XrM8Ym85hUr026zYNKncVOK/4KarldDp808H4yFqbfLFLsSZcAjqqvet56IZw5aqs4e
- TRtEnmUKANBtcmPqWvX0lyJTfL7wYAaOnnVsFDsPpzHY1RUFLjVxpE6nxv6ig99KlroT ig== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 2xwyg9hnkp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 04 Feb 2020 09:46:56 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 0149hBrx037783;
- Tue, 4 Feb 2020 09:46:56 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 2xxvy2h2wy-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 04 Feb 2020 09:46:56 +0000
-Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0149krpM017731;
- Tue, 4 Feb 2020 09:46:54 GMT
-Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 04 Feb 2020 01:46:53 -0800
-Date: Tue, 4 Feb 2020 12:46:47 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Chuanhong Guo <gch981213@gmail.com>
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id C7DA6203C3
+ for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 09:59:32 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id d62so17792087oia.11
+ for <devel@driverdev.osuosl.org>; Tue, 04 Feb 2020 01:59:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=+c+P5I8NbJ7KvdrmDqQ1PdrpFMV6E9xgMXllp3DgFLA=;
+ b=YWN5OWH1S+jW+ZqO/FK8CvZv2YTPZFFL80xYclXzWSuEBS/j9zlXfKRT/95NASNAsA
+ EF4CKDRfiQ/bxt2ew7Nj1WHCirmfvvPYGt4DeUpqvS6eQcht+lIjifTYzfiQ49bN/S5u
+ mz0b6eKSExwqYZMFuQ/B8butBOClBl+dKDHjwmr+DyYE3RFzACqlXvFNl9g3a3ObMFQs
+ 1VdjLXXa6cErYEcgbMjKmBCK3XGQi4l6l7uVAX+HDoLNmEJ6rknaiJxLI+eYT8RkD8bc
+ Gjjgq4P55PEfDgoCveJxVsGwjJrG0OoOQvo70ZDYYVeml2p8+J9iFwIETqLI1HHy4emO
+ ulyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+c+P5I8NbJ7KvdrmDqQ1PdrpFMV6E9xgMXllp3DgFLA=;
+ b=TFf8dAS+uskc7FCvDoKbOt951rfsPnarPaIf0qQ/vqxiKdkCcYCBzGnIyg7ZOBFUzw
+ PNkTbIF6tY8yPtP+rkJYSNEzznkGf+pCXqf36QkDQWKud+ZS+nq5y6b3pXZvJ/VQs+Zn
+ FyCqZygkP+RH1eH6PJqfNSPuOid+wUtWjXah0wiMV0ZoYT7gTaC/5Yt1TmCwB2SsWN0C
+ baiNzQdAvxC+S9M52+xskvamldwjogwU1KHS8iJx6hVyBFznPY6Na2H68iAHzuHDtpzL
+ /KyD3v76Tf1FhQFnh1f53s51XGqZAXbv3yoNaaFBGk9ldg/Uss4sWgxt04Nud9IItj3q
+ LPlw==
+X-Gm-Message-State: APjAAAX1KQ8tJ6yvm9KED7VPsb1F7R2kU53YusEjW8jHCsQ0lexBqUbP
+ dbOhkCH7l+Oo8mDez2eagJeQ8L790wDQpyM/yPk=
+X-Google-Smtp-Source: APXvYqxL3ONJ+g0dPYwUeiEo11NnyVisJS5Mv5bE0bNlew27R5M77w1CkIdMs3uy8iVQnVmmTuPvR1D66Uz4c0k1K78=
+X-Received: by 2002:aca:ddc2:: with SMTP id u185mr2963896oig.24.1580810371921; 
+ Tue, 04 Feb 2020 01:59:31 -0800 (PST)
+MIME-Version: 1.0
+References: <20200204090022.123261-1-gch981213@gmail.com>
+ <20200204094647.GS1778@kadam>
+In-Reply-To: <20200204094647.GS1778@kadam>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Tue, 4 Feb 2020 17:59:21 +0800
+Message-ID: <CAJsYDV+b1bqc3b87Amo8p2UzVi4fpbRv6ytus8A5Y0r4K-X0hw@mail.gmail.com>
 Subject: Re: [PATCH] staging: mt7621-dts: add dt node for 2nd/3rd uart on
  mt7621
-Message-ID: <20200204094647.GS1778@kadam>
-References: <20200204090022.123261-1-gch981213@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200204090022.123261-1-gch981213@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9520
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=781
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-2002040072
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9520
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=841 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-2002040072
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,21 +81,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, NeilBrown <neil@brown.name>,
- linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ NeilBrown <neil@brown.name>, open list <linux-kernel@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Please use ./scripts/get_maintainer.pl to pick the CC list and resend.
+Hi!
 
-The MAINTAINERS file says Matthias Brugger is supposed to be CC'd and
-a couple other email lists.
+On Tue, Feb 4, 2020 at 5:47 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+>
+> Please use ./scripts/get_maintainer.pl to pick the CC list and resend.
+>
+> The MAINTAINERS file says Matthias Brugger is supposed to be CC'd and
+> a couple other email lists.
 
-regards,
-dan carpenter
+According to get_maintainer.pl,  Matthias Brugger is the maintainer of
+Mediatek ARM SoC:
 
+Matthias Brugger <matthias.bgg@gmail.com> (maintainer:ARM/Mediatek SoC support)
+linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+
+I specifically removed the above 3 addresses because they are all for
+Mediatek ARM chips
+while mt7621 is a mips chip and belongs to ralink target under
+/arch/mips/mach-ralink.
+Code contribution for mt7621 goes through linux-mips instead of
+linux-arm or linux-mediatek,
+
+I thinks this is an incorrect setup of get_maintainer.pl and should be
+corrected.
+
+Regards,
+Chuanhong Guo
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
