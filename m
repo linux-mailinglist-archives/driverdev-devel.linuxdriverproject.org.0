@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 374F9152373
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 00:50:03 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C117152372
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 00:50:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 051818466D;
-	Tue,  4 Feb 2020 23:50:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BBE2B20773;
+	Tue,  4 Feb 2020 23:49:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U4QPIMVVb77I; Tue,  4 Feb 2020 23:49:59 +0000 (UTC)
+	with ESMTP id aCroi8Nui53u; Tue,  4 Feb 2020 23:49:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 58C1C85C0B;
-	Tue,  4 Feb 2020 23:49:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8605820419;
+	Tue,  4 Feb 2020 23:49:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8F1CC1BF36B
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:49:53 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1CBD61BF36B
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:49:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7FD5B8739A
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:49:53 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 17DBF8466D
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:49:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jFeHuenJGVmy for <devel@linuxdriverproject.org>;
- Tue,  4 Feb 2020 23:49:52 +0000 (UTC)
+ with ESMTP id ut-8kCIZL1Oz for <devel@linuxdriverproject.org>;
+ Tue,  4 Feb 2020 23:49:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3F10387143
- for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 23:49:52 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id a6so74072plm.3
- for <devel@driverdev.osuosl.org>; Tue, 04 Feb 2020 15:49:52 -0800 (PST)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9B18F84626
+ for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 23:49:53 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id k29so155844pfp.13
+ for <devel@driverdev.osuosl.org>; Tue, 04 Feb 2020 15:49:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=nw6qFQx6S/L6ma/0AlsKxKIDrQ4PZDVJaM1fr3Im7gQ=;
- b=Yy9WKoJxny1WM1LTJAaHQp4AkTgd8LBI0xpYLY6Fn0oeSdfohwks8vumgGn8JP3Yj2
- +4hupFpmWJDqwsNDq4eQ/VCgwhYYJ6i2pr9H4QplI4Vw+QZKC09SCn5y7RB/PCD1ZVRG
- HXxnXpugQb3SFC8tfPrvcpwAnA8MLwgyuTp2Q1BdAfs7cAMfi2Jaowa0b9KSsECDGBjM
- Sya0BgFaa2vQEGhDhOjJoJ46panfmfwJgvYIjywdBpcZ18pznnsWs8zxyBSctFs0YgbM
- VovFpV/24b5dlIzNkjlJ0OkQc21k4vS6607CXahqymGABgwBU8pvIKVpBnIHLBVikYJW
- vHyQ==
+ bh=WaBGbAVLvbw1Oa8PBijA4rVNFNBvvrFDnIgEYRds3L8=;
+ b=mNmZy7R7sQunr/esl0X7WuD/YOJo3oXWxaM/3fWtqDaXMU3tA9oX7QpNB7L4WidlZN
+ +0FhiBowT1jvElbnHRqgGrwPJslvNHKFlOxLIYgVKADNM/DLj9EVLyJKAxRSkrN2eoVX
+ +VHxwPTpyQ3sxjsa7GNJp69XguyefpuqpxO9o1JVFfdKdevURPuboIluRlx+LVz6tOvw
+ 1gJrULMLL3f0l435h35yYSu9MMc0rDFcWgCx1W+bs8Vn2JXjhCVn3Kyt4guYO1WDMl07
+ t6NUmqBpb1HOS8/HzuYODmWSMGIX0dReYtzHzhC8qOSWtTAemf0mNu2uistyoFL6widC
+ RXOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=nw6qFQx6S/L6ma/0AlsKxKIDrQ4PZDVJaM1fr3Im7gQ=;
- b=LaJx1ZLEIH7+3rhywq47eF8DCS+6lGA+drRQV+cRtapvvIh3IAP2z1RwWso1pAYeZa
- VACNGLUpkx8XqIlqgyObjSahsK+EknF6+lmm7FfqzKBNZNWHXm31QkNLUp2hgYONeCds
- op3y0CAWZK95ntGddN8lEbZZ916I/HPQdlJpyxeoDwhrqPKb/P139yghJGX4+3EC7xpF
- bnuGi1s2HwopNeHrboasrBG5xU0oqAohgeaIjSKu8HFqB/dETsadCirQrElOOchu9GZR
- LBOzyFdyGPt39a/PgJKfFki0yhmupFakHk+8V3VhCawOYRd4ZFk9/txhbLBwlgSx5NJj
- Ve2w==
-X-Gm-Message-State: APjAAAVUOb8B7BJiLhtGiZFyQra7XNFu2Kx6inC6Yqys0suA80uCVEmE
- VSz+6XkedgX74hE2/uoGRiI=
-X-Google-Smtp-Source: APXvYqzubusBvsBD9wy7XWJhiFY4WOQKzM1XZxKRj5dG2YKTAV1RksFDtvGAJxFrohKb/059exTxcw==
-X-Received: by 2002:a17:902:8549:: with SMTP id
- d9mr31416618plo.153.1580860191823; 
- Tue, 04 Feb 2020 15:49:51 -0800 (PST)
+ bh=WaBGbAVLvbw1Oa8PBijA4rVNFNBvvrFDnIgEYRds3L8=;
+ b=AV7vTRQCKv3FdU6lEauNBmO8GOb/D9jcHADnNBJ5RkNPNs20E7/MGHswkaMYD3Nnvm
+ 2E91OEwWSXxJjfjOUpR2pfDrL+OtvVFH+u7Wk9hibB41pgynqXBZJzEWedgtk1bR5v9R
+ b0TDzcoF2BxegXN56OFnhBRat7y2rkGFoT9USrrGtWclzT+kwYgY70REEMwdUmcgmIhU
+ Ypu9ed9X8k+tissIBRjfq11dBc6tEn+z0ppbHzuDbJlDKwFjIjspJvj2+8feEMEQykHQ
+ e+ZD0PCFU/H7gC95WjUwlhYND08EozzuHyxsLXe40mqYQMW5WwvkcoASg4TsyTOfainl
+ zz2A==
+X-Gm-Message-State: APjAAAWKDz0V8H4czc5CQhAEswNK+pdonTVYM34X3y+f56D0jowgWlPA
+ 1gA0ymQB8DJjn7TqgIGXjTs=
+X-Google-Smtp-Source: APXvYqygTNtxMuKauV7T3oKQAYlxYOiFZwSb0Z9tzIiXotDDLSjz0Ow+4RbPSU47FigltJmiEujr5Q==
+X-Received: by 2002:a62:878a:: with SMTP id i132mr23451540pfe.8.1580860193128; 
+ Tue, 04 Feb 2020 15:49:53 -0800 (PST)
 Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
  [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id u2sm24607929pgj.7.2020.02.04.15.49.50
+ by smtp.googlemail.com with ESMTPSA id u2sm24607929pgj.7.2020.02.04.15.49.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Feb 2020 15:49:51 -0800 (PST)
+ Tue, 04 Feb 2020 15:49:52 -0800 (PST)
 From: Steve Longerbeam <slongerbeam@gmail.com>
 To: linux-media@vger.kernel.org, Rui Miguel Silva <rmfrfs@gmail.com>,
  Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH v3 11/17] media: imx: csi: Embed notifier in struct csi_priv
-Date: Tue,  4 Feb 2020 15:49:12 -0800
-Message-Id: <20200204234918.20425-12-slongerbeam@gmail.com>
+Subject: [PATCH v3 12/17] media: imx: csi: Add missing notifier
+ unregister/cleanup
+Date: Tue,  4 Feb 2020 15:49:13 -0800
+Message-Id: <20200204234918.20425-13-slongerbeam@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200204234918.20425-1-slongerbeam@gmail.com>
 References: <20200204234918.20425-1-slongerbeam@gmail.com>
@@ -87,12 +87,14 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Sascha Hauer <s.hauer@pengutronix.de>,
  open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
  Steve Longerbeam <slongerbeam@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>,
  "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
  <linux-arm-kernel@lists.infradead.org>
 MIME-Version: 1.0
@@ -101,84 +103,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Embed the notifier in 'struct csi_priv', instead of dynamically allocating
-it, to make it possible to retrieve csi_priv in a notifier callback op.
+Add the missing calls to unregister and cleanup the subdev notifier in
+imx_csi_remove().
 
+Fixes: c893500a16baf ("media: imx: csi: Register a subdev notifier")
 Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
 ---
- drivers/staging/media/imx/imx-media-csi.c | 25 +++++++++--------------
- 1 file changed, 10 insertions(+), 15 deletions(-)
+ drivers/staging/media/imx/imx-media-csi.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
-index dc5fe25fe7b8..3e2afdd59276 100644
+index 3e2afdd59276..bea6a70cc353 100644
 --- a/drivers/staging/media/imx/imx-media-csi.c
 +++ b/drivers/staging/media/imx/imx-media-csi.c
-@@ -58,6 +58,8 @@ struct csi_priv {
- 	struct ipu_soc *ipu;
- 	struct v4l2_subdev sd;
- 	struct media_pad pad[CSI_NUM_PADS];
-+	struct v4l2_async_notifier notifier;
-+
- 	/* the video device at IDMAC output pad */
- 	struct imx_media_video_dev *vdev;
- 	struct imx_media_fim *fim;
-@@ -1896,31 +1898,28 @@ static int imx_csi_parse_endpoint(struct device *dev,
+@@ -2030,6 +2030,8 @@ static int imx_csi_remove(struct platform_device *pdev)
  
- static int imx_csi_async_register(struct csi_priv *priv)
- {
--	struct v4l2_async_notifier *notifier;
- 	struct fwnode_handle *fwnode;
- 	unsigned int port;
- 	int ret;
- 
--	notifier = kzalloc(sizeof(*notifier), GFP_KERNEL);
--	if (!notifier)
--		return -ENOMEM;
--
--	v4l2_async_notifier_init(notifier);
-+	v4l2_async_notifier_init(&priv->notifier);
- 
- 	fwnode = dev_fwnode(priv->dev);
- 
- 	/* get this CSI's port id */
- 	ret = fwnode_property_read_u32(fwnode, "reg", &port);
- 	if (ret < 0)
--		goto out_free;
-+		return ret;
- 
- 	ret = v4l2_async_notifier_parse_fwnode_endpoints_by_port(
--		priv->dev->parent, notifier, sizeof(struct v4l2_async_subdev),
-+		priv->dev->parent, &priv->notifier,
-+		sizeof(struct v4l2_async_subdev),
- 		port, imx_csi_parse_endpoint);
- 	if (ret < 0)
- 		goto out_cleanup;
- 
--	ret = v4l2_async_subdev_notifier_register(&priv->sd, notifier);
-+	ret = v4l2_async_subdev_notifier_register(&priv->sd,
-+						  &priv->notifier);
- 	if (ret < 0)
- 		goto out_cleanup;
- 
-@@ -1928,16 +1927,12 @@ static int imx_csi_async_register(struct csi_priv *priv)
- 	if (ret < 0)
- 		goto out_unregister;
- 
--	priv->sd.subdev_notifier = notifier;
--
- 	return 0;
- 
- out_unregister:
--	v4l2_async_notifier_unregister(notifier);
+ 	v4l2_ctrl_handler_free(&priv->ctrl_hdlr);
+ 	mutex_destroy(&priv->lock);
 +	v4l2_async_notifier_unregister(&priv->notifier);
- out_cleanup:
--	v4l2_async_notifier_cleanup(notifier);
--out_free:
--	kfree(notifier);
 +	v4l2_async_notifier_cleanup(&priv->notifier);
+ 	v4l2_async_unregister_subdev(sd);
+ 	media_entity_cleanup(&sd->entity);
  
- 	return ret;
- }
 -- 
 2.17.1
 
