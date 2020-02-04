@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DEC3152366
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 00:49:51 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 00F6E152361
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 00:49:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 267F487118;
-	Tue,  4 Feb 2020 23:49:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 186D620764;
+	Tue,  4 Feb 2020 23:49:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3peCjp3AuXCx; Tue,  4 Feb 2020 23:49:48 +0000 (UTC)
+	with ESMTP id Y-XBWpzTBUjH; Tue,  4 Feb 2020 23:49:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CC8DF872E8;
-	Tue,  4 Feb 2020 23:49:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 10827203EA;
+	Tue,  4 Feb 2020 23:49:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 57D011BF36B
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:49:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 943D01BF36B
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:49:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5403E81B69
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:49:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 917C38204B
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:49:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xjMxY4_-zNDz for <devel@linuxdriverproject.org>;
- Tue,  4 Feb 2020 23:49:41 +0000 (UTC)
+ with ESMTP id lmHaWkIBjipJ for <devel@linuxdriverproject.org>;
+ Tue,  4 Feb 2020 23:49:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3051A81A2F
- for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 23:49:41 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id z124so10459242pgb.13
- for <devel@driverdev.osuosl.org>; Tue, 04 Feb 2020 15:49:41 -0800 (PST)
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7581881A2F
+ for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 23:49:42 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id ep11so134819pjb.2
+ for <devel@driverdev.osuosl.org>; Tue, 04 Feb 2020 15:49:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=tEFP9EfjLyBSm2GDbhHW2vsbKN5BJT5FKVyhRHQNMY8=;
- b=qmhbDNR95uHywwTR96SOWFHQIuY5BcX1uVAKfd+uicZ/k1fooHXSfNBVaesqjSQuZM
- OQMTcnpW7TEz9K/YUDnRklPs/ToaTpYqRigLVpPQu4QcTCoIPUY150DuIMtiSb4/OEyH
- oJ3emGDquRgVHbaJlQYK9Fd1Ftcovqe1Bk+JATIFT7MVbxmoDSys0IY2ekFO7tQqoxLP
- bhQSL0C/24rpHydkRdHxijxlvhu8YM+ssVxLjZXU8FXyWrn7J88sNdv6x3XgL+gqmTrr
- XzMFB4qltVjlXDCHbOzNZgd94Pr/t6vht9lz9F0xzd+xATy4aNz67yWdpbTWB/kvEusB
- nBnQ==
+ bh=GoHwA/NUt6bdmcBWMk3GrpTBSbEsSYQ8eBgsnOl6FH8=;
+ b=Yk0UNyyAlkctNhCEl0XmAo9v2tutCjwPUMuD76Z53N2E4FftV6cTkCjAHeQGoJsHj7
+ QIKwetLhpjlSd9i0Ats6RVGMrEEDEVRLioAxbYfLaBN5889APinEf0m55r5x3KXaVIrZ
+ oSQTl6kQyV8sFLASP/vjlidXEX6iS/0RE8mVwS2tKLHUio+gpN488xI69k9G6e56oy9i
+ HblJhv895SVGOBfy9iEga1oD2MUI/OGK6OvL9p3QKBzi///hzUbXJEi5AxaXBdj3RDze
+ QjNQ3hoaGObwKZyWme74zSLdWqs4meGDHX2FHwsCWvwW5CszqBNMc8y4NEJu8dbbYXWw
+ Aa4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=tEFP9EfjLyBSm2GDbhHW2vsbKN5BJT5FKVyhRHQNMY8=;
- b=qQ2VcZJLVM4qBQpp4m6OOhwbyWKWaN3LqNhOxAcfntVs0+uVg5LaFw6ISOYcU3I+/c
- /+/HyDhjF5XPDBswF1LOLKCbFgahsI/yv9EQS7wQZD6MDrQdOdd1qXuUIaLQecJvJF2u
- iN3r3rE45E6Qjg2MI5Z3HaboCiL9p2nizkKirqz4Jy82XkSeQxkZEJSDx+bHpyR1Bwrl
- 2N8YHFtRmbq92SuwkrCoF+J5WWND//jOfwS6uBCTNDd4F4bWlc0/rymmKBriEdprhkyy
- IVGOEEkyrY5xwlslihZY/WKZWKlB+LXE2f546LZKOYf0GZA3tBwrxLYYQ2vZupR0f90s
- YRIA==
-X-Gm-Message-State: APjAAAWjsJ16Lrc+Q1AdAUhwt1djIUNQM5RGJ26t4QKK8a5ky+WDqydc
- 8CmWebC5poszQQeLZEhe2zA=
-X-Google-Smtp-Source: APXvYqyIsRF7R9F2VnqpYSRTFRZQXt11C2WQyxtCzzEwR1tv4q2JGNKz08KJv6czrUc3SW0JZ1+R3g==
-X-Received: by 2002:a63:9251:: with SMTP id s17mr33348585pgn.127.1580860180704; 
- Tue, 04 Feb 2020 15:49:40 -0800 (PST)
+ bh=GoHwA/NUt6bdmcBWMk3GrpTBSbEsSYQ8eBgsnOl6FH8=;
+ b=Ko8fGifGHuASV5IkUHwZC0/h24fuVv/ip2fMpbYVInYU9MlbtKC1WiJ1NmEwEkkDxa
+ b7CYmvTM8MIu/TqF3tcbbTyA+e7RV/pMpv0fMtRgRn83VZQbuD3jpDrcmF5xl/2gN1Qd
+ t8Up3ZL9AxKjyXjTZpxrLj/lWEswzzT+npSN/nxSK/5ALojM9qu1YNE6Y66BudnxPz0I
+ pUfNeo0SjXMYRJTcsxFSx2VX3M3J2vxFOxjRaIWB2eHjfdyjroa9Ts/81WKLUbUSUbvf
+ X9Z+zb9wIg3tHYCvmioW4VCEm/qQU2y6nnX1GBlyHuDsGyUbSdaCYPXNWAPnN9PzWPPt
+ oH8Q==
+X-Gm-Message-State: APjAAAWJ1yb20e7bCs3xO2lvUu4USyTIOlbYTc5M2lBb/meUVyK058Xc
+ kinvYlOc/AgzC8QWgykgR1GhkW/E
+X-Google-Smtp-Source: APXvYqzscwmenowcDy7Jeog/8AGe1JciDVrcX+rmRLWuTOpy9AufsDtRKO3ndcrFvHB5apSnObXHOw==
+X-Received: by 2002:a17:902:a514:: with SMTP id
+ s20mr32054509plq.300.1580860181981; 
+ Tue, 04 Feb 2020 15:49:41 -0800 (PST)
 Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
  [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id u2sm24607929pgj.7.2020.02.04.15.49.39
+ by smtp.googlemail.com with ESMTPSA id u2sm24607929pgj.7.2020.02.04.15.49.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Feb 2020 15:49:40 -0800 (PST)
+ Tue, 04 Feb 2020 15:49:41 -0800 (PST)
 From: Steve Longerbeam <slongerbeam@gmail.com>
 To: linux-media@vger.kernel.org, Rui Miguel Silva <rmfrfs@gmail.com>,
  Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH v3 03/17] media: imx: csi: Implement get_fwnode_pad op
-Date: Tue,  4 Feb 2020 15:49:04 -0800
-Message-Id: <20200204234918.20425-4-slongerbeam@gmail.com>
+Subject: [PATCH v3 04/17] media: imx: mipi csi-2: Implement get_fwnode_pad op
+Date: Tue,  4 Feb 2020 15:49:05 -0800
+Message-Id: <20200204234918.20425-5-slongerbeam@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200204234918.20425-1-slongerbeam@gmail.com>
 References: <20200204234918.20425-1-slongerbeam@gmail.com>
@@ -100,54 +101,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The CSI does not have a 1:1 relationship between fwnode port numbers and
-pad indexes. In fact the CSI fwnode device is itself a port which is the
-sink, containing only a single fwnode endpoint. Implement media_entity
-operation get_fwnode_pad to first verify the given endpoint is the CSI's
-sink endpoint, and if so return the CSI sink pad index.
+Implement get_fwnode_pad operation. If the endpoint is owned by the MIPI
+CSI-2 receiver, return the endpoint's port number. The MIPI CSI-2 receiver
+maps port numbers and pad indexes 1:1.
 
 Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
 ---
- drivers/staging/media/imx/imx-media-csi.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ drivers/staging/media/imx/imx6-mipi-csi2.c | 28 ++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
-index b60ed4f22f6d..dc5fe25fe7b8 100644
---- a/drivers/staging/media/imx/imx-media-csi.c
-+++ b/drivers/staging/media/imx/imx-media-csi.c
-@@ -1825,9 +1825,32 @@ static void csi_unregistered(struct v4l2_subdev *sd)
- 		ipu_csi_put(priv->csi);
+diff --git a/drivers/staging/media/imx/imx6-mipi-csi2.c b/drivers/staging/media/imx/imx6-mipi-csi2.c
+index c1d1afeea53a..e27a342751fc 100644
+--- a/drivers/staging/media/imx/imx6-mipi-csi2.c
++++ b/drivers/staging/media/imx/imx6-mipi-csi2.c
+@@ -507,9 +507,37 @@ static int csi2_registered(struct v4l2_subdev *sd)
+ 				      640, 480, 0, V4L2_FIELD_NONE, NULL);
  }
  
-+/*
-+ * The CSI has only one fwnode endpoint, at the sink pad. Verify the
-+ * endpoint belongs to us, and return CSI_SINK_PAD.
-+ */
-+static int csi_get_fwnode_pad(struct media_entity *entity,
-+			      struct fwnode_endpoint *endpoint)
++static int csi2_get_fwnode_pad(struct media_entity *entity,
++			       struct fwnode_endpoint *endpoint)
 +{
 +	struct v4l2_subdev *sd = media_entity_to_v4l2_subdev(entity);
-+	struct csi_priv *priv = v4l2_get_subdevdata(sd);
-+	struct fwnode_handle *csi_port = dev_fwnode(priv->dev);
-+	struct fwnode_handle *csi_ep;
-+	int ret;
++	struct csi2_dev *csi2 = sd_to_dev(sd);
++	struct fwnode_handle *csi2_ep;
 +
-+	csi_ep = fwnode_get_next_child_node(csi_port, NULL);
++	/*
++	 * If the endpoint is one of ours, return the endpoint's port
++	 * number. This device maps port numbers and pad indexes 1:1.
++	 */
++	fwnode_graph_for_each_endpoint(dev_fwnode(csi2->dev), csi2_ep) {
++		if (endpoint->local_fwnode == csi2_ep) {
++			struct fwnode_endpoint fwep;
++			int ret;
 +
-+	ret = endpoint->local_fwnode == csi_ep ? CSI_SINK_PAD : -ENXIO;
++			ret = fwnode_graph_parse_endpoint(csi2_ep, &fwep);
 +
-+	fwnode_handle_put(csi_ep);
++			fwnode_handle_put(csi2_ep);
 +
-+	return ret;
++			return ret ? ret : fwep.port;
++		}
++	}
++
++	return -ENXIO;
 +}
 +
- static const struct media_entity_operations csi_entity_ops = {
- 	.link_setup = csi_link_setup,
+ static const struct media_entity_operations csi2_entity_ops = {
+ 	.link_setup = csi2_link_setup,
  	.link_validate = v4l2_subdev_link_validate,
-+	.get_fwnode_pad = csi_get_fwnode_pad,
++	.get_fwnode_pad = csi2_get_fwnode_pad,
  };
  
- static const struct v4l2_subdev_core_ops csi_core_ops = {
+ static const struct v4l2_subdev_video_ops csi2_video_ops = {
 -- 
 2.17.1
 
