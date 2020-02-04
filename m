@@ -2,82 +2,83 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2AFAF152151
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Feb 2020 20:50:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C00E115215F
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Feb 2020 21:03:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 47748853FC;
-	Tue,  4 Feb 2020 19:50:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D962085B9D;
+	Tue,  4 Feb 2020 20:03:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Uo7oxKl4CHmK; Tue,  4 Feb 2020 19:50:25 +0000 (UTC)
+	with ESMTP id J3fPwVdbOO9F; Tue,  4 Feb 2020 20:03:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BE7AF84D16;
-	Tue,  4 Feb 2020 19:50:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DF4B18472A;
+	Tue,  4 Feb 2020 20:03:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CB2FD1BF4E6
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 19:50:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A87121BF4E6
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 20:03:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C636384A6C
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 19:50:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9D1A086135
+ for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 20:03:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0y_mxvTNPclW for <devel@linuxdriverproject.org>;
- Tue,  4 Feb 2020 19:50:22 +0000 (UTC)
+ with ESMTP id qS-ApAyfvKeN for <devel@linuxdriverproject.org>;
+ Tue,  4 Feb 2020 20:03:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2118F845D4
- for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 19:50:22 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id t14so5171069wmi.5
- for <devel@driverdev.osuosl.org>; Tue, 04 Feb 2020 11:50:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=6JA04gqzlOK99JzNgksNDLxM2+WYOhuyFwCSsasycRg=;
- b=svr43D9oXlyyOIc1IEDxyoBcS1ckQD2MSjULN9afs/CR92O1AxhxHS6YYa+mcweg2D
- rvjo3MdHgtFmnIqdcVfUkfshZ06AEgtKXkHNot+8B3EgU0IkyNHFDusl3wo6cAvtWG3/
- EnMHUlT+1LlbpZDagVI/bBQ6pR8vEc3T4U8KUOk1n4FOUsv2wcium+EjAPGQdNIEACik
- H12R72t/fg7EYdp0H07wwnficfQAE/LQYUp2ixTmO0KPrMDxMzrUlNCF01rp0L8LYNg1
- 5ndSG2SJROXpGZCKBUktYuPDhywOdVLKBv4e4VvsfUJ+j+QRn1UrEBmnTHhFit2sO3Cp
- Ffbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6JA04gqzlOK99JzNgksNDLxM2+WYOhuyFwCSsasycRg=;
- b=A4qo9Vif/gzH54P7psiR3G8zAmrClxSUAqSrgmBltFkxI1fXR1qmRglCVBlL9uiNhi
- ACeLO0BmMJcjMs+7uL213YItexY3W7BN3Fh7nCEaaL2cja4L4SfJpcPzabchSuQi0oDH
- QcFM3yX3oQaEQmsGf2zTGhQdF69VhhWp99UJIHmX9TwrnURxLGZOmEM/GqT1Gux5K3Cd
- k2THhnsF84ioVK0DY8su8Xpcn+gE1n9I/isi+IF8t0CtG/1+vm6AJ0SQhvOzGodfDCaJ
- JnLxHZYytG2CtKxRFRXOxU6L83eg9qTOTOGFH9wwLreFwIJXm2K8CwISI4c3fdgVp9xF
- e3qg==
-X-Gm-Message-State: APjAAAWgceMR/8zTvXLw9PgEg0I9Bl3FQ6QvIvhhppu0PJqdiTMwKVVp
- 14jLruIzhMFeb1GysDpN2sU=
-X-Google-Smtp-Source: APXvYqwKbFfmT9e8QUuEJbPDXkDZUrgCNLUfhhixl/gZ/lpjtiWmeDbRp222FaX0HbgtVzL+K9rciw==
-X-Received: by 2002:a1c:ac46:: with SMTP id v67mr579407wme.153.1580845820398; 
- Tue, 04 Feb 2020 11:50:20 -0800 (PST)
-Received: from [192.168.43.57] (94.197.120.219.threembb.co.uk.
- [94.197.120.219])
- by smtp.gmail.com with ESMTPSA id o4sm16140290wrw.15.2020.02.04.11.50.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Feb 2020 11:50:20 -0800 (PST)
-Subject: Re: [PATCH 1/2] staging: vt6656: fix sign of rx_dbm to bb_pre_ed_rssi.
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <9b3b92d6-3672-00be-d0b5-ccd222236ba9@gmail.com>
- <20200203094222.GM1778@kadam>
-From: Malcolm Priestley <tvboxspy@gmail.com>
-Message-ID: <bd20e945-f393-1080-502a-4a92d621cea3@gmail.com>
-Date: Tue, 4 Feb 2020 19:50:18 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.2
-MIME-Version: 1.0
-In-Reply-To: <20200203094222.GM1778@kadam>
+Received: from gate2.alliedtelesis.co.nz (gate2.alliedtelesis.co.nz
+ [202.36.163.20])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E0BD5860BC
+ for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 20:03:26 +0000 (UTC)
+Received: from mmarshal3.atlnz.lc (mmarshal3.atlnz.lc [10.32.18.43])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (Client did not present a certificate)
+ by gate2.alliedtelesis.co.nz (Postfix) with ESMTPS id B57B2891A9;
+ Wed,  5 Feb 2020 09:03:23 +1300 (NZDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alliedtelesis.co.nz;
+ s=mail181024; t=1580846603;
+ bh=ig26wSjIaU+XQ4VrZdi08DwIHGWzCr7Ln2xYk19JyBc=;
+ h=From:To:CC:Subject:Date:References:In-Reply-To;
+ b=hXqPnBzS78/cyp7Bm0L7C2CnnI4uoLZupfSzl/Ws+SX0C4CtROaMVfIXOTa5hl9lf
+ VHQ25G52iqp7iArZdCwxdamReubHFtQJTttpCRyapF6HNxO67P2gIxNu9oulk2au+f
+ bUKMzDxUDAsm5ApWJHmpenY4n2seXpH53euL6ljT4xJxNeD5sFopfWEGaCdWYzpvnL
+ DU8aM+7lOCKoP7H9R8ekrgGXsxHDpZqjLwN87OIJGkfW0TeD/WkWdiN9O8tTAELtNt
+ jYCN/6zKlw7b7kWwhOIdtvss+Wd00KPMNA8kIRGEAnh22l6uDiNdjM3m7IW0imZbpS
+ qLtgH+3lv5J2Q==
+Received: from svr-chch-ex1.atlnz.lc (Not Verified[10.32.16.77]) by
+ mmarshal3.atlnz.lc with Trustwave SEG (v7, 5, 8, 10121)
+ id <B5e39ce090000>; Wed, 05 Feb 2020 09:03:23 +1300
+Received: from svr-chch-ex1.atlnz.lc (2001:df5:b000:bc8:409d:36f5:8899:92e8)
+ by svr-chch-ex1.atlnz.lc (2001:df5:b000:bc8:409d:36f5:8899:92e8) with
+ Microsoft SMTP Server (TLS) id 15.0.1473.3; Wed, 5 Feb 2020 09:03:21 +1300
+Received: from svr-chch-ex1.atlnz.lc ([fe80::409d:36f5:8899:92e8]) by
+ svr-chch-ex1.atlnz.lc ([fe80::409d:36f5:8899:92e8%12]) with mapi id
+ 15.00.1473.005; Wed, 5 Feb 2020 09:03:21 +1300
+From: Chris Packham <Chris.Packham@alliedtelesis.co.nz>
+To: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging/octeon: Mark Ethernet driver as BROKEN
+Thread-Topic: [PATCH] staging/octeon: Mark Ethernet driver as BROKEN
+Thread-Index: AQHV2vWmtCtKfNrhHkKtpp3ao2yroKgJy8oAgADQpwA=
+Date: Tue, 4 Feb 2020 20:03:20 +0000
+Message-ID: <bc1ea2ef91314143f3b63497ac31468d0468d4d5.camel@alliedtelesis.co.nz>
+References: <20191202141836.9363-1-linux@roeck-us.net>
+ <20191202165231.GA728202@kroah.com> <20191202173620.GA29323@roeck-us.net>
+ <20191202181505.GA732872@kroah.com>
+ <8168627a60e9e851860f8cc295498423828401c9.camel@alliedtelesis.co.nz>
+ <20200204073632.GB1085438@kroah.com>
+In-Reply-To: <20200204073632.GB1085438@kroah.com>
+Accept-Language: en-NZ, en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [2001:df5:b000:22:f95d:4478:4d90:53fe]
+Content-ID: <C7E6EE56FAF96A4984CDAED8000C5A1B@atlnz.lc>
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,35 +92,86 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless@vger.kernel.org
+ "julia.lawall@lip6.fr" <julia.lawall@lip6.fr>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux@roeck-us.net" <linux@roeck-us.net>,
+ "wambui.karugax@gmail.com" <wambui.karugax@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 03/02/2020 09:42, Dan Carpenter wrote:
-> On Sun, Feb 02, 2020 at 12:27:25PM +0000, Malcolm Priestley wrote:
->> bb_pre_ed_rssi is an u8 rx_dm always returns negative signed
->> values add minus operator to always yield positive.
->>
->> fixes issue where rx sensitivity is always set to maximum because
->> the unsigned numbers were always greater then 100.
->>
->> Cc: stable <stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
->> ---
-...
-
->>  drivers/staging/vt6656/dpc.c | 2 +-
+On Tue, 2020-02-04 at 07:36 +0000, gregkh@linuxfoundation.org wrote:
+> On Tue, Feb 04, 2020 at 12:54:26AM +0000, Chris Packham wrote:
+> > Hi Greg & All,
+> > 
+> > On Mon, 2019-12-02 at 19:15 +0100, Greg Kroah-Hartman wrote:
+> > > On Mon, Dec 02, 2019 at 09:36:20AM -0800, Guenter Roeck wrote:
+> > > > On Mon, Dec 02, 2019 at 05:52:31PM +0100, Greg Kroah-Hartman wrote:
+> > > > > On Mon, Dec 02, 2019 at 06:18:36AM -0800, Guenter Roeck wrote:
+> > > > > > The code doesn't compile due to incompatible pointer errors
+> > > > > > such as
+> > > > > > 
+> > > > > > drivers/staging/octeon/ethernet-tx.c:649:50: error:
+> > > > > > 	passing argument 1 of 'cvmx_wqe_get_grp' from
+> > > > > > incompatible pointer type
+> > > > > > 
+> > > > > > This is due to mixing, for example, cvmx_wqe_t with 'struct
+> > > > > > cvmx_wqe'.
+> > > > > > 
+> > > > > > Unfortunately, one can not just revert the primary offending
+> > > > > > commit, as doing so
+> > > > > > results in secondary errors. This is made worse by the fact
+> > > > > > that the "removed"
+> > > > > > typedefs still exist and are used widely outside the staging
+> > > > > > directory,
+> > > > > > making the entire set of "remove typedef" changes pointless and
+> > > > > > wrong.
+> > > > > 
+> > > > > Ugh, sorry about that.
+> > > > > 
+> > > > > > Reflect reality and mark the driver as BROKEN.
+> > > > > 
+> > > > > Should I just delete this thing?  No one seems to be using it and
+> > > > > there
+> > > > > is no move to get it out of staging at all.
+> > > > > 
+> > > > > Will anyone actually miss it?  It can always come back of someone
+> > > > > does...
+> > > > > 
+> > > > 
+> > > > All it does is causing trouble and misguided attempts to clean it
+> > > > up.
+> > > > If anything, the whole thing goes into the wrong direction (declare
+> > > > a
+> > > > complete set of dummy functions just to be able to build the driver
+> > > > with COMPILE_TEST ? Seriously ?).
+> > > > 
+> > > > I second the motion to drop it. This has been in staging for 10
+> > > > years.
+> > > > Don't we have some kind of time limit for code in staging ? If not,
+> > > > should we ? If anyone really needs it, that person or group should
+> > > > really invest the time to get it out of staging for good.
+> > > 
+> > > 10 years?  Ugh, yes, it's time to drop the thing, I'll do so after
+> > > -rc1
+> > > is out.
+> > > 
+> > 
+> > As a long suffering Cavium MIPs customer could I request that this
+> > isn't dropped. I'll get someone here to take a look at fixing the build
+> > issues.
+> > 
+> > Given our platform isn't upstream I'm not sure that we'll be able to
+> > meet the criteria for getting it out of staging.
+> > 
 > 
-> It appears that the vt6655 driver has the same issue.
+> Can't you push this onto Cavium as you are paying them for hardware and
+> support?
+> 
 
-In the vt6655 it is not used.
-
-Regards
-
-
-Malcolm
+I'll certainly raise this with any and all contacts I have with
+Cavium/Marvell.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
