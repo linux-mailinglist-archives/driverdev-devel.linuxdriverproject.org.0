@@ -2,60 +2,68 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A8E81527F1
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 10:02:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C5941527F6
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 10:03:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0237B85C97;
-	Wed,  5 Feb 2020 09:02:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B50C85CBC;
+	Wed,  5 Feb 2020 09:03:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dQoOUrMjjP6i; Wed,  5 Feb 2020 09:02:17 +0000 (UTC)
+	with ESMTP id wkvz6kQg139g; Wed,  5 Feb 2020 09:03:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8EC3285BEE;
-	Wed,  5 Feb 2020 09:02:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AB19B85C43;
+	Wed,  5 Feb 2020 09:03:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 034901BF331
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 09:02:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A4B2C1BF331
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 09:03:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ECAD681F17
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 09:02:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A0CA585159
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 09:03:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VH-0mSTczsym for <devel@linuxdriverproject.org>;
- Wed,  5 Feb 2020 09:02:12 +0000 (UTC)
+ with ESMTP id b+1YtXBu6oWS for <devel@linuxdriverproject.org>;
+ Wed,  5 Feb 2020 09:03:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A5ACB84173
- for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 09:02:12 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Feb 2020 01:02:12 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,405,1574150400"; d="scan'208";a="231652104"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga003.jf.intel.com with ESMTP; 05 Feb 2020 01:02:07 -0800
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1izGZU-0008Fz-F4; Wed, 05 Feb 2020 11:02:08 +0200
-Date: Wed, 5 Feb 2020 11:02:08 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Steve Longerbeam <slongerbeam@gmail.com>
-Subject: Re: [PATCH v3 02/17] media: v4l2-fwnode: Pass notifier to
- v4l2_async_register_fwnode_subdev()
-Message-ID: <20200205090208.GR10400@smile.fi.intel.com>
-References: <20200204234918.20425-1-slongerbeam@gmail.com>
- <20200204234918.20425-3-slongerbeam@gmail.com>
+Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
+ [209.85.210.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6620381722
+ for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 09:03:31 +0000 (UTC)
+Received: by mail-ot1-f68.google.com with SMTP id z9so1250418oth.5
+ for <devel@driverdev.osuosl.org>; Wed, 05 Feb 2020 01:03:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ly8+3gmEudftYUIeu3tPerclxKuHSskVOT90fOPXZhE=;
+ b=tMI/+WxYz5SmKEOax+gQYELaKOOfXVEP9sMgx/BFo0Qxzf1/CMo/zk5+hIic2/VgQy
+ 0sTpR7FCEvYhueW4wYahkOopbTYmwLvi3v9ythIfkc09xTkrZVplBzlEvQ589J75zMQG
+ 5NoPdbHf34J4c6kRrG9OwN2X5W7//96pM3PGt6f24hhLC9ZZFu39FLCSHnG+4jij4M8f
+ XvX7lpNxeiroTx2J21KfAQ9+W/KDhdlmTpW9RikUtk6TQp8SLMuj7hW8E6YHSe9lxvCs
+ raOy+kVSRg98eOQD1yMp3eFC6T98u4SaGXbQPT1/wXKPnmAI1k+RIYKAfAOTOn2gE+SL
+ CniA==
+X-Gm-Message-State: APjAAAWF4+fvGEaoEAEsuUtpNQ1nva7nqlTMUpUHHIhB2jX7ETHceO/S
+ 3A4CVIU7xxo/eMoqO9teEGnawkHSZ8U4VPv3Pwc=
+X-Google-Smtp-Source: APXvYqyVwSn2VmNn5oApgPX5q+zTOnNZeAT401O+YxcAG7VYa5bBHlGp+7lxWYvZwut7WPxF1fu6UU5Z6kXVuJUJXdM=
+X-Received: by 2002:a9d:8f1:: with SMTP id 104mr23691249otf.107.1580893410632; 
+ Wed, 05 Feb 2020 01:03:30 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200204234918.20425-3-slongerbeam@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
+ <6f934497-0635-7aa0-e7d5-ed2c4cc48d2d@roeck-us.net>
+ <da150cdb160b5d1b58ad1ea2674cc93c1fc6aadc.camel@alliedtelesis.co.nz>
+ <20200204070927.GA966981@kroah.com>
+ <1a90dc4c62c482ed6a44de70962996b533d6f627.camel@alliedtelesis.co.nz>
+ <20200204203116.GN8731@bombadil.infradead.org> <20200205033416.GT1778@kadam>
+ <a3032823-03a9-f018-73e4-eb0d71e0bb53@roeck-us.net>
+In-Reply-To: <a3032823-03a9-f018-73e4-eb0d71e0bb53@roeck-us.net>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 5 Feb 2020 10:03:18 +0100
+Message-ID: <CAMuHMdXKtJEvwRViRpy4nHbxv68P_rCFWbpikw=BMM5XnBvD2A@mail.gmail.com>
+Subject: Re: [PATCH 1/2] staging: octeon: delete driver
+To: Guenter Roeck <linux@roeck-us.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,42 +76,89 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Richard Fontana <rfontana@redhat.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "brandonbonaby94@gmail.com" <brandonbonaby94@gmail.com>,
+ "bobdc9664@seznam.cz" <bobdc9664@seznam.cz>, "fw@strlen.de" <fw@strlen.de>,
+ "paulburton@kernel.org" <paulburton@kernel.org>,
+ "aaro.koskinen@iki.fi" <aaro.koskinen@iki.fi>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "yuehaibing@huawei.com" <yuehaibing@huawei.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Matthew Wilcox <willy@infradead.org>,
+ "ddaney@caviumnetworks.com" <ddaney@caviumnetworks.com>,
+ "julia.lawall@lip6.fr" <julia.lawall@lip6.fr>,
+ "sandro@volery.com" <sandro@volery.com>,
+ Chris Packham <Chris.Packham@alliedtelesis.co.nz>,
+ "ivalery111@gmail.com" <ivalery111@gmail.com>, "ynezz@true.cz" <ynezz@true.cz>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ "wambui.karugax@gmail.com" <wambui.karugax@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 04, 2020 at 03:49:03PM -0800, Steve Longerbeam wrote:
-> Instead of allocating a notifier in v4l2_async_register_fwnode_subdev(),
-> have the caller provide one. This allows the caller to implement
-> notifier ops (bind, unbind).
-> 
-> The caller is now responsible for first initializing its notifier with a
-> call to v4l2_async_notifier_init().
+On Wed, Feb 5, 2020 at 4:57 AM Guenter Roeck <linux@roeck-us.net> wrote:
+> On 2/4/20 7:34 PM, Dan Carpenter wrote:
+> > On Tue, Feb 04, 2020 at 12:31:16PM -0800, Matthew Wilcox wrote:
+> >> On Tue, Feb 04, 2020 at 08:06:14PM +0000, Chris Packham wrote:
+> >>> On Tue, 2020-02-04 at 07:09 +0000, gregkh@linuxfoundation.org wrote:
+> >>>> On Tue, Feb 04, 2020 at 04:02:15AM +0000, Chris Packham wrote:
+> >>> On Tue, 2020-02-04 at 10:21 +0300, Dan Carpenter wrote:
+> >>>> My advice is to delete all the COMPILE_TEST code.  That stuff was a
+> >>>> constant source of confusion and headaches.
+> >>>
+> >>> I was also going to suggest this. Since the COMPILE_TEST has been a
+> >>> source of trouble I was going to propose dropping the || COMPILE_TEST
+> >>> from the Kconfig for the octeon drivers.
+> >>
+> >> Not having it also causes problems.  I didn't originally add it for
+> >> shits and giggles.
+> >
+> > I wonder if the kbuild bot does enough cross compile build testing these
+> > days to detect compile problems.  It might have improved to the point
+> > where COMPILE_TEST isn't required.
 
-Hint: When creating a list of maintainers use this (or similar) command:
+It depends...
 
-	scripts/get_maintainer.pl --git --git-min-percent=67 ...
+> Not really. Looking at the build failures in the mainline kernel right now:
+>
+> Failed builds:
+>         alpha:allmodconfig
+>         arm:allmodconfig
+>         i386:allyesconfig
+>         i386:allmodconfig
+>         m68k:allmodconfig
+>         microblaze:mmu_defconfig
+>         mips:allmodconfig
+>         parisc:allmodconfig
+>         powerpc:allmodconfig
+>         s390:allmodconfig
+>         sparc64:allmodconfig
 
-P.S. Please, do not add me in Cc list for v4l2 matters.
+I did receive a report from noreply@ellerman.id.au for the m68k build
+failure. But that was sent to me only, not to the offender, and I do my
+own builds anyway.
+
+More interesting, that report happened after the offending commit landed
+upstream, while it had been in next for 4 weeks.
+
+> Many of those don't even _have_ specific configurations causing the build failures.
+
+Exactly. These are the "easy" ones, as the all*config builds enable as
+much infrastructure as possible.  It's much harder if some common
+dependency is not fulfilled in some specific config.
+
+Gr{oetje,eeting}s,
+
+                        Geert
 
 -- 
-With Best Regards,
-Andy Shevchenko
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
-
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
