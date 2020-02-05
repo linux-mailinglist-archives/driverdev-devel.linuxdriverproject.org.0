@@ -1,66 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B3781523EB
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A9281523EC
 	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 01:11:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CCC40860CE;
-	Wed,  5 Feb 2020 00:11:49 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hTfmsHAklqca; Wed,  5 Feb 2020 00:11:48 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 46D5385CE2;
-	Wed,  5 Feb 2020 00:11:47 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 338161BF45A
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:43 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2E379857A2
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 41BCF8739E;
+	Wed,  5 Feb 2020 00:11:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RZQtZt0pdhpb; Wed,  5 Feb 2020 00:11:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id BC1438734E;
+	Wed,  5 Feb 2020 00:11:49 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EC55F1BF45A
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:46 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E9159859D1
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:46 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id haeFKYGXooM5 for <devel@linuxdriverproject.org>;
- Wed,  5 Feb 2020 00:11:40 +0000 (UTC)
+ with ESMTP id OaX7rc-lmAGV for <devel@linuxdriverproject.org>;
+ Wed,  5 Feb 2020 00:11:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from gate2.alliedtelesis.co.nz (gate2.alliedtelesis.co.nz
  [202.36.163.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 778AF86758
- for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 00:11:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1EC6583659
+ for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 00:11:43 +0000 (UTC)
 Received: from mmarshal3.atlnz.lc (mmarshal3.atlnz.lc [10.32.18.43])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (Client did not present a certificate)
- by gate2.alliedtelesis.co.nz (Postfix) with ESMTPS id 38B37891AE;
+ by gate2.alliedtelesis.co.nz (Postfix) with ESMTPS id C9259891AF;
  Wed,  5 Feb 2020 13:11:38 +1300 (NZDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alliedtelesis.co.nz;
  s=mail181024; t=1580861498;
- bh=TlEop1aMKKhr4TLLb8Kw8mnjVcZVWnitXHzhzdW7lr8=;
+ bh=d77I6V+GYXRtq9n5V+bGAtl2IdeOVWqjwTHtyOh+tEU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=kDo9RkTvcYw1r5kMFHPpurfnwLh5/ma3HIZlClqE56CefIGkJ1c+U4k6m3qQI9q0P
- nY1M202zKC2RJHwQ2arma6uHy/Q+DgKsQWbjEranhmDlh4xEWSHokueD2PVzethk9G
- 7AX9JzvzHSLsVLLyo74w7SpMwzekLunPrVtrm1MLGZB2POywl1Xu907cTNC3nT1Js/
- uIYtcvNZ3N6ZVwxWgeSSqClJ2bvm5QpwCQn9u8LGyfp3JmJbyf5j3dGXK1cbH34QUf
- BnGOWmY4r1hSIs0tMsXXjjxi4ZM8Li7XwaJ7j0ABF3u8MMLM3Crpv32ytrTTdxSJY/
- b2ROr+pWZOiZA==
+ b=xYM8fMqSwHNZ4b1ylxWaCOgTpJ2YE7yuGt9jT3x021LZlSXYzPoEt4wY0DLxNEfz/
+ tTctlpXqxGnXheUcp1fq5pzdPTv6i048uHawuVBxfnKMK4lCUL4Vd2edl+kIJpWSns
+ v4FbZDmIjKYAG4bAvQV0dmeKajX06WM05cilzXJ5E+ATctkwci8YV7C+nbomA2SIaw
+ 1NE9mA9GkfYEfmUoSrTp7JebsPxBeJi+4dUluvjz3XJ5cU/OcwJ6cXHssBGLJk8TQP
+ T0zWCWPOlOQljJwOcTGIffzjmEKnOfJswUaNng591rY4Uygo+eB81X9xaXRbGjQbbV
+ uyxY3BCrMWbBw==
 Received: from smtp (Not Verified[10.32.16.33]) by mmarshal3.atlnz.lc with
  Trustwave SEG (v7, 5, 8, 10121)
- id <B5e3a083a0001>; Wed, 05 Feb 2020 13:11:38 +1300
+ id <B5e3a083a0002>; Wed, 05 Feb 2020 13:11:38 +1300
 Received: from chrisp-dl.ws.atlnz.lc (chrisp-dl.ws.atlnz.lc [10.33.22.20])
- by smtp (Postfix) with ESMTP id 5D4AC13EEDE;
+ by smtp (Postfix) with ESMTP id E04FD13EEDE;
  Wed,  5 Feb 2020 13:11:37 +1300 (NZDT)
 Received: by chrisp-dl.ws.atlnz.lc (Postfix, from userid 1030)
- id CD52C280038; Wed,  5 Feb 2020 13:11:37 +1300 (NZDT)
+ id 5C514280038; Wed,  5 Feb 2020 13:11:38 +1300 (NZDT)
 From: Chris Packham <chris.packham@alliedtelesis.co.nz>
 To: gregkh@linuxfoundation.org, ralf@linux-mips.org, paulburton@kernel.org,
  linux@roeck-us.net, dan.carpenter@oracle.com, willy@infradead.org
-Subject: [PATCH 3/6] MIPS: octeon: remove typedef declaration for cvmx_wqe
-Date: Wed,  5 Feb 2020 13:11:13 +1300
-Message-Id: <20200205001116.14096-4-chris.packham@alliedtelesis.co.nz>
+Subject: [PATCH 4/6] MIPS: octeon: remove typedef declaration for
+ cvmx_helper_link_info
+Date: Wed,  5 Feb 2020 13:11:14 +1300
+Message-Id: <20200205001116.14096-5-chris.packham@alliedtelesis.co.nz>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
 References: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
@@ -86,230 +87,322 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove typedef declaration from struct cvmx_wqe and replace its previous
-uses with new struct declaration.
+Remove declaration of union cvmx_helper_link_info as typedef and update
+uses to use the union.
 
 Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
 ---
- .../cavium-octeon/executive/cvmx-helper.c     |  2 +-
- .../include/asm/octeon/cvmx-helper-util.h     |  2 +-
- arch/mips/include/asm/octeon/cvmx-pko.h       |  2 +-
- arch/mips/include/asm/octeon/cvmx-pow.h       | 22 +++++++++----------
- arch/mips/include/asm/octeon/cvmx-wqe.h       | 16 +++++++-------
- 5 files changed, 22 insertions(+), 22 deletions(-)
+ arch/mips/cavium-octeon/executive/cvmx-helper-board.c | 4 ++--
+ arch/mips/cavium-octeon/executive/cvmx-helper-rgmii.c | 6 +++---
+ arch/mips/cavium-octeon/executive/cvmx-helper-sgmii.c | 8 ++++----
+ arch/mips/cavium-octeon/executive/cvmx-helper-spi.c   | 6 +++---
+ arch/mips/cavium-octeon/executive/cvmx-helper-xaui.c  | 6 +++---
+ arch/mips/cavium-octeon/executive/cvmx-helper.c       | 6 +++---
+ arch/mips/include/asm/octeon/cvmx-helper-board.h      | 2 +-
+ arch/mips/include/asm/octeon/cvmx-helper-rgmii.h      | 4 ++--
+ arch/mips/include/asm/octeon/cvmx-helper-sgmii.h      | 4 ++--
+ arch/mips/include/asm/octeon/cvmx-helper-spi.h        | 4 ++--
+ arch/mips/include/asm/octeon/cvmx-helper-xaui.h       | 4 ++--
+ arch/mips/include/asm/octeon/cvmx-helper.h            | 8 ++++----
+ 12 files changed, 31 insertions(+), 31 deletions(-)
 
+diff --git a/arch/mips/cavium-octeon/executive/cvmx-helper-board.c b/arch/mips/cavium-octeon/executive/cvmx-helper-board.c
+index 2e2d45bc850d..abd11b7af22f 100644
+--- a/arch/mips/cavium-octeon/executive/cvmx-helper-board.c
++++ b/arch/mips/cavium-octeon/executive/cvmx-helper-board.c
+@@ -207,9 +207,9 @@ int cvmx_helper_board_get_mii_address(int ipd_port)
+  * Returns The ports link status. If the link isn't fully resolved, this must
+  *	   return zero.
+  */
+-cvmx_helper_link_info_t __cvmx_helper_board_link_get(int ipd_port)
++union cvmx_helper_link_info __cvmx_helper_board_link_get(int ipd_port)
+ {
+-	cvmx_helper_link_info_t result;
++	union cvmx_helper_link_info result;
+ 
+ 	WARN(!octeon_is_simulation(),
+ 	     "Using deprecated link status - please update your DT");
+diff --git a/arch/mips/cavium-octeon/executive/cvmx-helper-rgmii.c b/arch/mips/cavium-octeon/executive/cvmx-helper-rgmii.c
+index e812ed9a03bb..c4b58598aa9d 100644
+--- a/arch/mips/cavium-octeon/executive/cvmx-helper-rgmii.c
++++ b/arch/mips/cavium-octeon/executive/cvmx-helper-rgmii.c
+@@ -261,7 +261,7 @@ int __cvmx_helper_rgmii_enable(int interface)
+  *
+  * Returns Link state
+  */
+-cvmx_helper_link_info_t __cvmx_helper_rgmii_link_get(int ipd_port)
++union cvmx_helper_link_info __cvmx_helper_rgmii_link_get(int ipd_port)
+ {
+ 	int interface = cvmx_helper_get_interface_num(ipd_port);
+ 	int index = cvmx_helper_get_interface_index_num(ipd_port);
+@@ -270,7 +270,7 @@ cvmx_helper_link_info_t __cvmx_helper_rgmii_link_get(int ipd_port)
+ 	asxx_prt_loop.u64 = cvmx_read_csr(CVMX_ASXX_PRT_LOOP(interface));
+ 	if (asxx_prt_loop.s.int_loop & (1 << index)) {
+ 		/* Force 1Gbps full duplex on internal loopback */
+-		cvmx_helper_link_info_t result;
++		union cvmx_helper_link_info result;
+ 		result.u64 = 0;
+ 		result.s.full_duplex = 1;
+ 		result.s.link_up = 1;
+@@ -292,7 +292,7 @@ cvmx_helper_link_info_t __cvmx_helper_rgmii_link_get(int ipd_port)
+  * Returns Zero on success, negative on failure
+  */
+ int __cvmx_helper_rgmii_link_set(int ipd_port,
+-				 cvmx_helper_link_info_t link_info)
++				 union cvmx_helper_link_info link_info)
+ {
+ 	int result = 0;
+ 	int interface = cvmx_helper_get_interface_num(ipd_port);
+diff --git a/arch/mips/cavium-octeon/executive/cvmx-helper-sgmii.c b/arch/mips/cavium-octeon/executive/cvmx-helper-sgmii.c
+index f6ebf63dc84c..e07d8f15efba 100644
+--- a/arch/mips/cavium-octeon/executive/cvmx-helper-sgmii.c
++++ b/arch/mips/cavium-octeon/executive/cvmx-helper-sgmii.c
+@@ -200,7 +200,7 @@ static int __cvmx_helper_sgmii_hardware_init_link(int interface, int index)
+  */
+ static int __cvmx_helper_sgmii_hardware_init_link_speed(int interface,
+ 							int index,
+-							cvmx_helper_link_info_t
++							union cvmx_helper_link_info
+ 							link_info)
+ {
+ 	int is_enabled;
+@@ -394,9 +394,9 @@ int __cvmx_helper_sgmii_enable(int interface)
+  *
+  * Returns Link state
+  */
+-cvmx_helper_link_info_t __cvmx_helper_sgmii_link_get(int ipd_port)
++union cvmx_helper_link_info __cvmx_helper_sgmii_link_get(int ipd_port)
+ {
+-	cvmx_helper_link_info_t result;
++	union cvmx_helper_link_info result;
+ 	union cvmx_pcsx_miscx_ctl_reg pcs_misc_ctl_reg;
+ 	int interface = cvmx_helper_get_interface_num(ipd_port);
+ 	int index = cvmx_helper_get_interface_index_num(ipd_port);
+@@ -505,7 +505,7 @@ cvmx_helper_link_info_t __cvmx_helper_sgmii_link_get(int ipd_port)
+  * Returns Zero on success, negative on failure
+  */
+ int __cvmx_helper_sgmii_link_set(int ipd_port,
+-				 cvmx_helper_link_info_t link_info)
++				 union cvmx_helper_link_info link_info)
+ {
+ 	int interface = cvmx_helper_get_interface_num(ipd_port);
+ 	int index = cvmx_helper_get_interface_index_num(ipd_port);
+diff --git a/arch/mips/cavium-octeon/executive/cvmx-helper-spi.c b/arch/mips/cavium-octeon/executive/cvmx-helper-spi.c
+index 2a574d272671..525914e9b22d 100644
+--- a/arch/mips/cavium-octeon/executive/cvmx-helper-spi.c
++++ b/arch/mips/cavium-octeon/executive/cvmx-helper-spi.c
+@@ -140,9 +140,9 @@ int __cvmx_helper_spi_enable(int interface)
+  *
+  * Returns Link state
+  */
+-cvmx_helper_link_info_t __cvmx_helper_spi_link_get(int ipd_port)
++union cvmx_helper_link_info __cvmx_helper_spi_link_get(int ipd_port)
+ {
+-	cvmx_helper_link_info_t result;
++	union cvmx_helper_link_info result;
+ 	int interface = cvmx_helper_get_interface_num(ipd_port);
+ 	int index = cvmx_helper_get_interface_index_num(ipd_port);
+ 	result.u64 = 0;
+@@ -193,7 +193,7 @@ cvmx_helper_link_info_t __cvmx_helper_spi_link_get(int ipd_port)
+  *
+  * Returns Zero on success, negative on failure
+  */
+-int __cvmx_helper_spi_link_set(int ipd_port, cvmx_helper_link_info_t link_info)
++int __cvmx_helper_spi_link_set(int ipd_port, union cvmx_helper_link_info link_info)
+ {
+ 	/* Nothing to do. If we have a SPI4000 then the setup was already performed
+ 	   by cvmx_spi4000_check_speed(). If not then there isn't any link
+diff --git a/arch/mips/cavium-octeon/executive/cvmx-helper-xaui.c b/arch/mips/cavium-octeon/executive/cvmx-helper-xaui.c
+index 93a498d05184..842990e8404f 100644
+--- a/arch/mips/cavium-octeon/executive/cvmx-helper-xaui.c
++++ b/arch/mips/cavium-octeon/executive/cvmx-helper-xaui.c
+@@ -259,13 +259,13 @@ int __cvmx_helper_xaui_enable(int interface)
+  *
+  * Returns Link state
+  */
+-cvmx_helper_link_info_t __cvmx_helper_xaui_link_get(int ipd_port)
++union cvmx_helper_link_info __cvmx_helper_xaui_link_get(int ipd_port)
+ {
+ 	int interface = cvmx_helper_get_interface_num(ipd_port);
+ 	union cvmx_gmxx_tx_xaui_ctl gmxx_tx_xaui_ctl;
+ 	union cvmx_gmxx_rx_xaui_ctl gmxx_rx_xaui_ctl;
+ 	union cvmx_pcsxx_status1_reg pcsxx_status1_reg;
+-	cvmx_helper_link_info_t result;
++	union cvmx_helper_link_info result;
+ 
+ 	gmxx_tx_xaui_ctl.u64 = cvmx_read_csr(CVMX_GMXX_TX_XAUI_CTL(interface));
+ 	gmxx_rx_xaui_ctl.u64 = cvmx_read_csr(CVMX_GMXX_RX_XAUI_CTL(interface));
+@@ -299,7 +299,7 @@ cvmx_helper_link_info_t __cvmx_helper_xaui_link_get(int ipd_port)
+  *
+  * Returns Zero on success, negative on failure
+  */
+-int __cvmx_helper_xaui_link_set(int ipd_port, cvmx_helper_link_info_t link_info)
++int __cvmx_helper_xaui_link_set(int ipd_port, union cvmx_helper_link_info link_info)
+ {
+ 	int interface = cvmx_helper_get_interface_num(ipd_port);
+ 	union cvmx_gmxx_tx_xaui_ctl gmxx_tx_xaui_ctl;
 diff --git a/arch/mips/cavium-octeon/executive/cvmx-helper.c b/arch/mips/cavium-octeon/executive/cvmx-helper.c
-index de391541d6f7..bb84ae33399a 100644
+index bb84ae33399a..8002f9d3039d 100644
 --- a/arch/mips/cavium-octeon/executive/cvmx-helper.c
 +++ b/arch/mips/cavium-octeon/executive/cvmx-helper.c
-@@ -784,7 +784,7 @@ static int __cvmx_helper_errata_fix_ipd_ptr_alignment(void)
- 	uint64_t *p64;
- 	cvmx_pko_command_word0_t pko_command;
- 	union cvmx_buf_ptr g_buffer, pkt_buffer;
--	cvmx_wqe_t *work;
-+	struct cvmx_wqe *work;
- 	int size, num_segs = 0, wqe_pcnt, pkt_pcnt;
- 	union cvmx_gmxx_prtx_cfg gmx_cfg;
- 	int retry_cnt;
-diff --git a/arch/mips/include/asm/octeon/cvmx-helper-util.h b/arch/mips/include/asm/octeon/cvmx-helper-util.h
-index e9a97e7ee604..97b27a07cfb0 100644
---- a/arch/mips/include/asm/octeon/cvmx-helper-util.h
-+++ b/arch/mips/include/asm/octeon/cvmx-helper-util.h
-@@ -123,7 +123,7 @@ static inline int cvmx_helper_get_last_ipd_port(int interface)
+@@ -1075,9 +1075,9 @@ int cvmx_helper_initialize_packet_io_local(void)
   *
-  * @work:   Work queue entry with packet to free
+  * Returns Link state
   */
--static inline void cvmx_helper_free_packet_data(cvmx_wqe_t *work)
-+static inline void cvmx_helper_free_packet_data(struct cvmx_wqe *work)
+-cvmx_helper_link_info_t cvmx_helper_link_get(int ipd_port)
++union cvmx_helper_link_info cvmx_helper_link_get(int ipd_port)
  {
- 	uint64_t number_buffers;
- 	union cvmx_buf_ptr buffer_ptr;
-diff --git a/arch/mips/include/asm/octeon/cvmx-pko.h b/arch/mips/include/asm/octeon/cvmx-pko.h
-index 20eb9c46a75a..f033523c19f8 100644
---- a/arch/mips/include/asm/octeon/cvmx-pko.h
-+++ b/arch/mips/include/asm/octeon/cvmx-pko.h
-@@ -394,7 +394,7 @@ static inline void cvmx_pko_send_packet_prepare(uint64_t port, uint64_t queue,
- 		    CVMX_TAG_SW_BITS_INTERNAL << CVMX_TAG_SW_SHIFT |
- 		    CVMX_TAG_SUBGROUP_PKO << CVMX_TAG_SUBGROUP_SHIFT |
- 		    (CVMX_TAG_SUBGROUP_MASK & queue);
--		cvmx_pow_tag_sw_full((cvmx_wqe_t *) cvmx_phys_to_ptr(0x80), tag,
-+		cvmx_pow_tag_sw_full((struct cvmx_wqe *) cvmx_phys_to_ptr(0x80), tag,
- 				     CVMX_POW_TAG_TYPE_ATOMIC, 0);
- 	}
- }
-diff --git a/arch/mips/include/asm/octeon/cvmx-pow.h b/arch/mips/include/asm/octeon/cvmx-pow.h
-index 410bb70e5aac..ba366f4f3c3d 100644
---- a/arch/mips/include/asm/octeon/cvmx-pow.h
-+++ b/arch/mips/include/asm/octeon/cvmx-pow.h
-@@ -1283,7 +1283,7 @@ static inline cvmx_pow_tag_req_t cvmx_pow_get_current_tag(void)
-  *
-  * Returns WQE pointer
-  */
--static inline cvmx_wqe_t *cvmx_pow_get_current_wqp(void)
-+static inline struct cvmx_wqe *cvmx_pow_get_current_wqp(void)
- {
- 	cvmx_pow_load_addr_t load_addr;
- 	cvmx_pow_tag_load_resp_t load_resp;
-@@ -1296,7 +1296,7 @@ static inline cvmx_wqe_t *cvmx_pow_get_current_wqp(void)
- 	load_addr.sstatus.get_cur = 1;
- 	load_addr.sstatus.get_wqp = 1;
- 	load_resp.u64 = cvmx_read_csr(load_addr.u64);
--	return (cvmx_wqe_t *) cvmx_phys_to_ptr(load_resp.s_sstatus4.wqp);
-+	return (struct cvmx_wqe *) cvmx_phys_to_ptr(load_resp.s_sstatus4.wqp);
- }
+-	cvmx_helper_link_info_t result;
++	union cvmx_helper_link_info result;
+ 	int interface = cvmx_helper_get_interface_num(ipd_port);
+ 	int index = cvmx_helper_get_interface_index_num(ipd_port);
  
- #ifndef CVMX_MF_CHORD
-@@ -1348,7 +1348,7 @@ static inline void cvmx_pow_tag_sw_wait(void)
-  * Returns Returns the WQE pointer from POW. Returns NULL if no work
-  * was available.
+@@ -1136,7 +1136,7 @@ EXPORT_SYMBOL_GPL(cvmx_helper_link_get);
+  *
+  * Returns Zero on success, negative on failure
   */
--static inline cvmx_wqe_t *cvmx_pow_work_request_sync_nocheck(cvmx_pow_wait_t
-+static inline struct cvmx_wqe *cvmx_pow_work_request_sync_nocheck(cvmx_pow_wait_t
- 							     wait)
+-int cvmx_helper_link_set(int ipd_port, cvmx_helper_link_info_t link_info)
++int cvmx_helper_link_set(int ipd_port, union cvmx_helper_link_info link_info)
  {
- 	cvmx_pow_load_addr_t ptr;
-@@ -1368,7 +1368,7 @@ static inline cvmx_wqe_t *cvmx_pow_work_request_sync_nocheck(cvmx_pow_wait_t
- 	if (result.s_work.no_work)
- 		return NULL;
- 	else
--		return (cvmx_wqe_t *) cvmx_phys_to_ptr(result.s_work.addr);
-+		return (struct cvmx_wqe *) cvmx_phys_to_ptr(result.s_work.addr);
- }
+ 	int result = -1;
+ 	int interface = cvmx_helper_get_interface_num(ipd_port);
+diff --git a/arch/mips/include/asm/octeon/cvmx-helper-board.h b/arch/mips/include/asm/octeon/cvmx-helper-board.h
+index d7fdcf0a0088..ce52aafe7a8d 100644
+--- a/arch/mips/include/asm/octeon/cvmx-helper-board.h
++++ b/arch/mips/include/asm/octeon/cvmx-helper-board.h
+@@ -93,7 +93,7 @@ extern int cvmx_helper_board_get_mii_address(int ipd_port);
+  * Returns The ports link status. If the link isn't fully resolved, this must
+  *	   return zero.
+  */
+-extern cvmx_helper_link_info_t __cvmx_helper_board_link_get(int ipd_port);
++extern union cvmx_helper_link_info __cvmx_helper_board_link_get(int ipd_port);
  
  /**
-@@ -1382,7 +1382,7 @@ static inline cvmx_wqe_t *cvmx_pow_work_request_sync_nocheck(cvmx_pow_wait_t
-  * Returns Returns the WQE pointer from POW. Returns NULL if no work
-  * was available.
+  * This function is called by cvmx_helper_interface_probe() after it
+diff --git a/arch/mips/include/asm/octeon/cvmx-helper-rgmii.h b/arch/mips/include/asm/octeon/cvmx-helper-rgmii.h
+index ac42b5066bd9..3e79a7f898b6 100644
+--- a/arch/mips/include/asm/octeon/cvmx-helper-rgmii.h
++++ b/arch/mips/include/asm/octeon/cvmx-helper-rgmii.h
+@@ -74,7 +74,7 @@ extern int __cvmx_helper_rgmii_enable(int interface);
+  *
+  * Returns Link state
   */
--static inline cvmx_wqe_t *cvmx_pow_work_request_sync(cvmx_pow_wait_t wait)
-+static inline struct cvmx_wqe *cvmx_pow_work_request_sync(cvmx_pow_wait_t wait)
- {
- 	if (CVMX_ENABLE_POW_CHECKS)
- 		__cvmx_pow_warn_if_pending_switch(__func__);
-@@ -1485,7 +1485,7 @@ static inline void cvmx_pow_work_request_async(int scr_addr,
-  * Returns Returns the WQE from the scratch register, or NULL if no
-  * work was available.
-  */
--static inline cvmx_wqe_t *cvmx_pow_work_response_async(int scr_addr)
-+static inline struct cvmx_wqe *cvmx_pow_work_response_async(int scr_addr)
- {
- 	cvmx_pow_tag_load_resp_t result;
- 
-@@ -1495,7 +1495,7 @@ static inline cvmx_wqe_t *cvmx_pow_work_response_async(int scr_addr)
- 	if (result.s_work.no_work)
- 		return NULL;
- 	else
--		return (cvmx_wqe_t *) cvmx_phys_to_ptr(result.s_work.addr);
-+		return (struct cvmx_wqe *) cvmx_phys_to_ptr(result.s_work.addr);
- }
+-extern cvmx_helper_link_info_t __cvmx_helper_rgmii_link_get(int ipd_port);
++extern union cvmx_helper_link_info __cvmx_helper_rgmii_link_get(int ipd_port);
  
  /**
-@@ -1508,7 +1508,7 @@ static inline cvmx_wqe_t *cvmx_pow_work_response_async(int scr_addr)
-  * Returns 0 if pointer is valid
-  *	   1 if invalid (no work was returned)
+  * Configure an IPD/PKO port for the specified link state. This
+@@ -88,6 +88,6 @@ extern cvmx_helper_link_info_t __cvmx_helper_rgmii_link_get(int ipd_port);
+  * Returns Zero on success, negative on failure
   */
--static inline uint64_t cvmx_pow_work_invalid(cvmx_wqe_t *wqe_ptr)
-+static inline uint64_t cvmx_pow_work_invalid(struct cvmx_wqe *wqe_ptr)
- {
- 	return wqe_ptr == NULL;
- }
-@@ -1638,7 +1638,7 @@ static inline void cvmx_pow_tag_sw(uint32_t tag,
-  * @tag_type: type of tag
-  * @group:    group value for the work queue entry.
-  */
--static inline void cvmx_pow_tag_sw_full_nocheck(cvmx_wqe_t *wqp, uint32_t tag,
-+static inline void cvmx_pow_tag_sw_full_nocheck(struct cvmx_wqe *wqp, uint32_t tag,
- 						enum cvmx_pow_tag_type tag_type,
- 						uint64_t group)
- {
-@@ -1712,7 +1712,7 @@ static inline void cvmx_pow_tag_sw_full_nocheck(cvmx_wqe_t *wqp, uint32_t tag,
-  * @tag_type: type of tag
-  * @group:	group value for the work queue entry.
-  */
--static inline void cvmx_pow_tag_sw_full(cvmx_wqe_t *wqp, uint32_t tag,
-+static inline void cvmx_pow_tag_sw_full(struct cvmx_wqe *wqp, uint32_t tag,
- 					enum cvmx_pow_tag_type tag_type,
- 					uint64_t group)
- {
-@@ -1803,7 +1803,7 @@ static inline void cvmx_pow_tag_sw_null(void)
-  * @qos:      Input queue to add to.
-  * @grp:      group value for the work queue entry.
-  */
--static inline void cvmx_pow_work_submit(cvmx_wqe_t *wqp, uint32_t tag,
-+static inline void cvmx_pow_work_submit(struct cvmx_wqe *wqp, uint32_t tag,
- 					enum cvmx_pow_tag_type tag_type,
- 					uint64_t qos, uint64_t grp)
- {
-diff --git a/arch/mips/include/asm/octeon/cvmx-wqe.h b/arch/mips/include/asm/octeon/cvmx-wqe.h
-index 0d697aa786d4..9cec2299b81b 100644
---- a/arch/mips/include/asm/octeon/cvmx-wqe.h
-+++ b/arch/mips/include/asm/octeon/cvmx-wqe.h
-@@ -547,7 +547,7 @@ union cvmx_wqe_word1 {
+ extern int __cvmx_helper_rgmii_link_set(int ipd_port,
+-					cvmx_helper_link_info_t link_info);
++					union cvmx_helper_link_info link_info);
+ 
+ #endif
+diff --git a/arch/mips/include/asm/octeon/cvmx-helper-sgmii.h b/arch/mips/include/asm/octeon/cvmx-helper-sgmii.h
+index 3a54dea58c0a..8aac90f1871f 100644
+--- a/arch/mips/include/asm/octeon/cvmx-helper-sgmii.h
++++ b/arch/mips/include/asm/octeon/cvmx-helper-sgmii.h
+@@ -68,7 +68,7 @@ extern int __cvmx_helper_sgmii_enable(int interface);
   *
-  * must be 8-byte aligned
+  * Returns Link state
   */
--typedef struct {
-+struct cvmx_wqe {
+-extern cvmx_helper_link_info_t __cvmx_helper_sgmii_link_get(int ipd_port);
++extern union cvmx_helper_link_info __cvmx_helper_sgmii_link_get(int ipd_port);
  
-     /*****************************************************************
-      * WORD 0
-@@ -593,9 +593,9 @@ typedef struct {
-      *
-      */
+ /**
+  * Configure an IPD/PKO port for the specified link state. This
+@@ -82,6 +82,6 @@ extern cvmx_helper_link_info_t __cvmx_helper_sgmii_link_get(int ipd_port);
+  * Returns Zero on success, negative on failure
+  */
+ extern int __cvmx_helper_sgmii_link_set(int ipd_port,
+-					cvmx_helper_link_info_t link_info);
++					union cvmx_helper_link_info link_info);
  
--} CVMX_CACHE_LINE_ALIGNED cvmx_wqe_t;
-+} CVMX_CACHE_LINE_ALIGNED;
+ #endif
+diff --git a/arch/mips/include/asm/octeon/cvmx-helper-spi.h b/arch/mips/include/asm/octeon/cvmx-helper-spi.h
+index d5adf8592773..bc8cab9367b8 100644
+--- a/arch/mips/include/asm/octeon/cvmx-helper-spi.h
++++ b/arch/mips/include/asm/octeon/cvmx-helper-spi.h
+@@ -65,7 +65,7 @@ extern int __cvmx_helper_spi_enable(int interface);
+  *
+  * Returns Link state
+  */
+-extern cvmx_helper_link_info_t __cvmx_helper_spi_link_get(int ipd_port);
++extern union cvmx_helper_link_info __cvmx_helper_spi_link_get(int ipd_port);
  
--static inline int cvmx_wqe_get_port(cvmx_wqe_t *work)
-+static inline int cvmx_wqe_get_port(struct cvmx_wqe *work)
- {
- 	int port;
+ /**
+  * Configure an IPD/PKO port for the specified link state. This
+@@ -79,6 +79,6 @@ extern cvmx_helper_link_info_t __cvmx_helper_spi_link_get(int ipd_port);
+  * Returns Zero on success, negative on failure
+  */
+ extern int __cvmx_helper_spi_link_set(int ipd_port,
+-				      cvmx_helper_link_info_t link_info);
++				      union cvmx_helper_link_info link_info);
  
-@@ -607,7 +607,7 @@ static inline int cvmx_wqe_get_port(cvmx_wqe_t *work)
- 	return port;
- }
+ #endif
+diff --git a/arch/mips/include/asm/octeon/cvmx-helper-xaui.h b/arch/mips/include/asm/octeon/cvmx-helper-xaui.h
+index 51f45b495680..c18da2eba78e 100644
+--- a/arch/mips/include/asm/octeon/cvmx-helper-xaui.h
++++ b/arch/mips/include/asm/octeon/cvmx-helper-xaui.h
+@@ -68,7 +68,7 @@ extern int __cvmx_helper_xaui_enable(int interface);
+  *
+  * Returns Link state
+  */
+-extern cvmx_helper_link_info_t __cvmx_helper_xaui_link_get(int ipd_port);
++extern union cvmx_helper_link_info __cvmx_helper_xaui_link_get(int ipd_port);
  
--static inline void cvmx_wqe_set_port(cvmx_wqe_t *work, int port)
-+static inline void cvmx_wqe_set_port(struct cvmx_wqe *work, int port)
- {
- 	if (octeon_has_feature(OCTEON_FEATURE_CN68XX_WQE))
- 		work->word2.s_cn68xx.port = port;
-@@ -615,7 +615,7 @@ static inline void cvmx_wqe_set_port(cvmx_wqe_t *work, int port)
- 		work->word1.cn38xx.ipprt = port;
- }
+ /**
+  * Configure an IPD/PKO port for the specified link state. This
+@@ -82,6 +82,6 @@ extern cvmx_helper_link_info_t __cvmx_helper_xaui_link_get(int ipd_port);
+  * Returns Zero on success, negative on failure
+  */
+ extern int __cvmx_helper_xaui_link_set(int ipd_port,
+-				       cvmx_helper_link_info_t link_info);
++				       union cvmx_helper_link_info link_info);
  
--static inline int cvmx_wqe_get_grp(cvmx_wqe_t *work)
-+static inline int cvmx_wqe_get_grp(struct cvmx_wqe *work)
- {
- 	int grp;
+ #endif
+diff --git a/arch/mips/include/asm/octeon/cvmx-helper.h b/arch/mips/include/asm/octeon/cvmx-helper.h
+index ba0e76f578e0..c6c99e28eefb 100644
+--- a/arch/mips/include/asm/octeon/cvmx-helper.h
++++ b/arch/mips/include/asm/octeon/cvmx-helper.h
+@@ -51,7 +51,7 @@ typedef enum {
+ 	CVMX_HELPER_INTERFACE_MODE_LOOP,
+ } cvmx_helper_interface_mode_t;
  
-@@ -627,7 +627,7 @@ static inline int cvmx_wqe_get_grp(cvmx_wqe_t *work)
- 	return grp;
- }
+-typedef union {
++union cvmx_helper_link_info {
+ 	uint64_t u64;
+ 	struct {
+ 		uint64_t reserved_20_63:44;
+@@ -59,7 +59,7 @@ typedef union {
+ 		uint64_t full_duplex:1;	    /**< 1 if the link is full duplex */
+ 		uint64_t speed:18;	    /**< Speed of the link in Mbps */
+ 	} s;
+-} cvmx_helper_link_info_t;
++};
  
--static inline void cvmx_wqe_set_grp(cvmx_wqe_t *work, int grp)
-+static inline void cvmx_wqe_set_grp(struct cvmx_wqe *work, int grp)
- {
- 	if (octeon_has_feature(OCTEON_FEATURE_CN68XX_WQE))
- 		work->word1.cn68xx.grp = grp;
-@@ -635,7 +635,7 @@ static inline void cvmx_wqe_set_grp(cvmx_wqe_t *work, int grp)
- 		work->word1.cn38xx.grp = grp;
- }
+ #include <asm/octeon/cvmx-helper-errata.h>
+ #include <asm/octeon/cvmx-helper-loop.h>
+@@ -145,7 +145,7 @@ extern cvmx_helper_interface_mode_t cvmx_helper_interface_get_mode(int
+  *
+  * Returns Link state
+  */
+-extern cvmx_helper_link_info_t cvmx_helper_link_get(int ipd_port);
++extern union cvmx_helper_link_info cvmx_helper_link_get(int ipd_port);
  
--static inline int cvmx_wqe_get_qos(cvmx_wqe_t *work)
-+static inline int cvmx_wqe_get_qos(struct cvmx_wqe *work)
- {
- 	int qos;
+ /**
+  * Configure an IPD/PKO port for the specified link state. This
+@@ -159,7 +159,7 @@ extern cvmx_helper_link_info_t cvmx_helper_link_get(int ipd_port);
+  * Returns Zero on success, negative on failure
+  */
+ extern int cvmx_helper_link_set(int ipd_port,
+-				cvmx_helper_link_info_t link_info);
++				union cvmx_helper_link_info link_info);
  
-@@ -647,7 +647,7 @@ static inline int cvmx_wqe_get_qos(cvmx_wqe_t *work)
- 	return qos;
- }
- 
--static inline void cvmx_wqe_set_qos(cvmx_wqe_t *work, int qos)
-+static inline void cvmx_wqe_set_qos(struct cvmx_wqe *work, int qos)
- {
- 	if (octeon_has_feature(OCTEON_FEATURE_CN68XX_WQE))
- 		work->word1.cn68xx.qos = qos;
+ /**
+  * This function probes an interface to determine the actual
 -- 
 2.25.0
 
