@@ -1,90 +1,89 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CC351530D2
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 13:32:45 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F137B15324C
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 14:52:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CC3BA2083F;
-	Wed,  5 Feb 2020 12:32:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 80F3287952;
+	Wed,  5 Feb 2020 13:52:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RCnHFg54b5Em; Wed,  5 Feb 2020 12:32:43 +0000 (UTC)
+	with ESMTP id 9w61zqru0ybp; Wed,  5 Feb 2020 13:52:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6D5DA204C7;
-	Wed,  5 Feb 2020 12:32:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BB6A7877B5;
+	Wed,  5 Feb 2020 13:52:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B40881BF2AF
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 12:32:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 764431BF377
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 13:52:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B06ED8507C
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 12:32:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 71BBA87877
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 13:52:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zf3eXX4zXlvP for <devel@linuxdriverproject.org>;
- Wed,  5 Feb 2020 12:32:39 +0000 (UTC)
+ with ESMTP id hK3342KXhec2 for <devel@linuxdriverproject.org>;
+ Wed,  5 Feb 2020 13:52:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 22D0984028
- for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 12:32:39 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 015CDDAU049153;
- Wed, 5 Feb 2020 12:32:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2019-08-05;
- bh=GUiOQSjCmVJap9iOhg8SiBD9U1JsEXChoFvSaXIazso=;
- b=VfWMjALSUB8PVOCJus/U5ODk/Wjz41cc4AV/+EKVnZej7lshichEUPLJlAkO+zDRfsoF
- daVG0hharfucLYcyL3yQREj6JfkS0O3xEk9Eul4aOh4YdQG2Yqd3xBBVASbI5+VXJteo
- NQOftakUgMn/fhkHfWl7b3K1n4VYyatpkD1rRGjQLcKrBn8kvas+kBhboTpuA0eCPTJd
- skegPr86/d2blomqEMbDdytQHWHepLWg/djCsmdOIJPuuWy52lEEB/P1rsxFf5Yq2v1w
- m6r81AqNcQPdC7r1IizGFc/pDd9PzLZX11LtE2tiAWvYUJJ67uITX6Rfg2E4o7GrJ1Vm PQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2xykbp2pd1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 05 Feb 2020 12:32:34 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 015CEPCW144142;
- Wed, 5 Feb 2020 12:32:33 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 2xykbrrku3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 05 Feb 2020 12:32:33 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 015CWUhT031737;
- Wed, 5 Feb 2020 12:32:30 GMT
-Received: from kili.mountain (/129.205.23.165)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 05 Feb 2020 04:32:29 -0800
-Date: Wed, 5 Feb 2020 15:32:17 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Vaibhav Agarwal <vaibhav.sr@gmail.com>, Dinko Mironov <dmironov@mm-sol.com>
-Subject: [PATCH] staging: greybus: use after free in
- gb_audio_manager_remove_all()
-Message-ID: <20200205123217.jreendkyxulqsool@kili.mountain>
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 766378731E
+ for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 13:52:53 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id k3so1007775pgc.3
+ for <devel@driverdev.osuosl.org>; Wed, 05 Feb 2020 05:52:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=QYRfDWZUUtqTWM9My1jeCr++tfeRfO79KtdWK10VIjs=;
+ b=H6fVaPc+LuRLDkElWAchKpNLhgRPwesVngj2xuybBCoFYnlFyQ/u8/STOOXNdzoE8u
+ NrcXlX0l1tKgvRvNCcq70uEQNXfywgVo2U0GZyKReuOUeuOh14swQJ9PK9V2wfhbwItI
+ 0BpVDDR0Wi1xpfz07Lx6Wc/Cc+oyzOKzNMG7ZugzvMP/k0QE9cZaXrAmglyDihldlgsi
+ DdrMCvfCcSHBhSLGonRygTn2bcSD2aAkYstSXlnQPTcLFutkNtK1ay6TKM0Gren9Suru
+ T0epaZdrS10K+4vnY0WKXZvOWlUbQM/rqSMexwkJPuYYSHoN9UKg+TSRu/mKnGyomkuF
+ BZCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=QYRfDWZUUtqTWM9My1jeCr++tfeRfO79KtdWK10VIjs=;
+ b=O5UPzLFDsn4XeQoDSXm63wENZbhomBTyyL7C1MvjHeudFIi8BUTxIpyqqYg0NXvMm3
+ PjT/BXUYaa32sqa7iV5V3kpW9qnnnlzKqd5weANeF+KsYW/N/B3ajYjw0NIHnXm4MfCv
+ 7/LWenN4Y1zLHxgx2oPuW0IdArni9/BkiBnNMwTy4Yo7kXmc8AZUwH+WkM7AvPJd2/YG
+ EXhpFshqUrKC1T1HQxj3LvENdkRRiArhCpz6VdiB4EuvGMcUN6F65rr4CJZDPDAnjRTK
+ KRuyA49sMozrizv35LbDSB7SgVVDFWZL8pFMCBUZrBPlHiqpTbTebjvWYZH2NWzu6YN8
+ ttAw==
+X-Gm-Message-State: APjAAAXIR3w+ge06ILWGUM0BW3v4jEv5lhcWyQOwLVfyyqlXtOhOZFJp
+ UlDWhD7PByrxqbNcHbIYADc=
+X-Google-Smtp-Source: APXvYqycEBBTpOdjid+edNq3gFMEa+YCgpCDM23U3y6giQQkt6Q3jSAXmWyd/rHYyZ+8I6GFOsJ/Mg==
+X-Received: by 2002:a63:8743:: with SMTP id i64mr14847459pge.243.1580910773072; 
+ Wed, 05 Feb 2020 05:52:53 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ r66sm29853616pfc.74.2020.02.05.05.52.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 05 Feb 2020 05:52:52 -0800 (PST)
+Subject: Re: [PATCH 1/2] staging: octeon: delete driver
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+References: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
+ <6f934497-0635-7aa0-e7d5-ed2c4cc48d2d@roeck-us.net>
+ <da150cdb160b5d1b58ad1ea2674cc93c1fc6aadc.camel@alliedtelesis.co.nz>
+ <20200204070927.GA966981@kroah.com>
+ <1a90dc4c62c482ed6a44de70962996b533d6f627.camel@alliedtelesis.co.nz>
+ <20200204203116.GN8731@bombadil.infradead.org> <20200205033416.GT1778@kadam>
+ <a3032823-03a9-f018-73e4-eb0d71e0bb53@roeck-us.net>
+ <CAMuHMdXKtJEvwRViRpy4nHbxv68P_rCFWbpikw=BMM5XnBvD2A@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <dd09609d-d504-9a9e-453e-6b0ef66e6211@roeck-us.net>
+Date: Wed, 5 Feb 2020 05:52:50 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9521
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=2
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-2002050100
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9521
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=2 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-2002050100
+In-Reply-To: <CAMuHMdXKtJEvwRViRpy4nHbxv68P_rCFWbpikw=BMM5XnBvD2A@mail.gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,42 +96,90 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
- kernel-janitors@vger.kernel.org, Mark Greer <mgreer@animalcreek.com>,
- Johan Hovold <johan@kernel.org>, greybus-dev@lists.linaro.org,
- Greg Kroah-Hartman <gregkh@google.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "brandonbonaby94@gmail.com" <brandonbonaby94@gmail.com>,
+ "bobdc9664@seznam.cz" <bobdc9664@seznam.cz>, "fw@strlen.de" <fw@strlen.de>,
+ "paulburton@kernel.org" <paulburton@kernel.org>,
+ "aaro.koskinen@iki.fi" <aaro.koskinen@iki.fi>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "yuehaibing@huawei.com" <yuehaibing@huawei.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Matthew Wilcox <willy@infradead.org>,
+ "ddaney@caviumnetworks.com" <ddaney@caviumnetworks.com>,
+ "julia.lawall@lip6.fr" <julia.lawall@lip6.fr>,
+ "sandro@volery.com" <sandro@volery.com>,
+ Chris Packham <Chris.Packham@alliedtelesis.co.nz>,
+ "ivalery111@gmail.com" <ivalery111@gmail.com>, "ynezz@true.cz" <ynezz@true.cz>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ "wambui.karugax@gmail.com" <wambui.karugax@gmail.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When we call kobject_put() and it's the last reference to the kobject
-then it calls gb_audio_module_release() and frees module.  We dereference
-"module" on the next line which is a use after free.
+On 2/5/20 1:03 AM, Geert Uytterhoeven wrote:
+> On Wed, Feb 5, 2020 at 4:57 AM Guenter Roeck <linux@roeck-us.net> wrote:
+>> On 2/4/20 7:34 PM, Dan Carpenter wrote:
+>>> On Tue, Feb 04, 2020 at 12:31:16PM -0800, Matthew Wilcox wrote:
+>>>> On Tue, Feb 04, 2020 at 08:06:14PM +0000, Chris Packham wrote:
+>>>>> On Tue, 2020-02-04 at 07:09 +0000, gregkh@linuxfoundation.org wrote:
+>>>>>> On Tue, Feb 04, 2020 at 04:02:15AM +0000, Chris Packham wrote:
+>>>>> On Tue, 2020-02-04 at 10:21 +0300, Dan Carpenter wrote:
+>>>>>> My advice is to delete all the COMPILE_TEST code.  That stuff was a
+>>>>>> constant source of confusion and headaches.
+>>>>>
+>>>>> I was also going to suggest this. Since the COMPILE_TEST has been a
+>>>>> source of trouble I was going to propose dropping the || COMPILE_TEST
+>>>>> from the Kconfig for the octeon drivers.
+>>>>
+>>>> Not having it also causes problems.  I didn't originally add it for
+>>>> shits and giggles.
+>>>
+>>> I wonder if the kbuild bot does enough cross compile build testing these
+>>> days to detect compile problems.  It might have improved to the point
+>>> where COMPILE_TEST isn't required.
+> 
+> It depends...
+> 
+>> Not really. Looking at the build failures in the mainline kernel right now:
+>>
+>> Failed builds:
+>>          alpha:allmodconfig
+>>          arm:allmodconfig
+>>          i386:allyesconfig
+>>          i386:allmodconfig
+>>          m68k:allmodconfig
+>>          microblaze:mmu_defconfig
+>>          mips:allmodconfig
+>>          parisc:allmodconfig
+>>          powerpc:allmodconfig
+>>          s390:allmodconfig
+>>          sparc64:allmodconfig
+> 
+> I did receive a report from noreply@ellerman.id.au for the m68k build
+> failure. But that was sent to me only, not to the offender, and I do my
+> own builds anyway.
+> 
+> More interesting, that report happened after the offending commit landed
+> upstream, while it had been in next for 4 weeks.
+> 
 
-Fixes: c77f85bbc91a ("greybus: audio: Fix incorrect counting of 'ida'")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/staging/greybus/audio_manager.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+m68k in -next builds fine for me, and did for a while. I have not seen a build
+failure there. There must be a context commit causing this failure, or what
+is (or was) in -next differs from what is in mainline.
 
-diff --git a/drivers/staging/greybus/audio_manager.c b/drivers/staging/greybus/audio_manager.c
-index 9b19ea9d3fa1..9a3f7c034ab4 100644
---- a/drivers/staging/greybus/audio_manager.c
-+++ b/drivers/staging/greybus/audio_manager.c
-@@ -92,8 +92,8 @@ void gb_audio_manager_remove_all(void)
- 
- 	list_for_each_entry_safe(module, next, &modules_list, list) {
- 		list_del(&module->list);
--		kobject_put(&module->kobj);
- 		ida_simple_remove(&module_id, module->id);
-+		kobject_put(&module->kobj);
- 	}
- 
- 	is_empty = list_empty(&modules_list);
--- 
-2.11.0
+>> Many of those don't even _have_ specific configurations causing the build failures.
+> 
+> Exactly. These are the "easy" ones, as the all*config builds enable as
+> much infrastructure as possible.  It's much harder if some common
+> dependency is not fulfilled in some specific config.
+> 
 
+Yes, that is correct. But that doesn't mean that it would be a good idea
+to retire COMPILE_TEST.
+
+Guenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
