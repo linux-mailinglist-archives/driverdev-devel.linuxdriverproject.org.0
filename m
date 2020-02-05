@@ -1,89 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F137B15324C
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 14:52:58 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E72B153391
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 15:59:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 80F3287952;
-	Wed,  5 Feb 2020 13:52:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B15538443A;
+	Wed,  5 Feb 2020 14:59:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9w61zqru0ybp; Wed,  5 Feb 2020 13:52:57 +0000 (UTC)
+	with ESMTP id y-ufUjZ819Ic; Wed,  5 Feb 2020 14:59:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BB6A7877B5;
-	Wed,  5 Feb 2020 13:52:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 157C183F07;
+	Wed,  5 Feb 2020 14:59:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 764431BF377
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 13:52:54 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F5B21BF271
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 14:59:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 71BBA87877
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 13:52:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6C2888356F
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 14:59:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hK3342KXhec2 for <devel@linuxdriverproject.org>;
- Wed,  5 Feb 2020 13:52:53 +0000 (UTC)
+ with ESMTP id BtU23Ijxq9gl for <devel@linuxdriverproject.org>;
+ Wed,  5 Feb 2020 14:59:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 766378731E
- for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 13:52:53 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id k3so1007775pgc.3
- for <devel@driverdev.osuosl.org>; Wed, 05 Feb 2020 05:52:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=QYRfDWZUUtqTWM9My1jeCr++tfeRfO79KtdWK10VIjs=;
- b=H6fVaPc+LuRLDkElWAchKpNLhgRPwesVngj2xuybBCoFYnlFyQ/u8/STOOXNdzoE8u
- NrcXlX0l1tKgvRvNCcq70uEQNXfywgVo2U0GZyKReuOUeuOh14swQJ9PK9V2wfhbwItI
- 0BpVDDR0Wi1xpfz07Lx6Wc/Cc+oyzOKzNMG7ZugzvMP/k0QE9cZaXrAmglyDihldlgsi
- DdrMCvfCcSHBhSLGonRygTn2bcSD2aAkYstSXlnQPTcLFutkNtK1ay6TKM0Gren9Suru
- T0epaZdrS10K+4vnY0WKXZvOWlUbQM/rqSMexwkJPuYYSHoN9UKg+TSRu/mKnGyomkuF
- BZCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=QYRfDWZUUtqTWM9My1jeCr++tfeRfO79KtdWK10VIjs=;
- b=O5UPzLFDsn4XeQoDSXm63wENZbhomBTyyL7C1MvjHeudFIi8BUTxIpyqqYg0NXvMm3
- PjT/BXUYaa32sqa7iV5V3kpW9qnnnlzKqd5weANeF+KsYW/N/B3ajYjw0NIHnXm4MfCv
- 7/LWenN4Y1zLHxgx2oPuW0IdArni9/BkiBnNMwTy4Yo7kXmc8AZUwH+WkM7AvPJd2/YG
- EXhpFshqUrKC1T1HQxj3LvENdkRRiArhCpz6VdiB4EuvGMcUN6F65rr4CJZDPDAnjRTK
- KRuyA49sMozrizv35LbDSB7SgVVDFWZL8pFMCBUZrBPlHiqpTbTebjvWYZH2NWzu6YN8
- ttAw==
-X-Gm-Message-State: APjAAAXIR3w+ge06ILWGUM0BW3v4jEv5lhcWyQOwLVfyyqlXtOhOZFJp
- UlDWhD7PByrxqbNcHbIYADc=
-X-Google-Smtp-Source: APXvYqycEBBTpOdjid+edNq3gFMEa+YCgpCDM23U3y6giQQkt6Q3jSAXmWyd/rHYyZ+8I6GFOsJ/Mg==
-X-Received: by 2002:a63:8743:: with SMTP id i64mr14847459pge.243.1580910773072; 
- Wed, 05 Feb 2020 05:52:53 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- r66sm29853616pfc.74.2020.02.05.05.52.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 05 Feb 2020 05:52:52 -0800 (PST)
-Subject: Re: [PATCH 1/2] staging: octeon: delete driver
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-References: <20191210091509.3546251-1-gregkh@linuxfoundation.org>
- <6f934497-0635-7aa0-e7d5-ed2c4cc48d2d@roeck-us.net>
- <da150cdb160b5d1b58ad1ea2674cc93c1fc6aadc.camel@alliedtelesis.co.nz>
- <20200204070927.GA966981@kroah.com>
- <1a90dc4c62c482ed6a44de70962996b533d6f627.camel@alliedtelesis.co.nz>
- <20200204203116.GN8731@bombadil.infradead.org> <20200205033416.GT1778@kadam>
- <a3032823-03a9-f018-73e4-eb0d71e0bb53@roeck-us.net>
- <CAMuHMdXKtJEvwRViRpy4nHbxv68P_rCFWbpikw=BMM5XnBvD2A@mail.gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <dd09609d-d504-9a9e-453e-6b0ef66e6211@roeck-us.net>
-Date: Wed, 5 Feb 2020 05:52:50 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+Received: from huawei.com (lhrrgout.huawei.com [185.176.76.210])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3F8F4835B4
+ for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 14:59:44 +0000 (UTC)
+Received: from lhreml702-cah.china.huawei.com (unknown [172.18.7.106])
+ by Forcepoint Email with ESMTP id 6217756200216D6E71B6;
+ Wed,  5 Feb 2020 14:59:41 +0000 (GMT)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml702-cah.china.huawei.com (10.201.108.43) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Wed, 5 Feb 2020 14:59:41 +0000
+Received: from localhost (10.202.226.57) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Wed, 5 Feb 2020
+ 14:59:40 +0000
+Date: Wed, 5 Feb 2020 14:59:38 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: "Sa, Nuno" <Nuno.Sa@analog.com>
+Subject: Re: [PATCH 2/4] iio: imu: adis: Refactor adis_initial_startup
+Message-ID: <20200205145938.00006a35@Huawei.com>
+In-Reply-To: <182c1f94c7311580aea1b4cabe0ab2ae26bed3a6.camel@analog.com>
+References: <20200120142051.28533-1-alexandru.ardelean@analog.com>
+ <20200120142051.28533-2-alexandru.ardelean@analog.com>
+ <20200201170839.4ab98d8e@archlinux>
+ <da82db5f81e116c7ecc36f5d9833b90b4f7cd15d.camel@gmail.com>
+ <20200203120338.000044c1@Huawei.com>
+ <182c1f94c7311580aea1b4cabe0ab2ae26bed3a6.camel@analog.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-In-Reply-To: <CAMuHMdXKtJEvwRViRpy4nHbxv68P_rCFWbpikw=BMM5XnBvD2A@mail.gmail.com>
-Content-Language: en-US
+X-Originating-IP: [10.202.226.57]
+X-ClientProxiedBy: lhreml712-chm.china.huawei.com (10.201.108.63) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,89 +73,401 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "brandonbonaby94@gmail.com" <brandonbonaby94@gmail.com>,
- "bobdc9664@seznam.cz" <bobdc9664@seznam.cz>, "fw@strlen.de" <fw@strlen.de>,
- "paulburton@kernel.org" <paulburton@kernel.org>,
- "aaro.koskinen@iki.fi" <aaro.koskinen@iki.fi>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "yuehaibing@huawei.com" <yuehaibing@huawei.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Matthew Wilcox <willy@infradead.org>,
- "ddaney@caviumnetworks.com" <ddaney@caviumnetworks.com>,
- "julia.lawall@lip6.fr" <julia.lawall@lip6.fr>,
- "sandro@volery.com" <sandro@volery.com>,
- Chris Packham <Chris.Packham@alliedtelesis.co.nz>,
- "ivalery111@gmail.com" <ivalery111@gmail.com>, "ynezz@true.cz" <ynezz@true.cz>,
- "davem@davemloft.net" <davem@davemloft.net>,
- Dan Carpenter <dan.carpenter@oracle.com>,
- "wambui.karugax@gmail.com" <wambui.karugax@gmail.com>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+ "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Bogdan,
+ Dragos" <Dragos.Bogdan@analog.com>, "Ardelean,
+ Alexandru" <alexandru.Ardelean@analog.com>,
+ "jic23@kernel.org" <jic23@kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2/5/20 1:03 AM, Geert Uytterhoeven wrote:
-> On Wed, Feb 5, 2020 at 4:57 AM Guenter Roeck <linux@roeck-us.net> wrote:
->> On 2/4/20 7:34 PM, Dan Carpenter wrote:
->>> On Tue, Feb 04, 2020 at 12:31:16PM -0800, Matthew Wilcox wrote:
->>>> On Tue, Feb 04, 2020 at 08:06:14PM +0000, Chris Packham wrote:
->>>>> On Tue, 2020-02-04 at 07:09 +0000, gregkh@linuxfoundation.org wrote:
->>>>>> On Tue, Feb 04, 2020 at 04:02:15AM +0000, Chris Packham wrote:
->>>>> On Tue, 2020-02-04 at 10:21 +0300, Dan Carpenter wrote:
->>>>>> My advice is to delete all the COMPILE_TEST code.  That stuff was a
->>>>>> constant source of confusion and headaches.
->>>>>
->>>>> I was also going to suggest this. Since the COMPILE_TEST has been a
->>>>> source of trouble I was going to propose dropping the || COMPILE_TEST
->>>>> from the Kconfig for the octeon drivers.
->>>>
->>>> Not having it also causes problems.  I didn't originally add it for
->>>> shits and giggles.
->>>
->>> I wonder if the kbuild bot does enough cross compile build testing these
->>> days to detect compile problems.  It might have improved to the point
->>> where COMPILE_TEST isn't required.
-> 
-> It depends...
-> 
->> Not really. Looking at the build failures in the mainline kernel right now:
->>
->> Failed builds:
->>          alpha:allmodconfig
->>          arm:allmodconfig
->>          i386:allyesconfig
->>          i386:allmodconfig
->>          m68k:allmodconfig
->>          microblaze:mmu_defconfig
->>          mips:allmodconfig
->>          parisc:allmodconfig
->>          powerpc:allmodconfig
->>          s390:allmodconfig
->>          sparc64:allmodconfig
-> 
-> I did receive a report from noreply@ellerman.id.au for the m68k build
-> failure. But that was sent to me only, not to the offender, and I do my
-> own builds anyway.
-> 
-> More interesting, that report happened after the offending commit landed
-> upstream, while it had been in next for 4 weeks.
-> 
+On Wed, 5 Feb 2020 12:25:40 +0000
+"Sa, Nuno" <Nuno.Sa@analog.com> wrote:
 
-m68k in -next builds fine for me, and did for a while. I have not seen a build
-failure there. There must be a context commit causing this failure, or what
-is (or was) in -next differs from what is in mainline.
+> On Mon, 2020-02-03 at 12:03 +0000, Jonathan Cameron wrote:
+> > =
 
->> Many of those don't even _have_ specific configurations causing the build failures.
-> 
-> Exactly. These are the "easy" ones, as the all*config builds enable as
-> much infrastructure as possible.  It's much harder if some common
-> dependency is not fulfilled in some specific config.
-> 
+> > On Mon, 3 Feb 2020 10:31:30 +0100
+> > Nuno S=E1 <noname.nuno@gmail.com> wrote:
+> >   =
 
-Yes, that is correct. But that doesn't mean that it would be a good idea
-to retire COMPILE_TEST.
+> > > Hi Jonathan,
+> > > =
 
-Guenter
+> > > =
+
+> > > On Sat, 2020-02-01 at 17:08 +0000, Jonathan Cameron wrote:  =
+
+> > > > On Mon, 20 Jan 2020 16:20:49 +0200
+> > > > Alexandru Ardelean <alexandru.ardelean@analog.com> wrote:
+> > > >     =
+
+> > > > > From: Nuno S=E1 <nuno.sa@analog.com>
+> > > > > =
+
+> > > > > All the ADIS devices perform, at the beginning, a self test to
+> > > > > make
+> > > > > sure
+> > > > > the device is in a sane state. Furthermore, some drivers also
+> > > > > do a
+> > > > > call
+> > > > > to `adis_reset()` before the test which is also a good
+> > > > > practice.
+> > > > > This
+> > > > > patch unifies all those operation so that, there's no need for
+> > > > > code
+> > > > > duplication. Furthermore, the rst pin is also checked to make
+> > > > > sure
+> > > > > the
+> > > > > device is not in HW reset. On top of this, some drivers also
+> > > > > read
+> > > > > the
+> > > > > device product id and compare it with the device being probed
+> > > > > to
+> > > > > make
+> > > > > sure the correct device is being handled. This can also be
+> > > > > passed
+> > > > > to the
+> > > > > library by introducing a variable holding the PROD_ID register
+> > > > > of
+> > > > > the
+> > > > > device.
+> > > > > =
+
+> > > > > Signed-off-by: Nuno S=E1 <nuno.sa@analog.com>
+> > > > > Signed-off-by: Alexandru Ardelean <  =
+
+> > > > > alexandru.ardelean@analog.com>  =
+
+> > > > > ---
+> > > > >  drivers/iio/imu/Kconfig      |  1 +
+> > > > >  drivers/iio/imu/adis.c       | 63 ++++++++++++++++++++++++++
+> > > > > ----
+> > > > > ------
+> > > > >  include/linux/iio/imu/adis.h | 15 ++++++++-
+> > > > >  3 files changed, 61 insertions(+), 18 deletions(-)
+> > > > > =
+
+> > > > > diff --git a/drivers/iio/imu/Kconfig b/drivers/iio/imu/Kconfig
+> > > > > index 60bb1029e759..63036cf473c7 100644
+> > > > > --- a/drivers/iio/imu/Kconfig
+> > > > > +++ b/drivers/iio/imu/Kconfig
+> > > > > @@ -85,6 +85,7 @@ endmenu
+> > > > >  =
+
+> > > > >  config IIO_ADIS_LIB
+> > > > >  	tristate
+> > > > > +	depends on GPIOLIB
+> > > > >  	help
+> > > > >  	  A set of IO helper functions for the Analog Devices
+> > > > > ADIS*
+> > > > > device family.
+> > > > >  =
+
+> > > > > diff --git a/drivers/iio/imu/adis.c b/drivers/iio/imu/adis.c
+> > > > > index d02b1911b0f2..1eca5271380e 100644
+> > > > > --- a/drivers/iio/imu/adis.c
+> > > > > +++ b/drivers/iio/imu/adis.c
+> > > > > @@ -7,6 +7,7 @@
+> > > > >   */
+> > > > >  =
+
+> > > > >  #include <linux/delay.h>
+> > > > > +#include <linux/gpio/consumer.h>
+> > > > >  #include <linux/mutex.h>
+> > > > >  #include <linux/device.h>
+> > > > >  #include <linux/kernel.h>
+> > > > > @@ -365,36 +366,64 @@ static int adis_self_test(struct adis
+> > > > > *adis)
+> > > > >  }
+> > > > >  =
+
+> > > > >  /**
+> > > > > - * adis_inital_startup() - Performs device self-test
+> > > > > + * __adis_initial_startup() - Device initial setup
+> > > > >   * @adis: The adis device
+> > > > >   *
+> > > > > + * This functions makes sure the device is not in reset, via
+> > > > > rst
+> > > > > pin.
+> > > > > + * Furthermore it performs a SW reset (only in the case we are
+> > > > > not
+> > > > > coming from
+> > > > > + * reset already) and a self test. It also compares the
+> > > > > product id
+> > > > > with the
+> > > > > + * device id if the prod_id_reg variable is set.
+> > > > > + *
+> > > > >   * Returns 0 if the device is operational, a negative error
+> > > > > code
+> > > > > otherwise.
+> > > > >   *
+> > > > >   * This function should be called early on in the device
+> > > > > initialization sequence
+> > > > >   * to ensure that the device is in a sane and known state and
+> > > > > that
+> > > > > it is usable.
+> > > > >   */
+> > > > > -int adis_initial_startup(struct adis *adis)
+> > > > > +int __adis_initial_startup(struct adis *adis)
+> > > > >  {
+> > > > >  	int ret;
+> > > > > -
+> > > > > -	mutex_lock(&adis->state_lock);
+> > > > > +	struct gpio_desc *gpio;
+> > > > > +	const struct adis_timeout *timeouts =3D adis->data-  =
+
+> > > > > >timeouts;  =
+
+> > > > > +	const char *iio_name =3D spi_get_device_id(adis->spi)-  =
+
+> > > > > >name;  =
+
+> > > > > +	u16 prod_id, dev_id;
+> > > > > +
+> > > > > +	/* check if the device has rst pin low */
+> > > > > +	gpio =3D devm_gpiod_get_optional(&adis->spi->dev,
+> > > > > "reset",
+> > > > > GPIOD_ASIS);
+> > > > > +	if (IS_ERR(gpio)) {
+> > > > > +		return PTR_ERR(gpio);    =
+
+> > > > =
+
+> > > > Given you are returning here, no need for else to follow
+> > > > =
+
+> > > > if (gpio...
+> > > >     =
+
+> > > =
+
+> > > Definitely...
+> > >   =
+
+> > > > > +	} else if (gpio && gpiod_get_value_cansleep(gpio)) {
+> > > > > +		/* bring device out of reset */
+> > > > > +		gpiod_set_value_cansleep(gpio, 0);    =
+
+> > > > =
+
+> > > > Hmm. So is a software reset the best option if we have a hardware
+> > > > reset
+> > > > line but it's not currently in the reset mode?
+> > > >     =
+
+> > > =
+
+> > > Hmm, that's a fair question. Now that I think about it, if we do
+> > > have a
+> > > gpio we should just assume it's in reset and call
+> > > `gpiod_set_value_cansleep`. So, I guess we could just ditch the
+> > > `gpiod_get_value_cansleep(gpio)` part.  =
+
+> > =
+
+> > Not sure I agree.   For example the driver may well have been unbound
+> > and rebound for some reason.  =
+
+> =
+
+> Yes, that is true..
+> =
+
+> > I would argue you should just do a set / reset cycle with appropriate
+> > sleep
+> > in between.  If it's already set then no harm done, if it isn't you
+> > force
+> > a hardware reset.  =
+
+> =
+
+> So, As Im understanding, it comes down to what should we consider as
+> default. You suggest to first do the sw reset and the check the gpio
+> state and if needed, bring the device out of reset, right? Now that I
+> think about it, I think the only reason I haven't done like that is
+> because you might end up sleeping quite some time (sw reset + hw
+> reset). Either way, I'm fine with both options. Not sure if Alex has
+> something to add...
+
+Either reset should be good on it's own.  I would use hardware reset
+if the pin is there. If it's not, then use the software reset.
+
+For hardware always set the pin explicitly to reset as that guarantees
+against any race conditions, even if something odd happens.
+
+Jonathan
+
+> =
+
+> =
+
+> Nuno S=E1 =
+
+> > > > > +		msleep(timeouts->reset_ms);
+> > > > > +	} else {
+> > > > > +		ret =3D __adis_reset(adis);
+> > > > > +		if (ret)
+> > > > > +			return ret;
+> > > > > +	}
+> > > > >  =
+
+> > > > >  	ret =3D adis_self_test(adis);
+> > > > > -	if (ret) {
+> > > > > -		dev_err(&adis->spi->dev, "Self-test failed,
+> > > > > trying
+> > > > > reset.\n");
+> > > > > -		__adis_reset(adis);
+> > > > > -		ret =3D adis_self_test(adis);
+> > > > > -		if (ret) {
+> > > > > -			dev_err(&adis->spi->dev, "Second self-
+> > > > > test
+> > > > > failed, giving up.\n");
+> > > > > -			goto out_unlock;
+> > > > > -		}
+> > > > > -	}
+> > > > > +	if (ret)
+> > > > > +		return ret;
+> > > > >  =
+
+> > > > > -out_unlock:
+> > > > > -	mutex_unlock(&adis->state_lock);
+> > > > > -	return ret;
+> > > > > +	if (!adis->data->prod_id_reg)
+> > > > > +		return 0;
+> > > > > +
+> > > > > +	ret =3D adis_read_reg_16(adis, adis->data->prod_id_reg,
+> > > > > &prod_id);
+> > > > > +	if (ret)
+> > > > > +		return ret;
+> > > > > +
+> > > > > +	ret =3D sscanf(iio_name, "adis%hu\n", &dev_id);    =
+
+> > > > =
+
+> > > > Hmm. I have a general dislike of pulling part name strings apart
+> > > > to
+> > > > get
+> > > > IDs.  It tends to break when someone comes along and adds a part
+> > > > with
+> > > > new
+> > > > branding.  Perhaps just put it in the relevant device part
+> > > > specific
+> > > > structures
+> > > > directly?
+> > > >     =
+
+> > > =
+
+> > > I'll admit that this to orientated to ADI devices and I basically
+> > > just
+> > > took what all the drivers were doing and placed it inside the
+> > > library...
+> > > =
+
+> > > So, you mean passing this to each `chip_info` and then passing it
+> > > to
+> > > the library through `adis_data`?  =
+
+> > =
+
+> > Yes.  People don't tend to expect strings to need to take a
+> > particular form,
+> > so pulling them apart in a library can give unexpected results...
+> >   =
+
+> > > > > +	if (ret !=3D 1)
+> > > > > +		return -EINVAL;
+> > > > > +
+> > > > > +	if (prod_id !=3D dev_id)
+> > > > > +		dev_warn(&adis->spi->dev,
+> > > > > +			 "Device ID(%u) and product ID(%u) do
+> > > > > not
+> > > > > match.",
+> > > > > +			 dev_id, prod_id);
+> > > > > +
+> > > > > +	return 0;
+> > > > >  }
+> > > > > -EXPORT_SYMBOL_GPL(adis_initial_startup);
+> > > > > +EXPORT_SYMBOL_GPL(__adis_initial_startup);
+> > > > >  =
+
+> > > > >  /**
+> > > > >   * adis_single_conversion() - Performs a single sample
+> > > > > conversion
+> > > > > diff --git a/include/linux/iio/imu/adis.h
+> > > > > b/include/linux/iio/imu/adis.h
+> > > > > index d21a013d1122..c43e7922ab32 100644
+> > > > > --- a/include/linux/iio/imu/adis.h
+> > > > > +++ b/include/linux/iio/imu/adis.h
+> > > > > @@ -41,6 +41,7 @@ struct adis_timeout {
+> > > > >   * @glob_cmd_reg: Register address of the GLOB_CMD register
+> > > > >   * @msc_ctrl_reg: Register address of the MSC_CTRL register
+> > > > >   * @diag_stat_reg: Register address of the DIAG_STAT register
+> > > > > + * @prod_id_reg: Register address of the PROD_ID register
+> > > > >   * @self_test_reg: Register address to request self test
+> > > > > command
+> > > > >   * @status_error_msgs: Array of error messgaes
+> > > > >   * @status_error_mask:
+> > > > > @@ -54,6 +55,7 @@ struct adis_data {
+> > > > >  	unsigned int glob_cmd_reg;
+> > > > >  	unsigned int msc_ctrl_reg;
+> > > > >  	unsigned int diag_stat_reg;
+> > > > > +	unsigned int prod_id_reg;
+> > > > >  =
+
+> > > > >  	unsigned int self_test_mask;
+> > > > >  	unsigned int self_test_reg;
+> > > > > @@ -299,6 +301,7 @@ static inline int adis_read_reg_32(struct
+> > > > > adis
+> > > > > *adis, unsigned int reg,
+> > > > >  =
+
+> > > > >  int adis_enable_irq(struct adis *adis, bool enable);
+> > > > >  int __adis_check_status(struct adis *adis);
+> > > > > +int __adis_initial_startup(struct adis *adis);
+> > > > >  =
+
+> > > > >  static inline int adis_check_status(struct adis *adis)
+> > > > >  {
+> > > > > @@ -311,7 +314,17 @@ static inline int adis_check_status(struct
+> > > > > adis *adis)
+> > > > >  	return ret;
+> > > > >  }
+> > > > >  =
+
+> > > > > -int adis_initial_startup(struct adis *adis);
+> > > > > +/* locked version of __adis_initial_startup() */
+> > > > > +static inline int adis_initial_startup(struct adis *adis)
+> > > > > +{
+> > > > > +	int ret;
+> > > > > +
+> > > > > +	mutex_lock(&adis->state_lock);
+> > > > > +	ret =3D __adis_initial_startup(adis);
+> > > > > +	mutex_unlock(&adis->state_lock);
+> > > > > +
+> > > > > +	return ret;
+> > > > > +}
+> > > > >  =
+
+> > > > >  int adis_single_conversion(struct iio_dev *indio_dev,
+> > > > >  	const struct iio_chan_spec *chan, unsigned int
+> > > > > error_mask,    =
+
+> > > > =
+
+> > > >     =
+
+> > =
+
+> >   =
+
+> =
+
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
