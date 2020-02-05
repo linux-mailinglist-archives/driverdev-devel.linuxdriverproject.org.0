@@ -1,67 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 539331523E7
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 01:11:48 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 10C771523EA
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 01:11:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0E71B8739A;
-	Wed,  5 Feb 2020 00:11:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9AD8485A74;
+	Wed,  5 Feb 2020 00:11:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kwxrl6MIpSlm; Wed,  5 Feb 2020 00:11:45 +0000 (UTC)
+	with ESMTP id U-R6DJZdMg_T; Wed,  5 Feb 2020 00:11:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4F9C8857A2;
-	Wed,  5 Feb 2020 00:11:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BCD10859CF;
+	Wed,  5 Feb 2020 00:11:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D95FC1BF45A
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 93A3D1BF45A
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D58808731E
- for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8EBBF859CF
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k8rCaiEGDxoq for <devel@linuxdriverproject.org>;
- Wed,  5 Feb 2020 00:11:40 +0000 (UTC)
+ with ESMTP id JU5n_E1nTZa8 for <devel@linuxdriverproject.org>;
+ Wed,  5 Feb 2020 00:11:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from gate2.alliedtelesis.co.nz (gate2.alliedtelesis.co.nz
  [202.36.163.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 76585857A2
- for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 00:11:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B9DA481BDB
+ for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 00:11:42 +0000 (UTC)
 Received: from mmarshal3.atlnz.lc (mmarshal3.atlnz.lc [10.32.18.43])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (Client did not present a certificate)
- by gate2.alliedtelesis.co.nz (Postfix) with ESMTPS id C939E891B0;
+ by gate2.alliedtelesis.co.nz (Postfix) with ESMTPS id E35A2891B1;
  Wed,  5 Feb 2020 13:11:38 +1300 (NZDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alliedtelesis.co.nz;
  s=mail181024; t=1580861498;
- bh=CNZrY07wx1fsMckb/UiVqAZ4mkkD9Vh2atjTCMywA4E=;
+ bh=IhPUhSSDDjQoI0blZkV3gyPDHloqc6R5MelhKc8cWFM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=jjB0KZYQnKCcQGimnKStgEBKGek+bfwua/MGbzemlcgG8UiJF+E9Yb5hWOngZarPR
- XqmxT6CXLouk6kxK4YerEIrVg8uYuaENtzE3T0U1Yvv8ycah8wErv3IOsUmSGihC9u
- wmz4GENDpWpD6jblfDFmntctNrCKoYPYsZmKhQ655oH/9ZxYX+aN+RXk6u5APiOxlu
- JrSjDErrWW8LZP5ItZu8KsUs31SKmUqGytBizu75nXW54lFYD2LJni4C23WKJYpeZX
- XYuUQTYx3IHmaWMM04vsr25d0pWZj4OdVQz46MMFf08d1y6JHrrztvqL38QNQIoS+0
- tlawgtbMQlAvw==
+ b=l9IwziBNV7daVS32v9VJ/xGypl/Zxjuwkzs0eANRDZldiOA3avA5A8I3WKOXeFNVS
+ leJd3SRTm3tScvndA/x1t01aQtR+f7leARFMKODol06K+4E3HYUmhSkpeKXHzHVNsw
+ ooLe9JHTWWJrbvdolvCh5wFYjNCBFQsSAFypJ1r17SZtwjIdWzN4qcUWU73OWJNUDB
+ dRX7AsLL6dBP3uaGw/BOjoR637ObySZfefArhO4oMkP7D9E6YOmcPWsaij+PpU7JA1
+ XgweN7BpRSN99g9/J5f6PO3ZGfG2SFZ+LoVfS4f+9Mg8j6NBz0mCchh5m5Gh2ErN1H
+ rTarg1hIF/j3Q==
 Received: from smtp (Not Verified[10.32.16.33]) by mmarshal3.atlnz.lc with
  Trustwave SEG (v7, 5, 8, 10121)
- id <B5e3a083a0003>; Wed, 05 Feb 2020 13:11:39 +1300
+ id <B5e3a083b0000>; Wed, 05 Feb 2020 13:11:39 +1300
 Received: from chrisp-dl.ws.atlnz.lc (chrisp-dl.ws.atlnz.lc [10.33.22.20])
- by smtp (Postfix) with ESMTP id 1406113EEDE;
+ by smtp (Postfix) with ESMTP id 348F913EEDE;
  Wed,  5 Feb 2020 13:11:38 +1300 (NZDT)
 Received: by chrisp-dl.ws.atlnz.lc (Postfix, from userid 1030)
- id 841E5280038; Wed,  5 Feb 2020 13:11:38 +1300 (NZDT)
+ id A4B97280038; Wed,  5 Feb 2020 13:11:38 +1300 (NZDT)
 From: Chris Packham <chris.packham@alliedtelesis.co.nz>
 To: gregkh@linuxfoundation.org, ralf@linux-mips.org, paulburton@kernel.org,
  linux@roeck-us.net, dan.carpenter@oracle.com, willy@infradead.org
-Subject: [PATCH 5/6] MIPS: octeon: remove typedef declaration for
- cvmx_pko_command_word0
-Date: Wed,  5 Feb 2020 13:11:15 +1300
-Message-Id: <20200205001116.14096-6-chris.packham@alliedtelesis.co.nz>
+Subject: [PATCH 6/6] Revert "staging/octeon: Mark Ethernet driver as BROKEN"
+Date: Wed,  5 Feb 2020 13:11:16 +1300
+Message-Id: <20200205001116.14096-7-chris.packham@alliedtelesis.co.nz>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
 References: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
@@ -87,67 +86,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the typedef and update usage to use the union.
+This reverts commit 075a1e87d1e2358d0b0301ac8f8e7f25051decf1. Now that
+the build issues have been fixed we can resume build testing.
 
 Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
 ---
- arch/mips/cavium-octeon/executive/cvmx-helper.c | 2 +-
- arch/mips/include/asm/octeon/cvmx-pko.h         | 8 ++++----
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/octeon/Kconfig | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/arch/mips/cavium-octeon/executive/cvmx-helper.c b/arch/mips/cavium-octeon/executive/cvmx-helper.c
-index 8002f9d3039d..6044ff471002 100644
---- a/arch/mips/cavium-octeon/executive/cvmx-helper.c
-+++ b/arch/mips/cavium-octeon/executive/cvmx-helper.c
-@@ -782,7 +782,7 @@ static int __cvmx_helper_errata_fix_ipd_ptr_alignment(void)
- #define INTERFACE(port) (port >> 4)
- #define INDEX(port) (port & 0xf)
- 	uint64_t *p64;
--	cvmx_pko_command_word0_t pko_command;
-+	union cvmx_pko_command_word0 pko_command;
- 	union cvmx_buf_ptr g_buffer, pkt_buffer;
- 	struct cvmx_wqe *work;
- 	int size, num_segs = 0, wqe_pcnt, pkt_pcnt;
-diff --git a/arch/mips/include/asm/octeon/cvmx-pko.h b/arch/mips/include/asm/octeon/cvmx-pko.h
-index f033523c19f8..5b0b982a36f7 100644
---- a/arch/mips/include/asm/octeon/cvmx-pko.h
-+++ b/arch/mips/include/asm/octeon/cvmx-pko.h
-@@ -169,7 +169,7 @@ typedef union {
- /**
-  * Structure of the first packet output command word.
-  */
--typedef union {
-+union cvmx_pko_command_word0 {
- 	uint64_t u64;
- 	struct {
- #ifdef __BIG_ENDIAN_BITFIELD
-@@ -261,7 +261,7 @@ typedef union {
- 	        uint64_t size1:2;
- #endif
- 	} s;
--} cvmx_pko_command_word0_t;
-+};
- 
- /* CSR typedefs have been moved to cvmx-csr-*.h */
- 
-@@ -419,7 +419,7 @@ static inline void cvmx_pko_send_packet_prepare(uint64_t port, uint64_t queue,
- static inline cvmx_pko_status_t cvmx_pko_send_packet_finish(
- 	uint64_t port,
- 	uint64_t queue,
--	cvmx_pko_command_word0_t pko_command,
-+	union cvmx_pko_command_word0 pko_command,
- 	union cvmx_buf_ptr packet,
- 	cvmx_pko_lock_t use_locking)
- {
-@@ -462,7 +462,7 @@ static inline cvmx_pko_status_t cvmx_pko_send_packet_finish(
- static inline cvmx_pko_status_t cvmx_pko_send_packet_finish3(
- 	uint64_t port,
- 	uint64_t queue,
--	cvmx_pko_command_word0_t pko_command,
-+	union cvmx_pko_command_word0 pko_command,
- 	union cvmx_buf_ptr packet,
- 	uint64_t addr,
- 	cvmx_pko_lock_t use_locking)
+diff --git a/drivers/staging/octeon/Kconfig b/drivers/staging/octeon/Kconfig
+index e7f4ddcc1361..5319909eb2f6 100644
+--- a/drivers/staging/octeon/Kconfig
++++ b/drivers/staging/octeon/Kconfig
+@@ -3,7 +3,6 @@ config OCTEON_ETHERNET
+ 	tristate "Cavium Networks Octeon Ethernet support"
+ 	depends on CAVIUM_OCTEON_SOC || COMPILE_TEST
+ 	depends on NETDEVICES
+-	depends on BROKEN
+ 	select PHYLIB
+ 	select MDIO_OCTEON
+ 	help
 -- 
 2.25.0
 
