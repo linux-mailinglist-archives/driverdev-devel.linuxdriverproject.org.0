@@ -1,78 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55F7415237C
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 00:50:13 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 578A11523E8
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Feb 2020 01:11:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8319884626;
-	Tue,  4 Feb 2020 23:50:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8DE5B83659;
+	Wed,  5 Feb 2020 00:11:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FlZMSoZKn71a; Tue,  4 Feb 2020 23:50:10 +0000 (UTC)
+	with ESMTP id Oi_SdmT6wI-p; Wed,  5 Feb 2020 00:11:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E54B58608B;
-	Tue,  4 Feb 2020 23:50:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3BEEA859CF;
+	Wed,  5 Feb 2020 00:11:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 97A9B1BF36B
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:50:01 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 18BA41BF990
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 926BF2041D
- for <devel@linuxdriverproject.org>; Tue,  4 Feb 2020 23:50:01 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 11C8D85CE0
+ for <devel@linuxdriverproject.org>; Wed,  5 Feb 2020 00:11:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xCsxdGEd3iVy for <devel@linuxdriverproject.org>;
- Tue,  4 Feb 2020 23:50:00 +0000 (UTC)
+ with ESMTP id M7LOTLGMwdgd for <devel@linuxdriverproject.org>;
+ Wed,  5 Feb 2020 00:11:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by silver.osuosl.org (Postfix) with ESMTPS id A07A620419
- for <devel@driverdev.osuosl.org>; Tue,  4 Feb 2020 23:50:00 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id z124so10459543pgb.13
- for <devel@driverdev.osuosl.org>; Tue, 04 Feb 2020 15:50:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=AS+AHCuMQWIyLmWzD2RHQ/sZnkJFO9p0vLnea6pI0u8=;
- b=hYh6UQglDyvaKYQeoKHsdmWZDC9Ai1KCxDg3WYXA9VUoIowzCd1/P6UT9SMrmLJ9J6
- zmZLaE8LW+fcVnqRkgciwC0EHLKMyKBa62O/YFOfRpFD5vCgBpHzvkxHAMwjOUVIgnXn
- +cen+/dstiaG4sNS5cmApv/Gx6wAY7OwnfcsrC6Pir6ldHJIq9apbj31QSKJ6KbBlhFa
- boTTc75UybNSR9VaCqbdiRREHhq0s1gEshNYeWi8W1CG6zZkLHM3rYmQKCkR63OvtH6N
- ITzHMiADkTEhkwjX73xm3W2sOmqCQi+pgqx0kPpGobHhWbGeU3dXVaqJf/pQtTLGolZu
- Tm1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=AS+AHCuMQWIyLmWzD2RHQ/sZnkJFO9p0vLnea6pI0u8=;
- b=HHXgpw8H5mELqkO/2pIfyHoSing/Uud4YXI8KdFoa0nvkYhj1Wo008G3AHkt7DKR6R
- 8zYtMigjK7AEjytGa8kZkSnt9IVX54+UHk+ZjM82CgJR0D/7/j0QH0kT2q3fvlKOOfw9
- x+lgunjIEEWZvM+8WWx8O+OX5rSY3cQLJwVYm6x2U1frAVAMuHmrIG8tWX4iUThpngYU
- 0+j2jXTWamCyGIl04WoMdcu9i45yzUrC4lK6VUNwq8BLr5fh1AiL1YuiV81OWV3CfIRc
- cEB4gD9Ytx1BSim/79eJgg5lzokjY+QnsLDVODKALZt5cb1hRJdKuyDQQlDFQq5z0f9b
- p68g==
-X-Gm-Message-State: APjAAAUPV/+XYjkFtkEBXIK8xUMkABZ/ehJg1POUuvxLxyh+xiLfJ+88
- Clsk++s4ln5vudK2lpFProl64Trk
-X-Google-Smtp-Source: APXvYqw+LeZ+qTjjKIp+K4eK8tkRC8y+Os5q6ehTK/O9/49qCRcVeb3fbdOVA6rXi8JN5rFy3XdDeA==
-X-Received: by 2002:a63:7949:: with SMTP id u70mr33314977pgc.233.1580860200115; 
- Tue, 04 Feb 2020 15:50:00 -0800 (PST)
-Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
- [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id u2sm24607929pgj.7.2020.02.04.15.49.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Feb 2020 15:49:59 -0800 (PST)
-From: Steve Longerbeam <slongerbeam@gmail.com>
-To: linux-media@vger.kernel.org, Rui Miguel Silva <rmfrfs@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH v3 17/17] media: imx: TODO: Remove media link creation todos
-Date: Tue,  4 Feb 2020 15:49:18 -0800
-Message-Id: <20200204234918.20425-18-slongerbeam@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200204234918.20425-1-slongerbeam@gmail.com>
-References: <20200204234918.20425-1-slongerbeam@gmail.com>
+Received: from gate2.alliedtelesis.co.nz (gate2.alliedtelesis.co.nz
+ [202.36.163.20])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F36CD85CD5
+ for <devel@driverdev.osuosl.org>; Wed,  5 Feb 2020 00:11:39 +0000 (UTC)
+Received: from mmarshal3.atlnz.lc (mmarshal3.atlnz.lc [10.32.18.43])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (Client did not present a certificate)
+ by gate2.alliedtelesis.co.nz (Postfix) with ESMTPS id D5346891AB;
+ Wed,  5 Feb 2020 13:11:35 +1300 (NZDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alliedtelesis.co.nz;
+ s=mail181024; t=1580861495;
+ bh=rWw39W1xcUKR/heVavGcT0nqYJy6F8UnBKGaK5La1fI=;
+ h=From:To:Cc:Subject:Date;
+ b=ICvsX8CjRGALZEHG4kfCe+IHxZkNYkBA/lAjlNYOKZoYi8de7DuP/p9LugXIM5MOk
+ A5vVbn9p0hZb0sn7gYO8CG7LGNXcX99JhEn144aO9v0ORODFfBf4kXt83jXMDbp1P6
+ M1o+F2pUvSkXMvtkIg+7g4+ZTWVY44WalVlHGUlQGHiXInoQi6BArOVdMvduzGJJbj
+ JP1HAdWJbUM30CymXfYFx/QHDc36T8zJu+xG8juJXwGgAhVdl4PvlfQ8R66Ykgm21g
+ XIZnINhc29u9rQwbaHYJRSdf6DDrQM2C1UJPgqgFUil6bJYd9qBohkzxJdDHtzq/5K
+ g31qy2MPi9rEQ==
+Received: from smtp (Not Verified[10.32.16.33]) by mmarshal3.atlnz.lc with
+ Trustwave SEG (v7, 5, 8, 10121)
+ id <B5e3a08380000>; Wed, 05 Feb 2020 13:11:36 +1300
+Received: from chrisp-dl.ws.atlnz.lc (chrisp-dl.ws.atlnz.lc [10.33.22.20])
+ by smtp (Postfix) with ESMTP id 16E1513EEDE;
+ Wed,  5 Feb 2020 13:11:35 +1300 (NZDT)
+Received: by chrisp-dl.ws.atlnz.lc (Postfix, from userid 1030)
+ id 850D6280038; Wed,  5 Feb 2020 13:11:35 +1300 (NZDT)
+From: Chris Packham <chris.packham@alliedtelesis.co.nz>
+To: gregkh@linuxfoundation.org, ralf@linux-mips.org, paulburton@kernel.org,
+ linux@roeck-us.net, dan.carpenter@oracle.com, willy@infradead.org
+Subject: [PATCH 0/6] Re-instate octeon staging drivers
+Date: Wed,  5 Feb 2020 13:11:10 +1300
+Message-Id: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
+X-Mailer: git-send-email 2.25.0
+MIME-Version: 1.0
+x-atlnz-ls: pat
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,72 +76,99 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org,
+ Chris Packham <chris.packham@alliedtelesis.co.nz>, linux-mips@vger.kernel.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the TODO items regarding media link creation, these issues are
-resolved by moving media link creation to individual entity bound
-callbacks and the implementation of the get_fwnode_pad operation.
+This series re-instates the octeon drivers that were recently removed and
+addresses the build issues that lead to that decision.
 
-Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
----
- drivers/staging/media/imx/TODO | 29 -----------------------------
- 1 file changed, 29 deletions(-)
+I've approached Cavium/Marvell about taking a more active interest in getting
+the code out of staging and into their proper location. No reply on that (yet).
 
-diff --git a/drivers/staging/media/imx/TODO b/drivers/staging/media/imx/TODO
-index 6f29b5ca5324..a371cdedcdb0 100644
---- a/drivers/staging/media/imx/TODO
-+++ b/drivers/staging/media/imx/TODO
-@@ -17,35 +17,6 @@
-   decided whether this feature is useful enough to make it generally
-   available by exporting to v4l2-core.
- 
--- After all async subdevices have been bound, v4l2_fwnode_parse_link()
--  is used to form the media links between the devices discovered in
--  the OF graph.
--
--  While this approach allows support for arbitrary OF graphs, there
--  are some assumptions for this to work:
--
--  1. If a port owned by a device in the graph has endpoint nodes, the
--     port is treated as a media pad.
--
--     This presents problems for devices that don't make this port = pad
--     assumption. Examples are SMIAPP compatible cameras which define only
--     a single output port node, but which define multiple pads owned
--     by multiple subdevices (pixel-array, binner, scaler). Or video
--     decoders (entity function MEDIA_ENT_F_ATV_DECODER), which also define
--     only a single output port node, but define multiple pads for video,
--     VBI, and audio out.
--
--     A workaround at present is to set the port reg properties to
--     correspond to the media pad index that the port represents. A
--     possible long-term solution is to implement a subdev API that
--     maps a port id to a media pad index.
--
--  2. Every endpoint of a port owned by a device in the graph is treated
--     as a media link.
--
--     Which means a port must not contain mixed-use endpoints, they
--     must all refer to media links between V4L2 subdevices.
--
- - i.MX7: all of the above, since it uses the imx media core
- 
- - i.MX7: use Frame Interval Monitor
+Chris Packham (6):
+  Revert "staging: octeon-usb: delete the octeon usb host controller
+    driver"
+  Revert "staging: octeon: delete driver"
+  MIPS: octeon: remove typedef declaration for cvmx_wqe
+  MIPS: octeon: remove typedef declaration for cvmx_helper_link_info
+  MIPS: octeon: remove typedef declaration for cvmx_pko_command_word0
+  Revert "staging/octeon: Mark Ethernet driver as BROKEN"
+
+ .../executive/cvmx-helper-board.c             |    4 +-
+ .../executive/cvmx-helper-rgmii.c             |    6 +-
+ .../executive/cvmx-helper-sgmii.c             |    8 +-
+ .../cavium-octeon/executive/cvmx-helper-spi.c |    6 +-
+ .../executive/cvmx-helper-xaui.c              |    6 +-
+ .../cavium-octeon/executive/cvmx-helper.c     |   10 +-
+ .../include/asm/octeon/cvmx-helper-board.h    |    2 +-
+ .../include/asm/octeon/cvmx-helper-rgmii.h    |    4 +-
+ .../include/asm/octeon/cvmx-helper-sgmii.h    |    4 +-
+ .../mips/include/asm/octeon/cvmx-helper-spi.h |    4 +-
+ .../include/asm/octeon/cvmx-helper-util.h     |    2 +-
+ .../include/asm/octeon/cvmx-helper-xaui.h     |    4 +-
+ arch/mips/include/asm/octeon/cvmx-helper.h    |    8 +-
+ arch/mips/include/asm/octeon/cvmx-pko.h       |   10 +-
+ arch/mips/include/asm/octeon/cvmx-pow.h       |   22 +-
+ arch/mips/include/asm/octeon/cvmx-wqe.h       |   16 +-
+ drivers/staging/Kconfig                       |    4 +
+ drivers/staging/Makefile                      |    2 +
+ drivers/staging/octeon-usb/Kconfig            |   11 +
+ drivers/staging/octeon-usb/Makefile           |    2 +
+ drivers/staging/octeon-usb/TODO               |    8 +
+ drivers/staging/octeon-usb/octeon-hcd.c       | 3737 +++++++++++++++++
+ drivers/staging/octeon-usb/octeon-hcd.h       | 1847 ++++++++
+ drivers/staging/octeon/Kconfig                |   15 +
+ drivers/staging/octeon/Makefile               |   19 +
+ drivers/staging/octeon/TODO                   |    9 +
+ drivers/staging/octeon/ethernet-defines.h     |   40 +
+ drivers/staging/octeon/ethernet-mdio.c        |  178 +
+ drivers/staging/octeon/ethernet-mdio.h        |   28 +
+ drivers/staging/octeon/ethernet-mem.c         |  154 +
+ drivers/staging/octeon/ethernet-mem.h         |    9 +
+ drivers/staging/octeon/ethernet-rgmii.c       |  158 +
+ drivers/staging/octeon/ethernet-rx.c          |  538 +++
+ drivers/staging/octeon/ethernet-rx.h          |   31 +
+ drivers/staging/octeon/ethernet-sgmii.c       |   30 +
+ drivers/staging/octeon/ethernet-spi.c         |  226 +
+ drivers/staging/octeon/ethernet-tx.c          |  717 ++++
+ drivers/staging/octeon/ethernet-tx.h          |   14 +
+ drivers/staging/octeon/ethernet-util.h        |   47 +
+ drivers/staging/octeon/ethernet.c             |  992 +++++
+ drivers/staging/octeon/octeon-ethernet.h      |  107 +
+ drivers/staging/octeon/octeon-stubs.h         | 1433 +++++++
+ 42 files changed, 10414 insertions(+), 58 deletions(-)
+ create mode 100644 drivers/staging/octeon-usb/Kconfig
+ create mode 100644 drivers/staging/octeon-usb/Makefile
+ create mode 100644 drivers/staging/octeon-usb/TODO
+ create mode 100644 drivers/staging/octeon-usb/octeon-hcd.c
+ create mode 100644 drivers/staging/octeon-usb/octeon-hcd.h
+ create mode 100644 drivers/staging/octeon/Kconfig
+ create mode 100644 drivers/staging/octeon/Makefile
+ create mode 100644 drivers/staging/octeon/TODO
+ create mode 100644 drivers/staging/octeon/ethernet-defines.h
+ create mode 100644 drivers/staging/octeon/ethernet-mdio.c
+ create mode 100644 drivers/staging/octeon/ethernet-mdio.h
+ create mode 100644 drivers/staging/octeon/ethernet-mem.c
+ create mode 100644 drivers/staging/octeon/ethernet-mem.h
+ create mode 100644 drivers/staging/octeon/ethernet-rgmii.c
+ create mode 100644 drivers/staging/octeon/ethernet-rx.c
+ create mode 100644 drivers/staging/octeon/ethernet-rx.h
+ create mode 100644 drivers/staging/octeon/ethernet-sgmii.c
+ create mode 100644 drivers/staging/octeon/ethernet-spi.c
+ create mode 100644 drivers/staging/octeon/ethernet-tx.c
+ create mode 100644 drivers/staging/octeon/ethernet-tx.h
+ create mode 100644 drivers/staging/octeon/ethernet-util.h
+ create mode 100644 drivers/staging/octeon/ethernet.c
+ create mode 100644 drivers/staging/octeon/octeon-ethernet.h
+ create mode 100644 drivers/staging/octeon/octeon-stubs.h
+
 -- 
-2.17.1
+2.25.0
 
 _______________________________________________
 devel mailing list
