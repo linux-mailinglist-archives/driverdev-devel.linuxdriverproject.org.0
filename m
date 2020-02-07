@@ -1,62 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D0D3155A93
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Feb 2020 16:21:27 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3580D155F56
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Feb 2020 21:18:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 09E1F86D9A;
-	Fri,  7 Feb 2020 15:21:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 481ED2226E;
+	Fri,  7 Feb 2020 20:18:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t2j2CBSFbKG0; Fri,  7 Feb 2020 15:21:24 +0000 (UTC)
+	with ESMTP id jHHZYI6Ez+Jf; Fri,  7 Feb 2020 20:18:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BCBB786A3C;
-	Fri,  7 Feb 2020 15:21:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2A52B2226B;
+	Fri,  7 Feb 2020 20:18:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C42441BF35C
- for <devel@linuxdriverproject.org>; Fri,  7 Feb 2020 15:21:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7C3781BF30C
+ for <devel@linuxdriverproject.org>; Fri,  7 Feb 2020 20:18:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BE1C686C53
- for <devel@linuxdriverproject.org>; Fri,  7 Feb 2020 15:21:20 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7804D8701C
+ for <devel@linuxdriverproject.org>; Fri,  7 Feb 2020 20:18:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 93iHubE1II3r for <devel@linuxdriverproject.org>;
- Fri,  7 Feb 2020 15:21:18 +0000 (UTC)
-X-Greylist: delayed 00:07:06 by SQLgrey-1.7.6
-Received: from smtp83.iad3b.emailsrvr.com (smtp83.iad3b.emailsrvr.com
- [146.20.161.83])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9741F86A3C
- for <devel@driverdev.osuosl.org>; Fri,  7 Feb 2020 15:21:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1581088457;
- bh=A1AEgYw7yupH4As3fao1xUuQYWaJHtzKk2hwTe354QM=;
- h=From:To:Subject:Date:From;
- b=erpPuZ7a6Q1NaaEXk26mzIhbqOnO5gO892be5Hd6nxiwWZ0z1RztwkxiY5QEclC3h
- w1oAGTpEydLKsRUAcKTVOaw42YskjHhQonhtVmtaRlSUhfbO2ZfaVgPyJsyZdCN3uy
- eElWn2AMK5N7TGq7EhFAuxD0qPdfVhtUsMsjfB7k=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp3.relay.iad3b.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id BC6E340073; 
- Fri,  7 Feb 2020 10:14:16 -0500 (EST)
-X-Sender-Id: abbotti@mev.co.uk
-Received: from ian-deb.inside.mev.co.uk (remote.quintadena.com [81.133.34.160])
- (using TLSv1.2 with cipher DHE-RSA-AES128-GCM-SHA256)
- by 0.0.0.0:465 (trex/5.7.12); Fri, 07 Feb 2020 10:14:17 -0500
-From: Ian Abbott <abbotti@mev.co.uk>
-To: devel@driverdev.osuosl.org
-Subject: [PATCH 4/4] staging: comedi: ni_pcimio: add routes for NI PCIe-6251
- and PCIe-6259
-Date: Fri,  7 Feb 2020 15:14:00 +0000
-Message-Id: <20200207151400.272678-5-abbotti@mev.co.uk>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200207151400.272678-1-abbotti@mev.co.uk>
-References: <20200207151400.272678-1-abbotti@mev.co.uk>
+ with ESMTP id k1i66KJ+tNLu for <devel@linuxdriverproject.org>;
+ Fri,  7 Feb 2020 20:18:42 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5540986E1F
+ for <devel@driverdev.osuosl.org>; Fri,  7 Feb 2020 20:18:42 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id k29so318212pfp.13
+ for <devel@driverdev.osuosl.org>; Fri, 07 Feb 2020 12:18:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=8cDRXBFOpE9J1p6S5H+HXSQg9q3m7pUJ3iUuQ5MPcDc=;
+ b=ivuPf8a+VQ7ts4QWZEasa2IZ9M6uEU3dgsXgUf73LTH8asREriEDnowsBZ2pC+bgSm
+ lzOBlRRIwt5v2QzqbRWnupl/eDOwLTj9noKeZMj+xwNqQddEauf1Xib25hWdR3r+5yi5
+ oPseJqGpz1IRjduQZnFdytdSC8NKL1H0bhJGs9GD0Yn6r3oLKXXekgE6AQO3kF6E8oAs
+ DG3k6NEnKTpegA8Ql2ou/D6mQtnqAlYrQNWIpu8Bxdn3kI0iqZ1uw0VugvX3SvdUJwUH
+ LmQlIYUor7oK3p5WlEYER2JRLHyNaxAHCcdzpks00SMjQRiaTMp5xcZ/JYcyBJV773xT
+ gTWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=8cDRXBFOpE9J1p6S5H+HXSQg9q3m7pUJ3iUuQ5MPcDc=;
+ b=PT6ZHQjO09197xJM+ak64eP3EjnuyGDwODhFgKpHCKXDyUECeCrysjIA6XU0XGTIyU
+ YVE4HHKldMsC4boLtDzJ2E93U7wH3WKRuLhsSAvype0AS1y85ZYGMW/GhZmo79yuroWz
+ qzuVlmlNrQXDITj4odEkjmzckFLcanmvZ/wICi+/lV/KlvWhaEcRcuFuB891jkGCv1oX
+ b5qgS7JuvMcoH7jzDxzKOPiaJAy/Ur3LstlD8o5JHJJVUDwf/dTDrqGvCe4VKfJ/rKtR
+ nUBus4tY164f9Gd1fqgVBmn9TgAjU1wHdJzXXFeXng/GJtQAJ1vBvutdMUnrT1i5HBb+
+ scrw==
+X-Gm-Message-State: APjAAAU7gysEMqxIAimILRYEI2lFRmNSCUx/xzJqkdNXTC/pw4ryc9sg
+ YeyBQ8uGmkGsNW66XDIXxMc8OL1qkn8l1AepdY0=
+X-Google-Smtp-Source: APXvYqwFJpkrQkBKjTNCtluLGSByUbZzPfcDQqm5f5tsKNwwkZaq4svlOZT253bf+X+7a0wiDwJ+vHizu8Lhvdl1LoI=
+X-Received: by 2002:a63:7e58:: with SMTP id o24mr939627pgn.214.1581106721873; 
+ Fri, 07 Feb 2020 12:18:41 -0800 (PST)
 MIME-Version: 1.0
+Received: by 2002:a17:90a:3846:0:0:0:0 with HTTP; Fri, 7 Feb 2020 12:18:41
+ -0800 (PST)
+From: "Mr. Theophilus Odadudu" <bukahenry10@gmail.com>
+Date: Fri, 7 Feb 2020 15:18:41 -0500
+Message-ID: <CAEzczGJ9f9MvNKr7unVQJLzqv6Ki9oVjiaZ7_7Sj9OEdbq4OjQ@mail.gmail.com>
+Subject: LETTER OF INQUIRY
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,41 +79,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ian Abbott <abbotti@mev.co.uk>, =?UTF-8?q?=C3=89ric=20Piel?= <piel@delmic.com>,
- "Spencer E . Olson" <olsonse@umich.edu>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: auch197722@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-V2UgZG8gbm90IGN1cnJlbnRseSBwcm92aWRlIHJvdXRpbmcgaW5mb3JtYXRpb24gZm9yIE5JIFBD
-SWUtNjI1MSBhbmQKUENJLTYyNTkgYm9hcmRzLCBidXQgdGhleSBhcmUgZnVuY3Rpb25hbGx5IGlk
-ZW50aWNhbCB0byB0aGUgUENJLTYyNTEgYW5kClBDSS02MjU5IGJvYXJkcyBhbmQgY2FuIHNoYXJl
-IHRoZWlyIHJvdXRpbmcgaW5mb3JtYXRpb24uICAoVGhpcyBoYXMgYmVlbgpjb25maXJtZWQgZm9y
-IHRoZSBQQ0llLTYyNTEgYnkgw4lyaWMgUGllbCwgdXNpbmcgdGhlICJOSSBNQVgiIHNvZnR3YXJl
-CmZvciBXaW5kb3dzLiAgSXQgaXMgaG9wZWQgdGhhdCBpdCBhcHBsaWVzIHRvIFBDSWUtNjI1OSwg
-YnV0IGhhcyBub3QgeWV0CmJlZW4gY2hlY2tlZCBkdWUgdG8gbGFjayBvZiBoYXJkd2FyZS4pICBJ
-bml0aWFsaXplIHRoZSBgYWx0X3JvdXRlX25hbWVgCm1lbWJlciBvZiB0aGUgYm9hcmQgaW5mb3Jt
-YXRpb24gZm9yIFBDSWUtNjI1MSBhbmQgUENJZS02MjU5IHRvIGFsbG93CnRoZW0gdG8gbWFrZSB1
-c2Ugb2YgdGhlIHJvdXRpbmcgaW5mb3JtYXRpb24gcHJvdmlkZWQgZm9yIFBDSS02MjUxIGFuZApQ
-Q0ktNjI1OSByZXNwZWN0aXZlbHkuCgpDYzogw4lyaWMgUGllbCA8cGllbEBkZWxtaWMuY29tPgpD
-YzogU3BlbmNlciBFLiBPbHNvbiA8b2xzb25zZUB1bWljaC5lZHU+ClNpZ25lZC1vZmYtYnk6IElh
-biBBYmJvdHQgPGFiYm90dGlAbWV2LmNvLnVrPgotLS0KIGRyaXZlcnMvc3RhZ2luZy9jb21lZGkv
-ZHJpdmVycy9uaV9wY2ltaW8uYyB8IDIgKysKIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMo
-KykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvY29tZWRpL2RyaXZlcnMvbmlfcGNpbWlv
-LmMgYi9kcml2ZXJzL3N0YWdpbmcvY29tZWRpL2RyaXZlcnMvbmlfcGNpbWlvLmMKaW5kZXggMTRi
-MjZmZmZlMDQ5Li43YzgyZDVmOTc3OGYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9jb21l
-ZGkvZHJpdmVycy9uaV9wY2ltaW8uYworKysgYi9kcml2ZXJzL3N0YWdpbmcvY29tZWRpL2RyaXZl
-cnMvbmlfcGNpbWlvLmMKQEAgLTg4OCw2ICs4ODgsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG5p
-X2JvYXJkX3N0cnVjdCBuaV9ib2FyZHNbXSA9IHsKIAl9LAogCVtCT0FSRF9QQ0lFNjI1MV0gPSB7
-CiAJCS5uYW1lCQk9ICJwY2llLTYyNTEiLAorCQkuYWx0X3JvdXRlX25hbWUJPSAicGNpLTYyNTEi
-LAogCQkubl9hZGNoYW4JPSAxNiwKIAkJLmFpX21heGRhdGEJPSAweGZmZmYsCiAJCS5haV9maWZv
-X2RlcHRoCT0gNDA5NSwKQEAgLTk3Niw2ICs5NzcsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG5p
-X2JvYXJkX3N0cnVjdCBuaV9ib2FyZHNbXSA9IHsKIAl9LAogCVtCT0FSRF9QQ0lFNjI1OV0gPSB7
-CiAJCS5uYW1lCQk9ICJwY2llLTYyNTkiLAorCQkuYWx0X3JvdXRlX25hbWUJPSAicGNpLTYyNTki
-LAogCQkubl9hZGNoYW4JPSAzMiwKIAkJLmFpX21heGRhdGEJPSAweGZmZmYsCiAJCS5haV9maWZv
-X2RlcHRoCT0gNDA5NSwKLS0gCjIuMjQuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJv
-amVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Good Day,
+
+I work as a clerk in a Bank here in Nigeria, I have a very
+confidential Business Proposition for you. There is a said amount of
+money floating in the bank unclaimed, belonging to the bank Foreign
+customer who die with his family in the Ethiopian Airline crash of
+March 11, 2019.
+
+I seek your good collaboration to move the fund for our benefit. we
+have agreed that 40% be yours once you help claim.
+
+Do get back to with 1) Your Full Name: (2) Residential Address: (3)
+Phone, Mobile  (4) Scan Copy of Your ID. to apply for claims of the
+funds.
+
+Regards
+Theophilus Odadudu
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
