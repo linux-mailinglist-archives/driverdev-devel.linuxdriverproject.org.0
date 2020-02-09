@@ -1,50 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE118156AEA
-	for <lists+driverdev-devel@lfdr.de>; Sun,  9 Feb 2020 15:57:16 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04D1A156B0A
+	for <lists+driverdev-devel@lfdr.de>; Sun,  9 Feb 2020 16:36:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DF719204D9;
-	Sun,  9 Feb 2020 14:57:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5649185ECB;
+	Sun,  9 Feb 2020 15:36:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9i2rg1I2etC7; Sun,  9 Feb 2020 14:57:13 +0000 (UTC)
+	with ESMTP id 818nXk-qhLcq; Sun,  9 Feb 2020 15:36:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 05488204D0;
-	Sun,  9 Feb 2020 14:57:11 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6E8F7864EF;
+	Sun,  9 Feb 2020 15:36:48 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7BFCE1BF391
- for <devel@linuxdriverproject.org>; Sun,  9 Feb 2020 14:57:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4D6CC1BF2CA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  9 Feb 2020 15:36:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 669D484FDD
- for <devel@linuxdriverproject.org>; Sun,  9 Feb 2020 14:57:06 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3BC8D84EA3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  9 Feb 2020 15:36:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2gZJKUzcD76h for <devel@linuxdriverproject.org>;
- Sun,  9 Feb 2020 14:57:04 +0000 (UTC)
-X-Greylist: delayed 03:27:25 by SQLgrey-1.7.6
+ with ESMTP id SVjsZGPsNKA9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  9 Feb 2020 15:36:45 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.genoram.cf (unknown [89.38.150.113])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 12B98854DF
- for <devel@linuxdriverproject.org>; Sun,  9 Feb 2020 14:57:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3D9CF84E8C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  9 Feb 2020 15:36:44 +0000 (UTC)
 Received: from User (unknown [217.61.105.231])
- by mail.genoram.cf (Postfix) with ESMTPA id B4FB126A8;
- Sun,  9 Feb 2020 05:47:47 -0500 (EST)
+ by mail.genoram.cf (Postfix) with ESMTPA id 4AB8727BC;
+ Sun,  9 Feb 2020 05:52:13 -0500 (EST)
 From: "admin@genoram.cf"<auda.dpa@gmail.com>
 Subject: Partnership Memo - 08-02-2020
-Date: Sun, 9 Feb 2020 11:47:47 +0100
+Date: Sun, 9 Feb 2020 11:52:13 +0100
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="----=_NextPart_000_0128_01C2A9A6.4883CD72"
+ boundary="----=_NextPart_000_0050_01C2A9A6.0D8CD5B8"
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200209145706.669D484FDD@fraxinus.osuosl.org>
+Message-Id: <20200209153646.3BC8D84EA3@fraxinus.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,7 +67,7 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This is a multi-part message in MIME format.
 
-------=_NextPart_000_0128_01C2A9A6.4883CD72
+------=_NextPart_000_0050_01C2A9A6.0D8CD5B8
 Content-Type: text/plain;
 	charset="Windows-1251"
 Content-Transfer-Encoding: 7bit
@@ -78,7 +82,7 @@ Thankyou.
 
 Snr.Nelson Khoza
 
-------=_NextPart_000_0128_01C2A9A6.4883CD72
+------=_NextPart_000_0050_01C2A9A6.0D8CD5B8
 Content-Type: application/octet-stream;
 	name="NEPAD.pdf"
 Content-Transfer-Encoding: base64
@@ -8918,7 +8922,7 @@ MyAwIFINCi9JRCBbPDBjMGFiMjJkM2UzMGU3YjFlMThhNzY0YjYxYzcwODYz
 PjwwYzBhYjIyZDNlMzBlN2IxZTE4YTc2NGI2MWM3MDg2Mz5dDQo+Pg0Kc3Rh
 cnR4cmVmDQozOTY2NzENCiUlRU9G
 
-------=_NextPart_000_0128_01C2A9A6.4883CD72
+------=_NextPart_000_0050_01C2A9A6.0D8CD5B8
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -8929,5 +8933,5 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
-------=_NextPart_000_0128_01C2A9A6.4883CD72--
+------=_NextPart_000_0050_01C2A9A6.0D8CD5B8--
 
