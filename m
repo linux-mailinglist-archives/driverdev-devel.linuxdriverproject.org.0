@@ -1,85 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19334156991
-	for <lists+driverdev-devel@lfdr.de>; Sun,  9 Feb 2020 08:50:44 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B8ACE156982
+	for <lists+driverdev-devel@lfdr.de>; Sun,  9 Feb 2020 08:30:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 86D8685F6A;
-	Sun,  9 Feb 2020 07:50:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6DF9C20498;
+	Sun,  9 Feb 2020 07:30:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1yuzlBP6aS9V; Sun,  9 Feb 2020 07:50:42 +0000 (UTC)
+	with ESMTP id uAY5WlHLzjHd; Sun,  9 Feb 2020 07:30:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BAF5B856E9;
-	Sun,  9 Feb 2020 07:50:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 455F820425;
+	Sun,  9 Feb 2020 07:30:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 145B81BF47E
- for <devel@linuxdriverproject.org>; Sun,  9 Feb 2020 07:50:40 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2ED831BF47E
+ for <devel@linuxdriverproject.org>; Sun,  9 Feb 2020 07:30:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 10E4482441
- for <devel@linuxdriverproject.org>; Sun,  9 Feb 2020 07:50:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2BC4B85D87
+ for <devel@linuxdriverproject.org>; Sun,  9 Feb 2020 07:30:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id STSRc1Zu3juk for <devel@linuxdriverproject.org>;
- Sun,  9 Feb 2020 07:50:39 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail02.vodafone.es (mail02.vodafone.es [217.130.24.81])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C1A0F85C90
- for <devel@driverdev.osuosl.org>; Sun,  9 Feb 2020 07:50:38 +0000 (UTC)
-IronPort-SDR: TdZURUeigyehz90CrZqnpwCTJxh4JrpfB/NI9PcN8o5RWU+VS4LzfPFBR5MebnF1KvQfMvx2i9
- CjzlNhuXKnUw==
-IronPort-PHdr: =?us-ascii?q?9a23=3ACOcGxRV7QONwO+6iW7H+VwNpxg/V8LGtZVwlr6?=
- =?us-ascii?q?E/grcLSJyIuqrYbBaOt8tkgFKBZ4jH8fUM07OQ7/m8HzFQqs/Z7jhCKMUKC0?=
- =?us-ascii?q?Zez51O3kQJO42sMQXDNvnkbig3ToxpdWRO2DWFC3VTA9v0fFbIo3e/vnY4Ex?=
- =?us-ascii?q?T7MhdpdKyuQtaBx8u42Pqv9JLNfg5GmCSyYa9oLBWxsA7dqtQajZFtJ6osxR?=
- =?us-ascii?q?bFuHtFdudZyW91OV6engv36sOs8JJ+6ShdtO8t+sBaXanmY6g0SKFTASg7PW?=
- =?us-ascii?q?wy+MDlrwTIQxGV5nsbXGUWkx5IDBbA4RrnQJr/sTb0u/Rk1iWCMsL4Ub47WT?=
- =?us-ascii?q?K576d2UxDokzsINyQ48G7MlMN9ir9QrQ+7qBx+x47UZ5yVNOZ7c6jAc94WWX?=
- =?us-ascii?q?ZNU8BMXCFHH4iybZYAD/AZMOhWr4f9vUUAoxijCwajGOzhxSRFhmP00KImz+?=
- =?us-ascii?q?gtDR3K0BImEtkTsHrUttL1NKIKXO6v0qbI0SvMb+lL0jj974jIdB8hquyLUL?=
- =?us-ascii?q?Job8XR1VcgFxnLj1WXr4zlMCiY2f8Ks2eG9eVhVOWvi2g5pA1rvjevwcIsh5?=
- =?us-ascii?q?DPi4kIyV7E7T10zJgoKdC6UkJ3fNCpHIdKuy2EOIZ6WM0vTmFutS0n0LMJo4?=
- =?us-ascii?q?S7czIPyJk/wh7fbOGIfJaQ7xL4UeaRPS94hHV4eLKjnxqy8Vavyun7VsSs1V?=
- =?us-ascii?q?ZFtCtFkt3Wtn8T0xzf9seKRuFj/kemxDmAzQ7T6uZCIU8qj6bUNYUhzqYxlp?=
- =?us-ascii?q?oVr0vDAjf7lFvrgKKUbEko5+al5/j9brn4qZKQLYF5hwHmPqQrgMO/AOA4Mg?=
- =?us-ascii?q?YUX2ic/OSxzKXj8lPlQLpUlP03nK7ZsJbVJckAvaG5BBJa3Zwi6ha4CTepzs?=
- =?us-ascii?q?4UkmUALFJAYB6HlZTmO0nSIPDkCveym0mjnyl1x//YOr3sGYjCLmLCkLf/Y7?=
- =?us-ascii?q?l98VNTxxQtzdxF4JJUEawBIPXoWk/1rtDYCQU5MwPni9rgXdlwyI4acW6VA7?=
- =?us-ascii?q?GUKq/frxmP/f8oOO3KY5Ua6wzwM/w02/m7tXIllEVVQq6v0tNDcH2kE+55JE?=
- =?us-ascii?q?OWYWHmidcCOWgPtws6CuftjQvRfyRUYiOKUr4x/HkED4SpRdPbS5ygmqOG2i?=
- =?us-ascii?q?iTFJpab3JBDF3KGnDtIdbXE8wQYT6fd5cy2gcPUqKsHtcs?=
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2FJbQALuT9eeiMYgtlmHQEBAQkBEQU?=
- =?us-ascii?q?FAYF7AgGBPQKBVlINExKMZIZwgU0fg0OLaIEAgzOGCBOBZw0BAQEBARsaAgE?=
- =?us-ascii?q?BhECCRiQ8Ag0CAw0BAQUBAQEBAQUEAQECEAEBCwsLBCuFSkIBDAGBayKDcCA?=
- =?us-ascii?q?POUpMAQ4BhiIBATOlNYkBDQ0ChR6CVwQKgQiBGyOBNgIBAYwhGoFBP4EjIYI?=
- =?us-ascii?q?rCAGCAYJ/ARIBboJIglkEjVASIYk/mDCCRAR4lWuCOAEPiBGENQOCWA+BC4M?=
- =?us-ascii?q?dgwiBZ4RSgX6fWIQSV4Egc3EzGiOCHYEgTxgNnGICQIEXEAJPhDuGNoIyAQE?=
-X-IPAS-Result: =?us-ascii?q?A2FJbQALuT9eeiMYgtlmHQEBAQkBEQUFAYF7AgGBPQKBV?=
- =?us-ascii?q?lINExKMZIZwgU0fg0OLaIEAgzOGCBOBZw0BAQEBARsaAgEBhECCRiQ8Ag0CA?=
- =?us-ascii?q?w0BAQUBAQEBAQUEAQECEAEBCwsLBCuFSkIBDAGBayKDcCAPOUpMAQ4BhiIBA?=
- =?us-ascii?q?TOlNYkBDQ0ChR6CVwQKgQiBGyOBNgIBAYwhGoFBP4EjIYIrCAGCAYJ/ARIBb?=
- =?us-ascii?q?oJIglkEjVASIYk/mDCCRAR4lWuCOAEPiBGENQOCWA+BC4MdgwiBZ4RSgX6fW?=
- =?us-ascii?q?IQSV4Egc3EzGiOCHYEgTxgNnGICQIEXEAJPhDuGNoIyAQE?=
-X-IronPort-AV: E=Sophos;i="5.70,420,1574118000"; d="scan'208";a="334541047"
-Received: from mailrel04.vodafone.es ([217.130.24.35])
- by mail02.vodafone.es with ESMTP; 09 Feb 2020 08:50:35 +0100
-Received: (qmail 22032 invoked from network); 9 Feb 2020 01:44:47 -0000
-Received: from unknown (HELO 192.168.1.163) (apamar@[217.217.179.17])
- (envelope-sender <peterwong@bodazone.com>)
- by mailrel04.vodafone.es (qmail-ldap-1.03) with SMTP
- for <devel@driverdev.osuosl.org>; 9 Feb 2020 01:44:47 -0000
-Date: Sun, 9 Feb 2020 02:44:46 +0100 (CET)
-From: Peter Wong <peterwong@bodazone.com>
-To: devel@driverdev.osuosl.org
-Message-ID: <6692046.307532.1581212687371.JavaMail.cash@217.130.24.55>
-Subject: Investment opportunity
-MIME-Version: 1.0
+ with ESMTP id yjwYp3e5Ah4w for <devel@linuxdriverproject.org>;
+ Sun,  9 Feb 2020 07:30:35 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8251484C19
+ for <devel@driverdev.osuosl.org>; Sun,  9 Feb 2020 07:30:35 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id p14so2047050pfn.4
+ for <devel@driverdev.osuosl.org>; Sat, 08 Feb 2020 23:30:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=i6c4ajB0byWPJ06ve4SP5K+1K+7fCBEo+yp1/6dDLBQ=;
+ b=kWnaSTXHrC3pxjSMs5P5FihjPUClz44l1qiKEVsAL3vkH1YkTE8RxrP3lXgrUWhEv/
+ UV/HxP1cEGKEkoGfFiuDRrujvyHYmxImWvVa7gwz4Nc0s+cWOmxnQYHwAMWNUO7KEIf2
+ sdQ39D8jHP7AXqUKt6HiTC32zkALVSFU0RxqziFMc5W7H+kZJuXbhZwihoVW4rZrhMlI
+ +xUh8oLYkgGl6CgQ6VDLa6qbccp4e+c7K6y+d+N/zkJSPQbQzq4Mp0gnii9nNA1Lgeoj
+ iDKqB8+tblqet2X4PTDfwXbmMZfa1a7IW71RH27IGqOOXJOaB0UGjGDj5Cq7YZvwulgE
+ SL6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=i6c4ajB0byWPJ06ve4SP5K+1K+7fCBEo+yp1/6dDLBQ=;
+ b=m0UwGdN8LVQEB5HXPjagtlMcw49H7Q8lZkY2ODUk4TFGeqYMX3uG+fl+AyLCdRoess
+ WLb1dLUMS7JNtXyGpHFDDJpt1q5LbdmxvvUxGE+3NFJYLXF3zUArYAv0XC7+6oGIN+Dd
+ m6tZ/lgoAOP5XLGYF8OinTO672d7+hrwuY2podKzXuG+YyDa5zhzzb1LaTseNnwZJHS5
+ JCVvkpVVi77QuB+o7hqV9UBh/YKEKzg/hUH8pFC0sHfSmerWIRG7WRRowZ/m7bZvwihu
+ eaBzFeyC7Azd2h5+2uiFbeWFszNX8QLJNHJpJ3mfWI1vAYptNDdojmYZtVPkE/Ae6PVX
+ 9t9g==
+X-Gm-Message-State: APjAAAX7cLoJ15zsvmqLf0m25StUbasEddd5YrFfGm41R5EQhQYVnyi8
+ tyOzdtPafecj0YmdeG7FlL4=
+X-Google-Smtp-Source: APXvYqwcLYYetk7CRcfgk9lDxq9i/7UDndI37XN+YcDkRoRkLXdKOkrNqkK/lQ8c50FU6dr66/7hDQ==
+X-Received: by 2002:aa7:85d3:: with SMTP id z19mr7453734pfn.62.1581233435088; 
+ Sat, 08 Feb 2020 23:30:35 -0800 (PST)
+Received: from Kaladin.localdomain ([106.51.85.240])
+ by smtp.gmail.com with ESMTPSA id g21sm8960330pfb.126.2020.02.08.23.30.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 08 Feb 2020 23:30:34 -0800 (PST)
+From: Sumera Priyadarsini <sylphrenadin@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8192u: Add space to fix style issue
+Date: Sun,  9 Feb 2020 13:00:20 +0530
+Message-Id: <20200209073020.13423-1-sylphrenadin@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,22 +80,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: Peter Wong <peterwonghsbchk@gmail.com>
+Cc: devel@driverdev.osuosl.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings,
-Please check the attached email for a buisness proposal to explore.
-Looking forward to hearing from you for more details.
-Sincerely: Peter Wong
+This patch fixes the file r8190_rtl8256.c to avoid the following
+checkpatch.pl warnings:
+	CHECK: spaces preferred around that '>>' (ctx:VxV)
 
+Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
+---
+ drivers/staging/rtl8192u/r819xU_phy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-
-----------------------------------------------------
-This email was sent by the shareware version of Postman Professional.
+diff --git a/drivers/staging/rtl8192u/r819xU_phy.c b/drivers/staging/rtl8192u/r819xU_phy.c
+index 555e52522be6..37b99cf4b35f 100644
+--- a/drivers/staging/rtl8192u/r819xU_phy.c
++++ b/drivers/staging/rtl8192u/r819xU_phy.c
+@@ -1531,7 +1531,7 @@ void rtl8192_SetBWModeWorkItem(struct net_device *dev)
+ 		rtl8192_setBBreg(dev, rFPGA0_RFMOD, bRFMOD, 0x1);
+ 		rtl8192_setBBreg(dev, rFPGA1_RFMOD, bRFMOD, 0x1);
+ 		rtl8192_setBBreg(dev, rCCK0_System, bCCKSideBand,
+-				 priv->nCur40MhzPrimeSC>>1);
++				 priv->nCur40MhzPrimeSC >> 1);
+ 		rtl8192_setBBreg(dev, rFPGA0_AnalogParameter1, 0x00100000, 0);
+ 		rtl8192_setBBreg(dev, rOFDM1_LSTF, 0xC00,
+ 				 priv->nCur40MhzPrimeSC);
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
