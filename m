@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E15A1581FF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Feb 2020 19:03:07 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 17DE91581FC
+	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Feb 2020 19:03:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C149B87884;
+	by whitealder.osuosl.org (Postfix) with ESMTP id B70B5861A4;
 	Mon, 10 Feb 2020 18:03:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hf-Gbe6Oz8WO; Mon, 10 Feb 2020 18:03:04 +0000 (UTC)
+	with ESMTP id Ipj+i5bAq7A4; Mon, 10 Feb 2020 18:03:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1DEFE878F1;
-	Mon, 10 Feb 2020 18:03:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CEAE786110;
+	Mon, 10 Feb 2020 18:03:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 873501BF304
- for <devel@linuxdriverproject.org>; Mon, 10 Feb 2020 18:02:56 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2D7321BF304
+ for <devel@linuxdriverproject.org>; Mon, 10 Feb 2020 18:02:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8128220452
- for <devel@linuxdriverproject.org>; Mon, 10 Feb 2020 18:02:56 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 23C6C860F9
+ for <devel@linuxdriverproject.org>; Mon, 10 Feb 2020 18:02:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1dtIL6L6s5+W for <devel@linuxdriverproject.org>;
- Mon, 10 Feb 2020 18:02:55 +0000 (UTC)
+ with ESMTP id e+PVty5RILJa for <devel@linuxdriverproject.org>;
+ Mon, 10 Feb 2020 18:02:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 9FCBD2040D
- for <devel@driverdev.osuosl.org>; Mon, 10 Feb 2020 18:02:55 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id d62so10019767oia.11
- for <devel@driverdev.osuosl.org>; Mon, 10 Feb 2020 10:02:55 -0800 (PST)
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
+ [209.85.210.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7485C8614D
+ for <devel@driverdev.osuosl.org>; Mon, 10 Feb 2020 18:02:56 +0000 (UTC)
+Received: by mail-ot1-f66.google.com with SMTP id p8so7233277oth.10
+ for <devel@driverdev.osuosl.org>; Mon, 10 Feb 2020 10:02:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=B0KShUUCdWMdc6fnb1YrsfTdb60AmTRCc7YmXkdpn5U=;
- b=k3TjCHJhU6nkTcCUxn7zXH7719HcZgCiVBa31yj4u2fpmhiYmawQmwxcXu3TaDkogO
- +EAEeTJuF5h4zGadBINUKxyzEIayXTkdq0QwJ1CItinKuI0BXQ/ygY+GMlnZin/b9D3Z
- fyhNPbWaql9+xLCLjwH7bQL9tCdpOu1XM21wJFPNKsWWrIuPsymoPdZdeeb47/virS0M
- UaNhe3Zo9QWWIxvJUvn5Me863ZW6M5vTtziQtFXukncVsPgLFANVNucS/Ed44JoIjmj2
- Uf/Wf6xvdIQvAfMnSuiT10IHfl31tyh/wLGk/erkZ79VFTOjxDjtin2ProH43Xxk26GA
- 7XnA==
+ bh=7zev+nzf84O19+SsgOdC2PDlzmc84n4XaWfl0N7G4i0=;
+ b=Dm5a5NF32KMUXbMVRjY9EA3Lu2y+8Y1u6jlIPibi5pscf9+PxxuHEBLUcxn5GVYiEo
+ BFXXlCP+fpqSe1rZiDI1MhiSSlnMGt0AN78XxKV726Fpejy6W9MYAPXFZ8Wn1PRF99hY
+ fc0tKxZq7n9gtzN44yaSCSLOo2XhlgtFqWC07O98De42qk1U/xwSQZyXLS5c00WYETGn
+ XOlIbniRxuh26KCfgW9tcbVdoLMDSZdH2U5mn6h4oDLnjT7Q3RQvy7mH+KIdce0I14v3
+ /pUIvmX+rtwqWNHzwOkNs+4NXpxlRGq5PCZdLk+dDxKtDrcp0nthRc8q43JqINhzv0SO
+ FVYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=B0KShUUCdWMdc6fnb1YrsfTdb60AmTRCc7YmXkdpn5U=;
- b=f7gAlYSKGgKFCKBs3Wm3KFmTdQTYsgip5MwuMk6YY4W/1z+UQCgFFuHi42nSlkvZA2
- J8RqUJD/8QyR/ZdF4GIkmFYY1nnEqj0498o7rkSb82MAb6zV0ZqjEWhyylrET1ptqeCq
- 91Aq5iDI9+tQTGUktecZW3Kxmb7HsN4NonDksVNOl6PtHP+/RH/wrNmKZMs1WkmYBqXF
- GjTOJdFDidzLXZAXSaXsjymWgukM5g3u9Vt9rOfBEtuZw1WkfjEWa+VmSYzairg4vEZm
- TGY5H8ktHL7G9Dcuc8KhnoIgsBSPeRGm00h5+Q5Cppl8tWRczvj+Lu8vnJWD/NCDw5Ha
- NWzg==
-X-Gm-Message-State: APjAAAU9SXuYLWz7yfxKOPeu9TaMNE5HA1byN/fnmPLHHsNBJq3PpLSd
- SdRq/KuSMsp6qN+jAT7Aik0=
-X-Google-Smtp-Source: APXvYqxMRFW/Iym6ZleUbDwWpCYlbfoI9xJ5HXNeac3/qVk1ykPCLHPe8fQfSxJsL7wFhLJ2S8O+aQ==
-X-Received: by 2002:a54:4106:: with SMTP id l6mr189137oic.76.1581357774943;
- Mon, 10 Feb 2020 10:02:54 -0800 (PST)
+ bh=7zev+nzf84O19+SsgOdC2PDlzmc84n4XaWfl0N7G4i0=;
+ b=Qb8RfV6r6Nal7BBBpS1K4ehh9cbgBQ2RpZeGbHjH0xfG5habO03aKnJaoDQirNOHy+
+ QJr+6SKJVJJcjJd5zqMBa9aEMR6CbDCYAoRMGo7KOmiM2AURQuPKPL5ZejoACbN/GN+z
+ oKdUfEO7xMPYkzgXKUiNnozHmCKEbXpH3atGuUMQ2SoqeCXz9gGYySP4Ar+EhF2yKFaK
+ wNfFZBY2saLmG2oo09UW8EarCL4jDw6BZexIHBngBdjcd1D2xpW4f1YsKUoi+3FjBgbG
+ H7qkpMrfiiTV+cnCXybpCY4ugoX9foqs1HynmLwZbrHYMJlhwudGS25m6zy2xxhgZuOF
+ IVWA==
+X-Gm-Message-State: APjAAAXy5eIzilINiJRGItVAUmB6Iev5wFWA0PUGtW8ALlvjdqAcjiON
+ dBk+yRyV3cO9ciAv6BVGY9Y=
+X-Google-Smtp-Source: APXvYqxunMGeML/UlC7WUnBRDzKk0bdaw79CtqMWEXo2vCD0jzYIOUDupIbDs9S1OkiKbdIUqYkClQ==
+X-Received: by 2002:a05:6830:1218:: with SMTP id
+ r24mr2037318otp.144.1581357775682; 
+ Mon, 10 Feb 2020 10:02:55 -0800 (PST)
 Received: from localhost.localdomain (cpe-24-31-245-230.kc.res.rr.com.
  [24.31.245.230])
- by smtp.gmail.com with ESMTPSA id d131sm313031oia.36.2020.02.10.10.02.54
+ by smtp.gmail.com with ESMTPSA id d131sm313031oia.36.2020.02.10.10.02.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Feb 2020 10:02:54 -0800 (PST)
+ Mon, 10 Feb 2020 10:02:55 -0800 (PST)
 From: Larry Finger <Larry.Finger@lwfinger.net>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 5/6] staging: rtl8188eu: Remove some unneeded goto statements
-Date: Mon, 10 Feb 2020 12:02:34 -0600
-Message-Id: <20200210180235.21691-6-Larry.Finger@lwfinger.net>
+Subject: [PATCH 6/6] staging: rtl8723bs: Remove unneeded goto statements
+Date: Mon, 10 Feb 2020 12:02:35 -0600
+Message-Id: <20200210180235.21691-7-Larry.Finger@lwfinger.net>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200210180235.21691-1-Larry.Finger@lwfinger.net>
 References: <20200210180235.21691-1-Larry.Finger@lwfinger.net>
@@ -102,16 +103,16 @@ immediately, and eliminate the got  target.
 Signed-off-by: Larry Finger <Larry.Finger@lwfinger.net>
 Cc: Pietro Oliva <pietroliva@gmail.com>
 ---
- .../staging/rtl8188eu/os_dep/ioctl_linux.c    | 40 ++++++-------------
- 1 file changed, 12 insertions(+), 28 deletions(-)
+ .../staging/rtl8723bs/os_dep/ioctl_linux.c    | 47 +++++--------------
+ 1 file changed, 12 insertions(+), 35 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-index acca3ae8b254..ba53959e1303 100644
---- a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-@@ -2009,21 +2009,16 @@ static int wpa_supplicant_ioctl(struct net_device *dev, struct iw_point *p)
- 	struct ieee_param *param;
- 	uint ret = 0;
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index 2ac0d84f090e..9b9038e7deb1 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -3373,21 +3373,16 @@ static int wpa_supplicant_ioctl(struct net_device *dev, struct iw_point *p)
+ 
+ 	/* down(&ieee->wx_sem); */
  
 -	if (!p->pointer || p->length != sizeof(struct ieee_param)) {
 -		ret = -EINVAL;
@@ -120,12 +121,12 @@ index acca3ae8b254..ba53959e1303 100644
 +	if (!p->pointer || p->length != sizeof(struct ieee_param))
 +		return -EINVAL;
  
- 	param = (struct ieee_param *)rtw_malloc(p->length);
--	if (!param) {
+ 	param = rtw_malloc(p->length);
+-	if (param == NULL) {
 -		ret = -ENOMEM;
 -		goto out;
 -	}
-+	if (!param)
++	if (param == NULL)
 +		return -ENOMEM;
  
  	if (copy_from_user(param, p->pointer, p->length)) {
@@ -136,17 +137,20 @@ index acca3ae8b254..ba53959e1303 100644
  	}
  
  	switch (param->cmd) {
-@@ -2054,9 +2049,6 @@ static int wpa_supplicant_ioctl(struct net_device *dev, struct iw_point *p)
- 		ret = -EFAULT;
+@@ -3421,12 +3416,8 @@ static int wpa_supplicant_ioctl(struct net_device *dev, struct iw_point *p)
  
  	kfree(param);
--
+ 
 -out:
 -
+ 	/* up(&ieee->wx_sem); */
+-
  	return ret;
+-
  }
  
-@@ -2791,26 +2783,19 @@ static int rtw_hostapd_ioctl(struct net_device *dev, struct iw_point *p)
+ static int rtw_set_encryption(struct net_device *dev, struct ieee_param *param, u32 param_len)
+@@ -4200,28 +4191,19 @@ static int rtw_hostapd_ioctl(struct net_device *dev, struct iw_point *p)
  	* so, we just check hw_init_completed
  	*/
  
@@ -154,22 +158,24 @@ index acca3ae8b254..ba53959e1303 100644
 -		ret = -EPERM;
 -		goto out;
 -	}
+-
 +	if (!padapter->hw_init_completed)
 +		return -EPERM;
  
--	if (!p->pointer || p->length != sizeof(struct ieee_param)) {
+-	/* if (p->length < sizeof(struct ieee_param) || !p->pointer) { */
+-	if (!p->pointer || p->length != sizeof(*param)) {
 -		ret = -EINVAL;
 -		goto out;
 -	}
-+	if (!p->pointer || p->length != sizeof(struct ieee_param))
++	if (!p->pointer || p->length != sizeof(*param))
 +		return -EINVAL;
  
- 	param = (struct ieee_param *)rtw_malloc(p->length);
--	if (!param) {
+ 	param = rtw_malloc(p->length);
+-	if (param == NULL) {
 -		ret = -ENOMEM;
 -		goto out;
 -	}
-+	if (!param)
++	if (param == NULL)
 +		return -ENOMEM;
  
  	if (copy_from_user(param, p->pointer, p->length)) {
@@ -179,15 +185,21 @@ index acca3ae8b254..ba53959e1303 100644
 +		return -EFAULT;
  	}
  
- 	switch (param->cmd) {
-@@ -2865,7 +2850,6 @@ static int rtw_hostapd_ioctl(struct net_device *dev, struct iw_point *p)
+ 	/* DBG_871X("%s, cmd =%d\n", __func__, param->cmd); */
+@@ -4321,13 +4303,8 @@ static int rtw_hostapd_ioctl(struct net_device *dev, struct iw_point *p)
  	if (ret == 0 && copy_to_user(p->pointer, param, p->length))
  		ret = -EFAULT;
+ 
+-
  	kfree(param);
+-
 -out:
+-
  	return ret;
+-
  }
- #endif
+ 
+ static int rtw_wx_set_priv(struct net_device *dev,
 -- 
 2.25.0
 
