@@ -2,74 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D31BF1582A7
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Feb 2020 19:37:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2411B1582A8
+	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Feb 2020 19:38:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7603087999;
-	Mon, 10 Feb 2020 18:37:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A4ED6879A7;
+	Mon, 10 Feb 2020 18:37:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5MzehYU30Wjx; Mon, 10 Feb 2020 18:37:54 +0000 (UTC)
+	with ESMTP id W9JL3nERHh5C; Mon, 10 Feb 2020 18:37:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CEE9E87527;
-	Mon, 10 Feb 2020 18:37:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DD39A87527;
+	Mon, 10 Feb 2020 18:37:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EC4BC1BF964
- for <devel@linuxdriverproject.org>; Mon, 10 Feb 2020 18:37:50 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 95D8D1BF964
+ for <devel@linuxdriverproject.org>; Mon, 10 Feb 2020 18:37:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E910A8754B
- for <devel@linuxdriverproject.org>; Mon, 10 Feb 2020 18:37:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8E7DF204A2
+ for <devel@linuxdriverproject.org>; Mon, 10 Feb 2020 18:37:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GcZFvlMo6S+l for <devel@linuxdriverproject.org>;
- Mon, 10 Feb 2020 18:37:50 +0000 (UTC)
+ with ESMTP id gzB8q4LiTfjb for <devel@linuxdriverproject.org>;
+ Mon, 10 Feb 2020 18:37:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 73F098749A
- for <devel@driverdev.osuosl.org>; Mon, 10 Feb 2020 18:37:50 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id s1so4108006pfh.10
- for <devel@driverdev.osuosl.org>; Mon, 10 Feb 2020 10:37:50 -0800 (PST)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7E31D204A0
+ for <devel@driverdev.osuosl.org>; Mon, 10 Feb 2020 18:37:55 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id w21so4342747pgl.9
+ for <devel@driverdev.osuosl.org>; Mon, 10 Feb 2020 10:37:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=umt++nmNk2LlD4NsvJDmDt5rq8zdUSLHh/U6VwMmTpU=;
- b=ZVkkUS0yXLzvHRVNZ6u24FHjeejdwBnetcrQbhhsDB/f4CD4jnnTeVlKc6yu30LLhN
- YwF3lwtze9felDDxwKbqtDSSSqkRKKANxNwO2BGFVAakgHc9yb0fuWbKVTcKhSdf32Zd
- K0WZ4go6l8owCO8V2fPQAeKmdIjEJOOeEghmFAzoBylKCCfKHL+YVwceJnlDeQsiPCoe
- jmiAO5V08F80Jqa0N0CnCfmgKn6FzSpO4c83yXesLyCt+Blu4tPELkzt8vRcyZCjJwXv
- 3hav9NQ6u+FHe7YkWngVEYWsxsiCxyJrZZkvR1+CR2xYI2wIKF16T9OEPUf+GMPIN8Yl
- UZ8g==
+ bh=3LgDBSCZjxBjgZamIyJB6leQqXfm964yJ7D7RtAIfR8=;
+ b=IwNu7+TgWWZ98ABg9NwC6VV5hBvLDRdVtxpanMXSFgJunDdCvMzsf1zql6r4HhcOa/
+ AT2z7+MmQwR/YKfKLFa9aPT9B/d401F2RGckLnXeOtDRFtZPaNGGK8xHteOOurJdUsG4
+ nlxr8Qn8GqBdkBvnL8+0wxKNQICviJNiJ25fa2+rX/sYsrs23E4NodEp6gxSwK9WgJiu
+ L2+yHKwBW1HT1zXaCSv5ATjtO8PwWzCSlXXM7sQcLYSTjX454qbPDs5Du3Z/iXs+q/i2
+ Ud74k/tRGlsaELe5FnT83G7zF5G4oDuNFH/KCGhAnKy5jt7nbiEAFDozGhVtwXVoDJQ7
+ NgiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=umt++nmNk2LlD4NsvJDmDt5rq8zdUSLHh/U6VwMmTpU=;
- b=qDTKDCIyf4Fl170ZJZU+RDj2T5pnMsnLr/SXuMBJ6Z/Wh549Q24v0sPw2KlYX7AAiK
- UrCEqaTxpNAGfq/tUWH0jnDKiMtXWG8dh11DE3yUmXYfeygB+v/g7jmdYq0UqOECKSMy
- 5C579WvSvgLpJ34gj/6pI5MguxYeaSVpP+mLUBaor2hS1PReYbSFJTMXmU4IV9MbZmhW
- HSmXR719EVJVAcYxpBV8Si9pLD7MoBi+W2ONaCjwtGJCigSz0WOh+Gxa3rNASmWESm1e
- +JcsN6feYAx9ig7UE035276OYs2chEVWaz+rMUhgn2XsZ3qFpSVlv+D5HX9fDyK+rqz4
- R+Tg==
-X-Gm-Message-State: APjAAAVRDZzpXp1x8IgGsacC/vqbc9QcF9ms5VW/U2BWKrXOJUT3Xcto
- AODdHpFuzL58XuVZ00bGq4A=
-X-Google-Smtp-Source: APXvYqxAaiFR2ChuoSbvv3OdgcYZIZ4roX0XchWCJNhHZ6j3qGnJibm3mJ/4STzERapuYLkxUBI19g==
-X-Received: by 2002:aa7:9f47:: with SMTP id h7mr2262393pfr.13.1581359870113;
- Mon, 10 Feb 2020 10:37:50 -0800 (PST)
+ bh=3LgDBSCZjxBjgZamIyJB6leQqXfm964yJ7D7RtAIfR8=;
+ b=BwUy2v+m9mXx1soWcrFenooBWVpS2OXp/fl9uXbdgVUw8ywKTJ6GwwK/iaKMLf4eKI
+ FdeTyg3DPfAIobtIyJH4a0/Pa3gVwO7olO6ZNqU5BvPwhKCpMb7i9/6RpUY5iJZZvxsT
+ rRGhg1yNmRN3OO9/jJ/7JS6OjgUS24m9tuefNEpUzfOX/5AXqdOBPiruj7QP5IhmqPrS
+ 3Z8Pi1BCXONgn7d6pSTFgMzfyJnQiEUS7jgBkyqio/gZLIH2LBpCQ7il1GTb41AaOZ/c
+ YiCKVxe1RMVu9ISX6a+ndRqWw4E9IoNe7JP1minJQqpUfi4V7chckpGYL1jsbgLxA37V
+ b2sQ==
+X-Gm-Message-State: APjAAAVjLcGPe/nvs39b7xRuQX261q/dX4RLa86uOTKj84BjiIIAR5ns
+ +GPWenL3cuK6hDa5Brstkkg=
+X-Google-Smtp-Source: APXvYqxg/SHoV5oiAZaQA/DiyJwSO6NZNGQen5dGG6yrHhH7/51y6ow4KqGN3wNJqTbe62glhkgiwg==
+X-Received: by 2002:a62:7945:: with SMTP id u66mr2428961pfc.82.1581359875129; 
+ Mon, 10 Feb 2020 10:37:55 -0800 (PST)
 Received: from localhost.localdomain ([2405:204:8308:74f3:144f:bb39:afc3:51b0])
- by smtp.gmail.com with ESMTPSA id gc1sm124922pjb.20.2020.02.10.10.37.45
+ by smtp.gmail.com with ESMTPSA id gc1sm124922pjb.20.2020.02.10.10.37.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Feb 2020 10:37:49 -0800 (PST)
+ Mon, 10 Feb 2020 10:37:54 -0800 (PST)
 From: Pragat Pandya <pragat.pandya@gmail.com>
 To: gregkh@linuxfoundation.org,
 	valdis.kletnieks@vt.edu
-Subject: [PATCH v2 16/19] staging: exfat: Rename variable 'NumSubdirs' to
- 'num_subdirs'
-Date: Tue, 11 Feb 2020 00:05:55 +0530
-Message-Id: <20200210183558.11836-17-pragat.pandya@gmail.com>
+Subject: [PATCH v2 17/19] staging: exfat: Rename variable 'CreateTimestamp' to
+ 'create_timestamp'
+Date: Tue, 11 Feb 2020 00:05:56 +0530
+Message-Id: <20200210183558.11836-18-pragat.pandya@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200210183558.11836-1-pragat.pandya@gmail.com>
 References: <20200207094612.GA562325@kroah.com>
@@ -96,76 +96,120 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Fix checkpatch warning: Avoid CamelCase
-Change all occurrences of identifier "NumSubdirs" to "num_subdirs"
+Change all occurrences of identifier "CreateTimestamp" to
+"create_timestamp"
 
 Signed-off-by: Pragat Pandya <pragat.pandya@gmail.com>
 ---
  drivers/staging/exfat/exfat.h       |  2 +-
- drivers/staging/exfat/exfat_super.c | 10 +++++-----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/exfat/exfat_super.c | 46 ++++++++++++++---------------
+ 2 files changed, 24 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index 883e2c5ae6df..90153175bbb9 100644
+index 90153175bbb9..c99652ab13f1 100644
 --- a/drivers/staging/exfat/exfat.h
 +++ b/drivers/staging/exfat/exfat.h
-@@ -277,7 +277,7 @@ struct dir_entry_t {
- 
+@@ -278,7 +278,7 @@ struct dir_entry_t {
  	u32 attr;
  	u64 Size;
--	u32 NumSubdirs;
-+	u32 num_subdirs;
- 	struct date_time_t CreateTimestamp;
+ 	u32 num_subdirs;
+-	struct date_time_t CreateTimestamp;
++	struct date_time_t create_timestamp;
  	struct date_time_t ModifyTimestamp;
  	struct date_time_t AccessTimestamp;
+ };
 diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index 13ff6ba97528..365e9e719bcf 100644
+index 365e9e719bcf..ed862c3e3e10 100644
 --- a/drivers/staging/exfat/exfat_super.c
 +++ b/drivers/staging/exfat/exfat_super.c
-@@ -1484,7 +1484,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 				ret = count; /* propagate error upward */
- 				goto out;
- 			}
--			info->NumSubdirs = count;
-+			info->num_subdirs = count;
+@@ -1458,7 +1458,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+ 		if ((fid->dir.dir == p_fs->root_dir) &&
+ 		    (fid->entry == -1)) {
+ 			info->attr = ATTR_SUBDIR;
+-			memset((char *)&info->CreateTimestamp, 0,
++			memset((char *)&info->create_timestamp, 0,
+ 			       sizeof(struct date_time_t));
+ 			memset((char *)&info->ModifyTimestamp, 0,
+ 			       sizeof(struct date_time_t));
+@@ -1505,13 +1505,13 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+ 	info->attr = exfat_get_entry_attr(ep);
  
- 			if (p_fs->dev_ejected)
- 				ret = -EIO;
-@@ -1532,7 +1532,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 					  uni_name.name);
- 	nls_uniname_to_cstring(sb, info->name, &uni_name);
+ 	exfat_get_entry_time(ep, &tm, TM_CREATE);
+-	info->CreateTimestamp.year = tm.year;
+-	info->CreateTimestamp.month = tm.mon;
+-	info->CreateTimestamp.day = tm.day;
+-	info->CreateTimestamp.hour = tm.hour;
+-	info->CreateTimestamp.minute = tm.min;
+-	info->CreateTimestamp.second = tm.sec;
+-	info->CreateTimestamp.millisecond = 0;
++	info->create_timestamp.year = tm.year;
++	info->create_timestamp.month = tm.mon;
++	info->create_timestamp.day = tm.day;
++	info->create_timestamp.hour = tm.hour;
++	info->create_timestamp.minute = tm.min;
++	info->create_timestamp.second = tm.sec;
++	info->create_timestamp.millisecond = 0;
  
--	info->NumSubdirs = 2;
-+	info->num_subdirs = 2;
+ 	exfat_get_entry_time(ep, &tm, TM_MODIFY);
+ 	info->ModifyTimestamp.year = tm.year;
+@@ -1605,12 +1605,12 @@ static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
+ 	exfat_set_entry_attr(ep, info->attr);
  
- 	info->Size = exfat_get_entry_size(ep2);
+ 	/* set FILE_INFO structure using the acquired struct dentry_t */
+-	tm.sec  = info->CreateTimestamp.second;
+-	tm.min  = info->CreateTimestamp.minute;
+-	tm.hour = info->CreateTimestamp.hour;
+-	tm.day  = info->CreateTimestamp.day;
+-	tm.mon  = info->CreateTimestamp.month;
+-	tm.year = info->CreateTimestamp.year;
++	tm.sec  = info->create_timestamp.second;
++	tm.min  = info->create_timestamp.minute;
++	tm.hour = info->create_timestamp.hour;
++	tm.day  = info->create_timestamp.day;
++	tm.mon  = info->create_timestamp.month;
++	tm.year = info->create_timestamp.year;
+ 	exfat_set_entry_time(ep, &tm, TM_CREATE);
  
-@@ -1551,7 +1551,7 @@ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
- 			ret = count; /* propagate error upward */
- 			goto out;
- 		}
--		info->NumSubdirs += count;
-+		info->num_subdirs += count;
- 	}
+ 	tm.sec  = info->ModifyTimestamp.second;
+@@ -1922,13 +1922,13 @@ static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
+ 			dir_entry->attr = exfat_get_entry_attr(ep);
  
- 	if (p_fs->dev_ejected)
-@@ -3164,7 +3164,7 @@ static int exfat_fill_inode(struct inode *inode, struct file_id_t *fid)
+ 			exfat_get_entry_time(ep, &tm, TM_CREATE);
+-			dir_entry->CreateTimestamp.year = tm.year;
+-			dir_entry->CreateTimestamp.month = tm.mon;
+-			dir_entry->CreateTimestamp.day = tm.day;
+-			dir_entry->CreateTimestamp.hour = tm.hour;
+-			dir_entry->CreateTimestamp.minute = tm.min;
+-			dir_entry->CreateTimestamp.second = tm.sec;
+-			dir_entry->CreateTimestamp.millisecond = 0;
++			dir_entry->create_timestamp.year = tm.year;
++			dir_entry->create_timestamp.month = tm.mon;
++			dir_entry->create_timestamp.day = tm.day;
++			dir_entry->create_timestamp.hour = tm.hour;
++			dir_entry->create_timestamp.minute = tm.min;
++			dir_entry->create_timestamp.second = tm.sec;
++			dir_entry->create_timestamp.millisecond = 0;
  
- 		i_size_write(inode, info.Size);
- 		EXFAT_I(inode)->mmu_private = i_size_read(inode);
--		set_nlink(inode, info.NumSubdirs);
-+		set_nlink(inode, info.num_subdirs);
- 	} else if (info.attr & ATTR_SYMLINK) { /* symbolic link */
- 		inode->i_generation |= 1;
- 		inode->i_mode = exfat_make_mode(sbi, info.attr, 0777);
-@@ -3664,7 +3664,7 @@ static int exfat_read_root(struct inode *inode)
- 	inode->i_mtime = curtime;
- 	inode->i_atime = curtime;
- 	inode->i_ctime = curtime;
--	set_nlink(inode, info.NumSubdirs + 2);
-+	set_nlink(inode, info.num_subdirs + 2);
+ 			exfat_get_entry_time(ep, &tm, TM_MODIFY);
+ 			dir_entry->ModifyTimestamp.year = tm.year;
+@@ -3189,7 +3189,7 @@ static int exfat_fill_inode(struct inode *inode, struct file_id_t *fid)
+ 				& ~((loff_t)p_fs->cluster_size - 1)) >> 9;
+ 
+ 	exfat_time_fat2unix(&inode->i_mtime, &info.ModifyTimestamp);
+-	exfat_time_fat2unix(&inode->i_ctime, &info.CreateTimestamp);
++	exfat_time_fat2unix(&inode->i_ctime, &info.create_timestamp);
+ 	exfat_time_fat2unix(&inode->i_atime, &info.AccessTimestamp);
  
  	return 0;
- }
+@@ -3260,7 +3260,7 @@ static int exfat_write_inode(struct inode *inode, struct writeback_control *wbc)
+ 	info.Size = i_size_read(inode);
+ 
+ 	exfat_time_unix2fat(&inode->i_mtime, &info.ModifyTimestamp);
+-	exfat_time_unix2fat(&inode->i_ctime, &info.CreateTimestamp);
++	exfat_time_unix2fat(&inode->i_ctime, &info.create_timestamp);
+ 	exfat_time_unix2fat(&inode->i_atime, &info.AccessTimestamp);
+ 
+ 	ffsWriteStat(inode, &info);
 -- 
 2.17.1
 
