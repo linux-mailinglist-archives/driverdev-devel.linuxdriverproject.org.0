@@ -1,37 +1,37 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1642A158CEC
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Feb 2020 11:51:42 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4836C158CED
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Feb 2020 11:51:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id ACF8D8560C;
-	Tue, 11 Feb 2020 10:51:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5A134879C3;
+	Tue, 11 Feb 2020 10:51:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ycrCcOC-opYV; Tue, 11 Feb 2020 10:51:38 +0000 (UTC)
+	with ESMTP id x3YF4vni1lPB; Tue, 11 Feb 2020 10:51:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BB69B855CB;
-	Tue, 11 Feb 2020 10:51:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 869DE87823;
+	Tue, 11 Feb 2020 10:51:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1D9BA1BF831
- for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 10:51:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4ED191BF831
+ for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 10:51:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 19F19204B3
- for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 10:51:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4B6DD204C3
+ for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 10:51:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yCub8rhUzYDr for <devel@linuxdriverproject.org>;
+ with ESMTP id MqJReArjeMKN for <devel@linuxdriverproject.org>;
  Tue, 11 Feb 2020 10:51:32 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from vps18998.inmotionhosting.com (vps18998.inmotionhosting.com
  [199.223.114.236])
- by silver.osuosl.org (Postfix) with ESMTPS id 9D2792045A
- for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 10:51:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 9E570204B3
+ for <devel@driverdev.osuosl.org>; Tue, 11 Feb 2020 10:51:32 +0000 (UTC)
 Received: from [173.254.192.199] (port=53067 helo=User)
  by vps18998.inmotionhosting.com with esmtpa (Exim 4.92)
  (envelope-from <info@armitateb.com>)
@@ -48,13 +48,13 @@ X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - vps18998.inmotionhosting.com
-X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
 X-AntiAbuse: Sender Address Domain - armitateb.com
 X-Get-Message-Sender-Via: vps18998.inmotionhosting.com: authenticated_id:
  info@aded.net
 X-Authenticated-Sender: vps18998.inmotionhosting.com: info@aded.net
-Message-Id: <20200211105135.19F19204B3@silver.osuosl.org>
+Message-Id: <20200211105134.4B6DD204C3@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
