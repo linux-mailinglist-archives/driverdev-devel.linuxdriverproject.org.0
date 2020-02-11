@@ -1,105 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B7E8158D68
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Feb 2020 12:19:29 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 96C41158EE8
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Feb 2020 13:48:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 77D8284155;
-	Tue, 11 Feb 2020 11:19:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 14E55204E0;
+	Tue, 11 Feb 2020 12:48:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TDb6jkQq4uhG; Tue, 11 Feb 2020 11:19:25 +0000 (UTC)
+	with ESMTP id dsy-8rDUz3Vv; Tue, 11 Feb 2020 12:48:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7876C810C6;
-	Tue, 11 Feb 2020 11:19:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 33D1D20467;
+	Tue, 11 Feb 2020 12:48:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 20EF41BF33A
- for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 11:19:22 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 755ED1BF3A4
+ for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 12:48:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1D6E981AE8
- for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 11:19:22 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 727F383F2A
+ for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 12:48:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FkF7gpiyb1rL for <devel@linuxdriverproject.org>;
- Tue, 11 Feb 2020 11:19:21 +0000 (UTC)
+ with ESMTP id XggaO4j2eQ3T for <devel@linuxdriverproject.org>;
+ Tue, 11 Feb 2020 12:48:04 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2089.outbound.protection.outlook.com [40.107.93.89])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 21EDA81AE6
- for <devel@driverdev.osuosl.org>; Tue, 11 Feb 2020 11:19:21 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dGwpHNW8QPFtYseIh2GZhuc45ouMyGjozeGrIjAnRB9TwgWBuItPOGE2eO+u89+z0L4BZE6fl7tFZmj2zYqaDWhE+4hpvqxh2pWJUYuKPlCVIuxXU9tWeV2UCnlYppXKZE84eqE6SY3MUkrU+xMuXUcpfFt3uR9Zmasrd/u3HqZDH/FtWVw2Hz6aVQRADWKcZoMWm2F/+NwL+sm3piImKJt5MWNXhdcH7POigpDl2N81PFBLHTEWZ+/XfcbvnRY6QfPrUja0fKjfRqdR0X6aQIFmUU6LxFWuSKpFukt6q5fL/AIP5JsM+tLqaWHgL9f3ySfSA5qRFMgZf6ZRCSyOlw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5oVVK0cpwDa4z//SPx5VKmk8cJnwubc+7AiMAdnOEqw=;
- b=jYLgwdQ/+qzIMXeZdYW/TkaSKePIF2pzTjH2ziMafdTdN4vtMbyI/80lZmFq/W3wv28TkrXxYMpL3vnS3oDSS0hoHLPWtvf7qJ7NUCRTWXCMdImWXip/cjvXIPHs9gDbEvojeJi+LIeyl6bac1nRPS2hjvIaC2Bm4GThBYAh7hx+MoTnlBI1XxnJqJblnnlAuEJr9wDf14XvhZgiGyB8Z4aZYp72pm5PirVUAoyeRhx9cacH7HERA4RUqkzE+L2nS4vRqxqBNhe1ILmvQznvY4QnWFCm9W22UnWC9BgvSWPBGoVzo3vWpNUX8822aE2U8NxNXtuB5TFv/NZcN2W5sA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5oVVK0cpwDa4z//SPx5VKmk8cJnwubc+7AiMAdnOEqw=;
- b=QWc7fNx5HcDAo6uUNAI+UyG/tbe3LOQd8yBziyvWJ2eLvTIbpUmVPKHDiIDDSud7Z2ljsc+FDuIRhx6po4Yx1HO+ANEhL7LpmA6SfI5cWv9ee4mbESJLT7OhAYftcIwBiyyUcmXP2S2mYvBWreYe2E0XnYzmVJUNTx3tr3y3JVk=
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com (10.255.180.22) by
- MN2PR11MB4095.namprd11.prod.outlook.com (10.255.180.95) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2707.24; Tue, 11 Feb 2020 11:19:18 +0000
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3]) by MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3%7]) with mapi id 15.20.2707.030; Tue, 11 Feb 2020
- 11:19:18 +0000
-From: =?utf-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <Jerome.Pouiller@silabs.com>
-To: =?utf-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>
-Subject: Re: [PATCH v2 1/6] staging: wfx: fix init/remove vs IRQ race
-Thread-Topic: [PATCH v2 1/6] staging: wfx: fix init/remove vs IRQ race
-Thread-Index: AQHV4MbuiHaVMiOfW0mOoioEnJv8s6gV2KSA
-Date: Tue, 11 Feb 2020 11:19:18 +0000
-Message-ID: <4119656.HTyy427nan@pc-42>
-References: <cover.1581416843.git.mirq-linux@rere.qmqm.pl>
- <f0c66cbb3110c2736cd4357c753fba8c14ee3aee.1581416843.git.mirq-linux@rere.qmqm.pl>
-In-Reply-To: <f0c66cbb3110c2736cd4357c753fba8c14ee3aee.1581416843.git.mirq-linux@rere.qmqm.pl>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-x-originating-ip: [37.71.187.125]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5b13af6c-a69a-4314-20cc-08d7aee43c53
-x-ms-traffictypediagnostic: MN2PR11MB4095:
-x-microsoft-antispam-prvs: <MN2PR11MB409562815C655DE8967BDCFB93180@MN2PR11MB4095.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2276;
-x-forefront-prvs: 0310C78181
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(7916004)(39860400002)(346002)(136003)(376002)(396003)(366004)(189003)(199004)(5660300002)(85182001)(86362001)(2906002)(71200400001)(9686003)(6512007)(4326008)(66574012)(85202003)(33716001)(6486002)(6506007)(8676002)(6916009)(478600001)(76116006)(66946007)(66446008)(64756008)(81156014)(81166006)(91956017)(66556008)(66476007)(186003)(8936002)(54906003)(26005)(316002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB4095;
- H:MN2PR11MB4063.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: silabs.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: pyadqOJ/TzgazrlCtkiYuzptZNWpQi//u/WzahlE3DpD4aQKApNBTVu5pCOfDAM7gcQ5xyL4FcP+SW2pSd7Uxq2gQAVD8IZegL6UmIavknXVQTcs+ZPriVaxGJkYFHxZlFCXYsXhnGGN1w7nT61kEaNb2hYcUq5UoIpPLeuir7r0s6l1qZzRQ2i+9V2TZ5OQq/7pVSmYHcDtMucxzacvRXCg/lBQ8WSZJvsvVm3t92ObRT+iQkPSE7hjxpPHtS/mnBgXBOaNx+RFQs2rBBBQZxkmZbbOC3e6eTnxpMsDJ0EPQmBtKleWDiC3kCMMhZJAZZRfmR2MoogduvObDs/dn5IF4paEtda7n6qYit9+YOkqkXh32sTHKcKx/MJAmpji33qIbP9uFxo6LynZiTLO3I3FqTWScPjRDsiRDh8G2Iu6gIue9VzjgIo9jgGvFiYm
-x-ms-exchange-antispam-messagedata: Qv2i5NQ93Y8GBIJNBgo075QSGMwucHmvKFUrjZjI34o9gVZT7V3nnByjwtSm79zS/29d/rIEGi+tcSR6pYrcWCjT8nNEomaRKfvW24P4Rksspg+Z3g2WNEZ5xCCNq71/NDn7Z0GRG/UaGXTK0l4B1A==
-x-ms-exchange-transport-forked: True
-Content-ID: <17EB068A150D194BBB44C64DA2DFF267@namprd11.prod.outlook.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5959880CD8
+ for <devel@driverdev.osuosl.org>; Tue, 11 Feb 2020 12:48:04 +0000 (UTC)
+Received: from localhost (unknown [209.37.97.194])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1609C20842;
+ Tue, 11 Feb 2020 12:48:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1581425284;
+ bh=IEMmRHvU26st71jvjIMOxidWurLcy+y23gwdpZADlqQ=;
+ h=Date:From:To:Cc:Subject:From;
+ b=laZdw/y8kDeCJOxdPcpiQNClTbi0V7NCceFzysRdB9n6Tu76jaLr4hAzZlm/jTXSV
+ HPctyEkiZtFTqNNKs47A87mnwFbXBXCJRg340UM5166kMCc/bSEjyWRYO79Fa0t9JQ
+ ZjQ3QF3caXYAiEAsvdngNQetSBlDYHtw1sJtSeCU=
+Date: Tue, 11 Feb 2020 04:48:03 -0800
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: linux-usb@vger.kernel.org, devel@driverdev.osuosl.org
+Subject: [PATCH RESEND] Staging: remove wusbcore and UWB from the kernel tree.
+Message-ID: <20200211124803.GA1880331@kroah.com>
 MIME-Version: 1.0
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5b13af6c-a69a-4314-20cc-08d7aee43c53
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Feb 2020 11:19:18.2113 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: i1WferCoCLy13Xusfai4GcZbcrxzs358PG/gDnQsDUriKnXi7ng/kqXHSxXnepItDEpTAk40ZAgWUt/+sEUhAA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4095
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,132 +62,246 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVHVlc2RheSAxMSBGZWJydWFyeSAyMDIwIDExOjM1OjAxIENFVCBNaWNoYcWCIE1pcm9zxYJh
-dyB3cm90ZToNCj4gQ3VycmVudCBjb2RlIHJhY2VzIGluIGluaXQvZXhpdCB3aXRoIGludGVycnVw
-dCBoYW5kbGVycy4gVGhpcyBpcyBub3RpY2VkDQo+IGJ5IHRoZSB3YXJuaW5nIGJlbG93LiBGaXgg
-aXQgYnkgdXNpbmcgZGV2cmVzIGZvciBvcmRlcmluZyBhbGxvY2F0aW9ucyBhbmQNCj4gSVJRIGRl
-L3JlZ2lzdHJhdGlvbi4NCj4gDQo+IFdBUk5JTkc6IENQVTogMCBQSUQ6IDgyNyBhdCBkcml2ZXJz
-L3N0YWdpbmcvd2Z4L2J1c19zcGkuYzoxNDIgd2Z4X3NwaV9pcnFfaGFuZGxlcisweDVjLzB4NjQg
-W3dmeF0NCj4gcmFjZSBjb25kaXRpb24gaW4gZHJpdmVyIGluaXQvZGVpbml0DQo+IA0KPiBDYzog
-c3RhYmxlQHZnZXIua2VybmVsLm9yZw0KPiBGaXhlczogMDA5NjIxNGE1OWE3ICgic3RhZ2luZzog
-d2Z4OiBhZGQgc3VwcG9ydCBmb3IgSS9PIGFjY2VzcyIpDQo+IFNpZ25lZC1vZmYtYnk6IE1pY2hh
-xYIgTWlyb3PFgmF3IDxtaXJxLWxpbnV4QHJlcmUucW1xbS5wbD4NCj4gLS0tDQo+IHYyOiB1c2Ug
-ZGV2cmVzIHRvIGZpeCB0aGUgcmFjZXMNCj4gLS0tDQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L2J1
-c19zZGlvLmMgfCAxNSArKysrKystLS0tLS0tLS0NCj4gIGRyaXZlcnMvc3RhZ2luZy93ZngvYnVz
-X3NwaS5jICB8IDI3ICsrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLQ0KPiAgZHJpdmVycy9zdGFn
-aW5nL3dmeC9tYWluLmMgICAgIHwgMjEgKysrKysrKysrKysrKy0tLS0tLS0tDQo+ICBkcml2ZXJz
-L3N0YWdpbmcvd2Z4L21haW4uaCAgICAgfCAgMSAtDQo+ICA0IGZpbGVzIGNoYW5nZWQsIDMzIGlu
-c2VydGlvbnMoKyksIDMxIGRlbGV0aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-c3RhZ2luZy93ZngvYnVzX3NkaW8uYyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvYnVzX3NkaW8uYw0K
-PiBpbmRleCBmODkwMTE2NGMyMDYuLjU0NTBiZDVlMWI1ZCAxMDA2NDQNCj4gLS0tIGEvZHJpdmVy
-cy9zdGFnaW5nL3dmeC9idXNfc2Rpby5jDQo+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvYnVz
-X3NkaW8uYw0KPiBAQCAtMjAwLDI1ICsyMDAsMjMgQEAgc3RhdGljIGludCB3Znhfc2Rpb19wcm9i
-ZShzdHJ1Y3Qgc2Rpb19mdW5jICpmdW5jLA0KPiAgICAgICAgIGlmIChyZXQpDQo+ICAgICAgICAg
-ICAgICAgICBnb3RvIGVycjA7DQo+IA0KPiAtICAgICAgIHJldCA9IHdmeF9zZGlvX2lycV9zdWJz
-Y3JpYmUoYnVzKTsNCj4gLSAgICAgICBpZiAocmV0KQ0KPiAtICAgICAgICAgICAgICAgZ290byBl
-cnIxOw0KPiAtDQo+ICAgICAgICAgYnVzLT5jb3JlID0gd2Z4X2luaXRfY29tbW9uKCZmdW5jLT5k
-ZXYsICZ3Znhfc2Rpb19wZGF0YSwNCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgJndmeF9zZGlvX2h3YnVzX29wcywgYnVzKTsNCj4gICAgICAgICBpZiAoIWJ1cy0+Y29yZSkg
-ew0KPiAgICAgICAgICAgICAgICAgcmV0ID0gLUVJTzsNCj4gLSAgICAgICAgICAgICAgIGdvdG8g
-ZXJyMjsNCj4gKyAgICAgICAgICAgICAgIGdvdG8gZXJyMTsNCj4gICAgICAgICB9DQo+IA0KPiAr
-ICAgICAgIHJldCA9IHdmeF9zZGlvX2lycV9zdWJzY3JpYmUoYnVzKTsNCj4gKyAgICAgICBpZiAo
-cmV0KQ0KPiArICAgICAgICAgICAgICAgZ290byBlcnIxOw0KPiArDQo+ICAgICAgICAgcmV0ID0g
-d2Z4X3Byb2JlKGJ1cy0+Y29yZSk7DQo+ICAgICAgICAgaWYgKHJldCkNCj4gLSAgICAgICAgICAg
-ICAgIGdvdG8gZXJyMzsNCj4gKyAgICAgICAgICAgICAgIGdvdG8gZXJyMjsNCj4gDQo+ICAgICAg
-ICAgcmV0dXJuIDA7DQo+IA0KPiAtZXJyMzoNCj4gLSAgICAgICB3ZnhfZnJlZV9jb21tb24oYnVz
-LT5jb3JlKTsNCj4gIGVycjI6DQo+ICAgICAgICAgd2Z4X3NkaW9faXJxX3Vuc3Vic2NyaWJlKGJ1
-cyk7DQo+ICBlcnIxOg0KPiBAQCAtMjM0LDcgKzIzMiw2IEBAIHN0YXRpYyB2b2lkIHdmeF9zZGlv
-X3JlbW92ZShzdHJ1Y3Qgc2Rpb19mdW5jICpmdW5jKQ0KPiAgICAgICAgIHN0cnVjdCB3Znhfc2Rp
-b19wcml2ICpidXMgPSBzZGlvX2dldF9kcnZkYXRhKGZ1bmMpOw0KPiANCj4gICAgICAgICB3Znhf
-cmVsZWFzZShidXMtPmNvcmUpOw0KPiAtICAgICAgIHdmeF9mcmVlX2NvbW1vbihidXMtPmNvcmUp
-Ow0KPiAgICAgICAgIHdmeF9zZGlvX2lycV91bnN1YnNjcmliZShidXMpOw0KPiAgICAgICAgIHNk
-aW9fY2xhaW1faG9zdChmdW5jKTsNCj4gICAgICAgICBzZGlvX2Rpc2FibGVfZnVuYyhmdW5jKTsN
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy93ZngvYnVzX3NwaS5jIGIvZHJpdmVycy9z
-dGFnaW5nL3dmeC9idXNfc3BpLmMNCj4gaW5kZXggNDBiYzMzMDM1ZGUyLi42MDVhZDc0MDY4Yjcg
-MTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy93ZngvYnVzX3NwaS5jDQo+ICsrKyBiL2Ry
-aXZlcnMvc3RhZ2luZy93ZngvYnVzX3NwaS5jDQo+IEBAIC0xNTQsNiArMTU0LDExIEBAIHN0YXRp
-YyB2b2lkIHdmeF9zcGlfcmVxdWVzdF9yeChzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspDQo+ICAg
-ICAgICAgd2Z4X2JoX3JlcXVlc3RfcngoYnVzLT5jb3JlKTsNCj4gIH0NCj4gDQo+ICtzdGF0aWMg
-dm9pZCB3ZnhfZmx1c2hfaXJxX3dvcmsodm9pZCAqdykNCj4gK3sNCj4gKyAgICAgICBmbHVzaF93
-b3JrKHcpOw0KPiArfQ0KPiArDQo+ICBzdGF0aWMgc2l6ZV90IHdmeF9zcGlfYWxpZ25fc2l6ZSh2
-b2lkICpwcml2LCBzaXplX3Qgc2l6ZSkNCj4gIHsNCj4gICAgICAgICAvLyBNb3N0IG9mIFNQSSBj
-b250cm9sbGVycyBhdm9pZCBETUEgaWYgYnVmZmVyIHNpemUgaXMgbm90IDMyYml0IGFsaWduZWQN
-Cj4gQEAgLTIwNywyMiArMjEyLDIzIEBAIHN0YXRpYyBpbnQgd2Z4X3NwaV9wcm9iZShzdHJ1Y3Qg
-c3BpX2RldmljZSAqZnVuYykNCj4gICAgICAgICAgICAgICAgIHVkZWxheSgyMDAwKTsNCj4gICAg
-ICAgICB9DQo+IA0KPiAtICAgICAgIHJldCA9IGRldm1fcmVxdWVzdF9pcnEoJmZ1bmMtPmRldiwg
-ZnVuYy0+aXJxLCB3Znhfc3BpX2lycV9oYW5kbGVyLA0KPiAtICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgSVJRRl9UUklHR0VSX1JJU0lORywgIndmeCIsIGJ1cyk7DQo+IC0gICAgICAgaWYg
-KHJldCkNCj4gLSAgICAgICAgICAgICAgIHJldHVybiByZXQ7DQo+IC0NCj4gICAgICAgICBJTklU
-X1dPUksoJmJ1cy0+cmVxdWVzdF9yeCwgd2Z4X3NwaV9yZXF1ZXN0X3J4KTsNCj4gICAgICAgICBi
-dXMtPmNvcmUgPSB3ZnhfaW5pdF9jb21tb24oJmZ1bmMtPmRldiwgJndmeF9zcGlfcGRhdGEsDQo+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZ3Znhfc3BpX2h3YnVzX29wcywg
-YnVzKTsNCj4gICAgICAgICBpZiAoIWJ1cy0+Y29yZSkNCj4gICAgICAgICAgICAgICAgIHJldHVy
-biAtRUlPOw0KPiANCj4gLSAgICAgICByZXQgPSB3ZnhfcHJvYmUoYnVzLT5jb3JlKTsNCj4gKyAg
-ICAgICByZXQgPSBkZXZtX2FkZF9hY3Rpb25fb3JfcmVzZXQoJmZ1bmMtPmRldiwgd2Z4X2ZsdXNo
-X2lycV93b3JrLA0KPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmYnVz
-LT5yZXF1ZXN0X3J4KTsNCj4gICAgICAgICBpZiAocmV0KQ0KPiAtICAgICAgICAgICAgICAgd2Z4
-X2ZyZWVfY29tbW9uKGJ1cy0+Y29yZSk7DQo+ICsgICAgICAgICAgICAgICByZXR1cm4gcmV0Ow0K
-PiANCj4gLSAgICAgICByZXR1cm4gcmV0Ow0KPiArICAgICAgIHJldCA9IGRldm1fcmVxdWVzdF9p
-cnEoJmZ1bmMtPmRldiwgZnVuYy0+aXJxLCB3Znhfc3BpX2lycV9oYW5kbGVyLA0KPiArICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgSVJRRl9UUklHR0VSX1JJU0lORywgIndmeCIsIGJ1cyk7
-DQo+ICsgICAgICAgaWYgKHJldCkNCj4gKyAgICAgICAgICAgICAgIHJldHVybiByZXQ7DQo+ICsN
-Cj4gKyAgICAgICByZXR1cm4gd2Z4X3Byb2JlKGJ1cy0+Y29yZSk7DQo+ICB9DQo+IA0KPiAgc3Rh
-dGljIGludCB3Znhfc3BpX3JlbW92ZShzdHJ1Y3Qgc3BpX2RldmljZSAqZnVuYykNCj4gQEAgLTIz
-MCwxMSArMjM2LDYgQEAgc3RhdGljIGludCB3Znhfc3BpX3JlbW92ZShzdHJ1Y3Qgc3BpX2Rldmlj
-ZSAqZnVuYykNCj4gICAgICAgICBzdHJ1Y3Qgd2Z4X3NwaV9wcml2ICpidXMgPSBzcGlfZ2V0X2Ry
-dmRhdGEoZnVuYyk7DQo+IA0KPiAgICAgICAgIHdmeF9yZWxlYXNlKGJ1cy0+Y29yZSk7DQo+IC0g
-ICAgICAgd2Z4X2ZyZWVfY29tbW9uKGJ1cy0+Y29yZSk7DQo+IC0gICAgICAgLy8gQSBmZXcgSVJR
-IHdpbGwgYmUgc2VudCBkdXJpbmcgZGV2aWNlIHJlbGVhc2UuIEhvcGVmdWxseSwgbm8gSVJRDQo+
-IC0gICAgICAgLy8gc2hvdWxkIGhhcHBlbiBhZnRlciB3ZGV2L3d2aWYgYXJlIHJlbGVhc2VkLg0K
-PiAtICAgICAgIGRldm1fZnJlZV9pcnEoJmZ1bmMtPmRldiwgZnVuYy0+aXJxLCBidXMpOw0KPiAt
-ICAgICAgIGZsdXNoX3dvcmsoJmJ1cy0+cmVxdWVzdF9yeCk7DQo+ICAgICAgICAgcmV0dXJuIDA7
-DQo+ICB9DQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3dmeC9tYWluLmMgYi9k
-cml2ZXJzL3N0YWdpbmcvd2Z4L21haW4uYw0KPiBpbmRleCA4NGFkYWQ2NGZjMzAuLjc2YjJmZjdm
-YzdmZSAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL3dmeC9tYWluLmMNCj4gKysrIGIv
-ZHJpdmVycy9zdGFnaW5nL3dmeC9tYWluLmMNCj4gQEAgLTI2Miw2ICsyNjIsMTYgQEAgc3RhdGlj
-IGludCB3Znhfc2VuZF9wZGF0YV9wZHMoc3RydWN0IHdmeF9kZXYgKndkZXYpDQo+ICAgICAgICAg
-cmV0dXJuIHJldDsNCj4gIH0NCj4gDQo+ICtzdGF0aWMgdm9pZCB3ZnhfZnJlZV9jb21tb24odm9p
-ZCAqZGF0YSkNCj4gK3sNCj4gKyAgICAgICBzdHJ1Y3Qgd2Z4X2RldiAqd2RldiA9IGRhdGE7DQo+
-ICsNCj4gKyAgICAgICBtdXRleF9kZXN0cm95KCZ3ZGV2LT5yeF9zdGF0c19sb2NrKTsNCj4gKyAg
-ICAgICBtdXRleF9kZXN0cm95KCZ3ZGV2LT5jb25mX211dGV4KTsNCj4gKyAgICAgICB3ZnhfdHhf
-cXVldWVzX2RlaW5pdCh3ZGV2KTsNCj4gKyAgICAgICBpZWVlODAyMTFfZnJlZV9odyh3ZGV2LT5o
-dyk7DQo+ICt9DQo+ICsNCj4gIHN0cnVjdCB3ZnhfZGV2ICp3ZnhfaW5pdF9jb21tb24oc3RydWN0
-IGRldmljZSAqZGV2LA0KPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN0IHN0
-cnVjdCB3ZnhfcGxhdGZvcm1fZGF0YSAqcGRhdGEsDQo+ICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgY29uc3Qgc3RydWN0IGh3YnVzX29wcyAqaHdidXNfb3BzLA0KPiBAQCAtMzMyLDE3
-ICszNDIsMTIgQEAgc3RydWN0IHdmeF9kZXYgKndmeF9pbml0X2NvbW1vbihzdHJ1Y3QgZGV2aWNl
-ICpkZXYsDQo+ICAgICAgICAgd2Z4X2luaXRfaGlmX2NtZCgmd2Rldi0+aGlmX2NtZCk7DQo+ICAg
-ICAgICAgd2Z4X3R4X3F1ZXVlc19pbml0KHdkZXYpOw0KPiANCj4gKyAgICAgICBpZiAoZGV2bV9h
-ZGRfYWN0aW9uX29yX3Jlc2V0KGRldiwgd2Z4X2ZyZWVfY29tbW9uLCB3ZGV2KSkNCj4gKyAgICAg
-ICAgICAgICAgIHJldHVybiBOVUxMOw0KPiArDQo+ICAgICAgICAgcmV0dXJuIHdkZXY7DQo+ICB9
-DQo+IA0KPiAtdm9pZCB3ZnhfZnJlZV9jb21tb24oc3RydWN0IHdmeF9kZXYgKndkZXYpDQo+IC17
-DQo+IC0gICAgICAgbXV0ZXhfZGVzdHJveSgmd2Rldi0+cnhfc3RhdHNfbG9jayk7DQo+IC0gICAg
-ICAgbXV0ZXhfZGVzdHJveSgmd2Rldi0+Y29uZl9tdXRleCk7DQo+IC0gICAgICAgd2Z4X3R4X3F1
-ZXVlc19kZWluaXQod2Rldik7DQo+IC0gICAgICAgaWVlZTgwMjExX2ZyZWVfaHcod2Rldi0+aHcp
-Ow0KPiAtfQ0KPiAtDQo+ICBpbnQgd2Z4X3Byb2JlKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2KQ0KPiAg
-ew0KPiAgICAgICAgIGludCBpOw0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3dmeC9t
-YWluLmggYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L21haW4uaA0KPiBpbmRleCA4NzVmOGMyMjc4MDMu
-LjljOTQxMDA3MmRlZiAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL3dmeC9tYWluLmgN
-Cj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9tYWluLmgNCj4gQEAgLTM0LDcgKzM0LDYgQEAg
-c3RydWN0IHdmeF9kZXYgKndmeF9pbml0X2NvbW1vbihzdHJ1Y3QgZGV2aWNlICpkZXYsDQo+ICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3Qgc3RydWN0IHdmeF9wbGF0Zm9ybV9k
-YXRhICpwZGF0YSwNCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25zdCBzdHJ1
-Y3QgaHdidXNfb3BzICpod2J1c19vcHMsDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgdm9pZCAqaHdidXNfcHJpdik7DQo+IC12b2lkIHdmeF9mcmVlX2NvbW1vbihzdHJ1Y3Qgd2Z4
-X2RldiAqd2Rldik7DQo+IA0KPiAgaW50IHdmeF9wcm9iZShzdHJ1Y3Qgd2Z4X2RldiAqd2Rldik7
-DQo+ICB2b2lkIHdmeF9yZWxlYXNlKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2KTsNCj4gLS0NCj4gMi4y
-MC4xDQo+IA0KDQpBcmUgeW91IHN1cmUgeW91IGNhbiBjb21wbGV0ZWx5IGRyb3Agd2Z4X2ZyZWVf
-Y29tbW9uKCk/IElmIHlvdSB3YW50IHRvDQp1c2UgZGV2cmVzLCBJIHRoaW5rIHRoYXQgd2Z4X2Zs
-dXNoX2lycV93b3JrKCkgc2hvdWxkIGNhbGwNCndmeF9mcmVlX2NvbW1vbigpLCBubz8NCg0KLS0g
-DQpKw6lyw7RtZSBQb3VpbGxlcg0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0
-Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+It's been over 6 months, and no one has noticed that these drivers are
+deleted, probably because no one actually has this hardware.  As no one
+has volunteered to maintain the code, let's drop it for good.
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+[resending and deleting the actual diffs as the patch was too big for
+the lists]
+
+ MAINTAINERS                                   |   10 -
+ drivers/staging/Kconfig                       |    3 -
+ drivers/staging/Makefile                      |    2 -
+ drivers/staging/uwb/Kconfig                   |   72 -
+ drivers/staging/uwb/Makefile                  |   32 -
+ drivers/staging/uwb/TODO                      |    8 -
+ drivers/staging/uwb/address.c                 |  352 --
+ drivers/staging/uwb/allocator.c               |  374 ---
+ drivers/staging/uwb/beacon.c                  |  595 ----
+ drivers/staging/uwb/driver.c                  |  143 -
+ drivers/staging/uwb/drp-avail.c               |  278 --
+ drivers/staging/uwb/drp-ie.c                  |  305 --
+ drivers/staging/uwb/drp.c                     |  842 -----
+ drivers/staging/uwb/est.c                     |  450 ---
+ drivers/staging/uwb/hwa-rc.c                  |  929 ------
+ drivers/staging/uwb/i1480/Makefile            |    2 -
+ drivers/staging/uwb/i1480/dfu/Makefile        |   10 -
+ drivers/staging/uwb/i1480/dfu/dfu.c           |  198 --
+ drivers/staging/uwb/i1480/dfu/i1480-dfu.h     |  246 --
+ drivers/staging/uwb/i1480/dfu/mac.c           |  496 ---
+ drivers/staging/uwb/i1480/dfu/phy.c           |  190 --
+ drivers/staging/uwb/i1480/dfu/usb.c           |  448 ---
+ drivers/staging/uwb/i1480/i1480-est.c         |   85 -
+ drivers/staging/uwb/ie-rcv.c                  |   42 -
+ drivers/staging/uwb/ie.c                      |  366 ---
+ drivers/staging/uwb/include/debug-cmd.h       |   57 -
+ drivers/staging/uwb/include/spec.h            |  767 -----
+ drivers/staging/uwb/include/umc.h             |  192 --
+ drivers/staging/uwb/include/whci.h            |  102 -
+ drivers/staging/uwb/lc-dev.c                  |  457 ---
+ drivers/staging/uwb/lc-rc.c                   |  569 ----
+ drivers/staging/uwb/neh.c                     |  606 ----
+ drivers/staging/uwb/pal.c                     |  128 -
+ drivers/staging/uwb/radio.c                   |  196 --
+ drivers/staging/uwb/reset.c                   |  379 ---
+ drivers/staging/uwb/rsv.c                     | 1000 ------
+ drivers/staging/uwb/scan.c                    |  120 -
+ drivers/staging/uwb/umc-bus.c                 |  211 --
+ drivers/staging/uwb/umc-dev.c                 |   94 -
+ drivers/staging/uwb/umc-drv.c                 |   31 -
+ drivers/staging/uwb/uwb-debug.c               |  354 --
+ drivers/staging/uwb/uwb-internal.h            |  366 ---
+ drivers/staging/uwb/uwb.h                     |  817 -----
+ drivers/staging/uwb/uwbd.c                    |  356 --
+ drivers/staging/uwb/whc-rc.c                  |  467 ---
+ drivers/staging/uwb/whci.c                    |  257 --
+ .../staging/wusbcore/Documentation/wusb-cbaf  |  130 -
+ .../Documentation/wusb-design-overview.rst    |  457 ---
+ drivers/staging/wusbcore/Kconfig              |   39 -
+ drivers/staging/wusbcore/Makefile             |   28 -
+ drivers/staging/wusbcore/TODO                 |    8 -
+ drivers/staging/wusbcore/cbaf.c               |  645 ----
+ drivers/staging/wusbcore/crypto.c             |  441 ---
+ drivers/staging/wusbcore/dev-sysfs.c          |  124 -
+ drivers/staging/wusbcore/devconnect.c         | 1085 ------
+ drivers/staging/wusbcore/host/Kconfig         |   28 -
+ drivers/staging/wusbcore/host/Makefile        |    3 -
+ drivers/staging/wusbcore/host/hwa-hc.c        |  875 -----
+ drivers/staging/wusbcore/host/whci/Makefile   |   14 -
+ drivers/staging/wusbcore/host/whci/asl.c      |  376 ---
+ drivers/staging/wusbcore/host/whci/debug.c    |  153 -
+ drivers/staging/wusbcore/host/whci/hcd.c      |  356 --
+ drivers/staging/wusbcore/host/whci/hw.c       |   93 -
+ drivers/staging/wusbcore/host/whci/init.c     |  177 -
+ drivers/staging/wusbcore/host/whci/int.c      |   82 -
+ drivers/staging/wusbcore/host/whci/pzl.c      |  404 ---
+ drivers/staging/wusbcore/host/whci/qset.c     |  831 -----
+ drivers/staging/wusbcore/host/whci/whcd.h     |  202 --
+ drivers/staging/wusbcore/host/whci/whci-hc.h  |  401 ---
+ drivers/staging/wusbcore/host/whci/wusb.c     |  210 --
+ .../staging/wusbcore/include/association.h    |  151 -
+ drivers/staging/wusbcore/include/wusb-wa.h    |  304 --
+ drivers/staging/wusbcore/include/wusb.h       |  362 --
+ drivers/staging/wusbcore/mmc.c                |  303 --
+ drivers/staging/wusbcore/pal.c                |   45 -
+ drivers/staging/wusbcore/reservation.c        |  110 -
+ drivers/staging/wusbcore/rh.c                 |  426 ---
+ drivers/staging/wusbcore/security.c           |  599 ----
+ drivers/staging/wusbcore/wa-hc.c              |   88 -
+ drivers/staging/wusbcore/wa-hc.h              |  467 ---
+ drivers/staging/wusbcore/wa-nep.c             |  289 --
+ drivers/staging/wusbcore/wa-rpipe.c           |  539 ---
+ drivers/staging/wusbcore/wa-xfer.c            | 2927 -----------------
+ drivers/staging/wusbcore/wusbhc.c             |  490 ---
+ drivers/staging/wusbcore/wusbhc.h             |  487 ---
+ 85 files changed, 28753 deletions(-)
+ delete mode 100644 drivers/staging/uwb/Kconfig
+ delete mode 100644 drivers/staging/uwb/Makefile
+ delete mode 100644 drivers/staging/uwb/TODO
+ delete mode 100644 drivers/staging/uwb/address.c
+ delete mode 100644 drivers/staging/uwb/allocator.c
+ delete mode 100644 drivers/staging/uwb/beacon.c
+ delete mode 100644 drivers/staging/uwb/driver.c
+ delete mode 100644 drivers/staging/uwb/drp-avail.c
+ delete mode 100644 drivers/staging/uwb/drp-ie.c
+ delete mode 100644 drivers/staging/uwb/drp.c
+ delete mode 100644 drivers/staging/uwb/est.c
+ delete mode 100644 drivers/staging/uwb/hwa-rc.c
+ delete mode 100644 drivers/staging/uwb/i1480/Makefile
+ delete mode 100644 drivers/staging/uwb/i1480/dfu/Makefile
+ delete mode 100644 drivers/staging/uwb/i1480/dfu/dfu.c
+ delete mode 100644 drivers/staging/uwb/i1480/dfu/i1480-dfu.h
+ delete mode 100644 drivers/staging/uwb/i1480/dfu/mac.c
+ delete mode 100644 drivers/staging/uwb/i1480/dfu/phy.c
+ delete mode 100644 drivers/staging/uwb/i1480/dfu/usb.c
+ delete mode 100644 drivers/staging/uwb/i1480/i1480-est.c
+ delete mode 100644 drivers/staging/uwb/ie-rcv.c
+ delete mode 100644 drivers/staging/uwb/ie.c
+ delete mode 100644 drivers/staging/uwb/include/debug-cmd.h
+ delete mode 100644 drivers/staging/uwb/include/spec.h
+ delete mode 100644 drivers/staging/uwb/include/umc.h
+ delete mode 100644 drivers/staging/uwb/include/whci.h
+ delete mode 100644 drivers/staging/uwb/lc-dev.c
+ delete mode 100644 drivers/staging/uwb/lc-rc.c
+ delete mode 100644 drivers/staging/uwb/neh.c
+ delete mode 100644 drivers/staging/uwb/pal.c
+ delete mode 100644 drivers/staging/uwb/radio.c
+ delete mode 100644 drivers/staging/uwb/reset.c
+ delete mode 100644 drivers/staging/uwb/rsv.c
+ delete mode 100644 drivers/staging/uwb/scan.c
+ delete mode 100644 drivers/staging/uwb/umc-bus.c
+ delete mode 100644 drivers/staging/uwb/umc-dev.c
+ delete mode 100644 drivers/staging/uwb/umc-drv.c
+ delete mode 100644 drivers/staging/uwb/uwb-debug.c
+ delete mode 100644 drivers/staging/uwb/uwb-internal.h
+ delete mode 100644 drivers/staging/uwb/uwb.h
+ delete mode 100644 drivers/staging/uwb/uwbd.c
+ delete mode 100644 drivers/staging/uwb/whc-rc.c
+ delete mode 100644 drivers/staging/uwb/whci.c
+ delete mode 100644 drivers/staging/wusbcore/Documentation/wusb-cbaf
+ delete mode 100644 drivers/staging/wusbcore/Documentation/wusb-design-overview.rst
+ delete mode 100644 drivers/staging/wusbcore/Kconfig
+ delete mode 100644 drivers/staging/wusbcore/Makefile
+ delete mode 100644 drivers/staging/wusbcore/TODO
+ delete mode 100644 drivers/staging/wusbcore/cbaf.c
+ delete mode 100644 drivers/staging/wusbcore/crypto.c
+ delete mode 100644 drivers/staging/wusbcore/dev-sysfs.c
+ delete mode 100644 drivers/staging/wusbcore/devconnect.c
+ delete mode 100644 drivers/staging/wusbcore/host/Kconfig
+ delete mode 100644 drivers/staging/wusbcore/host/Makefile
+ delete mode 100644 drivers/staging/wusbcore/host/hwa-hc.c
+ delete mode 100644 drivers/staging/wusbcore/host/whci/Makefile
+ delete mode 100644 drivers/staging/wusbcore/host/whci/asl.c
+ delete mode 100644 drivers/staging/wusbcore/host/whci/debug.c
+ delete mode 100644 drivers/staging/wusbcore/host/whci/hcd.c
+ delete mode 100644 drivers/staging/wusbcore/host/whci/hw.c
+ delete mode 100644 drivers/staging/wusbcore/host/whci/init.c
+ delete mode 100644 drivers/staging/wusbcore/host/whci/int.c
+ delete mode 100644 drivers/staging/wusbcore/host/whci/pzl.c
+ delete mode 100644 drivers/staging/wusbcore/host/whci/qset.c
+ delete mode 100644 drivers/staging/wusbcore/host/whci/whcd.h
+ delete mode 100644 drivers/staging/wusbcore/host/whci/whci-hc.h
+ delete mode 100644 drivers/staging/wusbcore/host/whci/wusb.c
+ delete mode 100644 drivers/staging/wusbcore/include/association.h
+ delete mode 100644 drivers/staging/wusbcore/include/wusb-wa.h
+ delete mode 100644 drivers/staging/wusbcore/include/wusb.h
+ delete mode 100644 drivers/staging/wusbcore/mmc.c
+ delete mode 100644 drivers/staging/wusbcore/pal.c
+ delete mode 100644 drivers/staging/wusbcore/reservation.c
+ delete mode 100644 drivers/staging/wusbcore/rh.c
+ delete mode 100644 drivers/staging/wusbcore/security.c
+ delete mode 100644 drivers/staging/wusbcore/wa-hc.c
+ delete mode 100644 drivers/staging/wusbcore/wa-hc.h
+ delete mode 100644 drivers/staging/wusbcore/wa-nep.c
+ delete mode 100644 drivers/staging/wusbcore/wa-rpipe.c
+ delete mode 100644 drivers/staging/wusbcore/wa-xfer.c
+ delete mode 100644 drivers/staging/wusbcore/wusbhc.c
+ delete mode 100644 drivers/staging/wusbcore/wusbhc.h
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 38fe2f3f7b6f..9a4c715d1e50 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3919,11 +3919,6 @@ F:	certs/
+ F:	scripts/sign-file.c
+ F:	scripts/extract-cert.c
+ 
+-CERTIFIED WIRELESS USB (WUSB) SUBSYSTEM:
+-L:	devel@driverdev.osuosl.org
+-S:	Obsolete
+-F:	drivers/staging/wusbcore/
+-
+ CFAG12864B LCD DRIVER
+ M:	Miguel Ojeda Sandonis <miguel.ojeda.sandonis@gmail.com>
+ S:	Maintained
+@@ -17094,11 +17089,6 @@ S:	Maintained
+ F:	drivers/usb/common/ulpi.c
+ F:	include/linux/ulpi/
+ 
+-ULTRA-WIDEBAND (UWB) SUBSYSTEM:
+-L:	devel@driverdev.osuosl.org
+-S:	Obsolete
+-F:	drivers/staging/uwb/
+-
+ UNICODE SUBSYSTEM:
+ M:	Gabriel Krisman Bertazi <krisman@collabora.com>
+ L:	linux-fsdevel@vger.kernel.org
+diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
+index baccd7c883cc..0f82e23e151b 100644
+--- a/drivers/staging/Kconfig
++++ b/drivers/staging/Kconfig
+@@ -112,9 +112,6 @@ source "drivers/staging/fieldbus/Kconfig"
+ 
+ source "drivers/staging/kpc2000/Kconfig"
+ 
+-source "drivers/staging/wusbcore/Kconfig"
+-source "drivers/staging/uwb/Kconfig"
+-
+ source "drivers/staging/exfat/Kconfig"
+ 
+ source "drivers/staging/qlge/Kconfig"
+diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
+index fdd03fd6e704..49b21951b6f2 100644
+--- a/drivers/staging/Makefile
++++ b/drivers/staging/Makefile
+@@ -46,8 +46,6 @@ obj-$(CONFIG_STAGING_GASKET_FRAMEWORK)	+= gasket/
+ obj-$(CONFIG_XIL_AXIS_FIFO)	+= axis-fifo/
+ obj-$(CONFIG_FIELDBUS_DEV)     += fieldbus/
+ obj-$(CONFIG_KPC2000)		+= kpc2000/
+-obj-$(CONFIG_UWB)		+= uwb/
+-obj-$(CONFIG_USB_WUSB)		+= wusbcore/
+ obj-$(CONFIG_STAGING_EXFAT_FS)	+= exfat/
+ obj-$(CONFIG_QLGE)		+= qlge/
+ obj-$(CONFIG_NET_VENDOR_HP)	+= hp/
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
