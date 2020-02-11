@@ -1,51 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D93615918C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Feb 2020 15:07:00 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 421CC1591AE
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Feb 2020 15:17:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id ACFA9204D9;
-	Tue, 11 Feb 2020 14:06:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B27B785725;
+	Tue, 11 Feb 2020 14:17:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+X-Amavis-Alert: BAD HEADER SECTION, Header field occurs more than once: "To"
+	occurs 3 times
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UH4AG0Paw-2D; Tue, 11 Feb 2020 14:06:57 +0000 (UTC)
+	with ESMTP id nrgAvDc4_SYK; Tue, 11 Feb 2020 14:17:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5EFC42000E;
-	Tue, 11 Feb 2020 14:06:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C292485633;
+	Tue, 11 Feb 2020 14:17:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D6F1C1BF3E6
- for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 14:06:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 00FF81BF3E6
+ for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 14:17:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C9E3720440
- for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 14:06:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E5D73863B7
+ for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 14:17:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+X-Amavis-Alert: BAD HEADER SECTION, Header field occurs more than once: "To"
+ occurs 3 times
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y0GO5AcOssqe for <devel@linuxdriverproject.org>;
- Tue, 11 Feb 2020 14:06:37 +0000 (UTC)
+ with ESMTP id J+izAc5RWT5R for <devel@linuxdriverproject.org>;
+ Tue, 11 Feb 2020 14:17:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by silver.osuosl.org (Postfix) with ESMTPS id 3665B2000E
- for <devel@driverdev.osuosl.org>; Tue, 11 Feb 2020 14:06:37 +0000 (UTC)
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 61D49BADB9EBDCB6FF24;
- Tue, 11 Feb 2020 22:06:33 +0800 (CST)
-Received: from localhost (10.133.213.239) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.439.0; Tue, 11 Feb 2020
- 22:06:25 +0800
-From: YueHaibing <yuehaibing@huawei.com>
-To: <jerome.pouiller@silabs.com>, <gregkh@linuxfoundation.org>
-Subject: [PATCH -next] staging: wfx: remove set but not used variable 'tx_priv'
-Date: Tue, 11 Feb 2020 22:03:34 +0800
-Message-ID: <20200211140334.55248-1-yuehaibing@huawei.com>
-X-Mailer: git-send-email 2.10.2.windows.1
-MIME-Version: 1.0
-X-Originating-IP: [10.133.213.239]
-X-CFilter-Loop: Reflected
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5007D85802
+ for <devel@driverdev.osuosl.org>; Tue, 11 Feb 2020 14:17:15 +0000 (UTC)
+Received: from localhost (unknown [137.135.114.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E4B48214DB;
+ Tue, 11 Feb 2020 14:17:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1581430635;
+ bh=8AiWK3/ZfEIkWFam/qRaf6+N2UhHRoGAg2EyoUapjb8=;
+ h=Date:From:To:To:To:Cc:Cc:Cc:Cc:Subject:In-Reply-To:References:
+ From;
+ b=ovLIzx+baaiH3k9vMpUeBYA9eW6g+p/tf3d5kx0z3eRYO5ocwZyzQ/3D3mkzHrADh
+ reTWRueH6fCyv++IYRhyFWdPDligNO1CgB/3kSrXmi0afXNSzNeMqiNmScaIB01hmx
+ 6+OHFpvCE52Bte2uKHl1sSY24z4oEWnO+usRePF0=
+Date: Tue, 11 Feb 2020 14:17:14 +0000
+From: Sasha Levin <sashal@kernel.org>
+To: Sasha Levin <sashal@kernel.org>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+To: gregkh@linuxfoundation.org
+Subject: Re: [PATCH 2/6] staging: rtl8723bs: Fix potential security hole
+In-Reply-To: <20200210180235.21691-3-Larry.Finger@lwfinger.net>
+References: <20200210180235.21691-3-Larry.Finger@lwfinger.net>
+Message-Id: <20200211141714.E4B48214DB@mail.kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,49 +69,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org, stable@vger.kernel.org,
+ Pietro Oliva <pietroliva@gmail.com>, 
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-drivers/staging/wfx/queue.c: In function wfx_tx_queues_get:
-drivers/staging/wfx/queue.c:484:28: warning: variable tx_priv set but not used [-Wunused-but-set-variable]
+Hi,
 
-commit 2e57865e79cf ("staging: wfx: pspoll_mask make no sense")
-left behind this unused variable.
+[This is an automated email]
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- drivers/staging/wfx/queue.c | 2 --
- 1 file changed, 2 deletions(-)
+This commit has been processed because it contains a -stable tag.
+The stable tag indicates that it's relevant for the following trees: all
 
-diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
-index 0bcc61f..c73d158 100644
---- a/drivers/staging/wfx/queue.c
-+++ b/drivers/staging/wfx/queue.c
-@@ -481,7 +481,6 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
- 	struct wfx_queue *vif_queue = NULL;
- 	u32 tx_allowed_mask = 0;
- 	u32 vif_tx_allowed_mask = 0;
--	const struct wfx_tx_priv *tx_priv = NULL;
- 	struct wfx_vif *wvif;
- 	int not_found;
- 	int burst;
-@@ -541,7 +540,6 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
- 		skb = wfx_tx_queue_get(wdev, queue, tx_allowed_mask);
- 		if (!skb)
- 			continue;
--		tx_priv = wfx_skb_tx_priv(skb);
- 		hif = (struct hif_msg *) skb->data;
- 		wvif = wdev_to_wvif(wdev, hif->interface);
- 		WARN_ON(!wvif);
+The bot has tested the following trees: v5.5.2, v5.4.18, v4.19.102, v4.14.170, v4.9.213, v4.4.213.
+
+v5.5.2: Build OK!
+v4.19.102: Build OK!
+v4.14.170: Build OK!
+v4.9.213: Failed to apply! Possible dependencies:
+    554c0a3abf21 ("staging: Add rtl8723bs sdio wifi driver")
+
+v4.4.213: Failed to apply! Possible dependencies:
+    554c0a3abf21 ("staging: Add rtl8723bs sdio wifi driver")
+
+
+NOTE: The patch will not be queued to stable trees until it is upstream.
+
+How should we proceed with this patch?
+
 -- 
-2.7.4
-
-
+Thanks,
+Sasha
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
