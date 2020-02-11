@@ -2,57 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 238BC1599B8
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Feb 2020 20:26:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 26CE1159AE6
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Feb 2020 22:04:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DB6DF20524;
-	Tue, 11 Feb 2020 19:26:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0421520526;
+	Tue, 11 Feb 2020 21:04:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3xw2qESCljgm; Tue, 11 Feb 2020 19:26:21 +0000 (UTC)
+	with ESMTP id Jzm81OhaJRZZ; Tue, 11 Feb 2020 21:04:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 04B962051C;
-	Tue, 11 Feb 2020 19:26:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EE55220386;
+	Tue, 11 Feb 2020 21:04:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A0A651BF2F8
- for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 19:26:17 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AE9C91BF957
+ for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 21:04:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9D68D87A30
- for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 19:26:17 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AB0D92043E
+ for <devel@linuxdriverproject.org>; Tue, 11 Feb 2020 21:04:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SR0UPc7fg9rX for <devel@linuxdriverproject.org>;
- Tue, 11 Feb 2020 19:26:16 +0000 (UTC)
+ with ESMTP id vbr4BImpW6mm for <devel@linuxdriverproject.org>;
+ Tue, 11 Feb 2020 21:04:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9DC6186D41
- for <devel@driverdev.osuosl.org>; Tue, 11 Feb 2020 19:26:16 +0000 (UTC)
-Received: from localhost (unknown [104.133.9.100])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 59D8320637;
- Tue, 11 Feb 2020 19:26:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581449176;
- bh=BP1X49GBVhtO7J9Mxx4rEnC2+jALec49Ut+zDmtg/6U=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=GzVg36cvpotIo2pYXPWTFNNRLfCgZLYTwIYZkLi6ZbGVoBZtjOZ498AzvS5KyfVIA
- LcxMoMYp3XK3bePOVonxsPpNPUaaA6GnTeUszsLUo5Pno2ZcLaQ+ObcGD1x2vcTFlC
- qjsmCbKk98a6yqPdV0Zip823GubPQ8GC2CRZWRBU=
-Date: Tue, 11 Feb 2020 11:26:15 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Pragat Pandya <pragat.pandya@gmail.com>
-Subject: Re: [PATCH v2 00/19] Renaming some identifiers.
-Message-ID: <20200211192615.GA1967960@kroah.com>
-References: <20200207094612.GA562325@kroah.com>
- <20200210183558.11836-1-pragat.pandya@gmail.com>
+Received: from mail.iwami.or.jp (radish.iwami.or.jp [202.73.208.2])
+ by silver.osuosl.org (Postfix) with ESMTP id 6F7A920386
+ for <devel@driverdev.osuosl.org>; Tue, 11 Feb 2020 21:04:33 +0000 (UTC)
+Received: from User (x125004.ppp.asahi-net.or.jp [122.249.125.4])
+ by mail.iwami.or.jp (Postfix) with ESMTPA id 095AB1210D4;
+ Wed, 12 Feb 2020 05:53:35 +0900 (JST)
+From: "E. Al-Hashimi"<sm9546729@gmail.com>
+Subject: Re:News From You?
+Date: Tue, 11 Feb 2020 20:53:45 -0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200210183558.11836-1-pragat.pandya@gmail.com>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200211210434.AB0D92043E@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,48 +55,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, valdis.kletnieks@vt.edu,
- linux-kernel@vger.kernel.org, skhan@linuxfoundation.org,
- linux-fsdevel@vger.kernel.org, linux-kernel-mentees@lists.linuxfoundation.org
+Reply-To: ralhashimi770@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 11, 2020 at 12:05:39AM +0530, Pragat Pandya wrote:
-> This patchset renames following nineteen variables in exfat.h
-> Fix checkpatch warning: Avoid CamelCase
->  -Year->year
->  -Day->day
->  -Hour->hour
->  -Minute->minute
->  -Second->second
->  -Millisecond->millisecond
->  -FatType->fat_type
->  -ClusterSize->cluster_size
->  -NumClusters->num_clusters
->  -FreeClusters->free_clusters
->  -UsedClusters->used_clusters
->  -Name->name
->  -ShortName->short_name
->  -Attr->attr
->  -NumSubdirs->num_subdirs
->  -CreateTimestamp->create_timestamp
->  -ModifyTimestamp->modify_timestamp
->  -AccessTimestamp->access_timestamp
-> 
-> v2:
->  -Correct misplaced quatation character in subject line(s).
->  -Remove unnecessary '_'(underscore) character in renaming of identifier
->   MilliSecond.
->  -Drop commits renaming unused structure members.
+ My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee.
+ 
+Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
 
-Not all of these patches applied, so can you please rebase against my
-testing tree and resend the remaining patches?
-
-thanks,
-
-greg k-h
+ 
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+ If you can handle the fund in a good investment. reply on this email only: ssmuo123@gmail.com
+Regards,
+Ms. Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
