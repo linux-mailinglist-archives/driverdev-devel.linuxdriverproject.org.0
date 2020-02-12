@@ -1,94 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8EB7E15AB4A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Feb 2020 15:49:48 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F24B183531;
-	Wed, 12 Feb 2020 14:49:46 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zumh2kMEHQ-V; Wed, 12 Feb 2020 14:49:46 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D3ED6834F0;
-	Wed, 12 Feb 2020 14:49:45 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1F02A1BF31C
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 14:49:44 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E6A315AF51
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Feb 2020 18:58:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1BBC982022
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 14:49:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C3B81869BA;
+	Wed, 12 Feb 2020 17:58:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sLuHDy9GVZHR; Wed, 12 Feb 2020 17:58:47 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id A761786912;
+	Wed, 12 Feb 2020 17:58:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2611A1BF330
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 17:58:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 227B486C66
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 17:58:40 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j7zOLKd3rJSL for <devel@linuxdriverproject.org>;
- Wed, 12 Feb 2020 14:49:43 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 509D681FA0
- for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 14:49:43 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 01CEXCK9004249;
- Wed, 12 Feb 2020 14:49:42 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=9kz3g8SppE3C8092it7UV1WcnHIeXA9iH/3T2Jic3VM=;
- b=p9vCGHflG5TyIueboQKKkxf09DlNK3AThJpo9NbBO8eHyNzioRFLTqF5+cCF1aiApO+b
- ppMrz2mk5ZANaPWk9/CHLQz6+zSl0uvZq/oTdZXm9bcQaQnNaeiQkRr1a5RTQdAnPlU1
- sUHSG3oItzm5hY+FsAptEfNNgVQhoV6pLI+JU0aCToQ0MUUVjU+dCVjlpBXWfqu/Ontk
- cm6Trb1hpkdmssDzQR1KaYVi7lyFEO9yKZnMx91UuJP7r0u2mhdZQbnHgb4gcs6XuJaY
- M3I1fMxoqQqmkInkLztvjiiBuEDo1wNr2JIXa7DNrwP/NDaZHPX3VCp5YIa8d1k1SnoX BQ== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 2y2p3sjrmh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 12 Feb 2020 14:49:42 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 01CEbAmJ046573;
- Wed, 12 Feb 2020 14:49:42 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 2y4k9frmrd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 12 Feb 2020 14:49:42 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 01CEnff8030258;
- Wed, 12 Feb 2020 14:49:41 GMT
-Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 12 Feb 2020 06:49:40 -0800
-Date: Wed, 12 Feb 2020 17:49:33 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Kaaira Gupta <kgupta@es.iitr.ac.in>
-Subject: Re: [PATCH v2] staging:gasket:gasket_core.c:unified quoted string
- split across lines in one line
-Message-ID: <20200212144933.GJ1778@kadam>
-References: <20200211200456.GA10351@kaaira-HP-Pavilion-Notebook>
- <alpine.DEB.2.21.2002112139550.3266@hadrien>
- <20200212115035.GB21751@kaaira-HP-Pavilion-Notebook>
- <20200212144424.GI1778@kadam>
+ with ESMTP id PgLWfahtWcz2 for <devel@linuxdriverproject.org>;
+ Wed, 12 Feb 2020 17:58:36 +0000 (UTC)
+X-Greylist: delayed 05:17:06 by SQLgrey-1.7.6
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 417E48693C
+ for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 17:58:33 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id n96so1191845pjc.3
+ for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 09:58:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=H8IUcvssdhDR1K1EUyWj6oufs8d+vYOMkMY7VxxIHZM=;
+ b=QRBFUXicYklwb5F8vRR8BdDvRkILMu5Hvt8UtgaBcPwVK490Owa8JbsB3DL+n1H9fX
+ 0Pf6mQRh8MvIi96J5YKMSk/BCVDYTq0Se0Elkd1KmPZi7Hj9Jw/VhFSyam+k3wkoHyH2
+ xKjbfKQnCLkRWzilxyNZSjMEg6imwLCsrdC51YK25wF93qf4O8ARaKPF/MYc+4qOVrV0
+ JU/I26UOTMrbVW+Y+33u7IlYlL2RWcz4P9Knn8W2hPQmTNS6sCtJO1Pmh4nKfrkjsD5i
+ DdZZUH72dLS+AH3EDxhbPgojLi1ArTzL/fbT/bwHaJZieOmfHKxoNjLz4PBazm4QzWGU
+ rd4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=H8IUcvssdhDR1K1EUyWj6oufs8d+vYOMkMY7VxxIHZM=;
+ b=fiybE+cko9bo4DI582g/eE6046wTurj/TKBkHKE0gLKUdlI70Z4RhAUsM4IcTY9g8l
+ h84xlBixA4FToC3wVMS+N2ZWyfCOOt+K4whCWcTXfMCzb1nePlP0x21qW428qBvoW/lu
+ CZIa5alyxmOCP9A2jTA7z+ZU6zRz6ZuZEdrzJBRdHqCWEgoMhE4z15gr4uYh0WwCaGHg
+ xjCKfNvW+v9BsZY+cSJNDgIlJIfthAayC280sLJW/RhBaFHEVM8Yl+FLjUm8Uq9pPI3B
+ A5jT5tEdCKuN5QkLdutiAUu/9MpqWQ5xubGqvecgo9xR967N6MNqkxena3frFR1ekejE
+ +jyg==
+X-Gm-Message-State: APjAAAXxa4K606Wp4iGlNwNemWqOnTllsszpCW9387THmayWhX7H6MSl
+ PAMv+Ad5CGPLVp2eqij+UG/IwA==
+X-Google-Smtp-Source: APXvYqz0PFBr0ahFdwvSeVJO82ZYpsUmIMUpWVH696GQewdig1fJ4fE2nyV/g9k8QDSMneyW8+ixqQ==
+X-Received: by 2002:a17:90a:950b:: with SMTP id
+ t11mr237947pjo.79.1581530313215; 
+ Wed, 12 Feb 2020 09:58:33 -0800 (PST)
+Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.170])
+ by smtp.gmail.com with ESMTPSA id d14sm1156786pjz.12.2020.02.12.09.58.30
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 12 Feb 2020 09:58:32 -0800 (PST)
+Date: Wed, 12 Feb 2020 23:28:26 +0530
+From: Kaaira Gupta <kgupta@es.iitr.ac.in>
+To: dan.carpenter@oracle.com
+Subject: [PATCH v3] staging: gasket: unify multi-line string
+Message-ID: <20200212175826.GA5967@kaaira-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200212144424.GI1778@kadam>
 User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9528
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- suspectscore=0 spamscore=0
- adultscore=0 bulkscore=0 phishscore=0 malwarescore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2002120114
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9528
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxscore=0 malwarescore=0
- suspectscore=0 mlxlogscore=999 priorityscore=1501 clxscore=1015
- impostorscore=0 lowpriorityscore=0 phishscore=0 adultscore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2002120114
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,37 +85,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Julia Lawall <julia.lawall@inria.fr>,
- Rob Springer <rspringer@google.com>, Todd Poynor <toddpoynor@google.com>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Rob Springer <rspringer@google.com>,
+ Todd Poynor <toddpoynor@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Feb 12, 2020 at 05:44:24PM +0300, Dan Carpenter wrote:
-> On Wed, Feb 12, 2020 at 05:20:35PM +0530, Kaaira Gupta wrote:
-> > When the driver tries to map a region, but the region has certain
-> > permissions, or when it attempts to open gasket with tgid, or when it
-> > realeases device node;
-> 
-> We don't care about any of this information...
-> 
-> > the logs are displayed in one line only while the
-> > code has the strings split in two lines which makes it difficult for
-> > developers to search for code based on the log messages. So, this patch
-> > fixes three warnings of 'quoted string split across lines' in
-> > gasket_core.c by merging the strings in one line.
-
-Another perfectly adequate commit message would be:
-
 Fix three checkpatch.pl warnings of 'quoted string split across lines'
 in gasket_core.c by merging the strings in one line.
+Though some strings
+are over 80 characters long, fixing this warning is necessary to ease
+grep-ing the source for printk.
 
-Which is imperative.  :)  Hooray!
+Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
+---
+ drivers/staging/gasket/gasket_core.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
+index cd8be80d2076..411aaf248b37 100644
+--- a/drivers/staging/gasket/gasket_core.c
++++ b/drivers/staging/gasket/gasket_core.c
+@@ -692,8 +692,7 @@ static bool gasket_mmap_has_permissions(struct gasket_dev *gasket_dev,
+ 		(vma->vm_flags & (VM_WRITE | VM_READ | VM_EXEC));
+ 	if (requested_permissions & ~(bar_permissions)) {
+ 		dev_dbg(gasket_dev->dev,
+-			"Attempting to map a region with requested permissions "
+-			"0x%x, but region has permissions 0x%x.\n",
++			"Attempting to map a region with requested permissions 0x%x, but region has permissions 0x%x.\n",
+ 			requested_permissions, bar_permissions);
+ 		return false;
+ 	}
+@@ -1180,8 +1179,7 @@ static int gasket_open(struct inode *inode, struct file *filp)
+ 	inode->i_size = 0;
+ 
+ 	dev_dbg(gasket_dev->dev,
+-		"Attempting to open with tgid %u (%s) (f_mode: 0%03o, "
+-		"fmode_write: %d is_root: %u)\n",
++		"Attempting to open with tgid %u (%s) (f_mode: 0%03o, fmode_write: %d is_root: %u)\n",
+ 		current->tgid, task_name, filp->f_mode,
+ 		(filp->f_mode & FMODE_WRITE), is_root);
+ 
+@@ -1258,8 +1256,7 @@ static int gasket_release(struct inode *inode, struct file *file)
+ 	mutex_lock(&gasket_dev->mutex);
+ 
+ 	dev_dbg(gasket_dev->dev,
+-		"Releasing device node. Call origin: tgid %u (%s) "
+-		"(f_mode: 0%03o, fmode_write: %d, is_root: %u)\n",
++		"Releasing device node. Call origin: tgid %u (%s) (f_mode: 0%03o, fmode_write: %d, is_root: %u)\n",
+ 		current->tgid, task_name, file->f_mode,
+ 		(file->f_mode & FMODE_WRITE), is_root);
+ 	dev_dbg(gasket_dev->dev, "Current open count (owning tgid %u): %d\n",
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
