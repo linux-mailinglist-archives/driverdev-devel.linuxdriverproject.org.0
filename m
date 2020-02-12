@@ -1,76 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15E3815B4D4
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Feb 2020 00:34:21 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81AA715B518
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Feb 2020 00:47:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A5F0A85E3A;
-	Wed, 12 Feb 2020 23:34:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CF1932107A;
+	Wed, 12 Feb 2020 23:47:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4dRugWbOLH5e; Wed, 12 Feb 2020 23:34:18 +0000 (UTC)
+	with ESMTP id RF5EO8bxx3xY; Wed, 12 Feb 2020 23:47:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DC58786132;
-	Wed, 12 Feb 2020 23:34:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7DBC1207EF;
+	Wed, 12 Feb 2020 23:46:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E2D181BF325
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 23:34:14 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6AB761BF325
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 23:46:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DFA6F85E40
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 23:34:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 64791859AE
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 23:46:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gL762j47ZGMr for <devel@linuxdriverproject.org>;
- Wed, 12 Feb 2020 23:34:13 +0000 (UTC)
+ with ESMTP id VOdVwQBJ9J03 for <devel@linuxdriverproject.org>;
+ Wed, 12 Feb 2020 23:46:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8BCCC85ADC
- for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 23:34:13 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id c23so1552953plz.4
- for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 15:34:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TGLLK5q+LOFxWirH65p7n0u9xV8nMHWKM6VYmyOksas=;
- b=OvG3JfyCqAVxEhppX+vtBDujPiisJTRR7nuyjr+1wRQml58WPOpR9YTr7ij+7furAK
- rN5u/Zshmep6PQHdwdNT6ABlNhiIwpjFEtzkynLmPLMvKS8dwX7EZ8VOyCthCICwnnvj
- pEPJMgi54fBO99E2FGSuN9nHUidk2LyJyKJojHKRtxlzKoXwb4f1JjPJxTUhrJl1Y/1i
- 9KcqmSOohmmoDKtUyCQPcRIuOvZGUTeJw9ogth4YiI72IUrRWF/eHc/2OLFaV5I6DSgG
- QGA/vkH7aoPW/ukrWwJbqPOp4Lh77F/SpAEEtzQcgvaIQIo1tCSWZu94svOzXcnFuAc2
- 2AZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TGLLK5q+LOFxWirH65p7n0u9xV8nMHWKM6VYmyOksas=;
- b=SlSaX7N4Z+H22vi0R8c0PFfvEjPhz+o98VY9Me4weKyebj3P7sIm1ixHmKdS5pkLLB
- 1Q5LyQBMvsCrv8DVw4FxmE5MInCMpWWWGm/allGWTfDEEJhlY0itmAtg/RlqgWCzPaPm
- lUDo7iqfUsfvezBxgP/5WM+KP6DliE7v400FX7C5nEi1NIKIHVi/pPuaaoFf0dKuFuV4
- t8Xsd7hKsQh0FLThjQDnReVgX18z7++vNMA3I14RfvCpygtTB1JQpyg9Cn3736w8cG6C
- 2OzLnviHKp/OfCgraIYVXznBusdhdTpFyoU4SDfjOt9FFogvVU5GmpilNWRJroXGRFBv
- AMUA==
-X-Gm-Message-State: APjAAAWHAf3ojtkcyI/q5X8ti1cFMeWnZ0HCMCKQmAuzcB4M/ZNZL8JM
- 8+KWbm/kQvAwgQ/YYX+3y59p7u7DnzQcP+SEvrQ4OA==
-X-Google-Smtp-Source: APXvYqxZm/OA+PfXAs+SWsvaX0D53u19ytUYYspKhXrfnbrEFzIqpZPlgGNtBolh+ZabAPsi/XhuT0ZRl7t4fnEclYI=
-X-Received: by 2002:a17:90a:8806:: with SMTP id
- s6mr1572209pjn.141.1581550452575; 
- Wed, 12 Feb 2020 15:34:12 -0800 (PST)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 11A698584C
+ for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 23:46:56 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 12 Feb 2020 15:46:55 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,434,1574150400"; d="scan'208";a="237867222"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 12 Feb 2020 15:46:54 -0800
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1j21iX-000E5S-I6; Thu, 13 Feb 2020 07:46:53 +0800
+Date: Thu, 13 Feb 2020 07:46:02 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:driver-core-linus] BUILD SUCCESS
+ ae91c92565494a37c30ce9a691c87890f800d826
+Message-ID: <5e448e3a.ys1pJMO8Il30/Eie%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-References: <cover.1581532523.git.marcgonzalez@google.com>
- <3bf6f1ec6ace64d7072025505e165b8dd18b25ca.1581532523.git.marcgonzalez@google.com>
- <20200212214002.GB2297906@kroah.com>
-In-Reply-To: <20200212214002.GB2297906@kroah.com>
-From: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
-Date: Wed, 12 Feb 2020 18:34:00 -0500
-Message-ID: <CAKvFj6qXPzmQTBgvQaHSh2m25HDi14Rbgm4rVD2ySRaKvYDgpw@mail.gmail.com>
-Subject: Re: [PATCH 4/5] staging: vc04_services: use kref + RCU to reference
- count services
-To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,353 +63,319 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Dan Carpenter <dan.carpenter@oracle.com>,
- linux-rpi-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Feb 12, 2020 at 4:40 PM Greg KH <gregkh@linuxfoundation.org> wrote:
->
-> On Wed, Feb 12, 2020 at 01:43:32PM -0500, Marcelo Diop-Gonzalez wrote:
-> > Currently reference counts are implemented by locking service_spinlock
-> > and then incrementing the service's ->ref_count field, calling
-> > kfree() when the last reference has been dropped. But at the same
-> > time, there's code in multiple places that dereferences pointers
-> > to services without having a reference, so there could be a race there.
-> >
-> > It should be possible to avoid taking any lock in unlock_service()
-> > or service_release() because we are setting a single array element
-> > to NULL, and on service creation, a mutex is locked before looking
-> > for a NULL spot to put the new service in.
-> >
-> > Using a struct kref and RCU-delaying the freeing of services fixes
-> > this race condition while still making it possible to skip
-> > grabbing a reference in many places. Also it avoids the need to
-> > acquire a single spinlock when e.g. taking a reference on
-> > state->services[i] when somebody else is in the middle of taking
-> > a reference on state->services[j].
-> >
-> > Signed-off-by: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
-> > ---
-> >  .../interface/vchiq_arm/vchiq_arm.c           |  25 +-
-> >  .../interface/vchiq_arm/vchiq_core.c          | 222 +++++++++---------
-> >  .../interface/vchiq_arm/vchiq_core.h          |  12 +-
-> >  3 files changed, 140 insertions(+), 119 deletions(-)
-> >
-> > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > index c456ced431af..3ed0e4ea7f5c 100644
-> > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > @@ -22,6 +22,7 @@
-> >  #include <linux/platform_device.h>
-> >  #include <linux/compat.h>
-> >  #include <linux/dma-mapping.h>
-> > +#include <linux/rcupdate.h>
-> >  #include <soc/bcm2835/raspberrypi-firmware.h>
-> >
-> >  #include "vchiq_core.h"
-> > @@ -2096,10 +2097,12 @@ int vchiq_dump_platform_instances(void *dump_context)
-> >       /* There is no list of instances, so instead scan all services,
-> >               marking those that have been dumped. */
-> >
-> > +     rcu_read_lock();
-> >       for (i = 0; i < state->unused_service; i++) {
-> > -             struct vchiq_service *service = state->services[i];
-> > +             struct vchiq_service *service;
-> >               struct vchiq_instance *instance;
-> >
-> > +             service = rcu_dereference(state->services[i]);
-> >               if (!service || service->base.callback != service_callback)
-> >                       continue;
-> >
-> > @@ -2107,18 +2110,26 @@ int vchiq_dump_platform_instances(void *dump_context)
-> >               if (instance)
-> >                       instance->mark = 0;
-> >       }
-> > +     rcu_read_unlock();
-> >
-> >       for (i = 0; i < state->unused_service; i++) {
-> > -             struct vchiq_service *service = state->services[i];
-> > +             struct vchiq_service *service;
-> >               struct vchiq_instance *instance;
-> >               int err;
-> >
-> > -             if (!service || service->base.callback != service_callback)
-> > +             rcu_read_lock();
-> > +             service = rcu_dereference(state->services[i]);
-> > +             if (!service || service->base.callback != service_callback) {
-> > +                     rcu_read_unlock();
-> >                       continue;
-> > +             }
-> >
-> >               instance = service->instance;
-> > -             if (!instance || instance->mark)
-> > +             if (!instance || instance->mark) {
-> > +                     rcu_read_unlock();
-> >                       continue;
-> > +             }
-> > +             rcu_read_unlock();
-> >
-> >               len = snprintf(buf, sizeof(buf),
-> >                              "Instance %pK: pid %d,%s completions %d/%d",
-> > @@ -2128,7 +2139,6 @@ int vchiq_dump_platform_instances(void *dump_context)
-> >                              instance->completion_insert -
-> >                              instance->completion_remove,
-> >                              MAX_COMPLETIONS);
-> > -
-> >               err = vchiq_dump(dump_context, buf, len + 1);
-> >               if (err)
-> >                       return err;
-> > @@ -2585,8 +2595,10 @@ vchiq_dump_service_use_state(struct vchiq_state *state)
-> >       if (active_services > MAX_SERVICES)
-> >               only_nonzero = 1;
-> >
-> > +     rcu_read_lock();
-> >       for (i = 0; i < active_services; i++) {
-> > -             struct vchiq_service *service_ptr = state->services[i];
-> > +             struct vchiq_service *service_ptr =
-> > +                     rcu_dereference(state->services[i]);
-> >
-> >               if (!service_ptr)
-> >                       continue;
-> > @@ -2604,6 +2616,7 @@ vchiq_dump_service_use_state(struct vchiq_state *state)
-> >               if (found >= MAX_SERVICES)
-> >                       break;
-> >       }
-> > +     rcu_read_unlock();
-> >
-> >       read_unlock_bh(&arm_state->susp_res_lock);
-> >
-> > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> > index b2d9013b7f79..65270a5b29db 100644
-> > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> > @@ -1,6 +1,9 @@
-> >  // SPDX-License-Identifier: GPL-2.0 OR BSD-3-Clause
-> >  /* Copyright (c) 2010-2012 Broadcom. All rights reserved. */
-> >
-> > +#include <linux/kref.h>
-> > +#include <linux/rcupdate.h>
-> > +
-> >  #include "vchiq_core.h"
-> >
-> >  #define VCHIQ_SLOT_HANDLER_STACK 8192
-> > @@ -54,7 +57,6 @@ int vchiq_core_log_level = VCHIQ_LOG_DEFAULT;
-> >  int vchiq_core_msg_log_level = VCHIQ_LOG_DEFAULT;
-> >  int vchiq_sync_log_level = VCHIQ_LOG_DEFAULT;
-> >
-> > -static DEFINE_SPINLOCK(service_spinlock);
-> >  DEFINE_SPINLOCK(bulk_waiter_spinlock);
-> >  static DEFINE_SPINLOCK(quota_spinlock);
-> >
-> > @@ -136,44 +138,41 @@ find_service_by_handle(unsigned int handle)
-> >  {
-> >       struct vchiq_service *service;
-> >
-> > -     spin_lock(&service_spinlock);
-> > +     rcu_read_lock();
-> >       service = handle_to_service(handle);
-> >       if (service && service->srvstate != VCHIQ_SRVSTATE_FREE &&
-> > -         service->handle == handle) {
-> > -             WARN_ON(service->ref_count == 0);
-> > -             service->ref_count++;
-> > -     } else
-> > -             service = NULL;
-> > -     spin_unlock(&service_spinlock);
-> > -
-> > -     if (!service)
-> > -             vchiq_log_info(vchiq_core_log_level,
-> > -                     "Invalid service handle 0x%x", handle);
-> > -
-> > -     return service;
-> > +         service->handle == handle &&
-> > +         kref_get_unless_zero(&service->ref_count)) {
-> > +             service = rcu_pointer_handoff(service);
-> > +             rcu_read_unlock();
-> > +             return service;
-> > +     }
-> > +     rcu_read_unlock();
-> > +     vchiq_log_info(vchiq_core_log_level,
-> > +                    "Invalid service handle 0x%x", handle);
-> > +     return NULL;
-> >  }
-> >
-> >  struct vchiq_service *
-> >  find_service_by_port(struct vchiq_state *state, int localport)
-> >  {
-> > -     struct vchiq_service *service = NULL;
-> >
-> >       if ((unsigned int)localport <= VCHIQ_PORT_MAX) {
-> > -             spin_lock(&service_spinlock);
-> > -             service = state->services[localport];
-> > -             if (service && service->srvstate != VCHIQ_SRVSTATE_FREE) {
-> > -                     WARN_ON(service->ref_count == 0);
-> > -                     service->ref_count++;
-> > -             } else
-> > -                     service = NULL;
-> > -             spin_unlock(&service_spinlock);
-> > -     }
-> > -
-> > -     if (!service)
-> > -             vchiq_log_info(vchiq_core_log_level,
-> > -                     "Invalid port %d", localport);
-> > +             struct vchiq_service *service;
-> >
-> > -     return service;
-> > +             rcu_read_lock();
-> > +             service = rcu_dereference(state->services[localport]);
-> > +             if (service && service->srvstate != VCHIQ_SRVSTATE_FREE &&
-> > +                 kref_get_unless_zero(&service->ref_count)) {
-> > +                     service = rcu_pointer_handoff(service);
-> > +                     rcu_read_unlock();
-> > +                     return service;
-> > +             }
-> > +             rcu_read_unlock();
-> > +     }
-> > +     vchiq_log_info(vchiq_core_log_level,
-> > +                    "Invalid port %d", localport);
-> > +     return NULL;
-> >  }
-> >
-> >  struct vchiq_service *
-> > @@ -182,22 +181,20 @@ find_service_for_instance(struct vchiq_instance *instance,
-> >  {
-> >       struct vchiq_service *service;
-> >
-> > -     spin_lock(&service_spinlock);
-> > +     rcu_read_lock();
-> >       service = handle_to_service(handle);
-> >       if (service && service->srvstate != VCHIQ_SRVSTATE_FREE &&
-> >           service->handle == handle &&
-> > -         service->instance == instance) {
-> > -             WARN_ON(service->ref_count == 0);
-> > -             service->ref_count++;
-> > -     } else
-> > -             service = NULL;
-> > -     spin_unlock(&service_spinlock);
-> > -
-> > -     if (!service)
-> > -             vchiq_log_info(vchiq_core_log_level,
-> > -                     "Invalid service handle 0x%x", handle);
-> > -
-> > -     return service;
-> > +         service->instance == instance &&
-> > +         kref_get_unless_zero(&service->ref_count)) {
-> > +             service = rcu_pointer_handoff(service);
-> > +             rcu_read_unlock();
-> > +             return service;
-> > +     }
-> > +     rcu_read_unlock();
-> > +     vchiq_log_info(vchiq_core_log_level,
-> > +                    "Invalid service handle 0x%x", handle);
-> > +     return NULL;
-> >  }
-> >
-> >  struct vchiq_service *
-> > @@ -206,23 +203,21 @@ find_closed_service_for_instance(struct vchiq_instance *instance,
-> >  {
-> >       struct vchiq_service *service;
-> >
-> > -     spin_lock(&service_spinlock);
-> > +     rcu_read_lock();
-> >       service = handle_to_service(handle);
-> >       if (service &&
-> >           (service->srvstate == VCHIQ_SRVSTATE_FREE ||
-> >            service->srvstate == VCHIQ_SRVSTATE_CLOSED) &&
-> >           service->handle == handle &&
-> > -         service->instance == instance) {
-> > -             WARN_ON(service->ref_count == 0);
-> > -             service->ref_count++;
-> > -     } else
-> > -             service = NULL;
-> > -     spin_unlock(&service_spinlock);
-> > -
-> > -     if (!service)
-> > -             vchiq_log_info(vchiq_core_log_level,
-> > -                     "Invalid service handle 0x%x", handle);
-> > -
-> > +         service->instance == instance &&
-> > +         kref_get_unless_zero(&service->ref_count)) {
-> > +             service = rcu_pointer_handoff(service);
-> > +             rcu_read_unlock();
-> > +             return service;
-> > +     }
-> > +     rcu_read_unlock();
-> > +     vchiq_log_info(vchiq_core_log_level,
-> > +                    "Invalid service handle 0x%x", handle);
-> >       return service;
-> >  }
-> >
-> > @@ -233,19 +228,19 @@ next_service_by_instance(struct vchiq_state *state, struct vchiq_instance *insta
-> >       struct vchiq_service *service = NULL;
-> >       int idx = *pidx;
-> >
-> > -     spin_lock(&service_spinlock);
-> > +     rcu_read_lock();
-> >       while (idx < state->unused_service) {
-> > -             struct vchiq_service *srv = state->services[idx++];
-> > +             struct vchiq_service *srv;
-> >
-> > +             srv = rcu_dereference(state->services[idx++]);
-> >               if (srv && srv->srvstate != VCHIQ_SRVSTATE_FREE &&
-> > -                 srv->instance == instance) {
-> > -                     service = srv;
-> > -                     WARN_ON(service->ref_count == 0);
-> > -                     service->ref_count++;
-> > +                 srv->instance == instance &&
-> > +                 kref_get_unless_zero(&srv->ref_count)) {
-> > +                     service = rcu_pointer_handoff(srv);
-> >                       break;
-> >               }
-> >       }
-> > -     spin_unlock(&service_spinlock);
-> > +     rcu_read_unlock();
-> >
-> >       *pidx = idx;
-> >
-> > @@ -255,43 +250,34 @@ next_service_by_instance(struct vchiq_state *state, struct vchiq_instance *insta
-> >  void
-> >  lock_service(struct vchiq_service *service)
-> >  {
-> > -     spin_lock(&service_spinlock);
-> > -     WARN_ON(!service);
-> > -     if (service) {
-> > -             WARN_ON(service->ref_count == 0);
-> > -             service->ref_count++;
-> > +     if (!service) {
-> > +             WARN(1, "%s service is NULL\n", __func__);
-> > +             return;
-> >       }
-> > -     spin_unlock(&service_spinlock);
-> > +     kref_get(&service->ref_count);
-> > +}
-> > +
-> > +static void service_release(struct kref *kref)
-> > +{
-> > +     struct vchiq_service *service =
-> > +             container_of(kref, struct vchiq_service, ref_count);
-> > +     struct vchiq_state *state = service->state;
-> > +
-> > +     WARN_ON(service->srvstate != VCHIQ_SRVSTATE_FREE);
-> > +     rcu_assign_pointer(state->services[service->localport], NULL);
-> > +     if (service->userdata_term)
-> > +             service->userdata_term(service->base.userdata);
-> > +     kfree_rcu(service, rcu);
-> >  }
->
-> I think that's the first time I've seen krefs used with rcu.
->
-> It looks sane at first glance, but it's a lot of tricky changes, so I'll
-> assume you tested this and go merge it to see what breaks :)
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-linus
+branch HEAD: ae91c92565494a37c30ce9a691c87890f800d826  debugfs: remove return value of debugfs_create_regset32()
 
-Sounds good, thanks! hopefully it works :)
+elapsed time: 2885m
 
->
-> thanks for doing this,
->
-> greg k-h
+configs tested: 292
+configs skipped: 0
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                              allmodconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+sparc                            allyesconfig
+nds32                             allnoconfig
+riscv                          rv32_defconfig
+mips                             allmodconfig
+csky                                defconfig
+mips                      fuloong2e_defconfig
+sh                          rsk7269_defconfig
+i386                                defconfig
+sh                                allnoconfig
+sh                            titan_defconfig
+riscv                               defconfig
+s390                                defconfig
+nds32                               defconfig
+xtensa                       common_defconfig
+powerpc                           allnoconfig
+openrisc                 simple_smp_defconfig
+microblaze                    nommu_defconfig
+parisc                              defconfig
+um                                  defconfig
+openrisc                    or1ksim_defconfig
+sparc64                          allyesconfig
+microblaze                      mmu_defconfig
+alpha                               defconfig
+ia64                                defconfig
+sparc64                          allmodconfig
+m68k                             allmodconfig
+sparc64                           allnoconfig
+m68k                           sun3_defconfig
+sparc64                             defconfig
+nios2                         10m50_defconfig
+i386                             alldefconfig
+i386                              allnoconfig
+i386                             allyesconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                             alldefconfig
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         3c120_defconfig
+xtensa                          iss_defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+arc                              allyesconfig
+arc                                 defconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                              allnoconfig
+mips                             allyesconfig
+mips                      malta_kvm_defconfig
+parisc                            allnoconfig
+parisc                           allyesconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+x86_64               randconfig-a001-20200212
+x86_64               randconfig-a002-20200212
+x86_64               randconfig-a003-20200212
+i386                 randconfig-a001-20200212
+i386                 randconfig-a002-20200212
+i386                 randconfig-a003-20200212
+x86_64               randconfig-a001-20200213
+x86_64               randconfig-a002-20200213
+x86_64               randconfig-a003-20200213
+i386                 randconfig-a001-20200213
+i386                 randconfig-a002-20200213
+i386                 randconfig-a003-20200213
+i386                 randconfig-a003-20200211
+i386                 randconfig-a001-20200211
+i386                 randconfig-a002-20200211
+x86_64               randconfig-a002-20200211
+x86_64               randconfig-a003-20200211
+x86_64               randconfig-a001-20200211
+alpha                randconfig-a001-20200211
+m68k                 randconfig-a001-20200211
+mips                 randconfig-a001-20200211
+nds32                randconfig-a001-20200211
+parisc               randconfig-a001-20200211
+riscv                randconfig-a001-20200211
+alpha                randconfig-a001-20200212
+m68k                 randconfig-a001-20200212
+nds32                randconfig-a001-20200212
+parisc               randconfig-a001-20200212
+riscv                randconfig-a001-20200212
+alpha                randconfig-a001-20200213
+m68k                 randconfig-a001-20200213
+mips                 randconfig-a001-20200213
+nds32                randconfig-a001-20200213
+parisc               randconfig-a001-20200213
+riscv                randconfig-a001-20200213
+c6x                  randconfig-a001-20200212
+h8300                randconfig-a001-20200212
+microblaze           randconfig-a001-20200212
+nios2                randconfig-a001-20200212
+sparc64              randconfig-a001-20200212
+c6x                  randconfig-a001-20200211
+h8300                randconfig-a001-20200211
+microblaze           randconfig-a001-20200211
+nios2                randconfig-a001-20200211
+sparc64              randconfig-a001-20200211
+c6x                  randconfig-a001-20200213
+h8300                randconfig-a001-20200213
+microblaze           randconfig-a001-20200213
+nios2                randconfig-a001-20200213
+sparc64              randconfig-a001-20200213
+sh                   randconfig-a001-20200211
+s390                 randconfig-a001-20200211
+xtensa               randconfig-a001-20200211
+openrisc             randconfig-a001-20200211
+csky                 randconfig-a001-20200211
+csky                 randconfig-a001-20200213
+openrisc             randconfig-a001-20200213
+s390                 randconfig-a001-20200213
+sh                   randconfig-a001-20200213
+xtensa               randconfig-a001-20200213
+csky                 randconfig-a001-20200212
+openrisc             randconfig-a001-20200212
+s390                 randconfig-a001-20200212
+sh                   randconfig-a001-20200212
+xtensa               randconfig-a001-20200212
+x86_64               randconfig-b001-20200211
+x86_64               randconfig-b002-20200211
+x86_64               randconfig-b003-20200211
+i386                 randconfig-b001-20200211
+i386                 randconfig-b002-20200211
+i386                 randconfig-b003-20200211
+x86_64               randconfig-b001-20200212
+x86_64               randconfig-b002-20200212
+x86_64               randconfig-b003-20200212
+i386                 randconfig-b001-20200212
+i386                 randconfig-b002-20200212
+i386                 randconfig-b003-20200212
+x86_64               randconfig-b001-20200213
+x86_64               randconfig-b002-20200213
+x86_64               randconfig-b003-20200213
+i386                 randconfig-b001-20200213
+i386                 randconfig-b002-20200213
+i386                 randconfig-b003-20200213
+x86_64               randconfig-c001-20200211
+x86_64               randconfig-c002-20200211
+x86_64               randconfig-c003-20200211
+i386                 randconfig-c001-20200211
+i386                 randconfig-c002-20200211
+i386                 randconfig-c003-20200211
+x86_64               randconfig-c001-20200212
+x86_64               randconfig-c002-20200212
+x86_64               randconfig-c003-20200212
+i386                 randconfig-c001-20200212
+i386                 randconfig-c002-20200212
+i386                 randconfig-c003-20200212
+x86_64               randconfig-c001-20200213
+x86_64               randconfig-c002-20200213
+x86_64               randconfig-c003-20200213
+i386                 randconfig-c001-20200213
+i386                 randconfig-c002-20200213
+i386                 randconfig-c003-20200213
+x86_64               randconfig-d003-20200211
+x86_64               randconfig-d001-20200211
+i386                 randconfig-d003-20200211
+x86_64               randconfig-d002-20200211
+i386                 randconfig-d001-20200211
+i386                 randconfig-d002-20200211
+x86_64               randconfig-d001-20200212
+x86_64               randconfig-d002-20200212
+x86_64               randconfig-d003-20200212
+i386                 randconfig-d001-20200212
+i386                 randconfig-d002-20200212
+i386                 randconfig-d003-20200212
+x86_64               randconfig-e001-20200212
+x86_64               randconfig-e002-20200212
+x86_64               randconfig-e003-20200212
+i386                 randconfig-e001-20200212
+i386                 randconfig-e002-20200212
+i386                 randconfig-e003-20200212
+x86_64               randconfig-e001-20200211
+x86_64               randconfig-e002-20200211
+x86_64               randconfig-e003-20200211
+i386                 randconfig-e001-20200211
+i386                 randconfig-e002-20200211
+i386                 randconfig-e003-20200211
+x86_64               randconfig-e001-20200213
+x86_64               randconfig-e002-20200213
+x86_64               randconfig-e003-20200213
+i386                 randconfig-e001-20200213
+i386                 randconfig-e002-20200213
+i386                 randconfig-e003-20200213
+x86_64               randconfig-f001-20200212
+x86_64               randconfig-f002-20200212
+x86_64               randconfig-f003-20200212
+i386                 randconfig-f001-20200212
+i386                 randconfig-f002-20200212
+i386                 randconfig-f003-20200212
+x86_64               randconfig-f001-20200211
+x86_64               randconfig-f002-20200211
+x86_64               randconfig-f003-20200211
+i386                 randconfig-f001-20200211
+i386                 randconfig-f002-20200211
+i386                 randconfig-f003-20200211
+x86_64               randconfig-g001-20200212
+x86_64               randconfig-g002-20200212
+x86_64               randconfig-g003-20200212
+i386                 randconfig-g001-20200212
+i386                 randconfig-g002-20200212
+i386                 randconfig-g003-20200212
+x86_64               randconfig-g001-20200213
+x86_64               randconfig-g002-20200213
+x86_64               randconfig-g003-20200213
+i386                 randconfig-g001-20200213
+i386                 randconfig-g002-20200213
+i386                 randconfig-g003-20200213
+x86_64               randconfig-g001-20200211
+x86_64               randconfig-g002-20200211
+x86_64               randconfig-g003-20200211
+i386                 randconfig-g001-20200211
+i386                 randconfig-g002-20200211
+i386                 randconfig-g003-20200211
+x86_64               randconfig-h001-20200211
+x86_64               randconfig-h002-20200211
+x86_64               randconfig-h003-20200211
+i386                 randconfig-h001-20200211
+i386                 randconfig-h002-20200211
+i386                 randconfig-h003-20200211
+x86_64               randconfig-h001-20200212
+x86_64               randconfig-h002-20200212
+x86_64               randconfig-h003-20200212
+i386                 randconfig-h001-20200212
+i386                 randconfig-h002-20200212
+i386                 randconfig-h003-20200212
+x86_64               randconfig-h001-20200213
+x86_64               randconfig-h002-20200213
+x86_64               randconfig-h003-20200213
+i386                 randconfig-h001-20200213
+i386                 randconfig-h002-20200213
+i386                 randconfig-h003-20200213
+arc                  randconfig-a001-20200212
+arm                  randconfig-a001-20200212
+arm64                randconfig-a001-20200212
+ia64                 randconfig-a001-20200212
+powerpc              randconfig-a001-20200212
+sparc                randconfig-a001-20200212
+arc                  randconfig-a001-20200211
+arm                  randconfig-a001-20200211
+arm64                randconfig-a001-20200211
+ia64                 randconfig-a001-20200211
+powerpc              randconfig-a001-20200211
+sparc                randconfig-a001-20200211
+arc                  randconfig-a001-20200213
+arm                  randconfig-a001-20200213
+arm64                randconfig-a001-20200213
+ia64                 randconfig-a001-20200213
+powerpc              randconfig-a001-20200213
+sparc                randconfig-a001-20200213
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+s390                             alldefconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                             allyesconfig
+s390                          debug_defconfig
+s390                       zfcpdump_defconfig
+sh                               allmodconfig
+sh                  sh7785lcr_32bit_defconfig
+sparc                               defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                               rhel-7.6
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
