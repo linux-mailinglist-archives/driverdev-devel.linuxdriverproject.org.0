@@ -1,78 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E6A315AF51
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Feb 2020 18:58:49 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FA7015B024
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Feb 2020 19:49:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C3B81869BA;
-	Wed, 12 Feb 2020 17:58:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 14C5820797;
+	Wed, 12 Feb 2020 18:49:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sLuHDy9GVZHR; Wed, 12 Feb 2020 17:58:47 +0000 (UTC)
+	with ESMTP id cHP5jyd4wuD4; Wed, 12 Feb 2020 18:49:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A761786912;
-	Wed, 12 Feb 2020 17:58:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E7AF420788;
+	Wed, 12 Feb 2020 18:49:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2611A1BF330
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 17:58:40 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E79821BF2E5
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 18:49:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 227B486C66
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 17:58:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E4A3C85E9F
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 18:49:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PgLWfahtWcz2 for <devel@linuxdriverproject.org>;
- Wed, 12 Feb 2020 17:58:36 +0000 (UTC)
-X-Greylist: delayed 05:17:06 by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 417E48693C
- for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 17:58:33 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id n96so1191845pjc.3
- for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 09:58:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=H8IUcvssdhDR1K1EUyWj6oufs8d+vYOMkMY7VxxIHZM=;
- b=QRBFUXicYklwb5F8vRR8BdDvRkILMu5Hvt8UtgaBcPwVK490Owa8JbsB3DL+n1H9fX
- 0Pf6mQRh8MvIi96J5YKMSk/BCVDYTq0Se0Elkd1KmPZi7Hj9Jw/VhFSyam+k3wkoHyH2
- xKjbfKQnCLkRWzilxyNZSjMEg6imwLCsrdC51YK25wF93qf4O8ARaKPF/MYc+4qOVrV0
- JU/I26UOTMrbVW+Y+33u7IlYlL2RWcz4P9Knn8W2hPQmTNS6sCtJO1Pmh4nKfrkjsD5i
- DdZZUH72dLS+AH3EDxhbPgojLi1ArTzL/fbT/bwHaJZieOmfHKxoNjLz4PBazm4QzWGU
- rd4A==
+ with ESMTP id GLuIagSNOE0X for <devel@linuxdriverproject.org>;
+ Wed, 12 Feb 2020 18:49:13 +0000 (UTC)
+X-Greylist: delayed 00:05:37 by SQLgrey-1.7.6
+Received: from mail-qk1-f202.google.com (mail-qk1-f202.google.com
+ [209.85.222.202])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2D8A385E98
+ for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 18:49:13 +0000 (UTC)
+Received: by mail-qk1-f202.google.com with SMTP id q2so1966114qkq.19
+ for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 10:49:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=pcOBb9Gl/WRWA3Ymrm6bfzbSFQo1wkeo11JEJsz9YFw=;
+ b=D3ou7JpmR3pG1c6H+B0wMM0E3ipQlaZdk8TRAH7nGnRbmW59z3+07T6Oc5ByShQ8Tp
+ egnIEFAMoC75pPkFx0kHvXhmnH0mRO9KD1LuyooZWIKawPs0mpbAGXr1fwQ+zq9n2rdh
+ NJepnwVK/kjy2RN31MrwqQcepOx55bQ/nyscDpf3O/Pe9s1VG1SBOnfGt/qAV1z7OxyJ
+ VvjyaZMVwI6kZ9TJzv2/BtodAu5DoauUvfMWHWKJnoIC9u90Tx7fH+vQLai6nxOiwsQX
+ K2h6QPLZUQGRG7UXOzlbg3JRAtqhULO39RMbOMXOKg5/AEvYf5aAEWaOl9Q4zqu8Tog4
+ ElQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=H8IUcvssdhDR1K1EUyWj6oufs8d+vYOMkMY7VxxIHZM=;
- b=fiybE+cko9bo4DI582g/eE6046wTurj/TKBkHKE0gLKUdlI70Z4RhAUsM4IcTY9g8l
- h84xlBixA4FToC3wVMS+N2ZWyfCOOt+K4whCWcTXfMCzb1nePlP0x21qW428qBvoW/lu
- CZIa5alyxmOCP9A2jTA7z+ZU6zRz6ZuZEdrzJBRdHqCWEgoMhE4z15gr4uYh0WwCaGHg
- xjCKfNvW+v9BsZY+cSJNDgIlJIfthAayC280sLJW/RhBaFHEVM8Yl+FLjUm8Uq9pPI3B
- A5jT5tEdCKuN5QkLdutiAUu/9MpqWQ5xubGqvecgo9xR967N6MNqkxena3frFR1ekejE
- +jyg==
-X-Gm-Message-State: APjAAAXxa4K606Wp4iGlNwNemWqOnTllsszpCW9387THmayWhX7H6MSl
- PAMv+Ad5CGPLVp2eqij+UG/IwA==
-X-Google-Smtp-Source: APXvYqz0PFBr0ahFdwvSeVJO82ZYpsUmIMUpWVH696GQewdig1fJ4fE2nyV/g9k8QDSMneyW8+ixqQ==
-X-Received: by 2002:a17:90a:950b:: with SMTP id
- t11mr237947pjo.79.1581530313215; 
- Wed, 12 Feb 2020 09:58:33 -0800 (PST)
-Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.170])
- by smtp.gmail.com with ESMTPSA id d14sm1156786pjz.12.2020.02.12.09.58.30
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 12 Feb 2020 09:58:32 -0800 (PST)
-Date: Wed, 12 Feb 2020 23:28:26 +0530
-From: Kaaira Gupta <kgupta@es.iitr.ac.in>
-To: dan.carpenter@oracle.com
-Subject: [PATCH v3] staging: gasket: unify multi-line string
-Message-ID: <20200212175826.GA5967@kaaira-HP-Pavilion-Notebook>
-MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=pcOBb9Gl/WRWA3Ymrm6bfzbSFQo1wkeo11JEJsz9YFw=;
+ b=ddZNuW+lsLAwUIvKUxkrHKjqGUx2WsqOuRzom2ePFn96r+ekKgHVczud5gWSU4Ijvp
+ H+e4VP7ZX/OqK3AAVJ3v/2y7RPSA2vOBLMV/Jj4ruLviD5bMekCUVw+XQ4cRzKK2hGbD
+ GlyYkcL4i6XBbfOayt+F1z8me0Bj4Sgp7h8MUYpINrz2UKn9hpx1frKkCbVzOEvGa9bg
+ Rl/Oxb9iiArjs/yT54g1WJvt+mNCNeeTjdFkIb7uFbVADyKuVe0HNsdQuzMELffQ5btl
+ WSN0VJj0oY9PelsyCnQ8QlXe5saL4GXUJBAwL71dZ5aJSYDNw+Pic6t9xhYfLsmihtP6
+ 5Vrw==
+X-Gm-Message-State: APjAAAU01HMsvC9Oc+29b1ViutsYVbyjNRpdUHDZJwOoSXZQw5IOyXPx
+ pwHF33tEBm2RWo5fVF9YGoMB/tN6IAty+7hcT8U=
+X-Google-Smtp-Source: APXvYqxTlRbtQWoSwxLyGFEKlNpZxXyax/yz+qrvizf9iiNWI5pAkF1ufWWPAKOFkcANYBicZHjUrk3aM+ebqrqyNA4=
+X-Received: by 2002:ac8:6759:: with SMTP id n25mr8536077qtp.226.1581533015831; 
+ Wed, 12 Feb 2020 10:43:35 -0800 (PST)
+Date: Wed, 12 Feb 2020 13:43:30 -0500
+In-Reply-To: <cover.1581532523.git.marcgonzalez@google.com>
+Message-Id: <41511abf64f73af62f21f8e0c7457edc289af905.1581532523.git.marcgonzalez@google.com>
+Mime-Version: 1.0
+References: <cover.1581532523.git.marcgonzalez@google.com>
+X-Mailer: git-send-email 2.25.0.225.g125e21ebc7-goog
+Subject: [PATCH 2/5] staging: vc04_services: remove unneeded parentheses
+From: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
+To: nsaenzjulienne@suse.de, gregkh@linuxfoundation.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,61 +80,112 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Rob Springer <rspringer@google.com>,
- Todd Poynor <toddpoynor@google.com>
+Cc: devel@driverdev.osuosl.org, linux-rpi-kernel@lists.infradead.org,
+ dan.carpenter@oracle.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix three checkpatch.pl warnings of 'quoted string split across lines'
-in gasket_core.c by merging the strings in one line.
-Though some strings
-are over 80 characters long, fixing this warning is necessary to ease
-grep-ing the source for printk.
+there are extra parentheses around many conditional statements
+that make things a little harder to read
 
-Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
+Signed-off-by: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
 ---
- drivers/staging/gasket/gasket_core.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ .../interface/vchiq_arm/vchiq_core.c          | 36 +++++++++----------
+ 1 file changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
-index cd8be80d2076..411aaf248b37 100644
---- a/drivers/staging/gasket/gasket_core.c
-+++ b/drivers/staging/gasket/gasket_core.c
-@@ -692,8 +692,7 @@ static bool gasket_mmap_has_permissions(struct gasket_dev *gasket_dev,
- 		(vma->vm_flags & (VM_WRITE | VM_READ | VM_EXEC));
- 	if (requested_permissions & ~(bar_permissions)) {
- 		dev_dbg(gasket_dev->dev,
--			"Attempting to map a region with requested permissions "
--			"0x%x, but region has permissions 0x%x.\n",
-+			"Attempting to map a region with requested permissions 0x%x, but region has permissions 0x%x.\n",
- 			requested_permissions, bar_permissions);
- 		return false;
- 	}
-@@ -1180,8 +1179,7 @@ static int gasket_open(struct inode *inode, struct file *filp)
- 	inode->i_size = 0;
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index 4f8b59deaec9..72bfa0f73958 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -138,8 +138,8 @@ find_service_by_handle(unsigned int handle)
  
- 	dev_dbg(gasket_dev->dev,
--		"Attempting to open with tgid %u (%s) (f_mode: 0%03o, "
--		"fmode_write: %d is_root: %u)\n",
-+		"Attempting to open with tgid %u (%s) (f_mode: 0%03o, fmode_write: %d is_root: %u)\n",
- 		current->tgid, task_name, filp->f_mode,
- 		(filp->f_mode & FMODE_WRITE), is_root);
+ 	spin_lock(&service_spinlock);
+ 	service = handle_to_service(handle);
+-	if (service && (service->srvstate != VCHIQ_SRVSTATE_FREE) &&
+-		(service->handle == handle)) {
++	if (service && service->srvstate != VCHIQ_SRVSTATE_FREE &&
++	    service->handle == handle) {
+ 		WARN_ON(service->ref_count == 0);
+ 		service->ref_count++;
+ 	} else
+@@ -161,7 +161,7 @@ find_service_by_port(struct vchiq_state *state, int localport)
+ 	if ((unsigned int)localport <= VCHIQ_PORT_MAX) {
+ 		spin_lock(&service_spinlock);
+ 		service = state->services[localport];
+-		if (service && (service->srvstate != VCHIQ_SRVSTATE_FREE)) {
++		if (service && service->srvstate != VCHIQ_SRVSTATE_FREE) {
+ 			WARN_ON(service->ref_count == 0);
+ 			service->ref_count++;
+ 		} else
+@@ -184,9 +184,9 @@ find_service_for_instance(struct vchiq_instance *instance,
  
-@@ -1258,8 +1256,7 @@ static int gasket_release(struct inode *inode, struct file *file)
- 	mutex_lock(&gasket_dev->mutex);
+ 	spin_lock(&service_spinlock);
+ 	service = handle_to_service(handle);
+-	if (service && (service->srvstate != VCHIQ_SRVSTATE_FREE) &&
+-		(service->handle == handle) &&
+-		(service->instance == instance)) {
++	if (service && service->srvstate != VCHIQ_SRVSTATE_FREE &&
++	    service->handle == handle &&
++	    service->instance == instance) {
+ 		WARN_ON(service->ref_count == 0);
+ 		service->ref_count++;
+ 	} else
+@@ -209,10 +209,10 @@ find_closed_service_for_instance(struct vchiq_instance *instance,
+ 	spin_lock(&service_spinlock);
+ 	service = handle_to_service(handle);
+ 	if (service &&
+-		((service->srvstate == VCHIQ_SRVSTATE_FREE) ||
+-		 (service->srvstate == VCHIQ_SRVSTATE_CLOSED)) &&
+-		(service->handle == handle) &&
+-		(service->instance == instance)) {
++	    (service->srvstate == VCHIQ_SRVSTATE_FREE ||
++	     service->srvstate == VCHIQ_SRVSTATE_CLOSED) &&
++	    service->handle == handle &&
++	    service->instance == instance) {
+ 		WARN_ON(service->ref_count == 0);
+ 		service->ref_count++;
+ 	} else
+@@ -237,8 +237,8 @@ next_service_by_instance(struct vchiq_state *state, struct vchiq_instance *insta
+ 	while (idx < state->unused_service) {
+ 		struct vchiq_service *srv = state->services[idx++];
  
- 	dev_dbg(gasket_dev->dev,
--		"Releasing device node. Call origin: tgid %u (%s) "
--		"(f_mode: 0%03o, fmode_write: %d, is_root: %u)\n",
-+		"Releasing device node. Call origin: tgid %u (%s) (f_mode: 0%03o, fmode_write: %d, is_root: %u)\n",
- 		current->tgid, task_name, file->f_mode,
- 		(file->f_mode & FMODE_WRITE), is_root);
- 	dev_dbg(gasket_dev->dev, "Current open count (owning tgid %u): %d\n",
+-		if (srv && (srv->srvstate != VCHIQ_SRVSTATE_FREE) &&
+-			(srv->instance == instance)) {
++		if (srv && srv->srvstate != VCHIQ_SRVSTATE_FREE &&
++		    srv->instance == instance) {
+ 			service = srv;
+ 			WARN_ON(service->ref_count == 0);
+ 			service->ref_count++;
+@@ -464,10 +464,10 @@ get_listening_service(struct vchiq_state *state, int fourcc)
+ 		struct vchiq_service *service = state->services[i];
+ 
+ 		if (service &&
+-			(service->public_fourcc == fourcc) &&
+-			((service->srvstate == VCHIQ_SRVSTATE_LISTENING) ||
+-			((service->srvstate == VCHIQ_SRVSTATE_OPEN) &&
+-			(service->remoteport == VCHIQ_PORT_FREE)))) {
++		    service->public_fourcc == fourcc &&
++		    (service->srvstate == VCHIQ_SRVSTATE_LISTENING ||
++		     (service->srvstate == VCHIQ_SRVSTATE_OPEN &&
++		      service->remoteport == VCHIQ_PORT_FREE))) {
+ 			lock_service(service);
+ 			return service;
+ 		}
+@@ -485,8 +485,8 @@ get_connected_service(struct vchiq_state *state, unsigned int port)
+ 	for (i = 0; i < state->unused_service; i++) {
+ 		struct vchiq_service *service = state->services[i];
+ 
+-		if (service && (service->srvstate == VCHIQ_SRVSTATE_OPEN)
+-			&& (service->remoteport == port)) {
++		if (service && service->srvstate == VCHIQ_SRVSTATE_OPEN &&
++		    service->remoteport == port) {
+ 			lock_service(service);
+ 			return service;
+ 		}
 -- 
-2.17.1
+2.25.0.225.g125e21ebc7-goog
 
 _______________________________________________
 devel mailing list
