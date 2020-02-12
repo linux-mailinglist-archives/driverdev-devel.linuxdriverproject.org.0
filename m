@@ -1,70 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15F76159F16
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Feb 2020 03:33:06 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 24DAB159F17
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Feb 2020 03:33:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B280386554;
-	Wed, 12 Feb 2020 02:33:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0AAAB87B48;
+	Wed, 12 Feb 2020 02:33:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qz8ke1cDDudq; Wed, 12 Feb 2020 02:33:02 +0000 (UTC)
+	with ESMTP id qX4g39eZDTcd; Wed, 12 Feb 2020 02:33:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 65AAB841E3;
-	Wed, 12 Feb 2020 02:33:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F34ED87B0F;
+	Wed, 12 Feb 2020 02:33:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A988B1BF82B
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 02:32:58 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7C6101BF82B
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 02:33:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A3A408643F
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 02:32:58 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7560320461
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 02:33:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HhC-dl9CacB8 for <devel@linuxdriverproject.org>;
- Wed, 12 Feb 2020 02:32:57 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0169.hostedemail.com
- [216.40.44.169])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5CB10841E3
- for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 02:32:57 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave05.hostedemail.com (Postfix) with ESMTP id 55D0B180385CA
- for <devel@driverdev.osuosl.org>; Tue, 11 Feb 2020 21:45:23 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay02.hostedemail.com (Postfix) with ESMTP id F0EAE45BC;
- Tue, 11 Feb 2020 21:45:20 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, :::::::::::::::::,
- RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2198:2199:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3870:3871:3872:4321:4605:5007:7514:8660:8957:10004:10400:10848:11026:11232:11658:11914:12043:12050:12297:12555:12740:12760:12895:13069:13148:13230:13255:13311:13357:13439:14096:14097:14181:14659:14721:21080:21451:21627:21810:30054:30070:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: dad09_4b9b27a703123
-X-Filterd-Recvd-Size: 1989
-Received: from XPS-9350.home (unknown [47.151.143.254])
- (Authenticated sender: joe@perches.com)
- by omf10.hostedemail.com (Postfix) with ESMTPA;
- Tue, 11 Feb 2020 21:45:19 +0000 (UTC)
-Message-ID: <161f395543309adb94475cbfbdd442616b68cda9.camel@perches.com>
-Subject: Re: [PATCH 07/22] staging: exfat: Rename variable "MilliSecond" to
- "milli_second"
-From: Joe Perches <joe@perches.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Pragat Pandya
- <pragat.pandya@gmail.com>
-Date: Tue, 11 Feb 2020 13:44:03 -0800
-In-Reply-To: <20200127115530.GZ1847@kadam>
-References: <20200127101343.20415-1-pragat.pandya@gmail.com>
- <20200127101343.20415-8-pragat.pandya@gmail.com>
- <20200127115530.GZ1847@kadam>
-User-Agent: Evolution 3.34.1-2 
+ with ESMTP id c6B3liuAi1UI for <devel@linuxdriverproject.org>;
+ Wed, 12 Feb 2020 02:33:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.iwami.or.jp (radish.iwami.or.jp [202.73.208.2])
+ by silver.osuosl.org (Postfix) with ESMTP id 340B120423
+ for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 02:33:05 +0000 (UTC)
+Received: from User (x125004.ppp.asahi-net.or.jp [122.249.125.4])
+ by mail.iwami.or.jp (Postfix) with ESMTPA id CDCCC122C5C;
+ Wed, 12 Feb 2020 09:00:03 +0900 (JST)
+From: "E. Al-Hashimi"<sm946729@gmail.com>
+Subject: Re:News From You?
+Date: Wed, 12 Feb 2020 00:00:13 -0000
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200212023305.7560320461@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,41 +55,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, valdis.kletnieks@vt.edu,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- skhan@linuxfoundation.org, linux-fsdevel@vger.kernel.org,
- linux-kernel-mentees@lists.linuxfoundation.org
+Reply-To: ralhashimi770@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2020-01-27 at 14:55 +0300, Dan Carpenter wrote:
-> On Mon, Jan 27, 2020 at 03:43:28PM +0530, Pragat Pandya wrote:
-> > Change all the occurrences of "MilliSecond" to "milli_second" in exfat.
-> > 
-> > Signed-off-by: Pragat Pandya <pragat.pandya@gmail.com>
-> > ---
-> >  drivers/staging/exfat/exfat.h       |  2 +-
-> >  drivers/staging/exfat/exfat_super.c | 16 ++++++++--------
-> >  2 files changed, 9 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-> > index 85fbea44219a..5c207d715f44 100644
-> > --- a/drivers/staging/exfat/exfat.h
-> > +++ b/drivers/staging/exfat/exfat.h
-> > @@ -228,7 +228,7 @@ struct date_time_t {
-> >  	u16      hour;
-> >  	u16      minute;
-> >  	u16      second;
-> > -	u16      MilliSecond;
-> > +	u16      milli_second;
-> 
-> Normally we would just call it "ms".
+ My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee.
+ 
+Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
 
-msec is a bit more common.
-
-
+ 
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+ If you can handle the fund in a good investment. reply on this email only: ssmuo123@gmail.com
+Regards,
+Ms. Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
