@@ -2,70 +2,71 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FA7015B024
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Feb 2020 19:49:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E282415B023
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Feb 2020 19:48:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 14C5820797;
-	Wed, 12 Feb 2020 18:49:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 60C6B20797;
+	Wed, 12 Feb 2020 18:48:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cHP5jyd4wuD4; Wed, 12 Feb 2020 18:49:17 +0000 (UTC)
+	with ESMTP id yvnD8KucICjF; Wed, 12 Feb 2020 18:48:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E7AF420788;
-	Wed, 12 Feb 2020 18:49:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D07A420780;
+	Wed, 12 Feb 2020 18:48:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E79821BF2E5
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 18:49:13 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A3CE31BF2E5
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 18:48:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E4A3C85E9F
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 18:49:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 947CC2048E
+ for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 18:48:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GLuIagSNOE0X for <devel@linuxdriverproject.org>;
- Wed, 12 Feb 2020 18:49:13 +0000 (UTC)
-X-Greylist: delayed 00:05:37 by SQLgrey-1.7.6
-Received: from mail-qk1-f202.google.com (mail-qk1-f202.google.com
- [209.85.222.202])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2D8A385E98
- for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 18:49:13 +0000 (UTC)
-Received: by mail-qk1-f202.google.com with SMTP id q2so1966114qkq.19
- for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 10:49:13 -0800 (PST)
+ with ESMTP id J1jnOTnaBDJ6 for <devel@linuxdriverproject.org>;
+ Wed, 12 Feb 2020 18:48:42 +0000 (UTC)
+X-Greylist: delayed 00:05:04 by SQLgrey-1.7.6
+Received: from mail-qt1-f202.google.com (mail-qt1-f202.google.com
+ [209.85.160.202])
+ by silver.osuosl.org (Postfix) with ESMTPS id BC7A920481
+ for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 18:48:42 +0000 (UTC)
+Received: by mail-qt1-f202.google.com with SMTP id c10so1876438qtk.18
+ for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 10:48:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=pcOBb9Gl/WRWA3Ymrm6bfzbSFQo1wkeo11JEJsz9YFw=;
- b=D3ou7JpmR3pG1c6H+B0wMM0E3ipQlaZdk8TRAH7nGnRbmW59z3+07T6Oc5ByShQ8Tp
- egnIEFAMoC75pPkFx0kHvXhmnH0mRO9KD1LuyooZWIKawPs0mpbAGXr1fwQ+zq9n2rdh
- NJepnwVK/kjy2RN31MrwqQcepOx55bQ/nyscDpf3O/Pe9s1VG1SBOnfGt/qAV1z7OxyJ
- VvjyaZMVwI6kZ9TJzv2/BtodAu5DoauUvfMWHWKJnoIC9u90Tx7fH+vQLai6nxOiwsQX
- K2h6QPLZUQGRG7UXOzlbg3JRAtqhULO39RMbOMXOKg5/AEvYf5aAEWaOl9Q4zqu8Tog4
- ElQA==
+ :cc; bh=WdGiGfpb5gg3RqJI90ZZhxX/hv8rwpQi11672qMYmdU=;
+ b=N51Xh0cyfhtxEOHMRKVuVd8SM7Xx/LjYtozOsjfkCms+UMosTljhG2RweFL69GCPiK
+ /JWGtHELom5RLcIT9qWjb/KJhN+P2074JP1OY2hejNDLrNsiuK+jzV13iCVi/19laCc9
+ c3UvmayJUwbkWidT8yb0S1MnLTUrguSN+k6R6NXLHzebee5uY/e2jcvm9F9XJpCRgR2+
+ SiduIhkSNwDOuxRaI9/RIllcmIGBqMMlj2nnWR0oWnJQq+mdA9fKF6JgrqrJTgTHLcEC
+ X77IoVqp5ZMojgHgH9TLChqsSY9ueAHhKzQIKZqg+OHO+TNDGlqnnwMratHGp+8rVKeA
+ 2AiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=pcOBb9Gl/WRWA3Ymrm6bfzbSFQo1wkeo11JEJsz9YFw=;
- b=ddZNuW+lsLAwUIvKUxkrHKjqGUx2WsqOuRzom2ePFn96r+ekKgHVczud5gWSU4Ijvp
- H+e4VP7ZX/OqK3AAVJ3v/2y7RPSA2vOBLMV/Jj4ruLviD5bMekCUVw+XQ4cRzKK2hGbD
- GlyYkcL4i6XBbfOayt+F1z8me0Bj4Sgp7h8MUYpINrz2UKn9hpx1frKkCbVzOEvGa9bg
- Rl/Oxb9iiArjs/yT54g1WJvt+mNCNeeTjdFkIb7uFbVADyKuVe0HNsdQuzMELffQ5btl
- WSN0VJj0oY9PelsyCnQ8QlXe5saL4GXUJBAwL71dZ5aJSYDNw+Pic6t9xhYfLsmihtP6
- 5Vrw==
-X-Gm-Message-State: APjAAAU01HMsvC9Oc+29b1ViutsYVbyjNRpdUHDZJwOoSXZQw5IOyXPx
- pwHF33tEBm2RWo5fVF9YGoMB/tN6IAty+7hcT8U=
-X-Google-Smtp-Source: APXvYqxTlRbtQWoSwxLyGFEKlNpZxXyax/yz+qrvizf9iiNWI5pAkF1ufWWPAKOFkcANYBicZHjUrk3aM+ebqrqyNA4=
-X-Received: by 2002:ac8:6759:: with SMTP id n25mr8536077qtp.226.1581533015831; 
- Wed, 12 Feb 2020 10:43:35 -0800 (PST)
-Date: Wed, 12 Feb 2020 13:43:30 -0500
+ bh=WdGiGfpb5gg3RqJI90ZZhxX/hv8rwpQi11672qMYmdU=;
+ b=XndlDUL2xbfC1IoKXJgoe1qEDnFMVR8XPF4QFRgm0+MxF8Uz6tTVP90dmdKdrxLvIO
+ HotloGZOKvZqeHIM8lZCJnbzh7sh+HIx69+WxETmmQSWeIxi9jy9aFLfgSAOqeuHKerM
+ gSaDHC2ORnhl4kxUFVseyd7NXSbJBvYDuV+KoVPw40R34gg5s5TyQEY75tGZ+hx9nM1N
+ RBaQOnctoB7uBq85Yd+FiLIlaJZGUKIFDPyfhFC1risRNzKEc2qXAE/+CiKUYklD3Xjw
+ oNvyKmIuOvMCoaA6tn83NQ3wNe8cMzNavvAYQDfn7g3YhnKrTrH5lGHJ4yKROYaVuU5+
+ XXww==
+X-Gm-Message-State: APjAAAVCSRpveStcZjpqJGGdFKJvWUtq+QGWYkNQnJPXaOLE90kX54qg
+ +Sq25w4+BsvsmK2j+Tj8dW0Pj6TR22dxtpoOCDo=
+X-Google-Smtp-Source: APXvYqyaJm1rLglUusFiqJgEBo62Yc/cLr5VeLjHo+oflwkU5oLZ9EvkWDDGl1KDLanXaUcBb3t3tPTCivIZFYOq/YM=
+X-Received: by 2002:ae9:e844:: with SMTP id a65mr3491557qkg.127.1581533017028; 
+ Wed, 12 Feb 2020 10:43:37 -0800 (PST)
+Date: Wed, 12 Feb 2020 13:43:31 -0500
 In-Reply-To: <cover.1581532523.git.marcgonzalez@google.com>
-Message-Id: <41511abf64f73af62f21f8e0c7457edc289af905.1581532523.git.marcgonzalez@google.com>
+Message-Id: <feadcde28a987fad12011a5f17b29f2147c09e12.1581532523.git.marcgonzalez@google.com>
 Mime-Version: 1.0
 References: <cover.1581532523.git.marcgonzalez@google.com>
 X-Mailer: git-send-email 2.25.0.225.g125e21ebc7-goog
-Subject: [PATCH 2/5] staging: vc04_services: remove unneeded parentheses
+Subject: [PATCH 3/5] staging: vc04_services: fix indentation alignment in a
+ few places
 From: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
 To: nsaenzjulienne@suse.de, gregkh@linuxfoundation.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -87,103 +88,47 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-there are extra parentheses around many conditional statements
-that make things a little harder to read
+This fixes some checkpatch warnings about incorrect indentation levels
 
 Signed-off-by: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
 ---
- .../interface/vchiq_arm/vchiq_core.c          | 36 +++++++++----------
- 1 file changed, 18 insertions(+), 18 deletions(-)
+ .../vc04_services/interface/vchiq_arm/vchiq_core.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-index 4f8b59deaec9..72bfa0f73958 100644
+index 72bfa0f73958..b2d9013b7f79 100644
 --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
 +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-@@ -138,8 +138,8 @@ find_service_by_handle(unsigned int handle)
+@@ -2413,13 +2413,13 @@ vchiq_open_service_internal(struct vchiq_service *service, int client_id)
+ 			status = VCHIQ_RETRY;
+ 			vchiq_release_service_internal(service);
+ 		} else if ((service->srvstate != VCHIQ_SRVSTATE_OPEN) &&
+-			(service->srvstate != VCHIQ_SRVSTATE_OPENSYNC)) {
++			   (service->srvstate != VCHIQ_SRVSTATE_OPENSYNC)) {
+ 			if (service->srvstate != VCHIQ_SRVSTATE_CLOSEWAIT)
+ 				vchiq_log_error(vchiq_core_log_level,
+-					"%d: osi - srvstate = %s (ref %d)",
+-					service->state->id,
+-					srvstate_names[service->srvstate],
+-					service->ref_count);
++						"%d: osi - srvstate = %s (ref %d)",
++						service->state->id,
++						srvstate_names[service->srvstate],
++						service->ref_count);
+ 			status = VCHIQ_ERROR;
+ 			VCHIQ_SERVICE_STATS_INC(service, error_count);
+ 			vchiq_release_service_internal(service);
+@@ -3427,8 +3427,8 @@ int vchiq_dump_service_state(void *dump_context, struct vchiq_service *service)
+ 	int err;
  
- 	spin_lock(&service_spinlock);
- 	service = handle_to_service(handle);
--	if (service && (service->srvstate != VCHIQ_SRVSTATE_FREE) &&
--		(service->handle == handle)) {
-+	if (service && service->srvstate != VCHIQ_SRVSTATE_FREE &&
-+	    service->handle == handle) {
- 		WARN_ON(service->ref_count == 0);
- 		service->ref_count++;
- 	} else
-@@ -161,7 +161,7 @@ find_service_by_port(struct vchiq_state *state, int localport)
- 	if ((unsigned int)localport <= VCHIQ_PORT_MAX) {
- 		spin_lock(&service_spinlock);
- 		service = state->services[localport];
--		if (service && (service->srvstate != VCHIQ_SRVSTATE_FREE)) {
-+		if (service && service->srvstate != VCHIQ_SRVSTATE_FREE) {
- 			WARN_ON(service->ref_count == 0);
- 			service->ref_count++;
- 		} else
-@@ -184,9 +184,9 @@ find_service_for_instance(struct vchiq_instance *instance,
+ 	len = scnprintf(buf, sizeof(buf), "Service %u: %s (ref %u)",
+-		service->localport, srvstate_names[service->srvstate],
+-		service->ref_count - 1); /*Don't include the lock just taken*/
++			service->localport, srvstate_names[service->srvstate],
++			service->ref_count - 1); /*Don't include the lock just taken*/
  
- 	spin_lock(&service_spinlock);
- 	service = handle_to_service(handle);
--	if (service && (service->srvstate != VCHIQ_SRVSTATE_FREE) &&
--		(service->handle == handle) &&
--		(service->instance == instance)) {
-+	if (service && service->srvstate != VCHIQ_SRVSTATE_FREE &&
-+	    service->handle == handle &&
-+	    service->instance == instance) {
- 		WARN_ON(service->ref_count == 0);
- 		service->ref_count++;
- 	} else
-@@ -209,10 +209,10 @@ find_closed_service_for_instance(struct vchiq_instance *instance,
- 	spin_lock(&service_spinlock);
- 	service = handle_to_service(handle);
- 	if (service &&
--		((service->srvstate == VCHIQ_SRVSTATE_FREE) ||
--		 (service->srvstate == VCHIQ_SRVSTATE_CLOSED)) &&
--		(service->handle == handle) &&
--		(service->instance == instance)) {
-+	    (service->srvstate == VCHIQ_SRVSTATE_FREE ||
-+	     service->srvstate == VCHIQ_SRVSTATE_CLOSED) &&
-+	    service->handle == handle &&
-+	    service->instance == instance) {
- 		WARN_ON(service->ref_count == 0);
- 		service->ref_count++;
- 	} else
-@@ -237,8 +237,8 @@ next_service_by_instance(struct vchiq_state *state, struct vchiq_instance *insta
- 	while (idx < state->unused_service) {
- 		struct vchiq_service *srv = state->services[idx++];
- 
--		if (srv && (srv->srvstate != VCHIQ_SRVSTATE_FREE) &&
--			(srv->instance == instance)) {
-+		if (srv && srv->srvstate != VCHIQ_SRVSTATE_FREE &&
-+		    srv->instance == instance) {
- 			service = srv;
- 			WARN_ON(service->ref_count == 0);
- 			service->ref_count++;
-@@ -464,10 +464,10 @@ get_listening_service(struct vchiq_state *state, int fourcc)
- 		struct vchiq_service *service = state->services[i];
- 
- 		if (service &&
--			(service->public_fourcc == fourcc) &&
--			((service->srvstate == VCHIQ_SRVSTATE_LISTENING) ||
--			((service->srvstate == VCHIQ_SRVSTATE_OPEN) &&
--			(service->remoteport == VCHIQ_PORT_FREE)))) {
-+		    service->public_fourcc == fourcc &&
-+		    (service->srvstate == VCHIQ_SRVSTATE_LISTENING ||
-+		     (service->srvstate == VCHIQ_SRVSTATE_OPEN &&
-+		      service->remoteport == VCHIQ_PORT_FREE))) {
- 			lock_service(service);
- 			return service;
- 		}
-@@ -485,8 +485,8 @@ get_connected_service(struct vchiq_state *state, unsigned int port)
- 	for (i = 0; i < state->unused_service; i++) {
- 		struct vchiq_service *service = state->services[i];
- 
--		if (service && (service->srvstate == VCHIQ_SRVSTATE_OPEN)
--			&& (service->remoteport == port)) {
-+		if (service && service->srvstate == VCHIQ_SRVSTATE_OPEN &&
-+		    service->remoteport == port) {
- 			lock_service(service);
- 			return service;
- 		}
+ 	if (service->srvstate != VCHIQ_SRVSTATE_FREE) {
+ 		char remoteport[30];
 -- 
 2.25.0.225.g125e21ebc7-goog
 
