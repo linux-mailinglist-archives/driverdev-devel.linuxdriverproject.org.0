@@ -2,55 +2,87 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 750F215B538
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Feb 2020 00:48:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 08D5715B5A9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Feb 2020 01:07:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F20CE2094E;
-	Wed, 12 Feb 2020 23:48:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 53E2721539;
+	Thu, 13 Feb 2020 00:07:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kNuY7xT6L079; Wed, 12 Feb 2020 23:48:06 +0000 (UTC)
+	with ESMTP id mOYOtGOfjgft; Thu, 13 Feb 2020 00:07:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 646C3207EF;
-	Wed, 12 Feb 2020 23:48:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3BBD8214E4;
+	Thu, 13 Feb 2020 00:07:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4FA651BF325
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 23:48:03 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A29061BF33C
+ for <devel@linuxdriverproject.org>; Thu, 13 Feb 2020 00:07:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 497818797A
- for <devel@linuxdriverproject.org>; Wed, 12 Feb 2020 23:48:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9FDBC85F32
+ for <devel@linuxdriverproject.org>; Thu, 13 Feb 2020 00:07:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1xvgFdBYqWSJ for <devel@linuxdriverproject.org>;
- Wed, 12 Feb 2020 23:48:02 +0000 (UTC)
+ with ESMTP id RIa7s-iVgSUc for <devel@linuxdriverproject.org>;
+ Thu, 13 Feb 2020 00:06:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 40BA4876F2
- for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 23:48:02 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 Feb 2020 15:48:01 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,434,1574150400"; d="scan'208";a="233941040"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 12 Feb 2020 15:48:00 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1j21jb-0000Nm-QP; Thu, 13 Feb 2020 07:47:59 +0800
-Date: Thu, 13 Feb 2020 07:47:22 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-next] BUILD SUCCESS
- 901cff7cb96140a658a848a568b606ba764239bc
-Message-ID: <5e448e8a.xX1ZtcP4fIUpufl7%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5DB6985F67
+ for <devel@driverdev.osuosl.org>; Thu, 13 Feb 2020 00:06:59 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id y11so4523032wrt.6
+ for <devel@driverdev.osuosl.org>; Wed, 12 Feb 2020 16:06:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=O1BPoQAiHeJ08USRykHnfve8Vnu0iANnJABo4Mj2ZQI=;
+ b=tj+mP1zAB0okAO0Qbox6Xr40Gl5RTa+LpO0tTucHh94zQmdcttrnjSmMPggZL7Omrb
+ KMOQpssxKHuklM1GatXDJm/OIJ1Hj0hcl2w1gBsTG7XPXZrsUhXK0Qozxx4wLFVIiSuC
+ U+oeBNUpHfdI+RxZg+rcxzbaus5JnNeWAUJaohS54mXtOJDT+jsI95qDeCvPsbQ0hEKY
+ a2b6cXiLn7pWr58zqzByitCv3K7G02nmeNyZmTGT78Fs0zdIy2atCDnXto9ZTYIMWCQi
+ nus08pk1xSiCZfN/FWJ/MF8z6qo5fIvCEmhg+mTxUFr5Q3faUkLvNnmsJy3REklo0F2T
+ pyvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=O1BPoQAiHeJ08USRykHnfve8Vnu0iANnJABo4Mj2ZQI=;
+ b=s5ug4lFQrXRZDZajfAoNzmJLwiES+lY9fZ+iflhGok0+WLpCcrh7qxvfBW2tlJGfia
+ z0hzux3FrOYkCDOGo6nMAncsm5DEcDFeeUO6vcewDtaqMtupj8tcuXju2s4UwEBDjyXh
+ Gh9LBmlB2updig5BI0axov8VLzYXpaN29K2sqiWx40ahsU5hFW3FAF/Z3e9DvSCiLdq3
+ 9azCUMAA2wVEh73gWmBro2w1efg3ks/ZbS6IqoQK0IvuMNfsIe33j/QmR0187uyZKf7R
+ X7eeMxxIsdHPUsETWjWC3rd5GamQeEMEHImZ/XASPJszSpppUsIomkis91F6wgQCica5
+ vMrw==
+X-Gm-Message-State: APjAAAWOrdMEFCFsh6oa+fh6uJbG5c/0dgNgebqW+RaxwOpDrxUdAb/t
+ IjGV+GaABVLPN+Xw7P/SNAo=
+X-Google-Smtp-Source: APXvYqzDTIe/LANGqzA7FtUhatpdgNkWPN6BGhpgz26N4uJtntPDqrvFQ8Zm6hEdzXfBDuOlod1mDQ==
+X-Received: by 2002:adf:ffc5:: with SMTP id x5mr18300916wrs.92.1581552417568; 
+ Wed, 12 Feb 2020 16:06:57 -0800 (PST)
+Received: from pali ([2a02:2b88:2:1::5cc6:2f])
+ by smtp.gmail.com with ESMTPSA id z19sm504912wmi.43.2020.02.12.16.06.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Feb 2020 16:06:56 -0800 (PST)
+Date: Thu, 13 Feb 2020 01:06:56 +0100
+From: Pali =?utf-8?B?Um9ow6Fy?= <pali.rohar@gmail.com>
+To: Sasha Levin <sashal@kernel.org>
+Subject: Re: [PATCH] staging: exfat: add exfat filesystem code to staging
+Message-ID: <20200213000656.hx5wdofkcpg7aoyo@pali>
+References: <20190828160817.6250-1-gregkh@linuxfoundation.org>
+ <20190829205631.uhz6jdboneej3j3c@pali>
+ <184209.1567120696@turing-police> <20190829233506.GT5281@sasha-vm>
+ <20190830075647.wvhrx4asnkrfkkwk@pali>
+ <20191016140353.4hrncxa5wkx47oau@pali>
+ <20191016143113.GS31224@sasha-vm>
+ <20191016160349.pwghlg566hh2o7id@pali>
+ <20191016203317.GU31224@sasha-vm>
+ <20191017075008.2uqgdimo3hrktj3i@pali>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191017075008.2uqgdimo3hrktj3i@pali>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,320 +95,83 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
+ Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Sasha Levin <alexander.levin@microsoft.com>, linux-fsdevel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-next
-branch HEAD: 901cff7cb96140a658a848a568b606ba764239bc  firmware_loader: load files from the mount namespace of init
-
-elapsed time: 2510m
-
-configs tested: 292
-configs skipped: 0
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-sparc                            allyesconfig
-riscv                    nommu_virt_defconfig
-sparc                               defconfig
-riscv                               defconfig
-s390                          debug_defconfig
-riscv                          rv32_defconfig
-s390                                defconfig
-mips                             allmodconfig
-m68k                           sun3_defconfig
-sh                          rsk7269_defconfig
-sh                            titan_defconfig
-powerpc                           allnoconfig
-openrisc                 simple_smp_defconfig
-s390                             allmodconfig
-mips                             allyesconfig
-sh                  sh7785lcr_32bit_defconfig
-microblaze                    nommu_defconfig
-parisc                              defconfig
-um                                  defconfig
-m68k                       m5475evb_defconfig
-microblaze                      mmu_defconfig
-ia64                             allyesconfig
-ia64                                defconfig
-sparc64                          allmodconfig
-m68k                             allmodconfig
-csky                                defconfig
-nds32                               defconfig
-h8300                       h8s-sim_defconfig
-powerpc                       ppc64_defconfig
-alpha                               defconfig
-sparc64                             defconfig
-s390                             alldefconfig
-xtensa                       common_defconfig
-i386                             alldefconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-xtensa                          iss_defconfig
-nds32                             allnoconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-m68k                          multi_defconfig
-arc                              allyesconfig
-arc                                 defconfig
-powerpc                             defconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-parisc                           allyesconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-x86_64               randconfig-a001-20200212
-x86_64               randconfig-a002-20200212
-x86_64               randconfig-a003-20200212
-i386                 randconfig-a001-20200212
-i386                 randconfig-a002-20200212
-i386                 randconfig-a003-20200212
-x86_64               randconfig-a001-20200213
-x86_64               randconfig-a002-20200213
-x86_64               randconfig-a003-20200213
-i386                 randconfig-a001-20200213
-i386                 randconfig-a002-20200213
-i386                 randconfig-a003-20200213
-parisc               randconfig-a001-20200211
-riscv                randconfig-a001-20200211
-mips                 randconfig-a001-20200211
-m68k                 randconfig-a001-20200211
-nds32                randconfig-a001-20200211
-alpha                randconfig-a001-20200211
-alpha                randconfig-a001-20200212
-m68k                 randconfig-a001-20200212
-nds32                randconfig-a001-20200212
-parisc               randconfig-a001-20200212
-riscv                randconfig-a001-20200212
-alpha                randconfig-a001-20200213
-m68k                 randconfig-a001-20200213
-mips                 randconfig-a001-20200213
-nds32                randconfig-a001-20200213
-parisc               randconfig-a001-20200213
-riscv                randconfig-a001-20200213
-c6x                  randconfig-a001-20200212
-h8300                randconfig-a001-20200212
-microblaze           randconfig-a001-20200212
-nios2                randconfig-a001-20200212
-sparc64              randconfig-a001-20200212
-c6x                  randconfig-a001-20200213
-h8300                randconfig-a001-20200213
-microblaze           randconfig-a001-20200213
-nios2                randconfig-a001-20200213
-sparc64              randconfig-a001-20200213
-c6x                  randconfig-a001-20200211
-h8300                randconfig-a001-20200211
-microblaze           randconfig-a001-20200211
-nios2                randconfig-a001-20200211
-sparc64              randconfig-a001-20200211
-sh                   randconfig-a001-20200211
-s390                 randconfig-a001-20200211
-xtensa               randconfig-a001-20200211
-openrisc             randconfig-a001-20200211
-csky                 randconfig-a001-20200211
-csky                 randconfig-a001-20200212
-openrisc             randconfig-a001-20200212
-s390                 randconfig-a001-20200212
-sh                   randconfig-a001-20200212
-xtensa               randconfig-a001-20200212
-csky                 randconfig-a001-20200213
-openrisc             randconfig-a001-20200213
-s390                 randconfig-a001-20200213
-sh                   randconfig-a001-20200213
-xtensa               randconfig-a001-20200213
-x86_64               randconfig-b001-20200212
-x86_64               randconfig-b002-20200212
-x86_64               randconfig-b003-20200212
-i386                 randconfig-b001-20200212
-i386                 randconfig-b002-20200212
-i386                 randconfig-b003-20200212
-x86_64               randconfig-b001-20200211
-x86_64               randconfig-b002-20200211
-x86_64               randconfig-b003-20200211
-i386                 randconfig-b001-20200211
-i386                 randconfig-b002-20200211
-i386                 randconfig-b003-20200211
-x86_64               randconfig-b001-20200213
-x86_64               randconfig-b002-20200213
-x86_64               randconfig-b003-20200213
-i386                 randconfig-b001-20200213
-i386                 randconfig-b002-20200213
-i386                 randconfig-b003-20200213
-x86_64               randconfig-c001-20200212
-x86_64               randconfig-c002-20200212
-x86_64               randconfig-c003-20200212
-i386                 randconfig-c001-20200212
-i386                 randconfig-c002-20200212
-i386                 randconfig-c003-20200212
-x86_64               randconfig-c001-20200213
-x86_64               randconfig-c002-20200213
-x86_64               randconfig-c003-20200213
-i386                 randconfig-c001-20200213
-i386                 randconfig-c002-20200213
-i386                 randconfig-c003-20200213
-i386                 randconfig-c002-20200211
-x86_64               randconfig-c003-20200211
-i386                 randconfig-c001-20200211
-x86_64               randconfig-c002-20200211
-x86_64               randconfig-c001-20200211
-i386                 randconfig-c003-20200211
-x86_64               randconfig-d001-20200212
-x86_64               randconfig-d002-20200212
-x86_64               randconfig-d003-20200212
-i386                 randconfig-d001-20200212
-i386                 randconfig-d002-20200212
-i386                 randconfig-d003-20200212
-x86_64               randconfig-d001-20200211
-x86_64               randconfig-d002-20200211
-x86_64               randconfig-d003-20200211
-i386                 randconfig-d001-20200211
-i386                 randconfig-d002-20200211
-i386                 randconfig-d003-20200211
-x86_64               randconfig-e001-20200212
-x86_64               randconfig-e002-20200212
-x86_64               randconfig-e003-20200212
-i386                 randconfig-e001-20200212
-i386                 randconfig-e002-20200212
-i386                 randconfig-e003-20200212
-x86_64               randconfig-e001-20200211
-x86_64               randconfig-e002-20200211
-x86_64               randconfig-e003-20200211
-i386                 randconfig-e001-20200211
-i386                 randconfig-e002-20200211
-i386                 randconfig-e003-20200211
-x86_64               randconfig-e001-20200213
-x86_64               randconfig-e002-20200213
-x86_64               randconfig-e003-20200213
-i386                 randconfig-e001-20200213
-i386                 randconfig-e002-20200213
-i386                 randconfig-e003-20200213
-x86_64               randconfig-f001-20200212
-x86_64               randconfig-f002-20200212
-x86_64               randconfig-f003-20200212
-i386                 randconfig-f001-20200212
-i386                 randconfig-f002-20200212
-i386                 randconfig-f003-20200212
-x86_64               randconfig-f001-20200213
-x86_64               randconfig-f002-20200213
-x86_64               randconfig-f003-20200213
-i386                 randconfig-f001-20200213
-i386                 randconfig-f002-20200213
-i386                 randconfig-f003-20200213
-x86_64               randconfig-f001-20200211
-x86_64               randconfig-f002-20200211
-x86_64               randconfig-f003-20200211
-i386                 randconfig-f001-20200211
-i386                 randconfig-f002-20200211
-i386                 randconfig-f003-20200211
-x86_64               randconfig-g001-20200213
-x86_64               randconfig-g002-20200213
-x86_64               randconfig-g003-20200213
-i386                 randconfig-g001-20200213
-i386                 randconfig-g002-20200213
-i386                 randconfig-g003-20200213
-x86_64               randconfig-g001-20200212
-x86_64               randconfig-g002-20200212
-x86_64               randconfig-g003-20200212
-i386                 randconfig-g001-20200212
-i386                 randconfig-g002-20200212
-i386                 randconfig-g003-20200212
-x86_64               randconfig-g001-20200211
-x86_64               randconfig-g002-20200211
-x86_64               randconfig-g003-20200211
-i386                 randconfig-g001-20200211
-i386                 randconfig-g002-20200211
-i386                 randconfig-g003-20200211
-i386                 randconfig-h002-20200211
-x86_64               randconfig-h002-20200211
-i386                 randconfig-h001-20200211
-x86_64               randconfig-h001-20200211
-i386                 randconfig-h003-20200211
-x86_64               randconfig-h003-20200211
-x86_64               randconfig-h001-20200212
-x86_64               randconfig-h002-20200212
-x86_64               randconfig-h003-20200212
-i386                 randconfig-h001-20200212
-i386                 randconfig-h002-20200212
-i386                 randconfig-h003-20200212
-x86_64               randconfig-h001-20200213
-x86_64               randconfig-h002-20200213
-x86_64               randconfig-h003-20200213
-i386                 randconfig-h001-20200213
-i386                 randconfig-h002-20200213
-i386                 randconfig-h003-20200213
-arc                  randconfig-a001-20200211
-arm                  randconfig-a001-20200211
-arm64                randconfig-a001-20200211
-ia64                 randconfig-a001-20200211
-powerpc              randconfig-a001-20200211
-sparc                randconfig-a001-20200211
-arc                  randconfig-a001-20200212
-arm                  randconfig-a001-20200212
-arm64                randconfig-a001-20200212
-ia64                 randconfig-a001-20200212
-powerpc              randconfig-a001-20200212
-sparc                randconfig-a001-20200212
-arc                  randconfig-a001-20200213
-arm                  randconfig-a001-20200213
-arm64                randconfig-a001-20200213
-ia64                 randconfig-a001-20200213
-powerpc              randconfig-a001-20200213
-sparc                randconfig-a001-20200213
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                       zfcpdump_defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGVsbG8hCgpPbiBUaHVyc2RheSAxNyBPY3RvYmVyIDIwMTkgMDk6NTA6MDggUGFsaSBSb2jDoXIg
+d3JvdGU6Cj4gT24gV2VkbmVzZGF5IDE2IE9jdG9iZXIgMjAxOSAxNjozMzoxNyBTYXNoYSBMZXZp
+biB3cm90ZToKPiA+IE9uIFdlZCwgT2N0IDE2LCAyMDE5IGF0IDA2OjAzOjQ5UE0gKzAyMDAsIFBh
+bGkgUm9ow6FyIHdyb3RlOgo+ID4gPiBPbiBXZWRuZXNkYXkgMTYgT2N0b2JlciAyMDE5IDEwOjMx
+OjEzIFNhc2hhIExldmluIHdyb3RlOgo+ID4gPiA+IE9uIFdlZCwgT2N0IDE2LCAyMDE5IGF0IDA0
+OjAzOjUzUE0gKzAyMDAsIFBhbGkgUm9ow6FyIHdyb3RlOgo+ID4gPiA+ID4gT24gRnJpZGF5IDMw
+IEF1Z3VzdCAyMDE5IDA5OjU2OjQ3IFBhbGkgUm9ow6FyIHdyb3RlOgo+ID4gPiA+ID4gPiBPbiBU
+aHVyc2RheSAyOSBBdWd1c3QgMjAxOSAxOTozNTowNiBTYXNoYSBMZXZpbiB3cm90ZToKPiA+ID4g
+PiA+ID4gPiBXaXRoIHJlZ2FyZHMgdG8gbWlzc2luZyBzcGVjcy9kb2NzL3doYXRldmVyIC0gb3Vy
+IG1haW4gY29uY2VybiB3aXRoIHRoaXMKPiA+ID4gPiA+ID4gPiByZWxlYXNlIHdhcyB0aGF0IHdl
+IHdhbnQgZnVsbCBpbnRlcm9wZXJhYmlsaXR5LCB3aGljaCBpcyB3aHkgdGhlIHNwZWMKPiA+ID4g
+PiA+ID4gPiB3YXMgbWFkZSBwdWJsaWMgYXMtaXMgd2l0aG91dCBtb2RpZmljYXRpb25zIGZyb20g
+d2hhdCB3YXMgdXNlZAo+ID4gPiA+ID4gPiA+IGludGVybmFsbHkuIFRoZXJlJ3Mgbm8gInNlY3Jl
+dCBzYXVjZSIgdGhhdCBNaWNyb3NvZnQgaXMgaGlkaW5nIGhlcmUuCj4gPiA+ID4gPiA+Cj4gPiA+
+ID4gPiA+IE9rLCBpZiBpdCB3YXMganVzdCBkcm9wIG9mICJjdXJyZW50IHZlcnNpb24iIG9mIGRv
+Y3VtZW50YXRpb24gdGhlbiBpdAo+ID4gPiA+ID4gPiBtYWtlcyBzZW5zZS4KPiA+ID4gPiA+ID4K
+PiA+ID4gPiA+ID4gPiBIb3cgYWJvdXQgd2UgZ2l2ZSB0aGlzIHNwZWMvY29kZSB0aW1lIHRvIGdl
+dCBzb2FrZWQgYW5kIHJldmlld2VkIGZvciBhCj4gPiA+ID4gPiA+ID4gYml0LCBhbmQgaWYgZm9s
+a3Mgc3RpbGwgZmVlbCAoaW4gYSBtb250aCBvciBzbz8pIHRoYXQgdGhlcmUgYXJlIG1pc3NpbmcK
+PiA+ID4gPiA+ID4gPiBiaXRzIG9mIGluZm9ybWF0aW9uIHJlbGF0ZWQgdG8gZXhmYXQsIEknbGwg
+YmUgaGFwcHkgdG8gZ28gYmFjayBhbmQgdHJ5Cj4gPiA+ID4gPiA+ID4gdG8gZ2V0IHRoZW0gb3V0
+IGFzIHdlbGwuCj4gPiA+ID4gPgo+ID4gPiA+ID4gSGVsbG8gU2FzaGEhCj4gPiA+ID4gPgo+ID4g
+PiA+ID4gTm93IG9uZSBtb250aCBwYXNzZWQsIHNvIGRvIHlvdSBoYXZlIHNvbWUgaW5mb3JtYXRp
+b24gd2hlbiBtaXNzaW5nIHBhcnRzCj4gPiA+ID4gPiBvZiBkb2N1bWVudGF0aW9uIGxpa2UgVGV4
+RkFUIHdvdWxkIGJlIHJlbGVhc2VkIHRvIHB1YmxpYz8KPiA+ID4gPiAKPiA+ID4gPiBTdXJlLCBJ
+J2xsIHNlZSBpZiBJIGNhbiBnZXQgYW4gYXBwcm92YWwgdG8gb3BlbiBpdCB1cC4KPiA+ID4gCj4g
+PiA+IE9rIQo+ID4gPiAKPiA+ID4gPiBDYW4gSSBhc3N1bWUgeW91IHdpbGwgYmUgaW1wbGVtZW50
+aW5nIFRleEZBVCBzdXBwb3J0IG9uY2UgdGhlIHNwZWMgaXMKPiA+ID4gPiBhdmFpbGFibGU/Cj4g
+PiA+IAo+ID4gPiBJIGNhbm5vdCBwcm9taXNlIHRoYXQgSSB3b3VsZCBpbXBsZW1lbnQgc29tZXRo
+aW5nIHdoaWNoIEkgZG8gbm90IGtub3cKPiA+ID4gaG93IGlzIHdvcmtpbmcuLi4gSXQgZGVwZW5k
+cyBvbiBob3cgY29tcGxpY2F0ZWQgVGV4RkFUIGlzIGFuZCBhbHNvIGhvdwo+ID4gPiBmdXR1cmUg
+ZXhmYXQgc3VwcG9ydCBpbiBrZXJuZWwgd291bGQgbG9vayBsaWtlLgo+ID4gPiAKPiA+ID4gQnV0
+IEknbSBpbnRlcmVzdGluZyBpbiBpbXBsZW1lbnRpbmcgaXQuCj4gPiAKPiA+IEl0IGxvb2tzIGxp
+a2UgdGhlIHJlYXNvbiB0aGlzIHdhc24ndCBtYWRlIHB1YmxpYyBhbG9uZyB3aXRoIHRoZSBleEZB
+VAo+ID4gc3BlYyBpcyB0aGF0IFRleEZBVCBpcyBwcmV0dHkgbXVjaCBkZWFkIC0gaXQncyBvbGQs
+IHRoZXJlIGFyZSBubyB1c2Vycwo+ID4gd2UgYXJlIGF3YXJlIG9mLCBhbmQgZGlnZ2luZyBpdCBv
+dXQgb2YgaXQncyBncmF2ZSB0byBtYWtlIGl0IHB1YmxpYyBpcwo+ID4gYWN0dWFsbHkgcXVpdGUg
+dGhlIGhlYWRhY2hlLgo+ID4gCj4gPiBJcyB0aGlzIHNvbWV0aGluZyB5b3UgYWN0dWFsbHkgaGF2
+ZSBhIG5lZWQgZm9yPyBhbiBlbnRpdHkgdGhhdCBoYXMgYQo+ID4gcmVxdWlyZW1lbnQgZm9yIFRl
+eEZBVD8KPiAKPiBIaSEKPiAKPiBJIGRvIG5vdCBoYXZlIGRldmljZSB3aXRoIHJlcXVpcmVtZW50
+cyBmb3IgVGV4RkFULiBUaGUgZmlyc3QgcmVhc29uIHdoeQo+IEkgd2FudGVkIHRvIHVzZSBUZXhG
+QVQgd2FzIHRoYXQgaXQgaXQgdGhlIG9ubHkgd2F5IGhvdyB0byB1c2UgbW9yZSBGQVQKPiB0YWJs
+ZXMgKGUuZy4gc2Vjb25kYXJ5IGZvciBiYWNrdXApIGFuZCBpbmZvcm1hdGlvbiBmb3IgdGhhdCBp
+cyBtaXNzaW5nCj4gaW4gcmVsZWFzZWQgZXhGQVQgc3BlY2lmaWNhdGlvbi4gVGhpcyBjb3VsZCBi
+cmluZyBiZXR0ZXIgZGF0YSByZWNvdmVyeS4KPiAKPiA+IEknZCB3b3VsZCByYXRoZXIgc3BlbmQg
+bXkgdGltZSBlbHNld2hlcmUgdGhhbiBkaWdnaW5nIFRleEZBVCBvdXQgb2YgaXQncyBncmF2ZS4K
+PiAKPiBPay4KPiAKPiBJIHdhcyBob3BpbmcgdGhhdCBpdCB3b3VsZCBiZSBwb3NzaWJsZSB0byBl
+YXNpbHkgdXNlIHNlY29uZGFyeSBGQVQgdGFibGUKPiAoZnJvbSBUZXhGQVQgZXh0ZW5zaW9uKSBm
+b3IgcmVkdW5kYW5jeSB3aXRob3V0IG5lZWQgdG8gaW1wbGVtZW50IGZ1bGwKPiBUZXhGQVQsIHdo
+aWNoIGNvdWxkIGJlIGFsc28gYmFja3dhcmQgY29tcGF0aWJsZSB3aXRoIHN5c3RlbXMgd2hpY2gg
+ZG8KPiBub3QgaW1wbGVtZW50IFRleEZBVCBleHRlbnNpb24gYXQgYWxsLiBTaW1pbGFybHkgbGlr
+ZSB1c2luZyBGQVQzMiBkaXNrCj4gd2l0aCB0d28gRkFUIHRhYmxlcyBpcyBwb3NzaWJsZSBhbHNv
+IG9uIHN5c3RlbSB3aGljaCB1c2UgZmlyc3QgRkFUCj4gdGFibGUuCgpCeSB0aGUgY2hhbmNlLCBp
+cyB0aGVyZSBhbnkgcG9zc2liaWxpdHkgdG8gcmVsZWFzZSBUZXhGQVQgc3BlY2lmaWNhdGlvbj8K
+VXNhZ2Ugb2YgbW9yZSBGQVQgdGFibGVzIChldmVuIGZvciBMaW51eCkgY291bGQgaGVscCB3aXRo
+IGRhdGEgcmVjb3ZlcnkuCgo+ID4gSXMgdGhlcmUgYW55dGhpbmcgZWxzZSBpbiB0aGUgZXhGQVQg
+c3BlYyB0aGF0IGlzIG1pc3NpbmcgKGFuZCBzb21lb25lCj4gPiBhY3R1YWxseSB3YW50cy91c2Vz
+KT8KPiAKPiBDdXJyZW50bHkgSSBkbyBub3Qga25vdy4KCkkgZm91bmQgb25lIG1pc3NpbmcgdGhp
+bmc6CgpJbiByZWxlYXNlZCBleEZBVCBzcGVjaWZpY2F0aW9uIGlzIG5vdCB3cml0dGVuIGhvdyBh
+cmUgVW5pY29kZSBjb2RlCnBvaW50cyBhYm92ZSBVK0ZGRkYgcmVwcmVzZW50ZWQgaW4gZXhGQVQg
+dXBjYXNlIHRhYmxlLiBOb3JtYWxseSBpbgpVVEYtMTYgYXJlIFVuaWNvZGUgY29kZSBwb2ludHMg
+YWJvdmUgVStGRkZGIHJlcHJlc2VudGVkIGJ5IHN1cnJvZ2F0ZQpwYWlycyBidXQgY29tcHJlc3Np
+b24gZm9ybWF0IG9mIGV4RkFUIHVwY2FzZSB0YWJsZSBpcyBub3QgY2xlYXIgaG93IHRvCmRvIGl0
+IHRoZXJlLgoKQXJlIHlvdSBhYmxlIHRvIHNlbmQgcXVlc3Rpb24gYWJvdXQgdGhpcyBwcm9ibGVt
+IHRvIHJlbGV2YW50IE1TIHBlb3BsZT8KCk5ldyBMaW51eCBpbXBsZW1lbnRhdGlvbiBvZiBleGZh
+dCB3aGljaCBpcyB3YWl0aW5nIG9uIG1haWxpbmcgbGlzdCBqdXN0CmRvIG5vdCBzdXBwb3J0IFVu
+aWNvZGUgY29kZSBwb2ludHMgYWJvdmUgVStGRkZGIGluIGV4RkFUIHVwY2FzZSB0YWJsZS4KCi0t
+IApQYWxpIFJvaMOhcgpwYWxpLnJvaGFyQGdtYWlsLmNvbQpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
+cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
