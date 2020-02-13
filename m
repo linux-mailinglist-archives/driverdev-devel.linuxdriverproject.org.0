@@ -1,50 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C13F915BC34
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Feb 2020 10:56:05 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4C79720789;
-	Thu, 13 Feb 2020 09:56:03 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TEJHUYg27bmU; Thu, 13 Feb 2020 09:56:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D6209203ED;
-	Thu, 13 Feb 2020 09:56:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 579041BF3D0
- for <devel@linuxdriverproject.org>; Thu, 13 Feb 2020 09:55:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EC3715BC38
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Feb 2020 10:56:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 505F186C0A
- for <devel@linuxdriverproject.org>; Thu, 13 Feb 2020 09:55:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9C1E585960;
+	Thu, 13 Feb 2020 09:56:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OwVq2aB3s34w; Thu, 13 Feb 2020 09:56:33 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id DF8FD85740;
+	Thu, 13 Feb 2020 09:56:32 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 746A01BF3D0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 13 Feb 2020 09:56:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 70E382034B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 13 Feb 2020 09:56:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PdqxKxGndJ1A for <devel@linuxdriverproject.org>;
- Thu, 13 Feb 2020 09:55:58 +0000 (UTC)
+ with ESMTP id HWFT+2whlkcx
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 13 Feb 2020 09:56:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from petrosrv07.petromont.peru (email.petromont.com.pe
  [200.48.77.110])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4168B86C03
- for <devel@driverdev.osuosl.org>; Thu, 13 Feb 2020 09:55:58 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0AAAC2012F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 13 Feb 2020 09:56:28 +0000 (UTC)
 Received: from [192.168.1.15] ([24.37.130.62]) by petrosrv07.petromont.peru
  with Microsoft SMTPSVC(6.0.3790.4675); 
- Thu, 13 Feb 2020 04:46:20 -0500
+ Thu, 13 Feb 2020 04:46:51 -0500
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Re: Notice on Funding Opportunity 
 To: Recipients <Natia@osuosl.org>
 From: Natia@osuosl.org, Lowry@osuosl.org,
 	" <rdap@ripe.net>"@osuosl.org
-Date: Thu, 13 Feb 2020 04:43:41 -0500
-Message-ID: <PETROSRV07nGzRZML6r00000527@petrosrv07.petromont.peru>
-X-OriginalArrivalTime: 13 Feb 2020 09:46:20.0750 (UTC)
- FILETIME=[7224AEE0:01D5E252]
+Date: Thu, 13 Feb 2020 04:44:07 -0500
+Message-ID: <PETROSRV07zoxJ6sJ9a0000052f@petrosrv07.petromont.peru>
+X-OriginalArrivalTime: 13 Feb 2020 09:46:51.0500 (UTC)
+ FILETIME=[8478C2C0:01D5E252]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
