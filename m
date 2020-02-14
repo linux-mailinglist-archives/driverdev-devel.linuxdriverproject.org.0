@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E79EB15E1A2
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Feb 2020 17:20:01 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DB8415E25F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Feb 2020 17:23:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A17D285F11;
-	Fri, 14 Feb 2020 16:20:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 081D9221CC;
+	Fri, 14 Feb 2020 16:23:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YDh4mxlfd5bM; Fri, 14 Feb 2020 16:19:58 +0000 (UTC)
+	with ESMTP id DI9KUSCbYz2J; Fri, 14 Feb 2020 16:23:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A034085EF0;
-	Fri, 14 Feb 2020 16:19:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1643D221AF;
+	Fri, 14 Feb 2020 16:23:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 60D221BF5EA
- for <devel@linuxdriverproject.org>; Fri, 14 Feb 2020 16:19:56 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1726D1BF5EA
+ for <devel@linuxdriverproject.org>; Fri, 14 Feb 2020 16:23:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5D83F8761B
- for <devel@linuxdriverproject.org>; Fri, 14 Feb 2020 16:19:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 11B0087E9E
+ for <devel@linuxdriverproject.org>; Fri, 14 Feb 2020 16:23:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3KSSLXQhEgeT for <devel@linuxdriverproject.org>;
- Fri, 14 Feb 2020 16:19:55 +0000 (UTC)
+ with ESMTP id wtn3oCqTz+zF for <devel@linuxdriverproject.org>;
+ Fri, 14 Feb 2020 16:23:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A537E87618
- for <devel@driverdev.osuosl.org>; Fri, 14 Feb 2020 16:19:55 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7041E87D54
+ for <devel@driverdev.osuosl.org>; Fri, 14 Feb 2020 16:23:24 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BC3BE2471E;
- Fri, 14 Feb 2020 16:19:54 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8E69B2476E;
+ Fri, 14 Feb 2020 16:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581697195;
+ s=default; t=1581697404;
  bh=IanB/lM2ZpQpeoxyeB6ocDTSzPJwvsxqB0XyUjcUZus=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=EWi48oFOjwQYky84TFwVfx/F1aORMeZtuKihQaGFabsjNeZ5+MKggY8HsHGAeyhqu
- RCqWalZJE3t+DaQ3pT5VC1uwejoZ/7+DScZhBIKPhxrQwhjhN0v3KNhxaEPkUTA335
- j+KGlwZgS/2RpbJ7KadBZI352RwCfu1vyYtKp6EQ=
+ b=kTToPTJXEV7AzZByaxaQTUZcHBkYbPSWsFjQj5A8NrhkjFWvBRZBMJ2fNl1h4KD3m
+ m/p2maxety59MkWWEn/Fmj115J5RYiisorhh5WGTwtPVwIE3wJy+qN2itAByyuGG0j
+ aG0CiafpkilaIkBUKI4JwEMZa9KcBqDmNgxySDnk=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 124/186] vme: bridges: reduce stack usage
-Date: Fri, 14 Feb 2020 11:16:13 -0500
-Message-Id: <20200214161715.18113-124-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.9 097/141] vme: bridges: reduce stack usage
+Date: Fri, 14 Feb 2020 11:20:37 -0500
+Message-Id: <20200214162122.19794-97-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200214161715.18113-1-sashal@kernel.org>
-References: <20200214161715.18113-1-sashal@kernel.org>
+In-Reply-To: <20200214162122.19794-1-sashal@kernel.org>
+References: <20200214162122.19794-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
