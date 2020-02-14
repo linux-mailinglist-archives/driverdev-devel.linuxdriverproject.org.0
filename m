@@ -1,60 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0100D15C9AA
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Feb 2020 18:43:36 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B96AA15CAB6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Feb 2020 19:51:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3AFA1861DE;
-	Thu, 13 Feb 2020 17:43:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0482688046;
+	Thu, 13 Feb 2020 18:51:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZsssgBs9Fn6R; Thu, 13 Feb 2020 17:43:32 +0000 (UTC)
+	with ESMTP id uGYeO+gbOZcW; Thu, 13 Feb 2020 18:51:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BD7A78111F;
-	Thu, 13 Feb 2020 17:43:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 569B387E7A;
+	Thu, 13 Feb 2020 18:51:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2A8A81BF2C7
- for <devel@linuxdriverproject.org>; Thu, 13 Feb 2020 17:43:30 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C87971BF3C0
+ for <devel@linuxdriverproject.org>; Thu, 13 Feb 2020 18:50:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 219A720355
- for <devel@linuxdriverproject.org>; Thu, 13 Feb 2020 17:43:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C52C68683C
+ for <devel@linuxdriverproject.org>; Thu, 13 Feb 2020 18:50:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fkIld-6-fZFO for <devel@linuxdriverproject.org>;
- Thu, 13 Feb 2020 17:43:29 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 3B5111FEB7
- for <devel@driverdev.osuosl.org>; Thu, 13 Feb 2020 17:43:29 +0000 (UTC)
-Received: from localhost (unknown [104.132.1.104])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E1901206ED;
- Thu, 13 Feb 2020 17:43:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581615809;
- bh=J32yj4OuDHw1RJn/WqVcGMBsWn6twYxhuCwPRG78nZ0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ulPubzc0xM1Z4dN0RAcelB7x1qCdRsOyb+LDiAY3I9kh6FN2ucUIW3kgjyljPbavi
- 6DRBetuxf9xy8TeXC90cbeH/sYDxIIxOvJJzVBsxeDcgbDATDVFbFiAVF5qoZs5iqV
- rZABHy59Oed7H4T6mTLC1fl71HDtKu4uv/8DowRk=
-Date: Thu, 13 Feb 2020 09:43:28 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
-Subject: Re: [PATCH 5/5] staging: vc04_services: don't increment service
- refcount when it's not needed
-Message-ID: <20200213174328.GA3688005@kroah.com>
-References: <cover.1581532523.git.marcgonzalez@google.com>
- <ac6186ac888f1acf489b5b504efcba8b0d6a8b25.1581532523.git.marcgonzalez@google.com>
- <CAKvFj6q9d-Txfe9fj8tfpT9+Ea24qKd+6Jno-XRikgixqghCYw@mail.gmail.com>
+ with ESMTP id fmqP-65DlZ+b for <devel@linuxdriverproject.org>;
+ Thu, 13 Feb 2020 18:50:42 +0000 (UTC)
+X-Greylist: delayed 00:07:47 by SQLgrey-1.7.6
+Received: from mail.foescocursos.es (unknown [146.255.98.62])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DC0358682A
+ for <devel@driverdev.osuosl.org>; Thu, 13 Feb 2020 18:50:41 +0000 (UTC)
+Received: from 95.169.232.119 (63.red-81-38-90.dynamicip.rima-tde.net
+ [81.38.90.63])
+ by mail.foescocursos.es (Postfix) with ESMTPSA id E7068491BE6
+ for <devel@driverdev.osuosl.org>; Thu, 13 Feb 2020 19:42:51 +0100 (CET)
+Authentication-Results: mail.foescocursos.es;
+ spf=pass (sender IP is 81.38.90.63) smtp.mailfrom=info8@formacionestatal.es
+ smtp.helo=95.169.232.119
+Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAKvFj6q9d-Txfe9fj8tfpT9+Ea24qKd+6Jno-XRikgixqghCYw@mail.gmail.com>
+From: "FOESCO" <info8@formacionestatal.es>
+To: devel@driverdev.osuosl.org
+Subject: FOESCO (Febrero 2020)
+X-Mailer: Smart_Send_4_3_3
+Date: Thu, 13 Feb 2020 19:41:55 -0800
+Message-ID: <4436479393944228617649@DESKTOP-E4PFAM0>
+X-Priority: 1
+X-MSMail-Priority: High
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,130 +60,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Dan Carpenter <dan.carpenter@oracle.com>,
- linux-rpi-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: info8@formacionestatal.es
+Content-Type: multipart/mixed; boundary="===============5830443646010261990=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Feb 13, 2020 at 12:03:32PM -0500, Marcelo Diop-Gonzalez wrote:
-> On Wed, Feb 12, 2020 at 1:43 PM Marcelo Diop-Gonzalez
-> <marcgonzalez@google.com> wrote:
-> >
-> > There are a few places where a service's reference count is incremented,
-> > something quick is done, and the refcount is dropped. This can be made
-> > a little simpler/faster by not grabbing a reference in these cases.
-> >
-> > Signed-off-by: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
-> > ---
-> >  .../interface/vchiq_arm/vchiq_arm.c           | 16 ++++-----
-> >  .../interface/vchiq_arm/vchiq_core.c          | 36 +++++++++++++------
-> >  .../interface/vchiq_arm/vchiq_core.h          |  8 ++++-
-> >  3 files changed, 40 insertions(+), 20 deletions(-)
-> >
-> > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > index 3ed0e4ea7f5c..b377f18aed45 100644
-> > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > @@ -2497,11 +2497,11 @@ vchiq_instance_get_use_count(struct vchiq_instance *instance)
-> >         int use_count = 0, i;
-> >
-> >         i = 0;
-> > -       while ((service = next_service_by_instance(instance->state,
-> > -               instance, &i))) {
-> > +       rcu_read_lock();
-> > +       while ((service = __next_service_by_instance(instance->state,
-> > +                                                    instance, &i)))
-> >                 use_count += service->service_use_count;
-> > -               unlock_service(service);
-> > -       }
-> > +       rcu_read_unlock();
-> >         return use_count;
-> >  }
-> >
-> > @@ -2524,11 +2524,11 @@ vchiq_instance_set_trace(struct vchiq_instance *instance, int trace)
-> >         int i;
-> >
-> >         i = 0;
-> > -       while ((service = next_service_by_instance(instance->state,
-> > -               instance, &i))) {
-> > +       rcu_read_lock();
-> > +       while ((service = __next_service_by_instance(instance->state,
-> > +                                                    instance, &i)))
-> >                 service->trace = trace;
-> > -               unlock_service(service);
-> > -       }
-> > +       rcu_read_unlock();
-> >         instance->trace = (trace != 0);
-> >  }
-> >
-> > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> > index 65270a5b29db..d7d7f4d9d57f 100644
-> > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> > @@ -222,28 +222,42 @@ find_closed_service_for_instance(struct vchiq_instance *instance,
-> >  }
-> >
-> >  struct vchiq_service *
-> > -next_service_by_instance(struct vchiq_state *state, struct vchiq_instance *instance,
-> > -                        int *pidx)
-> > +__next_service_by_instance(struct vchiq_state *state,
-> > +                          struct vchiq_instance *instance,
-> > +                          int *pidx)
-> >  {
-> >         struct vchiq_service *service = NULL;
-> >         int idx = *pidx;
-> >
-> > -       rcu_read_lock();
-> >         while (idx < state->unused_service) {
-> >                 struct vchiq_service *srv;
-> >
-> >                 srv = rcu_dereference(state->services[idx++]);
-> >                 if (srv && srv->srvstate != VCHIQ_SRVSTATE_FREE &&
-> > -                   srv->instance == instance &&
-> > -                   kref_get_unless_zero(&srv->ref_count)) {
-> > -                       service = rcu_pointer_handoff(srv);
-> > +                   srv->instance == instance) {
-> > +                       service = srv;
-> >                         break;
-> >                 }
-> >         }
-> > -       rcu_read_unlock();
-> >
-> >         *pidx = idx;
-> > +       return service;
-> > +}
-> >
-> > +struct vchiq_service *
-> > +next_service_by_instance(struct vchiq_state *state,
-> > +                        struct vchiq_instance *instance,
-> > +                        int *pidx)
-> > +{
-> > +       struct vchiq_service *service;
-> > +
-> > +       rcu_read_lock();
-> > +       service = __next_service_by_instance(state, instance, pidx);
-> > +       if (service && kref_get_unless_zero(&service->ref_count))
-> > +               service = rcu_pointer_handoff(service);
-> > +       else
-> > +               service = NULL;
-> > +       rcu_read_unlock();
-> >         return service;
-> >  }
-> 
-> ahh wait, this one is buggy..... If kref_get_unless_zero fails then we
-> want to keep looking
-> for the next one. Greg, since you already applied this one, would it
-> be best for me to send
-> a patch on top of this or send a V2?
+--===============5830443646010261990==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-On top is easiest for me, I don't like to revert things :)
+Buenos d=EDas
 
-thanks,
 
-greg k-h
+
+Os informamos que se encuentra abierto el plazo de inscripci=F3n para la pr=
+esente Convocatoria de Cursos Bonificables para empleados (Febrero 2020)
+
+Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
+aci=F3n 2020 que disponen las empresas.
+
+
+Dese=E1is que os mandemos la informaci=F3n=3F
+
+
+Saludos.
+
+
+Alex Pons
+Director departamento formaci=F3n.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B171823AP
+www.foesco.com
+
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+
+
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
+la palabra BAJA en el asunto.
+
+--===============5830443646010261990==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============5830443646010261990==--
