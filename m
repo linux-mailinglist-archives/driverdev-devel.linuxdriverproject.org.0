@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A70B116003D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 15 Feb 2020 20:43:13 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 168C3160041
+	for <lists+driverdev-devel@lfdr.de>; Sat, 15 Feb 2020 20:43:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5406786481;
-	Sat, 15 Feb 2020 19:43:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AABE286905;
+	Sat, 15 Feb 2020 19:43:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LuWXkdRYtb_N; Sat, 15 Feb 2020 19:43:11 +0000 (UTC)
+	with ESMTP id JbLDdjOp8jYp; Sat, 15 Feb 2020 19:43:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1C7488647E;
-	Sat, 15 Feb 2020 19:43:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 844C8868B4;
+	Sat, 15 Feb 2020 19:43:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 522E91BF34A
- for <devel@linuxdriverproject.org>; Sat, 15 Feb 2020 19:43:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 33BA51BF34A
+ for <devel@linuxdriverproject.org>; Sat, 15 Feb 2020 19:43:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4F1A08647E
- for <devel@linuxdriverproject.org>; Sat, 15 Feb 2020 19:43:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 306B485DA4
+ for <devel@linuxdriverproject.org>; Sat, 15 Feb 2020 19:43:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JxpgfFsFOPLA for <devel@linuxdriverproject.org>;
- Sat, 15 Feb 2020 19:43:08 +0000 (UTC)
+ with ESMTP id yFNLbaNuX6mm for <devel@linuxdriverproject.org>;
+ Sat, 15 Feb 2020 19:43:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
- [209.85.216.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D14DF86448
- for <devel@driverdev.osuosl.org>; Sat, 15 Feb 2020 19:43:08 +0000 (UTC)
-Received: by mail-pj1-f68.google.com with SMTP id e9so5482529pjr.4
- for <devel@driverdev.osuosl.org>; Sat, 15 Feb 2020 11:43:08 -0800 (PST)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B18C285D4B
+ for <devel@driverdev.osuosl.org>; Sat, 15 Feb 2020 19:43:11 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id 4so6742918pfz.9
+ for <devel@driverdev.osuosl.org>; Sat, 15 Feb 2020 11:43:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=xWXrdZ90Rqh6QAAhxL2MMK6jyJVUDs2rWHZG2jR0834=;
- b=kkZaNiMCto9qboPG3KkfEyftLRjsCxbl8VSUXkTJe9GEcR1BQGxAyCQUN6xEN28bxj
- eAmsr9FJEhMlSJNyo1C6i1PTpvt61cE7ChxwwOjF3947YQZiTLOJ+1wwb9aiPJzEBxTU
- pFvupsyWt271rQ8iAW8UNOfUwaPumWatdBAlFagootQZ/anSpW/tTAaF5HpG24ndm5eR
- IxxgrUxOC6iMI5wVTVycFocSUEyYwlOWQ3ompnUuNLYx0Su30UfbKoJRox1ot0VS/iYw
- Z/nmhfIEhgIJX99NkoWppTkbQwjYVLs0uDRApAGBR184SuqxZk0hiY/eL2K3bIBogWiO
- EufQ==
+ bh=AS+AHCuMQWIyLmWzD2RHQ/sZnkJFO9p0vLnea6pI0u8=;
+ b=S78uU5ELv/QGHroNn0uGOcuYzw18JAgX+7W/Y+sH2djZV6Vh7nNYxxoxFE3sHWuBoX
+ 6BBzuJNdmRimqXlI/HqIyTIJ2GfkC7+O8766q44qqEidVEthYlMIYEPl07bL9Wgep32f
+ vjePn3AZeAPDj3Bg+7s/mo4uNYimgtk3dTWYIQMWILZoa0Eee8MqzHDueQapO93VX0Pg
+ 7/DrRSQMZnLMCIWQN5xjQ68AD0KaEoZ8s5xm2BddTE48VERtoFMniIMhANWsX0kwvEuZ
+ J9qtsO35u1pFAxGnFyn6mAmZv0ZRm8/otvzSQIklu4h3EPPvKIrXzya2Xdpnkk3k7xE3
+ URtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=xWXrdZ90Rqh6QAAhxL2MMK6jyJVUDs2rWHZG2jR0834=;
- b=WFL+Pd/SB4t9GlReTtR7Cx2aTfQlfx2qhbMBv8TgGS5esyFJAP8kkQEjFKni0q1VX7
- OkKD3N8Vxr8E6YEVNLhrophJ8ZwzSDytRniNV+mJIGdrywhrCmPTL2GKq6k0uhEtTuZz
- DZjpX3FZzcPTVC63/52qpftEUAZ3f1/cahn1D58B+V4k3Djf3Wg9+3dosFY2Bf0blqhI
- G6I24FmZqVee67uEu8NaXA8b1agbjCDKhoRdEeYoH8SV8ALKFhQCAu/tVPsvqccfY18i
- 4rjpvk1WtPCPQZ7n3cHwwB2vOMY34PtrLSvwi3pw5lu43sWiy46Lol6YoJwcFADHDA7C
- FU0Q==
-X-Gm-Message-State: APjAAAWXIZm0oF5kx0e5u+0TeKZdaxC3HSD4VHW1kOCO07lIocDLmFdt
- 326i5JG/8JwIsnIlVunul/Y=
-X-Google-Smtp-Source: APXvYqwzjKJzHTQI7d9t9TLy5kd0/CNhq95OAzyw4PDTakvup3633irweQWCqYwCy5uD7iB0l1GPVw==
-X-Received: by 2002:a17:90a:608:: with SMTP id
- j8mr11070072pjj.85.1581795788407; 
- Sat, 15 Feb 2020 11:43:08 -0800 (PST)
+ bh=AS+AHCuMQWIyLmWzD2RHQ/sZnkJFO9p0vLnea6pI0u8=;
+ b=ZeYXV8UR3BwOYHVBU0kFVSNUU3U3aS6Kp4yoWDUT/pzgFUFrSh6tUWx4L9w064gDhP
+ ATnf65Sd4porH6VEB83+05vgFDZNm0LsY0Gj2JNX16UZR+IoBKViyygR0N/hp1pf1K9l
+ wKADxcaHQsVUM1ck8HR3WaPHRYdzy43cIWmWSu73pKG4oaQlUfiGdlVED/UqEBMwV+ep
+ 8cd6O2vu0KYrtW8A+Z4TEeS8/T8VBO0oakJFWKHJY6/oNxX9z6N655lMPM+k5GaJl2Ha
+ nond0Za0DECu+U4BwEO0OB/0+gzAnt3ENo+Dnm4p3jzcQvDyl+a0H6VL62VxJLDkO38D
+ h+2Q==
+X-Gm-Message-State: APjAAAWuaVO9EXmb/nbrFvW3PJ38tf8kSsI0mpwxSJCHmCHVR6PBs246
+ TU1SwE/XPgWZrdnPuPjDV4M=
+X-Google-Smtp-Source: APXvYqwczQn4UX/8KSaTLZ7YHrgD3Ijj7sbqrRkHMXnOMUogEhVvwFylvxV8ataNMmBYV8zmnCZ8yg==
+X-Received: by 2002:a63:d207:: with SMTP id a7mr10044400pgg.225.1581795791183; 
+ Sat, 15 Feb 2020 11:43:11 -0800 (PST)
 Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
  [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id q4sm11802751pfl.175.2020.02.15.11.43.07
+ by smtp.googlemail.com with ESMTPSA id q4sm11802751pfl.175.2020.02.15.11.43.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 15 Feb 2020 11:43:07 -0800 (PST)
+ Sat, 15 Feb 2020 11:43:10 -0800 (PST)
 From: Steve Longerbeam <slongerbeam@gmail.com>
 To: linux-media@vger.kernel.org
-Subject: [RESEND PATCH v3 16/17] media: imx: silence a couple debug messages
-Date: Sat, 15 Feb 2020 11:41:35 -0800
-Message-Id: <20200215194136.10131-17-slongerbeam@gmail.com>
+Subject: [RESEND PATCH v3 17/17] media: imx: TODO: Remove media link creation
+ todos
+Date: Sat, 15 Feb 2020 11:41:36 -0800
+Message-Id: <20200215194136.10131-18-slongerbeam@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200215194136.10131-1-slongerbeam@gmail.com>
 References: <20200215194136.10131-1-slongerbeam@gmail.com>
@@ -89,10 +89,10 @@ Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ Rui Miguel Silva <rui.silva@linaro.org>, NXP Linux Team <linux-imx@nxp.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Steve Longerbeam <slongerbeam@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
  "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
  <linux-arm-kernel@lists.infradead.org>
@@ -102,61 +102,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Convert to dev_dbg the "subdev bound" and IPU-internal media-link
-creation messages.
+Remove the TODO items regarding media link creation, these issues are
+resolved by moving media link creation to individual entity bound
+callbacks and the implementation of the get_fwnode_pad operation.
 
 Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
 ---
- drivers/staging/media/imx/imx-media-dev-common.c  | 4 +++-
- drivers/staging/media/imx/imx-media-dev.c         | 2 +-
- drivers/staging/media/imx/imx-media-internal-sd.c | 6 +++---
- 3 files changed, 7 insertions(+), 5 deletions(-)
+ drivers/staging/media/imx/TODO | 29 -----------------------------
+ 1 file changed, 29 deletions(-)
 
-diff --git a/drivers/staging/media/imx/imx-media-dev-common.c b/drivers/staging/media/imx/imx-media-dev-common.c
-index f7ad3cbbeec2..b23bbfab388a 100644
---- a/drivers/staging/media/imx/imx-media-dev-common.c
-+++ b/drivers/staging/media/imx/imx-media-dev-common.c
-@@ -24,7 +24,9 @@ static int imx_media_subdev_bound(struct v4l2_async_notifier *notifier,
- 				  struct v4l2_subdev *sd,
- 				  struct v4l2_async_subdev *asd)
- {
--	v4l2_info(sd->v4l2_dev, "subdev %s bound\n", sd->name);
-+	struct imx_media_dev *imxmd = notifier2dev(notifier);
-+
-+	dev_dbg(imxmd->md.dev, "subdev %s bound\n", sd->name);
+diff --git a/drivers/staging/media/imx/TODO b/drivers/staging/media/imx/TODO
+index 6f29b5ca5324..a371cdedcdb0 100644
+--- a/drivers/staging/media/imx/TODO
++++ b/drivers/staging/media/imx/TODO
+@@ -17,35 +17,6 @@
+   decided whether this feature is useful enough to make it generally
+   available by exporting to v4l2-core.
  
- 	return 0;
- }
-diff --git a/drivers/staging/media/imx/imx-media-dev.c b/drivers/staging/media/imx/imx-media-dev.c
-index 2c3c2adca683..6d2205461e56 100644
---- a/drivers/staging/media/imx/imx-media-dev.c
-+++ b/drivers/staging/media/imx/imx-media-dev.c
-@@ -32,7 +32,7 @@ static int imx_media_subdev_bound(struct v4l2_async_notifier *notifier,
- 			return ret;
- 	}
+-- After all async subdevices have been bound, v4l2_fwnode_parse_link()
+-  is used to form the media links between the devices discovered in
+-  the OF graph.
+-
+-  While this approach allows support for arbitrary OF graphs, there
+-  are some assumptions for this to work:
+-
+-  1. If a port owned by a device in the graph has endpoint nodes, the
+-     port is treated as a media pad.
+-
+-     This presents problems for devices that don't make this port = pad
+-     assumption. Examples are SMIAPP compatible cameras which define only
+-     a single output port node, but which define multiple pads owned
+-     by multiple subdevices (pixel-array, binner, scaler). Or video
+-     decoders (entity function MEDIA_ENT_F_ATV_DECODER), which also define
+-     only a single output port node, but define multiple pads for video,
+-     VBI, and audio out.
+-
+-     A workaround at present is to set the port reg properties to
+-     correspond to the media pad index that the port represents. A
+-     possible long-term solution is to implement a subdev API that
+-     maps a port id to a media pad index.
+-
+-  2. Every endpoint of a port owned by a device in the graph is treated
+-     as a media link.
+-
+-     Which means a port must not contain mixed-use endpoints, they
+-     must all refer to media links between V4L2 subdevices.
+-
+ - i.MX7: all of the above, since it uses the imx media core
  
--	v4l2_info(&imxmd->v4l2_dev, "subdev %s bound\n", sd->name);
-+	dev_dbg(imxmd->md.dev, "subdev %s bound\n", sd->name);
- 
- 	return 0;
- }
-diff --git a/drivers/staging/media/imx/imx-media-internal-sd.c b/drivers/staging/media/imx/imx-media-internal-sd.c
-index d4237e1a4241..da4109b2fd13 100644
---- a/drivers/staging/media/imx/imx-media-internal-sd.c
-+++ b/drivers/staging/media/imx/imx-media-internal-sd.c
-@@ -142,9 +142,9 @@ static int create_internal_link(struct imx_media_dev *imxmd,
- 				   &sink->entity.pads[link->remote_pad]))
- 		return 0;
- 
--	v4l2_info(&imxmd->v4l2_dev, "%s:%d -> %s:%d\n",
--		  src->name, link->local_pad,
--		  sink->name, link->remote_pad);
-+	dev_dbg(imxmd->md.dev, "%s:%d -> %s:%d\n",
-+		src->name, link->local_pad,
-+		sink->name, link->remote_pad);
- 
- 	ret = media_create_pad_link(&src->entity, link->local_pad,
- 				    &sink->entity, link->remote_pad, 0);
+ - i.MX7: use Frame Interval Monitor
 -- 
 2.17.1
 
