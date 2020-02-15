@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C8A016001E
-	for <lists+driverdev-devel@lfdr.de>; Sat, 15 Feb 2020 20:42:23 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 34D33160022
+	for <lists+driverdev-devel@lfdr.de>; Sat, 15 Feb 2020 20:42:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A1A3886781;
-	Sat, 15 Feb 2020 19:42:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6884920400;
+	Sat, 15 Feb 2020 19:42:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8UY37JmDpeZS; Sat, 15 Feb 2020 19:42:20 +0000 (UTC)
+	with ESMTP id i-avYsFnBYeY; Sat, 15 Feb 2020 19:42:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 02142864D0;
-	Sat, 15 Feb 2020 19:42:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 399BA20104;
+	Sat, 15 Feb 2020 19:42:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A0D641BF34A
- for <devel@linuxdriverproject.org>; Sat, 15 Feb 2020 19:42:17 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DA4A71BF34A
+ for <devel@linuxdriverproject.org>; Sat, 15 Feb 2020 19:42:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9BD74864BD
- for <devel@linuxdriverproject.org>; Sat, 15 Feb 2020 19:42:17 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D72DA86F74
+ for <devel@linuxdriverproject.org>; Sat, 15 Feb 2020 19:42:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vl5i-zlTkg1g for <devel@linuxdriverproject.org>;
- Sat, 15 Feb 2020 19:42:17 +0000 (UTC)
+ with ESMTP id GLAIeSz-VXFu for <devel@linuxdriverproject.org>;
+ Sat, 15 Feb 2020 19:42:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0F64486481
- for <devel@driverdev.osuosl.org>; Sat, 15 Feb 2020 19:42:17 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id k29so6729942pfp.13
- for <devel@driverdev.osuosl.org>; Sat, 15 Feb 2020 11:42:17 -0800 (PST)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1C6B286F5C
+ for <devel@driverdev.osuosl.org>; Sat, 15 Feb 2020 19:42:22 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id a6so5153172plm.3
+ for <devel@driverdev.osuosl.org>; Sat, 15 Feb 2020 11:42:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=tRajCHkCPnS+6BeYHw+Smokn34AQmfROoq0aYGtX0Dg=;
- b=oARk1DaO3noUsR+qW+pygvrVgG/23PEzrIqLPjadMvcQ9Q5g4UabNbOKwPjarZkhzV
- aqBH5nKan0vW4DQ21C6xvwaS2tB57CuzPbwe1gd+F1wWX1PaLB3mxRVnK8lP7KLdRVGB
- uFsbStRfOSCKi/fLWY5St+NQKNPTVcQ3eGq96LLAdSbLc/BfFpPzagjKRgN1wwsQ846k
- eNW7KmUUIoHQaKw+YzpC4B/JbrHqo55V7jZrWvOndVZuIs0MF0Bi6LqmQjrvhCMwaT+5
- +vMe/QWdX094PXrVOqYz/PZCTOaV1SN93Rubd1YhFC2DVFbsCeb7+VGPrwRTADMogOJx
- y2Yg==
+ bh=j/2evpY7A0C04k+gk98K37iMCYdFmql/BmRTWB1csrg=;
+ b=TlHXKi9U8uiS2fkx2BPSRGo8YoyUc6hHaVvyRF/ec4V6f3e2pH8hLJC5vKohYdzCWn
+ cmCCKy/flrosl+0iPDsZgqdwIe/WgrsSGa//kLYqxgKrVxMWqWKotlrBSh6orJ7ljBYn
+ oa+Bv5oefAEIME3xifu6PzgaINoMr2vpri9DEznRfFt34Pi5hSTp+5MRTqVP6jnRBHij
+ 4kBrKqeI+8u0bsVvSJ9fNm6YYDR/WwQHpfkQ5Ip57liK8BFvYVQNKb37cX5YxTpcjbY0
+ B2FZctlpPUNGIrt//nirJ9SqU3qwnHkBersRETRBze0OHHVC4HNmIUbSKxzVnmjpkZGA
+ PnlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=tRajCHkCPnS+6BeYHw+Smokn34AQmfROoq0aYGtX0Dg=;
- b=euCCkHsZDEWR2W++Rkz/d/CAjFoRLqjwiV8KWt4E2Ad+AEBTSbBOYJ6mc/aRggIoQN
- 0dsjyWmsZDFCBWoRIfhddG7P8t+MXZqPNBy8Zscup++OrMbAJTaEscJinsp/P2t04wSU
- Q+/neP2E1GsXNX1WTFUFCp+3W58kTUtJDnqXxuy5LLKd0h35XBvIu1dJDVR1jyEVl5PK
- HWu/EZpE9OuHAOC8S4gRewJ7MrAZAicgDTsqoJsAjTEyuBRd3RdB5cj8yd79DC0SvMwj
- fK8QOiNLNYLjqPFbTPebysAitqtX31NSUx74iSMzaAkwKDjiSS3pZjkXtVQ//aZj+BW+
- 34aQ==
-X-Gm-Message-State: APjAAAXePvtUsOmFId7GIOK3HlzjrmhShJTHSPxXGH/KjkkxSkry+gS/
- VRsk3osAif/0kBjUujUkd2Y=
-X-Google-Smtp-Source: APXvYqxB+c5KEwcaiWWabRC0Hpows19EuwyJhN0LkZcyzvyObroaOVztlQMSEcc4Sm0hCPvq/m/H5A==
-X-Received: by 2002:aa7:8755:: with SMTP id g21mr9501097pfo.36.1581795736519; 
- Sat, 15 Feb 2020 11:42:16 -0800 (PST)
+ bh=j/2evpY7A0C04k+gk98K37iMCYdFmql/BmRTWB1csrg=;
+ b=m6TAMWFl+BHjHpvnQoRrNSsszYgxJTgx6Tom5iMb1PDmaUu2fYG2Eo9CmcyaKomeX3
+ hbBdZVg3AogkxKVSHwbuV/KSKXTkEYIGO7AVEcyFJ+fRSrqYfsYdW8cdqrINbkACjMGr
+ EDdjaxQmZurAtit1j226sSyrQH6eqtrPrSAQ2Xo7D+xcyIizvAnbC6F6BVAb1lXLK9/B
+ AkjgammUZooBR2jykdJ0505VW0zG7lXc2IuDyRQ6nnP0jT7DrB04Z8Wv8qiHucDFmfXH
+ danbrULtwHqSkQAYm8AyF5vmy62gZBrcJBW11pQKAUGu9J6+AkTD4ngNl1Gvtem0Rfar
+ Y4Yw==
+X-Gm-Message-State: APjAAAXTNM9vKRY89ou1h3fYABDrqgks6n0VgVJrfx5CU+icOxWWRMsp
+ PE5yusnF342wQHPnaocS/7bhCBV1MjU=
+X-Google-Smtp-Source: APXvYqzMiPby3ABFgdEWNgjVyH0LYRY9+ahPWNR0Ixl7qauNjkEXOJEmC9DbQ6oumPosWwBAam5/vQ==
+X-Received: by 2002:a17:902:ff11:: with SMTP id
+ f17mr8898260plj.273.1581795741629; 
+ Sat, 15 Feb 2020 11:42:21 -0800 (PST)
 Received: from majic.sklembedded.com (c-73-202-231-77.hsd1.ca.comcast.net.
  [73.202.231.77])
- by smtp.googlemail.com with ESMTPSA id q4sm11802751pfl.175.2020.02.15.11.42.15
+ by smtp.googlemail.com with ESMTPSA id q4sm11802751pfl.175.2020.02.15.11.42.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 15 Feb 2020 11:42:16 -0800 (PST)
+ Sat, 15 Feb 2020 11:42:21 -0800 (PST)
 From: Steve Longerbeam <slongerbeam@gmail.com>
 To: linux-media@vger.kernel.org
-Subject: [RESEND PATCH v3 06/17] media: imx: Add
- imx_media_create_fwnode_pad_link()
-Date: Sat, 15 Feb 2020 11:41:25 -0800
-Message-Id: <20200215194136.10131-7-slongerbeam@gmail.com>
+Subject: [RESEND PATCH v3 08/17] media: imx: mipi csi-2: Create media links in
+ bound notifier
+Date: Sat, 15 Feb 2020 11:41:27 -0800
+Message-Id: <20200215194136.10131-9-slongerbeam@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200215194136.10131-1-slongerbeam@gmail.com>
 References: <20200215194136.10131-1-slongerbeam@gmail.com>
@@ -92,7 +93,6 @@ Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
  open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Steve Longerbeam <slongerbeam@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
  "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
  <linux-arm-kernel@lists.infradead.org>
@@ -102,132 +102,64 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add functions to create media links between a source and sink subdevice
-based on fwnode endpoint connections between them.
+Implement a notifier bound op to register media links from the remote
+sub-device's source pad(s) to the mipi csi-2 receiver sink pad.
 
 Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
 ---
- drivers/staging/media/imx/imx-media-utils.c | 91 +++++++++++++++++++++
- drivers/staging/media/imx/imx-media.h       |  4 +
- 2 files changed, 95 insertions(+)
+Changes in v3:
+- call a local imx-media utility imx_media_create_fwnode_pad_link()
+  that creates a single link.
+---
+ drivers/staging/media/imx/imx6-mipi-csi2.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/drivers/staging/media/imx/imx-media-utils.c b/drivers/staging/media/imx/imx-media-utils.c
-index 0788a1874557..87152bd9af22 100644
---- a/drivers/staging/media/imx/imx-media-utils.c
-+++ b/drivers/staging/media/imx/imx-media-utils.c
-@@ -729,6 +729,97 @@ void imx_media_grp_id_to_sd_name(char *sd_name, int sz, u32 grp_id, int ipu_id)
+diff --git a/drivers/staging/media/imx/imx6-mipi-csi2.c b/drivers/staging/media/imx/imx6-mipi-csi2.c
+index e27a342751fc..fddf6388348a 100644
+--- a/drivers/staging/media/imx/imx6-mipi-csi2.c
++++ b/drivers/staging/media/imx/imx6-mipi-csi2.c
+@@ -91,6 +91,11 @@ static inline struct csi2_dev *sd_to_dev(struct v4l2_subdev *sdev)
+ 	return container_of(sdev, struct csi2_dev, sd);
  }
- EXPORT_SYMBOL_GPL(imx_media_grp_id_to_sd_name);
  
-+/*
-+ * Look for and create a single fwnode link that connects a source
-+ * subdevice to a sink pad.
-+ */
-+int imx_media_create_fwnode_pad_link(struct v4l2_subdev *src_sd,
-+				     struct media_pad *sink)
++static inline struct csi2_dev *notifier_to_dev(struct v4l2_async_notifier *n)
 +{
-+	struct fwnode_handle *endpoint;
-+
-+	/* loop thru the source's fwnode endpoints */
-+	fwnode_graph_for_each_endpoint(dev_fwnode(src_sd->dev), endpoint) {
-+		struct fwnode_handle *remote_ep;
-+		int src_idx, sink_idx, ret;
-+		struct media_pad *src;
-+
-+		remote_ep = fwnode_graph_get_remote_endpoint(endpoint);
-+		if (!remote_ep)
-+			continue;
-+
-+		/*
-+		 * ask the sink entity to verify that this fwnode link
-+		 * actually does connect with the entity, and if so that
-+		 * it connects to its requested sink pad.
-+		 */
-+		sink_idx = media_entity_get_fwnode_pad(sink->entity,
-+						       remote_ep,
-+						       MEDIA_PAD_FL_SINK);
-+		fwnode_handle_put(remote_ep);
-+
-+		if (sink_idx < 0 || sink_idx != sink->index)
-+			continue;
-+
-+		src_idx = media_entity_get_fwnode_pad(&src_sd->entity,
-+						      endpoint,
-+						      MEDIA_PAD_FL_SOURCE);
-+		if (src_idx < 0)
-+			continue;
-+
-+		/*
-+		 * found the fwnode link that works, create the media
-+		 * link for it.
-+		 */
-+
-+		fwnode_handle_put(endpoint);
-+
-+		src = &src_sd->entity.pads[src_idx];
-+
-+		/* success if it already exists */
-+		if (media_entity_find_link(src, sink))
-+			return 0;
-+
-+		dev_dbg(src_sd->dev, "%s:%d -> %s:%d\n",
-+			src_sd->entity.name, src_idx,
-+			sink->entity->name, sink_idx);
-+
-+		ret = media_create_pad_link(&src_sd->entity, src_idx,
-+					    sink->entity, sink_idx, 0);
-+		if (ret)
-+			dev_err(src_sd->dev,
-+				"%s:%d -> %s:%d failed with %d\n",
-+				src_sd->entity.name, src_idx,
-+				sink->entity->name, sink_idx, ret);
-+
-+		return ret;
-+	}
-+
-+	return -ENXIO;
++	return container_of(n, struct csi2_dev, notifier);
 +}
-+EXPORT_SYMBOL_GPL(imx_media_create_fwnode_pad_link);
 +
-+int imx_media_create_fwnode_pad_links(struct v4l2_subdev *src_sd,
-+				      struct v4l2_subdev *sink_sd)
+ /*
+  * The required sequence of MIPI CSI-2 startup as specified in the i.MX6
+  * reference manual is as follows:
+@@ -584,6 +589,20 @@ static int csi2_parse_endpoint(struct device *dev,
+ 	return 0;
+ }
+ 
++static int csi2_notify_bound(struct v4l2_async_notifier *notifier,
++			     struct v4l2_subdev *sd,
++			     struct v4l2_async_subdev *asd)
 +{
-+	int i;
++	struct csi2_dev *csi2 = notifier_to_dev(notifier);
++	struct media_pad *sink = &csi2->sd.entity.pads[CSI2_SINK_PAD];
 +
-+	for (i = 0; i < sink_sd->entity.num_pads; i++) {
-+		struct media_pad *pad = &sink_sd->entity.pads[i];
-+		int ret;
-+
-+		if (!(pad->flags & MEDIA_PAD_FL_SINK))
-+			continue;
-+
-+		ret = imx_media_create_fwnode_pad_link(src_sd, pad);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
++	return imx_media_create_fwnode_pad_link(sd, sink);
 +}
-+EXPORT_SYMBOL_GPL(imx_media_create_fwnode_pad_links);
 +
- struct v4l2_subdev *
- imx_media_find_subdev_by_fwnode(struct imx_media_dev *imxmd,
- 				struct fwnode_handle *fwnode)
-diff --git a/drivers/staging/media/imx/imx-media.h b/drivers/staging/media/imx/imx-media.h
-index 11861191324a..f90a65ba4ced 100644
---- a/drivers/staging/media/imx/imx-media.h
-+++ b/drivers/staging/media/imx/imx-media.h
-@@ -183,6 +183,10 @@ int imx_media_ipu_image_to_mbus_fmt(struct v4l2_mbus_framefmt *mbus,
- 				    struct ipu_image *image);
- void imx_media_grp_id_to_sd_name(char *sd_name, int sz,
- 				 u32 grp_id, int ipu_id);
-+int imx_media_create_fwnode_pad_link(struct v4l2_subdev *src_sd,
-+				     struct media_pad *sink);
-+int imx_media_create_fwnode_pad_links(struct v4l2_subdev *src_sd,
-+				      struct v4l2_subdev *sink_sd);
- struct v4l2_subdev *
- imx_media_find_subdev_by_fwnode(struct imx_media_dev *imxmd,
- 				struct fwnode_handle *fwnode);
++static const struct v4l2_async_notifier_operations csi2_notify_ops = {
++	.bound = csi2_notify_bound,
++};
++
+ static int csi2_probe(struct platform_device *pdev)
+ {
+ 	unsigned int sink_port = 0;
+@@ -667,6 +686,8 @@ static int csi2_probe(struct platform_device *pdev)
+ 
+ 	v4l2_async_notifier_init(&csi2->notifier);
+ 
++	csi2->notifier.ops = &csi2_notify_ops;
++
+ 	ret = v4l2_async_register_fwnode_subdev(
+ 		&csi2->sd, &csi2->notifier, sizeof(struct v4l2_async_subdev),
+ 		&sink_port, 1, csi2_parse_endpoint);
 -- 
 2.17.1
 
