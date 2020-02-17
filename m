@@ -1,60 +1,124 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 246801604DB
-	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Feb 2020 17:38:21 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EFDCD1607DF
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Feb 2020 02:55:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 359EA20452;
-	Sun, 16 Feb 2020 16:38:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3DF71861B3;
+	Mon, 17 Feb 2020 01:55:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZjU1Q19IQ+Rv; Sun, 16 Feb 2020 16:38:18 +0000 (UTC)
+	with ESMTP id 6iEfi+pxQhJv; Mon, 17 Feb 2020 01:55:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 602D6203E9;
-	Sun, 16 Feb 2020 16:38:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 15B3D85ACC;
+	Mon, 17 Feb 2020 01:55:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3EF511BF2FB
- for <devel@linuxdriverproject.org>; Sun, 16 Feb 2020 16:38:15 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B598A1BF477
+ for <devel@linuxdriverproject.org>; Mon, 17 Feb 2020 01:55:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 313D9203E9
- for <devel@linuxdriverproject.org>; Sun, 16 Feb 2020 16:38:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AD0B0846D3
+ for <devel@linuxdriverproject.org>; Mon, 17 Feb 2020 01:55:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hwH1q+z+S+8f for <devel@linuxdriverproject.org>;
- Sun, 16 Feb 2020 16:38:14 +0000 (UTC)
+ with ESMTP id 5xMvz-nK2EcQ for <devel@linuxdriverproject.org>;
+ Mon, 17 Feb 2020 01:55:24 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 51F8420104
- for <devel@driverdev.osuosl.org>; Sun, 16 Feb 2020 16:38:14 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7860120857;
- Sun, 16 Feb 2020 16:38:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581871094;
- bh=VWG8pxZ0l2Q+50IdYiHS//nBhQMz4rD87ECHqgUJ+9s=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fmiVP36zahpvKZBCZ5Yn+Q+1QtNy3qviQIH7XfHpFL5LfVWfFRM2LI+BXCBifPImH
- c4fGCCqdprgjrGVBtqcpYNx3x3tO78XuibTE2Ns7j3xYLfuctQQI+2onMoljgeb1rB
- Ly7Gztv4Y3689DMsL2bbFIm8eJuar5H+Y34Qp+0s=
-Date: Sun, 16 Feb 2020 17:38:09 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: sunnypranay <mpranay2017@gmail.com>
-Subject: Re: [PATCH] Documentation: DMA-API-HOWTO.txt: fixed grammer issues
- Fixed some of the grammer issues in DMA-API-HOWTO.txt using the software
- grammerly.
-Message-ID: <20200216163809.GB48157@kroah.com>
-References: <20200216141658.734-1-mpranay2017@gmail.com>
+Received: from mx05.melco.co.jp (mx05.melco.co.jp [192.218.140.145])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A0920845FD
+ for <devel@driverdev.osuosl.org>; Mon, 17 Feb 2020 01:55:24 +0000 (UTC)
+Received: from mr05.melco.co.jp (mr05 [133.141.98.165])
+ by mx05.melco.co.jp (Postfix) with ESMTP id 85F303A2B08;
+ Mon, 17 Feb 2020 10:55:22 +0900 (JST)
+Received: from mr05.melco.co.jp (unknown [127.0.0.1])
+ by mr05.imss (Postfix) with ESMTP id 48LRrp2xZyzRkBj;
+ Mon, 17 Feb 2020 10:55:22 +0900 (JST)
+Received: from mf04_second.melco.co.jp (unknown [192.168.20.184])
+ by mr05.melco.co.jp (Postfix) with ESMTP id 48LRrp2dVzzRk3D;
+ Mon, 17 Feb 2020 10:55:22 +0900 (JST)
+Received: from mf04.melco.co.jp (unknown [133.141.98.184])
+ by mf04_second.melco.co.jp (Postfix) with ESMTP id 48LRrp2fpRzRk9w;
+ Mon, 17 Feb 2020 10:55:22 +0900 (JST)
+Received: from JPN01-OS2-obe.outbound.protection.outlook.com (unknown
+ [104.47.92.50])
+ by mf04.melco.co.jp (Postfix) with ESMTP id 48LRrp29fnzRkBK;
+ Mon, 17 Feb 2020 10:55:22 +0900 (JST)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Y6w0cP+WRCzMVna60X2e3r71uQjtLr7O4gbEp8ldaWIKxve6ANOVGpcOzFWmjWFCatvAFnOzzvxZSnnn36vZtPEGRzwogQmcqvA/3ugxKdDjmOHprFvGP25N0L29zzc0sFCBibDZtlmmLAk6DegrlQYB7kyikz5wFeIfvqRO0ZjNOgN0QNuYL0Bp/3E/y06fXy4D3aoSkA8G41qaMogRQs/AD/QKny27VGmpBHhuy5IWF7IuVt4eYqqbkNaSLzjaGdx5G4LWAZlVpwRHoLVfeOCrssDJKpboiGA4RyiaGQLLlDvgKrVZNWc8xSmZiuwHC2z0cf0GIxwdyVQWn6AfGA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=C/0Va6Y5vbElOQECQb5B9Kh1bpbXR4t682vZZKVvXoc=;
+ b=khabfELbbcOR4Q8g7MQlBT3Juv+Po01LTurc2A9PfXDKqH+QA69XCfL2pyZOQNmNEi0bLqcg+6nMBRNy1DEsI46hHY8nBloKiJn0nYoB3oCWU/ytYX7GQTUsvUIt5Db9OKjyOrNzRejNAX20uf5fmhWbzGBUSe4V4fowXW4uDJvAkBWQ+bthDSUzQt8OwRJEL+Pqc27l5XceHpzuEyycJX1pPyhnMJRVuC/LWNDXxGFxtONJAfJxS0SmaQpe5enQVryJIYqTnAW0jgwY6+R7PGxKQeInWw+wuH9Lu75X/YsMA0iVjitmvJGvPBFIcYDVO2h1l5gP2N4QzLVU5HnX4g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=dc.mitsubishielectric.co.jp; dmarc=pass action=none
+ header.from=dc.mitsubishielectric.co.jp; dkim=pass
+ header.d=dc.mitsubishielectric.co.jp; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mitsubishielectricgroup.onmicrosoft.com;
+ s=selector2-mitsubishielectricgroup-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=C/0Va6Y5vbElOQECQb5B9Kh1bpbXR4t682vZZKVvXoc=;
+ b=K0OvCWnpSIJJJo8zmX4VphT+ehuiSvypurtNtUSLBg1Z4Tj1YxnhzFbwU08YeExmQHJpVCxiBn/3XCpUo2nEqyfXrdRyq7rMH30H91tImrj55DPKeuxz8F/XH3qG1iw3mBH2e8r5cZffcaQ2IawriBN1rzCv1r5aZwZQMdGHruE=
+Received: from TY1PR01MB1578.jpnprd01.prod.outlook.com (52.133.161.22) by
+ TY1PR01MB1595.jpnprd01.prod.outlook.com (52.133.162.16) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2729.25; Mon, 17 Feb 2020 01:55:21 +0000
+Received: from TY1PR01MB1578.jpnprd01.prod.outlook.com
+ ([fe80::1cea:e753:3a3b:8e1b]) by TY1PR01MB1578.jpnprd01.prod.outlook.com
+ ([fe80::1cea:e753:3a3b:8e1b%7]) with mapi id 15.20.2729.031; Mon, 17 Feb 2020
+ 01:55:21 +0000
+From: "Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp"
+ <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+To: 'Greg Kroah-Hartman' <gregkh@linuxfoundation.org>
+Subject: RE: [PATCH v2 1/2] staging: exfat: remove DOSNAMEs.
+Thread-Topic: [PATCH v2 1/2] staging: exfat: remove DOSNAMEs.
+Thread-Index: AQHV4udJFqNx/CzTgECwKnDOEdxsgqga3uMAgAPDczA=
+Date: Mon, 17 Feb 2020 01:54:07 +0000
+Deferred-Delivery: Mon, 17 Feb 2020 01:55:06 +0000
+Message-ID: <TY1PR01MB1578EA0B95FE3C29D0F9A64190160@TY1PR01MB1578.jpnprd01.prod.outlook.com>
+References: <20200214033140.72339-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+ <20200214161810.GA3964830@kroah.com>
+In-Reply-To: <20200214161810.GA3964830@kroah.com>
+Accept-Language: ja-JP, en-US
+Content-Language: ja-JP
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-melpop: 1
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp; 
+x-originating-ip: [121.80.0.162]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 65551ed3-38f0-421d-ea56-08d7b34c72a4
+x-ms-traffictypediagnostic: TY1PR01MB1595:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <TY1PR01MB15957267285B79678107B54E90160@TY1PR01MB1595.jpnprd01.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5236;
+x-forefront-prvs: 0316567485
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(136003)(346002)(376002)(39860400002)(396003)(366004)(199004)(189003)(64756008)(66476007)(66556008)(7696005)(8676002)(66446008)(558084003)(478600001)(33656002)(8936002)(54906003)(5660300002)(186003)(76116006)(81156014)(81166006)(66946007)(52536014)(316002)(4326008)(6506007)(9686003)(6916009)(2906002)(71200400001)(55016002)(26005)(6666004)(86362001)(107886003)(95630200002);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:TY1PR01MB1595;
+ H:TY1PR01MB1578.jpnprd01.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:0; MX:1; 
+received-spf: None (protection.outlook.com: dc.MitsubishiElectric.co.jp does
+ not designate permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: aEFhtxwV4ouI5PI00pVDpdYiM0b2S2CGHSm1VXAxZlPVZ9KDnHCIHB/BF4H0SOLs2sNhJ8bDzYrs3N9DaNIgLr54NZycAcRJmE4TD4PbUFIXCyJKkOzsERQ6vJ3MZUGuxJVAKs3cxY7pkJ8oKSDJ8ROEhoeFXrNyJ2xJAmpUw7mslVZKtL2aWpRmwt50nrmI5ETYRtxPNpXGI6G0/tQwsD4WRVxtXJFWMjPhDC8BK95assrtA2zp6XjxT5x0RrZ7mqhQOSIVH4WZ+BoS0HGxX/HuGFiwwrqjyaiChv0HSFkZKmPj35We35t/7lMd+N1IQsgIQzSFmyzZv1XBI6smEQgtuAyl36tJwKXyTA9fCdCyyYiJeGpHjpZThLa+Hkx+yD0u2L+PKu7gdQw7Igs1wCKETpeqXaShvyLWN6Fe3ovnFH2g/CQSrPmZMaI7vs2ycOS7ZVfzGLUCqMBaObKhC5nHBW7uW3+yXD7XnRlIb+QSQcYM9AR3dX2JtugSj2DG
+x-ms-exchange-antispam-messagedata: AX9PGy5Wo65VUV/ps4mZab59qaYaomhWsgPFS9Ebj2zV/Hhdt0dWryOL8X+SKk3o0oZ6edhFGytAOHx+eFQm3xi66VnWbKvJQGKKMNcQg4pMyIDL1d6LbVFZ6MGNPkLKRf6DluoPjA3NKFgG6+TGHw==
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200216141658.734-1-mpranay2017@gmail.com>
+X-OriginatorOrg: dc.MitsubishiElectric.co.jp
+X-MS-Exchange-CrossTenant-Network-Message-Id: 65551ed3-38f0-421d-ea56-08d7b34c72a4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Feb 2020 01:55:21.7741 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: c5a75b62-4bff-4c96-a720-6621ce9978e5
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 7vpXUzu30QOxEfbXz3EZqTLSFUccsV7c3uSKvXIusmE4eaWQQj9gXO35OZa1fGDIflSL5ZAXAtcrmP5a1o77nA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY1PR01MB1595
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,73 +131,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "Motai.Hirotaka@aj.MitsubishiElectric.co.jp"
+ <Motai.Hirotaka@aj.MitsubishiElectric.co.jp>,
+ "Mori.Takahiro@ab.MitsubishiElectric.co.jp"
+ <Mori.Takahiro@ab.MitsubishiElectric.co.jp>,
+ "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Feb 16, 2020 at 07:46:58PM +0530, sunnypranay wrote:
-> From: mpranay <mpranay2017@gmail.com>
-> 
-> ---
->  Documentation/DMA-API-HOWTO.txt  | 628 +++++++++++++++----------------
->  drivers/staging/comedi/drivers.c |   2 +-
->  2 files changed, 311 insertions(+), 319 deletions(-)
+> I think you might need to rebase again, this patch doesn't apply at all to my tree :(
 
+Thanks for your comments.
+I'll try to rebase with 'staging-next' branch.
+Is this correct?
 
-Hi,
-
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
-
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Your patch does not have a Signed-off-by: line.  Please read the
-  kernel file, Documentation/SubmittingPatches and resend it after
-  adding that line.  Note, the line needs to be in the body of the
-  email, before the patch, not at the bottom of the patch or in the
-  email signature.
-
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
-
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
-
-- It looks like you did not use your "real" name for the patch on either
-  the Signed-off-by: line, or the From: line (both of which have to
-  match).  Please read the kernel file, Documentation/SubmittingPatches
-  for how to do this correctly.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
+--
+Kohada Tetsuhiro <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
