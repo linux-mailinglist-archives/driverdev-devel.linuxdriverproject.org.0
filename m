@@ -2,74 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 589FB1628E2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Feb 2020 15:53:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B1FE61628C9
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Feb 2020 15:45:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B46A885C08;
-	Tue, 18 Feb 2020 14:53:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2433985C9F;
+	Tue, 18 Feb 2020 14:45:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NG-OZq53Bo8i; Tue, 18 Feb 2020 14:53:10 +0000 (UTC)
+	with ESMTP id ynWQKOnwQukR; Tue, 18 Feb 2020 14:45:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3BC2B81BC9;
-	Tue, 18 Feb 2020 14:53:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E174B85BE4;
+	Tue, 18 Feb 2020 14:45:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 103C11BF5DD
- for <devel@linuxdriverproject.org>; Tue, 18 Feb 2020 14:53:07 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7DDC11BF5DD
+ for <devel@linuxdriverproject.org>; Tue, 18 Feb 2020 14:45:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0CF6C86096
- for <devel@linuxdriverproject.org>; Tue, 18 Feb 2020 14:53:07 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7AC0885BE4
+ for <devel@linuxdriverproject.org>; Tue, 18 Feb 2020 14:45:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PwHqGO8nv4-G for <devel@linuxdriverproject.org>;
- Tue, 18 Feb 2020 14:53:06 +0000 (UTC)
+ with ESMTP id 0fAELWKPHIap for <devel@linuxdriverproject.org>;
+ Tue, 18 Feb 2020 14:45:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
- [209.85.167.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6A25086094
- for <devel@driverdev.osuosl.org>; Tue, 18 Feb 2020 14:53:06 +0000 (UTC)
-Received: by mail-oi1-f196.google.com with SMTP id r137so765952oie.5
- for <devel@driverdev.osuosl.org>; Tue, 18 Feb 2020 06:53:06 -0800 (PST)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 78EA885BD3
+ for <devel@driverdev.osuosl.org>; Tue, 18 Feb 2020 14:45:27 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id b9so10911672pgk.12
+ for <devel@driverdev.osuosl.org>; Tue, 18 Feb 2020 06:45:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=y5uEoI57XOY6ZRdfdmdltCBU7PJAcGzi/Ern4gPqGrc=;
- b=UZvmgDrJe0khw8I7qihSDZldaXst0pVyvFGyQDvj2ibNt+djsNFBj96T1WAdA1/tEH
- FV9lbtw/bJdR63FQESVDt4goDdXQpr9egBgC7qrWlpIKofTGk/Z2xl4NmjWOAmaBzftH
- hZZoweM2nHZL3Qgtlef5MXDp4kcyuVtPy5OGn1PrkiJcbVTSmAHWNPnSB3bPGEX/RNZh
- +Q6c11HfNlKj1Ji6uF8c4eYg1kJGR9Wsk+AtaBHMOtEKM3mpbYVU0S263Zyjj4CixKJR
- 9nWRINJ4zMZY+ORoj40pBb0Xngjm4ipo9htr7/IAlHREln43YOzGSiShHWSehjZsW37N
- ogdw==
+ :cc; bh=PgVA74rw/Os3jpwsoZ9ssKAAiF6uv0dDc1ODzO4kp7U=;
+ b=YYlZcWxAZ6/+b94Q2vrpNWGl5UwkzRE+JT0dBBLtNUmGuBlYmIZMs0N6T0ItKKo/Ai
+ 6fIrMhA+uw2F+TUfgwdlcNuZ133c8dPrMl5NMH1di9R3USLjf3AEmThFuZmVu2p0vBV7
+ JLavjooBGQpWu8bBYaOcXCrEAIsZaGGdO5iA3nQ24mkUGZRifufirPwsivRlamIn76IS
+ L4vXM2VBiThAYeQvxMWhkelFCfROh36JWDW6Aac7aDAXQ73Zjr9+SdtvQ+BuCwU6r62N
+ z5TuWdAC8OUlZQS+9eOGDxUhR7iiPqFpTqxk5OBH35IVtDVdaSDNXAodW/d4xKKtDfSI
+ FlYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=y5uEoI57XOY6ZRdfdmdltCBU7PJAcGzi/Ern4gPqGrc=;
- b=keZn1kr25ugCl8GEHDjfq71sWrvQGEjeEUkdjpBp3LzP4JR6LXhS5BC0D0FcYG3H1z
- /x+7nKDMl3673I/LoTHmvbzSzv0IpU4sTEMCOBQULqaUVnUHqYKPr4UC5q18s0KxBnyT
- L6QyV+li5kaJTFaMixc6qOgLTj/AVVF6R4zo+m4r8xHCpzr6jlvGz0N21K47l6RIC4vt
- 8sGn5ODHitR2oqBgmu92PygBRsXBWBSahPz3gojC2f6Q/Gzmwrses6dCpOQkMsc/17MF
- gYSnaBhFJNVp4jgU3kinjclKALst9+SFF3rN4ZzI6xy18yCP4CAhLrs7hyx2digTUiLI
- uNTQ==
-X-Gm-Message-State: APjAAAXiKRa8aItsrqWY62EYt6Yq+bZhBYAWFNu5nTJqg+X0sEY+qZ6s
- P9VitzDuiKFXC9oYqGxEuONjEjzYWUQItDuKXleV0KBG
-X-Google-Smtp-Source: APXvYqygnlPizIzAAMEZBSBc/0hMvzI2r85xzViLHN/96GfQQJgqId/A4IgG4FhIEwxEM6shdIVGPzJP4hZlWwOLf0Q=
-X-Received: by 2002:a17:90a:8806:: with SMTP id
- s6mr2869351pjn.141.1582037100972; 
- Tue, 18 Feb 2020 06:45:00 -0800 (PST)
+ bh=PgVA74rw/Os3jpwsoZ9ssKAAiF6uv0dDc1ODzO4kp7U=;
+ b=J2rbDFjM0eAlSjiTrOiQv/8LFKJmUQAOGoxv7ai0bKCwpi/596oYBC9kz7G2UZJWuE
+ MhGYO5lpOdn6uB2j72bpWWe8gTA07BiSrhOoi+UCmsEhlBnR4DMoCAouz7Lg+8PEt4JB
+ sljJtGIwIk7Eeudd1fks7SBDw8Z69qwXdDwTfaq5+E/E0qe7kxD1Aq3slm6hjfHnQCmG
+ zmiS2RGED1tNN7XdMV+/Bq80NaEBgwONIVd9tFMhzaohMMpBStQTEm9XtClDPRM5zfZo
+ fCr0806u1BLN9wQuevnQXN2QEmPy+Neh6To6scMvjSKydQf8gynIDfjcadhacLGEQrXx
+ ELAg==
+X-Gm-Message-State: APjAAAX4vpQaR12qnc3wN86rdY7Vy+AdG2M9LAmjZJPHwAE2vHqI85+R
+ 7lvwjt+2oTHejuqrzFNnBm5wyCVhDza/0epHgSw2VQ==
+X-Google-Smtp-Source: APXvYqwbiIt8Ld0kUAUr8Ptx7Nq+Jjuf5kDvUZWTU/Gh1LifVVyYDVuEb39rLiPuZCBOKca262/gj3E05azYltgr1Xs=
+X-Received: by 2002:a63:3c2:: with SMTP id 185mr22342627pgd.72.1582037126783; 
+ Tue, 18 Feb 2020 06:45:26 -0800 (PST)
 MIME-Version: 1.0
 References: <20200213194001.130110-1-marcgonzalez@google.com>
- <20200217104026.GB19641@kadam>
-In-Reply-To: <20200217104026.GB19641@kadam>
+ <C0OK3FSV7XIN.MMMEHI9F14QG@linux-9qgx>
+In-Reply-To: <C0OK3FSV7XIN.MMMEHI9F14QG@linux-9qgx>
 From: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
-Date: Tue, 18 Feb 2020 09:44:50 -0500
-Message-ID: <CAKvFj6qRtmU8tBbUY2i71dXJwTTQqA0NLT4nsje0E=dBP5p4cQ@mail.gmail.com>
+Date: Tue, 18 Feb 2020 09:45:15 -0500
+Message-ID: <CAKvFj6qR+1fdVWAivo-pddsFk8zNhbrO3JjXj-qBa-CA0M9-EA@mail.gmail.com>
 Subject: Re: [PATCH] staging: vc04_services: Fix wrong early return in
  next_service_by_instance()
-To: Dan Carpenter <dan.carpenter@oracle.com>
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,33 +82,64 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
- linux-rpi-kernel@lists.infradead.org
+ linux-rpi-kernel@lists.infradead.org, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Feb 17, 2020 at 5:40 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+On Mon, Feb 17, 2020 at 10:55 AM Nicolas Saenz Julienne
+<nsaenzjulienne@suse.de> wrote:
 >
-> On Thu, Feb 13, 2020 at 02:40:01PM -0500, Marcelo Diop-Gonzalez wrote:
+> On Thu Feb 13, 2020 at 2:40 PM, Marcelo Diop-Gonzalez wrote:
 > > If kref_get_unless_zero() fails, we should keep looking for the
 > > next service, since the callers of this function expect that a NULL
 > > return value means there are no more.
 > >
 > > Signed-off-by: Marcelo Diop-Gonzalez <marcgonzalez@google.com>
+>
+> Reviewed-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+> Tested-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+
+thanks for reviewing!
+
+>
+> Note that, as Dan says, picking up the Fixes tag would be nice.
+>
 > > ---
->
-> Please use a Fixes tag.
->
-> Fixes: a2203cfe0d84 ("staging: vc04_services: don't increment service refcount when it's not needed")
-
-Ah yeah, forgot about that!
-
->
-> That way we know it doesn't need to be backported.
->
-> regards,
-> dan carpenter
+> > .../vc04_services/interface/vchiq_arm/vchiq_core.c | 14 +++++++++-----
+> > 1 file changed, 9 insertions(+), 5 deletions(-)
+> >
+> > diff --git
+> > a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> > b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> > index d7d7f4d9d57f..edcd97373809 100644
+> > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> > @@ -252,11 +252,15 @@ next_service_by_instance(struct vchiq_state
+> > *state,
+> > struct vchiq_service *service;
+> >
+> > rcu_read_lock();
+> > - service = __next_service_by_instance(state, instance, pidx);
+> > - if (service && kref_get_unless_zero(&service->ref_count))
+> > - service = rcu_pointer_handoff(service);
+> > - else
+> > - service = NULL;
+> > + while (1) {
+> > + service = __next_service_by_instance(state, instance, pidx);
+> > + if (!service)
+> > + break;
+> > + if (kref_get_unless_zero(&service->ref_count)) {
+> > + service = rcu_pointer_handoff(service);
+> > + break;
+> > + }
+> > + }
+> > rcu_read_unlock();
+> > return service;
+> > }
+> > --
+> > 2.25.0.225.g125e21ebc7-goog
 >
 _______________________________________________
 devel mailing list
