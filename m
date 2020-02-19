@@ -1,82 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A55B3164F0B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Feb 2020 20:40:01 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 555EC164F4F
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Feb 2020 20:57:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5A83685039;
-	Wed, 19 Feb 2020 19:40:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D672986A0B;
+	Wed, 19 Feb 2020 19:57:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b0ZKWE8R1HVk; Wed, 19 Feb 2020 19:39:59 +0000 (UTC)
+	with ESMTP id v1mg+7A9V6+R; Wed, 19 Feb 2020 19:57:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 624E6835F5;
-	Wed, 19 Feb 2020 19:39:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A460083D1A;
+	Wed, 19 Feb 2020 19:57:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 138451BF2FA
- for <devel@linuxdriverproject.org>; Wed, 19 Feb 2020 19:39:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 225591BF2FA
+ for <devel@linuxdriverproject.org>; Wed, 19 Feb 2020 19:57:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 10703845D5
- for <devel@linuxdriverproject.org>; Wed, 19 Feb 2020 19:39:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1CB66840A3
+ for <devel@linuxdriverproject.org>; Wed, 19 Feb 2020 19:57:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LNA5zPI8kx0v for <devel@linuxdriverproject.org>;
- Wed, 19 Feb 2020 19:39:51 +0000 (UTC)
+ with ESMTP id 6DewnlxcvqEg for <devel@linuxdriverproject.org>;
+ Wed, 19 Feb 2020 19:57:02 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qv1-f66.google.com (mail-qv1-f66.google.com
- [209.85.219.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 192A4835F5
- for <devel@driverdev.osuosl.org>; Wed, 19 Feb 2020 19:39:48 +0000 (UTC)
-Received: by mail-qv1-f66.google.com with SMTP id y2so728701qvu.13
- for <devel@driverdev.osuosl.org>; Wed, 19 Feb 2020 11:39:48 -0800 (PST)
+Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
+ [209.85.216.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0622C83D1A
+ for <devel@driverdev.osuosl.org>; Wed, 19 Feb 2020 19:56:59 +0000 (UTC)
+Received: by mail-pj1-f68.google.com with SMTP id gv17so520631pjb.1
+ for <devel@driverdev.osuosl.org>; Wed, 19 Feb 2020 11:56:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
- h=from:date:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=QhXQ/cXtwYHdMsHGCBQq3KT1zCPY2mBxOplKOphUcO0=;
- b=qlADmI86J0XVdWbUcyyqOAzkIo/erCaqAHsFJej8QGQc9MASUfjo4tracziYv76Rde
- Ibn9uj/Tw41+og1tTJjmZ0JHhDaiLACkoyT1z5PR2pIfIYF1tCSrPC1+nVqVXLWUWpOK
- b3nnAguYvMtvPie/n1u3eIs8ht8viK+cvNzOzop6C1Qgms2x0rG4k5x+NfKa1OnS73zt
- 9+EFEwuQMuFxJsC0fQSo8TgvSJ1tIg9proQW0HJ9WR76oARr0s/8mLtFoKlY6U35iIwH
- E3xFk11LekDO7F9zYeQT2PJXwl2Oo25Gicnf9vxqP+XeyB/of8lgiwde/EVtN2Z0oqlm
- bICQ==
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=a7yW3eGud1nSB17w6PgcUOM+BLtId9z+DBtjQPe4XL0=;
+ b=r/l08eDzR96yyXbytmobJW2Bl/fPaohWkVNzuCsnrvjhVcAb6GheysMrymn9aLAksW
+ heGi5eeX4ymS+7fQqjPVdqR3W+0teRBB14DV4TJArI5VmU1ClW+cC/rqNQ8SyY4O3z/M
+ X/cPNzvMGkj+IfvKrMCHh2nMWM1LIpEVitkwZeZaZUusIrLQdZQ2phfNKYqhW3qt7/iY
+ rf79KBtXefhjbHADz0i4mZ+ROJtY1qJ1M8Vn5syeAk1QjZzOGln6i5hpbNgHQHPztRrf
+ BsdMfEPmcoclw0n7l9rYCMJJmvylvV8paInd5zRQJ37e5ogoA3FOJvpC/DAl9fRmza5m
+ thQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=QhXQ/cXtwYHdMsHGCBQq3KT1zCPY2mBxOplKOphUcO0=;
- b=RBAqjP+sXIWooYv/CnmAiNyOMjcefnfNbHyX7L+PTdWMhx9h6+l22WSaDDIPmiIrlb
- TnO4tJcRkRn996FdBcEeW58v6M4Qk/dOTwXaEYSKDnj/tdcmO/hxFfw1rxHxwpsSOwAZ
- uLy80Dr82M8xIk+nQZ7MGdarqNrJ4CVz20+FZaXbAsH6Skt88Bhq+jTD39BNUNMGT1Wh
- G6pfmroujH0IwrYrNEQM1AcPjzpl3HFG3jB4/M7lhEuxddTaSexT9ZkEMBMLQnhGVu+t
- XoOiuM0WqALPjnBE3HEvNbAKWtp37y+DDfugcm18ene4UppgXGo3FSJs4rMvzR/mUCS8
- iVzw==
-X-Gm-Message-State: APjAAAWVG0PrAhS4mipn3DgnwGGUrKfm1VsgcBkSjmUQ3a+RgaYyE7a6
- A+rTUzZWytPwZ+3WxeUKAvq517Z0Q5xwd5sm
-X-Google-Smtp-Source: APXvYqwN5bpa2pBX6QeC9TD8aVtDM1ClvbzJcPqmW4HL7uQ83xvSRAUOhmj5p6kGzu9msSBSUefyXQ==
-X-Received: by 2002:a17:902:a984:: with SMTP id
- bh4mr28037054plb.281.1582140689769; 
- Wed, 19 Feb 2020 11:31:29 -0800 (PST)
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=a7yW3eGud1nSB17w6PgcUOM+BLtId9z+DBtjQPe4XL0=;
+ b=DSNIKNEg5Kr3e/pe5wlUUhJEGvrEq1pG+3Jcl2OH4BZtG8ecEVtd20xNjSBGj+UME5
+ UGnHWJOrV/0I537iMQD41YFG6jNqE9SOKnLWwbzBWVnxYqvOJZNVE5vqDxZJHn7GIiIv
+ Ooj3M3T6hhxILjkJzKF6U0sFdoKwdgQPLKjtNctW3+qENFlrXCadklQhVYvuwaPu7PYg
+ rwgrNh0GV3MfvK53h7DDQbaqZKW+SnBVQhd6YhfoGlqP0c0Qtc7pLjFsRPrdhjizhxpt
+ 1Az+0ekLuUJxpYZUixnB3xiai7JaEiVOxL1iLQbFJ70zrPENfECAnr55h28LQPj1lKgz
+ jpVQ==
+X-Gm-Message-State: APjAAAUjghR9dkyoa21LYdWEf0hQMobvyTfpFyFLIS0KGiZZEmmEXIHN
+ mBEbzEperqflyKXjseCKx3Ry8g==
+X-Google-Smtp-Source: APXvYqxwuzVnh9ab7+j2hcebiGY8l+/eJsMFxnHM0mMZAQQEbpFy2cBwB1vsrtm/7WJQHXpNqIW4FA==
+X-Received: by 2002:a17:90a:20aa:: with SMTP id
+ f39mr10917261pjg.35.1582142218933; 
+ Wed, 19 Feb 2020 11:56:58 -0800 (PST)
 Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.172])
- by smtp.gmail.com with ESMTPSA id 10sm397662pfu.132.2020.02.19.11.31.27
+ by smtp.gmail.com with ESMTPSA id t189sm422306pfd.168.2020.02.19.11.56.55
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 19 Feb 2020 11:31:29 -0800 (PST)
+ Wed, 19 Feb 2020 11:56:58 -0800 (PST)
+Date: Thu, 20 Feb 2020 01:26:51 +0530
 From: Kaaira Gupta <kgupta@es.iitr.ac.in>
-X-Google-Original-From: Kaaira Gupta <Kaairakgupta@es.iitr.ac.in>
-Date: Thu, 20 Feb 2020 01:01:23 +0530
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: comedi: change CamelCase to CAPS
-Message-ID: <20200219193123.GA31142@kaaira-HP-Pavilion-Notebook>
-References: <20200219174646.GA27559@kaaira-HP-Pavilion-Notebook>
- <20200219184741.GB2854654@kroah.com>
+To: Vaibhav Agarwal <vaibhav.sr@gmail.com>,
+ Mark Greer <mgreer@animalcreek.com>,
+ Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ greybus-dev@lists.linaro.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: greybus: match parenthesis alignment
+Message-ID: <20200219195651.GA485@kaaira-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200219184741.GB2854654@kroah.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,36 +90,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Ian Abbott <abbotti@mev.co.uk>,
- linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Feb 19, 2020 at 07:47:41PM +0100, Greg Kroah-Hartman wrote:
-> On Wed, Feb 19, 2020 at 11:16:46PM +0530, Kaaira Gupta wrote:
-> > fix checkpatch.pl check of 'Avoid CamelCase' by changing NI_CtrSource to
-> > NI_CTRSOURCE in all the files. Change it to CAPS because it is a MICRO
-> > 
-> > Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
-> > ---
-> >  drivers/staging/comedi/comedi.h               |   4 +-
-> >  .../staging/comedi/drivers/ni_routing/README  |   4 +-
-> 
-> As proof of what I said in my previous email, see the changelog message
-> for this README file, and read it to see whre the names came from.
+Fix checkpatch.pl warning of alignment should match open parenthesis in
+audio_codec.c
 
-Sorry, a typo, it was MACRO.
-Again, really sorry for the comfusion. I should have gone through the
-README well.
+Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
+---
+ drivers/staging/greybus/audio_codec.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Thanks!
+diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
+index 08746c85dea6..d62f91f4e9a2 100644
+--- a/drivers/staging/greybus/audio_codec.c
++++ b/drivers/staging/greybus/audio_codec.c
+@@ -70,7 +70,7 @@ static int gbaudio_module_enable_tx(struct gbaudio_codec_info *codec,
+ 		i2s_port = 0;	/* fixed for now */
+ 		cportid = data->connection->hd_cport_id;
+ 		ret = gb_audio_apbridgea_register_cport(data->connection,
+-						i2s_port, cportid,
++							i2s_port, cportid,
+ 						AUDIO_APBRIDGEA_DIRECTION_TX);
+ 		if (ret) {
+ 			dev_err_ratelimited(module->dev,
+@@ -160,7 +160,7 @@ static int gbaudio_module_disable_tx(struct gbaudio_module_info *module, int id)
+ 		i2s_port = 0;	/* fixed for now */
+ 		cportid = data->connection->hd_cport_id;
+ 		ret = gb_audio_apbridgea_unregister_cport(data->connection,
+-						i2s_port, cportid,
++							  i2s_port, cportid,
+ 						AUDIO_APBRIDGEA_DIRECTION_TX);
+ 		if (ret) {
+ 			dev_err_ratelimited(module->dev,
+@@ -205,7 +205,7 @@ static int gbaudio_module_enable_rx(struct gbaudio_codec_info *codec,
+ 		i2s_port = 0;	/* fixed for now */
+ 		cportid = data->connection->hd_cport_id;
+ 		ret = gb_audio_apbridgea_register_cport(data->connection,
+-						i2s_port, cportid,
++							i2s_port, cportid,
+ 						AUDIO_APBRIDGEA_DIRECTION_RX);
+ 		if (ret) {
+ 			dev_err_ratelimited(module->dev,
+@@ -295,7 +295,7 @@ static int gbaudio_module_disable_rx(struct gbaudio_module_info *module, int id)
+ 		i2s_port = 0;	/* fixed for now */
+ 		cportid = data->connection->hd_cport_id;
+ 		ret = gb_audio_apbridgea_unregister_cport(data->connection,
+-						i2s_port, cportid,
++							  i2s_port, cportid,
+ 						AUDIO_APBRIDGEA_DIRECTION_RX);
+ 		if (ret) {
+ 			dev_err_ratelimited(module->dev,
+-- 
+2.17.1
 
-> 
-> thanks,
-> 
-> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
