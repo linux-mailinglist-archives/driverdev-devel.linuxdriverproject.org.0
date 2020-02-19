@@ -1,92 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 243BB163BC1
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Feb 2020 05:03:27 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D3CAE163CCF
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Feb 2020 06:57:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3FA12203CE;
-	Wed, 19 Feb 2020 04:03:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C3431878B3;
+	Wed, 19 Feb 2020 05:57:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Gembsto5KZeM; Wed, 19 Feb 2020 04:03:23 +0000 (UTC)
+	with ESMTP id OxdBeAOHbdAr; Wed, 19 Feb 2020 05:57:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BBC11203E4;
-	Wed, 19 Feb 2020 04:03:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E255087820;
+	Wed, 19 Feb 2020 05:57:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 215291BF574
- for <devel@linuxdriverproject.org>; Wed, 19 Feb 2020 04:03:21 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 059A11BF484
+ for <devel@linuxdriverproject.org>; Wed, 19 Feb 2020 05:57:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1D0912035D
- for <devel@linuxdriverproject.org>; Wed, 19 Feb 2020 04:03:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F35BC8630A
+ for <devel@linuxdriverproject.org>; Wed, 19 Feb 2020 05:57:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JsQMKVNsyxZq for <devel@linuxdriverproject.org>;
- Wed, 19 Feb 2020 04:03:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by silver.osuosl.org (Postfix) with ESMTPS id 41ADE20021
- for <devel@driverdev.osuosl.org>; Wed, 19 Feb 2020 04:03:16 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 01J43Dro116100;
- Wed, 19 Feb 2020 04:03:13 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=4a082+unim5sSZcSwTAMdgcw2O0kQMVZyf+PWBOP5+Y=;
- b=ptZwoVIxZwWZK+1uDUkiLEiSYuN7xdBgP2DccB4ZIFHLsQbSYushQ7mdFkhOB3djz5hv
- FMtNsv7JvbGEp9MC0Vt6ojqdpR3Da9DvbnURgb3+aFHh9Tjm3z39YSfLKh9EM26ycF7w
- +fu50BAmCNgOV9xzbHPGsw/AczaaagTUKKSdCE2MS31hs9Y3bvFT2GlzOFdsYQ4K7lQy
- d7RtSiwn44l44MC6QNKlQdHUC+J06bqGfEfnvkgyyEZhE0JisC6WbADmxLxIbGuWZkrs
- tO0DHDmPQ63JPhXyLP782udUWehrHHlZ+dqrnDpFA4ASBTEvPk53rTxZBAl6fiOtUG/t 5Q== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2y8udd0d6c-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 19 Feb 2020 04:03:13 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 01J42KAJ075792;
- Wed, 19 Feb 2020 04:03:12 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 2y8ud9njdy-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 19 Feb 2020 04:03:12 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 01J42tKC019491;
- Wed, 19 Feb 2020 04:02:55 GMT
-Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 18 Feb 2020 20:02:55 -0800
-Date: Wed, 19 Feb 2020 07:02:44 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Kaaira Gupta <kgupta@es.iitr.ac.in>
-Subject: Re: [PATCH] staging: bcm2835-camera: call function instead of macro
-Message-ID: <20200219040244.GI7838@kadam>
-References: <20200218160727.GA17010@kaaira-HP-Pavilion-Notebook>
- <20200218183711.GE19641@kadam>
- <20200218191747.GA12782@kaaira-HP-Pavilion-Notebook>
+ with ESMTP id 0KAHfNJqdRCJ for <devel@linuxdriverproject.org>;
+ Wed, 19 Feb 2020 05:57:44 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx06.melco.co.jp (mx06.melco.co.jp [192.218.140.146])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3D8F684A75
+ for <devel@driverdev.osuosl.org>; Wed, 19 Feb 2020 05:57:44 +0000 (UTC)
+Received: from mr06.melco.co.jp (mr06 [133.141.98.164])
+ by mx06.melco.co.jp (Postfix) with ESMTP id 151DE3A34B9;
+ Wed, 19 Feb 2020 14:57:42 +0900 (JST)
+Received: from mr06.melco.co.jp (unknown [127.0.0.1])
+ by mr06.imss (Postfix) with ESMTP id 48Mn7V05j2zRjx3;
+ Wed, 19 Feb 2020 14:57:42 +0900 (JST)
+Received: from mf04_second.melco.co.jp (unknown [192.168.20.184])
+ by mr06.melco.co.jp (Postfix) with ESMTP id 48Mn7T6vD5zRjsk;
+ Wed, 19 Feb 2020 14:57:41 +0900 (JST)
+Received: from mf04.melco.co.jp (unknown [133.141.98.184])
+ by mf04_second.melco.co.jp (Postfix) with ESMTP id 48Mn7V01r7zRkG2;
+ Wed, 19 Feb 2020 14:57:42 +0900 (JST)
+Received: from tux532.tad.melco.co.jp (unknown [133.141.243.226])
+ by mf04.melco.co.jp (Postfix) with ESMTP id 48Mn7T6ScJzRkFt;
+ Wed, 19 Feb 2020 14:57:41 +0900 (JST)
+Received: from tux532.tad.melco.co.jp
+ by tux532.tad.melco.co.jp (unknown) with ESMTP id 01J5vfcO013950;
+ Wed, 19 Feb 2020 14:57:41 +0900
+Received: from tux390.tad.melco.co.jp (tux390.tad.melco.co.jp [127.0.0.1])
+ by postfix.imss70 (Postfix) with ESMTP id A026617E075;
+ Wed, 19 Feb 2020 14:57:41 +0900 (JST)
+Received: from tux554.tad.melco.co.jp (tadpost1.tad.melco.co.jp [10.168.7.223])
+ by tux390.tad.melco.co.jp (Postfix) with ESMTP id 938A717E073;
+ Wed, 19 Feb 2020 14:57:41 +0900 (JST)
+Received: from tux554.tad.melco.co.jp
+ by tux554.tad.melco.co.jp (unknown) with ESMTP id 01J5vfbi017445;
+ Wed, 19 Feb 2020 14:57:41 +0900
+From: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+To: Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp
+Subject: [RFC PATCH] staging: exfat: remove symlink feature.
+Date: Wed, 19 Feb 2020 14:57:27 +0900
+Message-Id: <20200219055727.12867-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+X-Mailer: git-send-email 2.25.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200218191747.GA12782@kaaira-HP-Pavilion-Notebook>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9535
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxscore=0 adultscore=0
- mlxlogscore=999 malwarescore=0 bulkscore=0 suspectscore=9 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2002190028
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9535
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- impostorscore=0
- mlxlogscore=999 malwarescore=0 mlxscore=0 suspectscore=9
- priorityscore=1501 bulkscore=0 adultscore=0 spamscore=0 lowpriorityscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2001150001 definitions=main-2002190028
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,70 +77,526 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, devel@driverdev.osuosl.org,
- Florian Fainelli <f.fainelli@gmail.com>, Scott Branden <sbranden@broadcom.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- Ray Jui <rjui@broadcom.com>
+Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ motai.hirotaka@aj.mitsubishielectric.co.jp, linux-kernel@vger.kernel.org,
+ Mori.Takahiro@ab.MitsubishiElectric.co.jp, linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Feb 19, 2020 at 12:47:47AM +0530, Kaaira Gupta wrote:
-> On Tue, Feb 18, 2020 at 09:37:11PM +0300, Dan Carpenter wrote:
-> > On Tue, Feb 18, 2020 at 09:37:28PM +0530, Kaaira Gupta wrote:
-> > > Fix checkpatch.pl warning of 'macro argument reuse' in bcm2835-camera.h
-> > > by removing the macro and calling the function, written in macro in
-> > > bcm2835-camera.h, directly in bcm2835-camera.c
-> > > 
-> > > Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
-> > > ---
-> > >  .../bcm2835-camera/bcm2835-camera.c           | 28 +++++++++++++++----
-> > >  .../bcm2835-camera/bcm2835-camera.h           | 10 -------
-> > >  2 files changed, 22 insertions(+), 16 deletions(-)
-> > > 
-> > > diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > > index 1ef31a984741..19b3ba80d0e7 100644
-> > > --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > > +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > > @@ -919,9 +919,17 @@ static int vidioc_g_fmt_vid_cap(struct file *file, void *priv,
-> > >  	else
-> > >  		f->fmt.pix.colorspace = V4L2_COLORSPACE_SMPTE170M;
-> > >  	f->fmt.pix.priv = 0;
-> > > -
-> > > -	v4l2_dump_pix_format(1, bcm2835_v4l2_debug, &dev->v4l2_dev, &f->fmt.pix,
-> > > -			     __func__);
-> > > +	v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
-> > > +		 "%s: w %u h %u field %u pfmt 0x%x bpl %u sz_img %u colorspace 0x%x priv %u\n",
-> > > +		  __func__,
-> > > +		 (&f->fmt.pix)->width,
-> > > +		 (&f->fmt.pix)->height,
-> > > +		 (&f->fmt.pix)->field,
-> > > +		 (&f->fmt.pix)->pixelformat,
-> > > +		 (&f->fmt.pix)->bytesperline,
-> > > +		 (&f->fmt.pix)->sizeimage,
-> > > +		 (&f->fmt.pix)->colorspace,
-> > > +		 (&f->fmt.pix)->priv);
-> > 
-> > This is not as nice to look at as the original.  Just ignore the
-> > warning.
-> > 
-> > regards,
-> > dan carpenter
-> >
-> So, is this warning to be ignored from everywhere in every driver, as it
-> doesn't look good? And if yes, then why is it there in the first place?
+Remove symlink feature completely.
 
-Obviously the reason for the warning is a good idea.  Do a google
-search for the dangers of c macros if you don't understand.
+Becouse
+-Uses reserved areas(defined in the Microsoft exfat specification), causing future incompatibilities.
+-Not described in Microsoft exfat specifications or SD standards.
+-For REMOVABLE media, causes incompatibility with other implementations.
+-Not supported by other major exfat drivers.
+-Not implemented symlink feature in linux FAT/VFAT.
 
-But at the same time uniformity and clean code is nice so it's a matter
-of setting priorities.  Checkpatch is just a Perl script and not the
-King of The World.  We can ignore it if we want to.
+Remove this feature completely because of serious media compatibility issues.
+(Can't enable even with CONFIG)
 
-regards,
-dan carpenter
+If you have any questions about this patch, please let me know.
+
+Reviewed-by: Takahiro Mori <Mori.Takahiro@ab.MitsubishiElectric.co.jp>
+Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+---
+ drivers/staging/exfat/exfat_super.c | 450 ----------------------------
+ 1 file changed, 450 deletions(-)
+
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index b398114c2604..c7bc07e91c45 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -660,375 +660,6 @@ static int ffsCreateFile(struct inode *inode, char *path, u8 mode,
+ 	return ret;
+ }
+ 
+-static int ffsReadFile(struct inode *inode, struct file_id_t *fid, void *buffer,
+-		       u64 count, u64 *rcount)
+-{
+-	s32 offset, sec_offset, clu_offset;
+-	u32 clu;
+-	int ret = 0;
+-	sector_t LogSector;
+-	u64 oneblkread, read_bytes;
+-	struct buffer_head *tmp_bh = NULL;
+-	struct super_block *sb = inode->i_sb;
+-	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd = &(EXFAT_SB(sb)->bd_info);
+-
+-	/* check the validity of the given file id */
+-	if (!fid)
+-		return -EINVAL;
+-
+-	/* check the validity of pointer parameters */
+-	if (!buffer)
+-		return -EINVAL;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	/* check if the given file ID is opened */
+-	if (fid->type != TYPE_FILE) {
+-		ret = -EPERM;
+-		goto out;
+-	}
+-
+-	if (fid->rwoffset > fid->size)
+-		fid->rwoffset = fid->size;
+-
+-	if (count > (fid->size - fid->rwoffset))
+-		count = fid->size - fid->rwoffset;
+-
+-	if (count == 0) {
+-		if (rcount)
+-			*rcount = 0;
+-		ret = 0;
+-		goto out;
+-	}
+-
+-	read_bytes = 0;
+-
+-	while (count > 0) {
+-		clu_offset = (s32)(fid->rwoffset >> p_fs->cluster_size_bits);
+-		clu = fid->start_clu;
+-
+-		if (fid->flags == 0x03) {
+-			clu += clu_offset;
+-		} else {
+-			/* hint information */
+-			if ((clu_offset > 0) && (fid->hint_last_off > 0) &&
+-			    (clu_offset >= fid->hint_last_off)) {
+-				clu_offset -= fid->hint_last_off;
+-				clu = fid->hint_last_clu;
+-			}
+-
+-			while (clu_offset > 0) {
+-				/* clu = exfat_fat_read(sb, clu); */
+-				if (exfat_fat_read(sb, clu, &clu) == -1) {
+-					ret = -EIO;
+-					goto out;
+-				}
+-
+-				clu_offset--;
+-			}
+-		}
+-
+-		/* hint information */
+-		fid->hint_last_off = (s32)(fid->rwoffset >>
+-					   p_fs->cluster_size_bits);
+-		fid->hint_last_clu = clu;
+-
+-		/* byte offset in cluster */
+-		offset = (s32)(fid->rwoffset & (p_fs->cluster_size - 1));
+-
+-		/* sector offset in cluster */
+-		sec_offset = offset >> p_bd->sector_size_bits;
+-
+-		/* byte offset in sector */
+-		offset &= p_bd->sector_size_mask;
+-
+-		LogSector = START_SECTOR(clu) + sec_offset;
+-
+-		oneblkread = (u64)(p_bd->sector_size - offset);
+-		if (oneblkread > count)
+-			oneblkread = count;
+-
+-		if ((offset == 0) && (oneblkread == p_bd->sector_size)) {
+-			if (sector_read(sb, LogSector, &tmp_bh, 1) !=
+-			    0)
+-				goto err_out;
+-			memcpy((char *)buffer + read_bytes,
+-			       (char *)tmp_bh->b_data, (s32)oneblkread);
+-		} else {
+-			if (sector_read(sb, LogSector, &tmp_bh, 1) !=
+-			    0)
+-				goto err_out;
+-			memcpy((char *)buffer + read_bytes,
+-			       (char *)tmp_bh->b_data + offset,
+-			       (s32)oneblkread);
+-		}
+-		count -= oneblkread;
+-		read_bytes += oneblkread;
+-		fid->rwoffset += oneblkread;
+-	}
+-	brelse(tmp_bh);
+-
+-/* How did this ever work and not leak a brlse()?? */
+-err_out:
+-	/* set the size of read bytes */
+-	if (rcount)
+-		*rcount = read_bytes;
+-
+-	if (p_fs->dev_ejected)
+-		ret = -EIO;
+-
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-static int ffsWriteFile(struct inode *inode, struct file_id_t *fid,
+-			void *buffer, u64 count, u64 *wcount)
+-{
+-	bool modified = false;
+-	s32 offset, sec_offset, clu_offset;
+-	s32 num_clusters, num_alloc, num_alloced = (s32)~0;
+-	int ret = 0;
+-	u32 clu, last_clu;
+-	sector_t LogSector;
+-	u64 oneblkwrite, write_bytes;
+-	struct chain_t new_clu;
+-	struct timestamp_t tm;
+-	struct dentry_t *ep, *ep2;
+-	struct entry_set_cache_t *es = NULL;
+-	struct buffer_head *tmp_bh = NULL;
+-	struct super_block *sb = inode->i_sb;
+-	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd = &(EXFAT_SB(sb)->bd_info);
+-
+-	/* check the validity of the given file id */
+-	if (!fid)
+-		return -EINVAL;
+-
+-	/* check the validity of pointer parameters */
+-	if (!buffer)
+-		return -EINVAL;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	/* check if the given file ID is opened */
+-	if (fid->type != TYPE_FILE) {
+-		ret = -EPERM;
+-		goto out;
+-	}
+-
+-	if (fid->rwoffset > fid->size)
+-		fid->rwoffset = fid->size;
+-
+-	if (count == 0) {
+-		if (wcount)
+-			*wcount = 0;
+-		ret = 0;
+-		goto out;
+-	}
+-
+-	fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-	if (fid->size == 0)
+-		num_clusters = 0;
+-	else
+-		num_clusters = (s32)((fid->size - 1) >>
+-				     p_fs->cluster_size_bits) + 1;
+-
+-	write_bytes = 0;
+-
+-	while (count > 0) {
+-		clu_offset = (s32)(fid->rwoffset >> p_fs->cluster_size_bits);
+-		clu = fid->start_clu;
+-		last_clu = fid->start_clu;
+-
+-		if (fid->flags == 0x03) {
+-			if ((clu_offset > 0) && (clu != CLUSTER_32(~0))) {
+-				last_clu += clu_offset - 1;
+-
+-				if (clu_offset == num_clusters)
+-					clu = CLUSTER_32(~0);
+-				else
+-					clu += clu_offset;
+-			}
+-		} else {
+-			/* hint information */
+-			if ((clu_offset > 0) && (fid->hint_last_off > 0) &&
+-			    (clu_offset >= fid->hint_last_off)) {
+-				clu_offset -= fid->hint_last_off;
+-				clu = fid->hint_last_clu;
+-			}
+-
+-			while ((clu_offset > 0) && (clu != CLUSTER_32(~0))) {
+-				last_clu = clu;
+-				/* clu = exfat_fat_read(sb, clu); */
+-				if (exfat_fat_read(sb, clu, &clu) == -1) {
+-					ret = -EIO;
+-					goto out;
+-				}
+-				clu_offset--;
+-			}
+-		}
+-
+-		if (clu == CLUSTER_32(~0)) {
+-			num_alloc = (s32)((count - 1) >>
+-					  p_fs->cluster_size_bits) + 1;
+-			new_clu.dir = (last_clu == CLUSTER_32(~0)) ?
+-					CLUSTER_32(~0) : last_clu + 1;
+-			new_clu.size = 0;
+-			new_clu.flags = fid->flags;
+-
+-			/* (1) allocate a chain of clusters */
+-			num_alloced = exfat_alloc_cluster(sb,
+-							  num_alloc,
+-							  &new_clu);
+-			if (num_alloced == 0)
+-				break;
+-			if (num_alloced < 0) {
+-				ret = num_alloced;
+-				goto out;
+-			}
+-
+-			/* (2) append to the FAT chain */
+-			if (last_clu == CLUSTER_32(~0)) {
+-				if (new_clu.flags == 0x01)
+-					fid->flags = 0x01;
+-				fid->start_clu = new_clu.dir;
+-				modified = true;
+-			} else {
+-				if (new_clu.flags != fid->flags) {
+-					exfat_chain_cont_cluster(sb,
+-								 fid->start_clu,
+-								 num_clusters);
+-					fid->flags = 0x01;
+-					modified = true;
+-				}
+-				if (new_clu.flags == 0x01)
+-					exfat_fat_write(sb, last_clu, new_clu.dir);
+-			}
+-
+-			num_clusters += num_alloced;
+-			clu = new_clu.dir;
+-		}
+-
+-		/* hint information */
+-		fid->hint_last_off = (s32)(fid->rwoffset >>
+-					   p_fs->cluster_size_bits);
+-		fid->hint_last_clu = clu;
+-
+-		/* byte offset in cluster   */
+-		offset = (s32)(fid->rwoffset & (p_fs->cluster_size - 1));
+-
+-		/* sector offset in cluster */
+-		sec_offset = offset >> p_bd->sector_size_bits;
+-
+-		/* byte offset in sector    */
+-		offset &= p_bd->sector_size_mask;
+-
+-		LogSector = START_SECTOR(clu) + sec_offset;
+-
+-		oneblkwrite = (u64)(p_bd->sector_size - offset);
+-		if (oneblkwrite > count)
+-			oneblkwrite = count;
+-
+-		if ((offset == 0) && (oneblkwrite == p_bd->sector_size)) {
+-			if (sector_read(sb, LogSector, &tmp_bh, 0) !=
+-			    0)
+-				goto err_out;
+-			memcpy((char *)tmp_bh->b_data,
+-			       (char *)buffer + write_bytes, (s32)oneblkwrite);
+-			if (sector_write(sb, LogSector, tmp_bh, 0) !=
+-			    0) {
+-				brelse(tmp_bh);
+-				goto err_out;
+-			}
+-		} else {
+-			if ((offset > 0) ||
+-			    ((fid->rwoffset + oneblkwrite) < fid->size)) {
+-				if (sector_read(sb, LogSector, &tmp_bh, 1) !=
+-				    0)
+-					goto err_out;
+-			} else {
+-				if (sector_read(sb, LogSector, &tmp_bh, 0) !=
+-				    0)
+-					goto err_out;
+-			}
+-
+-			memcpy((char *)tmp_bh->b_data + offset,
+-			       (char *)buffer + write_bytes, (s32)oneblkwrite);
+-			if (sector_write(sb, LogSector, tmp_bh, 0) !=
+-			    0) {
+-				brelse(tmp_bh);
+-				goto err_out;
+-			}
+-		}
+-
+-		count -= oneblkwrite;
+-		write_bytes += oneblkwrite;
+-		fid->rwoffset += oneblkwrite;
+-
+-		fid->attr |= ATTR_ARCHIVE;
+-
+-		if (fid->size < fid->rwoffset) {
+-			fid->size = fid->rwoffset;
+-			modified = true;
+-		}
+-	}
+-
+-	brelse(tmp_bh);
+-
+-	/* (3) update the direcoty entry */
+-	es = get_entry_set_in_dir(sb, &fid->dir, fid->entry,
+-				  ES_ALL_ENTRIES, &ep);
+-	if (!es)
+-		goto err_out;
+-	ep2 = ep + 1;
+-
+-	exfat_set_entry_time(ep, tm_current(&tm), TM_MODIFY);
+-	exfat_set_entry_attr(ep, fid->attr);
+-
+-	if (modified) {
+-		if (exfat_get_entry_flag(ep2) != fid->flags)
+-			exfat_set_entry_flag(ep2, fid->flags);
+-
+-		if (exfat_get_entry_size(ep2) != fid->size)
+-			exfat_set_entry_size(ep2, fid->size);
+-
+-		if (exfat_get_entry_clu0(ep2) != fid->start_clu)
+-			exfat_set_entry_clu0(ep2, fid->start_clu);
+-	}
+-
+-	update_dir_checksum_with_entry_set(sb, es);
+-	release_entry_set(es);
+-
+-#ifndef CONFIG_STAGING_EXFAT_DELAYED_SYNC
+-	fs_sync(sb, true);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-#endif
+-
+-err_out:
+-	/* set the size of written bytes */
+-	if (wcount)
+-		*wcount = write_bytes;
+-
+-	if (num_alloced == 0)
+-		ret = -ENOSPC;
+-
+-	else if (p_fs->dev_ejected)
+-		ret = -EIO;
+-
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+ static int ffsTruncateFile(struct inode *inode, u64 old_size, u64 new_size)
+ {
+ 	s32 num_clusters;
+@@ -2273,7 +1904,6 @@ static struct dentry *exfat_lookup(struct inode *dir, struct dentry *dentry,
+ 	int err;
+ 	struct file_id_t fid;
+ 	loff_t i_pos;
+-	u64 ret;
+ 	mode_t i_mode;
+ 
+ 	__lock_super(sb);
+@@ -2295,18 +1925,6 @@ static struct dentry *exfat_lookup(struct inode *dir, struct dentry *dentry,
+ 	}
+ 
+ 	i_mode = inode->i_mode;
+-	if (S_ISLNK(i_mode) && !EXFAT_I(inode)->target) {
+-		EXFAT_I(inode)->target = kmalloc(i_size_read(inode) + 1,
+-						 GFP_KERNEL);
+-		if (!EXFAT_I(inode)->target) {
+-			err = -ENOMEM;
+-			goto error;
+-		}
+-		ffsReadFile(dir, &fid, EXFAT_I(inode)->target,
+-			    i_size_read(inode), &ret);
+-		*(EXFAT_I(inode)->target + i_size_read(inode)) = '\0';
+-	}
+-
+ 	alias = d_find_alias(inode);
+ 	if (alias && !exfat_d_anon_disconn(alias)) {
+ 		BUG_ON(d_unhashed(alias));
+@@ -2398,73 +2016,6 @@ static int exfat_unlink(struct inode *dir, struct dentry *dentry)
+ 	return err;
+ }
+ 
+-static int exfat_symlink(struct inode *dir, struct dentry *dentry,
+-			 const char *target)
+-{
+-	struct super_block *sb = dir->i_sb;
+-	struct timespec64 curtime;
+-	struct inode *inode;
+-	struct file_id_t fid;
+-	loff_t i_pos;
+-	int err;
+-	u64 len = (u64)strlen(target);
+-	u64 ret;
+-
+-	__lock_super(sb);
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	err = ffsCreateFile(dir, (u8 *)dentry->d_name.name, FM_SYMLINK, &fid);
+-	if (err)
+-		goto out;
+-
+-
+-	err = ffsWriteFile(dir, &fid, (char *)target, len, &ret);
+-
+-	if (err) {
+-		ffsRemoveFile(dir, &fid);
+-		goto out;
+-	}
+-
+-	INC_IVERSION(dir);
+-	curtime = current_time(dir);
+-	dir->i_ctime = curtime;
+-	dir->i_mtime = curtime;
+-	dir->i_atime = curtime;
+-	if (IS_DIRSYNC(dir))
+-		(void)exfat_sync_inode(dir);
+-	else
+-		mark_inode_dirty(dir);
+-
+-	i_pos = ((loff_t)fid.dir.dir << 32) | (fid.entry & 0xffffffff);
+-
+-	inode = exfat_build_inode(sb, &fid, i_pos);
+-	if (IS_ERR(inode)) {
+-		err = PTR_ERR(inode);
+-		goto out;
+-	}
+-	INC_IVERSION(inode);
+-	curtime = current_time(inode);
+-	inode->i_mtime = curtime;
+-	inode->i_atime = curtime;
+-	inode->i_ctime = curtime;
+-	/* timestamp is already written, so mark_inode_dirty() is unneeded. */
+-
+-	EXFAT_I(inode)->target = kmemdup(target, len + 1, GFP_KERNEL);
+-	if (!EXFAT_I(inode)->target) {
+-		err = -ENOMEM;
+-		goto out;
+-	}
+-
+-	dentry->d_time = GET_IVERSION(dentry->d_parent->d_inode);
+-	d_instantiate(dentry, inode);
+-
+-out:
+-	__unlock_super(sb);
+-	pr_debug("%s exited\n", __func__);
+-	return err;
+-}
+-
+ static int exfat_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+ {
+ 	struct super_block *sb = dir->i_sb;
+@@ -2838,7 +2389,6 @@ static const struct inode_operations exfat_dir_inode_operations = {
+ 	.create        = exfat_create,
+ 	.lookup        = exfat_lookup,
+ 	.unlink        = exfat_unlink,
+-	.symlink       = exfat_symlink,
+ 	.mkdir         = exfat_mkdir,
+ 	.rmdir         = exfat_rmdir,
+ 	.rename        = exfat_rename,
+-- 
+2.25.0
 
 _______________________________________________
 devel mailing list
