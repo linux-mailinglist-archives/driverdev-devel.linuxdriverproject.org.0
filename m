@@ -1,45 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70EF31641ED
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Feb 2020 11:23:57 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E80CE1641DB
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Feb 2020 11:23:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CEC6E204F4;
-	Wed, 19 Feb 2020 10:23:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7DA958795A;
+	Wed, 19 Feb 2020 10:23:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oCAIODg0jiRB; Wed, 19 Feb 2020 10:23:50 +0000 (UTC)
+	with ESMTP id xXSd0I0BlT9P; Wed, 19 Feb 2020 10:23:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D8D22204F0;
-	Wed, 19 Feb 2020 10:23:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7972A82813;
+	Wed, 19 Feb 2020 10:23:43 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D2E371BF3BE
+ by ash.osuosl.org (Postfix) with ESMTP id CA3431BF3BE
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 19 Feb 2020 10:23:42 +0000 (UTC)
+ Wed, 19 Feb 2020 10:23:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CC37187937
+ by hemlock.osuosl.org (Postfix) with ESMTP id C73508790F
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 19 Feb 2020 10:23:42 +0000 (UTC)
+ Wed, 19 Feb 2020 10:23:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7a4O5dyim7C9
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 19 Feb 2020 10:23:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
- [68.232.154.123])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D478982813
+ with ESMTP id 6BAUsgDmbKJ8
  for <driverdev-devel@linuxdriverproject.org>;
  Wed, 19 Feb 2020 10:23:41 +0000 (UTC)
-Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
+ [68.232.149.84])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 28A9D82813
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 19 Feb 2020 10:23:41 +0000 (UTC)
+Received-SPF: Pass (esa2.microchip.iphmx.com: domain of
  Christian.Gromm@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
  envelope-from="Christian.Gromm@microchip.com";
  x-sender="Christian.Gromm@microchip.com";
  x-conformance=spf_only; x-record-type="v=spf1";
@@ -47,38 +47,38 @@ Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
  a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
  include:servers.mcsv.net include:mktomail.com
  include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa4.microchip.iphmx.com: no sender
+Received-SPF: None (esa2.microchip.iphmx.com: no sender
  authenticity information available from domain of
  postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
  envelope-from="Christian.Gromm@microchip.com";
  x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa4.microchip.iphmx.com;
+Authentication-Results: esa2.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: WZSXfPqGneTDwmYgQng7qIvX5KoAgMfkuWC77mCs/l4N+AU4ChwU1wujNMM8PVGxnGEyQL8hGu
- y6Gbm5DMdAb/KwssVC/QASxhbexLgsZvZeO0rXt3wi0zzllm6iJ7LhuOnR26uhgwKZQ6L7/taG
- neL4+hp0Q3sSqIMuX4AftwbskKJz2Bx7BhfFpbDg3dViinTX3a8KU7OfuZR7dDcaJZNWhBgS7j
- MF2sEstDmiPhvHQLe0KbKlq/8ebXKoFA1HIlTi+7zLX5Xq6fr8Et/4kp4tOhAWM64Rt8tSHlvd
- DnY=
-X-IronPort-AV: E=Sophos;i="5.70,459,1574146800"; d="scan'208";a="64671221"
+IronPort-SDR: IK3V/O5wPjzK3atsdBfPGzpmQ3evsb/Jg/s35sfr3RYSzb3WJkEtCotD2CcoGMx3zTaX0LGlwc
+ 8C0QAF1rtPoQF2I/SDBJ6ERAcGzIot+vhKHnjpD8ZBr3c6Ko6p5SIfE+s8sCsebXgdm4v+nxrX
+ tXVUF2+LAu7I/lav9W8YAqaJTKMih/fi1DchO0rP+6ltMMcOAQHjk/l3MrcSwGr1ole7QfZAqd
+ 5Bb/1Dw+ppD+T8ZRV3yYmortQIsF8Gmb5ekCwIJ1MiebDpoVPCBNxqa8jZMCn3PXxsUtm5YpZB
+ B9g=
+X-IronPort-AV: E=Sophos;i="5.70,459,1574146800"; d="scan'208";a="66353341"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 19 Feb 2020 03:23:41 -0700
+ by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 19 Feb 2020 03:23:40 -0700
 Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 19 Feb 2020 03:23:39 -0700
+ 15.1.1713.5; Wed, 19 Feb 2020 03:23:40 -0700
 Received: from localhost.localdomain (10.10.115.15) by
  chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Wed, 19 Feb 2020 03:23:38 -0700
+ 15.1.1713.5 via Frontend Transport; Wed, 19 Feb 2020 03:23:40 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH v5 1/3] staging: most: move core files out of the staging area
-Date: Wed, 19 Feb 2020 11:23:32 +0100
-Message-ID: <1582107814-11866-2-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH v5 2/3] staging: most: Documentation: update ABI description
+Date: Wed, 19 Feb 2020 11:23:33 +0100
+Message-ID: <1582107814-11866-3-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1582107814-11866-1-git-send-email-christian.gromm@microchip.com>
 References: <1582107814-11866-1-git-send-email-christian.gromm@microchip.com>
@@ -102,8 +102,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch moves the core module to the /drivers/most directory
-and makes all necessary changes in order to not break the build.
+This patch updates the ABI description files to be in sync
+with current implementation.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 ---
@@ -112,250 +112,75 @@ v3:
 v4:
 v5: rebased and adapted
 
- drivers/Kconfig                                |  1 +
- drivers/Makefile                               |  1 +
- drivers/most/Kconfig                           | 15 +++++++++++++++
- drivers/most/Makefile                          |  4 ++++
- drivers/{staging => }/most/configfs.c          |  3 +--
- drivers/{staging => }/most/core.c              |  3 +--
- drivers/staging/most/Kconfig                   |  6 +++---
- drivers/staging/most/Makefile                  |  3 ---
- drivers/staging/most/cdev/cdev.c               |  3 +--
- drivers/staging/most/dim2/dim2.c               |  3 +--
- drivers/staging/most/i2c/i2c.c                 |  3 +--
- drivers/staging/most/net/net.c                 |  3 +--
- drivers/staging/most/sound/sound.c             |  3 +--
- drivers/staging/most/usb/usb.c                 |  3 +--
- drivers/staging/most/video/video.c             |  3 +--
- {drivers/staging/most => include/linux}/most.h |  0
- 16 files changed, 33 insertions(+), 24 deletions(-)
- create mode 100644 drivers/most/Kconfig
- create mode 100644 drivers/most/Makefile
- rename drivers/{staging => }/most/configfs.c (99%)
- rename drivers/{staging => }/most/core.c (99%)
- rename {drivers/staging/most => include/linux}/most.h (100%)
+ .../most/Documentation/ABI/configfs-most.txt       |  8 --------
+ .../most/Documentation/ABI/sysfs-bus-most.txt      | 24 +++-------------------
+ 2 files changed, 3 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/Kconfig b/drivers/Kconfig
-index 8befa53..c739665 100644
---- a/drivers/Kconfig
-+++ b/drivers/Kconfig
-@@ -228,4 +228,5 @@ source "drivers/interconnect/Kconfig"
+diff --git a/drivers/staging/most/Documentation/ABI/configfs-most.txt b/drivers/staging/most/Documentation/ABI/configfs-most.txt
+index 2bf8114..ed67a4d 100644
+--- a/drivers/staging/most/Documentation/ABI/configfs-most.txt
++++ b/drivers/staging/most/Documentation/ABI/configfs-most.txt
+@@ -194,11 +194,3 @@ Description:
  
- source "drivers/counter/Kconfig"
- 
-+source "drivers/most/Kconfig"
- endmenu
-diff --git a/drivers/Makefile b/drivers/Makefile
-index 31cf17d..7646549a 100644
---- a/drivers/Makefile
-+++ b/drivers/Makefile
-@@ -186,3 +186,4 @@ obj-$(CONFIG_SIOX)		+= siox/
- obj-$(CONFIG_GNSS)		+= gnss/
- obj-$(CONFIG_INTERCONNECT)	+= interconnect/
- obj-$(CONFIG_COUNTER)		+= counter/
-+obj-$(CONFIG_MOST)		+= most/
-diff --git a/drivers/most/Kconfig b/drivers/most/Kconfig
-new file mode 100644
-index 0000000..58d7999
---- /dev/null
-+++ b/drivers/most/Kconfig
-@@ -0,0 +1,15 @@
-+# SPDX-License-Identifier: GPL-2.0
-+menuconfig MOST
-+	tristate "MOST support"
-+	depends on HAS_DMA && CONFIGFS_FS
-+	default n
-+	help
-+	  Say Y here if you want to enable MOST support.
-+	  This driver needs at least one additional component to enable the
-+	  desired access from userspace (e.g. character devices) and one that
-+	  matches the network controller's hardware interface (e.g. USB).
-+
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called most_core.
-+
-+	  If in doubt, say N here.
-diff --git a/drivers/most/Makefile b/drivers/most/Makefile
-new file mode 100644
-index 0000000..e810cd3
---- /dev/null
-+++ b/drivers/most/Makefile
-@@ -0,0 +1,4 @@
-+# SPDX-License-Identifier: GPL-2.0
-+obj-$(CONFIG_MOST) += most_core.o
-+most_core-y :=	core.o \
-+		configfs.o
-diff --git a/drivers/staging/most/configfs.c b/drivers/most/configfs.c
-similarity index 99%
-rename from drivers/staging/most/configfs.c
-rename to drivers/most/configfs.c
-index 9a96122..27b0c92 100644
---- a/drivers/staging/most/configfs.c
-+++ b/drivers/most/configfs.c
-@@ -10,8 +10,7 @@
- #include <linux/slab.h>
- #include <linux/init.h>
- #include <linux/configfs.h>
+ 		destroy_link	write '1' to this attribute to destroy an
+ 				active link
 -
--#include "most.h"
-+#include <linux/most.h>
+-What: 		/sys/kernel/config/rdma_cm/<hca>/ports/<port-num>/default_roce_tos
+-Date: 		March 8, 2019
+-KernelVersion:  5.2
+-Description: 	RDMA-CM QPs from HCA <hca> at port <port-num>
+-		will be created with this TOS as default.
+-		This can be overridden by using the rdma_set_option API.
+-		The possible RoCE TOS values are 0-255.
+diff --git a/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt b/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
+index d8fa841..6b1d06e 100644
+--- a/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
++++ b/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
+@@ -5,7 +5,7 @@ Contact:	Christian Gromm <christian.gromm@microchip.com>
+ Description:
+ 		Provides information about the interface type and the physical
+ 		location of the device. Hardware attached via USB, for instance,
+-		might return <usb_device 1-1.1:1.0>
++		might return <1-1.1:1.0>
+ Users:
  
- #define MAX_STRING_SIZE 80
+ What:		/sys/bus/most/devices/.../interface
+@@ -278,25 +278,7 @@ Description:
+ 		Indicates whether current channel ran out of buffers.
+ Users:
  
-diff --git a/drivers/staging/most/core.c b/drivers/most/core.c
-similarity index 99%
-rename from drivers/staging/most/core.c
-rename to drivers/most/core.c
-index 0c4ae69..6a59e87 100644
---- a/drivers/staging/most/core.c
-+++ b/drivers/most/core.c
-@@ -20,8 +20,7 @@
- #include <linux/kthread.h>
- #include <linux/dma-mapping.h>
- #include <linux/idr.h>
+-What:		/sys/bus/most/drivers/mostcore/add_link
+-Date:		March 2017
+-KernelVersion:	4.15
+-Contact:	Christian Gromm <christian.gromm@microchip.com>
+-Description:
+-		This is used to link a channel to a component of the
+-		mostcore. A link created by writing to this file is
+-		referred to as pipe.
+-Users:
 -
--#include "most.h"
-+#include <linux/most.h>
- 
- #define MAX_CHANNELS	64
- #define STRING_SIZE	80
-diff --git a/drivers/staging/most/Kconfig b/drivers/staging/most/Kconfig
-index 6262eb2..c5a99f7 100644
---- a/drivers/staging/most/Kconfig
-+++ b/drivers/staging/most/Kconfig
-@@ -1,7 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
--menuconfig MOST
-+menuconfig MOST_COMPONENTS
- 	tristate "MOST support"
--	depends on HAS_DMA && CONFIGFS_FS
-+	depends on HAS_DMA && CONFIGFS_FS && MOST
- 	default n
- 	help
- 	  Say Y here if you want to enable MOST support.
-@@ -16,7 +16,7 @@ menuconfig MOST
- 
- 
- 
--if MOST
-+if MOST_COMPONENTS
- 
- source "drivers/staging/most/cdev/Kconfig"
- 
-diff --git a/drivers/staging/most/Makefile b/drivers/staging/most/Makefile
-index 20a99ec..a803a98 100644
---- a/drivers/staging/most/Makefile
-+++ b/drivers/staging/most/Makefile
-@@ -1,7 +1,4 @@
- # SPDX-License-Identifier: GPL-2.0
--obj-$(CONFIG_MOST) += most_core.o
--most_core-y := core.o
--most_core-y += configfs.o
- 
- obj-$(CONFIG_MOST_CDEV)	+= cdev/
- obj-$(CONFIG_MOST_NET)	+= net/
-diff --git a/drivers/staging/most/cdev/cdev.c b/drivers/staging/most/cdev/cdev.c
-index 71943d1..cc1e3de 100644
---- a/drivers/staging/most/cdev/cdev.c
-+++ b/drivers/staging/most/cdev/cdev.c
-@@ -16,8 +16,7 @@
- #include <linux/kfifo.h>
- #include <linux/uaccess.h>
- #include <linux/idr.h>
+-What:		/sys/bus/most/drivers/mostcore/remove_link
+-Date:		March 2017
+-KernelVersion:	4.15
+-Contact:	Christian Gromm <christian.gromm@microchip.com>
+-Description:
+-		This is used to unlink a channel from a component.
+-Users:
 -
--#include "../most.h"
-+#include <linux/most.h>
+-What:		/sys/bus/most/drivers/mostcore/components
++What:		/sys/bus/most/drivers/most_core/components
+ Date:		March 2017
+ KernelVersion:	4.15
+ Contact:	Christian Gromm <christian.gromm@microchip.com>
+@@ -304,7 +286,7 @@ Description:
+ 		This is used to retrieve a list of registered components.
+ Users:
  
- #define CHRDEV_REGION_SIZE 50
- 
-diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
-index 1659328..8e0f27e 100644
---- a/drivers/staging/most/dim2/dim2.c
-+++ b/drivers/staging/most/dim2/dim2.c
-@@ -20,8 +20,7 @@
- #include <linux/dma-mapping.h>
- #include <linux/sched.h>
- #include <linux/kthread.h>
--
--#include "../most.h"
-+#include <linux/most.h>
- #include "hal.h"
- #include "errors.h"
- #include "sysfs.h"
-diff --git a/drivers/staging/most/i2c/i2c.c b/drivers/staging/most/i2c/i2c.c
-index 2980f70..893a8bab 100644
---- a/drivers/staging/most/i2c/i2c.c
-+++ b/drivers/staging/most/i2c/i2c.c
-@@ -13,8 +13,7 @@
- #include <linux/i2c.h>
- #include <linux/interrupt.h>
- #include <linux/err.h>
--
--#include "../most.h"
-+#include <linux/most.h>
- 
- enum { CH_RX, CH_TX, NUM_CHANNELS };
- 
-diff --git a/drivers/staging/most/net/net.c b/drivers/staging/most/net/net.c
-index 5547e36..830f089 100644
---- a/drivers/staging/most/net/net.c
-+++ b/drivers/staging/most/net/net.c
-@@ -15,8 +15,7 @@
- #include <linux/list.h>
- #include <linux/wait.h>
- #include <linux/kobject.h>
--
--#include "../most.h"
-+#include <linux/most.h>
- 
- #define MEP_HDR_LEN 8
- #define MDP_HDR_LEN 16
-diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
-index 44cf233..1527f41 100644
---- a/drivers/staging/most/sound/sound.c
-+++ b/drivers/staging/most/sound/sound.c
-@@ -17,8 +17,7 @@
- #include <sound/pcm_params.h>
- #include <linux/sched.h>
- #include <linux/kthread.h>
--
--#include "../most.h"
-+#include <linux/most.h>
- 
- #define DRIVER_NAME "sound"
- #define STRING_SIZE	80
-diff --git a/drivers/staging/most/usb/usb.c b/drivers/staging/most/usb/usb.c
-index 0bda88c..e8c5a8c 100644
---- a/drivers/staging/most/usb/usb.c
-+++ b/drivers/staging/most/usb/usb.c
-@@ -23,8 +23,7 @@
- #include <linux/dma-mapping.h>
- #include <linux/etherdevice.h>
- #include <linux/uaccess.h>
--
--#include "../most.h"
-+#include <linux/most.h>
- 
- #define USB_MTU			512
- #define NO_ISOCHRONOUS_URB	0
-diff --git a/drivers/staging/most/video/video.c b/drivers/staging/most/video/video.c
-index d32ae49..20d177a 100644
---- a/drivers/staging/most/video/video.c
-+++ b/drivers/staging/most/video/video.c
-@@ -20,8 +20,7 @@
- #include <media/v4l2-device.h>
- #include <media/v4l2-ctrls.h>
- #include <media/v4l2-fh.h>
--
--#include "../most.h"
-+#include <linux/most.h>
- 
- #define V4L2_CMP_MAX_INPUT  1
- 
-diff --git a/drivers/staging/most/most.h b/include/linux/most.h
-similarity index 100%
-rename from drivers/staging/most/most.h
-rename to include/linux/most.h
+-What:		/sys/bus/most/drivers/mostcore/links
++What:		/sys/bus/most/drivers/most_core/links
+ Date:		March 2017
+ KernelVersion:	4.15
+ Contact:	Christian Gromm <christian.gromm@microchip.com>
 -- 
 2.7.4
 
