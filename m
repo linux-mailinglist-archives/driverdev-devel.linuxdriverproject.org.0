@@ -1,73 +1,95 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 328C8165B01
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Feb 2020 11:02:03 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C45CE214EC;
-	Thu, 20 Feb 2020 10:02:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NLxokUz6FVjy; Thu, 20 Feb 2020 10:02:00 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3D04120C92;
-	Thu, 20 Feb 2020 10:01:57 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4D06A1BF2C5
- for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 10:01:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E70F7165F17
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Feb 2020 14:47:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 44F4586BA4
- for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 10:01:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 33A3386DE7;
+	Thu, 20 Feb 2020 13:47:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dnbuV2+t7fZ1; Thu, 20 Feb 2020 13:47:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1D75086D82;
+	Thu, 20 Feb 2020 13:47:48 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 785251BF319
+ for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 13:47:46 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 6CABE2036B
+ for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 13:47:46 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x8NXSblAPHA5 for <devel@linuxdriverproject.org>;
- Thu, 20 Feb 2020 10:01:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 212B586B7B
- for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 10:01:55 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id p14so1685693pfn.4
- for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 02:01:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=xsUbPWAhYtsZRE8nHbpZ90/dMr+6ACJOvf/o3gzcGwM=;
- b=dwLd+3LJSBvFv79bNaPi6FIYMGxFD1eshrWzldIBC927Bytj2OeUIl46o05MA/UKyI
- DjmfA5dBsVk8BQ9OXq3epakhEpn1NCET+bN9jwwy91pQqfxiIrtXmA3RyD4MuPfYS+oY
- jHuAZ4otLQF/K8fOOYMfmcvdr3MzYdC2QxNJkxUBElIsQ1/M2U+MhwY+307i2MPbo6kH
- Lbfx5x/qGM+bO71N+KBJ6inysZdkXSm2eCjmYPg9GtXsVWiqQcYbif6t4h5YQ1bOKLgt
- RyhWqs6CeyEu950mSMP6vUO3A3PuB4uohkbDd3Ac+FBY28oeJDhwEczU7CID4ErHs5j7
- sijQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=xsUbPWAhYtsZRE8nHbpZ90/dMr+6ACJOvf/o3gzcGwM=;
- b=INqa12OUr5mQ/7/WLClpx1IaHTsAkyZi3A1nIKaaQWmy3hZAwD3MEd0E3WUclRkJ7k
- /vN1uPiu1n9MbN4JKDfDYCoOcRUSexkCioAb5L0+CqG3GE7gjej0wNfl2mcqMNpBEJTR
- LWXkrjGaz397GEkTGzOj3jiqEl16oGzAzdoWvOfqBHLvRYwID9J5w7F2vBO6h2wSdxtO
- CFKn+VCRN+LpwUSHQNVPa5ebPO5vQmM8rhfQFiNH9S74xyW8mctmHQExQDAswFcLcp0n
- VQ+JNCfDXm1QRmtc4Q6iNo6GdzA/1UTaWo/k+m+N44X3mbcLuV5aZ3ayoZZAKaupiWNl
- Y23A==
-X-Gm-Message-State: APjAAAUAn6HY6DOhV+ojMg0+2EBiLsUr/nZOHSC1R6zeLLps2cwxkJG2
- a8IRWEob/Y2DQ6FHiBetDvLsNVvyp6/8tEJx9kM=
-X-Google-Smtp-Source: APXvYqw2sveZUCKBmV2iXF7UHHebBZ3ekgWlf/dl5jMXuVzDcCdiEBqTAy6RUU+C44tDWqIwIllQmcg5tddHbn2SarE=
-X-Received: by 2002:a63:2cc9:: with SMTP id
- s192mr31430410pgs.441.1582192914773; 
- Thu, 20 Feb 2020 02:01:54 -0800 (PST)
+ with ESMTP id 25Mp9vLYoYCQ for <devel@linuxdriverproject.org>;
+ Thu, 20 Feb 2020 13:47:44 +0000 (UTC)
+X-Greylist: delayed 00:21:17 by SQLgrey-1.7.6
+Received: from gateway24.websitewelcome.com (gateway24.websitewelcome.com
+ [192.185.51.253])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2B73320116
+ for <devel@driverdev.osuosl.org>; Thu, 20 Feb 2020 13:47:44 +0000 (UTC)
+Received: from cm16.websitewelcome.com (cm16.websitewelcome.com [100.42.49.19])
+ by gateway24.websitewelcome.com (Postfix) with ESMTP id 3440F1519D
+ for <devel@driverdev.osuosl.org>; Thu, 20 Feb 2020 07:26:26 -0600 (CST)
+Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
+ id 4lqUjpYml8vkB4lqUjlyaW; Thu, 20 Feb 2020 07:26:26 -0600
+X-Authority-Reason: nr=8
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=embeddedor.com; s=default; h=Content-Type:MIME-Version:Message-ID:Subject:
+ Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=6J84MBeCdQLzfeiSeo8Y1ThSIemYlFwtAHSXsSX6lv0=; b=ky5F7F2xIbcmlLjeJpgQVjAdUK
+ rsux4XakoDz2WE9MqurVR1xRzyiajbRig5AkP53QD3kFYEkdxHhrJOs2c3CeUACQgIQqalyrPESN2
+ CTbnUV5yIx3UhKY/tOM9PvR5xkWdPh0/QqayMYp6g31gwfJBBMhXRcRsBofn7GCNLz8J6q+lQPOtJ
+ o4ysTmFrOjPVsNJkT8rbMmgREjrKtvq4PhdVG/xBwlu6cpHReUeOY5fZ5nbHRCutD7V/JSGjWBHXk
+ ffuLyMRYJmftHY1bK3nxa5FASfWEn2z+5fMFheBlOasMnTLC8fnhix6K3mXpHi2jv8M/u1+vV84a7
+ ZJd2fVfg==;
+Received: from [201.144.174.47] (port=24243 helo=embeddedor)
+ by gator4166.hostgator.com with esmtpa (Exim 4.92)
+ (envelope-from <gustavo@embeddedor.com>)
+ id 1j4lqR-003dLZ-U0; Thu, 20 Feb 2020 07:26:24 -0600
+Date: Thu, 20 Feb 2020 07:29:08 -0600
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Vaibhav Agarwal <vaibhav.sr@gmail.com>,
+ Mark Greer <mgreer@animalcreek.com>,
+ Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+ Michael Tretter <m.tretter@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Larry Finger <Larry.Finger@lwfinger.net>,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ Adham Abozaeid <adham.abozaeid@microchip.com>,
+ Ajay Singh <ajay.kathat@microchip.com>
+Subject: [PATCH] staging: Replace zero-length array with flexible-array member
+Message-ID: <20200220132908.GA30501@embeddedor>
 MIME-Version: 1.0
-Received: by 2002:a17:90a:90f:0:0:0:0 with HTTP; Thu, 20 Feb 2020 02:01:54
- -0800 (PST)
-From: "Mrs. Susan S. Cage" <drgoodluckebelejonathan061@gmail.com>
-Date: Thu, 20 Feb 2020 02:01:54 -0800
-Message-ID: <CALjo5=92honwOTiCOFfRnXNatmAOfe0-zurnTeHjVVaTGZhc8w@mail.gmail.com>
-Subject: Attention:Beneficiary
-To: undisclosed-recipients:;
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 201.144.174.47
+X-Source-L: No
+X-Exim-ID: 1j4lqR-003dLZ-U0
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: (embeddedor) [201.144.174.47]:24243
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 38
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,37 +102,579 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: cagesusan199@gmail.com
+Cc: devel@driverdev.osuosl.org, "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ greybus-dev@lists.linaro.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+The current codebase makes use of the zero-length array language
+extension to the C90 standard, but the preferred mechanism to declare
+variable-length types such as these ones is a flexible array member[1][2],
+introduced in C99:
+
+struct foo {
+        int stuff;
+        struct boo array[];
+};
+
+By making use of the mechanism above, we will get a compiler warning
+in case the flexible array does not occur last in the structure, which
+will help us prevent some kind of undefined behavior bugs from being
+inadvertently introduced[3] to the codebase from now on.
+
+Also, notice that, dynamic memory allocations won't be affected by
+this change:
+
+"Flexible array members have incomplete type, and so the sizeof operator
+may not be applied. As a quirk of the original implementation of
+zero-length arrays, sizeof evaluates to zero."[1]
+
+This issue was found with the help of Coccinelle.
+
+[1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
+[2] https://github.com/KSPP/linux/issues/21
+[3] commit 76497732932f ("cxgb3/l2t: Fix undefined behaviour")
+
+Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
+---
+ drivers/staging/gdm724x/gdm_mux.h             |  2 +-
+ drivers/staging/gdm724x/hci_packet.h          |  6 ++--
+ drivers/staging/greybus/audio_apbridgea.h     |  2 +-
+ drivers/staging/ks7010/ks_hostif.h            |  4 +--
+ .../staging/media/allegro-dvt/allegro-core.c  |  2 +-
+ drivers/staging/octeon-usb/octeon-hcd.c       |  2 +-
+ drivers/staging/rtl8192e/rtllib.h             | 30 +++++++++----------
+ .../staging/rtl8192u/ieee80211/ieee80211.h    | 28 ++++++++---------
+ drivers/staging/rtl8712/ieee80211.h           |  4 +--
+ drivers/staging/rtl8712/rtl871x_mp_ioctl.h    |  4 +--
+ drivers/staging/wilc1000/cfg80211.c           | 10 +++----
+ drivers/staging/wilc1000/spi.c                |  2 +-
+ drivers/staging/wlan-ng/hfa384x.h             |  4 +--
+ drivers/staging/wlan-ng/p80211types.h         |  4 +--
+ 14 files changed, 52 insertions(+), 52 deletions(-)
+
+diff --git a/drivers/staging/gdm724x/gdm_mux.h b/drivers/staging/gdm724x/gdm_mux.h
+index 51c22e3d8aeb..87b8d921fdc8 100644
+--- a/drivers/staging/gdm724x/gdm_mux.h
++++ b/drivers/staging/gdm724x/gdm_mux.h
+@@ -29,7 +29,7 @@ struct mux_pkt_header {
+ 	__le32 seq_num;
+ 	__le32 payload_size;
+ 	__le16 packet_type;
+-	unsigned char data[0];
++	unsigned char data[];
+ };
+ 
+ struct mux_tx {
+diff --git a/drivers/staging/gdm724x/hci_packet.h b/drivers/staging/gdm724x/hci_packet.h
+index 6dea3694afdd..faecdfbc664f 100644
+--- a/drivers/staging/gdm724x/hci_packet.h
++++ b/drivers/staging/gdm724x/hci_packet.h
+@@ -28,7 +28,7 @@
+ struct hci_packet {
+ 	__dev16 cmd_evt;
+ 	__dev16 len;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ struct tlv {
+@@ -51,7 +51,7 @@ struct sdu {
+ 	__dev32 dft_eps_ID;
+ 	__dev32 bearer_ID;
+ 	__dev32 nic_type;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ struct multi_sdu {
+@@ -59,7 +59,7 @@ struct multi_sdu {
+ 	__dev16 len;
+ 	__dev16 num_packet;
+ 	__dev16 reserved;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ struct hci_pdn_table_ind {
+diff --git a/drivers/staging/greybus/audio_apbridgea.h b/drivers/staging/greybus/audio_apbridgea.h
+index 3f1f4dd2c61a..efec0f815efd 100644
+--- a/drivers/staging/greybus/audio_apbridgea.h
++++ b/drivers/staging/greybus/audio_apbridgea.h
+@@ -65,7 +65,7 @@
+ struct audio_apbridgea_hdr {
+ 	__u8	type;
+ 	__le16	i2s_port;
+-	__u8	data[0];
++	__u8	data[];
+ } __packed;
+ 
+ struct audio_apbridgea_set_config_request {
+diff --git a/drivers/staging/ks7010/ks_hostif.h b/drivers/staging/ks7010/ks_hostif.h
+index ca7dc8f5166c..39138191a556 100644
+--- a/drivers/staging/ks7010/ks_hostif.h
++++ b/drivers/staging/ks7010/ks_hostif.h
+@@ -70,7 +70,7 @@ struct hostif_data_request {
+ #define TYPE_DATA 0x0000
+ #define TYPE_AUTH 0x0001
+ 	__le16 reserved;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ #define TYPE_PMK1 0x0001
+@@ -194,7 +194,7 @@ enum mib_data_type {
+ struct hostif_mib_value {
+ 	__le16 size;
+ 	__le16 type;
+-	u8 body[0];
++	u8 body[];
+ } __packed;
+ 
+ struct hostif_mib_get_confirm_t {
+diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
+index 3be41698df4c..0a09b3622e78 100644
+--- a/drivers/staging/media/allegro-dvt/allegro-core.c
++++ b/drivers/staging/media/allegro-dvt/allegro-core.c
+@@ -434,7 +434,7 @@ struct mcu_msg_push_buffers_internal_buffer {
+ struct mcu_msg_push_buffers_internal {
+ 	struct mcu_msg_header header;
+ 	u32 channel_id;
+-	struct mcu_msg_push_buffers_internal_buffer buffer[0];
++	struct mcu_msg_push_buffers_internal_buffer buffer[];
+ } __attribute__ ((__packed__));
+ 
+ struct mcu_msg_put_stream_buffer {
+diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
+index 582c9187559d..61471a19d4e6 100644
+--- a/drivers/staging/octeon-usb/octeon-hcd.c
++++ b/drivers/staging/octeon-usb/octeon-hcd.c
+@@ -406,7 +406,7 @@ struct octeon_hcd {
+  */
+ struct octeon_temp_buffer {
+ 	void *orig_buffer;
+-	u8 data[0];
++	u8 data[];
+ };
+ 
+ static inline struct usb_hcd *octeon_to_hcd(struct octeon_hcd *p)
+diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
+index 328f410daa03..b84f00b8d18b 100644
+--- a/drivers/staging/rtl8192e/rtllib.h
++++ b/drivers/staging/rtl8192e/rtllib.h
+@@ -728,14 +728,14 @@ struct rtllib_pspoll_hdr {
+ struct rtllib_hdr {
+ 	__le16 frame_ctl;
+ 	__le16 duration_id;
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtllib_hdr_1addr {
+ 	__le16 frame_ctl;
+ 	__le16 duration_id;
+ 	u8 addr1[ETH_ALEN];
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtllib_hdr_2addr {
+@@ -743,7 +743,7 @@ struct rtllib_hdr_2addr {
+ 	__le16 duration_id;
+ 	u8 addr1[ETH_ALEN];
+ 	u8 addr2[ETH_ALEN];
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtllib_hdr_3addr {
+@@ -753,7 +753,7 @@ struct rtllib_hdr_3addr {
+ 	u8 addr2[ETH_ALEN];
+ 	u8 addr3[ETH_ALEN];
+ 	__le16 seq_ctl;
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtllib_hdr_4addr {
+@@ -764,7 +764,7 @@ struct rtllib_hdr_4addr {
+ 	u8 addr3[ETH_ALEN];
+ 	__le16 seq_ctl;
+ 	u8 addr4[ETH_ALEN];
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtllib_hdr_3addrqos {
+@@ -775,7 +775,7 @@ struct rtllib_hdr_3addrqos {
+ 	u8 addr3[ETH_ALEN];
+ 	__le16 seq_ctl;
+ 	__le16 qos_ctl;
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtllib_hdr_4addrqos {
+@@ -787,13 +787,13 @@ struct rtllib_hdr_4addrqos {
+ 	__le16 seq_ctl;
+ 	u8 addr4[ETH_ALEN];
+ 	__le16 qos_ctl;
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtllib_info_element {
+ 	u8 id;
+ 	u8 len;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ struct rtllib_authentication {
+@@ -802,7 +802,7 @@ struct rtllib_authentication {
+ 	__le16 transaction;
+ 	__le16 status;
+ 	/*challenge*/
+-	struct rtllib_info_element info_element[0];
++	struct rtllib_info_element info_element[];
+ } __packed;
+ 
+ struct rtllib_disauth {
+@@ -818,7 +818,7 @@ struct rtllib_disassoc {
+ struct rtllib_probe_request {
+ 	struct rtllib_hdr_3addr header;
+ 	/* SSID, supported rates */
+-	struct rtllib_info_element info_element[0];
++	struct rtllib_info_element info_element[];
+ } __packed;
+ 
+ struct rtllib_probe_response {
+@@ -829,7 +829,7 @@ struct rtllib_probe_response {
+ 	/* SSID, supported rates, FH params, DS params,
+ 	 * CF params, IBSS params, TIM (if beacon), RSN
+ 	 */
+-	struct rtllib_info_element info_element[0];
++	struct rtllib_info_element info_element[];
+ } __packed;
+ 
+ /* Alias beacon for probe_response */
+@@ -840,7 +840,7 @@ struct rtllib_assoc_request_frame {
+ 	__le16 capability;
+ 	__le16 listen_interval;
+ 	/* SSID, supported rates, RSN */
+-	struct rtllib_info_element info_element[0];
++	struct rtllib_info_element info_element[];
+ } __packed;
+ 
+ struct rtllib_assoc_response_frame {
+@@ -848,7 +848,7 @@ struct rtllib_assoc_response_frame {
+ 	__le16 capability;
+ 	__le16 status;
+ 	__le16 aid;
+-	struct rtllib_info_element info_element[0]; /* supported rates */
++	struct rtllib_info_element info_element[]; /* supported rates */
+ } __packed;
+ 
+ struct rtllib_txb {
+@@ -859,7 +859,7 @@ struct rtllib_txb {
+ 	u16 reserved;
+ 	__le16 frag_size;
+ 	__le16 payload_size;
+-	struct sk_buff *fragments[0];
++	struct sk_buff *fragments[];
+ };
+ 
+ #define MAX_SUBFRAME_COUNT		  64
+@@ -1792,7 +1792,7 @@ struct rtllib_device {
+ 	/* This must be the last item so that it points to the data
+ 	 * allocated beyond this structure by alloc_rtllib
+ 	 */
+-	u8 priv[0];
++	u8 priv[];
+ };
+ 
+ #define IEEE_A	    (1<<0)
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+index 9576b647f6b1..39f4ddd86796 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+@@ -886,14 +886,14 @@ enum ieee80211_mfie {
+ struct rtl_80211_hdr {
+ 	__le16 frame_ctl;
+ 	__le16 duration_id;
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtl_80211_hdr_1addr {
+ 	__le16 frame_ctl;
+ 	__le16 duration_id;
+ 	u8 addr1[ETH_ALEN];
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtl_80211_hdr_2addr {
+@@ -901,7 +901,7 @@ struct rtl_80211_hdr_2addr {
+ 	__le16 duration_id;
+ 	u8 addr1[ETH_ALEN];
+ 	u8 addr2[ETH_ALEN];
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtl_80211_hdr_3addr {
+@@ -911,7 +911,7 @@ struct rtl_80211_hdr_3addr {
+ 	u8 addr2[ETH_ALEN];
+ 	u8 addr3[ETH_ALEN];
+ 	__le16 seq_ctl;
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtl_80211_hdr_4addr {
+@@ -922,7 +922,7 @@ struct rtl_80211_hdr_4addr {
+ 	u8 addr3[ETH_ALEN];
+ 	__le16 seq_ctl;
+ 	u8 addr4[ETH_ALEN];
+-	u8 payload[0];
++	u8 payload[];
+ } __packed;
+ 
+ struct rtl_80211_hdr_3addrqos {
+@@ -951,7 +951,7 @@ struct rtl_80211_hdr_4addrqos {
+ struct ieee80211_info_element {
+ 	u8 id;
+ 	u8 len;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ struct ieee80211_authentication {
+@@ -960,7 +960,7 @@ struct ieee80211_authentication {
+ 	__le16 transaction;
+ 	__le16 status;
+ 	/*challenge*/
+-	struct ieee80211_info_element info_element[0];
++	struct ieee80211_info_element info_element[];
+ } __packed;
+ 
+ struct ieee80211_disassoc {
+@@ -971,7 +971,7 @@ struct ieee80211_disassoc {
+ struct ieee80211_probe_request {
+ 	struct rtl_80211_hdr_3addr header;
+ 	/* SSID, supported rates */
+-	struct ieee80211_info_element info_element[0];
++	struct ieee80211_info_element info_element[];
+ } __packed;
+ 
+ struct ieee80211_probe_response {
+@@ -982,7 +982,7 @@ struct ieee80211_probe_response {
+ 	/* SSID, supported rates, FH params, DS params,
+ 	 * CF params, IBSS params, TIM (if beacon), RSN
+ 	 */
+-	struct ieee80211_info_element info_element[0];
++	struct ieee80211_info_element info_element[];
+ } __packed;
+ 
+ /* Alias beacon for probe_response */
+@@ -993,7 +993,7 @@ struct ieee80211_assoc_request_frame {
+ 	__le16 capability;
+ 	__le16 listen_interval;
+ 	/* SSID, supported rates, RSN */
+-	struct ieee80211_info_element info_element[0];
++	struct ieee80211_info_element info_element[];
+ } __packed;
+ 
+ struct ieee80211_reassoc_request_frame {
+@@ -1002,7 +1002,7 @@ struct ieee80211_reassoc_request_frame {
+ 	__le16 listen_interval;
+ 	u8 current_ap[ETH_ALEN];
+ 	/* SSID, supported rates, RSN */
+-	struct ieee80211_info_element info_element[0];
++	struct ieee80211_info_element info_element[];
+ } __packed;
+ 
+ struct ieee80211_assoc_response_frame {
+@@ -1010,7 +1010,7 @@ struct ieee80211_assoc_response_frame {
+ 	__le16 capability;
+ 	__le16 status;
+ 	__le16 aid;
+-	struct ieee80211_info_element info_element[0]; /* supported rates */
++	struct ieee80211_info_element info_element[]; /* supported rates */
+ } __packed;
+ 
+ struct ieee80211_txb {
+@@ -1021,7 +1021,7 @@ struct ieee80211_txb {
+ 	u16 reserved;
+ 	__le16 frag_size;
+ 	__le16 payload_size;
+-	struct sk_buff *fragments[0];
++	struct sk_buff *fragments[];
+ };
+ 
+ #define MAX_TX_AGG_COUNT		  16
+@@ -2007,7 +2007,7 @@ struct ieee80211_device {
+ 	/* This must be the last item so that it points to the data
+ 	 * allocated beyond this structure by alloc_ieee80211
+ 	 */
+-	u8 priv[0];
++	u8 priv[];
+ };
+ 
+ #define IEEE_A            (1<<0)
+diff --git a/drivers/staging/rtl8712/ieee80211.h b/drivers/staging/rtl8712/ieee80211.h
+index 8098f6905554..dabaa8fd34fb 100644
+--- a/drivers/staging/rtl8712/ieee80211.h
++++ b/drivers/staging/rtl8712/ieee80211.h
+@@ -535,7 +535,7 @@ struct ieee80211_info_element_hdr {
+ struct ieee80211_info_element {
+ 	u8 id;
+ 	u8 len;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ /*
+@@ -597,7 +597,7 @@ struct ieee80211_txb {
+ 	u16 reserved;
+ 	u16 frag_size;
+ 	u16 payload_size;
+-	struct sk_buff *fragments[0];
++	struct sk_buff *fragments[];
+ };
+ 
+ /* SWEEP TABLE ENTRIES NUMBER*/
+diff --git a/drivers/staging/rtl8712/rtl871x_mp_ioctl.h b/drivers/staging/rtl8712/rtl871x_mp_ioctl.h
+index 64e2ae436625..59fa6664d868 100644
+--- a/drivers/staging/rtl8712/rtl871x_mp_ioctl.h
++++ b/drivers/staging/rtl8712/rtl871x_mp_ioctl.h
+@@ -48,7 +48,7 @@ struct eeprom_rw_param {
+ struct EFUSE_ACCESS_STRUCT {
+ 	u16	start_addr;
+ 	u16	cnts;
+-	u8	data[0];
++	u8	data[];
+ };
+ 
+ struct burst_rw_reg {
+@@ -324,7 +324,7 @@ struct mp_ioctl_handler {
+ struct mp_ioctl_param {
+ 	unsigned int subcode;
+ 	unsigned int len;
+-	unsigned char data[0];
++	unsigned char data[];
+ };
+ 
+ #define GEN_MP_IOCTL_SUBCODE(code) _MP_IOCTL_ ## code ## _CMD_
+diff --git a/drivers/staging/wilc1000/cfg80211.c b/drivers/staging/wilc1000/cfg80211.c
+index 995b1f306807..5d8faa01337d 100644
+--- a/drivers/staging/wilc1000/cfg80211.c
++++ b/drivers/staging/wilc1000/cfg80211.c
+@@ -62,7 +62,7 @@ struct wilc_p2p_pub_act_frame {
+ 	u8 oui_type;
+ 	u8 oui_subtype;
+ 	u8 dialog_token;
+-	u8 elem[0];
++	u8 elem[];
+ } __packed;
+ 
+ struct wilc_vendor_specific_ie {
+@@ -70,13 +70,13 @@ struct wilc_vendor_specific_ie {
+ 	u8 tag_len;
+ 	u8 oui[3];
+ 	u8 oui_type;
+-	u8 attr[0];
++	u8 attr[];
+ } __packed;
+ 
+ struct wilc_attr_entry {
+ 	u8  attr_type;
+ 	__le16 attr_len;
+-	u8 val[0];
++	u8 val[];
+ } __packed;
+ 
+ struct wilc_attr_oper_ch {
+@@ -91,13 +91,13 @@ struct wilc_attr_ch_list {
+ 	u8 attr_type;
+ 	__le16 attr_len;
+ 	u8 country_code[IEEE80211_COUNTRY_STRING_LEN];
+-	u8 elem[0];
++	u8 elem[];
+ } __packed;
+ 
+ struct wilc_ch_list_elem {
+ 	u8 op_class;
+ 	u8 no_of_channels;
+-	u8 ch_list[0];
++	u8 ch_list[];
+ } __packed;
+ 
+ static void cfg_scan_result(enum scan_event scan_event,
+diff --git a/drivers/staging/wilc1000/spi.c b/drivers/staging/wilc1000/spi.c
+index 44f7d48851b5..11653ac118cd 100644
+--- a/drivers/staging/wilc1000/spi.c
++++ b/drivers/staging/wilc1000/spi.c
+@@ -139,7 +139,7 @@ struct wilc_spi_read_rsp_data {
+ 	u8 status;
+ 	u8 resp_header;
+ 	u8 resp_data[4];
+-	u8 crc[0];
++	u8 crc[];
+ } __packed;
+ 
+ struct wilc_spi_rsp_data {
+diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
+index bdd7f414fdbb..88e894dd3568 100644
+--- a/drivers/staging/wlan-ng/hfa384x.h
++++ b/drivers/staging/wlan-ng/hfa384x.h
+@@ -355,7 +355,7 @@
+ /* Commonly used basic types */
+ struct hfa384x_bytestr {
+ 	__le16 len;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ struct hfa384x_bytestr32 {
+@@ -421,7 +421,7 @@ struct hfa384x_authenticate_station_data {
+ /*-- Configuration Record: WPAData       (data portion only) --*/
+ struct hfa384x_wpa_data {
+ 	__le16 datalen;
+-	u8 data[0];		/* max 80 */
++	u8 data[];		/* max 80 */
+ } __packed;
+ 
+ /*--------------------------------------------------------------------
+diff --git a/drivers/staging/wlan-ng/p80211types.h b/drivers/staging/wlan-ng/p80211types.h
+index ac254542fde6..3dcdd022da61 100644
+--- a/drivers/staging/wlan-ng/p80211types.h
++++ b/drivers/staging/wlan-ng/p80211types.h
+@@ -204,7 +204,7 @@ struct p80211pstr {
+ 
+ struct p80211pstrd {
+ 	u8 len;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ /* Maximum pascal string */
+@@ -249,7 +249,7 @@ struct p80211itemd {
+ 	u32 did;
+ 	u16 status;
+ 	u16 len;
+-	u8 data[0];
++	u8 data[];
+ } __packed;
+ 
+ /* message data item for int, BOUNDEDINT, ENUMINT */
 -- 
-Dearest Friend,
+2.25.0
 
-Sorry for invading your privacy, my name is Susan S. Cage I am 81
-years, citizen of United States and presently in hospital undergoing
-chromatography for bronchogenic carcinomas (Lung cancer) which
-affected both Lungs. The doctors said I have few days to live because
-the cancer has now affected my brain.
-
-My late husband left Fifteen Million, Five Hundred British Pounds
-Sterling in my account, I want to transfer the money to you and I want
-you to use it as a donate for charitable and help the needy,
-motherless, less privileged and widows within your location.
-
-I need your assurance that you will use the fund for charity, once I a
-favorable reply from you, will inform my Bank through my lawyer to
-transfer the fund to you as my Next of Kin and Sole Beneficiary. Once
-I receive your response, I will inform my bank in writing through my
-lawyer.
-
-
-
-Thank you and God bless you.
-
-Mrs. Susan S. Cage
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
