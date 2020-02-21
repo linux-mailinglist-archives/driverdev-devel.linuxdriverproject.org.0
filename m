@@ -1,44 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C386C166855
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Feb 2020 21:31:39 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 618C4166985
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Feb 2020 22:05:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 294B287E59;
-	Thu, 20 Feb 2020 20:31:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 05DE586341;
+	Thu, 20 Feb 2020 21:05:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l6SUlCthoCJ5; Thu, 20 Feb 2020 20:31:36 +0000 (UTC)
+	with ESMTP id iy3xuLTvnQNx; Thu, 20 Feb 2020 21:05:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1219587E3F;
-	Thu, 20 Feb 2020 20:31:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D4AAA86268;
+	Thu, 20 Feb 2020 21:05:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CB4761BF380
- for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 20:31:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 31F261BF276
+ for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 21:05:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C4202203C3
- for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 20:31:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2B68F20378
+ for <devel@linuxdriverproject.org>; Thu, 20 Feb 2020 21:05:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C98sxeHwLdnx for <devel@linuxdriverproject.org>;
- Thu, 20 Feb 2020 20:31:33 +0000 (UTC)
-X-Greylist: delayed 00:30:06 by SQLgrey-1.7.6
-Received: from mail2.rbpf.bs (rbpf.bs [24.51.93.195])
- by silver.osuosl.org (Postfix) with ESMTP id C50AB20337
- for <devel@driverdev.osuosl.org>; Thu, 20 Feb 2020 20:31:32 +0000 (UTC)
-Received: from unknown (HELO corisbank.com) ([103.207.36.17])
- by mail2.rbpf.bs with ESMTP; 20 Feb 2020 14:46:22 -0500
-From: Coris Bank <derek@corisbank.com>
-To: devel@driverdev.osuosl.org
-Subject: Are you still alive? Urgent reply is needed
-Date: 20 Feb 2020 11:46:19 -0800
-Message-ID: <20200220114619.097C542EFC6C6FD2@corisbank.com>
+ with ESMTP id 8OjMRiOfUaH5 for <devel@linuxdriverproject.org>;
+ Thu, 20 Feb 2020 21:05:49 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.foescocursos.es (unknown [146.255.98.62])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0BC3320116
+ for <devel@driverdev.osuosl.org>; Thu, 20 Feb 2020 21:05:48 +0000 (UTC)
+Received: from 95.169.232.119 (178.red-79-153-253.dynamicip.rima-tde.net
+ [79.153.253.178])
+ by mail.foescocursos.es (Postfix) with ESMTPSA id 57A86740E95
+ for <devel@driverdev.osuosl.org>; Thu, 20 Feb 2020 22:05:46 +0100 (CET)
+Authentication-Results: mail.foescocursos.es;
+ spf=pass (sender IP is 79.153.253.178) smtp.mailfrom=info8@formacionestatal.es
+ smtp.helo=95.169.232.119
+Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
 MIME-Version: 1.0
+From: "FOESCO" <info8@formacionestatal.es>
+To: devel@driverdev.osuosl.org
+Subject: Cursos Bonificables (Febrero 2020)
+X-Mailer: Smart_Send_4_3_3
+Date: Thu, 20 Feb 2020 22:04:54 -0800
+Message-ID: <443647939394471622050@DESKTOP-E4PFAM0>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,29 +58,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: kentpace@sina.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: info8@formacionestatal.es
+Content-Type: multipart/mixed; boundary="===============2893838643271417143=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciBCZW5lZmljaWFyeSwKCgpQbGVhc2UgY29uZmlybSBpZiB5b3UgYXJlIHN0aWxsIGFsaXZl
-IGJlY2F1c2UgdHdvIGdlbnRsZSBtZW4gCndhbGtlZCBpbnRvIG15IG9mZmljZSB0aGlzIG1vcm5p
-bmcgdG8gY2xhaW0geW91ciBpbmhlcml0YW5jZSAKZnVuZHMgd2l0aCBvdXIgYmFuay4gVGhleSBz
-YWlkIHlvdSBhcmUgZGVhZCBhbmQgdGhhdCB0aGV5IGFyZSAKeW91ciByZXByZXNlbnRhdGl2ZXMu
-IAoKT24gTm92ZW1iZXIgMjEsIDIwMDguIEEgYnVzaW5lc3MgbWFuIChuYW1lIHdpdGhoZWxkIGZv
-ciBzZWN1cml0eSAKcmVhc29ucykgd2Fsa2VkIGludG8gb3VyIGJhbmsgdG8gb3BlbiBhIE5PTiBS
-RVNJREVOQ0UgQUNDT1VOVCBhbmQgCm1hZGUgeW91IGhpcyBORVhUIE9GIEtJTi4KSSBnb3QgeW91
-ciBlbWFpbCBhZGRyZXNzIGZyb20gdGhlIGZpbGUgb2YgeW91ciBiZW5lZmFjdG9yIGFzIGhpcyAK
-TkVYVCBPRiBLSU4uCkl0J3MgYmVlbiB5ZWFycyB3ZSBjb25maXJtZWQgeW91ciBiZW5lZmFjdG9y
-J3MgZGVhdGggYW5kIHlvdSBoYXZlIApub3QgY29udGFjdGVkIG91ciBiYW5rIHRvIGNsYWltIHlv
-dXIgaW5oZXJpdGFuY2UuIFlvdSBoYXZlIGEgCnRvdGFsIGJhbGFuY2Ugb2Yg4oKsMjksMDcxLDk3
-MC4wMC4KClRoZSBnZW50bGVtZW4gc3VibWl0dGVkIGFuIGFkZHJlc3Mgd2hlcmUgdGhleSB3YW50
-IHlvdXIgVklTQSAKREVCSVQKQVRNIENBUkQgc2VudC4KCklmIHlvdSBhcmUgc3RpbGwgYWxpdmUs
-IHBsZWFzZSBpbmRpY2F0ZSBieSBzZW5kaW5nIHlvdXIgZnVsbApjb250YWN0IGRldGFpbHMgd2l0
-aGluIDcgZGF5IG9mIHJlY2VpdmluZyB0aGlzIG1lc3NhZ2UsIGZhaWx1cmUKdG8gZG8gc28sIEkg
-d2lsbCBzZW5kIHRoZSBjYXJkIHRvIHRoZSBhZGRyZXNzIHN1Ym1pdHRlZCBieSB5b3VyCnJlcHJl
-c2VudGF0aXZlcy4KCgpSZWdhcmRzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qu
-b3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaXZlcmRldi1kZXZlbAo=
+--===============2893838643271417143==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Buenos d=EDas
+
+
+
+Os informamos que se encuentra abierto el plazo de inscripci=F3n para la pr=
+esente Convocatoria de Cursos Bonificables para empleados (Febrero 2020)
+
+Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
+aci=F3n 2020 que disponen las empresas.
+
+
+Dese=E1is que os mandemos la informaci=F3n=3F
+
+
+Saludos.
+
+
+Alex Pons
+Director departamento formaci=F3n.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B171823AP
+www.foesco.com
+
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+
+
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
+la palabra BAJA en el asunto.
+
+--===============2893838643271417143==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============2893838643271417143==--
