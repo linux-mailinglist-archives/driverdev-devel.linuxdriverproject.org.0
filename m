@@ -1,58 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9EBC7169023
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Feb 2020 17:11:16 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5AECD16905C
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Feb 2020 17:31:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9F59B204B0;
-	Sat, 22 Feb 2020 16:11:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1C56D869E1;
+	Sat, 22 Feb 2020 16:30:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9UZ0FWZfd3T2; Sat, 22 Feb 2020 16:11:09 +0000 (UTC)
+	with ESMTP id il3fgDSUUwgp; Sat, 22 Feb 2020 16:30:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B822A20451;
-	Sat, 22 Feb 2020 16:11:06 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id A2E44867FF;
+	Sat, 22 Feb 2020 16:30:56 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A27171BF5A7
- for <devel@linuxdriverproject.org>; Sat, 22 Feb 2020 16:11:04 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9BD4F1BF5A7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 22 Feb 2020 16:30:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2393F203FE
- for <devel@linuxdriverproject.org>; Sat, 22 Feb 2020 16:11:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8B6C783138
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 22 Feb 2020 16:30:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8wg5IMKMbpja for <devel@linuxdriverproject.org>;
- Sat, 22 Feb 2020 16:11:02 +0000 (UTC)
+ with ESMTP id qFECWID-ILc3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 22 Feb 2020 16:30:52 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.pergamino.gob.ar (mail.pergamino.gob.ar [200.70.38.77])
- by silver.osuosl.org (Postfix) with ESMTPS id 7910720110
- for <devel@driverdev.osuosl.org>; Sat, 22 Feb 2020 16:10:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F0F7F8676A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 22 Feb 2020 16:30:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.pergamino.gob.ar (Postfix) with ESMTP id 0E84625F0C70;
- Sat, 22 Feb 2020 10:29:14 -0300 (-03)
+ by mail.pergamino.gob.ar (Postfix) with ESMTP id A687B25F10EC;
+ Sat, 22 Feb 2020 10:34:31 -0300 (-03)
 X-Virus-Scanned: Debian amavisd-new at server.pergamino.gob.ar
 Received: from mail.pergamino.gob.ar ([127.0.0.1])
  by localhost (server.pergamino.gob.ar [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 8SiV9vs0Ol0N; Sat, 22 Feb 2020 10:29:13 -0300 (-03)
+ with ESMTP id 07uj6R0lv9Ee; Sat, 22 Feb 2020 10:34:31 -0300 (-03)
 Received: from User (ip83.ip-51-77-0.eu [51.77.0.83])
  (Authenticated sender: simple@pergamino.gob.ar)
- by mail.pergamino.gob.ar (Postfix) with ESMTPA id CA2FC25F7688;
- Sat, 22 Feb 2020 10:28:57 -0300 (-03)
+ by mail.pergamino.gob.ar (Postfix) with ESMTPA id DF80525F1069;
+ Sat, 22 Feb 2020 10:34:15 -0300 (-03)
 From: "Google Corporation"<reply9919@googlemail.com>
 Subject: 2020 Google Ad Grants
-Date: Sat, 22 Feb 2020 05:29:08 -0800
+Date: Sat, 22 Feb 2020 05:34:26 -0800
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="----=_NextPart_000_00FF_01C2AA85.1F375DAA"
+ boundary="----=_NextPart_000_001A_01C2AA85.1497052A"
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2800.1081
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
-Message-Id: <20200222132914.0E84625F0C70@mail.pergamino.gob.ar>
+Message-Id: <20200222133431.A687B25F10EC@mail.pergamino.gob.ar>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,7 +75,7 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This is a multi-part message in MIME format.
 
-------=_NextPart_000_00FF_01C2AA85.1F375DAA
+------=_NextPart_000_001A_01C2AA85.1497052A
 Content-Type: text/plain;
 	charset="Windows-1251"
 Content-Transfer-Encoding: 7bit
@@ -91,7 +95,7 @@ Sincerely,
 Sundar Pichai
 CEO, Google Inc.
 
-------=_NextPart_000_00FF_01C2AA85.1F375DAA
+------=_NextPart_000_001A_01C2AA85.1497052A
 Content-Type: application/octet-stream;
 	name="OFFICIAL GOOGLE AD GRANTS.pdf"
 Content-Transfer-Encoding: base64
@@ -3506,7 +3510,7 @@ QUE2MzM3RUQ5QTRCRENFMT48MDQ4RkQ1RjAwQkIwRjg0RUFBNjMzN0VEOUE0
 QkRDRTE+XSAvUHJldiAxNTE2MjgvWFJlZlN0bSAxNTEyNDc+Pg0Kc3RhcnR4
 cmVmDQoxNTMxMDYNCiUlRU9G
 
-------=_NextPart_000_00FF_01C2AA85.1F375DAA
+------=_NextPart_000_001A_01C2AA85.1497052A
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -3517,4 +3521,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
-------=_NextPart_000_00FF_01C2AA85.1F375DAA--
+------=_NextPart_000_001A_01C2AA85.1497052A--
