@@ -2,77 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7CD016990B
-	for <lists+driverdev-devel@lfdr.de>; Sun, 23 Feb 2020 18:32:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 481E2169992
+	for <lists+driverdev-devel@lfdr.de>; Sun, 23 Feb 2020 20:16:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 504CD86483;
-	Sun, 23 Feb 2020 17:31:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AC422862D2;
+	Sun, 23 Feb 2020 19:16:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B23jrdFX9PIe; Sun, 23 Feb 2020 17:31:59 +0000 (UTC)
+	with ESMTP id hsv9K6xjoiXn; Sun, 23 Feb 2020 19:16:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4BC4F8507B;
-	Sun, 23 Feb 2020 17:31:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D84D38613C;
+	Sun, 23 Feb 2020 19:16:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 88CD61BF47D
- for <devel@linuxdriverproject.org>; Sun, 23 Feb 2020 17:31:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3D8001BF473
+ for <devel@linuxdriverproject.org>; Sun, 23 Feb 2020 19:16:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8351C2039A
- for <devel@linuxdriverproject.org>; Sun, 23 Feb 2020 17:31:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 39CC6856B6
+ for <devel@linuxdriverproject.org>; Sun, 23 Feb 2020 19:16:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0uhNriu-3fjk for <devel@linuxdriverproject.org>;
- Sun, 23 Feb 2020 17:31:46 +0000 (UTC)
+ with ESMTP id gJd-26sDyUd6 for <devel@linuxdriverproject.org>;
+ Sun, 23 Feb 2020 19:16:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 5A61920387
- for <devel@driverdev.osuosl.org>; Sun, 23 Feb 2020 17:31:42 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id g6so3027454plt.2
- for <devel@driverdev.osuosl.org>; Sun, 23 Feb 2020 09:31:42 -0800 (PST)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 40418854D1
+ for <devel@driverdev.osuosl.org>; Sun, 23 Feb 2020 19:16:32 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id j7so3115213plt.1
+ for <devel@driverdev.osuosl.org>; Sun, 23 Feb 2020 11:16:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
  h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=6dGIVo3UjYXXlVZT0JsSFZVfq9hKCePvJYVI5H5zSQo=;
- b=YFAQUHVf0zt2MyAZu8lM7gR31cJMlyX3gRQMJY4BGR4+Mswf1dI2bGkInLnMWyhcd9
- IyG0rJdifSJViR8u76TSRi0GtlHnoveVNMJ2BfpC1Mg9RwSMs0yvhUI5jJkBhvbYuZvY
- R2E6Z5xWCLNE7XB4Xn6SAF3ENAurHPn96gjVpoU+3zJJvLA8r4cb8avrIFKTAoTwVj9M
- EOGWNljgRdFdExU0MmXpGIyZ5mSPyfRccUxUvqE2nT6643BIb3++Jp/KBnqllEhmsSQ0
- ghG5XZ8q+Ly9u2d5D7dCpy+r2nMSuRO2BHFxGubYrcJCWzYI3UCSj6vxwoHrINAkqWrg
- kMBA==
+ :user-agent; bh=xhCwhGQIZ68RTJVI13/7fmg0HCbgaGCnJpEMnTMshms=;
+ b=ZxC8300Cu9zoGh3oDdVXtzCtCHURfQr9JHTCzwL86vXe0HQ0SrYHWEnyfEfZ0csUX9
+ fK4VhEEr1igymLgFdajezB9DBrxi41pEWBms/Ujf7YNkVBpc0v09l94+L+4UjKX0A+Sg
+ mlBNqyEziOTQ+j4/aHyXmwrCElNNnTWtF33U8wEYyT4y1CXVkr7BnbpHAtUGaPBGkhpE
+ twEh1ASjXZjhHDdLBUs7B8jsOecVBpv7hUg1svtBu+oKQ6grCHCjefOeNHV/bplT4olQ
+ PAwQDURWyJA9B1P7SfZOXghU8SaL2/4/o1LZW57qrw0NuTN2jfMZvGmWJVpp5VXoPIGG
+ nstA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=6dGIVo3UjYXXlVZT0JsSFZVfq9hKCePvJYVI5H5zSQo=;
- b=P9uARqlJPs+FM4f+M2mBJyqNsP9eJ/r65mNqlmjfAzpTv72wTQMSkzTzNOGYQX578f
- ROtVLmp8bEZJLqZ+TAi4go3d98sM4GCGzOyZB7pWrBkS8ayZbes93jNt5oHsbJ813xWe
- phbTYbC0Q7gxdo4nylYsqsYvr/x3PujAFVUclQ48q9Y6AIh/+UQxqmBWRhrBmPlIXRM1
- K6YfdqEoc7uSK+bXtqzWzqRtbwx8+ZR/xyRh2Qw0zKev1PBvyLNdn04VmMfgxcBzQpiM
- A07mZjt6Qr903dy/0S5t9/2c2X0kxOMlM3jPFWzBSGV7JNycgUhzmyxs2cqHUifuTSpY
- /SKw==
-X-Gm-Message-State: APjAAAWAI6tJYUlXcUY6XZm+AIT/Io17VctNZ5lVexiKgvReC5crWyXX
- 1gutCYlPRIOPKg8tDqwR+KuPSQ==
-X-Google-Smtp-Source: APXvYqyGBBa7ZW0D45+gTA7LVysPbChpy5fRDtiGdXslH4WVte23Qpr+iojvcMjWyPXg+SI34n23Cw==
-X-Received: by 2002:a17:902:9308:: with SMTP id
- bc8mr48071753plb.268.1582479101749; 
- Sun, 23 Feb 2020 09:31:41 -0800 (PST)
-Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.179])
- by smtp.gmail.com with ESMTPSA id l5sm9030480pgu.61.2020.02.23.09.31.38
+ bh=xhCwhGQIZ68RTJVI13/7fmg0HCbgaGCnJpEMnTMshms=;
+ b=S8kZjWqw2HTD05UJ2bP9r4YiPd7m/c50PgFMYh9fKCDcUyomD5pWJOI0bRYbl7DjgO
+ aJiic8jJeZtYxFe0SoQx11oKERp0j/LgJVn3oYZT8jSgBxzHfqfACW0jJGQgXJGca9FT
+ tun4HG3TmZIqZS4T6SB8hefE4ocYzHwQdlRt+1CIN/fhxtdHOgdBvhk+Nrmo5DSR22Fu
+ eIJK52RrSKWcM6/fhu76o4K9167Orncnkvpg3zWgNHD0LTJ4qQ5w19XwR5EW9c0blYFI
+ KmK/3BIx0QIx3AlVOpY4eN8KhxQ6OqLrDMAz8d/6U04u580eoH7fBe28iQYbQrpGWbbc
+ XfRQ==
+X-Gm-Message-State: APjAAAVU1Zqe4pJbVn1LJg1Vug/o8xk+3i1jtjHxBFLJr3/QGI3dPBXi
+ LkTb57ed1rnKzYHdwzukNQNBjg==
+X-Google-Smtp-Source: APXvYqy1jlwQX9XeUc0yGutt90sXGehx0w/DGEuJ7JFIjQsAUqrnzBlCvvj6X/ZdLjfganCz7rbWRQ==
+X-Received: by 2002:a17:90a:200d:: with SMTP id
+ n13mr16601022pjc.16.1582485392234; 
+ Sun, 23 Feb 2020 11:16:32 -0800 (PST)
+Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.174])
+ by smtp.gmail.com with ESMTPSA id w128sm8199209pgb.55.2020.02.23.11.16.29
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 23 Feb 2020 09:31:41 -0800 (PST)
-Date: Sun, 23 Feb 2020 23:01:32 +0530
+ Sun, 23 Feb 2020 11:16:31 -0800 (PST)
+Date: Mon, 24 Feb 2020 00:46:23 +0530
 From: Kaaira Gupta <kgupta@es.iitr.ac.in>
-To: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
+To: Valdis Kletnieks <valdis.kletnieks@vt.edu>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- netdev@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v3] staging: qlge: emit debug and dump at same level
-Message-ID: <20200223173132.GA13649@kaaira-HP-Pavilion-Notebook>
+Subject: [PATCH] staging: exfat: remove exfat_buf_sync()
+Message-ID: <20200223191623.GA20122@kaaira-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.9.4 (2018-02-28)
@@ -93,60 +93,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Simplify code in ql_mpi_core_to_log() by calling print_hex_dump()
-instead of existing functions so that the debug and dump are
-emitted at the same KERN_<LEVEL>
+exfat_buf_sync() is not called anywhere, hence remove it from
+exfat_cache.c and exfat.h
 
 Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
 ---
+ drivers/staging/exfat/exfat.h       |  1 -
+ drivers/staging/exfat/exfat_cache.c | 19 -------------------
+ 2 files changed, 20 deletions(-)
 
-changes since v1: make code of ql_mpi_core_to_log() simpler.
-changes since v2: directly call the function instead of defining a
-macro.
-
-Also, can you please help me understand how are are numbers 32 and 4
-chosen for the function print_hex_dump()?
-
-----
----
- drivers/staging/qlge/qlge_dbg.c | 23 +++--------------------
- 1 file changed, 3 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
-index c7af2548d119..44fb3a317b8d 100644
---- a/drivers/staging/qlge/qlge_dbg.c
-+++ b/drivers/staging/qlge/qlge_dbg.c
-@@ -1324,27 +1324,10 @@ void ql_mpi_core_to_log(struct work_struct *work)
- {
- 	struct ql_adapter *qdev =
- 		container_of(work, struct ql_adapter, mpi_core_to_log.work);
--	u32 *tmp, count;
--	int i;
+diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
+index e36d01b6fdc9..1867d47d2394 100644
+--- a/drivers/staging/exfat/exfat.h
++++ b/drivers/staging/exfat/exfat.h
+@@ -653,7 +653,6 @@ void exfat_buf_lock(struct super_block *sb, sector_t sec);
+ void exfat_buf_unlock(struct super_block *sb, sector_t sec);
+ void exfat_buf_release(struct super_block *sb, sector_t sec);
+ void exfat_buf_release_all(struct super_block *sb);
+-void exfat_buf_sync(struct super_block *sb);
  
--	count = sizeof(struct ql_mpi_coredump) / sizeof(u32);
--	tmp = (u32 *)qdev->mpi_coredump;
--	netif_printk(qdev, drv, KERN_DEBUG, qdev->ndev,
--		     "Core is dumping to log file!\n");
--
--	for (i = 0; i < count; i += 8) {
--		pr_err("%.08x: %.08x %.08x %.08x %.08x %.08x "
--			"%.08x %.08x %.08x\n", i,
--			tmp[i + 0],
--			tmp[i + 1],
--			tmp[i + 2],
--			tmp[i + 3],
--			tmp[i + 4],
--			tmp[i + 5],
--			tmp[i + 6],
--			tmp[i + 7]);
--		msleep(5);
--	}
-+	print_hex_dump(KERN_DEBUG, "Core is dumping to log file!\n",
-+		       DUMP_PREFIX_OFFSET, 32, 4, qdev->mpi_coredump,
-+		       sizeof(*qdev->mpi_coredump), false);
+ /* fs management functions */
+ void fs_set_vol_flags(struct super_block *sb, u32 new_flag);
+diff --git a/drivers/staging/exfat/exfat_cache.c b/drivers/staging/exfat/exfat_cache.c
+index 790ea4df9c00..87d019972050 100644
+--- a/drivers/staging/exfat/exfat_cache.c
++++ b/drivers/staging/exfat/exfat_cache.c
+@@ -515,22 +515,3 @@ void exfat_buf_release_all(struct super_block *sb)
+ 
+ 	mutex_unlock(&b_mutex);
  }
- 
- #ifdef QL_REG_DUMP
+-
+-void exfat_buf_sync(struct super_block *sb)
+-{
+-	struct buf_cache_t *bp;
+-	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+-
+-	mutex_lock(&b_mutex);
+-
+-	bp = p_fs->buf_cache_lru_list.next;
+-	while (bp != &p_fs->buf_cache_lru_list) {
+-		if ((bp->drv == p_fs->drv) && (bp->flag & DIRTYBIT)) {
+-			sync_dirty_buffer(bp->buf_bh);
+-			bp->flag &= ~(DIRTYBIT);
+-		}
+-		bp = bp->next;
+-	}
+-
+-	mutex_unlock(&b_mutex);
+-}
 -- 
 2.17.1
 
