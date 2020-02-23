@@ -1,60 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E74B71696FE
-	for <lists+driverdev-devel@lfdr.de>; Sun, 23 Feb 2020 10:15:40 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 625C3169831
+	for <lists+driverdev-devel@lfdr.de>; Sun, 23 Feb 2020 16:03:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 15A4986030;
-	Sun, 23 Feb 2020 09:15:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1A6FE85487;
+	Sun, 23 Feb 2020 15:02:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ai0KC+e+qoZP; Sun, 23 Feb 2020 09:15:38 +0000 (UTC)
+	with ESMTP id CfB1sCRGpChT; Sun, 23 Feb 2020 15:02:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2F65A85B9D;
-	Sun, 23 Feb 2020 09:15:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A68F584ABB;
+	Sun, 23 Feb 2020 15:02:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 09C3A1BF4D7
- for <devel@linuxdriverproject.org>; Sun, 23 Feb 2020 09:15:35 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 23E401BF414
+ for <devel@linuxdriverproject.org>; Sun, 23 Feb 2020 15:02:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0648885B8A
- for <devel@linuxdriverproject.org>; Sun, 23 Feb 2020 09:15:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 20AC9849B7
+ for <devel@linuxdriverproject.org>; Sun, 23 Feb 2020 15:02:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KdWobvlUAlfb for <devel@linuxdriverproject.org>;
- Sun, 23 Feb 2020 09:15:32 +0000 (UTC)
-X-Greylist: delayed 00:15:08 by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3350585B5D
- for <devel@driverdev.osuosl.org>; Sun, 23 Feb 2020 09:15:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=Sender:Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=RNB2J+mEHhCNl0xuNBvvHTB/2tWC60YI0L4tSd1QRB0=; b=GPUn5ur3nKI8vkZxD9zlfePIvg
- nYQ2HGRdonyN9ziEioizfW8K80tgKNBfd+diHIFZUweMFwqc1qBhNnrvWnDQYRQRweDIGMArB4v2R
- v6ePauHBnkFdZOFIc5sohI/3kse56yFR8eovN5pOAhfbC54SgEifNm83aPwU30wOWH4s0LI3By36A
- n/n8EW/0d9bB7jm+3kwbbRMXlGYQCtzmwyDKZ39c29i6Bt//Z2koUTUB0xvv3Jgx9bQp+y/cMWTIY
- vkp5MjPItSg6CGw8DTU5zxNqBviQ0LONpxkFW9gmzxIHd5u6CP8jMAOjEmpa4vjcYQ8K0BbK3fo2Y
- 7r/GfDXA==;
-Received: from [80.156.29.194] (helo=bombadil.infradead.org)
- by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j5n7F-0007ZW-MS; Sun, 23 Feb 2020 08:59:57 +0000
-Received: from mchehab by bombadil.infradead.org with local (Exim 4.92.3)
- (envelope-from <mchehab@bombadil.infradead.org>)
- id 1j5n7D-001RYm-3q; Sun, 23 Feb 2020 09:59:55 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
-Subject: [PATCH] docs: dt: fix several broken doc references
-Date: Sun, 23 Feb 2020 09:59:53 +0100
-Message-Id: <0e530494349b37eb2eab4a8eccf56626e0b18e6d.1582448388.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.24.1
+ with ESMTP id rxiH3p9cZvWS for <devel@linuxdriverproject.org>;
+ Sun, 23 Feb 2020 15:02:52 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sonic310-14.consmr.mail.bf2.yahoo.com
+ (sonic310-14.consmr.mail.bf2.yahoo.com [74.6.135.124])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BA85C84993
+ for <devel@driverdev.osuosl.org>; Sun, 23 Feb 2020 15:02:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1582470171; bh=vdONypa+pmkSCxMpJ481zxWsfmYXdIIKq3bhYsM38cE=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=H/7Vjt1gQx4qncAfUY9k+o1Pz4l0Q95b2jqysIYlruXaqxlHKQhKcipPTSd025nw4jgUqmQJ9F/Wf7QAYBGQ4+lx92y2BPRKCIeCD078uot8OhaYonsnbk2mslwV8cDMBHih12mI0junt7QJE5rvCyToqiEz5zILReqMjyG37yeC3XqqnI8DHA796F+QVtEktvqVV97PCin4fEXJJFd/U8XsexfLNAu/jD3tpNp28zl0+ATGt2whzKjuxacPqeXY+JpTdWkxUmep70dmO4m+dAVJfTsfNJ/rJfzjdENXV9hwIdqXkiOBmUr7Ub4zAmSZnVSDOjSt5qi0D/v5wDe9Fg==
+X-YMail-OSG: ZPSxsQEVM1nSY9bt2DUGZs4BZKTc.4qSw18QyHe50l2mnZS_GZPfWPsRTMZz2Az
+ _gDvIdUv1WMuMXOwdrZP.NpTmhnZ4mWgnwyy9kmaAH10vtJ3X629s98bTxjUPyRQ0vcgLocydSYt
+ LlVg3wW65G1Wuds8ED02_vYrMzsZUzNDQfK0yiplOyK9EONTZZAQX.t.e39tETUGI7clzuNlQLpC
+ t5MGOwG6Icw8BA1GhoMWhbdeJtZywAmN1CU3UlcSn0JRndSyuZ1ZFy8eqdudaTFAcN5ht7eAGd.m
+ 2PyKPJQ1OXHS7_oV1CN1Zbt.48oll4x4AC5wVfZDmOk.vaBMNWaTDz2zNtSy9jWUp1KFey6E0TFm
+ JFYfxsJC.lLymu21XZrTNK9jtKL3C_RyF95zrhy4q2qpuX6lo_22RfnQTxK8_sHHczHNmY5MVZVk
+ fCk.WUKJrLf.iSbDKGuP1sMJlfx1TmyvkDhEeIU91Gw.WKAMz_L9SqKCGnZcw4wTPljl5STesUTK
+ IN1tVovtZfZiyP0yVs8dtNl.BU6YPk4YBx2c_W35gMo0LtNplHFEIfnvTJBfr7WnVferwOgiNpgq
+ W7GnUyh6yfzasb0JLuRRaAcGbI2QrJxldffLnmPg3OxGYLYjydhCr_E9JGpTxf3Gr3Ef1XjDJrJA
+ I7kpNwIaxdkCeOHSR12_LzcGxJFwe4.2JfGMmACPXQkYDR8Il.p5MhbgQonDmmE4n1IiuBvmM2Sk
+ 3j6XRX0r6Oy5bYoWalN07MdcqvMooYdg.t9_UY9X1ERGbk6kHdo6wesDNgkIrnyj9qaSGNuLIsjN
+ pZiBTMkqtKhr7qkmh9p9M8wltMV.r.RUEN7n8TDvlDMInmcgnoud0zQch5J63NF6dB9Ikh2zAdup
+ B4gGbtrJjIfTIQoCwUt9.NT7acrYkQHb_sJJfRHbYIo1DpAGCIEJxlx4zIdrpYrIojQaDkxUPqfh
+ s7AKasIk8USthmbAKn7cfqSGmi1Q0qI7lqE7nM3KlVzwrYlLZJZuhNtQS3mqzknFAc.RF4YYc.YW
+ 3VJZ9FRd6kud5cMYDPbPxS5HRRjGGg76Gz58q0CGXGNGQHxQQ3NorMQRtGrNLpzj8PZmej6IiLb3
+ cCl.Blg_JcUbV6qu.TJ_BPu222sSkbw7wl7xAAtJ.C4NlKoYdmK8vPr_jk9ZU2p9m.sD_e6hTGhS
+ Pgr.TbWAZlJ_0Uulw29GZihuMzyDtKooNGOOMY0hejoKyY4Adru2hgcTbNLng1cDieDFkscNvtmK
+ C14SCenEy6_U77bdtzxnaoTkWlUECbug0ZbLn3RhV8u2g0I2hjlfoFBJ7iSI_x9Y07jYN_N8t0cM
+ FXQ--
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic310.consmr.mail.bf2.yahoo.com with HTTP; Sun, 23 Feb 2020 15:02:51 +0000
+Date: Sun, 23 Feb 2020 15:02:47 +0000 (UTC)
+From: Mrs Elodie Antoine <mrselodieantoine@gmail.com>
+Message-ID: <1694302610.5061922.1582470167226@mail.yahoo.com>
+Subject: Greetings From Mrs Elodie,
 MIME-Version: 1.0
+References: <1694302610.5061922.1582470167226.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.15199 YMailNodin Mozilla/5.0 (Windows NT 6.1;
+ rv:73.0) Gecko/20100101 Firefox/73.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,144 +77,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, Olivier Moysan <olivier.moysan@st.com>,
- linux-mtd@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Vignesh Raghavendra <vigneshr@ti.com>, devel@driverdev.osuosl.org,
- Jonathan Corbet <corbet@lwn.net>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Richard Weinberger <richard@nod.at>, Piotr Sroka <piotrs@cadence.com>,
- devicetree@vger.kernel.org, Alexandre Torgue <alexandre.torgue@st.com>,
- Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Arnaud Pouliquen <arnaud.pouliquen@st.com>,
- Liam Girdwood <lgirdwood@gmail.com>, linux-spi@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
+Reply-To: antoinm93@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There are several DT doc references that require manual fixes.
-I found 3 cases fixed on this patch:
 
-	- directory named "binding/" instead of "bindings/";
-	- .txt to .yaml renames;
-	- file renames (still on txt format);
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- .../devicetree/bindings/mtd/cadence-nand-controller.txt       | 2 +-
- .../devicetree/bindings/net/brcm,bcm7445-switch-v4.0.txt      | 2 +-
- Documentation/devicetree/bindings/sound/st,stm32-sai.txt      | 2 +-
- Documentation/devicetree/bindings/sound/st,stm32-spdifrx.txt  | 2 +-
- Documentation/devicetree/bindings/spi/st,stm32-spi.yaml       | 2 +-
- MAINTAINERS                                                   | 4 ++--
- .../devicetree/bindings/net/wireless/siliabs,wfx.txt          | 2 +-
- 7 files changed, 8 insertions(+), 8 deletions(-)
+Greetings From Mrs Elodie,
 
-diff --git a/Documentation/devicetree/bindings/mtd/cadence-nand-controller.txt b/Documentation/devicetree/bindings/mtd/cadence-nand-controller.txt
-index f3893c4d3c6a..d2eada5044b2 100644
---- a/Documentation/devicetree/bindings/mtd/cadence-nand-controller.txt
-+++ b/Documentation/devicetree/bindings/mtd/cadence-nand-controller.txt
-@@ -27,7 +27,7 @@ Required properties of NAND chips:
-   - reg: shall contain the native Chip Select ids from 0 to max supported by
-     the cadence nand flash controller
- 
--See Documentation/devicetree/bindings/mtd/nand.txt for more details on
-+See Documentation/devicetree/bindings/mtd/nand-controller.yaml for more details on
- generic bindings.
- 
- Example:
-diff --git a/Documentation/devicetree/bindings/net/brcm,bcm7445-switch-v4.0.txt b/Documentation/devicetree/bindings/net/brcm,bcm7445-switch-v4.0.txt
-index 48a7f916c5e4..88b57b0ca1f4 100644
---- a/Documentation/devicetree/bindings/net/brcm,bcm7445-switch-v4.0.txt
-+++ b/Documentation/devicetree/bindings/net/brcm,bcm7445-switch-v4.0.txt
-@@ -45,7 +45,7 @@ Optional properties:
-   switch queue
- 
- - resets: a single phandle and reset identifier pair. See
--  Documentation/devicetree/binding/reset/reset.txt for details.
-+  Documentation/devicetree/bindings/reset/reset.txt for details.
- 
- - reset-names: If the "reset" property is specified, this property should have
-   the value "switch" to denote the switch reset line.
-diff --git a/Documentation/devicetree/bindings/sound/st,stm32-sai.txt b/Documentation/devicetree/bindings/sound/st,stm32-sai.txt
-index 944743dd9212..c42b91e525fa 100644
---- a/Documentation/devicetree/bindings/sound/st,stm32-sai.txt
-+++ b/Documentation/devicetree/bindings/sound/st,stm32-sai.txt
-@@ -36,7 +36,7 @@ SAI subnodes required properties:
-   - clock-names: Must contain "sai_ck".
- 	Must also contain "MCLK", if SAI shares a master clock,
- 	with a SAI set as MCLK clock provider.
--  - dmas: see Documentation/devicetree/bindings/dma/stm32-dma.txt
-+  - dmas: see Documentation/devicetree/bindings/dma/st,stm32-dma.yaml
-   - dma-names: identifier string for each DMA request line
- 	"tx": if sai sub-block is configured as playback DAI
- 	"rx": if sai sub-block is configured as capture DAI
-diff --git a/Documentation/devicetree/bindings/sound/st,stm32-spdifrx.txt b/Documentation/devicetree/bindings/sound/st,stm32-spdifrx.txt
-index 33826f2459fa..ca9101777c44 100644
---- a/Documentation/devicetree/bindings/sound/st,stm32-spdifrx.txt
-+++ b/Documentation/devicetree/bindings/sound/st,stm32-spdifrx.txt
-@@ -10,7 +10,7 @@ Required properties:
-   - clock-names: must contain "kclk"
-   - interrupts: cpu DAI interrupt line
-   - dmas: DMA specifiers for audio data DMA and iec control flow DMA
--    See STM32 DMA bindings, Documentation/devicetree/bindings/dma/stm32-dma.txt
-+    See STM32 DMA bindings, Documentation/devicetree/bindings/dma/st,stm32-dma.yaml
-   - dma-names: two dmas have to be defined, "rx" and "rx-ctrl"
- 
- Optional properties:
-diff --git a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml b/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-index f0d979664f07..e49ecbf715ba 100644
---- a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-+++ b/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-@@ -49,7 +49,7 @@ properties:
-   dmas:
-     description: |
-       DMA specifiers for tx and rx dma. DMA fifo mode must be used. See
--      the STM32 DMA bindings Documentation/devicetree/bindings/dma/stm32-dma.txt.
-+      the STM32 DMA bindings Documentation/devicetree/bindings/dma/st,stm32-dma.yaml.
-     items:
-       - description: rx DMA channel
-       - description: tx DMA channel
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d81701ea3336..6b30a58bd77b 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -4480,7 +4480,7 @@ L:	linux-media@vger.kernel.org
- T:	git git://linuxtv.org/media_tree.git
- S:	Maintained
- F:	drivers/media/platform/sunxi/sun6i-csi/
--F:	Documentation/devicetree/bindings/media/sun6i-csi.txt
-+F:	Documentation/devicetree/bindings/media/allwinner,sun6i-a31-csi.yaml
- 
- CW1200 WLAN driver
- M:	Solomon Peachy <pizza@shaftnet.org>
-@@ -15955,7 +15955,7 @@ F:	drivers/*/stm32-*timer*
- F:	drivers/pwm/pwm-stm32*
- F:	include/linux/*/stm32-*tim*
- F:	Documentation/ABI/testing/*timer-stm32
--F:	Documentation/devicetree/bindings/*/stm32-*timer*
-+F:	Documentation/devicetree/bindings/*/*stm32-*timer*
- F:	Documentation/devicetree/bindings/pwm/pwm-stm32*
- 
- STMMAC ETHERNET DRIVER
-diff --git a/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/siliabs,wfx.txt b/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/siliabs,wfx.txt
-index ffec79c14786..17db67559f5e 100644
---- a/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/siliabs,wfx.txt
-+++ b/drivers/staging/wfx/Documentation/devicetree/bindings/net/wireless/siliabs,wfx.txt
-@@ -94,5 +94,5 @@ Some properties are recognized either by SPI and SDIO versions:
-    Must contains 64 hexadecimal digits. Not supported in current version.
- 
- WFx driver also supports `mac-address` and `local-mac-address` as described in
--Documentation/devicetree/binding/net/ethernet.txt
-+Documentation/devicetree/bindings/net/ethernet.txt
- 
--- 
-2.24.1
+Calvary Greetings in the name of the LORD Almighty and Our LORD JESUS CHRIST the giver of every good thing. Good day,i know this letter will definitely come to you as a huge surprise, but I implore you to take the time to go through it carefully as the decision you make will go off a long way to determine my future and continued existence. I am Mrs Elodie Antoine
+aging widow of 59 years old suffering from long time illness. I have some funds I inherited from my late husband,
 
+The sum of (US$4.5 Million Dollars) and I needed a very honest and God fearing who can withdraw this money then use the funds for Charity works. I WISH TO GIVE THIS FUNDS TO YOU FOR CHARITY WORKS. I found your email address from the internet after honest prayers to the LORD to bring me a helper and i decided to contact you if you may be willing and interested to handle these trust funds in good faith before anything happens to me.
+I accept this decision because I do not have any child who will inherit this money after I die. I want your urgent reply to me so that I will give you the deposit receipt which the COMPANY issued to me as next of kin for immediate transfer of the money to your account in your country, to start the good work of God, I want you to use the 15/percent of the total amount to help yourself in doing the project.
+
+
+I am desperately in keen need of assistance and I have summoned up courage to contact you for this task, you must not fail me and the millions of the poor people in our todays WORLD. This is no stolen money and there are no dangers involved,100% RISK FREE with full legal proof. Please if you would be able to use the funds for the Charity works kindly let me know immediately.I will appreciate your utmost confidentiality and trust in this matter to accomplish my heart desire, as I don't want anything that will jeopardize my last wish. I want you to take 15 percent of the total money for your personal use while 85% of the money will go to charity.I will appreciate your utmost confidentiality and trust in this matter to accomplish my heart desire, as I don't want anything that will jeopardize my last wish.
+
+
+kindly respond for further details.
+
+Thanks and God bless you,
+
+Mrs Elodie Antoine
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
