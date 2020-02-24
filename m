@@ -2,74 +2,86 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5240D16ABB0
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 17:34:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FBF616AC08
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 17:47:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D72CD86501;
-	Mon, 24 Feb 2020 16:34:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 70D97864E0;
+	Mon, 24 Feb 2020 16:47:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SlR3sUkDH7pK; Mon, 24 Feb 2020 16:34:26 +0000 (UTC)
+	with ESMTP id 3Nx9BD2PlxBL; Mon, 24 Feb 2020 16:47:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DED63864E0;
-	Mon, 24 Feb 2020 16:34:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 65D8985C9E;
+	Mon, 24 Feb 2020 16:47:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 804301BF3EE
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:34:20 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7E6881BF3EE
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:47:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7C41B20516
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:34:20 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7B16785CC3
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:47:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xXZh-VS3S410 for <devel@linuxdriverproject.org>;
- Mon, 24 Feb 2020 16:34:19 +0000 (UTC)
-X-Greylist: delayed 00:31:35 by SQLgrey-1.7.6
-Received: from mail-qk1-f202.google.com (mail-qk1-f202.google.com
- [209.85.222.202])
- by silver.osuosl.org (Postfix) with ESMTPS id 3177C2050E
- for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 16:34:19 +0000 (UTC)
-Received: by mail-qk1-f202.google.com with SMTP id o22so11244355qko.2
- for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 08:34:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=1WV6K2GjUPXrnMuCvXfNGZjI8gN7sC/HTTUM1yqzUqo=;
- b=QqJVprrvyHfdsHSLq8J7Ts7lEm+ySD6dj7D1BYCv4Pe5UmR3I7fN5zUASSCXXmo97y
- 2WHPIJeGC90MUiDQ17t/SgW+OS96E0LSlYCKdB0wzlx6uP7herc/sppzXmWaw/QoPA6u
- TztG4DQErqDxvGZPL884+8gDsimDRp5ULI9KfhWsPyu+vtjmZbs1XVoOCYafFEy2WxLq
- l9ycMOQP1mwGbYhyTLFfSS1z5KSh8cKHNZRt63YWI8XPcChWzjCnuOK/cV0WgmUCNFjN
- LnFwhuND7tqRy1ryRiCSV1/nXU/phpmBPa/2UdFUDD39GvzY/3XZoeiT9uYGUNf4yLj+
- A+zQ==
+ with ESMTP id s2OJOOMusbvo for <devel@linuxdriverproject.org>;
+ Mon, 24 Feb 2020 16:47:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
+ [209.85.216.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BC94085C9E
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 16:47:28 +0000 (UTC)
+Received: by mail-pj1-f68.google.com with SMTP id 12so4441378pjb.5
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 08:47:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
+ h=from:date:to:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=2zePMqHb3pxqOSl/NHaUkMDrUSvpWjI4HscCu6Jr28k=;
+ b=ZwdohMMjroCJi5cDmXzMY1AW4fuHeMb0XbtE7ZyLvdY2TmdNxW4nhXx6yqm4f03V4O
+ eT3TFPHeWwM2FEyVDDAvDi+WtbvSyoqjV6MkeirxuqmP70depek/y+KRWpeWdnaiqGFS
+ Z+76/2ZoqQLn0ew3wr7AJ39b3DSalwhweP2CQvZ+O4/N03aQ5R9CV9iSLCv0j9dL6TD7
+ kUY6/Bb4yRNNfLGRj60fR0SUuwvkwcMrTFRjB/tqpFiiMhw1aKdRg1Tq7qyEe8SKRNxZ
+ uNmI5mAV5zoffPBG/GN2+NvnGFdN5MUCEB3F34AXL5kmt26jahSW5Do+o6OUe1BLRTfL
+ buyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=1WV6K2GjUPXrnMuCvXfNGZjI8gN7sC/HTTUM1yqzUqo=;
- b=js1a+tkE0gcAlsL59620fxsVhv8bADu1O51CC44JJulWLKQgtzr3wNpPqRt5rjlY30
- yjzl1lqrXld83K8DKCHBW9Gdb358BHXT6tOda1mVO9vn3UPubXVCzMNjVo7mDtjOyC3B
- IXogCGp/lLBUCOUW8C7y5UQcPaGu5gKZBMp8AioHynqD0dUSFFpjlX8U2xZ3vSGnf6ZP
- Sx+KRXrtj/LGpzPUEWlyvY6F1veX8oYuBVH77OSclPAk4zBEsy87vwrQTdANwBVeQbYN
- ugNMCB8qR8oVYzFJw5hLcPIKmyrt5Po0Uou//pysRAseGzMYBO5ZzV6CqfO16/xWpaLh
- e1/w==
-X-Gm-Message-State: APjAAAWHNjM3cI2u5MTkF265btXP+Rh7vcBAzCot+oSXGng8cLZURK59
- FyXRMIMdL432nFTdDIpLSBEcmRa0RCE=
-X-Google-Smtp-Source: APXvYqwcFycpxpdu6cHDZocFVdUlmKMasj7BnCyVKHw/qZnGWFd6JNB01XLg9B6cohB1QU4+bHodEUIF2P0=
-X-Received: by 2002:a37:a6d4:: with SMTP id p203mr9141422qke.350.1582558510940; 
- Mon, 24 Feb 2020 07:35:10 -0800 (PST)
-Date: Mon, 24 Feb 2020 16:35:00 +0100
-In-Reply-To: <20200224153501.60040-1-glider@google.com>
-Message-Id: <20200224153501.60040-2-glider@google.com>
-Mime-Version: 1.0
-References: <20200224153501.60040-1-glider@google.com>
-X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
-Subject: [PATCH 2/3] binder: do not initialize locals passed to
- copy_from_user()
-From: glider@google.com
-To: tkjos@google.com, keescook@chromium.org, gregkh@linuxfoundation.org, 
- arve@android.com, mingo@redhat.com
+ h=x-gm-message-state:from:date:to:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=2zePMqHb3pxqOSl/NHaUkMDrUSvpWjI4HscCu6Jr28k=;
+ b=FKmN6J23kEonIALh9gwCGkNyTBcAiSk9StzT85VSroYK6QVdEvaLBysqb5c7D6cm3Q
+ ErTxNUtVTvXrZkilqZEbToiR3re8ltwyp987f5SXiLIv+wQ2CEEsuYTSEV10LLQzn8Dj
+ dXW7UMM8OWyZddm9M5yrX+S+2joxC6KvWYdFBkiqrw4OMrQIwNSVtH9XS58cchEuzkOD
+ XegNB2pkjTdqAS8ZQYkPdfx1R4jFYrjZavws0Sv18U1BfWvGM+b1apXsZVR9sxpOnSZO
+ 6YUYjLayfiuoI3aftTr5JqosIrJQYAJZqGgcHAwH4UUndZ1aUMqCYH8h1VPz48v1Ss8O
+ Z+Nw==
+X-Gm-Message-State: APjAAAVAA+i7my2hONdJOsA2Aw7Bg0GZEVHKlQ2rmp/mkwCBweCbDnbS
+ f5ui3HqG37jEGRODXpcFpLrrzw==
+X-Google-Smtp-Source: APXvYqwecQZyBx2Lu6irbcoubh2qjH4GBrXCroPb6bZfgoJ7nVIHn8R8yjAR6JV/sdr+Y/WoSHiLuw==
+X-Received: by 2002:a17:902:9342:: with SMTP id
+ g2mr49081074plp.339.1582562848308; 
+ Mon, 24 Feb 2020 08:47:28 -0800 (PST)
+Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.170])
+ by smtp.gmail.com with ESMTPSA id d3sm13201089pfn.113.2020.02.24.08.47.25
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 24 Feb 2020 08:47:27 -0800 (PST)
+From: Kaaira Gupta <kgupta@es.iitr.ac.in>
+X-Google-Original-From: Kaaira Gupta <Kaairakgupta@es.iitr.ac.in>
+Date: Mon, 24 Feb 2020 22:17:21 +0530
+To: Joe Perches <joe@perches.com>, Manish Chopra <manishc@marvell.com>,
+ GR-Linux-NIC-Dev@marvell.com,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ netdev@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4] staging: qlge: emit debug and dump at same level
+Message-ID: <20200224164721.GA7214@kaaira-HP-Pavilion-Notebook>
+References: <20200224082448.GA6826@kaaira-HP-Pavilion-Notebook>
+ <84410699e6acbffca960aa2944e9f5869478b178.camel@perches.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <84410699e6acbffca960aa2944e9f5869478b178.camel@perches.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,94 +94,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, peterz@infradead.org,
- Alexander Potapenko <glider@google.com>, dvyukov@google.com, jannh@google.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Certain copy_from_user() invocations in binder.c are known to
-unconditionally initialize locals before their first use, like e.g. in
-the following case:
+On Mon, Feb 24, 2020 at 05:38:09AM -0800, Joe Perches wrote:
+> On Mon, 2020-02-24 at 13:54 +0530, Kaaira Gupta wrote:
+> > Simplify code in ql_mpi_core_to_log() by calling print_hex_dump()
+> > instead of existing functions so that the debug and dump are
+> > emitted at the same KERN_<LEVEL>
+> []
+> > diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
+> []
+> > @@ -1324,27 +1324,10 @@ void ql_mpi_core_to_log(struct work_struct *work)
+> >  {
+> >  	struct ql_adapter *qdev =
+> >  		container_of(work, struct ql_adapter, mpi_core_to_log.work);
+> > -	u32 *tmp, count;
+> > -	int i;
+> >  
+> > -	count = sizeof(struct ql_mpi_coredump) / sizeof(u32);
+> > -	tmp = (u32 *)qdev->mpi_coredump;
+> > -	netif_printk(qdev, drv, KERN_DEBUG, qdev->ndev,
+> > -		     "Core is dumping to log file!\n");
+> 
+> There is no real need to delete this line.
+> 
+> And if you really want to, it'd be better to mention
+> the removal in the commit message description.
+> 
+> As is for this change, there is no "debug" and "dump"
+> as the commit message description shows, just "dump".
 
-	struct binder_transaction_data tr;
-	if (copy_from_user(&tr, ptr, sizeof(tr)))
-		return -EFAULT;
+This patch has already been added to the tree, if I amend the commit now
+using git rebase, won't it affect the upstream as the SHA-1 of the
+commit and it's children will change?
 
-In such cases enabling CONFIG_INIT_STACK_ALL leads to insertion of
-redundant locals initialization that the compiler fails to remove.
-To work around this problem till Clang can deal with it, we apply
-__do_not_initialize to local Binder structures.
-
-Cc: Kees Cook <keescook@chromium.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Alexander Potapenko <glider@google.com>
----
- drivers/android/binder.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index a6b2082c24f8f..3c91d842ac704 100644
---- a/drivers/android/binder.c
-+++ b/drivers/android/binder.c
-@@ -3788,7 +3788,7 @@ static int binder_thread_write(struct binder_proc *proc,
- 
- 		case BC_TRANSACTION_SG:
- 		case BC_REPLY_SG: {
--			struct binder_transaction_data_sg tr;
-+			struct binder_transaction_data_sg tr __do_not_initialize;
- 
- 			if (copy_from_user(&tr, ptr, sizeof(tr)))
- 				return -EFAULT;
-@@ -3799,7 +3799,7 @@ static int binder_thread_write(struct binder_proc *proc,
- 		}
- 		case BC_TRANSACTION:
- 		case BC_REPLY: {
--			struct binder_transaction_data tr;
-+			struct binder_transaction_data tr __do_not_initialize;
- 
- 			if (copy_from_user(&tr, ptr, sizeof(tr)))
- 				return -EFAULT;
-@@ -4827,7 +4827,7 @@ static int binder_ioctl_write_read(struct file *filp,
- 	struct binder_proc *proc = filp->private_data;
- 	unsigned int size = _IOC_SIZE(cmd);
- 	void __user *ubuf = (void __user *)arg;
--	struct binder_write_read bwr;
-+	struct binder_write_read bwr __do_not_initialize;
- 
- 	if (size != sizeof(struct binder_write_read)) {
- 		ret = -EINVAL;
-@@ -5039,7 +5039,7 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
- 		break;
- 	}
- 	case BINDER_SET_CONTEXT_MGR_EXT: {
--		struct flat_binder_object fbo;
-+		struct flat_binder_object fbo __do_not_initialize;
- 
- 		if (copy_from_user(&fbo, ubuf, sizeof(fbo))) {
- 			ret = -EINVAL;
-@@ -5076,7 +5076,7 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
- 		break;
- 	}
- 	case BINDER_GET_NODE_INFO_FOR_REF: {
--		struct binder_node_info_for_ref info;
-+		struct binder_node_info_for_ref info __do_not_initialize;
- 
- 		if (copy_from_user(&info, ubuf, sizeof(info))) {
- 			ret = -EFAULT;
-@@ -5095,7 +5095,7 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
- 		break;
- 	}
- 	case BINDER_GET_NODE_DEBUG_INFO: {
--		struct binder_node_debug_info info;
-+		struct binder_node_debug_info info __do_not_initialize;
- 
- 		if (copy_from_user(&info, ubuf, sizeof(info))) {
- 			ret = -EFAULT;
--- 
-2.25.0.265.gbab2e86ba0-goog
-
+> 
+> 
+> 
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
