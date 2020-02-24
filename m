@@ -1,72 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDADC16AF14
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 19:28:05 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EE76420515;
-	Mon, 24 Feb 2020 18:28:02 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dffntSL+dC84; Mon, 24 Feb 2020 18:28:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9CA8D20500;
-	Mon, 24 Feb 2020 18:28:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5E5941BF3D4
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 18:27:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B3A7E16AFFB
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 20:11:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 57A2B86F1B
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 18:27:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B2AF1856B8;
+	Mon, 24 Feb 2020 19:11:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZfTtaPbY3KoX; Mon, 24 Feb 2020 19:11:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1121481F0A;
+	Mon, 24 Feb 2020 19:11:36 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A72E1BF364
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 19:11:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8717A85D26
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 19:11:33 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H8HkG-RPCw5n for <devel@linuxdriverproject.org>;
- Mon, 24 Feb 2020 18:27:57 +0000 (UTC)
+ with ESMTP id tlTY5tlBe6u2 for <devel@linuxdriverproject.org>;
+ Mon, 24 Feb 2020 19:11:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6A59F86E6E
- for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 18:27:57 +0000 (UTC)
-Received: by mail-oi1-f193.google.com with SMTP id p125so9879270oif.10
- for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 10:27:57 -0800 (PST)
+Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
+ [209.85.167.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AD20B85C9A
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 19:11:31 +0000 (UTC)
+Received: by mail-lf1-f68.google.com with SMTP id z5so7574849lfd.12
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 11:11:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=gl8m333ia74OFZpNmB4o7kIcYlvQPFpoCsxlN0OXKb0=;
+ b=J1J727OFhosIw6e8A6lPoXT+s6YGq53ULwc8J67qoONSi16E9af3kve5U0tjV8o1+Y
+ /SG8pD8Vhqf91RIvYUr624MqjKEoR0Tsak2+/oq7j5TCvEyrntGCAOk7Wr57X94/qzqA
+ weOgPvcU2DTXfG+erQVSU5fxA9UbEiQaNPN7ApFEhoBZiW4VRsylA8bBEINsmjGOL+4y
+ HhsNrGnvW2ALH5Ciq0PymxGzgpsOoTfWg/KU+uKryi0Fh4OIVk+iU2a0XtEMvXys1jxM
+ s4enJFhTtyazC1Q6BAj63XKYKe7njZGAhuOLwgLBUEDl+SLcSiF6/a2ToKkm8YhGyZa+
+ wnQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=8b3MliEDFbDrUpBm8jGhwYqreoGs6m8FNnF/yNIueEU=;
- b=BIv4d+It50NoU34vAUdKA5yL6h6097KW6M7ceBy7v0n3cDkzoqq8428ialOAYTcbHn
- GMbV/GaYlpNnZcQ59InUXD5oY3xfF55qZDqV/OTK5FmElS7ot6UKKdW1Ie7w0wR+603q
- JFnY9zMGlts/KNNXxi7IMfkCQo2HKEqDLAugLAvdXp94ALXf/d3BUZrInoZH0Z2bByU0
- uSQSBZjoaFsMYVy3iMyxkAnuXrYRRDgu4VtdLrIIyZ3VTfnk7k9KUbD/F7BzOwrLKLx6
- 069UqmnlE2yr29T48UM3XmRCFuouYp9341Ee9XUOAEeciM6hCZ0+3sZH+xD/Zn0I97pJ
- nr9g==
-X-Gm-Message-State: APjAAAV8lvpwc5NLchJvWIukn7IL7ivMNVKMsM1H+NH8D8BdhIYKMS+8
- 6VDWRs0laXK2j0iH7b6xhQ==
-X-Google-Smtp-Source: APXvYqyzy4iiGXu+ZZ3t2yBP3j4K/yU2pKb0H/blTr6+iujeHVCL8mJihe7tO3CjLAVcADKqUCNWGQ==
-X-Received: by 2002:aca:bfc2:: with SMTP id p185mr318449oif.57.1582568876626; 
- Mon, 24 Feb 2020 10:27:56 -0800 (PST)
-Received: from rob-hp-laptop (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id v10sm4255017oic.32.2020.02.24.10.27.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Feb 2020 10:27:56 -0800 (PST)
-Received: (nullmailer pid 13156 invoked by uid 1000);
- Mon, 24 Feb 2020 18:27:55 -0000
-Date: Mon, 24 Feb 2020 12:27:55 -0600
-From: Rob Herring <robh@kernel.org>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: Re: [PATCH] docs: dt: fix several broken doc references
-Message-ID: <20200224182755.GB27161@bogus>
-References: <0e530494349b37eb2eab4a8eccf56626e0b18e6d.1582448388.git.mchehab+huawei@kernel.org>
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=gl8m333ia74OFZpNmB4o7kIcYlvQPFpoCsxlN0OXKb0=;
+ b=R4S7IHXOAICHn3eTsgeNfExcNsMfPrnifbkFkjEI67A10hR1L+qEUaRKUH9iqFAOGx
+ YeUE9Z1EDiivTvntwDK9fXTs7TleGeO8ifNfHYVQPgjGq9Ia25wpiF0ZSc2WM4zMdLyf
+ 6gBWBiuJAFmDCVIsK731pRbiH9qtOp6Jwo7jqwvRCQsap8y+B3WMuOFICDg8XmoinlVF
+ f23yIJdBSgujUDaExMnRMpCeSCDZcuoBhxpIRiKNnySjo8R7Dz0/6FYoTrFc2HSeNbg2
+ NhAz3Jd4VEut50svjEAcou2YtGgR9aWfBGwiQaBbxogtH7qpQSxjatbmxcPFnbIA/JwD
+ fltQ==
+X-Gm-Message-State: APjAAAUCaKYMl9vh72uKh0V1tM4wxXEk6tVrJck/tluo/CFVzm5V+3qJ
+ inbxAt4Ws7I//xkMFc+zvovc0Ep6VHPaEeAs2Jw=
+X-Google-Smtp-Source: APXvYqwTjpEDReX8Qg3M+kF2DZnrUdVgGCxT/rgFJKWfpj1Igj+oVBxWGD1gK5a8c5qCp+5kfnWRXJviPCaxqNbHPSY=
+X-Received: by 2002:a19:4a:: with SMTP id 71mr28267717lfa.50.1582571488618;
+ Mon, 24 Feb 2020 11:11:28 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <0e530494349b37eb2eab4a8eccf56626e0b18e6d.1582448388.git.mchehab+huawei@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Received: by 2002:a05:6512:7a:0:0:0:0 with HTTP; Mon, 24 Feb 2020 11:11:28
+ -0800 (PST)
+From: "Rev.Wright Watson" <mrzamundagarmumm79@gmail.com>
+Date: Mon, 24 Feb 2020 20:11:28 +0100
+Message-ID: <CADJL91+96VE5U=TB2cD9qNmkeeAxyS005mqNRL5Y6ZJkteQONg@mail.gmail.com>
+Subject: Dear Beloved,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,47 +79,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, Olivier Moysan <olivier.moysan@st.com>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- linux-mtd@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Vignesh Raghavendra <vigneshr@ti.com>, devel@driverdev.osuosl.org,
- Jonathan Corbet <corbet@lwn.net>, Richard Weinberger <richard@nod.at>,
- Piotr Sroka <piotrs@cadence.com>, devicetree@vger.kernel.org,
- Alexandre Torgue <alexandre.torgue@st.com>, Mark Brown <broonie@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Arnaud Pouliquen <arnaud.pouliquen@st.com>,
- Liam Girdwood <lgirdwood@gmail.com>, linux-spi@vger.kernel.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>
+Reply-To: RevWrightWatson@yandex.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Feb 23, 2020 at 09:59:53AM +0100, Mauro Carvalho Chehab wrote:
-> There are several DT doc references that require manual fixes.
-> I found 3 cases fixed on this patch:
-> 
-> 	- directory named "binding/" instead of "bindings/";
-> 	- .txt to .yaml renames;
-> 	- file renames (still on txt format);
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> ---
->  .../devicetree/bindings/mtd/cadence-nand-controller.txt       | 2 +-
->  .../devicetree/bindings/net/brcm,bcm7445-switch-v4.0.txt      | 2 +-
->  Documentation/devicetree/bindings/sound/st,stm32-sai.txt      | 2 +-
->  Documentation/devicetree/bindings/sound/st,stm32-spdifrx.txt  | 2 +-
->  Documentation/devicetree/bindings/spi/st,stm32-spi.yaml       | 2 +-
->  MAINTAINERS                                                   | 4 ++--
->  .../devicetree/bindings/net/wireless/siliabs,wfx.txt          | 2 +-
->  7 files changed, 8 insertions(+), 8 deletions(-)
+Dear Beloved,
 
-Applied.
+I'm Reverend Wright Watson, I was born in USA, 1945, I was ordained
+into the Catholic Priesthood.
 
-Rob
+Please take your time to read this message, although we have never met
+before, this is no spam, It's a real message sent to you. I know also
+that you will be amazed at the level of trust that I am willing to
+place in a person that I have never seen nor spoken with. If I can
+receive favor from someone I barely know, its not bad entrusting this
+project to unknown person as long as my spirit directed me to you.
+
+I have been a catholic priest for over 22 years. I spent about 10
+years serving at Africa, Burkina Faso to be precise, I spend most time
+in Ouagadougou Cathedral.
+Presently, I had a heart surgery on the 23-11-2018 and the Doctors
+have informed me that I cannot live longer; I had a serious bleeding
+after the operation.
+Before I left Ouagadougou to my country for the surgery, a priest
+friend of mine visited me from Netherlands with three companion, when
+they went back, one among his companion Transferred 10M$ in my
+personal account with Bank of Africa and advised that I use the money
+to help the poor, handicaps and less privileges because he saw the
+level hardship then.
+
+Because of my present health condition, I cannot live to proceed with
+the projects, therefore, I have decided to appoint you to reclaim the
+money which total sum of $10,970,000.00 (Ten million Nine Hundred and
+seventy Thousand US DOLLARS).
+
+I want you to use this sum to make the world a better place for the
+poor and less privileged, help the needy and also help your family
+members.
+
+I took this decision because I was raised in an Orphanage so I don't
+have relatives and presently, I'm still in the hospital, where I am
+undergoing treatment. That's why I have decided to contact you so that
+you can contact my account manager in Bank of Africa, reclaim the
+money and make good use of it.
+
+then you can contact me through private email
+addres(RevWrightWatson@yandex.com)
+
+Regards,
+Rev.Wright Watson
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
