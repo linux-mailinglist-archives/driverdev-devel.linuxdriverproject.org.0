@@ -1,71 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7493E16AA97
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 17:00:27 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3E1816AB5D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 17:28:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E8B4E86027;
-	Mon, 24 Feb 2020 16:00:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C66EF86501;
+	Mon, 24 Feb 2020 16:28:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KArOGDPAAyqX; Mon, 24 Feb 2020 16:00:22 +0000 (UTC)
+	with ESMTP id mX4tR11epLUU; Mon, 24 Feb 2020 16:28:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2FD8B85E51;
-	Mon, 24 Feb 2020 16:00:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 99F0284EB0;
+	Mon, 24 Feb 2020 16:28:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 40C301BF3C8
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:00:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EC8311BF3EE
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:28:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3B0A384DFE
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:00:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E1E4A864B8
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:28:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F7yyFf2E8IkC for <devel@linuxdriverproject.org>;
- Mon, 24 Feb 2020 16:00:12 +0000 (UTC)
-X-Greylist: delayed 00:18:30 by SQLgrey-1.7.6
-Received: from mail-lj1-f202.google.com (mail-lj1-f202.google.com
- [209.85.208.202])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DB5DC84031
- for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 16:00:11 +0000 (UTC)
-Received: by mail-lj1-f202.google.com with SMTP id a9so1089824ljk.11
- for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 08:00:11 -0800 (PST)
+ with ESMTP id 2BRZYcJYZz7a for <devel@linuxdriverproject.org>;
+ Mon, 24 Feb 2020 16:28:05 +0000 (UTC)
+X-Greylist: delayed 00:29:49 by SQLgrey-1.7.6
+Received: from mail-ed1-f74.google.com (mail-ed1-f74.google.com
+ [209.85.208.74])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BC331864A0
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 16:28:04 +0000 (UTC)
+Received: by mail-ed1-f74.google.com with SMTP id n12so7036997edq.13
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 08:28:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=WkHKiL8TugMz7Y/fz4AIPdSrnxM3OJ6VRSaILoo+VHE=;
- b=VsVYG68h1WhDk7TEJcliOruin9DuXhTerGfS04MeUUu9+Ml2rh9fHB1Wcjxw5vnh7z
- kPV68+awoOGVQ0Kvg42b0stgBl+XxfeDDW5ybS3+g3RKIfa9wYY4MbNhXhz+jEW01oFM
- /JJtyovSRyfMo3w3KMR5sCPNO01H1mOe3q8p8dcdfST/ZkF8d7phvD5a75llKLD8YRdH
- 5CPMSPenS7ieeWrbgWsBr4ZTQxw+WVut7ulGxEvBoU/j0KAY0PZPvh2hKUR4tocZEw70
- WLFE8kF0EpD4P9VXO8s/L+knHwhc5J+YS1DnXVSMwYojcudr1bQgvSr7vfS/ylT+K3UM
- BH0Q==
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=5ns55I+9a1YIqXKg1GMpdpihlQePRoRe97SZuddtRCg=;
+ b=R5ODJeOe995yJ3ZZJn5iS5AMwEK603SB9MSK52+BuQYpJA+NgUQbyun+sND0l75xaR
+ cLyKW+yZA0bkbOfY871yhx9xNhVKbGuJwSvwdi0DEW39yBmuq/DvcAzK0QJjUCx7N5Xf
+ FjMwKJeMfSu54nyVh7E5wXAaYFGV+hxwbMdVBhSy+pmjzMoe1bVLSO1WkbQxnGu5BwIR
+ xW08DlPQrFcwBCw3F6sZ6Ur3iA328SD5zxWRpwCs0C5hKK9qPalfUg9T29Q+DKr4fE0E
+ N8zcS1pBiGIgDP3qeXAdMK9Low6YpIo2mq2MR7xPPNdW4mnbFjiEPKY+Mt334qt17x9z
+ WaPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=WkHKiL8TugMz7Y/fz4AIPdSrnxM3OJ6VRSaILoo+VHE=;
- b=GlLnapsah/BfObcmHL6N/+nIpiPG2mMQR0aKVMbcr7DVwTYVQVTnu7crPyno9z9Rdr
- p7OhJJNgnVWNx2lEgyCuBOH3zVbpoCozYjb1tToMKqq/3zTxgkYRQkB+Z9UgENappHG+
- jsN2nc9UZKISiZ9+Wbm+tfKEX6bPv37hq5gEsriUkUFYY3OP3mhNzexK00CLfICNIdhM
- iXjW1r9fTaYwvi30ZDDH4W4QytsbcQEwHjGKmoF9m4zWM+O18BGTmPPIGDoS52rqGEmX
- y3h1ikNnNl1RqhHBQcvOM0FBwaZg2c2J3lzKwzleLc3Znm9DRVz3TjrehKKmdVes5qb8
- lHiA==
-X-Gm-Message-State: APjAAAVVuhs4DHTsOWTY7ABF6ZjvqvuQuT/pHFyo7tYdkrP6GzxfTqdD
- 3uHA8uBC33brWuCDgEY3C09gQbSKTzo=
-X-Google-Smtp-Source: APXvYqwJZymfoYlQm2kufffOVebFfIAcSk/MHotMuSzKEzrhxHOtzJZFDr5TG6lEcwZn5RXb6UIbMBPIyX4=
-X-Received: by 2002:adf:e610:: with SMTP id p16mr71227303wrm.81.1582558514774; 
- Mon, 24 Feb 2020 07:35:14 -0800 (PST)
-Date: Mon, 24 Feb 2020 16:35:01 +0100
-In-Reply-To: <20200224153501.60040-1-glider@google.com>
-Message-Id: <20200224153501.60040-3-glider@google.com>
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=5ns55I+9a1YIqXKg1GMpdpihlQePRoRe97SZuddtRCg=;
+ b=GtgdWycNE6KLyphalnvg/ZGeHuL09n7l0Z+sUe2chD3chBkkLQ6qSym6jr2InAAKjd
+ 8hqAV7aJo6uwZBSTXHd3anRUvEUZ85lSKriWgPAfL9esBE+/jctPi4TBw/76l+1vn9AJ
+ 9HC+2Aj8nWTT8W+LDtY8JsOmFdX4UvR55f91EBtD19RFNKmJrypfZdSka0X9BxKCD0AN
+ NfiDzSMWmo7ZQerpymC3MNcP0+CTLMBSgotb9o8vhZu8n0Bp52Mi2uaprD49reqI039y
+ dkLVYLXLMhVc4RJ1/9nRvi7FcpFBVvpXAQtuYeMioTtlwEGk6ZG0MWSdH94HaQHG9dhC
+ qOzQ==
+X-Gm-Message-State: APjAAAXMYanytnaYzTs7sbpBjKSgiZ7KcgLpNG2RZ/noWdQxfFpf/O13
+ AAlrNg+nOVdF31COiOzoG529GTCabFc=
+X-Google-Smtp-Source: APXvYqxIypdmNt6dY1Yku+uIjCUuPbRIwLWQf7eXvxRXs2sUp7Z+mf1wO6HPmwqRIx7k7JTPVstCl3uYuR0=
+X-Received: by 2002:a5d:6144:: with SMTP id y4mr66506393wrt.15.1582558505602; 
+ Mon, 24 Feb 2020 07:35:05 -0800 (PST)
+Date: Mon, 24 Feb 2020 16:34:59 +0100
+Message-Id: <20200224153501.60040-1-glider@google.com>
 Mime-Version: 1.0
-References: <20200224153501.60040-1-glider@google.com>
 X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
-Subject: [PATCH 3/3] sched/wait: avoid double initialization in ___wait_event()
+Subject: [PATCH 1/3] compiler.h: define __do_not_initialize
 From: glider@google.com
 To: tkjos@google.com, keescook@chromium.org, gregkh@linuxfoundation.org, 
  arve@android.com, mingo@redhat.com
@@ -88,32 +85,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-With CONFIG_INIT_STACK_ALL enabled, the local __wq_entry is initialized
-twice. Because Clang is currently unable to optimize the automatic
-initialization away (init_wait_entry() is defined in another translation
-unit), remove it with the __do_not_initialize annotation.
+For CONFIG_INIT_STACK_ALL it's sometimes handy to disable
+force-initialization for a local variable, if it is known to be initialized
+later on before the first use. This can be done by using the
+__do_not_initialize macro.
 
-Cc: Kees Cook <keescook@chromium.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+__do_not_initialize should be applied carefully, as future changes to
+the code around the local variable may introduce paths on which the
+variable remains uninitialized before the use.
+
 Signed-off-by: Alexander Potapenko <glider@google.com>
 ---
- include/linux/wait.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/linux/compiler-clang.h | 10 ++++++++++
+ include/linux/compiler_types.h |  4 ++++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/include/linux/wait.h b/include/linux/wait.h
-index 3283c8d021377..03b831ee9b64a 100644
---- a/include/linux/wait.h
-+++ b/include/linux/wait.h
-@@ -262,7 +262,8 @@ extern void init_wait_entry(struct wait_queue_entry *wq_entry, int flags);
- #define ___wait_event(wq_head, condition, state, exclusive, ret, cmd)		\
- ({										\
- 	__label__ __out;							\
--	struct wait_queue_entry __wq_entry;					\
-+	/* Unconditionally initialized by init_wait_entry(). */			\
-+	struct wait_queue_entry __wq_entry __do_not_initialize;			\
- 	long __ret = ret;	/* explicit shadow */				\
- 										\
- 	init_wait_entry(&__wq_entry, exclusive ? WQ_FLAG_EXCLUSIVE : 0);	\
+diff --git a/include/linux/compiler-clang.h b/include/linux/compiler-clang.h
+index 333a6695a918c..9204334d39261 100644
+--- a/include/linux/compiler-clang.h
++++ b/include/linux/compiler-clang.h
+@@ -24,6 +24,16 @@
+ #define __no_sanitize_address
+ #endif
+ 
++/*
++ * Disable initialization of a local variable when building with
++ * CONFIG_INIT_STACK_ALL.
++ */
++#ifdef CONFIG_INIT_STACK_ALL
++#define __do_not_initialize __attribute__((uninitialized))
++#else
++#define __do_not_initialize
++#endif
++
+ /*
+  * Not all versions of clang implement the the type-generic versions
+  * of the builtin overflow checkers. Fortunately, clang implements
+diff --git a/include/linux/compiler_types.h b/include/linux/compiler_types.h
+index 72393a8c1a6c5..b216beb5586fc 100644
+--- a/include/linux/compiler_types.h
++++ b/include/linux/compiler_types.h
+@@ -180,6 +180,10 @@ struct ftrace_likely_data {
+ 
+ #endif /* __ASSEMBLY__ */
+ 
++#ifndef __do_not_initialize
++#define __do_not_initialize
++#endif
++
+ /*
+  * The below symbols may be defined for one or more, but not ALL, of the above
+  * compilers. We don't consider that to be an error, so set them to nothing.
 -- 
 2.25.0.265.gbab2e86ba0-goog
 
