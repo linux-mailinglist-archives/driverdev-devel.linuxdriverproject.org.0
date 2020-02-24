@@ -2,64 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52ABA16A815
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 15:15:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7493E16AA97
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 17:00:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 827E285E8D;
-	Mon, 24 Feb 2020 14:15:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E8B4E86027;
+	Mon, 24 Feb 2020 16:00:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2tyqvmBy-z9n; Mon, 24 Feb 2020 14:15:16 +0000 (UTC)
+	with ESMTP id KArOGDPAAyqX; Mon, 24 Feb 2020 16:00:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2731484A0D;
-	Mon, 24 Feb 2020 14:15:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2FD8B85E51;
+	Mon, 24 Feb 2020 16:00:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7D5F31BF3F2
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 14:15:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 40C301BF3C8
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:00:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 76C25203D5
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 14:15:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3B0A384DFE
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 16:00:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m2brvlx7deTW for <devel@linuxdriverproject.org>;
- Mon, 24 Feb 2020 14:15:04 +0000 (UTC)
-X-Greylist: delayed 14:13:54 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0195.hostedemail.com
- [216.40.44.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 3A2B3204DE
- for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 14:15:03 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay03.hostedemail.com (Postfix) with ESMTP id 070C1837F27E;
- Mon, 24 Feb 2020 14:15:02 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:982:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1543:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3354:3622:3865:3867:3870:3871:3872:3874:4321:4823:5007:6119:7903:10004:10400:10848:11658:11914:12043:12048:12296:12297:12438:12740:12760:12895:13018:13019:13161:13229:13439:14096:14097:14181:14659:21080:21212:21451:21611:21627:30054:30070:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:3, LUA_SUMMARY:none
-X-HE-Tag: owner35_6600d9892995f
-X-Filterd-Recvd-Size: 4636
-Received: from XPS-9350.home (unknown [47.151.143.254])
- (Authenticated sender: joe@perches.com)
- by omf06.hostedemail.com (Postfix) with ESMTPA;
- Mon, 24 Feb 2020 14:15:00 +0000 (UTC)
-Message-ID: <8c458c189abb45fb3021f7882a40d28a24cc662d.camel@perches.com>
-Subject: Re: [PATCH] staging: wfx: match parentheses alignment
-From: Joe Perches <joe@perches.com>
-To: Kaaira Gupta <kgupta@es.iitr.ac.in>, =?ISO-8859-1?Q?J=E9r=F4me?=
- Pouiller <jerome.pouiller@silabs.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>,  devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Date: Mon, 24 Feb 2020 06:13:32 -0800
-In-Reply-To: <20200223193201.GA20843@kaaira-HP-Pavilion-Notebook>
-References: <20200223193201.GA20843@kaaira-HP-Pavilion-Notebook>
-User-Agent: Evolution 3.34.1-2 
-MIME-Version: 1.0
+ with ESMTP id F7yyFf2E8IkC for <devel@linuxdriverproject.org>;
+ Mon, 24 Feb 2020 16:00:12 +0000 (UTC)
+X-Greylist: delayed 00:18:30 by SQLgrey-1.7.6
+Received: from mail-lj1-f202.google.com (mail-lj1-f202.google.com
+ [209.85.208.202])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DB5DC84031
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 16:00:11 +0000 (UTC)
+Received: by mail-lj1-f202.google.com with SMTP id a9so1089824ljk.11
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 08:00:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=WkHKiL8TugMz7Y/fz4AIPdSrnxM3OJ6VRSaILoo+VHE=;
+ b=VsVYG68h1WhDk7TEJcliOruin9DuXhTerGfS04MeUUu9+Ml2rh9fHB1Wcjxw5vnh7z
+ kPV68+awoOGVQ0Kvg42b0stgBl+XxfeDDW5ybS3+g3RKIfa9wYY4MbNhXhz+jEW01oFM
+ /JJtyovSRyfMo3w3KMR5sCPNO01H1mOe3q8p8dcdfST/ZkF8d7phvD5a75llKLD8YRdH
+ 5CPMSPenS7ieeWrbgWsBr4ZTQxw+WVut7ulGxEvBoU/j0KAY0PZPvh2hKUR4tocZEw70
+ WLFE8kF0EpD4P9VXO8s/L+knHwhc5J+YS1DnXVSMwYojcudr1bQgvSr7vfS/ylT+K3UM
+ BH0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=WkHKiL8TugMz7Y/fz4AIPdSrnxM3OJ6VRSaILoo+VHE=;
+ b=GlLnapsah/BfObcmHL6N/+nIpiPG2mMQR0aKVMbcr7DVwTYVQVTnu7crPyno9z9Rdr
+ p7OhJJNgnVWNx2lEgyCuBOH3zVbpoCozYjb1tToMKqq/3zTxgkYRQkB+Z9UgENappHG+
+ jsN2nc9UZKISiZ9+Wbm+tfKEX6bPv37hq5gEsriUkUFYY3OP3mhNzexK00CLfICNIdhM
+ iXjW1r9fTaYwvi30ZDDH4W4QytsbcQEwHjGKmoF9m4zWM+O18BGTmPPIGDoS52rqGEmX
+ y3h1ikNnNl1RqhHBQcvOM0FBwaZg2c2J3lzKwzleLc3Znm9DRVz3TjrehKKmdVes5qb8
+ lHiA==
+X-Gm-Message-State: APjAAAVVuhs4DHTsOWTY7ABF6ZjvqvuQuT/pHFyo7tYdkrP6GzxfTqdD
+ 3uHA8uBC33brWuCDgEY3C09gQbSKTzo=
+X-Google-Smtp-Source: APXvYqwJZymfoYlQm2kufffOVebFfIAcSk/MHotMuSzKEzrhxHOtzJZFDr5TG6lEcwZn5RXb6UIbMBPIyX4=
+X-Received: by 2002:adf:e610:: with SMTP id p16mr71227303wrm.81.1582558514774; 
+ Mon, 24 Feb 2020 07:35:14 -0800 (PST)
+Date: Mon, 24 Feb 2020 16:35:01 +0100
+In-Reply-To: <20200224153501.60040-1-glider@google.com>
+Message-Id: <20200224153501.60040-3-glider@google.com>
+Mime-Version: 1.0
+References: <20200224153501.60040-1-glider@google.com>
+X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
+Subject: [PATCH 3/3] sched/wait: avoid double initialization in ___wait_event()
+From: glider@google.com
+To: tkjos@google.com, keescook@chromium.org, gregkh@linuxfoundation.org, 
+ arve@android.com, mingo@redhat.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,68 +81,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, peterz@infradead.org,
+ Alexander Potapenko <glider@google.com>, dvyukov@google.com, jannh@google.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2020-02-24 at 01:02 +0530, Kaaira Gupta wrote:
-> match next line with open parentheses by giving appropriate tabs.
+With CONFIG_INIT_STACK_ALL enabled, the local __wq_entry is initialized
+twice. Because Clang is currently unable to optimize the automatic
+initialization away (init_wait_entry() is defined in another translation
+unit), remove it with the __do_not_initialize annotation.
 
-This patch is only for data_tx.c
+Cc: Kees Cook <keescook@chromium.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Alexander Potapenko <glider@google.com>
+---
+ include/linux/wait.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-There are many more parentheses that are not aligned
-in staging/wfx in other files.
-
-Realistically, either change the subject to show
-that it's only for data_tx or do them all.
-
-(but not traces.h, those use a different style)
-
-$ ./scripts/checkpatch.pl -f --terse --nosummary --types=parenthesis_alignment drivers/staging/wfx/*.[ch]
-drivers/staging/wfx/data_tx.c:303: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/data_tx.c:371: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/debug.c:35: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/key.c:35: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/key.c:45: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/key.c:55: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/key.c:72: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/key.c:97: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/key.c:106: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/key.c:118: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/key.c:133: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/key.c:147: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/queue.c:393: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/queue.c:408: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/queue.c:433: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/sta.c:123: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/sta.c:235: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/sta.c:291: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/sta.c:340: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/sta.c:717: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:156: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:194: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:206: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:211: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:234: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:257: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:265: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:271: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:278: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:296: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:302: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:307: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:313: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:324: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:329: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:334: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:351: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:362: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:416: CHECK: Alignment should match open parenthesis
-drivers/staging/wfx/traces.h:418: CHECK: Alignment should match open parenthesis
-
-
-
+diff --git a/include/linux/wait.h b/include/linux/wait.h
+index 3283c8d021377..03b831ee9b64a 100644
+--- a/include/linux/wait.h
++++ b/include/linux/wait.h
+@@ -262,7 +262,8 @@ extern void init_wait_entry(struct wait_queue_entry *wq_entry, int flags);
+ #define ___wait_event(wq_head, condition, state, exclusive, ret, cmd)		\
+ ({										\
+ 	__label__ __out;							\
+-	struct wait_queue_entry __wq_entry;					\
++	/* Unconditionally initialized by init_wait_entry(). */			\
++	struct wait_queue_entry __wq_entry __do_not_initialize;			\
+ 	long __ret = ret;	/* explicit shadow */				\
+ 										\
+ 	init_wait_entry(&__wq_entry, exclusive ? WQ_FLAG_EXCLUSIVE : 0);	\
+-- 
+2.25.0.265.gbab2e86ba0-goog
 
 _______________________________________________
 devel mailing list
