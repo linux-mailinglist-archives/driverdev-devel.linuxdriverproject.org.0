@@ -1,72 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3A7E16AFFB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 20:11:38 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A729D16B0B7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Feb 2020 20:59:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B2AF1856B8;
-	Mon, 24 Feb 2020 19:11:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DE4A286308;
+	Mon, 24 Feb 2020 19:59:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZfTtaPbY3KoX; Mon, 24 Feb 2020 19:11:36 +0000 (UTC)
+	with ESMTP id FExKj6_rauiu; Mon, 24 Feb 2020 19:59:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1121481F0A;
-	Mon, 24 Feb 2020 19:11:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A733285F98;
+	Mon, 24 Feb 2020 19:59:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8A72E1BF364
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 19:11:33 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 20B9D1BF271
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 19:59:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8717A85D26
- for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 19:11:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1CC92204FD
+ for <devel@linuxdriverproject.org>; Mon, 24 Feb 2020 19:59:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tlTY5tlBe6u2 for <devel@linuxdriverproject.org>;
- Mon, 24 Feb 2020 19:11:32 +0000 (UTC)
+ with ESMTP id uKf4y-kk5zK3 for <devel@linuxdriverproject.org>;
+ Mon, 24 Feb 2020 19:59:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
- [209.85.167.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AD20B85C9A
- for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 19:11:31 +0000 (UTC)
-Received: by mail-lf1-f68.google.com with SMTP id z5so7574849lfd.12
- for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 11:11:31 -0800 (PST)
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7DCFF20365
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 19:59:21 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id fa20so215288pjb.1
+ for <devel@driverdev.osuosl.org>; Mon, 24 Feb 2020 11:59:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=gl8m333ia74OFZpNmB4o7kIcYlvQPFpoCsxlN0OXKb0=;
- b=J1J727OFhosIw6e8A6lPoXT+s6YGq53ULwc8J67qoONSi16E9af3kve5U0tjV8o1+Y
- /SG8pD8Vhqf91RIvYUr624MqjKEoR0Tsak2+/oq7j5TCvEyrntGCAOk7Wr57X94/qzqA
- weOgPvcU2DTXfG+erQVSU5fxA9UbEiQaNPN7ApFEhoBZiW4VRsylA8bBEINsmjGOL+4y
- HhsNrGnvW2ALH5Ciq0PymxGzgpsOoTfWg/KU+uKryi0Fh4OIVk+iU2a0XtEMvXys1jxM
- s4enJFhTtyazC1Q6BAj63XKYKe7njZGAhuOLwgLBUEDl+SLcSiF6/a2ToKkm8YhGyZa+
- wnQg==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=D4b30bsFaM6aQ6rqyFLlBvmrkLtttzdiSpKK5W3uPsQ=;
+ b=OLSAsUBE9Mu3JoY5a8xmaNZ++B2E03CuwO9FLQfTppS/VgA9WgcCIMZQ3lMxIakQO9
+ aeukzi+XoBHSDOgYoOr/19AKu4dZgoHbE8DStNw3xtAhKg7P+AAX83R5T2CSEiQSga7c
+ vioTb5TzzXlju2wwlvJCJXzCC9beEBscZxH1ULjgf4EhsRVyU6jLjSq4iEPCgexcsFfQ
+ aKQYgUfG9AdIPDLaznwg1Yz8ahXhieRWRd6aa4uHThGUZDV+GAj3xKB/TSqOmHoHMu2E
+ Yhx5Y/R1qO+ZDt0RevJlL0SMM1L0PfqcYLm3X/1RExp/AWVRNZWAHMd0N4sGw438rupd
+ pIdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=gl8m333ia74OFZpNmB4o7kIcYlvQPFpoCsxlN0OXKb0=;
- b=R4S7IHXOAICHn3eTsgeNfExcNsMfPrnifbkFkjEI67A10hR1L+qEUaRKUH9iqFAOGx
- YeUE9Z1EDiivTvntwDK9fXTs7TleGeO8ifNfHYVQPgjGq9Ia25wpiF0ZSc2WM4zMdLyf
- 6gBWBiuJAFmDCVIsK731pRbiH9qtOp6Jwo7jqwvRCQsap8y+B3WMuOFICDg8XmoinlVF
- f23yIJdBSgujUDaExMnRMpCeSCDZcuoBhxpIRiKNnySjo8R7Dz0/6FYoTrFc2HSeNbg2
- NhAz3Jd4VEut50svjEAcou2YtGgR9aWfBGwiQaBbxogtH7qpQSxjatbmxcPFnbIA/JwD
- fltQ==
-X-Gm-Message-State: APjAAAUCaKYMl9vh72uKh0V1tM4wxXEk6tVrJck/tluo/CFVzm5V+3qJ
- inbxAt4Ws7I//xkMFc+zvovc0Ep6VHPaEeAs2Jw=
-X-Google-Smtp-Source: APXvYqwTjpEDReX8Qg3M+kF2DZnrUdVgGCxT/rgFJKWfpj1Igj+oVBxWGD1gK5a8c5qCp+5kfnWRXJviPCaxqNbHPSY=
-X-Received: by 2002:a19:4a:: with SMTP id 71mr28267717lfa.50.1582571488618;
- Mon, 24 Feb 2020 11:11:28 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=D4b30bsFaM6aQ6rqyFLlBvmrkLtttzdiSpKK5W3uPsQ=;
+ b=WDD6qnBVNeM7b/6wUN4/O6N/TS9ZzdN9H9woA8ivcnIhQHxz93sRUZAT3uTtlvy33i
+ 9dulVC7FOt0sfFYA4p49OR/fsri5Tqwhf2s1K5plPaxJbUEEaQE0gPq5+q0vHO+2Mc4G
+ T0oGet2rsu/MafKUF+jReSYeMlMG3kLKEdZdyGh5hYlBGFlenu1+9jMhgsvre3kKGjem
+ ZIxFh4HqR/LGRv47fqLP9vF5f/45oMdze9r1xqUmCfOzUlh8hZtqUL81NeOrx0bgi0xz
+ oqjBR2R5xpmjgAHSu4iUdC7t0pZ0/li4s6ufO1ts0CXk9YlTnoRbf/KM81KERQMXt9kx
+ BIjA==
+X-Gm-Message-State: APjAAAVifQqGyfqnrowXaUjHgNYdwSjN2fPidke2nBVzdByj4wW7MTZD
+ kT/zLHvvbBfc696JJnz0R7PXuMoycgU=
+X-Google-Smtp-Source: APXvYqzMO6snqqS4kZrtZMsvWd04UcispwWolEkebly7CBw6rrm+l1c+XOUPvI86A/qE9F8b8P6auw==
+X-Received: by 2002:a17:90a:f012:: with SMTP id
+ bt18mr884273pjb.8.1582574360420; 
+ Mon, 24 Feb 2020 11:59:20 -0800 (PST)
+Received: from SARKAR ([49.207.57.206])
+ by smtp.gmail.com with ESMTPSA id b1sm13789918pfp.44.2020.02.24.11.59.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Feb 2020 11:59:19 -0800 (PST)
+Date: Tue, 25 Feb 2020 01:29:15 +0530
+From: Rohit Sarkar <rohitsarkar5398@gmail.com>
+To: linux-iio@vger.kernel.org
+Subject: [PATCH] staging: iio: update TODO
+Message-ID: <20200224195915.GA8371@SARKAR>
 MIME-Version: 1.0
-Received: by 2002:a05:6512:7a:0:0:0:0 with HTTP; Mon, 24 Feb 2020 11:11:28
- -0800 (PST)
-From: "Rev.Wright Watson" <mrzamundagarmumm79@gmail.com>
-Date: Mon, 24 Feb 2020 20:11:28 +0100
-Message-ID: <CADJL91+96VE5U=TB2cD9qNmkeeAxyS005mqNRL5Y6ZJkteQONg@mail.gmail.com>
-Subject: Dear Beloved,
-To: undisclosed-recipients:;
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,57 +84,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: RevWrightWatson@yandex.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Beloved,
+gregkh@linuxfoundation.org, jic23@kernel.org
+Bcc: 
+Subject: [PATCH] staging: iio: update TODO
+Reply-To: 
 
-I'm Reverend Wright Watson, I was born in USA, 1945, I was ordained
-into the Catholic Priesthood.
+Since there are no more uses of the old GPIO API in iio staging drivers
+remove that work item from the TODO.
 
-Please take your time to read this message, although we have never met
-before, this is no spam, It's a real message sent to you. I know also
-that you will be amazed at the level of trust that I am willing to
-place in a person that I have never seen nor spoken with. If I can
-receive favor from someone I barely know, its not bad entrusting this
-project to unknown person as long as my spirit directed me to you.
+Add other work items with reference to the conversation in [1]
 
-I have been a catholic priest for over 22 years. I spent about 10
-years serving at Africa, Burkina Faso to be precise, I spend most time
-in Ouagadougou Cathedral.
-Presently, I had a heart surgery on the 23-11-2018 and the Doctors
-have informed me that I cannot live longer; I had a serious bleeding
-after the operation.
-Before I left Ouagadougou to my country for the surgery, a priest
-friend of mine visited me from Netherlands with three companion, when
-they went back, one among his companion Transferred 10M$ in my
-personal account with Bank of Africa and advised that I use the money
-to help the poor, handicaps and less privileges because he saw the
-level hardship then.
+[1]: https://marc.info/?l=linux-iio&m=158256721009892&w=2
 
-Because of my present health condition, I cannot live to proceed with
-the projects, therefore, I have decided to appoint you to reclaim the
-money which total sum of $10,970,000.00 (Ten million Nine Hundred and
-seventy Thousand US DOLLARS).
+Thanks,
+Rohit
 
-I want you to use this sum to make the world a better place for the
-poor and less privileged, help the needy and also help your family
-members.
+Signed-off-by: Rohit Sarkar <rohitsarkar5398@gmail.com>
+---
+ drivers/staging/iio/TODO | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-I took this decision because I was raised in an Orphanage so I don't
-have relatives and presently, I'm still in the hospital, where I am
-undergoing treatment. That's why I have decided to contact you so that
-you can contact my account manager in Bank of Africa, reclaim the
-money and make good use of it.
+diff --git a/drivers/staging/iio/TODO b/drivers/staging/iio/TODO
+index 1b8ebf2c1b69..783878f25f08 100644
+--- a/drivers/staging/iio/TODO
++++ b/drivers/staging/iio/TODO
+@@ -1,11 +1,13 @@
+-2018-04-15
++2020-02-25
+ 
+-All affected drivers:
+-Convert all uses of the old GPIO API from <linux/gpio.h> to the
+-GPIO descriptor API in <linux/gpio/consumer.h> and look up GPIO
+-lines from device tree, ACPI or board files, board files should
+-use <linux/gpio/machine.h>.
++- Documentation
++  - Binding docs for devices that are obviously used via device tree
++  - Yaml conversions for abandoned drivers
++  - ABI Documentation
++  - Audit driviers/iio/staging/Documentation
+ 
++- Replace iio_dev->mlock by either a local lock or use iio_claim_direct.
++(Requires analysis of the purpose of the lock.)
+ 
+ ADI Drivers:
+ CC the device-drivers-devel@blackfin.uclinux.org mailing list when
+-- 
+2.23.0.385.gbc12974a89
 
-then you can contact me through private email
-addres(RevWrightWatson@yandex.com)
-
-Regards,
-Rev.Wright Watson
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
