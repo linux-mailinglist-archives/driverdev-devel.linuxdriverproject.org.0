@@ -1,109 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80C9616BB8E
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 09:12:11 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BD4716BBA2
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 09:14:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BCBC58651E;
-	Tue, 25 Feb 2020 08:12:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 876F12036D;
+	Tue, 25 Feb 2020 08:14:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N+6Q-oMbV8f0; Tue, 25 Feb 2020 08:12:08 +0000 (UTC)
+	with ESMTP id SKTu6JEwEfxV; Tue, 25 Feb 2020 08:14:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4F2F28643F;
-	Tue, 25 Feb 2020 08:12:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 82ECF203F0;
+	Tue, 25 Feb 2020 08:14:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6C3311BF2CB
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 08:12:05 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7CA9C1BF2CB
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 08:14:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 68DB48618C
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 08:12:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7965A8624E
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 08:14:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id t4D3Cy+UbYzk for <devel@linuxdriverproject.org>;
- Tue, 25 Feb 2020 08:12:04 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com
- (mail-bn7nam10on2105.outbound.protection.outlook.com [40.107.92.105])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 77C6685D22
- for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 08:12:04 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=fsD5EU5wRtbgctz0dD2GkGcx+fuOesP+SvS20d5VJ80AyFoHU65meDm9jQ1u6hoiCRwjIvEJ07k4+MaSrfXXoyVXSE3caBTLoNJR81KtiYr9ot+mdKI/it0mynjo66hSMCd/GUWcJECaXJs+qm9U06LJdFI/cYP2E77zk0wUfV+As22JAED45hwQDXamPbV34WlfNdJJXHeDVU/GzcqB2zRGD+yuhBgK6acjdUUOLU9zONgpOQg6Gyrkxv+DSUx1qEWCyQ816HguYRXT7oUgv8MZ4Iokqrm93Gsu7mXklEH39Aj1YS68eaJwueRaVBbofNZb6fkG7SHfAi/DUHTzPw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uWmD5YkrDPV/XQt4ubPOCeJJPXa81yAu7g7dESfiDrc=;
- b=VSAacKu5z7O7KsUWlCdX4Yc6sXH0tZW+dox4hcHm+TRwjY7ezl+Y2tSz5sZtNslmHbvlENAQ9oA75X75pUSj1go7ndOZJ3Q5EO4/X4b0gILz1eowcHDrMADeASF81nGSm6mjTKGyxCXJ3XxcaZSi72jQPTUZ3LvfHYU/Zc4v1vyWqTxnuUQp3kNjJct3ovowCrKsPouVtMiYkHVDFebrFd6sUOvn93aROwCnb3pzplcb/lVYME1zolbPWq0iKaaxu2WfXO0BpNt+IEaj7d8NScQ57SwZg6yTxhBV0MDza1emy/D6U3f/nJP590+ddg3vzIktHaGV0Vp2oX/Ie98IzA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uWmD5YkrDPV/XQt4ubPOCeJJPXa81yAu7g7dESfiDrc=;
- b=erp5opGmb+HHuUcfO2eDgloODJP2lODbqLb7F/1xAqaAqSjzbIBVyGZYvQjKVx8fQqW0vhsVmwEro+1Lr5eb6pfT99+nL7womAdBYFH/VjuO2cQ2l61xyCPmsFbX0Uc4seVnNnOvr7FrCRpIF0cdvcyT3muBmF4GQHxisrmOo1g=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=xji@analogixsemi.com; 
-Received: from SN6PR04MB4543.namprd04.prod.outlook.com (2603:10b6:805:a5::18)
- by SN6PR04MB5151.namprd04.prod.outlook.com (2603:10b6:805:90::25)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2750.21; Tue, 25 Feb
- 2020 08:12:01 +0000
-Received: from SN6PR04MB4543.namprd04.prod.outlook.com
- ([fe80::9598:7ff:b397:ba56]) by SN6PR04MB4543.namprd04.prod.outlook.com
- ([fe80::9598:7ff:b397:ba56%7]) with mapi id 15.20.2750.021; Tue, 25 Feb 2020
- 08:12:01 +0000
-Date: Tue, 25 Feb 2020 16:11:52 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH v7 0/2] Add initial support for slimport anx7625
-Message-ID: <20200225081152.GA12531@xin-VirtualBox>
-References: <cover.1582529411.git.xji@analogixsemi.com>
- <20200225074200.GC3308@kadam>
-Content-Disposition: inline
-In-Reply-To: <20200225074200.GC3308@kadam>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-ClientProxiedBy: HK0PR03CA0101.apcprd03.prod.outlook.com
- (2603:1096:203:b0::17) To SN6PR04MB4543.namprd04.prod.outlook.com
- (2603:10b6:805:a5::18)
+ with ESMTP id adVOf3yMZ-Fy for <devel@linuxdriverproject.org>;
+ Tue, 25 Feb 2020 08:14:35 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
+ [209.85.167.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 99FCB84F4C
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 08:14:35 +0000 (UTC)
+Received: by mail-oi1-f196.google.com with SMTP id d62so11721632oia.11
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 00:14:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=TRIo6rtUAOXJt0Z9CDKj85OWeaGBBrWJnbM3uVvixI4=;
+ b=Y4qZ6SZGleUnEsSCvx0owKit6WPEuG5JuBCeEf6QGakYodHvxh4jw76HYDmpw8bU59
+ Az1gDO7Mmn4/FDb4NnsVQ1SDNbCB/O8VjiOb4eRcj6mh8emX2i5mRGGVOwm/w/nw3aW4
+ BunNqe0y8Btd30CUd6MomvZzbfIlWjCjcKWnVfUtzOBm3sY6gJc9IGnYcYs9rgjga/f7
+ 8ABIfUlKqd9uyGKwbNCsEvaBJq93h7VM4+WWXNK4JKZ7aBSw+23iQpydE/NUr1OUIGfn
+ UfTmMaH+ETA26Y5AmQOfVqGpkwAHo76MNDRkAMfEhXEPSF7NXVe8I6mk93wqwx0fxMfS
+ jlJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=TRIo6rtUAOXJt0Z9CDKj85OWeaGBBrWJnbM3uVvixI4=;
+ b=I+GwNM17mKBBOgy1CpcS8FoqNa7FENtf/0EPMjggjJudCFDpfkr6KFwIkHN6i211zD
+ bAyz6MTOXAAdAML2MbpCjOltutvIyo7wEyOyrPr3VS88ExoUxe9XqXHNw74Wll8jYCFn
+ l9TbNd+n2g+8jYICrMgt0Faw/bNf9u19s1FHLv+X2eJVSLxNHc7z17g+/PJrxCor8dBx
+ Rm1Nh5gnrO7kpo3dZiL8F4lrUctI7jlzsSasgsAkNQElispggAT2iERDsZ/FmHaxkyI+
+ sYbO+9JeHcpD0g+neZpLTxSSJAv8AaXUy1hCTZMsxdK6gkTQRYJ9l5DtnVPH8VTctunn
+ ogUw==
+X-Gm-Message-State: APjAAAVE2FStU5ahjEVfqb0TtJqezzzX00cqrQCiq2uKLvSa/FeCf6Kh
+ K9K9+q8jfq5I8POo5Ar48wEvb4oC+nS7l8e2PAqkBQ==
+X-Google-Smtp-Source: APXvYqxccKwTAlpWEZLKZ6LzJj/iZ4wuURTXwu5nZG0P1hWg8jbDwpYMstsanjm08/sQ6eWP+7IUEjc7COWxQWz0Pzw=
+X-Received: by 2002:aca:d954:: with SMTP id q81mr2519987oig.157.1582618474472; 
+ Tue, 25 Feb 2020 00:14:34 -0800 (PST)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from xin-VirtualBox (114.247.245.254) by
- HK0PR03CA0101.apcprd03.prod.outlook.com (2603:1096:203:b0::17) with Microsoft
- SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
- 15.20.2750.18 via Frontend Transport; Tue, 25 Feb 2020 08:11:59 +0000
-X-Originating-IP: [114.247.245.254]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 0b4418f5-7903-4f1c-65e8-08d7b9ca63d5
-X-MS-TrafficTypeDiagnostic: SN6PR04MB5151:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <SN6PR04MB5151A43B41707F0ECB6CFE1BC7ED0@SN6PR04MB5151.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
-X-Forefront-PRVS: 0324C2C0E2
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10019020)(366004)(136003)(39850400004)(346002)(396003)(376002)(199004)(189003)(54906003)(9686003)(55016002)(66556008)(956004)(8676002)(5660300002)(107886003)(81166006)(66946007)(33716001)(8936002)(86362001)(81156014)(316002)(66476007)(6496006)(6916009)(186003)(52116002)(7416002)(6666004)(1076003)(16526019)(33656002)(2906002)(478600001)(26005)(4326008);
- DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB5151;
- H:SN6PR04MB4543.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-Received-SPF: None (protection.outlook.com: analogixsemi.com does not
- designate permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: s33h31BvSZP/qc5y4wPM+R/TktdtW7Hw26vlA2IaT3HyoM/cqeYPB/b3usofkslL4yKg/cBIe94W3V9+mSjIE/ejwA5lncgJzQbEGXz7+kCCOap+gvTDUhLNsYVOQyxhQvarYqj15vt3mrqHoaeHtguIMrBe4pV196KNG0PUkq8p6MI13AWOdJQNfaso9AhkXpogkejmoACN+H3UY//dLkvEJOO6kZWHUR8JtsvlistaOXhE6/q2mtagib+3Y+rVqKBg5g+8pqd34coTfwJHfczkYKkhTGgBEqKKVpkEQ0Xu62onsr3Xk8+FyMy1VG9uB0UEodIl8Unin0h96HvRxQSWH8jEV5X50WFsm0/+VtCfWBytYHsmoKPl9QmauIWm5CdprEdBQakTebNbMpAtePF/bxvP+O6XEEnMDqppWUea5ElgTGr3iIPqVYCaSx7y
-X-MS-Exchange-AntiSpam-MessageData: F8uXcJU1WJ20Vgq1xT+eTl9ETnmMvHsxnxgyQCRDNIDB+7f65OicJUUrFkdlUmxGCzGiaCeDX7tVT5sPgYsSzrn86vY/uI4UlgSYv75ex7idkddR5kz0e9u36wOfj7Me6TOkTH+peJ/rBx8j6bxJPQ==
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0b4418f5-7903-4f1c-65e8-08d7b9ca63d5
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2020 08:12:01.0223 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: BT7IFtwJTyjxK19oyywgICGlMNit9WMdS9QT6dS0f76hSV5G9JqvRICHXWuWehb1pJb18/ACqanmG9N4G3rl4A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB5151
+References: <20200224153501.60040-1-glider@google.com>
+ <20200224153501.60040-2-glider@google.com>
+ <202002242017.0817EEA8@keescook>
+In-Reply-To: <202002242017.0817EEA8@keescook>
+From: Jann Horn <jannh@google.com>
+Date: Tue, 25 Feb 2020 09:14:08 +0100
+Message-ID: <CAG48ez1rn1QwYnTJiWbiNDjB3iH7CnSeEA+MZMPp+0pmaLw6bA@mail.gmail.com>
+Subject: Re: [PATCH 2/3] binder: do not initialize locals passed to
+ copy_from_user()
+To: Kees Cook <keescook@chromium.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,42 +82,126 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
- Pi-Hsun Shih <pihsun@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, Sheng Pan <span@analogixsemi.com>
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Ingo Molnar <mingo@redhat.com>, Alexander Potapenko <glider@google.com>,
+ Dmitry Vyukov <dvyukov@google.com>, Todd Kjos <tkjos@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 25, 2020 at 10:42:00AM +0300, Dan Carpenter wrote:
-> On Tue, Feb 25, 2020 at 02:11:39PM +0800, Xin Ji wrote:
-> > Hi all,
-> > 
-> > The following series add initial support for the Slimport ANX7625 transmitter, a
-> > ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
-> > 
-> > This is the initial version, any mistakes, please let me know, I will fix it in
->               ^^^^^^^^^^^^^^^
-> > the next series.
-> 
-> This is actually the v7 version, but the patch zero cover letter hasn't
-> been updated.  :P  The last time anyone responded to these patches was
-> to point out three simple bugs which you fixed in v4 last November.
-Sorry, I missed it, I'll resend the cover letter.
-> 
-> What changed in this version?  My guess is that nothing changed and you
-> are just prodding us to re-review it...  Feel free to say that also
-> because we can't read your mind.
-I added a new bridge interface "mode_fixup" for processing critical
-timing. And add MIPI RX tolerance by setting register 0x1B to 0x3D.
-> 
-> regards,
-> dan carpenter
+On Tue, Feb 25, 2020 at 5:18 AM Kees Cook <keescook@chromium.org> wrote:
+> On Mon, Feb 24, 2020 at 04:35:00PM +0100, glider@google.com wrote:
+> > Certain copy_from_user() invocations in binder.c are known to
+> > unconditionally initialize locals before their first use, like e.g. in
+> > the following case:
+> >
+> >       struct binder_transaction_data tr;
+> >       if (copy_from_user(&tr, ptr, sizeof(tr)))
+> >               return -EFAULT;
+> >
+> > In such cases enabling CONFIG_INIT_STACK_ALL leads to insertion of
+> > redundant locals initialization that the compiler fails to remove.
+> > To work around this problem till Clang can deal with it, we apply
+> > __do_not_initialize to local Binder structures.
+>
+> It should be possible to write a Coccinelle script to identify all these
+> cases. (i.e. a single path from struct declaration to copy_from_user())
+> and apply the changes automatically. This script could be checked into
+> scripts/coccinelle/ to help keep these markings in sync...
+
+I wonder whether it would instead be reasonable to define a helper
+macro for "copy object from userspace to the kernel", and then use
+this macro. Something like this:
+
+#define copy_object_from_user(objp, src) ({              \
+  __attribute__((uninitialized)) typeof(*(objp)) __buf; \
+  copy_from_user(&__buf, (src), sizeof(*(objp)));        \
+  *(objp) = __buf;                                       \
+})
+
+void blah(unsigned long user_addr) {
+  struct foo stackobj;
+  copy_object_from_user(&stackobj, user_addr);
+  do_stuff(&stackobj);
+}
+
+Unfortunately, clang runs a MemCpy optimization pass before the Dead
+Store Elimination pass, which makes the copy_from_user() go directly
+to `stackobj` instead of __buf before DSE has had a chance to get rid
+of the first memcpy(). Grrr...
+
+But looking at the list of passes that LLVM runs, we can see that
+between the MemCpy optimization and the DSE pass, we have Bit-Tracking
+Dead Store Elimination... okay, fine, so we hack together some code
+such that it contains a fake branch that is only resolved between
+MemCpy and DSE:
+
+unsigned long blub, blab;
+unsigned long get_blub(void) { return blub & 5; }
+#define copy_object_from_user(objp, src) ({              \
+  __attribute__((uninitialized)) typeof(*(objp)) __buf; \
+  *(char*)&__buf = 0;                                   \
+  copy_from_user(&__buf, (src), sizeof(*(objp)));        \
+  int x = get_blub(); int y = blab & 10;\
+  if ((x & y) == 0) { \
+    *(objp) = __buf;                                       \
+  } \
+})
+
+But it still doesn't work, even though the IR looks like DSE ought to work:
+
+*** IR Dump After Value Propagation ***
+; Function Attrs: nounwind uwtable
+define dso_local void @blah(i64) local_unnamed_addr #1 {
+  %2 = alloca %struct.foo, align 4
+  %3 = alloca %struct.foo, align 4
+  %4 = bitcast %struct.foo* %2 to i8*
+  call void @llvm.lifetime.start.p0i8(i64 1008, i8* nonnull %4) #4
+  call void @llvm.memset.p0i8.i64(i8* nonnull align 4 %4, i8 -86, i64
+1008, i1 false)
+  %5 = bitcast %struct.foo* %3 to i8*
+  call void @llvm.lifetime.start.p0i8(i64 1008, i8* nonnull %5) #4
+  store i8 0, i8* %5, align 4, !tbaa !6
+  call void @copy_from_user(i8* nonnull %5, i64 %0, i64 1008) #4
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 4 %4, i8*
+nonnull align 4 %5, i64 1008, i1 false), !tbaa.struct !7
+  call void @llvm.lifetime.end.p0i8(i64 1008, i8* nonnull %5) #4
+  call void @do_stuff(%struct.foo* nonnull %2) #4
+  call void @llvm.lifetime.end.p0i8(i64 1008, i8* nonnull %4) #4
+  ret void
+}
+*** IR Dump After Dead Store Elimination ***
+; Function Attrs: nounwind uwtable
+define dso_local void @blah(i64) local_unnamed_addr #1 {
+  %2 = alloca %struct.foo, align 4
+  %3 = alloca %struct.foo, align 4
+  %4 = bitcast %struct.foo* %2 to i8*
+  call void @llvm.lifetime.start.p0i8(i64 1008, i8* nonnull %4) #4
+  call void @llvm.memset.p0i8.i64(i8* nonnull align 4 %4, i8 -86, i64
+1008, i1 false)
+  %5 = bitcast %struct.foo* %3 to i8*
+  call void @llvm.lifetime.start.p0i8(i64 1008, i8* nonnull %5) #4
+  store i8 0, i8* %5, align 4, !tbaa !6
+  call void @copy_from_user(i8* nonnull %5, i64 %0, i64 1008) #4
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 4 %4, i8*
+nonnull align 4 %5, i64 1008, i1 false), !tbaa.struct !7
+  call void @llvm.lifetime.end.p0i8(i64 1008, i8* nonnull %5) #4
+  call void @do_stuff(%struct.foo* nonnull %2) #4
+  call void @llvm.lifetime.end.p0i8(i64 1008, i8* nonnull %4) #4
+  ret void
+}
+
+I guess maybe clang can't do DSE past a function call or something?
+
+We also can't trick the DSE pass using an empty "asm volatile" with an
+output-only memory operand, because the DSE pass can't optimize inline
+asm.
+
+Is there really no way to somehow hack this together inside a macro? :(
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
