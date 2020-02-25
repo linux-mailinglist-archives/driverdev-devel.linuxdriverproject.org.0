@@ -1,56 +1,111 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 499CD16BA83
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 08:21:09 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43AA316BB34
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 08:48:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DB5D5203FD;
-	Tue, 25 Feb 2020 07:21:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8AE7A86911;
+	Tue, 25 Feb 2020 07:48:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n4Q4ybpqW60J; Tue, 25 Feb 2020 07:21:06 +0000 (UTC)
+	with ESMTP id Cq0QP0JTzZuL; Tue, 25 Feb 2020 07:48:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 364EF204FC;
-	Tue, 25 Feb 2020 07:21:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 17018868EF;
+	Tue, 25 Feb 2020 07:48:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1A8C01BF316
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:21:02 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4E02B1BF316
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:48:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 16EA18583C
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:21:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3CD58864E6
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:48:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XKTXX6LOQQFS for <devel@linuxdriverproject.org>;
- Tue, 25 Feb 2020 07:21:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0A14E84344
- for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 07:21:00 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2020 23:21:00 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,483,1574150400"; d="scan'208";a="410149626"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 24 Feb 2020 23:20:56 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1j6UWV-000Gqr-M5; Tue, 25 Feb 2020 15:20:55 +0800
-Date: Tue, 25 Feb 2020 15:19:07 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- c85f15519d45588ce6ab8ad18616d2c0175a25d6
-Message-ID: <5e54ca6b.KO/EhzzuczyyVd8j%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id nbhWqENYVr7M for <devel@linuxdriverproject.org>;
+ Tue, 25 Feb 2020 07:48:19 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2095.outbound.protection.outlook.com [40.107.92.95])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1C34185DB5
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 07:48:19 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CJtojjrVydTcoGTBYika9pJO+H0dqyN7JMRQRXoMiwKH/rWcfIlRr4xC/3DzBUWpZbKwv2qdvdPXQVmaO9SkHEIlOB3N69q3Xmzj6U4oNkpFKDNpYyd18JUBsQnarBO8Odmps/FnL8ycdy2FA+IH3RsiO/YZ9KJ4qZp433kCoRjFgKL3wjSscisz4EiXVNT+Ei2qjHtuZiiXn2NrUB9uLR7QX9zqDf/qbEZJhfsNzqdQYDauTd9YHsSDUnc4bFCDXSVm8N7VMOtLLxh2+wPGFbLR+RmiVSR60O4ZDk24BqAWeMHtd9TwnpFvNbn9x8/zFGFAxEMkywxfRs4OhFf14w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=h3dfc4ziFptkt/bkpbGubhkAqjkBfgj2Sy9MOVNPYkU=;
+ b=KaKpnl3Legd1REPbraxni4OH8gG5vLVLzhaJbBKBs4s9P/7ZdX9PF+wIbuAMezlTxdtusQIr2jvbn3XtL2N14Z8ibSiqFghvz7hZhqbeJkOQbJk/PAC+3O9BY6na9d3RfvfljEpONGUtg1G7XCN2Otw9hJpsaBDtwy9LsaJ7KZZK2puIIpJ204+7JysBM3dpq8CR2mJMDwH7ldqvajRPE/Yy+EhUFKebLmiNyEm96Za51J0x+p4G81U2uo+3ZPx8E3OyJENnHT6EyV0VrZWRA3WWQv8v8FGKJan+oI1/q3XcKO2KmEGNdOsFBiIgXZyI7oz/oLmVqR5HvUciHA/HpQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=h3dfc4ziFptkt/bkpbGubhkAqjkBfgj2Sy9MOVNPYkU=;
+ b=kdhjfoSvptR4pUyqmdjCfoj90DnruFdSSsnPU+7kksi8Fpii85fHKMqzXkiMy2N1+HAItq2QaEaoSXAIJxC+3WzkF6Srhv+QkKkZUh1LXz1KRJRO8gFJh9+YQQAfJzBQJOJVN3SPl1X0Tt2qb+ptP21nxSMkf603Bwbt+4QHjuk=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=xji@analogixsemi.com; 
+Received: from SN6PR04MB4543.namprd04.prod.outlook.com (2603:10b6:805:a5::18)
+ by SN6PR04MB5232.namprd04.prod.outlook.com (2603:10b6:805:f3::32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2750.22; Tue, 25 Feb
+ 2020 06:14:14 +0000
+Received: from SN6PR04MB4543.namprd04.prod.outlook.com
+ ([fe80::9598:7ff:b397:ba56]) by SN6PR04MB4543.namprd04.prod.outlook.com
+ ([fe80::9598:7ff:b397:ba56%7]) with mapi id 15.20.2750.021; Tue, 25 Feb 2020
+ 06:14:13 +0000
+Date: Tue, 25 Feb 2020 14:14:03 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: devel@driverdev.osuosl.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andrzej Hajda <a.hajda@samsung.com>
+Subject: [PATCH v7 1/2] dt-bindings: drm/bridge: anx7625: MIPI to DP
+ transmitter binding
+Message-ID: <67ccead807b7d0a50df479cab2c9d325041224bc.1582529411.git.xji@analogixsemi.com>
+References: <cover.1582529411.git.xji@analogixsemi.com>
+Content-Disposition: inline
+In-Reply-To: <cover.1582529411.git.xji@analogixsemi.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-ClientProxiedBy: HK2PR06CA0002.apcprd06.prod.outlook.com
+ (2603:1096:202:2e::14) To SN6PR04MB4543.namprd04.prod.outlook.com
+ (2603:10b6:805:a5::18)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from xin-VirtualBox (114.247.245.254) by
+ HK2PR06CA0002.apcprd06.prod.outlook.com (2603:1096:202:2e::14) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.2750.18 via Frontend Transport; Tue, 25 Feb 2020 06:14:12 +0000
+X-Originating-IP: [114.247.245.254]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 8754c43c-5145-4e67-8994-08d7b9b9ef7f
+X-MS-TrafficTypeDiagnostic: SN6PR04MB5232:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <SN6PR04MB52328C69BDA29C727ADA7011C7ED0@SN6PR04MB5232.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4125;
+X-Forefront-PRVS: 0324C2C0E2
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10019020)(39840400004)(136003)(366004)(346002)(396003)(376002)(199004)(189003)(478600001)(4326008)(66556008)(66476007)(36756003)(26005)(16526019)(66946007)(81156014)(81166006)(8676002)(5660300002)(186003)(8936002)(86362001)(2906002)(54906003)(110136005)(316002)(7416002)(6496006)(2616005)(52116002)(956004)(107886003)(6666004)(6486002);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB5232;
+ H:SN6PR04MB4543.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+Received-SPF: None (protection.outlook.com: analogixsemi.com does not
+ designate permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: zzEhxeIQW4KU8rjYqSR1kj4LGCyHW2alHOy7idN+IS3pQYAmvuOsQY0oGBAST27ltuoaibukekhfzpfZx7srhrCtBcVf0coZW0WYLDRjGYsJhrgOrUbXNFu7nR/3Uqtf6MIf71fEEcblqPCi8PxyBJZkijdKxctc/tP4FtgNidRpimW5IHMDcrdo390kQ9JSc5oYjAFBciC6P1/B6qTvd7RBxV+cjUYDf7vuzebSD8k9V+3TsAxEXpYMnEwXNmPkMFYWmagowoIQqPe0tfXKcyKLqpRrbOTKeMjB+AzSMSqE8vLFAOJ+NnFuPrjeha6At0QIMoaRt7lPiGzGGOXxP/f/GF2xnoNOv587q3KgYfnt6ZiLC1Eo4iGNAGMKpU1REO8J1cwtMThAl/uXaltUYg3Vytwb3eo9BvCmLWQKriF4z845a7xVCGx5f2k93y4rWS0A91lof3T826tWJmcKrEzD0oS/dUSNHz/TH3Ux27kQHYSDk1fh9kPWxJR3d4OM1zsvNHzpjGtdZJbjmy1qxA==
+X-MS-Exchange-AntiSpam-MessageData: MV7+wGzHkeA+41xbBDVNo2cmBjQIVvYWqXo+yWZqcSUpupuG9aL0XQnaWUnVQ9/zTLtDjju8XMJIyqrDf757UY3rYk3JDapiUv6qjFmehVwLTZb5ofcKmjK4htQ+K7CfWUhMyZ2L3Wc1GwMMFgnI0Q==
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8754c43c-5145-4e67-8994-08d7b9b9ef7f
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2020 06:14:13.7893 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: y2qCkZTzhI4w1v54hJ4MY2BIC/3kXcyVR/OsThaSxkVokJThRJgGm5xevBjtPboW64cooOzH4EbZbniMrvmStA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB5232
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,267 +118,154 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
+ Nicolas Boichat <drinkcat@chromium.org>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Sheng Pan <span@analogixsemi.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-next
-branch HEAD: c85f15519d45588ce6ab8ad18616d2c0175a25d6  Merge 5.6-rc3 into staging-next
+The ANX7625 is an ultra-low power 4K Mobile HD Transmitter designed
+for portable device. It converts MIPI to DisplayPort 1.3 4K.
 
-elapsed time: 1214m
+You can add support to your board with binding.
 
-configs tested: 240
-configs skipped: 0
+Example:
+	anx7625_bridge: encoder@58 {
+		compatible = "analogix,anx7625";
+		reg = <0x58>;
+		status = "okay";
+		panel-flags = <1>;
+		enable-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&pio 73 GPIO_ACTIVE_HIGH>;
+		#address-cells = <1>;
+		#size-cells = <0>;
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+		port@0 {
+		  reg = <0>;
+		  anx_1_in: endpoint {
+		    remote-endpoint = <&mipi_dsi>;
+		  };
+		};
 
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                               defconfig
-sparc                            allyesconfig
-nios2                         3c120_defconfig
-parisc                generic-64bit_defconfig
-nds32                             allnoconfig
-s390                             allyesconfig
-mips                             allmodconfig
-riscv                          rv32_defconfig
-m68k                           sun3_defconfig
-nds32                               defconfig
-arc                                 defconfig
-um                             i386_defconfig
-powerpc                             defconfig
-s390                             alldefconfig
-s390                          debug_defconfig
-powerpc                       ppc64_defconfig
-i386                                defconfig
-sh                                allnoconfig
-h8300                    h8300h-sim_defconfig
-s390                             allmodconfig
-um                           x86_64_defconfig
-i386                              allnoconfig
-i386                             alldefconfig
-i386                             allyesconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-alpha                               defconfig
-csky                                defconfig
-h8300                     edosk2674_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-arc                              allyesconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-parisc                           allyesconfig
-parisc                generic-32bit_defconfig
-x86_64               randconfig-a001-20200224
-x86_64               randconfig-a002-20200224
-x86_64               randconfig-a003-20200224
-i386                 randconfig-a001-20200224
-i386                 randconfig-a002-20200224
-i386                 randconfig-a003-20200224
-x86_64               randconfig-a001-20200225
-x86_64               randconfig-a002-20200225
-x86_64               randconfig-a003-20200225
-i386                 randconfig-a001-20200225
-i386                 randconfig-a002-20200225
-i386                 randconfig-a003-20200225
-alpha                randconfig-a001-20200224
-m68k                 randconfig-a001-20200224
-mips                 randconfig-a001-20200224
-nds32                randconfig-a001-20200224
-parisc               randconfig-a001-20200224
-riscv                randconfig-a001-20200224
-alpha                randconfig-a001-20200225
-m68k                 randconfig-a001-20200225
-mips                 randconfig-a001-20200225
-nds32                randconfig-a001-20200225
-parisc               randconfig-a001-20200225
-riscv                randconfig-a001-20200225
-nios2                randconfig-a001-20200224
-c6x                  randconfig-a001-20200224
-sparc64              randconfig-a001-20200224
-microblaze           randconfig-a001-20200224
-h8300                randconfig-a001-20200224
-c6x                  randconfig-a001-20200225
-h8300                randconfig-a001-20200225
-microblaze           randconfig-a001-20200225
-nios2                randconfig-a001-20200225
-sparc64              randconfig-a001-20200225
-csky                 randconfig-a001-20200224
-openrisc             randconfig-a001-20200224
-s390                 randconfig-a001-20200224
-sh                   randconfig-a001-20200224
-xtensa               randconfig-a001-20200224
-csky                 randconfig-a001-20200225
-openrisc             randconfig-a001-20200225
-s390                 randconfig-a001-20200225
-sh                   randconfig-a001-20200225
-xtensa               randconfig-a001-20200225
-x86_64               randconfig-b001-20200225
-x86_64               randconfig-b002-20200225
-x86_64               randconfig-b003-20200225
-i386                 randconfig-b001-20200225
-i386                 randconfig-b002-20200225
-i386                 randconfig-b003-20200225
-x86_64               randconfig-b001-20200224
-x86_64               randconfig-b002-20200224
-x86_64               randconfig-b003-20200224
-i386                 randconfig-b001-20200224
-i386                 randconfig-b002-20200224
-i386                 randconfig-b003-20200224
-x86_64               randconfig-c001-20200225
-x86_64               randconfig-c002-20200225
-x86_64               randconfig-c003-20200225
-i386                 randconfig-c001-20200225
-i386                 randconfig-c002-20200225
-i386                 randconfig-c003-20200225
-x86_64               randconfig-c001-20200224
-x86_64               randconfig-c002-20200224
-x86_64               randconfig-c003-20200224
-i386                 randconfig-c001-20200224
-i386                 randconfig-c002-20200224
-i386                 randconfig-c003-20200224
-x86_64               randconfig-d001-20200225
-x86_64               randconfig-d002-20200225
-x86_64               randconfig-d003-20200225
-i386                 randconfig-d001-20200225
-i386                 randconfig-d002-20200225
-i386                 randconfig-d003-20200225
-x86_64               randconfig-d001-20200224
-x86_64               randconfig-d002-20200224
-x86_64               randconfig-d003-20200224
-i386                 randconfig-d001-20200224
-i386                 randconfig-d002-20200224
-i386                 randconfig-d003-20200224
-x86_64               randconfig-e001-20200224
-x86_64               randconfig-e002-20200224
-x86_64               randconfig-e003-20200224
-i386                 randconfig-e001-20200224
-i386                 randconfig-e002-20200224
-i386                 randconfig-e003-20200224
-x86_64               randconfig-e001-20200225
-x86_64               randconfig-e002-20200225
-x86_64               randconfig-e003-20200225
-i386                 randconfig-e001-20200225
-i386                 randconfig-e002-20200225
-i386                 randconfig-e003-20200225
-x86_64               randconfig-f001-20200225
-x86_64               randconfig-f002-20200225
-x86_64               randconfig-f003-20200225
-i386                 randconfig-f001-20200225
-i386                 randconfig-f002-20200225
-i386                 randconfig-f003-20200225
-x86_64               randconfig-f001-20200224
-x86_64               randconfig-f002-20200224
-x86_64               randconfig-f003-20200224
-i386                 randconfig-f001-20200224
-i386                 randconfig-f002-20200224
-i386                 randconfig-f003-20200224
-x86_64               randconfig-g001-20200224
-x86_64               randconfig-g002-20200224
-x86_64               randconfig-g003-20200224
-i386                 randconfig-g001-20200224
-i386                 randconfig-g002-20200224
-i386                 randconfig-g003-20200224
-x86_64               randconfig-g001-20200225
-x86_64               randconfig-g002-20200225
-x86_64               randconfig-g003-20200225
-i386                 randconfig-g001-20200225
-i386                 randconfig-g002-20200225
-i386                 randconfig-g003-20200225
-x86_64               randconfig-g001-20200223
-x86_64               randconfig-g002-20200223
-x86_64               randconfig-g003-20200223
-i386                 randconfig-g001-20200223
-i386                 randconfig-g002-20200223
-i386                 randconfig-g003-20200223
-x86_64               randconfig-h001-20200225
-x86_64               randconfig-h002-20200225
-x86_64               randconfig-h003-20200225
-i386                 randconfig-h001-20200225
-i386                 randconfig-h002-20200225
-i386                 randconfig-h003-20200225
-x86_64               randconfig-h001-20200224
-x86_64               randconfig-h002-20200224
-x86_64               randconfig-h003-20200224
-i386                 randconfig-h001-20200224
-i386                 randconfig-h002-20200224
-i386                 randconfig-h003-20200224
-arc                  randconfig-a001-20200224
-arm                  randconfig-a001-20200224
-arm64                randconfig-a001-20200224
-ia64                 randconfig-a001-20200224
-powerpc              randconfig-a001-20200224
-sparc                randconfig-a001-20200224
-arc                  randconfig-a001-20200225
-arm                  randconfig-a001-20200225
-arm64                randconfig-a001-20200225
-ia64                 randconfig-a001-20200225
-powerpc              randconfig-a001-20200225
-sparc                randconfig-a001-20200225
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-s390                              allnoconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-sh                               allmodconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-um                                  defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
+		port@2 {
+		  reg = <2>;
+		  anx_1_out: endpoint {
+		    remote-endpoint = <&panel_in>;
+		  };
+		};
+	};
 
+Signed-off-by: Xin Ji <xji@analogixsemi.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ .../bindings/display/bridge/anx7625.yaml           | 91 ++++++++++++++++++++++
+ 1 file changed, 91 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.yaml
+
+diff --git a/Documentation/devicetree/bindings/display/bridge/anx7625.yaml b/Documentation/devicetree/bindings/display/bridge/anx7625.yaml
+new file mode 100644
+index 0000000..1149ebb
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/bridge/anx7625.yaml
+@@ -0,0 +1,91 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++# Copyright 2019 Analogix Semiconductor, Inc.
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/display/bridge/anx7625.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: Analogix ANX7625 SlimPort (4K Mobile HD Transmitter)
++
++maintainers:
++  - Xin Ji <xji@analogixsemi.com>
++
++description: |
++  The ANX7625 is an ultra-low power 4K Mobile HD Transmitter
++  designed for portable devices.
++
++properties:
++  "#address-cells": true
++  "#size-cells": true
++
++  compatible:
++    items:
++      - const: analogix,anx7625
++
++  reg:
++    maxItems: 1
++
++  panel-flags:
++    description: indicate the panel is internal or external.
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  enable-gpios:
++    description: used for power on chip control, POWER_EN pin D2.
++    maxItems: 1
++
++  reset-gpios:
++    description: used for reset chip control, RESET_N pin B7.
++    maxItems: 1
++
++  port@0:
++    type: object
++    description:
++      A port node pointing to MIPI DSI host port node.
++
++  port@1:
++    type: object
++    description:
++      A port node pointing to MIPI DPI host port node.
++
++  port@2:
++    type: object
++    description:
++      A port node pointing to panel port node.
++
++required:
++  - "#address-cells"
++  - "#size-cells"
++  - compatible
++  - reg
++  - port@0
++  - port@2
++
++example:
++  - |
++    anx7625_bridge: encoder@58 {
++        compatible = "analogix,anx7625";
++        reg = <0x58>;
++        status = "okay";
++        panel-flags = <1>;
++        enable-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
++        reset-gpios = <&pio 73 GPIO_ACTIVE_HIGH>;
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        port@0 {
++          reg = <0>;
++          anx_1_in: endpoint {
++            remote-endpoint = <&mipi_dsi>;
++          };
++        };
++
++        port@2 {
++          reg = <2>;
++          anx_1_out: endpoint {
++            remote-endpoint = <&panel_in>;
++          };
++        };
++    };
+-- 
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
