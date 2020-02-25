@@ -1,60 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C878D16E994
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 16:07:53 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DB351868D8;
-	Tue, 25 Feb 2020 15:07:51 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C1XMdBdigFB8; Tue, 25 Feb 2020 15:07:51 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A9C228682C;
-	Tue, 25 Feb 2020 15:07:50 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D62C81BF578
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 15:07:48 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1BB9016E9F5
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 16:24:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D0E3485F93
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 15:07:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C4036844D4;
+	Tue, 25 Feb 2020 15:24:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UNbhp4X0y4sw; Tue, 25 Feb 2020 15:24:28 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D8236863D9;
+	Tue, 25 Feb 2020 15:24:23 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 29D481BF578
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 15:24:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2660184B0F
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 15:24:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yq4mxzNrZ904 for <devel@linuxdriverproject.org>;
- Tue, 25 Feb 2020 15:07:47 +0000 (UTC)
+ with ESMTP id 28GyLLtUq37e for <devel@linuxdriverproject.org>;
+ Tue, 25 Feb 2020 15:24:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9F09C854DF
- for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 15:07:47 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Feb 2020 07:07:46 -0800
-X-IronPort-AV: E=Sophos;i="5.70,484,1574150400"; d="scan'208";a="284693145"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Feb 2020 07:07:22 -0800
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 39A9D2089D; Tue, 25 Feb 2020 17:07:21 +0200 (EET)
-Date: Tue, 25 Feb 2020 17:07:21 +0200
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Steve Longerbeam <slongerbeam@gmail.com>
-Subject: Re: [RESEND PATCH v3 02/17] media: v4l2-fwnode: Pass notifier to
- v4l2_async_register_fwnode_subdev()
-Message-ID: <20200225150721.GO5379@paasikivi.fi.intel.com>
-References: <20200215194136.10131-1-slongerbeam@gmail.com>
- <20200215194136.10131-3-slongerbeam@gmail.com>
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 864F884AAD
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 15:24:17 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id u6so15238241wrt.0
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 07:24:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pExCLnABKq1PfpRTTdn9ZK5CU/mStxRwg8IJB5FDpUA=;
+ b=sEVkwqoCtUXZHhR3RSDHD/FOfpPLG/PAyssQ58MV6GjDv0x5NgXhE0cdc1VNGSL7N+
+ r6nna5mYWsz6JFrRmjtLbf/fB5ziT5d4vqG0ZosXCICO9pwu17WgpCxjVj2ImmAj8qOh
+ OkXX5xSNijhdHsgOwDhV49goxCc4B0gJA0J8ejiMHo5anR+MG9VhpSt8+sposRct7PO1
+ elorcwnzIeq7kyIir6uyQCM9kXnA+R/MW/2/ZCLfwN4xDPhc1w/yjqYiBlMvj7MqOwMV
+ IBiBu8VCWUovJ0lZ2vd8eZsx+/Pzw3Zz8Qgh5oQuLxWcwcDquG2v9WSNO5S970qW+v+U
+ 9fyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pExCLnABKq1PfpRTTdn9ZK5CU/mStxRwg8IJB5FDpUA=;
+ b=J/0ogUCAETea9h9HpsRu28ag5h3b3f7p3h0yHf7JKjXWb7S7RfIAXdq4sczGb0konA
+ j5IY1hP828rNAi6TfN4M8EY0xZIrNAc/Bf6bv20WU5HDrUOOJhqf/dLzHlx1E0ohg/0z
+ O5Vilv+ZlwqAxOrjlwSZS4lVQJofH7vUy/+5LIXOZxAaFcKsgTpJtAOdq+2XG9Chqy0q
+ /HmdoTpXjwtZUTg5p1SKr7HduNC6aYOAPV3MCWP7huv7Ccmxbv1OjFPe+QdzLcb2mIDT
+ K4zYl6fzW47fsz2cqPPgqmgSPDuUWtSX6S0vRbj4TwtF/cBvsUuolvGQdWmFbeq3PFpx
+ ytXg==
+X-Gm-Message-State: APjAAAX44iXbE5/GTbXg9prM5Fg/TMfyvmDyO0kwO2kJ5/Xfw6B5kTz4
+ 8vzWj7W0Kd3odQis3M/fCd4r4ZLZLu2QAspB7cldPg==
+X-Google-Smtp-Source: APXvYqydc9sdEbNSNazO2Owi/Zc64/tf/SD6RSJAAhTNsGSMpkBBhfogbxWR6XT1dO567DtogTW1e+8UvUxfbOXhqvc=
+X-Received: by 2002:adf:b60f:: with SMTP id f15mr76823740wre.372.1582644255524; 
+ Tue, 25 Feb 2020 07:24:15 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200215194136.10131-3-slongerbeam@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20200224153501.60040-1-glider@google.com>
+ <20200224153501.60040-2-glider@google.com>
+ <202002242017.0817EEA8@keescook>
+In-Reply-To: <202002242017.0817EEA8@keescook>
+From: Alexander Potapenko <glider@google.com>
+Date: Tue, 25 Feb 2020 16:24:04 +0100
+Message-ID: <CAG_fn=WoBZL4_Zzg_EL45MWyccXt9JVBdXyxfEdkaoMVKOhhaQ@mail.gmail.com>
+Subject: Re: [PATCH 2/3] binder: do not initialize locals passed to
+ copy_from_user()
+To: Kees Cook <keescook@chromium.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,59 +82,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Jann Horn <jannh@google.com>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, arve@android.com,
+ Ingo Molnar <mingo@redhat.com>, Dmitriy Vyukov <dvyukov@google.com>,
+ Todd Kjos <tkjos@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Steve,
+On Tue, Feb 25, 2020 at 5:18 AM Kees Cook <keescook@chromium.org> wrote:
+>
+> On Mon, Feb 24, 2020 at 04:35:00PM +0100, glider@google.com wrote:
+> > Certain copy_from_user() invocations in binder.c are known to
+> > unconditionally initialize locals before their first use, like e.g. in
+> > the following case:
+> >
+> >       struct binder_transaction_data tr;
+> >       if (copy_from_user(&tr, ptr, sizeof(tr)))
+> >               return -EFAULT;
+> >
+> > In such cases enabling CONFIG_INIT_STACK_ALL leads to insertion of
+> > redundant locals initialization that the compiler fails to remove.
+> > To work around this problem till Clang can deal with it, we apply
+> > __do_not_initialize to local Binder structures.
+>
+> It should be possible to write a Coccinelle script to identify all these
+> cases. (i.e. a single path from struct declaration to copy_from_user())
+> and apply the changes automatically. This script could be checked into
+> scripts/coccinelle/ to help keep these markings in sync...
 
-On Sat, Feb 15, 2020 at 11:41:21AM -0800, Steve Longerbeam wrote:
-> Instead of allocating a notifier in v4l2_async_register_fwnode_subdev(),
-> have the caller provide one. This allows the caller to implement
-> notifier ops (bind, unbind).
-> 
-> The caller is now responsible for first initializing its notifier with a
-> call to v4l2_async_notifier_init().
-> 
-> Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
+The following script:
 
-Instead of improving v4l2_async_register_fwnode_subdev(), could you convert
-the users (IMX driver in this case) to call the preferred APIs instead? As
-the lines below show, v4l2_async_register_fwnode_subdev() has only two
-users left --- the other one of which is the IMX driver. After converting
-these two, we could just remove this API.
+=================================
+@local_inited_by_cfu@
+attribute name __no_initialize;
+identifier var;
+type T;
+statement stmt;
+@@
+T var
++__no_initialize
+;
+if (copy_from_user(&var,..., sizeof(var))) stmt
+=================================
 
-See e.g. drivers/media/pci/intel/ipu3/ipu3-cio2.c and
-drivers/media/platform/omap3isp/isp.c for examples.
-
-> ---
-> Changes in v3:
-> - added the missing calls to unregister/cleanup the new subdev notifiers.
->   Reported by Rui Silva.
-> ---
->  drivers/media/platform/video-mux.c         |  8 +++++++-
->  drivers/media/v4l2-core/v4l2-fwnode.c      | 11 +----------
->  drivers/staging/media/imx/imx6-mipi-csi2.c |  7 ++++++-
->  drivers/staging/media/imx/imx7-media-csi.c |  7 ++++++-
->  drivers/staging/media/imx/imx7-mipi-csis.c |  9 ++++++++-
->  include/media/v4l2-fwnode.h                | 12 ++++++++----
->  6 files changed, 36 insertions(+), 18 deletions(-)
-
--- 
-Kind regards,
-
-Sakari Ailus
+seems to do the job, but this transformation isn't idempotent: it
+inserts __no_initialize every time Coccinelle is invoked.
+It's hard to work around this problem, as attributes may only be parts
+of +-lines (i.e. I cannot write a rule that matches "T var
+__no_initialize")
+Linux kernel coccinelle scripts don't really contain good examples of
+adding attributes, and probably the spatch version used by most
+maintainers doesn't support them :(
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
