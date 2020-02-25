@@ -1,108 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4440816BC03
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 09:42:49 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 396DF16BEF4
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 11:39:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E957420794;
-	Tue, 25 Feb 2020 08:42:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8E77F844D6;
+	Tue, 25 Feb 2020 10:39:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id etJqYX+LmXul; Tue, 25 Feb 2020 08:42:46 +0000 (UTC)
+	with ESMTP id tMmyIRBIzQY5; Tue, 25 Feb 2020 10:39:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 731AC20506;
-	Tue, 25 Feb 2020 08:42:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6B03286990;
+	Tue, 25 Feb 2020 10:39:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B83D51BF2CB
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 08:42:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2EF061BF2B3
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 10:39:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B2C39842FC
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 08:42:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2BFBB861A7
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 10:39:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ovztknuu+L44 for <devel@linuxdriverproject.org>;
- Tue, 25 Feb 2020 08:42:39 +0000 (UTC)
-X-Greylist: delayed 02:28:23 by SQLgrey-1.7.6
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2102.outbound.protection.outlook.com [40.107.220.102])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DFFD881E39
- for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 08:42:38 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lnjfY/9PFhKOXMqzH0npClgg5CpA3VOWVgeCnZCigbgC/aRfHY+sbuI6Ein3Ie4F2ODKQEW1MCFhzeeQMwhAIXXpWtmiW/CLSZdu4cJ/zOxfBu1/Lo7C/4dh38Po/h/imCMp4IUWgvCpJ0cXZfn3UZIE6jls2iTKtz319pcQ96IlIOyW0gjjotv2rPfgJ2MFG+3LBL9iSpDeg2rGLDjHQmrOzQV2RVapPpIKwnRxvyY9m91oqTQ0Mhqto24fVLOko0qcW2T1UsBdcgJwyhcxXVox0LFLu2khnTSKWBYYrcw6P9BbV/LgbJmig+s7GdTTxVAw9tPcd9Lc53O6tr1HpQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P5Ci8GWyK3SOB6xpXF/O/X6MBqh9rKxAjlXfoNb8Yp8=;
- b=CnGxx3zrX9O8r1pZa4IaBP5dgF8HSKlZv7u7n1Cb0XWBwXuMBwgFsUOxjiDg+2axXy9g/Fcy6Suo6RkrHuSbKi9yJ4tCfePRW4irpGb9AEeDWysA2JYSMcdJQJhwtAkoX4E24G5g0lcnhfTWvJmvO2hWSYkM6lQ36bXfSD5SlKThw+yVXp3MXUz/liZxGAaADQ6jU0c7kcDp3ib7tyIdWqOMtpQOiYd9NHp8SfDZRQCkRpKp6sbVgmO/B4MvlnOPFqNNbV6KyuYaO6gLsTLyZi0Xb/Qjaddy8aX+8w31Z8Lac38nmqkeTe37EN5evljLu5Zct9zQP0/nMZtMJxqj2A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P5Ci8GWyK3SOB6xpXF/O/X6MBqh9rKxAjlXfoNb8Yp8=;
- b=lJFVgcKdtrqArdenYuMSCxLqyoKrqxLlJShypo5F4t44DaL8w38NxNBkH34qpJ7/l30nCUImIMnc+BrdGgbjYNAXe366CamkkgYbfUyXUMcJO2vxOawpmKYn1Ljb0vc1ihETD9hSDO2D0KTWuKkU9W75HT+lsMgsVJK3pwdl1zQ=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=xji@analogixsemi.com; 
-Received: from SN6PR04MB4543.namprd04.prod.outlook.com (2603:10b6:805:a5::18)
- by SN6PR04MB5231.namprd04.prod.outlook.com (2603:10b6:805:fe::26)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2750.22; Tue, 25 Feb
- 2020 06:11:49 +0000
-Received: from SN6PR04MB4543.namprd04.prod.outlook.com
- ([fe80::9598:7ff:b397:ba56]) by SN6PR04MB4543.namprd04.prod.outlook.com
- ([fe80::9598:7ff:b397:ba56%7]) with mapi id 15.20.2750.021; Tue, 25 Feb 2020
- 06:11:49 +0000
-Date: Tue, 25 Feb 2020 14:11:39 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: devel@driverdev.osuosl.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Andrzej Hajda <a.hajda@samsung.com>
-Subject: [PATCH v7 0/2] Add initial support for slimport anx7625
-Message-ID: <cover.1582529411.git.xji@analogixsemi.com>
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-ClientProxiedBy: HK0PR03CA0117.apcprd03.prod.outlook.com
- (2603:1096:203:b0::33) To SN6PR04MB4543.namprd04.prod.outlook.com
- (2603:10b6:805:a5::18)
+ with ESMTP id wmEAicfJS6S0 for <devel@linuxdriverproject.org>;
+ Tue, 25 Feb 2020 10:39:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7F00E84900
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 10:39:16 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id t3so14082350wru.7
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 02:39:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=T01h6iuP2rTY4GGKRACK3dSW1PWei7kSfe0/FUA9ALQ=;
+ b=VHV8aUTLP8963iwAuedMShp862RkTA/rTVg9sikPISmb5JxkkpGyw2HPOBjF9mvFcw
+ r3Q9bSCDIF1hedGK0esNtUejQCJXyeBoNgtmIjBbt37jvtgI/W7wJirS4daLL0ukuKFK
+ OeWLCBF9tkCqj7SNnCPTl7kSgQ/TZ7o9JW37trgyU1oo+FZvSmPG+AtzWSWMGSyU/8L/
+ 6dCDVebSCv6E8y0nwpAXpkHX2ErTaUFixHgWXCIQAQ6ELDhxW1KySvscwZVIElrFDV5Y
+ WuXclw3HVdKW1QV5LynN8GFT5+CBVDZNFmrG80Irontaxp35sahYew4UNYjhW1xaKyI6
+ CNOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=T01h6iuP2rTY4GGKRACK3dSW1PWei7kSfe0/FUA9ALQ=;
+ b=DKzRQ9/FtZXPPUPPibQtcPezCogBJ2FMOg2Vt+ItT4OQX+1S7PCaqmPv8AJ9ZvPqCU
+ ojsaXRjugkxb4jCA1vSD7aQnPpaEo9IlYBB7ns0C9SRuxMcK4JYxvyqbgGcL/n3Yp3Fm
+ ja/X19pxjeqlar5BhinFWHIE3ubnHP5FsxMu8rLblakbOX7isjdcqh1NEqr+3OnV8dZy
+ Qkmt/RSwwPClA3IrDR6Qu6s3zXolFxrSqaNiKCXFgTNQKkG1eicsFmFMq5176zanbJ3J
+ OlXArMlI12E15sEFrYiiaT0qqEsAS+yZElOBg9sQDZRjVNiRryTEtM4L0GbFTyglcl5F
+ 3zTw==
+X-Gm-Message-State: APjAAAWVVs4NRuBvwNyAiUUbDFBy3FyECVazOl/iZnFjWk89uTzX/L5P
+ YvpMDcpVvsy5zfijcbce/FE7egHy5kuicj2kpWMmqQ==
+X-Google-Smtp-Source: APXvYqyDK3LNg1jOdRi0athK5VbtWiOja6QgsAbcLOO0XSRVOcdIwtT32YJuJBJafzY94j4A66a4WBxEYCcfVi2uPbA=
+X-Received: by 2002:adf:f084:: with SMTP id n4mr71962390wro.200.1582627154775; 
+ Tue, 25 Feb 2020 02:39:14 -0800 (PST)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from xin-VirtualBox (114.247.245.254) by
- HK0PR03CA0117.apcprd03.prod.outlook.com (2603:1096:203:b0::33) with Microsoft
- SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
- 15.20.2750.18 via Frontend Transport; Tue, 25 Feb 2020 06:11:48 +0000
-X-Originating-IP: [114.247.245.254]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: e946bed7-6089-420d-72a2-08d7b9b999a8
-X-MS-TrafficTypeDiagnostic: SN6PR04MB5231:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <SN6PR04MB5231F43C4E4EE82649E0AE6CC7ED0@SN6PR04MB5231.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
-X-Forefront-PRVS: 0324C2C0E2
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10019020)(366004)(189003)(199004)(86362001)(6496006)(52116002)(2906002)(498600001)(110136005)(5660300002)(54906003)(4744005)(81166006)(2616005)(956004)(66476007)(81156014)(4326008)(66556008)(36756003)(8936002)(107886003)(6486002)(6666004)(16526019)(7416002)(8676002)(66946007)(186003)(26005);
- DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB5231;
- H:SN6PR04MB4543.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-Received-SPF: None (protection.outlook.com: analogixsemi.com does not
- designate permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: dsAj6hCelPNna0Kj+l8n6zzzIqY51lqP7wkHTuP34ZINmxv7vDTrofe92JhUvzDEbsIlLrTt7dblTeeEWY4sHdUtdTZaxqAgMEgcNCiC7wERiKik+tcWFkjun+deqA3P6d+DqnJ1heKAU3xSMLfOrZbq/gfH6a1eUP7U+6aEobvZRCtAJ+6haFgk1PSD+zwLbTHjAdNmS1wxb66kYfYORKitLujDzrHue93q3A5QsOzCFp+v4d/Tw+M/7qZtJLN61fNZY7AawdQbLc4cGv90GvpMmyt8XsOJ86kVeg/rznhwC2pg0wQ1CJmp3bXEJb8wtByTYeMOGbGr8Z+T1bclafIJ6Mvo8PSt12XOVYiIsOim3BlogTmoIH++kzzkAaSTYi7ETUn9ydSIoLBNEUXApFmqU1YRiC3w3sGlHMg5RC8XDbAwPQua1NBLGFBrW0K4
-X-MS-Exchange-AntiSpam-MessageData: K2eF92iMU9tNhNVPeHjV/vO7gZeRbMDymSNqGzdfkPoRHDtKW5VO3Gx2amvf0tqHv/ZcWQYbaN5xaDTHbNzuEbi5+YcoIjGMRTXwXw4RHkYIQ5KnJLO0a6sNSphLX/b7srYkuyBnJpYEMWFz15mWFQ==
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e946bed7-6089-420d-72a2-08d7b9b999a8
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2020 06:11:49.6235 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: uTbgyHNoogKZTgBB/4VwmDnCOOz37sjlgNSsRhUvBRlfHNTNDn+I47p8aPBVLGfqfjmS6VnwywE2a4sbwmIWXg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB5231
+References: <20200224153501.60040-1-glider@google.com>
+ <202002242014.F641277@keescook>
+In-Reply-To: <202002242014.F641277@keescook>
+From: Alexander Potapenko <glider@google.com>
+Date: Tue, 25 Feb 2020 11:39:03 +0100
+Message-ID: <CAG_fn=V5kB_HZ9S+kJHHub_BfuoO5zLr3NE93dMmBgrizu_1Mw@mail.gmail.com>
+Subject: Re: [PATCH 1/3] compiler.h: define __do_not_initialize
+To: Kees Cook <keescook@chromium.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,47 +80,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
- Nicolas Boichat <drinkcat@chromium.org>, Pi-Hsun Shih <pihsun@chromium.org>,
- Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
- Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Sheng Pan <span@analogixsemi.com>,
- Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, Jann Horn <jannh@google.com>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, arve@android.com,
+ Ingo Molnar <mingo@redhat.com>, Dmitriy Vyukov <dvyukov@google.com>,
+ Todd Kjos <tkjos@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi all,
+On Tue, Feb 25, 2020 at 5:16 AM Kees Cook <keescook@chromium.org> wrote:
+>
+> On Mon, Feb 24, 2020 at 04:34:59PM +0100, glider@google.com wrote:
+> > For CONFIG_INIT_STACK_ALL it's sometimes handy to disable
+> > force-initialization for a local variable, if it is known to be initialized
+> > later on before the first use. This can be done by using the
+> > __do_not_initialize macro.
+>
+> Nit-pick: other things are listed as __no_$feature. What about naming
+> this __no_initialize (or reuse the attribute name of __uninitialized)?
+I agree that __no_initialize is more consistent (and also shorter than
+__do_not_initialize).
+Let's stick with this name.
 
-The following series add initial support for the Slimport ANX7625 transmitter, a
-ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
-
-This is the initial version, any mistakes, please let me know, I will fix it in
-the next series.
-
-Thanks,
-Xin
-
-
-Xin Ji (2):
-  dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter binding
-  drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to DP bridge driver
-
- .../bindings/display/bridge/anx7625.yaml           |   91 +
- drivers/gpu/drm/bridge/Makefile                    |    2 +-
- drivers/gpu/drm/bridge/analogix/Kconfig            |    6 +
- drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
- drivers/gpu/drm/bridge/analogix/anx7625.c          | 2172 ++++++++++++++++++++
- drivers/gpu/drm/bridge/analogix/anx7625.h          |  410 ++++
- 6 files changed, 2681 insertions(+), 1 deletion(-)
- create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.yaml
- create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
- create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
-
--- 
-2.7.4
-
+> Please CC lkml as well in the future.
+Ok, will do.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
