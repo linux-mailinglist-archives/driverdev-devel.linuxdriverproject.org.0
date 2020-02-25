@@ -1,111 +1,139 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43AA316BB34
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 08:48:26 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8AE7A86911;
-	Tue, 25 Feb 2020 07:48:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Cq0QP0JTzZuL; Tue, 25 Feb 2020 07:48:23 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 17018868EF;
-	Tue, 25 Feb 2020 07:48:23 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4E02B1BF316
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:48:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA4BB16BAF3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 08:41:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3CD58864E6
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:48:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 90DB8874C5;
+	Tue, 25 Feb 2020 07:41:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KrGiVghcjwEi; Tue, 25 Feb 2020 07:41:23 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 882D3874CF;
+	Tue, 25 Feb 2020 07:41:22 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8FEA81BF316
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:41:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8CDA4860E1
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:41:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nbhWqENYVr7M for <devel@linuxdriverproject.org>;
- Tue, 25 Feb 2020 07:48:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com
- (mail-bn7nam10on2095.outbound.protection.outlook.com [40.107.92.95])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1C34185DB5
- for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 07:48:19 +0000 (UTC)
+ with ESMTP id Uu-BXmF28ofD for <devel@linuxdriverproject.org>;
+ Tue, 25 Feb 2020 07:41:15 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
+ [68.232.147.91])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0664E8609C
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 07:41:14 +0000 (UTC)
+Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
+ Ajay.Kathat@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
+ x-record-type="v=spf1"; x-record-text="v=spf1 mx
+ a:ushub1.microchip.com a:smtpout.microchip.com
+ -exists:%{i}.spf.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa1.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa1.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: 5vdzYTiZdvadguZM5fMv1rFNMXmjPJVEs+4NBq696q2yQRuYb0sky8tFygi6UUjaIFWOH4/Gr5
+ csMA/+4EsAD8Sto+wpXTOEYUC+8H/XbmXdlhajwNkp2Qb4ugXLbEXjPmdmfrYXcoAvNihZZ+rB
+ KET6hvkHNT0C4+ZELdREh7zsY9MV5q3oUk6W65u8TLJL5i8UtUmH3jtznyXuhfdJeJRbuX48KB
+ +ie3ypP8Af65vNP7yRbpz85/c3Qi3ad0i4t95rDv3yJYMeym3aLrPFPiAi1wp+AO3nCmx85R1/
+ 9KA=
+X-IronPort-AV: E=Sophos;i="5.70,483,1574146800"; d="scan'208";a="69675522"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 25 Feb 2020 00:41:13 -0700
+Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Tue, 25 Feb 2020 00:41:13 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.151) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Tue, 25 Feb 2020 00:41:13 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CJtojjrVydTcoGTBYika9pJO+H0dqyN7JMRQRXoMiwKH/rWcfIlRr4xC/3DzBUWpZbKwv2qdvdPXQVmaO9SkHEIlOB3N69q3Xmzj6U4oNkpFKDNpYyd18JUBsQnarBO8Odmps/FnL8ycdy2FA+IH3RsiO/YZ9KJ4qZp433kCoRjFgKL3wjSscisz4EiXVNT+Ei2qjHtuZiiXn2NrUB9uLR7QX9zqDf/qbEZJhfsNzqdQYDauTd9YHsSDUnc4bFCDXSVm8N7VMOtLLxh2+wPGFbLR+RmiVSR60O4ZDk24BqAWeMHtd9TwnpFvNbn9x8/zFGFAxEMkywxfRs4OhFf14w==
+ b=Rq1d3qHTc8FXmqm+qugXxgzbAVafRAib8WWxhDuWmnPUHod+xm9KjH2jy4fNSM4Mirgx5ioD6Hyqj2lliVJG4OrmFTg1ZoMRk8IFzDuRnOSkXZjXwmwJzBtNqWDAPp7or9S6Z1hzEgvGrUlFPRm5dAq6iNu1iXe+DmJzvOcFYAPdtGAOXrD/Yu0f4MmoaVFqrN9zDSJJORXwEsfCRUbC/xTAVh+kp81tkZXDepfsAXqm2J4AIxGFcZX55ryPgkK/EMu9vlfQOlvo1xYis45me4IOBNcqz3Eak8UvOgl0G1J7dtfRm0E9GoQgJuRCq1nHYtlXSB4nnjzpybDkTeIFpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=h3dfc4ziFptkt/bkpbGubhkAqjkBfgj2Sy9MOVNPYkU=;
- b=KaKpnl3Legd1REPbraxni4OH8gG5vLVLzhaJbBKBs4s9P/7ZdX9PF+wIbuAMezlTxdtusQIr2jvbn3XtL2N14Z8ibSiqFghvz7hZhqbeJkOQbJk/PAC+3O9BY6na9d3RfvfljEpONGUtg1G7XCN2Otw9hJpsaBDtwy9LsaJ7KZZK2puIIpJ204+7JysBM3dpq8CR2mJMDwH7ldqvajRPE/Yy+EhUFKebLmiNyEm96Za51J0x+p4G81U2uo+3ZPx8E3OyJENnHT6EyV0VrZWRA3WWQv8v8FGKJan+oI1/q3XcKO2KmEGNdOsFBiIgXZyI7oz/oLmVqR5HvUciHA/HpQ==
+ bh=xHzjluq+PV6amSEpl1qidttfwt/MwLbLId6ixyNdvsk=;
+ b=Bn7C2bejT9BZuunZ/WtKusLKm74eFQ7qYKwq2AzDdQaWJc5Oa026osnTx6VykSXTzkZZDOA2iR3/XHEQcUxCFgdTXK0T6aUbzM9S0mgqMufZzBodxZaFlGcca03YD97hdb5Fj8mDq1sNbEEKdjJE/5rKCVEdflJ1WNAMtVmHXnvRH3Snxg+ojVJcSKtlUDUTRMSK0SbFAuDkbJV+FKCcRvOEKl+U3I7RWLfAYCGYo/4FAceZCdi0GD/tbkvJgeJb+kw3FSllbY62oMPQjStyjIed0Ez9ar8o+dC3AVhcsVeN1XRoKnEUJhqnrgTHzb0N4pj2qq35H/RpSrvaPZFd0Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=h3dfc4ziFptkt/bkpbGubhkAqjkBfgj2Sy9MOVNPYkU=;
- b=kdhjfoSvptR4pUyqmdjCfoj90DnruFdSSsnPU+7kksi8Fpii85fHKMqzXkiMy2N1+HAItq2QaEaoSXAIJxC+3WzkF6Srhv+QkKkZUh1LXz1KRJRO8gFJh9+YQQAfJzBQJOJVN3SPl1X0Tt2qb+ptP21nxSMkf603Bwbt+4QHjuk=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=xji@analogixsemi.com; 
-Received: from SN6PR04MB4543.namprd04.prod.outlook.com (2603:10b6:805:a5::18)
- by SN6PR04MB5232.namprd04.prod.outlook.com (2603:10b6:805:f3::32)
+ bh=xHzjluq+PV6amSEpl1qidttfwt/MwLbLId6ixyNdvsk=;
+ b=Y9HgTT2lstTeUChPO23256NaHjm6aAyGNE0Kheo0jYyZS1vNzhpg/cIC07wrKEG9tkXT/vRbbyrjtiZW4zQdzy7rv2Plw45Htpw073MR1h/eRGhRirWNYxkglRfiaRI6NRObKTSuuaDrPfc1lnTuKdiG0Hgd7j0Hu7w8Sqaz39E=
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com (2603:10b6:405:7b::14)
+ by BN6PR11MB1875.namprd11.prod.outlook.com (2603:10b6:404:104::11)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2750.22; Tue, 25 Feb
- 2020 06:14:14 +0000
-Received: from SN6PR04MB4543.namprd04.prod.outlook.com
- ([fe80::9598:7ff:b397:ba56]) by SN6PR04MB4543.namprd04.prod.outlook.com
- ([fe80::9598:7ff:b397:ba56%7]) with mapi id 15.20.2750.021; Tue, 25 Feb 2020
- 06:14:13 +0000
-Date: Tue, 25 Feb 2020 14:14:03 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: devel@driverdev.osuosl.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Andrzej Hajda <a.hajda@samsung.com>
-Subject: [PATCH v7 1/2] dt-bindings: drm/bridge: anx7625: MIPI to DP
- transmitter binding
-Message-ID: <67ccead807b7d0a50df479cab2c9d325041224bc.1582529411.git.xji@analogixsemi.com>
-References: <cover.1582529411.git.xji@analogixsemi.com>
-Content-Disposition: inline
-In-Reply-To: <cover.1582529411.git.xji@analogixsemi.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-ClientProxiedBy: HK2PR06CA0002.apcprd06.prod.outlook.com
- (2603:1096:202:2e::14) To SN6PR04MB4543.namprd04.prod.outlook.com
- (2603:10b6:805:a5::18)
-MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from xin-VirtualBox (114.247.245.254) by
- HK2PR06CA0002.apcprd06.prod.outlook.com (2603:1096:202:2e::14) with Microsoft
- SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
- 15.20.2750.18 via Frontend Transport; Tue, 25 Feb 2020 06:14:12 +0000
-X-Originating-IP: [114.247.245.254]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 8754c43c-5145-4e67-8994-08d7b9b9ef7f
-X-MS-TrafficTypeDiagnostic: SN6PR04MB5232:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <SN6PR04MB52328C69BDA29C727ADA7011C7ED0@SN6PR04MB5232.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4125;
-X-Forefront-PRVS: 0324C2C0E2
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10019020)(39840400004)(136003)(366004)(346002)(396003)(376002)(199004)(189003)(478600001)(4326008)(66556008)(66476007)(36756003)(26005)(16526019)(66946007)(81156014)(81166006)(8676002)(5660300002)(186003)(8936002)(86362001)(2906002)(54906003)(110136005)(316002)(7416002)(6496006)(2616005)(52116002)(956004)(107886003)(6666004)(6486002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB5232;
- H:SN6PR04MB4543.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2750.17; Tue, 25 Feb
+ 2020 07:41:10 +0000
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::ec62:e7fd:f17c:dfd4]) by BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::ec62:e7fd:f17c:dfd4%3]) with mapi id 15.20.2750.021; Tue, 25 Feb 2020
+ 07:41:10 +0000
+From: <Ajay.Kathat@microchip.com>
+To: <linux-wireless@vger.kernel.org>
+Subject: [PATCH v3 00/18] wilc1000: move out of staging
+Thread-Topic: [PATCH v3 00/18] wilc1000: move out of staging
+Thread-Index: AQHV667y+zVJzO3Rq0qfZ397NNWe/Q==
+Date: Tue, 25 Feb 2020 07:41:09 +0000
+Message-ID: <20200225074105.7740-1-ajay.kathat@microchip.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: git-send-email 2.17.1
+x-originating-ip: [121.244.27.38]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 3d53694b-17b6-4ed9-3647-08d7b9c614d2
+x-ms-traffictypediagnostic: BN6PR11MB1875:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BN6PR11MB18757E49FDCE4E2F205146F9E3ED0@BN6PR11MB1875.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4941;
+x-forefront-prvs: 0324C2C0E2
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(366004)(199004)(189003)(2906002)(2616005)(54906003)(86362001)(1076003)(966005)(66556008)(76116006)(66476007)(66946007)(91956017)(64756008)(36756003)(66446008)(186003)(8936002)(26005)(498600001)(81156014)(6512007)(5660300002)(71200400001)(4326008)(81166006)(107886003)(6916009)(8676002)(6506007)(6486002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1875;
+ H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; A:1; MX:1; 
-Received-SPF: None (protection.outlook.com: analogixsemi.com does not
- designate permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: zzEhxeIQW4KU8rjYqSR1kj4LGCyHW2alHOy7idN+IS3pQYAmvuOsQY0oGBAST27ltuoaibukekhfzpfZx7srhrCtBcVf0coZW0WYLDRjGYsJhrgOrUbXNFu7nR/3Uqtf6MIf71fEEcblqPCi8PxyBJZkijdKxctc/tP4FtgNidRpimW5IHMDcrdo390kQ9JSc5oYjAFBciC6P1/B6qTvd7RBxV+cjUYDf7vuzebSD8k9V+3TsAxEXpYMnEwXNmPkMFYWmagowoIQqPe0tfXKcyKLqpRrbOTKeMjB+AzSMSqE8vLFAOJ+NnFuPrjeha6At0QIMoaRt7lPiGzGGOXxP/f/GF2xnoNOv587q3KgYfnt6ZiLC1Eo4iGNAGMKpU1REO8J1cwtMThAl/uXaltUYg3Vytwb3eo9BvCmLWQKriF4z845a7xVCGx5f2k93y4rWS0A91lof3T826tWJmcKrEzD0oS/dUSNHz/TH3Ux27kQHYSDk1fh9kPWxJR3d4OM1zsvNHzpjGtdZJbjmy1qxA==
-X-MS-Exchange-AntiSpam-MessageData: MV7+wGzHkeA+41xbBDVNo2cmBjQIVvYWqXo+yWZqcSUpupuG9aL0XQnaWUnVQ9/zTLtDjju8XMJIyqrDf757UY3rYk3JDapiUv6qjFmehVwLTZb5ofcKmjK4htQ+K7CfWUhMyZ2L3Wc1GwMMFgnI0Q==
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8754c43c-5145-4e67-8994-08d7b9b9ef7f
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2020 06:14:13.7893 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: y2qCkZTzhI4w1v54hJ4MY2BIC/3kXcyVR/OsThaSxkVokJThRJgGm5xevBjtPboW64cooOzH4EbZbniMrvmStA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB5232
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: CrN4Z3qOmVJh5agJ1Nf/ROx8Qjh3wb1eo+QVEGQRST/JXLU0doTW5gFowWTlWhUNaWdX020+pP1EOjbJGOEEqMM/yY/QjYxbO0mIBywCu+KYAb6B8XABKQU7dVvSbZKU4wcWJV3SESlO0hCFkFXCJiU4TMd/ObtTzLV4mNP8h5SzD5df4WZMG979pjEMW3p9FFzuNFWRUBzfuX93JXsukU917TfsvwIS/nR8o4tG2JsLJsGmkqhOmcv4S7bgTs4Ktq8KI3xu1RegYtdgugmhmEdb6FD8qTgFoPGbI1HPz2XyJklrnQ8ERzri73U64Oe3LNUcRpDvX1FzvAm7GxXhRX2YLopxjhbCRebUSw1n8q9qaEQAUGwVEYeaQNKIWJfWJ9JRxvKkJofcjwtfTcxRn1V5kC8meabe2QcbwT7fCbT6a2thwui+20UmpZRRX4GNvZbf8WjXhnF+6Earfsa+gDQy9cfgR2zHrZ/gqRvncCnvVayE8wUzcd/AoCEc9ZloVeH55v3LG7hEUvAqQ0kgLg==
+x-ms-exchange-antispam-messagedata: d1uwdqBhY8B9sbrNpb5vASQWQGjoA2tcBTfHzxC3F2pJhXv9Go6Se4H8zYDq0ucaTlekmNB1WNM4poNjCE0yDqZzNY2zKsPB2GtVFm4aO9PFwg4LMGUrouevksm5s5t+4QXL8yA3lA4Z2nX4M9Xcxg==
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3d53694b-17b6-4ed9-3647-08d7b9c614d2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Feb 2020 07:41:09.8589 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VD4zpi/JApw3kw82MT+A/jpubr/O+gO96IWQBR6VhFDNAMSWjLtm+nd1DzRAafOPTTBcKwnQ1Q5LTBaIToWX03Tr+Tod/BQLGFjxb32IBeo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1875
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,154 +146,125 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
- Nicolas Boichat <drinkcat@chromium.org>, Pi-Hsun Shih <pihsun@chromium.org>,
- Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
- Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Sheng Pan <span@analogixsemi.com>,
- Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Ajay.Kathat@microchip.com, Venkateswara.Kaja@microchip.com,
+ gregkh@linuxfoundation.org, Nicolas.Ferre@microchip.com,
+ Adham.Abozaeid@microchip.com, johannes@sipsolutions.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The ANX7625 is an ultra-low power 4K Mobile HD Transmitter designed
-for portable device. It converts MIPI to DisplayPort 1.3 4K.
+From: Ajay Singh <ajay.kathat@microchip.com>
 
-You can add support to your board with binding.
+This patch series is to review and move wilc1000 driver out of staging.
+Most of the review comments received in [1] & [2] are addressed in the
+latest code. Please review and provide your inputs.
 
-Example:
-	anx7625_bridge: encoder@58 {
-		compatible = "analogix,anx7625";
-		reg = <0x58>;
-		status = "okay";
-		panel-flags = <1>;
-		enable-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
-		reset-gpios = <&pio 73 GPIO_ACTIVE_HIGH>;
-		#address-cells = <1>;
-		#size-cells = <0>;
+[1]. https://lore.kernel.org/linux-wireless/1537957525-11467-1-git-send-email-ajay.kathat@microchip.com/
+[2]. https://lore.kernel.org/linux-wireless/1562896697-8002-1-git-send-email-ajay.kathat@microchip.com/
 
-		port@0 {
-		  reg = <0>;
-		  anx_1_in: endpoint {
-		    remote-endpoint = <&mipi_dsi>;
-		  };
-		};
+Changes since v2:
+  - use 'struct' to extract FW info from received commands.
+  - make use of C style comments instead of C++.
+  - remove use of bool type for firmware struct.
+  - deleted unused code related to interrupt handling.
+  - make use of RCU list to maintain interfaces list.
+  - remove 'wilc_' prefix from file name.
+  - added 'WILC_' prefix for header guard macro.
+  - remove use of infinite loops(i.e. while(1)).
+  - move firmware realted struct to a separate file.
+  - refactor SPI command handling by using 'struct'.
+  - use different functions to handle different SPI commands.
+  - remove use of vendor specific IE for p2p handling.
+  - refactor p2p related code to avoid use of buf pointer operation.
+  - make use of FIELD_GET/PREP macro.
+  - use #define instead of magic values.
+  - use YAML schemes for DT binding documentation.
+  - deleted unused code from spi.c and sdio.c.
+  - added changes for few issues reported by smatch static code analyzer.
 
-		port@2 {
-		  reg = <2>;
-		  anx_1_out: endpoint {
-		    remote-endpoint = <&panel_in>;
-		  };
-		};
-	};
+Changes since v1:
+  - remove use of shadow buffer to keep scan result.
+  - remove internal messaging flow to handle cfg80211_ops.
+  - make use of cfg80211 provide API.
+  - use 'struct' for packing firmware commands.
+  - make use of kernel API's and Macro.
+  - remove unnecessary log messages
+  - supported dynamically add/remove interfaces.
+  - cleanup and deleted around 3.3k lines of code.
 
-Signed-off-by: Xin Ji <xji@analogixsemi.com>
----
- .../bindings/display/bridge/anx7625.yaml           | 91 ++++++++++++++++++++++
- 1 file changed, 91 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.yaml
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/anx7625.yaml b/Documentation/devicetree/bindings/display/bridge/anx7625.yaml
-new file mode 100644
-index 0000000..1149ebb
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/bridge/anx7625.yaml
-@@ -0,0 +1,91 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+# Copyright 2019 Analogix Semiconductor, Inc.
-+%YAML 1.2
-+---
-+$id: "http://devicetree.org/schemas/display/bridge/anx7625.yaml#"
-+$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+
-+title: Analogix ANX7625 SlimPort (4K Mobile HD Transmitter)
-+
-+maintainers:
-+  - Xin Ji <xji@analogixsemi.com>
-+
-+description: |
-+  The ANX7625 is an ultra-low power 4K Mobile HD Transmitter
-+  designed for portable devices.
-+
-+properties:
-+  "#address-cells": true
-+  "#size-cells": true
-+
-+  compatible:
-+    items:
-+      - const: analogix,anx7625
-+
-+  reg:
-+    maxItems: 1
-+
-+  panel-flags:
-+    description: indicate the panel is internal or external.
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  enable-gpios:
-+    description: used for power on chip control, POWER_EN pin D2.
-+    maxItems: 1
-+
-+  reset-gpios:
-+    description: used for reset chip control, RESET_N pin B7.
-+    maxItems: 1
-+
-+  port@0:
-+    type: object
-+    description:
-+      A port node pointing to MIPI DSI host port node.
-+
-+  port@1:
-+    type: object
-+    description:
-+      A port node pointing to MIPI DPI host port node.
-+
-+  port@2:
-+    type: object
-+    description:
-+      A port node pointing to panel port node.
-+
-+required:
-+  - "#address-cells"
-+  - "#size-cells"
-+  - compatible
-+  - reg
-+  - port@0
-+  - port@2
-+
-+example:
-+  - |
-+    anx7625_bridge: encoder@58 {
-+        compatible = "analogix,anx7625";
-+        reg = <0x58>;
-+        status = "okay";
-+        panel-flags = <1>;
-+        enable-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
-+        reset-gpios = <&pio 73 GPIO_ACTIVE_HIGH>;
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        port@0 {
-+          reg = <0>;
-+          anx_1_in: endpoint {
-+            remote-endpoint = <&mipi_dsi>;
-+          };
-+        };
-+
-+        port@2 {
-+          reg = <2>;
-+          anx_1_out: endpoint {
-+            remote-endpoint = <&panel_in>;
-+          };
-+        };
-+    };
+Ajay Singh (18):
+  wilc1000: add hif.h
+  wilc1000: add hif.c
+  wilc1000: add wlan_if.h
+  wilc1000: add wlan_cfg.h
+  wilc1000: add wlan_cfg.c
+  wilc1000: add cfg80211.c
+  wilc1000: add cfg80211.h
+  wilc1000: add netdev.h
+  wilc1000: add netdev.c
+  wilc1000: add mon.c
+  wilc1000: add spi.c
+  wilc1000: add wlan.h
+  wilc1000: add wlan.c
+  wilc1000: add sdio.c
+  wilc1000: add fw.h
+  dt: bindings: net: add microchip,wilc1000,sdio.yaml
+  dt: bindings: net: add microchip,wilc1000,spi.yaml
+  wilc1000: add Makefile and Kconfig files for wilc1000 compilation
+
+ .../net/wireless/microchip,wilc1000,sdio.yaml |   68 +
+ .../net/wireless/microchip,wilc1000,spi.yaml  |   61 +
+ drivers/net/wireless/Kconfig                  |    1 +
+ drivers/net/wireless/Makefile                 |    1 +
+ drivers/net/wireless/microchip/Kconfig        |   15 +
+ drivers/net/wireless/microchip/Makefile       |    2 +
+ .../net/wireless/microchip/wilc1000/Kconfig   |   42 +
+ .../net/wireless/microchip/wilc1000/Makefile  |   14 +
+ .../wireless/microchip/wilc1000/cfg80211.c    | 1852 ++++++++++++++++
+ .../wireless/microchip/wilc1000/cfg80211.h    |   29 +
+ drivers/net/wireless/microchip/wilc1000/fw.h  |  119 +
+ drivers/net/wireless/microchip/wilc1000/hif.c | 1959 +++++++++++++++++
+ drivers/net/wireless/microchip/wilc1000/hif.h |  214 ++
+ drivers/net/wireless/microchip/wilc1000/mon.c |  260 +++
+ .../net/wireless/microchip/wilc1000/netdev.c  |  940 ++++++++
+ .../net/wireless/microchip/wilc1000/netdev.h  |  295 +++
+ .../net/wireless/microchip/wilc1000/sdio.c    | 1030 +++++++++
+ drivers/net/wireless/microchip/wilc1000/spi.c | 1001 +++++++++
+ .../net/wireless/microchip/wilc1000/wlan.c    | 1240 +++++++++++
+ .../net/wireless/microchip/wilc1000/wlan.h    |  398 ++++
+ .../wireless/microchip/wilc1000/wlan_cfg.c    |  413 ++++
+ .../wireless/microchip/wilc1000/wlan_cfg.h    |   54 +
+ .../net/wireless/microchip/wilc1000/wlan_if.h |  803 +++++++
+ drivers/staging/Kconfig                       |    2 -
+ drivers/staging/Makefile                      |    1 -
+ 25 files changed, 10811 insertions(+), 3 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml
+ create mode 100644 Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,spi.yaml
+ create mode 100644 drivers/net/wireless/microchip/Kconfig
+ create mode 100644 drivers/net/wireless/microchip/Makefile
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/Kconfig
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/Makefile
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/cfg80211.c
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/cfg80211.h
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/fw.h
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/hif.c
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/hif.h
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/mon.c
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/netdev.c
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/netdev.h
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/sdio.c
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/spi.c
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/wlan.c
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/wlan.h
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/wlan_cfg.c
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/wlan_cfg.h
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/wlan_if.h
+
 -- 
-2.7.4
-
+2.24.0
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
