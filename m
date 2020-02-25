@@ -1,37 +1,37 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 273F616BAFB
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 08:41:40 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 517C316BB12
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 08:41:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A14751FD7D;
-	Tue, 25 Feb 2020 07:41:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E3C1C864B8;
+	Tue, 25 Feb 2020 07:41:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kul54CqrHPar; Tue, 25 Feb 2020 07:41:38 +0000 (UTC)
+	with ESMTP id D2rJW-nGPqU4; Tue, 25 Feb 2020 07:41:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E8C0D203A0;
-	Tue, 25 Feb 2020 07:41:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4CF6A864DF;
+	Tue, 25 Feb 2020 07:41:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3BBBA1BF316
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:41:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 57E641BF316
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:41:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3857F1FD7D
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:41:28 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 53D4520028
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 07:41:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xACigVLYF+UY for <devel@linuxdriverproject.org>;
- Tue, 25 Feb 2020 07:41:22 +0000 (UTC)
+ with ESMTP id EL+rJIEyR1sg for <devel@linuxdriverproject.org>;
+ Tue, 25 Feb 2020 07:41:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
  [68.232.154.123])
- by silver.osuosl.org (Postfix) with ESMTPS id 25A8C203A0
- for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 07:41:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id E46BE203FD
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 07:41:24 +0000 (UTC)
 Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
  Ajay.Kathat@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
@@ -52,16 +52,16 @@ Authentication-Results: esa4.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: J1gURbqw24GJFfBjQmCM9q5cvG7gwNQ4wnXQctm1mfxfwlv4spudRrL1ky4N8iuac7TbWukCDu
- jyq6nyxd7keq81przVZp4AsmRpvO2iR4B0jyK25kHVU9pjB7OxsVvmoOrGsR7UEz0C/x+rTAkk
- k7pkDMfuHnjBGd4IM8SPsHNdzm2F+dO13wD/3qXR/h3x6PpIGhRRHXaLWYaFyVxlTnkLW62P2Q
- rGx0tJBFuii7AM5BRtGylZ3CI6nNr/Nx3klrSq3vOFowOgSbeay/EQZjK4XUMm9D1pkV9g/8+i
- CTA=
-X-IronPort-AV: E=Sophos;i="5.70,483,1574146800"; d="scan'208";a="65241130"
+IronPort-SDR: QMpwc14y91RW0YrKxSSKSmjuK/3zsBeKmGlfInSggfZqiP2VeBCvRHh06DvHRi1lLTrSydjd06
+ F/8+Wl4cGDVm92PdmHZfJWgkSFwzZh+qoBpT5gqzIVrK7khngF8tXItEiVTZ0F4oYfqQNjHUAo
+ IDI/tVeZrZSYCoYhfNNzpm4NziPvrdqR+8+RGr/h3ZPuRTVtOvw6VtwUP3lmJBi8PtQ9zF6YLZ
+ P8nEGHGlmGQlWL86MxE4Cvsy7QRcHLXZTJv3qOt42MtenIiAmcfvXuTABZWhZMdfDjYENLMay/
+ tD8=
+X-IronPort-AV: E=Sophos;i="5.70,483,1574146800"; d="scan'208";a="65241154"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
  by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 25 Feb 2020 00:41:21 -0700
+ 25 Feb 2020 00:41:24 -0700
 Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
  chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
@@ -72,12 +72,12 @@ Received: from NAM02-BL2-obe.outbound.protection.outlook.com (10.10.215.89) by
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
  Transport; Tue, 25 Feb 2020 00:41:17 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jBvjG9BtYyIk0iT3fOvLvDMaQNGPowhStvgMfXPccWLFvZJME6nK2/s4ZZC/etA+nr2zMecvL5fFkLnAIR3SIrfLf6TG7fOV86pE5iHx3sB8jMvRI2VaoT8Esd3Pkry9DB8Qbh/rSb32NOD5buAOdAl3lsBMj4klg9l/D2vqaxrGnGnEFP++hNpxvRJQp02PToucIrS0BgzhWE8U4gWthIPaPiJx8y2U+CehTCwqyJ0sATiqcz8Mr67ODxnYdJmXqBB+vpFEfkF57OHXaQGP+ABZwvTpWpwKAxP17lw8ZwpqpTFr/jCJ1RpdZ068reHMCHl/igprvrAd0Dp3cnSHOw==
+ b=Zjp5vsRAHP4pf3Cxftg9XuJkPEP9OEQ8GEisrOHACP08S816i0iQ7YnMapfxJZFUZSMvCeMYkJUZptApfrfSOLAUvLp/hcDXXJBsqyH5PqJJT3zPoo23cC0nOzRityf8AieirsE8B4isOeiRFstzBEVIT6LxpKlWbOtzSKBNY3qyH0fZm7bdTs7IXARYAJl/UkU4m0T+Buo2xehenmPyR0ygS++s/rtTlTO5BiHplyNej+NZjqu0EWLigWIFirFev4BGxoPW9KanRKPOglNeLYQ2ad2817ico9SoC4neMEO9nbYtMM2srIBmR1n2sg6UYGHxSovZBGwLR6GK3cN2Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ysFYgW69f3RLX3x8h81oczcPNuXMQIQGipePUaWcSig=;
- b=Ecjbh7yrmtbcrTLnGGPccIZZBHOMLuk2M9jIYeHrZtGX3zAj1vZaPi2RtVQ9Eq9dZc1SVpi6sgqTOdJTaqoL9T9nCa0HJgJyK3/ys9QzsqNhNFrqMlahfsrfrcEPChedE1nPwviuTjaBCQetQEHEqSSWG6++VxOKuHtZs3SrzI7TwPVuct/EeXSVYp9oiWgRZhRMB38vACi95zYOmLAL0zfHSH2DMFtYT7WvFuxRuz5mLPDGA2AXAS7Ujhd8R4rSsQTBxTHT38OGLlDnQPuP73+sPCuNOLPQCRoEAgnxotjhSWVXABS5G1LkUe0VMydjeUXXBn84+dlQUhoBLDRCrw==
+ bh=6VCCAjLlHZpgaDwGevFyCYBEocjz2NqxutWYXwKrJUw=;
+ b=jrqXBDF2jYxG4UHMDb+TnwBVeLr0QcN9DbxWOhif7UCOR+G6NupvW9neyLTwbYZi9KSVfSI8swu5Gtla/bX8ZUe/Hc4qq3AexfcEBRjJ+8VTkJiVqGekya2AK8CqzhceAZ7qvME1/OgOW/HlYyVAbEC+dX5SGqgbv+nyJ31kJJJwNOXqSUV8SC5lFZYanCgGgRdsyBVuoneo8aR8kpo4qF+EyJe67gYFatiSzlshBjyHsvJZFEiykoTVcwe6dUfygigPZ/ESdy/MJanoJY7fGhG+W1yhNimzr5u3jkm+wGA+/4F/6IiBYPpiVP18V91CecDnAHSnaGIteJn+f31nEA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=microchip.com; dmarc=pass action=none
  header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
@@ -85,24 +85,24 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=microchiptechnology.onmicrosoft.com;
  s=selector2-microchiptechnology-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ysFYgW69f3RLX3x8h81oczcPNuXMQIQGipePUaWcSig=;
- b=Um2aZ9enZy5zUYVQZMlGyQ7KSvDO7/lFcZemQmd0kYpxu5TsGJEd3/QCAnFrP1Enb1cLNWcbNims6CMIEp7Iw1DuWxqNYMYGBfdWWxymBuNzkMY61/7jMs7Jv1MVBtqQgA4Yz0KiXZUq6jqAoeeWhkrLduVsxp6qD/Jyd7eQa54=
+ bh=6VCCAjLlHZpgaDwGevFyCYBEocjz2NqxutWYXwKrJUw=;
+ b=vuvU+A74mRCljdDMmTKu/eNwx6yLxnlF07GS07j11vRKZuHAvXnbik0S4hFABe5k1bk/qfMKo29evEYzD8kfJhd6sgsOs8yNiA0VM7iPR3A8XBBWGx+MjV5+Ihlf5476V4DAnm3altzpaSb06nh4q3/xij/liHWleUxjI/r8KQM=
 Received: from BN6PR11MB3985.namprd11.prod.outlook.com (2603:10b6:405:7b::14)
  by BN6PR11MB4162.namprd11.prod.outlook.com (2603:10b6:405:84::12)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2750.21; Tue, 25 Feb
- 2020 07:41:19 +0000
+ 2020 07:41:20 +0000
 Received: from BN6PR11MB3985.namprd11.prod.outlook.com
  ([fe80::ec62:e7fd:f17c:dfd4]) by BN6PR11MB3985.namprd11.prod.outlook.com
  ([fe80::ec62:e7fd:f17c:dfd4%3]) with mapi id 15.20.2750.021; Tue, 25 Feb 2020
- 07:41:19 +0000
+ 07:41:20 +0000
 From: <Ajay.Kathat@microchip.com>
 To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH v3 14/18] wilc1000: add sdio.c
-Thread-Topic: [PATCH v3 14/18] wilc1000: add sdio.c
-Thread-Index: AQHV6673dIUtK6bdZkuhWtu13oL72w==
-Date: Tue, 25 Feb 2020 07:41:18 +0000
-Message-ID: <20200225074105.7740-15-ajay.kathat@microchip.com>
+Subject: [PATCH v3 15/18] wilc1000: add fw.h
+Thread-Topic: [PATCH v3 15/18] wilc1000: add fw.h
+Thread-Index: AQHV6673pH2UemBWH0Sw01hHX7BiiQ==
+Date: Tue, 25 Feb 2020 07:41:19 +0000
+Message-ID: <20200225074105.7740-16-ajay.kathat@microchip.com>
 References: <20200225074105.7740-1-ajay.kathat@microchip.com>
 In-Reply-To: <20200225074105.7740-1-ajay.kathat@microchip.com>
 Accept-Language: en-US
@@ -112,14 +112,14 @@ X-MS-TNEF-Correlator:
 x-mailer: git-send-email 2.17.1
 x-originating-ip: [121.244.27.38]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: efbf3795-0c71-4e75-db09-08d7b9c61a7d
+x-ms-office365-filtering-correlation-id: 93d323cf-65b5-4df0-3cdf-08d7b9c61ad5
 x-ms-traffictypediagnostic: BN6PR11MB4162:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BN6PR11MB4162A9082E86F6B4684C32CEE3ED0@BN6PR11MB4162.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:13;
+x-microsoft-antispam-prvs: <BN6PR11MB416214ECB6ECF0039F1A679AE3ED0@BN6PR11MB4162.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:361;
 x-forefront-prvs: 0324C2C0E2
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(396003)(366004)(136003)(376002)(39860400002)(346002)(199004)(189003)(30864003)(81156014)(2616005)(8676002)(186003)(6512007)(6486002)(5660300002)(26005)(81166006)(8936002)(6506007)(54906003)(66476007)(66446008)(66556008)(316002)(86362001)(4326008)(71200400001)(66946007)(6916009)(2906002)(76116006)(64756008)(478600001)(91956017)(1076003)(36756003)(107886003)(579004);
+ SFS:(10009020)(396003)(366004)(136003)(376002)(39860400002)(346002)(199004)(189003)(81156014)(2616005)(8676002)(186003)(6512007)(6486002)(5660300002)(26005)(81166006)(8936002)(6506007)(54906003)(66476007)(66446008)(66556008)(316002)(86362001)(4326008)(71200400001)(66946007)(6916009)(2906002)(76116006)(64756008)(478600001)(91956017)(1076003)(36756003)(107886003);
  DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB4162;
  H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; A:1; MX:1; 
@@ -127,15 +127,15 @@ received-spf: None (protection.outlook.com: microchip.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 6Ns14h9+QIqcP/m2eaEv64nsiy1NVf1dg1BXkQWze9/xglb5q+iflBgtkDxkMJIE4N15rgCLSWZnsb8vVYOzh7EVk+gHjjz9wNPylaZaBEIyUqkmVsV7G+aa+BQgP8RMpIx0RGDUktcQMIP5+5kCFhGBG0bjBxITmHfsZrfUPBJvHIaZwuJJTw7kgjNnNxAAy++CF5eQ9wzVy5ihotPzbLxWRQnbU0ZSpydfxoCSu0YZDp92f9N4G1fvgb3U0EAmTdBLCyq6BcXm0tX95fWTWejUsKqgCrbzzh098zfX4v/8teShzjdmFYs6G3g9EQTthkETOhsHaRUp9OPc5TxuoQL9Mz2W6ve8cwrKgR+sQoD7kKO/wWXpNfovPGkxOL9GZwQqlpLx+onLAyA0gd9svTXupp3GV82TPxWJ2kHVr1eRqexS8OndiycugldHDssy
-x-ms-exchange-antispam-messagedata: eXgIZBh8CBrBha2WxdJjgVRepZb9THauw2uNmpLYWmM3bOMKTvyR3zoY6+29YoQGv0pti9zF5Ix6danQG2keOByzC6wBfHg4cDPFeesu/EWL1Ap2R6t+zjlu90clsaXmkakPuaULyRGmGcTjv+miMA==
+x-microsoft-antispam-message-info: 2kdqtFNXFa3yrXNPUd7LtyhK4hkozYKoXAPr6VGI11C+o+6jViTCwVt3CTh4FB29k9ZaeGu9wJKaZFxIxRy8B9sK3XCgBVonFwhsfQ2AFO3Hi2mx7mUsJrMNiHt/yu6vAQ+73Srk87rkwAftvAK0+MroCn6CCY0DQ/r93tL0wv/qVsXYLoUqSOJTZmBJsw9r62lp2MLu4NN7ykVoUh8gQ+065MW3AhuELkmPIrA4JMeB7V2Vc2N75HsVtpjZD6YFOom2G4R/Q5XxDuNer0ms9StlEDtnRcbytCM1BfpxdTkRdIusY9vubSnE744/iQMtxdUG6Pndvu259Y/Hkn25sZrZxCanMPGaSTFwCmJlX8YLv2R77wZcH7sUN49jwqPxH7Eh6DtnJ6ZN+6EU8e6qmehP77bkmGduU4xYY/DU9T1VkIV11GJKWKWJNj/YORq3
+x-ms-exchange-antispam-messagedata: K5fDxbnC7mrNE1Dv2SovcgQr6UfB9DIDLOh7RSuHYNRojHdTtAGTji7SWuLNbbczmyRz7lB5Kqgjb9fJuo6ocH87BsXSF8nx/FJPXrQAnFRofDCMJXawkuTtgcazdORdmyMYPoQtItrcqvTkvXspXg==
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: efbf3795-0c71-4e75-db09-08d7b9c61a7d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Feb 2020 07:41:18.7397 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 93d323cf-65b5-4df0-3cdf-08d7b9c61ad5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Feb 2020 07:41:19.2714 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: HUWN6edEXyf1wTIyxPNJYWhmzSyUvZxb4jt3mK85jTIIwBlQb+rLrDxAU8pm9+SWGf7HHDDoIagD1KFS2jwJEo6i975q5cUQ6ERIfi4WFlw=
+X-MS-Exchange-CrossTenant-userprincipalname: S0Wa2zveTywUrXhk0pPs/PzwKw9EBozWJQsIpYW+oIPKbQ6qdEVgyT/ujc/V9P5KQ1mYRXmOoyVzEmQky9dW2P3//psgrGD5pw4dFMgtNJU=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB4162
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -160,1051 +160,140 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Ajay Singh <ajay.kathat@microchip.com>
 
-Moved 'drivers/staging/wilc1000/sdio.c' to
-'drivers/net/wireless/microchip/wilc1000/sdio.c'.
+Moved 'drivers/staging/wilc1000/fw.h' to
+'drivers/net/wireless/microchip/wilc1000/fw.h'.
 
 Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
 ---
- .../net/wireless/microchip/wilc1000/sdio.c    | 1030 +++++++++++++++++
- 1 file changed, 1030 insertions(+)
- create mode 100644 drivers/net/wireless/microchip/wilc1000/sdio.c
+ drivers/net/wireless/microchip/wilc1000/fw.h | 119 +++++++++++++++++++
+ 1 file changed, 119 insertions(+)
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/fw.h
 
-diff --git a/drivers/net/wireless/microchip/wilc1000/sdio.c b/drivers/net/wireless/microchip/wilc1000/sdio.c
+diff --git a/drivers/net/wireless/microchip/wilc1000/fw.h b/drivers/net/wireless/microchip/wilc1000/fw.h
 new file mode 100644
-index 000000000000..2301e90c21ca
+index 000000000000..a76e1dea4345
 --- /dev/null
-+++ b/drivers/net/wireless/microchip/wilc1000/sdio.c
-@@ -0,0 +1,1030 @@
-+// SPDX-License-Identifier: GPL-2.0
++++ b/drivers/net/wireless/microchip/wilc1000/fw.h
+@@ -0,0 +1,119 @@
++/* SPDX-License-Identifier: GPL-2.0 */
 +/*
 + * Copyright (c) 2012 - 2018 Microchip Technology Inc., and its subsidiaries.
 + * All rights reserved.
 + */
 +
-+#include <linux/clk.h>
-+#include <linux/mmc/sdio_func.h>
-+#include <linux/mmc/host.h>
-+#include <linux/mmc/sdio.h>
-+
-+#include "netdev.h"
-+#include "cfg80211.h"
-+
-+#define SDIO_MODALIAS "wilc1000_sdio"
-+
-+#define SDIO_VENDOR_ID_WILC 0x0296
-+#define SDIO_DEVICE_ID_WILC 0x5347
-+
-+static const struct sdio_device_id wilc_sdio_ids[] = {
-+	{ SDIO_DEVICE(SDIO_VENDOR_ID_WILC, SDIO_DEVICE_ID_WILC) },
-+	{ },
-+};
-+
-+#define WILC_SDIO_BLOCK_SIZE 512
-+
-+struct wilc_sdio {
-+	bool irq_gpio;
-+	u32 block_size;
-+	int has_thrpt_enh3;
-+};
-+
-+struct sdio_cmd52 {
-+	u32 read_write:		1;
-+	u32 function:		3;
-+	u32 raw:		1;
-+	u32 address:		17;
-+	u32 data:		8;
-+};
-+
-+struct sdio_cmd53 {
-+	u32 read_write:		1;
-+	u32 function:		3;
-+	u32 block_mode:		1;
-+	u32 increment:		1;
-+	u32 address:		17;
-+	u32 count:		9;
-+	u8 *buffer;
-+	u32 block_size;
-+};
-+
-+static const struct wilc_hif_func wilc_hif_sdio;
-+
-+static void wilc_sdio_interrupt(struct sdio_func *func)
-+{
-+	sdio_release_host(func);
-+	wilc_handle_isr(sdio_get_drvdata(func));
-+	sdio_claim_host(func);
-+}
-+
-+static int wilc_sdio_cmd52(struct wilc *wilc, struct sdio_cmd52 *cmd)
-+{
-+	struct sdio_func *func = container_of(wilc->dev, struct sdio_func, dev);
-+	int ret;
-+	u8 data;
-+
-+	sdio_claim_host(func);
-+
-+	func->num = cmd->function;
-+	if (cmd->read_write) {  /* write */
-+		if (cmd->raw) {
-+			sdio_writeb(func, cmd->data, cmd->address, &ret);
-+			data = sdio_readb(func, cmd->address, &ret);
-+			cmd->data = data;
-+		} else {
-+			sdio_writeb(func, cmd->data, cmd->address, &ret);
-+		}
-+	} else {        /* read */
-+		data = sdio_readb(func, cmd->address, &ret);
-+		cmd->data = data;
-+	}
-+
-+	sdio_release_host(func);
-+
-+	if (ret)
-+		dev_err(&func->dev, "%s..failed, err(%d)\n", __func__, ret);
-+	return ret;
-+}
-+
-+static int wilc_sdio_cmd53(struct wilc *wilc, struct sdio_cmd53 *cmd)
-+{
-+	struct sdio_func *func = container_of(wilc->dev, struct sdio_func, dev);
-+	int size, ret;
-+
-+	sdio_claim_host(func);
-+
-+	func->num = cmd->function;
-+	func->cur_blksize = cmd->block_size;
-+	if (cmd->block_mode)
-+		size = cmd->count * cmd->block_size;
-+	else
-+		size = cmd->count;
-+
-+	if (cmd->read_write) {  /* write */
-+		ret = sdio_memcpy_toio(func, cmd->address,
-+				       (void *)cmd->buffer, size);
-+	} else {        /* read */
-+		ret = sdio_memcpy_fromio(func, (void *)cmd->buffer,
-+					 cmd->address,  size);
-+	}
-+
-+	sdio_release_host(func);
-+
-+	if (ret)
-+		dev_err(&func->dev, "%s..failed, err(%d)\n", __func__,  ret);
-+
-+	return ret;
-+}
-+
-+static int wilc_sdio_probe(struct sdio_func *func,
-+			   const struct sdio_device_id *id)
-+{
-+	struct wilc *wilc;
-+	int ret;
-+	struct gpio_desc *gpio = NULL;
-+	struct wilc_sdio *sdio_priv;
-+
-+	sdio_priv = kzalloc(sizeof(*sdio_priv), GFP_KERNEL);
-+	if (!sdio_priv)
-+		return -ENOMEM;
-+
-+	if (IS_ENABLED(CONFIG_WILC1000_HW_OOB_INTR)) {
-+		gpio = gpiod_get(&func->dev, "irq", GPIOD_IN);
-+		if (IS_ERR(gpio)) {
-+			/* get the GPIO descriptor from hardcode GPIO number */
-+			gpio = gpio_to_desc(GPIO_NUM);
-+			if (!gpio)
-+				dev_err(&func->dev, "failed to get irq gpio\n");
-+		}
-+	}
-+
-+	ret = wilc_cfg80211_init(&wilc, &func->dev, WILC_HIF_SDIO,
-+				 &wilc_hif_sdio);
-+	if (ret) {
-+		kfree(sdio_priv);
-+		return ret;
-+	}
-+	sdio_set_drvdata(func, wilc);
-+	wilc->bus_data = sdio_priv;
-+	wilc->dev = &func->dev;
-+	wilc->gpio_irq = gpio;
-+
-+	wilc->rtc_clk = devm_clk_get(&func->card->dev, "rtc_clk");
-+	if (PTR_ERR_OR_ZERO(wilc->rtc_clk) == -EPROBE_DEFER)
-+		return -EPROBE_DEFER;
-+	else if (!IS_ERR(wilc->rtc_clk))
-+		clk_prepare_enable(wilc->rtc_clk);
-+
-+	dev_info(&func->dev, "Driver Initializing success\n");
-+	return 0;
-+}
-+
-+static void wilc_sdio_remove(struct sdio_func *func)
-+{
-+	struct wilc *wilc = sdio_get_drvdata(func);
-+
-+	/* free the GPIO in module remove */
-+	if (wilc->gpio_irq)
-+		gpiod_put(wilc->gpio_irq);
-+
-+	if (!IS_ERR(wilc->rtc_clk))
-+		clk_disable_unprepare(wilc->rtc_clk);
-+
-+	wilc_netdev_cleanup(wilc);
-+}
-+
-+static int wilc_sdio_reset(struct wilc *wilc)
-+{
-+	struct sdio_cmd52 cmd;
-+	int ret;
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+
-+	cmd.read_write = 1;
-+	cmd.function = 0;
-+	cmd.raw = 0;
-+	cmd.address = SDIO_CCCR_ABORT;
-+	cmd.data = WILC_SDIO_CCCR_ABORT_RESET;
-+	ret = wilc_sdio_cmd52(wilc, &cmd);
-+	if (ret) {
-+		dev_err(&func->dev, "Fail cmd 52, reset cmd ...\n");
-+		return ret;
-+	}
-+	return 0;
-+}
-+
-+static int wilc_sdio_suspend(struct device *dev)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(dev);
-+	struct wilc *wilc = sdio_get_drvdata(func);
-+	int ret;
-+
-+	dev_info(dev, "sdio suspend\n");
-+	chip_wakeup(wilc);
-+
-+	if (!IS_ERR(wilc->rtc_clk))
-+		clk_disable_unprepare(wilc->rtc_clk);
-+
-+	if (wilc->suspend_event) {
-+		host_sleep_notify(wilc);
-+		chip_allow_sleep(wilc);
-+	}
-+
-+	ret = wilc_sdio_reset(wilc);
-+	if (ret) {
-+		dev_err(&func->dev, "Fail reset sdio\n");
-+		return ret;
-+	}
-+	sdio_claim_host(func);
-+
-+	return 0;
-+}
-+
-+static int wilc_sdio_enable_interrupt(struct wilc *dev)
-+{
-+	struct sdio_func *func = container_of(dev->dev, struct sdio_func, dev);
-+	int ret = 0;
-+
-+	sdio_claim_host(func);
-+	ret = sdio_claim_irq(func, wilc_sdio_interrupt);
-+	sdio_release_host(func);
-+
-+	if (ret < 0) {
-+		dev_err(&func->dev, "can't claim sdio_irq, err(%d)\n", ret);
-+		ret = -EIO;
-+	}
-+	return ret;
-+}
-+
-+static void wilc_sdio_disable_interrupt(struct wilc *dev)
-+{
-+	struct sdio_func *func = container_of(dev->dev, struct sdio_func, dev);
-+	int ret;
-+
-+	sdio_claim_host(func);
-+	ret = sdio_release_irq(func);
-+	if (ret < 0)
-+		dev_err(&func->dev, "can't release sdio_irq, err(%d)\n", ret);
-+	sdio_release_host(func);
-+}
-+
-+/********************************************
-+ *
-+ *      Function 0
-+ *
-+ ********************************************/
-+
-+static int wilc_sdio_set_func0_csa_address(struct wilc *wilc, u32 adr)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct sdio_cmd52 cmd;
-+	int ret;
-+
-+	/**
-+	 *      Review: BIG ENDIAN
-+	 **/
-+	cmd.read_write = 1;
-+	cmd.function = 0;
-+	cmd.raw = 0;
-+	cmd.address = WILC_SDIO_FBR_CSA_REG;
-+	cmd.data = (u8)adr;
-+	ret = wilc_sdio_cmd52(wilc, &cmd);
-+	if (ret) {
-+		dev_err(&func->dev, "Failed cmd52, set %04x data...\n",
-+			cmd.address);
-+		return ret;
-+	}
-+
-+	cmd.address = WILC_SDIO_FBR_CSA_REG + 1;
-+	cmd.data = (u8)(adr >> 8);
-+	ret = wilc_sdio_cmd52(wilc, &cmd);
-+	if (ret) {
-+		dev_err(&func->dev, "Failed cmd52, set %04x data...\n",
-+			cmd.address);
-+		return ret;
-+	}
-+
-+	cmd.address = WILC_SDIO_FBR_CSA_REG + 2;
-+	cmd.data = (u8)(adr >> 16);
-+	ret = wilc_sdio_cmd52(wilc, &cmd);
-+	if (ret) {
-+		dev_err(&func->dev, "Failed cmd52, set %04x data...\n",
-+			cmd.address);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int wilc_sdio_set_block_size(struct wilc *wilc, u8 func_num,
-+				    u32 block_size)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct sdio_cmd52 cmd;
-+	int ret;
-+
-+	cmd.read_write = 1;
-+	cmd.function = 0;
-+	cmd.raw = 0;
-+	cmd.address = SDIO_FBR_BASE(func_num) + SDIO_CCCR_BLKSIZE;
-+	cmd.data = (u8)block_size;
-+	ret = wilc_sdio_cmd52(wilc, &cmd);
-+	if (ret) {
-+		dev_err(&func->dev, "Failed cmd52, set %04x data...\n",
-+			cmd.address);
-+		return ret;
-+	}
-+
-+	cmd.address = SDIO_FBR_BASE(func_num) + SDIO_CCCR_BLKSIZE +  1;
-+	cmd.data = (u8)(block_size >> 8);
-+	ret = wilc_sdio_cmd52(wilc, &cmd);
-+	if (ret) {
-+		dev_err(&func->dev, "Failed cmd52, set %04x data...\n",
-+			cmd.address);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+/********************************************
-+ *
-+ *      Sdio interfaces
-+ *
-+ ********************************************/
-+static int wilc_sdio_write_reg(struct wilc *wilc, u32 addr, u32 data)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct wilc_sdio *sdio_priv = wilc->bus_data;
-+	int ret;
-+
-+	cpu_to_le32s(&data);
-+
-+	if (addr >= 0xf0 && addr <= 0xff) { /* only vendor specific registers */
-+		struct sdio_cmd52 cmd;
-+
-+		cmd.read_write = 1;
-+		cmd.function = 0;
-+		cmd.raw = 0;
-+		cmd.address = addr;
-+		cmd.data = data;
-+		ret = wilc_sdio_cmd52(wilc, &cmd);
-+		if (ret)
-+			dev_err(&func->dev,
-+				"Failed cmd 52, read reg (%08x) ...\n", addr);
-+	} else {
-+		struct sdio_cmd53 cmd;
-+
-+		/**
-+		 *      set the AHB address
-+		 **/
-+		ret = wilc_sdio_set_func0_csa_address(wilc, addr);
-+		if (ret)
-+			return ret;
-+
-+		cmd.read_write = 1;
-+		cmd.function = 0;
-+		cmd.address = WILC_SDIO_FBR_DATA_REG;
-+		cmd.block_mode = 0;
-+		cmd.increment = 1;
-+		cmd.count = 4;
-+		cmd.buffer = (u8 *)&data;
-+		cmd.block_size = sdio_priv->block_size;
-+		ret = wilc_sdio_cmd53(wilc, &cmd);
-+		if (ret)
-+			dev_err(&func->dev,
-+				"Failed cmd53, write reg (%08x)...\n", addr);
-+	}
-+
-+	return ret;
-+}
-+
-+static int wilc_sdio_write(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct wilc_sdio *sdio_priv = wilc->bus_data;
-+	u32 block_size = sdio_priv->block_size;
-+	struct sdio_cmd53 cmd;
-+	int nblk, nleft, ret;
-+
-+	cmd.read_write = 1;
-+	if (addr > 0) {
-+		/**
-+		 *      func 0 access
-+		 **/
-+		cmd.function = 0;
-+		cmd.address = WILC_SDIO_FBR_DATA_REG;
-+	} else {
-+		/**
-+		 *      func 1 access
-+		 **/
-+		cmd.function = 1;
-+		cmd.address = WILC_SDIO_F1_DATA_REG;
-+	}
-+
-+	size = ALIGN(size, 4);
-+	nblk = size / block_size;
-+	nleft = size % block_size;
-+
-+	if (nblk > 0) {
-+		cmd.block_mode = 1;
-+		cmd.increment = 1;
-+		cmd.count = nblk;
-+		cmd.buffer = buf;
-+		cmd.block_size = block_size;
-+		if (addr > 0) {
-+			ret = wilc_sdio_set_func0_csa_address(wilc, addr);
-+			if (ret)
-+				return ret;
-+		}
-+		ret = wilc_sdio_cmd53(wilc, &cmd);
-+		if (ret) {
-+			dev_err(&func->dev,
-+				"Failed cmd53 [%x], block send...\n", addr);
-+			return ret;
-+		}
-+		if (addr > 0)
-+			addr += nblk * block_size;
-+		buf += nblk * block_size;
-+	}
-+
-+	if (nleft > 0) {
-+		cmd.block_mode = 0;
-+		cmd.increment = 1;
-+		cmd.count = nleft;
-+		cmd.buffer = buf;
-+
-+		cmd.block_size = block_size;
-+
-+		if (addr > 0) {
-+			ret = wilc_sdio_set_func0_csa_address(wilc, addr);
-+			if (ret)
-+				return ret;
-+		}
-+		ret = wilc_sdio_cmd53(wilc, &cmd);
-+		if (ret) {
-+			dev_err(&func->dev,
-+				"Failed cmd53 [%x], bytes send...\n", addr);
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int wilc_sdio_read_reg(struct wilc *wilc, u32 addr, u32 *data)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct wilc_sdio *sdio_priv = wilc->bus_data;
-+	int ret;
-+
-+	if (addr >= 0xf0 && addr <= 0xff) { /* only vendor specific registers */
-+		struct sdio_cmd52 cmd;
-+
-+		cmd.read_write = 0;
-+		cmd.function = 0;
-+		cmd.raw = 0;
-+		cmd.address = addr;
-+		ret = wilc_sdio_cmd52(wilc, &cmd);
-+		if (ret) {
-+			dev_err(&func->dev,
-+				"Failed cmd 52, read reg (%08x) ...\n", addr);
-+			return ret;
-+		}
-+		*data = cmd.data;
-+	} else {
-+		struct sdio_cmd53 cmd;
-+
-+		ret = wilc_sdio_set_func0_csa_address(wilc, addr);
-+		if (ret)
-+			return ret;
-+
-+		cmd.read_write = 0;
-+		cmd.function = 0;
-+		cmd.address = WILC_SDIO_FBR_DATA_REG;
-+		cmd.block_mode = 0;
-+		cmd.increment = 1;
-+		cmd.count = 4;
-+		cmd.buffer = (u8 *)data;
-+
-+		cmd.block_size = sdio_priv->block_size;
-+		ret = wilc_sdio_cmd53(wilc, &cmd);
-+		if (ret) {
-+			dev_err(&func->dev,
-+				"Failed cmd53, read reg (%08x)...\n", addr);
-+			return ret;
-+		}
-+	}
-+
-+	le32_to_cpus(data);
-+	return 0;
-+}
-+
-+static int wilc_sdio_read(struct wilc *wilc, u32 addr, u8 *buf, u32 size)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct wilc_sdio *sdio_priv = wilc->bus_data;
-+	u32 block_size = sdio_priv->block_size;
-+	struct sdio_cmd53 cmd;
-+	int nblk, nleft, ret;
-+
-+	cmd.read_write = 0;
-+	if (addr > 0) {
-+		/**
-+		 *      func 0 access
-+		 **/
-+		cmd.function = 0;
-+		cmd.address = WILC_SDIO_FBR_DATA_REG;
-+	} else {
-+		/**
-+		 *      func 1 access
-+		 **/
-+		cmd.function = 1;
-+		cmd.address = WILC_SDIO_F1_DATA_REG;
-+	}
-+
-+	size = ALIGN(size, 4);
-+	nblk = size / block_size;
-+	nleft = size % block_size;
-+
-+	if (nblk > 0) {
-+		cmd.block_mode = 1;
-+		cmd.increment = 1;
-+		cmd.count = nblk;
-+		cmd.buffer = buf;
-+		cmd.block_size = block_size;
-+		if (addr > 0) {
-+			ret = wilc_sdio_set_func0_csa_address(wilc, addr);
-+			if (ret)
-+				return ret;
-+		}
-+		ret = wilc_sdio_cmd53(wilc, &cmd);
-+		if (ret) {
-+			dev_err(&func->dev,
-+				"Failed cmd53 [%x], block read...\n", addr);
-+			return ret;
-+		}
-+		if (addr > 0)
-+			addr += nblk * block_size;
-+		buf += nblk * block_size;
-+	}       /* if (nblk > 0) */
-+
-+	if (nleft > 0) {
-+		cmd.block_mode = 0;
-+		cmd.increment = 1;
-+		cmd.count = nleft;
-+		cmd.buffer = buf;
-+
-+		cmd.block_size = block_size;
-+
-+		if (addr > 0) {
-+			ret = wilc_sdio_set_func0_csa_address(wilc, addr);
-+			if (ret)
-+				return ret;
-+		}
-+		ret = wilc_sdio_cmd53(wilc, &cmd);
-+		if (ret) {
-+			dev_err(&func->dev,
-+				"Failed cmd53 [%x], bytes read...\n", addr);
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+/********************************************
-+ *
-+ *      Bus interfaces
-+ *
-+ ********************************************/
-+
-+static int wilc_sdio_deinit(struct wilc *wilc)
-+{
-+	return 0;
-+}
-+
-+static int wilc_sdio_init(struct wilc *wilc, bool resume)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct wilc_sdio *sdio_priv = wilc->bus_data;
-+	struct sdio_cmd52 cmd;
-+	int loop, ret;
-+	u32 chipid;
-+
-+	if (!resume)
-+		sdio_priv->irq_gpio = wilc->dev_irq_num;
-+
-+	/**
-+	 *      function 0 csa enable
-+	 **/
-+	cmd.read_write = 1;
-+	cmd.function = 0;
-+	cmd.raw = 1;
-+	cmd.address = SDIO_FBR_BASE(func->num);
-+	cmd.data = SDIO_FBR_ENABLE_CSA;
-+	ret = wilc_sdio_cmd52(wilc, &cmd);
-+	if (ret) {
-+		dev_err(&func->dev, "Fail cmd 52, enable csa...\n");
-+		return ret;
-+	}
-+
-+	/**
-+	 *      function 0 block size
-+	 **/
-+	ret = wilc_sdio_set_block_size(wilc, 0, WILC_SDIO_BLOCK_SIZE);
-+	if (ret) {
-+		dev_err(&func->dev, "Fail cmd 52, set func 0 block size...\n");
-+		return ret;
-+	}
-+	sdio_priv->block_size = WILC_SDIO_BLOCK_SIZE;
-+
-+	/**
-+	 *      enable func1 IO
-+	 **/
-+	cmd.read_write = 1;
-+	cmd.function = 0;
-+	cmd.raw = 1;
-+	cmd.address = SDIO_CCCR_IOEx;
-+	cmd.data = WILC_SDIO_CCCR_IO_EN_FUNC1;
-+	ret = wilc_sdio_cmd52(wilc, &cmd);
-+	if (ret) {
-+		dev_err(&func->dev,
-+			"Fail cmd 52, set IOE register...\n");
-+		return ret;
-+	}
-+
-+	/**
-+	 *      make sure func 1 is up
-+	 **/
-+	cmd.read_write = 0;
-+	cmd.function = 0;
-+	cmd.raw = 0;
-+	cmd.address = SDIO_CCCR_IORx;
-+	loop = 3;
-+	do {
-+		cmd.data = 0;
-+		ret = wilc_sdio_cmd52(wilc, &cmd);
-+		if (ret) {
-+			dev_err(&func->dev,
-+				"Fail cmd 52, get IOR register...\n");
-+			return ret;
-+		}
-+		if (cmd.data == WILC_SDIO_CCCR_IO_EN_FUNC1)
-+			break;
-+	} while (loop--);
-+
-+	if (loop <= 0) {
-+		dev_err(&func->dev, "Fail func 1 is not ready...\n");
-+		return -EINVAL;
-+	}
-+
-+	/**
-+	 *      func 1 is ready, set func 1 block size
-+	 **/
-+	ret = wilc_sdio_set_block_size(wilc, 1, WILC_SDIO_BLOCK_SIZE);
-+	if (ret) {
-+		dev_err(&func->dev, "Fail set func 1 block size...\n");
-+		return ret;
-+	}
-+
-+	/**
-+	 *      func 1 interrupt enable
-+	 **/
-+	cmd.read_write = 1;
-+	cmd.function = 0;
-+	cmd.raw = 1;
-+	cmd.address = SDIO_CCCR_IENx;
-+	cmd.data = WILC_SDIO_CCCR_IEN_MASTER | WILC_SDIO_CCCR_IEN_FUNC1;
-+	ret = wilc_sdio_cmd52(wilc, &cmd);
-+	if (ret) {
-+		dev_err(&func->dev, "Fail cmd 52, set IEN register...\n");
-+		return ret;
-+	}
-+
-+	/**
-+	 *      make sure can read back chip id correctly
-+	 **/
-+	if (!resume) {
-+		int rev;
-+
-+		ret = wilc_sdio_read_reg(wilc, WILC_CHIPID, &chipid);
-+		if (ret) {
-+			dev_err(&func->dev, "Fail cmd read chip id...\n");
-+			return ret;
-+		}
-+		dev_err(&func->dev, "chipid (%08x)\n", chipid);
-+		rev = FIELD_GET(WILC_CHIP_REV_FIELD, chipid);
-+		if (rev > FIELD_GET(WILC_CHIP_REV_FIELD, WILC_1000_BASE_ID_2A))
-+			sdio_priv->has_thrpt_enh3 = 1;
-+		else
-+			sdio_priv->has_thrpt_enh3 = 0;
-+		dev_info(&func->dev, "has_thrpt_enh3 = %d...\n",
-+			 sdio_priv->has_thrpt_enh3);
-+	}
-+
-+	return 0;
-+}
-+
-+static int wilc_sdio_read_size(struct wilc *wilc, u32 *size)
-+{
-+	u32 tmp;
-+	struct sdio_cmd52 cmd;
-+
-+	/**
-+	 *      Read DMA count in words
-+	 **/
-+	cmd.read_write = 0;
-+	cmd.function = 0;
-+	cmd.raw = 0;
-+	cmd.address = WILC_SDIO_INTERRUPT_DATA_SZ_REG;
-+	cmd.data = 0;
-+	wilc_sdio_cmd52(wilc, &cmd);
-+	tmp = cmd.data;
-+
-+	cmd.address = WILC_SDIO_INTERRUPT_DATA_SZ_REG + 1;
-+	cmd.data = 0;
-+	wilc_sdio_cmd52(wilc, &cmd);
-+	tmp |= (cmd.data << 8);
-+
-+	*size = tmp;
-+	return 0;
-+}
-+
-+static int wilc_sdio_read_int(struct wilc *wilc, u32 *int_status)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct wilc_sdio *sdio_priv = wilc->bus_data;
-+	u32 tmp;
-+	u8 irq_flags;
-+	struct sdio_cmd52 cmd;
-+
-+	wilc_sdio_read_size(wilc, &tmp);
-+
-+	/**
-+	 *      Read IRQ flags
-+	 **/
-+	if (!sdio_priv->irq_gpio) {
-+		cmd.function = 1;
-+		cmd.address = WILC_SDIO_EXT_IRQ_FLAG_REG;
-+	} else {
-+		cmd.function = 0;
-+		cmd.address = WILC_SDIO_IRQ_FLAG_REG;
-+	}
-+	cmd.raw = 0;
-+	cmd.read_write = 0;
-+	cmd.data = 0;
-+	wilc_sdio_cmd52(wilc, &cmd);
-+	irq_flags = cmd.data;
-+	tmp |= FIELD_PREP(IRG_FLAGS_MASK, cmd.data);
-+
-+	if (FIELD_GET(UNHANDLED_IRQ_MASK, irq_flags))
-+		dev_err(&func->dev, "Unexpected interrupt (1) int=%lx\n",
-+			FIELD_GET(UNHANDLED_IRQ_MASK, irq_flags));
-+
-+	*int_status = tmp;
-+
-+	return 0;
-+}
-+
-+static int wilc_sdio_clear_int_ext(struct wilc *wilc, u32 val)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct wilc_sdio *sdio_priv = wilc->bus_data;
-+	int ret;
-+	int vmm_ctl;
-+
-+	if (sdio_priv->has_thrpt_enh3) {
-+		u32 reg = 0;
-+
-+		if (sdio_priv->irq_gpio)
-+			reg = val & (BIT(MAX_NUM_INT) - 1);
-+
-+		/* select VMM table 0 */
-+		if (val & SEL_VMM_TBL0)
-+			reg |= BIT(5);
-+		/* select VMM table 1 */
-+		if (val & SEL_VMM_TBL1)
-+			reg |= BIT(6);
-+		/* enable VMM */
-+		if (val & EN_VMM)
-+			reg |= BIT(7);
-+		if (reg) {
-+			struct sdio_cmd52 cmd;
-+
-+			cmd.read_write = 1;
-+			cmd.function = 0;
-+			cmd.raw = 0;
-+			cmd.address = WILC_SDIO_IRQ_CLEAR_FLAG_REG;
-+			cmd.data = reg;
-+
-+			ret = wilc_sdio_cmd52(wilc, &cmd);
-+			if (ret) {
-+				dev_err(&func->dev,
-+					"Failed cmd52, set (%02x) data (%d) ...\n",
-+					cmd.address, __LINE__);
-+				return ret;
-+			}
-+		}
-+		return 0;
-+	}
-+	if (sdio_priv->irq_gpio) {
-+		/* has_thrpt_enh2 uses register 0xf8 to clear interrupts. */
-+		/*
-+		 * Cannot clear multiple interrupts.
-+		 * Must clear each interrupt individually.
-+		 */
-+		u32 flags;
-+		int i;
-+
-+		flags = val & (BIT(MAX_NUM_INT) - 1);
-+		for (i = 0; i < NUM_INT_EXT && flags; i++) {
-+			if (flags & BIT(i)) {
-+				struct sdio_cmd52 cmd;
-+
-+				cmd.read_write = 1;
-+				cmd.function = 0;
-+				cmd.raw = 0;
-+				cmd.address = WILC_SDIO_IRQ_CLEAR_FLAG_REG;
-+				cmd.data = BIT(i);
-+
-+				ret = wilc_sdio_cmd52(wilc, &cmd);
-+				if (ret) {
-+					dev_err(&func->dev,
-+						"Failed cmd52, set (%02x) data (%d) ...\n",
-+						cmd.address, __LINE__);
-+					return ret;
-+				}
-+				flags &= ~BIT(i);
-+			}
-+		}
-+
-+		for (i = NUM_INT_EXT; i < MAX_NUM_INT && flags; i++) {
-+			if (flags & BIT(i)) {
-+				dev_err(&func->dev,
-+					"Unexpected interrupt cleared %d...\n",
-+					i);
-+				flags &= ~BIT(i);
-+			}
-+		}
-+	}
-+
-+	vmm_ctl = 0;
-+	/* select VMM table 0 */
-+	if (val & SEL_VMM_TBL0)
-+		vmm_ctl |= BIT(0);
-+	/* select VMM table 1 */
-+	if (val & SEL_VMM_TBL1)
-+		vmm_ctl |= BIT(1);
-+	/* enable VMM */
-+	if (val & EN_VMM)
-+		vmm_ctl |= BIT(2);
-+
-+	if (vmm_ctl) {
-+		struct sdio_cmd52 cmd;
-+
-+		cmd.read_write = 1;
-+		cmd.function = 0;
-+		cmd.raw = 0;
-+		cmd.address = WILC_SDIO_VMM_TBL_CTRL_REG;
-+		cmd.data = vmm_ctl;
-+		ret = wilc_sdio_cmd52(wilc, &cmd);
-+		if (ret) {
-+			dev_err(&func->dev,
-+				"Failed cmd52, set (%02x) data (%d) ...\n",
-+				cmd.address, __LINE__);
-+			return ret;
-+		}
-+	}
-+	return 0;
-+}
-+
-+static int wilc_sdio_sync_ext(struct wilc *wilc, int nint)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(wilc->dev);
-+	struct wilc_sdio *sdio_priv = wilc->bus_data;
-+	u32 reg;
-+
-+	if (nint > MAX_NUM_INT) {
-+		dev_err(&func->dev, "Too many interrupts (%d)...\n", nint);
-+		return -EINVAL;
-+	}
-+
-+	/**
-+	 *      Disable power sequencer
-+	 **/
-+	if (wilc_sdio_read_reg(wilc, WILC_MISC, &reg)) {
-+		dev_err(&func->dev, "Failed read misc reg...\n");
-+		return -EINVAL;
-+	}
-+
-+	reg &= ~BIT(8);
-+	if (wilc_sdio_write_reg(wilc, WILC_MISC, reg)) {
-+		dev_err(&func->dev, "Failed write misc reg...\n");
-+		return -EINVAL;
-+	}
-+
-+	if (sdio_priv->irq_gpio) {
-+		u32 reg;
-+		int ret, i;
-+
-+		/**
-+		 *      interrupt pin mux select
-+		 **/
-+		ret = wilc_sdio_read_reg(wilc, WILC_PIN_MUX_0, &reg);
-+		if (ret) {
-+			dev_err(&func->dev, "Failed read reg (%08x)...\n",
-+				WILC_PIN_MUX_0);
-+			return ret;
-+		}
-+		reg |= BIT(8);
-+		ret = wilc_sdio_write_reg(wilc, WILC_PIN_MUX_0, reg);
-+		if (ret) {
-+			dev_err(&func->dev, "Failed write reg (%08x)...\n",
-+				WILC_PIN_MUX_0);
-+			return ret;
-+		}
-+
-+		/**
-+		 *      interrupt enable
-+		 **/
-+		ret = wilc_sdio_read_reg(wilc, WILC_INTR_ENABLE, &reg);
-+		if (ret) {
-+			dev_err(&func->dev, "Failed read reg (%08x)...\n",
-+				WILC_INTR_ENABLE);
-+			return ret;
-+		}
-+
-+		for (i = 0; (i < 5) && (nint > 0); i++, nint--)
-+			reg |= BIT((27 + i));
-+		ret = wilc_sdio_write_reg(wilc, WILC_INTR_ENABLE, reg);
-+		if (ret) {
-+			dev_err(&func->dev, "Failed write reg (%08x)...\n",
-+				WILC_INTR_ENABLE);
-+			return ret;
-+		}
-+		if (nint) {
-+			ret = wilc_sdio_read_reg(wilc, WILC_INTR2_ENABLE, &reg);
-+			if (ret) {
-+				dev_err(&func->dev,
-+					"Failed read reg (%08x)...\n",
-+					WILC_INTR2_ENABLE);
-+				return ret;
-+			}
-+
-+			for (i = 0; (i < 3) && (nint > 0); i++, nint--)
-+				reg |= BIT(i);
-+
-+			ret = wilc_sdio_read_reg(wilc, WILC_INTR2_ENABLE, &reg);
-+			if (ret) {
-+				dev_err(&func->dev,
-+					"Failed write reg (%08x)...\n",
-+					WILC_INTR2_ENABLE);
-+				return ret;
-+			}
-+		}
-+	}
-+	return 0;
-+}
-+
-+/* Global sdio HIF function table */
-+static const struct wilc_hif_func wilc_hif_sdio = {
-+	.hif_init = wilc_sdio_init,
-+	.hif_deinit = wilc_sdio_deinit,
-+	.hif_read_reg = wilc_sdio_read_reg,
-+	.hif_write_reg = wilc_sdio_write_reg,
-+	.hif_block_rx = wilc_sdio_read,
-+	.hif_block_tx = wilc_sdio_write,
-+	.hif_read_int = wilc_sdio_read_int,
-+	.hif_clear_int_ext = wilc_sdio_clear_int_ext,
-+	.hif_read_size = wilc_sdio_read_size,
-+	.hif_block_tx_ext = wilc_sdio_write,
-+	.hif_block_rx_ext = wilc_sdio_read,
-+	.hif_sync_ext = wilc_sdio_sync_ext,
-+	.enable_interrupt = wilc_sdio_enable_interrupt,
-+	.disable_interrupt = wilc_sdio_disable_interrupt,
-+};
-+
-+static int wilc_sdio_resume(struct device *dev)
-+{
-+	struct sdio_func *func = dev_to_sdio_func(dev);
-+	struct wilc *wilc = sdio_get_drvdata(func);
-+
-+	dev_info(dev, "sdio resume\n");
-+	sdio_release_host(func);
-+	chip_wakeup(wilc);
-+	wilc_sdio_init(wilc, true);
-+
-+	if (wilc->suspend_event)
-+		host_wakeup_notify(wilc);
-+
-+	chip_allow_sleep(wilc);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id wilc_of_match[] = {
-+	{ .compatible = "microchip,wilc1000-sdio", },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, wilc_of_match);
-+
-+static const struct dev_pm_ops wilc_sdio_pm_ops = {
-+	.suspend = wilc_sdio_suspend,
-+	.resume = wilc_sdio_resume,
-+};
-+
-+static struct sdio_driver wilc_sdio_driver = {
-+	.name		= SDIO_MODALIAS,
-+	.id_table	= wilc_sdio_ids,
-+	.probe		= wilc_sdio_probe,
-+	.remove		= wilc_sdio_remove,
-+	.drv = {
-+		.pm = &wilc_sdio_pm_ops,
-+		.of_match_table = wilc_of_match,
-+	}
-+};
-+module_driver(wilc_sdio_driver,
-+	      sdio_register_driver,
-+	      sdio_unregister_driver);
-+MODULE_LICENSE("GPL");
++#ifndef WILC_FW_H
++#define WILC_FW_H
++
++#include <linux/ieee80211.h>
++
++#define WILC_MAX_NUM_STA			9
++#define WILC_MAX_RATES_SUPPORTED		12
++#define WILC_MAX_NUM_PMKIDS			16
++#define WILC_MAX_NUM_SCANNED_CH			14
++
++struct wilc_assoc_resp {
++	__le16 capab_info;
++	__le16 status_code;
++	__le16 aid;
++} __packed;
++
++struct wilc_pmkid {
++	u8 bssid[ETH_ALEN];
++	u8 pmkid[WLAN_PMKID_LEN];
++} __packed;
++
++struct wilc_pmkid_attr {
++	u8 numpmkid;
++	struct wilc_pmkid pmkidlist[WILC_MAX_NUM_PMKIDS];
++} __packed;
++
++struct wilc_reg_frame {
++	u8 reg;
++	u8 reg_id;
++	__le16 frame_type;
++} __packed;
++
++struct wilc_drv_handler {
++	__le32 handler;
++	u8 mode;
++} __packed;
++
++struct wilc_wep_key {
++	u8 index;
++	u8 key_len;
++	u8 key[0];
++} __packed;
++
++struct wilc_sta_wpa_ptk {
++	u8 mac_addr[ETH_ALEN];
++	u8 key_len;
++	u8 key[0];
++} __packed;
++
++struct wilc_ap_wpa_ptk {
++	u8 mac_addr[ETH_ALEN];
++	u8 index;
++	u8 key_len;
++	u8 key[0];
++} __packed;
++
++struct wilc_gtk_key {
++	u8 mac_addr[ETH_ALEN];
++	u8 rsc[8];
++	u8 index;
++	u8 key_len;
++	u8 key[0];
++} __packed;
++
++struct wilc_op_mode {
++	__le32 mode;
++} __packed;
++
++struct wilc_noa_opp_enable {
++	u8 ct_window;
++	u8 cnt;
++	__le32 duration;
++	__le32 interval;
++	__le32 start_time;
++} __packed;
++
++struct wilc_noa_opp_disable {
++	u8 cnt;
++	__le32 duration;
++	__le32 interval;
++	__le32 start_time;
++} __packed;
++
++struct wilc_join_bss_param {
++	char ssid[IEEE80211_MAX_SSID_LEN];
++	u8 ssid_terminator;
++	u8 bss_type;
++	u8 ch;
++	__le16 cap_info;
++	u8 sa[ETH_ALEN];
++	u8 bssid[ETH_ALEN];
++	__le16 beacon_period;
++	u8 dtim_period;
++	u8 supp_rates[WILC_MAX_RATES_SUPPORTED + 1];
++	u8 wmm_cap;
++	u8 uapsd_cap;
++	u8 ht_capable;
++	u8 rsn_found;
++	u8 rsn_grp_policy;
++	u8 mode_802_11i;
++	u8 p_suites[3];
++	u8 akm_suites[3];
++	u8 rsn_cap[2];
++	u8 noa_enabled;
++	__le32 tsf_lo;
++	u8 idx;
++	u8 opp_enabled;
++	union {
++		struct wilc_noa_opp_disable opp_dis;
++		struct wilc_noa_opp_enable opp_en;
++	};
++} __packed;
++#endif
 -- 
 2.24.0
 _______________________________________________
