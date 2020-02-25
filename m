@@ -1,76 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E708016BF74
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 12:19:16 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B6F4A16E936
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Feb 2020 16:01:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2F2F4207A4;
-	Tue, 25 Feb 2020 11:19:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D0FD88689B;
+	Tue, 25 Feb 2020 15:01:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 851reX2hMzcQ; Tue, 25 Feb 2020 11:19:13 +0000 (UTC)
+	with ESMTP id GBFHWhVdKdDX; Tue, 25 Feb 2020 15:01:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5D46D20357;
-	Tue, 25 Feb 2020 11:19:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9B65D86838;
+	Tue, 25 Feb 2020 15:01:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 592F01BF402
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 11:19:07 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 775301BF2C2
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 15:01:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 481F12051F
- for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 11:19:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 73F6F86856
+ for <devel@linuxdriverproject.org>; Tue, 25 Feb 2020 15:01:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 96K64D9ulTmv for <devel@linuxdriverproject.org>;
- Tue, 25 Feb 2020 11:19:03 +0000 (UTC)
-X-Greylist: delayed 00:06:08 by SQLgrey-1.7.6
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by silver.osuosl.org (Postfix) with ESMTPS id ACA0320357
- for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 11:19:02 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id a6so2739266wme.2
- for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 03:19:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=J5uqOcwW0xv+Tvbi0vu1DaInpYJcFdd20nBArNms9Ws=;
- b=N9+d/p5b8g87t7KqBNZTJU39tX5r3BfCV1V56/NKMlhcBIv2WtwVWUEEA4EfTKJkUy
- UE5w0yhvKEtpiGFJM7+qQ5TDp4qwgsrWf0xg0Hrjmnb94cQUo0bWE8WKDUpEn433zFGl
- AiIuwr6HMqyAqV67DnzPt9Ax9gqHsj2Wx6Gtt44ZLu0ERVrE46YnI5eCDnAedvje4QX3
- u7pq+1aAQfJXjC3JSJsu7aVl4znup5vjYROSNn9WK3ry5e2bD+LZjJRhi4A4udPF5Dn2
- LjOOm6UJaaNbtagbatTERIF+M/tFEQZnN+0LZj2Qba8lztesO1k1J/M+5psGn8yyvlzA
- mwyQ==
+ with ESMTP id KW9wksbbTYGs for <devel@linuxdriverproject.org>;
+ Tue, 25 Feb 2020 15:01:08 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 906098698E
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 15:01:07 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id f2so1127348pjq.1
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 07:01:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:date:from:to:cc:subject:mime-version:content-disposition
+ :user-agent; bh=dDJ+ophuc0rsonzeLWDePL6AJkh0L49xgiit/I70EsU=;
+ b=ZcQ8Hqr7ZPm4BdeF8bgpagl9fX5jrXAu1VyacBxBaKVwYGbxWu8wrzSyy2+p3O2+/h
+ Dy5jpx1QQ65/OdejJqFxcoV91xUS2+4LHFboSaXqmOOZiJwP7jyTUU3E3dIE0TstLtgf
+ 0HaERYqB38XOM6y5D2EJxxsdZgs7TU7LREWNYOcTkLUJiTxqMHUfe4cSj5oOO6i4xCue
+ rTlT9M/7lGMq/Ygh8tQgTizCo+G8+f+LygD8H/8OgLyGBNw0MlzYYLGOWmvEhsB4JE0G
+ l4ZXaxUiae5lM6WGuHffUoC9ZUTptoKHU34mT7zvVRC3lIFlzofh+Y59No8YW9S+w/g6
+ m00w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=J5uqOcwW0xv+Tvbi0vu1DaInpYJcFdd20nBArNms9Ws=;
- b=Ot+m5q62jGL8IhnzRDTPGtSG17yuk3RuV5cLknNzngzjR/WU2EgOV8DWV8P03xXk4G
- IHWO7fZ71eLLgYPaMyuXj2f6jkMr4sQLCM/rzKhvn+Uu2vmXTmZ6qYh8PBn29PgT2o0h
- MxPRsrEeVt0D5BaUWwIUyU5nSZ63YDVZ1I+BUB5SAxJcFGlCX4+qz2RuB5uA8JQptRVW
- +2aKzCo4tYxaNNSOws2YbNXTgmrXKIYXDHbAXuDEwVxwQlBCjJbL+ovhDJ3mrMefIxBx
- NHi1yEvlswnDSUmToOc3Ju2vt8Kd3POx/3U3KEPZXUCxEo5jFtiTmqoSvTKq15Xe7owE
- E9zQ==
-X-Gm-Message-State: APjAAAXfkt60KqQ16qEKpZ2npOnc2U2cgJ7EdxnWLmpfIrbWETaa5E1W
- kuCAUSB48Bth8U2AOqb9U+Z+MQJf+31Amqc4mRzS1Tev5Jk=
-X-Google-Smtp-Source: APXvYqw6DtqMxfu0w7fif5B4EFoM8pSfUq9ywhW8x4G4qKXOEFWUAntRxmKz7X9kF7MOR4tIEh6B9qwJIYrdnUsDAOs=
-X-Received: by 2002:a1c:9e13:: with SMTP id h19mr4910709wme.21.1582629172197; 
- Tue, 25 Feb 2020 03:12:52 -0800 (PST)
+ h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
+ :content-disposition:user-agent;
+ bh=dDJ+ophuc0rsonzeLWDePL6AJkh0L49xgiit/I70EsU=;
+ b=NqXPn0zrqH5D0TkW2a4qymcp+Cy5v2WlXXm/hYBkDcNjJpOnCQvwrknb9fJ4Acnmyf
+ iLz5uId9U4Nul1hHPt1ffN9D0vsmL2wF2PwdKGOpdiHG2sbW30PcH3nhhO+ZFpDCkk20
+ wC1rwUirbBagJlQ2bwH1pX83mHB0+cRNkEaWba0SeAaRvLSn0mmZNnyK46bQwIwY65xs
+ Tb9Pks2n5wOwVnej8cdEZ0RK1CIjtZxBibZg6InpAfWXb+RMx38KBuNc9bErpD2jGSp5
+ 6dCuUQuzwpwHHagG2OZsBp4HTvq541/7/QtT2oMMlUiBLpTCb/v5X/4CjLH/V4riSdwM
+ ciyQ==
+X-Gm-Message-State: APjAAAXAyPeS3/OoDxlCYTHkkHa4Z/6ioe7kmuNkRT29iypcow8EzPZN
+ SNXaJluikokYiH/xXWVhO7h7ye4Ku4n6ow==
+X-Google-Smtp-Source: APXvYqzgTiN/EmB7DNtu2m2mWEGUraVUqdhRA0AV2wGjtrcrTyN+W4cla+Lubkv9BE44e2ZmJZNLZw==
+X-Received: by 2002:a17:90a:234f:: with SMTP id
+ f73mr5520424pje.109.1582642866596; 
+ Tue, 25 Feb 2020 07:01:06 -0800 (PST)
+Received: from SARKAR ([49.207.57.206])
+ by smtp.gmail.com with ESMTPSA id a9sm17120716pfo.35.2020.02.25.07.01.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Feb 2020 07:01:05 -0800 (PST)
+Message-ID: <5e5536b1.1c69fb81.5f37a.daf6@mx.google.com>
+X-Google-Original-Message-ID: <20200225150102.GA20845@rohitsarkar5398@gmail.com>
+Date: Tue, 25 Feb 2020 20:31:02 +0530
+From: Rohit Sarkar <rohitsarkar5398@gmail.com>
+To: linux-iio@vger.kernel.org
+Subject: [PATCH v2] staging: iio: update TODO
 MIME-Version: 1.0
-References: <20200224153501.60040-1-glider@google.com>
- <20200224153501.60040-2-glider@google.com>
- <202002242017.0817EEA8@keescook>
- <CAG48ez1rn1QwYnTJiWbiNDjB3iH7CnSeEA+MZMPp+0pmaLw6bA@mail.gmail.com>
-In-Reply-To: <CAG48ez1rn1QwYnTJiWbiNDjB3iH7CnSeEA+MZMPp+0pmaLw6bA@mail.gmail.com>
-From: Alexander Potapenko <glider@google.com>
-Date: Tue, 25 Feb 2020 12:12:41 +0100
-Message-ID: <CAG_fn=VELOHDaZhBOPP40Efj3AEFzFbey44ujsaMZ8QcqqM5fw@mail.gmail.com>
-Subject: Re: [PATCH 2/3] binder: do not initialize locals passed to
- copy_from_user()
-To: Jann Horn <jannh@google.com>
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,142 +85,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Kees Cook <keescook@chromium.org>, Peter Zijlstra <peterz@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Dmitry Vyukov <dvyukov@google.com>,
- Todd Kjos <tkjos@google.com>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, jic23@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Feb 25, 2020 at 9:14 AM Jann Horn <jannh@google.com> wrote:
->
-> On Tue, Feb 25, 2020 at 5:18 AM Kees Cook <keescook@chromium.org> wrote:
-> > On Mon, Feb 24, 2020 at 04:35:00PM +0100, glider@google.com wrote:
-> > > Certain copy_from_user() invocations in binder.c are known to
-> > > unconditionally initialize locals before their first use, like e.g. in
-> > > the following case:
-> > >
-> > >       struct binder_transaction_data tr;
-> > >       if (copy_from_user(&tr, ptr, sizeof(tr)))
-> > >               return -EFAULT;
-> > >
-> > > In such cases enabling CONFIG_INIT_STACK_ALL leads to insertion of
-> > > redundant locals initialization that the compiler fails to remove.
-> > > To work around this problem till Clang can deal with it, we apply
-> > > __do_not_initialize to local Binder structures.
-> >
-> > It should be possible to write a Coccinelle script to identify all these
-> > cases. (i.e. a single path from struct declaration to copy_from_user())
-> > and apply the changes automatically. This script could be checked into
-> > scripts/coccinelle/ to help keep these markings in sync...
->
-> I wonder whether it would instead be reasonable to define a helper
-> macro for "copy object from userspace to the kernel", and then use
-> this macro. Something like this:
+Since there are no uses of the old GPIO API, remove the item from the
+TODO and some new items.
 
-I really like this idea, but I think hacking something based on the
-order of LLVM passes is too fragile and can also lead to suboptimal
-code generation with GCC.
-Maybe we can pull the variable declaration together with
-__attribute__((uninitialized)) inside this macro instead?
+Changes from v1:
+Add work item mentioned by Alexandru in https://marc.info/?l=linux-iio&m=158261515624212&w=2
 
-> #define copy_object_from_user(objp, src) ({              \
->   __attribute__((uninitialized)) typeof(*(objp)) __buf; \
->   copy_from_user(&__buf, (src), sizeof(*(objp)));        \
->   *(objp) = __buf;                                       \
-> })
->
-> void blah(unsigned long user_addr) {
->   struct foo stackobj;
->   copy_object_from_user(&stackobj, user_addr);
->   do_stuff(&stackobj);
-> }
->
-> Unfortunately, clang runs a MemCpy optimization pass before the Dead
-> Store Elimination pass, which makes the copy_from_user() go directly
-> to `stackobj` instead of __buf before DSE has had a chance to get rid
-> of the first memcpy(). Grrr...
->
-> But looking at the list of passes that LLVM runs, we can see that
-> between the MemCpy optimization and the DSE pass, we have Bit-Tracking
-> Dead Store Elimination... okay, fine, so we hack together some code
-> such that it contains a fake branch that is only resolved between
-> MemCpy and DSE:
->
-> unsigned long blub, blab;
-> unsigned long get_blub(void) { return blub & 5; }
-> #define copy_object_from_user(objp, src) ({              \
->   __attribute__((uninitialized)) typeof(*(objp)) __buf; \
->   *(char*)&__buf = 0;                                   \
->   copy_from_user(&__buf, (src), sizeof(*(objp)));        \
->   int x = get_blub(); int y = blab & 10;\
->   if ((x & y) == 0) { \
->     *(objp) = __buf;                                       \
->   } \
-> })
->
-> But it still doesn't work, even though the IR looks like DSE ought to work:
->
-> *** IR Dump After Value Propagation ***
-> ; Function Attrs: nounwind uwtable
-> define dso_local void @blah(i64) local_unnamed_addr #1 {
->   %2 = alloca %struct.foo, align 4
->   %3 = alloca %struct.foo, align 4
->   %4 = bitcast %struct.foo* %2 to i8*
->   call void @llvm.lifetime.start.p0i8(i64 1008, i8* nonnull %4) #4
->   call void @llvm.memset.p0i8.i64(i8* nonnull align 4 %4, i8 -86, i64
-> 1008, i1 false)
->   %5 = bitcast %struct.foo* %3 to i8*
->   call void @llvm.lifetime.start.p0i8(i64 1008, i8* nonnull %5) #4
->   store i8 0, i8* %5, align 4, !tbaa !6
->   call void @copy_from_user(i8* nonnull %5, i64 %0, i64 1008) #4
->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 4 %4, i8*
-> nonnull align 4 %5, i64 1008, i1 false), !tbaa.struct !7
->   call void @llvm.lifetime.end.p0i8(i64 1008, i8* nonnull %5) #4
->   call void @do_stuff(%struct.foo* nonnull %2) #4
->   call void @llvm.lifetime.end.p0i8(i64 1008, i8* nonnull %4) #4
->   ret void
-> }
-> *** IR Dump After Dead Store Elimination ***
-> ; Function Attrs: nounwind uwtable
-> define dso_local void @blah(i64) local_unnamed_addr #1 {
->   %2 = alloca %struct.foo, align 4
->   %3 = alloca %struct.foo, align 4
->   %4 = bitcast %struct.foo* %2 to i8*
->   call void @llvm.lifetime.start.p0i8(i64 1008, i8* nonnull %4) #4
->   call void @llvm.memset.p0i8.i64(i8* nonnull align 4 %4, i8 -86, i64
-> 1008, i1 false)
->   %5 = bitcast %struct.foo* %3 to i8*
->   call void @llvm.lifetime.start.p0i8(i64 1008, i8* nonnull %5) #4
->   store i8 0, i8* %5, align 4, !tbaa !6
->   call void @copy_from_user(i8* nonnull %5, i64 %0, i64 1008) #4
->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 4 %4, i8*
-> nonnull align 4 %5, i64 1008, i1 false), !tbaa.struct !7
->   call void @llvm.lifetime.end.p0i8(i64 1008, i8* nonnull %5) #4
->   call void @do_stuff(%struct.foo* nonnull %2) #4
->   call void @llvm.lifetime.end.p0i8(i64 1008, i8* nonnull %4) #4
->   ret void
-> }
->
+Signed-off-by: Rohit Sarkar <rohitsarkar5398@gmail.com>
+---
+ drivers/staging/iio/TODO | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
-> I guess maybe clang can't do DSE past a function call or something?
+diff --git a/drivers/staging/iio/TODO b/drivers/staging/iio/TODO
+index 1b8ebf2c1b69..e54510c2ef5f 100644
+--- a/drivers/staging/iio/TODO
++++ b/drivers/staging/iio/TODO
+@@ -1,11 +1,17 @@
+-2018-04-15
++2020-02-25
+ 
+-All affected drivers:
+-Convert all uses of the old GPIO API from <linux/gpio.h> to the
+-GPIO descriptor API in <linux/gpio/consumer.h> and look up GPIO
+-lines from device tree, ACPI or board files, board files should
+-use <linux/gpio/machine.h>.
++- Documentation
++  - Binding docs for devices that are obviously used via device tree
++  - Yaml conversions for abandoned drivers
++  - ABI Documentation
++  - Audit driviers/iio/staging/Documentation
+ 
++- Replace iio_dev->mlock by either a local lock or use iio_claim_direct.
++  (Requires analysis of the purpose of the lock.)
++
++- Converting drivers from device tree centric to more generic property handlers
++  Refactor old platform_data constructs from drivers and convert it to state
++  struct and using property handlers and readers.
+ 
+ ADI Drivers:
+ CC the device-drivers-devel@blackfin.uclinux.org mailing list when
+-- 
+2.23.0.385.gbc12974a89
 
-DSE only works within a basic block, which might actually be a problem
-with the real copy_from_user(), which expands to a call to
-_copy_from_user() and a branch.
-
-
-> We also can't trick the DSE pass using an empty "asm volatile" with an
-> output-only memory operand, because the DSE pass can't optimize inline
-> asm.
-
-This can be handled by something like https://reviews.llvm.org/D74853
-(that's a WIP, still breaks the kernel)
-Not sure though, how good this is compared to a function attribute.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
