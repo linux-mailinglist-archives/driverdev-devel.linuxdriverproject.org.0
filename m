@@ -1,70 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38D6816F816
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Feb 2020 07:37:58 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 39E2416F880
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Feb 2020 08:26:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 15A898788E;
-	Wed, 26 Feb 2020 06:37:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 31C5621561;
+	Wed, 26 Feb 2020 07:26:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zvkh5lUIs2pW; Wed, 26 Feb 2020 06:37:55 +0000 (UTC)
+	with ESMTP id 4aQCVDPntCGY; Wed, 26 Feb 2020 07:26:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 40CB0861E3;
-	Wed, 26 Feb 2020 06:37:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 54F7C214E4;
+	Wed, 26 Feb 2020 07:26:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 756951BF834
- for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 06:37:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 03A151BF419
+ for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 07:26:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 70E59855B4
- for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 06:37:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 004538688F
+ for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 07:26:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id umI6xHW0UUgS for <devel@linuxdriverproject.org>;
- Wed, 26 Feb 2020 06:37:51 +0000 (UTC)
+ with ESMTP id h25HCXHwofwQ for <devel@linuxdriverproject.org>;
+ Wed, 26 Feb 2020 07:26:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx04.melco.co.jp (mx04.melco.co.jp [192.218.140.144])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6AD068555A
- for <devel@driverdev.osuosl.org>; Wed, 26 Feb 2020 06:37:51 +0000 (UTC)
-Received: from mr04.melco.co.jp (mr04 [133.141.98.166])
- by mx04.melco.co.jp (Postfix) with ESMTP id 4DA743A419B;
- Wed, 26 Feb 2020 15:37:49 +0900 (JST)
-Received: from mr04.melco.co.jp (unknown [127.0.0.1])
- by mr04.imss (Postfix) with ESMTP id 48S5hY139lzRkGJ;
- Wed, 26 Feb 2020 15:37:49 +0900 (JST)
-Received: from mf04_second.melco.co.jp (unknown [192.168.20.184])
- by mr04.melco.co.jp (Postfix) with ESMTP id 48S5hY0kljzRk96;
- Wed, 26 Feb 2020 15:37:49 +0900 (JST)
-Received: from mf04.melco.co.jp (unknown [133.141.98.184])
- by mf04_second.melco.co.jp (Postfix) with ESMTP id 48S5hY0hqBzRkC0;
- Wed, 26 Feb 2020 15:37:49 +0900 (JST)
-Received: from tux532.tad.melco.co.jp (unknown [133.141.243.226])
- by mf04.melco.co.jp (Postfix) with ESMTP id 48S5hY07KZzRk7V;
- Wed, 26 Feb 2020 15:37:49 +0900 (JST)
-Received: from tux532.tad.melco.co.jp
- by tux532.tad.melco.co.jp (unknown) with ESMTP id 01Q6bmYY020894;
- Wed, 26 Feb 2020 15:37:48 +0900
-Received: from tux390.tad.melco.co.jp (tux390.tad.melco.co.jp [127.0.0.1])
- by postfix.imss70 (Postfix) with ESMTP id A1CB817E075;
- Wed, 26 Feb 2020 15:37:48 +0900 (JST)
-Received: from tux554.tad.melco.co.jp (mailgw1.tad.melco.co.jp [10.168.7.223])
- by tux390.tad.melco.co.jp (Postfix) with ESMTP id 8905917E073;
- Wed, 26 Feb 2020 15:37:48 +0900 (JST)
-Received: from tux554.tad.melco.co.jp
- by tux554.tad.melco.co.jp (unknown) with ESMTP id 01Q6bmFI029214;
- Wed, 26 Feb 2020 15:37:48 +0900
-From: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-To: Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp
-Subject: [PATCH] staging: exfat: remove symlink feature : Additional patch
-Date: Wed, 26 Feb 2020 15:37:46 +0900
-Message-Id: <20200226063746.3128-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
+Received: from omr1.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4037C8688A
+ for <devel@driverdev.osuosl.org>; Wed, 26 Feb 2020 07:26:33 +0000 (UTC)
+Received: from mr6.cc.vt.edu (mr6.cc.ipv6.vt.edu
+ [IPv6:2607:b400:92:8500:0:af:2d00:4488])
+ by omr1.cc.vt.edu (8.14.4/8.14.4) with ESMTP id 01Q7QVoN031799
+ for <devel@driverdev.osuosl.org>; Wed, 26 Feb 2020 02:26:32 -0500
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199])
+ by mr6.cc.vt.edu (8.14.7/8.14.7) with ESMTP id 01Q7QQrq029359
+ for <devel@driverdev.osuosl.org>; Wed, 26 Feb 2020 02:26:31 -0500
+Received: by mail-qt1-f199.google.com with SMTP id r30so3217890qtb.10
+ for <devel@driverdev.osuosl.org>; Tue, 25 Feb 2020 23:26:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
+ :mime-version:content-transfer-encoding:date:message-id;
+ bh=/RrYGkGua2Nxdn/5XcsUsmert5oNHB1woL1bedy/GmI=;
+ b=Beq/Qe90mQrZbCcJqwXU8laV7Lhsd87sztQGX2RH+IG56m1+iamILz8wS6vrgVRBrt
+ siAWUKlsszv3N3MKb6jJsrChNUpORcjCP2np/HbLsw+1p5rlauUXH70mBkPeHYTrJXar
+ OiCcKvZSREFDaS8K07Dh5IaORlxKBnhsFpQLJKCWtG8Zn4PdKUtYdx0DhW3mmCSduyUN
+ El/PON8fNHzeqffUCgBGGhWwul1iqxRESbx+bqYbSipPYprxvO4x4TvlYfTMiEoHrGIC
+ yYZOkb7OP9dJCKpd+iVb+FuzVonMHhcbl7Y9JrvnOVnvmjBsSDG1rme7cFCyMuawHs+c
+ HK3A==
+X-Gm-Message-State: APjAAAW+bqZkWPqW8DH/IpDTaBUbZAFUqnewoFl+1dVt2n2+AsUFyKjT
+ vxfgl2QajTQdQW9b2XyKRC2RqW3Or/4CQqlWQM84MD34clRlX7cD8MvEsGQH7RdBzvs0elLKL3Y
+ 8TCwcZfqjne96UZanXaAnf2IX/UVltpvA
+X-Received: by 2002:a05:620a:818:: with SMTP id
+ s24mr3993096qks.369.1582701986639; 
+ Tue, 25 Feb 2020 23:26:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy9jp1KDxLFeQLv7QeR2TtKnSWWQ2++QWZI9Gbb8l6PC8kX3KCPOu2JNC/AcAu35IfNkSy/tg==
+X-Received: by 2002:a05:620a:818:: with SMTP id
+ s24mr3993072qks.369.1582701986335; 
+ Tue, 25 Feb 2020 23:26:26 -0800 (PST)
+Received: from turing-police ([2601:5c0:c001:c9e1::359])
+ by smtp.gmail.com with ESMTPSA id x131sm689963qka.1.2020.02.25.23.26.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Feb 2020 23:26:24 -0800 (PST)
+From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
+X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
+ <Valdis.Kletnieks@vt.edu>
+X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
+To: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+Subject: Re: [PATCH] staging: exfat: remove symlink feature : Additional patch
+In-Reply-To: <20200226063746.3128-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+References: <20200226063746.3128-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+Mime-Version: 1.0
+Date: Wed, 26 Feb 2020 02:26:23 -0500
+Message-ID: <503049.1582701983@turing-police>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,121 +89,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  motai.hirotaka@aj.mitsubishielectric.co.jp, linux-kernel@vger.kernel.org,
  Mori.Takahiro@ab.MitsubishiElectric.co.jp, linux-fsdevel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8797644665435315021=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Completely remove symlink codes and definitions.
-In the previous patch, it was not completely removed.
+--===============8797644665435315021==
+Content-Type: multipart/signed; boundary="==_Exmh_1582701983_403032P";
+	 micalg=pgp-sha1; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
----
- drivers/staging/exfat/exfat.h       |  3 ---
- drivers/staging/exfat/exfat_core.c  |  3 ---
- drivers/staging/exfat/exfat_super.c | 27 ---------------------------
- 3 files changed, 33 deletions(-)
+--==_Exmh_1582701983_403032P
+Content-Type: text/plain; charset=us-ascii
 
-diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index 4a0a481fe010..cd3479fc78ba 100644
---- a/drivers/staging/exfat/exfat.h
-+++ b/drivers/staging/exfat/exfat.h
-@@ -63,7 +63,6 @@
- #define TYPE_VOLUME		0x0103
- #define TYPE_DIR		0x0104
- #define TYPE_FILE		0x011F
--#define TYPE_SYMLINK		0x015F
- #define TYPE_CRITICAL_SEC	0x0200
- #define TYPE_STREAM		0x0201
- #define TYPE_EXTEND		0x0202
-@@ -198,13 +197,11 @@ static inline u16 get_row_index(u16 i)
- #define ATTR_VOLUME		0x0008
- #define ATTR_SUBDIR		0x0010
- #define ATTR_ARCHIVE		0x0020
--#define ATTR_SYMLINK		0x0040
- #define ATTR_EXTEND		0x000F
- #define ATTR_RWMASK		0x007E
- 
- /* file creation modes */
- #define FM_REGULAR              0x00
--#define FM_SYMLINK              0x40
- 
- #define NUM_UPCASE              2918
- 
-diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
-index d30dc050411e..941094b08dd9 100644
---- a/drivers/staging/exfat/exfat_core.c
-+++ b/drivers/staging/exfat/exfat_core.c
-@@ -844,9 +844,6 @@ static void exfat_set_entry_type(struct dentry_t *p_entry, u32 type)
- 	} else if (type == TYPE_FILE) {
- 		ep->type = 0x85;
- 		SET16_A(ep->attr, ATTR_ARCHIVE);
--	} else if (type == TYPE_SYMLINK) {
--		ep->type = 0x85;
--		SET16_A(ep->attr, ATTR_ARCHIVE | ATTR_SYMLINK);
- 	}
- }
- 
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index c7bc07e91c45..6f3b72eb999d 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -320,8 +320,6 @@ static inline mode_t exfat_make_mode(struct exfat_sb_info *sbi, u32 attr,
- 
- 	if (attr & ATTR_SUBDIR)
- 		return (mode & ~sbi->options.fs_dmask) | S_IFDIR;
--	else if (attr & ATTR_SYMLINK)
--		return (mode & ~sbi->options.fs_dmask) | S_IFLNK;
- 	else
- 		return (mode & ~sbi->options.fs_fmask) | S_IFREG;
- }
-@@ -2399,24 +2397,6 @@ static const struct inode_operations exfat_dir_inode_operations = {
- /*======================================================================*/
- /*  File Operations                                                     */
- /*======================================================================*/
--static const char *exfat_get_link(struct dentry *dentry, struct inode *inode,
--				  struct delayed_call *done)
--{
--	struct exfat_inode_info *ei = EXFAT_I(inode);
--
--	if (ei->target) {
--		char *cookie = ei->target;
--
--		if (cookie)
--			return (char *)(ei->target);
--	}
--	return NULL;
--}
--
--static const struct inode_operations exfat_symlink_inode_operations = {
--		.get_link = exfat_get_link,
--};
--
- static int exfat_file_release(struct inode *inode, struct file *filp)
- {
- 	struct super_block *sb = inode->i_sb;
-@@ -2688,13 +2668,6 @@ static int exfat_fill_inode(struct inode *inode, struct file_id_t *fid)
- 		i_size_write(inode, info.Size);
- 		EXFAT_I(inode)->mmu_private = i_size_read(inode);
- 		set_nlink(inode, info.num_subdirs);
--	} else if (info.attr & ATTR_SYMLINK) { /* symbolic link */
--		inode->i_generation |= 1;
--		inode->i_mode = exfat_make_mode(sbi, info.attr, 0777);
--		inode->i_op = &exfat_symlink_inode_operations;
--
--		i_size_write(inode, info.Size);
--		EXFAT_I(inode)->mmu_private = i_size_read(inode);
- 	} else { /* regular file */
- 		inode->i_generation |= 1;
- 		inode->i_mode = exfat_make_mode(sbi, info.attr, 0777);
--- 
-2.25.1
+On Wed, 26 Feb 2020 15:37:46 +0900, Tetsuhiro Kohada said:
+> Completely remove symlink codes and definitions.
+
+> In the previous patch, it was not completely removed.
+
+Then this should have been [PATCH v2], and the fixed version [PATCH v3]
+
+> Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp
+>
+> ---
+And right in here there should be something like this:
+
+v3: fixed subject line
+v2: previous patch didn't completely remove it
+
+>  drivers/staging/exfat/exfat.h       |  3 ---
+>  drivers/staging/exfat/exfat_core.c  |  3 ---
+>  drivers/staging/exfat/exfat_super.c | 27 ---------------------------
+>  3 files changed, 33 deletions(-)
+>
+> diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
+> index 4a0a481fe010..cd3479fc78ba 100644
+
+
+
+--==_Exmh_1582701983_403032P
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Exmh version 2.9.0 11/07/2018
+
+iQIVAwUBXlYdnwdmEQWDXROgAQJaqQ/+LFm+5gnoObjHByvFiSe/WLwyDsLR5ck8
+NxQVtg5wFV9uNxsVdsTCyiwaPril0sXlQfIvt3+di7OqzwfwSmsmLkDNHnrxPoCi
+n874KFMcJ7QpBXNP+FwWKd6tFB6ORf0A4EAQG+oS1afzVvFXKN9Vc+FYiT3GfPlj
+KlUgi8WJpQriRYz2HQ6RcYZj7PrrCSr3AOHTzVpvCwJXSKJlKi62LxRw6yIq5rRZ
+18Sqe8t6v4eX5CNOPvlZPBLYnbyW9AxUslhF/qWTzRIy7Vd/urwRY68tbKsnvMvT
+7dmjmPPOxurq2kirYBGBYdATN6LhIN22OVctFghT10c2ddrwyhnxHtwJbQLGNXcO
+QrHzgkFyabWQlVkQOuG25CBE/d0M7+gtPJmIx+zun63GTvd8m53GZoKkGc8dIDqe
+pLug/kVCbkxtffVovWXSgriu6KQnGa6jTo95l85trYbXbGW9+DAGdmSR5N6HgLb6
+mBi3stwpDgOFq86r+paMyDhZVwfNLh6z0zLf+obEP1W9j3aL8KNx4txUzR7RoKFk
+PizGKPz9E2iQWc/VBsnKa65Of1EwylK0hefiYjM+jTt8zFthT8RG1JXX5CxjeVYF
+UJUUbH9tF+76AsSx4w06kRaiG1kS6bZ9aFhspyZcXYUTBbb2ua19gPsSdg5JAZ8K
+AZraphreKpc=
+=69Q7
+-----END PGP SIGNATURE-----
+
+--==_Exmh_1582701983_403032P--
+
+--===============8797644665435315021==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============8797644665435315021==--
