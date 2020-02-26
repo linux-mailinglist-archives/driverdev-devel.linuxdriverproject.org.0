@@ -1,86 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32FC516F46A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Feb 2020 01:41:43 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56D7986B10;
-	Wed, 26 Feb 2020 00:41:41 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M9O6m4tHEjrn; Wed, 26 Feb 2020 00:41:38 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 12166861F9;
-	Wed, 26 Feb 2020 00:41:32 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AC4EE1BF9AD
- for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 00:41:29 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38D6816F816
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Feb 2020 07:37:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A68D986E6E
- for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 00:41:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 15A898788E;
+	Wed, 26 Feb 2020 06:37:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Zvkh5lUIs2pW; Wed, 26 Feb 2020 06:37:55 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 40CB0861E3;
+	Wed, 26 Feb 2020 06:37:55 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 756951BF834
+ for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 06:37:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 70E59855B4
+ for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 06:37:52 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v1CfXLAEvFxK for <devel@linuxdriverproject.org>;
- Wed, 26 Feb 2020 00:41:28 +0000 (UTC)
+ with ESMTP id umI6xHW0UUgS for <devel@linuxdriverproject.org>;
+ Wed, 26 Feb 2020 06:37:51 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from IITRESA04.iitr.ac.in (mxgw4.iitr.ac.in [103.37.200.239])
- by hemlock.osuosl.org (Postfix) with ESMTP id BCBB585F38
- for <devel@driverdev.osuosl.org>; Wed, 26 Feb 2020 00:41:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=iitr.ac.in; s=iitrselector; t=1582677667;
- h=message-id:reply-to:from:subject:date:mime-version:
- content-transfer-encoding;
- bh=3MmqTKuA+NETN2btB6PJJQBpC/SdLXlWFSsyztt26GE=;
- b=KSoxNI/k7AaLFM8NPInOr/LtbvxFyf3AIPZ6yAQItc4Lw0uDligIS9/i
- hhBJAeWBKv07+bnLxz4mMuH6wNsHxRrGz/NCtQMaY+cHf9YnOyft763WT
- VnkaSooK4qDe6iTv7WDGpE44PTBURt4pCp27uLL6s2rLaBOVjwEvdAHq9 E=;
-Authentication-Results: IITRESA04.iitr.ac.in;
- dkim=none (message not signed) header.i=none;
- spf=None smtp.pra=ynegifpt@iitr.ac.in;
- spf=None smtp.mailfrom=ynegifpt@iitr.ac.in;
- spf=None smtp.helo=postmaster@IITRESA01.iitr.ac.in
-Received-SPF: None (IITRESA04.iitr.ac.in: no sender authenticity
- information available from domain of ynegifpt@iitr.ac.in)
- identity=pra; client-ip=192.168.101.110;
- receiver=IITRESA04.iitr.ac.in;
- envelope-from="ynegifpt@iitr.ac.in";
- x-sender="ynegifpt@iitr.ac.in"; x-conformance=sidf_compatible
-Received-SPF: None (IITRESA04.iitr.ac.in: no sender authenticity
- information available from domain of ynegifpt@iitr.ac.in)
- identity=mailfrom; client-ip=192.168.101.110;
- receiver=IITRESA04.iitr.ac.in;
- envelope-from="ynegifpt@iitr.ac.in";
- x-sender="ynegifpt@iitr.ac.in"; x-conformance=sidf_compatible
-Received-SPF: None (IITRESA04.iitr.ac.in: no sender authenticity
- information available from domain of
- postmaster@IITRESA01.iitr.ac.in) identity=helo;
- client-ip=192.168.101.110; receiver=IITRESA04.iitr.ac.in;
- envelope-from="ynegifpt@iitr.ac.in";
- x-sender="postmaster@IITRESA01.iitr.ac.in";
- x-conformance=sidf_compatible
-X-Ironport-Dmarc-Check-Result: validskip
-IronPort-SDR: dFQA80/WBU8eJh6RooLjnNvop6JjOIcKmJFLgT0o1OF1FRhDqeUrx6QrbNxW5HvbKBeh/RI9HQ
- tlbg1CeWLKCQ==
-Received: from nsmtp.iitr.ac.in (HELO IITRESA01.iitr.ac.in) ([192.168.101.110])
- by IITRESA04.iitr.ac.in with ESMTP; 26 Feb 2020 06:10:59 +0530
-Message-Id: <738cb5$1dt3s@IITRESA01.iitr.ac.in>
-IronPort-SDR: q9KQkQpnf/N3tB4JqVvBOSg/U4Q4hlZWc4U2f7cDiuNtIUF+j4XD/5WVVZlD987RgTlEPrI84a
- YfL0qzRz0ymQ==
-Received: from unknown (HELO User) ([13.78.147.24])
- by IITRESA01.iitr.ac.in with ESMTP; 26 Feb 2020 06:10:30 +0530
-From: "Ms. Reem"<ynegifpt@iitr.ac.in>
-Subject: Re:Reply ok{{{{
-Date: Wed, 26 Feb 2020 00:40:57 -0000
+Received: from mx04.melco.co.jp (mx04.melco.co.jp [192.218.140.144])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6AD068555A
+ for <devel@driverdev.osuosl.org>; Wed, 26 Feb 2020 06:37:51 +0000 (UTC)
+Received: from mr04.melco.co.jp (mr04 [133.141.98.166])
+ by mx04.melco.co.jp (Postfix) with ESMTP id 4DA743A419B;
+ Wed, 26 Feb 2020 15:37:49 +0900 (JST)
+Received: from mr04.melco.co.jp (unknown [127.0.0.1])
+ by mr04.imss (Postfix) with ESMTP id 48S5hY139lzRkGJ;
+ Wed, 26 Feb 2020 15:37:49 +0900 (JST)
+Received: from mf04_second.melco.co.jp (unknown [192.168.20.184])
+ by mr04.melco.co.jp (Postfix) with ESMTP id 48S5hY0kljzRk96;
+ Wed, 26 Feb 2020 15:37:49 +0900 (JST)
+Received: from mf04.melco.co.jp (unknown [133.141.98.184])
+ by mf04_second.melco.co.jp (Postfix) with ESMTP id 48S5hY0hqBzRkC0;
+ Wed, 26 Feb 2020 15:37:49 +0900 (JST)
+Received: from tux532.tad.melco.co.jp (unknown [133.141.243.226])
+ by mf04.melco.co.jp (Postfix) with ESMTP id 48S5hY07KZzRk7V;
+ Wed, 26 Feb 2020 15:37:49 +0900 (JST)
+Received: from tux532.tad.melco.co.jp
+ by tux532.tad.melco.co.jp (unknown) with ESMTP id 01Q6bmYY020894;
+ Wed, 26 Feb 2020 15:37:48 +0900
+Received: from tux390.tad.melco.co.jp (tux390.tad.melco.co.jp [127.0.0.1])
+ by postfix.imss70 (Postfix) with ESMTP id A1CB817E075;
+ Wed, 26 Feb 2020 15:37:48 +0900 (JST)
+Received: from tux554.tad.melco.co.jp (mailgw1.tad.melco.co.jp [10.168.7.223])
+ by tux390.tad.melco.co.jp (Postfix) with ESMTP id 8905917E073;
+ Wed, 26 Feb 2020 15:37:48 +0900 (JST)
+Received: from tux554.tad.melco.co.jp
+ by tux554.tad.melco.co.jp (unknown) with ESMTP id 01Q6bmFI029214;
+ Wed, 26 Feb 2020 15:37:48 +0900
+From: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+To: Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp
+Subject: [PATCH] staging: exfat: remove symlink feature : Additional patch
+Date: Wed, 26 Feb 2020 15:37:46 +0900
+Message-Id: <20200226063746.3128-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,38 +77,120 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemal-hashimi@yandex.com
+Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ motai.hirotaka@aj.mitsubishielectric.co.jp, linux-kernel@vger.kernel.org,
+ Mori.Takahiro@ab.MitsubishiElectric.co.jp, linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+Completely remove symlink codes and definitions.
+In the previous patch, it was not completely removed.
 
-My name is Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International 
+Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+---
+ drivers/staging/exfat/exfat.h       |  3 ---
+ drivers/staging/exfat/exfat_core.c  |  3 ---
+ drivers/staging/exfat/exfat_super.c | 27 ---------------------------
+ 3 files changed, 33 deletions(-)
 
-Cooperation" in UAE.  I write to solicit for your partnership in claiming of $47Million from a Financial Home in Cambodia.
+diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
+index 4a0a481fe010..cd3479fc78ba 100644
+--- a/drivers/staging/exfat/exfat.h
++++ b/drivers/staging/exfat/exfat.h
+@@ -63,7 +63,6 @@
+ #define TYPE_VOLUME		0x0103
+ #define TYPE_DIR		0x0104
+ #define TYPE_FILE		0x011F
+-#define TYPE_SYMLINK		0x015F
+ #define TYPE_CRITICAL_SEC	0x0200
+ #define TYPE_STREAM		0x0201
+ #define TYPE_EXTEND		0x0202
+@@ -198,13 +197,11 @@ static inline u16 get_row_index(u16 i)
+ #define ATTR_VOLUME		0x0008
+ #define ATTR_SUBDIR		0x0010
+ #define ATTR_ARCHIVE		0x0020
+-#define ATTR_SYMLINK		0x0040
+ #define ATTR_EXTEND		0x000F
+ #define ATTR_RWMASK		0x007E
+ 
+ /* file creation modes */
+ #define FM_REGULAR              0x00
+-#define FM_SYMLINK              0x40
+ 
+ #define NUM_UPCASE              2918
+ 
+diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
+index d30dc050411e..941094b08dd9 100644
+--- a/drivers/staging/exfat/exfat_core.c
++++ b/drivers/staging/exfat/exfat_core.c
+@@ -844,9 +844,6 @@ static void exfat_set_entry_type(struct dentry_t *p_entry, u32 type)
+ 	} else if (type == TYPE_FILE) {
+ 		ep->type = 0x85;
+ 		SET16_A(ep->attr, ATTR_ARCHIVE);
+-	} else if (type == TYPE_SYMLINK) {
+-		ep->type = 0x85;
+-		SET16_A(ep->attr, ATTR_ARCHIVE | ATTR_SYMLINK);
+ 	}
+ }
+ 
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index c7bc07e91c45..6f3b72eb999d 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -320,8 +320,6 @@ static inline mode_t exfat_make_mode(struct exfat_sb_info *sbi, u32 attr,
+ 
+ 	if (attr & ATTR_SUBDIR)
+ 		return (mode & ~sbi->options.fs_dmask) | S_IFDIR;
+-	else if (attr & ATTR_SYMLINK)
+-		return (mode & ~sbi->options.fs_dmask) | S_IFLNK;
+ 	else
+ 		return (mode & ~sbi->options.fs_fmask) | S_IFREG;
+ }
+@@ -2399,24 +2397,6 @@ static const struct inode_operations exfat_dir_inode_operations = {
+ /*======================================================================*/
+ /*  File Operations                                                     */
+ /*======================================================================*/
+-static const char *exfat_get_link(struct dentry *dentry, struct inode *inode,
+-				  struct delayed_call *done)
+-{
+-	struct exfat_inode_info *ei = EXFAT_I(inode);
+-
+-	if (ei->target) {
+-		char *cookie = ei->target;
+-
+-		if (cookie)
+-			return (char *)(ei->target);
+-	}
+-	return NULL;
+-}
+-
+-static const struct inode_operations exfat_symlink_inode_operations = {
+-		.get_link = exfat_get_link,
+-};
+-
+ static int exfat_file_release(struct inode *inode, struct file *filp)
+ {
+ 	struct super_block *sb = inode->i_sb;
+@@ -2688,13 +2668,6 @@ static int exfat_fill_inode(struct inode *inode, struct file_id_t *fid)
+ 		i_size_write(inode, info.Size);
+ 		EXFAT_I(inode)->mmu_private = i_size_read(inode);
+ 		set_nlink(inode, info.num_subdirs);
+-	} else if (info.attr & ATTR_SYMLINK) { /* symbolic link */
+-		inode->i_generation |= 1;
+-		inode->i_mode = exfat_make_mode(sbi, info.attr, 0777);
+-		inode->i_op = &exfat_symlink_inode_operations;
+-
+-		i_size_write(inode, info.Size);
+-		EXFAT_I(inode)->mmu_private = i_size_read(inode);
+ 	} else { /* regular file */
+ 		inode->i_generation |= 1;
+ 		inode->i_mode = exfat_make_mode(sbi, info.attr, 0777);
+-- 
+2.25.1
 
-The aforementioned fund $47 Million is my share percentage from my Oil/Gas deal with Cambodia/Vietnam Government within  
-
-2013/2014, influentially I don't want my government to know about the fund. If this proposal interests you, let me know by 
-
-sending me an email and I will send to you detailed Information on how this business would be successfully transacted. Be 
-
-informed that nobody knows about the secret of this fund except me and I know how to carry out the entire transaction.
-
-Furthermore, as a Minister of Petroleum, I am not allowed to be part of such a deal, because it's against my country's 
-
-professional practice policy. So I am compelled to ask that you will stand on my behalf and receive this fund into any 
-
-account that is solely controlled by you.
-
-I will compensate you with 30% of the total amount involved as gratification for being my partner in the transfer. Reply 
-
-to my private email as stated: reemal-hashimi@yandex.com
-
-Regards,
-Reem Ebrahim Al-Hashimi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
