@@ -1,70 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D70B17152E
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Feb 2020 11:40:57 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2112122C44;
-	Thu, 27 Feb 2020 10:40:55 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y9ZdWya7gWPd; Thu, 27 Feb 2020 10:40:54 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3A44E203EA;
-	Thu, 27 Feb 2020 10:40:53 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DA39E1BF35B
- for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 10:40:50 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C85E01720F1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Feb 2020 15:47:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D7316864F2
- for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 10:40:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C480386CD7;
+	Thu, 27 Feb 2020 14:46:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2Y_KR7UZOLcx; Thu, 27 Feb 2020 14:46:59 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AE64A86C2B;
+	Thu, 27 Feb 2020 14:46:58 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5838C1BF3F4
+ for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 14:46:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 5464321563
+ for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 14:46:56 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VIsHIHXqdUNt for <devel@linuxdriverproject.org>;
- Thu, 27 Feb 2020 10:40:50 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx04.melco.co.jp (mx04.melco.co.jp [192.218.140.144])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E5BEB864DA
- for <devel@driverdev.osuosl.org>; Thu, 27 Feb 2020 10:40:49 +0000 (UTC)
-Received: from mr04.melco.co.jp (mr04 [133.141.98.166])
- by mx04.melco.co.jp (Postfix) with ESMTP id E9B943A4438;
- Thu, 27 Feb 2020 19:40:47 +0900 (JST)
-Received: from mr04.melco.co.jp (unknown [127.0.0.1])
- by mr04.imss (Postfix) with ESMTP id 48Sq2R5xyrzRk3C;
- Thu, 27 Feb 2020 19:40:47 +0900 (JST)
-Received: from mf03_second.melco.co.jp (unknown [192.168.20.183])
- by mr04.melco.co.jp (Postfix) with ESMTP id 48Sq2R5f58zRk2c;
- Thu, 27 Feb 2020 19:40:47 +0900 (JST)
-Received: from mf03.melco.co.jp (unknown [133.141.98.183])
- by mf03_second.melco.co.jp (Postfix) with ESMTP id 48Sq2R5nCdzRk5y;
- Thu, 27 Feb 2020 19:40:47 +0900 (JST)
-Received: from tux532.tad.melco.co.jp (unknown [133.141.243.226])
- by mf03.melco.co.jp (Postfix) with ESMTP id 48Sq2R5JSlzRkBN;
- Thu, 27 Feb 2020 19:40:47 +0900 (JST)
-Received: from tux532.tad.melco.co.jp
- by tux532.tad.melco.co.jp (unknown) with ESMTP id 01RAel1o017859;
- Thu, 27 Feb 2020 19:40:47 +0900
-Received: from tux390.tad.melco.co.jp (tux390.tad.melco.co.jp [127.0.0.1])
- by postfix.imss70 (Postfix) with ESMTP id 7358B17E075;
- Thu, 27 Feb 2020 19:40:47 +0900 (JST)
-Received: from tux554.tad.melco.co.jp (mailgw1.tad.melco.co.jp [10.168.7.223])
- by tux390.tad.melco.co.jp (Postfix) with ESMTP id 670B817E073;
- Thu, 27 Feb 2020 19:40:47 +0900 (JST)
-Received: from tux554.tad.melco.co.jp
- by tux554.tad.melco.co.jp (unknown) with ESMTP id 01RAelAs011251;
- Thu, 27 Feb 2020 19:40:47 +0900
-From: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-To: Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp
-Subject: [PATCH] staging: exfat: rename buf_cache_t's 'flag' to 'locked'
-Date: Thu, 27 Feb 2020 19:40:43 +0900
-Message-Id: <20200227104043.11503-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-X-Mailer: git-send-email 2.25.1
+ with ESMTP id jmDqbl45ASEa for <devel@linuxdriverproject.org>;
+ Thu, 27 Feb 2020 14:46:55 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
+ [148.163.135.77])
+ by silver.osuosl.org (Postfix) with ESMTPS id 485292044A
+ for <devel@driverdev.osuosl.org>; Thu, 27 Feb 2020 14:46:55 +0000 (UTC)
+Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
+ by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 01REj8bM016356; Thu, 27 Feb 2020 09:46:54 -0500
+Received: from nwd2mta4.analog.com ([137.71.173.58])
+ by mx0a-00128a01.pphosted.com with ESMTP id 2ydtrx3fnn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 27 Feb 2020 09:46:53 -0500
+Received: from ASHBMBX8.ad.analog.com (ashbmbx8.ad.analog.com [10.64.17.5])
+ by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 01REkqGn007354
+ (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=FAIL); 
+ Thu, 27 Feb 2020 09:46:52 -0500
+Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by ASHBMBX8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1779.2; Thu, 27 Feb
+ 2020 09:46:52 -0500
+Received: from zeus.spd.analog.com (10.64.82.11) by ASHBMBX8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server id 15.1.1779.2 via Frontend
+ Transport; Thu, 27 Feb 2020 09:46:51 -0500
+Received: from analog.ad.analog.com ([10.48.65.180])
+ by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 01REkm5p031538;
+ Thu, 27 Feb 2020 09:46:49 -0500
+From: Sergiu Cuciurean <sergiu.cuciurean@analog.com>
+To: <linux-kernel@vger.kernel.org>, <devel@driverdev.osuosl.org>,
+ <gregkh@linuxfoundation.org>, <simon@nikanor.nu>, <chandra627@gmail.com>
+Subject: [PATCH] staging: kpc2000: kpc2000_spi: Use new structure for SPI
+ transfer delays
+Date: Thu, 27 Feb 2020 16:46:43 +0200
+Message-ID: <20200227144643.23195-1-sergiu.cuciurean@analog.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
+X-ADIRoutedOnPrem: True
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
+ definitions=2020-02-27_04:2020-02-26,
+ 2020-02-27 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 bulkscore=0
+ malwarescore=0 impostorscore=0 clxscore=1011 priorityscore=1501
+ lowpriorityscore=0 phishscore=0 spamscore=0 adultscore=0 mlxlogscore=930
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2001150001 definitions=main-2002270117
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,162 +84,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- motai.hirotaka@aj.mitsubishielectric.co.jp, linux-kernel@vger.kernel.org,
- Mori.Takahiro@ab.MitsubishiElectric.co.jp, linux-fsdevel@vger.kernel.org
+Cc: fabian.krueger@fau.de, Sergiu Cuciurean <sergiu.cuciurean@analog.com>,
+ gneukum1@gmail.com, dan.carpenter@oracle.com, michael.scheiderer@fau.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-buf_cache_t.flag is used only for lock.
-Change the variable name from 'flag' to 'locked' and remove unused definitions.
+In a recent change to the SPI subsystem [1], a new `delay` struct was added
+to replace the `delay_usecs`. This change replaces the current
+`delay_usecs` with `delay` for this driver.
 
-Reviewed-by: Takahiro Mori <Mori.Takahiro@ab.MitsubishiElectric.co.jp>
-Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+The `spi_transfer_delay_exec()` function [in the SPI framework] makes sure
+that both `delay_usecs` & `delay` are used (in this order to preserve
+backwards compatibility).
+
+[1] commit bebcfd272df6 ("spi: introduce `delay` field for
+`spi_transfer` + spi_transfer_delay_exec()")
+
+Signed-off-by: Sergiu Cuciurean <sergiu.cuciurean@analog.com>
 ---
- drivers/staging/exfat/exfat.h       |  2 +-
- drivers/staging/exfat/exfat_cache.c | 27 ++++++++++++---------------
- 2 files changed, 13 insertions(+), 16 deletions(-)
+ drivers/staging/kpc2000/kpc2000_spi.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index cd3479fc78ba..f588538c67a8 100644
---- a/drivers/staging/exfat/exfat.h
-+++ b/drivers/staging/exfat/exfat.h
-@@ -457,7 +457,7 @@ struct buf_cache_t {
- 	struct buf_cache_t *hash_prev;
- 	s32                drv;
- 	sector_t          sec;
--	u32               flag;
-+	bool              locked;
- 	struct buffer_head   *buf_bh;
- };
+diff --git a/drivers/staging/kpc2000/kpc2000_spi.c b/drivers/staging/kpc2000/kpc2000_spi.c
+index 1c360daa703d..cc9b147fd437 100644
+--- a/drivers/staging/kpc2000/kpc2000_spi.c
++++ b/drivers/staging/kpc2000/kpc2000_spi.c
+@@ -386,8 +386,9 @@ kp_spi_transfer_one_message(struct spi_master *master, struct spi_message *m)
+ 			}
+ 		}
  
-diff --git a/drivers/staging/exfat/exfat_cache.c b/drivers/staging/exfat/exfat_cache.c
-index 87d019972050..b15203d4e0ae 100644
---- a/drivers/staging/exfat/exfat_cache.c
-+++ b/drivers/staging/exfat/exfat_cache.c
-@@ -8,9 +8,6 @@
- #include <linux/mutex.h>
- #include "exfat.h"
+-		if (transfer->delay_usecs)
+-			udelay(transfer->delay_usecs);
++		if (transfer->delay.value &&
++		    (transfer->delay.unit == SPI_DELAY_UNIT_USECS))
++			udelay(transfer->delay.value);
+ 	}
  
--#define LOCKBIT		0x01
--#define DIRTYBIT	0x02
--
- /* Local variables */
- static DEFINE_MUTEX(f_mutex);
- static DEFINE_MUTEX(b_mutex);
-@@ -141,7 +138,7 @@ void exfat_buf_init(struct super_block *sb)
- 	for (i = 0; i < FAT_CACHE_SIZE; i++) {
- 		p_fs->FAT_cache_array[i].drv = -1;
- 		p_fs->FAT_cache_array[i].sec = ~0;
--		p_fs->FAT_cache_array[i].flag = 0;
-+		p_fs->FAT_cache_array[i].locked = false;
- 		p_fs->FAT_cache_array[i].buf_bh = NULL;
- 		p_fs->FAT_cache_array[i].prev = NULL;
- 		p_fs->FAT_cache_array[i].next = NULL;
-@@ -155,7 +152,7 @@ void exfat_buf_init(struct super_block *sb)
- 	for (i = 0; i < BUF_CACHE_SIZE; i++) {
- 		p_fs->buf_cache_array[i].drv = -1;
- 		p_fs->buf_cache_array[i].sec = ~0;
--		p_fs->buf_cache_array[i].flag = 0;
-+		p_fs->buf_cache_array[i].locked = false;
- 		p_fs->buf_cache_array[i].buf_bh = NULL;
- 		p_fs->buf_cache_array[i].prev = NULL;
- 		p_fs->buf_cache_array[i].next = NULL;
-@@ -289,7 +286,7 @@ u8 *exfat_fat_getblk(struct super_block *sb, sector_t sec)
- 
- 	bp->drv = p_fs->drv;
- 	bp->sec = sec;
--	bp->flag = 0;
-+	bp->locked = false;
- 
- 	FAT_cache_insert_hash(sb, bp);
- 
-@@ -297,7 +294,7 @@ u8 *exfat_fat_getblk(struct super_block *sb, sector_t sec)
- 		FAT_cache_remove_hash(bp);
- 		bp->drv = -1;
- 		bp->sec = ~0;
--		bp->flag = 0;
-+		bp->locked = false;
- 		bp->buf_bh = NULL;
- 
- 		move_to_lru(bp, &p_fs->FAT_cache_lru_list);
-@@ -328,7 +325,7 @@ void exfat_fat_release_all(struct super_block *sb)
- 		if (bp->drv == p_fs->drv) {
- 			bp->drv = -1;
- 			bp->sec = ~0;
--			bp->flag = 0;
-+			bp->locked = false;
- 
- 			if (bp->buf_bh) {
- 				__brelse(bp->buf_bh);
-@@ -366,7 +363,7 @@ static struct buf_cache_t *buf_cache_get(struct super_block *sb, sector_t sec)
- 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
- 
- 	bp = p_fs->buf_cache_lru_list.prev;
--	while (bp->flag & LOCKBIT)
-+	while (bp->locked)
- 		bp = bp->prev;
- 
- 	move_to_mru(bp, &p_fs->buf_cache_lru_list);
-@@ -390,7 +387,7 @@ static u8 *__exfat_buf_getblk(struct super_block *sb, sector_t sec)
- 
- 	bp->drv = p_fs->drv;
- 	bp->sec = sec;
--	bp->flag = 0;
-+	bp->locked = false;
- 
- 	buf_cache_insert_hash(sb, bp);
- 
-@@ -398,7 +395,7 @@ static u8 *__exfat_buf_getblk(struct super_block *sb, sector_t sec)
- 		buf_cache_remove_hash(bp);
- 		bp->drv = -1;
- 		bp->sec = ~0;
--		bp->flag = 0;
-+		bp->locked = false;
- 		bp->buf_bh = NULL;
- 
- 		move_to_lru(bp, &p_fs->buf_cache_lru_list);
-@@ -443,7 +440,7 @@ void exfat_buf_lock(struct super_block *sb, sector_t sec)
- 
- 	bp = buf_cache_find(sb, sec);
- 	if (likely(bp))
--		bp->flag |= LOCKBIT;
-+		bp->locked = true;
- 
- 	WARN(!bp, "[EXFAT] failed to find buffer_cache(sector:%llu).\n",
- 	     (unsigned long long)sec);
-@@ -459,7 +456,7 @@ void exfat_buf_unlock(struct super_block *sb, sector_t sec)
- 
- 	bp = buf_cache_find(sb, sec);
- 	if (likely(bp))
--		bp->flag &= ~(LOCKBIT);
-+		bp->locked = false;
- 
- 	WARN(!bp, "[EXFAT] failed to find buffer_cache(sector:%llu).\n",
- 	     (unsigned long long)sec);
-@@ -478,7 +475,7 @@ void exfat_buf_release(struct super_block *sb, sector_t sec)
- 	if (likely(bp)) {
- 		bp->drv = -1;
- 		bp->sec = ~0;
--		bp->flag = 0;
-+		bp->locked = false;
- 
- 		if (bp->buf_bh) {
- 			__brelse(bp->buf_bh);
-@@ -503,7 +500,7 @@ void exfat_buf_release_all(struct super_block *sb)
- 		if (bp->drv == p_fs->drv) {
- 			bp->drv = -1;
- 			bp->sec = ~0;
--			bp->flag = 0;
-+			bp->locked = false;
- 
- 			if (bp->buf_bh) {
- 				__brelse(bp->buf_bh);
+ 	/* de-assert chip select to end the sequence */
 -- 
-2.25.1
+2.17.1
 
 _______________________________________________
 devel mailing list
