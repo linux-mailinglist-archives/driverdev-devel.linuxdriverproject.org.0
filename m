@@ -1,84 +1,124 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CC8A170CCA
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Feb 2020 00:52:25 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2513170E4D
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Feb 2020 03:15:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7DD2A87849;
-	Wed, 26 Feb 2020 23:52:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 167B386C3A;
+	Thu, 27 Feb 2020 02:15:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Frw13p2057FH; Wed, 26 Feb 2020 23:52:23 +0000 (UTC)
+	with ESMTP id GixMpj8m6q48; Thu, 27 Feb 2020 02:15:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5F6038766A;
-	Wed, 26 Feb 2020 23:52:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8243186702;
+	Thu, 27 Feb 2020 02:15:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7BCF41BF3A3
- for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 23:52:20 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EAAA31BF29C
+ for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 02:15:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 731EE8781D
- for <devel@linuxdriverproject.org>; Wed, 26 Feb 2020 23:52:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E5E7A204C3
+ for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 02:15:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id B9gu9BxUVfxg for <devel@linuxdriverproject.org>;
- Wed, 26 Feb 2020 23:52:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DAE4E8766A
- for <devel@driverdev.osuosl.org>; Wed, 26 Feb 2020 23:52:19 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id d6so447583pgn.5
- for <devel@driverdev.osuosl.org>; Wed, 26 Feb 2020 15:52:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=XlzTesc/osvmK67dq3mpi/UOZrAvhagv1EzzaH9Ps1E=;
- b=mFoUw0MqmxHI0oPPMELQOYtzcg9+E08usopU8RyqjLJWRg0LfOnJOWt+AjXWMkSQ/+
- ik+r+itUBGD5T380/0MmUPBH+89PWyBdB8+F/1DaSYlSp7CIk8Fn/3teXYUW1zo9xLUH
- v4z8aa9IgEG3jL96PPv5LScPNWljvvNvKlMzL7Be/vTorndLrIXxvpq+plAwXKHkbUom
- m2el//LdaDsyddJT8U73S8hkrTiL/xXFJolh/qFYcxRZrEI1OuYanj9TXwArqs45lePW
- vxV7QH+fF42WDZRjYeU3k4tsni1QLk30hSxJFZFEmXkFxeEViN2UHWaJeeMyd3OJu1qD
- D9Lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=XlzTesc/osvmK67dq3mpi/UOZrAvhagv1EzzaH9Ps1E=;
- b=NA58A7NcjiaHwgzky03Cfr/lJR6zWD0YW/izl4U2T+1GDWl54JNN2yYFZ22rP81ojo
- w1DuZ7GoxogJfpEX5daG8ZTLYlrP+qAUGtzB5ovELGgM/ufXeeU6X/a19sZApcrrxQnU
- ujshpd8rCG7pgAx7OxmbPGBu6p3IacFCkjthEpxKQiuwyJYqjgOhThxnvqCJfpmkSALM
- mDFLbPZeOeDlBvgInwvr6f6++11XqXmWPHOhtbIzuWqkf2OqGYIFqsFDp0hmUPerqkA2
- 79PGq5V0hHBKHMiFdRD90SWE8cxh7kEzsTrE0VQZQIa6lRnpZaDnMED/hNkknq5D60Km
- K14A==
-X-Gm-Message-State: APjAAAWyWTcoaGHzkR8CdwDwNlTh9G93dpUgqIU6FBGZ+Dbkc6Tu8nFz
- v1BjKMEAYtjWgbS5sEeHiyE=
-X-Google-Smtp-Source: APXvYqxvMlCakj/OIN3Ab7wp9/W+3XGgGXTH9cJ24Kd1VC3/qZU0qrVdvmi+QWNetqsm4pIH3dMQwg==
-X-Received: by 2002:a62:fb07:: with SMTP id x7mr1198766pfm.125.1582761139317; 
- Wed, 26 Feb 2020 15:52:19 -0800 (PST)
-Received: from [172.30.88.123] (sjewanfw1-nat.mentorg.com. [139.181.7.34])
- by smtp.gmail.com with ESMTPSA id 64sm4159507pfd.48.2020.02.26.15.52.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Feb 2020 15:52:18 -0800 (PST)
-Subject: Re: [RESEND PATCH v3 02/17] media: v4l2-fwnode: Pass notifier to
- v4l2_async_register_fwnode_subdev()
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-References: <20200215194136.10131-1-slongerbeam@gmail.com>
- <20200215194136.10131-3-slongerbeam@gmail.com>
- <20200225150721.GO5379@paasikivi.fi.intel.com>
-From: Steve Longerbeam <slongerbeam@gmail.com>
-Message-ID: <33258045-b708-1390-06e0-fde224296dfb@gmail.com>
-Date: Wed, 26 Feb 2020 15:50:04 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ with ESMTP id U9wKOinhe-sy for <devel@linuxdriverproject.org>;
+ Thu, 27 Feb 2020 02:15:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx04.melco.co.jp (mx04.melco.co.jp [192.218.140.144])
+ by silver.osuosl.org (Postfix) with ESMTPS id E31C4204B9
+ for <devel@driverdev.osuosl.org>; Thu, 27 Feb 2020 02:15:19 +0000 (UTC)
+Received: from mr04.melco.co.jp (mr04 [133.141.98.166])
+ by mx04.melco.co.jp (Postfix) with ESMTP id E51273A41E5;
+ Thu, 27 Feb 2020 11:15:17 +0900 (JST)
+Received: from mr04.melco.co.jp (unknown [127.0.0.1])
+ by mr04.imss (Postfix) with ESMTP id 48Sbq96DmBzRk6K;
+ Thu, 27 Feb 2020 11:15:17 +0900 (JST)
+Received: from mf03_second.melco.co.jp (unknown [192.168.20.183])
+ by mr04.melco.co.jp (Postfix) with ESMTP id 48Sbq95wfczRk2c;
+ Thu, 27 Feb 2020 11:15:17 +0900 (JST)
+Received: from mf03.melco.co.jp (unknown [133.141.98.183])
+ by mf03_second.melco.co.jp (Postfix) with ESMTP id 48Sbq95PNlzRkCy;
+ Thu, 27 Feb 2020 11:15:17 +0900 (JST)
+Received: from JPN01-OS2-obe.outbound.protection.outlook.com (unknown
+ [104.47.92.53])
+ by mf03.melco.co.jp (Postfix) with ESMTP id 48Sbq94wK3zRk5y;
+ Thu, 27 Feb 2020 11:15:17 +0900 (JST)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fAmlVIj8Zriv9QKtkuIBLcX2ZQUDVwTFh4rH265Ey9mvCDYl9kdsiFhD+UBgRgwk4PuWBg7Jc+XVo23kRFHBUhTaSX9+tLTjkq9dALShTkjrAWoGF7vlVZsuU040J2pG2mR5V5b+1/Z9bmERk7lT+U79y4lgJiVVAwDcGL05VfNNkRCK0Ah8v73dETYseECKYLiG2NQXBA+H7yC5VbFrofwzhU+LLj7oUnwo0BaYK8Hqa1QSagim+SNRKOGO0ilX6DtIIlnfFdTZL0K7oiftjxkfzNF/9U5UDE0CWV8UrJSmV7Ln/Te47Q/uSGHHJTiLw1aAFIjuzu6WDG6H1uTtAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9aoM88uGSv7AGtJwV0+vu4r0ByKyMqB2Uq1+fGWzyKs=;
+ b=KH6wgsLBSkl8FShkqxPJtfuh+CvKDryFAjDAFnGeNI1ES7aRPc8PSJQPSUNVsbyKOr6sqw6xL59dNYbnwgUxipdOgzBySKVm3n7BOnE9aTmBO1BJ+sqqrKqMN89/YH3DBMTNWEgGKx/N3WL5OqLB406WH0jsuzc9E0ndnjru7B9UBRbKUe9mj29Icoq+hHdxvpq2BgeriHR+ShYPkv3826BwCoSSbwxWJnRTUmdi5FnnghB6qg0CH0x2jjPX5qfmHQJTWHVAvPnBC7EiHUiNsdSeVN6SrhH/ao7EYLUL+my3EAQxhvIMqMVKUdTO7owpGjdlqZabQY9lIvBaXfe5bg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=dc.mitsubishielectric.co.jp; dmarc=pass action=none
+ header.from=dc.mitsubishielectric.co.jp; dkim=pass
+ header.d=dc.mitsubishielectric.co.jp; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mitsubishielectricgroup.onmicrosoft.com;
+ s=selector2-mitsubishielectricgroup-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9aoM88uGSv7AGtJwV0+vu4r0ByKyMqB2Uq1+fGWzyKs=;
+ b=Po3Vm6z+ZArLB3ofy6ffpYM8bV3au14v1WS6S94Z6f2PgzvyV8T3ZMXVuUpKI/TScLE9JhNbFoAO8BXGnEvmZG4MN/eaaXROi9RXcdVgyejZR9EhYvvmS8Ry4ZEwGkabut+yb/qqjGcEgGL4lD1puav83nZxssKWEso/KZvR0AA=
+Received: from TY1PR01MB1578.jpnprd01.prod.outlook.com (52.133.161.22) by
+ TY1PR01MB1723.jpnprd01.prod.outlook.com (52.133.163.21) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2750.21; Thu, 27 Feb 2020 02:15:16 +0000
+Received: from TY1PR01MB1578.jpnprd01.prod.outlook.com
+ ([fe80::1cea:e753:3a3b:8e1b]) by TY1PR01MB1578.jpnprd01.prod.outlook.com
+ ([fe80::1cea:e753:3a3b:8e1b%7]) with mapi id 15.20.2750.021; Thu, 27 Feb 2020
+ 02:15:16 +0000
+From: "Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp"
+ <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+To: =?utf-8?B?J1ZhbGRpcyBLbMSTdG5pZWtzJw==?= <valdis.kletnieks@vt.edu>
+Subject: RE: [PATCH] staging: exfat: remove symlink feature : Additional patch
+Thread-Topic: [PATCH] staging: exfat: remove symlink feature : Additional patch
+Thread-Index: AQHV7G9EzJ7fbVbdR0u44Wg1uFjkEKgtEzmAgAE2T4A=
+Date: Thu, 27 Feb 2020 02:14:02 +0000
+Deferred-Delivery: Thu, 27 Feb 2020 02:15:01 +0000
+Message-ID: <TY1PR01MB1578C8F3D1A9F130C5844C6890EB0@TY1PR01MB1578.jpnprd01.prod.outlook.com>
+References: <20200226063746.3128-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+ <503049.1582701983@turing-police>
+In-Reply-To: <503049.1582701983@turing-police>
+Accept-Language: ja-JP, en-US
+Content-Language: ja-JP
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-melpop: 1
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp; 
+x-originating-ip: [121.80.0.162]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 68306f99-ee77-4bfd-acbc-08d7bb2ae2f6
+x-ms-traffictypediagnostic: TY1PR01MB1723:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <TY1PR01MB1723280B49F8477144B565F990EB0@TY1PR01MB1723.jpnprd01.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-forefront-prvs: 03264AEA72
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(136003)(396003)(366004)(346002)(376002)(39860400002)(189003)(199004)(86362001)(26005)(186003)(8676002)(4326008)(81156014)(8936002)(6506007)(33656002)(7696005)(81166006)(66946007)(9686003)(52536014)(55016002)(4744005)(66476007)(5660300002)(6916009)(2906002)(71200400001)(54906003)(6666004)(76116006)(66446008)(66556008)(64756008)(316002)(478600001);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:TY1PR01MB1723;
+ H:TY1PR01MB1578.jpnprd01.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:0; 
+received-spf: None (protection.outlook.com: dc.MitsubishiElectric.co.jp does
+ not designate permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 15+Oz4nu8ShxcGMkmeFFwKWVjhUInyY4uuAP7M91h5DnVlJnf93Fxb4F68/0FhbV6b0zpYmDf8W2I3W9d5KePHEou7aGmBCFtJkFOl5ylXL8fjqNIg4VuVj5XCx5ICV5cEyxq8xwqq3to9oX3Qa8ZelE6m9Bt6jJXexd41cfuEZXshayS4Nrroy7W6p/478v9D4fJN6t/hAqK2BZ9gxPKNGY2xI3crDjWCB2jdGYrHqRRTqCHHbEuKPMJeyKTMdXqWiJ9CkJPB+NTJqISH4kHvpJp/3DTuWQi60KEOq66Fa9BxDDetbZwM2sIvf/qaDTeUVdcwZIlCmXXx/ZJv4uXT43/WMI2briV0GJikA5uRd9HSNXoWHrMYMalKyHknOsu6qJId1K7zDsZfZwKG9rtcUVL/w281LU/nVuTLg5NNkv6jT4TMQvfrJwpR5fIeL+
+x-ms-exchange-antispam-messagedata: 60a9uVU/M8C5ILxlXD6XOz6BVvo8XaRGNGYr2WYf2nZ/nOx/dsImuQoddlGb5FyLNdixG2fkZuoKut9Wp+yHBQOlWGC1EAEJqwsTAER+Jz4mSmwDE8F4K715P/XZIxzmipzFILiBGwX4cB/8AcryqA==
 MIME-Version: 1.0
-In-Reply-To: <20200225150721.GO5379@paasikivi.fi.intel.com>
-Content-Language: en-US
+X-OriginatorOrg: dc.MitsubishiElectric.co.jp
+X-MS-Exchange-CrossTenant-Network-Message-Id: 68306f99-ee77-4bfd-acbc-08d7bb2ae2f6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Feb 2020 02:15:16.6262 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: c5a75b62-4bff-4c96-a720-6621ce9978e5
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: V2bOpwIZ+jhO3FK54tgjuo4pm8fSb6ZGQdcY+Bnc/j+EbUpQczUBAsVeofthC1bJ5Io0DrCd72PEdvMwauF3tA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY1PR01MB1723
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,67 +131,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- open list <linux-kernel@vger.kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
+ "Motai.Hirotaka@aj.MitsubishiElectric.co.jp"
+ <Motai.Hirotaka@aj.MitsubishiElectric.co.jp>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "Mori.Takahiro@ab.MitsubishiElectric.co.jp"
+ <Mori.Takahiro@ab.MitsubishiElectric.co.jp>,
+ "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Sakari,
+Thanks for comment.
 
-Thanks for the feedback.
+> Then this should have been [PATCH v2], and the fixed version [PATCH 
+> v3]
 
+2nd patch(Additional patch) not include 1st patch(RFC PATCH).
+And the 1st patch has been merged into 'staging-next'.
+Now I can't decide.
+a) Add only version information to the 2nd patch.
+b) Merge the 1st and 2nd patches.
 
-On 2/25/20 7:07 AM, Sakari Ailus wrote:
-> Hi Steve,
->
-> On Sat, Feb 15, 2020 at 11:41:21AM -0800, Steve Longerbeam wrote:
->> Instead of allocating a notifier in v4l2_async_register_fwnode_subdev(),
->> have the caller provide one. This allows the caller to implement
->> notifier ops (bind, unbind).
->>
->> The caller is now responsible for first initializing its notifier with a
->> call to v4l2_async_notifier_init().
->>
->> Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
-> Instead of improving v4l2_async_register_fwnode_subdev(), could you convert
-> the users (IMX driver in this case) to call the preferred APIs instead?
+Which is better for v3?
 
-I presume you mean using v4l2_async_notifier_add_fwnode_remote_subdev(). 
-Ok, I'll convert to use that API.
-
-Steve
-
->   As
-> the lines below show, v4l2_async_register_fwnode_subdev() has only two
-> users left --- the other one of which is the IMX driver. After converting
-> these two, we could just remove this API.
->
-> See e.g. drivers/media/pci/intel/ipu3/ipu3-cio2.c and
-> drivers/media/platform/omap3isp/isp.c for examples.
->
->> ---
->> Changes in v3:
->> - added the missing calls to unregister/cleanup the new subdev notifiers.
->>    Reported by Rui Silva.
->> ---
->>   drivers/media/platform/video-mux.c         |  8 +++++++-
->>   drivers/media/v4l2-core/v4l2-fwnode.c      | 11 +----------
->>   drivers/staging/media/imx/imx6-mipi-csi2.c |  7 ++++++-
->>   drivers/staging/media/imx/imx7-media-csi.c |  7 ++++++-
->>   drivers/staging/media/imx/imx7-mipi-csis.c |  9 ++++++++-
->>   include/media/v4l2-fwnode.h                | 12 ++++++++----
->>   6 files changed, 36 insertions(+), 18 deletions(-)
-
+--
+Kohada Tetsuhiro <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
