@@ -1,82 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8C05172194
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Feb 2020 15:51:13 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B462E17261B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Feb 2020 19:10:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D3298878B7;
-	Thu, 27 Feb 2020 14:51:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 63E0B2313D;
+	Thu, 27 Feb 2020 18:10:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MFpAuwf3hXm7; Thu, 27 Feb 2020 14:51:11 +0000 (UTC)
+	with ESMTP id 3YmqP5hEye9U; Thu, 27 Feb 2020 18:10:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8C4EE8789F;
-	Thu, 27 Feb 2020 14:51:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1733C230A4;
+	Thu, 27 Feb 2020 18:10:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 123E71BF3F4
- for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 14:51:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 371521BF3D2
+ for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 18:10:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0F74C86CB3
- for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 14:51:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 32F932309D
+ for <devel@linuxdriverproject.org>; Thu, 27 Feb 2020 18:10:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ChgrQtqVprlA for <devel@linuxdriverproject.org>;
- Thu, 27 Feb 2020 14:51:05 +0000 (UTC)
+ with ESMTP id c9xaPxcJrbGS for <devel@linuxdriverproject.org>;
+ Thu, 27 Feb 2020 18:10:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
- [148.163.135.77])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A3BE486CAC
- for <devel@driverdev.osuosl.org>; Thu, 27 Feb 2020 14:51:05 +0000 (UTC)
-Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
- by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 01REhMck014966; Thu, 27 Feb 2020 09:51:04 -0500
-Received: from nwd2mta4.analog.com ([137.71.173.58])
- by mx0a-00128a01.pphosted.com with ESMTP id 2ydtrwkfwd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 27 Feb 2020 09:51:04 -0500
-Received: from ASHBMBX8.ad.analog.com (ashbmbx8.ad.analog.com [10.64.17.5])
- by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 01REp3eI008251
- (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=FAIL); 
- Thu, 27 Feb 2020 09:51:03 -0500
-Received: from ASHBCASHYB5.ad.analog.com (10.64.17.133) by
- ASHBMBX8.ad.analog.com (10.64.17.5) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1779.2; Thu, 27 Feb 2020 09:51:02 -0500
-Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by
- ASHBCASHYB5.ad.analog.com (10.64.17.133) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1779.2; Thu, 27 Feb 2020 09:51:02 -0500
-Received: from zeus.spd.analog.com (10.64.82.11) by ASHBMBX9.ad.analog.com
- (10.64.17.10) with Microsoft SMTP Server id 15.1.1779.2 via Frontend
- Transport; Thu, 27 Feb 2020 09:51:02 -0500
-Received: from analog.ad.analog.com ([10.48.65.180])
- by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 01REowlP031795;
- Thu, 27 Feb 2020 09:50:59 -0500
-From: Sergiu Cuciurean <sergiu.cuciurean@analog.com>
-To: <linux-kernel@vger.kernel.org>, <devel@driverdev.osuosl.org>,
- <linux-wireless@vger.kernel.org>, <gregkh@linuxfoundation.org>,
- <ajay.kathat@microchip.com>, <adham.abozaeid@microchip.com>
-Subject: [PATCH] staging: wilc1000: spi: Use new structure for SPI transfer
- delays
-Date: Thu, 27 Feb 2020 16:50:54 +0200
-Message-ID: <20200227145054.24567-1-sergiu.cuciurean@analog.com>
-X-Mailer: git-send-email 2.17.1
+Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
+ [209.85.208.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 38B27230F3
+ for <devel@driverdev.osuosl.org>; Thu, 27 Feb 2020 18:10:05 +0000 (UTC)
+Received: by mail-lj1-f195.google.com with SMTP id e18so213598ljn.12
+ for <devel@driverdev.osuosl.org>; Thu, 27 Feb 2020 10:10:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JGTvTC5n1dMFf5hqfM1JJ/BZi1c+ZQ0aixXc9pKVWyk=;
+ b=KrJU7X7EIvMKlUEtbUymzld9J6xlBT5wJtUGvAAIKW08mCZFRtSfx8xOROqfuexZjm
+ JgzdQMJpcoKGAr9Sz0TRp3hECEd10uyGdfVINUEuFhgyEKnBX9Q9acsGmO0XTXw/D6Y0
+ GYZwtvYYoQslELF2RcyKz7DfbPy0XW2QIJ8gF4gokZGJp1fHhMyvKVOyRsERN8IJIVRU
+ IHkV/XDshgvI537t6WLPZnMMYSFkLkpFiBmmM8E+LRQmqRD0fDSL4yKDt20D3tRmK3sP
+ p4jIXT6QFwM5U/myoCIPV5M3bcSJKp8O/zr3UOuVSQQo+sKXF59tPU52HlPpgGkFPRd2
+ 4t/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JGTvTC5n1dMFf5hqfM1JJ/BZi1c+ZQ0aixXc9pKVWyk=;
+ b=VEBJHAO5bgKGhA9RiRGSzzSkWe56gUUQyJ9t+JgoKfs10VLmpSwcG6a4vVYbvx0T1W
+ X1gzmqjmt5UkBP7/ns1L3UueZUyfox/FhkZnc3/fY+MlLask1E0Ra6lg7N/A9OuxRcrZ
+ dclCbLN0ckaP3mzJcY9OEqy3cisJ0FBrMeU0OSgHibSdBbSui/hfrQHe/dMfNof9Vxca
+ tBjPD4D7zypgcJ42g6TGT4U3dJacrDlpZ3HhVpvg+ENMD2ivzxoVj4lH4WqBsR74ae3V
+ 0LpR0uLgXrTmF+Nn4EGBxdVNEtvaiYd8lGTR5XzTGNBOUSb/VT4pOrgLzwhGuk0njHqX
+ xovQ==
+X-Gm-Message-State: ANhLgQ3JcN/JLwhaRn1ir6b9kCpSoyD6NhJDD8KZk3l/XJXLa28iNxej
+ tggfm2Vs55lHM3mtuu2TQig=
+X-Google-Smtp-Source: ADFU+vt7VurT8NSU0ruym6CjuKGiA65tRemHtqoeZ3SAziIhDR/LByjtv7S5fyvspcm5O9WPA2qWbQ==
+X-Received: by 2002:a2e:9748:: with SMTP id f8mr208065ljj.178.1582827002155;
+ Thu, 27 Feb 2020 10:10:02 -0800 (PST)
+Received: from localhost.localdomain (79-139-233-37.dynamic.spd-mgts.ru.
+ [79.139.233.37])
+ by smtp.gmail.com with ESMTPSA id t6sm3222170lfe.47.2020.02.27.10.10.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 27 Feb 2020 10:10:01 -0800 (PST)
+From: Dmitry Osipenko <digetx@gmail.com>
+To: Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>
+Subject: [PATCH v1] media: staging: tegra-vde: Use
+ devm_platform_ioremap_resource_byname()
+Date: Thu, 27 Feb 2020 21:09:15 +0300
+Message-Id: <20200227180915.9541-1-digetx@gmail.com>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
-X-ADIRoutedOnPrem: True
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
- definitions=2020-02-27_04:2020-02-26,
- 2020-02-27 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 bulkscore=0
- phishscore=0 adultscore=0 spamscore=0 mlxscore=0 mlxlogscore=939
- suspectscore=0 clxscore=1011 lowpriorityscore=0 priorityscore=1501
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2001150001 definitions=main-2002270117
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,70 +88,119 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sergiu Cuciurean <sergiu.cuciurean@analog.com>
+Cc: linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In a recent change to the SPI subsystem [1], a new `delay` struct was added
-to replace the `delay_usecs`. This change replaces the current
-`delay_usecs` with `delay` for this driver.
+This helps to make code cleaner a tad.
 
-The `spi_transfer_delay_exec()` function [in the SPI framework] makes sure
-that both `delay_usecs` & `delay` are used (in this order to preserve
-backwards compatibility).
-
-[1] commit bebcfd272df6 ("spi: introduce `delay` field for
-`spi_transfer` + spi_transfer_delay_exec()")
-
-Signed-off-by: Sergiu Cuciurean <sergiu.cuciurean@analog.com>
+Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- drivers/staging/wilc1000/spi.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+ drivers/staging/media/tegra-vde/vde.c | 55 +++++----------------------
+ 1 file changed, 9 insertions(+), 46 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/spi.c b/drivers/staging/wilc1000/spi.c
-index 11653ac118cd..a3779d967a24 100644
---- a/drivers/staging/wilc1000/spi.c
-+++ b/drivers/staging/wilc1000/spi.c
-@@ -228,7 +228,10 @@ static int wilc_spi_tx(struct wilc *wilc, u8 *b, u32 len)
- 		struct spi_transfer tr = {
- 			.tx_buf = b,
- 			.len = len,
--			.delay_usecs = 0,
-+			.delay = {
-+				.value = 0,
-+				.unit = SPI_DELAY_UNIT_USECS
-+			},
- 		};
- 		char *r_buffer = kzalloc(len, GFP_KERNEL);
+diff --git a/drivers/staging/media/tegra-vde/vde.c b/drivers/staging/media/tegra-vde/vde.c
+index e18fd48981da..d3e63512a765 100644
+--- a/drivers/staging/media/tegra-vde/vde.c
++++ b/drivers/staging/media/tegra-vde/vde.c
+@@ -949,7 +949,6 @@ static int tegra_vde_runtime_resume(struct device *dev)
+ static int tegra_vde_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+-	struct resource *regs;
+ 	struct tegra_vde *vde;
+ 	int irq, err;
  
-@@ -269,7 +272,10 @@ static int wilc_spi_rx(struct wilc *wilc, u8 *rb, u32 rlen)
- 		struct spi_transfer tr = {
- 			.rx_buf = rb,
- 			.len = rlen,
--			.delay_usecs = 0,
-+			.delay = {
-+				.value = 0,
-+				.unit = SPI_DELAY_UNIT_USECS
-+			},
+@@ -959,75 +958,39 @@ static int tegra_vde_probe(struct platform_device *pdev)
  
- 		};
- 		char *t_buffer = kzalloc(rlen, GFP_KERNEL);
-@@ -311,7 +317,10 @@ static int wilc_spi_tx_rx(struct wilc *wilc, u8 *wb, u8 *rb, u32 rlen)
- 			.tx_buf = wb,
- 			.len = rlen,
- 			.bits_per_word = 8,
--			.delay_usecs = 0,
-+			.delay = {
-+				.value = 0,
-+				.unit = SPI_DELAY_UNIT_USECS
-+			},
+ 	platform_set_drvdata(pdev, vde);
  
- 		};
+-	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sxe");
+-	if (!regs)
+-		return -ENODEV;
+-
+-	vde->sxe = devm_ioremap_resource(dev, regs);
++	vde->sxe = devm_platform_ioremap_resource_byname(pdev, "sxe");
+ 	if (IS_ERR(vde->sxe))
+ 		return PTR_ERR(vde->sxe);
+ 
+-	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "bsev");
+-	if (!regs)
+-		return -ENODEV;
+-
+-	vde->bsev = devm_ioremap_resource(dev, regs);
++	vde->bsev = devm_platform_ioremap_resource_byname(pdev, "bsev");
+ 	if (IS_ERR(vde->bsev))
+ 		return PTR_ERR(vde->bsev);
+ 
+-	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "mbe");
+-	if (!regs)
+-		return -ENODEV;
+-
+-	vde->mbe = devm_ioremap_resource(dev, regs);
++	vde->mbe = devm_platform_ioremap_resource_byname(pdev, "mbe");
+ 	if (IS_ERR(vde->mbe))
+ 		return PTR_ERR(vde->mbe);
+ 
+-	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "ppe");
+-	if (!regs)
+-		return -ENODEV;
+-
+-	vde->ppe = devm_ioremap_resource(dev, regs);
++	vde->ppe = devm_platform_ioremap_resource_byname(pdev, "ppe");
+ 	if (IS_ERR(vde->ppe))
+ 		return PTR_ERR(vde->ppe);
+ 
+-	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "mce");
+-	if (!regs)
+-		return -ENODEV;
+-
+-	vde->mce = devm_ioremap_resource(dev, regs);
++	vde->mce = devm_platform_ioremap_resource_byname(pdev, "mce");
+ 	if (IS_ERR(vde->mce))
+ 		return PTR_ERR(vde->mce);
+ 
+-	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "tfe");
+-	if (!regs)
+-		return -ENODEV;
+-
+-	vde->tfe = devm_ioremap_resource(dev, regs);
++	vde->tfe = devm_platform_ioremap_resource_byname(pdev, "tfe");
+ 	if (IS_ERR(vde->tfe))
+ 		return PTR_ERR(vde->tfe);
+ 
+-	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "ppb");
+-	if (!regs)
+-		return -ENODEV;
+-
+-	vde->ppb = devm_ioremap_resource(dev, regs);
++	vde->ppb = devm_platform_ioremap_resource_byname(pdev, "ppb");
+ 	if (IS_ERR(vde->ppb))
+ 		return PTR_ERR(vde->ppb);
+ 
+-	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "vdma");
+-	if (!regs)
+-		return -ENODEV;
+-
+-	vde->vdma = devm_ioremap_resource(dev, regs);
++	vde->vdma = devm_platform_ioremap_resource_byname(pdev, "vdma");
+ 	if (IS_ERR(vde->vdma))
+ 		return PTR_ERR(vde->vdma);
+ 
+-	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "frameid");
+-	if (!regs)
+-		return -ENODEV;
+-
+-	vde->frameid = devm_ioremap_resource(dev, regs);
++	vde->frameid = devm_platform_ioremap_resource_byname(pdev, "frameid");
+ 	if (IS_ERR(vde->frameid))
+ 		return PTR_ERR(vde->frameid);
  
 -- 
-2.17.1
+2.24.0
 
 _______________________________________________
 devel mailing list
