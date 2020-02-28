@@ -1,77 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8326B175A7C
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 13:28:34 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8A1A586064;
-	Mon,  2 Mar 2020 12:28:32 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YzujkPnLBL1a; Mon,  2 Mar 2020 12:28:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE52185C50;
-	Mon,  2 Mar 2020 12:28:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D1B3F1BF343
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 12:28:28 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91AD2175AAF
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 13:39:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CE88D843FE
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 12:28:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F366485683;
+	Mon,  2 Mar 2020 12:39:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BxCDxqVyVf66; Mon,  2 Mar 2020 12:39:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DFE758536C;
+	Mon,  2 Mar 2020 12:39:25 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 06A851BF343
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 12:39:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 028B12001D
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 12:39:23 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UPH72QZhl7rW for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 12:28:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AF6EA842DE
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 12:28:25 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id x19so4676912otp.7
- for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 04:28:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=wZYZAbcqMvd207t9hfFOk6y3G0CkgQqD0dKaK71lZb4=;
- b=R0KpxJxtG+UQPgjSqrKZ21jyTJy4Mlw/Yu8QmMy4x9HE3CMHGkJiGIe1g5GetR6jgn
- Xv7smuVJInhTKDXOnjpjvrrvmGWzt3D6c6lutU96TZQr9up2agqK3+kN+4HqpFfir12H
- Qu9gk+EdP7timM7Y3Si3TV9/2FQUYYaBbZIzX8Cj6bv+MU5riVpErrqLvGJTCKqW1hcL
- vY+qXJPsbw30TZAAJlZ0xjitJxr6eq39FwxUMpo4E0VURUr5Nnh/4U4MgsXIPVw8zaun
- ZflMTU9wHI2ybOZUfKjsLjcezwaSexywn/HD2sxtQUsELJmlMCCR3IksKxb8clPj3ssr
- yjEg==
-X-Gm-Message-State: APjAAAVN7nIUqoU6Q74E7D3lnsBWmArBcG6ZiM56z2YM3U9SjTu13KN+
- 2jf9JodZ49WBSNN2rFvRTp/YTGXAROmBOr7gAdE=
-X-Google-Smtp-Source: APXvYqzN+m0jue0ZTokoqurX7tBCYT/bfoG/F9HvM0fLl2C7tpJvdjqoMETuKvoCS8cUYtBFAfQ6dPbGSXXYJ4em2mQ=
-X-Received: by 2002:a05:6830:1d4:: with SMTP id
- r20mr12476739ota.107.1583152104944; 
- Mon, 02 Mar 2020 04:28:24 -0800 (PST)
+ with ESMTP id Rdq8LMB+Z2E5 for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 12:39:21 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.foescocursos.es (unknown [146.255.98.62])
+ by silver.osuosl.org (Postfix) with ESMTPS id 26F331FE32
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 12:39:20 +0000 (UTC)
+Received: from 95.169.232.119 (47.red-79-152-109.dynamicip.rima-tde.net
+ [79.152.109.47])
+ by mail.foescocursos.es (Postfix) with ESMTPSA id 0C79ED0472
+ for <devel@driverdev.osuosl.org>; Fri, 28 Feb 2020 10:02:40 +0100 (CET)
+Authentication-Results: mail.foescocursos.es;
+ spf=pass (sender IP is 79.152.109.47) smtp.mailfrom=info8@formacionestatal.es
+ smtp.helo=95.169.232.119
+Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
 MIME-Version: 1.0
-References: <cover.1578924232.git.alexander.riesen@cetitec.com>
- <20200113141556.GI3606@pflmari>
-In-Reply-To: <20200113141556.GI3606@pflmari>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 2 Mar 2020 13:28:13 +0100
-Message-ID: <CAMuHMdV9urx-6N4tiaPdkssa6Wu-9HSB4VY-rvCu+8JpfZcBfA@mail.gmail.com>
-Subject: Re: [PATCH 8/8] arm64: dts: renesas: salvator: add a connection from
- adv748x codec (HDMI input) to the R-Car SoC
-To: Alex Riesen <alexander.riesen@cetitec.com>, 
- Kieran Bingham <kieran.bingham@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>, 
- Mark Rutland <mark.rutland@arm.com>, driverdevel <devel@driverdev.osuosl.org>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>
+From: "FOESCO" <info8@formacionestatal.es>
+To: devel@driverdev.osuosl.org
+Subject: =?Windows-1252?Q?Att._Administraci=F3n?=
+X-Mailer: Smart_Send_4_3_3
+Date: Fri, 28 Feb 2020 10:01:53 -0800
+Message-ID: <44364793939441340327027@DESKTOP-E4PFAM0>
+X-Priority: 1
+X-MSMail-Priority: High
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,156 +60,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: cursos@foesco.com
+Content-Type: multipart/mixed; boundary="===============3416125443789704325=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alex,
+--===============3416125443789704325==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Thanks for your patch!
+Buenos d=EDas
 
-On Mon, Jan 13, 2020 at 3:24 PM Alex Riesen
-<alexander.riesen@cetitec.com> wrote:
-> Not sure if all variants of the Salvator board have the HDMI decoder
-> chip (the ADV7482) connected to the SSI4 on R-Car SoC, as it is on
-> Salvator-X ES1, so the the ADV7482 endpoint and connection definitions
-> are placed in the board file.
 
-Both Salvator-X and Salvator-XS have SSI4 wired to the ADV7482.
 
-> I do assume though that all Salvator variants have the CLK_C clock line
-> hard-wired to the ADV7482 HDMI decoder, and remove it from the list of
-> clocks provided by the R-Car sound system.
+Os informamos que se encuentra abierto el plazo de inscripci=F3n para la pr=
+esente Convocatoria de Cursos Bonificables para empleados (Marzo 2020)
 
-Yes, both Salvator-X and Salvator-XS have it wired that way.  But please
-see below.
+Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
+aci=F3n 2020 que disponen las empresas.
 
-> The I2C wiring is also likely to persist across the variants (similar
-> to ak4613, connected to the same interface), so that is in the common
-> file.
->
-> Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
 
-Below are my comments w.r.t. the board-specific wiring.
-I'll defer to the multimedia people for commenting on the audio parts.
+Dese=E1is que os mandemos la informaci=F3n=3F
 
-BTW, what is the status of the other patches in this series?
 
-> --- a/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-> +++ b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-> @@ -322,6 +322,10 @@
->         clock-frequency = <22579200>;
->  };
->
-> +&audio_clk_c {
-> +       clock-frequency = <12288000>;
-> +};
+Saludos.
 
-Does the ADV7482 always generate a 12.288 MHz clock signal?
-Or is this programmable?
 
-> +
->  &avb {
->         pinctrl-0 = <&avb_pins>;
->         pinctrl-names = "default";
-> @@ -471,12 +475,14 @@
->
->                 #address-cells = <1>;
->                 #size-cells = <0>;
-> +               #sound-dai-cells = <0>;
->
->                 interrupt-parent = <&gpio6>;
->                 interrupt-names = "intrq1", "intrq2";
->                 interrupts = <30 IRQ_TYPE_LEVEL_LOW>,
->                              <31 IRQ_TYPE_LEVEL_LOW>;
-> -
-> +               clocks = <&rcar_sound 3>, <&audio_clk_c>;
-> +               clock-names = "clk-hdmi-video", "clk-hdmi-i2s-mclk";
+Alex Pons
+Director departamento formaci=F3n.
 
-The above declares the Audio CLK C to be a clock input of the ADV7482, while
-it is an output.
-Furthermore, the DT bindings do not document that clocks can be specified.
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B171823AP
+www.foesco.com
 
->                 port@7 {
->                         reg = <7>;
->
-> @@ -512,6 +518,14 @@
->                                 remote-endpoint = <&csi20_in>;
->                         };
->                 };
-> +
-> +               port@c {
-> +                       reg = <12>;
-> +
-> +                       adv7482_i2s: endpoint {
-> +                               /* remote-endpoint defined in the board file */
-> +                       };
-> +               };
->         };
->
->         csa_vdd: adc@7c {
-> @@ -686,7 +700,8 @@
->         };
->
->         sound_pins: sound {
-> -               groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a";
-> +               groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a",
-> +                        "ssi4_data";
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
 
-Missing "ss4_ctrl", for the SCK4 and WS4 pins.
 
->                 function = "ssi";
->         };
->
-> @@ -735,8 +750,8 @@
->         pinctrl-0 = <&sound_pins &sound_clk_pins>;
->         pinctrl-names = "default";
->
-> -       /* Single DAI */
-> -       #sound-dai-cells = <0>;
-> +       /* multi DAI */
-> +       #sound-dai-cells = <1>;
->
->         /* audio_clkout0/1/2/3 */
->         #clock-cells = <1>;
-> @@ -760,8 +775,18 @@
->                  <&cpg CPG_MOD 1020>, <&cpg CPG_MOD 1021>,
->                  <&cpg CPG_MOD 1019>, <&cpg CPG_MOD 1018>,
->                  <&audio_clk_a>, <&cs2000>,
-> -                <&audio_clk_c>,
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
 
-Why remove it? This is the list of clock inputs, not outputs.
 
->                  <&cpg CPG_CORE CPG_AUDIO_CLK_I>;
-> +       clock-names = "ssi-all",
-> +                     "ssi.9", "ssi.8", "ssi.7", "ssi.6",
-> +                     "ssi.5", "ssi.4", "ssi.3", "ssi.2",
-> +                     "ssi.1", "ssi.0",
-> +                     "src.9", "src.8", "src.7", "src.6",
-> +                     "src.5", "src.4", "src.3", "src.2",
-> +                     "src.1", "src.0",
-> +                     "mix.1", "mix.0",
-> +                     "ctu.1", "ctu.0",
-> +                     "dvc.0", "dvc.1",
-> +                     "clk_a", "clk_b", "clk_i";
->
->         ports {
->                 #address-cells = <1>;
-> --
-> 2.24.1.508.g91d2dafee0
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
 
-Gr{oetje,eeting}s,
+Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
+la palabra BAJA en el asunto.
 
-                        Geert
+--===============3416125443789704325==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3416125443789704325==--
