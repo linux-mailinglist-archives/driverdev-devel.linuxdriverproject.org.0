@@ -1,85 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A904173F46
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Feb 2020 19:16:17 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AA4BD876C9;
-	Fri, 28 Feb 2020 18:16:15 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9+uIoxhDBdaT; Fri, 28 Feb 2020 18:16:15 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6E7108761B;
-	Fri, 28 Feb 2020 18:16:13 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 08E261BF3A4
- for <devel@linuxdriverproject.org>; Fri, 28 Feb 2020 18:16:11 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D94A1741FB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Feb 2020 23:27:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 01ADD8827E
- for <devel@linuxdriverproject.org>; Fri, 28 Feb 2020 18:16:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6631988252;
+	Fri, 28 Feb 2020 22:27:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Q8gqlJ2O7R+i; Fri, 28 Feb 2020 22:27:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id C0E1C88137;
+	Fri, 28 Feb 2020 22:27:23 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4B65A1BF370
+ for <devel@linuxdriverproject.org>; Fri, 28 Feb 2020 22:27:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4774086B7B
+ for <devel@linuxdriverproject.org>; Fri, 28 Feb 2020 22:27:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 27+cm5O6fdEP for <devel@linuxdriverproject.org>;
- Fri, 28 Feb 2020 18:16:10 +0000 (UTC)
+ with ESMTP id EuY0wqda3Mwb for <devel@linuxdriverproject.org>;
+ Fri, 28 Feb 2020 22:27:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
- [209.85.216.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 736B388192
- for <devel@driverdev.osuosl.org>; Fri, 28 Feb 2020 18:16:10 +0000 (UTC)
-Received: by mail-pj1-f65.google.com with SMTP id fa20so1620259pjb.1
- for <devel@driverdev.osuosl.org>; Fri, 28 Feb 2020 10:16:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=BVlQGMV/dlLGU8gmf4FB65yDuYZrcSYwu3rmOUHQCKU=;
- b=tS9wg1JOmqNfXXI8nSE7wGqf4MWa4f0ygw9aMUvNcOlwmaudIrd1RdgRs5mDtGoulM
- QQnEOv23JAjX9lCxJH8QCkXYo1oUZAI3dR4RZ8ncR/03QZ7Zp0p3zhRvFI7cGX0I59dv
- b4b+j6B1u8Qbelz/2W31Aac7KVddqaR789yUSRTsWJZRzdO2J2a2VK3GX29MaeDUmbQr
- uM+08i0puvKfi6JO/Q9Dm6MQRgqf8zv+5TEb4CSrQhAUm/TgKfNeHEKfVF94pTtgc962
- mulOvvlQ2zW/PuchGstri/gdmsDIBB115xh2IITn/NR3nEEHkSKPxR5yXJdIEDOi9vUT
- DCAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=BVlQGMV/dlLGU8gmf4FB65yDuYZrcSYwu3rmOUHQCKU=;
- b=Zuj2YosyvIYROmC5/ZbsiJ8Mm6Xpu40xfXCXnbDpYrycumaURCgdSeT8wL1BYbQBGT
- PdNWCk9b/TyUMWDFHsxPdXhgIMstVLHTZ/O6wnK8t/Y6iLQeWXPCoDwu8sMOzerJ3F0A
- sIzgqxYkz4PHS8unv/tuwlCP5nnpRZGeOALXnmOmBIDn9LGRdMHPqm4KF7VaZGbmsjMD
- x4AcHX1Se+OeixA1a6CNEZPcUlwyprw2sEYfhTxRAyd7xP6Se20gnIuhguLX/1jSMgJT
- c5BabkxwTtmYTmFrr0831EmdhseYCwMoGWIEJjwRMXWuyY09lKhvRVDrRnwV7rXZfXp5
- L+NA==
-X-Gm-Message-State: APjAAAWx4jxbkCIaNZ55nw0kT45c17UGVRfSKLnty+KqezPKp1WAt4WT
- Qqxx9ghSi2N5CFEBFTI+HfM=
-X-Google-Smtp-Source: APXvYqwJV6NXOWi/9kpfdOV26a82C6ZHklO6PCZixEzsPy5UNqDSWCPvB0B6NoGHXvzOSey5lcIDFg==
-X-Received: by 2002:a17:902:7797:: with SMTP id
- o23mr4889179pll.298.1582913769852; 
- Fri, 28 Feb 2020 10:16:09 -0800 (PST)
-Received: from [172.30.88.172] (sjewanfw1-nat.mentorg.com. [139.181.7.34])
- by smtp.gmail.com with ESMTPSA id p17sm6148220pff.116.2020.02.28.10.16.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Feb 2020 10:16:08 -0800 (PST)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 88AA586B74
+ for <devel@driverdev.osuosl.org>; Fri, 28 Feb 2020 22:27:21 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Feb 2020 14:27:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,497,1574150400"; d="scan'208";a="227683345"
+Received: from jkalwas-mobl.ger.corp.intel.com (HELO mara.localdomain)
+ ([10.249.154.47])
+ by orsmga007.jf.intel.com with ESMTP; 28 Feb 2020 14:27:16 -0800
+Received: from sailus by mara.localdomain with local (Exim 4.92)
+ (envelope-from <sakari.ailus@linux.intel.com>)
+ id 1j7o6B-0000Ha-Ij; Sat, 29 Feb 2020 00:27:13 +0200
+Date: Sat, 29 Feb 2020 00:27:10 +0200
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Steve Longerbeam <slongerbeam@gmail.com>
 Subject: Re: [RESEND PATCH v3 02/17] media: v4l2-fwnode: Pass notifier to
  v4l2_async_register_fwnode_subdev()
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Message-ID: <20200228222710.GA1068@mara.localdomain>
 References: <20200215194136.10131-1-slongerbeam@gmail.com>
  <20200215194136.10131-3-slongerbeam@gmail.com>
  <20200225150721.GO5379@paasikivi.fi.intel.com>
-From: Steve Longerbeam <slongerbeam@gmail.com>
-Message-ID: <c9b232d6-07c9-d13d-18aa-3e1e640aadc2@gmail.com>
-Date: Fri, 28 Feb 2020 10:16:06 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ <c9b232d6-07c9-d13d-18aa-3e1e640aadc2@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200225150721.GO5379@paasikivi.fi.intel.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <c9b232d6-07c9-d13d-18aa-3e1e640aadc2@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,54 +81,92 @@ Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
  "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
  <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGkgU2FrYXJpLAoKT24gMi8yNS8yMCA3OjA3IEFNLCBTYWthcmkgQWlsdXMgd3JvdGU6Cj4gSGkg
-U3RldmUsCj4KPiBPbiBTYXQsIEZlYiAxNSwgMjAyMCBhdCAxMTo0MToyMUFNIC0wODAwLCBTdGV2
-ZSBMb25nZXJiZWFtIHdyb3RlOgo+PiBJbnN0ZWFkIG9mIGFsbG9jYXRpbmcgYSBub3RpZmllciBp
-biB2NGwyX2FzeW5jX3JlZ2lzdGVyX2Z3bm9kZV9zdWJkZXYoKSwKPj4gaGF2ZSB0aGUgY2FsbGVy
-IHByb3ZpZGUgb25lLiBUaGlzIGFsbG93cyB0aGUgY2FsbGVyIHRvIGltcGxlbWVudAo+PiBub3Rp
-ZmllciBvcHMgKGJpbmQsIHVuYmluZCkuCj4+Cj4+IFRoZSBjYWxsZXIgaXMgbm93IHJlc3BvbnNp
-YmxlIGZvciBmaXJzdCBpbml0aWFsaXppbmcgaXRzIG5vdGlmaWVyIHdpdGggYQo+PiBjYWxsIHRv
-IHY0bDJfYXN5bmNfbm90aWZpZXJfaW5pdCgpLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBTdGV2ZSBM
-b25nZXJiZWFtIDxzbG9uZ2VyYmVhbUBnbWFpbC5jb20+Cj4gSW5zdGVhZCBvZiBpbXByb3Zpbmcg
-djRsMl9hc3luY19yZWdpc3Rlcl9md25vZGVfc3ViZGV2KCksIGNvdWxkIHlvdSBjb252ZXJ0Cj4g
-dGhlIHVzZXJzIChJTVggZHJpdmVyIGluIHRoaXMgY2FzZSkgdG8gY2FsbCB0aGUgcHJlZmVycmVk
-IEFQSXMgaW5zdGVhZD8gQXMKPiB0aGUgbGluZXMgYmVsb3cgc2hvdywgdjRsMl9hc3luY19yZWdp
-c3Rlcl9md25vZGVfc3ViZGV2KCkgaGFzIG9ubHkgdHdvCj4gdXNlcnMgbGVmdCAtLS0gdGhlIG90
-aGVyIG9uZSBvZiB3aGljaCBpcyB0aGUgSU1YIGRyaXZlci4gQWZ0ZXIgY29udmVydGluZwo+IHRo
-ZXNlIHR3bywgd2UgY291bGQganVzdCByZW1vdmUgdGhpcyBBUEkuCj4KPiBTZWUgZS5nLiBkcml2
-ZXJzL21lZGlhL3BjaS9pbnRlbC9pcHUzL2lwdTMtY2lvMi5jIGFuZAo+IGRyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vb21hcDNpc3AvaXNwLmMgZm9yIGV4YW1wbGVzLgoKU2hvdWxkbid0IHY0bDJfYXN5
-bmNfbm90aWZpZXJfYWRkX2Z3bm9kZV9yZW1vdGVfc3ViZGV2KCkgY2hlY2sgZm9yIHRoZSAKYXZh
-aWxhYmlsaXR5IG9mIHRoZSByZW1vdGUgYmVmb3JlIGFkZGluZyBpdCB0byB0aGUgbm90aWZpZXIn
-cyBhc2QgbGlzdCwgCmFzIGluOgoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvdjRsMi1jb3Jl
-L3Y0bDItYXN5bmMuYyAKYi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWFzeW5jLmMKaW5k
-ZXggOGJkZTMzYzIxY2U0Li5iNDhlZDY4YzZjNmMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbWVkaWEv
-djRsMi1jb3JlL3Y0bDItYXN5bmMuYworKysgYi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwy
-LWFzeW5jLmMKQEAgLTYxNSw3ICs2MTUsNyBAQCB2NGwyX2FzeW5jX25vdGlmaWVyX2FkZF9md25v
-ZGVfcmVtb3RlX3N1YmRldihzdHJ1Y3QgCnY0bDJfYXN5bmNfbm90aWZpZXIgKm5vdGlmLAogwqDC
-oMKgwqDCoMKgwqAgaW50IHJldDsKCiDCoMKgwqDCoMKgwqDCoCByZW1vdGUgPSBmd25vZGVfZ3Jh
-cGhfZ2V0X3JlbW90ZV9wb3J0X3BhcmVudChlbmRwb2ludCk7Ci3CoMKgwqDCoMKgwqAgaWYgKCFy
-ZW1vdGUpCivCoMKgwqDCoMKgwqAgaWYgKCFyZW1vdGUgfHwgIWZ3bm9kZV9kZXZpY2VfaXNfYXZh
-aWxhYmxlKHJlbW90ZSkpCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIC1F
-Tk9UQ09OTjsKCiDCoMKgwqDCoMKgwqDCoCBhc2QtPm1hdGNoX3R5cGUgPSBWNEwyX0FTWU5DX01B
-VENIX0ZXTk9ERTsKCgpPdGhlcndpc2Ugd2UgYXJlIGJhY2sgdG8gdGhlIHByb2JsZW0gdGhhdCB0
-aGUgbm90aWZpZXIgd2lsbCBuZXZlciAKY29tcGxldGUgYmVjYXVzZSB0aGUgcmVtb3RlJ3MgZHJp
-dmVyIGlzIG5vdCBwcm9iZWQuCgpTdGV2ZQoKPgo+PiAtLS0KPj4gQ2hhbmdlcyBpbiB2MzoKPj4g
-LSBhZGRlZCB0aGUgbWlzc2luZyBjYWxscyB0byB1bnJlZ2lzdGVyL2NsZWFudXAgdGhlIG5ldyBz
-dWJkZXYgbm90aWZpZXJzLgo+PiAgICBSZXBvcnRlZCBieSBSdWkgU2lsdmEuCj4+IC0tLQo+PiAg
-IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmlkZW8tbXV4LmMgICAgICAgICB8ICA4ICsrKysrKyst
-Cj4+ICAgZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1md25vZGUuYyAgICAgIHwgMTEgKy0t
-LS0tLS0tLS0KPj4gICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaW14L2lteDYtbWlwaS1jc2kyLmMg
-fCAgNyArKysrKystCj4+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2lteC9pbXg3LW1lZGlhLWNz
-aS5jIHwgIDcgKysrKysrLQo+PiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9pbXgvaW14Ny1taXBp
-LWNzaXMuYyB8ICA5ICsrKysrKysrLQo+PiAgIGluY2x1ZGUvbWVkaWEvdjRsMi1md25vZGUuaCAg
-ICAgICAgICAgICAgICB8IDEyICsrKysrKysrLS0tLQo+PiAgIDYgZmlsZXMgY2hhbmdlZCwgMzYg
-aW5zZXJ0aW9ucygrKSwgMTggZGVsZXRpb25zKC0pCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2
-ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Hi Steve,
+
+Btw. I think probably a smaller list of recipients would be just fine on the
+next version.
+
+On Fri, Feb 28, 2020 at 10:16:06AM -0800, Steve Longerbeam wrote:
+> Hi Sakari,
+> =
+
+> On 2/25/20 7:07 AM, Sakari Ailus wrote:
+> > Hi Steve,
+> > =
+
+> > On Sat, Feb 15, 2020 at 11:41:21AM -0800, Steve Longerbeam wrote:
+> > > Instead of allocating a notifier in v4l2_async_register_fwnode_subdev=
+(),
+> > > have the caller provide one. This allows the caller to implement
+> > > notifier ops (bind, unbind).
+> > > =
+
+> > > The caller is now responsible for first initializing its notifier wit=
+h a
+> > > call to v4l2_async_notifier_init().
+> > > =
+
+> > > Signed-off-by: Steve Longerbeam <slongerbeam@gmail.com>
+> > Instead of improving v4l2_async_register_fwnode_subdev(), could you con=
+vert
+> > the users (IMX driver in this case) to call the preferred APIs instead?=
+ As
+> > the lines below show, v4l2_async_register_fwnode_subdev() has only two
+> > users left --- the other one of which is the IMX driver. After converti=
+ng
+> > these two, we could just remove this API.
+> > =
+
+> > See e.g. drivers/media/pci/intel/ipu3/ipu3-cio2.c and
+> > drivers/media/platform/omap3isp/isp.c for examples.
+> =
+
+> Shouldn't v4l2_async_notifier_add_fwnode_remote_subdev() check for the
+> availability of the remote before adding it to the notifier's asd list, as
+> in:
+> =
+
+> diff --git a/drivers/media/v4l2-core/v4l2-async.c
+> b/drivers/media/v4l2-core/v4l2-async.c
+> index 8bde33c21ce4..b48ed68c6c6c 100644
+> --- a/drivers/media/v4l2-core/v4l2-async.c
+> +++ b/drivers/media/v4l2-core/v4l2-async.c
+> @@ -615,7 +615,7 @@ v4l2_async_notifier_add_fwnode_remote_subdev(struct
+> v4l2_async_notifier *notif,
+> =A0=A0=A0=A0=A0=A0=A0 int ret;
+> =
+
+> =A0=A0=A0=A0=A0=A0=A0 remote =3D fwnode_graph_get_remote_port_parent(endp=
+oint);
+> -=A0=A0=A0=A0=A0=A0 if (!remote)
+> +=A0=A0=A0=A0=A0=A0 if (!remote || !fwnode_device_is_available(remote))
+> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return -ENOTCONN;
+> =
+
+> =A0=A0=A0=A0=A0=A0=A0 asd->match_type =3D V4L2_ASYNC_MATCH_FWNODE;
+> =
+
+> =
+
+> Otherwise we are back to the problem that the notifier will never complete
+> because the remote's driver is not probed.
+
+fwnode_graph_get_endpoint_by_id() only gives you endpoints that belong to an
+enabled device (unless requested otherwise). So the there's need to check
+the same in v4l2-fwnode.c.
+
+-- =
+
+Regards,
+
+Sakari Ailus
+sakari.ailus@linux.intel.com
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
