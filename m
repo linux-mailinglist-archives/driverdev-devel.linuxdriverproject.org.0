@@ -1,86 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3A20173279
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Feb 2020 09:12:16 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7477386C4A;
-	Fri, 28 Feb 2020 08:12:15 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2TSOrC7pwH5F; Fri, 28 Feb 2020 08:12:14 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4BF7F86AEE;
-	Fri, 28 Feb 2020 08:12:10 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7275A1BF362
- for <devel@linuxdriverproject.org>; Fri, 28 Feb 2020 08:12:08 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B72EB173277
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Feb 2020 09:10:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6E940203AE
- for <devel@linuxdriverproject.org>; Fri, 28 Feb 2020 08:12:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 42729203AE;
+	Fri, 28 Feb 2020 08:10:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id khmz5W+dBdNG; Fri, 28 Feb 2020 08:10:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id F0D3B20382;
+	Fri, 28 Feb 2020 08:10:19 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8FC8D1BF362
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 28 Feb 2020 08:10:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 88A87880F4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 28 Feb 2020 08:10:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SS+n9wZsgjkW for <devel@linuxdriverproject.org>;
- Fri, 28 Feb 2020 08:12:07 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from IITRESA04.iitr.ac.in (mxgw4.iitr.ac.in [103.37.200.239])
- by silver.osuosl.org (Postfix) with ESMTP id 2555120450
- for <devel@driverdev.osuosl.org>; Fri, 28 Feb 2020 08:12:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=iitr.ac.in; s=iitrselector; t=1582877527;
- h=message-id:reply-to:from:subject:date:mime-version:
- content-transfer-encoding;
- bh=7OP8986h4lDOKXAsashCWqI3eBIqBsetMTx3KdpdheE=;
- b=RewPuPKzy4+nBpiRVFFtMdGuhF4Fq4chMgYD056xAQmJ0S4Xf8Q+gOoZ
- D2r24RCVfdWQrrKC3W9CbGRsKHHCmlVbGDnmAfafHOMjMvmCm6CSSVJUE
- o69AmJdY5r9hfe2Ppy+zAmY/nCebVQ4RXu4CjbrQoigudkYIzgRZ8JQqU U=;
-Authentication-Results: IITRESA04.iitr.ac.in;
- dkim=none (message not signed) header.i=none;
- spf=None smtp.pra=ynegifpt@iitr.ac.in;
- spf=None smtp.mailfrom=ynegifpt@iitr.ac.in;
- spf=None smtp.helo=postmaster@IITRESA01.iitr.ac.in
-Received-SPF: None (IITRESA04.iitr.ac.in: no sender authenticity
- information available from domain of ynegifpt@iitr.ac.in)
- identity=pra; client-ip=192.168.101.110;
- receiver=IITRESA04.iitr.ac.in;
- envelope-from="ynegifpt@iitr.ac.in";
- x-sender="ynegifpt@iitr.ac.in"; x-conformance=sidf_compatible
-Received-SPF: None (IITRESA04.iitr.ac.in: no sender authenticity
- information available from domain of ynegifpt@iitr.ac.in)
- identity=mailfrom; client-ip=192.168.101.110;
- receiver=IITRESA04.iitr.ac.in;
- envelope-from="ynegifpt@iitr.ac.in";
- x-sender="ynegifpt@iitr.ac.in"; x-conformance=sidf_compatible
-Received-SPF: None (IITRESA04.iitr.ac.in: no sender authenticity
- information available from domain of
- postmaster@IITRESA01.iitr.ac.in) identity=helo;
- client-ip=192.168.101.110; receiver=IITRESA04.iitr.ac.in;
- envelope-from="ynegifpt@iitr.ac.in";
- x-sender="postmaster@IITRESA01.iitr.ac.in";
- x-conformance=sidf_compatible
-X-Ironport-Dmarc-Check-Result: validskip
-IronPort-SDR: xcfE2/IBAqlaPzWFP1ian0QHHKTv5yjVc01DBY4pUfNa8XHfDP8vViG0bJIkY6c6YukRo6uNXb
- NJ1HSRyHoUnQ==
-Received: from nsmtp.iitr.ac.in (HELO IITRESA01.iitr.ac.in) ([192.168.101.110])
- by IITRESA04.iitr.ac.in with ESMTP; 28 Feb 2020 13:42:02 +0530
-Message-Id: <738cb5$1jcri@IITRESA01.iitr.ac.in>
-IronPort-SDR: 08BFXjWySZ+d+1idnNxg0fsyQkzjmMlFLeB837rxxAUrCO881BStD/n0S0OU07oXQawlk87gI2
- RZv81fK/LI+w==
-Received: from unknown (HELO User) ([52.231.163.229])
- by IITRESA01.iitr.ac.in with ESMTP; 28 Feb 2020 13:41:55 +0530
-From: "Ms. Reem"<ynegifpt@iitr.ac.in>
-Subject: Re:Funds
-Date: Fri, 28 Feb 2020 08:12:00 -0000
-MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+ with ESMTP id 39apTZVSUMyW
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 28 Feb 2020 08:10:16 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.7.6
+Received: from smtp1-g21.free.fr (smtp1-g21.free.fr [212.27.42.1])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EEB35880CB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 28 Feb 2020 08:10:15 +0000 (UTC)
+Received: from [192.168.1.100] (unknown [37.166.113.219])
+ by smtp1-g21.free.fr (Postfix) with SMTP id 29779B00539
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 28 Feb 2020 09:10:11 +0100 (CET)
+Message-Id: <R2OWNUC6-EQ6O-8PPU-T3X4-PY7L2Q15HND1@pasloin.ovh>
+Mime-Version: 1.0
+From: Clotilde <iva@pasloin.ovh>
+To: driverdev-devel@linuxdriverproject.org
+Subject: changement de situation
+Date: Fri, 28 Feb 2020 09:15:54 +0100
+X-Mailer: driverdev-devel@linuxdriverproject.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,24 +58,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemal-hashimi@yandex.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+Bonjour,
 
-My name is Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE.  I write to solicit for your partnership in claiming of $47Million from a Financial Home in Cambodia.
+Sans aucun pr=E9-requis, d=E9couvrez notre formation pour changer de vie, d=
+evenez Praticien, installez vous =E0 votre compte et donnez du sens =E0 vot=
+re vie ...
 
-The aforementioned fund $47 Million is my share percentage from my Oil/Gas deal with Cambodia/Vietnam Government within  2013/2014, influentially I don't want my government to know about the fund. If this proposal interests you, let me know by sending me an email and I will send to you detailed Information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except me and I know how to carry out the entire transaction.
+M=E9dicale ou Th=E9rapeutique, l'Hypnose, cette nouvelle fa=E7on de soulage=
+r et r=E9tablir l'harmonie des personnes en passant par l'inconscient, int=
+=E9resse les professionnels des th=E9rapies alternatives et les professionn=
+els de sant=E9 qui l'utilisent d=E9sormais au quotidien dans les =E9tabliss=
+ements de soins, mais =E9galement les particuliers d=E9sireux d'en savoir p=
+lus sur ces techniques de soins et de mieux-tre innovantes et tr=E8s effica=
+ces.
 
-Furthermore, as a Minister of Petroleum, I am not allowed to be part of such a deal, because it's against my country's professional practice policy. So I am compelled to ask that you will stand on my behalf and receive this fund into any account that is solely controlled by you.
+Aidez les autres, tout en vous installant dans une situation confortable et=
+ pleine d'avenir.
 
-I will compensate you with 30% of the total amount involved as gratification for being my partner in the transfer. Reply to my private email as stated: reemal-hashimi@yandex.com
+Quelle que soit votre situation actuelle, nous pouvons vous former aux m=E9=
+tiers de la Th=E9rapie Alternative dans le but de vous installer =E0 votre =
+compte tout en aidant les autres, quel que soit votre =E2ge et sans aucun p=
+r=E9-requis.
 
-Regards,
-Reem Ebrahim Al-Hashimi
+Dans notre =C9cole, rapidement et efficacement vous apprendrez les m=E9thod=
+es et les techniques utilis=E9es pour aider les personnes =E0 se sentir mie=
+ux, se d=E9barrasser d'une phobie, prendre confiance, arrter de fumer, perd=
+re du poids ...
+
+- Un nouveau m=E9tier pour une nouvelle vie
+
+Merci de votre attention et =E0 bient=F4t
+
+
+Clotilde www.cours.ovh
+T=E9l : 01 84 19 0000
+
+
+
+
+
+
+
+P.S. j'esp=E8re ne pas vous avoir importun=E9 avec mon mail, pour ne plus a=
+voir de mails de ma part, vous pouvez simplement r=E9pondre =E0 ce mail en =
+mettant le mot stop dans l'objet. Merci de votre compr=E9hension
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
