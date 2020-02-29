@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 336381748E0
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Feb 2020 20:30:07 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DF9D174934
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Feb 2020 21:34:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C982185BD0;
-	Sat, 29 Feb 2020 19:30:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D78F7204D6;
+	Sat, 29 Feb 2020 20:34:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 99pBSLpsprwz; Sat, 29 Feb 2020 19:30:05 +0000 (UTC)
+	with ESMTP id QLx+yQhJVFaw; Sat, 29 Feb 2020 20:34:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 882B785BB8;
-	Sat, 29 Feb 2020 19:30:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2073B204CD;
+	Sat, 29 Feb 2020 20:34:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 50E5B1BF358
- for <devel@linuxdriverproject.org>; Sat, 29 Feb 2020 19:30:02 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 390CE1BF31C
+ for <devel@linuxdriverproject.org>; Sat, 29 Feb 2020 20:33:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 49E7B8619A
- for <devel@linuxdriverproject.org>; Sat, 29 Feb 2020 19:30:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 324C98721E
+ for <devel@linuxdriverproject.org>; Sat, 29 Feb 2020 20:33:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 36tHAU2N0waA for <devel@linuxdriverproject.org>;
- Sat, 29 Feb 2020 19:29:59 +0000 (UTC)
+ with ESMTP id IK7JFaQyExgw for <devel@linuxdriverproject.org>;
+ Sat, 29 Feb 2020 20:33:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 49686860D2
- for <devel@driverdev.osuosl.org>; Sat, 29 Feb 2020 19:29:59 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id p9so7086960wmc.2
- for <devel@driverdev.osuosl.org>; Sat, 29 Feb 2020 11:29:59 -0800 (PST)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4BA9A87155
+ for <devel@driverdev.osuosl.org>; Sat, 29 Feb 2020 20:33:58 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id r7so7636612wro.2
+ for <devel@driverdev.osuosl.org>; Sat, 29 Feb 2020 12:33:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=to:cc:from:subject:message-id:date:user-agent:mime-version
  :content-language:content-transfer-encoding;
- bh=w5vEkyoOl+Ezm0+zDepgiNeDHkQLkere0DjeAVL4ezA=;
- b=qcqOA5nLHXm1JkABeNn0ekmYYuqGlo4k81IVZZ5/9FpQ8u2e0XpCUU6IiD78VSfjYC
- uNeWjgI8HXjkHBjYNMjq5XPNA4JvUyQ/Q5FpIv470NBEebOx7tp1suzW5HkaahEHO7x/
- pI4w59xE7LJ1+O9wbed3oqOvHUF11IP7xdyob4cp1Wy8jquT8qQ7hh0NvXb9yZWfqsZz
- Ti8jdLCey+i4mlj7oNoiXou/CwtFhlSHJh5wzwOLAqEMjv3t05YxK0XJkhfVmqwP5BSI
- 8LtBZub52KqOrGzUS4GjoKYy6WCA8tw5mzEuQQGJPqVxL1Bguzh4nnEmltPU1PCLLAKD
- 25Xw==
+ bh=Zt3dq1OUkMEUcUXW65qyxooApGG+qBeaodqKhZlMmPE=;
+ b=JbBDTY++uSsVrcYM05asL6cIXEST1QQi6vSxyskSsjGDkrsnZGvIJcvG/XPIPBnqKp
+ PFrt7L1A0B0Hy99+rv8yAw8SEE5sPCtfVHnHb4pj7Nnlwxu6AoaDbNrozSJ61KZOmvNd
+ JFi3S1nTzfTvXGmssIJVRK0MySvv3RtvGCxdAIgBK7taVUakmntRsp2oHat26dfDy43l
+ 7TRmgM9WFxH0wjV8XJKA+74DEEIllSN8Gvb3IGoJz9EZ6TMgbOC0l+sTZnW0YORtqGAo
+ uTYo9o0OLtSw6SFzznqxP20u6VmHOOAriwO9hP+gdKQqma65k7Lw4sB6DU4lNOLvw3ax
+ 2hcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=w5vEkyoOl+Ezm0+zDepgiNeDHkQLkere0DjeAVL4ezA=;
- b=ChF/+KyLgCprpprG1ezRZjp0iI4L763Zd2vL+zua4GPQ0qjXAn7+pme99SzhqG9vTW
- i5r01nNRUmpgBjqPqifAy2Qm7lwvOYIFj9TIlXaDGKTqqKr2uJ+fZFZtedM4WRdqDRLg
- FkrWFKpr0jeSM5G5mogSctbsyobXDSI0qcGT9sNA0krAJyqi1pQakFVnY5rSJGhrAND1
- ttHFpqeAjHcxdrn0QMsf+nvJYY8dZgkaWQVrdqEzt/4a3z0aIMmDKGCBbTtyg2HzWgHj
- DvRqg/uACOcxCEqw+LjUNFqWvvdrLq58z0vrOwcjABwgMYhAMGT7XHVkT8+sBYCme0ZZ
- qSvQ==
-X-Gm-Message-State: APjAAAX8nqiM1ybMzZ/WEb0vY2jvCJHnX1e8gmm/VQXKOp1qMUZ5UGm8
- qFo3U1tUp+X8zNkbRae6Ol8=
-X-Google-Smtp-Source: APXvYqzzZj/9nZgbdTCuloJJo+oYheRSlsRXmgCMX3q1dAwqW8FSaVAVaAZSXzOWj1B5SGlTg5Cneg==
-X-Received: by 2002:a05:600c:294a:: with SMTP id
- n10mr11074048wmd.11.1583004597738; 
- Sat, 29 Feb 2020 11:29:57 -0800 (PST)
+ bh=Zt3dq1OUkMEUcUXW65qyxooApGG+qBeaodqKhZlMmPE=;
+ b=fPXjEwmUTi4rgRnTIdl2mlOs9K8uyjY/clbx3netxqwFK2+kVPzUnfRjZVwVBCA3Di
+ 0P1Q/5jds6ywfUGWsXoxKmnzzlN7/oe8rl/PV1EKugSHbQgLljMNS2LJwnLGhbzzGKVE
+ ZbidydNSoSTmvWmmMpU+sleNWwO6x6MN6bEnvDcskGxLQNTXjSAFJNYEEyctBX02t7od
+ 1UbW8xQJ21SHGMWTwmuAbqVOPM36/ZxmDAjrgnnB3AMmGOD6SKepPXr5VxkilO0ErDfv
+ M3cfuob72VaSMujGCVJYOA0yQ9UvmvDW5TWXN9hwmFB7nrOEzSBh7qBBqhXbSfk6aDaM
+ zTDg==
+X-Gm-Message-State: APjAAAX49vsrw8Nyj3MGGQZyTWrDnwYEExyrneoPhgSKmnn45itIFTJ7
+ zO3Kw99qE7heRvKi4YHeMc8=
+X-Google-Smtp-Source: APXvYqxzp+Dj+OvCiZn/aP2YmRrI+t1wRiYoB6g1TCn+nuk3NEGo5KZXit5wv97r9XkPXnV3L3VIMw==
+X-Received: by 2002:adf:9282:: with SMTP id 2mr12657562wrn.124.1583008436742; 
+ Sat, 29 Feb 2020 12:33:56 -0800 (PST)
 Received: from [192.168.43.18] (94.197.121.166.threembb.co.uk.
  [94.197.121.166])
- by smtp.gmail.com with ESMTPSA id o9sm19369573wrw.20.2020.02.29.11.29.56
+ by smtp.gmail.com with ESMTPSA id a9sm19644051wrn.3.2020.02.29.12.33.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 29 Feb 2020 11:29:57 -0800 (PST)
+ Sat, 29 Feb 2020 12:33:56 -0800 (PST)
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH] staging: vt6656: Remove STATUS enums from TX path
-Message-ID: <21bf299b-63e0-9f65-c7db-6e0b72e0f1d8@gmail.com>
-Date: Sat, 29 Feb 2020 19:29:55 +0000
+Subject: [PATCH 1/2] staging: vt6656: use vnt_vt3184_agc array directly
+Message-ID: <4b455ee4-7ac7-e1ff-4a10-2d99f2e30714@gmail.com>
+Date: Sat, 29 Feb 2020 20:33:54 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
@@ -94,80 +93,76 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Returning standard error code or status variable.
+vnt_vt3184_agc is always the same regardless of rf type
+so use the array directly removing from stack buffer.
 
 Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- drivers/staging/vt6656/device.h  | 9 ---------
- drivers/staging/vt6656/rxtx.c    | 4 ++--
- drivers/staging/vt6656/usbpipe.c | 5 ++---
- 3 files changed, 4 insertions(+), 14 deletions(-)
+ drivers/staging/vt6656/baseband.c | 15 ++-------------
+ 1 file changed, 2 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
-index da868adba7c9..5c9991415432 100644
---- a/drivers/staging/vt6656/device.h
-+++ b/drivers/staging/vt6656/device.h
-@@ -256,15 +256,6 @@ struct vnt_interrupt_buffer {
- 	bool in_use;
- };
+diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+index f18e059ce66b..48a624bf00c0 100644
+--- a/drivers/staging/vt6656/baseband.c
++++ b/drivers/staging/vt6656/baseband.c
+@@ -367,8 +367,6 @@ int vnt_vt3184_init(struct vnt_private *priv)
+ 	int ret = 0;
+ 	u16 length;
+ 	u8 *addr;
+-	u8 *agc;
+-	u16 length_agc;
+ 	u8 array[256];
+ 	u8 data;
  
--/*++ NDIS related */
+@@ -386,8 +384,6 @@ int vnt_vt3184_init(struct vnt_private *priv)
+ 		priv->bb_rx_conf = vnt_vt3184_al2230[10];
+ 		length = sizeof(vnt_vt3184_al2230);
+ 		addr = vnt_vt3184_al2230;
+-		agc = vnt_vt3184_agc;
+-		length_agc = sizeof(vnt_vt3184_agc);
+ 
+ 		priv->bb_vga[0] = 0x1C;
+ 		priv->bb_vga[1] = 0x10;
+@@ -398,8 +394,6 @@ int vnt_vt3184_init(struct vnt_private *priv)
+ 		priv->bb_rx_conf = vnt_vt3184_al2230[10];
+ 		length = sizeof(vnt_vt3184_al2230);
+ 		addr = vnt_vt3184_al2230;
+-		agc = vnt_vt3184_agc;
+-		length_agc = sizeof(vnt_vt3184_agc);
+ 
+ 		addr[0xd7] = 0x06;
+ 
+@@ -413,8 +407,6 @@ int vnt_vt3184_init(struct vnt_private *priv)
+ 		priv->bb_rx_conf = vnt_vt3184_vt3226d0[10];
+ 		length = sizeof(vnt_vt3184_vt3226d0);
+ 		addr = vnt_vt3184_vt3226d0;
+-		agc = vnt_vt3184_agc;
+-		length_agc = sizeof(vnt_vt3184_agc);
+ 
+ 		priv->bb_vga[0] = 0x20;
+ 		priv->bb_vga[1] = 0x10;
+@@ -430,8 +422,6 @@ int vnt_vt3184_init(struct vnt_private *priv)
+ 		priv->bb_rx_conf = vnt_vt3184_vt3226d0[10];
+ 		length = sizeof(vnt_vt3184_vt3226d0);
+ 		addr = vnt_vt3184_vt3226d0;
+-		agc = vnt_vt3184_agc;
+-		length_agc = sizeof(vnt_vt3184_agc);
+ 
+ 		priv->bb_vga[0] = 0x20;
+ 		priv->bb_vga[1] = 0x10;
+@@ -454,10 +444,9 @@ int vnt_vt3184_init(struct vnt_private *priv)
+ 	if (ret)
+ 		goto end;
+ 
+-	memcpy(array, agc, length_agc);
 -
--enum {
--	STATUS_SUCCESS = 0,
--	STATUS_FAILURE,
--	STATUS_RESOURCES,
--	STATUS_PENDING,
--};
--
- /* flags for options */
- #define DEVICE_FLAGS_UNPLUG		0
- #define DEVICE_FLAGS_DISCONNECTED	1
-diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
-index 1003808ac4ad..9439d190f431 100644
---- a/drivers/staging/vt6656/rxtx.c
-+++ b/drivers/staging/vt6656/rxtx.c
-@@ -704,7 +704,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 	ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, 0,
+-			      MESSAGE_REQUEST_BBAGC, length_agc, array);
++			      MESSAGE_REQUEST_BBAGC,
++			      sizeof(vnt_vt3184_agc), vnt_vt3184_agc);
+ 	if (ret)
+ 		goto end;
  
- 	spin_lock_irqsave(&priv->lock, flags);
- 
--	if (vnt_tx_context(priv, tx_context) != STATUS_PENDING) {
-+	if (vnt_tx_context(priv, tx_context)) {
- 		spin_unlock_irqrestore(&priv->lock, flags);
- 		return -EIO;
- 	}
-@@ -797,7 +797,7 @@ static int vnt_beacon_xmit(struct vnt_private *priv, struct sk_buff *skb)
- 
- 	spin_lock_irqsave(&priv->lock, flags);
- 
--	if (vnt_tx_context(priv, context) != STATUS_PENDING)
-+	if (vnt_tx_context(priv, context))
- 		ieee80211_free_txskb(priv->hw, context->skb);
- 
- 	spin_unlock_irqrestore(&priv->lock, flags);
-diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
-index 7bfccc48a366..e93c2175543f 100644
---- a/drivers/staging/vt6656/usbpipe.c
-+++ b/drivers/staging/vt6656/usbpipe.c
-@@ -317,7 +317,7 @@ int vnt_tx_context(struct vnt_private *priv,
- 
- 	if (test_bit(DEVICE_FLAGS_DISCONNECTED, &priv->flags)) {
- 		context->in_use = false;
--		return STATUS_RESOURCES;
-+		return -ENODEV;
- 	}
- 
- 	usb_fill_bulk_urb(urb,
-@@ -333,8 +333,7 @@ int vnt_tx_context(struct vnt_private *priv,
- 		dev_dbg(&priv->usb->dev, "Submit Tx URB failed %d\n", status);
- 
- 		context->in_use = false;
--		return STATUS_FAILURE;
- 	}
- 
--	return STATUS_PENDING;
-+	return status;
- }
 -- 
 2.25.1
 _______________________________________________
