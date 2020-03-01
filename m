@@ -1,79 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38AC8174D8E
-	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Mar 2020 14:51:15 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C2B1174DF9
+	for <lists+driverdev-devel@lfdr.de>; Sun,  1 Mar 2020 16:09:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 64EC6203F0;
-	Sun,  1 Mar 2020 13:51:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EA79A8651E;
+	Sun,  1 Mar 2020 15:09:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1vxAI5ngpwsb; Sun,  1 Mar 2020 13:51:11 +0000 (UTC)
+	with ESMTP id wKuzvXa0m2Os; Sun,  1 Mar 2020 15:09:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8481D20381;
-	Sun,  1 Mar 2020 13:51:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4F8C8864D8;
+	Sun,  1 Mar 2020 15:09:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4299A1BF25F
- for <devel@linuxdriverproject.org>; Sun,  1 Mar 2020 13:51:08 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7F9481BF2E3
+ for <devel@linuxdriverproject.org>; Sun,  1 Mar 2020 15:09:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3EFEC876F2
- for <devel@linuxdriverproject.org>; Sun,  1 Mar 2020 13:51:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 70936854AD
+ for <devel@linuxdriverproject.org>; Sun,  1 Mar 2020 15:09:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4jtIWF4KQiTP for <devel@linuxdriverproject.org>;
- Sun,  1 Mar 2020 13:51:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A352687695
- for <devel@driverdev.osuosl.org>; Sun,  1 Mar 2020 13:51:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1583070657;
- bh=JKoFDKN1cLuoYPsFdgNGMtQg6A4zWvdbaIlDdMrb1gg=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=DiBOvz4i1ZCeZlhA73DIs3cpTdi+vFM8wY69/u13XmYZOIoGLBv+IAP8bdAmMqFy+
- lAksbU5s3djzza+ThRbNHWt+hsW2CJyoJvAStNaYm9Sv9acwL5CSwggaOsvPpapaNi
- 65UN6wD0ElPxgonAtARcfxXgyur0q3nhwU26Ht2M=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1Mxm3Q-1jJr0p1pL4-00zHr0; Sun, 01 Mar 2020 14:50:57 +0100
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: vt6656: Remove unnecessary local variables
- initialization
-Date: Sun,  1 Mar 2020 14:50:28 +0100
-Message-Id: <20200301135028.11753-1-oscar.carter@gmx.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id 7DWmmXvFqkt3 for <devel@linuxdriverproject.org>;
+ Sun,  1 Mar 2020 15:09:26 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id ABA0384C29
+ for <devel@driverdev.osuosl.org>; Sun,  1 Mar 2020 15:09:24 +0000 (UTC)
+Received: from localhost (unknown [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 00582214DB;
+ Sun,  1 Mar 2020 15:09:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1583075364;
+ bh=L1d+AItbkkBXszkIwnSetgpZqP66VqdmSi0YX0Mk4EY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=bZ59e6zO12/gehlMba0wC1AqoYskJYZ31aUz4qLL0ZrKxlDM8sc/4RI3soeWvuW6p
+ 8e7qZxnQ0j/KSyqYcHl131c+J+qPMNcBVi9Rmf00PcoQCIc6z4VBPdhRk3Yv0deJBj
+ z7JsJOlgYSYYeEDeSQVfhNcc3svn+CQ9EoEtivds=
+Date: Sun, 1 Mar 2020 16:09:13 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Oscar Carter <oscar.carter@gmx.com>
+Subject: Re: [PATCH] staging: vt6656: Declare a few variables as __read_mostly
+Message-ID: <20200301150913.GA1470815@kroah.com>
+References: <20200301112620.7892-1-oscar.carter@gmx.com>
+ <20200301122514.GA1461917@kroah.com> <20200301131701.GA7487@ubuntu>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:wGQd9IDuC3R1icM00mwuqQJlfAU6ipGzkF95PmAtlfgTbfQo8pW
- fAHINJIcuPpOYoIj/a0Irb2lx+RX9caYn1yeBJE04wuhrT2MYsSyde+WegWkZMGEoGt9nxp
- 5nnjl+zzRdvKMHO/0RIa5jlUU9ginKlmJ7ZOsTufXFMrOEeCZy3ltesNMvAlIKuytCeKlsP
- Urk6F0x4wDp2e+uPkCwAQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:VGhm5UI6I1o=:bA6E9xDaopggnVetEZ2GKc
- Fll/1WdgVTGHGtBajd4banvKH21lW/CcIt6t5n+T6nMiY18qwQxyItFf8ptRkSNHST8sUXe2/
- uZs6ksMSmfSMZNNsxgR5FvZdvnyCh8tx8os6sLxm7wuNpjhm8RYmdrhG6mD5ded4UZVgC6Ew0
- A8T+x6TWurjhw3QnQ/nhfA0iVE7kmZJiGFoLmrBwalB+bv/+c5G+04C4nX8YxZoWPIC25rNmf
- zCbbyU5zmlUqtHqNYg8NgvyGGe9mbszCeFJGnDsSqi/oxzxxXv+QB5s+BauE/8JLAu1YDioSo
- G9TqrxA1o+QSb0s932otsPX0YDrjywNs/0iHOnJ12uFBuHYuXObIU4PEYfU+vNQBgUJGyIiPC
- A4pQKdIoIdrQhDRC8vcpdrPcKPn+bCYq/wErdUt11iAX6fIfCEf89/gDfWdDSTX+BYOh9IBgo
- JLT6090RP5MmH8xd2p8gXnIuWfR+bg/gly5YWvr+cdDh5hEsQ/nn1hMrMlELUpRfXwg101ohv
- /xuApjPrkOCQzNRrNdDx9vshZtv57g+8caGOr/4I0NSEIpVUT8HOcIWGZ5oZ/s8ll5Lqcb88x
- nDXs40Lk3cF1AGr249BKYoWpQYVN/kRmV4V6e5tivuy/qaob84u638a/76ikXyec2qBek/hHT
- KjIHJT6fpoQz6U9GqTjx9ogqSU7WQXYVjwyzuiVj4DN9UqoUzoU5TLUlhNX0r5J36Pn/T15lA
- cuq0TRumbRReb4evYBqD+9Sp2ZaUHutqpFodsk4SSx5EctkYoUl6hQBtuSDaAG+Lobkw6Qacs
- KXZOG4cwLgQNo6qAgrn75u5UQtiosW8Q2RTQ3H2TszP3wqpw9Ci+c31svEjzFmGSjorLQqD1a
- gpkgnCUH0V4c4k6VNHbL4AEW2EOKIh5SVRHNRkURs/b1MkTVT7zQ8PH9Xtl7C/cjZuzdWiheG
- riptgM+qWlT3nnfBEHY5olaKMgXhiChZBhEYZhmohK+VXsIRgWlooF8xIi3RmKZXr1UUKy1i0
- C4nkozFllmnf8Q+duq1wAZw5u5rZFAIb4c07YezMeG9tetTYvLRiUM6G/wyKwjmI1ycaMBVbp
- UW3Q+7iCtziHFl87qExxPSIwhxj82AeI90a4DYX+mnrwjasfs5neo2cJ2Sw6sGOueb9dHzyI8
- qx3D6jOlqAwORCQdKrd2+JbsdFAhOsw5d10nq5uqfj46uqLa8LuwSnGvEYt/jpWtKhULeAy2k
- AgI1/Xf7zkOSfCL7w
+Content-Disposition: inline
+In-Reply-To: <20200301131701.GA7487@ubuntu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,8 +65,8 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
+Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
+ linux-kernel@vger.kernel.org, Forest Bond <forest@alittletooquiet.net>,
  Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
  Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -95,65 +74,52 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Don't initialize variables that are then set a few lines later.
+On Sun, Mar 01, 2020 at 02:17:01PM +0100, Oscar Carter wrote:
+> On Sun, Mar 01, 2020 at 01:25:14PM +0100, Greg Kroah-Hartman wrote:
+> > On Sun, Mar 01, 2020 at 12:26:20PM +0100, Oscar Carter wrote:
+> > > These include module parameters.
+> > >
+> > > Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+> > > ---
+> > >  drivers/staging/vt6656/main_usb.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+> > > index 5e48b3ddb94c..701300202b21 100644
+> > > --- a/drivers/staging/vt6656/main_usb.c
+> > > +++ b/drivers/staging/vt6656/main_usb.c
+> > > @@ -49,12 +49,12 @@ MODULE_LICENSE("GPL");
+> > >  MODULE_DESCRIPTION(DEVICE_FULL_DRV_NAM);
+> > >
+> > >  #define RX_DESC_DEF0 64
+> > > -static int vnt_rx_buffers = RX_DESC_DEF0;
+> > > +static int __read_mostly vnt_rx_buffers = RX_DESC_DEF0;
+> > >  module_param_named(rx_buffers, vnt_rx_buffers, int, 0644);
+> > >  MODULE_PARM_DESC(rx_buffers, "Number of receive usb rx buffers");
+> > >
+> > >  #define TX_DESC_DEF0 64
+> > > -static int vnt_tx_buffers = TX_DESC_DEF0;
+> > > +static int __read_mostly vnt_tx_buffers = TX_DESC_DEF0;
+> > >  module_param_named(tx_buffers, vnt_tx_buffers, int, 0644);
+> > >  MODULE_PARM_DESC(tx_buffers, "Number of receive usb tx buffers");
+> > >
+> >
+> > Why?  What does this help with?
+> 
+> If we declare these variables __read_mostly we can improve the performance. If
+> these variables are read many more times than written, each core of a multicore
+> system can maintain a copy in a local cache and the time to access is less than
+> if they use the shared-cache.
 
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
----
- drivers/staging/vt6656/main_usb.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+This is a USB driver, performance is always limited to the hardware, not
+the CPU location of variables.
 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index 701300202b21..bfeb5df896fe 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -109,7 +109,7 @@ static void vnt_set_options(struct vnt_private *priv)
-  */
- static int vnt_init_registers(struct vnt_private *priv)
- {
--	int ret = 0;
-+	int ret;
- 	struct vnt_cmd_card_init *init_cmd = &priv->init_command;
- 	struct vnt_rsp_card_init *init_rsp = &priv->init_response;
- 	u8 antenna;
-@@ -435,7 +435,7 @@ static void vnt_free_int_bufs(struct vnt_private *priv)
+Please always benchmark things to see if it actually makes sense to make
+changes like this, before proposing them.
 
- static int vnt_alloc_bufs(struct vnt_private *priv)
- {
--	int ret = 0;
-+	int ret;
- 	struct vnt_usb_send_context *tx_context;
- 	struct vnt_rcb *rcb;
- 	int ii;
-@@ -528,7 +528,7 @@ static void vnt_tx_80211(struct ieee80211_hw *hw,
+thanks,
 
- static int vnt_start(struct ieee80211_hw *hw)
- {
--	int ret = 0;
-+	int ret;
- 	struct vnt_private *priv = hw->priv;
-
- 	priv->rx_buf_sz = MAX_TOTAL_SIZE_WITH_ALL_HEADERS;
-@@ -798,7 +798,7 @@ static u64 vnt_prepare_multicast(struct ieee80211_hw *hw,
- 	struct vnt_private *priv = hw->priv;
- 	struct netdev_hw_addr *ha;
- 	u64 mc_filter = 0;
--	u32 bit_nr = 0;
-+	u32 bit_nr;
-
- 	netdev_hw_addr_list_for_each(ha, mc_list) {
- 		bit_nr = ether_crc(ETH_ALEN, ha->addr) >> 26;
-@@ -973,7 +973,7 @@ vt6656_probe(struct usb_interface *intf, const struct usb_device_id *id)
- 	struct vnt_private *priv;
- 	struct ieee80211_hw *hw;
- 	struct wiphy *wiphy;
--	int rc = 0;
-+	int rc;
-
- 	udev = usb_get_dev(interface_to_usbdev(intf));
-
---
-2.20.1
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
