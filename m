@@ -2,79 +2,71 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C41FE1765DF
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 22:23:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C7A317684B
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Mar 2020 00:37:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7C279204C1;
-	Mon,  2 Mar 2020 21:22:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 616B4204F2;
+	Mon,  2 Mar 2020 23:37:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cA6MnYGZDlw9; Mon,  2 Mar 2020 21:22:58 +0000 (UTC)
+	with ESMTP id 1nqX+6SFdqO5; Mon,  2 Mar 2020 23:37:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4505820449;
-	Mon,  2 Mar 2020 21:22:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CA9EB204DF;
+	Mon,  2 Mar 2020 23:37:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E92E01BF366
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 21:22:53 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7EE8B1BF25B
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 23:37:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E559A8527D
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 21:22:53 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 75FE086A98
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 23:37:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HXqOUsLX4CIk for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 21:22:52 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9B46A8506D
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 21:22:52 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id n7so1623687wrt.11
- for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 13:22:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=TOJPvv2FJ1wP/SIsrOvWI0PsIfs34yDzRnPBuZriJB8=;
- b=DBXarg1wATKqYDo2IEJXZg1/5+eHTf5OSDCK+joxF/Tm9Dl89kKowxL9xbM4onxu0i
- 3zfpBSgKTo/xRbKSZPJwe5evZsfYOHQNmZCtsHqkkPpj0lBCD2z5/ZSd3iqIGJnFOE9A
- coZxKt8OICMM2W4XdQCQ4MV9Hox/AAJbry8JEPQtFs2P6YFvKE2+dyFGX5DsLxMZoLr5
- QluWw4AqugvTu5IOoNJ6AlGbAZr+BIyFu5wEQz6aZpqBpInpBdOU7OvFjhit+Xb28SlW
- ZoOzit7VMbnoXzRvYDx9fDO3ij6kWrCfMnwD5OQYhYVBo2ktxkTapEnZTcFDt/Z7d0+f
- jrGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=TOJPvv2FJ1wP/SIsrOvWI0PsIfs34yDzRnPBuZriJB8=;
- b=PbkSCZ0/n8GhcWnaz47lFlkwiYSfWJt4DVR8KFZWZBOWbeHErF1kisgAeAszj/C9kM
- AIu3Y+9KiWZ1Khtc2B+ePG2Hto088asfVDR/Qy2x9ovduUSAQ53enjEXjATGfcI5/pvD
- ZQM8Qctx6qpTGPNROvfS/ey+JNNmJgbbgJepDIeAvSuZf7ah291cOhWJmN+ICxDzo8zQ
- z6Jqv8zJOJ8sz8wSR0GU5HYdN3b9imZoEZxv/B9+JrMeXQ57YUmI20nOJX2Y7kwi3FT1
- Rir8dxs8/WBPvKWZABdXzSV2iyhNH4K5jXVxtBTYi/tzPdUUE3usRI8CXWnP0UXF333S
- qbPQ==
-X-Gm-Message-State: ANhLgQ3Aj5kIRNmW+h0NTDAPRffg4h9lOTXZ5vYMCmwGQ+xS8sYKujfS
- vth7GjkOyj71U1vzZqEKaMyANbix
-X-Google-Smtp-Source: ADFU+vvzTLR3tYefVYn2+MbpamJPrkIDsi99sFr4Qq2LbQHjSytp4Z82Y/jZrqTiQHYOP71qxr19nA==
-X-Received: by 2002:adf:8182:: with SMTP id 2mr1361380wra.37.1583184170933;
- Mon, 02 Mar 2020 13:22:50 -0800 (PST)
-Received: from [192.168.43.18] (94.197.120.139.threembb.co.uk.
- [94.197.120.139])
- by smtp.gmail.com with ESMTPSA id z64sm385672wmg.35.2020.03.02.13.22.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Mar 2020 13:22:50 -0800 (PST)
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH 3/3] staging: vt6656: Delete int.c/h file and move functions
- to usbpipe
-Message-ID: <bc21d3d7-81be-4ec1-030e-4e7a45f98238@gmail.com>
-Date: Mon, 2 Mar 2020 21:22:49 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ with ESMTP id t+EobuvA6mxu for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 23:37:33 +0000 (UTC)
+X-Greylist: delayed 02:20:01 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0246.hostedemail.com
+ [216.40.44.246])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 45682865B8
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 23:37:33 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave04.hostedemail.com (Postfix) with ESMTP id 416811801E59A
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 18:51:48 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay02.hostedemail.com (Postfix) with ESMTP id B5653A2D9;
+ Mon,  2 Mar 2020 18:51:45 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:800:960:967:973:988:989:1260:1263:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1543:1593:1594:1605:1711:1730:1747:1777:1792:1801:2198:2199:2393:2525:2553:2560:2563:2682:2685:2828:2859:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3622:3865:3866:3867:3870:3871:3872:3873:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4321:4470:4605:5007:6119:7903:9025:9388:10004:10049:10400:10848:11026:11232:11473:11658:11914:12043:12295:12296:12297:12438:12555:12740:12760:12776:12895:13439:14096:14097:14106:14107:14181:14659:14721:14849:21080:21220:21433:21611:21627:21740:21939:21990:30012:30051:30054:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: jewel38_f20ac4926518
+X-Filterd-Recvd-Size: 4745
+Received: from XPS-9350.home (unknown [47.151.143.254])
+ (Authenticated sender: joe@perches.com)
+ by omf12.hostedemail.com (Postfix) with ESMTPA;
+ Mon,  2 Mar 2020 18:51:43 +0000 (UTC)
+Message-ID: <18b0d6ea5619c34ca4120a6151103dbe9bfa0cbe.camel@perches.com>
+Subject: Re: [PATCH v2 2/3] binder: do not initialize locals passed to
+ copy_from_user()
+From: Joe Perches <joe@perches.com>
+To: Alexander Potapenko <glider@google.com>
+Date: Mon, 02 Mar 2020 10:50:11 -0800
+In-Reply-To: <CAG_fn=XOyPGau9m7x8eCLJHy3m-H=nbMODewWVJ1xb2e+BPdFw@mail.gmail.com>
+References: <20200302130430.201037-1-glider@google.com>
+ <20200302130430.201037-2-glider@google.com>
+ <0eaac427354844a4fcfb0d9843cf3024c6af21df.camel@perches.com>
+ <CAG_fn=VNnxjD6qdkAW_E0v3faBQPpSsO=c+h8O=yvNxTZowuBQ@mail.gmail.com>
+ <4cac10d3e2c03e4f21f1104405a0a62a853efb4e.camel@perches.com>
+ <CAG_fn=XOyPGau9m7x8eCLJHy3m-H=nbMODewWVJ1xb2e+BPdFw@mail.gmail.com>
+User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,370 +79,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- linux-wireless@vger.kernel.org
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Kees Cook <keescook@chromium.org>, Jann Horn <jannh@google.com>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ Arve =?ISO-8859-1?Q?Hj=F8nnev=E5g?= <arve@android.com>,
+ Ingo Molnar <mingo@redhat.com>, Dmitriy Vyukov <dvyukov@google.com>,
+ Todd Kjos <tkjos@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Move functions vnt_int_process_data and vnt_int_report_rate to
-usbpipe.c and vnt_interrupt_data to usbpipe.h
+On Mon, 2020-03-02 at 19:17 +0100, Alexander Potapenko wrote:
+> On Mon, Mar 2, 2020 at 3:00 PM Joe Perches <joe@perches.com> wrote:
+> > On Mon, 2020-03-02 at 14:25 +0100, Alexander Potapenko wrote:
+> > > On Mon, Mar 2, 2020 at 2:11 PM Joe Perches <joe@perches.com> wrote:
+> > > > On Mon, 2020-03-02 at 14:04 +0100, glider@google.com wrote:
+> > > > > Certain copy_from_user() invocations in binder.c are known to
+> > > > > unconditionally initialize locals before their first use, like e.g. in
+> > > > > the following case:
+> > > > []
+> > > > > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> > > > []
+> > > > > @@ -3788,7 +3788,7 @@ static int binder_thread_write(struct binder_proc *proc,
+> > > > > 
+> > > > >               case BC_TRANSACTION_SG:
+> > > > >               case BC_REPLY_SG: {
+> > > > > -                     struct binder_transaction_data_sg tr;
+> > > > > +                     struct binder_transaction_data_sg tr __no_initialize;
+> > > > > 
+> > > > >                       if (copy_from_user(&tr, ptr, sizeof(tr)))
+> > > > 
+> > > > I fail to see any value in marking tr with __no_initialize
+> > > > when it's immediately written to by copy_from_user.
+> > > 
+> > > This is being done exactly because it's immediately written to by copy_to_user()
+> > > Clang is currently unable to figure out that copy_to_user() initializes memory.
+> > > So building the kernel with CONFIG_INIT_STACK_ALL=y basically leads to
+> > > the following code:
+> > > 
+> > >   struct binder_transaction_data_sg tr;
+> > >   memset(&tr, 0xAA, sizeof(tr));
+> > >   if (copy_from_user(&tr, ptr, sizeof(tr))) {...}
+> > > 
+> > > This unnecessarily slows the code down, so we add __no_initialize to
+> > > prevent the compiler from emitting the redundant initialization.
+> > 
+> > So?  CONFIG_INIT_STACK_ALL by design slows down code.
+> Correct.
+> 
+> > This marking would likely need to be done for nearly all
+> > 3000+ copy_from_user entries.
+> Unfortunately, yes. I was just hoping to do so for a handful of hot
+> cases that we encounter, but in the long-term a compiler solution must
+> supersede them.
+> 
+> > Why not try to get something done on the compiler side
+> > to mark the function itself rather than the uses?
+> This is being worked on in the meantime as well (see
+> http://lists.llvm.org/pipermail/cfe-dev/2020-February/064633.html)
+> Do you have any particular requisitions about how this should look on
+> the source level?
 
-These form part of the USB structure.
-
-Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
+I presume something like the below when appropriate for
+automatic variables when not already initialized or modified.
 ---
- drivers/staging/vt6656/Makefile   |   3 +-
- drivers/staging/vt6656/int.c      | 110 ------------------------------
- drivers/staging/vt6656/int.h      |  46 -------------
- drivers/staging/vt6656/main_usb.c |   1 -
- drivers/staging/vt6656/usbpipe.c  |  88 +++++++++++++++++++++++-
- drivers/staging/vt6656/usbpipe.h  |  23 +++++++
- 6 files changed, 111 insertions(+), 160 deletions(-)
- delete mode 100644 drivers/staging/vt6656/int.c
- delete mode 100644 drivers/staging/vt6656/int.h
+ include/linux/uaccess.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vt6656/Makefile b/drivers/staging/vt6656/Makefile
-index b64c0d87f612..60a41fe62bed 100644
---- a/drivers/staging/vt6656/Makefile
-+++ b/drivers/staging/vt6656/Makefile
-@@ -15,7 +15,6 @@ vt6656_stage-y +=	main_usb.o \
- 			rf.o \
- 			usbpipe.o \
- 			channel.o \
--			firmware.o \
--			int.o
-+			firmware.o
+diff --git a/include/linux/uaccess.h b/include/linux/uaccess.h
+index 8a215c..3e034b5 100644
+--- a/include/linux/uaccess.h
++++ b/include/linux/uaccess.h
+@@ -138,7 +138,8 @@ _copy_to_user(void __user *, const void *, unsigned long);
+ #endif
  
- obj-$(CONFIG_VT6656) +=	vt6656_stage.o
-diff --git a/drivers/staging/vt6656/int.c b/drivers/staging/vt6656/int.c
-deleted file mode 100644
-index 139be3f845c3..000000000000
---- a/drivers/staging/vt6656/int.c
-+++ /dev/null
-@@ -1,110 +0,0 @@
--// SPDX-License-Identifier: GPL-2.0+
--/*
-- * Copyright (c) 1996, 2003 VIA Networking Technologies, Inc.
-- * All rights reserved.
-- *
-- * File: int.c
-- *
-- * Purpose: Handle USB interrupt endpoint
-- *
-- * Author: Jerry Chen
-- *
-- * Date: Apr. 2, 2004
-- *
-- * Functions:
-- *
-- * Revision History:
-- *      04-02-2004 Jerry Chen:  Initial release
-- *
-- */
--
--#include "int.h"
--#include "mac.h"
--#include "power.h"
--#include "usbpipe.h"
--
--static int vnt_int_report_rate(struct vnt_private *priv, u8 pkt_no, u8 tsr)
--{
--	struct vnt_usb_send_context *context;
--	struct ieee80211_tx_info *info;
--	u8 tx_retry = (tsr & 0xf0) >> 4;
--	s8 idx;
--
--	if (pkt_no >= priv->num_tx_context)
--		return -EINVAL;
--
--	context = priv->tx_context[pkt_no];
--
--	if (!context->skb)
--		return -EINVAL;
--
--	info = IEEE80211_SKB_CB(context->skb);
--	idx = info->control.rates[0].idx;
--
--	ieee80211_tx_info_clear_status(info);
--
--	info->status.rates[0].count = tx_retry;
--
--	if (!(tsr & TSR_TMO)) {
--		info->status.rates[0].idx = idx;
--
--		if (!(info->flags & IEEE80211_TX_CTL_NO_ACK))
--			info->flags |= IEEE80211_TX_STAT_ACK;
--	}
--
--	ieee80211_tx_status_irqsafe(priv->hw, context->skb);
--
--	context->in_use = false;
--
--	return 0;
--}
--
--void vnt_int_process_data(struct vnt_private *priv)
--{
--	struct vnt_interrupt_data *int_data;
--	struct ieee80211_low_level_stats *low_stats = &priv->low_stats;
--
--	dev_dbg(&priv->usb->dev, "---->s_nsInterruptProcessData\n");
--
--	int_data = (struct vnt_interrupt_data *)priv->int_buf.data_buf;
--
--	if (int_data->tsr0 & TSR_VALID)
--		vnt_int_report_rate(priv, int_data->pkt0, int_data->tsr0);
--
--	if (int_data->tsr1 & TSR_VALID)
--		vnt_int_report_rate(priv, int_data->pkt1, int_data->tsr1);
--
--	if (int_data->tsr2 & TSR_VALID)
--		vnt_int_report_rate(priv, int_data->pkt2, int_data->tsr2);
--
--	if (int_data->tsr3 & TSR_VALID)
--		vnt_int_report_rate(priv, int_data->pkt3, int_data->tsr3);
--
--	if (int_data->isr0 != 0) {
--		if (int_data->isr0 & ISR_BNTX &&
--		    priv->op_mode == NL80211_IFTYPE_AP)
--			vnt_schedule_command(priv, WLAN_CMD_BECON_SEND);
--
--		if (int_data->isr0 & ISR_TBTT &&
--		    priv->hw->conf.flags & IEEE80211_CONF_PS) {
--			if (!priv->wake_up_count)
--				priv->wake_up_count =
--					priv->hw->conf.listen_interval;
--
--			--priv->wake_up_count;
--
--			/* Turn on wake up to listen next beacon */
--			if (priv->wake_up_count == 1)
--				vnt_schedule_command(priv,
--						     WLAN_CMD_TBTT_WAKEUP);
--		}
--		priv->current_tsf = le64_to_cpu(int_data->tsf);
--
--		low_stats->dot11RTSSuccessCount += int_data->rts_success;
--		low_stats->dot11RTSFailureCount += int_data->rts_fail;
--		low_stats->dot11ACKFailureCount += int_data->ack_fail;
--		low_stats->dot11FCSErrorCount += int_data->fcs_err;
--	}
--
--	priv->int_buf.in_use = false;
--}
-diff --git a/drivers/staging/vt6656/int.h b/drivers/staging/vt6656/int.h
-deleted file mode 100644
-index 0b7473a7f190..000000000000
---- a/drivers/staging/vt6656/int.h
-+++ /dev/null
-@@ -1,46 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0+ */
--/*
-- * Copyright (c) 1996, 2003 VIA Networking Technologies, Inc.
-- * All rights reserved.
-- *
-- * File: int.h
-- *
-- * Purpose:
-- *
-- * Author: Jerry Chen
-- *
-- * Date: Apr. 2, 2004
-- *
-- */
--
--#ifndef __INT_H__
--#define __INT_H__
--
--#include "device.h"
--
--struct vnt_interrupt_data {
--	u8 tsr0;
--	u8 pkt0;
--	u16 time0;
--	u8 tsr1;
--	u8 pkt1;
--	u16 time1;
--	u8 tsr2;
--	u8 pkt2;
--	u16 time2;
--	u8 tsr3;
--	u8 pkt3;
--	u16 time3;
--	__le64 tsf;
--	u8 isr0;
--	u8 isr1;
--	u8 rts_success;
--	u8 rts_fail;
--	u8 ack_fail;
--	u8 fcs_err;
--	u8 sw[2];
--} __packed;
--
--void vnt_int_process_data(struct vnt_private *priv);
--
--#endif /* __INT_H__ */
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index a22f88b1f5e9..37fff88a6687 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -35,7 +35,6 @@
- #include "firmware.h"
- #include "usbpipe.h"
- #include "channel.h"
--#include "int.h"
- 
- /*
-  * define module options
-diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
-index 0e29dc2f4b0d..c905f3eaf655 100644
---- a/drivers/staging/vt6656/usbpipe.c
-+++ b/drivers/staging/vt6656/usbpipe.c
-@@ -24,12 +24,12 @@
-  *
-  */
- 
--#include "int.h"
- #include "rxtx.h"
- #include "dpc.h"
- #include "desc.h"
- #include "device.h"
- #include "usbpipe.h"
-+#include "mac.h"
- 
- #define USB_CTL_WAIT	500 /* ms */
- 
-@@ -139,6 +139,92 @@ int vnt_control_in_u8(struct vnt_private *priv, u8 reg, u8 reg_off, u8 *data)
- 			      reg_off, reg, sizeof(u8), data);
- }
- 
-+static int vnt_int_report_rate(struct vnt_private *priv, u8 pkt_no, u8 tsr)
-+{
-+	struct vnt_usb_send_context *context;
-+	struct ieee80211_tx_info *info;
-+	u8 tx_retry = (tsr & 0xf0) >> 4;
-+	s8 idx;
-+
-+	if (pkt_no >= priv->num_tx_context)
-+		return -EINVAL;
-+
-+	context = priv->tx_context[pkt_no];
-+
-+	if (!context->skb)
-+		return -EINVAL;
-+
-+	info = IEEE80211_SKB_CB(context->skb);
-+	idx = info->control.rates[0].idx;
-+
-+	ieee80211_tx_info_clear_status(info);
-+
-+	info->status.rates[0].count = tx_retry;
-+
-+	if (!(tsr & TSR_TMO)) {
-+		info->status.rates[0].idx = idx;
-+
-+		if (!(info->flags & IEEE80211_TX_CTL_NO_ACK))
-+			info->flags |= IEEE80211_TX_STAT_ACK;
-+	}
-+
-+	ieee80211_tx_status_irqsafe(priv->hw, context->skb);
-+
-+	context->in_use = false;
-+
-+	return 0;
-+}
-+
-+static void vnt_int_process_data(struct vnt_private *priv)
-+{
-+	struct vnt_interrupt_data *int_data;
-+	struct ieee80211_low_level_stats *low_stats = &priv->low_stats;
-+
-+	dev_dbg(&priv->usb->dev, "---->s_nsInterruptProcessData\n");
-+
-+	int_data = (struct vnt_interrupt_data *)priv->int_buf.data_buf;
-+
-+	if (int_data->tsr0 & TSR_VALID)
-+		vnt_int_report_rate(priv, int_data->pkt0, int_data->tsr0);
-+
-+	if (int_data->tsr1 & TSR_VALID)
-+		vnt_int_report_rate(priv, int_data->pkt1, int_data->tsr1);
-+
-+	if (int_data->tsr2 & TSR_VALID)
-+		vnt_int_report_rate(priv, int_data->pkt2, int_data->tsr2);
-+
-+	if (int_data->tsr3 & TSR_VALID)
-+		vnt_int_report_rate(priv, int_data->pkt3, int_data->tsr3);
-+
-+	if (int_data->isr0 != 0) {
-+		if (int_data->isr0 & ISR_BNTX &&
-+		    priv->op_mode == NL80211_IFTYPE_AP)
-+			vnt_schedule_command(priv, WLAN_CMD_BECON_SEND);
-+
-+		if (int_data->isr0 & ISR_TBTT &&
-+		    priv->hw->conf.flags & IEEE80211_CONF_PS) {
-+			if (!priv->wake_up_count)
-+				priv->wake_up_count =
-+					priv->hw->conf.listen_interval;
-+
-+			--priv->wake_up_count;
-+
-+			/* Turn on wake up to listen next beacon */
-+			if (priv->wake_up_count == 1)
-+				vnt_schedule_command(priv,
-+						     WLAN_CMD_TBTT_WAKEUP);
-+		}
-+		priv->current_tsf = le64_to_cpu(int_data->tsf);
-+
-+		low_stats->dot11RTSSuccessCount += int_data->rts_success;
-+		low_stats->dot11RTSFailureCount += int_data->rts_fail;
-+		low_stats->dot11ACKFailureCount += int_data->ack_fail;
-+		low_stats->dot11FCSErrorCount += int_data->fcs_err;
-+	}
-+
-+	priv->int_buf.in_use = false;
-+}
-+
- static void vnt_start_interrupt_urb_complete(struct urb *urb)
+ static __always_inline unsigned long __must_check
+-copy_from_user(void *to, const void __user *from, unsigned long n)
++copy_from_user(void __no_initialize *to, const void __user *from,
++	       unsigned long n)
  {
- 	struct vnt_private *priv = urb->context;
-diff --git a/drivers/staging/vt6656/usbpipe.h b/drivers/staging/vt6656/usbpipe.h
-index 4e3341bc3221..35697b58d748 100644
---- a/drivers/staging/vt6656/usbpipe.h
-+++ b/drivers/staging/vt6656/usbpipe.h
-@@ -18,6 +18,29 @@
- 
- #include "device.h"
- 
-+struct vnt_interrupt_data {
-+	u8 tsr0;
-+	u8 pkt0;
-+	u16 time0;
-+	u8 tsr1;
-+	u8 pkt1;
-+	u16 time1;
-+	u8 tsr2;
-+	u8 pkt2;
-+	u16 time2;
-+	u8 tsr3;
-+	u8 pkt3;
-+	u16 time3;
-+	__le64 tsf;
-+	u8 isr0;
-+	u8 isr1;
-+	u8 rts_success;
-+	u8 rts_fail;
-+	u8 ack_fail;
-+	u8 fcs_err;
-+	u8 sw[2];
-+} __packed;
-+
- #define VNT_REG_BLOCK_SIZE	64
- 
- int vnt_control_out(struct vnt_private *priv, u8 request, u16 value,
--- 
-2.25.1
+ 	if (likely(check_copy_size(to, n, false)))
+ 		n = _copy_from_user(to, from, n);
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
