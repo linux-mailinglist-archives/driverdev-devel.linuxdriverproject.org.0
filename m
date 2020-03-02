@@ -1,72 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E665C1757C5
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 10:57:26 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7426D8464A;
-	Mon,  2 Mar 2020 09:57:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pufqCoz1nzgm; Mon,  2 Mar 2020 09:57:23 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 540DB81CA3;
-	Mon,  2 Mar 2020 09:57:23 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A4EEA1BF28A
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 09:57:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2634117585B
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 11:30:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A13C42001E
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 09:57:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 265AD20458;
+	Mon,  2 Mar 2020 10:30:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kQ3sqEb4pfEX; Mon,  2 Mar 2020 10:30:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id B70312040D;
+	Mon,  2 Mar 2020 10:30:06 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2FF6B1BF282
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 10:30:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 298C98750A
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 10:30:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4-KaXSNu-bC2 for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 09:57:20 +0000 (UTC)
+ with ESMTP id yc4uwj+68IeL for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 10:30:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx06.melco.co.jp (mx06.melco.co.jp [192.218.140.146])
- by silver.osuosl.org (Postfix) with ESMTPS id C35711FEAB
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 09:57:20 +0000 (UTC)
-Received: from mr06.melco.co.jp (mr06 [133.141.98.164])
- by mx06.melco.co.jp (Postfix) with ESMTP id 55A923A3F52;
- Mon,  2 Mar 2020 18:57:19 +0900 (JST)
-Received: from mr06.melco.co.jp (unknown [127.0.0.1])
- by mr06.imss (Postfix) with ESMTP id 48WFtR1lThzRk8J;
- Mon,  2 Mar 2020 18:57:19 +0900 (JST)
-Received: from mf04_second.melco.co.jp (unknown [192.168.20.184])
- by mr06.melco.co.jp (Postfix) with ESMTP id 48WFtR1RmzzRjyb;
- Mon,  2 Mar 2020 18:57:19 +0900 (JST)
-Received: from mf04.melco.co.jp (unknown [133.141.98.184])
- by mf04_second.melco.co.jp (Postfix) with ESMTP id 48WFtR1hPjzRkCp;
- Mon,  2 Mar 2020 18:57:19 +0900 (JST)
-Received: from tux532.tad.melco.co.jp (unknown [133.141.243.226])
- by mf04.melco.co.jp (Postfix) with ESMTP id 48WFtR1DyWzRkBl;
- Mon,  2 Mar 2020 18:57:19 +0900 (JST)
-Received: from tux532.tad.melco.co.jp
- by tux532.tad.melco.co.jp (unknown) with ESMTP id 0229vJZN027658;
- Mon, 2 Mar 2020 18:57:19 +0900
-Received: from tux390.tad.melco.co.jp (tux390.tad.melco.co.jp [127.0.0.1])
- by postfix.imss70 (Postfix) with ESMTP id E655C17E075;
- Mon,  2 Mar 2020 18:57:18 +0900 (JST)
-Received: from tux554.tad.melco.co.jp (mailgw1.tad.melco.co.jp [10.168.7.223])
- by tux390.tad.melco.co.jp (Postfix) with ESMTP id D982D17E073;
- Mon,  2 Mar 2020 18:57:18 +0900 (JST)
-Received: from tux554.tad.melco.co.jp
- by tux554.tad.melco.co.jp (unknown) with ESMTP id 0229vH0t007040;
- Mon, 2 Mar 2020 18:57:18 +0900
-From: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-To: Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp
-Subject: [PATCH 2/2] staging: exfat: remove redundant if statements
-Date: Mon,  2 Mar 2020 18:57:16 +0900
-Message-Id: <20200302095716.64155-2-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-X-Mailer: git-send-email 2.25.1
+Received: from omr2.cc.vt.edu (outbound.smtp.vt.edu [198.82.183.121])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 70F7C874C5
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 10:30:03 +0000 (UTC)
+Received: from mr4.cc.vt.edu (mr4.cc.ipv6.vt.edu
+ [IPv6:2607:b400:92:8300:0:7b:e2b1:6a29])
+ by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id 022AU2Ss021047
+ for <devel@driverdev.osuosl.org>; Mon, 2 Mar 2020 05:30:02 -0500
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mr4.cc.vt.edu (8.14.7/8.14.7) with ESMTP id 022ATvjU014286
+ for <devel@driverdev.osuosl.org>; Mon, 2 Mar 2020 05:30:02 -0500
+Received: by mail-qk1-f200.google.com with SMTP id q123so8570395qkb.1
+ for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 02:30:02 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:in-reply-to:references
+ :mime-version:content-transfer-encoding:date:message-id;
+ bh=/VcLffZUTgvTWC8ZFO3N6mDeTTtIIDh0TAgvcx3iXEw=;
+ b=KkBpfIU3iAA+Q/eUh1ftXeSCQPJoC4LSm9yoYllw3bsA6Bl7fwVFcqQd+jgghEVcZu
+ 1/Le1IDiV9AqHVmEmluY84IEHpMLLSxio8v7b64Qj1B1txadQXC9MrQJ2C59m4APieVn
+ 57B/v4HzueugvQtfP0UjS2iPwezM3Bg5CM2v9yUAQAkMrYVbmu7jWxT2TR6WjvLVeSA9
+ vYZvxshMlfLzMNpJmMvHruQxAFqRl/8WzTIWuRdvnmpmOwwbSt0b/wIvU6MRXMTar653
+ 4rkSE49KDHyLdwLOuu8S+x1C3Ui8X1p72EMsPbDZz79nNWG5+pzuja12/BijP3ODQoCI
+ n44Q==
+X-Gm-Message-State: APjAAAXl7AMn9K3ssHIPmdSpxxUIRIgZLBQDSbaerE3v+Fv0daJp07C+
+ ZjaFaT76XAHl6Uz6teoch7nv9wqWVDTyNFl1coqEGiYtfIah1FMPxs+HpDuEI7L4upYa1dOFtQM
+ oAIEU3iFY12iYt8G4eFbbtugKjVX4+6lv
+X-Received: by 2002:a37:4e53:: with SMTP id c80mr14345724qkb.58.1583144996946; 
+ Mon, 02 Mar 2020 02:29:56 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwBh6WXMWHNRoxL92FxaSm7tZWkWljn+/lubfFhH1jeDvkVwJTYHB9DmVs0hkAFcj5IVD9Bog==
+X-Received: by 2002:a37:4e53:: with SMTP id c80mr14345713qkb.58.1583144996622; 
+ Mon, 02 Mar 2020 02:29:56 -0800 (PST)
+Received: from turing-police ([2601:5c0:c001:c9e1::359])
+ by smtp.gmail.com with ESMTPSA id j17sm10248504qth.27.2020.03.02.02.29.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 02 Mar 2020 02:29:54 -0800 (PST)
+From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks" <valdis.kletnieks@vt.edu>
+X-Google-Original-From: "Valdis Kl=?utf-8?Q?=c4=93?=tnieks"
+ <Valdis.Kletnieks@vt.edu>
+X-Mailer: exmh version 2.9.0 11/07/2018 with nmh-1.7+dev
+To: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+Subject: Re: [PATCH 1/2] staging: exfat: clean up d_entry rebuilding.
 In-Reply-To: <20200302095716.64155-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
 References: <20200302095716.64155-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
-MIME-Version: 1.0
+Mime-Version: 1.0
+Date: Mon, 02 Mar 2020 05:29:54 -0500
+Message-ID: <240472.1583144994@turing-police>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,45 +87,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  motai.hirotaka@aj.mitsubishielectric.co.jp, linux-kernel@vger.kernel.org,
  Mori.Takahiro@ab.MitsubishiElectric.co.jp, linux-fsdevel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5207231269871235597=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-If statement does not affect results when updating directory entry in
-ffsMapCluster().
+--===============5207231269871235597==
+Content-Type: multipart/signed; boundary="==_Exmh_1583144993_2391P";
+	 micalg=pgp-sha1; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
----
- drivers/staging/exfat/exfat_super.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+--==_Exmh_1583144993_2391P
+Content-Type: text/plain; charset=us-ascii
 
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index 708398265828..75813d0fe7a7 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -1361,11 +1361,8 @@ static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
- 
- 		/* (3) update directory entry */
- 		if (modified) {
--			if (exfat_get_entry_flag(ep) != fid->flags)
--				exfat_set_entry_flag(ep, fid->flags);
--
--			if (exfat_get_entry_clu0(ep) != fid->start_clu)
--				exfat_set_entry_clu0(ep, fid->start_clu);
-+			exfat_set_entry_flag(ep, fid->flags);
-+			exfat_set_entry_clu0(ep, fid->start_clu);
- 		}
- 
- 		update_dir_checksum_with_entry_set(sb, es);
--- 
-2.25.1
+On Mon, 02 Mar 2020 18:57:15 +0900, Tetsuhiro Kohada said:
+> Clean up d_entry rebuilding in exfat_rename_file() and move_file().
+>
+> -Replace memcpy of d_entry with structure copy.
+
+Those look OK.
+
+> -Change to use the value already stored in fid.
+
+> -		if (exfat_get_entry_type(epnew) == TYPE_FILE) {
+
+> +		if (fid->type == TYPE_FILE) {
+
+Are you sure this is OK to do? exfat_get_entry_type() does a lot of
+mapping between values, using a file_dentry_t->type, while
+fid->type is a file_id_t->type. and at first read it's not obvious to me whether
+fid->type is guaranteed to have the correct value already.
+
+(The abundant use of 0xNN constants in exfat_get_entry_type()  doesn't
+inspire confidence that it's looking at what you think it's looking at...)
+
+
+
+--==_Exmh_1583144993_2391P
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Exmh version 2.9.0 11/07/2018
+
+iQIVAwUBXlzgIQdmEQWDXROgAQI58g/8DOieHjL/SZ7yeem2t4q7TX4M9CzzWBEA
+gCgEpSqWrxEfRPn4OfLS/S6CMQtDPrdv8mDqvmNIRa0S27G+kvvCdOVbIYDnDIHD
+uqUmHKhPoUdTH+6k4XXErNBO4hG0NlpFAAVEpyY0x3Yo8zK5a6kW9NroYknqHq0g
+/zafLt+WTiwU4InxRznidC4UvQ9Dvi9hMUnEzziYuR/E11ruzpQjfc8gcCkRawh0
+F2bgfjwXhAFdyXGhkJdcfeNjXRMgFUPy4a0fVK32uxSo3kfYJYX0cSzSspkCoZm2
+bIWbR0pg/Lx/AjH1V5JiTK+EQixeC0ujAXmbzGVT2H16cWSMqnFbmVVjRgSBY0fI
+Y/N8HHyLxUx5u87b6B97wvNZiExkDID38Br05uFuOIasOMOMs3fE3mpJ7/J/FRFd
+dUXKZJ6+wni8X4kZVHTleUuZVtQK0hSTZBj3wOL7prAn9uJiCP3b7t6MdfCOegV6
+VcKJyhLvu6LmByPunjU75UTTmWj3dMGYdYDFEDD+jfHBXMh0AX54rHwy4jO0BwU2
+/X+YrqpbOWL8C7+1E//vJq00X+CNyNG98iJ1QJWJV7EOUrUTnnLUa11+DLc9CUtB
+R6r7VF469EJ7MfZG8L0keg5eLSNUQL2H9I8FU1id0xrHxJ7HQtH9lz6Dav1+Bnj4
+bOOVWDTwOt8=
+=DpqH
+-----END PGP SIGNATURE-----
+
+--==_Exmh_1583144993_2391P--
+
+--===============5207231269871235597==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============5207231269871235597==--
