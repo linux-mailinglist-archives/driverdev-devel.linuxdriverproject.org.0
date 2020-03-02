@@ -1,92 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B361F175E0F
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 16:22:38 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 63D708777B;
-	Mon,  2 Mar 2020 15:22:36 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p8zyDqsNtGZP; Mon,  2 Mar 2020 15:22:36 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B583C8624A;
-	Mon,  2 Mar 2020 15:22:35 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E7DD61BF30F
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:22:32 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F1AA175E43
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 16:32:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E5015855B5
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:22:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F263D85817;
+	Mon,  2 Mar 2020 15:32:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fRgioHU66CLQ; Mon,  2 Mar 2020 15:32:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EB451858B8;
+	Mon,  2 Mar 2020 15:32:47 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id ACF7F1BF30F
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:32:46 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id A98DA870A9
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:32:46 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NXSQghNmBLEq for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 15:22:31 +0000 (UTC)
+ with ESMTP id tCL+WCsRjm8k for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 15:32:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B2AC585450
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 15:22:31 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 022Evu5U086099;
- Mon, 2 Mar 2020 15:22:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=mime-version :
- message-id : date : from : to : cc : subject : references : in-reply-to :
- content-type : content-transfer-encoding; s=corp-2020-01-29;
- bh=G/kvItGwy0v2Fs3ftwbEd0rVlgOOyAgL4aj7wJ7qNZM=;
- b=EIMWrRJPFCTSlxyodnP+JR3GxBOUIuWyd7a2GHh2qEZGyIOK7tm6Es2IRnu9+UxIr0/W
- BgUDOve59skYLmTgSRy8qJCz3QhHJhtuHbJEw09tVHV5EpjjCiNAUu/k7jFlFIngxAN1
- 7/w0Zd9Jegr7vONcmgo5Y7tPkFkJPZcl9dhAFNh2EphBQ4Upnp7awxmdBagwPOAXLt89
- vOwvyZ8ZZrtoBxNaSNVinZaQDGSVUNczekNjAE68JjpLr3Eb8P0MF+2zASrFZbbkF5cK
- PR/RNoBxs/qsmBlDZ0WF4qx5xYr0yfFxV2T5P+gZkGPIAl30ACTI8T6ZU0AhmaR5nbsE Qw== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 2yffwqgbv0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 02 Mar 2020 15:22:30 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 022FKxk9001574;
- Mon, 2 Mar 2020 15:22:29 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3030.oracle.com with ESMTP id 2yg1eh83un-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 02 Mar 2020 15:22:29 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 022FMRdO021370;
- Mon, 2 Mar 2020 15:22:27 GMT
-Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway
- v4.0) with ESMTP ; Mon, 02 Mar 2020 07:21:23 -0800
-USER-AGENT: Mutt/1.9.4 (2018-02-28)
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9805086FAF
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 15:32:44 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id x19so5303394otp.7
+ for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 07:32:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=ZZC2Pupfl/eFbEiQmQK8DrdbI5TFes5OKB8zq+O8R1I=;
+ b=T624RUcfhOjgJp7xdX4whqS+bHfi1CUic2W7Lxi3geiiYcq4pkqqYlpvvYtmUctSrr
+ ytwCcxITKtnuQ7O6LIhC0EShi3sqaWhMPHOGjte+gEJwZbzU1ZurxOyO2NzsfFp5u9IZ
+ 9T4/vfaOH0OVM1WgtrJ03CKwu6DZECjPCMFrQ7UY0A/Tk+LORGhdqv5aHBZEZ6mYS6tA
+ 0yZ3tOLOIbbCyIF58zcxtnbj1KyKg32KCN0tM0lRt4XtgWQEfBNH+BYURanedcLlBSW/
+ lICIj/JZXf0zj1GTSI012tNZQ/rDHwfwCgrGE9fs5Gw6vqfv8OZ6H2d0pQxco8UT+MwJ
+ byOA==
+X-Gm-Message-State: APjAAAUtsQS+Pz7EIVPSDrWJZ9EwlHSTzH03wGoumav9G+Pu+IDsCMlS
+ bdGeTMsmXOlFxdNJzjDncDk4XljvqZvwNcwiBVo=
+X-Google-Smtp-Source: APXvYqwgjIFCSqSj4qBpYRjDRfnQGcUTZSl3tHFJqbuFk9d/EBsOPPhJjGzJbigayYo0pnbjUOze3Cw83b79RAdw6Sc=
+X-Received: by 2002:a9d:dc1:: with SMTP id 59mr13477946ots.250.1583163163733; 
+ Mon, 02 Mar 2020 07:32:43 -0800 (PST)
 MIME-Version: 1.0
-Message-ID: <20200302152058.GB24372@kadam>
-Date: Mon, 2 Mar 2020 07:20:58 -0800 (PST)
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Dmitry Osipenko <digetx@gmail.com>
-Subject: Re: [PATCH v1] media: staging: tegra-vde: Use
- devm_platform_ioremap_resource_byname()
-References: <20200227180915.9541-1-digetx@gmail.com>
- <20200302080456.GD4140@kadam>
- <d748bf2c-e38c-dabb-59ad-39e14813e40a@gmail.com>
-In-Reply-To: <d748bf2c-e38c-dabb-59ad-39e14813e40a@gmail.com>
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9547
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- suspectscore=0 spamscore=0
- mlxlogscore=999 malwarescore=0 bulkscore=0 mlxscore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2003020110
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9547
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 spamscore=0
- impostorscore=0 malwarescore=0 mlxlogscore=999 mlxscore=0 suspectscore=0
- phishscore=0 clxscore=1015 bulkscore=0 adultscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2003020110
+References: <cover.1578924232.git.alexander.riesen@cetitec.com>
+ <20200113141556.GI3606@pflmari>
+ <CAMuHMdV9urx-6N4tiaPdkssa6Wu-9HSB4VY-rvCu+8JpfZcBfA@mail.gmail.com>
+ <20200302134011.GA3717@pflmari>
+ <CAMuHMdWobAE+y90DRi+zQadObWPxLyQiGNTe4t77O-2S1Vp5yA@mail.gmail.com>
+ <20200302150706.GB3717@pflmari>
+In-Reply-To: <20200302150706.GB3717@pflmari>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 2 Mar 2020 16:32:32 +0100
+Message-ID: <CAMuHMdW21rYXoOSE8azHNqYjng_j41rsL=Fo2bZc=1ULi9+pLw@mail.gmail.com>
+Subject: Re: [PATCH 8/8] arm64: dts: renesas: salvator: add a connection from
+ adv748x codec (HDMI input) to the R-Car SoC
+To: Alex Riesen <alexander.riesen@cetitec.com>, 
+ Kieran Bingham <kieran.bingham@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, driverdevel <devel@driverdev.osuosl.org>, 
+ Linux Media Mailing List <linux-media@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, 
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,40 +87,185 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Jonathan Hunter <jonathanh@nvidia.com>, Hans Verkuil <hverkuil@xs4all.nl>,
- Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gTW9uLCBNYXIgMDIsIDIwMjAgYXQgMDY6MDQ6MjBQTSArMDMwMCwgRG1pdHJ5IE9zaXBlbmtv
-IHdyb3RlOgo+IDAyLjAzLjIwMjAgMTE6MDQsIERhbiBDYXJwZW50ZXIg0L/QuNGI0LXRgjoKPiA+
-IE9uIFRodSwgRmViIDI3LCAyMDIwIGF0IDA5OjA5OjE1UE0gKzAzMDAsIERtaXRyeSBPc2lwZW5r
-byB3cm90ZToKPiA+PiBUaGlzIGhlbHBzIHRvIG1ha2UgY29kZSBjbGVhbmVyIGEgdGFkLgo+ID4g
-Cj4gPiBQbGVhc2UgZG9uJ3Qgc3RhcnQgdGhlIGNvbW1pdCBtZXNzYWdlIGluIHRoZSBtaWRkbGUg
-b2YgYSBzZW50ZW5jZS4KPiAKPiBDb3VsZCB5b3UgcGxlYXNlIGNsYXJpZnkgd2hhdCBkbyB5b3Ug
-bWVhbiBieSB0aGUgIm1pZGRsZSBvZiBhIHNlbnRlbmNlIj8KPiBUaGUgY29tbWl0J3MgbWVzc2Fn
-ZSBkb2Vzbid0IHNvdW5kICJtaWRkbGUiIHRvIG1lIGF0IGFsbC4KPiAKPiA+IEl0IGxvb2tzIGxp
-a2UgdGhpcyBmb3Igc29tZSBvZiB1czoKPiA+IAo+ID4gaHR0cHM6Ly9tYXJjLmluZm8vP2w9bGlu
-dXgtZHJpdmVyLWRldmVsJm09MTU4MjgyNzAxNDMwMTc2Jnc9Mgo+IAo+IFRoaXMgbGluayBwb2lu
-dHMgdG8gdGhpcyBwYXRjaCwgSSBkb24ndCBxdWl0ZSB1bmRlcnN0YW5kIHdoYXQgeW91J3JlCj4g
-dHJ5aW5nIHRvIGNvbnZleSBoZXJlLgo+IAo+ID4gSSBnZW5lcmFsbHkgcmVhZCB0aGUgc3ViamVj
-dCBvciB0aGUgZnVsbCBjb21taXQgbWVzc2FnZSBidXQgc2VsZG9tCj4gPiBib3RoLgo+IAo+IFRo
-ZSBjb21taXQncyB0aXRsZSBkZXNjcmliZXMgdGhlIGNoYW5nZSBicmllZmx5LCB3aGlsZSB0aGUg
-bWVzc2FnZSBnaXZlcwo+IGEgcmF0aW9uYWwgZm9yIHRoZSBjaGFuZ2UuIFVzdWFsbHkgcmV2aWV3
-ZXIgc2hvdWxkIGNvbnN1bHQgdGhlIGNvZGUKPiBjaGFuZ2VzIHRoZW1zZWx2ZXMgZm9yIG1vcmUg
-ZGV0YWlscy4KPiAKPiBEbyB5b3UgaGF2ZSBzb21lIGtpbmQgb2YgYSBlbWFpbCBmaWx0ZXIgdGhh
-dCBzaG93cyBvbmx5IHRoZSBjb21taXQncwo+IG1lc3NhZ2U/IE90aGVyd2lzZSBJJ20gbm90IHN1
-cmUgd2hhdCdzIHRoZSBwcm9ibGVtLgoKClRoZSBjb21taXQgbWVzc2FnZSBqdXN0IHNheXMgIlRo
-aXMgaGVscHMgdG8gbWFrZSBjb2RlIGNsZWFuZXIgYSB0YWQuIgpidXQgaXQgZG9lc24ndCBtZW50
-aW9uIGRldm1fcGxhdGZvcm1faW9yZW1hcF9yZXNvdXJjZV9ieW5hbWUoKS4gIFRoYXQKaW5mb3Jt
-YXRpb24gaXMgdGhlcmUgaW4gdGhlIHN1YmplY3QgYnV0IG5vdCBpbiB0aGUgY29tbWl0IG1lc3Nh
-Z2UgaXRzZWxmLgpUYWtlIGEgbG9vayBhdCB0aGUgbGluayBJIHNlbnQgeW91IGFuZCB0cnkgdG8g
-ZmluZCB0aGUgc3ViamVjdC4gIEl0J3MKZmFyIGF3YXkgZnJvbSB0aGUgY29tbWl0IG1lc3NhZ2Uu
-CgpyZWdhcmRzLApkYW4gY2FycGVudGVyCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9q
-ZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Hi Alex,
+
+On Mon, Mar 2, 2020 at 4:07 PM Alex Riesen <alexander.riesen@cetitec.com> wrote:
+> Geert Uytterhoeven, Mon, Mar 02, 2020 14:47:46 +0100:
+> > On Mon, Mar 2, 2020 at 2:40 PM Alex Riesen <alexander.riesen@cetitec.com> wrote:
+> > > > > --- a/arch/arm64/boot/dts/renesas/salvator-common.dtsi
+> > > > > +++ b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
+> > > > > @@ -322,6 +322,10 @@
+> > > > >         clock-frequency = <22579200>;
+> > > > >  };
+> > > > >
+> > > > > +&audio_clk_c {
+> > > > > +       clock-frequency = <12288000>;
+> > > > > +};
+> > > >
+> > > > Does the ADV7482 always generate a 12.288 MHz clock signal?
+> > > > Or is this programmable?
+> > >
+> > > Oops. It looks like it is and the value is derived from the sampling rate
+> > > (48kHz) and the master clock multiplier. Both hard-coded in the board file.
+> >
+> > Where are these hardcoded in the board file?
+>
+> In the endpoint definition, arch/arm64/boot/dts/renesas/r8a7795-es1-salvator-x.dts
+>
+> So the frequency can be set at the run-time, perhaps even derived from
+> endpoint connected to the output. In this case, rsnd_endpoint3,
+> which has the "mclk-fs" setting. Not sure if the sampling rate
+> can be set to something else for the HDMI, though.
+>
+> > Even if they are, technically this is a clock output of the ADV7482.
+>
+> ... which I hope to correct as soon as I steal the hardware from whoever stole
+> it from me...
+>
+> > > > > video-receiver@70 {
+> > > > >     compatible = "adi,adv7482";
+> > > > > ...
+> > > > > +   clocks = <&rcar_sound 3>, <&audio_clk_c>;
+> > > > > +   clock-names = "clk-hdmi-video", "clk-hdmi-i2s-mclk";
+> > > >
+> > > > The above declares the Audio CLK C to be a clock input of the ADV7482, while
+> > > > it is an output.
+> > >
+> > > I would gladly give it right direction if I *really* understood what I was
+> > > doing...
+> >
+> > :-)
+> >
+> > > > Furthermore, the DT bindings do not document that clocks can be specified.
+> > >
+> > > Should the DT bindings document that the clock cannot be specified than?
+> >
+> > It currently does say so, as it doesn't list "clocks" in its properties section.
+>
+> The bindings documentation file, which we're talking about here and which does
+> not list the specifiable input clocks in its properties, is it the
+>
+>     Documentation/devicetree/bindings/media/i2c/adv748x.txt
+>
+> ?
+
+Yes.
+
+>
+> And this absence of documentation also means that whatever clocks (both input
+> in "clocks=" and output in "#clock-cells") listed in a specific .dts are just
+> an integration detail?
+
+No, the absence probably means that any clock-related properties in a .dts
+file will just be ignored.
+
+Looking at the driver source, it indeed has no support related to clocks at all.
+
+> Does this below makes more sense, than?
+>
+>     video-receiver@70 {
+>         compatible = "adi,adv7482";
+>         clocks = <&rcar_sound 3>;
+>         clock-names = "clk-hdmi-video";
+>         adv748x_mclk: mclk {
+>             compatible = "fixed-clock";
+>             #clock-cells =  <0>;
+>             /* frequency hard-coded for illustration */
+>             clock-frequency = <12288000>;
+>             clock-output-names = "clk-hdmi-i2s-mclk";
+>         };
+>     };
+
+The #clock-cells should be in the main video-receiver node.
+Probably there is more than one clock output, so #clock-cells may be 1?
+There is no need for a fixed-clock compatible, nor for clock-frequency
+and clock-output-names.
+
+But most important: this should be documented in the adv748x DT bindings,
+and implemented in the adv748x driver.
+
+> Now I'm a bit hazy on how to declare that the MCLK output of the
+> video-receiver@70 is connected to the Audio Clock C of the SoC...
+> Probably remove use of "audio_clk_c" completely?
+
+Yes, the current audio_clk_c definition in the DTS assumes a fixed
+crystal.
+
+> > > > > @@ -686,7 +700,8 @@
+> > > > >         };
+> > > > >
+> > > > >         sound_pins: sound {
+> > > > > -               groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a";
+> > > > > +               groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a",
+> > > > > +                        "ssi4_data";
+> > > >
+> > > > Missing "ss4_ctrl", for the SCK4 and WS4 pins.
+> > >
+> > > I'll add them.
+> > > As the device seems to function even without thoes, does this mean the
+> > > pins in the group are used "on demand" by whatever needs them?
+> >
+> > Probably the SCK4/WS4 functions are the reset-state defaults.
+>
+> That ... might require some trial and testing: when I add them to the group,
+> the reset defaults will be overridden by the platform initialization, which is
+> not necessarily the reset default. Will see.
+
+Or by the boot loader.  Anyway, you need to specify these in the DTS.
+
+> > > Does a "clocks = ..." statement always mean input clocks?
+> >
+> > Yes it does.
+> > If a device has clock outputs and is thus a clock provider, it should
+> > have a #clock-cells property, and this should be documented in the bindings.
+> >
+> > A clock consumer will refer to clocks of a provider using the "clocks"
+> > property, specifying a clock specifier (phandle and zero or more indices)
+> > for each clock referenced.
+>
+> Something like this?
+>
+>     &rcar_sound {
+>         clocks = ...,
+>                  <&adv748x_mclk>,
+>                  <&cpg CPG_CORE CPG_AUDIO_CLK_I>;
+>         clock-names = ...,
+>                       "clk_c",
+>                       "clk_i";
+>     };
+
+More or less.
+
+Might become
+
+    find_a_better_label_choice: video-receiver@70 {
+            ...
+    };
+
+    &rcar_sound {
+            clock = ...,
+                    <&find_a_better_label_choice 0>,
+                    ...
+    };
+
+as there may be multiple clock outputs on the ADV7482.
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
