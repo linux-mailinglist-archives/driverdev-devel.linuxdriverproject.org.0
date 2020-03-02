@@ -2,89 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D17C1756ED
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 10:24:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 60FA21757C8
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 10:57:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BE66485566;
-	Mon,  2 Mar 2020 09:24:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9374485593;
+	Mon,  2 Mar 2020 09:57:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1r-J_TA0hR_b; Mon,  2 Mar 2020 09:24:10 +0000 (UTC)
+	with ESMTP id huJ6M1SYYKUV; Mon,  2 Mar 2020 09:57:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 58A8085580;
-	Mon,  2 Mar 2020 09:24:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 40C8E85321;
+	Mon,  2 Mar 2020 09:57:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0AF2F1BF28A
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 09:24:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 60E8C1BF28A
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 09:57:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0342187476
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 09:24:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5D34587079
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 09:57:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UNLZzlG6lE-E for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 09:24:05 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B73FF87463
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 09:24:05 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0229O47w115727;
- Mon, 2 Mar 2020 09:24:04 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=L5s/2KkDnKUQeUzW5nA0QlVvM5PRywVEFDW/9xkZqu0=;
- b=vwz+88AVmnLeBh9tg06tbIxapFTTr4jkPmjIlTiT/9Nl6ezB+jHa0NgZZRM3M5y2Egyq
- ieMlYV6eE9isVKwlOTBxwrTHrurU+OCspxirawvJ/2Vz2bds3meZNzfGW6AI4433iu1j
- 7qmGvx8hxmxDT97jj4N0/aoAfee5TYlhXCAAgcB23vMq9MfyQhoWDa5d2sp4EcD7HYAg
- f5O/5thS+gecYABLk+thRzW/V4sOz1NzWA4VAHNUy8vfKcWOIp1AOAaLmZ5WYz2u45Ok
- aIgwWapxoRUPeSJxE+y6RwN4G7l5zCuYIS7ngmELBO9tQFy7PVGgexMG80n7dE3q4+Ju NQ== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2120.oracle.com with ESMTP id 2yffwqee52-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 02 Mar 2020 09:24:04 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0229IijF189919;
- Mon, 2 Mar 2020 09:24:01 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 2yg1p18qbn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 02 Mar 2020 09:24:01 +0000
-Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0229O04u019668;
- Mon, 2 Mar 2020 09:24:00 GMT
-Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 02 Mar 2020 01:23:56 -0800
-Date: Mon, 2 Mar 2020 12:23:46 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Ajay.Kathat@microchip.com
-Subject: Re: [PATCH v3 00/18] wilc1000: move out of staging
-Message-ID: <20200302092346.GA24308@kadam>
-References: <20200225074105.7740-1-ajay.kathat@microchip.com>
+ with ESMTP id bUhjqLkJAudZ for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 09:57:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx04.melco.co.jp (mx04.melco.co.jp [192.218.140.144])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 949DC87089
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 09:57:20 +0000 (UTC)
+Received: from mr04.melco.co.jp (mr04 [133.141.98.166])
+ by mx04.melco.co.jp (Postfix) with ESMTP id 85D453A398E;
+ Mon,  2 Mar 2020 18:57:18 +0900 (JST)
+Received: from mr04.melco.co.jp (unknown [127.0.0.1])
+ by mr04.imss (Postfix) with ESMTP id 48WFtQ3R5hzRk9s;
+ Mon,  2 Mar 2020 18:57:18 +0900 (JST)
+Received: from mf03_second.melco.co.jp (unknown [192.168.20.183])
+ by mr04.melco.co.jp (Postfix) with ESMTP id 48WFtQ36lTzRk9l;
+ Mon,  2 Mar 2020 18:57:18 +0900 (JST)
+Received: from mf03.melco.co.jp (unknown [133.141.98.183])
+ by mf03_second.melco.co.jp (Postfix) with ESMTP id 48WFtQ2js7zRkFV;
+ Mon,  2 Mar 2020 18:57:18 +0900 (JST)
+Received: from tux532.tad.melco.co.jp (unknown [133.141.243.226])
+ by mf03.melco.co.jp (Postfix) with ESMTP id 48WFtQ2CcFzRk86;
+ Mon,  2 Mar 2020 18:57:18 +0900 (JST)
+Received: from tux532.tad.melco.co.jp
+ by tux532.tad.melco.co.jp (unknown) with ESMTP id 0229vINH027655;
+ Mon, 2 Mar 2020 18:57:18 +0900
+Received: from tux390.tad.melco.co.jp (tux390.tad.melco.co.jp [127.0.0.1])
+ by postfix.imss70 (Postfix) with ESMTP id 1D34317E075;
+ Mon,  2 Mar 2020 18:57:18 +0900 (JST)
+Received: from tux554.tad.melco.co.jp (tadpost1.tad.melco.co.jp [10.168.7.223])
+ by tux390.tad.melco.co.jp (Postfix) with ESMTP id 07A3617E073;
+ Mon,  2 Mar 2020 18:57:18 +0900 (JST)
+Received: from tux554.tad.melco.co.jp
+ by tux554.tad.melco.co.jp (unknown) with ESMTP id 0229vH0s007040;
+ Mon, 2 Mar 2020 18:57:17 +0900
+From: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+To: Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp
+Subject: [PATCH 1/2] staging: exfat: clean up d_entry rebuilding.
+Date: Mon,  2 Mar 2020 18:57:15 +0900
+Message-Id: <20200302095716.64155-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200225074105.7740-1-ajay.kathat@microchip.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9547
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- malwarescore=0
- mlxlogscore=999 mlxscore=0 spamscore=0 adultscore=0 bulkscore=0
- suspectscore=1 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2001150001 definitions=main-2003020073
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9547
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 spamscore=0
- impostorscore=0 malwarescore=0 mlxlogscore=999 mlxscore=0 suspectscore=1
- phishscore=0 clxscore=1011 bulkscore=0 adultscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2003020073
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,140 +77,94 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Venkateswara.Kaja@microchip.com, gregkh@linuxfoundation.org,
- linux-wireless@vger.kernel.org, Nicolas.Ferre@microchip.com,
- Adham.Abozaeid@microchip.com, johannes@sipsolutions.net
+Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ motai.hirotaka@aj.mitsubishielectric.co.jp, linux-kernel@vger.kernel.org,
+ Mori.Takahiro@ab.MitsubishiElectric.co.jp, linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There are a few static checker warnings from Friday's linux-next.  Only
-the first one is important.  (Not all these Smatch warnings have been
-published).
+Clean up d_entry rebuilding in exfat_rename_file() and move_file().
 
-drivers/staging/wilc1000/hif.c:804 wilc_hif_pack_sta_param() warn: '&params->ht_capa' sometimes too small '8' size = 29
+-Replace memcpy of d_entry with structure copy.
+-Change to use the value already stored in fid.
 
-drivers/staging/wilc1000/hif.c
-   787  static void wilc_hif_pack_sta_param(u8 *cur_byte, const u8 *mac,
-   788                                      struct station_parameters *params)
-   789  {
-   790          ether_addr_copy(cur_byte, mac);
-   791          cur_byte += ETH_ALEN;
-   792  
-   793          put_unaligned_le16(params->aid, cur_byte);
-   794          cur_byte += 2;
-   795  
-   796          *cur_byte++ = params->supported_rates_len;
-   797          if (params->supported_rates_len > 0)
-   798                  memcpy(cur_byte, params->supported_rates,
-   799                         params->supported_rates_len);
-   800          cur_byte += params->supported_rates_len;
-   801  
-   802          if (params->ht_capa) {
-   803                  *cur_byte++ = true;
-   804                  memcpy(cur_byte, &params->ht_capa,
-                                         ^^^^^^^^^^^^^^^^
-This is copying the wrong data.  The "&" is wrong.
+Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+---
+ drivers/staging/exfat/exfat_core.c | 25 ++++++++++---------------
+ 1 file changed, 10 insertions(+), 15 deletions(-)
 
-   805                         sizeof(struct ieee80211_ht_cap));
-   806          } else {
-   807                  *cur_byte++ = false;
-   808          }
-   809          cur_byte += sizeof(struct ieee80211_ht_cap);
-   810  
-   811          put_unaligned_le16(params->sta_flags_mask, cur_byte);
-   812          cur_byte += 2;
-   813          put_unaligned_le16(params->sta_flags_set, cur_byte);
-   814  }
-
-
-drivers/staging/wilc1000/cfg80211.c:904 del_pmksa() warn: 'i < priv->pmkid_list.numpmkid' 'true' implies 'priv->pmkid_list.numpmkid > 0' is 'true'
-
-drivers/staging/wilc1000/cfg80211.c
-   887  static int del_pmksa(struct wiphy *wiphy, struct net_device *netdev,
-   888                       struct cfg80211_pmksa *pmksa)
-   889  {
-   890          u32 i;
-   891          int ret = 0;
-   892          struct wilc_vif *vif = netdev_priv(netdev);
-   893          struct wilc_priv *priv = &vif->priv;
-   894  
-   895          for (i = 0; i < priv->pmkid_list.numpmkid; i++) {
-   896                  if (!memcmp(pmksa->bssid, priv->pmkid_list.pmkidlist[i].bssid,
-   897                              ETH_ALEN)) {
-   898                          memset(&priv->pmkid_list.pmkidlist[i], 0,
-   899                                 sizeof(struct wilc_pmkid));
-   900                          break;
-   901                  }
-   902          }
-   903  
-   904          if (i < priv->pmkid_list.numpmkid && priv->pmkid_list.numpmkid > 0) {
-                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This part of the condition is a given (must be true).  Delete it.  It's
-better to reverse the test and say:
-
-	if (i == priv->pmkid_list.numpmkid)
-		return -EINVAL;
-
-   905                  for (; i < (priv->pmkid_list.numpmkid - 1); i++) {
-   906                          memcpy(priv->pmkid_list.pmkidlist[i].bssid,
-   907                                 priv->pmkid_list.pmkidlist[i + 1].bssid,
-   908                                 ETH_ALEN);
-   909                          memcpy(priv->pmkid_list.pmkidlist[i].pmkid,
-   910                                 priv->pmkid_list.pmkidlist[i + 1].pmkid,
-   911                                 WLAN_PMKID_LEN);
-   912                  }
-   913                  priv->pmkid_list.numpmkid--;
-   914          } else {
-   915                  ret = -EINVAL;
-   916          }
-   917  
-   918          return ret;
-   919  }
-
-
-drivers/staging/wilc1000/wlan.c:706 wilc_wlan_handle_rx_buff() warn: 'pkt_len' 'true' implies 'pkt_len > 0' is 'true'
-
-drivers/staging/wilc1000/wlan.c
-   686          int is_cfg_packet;
-   687          u8 *buff_ptr;
-   688  
-   689          do {
-   690                  buff_ptr = buffer + offset;
-   691                  header = get_unaligned_le32(buff_ptr);
-   692  
-   693                  is_cfg_packet = FIELD_GET(WILC_PKT_HDR_CONFIG_FIELD, header);
-   694                  pkt_offset = FIELD_GET(WILC_PKT_HDR_OFFSET_FIELD, header);
-   695                  tp_len = FIELD_GET(WILC_PKT_HDR_TOTAL_LEN_FIELD, header);
-   696                  pkt_len = FIELD_GET(WILC_PKT_HDR_LEN_FIELD, header);
-   697  
-   698                  if (pkt_len == 0 || tp_len == 0)
-                            ^^^^^^^^^^^^
-
-   699                          break;
-   700  
-   701                  if (pkt_offset & IS_MANAGMEMENT) {
-   702                          buff_ptr += HOST_HDR_OFFSET;
-   703                          wilc_wfi_mgmt_rx(wilc, buff_ptr, pkt_len);
-   704                  } else {
-   705                          if (!is_cfg_packet) {
-   706                                  if (pkt_len > 0) {
-                                            ^^^^^^^^^^^
-Delete.
-
-   707                                          wilc_frmw_to_host(wilc, buff_ptr,
-   708                                                            pkt_len, pkt_offset);
-   709                                  }
-   710                          } else {
-   711                                  struct wilc_cfg_rsp rsp;
-   712  
-   713                                  buff_ptr += pkt_offset;
-   714  
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
+index ceaea1ba1a83..374a4fe183f5 100644
+--- a/drivers/staging/exfat/exfat_core.c
++++ b/drivers/staging/exfat/exfat_core.c
+@@ -2285,12 +2285,10 @@ s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
+ 			return -ENOENT;
+ 		}
+ 
+-		memcpy((void *)epnew, (void *)epold, DENTRY_SIZE);
+-		if (exfat_get_entry_type(epnew) == TYPE_FILE) {
+-			exfat_set_entry_attr(epnew,
+-					     exfat_get_entry_attr(epnew) |
+-					     ATTR_ARCHIVE);
++		*epnew = *epold;
++		if (fid->type == TYPE_FILE) {
+ 			fid->attr |= ATTR_ARCHIVE;
++			exfat_set_entry_attr(epnew, fid->attr);
+ 		}
+ 		exfat_buf_modify(sb, sector_new);
+ 		exfat_buf_unlock(sb, sector_old);
+@@ -2306,7 +2304,7 @@ s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
+ 			return -ENOENT;
+ 		}
+ 
+-		memcpy((void *)epnew, (void *)epold, DENTRY_SIZE);
++		*epnew = *epold;
+ 		exfat_buf_modify(sb, sector_new);
+ 		exfat_buf_unlock(sb, sector_old);
+ 
+@@ -2319,11 +2317,9 @@ s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 oldentry,
+ 				       num_old_entries);
+ 		fid->entry = newentry;
+ 	} else {
+-		if (exfat_get_entry_type(epold) == TYPE_FILE) {
+-			exfat_set_entry_attr(epold,
+-					     exfat_get_entry_attr(epold) |
+-					     ATTR_ARCHIVE);
++		if (fid->type == TYPE_FILE) {
+ 			fid->attr |= ATTR_ARCHIVE;
++			exfat_set_entry_attr(epold, fid->attr);
+ 		}
+ 		exfat_buf_modify(sb, sector_old);
+ 		exfat_buf_unlock(sb, sector_old);
+@@ -2387,11 +2383,10 @@ s32 move_file(struct inode *inode, struct chain_t *p_olddir, s32 oldentry,
+ 		return -ENOENT;
+ 	}
+ 
+-	memcpy((void *)epnew, (void *)epmov, DENTRY_SIZE);
+-	if (exfat_get_entry_type(epnew) == TYPE_FILE) {
+-		exfat_set_entry_attr(epnew, exfat_get_entry_attr(epnew) |
+-				     ATTR_ARCHIVE);
++	*epnew = *epmov;
++	if (fid->type == TYPE_FILE) {
+ 		fid->attr |= ATTR_ARCHIVE;
++		exfat_set_entry_attr(epnew, fid->attr);
+ 	}
+ 	exfat_buf_modify(sb, sector_new);
+ 	exfat_buf_unlock(sb, sector_mov);
+@@ -2406,7 +2401,7 @@ s32 move_file(struct inode *inode, struct chain_t *p_olddir, s32 oldentry,
+ 		return -ENOENT;
+ 	}
+ 
+-	memcpy((void *)epnew, (void *)epmov, DENTRY_SIZE);
++	*epnew = *epmov;
+ 	exfat_buf_modify(sb, sector_new);
+ 	exfat_buf_unlock(sb, sector_mov);
+ 
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
