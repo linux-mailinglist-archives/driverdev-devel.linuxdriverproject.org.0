@@ -1,70 +1,85 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81104175D63
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 15:39:41 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 23B8C8489C;
-	Mon,  2 Mar 2020 14:39:39 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BQDr+6KUayzl; Mon,  2 Mar 2020 14:39:38 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F266B8528B;
-	Mon,  2 Mar 2020 14:39:35 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CDD391BF39F
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 14:39:33 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A569175DD1
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 16:04:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BEC9886FF8
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 14:39:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 00E718778E;
+	Mon,  2 Mar 2020 15:04:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qPRXqvXuqU6I; Mon,  2 Mar 2020 15:04:27 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4917E875F4;
+	Mon,  2 Mar 2020 15:04:27 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6531A1BF39F
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:04:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5BFBB85D4B
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:04:25 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jVs9MM24aGXv for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 14:39:32 +0000 (UTC)
-X-Greylist: delayed 00:19:59 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0065.hostedemail.com
- [216.40.44.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B778B86FE7
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 14:39:32 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave02.hostedemail.com (Postfix) with ESMTP id 70FEE1800CA4D
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 14:00:09 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay07.hostedemail.com (Postfix) with ESMTP id 25330181D2FC2;
- Mon,  2 Mar 2020 14:00:07 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:1801:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3353:3622:3865:3867:3870:3871:3872:3874:4321:4605:5007:6119:7903:10004:10400:11026:11232:11473:11658:11914:12296:12297:12438:12740:12760:12895:13019:13069:13311:13357:13439:14096:14097:14181:14659:14721:21080:21220:21433:21611:21627:21990:30012:30054:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: bite50_580e7f13ad457
-X-Filterd-Recvd-Size: 3161
-Received: from XPS-9350.home (unknown [47.151.143.254])
- (Authenticated sender: joe@perches.com)
- by omf05.hostedemail.com (Postfix) with ESMTPA;
- Mon,  2 Mar 2020 14:00:04 +0000 (UTC)
-Message-ID: <4cac10d3e2c03e4f21f1104405a0a62a853efb4e.camel@perches.com>
-Subject: Re: [PATCH v2 2/3] binder: do not initialize locals passed to
- copy_from_user()
-From: Joe Perches <joe@perches.com>
-To: Alexander Potapenko <glider@google.com>
-Date: Mon, 02 Mar 2020 05:58:33 -0800
-In-Reply-To: <CAG_fn=VNnxjD6qdkAW_E0v3faBQPpSsO=c+h8O=yvNxTZowuBQ@mail.gmail.com>
-References: <20200302130430.201037-1-glider@google.com>
- <20200302130430.201037-2-glider@google.com>
- <0eaac427354844a4fcfb0d9843cf3024c6af21df.camel@perches.com>
- <CAG_fn=VNnxjD6qdkAW_E0v3faBQPpSsO=c+h8O=yvNxTZowuBQ@mail.gmail.com>
-User-Agent: Evolution 3.34.1-2 
+ with ESMTP id MvlagChyr7Jg for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 15:04:24 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
+ [209.85.208.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6943385CE2
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 15:04:24 +0000 (UTC)
+Received: by mail-lj1-f194.google.com with SMTP id a12so11047988ljj.2
+ for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 07:04:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=OsxgYgsKphJDyuRREvQcBCxW+LOMW9YuhqtTDzyIanc=;
+ b=sR5HyV6oXBFgipsb3ANiMlO3m5ZKXcTJRG44spcXmrm3FDiSyFsOPjc1oCYcz0S4+q
+ Zy0/Wy3Vyznt+BF7js7FKTYwQHUP6+u8VXht705SHRioh9qBs0fxgZK6fMpyHC6E8Icq
+ 6jKE8GIroACzzGUyBr/hl9Ku0PBXswtudX1McI/vS0QunxqBkUqjO4ajROAj8u1PFGWT
+ KbJdJ1I/m6E/pfW1Tbv97cXQPFOI9R5qxrZb1Meo2e7t6yhSl7cuCAV0HiDS/mafPBti
+ pHMECofq9Qlgc+n6zvkJOfqkIxm+JrvidRotdWKWwJMZ+HszfSo9YLgka0NB8ZC7FQSK
+ FERw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=OsxgYgsKphJDyuRREvQcBCxW+LOMW9YuhqtTDzyIanc=;
+ b=QKp1sCdsrijouqMDn6ZBK0IQrFCGfWSP2XbvsXKRdYeXW2Eug8EJ0+2sSFYazqGeVp
+ DEYQyjq54efGMITSa7SXc2QRp2skWsmWsX607bqt5VwxRvGu0yfQ+CPb53ST8w/gTR2j
+ /5z/5zl7TwK9jClkZ2+nTDG/GfU6GbDp01RC+sMi8hMQLwjz8ZIuVKLMvfE7PlcSkWir
+ 7khLhEXeC434NaKaJqEjc9LwbltYlXGWKPU6BYxpBgpqv3Qdenal91DSon4wdzr67kcz
+ bMT3nuHB3Qaql+yzxnfgIUrespAV7gGuB6AlAauaRoAsSGAysmfed6rmCM3cUeiyAb0x
+ j0bA==
+X-Gm-Message-State: ANhLgQ2xKVDrWhL28oeZSickti0IpjZYPO3HgB/8eBtcdSgwcu+Rw+A5
+ VUex9z7uLBBhFL2H1I4fqMvhE3Q/
+X-Google-Smtp-Source: ADFU+vtiyeT++BmeCxJab16/JiA7Sq6GAi7V95VfEd1lChxPAqxfx6XOoQi/iC91aKCTY3perxTq0w==
+X-Received: by 2002:a05:651c:2c9:: with SMTP id
+ f9mr4667824ljo.85.1583161462499; 
+ Mon, 02 Mar 2020 07:04:22 -0800 (PST)
+Received: from [192.168.2.145] (79-139-233-37.dynamic.spd-mgts.ru.
+ [79.139.233.37])
+ by smtp.googlemail.com with ESMTPSA id r15sm11141676ljh.11.2020.03.02.07.04.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Mar 2020 07:04:21 -0800 (PST)
+Subject: Re: [PATCH v1] media: staging: tegra-vde: Use
+ devm_platform_ioremap_resource_byname()
+To: Dan Carpenter <dan.carpenter@oracle.com>
+References: <20200227180915.9541-1-digetx@gmail.com>
+ <20200302080456.GD4140@kadam>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <d748bf2c-e38c-dabb-59ad-39e14813e40a@gmail.com>
+Date: Mon, 2 Mar 2020 18:04:20 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <20200302080456.GD4140@kadam>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,63 +92,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Kees Cook <keescook@chromium.org>, Jann Horn <jannh@google.com>,
- Peter Zijlstra <peterz@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- Arve =?ISO-8859-1?Q?Hj=F8nnev=E5g?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Dmitriy Vyukov <dvyukov@google.com>,
- Todd Kjos <tkjos@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Jonathan Hunter <jonathanh@nvidia.com>, Hans Verkuil <hverkuil@xs4all.nl>,
+ Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2020-03-02 at 14:25 +0100, Alexander Potapenko wrote:
-> On Mon, Mar 2, 2020 at 2:11 PM Joe Perches <joe@perches.com> wrote:
-> > On Mon, 2020-03-02 at 14:04 +0100, glider@google.com wrote:
-> > > Certain copy_from_user() invocations in binder.c are known to
-> > > unconditionally initialize locals before their first use, like e.g. in
-> > > the following case:
-> > []
-> > > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> > []
-> > > @@ -3788,7 +3788,7 @@ static int binder_thread_write(struct binder_proc *proc,
-> > > 
-> > >               case BC_TRANSACTION_SG:
-> > >               case BC_REPLY_SG: {
-> > > -                     struct binder_transaction_data_sg tr;
-> > > +                     struct binder_transaction_data_sg tr __no_initialize;
-> > > 
-> > >                       if (copy_from_user(&tr, ptr, sizeof(tr)))
-> > 
-> > I fail to see any value in marking tr with __no_initialize
-> > when it's immediately written to by copy_from_user.
-> 
-> This is being done exactly because it's immediately written to by copy_to_user()
-> Clang is currently unable to figure out that copy_to_user() initializes memory.
-> So building the kernel with CONFIG_INIT_STACK_ALL=y basically leads to
-> the following code:
-> 
->   struct binder_transaction_data_sg tr;
->   memset(&tr, 0xAA, sizeof(tr));
->   if (copy_from_user(&tr, ptr, sizeof(tr))) {...}
-> 
-> This unnecessarily slows the code down, so we add __no_initialize to
-> prevent the compiler from emitting the redundant initialization.
-
-So?  CONFIG_INIT_STACK_ALL by design slows down code.
-
-This marking would likely need to be done for nearly all
-3000+ copy_from_user entries.
-
-Why not try to get something done on the compiler side
-to mark the function itself rather than the uses?
-
-
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+MDIuMDMuMjAyMCAxMTowNCwgRGFuIENhcnBlbnRlciDQv9C40YjQtdGCOgo+IE9uIFRodSwgRmVi
+IDI3LCAyMDIwIGF0IDA5OjA5OjE1UE0gKzAzMDAsIERtaXRyeSBPc2lwZW5rbyB3cm90ZToKPj4g
+VGhpcyBoZWxwcyB0byBtYWtlIGNvZGUgY2xlYW5lciBhIHRhZC4KPiAKPiBQbGVhc2UgZG9uJ3Qg
+c3RhcnQgdGhlIGNvbW1pdCBtZXNzYWdlIGluIHRoZSBtaWRkbGUgb2YgYSBzZW50ZW5jZS4KCkNv
+dWxkIHlvdSBwbGVhc2UgY2xhcmlmeSB3aGF0IGRvIHlvdSBtZWFuIGJ5IHRoZSAibWlkZGxlIG9m
+IGEgc2VudGVuY2UiPwpUaGUgY29tbWl0J3MgbWVzc2FnZSBkb2Vzbid0IHNvdW5kICJtaWRkbGUi
+IHRvIG1lIGF0IGFsbC4KCj4gSXQgbG9va3MgbGlrZSB0aGlzIGZvciBzb21lIG9mIHVzOgo+IAo+
+IGh0dHBzOi8vbWFyYy5pbmZvLz9sPWxpbnV4LWRyaXZlci1kZXZlbCZtPTE1ODI4MjcwMTQzMDE3
+NiZ3PTIKClRoaXMgbGluayBwb2ludHMgdG8gdGhpcyBwYXRjaCwgSSBkb24ndCBxdWl0ZSB1bmRl
+cnN0YW5kIHdoYXQgeW91J3JlCnRyeWluZyB0byBjb252ZXkgaGVyZS4KCj4gSSBnZW5lcmFsbHkg
+cmVhZCB0aGUgc3ViamVjdCBvciB0aGUgZnVsbCBjb21taXQgbWVzc2FnZSBidXQgc2VsZG9tCj4g
+Ym90aC4KClRoZSBjb21taXQncyB0aXRsZSBkZXNjcmliZXMgdGhlIGNoYW5nZSBicmllZmx5LCB3
+aGlsZSB0aGUgbWVzc2FnZSBnaXZlcwphIHJhdGlvbmFsIGZvciB0aGUgY2hhbmdlLiBVc3VhbGx5
+IHJldmlld2VyIHNob3VsZCBjb25zdWx0IHRoZSBjb2RlCmNoYW5nZXMgdGhlbXNlbHZlcyBmb3Ig
+bW9yZSBkZXRhaWxzLgoKRG8geW91IGhhdmUgc29tZSBraW5kIG9mIGEgZW1haWwgZmlsdGVyIHRo
+YXQgc2hvd3Mgb25seSB0aGUgY29tbWl0J3MKbWVzc2FnZT8gT3RoZXJ3aXNlIEknbSBub3Qgc3Vy
+ZSB3aGF0J3MgdGhlIHByb2JsZW0uCgo+IE90aGVyd2lzZSB0aGUgcGF0Y2ggbG9va3MgdmVyeSBn
+b29kLgoKVGhhbmtzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
+Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
+cmRldi1kZXZlbAo=
