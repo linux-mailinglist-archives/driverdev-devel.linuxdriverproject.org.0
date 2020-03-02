@@ -2,61 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFD831762DB
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 19:40:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C2941765AA
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 22:13:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A913D85A1E;
-	Mon,  2 Mar 2020 18:40:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 90A0B85259;
+	Mon,  2 Mar 2020 21:13:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i7VyMm-r8jkI; Mon,  2 Mar 2020 18:40:33 +0000 (UTC)
+	with ESMTP id n8adzHabZeBb; Mon,  2 Mar 2020 21:13:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B87185660;
-	Mon,  2 Mar 2020 18:40:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 34567850E1;
+	Mon,  2 Mar 2020 21:13:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 780431BF392
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 18:40:30 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 733B21BF366
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 21:13:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 743931FEBF
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 18:40:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6F5DD86252
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 21:13:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zaQRVyyYvzJT for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 18:40:29 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id D54F81FE32
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 18:40:29 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4058C2166E;
- Mon,  2 Mar 2020 18:40:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583174429;
- bh=6DLnZ2Zf66pt7VKVRWxot04T4F3DGFl1pn1DT9jHh7I=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Tue91unT4DUxXF/pJjA0movpxeFA7lsfEyrSjfNN69R8oLyXfqMXQIl2ZfHkb9WSJ
- I4L34YzSQjdERZqP7opT1z5y55mwOlXmyaQbOmJI09XpxmDxoYLd5KaU1ysCPn1b6c
- TCnUDk3v/KkjZKjxKWlBIQi8OvXp+vIbSjJuHnj4=
-Date: Mon, 2 Mar 2020 19:39:54 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Alexander Potapenko <glider@google.com>
-Subject: Re: [PATCH v2 3/3] sched/wait: avoid double initialization in
- ___wait_event()
-Message-ID: <20200302183954.GA166273@kroah.com>
-References: <20200302130430.201037-1-glider@google.com>
- <20200302130430.201037-3-glider@google.com>
- <CAHRSSEwe=jZAEVhGw4ACBU0m-76TzZfJFv1Rzw=_UVm6HbTvAw@mail.gmail.com>
- <CAG_fn=W96H3kMcoTxfqVq9Ec=1HZsJjnTjuX74dhZJe0QNuMrw@mail.gmail.com>
+ with ESMTP id 4tLP+JZnZKW5 for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 21:13:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9629E8624E
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 21:13:32 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id f15so646031wml.3
+ for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 13:13:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=/+jAgbqODV6zfZn8QYllJrAWqpbAilb+ByG1dEQFoTI=;
+ b=Z57J+9Mw7IFmL3JLrP8T7LAr056lkwB99n9qv4N2C/H7ReTKRNDU8nGtCvcQRo3cdN
+ tjYtQd+nxYBpgYK6b1fUn6oJ0DVZWL17pZinObzpI/Dfe6HPKT7pwvVxYTnEqzbph6Vn
+ MW6ZzN77hvb1STkpoDqMdR0XbNHDhwQF335RcwEiny6EtaWwFosxvNsUWiyOt0zzHBaZ
+ 3sa7RUOvRvma6ILhlFvg5KzNePYzEgxWGy6xOoFBCYpnf22HkVC8TlxCRW7uESAuHPv7
+ 5s8P04i8esgi+LA5D1RtOmiqLug//1+J3ZMVsxAAVD/nNiwVQsdgB1N4JAhQ0jGYBrDq
+ a+4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=/+jAgbqODV6zfZn8QYllJrAWqpbAilb+ByG1dEQFoTI=;
+ b=L7rKQ9SkbPm+cxCuXVohXbgxcSHU3Mi7JTLEypwuA1eCsPqiDibkyBSYDn1awN3Qgb
+ qOK9nj5y/fatiDN4oh9C3SATugke1FgMIOMHGxyYnyG+kJ3ilsos2/x3ZBfCZdzI7xU4
+ Mzhm8XG3hw5aslm9byUtdUwWhT1ILV3CaiMn2/g6KFbA+16qNFuNKIfk9xLXWyIIl5ec
+ NjBjCKHClyEo5+KCHS+r3Lv8p+6UHVFF+jfzxFmYlcljtkcFtWQjibARV4gFJUwO4XjE
+ B3CwcvYZ+eJb5zv68+O9pH3btKL5GMpekoV8WwlwdscdFtbeezZp7if5NWRnk+MS3VAI
+ tLPg==
+X-Gm-Message-State: ANhLgQ0/AyM8EHi1bmkuOrBa38wduiX6QLOCE/87vp+jLAQVe5ppgOAX
+ eLsoqzvlTmt+L+WUA/e6uu8=
+X-Google-Smtp-Source: ADFU+vuuRMJ6xQ1KS3gBLcSlUwjC/P74kdqs4m4AOK9sIi0L/9TBRhkATI2dk94eYER9Oi2Nm0XmiA==
+X-Received: by 2002:a7b:cd8c:: with SMTP id y12mr335113wmj.5.1583183610759;
+ Mon, 02 Mar 2020 13:13:30 -0800 (PST)
+Received: from [192.168.43.18] (94.197.120.139.threembb.co.uk.
+ [94.197.120.139])
+ by smtp.gmail.com with ESMTPSA id u1sm11501634wrt.78.2020.03.02.13.13.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Mar 2020 13:13:30 -0800 (PST)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: [PATCH 1/3] staging: vt6656: vnt_int_start_interrupt remove spin lock.
+Message-ID: <871a78d4-6d3e-f34b-d0ae-6123803c6faf@gmail.com>
+Date: Mon, 2 Mar 2020 21:13:28 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAG_fn=W96H3kMcoTxfqVq9Ec=1HZsJjnTjuX74dhZJe0QNuMrw@mail.gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,37 +86,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Kees Cook <keescook@chromium.org>, Jann Horn <jannh@google.com>,
- Peter Zijlstra <peterz@infradead.org>, LKML <linux-kernel@vger.kernel.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Dmitry Vyukov <dvyukov@google.com>,
- Todd Kjos <tkjos@google.com>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Mar 02, 2020 at 07:03:19PM +0100, Alexander Potapenko wrote:
-> > >         case BINDER_SET_MAX_THREADS: {
-> > > -               int max_threads;
-> > > +               int max_threads __no_initialize;
-> >
-> > Is this really needed? A single integer in a rarely called ioctl()
-> > being initialized twice doesn't warrant this optimization.
-> 
-> It really does not, and I didn't have this bit in v1.
-> But if we don't want this diff to bit rot, we'd better have a
-> Coccinelle script generating it.
-> The script I added to the description of patch 2/3 introduced this
-> annotation, and I thought keeping it is better than trying to teach
-> the script about the size of the arguments.
+This formed part of the legacy driver and potentially multi
+users.
 
-Please fix the script, don't add stuff to the kernel that is not needed.
+The driver now has only one user mac80211 remove this lock.
 
-thanks,
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
+---
+ drivers/staging/vt6656/int.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-greg k-h
+diff --git a/drivers/staging/vt6656/int.c b/drivers/staging/vt6656/int.c
+index 3fa61c368464..fcf92cd1234b 100644
+--- a/drivers/staging/vt6656/int.c
++++ b/drivers/staging/vt6656/int.c
+@@ -26,16 +26,11 @@
+ int vnt_int_start_interrupt(struct vnt_private *priv)
+ {
+ 	int ret = 0;
+-	unsigned long flags;
+ 
+ 	dev_dbg(&priv->usb->dev, "---->Interrupt Polling Thread\n");
+ 
+-	spin_lock_irqsave(&priv->lock, flags);
+-
+ 	ret = vnt_start_interrupt_urb(priv);
+ 
+-	spin_unlock_irqrestore(&priv->lock, flags);
+-
+ 	return ret;
+ }
+ 
+-- 
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
