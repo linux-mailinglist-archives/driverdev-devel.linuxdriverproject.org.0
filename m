@@ -1,81 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68FAA1752EC
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 05:56:26 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F2463175416
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 07:48:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9C18F87774;
-	Mon,  2 Mar 2020 04:56:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6C89820414;
+	Mon,  2 Mar 2020 06:48:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SQotzE0Llp1m; Mon,  2 Mar 2020 04:56:24 +0000 (UTC)
+	with ESMTP id naAGArDEvWJ4; Mon,  2 Mar 2020 06:48:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DFF6186D52;
-	Mon,  2 Mar 2020 04:56:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 89CDC203F0;
+	Mon,  2 Mar 2020 06:48:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 25F0B1BF2EF
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 04:56:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 589E61BF2FE
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 06:48:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1FAF486DEE
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 04:56:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 52CF787133
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 06:48:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 43+xHrAEylld for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 04:56:20 +0000 (UTC)
+ with ESMTP id 3wtjfRKE6aDF for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 06:48:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7E3B486C1D
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 04:56:20 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id h8so4792076pgs.9
- for <devel@driverdev.osuosl.org>; Sun, 01 Mar 2020 20:56:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:date:from:to:cc:subject:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=7vBk8y9meWPdR0TaZ2HBNwrP3tbXHLzf6XFkZda6pg8=;
- b=omKcPtV0r+XUG1uxD/08V+0T0im1T3iDalejiL/uwZSOlkRhCDMQjLAv2MmM5Nm8B5
- m9XWOcW8FFLLjxHRoOJI5ny2a8FuSld+adUyGgf5MekFT5Wffdb4k8xAnYutGi2fwVPk
- oNYveMMx7WK67qsNfDgJQoe4FNVeKat/s/pQ0cs7z42M3ARiIIUqGSZogAeG0PJlyju5
- Rx82cucgZaS4vUpzijZT4Ax3xlecGTOQT1zSzWK2mI5pPpia+9RWunBdeFgJoTgBI+vv
- zxz+4+4/hRMD6L4MH/+dYBvbLldyB/tGkb73RpckojFDB4uW8XZn4K0/+H7/X1cUrgYN
- +r5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:date:from:to:cc:subject:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=7vBk8y9meWPdR0TaZ2HBNwrP3tbXHLzf6XFkZda6pg8=;
- b=jaod1qVH4yUvFYhOXBlHb2Qj72c4b/aVl01OjFV/f6T1KNEt9Ala5VWQRZHWksRLgJ
- P0Odk7+QbGx1VJf/EOI3Mvl5mGsPOGC6rJR6uBXWc9i8ZQeQE0a/cgOZjFqjUvO87/fn
- KyBrdvVVcQnpoGQdz/rCyFFzDvhjXPpEyyI0dhcTuAdn92bMFG0xwBxNnfUMRcHZY11J
- u2td3ahqCAwRJpojnnpg2GCGdyyNG9anrpF4j5pa3/O7g1h3ivmTrcHDNr7Ea/nbKI2T
- Ow5gbkc9yyt1Dhb2iAweyDKhzo14HC8ZBlF1ZyqrdlzBkHzXdUpfpGjuf4NOiKxp7abs
- F9xA==
-X-Gm-Message-State: APjAAAUvjnnXH2d64EQVauo1yLJqRPFkHrw14a9e60FEt9E4ftUL7QCi
- 8kMTOqbRJgSu5Ba9cm4NlA2jU//kdrVtTQ==
-X-Google-Smtp-Source: APXvYqxg7tJs5gZlN3V8QpXCeLgmA97RQ6zpxzKzcAqKNEflCUunLpOfaljr5eyptxa3Z38O8IG0vA==
-X-Received: by 2002:a63:9143:: with SMTP id l64mr17020637pge.75.1583124979563; 
- Sun, 01 Mar 2020 20:56:19 -0800 (PST)
-Received: from SARKAR ([49.207.56.215])
- by smtp.gmail.com with ESMTPSA id i5sm10884393pfg.40.2020.03.01.20.56.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 01 Mar 2020 20:56:18 -0800 (PST)
-Message-ID: <5e5c91f2.1c69fb81.25aee.deaf@mx.google.com>
-X-Google-Original-Message-ID: <20200302045612.GA10725@rohitsarkar5398@gmail.com>
-Date: Mon, 2 Mar 2020 10:26:12 +0530
-From: Rohit Sarkar <rohitsarkar5398@gmail.com>
-To: Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH v3] staging: iio: update TODO
-References: <5e5a6fbd.1c69fb81.f08c3.4cf0@mx.google.com>
- <20200301114922.6117def9@archlinux>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200301114922.6117def9@archlinux>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9BA188712D
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 06:48:23 +0000 (UTC)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CA3EC1045;
+ Sun,  1 Mar 2020 22:48:22 -0800 (PST)
+Received: from p8cg001049571a15.arm.com (unknown [10.163.1.119])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 439B13F6CF;
+ Sun,  1 Mar 2020 22:52:09 -0800 (PST)
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+To: linux-mm@kvack.org
+Subject: [RFC 2/3] mm/vma: Introduce VM_ACCESS_FLAGS
+Date: Mon,  2 Mar 2020 12:17:45 +0530
+Message-Id: <1583131666-15531-3-git-send-email-anshuman.khandual@arm.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1583131666-15531-1-git-send-email-anshuman.khandual@arm.com>
+References: <1583131666-15531-1-git-send-email-anshuman.khandual@arm.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,55 +57,295 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-iio@vger.kernel.org, grekh@linuxfoundation.org,
- devel@driverdev.osuosl.org
+Cc: linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, devel@driverdev.osuosl.org,
+ linux-s390@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Michael Ellerman <mpe@ellerman.id.au>, Russell King <linux@armlinux.org.uk>,
+ Ley Foon Tan <ley.foon.tan@intel.com>, Mark Salter <msalter@redhat.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>,
+ Rob Springer <rspringer@google.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Guan Xuetao <gxt@pku.edu.cn>, linux-arm-kernel@lists.infradead.org,
+ Nick Hu <nickhu@andestech.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ nios2-dev@lists.rocketboards.org, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Mar 01, 2020 at 11:49:22AM +0000, Jonathan Cameron wrote:
-> On Sat, 29 Feb 2020 19:35:45 +0530
-> Rohit Sarkar <rohitsarkar5398@gmail.com> wrote:
-> 
-> > Since there are no uses of the old GPIO API, remove the item from
-> > the TODO.
-> > 
-> > Changelog
-> > v3: Remove new items added.
-> > v2: Add work item mentioned by Alexandru in
-> > https://marc.info/?l=linux-iio&m=158261515624212&w=2
-> Change log belongs below the --- as we don't want this info in the
-> git history. I've tidied up and applied to the togreg branch of iio.git
-> (pushed out as testing for the autobuilders to play with it).
-Will keep that in mind, Thanks!
-> Thanks,
-> 
-> Jonathan
-> 
-> > 
-> > Signed-off-by: Rohit Sarkar <rohitsarkar5398@gmail.com>
-> > ---
-> >  drivers/staging/iio/TODO | 8 +-------
-> >  1 file changed, 1 insertion(+), 7 deletions(-)
-> > 
-> > diff --git a/drivers/staging/iio/TODO b/drivers/staging/iio/TODO
-> > index 1b8ebf2c1b69..4d469016a13a 100644
-> > --- a/drivers/staging/iio/TODO
-> > +++ b/drivers/staging/iio/TODO
-> > @@ -1,10 +1,4 @@
-> > -2018-04-15
-> > -
-> > -All affected drivers:
-> > -Convert all uses of the old GPIO API from <linux/gpio.h> to the
-> > -GPIO descriptor API in <linux/gpio/consumer.h> and look up GPIO
-> > -lines from device tree, ACPI or board files, board files should
-> > -use <linux/gpio/machine.h>.
-> > +2020-02-25
-> >  
-> >  
-> >  ADI Drivers:
-> 
+There are many places where all basic VMA access flags (read, write, exec)
+are initialized or checked against as a group. One such example is during
+page fault. Existing vma_is_accessible() wrapper already creates the notion
+of VMA accessibility as a group access permissions. Hence lets just create
+VM_ACCESS_FLAGS (VM_READ|VM_WRITE|VM_EXEC) which will not only reduce code
+duplication but also extend the VMA accessibility concept in general.
+
+Cc: Russell King <linux@armlinux.org.uk>
+CC: Catalin Marinas <catalin.marinas@arm.com>
+CC: Mark Salter <msalter@redhat.com>
+Cc: Nick Hu <nickhu@andestech.com>
+CC: Ley Foon Tan <ley.foon.tan@intel.com>
+Cc: Michael Ellerman <mpe@ellerman.id.au>
+Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+Cc: Guan Xuetao <gxt@pku.edu.cn>
+Cc: Dave Hansen <dave.hansen@linux.intel.com>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Rob Springer <rspringer@google.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-c6x-dev@linux-c6x.org
+Cc: nios2-dev@lists.rocketboards.org
+Cc: linuxppc-dev@lists.ozlabs.org
+Cc: linux-s390@vger.kernel.org
+Cc: linux-sh@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
+Cc: linux-mm@kvack.org
+Cc: linux-kernel@vger.kernel.org
+Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
+---
+ arch/arm/mm/fault.c                  | 2 +-
+ arch/arm64/mm/fault.c                | 2 +-
+ arch/c6x/include/asm/processor.h     | 2 +-
+ arch/nds32/mm/fault.c                | 2 +-
+ arch/nios2/include/asm/processor.h   | 2 +-
+ arch/powerpc/mm/book3s64/pkeys.c     | 2 +-
+ arch/s390/mm/fault.c                 | 2 +-
+ arch/sh/include/asm/processor_64.h   | 2 +-
+ arch/unicore32/mm/fault.c            | 2 +-
+ arch/x86/mm/pkeys.c                  | 2 +-
+ drivers/staging/gasket/gasket_core.c | 2 +-
+ include/linux/mm.h                   | 4 +++-
+ mm/mmap.c                            | 4 ++--
+ mm/mprotect.c                        | 7 +++----
+ 14 files changed, 19 insertions(+), 18 deletions(-)
+
+diff --git a/arch/arm/mm/fault.c b/arch/arm/mm/fault.c
+index bd0f4821f7e1..2c71028d9d6b 100644
+--- a/arch/arm/mm/fault.c
++++ b/arch/arm/mm/fault.c
+@@ -189,7 +189,7 @@ void do_bad_area(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
+  */
+ static inline bool access_error(unsigned int fsr, struct vm_area_struct *vma)
+ {
+-	unsigned int mask = VM_READ | VM_WRITE | VM_EXEC;
++	unsigned int mask = VM_ACCESS_FLAGS;
+ 
+ 	if ((fsr & FSR_WRITE) && !(fsr & FSR_CM))
+ 		mask = VM_WRITE;
+diff --git a/arch/arm64/mm/fault.c b/arch/arm64/mm/fault.c
+index 85566d32958f..63f31206a12e 100644
+--- a/arch/arm64/mm/fault.c
++++ b/arch/arm64/mm/fault.c
+@@ -445,7 +445,7 @@ static int __kprobes do_page_fault(unsigned long addr, unsigned int esr,
+ 	const struct fault_info *inf;
+ 	struct mm_struct *mm = current->mm;
+ 	vm_fault_t fault, major = 0;
+-	unsigned long vm_flags = VM_READ | VM_WRITE | VM_EXEC;
++	unsigned long vm_flags = VM_ACCESS_FLAGS;
+ 	unsigned int mm_flags = FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE;
+ 
+ 	if (kprobe_page_fault(regs, esr))
+diff --git a/arch/c6x/include/asm/processor.h b/arch/c6x/include/asm/processor.h
+index 1456f5e11de3..77372b8c28d7 100644
+--- a/arch/c6x/include/asm/processor.h
++++ b/arch/c6x/include/asm/processor.h
+@@ -57,7 +57,7 @@ struct thread_struct {
+ }
+ 
+ #define INIT_MMAP { \
+-	&init_mm, 0, 0, NULL, PAGE_SHARED, VM_READ | VM_WRITE | VM_EXEC, 1, \
++	&init_mm, 0, 0, NULL, PAGE_SHARED, VM_ACCESS_FLAGS, 1, \
+ 	NULL, NULL }
+ 
+ #define task_pt_regs(task) \
+diff --git a/arch/nds32/mm/fault.c b/arch/nds32/mm/fault.c
+index 906dfb25353c..55387a31bf42 100644
+--- a/arch/nds32/mm/fault.c
++++ b/arch/nds32/mm/fault.c
+@@ -79,7 +79,7 @@ void do_page_fault(unsigned long entry, unsigned long addr,
+ 	struct vm_area_struct *vma;
+ 	int si_code;
+ 	vm_fault_t fault;
+-	unsigned int mask = VM_READ | VM_WRITE | VM_EXEC;
++	unsigned int mask = VM_ACCESS_FLAGS;
+ 	unsigned int flags = FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE;
+ 
+ 	error_code = error_code & (ITYPE_mskINST | ITYPE_mskETYPE);
+diff --git a/arch/nios2/include/asm/processor.h b/arch/nios2/include/asm/processor.h
+index 94bcb86f679f..fbfb3ab14cfc 100644
+--- a/arch/nios2/include/asm/processor.h
++++ b/arch/nios2/include/asm/processor.h
+@@ -51,7 +51,7 @@ struct thread_struct {
+ };
+ 
+ #define INIT_MMAP \
+-	{ &init_mm, (0), (0), __pgprot(0x0), VM_READ | VM_WRITE | VM_EXEC }
++	{ &init_mm, (0), (0), __pgprot(0x0), VM_ACCESS_FLAGS }
+ 
+ # define INIT_THREAD {			\
+ 	.kregs	= NULL,			\
+diff --git a/arch/powerpc/mm/book3s64/pkeys.c b/arch/powerpc/mm/book3s64/pkeys.c
+index 59e0ebbd8036..11fd52b24f68 100644
+--- a/arch/powerpc/mm/book3s64/pkeys.c
++++ b/arch/powerpc/mm/book3s64/pkeys.c
+@@ -315,7 +315,7 @@ int __execute_only_pkey(struct mm_struct *mm)
+ static inline bool vma_is_pkey_exec_only(struct vm_area_struct *vma)
+ {
+ 	/* Do this check first since the vm_flags should be hot */
+-	if ((vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC)) != VM_EXEC)
++	if ((vma->vm_flags & VM_ACCESS_FLAGS) != VM_EXEC)
+ 		return false;
+ 
+ 	return (vma_pkey(vma) == vma->vm_mm->context.execute_only_pkey);
+diff --git a/arch/s390/mm/fault.c b/arch/s390/mm/fault.c
+index 7b0bb475c166..b2cb3c0d0e1a 100644
+--- a/arch/s390/mm/fault.c
++++ b/arch/s390/mm/fault.c
+@@ -584,7 +584,7 @@ void do_dat_exception(struct pt_regs *regs)
+ 	int access;
+ 	vm_fault_t fault;
+ 
+-	access = VM_READ | VM_EXEC | VM_WRITE;
++	access = VM_ACCESS_FLAGS;
+ 	fault = do_exception(regs, access);
+ 	if (unlikely(fault))
+ 		do_fault_error(regs, access, fault);
+diff --git a/arch/sh/include/asm/processor_64.h b/arch/sh/include/asm/processor_64.h
+index 53efc9f51ef1..3b8187284e3f 100644
+--- a/arch/sh/include/asm/processor_64.h
++++ b/arch/sh/include/asm/processor_64.h
+@@ -121,7 +121,7 @@ struct thread_struct {
+ };
+ 
+ #define INIT_MMAP \
+-{ &init_mm, 0, 0, NULL, PAGE_SHARED, VM_READ | VM_WRITE | VM_EXEC, 1, NULL, NULL }
++{ &init_mm, 0, 0, NULL, PAGE_SHARED, VM_ACCESS_FLAGS, 1, NULL, NULL }
+ 
+ #define INIT_THREAD  {				\
+ 	.sp		= sizeof(init_stack) +	\
+diff --git a/arch/unicore32/mm/fault.c b/arch/unicore32/mm/fault.c
+index 76342de9cf8c..fc27c274d358 100644
+--- a/arch/unicore32/mm/fault.c
++++ b/arch/unicore32/mm/fault.c
+@@ -149,7 +149,7 @@ void do_bad_area(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
+  */
+ static inline bool access_error(unsigned int fsr, struct vm_area_struct *vma)
+ {
+-	unsigned int mask = VM_READ | VM_WRITE | VM_EXEC;
++	unsigned int mask = VM_ACCESS_FLAGS;
+ 
+ 	if (!(fsr ^ 0x12))	/* write? */
+ 		mask = VM_WRITE;
+diff --git a/arch/x86/mm/pkeys.c b/arch/x86/mm/pkeys.c
+index c6f84c0b5d7a..8873ed1438a9 100644
+--- a/arch/x86/mm/pkeys.c
++++ b/arch/x86/mm/pkeys.c
+@@ -63,7 +63,7 @@ int __execute_only_pkey(struct mm_struct *mm)
+ static inline bool vma_is_pkey_exec_only(struct vm_area_struct *vma)
+ {
+ 	/* Do this check first since the vm_flags should be hot */
+-	if ((vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC)) != VM_EXEC)
++	if ((vma->vm_flags & VM_ACCESS_FLAGS) != VM_EXEC)
+ 		return false;
+ 	if (vma_pkey(vma) != vma->vm_mm->context.execute_only_pkey)
+ 		return false;
+diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
+index be6b50f454b4..81bb7d58dc49 100644
+--- a/drivers/staging/gasket/gasket_core.c
++++ b/drivers/staging/gasket/gasket_core.c
+@@ -689,7 +689,7 @@ static bool gasket_mmap_has_permissions(struct gasket_dev *gasket_dev,
+ 
+ 	/* Make sure that no wrong flags are set. */
+ 	requested_permissions =
+-		(vma->vm_flags & (VM_WRITE | VM_READ | VM_EXEC));
++		(vma->vm_flags & VM_ACCESS_FLAGS);
+ 	if (requested_permissions & ~(bar_permissions)) {
+ 		dev_dbg(gasket_dev->dev,
+ 			"Attempting to map a region with requested permissions "
+diff --git a/include/linux/mm.h b/include/linux/mm.h
+index 7a764ae6ab68..525026df1e58 100644
+--- a/include/linux/mm.h
++++ b/include/linux/mm.h
+@@ -368,6 +368,8 @@ extern unsigned int kobjsize(const void *objp);
+ #endif
+ 
+ #define VM_STACK_FLAGS	(VM_STACK | VM_STACK_DEFAULT_FLAGS | VM_ACCOUNT)
++#define VM_ACCESS_FLAGS (VM_READ | VM_WRITE | VM_EXEC)
++
+ 
+ /*
+  * Special vmas that are non-mergable, non-mlock()able.
+@@ -558,7 +560,7 @@ static inline bool vma_is_anonymous(struct vm_area_struct *vma)
+ 
+ static inline bool vma_is_accessible(struct vm_area_struct *vma)
+ {
+-	return vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC);
++	return vma->vm_flags & VM_ACCESS_FLAGS;
+ }
+ 
+ #ifdef CONFIG_SHMEM
+diff --git a/mm/mmap.c b/mm/mmap.c
+index 0d295f49b24d..f9a01763857b 100644
+--- a/mm/mmap.c
++++ b/mm/mmap.c
+@@ -106,7 +106,7 @@ static inline pgprot_t arch_filter_pgprot(pgprot_t prot)
+ pgprot_t vm_get_page_prot(unsigned long vm_flags)
+ {
+ 	pgprot_t ret = __pgprot(pgprot_val(protection_map[vm_flags &
+-				(VM_READ|VM_WRITE|VM_EXEC|VM_SHARED)]) |
++				(VM_ACCESS_FLAGS | VM_SHARED)]) |
+ 			pgprot_val(arch_vm_get_page_prot(vm_flags)));
+ 
+ 	return arch_filter_pgprot(ret);
+@@ -1221,7 +1221,7 @@ static int anon_vma_compatible(struct vm_area_struct *a, struct vm_area_struct *
+ 	return a->vm_end == b->vm_start &&
+ 		mpol_equal(vma_policy(a), vma_policy(b)) &&
+ 		a->vm_file == b->vm_file &&
+-		!((a->vm_flags ^ b->vm_flags) & ~(VM_READ|VM_WRITE|VM_EXEC|VM_SOFTDIRTY)) &&
++		!((a->vm_flags ^ b->vm_flags) & ~(VM_ACCESS_FLAGS | VM_SOFTDIRTY)) &&
+ 		b->vm_pgoff == a->vm_pgoff + ((b->vm_start - a->vm_start) >> PAGE_SHIFT);
+ }
+ 
+diff --git a/mm/mprotect.c b/mm/mprotect.c
+index 7a8e84f86831..4921a4211c6b 100644
+--- a/mm/mprotect.c
++++ b/mm/mprotect.c
+@@ -359,7 +359,7 @@ mprotect_fixup(struct vm_area_struct *vma, struct vm_area_struct **pprev,
+ 	 */
+ 	if (arch_has_pfn_modify_check() &&
+ 	    (vma->vm_flags & (VM_PFNMAP|VM_MIXEDMAP)) &&
+-	    (newflags & (VM_READ|VM_WRITE|VM_EXEC)) == 0) {
++	    (newflags & VM_ACCESS_FLAGS) == 0) {
+ 		pgprot_t new_pgprot = vm_get_page_prot(newflags);
+ 
+ 		error = walk_page_range(current->mm, start, end,
+@@ -530,15 +530,14 @@ static int do_mprotect_pkey(unsigned long start, size_t len,
+ 		 * If a permission is not passed to mprotect(), it must be
+ 		 * cleared from the VMA.
+ 		 */
+-		mask_off_old_flags = VM_READ | VM_WRITE | VM_EXEC |
+-					VM_FLAGS_CLEAR;
++		mask_off_old_flags = VM_ACCESS_FLAGS | VM_FLAGS_CLEAR;
+ 
+ 		new_vma_pkey = arch_override_mprotect_pkey(vma, prot, pkey);
+ 		newflags = calc_vm_prot_bits(prot, new_vma_pkey);
+ 		newflags |= (vma->vm_flags & ~mask_off_old_flags);
+ 
+ 		/* newflags >> 4 shift VM_MAY% in place of VM_% */
+-		if ((newflags & ~(newflags >> 4)) & (VM_READ | VM_WRITE | VM_EXEC)) {
++		if ((newflags & ~(newflags >> 4)) & VM_ACCESS_FLAGS) {
+ 			error = -EACCES;
+ 			goto out;
+ 		}
+-- 
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
