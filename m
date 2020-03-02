@@ -2,79 +2,105 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F1AA175E43
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 16:32:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9945D175E92
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 16:43:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F263D85817;
-	Mon,  2 Mar 2020 15:32:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BFAF88508A;
+	Mon,  2 Mar 2020 15:43:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fRgioHU66CLQ; Mon,  2 Mar 2020 15:32:48 +0000 (UTC)
+	with ESMTP id 1L20hAXOOFdB; Mon,  2 Mar 2020 15:43:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EB451858B8;
-	Mon,  2 Mar 2020 15:32:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 58C54849FA;
+	Mon,  2 Mar 2020 15:43:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ACF7F1BF30F
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:32:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CA8A51BF30F
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:43:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A98DA870A9
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:32:46 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BE4DD85E5E
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 15:43:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tCL+WCsRjm8k for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 15:32:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
- [209.85.210.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9805086FAF
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 15:32:44 +0000 (UTC)
-Received: by mail-ot1-f67.google.com with SMTP id x19so5303394otp.7
- for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 07:32:44 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=ZZC2Pupfl/eFbEiQmQK8DrdbI5TFes5OKB8zq+O8R1I=;
- b=T624RUcfhOjgJp7xdX4whqS+bHfi1CUic2W7Lxi3geiiYcq4pkqqYlpvvYtmUctSrr
- ytwCcxITKtnuQ7O6LIhC0EShi3sqaWhMPHOGjte+gEJwZbzU1ZurxOyO2NzsfFp5u9IZ
- 9T4/vfaOH0OVM1WgtrJ03CKwu6DZECjPCMFrQ7UY0A/Tk+LORGhdqv5aHBZEZ6mYS6tA
- 0yZ3tOLOIbbCyIF58zcxtnbj1KyKg32KCN0tM0lRt4XtgWQEfBNH+BYURanedcLlBSW/
- lICIj/JZXf0zj1GTSI012tNZQ/rDHwfwCgrGE9fs5Gw6vqfv8OZ6H2d0pQxco8UT+MwJ
- byOA==
-X-Gm-Message-State: APjAAAUtsQS+Pz7EIVPSDrWJZ9EwlHSTzH03wGoumav9G+Pu+IDsCMlS
- bdGeTMsmXOlFxdNJzjDncDk4XljvqZvwNcwiBVo=
-X-Google-Smtp-Source: APXvYqwgjIFCSqSj4qBpYRjDRfnQGcUTZSl3tHFJqbuFk9d/EBsOPPhJjGzJbigayYo0pnbjUOze3Cw83b79RAdw6Sc=
-X-Received: by 2002:a9d:dc1:: with SMTP id 59mr13477946ots.250.1583163163733; 
- Mon, 02 Mar 2020 07:32:43 -0800 (PST)
+ with ESMTP id pVqH4GCeKCw5 for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 15:43:14 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from EUR04-DB3-obe.outbound.protection.outlook.com
+ (mail-eopbgr60069.outbound.protection.outlook.com [40.107.6.69])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5BBF285C9D
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 15:43:14 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QZt3FGTPMZIchL9gBaXP5ty+ldlfk2r/dPBvDpst/z95VraV8GhJey5TUZql/5wJba2FfN77m9Q9vL5+voGpkiFaHQuuyDesrGWG6B7nNt9msY5/WWV3YWd36azQy0mg4DxrrUJj2wiOR8zL1SR/zmcN+aGYYYxm0uXuTYi9snnS4HhZ9s3Ug9T9dUszOl8qzRwTLG+jsLZ/e2bevJSXYDlEvCup+NcIsIKuwVYw1+xAQnWyc/V4FR1uigMKYCHNpKOSfXXxnOf9C5BzGmbTpqhsGHR/nUpAamUV9vqX4LQ0F0eTxSqtLpfKyB1Kg77lpa5g41zzRzPN6cb3+FbK2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=94AIEAfmbc8N0LDV8hG4602iETHCoKTrTeicQgDo1xI=;
+ b=AAT2QSeXx3aKZnt4DRdA32YfWeOPrJ9X3KkvwKUEKoJXvO1SvB9p0d+PRuA4YfF3SsWPxKAsNPqEGoymdCEiCLrh5CJvAk3oviTKRY6TJkYWFahZ72oDOCy4r2/tWi/cFtB2zAXDfNSaeoWaRtb93kNJeQCv4ckdWW5QR11y26OUsj+bn+OuzJR6bl3nfGH3cwm0wUvLuQwsXF11tKo8NXNGDxr5BE7qn2PvQsirytORWJjuxj+6wsTndfYmUgXBqtVq2MpR6sJjMmXWEu19JHo1qgXprXl8XsXC/tGcy2FTM9AalO7mlkGyTH+ZyBOvvCPVvoAt4thO++Sq3bu4nQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=itdev.co.uk; dmarc=pass action=none header.from=itdev.co.uk;
+ dkim=pass header.d=itdev.co.uk; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=itdevltd.onmicrosoft.com; s=selector2-itdevltd-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=94AIEAfmbc8N0LDV8hG4602iETHCoKTrTeicQgDo1xI=;
+ b=VnouQkg4nF5oRv5+vnT4KM5MzUa/cq39ie4tpLFPDP0DPwyBXLZKirN7EhkqKOQfO8yZ3kbyvNiwOOPREM6syAITTaLwyqkeul+CXJqR5KMQsUnEvACL6B5+lj2U9RK1R35tZi08AbkViWgWgT2489j6GczhKeKLSDUdiWAhNww=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=quentin.deslandes@itdev.co.uk; 
+Received: from DBBPR08MB4491.eurprd08.prod.outlook.com (20.179.44.144) by
+ DBBPR08MB4824.eurprd08.prod.outlook.com (20.179.46.141) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2750.18; Mon, 2 Mar 2020 15:43:11 +0000
+Received: from DBBPR08MB4491.eurprd08.prod.outlook.com
+ ([fe80::5084:aeb:3ba5:c5c1]) by DBBPR08MB4491.eurprd08.prod.outlook.com
+ ([fe80::5084:aeb:3ba5:c5c1%6]) with mapi id 15.20.2772.019; Mon, 2 Mar 2020
+ 15:43:10 +0000
+Date: Mon, 2 Mar 2020 15:43:09 +0000
+From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+To: Oscar Carter <oscar.carter@gmx.com>
+Subject: Re: [PATCH] staging: vt6656: Declare a few variables as __read_mostly
+Message-ID: <20200302154309.GA11315@qd-ubuntu>
+References: <20200301112620.7892-1-oscar.carter@gmx.com>
+Content-Disposition: inline
+In-Reply-To: <20200301112620.7892-1-oscar.carter@gmx.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: LO2P123CA0032.GBRP123.PROD.OUTLOOK.COM (2603:10a6:600::20)
+ To DBBPR08MB4491.eurprd08.prod.outlook.com
+ (2603:10a6:10:d2::16)
 MIME-Version: 1.0
-References: <cover.1578924232.git.alexander.riesen@cetitec.com>
- <20200113141556.GI3606@pflmari>
- <CAMuHMdV9urx-6N4tiaPdkssa6Wu-9HSB4VY-rvCu+8JpfZcBfA@mail.gmail.com>
- <20200302134011.GA3717@pflmari>
- <CAMuHMdWobAE+y90DRi+zQadObWPxLyQiGNTe4t77O-2S1Vp5yA@mail.gmail.com>
- <20200302150706.GB3717@pflmari>
-In-Reply-To: <20200302150706.GB3717@pflmari>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 2 Mar 2020 16:32:32 +0100
-Message-ID: <CAMuHMdW21rYXoOSE8azHNqYjng_j41rsL=Fo2bZc=1ULi9+pLw@mail.gmail.com>
-Subject: Re: [PATCH 8/8] arm64: dts: renesas: salvator: add a connection from
- adv748x codec (HDMI input) to the R-Car SoC
-To: Alex Riesen <alexander.riesen@cetitec.com>, 
- Kieran Bingham <kieran.bingham@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>, 
- Mark Rutland <mark.rutland@arm.com>, driverdevel <devel@driverdev.osuosl.org>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from qd-ubuntu (89.21.227.133) by
+ LO2P123CA0032.GBRP123.PROD.OUTLOOK.COM (2603:10a6:600::20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2772.14 via Frontend Transport; Mon, 2 Mar 2020 15:43:10 +0000
+X-Originating-IP: [89.21.227.133]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 59454e13-e044-4842-dd42-08d7bec06950
+X-MS-TrafficTypeDiagnostic: DBBPR08MB4824:
+X-Microsoft-Antispam-PRVS: <DBBPR08MB48247F2ECD6956AF2A876331B3E70@DBBPR08MB4824.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:514;
+X-Forefront-PRVS: 033054F29A
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10009020)(136003)(366004)(376002)(346002)(39830400003)(396003)(199004)(189003)(66946007)(66476007)(81166006)(16526019)(81156014)(8676002)(33656002)(66556008)(4326008)(86362001)(316002)(33716001)(8936002)(6916009)(1076003)(2906002)(6496006)(508600001)(186003)(44832011)(52116002)(5660300002)(26005)(54906003)(55016002)(9686003)(956004)(518174003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:DBBPR08MB4824;
+ H:DBBPR08MB4491.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+Received-SPF: None (protection.outlook.com: itdev.co.uk does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: h7Hjc8/PrE6OVS4uxO573uJuIzhqc5C+FpewrJAGQC3kr7Nl95zQYLvfySCIDIQGl18/BXV9inGl9hy4NnKnGXKxfQE7G2FfCTo471kK4aYPyaj/Au1nBFRIWfbDnCXHmqRNLqqYRSSkxnoijnqwFb0hfbCbOSiOMwqdN5LLiufpMP+BlVDf+mBk9EuI2xM7OQY6Wz1jK8HMy9FUJr81UtLsMQzfRtSeR4DPpoC1AX+Rv7KHH/a+SWodkTii22kb1slPega7NqOK1XxtraT/XH2HcFjACye28xRVVVeMKQYPkEK+fTEJ6VXYpaDphBXwtoKioE/JThhDByfVNgyDTUsMc0niIsuHspu9hU+K8NVITAmnxakCiGM44jZ9D37BAPDFUZbvz++XXVserM8bLOZHYt7LD84kd/nc23ivx5dSSaAUj0tyyUVvPyEjVwobRK0e86WF/HH1lcQpizoXbbG/ZVtXkUtkj/OcMaUTRvM5X4J66KYyQwIu5YkFdMYi
+X-MS-Exchange-AntiSpam-MessageData: 5B1n5TLyIj7Wmwpy8KTBqLMEVj9FksUZI1ft3SfIWQEmW/KTI10c63A5JPVDFebGlCrChOoW22FT4IZ9PC1oYz56UOn1wkZ1YhxeKRxAx63XVBSWAr37p1a2yvGnneTfuL/X4/HFOv5/NZ2mQuBTrA==
+X-OriginatorOrg: itdev.co.uk
+X-MS-Exchange-CrossTenant-Network-Message-Id: 59454e13-e044-4842-dd42-08d7bec06950
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Mar 2020 15:43:10.7539 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2d2930c4-2251-45b4-ad79-3582c5f41740
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: NsYUTE65jOj+7sZky6LRvdtl/fJSYrIrelevBhrhyN/Izvqz3zbyvAF8+h7J7yx3qi4HYdl7R+CBuZSeL6mZl/p1AGHTiNmjV9WuA56frDY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB4824
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,184 +113,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Forest Bond <forest@alittletooquiet.net>,
+ Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alex,
+On Sun, Mar 01, 2020 at 12:26:20PM +0100, Oscar Carter wrote:
+> These include module parameters.
+> 
+> Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+> ---
+>  drivers/staging/vt6656/main_usb.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+> index 5e48b3ddb94c..701300202b21 100644
+> --- a/drivers/staging/vt6656/main_usb.c
+> +++ b/drivers/staging/vt6656/main_usb.c
+> @@ -49,12 +49,12 @@ MODULE_LICENSE("GPL");
+>  MODULE_DESCRIPTION(DEVICE_FULL_DRV_NAM);
+> 
+>  #define RX_DESC_DEF0 64
+> -static int vnt_rx_buffers = RX_DESC_DEF0;
+> +static int __read_mostly vnt_rx_buffers = RX_DESC_DEF0;
+>  module_param_named(rx_buffers, vnt_rx_buffers, int, 0644);
+>  MODULE_PARM_DESC(rx_buffers, "Number of receive usb rx buffers");
+> 
+>  #define TX_DESC_DEF0 64
+> -static int vnt_tx_buffers = TX_DESC_DEF0;
+> +static int __read_mostly vnt_tx_buffers = TX_DESC_DEF0;
+>  module_param_named(tx_buffers, vnt_tx_buffers, int, 0644);
+>  MODULE_PARM_DESC(tx_buffers, "Number of receive usb tx buffers");
+> 
+> --
+> 2.20.1
+> 
 
-On Mon, Mar 2, 2020 at 4:07 PM Alex Riesen <alexander.riesen@cetitec.com> wrote:
-> Geert Uytterhoeven, Mon, Mar 02, 2020 14:47:46 +0100:
-> > On Mon, Mar 2, 2020 at 2:40 PM Alex Riesen <alexander.riesen@cetitec.com> wrote:
-> > > > > --- a/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-> > > > > +++ b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-> > > > > @@ -322,6 +322,10 @@
-> > > > >         clock-frequency = <22579200>;
-> > > > >  };
-> > > > >
-> > > > > +&audio_clk_c {
-> > > > > +       clock-frequency = <12288000>;
-> > > > > +};
-> > > >
-> > > > Does the ADV7482 always generate a 12.288 MHz clock signal?
-> > > > Or is this programmable?
-> > >
-> > > Oops. It looks like it is and the value is derived from the sampling rate
-> > > (48kHz) and the master clock multiplier. Both hard-coded in the board file.
-> >
-> > Where are these hardcoded in the board file?
->
-> In the endpoint definition, arch/arm64/boot/dts/renesas/r8a7795-es1-salvator-x.dts
->
-> So the frequency can be set at the run-time, perhaps even derived from
-> endpoint connected to the output. In this case, rsnd_endpoint3,
-> which has the "mclk-fs" setting. Not sure if the sampling rate
-> can be set to something else for the HDMI, though.
->
-> > Even if they are, technically this is a clock output of the ADV7482.
->
-> ... which I hope to correct as soon as I steal the hardware from whoever stole
-> it from me...
->
-> > > > > video-receiver@70 {
-> > > > >     compatible = "adi,adv7482";
-> > > > > ...
-> > > > > +   clocks = <&rcar_sound 3>, <&audio_clk_c>;
-> > > > > +   clock-names = "clk-hdmi-video", "clk-hdmi-i2s-mclk";
-> > > >
-> > > > The above declares the Audio CLK C to be a clock input of the ADV7482, while
-> > > > it is an output.
-> > >
-> > > I would gladly give it right direction if I *really* understood what I was
-> > > doing...
-> >
-> > :-)
-> >
-> > > > Furthermore, the DT bindings do not document that clocks can be specified.
-> > >
-> > > Should the DT bindings document that the clock cannot be specified than?
-> >
-> > It currently does say so, as it doesn't list "clocks" in its properties section.
->
-> The bindings documentation file, which we're talking about here and which does
-> not list the specifiable input clocks in its properties, is it the
->
->     Documentation/devicetree/bindings/media/i2c/adv748x.txt
->
-> ?
+Looks good to me.
 
-Yes.
+Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
 
->
-> And this absence of documentation also means that whatever clocks (both input
-> in "clocks=" and output in "#clock-cells") listed in a specific .dts are just
-> an integration detail?
-
-No, the absence probably means that any clock-related properties in a .dts
-file will just be ignored.
-
-Looking at the driver source, it indeed has no support related to clocks at all.
-
-> Does this below makes more sense, than?
->
->     video-receiver@70 {
->         compatible = "adi,adv7482";
->         clocks = <&rcar_sound 3>;
->         clock-names = "clk-hdmi-video";
->         adv748x_mclk: mclk {
->             compatible = "fixed-clock";
->             #clock-cells =  <0>;
->             /* frequency hard-coded for illustration */
->             clock-frequency = <12288000>;
->             clock-output-names = "clk-hdmi-i2s-mclk";
->         };
->     };
-
-The #clock-cells should be in the main video-receiver node.
-Probably there is more than one clock output, so #clock-cells may be 1?
-There is no need for a fixed-clock compatible, nor for clock-frequency
-and clock-output-names.
-
-But most important: this should be documented in the adv748x DT bindings,
-and implemented in the adv748x driver.
-
-> Now I'm a bit hazy on how to declare that the MCLK output of the
-> video-receiver@70 is connected to the Audio Clock C of the SoC...
-> Probably remove use of "audio_clk_c" completely?
-
-Yes, the current audio_clk_c definition in the DTS assumes a fixed
-crystal.
-
-> > > > > @@ -686,7 +700,8 @@
-> > > > >         };
-> > > > >
-> > > > >         sound_pins: sound {
-> > > > > -               groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a";
-> > > > > +               groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a",
-> > > > > +                        "ssi4_data";
-> > > >
-> > > > Missing "ss4_ctrl", for the SCK4 and WS4 pins.
-> > >
-> > > I'll add them.
-> > > As the device seems to function even without thoes, does this mean the
-> > > pins in the group are used "on demand" by whatever needs them?
-> >
-> > Probably the SCK4/WS4 functions are the reset-state defaults.
->
-> That ... might require some trial and testing: when I add them to the group,
-> the reset defaults will be overridden by the platform initialization, which is
-> not necessarily the reset default. Will see.
-
-Or by the boot loader.  Anyway, you need to specify these in the DTS.
-
-> > > Does a "clocks = ..." statement always mean input clocks?
-> >
-> > Yes it does.
-> > If a device has clock outputs and is thus a clock provider, it should
-> > have a #clock-cells property, and this should be documented in the bindings.
-> >
-> > A clock consumer will refer to clocks of a provider using the "clocks"
-> > property, specifying a clock specifier (phandle and zero or more indices)
-> > for each clock referenced.
->
-> Something like this?
->
->     &rcar_sound {
->         clocks = ...,
->                  <&adv748x_mclk>,
->                  <&cpg CPG_CORE CPG_AUDIO_CLK_I>;
->         clock-names = ...,
->                       "clk_c",
->                       "clk_i";
->     };
-
-More or less.
-
-Might become
-
-    find_a_better_label_choice: video-receiver@70 {
-            ...
-    };
-
-    &rcar_sound {
-            clock = ...,
-                    <&find_a_better_label_choice 0>,
-                    ...
-    };
-
-as there may be multiple clock outputs on the ADV7482.
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
