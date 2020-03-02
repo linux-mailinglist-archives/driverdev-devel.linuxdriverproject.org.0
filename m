@@ -1,37 +1,37 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11149175F82
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 17:23:50 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0ADC2175F80
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 17:23:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BFD0A877B1;
-	Mon,  2 Mar 2020 16:23:47 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id osUEtCEfvaBb; Mon,  2 Mar 2020 16:23:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 018C58516C;
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4C28686061;
 	Mon,  2 Mar 2020 16:23:46 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ihx8qFwmpQNg; Mon,  2 Mar 2020 16:23:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 12DBE8602E;
+	Mon,  2 Mar 2020 16:23:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BDD341BF321
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:23:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C99481BF321
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:23:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B899E85A0E
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:23:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C377385A0E
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:23:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jkSCgxdv6ZdN for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 16:23:44 +0000 (UTC)
+ with ESMTP id WQyZ0EnlhRC9 for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 16:23:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
  [68.232.154.123])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2696385ADC
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 16:23:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 56FCC858D2
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 16:23:38 +0000 (UTC)
 Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
  Ajay.Kathat@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
@@ -52,31 +52,31 @@ Authentication-Results: esa4.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: Ise5PeTMiZvZ58+aPn6vfTq3ZABJmUkevqlESA9AlXW3C3zMjHCaq6bsLjstxLT/ou6T3FOh9j
- 6ZzEg0TmG7xSDgO34/w9R1IVAegxJ0lPZXYppzacVrdjHwx8PnoCVkRNH286bP+9pJlXmPE/Vq
- 7fXJARk71BYd7L/QK+nctVCWI4HASHhH/QxkN0EN8nUm/2mqD52cQsoZx1SeVyCBtkOqhrFe/o
- 9HI0g+j5LTF6gORmYgvLPwCq2MyIldnDNrb+E8Kwlt2psUnwnTWTgRkndEenl/IU7wJzJT2Z3m
- uMw=
-X-IronPort-AV: E=Sophos;i="5.70,507,1574146800"; d="scan'208";a="65862715"
+IronPort-SDR: RuZYtSUifZ0w9rsxmR092xcv10TFTRViUj/QXkQEyd5TFhYfPbSa8SEDfVvJTcM9nsZhcHdWcN
+ YvNFBkRGeLxUDk5DDlWhH14scN5/iEj6TbC99675gHPE3cEzQj8JO39BSQ9iiH58ReNf2LIS/H
+ aUwbbb8XJwssWkdJa2+CVIpmmpZ70sGKB/Z+j54QwTHX5C91sjlSGZPdaWaQvKBHcTisxNqAwA
+ kP2u/8suirz/hdVpD8JZRZ+FhWwuMCocPnK/+lfn5+4B1tohTdGzlhI9KZ0OTJOMJ8mkqVKrxR
+ KaQ=
+X-IronPort-AV: E=Sophos;i="5.70,507,1574146800"; d="scan'208";a="65862660"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
  by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 02 Mar 2020 09:23:43 -0700
+ 02 Mar 2020 09:23:37 -0700
 Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 2 Mar 2020 09:23:36 -0700
+ 15.1.1713.5; Mon, 2 Mar 2020 09:23:50 -0700
 Received: from NAM12-BN8-obe.outbound.protection.outlook.com (10.10.215.89) by
  email.microchip.com (10.10.87.152) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
  via Frontend Transport; Mon, 2 Mar 2020 09:23:36 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=e6AmRWlWE7WOsQiAT0TCkxEbhDeTMRIslNQ6xixNmY0xBldpQ+R8kS5lnZsrR/vW7Ls4Wqd5CPEbNacGTdfwk4JnjDleEME2eBmDRrt0LfO8yGjXfM9oeMKtqer6DCvc/uZQzRYOduvhXix63/eaay/CCu03H7aCSVUSliRPhCbTQ8Te9+Nd5C8l9a3qad7pM/ImE6ZvxMOaXk4OqdzMWygJVcDmE0JUrnmZRgTw2J7duljdAvs6HBTlOIgFEk9whIZiyMLYVFdOMWQ8BOXVnYGjIOefQBXhAGcb0qMaxnJp7bn3HrFTeHGAvWoHwumZdqKALFXWkfUjv477fSxwTQ==
+ b=oDBGBw9dkhxrTuXS41NCLkWWNRKRrqwMfRdcpTnTNg9MDUdA3kVhbFky97uvCAWkI9Yfi6tiBbaRtqvoOkEBVRkNNl5hGbwKx2UOPBPpZc1mcJQZKXpMPHIEVRvXdjLYO67H+RWG+npWIL06Qs1v0WeWp1yxRz3EXIsQQkP8vLyqIXfob/wITovMBbI5445pvJxU/We/nQCgpmQWithUdTUmAm5j+vC8NeEwxxH3qdKs0Oo877nAoH7xhA3IcQXSXtbzoF4FW1lj4Jn6dC+0hAKOoB1L+T3xeU0xfh+TRUqBnEh4ctZ7uE2gQ2RRD1DGSX2FVPNPbJUa4rAZOVXIwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DRw7XYG6cvVhwKTEvVcvRpe6efemkNJ3RNVD2P7nuZ0=;
- b=OoBpTTxVL08l0olb0KngUPVCaxNqlbeAfsnTiRgLM/6kvZ9w3bnD2mo0QcFdOF19aupxqLJZ8CI0c8TtsKGc6YNZqTpFAxo6fLwTx/6HKpDVCiGG9Q7KSTvzMf0VtP31BVvTnso/Q9GaAUrykMWhuQj+jFBlkaDAcgS6YAcD0X3XyO8GOX3wqHnrHxXH0wj1MbdnPIoqJ3E0xo2J4V+1mb29d2j9aOlSmZHRVbBhdURdzq7+wvNTr5Cidw83H3BNc1XtwHAVZd0aF3w78nMtXfMik3jIlP7S4cois0ImZeDgDw5mBWMaVBoDz8Wc5X45Y713NNIlVFg2ON+9OdrMwA==
+ bh=M0T4qkDjuLZw+qtc10X2x4gNCeVnU/NWefbyunAGQ5c=;
+ b=ZbaOqFtO147738rpLDQAGdAKUPEjJAc0mB7SWK3NU8rsnCmvoo/8doRbqPbN/z7TKq2/0K/CWX1KRZk4buEex/NVTt/Z0kcVx6+xaUGYJn6VaLasu5KeEQzij3v2/nRSSYfD0G0dHM7lbQo6j9oNdIzUtp1rQTWHzcIUvE7dMatsSDqG/9v2WzYcLQ+W5IH16IpUh4LaGeO7Yi0ST+24t8z6gtK4hz3V49Vi9PgXD+NyKUw5ZbygDWkQytt+NNB6oINpeYYdpoUohmYGvsqRKHjsK2XYjxgY9E20Y2LvSRkUMioEu8JrIY9Mq1urNVWLmEt+xtj1JMOidJGrSYRqbw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=microchip.com; dmarc=pass action=none
  header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
@@ -84,26 +84,28 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=microchiptechnology.onmicrosoft.com;
  s=selector2-microchiptechnology-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DRw7XYG6cvVhwKTEvVcvRpe6efemkNJ3RNVD2P7nuZ0=;
- b=jdcZ5qPOS0qn81Kx8wRj5A8CsaieHVuZUvw31Do9YIztfdPf892N6Pc72i0v5OGHTZlpY/pn7pTAMqwTgb/jzf/Uza+ld2sfW4hz21FS/VcYCQmmkmvAb7++3aepcdpqijVd1UaXTvPyTigXZWYCJPOfTgJIUXGGN7aBwuCGrHY=
+ bh=M0T4qkDjuLZw+qtc10X2x4gNCeVnU/NWefbyunAGQ5c=;
+ b=Pzm+uNgSlR6L1Ajst5lWB8oWVGDx/onTxVBTQ5yu9V8bxzy6yJeYWZkWy588f16uaL1Xnd0O8DcgkNRtba0eYEAIAA/LgUOQp7oN/t84+/TjLlymzOExd4glRgMfyHasCyZ8BaEP/7ltl1R1sHcshN54p5cP3N1rwwdjMRGGqT8=
 Received: from BN6PR11MB3985.namprd11.prod.outlook.com (2603:10b6:405:7b::14)
  by BN6PR11MB1426.namprd11.prod.outlook.com (2603:10b6:405:b::18) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2772.14; Mon, 2 Mar
- 2020 16:22:34 +0000
+ 2020 16:22:36 +0000
 Received: from BN6PR11MB3985.namprd11.prod.outlook.com
  ([fe80::ec62:e7fd:f17c:dfd4]) by BN6PR11MB3985.namprd11.prod.outlook.com
  ([fe80::ec62:e7fd:f17c:dfd4%3]) with mapi id 15.20.2772.019; Mon, 2 Mar 2020
- 16:22:34 +0000
+ 16:22:35 +0000
 From: <Ajay.Kathat@microchip.com>
 To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH 0/3] staging: wilc1000: correct Smatch warnings & use
- flexible-array member
-Thread-Topic: [PATCH 0/3] staging: wilc1000: correct Smatch warnings & use
- flexible-array member
-Thread-Index: AQHV8K7HseitwdwO5kueKU9L/NJPqQ==
-Date: Mon, 2 Mar 2020 16:22:34 +0000
-Message-ID: <20200302162226.4196-1-ajay.kathat@microchip.com>
+Subject: [PATCH 2/3] staging: wilc1000: remove unnecessary always true 'if'
+ conditions
+Thread-Topic: [PATCH 2/3] staging: wilc1000: remove unnecessary always true
+ 'if' conditions
+Thread-Index: AQHV8K7IwDsMZBV4z0mZivbYZpT6/A==
+Date: Mon, 2 Mar 2020 16:22:35 +0000
+Message-ID: <20200302162226.4196-3-ajay.kathat@microchip.com>
+References: <20200302162226.4196-1-ajay.kathat@microchip.com>
+In-Reply-To: <20200302162226.4196-1-ajay.kathat@microchip.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -111,14 +113,14 @@ X-MS-TNEF-Correlator:
 x-mailer: git-send-email 2.17.1
 x-originating-ip: [121.244.27.38]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 7728f427-1118-4fff-4291-08d7bec5ea86
+x-ms-office365-filtering-correlation-id: e91d57e3-42eb-44ce-5d97-08d7bec5eb31
 x-ms-traffictypediagnostic: BN6PR11MB1426:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BN6PR11MB142681153FE7AAF35FBAA85FE3E70@BN6PR11MB1426.namprd11.prod.outlook.com>
+x-microsoft-antispam-prvs: <BN6PR11MB142622FAB38B603FA84AA75DE3E70@BN6PR11MB1426.namprd11.prod.outlook.com>
 x-ms-oob-tlc-oobclassifiers: OLM:4303;
 x-forefront-prvs: 033054F29A
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(396003)(376002)(346002)(366004)(39860400002)(136003)(189003)(199004)(5660300002)(66556008)(186003)(26005)(66476007)(64756008)(66446008)(6916009)(478600001)(6486002)(6506007)(6512007)(107886003)(86362001)(66946007)(91956017)(76116006)(316002)(8936002)(71200400001)(1076003)(81166006)(81156014)(4744005)(8676002)(54906003)(2616005)(2906002)(36756003)(4326008);
+ SFS:(10009020)(396003)(376002)(346002)(366004)(39860400002)(136003)(189003)(199004)(966005)(5660300002)(66556008)(186003)(26005)(66476007)(64756008)(66446008)(6916009)(478600001)(6486002)(6506007)(6512007)(107886003)(86362001)(66946007)(91956017)(76116006)(316002)(8936002)(71200400001)(1076003)(81166006)(81156014)(8676002)(54906003)(2616005)(2906002)(36756003)(4326008);
  DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1426;
  H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
@@ -126,15 +128,15 @@ received-spf: None (protection.outlook.com: microchip.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: CB/6fdQaIJigrY9r4vYp/pIs5/o9FWzKx9TvSDIH3ypxtZT8VXdNN12KmeiPFNxh3hd5SxQrvySUD0Y5uT3yUjUFdU6m3tVltv0FqySdakx7QbpQrg/i/Hlz+GZ7KU670vLcwcw5jlVwsLgH6UK0YifLSXzDfFu9H9ZXDeRl8Nw5YVPvZIThsstt5MX8PUmqxBvbS1bfvFW5QbthgRCGxR+6L+SszNZYUmBcBbHTrjVQgvHq03xu+NGCLzfZ+3F6qBY3/wh5RgrSAlkSdVByGpAfnmjNsXOf/Q8SguE/iRB5GNS+ttl5MEWvcG8H47iN8s/k4nN7RHQ7MO5yB2TEvhKPsk4Qavd2VFhPRsYTZ7yNsbajMpct9CERr8uyRcJlDD3BN6dQ5aY8o8AGrM9EktYy0B6JyXKs8QqzC3oEIm6WiFQKjBY7JqryGn6ccbVu
-x-ms-exchange-antispam-messagedata: fah9gh1cxm/nyoF0O5Pv+Vmul91tnhPLsLkN2bUNugUdHRO7+RKRdmAdvEBNXMUuacyXUUB9HChN0HmP/fTBsS+keOfaPe86ALsyJxMzRQnQok2p4nQpfdWd7FpL7eGDMZLIEbs416/xpnaCRoSD+A==
+x-microsoft-antispam-message-info: wZN4S2/56F1ApZsMVDY1UWauf5PYLjpJWfgnbGmXvpk1nf3wYyegVQcQq4Lx9C7mD6C+fX5nlQVaUv8I3TwAbHJTLUheeoA9LYX61+P+kQZG6MnbTUiukTBQEpWfIm3xFfDALWxB/UfFUPWav4dJ+tuiJVtFj9wjroG5cxiDVt9r7skAO6uUob1Io9NW3UnsNq1PEE6xj2DpeoMnnSkOjz3SBPaF8/GEzcgkyOBnxUK8MMt1TRiE4ZDimyeIiGlfs9vlLUky3r3FY/YI9nx/TGyci9x+F1DwlWWoauDQbCCJbV6UEtLZUmaZUyUJIo1Yc9UACn9ABBxthwkcLQnr1lwuB7vTkdrWwxNxvw7xcMV14rIggqWJUYJsL8ANCkF6QyVPM7ITd5lIIDoO7nI0Xb+GbXwKtKQmjQbLdZWkK3MgNvozpFugL5hfIPb8Hj/NwpdyhOKGecqJ+naX/f0x7sK7Z/1i7mlxuzG7Jf6NY0F9wjbIz2q5/sBd8xE4aW9XFx5R1ntV0ePEv/GoPgw8ig==
+x-ms-exchange-antispam-messagedata: sPtzICTNsXVPMRNmsmFh0EpmV7JRLSQAo18pTZqsBgfB66TNZs2rcE9pVFRf+CxjCLe5b/nm38TA+KFUn+Xms1ss3irEAKtODBz7FWfyMBMgq8jQ6O3ZtaQuPg/+K3JbMPR62UEFXNV8hNby1V5i1A==
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7728f427-1118-4fff-4291-08d7bec5ea86
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Mar 2020 16:22:34.7247 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e91d57e3-42eb-44ce-5d97-08d7bec5eb31
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Mar 2020 16:22:35.8371 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +By2r9arKX2PuBgzovNdyNL5yc/iJuVitXFyaHqfEpqRsiW1pn+9J9R7/LPyXNC2CqCxhlukBTvtVZcETgzXbfYJwvRLga8E4j+6M7dzSYw=
+X-MS-Exchange-CrossTenant-userprincipalname: Iji25J9bAAEUtPTxbIJeXM4TzWR3CUzNOwZdhvxMqSWWi6ZGVguFaLcuIMUmMur5tOXAGJuyvvs9oo/YCUgphI9QAzE03jLzIPHmscp9+rQ=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1426
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -158,24 +160,81 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Ajay Singh <ajay.kathat@microchip.com>
 
-This patch series contains changes to address few Smatch static checker
-reported warnings. Also added one patch to make use of flexible-array
-member instead of zero-length array for few cases which were missed
-earlier.
+Remove the unnecessary always true 'if' conditions and simiplifed the
+logic as suggested in [1].
 
-Ajay Singh (3):
-  staging: wilc1000: use correct data for memcpy in
-    wilc_hif_pack_sta_param()
-  staging: wilc1000: remove unnecessary always true 'if' conditions
-  staging: wilc1000: use flexible-array member instead of zero-length
-    array
+[1]. https://lore.kernel.org/linux-wireless/20200302092346.GA24308@kadam/
 
+Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
+---
  drivers/staging/wilc1000/cfg80211.c | 26 ++++++++++++--------------
- drivers/staging/wilc1000/hif.c      |  2 +-
- drivers/staging/wilc1000/spi.c      | 10 +++++-----
  drivers/staging/wilc1000/wlan.c     |  6 ++----
- 4 files changed, 20 insertions(+), 24 deletions(-)
+ 2 files changed, 14 insertions(+), 18 deletions(-)
 
+diff --git a/drivers/staging/wilc1000/cfg80211.c b/drivers/staging/wilc1000/cfg80211.c
+index 5d8faa01337d..54e02807cebf 100644
+--- a/drivers/staging/wilc1000/cfg80211.c
++++ b/drivers/staging/wilc1000/cfg80211.c
+@@ -888,7 +888,6 @@ static int del_pmksa(struct wiphy *wiphy, struct net_device *netdev,
+ 		     struct cfg80211_pmksa *pmksa)
+ {
+ 	u32 i;
+-	int ret = 0;
+ 	struct wilc_vif *vif = netdev_priv(netdev);
+ 	struct wilc_priv *priv = &vif->priv;
+ 
+@@ -901,21 +900,20 @@ static int del_pmksa(struct wiphy *wiphy, struct net_device *netdev,
+ 		}
+ 	}
+ 
+-	if (i < priv->pmkid_list.numpmkid && priv->pmkid_list.numpmkid > 0) {
+-		for (; i < (priv->pmkid_list.numpmkid - 1); i++) {
+-			memcpy(priv->pmkid_list.pmkidlist[i].bssid,
+-			       priv->pmkid_list.pmkidlist[i + 1].bssid,
+-			       ETH_ALEN);
+-			memcpy(priv->pmkid_list.pmkidlist[i].pmkid,
+-			       priv->pmkid_list.pmkidlist[i + 1].pmkid,
+-			       WLAN_PMKID_LEN);
+-		}
+-		priv->pmkid_list.numpmkid--;
+-	} else {
+-		ret = -EINVAL;
++	if (i == priv->pmkid_list.numpmkid)
++		return -EINVAL;
++
++	for (; i < (priv->pmkid_list.numpmkid - 1); i++) {
++		memcpy(priv->pmkid_list.pmkidlist[i].bssid,
++		       priv->pmkid_list.pmkidlist[i + 1].bssid,
++		       ETH_ALEN);
++		memcpy(priv->pmkid_list.pmkidlist[i].pmkid,
++		       priv->pmkid_list.pmkidlist[i + 1].pmkid,
++		       WLAN_PMKID_LEN);
+ 	}
++	priv->pmkid_list.numpmkid--;
+ 
+-	return ret;
++	return 0;
+ }
+ 
+ static int flush_pmksa(struct wiphy *wiphy, struct net_device *netdev)
+diff --git a/drivers/staging/wilc1000/wlan.c b/drivers/staging/wilc1000/wlan.c
+index 3aeca882f431..6a82fb2f283e 100644
+--- a/drivers/staging/wilc1000/wlan.c
++++ b/drivers/staging/wilc1000/wlan.c
+@@ -703,10 +703,8 @@ static void wilc_wlan_handle_rx_buff(struct wilc *wilc, u8 *buffer, int size)
+ 			wilc_wfi_mgmt_rx(wilc, buff_ptr, pkt_len);
+ 		} else {
+ 			if (!is_cfg_packet) {
+-				if (pkt_len > 0) {
+-					wilc_frmw_to_host(wilc, buff_ptr,
+-							  pkt_len, pkt_offset);
+-				}
++				wilc_frmw_to_host(wilc, buff_ptr, pkt_len,
++						  pkt_offset);
+ 			} else {
+ 				struct wilc_cfg_rsp rsp;
+ 
 -- 
 2.24.0
 _______________________________________________
