@@ -1,82 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1600E17600C
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 17:35:54 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 053CD17600A
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 17:35:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A5D14204BA;
-	Mon,  2 Mar 2020 16:35:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9588B8781C;
+	Mon,  2 Mar 2020 16:35:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bk-lyQa7WEPg; Mon,  2 Mar 2020 16:35:51 +0000 (UTC)
+	with ESMTP id wqtBM1w1e9aN; Mon,  2 Mar 2020 16:35:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0D847204AA;
-	Mon,  2 Mar 2020 16:35:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 71FC4877E1;
+	Mon,  2 Mar 2020 16:35:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 83D6B1BF973
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:35:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6282E1BF973
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:35:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 80C61860D2
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:35:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 581BB86124
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:35:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 699Qq2zaJI+6 for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 16:35:15 +0000 (UTC)
+ with ESMTP id MX8k2yE5LXar for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 16:35:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
- [68.232.153.233])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F415584E97
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 16:35:08 +0000 (UTC)
-Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
+Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
+ [68.232.147.91])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BF5B8860F9
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 16:35:22 +0000 (UTC)
+Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
  Ajay.Kathat@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
  envelope-from="Ajay.Kathat@microchip.com";
  x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
  x-record-type="v=spf1"; x-record-text="v=spf1 mx
  a:ushub1.microchip.com a:smtpout.microchip.com
  -exists:%{i}.spf.microchip.iphmx.com include:servers.mcsv.net
  include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa3.microchip.iphmx.com: no sender
+Received-SPF: None (esa1.microchip.iphmx.com: no sender
  authenticity information available from domain of
  postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
  envelope-from="Ajay.Kathat@microchip.com";
  x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa3.microchip.iphmx.com;
+Authentication-Results: esa1.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: P/OnNiCYt+P+/yLWRX9WfSrrPM7eqNEuXw9kXdfWwwGEtwrqAL9NP8LwtaO6IiY6eI/W8G3UDx
- 2lUSok5sYDQFyRWqEDCIf4pP3fiR0YNHJgo0nAcxk77cRf2Hca+GYg0kwn/5gXLUrh75hsP3sO
- i/9fPDiRmO3IqVxcZaAKtPIACESvtf41RYExTipQoubij/OLDIhEflJPlHvjjQ0wO7NilF6tdk
- c50upoxKYC74l4r76QHLfeZmalN1duLkSeyeGVn0qZKcZMlnhVVB7o+xVaY2yd7ZoN++hGJnJ8
- ij0=
-X-IronPort-AV: E=Sophos;i="5.70,507,1574146800"; d="scan'208";a="68544234"
+IronPort-SDR: stCEy/2X3q8KYoUKS1zpYy48aJTGIudPGNZxLKOMQrFz3MorIQUEV01bt+WEC+tD7OFA4Uoj9l
+ QsBstyDVzJwmbHPh3FibPVZgTfFxNZ/7+TeXQv0jyKpmYlorEIRZciGC+e7m3EJg45r2pciAVm
+ aJSvyC4mFJAy9lK821dYoaDg5FolVWq9a8TCFGi3a5mS0OMWrH04rhiIecMQ5MWLZrImC173Aw
+ /ydp5GF1CuHLwTs5w5UUeSQig3y0P3wJPy+cJldGXyJA0jJaeTX+bHe2qL6fBByvqrqlG1znQV
+ s1E=
+X-IronPort-AV: E=Sophos;i="5.70,507,1574146800"; d="scan'208";a="70445279"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 02 Mar 2020 09:34:43 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 02 Mar 2020 09:34:56 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 2 Mar 2020 09:34:43 -0700
+ 15.1.1713.5; Mon, 2 Mar 2020 09:34:56 -0700
 Received: from NAM10-DM6-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Mon, 2 Mar 2020 09:34:43 -0700
+ email.microchip.com (10.10.87.71) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
+ Transport; Mon, 2 Mar 2020 09:34:44 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=h9C0PAgnfXbxvPDntYkJ4nVr1ggulm6mVLb1zLEYw7dZLFMZWsXTLK9gwOzIkGMKJ+Zspp3aLdmVi0ghRhZpCC1CLD4QgZXsUz7E0RunCjqE57FnDFb99S0WMjlw4tYNISpEq+jsndaWdJ4sRhS/CuFJ+BlPxviVjdU1J6KthxA5aKcb85em3mnevPZnS+X2GOo0s+TLYrOQJk8D+/ihUBBkyIJou/1J0CK7MgWY/LMVD1iMcs33jsTiUbh/zkHrqArseMCyctPnc7QD4ys9GDtcml5dvEo30zb5BaTLku7QT6YaBtWsaXp2i98a4+qrPXEw54qXruwfAVM56BdGlA==
+ b=KmQIUVq9bY/GCViRO7sTm9YrNph7NOMqvhs40JHrNF+svVlmTPX5lHDtwHh4Km39DsNfHLKTJVHvTDBLL6gkgN2NYDtlaz32LNo/STQxZKoiQ/ldKv6kdTuUqSMvQozvhsUfrcEhRKsDhidLEkwTQhwN0hjU//4KLa+61eGsJ4zsisNwzUb1RG5csdwCDSdTVV9ct7v+IuQz3QHLs9DLAAa0Hp+sNltK7gSBIgCym4R5dUGkrNswje7WNlWqdYeKxm5RXzgUnP1AQ0dd7xIr0u87cJQsdQ9UlG0I2fmruJ8v+X2N6DfWCfv9CadWuiJCAXiljrP8nwxu2rQZSqxJ+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MbDujH185wChq8QX/moSUQB5eB5hG5vaJemsoHQdD5k=;
- b=M2Kkg50kAnxmvBCXscWDRWwIvVk7ylh78gaEy1YUVIVtOuOprNQa/ElwffXAphSIQp96vLDTs7dIyiwsyb2b4C/jeKFQ/4Zf+P/0wb7eJQcEtbYYFJ6PM4cV/1N1IyE0mi/6wjB/pq6mwDcfxz9ocTpVaYY1E9JiqGSEC6Icbl5emV6e00zQZjqcbAqtGpv1bf61FxRA5EGc1BibiNnvadO94cD/y+0/6MnRnPdnEOdOCnR2/tbKHvTcVOpWJcrwuKmRl3eXpuxHH+YVzE0n/o10fAdLVn+hXYS62lgJjEjzUVgGykR8k8RGiMbR6XUUrm3iaFRqmUCfnb3rlnrXXg==
+ bh=TvarfK+/S0ecrg6zLY5Xsxmr2UJbcp8fz2EdH8BHRX4=;
+ b=SK9q8f8eoYdpInrnnMTN0QN9WiqwjO6s9FewhQXuJimBSxmJ9JGnP7ZYiGeye1LjoMYKBJP/PQ3xI9OWDfaCj7t5QaPkmg9gNCE66cBZOXgWMfUtyQwSlnPNRrLsCnoVGCtXIto7O8mOVcsUxY8ISoBvo65BSzI5Tyfl2ZNWxUFm5HbIG6VLyQ0lactZX3VMvJK+AsiJYfj0Yp+dCks6b3q7iAnVBdapPAED6VsNkB6awGwy7hCVd7SKfUc2ymNHJnSd3VXoMxzZm+pqfJi9t8ZqRwVaV/KXL5en7XfEmph2mJdjS8T4B/tVX+kj55CEVGZZ8+YTpeuRfhIvetbNNA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=microchip.com; dmarc=pass action=none
  header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
@@ -84,25 +85,25 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=microchiptechnology.onmicrosoft.com;
  s=selector2-microchiptechnology-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MbDujH185wChq8QX/moSUQB5eB5hG5vaJemsoHQdD5k=;
- b=W1aAlZxrWFuofi53tWBbbphRudtcAhDdHWx2EYlS9WYrbxXRtRfDuFwUtJM9uKijI29X4LQUxVEJZq9gCbrmEhfMgxmB4gH0gCw0ArLVl+JiSz2vA9L7WulrXCS1e1xgvmSjo6MYJXuXqY+vl1s+EUEkO7gvHMZwYRuQjlt1uzQ=
+ bh=TvarfK+/S0ecrg6zLY5Xsxmr2UJbcp8fz2EdH8BHRX4=;
+ b=ESuy/v4+JEE8PeuZ7+oWTUecC5xHZ3dzD55lDFYv1EHHZofGFtqIMEQ4gXFlaiHlT3+WexR0n3wFrdf/6bs0yRZQFXvRJGIH251Siw9u0+/MaTm0nW4SVO2B44g/W9T+dXaXlrQnodtcyWYaBXFkrW178AOCgh+LXAWrZ3RjErw=
 Received: from BN6PR11MB3985.namprd11.prod.outlook.com (2603:10b6:405:7b::14)
  by BN6PR11MB4098.namprd11.prod.outlook.com (2603:10b6:405:7f::36)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2772.18; Mon, 2 Mar
- 2020 16:34:41 +0000
+ 2020 16:34:40 +0000
 Received: from BN6PR11MB3985.namprd11.prod.outlook.com
  ([fe80::ec62:e7fd:f17c:dfd4]) by BN6PR11MB3985.namprd11.prod.outlook.com
  ([fe80::ec62:e7fd:f17c:dfd4%3]) with mapi id 15.20.2772.019; Mon, 2 Mar 2020
- 16:34:41 +0000
+ 16:34:40 +0000
 From: <Ajay.Kathat@microchip.com>
 To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH v4 17/18] dt: bindings: net: add microchip,wilc1000,spi.yaml
-Thread-Topic: [PATCH v4 17/18] dt: bindings: net: add
- microchip,wilc1000,spi.yaml
-Thread-Index: AQHV8LB4yeo407y5WkaMy3sgQWSapA==
+Subject: [PATCH v4 16/18] dt: bindings: net: add microchip,wilc1000,sdio.yaml
+Thread-Topic: [PATCH v4 16/18] dt: bindings: net: add
+ microchip,wilc1000,sdio.yaml
+Thread-Index: AQHV8LB4evB5uOBIuUadeV/L9u3vJA==
 Date: Mon, 2 Mar 2020 16:34:40 +0000
-Message-ID: <20200302163414.4342-18-ajay.kathat@microchip.com>
+Message-ID: <20200302163414.4342-17-ajay.kathat@microchip.com>
 References: <20200302163414.4342-1-ajay.kathat@microchip.com>
 In-Reply-To: <20200302163414.4342-1-ajay.kathat@microchip.com>
 Accept-Language: en-US
@@ -112,11 +113,11 @@ X-MS-TNEF-Correlator:
 x-mailer: git-send-email 2.17.1
 x-originating-ip: [121.244.27.38]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e67eceb3-183f-48ee-25d8-08d7bec79b81
+x-ms-office365-filtering-correlation-id: 0b20f430-2b08-41c0-e95e-08d7bec79b19
 x-ms-traffictypediagnostic: BN6PR11MB4098:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BN6PR11MB40981744616AA2D2CE1B83DCE3E70@BN6PR11MB4098.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-microsoft-antispam-prvs: <BN6PR11MB40988C2B9079529540405D56E3E70@BN6PR11MB4098.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:3173;
 x-forefront-prvs: 033054F29A
 x-forefront-antispam-report: SFV:NSPM;
  SFS:(10009020)(376002)(396003)(39860400002)(136003)(366004)(346002)(199004)(189003)(316002)(6916009)(86362001)(6512007)(2616005)(478600001)(71200400001)(54906003)(4326008)(64756008)(186003)(107886003)(66446008)(5660300002)(91956017)(76116006)(8676002)(66476007)(66946007)(6486002)(6506007)(966005)(66556008)(26005)(81156014)(81166006)(2906002)(1076003)(36756003)(8936002)(142933001);
@@ -127,15 +128,15 @@ received-spf: None (protection.outlook.com: microchip.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: OiP1OnmGmiEDiZSUX1nIRLoODHJE7X+9rDEIs/MGOZkTHuICESY5AO8IZRkIxIjywxofvFFZveag96WgQwIzShquyKP3RjqEh8ji/XQXFm3MS/OEBhj0roDkv11mzujxfFnHpJbdzrIw84ZRmuoJ7XBdPC0T8b070VclP39KaeyAU73DLtGdf86WuVzY7oIkhx3C2svZVgSmpNx9S9cdBKIuPjllb2hoXcNIRgTFgYRdyXi9Jte/ONZg9vh4yENOw/tOGKCEBkj6kmNmMmcr7ZbC2qwzAzaRrJFBJKfAxYEyTYjtZfGNzrcq7t3b7jJwykTyGB5LTbzr9+fP58ZnQsY9Ck7H1zjSKiAsDnHQ8Gi09ZjMpmk8soqQEQ4ULNQeMEBPrL9MGxYlSWs9haKlnUl0BYvpG6ArhWk4btniubn1FUted2qrhGbIjXBM8kW4QE8SzYY8sfm6gvXs0CKdDUxwa0CNc0Ph2R26KXYgvLRZu+u6dOVlih5J4VI1YnsYY/e6edafEB473iPybsvQ+uvcpfh4hPMr6mzHEdNn40ZLHsz/HpnQtK5TM3y4/PEE
-x-ms-exchange-antispam-messagedata: 0EGzeMIBkGnaSH1jc6Ujao0K6JWRpB2SLc7jHlYUNCYhSh3eTK48jvYEF3cPySTNiKOmJXFe6Ae6g+X6Ft2efM8SwY7+x+7dg+3S7Xj2iMIEsgLLb2kDi7fSXXcoCyRAIzsFyotWBOcB/xGyoLhGlw==
+x-microsoft-antispam-message-info: XKaub4SF3b+Ne6XA13HxSyBZlOnqZVj4yLtpYyYGTpXUztOkXILEkP3h0T5Q4FbkYEAZ/xfRmPStxbxDuysMqrEkxj0hOQxdjtKRQs5eQFh2Imumq+kEwtp8gtmkkjJpKaxzLVdH0+1yOFd8ZQGGwOpgrnsY8ON5yEFZbsLJC2X+4N9GYVvwdnN/nRCUlVSvtBQ4wR7sI6OPWMW2eUbQrXRHNnQHnDZW2li3Z2sJYoEx41SdtmERn3o+lk/BJ1qHO7F8I70kcIDYsSbHlxUnoAK2XXi4VIhSnKw0GSnd39xzS1smIXQw8JbliJCDZzeNFuZc73vbmKbrWMnyt+28sYZwA/+u5IYvA0E9B3pRG8X3Hz9j95L7SCYi1oqr5CWtp/eGQHMTaERxVKwRT8msI5CYiypreQzjX+PxmgtYf+QsdyqHTHB246oC1vHotEOSPMQqnbKOi+yppDl9dL9NCjSfNGKlgXt+DCxYUXk7KBYPh1GHe/9j+0BxgDce8qtNVrUsrBIOTLAxl/yQQ5JMWEJ8xS/6oitdA9GcWPHsk05vJ8DVeGNBixr48XH5urcg
+x-ms-exchange-antispam-messagedata: bZAIzcd/mF9xUz/n72POgKdoazJNyPZkIPnSPXGuL9xyj21smVYJ1FX/FRyh559I5eArOt2YQXpycnqbIqLwMoJAL0B+jaj/4UQLlWkCCLYt6zk9iZrJJmO45Q0E0zJx2V9oa7/k6ApG10NcP0vOWg==
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: e67eceb3-183f-48ee-25d8-08d7bec79b81
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Mar 2020 16:34:41.0657 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0b20f430-2b08-41c0-e95e-08d7bec79b19
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Mar 2020 16:34:40.4101 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZDmwDCPmOkFP/qRkFUXilJYFSPQSVMFAr0aB2aOli5OWzK1bXcpD0zxjyCgPgakjd+zSndwd28E4qWcoOk+5RMfR0JPC8VvfJnowmRoFSH4=
+X-MS-Exchange-CrossTenant-userprincipalname: zNNBxEa9nkEKxGlWZ8uaGZL6476scby47RT4hFvT6x4WihLMRAOFpwHC8oGVH6dHE8BFS6Rsz4hWPtu3FFzjK3OmfEM6SNkSvZWk5pH0BTk=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB4098
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -160,81 +161,88 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Ajay Singh <ajay.kathat@microchip.com>
 
-Moved '/drivers/staging/wilc1000//microchip,wilc1000,spi.yaml' to
-'Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,spi.yaml'.
+Moved '/drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml' to
+'Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml'.
 
 Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
 ---
- .../net/wireless/microchip,wilc1000,spi.yaml  | 61 +++++++++++++++++++
- 1 file changed, 61 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,spi.yaml
+ .../net/wireless/microchip,wilc1000,sdio.yaml | 68 +++++++++++++++++++
+ 1 file changed, 68 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml
 
-diff --git a/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,spi.yaml b/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,spi.yaml
+diff --git a/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml b/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml
 new file mode 100644
-index 000000000000..cc8ed64ce627
+index 000000000000..b338f569f7e2
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,spi.yaml
-@@ -0,0 +1,61 @@
++++ b/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml
+@@ -0,0 +1,68 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/net/wireless/microchip,wilc1000,spi.yaml#
++$id: http://devicetree.org/schemas/net/wireless/microchip,wilc1000,sdio.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Microchip WILC wireless SPI devicetree bindings
++title: Microchip WILC wireless SDIO devicetree bindings
 +
 +maintainers:
 +  - Adham Abozaeid <adham.abozaeid@microchip.com>
 +  - Ajay Singh <ajay.kathat@microchip.com>
 +
 +description:
-+  The wilc1000 chips can be connected via SPI. This document describes
-+  the binding for the SPI connected module.
++  The wilc1000 chips can be connected via SDIO. The node is used to
++  specify child node to the SDIO controller that connects the device
++  to the system.
 +
 +properties:
 +  compatible:
-+    const: microchip,wilc1000-spi
-+
-+  spi-max-frequency:
-+    description: Maximum SPI clocking speed of device in Hz.
-+    maxItems: 1
-+
-+  reg:
-+    description: Chip select address of device.
-+    maxItems: 1
++    const: microchip,wilc1000-sdio
 +
 +  irq-gpios:
 +    description: The GPIO phandle connect to a host IRQ.
++    maxItems: 1
++
++  reg:
++    description: Slot ID used in the controller.
 +    maxItems: 1
 +
 +  clocks:
 +    description: phandle to the clock connected on rtc clock line.
 +    maxItems: 1
 +
++  bus-width:
++    description: The number of data lines wired up the slot.
++    allOf:
++      - $ref: /schemas/types.yaml#/definitions/uint32
++      - enum: [1, 4, 8]
++      - default: 1
++
 +required:
 +  - compatible
-+  - spi-max-frequency
-+  - reg
 +  - irq-gpios
++  - reg
 +
 +examples:
 +  - |
-+    spi1: spi@fc018000 {
++    mmc1: mmc@fc000000 {
 +      #address-cells = <1>;
 +      #size-cells = <0>;
-+      cs-gpios = <&pioB 21 0>;
++      pinctrl-names = "default";
++      pinctrl-0 = <&pinctrl_mmc1_clk_cmd_dat0 &pinctrl_mmc1_dat1_3>;
++      non-removable;
++      vmmc-supply = <&vcc_mmc1_reg>;
++      vqmmc-supply = <&vcc_3v3_reg>;
 +      status = "okay";
-+      wilc_spi@0 {
-+        compatible = "microchip,wilc1000-spi";
-+        spi-max-frequency = <48000000>;
-+        reg = <0>;
-+        irq-gpios = <&pioC 27 0>;
-+        clocks = <&pck1>;
-+        clock-names = "rtc_clk";
-+        assigned-clocks = <&pck1>;
-+        assigned-clock-rates = <32768>;
-+        status = "okay";
-+      };
++      wilc_sdio@0 {
++        compatible = "microchip,wilc1000-sdio";
++          irq-gpios = <&pioC 27 0>;
++          reg = <0>;
++          clocks = <&pck1>;
++          clock-names = "rtc_clk";
++          assigned-clocks = <&pck1>;
++          assigned-clock-rates = <32768>;
++          status = "okay";
++          bus-width = <4>;
++        };
 +    };
 -- 
 2.24.0
