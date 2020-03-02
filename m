@@ -1,83 +1,141 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC8FC175F4A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 17:13:49 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11149175F82
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 17:23:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E8309204B2;
-	Mon,  2 Mar 2020 16:13:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BFD0A877B1;
+	Mon,  2 Mar 2020 16:23:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fsYYpDLN62rd; Mon,  2 Mar 2020 16:13:47 +0000 (UTC)
+	with ESMTP id osUEtCEfvaBb; Mon,  2 Mar 2020 16:23:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 94ABA204A4;
-	Mon,  2 Mar 2020 16:13:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 018C58516C;
+	Mon,  2 Mar 2020 16:23:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7571F1BF321
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:13:43 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BDD341BF321
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:23:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6DA0785F9B
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:13:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B899E85A0E
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 16:23:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0INd1abvrE0T for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 16:13:42 +0000 (UTC)
+ with ESMTP id jkSCgxdv6ZdN for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 16:23:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5911685E12
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 16:13:42 +0000 (UTC)
-Received: by mail-oi1-f193.google.com with SMTP id i1so10799085oie.8
- for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 08:13:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=wQyyrYKhl2IEkNe34AsK9CIVdMgcXzMGqPt74D0oPoI=;
- b=ZshehFbjG4G7TBDeLxrzGPgpTbLWcjknOZCWSzFoZ5ayy6VzMMQL1u3iU4xLAMGhTX
- W0nqa5TacHDvMmI3i43H/3buJIBc6vL/z6UAJ7TCVpLaO2djd84kAEJOc7Hm9sf8i5Os
- vMy0TXxnarahe2sGiD4aKJX/xPwOuQ3ZeoaTN54XAkE16jx/Wfrb9lX/lY2jL+rbW9Ph
- EAo8B3YRSs+FJcXdf79uIdoYe8B6gb5vsgG9hmMYUOQSG/VnjUmNSQawi9eSj0r2LgPR
- 2sp3haoH0vtBXEJb7t/tbNoYVTpq/FFUi4Ji4KyjzM4MWDH10chtpd+gLx33ez3liWbz
- R9jA==
-X-Gm-Message-State: ANhLgQ0JFZEVWyGYE53V6zT1B4Eg1kpLfHdnawkcKzbtrBqWTDWGrwI2
- 4TrTqQKKYYty+qsn+EFE8kPH17OfdS9muLoIpCc=
-X-Google-Smtp-Source: ADFU+vtgX5P8l3pp8Byli/gDvMCPgCR1jBlOu2Z5pKiwIOplHm/8t6TqxYo4MB2Jy/30YCeHN5RgbSXCAHjgMhFgi3s=
-X-Received: by 2002:aca:ac4c:: with SMTP id v73mr185003oie.102.1583165621604; 
- Mon, 02 Mar 2020 08:13:41 -0800 (PST)
+Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
+ [68.232.154.123])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2696385ADC
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 16:23:44 +0000 (UTC)
+Received-SPF: Pass (esa4.microchip.iphmx.com: domain of
+ Ajay.Kathat@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
+ x-record-type="v=spf1"; x-record-text="v=spf1 mx
+ a:ushub1.microchip.com a:smtpout.microchip.com
+ -exists:%{i}.spf.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa4.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa4.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa4.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: Ise5PeTMiZvZ58+aPn6vfTq3ZABJmUkevqlESA9AlXW3C3zMjHCaq6bsLjstxLT/ou6T3FOh9j
+ 6ZzEg0TmG7xSDgO34/w9R1IVAegxJ0lPZXYppzacVrdjHwx8PnoCVkRNH286bP+9pJlXmPE/Vq
+ 7fXJARk71BYd7L/QK+nctVCWI4HASHhH/QxkN0EN8nUm/2mqD52cQsoZx1SeVyCBtkOqhrFe/o
+ 9HI0g+j5LTF6gORmYgvLPwCq2MyIldnDNrb+E8Kwlt2psUnwnTWTgRkndEenl/IU7wJzJT2Z3m
+ uMw=
+X-IronPort-AV: E=Sophos;i="5.70,507,1574146800"; d="scan'208";a="65862715"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 02 Mar 2020 09:23:43 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 2 Mar 2020 09:23:36 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Mon, 2 Mar 2020 09:23:36 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=e6AmRWlWE7WOsQiAT0TCkxEbhDeTMRIslNQ6xixNmY0xBldpQ+R8kS5lnZsrR/vW7Ls4Wqd5CPEbNacGTdfwk4JnjDleEME2eBmDRrt0LfO8yGjXfM9oeMKtqer6DCvc/uZQzRYOduvhXix63/eaay/CCu03H7aCSVUSliRPhCbTQ8Te9+Nd5C8l9a3qad7pM/ImE6ZvxMOaXk4OqdzMWygJVcDmE0JUrnmZRgTw2J7duljdAvs6HBTlOIgFEk9whIZiyMLYVFdOMWQ8BOXVnYGjIOefQBXhAGcb0qMaxnJp7bn3HrFTeHGAvWoHwumZdqKALFXWkfUjv477fSxwTQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DRw7XYG6cvVhwKTEvVcvRpe6efemkNJ3RNVD2P7nuZ0=;
+ b=OoBpTTxVL08l0olb0KngUPVCaxNqlbeAfsnTiRgLM/6kvZ9w3bnD2mo0QcFdOF19aupxqLJZ8CI0c8TtsKGc6YNZqTpFAxo6fLwTx/6HKpDVCiGG9Q7KSTvzMf0VtP31BVvTnso/Q9GaAUrykMWhuQj+jFBlkaDAcgS6YAcD0X3XyO8GOX3wqHnrHxXH0wj1MbdnPIoqJ3E0xo2J4V+1mb29d2j9aOlSmZHRVbBhdURdzq7+wvNTr5Cidw83H3BNc1XtwHAVZd0aF3w78nMtXfMik3jIlP7S4cois0ImZeDgDw5mBWMaVBoDz8Wc5X45Y713NNIlVFg2ON+9OdrMwA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DRw7XYG6cvVhwKTEvVcvRpe6efemkNJ3RNVD2P7nuZ0=;
+ b=jdcZ5qPOS0qn81Kx8wRj5A8CsaieHVuZUvw31Do9YIztfdPf892N6Pc72i0v5OGHTZlpY/pn7pTAMqwTgb/jzf/Uza+ld2sfW4hz21FS/VcYCQmmkmvAb7++3aepcdpqijVd1UaXTvPyTigXZWYCJPOfTgJIUXGGN7aBwuCGrHY=
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com (2603:10b6:405:7b::14)
+ by BN6PR11MB1426.namprd11.prod.outlook.com (2603:10b6:405:b::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2772.14; Mon, 2 Mar
+ 2020 16:22:34 +0000
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::ec62:e7fd:f17c:dfd4]) by BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::ec62:e7fd:f17c:dfd4%3]) with mapi id 15.20.2772.019; Mon, 2 Mar 2020
+ 16:22:34 +0000
+From: <Ajay.Kathat@microchip.com>
+To: <linux-wireless@vger.kernel.org>
+Subject: [PATCH 0/3] staging: wilc1000: correct Smatch warnings & use
+ flexible-array member
+Thread-Topic: [PATCH 0/3] staging: wilc1000: correct Smatch warnings & use
+ flexible-array member
+Thread-Index: AQHV8K7HseitwdwO5kueKU9L/NJPqQ==
+Date: Mon, 2 Mar 2020 16:22:34 +0000
+Message-ID: <20200302162226.4196-1-ajay.kathat@microchip.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: git-send-email 2.17.1
+x-originating-ip: [121.244.27.38]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 7728f427-1118-4fff-4291-08d7bec5ea86
+x-ms-traffictypediagnostic: BN6PR11MB1426:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BN6PR11MB142681153FE7AAF35FBAA85FE3E70@BN6PR11MB1426.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4303;
+x-forefront-prvs: 033054F29A
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(396003)(376002)(346002)(366004)(39860400002)(136003)(189003)(199004)(5660300002)(66556008)(186003)(26005)(66476007)(64756008)(66446008)(6916009)(478600001)(6486002)(6506007)(6512007)(107886003)(86362001)(66946007)(91956017)(76116006)(316002)(8936002)(71200400001)(1076003)(81166006)(81156014)(4744005)(8676002)(54906003)(2616005)(2906002)(36756003)(4326008);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1426;
+ H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: CB/6fdQaIJigrY9r4vYp/pIs5/o9FWzKx9TvSDIH3ypxtZT8VXdNN12KmeiPFNxh3hd5SxQrvySUD0Y5uT3yUjUFdU6m3tVltv0FqySdakx7QbpQrg/i/Hlz+GZ7KU670vLcwcw5jlVwsLgH6UK0YifLSXzDfFu9H9ZXDeRl8Nw5YVPvZIThsstt5MX8PUmqxBvbS1bfvFW5QbthgRCGxR+6L+SszNZYUmBcBbHTrjVQgvHq03xu+NGCLzfZ+3F6qBY3/wh5RgrSAlkSdVByGpAfnmjNsXOf/Q8SguE/iRB5GNS+ttl5MEWvcG8H47iN8s/k4nN7RHQ7MO5yB2TEvhKPsk4Qavd2VFhPRsYTZ7yNsbajMpct9CERr8uyRcJlDD3BN6dQ5aY8o8AGrM9EktYy0B6JyXKs8QqzC3oEIm6WiFQKjBY7JqryGn6ccbVu
+x-ms-exchange-antispam-messagedata: fah9gh1cxm/nyoF0O5Pv+Vmul91tnhPLsLkN2bUNugUdHRO7+RKRdmAdvEBNXMUuacyXUUB9HChN0HmP/fTBsS+keOfaPe86ALsyJxMzRQnQok2p4nQpfdWd7FpL7eGDMZLIEbs416/xpnaCRoSD+A==
 MIME-Version: 1.0
-References: <cover.1578924232.git.alexander.riesen@cetitec.com>
- <20200113141556.GI3606@pflmari>
- <CAMuHMdV9urx-6N4tiaPdkssa6Wu-9HSB4VY-rvCu+8JpfZcBfA@mail.gmail.com>
- <20200302134011.GA3717@pflmari>
- <CAMuHMdWobAE+y90DRi+zQadObWPxLyQiGNTe4t77O-2S1Vp5yA@mail.gmail.com>
- <20200302150706.GB3717@pflmari>
- <CAMuHMdW21rYXoOSE8azHNqYjng_j41rsL=Fo2bZc=1ULi9+pLw@mail.gmail.com>
- <20200302160906.GC3717@pflmari>
-In-Reply-To: <20200302160906.GC3717@pflmari>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 2 Mar 2020 17:13:30 +0100
-Message-ID: <CAMuHMdVNGsVHyvAgC5dAHx=8Ax18EHx2tS6Hm5Bkg4ms=mW6Zw@mail.gmail.com>
-Subject: Re: [PATCH 8/8] arm64: dts: renesas: salvator: add a connection from
- adv748x codec (HDMI input) to the R-Car SoC
-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>, 
- Kieran Bingham <kieran.bingham@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>, 
- Mark Rutland <mark.rutland@arm.com>, driverdevel <devel@driverdev.osuosl.org>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7728f427-1118-4fff-4291-08d7bec5ea86
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Mar 2020 16:22:34.7247 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +By2r9arKX2PuBgzovNdyNL5yc/iJuVitXFyaHqfEpqRsiW1pn+9J9R7/LPyXNC2CqCxhlukBTvtVZcETgzXbfYJwvRLga8E4j+6M7dzSYw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1426
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,69 +148,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ johannes@sipsolutions.net, Ajay.Kathat@microchip.com,
+ Adham.Abozaeid@microchip.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alex,
+From: Ajay Singh <ajay.kathat@microchip.com>
 
-On Mon, Mar 2, 2020 at 5:09 PM Alex Riesen <alexander.riesen@cetitec.com> wrote:
-> Geert Uytterhoeven, Mon, Mar 02, 2020 16:32:32 +0100:
-> > > And this absence of documentation also means that whatever clocks (both input
-> > > in "clocks=" and output in "#clock-cells") listed in a specific .dts are just
-> > > an integration detail?
-> >
-> > No, the absence probably means that any clock-related properties in a .dts
-> > file will just be ignored.
-> >
-> > Looking at the driver source, it indeed has no support related to clocks at all.
->
-> ...
->
-> > > Does this below makes more sense, than?
-> > >
-> > >     video-receiver@70 {
-> > >         compatible = "adi,adv7482";
-> > >         clocks = <&rcar_sound 3>;
-> > >         clock-names = "clk-hdmi-video";
-> > >         adv748x_mclk: mclk {
-> > >             compatible = "fixed-clock";
-> > >             #clock-cells =  <0>;
-> > >             /* frequency hard-coded for illustration */
-> > >             clock-frequency = <12288000>;
-> > >             clock-output-names = "clk-hdmi-i2s-mclk";
-> > >         };
-> > >     };
-> >
-> > The #clock-cells should be in the main video-receiver node.
-> > Probably there is more than one clock output, so #clock-cells may be 1?
->
-> AFAICS, the device can provide only this one clock line (audio master clock
-> for I2S output)... I shall re-check, just in case.
->
-> > There is no need for a fixed-clock compatible, nor for clock-frequency
-> > and clock-output-names.
-> >
-> > But most important: this should be documented in the adv748x DT bindings,
-> > and implemented in the adv748x driver.
->
-> So if the driver is to export that clock for the kernel (like in this case),
-> it must implement its support?
+This patch series contains changes to address few Smatch static checker
+reported warnings. Also added one patch to make use of flexible-array
+member instead of zero-length array for few cases which were missed
+earlier.
 
-Exactly.  Unless that pin is hardcoded to output a fixed clock, in which case
-you can just override the existing audio_clk_c rate.
+Ajay Singh (3):
+  staging: wilc1000: use correct data for memcpy in
+    wilc_hif_pack_sta_param()
+  staging: wilc1000: remove unnecessary always true 'if' conditions
+  staging: wilc1000: use flexible-array member instead of zero-length
+    array
 
-Gr{oetje,eeting}s,
-
-                        Geert
+ drivers/staging/wilc1000/cfg80211.c | 26 ++++++++++++--------------
+ drivers/staging/wilc1000/hif.c      |  2 +-
+ drivers/staging/wilc1000/spi.c      | 10 +++++-----
+ drivers/staging/wilc1000/wlan.c     |  6 ++----
+ 4 files changed, 20 insertions(+), 24 deletions(-)
 
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+2.24.0
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
