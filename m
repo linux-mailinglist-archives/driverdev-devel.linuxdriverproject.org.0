@@ -1,72 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 039FA175B9B
-	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 14:29:11 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7A07485817;
-	Mon,  2 Mar 2020 13:29:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FyoH6vPUG53n; Mon,  2 Mar 2020 13:29:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C4AD6854CC;
-	Mon,  2 Mar 2020 13:29:07 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4000D1BF29E
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 13:29:05 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id BAD93175B4C
+	for <lists+driverdev-devel@lfdr.de>; Mon,  2 Mar 2020 14:10:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3C9FD8700E
- for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 13:29:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 93CE7875B3;
+	Mon,  2 Mar 2020 13:10:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PQN5MWui1OaK; Mon,  2 Mar 2020 13:10:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2E5198776C;
+	Mon,  2 Mar 2020 13:10:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B5FDB1BF29E
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 13:10:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id B1F7220418
+ for <devel@linuxdriverproject.org>; Mon,  2 Mar 2020 13:10:16 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pCA9YeqeM3xG for <devel@linuxdriverproject.org>;
- Mon,  2 Mar 2020 13:29:04 +0000 (UTC)
-X-Greylist: delayed 00:24:19 by SQLgrey-1.7.6
-Received: from mail-wr1-f74.google.com (mail-wr1-f74.google.com
- [209.85.221.74])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 572AE87032
- for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 13:29:04 +0000 (UTC)
-Received: by mail-wr1-f74.google.com with SMTP id d7so1841451wrr.0
- for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 05:29:04 -0800 (PST)
+ with ESMTP id imwc2hHFcGd6 for <devel@linuxdriverproject.org>;
+ Mon,  2 Mar 2020 13:10:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ed1-f73.google.com (mail-ed1-f73.google.com
+ [209.85.208.73])
+ by silver.osuosl.org (Postfix) with ESMTPS id BB49A203F5
+ for <devel@driverdev.osuosl.org>; Mon,  2 Mar 2020 13:10:15 +0000 (UTC)
+Received: by mail-ed1-f73.google.com with SMTP id ck15so7748582edb.6
+ for <devel@driverdev.osuosl.org>; Mon, 02 Mar 2020 05:10:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=JEYVQ/93cUIIc6BO5V/NQlPPY1ArQwYADsRJbFdijd8=;
- b=ifY/Bd7g+2OhtayWGvfN9k47hFCAyCdcGk5ycHkoHFt8uMYtYWW/iEampGrQfd00jA
- NhMrguaHSkQJVtHIyOtncYN4AdA6RkzmuDiqALK2XONIpaXftSzaORyPsma/X0e67210
- 2dp05VBpxYq6vTcF0b1otLbf7BCFz9tusGS262gHtr0F/jJohXRbyDV4UjhwEi8yQLym
- vy/+nvRVT/VDr3kOvQvqK7WXNln1+VG7JUtD4IYmrtd+F2GzFBp2099skMDQBOZBaCnR
- c7Z3ayvTiUb+Azio8W+ZoGneaD7wE3R3dm0UcEJD5Ab5vt3Cd9s+PflF5vkgxSCgRqk2
- R2Zw==
+ :cc; bh=j3aDuvHmNNb8lZp62OUl5ijcLNjosW5sWfAg0aQm8tI=;
+ b=vHewCuWK7XwWw+VRmDWzRLkq61RHy9RnkX3i1kaJ8fw0M0PseejKlj/CZ68p864I5Y
+ N9SGMmkirAc/jgX9ro369d5IupRgP9uXpmgTu6qWv8iSKdgEsMlJCz2VRmtvOWTC/16r
+ grP1CWYBHUL0E9jvxhIWnmwDxoKIWwJkXclff8CBxM+bx6bGzs+trjRunmDlTB2f/ISR
+ 4gaf0upeQTTq1XGdTweSwITQOJ96unRsDb0Lq9uWCv3/Qh1ver1HInXxiCT1JaF/IrcZ
+ 6+l3xZm5rOWOQFpx9N2kSsUuQHMUqx615nH6Ov9dq4D2fJQYRKhTRasXzzX8hyCASUJc
+ Yr+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=JEYVQ/93cUIIc6BO5V/NQlPPY1ArQwYADsRJbFdijd8=;
- b=PjHXL4H8G+HL4oWk8ua/xYRCD76r/OjjUHeODxZKxg4oVynKWDDuDBe1bdGgti1WfD
- jZxc2v71ly/VdEbXpLZ2W/KySP8/KSrrZ+Fb/cxIr6vimMddHZo0tcaZo246yVVuGQVQ
- YfpYU50wWFgie8FNLgCeuwaIYilEBNREsNSXWZ7MOPNj28kiWKz4nlYATxSjZ0vTJsSh
- PF8IfjviAtALp6Ny14wt0lAKrryxv04COde2dUF6oeSaSbxAkZpzYNAzjM5RBwPa62NN
- Ti+tu55bePAqvWNNEBwcxvYGf8NlPVO647JoQUIoUke6flEDjBe0kpxG/LNN4vUvxTIJ
- uXNQ==
-X-Gm-Message-State: ANhLgQ2Zdtc0chpzn7L1JhmbPVkBxgjK9SRUpcRwRX4OifEhP7o5kyZE
- /AXzY9YAlRVsagKvMxeUA22cSZs6wcw=
-X-Google-Smtp-Source: APXvYqylIVXtOKiOFEzyHNHRqhYhFLw9Oy4b+pL2He/Fq3tNdkrsSiy4aLsLJ5pp9R9QUaRQhrSKuXkn2FM=
-X-Received: by 2002:a5d:5286:: with SMTP id c6mr15916314wrv.418.1583154283684; 
- Mon, 02 Mar 2020 05:04:43 -0800 (PST)
-Date: Mon,  2 Mar 2020 14:04:29 +0100
+ bh=j3aDuvHmNNb8lZp62OUl5ijcLNjosW5sWfAg0aQm8tI=;
+ b=fdQA1AJf8d0xF4XX7uQMuJeJeqi31q2e1Q5sp3TWuI6t9SynAUeQneBX8x0tEwX8zj
+ mgSAWov07Cn0uYea+3An4CgKBoBP/YyK69BK5XyXFHTLbO2XbAAspISsV6fduD5oEZJm
+ rx7POd+Gt6TgN+sXFEC3YJHRC1fZFsgVZ3J1KIacGIrFsW5Dhl+R6+6pui3u9RY/x4Cj
+ MSlCAIifWr6XHj0vtqb+4r/uX7OTue3WvM4M3k/7nAX1PQ1/mZRxNdTNA4Ygn6kdbEyY
+ Q969Gj6rhzrW2LU1CotsnhNX+vkjte506EKrTUUgAOCU9SkHqcbWnFoOPofwaMZSBrAY
+ ZEvQ==
+X-Gm-Message-State: APjAAAWrh6qrQH2W7VN9xelpAucSPwNvoofK0TfeLu1u0e6XMTa/c9zX
+ ObTM6CCBZXVJsm7XQacH+o3alWQfbOg=
+X-Google-Smtp-Source: ADFU+vvhEHHYZJ73Yy0CimVvZXBOlQbztjelV2mMGDGzouPCkzbXetIp+8NAtW54Y5Fi1/JwnKRZO766kE8=
+X-Received: by 2002:adf:ce12:: with SMTP id p18mr5676203wrn.88.1583154287784; 
+ Mon, 02 Mar 2020 05:04:47 -0800 (PST)
+Date: Mon,  2 Mar 2020 14:04:30 +0100
 In-Reply-To: <20200302130430.201037-1-glider@google.com>
-Message-Id: <20200302130430.201037-2-glider@google.com>
+Message-Id: <20200302130430.201037-3-glider@google.com>
 Mime-Version: 1.0
 References: <20200302130430.201037-1-glider@google.com>
 X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
-Subject: [PATCH v2 2/3] binder: do not initialize locals passed to
- copy_from_user()
+Subject: [PATCH v2 3/3] sched/wait: avoid double initialization in
+ ___wait_event()
 From: glider@google.com
 To: tkjos@google.com, keescook@chromium.org, gregkh@linuxfoundation.org, 
  arve@android.com, mingo@redhat.com
@@ -90,49 +90,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Certain copy_from_user() invocations in binder.c are known to
-unconditionally initialize locals before their first use, like e.g. in
-the following case:
-
-	struct binder_transaction_data tr;
-	if (copy_from_user(&tr, ptr, sizeof(tr)))
-		return -EFAULT;
-
-In such cases enabling CONFIG_INIT_STACK_ALL leads to insertion of
-redundant locals initialization that the compiler fails to remove.
-To work around this problem till Clang can deal with it, we apply
-__no_initialize to local Binder structures.
-
-This patch was generated using the following Coccinelle script:
-
-  @match@
-  type T;
-  identifier var;
-  position p0, p1;
-  @@
-  T var@p0;
-  ...
-  copy_from_user(&var,..., sizeof(var))@p1
-
-  @escapes depends on match@
-  type match.T;
-  identifier match.var;
-  position match.p0,match.p1;
-  @@
-  T var@p0;
-  ... var ...
-  copy_from_user(&var,..., sizeof(var))@p1
-
-  @local_inited_by_cfu depends on !escapes@
-  type T;
-  identifier var;
-  position match.p0,match.p1;
-  fresh identifier var_noinit = var##" __no_initialize";
-  @@
-  -T var@p0;
-  +T var_noinit;
-  ...
-  copy_from_user(&var,..., sizeof(var))@p1
+With CONFIG_INIT_STACK_ALL enabled, the local __wq_entry is initialized
+twice. Because Clang is currently unable to optimize the automatic
+initialization away (init_wait_entry() is defined in another translation
+unit), remove it with the __no_initialize annotation.
 
 Cc: Kees Cook <keescook@chromium.org>
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
@@ -142,69 +103,47 @@ Signed-off-by: Alexander Potapenko <glider@google.com>
  v2:
   - changed __do_not_initialize to __no_initialize as requested by Kees
     Cook
-  - wrote a Coccinelle script to generate the patch
 ---
- drivers/android/binder.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/android/binder.c | 4 ++--
+ include/linux/wait.h     | 3 ++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index a6b2082c24f8f..a59871532ff6b 100644
+index a59871532ff6b..66984e7c33094 100644
 --- a/drivers/android/binder.c
 +++ b/drivers/android/binder.c
-@@ -3788,7 +3788,7 @@ static int binder_thread_write(struct binder_proc *proc,
- 
- 		case BC_TRANSACTION_SG:
- 		case BC_REPLY_SG: {
--			struct binder_transaction_data_sg tr;
-+			struct binder_transaction_data_sg tr __no_initialize;
- 
- 			if (copy_from_user(&tr, ptr, sizeof(tr)))
- 				return -EFAULT;
-@@ -3799,7 +3799,7 @@ static int binder_thread_write(struct binder_proc *proc,
- 		}
- 		case BC_TRANSACTION:
- 		case BC_REPLY: {
--			struct binder_transaction_data tr;
-+			struct binder_transaction_data tr __no_initialize;
- 
- 			if (copy_from_user(&tr, ptr, sizeof(tr)))
- 				return -EFAULT;
 @@ -4827,7 +4827,7 @@ static int binder_ioctl_write_read(struct file *filp,
  	struct binder_proc *proc = filp->private_data;
  	unsigned int size = _IOC_SIZE(cmd);
  	void __user *ubuf = (void __user *)arg;
--	struct binder_write_read bwr;
-+	struct binder_write_read bwr __no_initialize;
+-	struct binder_write_read bwr __no_initialize;
++	struct binder_write_read bwr;
  
  	if (size != sizeof(struct binder_write_read)) {
  		ret = -EINVAL;
-@@ -5039,7 +5039,7 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+@@ -5026,7 +5026,7 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ 			goto err;
  		break;
- 	}
- 	case BINDER_SET_CONTEXT_MGR_EXT: {
--		struct flat_binder_object fbo;
-+		struct flat_binder_object fbo __no_initialize;
+ 	case BINDER_SET_MAX_THREADS: {
+-		int max_threads;
++		int max_threads __no_initialize;
  
- 		if (copy_from_user(&fbo, ubuf, sizeof(fbo))) {
- 			ret = -EINVAL;
-@@ -5076,7 +5076,7 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
- 		break;
- 	}
- 	case BINDER_GET_NODE_INFO_FOR_REF: {
--		struct binder_node_info_for_ref info;
-+		struct binder_node_info_for_ref info __no_initialize;
- 
- 		if (copy_from_user(&info, ubuf, sizeof(info))) {
- 			ret = -EFAULT;
-@@ -5095,7 +5095,7 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
- 		break;
- 	}
- 	case BINDER_GET_NODE_DEBUG_INFO: {
--		struct binder_node_debug_info info;
-+		struct binder_node_debug_info info __no_initialize;
- 
- 		if (copy_from_user(&info, ubuf, sizeof(info))) {
- 			ret = -EFAULT;
+ 		if (copy_from_user(&max_threads, ubuf,
+ 				   sizeof(max_threads))) {
+diff --git a/include/linux/wait.h b/include/linux/wait.h
+index 3283c8d021377..b52a9bb2c7727 100644
+--- a/include/linux/wait.h
++++ b/include/linux/wait.h
+@@ -262,7 +262,8 @@ extern void init_wait_entry(struct wait_queue_entry *wq_entry, int flags);
+ #define ___wait_event(wq_head, condition, state, exclusive, ret, cmd)		\
+ ({										\
+ 	__label__ __out;							\
+-	struct wait_queue_entry __wq_entry;					\
++	/* Unconditionally initialized by init_wait_entry(). */			\
++	struct wait_queue_entry __wq_entry __no_initialize;			\
+ 	long __ret = ret;	/* explicit shadow */				\
+ 										\
+ 	init_wait_entry(&__wq_entry, exclusive ? WQ_FLAG_EXCLUSIVE : 0);	\
 -- 
 2.25.0.265.gbab2e86ba0-goog
 
