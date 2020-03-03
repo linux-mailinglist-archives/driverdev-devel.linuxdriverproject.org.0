@@ -1,65 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7342D1777EB
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Mar 2020 14:58:37 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C7602177894
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Mar 2020 15:16:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 180BD864A4;
-	Tue,  3 Mar 2020 13:58:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 26A4D20510;
+	Tue,  3 Mar 2020 14:16:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YgBAB0uMthln; Tue,  3 Mar 2020 13:58:35 +0000 (UTC)
+	with ESMTP id 2c85eleVW-tS; Tue,  3 Mar 2020 14:16:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6EE2B86462;
-	Tue,  3 Mar 2020 13:58:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D491E204E3;
+	Tue,  3 Mar 2020 14:16:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 68D981BF3D0
- for <devel@linuxdriverproject.org>; Tue,  3 Mar 2020 13:58:32 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9EEF61BF3A8
+ for <devel@linuxdriverproject.org>; Tue,  3 Mar 2020 14:16:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6385284922
- for <devel@linuxdriverproject.org>; Tue,  3 Mar 2020 13:58:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9B04E204E3
+ for <devel@linuxdriverproject.org>; Tue,  3 Mar 2020 14:16:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kzZK2Oo39ZNq for <devel@linuxdriverproject.org>;
- Tue,  3 Mar 2020 13:58:31 +0000 (UTC)
-X-Greylist: delayed 17:50:59 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0051.hostedemail.com
- [216.40.44.51])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1D9CF84491
- for <devel@driverdev.osuosl.org>; Tue,  3 Mar 2020 13:58:31 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave04.hostedemail.com (Postfix) with ESMTP id 2BB9E180036E6
- for <devel@driverdev.osuosl.org>; Tue,  3 Mar 2020 13:58:29 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay06.hostedemail.com (Postfix) with ESMTP id 866DE18225DF6;
- Tue,  3 Mar 2020 13:58:26 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:967:973:988:989:1260:1263:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1535:1544:1593:1594:1605:1711:1730:1747:1777:1792:1801:2194:2198:2199:2200:2393:2525:2553:2560:2563:2682:2685:2692:2693:2828:2859:2918:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3622:3865:3866:3867:3868:3870:3871:3872:3873:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4117:4321:4470:4605:5007:6119:6691:7875:7903:7904:9025:9388:10004:10049:10848:11026:11232:11233:11473:11658:11914:12043:12295:12296:12297:12438:12555:12740:12760:12776:12895:13160:13161:13229:13439:14096:14097:14106:14107:14181:14659:14721:14849:21080:21220:21433:21611:21627:21740:21939:21990:30012:30051:30054:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:2, LUA_SUMMARY:none
-X-HE-Tag: yard67_83a1f2d77a221
-X-Filterd-Recvd-Size: 6456
-Received: from XPS-9350.home (unknown [47.151.143.254])
- (Authenticated sender: joe@perches.com)
- by omf07.hostedemail.com (Postfix) with ESMTPA;
- Tue,  3 Mar 2020 13:58:24 +0000 (UTC)
-Message-ID: <58c1f1bf6b30bd5c39184cd9c09f25a9b9d67a68.camel@perches.com>
+ with ESMTP id AnD+4hnzRCZC for <devel@linuxdriverproject.org>;
+ Tue,  3 Mar 2020 14:16:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id D9B2E2001D
+ for <devel@driverdev.osuosl.org>; Tue,  3 Mar 2020 14:16:16 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 023ECuOA151981;
+ Tue, 3 Mar 2020 14:16:11 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=sL7wL8dxkuL7cejD6WDz6jQpyi/urX1RqkURUcQ6Hm0=;
+ b=R8PIDa7h7n73FWTMf4ULgW7d4Sxbf6/7FwEtaw59UMThqkUhwYppNzzxPXfmiC5SyN6a
+ uVqcxpRlPB+hclsL3pvwuXciDb6wVt3PMYqogu2NwpZxotE+z54W2L8glgtgssj4j4WA
+ VcW7tVubSwDwrHxM3QsdYc56BofoBt7fpjJ9SdTQPpyIOiTrGoO1cXbF8loz9t8Sw4Qb
+ ZyZNIXTOen1NLDgCW801FJInvMWik/RJqtBQUE83uYCUeVkLkWrHTGTy8RrZzdAW+rCq
+ WsIlrsJSlnzrRYQ286qXEWyi8ja9VXxRS1K9XFYb8aPwUw4GWMfisw8G0SJMM5yHcAQf ew== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 2yghn338ev-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 03 Mar 2020 14:16:11 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 023EEhdE084667;
+ Tue, 3 Mar 2020 14:16:10 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 2yg1ekttds-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 03 Mar 2020 14:16:10 +0000
+Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 023EG5OL002159;
+ Tue, 3 Mar 2020 14:16:05 GMT
+Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 03 Mar 2020 06:16:05 -0800
+Date: Tue, 3 Mar 2020 17:15:54 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Joe Perches <joe@perches.com>
 Subject: Re: [PATCH v2 2/3] binder: do not initialize locals passed to
  copy_from_user()
-From: Joe Perches <joe@perches.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Alexander Potapenko
- <glider@google.com>
-Date: Tue, 03 Mar 2020 05:56:51 -0800
-In-Reply-To: <20200303093832.GD24372@kadam>
+Message-ID: <20200303141554.GG4118@kadam>
 References: <20200302130430.201037-1-glider@google.com>
  <20200302130430.201037-2-glider@google.com>
  <0eaac427354844a4fcfb0d9843cf3024c6af21df.camel@perches.com>
@@ -69,8 +75,26 @@ References: <20200302130430.201037-1-glider@google.com>
  <18b0d6ea5619c34ca4120a6151103dbe9bfa0cbe.camel@perches.com>
  <CAG_fn=U2T--j_uhyppqzFvMO3w3yUA529pQrCpbhYvqcfh9Z1w@mail.gmail.com>
  <20200303093832.GD24372@kadam>
-User-Agent: Evolution 3.34.1-2 
+ <58c1f1bf6b30bd5c39184cd9c09f25a9b9d67a68.camel@perches.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <58c1f1bf6b30bd5c39184cd9c09f25a9b9d67a68.camel@perches.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9548
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ suspectscore=0 spamscore=0
+ mlxlogscore=999 malwarescore=0 bulkscore=0 mlxscore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
+ definitions=main-2003030108
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9548
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ phishscore=0 spamscore=0
+ impostorscore=0 mlxscore=0 adultscore=0 mlxlogscore=999 lowpriorityscore=0
+ priorityscore=1501 bulkscore=0 clxscore=1015 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
+ definitions=main-2003030108
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,129 +112,35 @@ Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
  Peter Zijlstra <peterz@infradead.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  LKML <linux-kernel@vger.kernel.org>,
- Arve =?ISO-8859-1?Q?Hj=F8nnev=E5g?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Dmitriy Vyukov <dvyukov@google.com>,
- Todd Kjos <tkjos@google.com>
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Ingo Molnar <mingo@redhat.com>, Alexander Potapenko <glider@google.com>,
+ Dmitriy Vyukov <dvyukov@google.com>, Todd Kjos <tkjos@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2020-03-03 at 12:38 +0300, Dan Carpenter wrote:
-> On Tue, Mar 03, 2020 at 10:14:18AM +0100, Alexander Potapenko wrote:
-> > On Mon, Mar 2, 2020 at 7:51 PM Joe Perches <joe@perches.com> wrote:
-> > > On Mon, 2020-03-02 at 19:17 +0100, Alexander Potapenko wrote:
-> > > > On Mon, Mar 2, 2020 at 3:00 PM Joe Perches <joe@perches.com> wrote:
-> > > > > On Mon, 2020-03-02 at 14:25 +0100, Alexander Potapenko wrote:
-> > > > > > On Mon, Mar 2, 2020 at 2:11 PM Joe Perches <joe@perches.com> wrote:
-> > > > > > > On Mon, 2020-03-02 at 14:04 +0100, glider@google.com wrote:
-> > > > > > > > Certain copy_from_user() invocations in binder.c are known to
-> > > > > > > > unconditionally initialize locals before their first use, like e.g. in
-> > > > > > > > the following case:
-> > > > > > > []
-> > > > > > > > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> > > > > > > []
-> > > > > > > > @@ -3788,7 +3788,7 @@ static int binder_thread_write(struct binder_proc *proc,
-> > > > > > > > 
-> > > > > > > >               case BC_TRANSACTION_SG:
-> > > > > > > >               case BC_REPLY_SG: {
-> > > > > > > > -                     struct binder_transaction_data_sg tr;
-> > > > > > > > +                     struct binder_transaction_data_sg tr __no_initialize;
-> > > > > > > > 
-> > > > > > > >                       if (copy_from_user(&tr, ptr, sizeof(tr)))
-> > > > > > > 
-> > > > > > > I fail to see any value in marking tr with __no_initialize
-> > > > > > > when it's immediately written to by copy_from_user.
-> > > > > > 
-> > > > > > This is being done exactly because it's immediately written to by copy_to_user()
-> > > > > > Clang is currently unable to figure out that copy_to_user() initializes memory.
-> > > > > > So building the kernel with CONFIG_INIT_STACK_ALL=y basically leads to
-> > > > > > the following code:
-> > > > > > 
-> > > > > >   struct binder_transaction_data_sg tr;
-> > > > > >   memset(&tr, 0xAA, sizeof(tr));
-> > > > > >   if (copy_from_user(&tr, ptr, sizeof(tr))) {...}
-> > > > > > 
-> > > > > > This unnecessarily slows the code down, so we add __no_initialize to
-> > > > > > prevent the compiler from emitting the redundant initialization.
-> > > > > 
-> > > > > So?  CONFIG_INIT_STACK_ALL by design slows down code.
-> > > > Correct.
-> > > > 
-> > > > > This marking would likely need to be done for nearly all
-> > > > > 3000+ copy_from_user entries.
-> > > > Unfortunately, yes. I was just hoping to do so for a handful of hot
-> > > > cases that we encounter, but in the long-term a compiler solution must
-> > > > supersede them.
-> > > > 
-> > > > > Why not try to get something done on the compiler side
-> > > > > to mark the function itself rather than the uses?
-> > > > This is being worked on in the meantime as well (see
-> > > > http://lists.llvm.org/pipermail/cfe-dev/2020-February/064633.html)
-> > > > Do you have any particular requisitions about how this should look on
-> > > > the source level?
-> > > 
-> > > I presume something like the below when appropriate for
-> > > automatic variables when not already initialized or modified.
-> > > ---
-[]
-> > > diff --git a/include/linux/uaccess.h b/include/linux/uaccess.h
-[]
-> > > @@ -138,7 +138,8 @@ _copy_to_user(void __user *, const void *, unsigned long);
-> > >  #endif
-> > > 
-> > >  static __always_inline unsigned long __must_check
-> > > -copy_from_user(void *to, const void __user *from, unsigned long n)
-> > > +copy_from_user(void __no_initialize *to, const void __user *from,
-> > > +              unsigned long n)
-> > 
-> > Shall this __no_initialize attribute denote that the whole object
-> > passed to it is initialized?
+On Tue, Mar 03, 2020 at 05:56:51AM -0800, Joe Perches wrote:
+> > The real fix is to initialize everything manually, the automated
+> > initialization is a hardenning feature which many people will disable.
+> > So I don't think the hardenning needs to be perfect, it needs to simple
+> > and fast.
+> 
+> Dan, perhaps I don't understand you.
+> Can you clarify what you mean?
 
-My presumption is the compiler could determine that only if the
-accessed variable is a local automatic, it does not need to be
-initialized.
+I'm basically agreeing with you.
 
-> > Or do we need to encode the length as well, as Jann suggests?
+Even though copy_from_user() might only initialize part of the struct
+we should just record that it initializes the struct without getting
+bogged down in details.  The annotation should be simple.
 
-I think not.
+If the automated system to initialize stack variables doesn't work 100%
+that's okay because it's a supplement and not a replacement for manually
+initializing stack variables.
 
-> > It's also interesting what should happen if *to is pointing _inside_ a
-> > local object - presumably it's unsafe to disable initialization for
-> > the whole object.
-
-Are you asking if for example:
-
-	struct foo {
-		...;
-	};
-
-	struct bar {
-		struct foo a;
-		...;
-	};
-
-	void func(void)
-	{
-		struct bar b;
-		...;
-		copy_from_user(&b.a, baz, len);
-		...;
-	}
-
-that the containing struct b would not be initialized?
-
-I presume a compiler would initialized all of b, but
-if it manages to initialize all of b but b.a, good on
-the compiler writer.
-
-> The real fix is to initialize everything manually, the automated
-> initialization is a hardenning feature which many people will disable.
-> So I don't think the hardenning needs to be perfect, it needs to simple
-> and fast.
-
-Dan, perhaps I don't understand you.
-Can you clarify what you mean?
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
