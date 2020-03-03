@@ -1,98 +1,147 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B18B17728E
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Mar 2020 10:39:06 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D56A7863D9;
-	Tue,  3 Mar 2020 09:39:03 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8q+J2BfiaqZp; Tue,  3 Mar 2020 09:39:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8241286272;
-	Tue,  3 Mar 2020 09:39:00 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 95CA21BF32C
- for <devel@linuxdriverproject.org>; Tue,  3 Mar 2020 09:38:58 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DD2261775DC
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Mar 2020 13:28:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8CA892011B
- for <devel@linuxdriverproject.org>; Tue,  3 Mar 2020 09:38:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DDDEA2050A;
+	Tue,  3 Mar 2020 12:28:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id odVKaxwh3o38; Tue,  3 Mar 2020 12:28:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 35DC8204E6;
+	Tue,  3 Mar 2020 12:28:18 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B68271BF317
+ for <devel@linuxdriverproject.org>; Tue,  3 Mar 2020 12:28:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id ADB7A86F13
+ for <devel@linuxdriverproject.org>; Tue,  3 Mar 2020 12:28:15 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ullWm7P2GI2v for <devel@linuxdriverproject.org>;
- Tue,  3 Mar 2020 09:38:56 +0000 (UTC)
+ with ESMTP id 9HH5C5c5OXUU for <devel@linuxdriverproject.org>;
+ Tue,  3 Mar 2020 12:28:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by silver.osuosl.org (Postfix) with ESMTPS id 5E1A420011
- for <devel@driverdev.osuosl.org>; Tue,  3 Mar 2020 09:38:56 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0239Y00N124318;
- Tue, 3 Mar 2020 09:38:53 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=MSC4Wtn4COvNsRCEoK0KFvQBDjOBfSLVQcEKZQ8ZTdg=;
- b=LRDv2LFkdT7WCfr+9xjf73IV/JlTN3jptGTipndciOQdpCVMP7EWMeE9e4b88WUmJeyk
- R/Zwo9JQkFXNZHjQhqMNwG93G1vIBc4ktNcpGGE5ktgN6Wm0BI0OhWOnd66z7MW1bCeE
- 5Vv3pd+ZgATHDhU9h25gMWfU6SCAFq9S6xnYYZX1qRJsHpPUQJeKRb6QMXOn2gqN1yKG
- sC+p5vKAv2iq56Z399oxI2nnU92nxWcDWFipLJsdO3Z77GaHv8W3f5UN4D1yVgRwiEKR
- HhsBVUBpobfztgQwQZYZxQiNtqGxH/xnPgjvW6QBPXpvCrveJxBiB84SSdim0ospP/Oh TQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 2yffwqnrcg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 03 Mar 2020 09:38:53 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0239WZvP182796;
- Tue, 3 Mar 2020 09:38:52 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3030.oracle.com with ESMTP id 2yg1eka3kp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 03 Mar 2020 09:38:52 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0239cjrk013071;
- Tue, 3 Mar 2020 09:38:45 GMT
-Received: from kadam (/129.205.23.165) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 03 Mar 2020 01:38:44 -0800
-Date: Tue, 3 Mar 2020 12:38:32 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Alexander Potapenko <glider@google.com>
-Subject: Re: [PATCH v2 2/3] binder: do not initialize locals passed to
- copy_from_user()
-Message-ID: <20200303093832.GD24372@kadam>
-References: <20200302130430.201037-1-glider@google.com>
- <20200302130430.201037-2-glider@google.com>
- <0eaac427354844a4fcfb0d9843cf3024c6af21df.camel@perches.com>
- <CAG_fn=VNnxjD6qdkAW_E0v3faBQPpSsO=c+h8O=yvNxTZowuBQ@mail.gmail.com>
- <4cac10d3e2c03e4f21f1104405a0a62a853efb4e.camel@perches.com>
- <CAG_fn=XOyPGau9m7x8eCLJHy3m-H=nbMODewWVJ1xb2e+BPdFw@mail.gmail.com>
- <18b0d6ea5619c34ca4120a6151103dbe9bfa0cbe.camel@perches.com>
- <CAG_fn=U2T--j_uhyppqzFvMO3w3yUA529pQrCpbhYvqcfh9Z1w@mail.gmail.com>
+Received: from esa6.microchip.iphmx.com (esa6.microchip.iphmx.com
+ [216.71.154.253])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B592986E88
+ for <devel@driverdev.osuosl.org>; Tue,  3 Mar 2020 12:28:14 +0000 (UTC)
+Received-SPF: Pass (esa6.microchip.iphmx.com: domain of
+ Ajay.Kathat@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
+ x-record-type="v=spf1"; x-record-text="v=spf1 mx
+ a:ushub1.microchip.com a:smtpout.microchip.com
+ -exists:%{i}.spf.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa6.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
+ envelope-from="Ajay.Kathat@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa6.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: L1OlvvkVQZx8/8Vmr9raaEqiq2XFcIfG5Fy0U/vgfHewXw3fU0fBye6+H2hZkhgbhB5ELZJplH
+ KFMHeNK9AVsyCogTTuR1/sSfD195PXopOjYZfPtevzMKZBxznG9l55h1EZwrzMKIgmHm0IwZ6E
+ H8YTbcte/VM+6KJedv+VMuEvyjD0cnyjUNJK7Yz8aCQpKa6+p+IRw8O2sBN+ul+adDnzfX4PIt
+ PXcOolx0dDT64Fuf0uYaMuBNbIdcio7MdDujPsgtT/sJHp5/OauehB5fqvHcYZf3pfphoqS5oo
+ 7AI=
+X-IronPort-AV: E=Sophos;i="5.70,511,1574146800"; 
+   d="scan'208";a="4309743"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 03 Mar 2020 05:28:13 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Tue, 3 Mar 2020 05:28:13 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.71) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
+ Transport; Tue, 3 Mar 2020 05:28:12 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=cayxk7D02K742c8mwFe8rXXr8ITAc6KHXiVu2O7+izlJ7Lk5aIbPH9JYDh/3FjxmVgfTN33CGEUBRFQMvDpLQR/sVFgrDqZLJUfGEgx9oatiGzLcvwTHh671SOgbEUSU8tvu/c9x+fX1Mk5nmtKCw57MA30R+9gC7HehuoWEz3C0HJ7Mb9k8n5xWzAt7Le8EiKtTDhLO9QQoyXo0LrxGYVLXwhRQK2/3zJJb4xYcu/afYkT0JiG6OHsWzMD7MW3w79kK9D3iR0eQXanMiGPvtcIDbyWTjHI7tw9hOjZyVN2umuXgCaBBV9+oSNN9ZhIZktnVGkq5ZxcNSmg1t36h3g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=F4UYHSQJTghL2axWoO+U0ypyro3tNhbjS2+pn7gwicc=;
+ b=N4kUdbjSPfaSjb/Tc+1JVwgFtSe09XsV3mI46yZhdT6nDkeOGiifoG+0aR4t3v+Lx7yf6bFWsknSRieHKqB81VI8p5X/MlGL1r7z6zvf5/04btlfMxUdNgdMydE4tpND5NiH3P2bdU6IR//mM4gCsA8+FxTW/C+dKzBIy5T7t5Z0vwJVXW+CrUVgMmAJr8yOlUh/p8jRuD5ywK9+HGKvIeRImzxl8Ru0sZhammgK3TyGZge86YLtIEVKreiKo7sRmglLAS/7mP3hiIVjuxzKlC+dLVw9MnhV87rO+NBKJA5mQdCqHwlw/zOLEXA3nL9W/ONQ3pwWtgXW0/Xvd3sryg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=F4UYHSQJTghL2axWoO+U0ypyro3tNhbjS2+pn7gwicc=;
+ b=CsKyoEsIrceASe6K+Gufv0oYuBZcDHjo3LM+PzP/tz2L+bNZWuDGMmUTp7+ODCDwjnt3+GMr+mthe/Ro8KGqpfazHIft5N9j0EwPAJiJ29gMsF6mofjbGWzdH1aNxgwnHNjqGHH3Z3GwnTo4joLzLNEHYDayiDFmir1KQT5qQUE=
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com (2603:10b6:405:7b::14)
+ by BN6PR11MB1281.namprd11.prod.outlook.com (2603:10b6:404:47::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2772.15; Tue, 3 Mar
+ 2020 12:28:11 +0000
+Received: from BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::ec62:e7fd:f17c:dfd4]) by BN6PR11MB3985.namprd11.prod.outlook.com
+ ([fe80::ec62:e7fd:f17c:dfd4%3]) with mapi id 15.20.2772.019; Tue, 3 Mar 2020
+ 12:28:10 +0000
+From: <Ajay.Kathat@microchip.com>
+To: <robh@kernel.org>
+Subject: Re: [PATCH v4 16/18] dt: bindings: net: add
+ microchip,wilc1000,sdio.yaml
+Thread-Topic: [PATCH v4 16/18] dt: bindings: net: add
+ microchip,wilc1000,sdio.yaml
+Thread-Index: AQHV8LB4evB5uOBIuUadeV/L9u3vJKg2HGIAgACwowA=
+Date: Tue, 3 Mar 2020 12:28:10 +0000
+Message-ID: <3b22e640-bce1-7b09-8c75-f53d241cf9bc@microchip.com>
+References: <20200302163414.4342-1-ajay.kathat@microchip.com>
+ <20200302163414.4342-17-ajay.kathat@microchip.com>
+ <20200303015558.GA6876@bogus>
+In-Reply-To: <20200303015558.GA6876@bogus>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [121.244.27.38]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 01bc8272-0059-498c-ed78-08d7bf6e561c
+x-ms-traffictypediagnostic: BN6PR11MB1281:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BN6PR11MB1281093C1F22F9EF693E08B5E3E40@BN6PR11MB1281.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-forefront-prvs: 03319F6FEF
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(366004)(189003)(199004)(6512007)(36756003)(6486002)(26005)(498600001)(966005)(66946007)(2616005)(71200400001)(31696002)(86362001)(66446008)(66556008)(76116006)(186003)(91956017)(66476007)(64756008)(4326008)(31686004)(8936002)(8676002)(53546011)(81166006)(81156014)(5660300002)(6506007)(6916009)(54906003)(107886003)(2906002)(142933001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1281;
+ H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Fby7MNgNfaBWB+dMuwE4vPWoUn2zLbf5tyFuLNEdoUUTUhQVrSE391grWGRRSpN3FP4zUZ/WAxzKmx3vFysQjqHeOgwGJ6ZFRfl3FuUUolcvJppk9GSWcVsp6MCBwbwP44fYzLYvoIXE7nb0Rgef+wgo5Q6l7NjFGjq8ZS4xavH39W7Q9U+JKxccM4qQecDC1wIdWKa5OSI1h/p3OseXyMvbUpUylUFoLK/wU2/S7aGg4tDxAFyYptJ6Q/8CeN7CkeFrn1QTiJH/C/SP42VlJgpcIe37Z9d94IMKb7ZdE45gi4UCkbmOg/6ggN5wpCHkWe8e4FDeQHAddx64CasHDDwFkkYlvgAvXTIEdqRqJRrxttli0vGJ5MYzwiK1kmbXb4vokwIF7I5y/z4caKolNoNE2/Fu9iNbqN0KBZ7H2T8M/8d/9/mG0Blf+2vIgInnl2YNE+Zj6GyMXz98qE/fh2dwMk8sLI5nYIGvs1u1P37QfTilvGphTPnbhxDAmi9G3c6b+RenkuJehf913Aw0Lxt8Djl75Bz38n7gQNmRpLY5zt7REWPKHh/z/YfvL5GG
+x-ms-exchange-antispam-messagedata: 5QJ28rpgWo1rfL6mjTNtqb1twmq7a+K4XJHZ5JsKA4YPbVUTz3cF+Oi8/4+4Udq89Yr295b8YFxt2FhxRf0OXx9RsUekwBd446Jgwn4iNs1QXQYGmpZKOjCHTS23t0aHF4/NmopC/kGK1dWmxPuLEA==
+Content-ID: <38F2A6F8940ABB42821B0F2AEA36D234@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAG_fn=U2T--j_uhyppqzFvMO3w3yUA529pQrCpbhYvqcfh9Z1w@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9548
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- suspectscore=0 spamscore=0
- mlxlogscore=999 malwarescore=0 bulkscore=0 mlxscore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2003030074
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9548
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 spamscore=0
- impostorscore=0 malwarescore=0 mlxlogscore=999 mlxscore=0 suspectscore=0
- phishscore=0 clxscore=1015 bulkscore=0 adultscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2003030074
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01bc8272-0059-498c-ed78-08d7bf6e561c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Mar 2020 12:28:10.6439 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 3xwTtuC5zOd8JQxY6Tk1MqStVUz7NueAXGJjZlE+Ih25PqvTFyV6l4TRFwT1rbN7tydry5Z3U6teMT3IIIIYvP+KneNv6Xrqnrw2gakkrEc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1281
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,105 +154,143 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Kees Cook <keescook@chromium.org>, Jann Horn <jannh@google.com>,
- Peter Zijlstra <peterz@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Joe Perches <joe@perches.com>,
- Dmitriy Vyukov <dvyukov@google.com>, Todd Kjos <tkjos@google.com>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Venkateswara.Kaja@microchip.com, gregkh@linuxfoundation.org,
+ linux-wireless@vger.kernel.org, Nicolas.Ferre@microchip.com,
+ Adham.Abozaeid@microchip.com, johannes@sipsolutions.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Mar 03, 2020 at 10:14:18AM +0100, Alexander Potapenko wrote:
-> On Mon, Mar 2, 2020 at 7:51 PM Joe Perches <joe@perches.com> wrote:
-> >
-> > On Mon, 2020-03-02 at 19:17 +0100, Alexander Potapenko wrote:
-> > > On Mon, Mar 2, 2020 at 3:00 PM Joe Perches <joe@perches.com> wrote:
-> > > > On Mon, 2020-03-02 at 14:25 +0100, Alexander Potapenko wrote:
-> > > > > On Mon, Mar 2, 2020 at 2:11 PM Joe Perches <joe@perches.com> wrote:
-> > > > > > On Mon, 2020-03-02 at 14:04 +0100, glider@google.com wrote:
-> > > > > > > Certain copy_from_user() invocations in binder.c are known to
-> > > > > > > unconditionally initialize locals before their first use, like e.g. in
-> > > > > > > the following case:
-> > > > > > []
-> > > > > > > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> > > > > > []
-> > > > > > > @@ -3788,7 +3788,7 @@ static int binder_thread_write(struct binder_proc *proc,
-> > > > > > >
-> > > > > > >               case BC_TRANSACTION_SG:
-> > > > > > >               case BC_REPLY_SG: {
-> > > > > > > -                     struct binder_transaction_data_sg tr;
-> > > > > > > +                     struct binder_transaction_data_sg tr __no_initialize;
-> > > > > > >
-> > > > > > >                       if (copy_from_user(&tr, ptr, sizeof(tr)))
-> > > > > >
-> > > > > > I fail to see any value in marking tr with __no_initialize
-> > > > > > when it's immediately written to by copy_from_user.
-> > > > >
-> > > > > This is being done exactly because it's immediately written to by copy_to_user()
-> > > > > Clang is currently unable to figure out that copy_to_user() initializes memory.
-> > > > > So building the kernel with CONFIG_INIT_STACK_ALL=y basically leads to
-> > > > > the following code:
-> > > > >
-> > > > >   struct binder_transaction_data_sg tr;
-> > > > >   memset(&tr, 0xAA, sizeof(tr));
-> > > > >   if (copy_from_user(&tr, ptr, sizeof(tr))) {...}
-> > > > >
-> > > > > This unnecessarily slows the code down, so we add __no_initialize to
-> > > > > prevent the compiler from emitting the redundant initialization.
-> > > >
-> > > > So?  CONFIG_INIT_STACK_ALL by design slows down code.
-> > > Correct.
-> > >
-> > > > This marking would likely need to be done for nearly all
-> > > > 3000+ copy_from_user entries.
-> > > Unfortunately, yes. I was just hoping to do so for a handful of hot
-> > > cases that we encounter, but in the long-term a compiler solution must
-> > > supersede them.
-> > >
-> > > > Why not try to get something done on the compiler side
-> > > > to mark the function itself rather than the uses?
-> > > This is being worked on in the meantime as well (see
-> > > http://lists.llvm.org/pipermail/cfe-dev/2020-February/064633.html)
-> > > Do you have any particular requisitions about how this should look on
-> > > the source level?
-> >
-> > I presume something like the below when appropriate for
-> > automatic variables when not already initialized or modified.
-> > ---
-> >  include/linux/uaccess.h | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/include/linux/uaccess.h b/include/linux/uaccess.h
-> > index 8a215c..3e034b5 100644
-> > --- a/include/linux/uaccess.h
-> > +++ b/include/linux/uaccess.h
-> > @@ -138,7 +138,8 @@ _copy_to_user(void __user *, const void *, unsigned long);
-> >  #endif
-> >
-> >  static __always_inline unsigned long __must_check
-> > -copy_from_user(void *to, const void __user *from, unsigned long n)
-> > +copy_from_user(void __no_initialize *to, const void __user *from,
-> > +              unsigned long n)
+Hi Rob,
+
+Thanks for reviewing.
+
+On 03/03/20 7:25 am, Rob Herring wrote:
 > 
-> Shall this __no_initialize attribute denote that the whole object
-> passed to it is initialized?
-> Or do we need to encode the length as well, as Jann suggests?
-> It's also interesting what should happen if *to is pointing _inside_ a
-> local object - presumably it's unsafe to disable initialization for
-> the whole object.
+> On Mon, Mar 02, 2020 at 04:34:40PM +0000, Ajay.Kathat@microchip.com wrote:
+>> From: Ajay Singh <ajay.kathat@microchip.com>
+>>
+>> Moved '/drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml' to
+>> 'Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml'.
+>>
+>> Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
+>> ---
+>>  .../net/wireless/microchip,wilc1000,sdio.yaml | 68 +++++++++++++++++++
+>>  1 file changed, 68 insertions(+)
+>>  create mode 100644 Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml
+>>
+>> diff --git a/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml b/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml
+>> new file mode 100644
+>> index 000000000000..b338f569f7e2
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000,sdio.yaml
+>> @@ -0,0 +1,68 @@
+>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/net/wireless/microchip,wilc1000,sdio.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: Microchip WILC wireless SDIO devicetree bindings
+>> +
+>> +maintainers:
+>> +  - Adham Abozaeid <adham.abozaeid@microchip.com>
+>> +  - Ajay Singh <ajay.kathat@microchip.com>
+>> +
+>> +description:
+>> +  The wilc1000 chips can be connected via SDIO. The node is used to
+>> +  specify child node to the SDIO controller that connects the device
+>> +  to the system.
+>> +
+>> +properties:
+>> +  compatible:
+>> +    const: microchip,wilc1000-sdio
+>> +
+>> +  irq-gpios:
+> 
+> Unless you need GPIO control of the line, use 'interrupts' instead.
 
-The real fix is to initialize everything manually, the automated
-initialization is a hardenning feature which many people will disable.
-So I don't think the hardenning needs to be perfect, it needs to simple
-and fast.
+I will check this.
 
-regards,
-dan carpenter
+> 
+>> +    description: The GPIO phandle connect to a host IRQ.
+>> +    maxItems: 1
+>> +
+>> +  reg:
+>> +    description: Slot ID used in the controller.
+> 
+> No, it's the function number. But you can just drop this.
+> 
+
+Ok. I will drop this description.
+
+>> +    maxItems: 1
+>> +
+>> +  clocks:
+>> +    description: phandle to the clock connected on rtc clock line.
+>> +    maxItems: 1
+>> +
+>> +  bus-width:
+> 
+> I believe this is defined to go in the parent node.
+> 
+
+In that case, I think we can drop this description here by moving it to
+parent node. right?
+
+>> +    description: The number of data lines wired up the slot.
+>> +    allOf:
+>> +      - $ref: /schemas/types.yaml#/definitions/uint32
+>> +      - enum: [1, 4, 8]
+>> +      - default: 1
+>> +
+>> +required:
+>> +  - compatible
+>> +  - irq-gpios
+>> +  - reg
+>> +
+>> +examples:
+>> +  - |
+>> +    mmc1: mmc@fc000000 {
+>> +      #address-cells = <1>;
+>> +      #size-cells = <0>;
+>> +      pinctrl-names = "default";
+>> +      pinctrl-0 = <&pinctrl_mmc1_clk_cmd_dat0 &pinctrl_mmc1_dat1_3>;
+>> +      non-removable;
+>> +      vmmc-supply = <&vcc_mmc1_reg>;
+>> +      vqmmc-supply = <&vcc_3v3_reg>;
+>> +      status = "okay";
+> 
+> Don't show 'status' in examples.
+> 
+
+OK. I will remove this.
+
+>> +      wilc_sdio@0 {
+> 
+> wifi@0
+> 
+>> +        compatible = "microchip,wilc1000-sdio";
+>> +          irq-gpios = <&pioC 27 0>;
+>> +          reg = <0>;
+>> +          clocks = <&pck1>;
+>> +          clock-names = "rtc_clk";
+>> +          assigned-clocks = <&pck1>;
+>> +          assigned-clock-rates = <32768>;
+>> +          status = "okay";
+
+I will remove 'status' here also.
+
+>> +          bus-width = <4>;
+
+I will move this property to parent node.
+
+>> +        };
+>> +    };
+>> --
+>> 2.24.0
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
