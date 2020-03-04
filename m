@@ -1,62 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32D8D178FD1
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 12:50:47 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 678D6179354
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 16:26:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7FAF684FDE;
-	Wed,  4 Mar 2020 11:50:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0C7552047D;
+	Wed,  4 Mar 2020 15:26:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UEa2eJROYD3C; Wed,  4 Mar 2020 11:50:44 +0000 (UTC)
+	with ESMTP id GYDgbezw3yJi; Wed,  4 Mar 2020 15:26:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5979084518;
-	Wed,  4 Mar 2020 11:50:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C8F2B2049B;
+	Wed,  4 Mar 2020 15:26:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E7D991BF3D6
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 11:50:41 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 470F71BF83B
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 15:26:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E48B6852C7
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 11:50:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 436C787152
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 15:26:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id buP517hANG5E for <devel@linuxdriverproject.org>;
- Wed,  4 Mar 2020 11:50:41 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 60C518528B
- for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 11:50:41 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ with ESMTP id KyrhzrkjEAC1 for <devel@linuxdriverproject.org>;
+ Wed,  4 Mar 2020 15:26:05 +0000 (UTC)
+X-Greylist: delayed 00:06:00 by SQLgrey-1.7.6
+Received: from mx-relay77-hz1.antispameurope.com
+ (mx-relay77-hz1.antispameurope.com [94.100.132.239])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 27B6386EB1
+ for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 15:26:04 +0000 (UTC)
+Received: from mailgw1.iis.fraunhofer.de ([153.96.172.4]) by
+ mx-relay77-hz1.antispameurope.com; Wed, 04 Mar 2020 16:19:59 +0100
+Received: from mail.iis.fraunhofer.de (mail01.iis.fhg.de [153.96.171.211])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id ADACE21739;
- Wed,  4 Mar 2020 11:50:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583322641;
- bh=Vv6tft/6s8eTaR5uE07e77E4tzR7PioLaiDjnjzQ9zc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=eTt62EEXLCsVOdW25+cJSe6hfk0qTill6PuVYnucUMt4ktfYuQaDM6AW4txeL8prc
- B25VHRJ7FHHueVSR1xEUMBnOTzr/1weoh0FaSlU9OaBo/dIuKYD9+tDB5Dkye9pYs0
- IEFzAE8DwUpgDh45aajZCuOq0onApZrMejyqzNiI=
-Date: Wed, 4 Mar 2020 12:50:38 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: YunQiang Su <wzssyqa@gmail.com>
-Subject: Re: [PATCH 0/6] Re-instate octeon staging drivers
-Message-ID: <20200304115038.GB1581141@kroah.com>
-References: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
- <20200212215200.GA2367959@kroah.com>
- <CAKcpw6VczRuMC_KRzP6VRPeZPtmEpVOJE5Fc+JhDH4mWU7jUVg@mail.gmail.com>
- <20200304063910.GA1203555@kroah.com>
- <CAKcpw6Vt1wUGcps2b86YGU8gGijvKTa6ERL5F1Nk=utaJyz+kg@mail.gmail.com>
+ by mailgw1.iis.fraunhofer.de (Postfix) with ESMTPS id 9E2F82400083;
+ Wed,  4 Mar 2020 16:19:56 +0100 (CET)
+Received: from mail01.iis.fhg.de (2001:638:a0a:1111:fd91:8c2a:e4a5:e74e) by
+ mail01.iis.fhg.de (2001:638:a0a:1111:fd91:8c2a:e4a5:e74e) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Wed, 4 Mar 2020 16:19:56 +0100
+Received: from mail01.iis.fhg.de ([fe80::fd91:8c2a:e4a5:e74e]) by
+ mail01.iis.fhg.de ([fe80::fd91:8c2a:e4a5:e74e%12]) with mapi id
+ 15.00.1395.000; Wed, 4 Mar 2020 16:19:56 +0100
+From: "Stahl, Manuel" <manuel.stahl@iis-extern.fraunhofer.de>
+To: "stephen@networkplumber.org" <stephen@networkplumber.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 2/2] uio: Prefer MSI(X) interrupts in PCI drivers
+Thread-Topic: [PATCH 2/2] uio: Prefer MSI(X) interrupts in PCI drivers
+Thread-Index: AQHTPqe0AewtzyOB0kiu6siMSnXwqaLWtAAAgAABSQCAABKaAIAV3VwAgAACLgCFUTs3gA==
+Date: Wed, 4 Mar 2020 15:19:55 +0000
+Message-ID: <9ba3cdd6d330486a91cb5c376f012b5b963c4eae.camel@iis-extern.fraunhofer.de>
+References: <1507296707.2915.14.camel@iis-extern.fraunhofer.de>
+ <1507296804.2915.16.camel@iis-extern.fraunhofer.de>
+ <20171006134550.GA1626@kroah.com>
+ <1507297826.2915.18.camel@iis-extern.fraunhofer.de>
+ <20171006075700.587a5e22@xeon-e3> <20171020125044.GA8634@kroah.com>
+ <1508504312.3128.23.camel@iis-extern.fraunhofer.de>
+In-Reply-To: <1508504312.3128.23.camel@iis-extern.fraunhofer.de>
+Accept-Language: de-DE, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [153.96.171.210]
+Content-ID: <D7AB6DFC20E36C47BA570DC2F3116EC5@iis.fhg.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAKcpw6Vt1wUGcps2b86YGU8gGijvKTa6ERL5F1Nk=utaJyz+kg@mail.gmail.com>
+X-cloud-security-sender: manuel.stahl@iis-extern.fraunhofer.de
+X-cloud-security-recipient: devel@driverdev.osuosl.org
+X-cloud-security-crypt: load encryption module
+X-cloud-security-Virusscan: CLEAN
+X-cloud-security-disclaimer: This E-Mail was scanned by E-Mailservice on
+ mx-relay77-hz1.antispameurope.com with C3591600930
+X-cloud-security-connect: mailgw1.iis.fraunhofer.de[153.96.172.4], TLS=1,
+ IP=153.96.172.4
+X-cloud-security: scantime:.3309
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,38 +90,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Paul Burton <paulburton@kernel.org>,
- linux@roeck-us.net, linux-kernel@vger.kernel.org, willy@infradead.org,
- linux-mips <linux-mips@vger.kernel.org>,
- Chris Packham <chris.packham@alliedtelesis.co.nz>,
- Ralf Baechle <ralf@linux-mips.org>, dan.carpenter@oracle.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "hjk@linutronix.de" <hjk@linutronix.de>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "sojkam1@fel.cvut.cz" <sojkam1@fel.cvut.cz>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gV2VkLCBNYXIgMDQsIDIwMjAgYXQgMDY6MjU6MzRQTSArMDgwMCwgWXVuUWlhbmcgU3Ugd3Jv
-dGU6Cj4gR3JlZyBLSCA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+IOS6jjIwMjDlubQz5pyI
-NOaXpeWRqOS4iSDkuIvljYgyOjM55YaZ6YGT77yaCj4gPgo+ID4gT24gV2VkLCBNYXIgMDQsIDIw
-MjAgYXQgMDk6NDg6NDZBTSArMDgwMCwgWXVuUWlhbmcgU3Ugd3JvdGU6Cj4gPiA+IEdyZWcgS0gg
-PGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPiDkuo4yMDIw5bm0MuaciDEz5pel5ZGo5ZubIOS4
-iuWNiDU6NTLlhpnpgZPvvJoKPiA+ID4gPgo+ID4gPiA+IE9uIFdlZCwgRmViIDA1LCAyMDIwIGF0
-IDAxOjExOjEwUE0gKzEzMDAsIENocmlzIFBhY2toYW0gd3JvdGU6Cj4gPiA+ID4gPiBUaGlzIHNl
-cmllcyByZS1pbnN0YXRlcyB0aGUgb2N0ZW9uIGRyaXZlcnMgdGhhdCB3ZXJlIHJlY2VudGx5IHJl
-bW92ZWQgYW5kCj4gPiA+ID4gPiBhZGRyZXNzZXMgdGhlIGJ1aWxkIGlzc3VlcyB0aGF0IGxlYWQg
-dG8gdGhhdCBkZWNpc2lvbi4KPiA+ID4gPiA+Cj4gPiA+ID4gPiBJJ3ZlIGFwcHJvYWNoZWQgQ2F2
-aXVtL01hcnZlbGwgYWJvdXQgdGFraW5nIGEgbW9yZSBhY3RpdmUgaW50ZXJlc3QgaW4gZ2V0dGlu
-Zwo+ID4gPiA+ID4gdGhlIGNvZGUgb3V0IG9mIHN0YWdpbmcgYW5kIGludG8gdGhlaXIgcHJvcGVy
-IGxvY2F0aW9uLiBObyByZXBseSBvbiB0aGF0ICh5ZXQpLgo+ID4gPiA+Cj4gPiA+ID4gR29vZCBs
-dWNrIHdpdGggdGFsa2luZyB0byB0aGUgY29tcGFuaWVzLCBob3BlZnVsbHkgdGhhdCB3aWxsIHdv
-cmsuCj4gPiA+ID4KPiA+ID4gPiBBbnl3YXksIEkndmUgYXBwbGllZCB0aGlzIHNlcmllcywgdGhh
-bmtzIGZvciB0aGlzLCBsZXQncyBzZWUgd2hhdCBicmVha3MKPiA+ID4gPiBub3cgOikKPiA+ID4K
-PiA+ID4gRGlkIHlvdSBtZWV0IGFueSBwcm9ibGVtIHRvIG1lcmdlIENocmlzJ3MgcGF0Y2hzZXQ/
-Cj4gPgo+ID4gVGhleSBhcmUgYWxsIGluIGxpbnV4LW5leHQsIHNvIHlvdSBjYW4gc2VlIGZvciB5
-b3Vyc2VsZiA6KQo+IAo+IFRoYW5rIHlvdSBzbyBtdWNoLiBJIGZvdW5kIGl0Lgo+IEl0IGlzIHZl
-cnkgaW1wb3J0YW50IGZvciBEZWJpYW4gTUlQUyBQb3J0cyBhcyB3ZSBhcmUgdXNpbmcgc29tZSBv
-Zgo+IE9jdGVvbiBtYWNoaW5lcy4KCklmIGl0IGlzIHNvIGltcG9ydGFudCwgd2h5IGlzIG5vIG9u
-ZSB3b3JraW5nIG9uIGZpeGluZyB0aGVzZSBkcml2ZXJzIHVwPwoKdGhhbmtzLAoKZ3JlZyBrLWgK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFp
-bGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5s
-aW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Hi Greg,
+
+so somehow this discussion stopped without any instructions how to proceed.
+I think this kind of driver helps every FPGA developer to interface his design via PCIe to a Linux PC.
+So if there is any chance to get this code merged, I'm glad to rebase this onto the latest kernel release.
+
+Best regards,
+Manuel Stahl
+
+On Fr, 2017-10-20 at 14:58 +0200, Manuel Stahl wrote:
+> Hi Greg,
+> 
+> it just uses MSI-X or MSI when available and falls back to legacy IRQ otherwise.
+> 
+> Regards,
+> Manuel
+> 
+> On Fr, 2017-10-20 at 14:50 +0200, gregkh@linuxfoundation.org wrote:
+> > On Fri, Oct 06, 2017 at 07:57:00AM -0700, Stephen Hemminger wrote:
+> > > On Fri, 6 Oct 2017 13:50:44 +0000
+> > > "Stahl, Manuel" <manuel.stahl@iis-extern.fraunhofer.de> wrote:
+> > > 
+> > > > MSI(X) interrupts are not shared between devices. So when available
+> > > > those should be preferred over legacy interrupts.
+> > > > 
+> > > > Signed-off-by: Manuel Stahl <manuel.stahl@iis.fraunhofer.de>
+> > > > ---
+> > > >  drivers/uio/uio_pci_dmem_genirq.c | 27 ++++++++++++++++++++-------
+> > > >  drivers/uio/uio_pci_generic.c     | 24 ++++++++++++++++++------
+> > > >  2 files changed, 38 insertions(+), 13 deletions(-)
+> > > 
+> > > The last time I tried to do MSI-X with pci-generic it got rejected
+> > > by the maintainer.
+> > 
+> > Hm, yeah, this would break users today that do not have msi-x, right?
+> > 
+> > Not good, Manuel, how well did you test this?
+> > 
+> > thanks,
+> > 
+> > greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
