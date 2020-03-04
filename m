@@ -1,74 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E20A61787B7
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 02:49:05 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0162C178A5D
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 06:53:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4360A8681A;
-	Wed,  4 Mar 2020 01:49:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B7F302044E;
+	Wed,  4 Mar 2020 05:53:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bVchXd1ccei5; Wed,  4 Mar 2020 01:49:02 +0000 (UTC)
+	with ESMTP id m0SaA4RPOlrS; Wed,  4 Mar 2020 05:53:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E1A0886614;
-	Wed,  4 Mar 2020 01:49:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 90B962045A;
+	Wed,  4 Mar 2020 05:53:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D37101BF2B9
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 01:48:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C00541BF860
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 05:52:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C4435878A0
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 01:48:59 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B512A86EC0
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 05:52:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cif9K9Wit1X6 for <devel@linuxdriverproject.org>;
- Wed,  4 Mar 2020 01:48:58 +0000 (UTC)
+ with ESMTP id OaYKcVRygaVS for <devel@linuxdriverproject.org>;
+ Wed,  4 Mar 2020 05:52:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qv1-f68.google.com (mail-qv1-f68.google.com
- [209.85.219.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 928BF8789B
- for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 01:48:58 +0000 (UTC)
-Received: by mail-qv1-f68.google.com with SMTP id fc12so107315qvb.6
- for <devel@driverdev.osuosl.org>; Tue, 03 Mar 2020 17:48:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=sYxs3okr6xz3c1wRujbZrThx3HO8v9lxNWjW4D0QAIY=;
- b=Ofv0FxF0hSkLnyYIe9Rr1HAEb1VVASHgd4ZTochqnGmbjoLaOlGpab0LfbkfRt7uhj
- CWfFCcwT5oHK9grh/f8SIOocHffGKOAcu2zRZ4OwkrFCYofxvAl2oXFhtzFREpX33VT8
- 9wR/HnR6KCNlvB6VnohZtTBeTmqi0lZWYtWw1izfDmtzlWoTmvkC7foe8Tybg/XcKc1G
- DAtLrf7B1SbDGK0Hum43WwV1izuPpXfm/Rf6zvJOE1jf9U3ya5+HRCTARaFLAriIy5+7
- YrB/Fo5ns3d8h0M2rOEAh4qR93GDrkwJm+65sZlbMiQrgjhqZab8+taIwwWcqEmK/WSb
- tv0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=sYxs3okr6xz3c1wRujbZrThx3HO8v9lxNWjW4D0QAIY=;
- b=rFAP8qya/IUj4Y3HemsfhodNkSeeIO+HX81+BoScsp3Yb8NiuBmFtjk+aNJJKUYDXZ
- dN7hfX53bHgwd0jgmeaYXYM/77VOdqRqEuDK+xt12T9uQpTXLXJJPNp7VqkGN+5Ap5FF
- H1kv2BHCapsQRQX4PBOltd+VaDmx2yQN7EaYEcsdWcd9Pbdpg22JxhAsN9LU1lwMIwVt
- oWdu+uBtru2IspQzFthBGWRN28NoVJrroE2g1rFQfoPpgZRcGPWjTmh4LFDoCnjljs1F
- e2L2T6Mv7LkUie1n4s/XZR+SxvymS58FxLocFYZzOersWYaOv17/HE37Bddv1P0NRco2
- BcOg==
-X-Gm-Message-State: ANhLgQ1lMOrpRFrow1lAAAI9Vbvl76iHsiTaiKHNSMk1UtHf5uRMEEY4
- ZRBg43pL5YkgqMSYM/5zRf7533dhL/d5K83BfM4=
-X-Google-Smtp-Source: ADFU+vsww++jDBEFCtYZ/Ot2rFED5HQKKkAnFHpFiBn/IxJ4KB2vYmZugE5Natswxv4iDITu+nybWoAb7Z4uqsZghiY=
-X-Received: by 2002:a0c:b920:: with SMTP id u32mr290109qvf.173.1583286537343; 
- Tue, 03 Mar 2020 17:48:57 -0800 (PST)
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 75671864E9
+ for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 05:52:57 +0000 (UTC)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E08EF30E;
+ Tue,  3 Mar 2020 21:52:55 -0800 (PST)
+Received: from [10.163.1.88] (unknown [10.163.1.88])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DCC5B3F6CF;
+ Tue,  3 Mar 2020 21:52:48 -0800 (PST)
+Subject: Re: [RFC 2/3] mm/vma: Introduce VM_ACCESS_FLAGS
+To: Vlastimil Babka <vbabka@suse.cz>, linux-mm@kvack.org
+References: <1583131666-15531-1-git-send-email-anshuman.khandual@arm.com>
+ <1583131666-15531-3-git-send-email-anshuman.khandual@arm.com>
+ <52b4565f-2dab-c3e5-ead8-d76258f43a10@suse.cz>
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+Message-ID: <d00c5b01-fb69-3a83-3eae-36231c5b08e9@arm.com>
+Date: Wed, 4 Mar 2020 11:22:46 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-References: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
- <20200212215200.GA2367959@kroah.com>
-In-Reply-To: <20200212215200.GA2367959@kroah.com>
-From: YunQiang Su <wzssyqa@gmail.com>
-Date: Wed, 4 Mar 2020 09:48:46 +0800
-Message-ID: <CAKcpw6VczRuMC_KRzP6VRPeZPtmEpVOJE5Fc+JhDH4mWU7jUVg@mail.gmail.com>
-Subject: Re: [PATCH 0/6] Re-instate octeon staging drivers
-To: Greg KH <gregkh@linuxfoundation.org>
+In-Reply-To: <52b4565f-2dab-c3e5-ead8-d76258f43a10@suse.cz>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,29 +62,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Paul Burton <paulburton@kernel.org>,
- linux@roeck-us.net, linux-mips <linux-mips@vger.kernel.org>,
- willy@infradead.org, linux-kernel@vger.kernel.org,
- Chris Packham <chris.packham@alliedtelesis.co.nz>,
- Ralf Baechle <ralf@linux-mips.org>, dan.carpenter@oracle.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, devel@driverdev.osuosl.org,
+ linux-s390@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Michael Ellerman <mpe@ellerman.id.au>, Russell King <linux@armlinux.org.uk>,
+ Ley Foon Tan <ley.foon.tan@intel.com>, Mark Salter <msalter@redhat.com>,
+ Rob Springer <rspringer@google.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Guan Xuetao <gxt@pku.edu.cn>, linux-arm-kernel@lists.infradead.org,
+ Nick Hu <nickhu@andestech.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ nios2-dev@lists.rocketboards.org, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-R3JlZyBLSCA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+IOS6jjIwMjDlubQy5pyIMTPml6Xl
-kajlm5sg5LiK5Y2INTo1MuWGmemBk++8mgo+Cj4gT24gV2VkLCBGZWIgMDUsIDIwMjAgYXQgMDE6
-MTE6MTBQTSArMTMwMCwgQ2hyaXMgUGFja2hhbSB3cm90ZToKPiA+IFRoaXMgc2VyaWVzIHJlLWlu
-c3RhdGVzIHRoZSBvY3Rlb24gZHJpdmVycyB0aGF0IHdlcmUgcmVjZW50bHkgcmVtb3ZlZCBhbmQK
-PiA+IGFkZHJlc3NlcyB0aGUgYnVpbGQgaXNzdWVzIHRoYXQgbGVhZCB0byB0aGF0IGRlY2lzaW9u
-Lgo+ID4KPiA+IEkndmUgYXBwcm9hY2hlZCBDYXZpdW0vTWFydmVsbCBhYm91dCB0YWtpbmcgYSBt
-b3JlIGFjdGl2ZSBpbnRlcmVzdCBpbiBnZXR0aW5nCj4gPiB0aGUgY29kZSBvdXQgb2Ygc3RhZ2lu
-ZyBhbmQgaW50byB0aGVpciBwcm9wZXIgbG9jYXRpb24uIE5vIHJlcGx5IG9uIHRoYXQgKHlldCku
-Cj4KPiBHb29kIGx1Y2sgd2l0aCB0YWxraW5nIHRvIHRoZSBjb21wYW5pZXMsIGhvcGVmdWxseSB0
-aGF0IHdpbGwgd29yay4KPgo+IEFueXdheSwgSSd2ZSBhcHBsaWVkIHRoaXMgc2VyaWVzLCB0aGFu
-a3MgZm9yIHRoaXMsIGxldCdzIHNlZSB3aGF0IGJyZWFrcwo+IG5vdyA6KQoKRGlkIHlvdSBtZWV0
-IGFueSBwcm9ibGVtIHRvIG1lcmdlIENocmlzJ3MgcGF0Y2hzZXQ/Cgo+Cj4gZ3JlZyBrLWgKCgoK
-LS0gCll1blFpYW5nIFN1Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
-dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aXZlcmRldi1kZXZlbAo=
+
+
+On 03/03/2020 11:18 PM, Vlastimil Babka wrote:
+> On 3/2/20 7:47 AM, Anshuman Khandual wrote:
+>> There are many places where all basic VMA access flags (read, write, exec)
+>> are initialized or checked against as a group. One such example is during
+>> page fault. Existing vma_is_accessible() wrapper already creates the notion
+>> of VMA accessibility as a group access permissions. Hence lets just create
+>> VM_ACCESS_FLAGS (VM_READ|VM_WRITE|VM_EXEC) which will not only reduce code
+>> duplication but also extend the VMA accessibility concept in general.
+>>
+>> Cc: Russell King <linux@armlinux.org.uk>
+>> CC: Catalin Marinas <catalin.marinas@arm.com>
+>> CC: Mark Salter <msalter@redhat.com>
+>> Cc: Nick Hu <nickhu@andestech.com>
+>> CC: Ley Foon Tan <ley.foon.tan@intel.com>
+>> Cc: Michael Ellerman <mpe@ellerman.id.au>
+>> Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+>> Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+>> Cc: Guan Xuetao <gxt@pku.edu.cn>
+>> Cc: Dave Hansen <dave.hansen@linux.intel.com>
+>> Cc: Thomas Gleixner <tglx@linutronix.de>
+>> Cc: Rob Springer <rspringer@google.com>
+>> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+>> Cc: Andrew Morton <akpm@linux-foundation.org>
+>> Cc: linux-arm-kernel@lists.infradead.org
+>> Cc: linux-c6x-dev@linux-c6x.org
+>> Cc: nios2-dev@lists.rocketboards.org
+>> Cc: linuxppc-dev@lists.ozlabs.org
+>> Cc: linux-s390@vger.kernel.org
+>> Cc: linux-sh@vger.kernel.org
+>> Cc: devel@driverdev.osuosl.org
+>> Cc: linux-mm@kvack.org
+>> Cc: linux-kernel@vger.kernel.org
+>> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
+> 
+> Dunno. Such mask seems ok for testing flags, but it's a bit awkward when
+> initializing flags, where it covers just one of many combinations that seem
+> used. But no strong opinions, patch looks correct.
+
+Fair enough. The fact that it covers only one of the many init combinations
+used at various places, is indeed a good point. The page fault handlers does
+start with VMA flags mask as VM_ACCESS_FLAGS, hence will keep them and drop
+other init cases here.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
