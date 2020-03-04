@@ -1,78 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D993179931
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 20:46:11 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8012985264;
-	Wed,  4 Mar 2020 19:46:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rWgFstV_6uKu; Wed,  4 Mar 2020 19:46:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 578FF83597;
-	Wed,  4 Mar 2020 19:46:08 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D5D381BF589
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 19:46:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4DDF179939
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 20:48:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D1DFD204C3
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 19:46:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9AD3120785;
+	Wed,  4 Mar 2020 19:48:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9DDz9t+ItaUQ; Wed,  4 Mar 2020 19:48:00 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 977C12052D;
+	Wed,  4 Mar 2020 19:47:58 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2D1B31BF589
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 19:47:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2554881B88
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 19:47:56 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dfq-6TpwuFfe for <devel@linuxdriverproject.org>;
- Wed,  4 Mar 2020 19:46:06 +0000 (UTC)
+ with ESMTP id GLowLX-Kq+Pr for <devel@linuxdriverproject.org>;
+ Wed,  4 Mar 2020 19:47:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by silver.osuosl.org (Postfix) with ESMTPS id C698D204A8
- for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 19:46:05 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id j16so3992928wrt.3
- for <devel@driverdev.osuosl.org>; Wed, 04 Mar 2020 11:46:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=yQqOnaNgqo9/pU61x9cE5W84q/MMvrOFd9j49w+kVT8=;
- b=oQkubaaCUXECeIMHdsEZ5kDdHWZI1vfkAkbD/bGVQTtzD0hECYz3g1mfG7NgAVOwA+
- RM7FzQUhX0MrzpDR6AyAnF99AyvbX0QA9m4gTgrc3+kzwdvb7waG7C5AmWdo5dABvW9E
- swObt4kml8Buz8sldjwIIb9unhu17/SFqTxoMjGwhXsByqinrrnfQE/IR4GHWADmSR/9
- YyqBoCYiVplGBt4mMRK2z1WfynEk1ynh+DTNgL0ynzP2p0rp21ZGzfMCLezpfaKfKRAG
- ECmOxv7ZcigrF4h+JN6eJGKpVRhNhgVcLMB95zkNeXEbmYDB/Hfl5HFQGLUa2r9btTUI
- d7Qg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=yQqOnaNgqo9/pU61x9cE5W84q/MMvrOFd9j49w+kVT8=;
- b=PljgKtZStb1oYOy1HF6Eb8BXOepoSRDxvTGPquDOMVOqkK0vwLmj59aHfAdDyXaSem
- YTRjDFgg0RpDvmnJlhRR+meN8qUDDWXfmNL6vezW+4LiLtQF15DhXkR1KfrpEOael6Cd
- wGqVI36Jgjv7lYVHmalLb+b+7gkGZUa7fo45nCBlh0oZL+Yr8SxID7OvmYuF/1P03md1
- MuWydq5YPpO4mDLRNO1BAltFrtkLKxiO5JkgiG8Xl9F1bHhlsPhAtO3LsUgEswG8gECq
- M0wznmoD5mAeJm0N+sucWPIyKDdJrmlB3RPuFF3wK9LCnd80eTXHMiOJ8QwFy8yZlRSN
- qloA==
-X-Gm-Message-State: ANhLgQ3d+3RpRmaUa/O2QLD5jmellFfeKQRHNXRogNxZY2qNpCBTDSAU
- jPVhyWImFlnUdWBn4iFWyak=
-X-Google-Smtp-Source: ADFU+vunlK+a37LieRWJlBzMTqmN8oDYgcLLYkHvqowrVp7siNYRP3fKIYbkjJy2iuf6t3M5Zba3sQ==
-X-Received: by 2002:a5d:4e8b:: with SMTP id e11mr2502804wru.136.1583351164403; 
- Wed, 04 Mar 2020 11:46:04 -0800 (PST)
-Received: from [192.168.43.18] (92.40.168.8.threembb.co.uk. [92.40.168.8])
- by smtp.gmail.com with ESMTPSA id a7sm5327252wmj.12.2020.03.04.11.46.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Mar 2020 11:46:04 -0800 (PST)
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH 2/2] staging: vt6656: struct vnt_rcb remove unused in_use.
-Message-ID: <130a4078-2502-a381-46c4-b473815e153b@gmail.com>
-Date: Wed, 4 Mar 2020 19:46:02 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
+Received: from gate2.alliedtelesis.co.nz (gate2.alliedtelesis.co.nz
+ [202.36.163.20])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 795BE816F2
+ for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 19:47:54 +0000 (UTC)
+Received: from mmarshal3.atlnz.lc (mmarshal3.atlnz.lc [10.32.18.43])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (Client did not present a certificate)
+ by gate2.alliedtelesis.co.nz (Postfix) with ESMTPS id 5DC8E891AC;
+ Thu,  5 Mar 2020 08:47:51 +1300 (NZDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alliedtelesis.co.nz;
+ s=mail181024; t=1583351271;
+ bh=6XBNRDhkWzjQ/BWbtuSrwUhydhs8LSrpvUU5gWhaVjU=;
+ h=From:To:CC:Subject:Date:References:In-Reply-To;
+ b=JyZ8aVNLcGj2bOxfqheLkl84Ck2ptHFI1yCxEhXR84p2n+6jHKEQL8ETZXkWUTzrg
+ MOvP5jHOsctjT6qj7bQLHjO+aj+ki+inBfkfQivAOqJ3Ksc4AsNMi2+m3OMNxXnFyH
+ /arlcU2vn86pJAoOk5hmedrR5IvkW7VZRHZjhkpcJuO0piBuFHn6MjdN7BYrpAwlcv
+ 6L1CRFM2WScsDABnxlu62ut07CakdQP+pcJ0jnxARqeg45hr+3Zk81QVfsdk2tbZvA
+ VIyn361f7dE+JKHuC0tG9fiYvqoL4gMiryZAi0jITaXfabOkhQiRlyarNSbE7YQvyo
+ gNFkmzZEGwlDQ==
+Received: from svr-chch-ex1.atlnz.lc (Not Verified[10.32.16.77]) by
+ mmarshal3.atlnz.lc with Trustwave SEG (v7, 5, 8, 10121)
+ id <B5e6005e50000>; Thu, 05 Mar 2020 08:47:49 +1300
+Received: from svr-chch-ex1.atlnz.lc (2001:df5:b000:bc8::77) by
+ svr-chch-ex1.atlnz.lc (2001:df5:b000:bc8::77) with Microsoft SMTP Server
+ (TLS) id 15.0.1497.2; Thu, 5 Mar 2020 08:47:51 +1300
+Received: from svr-chch-ex1.atlnz.lc ([fe80::409d:36f5:8899:92e8]) by
+ svr-chch-ex1.atlnz.lc ([fe80::409d:36f5:8899:92e8%12]) with mapi id
+ 15.00.1497.006; Thu, 5 Mar 2020 08:47:51 +1300
+From: Chris Packham <Chris.Packham@alliedtelesis.co.nz>
+To: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "wzssyqa@gmail.com" <wzssyqa@gmail.com>
+Subject: Re: [PATCH 0/6] Re-instate octeon staging drivers
+Thread-Topic: [PATCH 0/6] Re-instate octeon staging drivers
+Thread-Index: AQHV27jULEYW8pzvQEaKRSkEjvcZ7qgXS+4AgB+wyACAAFEjAIAAP0EAgAAXxACAAIVUAA==
+Date: Wed, 4 Mar 2020 19:47:50 +0000
+Message-ID: <bae500e38d3c83f1a8e11a4e593587b6c2363988.camel@alliedtelesis.co.nz>
+References: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
+ <20200212215200.GA2367959@kroah.com>
+ <CAKcpw6VczRuMC_KRzP6VRPeZPtmEpVOJE5Fc+JhDH4mWU7jUVg@mail.gmail.com>
+ <20200304063910.GA1203555@kroah.com>
+ <CAKcpw6Vt1wUGcps2b86YGU8gGijvKTa6ERL5F1Nk=utaJyz+kg@mail.gmail.com>
+ <20200304115038.GB1581141@kroah.com>
+In-Reply-To: <20200304115038.GB1581141@kroah.com>
+Accept-Language: en-NZ, en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [2001:df5:b000:22:9f0:cd07:c13:4b8a]
+Content-ID: <37F0F527A14B2B42BA74ADAAE608E27A@atlnz.lc>
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,94 +94,48 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- linux-wireless@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ "paulburton@kernel.org" <paulburton@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "ralf@linux-mips.org" <ralf@linux-mips.org>,
+ "linux-mips@vger.kernel.org" <linux-mips@vger.kernel.org>,
+ "willy@infradead.org" <willy@infradead.org>,
+ "shomeek@phoenicselectronics.com" <shomeek@phoenicselectronics.com>,
+ "dan.carpenter@oracle.com" <dan.carpenter@oracle.com>,
+ "linux@roeck-us.net" <linux@roeck-us.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The variable merely toggles true to false and is unused.
-
-Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
----
- drivers/staging/vt6656/device.h   |  1 -
- drivers/staging/vt6656/main_usb.c |  3 ---
- drivers/staging/vt6656/usbpipe.c  | 16 +++-------------
- 3 files changed, 3 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
-index e94df4685b25..98793e15e80f 100644
---- a/drivers/staging/vt6656/device.h
-+++ b/drivers/staging/vt6656/device.h
-@@ -227,7 +227,6 @@ struct vnt_rcb {
- 	void *priv;
- 	struct urb *urb;
- 	struct sk_buff *skb;
--	int in_use;
- };
- 
- /* used to track bulk out irps */
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index 41edadc74389..56f81785a118 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -478,9 +478,6 @@ static int vnt_alloc_bufs(struct vnt_private *priv)
- 			ret = -ENOMEM;
- 			goto free_rx_tx;
- 		}
--
--		rcb->in_use = false;
--
- 		/* submit rx urb */
- 		ret = vnt_submit_rx_urb(priv, rcb);
- 		if (ret)
-diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
-index fd2c9d9d6eb4..eae211e5860f 100644
---- a/drivers/staging/vt6656/usbpipe.c
-+++ b/drivers/staging/vt6656/usbpipe.c
-@@ -393,10 +393,8 @@ static void vnt_submit_rx_urb_complete(struct urb *urb)
- 	if (urb->actual_length) {
- 		if (vnt_rx_data(priv, rcb, urb->actual_length)) {
- 			rcb->skb = dev_alloc_skb(priv->rx_buf_sz);
--			if (!rcb->skb) {
--				rcb->in_use = false;
-+			if (!rcb->skb)
- 				return;
--			}
- 		} else {
- 			skb_push(rcb->skb, skb_headroom(rcb->skb));
- 			skb_trim(rcb->skb, 0);
-@@ -406,11 +404,8 @@ static void vnt_submit_rx_urb_complete(struct urb *urb)
- 					       skb_tailroom(rcb->skb));
- 	}
- 
--	if (usb_submit_urb(urb, GFP_ATOMIC)) {
-+	if (usb_submit_urb(urb, GFP_ATOMIC))
- 		dev_dbg(&priv->usb->dev, "Failed to re submit rx skb\n");
--
--		rcb->in_use = false;
--	}
- }
- 
- int vnt_submit_rx_urb(struct vnt_private *priv, struct vnt_rcb *rcb)
-@@ -433,13 +428,8 @@ int vnt_submit_rx_urb(struct vnt_private *priv, struct vnt_rcb *rcb)
- 			  rcb);
- 
- 	ret = usb_submit_urb(urb, GFP_ATOMIC);
--	if (ret) {
-+	if (ret)
- 		dev_dbg(&priv->usb->dev, "Submit Rx URB failed %d\n", ret);
--		goto end;
--	}
--
--	rcb->in_use = true;
--
- end:
- 	return ret;
- }
--- 
-2.25.1
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gV2VkLCAyMDIwLTAzLTA0IGF0IDEyOjUwICswMTAwLCBHcmVnIEtIIHdyb3RlOg0KPiBPbiBX
+ZWQsIE1hciAwNCwgMjAyMCBhdCAwNjoyNTozNFBNICswODAwLCBZdW5RaWFuZyBTdSB3cm90ZToN
+Cj4gPiBHcmVnIEtIIDxncmVna2hAbGludXhmb3VuZGF0aW9uLm9yZz4g5LqOMjAyMOW5tDPmnIg0
+5pel5ZGo5LiJIOS4i+WNiDI6MznlhpnpgZPvvJoNCj4gPiA+IA0KPiA+ID4gT24gV2VkLCBNYXIg
+MDQsIDIwMjAgYXQgMDk6NDg6NDZBTSArMDgwMCwgWXVuUWlhbmcgU3Ugd3JvdGU6DQo+ID4gPiA+
+IEdyZWcgS0ggPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPiDkuo4yMDIw5bm0MuaciDEz5pel
+5ZGo5ZubIOS4iuWNiDU6NTLlhpnpgZPvvJoNCj4gPiA+ID4gPiANCj4gPiA+ID4gPiBPbiBXZWQs
+IEZlYiAwNSwgMjAyMCBhdCAwMToxMToxMFBNICsxMzAwLCBDaHJpcyBQYWNraGFtIHdyb3RlOg0K
+PiA+ID4gPiA+ID4gVGhpcyBzZXJpZXMgcmUtaW5zdGF0ZXMgdGhlIG9jdGVvbiBkcml2ZXJzIHRo
+YXQgd2VyZSByZWNlbnRseSByZW1vdmVkIGFuZA0KPiA+ID4gPiA+ID4gYWRkcmVzc2VzIHRoZSBi
+dWlsZCBpc3N1ZXMgdGhhdCBsZWFkIHRvIHRoYXQgZGVjaXNpb24uDQo+ID4gPiA+ID4gPiANCj4g
+PiA+ID4gPiA+IEkndmUgYXBwcm9hY2hlZCBDYXZpdW0vTWFydmVsbCBhYm91dCB0YWtpbmcgYSBt
+b3JlIGFjdGl2ZSBpbnRlcmVzdCBpbiBnZXR0aW5nDQo+ID4gPiA+ID4gPiB0aGUgY29kZSBvdXQg
+b2Ygc3RhZ2luZyBhbmQgaW50byB0aGVpciBwcm9wZXIgbG9jYXRpb24uIE5vIHJlcGx5IG9uIHRo
+YXQgKHlldCkuDQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gR29vZCBsdWNrIHdpdGggdGFsa2luZyB0
+byB0aGUgY29tcGFuaWVzLCBob3BlZnVsbHkgdGhhdCB3aWxsIHdvcmsuDQo+ID4gPiA+ID4gDQo+
+ID4gPiA+ID4gQW55d2F5LCBJJ3ZlIGFwcGxpZWQgdGhpcyBzZXJpZXMsIHRoYW5rcyBmb3IgdGhp
+cywgbGV0J3Mgc2VlIHdoYXQgYnJlYWtzDQo+ID4gPiA+ID4gbm93IDopDQo+ID4gPiA+IA0KPiA+
+ID4gPiBEaWQgeW91IG1lZXQgYW55IHByb2JsZW0gdG8gbWVyZ2UgQ2hyaXMncyBwYXRjaHNldD8N
+Cj4gPiA+IA0KPiA+ID4gVGhleSBhcmUgYWxsIGluIGxpbnV4LW5leHQsIHNvIHlvdSBjYW4gc2Vl
+IGZvciB5b3Vyc2VsZiA6KQ0KPiA+IA0KPiA+IFRoYW5rIHlvdSBzbyBtdWNoLiBJIGZvdW5kIGl0
+Lg0KPiA+IEl0IGlzIHZlcnkgaW1wb3J0YW50IGZvciBEZWJpYW4gTUlQUyBQb3J0cyBhcyB3ZSBh
+cmUgdXNpbmcgc29tZSBvZg0KPiA+IE9jdGVvbiBtYWNoaW5lcy4NCj4gDQo+IElmIGl0IGlzIHNv
+IGltcG9ydGFudCwgd2h5IGlzIG5vIG9uZSB3b3JraW5nIG9uIGZpeGluZyB0aGVzZSBkcml2ZXJz
+IHVwPw0KPiANCg0KSSBoYXZlIGhhZCBhIHJlcGx5IGZyb20gTWFydmVsbC4gVGhleSd2ZSBjb250
+cmFjdGVkIHN1cHBvcnQgZm9yIHRoZSBvbGQNCkNhdml1bSBPY3Rlb24gZGVzaWducyBvdXQgdG8g
+YW4gZXh0ZXJuYWwgY29tcGFueS4gSSdtIG5vdCBzdXJlIHRoYXQNCm1lYW5zIHRoYXQgd2UnbGwg
+c2VlIHNvbWUgYWN0aW9uIG9uIHRoZXNlIGRyaXZlcnMgYW55IHRpbWUgc29vbiBidXQgYXQNCmxl
+YXN0IHRoZXkncmUgZG9pbmcgc29tZXRoaW5nLg0KX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
+cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
