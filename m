@@ -1,80 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A89C178B9B
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 08:43:34 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D84B178E54
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 11:25:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 41A2B85E65;
-	Wed,  4 Mar 2020 07:43:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D006A879A7;
+	Wed,  4 Mar 2020 10:25:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CL4MX3dlOkpw; Wed,  4 Mar 2020 07:43:31 +0000 (UTC)
+	with ESMTP id sEEI+aGYJuts; Wed,  4 Mar 2020 10:25:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D48085C52;
-	Wed,  4 Mar 2020 07:43:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AA87F86D7A;
+	Wed,  4 Mar 2020 10:25:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B56F01BF2F4
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 07:43:28 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BD0B11BF40D
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 10:25:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B297585D78
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 07:43:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B786186462
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 10:25:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HIiWApaDrp0u for <devel@linuxdriverproject.org>;
- Wed,  4 Mar 2020 07:43:28 +0000 (UTC)
+ with ESMTP id 8ZYCDgJuVnEz for <devel@linuxdriverproject.org>;
+ Wed,  4 Mar 2020 10:25:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
- [148.163.135.77])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D241885C52
- for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 07:43:27 +0000 (UTC)
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
- by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 0247euEU022873; Wed, 4 Mar 2020 02:43:26 -0500
-Received: from nwd2mta3.analog.com ([137.71.173.56])
- by mx0a-00128a01.pphosted.com with ESMTP id 2ygm52a6t6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 04 Mar 2020 02:43:26 -0500
-Received: from ASHBMBX9.ad.analog.com (ashbmbx9.ad.analog.com [10.64.17.10])
- by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 0247hP7r026691
- (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=FAIL); 
- Wed, 4 Mar 2020 02:43:25 -0500
-Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX9.ad.analog.com
- (10.64.17.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1779.2; Wed, 4 Mar 2020
- 02:43:24 -0500
-Received: from zeus.spd.analog.com (10.64.82.11) by ASHBMBX9.ad.analog.com
- (10.64.17.10) with Microsoft SMTP Server id 15.1.1779.2 via Frontend
- Transport; Wed, 4 Mar 2020 02:43:24 -0500
-Received: from analog.ad.analog.com ([10.48.65.180])
- by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 0247hLKZ014964;
- Wed, 4 Mar 2020 02:43:22 -0500
-From: Sergiu Cuciurean <sergiu.cuciurean@analog.com>
-To: <linux-kernel@vger.kernel.org>, <devel@driverdev.osuosl.org>,
- <linux-wireless@vger.kernel.org>, <gregkh@linuxfoundation.org>,
- <ajay.kathat@microchip.com>, <adham.abozaeid@microchip.com>
-Subject: [PATCH v2] staging: wilc1000: spi: Use new structure for SPI transfer
- delays
-Date: Wed, 4 Mar 2020 09:43:19 +0200
-Message-ID: <20200304074319.22107-1-sergiu.cuciurean@analog.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200227145054.24567-1-sergiu.cuciurean@analog.com>
-References: <20200227145054.24567-1-sergiu.cuciurean@analog.com>
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D96CD815F3
+ for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 10:25:46 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id u124so997385qkh.13
+ for <devel@driverdev.osuosl.org>; Wed, 04 Mar 2020 02:25:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Vs92E6t2iJuDEH9h/ywUF++j9tfXcW1XKQ/oXX/xo3Y=;
+ b=RjigAAWugnyIHTLiOk0B/tBTJhPYm5ficMzYvrryN0hWII15MfwhmtNWx1FR3JrZz2
+ l44Lf9ONnMlrXypxK+2A/Ipxi9Psx6iNOBiQVbEV6/zxDgRkOl01SeknItPWeNiklsGK
+ PQ78VQQ68xU+JcYiBvYgMpfY1n7lo9TdDwU5hBlDbzKC/whO2AkL7RcP1xOJz+W0fZO/
+ Kev19kXp4Gpdv/6MueV44cVJ/hUnqZPnO8HRjvnbEmAqpVZ4I4ghfEZ8aCdwNjSAZc7C
+ bo0ulzMJYScd3LnoTj/uXSkt87NSxRrzonQAmQqA0lh/k7XpDbErPVTdebGipuDNv40o
+ rT7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Vs92E6t2iJuDEH9h/ywUF++j9tfXcW1XKQ/oXX/xo3Y=;
+ b=eJ5DXkzL99iVmgmWV2BUVUYWt/RzXjm+HesiRAOpDJVeN2jV8X6dbyu4LJ2ehpfvkl
+ c1n5b2XaR6b2vSXqGmQMs5dwnkHMx+ubSAWP+UHwoVzn/n3GDWynFU3cfqYOcrAxYRtw
+ O2cZ1FKeHFkugiyB2u9T/3fiaPBZ4YwQo7xCyp3SxsV5pQA9sDNYEPmQEd2wtwdY5Gdr
+ HX99AxjD/WoOVGEUHkp/qAKT3CNJwM3r4MkIjaofXur+ebD9pz5Ze5BtExJLwXxMdSov
+ 4OaHWsVvSQK1/c+i4sTcgHkdK0XJd8FClRiL7YOv0MZ+1EfAXWoyaocTGSPdaVdInxYc
+ tK3g==
+X-Gm-Message-State: ANhLgQ0goepEMg1R5BoMal9nOW8e4FQfeX8OG2HBoKRtVOoN1hhTANVY
+ QyOqxCT6+/kF4KRSmug/59/J0lUx0D/usWRRLQo=
+X-Google-Smtp-Source: ADFU+vs813/fagg85IoeT76Lq/3A1ZqT+Mq5gua/L+5xcvfreaqLMwonKgzuWMQ+Kjr6SLEw2PgaETteOwKeTmKx6wU=
+X-Received: by 2002:a05:620a:13b5:: with SMTP id
+ m21mr1994448qki.469.1583317545844; 
+ Wed, 04 Mar 2020 02:25:45 -0800 (PST)
 MIME-Version: 1.0
-X-ADIRoutedOnPrem: True
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
- definitions=2020-03-04_01:2020-03-03,
- 2020-03-04 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- mlxlogscore=999 mlxscore=0 lowpriorityscore=0 clxscore=1015 adultscore=0
- impostorscore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2001150001 definitions=main-2003040059
+References: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
+ <20200212215200.GA2367959@kroah.com>
+ <CAKcpw6VczRuMC_KRzP6VRPeZPtmEpVOJE5Fc+JhDH4mWU7jUVg@mail.gmail.com>
+ <20200304063910.GA1203555@kroah.com>
+In-Reply-To: <20200304063910.GA1203555@kroah.com>
+From: YunQiang Su <wzssyqa@gmail.com>
+Date: Wed, 4 Mar 2020 18:25:34 +0800
+Message-ID: <CAKcpw6Vt1wUGcps2b86YGU8gGijvKTa6ERL5F1Nk=utaJyz+kg@mail.gmail.com>
+Subject: Re: [PATCH 0/6] Re-instate octeon staging drivers
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,75 +84,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sergiu Cuciurean <sergiu.cuciurean@analog.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Paul Burton <paulburton@kernel.org>,
+ linux-kernel@vger.kernel.org, willy@infradead.org,
+ linux-mips <linux-mips@vger.kernel.org>,
+ Chris Packham <chris.packham@alliedtelesis.co.nz>,
+ Ralf Baechle <ralf@linux-mips.org>, dan.carpenter@oracle.com,
+ linux@roeck-us.net
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In a recent change to the SPI subsystem in commit <bebcfd272df6>
-("spi: introduce `delay` field for `spi_transfer` +
-spi_transfer_delay_exec()"), a new `delay` struct was added
-to replace the `delay_usecs`. This change replaces the current
-`delay_usecs` with `delay` for this driver.
-
-The `spi_transfer_delay_exec()` function [in the SPI framework] makes sure
-that both `delay_usecs` & `delay` are used (in this order to preserve
-backwards compatibility).
-
-Signed-off-by: Sergiu Cuciurean <sergiu.cuciurean@analog.com>
----
-
-Changelog v1->v2:
-*Removed footnote from the commit description
-
- drivers/staging/wilc1000/spi.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/wilc1000/spi.c b/drivers/staging/wilc1000/spi.c
-index 11653ac118cd..a3779d967a24 100644
---- a/drivers/staging/wilc1000/spi.c
-+++ b/drivers/staging/wilc1000/spi.c
-@@ -228,7 +228,10 @@ static int wilc_spi_tx(struct wilc *wilc, u8 *b, u32 len)
- 		struct spi_transfer tr = {
- 			.tx_buf = b,
- 			.len = len,
--			.delay_usecs = 0,
-+			.delay = {
-+				.value = 0,
-+				.unit = SPI_DELAY_UNIT_USECS
-+			},
- 		};
- 		char *r_buffer = kzalloc(len, GFP_KERNEL);
- 
-@@ -269,7 +272,10 @@ static int wilc_spi_rx(struct wilc *wilc, u8 *rb, u32 rlen)
- 		struct spi_transfer tr = {
- 			.rx_buf = rb,
- 			.len = rlen,
--			.delay_usecs = 0,
-+			.delay = {
-+				.value = 0,
-+				.unit = SPI_DELAY_UNIT_USECS
-+			},
- 
- 		};
- 		char *t_buffer = kzalloc(rlen, GFP_KERNEL);
-@@ -311,7 +317,10 @@ static int wilc_spi_tx_rx(struct wilc *wilc, u8 *wb, u8 *rb, u32 rlen)
- 			.tx_buf = wb,
- 			.len = rlen,
- 			.bits_per_word = 8,
--			.delay_usecs = 0,
-+			.delay = {
-+				.value = 0,
-+				.unit = SPI_DELAY_UNIT_USECS
-+			},
- 
- 		};
- 
--- 
-2.17.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R3JlZyBLSCA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+IOS6jjIwMjDlubQz5pyINOaXpeWR
+qOS4iSDkuIvljYgyOjM55YaZ6YGT77yaCj4KPiBPbiBXZWQsIE1hciAwNCwgMjAyMCBhdCAwOTo0
+ODo0NkFNICswODAwLCBZdW5RaWFuZyBTdSB3cm90ZToKPiA+IEdyZWcgS0ggPGdyZWdraEBsaW51
+eGZvdW5kYXRpb24ub3JnPiDkuo4yMDIw5bm0MuaciDEz5pel5ZGo5ZubIOS4iuWNiDU6NTLlhpnp
+gZPvvJoKPiA+ID4KPiA+ID4gT24gV2VkLCBGZWIgMDUsIDIwMjAgYXQgMDE6MTE6MTBQTSArMTMw
+MCwgQ2hyaXMgUGFja2hhbSB3cm90ZToKPiA+ID4gPiBUaGlzIHNlcmllcyByZS1pbnN0YXRlcyB0
+aGUgb2N0ZW9uIGRyaXZlcnMgdGhhdCB3ZXJlIHJlY2VudGx5IHJlbW92ZWQgYW5kCj4gPiA+ID4g
+YWRkcmVzc2VzIHRoZSBidWlsZCBpc3N1ZXMgdGhhdCBsZWFkIHRvIHRoYXQgZGVjaXNpb24uCj4g
+PiA+ID4KPiA+ID4gPiBJJ3ZlIGFwcHJvYWNoZWQgQ2F2aXVtL01hcnZlbGwgYWJvdXQgdGFraW5n
+IGEgbW9yZSBhY3RpdmUgaW50ZXJlc3QgaW4gZ2V0dGluZwo+ID4gPiA+IHRoZSBjb2RlIG91dCBv
+ZiBzdGFnaW5nIGFuZCBpbnRvIHRoZWlyIHByb3BlciBsb2NhdGlvbi4gTm8gcmVwbHkgb24gdGhh
+dCAoeWV0KS4KPiA+ID4KPiA+ID4gR29vZCBsdWNrIHdpdGggdGFsa2luZyB0byB0aGUgY29tcGFu
+aWVzLCBob3BlZnVsbHkgdGhhdCB3aWxsIHdvcmsuCj4gPiA+Cj4gPiA+IEFueXdheSwgSSd2ZSBh
+cHBsaWVkIHRoaXMgc2VyaWVzLCB0aGFua3MgZm9yIHRoaXMsIGxldCdzIHNlZSB3aGF0IGJyZWFr
+cwo+ID4gPiBub3cgOikKPiA+Cj4gPiBEaWQgeW91IG1lZXQgYW55IHByb2JsZW0gdG8gbWVyZ2Ug
+Q2hyaXMncyBwYXRjaHNldD8KPgo+IFRoZXkgYXJlIGFsbCBpbiBsaW51eC1uZXh0LCBzbyB5b3Ug
+Y2FuIHNlZSBmb3IgeW91cnNlbGYgOikKClRoYW5rIHlvdSBzbyBtdWNoLiBJIGZvdW5kIGl0LgpJ
+dCBpcyB2ZXJ5IGltcG9ydGFudCBmb3IgRGViaWFuIE1JUFMgUG9ydHMgYXMgd2UgYXJlIHVzaW5n
+IHNvbWUgb2YKT2N0ZW9uIG1hY2hpbmVzLgoKPgo+IGdyZWcgay1oCgoKCi0tIApZdW5RaWFuZyBT
+dQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBt
+YWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2
+LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
