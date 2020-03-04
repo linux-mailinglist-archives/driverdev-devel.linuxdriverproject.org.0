@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35457178AB3
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 07:39:18 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F80E178ACD
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Mar 2020 07:48:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C70C584031;
-	Wed,  4 Mar 2020 06:39:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7467D84AF4;
+	Wed,  4 Mar 2020 06:48:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dl5yNfB05W2n; Wed,  4 Mar 2020 06:39:15 +0000 (UTC)
+	with ESMTP id emzbRD39_v12; Wed,  4 Mar 2020 06:48:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BA69483F66;
-	Wed,  4 Mar 2020 06:39:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5818C84ADC;
+	Wed,  4 Mar 2020 06:48:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 464801BF85D
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 06:39:13 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3AD491BF85D
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 06:48:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 430AA87541
- for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 06:39:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 29DF584ADC
+ for <devel@linuxdriverproject.org>; Wed,  4 Mar 2020 06:48:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YLP8n45eZYtd for <devel@linuxdriverproject.org>;
- Wed,  4 Mar 2020 06:39:12 +0000 (UTC)
+ with ESMTP id EF7J3Y9vJRZQ for <devel@linuxdriverproject.org>;
+ Wed,  4 Mar 2020 06:48:10 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BC2D7873DC
- for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 06:39:12 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BE0AC84A6C
+ for <devel@driverdev.osuosl.org>; Wed,  4 Mar 2020 06:48:10 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 27A1F2146E;
- Wed,  4 Mar 2020 06:39:12 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 209672146E;
+ Wed,  4 Mar 2020 06:48:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583303952;
- bh=etnCL/zRmgdNa1IlpbE+pMZF9X1/uAAONZvLvu7gdrU=;
+ s=default; t=1583304490;
+ bh=yN/luUhk9sZoRMguRNrPehHcGwLuSq+z6P8y708HX2U=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=B2M1E6ifaNigQT7OE5HcfBwvDJ3Vh2xHEfSHu/Al1V19B7BCfZkCxOu2jfepo+0Mj
- kP3vO+d1h5d+cOtbR6H/IGCvy2Fl0QBBxwkZtYxBu65ieu3koYmCjYZ0Uj0TsTwzlr
- YmGKNmQixmbjpvLfhcz3tU3DgdtxeizsxALNEChE=
-Date: Wed, 4 Mar 2020 07:39:10 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: YunQiang Su <wzssyqa@gmail.com>
-Subject: Re: [PATCH 0/6] Re-instate octeon staging drivers
-Message-ID: <20200304063910.GA1203555@kroah.com>
-References: <20200205001116.14096-1-chris.packham@alliedtelesis.co.nz>
- <20200212215200.GA2367959@kroah.com>
- <CAKcpw6VczRuMC_KRzP6VRPeZPtmEpVOJE5Fc+JhDH4mWU7jUVg@mail.gmail.com>
+ b=HBBKqHXsUn20IUYFP2Ot0oMeIMRYHgdsk3+a8f3tf9+j1gCZ/Iu/mNx0bV0uV3xXH
+ N4nT5SSgkiCRKCxdKecVGABm89b8blckrPmV4kVqxTOC9Gx/uBlXson80BcbCNEUDL
+ hhg8Zoo/TJZHir1QF8jmUBQwSrk3vFVmXaftmmvI=
+Date: Wed, 4 Mar 2020 07:48:08 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Kaaira Gupta <kgupta@es.iitr.ac.in>
+Subject: Re: [PATCH v2] staging: wfx: data_tx.c: match parentheses alignment
+Message-ID: <20200304064808.GA1232166@kroah.com>
+References: <20200223193201.GA20843@kaaira-HP-Pavilion-Notebook>
+ <8c458c189abb45fb3021f7882a40d28a24cc662d.camel@perches.com>
+ <20200224162621.GA6611@kaaira-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAKcpw6VczRuMC_KRzP6VRPeZPtmEpVOJE5Fc+JhDH4mWU7jUVg@mail.gmail.com>
+In-Reply-To: <20200224162621.GA6611@kaaira-HP-Pavilion-Notebook>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,32 +67,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Paul Burton <paulburton@kernel.org>,
- linux-kernel@vger.kernel.org, willy@infradead.org,
- linux-mips <linux-mips@vger.kernel.org>,
- Chris Packham <chris.packham@alliedtelesis.co.nz>,
- Ralf Baechle <ralf@linux-mips.org>, dan.carpenter@oracle.com,
- linux@roeck-us.net
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Joe Perches <joe@perches.com>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gV2VkLCBNYXIgMDQsIDIwMjAgYXQgMDk6NDg6NDZBTSArMDgwMCwgWXVuUWlhbmcgU3Ugd3Jv
-dGU6Cj4gR3JlZyBLSCA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+IOS6jjIwMjDlubQy5pyI
-MTPml6Xlkajlm5sg5LiK5Y2INTo1MuWGmemBk++8mgo+ID4KPiA+IE9uIFdlZCwgRmViIDA1LCAy
-MDIwIGF0IDAxOjExOjEwUE0gKzEzMDAsIENocmlzIFBhY2toYW0gd3JvdGU6Cj4gPiA+IFRoaXMg
-c2VyaWVzIHJlLWluc3RhdGVzIHRoZSBvY3Rlb24gZHJpdmVycyB0aGF0IHdlcmUgcmVjZW50bHkg
-cmVtb3ZlZCBhbmQKPiA+ID4gYWRkcmVzc2VzIHRoZSBidWlsZCBpc3N1ZXMgdGhhdCBsZWFkIHRv
-IHRoYXQgZGVjaXNpb24uCj4gPiA+Cj4gPiA+IEkndmUgYXBwcm9hY2hlZCBDYXZpdW0vTWFydmVs
-bCBhYm91dCB0YWtpbmcgYSBtb3JlIGFjdGl2ZSBpbnRlcmVzdCBpbiBnZXR0aW5nCj4gPiA+IHRo
-ZSBjb2RlIG91dCBvZiBzdGFnaW5nIGFuZCBpbnRvIHRoZWlyIHByb3BlciBsb2NhdGlvbi4gTm8g
-cmVwbHkgb24gdGhhdCAoeWV0KS4KPiA+Cj4gPiBHb29kIGx1Y2sgd2l0aCB0YWxraW5nIHRvIHRo
-ZSBjb21wYW5pZXMsIGhvcGVmdWxseSB0aGF0IHdpbGwgd29yay4KPiA+Cj4gPiBBbnl3YXksIEkn
-dmUgYXBwbGllZCB0aGlzIHNlcmllcywgdGhhbmtzIGZvciB0aGlzLCBsZXQncyBzZWUgd2hhdCBi
-cmVha3MKPiA+IG5vdyA6KQo+IAo+IERpZCB5b3UgbWVldCBhbnkgcHJvYmxlbSB0byBtZXJnZSBD
-aHJpcydzIHBhdGNoc2V0PwoKVGhleSBhcmUgYWxsIGluIGxpbnV4LW5leHQsIHNvIHlvdSBjYW4g
-c2VlIGZvciB5b3Vyc2VsZiA6KQoKZ3JlZyBrLWgKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Mon, Feb 24, 2020 at 09:56:21PM +0530, Kaaira Gupta wrote:
+> On Mon, Feb 24, 2020 at 06:13:32AM -0800, Joe Perches wrote:
+> > On Mon, 2020-02-24 at 01:02 +0530, Kaaira Gupta wrote:
+> > > Match next line with open parentheses by giving appropriate tabs.
+> 
+> Changed the first word to caps. Will keep this in mind from now on.
+> Thanks!
+> 
+
+There was no "v2" patch in this email, what happened to it?
+
+I've dropped this thread now, please resend the patch if you have an
+updated version.
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
