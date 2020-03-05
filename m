@@ -1,51 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9EFA17A363
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 11:49:17 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C0AB717A40D
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 12:19:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9ED8A860FE;
-	Thu,  5 Mar 2020 10:49:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5C8AC87D33;
+	Thu,  5 Mar 2020 11:19:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5y5bY1Oq-1jN; Thu,  5 Mar 2020 10:49:16 +0000 (UTC)
+	with ESMTP id 69QFQwNpfhrd; Thu,  5 Mar 2020 11:19:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 814D084CF4;
-	Thu,  5 Mar 2020 10:49:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A9A4087CB8;
+	Thu,  5 Mar 2020 11:19:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3F5551BF3FC
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 10:49:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C2D541BF3FB
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 11:19:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3BE838306B
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 10:49:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BD57387CD4
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 11:19:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sf-GW5ZHA5Go for <devel@linuxdriverproject.org>;
- Thu,  5 Mar 2020 10:49:10 +0000 (UTC)
+ with ESMTP id OVSa75jWmDsn for <devel@linuxdriverproject.org>;
+ Thu,  5 Mar 2020 11:19:42 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mailgw.pagasa.dost.gov.ph (ulan.pagasa.dost.gov.ph
  [202.90.128.205])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D497C86AC7
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 10:49:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 235BB87CB8
+ for <devel@driverdev.osuosl.org>; Thu,  5 Mar 2020 11:19:41 +0000 (UTC)
 Received: from webmail.pagasa.dost.int ([10.10.11.8])
- by mailgw.pagasa.dost.gov.ph  with ESMTP id 025AiehM006195-025AiehO006195
+ by mailgw.pagasa.dost.gov.ph  with ESMTP id 025BEdfJ007534-025BEdfL007534
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Thu, 5 Mar 2020 18:44:40 +0800
+ Thu, 5 Mar 2020 19:14:40 +0800
 Received: from localhost (localhost [127.0.0.1])
- by webmail.pagasa.dost.int (Postfix) with ESMTP id 2873F29819B6;
+ by webmail.pagasa.dost.int (Postfix) with ESMTP id 11E1729819E7;
  Thu,  5 Mar 2020 18:38:23 +0800 (PST)
 Received: from webmail.pagasa.dost.int ([127.0.0.1])
  by localhost (webmail.pagasa.dost.int [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id IoKgqN0m89VH; Thu,  5 Mar 2020 18:38:22 +0800 (PST)
+ with ESMTP id YnuvZAb2OsP2; Thu,  5 Mar 2020 18:38:22 +0800 (PST)
 Received: from localhost (localhost [127.0.0.1])
- by webmail.pagasa.dost.int (Postfix) with ESMTP id 3D97729819D1;
+ by webmail.pagasa.dost.int (Postfix) with ESMTP id 37CAE29819BE;
  Thu,  5 Mar 2020 18:38:22 +0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 webmail.pagasa.dost.int 3D97729819D1
+DKIM-Filter: OpenDKIM Filter v2.10.3 webmail.pagasa.dost.int 37CAE29819BE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pagasa.dost.gov.ph;
  s=96B9A03E-48B0-11EA-A7E8-92F42F537CE2; t=1583404702;
  bh=RC75T5p3JPNk7JUNB+lH0UfaFQO1Ac584gPL3SIL6h8=;
@@ -56,7 +56,7 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pagasa.dost.gov.ph;
 X-Virus-Scanned: amavisd-new at pagasa.dost.int
 Received: from webmail.pagasa.dost.int ([127.0.0.1])
  by localhost (webmail.pagasa.dost.int [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id W81LcrI7KAel; Thu,  5 Mar 2020 18:38:22 +0800 (PST)
+ with ESMTP id hk4fH2NMMTWO; Thu,  5 Mar 2020 18:38:22 +0800 (PST)
 Received: from webmail.pagasa.dost.int (webmail.pagasa.dost.int [10.11.1.8])
  by webmail.pagasa.dost.int (Postfix) with ESMTP id E403929819B5;
  Thu,  5 Mar 2020 18:38:20 +0800 (PST)
