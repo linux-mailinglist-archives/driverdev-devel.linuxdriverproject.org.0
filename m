@@ -1,87 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FA4617A205
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 10:08:51 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E9EFA17A363
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 11:49:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 90C822046D;
-	Thu,  5 Mar 2020 09:08:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9ED8A860FE;
+	Thu,  5 Mar 2020 10:49:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wWUlZuo8ABMd; Thu,  5 Mar 2020 09:08:47 +0000 (UTC)
+	with ESMTP id 5y5bY1Oq-1jN; Thu,  5 Mar 2020 10:49:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7317320131;
-	Thu,  5 Mar 2020 09:08:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 814D084CF4;
+	Thu,  5 Mar 2020 10:49:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 51AC91BF2BA
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 09:08:44 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F5551BF3FC
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 10:49:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 487CA20025
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 09:08:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3BE838306B
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 10:49:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LXsx5I0FLKQw for <devel@linuxdriverproject.org>;
- Thu,  5 Mar 2020 09:08:42 +0000 (UTC)
-X-Greylist: delayed 00:05:13 by SQLgrey-1.7.6
-Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com
- [209.85.208.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 0D9C92000B
- for <devel@driverdev.osuosl.org>; Thu,  5 Mar 2020 09:08:42 +0000 (UTC)
-Received: by mail-ed1-f68.google.com with SMTP id e25so5848870edq.5
- for <devel@driverdev.osuosl.org>; Thu, 05 Mar 2020 01:08:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=rasmusvillemoes.dk; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=b+nyhy3biY02LIl4kBkjbxJ2dWjzxv1IAt+3PKhBtDE=;
- b=adE2B2XkLqsd0IRa+nAvysANIFaAJhyJUDjsZjaeMRjhIacspUqor3sR2vgW5KxlR0
- yaeVJXmuCtcCtPd1emscrdjWgwBLEBSQlUy6X/wipkS1iU1Xrv3haU3SJuBAw58tAKXN
- ePuoeD8dpBz2YWIpZGllhhZdb1h61/uXZ7KmA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=b+nyhy3biY02LIl4kBkjbxJ2dWjzxv1IAt+3PKhBtDE=;
- b=WwyzvsVOd6snS0C51DANkZj/3iUEan/+86sN+p5ew+pImzIWMJaSqjYdPIs9Hu3bqo
- SwQ8nP5UeJmVLBZGK/kizE8aLAfExIB/qbcF/s9NpDl3jV+H1tJ+IYp571NchVyvQCPV
- oZq2Rw16DS6AboEGyjbfTixWC4V6cA3FyxIB+zC2RrCv9ISD652Jp7BZ1VbYz1pcpA/n
- LEbOflCEBwrKtBD+89s4Y9D+GvZUDBGiPWvOFbJe5Yap7U1/QuPjqS9WU4Oi/jz6M0Te
- 54Me7qgMEBCoCfig7z70HZG5faz0D/W0J8afbHVoGUT2YBhhoZJnv9d1soVhC9ihw06z
- Guew==
-X-Gm-Message-State: ANhLgQ1/fTcwU4He9NbiCi5Dhxu5XnOCajx17cSfIfW469kubCs7ro+8
- dW7SKbUInnyRndQF3bvUbc+Dc9vXlC9+NAka
-X-Google-Smtp-Source: ADFU+vuwpeT6grWUw/3SZRIzyyguUNee5NahuOQg0T4LKxoIoY3hoMytiDSWCzR56EF00n4V1NJ66A==
-X-Received: by 2002:a05:651c:319:: with SMTP id
- a25mr4818202ljp.57.1583399007530; 
- Thu, 05 Mar 2020 01:03:27 -0800 (PST)
-Received: from [172.16.11.50] ([81.216.59.226])
- by smtp.gmail.com with ESMTPSA id y24sm17699428lfg.63.2020.03.05.01.03.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2020 01:03:27 -0800 (PST)
-Subject: Re: [PATCH v2 2/3] binder: do not initialize locals passed to
- copy_from_user()
-To: Jann Horn <jannh@google.com>, Alexander Potapenko <glider@google.com>
-References: <20200302130430.201037-1-glider@google.com>
- <20200302130430.201037-2-glider@google.com>
- <0eaac427354844a4fcfb0d9843cf3024c6af21df.camel@perches.com>
- <CAG_fn=VNnxjD6qdkAW_E0v3faBQPpSsO=c+h8O=yvNxTZowuBQ@mail.gmail.com>
- <4cac10d3e2c03e4f21f1104405a0a62a853efb4e.camel@perches.com>
- <CAG_fn=XOyPGau9m7x8eCLJHy3m-H=nbMODewWVJ1xb2e+BPdFw@mail.gmail.com>
- <CAG48ez3sPSFQjB7K64YiNYfemZ_W9cCcKQW34XAcLP_MkXUjCw@mail.gmail.com>
-From: Rasmus Villemoes <linux@rasmusvillemoes.dk>
-Message-ID: <205aa3d8-7d18-1b73-4650-5ef534fe55da@rasmusvillemoes.dk>
-Date: Thu, 5 Mar 2020 10:03:25 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ with ESMTP id sf-GW5ZHA5Go for <devel@linuxdriverproject.org>;
+ Thu,  5 Mar 2020 10:49:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mailgw.pagasa.dost.gov.ph (ulan.pagasa.dost.gov.ph
+ [202.90.128.205])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D497C86AC7
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 10:49:09 +0000 (UTC)
+Received: from webmail.pagasa.dost.int ([10.10.11.8])
+ by mailgw.pagasa.dost.gov.ph  with ESMTP id 025AiehM006195-025AiehO006195
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Thu, 5 Mar 2020 18:44:40 +0800
+Received: from localhost (localhost [127.0.0.1])
+ by webmail.pagasa.dost.int (Postfix) with ESMTP id 2873F29819B6;
+ Thu,  5 Mar 2020 18:38:23 +0800 (PST)
+Received: from webmail.pagasa.dost.int ([127.0.0.1])
+ by localhost (webmail.pagasa.dost.int [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id IoKgqN0m89VH; Thu,  5 Mar 2020 18:38:22 +0800 (PST)
+Received: from localhost (localhost [127.0.0.1])
+ by webmail.pagasa.dost.int (Postfix) with ESMTP id 3D97729819D1;
+ Thu,  5 Mar 2020 18:38:22 +0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 webmail.pagasa.dost.int 3D97729819D1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pagasa.dost.gov.ph;
+ s=96B9A03E-48B0-11EA-A7E8-92F42F537CE2; t=1583404702;
+ bh=RC75T5p3JPNk7JUNB+lH0UfaFQO1Ac584gPL3SIL6h8=;
+ h=Date:From:Message-ID:MIME-Version;
+ b=0BVs3l/Kud10YxpqK7yH3Syq6fpV0aKkymd15qZWltzCm8VK59QSMedqhGEojQVX6
+ DQqg0IQJRHkbUBrK/wm8dlJwzc9gu78s1z+8RF/6JwTrjLS1FunEtGSxM/u+J/uJ1I
+ XDhgUt5ihjT2J2yrGoO2zfOyGqLBTQfv5XeyY3Ec=
+X-Virus-Scanned: amavisd-new at pagasa.dost.int
+Received: from webmail.pagasa.dost.int ([127.0.0.1])
+ by localhost (webmail.pagasa.dost.int [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id W81LcrI7KAel; Thu,  5 Mar 2020 18:38:22 +0800 (PST)
+Received: from webmail.pagasa.dost.int (webmail.pagasa.dost.int [10.11.1.8])
+ by webmail.pagasa.dost.int (Postfix) with ESMTP id E403929819B5;
+ Thu,  5 Mar 2020 18:38:20 +0800 (PST)
+Date: Thu, 5 Mar 2020 18:38:20 +0800 (PST)
+From: "Juanito S. Galang" <juanito.galang@pagasa.dost.gov.ph>
+Message-ID: <650617410.3574544.1583404700901.JavaMail.zimbra@pagasa.dost.gov.ph>
+Subject: 
 MIME-Version: 1.0
-In-Reply-To: <CAG48ez3sPSFQjB7K64YiNYfemZ_W9cCcKQW34XAcLP_MkXUjCw@mail.gmail.com>
-Content-Language: en-US
+X-Mailer: Zimbra 8.8.15_GA_3899 (ZimbraWebClient - GC79 (Win)/8.8.15_GA_3895)
+Thread-Index: Sc2Ktac5+BtarmK7oT/CvuN4AcbGAw==
+Thread-Topic: 
+X-FEAS-DKIM: Valid
+Authentication-Results: mailgw.pagasa.dost.gov.ph;
+ dkim=pass header.i=@pagasa.dost.gov.ph
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,86 +83,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Kees Cook <keescook@chromium.org>, Peter Zijlstra <peterz@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- =?UTF-8?Q?Arve_Hj=c3=b8nnev=c3=a5g?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Joe Perches <joe@perches.com>,
- Dmitriy Vyukov <dvyukov@google.com>, Todd Kjos <tkjos@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 02/03/2020 19.31, Jann Horn wrote:
-> On Mon, Mar 2, 2020 at 7:17 PM Alexander Potapenko <glider@google.com> wrote:
->> On Mon, Mar 2, 2020 at 3:00 PM Joe Perches <joe@perches.com> wrote:
->>>
->>> So?  CONFIG_INIT_STACK_ALL by design slows down code.
->> Correct.
->>
->>> This marking would likely need to be done for nearly all
->>> 3000+ copy_from_user entries.
->> Unfortunately, yes. I was just hoping to do so for a handful of hot
->> cases that we encounter, but in the long-term a compiler solution must
->> supersede them.
->>
->>> Why not try to get something done on the compiler side
->>> to mark the function itself rather than the uses?
->> This is being worked on in the meantime as well (see
->> http://lists.llvm.org/pipermail/cfe-dev/2020-February/064633.html)
->> Do you have any particular requisitions about how this should look on
->> the source level?
-> 
-> Just thinking out loud: Should this be a function attribute, or should
-> it be a builtin - something like __builtin_assume_initialized(ptr,
-> len)? That would make it also work for macros,
-
-But with macros (and static inlines), the compiler sees all the
-initialization being done, no?
-
-and it might simplify
-> the handling of inlining in the compiler. And you wouldn't need such a
-> complicated attribute that refers to function arguments by index and
-> such.
-
-Does copy_from_user guarantee to zero-initialize the remaining buffer if
-copying fails partway through? Otherwise it will be hard for the
-compiler to make use of an annotation such as __assume_initialized(buf,
-size - ret_from_cfu) - it will have to say "ok, the caller is bailing
-out unless ret_from_cfu is 0, and in that case, yes, the whole local
-struct variable is indeed initialized". And we can't make the annotation
-unconditionally __assume_initialized(buf, size) [unless c_f_u comes with
-that guarantee] because we don't know that all callers of c_f_u() bail
-out on non-zero.
-
-
-Somewhat related: I've long wanted a bunch of function attributes
-
-  __may_read(ptr, bytes)
-  __may_write(ptr, bytes)
-  __will_write(ptr, bytes)
-
-The first could be used to warn about passing an uninitialized or
-too-small buffer (e.g.
-
-  struct pollfd fds[4];
-  poll(fds, sizeof(fds), ...) // whoops, should have been ARRAY_SIZE)
-
-the second also for warning about a too-small buffer, and the third
-would essentially be the same as __assume_initializes. Perhaps with some
-sanitization option the compiler could also instrument the function
-definition to not read/write beyond the area declared via those attributes.
-
-But the attribute syntax doesn't currently allow complex expressions in
-terms of the parameter names; I'd want to annotate poll as
-
-  int poll(struct pollfd *fds, nfds_t nfds, int to) __may_rw(fds, nfds *
-sizeof(*fds))
-
-Rasmus
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgpIZXJ6bGljaGVuIEdsw7xja3d1bnNjaCBMaWViZXIgQmVnw7xuc3RpZ3RlcixTaWUgZXJoYWx0
+ZW4gZGllc2UgRS1NYWlsIHZvbiBkZXIgUm9iZXJ0IEJhaWxleSBGb3VuZGF0aW9uLiBJY2ggYmlu
+IGVpbiBwZW5zaW9uaWVydGVyIFJlZ2llcnVuZ3Nhbmdlc3RlbGx0ZXIgYXVzIEhhcmxlbSB1bmQg
+ZWluIEdld2lubmVyIGRlcyBQb3dlcmJhbGwgTG90dGVyeSBKYWNrcG90IGltIFdlcnQgdm9uIDM0
+Myw4IE1pbGxpb25lbiBVUy1Eb2xsYXIuIEljaCBiaW4gZGVyIGdyw7bDn3RlIEphY2twb3QtR2V3
+aW5uZXIgaW4gZGVyIEdlc2NoaWNodGUgZGVyIE5ldyBZb3JrZXIgTG90dGVyaWUgaW0gVVMtQnVu
+ZGVzc3RhYXQgQW1lcmlrYS4gSWNoIGhhYmUgZGllc2UgTG90dGVyaWUgYW0gMjcuIE9rdG9iZXIg
+MjAxOCBnZXdvbm5lbiB1bmQgbcO2Y2h0ZSBTaWUgZGFyw7xiZXIgaW5mb3JtaWVyZW4sIGRhc3Mg
+R29vZ2xlIGluIFp1c2FtbWVuYXJiZWl0IG1pdCBNaWNyb3NvZnQgSWhyZSAiRS1NYWlsLUFkcmVz
+c2UiIGF1ZiBtZWluZSBCaXR0ZSwgZWluZW4gU3BlbmRlbmJldHJhZyB2b24gMy4wMDAuMDAwLDAw
+IE1pbGxpb25lbiBFdXJvIHp1IGVyaGFsdGVuLCDDvGJlcm1pdHRlbHQgaGF0LiBJY2ggc3BlbmRl
+IGRpZXNlIDMgTWlsbGlvbmVuIEV1cm8gYW4gU2llLCB1bSBkZW4gV29obHTDpHRpZ2tlaXRzaGVp
+bWVuIHVuZCBhcm1lbiBNZW5zY2hlbiBpbiBJaHJlciBHZW1laW5kZSB6dSBoZWxmZW4sIGRhbWl0
+IHdpciBkaWUgV2VsdCBmw7xyIGFsbGUgdmVyYmVzc2VybiBrw7ZubmVuLldlaXRlcmUgSW5mb3Jt
+YXRpb25lbiBmaW5kZW4gU2llIGF1ZiBkZXIgZm9sZ2VuZGVuIFdlYnNpdGUsIGRhbWl0IFNpZSBu
+aWNodCBza2VwdGlzY2ggc2luZApEaWVzZSBTcGVuZGUgdm9uIDMgTWlvLiBFVVIuaHR0cHM6Ly9u
+eXBvc3QuY29tLzIwMTgvMTEvMTQvbWVldC10aGUtd2lubmVyLW9mLXRoZS1iaWdnZXN0LWxvdHRl
+cnktamFja3BvdC1pbi1uZXcteW9yay1oaXN0b3J5L1NpZSBrw7ZubmVuIGF1Y2ggbWVpbiBZb3VU
+dWJlIGbDvHIgbWVociBCZXN0w6R0aWd1bmcgYXVmcGFzc2VuOgpodHRwczovL3d3dy55b3V0dWJl
+LmNvbS93YXRjaD92PUg1dlQxOFlzYXZjCkJpdHRlIGJlYWNodGVuIFNpZSwgZGFzcyBhbGxlIEFu
+dHdvcnRlbiBhbiAocm9iZXJ0ZG9uYXRpb243QGdtYWlsLmNvbcKgICkgZ2VzZW5kZXQgd2VyZGVu
+LCBkYW1pdCB3aXIgZGFzIGvDtm5uZW4KRmFocmVuIFNpZSBmb3J0LCB1bSBkYXMgZ2VzcGVuZGV0
+ZSBHZWxkIGFuIFNpZSB6dSDDvGJlcndlaXNlbi5FLU1haWw6IHJvYmVydGRvbmF0aW9uN0BnbWFp
+bC5jb21GcmV1bmRsaWNoZSBHcsO8w59lLApSb2JlcnQgQmFpbGV5CiogKiAqICogKiAqICogKiAq
+ICogKiAqICogKiAqICoKUG93ZXJiYWxsIEphY2twb3QgR2V3aW5uZXIKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
+QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
+Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
