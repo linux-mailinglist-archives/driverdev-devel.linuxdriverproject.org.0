@@ -1,56 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0E82179F8E
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 06:49:18 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC3BB17A04B
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 07:51:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8E0C885149;
-	Thu,  5 Mar 2020 05:49:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BB55B87C76;
+	Thu,  5 Mar 2020 06:51:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O92c416A6qct; Thu,  5 Mar 2020 05:49:16 +0000 (UTC)
+	with ESMTP id vlRZefaYHhjg; Thu,  5 Mar 2020 06:51:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 346928653D;
-	Thu,  5 Mar 2020 05:49:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 473E087C66;
+	Thu,  5 Mar 2020 06:51:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 75FD41BF857
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 05:49:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C7AE11BF2EC
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 06:51:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 725132038D
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 05:49:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C46FF20453
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 06:51:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vAhDL4Rr-asH for <devel@linuxdriverproject.org>;
- Thu,  5 Mar 2020 05:49:11 +0000 (UTC)
+ with ESMTP id Bd0MWZRB+jEe for <devel@linuxdriverproject.org>;
+ Thu,  5 Mar 2020 06:50:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by silver.osuosl.org (Postfix) with ESMTPS id 6376020368
- for <devel@driverdev.osuosl.org>; Thu,  5 Mar 2020 05:49:11 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Mar 2020 21:49:10 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,516,1574150400"; d="scan'208";a="441262095"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 04 Mar 2020 21:49:09 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1j9jNd-000IyS-1c; Thu, 05 Mar 2020 13:49:09 +0800
-Date: Thu, 05 Mar 2020 13:48:21 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 0fc6d4e4ce010eb077c6db9ec1e18d999c69e3c3
-Message-ID: <5e6092a5.ZQbeJ/GiTfNJltng%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+ by silver.osuosl.org (Postfix) with ESMTP id 881A52043D
+ for <devel@driverdev.osuosl.org>; Thu,  5 Mar 2020 06:50:59 +0000 (UTC)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DFF9E4B2;
+ Wed,  4 Mar 2020 22:50:58 -0800 (PST)
+Received: from p8cg001049571a15.arm.com (unknown [10.163.1.88])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 1E2853F534;
+ Wed,  4 Mar 2020 22:54:46 -0800 (PST)
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+To: linux-mm@kvack.org
+Subject: [PATCH 2/2] mm/vma: Introduce VM_ACCESS_FLAGS
+Date: Thu,  5 Mar 2020 12:20:14 +0530
+Message-Id: <1583391014-8170-3-git-send-email-anshuman.khandual@arm.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1583391014-8170-1-git-send-email-anshuman.khandual@arm.com>
+References: <1583391014-8170-1-git-send-email-anshuman.khandual@arm.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,214 +57,233 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, devel@driverdev.osuosl.org,
+ linux-s390@vger.kernel.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Michael Ellerman <mpe@ellerman.id.au>, hughd@google.com,
+ Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
+ vbabka@suse.cz, Mark Salter <msalter@redhat.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>,
+ Rob Springer <rspringer@google.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Guan Xuetao <gxt@pku.edu.cn>, linux-arm-kernel@lists.infradead.org,
+ Nick Hu <nickhu@andestech.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
-branch HEAD: 0fc6d4e4ce010eb077c6db9ec1e18d999c69e3c3  staging: wilc1000: use flexible-array member instead of zero-length array
+There are many places where all basic VMA access flags (read, write, exec)
+are initialized or checked against as a group. One such example is during
+page fault. Existing vma_is_accessible() wrapper already creates the notion
+of VMA accessibility as a group access permissions. Hence lets just create
+VM_ACCESS_FLAGS (VM_READ|VM_WRITE|VM_EXEC) which will not only reduce code
+duplication but also extend the VMA accessibility concept in general.
 
-elapsed time: 1371m
-
-configs tested: 187
-configs skipped: 0
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm64                            allyesconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm                              allmodconfig
-arm64                             allnoconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                               defconfig
-sparc                            allyesconfig
-ia64                                defconfig
-mips                              allnoconfig
-s390                                defconfig
-powerpc                             defconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-sh                          rsk7269_defconfig
-s390                              allnoconfig
-sparc64                             defconfig
-parisc                generic-32bit_defconfig
-riscv                            allmodconfig
-parisc                generic-64bit_defconfig
-sh                  sh7785lcr_32bit_defconfig
-s390                          debug_defconfig
-i386                              allnoconfig
-i386                             alldefconfig
-i386                             allyesconfig
-i386                                defconfig
-ia64                             alldefconfig
-ia64                             allyesconfig
-nios2                         3c120_defconfig
-nios2                         10m50_defconfig
-c6x                        evmc6678_defconfig
-xtensa                          iss_defconfig
-c6x                              allyesconfig
-xtensa                       common_defconfig
-openrisc                 simple_smp_defconfig
-openrisc                    or1ksim_defconfig
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-arc                                 defconfig
-arc                              allyesconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-parisc                           allyesconfig
-i386                 randconfig-a003-20200304
-i386                 randconfig-a001-20200304
-x86_64               randconfig-a001-20200304
-i386                 randconfig-a002-20200304
-x86_64               randconfig-a003-20200304
-x86_64               randconfig-a002-20200304
-x86_64               randconfig-a001-20200305
-x86_64               randconfig-a002-20200305
-x86_64               randconfig-a003-20200305
-i386                 randconfig-a001-20200305
-i386                 randconfig-a002-20200305
-i386                 randconfig-a003-20200305
-alpha                randconfig-a001-20200304
-m68k                 randconfig-a001-20200304
-mips                 randconfig-a001-20200304
-nds32                randconfig-a001-20200304
-parisc               randconfig-a001-20200304
-riscv                randconfig-a001-20200304
-c6x                  randconfig-a001-20200304
-h8300                randconfig-a001-20200304
-microblaze           randconfig-a001-20200304
-nios2                randconfig-a001-20200304
-sparc64              randconfig-a001-20200304
-c6x                  randconfig-a001-20200305
-h8300                randconfig-a001-20200305
-microblaze           randconfig-a001-20200305
-nios2                randconfig-a001-20200305
-sparc64              randconfig-a001-20200305
-csky                 randconfig-a001-20200304
-openrisc             randconfig-a001-20200304
-s390                 randconfig-a001-20200304
-sh                   randconfig-a001-20200304
-xtensa               randconfig-a001-20200304
-x86_64               randconfig-b001-20200304
-x86_64               randconfig-b002-20200304
-x86_64               randconfig-b003-20200304
-i386                 randconfig-b001-20200304
-i386                 randconfig-b002-20200304
-i386                 randconfig-b003-20200304
-i386                 randconfig-c002-20200304
-i386                 randconfig-c001-20200304
-x86_64               randconfig-c003-20200304
-x86_64               randconfig-c002-20200304
-i386                 randconfig-c003-20200304
-x86_64               randconfig-c001-20200304
-x86_64               randconfig-d001-20200304
-x86_64               randconfig-d002-20200304
-x86_64               randconfig-d003-20200304
-i386                 randconfig-d001-20200304
-i386                 randconfig-d002-20200304
-i386                 randconfig-d003-20200304
-x86_64               randconfig-e001-20200305
-x86_64               randconfig-e002-20200305
-x86_64               randconfig-e003-20200305
-i386                 randconfig-e001-20200305
-i386                 randconfig-e002-20200305
-i386                 randconfig-e003-20200305
-i386                 randconfig-e001-20200304
-i386                 randconfig-e003-20200304
-x86_64               randconfig-e002-20200304
-x86_64               randconfig-e001-20200304
-x86_64               randconfig-e003-20200304
-i386                 randconfig-e002-20200304
-i386                 randconfig-f003-20200304
-x86_64               randconfig-f001-20200304
-i386                 randconfig-f001-20200304
-i386                 randconfig-f002-20200304
-x86_64               randconfig-f002-20200304
-x86_64               randconfig-f003-20200304
-x86_64               randconfig-g001-20200304
-x86_64               randconfig-g002-20200304
-x86_64               randconfig-g003-20200304
-i386                 randconfig-g001-20200304
-i386                 randconfig-g002-20200304
-i386                 randconfig-g003-20200304
-x86_64               randconfig-h001-20200305
-x86_64               randconfig-h002-20200305
-x86_64               randconfig-h003-20200305
-i386                 randconfig-h001-20200305
-i386                 randconfig-h002-20200305
-i386                 randconfig-h003-20200305
-i386                 randconfig-h001-20200304
-x86_64               randconfig-h002-20200304
-x86_64               randconfig-h001-20200304
-x86_64               randconfig-h003-20200304
-i386                 randconfig-h003-20200304
-i386                 randconfig-h002-20200304
-arc                  randconfig-a001-20200304
-arm                  randconfig-a001-20200304
-arm64                randconfig-a001-20200304
-ia64                 randconfig-a001-20200304
-powerpc              randconfig-a001-20200304
-sparc                randconfig-a001-20200304
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-s390                       zfcpdump_defconfig
-s390                             alldefconfig
-s390                             allmodconfig
-s390                             allyesconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                                allnoconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
-
+Cc: Russell King <linux@armlinux.org.uk>
+CC: Catalin Marinas <catalin.marinas@arm.com>
+CC: Mark Salter <msalter@redhat.com>
+Cc: Nick Hu <nickhu@andestech.com>
+CC: Ley Foon Tan <ley.foon.tan@intel.com>
+Cc: Michael Ellerman <mpe@ellerman.id.au>
+Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+Cc: Guan Xuetao <gxt@pku.edu.cn>
+Cc: Dave Hansen <dave.hansen@linux.intel.com>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Rob Springer <rspringer@google.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linuxppc-dev@lists.ozlabs.org
+Cc: linux-s390@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
+Cc: linux-mm@kvack.org
+Cc: linux-kernel@vger.kernel.org
+Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ arch/arm/mm/fault.c                  | 2 +-
+ arch/arm64/mm/fault.c                | 2 +-
+ arch/nds32/mm/fault.c                | 2 +-
+ arch/powerpc/mm/book3s64/pkeys.c     | 2 +-
+ arch/s390/mm/fault.c                 | 2 +-
+ arch/unicore32/mm/fault.c            | 2 +-
+ arch/x86/mm/pkeys.c                  | 2 +-
+ drivers/staging/gasket/gasket_core.c | 2 +-
+ include/linux/mm.h                   | 6 +++++-
+ mm/mmap.c                            | 2 +-
+ mm/mprotect.c                        | 4 ++--
+ 11 files changed, 16 insertions(+), 12 deletions(-)
+
+diff --git a/arch/arm/mm/fault.c b/arch/arm/mm/fault.c
+index bd0f4821f7e1..2c71028d9d6b 100644
+--- a/arch/arm/mm/fault.c
++++ b/arch/arm/mm/fault.c
+@@ -189,7 +189,7 @@ void do_bad_area(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
+  */
+ static inline bool access_error(unsigned int fsr, struct vm_area_struct *vma)
+ {
+-	unsigned int mask = VM_READ | VM_WRITE | VM_EXEC;
++	unsigned int mask = VM_ACCESS_FLAGS;
+ 
+ 	if ((fsr & FSR_WRITE) && !(fsr & FSR_CM))
+ 		mask = VM_WRITE;
+diff --git a/arch/arm64/mm/fault.c b/arch/arm64/mm/fault.c
+index 85566d32958f..63f31206a12e 100644
+--- a/arch/arm64/mm/fault.c
++++ b/arch/arm64/mm/fault.c
+@@ -445,7 +445,7 @@ static int __kprobes do_page_fault(unsigned long addr, unsigned int esr,
+ 	const struct fault_info *inf;
+ 	struct mm_struct *mm = current->mm;
+ 	vm_fault_t fault, major = 0;
+-	unsigned long vm_flags = VM_READ | VM_WRITE | VM_EXEC;
++	unsigned long vm_flags = VM_ACCESS_FLAGS;
+ 	unsigned int mm_flags = FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE;
+ 
+ 	if (kprobe_page_fault(regs, esr))
+diff --git a/arch/nds32/mm/fault.c b/arch/nds32/mm/fault.c
+index 906dfb25353c..55387a31bf42 100644
+--- a/arch/nds32/mm/fault.c
++++ b/arch/nds32/mm/fault.c
+@@ -79,7 +79,7 @@ void do_page_fault(unsigned long entry, unsigned long addr,
+ 	struct vm_area_struct *vma;
+ 	int si_code;
+ 	vm_fault_t fault;
+-	unsigned int mask = VM_READ | VM_WRITE | VM_EXEC;
++	unsigned int mask = VM_ACCESS_FLAGS;
+ 	unsigned int flags = FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE;
+ 
+ 	error_code = error_code & (ITYPE_mskINST | ITYPE_mskETYPE);
+diff --git a/arch/powerpc/mm/book3s64/pkeys.c b/arch/powerpc/mm/book3s64/pkeys.c
+index 59e0ebbd8036..11fd52b24f68 100644
+--- a/arch/powerpc/mm/book3s64/pkeys.c
++++ b/arch/powerpc/mm/book3s64/pkeys.c
+@@ -315,7 +315,7 @@ int __execute_only_pkey(struct mm_struct *mm)
+ static inline bool vma_is_pkey_exec_only(struct vm_area_struct *vma)
+ {
+ 	/* Do this check first since the vm_flags should be hot */
+-	if ((vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC)) != VM_EXEC)
++	if ((vma->vm_flags & VM_ACCESS_FLAGS) != VM_EXEC)
+ 		return false;
+ 
+ 	return (vma_pkey(vma) == vma->vm_mm->context.execute_only_pkey);
+diff --git a/arch/s390/mm/fault.c b/arch/s390/mm/fault.c
+index 7b0bb475c166..b2cb3c0d0e1a 100644
+--- a/arch/s390/mm/fault.c
++++ b/arch/s390/mm/fault.c
+@@ -584,7 +584,7 @@ void do_dat_exception(struct pt_regs *regs)
+ 	int access;
+ 	vm_fault_t fault;
+ 
+-	access = VM_READ | VM_EXEC | VM_WRITE;
++	access = VM_ACCESS_FLAGS;
+ 	fault = do_exception(regs, access);
+ 	if (unlikely(fault))
+ 		do_fault_error(regs, access, fault);
+diff --git a/arch/unicore32/mm/fault.c b/arch/unicore32/mm/fault.c
+index 76342de9cf8c..fc27c274d358 100644
+--- a/arch/unicore32/mm/fault.c
++++ b/arch/unicore32/mm/fault.c
+@@ -149,7 +149,7 @@ void do_bad_area(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
+  */
+ static inline bool access_error(unsigned int fsr, struct vm_area_struct *vma)
+ {
+-	unsigned int mask = VM_READ | VM_WRITE | VM_EXEC;
++	unsigned int mask = VM_ACCESS_FLAGS;
+ 
+ 	if (!(fsr ^ 0x12))	/* write? */
+ 		mask = VM_WRITE;
+diff --git a/arch/x86/mm/pkeys.c b/arch/x86/mm/pkeys.c
+index c6f84c0b5d7a..8873ed1438a9 100644
+--- a/arch/x86/mm/pkeys.c
++++ b/arch/x86/mm/pkeys.c
+@@ -63,7 +63,7 @@ int __execute_only_pkey(struct mm_struct *mm)
+ static inline bool vma_is_pkey_exec_only(struct vm_area_struct *vma)
+ {
+ 	/* Do this check first since the vm_flags should be hot */
+-	if ((vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC)) != VM_EXEC)
++	if ((vma->vm_flags & VM_ACCESS_FLAGS) != VM_EXEC)
+ 		return false;
+ 	if (vma_pkey(vma) != vma->vm_mm->context.execute_only_pkey)
+ 		return false;
+diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
+index be6b50f454b4..81bb7d58dc49 100644
+--- a/drivers/staging/gasket/gasket_core.c
++++ b/drivers/staging/gasket/gasket_core.c
+@@ -689,7 +689,7 @@ static bool gasket_mmap_has_permissions(struct gasket_dev *gasket_dev,
+ 
+ 	/* Make sure that no wrong flags are set. */
+ 	requested_permissions =
+-		(vma->vm_flags & (VM_WRITE | VM_READ | VM_EXEC));
++		(vma->vm_flags & VM_ACCESS_FLAGS);
+ 	if (requested_permissions & ~(bar_permissions)) {
+ 		dev_dbg(gasket_dev->dev,
+ 			"Attempting to map a region with requested permissions "
+diff --git a/include/linux/mm.h b/include/linux/mm.h
+index 3861524368a4..e89512f1c170 100644
+--- a/include/linux/mm.h
++++ b/include/linux/mm.h
+@@ -368,6 +368,10 @@ extern unsigned int kobjsize(const void *objp);
+ 
+ #define VM_STACK_FLAGS	(VM_STACK | VM_STACK_DEFAULT_FLAGS | VM_ACCOUNT)
+ 
++/* VMA basic access permission flags */
++#define VM_ACCESS_FLAGS (VM_READ | VM_WRITE | VM_EXEC)
++
++
+ /*
+  * Special vmas that are non-mergable, non-mlock()able.
+  * Note: mm/huge_memory.c VM_NO_THP depends on this definition.
+@@ -557,7 +561,7 @@ static inline bool vma_is_anonymous(struct vm_area_struct *vma)
+ 
+ static inline bool vma_is_accessible(struct vm_area_struct *vma)
+ {
+-	return vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC);
++	return vma->vm_flags & VM_ACCESS_FLAGS;
+ }
+ 
+ #ifdef CONFIG_SHMEM
+diff --git a/mm/mmap.c b/mm/mmap.c
+index 0d295f49b24d..57f74ade19a0 100644
+--- a/mm/mmap.c
++++ b/mm/mmap.c
+@@ -1221,7 +1221,7 @@ static int anon_vma_compatible(struct vm_area_struct *a, struct vm_area_struct *
+ 	return a->vm_end == b->vm_start &&
+ 		mpol_equal(vma_policy(a), vma_policy(b)) &&
+ 		a->vm_file == b->vm_file &&
+-		!((a->vm_flags ^ b->vm_flags) & ~(VM_READ|VM_WRITE|VM_EXEC|VM_SOFTDIRTY)) &&
++		!((a->vm_flags ^ b->vm_flags) & ~(VM_ACCESS_FLAGS | VM_SOFTDIRTY)) &&
+ 		b->vm_pgoff == a->vm_pgoff + ((b->vm_start - a->vm_start) >> PAGE_SHIFT);
+ }
+ 
+diff --git a/mm/mprotect.c b/mm/mprotect.c
+index 7a8e84f86831..8fbb7e7c08a5 100644
+--- a/mm/mprotect.c
++++ b/mm/mprotect.c
+@@ -359,7 +359,7 @@ mprotect_fixup(struct vm_area_struct *vma, struct vm_area_struct **pprev,
+ 	 */
+ 	if (arch_has_pfn_modify_check() &&
+ 	    (vma->vm_flags & (VM_PFNMAP|VM_MIXEDMAP)) &&
+-	    (newflags & (VM_READ|VM_WRITE|VM_EXEC)) == 0) {
++	    (newflags & VM_ACCESS_FLAGS) == 0) {
+ 		pgprot_t new_pgprot = vm_get_page_prot(newflags);
+ 
+ 		error = walk_page_range(current->mm, start, end,
+@@ -538,7 +538,7 @@ static int do_mprotect_pkey(unsigned long start, size_t len,
+ 		newflags |= (vma->vm_flags & ~mask_off_old_flags);
+ 
+ 		/* newflags >> 4 shift VM_MAY% in place of VM_% */
+-		if ((newflags & ~(newflags >> 4)) & (VM_READ | VM_WRITE | VM_EXEC)) {
++		if ((newflags & ~(newflags >> 4)) & VM_ACCESS_FLAGS) {
+ 			error = -EACCES;
+ 			goto out;
+ 		}
+-- 
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
