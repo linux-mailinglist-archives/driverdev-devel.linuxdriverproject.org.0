@@ -1,81 +1,108 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60BD317A58C
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 13:46:19 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A20F717A797
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 15:36:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E19A386132;
-	Thu,  5 Mar 2020 12:46:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A15BD21538;
+	Thu,  5 Mar 2020 14:36:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hL6B2cGDoeIn; Thu,  5 Mar 2020 12:46:17 +0000 (UTC)
+	with ESMTP id qdcTVIPsefrW; Thu,  5 Mar 2020 14:36:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 67CD586108;
-	Thu,  5 Mar 2020 12:46:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1D5EE2151F;
+	Thu,  5 Mar 2020 14:36:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 727991BF31F
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 12:46:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 60D971BF308
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 14:36:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6CCF386B50
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 12:46:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5C60286969
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 14:36:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fAagm1sxWXbT for <devel@linuxdriverproject.org>;
- Thu,  5 Mar 2020 12:46:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3D9B386B3C
- for <devel@driverdev.osuosl.org>; Thu,  5 Mar 2020 12:46:12 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id v19so5764027oic.12
- for <devel@driverdev.osuosl.org>; Thu, 05 Mar 2020 04:46:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=EBJiQx/MPyQ2hugQ5S0diNZxP8ij3c3rvZpbZvxi3j0=;
- b=nbjJ+edob4wcEAnoswnNyP+pLHYUqojVTVp7wAaZTxnr3fi5TcwEr0MXNa/oZHh7xh
- YywP+f0wo1k9fzezVsgVONxhuga2FzGKv6C9dPwH9nDS3dkZBqynk8RCmPoF85tbirBt
- 3m5RdwT7gU0M91d4vA7T30cRea9uA8cV1XPZYX1SYQ4Tc8iWWSUv7iCJGUyst68xulMo
- FFTlWebAxu/wdRjpF/Jwr7UtMtKWCNcyPuwyVXAHcIeKBUHsfOG8580m7GkS8spotS5h
- B8rclHh70hiN++lVZLl04OxZ/lJOEP7GttWhyVMN+0PzxuYgUa0RJCKBX5szy1nniwlv
- hSbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=EBJiQx/MPyQ2hugQ5S0diNZxP8ij3c3rvZpbZvxi3j0=;
- b=tvvU392FtOYzr+NtvoVjilVCxAJnUAdN/hcngGyKFmn2VUknlbzfNZExAtzEi1MskO
- jrfLbW5qgGq+LjkKZdC6uq5TGwxYpQMcKogN93/0aydmUNdaKKmSitqBLw6rRZJ1UjBj
- l2L0rUACnpnG1/0EdM0GxIflXtCPU49mNvj9vu/aJntuC4uZlhqKz9iINanoPMwZZxsY
- jw5v9/ZmFmRzuSAyvC5hduowvl1t3cEwrScE5+mBfzRcn8Pf+dzWFNrqGkZ2snF5hPLt
- wNfDp5lymkjGHkUgy/uzpHSmgs/wBpRQ5QxXG9FcV9USd1/K5Y1HipWE5sKQjs5HYsoT
- Vmug==
-X-Gm-Message-State: ANhLgQ1trRdQA7tlk2jD8MT2nVs+nIsTBZEE4xkaNZTTC0N4h+SgQ6jO
- meHHTChr0iVDz10IfJJ6z8rMHv+Rm3Ah/fGTBUUqpg==
-X-Google-Smtp-Source: ADFU+vso1w9mhfeUd+ur1ReAf47AM2hyb8bzzNFTdwBLB0Sbp0EkstxtFY56uOcWw4/dmeQ6pS9n5ARaJ8lPS979twY=
-X-Received: by 2002:a05:6808:8d0:: with SMTP id
- k16mr5503025oij.68.1583412371104; 
- Thu, 05 Mar 2020 04:46:11 -0800 (PST)
+ with ESMTP id 9hUJzfdG7dUL for <devel@linuxdriverproject.org>;
+ Thu,  5 Mar 2020 14:36:45 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.73])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 89EDE8695C
+ for <devel@driverdev.osuosl.org>; Thu,  5 Mar 2020 14:36:44 +0000 (UTC)
+Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
+ mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1MkYsS-1jeGjj40v0-00m1dA; Thu, 05 Mar 2020 15:36:30 +0100
+Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id 4C17D65007B;
+ Thu,  5 Mar 2020 14:36:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at cetitec.com
+Received: from mail.cetitecgmbh.com ([127.0.0.1])
+ by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
+ [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TuPCA_-QNJ3X; Thu,  5 Mar 2020 15:36:28 +0100 (CET)
+Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id DD21B64F3BB;
+ Thu,  5 Mar 2020 15:36:28 +0100 (CET)
+Received: from pflmari.corp.cetitec.com (10.10.2.141) by
+ PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
+ id 15.0.1497.2; Thu, 5 Mar 2020 15:36:28 +0100
+Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
+ id 85278804EF; Thu,  5 Mar 2020 15:36:28 +0100 (CET)
+Date: Thu, 5 Mar 2020 15:36:28 +0100
+From: Alex Riesen <alexander.riesen@cetitec.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Subject: Re: [PATCH 8/8] arm64: dts: renesas: salvator: add a connection from
+ adv748x codec (HDMI input) to the R-Car SoC
+Message-ID: <20200305143628.GB25741@pflmari>
+Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ Kieran Bingham <kieran.bingham@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>,
+ Driver Development <devel@driverdev.osuosl.org>,
+ Linux Media <linux-media@vger.kernel.org>,
+ Linux Kernel <linux-kernel@vger.kernel.org>,
+ Device Tree <devicetree@vger.kernel.org>,
+ Renesas SoC <linux-renesas-soc@vger.kernel.org>
+References: <cover.1578924232.git.alexander.riesen@cetitec.com>
+ <20200113141556.GI3606@pflmari>
+ <CAMuHMdV9urx-6N4tiaPdkssa6Wu-9HSB4VY-rvCu+8JpfZcBfA@mail.gmail.com>
+ <20200302134011.GA3717@pflmari>
+ <CAMuHMdWobAE+y90DRi+zQadObWPxLyQiGNTe4t77O-2S1Vp5yA@mail.gmail.com>
+ <20200302150706.GB3717@pflmari>
+ <CAMuHMdW21rYXoOSE8azHNqYjng_j41rsL=Fo2bZc=1ULi9+pLw@mail.gmail.com>
+ <20200302160906.GC3717@pflmari>
+ <CAMuHMdVNGsVHyvAgC5dAHx=8Ax18EHx2tS6Hm5Bkg4ms=mW6Zw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20200302130430.201037-1-glider@google.com>
- <20200302130430.201037-2-glider@google.com>
- <0eaac427354844a4fcfb0d9843cf3024c6af21df.camel@perches.com>
- <CAG_fn=VNnxjD6qdkAW_E0v3faBQPpSsO=c+h8O=yvNxTZowuBQ@mail.gmail.com>
- <4cac10d3e2c03e4f21f1104405a0a62a853efb4e.camel@perches.com>
- <CAG_fn=XOyPGau9m7x8eCLJHy3m-H=nbMODewWVJ1xb2e+BPdFw@mail.gmail.com>
- <CAG48ez3sPSFQjB7K64YiNYfemZ_W9cCcKQW34XAcLP_MkXUjCw@mail.gmail.com>
- <205aa3d8-7d18-1b73-4650-5ef534fe55da@rasmusvillemoes.dk>
-In-Reply-To: <205aa3d8-7d18-1b73-4650-5ef534fe55da@rasmusvillemoes.dk>
-From: Jann Horn <jannh@google.com>
-Date: Thu, 5 Mar 2020 13:45:44 +0100
-Message-ID: <CAG48ez014nW8pie91cnrn_7N1zyziAN+9xrT9xN0iLecCoRwfA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] binder: do not initialize locals passed to
- copy_from_user()
-To: Rasmus Villemoes <linux@rasmusvillemoes.dk>
+Content-Disposition: inline
+In-Reply-To: <CAMuHMdVNGsVHyvAgC5dAHx=8Ax18EHx2tS6Hm5Bkg4ms=mW6Zw@mail.gmail.com>
+X-Originating-IP: [10.10.2.141]
+X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
+ PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
+X-EsetResult: clean, is OK
+X-EsetId: 37303A29536F936F637367
+X-Provags-ID: V03:K1:89pAwl+MGQIIUBHltXlUW/W8nwgm0att8RcwyUmT97Nq5Uh6QfA
+ Cao/sAEAcgeUGTCWZAGVEVO+ZB68y8ulEc9SSSMy6RI4da/n/jVJVkavJKD8Jj5Z52ijCHP
+ zqxu5prvzW3aRp7kLbE+iui2QyQM7VaIh2xxYo/G7i07KYlWQbatOw8k/e/vEMzIzD9N2AD
+ SKuGXYI4F+AQ+3VKgRlEQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oQ4Mw24lMPY=:ED7Cu+cwK558t9q4OZzyFK
+ qa3OZ3XCPSovu6NVhb0CL01nZqasgqIvg1USKZOveCeTRgmRUa0YK82vGTUpDs5YnxE+OwPFQ
+ K/WJiKnBXhNTme8d6KXpHi4xCf4KxjsOX/kOY+uyA0BVfK5gm/ebjU7LkJfrj73ZaX7F812v2
+ omZeOCKRATZBIha5wAGBoSY9a9hHLGco8rtk/4JGCfIdILZjOQT0OYVd/d+eyRvAzcrMIkvaR
+ QlfR8I2e0coYwvt9m7jbv5v/GXK8Oh+A2CJyvbKzCVuvXc4B2YxFv7fBM5CV8xfMakCfij95h
+ qqcD7cWVxlHpNbljro/Rg/Ub5sWQedtXcWRPfpMt2GiyK9ERuVYfpk6wvR2gJLUpoQf6XwD7z
+ w5wXMPDdClitHvqkgFLrDNtaaXRmsqCsW+UJIAig8hN4GKH5a4csKbsNVS8VARIL7U+UfAd8i
+ JZwFgvU2uAFA5LiQ4ckESKg3rbisVDo/xV26uMMgy0mWb7oG/BnSw5yFx4lRSbP55USfCpS0I
+ IDcLMDA4dhl8kfa5AoyHiV2kH21UkrEjyfrb+Sxlhz6u2bHZ3mDT519vJ2l3hB6jkLulq+gTD
+ IBYaXqGch9x4MOR7YXavq/RWhe1cd2LhrWqiT4djW2R3IrGNRdsndnZiHjvKEfLrH2Aj6/PYV
+ L9I+ZtvXtbKPVs7NE59OcJA/dBsEYxOHQgURyWtkspyDf+ZtLQL+Tibfi9MztM8e3It5aybdg
+ hyOjqxs4GsdI89In369H4gIlLPVq4gLZkoWYLgLKQEduOuGnTD/Tjr6iaH5+vv1HIb2G7Oo8/
+ XWta5CNRXvHS0G5BEMeYSLRUSOYPvseq4JzgjguFF6DD7WGrhjIfgDVRz7arwbO8LBHO9Pk
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,98 +115,95 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Kees Cook <keescook@chromium.org>, Peter Zijlstra <peterz@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Ingo Molnar <mingo@redhat.com>, Alexander Potapenko <glider@google.com>,
- Joe Perches <joe@perches.com>, Dmitriy Vyukov <dvyukov@google.com>,
- Todd Kjos <tkjos@google.com>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Driver Development <devel@driverdev.osuosl.org>,
+ Device Tree <devicetree@vger.kernel.org>,
+ Kieran Bingham <kieran.bingham@ideasonboard.com>,
+ Linux Kernel <linux-kernel@vger.kernel.org>,
+ Renesas SoC <linux-renesas-soc@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Laurent
+ Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Mar 5, 2020 at 10:03 AM Rasmus Villemoes
-<linux@rasmusvillemoes.dk> wrote:
-> On 02/03/2020 19.31, Jann Horn wrote:
-> > On Mon, Mar 2, 2020 at 7:17 PM Alexander Potapenko <glider@google.com> wrote:
-> >> On Mon, Mar 2, 2020 at 3:00 PM Joe Perches <joe@perches.com> wrote:
-> >>>
-> >>> So?  CONFIG_INIT_STACK_ALL by design slows down code.
-> >> Correct.
-> >>
-> >>> This marking would likely need to be done for nearly all
-> >>> 3000+ copy_from_user entries.
-> >> Unfortunately, yes. I was just hoping to do so for a handful of hot
-> >> cases that we encounter, but in the long-term a compiler solution must
-> >> supersede them.
-> >>
-> >>> Why not try to get something done on the compiler side
-> >>> to mark the function itself rather than the uses?
-> >> This is being worked on in the meantime as well (see
-> >> http://lists.llvm.org/pipermail/cfe-dev/2020-February/064633.html)
-> >> Do you have any particular requisitions about how this should look on
-> >> the source level?
+Hi Geert,
+
+Geert Uytterhoeven, Mon, Mar 02, 2020 17:13:30 +0100:
+> On Mon, Mar 2, 2020 at 5:09 PM Alex Riesen <alexander.riesen@cetitec.com> wrote:
+> > Geert Uytterhoeven, Mon, Mar 02, 2020 16:32:32 +0100:
+> > >
+> > > The #clock-cells should be in the main video-receiver node.
+> > > Probably there is more than one clock output, so #clock-cells may be 1?
 > >
-> > Just thinking out loud: Should this be a function attribute, or should
-> > it be a builtin - something like __builtin_assume_initialized(ptr,
-> > len)? That would make it also work for macros,
->
-> But with macros (and static inlines), the compiler sees all the
-> initialization being done, no?
+> > AFAICS, the device can provide only this one clock line (audio master clock
+> > for I2S output)... I shall re-check, just in case.
 
-Depends on how the macro writes to the buffer, whether it's a normal
-write or happens through another function call or whatever.
+And you're right, of course: the audio output formatting module of the ADV748x
+devices provides a set of clock lines related to the I2S pins: the already
+discussed master clock, left-right channel clock and the serial clock (bit
+clock?).
 
-> and it might simplify
-> > the handling of inlining in the compiler. And you wouldn't need such a
-> > complicated attribute that refers to function arguments by index and
-> > such.
->
-> Does copy_from_user guarantee to zero-initialize the remaining buffer if
-> copying fails partway through?
+> > > There is no need for a fixed-clock compatible, nor for clock-frequency
+> > > and clock-output-names.
+> > >
+> > > But most important: this should be documented in the adv748x DT bindings,
+> > > and implemented in the adv748x driver.
+> >
+> > So if the driver is to export that clock for the kernel (like in this case),
+> > it must implement its support?
+> 
+> Exactly.  Unless that pin is hardcoded to output a fixed clock, in which case
+> you can just override the existing audio_clk_c rate.
 
-Basically yes. From include/linux/uaccess.h:
+Just to try it out (I'll set #clock-cells to 1), I registered a fixed rate
+clock in the driver, added a clock provider:
 
-static __always_inline unsigned long __must_check
-copy_from_user(void *to, const void __user *from, unsigned long n)
-{
-  if (likely(check_copy_size(to, n, false)))
-    n = _copy_from_user(to, from, n);
-  return n;
-}
+adv748x_probe:
 
-check_copy_size() should be optimized out entirely for straightforward
-use of stack objects; it will only return false if the specified
-address range crosses beyond an allocation boundary.
-_copy_from_user() is defined as follows (there are two possible
-definitions, both of them have the same method body, but they differ
-in whether the function is inline - which one is used depends on the
-architecture):
+    clk = clk_register_fixed_rate(state->dev,
+				  "clk-hdmi-i2s-mclk",
+				  NULL     /* parent_name */,
+				  0        /* flags */,
+				  12288000 /* rate */);
+    of_clk_add_provider(state->dev->of_node, of_clk_src_simple_get, clk);
 
-static inline __must_check unsigned long
-_copy_from_user(void *to, const void __user *from, unsigned long n)
-{
-  unsigned long res = n;
-  might_fault();
-  if (likely(access_ok(from, n))) {
-    kasan_check_write(to, n);
-    res = raw_copy_from_user(to, from, n);
-  }
-  if (unlikely(res))
-    memset(to + (n - res), 0, res);
-  return res;
-}
+And removed the audio_clk_c frequency setting. I also replaced the audio_clk_c
+in the list of input clocks of the R-Car-side sound card with the phandle of
+the adv7482 main node:
 
-So annotating _copy_from_user(), or calling a magic
-fake-initialization builtin directly before calling _copy_from_user(),
-should be safe. As long as the compiler can eliminate the call to
-check_copy_size(), that should then make that propagate up to the
-caller of copy_from_user(). (You could also try to annotate
-copy_from_user() directly, but I'm not sure whether doing it before
-the bounds check might confuse the compiler somehow.)
+salvator-common.dtsi:
+
+    &i2c4 {
+	status = "okay";
+
+	adv7482_hdmi_decoder: video-receiver@70 {
+	    #clock-cells = <0>; // to be replaced with <1>
+	};
+    };
+
+    &rcar_sound {
+	clocks = ..., <&adv7482_hdmi_decoder>, ...;
+    };
+
+As everything continues to work as before, I assume that at least the clock
+dependencies were resolved.
+
+Is there a way to verify that the added input clock is actually used?
+IOW, if its frequency is actually has been programmed into the ssi4 (R-Car
+receiving hardware) registers, and not just a left-over from previuos attempts
+or plain default setting?
+
+As the ADV748x devices seem to provide also the clocks for video outputs, will
+it make any sense to place the clock definition into the port node?
+Or should all provided clocks be indexed in the main device node?
+
+Regards,
+Alex
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
