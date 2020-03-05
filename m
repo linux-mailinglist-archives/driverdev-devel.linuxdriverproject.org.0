@@ -1,73 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49DB317A0CA
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 09:08:20 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8702B17A139
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Mar 2020 09:26:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C746D87C3F;
-	Thu,  5 Mar 2020 08:08:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 256B886A07;
+	Thu,  5 Mar 2020 08:26:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Wl2NG7N8d7Rc; Thu,  5 Mar 2020 08:08:17 +0000 (UTC)
+	with ESMTP id gLpbiyLwoYva; Thu,  5 Mar 2020 08:26:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 083F185E0D;
-	Thu,  5 Mar 2020 08:08:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DC95E86A48;
+	Thu,  5 Mar 2020 08:26:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 74F621BF2FB
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 08:08:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 670BD1BF2FB
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 08:26:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5E0BD85EA7
- for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 08:08:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6375086059
+ for <devel@linuxdriverproject.org>; Thu,  5 Mar 2020 08:26:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id deuwSCJEd8Tm for <devel@linuxdriverproject.org>;
- Thu,  5 Mar 2020 08:08:13 +0000 (UTC)
+ with ESMTP id rEjaZI3QfmLI for <devel@linuxdriverproject.org>;
+ Thu,  5 Mar 2020 08:26:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A064D85B29
- for <devel@driverdev.osuosl.org>; Thu,  5 Mar 2020 08:08:13 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0257x5Ui144820;
- Thu, 5 Mar 2020 08:08:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=yNpTxiFZxzT52KNk7sTPHiFNeGp2ohEATiVHyZEZpRY=;
- b=0LahpNy8BuvoDcNlmn75lZ7+QawrnaJjdZN7UO2Qnrp86kGPbev928IPl1KiKKIXLMwJ
- oBJQFj+e1X4lkCg8Lpbg9y3hlr2VC0W1Ox/r6lhQ1QynffpT4H0KwZWF00OyAhYewOMr
- 2MbtbWhEwAMidTGIpuYTUXxLSkwgosOcLzH0YmGKNbc57MabG3ofJ/QO/Qjk1pcX2Qx/
- 9MG7nZJVtCUcgZqg6KouBk1piMcCkl0LHeppb+1PfWxc2u70BbTCAwlc9rWn89dHg1jT
- jNHTsz3lrYI1LxSmzWcDmQ0KEQ48EhYtQM8dcCoPmBS3h8Y3VhzFtPhC8J/nXEe7N0VC Mw== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 2yghn3f7y1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 05 Mar 2020 08:08:10 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0257uln1154940;
- Thu, 5 Mar 2020 08:08:10 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3030.oracle.com with ESMTP id 2yjuf0ars6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 05 Mar 2020 08:08:10 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 025886DS029457;
- Thu, 5 Mar 2020 08:08:07 GMT
-Received: from kadam (/41.210.146.162) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 05 Mar 2020 00:08:06 -0800
-Date: Thu, 5 Mar 2020 11:07:56 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Kees Cook <keescook@chromium.org>
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D2D9985F5D
+ for <devel@driverdev.osuosl.org>; Thu,  5 Mar 2020 08:26:26 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id o24so2394923pfp.13
+ for <devel@driverdev.osuosl.org>; Thu, 05 Mar 2020 00:26:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=pEatHTWH0KovQUE1IliiOOh+OJO6vJzogkc3LdB4OY0=;
+ b=E/kkoPaC2FMeGYEZ+bcmO62AmBz6ioa1QQm9IiXemxyUaA7oKQKDSF84iTdG7NT6m6
+ btxAs0G47enywKwVaiVOlSyznVAcx8fSXopz5vsetifC/uyO3YhjiqBsZx3pLve+j76/
+ UkzGgSX4JdMpqLgCRi0vjG1HGcBz0K5sn/Qtg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=pEatHTWH0KovQUE1IliiOOh+OJO6vJzogkc3LdB4OY0=;
+ b=kzi/kmxKBB1Nw5sBZdGHmPsw9Pj63C55IcGuBIQnu50LSTplZgC6pAdg510TS4NjPY
+ WdyT3WTs5RHQBZTUN/qwnZSsiiym0m3hB50Hre2mKfMzxIQZqwLm4VzkOr3ZwotpsFIU
+ i8IeEAZKe+3juMW1Jj5VKLHHHy2jV9RG4OAVI6dpYs0uFBvjim3rTylTxZJigrFZu872
+ 6VZTsZXDH1TncqFknc/+jxk6NnLQ62QCtRZuIhcLJlKAumfdPEM6/fNeiIwwyDY09+8N
+ d69ZBppRlS4arDcNeF3KOZ4L5lWc36d0EmA4m3uUBS/FtiaDS6qztX2APA31P/Cqt3TV
+ Y2Ng==
+X-Gm-Message-State: ANhLgQ0J7j6Xq5pSkM9+5RYyRk7+UEW4JkkIDOyilFgnzR1po3T2rUKa
+ gH+Cta997cgVdHUTINFs2WWjGg==
+X-Google-Smtp-Source: ADFU+vtzSJ2ErVWBCNHqCv68ee7q7/rHaGMcbMhofpwmAUpPHp6vsLSbOD4qp3AIRnc9whaK7cnjSQ==
+X-Received: by 2002:a65:468d:: with SMTP id h13mr6418693pgr.359.1583396786314; 
+ Thu, 05 Mar 2020 00:26:26 -0800 (PST)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id 1sm26930783pff.11.2020.03.05.00.26.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2020 00:26:25 -0800 (PST)
+Date: Thu, 5 Mar 2020 00:26:24 -0800
+From: Kees Cook <keescook@chromium.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
 Subject: Re: [PATCH v2 2/3] binder: do not initialize locals passed to
  copy_from_user()
-Message-ID: <20200305080756.GB19839@kadam>
-References: <20200302130430.201037-1-glider@google.com>
- <20200302130430.201037-2-glider@google.com>
+Message-ID: <202003050010.A1A965BF37@keescook>
+References: <20200302130430.201037-2-glider@google.com>
  <0eaac427354844a4fcfb0d9843cf3024c6af21df.camel@perches.com>
  <CAG_fn=VNnxjD6qdkAW_E0v3faBQPpSsO=c+h8O=yvNxTZowuBQ@mail.gmail.com>
  <4cac10d3e2c03e4f21f1104405a0a62a853efb4e.camel@perches.com>
@@ -75,25 +75,10 @@ References: <20200302130430.201037-1-glider@google.com>
  <18b0d6ea5619c34ca4120a6151103dbe9bfa0cbe.camel@perches.com>
  <CAG_fn=U2T--j_uhyppqzFvMO3w3yUA529pQrCpbhYvqcfh9Z1w@mail.gmail.com>
  <20200303093832.GD24372@kadam> <202003040951.7857DFD936@keescook>
+ <20200305080756.GB19839@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <202003040951.7857DFD936@keescook>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9550
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- spamscore=0 malwarescore=0
- bulkscore=0 adultscore=0 suspectscore=0 mlxlogscore=999 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2003050050
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9550
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- phishscore=0 spamscore=0
- impostorscore=0 mlxscore=0 adultscore=0 mlxlogscore=999 lowpriorityscore=0
- priorityscore=1501 bulkscore=0 clxscore=1015 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2003050050
+In-Reply-To: <20200305080756.GB19839@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,21 +104,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Mar 04, 2020 at 10:13:40AM -0800, Kees Cook wrote:
-> On Tue, Mar 03, 2020 at 12:38:32PM +0300, Dan Carpenter wrote:
-> > The real fix is to initialize everything manually, the automated
-> > initialization is a hardenning feature which many people will disable.
+On Thu, Mar 05, 2020 at 11:07:56AM +0300, Dan Carpenter wrote:
+> On Wed, Mar 04, 2020 at 10:13:40AM -0800, Kees Cook wrote:
+> > On Tue, Mar 03, 2020 at 12:38:32PM +0300, Dan Carpenter wrote:
+> > > The real fix is to initialize everything manually, the automated
+> > > initialization is a hardenning feature which many people will disable.
+> > 
+> > I cannot disagree more with this sentiment. Linus has specifically said he
+> > wants this initialization on by default[1],
 > 
-> I cannot disagree more with this sentiment. Linus has specifically said he
-> wants this initialization on by default[1],
+> Fine, but as long as it's a configurable thing then we need to manually
+> initialize as well or it's still a CVE etc.  It will take a while before
+> we drop support for old versions of GCC as well.
 
-Fine, but as long as it's a configurable thing then we need to manually
-initialize as well or it's still a CVE etc.  It will take a while before
-we drop support for old versions of GCC as well.
+Yes, I agree; that's totally true. We need to continue to fix all the
+uninitialized flaws we encounter unless this is on by default for all
+supported compiler versions (which will be a looong time). (But it's
+not relevant to this patch because copy_from_user() does already do
+the initialization.)
 
-regards,
-dan carpenter
+This set of patches was about dealing with the pathological cases of
+auto-init colliding with functions that do, in fact, fully init. Though
+I must say, I remain concerned about inventing such markings for fear
+they'll be used in places where the "trust me, it's fully initialized"
+state does not actually hold[1] but the author thinks it does.
 
+-Kees
+
+[1] https://lore.kernel.org/netdev/1509471094.3828.26.camel@edumazet-glaptop3.roam.corp.google.com/
+
+-- 
+Kees Cook
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
