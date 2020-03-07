@@ -1,143 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 757B717CD0F
-	for <lists+driverdev-devel@lfdr.de>; Sat,  7 Mar 2020 09:55:46 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1925B17CDAF
+	for <lists+driverdev-devel@lfdr.de>; Sat,  7 Mar 2020 11:51:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0801287722;
-	Sat,  7 Mar 2020 08:55:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5E7A8884DE;
+	Sat,  7 Mar 2020 10:51:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wtPrkGM6l7AK; Sat,  7 Mar 2020 08:55:44 +0000 (UTC)
+	with ESMTP id 5ek3rKv6sqOI; Sat,  7 Mar 2020 10:51:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1F2598765D;
-	Sat,  7 Mar 2020 08:55:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E11DB884B2;
+	Sat,  7 Mar 2020 10:51:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B06171BF2BF
- for <devel@linuxdriverproject.org>; Sat,  7 Mar 2020 08:55:40 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 168351BF5F8
+ for <devel@linuxdriverproject.org>; Sat,  7 Mar 2020 10:51:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AAD0C869C7
- for <devel@linuxdriverproject.org>; Sat,  7 Mar 2020 08:55:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1275885085
+ for <devel@linuxdriverproject.org>; Sat,  7 Mar 2020 10:51:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KlvitONbZY+k for <devel@linuxdriverproject.org>;
- Sat,  7 Mar 2020 08:55:38 +0000 (UTC)
+ with ESMTP id uBwal49DFQVy for <devel@linuxdriverproject.org>;
+ Sat,  7 Mar 2020 10:51:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
- [216.71.150.166])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D25858683C
- for <devel@driverdev.osuosl.org>; Sat,  7 Mar 2020 08:55:37 +0000 (UTC)
-Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
- Ajay.Kathat@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
- envelope-from="Ajay.Kathat@microchip.com";
- x-sender="Ajay.Kathat@microchip.com"; x-conformance=spf_only;
- x-record-type="v=spf1"; x-record-text="v=spf1 mx
- a:ushub1.microchip.com a:smtpout.microchip.com
- -exists:%{i}.spf.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa5.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa5.microchip.iphmx.com;
- envelope-from="Ajay.Kathat@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa5.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: SRAbEgCO/b3TN8dVKplT+Ikq+5IugR/zvZDhuFwij3GuaOdx+CG2mjdOt9Qz2VLVMF5KEyE5ju
- 1sQRDK50yW6yXHhRMLCxHtL/q8+OXWIhSOyD045QbHwXYNI8c0REVqsnqamVNU1+ZRDYowgiRL
- 9WBPove+edQ1NI6W/HhRQBLoAawabyXKzFwAciMCDojtqiM3eaOICvrEMjalLWclc8lCFZ2NyL
- 59L2xXkoJ5G8zJwqvXYBE9tJseYlQA9W0oUCPg7JIAWYUolFMTUfegafivGDnI6pW1BJ5J1n7W
- XMw=
-X-IronPort-AV: E=Sophos;i="5.70,525,1574146800"; d="scan'208";a="67991521"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 07 Mar 2020 01:55:36 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Sat, 7 Mar 2020 01:55:35 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.71) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
- Transport; Sat, 7 Mar 2020 01:55:34 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=elma2bc2dP2bHNG7Y0q0jPRs5H/Xi6P2OZre5fhSHQPK+54Wjc3Eh6FxMGUwUFqPUxGTEoA37N30ILj8I91j8eu3/oU6nyb5qkK+JT4x+yoIHQdJKHB4b5ykGD9Im1AFIItgLoDL+MQzIvbdcBXLGX4Zk6HL9fdhpvqQnq0REOekb1p+qpgqOU+RlBMWYfl+MiEI0VaQLIjRSlv19LEKYT5hgJb9vyM6+umnGpZkQKsf15JSQqvCP+jepzt92tCfhHs4UD2TwhdxtAvmSQMA7DLPx94QQcY8Yj3KhUZXfgs0lt6vXm7agQ4Ko1P0Sl918Y8sc81X1IRoDJkjSbT80Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=24S8psTVHqqBbhHfGYhFVnKM10qZ+eBX1GHNImRCEvU=;
- b=U2ACZIuzDVGt21vklZgNnd3r5ZQuJMGkw3ISnApxc75/oEG6J5lZmFDvIm8J6nQZ8XQ5ZQ2XmkMOV+ttXCyjD40ATX1JrucGTTZUddFBqCRc6eIsp5rmYczSqWiLsPPJnb1b7/n/2Rs95nyjwtleXY1NNp04KCQg9ObBZ/aD6TVfJCGWVK/lU+y+WOysE8D6b8epnB/KpYqPcY+fFikaP0Y+WRSIrWYT207JiEGHMXB+Mar3Z6y/cPmhZSzuBi8zPwPzSwOQcIn3+0oIJdAsWwrty5aTR7XG32uds1ampI6dqgaEAXFWz3/Y9usqQjM0PqPJyx0bKWrVo5BoRw6h5g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=24S8psTVHqqBbhHfGYhFVnKM10qZ+eBX1GHNImRCEvU=;
- b=fg+b8W/uzSLT9oJZZ2KLQ2m9X6fEacHS/P+gyspPddyj0KTib1e6wlgh+akJd95fKKg7CpR+O+7mfh/6BdYbOp+NjOT1p5IUwpM9tt/ZQp3ozSzicfAOO1Glio8/efNDCDyVncC/UY3dq3Bl4TJYts6/CKXEzX/TqUMty82U5ls=
-Received: from BN6PR11MB3985.namprd11.prod.outlook.com (2603:10b6:405:7b::14)
- by BN6PR11MB1601.namprd11.prod.outlook.com (2603:10b6:405:f::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2793.16; Sat, 7 Mar
- 2020 08:55:34 +0000
-Received: from BN6PR11MB3985.namprd11.prod.outlook.com
- ([fe80::a0be:9e7c:714e:e2bd]) by BN6PR11MB3985.namprd11.prod.outlook.com
- ([fe80::a0be:9e7c:714e:e2bd%6]) with mapi id 15.20.2793.013; Sat, 7 Mar 2020
- 08:55:34 +0000
-From: <Ajay.Kathat@microchip.com>
-To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH v2 3/3] staging: wilc1000: updated DT binding documentation
-Thread-Topic: [PATCH v2 3/3] staging: wilc1000: updated DT binding
- documentation
-Thread-Index: AQHV9F4oPSSY0EoaMU6tcS6RM9avyw==
-Date: Sat, 7 Mar 2020 08:55:32 +0000
-Message-ID: <20200307085523.7320-4-ajay.kathat@microchip.com>
-References: <20200307085523.7320-1-ajay.kathat@microchip.com>
-In-Reply-To: <20200307085523.7320-1-ajay.kathat@microchip.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: git-send-email 2.17.1
-x-originating-ip: [49.205.217.30]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: a7c1167d-7205-46ba-48a4-08d7c2754c1c
-x-ms-traffictypediagnostic: BN6PR11MB1601:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BN6PR11MB16014A17676CABCFF619D2C4E3E00@BN6PR11MB1601.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7219;
-x-forefront-prvs: 03355EE97E
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(376002)(366004)(346002)(396003)(136003)(39860400002)(199004)(189003)(76116006)(66446008)(66946007)(91956017)(66556008)(966005)(5660300002)(64756008)(66476007)(36756003)(71200400001)(478600001)(6486002)(6506007)(2616005)(54906003)(4326008)(26005)(107886003)(86362001)(316002)(6512007)(1076003)(81156014)(81166006)(8936002)(186003)(6916009)(2906002)(8676002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR11MB1601;
- H:BN6PR11MB3985.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: bd4H5xCuEQm7ypHYPt3zJzThVJAMXDCm8EQ4FmcLUdMginlMWoiq9NXXJLP3Mf+Nae496U41XqA51KsXuUsmtBmJsCkmCSeXVKpQS4JrxPNVbbkCkZTbY7DHmhIS0Qf1EjIGNzBqjiDwKnYCi2zufdid+YLFrxnW6b3Khc2udSuVotAQq8lVk+luZnbdfLwJq1SxMypicKcvjTGPtZvMxmFfx5SGQFXdFmsGpGqDtElHeMFqgJ1PubZUMcL6pZoACzLp2SpptPiJ3LF3wkcyyNOw2IyKbbO0FpRBPL6DDVAIcSRAwEsdbXHNh+DkiM7wAKMoPH33Y00HJ4lgP4AlRRcd0dMUC1JCAPYiLBBChBQTiu8uKuMvRt1kZ52glSK7IsIpVlM5Zq6xjktvAdhmBB12JcyH02NbV9TmMi8uCtiEHFwSpDU3H144DG85IFirmADuCR9I29mJ1j+EmjDiEPewGN0EW49yyeBOU+YJYYtICv2ulAoETQ+A0y/vb8PC
-x-ms-exchange-antispam-messagedata: xoZsV/xnJ/JtTFm7HMbu7c7ruZrIqpsTgd1pJ3mIfZ/FFF1RE7AMlzulyZhwGl8EZZoq+EyHrseXTPEoSSzjYgHzpV2xB5rsRKSj9T2izYWCk48+Yh1F/Bv5c/hnrG9iH+CzhCLY9znbSjTqBS+jTg==
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 33AEF85640
+ for <devel@driverdev.osuosl.org>; Sat,  7 Mar 2020 10:50:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1583578227;
+ bh=m/2yOii9GTOFmXitzlRFIRYOK4ogqrwhgzd5gIHiD2c=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=CrlEqLGfTluS781kQikcgSfuMNXwVTycxpScN4ET7vkgVn/zRuKQdx9C6XiCjPgpF
+ OXN0MTEGOB3qMSsTVy2jBnA0Xh9HZcWW9+dajJX0QmMYsksVQtk9urCxoRnq3NQScz
+ aUS3P/ymbRzuLweRDE8UiHlB0rrS2PUjWo0opWUc=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
+ (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
+ 1MZTqW-1ioxbJ1T0A-00WY6y; Sat, 07 Mar 2020 11:50:27 +0100
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: vt6656: Use BIT_ULL() macro instead of bit shift
+ operation
+Date: Sat,  7 Mar 2020 11:49:29 +0100
+Message-Id: <20200307104929.7710-1-oscar.carter@gmx.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: a7c1167d-7205-46ba-48a4-08d7c2754c1c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Mar 2020 08:55:32.9224 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: qeySmvmeO/aJwDCflgc6+gLSUHsaMmC3FhqA1ZShmt5XZ7hKFGgm8Kaa7U7ywGVkBrU5yPTKHfX9nw5aci23n2WPjBodvrU7megsof52jOQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1601
+X-Provags-ID: V03:K1:jWIm+lfcudgmy2y27XLt/W6/L36/oomYEd3rwqai1CelUY23z3h
+ C57pIPeR6zLhm8xl1G1W8aZDffT4bY7dYSb3ANGBbO0BX0R2mlIp2JHW5P9u1w5vw4Bu1W/
+ ggH112BFIFhQNd+vDjFQtuE5+i5A718+WfPPe6OYRIbnNXsOndB/RmG8UJy6j75dTleh3+P
+ ZxRutwIYi3KgJPcW8z7QA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zF6BmCqcQmc=:iJO98o1L7n/lsy2XwjsOw5
+ nBS15YSBF0xJwAFdU/3m+GAhnmLuWhHxGVo8Uk6Z3aEZo9iULEHfhzo03kBzsPugMCnr5XKEv
+ gxGKvcJuU7yxuv4nABCBwdlMqQLueMq5/zLcT8zPMNtzatbu4Riby3gm/iHHgvcs/TZ2cnkd4
+ UaV3HeSlrq6dvgrp3bsSpAceJ/J7y0IAbhxQXgReFYZGFXaezVKZqVFVPsUDT0m6MaN8e6/H/
+ nf/OulJdjaJHJ6wr1h0QXsXSYwjJlzo9jqS2MpcKuIZ/qs9RymPcel+Vi2o2G4C0csvkVb/s8
+ DUXyRWnDCcFubEbZ5I8Op/rAWzpgnjv9+e64GZGTATtChhA2ngQHv4+HrIq2000FgRE016iQR
+ ziQ/5MbdSCKejawrh1x4Z1djiy3UMN7F+N/uptmAyAEyBuTqd3TSlz4SyI7075MUjEV52wDPx
+ WAiQwetlTlVz12u/NBOPxjLeN2ETbxuzbAwlRduDt+VxHweyBL8GytoS9v57zhyLvCiRC/ged
+ 5ZKv8eRiBIqj3NkKSJoQKa4HC1Kr5Hx0S6EB8f2F8IYBZfhvZn1rrjq1LJv1lxznk0f3x/VgS
+ ORZDULM+iEXbORPn1ntY4RhJBBTbgiars0V2kZu2iq0bf5UQ5azacrPCOXOxD1f/xEUTW/Sh5
+ bdh10eqUSt4fPyZMGWDBdCJ1aS+qN7J/VSX/PDqf+uL2nzGP/ShJjCfDeUGDM6GDHygefr16w
+ +7ENfqJwNlAIxMts+uIlj4haa5zEXC4AaBzjKFUEOqGnQUw0VPXUw+9Tdju6WcAKvYgtcLFhx
+ AO8437daahzDzpizmWKo26yW6Pph0LJJ1mD60q/lzsu9lRJqhek6hRpvQUwCELPlIcC+jyrSq
+ qDkQmENt4qmKiPltFEF7okzZDNMnMSy33lelQMkp23Vqm4UcWsG+AoMVtuFqHsJZdiEVBSGle
+ dQtsE8B4P7VYdwOHCN2IXhdOpco8sMROqe2G9SDfbf3E0jptrGO4EdJA2SP4HoK9VAf4IyPaP
+ 90LjOPmxHRmGNToubNPB1py9e09WxPISPgkMelSdH7OXHPEESiAXhTqvO31R6CZU64BatHAp5
+ dzxiO/NghwFcaQXZZO+ThxPzHw9odTEWA5t21gsBOpAz1mx6vHRVtz/j4FzEF4l1X379xJNPB
+ gnYKF0r8Fc2Zc/AZuzTvc4+T0YrLxzuvOFNuXtlVUiLFZXXtOlYiaU+d7kyYi9M45tBMOOkHb
+ nSeR96LgmWy1uwV5h
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -150,254 +86,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Ajay.Kathat@microchip.com, robh@kernel.org, gregkh@linuxfoundation.org,
- Adham.Abozaeid@microchip.com, johannes@sipsolutions.net
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
+ Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Ajay Singh <ajay.kathat@microchip.com>
+Replace the bit left shift operation with the BIT_ULL() macro and remove
+the unnecessary "and" operation against the bit_nr variable.
 
-Merged the DT binding documentation of SDIO and SPI into a single file.
-Removed documentation for some of the properties which are not required
-and handled review comments received in [1] & [2].
-
-[1]. https://lore.kernel.org/linux-wireless/20200303020230.GA15543@bogus
-[2]. https://lore.kernel.org/linux-wireless/20200303015558.GA6876@bogus
-
-Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
+Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 ---
- .../wilc1000/microchip,wilc1000,sdio.yaml     | 68 ------------------
- .../wilc1000/microchip,wilc1000,spi.yaml      | 61 ----------------
- .../staging/wilc1000/microchip,wilc1000.yaml  | 72 +++++++++++++++++++
- 3 files changed, 72 insertions(+), 129 deletions(-)
- delete mode 100644 drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml
- delete mode 100644 drivers/staging/wilc1000/microchip,wilc1000,spi.yaml
- create mode 100644 drivers/staging/wilc1000/microchip,wilc1000.yaml
+ drivers/staging/vt6656/main_usb.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml b/drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml
-deleted file mode 100644
-index b338f569f7e2..000000000000
---- a/drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml
-+++ /dev/null
-@@ -1,68 +0,0 @@
--# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
--%YAML 1.2
-----
--$id: http://devicetree.org/schemas/net/wireless/microchip,wilc1000,sdio.yaml#
--$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index 5e48b3ddb94c..f7ca9e97594d 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -21,6 +21,7 @@
+  */
+ #undef __NO_VERSION__
+
++#include <linux/bits.h>
+ #include <linux/etherdevice.h>
+ #include <linux/file.h>
+ #include "device.h"
+@@ -802,8 +803,7 @@ static u64 vnt_prepare_multicast(struct ieee80211_hw *hw,
+
+ 	netdev_hw_addr_list_for_each(ha, mc_list) {
+ 		bit_nr = ether_crc(ETH_ALEN, ha->addr) >> 26;
 -
--title: Microchip WILC wireless SDIO devicetree bindings
--
--maintainers:
--  - Adham Abozaeid <adham.abozaeid@microchip.com>
--  - Ajay Singh <ajay.kathat@microchip.com>
--
--description:
--  The wilc1000 chips can be connected via SDIO. The node is used to
--  specify child node to the SDIO controller that connects the device
--  to the system.
--
--properties:
--  compatible:
--    const: microchip,wilc1000-sdio
--
--  irq-gpios:
--    description: The GPIO phandle connect to a host IRQ.
--    maxItems: 1
--
--  reg:
--    description: Slot ID used in the controller.
--    maxItems: 1
--
--  clocks:
--    description: phandle to the clock connected on rtc clock line.
--    maxItems: 1
--
--  bus-width:
--    description: The number of data lines wired up the slot.
--    allOf:
--      - $ref: /schemas/types.yaml#/definitions/uint32
--      - enum: [1, 4, 8]
--      - default: 1
--
--required:
--  - compatible
--  - irq-gpios
--  - reg
--
--examples:
--  - |
--    mmc1: mmc@fc000000 {
--      #address-cells = <1>;
--      #size-cells = <0>;
--      pinctrl-names = "default";
--      pinctrl-0 = <&pinctrl_mmc1_clk_cmd_dat0 &pinctrl_mmc1_dat1_3>;
--      non-removable;
--      vmmc-supply = <&vcc_mmc1_reg>;
--      vqmmc-supply = <&vcc_3v3_reg>;
--      status = "okay";
--      wilc_sdio@0 {
--        compatible = "microchip,wilc1000-sdio";
--          irq-gpios = <&pioC 27 0>;
--          reg = <0>;
--          clocks = <&pck1>;
--          clock-names = "rtc_clk";
--          assigned-clocks = <&pck1>;
--          assigned-clock-rates = <32768>;
--          status = "okay";
--          bus-width = <4>;
--        };
--    };
-diff --git a/drivers/staging/wilc1000/microchip,wilc1000,spi.yaml b/drivers/staging/wilc1000/microchip,wilc1000,spi.yaml
-deleted file mode 100644
-index cc8ed64ce627..000000000000
---- a/drivers/staging/wilc1000/microchip,wilc1000,spi.yaml
-+++ /dev/null
-@@ -1,61 +0,0 @@
--# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
--%YAML 1.2
-----
--$id: http://devicetree.org/schemas/net/wireless/microchip,wilc1000,spi.yaml#
--$schema: http://devicetree.org/meta-schemas/core.yaml#
--
--title: Microchip WILC wireless SPI devicetree bindings
--
--maintainers:
--  - Adham Abozaeid <adham.abozaeid@microchip.com>
--  - Ajay Singh <ajay.kathat@microchip.com>
--
--description:
--  The wilc1000 chips can be connected via SPI. This document describes
--  the binding for the SPI connected module.
--
--properties:
--  compatible:
--    const: microchip,wilc1000-spi
--
--  spi-max-frequency:
--    description: Maximum SPI clocking speed of device in Hz.
--    maxItems: 1
--
--  reg:
--    description: Chip select address of device.
--    maxItems: 1
--
--  irq-gpios:
--    description: The GPIO phandle connect to a host IRQ.
--    maxItems: 1
--
--  clocks:
--    description: phandle to the clock connected on rtc clock line.
--    maxItems: 1
--
--required:
--  - compatible
--  - spi-max-frequency
--  - reg
--  - irq-gpios
--
--examples:
--  - |
--    spi1: spi@fc018000 {
--      #address-cells = <1>;
--      #size-cells = <0>;
--      cs-gpios = <&pioB 21 0>;
--      status = "okay";
--      wilc_spi@0 {
--        compatible = "microchip,wilc1000-spi";
--        spi-max-frequency = <48000000>;
--        reg = <0>;
--        irq-gpios = <&pioC 27 0>;
--        clocks = <&pck1>;
--        clock-names = "rtc_clk";
--        assigned-clocks = <&pck1>;
--        assigned-clock-rates = <32768>;
--        status = "okay";
--      };
--    };
-diff --git a/drivers/staging/wilc1000/microchip,wilc1000.yaml b/drivers/staging/wilc1000/microchip,wilc1000.yaml
-new file mode 100644
-index 000000000000..bc6cc5d3f347
---- /dev/null
-+++ b/drivers/staging/wilc1000/microchip,wilc1000.yaml
-@@ -0,0 +1,72 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/wireless/microchip,wilc1000.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Microchip WILC wireless devicetree bindings
-+
-+maintainers:
-+  - Adham Abozaeid <adham.abozaeid@microchip.com>
-+  - Ajay Singh <ajay.kathat@microchip.com>
-+
-+description:
-+  The wilc1000 chips can be connected via SPI or SDIO. This document
-+  describes the binding to connect wilc devices.
-+
-+properties:
-+  compatible:
-+    const: microchip,wilc1000
-+
-+  spi-max-frequency: true
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    description: phandle to the clock connected on rtc clock line.
-+    maxItems: 1
-+
-+  clock-names:
-+    const: rtc
-+
-+required:
-+  - compatible
-+  - interrupts
-+
-+examples:
-+  - |
-+    spi1: spi@fc018000 {
-+      #address-cells = <1>;
-+      #size-cells = <0>;
-+      cs-gpios = <&pioB 21 0>;
-+      wifi@0 {
-+        compatible = "microchip,wilc1000";
-+        spi-max-frequency = <48000000>;
-+        reg = <0>;
-+        interrupt-parent = <&pioC>;
-+        interrupts = <27 0>;
-+        clocks = <&pck1>;
-+        clock-names = "rtc";
-+      };
-+    };
-+
-+  - |
-+    mmc1: mmc@fc000000 {
-+      #address-cells = <1>;
-+      #size-cells = <0>;
-+      pinctrl-names = "default";
-+      pinctrl-0 = <&pinctrl_mmc1_clk_cmd_dat0 &pinctrl_mmc1_dat1_3>;
-+      non-removable;
-+      vmmc-supply = <&vcc_mmc1_reg>;
-+      vqmmc-supply = <&vcc_3v3_reg>;
-+      bus-width = <4>;
-+      wifi@0 {
-+        compatible = "microchip,wilc1000";
-+        reg = <0>;
-+        interrupt-parent = <&pioC>;
-+        interrupts = <27 0>;
-+        clocks = <&pck1>;
-+        clock-names = "rtc";
-+      };
-+    };
--- 
-2.24.0
+-		mc_filter |= 1ULL << (bit_nr & 0x3f);
++		mc_filter |= BIT_ULL(bit_nr);
+ 	}
+
+ 	priv->mc_list_count = mc_list->count;
+--
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
