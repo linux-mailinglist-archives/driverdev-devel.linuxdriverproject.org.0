@@ -1,67 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7231017C1E9
-	for <lists+driverdev-devel@lfdr.de>; Fri,  6 Mar 2020 16:35:37 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 171FC17CCD6
+	for <lists+driverdev-devel@lfdr.de>; Sat,  7 Mar 2020 09:29:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 613E188367;
-	Fri,  6 Mar 2020 15:35:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CDB5520419;
+	Sat,  7 Mar 2020 08:29:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id su6fhr9D3VyV; Fri,  6 Mar 2020 15:35:34 +0000 (UTC)
+	with ESMTP id J75Gms02yns2; Sat,  7 Mar 2020 08:29:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9FDBF88350;
-	Fri,  6 Mar 2020 15:35:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 930D62034C;
+	Sat,  7 Mar 2020 08:29:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 088DB1BF341
- for <devel@linuxdriverproject.org>; Fri,  6 Mar 2020 15:35:31 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 436701BF2BF
+ for <devel@linuxdriverproject.org>; Sat,  7 Mar 2020 08:29:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 045FC876FB
- for <devel@linuxdriverproject.org>; Fri,  6 Mar 2020 15:35:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3EBEC20356
+ for <devel@linuxdriverproject.org>; Sat,  7 Mar 2020 08:29:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id esYSzMaTDfoN for <devel@linuxdriverproject.org>;
- Fri,  6 Mar 2020 15:35:30 +0000 (UTC)
+ with ESMTP id 17Ok2wPRRLkp for <devel@linuxdriverproject.org>;
+ Sat,  7 Mar 2020 08:29:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 564A88766A
- for <devel@driverdev.osuosl.org>; Fri,  6 Mar 2020 15:35:30 +0000 (UTC)
-Received: from mail-qv1-f47.google.com (mail-qv1-f47.google.com
- [209.85.219.47])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0DB3C2073B
- for <devel@driverdev.osuosl.org>; Fri,  6 Mar 2020 15:35:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583508930;
- bh=iNFqdKLv+eRvs3H2Mi3RchCyVRMkK9tatJ+t/BU07yk=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=iRtX8L9N2ARyt/i4JwDyOinTaKffwSoBdwG2XQievED77xfIsOBUuRbLWg5OznX6Z
- HbgZqkv0uPQ1LlDHbTLY+oID44WU8dj4nvhopLhTynSYXRqnpITMsdGBw4eKOPbzJZ
- TAJk/vvYcGjz4r2UZqPNbtrwahqJZjCJ2VgoC9u8=
-Received: by mail-qv1-f47.google.com with SMTP id du17so507787qvb.12
- for <devel@driverdev.osuosl.org>; Fri, 06 Mar 2020 07:35:30 -0800 (PST)
-X-Gm-Message-State: ANhLgQ0F+GqDfH/nAoUbuyeXVRBoSCRUDB/ryrgHbYGKJ+an6BnFoB6d
- 0RFec0LBtB4TraszLwYSNKghA4/lPuj3FitoVQ==
-X-Google-Smtp-Source: ADFU+vuhZOwle3B1BdZhiJMPa1o4Ows241SJR8YEgkbTjVTAQFPyg8WmNmCIyOgO1eykQ9B8gJHEPH/0gdrGV5yipJg=
-X-Received: by 2002:ad4:4593:: with SMTP id x19mr3274776qvu.79.1583508929178; 
- Fri, 06 Mar 2020 07:35:29 -0800 (PST)
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
+ by silver.osuosl.org (Postfix) with ESMTPS id 58AA02034C
+ for <devel@driverdev.osuosl.org>; Sat,  7 Mar 2020 08:29:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1583569763;
+ bh=h79C+D9/EzcE+etbcbZdLaCiNxPE5dspkTyds0Z1D14=;
+ h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=Cmfk0Dxr0eO5wFGCFqKBoT264bq+7WbFiB/B7ewBbTVA5VkXU3L8QD4W62qXxHRMh
+ DHkdLH5VBh9iIG0ssxXinGvo5wZEzZaBqp8r6XvK/olKFS/tCK71xdPfyqU7wwjacZ
+ tyu3hfj078NEUnY8GTMmjpHJWaM7nOums7w4v7iI=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx105
+ [212.227.17.174]) with ESMTPSA (Nemesis) id 1Mlf4c-1jaVyi3cwM-00iixk; Sat, 07
+ Mar 2020 09:29:23 +0100
+Date: Sat, 7 Mar 2020 09:29:06 +0100
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: vt6656: Declare a few variables as __read_mostly
+Message-ID: <20200307082906.GA2948@ubuntu>
+References: <20200301112620.7892-1-oscar.carter@gmx.com>
+ <20200301122514.GA1461917@kroah.com> <20200301131701.GA7487@ubuntu>
+ <20200301150913.GA1470815@kroah.com>
 MIME-Version: 1.0
-References: <20200306144400.4269-1-ajay.kathat@microchip.com>
- <20200306144400.4269-2-ajay.kathat@microchip.com>
-In-Reply-To: <20200306144400.4269-2-ajay.kathat@microchip.com>
-From: Rob Herring <robh@kernel.org>
-Date: Fri, 6 Mar 2020 09:35:13 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqKP-9bBMpkvMfphyAfdeVd44=pYDSOY=fSsx5xYkJPCjA@mail.gmail.com>
-Message-ID: <CAL_JsqKP-9bBMpkvMfphyAfdeVd44=pYDSOY=fSsx5xYkJPCjA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] staging: wilc1000: use 'interrupts' property instead
- of 'irq-gpio'
-To: Ajay.Kathat@microchip.com
+Content-Disposition: inline
+In-Reply-To: <20200301150913.GA1470815@kroah.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Provags-ID: V03:K1:/AbFBE0f0Zp6NqvRYmi/sHN078hyV83hTiMzs2AAgg1PNV/aoct
+ SHvt/qID4eDmdTU1LS0/w7sHSKXUi2nxKLdi8Vu9Cy+nGT/2KsmP3Wlo7EJPGd00Il3HtHO
+ 3YfIpUmqfnrMbIeWroX+fWlEzMu9fhfCq2rsYaS3yediHnoRj14g6SPzciLxij6d4/F0qCz
+ oNU82aIlLKA2NfGqv61OQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:MNFbH05vUpg=:0e7OB0RPcLe5GHyg0KXodm
+ wEU1MNmm2cozk5fuk47ptom9QD3bvKlQdDVdp3Vah0issdUV8VUlQpzy+A+WRG1iO8vIDuuoQ
+ biNOb6h0C66uF2yibEqzZsZKDi1O95PTRKcajRchzbQkM22DyVy60A4F9JJbxEVXiyks2j+wi
+ O2ouYM8EtHKqt/JuO+85dLDH6EZKHAhdNV0sVzcQl8QVR6JIT2NBIvbmQJt2BXVdA4kFn2BgP
+ EbwZbWENuPEahVxv89QAzJDHL/7h1zdoZYQ/5MeaB3gfPyObpydZzP3fd4G7Wivqh0slP7cHo
+ 9kl4C3qG7inzIy4GrB5RI6MNUK4S8LcanN9ypjBiA8ZpHqonSNlHF2O+a7aWjZOg1hFWQylSs
+ UBzAltiZ4DLfsSNrjdr5lPTfoU5XAN8GSzfmE592H570vHfMfmzMwS8np2owRC/ts+k+zJYq8
+ Ju3V+SiRgyK7rRpPqXSBEQ963KoMZ8VDhOx5BnbI4tmficlKF7F50rVgkKIGXiSrWlYwtpsdK
+ l8peJKwFNnj2cWCdDCwZu7fD+qR8V6xPS0FIcKHRfUEkT3yNw/lStK4Mix+aKjGN6rVUOAbj/
+ xeqo/Jx0Jo2uBwoGJxrGyPK4ncvOTfpqwVzJ20i6x/qTyTLfQr7pfkI+h3LdgjDSYufosVRZz
+ al9VlXAjldteorzdUYRtVVoBsU95LxrJp5a3RPcK65sb/K//VWINySOo4DFl8iyciSDGohERN
+ Vm390r0wS4T0/w2oZXwM9cLmHBQfmF/u+Q+XiG/yG/u41N1tnbiGctnRrwUdUw7iHt5LMDxNk
+ 60Tuz2Tb/J44u5qowXWwLqYCiKYSAuD+9jM9ChLAYDkXEqw5AAaikW8HGeoUKzoevFgXZu0NU
+ oK7AhcSsEOPgVAihwbrbhjZEbGUOw52FNh/ap04UbvEr+iLH1XflC3/tLzdIfVguPQxr0W+ER
+ 1FV+t/OyYyPqa80bmVpC8Er884btTCDl7qeFpS96GxrZkLUzrCapWEWV4bl/zXbWkEiAaSMSx
+ ZLpmcCnXoaFsoq+GYiQsmybhWwoS9DJe9yitsRODq+x/qnI5DCpBwf8jzEEhOS5en+kBrOIYy
+ b++WAPjU5z8SHmPUX2R9mecOmefbKuBsBsanhMBz/BBqkXJziUkaIaGTSyBM7fsG1hVUsipXk
+ TjpmjxIdruGmEb8Ie+Sdz+zRiCviS03XvSryRInavZd0Hi4diW9MXILfX5IkUcO754iQU3jbG
+ ETstdqqYPSsVHCIq6
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,141 +89,73 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless <linux-wireless@vger.kernel.org>, Adham.Abozaeid@microchip.com,
- Johannes Berg <johannes@sipsolutions.net>
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
+ Forest Bond <forest@alittletooquiet.net>,
+ Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Mar 6, 2020 at 8:44 AM <Ajay.Kathat@microchip.com> wrote:
+On Sun, Mar 01, 2020 at 04:09:13PM +0100, Greg Kroah-Hartman wrote:
+> On Sun, Mar 01, 2020 at 02:17:01PM +0100, Oscar Carter wrote:
+> > On Sun, Mar 01, 2020 at 01:25:14PM +0100, Greg Kroah-Hartman wrote:
+> > > On Sun, Mar 01, 2020 at 12:26:20PM +0100, Oscar Carter wrote:
+> > > > These include module parameters.
+> > > >
+> > > > Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+> > > > ---
+> > > >  drivers/staging/vt6656/main_usb.c | 4 ++--
+> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > >
+> > > > diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+> > > > index 5e48b3ddb94c..701300202b21 100644
+> > > > --- a/drivers/staging/vt6656/main_usb.c
+> > > > +++ b/drivers/staging/vt6656/main_usb.c
+> > > > @@ -49,12 +49,12 @@ MODULE_LICENSE("GPL");
+> > > >  MODULE_DESCRIPTION(DEVICE_FULL_DRV_NAM);
+> > > >
+> > > >  #define RX_DESC_DEF0 64
+> > > > -static int vnt_rx_buffers = RX_DESC_DEF0;
+> > > > +static int __read_mostly vnt_rx_buffers = RX_DESC_DEF0;
+> > > >  module_param_named(rx_buffers, vnt_rx_buffers, int, 0644);
+> > > >  MODULE_PARM_DESC(rx_buffers, "Number of receive usb rx buffers");
+> > > >
+> > > >  #define TX_DESC_DEF0 64
+> > > > -static int vnt_tx_buffers = TX_DESC_DEF0;
+> > > > +static int __read_mostly vnt_tx_buffers = TX_DESC_DEF0;
+> > > >  module_param_named(tx_buffers, vnt_tx_buffers, int, 0644);
+> > > >  MODULE_PARM_DESC(tx_buffers, "Number of receive usb tx buffers");
+> > > >
+> > >
+> > > Why?  What does this help with?
+> >
+> > If we declare these variables __read_mostly we can improve the performance. If
+> > these variables are read many more times than written, each core of a multicore
+> > system can maintain a copy in a local cache and the time to access is less than
+> > if they use the shared-cache.
 >
-> From: Ajay Singh <ajay.kathat@microchip.com>
+> This is a USB driver, performance is always limited to the hardware, not
+> the CPU location of variables.
+
+Thank you for the explanation.
+
 >
-> Make use of 'interrupts' property instead of using gpio for handling
-> the interrupt as suggested in [1].
+> Please always benchmark things to see if it actually makes sense to make
+> changes like this, before proposing them.
+
+I'm sorry.
+
 >
-> [1]. https://lore.kernel.org/linux-wireless/20200303015558.GA6876@bogus/
+> thanks,
 >
-> Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
-> ---
->  .../net/wireless/microchip,wilc1000.yaml      | 79 +++++++++++++++++++
->  .../wilc1000/microchip,wilc1000,sdio.yaml     |  8 +-
->  .../wilc1000/microchip,wilc1000,spi.yaml      |  8 +-
+> greg k-h
 
-Bindings should be a separate patch.
+thanks,
 
->  drivers/staging/wilc1000/netdev.c             | 24 ++----
->  drivers/staging/wilc1000/netdev.h             |  1 -
->  drivers/staging/wilc1000/sdio.c               | 31 +++-----
->  drivers/staging/wilc1000/spi.c                | 15 +---
->  drivers/staging/wilc1000/wlan.h               |  1 -
->  8 files changed, 108 insertions(+), 59 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/net/wireless/microchip,wilc1000.yaml
->
-> diff --git a/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000.yaml b/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000.yaml
-> new file mode 100644
-> index 000000000000..a1914449ad07
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/wireless/microchip,wilc1000.yaml
-> @@ -0,0 +1,79 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/wireless/microchip,wilc1000.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Microchip WILC wireless devicetree bindings
-> +
-> +maintainers:
-> +  - Adham Abozaeid <adham.abozaeid@microchip.com>
-> +  - Ajay Singh <ajay.kathat@microchip.com>
-> +
-> +description:
-> +  The wilc1000 chips can be connected via SPI or SDIO. This document
-> +  describes the binding to connect wilc devices.
-> +
-> +properties:
-> +  compatible:
-> +    const: microchip,wilc1000
-> +
-> +  spi-max-frequency:
-> +    description: Maximum SPI clocking speed of device in Hz.
-> +    maxItems: 1
-
-No need to redefine a common property. Just:
-
-spi-max-frequency: true
-
-> +
-> +  reg:
-> +    description: Chip select address of device.
-
-Drop this.
-
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    description: phandle to the clock connected on rtc clock line.
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    const: rtc
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +
-> +examples:
-> +  - |
-> +    spi1: spi@fc018000 {
-> +      #address-cells = <1>;
-> +      #size-cells = <0>;
-> +      cs-gpios = <&pioB 21 0>;
-> +      wifi@0 {
-> +        compatible = "microchip,wilc1000";
-> +        spi-max-frequency = <48000000>;
-> +        reg = <0>;
-> +        interrupt-parent = <&pioC>;
-> +        interrupts = <27 0>;
-> +        clocks = <&pck1>;
-> +        clock-names = "rtc";
-> +      };
-> +    };
-> +
-> +  - |
-> +    mmc1: mmc@fc000000 {
-> +      #address-cells = <1>;
-> +      #size-cells = <0>;
-> +      pinctrl-names = "default";
-> +      pinctrl-0 = <&pinctrl_mmc1_clk_cmd_dat0 &pinctrl_mmc1_dat1_3>;
-> +      non-removable;
-> +      vmmc-supply = <&vcc_mmc1_reg>;
-> +      vqmmc-supply = <&vcc_3v3_reg>;
-> +      bus-width = <4>;
-> +      wifi@0 {
-> +        compatible = "microchip,wilc1000";
-> +        reg = <0>;
-> +        interrupt-parent = <&pioC>;
-> +        interrupts = <27 0>;
-> +        clocks = <&pck1>;
-> +        clock-names = "rtc";
-> +      };
-> +    };
-> diff --git a/drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml b/drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml
-> index b338f569f7e2..9df7327bc668 100644
-> --- a/drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml
-> +++ b/drivers/staging/wilc1000/microchip,wilc1000,sdio.yaml
-
-Why aren't you just removing this file and the spi one?
-
-Rob
+Oscar
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
