@@ -1,48 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCA0117D582
-	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Mar 2020 19:25:05 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83DF817D58A
+	for <lists+driverdev-devel@lfdr.de>; Sun,  8 Mar 2020 19:29:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C533087061;
-	Sun,  8 Mar 2020 18:25:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3B24188611;
+	Sun,  8 Mar 2020 18:29:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id spDz_-eakidh; Sun,  8 Mar 2020 18:25:03 +0000 (UTC)
+	with ESMTP id OcsqkLJOmdCA; Sun,  8 Mar 2020 18:29:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B7C8E86A9D;
-	Sun,  8 Mar 2020 18:25:02 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2ACB5885A0;
+	Sun,  8 Mar 2020 18:29:37 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 20E691BF36E
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  8 Mar 2020 18:25:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 457D81BF36E
+ for <devel@linuxdriverproject.org>; Sun,  8 Mar 2020 18:29:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1B39A881AB;
- Sun,  8 Mar 2020 18:25:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3FEC1884B2
+ for <devel@linuxdriverproject.org>; Sun,  8 Mar 2020 18:29:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ts9YMoVKZ95H; Sun,  8 Mar 2020 18:24:59 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id rfpuT4vfyTZA for <devel@linuxdriverproject.org>;
+ Sun,  8 Mar 2020 18:29:34 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from www752.sakura.ne.jp (www752.sakura.ne.jp [59.106.19.202])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6FDE78825E;
- Sun,  8 Mar 2020 18:24:59 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DB84C883F9
+ for <devel@linuxdriverproject.org>; Sun,  8 Mar 2020 18:29:33 +0000 (UTC)
 Received: from fsav110.sakura.ne.jp (fsav110.sakura.ne.jp [27.133.134.237])
- by www752.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 028Fr1tm061822;
- Mon, 9 Mar 2020 00:53:02 +0900 (JST)
+ by www752.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 028Fr1LR061808;
+ Mon, 9 Mar 2020 00:53:01 +0900 (JST)
  (envelope-from postmaster@hokusetubad.sakura.ne.jp)
 Received: from www752.sakura.ne.jp (59.106.19.202)
  by fsav110.sakura.ne.jp (F-Secure/fsigk_smtp/550/fsav110.sakura.ne.jp);
  Mon, 09 Mar 2020 00:53:01 +0900 (JST)
 X-Virus-Status: clean(F-Secure/fsigk_smtp/550/fsav110.sakura.ne.jp)
 Received: from www752.sakura.ne.jp (localhost [127.0.0.1])
- by www752.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 028Fr053061805;
- Mon, 9 Mar 2020 00:53:01 +0900 (JST)
+ by www752.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 028Fr04x061805;
+ Mon, 9 Mar 2020 00:53:00 +0900 (JST)
  (envelope-from postmaster@hokusetubad.sakura.ne.jp)
 Received: (from hokusetubad@localhost)
  by www752.sakura.ne.jp (8.15.2/8.15.2/Submit) id 028Fr0UG061804;
