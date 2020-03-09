@@ -1,54 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 924C417D9EB
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Mar 2020 08:35:59 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A91717DDB3
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Mar 2020 11:34:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 54B6524C10;
-	Mon,  9 Mar 2020 07:35:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8445C882D1;
+	Mon,  9 Mar 2020 10:34:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hvCbqr5nMADD; Mon,  9 Mar 2020 07:35:56 +0000 (UTC)
+	with ESMTP id Ct95komzxrgy; Mon,  9 Mar 2020 10:34:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 29B182042A;
-	Mon,  9 Mar 2020 07:35:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 79575868FF;
+	Mon,  9 Mar 2020 10:34:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5F2071BF3D9
- for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 07:35:53 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F19871BF46A
+ for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 10:34:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5C1C620431
- for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 07:35:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id EE90785A37
+ for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 10:34:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sTV0d-weQS4a for <devel@linuxdriverproject.org>;
- Mon,  9 Mar 2020 07:35:52 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail2-relais-roc.national.inria.fr
- (mail2-relais-roc.national.inria.fr [192.134.164.83])
- by silver.osuosl.org (Postfix) with ESMTPS id D97F02042A
- for <devel@driverdev.osuosl.org>; Mon,  9 Mar 2020 07:35:51 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.70,532,1574118000"; d="scan'208";a="439418215"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
- by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 09 Mar 2020 08:35:24 +0100
-Date: Mon, 9 Mar 2020 08:35:24 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Shreeya Patel <shreeya.patel23498@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Add space around
- operators
-In-Reply-To: <af1a27fb8c5f7efbaf99ce3055cf3801b366d627.camel@gmail.com>
-Message-ID: <alpine.DEB.2.21.2003090825280.2676@hadrien>
-References: <20200308220004.9960-1-shreeya.patel23498@gmail.com>
- <f1327099b774e141bbeaa8abc47f98b9c6d49264.camel@perches.com>
- <af1a27fb8c5f7efbaf99ce3055cf3801b366d627.camel@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ with ESMTP id XMaepuNoq971 for <devel@linuxdriverproject.org>;
+ Mon,  9 Mar 2020 10:34:09 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7FDCD85773
+ for <devel@driverdev.osuosl.org>; Mon,  9 Mar 2020 10:34:09 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id D1CE120409;
+ Mon,  9 Mar 2020 10:34:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1583750049;
+ bh=ao64/qUT1rpGZ/rmL662JsOeZdZMwEP42kkAUncoX0U=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=fTRL1IoAkzN1gScTp8yMTqKZx82AUvLN2Y2SHs3VFVdDIpyTmjRE6PRegArzgn4n4
+ FrOtd+gx+7+T2I2wRcSGYNfjkI8MFGx3kaNG/3p7QrpEqST/f77qisnzelynJ4T6LI
+ TfHRdPcxB2PIPAfrAhTfNPcpa3aMmKN86bzscuCI=
+Date: Mon, 9 Mar 2020 11:34:07 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+Subject: Re: [PATCH] staging: vt6656: Declare a few variables as __read_mostly
+Message-ID: <20200309103407.GB180589@kroah.com>
+References: <20200301112620.7892-1-oscar.carter@gmx.com>
+ <20200301122514.GA1461917@kroah.com> <20200301131701.GA7487@ubuntu>
+ <20200301150913.GA1470815@kroah.com> <20200307082906.GA2948@ubuntu>
+ <20200309093210.GA7693@qd-ubuntu>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200309093210.GA7693@qd-ubuntu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,98 +68,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, nramas@linux.microsoft.com,
- daniel.baluta@gmail.com, sbrivio@redhat.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, hverkuil@xs4all.nl,
- outreachy-kernel <outreachy-kernel@googlegroups.com>,
- Joe Perches <joe@perches.com>, Larry.Finger@lwfinger.net
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
+ Forest Bond <forest@alittletooquiet.net>,
+ Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 9 Mar 2020, Shreeya Patel wrote:
-
-> On Sun, 2020-03-08 at 16:05 -0700, Joe Perches wrote:
-> > On Mon, 2020-03-09 at 03:30 +0530, Shreeya Patel wrote:
-> > > Add space around operators for improving the code
-> > > readability.
-> >
-> > Hello again Shreeya.
-> >
-> I have some questions here...
->
-> > The subject isn't really quite appropriate as you
-> > are not doing this space around operator addition
-> > for the entire subsystem.
-> >
-> > IMO, the subject should be:
-> >
-> > [PATCH] staging: rtl8188eu: rtw_mlme: Add spaces around operators
-> >
-> > because you are only performing this change on this
-> > single file.
-> >
-> > If you were to do this for every single file in the
-> > subsystem, you could have many individual patches with
-> > the exact same subject line.
-> >
-> > And it would be good to show in the changelog that you
-> > have compiled the file pre and post patch without object
-> > code change.
-> >
-> I'm not sure how to show this. Do you mean to add the output of
-> "make drivers/staging/rtl8188eu/core" before and after the changes?
-
-You are working on one specific file, maybe foo.c.  Compile before
-making changes, which will give you foo.o.  Rename that file to something
-else.  Make your changes and compile again.  Do a diff with the previously
-compiled file.  It should produce nothing, indicating no difference.
-
-If this .o file doesn't change and you only changed this .c file, the
-whole compiled driver won't change either.
-
-> I also don't understand the meaning of no object code change. If we are
-> making the changes to code and then compiling it using the make command
-> then a new file with .o extension is created and replaced by the
-> previous one isn't it?
->
-> > Also, it's good to show that git diff -w shows no source
-> > file changes.
-> >
->
-> And this has to be...
-> git diff -w --shortstat drivers/staging/rtl8188eu/core/
-
---shortstat does not seem useful.  What you hope to see is that it
-produces nothing.
-
-julia
-
-> Am I correct?
->
-> Thanks
->
-> > > Reported by checkpatch.pl
+On Mon, Mar 09, 2020 at 09:32:10AM +0000, Quentin Deslandes wrote:
+> On Sat, Mar 07, 2020 at 09:29:06AM +0100, Oscar Carter wrote:
+> > On Sun, Mar 01, 2020 at 04:09:13PM +0100, Greg Kroah-Hartman wrote:
+> > > On Sun, Mar 01, 2020 at 02:17:01PM +0100, Oscar Carter wrote:
+> > > This is a USB driver, performance is always limited to the hardware, not
+> > > the CPU location of variables.
+> > 
+> > Thank you for the explanation.
+> > 
 > > >
-> > > Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
-> > > ---
-> > >  drivers/staging/rtl8188eu/core/rtw_mlme.c | 40 +++++++++++------
-> > > ------
-> > >  1 file changed, 20 insertions(+), 20 deletions(-)
-> >
-> > When I try this using checkpatch --fix-inplace, I get
-> > 21 changes against the latest -next tree.
-> >
-> > What tree are you doing this against?
-> >
-> >
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/af1a27fb8c5f7efbaf99ce3055cf3801b366d627.camel%40gmail.com.
->
+> > > Please always benchmark things to see if it actually makes sense to make
+> > > changes like this, before proposing them.
+> > 
+> > I'm sorry.
+> > 
+> 
+> I've been removed from CC list on Greg's answer, so I haven't seen the
+> explanation earlier and reviewed the patch the next day. I should have
+> know better, won't happen again.
+
+You weren't on the original list of people on the patch, so I didn't
+remove anything here that I can tell.
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
