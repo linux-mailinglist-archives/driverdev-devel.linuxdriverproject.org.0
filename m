@@ -1,110 +1,108 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9613817DE43
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Mar 2020 12:10:00 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id ABF1717DF7E
+	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Mar 2020 13:06:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3AF93888D3;
-	Mon,  9 Mar 2020 11:09:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C5DC286BC2;
+	Mon,  9 Mar 2020 12:06:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M2sBDqSJOr9a; Mon,  9 Mar 2020 11:09:57 +0000 (UTC)
+	with ESMTP id gwxqkjrPSmhn; Mon,  9 Mar 2020 12:06:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F118E888C8;
-	Mon,  9 Mar 2020 11:09:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9FEA8864AB;
+	Mon,  9 Mar 2020 12:06:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6C31F1BF3EA
- for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 11:09:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8F4D91BF372
+ for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 12:06:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 677DB20525
- for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 11:09:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8BD3687F83
+ for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 12:06:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1KTLNmS5TMST for <devel@linuxdriverproject.org>;
- Mon,  9 Mar 2020 11:09:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.134])
- by silver.osuosl.org (Postfix) with ESMTPS id C7BAB204F1
- for <devel@driverdev.osuosl.org>; Mon,  9 Mar 2020 11:09:51 +0000 (UTC)
-Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MNss4-1j0MB33BHc-00OKYg; Mon, 09 Mar 2020 12:09:33 +0100
-Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id AEACE650061;
- Mon,  9 Mar 2020 11:09:32 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at cetitec.com
-Received: from mail.cetitecgmbh.com ([127.0.0.1])
- by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
- [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EF_gs1Tv7aJJ; Mon,  9 Mar 2020 12:09:32 +0100 (CET)
-Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id 4495A64FD05;
- Mon,  9 Mar 2020 12:09:32 +0100 (CET)
-Received: from pflmari.corp.cetitec.com (10.10.2.141) by
- PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Mon, 9 Mar 2020 12:09:32 +0100
-Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id E1BA1804F8; Mon,  9 Mar 2020 12:09:31 +0100 (CET)
-Date: Mon, 9 Mar 2020 12:09:31 +0100
-From: Alex Riesen <alexander.riesen@cetitec.com>
-To: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-Subject: Re: [PATCH 8/8] arm64: dts: renesas: salvator: add a connection from
- adv748x codec (HDMI input) to the R-Car SoC
-Message-ID: <20200309110931.GB3593@pflmari>
-Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>,
- Driver Development <devel@driverdev.osuosl.org>,
- Linux Media <linux-media@vger.kernel.org>,
- Linux Kernel <linux-kernel@vger.kernel.org>,
- Device Tree <devicetree@vger.kernel.org>,
- Renesas SoC <linux-renesas-soc@vger.kernel.org>
-References: <CAMuHMdWobAE+y90DRi+zQadObWPxLyQiGNTe4t77O-2S1Vp5yA@mail.gmail.com>
- <20200302150706.GB3717@pflmari>
- <CAMuHMdW21rYXoOSE8azHNqYjng_j41rsL=Fo2bZc=1ULi9+pLw@mail.gmail.com>
- <20200302160906.GC3717@pflmari>
- <CAMuHMdVNGsVHyvAgC5dAHx=8Ax18EHx2tS6Hm5Bkg4ms=mW6Zw@mail.gmail.com>
- <20200305143628.GB25741@pflmari>
- <20200306131632.GA4878@pendragon.ideasonboard.com>
- <20200306134154.GD27714@pflmari>
- <20200306134546.GE4878@pendragon.ideasonboard.com>
- <87r1y2wbze.wl-kuninori.morimoto.gx@renesas.com>
-MIME-Version: 1.0
+ with ESMTP id cVeLwnhTDq86 for <devel@linuxdriverproject.org>;
+ Mon,  9 Mar 2020 12:06:15 +0000 (UTC)
+X-Greylist: delayed 02:19:38 by SQLgrey-1.7.6
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com
+ (mail-vi1eur05on2066.outbound.protection.outlook.com [40.107.21.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A505787F7F
+ for <devel@driverdev.osuosl.org>; Mon,  9 Mar 2020 12:06:14 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fc8cdFowd53YM9/JBxMGwC1oZUh67cAwfkuQtGjdotbTjCKw2Ve7qCYCIwyV7kwlZVwdgkwF76/hKTeVUCE85NE0U7qhYT9howKhjGHinTiEZz7uoy/rxG3VTYfrLccpfbsTHb2RIPayhI4XOIOY+lXbzH7uKyYVXVYREYvqvfHP/rJAJVQLuIe1GrJVOeyNSo7FTUx8oppBBZSGPRu+OyXentUOGMBHn+cwtaVls/DDEVMN71QV25fWbB4wzu8wEtZD+AZYPAM2ld+ztcC4vVmwyGYhqL+SzqBdW0JDwlK52CWwRBf5o3huWW0U2TecY/r32O817A+ZKmwcc5t7Ig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oSPrmTZOdIdd4o1kwyRCEMvht6/xVEaoyjDV8IEajck=;
+ b=JGbuFBCb+7/k5OqTQ1zREt1CS7gDJZME5WOxXv6kNBFjoz94kNLQ7y3F1JtxXd8eTng14qPhrRWgL2IfomHqBtegUs3AsqtTNXNSvSIy531nWLm0DpGPlZ1tgNQqbXZrDBNvp50wJoJNVTyYQqdb1MiwjXVT7uuH0gUuxfepIlRQSmhiVe0CKSn3cV0vwOqzvt14KwE6oRowxmG9tFKCaVWe8ZVWzGoQUXzYirlFyG7xFi5q+WoYOCutvkPWLyTSGP4SZyD2rOe0+4d+D4LXZTyM05roUJUlCjHwgkwBLWngYOLS+z+Xf0fZSRAWQtyvW7veJNnODRvvxMmKqeruRA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=itdev.co.uk; dmarc=pass action=none header.from=itdev.co.uk;
+ dkim=pass header.d=itdev.co.uk; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=itdevltd.onmicrosoft.com; s=selector2-itdevltd-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oSPrmTZOdIdd4o1kwyRCEMvht6/xVEaoyjDV8IEajck=;
+ b=fa7m2cQoomvzDXp1OU2LBPu0E3CL8BEEQne+ag3BJS5IFHOVwjSmHJiCSoiv4TJewbs89GMELYcnVwOfEVfGULpaq7/oI9qi9QgfLLvJiH4IJcXASaGaLR0v5iXitUx8JnaJ+whnGyLHJ8MBisNkw8XEJSz67h52NuWvBXP4/a4=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=quentin.deslandes@itdev.co.uk; 
+Received: from DBBPR08MB4491.eurprd08.prod.outlook.com (20.179.44.144) by
+ DBBPR08MB4506.eurprd08.prod.outlook.com (20.179.44.23) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2793.17; Mon, 9 Mar 2020 09:32:12 +0000
+Received: from DBBPR08MB4491.eurprd08.prod.outlook.com
+ ([fe80::cce9:f055:f034:3659]) by DBBPR08MB4491.eurprd08.prod.outlook.com
+ ([fe80::cce9:f055:f034:3659%4]) with mapi id 15.20.2793.013; Mon, 9 Mar 2020
+ 09:32:12 +0000
+Date: Mon, 9 Mar 2020 09:32:10 +0000
+From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+To: Oscar Carter <oscar.carter@gmx.com>
+Subject: Re: [PATCH] staging: vt6656: Declare a few variables as __read_mostly
+Message-ID: <20200309093210.GA7693@qd-ubuntu>
+References: <20200301112620.7892-1-oscar.carter@gmx.com>
+ <20200301122514.GA1461917@kroah.com> <20200301131701.GA7487@ubuntu>
+ <20200301150913.GA1470815@kroah.com> <20200307082906.GA2948@ubuntu>
 Content-Disposition: inline
-In-Reply-To: <87r1y2wbze.wl-kuninori.morimoto.gx@renesas.com>
-X-Originating-IP: [10.10.2.141]
-X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
- PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
-X-EsetResult: clean, is OK
-X-EsetId: 37303A29536F936F637D63
-X-Provags-ID: V03:K1:gR6rW5ecslKFmSCgJXl9/tgvA5veb1fTHa5FSn9E02NiSYn8MTc
- jfTRnhmhxG1xh05nAmModYg4ablDUwhsTEWRtMKNiwF1Ba+Q4XBvXEXLZUfES35/yWi0Siv
- mW5lPK8HZK2Ymp/Dyg8Uz8kFjgeAWLhSrZtsSOuyib7tUn57ibP939fs3UC9nCbF83YzvKM
- Ng06OF7KQ36aOR0aRClNw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rLu4bN4ajpU=:h8UFrs8QFFhECyg3qTXbrA
- 3JNpp6c0hdSW7ncjvgVXWh2iQHS+Y0jct46wxyEhGGkrV0oCDArK5DhnpdUcTzm78L5zXPGKi
- yIPl2CNrEgIkSA/5VERu1sHyqn+VdfnDQLHYd7snDgsll+j0MiIpq+/ZK1Z3+6d7K6rZcXMzR
- w3A7az7S6srz5fz9Auy2RJAPxI0Fe4EBrF7R8bTpT2KJsmch3TyiTErVRCCsOCAo+bdCdZFsM
- MPvcyE5Q7YLmnY6HMBZnbUUknhGzSVJgthMI1+GqGD6yvp9OU1qI2Z4O8YAbg5ttdRFJbT9Bk
- Ov05BmUmMHLO/1Msl0vZ20gPoJid/qxpyEbcedDUmDM7Mv27UMAjgKQMo8YVN6ctelyix7s4k
- JogLp4RV9krJ96qClbNo7DRUsjsAU3w+h4uzi5HGZhhSH4rUJFjBETcK5lykq3IYQFfIOw31D
- pwdGjPjH++xAyVltzpVnLerAsQkO00qa1hc4nsTUgHCfH5DSa8d2/GHtCBcyRCzN9PHtsdYXy
- XoWJ78Ckt5RTFgxJ05xxzyMAgX2/TgzhwtWt4XYSFYqs6cDKe+eSNnpo0iaO/eBEQeoJD+1AI
- N0YtFEfiY4uw5lMmZVkOns/8ii0WQrLWxZg4Ld/wir7iFW3D00Y2iaW5zAj+nxuNttzuospw0
- lgy3NUXLdIEwl8WiWDDDnndRbKoMJfsiB9/2tvJ5wvlUM3RFFNH5Z8OSk49IERX5QJwWTQRPs
- cGgih8YlLjJw4IZgfSClkNtM7w1mk4vjsDvESjtaCr1YiTgaaQ/uL73fsR6f5DtBYYzZ/IhI0
- rymrCcY3m1GBu0hpUne15zhelObdrhOC+u5oCsc21Vn87GFy0Wody6vBthbrHoWPTpXLz52
+In-Reply-To: <20200307082906.GA2948@ubuntu>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: CWLP123CA0070.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:401:59::34) To DBBPR08MB4491.eurprd08.prod.outlook.com
+ (2603:10a6:10:d2::16)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from qd-ubuntu (89.21.227.133) by
+ CWLP123CA0070.GBRP123.PROD.OUTLOOK.COM (2603:10a6:401:59::34) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2793.16 via Frontend Transport; Mon, 9 Mar 2020 09:32:11 +0000
+X-Originating-IP: [89.21.227.133]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 559c506b-33cb-4f69-e4eb-08d7c40cbedd
+X-MS-TrafficTypeDiagnostic: DBBPR08MB4506:
+X-Microsoft-Antispam-PRVS: <DBBPR08MB4506C1236EE912552B6DC354B3FE0@DBBPR08MB4506.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Forefront-PRVS: 0337AFFE9A
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10009020)(376002)(346002)(396003)(136003)(39830400003)(366004)(199004)(189003)(86362001)(8936002)(6916009)(1076003)(508600001)(8676002)(33656002)(81166006)(81156014)(4744005)(316002)(186003)(16526019)(6496006)(52116002)(54906003)(9686003)(33716001)(4326008)(956004)(26005)(5660300002)(55016002)(2906002)(66946007)(44832011)(66476007)(66556008);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:DBBPR08MB4506;
+ H:DBBPR08MB4491.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+Received-SPF: None (protection.outlook.com: itdev.co.uk does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ocRmDrFFo1zxPpJ9+Dme4V8zt8HBbdUzFWvulCN120LQ0aCJMsjTJLSaKP9ucC75mFvOEkiJoYfc+rPbglsbePSdmrPWujxBgDASxGMBLyqszGXz0YHg1nAmkl2b9dCm+6B4/mmo0/dGB2D3Tal5Hwg1Vsu3+q+X5WT5CnWsIrUv4qTZD0+mZTlsyCVmAZ7KFwByME8ANygkElNHJgnC5X/OmBkQjDVUdCVt7mRYKWbKf93/JvXYeZtigHFRPniElGw2wVyaSCJKk1y3z98ggRlPO7EJFkucQZ2JdfCVZg+Rzxe0HMuGnWDfwR/YvsY++OA9lj/9+7VGswgdKUcBO+5lbtT3D1vGJWDVWnG28wyTQBR0u/sCsYZdtYBSn8fPUVYhhKL3wQ6lnmkkD+WhUPwLAT88rCFEEsuDkGOkOSQQ1zQAsxf47tAlbZstDLJm
+X-MS-Exchange-AntiSpam-MessageData: Dg8J0JjfJl1DLteZRRWlGbj10cwmQjBXtJHqmlC5KVBRWxw0192BQdouc+OxXObvfwo7lMC5NaqTxYZgryeEMX30l3f6do/YQnSLpEg9XOM+LApCCozRDr082r74OeVlBx4Wt1MMEw9mwMXQj3JfiQ==
+X-OriginatorOrg: itdev.co.uk
+X-MS-Exchange-CrossTenant-Network-Message-Id: 559c506b-33cb-4f69-e4eb-08d7c40cbedd
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Mar 2020 09:32:11.8888 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2d2930c4-2251-45b4-ad79-3582c5f41740
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: UKdmATgMgX5UXXly/mKB958A8Ic8ORAJPc4JGe+PNgwN8dP06LRngV891OW6WrQsW3huDf5pyVMydOwWj7l7WQHGCfoa56GHZMcWt8gCG5c=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB4506
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,83 +115,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Driver Development <devel@driverdev.osuosl.org>,
- Device Tree <devicetree@vger.kernel.org>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Linux Kernel <linux-kernel@vger.kernel.org>,
- Renesas SoC <linux-renesas-soc@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Linux Media <linux-media@vger.kernel.org>
+Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Forest Bond <forest@alittletooquiet.net>,
+ Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
-
-Kuninori Morimoto, Mon, Mar 09, 2020 02:31:01 +0100:
-> > > > Those clocks are part of the CSI-2 protocol and also don't need to be
-> > > > explicitly controlled. As far as I can tell from a quick check of the
-> > > > ADV7482 documentation, only the I2S MCLK is a general-purpose clock that
-> > > > needs to be exposed.
-> (snip)
-> > > Do you know, by chance, which of the snd_soc* callbacks should be used to
-> > > implement setting of the MCLK? The one in snd_soc_component_driver or
-> > > snd_soc_dai_driver->ops (snd_soc_dai_ops)?
-> > > 
-> > > Or how the userspace interface looks like? Or, if there is no userspace
-> > > interface for this, how the MCLK is supposed to be set? Through mclk-fs?
-> > 
-> > I'm afraid my knowledge of the sound subsystem is limited. Morimoto-san
-> > is the main developer and maintainer of Renesas sound drivers.
-> > Morimoto-sensei, would you have an answer to that question ? :-)
+On Sat, Mar 07, 2020 at 09:29:06AM +0100, Oscar Carter wrote:
+> On Sun, Mar 01, 2020 at 04:09:13PM +0100, Greg Kroah-Hartman wrote:
+> > On Sun, Mar 01, 2020 at 02:17:01PM +0100, Oscar Carter wrote:
+> > This is a USB driver, performance is always limited to the hardware, not
+> > the CPU location of variables.
 > 
-> In my quick check, it goes to AUDIO_CLKC.
-> If so, you can update rcar_sound::clocks.
+> Thank you for the explanation.
 > 
-> 	&rcar_sound {
-> 		...
-> -		/* update <audio_clk_b> to <cs2000> */
-> +		/* update <audio_clk_b> to <cs2000>,
-> +		 *        <audio_clk_c> to <adv748x> */
-> 		clocks = <&cpg CPG_MOD 1005>,
-> 			...
-> 			 <&audio_clk_a>, <&cs2000>,
-> -			 <&audio_clk_c>,
-> +			 <&adv748x>,
-> 			 <&cpg CPG_CORE CPG_AUDIO_CLK_I>;
+> >
+> > Please always benchmark things to see if it actually makes sense to make
+> > changes like this, before proposing them.
 > 
-> Thank you for your help !!
+> I'm sorry.
+> 
 
-Thanks.
+I've been removed from CC list on Greg's answer, so I haven't seen the
+explanation earlier and reviewed the patch the next day. I should have
+know better, won't happen again.
 
-Should the adv748x driver also implement anything to configure the frequency
-of MCLK clock? I mean something like .set_sysclk and .set_fmt callbacks of
-snd_soc_dai_ops?
-
-Or is the driver implementation, which depends on mclk-fs to be 256, the audio
-stream format to be 8x S24_LE, and requires strictly 48kHz sampling rate on
-the HDMI input, a totally acceptable first attempt at writing a DAI driver?
-
-I'm a bit bothered by that, as the hardware is also capable of decoding
-stereo, sampling rate 32-192kHz, a variety of PCM and compressed/encrypted
-formats, 128-768fs MCLK multipliers, and a row of I2S options.
-
-I just find it confusing to place the configuration interfaces.
-For instance, the patches use the media ioctl for audio output selection to
-select I2S protocol. While works, it does not feel right (shouldn't it be in
-the device tree?)
-
-Maybe you can point me at a driver doing something similar? I'm studying media
-drivers now, but not many of them use ASoC interfaces for devices providing a
-clock. Or maybe I should better look at sound/soc/...?
-
-Thanks in advance,
-Alex
+Thank you,
+Quentin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
