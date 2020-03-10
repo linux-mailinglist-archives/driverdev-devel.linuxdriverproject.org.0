@@ -2,38 +2,38 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 975D217FA20
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 14:03:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A0E017FA1F
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 14:03:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3660024F56;
-	Tue, 10 Mar 2020 13:03:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0135C2107F;
+	Tue, 10 Mar 2020 13:03:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cqpFNN47txjJ; Tue, 10 Mar 2020 13:03:08 +0000 (UTC)
+	with ESMTP id BXnmh8OHOrxQ; Tue, 10 Mar 2020 13:03:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 448E52083F;
-	Tue, 10 Mar 2020 13:03:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7A23E2094D;
+	Tue, 10 Mar 2020 13:02:59 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 880181BF29F
+ by ash.osuosl.org (Postfix) with ESMTP id 434F41BF980
  for <driverdev-devel@linuxdriverproject.org>;
  Tue, 10 Mar 2020 13:02:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 83FD92044D
+ by silver.osuosl.org (Postfix) with ESMTP id 3F84E2044D
  for <driverdev-devel@linuxdriverproject.org>;
  Tue, 10 Mar 2020 13:02:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iM7n0IeIjIBB
+ with ESMTP id fScwxaXccZEQ
  for <driverdev-devel@linuxdriverproject.org>;
  Tue, 10 Mar 2020 13:02:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
  [216.71.150.166])
- by silver.osuosl.org (Postfix) with ESMTPS id 327D32076F
+ by silver.osuosl.org (Postfix) with ESMTPS id 715D620797
  for <driverdev-devel@linuxdriverproject.org>;
  Tue, 10 Mar 2020 13:02:53 +0000 (UTC)
 Received-SPF: Pass (esa5.microchip.iphmx.com: domain of
@@ -57,12 +57,12 @@ Authentication-Results: esa5.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Christian.Gromm@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: N9c/X563VqcM2k5OhLi9iWDiPCqBFM8O92NpCQkammEMDbf3e0hMtKtD0knVio7Z7VLNpDM5Kn
- QoGyAvAMpkinu8mGFRBIqNBc+yQzog/m9jdQGdbvBRyVvanZSHWWIzQ1rwBDbWhU+dmAiHAdG+
- RH0rR/FQagaba8BwVj0vuLtaz2cq/j609MnmGjHjfdN2MmEytqQUD8msRjBepCLhSLus9Qk8CJ
- 3XqP3NTuZMqET0f+Qcm8sYPtTHpr3dNMR4gqxDV9fi9qo5Ys280ElDrGPeyB3OVHPWIff1GmDS
- AxA=
-X-IronPort-AV: E=Sophos;i="5.70,537,1574146800"; d="scan'208";a="68285743"
+IronPort-SDR: +hA0kxkS+4xM6VHCygrWlr9PnLc8wrk46mGEpGHhpaW+0CokRjeAevkLVxaTaZkoBgaWjlXS0J
+ TjeJckLT7+hM9gkWNeHp+Yuc3/mK4i0lVH9v7/BRvqIBO43OsrNwUbjllckPuusDkl483jVVpt
+ URX9AZSULqRRkcOXx9V37cODxCUHfUNqF6azuAv1vPGiz9gMsRXI7s5JUoI/SOj6v1+E951FMB
+ c3p6ZymwPiJs9ErakHWbnBSEzH6YauYTFY/NGQkggr419kF0rNaq2AEjuIL2kq1huzcG3Bt/pm
+ Pi0=
+X-IronPort-AV: E=Sophos;i="5.70,537,1574146800"; d="scan'208";a="68285745"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
  by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
@@ -70,16 +70,16 @@ Received: from smtpout.microchip.com (HELO email.microchip.com)
 Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
  chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 10 Mar 2020 06:02:44 -0700
+ 15.1.1713.5; Tue, 10 Mar 2020 06:02:45 -0700
 Received: from localhost.localdomain (10.10.115.15) by
  chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Tue, 10 Mar 2020 06:02:46 -0700
+ 15.1.1713.5 via Frontend Transport; Tue, 10 Mar 2020 06:02:47 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [RESEND PATCH v5 2/3] staging: most: Documentation: update ABI
- description
-Date: Tue, 10 Mar 2020 14:02:41 +0100
-Message-ID: <1583845362-26707-3-git-send-email-christian.gromm@microchip.com>
+Subject: [RESEND PATCH v5 3/3] staging: most: Documentation: move ABI
+ description files out of staging area
+Date: Tue, 10 Mar 2020 14:02:42 +0100
+Message-ID: <1583845362-26707-4-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1583845362-26707-1-git-send-email-christian.gromm@microchip.com>
 References: <1583845362-26707-1-git-send-email-christian.gromm@microchip.com>
@@ -103,8 +103,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch updates the ABI description files to be in sync
-with current implementation.
+This patch moves the ABI description fils sysfs-bus-most and
+configfs-most to the kernel's documentation folder.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 ---
@@ -113,75 +113,20 @@ v3:
 v4:
 v5: rebased and adapted
 
- .../most/Documentation/ABI/configfs-most.txt       |  8 --------
- .../most/Documentation/ABI/sysfs-bus-most.txt      | 24 +++-------------------
- 2 files changed, 3 insertions(+), 29 deletions(-)
+ .../ABI/configfs-most.txt => Documentation/ABI/testing/configfs-most      | 0
+ .../ABI/sysfs-bus-most.txt => Documentation/ABI/testing/sysfs-bus-most    | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ rename drivers/staging/most/Documentation/ABI/configfs-most.txt => Documentation/ABI/testing/configfs-most (100%)
+ rename drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt => Documentation/ABI/testing/sysfs-bus-most (100%)
 
-diff --git a/drivers/staging/most/Documentation/ABI/configfs-most.txt b/drivers/staging/most/Documentation/ABI/configfs-most.txt
-index 2bf8114..ed67a4d 100644
---- a/drivers/staging/most/Documentation/ABI/configfs-most.txt
-+++ b/drivers/staging/most/Documentation/ABI/configfs-most.txt
-@@ -194,11 +194,3 @@ Description:
- 
- 		destroy_link	write '1' to this attribute to destroy an
- 				active link
--
--What: 		/sys/kernel/config/rdma_cm/<hca>/ports/<port-num>/default_roce_tos
--Date: 		March 8, 2019
--KernelVersion:  5.2
--Description: 	RDMA-CM QPs from HCA <hca> at port <port-num>
--		will be created with this TOS as default.
--		This can be overridden by using the rdma_set_option API.
--		The possible RoCE TOS values are 0-255.
-diff --git a/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt b/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
-index d8fa841..6b1d06e 100644
---- a/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
-+++ b/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
-@@ -5,7 +5,7 @@ Contact:	Christian Gromm <christian.gromm@microchip.com>
- Description:
- 		Provides information about the interface type and the physical
- 		location of the device. Hardware attached via USB, for instance,
--		might return <usb_device 1-1.1:1.0>
-+		might return <1-1.1:1.0>
- Users:
- 
- What:		/sys/bus/most/devices/.../interface
-@@ -278,25 +278,7 @@ Description:
- 		Indicates whether current channel ran out of buffers.
- Users:
- 
--What:		/sys/bus/most/drivers/mostcore/add_link
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to link a channel to a component of the
--		mostcore. A link created by writing to this file is
--		referred to as pipe.
--Users:
--
--What:		/sys/bus/most/drivers/mostcore/remove_link
--Date:		March 2017
--KernelVersion:	4.15
--Contact:	Christian Gromm <christian.gromm@microchip.com>
--Description:
--		This is used to unlink a channel from a component.
--Users:
--
--What:		/sys/bus/most/drivers/mostcore/components
-+What:		/sys/bus/most/drivers/most_core/components
- Date:		March 2017
- KernelVersion:	4.15
- Contact:	Christian Gromm <christian.gromm@microchip.com>
-@@ -304,7 +286,7 @@ Description:
- 		This is used to retrieve a list of registered components.
- Users:
- 
--What:		/sys/bus/most/drivers/mostcore/links
-+What:		/sys/bus/most/drivers/most_core/links
- Date:		March 2017
- KernelVersion:	4.15
- Contact:	Christian Gromm <christian.gromm@microchip.com>
+diff --git a/drivers/staging/most/Documentation/ABI/configfs-most.txt b/Documentation/ABI/testing/configfs-most
+similarity index 100%
+rename from drivers/staging/most/Documentation/ABI/configfs-most.txt
+rename to Documentation/ABI/testing/configfs-most
+diff --git a/drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt b/Documentation/ABI/testing/sysfs-bus-most
+similarity index 100%
+rename from drivers/staging/most/Documentation/ABI/sysfs-bus-most.txt
+rename to Documentation/ABI/testing/sysfs-bus-most
 -- 
 2.7.4
 
