@@ -2,50 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91A5217EB14
-	for <lists+driverdev-devel@lfdr.de>; Mon,  9 Mar 2020 22:20:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F07EC17EDA4
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 02:07:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 889C488B1F;
-	Mon,  9 Mar 2020 21:20:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3C8E388A3D;
+	Tue, 10 Mar 2020 01:07:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aqXq7mB5ddKw; Mon,  9 Mar 2020 21:20:45 +0000 (UTC)
+	with ESMTP id 6McHU56GPtqA; Tue, 10 Mar 2020 01:07:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E4A8388AC5;
-	Mon,  9 Mar 2020 21:20:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8578D877AE;
+	Tue, 10 Mar 2020 01:07:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5FF6E1BF30A
- for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 21:20:42 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E6E321BF3BE
+ for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 01:07:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5CA5F88AD8
- for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 21:20:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C277D20469
+ for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 01:07:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3MJG20KhYUJU for <devel@linuxdriverproject.org>;
- Mon,  9 Mar 2020 21:20:41 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.libre-essai.net (dedicated-197.dri-services.net
- [195.114.27.197])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2E36F88AC5
- for <devel@linuxdriverproject.org>; Mon,  9 Mar 2020 21:20:41 +0000 (UTC)
-X-AuthUser: spamcop@libre-essai.net
-Received: from User ([103.197.107.208]:40137)
- by smtp.libre-essai.net with [XMail 1.27 ESMTP Server]
- id <S5F676B> for <devel@linuxdriverproject.org> from <spamcop@libre-essai.net>;
- Mon, 9 Mar 2020 18:48:04 +0100
-From: "Maggie  W"<spamcop@libre-essai.net>
-Subject: Greetings
-Date: Tue, 10 Mar 2020 00:48:26 +0700
-MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200309212042.5CA5F88AD8@hemlock.osuosl.org>
+ with ESMTP id xc6lWJYTDP8B for <devel@linuxdriverproject.org>;
+ Tue, 10 Mar 2020 01:07:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from relmlie5.idc.renesas.com (relmlor1.renesas.com
+ [210.160.252.171])
+ by silver.osuosl.org (Postfix) with ESMTP id 0591220465
+ for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 01:07:24 +0000 (UTC)
+Date: 10 Mar 2020 10:07:23 +0900
+X-IronPort-AV: E=Sophos;i="5.70,535,1574089200"; d="scan'208";a="41431033"
+Received: from unknown (HELO relmlir5.idc.renesas.com) ([10.200.68.151])
+ by relmlie5.idc.renesas.com with ESMTP; 10 Mar 2020 10:07:23 +0900
+Received: from mercury.renesas.com (unknown [10.166.252.133])
+ by relmlir5.idc.renesas.com (Postfix) with ESMTP id 2B391400753F;
+ Tue, 10 Mar 2020 10:07:23 +0900 (JST)
+Message-ID: <87a74pvwz8.wl-kuninori.morimoto.gx@renesas.com>
+From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+To: Alex Riesen <alexander.riesen@cetitec.com>
+Subject: Re: [PATCH 8/8] arm64: dts: renesas: salvator: add a connection from
+ adv748x codec (HDMI input) to the R-Car SoC
+In-Reply-To: <20200309110931.GB3593@pflmari>
+References: <CAMuHMdWobAE+y90DRi+zQadObWPxLyQiGNTe4t77O-2S1Vp5yA@mail.gmail.com>
+ <20200302150706.GB3717@pflmari>
+ <CAMuHMdW21rYXoOSE8azHNqYjng_j41rsL=Fo2bZc=1ULi9+pLw@mail.gmail.com>
+ <20200302160906.GC3717@pflmari>
+ <CAMuHMdVNGsVHyvAgC5dAHx=8Ax18EHx2tS6Hm5Bkg4ms=mW6Zw@mail.gmail.com>
+ <20200305143628.GB25741@pflmari>
+ <20200306131632.GA4878@pendragon.ideasonboard.com>
+ <20200306134154.GD27714@pflmari>
+ <20200306134546.GE4878@pendragon.ideasonboard.com>
+ <87r1y2wbze.wl-kuninori.morimoto.gx@renesas.com>
+ <20200309110931.GB3593@pflmari>
+User-Agent: Wanderlust/2.15.9 Emacs/25.2 Mule/6.0
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,18 +70,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: wangmaggiem07@gmail.com
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Driver Development <devel@driverdev.osuosl.org>,
+ Device Tree <devicetree@vger.kernel.org>,
+ Kieran Bingham <kieran.bingham@ideasonboard.com>,
+ Linux Kernel <linux-kernel@vger.kernel.org>,
+ Renesas SoC <linux-renesas-soc@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear,
 
-I have a business proposal to share with you. Contact me back for more details.
+Hi Alex
 
-Kind Regards,
-Maggie Wang
+> Should the adv748x driver also implement anything to configure the frequency
+> of MCLK clock? I mean something like .set_sysclk and .set_fmt callbacks of
+> snd_soc_dai_ops?
+> 
+> Or is the driver implementation, which depends on mclk-fs to be 256, the audio
+> stream format to be 8x S24_LE, and requires strictly 48kHz sampling rate on
+> the HDMI input, a totally acceptable first attempt at writing a DAI driver?
+> 
+> I'm a bit bothered by that, as the hardware is also capable of decoding
+> stereo, sampling rate 32-192kHz, a variety of PCM and compressed/encrypted
+> formats, 128-768fs MCLK multipliers, and a row of I2S options.
+> 
+> I just find it confusing to place the configuration interfaces.
+> For instance, the patches use the media ioctl for audio output selection to
+> select I2S protocol. While works, it does not feel right (shouldn't it be in
+> the device tree?)
+> 
+> Maybe you can point me at a driver doing something similar? I'm studying media
+> drivers now, but not many of them use ASoC interfaces for devices providing a
+> clock. Or maybe I should better look at sound/soc/...?
+
+Setting Sound Clock for all cases/patterns are very complex and difficult actually.
+(ADV7482 configuration) x (ADG divider / selector) x etc, etc...
+
+Thus, Current R-Car sound is assuming that audio_clk_a/b/c/i are providing
+route clock (= no configuration, fixed clock), and ADG divides it,
+and provide best clock to each SSIx.
+
+Current Salvator/ULCB already have 44.1/48kHz route clock (= CS2000 and Audio_CLK_A),
+and we can reuse it for all SSIx. Thus, ADV7482 clock is not necessary, I guess ?
+Or providing specific clock for some case is enough
+(ADG will automatically select it if necessary).
+
+If ADV7482 needs more detail clock settings combination,
+then, there is no method to adjust to it.
+We need to consider such system somehow.
+
+Thank you for your help !!
+
+Best regards
+---
+Kuninori Morimoto
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
