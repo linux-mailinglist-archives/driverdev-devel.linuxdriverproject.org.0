@@ -1,110 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4BEE17F4B6
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 11:14:30 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38A9A17F52C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 11:40:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 412702078B;
-	Tue, 10 Mar 2020 10:14:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D09B2883C6;
+	Tue, 10 Mar 2020 10:40:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4g4IZbgzsrR1; Tue, 10 Mar 2020 10:14:28 +0000 (UTC)
+	with ESMTP id SX8JxflQP84C; Tue, 10 Mar 2020 10:40:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D0A8A20465;
-	Tue, 10 Mar 2020 10:14:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7E09F883BF;
+	Tue, 10 Mar 2020 10:40:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 973F91BF299
- for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 10:14:22 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C7B91BF299
+ for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 10:40:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9396586090
- for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 10:14:22 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 98D35882F4
+ for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 10:40:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wPdjOE893yRU for <devel@linuxdriverproject.org>;
- Tue, 10 Mar 2020 10:14:21 +0000 (UTC)
+ with ESMTP id K5tt8UjWlp6L for <devel@linuxdriverproject.org>;
+ Tue, 10 Mar 2020 10:40:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam12on2079.outbound.protection.outlook.com [40.107.237.79])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id ABF6586155
- for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 10:14:21 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dQ10AYxyTu8wXZ0bvYUOurraAdby+LCmX6CvhAoLWll/TEe07jrIY9A7BFJOT+VvPCMkzwm4hKbQfzuDPSalT3AM/ID76rj/Kc1RNoqlszlfxCFF1Kyl1z4w72Hu21703Tgrqh+8eSVgbvNhmLgmEkD+Zfc6H5BWgJSMW6nv+IMphnT9jZoyZmVj7fZ/vrbo7eMz4AVT3URBCTOphzaOgo092VHJzcGX5g79ojBtJlVyVHswJ/2LBelGByFRrGEDKjJH3fTSTfgeR+8l1cquPz2pIbSkzq1V11oIzhIKkOG+lVxrtY3JAOMS6uvGU1SSGwITngU7Pnj9T+w5hXyrSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qTt99lXlWBT9SkY2K/ce2HXok0D7kEfBX17sz2YNvwc=;
- b=UTly7mayQ8iV1LBtnXpJ44AKGaGwOA+lELWW1o/4egT8XjqsSqoK9M2mNMucEtr6pxalYFM7fn8zMYZyQ4Ey4hYtZd3QC+ef6k+gZ0Nf+eJdRt1PXst3HCYJIfqTEl5dcilZ9i8EhSXWKEywn0B+WQ0BcBF5DqeAlGQKBZUFf0b+CXHFdj8X2Y+QQ+cpcQvNf5ndGLnziCY2c3NpudRVYeQ8tUTl80tZHtUkJG2/NfXLvMYOBWZYRI5e9Ib2zycUOIwgRJaCOVzxLDA/FP4718f4ReIVPqxXF9c58QmQfsB386cKoRZzmUojfCVdpEQ/WgvOfVtJwTEkDNSv3DjU/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qTt99lXlWBT9SkY2K/ce2HXok0D7kEfBX17sz2YNvwc=;
- b=SCC36KLO7bE6kuhRlXbPv1RQDnOqPv1hg5YTtfGQOJ5RnNnLgaJtsj6KAv2ylfJm6PfSuNVxg85rjmg4ssNFgrwgi0z2gAjqWPuKtu0Jg+C8p2LXDnlev2SKgo6+Wzwi5cuPM5Yp8IinqL+MmwiOjNeiNUJhs2gwbtuXkKFMnfk=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com (2603:10b6:208:13f::22)
- by MN2PR11MB3615.namprd11.prod.outlook.com (2603:10b6:208:ec::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2793.17; Tue, 10 Mar
- 2020 10:14:20 +0000
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3]) by MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3%7]) with mapi id 15.20.2793.013; Tue, 10 Mar 2020
- 10:14:20 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: devel@driverdev.osuosl.org,
-	linux-wireless@vger.kernel.org
-Subject: [PATCH 5/5] staging: wfx: fix RCU usage between hif_join() and
- ieee80211_bss_get_ie()
-Date: Tue, 10 Mar 2020 11:13:56 +0100
-Message-Id: <20200310101356.182818-6-Jerome.Pouiller@silabs.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200310101356.182818-1-Jerome.Pouiller@silabs.com>
-References: <20200310101356.182818-1-Jerome.Pouiller@silabs.com>
-X-ClientProxiedBy: PR0P264CA0180.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:1c::24) To MN2PR11MB4063.namprd11.prod.outlook.com
- (2603:10b6:208:13f::22)
+Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
+ [213.167.242.64])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EA76188011
+ for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 10:40:00 +0000 (UTC)
+Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
+ [81.175.216.236])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id AE4E65F;
+ Tue, 10 Mar 2020 11:39:57 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1583836797;
+ bh=+AUuY204i66OP7awF0kMnbhoBdFNbFPnKEFfeYpp95I=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=qcjiOxUDnjlL2aIFS1CYWap5S3HJ7/ayRPVzENi12Tooxx06z0CIDhQG+CHqhdmgT
+ 9NTbCdmMw6QdRerILDCOVat8G5qsbXY4rpF0zjGWNdHpdrlsyuWlDpmJsvdjD8fSoO
+ p+OZY+V44umtuYGmpSjFoh2tomy9SHC8XHZmspTo=
+Date: Tue, 10 Mar 2020 12:39:54 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Alex Riesen <alexander.riesen@cetitec.com>
+Subject: Re: [PATCH 8/8] arm64: dts: renesas: salvator: add a connection from
+ adv748x codec (HDMI input) to the R-Car SoC
+Message-ID: <20200310103954.GA4871@pendragon.ideasonboard.com>
+References: <20200302160906.GC3717@pflmari>
+ <CAMuHMdVNGsVHyvAgC5dAHx=8Ax18EHx2tS6Hm5Bkg4ms=mW6Zw@mail.gmail.com>
+ <20200305143628.GB25741@pflmari>
+ <20200306131632.GA4878@pendragon.ideasonboard.com>
+ <20200306134154.GD27714@pflmari>
+ <20200306134546.GE4878@pendragon.ideasonboard.com>
+ <87r1y2wbze.wl-kuninori.morimoto.gx@renesas.com>
+ <20200309110931.GB3593@pflmari>
+ <87a74pvwz8.wl-kuninori.morimoto.gx@renesas.com>
+ <20200310081714.GA11274@pflmari>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.silabs.com (37.71.187.125) by
- PR0P264CA0180.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:1c::24) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2793.14 via Frontend Transport; Tue, 10 Mar 2020 10:14:19 +0000
-X-Mailer: git-send-email 2.25.1
-X-Originating-IP: [37.71.187.125]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: b2d1c9ed-6be5-44b9-abf0-08d7c4dbcc76
-X-MS-TrafficTypeDiagnostic: MN2PR11MB3615:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MN2PR11MB36153AFEB65FAE001086A60E93FF0@MN2PR11MB3615.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:619;
-X-Forefront-PRVS: 033857D0BD
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10009020)(39850400004)(136003)(366004)(376002)(396003)(346002)(189003)(199004)(6666004)(52116002)(5660300002)(2616005)(86362001)(316002)(956004)(36756003)(478600001)(7696005)(8936002)(54906003)(4326008)(16526019)(186003)(26005)(6486002)(66574012)(66946007)(8676002)(1076003)(81166006)(2906002)(66476007)(81156014)(66556008)(107886003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB3615;
- H:MN2PR11MB4063.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-Received-SPF: None (protection.outlook.com: silabs.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Sed0HcwAVpiToN/fG4X5x3hQMDBGULBMd7rqU+9s0n2ye+ceS19kYr6xL/ZjbjmhjInJohx+LVz49Ul7LVKm/5coiOCxaPFbw6PAi7LqL0VSmt0L3X/T1dBunbJRMXwlld33/kdcavMSTEBpO5J+XeqwPVNav0yhcWdatU//MAvJ4kctDx44hb13LuOqNYwzLiN5DvXZvX1FW9gRtV5tliLdcNkzVCZ7mC7VAp8H5RDF60Y7bL1Co5zmRVXuTN6y+f1qrJAxN7mzpbGTzxmKmJyh9ihMoe1x5YknCrPsxPksmosQlMOdEm9vcFLmJstEN1ESVttkWV6/HvJZqyzNgd1jka0TJQachCsDObaTehYvuAtDfhZmTMqzRNTm9M2en+zrt/7W491v5t6ylY3Dihj81dVVUJCy2LdQ9Cn9qNMwHfuzbIrD1s4Uf7Aq5SFP
-X-MS-Exchange-AntiSpam-MessageData: GBHhyoH9ZlxpCMcbh+zi6C50TAACtENbeOjHuQ6fA8m5zgBiWZcnjW6YXnxryr8hxG5gaIM3FxYP2cPWd4SuYTQDJ8AGSoFpFj4Rcml6Q4Gq1/TwY3grrTKWhsHoWBkIDyCJjMW3egZnp5LDA1O9zw==
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b2d1c9ed-6be5-44b9-abf0-08d7c4dbcc76
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2020 10:14:20.4984 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Cgchuckw79sx9+IpY3w9F/NvB3Ib5Nuk6dQ2DH7uljFcpBD/cMYw/lYHX2XOACUhrBoP3LLrTG5Y7iYCW7MgcQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3615
+Content-Disposition: inline
+In-Reply-To: <20200310081714.GA11274@pflmari>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,81 +75,115 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Driver Development <devel@driverdev.osuosl.org>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ Device Tree <devicetree@vger.kernel.org>,
+ Kieran Bingham <kieran.bingham@ideasonboard.com>,
+ Linux Kernel <linux-kernel@vger.kernel.org>,
+ Renesas SoC <linux-renesas-soc@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKQWNj
-ZXNzIHRvIHJlc3VsdCBvZiBpZWVlODAyMTFfYnNzX2dldF9pZSgpIGlzIHByb3RlY3RlZCBieSBS
-Q1UuIEluIG90aGVyCmhhbmQsIGZ1bmN0aW9uIGhpZl9qb2luKCkgY2FuIHNsZWVwIGFuZCBjYW5u
-b3QgYmUgY2FsbGVkIHdpdGggUkNVCmxvY2tlZC4KClByb3ZpZGUgYSBjb3B5IG9mICJzc2lkaWUi
-IHRvIGhpZl9qb2luKCkgdG8gc29sdmUgdGhpcyBiZWhhdmlvci4KCkZpeGVzOiA5Y2VkOWI1OTM3
-NDEgKCJzdGFnaW5nOiB3Zng6IHNpbXBsaWZ5IGhpZl9qb2luKCkiKQpTaWduZWQtb2ZmLWJ5OiBK
-w6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Ci0tLQogZHJpdmVy
-cy9zdGFnaW5nL3dmeC9oaWZfdHguYyB8ICA4ICsrKystLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4
-L2hpZl90eC5oIHwgIDIgKy0KIGRyaXZlcnMvc3RhZ2luZy93Zngvc3RhLmMgICAgfCAxNyArKysr
-KysrKysrLS0tLS0tLQogMyBmaWxlcyBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAxMiBkZWxl
-dGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl90eC5jIGIvZHJp
-dmVycy9zdGFnaW5nL3dmeC9oaWZfdHguYwppbmRleCA3YTU2ZTQ1YmNkYWEuLjc3YmNhNDNhY2E0
-MiAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHguYworKysgYi9kcml2ZXJz
-L3N0YWdpbmcvd2Z4L2hpZl90eC5jCkBAIC0yOTAsNyArMjkwLDcgQEAgaW50IGhpZl9zdG9wX3Nj
-YW4oc3RydWN0IHdmeF92aWYgKnd2aWYpCiB9CiAKIGludCBoaWZfam9pbihzdHJ1Y3Qgd2Z4X3Zp
-ZiAqd3ZpZiwgY29uc3Qgc3RydWN0IGllZWU4MDIxMV9ic3NfY29uZiAqY29uZiwKLQkgICAgIGNv
-bnN0IHN0cnVjdCBpZWVlODAyMTFfY2hhbm5lbCAqY2hhbm5lbCwgY29uc3QgdTggKnNzaWRpZSkK
-KwkgICAgIHN0cnVjdCBpZWVlODAyMTFfY2hhbm5lbCAqY2hhbm5lbCwgY29uc3QgdTggKnNzaWQs
-IGludCBzc2lkbGVuKQogewogCWludCByZXQ7CiAJc3RydWN0IGhpZl9tc2cgKmhpZjsKQEAgLTMw
-OCw5ICszMDgsOSBAQCBpbnQgaGlmX2pvaW4oc3RydWN0IHdmeF92aWYgKnd2aWYsIGNvbnN0IHN0
-cnVjdCBpZWVlODAyMTFfYnNzX2NvbmYgKmNvbmYsCiAJYm9keS0+YmFzaWNfcmF0ZV9zZXQgPQog
-CQljcHVfdG9fbGUzMih3ZnhfcmF0ZV9tYXNrX3RvX2h3KHd2aWYtPndkZXYsIGNvbmYtPmJhc2lj
-X3JhdGVzKSk7CiAJbWVtY3B5KGJvZHktPmJzc2lkLCBjb25mLT5ic3NpZCwgc2l6ZW9mKGJvZHkt
-PmJzc2lkKSk7Ci0JaWYgKCFjb25mLT5pYnNzX2pvaW5lZCAmJiBzc2lkaWUpIHsKLQkJYm9keS0+
-c3NpZF9sZW5ndGggPSBjcHVfdG9fbGUzMihzc2lkaWVbMV0pOwotCQltZW1jcHkoYm9keS0+c3Np
-ZCwgJnNzaWRpZVsyXSwgc3NpZGllWzFdKTsKKwlpZiAoIWNvbmYtPmlic3Nfam9pbmVkICYmIHNz
-aWQpIHsKKwkJYm9keS0+c3NpZF9sZW5ndGggPSBjcHVfdG9fbGUzMihzc2lkbGVuKTsKKwkJbWVt
-Y3B5KGJvZHktPnNzaWQsIHNzaWQsIHNzaWRsZW4pOwogCX0KIAl3ZnhfZmlsbF9oZWFkZXIoaGlm
-LCB3dmlmLT5pZCwgSElGX1JFUV9JRF9KT0lOLCBzaXplb2YoKmJvZHkpKTsKIAlyZXQgPSB3Znhf
-Y21kX3NlbmQod3ZpZi0+d2RldiwgaGlmLCBOVUxMLCAwLCBmYWxzZSk7CmRpZmYgLS1naXQgYS9k
-cml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl90eC5oIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHgu
-aAppbmRleCAyMDk3N2U0NjE3MTguLmY4NTIwYTE0YzE0YyAxMDA2NDQKLS0tIGEvZHJpdmVycy9z
-dGFnaW5nL3dmeC9oaWZfdHguaAorKysgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl90eC5oCkBA
-IC00Niw3ICs0Niw3IEBAIGludCBoaWZfc2NhbihzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZiwgc3RydWN0
-IGNmZzgwMjExX3NjYW5fcmVxdWVzdCAqcmVxODAyMTEsCiAJICAgICBpbnQgY2hhbl9zdGFydCwg
-aW50IGNoYW5fbnVtKTsKIGludCBoaWZfc3RvcF9zY2FuKHN0cnVjdCB3ZnhfdmlmICp3dmlmKTsK
-IGludCBoaWZfam9pbihzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZiwgY29uc3Qgc3RydWN0IGllZWU4MDIx
-MV9ic3NfY29uZiAqY29uZiwKLQkgICAgIGNvbnN0IHN0cnVjdCBpZWVlODAyMTFfY2hhbm5lbCAq
-Y2hhbm5lbCwgY29uc3QgdTggKnNzaWRpZSk7CisJICAgICBzdHJ1Y3QgaWVlZTgwMjExX2NoYW5u
-ZWwgKmNoYW5uZWwsIGNvbnN0IHU4ICpzc2lkLCBpbnQgc3NpZGxlbik7CiBpbnQgaGlmX3NldF9w
-bShzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZiwgYm9vbCBwcywgaW50IGR5bmFtaWNfcHNfdGltZW91dCk7
-CiBpbnQgaGlmX3NldF9ic3NfcGFyYW1zKHN0cnVjdCB3ZnhfdmlmICp3dmlmLAogCQkgICAgICAg
-Y29uc3Qgc3RydWN0IGhpZl9yZXFfc2V0X2Jzc19wYXJhbXMgKmFyZyk7CmRpZmYgLS1naXQgYS9k
-cml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuYwppbmRl
-eCBlZDE2NDc1YzIwN2MuLmFmNGY0YmJkMDU3MiAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5n
-L3dmeC9zdGEuYworKysgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jCkBAIC00OTEsOSArNDkx
-LDExIEBAIHN0YXRpYyB2b2lkIHdmeF9zZXRfbWZwKHN0cnVjdCB3ZnhfdmlmICp3dmlmLAogc3Rh
-dGljIHZvaWQgd2Z4X2RvX2pvaW4oc3RydWN0IHdmeF92aWYgKnd2aWYpCiB7CiAJaW50IHJldDsK
-LQljb25zdCB1OCAqc3NpZGllOwogCXN0cnVjdCBpZWVlODAyMTFfYnNzX2NvbmYgKmNvbmYgPSAm
-d3ZpZi0+dmlmLT5ic3NfY29uZjsKIAlzdHJ1Y3QgY2ZnODAyMTFfYnNzICpic3MgPSBOVUxMOwor
-CXU4IHNzaWRbSUVFRTgwMjExX01BWF9TU0lEX0xFTl07CisJY29uc3QgdTggKnNzaWRpZSA9IE5V
-TEw7CisJaW50IHNzaWRsZW4gPSAwOwogCiAJd2Z4X3R4X2xvY2tfZmx1c2god3ZpZi0+d2Rldik7
-CiAKQEAgLTUxNCwxMSArNTE2LDE0IEBAIHN0YXRpYyB2b2lkIHdmeF9kb19qb2luKHN0cnVjdCB3
-ZnhfdmlmICp3dmlmKQogCWlmICghd3ZpZi0+YmVhY29uX2ludCkKIAkJd3ZpZi0+YmVhY29uX2lu
-dCA9IDE7CiAKLQlyY3VfcmVhZF9sb2NrKCk7CisJcmN1X3JlYWRfbG9jaygpOyAvLyBwcm90ZWN0
-IHNzaWRpZQogCWlmICghY29uZi0+aWJzc19qb2luZWQpCiAJCXNzaWRpZSA9IGllZWU4MDIxMV9i
-c3NfZ2V0X2llKGJzcywgV0xBTl9FSURfU1NJRCk7Ci0JZWxzZQotCQlzc2lkaWUgPSBOVUxMOwor
-CWlmIChzc2lkaWUpIHsKKwkJc3NpZGxlbiA9IHNzaWRpZVsxXTsKKwkJbWVtY3B5KHNzaWQsICZz
-c2lkaWVbMl0sIHNzaWRpZVsxXSk7CisJfQorCXJjdV9yZWFkX3VubG9jaygpOwogCiAJd2Z4X3R4
-X2ZsdXNoKHd2aWYtPndkZXYpOwogCkBAIC01MjcsMTAgKzUzMiw4IEBAIHN0YXRpYyB2b2lkIHdm
-eF9kb19qb2luKHN0cnVjdCB3ZnhfdmlmICp3dmlmKQogCiAJd2Z4X3NldF9tZnAod3ZpZiwgYnNz
-KTsKIAotCS8qIFBlcmZvcm0gYWN0dWFsIGpvaW4gKi8KIAl3dmlmLT53ZGV2LT50eF9idXJzdF9p
-ZHggPSAtMTsKLQlyZXQgPSBoaWZfam9pbih3dmlmLCBjb25mLCB3dmlmLT5jaGFubmVsLCBzc2lk
-aWUpOwotCXJjdV9yZWFkX3VubG9jaygpOworCXJldCA9IGhpZl9qb2luKHd2aWYsIGNvbmYsIHd2
-aWYtPmNoYW5uZWwsIHNzaWQsIHNzaWRsZW4pOwogCWlmIChyZXQpIHsKIAkJaWVlZTgwMjExX2Nv
-bm5lY3Rpb25fbG9zcyh3dmlmLT52aWYpOwogCQl3dmlmLT5qb2luX2NvbXBsZXRlX3N0YXR1cyA9
-IC0xOwotLSAKMi4yNS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpo
-dHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cml2ZXJkZXYtZGV2ZWwK
+Hi Alex,
+
+On Tue, Mar 10, 2020 at 09:17:14AM +0100, Alex Riesen wrote:
+> Kuninori Morimoto, Tue, Mar 10, 2020 02:07:23 +0100:
+> > > Should the adv748x driver also implement anything to configure the frequency
+> > > of MCLK clock? I mean something like .set_sysclk and .set_fmt callbacks of
+> > > snd_soc_dai_ops?
+> > > 
+> > > Or is the driver implementation, which depends on mclk-fs to be 256, the audio
+> > > stream format to be 8x S24_LE, and requires strictly 48kHz sampling rate on
+> > > the HDMI input, a totally acceptable first attempt at writing a DAI driver?
+> > > 
+> > > I'm a bit bothered by that, as the hardware is also capable of decoding
+> > > stereo, sampling rate 32-192kHz, a variety of PCM and compressed/encrypted
+> > > formats, 128-768fs MCLK multipliers, and a row of I2S options.
+> > > 
+> > > I just find it confusing to place the configuration interfaces.
+> > > For instance, the patches use the media ioctl for audio output selection to
+> > > select I2S protocol. While works, it does not feel right (shouldn't it be in
+> > > the device tree?)
+> > > 
+> > > Maybe you can point me at a driver doing something similar? I'm studying media
+> > > drivers now, but not many of them use ASoC interfaces for devices providing a
+> > > clock. Or maybe I should better look at sound/soc/...?
+> > 
+> > Setting Sound Clock for all cases/patterns are very complex and difficult actually.
+> > (ADV7482 configuration) x (ADG divider / selector) x etc, etc...
+> > 
+> > Thus, Current R-Car sound is assuming that audio_clk_a/b/c/i are providing
+> > route clock (= no configuration, fixed clock), and ADG divides it,
+> > and provide best clock to each SSIx.
+> > Current Salvator/ULCB already have 44.1/48kHz route clock (= CS2000 and Audio_CLK_A),
+> > and we can reuse it for all SSIx. Thus, ADV7482 clock is not necessary, I guess ?
+> > Or providing specific clock for some case is enough
+> > (ADG will automatically select it if necessary).
+> 
+> In this particular case, the ADV7482 *must* provide the clock, I believe: it
+> extracts the audio stream from the HDMI connection (in addition to everything
+> else) and serves the stream on I2S. Its MCLK line is physically connected to
+> the CLK_C line (which is an input) of the R-Car SoC. The I2S audio
+> transmission does not work if the ADV7482 clock is not programmed (or
+> programmed incorrectly).
+> Yes, I tried (I also tried programming it incorrectly, just because I didn't
+> know what I was doing).
+> 
+> > If ADV7482 needs more detail clock settings combination,
+> > then, there is no method to adjust to it.
+> > We need to consider such system somehow.
+> 
+> Not encouraging...
+> 
+> Maybe I should leave the clock fixed, with the frequency configuration in the
+> device tree, e.g. as adv7482 port node property "clock-frequency".
+> Which feels rather pathetic, but at least serves my purpose (48k, 8x24).
+> 
+> But let me describe the situation as I see it first.
+> 
+> As far as I understand, the SSI4 (Salvator-X board) should be programmed by
+> the snd-soc-rcar driver in the "slave receiver" mode for this use case, which
+> is HDMI input ADV7482 (I2S master, TDM) -> SSI4 (I2S slave)):
+> 
+> [   63.305990] asoc_simple_card_parse_clk: asoc-audio-graph-card sound: rsnd-dai.1 : sysclk = 66666664, direction 0
+> [   63.306028] asoc_simple_card_parse_clk: asoc-audio-graph-card sound: adv748x-i2s : sysclk = 12288000, direction 1
+> 
+> I am a bit bothered by the fact that sysclk of rsnd-dai.1 does not match that
+> sysclk of adv7482-i2s, but I think it's just DT node configuration.
+> 
+> [   63.306033] asoc_simple_card_set_dailink_name: asoc-audio-graph-card sound: name : rsnd-dai.1-adv748x-i2s
+> ...
+> [   63.332641] asoc-audio-graph-card sound: adv748x.4-0070 <-> rsnd-dai.1 mapping ok
+> ...
+> [   63.341317] dapm_connect_dai_link_widgets:  rsnd-dai.1-adv748x-i2s: connected DAI link adv748x.4-0070:Capture -> ec500000.sound:DAI1 Capture
+> ...
+> [  128.961389] rsnd_write: rcar_sound ec500000.sound: w ssi[4] - SSICR ( 124) : 9ceb0100
+> 
+> Decoding this last line (9ceb0100) gives SSICR.TRMD (bit1) =0, SSICR.SCKD
+> (bit15) =0, SSICR.SWSD (bit14) =0. The combination is documented as "slave
+> receiver". Which, I assume, makes SSI4 use the external clock. Given the
+> received stream looks ok, something also must have set the dividers correctly.
+> 
+> From the above, I conclude, whatever the complexity of the audio system clock
+> configuration, it seems to be implemented for the case.
+> 
+> I only miss a more or less clear way to configure the I2S master (ADV7482, that is).
+
+As a stop-gap measure, until the sound driver programs the clock, you
+can set its frequency in DT with the assigned-clock-rates property.
+
+-- 
+Regards,
+
+Laurent Pinchart
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
