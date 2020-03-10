@@ -2,89 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEC5C17F54F
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 11:46:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D12117F576
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 11:55:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3569787146;
-	Tue, 10 Mar 2020 10:46:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E9CB186308;
+	Tue, 10 Mar 2020 10:55:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n9q9NOyiVmk5; Tue, 10 Mar 2020 10:46:26 +0000 (UTC)
+	with ESMTP id fvIAQ4ZMeKBE; Tue, 10 Mar 2020 10:54:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 06D6E86BA7;
-	Tue, 10 Mar 2020 10:46:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 45CD3866A9;
+	Tue, 10 Mar 2020 10:54:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7010D1BF299
- for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 10:46:15 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 18C241BF299
+ for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 10:54:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6CA02883CC
- for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 10:46:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B2F6C203D3
+ for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 10:54:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4O96RHYja1xx for <devel@linuxdriverproject.org>;
- Tue, 10 Mar 2020 10:46:14 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C8420883BF
- for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 10:46:14 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02AAcoWR081573;
- Tue, 10 Mar 2020 10:46:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=1RisN3S7KM3q/8X60PBMjhXZIbFkHsb770PygEikLQM=;
- b=UcdMYQAOyUZiSFKHzyk6WZHOZfZ1jSJpCZgDUTkHTIamr9/HJdnodla4sGz/3TYPExfx
- faKxU3h/FFJmqGEpHlcpUSRWQgvw65E9LLe4YbutcmO242GFBednrEi9NP84ysSOwL5a
- oK++BuqCkNrNbKVSSnieI427QoDr5+8PY4wD6W0Fzjzsb4DlDan9MLKKdSY6gUWT/JK4
- D3dmWGD5VxLFW5btxzgSau3LqJD3zTw7G8jBcTSP4+JJt80DGUPFTPVfTibpxnCT6BnL
- B2pPLaFVSJpofP+dBatFF/utz8UfGK/AGyS3w7PyddyhQ3NEC/3Y0gF5LAVSTlUIi6YR Zw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 2ym3jqmsva-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 10 Mar 2020 10:46:10 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02AAcQYm069503;
- Tue, 10 Mar 2020 10:46:10 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 2yp8nry2uf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 10 Mar 2020 10:46:09 +0000
-Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 02AAk8Rs026312;
- Tue, 10 Mar 2020 10:46:08 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 10 Mar 2020 03:46:08 -0700
-Date: Tue, 10 Mar 2020 13:46:01 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: "Joel Fernandes (Google)" <joel@joelfernandes.org>
-Subject: Re: [RFC] ashmem: Fix ashmem shrinker nr_to_scan
-Message-ID: <20200310104601.GB11561@kadam>
-References: <20200306011930.99378-1-joel@joelfernandes.org>
+ with ESMTP id cq-CfRMUVB1r for <devel@linuxdriverproject.org>;
+ Tue, 10 Mar 2020 10:54:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 36F9E203BE
+ for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 10:54:24 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id C2C15222D9;
+ Tue, 10 Mar 2020 10:54:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1583837663;
+ bh=iMdi73ahT2i5QMEV1OvXUxoIhvf9CTjR5RlmWJ5SAKs=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=xx+hxBO4J/9iyHtZXoNaS2JheJ7FX6jc/0m2sE3DE7qvlbu/tNnWxUrl3DX/w0QCd
+ O/XWVQ2jxlMc+LnWQ6h9lWHQpQgcoDBnUNNRodxpwT9w8yeo2EOu9Z5F8b5wGiIkj/
+ khOfW1uPlwsauClDoIPHqWVDo50dIP+a8yaFoLjw=
+Date: Tue, 10 Mar 2020 11:54:21 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: 'Linux Next Mailing List' <linux-next@vger.kernel.org>,
+ 'Linux Kernel Mailing List' <linux-kernel@vger.kernel.org>,
+ devel@driverdev.osuosl.org
+Subject: [PATCH] staging: exfat: remove staging version of exfat filesystem
+Message-ID: <20200310105421.GA2810679@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200306011930.99378-1-joel@joelfernandes.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9555
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxscore=0 phishscore=0
- spamscore=0 malwarescore=0 adultscore=0 suspectscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2003100071
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9555
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- clxscore=1011
- priorityscore=1501 mlxscore=0 phishscore=0 mlxlogscore=999 impostorscore=0
- bulkscore=0 spamscore=0 suspectscore=0 lowpriorityscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
- definitions=main-2003100071
+In-Reply-To: <003501d5f66b$7fe3b260$7fab1720$@samsung.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,46 +66,8589 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- surenb@google.com, Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Namjae Jeon <namjae.jeon@samsung.com>, Al Viro <viro@zeniv.linux.org.uk>,
+ Sungjong Seo <sj1557.seo@samsung.com>,
+ Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Mar 05, 2020 at 08:19:30PM -0500, Joel Fernandes (Google) wrote:
-> nr_to_scan is the number of pages to be freed however ashmem doesn't
-> discount nr_to_scan correctly as it frees ranges. It should be
-> discounting them by pages than by ranges. Correct the issue.
-> 
-> Cc: surenb@google.com
-> Signed-off-by: Joel Fernandes (Google) <joel@joelfernandes.org>
-> ---
->  drivers/staging/android/ashmem.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
-> index 5891d0744a760..cb525ea6db98a 100644
-> --- a/drivers/staging/android/ashmem.c
-> +++ b/drivers/staging/android/ashmem.c
-> @@ -458,6 +458,8 @@ ashmem_shrink_scan(struct shrinker *shrink, struct shrink_control *sc)
->  		lru_del(range);
->  
->  		freed += range_size(range);
-> +		sc->nr_to_scan -=  range_size(range);
-                                 ^^
-Two space characters.
+Now that there is a "real" solution for exfat in the vfs tree queued up
+to be merged in 5.7-rc1 the "old" exfat code in staging can be removed.
 
-In the old code we didn't *really* have to worry about sc->nr_to_scan
-dropping to negative, but now we do.  ->nr_to_scan is unsigned so it
-would be a high positive value now so it's maybe a forever loop?  I'm
-too lazy to verify...
+Many thanks to Valdis for doing the work to get this into the tree in
+the first place, it was greatly appreciated.
 
-regards,
-dan carpenter
+Cc: Valdis Kletnieks <valdis.kletnieks@vt.edu>
+Cc: Pali Roh=E1r <pali@kernel.org>
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>
+Cc: Al Viro <viro@ZenIV.linux.org.uk>
+Cc: Namjae Jeon <namjae.jeon@samsung.com>
+Cc: Sungjong Seo <sj1557.seo@samsung.com>
+Cc: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ MAINTAINERS                          |    6 -
+ drivers/staging/Kconfig              |    2 -
+ drivers/staging/Makefile             |    1 -
+ drivers/staging/exfat/Kconfig        |   41 -
+ drivers/staging/exfat/Makefile       |   10 -
+ drivers/staging/exfat/TODO           |   69 -
+ drivers/staging/exfat/exfat.h        |  760 ------
+ drivers/staging/exfat/exfat_blkdev.c |  138 --
+ drivers/staging/exfat/exfat_cache.c  |  514 ----
+ drivers/staging/exfat/exfat_core.c   | 2529 --------------------
+ drivers/staging/exfat/exfat_nls.c    |  212 --
+ drivers/staging/exfat/exfat_super.c  | 3296 --------------------------
+ drivers/staging/exfat/exfat_upcase.c |  740 ------
+ 13 files changed, 8318 deletions(-)
+ delete mode 100644 drivers/staging/exfat/Kconfig
+ delete mode 100644 drivers/staging/exfat/Makefile
+ delete mode 100644 drivers/staging/exfat/TODO
+ delete mode 100644 drivers/staging/exfat/exfat.h
+ delete mode 100644 drivers/staging/exfat/exfat_blkdev.c
+ delete mode 100644 drivers/staging/exfat/exfat_cache.c
+ delete mode 100644 drivers/staging/exfat/exfat_core.c
+ delete mode 100644 drivers/staging/exfat/exfat_nls.c
+ delete mode 100644 drivers/staging/exfat/exfat_super.c
+ delete mode 100644 drivers/staging/exfat/exfat_upcase.c
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 83bf5bcb9466..836f1e262b4e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -6301,12 +6301,6 @@ F:	include/trace/events/mdio.h
+ F:	include/uapi/linux/mdio.h
+ F:	include/uapi/linux/mii.h
+ =
+
+-EXFAT FILE SYSTEM
+-M:	Valdis Kletnieks <valdis.kletnieks@vt.edu>
+-L:	linux-fsdevel@vger.kernel.org
+-S:	Maintained
+-F:	drivers/staging/exfat/
+-
+ EXT2 FILE SYSTEM
+ M:	Jan Kara <jack@suse.com>
+ L:	linux-ext4@vger.kernel.org
+diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
+index f46c1f7d0d39..6cb5444776e8 100644
+--- a/drivers/staging/Kconfig
++++ b/drivers/staging/Kconfig
+@@ -116,8 +116,6 @@ source "drivers/staging/fieldbus/Kconfig"
+ =
+
+ source "drivers/staging/kpc2000/Kconfig"
+ =
+
+-source "drivers/staging/exfat/Kconfig"
+-
+ source "drivers/staging/qlge/Kconfig"
+ =
+
+ source "drivers/staging/hp/Kconfig"
+diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
+index bb26d753066c..e7b06e823e91 100644
+--- a/drivers/staging/Makefile
++++ b/drivers/staging/Makefile
+@@ -48,7 +48,6 @@ obj-$(CONFIG_STAGING_GASKET_FRAMEWORK)	+=3D gasket/
+ obj-$(CONFIG_XIL_AXIS_FIFO)	+=3D axis-fifo/
+ obj-$(CONFIG_FIELDBUS_DEV)     +=3D fieldbus/
+ obj-$(CONFIG_KPC2000)		+=3D kpc2000/
+-obj-$(CONFIG_STAGING_EXFAT_FS)	+=3D exfat/
+ obj-$(CONFIG_QLGE)		+=3D qlge/
+ obj-$(CONFIG_NET_VENDOR_HP)	+=3D hp/
+ obj-$(CONFIG_WFX)		+=3D wfx/
+diff --git a/drivers/staging/exfat/Kconfig b/drivers/staging/exfat/Kconfig
+deleted file mode 100644
+index 292a19dfcaf5..000000000000
+--- a/drivers/staging/exfat/Kconfig
++++ /dev/null
+@@ -1,41 +0,0 @@
+-# SPDX-License-Identifier: GPL-2.0
+-config STAGING_EXFAT_FS
+-	tristate "exFAT fs support"
+-	depends on BLOCK
+-	select NLS
+-	help
+-	  This adds support for the exFAT file system.
+-
+-config STAGING_EXFAT_DISCARD
+-	bool "enable discard support"
+-	depends on STAGING_EXFAT_FS
+-	default y
+-
+-config STAGING_EXFAT_DELAYED_SYNC
+-	bool "enable delayed sync"
+-	depends on STAGING_EXFAT_FS
+-	default n
+-
+-config STAGING_EXFAT_KERNEL_DEBUG
+-	bool "enable kernel debug features via ioctl"
+-	depends on STAGING_EXFAT_FS
+-	default n
+-
+-config STAGING_EXFAT_DEBUG_MSG
+-	bool "print debug messages"
+-	depends on STAGING_EXFAT_FS
+-	default n
+-
+-config STAGING_EXFAT_DEFAULT_CODEPAGE
+-	int "Default codepage for exFAT"
+-	default 437
+-	depends on STAGING_EXFAT_FS
+-	help
+-	  This option should be set to the codepage of your exFAT filesystems.
+-
+-config STAGING_EXFAT_DEFAULT_IOCHARSET
+-	string "Default iocharset for exFAT"
+-	default "utf8"
+-	depends on STAGING_EXFAT_FS
+-	help
+-	  Set this to the default input/output character set you'd like exFAT to =
+use.
+diff --git a/drivers/staging/exfat/Makefile b/drivers/staging/exfat/Makefile
+deleted file mode 100644
+index 057556eeca0c..000000000000
+--- a/drivers/staging/exfat/Makefile
++++ /dev/null
+@@ -1,10 +0,0 @@
+-# SPDX-License-Identifier: GPL-2.0-or-later
+-
+-obj-$(CONFIG_STAGING_EXFAT_FS) +=3D exfat.o
+-
+-exfat-y :=3D	exfat_core.o	\
+-		exfat_super.o	\
+-		exfat_blkdev.o	\
+-		exfat_cache.o	\
+-		exfat_nls.o	\
+-		exfat_upcase.o
+diff --git a/drivers/staging/exfat/TODO b/drivers/staging/exfat/TODO
+deleted file mode 100644
+index a283ce534cf4..000000000000
+--- a/drivers/staging/exfat/TODO
++++ /dev/null
+@@ -1,69 +0,0 @@
+-A laundry list of things that need looking at, most of which will
+-require more work than the average checkpatch cleanup...
+-
+-Note that some of these entries may not be bugs - they're things
+-that need to be looked at, and *possibly* fixed.
+-
+-Clean up the ffsCamelCase function names.
+-
+-Fix (thing)->flags to not use magic numbers - multiple offenders
+-
+-Sort out all the s32/u32/u8 nonsense - most of these should be plain int.
+-
+-exfat_core.c - ffsReadFile - the goto err_out seem to leak a brelse().
+-same for ffsWriteFile.
+-
+-All the calls to fs_sync() need to be looked at, particularly in the
+-context of EXFAT_DELAYED_SYNC. Currently, if that's defined, we only
+-flush to disk when sync() gets called.  We should be doing at least
+-metadata flushes at appropriate times.
+-
+-ffsTruncateFile -  if (old_size <=3D new_size) {
+-That doesn't look right. How did it ever work? Are they relying on lazy
+-block allocation when actual writes happen? If nothing else, it never
+-does the 'fid->size =3D new_size' and do the inode update....
+-
+-ffsSetAttr() is just dangling in the breeze, not wired up at all...
+-
+-Convert global mutexes to a per-superblock mutex.
+-
+-Right now, we load exactly one UTF-8 table. Check to see
+-if that plays nice with different codepage and iocharset values
+-for simultanous mounts of different devices
+-
+-exfat_rmdir() checks for -EBUSY but ffsRemoveDir() doesn't return it.
+-In fact, there's a complete lack of -EBUSY testing anywhere.
+-
+-There's probably a few missing checks for -EEXIST
+-
+-check return codes of sync_dirty_buffer()
+-
+-Why is remove_file doing a num_entries++??
+-
+-Double check a lot of can't-happen parameter checks (for null pointers for
+-things that have only one call site and can't pass a null, etc).
+-
+-All the DEBUG stuff can probably be tossed, including the ioctl(). Either
+-that, or convert to a proper fault-injection system.
+-
+-exfat_remount does exactly one thing.  Fix to actually deal with remount
+-options, particularly handling R/O correctly.  For that matter, allow
+-R/O mounts in the first place.
+-
+-Figure out why the VFAT code used multi_sector_(read|write) but the
+-exfat code doesn't use it. The difference matters on SSDs with wear leveli=
+ng.
+-
+-exfat_fat_sync(), exfat_buf_sync(), and sync_alloc_bitmap()
+-aren't called anyplace....
+-
+-Create helper function for exfat_set_entry_time() and exfat_set_entry_type=
+()
+-because it's sort of ugly to be calling the same functionn directly and
+-other code calling through the fs_func struc ponters...
+-
+-clean up the remaining vol_type checks, which are of two types:
+-some are ?: operators with magic numbers, and the rest are places
+-where we're doing stuff with '.' and '..'.
+-
+-Patches to:
+-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+-	Valdis Kletnieks <valdis.kletnieks@vt.edu>
+diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
+deleted file mode 100644
+index 341c9192f7e8..000000000000
+--- a/drivers/staging/exfat/exfat.h
++++ /dev/null
+@@ -1,760 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0-or-later */
+-/*
+- *  Copyright (C) 2012-2013 Samsung Electronics Co., Ltd.
+- */
+-
+-#ifndef _EXFAT_H
+-#define _EXFAT_H
+-
+-#include <linux/types.h>
+-#include <linux/buffer_head.h>
+-
+-#ifdef CONFIG_STAGING_EXFAT_KERNEL_DEBUG
+-  /* For Debugging Purpose */
+-	/* IOCTL code 'f' used by
+-	 *   - file systems typically #0~0x1F
+-	 *   - embedded terminal devices #128~
+-	 *   - exts for debugging purpose #99
+-	 * number 100 and 101 is available now but has possible conflicts
+-	 */
+-#define EXFAT_IOC_GET_DEBUGFLAGS	_IOR('f', 100, long)
+-#define EXFAT_IOC_SET_DEBUGFLAGS	_IOW('f', 101, long)
+-
+-#define EXFAT_DEBUGFLAGS_INVALID_UMOUNT	0x01
+-#define EXFAT_DEBUGFLAGS_ERROR_RW	0x02
+-#endif /* CONFIG_STAGING_EXFAT_KERNEL_DEBUG */
+-
+-#ifdef CONFIG_STAGING_EXFAT_DEBUG_MSG
+-#define DEBUG	1
+-#else
+-#undef DEBUG
+-#endif
+-
+-#define EFSCORRUPTED	EUCLEAN		/* Filesystem is corrupted */
+-
+-#define DENTRY_SIZE		32	/* dir entry size */
+-#define DENTRY_SIZE_BITS	5
+-
+-/* PBR entries */
+-#define PBR_SIGNATURE	0xAA55
+-#define EXT_SIGNATURE	0xAA550000
+-#define VOL_LABEL	"NO NAME    "	/* size should be 11 */
+-#define OEM_NAME	"MSWIN4.1"	/* size should be 8 */
+-#define STR_FAT12	"FAT12   "	/* size should be 8 */
+-#define STR_FAT16	"FAT16   "	/* size should be 8 */
+-#define STR_FAT32	"FAT32   "	/* size should be 8 */
+-#define STR_EXFAT	"EXFAT   "	/* size should be 8 */
+-#define VOL_CLEAN	0x0000
+-#define VOL_DIRTY	0x0002
+-
+-/* max number of clusters */
+-#define FAT12_THRESHOLD		4087		/* 2^12 - 1 + 2 (clu 0 & 1) */
+-#define FAT16_THRESHOLD		65527		/* 2^16 - 1 + 2 */
+-#define FAT32_THRESHOLD		268435457	/* 2^28 - 1 + 2 */
+-#define EXFAT_THRESHOLD		268435457	/* 2^28 - 1 + 2 */
+-
+-/* file types */
+-#define TYPE_UNUSED		0x0000
+-#define TYPE_DELETED		0x0001
+-#define TYPE_INVALID		0x0002
+-#define TYPE_CRITICAL_PRI	0x0100
+-#define TYPE_BITMAP		0x0101
+-#define TYPE_UPCASE		0x0102
+-#define TYPE_VOLUME		0x0103
+-#define TYPE_DIR		0x0104
+-#define TYPE_FILE		0x011F
+-#define TYPE_CRITICAL_SEC	0x0200
+-#define TYPE_STREAM		0x0201
+-#define TYPE_EXTEND		0x0202
+-#define TYPE_ACL		0x0203
+-#define TYPE_BENIGN_PRI		0x0400
+-#define TYPE_GUID		0x0401
+-#define TYPE_PADDING		0x0402
+-#define TYPE_ACLTAB		0x0403
+-#define TYPE_BENIGN_SEC		0x0800
+-#define TYPE_ALL		0x0FFF
+-
+-/* time modes */
+-#define TM_CREATE		0
+-#define TM_MODIFY		1
+-#define TM_ACCESS		2
+-
+-/* checksum types */
+-#define CS_DIR_ENTRY		0
+-#define CS_PBR_SECTOR		1
+-#define CS_DEFAULT		2
+-
+-#define CLUSTER_16(x)		((u16)(x))
+-#define CLUSTER_32(x)		((u32)(x))
+-
+-#define START_SECTOR(x)							\
+-	((((sector_t)((x) - 2)) << p_fs->sectors_per_clu_bits) +	\
+-	 p_fs->data_start_sector)
+-
+-#define IS_LAST_SECTOR_IN_CLUSTER(sec)				\
+-	((((sec) - p_fs->data_start_sector + 1) &		\
+-	  ((1 <<  p_fs->sectors_per_clu_bits) - 1)) =3D=3D 0)
+-
+-#define GET_CLUSTER_FROM_SECTOR(sec)				\
+-	((u32)((((sec) - p_fs->data_start_sector) >>		\
+-		p_fs->sectors_per_clu_bits) + 2))
+-
+-#define GET16(p_src)						\
+-	(((u16)(p_src)[0]) | (((u16)(p_src)[1]) << 8))
+-#define GET32(p_src)						\
+-	(((u32)(p_src)[0]) | (((u32)(p_src)[1]) << 8) |		\
+-	(((u32)(p_src)[2]) << 16) | (((u32)(p_src)[3]) << 24))
+-#define GET64(p_src) \
+-	(((u64)(p_src)[0]) | (((u64)(p_src)[1]) << 8) |		\
+-	(((u64)(p_src)[2]) << 16) | (((u64)(p_src)[3]) << 24) |	\
+-	(((u64)(p_src)[4]) << 32) | (((u64)(p_src)[5]) << 40) |	\
+-	(((u64)(p_src)[6]) << 48) | (((u64)(p_src)[7]) << 56))
+-
+-#define SET16(p_dst, src)					\
+-	do {							\
+-		(p_dst)[0] =3D (u8)(src);				\
+-		(p_dst)[1] =3D (u8)(((u16)(src)) >> 8);		\
+-	} while (0)
+-#define SET32(p_dst, src)					\
+-	do {							\
+-		(p_dst)[0] =3D (u8)(src);				\
+-		(p_dst)[1] =3D (u8)(((u32)(src)) >> 8);		\
+-		(p_dst)[2] =3D (u8)(((u32)(src)) >> 16);		\
+-		(p_dst)[3] =3D (u8)(((u32)(src)) >> 24);		\
+-	} while (0)
+-#define SET64(p_dst, src)					\
+-	do {							\
+-		(p_dst)[0] =3D (u8)(src);				\
+-		(p_dst)[1] =3D (u8)(((u64)(src)) >> 8);		\
+-		(p_dst)[2] =3D (u8)(((u64)(src)) >> 16);		\
+-		(p_dst)[3] =3D (u8)(((u64)(src)) >> 24);		\
+-		(p_dst)[4] =3D (u8)(((u64)(src)) >> 32);		\
+-		(p_dst)[5] =3D (u8)(((u64)(src)) >> 40);		\
+-		(p_dst)[6] =3D (u8)(((u64)(src)) >> 48);		\
+-		(p_dst)[7] =3D (u8)(((u64)(src)) >> 56);		\
+-	} while (0)
+-
+-#ifdef __LITTLE_ENDIAN
+-#define GET16_A(p_src)		(*((u16 *)(p_src)))
+-#define GET32_A(p_src)		(*((u32 *)(p_src)))
+-#define GET64_A(p_src)		(*((u64 *)(p_src)))
+-#define SET16_A(p_dst, src)	(*((u16 *)(p_dst)) =3D (u16)(src))
+-#define SET32_A(p_dst, src)	(*((u32 *)(p_dst)) =3D (u32)(src))
+-#define SET64_A(p_dst, src)	(*((u64 *)(p_dst)) =3D (u64)(src))
+-#else /* BIG_ENDIAN */
+-#define GET16_A(p_src)		GET16(p_src)
+-#define GET32_A(p_src)		GET32(p_src)
+-#define GET64_A(p_src)		GET64(p_src)
+-#define SET16_A(p_dst, src)	SET16(p_dst, src)
+-#define SET32_A(p_dst, src)	SET32(p_dst, src)
+-#define SET64_A(p_dst, src)	SET64(p_dst, src)
+-#endif
+-
+-/* cache size (in number of sectors) */
+-/* (should be an exponential value of 2) */
+-#define FAT_CACHE_SIZE		128
+-#define FAT_CACHE_HASH_SIZE	64
+-#define BUF_CACHE_SIZE		256
+-#define BUF_CACHE_HASH_SIZE	64
+-
+-/* Upcase table macro */
+-#define HIGH_INDEX_BIT	(8)
+-#define HIGH_INDEX_MASK	(0xFF00)
+-#define LOW_INDEX_BIT	(16 - HIGH_INDEX_BIT)
+-#define UTBL_ROW_COUNT	BIT(LOW_INDEX_BIT)
+-#define UTBL_COL_COUNT	BIT(HIGH_INDEX_BIT)
+-
+-static inline u16 get_col_index(u16 i)
+-{
+-	return i >> LOW_INDEX_BIT;
+-}
+-
+-static inline u16 get_row_index(u16 i)
+-{
+-	return i & ~HIGH_INDEX_MASK;
+-}
+-
+-#define EXFAT_SUPER_MAGIC       (0x2011BAB0L)
+-#define EXFAT_ROOT_INO          1
+-
+-/* FAT types */
+-#define FAT12			0x01	/* FAT12 */
+-#define FAT16			0x0E	/* Win95 FAT16 (LBA) */
+-#define FAT32			0x0C	/* Win95 FAT32 (LBA) */
+-#define EXFAT			0x07	/* exFAT */
+-
+-/* file name lengths */
+-#define MAX_CHARSET_SIZE	3	/* max size of multi-byte character */
+-#define MAX_PATH_DEPTH		15	/* max depth of path name */
+-#define MAX_NAME_LENGTH		256	/* max len of filename including NULL */
+-#define MAX_PATH_LENGTH		260	/* max len of pathname including NULL */
+-
+-/* file attributes */
+-#define ATTR_NORMAL		0x0000
+-#define ATTR_READONLY		0x0001
+-#define ATTR_HIDDEN		0x0002
+-#define ATTR_SYSTEM		0x0004
+-#define ATTR_VOLUME		0x0008
+-#define ATTR_SUBDIR		0x0010
+-#define ATTR_ARCHIVE		0x0020
+-#define ATTR_EXTEND		0x000F
+-#define ATTR_RWMASK		0x007E
+-
+-#define NUM_UPCASE              2918
+-
+-#ifdef __LITTLE_ENDIAN
+-#define UNI_CUR_DIR_NAME        ".\0"
+-#define UNI_PAR_DIR_NAME        ".\0.\0"
+-#else
+-#define UNI_CUR_DIR_NAME        "\0."
+-#define UNI_PAR_DIR_NAME        "\0.\0."
+-#endif
+-
+-struct date_time_t {
+-	u16      year;
+-	u16      month;
+-	u16      day;
+-	u16      hour;
+-	u16      minute;
+-	u16      second;
+-	u16      millisecond;
+-};
+-
+-struct vol_info_t {
+-	u32      FatType;
+-	u32      ClusterSize;
+-	u32      NumClusters;
+-	u32      FreeClusters;
+-	u32      UsedClusters;
+-};
+-
+-/* directory structure */
+-struct chain_t {
+-	u32      dir;
+-	s32       size;
+-	u8       flags;
+-};
+-
+-struct file_id_t {
+-	struct chain_t     dir;
+-	s32       entry;
+-	u32      type;
+-	u32      attr;
+-	u32      start_clu;
+-	u64      size;
+-	u8       flags;
+-	s64       rwoffset;
+-	s32       hint_last_off;
+-	u32      hint_last_clu;
+-};
+-
+-struct dir_entry_t {
+-	char name[MAX_NAME_LENGTH * MAX_CHARSET_SIZE];
+-	u32 attr;
+-	u64 Size;
+-	u32 num_subdirs;
+-	struct date_time_t create_timestamp;
+-	struct date_time_t modify_timestamp;
+-	struct date_time_t access_timestamp;
+-};
+-
+-struct timestamp_t {
+-	u16      sec;        /* 0 ~ 59               */
+-	u16      min;        /* 0 ~ 59               */
+-	u16      hour;       /* 0 ~ 23               */
+-	u16      day;        /* 1 ~ 31               */
+-	u16      mon;        /* 1 ~ 12               */
+-	u16      year;       /* 0 ~ 127 (since 1980) */
+-};
+-
+-/* MS_DOS FAT partition boot record (512 bytes) */
+-struct pbr_sector_t {
+-	u8       jmp_boot[3];
+-	u8       oem_name[8];
+-	u8       bpb[109];
+-	u8       boot_code[390];
+-	u8       signature[2];
+-};
+-
+-/* MS-DOS FAT12/16 BIOS parameter block (51 bytes) */
+-struct bpb16_t {
+-	u8       sector_size[2];
+-	u8       sectors_per_clu;
+-	u8       num_reserved[2];
+-	u8       num_fats;
+-	u8       num_root_entries[2];
+-	u8       num_sectors[2];
+-	u8       media_type;
+-	u8       num_fat_sectors[2];
+-	u8       sectors_in_track[2];
+-	u8       num_heads[2];
+-	u8       num_hid_sectors[4];
+-	u8       num_huge_sectors[4];
+-
+-	u8       phy_drv_no;
+-	u8       reserved;
+-	u8       ext_signature;
+-	u8       vol_serial[4];
+-	u8       vol_label[11];
+-	u8       vol_type[8];
+-};
+-
+-/* MS-DOS FAT32 BIOS parameter block (79 bytes) */
+-struct bpb32_t {
+-	u8       sector_size[2];
+-	u8       sectors_per_clu;
+-	u8       num_reserved[2];
+-	u8       num_fats;
+-	u8       num_root_entries[2];
+-	u8       num_sectors[2];
+-	u8       media_type;
+-	u8       num_fat_sectors[2];
+-	u8       sectors_in_track[2];
+-	u8       num_heads[2];
+-	u8       num_hid_sectors[4];
+-	u8       num_huge_sectors[4];
+-	u8       num_fat32_sectors[4];
+-	u8       ext_flags[2];
+-	u8       fs_version[2];
+-	u8       root_cluster[4];
+-	u8       fsinfo_sector[2];
+-	u8       backup_sector[2];
+-	u8       reserved[12];
+-
+-	u8       phy_drv_no;
+-	u8       ext_reserved;
+-	u8       ext_signature;
+-	u8       vol_serial[4];
+-	u8       vol_label[11];
+-	u8       vol_type[8];
+-};
+-
+-/* MS-DOS EXFAT BIOS parameter block (109 bytes) */
+-struct bpbex_t {
+-	u8       reserved1[53];
+-	u8       vol_offset[8];
+-	u8       vol_length[8];
+-	u8       fat_offset[4];
+-	u8       fat_length[4];
+-	u8       clu_offset[4];
+-	u8       clu_count[4];
+-	u8       root_cluster[4];
+-	u8       vol_serial[4];
+-	u8       fs_version[2];
+-	u8       vol_flags[2];
+-	u8       sector_size_bits;
+-	u8       sectors_per_clu_bits;
+-	u8       num_fats;
+-	u8       phy_drv_no;
+-	u8       perc_in_use;
+-	u8       reserved2[7];
+-};
+-
+-/* MS-DOS FAT file system information sector (512 bytes) */
+-struct fsi_sector_t {
+-	u8       signature1[4];
+-	u8       reserved1[480];
+-	u8       signature2[4];
+-	u8       free_cluster[4];
+-	u8       next_cluster[4];
+-	u8       reserved2[14];
+-	u8       signature3[2];
+-};
+-
+-/* MS-DOS FAT directory entry (32 bytes) */
+-struct dentry_t {
+-	u8       dummy[32];
+-};
+-
+-/* MS-DOS EXFAT file directory entry (32 bytes) */
+-struct file_dentry_t {
+-	u8       type;
+-	u8       num_ext;
+-	u8       checksum[2];
+-	u8       attr[2];
+-	u8       reserved1[2];
+-	u8       create_time[2];
+-	u8       create_date[2];
+-	u8       modify_time[2];
+-	u8       modify_date[2];
+-	u8       access_time[2];
+-	u8       access_date[2];
+-	u8       create_time_ms;
+-	u8       modify_time_ms;
+-	u8       access_time_ms;
+-	u8       reserved2[9];
+-};
+-
+-/* MS-DOS EXFAT stream extension directory entry (32 bytes) */
+-struct strm_dentry_t {
+-	u8       type;
+-	u8       flags;
+-	u8       reserved1;
+-	u8       name_len;
+-	u8       name_hash[2];
+-	u8       reserved2[2];
+-	u8       valid_size[8];
+-	u8       reserved3[4];
+-	u8       start_clu[4];
+-	u8       size[8];
+-};
+-
+-/* MS-DOS EXFAT file name directory entry (32 bytes) */
+-struct name_dentry_t {
+-	u8       type;
+-	u8       flags;
+-	u8       unicode_0_14[30];
+-};
+-
+-/* MS-DOS EXFAT allocation bitmap directory entry (32 bytes) */
+-struct bmap_dentry_t {
+-	u8       type;
+-	u8       flags;
+-	u8       reserved[18];
+-	u8       start_clu[4];
+-	u8       size[8];
+-};
+-
+-/* MS-DOS EXFAT up-case table directory entry (32 bytes) */
+-struct case_dentry_t {
+-	u8       type;
+-	u8       reserved1[3];
+-	u8       checksum[4];
+-	u8       reserved2[12];
+-	u8       start_clu[4];
+-	u8       size[8];
+-};
+-
+-/* MS-DOS EXFAT volume label directory entry (32 bytes) */
+-struct volm_dentry_t {
+-	u8       type;
+-	u8       label_len;
+-	u8       unicode_0_10[22];
+-	u8       reserved[8];
+-};
+-
+-/* unused entry hint information */
+-struct uentry_t {
+-	u32      dir;
+-	s32       entry;
+-	struct chain_t     clu;
+-};
+-
+-/* unicode name structure */
+-struct uni_name_t {
+-	u16      name[MAX_NAME_LENGTH];
+-	u16      name_hash;
+-	u8       name_len;
+-};
+-
+-struct buf_cache_t {
+-	struct buf_cache_t *next;
+-	struct buf_cache_t *prev;
+-	struct buf_cache_t *hash_next;
+-	struct buf_cache_t *hash_prev;
+-	s32                drv;
+-	sector_t          sec;
+-	bool              locked;
+-	struct buffer_head   *buf_bh;
+-};
+-
+-struct fs_info_t {
+-	u32      drv;                    /* drive ID */
+-	u32      vol_id;                 /* volume serial number */
+-
+-	u64      num_sectors;            /* num of sectors in volume */
+-	u32      num_clusters;           /* num of clusters in volume */
+-	u32      cluster_size;           /* cluster size in bytes */
+-	u32      cluster_size_bits;
+-	u32      sectors_per_clu;        /* cluster size in sectors */
+-	u32      sectors_per_clu_bits;
+-
+-	u32      PBR_sector;             /* PBR sector */
+-	u32      FAT1_start_sector;      /* FAT1 start sector */
+-	u32      FAT2_start_sector;      /* FAT2 start sector */
+-	u32      root_start_sector;      /* root dir start sector */
+-	u32      data_start_sector;      /* data area start sector */
+-	u32      num_FAT_sectors;        /* num of FAT sectors */
+-
+-	u32      root_dir;               /* root dir cluster */
+-	u32      dentries_in_root;       /* num of dentries in root dir */
+-	u32      dentries_per_clu;       /* num of dentries per cluster */
+-
+-	u32      vol_flag;               /* volume dirty flag */
+-	struct buffer_head *pbr_bh;         /* PBR sector */
+-
+-	u32      map_clu;                /* allocation bitmap start cluster */
+-	u32      map_sectors;            /* num of allocation bitmap sectors */
+-	struct buffer_head **vol_amap;      /* allocation bitmap */
+-
+-	u16 **vol_utbl;			/* upcase table */
+-
+-	u32 clu_srch_ptr;		/* cluster search pointer */
+-	u32 used_clusters;		/* number of used clusters */
+-	struct uentry_t hint_uentry;	/* unused entry hint information */
+-
+-	u32 dev_ejected;	/* block device operation error flag */
+-
+-	struct mutex v_mutex;
+-
+-	/* FAT cache */
+-	struct buf_cache_t FAT_cache_array[FAT_CACHE_SIZE];
+-	struct buf_cache_t FAT_cache_lru_list;
+-	struct buf_cache_t FAT_cache_hash_list[FAT_CACHE_HASH_SIZE];
+-
+-	/* buf cache */
+-	struct buf_cache_t buf_cache_array[BUF_CACHE_SIZE];
+-	struct buf_cache_t buf_cache_lru_list;
+-	struct buf_cache_t buf_cache_hash_list[BUF_CACHE_HASH_SIZE];
+-};
+-
+-#define ES_2_ENTRIES		2
+-#define ES_3_ENTRIES		3
+-#define ES_ALL_ENTRIES		0
+-
+-struct entry_set_cache_t {
+-	/* sector number that contains file_entry */
+-	sector_t sector;
+-
+-	/* byte offset in the sector */
+-	s32 offset;
+-
+-	/*
+-	 * flag in stream entry.
+-	 * 01 for cluster chain,
+-	 * 03 for contig. clusteres.
+-	 */
+-	s32 alloc_flag;
+-
+-	u32 num_entries;
+-
+-	/* __buf should be the last member */
+-	void *__buf;
+-};
+-
+-#define EXFAT_ERRORS_CONT	1	/* ignore error and continue */
+-#define EXFAT_ERRORS_PANIC	2	/* panic on error */
+-#define EXFAT_ERRORS_RO		3	/* remount r/o on error */
+-
+-/* ioctl command */
+-#define EXFAT_IOCTL_GET_VOLUME_ID _IOR('r', 0x12, __u32)
+-
+-struct exfat_mount_options {
+-	kuid_t fs_uid;
+-	kgid_t fs_gid;
+-	unsigned short fs_fmask;
+-	unsigned short fs_dmask;
+-
+-	/* permission for setting the [am]time */
+-	unsigned short allow_utime;
+-
+-	/* codepage for shortname conversions */
+-	unsigned short codepage;
+-
+-	/* charset for filename input/display */
+-	char *iocharset;
+-
+-	unsigned char casesensitive;
+-
+-	/* on error: continue, panic, remount-ro */
+-	unsigned char errors;
+-#ifdef CONFIG_STAGING_EXFAT_DISCARD
+-	/* flag on if -o dicard specified and device support discard() */
+-	unsigned char discard;
+-#endif /* CONFIG_STAGING_EXFAT_DISCARD */
+-};
+-
+-#define EXFAT_HASH_BITS		8
+-#define EXFAT_HASH_SIZE		BIT(EXFAT_HASH_BITS)
+-
+-/*
+- * EXFAT file system in-core superblock data
+- */
+-struct bd_info_t {
+-	s32 sector_size;	/* in bytes */
+-	s32 sector_size_bits;
+-	s32 sector_size_mask;
+-
+-	/* total number of sectors in this block device */
+-	s32 num_sectors;
+-
+-	/* opened or not */
+-	bool opened;
+-};
+-
+-struct exfat_sb_info {
+-	struct fs_info_t fs_info;
+-	struct bd_info_t bd_info;
+-
+-	struct exfat_mount_options options;
+-
+-	int s_dirt;
+-	struct mutex s_lock;
+-	struct nls_table *nls_disk; /* Codepage used on disk */
+-	struct nls_table *nls_io;   /* Charset used for input and display */
+-
+-	struct inode *fat_inode;
+-
+-	spinlock_t inode_hash_lock;
+-	struct hlist_head inode_hashtable[EXFAT_HASH_SIZE];
+-#ifdef CONFIG_STAGING_EXFAT_KERNEL_DEBUG
+-	long debug_flags;
+-#endif /* CONFIG_STAGING_EXFAT_KERNEL_DEBUG */
+-};
+-
+-/*
+- * EXFAT file system inode data in memory
+- */
+-struct exfat_inode_info {
+-	struct file_id_t fid;
+-	char  *target;
+-	/* NOTE: mmu_private is 64bits, so must hold ->i_mutex to access */
+-	loff_t mmu_private;	/* physically allocated size */
+-	loff_t i_pos;		/* on-disk position of directory entry or 0 */
+-	struct hlist_node i_hash_fat;	/* hash by i_location */
+-	struct rw_semaphore truncate_lock;
+-	struct inode vfs_inode;
+-	struct rw_semaphore i_alloc_sem; /* protect bmap against truncate */
+-};
+-
+-#define EXFAT_SB(sb)		((struct exfat_sb_info *)((sb)->s_fs_info))
+-
+-static inline struct exfat_inode_info *EXFAT_I(struct inode *inode)
+-{
+-	return container_of(inode, struct exfat_inode_info, vfs_inode);
+-}
+-
+-/* NLS management function */
+-u16 nls_upper(struct super_block *sb, u16 a);
+-int nls_uniname_cmp(struct super_block *sb, u16 *a, u16 *b);
+-void nls_uniname_to_cstring(struct super_block *sb, u8 *p_cstring,
+-			    struct uni_name_t *p_uniname);
+-void nls_cstring_to_uniname(struct super_block *sb,
+-			    struct uni_name_t *p_uniname, u8 *p_cstring,
+-			    bool *p_lossy);
+-
+-/* buffer cache management */
+-void exfat_buf_init(struct super_block *sb);
+-void exfat_buf_shutdown(struct super_block *sb);
+-int exfat_fat_read(struct super_block *sb, u32 loc, u32 *content);
+-s32 exfat_fat_write(struct super_block *sb, u32 loc, u32 content);
+-u8 *exfat_fat_getblk(struct super_block *sb, sector_t sec);
+-void exfat_fat_modify(struct super_block *sb, sector_t sec);
+-void exfat_fat_release_all(struct super_block *sb);
+-u8 *exfat_buf_getblk(struct super_block *sb, sector_t sec);
+-void exfat_buf_modify(struct super_block *sb, sector_t sec);
+-void exfat_buf_lock(struct super_block *sb, sector_t sec);
+-void exfat_buf_unlock(struct super_block *sb, sector_t sec);
+-void exfat_buf_release(struct super_block *sb, sector_t sec);
+-void exfat_buf_release_all(struct super_block *sb);
+-
+-/* fs management functions */
+-void fs_set_vol_flags(struct super_block *sb, u32 new_flag);
+-void fs_error(struct super_block *sb);
+-
+-/* cluster management functions */
+-s32 count_num_clusters(struct super_block *sb, struct chain_t *dir);
+-void exfat_chain_cont_cluster(struct super_block *sb, u32 chain, s32 len);
+-
+-/* allocation bitmap management functions */
+-s32 load_alloc_bitmap(struct super_block *sb);
+-void free_alloc_bitmap(struct super_block *sb);
+-
+-/* upcase table management functions */
+-s32 load_upcase_table(struct super_block *sb);
+-void free_upcase_table(struct super_block *sb);
+-
+-/* dir entry management functions */
+-struct timestamp_t *tm_current(struct timestamp_t *tm);
+-
+-struct dentry_t *get_entry_in_dir(struct super_block *sb, struct chain_t *=
+p_dir,
+-				  s32 entry, sector_t *sector);
+-struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
+-					       struct chain_t *p_dir, s32 entry,
+-					       u32 type,
+-					       struct dentry_t **file_ep);
+-void release_entry_set(struct entry_set_cache_t *es);
+-s32 count_dir_entries(struct super_block *sb, struct chain_t *p_dir);
+-void update_dir_checksum(struct super_block *sb, struct chain_t *p_dir,
+-			 s32 entry);
+-void update_dir_checksum_with_entry_set(struct super_block *sb,
+-					struct entry_set_cache_t *es);
+-bool is_dir_empty(struct super_block *sb, struct chain_t *p_dir);
+-
+-/* name conversion functions */
+-s32 get_num_entries(struct super_block *sb, struct chain_t *p_dir,
+-		    struct uni_name_t *p_uniname, s32 *entries);
+-u16 calc_checksum_2byte(void *data, s32 len, u16 chksum, s32 type);
+-
+-/* name resolution functions */
+-s32 resolve_path(struct inode *inode, char *path, struct chain_t *p_dir,
+-		 struct uni_name_t *p_uniname);
+-
+-/* file operation functions */
+-s32 exfat_mount(struct super_block *sb, struct pbr_sector_t *p_pbr);
+-s32 create_dir(struct inode *inode, struct chain_t *p_dir,
+-	       struct uni_name_t *p_uniname, struct file_id_t *fid);
+-s32 create_file(struct inode *inode, struct chain_t *p_dir,
+-		struct uni_name_t *p_uniname, struct file_id_t *fid);
+-void remove_file(struct inode *inode, struct chain_t *p_dir, s32 entry);
+-s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 old_=
+entry,
+-		      struct uni_name_t *p_uniname, struct file_id_t *fid);
+-s32 move_file(struct inode *inode, struct chain_t *p_olddir, s32 oldentry,
+-	      struct chain_t *p_newdir, struct uni_name_t *p_uniname,
+-	      struct file_id_t *fid);
+-
+-/* sector read/write functions */
+-int sector_read(struct super_block *sb, sector_t sec,
+-		struct buffer_head **bh, bool read);
+-int sector_write(struct super_block *sb, sector_t sec,
+-		 struct buffer_head *bh, bool sync);
+-int multi_sector_read(struct super_block *sb, sector_t sec,
+-		      struct buffer_head **bh, s32 num_secs, bool read);
+-int multi_sector_write(struct super_block *sb, sector_t sec,
+-		       struct buffer_head *bh, s32 num_secs, bool sync);
+-
+-void exfat_bdev_open(struct super_block *sb);
+-void exfat_bdev_close(struct super_block *sb);
+-int exfat_bdev_read(struct super_block *sb, sector_t secno,
+-		    struct buffer_head **bh, u32 num_secs, bool read);
+-int exfat_bdev_write(struct super_block *sb, sector_t secno,
+-		     struct buffer_head *bh, u32 num_secs, bool sync);
+-int exfat_bdev_sync(struct super_block *sb);
+-
+-/* cluster operation functions */
+-s32 exfat_alloc_cluster(struct super_block *sb, s32 num_alloc,
+-			struct chain_t *p_chain);
+-void exfat_free_cluster(struct super_block *sb, struct chain_t *p_chain,
+-			s32 do_relse);
+-s32 exfat_count_used_clusters(struct super_block *sb);
+-
+-/* dir operation functions */
+-s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
+-			 struct uni_name_t *p_uniname, s32 num_entries,
+-			 u32 type);
+-void exfat_delete_dir_entry(struct super_block *sb, struct chain_t *p_dir,
+-			    s32 entry, s32 order, s32 num_entries);
+-void exfat_get_uni_name_from_ext_entry(struct super_block *sb,
+-				       struct chain_t *p_dir, s32 entry,
+-				       u16 *uniname);
+-s32 exfat_count_ext_entries(struct super_block *sb, struct chain_t *p_dir,
+-			    s32 entry, struct dentry_t *p_entry);
+-s32 exfat_calc_num_entries(struct uni_name_t *p_uniname);
+-
+-/* dir entry getter/setter */
+-u32 exfat_get_entry_type(struct dentry_t *p_entry);
+-u32 exfat_get_entry_attr(struct dentry_t *p_entry);
+-void exfat_set_entry_attr(struct dentry_t *p_entry, u32 attr);
+-u8 exfat_get_entry_flag(struct dentry_t *p_entry);
+-void exfat_set_entry_flag(struct dentry_t *p_entry, u8 flags);
+-u32 exfat_get_entry_clu0(struct dentry_t *p_entry);
+-void exfat_set_entry_clu0(struct dentry_t *p_entry, u32 start_clu);
+-u64 exfat_get_entry_size(struct dentry_t *p_entry);
+-void exfat_set_entry_size(struct dentry_t *p_entry, u64 size);
+-void exfat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+-			  u8 mode);
+-void exfat_set_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+-			  u8 mode);
+-
+-extern const u8 uni_upcase[];
+-#endif /* _EXFAT_H */
+diff --git a/drivers/staging/exfat/exfat_blkdev.c b/drivers/staging/exfat/e=
+xfat_blkdev.c
+deleted file mode 100644
+index ddff019f2803..000000000000
+--- a/drivers/staging/exfat/exfat_blkdev.c
++++ /dev/null
+@@ -1,138 +0,0 @@
+-// SPDX-License-Identifier: GPL-2.0-or-later
+-/*
+- *  Copyright (C) 2012-2013 Samsung Electronics Co., Ltd.
+- */
+-
+-#include <linux/blkdev.h>
+-#include <linux/buffer_head.h>
+-#include <linux/fs.h>
+-#include "exfat.h"
+-
+-void exfat_bdev_open(struct super_block *sb)
+-{
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	if (p_bd->opened)
+-		return;
+-
+-	p_bd->sector_size      =3D bdev_logical_block_size(sb->s_bdev);
+-	p_bd->sector_size_bits =3D ilog2(p_bd->sector_size);
+-	p_bd->sector_size_mask =3D p_bd->sector_size - 1;
+-	p_bd->num_sectors      =3D i_size_read(sb->s_bdev->bd_inode) >>
+-				 p_bd->sector_size_bits;
+-	p_bd->opened =3D true;
+-}
+-
+-void exfat_bdev_close(struct super_block *sb)
+-{
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	p_bd->opened =3D false;
+-}
+-
+-int exfat_bdev_read(struct super_block *sb, sector_t secno,
+-		    struct buffer_head **bh, u32 num_secs,
+-		    bool read)
+-{
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-#ifdef CONFIG_STAGING_EXFAT_KERNEL_DEBUG
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	long flags =3D sbi->debug_flags;
+-
+-	if (flags & EXFAT_DEBUGFLAGS_ERROR_RW)
+-		return -EIO;
+-#endif /* CONFIG_STAGING_EXFAT_KERNEL_DEBUG */
+-
+-	if (!p_bd->opened)
+-		return -ENODEV;
+-
+-	if (*bh)
+-		__brelse(*bh);
+-
+-	if (read)
+-		*bh =3D __bread(sb->s_bdev, secno,
+-			      num_secs << p_bd->sector_size_bits);
+-	else
+-		*bh =3D __getblk(sb->s_bdev, secno,
+-			       num_secs << p_bd->sector_size_bits);
+-
+-	if (*bh)
+-		return 0;
+-
+-	WARN(!p_fs->dev_ejected,
+-	     "[EXFAT] No bh, device seems wrong or to be ejected.\n");
+-
+-	return -EIO;
+-}
+-
+-int exfat_bdev_write(struct super_block *sb, sector_t secno,
+-		     struct buffer_head *bh,
+-		     u32 num_secs, bool sync)
+-{
+-	s32 count;
+-	struct buffer_head *bh2;
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-#ifdef CONFIG_STAGING_EXFAT_KERNEL_DEBUG
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	long flags =3D sbi->debug_flags;
+-
+-	if (flags & EXFAT_DEBUGFLAGS_ERROR_RW)
+-		return -EIO;
+-#endif /* CONFIG_STAGING_EXFAT_KERNEL_DEBUG */
+-
+-	if (!p_bd->opened)
+-		return -ENODEV;
+-
+-	if (secno =3D=3D bh->b_blocknr) {
+-		lock_buffer(bh);
+-		set_buffer_uptodate(bh);
+-		mark_buffer_dirty(bh);
+-		unlock_buffer(bh);
+-		if (sync && (sync_dirty_buffer(bh) !=3D 0))
+-			return -EIO;
+-	} else {
+-		count =3D num_secs << p_bd->sector_size_bits;
+-
+-		bh2 =3D __getblk(sb->s_bdev, secno, count);
+-		if (!bh2)
+-			goto no_bh;
+-
+-		lock_buffer(bh2);
+-		memcpy(bh2->b_data, bh->b_data, count);
+-		set_buffer_uptodate(bh2);
+-		mark_buffer_dirty(bh2);
+-		unlock_buffer(bh2);
+-		if (sync && (sync_dirty_buffer(bh2) !=3D 0)) {
+-			__brelse(bh2);
+-			goto no_bh;
+-		}
+-		__brelse(bh2);
+-	}
+-
+-	return 0;
+-
+-no_bh:
+-	WARN(!p_fs->dev_ejected,
+-	     "[EXFAT] No bh, device seems wrong or to be ejected.\n");
+-
+-	return -EIO;
+-}
+-
+-int exfat_bdev_sync(struct super_block *sb)
+-{
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-#ifdef CONFIG_STAGING_EXFAT_KERNEL_DEBUG
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	long flags =3D sbi->debug_flags;
+-
+-	if (flags & EXFAT_DEBUGFLAGS_ERROR_RW)
+-		return -EIO;
+-#endif /* CONFIG_STAGING_EXFAT_KERNEL_DEBUG */
+-
+-	if (!p_bd->opened)
+-		return -ENODEV;
+-
+-	return sync_blockdev(sb->s_bdev);
+-}
+diff --git a/drivers/staging/exfat/exfat_cache.c b/drivers/staging/exfat/ex=
+fat_cache.c
+deleted file mode 100644
+index b15203d4e0ae..000000000000
+--- a/drivers/staging/exfat/exfat_cache.c
++++ /dev/null
+@@ -1,514 +0,0 @@
+-// SPDX-License-Identifier: GPL-2.0-or-later
+-/*
+- *  Copyright (C) 2012-2013 Samsung Electronics Co., Ltd.
+- */
+-
+-#include <linux/buffer_head.h>
+-#include <linux/fs.h>
+-#include <linux/mutex.h>
+-#include "exfat.h"
+-
+-/* Local variables */
+-static DEFINE_MUTEX(f_mutex);
+-static DEFINE_MUTEX(b_mutex);
+-
+-static struct buf_cache_t *FAT_cache_find(struct super_block *sb, sector_t=
+ sec)
+-{
+-	s32 off;
+-	struct buf_cache_t *bp, *hp;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	off =3D (sec +
+-	       (sec >> p_fs->sectors_per_clu_bits)) & (FAT_CACHE_HASH_SIZE - 1);
+-
+-	hp =3D &p_fs->FAT_cache_hash_list[off];
+-	for (bp =3D hp->hash_next; bp !=3D hp; bp =3D bp->hash_next) {
+-		if ((bp->drv =3D=3D p_fs->drv) && (bp->sec =3D=3D sec)) {
+-			WARN(!bp->buf_bh,
+-			     "[EXFAT] FAT_cache has no bh. It will make system panic.\n");
+-
+-			touch_buffer(bp->buf_bh);
+-			return bp;
+-		}
+-	}
+-	return NULL;
+-}
+-
+-static void push_to_mru(struct buf_cache_t *bp, struct buf_cache_t *list)
+-{
+-	bp->next =3D list->next;
+-	bp->prev =3D list;
+-	list->next->prev =3D bp;
+-	list->next =3D bp;
+-}
+-
+-static void push_to_lru(struct buf_cache_t *bp, struct buf_cache_t *list)
+-{
+-	bp->prev =3D list->prev;
+-	bp->next =3D list;
+-	list->prev->next =3D bp;
+-	list->prev =3D bp;
+-}
+-
+-static void move_to_mru(struct buf_cache_t *bp, struct buf_cache_t *list)
+-{
+-	bp->prev->next =3D bp->next;
+-	bp->next->prev =3D bp->prev;
+-	push_to_mru(bp, list);
+-}
+-
+-static void move_to_lru(struct buf_cache_t *bp, struct buf_cache_t *list)
+-{
+-	bp->prev->next =3D bp->next;
+-	bp->next->prev =3D bp->prev;
+-	push_to_lru(bp, list);
+-}
+-
+-static struct buf_cache_t *FAT_cache_get(struct super_block *sb, sector_t =
+sec)
+-{
+-	struct buf_cache_t *bp;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	bp =3D p_fs->FAT_cache_lru_list.prev;
+-
+-	move_to_mru(bp, &p_fs->FAT_cache_lru_list);
+-	return bp;
+-}
+-
+-static void FAT_cache_insert_hash(struct super_block *sb,
+-				  struct buf_cache_t *bp)
+-{
+-	s32 off;
+-	struct buf_cache_t *hp;
+-	struct fs_info_t *p_fs;
+-
+-	p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	off =3D (bp->sec +
+-	       (bp->sec >> p_fs->sectors_per_clu_bits)) &
+-		(FAT_CACHE_HASH_SIZE - 1);
+-
+-	hp =3D &p_fs->FAT_cache_hash_list[off];
+-	bp->hash_next =3D hp->hash_next;
+-	bp->hash_prev =3D hp;
+-	hp->hash_next->hash_prev =3D bp;
+-	hp->hash_next =3D bp;
+-}
+-
+-static void FAT_cache_remove_hash(struct buf_cache_t *bp)
+-{
+-	(bp->hash_prev)->hash_next =3D bp->hash_next;
+-	(bp->hash_next)->hash_prev =3D bp->hash_prev;
+-}
+-
+-static void buf_cache_insert_hash(struct super_block *sb,
+-				  struct buf_cache_t *bp)
+-{
+-	s32 off;
+-	struct buf_cache_t *hp;
+-	struct fs_info_t *p_fs;
+-
+-	p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	off =3D (bp->sec +
+-	       (bp->sec >> p_fs->sectors_per_clu_bits)) &
+-		(BUF_CACHE_HASH_SIZE - 1);
+-
+-	hp =3D &p_fs->buf_cache_hash_list[off];
+-	bp->hash_next =3D hp->hash_next;
+-	bp->hash_prev =3D hp;
+-	hp->hash_next->hash_prev =3D bp;
+-	hp->hash_next =3D bp;
+-}
+-
+-static void buf_cache_remove_hash(struct buf_cache_t *bp)
+-{
+-	(bp->hash_prev)->hash_next =3D bp->hash_next;
+-	(bp->hash_next)->hash_prev =3D bp->hash_prev;
+-}
+-
+-void exfat_buf_init(struct super_block *sb)
+-{
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	int i;
+-
+-	/* LRU list */
+-	p_fs->FAT_cache_lru_list.next =3D &p_fs->FAT_cache_lru_list;
+-	p_fs->FAT_cache_lru_list.prev =3D &p_fs->FAT_cache_lru_list;
+-
+-	for (i =3D 0; i < FAT_CACHE_SIZE; i++) {
+-		p_fs->FAT_cache_array[i].drv =3D -1;
+-		p_fs->FAT_cache_array[i].sec =3D ~0;
+-		p_fs->FAT_cache_array[i].locked =3D false;
+-		p_fs->FAT_cache_array[i].buf_bh =3D NULL;
+-		p_fs->FAT_cache_array[i].prev =3D NULL;
+-		p_fs->FAT_cache_array[i].next =3D NULL;
+-		push_to_mru(&p_fs->FAT_cache_array[i],
+-			    &p_fs->FAT_cache_lru_list);
+-	}
+-
+-	p_fs->buf_cache_lru_list.next =3D &p_fs->buf_cache_lru_list;
+-	p_fs->buf_cache_lru_list.prev =3D &p_fs->buf_cache_lru_list;
+-
+-	for (i =3D 0; i < BUF_CACHE_SIZE; i++) {
+-		p_fs->buf_cache_array[i].drv =3D -1;
+-		p_fs->buf_cache_array[i].sec =3D ~0;
+-		p_fs->buf_cache_array[i].locked =3D false;
+-		p_fs->buf_cache_array[i].buf_bh =3D NULL;
+-		p_fs->buf_cache_array[i].prev =3D NULL;
+-		p_fs->buf_cache_array[i].next =3D NULL;
+-		push_to_mru(&p_fs->buf_cache_array[i],
+-			    &p_fs->buf_cache_lru_list);
+-	}
+-
+-	/* HASH list */
+-	for (i =3D 0; i < FAT_CACHE_HASH_SIZE; i++) {
+-		p_fs->FAT_cache_hash_list[i].drv =3D -1;
+-		p_fs->FAT_cache_hash_list[i].sec =3D ~0;
+-		p_fs->FAT_cache_hash_list[i].hash_next =3D
+-			&p_fs->FAT_cache_hash_list[i];
+-		p_fs->FAT_cache_hash_list[i].hash_prev =3D
+-			&p_fs->FAT_cache_hash_list[i];
+-	}
+-
+-	for (i =3D 0; i < FAT_CACHE_SIZE; i++)
+-		FAT_cache_insert_hash(sb, &p_fs->FAT_cache_array[i]);
+-
+-	for (i =3D 0; i < BUF_CACHE_HASH_SIZE; i++) {
+-		p_fs->buf_cache_hash_list[i].drv =3D -1;
+-		p_fs->buf_cache_hash_list[i].sec =3D ~0;
+-		p_fs->buf_cache_hash_list[i].hash_next =3D
+-			&p_fs->buf_cache_hash_list[i];
+-		p_fs->buf_cache_hash_list[i].hash_prev =3D
+-			&p_fs->buf_cache_hash_list[i];
+-	}
+-
+-	for (i =3D 0; i < BUF_CACHE_SIZE; i++)
+-		buf_cache_insert_hash(sb, &p_fs->buf_cache_array[i]);
+-}
+-
+-void exfat_buf_shutdown(struct super_block *sb)
+-{
+-}
+-
+-static int __exfat_fat_read(struct super_block *sb, u32 loc, u32 *content)
+-{
+-	s32 off;
+-	u32 _content;
+-	sector_t sec;
+-	u8 *fat_sector, *fat_entry;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	sec =3D p_fs->FAT1_start_sector +
+-		(loc >> (p_bd->sector_size_bits - 2));
+-	off =3D (loc << 2) & p_bd->sector_size_mask;
+-
+-	fat_sector =3D exfat_fat_getblk(sb, sec);
+-	if (!fat_sector)
+-		return -1;
+-
+-	fat_entry =3D &fat_sector[off];
+-	_content =3D GET32_A(fat_entry);
+-
+-	if (_content >=3D CLUSTER_32(0xFFFFFFF8)) {
+-		*content =3D CLUSTER_32(~0);
+-		return 0;
+-	}
+-	*content =3D CLUSTER_32(_content);
+-	return 0;
+-}
+-
+-/* in : sb, loc
+- * out: content
+- * returns 0 on success
+- *            -1 on error
+- */
+-int exfat_fat_read(struct super_block *sb, u32 loc, u32 *content)
+-{
+-	s32 ret;
+-
+-	mutex_lock(&f_mutex);
+-	ret =3D __exfat_fat_read(sb, loc, content);
+-	mutex_unlock(&f_mutex);
+-
+-	return ret;
+-}
+-
+-static s32 __exfat_fat_write(struct super_block *sb, u32 loc, u32 content)
+-{
+-	s32 off;
+-	sector_t sec;
+-	u8 *fat_sector, *fat_entry;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	sec =3D p_fs->FAT1_start_sector + (loc >>
+-					 (p_bd->sector_size_bits - 2));
+-	off =3D (loc << 2) & p_bd->sector_size_mask;
+-
+-	fat_sector =3D exfat_fat_getblk(sb, sec);
+-	if (!fat_sector)
+-		return -1;
+-
+-	fat_entry =3D &fat_sector[off];
+-
+-	SET32_A(fat_entry, content);
+-
+-	exfat_fat_modify(sb, sec);
+-	return 0;
+-}
+-
+-int exfat_fat_write(struct super_block *sb, u32 loc, u32 content)
+-{
+-	s32 ret;
+-
+-	mutex_lock(&f_mutex);
+-	ret =3D __exfat_fat_write(sb, loc, content);
+-	mutex_unlock(&f_mutex);
+-
+-	return ret;
+-}
+-
+-u8 *exfat_fat_getblk(struct super_block *sb, sector_t sec)
+-{
+-	struct buf_cache_t *bp;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	bp =3D FAT_cache_find(sb, sec);
+-	if (bp) {
+-		move_to_mru(bp, &p_fs->FAT_cache_lru_list);
+-		return bp->buf_bh->b_data;
+-	}
+-
+-	bp =3D FAT_cache_get(sb, sec);
+-
+-	FAT_cache_remove_hash(bp);
+-
+-	bp->drv =3D p_fs->drv;
+-	bp->sec =3D sec;
+-	bp->locked =3D false;
+-
+-	FAT_cache_insert_hash(sb, bp);
+-
+-	if (sector_read(sb, sec, &bp->buf_bh, 1) !=3D 0) {
+-		FAT_cache_remove_hash(bp);
+-		bp->drv =3D -1;
+-		bp->sec =3D ~0;
+-		bp->locked =3D false;
+-		bp->buf_bh =3D NULL;
+-
+-		move_to_lru(bp, &p_fs->FAT_cache_lru_list);
+-		return NULL;
+-	}
+-
+-	return bp->buf_bh->b_data;
+-}
+-
+-void exfat_fat_modify(struct super_block *sb, sector_t sec)
+-{
+-	struct buf_cache_t *bp;
+-
+-	bp =3D FAT_cache_find(sb, sec);
+-	if (bp)
+-		sector_write(sb, sec, bp->buf_bh, 0);
+-}
+-
+-void exfat_fat_release_all(struct super_block *sb)
+-{
+-	struct buf_cache_t *bp;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	mutex_lock(&f_mutex);
+-
+-	bp =3D p_fs->FAT_cache_lru_list.next;
+-	while (bp !=3D &p_fs->FAT_cache_lru_list) {
+-		if (bp->drv =3D=3D p_fs->drv) {
+-			bp->drv =3D -1;
+-			bp->sec =3D ~0;
+-			bp->locked =3D false;
+-
+-			if (bp->buf_bh) {
+-				__brelse(bp->buf_bh);
+-				bp->buf_bh =3D NULL;
+-			}
+-		}
+-		bp =3D bp->next;
+-	}
+-
+-	mutex_unlock(&f_mutex);
+-}
+-
+-static struct buf_cache_t *buf_cache_find(struct super_block *sb, sector_t=
+ sec)
+-{
+-	s32 off;
+-	struct buf_cache_t *bp, *hp;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	off =3D (sec + (sec >> p_fs->sectors_per_clu_bits)) &
+-		(BUF_CACHE_HASH_SIZE - 1);
+-
+-	hp =3D &p_fs->buf_cache_hash_list[off];
+-	for (bp =3D hp->hash_next; bp !=3D hp; bp =3D bp->hash_next) {
+-		if ((bp->drv =3D=3D p_fs->drv) && (bp->sec =3D=3D sec)) {
+-			touch_buffer(bp->buf_bh);
+-			return bp;
+-		}
+-	}
+-	return NULL;
+-}
+-
+-static struct buf_cache_t *buf_cache_get(struct super_block *sb, sector_t =
+sec)
+-{
+-	struct buf_cache_t *bp;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	bp =3D p_fs->buf_cache_lru_list.prev;
+-	while (bp->locked)
+-		bp =3D bp->prev;
+-
+-	move_to_mru(bp, &p_fs->buf_cache_lru_list);
+-	return bp;
+-}
+-
+-static u8 *__exfat_buf_getblk(struct super_block *sb, sector_t sec)
+-{
+-	struct buf_cache_t *bp;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	bp =3D buf_cache_find(sb, sec);
+-	if (bp) {
+-		move_to_mru(bp, &p_fs->buf_cache_lru_list);
+-		return bp->buf_bh->b_data;
+-	}
+-
+-	bp =3D buf_cache_get(sb, sec);
+-
+-	buf_cache_remove_hash(bp);
+-
+-	bp->drv =3D p_fs->drv;
+-	bp->sec =3D sec;
+-	bp->locked =3D false;
+-
+-	buf_cache_insert_hash(sb, bp);
+-
+-	if (sector_read(sb, sec, &bp->buf_bh, 1) !=3D 0) {
+-		buf_cache_remove_hash(bp);
+-		bp->drv =3D -1;
+-		bp->sec =3D ~0;
+-		bp->locked =3D false;
+-		bp->buf_bh =3D NULL;
+-
+-		move_to_lru(bp, &p_fs->buf_cache_lru_list);
+-		return NULL;
+-	}
+-
+-	return bp->buf_bh->b_data;
+-}
+-
+-u8 *exfat_buf_getblk(struct super_block *sb, sector_t sec)
+-{
+-	u8 *buf;
+-
+-	mutex_lock(&b_mutex);
+-	buf =3D __exfat_buf_getblk(sb, sec);
+-	mutex_unlock(&b_mutex);
+-
+-	return buf;
+-}
+-
+-void exfat_buf_modify(struct super_block *sb, sector_t sec)
+-{
+-	struct buf_cache_t *bp;
+-
+-	mutex_lock(&b_mutex);
+-
+-	bp =3D buf_cache_find(sb, sec);
+-	if (likely(bp))
+-		sector_write(sb, sec, bp->buf_bh, 0);
+-
+-	WARN(!bp, "[EXFAT] failed to find buffer_cache(sector:%llu).\n",
+-	     (unsigned long long)sec);
+-
+-	mutex_unlock(&b_mutex);
+-}
+-
+-void exfat_buf_lock(struct super_block *sb, sector_t sec)
+-{
+-	struct buf_cache_t *bp;
+-
+-	mutex_lock(&b_mutex);
+-
+-	bp =3D buf_cache_find(sb, sec);
+-	if (likely(bp))
+-		bp->locked =3D true;
+-
+-	WARN(!bp, "[EXFAT] failed to find buffer_cache(sector:%llu).\n",
+-	     (unsigned long long)sec);
+-
+-	mutex_unlock(&b_mutex);
+-}
+-
+-void exfat_buf_unlock(struct super_block *sb, sector_t sec)
+-{
+-	struct buf_cache_t *bp;
+-
+-	mutex_lock(&b_mutex);
+-
+-	bp =3D buf_cache_find(sb, sec);
+-	if (likely(bp))
+-		bp->locked =3D false;
+-
+-	WARN(!bp, "[EXFAT] failed to find buffer_cache(sector:%llu).\n",
+-	     (unsigned long long)sec);
+-
+-	mutex_unlock(&b_mutex);
+-}
+-
+-void exfat_buf_release(struct super_block *sb, sector_t sec)
+-{
+-	struct buf_cache_t *bp;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	mutex_lock(&b_mutex);
+-
+-	bp =3D buf_cache_find(sb, sec);
+-	if (likely(bp)) {
+-		bp->drv =3D -1;
+-		bp->sec =3D ~0;
+-		bp->locked =3D false;
+-
+-		if (bp->buf_bh) {
+-			__brelse(bp->buf_bh);
+-			bp->buf_bh =3D NULL;
+-		}
+-
+-		move_to_lru(bp, &p_fs->buf_cache_lru_list);
+-	}
+-
+-	mutex_unlock(&b_mutex);
+-}
+-
+-void exfat_buf_release_all(struct super_block *sb)
+-{
+-	struct buf_cache_t *bp;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	mutex_lock(&b_mutex);
+-
+-	bp =3D p_fs->buf_cache_lru_list.next;
+-	while (bp !=3D &p_fs->buf_cache_lru_list) {
+-		if (bp->drv =3D=3D p_fs->drv) {
+-			bp->drv =3D -1;
+-			bp->sec =3D ~0;
+-			bp->locked =3D false;
+-
+-			if (bp->buf_bh) {
+-				__brelse(bp->buf_bh);
+-				bp->buf_bh =3D NULL;
+-			}
+-		}
+-		bp =3D bp->next;
+-	}
+-
+-	mutex_unlock(&b_mutex);
+-}
+diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exf=
+at_core.c
+deleted file mode 100644
+index 374a4fe183f5..000000000000
+--- a/drivers/staging/exfat/exfat_core.c
++++ /dev/null
+@@ -1,2529 +0,0 @@
+-// SPDX-License-Identifier: GPL-2.0-or-later
+-/*
+- *  Copyright (C) 2012-2013 Samsung Electronics Co., Ltd.
+- */
+-
+-#include <linux/types.h>
+-#include <linux/buffer_head.h>
+-#include <linux/fs.h>
+-#include <linux/mutex.h>
+-#include <linux/blkdev.h>
+-#include <linux/slab.h>
+-#include "exfat.h"
+-
+-static void __set_sb_dirty(struct super_block *sb)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-
+-	sbi->s_dirt =3D 1;
+-}
+-
+-static u8 name_buf[MAX_PATH_LENGTH * MAX_CHARSET_SIZE];
+-
+-static u8 free_bit[] =3D {
+-	0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, /*   0 ~  19 =
+*/
+-	0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 5, 0, 1, 0, 2, 0, 1, 0, 3, /*  20 ~  39 =
+*/
+-	0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, /*  40 ~  59 =
+*/
+-	0, 1, 0, 6, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, /*  60 ~  79 =
+*/
+-	0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 5, 0, 1, 0, 2, /*  80 ~  99 =
+*/
+-	0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, /* 100 ~ 119 =
+*/
+-	0, 1, 0, 2, 0, 1, 0, 7, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, /* 120 ~ 139 =
+*/
+-	0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 5, /* 140 ~ 159 =
+*/
+-	0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, /* 160 ~ 179 =
+*/
+-	0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 6, 0, 1, 0, 2, 0, 1, 0, 3, /* 180 ~ 199 =
+*/
+-	0, 1, 0, 2, 0, 1, 0, 4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, /* 200 ~ 219 =
+*/
+-	0, 1, 0, 5, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, 4, /* 220 ~ 239 =
+*/
+-	0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0                 /* 240 ~ 254 =
+*/
+-};
+-
+-static u8 used_bit[] =3D {
+-	0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, /*   0 ~  19 =
+*/
+-	2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 1, 2, 2, 3, 2, 3, 3, 4, /*  20 ~  39 =
+*/
+-	2, 3, 3, 4, 3, 4, 4, 5, 2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, /*  40 ~  59 =
+*/
+-	4, 5, 5, 6, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, /*  60 ~  79 =
+*/
+-	2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, 2, 3, 3, 4, /*  80 ~  99 =
+*/
+-	3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, 3, 4, 4, 5, 4, 5, 5, 6, /* 100 ~ 119 =
+*/
+-	4, 5, 5, 6, 5, 6, 6, 7, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, /* 120 ~ 139 =
+*/
+-	3, 4, 4, 5, 2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, /* 140 ~ 159 =
+*/
+-	2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, 3, 4, 4, 5, /* 160 ~ 179 =
+*/
+-	4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7, 2, 3, 3, 4, 3, 4, 4, 5, /* 180 ~ 199 =
+*/
+-	3, 4, 4, 5, 4, 5, 5, 6, 3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, /* 200 ~ 219 =
+*/
+-	5, 6, 6, 7, 3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7, /* 220 ~ 239 =
+*/
+-	4, 5, 5, 6, 5, 6, 6, 7, 5, 6, 6, 7, 6, 7, 7, 8              /* 240 ~ 255 =
+*/
+-};
+-
+-#define BITMAP_LOC(v)           ((v) >> 3)
+-#define BITMAP_SHIFT(v)         ((v) & 0x07)
+-
+-static inline s32 exfat_bitmap_test(u8 *bitmap, int i)
+-{
+-	u8 data;
+-
+-	data =3D bitmap[BITMAP_LOC(i)];
+-	if ((data >> BITMAP_SHIFT(i)) & 0x01)
+-		return 1;
+-	return 0;
+-}
+-
+-static inline void exfat_bitmap_set(u8 *bitmap, int i)
+-{
+-	bitmap[BITMAP_LOC(i)] |=3D (0x01 << BITMAP_SHIFT(i));
+-}
+-
+-static inline void exfat_bitmap_clear(u8 *bitmap, int i)
+-{
+-	bitmap[BITMAP_LOC(i)] &=3D ~(0x01 << BITMAP_SHIFT(i));
+-}
+-
+-/*
+- *  File System Management Functions
+- */
+-
+-void fs_set_vol_flags(struct super_block *sb, u32 new_flag)
+-{
+-	struct pbr_sector_t *p_pbr;
+-	struct bpbex_t *p_bpb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if (p_fs->vol_flag =3D=3D new_flag)
+-		return;
+-
+-	p_fs->vol_flag =3D new_flag;
+-
+-	if (!p_fs->pbr_bh) {
+-		if (sector_read(sb, p_fs->PBR_sector,
+-				&p_fs->pbr_bh, 1) !=3D 0)
+-			return;
+-	}
+-
+-	p_pbr =3D (struct pbr_sector_t *)p_fs->pbr_bh->b_data;
+-	p_bpb =3D (struct bpbex_t *)p_pbr->bpb;
+-	SET16(p_bpb->vol_flags, (u16)new_flag);
+-
+-	/* XXX duyoung
+-	 * what can we do here? (cuz fs_set_vol_flags() is void)
+-	 */
+-	if ((new_flag =3D=3D VOL_DIRTY) && (!buffer_dirty(p_fs->pbr_bh)))
+-		sector_write(sb, p_fs->PBR_sector, p_fs->pbr_bh, 1);
+-	else
+-		sector_write(sb, p_fs->PBR_sector, p_fs->pbr_bh, 0);
+-}
+-
+-void fs_error(struct super_block *sb)
+-{
+-	struct exfat_mount_options *opts =3D &EXFAT_SB(sb)->options;
+-
+-	if (opts->errors =3D=3D EXFAT_ERRORS_PANIC) {
+-		panic("[EXFAT] Filesystem panic from previous error\n");
+-	} else if ((opts->errors =3D=3D EXFAT_ERRORS_RO) && !sb_rdonly(sb)) {
+-		sb->s_flags |=3D SB_RDONLY;
+-		pr_err("[EXFAT] Filesystem has been set read-only\n");
+-	}
+-}
+-
+-/*
+- *  Cluster Management Functions
+- */
+-
+-static s32 clear_cluster(struct super_block *sb, u32 clu)
+-{
+-	sector_t s, n;
+-	s32 ret =3D 0;
+-	struct buffer_head *tmp_bh =3D NULL;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	if (clu =3D=3D CLUSTER_32(0)) { /* FAT16 root_dir */
+-		s =3D p_fs->root_start_sector;
+-		n =3D p_fs->data_start_sector;
+-	} else {
+-		s =3D START_SECTOR(clu);
+-		n =3D s + p_fs->sectors_per_clu;
+-	}
+-
+-	for (; s < n; s++) {
+-		ret =3D sector_read(sb, s, &tmp_bh, 0);
+-		if (ret !=3D 0)
+-			return ret;
+-
+-		memset((char *)tmp_bh->b_data, 0x0, p_bd->sector_size);
+-		ret =3D sector_write(sb, s, tmp_bh, 0);
+-		if (ret !=3D 0)
+-			break;
+-	}
+-
+-	brelse(tmp_bh);
+-	return ret;
+-}
+-
+-static s32 set_alloc_bitmap(struct super_block *sb, u32 clu)
+-{
+-	int i, b;
+-	sector_t sector;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	i =3D clu >> (p_bd->sector_size_bits + 3);
+-	b =3D clu & ((p_bd->sector_size << 3) - 1);
+-
+-	sector =3D START_SECTOR(p_fs->map_clu) + i;
+-
+-	exfat_bitmap_set((u8 *)p_fs->vol_amap[i]->b_data, b);
+-
+-	return sector_write(sb, sector, p_fs->vol_amap[i], 0);
+-}
+-
+-static s32 clr_alloc_bitmap(struct super_block *sb, u32 clu)
+-{
+-	int i, b;
+-	sector_t sector;
+-#ifdef CONFIG_STAGING_EXFAT_DISCARD
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	struct exfat_mount_options *opts =3D &sbi->options;
+-	int ret;
+-#endif /* CONFIG_STAGING_EXFAT_DISCARD */
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	i =3D clu >> (p_bd->sector_size_bits + 3);
+-	b =3D clu & ((p_bd->sector_size << 3) - 1);
+-
+-	sector =3D START_SECTOR(p_fs->map_clu) + i;
+-
+-	exfat_bitmap_clear((u8 *)p_fs->vol_amap[i]->b_data, b);
+-
+-#ifdef CONFIG_STAGING_EXFAT_DISCARD
+-	if (opts->discard) {
+-		ret =3D sb_issue_discard(sb, START_SECTOR(clu),
+-				       (1 << p_fs->sectors_per_clu_bits),
+-				       GFP_NOFS, 0);
+-		if (ret =3D=3D -EOPNOTSUPP) {
+-			pr_warn("discard not supported by device, disabling");
+-			opts->discard =3D 0;
+-		} else {
+-			return ret;
+-		}
+-	}
+-#endif /* CONFIG_STAGING_EXFAT_DISCARD */
+-
+-	return sector_write(sb, sector, p_fs->vol_amap[i], 0);
+-}
+-
+-static u32 test_alloc_bitmap(struct super_block *sb, u32 clu)
+-{
+-	int i, map_i, map_b;
+-	u32 clu_base, clu_free;
+-	u8 k, clu_mask;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	clu_base =3D (clu & ~(0x7)) + 2;
+-	clu_mask =3D (1 << (clu - clu_base + 2)) - 1;
+-
+-	map_i =3D clu >> (p_bd->sector_size_bits + 3);
+-	map_b =3D (clu >> 3) & p_bd->sector_size_mask;
+-
+-	for (i =3D 2; i < p_fs->num_clusters; i +=3D 8) {
+-		k =3D *(((u8 *)p_fs->vol_amap[map_i]->b_data) + map_b);
+-		if (clu_mask > 0) {
+-			k |=3D clu_mask;
+-			clu_mask =3D 0;
+-		}
+-		if (k < 0xFF) {
+-			clu_free =3D clu_base + free_bit[k];
+-			if (clu_free < p_fs->num_clusters)
+-				return clu_free;
+-		}
+-		clu_base +=3D 8;
+-
+-		if (((++map_b) >=3D p_bd->sector_size) ||
+-		    (clu_base >=3D p_fs->num_clusters)) {
+-			if ((++map_i) >=3D p_fs->map_sectors) {
+-				clu_base =3D 2;
+-				map_i =3D 0;
+-			}
+-			map_b =3D 0;
+-		}
+-	}
+-
+-	return CLUSTER_32(~0);
+-}
+-
+-s32 exfat_alloc_cluster(struct super_block *sb, s32 num_alloc,
+-			struct chain_t *p_chain)
+-{
+-	s32 num_clusters =3D 0;
+-	u32 hint_clu, new_clu, last_clu =3D CLUSTER_32(~0);
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	hint_clu =3D p_chain->dir;
+-	if (hint_clu =3D=3D CLUSTER_32(~0)) {
+-		hint_clu =3D test_alloc_bitmap(sb, p_fs->clu_srch_ptr - 2);
+-		if (hint_clu =3D=3D CLUSTER_32(~0))
+-			return 0;
+-	} else if (hint_clu >=3D p_fs->num_clusters) {
+-		hint_clu =3D 2;
+-		p_chain->flags =3D 0x01;
+-	}
+-
+-	__set_sb_dirty(sb);
+-
+-	p_chain->dir =3D CLUSTER_32(~0);
+-
+-	while ((new_clu =3D test_alloc_bitmap(sb, hint_clu - 2)) !=3D CLUSTER_32(=
+~0)) {
+-		if (new_clu !=3D hint_clu) {
+-			if (p_chain->flags =3D=3D 0x03) {
+-				exfat_chain_cont_cluster(sb, p_chain->dir,
+-							 num_clusters);
+-				p_chain->flags =3D 0x01;
+-			}
+-		}
+-
+-		if (set_alloc_bitmap(sb, new_clu - 2) !=3D 0)
+-			return -EIO;
+-
+-		num_clusters++;
+-
+-		if (p_chain->flags =3D=3D 0x01) {
+-			if (exfat_fat_write(sb, new_clu, CLUSTER_32(~0)) < 0)
+-				return -EIO;
+-		}
+-
+-		if (p_chain->dir =3D=3D CLUSTER_32(~0)) {
+-			p_chain->dir =3D new_clu;
+-		} else {
+-			if (p_chain->flags =3D=3D 0x01) {
+-				if (exfat_fat_write(sb, last_clu, new_clu) < 0)
+-					return -EIO;
+-			}
+-		}
+-		last_clu =3D new_clu;
+-
+-		if ((--num_alloc) =3D=3D 0) {
+-			p_fs->clu_srch_ptr =3D hint_clu;
+-			if (p_fs->used_clusters !=3D UINT_MAX)
+-				p_fs->used_clusters +=3D num_clusters;
+-
+-			p_chain->size +=3D num_clusters;
+-			return num_clusters;
+-		}
+-
+-		hint_clu =3D new_clu + 1;
+-		if (hint_clu >=3D p_fs->num_clusters) {
+-			hint_clu =3D 2;
+-
+-			if (p_chain->flags =3D=3D 0x03) {
+-				exfat_chain_cont_cluster(sb, p_chain->dir,
+-							 num_clusters);
+-				p_chain->flags =3D 0x01;
+-			}
+-		}
+-	}
+-
+-	p_fs->clu_srch_ptr =3D hint_clu;
+-	if (p_fs->used_clusters !=3D UINT_MAX)
+-		p_fs->used_clusters +=3D num_clusters;
+-
+-	p_chain->size +=3D num_clusters;
+-	return num_clusters;
+-}
+-
+-void exfat_free_cluster(struct super_block *sb, struct chain_t *p_chain,
+-			s32 do_relse)
+-{
+-	s32 num_clusters =3D 0;
+-	u32 clu;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	int i;
+-	sector_t sector;
+-
+-	if ((p_chain->dir =3D=3D CLUSTER_32(0)) || (p_chain->dir =3D=3D CLUSTER_3=
+2(~0)))
+-		return;
+-
+-	if (p_chain->size <=3D 0) {
+-		pr_err("[EXFAT] free_cluster : skip free-req clu:%u, because of zero-siz=
+e truncation\n",
+-		       p_chain->dir);
+-		return;
+-	}
+-
+-	__set_sb_dirty(sb);
+-	clu =3D p_chain->dir;
+-
+-	if (p_chain->flags =3D=3D 0x03) {
+-		do {
+-			if (do_relse) {
+-				sector =3D START_SECTOR(clu);
+-				for (i =3D 0; i < p_fs->sectors_per_clu; i++)
+-					exfat_buf_release(sb, sector + i);
+-			}
+-
+-			if (clr_alloc_bitmap(sb, clu - 2) !=3D 0)
+-				break;
+-			clu++;
+-
+-			num_clusters++;
+-		} while (num_clusters < p_chain->size);
+-	} else {
+-		do {
+-			if (p_fs->dev_ejected)
+-				break;
+-
+-			if (do_relse) {
+-				sector =3D START_SECTOR(clu);
+-				for (i =3D 0; i < p_fs->sectors_per_clu; i++)
+-					exfat_buf_release(sb, sector + i);
+-			}
+-
+-			if (clr_alloc_bitmap(sb, clu - 2) !=3D 0)
+-				break;
+-
+-			if (exfat_fat_read(sb, clu, &clu) =3D=3D -1)
+-				break;
+-			num_clusters++;
+-		} while ((clu !=3D CLUSTER_32(0)) && (clu !=3D CLUSTER_32(~0)));
+-	}
+-
+-	if (p_fs->used_clusters !=3D UINT_MAX)
+-		p_fs->used_clusters -=3D num_clusters;
+-}
+-
+-static u32 find_last_cluster(struct super_block *sb, struct chain_t *p_cha=
+in)
+-{
+-	u32 clu, next;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	clu =3D p_chain->dir;
+-
+-	if (p_chain->flags =3D=3D 0x03) {
+-		clu +=3D p_chain->size - 1;
+-	} else {
+-		while ((exfat_fat_read(sb, clu, &next) =3D=3D 0) &&
+-		       (next !=3D CLUSTER_32(~0))) {
+-			if (p_fs->dev_ejected)
+-				break;
+-			clu =3D next;
+-		}
+-	}
+-
+-	return clu;
+-}
+-
+-s32 count_num_clusters(struct super_block *sb, struct chain_t *p_chain)
+-{
+-	int i, count =3D 0;
+-	u32 clu;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if ((p_chain->dir =3D=3D CLUSTER_32(0)) || (p_chain->dir =3D=3D CLUSTER_3=
+2(~0)))
+-		return 0;
+-
+-	clu =3D p_chain->dir;
+-
+-	if (p_chain->flags =3D=3D 0x03) {
+-		count =3D p_chain->size;
+-	} else {
+-		for (i =3D 2; i < p_fs->num_clusters; i++) {
+-			count++;
+-			if (exfat_fat_read(sb, clu, &clu) !=3D 0)
+-				return 0;
+-			if (clu =3D=3D CLUSTER_32(~0))
+-				break;
+-		}
+-	}
+-
+-	return count;
+-}
+-
+-s32 exfat_count_used_clusters(struct super_block *sb)
+-{
+-	int i, map_i, map_b, count =3D 0;
+-	u8 k;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	map_i =3D 0;
+-	map_b =3D 0;
+-
+-	for (i =3D 2; i < p_fs->num_clusters; i +=3D 8) {
+-		k =3D *(((u8 *)p_fs->vol_amap[map_i]->b_data) + map_b);
+-		count +=3D used_bit[k];
+-
+-		if ((++map_b) >=3D p_bd->sector_size) {
+-			map_i++;
+-			map_b =3D 0;
+-		}
+-	}
+-
+-	return count;
+-}
+-
+-void exfat_chain_cont_cluster(struct super_block *sb, u32 chain, s32 len)
+-{
+-	if (len =3D=3D 0)
+-		return;
+-
+-	while (len > 1) {
+-		if (exfat_fat_write(sb, chain, chain + 1) < 0)
+-			break;
+-		chain++;
+-		len--;
+-	}
+-	exfat_fat_write(sb, chain, CLUSTER_32(~0));
+-}
+-
+-/*
+- *  Allocation Bitmap Management Functions
+- */
+-
+-s32 load_alloc_bitmap(struct super_block *sb)
+-{
+-	int i, j, ret;
+-	u32 map_size;
+-	u32 type;
+-	sector_t sector;
+-	struct chain_t clu;
+-	struct bmap_dentry_t *ep;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	clu.dir =3D p_fs->root_dir;
+-	clu.flags =3D 0x01;
+-
+-	while (clu.dir !=3D CLUSTER_32(~0)) {
+-		if (p_fs->dev_ejected)
+-			break;
+-
+-		for (i =3D 0; i < p_fs->dentries_per_clu; i++) {
+-			ep =3D (struct bmap_dentry_t *)get_entry_in_dir(sb, &clu,
+-								      i, NULL);
+-			if (!ep)
+-				return -ENOENT;
+-
+-			type =3D exfat_get_entry_type((struct dentry_t *)ep);
+-
+-			if (type =3D=3D TYPE_UNUSED)
+-				break;
+-			if (type !=3D TYPE_BITMAP)
+-				continue;
+-
+-			if (ep->flags =3D=3D 0x0) {
+-				p_fs->map_clu  =3D GET32_A(ep->start_clu);
+-				map_size =3D (u32)GET64_A(ep->size);
+-
+-				p_fs->map_sectors =3D ((map_size - 1) >> p_bd->sector_size_bits) + 1;
+-
+-				p_fs->vol_amap =3D kmalloc_array(p_fs->map_sectors,
+-							       sizeof(struct buffer_head *),
+-							       GFP_KERNEL);
+-				if (!p_fs->vol_amap)
+-					return -ENOMEM;
+-
+-				sector =3D START_SECTOR(p_fs->map_clu);
+-
+-				for (j =3D 0; j < p_fs->map_sectors; j++) {
+-					p_fs->vol_amap[j] =3D NULL;
+-					ret =3D sector_read(sb, sector + j, &p_fs->vol_amap[j], 1);
+-					if (ret !=3D 0) {
+-						/*  release all buffers and free vol_amap */
+-						i =3D 0;
+-						while (i < j)
+-							brelse(p_fs->vol_amap[i++]);
+-
+-						kfree(p_fs->vol_amap);
+-						p_fs->vol_amap =3D NULL;
+-						return ret;
+-					}
+-				}
+-
+-				p_fs->pbr_bh =3D NULL;
+-				return 0;
+-			}
+-		}
+-
+-		if (exfat_fat_read(sb, clu.dir, &clu.dir) !=3D 0)
+-			return -EIO;
+-	}
+-
+-	return -EFSCORRUPTED;
+-}
+-
+-void free_alloc_bitmap(struct super_block *sb)
+-{
+-	int i;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	brelse(p_fs->pbr_bh);
+-
+-	for (i =3D 0; i < p_fs->map_sectors; i++)
+-		__brelse(p_fs->vol_amap[i]);
+-
+-	kfree(p_fs->vol_amap);
+-	p_fs->vol_amap =3D NULL;
+-}
+-
+-/*
+- *  Upcase table Management Functions
+- */
+-static s32 __load_upcase_table(struct super_block *sb, sector_t sector,
+-			       u32 num_sectors, u32 utbl_checksum)
+-{
+-	int i, ret =3D -EINVAL;
+-	u32 j;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-	struct buffer_head *tmp_bh =3D NULL;
+-	sector_t end_sector =3D num_sectors + sector;
+-
+-	bool	skip =3D false;
+-	u32	index =3D 0;
+-	u16	uni =3D 0;
+-	u16 **upcase_table;
+-
+-	u32 checksum =3D 0;
+-
+-	upcase_table =3D kmalloc_array(UTBL_COL_COUNT, sizeof(u16 *), GFP_KERNEL);
+-	p_fs->vol_utbl =3D upcase_table;
+-	if (!upcase_table)
+-		return -ENOMEM;
+-	memset(upcase_table, 0, UTBL_COL_COUNT * sizeof(u16 *));
+-
+-	while (sector < end_sector) {
+-		ret =3D sector_read(sb, sector, &tmp_bh, 1);
+-		if (ret !=3D 0) {
+-			pr_debug("sector read (0x%llX)fail\n",
+-				 (unsigned long long)sector);
+-			goto error;
+-		}
+-		sector++;
+-
+-		for (i =3D 0; i < p_bd->sector_size && index <=3D 0xFFFF; i +=3D 2) {
+-			uni =3D GET16(((u8 *)tmp_bh->b_data) + i);
+-
+-			checksum =3D ((checksum & 1) ? 0x80000000 : 0) +
+-				   (checksum >> 1) + *(((u8 *)tmp_bh->b_data) +
+-						       i);
+-			checksum =3D ((checksum & 1) ? 0x80000000 : 0) +
+-				   (checksum >> 1) + *(((u8 *)tmp_bh->b_data) +
+-						       (i + 1));
+-
+-			if (skip) {
+-				pr_debug("skip from 0x%X ", index);
+-				index +=3D uni;
+-				pr_debug("to 0x%X (amount of 0x%X)\n",
+-					 index, uni);
+-				skip =3D false;
+-			} else if (uni =3D=3D index) {
+-				index++;
+-			} else if (uni =3D=3D 0xFFFF) {
+-				skip =3D true;
+-			} else { /* uni !=3D index , uni !=3D 0xFFFF */
+-				u16 col_index =3D get_col_index(index);
+-
+-				if (!upcase_table[col_index]) {
+-					pr_debug("alloc =3D 0x%X\n", col_index);
+-					upcase_table[col_index] =3D kmalloc_array(UTBL_ROW_COUNT,
+-						sizeof(u16), GFP_KERNEL);
+-					if (!upcase_table[col_index]) {
+-						ret =3D -ENOMEM;
+-						goto error;
+-					}
+-
+-					for (j =3D 0; j < UTBL_ROW_COUNT; j++)
+-						upcase_table[col_index][j] =3D (col_index << LOW_INDEX_BIT) | j;
+-				}
+-
+-				upcase_table[col_index][get_row_index(index)] =3D uni;
+-				index++;
+-			}
+-		}
+-	}
+-	if (index >=3D 0xFFFF && utbl_checksum =3D=3D checksum) {
+-		if (tmp_bh)
+-			brelse(tmp_bh);
+-		return 0;
+-	}
+-	ret =3D -EINVAL;
+-error:
+-	if (tmp_bh)
+-		brelse(tmp_bh);
+-	free_upcase_table(sb);
+-	return ret;
+-}
+-
+-static s32 __load_default_upcase_table(struct super_block *sb)
+-{
+-	int i, ret =3D -EINVAL;
+-	u32 j;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	bool	skip =3D false;
+-	u32	index =3D 0;
+-	u16	uni =3D 0;
+-	u16 **upcase_table;
+-
+-	upcase_table =3D kmalloc_array(UTBL_COL_COUNT, sizeof(u16 *), GFP_KERNEL);
+-	p_fs->vol_utbl =3D upcase_table;
+-	if (!upcase_table)
+-		return -ENOMEM;
+-	memset(upcase_table, 0, UTBL_COL_COUNT * sizeof(u16 *));
+-
+-	for (i =3D 0; index <=3D 0xFFFF && i < NUM_UPCASE * 2; i +=3D 2) {
+-		uni =3D GET16(uni_upcase + i);
+-		if (skip) {
+-			pr_debug("skip from 0x%X ", index);
+-			index +=3D uni;
+-			pr_debug("to 0x%X (amount of 0x%X)\n", index, uni);
+-			skip =3D false;
+-		} else if (uni =3D=3D index) {
+-			index++;
+-		} else if (uni =3D=3D 0xFFFF) {
+-			skip =3D true;
+-		} else { /* uni !=3D index , uni !=3D 0xFFFF */
+-			u16 col_index =3D get_col_index(index);
+-
+-			if (!upcase_table[col_index]) {
+-				pr_debug("alloc =3D 0x%X\n", col_index);
+-				upcase_table[col_index] =3D kmalloc_array(UTBL_ROW_COUNT,
+-									sizeof(u16),
+-									GFP_KERNEL);
+-				if (!upcase_table[col_index]) {
+-					ret =3D -ENOMEM;
+-					goto error;
+-				}
+-
+-				for (j =3D 0; j < UTBL_ROW_COUNT; j++)
+-					upcase_table[col_index][j] =3D (col_index << LOW_INDEX_BIT) | j;
+-			}
+-
+-			upcase_table[col_index][get_row_index(index)] =3D uni;
+-			index++;
+-		}
+-	}
+-
+-	if (index >=3D 0xFFFF)
+-		return 0;
+-
+-error:
+-	/* FATAL error: default upcase table has error */
+-	free_upcase_table(sb);
+-	return ret;
+-}
+-
+-s32 load_upcase_table(struct super_block *sb)
+-{
+-	int i;
+-	u32 tbl_clu, tbl_size;
+-	sector_t sector;
+-	u32 type, num_sectors;
+-	struct chain_t clu;
+-	struct case_dentry_t *ep;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	clu.dir =3D p_fs->root_dir;
+-	clu.flags =3D 0x01;
+-
+-	if (p_fs->dev_ejected)
+-		return -EIO;
+-
+-	while (clu.dir !=3D CLUSTER_32(~0)) {
+-		for (i =3D 0; i < p_fs->dentries_per_clu; i++) {
+-			ep =3D (struct case_dentry_t *)get_entry_in_dir(sb, &clu,
+-								      i, NULL);
+-			if (!ep)
+-				return -ENOENT;
+-
+-			type =3D exfat_get_entry_type((struct dentry_t *)ep);
+-
+-			if (type =3D=3D TYPE_UNUSED)
+-				break;
+-			if (type !=3D TYPE_UPCASE)
+-				continue;
+-
+-			tbl_clu  =3D GET32_A(ep->start_clu);
+-			tbl_size =3D (u32)GET64_A(ep->size);
+-
+-			sector =3D START_SECTOR(tbl_clu);
+-			num_sectors =3D ((tbl_size - 1) >> p_bd->sector_size_bits) + 1;
+-			if (__load_upcase_table(sb, sector, num_sectors,
+-						GET32_A(ep->checksum)) !=3D 0)
+-				break;
+-			return 0;
+-		}
+-		if (exfat_fat_read(sb, clu.dir, &clu.dir) !=3D 0)
+-			return -EIO;
+-	}
+-	/* load default upcase table */
+-	return __load_default_upcase_table(sb);
+-}
+-
+-void free_upcase_table(struct super_block *sb)
+-{
+-	u32 i;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	u16 **upcase_table;
+-
+-	upcase_table =3D p_fs->vol_utbl;
+-	for (i =3D 0; i < UTBL_COL_COUNT; i++)
+-		kfree(upcase_table[i]);
+-
+-	kfree(p_fs->vol_utbl);
+-	p_fs->vol_utbl =3D NULL;
+-}
+-
+-/*
+- *  Directory Entry Management Functions
+- */
+-
+-u32 exfat_get_entry_type(struct dentry_t *p_entry)
+-{
+-	struct file_dentry_t *ep =3D (struct file_dentry_t *)p_entry;
+-
+-	if (ep->type =3D=3D 0x0) {
+-		return TYPE_UNUSED;
+-	} else if (ep->type < 0x80) {
+-		return TYPE_DELETED;
+-	} else if (ep->type =3D=3D 0x80) {
+-		return TYPE_INVALID;
+-	} else if (ep->type < 0xA0) {
+-		if (ep->type =3D=3D 0x81) {
+-			return TYPE_BITMAP;
+-		} else if (ep->type =3D=3D 0x82) {
+-			return TYPE_UPCASE;
+-		} else if (ep->type =3D=3D 0x83) {
+-			return TYPE_VOLUME;
+-		} else if (ep->type =3D=3D 0x85) {
+-			if (GET16_A(ep->attr) & ATTR_SUBDIR)
+-				return TYPE_DIR;
+-			else
+-				return TYPE_FILE;
+-		}
+-		return TYPE_CRITICAL_PRI;
+-	} else if (ep->type < 0xC0) {
+-		if (ep->type =3D=3D 0xA0)
+-			return TYPE_GUID;
+-		else if (ep->type =3D=3D 0xA1)
+-			return TYPE_PADDING;
+-		else if (ep->type =3D=3D 0xA2)
+-			return TYPE_ACLTAB;
+-		return TYPE_BENIGN_PRI;
+-	} else if (ep->type < 0xE0) {
+-		if (ep->type =3D=3D 0xC0)
+-			return TYPE_STREAM;
+-		else if (ep->type =3D=3D 0xC1)
+-			return TYPE_EXTEND;
+-		else if (ep->type =3D=3D 0xC2)
+-			return TYPE_ACL;
+-		return TYPE_CRITICAL_SEC;
+-	}
+-
+-	return TYPE_BENIGN_SEC;
+-}
+-
+-static void exfat_set_entry_type(struct dentry_t *p_entry, u32 type)
+-{
+-	struct file_dentry_t *ep =3D (struct file_dentry_t *)p_entry;
+-
+-	if (type =3D=3D TYPE_UNUSED) {
+-		ep->type =3D 0x0;
+-	} else if (type =3D=3D TYPE_DELETED) {
+-		ep->type &=3D ~0x80;
+-	} else if (type =3D=3D TYPE_STREAM) {
+-		ep->type =3D 0xC0;
+-	} else if (type =3D=3D TYPE_EXTEND) {
+-		ep->type =3D 0xC1;
+-	} else if (type =3D=3D TYPE_BITMAP) {
+-		ep->type =3D 0x81;
+-	} else if (type =3D=3D TYPE_UPCASE) {
+-		ep->type =3D 0x82;
+-	} else if (type =3D=3D TYPE_VOLUME) {
+-		ep->type =3D 0x83;
+-	} else if (type =3D=3D TYPE_DIR) {
+-		ep->type =3D 0x85;
+-		SET16_A(ep->attr, ATTR_SUBDIR);
+-	} else if (type =3D=3D TYPE_FILE) {
+-		ep->type =3D 0x85;
+-		SET16_A(ep->attr, ATTR_ARCHIVE);
+-	}
+-}
+-
+-u32 exfat_get_entry_attr(struct dentry_t *p_entry)
+-{
+-	struct file_dentry_t *ep =3D (struct file_dentry_t *)p_entry;
+-
+-	return (u32)GET16_A(ep->attr);
+-}
+-
+-void exfat_set_entry_attr(struct dentry_t *p_entry, u32 attr)
+-{
+-	struct file_dentry_t *ep =3D (struct file_dentry_t *)p_entry;
+-
+-	SET16_A(ep->attr, (u16)attr);
+-}
+-
+-u8 exfat_get_entry_flag(struct dentry_t *p_entry)
+-{
+-	struct strm_dentry_t *ep =3D (struct strm_dentry_t *)p_entry;
+-
+-	return ep->flags;
+-}
+-
+-void exfat_set_entry_flag(struct dentry_t *p_entry, u8 flags)
+-{
+-	struct strm_dentry_t *ep =3D (struct strm_dentry_t *)p_entry;
+-
+-	ep->flags =3D flags;
+-}
+-
+-u32 exfat_get_entry_clu0(struct dentry_t *p_entry)
+-{
+-	struct strm_dentry_t *ep =3D (struct strm_dentry_t *)p_entry;
+-
+-	return GET32_A(ep->start_clu);
+-}
+-
+-void exfat_set_entry_clu0(struct dentry_t *p_entry, u32 start_clu)
+-{
+-	struct strm_dentry_t *ep =3D (struct strm_dentry_t *)p_entry;
+-
+-	SET32_A(ep->start_clu, start_clu);
+-}
+-
+-u64 exfat_get_entry_size(struct dentry_t *p_entry)
+-{
+-	struct strm_dentry_t *ep =3D (struct strm_dentry_t *)p_entry;
+-
+-	return GET64_A(ep->valid_size);
+-}
+-
+-void exfat_set_entry_size(struct dentry_t *p_entry, u64 size)
+-{
+-	struct strm_dentry_t *ep =3D (struct strm_dentry_t *)p_entry;
+-
+-	SET64_A(ep->valid_size, size);
+-	SET64_A(ep->size, size);
+-}
+-
+-void exfat_get_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+-			  u8 mode)
+-{
+-	u16 t =3D 0x00, d =3D 0x21;
+-	struct file_dentry_t *ep =3D (struct file_dentry_t *)p_entry;
+-
+-	switch (mode) {
+-	case TM_CREATE:
+-		t =3D GET16_A(ep->create_time);
+-		d =3D GET16_A(ep->create_date);
+-		break;
+-	case TM_MODIFY:
+-		t =3D GET16_A(ep->modify_time);
+-		d =3D GET16_A(ep->modify_date);
+-		break;
+-	case TM_ACCESS:
+-		t =3D GET16_A(ep->access_time);
+-		d =3D GET16_A(ep->access_date);
+-		break;
+-	}
+-
+-	tp->sec  =3D (t & 0x001F) << 1;
+-	tp->min  =3D (t >> 5) & 0x003F;
+-	tp->hour =3D (t >> 11);
+-	tp->day  =3D (d & 0x001F);
+-	tp->mon  =3D (d >> 5) & 0x000F;
+-	tp->year =3D (d >> 9);
+-}
+-
+-void exfat_set_entry_time(struct dentry_t *p_entry, struct timestamp_t *tp,
+-			  u8 mode)
+-{
+-	u16 t, d;
+-	struct file_dentry_t *ep =3D (struct file_dentry_t *)p_entry;
+-
+-	t =3D (tp->hour << 11) | (tp->min << 5) | (tp->sec >> 1);
+-	d =3D (tp->year <<  9) | (tp->mon << 5) |  tp->day;
+-
+-	switch (mode) {
+-	case TM_CREATE:
+-		SET16_A(ep->create_time, t);
+-		SET16_A(ep->create_date, d);
+-		break;
+-	case TM_MODIFY:
+-		SET16_A(ep->modify_time, t);
+-		SET16_A(ep->modify_date, d);
+-		break;
+-	case TM_ACCESS:
+-		SET16_A(ep->access_time, t);
+-		SET16_A(ep->access_date, d);
+-		break;
+-	}
+-}
+-
+-static void init_file_entry(struct file_dentry_t *ep, u32 type)
+-{
+-	struct timestamp_t tm, *tp;
+-
+-	exfat_set_entry_type((struct dentry_t *)ep, type);
+-
+-	tp =3D tm_current(&tm);
+-	exfat_set_entry_time((struct dentry_t *)ep, tp, TM_CREATE);
+-	exfat_set_entry_time((struct dentry_t *)ep, tp, TM_MODIFY);
+-	exfat_set_entry_time((struct dentry_t *)ep, tp, TM_ACCESS);
+-	ep->create_time_ms =3D 0;
+-	ep->modify_time_ms =3D 0;
+-	ep->access_time_ms =3D 0;
+-}
+-
+-static void init_strm_entry(struct strm_dentry_t *ep, u8 flags, u32 start_=
+clu, u64 size)
+-{
+-	exfat_set_entry_type((struct dentry_t *)ep, TYPE_STREAM);
+-	ep->flags =3D flags;
+-	SET32_A(ep->start_clu, start_clu);
+-	SET64_A(ep->valid_size, size);
+-	SET64_A(ep->size, size);
+-}
+-
+-static void init_name_entry(struct name_dentry_t *ep, u16 *uniname)
+-{
+-	int i;
+-
+-	exfat_set_entry_type((struct dentry_t *)ep, TYPE_EXTEND);
+-	ep->flags =3D 0x0;
+-
+-	for (i =3D 0; i < 30; i++, i++) {
+-		SET16_A(ep->unicode_0_14 + i, *uniname);
+-		if (*uniname =3D=3D 0x0)
+-			break;
+-		uniname++;
+-	}
+-}
+-
+-static s32 exfat_init_dir_entry(struct super_block *sb, struct chain_t *p_=
+dir,
+-				s32 entry, u32 type, u32 start_clu, u64 size)
+-{
+-	sector_t sector;
+-	u8 flags;
+-	struct file_dentry_t *file_ep;
+-	struct strm_dentry_t *strm_ep;
+-
+-	flags =3D (type =3D=3D TYPE_FILE) ? 0x01 : 0x03;
+-
+-	/* we cannot use get_entry_set_in_dir here because file ep is not initial=
+ized yet */
+-	file_ep =3D (struct file_dentry_t *)get_entry_in_dir(sb, p_dir, entry,
+-							   &sector);
+-	if (!file_ep)
+-		return -ENOENT;
+-
+-	strm_ep =3D (struct strm_dentry_t *)get_entry_in_dir(sb, p_dir, entry + 1,
+-							   &sector);
+-	if (!strm_ep)
+-		return -ENOENT;
+-
+-	init_file_entry(file_ep, type);
+-	exfat_buf_modify(sb, sector);
+-
+-	init_strm_entry(strm_ep, flags, start_clu, size);
+-	exfat_buf_modify(sb, sector);
+-
+-	return 0;
+-}
+-
+-static s32 exfat_init_ext_entry(struct super_block *sb, struct chain_t *p_=
+dir,
+-				s32 entry, s32 num_entries,
+-				struct uni_name_t *p_uniname)
+-{
+-	int i;
+-	sector_t sector;
+-	u16 *uniname =3D p_uniname->name;
+-	struct file_dentry_t *file_ep;
+-	struct strm_dentry_t *strm_ep;
+-	struct name_dentry_t *name_ep;
+-
+-	file_ep =3D (struct file_dentry_t *)get_entry_in_dir(sb, p_dir, entry,
+-							   &sector);
+-	if (!file_ep)
+-		return -ENOENT;
+-
+-	file_ep->num_ext =3D (u8)(num_entries - 1);
+-	exfat_buf_modify(sb, sector);
+-
+-	strm_ep =3D (struct strm_dentry_t *)get_entry_in_dir(sb, p_dir, entry + 1,
+-							   &sector);
+-	if (!strm_ep)
+-		return -ENOENT;
+-
+-	strm_ep->name_len =3D p_uniname->name_len;
+-	SET16_A(strm_ep->name_hash, p_uniname->name_hash);
+-	exfat_buf_modify(sb, sector);
+-
+-	for (i =3D 2; i < num_entries; i++) {
+-		name_ep =3D (struct name_dentry_t *)get_entry_in_dir(sb, p_dir,
+-								   entry + i,
+-								   &sector);
+-		if (!name_ep)
+-			return -ENOENT;
+-
+-		init_name_entry(name_ep, uniname);
+-		exfat_buf_modify(sb, sector);
+-		uniname +=3D 15;
+-	}
+-
+-	update_dir_checksum(sb, p_dir, entry);
+-
+-	return 0;
+-}
+-
+-void exfat_delete_dir_entry(struct super_block *sb, struct chain_t *p_dir,
+-			    s32 entry, s32 order, s32 num_entries)
+-{
+-	int i;
+-	sector_t sector;
+-	struct dentry_t *ep;
+-
+-	for (i =3D order; i < num_entries; i++) {
+-		ep =3D get_entry_in_dir(sb, p_dir, entry + i, &sector);
+-		if (!ep)
+-			return;
+-
+-		exfat_set_entry_type(ep, TYPE_DELETED);
+-		exfat_buf_modify(sb, sector);
+-	}
+-}
+-
+-void update_dir_checksum(struct super_block *sb, struct chain_t *p_dir,
+-			 s32 entry)
+-{
+-	int i, num_entries;
+-	sector_t sector;
+-	u16 chksum;
+-	struct file_dentry_t *file_ep;
+-	struct dentry_t *ep;
+-
+-	file_ep =3D (struct file_dentry_t *)get_entry_in_dir(sb, p_dir, entry,
+-							   &sector);
+-	if (!file_ep)
+-		return;
+-
+-	exfat_buf_lock(sb, sector);
+-
+-	num_entries =3D (s32)file_ep->num_ext + 1;
+-	chksum =3D calc_checksum_2byte((void *)file_ep, DENTRY_SIZE, 0,
+-				     CS_DIR_ENTRY);
+-
+-	for (i =3D 1; i < num_entries; i++) {
+-		ep =3D get_entry_in_dir(sb, p_dir, entry + i, NULL);
+-		if (!ep) {
+-			exfat_buf_unlock(sb, sector);
+-			return;
+-		}
+-
+-		chksum =3D calc_checksum_2byte((void *)ep, DENTRY_SIZE, chksum,
+-					     CS_DEFAULT);
+-	}
+-
+-	SET16_A(file_ep->checksum, chksum);
+-	exfat_buf_modify(sb, sector);
+-	exfat_buf_unlock(sb, sector);
+-}
+-
+-static s32 __write_partial_entries_in_entry_set(struct super_block *sb,
+-						struct entry_set_cache_t *es,
+-						sector_t sec, s32 off, u32 count)
+-{
+-	s32 num_entries, buf_off =3D (off - es->offset);
+-	u32 remaining_byte_in_sector, copy_entries;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-	u32 clu;
+-	u8 *buf, *esbuf =3D (u8 *)&es->__buf;
+-
+-	pr_debug("%s entered es %p sec %llu off %d count %d\n",
+-		 __func__, es, (unsigned long long)sec, off, count);
+-	num_entries =3D count;
+-
+-	while (num_entries) {
+-		/* white per sector base */
+-		remaining_byte_in_sector =3D (1 << p_bd->sector_size_bits) - off;
+-		copy_entries =3D min_t(s32,
+-				     remaining_byte_in_sector >> DENTRY_SIZE_BITS,
+-				     num_entries);
+-		buf =3D exfat_buf_getblk(sb, sec);
+-		if (!buf)
+-			goto err_out;
+-		pr_debug("es->buf %p buf_off %u\n", esbuf, buf_off);
+-		pr_debug("copying %d entries from %p to sector %llu\n",
+-			 copy_entries, (esbuf + buf_off),
+-			 (unsigned long long)sec);
+-		memcpy(buf + off, esbuf + buf_off,
+-		       copy_entries << DENTRY_SIZE_BITS);
+-		exfat_buf_modify(sb, sec);
+-		num_entries -=3D copy_entries;
+-
+-		if (num_entries) {
+-			/* get next sector */
+-			if (IS_LAST_SECTOR_IN_CLUSTER(sec)) {
+-				clu =3D GET_CLUSTER_FROM_SECTOR(sec);
+-				if (es->alloc_flag =3D=3D 0x03) {
+-					clu++;
+-				} else {
+-					if (exfat_fat_read(sb, clu, &clu) =3D=3D -1)
+-						goto err_out;
+-				}
+-				sec =3D START_SECTOR(clu);
+-			} else {
+-				sec++;
+-			}
+-			off =3D 0;
+-			buf_off +=3D copy_entries << DENTRY_SIZE_BITS;
+-		}
+-	}
+-
+-	pr_debug("%s exited successfully\n", __func__);
+-	return 0;
+-err_out:
+-	pr_debug("%s failed\n", __func__);
+-	return -EINVAL;
+-}
+-
+-/* write back all entries in entry set */
+-static s32 write_whole_entry_set(struct super_block *sb, struct entry_set_=
+cache_t *es)
+-{
+-	return __write_partial_entries_in_entry_set(sb, es, es->sector,
+-						    es->offset,
+-						    es->num_entries);
+-}
+-
+-void update_dir_checksum_with_entry_set(struct super_block *sb,
+-					struct entry_set_cache_t *es)
+-{
+-	struct dentry_t *ep;
+-	u16 chksum =3D 0;
+-	s32 chksum_type =3D CS_DIR_ENTRY, i;
+-
+-	ep =3D (struct dentry_t *)&es->__buf;
+-	for (i =3D 0; i < es->num_entries; i++) {
+-		pr_debug("%s ep %p\n", __func__, ep);
+-		chksum =3D calc_checksum_2byte((void *)ep, DENTRY_SIZE, chksum,
+-					     chksum_type);
+-		ep++;
+-		chksum_type =3D CS_DEFAULT;
+-	}
+-
+-	ep =3D (struct dentry_t *)&es->__buf;
+-	SET16_A(((struct file_dentry_t *)ep)->checksum, chksum);
+-	write_whole_entry_set(sb, es);
+-}
+-
+-static s32 _walk_fat_chain(struct super_block *sb, struct chain_t *p_dir,
+-			   s32 byte_offset, u32 *clu)
+-{
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	s32 clu_offset;
+-	u32 cur_clu;
+-
+-	clu_offset =3D byte_offset >> p_fs->cluster_size_bits;
+-	cur_clu =3D p_dir->dir;
+-
+-	if (p_dir->flags =3D=3D 0x03) {
+-		cur_clu +=3D clu_offset;
+-	} else {
+-		while (clu_offset > 0) {
+-			if (exfat_fat_read(sb, cur_clu, &cur_clu) =3D=3D -1)
+-				return -EIO;
+-			clu_offset--;
+-		}
+-	}
+-
+-	if (clu)
+-		*clu =3D cur_clu;
+-	return 0;
+-}
+-
+-static s32 find_location(struct super_block *sb, struct chain_t *p_dir, s3=
+2 entry,
+-			 sector_t *sector, s32 *offset)
+-{
+-	s32 off, ret;
+-	u32 clu =3D 0;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	off =3D entry << DENTRY_SIZE_BITS;
+-
+-	if (p_dir->dir =3D=3D CLUSTER_32(0)) { /* FAT16 root_dir */
+-		*offset =3D off & p_bd->sector_size_mask;
+-		*sector =3D off >> p_bd->sector_size_bits;
+-		*sector +=3D p_fs->root_start_sector;
+-	} else {
+-		ret =3D _walk_fat_chain(sb, p_dir, off, &clu);
+-		if (ret !=3D 0)
+-			return ret;
+-
+-		/* byte offset in cluster */
+-		off &=3D p_fs->cluster_size - 1;
+-
+-		/* byte offset in sector    */
+-		*offset =3D off & p_bd->sector_size_mask;
+-
+-		/* sector offset in cluster */
+-		*sector =3D off >> p_bd->sector_size_bits;
+-		*sector +=3D START_SECTOR(clu);
+-	}
+-	return 0;
+-}
+-
+-struct dentry_t *get_entry_in_dir(struct super_block *sb, struct chain_t *=
+p_dir,
+-				  s32 entry, sector_t *sector)
+-{
+-	s32 off;
+-	sector_t sec;
+-	u8 *buf;
+-
+-	if (find_location(sb, p_dir, entry, &sec, &off) !=3D 0)
+-		return NULL;
+-
+-	buf =3D exfat_buf_getblk(sb, sec);
+-
+-	if (!buf)
+-		return NULL;
+-
+-	if (sector)
+-		*sector =3D sec;
+-	return (struct dentry_t *)(buf + off);
+-}
+-
+-/* returns a set of dentries for a file or dir.
+- * Note that this is a copy (dump) of dentries so that user should call wr=
+ite_entry_set()
+- * to apply changes made in this entry set to the real device.
+- * in:
+- *   sb+p_dir+entry: indicates a file/dir
+- *   type:  specifies how many dentries should be included.
+- * out:
+- *   file_ep: will point the first dentry(=3D file dentry) on success
+- * return:
+- *   pointer of entry set on success,
+- *   NULL on failure.
+- */
+-
+-#define ES_MODE_STARTED				0
+-#define ES_MODE_GET_FILE_ENTRY			1
+-#define ES_MODE_GET_STRM_ENTRY			2
+-#define ES_MODE_GET_NAME_ENTRY			3
+-#define ES_MODE_GET_CRITICAL_SEC_ENTRY		4
+-struct entry_set_cache_t *get_entry_set_in_dir(struct super_block *sb,
+-					       struct chain_t *p_dir, s32 entry,
+-					       u32 type,
+-					       struct dentry_t **file_ep)
+-{
+-	s32 off, ret, byte_offset;
+-	u32 clu =3D 0;
+-	sector_t sec;
+-	u32 entry_type;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-	struct entry_set_cache_t *es =3D NULL;
+-	struct dentry_t *ep, *pos;
+-	u8 *buf;
+-	u8 num_entries;
+-	s32 mode =3D ES_MODE_STARTED;
+-	size_t bufsize;
+-
+-	pr_debug("%s entered p_dir dir %u flags %x size %d\n",
+-		 __func__, p_dir->dir, p_dir->flags, p_dir->size);
+-
+-	byte_offset =3D entry << DENTRY_SIZE_BITS;
+-	ret =3D _walk_fat_chain(sb, p_dir, byte_offset, &clu);
+-	if (ret !=3D 0)
+-		return NULL;
+-
+-	/* byte offset in cluster */
+-	byte_offset &=3D p_fs->cluster_size - 1;
+-
+-	/* byte offset in sector    */
+-	off =3D byte_offset & p_bd->sector_size_mask;
+-
+-	/* sector offset in cluster */
+-	sec =3D byte_offset >> p_bd->sector_size_bits;
+-	sec +=3D START_SECTOR(clu);
+-
+-	buf =3D exfat_buf_getblk(sb, sec);
+-	if (!buf)
+-		goto err_out;
+-
+-	ep =3D (struct dentry_t *)(buf + off);
+-	entry_type =3D exfat_get_entry_type(ep);
+-
+-	if ((entry_type !=3D TYPE_FILE) && (entry_type !=3D TYPE_DIR))
+-		goto err_out;
+-
+-	if (type =3D=3D ES_ALL_ENTRIES)
+-		num_entries =3D ((struct file_dentry_t *)ep)->num_ext + 1;
+-	else
+-		num_entries =3D type;
+-
+-	bufsize =3D offsetof(struct entry_set_cache_t, __buf) + (num_entries) *
+-		  sizeof(struct dentry_t);
+-	pr_debug("%s: trying to kmalloc %zx bytes for %d entries\n", __func__,
+-		 bufsize, num_entries);
+-	es =3D kmalloc(bufsize, GFP_KERNEL);
+-	if (!es)
+-		goto err_out;
+-
+-	es->num_entries =3D num_entries;
+-	es->sector =3D sec;
+-	es->offset =3D off;
+-	es->alloc_flag =3D p_dir->flags;
+-
+-	pos =3D (struct dentry_t *)&es->__buf;
+-
+-	while (num_entries) {
+-		/*
+-		 * instead of copying whole sector, we will check every entry.
+-		 * this will provide minimum stablity and consistency.
+-		 */
+-		entry_type =3D exfat_get_entry_type(ep);
+-
+-		if ((entry_type =3D=3D TYPE_UNUSED) || (entry_type =3D=3D TYPE_DELETED))
+-			goto err_out;
+-
+-		switch (mode) {
+-		case ES_MODE_STARTED:
+-			if ((entry_type =3D=3D TYPE_FILE) || (entry_type =3D=3D TYPE_DIR))
+-				mode =3D ES_MODE_GET_FILE_ENTRY;
+-			else
+-				goto err_out;
+-			break;
+-		case ES_MODE_GET_FILE_ENTRY:
+-			if (entry_type =3D=3D TYPE_STREAM)
+-				mode =3D ES_MODE_GET_STRM_ENTRY;
+-			else
+-				goto err_out;
+-			break;
+-		case ES_MODE_GET_STRM_ENTRY:
+-			if (entry_type =3D=3D TYPE_EXTEND)
+-				mode =3D ES_MODE_GET_NAME_ENTRY;
+-			else
+-				goto err_out;
+-			break;
+-		case ES_MODE_GET_NAME_ENTRY:
+-			if (entry_type =3D=3D TYPE_EXTEND)
+-				break;
+-			else if (entry_type =3D=3D TYPE_STREAM)
+-				goto err_out;
+-			else if (entry_type & TYPE_CRITICAL_SEC)
+-				mode =3D ES_MODE_GET_CRITICAL_SEC_ENTRY;
+-			else
+-				goto err_out;
+-			break;
+-		case ES_MODE_GET_CRITICAL_SEC_ENTRY:
+-			if ((entry_type =3D=3D TYPE_EXTEND) ||
+-			    (entry_type =3D=3D TYPE_STREAM))
+-				goto err_out;
+-			else if ((entry_type & TYPE_CRITICAL_SEC) !=3D
+-				 TYPE_CRITICAL_SEC)
+-				goto err_out;
+-			break;
+-		}
+-
+-		memcpy(pos, ep, sizeof(struct dentry_t));
+-
+-		if (--num_entries =3D=3D 0)
+-			break;
+-
+-		if (((off + DENTRY_SIZE) & p_bd->sector_size_mask) <
+-		    (off &  p_bd->sector_size_mask)) {
+-			/* get the next sector */
+-			if (IS_LAST_SECTOR_IN_CLUSTER(sec)) {
+-				if (es->alloc_flag =3D=3D 0x03) {
+-					clu++;
+-				} else {
+-					if (exfat_fat_read(sb, clu, &clu) =3D=3D -1)
+-						goto err_out;
+-				}
+-				sec =3D START_SECTOR(clu);
+-			} else {
+-				sec++;
+-			}
+-			buf =3D exfat_buf_getblk(sb, sec);
+-			if (!buf)
+-				goto err_out;
+-			off =3D 0;
+-			ep =3D (struct dentry_t *)(buf);
+-		} else {
+-			ep++;
+-			off +=3D DENTRY_SIZE;
+-		}
+-		pos++;
+-	}
+-
+-	if (file_ep)
+-		*file_ep =3D (struct dentry_t *)&es->__buf;
+-
+-	pr_debug("%s exiting es %p sec %llu offset %d flags %d, num_entries %u bu=
+f ptr %p\n",
+-		 __func__, es, (unsigned long long)es->sector, es->offset,
+-		 es->alloc_flag, es->num_entries, &es->__buf);
+-	return es;
+-err_out:
+-	pr_debug("%s exited NULL (es %p)\n", __func__, es);
+-	kfree(es);
+-	return NULL;
+-}
+-
+-void release_entry_set(struct entry_set_cache_t *es)
+-{
+-	pr_debug("%s es=3D%p\n", __func__, es);
+-	kfree(es);
+-}
+-
+-/* search EMPTY CONTINUOUS "num_entries" entries */
+-static s32 search_deleted_or_unused_entry(struct super_block *sb,
+-					  struct chain_t *p_dir,
+-					  s32 num_entries)
+-{
+-	int i, dentry, num_empty =3D 0;
+-	s32 dentries_per_clu;
+-	u32 type;
+-	struct chain_t clu;
+-	struct dentry_t *ep;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if (p_dir->dir =3D=3D CLUSTER_32(0)) /* FAT16 root_dir */
+-		dentries_per_clu =3D p_fs->dentries_in_root;
+-	else
+-		dentries_per_clu =3D p_fs->dentries_per_clu;
+-
+-	if (p_fs->hint_uentry.dir =3D=3D p_dir->dir) {
+-		if (p_fs->hint_uentry.entry =3D=3D -1)
+-			return -1;
+-
+-		clu.dir =3D p_fs->hint_uentry.clu.dir;
+-		clu.size =3D p_fs->hint_uentry.clu.size;
+-		clu.flags =3D p_fs->hint_uentry.clu.flags;
+-
+-		dentry =3D p_fs->hint_uentry.entry;
+-	} else {
+-		p_fs->hint_uentry.entry =3D -1;
+-
+-		clu.dir =3D p_dir->dir;
+-		clu.size =3D p_dir->size;
+-		clu.flags =3D p_dir->flags;
+-
+-		dentry =3D 0;
+-	}
+-
+-	while (clu.dir !=3D CLUSTER_32(~0)) {
+-		if (p_fs->dev_ejected)
+-			break;
+-
+-		if (p_dir->dir =3D=3D CLUSTER_32(0)) /* FAT16 root_dir */
+-			i =3D dentry % dentries_per_clu;
+-		else
+-			i =3D dentry & (dentries_per_clu - 1);
+-
+-		for (; i < dentries_per_clu; i++, dentry++) {
+-			ep =3D get_entry_in_dir(sb, &clu, i, NULL);
+-			if (!ep)
+-				return -1;
+-
+-			type =3D exfat_get_entry_type(ep);
+-
+-			if (type =3D=3D TYPE_UNUSED) {
+-				num_empty++;
+-				if (p_fs->hint_uentry.entry =3D=3D -1) {
+-					p_fs->hint_uentry.dir =3D p_dir->dir;
+-					p_fs->hint_uentry.entry =3D dentry;
+-
+-					p_fs->hint_uentry.clu.dir =3D clu.dir;
+-					p_fs->hint_uentry.clu.size =3D clu.size;
+-					p_fs->hint_uentry.clu.flags =3D clu.flags;
+-				}
+-			} else if (type =3D=3D TYPE_DELETED) {
+-				num_empty++;
+-			} else {
+-				num_empty =3D 0;
+-			}
+-
+-			if (num_empty >=3D num_entries) {
+-				p_fs->hint_uentry.dir =3D CLUSTER_32(~0);
+-				p_fs->hint_uentry.entry =3D -1;
+-				return dentry - (num_entries - 1);
+-			}
+-		}
+-
+-		if (p_dir->dir =3D=3D CLUSTER_32(0))
+-			break; /* FAT16 root_dir */
+-
+-		if (clu.flags =3D=3D 0x03) {
+-			if ((--clu.size) > 0)
+-				clu.dir++;
+-			else
+-				clu.dir =3D CLUSTER_32(~0);
+-		} else {
+-			if (exfat_fat_read(sb, clu.dir, &clu.dir) !=3D 0)
+-				return -1;
+-		}
+-	}
+-
+-	return -1;
+-}
+-
+-static s32 find_empty_entry(struct inode *inode, struct chain_t *p_dir, s3=
+2 num_entries)
+-{
+-	s32 ret, dentry;
+-	u32 last_clu;
+-	sector_t sector;
+-	u64 size =3D 0;
+-	struct chain_t clu;
+-	struct dentry_t *ep =3D NULL;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct file_id_t *fid =3D &(EXFAT_I(inode)->fid);
+-
+-	if (p_dir->dir =3D=3D CLUSTER_32(0)) /* FAT16 root_dir */
+-		return search_deleted_or_unused_entry(sb, p_dir, num_entries);
+-
+-	while ((dentry =3D search_deleted_or_unused_entry(sb, p_dir, num_entries)=
+) < 0) {
+-		if (p_fs->dev_ejected)
+-			break;
+-
+-		if (p_dir->dir !=3D p_fs->root_dir)
+-			size =3D i_size_read(inode);
+-
+-		last_clu =3D find_last_cluster(sb, p_dir);
+-		clu.dir =3D last_clu + 1;
+-		clu.size =3D 0;
+-		clu.flags =3D p_dir->flags;
+-
+-		/* (1) allocate a cluster */
+-		ret =3D exfat_alloc_cluster(sb, 1, &clu);
+-		if (ret < 1)
+-			return -EIO;
+-
+-		if (clear_cluster(sb, clu.dir) !=3D 0)
+-			return -EIO;
+-
+-		/* (2) append to the FAT chain */
+-		if (clu.flags !=3D p_dir->flags) {
+-			exfat_chain_cont_cluster(sb, p_dir->dir, p_dir->size);
+-			p_dir->flags =3D 0x01;
+-			p_fs->hint_uentry.clu.flags =3D 0x01;
+-		}
+-		if (clu.flags =3D=3D 0x01)
+-			if (exfat_fat_write(sb, last_clu, clu.dir) < 0)
+-				return -EIO;
+-
+-		if (p_fs->hint_uentry.entry =3D=3D -1) {
+-			p_fs->hint_uentry.dir =3D p_dir->dir;
+-			p_fs->hint_uentry.entry =3D p_dir->size << (p_fs->cluster_size_bits - D=
+ENTRY_SIZE_BITS);
+-
+-			p_fs->hint_uentry.clu.dir =3D clu.dir;
+-			p_fs->hint_uentry.clu.size =3D 0;
+-			p_fs->hint_uentry.clu.flags =3D clu.flags;
+-		}
+-		p_fs->hint_uentry.clu.size++;
+-		p_dir->size++;
+-
+-		/* (3) update the directory entry */
+-		if (p_dir->dir !=3D p_fs->root_dir) {
+-			size +=3D p_fs->cluster_size;
+-
+-			ep =3D get_entry_in_dir(sb, &fid->dir,
+-					      fid->entry + 1, &sector);
+-			if (!ep)
+-				return -ENOENT;
+-			exfat_set_entry_size(ep, size);
+-			exfat_set_entry_flag(ep, p_dir->flags);
+-			exfat_buf_modify(sb, sector);
+-
+-			update_dir_checksum(sb, &fid->dir,
+-					    fid->entry);
+-		}
+-
+-		i_size_write(inode, i_size_read(inode) + p_fs->cluster_size);
+-		EXFAT_I(inode)->mmu_private +=3D p_fs->cluster_size;
+-		EXFAT_I(inode)->fid.size +=3D p_fs->cluster_size;
+-		EXFAT_I(inode)->fid.flags =3D p_dir->flags;
+-		inode->i_blocks +=3D 1 << (p_fs->cluster_size_bits - 9);
+-	}
+-
+-	return dentry;
+-}
+-
+-static s32 extract_uni_name_from_name_entry(struct name_dentry_t *ep, u16 =
+*uniname,
+-					    s32 order)
+-{
+-	int i, len =3D 0;
+-
+-	for (i =3D 0; i < 30; i +=3D 2) {
+-		*uniname =3D GET16_A(ep->unicode_0_14 + i);
+-		if (*uniname =3D=3D 0x0)
+-			return len;
+-		uniname++;
+-		len++;
+-	}
+-
+-	*uniname =3D 0x0;
+-	return len;
+-}
+-
+-/* return values of exfat_find_dir_entry()
+- * >=3D 0 : return dir entiry position with the name in dir
+- * -1 : (root dir, ".") it is the root dir itself
+- * -2 : entry with the name does not exist
+- */
+-s32 exfat_find_dir_entry(struct super_block *sb, struct chain_t *p_dir,
+-			 struct uni_name_t *p_uniname, s32 num_entries,
+-			 u32 type)
+-{
+-	int i =3D 0, dentry =3D 0, num_ext_entries =3D 0, len, step;
+-	s32 order =3D 0;
+-	bool is_feasible_entry =3D false;
+-	s32 dentries_per_clu, num_empty =3D 0;
+-	u32 entry_type;
+-	u16 entry_uniname[16], *uniname =3D NULL, unichar;
+-	struct chain_t clu;
+-	struct dentry_t *ep;
+-	struct file_dentry_t *file_ep;
+-	struct strm_dentry_t *strm_ep;
+-	struct name_dentry_t *name_ep;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if (p_dir->dir =3D=3D p_fs->root_dir) {
+-		if ((!nls_uniname_cmp(sb, p_uniname->name,
+-				      (u16 *)UNI_CUR_DIR_NAME)) ||
+-			(!nls_uniname_cmp(sb, p_uniname->name,
+-					  (u16 *)UNI_PAR_DIR_NAME)))
+-			return -1; // special case, root directory itself
+-	}
+-
+-	if (p_dir->dir =3D=3D CLUSTER_32(0)) /* FAT16 root_dir */
+-		dentries_per_clu =3D p_fs->dentries_in_root;
+-	else
+-		dentries_per_clu =3D p_fs->dentries_per_clu;
+-
+-	clu.dir =3D p_dir->dir;
+-	clu.size =3D p_dir->size;
+-	clu.flags =3D p_dir->flags;
+-
+-	p_fs->hint_uentry.dir =3D p_dir->dir;
+-	p_fs->hint_uentry.entry =3D -1;
+-
+-	while (clu.dir !=3D CLUSTER_32(~0)) {
+-		if (p_fs->dev_ejected)
+-			break;
+-
+-		while (i < dentries_per_clu) {
+-			ep =3D get_entry_in_dir(sb, &clu, i, NULL);
+-			if (!ep)
+-				return -2;
+-
+-			entry_type =3D exfat_get_entry_type(ep);
+-			step =3D 1;
+-
+-			if ((entry_type =3D=3D TYPE_UNUSED) || (entry_type =3D=3D TYPE_DELETED)=
+) {
+-				is_feasible_entry =3D false;
+-
+-				if (p_fs->hint_uentry.entry =3D=3D -1) {
+-					num_empty++;
+-
+-					if (num_empty =3D=3D 1) {
+-						p_fs->hint_uentry.clu.dir =3D clu.dir;
+-						p_fs->hint_uentry.clu.size =3D clu.size;
+-						p_fs->hint_uentry.clu.flags =3D clu.flags;
+-					}
+-					if ((num_empty >=3D num_entries) || (entry_type =3D=3D TYPE_UNUSED))
+-						p_fs->hint_uentry.entry =3D dentry - (num_empty - 1);
+-				}
+-
+-				if (entry_type =3D=3D TYPE_UNUSED)
+-					return -2;
+-			} else {
+-				num_empty =3D 0;
+-
+-				if ((entry_type =3D=3D TYPE_FILE) || (entry_type =3D=3D TYPE_DIR)) {
+-					file_ep =3D (struct file_dentry_t *)ep;
+-					if ((type =3D=3D TYPE_ALL) || (type =3D=3D entry_type)) {
+-						num_ext_entries =3D file_ep->num_ext;
+-						is_feasible_entry =3D true;
+-					} else {
+-						is_feasible_entry =3D false;
+-						step =3D file_ep->num_ext + 1;
+-					}
+-				} else if (entry_type =3D=3D TYPE_STREAM) {
+-					if (is_feasible_entry) {
+-						strm_ep =3D (struct strm_dentry_t *)ep;
+-						if (p_uniname->name_hash =3D=3D GET16_A(strm_ep->name_hash) &&
+-						    p_uniname->name_len =3D=3D strm_ep->name_len) {
+-							order =3D 1;
+-						} else {
+-							is_feasible_entry =3D false;
+-							step =3D num_ext_entries;
+-						}
+-					}
+-				} else if (entry_type =3D=3D TYPE_EXTEND) {
+-					if (is_feasible_entry) {
+-						name_ep =3D (struct name_dentry_t *)ep;
+-
+-						if ((++order) =3D=3D 2)
+-							uniname =3D p_uniname->name;
+-						else
+-							uniname +=3D 15;
+-
+-						len =3D extract_uni_name_from_name_entry(name_ep,
+-								entry_uniname, order);
+-
+-						unichar =3D *(uniname + len);
+-						*(uniname + len) =3D 0x0;
+-
+-						if (nls_uniname_cmp(sb, uniname, entry_uniname)) {
+-							is_feasible_entry =3D false;
+-							step =3D num_ext_entries - order + 1;
+-						} else if (order =3D=3D num_ext_entries) {
+-							p_fs->hint_uentry.dir =3D CLUSTER_32(~0);
+-							p_fs->hint_uentry.entry =3D -1;
+-							return dentry - (num_ext_entries);
+-						}
+-
+-						*(uniname + len) =3D unichar;
+-					}
+-				} else {
+-					is_feasible_entry =3D false;
+-				}
+-			}
+-
+-			i +=3D step;
+-			dentry +=3D step;
+-		}
+-
+-		i -=3D dentries_per_clu;
+-
+-		if (p_dir->dir =3D=3D CLUSTER_32(0))
+-			break; /* FAT16 root_dir */
+-
+-		if (clu.flags =3D=3D 0x03) {
+-			if ((--clu.size) > 0)
+-				clu.dir++;
+-			else
+-				clu.dir =3D CLUSTER_32(~0);
+-		} else {
+-			if (exfat_fat_read(sb, clu.dir, &clu.dir) !=3D 0)
+-				return -2;
+-		}
+-	}
+-
+-	return -2;
+-}
+-
+-s32 exfat_count_ext_entries(struct super_block *sb, struct chain_t *p_dir,
+-			    s32 entry, struct dentry_t *p_entry)
+-{
+-	int i, count =3D 0;
+-	u32 type;
+-	struct file_dentry_t *file_ep =3D (struct file_dentry_t *)p_entry;
+-	struct dentry_t *ext_ep;
+-
+-	for (i =3D 0, entry++; i < file_ep->num_ext; i++, entry++) {
+-		ext_ep =3D get_entry_in_dir(sb, p_dir, entry, NULL);
+-		if (!ext_ep)
+-			return -1;
+-
+-		type =3D exfat_get_entry_type(ext_ep);
+-		if ((type =3D=3D TYPE_EXTEND) || (type =3D=3D TYPE_STREAM))
+-			count++;
+-		else
+-			return count;
+-	}
+-
+-	return count;
+-}
+-
+-s32 count_dir_entries(struct super_block *sb, struct chain_t *p_dir)
+-{
+-	int i, count =3D 0;
+-	s32 dentries_per_clu;
+-	u32 entry_type;
+-	struct chain_t clu;
+-	struct dentry_t *ep;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if (p_dir->dir =3D=3D CLUSTER_32(0)) /* FAT16 root_dir */
+-		dentries_per_clu =3D p_fs->dentries_in_root;
+-	else
+-		dentries_per_clu =3D p_fs->dentries_per_clu;
+-
+-	clu.dir =3D p_dir->dir;
+-	clu.size =3D p_dir->size;
+-	clu.flags =3D p_dir->flags;
+-
+-	while (clu.dir !=3D CLUSTER_32(~0)) {
+-		if (p_fs->dev_ejected)
+-			break;
+-
+-		for (i =3D 0; i < dentries_per_clu; i++) {
+-			ep =3D get_entry_in_dir(sb, &clu, i, NULL);
+-			if (!ep)
+-				return -ENOENT;
+-
+-			entry_type =3D exfat_get_entry_type(ep);
+-
+-			if (entry_type =3D=3D TYPE_UNUSED)
+-				return count;
+-			if (entry_type =3D=3D TYPE_DIR)
+-				count++;
+-		}
+-
+-		if (p_dir->dir =3D=3D CLUSTER_32(0))
+-			break; /* FAT16 root_dir */
+-
+-		if (clu.flags =3D=3D 0x03) {
+-			if ((--clu.size) > 0)
+-				clu.dir++;
+-			else
+-				clu.dir =3D CLUSTER_32(~0);
+-		} else {
+-			if (exfat_fat_read(sb, clu.dir, &clu.dir) !=3D 0)
+-				return -EIO;
+-		}
+-	}
+-
+-	return count;
+-}
+-
+-bool is_dir_empty(struct super_block *sb, struct chain_t *p_dir)
+-{
+-	int i;
+-	s32 dentries_per_clu;
+-	u32 type;
+-	struct chain_t clu;
+-	struct dentry_t *ep;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if (p_dir->dir =3D=3D CLUSTER_32(0)) /* FAT16 root_dir */
+-		dentries_per_clu =3D p_fs->dentries_in_root;
+-	else
+-		dentries_per_clu =3D p_fs->dentries_per_clu;
+-
+-	clu.dir =3D p_dir->dir;
+-	clu.size =3D p_dir->size;
+-	clu.flags =3D p_dir->flags;
+-
+-	while (clu.dir !=3D CLUSTER_32(~0)) {
+-		if (p_fs->dev_ejected)
+-			break;
+-
+-		for (i =3D 0; i < dentries_per_clu; i++) {
+-			ep =3D get_entry_in_dir(sb, &clu, i, NULL);
+-			if (!ep)
+-				break;
+-
+-			type =3D exfat_get_entry_type(ep);
+-
+-			if (type =3D=3D TYPE_UNUSED)
+-				return true;
+-			if ((type =3D=3D TYPE_FILE) || (type =3D=3D TYPE_DIR))
+-				return false;
+-		}
+-
+-		if (p_dir->dir =3D=3D CLUSTER_32(0))
+-			break; /* FAT16 root_dir */
+-
+-		if (clu.flags =3D=3D 0x03) {
+-			if ((--clu.size) > 0)
+-				clu.dir++;
+-			else
+-				clu.dir =3D CLUSTER_32(~0);
+-		}
+-		if (exfat_fat_read(sb, clu.dir, &clu.dir) !=3D 0)
+-			break;
+-	}
+-
+-	return true;
+-}
+-
+-/*
+- *  Name Conversion Functions
+- */
+-
+-/* input  : dir, uni_name
+- * output : num_of_entry
+- */
+-s32 get_num_entries(struct super_block *sb, struct chain_t *p_dir,
+-		    struct uni_name_t *p_uniname, s32 *entries)
+-{
+-	s32 num_entries;
+-
+-	num_entries =3D exfat_calc_num_entries(p_uniname);
+-	if (num_entries =3D=3D 0)
+-		return -EINVAL;
+-
+-	*entries =3D num_entries;
+-
+-	return 0;
+-}
+-
+-void exfat_get_uni_name_from_ext_entry(struct super_block *sb,
+-				       struct chain_t *p_dir, s32 entry,
+-				       u16 *uniname)
+-{
+-	int i;
+-	struct dentry_t *ep;
+-	struct entry_set_cache_t *es;
+-
+-	es =3D get_entry_set_in_dir(sb, p_dir, entry, ES_ALL_ENTRIES, &ep);
+-	if (!es || es->num_entries < 3) {
+-		if (es)
+-			release_entry_set(es);
+-		return;
+-	}
+-
+-	ep +=3D 2;
+-
+-	/*
+-	 * First entry  : file entry
+-	 * Second entry : stream-extension entry
+-	 * Third entry  : first file-name entry
+-	 * So, the index of first file-name dentry should start from 2.
+-	 */
+-	for (i =3D 2; i < es->num_entries; i++, ep++) {
+-		if (exfat_get_entry_type(ep) =3D=3D TYPE_EXTEND)
+-			extract_uni_name_from_name_entry((struct name_dentry_t *)
+-							 ep, uniname, i);
+-		else
+-			goto out;
+-		uniname +=3D 15;
+-	}
+-
+-out:
+-	release_entry_set(es);
+-}
+-
+-s32 exfat_calc_num_entries(struct uni_name_t *p_uniname)
+-{
+-	s32 len;
+-
+-	len =3D p_uniname->name_len;
+-	if (len =3D=3D 0)
+-		return 0;
+-
+-	/* 1 file entry + 1 stream entry + name entries */
+-	return (len - 1) / 15 + 3;
+-}
+-
+-u16 calc_checksum_2byte(void *data, s32 len, u16 chksum, s32 type)
+-{
+-	int i;
+-	u8 *c =3D (u8 *)data;
+-
+-	switch (type) {
+-	case CS_DIR_ENTRY:
+-		for (i =3D 0; i < len; i++, c++) {
+-			if ((i =3D=3D 2) || (i =3D=3D 3))
+-				continue;
+-			chksum =3D (((chksum & 1) << 15) |
+-				  ((chksum & 0xFFFE) >> 1)) + (u16)*c;
+-		}
+-		break;
+-	default
+-			:
+-		for (i =3D 0; i < len; i++, c++)
+-			chksum =3D (((chksum & 1) << 15) |
+-				  ((chksum & 0xFFFE) >> 1)) + (u16)*c;
+-	}
+-
+-	return chksum;
+-}
+-
+-/*
+- *  Name Resolution Functions
+- */
+-
+-/* return values of resolve_path()
+- * > 0 : return the length of the path
+- * < 0 : return error
+- */
+-s32 resolve_path(struct inode *inode, char *path, struct chain_t *p_dir,
+-		 struct uni_name_t *p_uniname)
+-{
+-	bool lossy =3D false;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct file_id_t *fid =3D &(EXFAT_I(inode)->fid);
+-
+-	if (strscpy(name_buf, path, sizeof(name_buf)) < 0)
+-		return -EINVAL;
+-
+-	nls_cstring_to_uniname(sb, p_uniname, name_buf, &lossy);
+-	if (lossy)
+-		return -EINVAL;
+-
+-	fid->size =3D i_size_read(inode);
+-
+-	p_dir->dir =3D fid->start_clu;
+-	p_dir->size =3D (s32)(fid->size >> p_fs->cluster_size_bits);
+-	p_dir->flags =3D fid->flags;
+-
+-	return 0;
+-}
+-
+-s32 exfat_mount(struct super_block *sb, struct pbr_sector_t *p_pbr)
+-{
+-	struct bpbex_t *p_bpb =3D (struct bpbex_t *)p_pbr->bpb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	if (p_bpb->num_fats =3D=3D 0)
+-		return -EFSCORRUPTED;
+-
+-	p_fs->sectors_per_clu =3D 1 << p_bpb->sectors_per_clu_bits;
+-	p_fs->sectors_per_clu_bits =3D p_bpb->sectors_per_clu_bits;
+-	p_fs->cluster_size_bits =3D p_fs->sectors_per_clu_bits +
+-				  p_bd->sector_size_bits;
+-	p_fs->cluster_size =3D 1 << p_fs->cluster_size_bits;
+-
+-	p_fs->num_FAT_sectors =3D GET32(p_bpb->fat_length);
+-
+-	p_fs->FAT1_start_sector =3D p_fs->PBR_sector + GET32(p_bpb->fat_offset);
+-	if (p_bpb->num_fats =3D=3D 1)
+-		p_fs->FAT2_start_sector =3D p_fs->FAT1_start_sector;
+-	else
+-		p_fs->FAT2_start_sector =3D p_fs->FAT1_start_sector +
+-					  p_fs->num_FAT_sectors;
+-
+-	p_fs->root_start_sector =3D p_fs->PBR_sector + GET32(p_bpb->clu_offset);
+-	p_fs->data_start_sector =3D p_fs->root_start_sector;
+-
+-	p_fs->num_sectors =3D GET64(p_bpb->vol_length);
+-	p_fs->num_clusters =3D GET32(p_bpb->clu_count) + 2;
+-	/* because the cluster index starts with 2 */
+-
+-	p_fs->vol_id =3D GET32(p_bpb->vol_serial);
+-
+-	p_fs->root_dir =3D GET32(p_bpb->root_cluster);
+-	p_fs->dentries_in_root =3D 0;
+-	p_fs->dentries_per_clu =3D 1 << (p_fs->cluster_size_bits -
+-				       DENTRY_SIZE_BITS);
+-
+-	p_fs->vol_flag =3D (u32)GET16(p_bpb->vol_flags);
+-	p_fs->clu_srch_ptr =3D 2;
+-	p_fs->used_clusters =3D UINT_MAX;
+-
+-	return 0;
+-}
+-
+-s32 create_dir(struct inode *inode, struct chain_t *p_dir,
+-	       struct uni_name_t *p_uniname, struct file_id_t *fid)
+-{
+-	s32 ret, dentry, num_entries;
+-	u64 size;
+-	struct chain_t clu;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	ret =3D get_num_entries(sb, p_dir, p_uniname, &num_entries);
+-	if (ret)
+-		return ret;
+-
+-	/* find_empty_entry must be called before alloc_cluster */
+-	dentry =3D find_empty_entry(inode, p_dir, num_entries);
+-	if (dentry < 0)
+-		return -ENOSPC;
+-
+-	clu.dir =3D CLUSTER_32(~0);
+-	clu.size =3D 0;
+-	clu.flags =3D 0x03;
+-
+-	/* (1) allocate a cluster */
+-	ret =3D exfat_alloc_cluster(sb, 1, &clu);
+-	if (ret < 0)
+-		return ret;
+-	else if (ret =3D=3D 0)
+-		return -ENOSPC;
+-
+-	ret =3D clear_cluster(sb, clu.dir);
+-	if (ret !=3D 0)
+-		return ret;
+-
+-	size =3D p_fs->cluster_size;
+-
+-	/* (2) update the directory entry */
+-	/* make sub-dir entry in parent directory */
+-	ret =3D exfat_init_dir_entry(sb, p_dir, dentry, TYPE_DIR, clu.dir,
+-				   size);
+-	if (ret !=3D 0)
+-		return ret;
+-
+-	ret =3D exfat_init_ext_entry(sb, p_dir, dentry, num_entries, p_uniname);
+-	if (ret !=3D 0)
+-		return ret;
+-
+-	fid->dir.dir =3D p_dir->dir;
+-	fid->dir.size =3D p_dir->size;
+-	fid->dir.flags =3D p_dir->flags;
+-	fid->entry =3D dentry;
+-
+-	fid->attr =3D ATTR_SUBDIR;
+-	fid->flags =3D 0x03;
+-	fid->size =3D size;
+-	fid->start_clu =3D clu.dir;
+-
+-	fid->type =3D TYPE_DIR;
+-	fid->rwoffset =3D 0;
+-	fid->hint_last_off =3D -1;
+-
+-	return 0;
+-}
+-
+-s32 create_file(struct inode *inode, struct chain_t *p_dir,
+-		struct uni_name_t *p_uniname, struct file_id_t *fid)
+-{
+-	s32 ret, dentry, num_entries;
+-	struct super_block *sb =3D inode->i_sb;
+-
+-	ret =3D get_num_entries(sb, p_dir, p_uniname, &num_entries);
+-	if (ret)
+-		return ret;
+-
+-	/* find_empty_entry must be called before alloc_cluster() */
+-	dentry =3D find_empty_entry(inode, p_dir, num_entries);
+-	if (dentry < 0)
+-		return -ENOSPC;
+-
+-	/* (1) update the directory entry */
+-	/* fill the directory entry information of the created file.
+-	 * the first cluster is not determined yet. (0)
+-	 */
+-	ret =3D exfat_init_dir_entry(sb, p_dir, dentry, TYPE_FILE,
+-				   CLUSTER_32(0), 0);
+-	if (ret !=3D 0)
+-		return ret;
+-
+-	ret =3D exfat_init_ext_entry(sb, p_dir, dentry, num_entries, p_uniname);
+-	if (ret !=3D 0)
+-		return ret;
+-
+-	fid->dir.dir =3D p_dir->dir;
+-	fid->dir.size =3D p_dir->size;
+-	fid->dir.flags =3D p_dir->flags;
+-	fid->entry =3D dentry;
+-
+-	fid->attr =3D ATTR_ARCHIVE;
+-	fid->flags =3D 0x03;
+-	fid->size =3D 0;
+-	fid->start_clu =3D CLUSTER_32(~0);
+-
+-	fid->type =3D TYPE_FILE;
+-	fid->rwoffset =3D 0;
+-	fid->hint_last_off =3D -1;
+-
+-	return 0;
+-}
+-
+-void remove_file(struct inode *inode, struct chain_t *p_dir, s32 entry)
+-{
+-	s32 num_entries;
+-	sector_t sector;
+-	struct dentry_t *ep;
+-	struct super_block *sb =3D inode->i_sb;
+-
+-	ep =3D get_entry_in_dir(sb, p_dir, entry, &sector);
+-	if (!ep)
+-		return;
+-
+-	exfat_buf_lock(sb, sector);
+-
+-	/* exfat_buf_lock() before call count_ext_entries() */
+-	num_entries =3D exfat_count_ext_entries(sb, p_dir, entry, ep);
+-	if (num_entries < 0) {
+-		exfat_buf_unlock(sb, sector);
+-		return;
+-	}
+-	num_entries++;
+-
+-	exfat_buf_unlock(sb, sector);
+-
+-	/* (1) update the directory entry */
+-	exfat_delete_dir_entry(sb, p_dir, entry, 0, num_entries);
+-}
+-
+-s32 exfat_rename_file(struct inode *inode, struct chain_t *p_dir, s32 olde=
+ntry,
+-		      struct uni_name_t *p_uniname, struct file_id_t *fid)
+-{
+-	s32 ret, newentry =3D -1, num_old_entries, num_new_entries;
+-	sector_t sector_old, sector_new;
+-	struct dentry_t *epold, *epnew;
+-	struct super_block *sb =3D inode->i_sb;
+-
+-	epold =3D get_entry_in_dir(sb, p_dir, oldentry, &sector_old);
+-	if (!epold)
+-		return -ENOENT;
+-
+-	exfat_buf_lock(sb, sector_old);
+-
+-	/* exfat_buf_lock() before call count_ext_entries() */
+-	num_old_entries =3D exfat_count_ext_entries(sb, p_dir, oldentry,
+-						  epold);
+-	if (num_old_entries < 0) {
+-		exfat_buf_unlock(sb, sector_old);
+-		return -ENOENT;
+-	}
+-	num_old_entries++;
+-
+-	ret =3D get_num_entries(sb, p_dir, p_uniname, &num_new_entries);
+-	if (ret) {
+-		exfat_buf_unlock(sb, sector_old);
+-		return ret;
+-	}
+-
+-	if (num_old_entries < num_new_entries) {
+-		newentry =3D find_empty_entry(inode, p_dir, num_new_entries);
+-		if (newentry < 0) {
+-			exfat_buf_unlock(sb, sector_old);
+-			return -ENOSPC;
+-		}
+-
+-		epnew =3D get_entry_in_dir(sb, p_dir, newentry, &sector_new);
+-		if (!epnew) {
+-			exfat_buf_unlock(sb, sector_old);
+-			return -ENOENT;
+-		}
+-
+-		*epnew =3D *epold;
+-		if (fid->type =3D=3D TYPE_FILE) {
+-			fid->attr |=3D ATTR_ARCHIVE;
+-			exfat_set_entry_attr(epnew, fid->attr);
+-		}
+-		exfat_buf_modify(sb, sector_new);
+-		exfat_buf_unlock(sb, sector_old);
+-
+-		epold =3D get_entry_in_dir(sb, p_dir, oldentry + 1,
+-					 &sector_old);
+-		exfat_buf_lock(sb, sector_old);
+-		epnew =3D get_entry_in_dir(sb, p_dir, newentry + 1,
+-					 &sector_new);
+-
+-		if (!epold || !epnew) {
+-			exfat_buf_unlock(sb, sector_old);
+-			return -ENOENT;
+-		}
+-
+-		*epnew =3D *epold;
+-		exfat_buf_modify(sb, sector_new);
+-		exfat_buf_unlock(sb, sector_old);
+-
+-		ret =3D exfat_init_ext_entry(sb, p_dir, newentry,
+-					   num_new_entries, p_uniname);
+-		if (ret !=3D 0)
+-			return ret;
+-
+-		exfat_delete_dir_entry(sb, p_dir, oldentry, 0,
+-				       num_old_entries);
+-		fid->entry =3D newentry;
+-	} else {
+-		if (fid->type =3D=3D TYPE_FILE) {
+-			fid->attr |=3D ATTR_ARCHIVE;
+-			exfat_set_entry_attr(epold, fid->attr);
+-		}
+-		exfat_buf_modify(sb, sector_old);
+-		exfat_buf_unlock(sb, sector_old);
+-
+-		ret =3D exfat_init_ext_entry(sb, p_dir, oldentry,
+-					   num_new_entries, p_uniname);
+-		if (ret !=3D 0)
+-			return ret;
+-
+-		exfat_delete_dir_entry(sb, p_dir, oldentry, num_new_entries,
+-				       num_old_entries);
+-	}
+-
+-	return 0;
+-}
+-
+-s32 move_file(struct inode *inode, struct chain_t *p_olddir, s32 oldentry,
+-	      struct chain_t *p_newdir, struct uni_name_t *p_uniname,
+-	      struct file_id_t *fid)
+-{
+-	s32 ret, newentry, num_new_entries, num_old_entries;
+-	sector_t sector_mov, sector_new;
+-	struct dentry_t *epmov, *epnew;
+-	struct super_block *sb =3D inode->i_sb;
+-
+-	epmov =3D get_entry_in_dir(sb, p_olddir, oldentry, &sector_mov);
+-	if (!epmov)
+-		return -ENOENT;
+-
+-	/* check if the source and target directory is the same */
+-	if (exfat_get_entry_type(epmov) =3D=3D TYPE_DIR &&
+-	    exfat_get_entry_clu0(epmov) =3D=3D p_newdir->dir)
+-		return -EINVAL;
+-
+-	exfat_buf_lock(sb, sector_mov);
+-
+-	/* exfat_buf_lock() before call count_ext_entries() */
+-	num_old_entries =3D exfat_count_ext_entries(sb, p_olddir, oldentry,
+-						  epmov);
+-	if (num_old_entries < 0) {
+-		exfat_buf_unlock(sb, sector_mov);
+-		return -ENOENT;
+-	}
+-	num_old_entries++;
+-
+-	ret =3D get_num_entries(sb, p_newdir, p_uniname, &num_new_entries);
+-	if (ret) {
+-		exfat_buf_unlock(sb, sector_mov);
+-		return ret;
+-	}
+-
+-	newentry =3D find_empty_entry(inode, p_newdir, num_new_entries);
+-	if (newentry < 0) {
+-		exfat_buf_unlock(sb, sector_mov);
+-		return -ENOSPC;
+-	}
+-
+-	epnew =3D get_entry_in_dir(sb, p_newdir, newentry, &sector_new);
+-	if (!epnew) {
+-		exfat_buf_unlock(sb, sector_mov);
+-		return -ENOENT;
+-	}
+-
+-	*epnew =3D *epmov;
+-	if (fid->type =3D=3D TYPE_FILE) {
+-		fid->attr |=3D ATTR_ARCHIVE;
+-		exfat_set_entry_attr(epnew, fid->attr);
+-	}
+-	exfat_buf_modify(sb, sector_new);
+-	exfat_buf_unlock(sb, sector_mov);
+-
+-	epmov =3D get_entry_in_dir(sb, p_olddir, oldentry + 1,
+-				 &sector_mov);
+-	exfat_buf_lock(sb, sector_mov);
+-	epnew =3D get_entry_in_dir(sb, p_newdir, newentry + 1,
+-				 &sector_new);
+-	if (!epmov || !epnew) {
+-		exfat_buf_unlock(sb, sector_mov);
+-		return -ENOENT;
+-	}
+-
+-	*epnew =3D *epmov;
+-	exfat_buf_modify(sb, sector_new);
+-	exfat_buf_unlock(sb, sector_mov);
+-
+-	ret =3D exfat_init_ext_entry(sb, p_newdir, newentry, num_new_entries,
+-				   p_uniname);
+-	if (ret !=3D 0)
+-		return ret;
+-
+-	exfat_delete_dir_entry(sb, p_olddir, oldentry, 0, num_old_entries);
+-
+-	fid->dir.dir =3D p_newdir->dir;
+-	fid->dir.size =3D p_newdir->size;
+-	fid->dir.flags =3D p_newdir->flags;
+-
+-	fid->entry =3D newentry;
+-
+-	return 0;
+-}
+-
+-/*
+- *  Sector Read/Write Functions
+- */
+-
+-int sector_read(struct super_block *sb, sector_t sec, struct buffer_head *=
+*bh,
+-		bool read)
+-{
+-	s32 ret =3D -EIO;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if ((sec >=3D (p_fs->PBR_sector + p_fs->num_sectors)) &&
+-	    (p_fs->num_sectors > 0)) {
+-		pr_err("[EXFAT] %s: out of range error! (sec =3D %llu)\n",
+-		       __func__, (unsigned long long)sec);
+-		fs_error(sb);
+-		return ret;
+-	}
+-
+-	if (!p_fs->dev_ejected) {
+-		ret =3D exfat_bdev_read(sb, sec, bh, 1, read);
+-		if (ret !=3D 0)
+-			p_fs->dev_ejected =3D 1;
+-	}
+-
+-	return ret;
+-}
+-
+-int sector_write(struct super_block *sb, sector_t sec, struct buffer_head =
+*bh,
+-		 bool sync)
+-{
+-	s32 ret =3D -EIO;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if (sec >=3D (p_fs->PBR_sector + p_fs->num_sectors) &&
+-	    (p_fs->num_sectors > 0)) {
+-		pr_err("[EXFAT] %s: out of range error! (sec =3D %llu)\n",
+-		       __func__, (unsigned long long)sec);
+-		fs_error(sb);
+-		return ret;
+-	}
+-
+-	if (!bh) {
+-		pr_err("[EXFAT] %s: bh is NULL!\n", __func__);
+-		fs_error(sb);
+-		return ret;
+-	}
+-
+-	if (!p_fs->dev_ejected) {
+-		ret =3D exfat_bdev_write(sb, sec, bh, 1, sync);
+-		if (ret !=3D 0)
+-			p_fs->dev_ejected =3D 1;
+-	}
+-
+-	return ret;
+-}
+-
+-int multi_sector_read(struct super_block *sb, sector_t sec,
+-		      struct buffer_head **bh, s32 num_secs, bool read)
+-{
+-	s32 ret =3D -EIO;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if (((sec + num_secs) > (p_fs->PBR_sector + p_fs->num_sectors)) &&
+-	    (p_fs->num_sectors > 0)) {
+-		pr_err("[EXFAT] %s: out of range error! (sec =3D %llu, num_secs =3D %d)\=
+n",
+-		       __func__, (unsigned long long)sec, num_secs);
+-		fs_error(sb);
+-		return ret;
+-	}
+-
+-	if (!p_fs->dev_ejected) {
+-		ret =3D exfat_bdev_read(sb, sec, bh, num_secs, read);
+-		if (ret !=3D 0)
+-			p_fs->dev_ejected =3D 1;
+-	}
+-
+-	return ret;
+-}
+-
+-int multi_sector_write(struct super_block *sb, sector_t sec,
+-		       struct buffer_head *bh, s32 num_secs, bool sync)
+-{
+-	s32 ret =3D -EIO;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if ((sec + num_secs) > (p_fs->PBR_sector + p_fs->num_sectors) &&
+-	    (p_fs->num_sectors > 0)) {
+-		pr_err("[EXFAT] %s: out of range error! (sec =3D %llu, num_secs =3D %d)\=
+n",
+-		       __func__, (unsigned long long)sec, num_secs);
+-		fs_error(sb);
+-		return ret;
+-	}
+-	if (!bh) {
+-		pr_err("[EXFAT] %s: bh is NULL!\n", __func__);
+-		fs_error(sb);
+-		return ret;
+-	}
+-
+-	if (!p_fs->dev_ejected) {
+-		ret =3D exfat_bdev_write(sb, sec, bh, num_secs, sync);
+-		if (ret !=3D 0)
+-			p_fs->dev_ejected =3D 1;
+-	}
+-
+-	return ret;
+-}
+diff --git a/drivers/staging/exfat/exfat_nls.c b/drivers/staging/exfat/exfa=
+t_nls.c
+deleted file mode 100644
+index 91e8b0c4dce7..000000000000
+--- a/drivers/staging/exfat/exfat_nls.c
++++ /dev/null
+@@ -1,212 +0,0 @@
+-// SPDX-License-Identifier: GPL-2.0-or-later
+-/*
+- *  Copyright (C) 2012-2013 Samsung Electronics Co., Ltd.
+- */
+-
+-#include <linux/string.h>
+-#include <linux/nls.h>
+-#include "exfat.h"
+-
+-static u16 bad_uni_chars[] =3D {
+-	/* " * / : < > ? \ | */
+-	0x0022,         0x002A, 0x002F, 0x003A,
+-	0x003C, 0x003E, 0x003F, 0x005C, 0x007C,
+-	0
+-};
+-
+-static int convert_ch_to_uni(struct nls_table *nls, u16 *uni, u8 *ch,
+-			     bool *lossy)
+-{
+-	int len;
+-
+-	*uni =3D 0x0;
+-
+-	if (ch[0] < 0x80) {
+-		*uni =3D (u16)ch[0];
+-		return 1;
+-	}
+-
+-	len =3D nls->char2uni(ch, NLS_MAX_CHARSET_SIZE, uni);
+-	if (len < 0) {
+-		/* conversion failed */
+-		pr_info("%s: fail to use nls\n", __func__);
+-		if (lossy)
+-			*lossy =3D true;
+-		*uni =3D (u16)'_';
+-		if (!strcmp(nls->charset, "utf8"))
+-			return 1;
+-		else
+-			return 2;
+-	}
+-
+-	return len;
+-}
+-
+-static int convert_uni_to_ch(struct nls_table *nls, u8 *ch, u16 uni,
+-			     bool *lossy)
+-{
+-	int len;
+-
+-	ch[0] =3D 0x0;
+-
+-	if (uni < 0x0080) {
+-		ch[0] =3D (u8)uni;
+-		return 1;
+-	}
+-
+-	len =3D nls->uni2char(uni, ch, NLS_MAX_CHARSET_SIZE);
+-	if (len < 0) {
+-		/* conversion failed */
+-		pr_info("%s: fail to use nls\n", __func__);
+-		if (lossy)
+-			*lossy =3D true;
+-		ch[0] =3D '_';
+-		return 1;
+-	}
+-
+-	return len;
+-}
+-
+-u16 nls_upper(struct super_block *sb, u16 a)
+-{
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	if (EXFAT_SB(sb)->options.casesensitive)
+-		return a;
+-	if (p_fs->vol_utbl && p_fs->vol_utbl[get_col_index(a)])
+-		return p_fs->vol_utbl[get_col_index(a)][get_row_index(a)];
+-	else
+-		return a;
+-}
+-
+-static u16 *nls_wstrchr(u16 *str, u16 wchar)
+-{
+-	while (*str) {
+-		if (*(str++) =3D=3D wchar)
+-			return str;
+-	}
+-
+-	return NULL;
+-}
+-
+-int nls_uniname_cmp(struct super_block *sb, u16 *a, u16 *b)
+-{
+-	int i;
+-
+-	for (i =3D 0; i < MAX_NAME_LENGTH; i++, a++, b++) {
+-		if (nls_upper(sb, *a) !=3D nls_upper(sb, *b))
+-			return 1;
+-		if (*a =3D=3D 0x0)
+-			return 0;
+-	}
+-	return 0;
+-}
+-
+-void nls_uniname_to_cstring(struct super_block *sb, u8 *p_cstring,
+-			    struct uni_name_t *p_uniname)
+-{
+-	int i, j, len;
+-	u8 buf[MAX_CHARSET_SIZE];
+-	u16 *uniname =3D p_uniname->name;
+-	struct nls_table *nls =3D EXFAT_SB(sb)->nls_io;
+-
+-	if (!nls) {
+-		len =3D utf16s_to_utf8s(uniname, MAX_NAME_LENGTH,
+-				      UTF16_HOST_ENDIAN, p_cstring,
+-				      MAX_NAME_LENGTH);
+-		p_cstring[len] =3D 0;
+-		return;
+-	}
+-
+-	i =3D 0;
+-	while (i < (MAX_NAME_LENGTH - 1)) {
+-		if (*uniname =3D=3D (u16)'\0')
+-			break;
+-
+-		len =3D convert_uni_to_ch(nls, buf, *uniname, NULL);
+-
+-		if (len > 1) {
+-			for (j =3D 0; j < len; j++)
+-				*p_cstring++ =3D (char)*(buf + j);
+-		} else { /* len =3D=3D 1 */
+-			*p_cstring++ =3D (char)*buf;
+-		}
+-
+-		uniname++;
+-		i++;
+-	}
+-
+-	*p_cstring =3D '\0';
+-}
+-
+-void nls_cstring_to_uniname(struct super_block *sb,
+-			    struct uni_name_t *p_uniname, u8 *p_cstring,
+-			    bool *p_lossy)
+-{
+-	int i, j;
+-	bool lossy =3D false;
+-	u8 *end_of_name;
+-	u8 upname[MAX_NAME_LENGTH * 2];
+-	u16 *uniname =3D p_uniname->name;
+-	struct nls_table *nls =3D EXFAT_SB(sb)->nls_io;
+-
+-	/* strip all trailing spaces */
+-	end_of_name =3D p_cstring + strlen(p_cstring);
+-
+-	while (*(--end_of_name) =3D=3D ' ') {
+-		if (end_of_name < p_cstring)
+-			break;
+-	}
+-	*(++end_of_name) =3D '\0';
+-
+-	if (strcmp(p_cstring, ".") && strcmp(p_cstring, "..")) {
+-		/* strip all trailing periods */
+-		while (*(--end_of_name) =3D=3D '.') {
+-			if (end_of_name < p_cstring)
+-				break;
+-		}
+-		*(++end_of_name) =3D '\0';
+-	}
+-
+-	if (*p_cstring =3D=3D '\0')
+-		lossy =3D true;
+-
+-	if (!nls) {
+-		i =3D utf8s_to_utf16s(p_cstring, MAX_NAME_LENGTH,
+-				    UTF16_HOST_ENDIAN, uniname,
+-				    MAX_NAME_LENGTH);
+-		for (j =3D 0; j < i; j++)
+-			SET16_A(upname + j * 2, nls_upper(sb, uniname[j]));
+-		uniname[i] =3D '\0';
+-	} else {
+-		i =3D 0;
+-		j =3D 0;
+-		while (j < (MAX_NAME_LENGTH - 1)) {
+-			if (*(p_cstring + i) =3D=3D '\0')
+-				break;
+-
+-			i +=3D convert_ch_to_uni(nls, uniname,
+-					       (u8 *)(p_cstring + i), &lossy);
+-
+-			if ((*uniname < 0x0020) ||
+-			    nls_wstrchr(bad_uni_chars, *uniname))
+-				lossy =3D true;
+-
+-			SET16_A(upname + j * 2, nls_upper(sb, *uniname));
+-
+-			uniname++;
+-			j++;
+-		}
+-
+-		if (*(p_cstring + i) !=3D '\0')
+-			lossy =3D true;
+-		*uniname =3D (u16)'\0';
+-	}
+-
+-	p_uniname->name_len =3D j;
+-	p_uniname->name_hash =3D calc_checksum_2byte(upname, j << 1, 0,
+-						   CS_DEFAULT);
+-
+-	if (p_lossy)
+-		*p_lossy =3D lossy;
+-}
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/ex=
+fat_super.c
+deleted file mode 100644
+index c3d1a77ad060..000000000000
+--- a/drivers/staging/exfat/exfat_super.c
++++ /dev/null
+@@ -1,3296 +0,0 @@
+-// SPDX-License-Identifier: GPL-2.0-or-later
+-/*
+- *  Copyright (C) 2012-2013 Samsung Electronics Co., Ltd.
+- */
+-
+-#include <linux/module.h>
+-#include <linux/init.h>
+-#include <linux/time.h>
+-#include <linux/slab.h>
+-#include <linux/mm.h>
+-#include <linux/seq_file.h>
+-#include <linux/pagemap.h>
+-#include <linux/mpage.h>
+-#include <linux/buffer_head.h>
+-#include <linux/exportfs.h>
+-#include <linux/mount.h>
+-#include <linux/vfs.h>
+-#include <linux/aio.h>
+-#include <linux/iversion.h>
+-#include <linux/parser.h>
+-#include <linux/uio.h>
+-#include <linux/writeback.h>
+-#include <linux/log2.h>
+-#include <linux/hash.h>
+-#include <linux/backing-dev.h>
+-#include <linux/sched.h>
+-#include <linux/fs_struct.h>
+-#include <linux/namei.h>
+-#include <linux/random.h>
+-#include <linux/string.h>
+-#include <linux/nls.h>
+-#include <linux/mutex.h>
+-#include <linux/swap.h>
+-
+-#define EXFAT_VERSION  "1.3.0"
+-
+-#include "exfat.h"
+-
+-static struct kmem_cache *exfat_inode_cachep;
+-
+-static int exfat_default_codepage =3D CONFIG_STAGING_EXFAT_DEFAULT_CODEPAG=
+E;
+-static char exfat_default_iocharset[] =3D CONFIG_STAGING_EXFAT_DEFAULT_IOC=
+HARSET;
+-
+-#define INC_IVERSION(x) (inode_inc_iversion(x))
+-#define GET_IVERSION(x) (inode_peek_iversion_raw(x))
+-#define SET_IVERSION(x, y) (inode_set_iversion(x, y))
+-
+-static struct inode *exfat_iget(struct super_block *sb, loff_t i_pos);
+-static int exfat_sync_inode(struct inode *inode);
+-static struct inode *exfat_build_inode(struct super_block *sb,
+-				       struct file_id_t *fid, loff_t i_pos);
+-static int exfat_write_inode(struct inode *inode,
+-			     struct writeback_control *wbc);
+-static void exfat_write_super(struct super_block *sb);
+-
+-#define UNIX_SECS_1980    315532800L
+-#define UNIX_SECS_2108    4354819200L
+-
+-/* Convert a FAT time/date pair to a UNIX date (seconds since 1 1 70). */
+-static void exfat_time_fat2unix(struct timespec64 *ts, struct date_time_t =
+*tp)
+-{
+-	ts->tv_sec =3D mktime64(tp->year + 1980, tp->month + 1, tp->day,
+-			      tp->hour, tp->minute, tp->second);
+-
+-	ts->tv_nsec =3D tp->millisecond * NSEC_PER_MSEC;
+-}
+-
+-/* Convert linear UNIX date to a FAT time/date pair. */
+-static void exfat_time_unix2fat(struct timespec64 *ts, struct date_time_t =
+*tp)
+-{
+-	time64_t second =3D ts->tv_sec;
+-	struct tm tm;
+-
+-	time64_to_tm(second, 0, &tm);
+-
+-	if (second < UNIX_SECS_1980) {
+-		tp->millisecond =3D 0;
+-		tp->second	=3D 0;
+-		tp->minute	=3D 0;
+-		tp->hour	=3D 0;
+-		tp->day		=3D 1;
+-		tp->month	=3D 1;
+-		tp->year	=3D 0;
+-		return;
+-	}
+-
+-	if (second >=3D UNIX_SECS_2108) {
+-		tp->millisecond =3D 999;
+-		tp->second	=3D 59;
+-		tp->minute	=3D 59;
+-		tp->hour	=3D 23;
+-		tp->day		=3D 31;
+-		tp->month	=3D 12;
+-		tp->year	=3D 127;
+-		return;
+-	}
+-
+-	tp->millisecond =3D ts->tv_nsec / NSEC_PER_MSEC;
+-	tp->second	=3D tm.tm_sec;
+-	tp->minute	=3D tm.tm_min;
+-	tp->hour	=3D tm.tm_hour;
+-	tp->day		=3D tm.tm_mday;
+-	tp->month	=3D tm.tm_mon + 1;
+-	tp->year	=3D tm.tm_year + 1900 - 1980;
+-}
+-
+-struct timestamp_t *tm_current(struct timestamp_t *tp)
+-{
+-	time64_t second =3D ktime_get_real_seconds();
+-	struct tm tm;
+-
+-	time64_to_tm(second, 0, &tm);
+-
+-	if (second < UNIX_SECS_1980) {
+-		tp->sec  =3D 0;
+-		tp->min  =3D 0;
+-		tp->hour =3D 0;
+-		tp->day  =3D 1;
+-		tp->mon  =3D 1;
+-		tp->year =3D 0;
+-		return tp;
+-	}
+-
+-	if (second >=3D UNIX_SECS_2108) {
+-		tp->sec  =3D 59;
+-		tp->min  =3D 59;
+-		tp->hour =3D 23;
+-		tp->day  =3D 31;
+-		tp->mon  =3D 12;
+-		tp->year =3D 127;
+-		return tp;
+-	}
+-
+-	tp->sec  =3D tm.tm_sec;
+-	tp->min  =3D tm.tm_min;
+-	tp->hour =3D tm.tm_hour;
+-	tp->day  =3D tm.tm_mday;
+-	tp->mon  =3D tm.tm_mon + 1;
+-	tp->year =3D tm.tm_year + 1900 - 1980;
+-
+-	return tp;
+-}
+-
+-static void __lock_super(struct super_block *sb)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-
+-	mutex_lock(&sbi->s_lock);
+-}
+-
+-static void __unlock_super(struct super_block *sb)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-
+-	mutex_unlock(&sbi->s_lock);
+-}
+-
+-static int __is_sb_dirty(struct super_block *sb)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-
+-	return sbi->s_dirt;
+-}
+-
+-static void __set_sb_clean(struct super_block *sb)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-
+-	sbi->s_dirt =3D 0;
+-}
+-
+-static int __exfat_revalidate(struct dentry *dentry)
+-{
+-	return 0;
+-}
+-
+-static int exfat_revalidate(struct dentry *dentry, unsigned int flags)
+-{
+-	if (flags & LOOKUP_RCU)
+-		return -ECHILD;
+-
+-	if (dentry->d_inode)
+-		return 1;
+-	return __exfat_revalidate(dentry);
+-}
+-
+-static int exfat_revalidate_ci(struct dentry *dentry, unsigned int flags)
+-{
+-	if (flags & LOOKUP_RCU)
+-		return -ECHILD;
+-
+-	if (dentry->d_inode)
+-		return 1;
+-
+-	if (!flags)
+-		return 0;
+-
+-	if (flags & (LOOKUP_CREATE | LOOKUP_RENAME_TARGET))
+-		return 0;
+-
+-	return __exfat_revalidate(dentry);
+-}
+-
+-static unsigned int __exfat_striptail_len(unsigned int len, const char *na=
+me)
+-{
+-	while (len && name[len - 1] =3D=3D '.')
+-		len--;
+-	return len;
+-}
+-
+-static unsigned int exfat_striptail_len(const struct qstr *qstr)
+-{
+-	return __exfat_striptail_len(qstr->len, qstr->name);
+-}
+-
+-static int exfat_d_hash(const struct dentry *dentry, struct qstr *qstr)
+-{
+-	qstr->hash =3D full_name_hash(dentry, qstr->name,
+-				    exfat_striptail_len(qstr));
+-	return 0;
+-}
+-
+-static int exfat_d_hashi(const struct dentry *dentry, struct qstr *qstr)
+-{
+-	struct super_block *sb =3D dentry->d_sb;
+-	const unsigned char *name;
+-	unsigned int len;
+-	unsigned long hash;
+-
+-	name =3D qstr->name;
+-	len =3D exfat_striptail_len(qstr);
+-
+-	hash =3D init_name_hash(dentry);
+-	while (len--)
+-		hash =3D partial_name_hash(nls_upper(sb, *name++), hash);
+-	qstr->hash =3D end_name_hash(hash);
+-
+-	return 0;
+-}
+-
+-static int exfat_cmpi(const struct dentry *dentry, unsigned int len,
+-		      const char *str, const struct qstr *name)
+-{
+-	struct nls_table *t =3D EXFAT_SB(dentry->d_sb)->nls_io;
+-	unsigned int alen, blen;
+-
+-	alen =3D exfat_striptail_len(name);
+-	blen =3D __exfat_striptail_len(len, str);
+-	if (alen =3D=3D blen) {
+-		if (!t) {
+-			if (strncasecmp(name->name, str, alen) =3D=3D 0)
+-				return 0;
+-		} else {
+-			if (nls_strnicmp(t, name->name, str, alen) =3D=3D 0)
+-				return 0;
+-		}
+-	}
+-	return 1;
+-}
+-
+-static int exfat_cmp(const struct dentry *dentry, unsigned int len,
+-		     const char *str, const struct qstr *name)
+-{
+-	unsigned int alen, blen;
+-
+-	alen =3D exfat_striptail_len(name);
+-	blen =3D __exfat_striptail_len(len, str);
+-	if (alen =3D=3D blen) {
+-		if (strncmp(name->name, str, alen) =3D=3D 0)
+-			return 0;
+-	}
+-	return 1;
+-}
+-
+-static const struct dentry_operations exfat_ci_dentry_ops =3D {
+-	.d_revalidate   =3D exfat_revalidate_ci,
+-	.d_hash         =3D exfat_d_hashi,
+-	.d_compare      =3D exfat_cmpi,
+-};
+-
+-static const struct dentry_operations exfat_dentry_ops =3D {
+-	.d_revalidate   =3D exfat_revalidate,
+-	.d_hash         =3D exfat_d_hash,
+-	.d_compare      =3D exfat_cmp,
+-};
+-
+-static DEFINE_MUTEX(z_mutex);
+-
+-static inline void fs_sync(struct super_block *sb, bool do_sync)
+-{
+-	if (do_sync)
+-		exfat_bdev_sync(sb);
+-}
+-
+-/*
+- * If ->i_mode can't hold S_IWUGO (i.e. ATTR_RO), we use ->i_attrs to
+- * save ATTR_RO instead of ->i_mode.
+- *
+- * If it's directory and !sbi->options.rodir, ATTR_RO isn't read-only
+- * bit, it's just used as flag for app.
+- */
+-static inline int exfat_mode_can_hold_ro(struct inode *inode)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(inode->i_sb);
+-
+-	if (S_ISDIR(inode->i_mode))
+-		return 0;
+-
+-	if ((~sbi->options.fs_fmask) & 0222)
+-		return 1;
+-	return 0;
+-}
+-
+-/* Convert attribute bits and a mask to the UNIX mode. */
+-static inline mode_t exfat_make_mode(struct exfat_sb_info *sbi, u32 attr,
+-				     mode_t mode)
+-{
+-	if ((attr & ATTR_READONLY) && !(attr & ATTR_SUBDIR))
+-		mode &=3D ~0222;
+-
+-	if (attr & ATTR_SUBDIR)
+-		return (mode & ~sbi->options.fs_dmask) | S_IFDIR;
+-	else
+-		return (mode & ~sbi->options.fs_fmask) | S_IFREG;
+-}
+-
+-/* Return the FAT attribute byte for this inode */
+-static inline u32 exfat_make_attr(struct inode *inode)
+-{
+-	if (exfat_mode_can_hold_ro(inode) && !(inode->i_mode & 0222))
+-		return (EXFAT_I(inode)->fid.attr) | ATTR_READONLY;
+-	else
+-		return EXFAT_I(inode)->fid.attr;
+-}
+-
+-static inline void exfat_save_attr(struct inode *inode, u32 attr)
+-{
+-	if (exfat_mode_can_hold_ro(inode))
+-		EXFAT_I(inode)->fid.attr =3D attr & ATTR_RWMASK;
+-	else
+-		EXFAT_I(inode)->fid.attr =3D attr & (ATTR_RWMASK | ATTR_READONLY);
+-}
+-
+-static int ffsMountVol(struct super_block *sb)
+-{
+-	int i, ret;
+-	struct pbr_sector_t *p_pbr;
+-	struct buffer_head *tmp_bh =3D NULL;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-
+-	pr_info("[EXFAT] trying to mount...\n");
+-
+-	mutex_lock(&z_mutex);
+-
+-	exfat_buf_init(sb);
+-
+-	mutex_init(&p_fs->v_mutex);
+-	p_fs->dev_ejected =3D 0;
+-
+-	/* open the block device */
+-	exfat_bdev_open(sb);
+-
+-	if (p_bd->sector_size < sb->s_blocksize) {
+-		pr_info("EXFAT: mount failed - sector size %d less than blocksize %ld\n",
+-		       p_bd->sector_size,  sb->s_blocksize);
+-		ret =3D -EINVAL;
+-		goto out;
+-	}
+-	if (p_bd->sector_size > sb->s_blocksize)
+-		sb_set_blocksize(sb, p_bd->sector_size);
+-
+-	/* read Sector 0 */
+-	if (sector_read(sb, 0, &tmp_bh, 1) !=3D 0) {
+-		ret =3D -EIO;
+-		goto out;
+-	}
+-
+-	p_fs->PBR_sector =3D 0;
+-
+-	p_pbr =3D (struct pbr_sector_t *)tmp_bh->b_data;
+-
+-	/* check the validity of PBR */
+-	if (GET16_A(p_pbr->signature) !=3D PBR_SIGNATURE) {
+-		brelse(tmp_bh);
+-		exfat_bdev_close(sb);
+-		ret =3D -EFSCORRUPTED;
+-		goto out;
+-	}
+-
+-	/* fill fs_struct */
+-	for (i =3D 0; i < 53; i++)
+-		if (p_pbr->bpb[i])
+-			break;
+-
+-	if (i < 53) {
+-		/* Not sure how we'd get here, but complain if it does */
+-		ret =3D -EINVAL;
+-		pr_info("EXFAT: Attempted to mount VFAT filesystem\n");
+-		goto out;
+-	} else {
+-		ret =3D exfat_mount(sb, p_pbr);
+-	}
+-
+-	brelse(tmp_bh);
+-
+-	if (ret) {
+-		exfat_bdev_close(sb);
+-		goto out;
+-	}
+-
+-	ret =3D load_alloc_bitmap(sb);
+-	if (ret) {
+-		exfat_bdev_close(sb);
+-		goto out;
+-	}
+-	ret =3D load_upcase_table(sb);
+-	if (ret) {
+-		free_alloc_bitmap(sb);
+-		exfat_bdev_close(sb);
+-		goto out;
+-	}
+-
+-	if (p_fs->dev_ejected) {
+-		free_upcase_table(sb);
+-		free_alloc_bitmap(sb);
+-		exfat_bdev_close(sb);
+-		ret =3D -EIO;
+-		goto out;
+-	}
+-
+-	pr_info("[EXFAT] mounted successfully\n");
+-
+-out:
+-	mutex_unlock(&z_mutex);
+-
+-	return ret;
+-}
+-
+-static int ffsUmountVol(struct super_block *sb)
+-{
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	int err =3D 0;
+-
+-	pr_info("[EXFAT] trying to unmount...\n");
+-
+-	mutex_lock(&z_mutex);
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	fs_sync(sb, true);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-
+-	free_upcase_table(sb);
+-	free_alloc_bitmap(sb);
+-
+-	exfat_fat_release_all(sb);
+-	exfat_buf_release_all(sb);
+-
+-	/* close the block device */
+-	exfat_bdev_close(sb);
+-
+-	if (p_fs->dev_ejected) {
+-		pr_info("[EXFAT] unmounted with media errors. Device is already ejected.=
+\n");
+-		err =3D -EIO;
+-	}
+-
+-	exfat_buf_shutdown(sb);
+-
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-	mutex_unlock(&z_mutex);
+-
+-	pr_info("[EXFAT] unmounted successfully\n");
+-
+-	return err;
+-}
+-
+-static int ffsGetVolInfo(struct super_block *sb, struct vol_info_t *info)
+-{
+-	int err =3D 0;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	/* check the validity of pointer parameters */
+-	if (!info)
+-		return -EINVAL;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	if (p_fs->used_clusters =3D=3D UINT_MAX)
+-		p_fs->used_clusters =3D exfat_count_used_clusters(sb);
+-
+-	info->FatType =3D EXFAT;
+-	info->ClusterSize =3D p_fs->cluster_size;
+-	info->NumClusters =3D p_fs->num_clusters - 2; /* clu 0 & 1 */
+-	info->UsedClusters =3D p_fs->used_clusters;
+-	info->FreeClusters =3D info->NumClusters - info->UsedClusters;
+-
+-	if (p_fs->dev_ejected)
+-		err =3D -EIO;
+-
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return err;
+-}
+-
+-static int ffsSyncVol(struct super_block *sb, bool do_sync)
+-{
+-	int err =3D 0;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	/* synchronize the file system */
+-	fs_sync(sb, do_sync);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-
+-	if (p_fs->dev_ejected)
+-		err =3D -EIO;
+-
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return err;
+-}
+-
+-/*----------------------------------------------------------------------*/
+-/*  File Operation Functions                                            */
+-/*----------------------------------------------------------------------*/
+-
+-static int ffsLookupFile(struct inode *inode, char *path, struct file_id_t=
+ *fid)
+-{
+-	int ret, dentry, num_entries;
+-	struct chain_t dir;
+-	struct uni_name_t uni_name;
+-	struct dentry_t *ep, *ep2;
+-	struct entry_set_cache_t *es =3D NULL;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	/* check the validity of pointer parameters */
+-	if (!fid || !path || (*path =3D=3D '\0'))
+-		return -EINVAL;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	/* check the validity of directory name in the given pathname */
+-	ret =3D resolve_path(inode, path, &dir, &uni_name);
+-	if (ret)
+-		goto out;
+-
+-	ret =3D get_num_entries(sb, &dir, &uni_name, &num_entries);
+-	if (ret)
+-		goto out;
+-
+-	/* search the file name for directories */
+-	dentry =3D exfat_find_dir_entry(sb, &dir, &uni_name, num_entries,
+-				      TYPE_ALL);
+-	if (dentry < -1) {
+-		ret =3D -ENOENT;
+-		goto out;
+-	}
+-
+-	fid->dir.dir =3D dir.dir;
+-	fid->dir.size =3D dir.size;
+-	fid->dir.flags =3D dir.flags;
+-	fid->entry =3D dentry;
+-
+-	if (dentry =3D=3D -1) {
+-		fid->type =3D TYPE_DIR;
+-		fid->rwoffset =3D 0;
+-		fid->hint_last_off =3D -1;
+-
+-		fid->attr =3D ATTR_SUBDIR;
+-		fid->flags =3D 0x01;
+-		fid->size =3D 0;
+-		fid->start_clu =3D p_fs->root_dir;
+-	} else {
+-		es =3D get_entry_set_in_dir(sb, &dir, dentry,
+-					  ES_2_ENTRIES, &ep);
+-		if (!es) {
+-			ret =3D  -ENOENT;
+-			goto out;
+-		}
+-		ep2 =3D ep + 1;
+-
+-		fid->type =3D exfat_get_entry_type(ep);
+-		fid->rwoffset =3D 0;
+-		fid->hint_last_off =3D -1;
+-		fid->attr =3D exfat_get_entry_attr(ep);
+-
+-		fid->size =3D exfat_get_entry_size(ep2);
+-		if ((fid->type =3D=3D TYPE_FILE) && (fid->size =3D=3D 0)) {
+-			fid->flags =3D 0x03;
+-			fid->start_clu =3D CLUSTER_32(~0);
+-		} else {
+-			fid->flags =3D exfat_get_entry_flag(ep2);
+-			fid->start_clu =3D exfat_get_entry_clu0(ep2);
+-		}
+-
+-		release_entry_set(es);
+-	}
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-static int ffsCreateFile(struct inode *inode, char *path, struct file_id_t=
+ *fid)
+-{
+-	struct chain_t dir;
+-	struct uni_name_t uni_name;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	int ret =3D 0;
+-
+-	/* check the validity of pointer parameters */
+-	if (!fid || !path || (*path =3D=3D '\0'))
+-		return -EINVAL;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	/* check the validity of directory name in the given pathname */
+-	ret =3D resolve_path(inode, path, &dir, &uni_name);
+-	if (ret)
+-		goto out;
+-
+-	fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-	/* create a new file */
+-	ret =3D create_file(inode, &dir, &uni_name, fid);
+-
+-#ifndef CONFIG_STAGING_EXFAT_DELAYED_SYNC
+-	fs_sync(sb, true);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-#endif
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-static int ffsTruncateFile(struct inode *inode, u64 old_size, u64 new_size)
+-{
+-	s32 num_clusters;
+-	u32 last_clu =3D CLUSTER_32(0);
+-	int ret =3D 0;
+-	struct chain_t clu;
+-	struct timestamp_t tm;
+-	struct dentry_t *ep, *ep2;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct file_id_t *fid =3D &(EXFAT_I(inode)->fid);
+-	struct entry_set_cache_t *es =3D NULL;
+-
+-	pr_debug("%s entered (inode %p size %llu)\n", __func__, inode,
+-		 new_size);
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	/* check if the given file ID is opened */
+-	if (fid->type !=3D TYPE_FILE) {
+-		ret =3D -EPERM;
+-		goto out;
+-	}
+-
+-	if (fid->size !=3D old_size) {
+-		pr_err("[EXFAT] truncate : can't skip it because of size-mismatch(old:%l=
+ld->fid:%lld).\n",
+-		       old_size, fid->size);
+-	}
+-
+-	if (old_size <=3D new_size) {
+-		ret =3D 0;
+-		goto out;
+-	}
+-
+-	fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-	clu.dir =3D fid->start_clu;
+-	clu.size =3D (s32)((old_size - 1) >> p_fs->cluster_size_bits) + 1;
+-	clu.flags =3D fid->flags;
+-
+-	if (new_size > 0) {
+-		num_clusters =3D (s32)((new_size - 1) >>
+-				     p_fs->cluster_size_bits) + 1;
+-
+-		if (clu.flags =3D=3D 0x03) {
+-			clu.dir +=3D num_clusters;
+-		} else {
+-			while (num_clusters > 0) {
+-				last_clu =3D clu.dir;
+-				if (exfat_fat_read(sb, clu.dir, &clu.dir) =3D=3D -1) {
+-					ret =3D -EIO;
+-					goto out;
+-				}
+-				num_clusters--;
+-			}
+-		}
+-
+-		clu.size -=3D num_clusters;
+-	}
+-
+-	fid->size =3D new_size;
+-	fid->attr |=3D ATTR_ARCHIVE;
+-	if (new_size =3D=3D 0) {
+-		fid->flags =3D 0x03;
+-		fid->start_clu =3D CLUSTER_32(~0);
+-	}
+-
+-	/* (1) update the directory entry */
+-	es =3D get_entry_set_in_dir(sb, &fid->dir, fid->entry,
+-				  ES_ALL_ENTRIES, &ep);
+-	if (!es) {
+-		ret =3D -ENOENT;
+-		goto out;
+-		}
+-	ep2 =3D ep + 1;
+-
+-	exfat_set_entry_time(ep, tm_current(&tm), TM_MODIFY);
+-	exfat_set_entry_attr(ep, fid->attr);
+-
+-	exfat_set_entry_size(ep2, new_size);
+-	if (new_size =3D=3D 0) {
+-		exfat_set_entry_flag(ep2, 0x01);
+-		exfat_set_entry_clu0(ep2, CLUSTER_32(0));
+-	}
+-
+-	update_dir_checksum_with_entry_set(sb, es);
+-	release_entry_set(es);
+-
+-	/* (2) cut off from the FAT chain */
+-	if (last_clu !=3D CLUSTER_32(0)) {
+-		if (fid->flags =3D=3D 0x01)
+-			exfat_fat_write(sb, last_clu, CLUSTER_32(~0));
+-	}
+-
+-	/* (3) free the clusters */
+-	exfat_free_cluster(sb, &clu, 0);
+-
+-	/* hint information */
+-	fid->hint_last_off =3D -1;
+-	if (fid->rwoffset > fid->size)
+-		fid->rwoffset =3D fid->size;
+-
+-#ifndef CONFIG_STAGING_EXFAT_DELAYED_SYNC
+-	fs_sync(sb, true);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-#endif
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-
+-out:
+-	pr_debug("%s exited (%d)\n", __func__, ret);
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-static void update_parent_info(struct file_id_t *fid,
+-			       struct inode *parent_inode)
+-{
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(parent_inode->i_sb)->fs_info);
+-	struct file_id_t *parent_fid =3D &(EXFAT_I(parent_inode)->fid);
+-
+-	if (unlikely((parent_fid->flags !=3D fid->dir.flags) ||
+-		     (parent_fid->size !=3D
+-		      (fid->dir.size << p_fs->cluster_size_bits)) ||
+-		     (parent_fid->start_clu !=3D fid->dir.dir))) {
+-		fid->dir.dir =3D parent_fid->start_clu;
+-		fid->dir.flags =3D parent_fid->flags;
+-		fid->dir.size =3D ((parent_fid->size + (p_fs->cluster_size - 1))
+-						>> p_fs->cluster_size_bits);
+-	}
+-}
+-
+-static int ffsMoveFile(struct inode *old_parent_inode, struct file_id_t *f=
+id,
+-		       struct inode *new_parent_inode, struct dentry *new_dentry)
+-{
+-	s32 ret;
+-	s32 dentry;
+-	struct chain_t olddir, newdir;
+-	struct chain_t *p_dir =3D NULL;
+-	struct uni_name_t uni_name;
+-	struct dentry_t *ep;
+-	struct super_block *sb =3D old_parent_inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	u8 *new_path =3D (u8 *)new_dentry->d_name.name;
+-	struct inode *new_inode =3D new_dentry->d_inode;
+-	int num_entries;
+-	struct file_id_t *new_fid =3D NULL;
+-	s32 new_entry =3D 0;
+-
+-	/* check the validity of the given file id */
+-	if (!fid)
+-		return -EINVAL;
+-
+-	/* check the validity of pointer parameters */
+-	if (!new_path || (*new_path =3D=3D '\0'))
+-		return -EINVAL;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	update_parent_info(fid, old_parent_inode);
+-
+-	olddir.dir =3D fid->dir.dir;
+-	olddir.size =3D fid->dir.size;
+-	olddir.flags =3D fid->dir.flags;
+-
+-	dentry =3D fid->entry;
+-
+-	ep =3D get_entry_in_dir(sb, &olddir, dentry, NULL);
+-	if (!ep) {
+-		ret =3D -ENOENT;
+-		goto out2;
+-	}
+-
+-	if (exfat_get_entry_attr(ep) & ATTR_READONLY) {
+-		ret =3D -EPERM;
+-		goto out2;
+-	}
+-
+-	/* check whether new dir is existing directory and empty */
+-	if (new_inode) {
+-		u32 entry_type;
+-
+-		ret =3D -ENOENT;
+-		new_fid =3D &EXFAT_I(new_inode)->fid;
+-
+-		update_parent_info(new_fid, new_parent_inode);
+-
+-		p_dir =3D &new_fid->dir;
+-		new_entry =3D new_fid->entry;
+-		ep =3D get_entry_in_dir(sb, p_dir, new_entry, NULL);
+-		if (!ep)
+-			goto out;
+-
+-		entry_type =3D exfat_get_entry_type(ep);
+-
+-		if (entry_type =3D=3D TYPE_DIR) {
+-			struct chain_t new_clu;
+-
+-			new_clu.dir =3D new_fid->start_clu;
+-			new_clu.size =3D (s32)((new_fid->size - 1) >>
+-					     p_fs->cluster_size_bits) + 1;
+-			new_clu.flags =3D new_fid->flags;
+-
+-			if (!is_dir_empty(sb, &new_clu)) {
+-				ret =3D -EEXIST;
+-				goto out;
+-			}
+-		}
+-	}
+-
+-	/* check the validity of directory name in the given new pathname */
+-	ret =3D resolve_path(new_parent_inode, new_path, &newdir, &uni_name);
+-	if (ret)
+-		goto out2;
+-
+-	fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-	if (olddir.dir =3D=3D newdir.dir)
+-		ret =3D exfat_rename_file(new_parent_inode, &olddir, dentry,
+-					&uni_name, fid);
+-	else
+-		ret =3D move_file(new_parent_inode, &olddir, dentry, &newdir,
+-				&uni_name, fid);
+-
+-	if ((ret =3D=3D 0) && new_inode) {
+-		/* delete entries of new_dir */
+-		ep =3D get_entry_in_dir(sb, p_dir, new_entry, NULL);
+-		if (!ep)
+-			goto out;
+-
+-		num_entries =3D exfat_count_ext_entries(sb, p_dir,
+-						      new_entry, ep);
+-		if (num_entries < 0)
+-			goto out;
+-		exfat_delete_dir_entry(sb, p_dir, new_entry, 0,
+-				       num_entries + 1);
+-	}
+-out:
+-#ifndef CONFIG_STAGING_EXFAT_DELAYED_SYNC
+-	fs_sync(sb, true);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-#endif
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-out2:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-static int ffsRemoveFile(struct inode *inode, struct file_id_t *fid)
+-{
+-	s32 dentry;
+-	int ret =3D 0;
+-	struct chain_t dir, clu_to_free;
+-	struct dentry_t *ep;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	/* check the validity of the given file id */
+-	if (!fid)
+-		return -EINVAL;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	dir.dir =3D fid->dir.dir;
+-	dir.size =3D fid->dir.size;
+-	dir.flags =3D fid->dir.flags;
+-
+-	dentry =3D fid->entry;
+-
+-	ep =3D get_entry_in_dir(sb, &dir, dentry, NULL);
+-	if (!ep) {
+-		ret =3D -ENOENT;
+-		goto out;
+-	}
+-
+-	if (exfat_get_entry_attr(ep) & ATTR_READONLY) {
+-		ret =3D -EPERM;
+-		goto out;
+-	}
+-	fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-	/* (1) update the directory entry */
+-	remove_file(inode, &dir, dentry);
+-
+-	clu_to_free.dir =3D fid->start_clu;
+-	clu_to_free.size =3D (s32)((fid->size - 1) >> p_fs->cluster_size_bits) + =
+1;
+-	clu_to_free.flags =3D fid->flags;
+-
+-	/* (2) free the clusters */
+-	exfat_free_cluster(sb, &clu_to_free, 0);
+-
+-	fid->size =3D 0;
+-	fid->start_clu =3D CLUSTER_32(~0);
+-	fid->flags =3D 0x03;
+-
+-#ifndef CONFIG_STAGING_EXFAT_DELAYED_SYNC
+-	fs_sync(sb, true);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-#endif
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+-{
+-	s32 count;
+-	int ret =3D 0;
+-	struct chain_t dir;
+-	struct uni_name_t uni_name;
+-	struct timestamp_t tm;
+-	struct dentry_t *ep, *ep2;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct file_id_t *fid =3D &(EXFAT_I(inode)->fid);
+-	struct entry_set_cache_t *es =3D NULL;
+-	u8 is_dir =3D (fid->type =3D=3D TYPE_DIR) ? 1 : 0;
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	if (is_dir) {
+-		if ((fid->dir.dir =3D=3D p_fs->root_dir) &&
+-		    (fid->entry =3D=3D -1)) {
+-			info->attr =3D ATTR_SUBDIR;
+-			memset((char *)&info->create_timestamp, 0,
+-			       sizeof(struct date_time_t));
+-			memset((char *)&info->modify_timestamp, 0,
+-			       sizeof(struct date_time_t));
+-			memset((char *)&info->access_timestamp, 0,
+-			       sizeof(struct date_time_t));
+-			strcpy(info->name, ".");
+-
+-			dir.dir =3D p_fs->root_dir;
+-			dir.flags =3D 0x01;
+-
+-			if (p_fs->root_dir =3D=3D CLUSTER_32(0)) {
+-				/* FAT16 root_dir */
+-				info->Size =3D p_fs->dentries_in_root <<
+-						DENTRY_SIZE_BITS;
+-			} else {
+-				info->Size =3D count_num_clusters(sb, &dir) <<
+-						p_fs->cluster_size_bits;
+-			}
+-
+-			count =3D count_dir_entries(sb, &dir);
+-			if (count < 0) {
+-				ret =3D count; /* propagate error upward */
+-				goto out;
+-			}
+-			info->num_subdirs =3D count;
+-
+-			if (p_fs->dev_ejected)
+-				ret =3D -EIO;
+-			goto out;
+-		}
+-	}
+-
+-	/* get the directory entry of given file or directory */
+-	es =3D get_entry_set_in_dir(sb, &fid->dir, fid->entry,
+-				  ES_2_ENTRIES, &ep);
+-	if (!es) {
+-		ret =3D -ENOENT;
+-		goto out;
+-	}
+-	ep2 =3D ep + 1;
+-
+-	/* set FILE_INFO structure using the acquired struct dentry_t */
+-	info->attr =3D exfat_get_entry_attr(ep);
+-
+-	exfat_get_entry_time(ep, &tm, TM_CREATE);
+-	info->create_timestamp.year =3D tm.year;
+-	info->create_timestamp.month =3D tm.mon;
+-	info->create_timestamp.day =3D tm.day;
+-	info->create_timestamp.hour =3D tm.hour;
+-	info->create_timestamp.minute =3D tm.min;
+-	info->create_timestamp.second =3D tm.sec;
+-	info->create_timestamp.millisecond =3D 0;
+-
+-	exfat_get_entry_time(ep, &tm, TM_MODIFY);
+-	info->modify_timestamp.year =3D tm.year;
+-	info->modify_timestamp.month =3D tm.mon;
+-	info->modify_timestamp.day =3D tm.day;
+-	info->modify_timestamp.hour =3D tm.hour;
+-	info->modify_timestamp.minute =3D tm.min;
+-	info->modify_timestamp.second =3D tm.sec;
+-	info->modify_timestamp.millisecond =3D 0;
+-
+-	memset((char *)&info->access_timestamp, 0, sizeof(struct date_time_t));
+-
+-	*uni_name.name =3D 0x0;
+-	/* XXX this is very bad for exfat cuz name is already included in es.
+-	 * API should be revised
+-	 */
+-	exfat_get_uni_name_from_ext_entry(sb, &fid->dir, fid->entry,
+-					  uni_name.name);
+-	nls_uniname_to_cstring(sb, info->name, &uni_name);
+-
+-	info->num_subdirs =3D 2;
+-
+-	info->Size =3D exfat_get_entry_size(ep2);
+-
+-	release_entry_set(es);
+-
+-	if (is_dir) {
+-		dir.dir =3D fid->start_clu;
+-		dir.flags =3D 0x01;
+-
+-		if (info->Size =3D=3D 0)
+-			info->Size =3D (u64)count_num_clusters(sb, &dir) <<
+-					p_fs->cluster_size_bits;
+-
+-		count =3D count_dir_entries(sb, &dir);
+-		if (count < 0) {
+-			ret =3D count; /* propagate error upward */
+-			goto out;
+-		}
+-		info->num_subdirs +=3D count;
+-	}
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	pr_debug("%s exited successfully\n", __func__);
+-	return ret;
+-}
+-
+-static int ffsWriteStat(struct inode *inode, struct dir_entry_t *info)
+-{
+-	int ret =3D 0;
+-	struct timestamp_t tm;
+-	struct dentry_t *ep, *ep2;
+-	struct entry_set_cache_t *es =3D NULL;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct file_id_t *fid =3D &(EXFAT_I(inode)->fid);
+-	u8 is_dir =3D (fid->type =3D=3D TYPE_DIR) ? 1 : 0;
+-
+-	pr_debug("%s entered (inode %p info %p\n", __func__, inode, info);
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	if (is_dir) {
+-		if ((fid->dir.dir =3D=3D p_fs->root_dir) &&
+-		    (fid->entry =3D=3D -1)) {
+-			if (p_fs->dev_ejected)
+-				ret =3D -EIO;
+-			ret =3D 0;
+-			goto out;
+-		}
+-	}
+-
+-	fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-	/* get the directory entry of given file or directory */
+-	es =3D get_entry_set_in_dir(sb, &fid->dir, fid->entry,
+-				  ES_ALL_ENTRIES, &ep);
+-	if (!es) {
+-		ret =3D -ENOENT;
+-		goto out;
+-	}
+-	ep2 =3D ep + 1;
+-
+-	exfat_set_entry_attr(ep, info->attr);
+-
+-	/* set FILE_INFO structure using the acquired struct dentry_t */
+-	tm.sec  =3D info->create_timestamp.second;
+-	tm.min  =3D info->create_timestamp.minute;
+-	tm.hour =3D info->create_timestamp.hour;
+-	tm.day  =3D info->create_timestamp.day;
+-	tm.mon  =3D info->create_timestamp.month;
+-	tm.year =3D info->create_timestamp.year;
+-	exfat_set_entry_time(ep, &tm, TM_CREATE);
+-
+-	tm.sec  =3D info->modify_timestamp.second;
+-	tm.min  =3D info->modify_timestamp.minute;
+-	tm.hour =3D info->modify_timestamp.hour;
+-	tm.day  =3D info->modify_timestamp.day;
+-	tm.mon  =3D info->modify_timestamp.month;
+-	tm.year =3D info->modify_timestamp.year;
+-	exfat_set_entry_time(ep, &tm, TM_MODIFY);
+-
+-	exfat_set_entry_size(ep2, info->Size);
+-
+-	update_dir_checksum_with_entry_set(sb, es);
+-	release_entry_set(es);
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	pr_debug("%s exited (%d)\n", __func__, ret);
+-
+-	return ret;
+-}
+-
+-static int ffsMapCluster(struct inode *inode, s32 clu_offset, u32 *clu)
+-{
+-	s32 num_clusters, num_alloced;
+-	bool modified =3D false;
+-	u32 last_clu;
+-	int ret =3D 0;
+-	struct chain_t new_clu;
+-	struct dentry_t *ep;
+-	struct entry_set_cache_t *es =3D NULL;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct file_id_t *fid =3D &(EXFAT_I(inode)->fid);
+-
+-	/* check the validity of pointer parameters */
+-	if (!clu)
+-		return -EINVAL;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	fid->rwoffset =3D (s64)(clu_offset) << p_fs->cluster_size_bits;
+-
+-	if (EXFAT_I(inode)->mmu_private =3D=3D 0)
+-		num_clusters =3D 0;
+-	else
+-		num_clusters =3D (s32)((EXFAT_I(inode)->mmu_private - 1) >>
+-				     p_fs->cluster_size_bits) + 1;
+-
+-	*clu =3D last_clu =3D fid->start_clu;
+-
+-	if (fid->flags =3D=3D 0x03) {
+-		if ((clu_offset > 0) && (*clu !=3D CLUSTER_32(~0))) {
+-			last_clu +=3D clu_offset - 1;
+-
+-			if (clu_offset =3D=3D num_clusters)
+-				*clu =3D CLUSTER_32(~0);
+-			else
+-				*clu +=3D clu_offset;
+-		}
+-	} else {
+-		/* hint information */
+-		if ((clu_offset > 0) && (fid->hint_last_off > 0) &&
+-		    (clu_offset >=3D fid->hint_last_off)) {
+-			clu_offset -=3D fid->hint_last_off;
+-			*clu =3D fid->hint_last_clu;
+-		}
+-
+-		while ((clu_offset > 0) && (*clu !=3D CLUSTER_32(~0))) {
+-			last_clu =3D *clu;
+-			if (exfat_fat_read(sb, *clu, clu) =3D=3D -1) {
+-				ret =3D -EIO;
+-				goto out;
+-			}
+-			clu_offset--;
+-		}
+-	}
+-
+-	if (*clu =3D=3D CLUSTER_32(~0)) {
+-		fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-		new_clu.dir =3D (last_clu =3D=3D CLUSTER_32(~0)) ? CLUSTER_32(~0) :
+-					last_clu + 1;
+-		new_clu.size =3D 0;
+-		new_clu.flags =3D fid->flags;
+-
+-		/* (1) allocate a cluster */
+-		num_alloced =3D exfat_alloc_cluster(sb, 1, &new_clu);
+-		if (num_alloced < 0) {
+-			ret =3D -EIO;
+-			goto out;
+-		} else if (num_alloced =3D=3D 0) {
+-			ret =3D -ENOSPC;
+-			goto out;
+-		}
+-
+-		/* (2) append to the FAT chain */
+-		if (last_clu =3D=3D CLUSTER_32(~0)) {
+-			if (new_clu.flags =3D=3D 0x01)
+-				fid->flags =3D 0x01;
+-			fid->start_clu =3D new_clu.dir;
+-			modified =3D true;
+-		} else {
+-			if (new_clu.flags !=3D fid->flags) {
+-				exfat_chain_cont_cluster(sb, fid->start_clu,
+-							 num_clusters);
+-				fid->flags =3D 0x01;
+-				modified =3D true;
+-			}
+-			if (new_clu.flags =3D=3D 0x01)
+-				exfat_fat_write(sb, last_clu, new_clu.dir);
+-		}
+-
+-		num_clusters +=3D num_alloced;
+-		*clu =3D new_clu.dir;
+-
+-		es =3D get_entry_set_in_dir(sb, &fid->dir, fid->entry,
+-					  ES_ALL_ENTRIES, &ep);
+-		if (!es) {
+-			ret =3D -ENOENT;
+-			goto out;
+-		}
+-		/* get stream entry */
+-		ep++;
+-
+-		/* (3) update directory entry */
+-		if (modified) {
+-			exfat_set_entry_flag(ep, fid->flags);
+-			exfat_set_entry_clu0(ep, fid->start_clu);
+-		}
+-
+-		update_dir_checksum_with_entry_set(sb, es);
+-		release_entry_set(es);
+-
+-		/* add number of new blocks to inode */
+-		inode->i_blocks +=3D num_alloced << (p_fs->cluster_size_bits - 9);
+-	}
+-
+-	/* hint information */
+-	fid->hint_last_off =3D (s32)(fid->rwoffset >> p_fs->cluster_size_bits);
+-	fid->hint_last_clu =3D *clu;
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-/*----------------------------------------------------------------------*/
+-/*  Directory Operation Functions                                       */
+-/*----------------------------------------------------------------------*/
+-
+-static int ffsCreateDir(struct inode *inode, char *path, struct file_id_t =
+*fid)
+-{
+-	int ret =3D 0;
+-	struct chain_t dir;
+-	struct uni_name_t uni_name;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	/* check the validity of pointer parameters */
+-	if (!fid || !path || (*path =3D=3D '\0'))
+-		return -EINVAL;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	/* check the validity of directory name in the given old pathname */
+-	ret =3D resolve_path(inode, path, &dir, &uni_name);
+-	if (ret)
+-		goto out;
+-
+-	fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-	ret =3D create_dir(inode, &dir, &uni_name, fid);
+-
+-#ifndef CONFIG_STAGING_EXFAT_DELAYED_SYNC
+-	fs_sync(sb, true);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-#endif
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-static int ffsReadDir(struct inode *inode, struct dir_entry_t *dir_entry)
+-{
+-	int i, dentry, clu_offset;
+-	int ret =3D 0;
+-	s32 dentries_per_clu, dentries_per_clu_bits =3D 0;
+-	u32 type;
+-	sector_t sector;
+-	struct chain_t dir, clu;
+-	struct uni_name_t uni_name;
+-	struct timestamp_t tm;
+-	struct dentry_t *ep;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct file_id_t *fid =3D &(EXFAT_I(inode)->fid);
+-
+-	/* check the validity of pointer parameters */
+-	if (!dir_entry)
+-		return -EINVAL;
+-
+-	/* check if the given file ID is opened */
+-	if (fid->type !=3D TYPE_DIR)
+-		return -ENOTDIR;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	if (fid->entry =3D=3D -1) {
+-		dir.dir =3D p_fs->root_dir;
+-		dir.flags =3D 0x01;
+-	} else {
+-		dir.dir =3D fid->start_clu;
+-		dir.size =3D (s32)(fid->size >> p_fs->cluster_size_bits);
+-		dir.flags =3D fid->flags;
+-	}
+-
+-	dentry =3D (s32)fid->rwoffset;
+-
+-	if (dir.dir =3D=3D CLUSTER_32(0)) {
+-		/* FAT16 root_dir */
+-		dentries_per_clu =3D p_fs->dentries_in_root;
+-
+-		if (dentry =3D=3D dentries_per_clu) {
+-			clu.dir =3D CLUSTER_32(~0);
+-		} else {
+-			clu.dir =3D dir.dir;
+-			clu.size =3D dir.size;
+-			clu.flags =3D dir.flags;
+-		}
+-	} else {
+-		dentries_per_clu =3D p_fs->dentries_per_clu;
+-		dentries_per_clu_bits =3D ilog2(dentries_per_clu);
+-
+-		clu_offset =3D dentry >> dentries_per_clu_bits;
+-		clu.dir =3D dir.dir;
+-		clu.size =3D dir.size;
+-		clu.flags =3D dir.flags;
+-
+-		if (clu.flags =3D=3D 0x03) {
+-			clu.dir +=3D clu_offset;
+-			clu.size -=3D clu_offset;
+-		} else {
+-			/* hint_information */
+-			if ((clu_offset > 0) && (fid->hint_last_off > 0) &&
+-			    (clu_offset >=3D fid->hint_last_off)) {
+-				clu_offset -=3D fid->hint_last_off;
+-				clu.dir =3D fid->hint_last_clu;
+-			}
+-
+-			while (clu_offset > 0) {
+-				/* clu.dir =3D exfat_fat_read(sb, clu.dir); */
+-				if (exfat_fat_read(sb, clu.dir, &clu.dir) =3D=3D -1) {
+-					ret =3D -EIO;
+-					goto out;
+-				}
+-				clu_offset--;
+-			}
+-		}
+-	}
+-
+-	while (clu.dir !=3D CLUSTER_32(~0)) {
+-		if (p_fs->dev_ejected)
+-			break;
+-
+-		if (dir.dir =3D=3D CLUSTER_32(0)) /* FAT16 root_dir */
+-			i =3D dentry % dentries_per_clu;
+-		else
+-			i =3D dentry & (dentries_per_clu - 1);
+-
+-		for ( ; i < dentries_per_clu; i++, dentry++) {
+-			ep =3D get_entry_in_dir(sb, &clu, i, &sector);
+-			if (!ep) {
+-				ret =3D -ENOENT;
+-				goto out;
+-			}
+-			type =3D exfat_get_entry_type(ep);
+-
+-			if (type =3D=3D TYPE_UNUSED)
+-				break;
+-
+-			if ((type !=3D TYPE_FILE) && (type !=3D TYPE_DIR))
+-				continue;
+-
+-			exfat_buf_lock(sb, sector);
+-			dir_entry->attr =3D exfat_get_entry_attr(ep);
+-
+-			exfat_get_entry_time(ep, &tm, TM_CREATE);
+-			dir_entry->create_timestamp.year =3D tm.year;
+-			dir_entry->create_timestamp.month =3D tm.mon;
+-			dir_entry->create_timestamp.day =3D tm.day;
+-			dir_entry->create_timestamp.hour =3D tm.hour;
+-			dir_entry->create_timestamp.minute =3D tm.min;
+-			dir_entry->create_timestamp.second =3D tm.sec;
+-			dir_entry->create_timestamp.millisecond =3D 0;
+-
+-			exfat_get_entry_time(ep, &tm, TM_MODIFY);
+-			dir_entry->modify_timestamp.year =3D tm.year;
+-			dir_entry->modify_timestamp.month =3D tm.mon;
+-			dir_entry->modify_timestamp.day =3D tm.day;
+-			dir_entry->modify_timestamp.hour =3D tm.hour;
+-			dir_entry->modify_timestamp.minute =3D tm.min;
+-			dir_entry->modify_timestamp.second =3D tm.sec;
+-			dir_entry->modify_timestamp.millisecond =3D 0;
+-
+-			memset((char *)&dir_entry->access_timestamp, 0,
+-			       sizeof(struct date_time_t));
+-
+-			*uni_name.name =3D 0x0;
+-			exfat_get_uni_name_from_ext_entry(sb, &dir, dentry,
+-							  uni_name.name);
+-			nls_uniname_to_cstring(sb, dir_entry->name, &uni_name);
+-			exfat_buf_unlock(sb, sector);
+-
+-			ep =3D get_entry_in_dir(sb, &clu, i + 1, NULL);
+-			if (!ep) {
+-				ret =3D -ENOENT;
+-				goto out;
+-			}
+-
+-			dir_entry->Size =3D exfat_get_entry_size(ep);
+-
+-			/* hint information */
+-			if (dir.dir =3D=3D CLUSTER_32(0)) { /* FAT16 root_dir */
+-			} else {
+-				fid->hint_last_off =3D dentry >>
+-							dentries_per_clu_bits;
+-				fid->hint_last_clu =3D clu.dir;
+-			}
+-
+-			fid->rwoffset =3D (s64)(++dentry);
+-
+-			if (p_fs->dev_ejected)
+-				ret =3D -EIO;
+-			goto out;
+-		}
+-
+-		if (dir.dir =3D=3D CLUSTER_32(0))
+-			break; /* FAT16 root_dir */
+-
+-		if (clu.flags =3D=3D 0x03) {
+-			if ((--clu.size) > 0)
+-				clu.dir++;
+-			else
+-				clu.dir =3D CLUSTER_32(~0);
+-		} else {
+-			/* clu.dir =3D exfat_fat_read(sb, clu.dir); */
+-			if (exfat_fat_read(sb, clu.dir, &clu.dir) =3D=3D -1) {
+-				ret =3D -EIO;
+-				goto out;
+-			}
+-		}
+-	}
+-
+-	*dir_entry->name =3D '\0';
+-
+-	fid->rwoffset =3D (s64)(++dentry);
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-static int ffsRemoveDir(struct inode *inode, struct file_id_t *fid)
+-{
+-	s32 dentry;
+-	int ret =3D 0;
+-	struct chain_t dir, clu_to_free;
+-	struct super_block *sb =3D inode->i_sb;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	/* check the validity of the given file id */
+-	if (!fid)
+-		return -EINVAL;
+-
+-	dir.dir =3D fid->dir.dir;
+-	dir.size =3D fid->dir.size;
+-	dir.flags =3D fid->dir.flags;
+-
+-	dentry =3D fid->entry;
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	clu_to_free.dir =3D fid->start_clu;
+-	clu_to_free.size =3D (s32)((fid->size - 1) >> p_fs->cluster_size_bits) + =
+1;
+-	clu_to_free.flags =3D fid->flags;
+-
+-	if (!is_dir_empty(sb, &clu_to_free)) {
+-		ret =3D -ENOTEMPTY;
+-		goto out;
+-	}
+-
+-	fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-	/* (1) update the directory entry */
+-	remove_file(inode, &dir, dentry);
+-
+-	/* (2) free the clusters */
+-	exfat_free_cluster(sb, &clu_to_free, 1);
+-
+-	fid->size =3D 0;
+-	fid->start_clu =3D CLUSTER_32(~0);
+-	fid->flags =3D 0x03;
+-
+-#ifndef CONFIG_STAGING_EXFAT_DELAYED_SYNC
+-	fs_sync(sb, true);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-#endif
+-
+-	if (p_fs->dev_ejected)
+-		ret =3D -EIO;
+-
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-/*  Directory Entry Operations                                          */
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-
+-static int exfat_readdir(struct file *filp, struct dir_context *ctx)
+-{
+-	struct inode *inode =3D file_inode(filp);
+-	struct super_block *sb =3D inode->i_sb;
+-	struct bd_info_t *p_bd =3D &(EXFAT_SB(sb)->bd_info);
+-	struct dir_entry_t de;
+-	struct inode *tmp;
+-	unsigned long inum;
+-	loff_t cpos, i_pos;
+-	int err =3D 0;
+-
+-	__lock_super(sb);
+-
+-	cpos =3D ctx->pos;
+-	/* Fake . and .. for any directory. */
+-	while (cpos < 2) {
+-		if (inode->i_ino =3D=3D EXFAT_ROOT_INO)
+-			inum =3D EXFAT_ROOT_INO;
+-		else if (cpos =3D=3D 0)
+-			inum =3D inode->i_ino;
+-		else /* (cpos =3D=3D 1) */
+-			inum =3D parent_ino(filp->f_path.dentry);
+-
+-		if (!dir_emit_dots(filp, ctx))
+-			goto out;
+-		cpos++;
+-		ctx->pos++;
+-	}
+-	if (cpos =3D=3D 2)
+-		cpos =3D 0;
+-	if (cpos & (DENTRY_SIZE - 1)) {
+-		err =3D -ENOENT;
+-		goto out;
+-	}
+-
+-get_new:
+-	EXFAT_I(inode)->fid.size =3D i_size_read(inode);
+-	EXFAT_I(inode)->fid.rwoffset =3D cpos >> DENTRY_SIZE_BITS;
+-
+-	err =3D ffsReadDir(inode, &de);
+-	if (err) {
+-		/* at least we tried to read a sector
+-		 * move cpos to next sector position (should be aligned)
+-		 */
+-		if (err =3D=3D -EIO) {
+-			cpos +=3D 1 << p_bd->sector_size_bits;
+-			cpos &=3D ~((1 << p_bd->sector_size_bits) - 1);
+-		}
+-
+-		goto end_of_dir;
+-	}
+-
+-	cpos =3D EXFAT_I(inode)->fid.rwoffset << DENTRY_SIZE_BITS;
+-
+-	if (!de.name[0])
+-		goto end_of_dir;
+-
+-	i_pos =3D ((loff_t)EXFAT_I(inode)->fid.start_clu << 32) |
+-		((EXFAT_I(inode)->fid.rwoffset - 1) & 0xffffffff);
+-	tmp =3D exfat_iget(sb, i_pos);
+-	if (tmp) {
+-		inum =3D tmp->i_ino;
+-		iput(tmp);
+-	} else {
+-		inum =3D iunique(sb, EXFAT_ROOT_INO);
+-	}
+-
+-	if (!dir_emit(ctx, de.name, strlen(de.name), inum,
+-		      (de.attr & ATTR_SUBDIR) ? DT_DIR : DT_REG))
+-		goto out;
+-
+-	ctx->pos =3D cpos;
+-	goto get_new;
+-
+-end_of_dir:
+-	ctx->pos =3D cpos;
+-out:
+-	__unlock_super(sb);
+-	return err;
+-}
+-
+-static int exfat_ioctl_volume_id(struct inode *dir)
+-{
+-	struct super_block *sb =3D dir->i_sb;
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	struct fs_info_t *p_fs =3D &sbi->fs_info;
+-
+-	return p_fs->vol_id;
+-}
+-
+-static long exfat_generic_ioctl(struct file *filp, unsigned int cmd,
+-				unsigned long arg)
+-{
+-	struct inode *inode =3D filp->f_path.dentry->d_inode;
+-#ifdef CONFIG_STAGING_EXFAT_KERNEL_DEBUG
+-	unsigned int flags;
+-#endif /* CONFIG_STAGING_EXFAT_KERNEL_DEBUG */
+-
+-	switch (cmd) {
+-	case EXFAT_IOCTL_GET_VOLUME_ID:
+-		return exfat_ioctl_volume_id(inode);
+-#ifdef CONFIG_STAGING_EXFAT_KERNEL_DEBUG
+-	case EXFAT_IOC_GET_DEBUGFLAGS: {
+-		struct super_block *sb =3D inode->i_sb;
+-		struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-
+-		flags =3D sbi->debug_flags;
+-		return put_user(flags, (int __user *)arg);
+-	}
+-	case EXFAT_IOC_SET_DEBUGFLAGS: {
+-		struct super_block *sb =3D inode->i_sb;
+-		struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-
+-		if (!capable(CAP_SYS_ADMIN))
+-			return -EPERM;
+-
+-		if (get_user(flags, (int __user *)arg))
+-			return -EFAULT;
+-
+-		__lock_super(sb);
+-		sbi->debug_flags =3D flags;
+-		__unlock_super(sb);
+-
+-		return 0;
+-	}
+-#endif /* CONFIG_STAGING_EXFAT_KERNEL_DEBUG */
+-	default:
+-		return -ENOTTY; /* Inappropriate ioctl for device */
+-	}
+-}
+-
+-static const struct file_operations exfat_dir_operations =3D {
+-	.llseek     =3D generic_file_llseek,
+-	.read       =3D generic_read_dir,
+-	.iterate    =3D exfat_readdir,
+-	.unlocked_ioctl =3D exfat_generic_ioctl,
+-	.fsync      =3D generic_file_fsync,
+-};
+-
+-static int exfat_create(struct inode *dir, struct dentry *dentry, umode_t =
+mode,
+-			bool excl)
+-{
+-	struct super_block *sb =3D dir->i_sb;
+-	struct timespec64 curtime;
+-	struct inode *inode;
+-	struct file_id_t fid;
+-	loff_t i_pos;
+-	int err;
+-
+-	__lock_super(sb);
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	err =3D ffsCreateFile(dir, (u8 *)dentry->d_name.name, &fid);
+-	if (err)
+-		goto out;
+-
+-	INC_IVERSION(dir);
+-	curtime =3D current_time(dir);
+-	dir->i_ctime =3D curtime;
+-	dir->i_mtime =3D curtime;
+-	dir->i_atime =3D curtime;
+-	if (IS_DIRSYNC(dir))
+-		(void)exfat_sync_inode(dir);
+-	else
+-		mark_inode_dirty(dir);
+-
+-	i_pos =3D ((loff_t)fid.dir.dir << 32) | (fid.entry & 0xffffffff);
+-
+-	inode =3D exfat_build_inode(sb, &fid, i_pos);
+-	if (IS_ERR(inode)) {
+-		err =3D PTR_ERR(inode);
+-		goto out;
+-	}
+-	INC_IVERSION(inode);
+-	curtime =3D current_time(inode);
+-	inode->i_mtime =3D curtime;
+-	inode->i_atime =3D curtime;
+-	inode->i_ctime =3D curtime;
+-	/*
+-	 * timestamp is already written, so mark_inode_dirty() is unnecessary.
+-	 */
+-
+-	dentry->d_time =3D GET_IVERSION(dentry->d_parent->d_inode);
+-	d_instantiate(dentry, inode);
+-
+-out:
+-	__unlock_super(sb);
+-	pr_debug("%s exited\n", __func__);
+-	return err;
+-}
+-
+-static int exfat_find(struct inode *dir, struct qstr *qname,
+-		      struct file_id_t *fid)
+-{
+-	int err;
+-
+-	if (qname->len =3D=3D 0)
+-		return -ENOENT;
+-
+-	err =3D ffsLookupFile(dir, (u8 *)qname->name, fid);
+-	if (err)
+-		return -ENOENT;
+-
+-	return 0;
+-}
+-
+-static int exfat_d_anon_disconn(struct dentry *dentry)
+-{
+-	return IS_ROOT(dentry) && (dentry->d_flags & DCACHE_DISCONNECTED);
+-}
+-
+-static struct dentry *exfat_lookup(struct inode *dir, struct dentry *dentr=
+y,
+-				   unsigned int flags)
+-{
+-	struct super_block *sb =3D dir->i_sb;
+-	struct inode *inode;
+-	struct dentry *alias;
+-	int err;
+-	struct file_id_t fid;
+-	loff_t i_pos;
+-	mode_t i_mode;
+-
+-	__lock_super(sb);
+-	pr_debug("%s entered\n", __func__);
+-	err =3D exfat_find(dir, &dentry->d_name, &fid);
+-	if (err) {
+-		if (err =3D=3D -ENOENT) {
+-			inode =3D NULL;
+-			goto out;
+-		}
+-		goto error;
+-	}
+-
+-	i_pos =3D ((loff_t)fid.dir.dir << 32) | (fid.entry & 0xffffffff);
+-	inode =3D exfat_build_inode(sb, &fid, i_pos);
+-	if (IS_ERR(inode)) {
+-		err =3D PTR_ERR(inode);
+-		goto error;
+-	}
+-
+-	i_mode =3D inode->i_mode;
+-	alias =3D d_find_alias(inode);
+-	if (alias && !exfat_d_anon_disconn(alias)) {
+-		BUG_ON(d_unhashed(alias));
+-		if (!S_ISDIR(i_mode))
+-			d_move(alias, dentry);
+-		iput(inode);
+-		__unlock_super(sb);
+-		pr_debug("%s exited 1\n", __func__);
+-		return alias;
+-	}
+-	dput(alias);
+-out:
+-	__unlock_super(sb);
+-	dentry->d_time =3D GET_IVERSION(dentry->d_parent->d_inode);
+-	dentry =3D d_splice_alias(inode, dentry);
+-	if (dentry)
+-		dentry->d_time =3D GET_IVERSION(dentry->d_parent->d_inode);
+-	pr_debug("%s exited 2\n", __func__);
+-	return dentry;
+-
+-error:
+-	__unlock_super(sb);
+-	pr_debug("%s exited 3\n", __func__);
+-	return ERR_PTR(err);
+-}
+-
+-static inline unsigned long exfat_hash(loff_t i_pos)
+-{
+-	return hash_32(i_pos, EXFAT_HASH_BITS);
+-}
+-
+-static void exfat_attach(struct inode *inode, loff_t i_pos)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(inode->i_sb);
+-	struct hlist_head *head =3D sbi->inode_hashtable + exfat_hash(i_pos);
+-
+-	spin_lock(&sbi->inode_hash_lock);
+-	EXFAT_I(inode)->i_pos =3D i_pos;
+-	hlist_add_head(&EXFAT_I(inode)->i_hash_fat, head);
+-	spin_unlock(&sbi->inode_hash_lock);
+-}
+-
+-static void exfat_detach(struct inode *inode)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(inode->i_sb);
+-
+-	spin_lock(&sbi->inode_hash_lock);
+-	hlist_del_init(&EXFAT_I(inode)->i_hash_fat);
+-	EXFAT_I(inode)->i_pos =3D 0;
+-	spin_unlock(&sbi->inode_hash_lock);
+-}
+-
+-static int exfat_unlink(struct inode *dir, struct dentry *dentry)
+-{
+-	struct inode *inode =3D dentry->d_inode;
+-	struct super_block *sb =3D dir->i_sb;
+-	struct timespec64 curtime;
+-	int err;
+-
+-	__lock_super(sb);
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	EXFAT_I(inode)->fid.size =3D i_size_read(inode);
+-
+-	err =3D ffsRemoveFile(dir, &(EXFAT_I(inode)->fid));
+-	if (err)
+-		goto out;
+-
+-	INC_IVERSION(dir);
+-	curtime =3D current_time(dir);
+-	dir->i_mtime =3D curtime;
+-	dir->i_atime =3D curtime;
+-	if (IS_DIRSYNC(dir))
+-		(void)exfat_sync_inode(dir);
+-	else
+-		mark_inode_dirty(dir);
+-
+-	clear_nlink(inode);
+-	curtime =3D current_time(inode);
+-	inode->i_mtime =3D curtime;
+-	inode->i_atime =3D curtime;
+-	exfat_detach(inode);
+-	remove_inode_hash(inode);
+-
+-out:
+-	__unlock_super(sb);
+-	pr_debug("%s exited\n", __func__);
+-	return err;
+-}
+-
+-static int exfat_mkdir(struct inode *dir, struct dentry *dentry, umode_t m=
+ode)
+-{
+-	struct super_block *sb =3D dir->i_sb;
+-	struct timespec64 curtime;
+-	struct inode *inode;
+-	struct file_id_t fid;
+-	loff_t i_pos;
+-	int err;
+-
+-	__lock_super(sb);
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	err =3D ffsCreateDir(dir, (u8 *)dentry->d_name.name, &fid);
+-	if (err)
+-		goto out;
+-
+-	INC_IVERSION(dir);
+-	curtime =3D current_time(dir);
+-	dir->i_ctime =3D curtime;
+-	dir->i_mtime =3D curtime;
+-	dir->i_atime =3D curtime;
+-	if (IS_DIRSYNC(dir))
+-		(void)exfat_sync_inode(dir);
+-	else
+-		mark_inode_dirty(dir);
+-	inc_nlink(dir);
+-
+-	i_pos =3D ((loff_t)fid.dir.dir << 32) | (fid.entry & 0xffffffff);
+-
+-	inode =3D exfat_build_inode(sb, &fid, i_pos);
+-	if (IS_ERR(inode)) {
+-		err =3D PTR_ERR(inode);
+-		goto out;
+-	}
+-	INC_IVERSION(inode);
+-	curtime =3D current_time(inode);
+-	inode->i_mtime =3D curtime;
+-	inode->i_atime =3D curtime;
+-	inode->i_ctime =3D curtime;
+-	/* timestamp is already written, so mark_inode_dirty() is unneeded. */
+-
+-	dentry->d_time =3D GET_IVERSION(dentry->d_parent->d_inode);
+-	d_instantiate(dentry, inode);
+-
+-out:
+-	__unlock_super(sb);
+-	pr_debug("%s exited\n", __func__);
+-	return err;
+-}
+-
+-static int exfat_rmdir(struct inode *dir, struct dentry *dentry)
+-{
+-	struct inode *inode =3D dentry->d_inode;
+-	struct super_block *sb =3D dir->i_sb;
+-	struct timespec64 curtime;
+-	int err;
+-
+-	__lock_super(sb);
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	EXFAT_I(inode)->fid.size =3D i_size_read(inode);
+-
+-	err =3D ffsRemoveDir(dir, &(EXFAT_I(inode)->fid));
+-	if (err)
+-		goto out;
+-
+-	INC_IVERSION(dir);
+-	curtime =3D current_time(dir);
+-	dir->i_mtime =3D curtime;
+-	dir->i_atime =3D curtime;
+-	if (IS_DIRSYNC(dir))
+-		(void)exfat_sync_inode(dir);
+-	else
+-		mark_inode_dirty(dir);
+-	drop_nlink(dir);
+-
+-	clear_nlink(inode);
+-	curtime =3D current_time(inode);
+-	inode->i_mtime =3D curtime;
+-	inode->i_atime =3D curtime;
+-	exfat_detach(inode);
+-	remove_inode_hash(inode);
+-
+-out:
+-	__unlock_super(sb);
+-	pr_debug("%s exited\n", __func__);
+-	return err;
+-}
+-
+-static int exfat_rename(struct inode *old_dir, struct dentry *old_dentry,
+-			struct inode *new_dir, struct dentry *new_dentry,
+-			unsigned int flags)
+-{
+-	struct inode *old_inode, *new_inode;
+-	struct super_block *sb =3D old_dir->i_sb;
+-	struct timespec64 curtime;
+-	loff_t i_pos;
+-	int err;
+-
+-	if (flags)
+-		return -EINVAL;
+-
+-	__lock_super(sb);
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	old_inode =3D old_dentry->d_inode;
+-	new_inode =3D new_dentry->d_inode;
+-
+-	EXFAT_I(old_inode)->fid.size =3D i_size_read(old_inode);
+-
+-	err =3D ffsMoveFile(old_dir, &(EXFAT_I(old_inode)->fid), new_dir,
+-			  new_dentry);
+-	if (err)
+-		goto out;
+-
+-	INC_IVERSION(new_dir);
+-	curtime =3D current_time(new_dir);
+-	new_dir->i_ctime =3D curtime;
+-	new_dir->i_mtime =3D curtime;
+-	new_dir->i_atime =3D curtime;
+-
+-	if (IS_DIRSYNC(new_dir))
+-		(void)exfat_sync_inode(new_dir);
+-	else
+-		mark_inode_dirty(new_dir);
+-
+-	i_pos =3D ((loff_t)EXFAT_I(old_inode)->fid.dir.dir << 32) |
+-			(EXFAT_I(old_inode)->fid.entry & 0xffffffff);
+-
+-	exfat_detach(old_inode);
+-	exfat_attach(old_inode, i_pos);
+-	if (IS_DIRSYNC(new_dir))
+-		(void)exfat_sync_inode(old_inode);
+-	else
+-		mark_inode_dirty(old_inode);
+-
+-	if ((S_ISDIR(old_inode->i_mode)) && (old_dir !=3D new_dir)) {
+-		drop_nlink(old_dir);
+-		if (!new_inode)
+-			inc_nlink(new_dir);
+-	}
+-	INC_IVERSION(old_dir);
+-	curtime =3D current_time(old_dir);
+-	old_dir->i_ctime =3D curtime;
+-	old_dir->i_mtime =3D curtime;
+-	if (IS_DIRSYNC(old_dir))
+-		(void)exfat_sync_inode(old_dir);
+-	else
+-		mark_inode_dirty(old_dir);
+-
+-	if (new_inode) {
+-		exfat_detach(new_inode);
+-		drop_nlink(new_inode);
+-		if (S_ISDIR(new_inode->i_mode))
+-			drop_nlink(new_inode);
+-		new_inode->i_ctime =3D current_time(new_inode);
+-	}
+-
+-out:
+-	__unlock_super(sb);
+-	pr_debug("%s exited\n", __func__);
+-	return err;
+-}
+-
+-static int exfat_cont_expand(struct inode *inode, loff_t size)
+-{
+-	struct address_space *mapping =3D inode->i_mapping;
+-	loff_t start =3D i_size_read(inode), count =3D size - i_size_read(inode);
+-	struct timespec64 curtime;
+-	int err, err2;
+-
+-	err =3D generic_cont_expand_simple(inode, size);
+-	if (err !=3D 0)
+-		return err;
+-
+-	curtime =3D current_time(inode);
+-	inode->i_ctime =3D curtime;
+-	inode->i_mtime =3D curtime;
+-	mark_inode_dirty(inode);
+-
+-	if (IS_SYNC(inode)) {
+-		err =3D filemap_fdatawrite_range(mapping, start,
+-					       start + count - 1);
+-		err2 =3D sync_mapping_buffers(mapping);
+-		err =3D (err) ? (err) : (err2);
+-		err2 =3D write_inode_now(inode, 1);
+-		err =3D (err) ? (err) : (err2);
+-		if (!err)
+-			err =3D  filemap_fdatawait_range(mapping, start,
+-						       start + count - 1);
+-	}
+-	return err;
+-}
+-
+-static int exfat_allow_set_time(struct exfat_sb_info *sbi, struct inode *i=
+node)
+-{
+-	mode_t allow_utime =3D sbi->options.allow_utime;
+-
+-	if (!uid_eq(current_fsuid(), inode->i_uid)) {
+-		if (in_group_p(inode->i_gid))
+-			allow_utime >>=3D 3;
+-		if (allow_utime & MAY_WRITE)
+-			return 1;
+-	}
+-
+-	/* use a default check */
+-	return 0;
+-}
+-
+-static int exfat_sanitize_mode(const struct exfat_sb_info *sbi,
+-			       struct inode *inode, umode_t *mode_ptr)
+-{
+-	mode_t i_mode, mask, perm;
+-
+-	i_mode =3D inode->i_mode;
+-
+-	if (S_ISREG(i_mode) || S_ISLNK(i_mode))
+-		mask =3D sbi->options.fs_fmask;
+-	else
+-		mask =3D sbi->options.fs_dmask;
+-
+-	perm =3D *mode_ptr & ~(S_IFMT | mask);
+-
+-	/* Of the r and x bits, all (subject to umask) must be present.*/
+-	if ((perm & 0555) !=3D (i_mode & 0555))
+-		return -EPERM;
+-
+-	if (exfat_mode_can_hold_ro(inode)) {
+-		/*
+-		 * Of the w bits, either all (subject to umask) or none must be
+-		 * present.
+-		 */
+-		if ((perm & 0222) && ((perm & 0222) !=3D (0222 & ~mask)))
+-			return -EPERM;
+-	} else {
+-		/*
+-		 * If exfat_mode_can_hold_ro(inode) is false, can't change w
+-		 * bits.
+-		 */
+-		if ((perm & 0222) !=3D (0222 & ~mask))
+-			return -EPERM;
+-	}
+-
+-	*mode_ptr &=3D S_IFMT | perm;
+-
+-	return 0;
+-}
+-
+-static void exfat_truncate(struct inode *inode, loff_t old_size)
+-{
+-	struct super_block *sb =3D inode->i_sb;
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	struct fs_info_t *p_fs =3D &sbi->fs_info;
+-	struct timespec64 curtime;
+-	int err;
+-
+-	__lock_super(sb);
+-
+-	/*
+-	 * This protects against truncating a file bigger than it was then
+-	 * trying to write into the hole.
+-	 */
+-	if (EXFAT_I(inode)->mmu_private > i_size_read(inode))
+-		EXFAT_I(inode)->mmu_private =3D i_size_read(inode);
+-
+-	if (EXFAT_I(inode)->fid.start_clu =3D=3D 0)
+-		goto out;
+-
+-	err =3D ffsTruncateFile(inode, old_size, i_size_read(inode));
+-	if (err)
+-		goto out;
+-
+-	curtime =3D current_time(inode);
+-	inode->i_ctime =3D curtime;
+-	inode->i_mtime =3D curtime;
+-	if (IS_DIRSYNC(inode))
+-		(void)exfat_sync_inode(inode);
+-	else
+-		mark_inode_dirty(inode);
+-
+-	inode->i_blocks =3D ((i_size_read(inode) + (p_fs->cluster_size - 1)) &
+-			   ~((loff_t)p_fs->cluster_size - 1)) >> 9;
+-out:
+-	__unlock_super(sb);
+-}
+-
+-static int exfat_setattr(struct dentry *dentry, struct iattr *attr)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(dentry->d_sb);
+-	struct inode *inode =3D dentry->d_inode;
+-	unsigned int ia_valid;
+-	int error;
+-	loff_t old_size;
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	if ((attr->ia_valid & ATTR_SIZE) &&
+-	    attr->ia_size > i_size_read(inode)) {
+-		error =3D exfat_cont_expand(inode, attr->ia_size);
+-		if (error || attr->ia_valid =3D=3D ATTR_SIZE)
+-			return error;
+-		attr->ia_valid &=3D ~ATTR_SIZE;
+-	}
+-
+-	ia_valid =3D attr->ia_valid;
+-
+-	if ((ia_valid & (ATTR_MTIME_SET | ATTR_ATIME_SET | ATTR_TIMES_SET)) &&
+-	    exfat_allow_set_time(sbi, inode)) {
+-		attr->ia_valid &=3D ~(ATTR_MTIME_SET |
+-				    ATTR_ATIME_SET |
+-				    ATTR_TIMES_SET);
+-	}
+-
+-	error =3D setattr_prepare(dentry, attr);
+-	attr->ia_valid =3D ia_valid;
+-	if (error)
+-		return error;
+-
+-	if (((attr->ia_valid & ATTR_UID) &&
+-	     (!uid_eq(attr->ia_uid, sbi->options.fs_uid))) ||
+-	    ((attr->ia_valid & ATTR_GID) &&
+-	     (!gid_eq(attr->ia_gid, sbi->options.fs_gid))) ||
+-	    ((attr->ia_valid & ATTR_MODE) &&
+-	     (attr->ia_mode & ~(S_IFREG | S_IFLNK | S_IFDIR | 0777)))) {
+-		return -EPERM;
+-	}
+-
+-	/*
+-	 * We don't return -EPERM here. Yes, strange, but this is too
+-	 * old behavior.
+-	 */
+-	if (attr->ia_valid & ATTR_MODE) {
+-		if (exfat_sanitize_mode(sbi, inode, &attr->ia_mode) < 0)
+-			attr->ia_valid &=3D ~ATTR_MODE;
+-	}
+-
+-	EXFAT_I(inode)->fid.size =3D i_size_read(inode);
+-
+-	if (attr->ia_valid & ATTR_SIZE) {
+-		old_size =3D i_size_read(inode);
+-		down_write(&EXFAT_I(inode)->truncate_lock);
+-		truncate_setsize(inode, attr->ia_size);
+-		exfat_truncate(inode, old_size);
+-		up_write(&EXFAT_I(inode)->truncate_lock);
+-	}
+-	setattr_copy(inode, attr);
+-	mark_inode_dirty(inode);
+-
+-	pr_debug("%s exited\n", __func__);
+-	return error;
+-}
+-
+-static int exfat_getattr(const struct path *path, struct kstat *stat,
+-			 u32 request_mask, unsigned int flags)
+-{
+-	struct inode *inode =3D path->dentry->d_inode;
+-
+-	pr_debug("%s entered\n", __func__);
+-
+-	generic_fillattr(inode, stat);
+-	stat->blksize =3D EXFAT_SB(inode->i_sb)->fs_info.cluster_size;
+-
+-	pr_debug("%s exited\n", __func__);
+-	return 0;
+-}
+-
+-static const struct inode_operations exfat_dir_inode_operations =3D {
+-	.create        =3D exfat_create,
+-	.lookup        =3D exfat_lookup,
+-	.unlink        =3D exfat_unlink,
+-	.mkdir         =3D exfat_mkdir,
+-	.rmdir         =3D exfat_rmdir,
+-	.rename        =3D exfat_rename,
+-	.setattr       =3D exfat_setattr,
+-	.getattr       =3D exfat_getattr,
+-};
+-
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-/*  File Operations                                                     */
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-static int exfat_file_release(struct inode *inode, struct file *filp)
+-{
+-	struct super_block *sb =3D inode->i_sb;
+-
+-	EXFAT_I(inode)->fid.size =3D i_size_read(inode);
+-	ffsSyncVol(sb, false);
+-	return 0;
+-}
+-
+-static const struct file_operations exfat_file_operations =3D {
+-	.llseek      =3D generic_file_llseek,
+-	.read_iter   =3D generic_file_read_iter,
+-	.write_iter  =3D generic_file_write_iter,
+-	.mmap        =3D generic_file_mmap,
+-	.release     =3D exfat_file_release,
+-	.unlocked_ioctl  =3D exfat_generic_ioctl,
+-	.fsync       =3D generic_file_fsync,
+-	.splice_read =3D generic_file_splice_read,
+-};
+-
+-static const struct inode_operations exfat_file_inode_operations =3D {
+-	.setattr     =3D exfat_setattr,
+-	.getattr     =3D exfat_getattr,
+-};
+-
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-/*  Address Space Operations                                            */
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-
+-static int exfat_bmap(struct inode *inode, sector_t sector, sector_t *phys,
+-		      unsigned long *mapped_blocks, int *create)
+-{
+-	struct super_block *sb =3D inode->i_sb;
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	struct fs_info_t *p_fs =3D &sbi->fs_info;
+-	const unsigned long blocksize =3D sb->s_blocksize;
+-	const unsigned char blocksize_bits =3D sb->s_blocksize_bits;
+-	sector_t last_block;
+-	int err, clu_offset, sec_offset;
+-	unsigned int cluster;
+-
+-	*phys =3D 0;
+-	*mapped_blocks =3D 0;
+-
+-	last_block =3D (i_size_read(inode) + (blocksize - 1)) >> blocksize_bits;
+-	if (sector >=3D last_block) {
+-		if (*create =3D=3D 0)
+-			return 0;
+-	} else {
+-		*create =3D 0;
+-	}
+-
+-	/* cluster offset */
+-	clu_offset =3D sector >> p_fs->sectors_per_clu_bits;
+-
+-	/* sector offset in cluster */
+-	sec_offset =3D sector & (p_fs->sectors_per_clu - 1);
+-
+-	EXFAT_I(inode)->fid.size =3D i_size_read(inode);
+-
+-	err =3D ffsMapCluster(inode, clu_offset, &cluster);
+-
+-	if (!err && (cluster !=3D CLUSTER_32(~0))) {
+-		*phys =3D START_SECTOR(cluster) + sec_offset;
+-		*mapped_blocks =3D p_fs->sectors_per_clu - sec_offset;
+-	}
+-
+-	return 0;
+-}
+-
+-static int exfat_get_block(struct inode *inode, sector_t iblock,
+-			   struct buffer_head *bh_result, int create)
+-{
+-	struct super_block *sb =3D inode->i_sb;
+-	unsigned long max_blocks =3D bh_result->b_size >> inode->i_blkbits;
+-	int err;
+-	unsigned long mapped_blocks;
+-	sector_t phys;
+-
+-	__lock_super(sb);
+-
+-	err =3D exfat_bmap(inode, iblock, &phys, &mapped_blocks, &create);
+-	if (err) {
+-		__unlock_super(sb);
+-		return err;
+-	}
+-
+-	if (phys) {
+-		max_blocks =3D min(mapped_blocks, max_blocks);
+-		if (create) {
+-			EXFAT_I(inode)->mmu_private +=3D max_blocks <<
+-							sb->s_blocksize_bits;
+-			set_buffer_new(bh_result);
+-		}
+-		map_bh(bh_result, sb, phys);
+-	}
+-
+-	bh_result->b_size =3D max_blocks << sb->s_blocksize_bits;
+-	__unlock_super(sb);
+-
+-	return 0;
+-}
+-
+-static int exfat_readpage(struct file *file, struct page *page)
+-{
+-	return  mpage_readpage(page, exfat_get_block);
+-}
+-
+-static int exfat_readpages(struct file *file, struct address_space *mappin=
+g,
+-			   struct list_head *pages, unsigned int nr_pages)
+-{
+-	return  mpage_readpages(mapping, pages, nr_pages, exfat_get_block);
+-}
+-
+-static int exfat_writepage(struct page *page, struct writeback_control *wb=
+c)
+-{
+-	return block_write_full_page(page, exfat_get_block, wbc);
+-}
+-
+-static int exfat_writepages(struct address_space *mapping,
+-			    struct writeback_control *wbc)
+-{
+-	return mpage_writepages(mapping, wbc, exfat_get_block);
+-}
+-
+-static void exfat_write_failed(struct address_space *mapping, loff_t to)
+-{
+-	struct inode *inode =3D mapping->host;
+-
+-	if (to > i_size_read(inode)) {
+-		truncate_pagecache(inode, i_size_read(inode));
+-		EXFAT_I(inode)->fid.size =3D i_size_read(inode);
+-		exfat_truncate(inode, i_size_read(inode));
+-	}
+-}
+-
+-static int exfat_write_begin(struct file *file, struct address_space *mapp=
+ing,
+-			     loff_t pos, unsigned int len, unsigned int flags,
+-			     struct page **pagep, void **fsdata)
+-{
+-	int ret;
+-
+-	*pagep =3D NULL;
+-	ret =3D cont_write_begin(file, mapping, pos, len, flags, pagep, fsdata,
+-			       exfat_get_block,
+-			       &EXFAT_I(mapping->host)->mmu_private);
+-
+-	if (ret < 0)
+-		exfat_write_failed(mapping, pos + len);
+-	return ret;
+-}
+-
+-static int exfat_write_end(struct file *file, struct address_space *mappin=
+g,
+-			   loff_t pos, unsigned int len, unsigned int copied,
+-			   struct page *pagep, void *fsdata)
+-{
+-	struct inode *inode =3D mapping->host;
+-	struct file_id_t *fid =3D &(EXFAT_I(inode)->fid);
+-	struct timespec64 curtime;
+-	int err;
+-
+-	err =3D generic_write_end(file, mapping, pos, len, copied, pagep, fsdata);
+-
+-	if (err < len)
+-		exfat_write_failed(mapping, pos + len);
+-
+-	if (!(err < 0) && !(fid->attr & ATTR_ARCHIVE)) {
+-		curtime =3D current_time(inode);
+-		inode->i_mtime =3D curtime;
+-		inode->i_ctime =3D curtime;
+-		fid->attr |=3D ATTR_ARCHIVE;
+-		mark_inode_dirty(inode);
+-	}
+-	return err;
+-}
+-
+-static ssize_t exfat_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
+-{
+-	struct inode *inode =3D iocb->ki_filp->f_mapping->host;
+-	struct address_space *mapping =3D iocb->ki_filp->f_mapping;
+-	ssize_t ret;
+-	int rw;
+-
+-	rw =3D iov_iter_rw(iter);
+-
+-	if (rw =3D=3D WRITE) {
+-		if (EXFAT_I(inode)->mmu_private < iov_iter_count(iter))
+-			return 0;
+-	}
+-	ret =3D blockdev_direct_IO(iocb, inode, iter, exfat_get_block);
+-
+-	if ((ret < 0) && (rw & WRITE))
+-		exfat_write_failed(mapping, iov_iter_count(iter));
+-	return ret;
+-}
+-
+-static sector_t _exfat_bmap(struct address_space *mapping, sector_t block)
+-{
+-	sector_t blocknr;
+-
+-	/* exfat_get_cluster() assumes the requested blocknr isn't truncated. */
+-	down_read(&EXFAT_I(mapping->host)->truncate_lock);
+-	blocknr =3D generic_block_bmap(mapping, block, exfat_get_block);
+-	up_read(&EXFAT_I(mapping->host)->truncate_lock);
+-
+-	return blocknr;
+-}
+-
+-static const struct address_space_operations exfat_aops =3D {
+-	.readpage    =3D exfat_readpage,
+-	.readpages   =3D exfat_readpages,
+-	.writepage   =3D exfat_writepage,
+-	.writepages  =3D exfat_writepages,
+-	.write_begin =3D exfat_write_begin,
+-	.write_end   =3D exfat_write_end,
+-	.direct_IO   =3D exfat_direct_IO,
+-	.bmap        =3D _exfat_bmap
+-};
+-
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-/*  Super Operations                                                    */
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-
+-static struct inode *exfat_iget(struct super_block *sb, loff_t i_pos)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	struct exfat_inode_info *info;
+-	struct hlist_head *head =3D sbi->inode_hashtable + exfat_hash(i_pos);
+-	struct inode *inode =3D NULL;
+-
+-	spin_lock(&sbi->inode_hash_lock);
+-	hlist_for_each_entry(info, head, i_hash_fat) {
+-		BUG_ON(info->vfs_inode.i_sb !=3D sb);
+-
+-		if (i_pos !=3D info->i_pos)
+-			continue;
+-		inode =3D igrab(&info->vfs_inode);
+-		if (inode)
+-			break;
+-	}
+-	spin_unlock(&sbi->inode_hash_lock);
+-	return inode;
+-}
+-
+-/* doesn't deal with root inode */
+-static int exfat_fill_inode(struct inode *inode, struct file_id_t *fid)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(inode->i_sb);
+-	struct fs_info_t *p_fs =3D &sbi->fs_info;
+-	struct dir_entry_t info;
+-
+-	memcpy(&(EXFAT_I(inode)->fid), fid, sizeof(struct file_id_t));
+-
+-	ffsReadStat(inode, &info);
+-
+-	EXFAT_I(inode)->i_pos =3D 0;
+-	EXFAT_I(inode)->target =3D NULL;
+-	inode->i_uid =3D sbi->options.fs_uid;
+-	inode->i_gid =3D sbi->options.fs_gid;
+-	INC_IVERSION(inode);
+-	inode->i_generation =3D prandom_u32();
+-
+-	if (info.attr & ATTR_SUBDIR) { /* directory */
+-		inode->i_generation &=3D ~1;
+-		inode->i_mode =3D exfat_make_mode(sbi, info.attr, 0777);
+-		inode->i_op =3D &exfat_dir_inode_operations;
+-		inode->i_fop =3D &exfat_dir_operations;
+-
+-		i_size_write(inode, info.Size);
+-		EXFAT_I(inode)->mmu_private =3D i_size_read(inode);
+-		set_nlink(inode, info.num_subdirs);
+-	} else { /* regular file */
+-		inode->i_generation |=3D 1;
+-		inode->i_mode =3D exfat_make_mode(sbi, info.attr, 0777);
+-		inode->i_op =3D &exfat_file_inode_operations;
+-		inode->i_fop =3D &exfat_file_operations;
+-		inode->i_mapping->a_ops =3D &exfat_aops;
+-		inode->i_mapping->nrpages =3D 0;
+-
+-		i_size_write(inode, info.Size);
+-		EXFAT_I(inode)->mmu_private =3D i_size_read(inode);
+-	}
+-	exfat_save_attr(inode, info.attr);
+-
+-	inode->i_blocks =3D ((i_size_read(inode) + (p_fs->cluster_size - 1))
+-				& ~((loff_t)p_fs->cluster_size - 1)) >> 9;
+-
+-	exfat_time_fat2unix(&inode->i_mtime, &info.modify_timestamp);
+-	exfat_time_fat2unix(&inode->i_ctime, &info.create_timestamp);
+-	exfat_time_fat2unix(&inode->i_atime, &info.access_timestamp);
+-
+-	return 0;
+-}
+-
+-static struct inode *exfat_build_inode(struct super_block *sb,
+-				       struct file_id_t *fid, loff_t i_pos)
+-{
+-	struct inode *inode;
+-	int err;
+-
+-	inode =3D exfat_iget(sb, i_pos);
+-	if (inode)
+-		goto out;
+-	inode =3D new_inode(sb);
+-	if (!inode) {
+-		inode =3D ERR_PTR(-ENOMEM);
+-		goto out;
+-	}
+-	inode->i_ino =3D iunique(sb, EXFAT_ROOT_INO);
+-	SET_IVERSION(inode, 1);
+-	err =3D exfat_fill_inode(inode, fid);
+-	if (err) {
+-		iput(inode);
+-		inode =3D ERR_PTR(err);
+-		goto out;
+-	}
+-	exfat_attach(inode, i_pos);
+-	insert_inode_hash(inode);
+-out:
+-	return inode;
+-}
+-
+-static int exfat_sync_inode(struct inode *inode)
+-{
+-	return exfat_write_inode(inode, NULL);
+-}
+-
+-static struct inode *exfat_alloc_inode(struct super_block *sb)
+-{
+-	struct exfat_inode_info *ei;
+-
+-	ei =3D kmem_cache_alloc(exfat_inode_cachep, GFP_NOFS);
+-	if (!ei)
+-		return NULL;
+-
+-	init_rwsem(&ei->truncate_lock);
+-
+-	return &ei->vfs_inode;
+-}
+-
+-static void exfat_destroy_inode(struct inode *inode)
+-{
+-	kfree(EXFAT_I(inode)->target);
+-	EXFAT_I(inode)->target =3D NULL;
+-
+-	kmem_cache_free(exfat_inode_cachep, EXFAT_I(inode));
+-}
+-
+-static int exfat_write_inode(struct inode *inode, struct writeback_control=
+ *wbc)
+-{
+-	struct dir_entry_t info;
+-
+-	if (inode->i_ino =3D=3D EXFAT_ROOT_INO)
+-		return 0;
+-
+-	info.attr =3D exfat_make_attr(inode);
+-	info.Size =3D i_size_read(inode);
+-
+-	exfat_time_unix2fat(&inode->i_mtime, &info.modify_timestamp);
+-	exfat_time_unix2fat(&inode->i_ctime, &info.create_timestamp);
+-	exfat_time_unix2fat(&inode->i_atime, &info.access_timestamp);
+-
+-	ffsWriteStat(inode, &info);
+-
+-	return 0;
+-}
+-
+-static void exfat_evict_inode(struct inode *inode)
+-{
+-	truncate_inode_pages(&inode->i_data, 0);
+-
+-	if (!inode->i_nlink)
+-		i_size_write(inode, 0);
+-	invalidate_inode_buffers(inode);
+-	clear_inode(inode);
+-	exfat_detach(inode);
+-
+-	remove_inode_hash(inode);
+-}
+-
+-static void exfat_free_super(struct exfat_sb_info *sbi)
+-{
+-	if (sbi->nls_disk)
+-		unload_nls(sbi->nls_disk);
+-	if (sbi->nls_io)
+-		unload_nls(sbi->nls_io);
+-	if (sbi->options.iocharset !=3D exfat_default_iocharset)
+-		kfree(sbi->options.iocharset);
+-	/* mutex_init is in exfat_fill_super function. only for 3.7+ */
+-	mutex_destroy(&sbi->s_lock);
+-	kvfree(sbi);
+-}
+-
+-static void exfat_put_super(struct super_block *sb)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-
+-	if (__is_sb_dirty(sb))
+-		exfat_write_super(sb);
+-
+-	ffsUmountVol(sb);
+-
+-	sb->s_fs_info =3D NULL;
+-	exfat_free_super(sbi);
+-}
+-
+-static void exfat_write_super(struct super_block *sb)
+-{
+-	__lock_super(sb);
+-
+-	__set_sb_clean(sb);
+-
+-	if (!sb_rdonly(sb))
+-		ffsSyncVol(sb, true);
+-
+-	__unlock_super(sb);
+-}
+-
+-static int exfat_sync_fs(struct super_block *sb, int wait)
+-{
+-	int err =3D 0;
+-
+-	if (__is_sb_dirty(sb)) {
+-		__lock_super(sb);
+-		__set_sb_clean(sb);
+-		err =3D ffsSyncVol(sb, true);
+-		__unlock_super(sb);
+-	}
+-
+-	return err;
+-}
+-
+-static int exfat_statfs(struct dentry *dentry, struct kstatfs *buf)
+-{
+-	struct super_block *sb =3D dentry->d_sb;
+-	u64 id =3D huge_encode_dev(sb->s_bdev->bd_dev);
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-	struct vol_info_t info;
+-
+-	if (p_fs->used_clusters =3D=3D UINT_MAX) {
+-		if (ffsGetVolInfo(sb, &info) =3D=3D -EIO)
+-			return -EIO;
+-
+-	} else {
+-		info.FatType =3D EXFAT;
+-		info.ClusterSize =3D p_fs->cluster_size;
+-		info.NumClusters =3D p_fs->num_clusters - 2;
+-		info.UsedClusters =3D p_fs->used_clusters;
+-		info.FreeClusters =3D info.NumClusters - info.UsedClusters;
+-
+-		if (p_fs->dev_ejected)
+-			pr_info("[EXFAT] statfs on device that is ejected\n");
+-	}
+-
+-	buf->f_type =3D sb->s_magic;
+-	buf->f_bsize =3D info.ClusterSize;
+-	buf->f_blocks =3D info.NumClusters;
+-	buf->f_bfree =3D info.FreeClusters;
+-	buf->f_bavail =3D info.FreeClusters;
+-	buf->f_fsid.val[0] =3D (u32)id;
+-	buf->f_fsid.val[1] =3D (u32)(id >> 32);
+-	buf->f_namelen =3D 260;
+-
+-	return 0;
+-}
+-
+-static int exfat_remount(struct super_block *sb, int *flags, char *data)
+-{
+-	*flags |=3D SB_NODIRATIME;
+-	return 0;
+-}
+-
+-static int exfat_show_options(struct seq_file *m, struct dentry *root)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(root->d_sb);
+-	struct exfat_mount_options *opts =3D &sbi->options;
+-
+-	if (__kuid_val(opts->fs_uid))
+-		seq_printf(m, ",uid=3D%u", __kuid_val(opts->fs_uid));
+-	if (__kgid_val(opts->fs_gid))
+-		seq_printf(m, ",gid=3D%u", __kgid_val(opts->fs_gid));
+-	seq_printf(m, ",fmask=3D%04o", opts->fs_fmask);
+-	seq_printf(m, ",dmask=3D%04o", opts->fs_dmask);
+-	if (opts->allow_utime)
+-		seq_printf(m, ",allow_utime=3D%04o", opts->allow_utime);
+-	if (sbi->nls_disk)
+-		seq_printf(m, ",codepage=3D%s", sbi->nls_disk->charset);
+-	if (sbi->nls_io)
+-		seq_printf(m, ",iocharset=3D%s", sbi->nls_io->charset);
+-	seq_printf(m, ",namecase=3D%u", opts->casesensitive);
+-	if (opts->errors =3D=3D EXFAT_ERRORS_CONT)
+-		seq_puts(m, ",errors=3Dcontinue");
+-	else if (opts->errors =3D=3D EXFAT_ERRORS_PANIC)
+-		seq_puts(m, ",errors=3Dpanic");
+-	else
+-		seq_puts(m, ",errors=3Dremount-ro");
+-#ifdef CONFIG_STAGING_EXFAT_DISCARD
+-	if (opts->discard)
+-		seq_puts(m, ",discard");
+-#endif
+-	return 0;
+-}
+-
+-static const struct super_operations exfat_sops =3D {
+-	.alloc_inode   =3D exfat_alloc_inode,
+-	.destroy_inode =3D exfat_destroy_inode,
+-	.write_inode   =3D exfat_write_inode,
+-	.evict_inode  =3D exfat_evict_inode,
+-	.put_super     =3D exfat_put_super,
+-	.sync_fs       =3D exfat_sync_fs,
+-	.statfs        =3D exfat_statfs,
+-	.remount_fs    =3D exfat_remount,
+-	.show_options  =3D exfat_show_options,
+-};
+-
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-/*  Export Operations                                                   */
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-
+-static struct inode *exfat_nfs_get_inode(struct super_block *sb, u64 ino,
+-					 u32 generation)
+-{
+-	struct inode *inode =3D NULL;
+-
+-	if (ino < EXFAT_ROOT_INO)
+-		return inode;
+-	inode =3D ilookup(sb, ino);
+-
+-	if (inode && generation && (inode->i_generation !=3D generation)) {
+-		iput(inode);
+-		inode =3D NULL;
+-	}
+-
+-	return inode;
+-}
+-
+-static struct dentry *exfat_fh_to_dentry(struct super_block *sb,
+-					 struct fid *fid, int fh_len,
+-					 int fh_type)
+-{
+-	return generic_fh_to_dentry(sb, fid, fh_len, fh_type,
+-				exfat_nfs_get_inode);
+-}
+-
+-static struct dentry *exfat_fh_to_parent(struct super_block *sb,
+-					 struct fid *fid, int fh_len,
+-					 int fh_type)
+-{
+-	return generic_fh_to_parent(sb, fid, fh_len, fh_type,
+-				exfat_nfs_get_inode);
+-}
+-
+-static const struct export_operations exfat_export_ops =3D {
+-	.fh_to_dentry   =3D exfat_fh_to_dentry,
+-	.fh_to_parent   =3D exfat_fh_to_parent,
+-};
+-
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-/*  Super Block Read Operations                                         */
+-/*=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D*/
+-
+-enum {
+-	Opt_uid,
+-	Opt_gid,
+-	Opt_umask,
+-	Opt_dmask,
+-	Opt_fmask,
+-	Opt_allow_utime,
+-	Opt_codepage,
+-	Opt_charset,
+-	Opt_namecase,
+-	Opt_debug,
+-	Opt_err_cont,
+-	Opt_err_panic,
+-	Opt_err_ro,
+-	Opt_utf8_hack,
+-	Opt_err,
+-#ifdef CONFIG_STAGING_EXFAT_DISCARD
+-	Opt_discard,
+-#endif /* EXFAT_CONFIG_DISCARD */
+-};
+-
+-static const match_table_t exfat_tokens =3D {
+-	{Opt_uid, "uid=3D%u"},
+-	{Opt_gid, "gid=3D%u"},
+-	{Opt_umask, "umask=3D%o"},
+-	{Opt_dmask, "dmask=3D%o"},
+-	{Opt_fmask, "fmask=3D%o"},
+-	{Opt_allow_utime, "allow_utime=3D%o"},
+-	{Opt_codepage, "codepage=3D%u"},
+-	{Opt_charset, "iocharset=3D%s"},
+-	{Opt_namecase, "namecase=3D%u"},
+-	{Opt_debug, "debug"},
+-	{Opt_err_cont, "errors=3Dcontinue"},
+-	{Opt_err_panic, "errors=3Dpanic"},
+-	{Opt_err_ro, "errors=3Dremount-ro"},
+-	{Opt_utf8_hack, "utf8"},
+-#ifdef CONFIG_STAGING_EXFAT_DISCARD
+-	{Opt_discard, "discard"},
+-#endif /* CONFIG_STAGING_EXFAT_DISCARD */
+-	{Opt_err, NULL}
+-};
+-
+-static int parse_options(char *options, int silent, int *debug,
+-			 struct exfat_mount_options *opts)
+-{
+-	char *p;
+-	substring_t args[MAX_OPT_ARGS];
+-	int option;
+-	char *iocharset;
+-
+-	opts->fs_uid =3D current_uid();
+-	opts->fs_gid =3D current_gid();
+-	opts->fs_fmask =3D current->fs->umask;
+-	opts->fs_dmask =3D current->fs->umask;
+-	opts->allow_utime =3D U16_MAX;
+-	opts->codepage =3D exfat_default_codepage;
+-	opts->iocharset =3D exfat_default_iocharset;
+-	opts->casesensitive =3D 0;
+-	opts->errors =3D EXFAT_ERRORS_RO;
+-#ifdef CONFIG_STAGING_EXFAT_DISCARD
+-	opts->discard =3D 0;
+-#endif
+-	*debug =3D 0;
+-
+-	if (!options)
+-		goto out;
+-
+-	while ((p =3D strsep(&options, ","))) {
+-		int token;
+-
+-		if (!*p)
+-			continue;
+-
+-		token =3D match_token(p, exfat_tokens, args);
+-		switch (token) {
+-		case Opt_uid:
+-			if (match_int(&args[0], &option))
+-				return 0;
+-			opts->fs_uid =3D KUIDT_INIT(option);
+-			break;
+-		case Opt_gid:
+-			if (match_int(&args[0], &option))
+-				return 0;
+-			opts->fs_gid =3D KGIDT_INIT(option);
+-			break;
+-		case Opt_umask:
+-		case Opt_dmask:
+-		case Opt_fmask:
+-			if (match_octal(&args[0], &option))
+-				return 0;
+-			if (token !=3D Opt_dmask)
+-				opts->fs_fmask =3D option;
+-			if (token !=3D Opt_fmask)
+-				opts->fs_dmask =3D option;
+-			break;
+-		case Opt_allow_utime:
+-			if (match_octal(&args[0], &option))
+-				return 0;
+-			opts->allow_utime =3D option & 0022;
+-			break;
+-		case Opt_codepage:
+-			if (match_int(&args[0], &option))
+-				return 0;
+-			opts->codepage =3D option;
+-			break;
+-		case Opt_charset:
+-			if (opts->iocharset !=3D exfat_default_iocharset)
+-				kfree(opts->iocharset);
+-			iocharset =3D match_strdup(&args[0]);
+-			if (!iocharset)
+-				return -ENOMEM;
+-			opts->iocharset =3D iocharset;
+-			break;
+-		case Opt_namecase:
+-			if (match_int(&args[0], &option))
+-				return 0;
+-			opts->casesensitive =3D option;
+-			break;
+-		case Opt_err_cont:
+-			opts->errors =3D EXFAT_ERRORS_CONT;
+-			break;
+-		case Opt_err_panic:
+-			opts->errors =3D EXFAT_ERRORS_PANIC;
+-			break;
+-		case Opt_err_ro:
+-			opts->errors =3D EXFAT_ERRORS_RO;
+-			break;
+-		case Opt_debug:
+-			*debug =3D 1;
+-			break;
+-#ifdef CONFIG_STAGING_EXFAT_DISCARD
+-		case Opt_discard:
+-			opts->discard =3D 1;
+-			break;
+-#endif /* CONFIG_STAGING_EXFAT_DISCARD */
+-		case Opt_utf8_hack:
+-			break;
+-		default:
+-			if (!silent)
+-				pr_err("[EXFAT] Unrecognized mount option %s or missing value\n",
+-				       p);
+-			return -EINVAL;
+-		}
+-	}
+-
+-out:
+-	if (opts->allow_utime =3D=3D U16_MAX)
+-		opts->allow_utime =3D ~opts->fs_dmask & 0022;
+-
+-	return 0;
+-}
+-
+-static void exfat_hash_init(struct super_block *sb)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	int i;
+-
+-	spin_lock_init(&sbi->inode_hash_lock);
+-	for (i =3D 0; i < EXFAT_HASH_SIZE; i++)
+-		INIT_HLIST_HEAD(&sbi->inode_hashtable[i]);
+-}
+-
+-static int exfat_read_root(struct inode *inode)
+-{
+-	struct super_block *sb =3D inode->i_sb;
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	struct fs_info_t *p_fs =3D &sbi->fs_info;
+-	struct timespec64 curtime;
+-	struct dir_entry_t info;
+-
+-	EXFAT_I(inode)->fid.dir.dir =3D p_fs->root_dir;
+-	EXFAT_I(inode)->fid.dir.flags =3D 0x01;
+-	EXFAT_I(inode)->fid.entry =3D -1;
+-	EXFAT_I(inode)->fid.start_clu =3D p_fs->root_dir;
+-	EXFAT_I(inode)->fid.flags =3D 0x01;
+-	EXFAT_I(inode)->fid.type =3D TYPE_DIR;
+-	EXFAT_I(inode)->fid.rwoffset =3D 0;
+-	EXFAT_I(inode)->fid.hint_last_off =3D -1;
+-
+-	EXFAT_I(inode)->target =3D NULL;
+-
+-	ffsReadStat(inode, &info);
+-
+-	inode->i_uid =3D sbi->options.fs_uid;
+-	inode->i_gid =3D sbi->options.fs_gid;
+-	INC_IVERSION(inode);
+-	inode->i_generation =3D 0;
+-	inode->i_mode =3D exfat_make_mode(sbi, ATTR_SUBDIR, 0777);
+-	inode->i_op =3D &exfat_dir_inode_operations;
+-	inode->i_fop =3D &exfat_dir_operations;
+-
+-	i_size_write(inode, info.Size);
+-	inode->i_blocks =3D ((i_size_read(inode) + (p_fs->cluster_size - 1))
+-				& ~((loff_t)p_fs->cluster_size - 1)) >> 9;
+-	EXFAT_I(inode)->i_pos =3D ((loff_t)p_fs->root_dir << 32) | 0xffffffff;
+-	EXFAT_I(inode)->mmu_private =3D i_size_read(inode);
+-
+-	exfat_save_attr(inode, ATTR_SUBDIR);
+-	curtime =3D current_time(inode);
+-	inode->i_mtime =3D curtime;
+-	inode->i_atime =3D curtime;
+-	inode->i_ctime =3D curtime;
+-	set_nlink(inode, info.num_subdirs + 2);
+-
+-	return 0;
+-}
+-
+-static void setup_dops(struct super_block *sb)
+-{
+-	if (EXFAT_SB(sb)->options.casesensitive =3D=3D 0)
+-		sb->s_d_op =3D &exfat_ci_dentry_ops;
+-	else
+-		sb->s_d_op =3D &exfat_dentry_ops;
+-}
+-
+-static int exfat_fill_super(struct super_block *sb, void *data, int silent)
+-{
+-	struct inode *root_inode =3D NULL;
+-	struct exfat_sb_info *sbi;
+-	int debug, ret;
+-	long error;
+-
+-	/*
+-	 * GFP_KERNEL is ok here, because while we do hold the
+-	 * supeblock lock, memory pressure can't call back into
+-	 * the filesystem, since we're only just about to mount
+-	 * it and have no inodes etc active!
+-	 */
+-	sbi =3D kvzalloc(sizeof(*sbi), GFP_KERNEL);
+-	if (!sbi)
+-		return -ENOMEM;
+-	mutex_init(&sbi->s_lock);
+-	sb->s_fs_info =3D sbi;
+-	sb->s_flags |=3D SB_NODIRATIME;
+-	sb->s_magic =3D EXFAT_SUPER_MAGIC;
+-	sb->s_op =3D &exfat_sops;
+-	sb->s_export_op =3D &exfat_export_ops;
+-
+-	error =3D parse_options(data, silent, &debug, &sbi->options);
+-	if (error)
+-		goto out_fail;
+-
+-	setup_dops(sb);
+-
+-	error =3D -EIO;
+-	sb_min_blocksize(sb, 512);
+-	sb->s_maxbytes =3D 0x7fffffffffffffffLL;    /* maximum file size */
+-
+-	ret =3D ffsMountVol(sb);
+-	if (ret) {
+-		if (!silent)
+-			pr_err("[EXFAT] ffsMountVol failed\n");
+-
+-		goto out_fail;
+-	}
+-
+-	/* set up enough so that it can read an inode */
+-	exfat_hash_init(sb);
+-
+-	/*
+-	 * The low byte of FAT's first entry must have same value with
+-	 * media-field.  But in real world, too many devices is
+-	 * writing wrong value.  So, removed that validity check.
+-	 *
+-	 * if (FAT_FIRST_ENT(sb, media) !=3D first)
+-	 */
+-
+-	sbi->nls_io =3D load_nls(sbi->options.iocharset);
+-
+-	error =3D -ENOMEM;
+-	root_inode =3D new_inode(sb);
+-	if (!root_inode)
+-		goto out_fail2;
+-	root_inode->i_ino =3D EXFAT_ROOT_INO;
+-	SET_IVERSION(root_inode, 1);
+-
+-	error =3D exfat_read_root(root_inode);
+-	if (error < 0)
+-		goto out_fail2;
+-	error =3D -ENOMEM;
+-	exfat_attach(root_inode, EXFAT_I(root_inode)->i_pos);
+-	insert_inode_hash(root_inode);
+-	sb->s_root =3D d_make_root(root_inode);
+-	if (!sb->s_root) {
+-		pr_err("[EXFAT] Getting the root inode failed\n");
+-		goto out_fail2;
+-	}
+-
+-	return 0;
+-
+-out_fail2:
+-	ffsUmountVol(sb);
+-out_fail:
+-	if (root_inode)
+-		iput(root_inode);
+-	sb->s_fs_info =3D NULL;
+-	exfat_free_super(sbi);
+-	return error;
+-}
+-
+-static struct dentry *exfat_fs_mount(struct file_system_type *fs_type,
+-				     int flags, const char *dev_name,
+-				     void *data)
+-{
+-	return mount_bdev(fs_type, flags, dev_name, data, exfat_fill_super);
+-}
+-
+-static void init_once(void *foo)
+-{
+-	struct exfat_inode_info *ei =3D (struct exfat_inode_info *)foo;
+-
+-	INIT_HLIST_NODE(&ei->i_hash_fat);
+-	inode_init_once(&ei->vfs_inode);
+-}
+-
+-static int __init exfat_init_inodecache(void)
+-{
+-	exfat_inode_cachep =3D kmem_cache_create("exfat_inode_cache",
+-					       sizeof(struct exfat_inode_info),
+-					       0,
+-					       (SLAB_RECLAIM_ACCOUNT |
+-						SLAB_MEM_SPREAD),
+-					       init_once);
+-	if (!exfat_inode_cachep)
+-		return -ENOMEM;
+-	return 0;
+-}
+-
+-static void __exit exfat_destroy_inodecache(void)
+-{
+-	/*
+-	 * Make sure all delayed rcu free inodes are flushed before we
+-	 * destroy cache.
+-	 */
+-	rcu_barrier();
+-	kmem_cache_destroy(exfat_inode_cachep);
+-}
+-
+-#ifdef CONFIG_STAGING_EXFAT_KERNEL_DEBUG
+-static void exfat_debug_kill_sb(struct super_block *sb)
+-{
+-	struct exfat_sb_info *sbi =3D EXFAT_SB(sb);
+-	struct block_device *bdev =3D sb->s_bdev;
+-	struct fs_info_t *p_fs =3D &(EXFAT_SB(sb)->fs_info);
+-
+-	long flags;
+-
+-	if (sbi) {
+-		flags =3D sbi->debug_flags;
+-
+-		if (flags & EXFAT_DEBUGFLAGS_INVALID_UMOUNT) {
+-			/*
+-			 * invalidate_bdev drops all device cache include
+-			 * dirty. We use this to simulate device removal.
+-			 */
+-			mutex_lock(&p_fs->v_mutex);
+-			exfat_fat_release_all(sb);
+-			exfat_buf_release_all(sb);
+-			mutex_unlock(&p_fs->v_mutex);
+-
+-			invalidate_bdev(bdev);
+-		}
+-	}
+-
+-	kill_block_super(sb);
+-}
+-#endif /* CONFIG_STAGING_EXFAT_KERNEL_DEBUG */
+-
+-static struct file_system_type exfat_fs_type =3D {
+-	.owner       =3D THIS_MODULE,
+-	.name        =3D "exfat",
+-	.mount       =3D exfat_fs_mount,
+-#ifdef CONFIG_STAGING_EXFAT_KERNEL_DEBUG
+-	.kill_sb    =3D exfat_debug_kill_sb,
+-#else
+-	.kill_sb    =3D kill_block_super,
+-#endif /* CONFIG_STAGING_EXFAT_KERNEL_DEBUG */
+-	.fs_flags    =3D FS_REQUIRES_DEV,
+-};
+-
+-static int __init init_exfat(void)
+-{
+-	int err;
+-
+-	BUILD_BUG_ON(sizeof(struct dentry_t) !=3D DENTRY_SIZE);
+-	BUILD_BUG_ON(sizeof(struct file_dentry_t) !=3D DENTRY_SIZE);
+-	BUILD_BUG_ON(sizeof(struct strm_dentry_t) !=3D DENTRY_SIZE);
+-	BUILD_BUG_ON(sizeof(struct name_dentry_t) !=3D DENTRY_SIZE);
+-	BUILD_BUG_ON(sizeof(struct bmap_dentry_t) !=3D DENTRY_SIZE);
+-	BUILD_BUG_ON(sizeof(struct case_dentry_t) !=3D DENTRY_SIZE);
+-	BUILD_BUG_ON(sizeof(struct volm_dentry_t) !=3D DENTRY_SIZE);
+-
+-	pr_info("exFAT: Version %s\n", EXFAT_VERSION);
+-
+-	err =3D exfat_init_inodecache();
+-	if (err)
+-		return err;
+-
+-	err =3D register_filesystem(&exfat_fs_type);
+-	if (err)
+-		return err;
+-
+-	return 0;
+-}
+-
+-static void __exit exit_exfat(void)
+-{
+-	exfat_destroy_inodecache();
+-	unregister_filesystem(&exfat_fs_type);
+-}
+-
+-module_init(init_exfat);
+-module_exit(exit_exfat);
+-
+-MODULE_LICENSE("GPL");
+-MODULE_DESCRIPTION("exFAT Filesystem Driver");
+-MODULE_ALIAS_FS("exfat");
+diff --git a/drivers/staging/exfat/exfat_upcase.c b/drivers/staging/exfat/e=
+xfat_upcase.c
+deleted file mode 100644
+index b91a1faa0e50..000000000000
+--- a/drivers/staging/exfat/exfat_upcase.c
++++ /dev/null
+@@ -1,740 +0,0 @@
+-// SPDX-License-Identifier: GPL-2.0-or-later
+-/*
+- *  Copyright (C) 2012-2013 Samsung Electronics Co., Ltd.
+- */
+-
+-#include <linux/types.h>
+-#include "exfat.h"
+-
+-const u8 uni_upcase[NUM_UPCASE << 1] =3D {
+-	0x00, 0x00, 0x01, 0x00, 0x02, 0x00, 0x03, 0x00,
+-	0x04, 0x00, 0x05, 0x00, 0x06, 0x00, 0x07, 0x00,
+-	0x08, 0x00, 0x09, 0x00, 0x0A, 0x00, 0x0B, 0x00,
+-	0x0C, 0x00, 0x0D, 0x00, 0x0E, 0x00, 0x0F, 0x00,
+-	0x10, 0x00, 0x11, 0x00, 0x12, 0x00, 0x13, 0x00,
+-	0x14, 0x00, 0x15, 0x00, 0x16, 0x00, 0x17, 0x00,
+-	0x18, 0x00, 0x19, 0x00, 0x1A, 0x00, 0x1B, 0x00,
+-	0x1C, 0x00, 0x1D, 0x00, 0x1E, 0x00, 0x1F, 0x00,
+-	0x20, 0x00, 0x21, 0x00, 0x22, 0x00, 0x23, 0x00,
+-	0x24, 0x00, 0x25, 0x00, 0x26, 0x00, 0x27, 0x00,
+-	0x28, 0x00, 0x29, 0x00, 0x2A, 0x00, 0x2B, 0x00,
+-	0x2C, 0x00, 0x2D, 0x00, 0x2E, 0x00, 0x2F, 0x00,
+-	0x30, 0x00, 0x31, 0x00, 0x32, 0x00, 0x33, 0x00,
+-	0x34, 0x00, 0x35, 0x00, 0x36, 0x00, 0x37, 0x00,
+-	0x38, 0x00, 0x39, 0x00, 0x3A, 0x00, 0x3B, 0x00,
+-	0x3C, 0x00, 0x3D, 0x00, 0x3E, 0x00, 0x3F, 0x00,
+-	0x40, 0x00, 0x41, 0x00, 0x42, 0x00, 0x43, 0x00,
+-	0x44, 0x00, 0x45, 0x00, 0x46, 0x00, 0x47, 0x00,
+-	0x48, 0x00, 0x49, 0x00, 0x4A, 0x00, 0x4B, 0x00,
+-	0x4C, 0x00, 0x4D, 0x00, 0x4E, 0x00, 0x4F, 0x00,
+-	0x50, 0x00, 0x51, 0x00, 0x52, 0x00, 0x53, 0x00,
+-	0x54, 0x00, 0x55, 0x00, 0x56, 0x00, 0x57, 0x00,
+-	0x58, 0x00, 0x59, 0x00, 0x5A, 0x00, 0x5B, 0x00,
+-	0x5C, 0x00, 0x5D, 0x00, 0x5E, 0x00, 0x5F, 0x00,
+-	0x60, 0x00, 0x41, 0x00, 0x42, 0x00, 0x43, 0x00,
+-	0x44, 0x00, 0x45, 0x00, 0x46, 0x00, 0x47, 0x00,
+-	0x48, 0x00, 0x49, 0x00, 0x4A, 0x00, 0x4B, 0x00,
+-	0x4C, 0x00, 0x4D, 0x00, 0x4E, 0x00, 0x4F, 0x00,
+-	0x50, 0x00, 0x51, 0x00, 0x52, 0x00, 0x53, 0x00,
+-	0x54, 0x00, 0x55, 0x00, 0x56, 0x00, 0x57, 0x00,
+-	0x58, 0x00, 0x59, 0x00, 0x5A, 0x00, 0x7B, 0x00,
+-	0x7C, 0x00, 0x7D, 0x00, 0x7E, 0x00, 0x7F, 0x00,
+-	0x80, 0x00, 0x81, 0x00, 0x82, 0x00, 0x83, 0x00,
+-	0x84, 0x00, 0x85, 0x00, 0x86, 0x00, 0x87, 0x00,
+-	0x88, 0x00, 0x89, 0x00, 0x8A, 0x00, 0x8B, 0x00,
+-	0x8C, 0x00, 0x8D, 0x00, 0x8E, 0x00, 0x8F, 0x00,
+-	0x90, 0x00, 0x91, 0x00, 0x92, 0x00, 0x93, 0x00,
+-	0x94, 0x00, 0x95, 0x00, 0x96, 0x00, 0x97, 0x00,
+-	0x98, 0x00, 0x99, 0x00, 0x9A, 0x00, 0x9B, 0x00,
+-	0x9C, 0x00, 0x9D, 0x00, 0x9E, 0x00, 0x9F, 0x00,
+-	0xA0, 0x00, 0xA1, 0x00, 0xA2, 0x00, 0xA3, 0x00,
+-	0xA4, 0x00, 0xA5, 0x00, 0xA6, 0x00, 0xA7, 0x00,
+-	0xA8, 0x00, 0xA9, 0x00, 0xAA, 0x00, 0xAB, 0x00,
+-	0xAC, 0x00, 0xAD, 0x00, 0xAE, 0x00, 0xAF, 0x00,
+-	0xB0, 0x00, 0xB1, 0x00, 0xB2, 0x00, 0xB3, 0x00,
+-	0xB4, 0x00, 0xB5, 0x00, 0xB6, 0x00, 0xB7, 0x00,
+-	0xB8, 0x00, 0xB9, 0x00, 0xBA, 0x00, 0xBB, 0x00,
+-	0xBC, 0x00, 0xBD, 0x00, 0xBE, 0x00, 0xBF, 0x00,
+-	0xC0, 0x00, 0xC1, 0x00, 0xC2, 0x00, 0xC3, 0x00,
+-	0xC4, 0x00, 0xC5, 0x00, 0xC6, 0x00, 0xC7, 0x00,
+-	0xC8, 0x00, 0xC9, 0x00, 0xCA, 0x00, 0xCB, 0x00,
+-	0xCC, 0x00, 0xCD, 0x00, 0xCE, 0x00, 0xCF, 0x00,
+-	0xD0, 0x00, 0xD1, 0x00, 0xD2, 0x00, 0xD3, 0x00,
+-	0xD4, 0x00, 0xD5, 0x00, 0xD6, 0x00, 0xD7, 0x00,
+-	0xD8, 0x00, 0xD9, 0x00, 0xDA, 0x00, 0xDB, 0x00,
+-	0xDC, 0x00, 0xDD, 0x00, 0xDE, 0x00, 0xDF, 0x00,
+-	0xC0, 0x00, 0xC1, 0x00, 0xC2, 0x00, 0xC3, 0x00,
+-	0xC4, 0x00, 0xC5, 0x00, 0xC6, 0x00, 0xC7, 0x00,
+-	0xC8, 0x00, 0xC9, 0x00, 0xCA, 0x00, 0xCB, 0x00,
+-	0xCC, 0x00, 0xCD, 0x00, 0xCE, 0x00, 0xCF, 0x00,
+-	0xD0, 0x00, 0xD1, 0x00, 0xD2, 0x00, 0xD3, 0x00,
+-	0xD4, 0x00, 0xD5, 0x00, 0xD6, 0x00, 0xF7, 0x00,
+-	0xD8, 0x00, 0xD9, 0x00, 0xDA, 0x00, 0xDB, 0x00,
+-	0xDC, 0x00, 0xDD, 0x00, 0xDE, 0x00, 0x78, 0x01,
+-	0x00, 0x01, 0x00, 0x01, 0x02, 0x01, 0x02, 0x01,
+-	0x04, 0x01, 0x04, 0x01, 0x06, 0x01, 0x06, 0x01,
+-	0x08, 0x01, 0x08, 0x01, 0x0A, 0x01, 0x0A, 0x01,
+-	0x0C, 0x01, 0x0C, 0x01, 0x0E, 0x01, 0x0E, 0x01,
+-	0x10, 0x01, 0x10, 0x01, 0x12, 0x01, 0x12, 0x01,
+-	0x14, 0x01, 0x14, 0x01, 0x16, 0x01, 0x16, 0x01,
+-	0x18, 0x01, 0x18, 0x01, 0x1A, 0x01, 0x1A, 0x01,
+-	0x1C, 0x01, 0x1C, 0x01, 0x1E, 0x01, 0x1E, 0x01,
+-	0x20, 0x01, 0x20, 0x01, 0x22, 0x01, 0x22, 0x01,
+-	0x24, 0x01, 0x24, 0x01, 0x26, 0x01, 0x26, 0x01,
+-	0x28, 0x01, 0x28, 0x01, 0x2A, 0x01, 0x2A, 0x01,
+-	0x2C, 0x01, 0x2C, 0x01, 0x2E, 0x01, 0x2E, 0x01,
+-	0x30, 0x01, 0x31, 0x01, 0x32, 0x01, 0x32, 0x01,
+-	0x34, 0x01, 0x34, 0x01, 0x36, 0x01, 0x36, 0x01,
+-	0x38, 0x01, 0x39, 0x01, 0x39, 0x01, 0x3B, 0x01,
+-	0x3B, 0x01, 0x3D, 0x01, 0x3D, 0x01, 0x3F, 0x01,
+-	0x3F, 0x01, 0x41, 0x01, 0x41, 0x01, 0x43, 0x01,
+-	0x43, 0x01, 0x45, 0x01, 0x45, 0x01, 0x47, 0x01,
+-	0x47, 0x01, 0x49, 0x01, 0x4A, 0x01, 0x4A, 0x01,
+-	0x4C, 0x01, 0x4C, 0x01, 0x4E, 0x01, 0x4E, 0x01,
+-	0x50, 0x01, 0x50, 0x01, 0x52, 0x01, 0x52, 0x01,
+-	0x54, 0x01, 0x54, 0x01, 0x56, 0x01, 0x56, 0x01,
+-	0x58, 0x01, 0x58, 0x01, 0x5A, 0x01, 0x5A, 0x01,
+-	0x5C, 0x01, 0x5C, 0x01, 0x5E, 0x01, 0x5E, 0x01,
+-	0x60, 0x01, 0x60, 0x01, 0x62, 0x01, 0x62, 0x01,
+-	0x64, 0x01, 0x64, 0x01, 0x66, 0x01, 0x66, 0x01,
+-	0x68, 0x01, 0x68, 0x01, 0x6A, 0x01, 0x6A, 0x01,
+-	0x6C, 0x01, 0x6C, 0x01, 0x6E, 0x01, 0x6E, 0x01,
+-	0x70, 0x01, 0x70, 0x01, 0x72, 0x01, 0x72, 0x01,
+-	0x74, 0x01, 0x74, 0x01, 0x76, 0x01, 0x76, 0x01,
+-	0x78, 0x01, 0x79, 0x01, 0x79, 0x01, 0x7B, 0x01,
+-	0x7B, 0x01, 0x7D, 0x01, 0x7D, 0x01, 0x7F, 0x01,
+-	0x43, 0x02, 0x81, 0x01, 0x82, 0x01, 0x82, 0x01,
+-	0x84, 0x01, 0x84, 0x01, 0x86, 0x01, 0x87, 0x01,
+-	0x87, 0x01, 0x89, 0x01, 0x8A, 0x01, 0x8B, 0x01,
+-	0x8B, 0x01, 0x8D, 0x01, 0x8E, 0x01, 0x8F, 0x01,
+-	0x90, 0x01, 0x91, 0x01, 0x91, 0x01, 0x93, 0x01,
+-	0x94, 0x01, 0xF6, 0x01, 0x96, 0x01, 0x97, 0x01,
+-	0x98, 0x01, 0x98, 0x01, 0x3D, 0x02, 0x9B, 0x01,
+-	0x9C, 0x01, 0x9D, 0x01, 0x20, 0x02, 0x9F, 0x01,
+-	0xA0, 0x01, 0xA0, 0x01, 0xA2, 0x01, 0xA2, 0x01,
+-	0xA4, 0x01, 0xA4, 0x01, 0xA6, 0x01, 0xA7, 0x01,
+-	0xA7, 0x01, 0xA9, 0x01, 0xAA, 0x01, 0xAB, 0x01,
+-	0xAC, 0x01, 0xAC, 0x01, 0xAE, 0x01, 0xAF, 0x01,
+-	0xAF, 0x01, 0xB1, 0x01, 0xB2, 0x01, 0xB3, 0x01,
+-	0xB3, 0x01, 0xB5, 0x01, 0xB5, 0x01, 0xB7, 0x01,
+-	0xB8, 0x01, 0xB8, 0x01, 0xBA, 0x01, 0xBB, 0x01,
+-	0xBC, 0x01, 0xBC, 0x01, 0xBE, 0x01, 0xF7, 0x01,
+-	0xC0, 0x01, 0xC1, 0x01, 0xC2, 0x01, 0xC3, 0x01,
+-	0xC4, 0x01, 0xC5, 0x01, 0xC4, 0x01, 0xC7, 0x01,
+-	0xC8, 0x01, 0xC7, 0x01, 0xCA, 0x01, 0xCB, 0x01,
+-	0xCA, 0x01, 0xCD, 0x01, 0xCD, 0x01, 0xCF, 0x01,
+-	0xCF, 0x01, 0xD1, 0x01, 0xD1, 0x01, 0xD3, 0x01,
+-	0xD3, 0x01, 0xD5, 0x01, 0xD5, 0x01, 0xD7, 0x01,
+-	0xD7, 0x01, 0xD9, 0x01, 0xD9, 0x01, 0xDB, 0x01,
+-	0xDB, 0x01, 0x8E, 0x01, 0xDE, 0x01, 0xDE, 0x01,
+-	0xE0, 0x01, 0xE0, 0x01, 0xE2, 0x01, 0xE2, 0x01,
+-	0xE4, 0x01, 0xE4, 0x01, 0xE6, 0x01, 0xE6, 0x01,
+-	0xE8, 0x01, 0xE8, 0x01, 0xEA, 0x01, 0xEA, 0x01,
+-	0xEC, 0x01, 0xEC, 0x01, 0xEE, 0x01, 0xEE, 0x01,
+-	0xF0, 0x01, 0xF1, 0x01, 0xF2, 0x01, 0xF1, 0x01,
+-	0xF4, 0x01, 0xF4, 0x01, 0xF6, 0x01, 0xF7, 0x01,
+-	0xF8, 0x01, 0xF8, 0x01, 0xFA, 0x01, 0xFA, 0x01,
+-	0xFC, 0x01, 0xFC, 0x01, 0xFE, 0x01, 0xFE, 0x01,
+-	0x00, 0x02, 0x00, 0x02, 0x02, 0x02, 0x02, 0x02,
+-	0x04, 0x02, 0x04, 0x02, 0x06, 0x02, 0x06, 0x02,
+-	0x08, 0x02, 0x08, 0x02, 0x0A, 0x02, 0x0A, 0x02,
+-	0x0C, 0x02, 0x0C, 0x02, 0x0E, 0x02, 0x0E, 0x02,
+-	0x10, 0x02, 0x10, 0x02, 0x12, 0x02, 0x12, 0x02,
+-	0x14, 0x02, 0x14, 0x02, 0x16, 0x02, 0x16, 0x02,
+-	0x18, 0x02, 0x18, 0x02, 0x1A, 0x02, 0x1A, 0x02,
+-	0x1C, 0x02, 0x1C, 0x02, 0x1E, 0x02, 0x1E, 0x02,
+-	0x20, 0x02, 0x21, 0x02, 0x22, 0x02, 0x22, 0x02,
+-	0x24, 0x02, 0x24, 0x02, 0x26, 0x02, 0x26, 0x02,
+-	0x28, 0x02, 0x28, 0x02, 0x2A, 0x02, 0x2A, 0x02,
+-	0x2C, 0x02, 0x2C, 0x02, 0x2E, 0x02, 0x2E, 0x02,
+-	0x30, 0x02, 0x30, 0x02, 0x32, 0x02, 0x32, 0x02,
+-	0x34, 0x02, 0x35, 0x02, 0x36, 0x02, 0x37, 0x02,
+-	0x38, 0x02, 0x39, 0x02, 0x65, 0x2C, 0x3B, 0x02,
+-	0x3B, 0x02, 0x3D, 0x02, 0x66, 0x2C, 0x3F, 0x02,
+-	0x40, 0x02, 0x41, 0x02, 0x41, 0x02, 0x43, 0x02,
+-	0x44, 0x02, 0x45, 0x02, 0x46, 0x02, 0x46, 0x02,
+-	0x48, 0x02, 0x48, 0x02, 0x4A, 0x02, 0x4A, 0x02,
+-	0x4C, 0x02, 0x4C, 0x02, 0x4E, 0x02, 0x4E, 0x02,
+-	0x50, 0x02, 0x51, 0x02, 0x52, 0x02, 0x81, 0x01,
+-	0x86, 0x01, 0x55, 0x02, 0x89, 0x01, 0x8A, 0x01,
+-	0x58, 0x02, 0x8F, 0x01, 0x5A, 0x02, 0x90, 0x01,
+-	0x5C, 0x02, 0x5D, 0x02, 0x5E, 0x02, 0x5F, 0x02,
+-	0x93, 0x01, 0x61, 0x02, 0x62, 0x02, 0x94, 0x01,
+-	0x64, 0x02, 0x65, 0x02, 0x66, 0x02, 0x67, 0x02,
+-	0x97, 0x01, 0x96, 0x01, 0x6A, 0x02, 0x62, 0x2C,
+-	0x6C, 0x02, 0x6D, 0x02, 0x6E, 0x02, 0x9C, 0x01,
+-	0x70, 0x02, 0x71, 0x02, 0x9D, 0x01, 0x73, 0x02,
+-	0x74, 0x02, 0x9F, 0x01, 0x76, 0x02, 0x77, 0x02,
+-	0x78, 0x02, 0x79, 0x02, 0x7A, 0x02, 0x7B, 0x02,
+-	0x7C, 0x02, 0x64, 0x2C, 0x7E, 0x02, 0x7F, 0x02,
+-	0xA6, 0x01, 0x81, 0x02, 0x82, 0x02, 0xA9, 0x01,
+-	0x84, 0x02, 0x85, 0x02, 0x86, 0x02, 0x87, 0x02,
+-	0xAE, 0x01, 0x44, 0x02, 0xB1, 0x01, 0xB2, 0x01,
+-	0x45, 0x02, 0x8D, 0x02, 0x8E, 0x02, 0x8F, 0x02,
+-	0x90, 0x02, 0x91, 0x02, 0xB7, 0x01, 0x93, 0x02,
+-	0x94, 0x02, 0x95, 0x02, 0x96, 0x02, 0x97, 0x02,
+-	0x98, 0x02, 0x99, 0x02, 0x9A, 0x02, 0x9B, 0x02,
+-	0x9C, 0x02, 0x9D, 0x02, 0x9E, 0x02, 0x9F, 0x02,
+-	0xA0, 0x02, 0xA1, 0x02, 0xA2, 0x02, 0xA3, 0x02,
+-	0xA4, 0x02, 0xA5, 0x02, 0xA6, 0x02, 0xA7, 0x02,
+-	0xA8, 0x02, 0xA9, 0x02, 0xAA, 0x02, 0xAB, 0x02,
+-	0xAC, 0x02, 0xAD, 0x02, 0xAE, 0x02, 0xAF, 0x02,
+-	0xB0, 0x02, 0xB1, 0x02, 0xB2, 0x02, 0xB3, 0x02,
+-	0xB4, 0x02, 0xB5, 0x02, 0xB6, 0x02, 0xB7, 0x02,
+-	0xB8, 0x02, 0xB9, 0x02, 0xBA, 0x02, 0xBB, 0x02,
+-	0xBC, 0x02, 0xBD, 0x02, 0xBE, 0x02, 0xBF, 0x02,
+-	0xC0, 0x02, 0xC1, 0x02, 0xC2, 0x02, 0xC3, 0x02,
+-	0xC4, 0x02, 0xC5, 0x02, 0xC6, 0x02, 0xC7, 0x02,
+-	0xC8, 0x02, 0xC9, 0x02, 0xCA, 0x02, 0xCB, 0x02,
+-	0xCC, 0x02, 0xCD, 0x02, 0xCE, 0x02, 0xCF, 0x02,
+-	0xD0, 0x02, 0xD1, 0x02, 0xD2, 0x02, 0xD3, 0x02,
+-	0xD4, 0x02, 0xD5, 0x02, 0xD6, 0x02, 0xD7, 0x02,
+-	0xD8, 0x02, 0xD9, 0x02, 0xDA, 0x02, 0xDB, 0x02,
+-	0xDC, 0x02, 0xDD, 0x02, 0xDE, 0x02, 0xDF, 0x02,
+-	0xE0, 0x02, 0xE1, 0x02, 0xE2, 0x02, 0xE3, 0x02,
+-	0xE4, 0x02, 0xE5, 0x02, 0xE6, 0x02, 0xE7, 0x02,
+-	0xE8, 0x02, 0xE9, 0x02, 0xEA, 0x02, 0xEB, 0x02,
+-	0xEC, 0x02, 0xED, 0x02, 0xEE, 0x02, 0xEF, 0x02,
+-	0xF0, 0x02, 0xF1, 0x02, 0xF2, 0x02, 0xF3, 0x02,
+-	0xF4, 0x02, 0xF5, 0x02, 0xF6, 0x02, 0xF7, 0x02,
+-	0xF8, 0x02, 0xF9, 0x02, 0xFA, 0x02, 0xFB, 0x02,
+-	0xFC, 0x02, 0xFD, 0x02, 0xFE, 0x02, 0xFF, 0x02,
+-	0x00, 0x03, 0x01, 0x03, 0x02, 0x03, 0x03, 0x03,
+-	0x04, 0x03, 0x05, 0x03, 0x06, 0x03, 0x07, 0x03,
+-	0x08, 0x03, 0x09, 0x03, 0x0A, 0x03, 0x0B, 0x03,
+-	0x0C, 0x03, 0x0D, 0x03, 0x0E, 0x03, 0x0F, 0x03,
+-	0x10, 0x03, 0x11, 0x03, 0x12, 0x03, 0x13, 0x03,
+-	0x14, 0x03, 0x15, 0x03, 0x16, 0x03, 0x17, 0x03,
+-	0x18, 0x03, 0x19, 0x03, 0x1A, 0x03, 0x1B, 0x03,
+-	0x1C, 0x03, 0x1D, 0x03, 0x1E, 0x03, 0x1F, 0x03,
+-	0x20, 0x03, 0x21, 0x03, 0x22, 0x03, 0x23, 0x03,
+-	0x24, 0x03, 0x25, 0x03, 0x26, 0x03, 0x27, 0x03,
+-	0x28, 0x03, 0x29, 0x03, 0x2A, 0x03, 0x2B, 0x03,
+-	0x2C, 0x03, 0x2D, 0x03, 0x2E, 0x03, 0x2F, 0x03,
+-	0x30, 0x03, 0x31, 0x03, 0x32, 0x03, 0x33, 0x03,
+-	0x34, 0x03, 0x35, 0x03, 0x36, 0x03, 0x37, 0x03,
+-	0x38, 0x03, 0x39, 0x03, 0x3A, 0x03, 0x3B, 0x03,
+-	0x3C, 0x03, 0x3D, 0x03, 0x3E, 0x03, 0x3F, 0x03,
+-	0x40, 0x03, 0x41, 0x03, 0x42, 0x03, 0x43, 0x03,
+-	0x44, 0x03, 0x45, 0x03, 0x46, 0x03, 0x47, 0x03,
+-	0x48, 0x03, 0x49, 0x03, 0x4A, 0x03, 0x4B, 0x03,
+-	0x4C, 0x03, 0x4D, 0x03, 0x4E, 0x03, 0x4F, 0x03,
+-	0x50, 0x03, 0x51, 0x03, 0x52, 0x03, 0x53, 0x03,
+-	0x54, 0x03, 0x55, 0x03, 0x56, 0x03, 0x57, 0x03,
+-	0x58, 0x03, 0x59, 0x03, 0x5A, 0x03, 0x5B, 0x03,
+-	0x5C, 0x03, 0x5D, 0x03, 0x5E, 0x03, 0x5F, 0x03,
+-	0x60, 0x03, 0x61, 0x03, 0x62, 0x03, 0x63, 0x03,
+-	0x64, 0x03, 0x65, 0x03, 0x66, 0x03, 0x67, 0x03,
+-	0x68, 0x03, 0x69, 0x03, 0x6A, 0x03, 0x6B, 0x03,
+-	0x6C, 0x03, 0x6D, 0x03, 0x6E, 0x03, 0x6F, 0x03,
+-	0x70, 0x03, 0x71, 0x03, 0x72, 0x03, 0x73, 0x03,
+-	0x74, 0x03, 0x75, 0x03, 0x76, 0x03, 0x77, 0x03,
+-	0x78, 0x03, 0x79, 0x03, 0x7A, 0x03, 0xFD, 0x03,
+-	0xFE, 0x03, 0xFF, 0x03, 0x7E, 0x03, 0x7F, 0x03,
+-	0x80, 0x03, 0x81, 0x03, 0x82, 0x03, 0x83, 0x03,
+-	0x84, 0x03, 0x85, 0x03, 0x86, 0x03, 0x87, 0x03,
+-	0x88, 0x03, 0x89, 0x03, 0x8A, 0x03, 0x8B, 0x03,
+-	0x8C, 0x03, 0x8D, 0x03, 0x8E, 0x03, 0x8F, 0x03,
+-	0x90, 0x03, 0x91, 0x03, 0x92, 0x03, 0x93, 0x03,
+-	0x94, 0x03, 0x95, 0x03, 0x96, 0x03, 0x97, 0x03,
+-	0x98, 0x03, 0x99, 0x03, 0x9A, 0x03, 0x9B, 0x03,
+-	0x9C, 0x03, 0x9D, 0x03, 0x9E, 0x03, 0x9F, 0x03,
+-	0xA0, 0x03, 0xA1, 0x03, 0xA2, 0x03, 0xA3, 0x03,
+-	0xA4, 0x03, 0xA5, 0x03, 0xA6, 0x03, 0xA7, 0x03,
+-	0xA8, 0x03, 0xA9, 0x03, 0xAA, 0x03, 0xAB, 0x03,
+-	0x86, 0x03, 0x88, 0x03, 0x89, 0x03, 0x8A, 0x03,
+-	0xB0, 0x03, 0x91, 0x03, 0x92, 0x03, 0x93, 0x03,
+-	0x94, 0x03, 0x95, 0x03, 0x96, 0x03, 0x97, 0x03,
+-	0x98, 0x03, 0x99, 0x03, 0x9A, 0x03, 0x9B, 0x03,
+-	0x9C, 0x03, 0x9D, 0x03, 0x9E, 0x03, 0x9F, 0x03,
+-	0xA0, 0x03, 0xA1, 0x03, 0xA3, 0x03, 0xA3, 0x03,
+-	0xA4, 0x03, 0xA5, 0x03, 0xA6, 0x03, 0xA7, 0x03,
+-	0xA8, 0x03, 0xA9, 0x03, 0xAA, 0x03, 0xAB, 0x03,
+-	0x8C, 0x03, 0x8E, 0x03, 0x8F, 0x03, 0xCF, 0x03,
+-	0xD0, 0x03, 0xD1, 0x03, 0xD2, 0x03, 0xD3, 0x03,
+-	0xD4, 0x03, 0xD5, 0x03, 0xD6, 0x03, 0xD7, 0x03,
+-	0xD8, 0x03, 0xD8, 0x03, 0xDA, 0x03, 0xDA, 0x03,
+-	0xDC, 0x03, 0xDC, 0x03, 0xDE, 0x03, 0xDE, 0x03,
+-	0xE0, 0x03, 0xE0, 0x03, 0xE2, 0x03, 0xE2, 0x03,
+-	0xE4, 0x03, 0xE4, 0x03, 0xE6, 0x03, 0xE6, 0x03,
+-	0xE8, 0x03, 0xE8, 0x03, 0xEA, 0x03, 0xEA, 0x03,
+-	0xEC, 0x03, 0xEC, 0x03, 0xEE, 0x03, 0xEE, 0x03,
+-	0xF0, 0x03, 0xF1, 0x03, 0xF9, 0x03, 0xF3, 0x03,
+-	0xF4, 0x03, 0xF5, 0x03, 0xF6, 0x03, 0xF7, 0x03,
+-	0xF7, 0x03, 0xF9, 0x03, 0xFA, 0x03, 0xFA, 0x03,
+-	0xFC, 0x03, 0xFD, 0x03, 0xFE, 0x03, 0xFF, 0x03,
+-	0x00, 0x04, 0x01, 0x04, 0x02, 0x04, 0x03, 0x04,
+-	0x04, 0x04, 0x05, 0x04, 0x06, 0x04, 0x07, 0x04,
+-	0x08, 0x04, 0x09, 0x04, 0x0A, 0x04, 0x0B, 0x04,
+-	0x0C, 0x04, 0x0D, 0x04, 0x0E, 0x04, 0x0F, 0x04,
+-	0x10, 0x04, 0x11, 0x04, 0x12, 0x04, 0x13, 0x04,
+-	0x14, 0x04, 0x15, 0x04, 0x16, 0x04, 0x17, 0x04,
+-	0x18, 0x04, 0x19, 0x04, 0x1A, 0x04, 0x1B, 0x04,
+-	0x1C, 0x04, 0x1D, 0x04, 0x1E, 0x04, 0x1F, 0x04,
+-	0x20, 0x04, 0x21, 0x04, 0x22, 0x04, 0x23, 0x04,
+-	0x24, 0x04, 0x25, 0x04, 0x26, 0x04, 0x27, 0x04,
+-	0x28, 0x04, 0x29, 0x04, 0x2A, 0x04, 0x2B, 0x04,
+-	0x2C, 0x04, 0x2D, 0x04, 0x2E, 0x04, 0x2F, 0x04,
+-	0x10, 0x04, 0x11, 0x04, 0x12, 0x04, 0x13, 0x04,
+-	0x14, 0x04, 0x15, 0x04, 0x16, 0x04, 0x17, 0x04,
+-	0x18, 0x04, 0x19, 0x04, 0x1A, 0x04, 0x1B, 0x04,
+-	0x1C, 0x04, 0x1D, 0x04, 0x1E, 0x04, 0x1F, 0x04,
+-	0x20, 0x04, 0x21, 0x04, 0x22, 0x04, 0x23, 0x04,
+-	0x24, 0x04, 0x25, 0x04, 0x26, 0x04, 0x27, 0x04,
+-	0x28, 0x04, 0x29, 0x04, 0x2A, 0x04, 0x2B, 0x04,
+-	0x2C, 0x04, 0x2D, 0x04, 0x2E, 0x04, 0x2F, 0x04,
+-	0x00, 0x04, 0x01, 0x04, 0x02, 0x04, 0x03, 0x04,
+-	0x04, 0x04, 0x05, 0x04, 0x06, 0x04, 0x07, 0x04,
+-	0x08, 0x04, 0x09, 0x04, 0x0A, 0x04, 0x0B, 0x04,
+-	0x0C, 0x04, 0x0D, 0x04, 0x0E, 0x04, 0x0F, 0x04,
+-	0x60, 0x04, 0x60, 0x04, 0x62, 0x04, 0x62, 0x04,
+-	0x64, 0x04, 0x64, 0x04, 0x66, 0x04, 0x66, 0x04,
+-	0x68, 0x04, 0x68, 0x04, 0x6A, 0x04, 0x6A, 0x04,
+-	0x6C, 0x04, 0x6C, 0x04, 0x6E, 0x04, 0x6E, 0x04,
+-	0x70, 0x04, 0x70, 0x04, 0x72, 0x04, 0x72, 0x04,
+-	0x74, 0x04, 0x74, 0x04, 0x76, 0x04, 0x76, 0x04,
+-	0x78, 0x04, 0x78, 0x04, 0x7A, 0x04, 0x7A, 0x04,
+-	0x7C, 0x04, 0x7C, 0x04, 0x7E, 0x04, 0x7E, 0x04,
+-	0x80, 0x04, 0x80, 0x04, 0x82, 0x04, 0x83, 0x04,
+-	0x84, 0x04, 0x85, 0x04, 0x86, 0x04, 0x87, 0x04,
+-	0x88, 0x04, 0x89, 0x04, 0x8A, 0x04, 0x8A, 0x04,
+-	0x8C, 0x04, 0x8C, 0x04, 0x8E, 0x04, 0x8E, 0x04,
+-	0x90, 0x04, 0x90, 0x04, 0x92, 0x04, 0x92, 0x04,
+-	0x94, 0x04, 0x94, 0x04, 0x96, 0x04, 0x96, 0x04,
+-	0x98, 0x04, 0x98, 0x04, 0x9A, 0x04, 0x9A, 0x04,
+-	0x9C, 0x04, 0x9C, 0x04, 0x9E, 0x04, 0x9E, 0x04,
+-	0xA0, 0x04, 0xA0, 0x04, 0xA2, 0x04, 0xA2, 0x04,
+-	0xA4, 0x04, 0xA4, 0x04, 0xA6, 0x04, 0xA6, 0x04,
+-	0xA8, 0x04, 0xA8, 0x04, 0xAA, 0x04, 0xAA, 0x04,
+-	0xAC, 0x04, 0xAC, 0x04, 0xAE, 0x04, 0xAE, 0x04,
+-	0xB0, 0x04, 0xB0, 0x04, 0xB2, 0x04, 0xB2, 0x04,
+-	0xB4, 0x04, 0xB4, 0x04, 0xB6, 0x04, 0xB6, 0x04,
+-	0xB8, 0x04, 0xB8, 0x04, 0xBA, 0x04, 0xBA, 0x04,
+-	0xBC, 0x04, 0xBC, 0x04, 0xBE, 0x04, 0xBE, 0x04,
+-	0xC0, 0x04, 0xC1, 0x04, 0xC1, 0x04, 0xC3, 0x04,
+-	0xC3, 0x04, 0xC5, 0x04, 0xC5, 0x04, 0xC7, 0x04,
+-	0xC7, 0x04, 0xC9, 0x04, 0xC9, 0x04, 0xCB, 0x04,
+-	0xCB, 0x04, 0xCD, 0x04, 0xCD, 0x04, 0xC0, 0x04,
+-	0xD0, 0x04, 0xD0, 0x04, 0xD2, 0x04, 0xD2, 0x04,
+-	0xD4, 0x04, 0xD4, 0x04, 0xD6, 0x04, 0xD6, 0x04,
+-	0xD8, 0x04, 0xD8, 0x04, 0xDA, 0x04, 0xDA, 0x04,
+-	0xDC, 0x04, 0xDC, 0x04, 0xDE, 0x04, 0xDE, 0x04,
+-	0xE0, 0x04, 0xE0, 0x04, 0xE2, 0x04, 0xE2, 0x04,
+-	0xE4, 0x04, 0xE4, 0x04, 0xE6, 0x04, 0xE6, 0x04,
+-	0xE8, 0x04, 0xE8, 0x04, 0xEA, 0x04, 0xEA, 0x04,
+-	0xEC, 0x04, 0xEC, 0x04, 0xEE, 0x04, 0xEE, 0x04,
+-	0xF0, 0x04, 0xF0, 0x04, 0xF2, 0x04, 0xF2, 0x04,
+-	0xF4, 0x04, 0xF4, 0x04, 0xF6, 0x04, 0xF6, 0x04,
+-	0xF8, 0x04, 0xF8, 0x04, 0xFA, 0x04, 0xFA, 0x04,
+-	0xFC, 0x04, 0xFC, 0x04, 0xFE, 0x04, 0xFE, 0x04,
+-	0x00, 0x05, 0x00, 0x05, 0x02, 0x05, 0x02, 0x05,
+-	0x04, 0x05, 0x04, 0x05, 0x06, 0x05, 0x06, 0x05,
+-	0x08, 0x05, 0x08, 0x05, 0x0A, 0x05, 0x0A, 0x05,
+-	0x0C, 0x05, 0x0C, 0x05, 0x0E, 0x05, 0x0E, 0x05,
+-	0x10, 0x05, 0x10, 0x05, 0x12, 0x05, 0x12, 0x05,
+-	0x14, 0x05, 0x15, 0x05, 0x16, 0x05, 0x17, 0x05,
+-	0x18, 0x05, 0x19, 0x05, 0x1A, 0x05, 0x1B, 0x05,
+-	0x1C, 0x05, 0x1D, 0x05, 0x1E, 0x05, 0x1F, 0x05,
+-	0x20, 0x05, 0x21, 0x05, 0x22, 0x05, 0x23, 0x05,
+-	0x24, 0x05, 0x25, 0x05, 0x26, 0x05, 0x27, 0x05,
+-	0x28, 0x05, 0x29, 0x05, 0x2A, 0x05, 0x2B, 0x05,
+-	0x2C, 0x05, 0x2D, 0x05, 0x2E, 0x05, 0x2F, 0x05,
+-	0x30, 0x05, 0x31, 0x05, 0x32, 0x05, 0x33, 0x05,
+-	0x34, 0x05, 0x35, 0x05, 0x36, 0x05, 0x37, 0x05,
+-	0x38, 0x05, 0x39, 0x05, 0x3A, 0x05, 0x3B, 0x05,
+-	0x3C, 0x05, 0x3D, 0x05, 0x3E, 0x05, 0x3F, 0x05,
+-	0x40, 0x05, 0x41, 0x05, 0x42, 0x05, 0x43, 0x05,
+-	0x44, 0x05, 0x45, 0x05, 0x46, 0x05, 0x47, 0x05,
+-	0x48, 0x05, 0x49, 0x05, 0x4A, 0x05, 0x4B, 0x05,
+-	0x4C, 0x05, 0x4D, 0x05, 0x4E, 0x05, 0x4F, 0x05,
+-	0x50, 0x05, 0x51, 0x05, 0x52, 0x05, 0x53, 0x05,
+-	0x54, 0x05, 0x55, 0x05, 0x56, 0x05, 0x57, 0x05,
+-	0x58, 0x05, 0x59, 0x05, 0x5A, 0x05, 0x5B, 0x05,
+-	0x5C, 0x05, 0x5D, 0x05, 0x5E, 0x05, 0x5F, 0x05,
+-	0x60, 0x05, 0x31, 0x05, 0x32, 0x05, 0x33, 0x05,
+-	0x34, 0x05, 0x35, 0x05, 0x36, 0x05, 0x37, 0x05,
+-	0x38, 0x05, 0x39, 0x05, 0x3A, 0x05, 0x3B, 0x05,
+-	0x3C, 0x05, 0x3D, 0x05, 0x3E, 0x05, 0x3F, 0x05,
+-	0x40, 0x05, 0x41, 0x05, 0x42, 0x05, 0x43, 0x05,
+-	0x44, 0x05, 0x45, 0x05, 0x46, 0x05, 0x47, 0x05,
+-	0x48, 0x05, 0x49, 0x05, 0x4A, 0x05, 0x4B, 0x05,
+-	0x4C, 0x05, 0x4D, 0x05, 0x4E, 0x05, 0x4F, 0x05,
+-	0x50, 0x05, 0x51, 0x05, 0x52, 0x05, 0x53, 0x05,
+-	0x54, 0x05, 0x55, 0x05, 0x56, 0x05, 0xFF, 0xFF,
+-	0xF6, 0x17, 0x63, 0x2C, 0x7E, 0x1D, 0x7F, 0x1D,
+-	0x80, 0x1D, 0x81, 0x1D, 0x82, 0x1D, 0x83, 0x1D,
+-	0x84, 0x1D, 0x85, 0x1D, 0x86, 0x1D, 0x87, 0x1D,
+-	0x88, 0x1D, 0x89, 0x1D, 0x8A, 0x1D, 0x8B, 0x1D,
+-	0x8C, 0x1D, 0x8D, 0x1D, 0x8E, 0x1D, 0x8F, 0x1D,
+-	0x90, 0x1D, 0x91, 0x1D, 0x92, 0x1D, 0x93, 0x1D,
+-	0x94, 0x1D, 0x95, 0x1D, 0x96, 0x1D, 0x97, 0x1D,
+-	0x98, 0x1D, 0x99, 0x1D, 0x9A, 0x1D, 0x9B, 0x1D,
+-	0x9C, 0x1D, 0x9D, 0x1D, 0x9E, 0x1D, 0x9F, 0x1D,
+-	0xA0, 0x1D, 0xA1, 0x1D, 0xA2, 0x1D, 0xA3, 0x1D,
+-	0xA4, 0x1D, 0xA5, 0x1D, 0xA6, 0x1D, 0xA7, 0x1D,
+-	0xA8, 0x1D, 0xA9, 0x1D, 0xAA, 0x1D, 0xAB, 0x1D,
+-	0xAC, 0x1D, 0xAD, 0x1D, 0xAE, 0x1D, 0xAF, 0x1D,
+-	0xB0, 0x1D, 0xB1, 0x1D, 0xB2, 0x1D, 0xB3, 0x1D,
+-	0xB4, 0x1D, 0xB5, 0x1D, 0xB6, 0x1D, 0xB7, 0x1D,
+-	0xB8, 0x1D, 0xB9, 0x1D, 0xBA, 0x1D, 0xBB, 0x1D,
+-	0xBC, 0x1D, 0xBD, 0x1D, 0xBE, 0x1D, 0xBF, 0x1D,
+-	0xC0, 0x1D, 0xC1, 0x1D, 0xC2, 0x1D, 0xC3, 0x1D,
+-	0xC4, 0x1D, 0xC5, 0x1D, 0xC6, 0x1D, 0xC7, 0x1D,
+-	0xC8, 0x1D, 0xC9, 0x1D, 0xCA, 0x1D, 0xCB, 0x1D,
+-	0xCC, 0x1D, 0xCD, 0x1D, 0xCE, 0x1D, 0xCF, 0x1D,
+-	0xD0, 0x1D, 0xD1, 0x1D, 0xD2, 0x1D, 0xD3, 0x1D,
+-	0xD4, 0x1D, 0xD5, 0x1D, 0xD6, 0x1D, 0xD7, 0x1D,
+-	0xD8, 0x1D, 0xD9, 0x1D, 0xDA, 0x1D, 0xDB, 0x1D,
+-	0xDC, 0x1D, 0xDD, 0x1D, 0xDE, 0x1D, 0xDF, 0x1D,
+-	0xE0, 0x1D, 0xE1, 0x1D, 0xE2, 0x1D, 0xE3, 0x1D,
+-	0xE4, 0x1D, 0xE5, 0x1D, 0xE6, 0x1D, 0xE7, 0x1D,
+-	0xE8, 0x1D, 0xE9, 0x1D, 0xEA, 0x1D, 0xEB, 0x1D,
+-	0xEC, 0x1D, 0xED, 0x1D, 0xEE, 0x1D, 0xEF, 0x1D,
+-	0xF0, 0x1D, 0xF1, 0x1D, 0xF2, 0x1D, 0xF3, 0x1D,
+-	0xF4, 0x1D, 0xF5, 0x1D, 0xF6, 0x1D, 0xF7, 0x1D,
+-	0xF8, 0x1D, 0xF9, 0x1D, 0xFA, 0x1D, 0xFB, 0x1D,
+-	0xFC, 0x1D, 0xFD, 0x1D, 0xFE, 0x1D, 0xFF, 0x1D,
+-	0x00, 0x1E, 0x00, 0x1E, 0x02, 0x1E, 0x02, 0x1E,
+-	0x04, 0x1E, 0x04, 0x1E, 0x06, 0x1E, 0x06, 0x1E,
+-	0x08, 0x1E, 0x08, 0x1E, 0x0A, 0x1E, 0x0A, 0x1E,
+-	0x0C, 0x1E, 0x0C, 0x1E, 0x0E, 0x1E, 0x0E, 0x1E,
+-	0x10, 0x1E, 0x10, 0x1E, 0x12, 0x1E, 0x12, 0x1E,
+-	0x14, 0x1E, 0x14, 0x1E, 0x16, 0x1E, 0x16, 0x1E,
+-	0x18, 0x1E, 0x18, 0x1E, 0x1A, 0x1E, 0x1A, 0x1E,
+-	0x1C, 0x1E, 0x1C, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E,
+-	0x20, 0x1E, 0x20, 0x1E, 0x22, 0x1E, 0x22, 0x1E,
+-	0x24, 0x1E, 0x24, 0x1E, 0x26, 0x1E, 0x26, 0x1E,
+-	0x28, 0x1E, 0x28, 0x1E, 0x2A, 0x1E, 0x2A, 0x1E,
+-	0x2C, 0x1E, 0x2C, 0x1E, 0x2E, 0x1E, 0x2E, 0x1E,
+-	0x30, 0x1E, 0x30, 0x1E, 0x32, 0x1E, 0x32, 0x1E,
+-	0x34, 0x1E, 0x34, 0x1E, 0x36, 0x1E, 0x36, 0x1E,
+-	0x38, 0x1E, 0x38, 0x1E, 0x3A, 0x1E, 0x3A, 0x1E,
+-	0x3C, 0x1E, 0x3C, 0x1E, 0x3E, 0x1E, 0x3E, 0x1E,
+-	0x40, 0x1E, 0x40, 0x1E, 0x42, 0x1E, 0x42, 0x1E,
+-	0x44, 0x1E, 0x44, 0x1E, 0x46, 0x1E, 0x46, 0x1E,
+-	0x48, 0x1E, 0x48, 0x1E, 0x4A, 0x1E, 0x4A, 0x1E,
+-	0x4C, 0x1E, 0x4C, 0x1E, 0x4E, 0x1E, 0x4E, 0x1E,
+-	0x50, 0x1E, 0x50, 0x1E, 0x52, 0x1E, 0x52, 0x1E,
+-	0x54, 0x1E, 0x54, 0x1E, 0x56, 0x1E, 0x56, 0x1E,
+-	0x58, 0x1E, 0x58, 0x1E, 0x5A, 0x1E, 0x5A, 0x1E,
+-	0x5C, 0x1E, 0x5C, 0x1E, 0x5E, 0x1E, 0x5E, 0x1E,
+-	0x60, 0x1E, 0x60, 0x1E, 0x62, 0x1E, 0x62, 0x1E,
+-	0x64, 0x1E, 0x64, 0x1E, 0x66, 0x1E, 0x66, 0x1E,
+-	0x68, 0x1E, 0x68, 0x1E, 0x6A, 0x1E, 0x6A, 0x1E,
+-	0x6C, 0x1E, 0x6C, 0x1E, 0x6E, 0x1E, 0x6E, 0x1E,
+-	0x70, 0x1E, 0x70, 0x1E, 0x72, 0x1E, 0x72, 0x1E,
+-	0x74, 0x1E, 0x74, 0x1E, 0x76, 0x1E, 0x76, 0x1E,
+-	0x78, 0x1E, 0x78, 0x1E, 0x7A, 0x1E, 0x7A, 0x1E,
+-	0x7C, 0x1E, 0x7C, 0x1E, 0x7E, 0x1E, 0x7E, 0x1E,
+-	0x80, 0x1E, 0x80, 0x1E, 0x82, 0x1E, 0x82, 0x1E,
+-	0x84, 0x1E, 0x84, 0x1E, 0x86, 0x1E, 0x86, 0x1E,
+-	0x88, 0x1E, 0x88, 0x1E, 0x8A, 0x1E, 0x8A, 0x1E,
+-	0x8C, 0x1E, 0x8C, 0x1E, 0x8E, 0x1E, 0x8E, 0x1E,
+-	0x90, 0x1E, 0x90, 0x1E, 0x92, 0x1E, 0x92, 0x1E,
+-	0x94, 0x1E, 0x94, 0x1E, 0x96, 0x1E, 0x97, 0x1E,
+-	0x98, 0x1E, 0x99, 0x1E, 0x9A, 0x1E, 0x9B, 0x1E,
+-	0x9C, 0x1E, 0x9D, 0x1E, 0x9E, 0x1E, 0x9F, 0x1E,
+-	0xA0, 0x1E, 0xA0, 0x1E, 0xA2, 0x1E, 0xA2, 0x1E,
+-	0xA4, 0x1E, 0xA4, 0x1E, 0xA6, 0x1E, 0xA6, 0x1E,
+-	0xA8, 0x1E, 0xA8, 0x1E, 0xAA, 0x1E, 0xAA, 0x1E,
+-	0xAC, 0x1E, 0xAC, 0x1E, 0xAE, 0x1E, 0xAE, 0x1E,
+-	0xB0, 0x1E, 0xB0, 0x1E, 0xB2, 0x1E, 0xB2, 0x1E,
+-	0xB4, 0x1E, 0xB4, 0x1E, 0xB6, 0x1E, 0xB6, 0x1E,
+-	0xB8, 0x1E, 0xB8, 0x1E, 0xBA, 0x1E, 0xBA, 0x1E,
+-	0xBC, 0x1E, 0xBC, 0x1E, 0xBE, 0x1E, 0xBE, 0x1E,
+-	0xC0, 0x1E, 0xC0, 0x1E, 0xC2, 0x1E, 0xC2, 0x1E,
+-	0xC4, 0x1E, 0xC4, 0x1E, 0xC6, 0x1E, 0xC6, 0x1E,
+-	0xC8, 0x1E, 0xC8, 0x1E, 0xCA, 0x1E, 0xCA, 0x1E,
+-	0xCC, 0x1E, 0xCC, 0x1E, 0xCE, 0x1E, 0xCE, 0x1E,
+-	0xD0, 0x1E, 0xD0, 0x1E, 0xD2, 0x1E, 0xD2, 0x1E,
+-	0xD4, 0x1E, 0xD4, 0x1E, 0xD6, 0x1E, 0xD6, 0x1E,
+-	0xD8, 0x1E, 0xD8, 0x1E, 0xDA, 0x1E, 0xDA, 0x1E,
+-	0xDC, 0x1E, 0xDC, 0x1E, 0xDE, 0x1E, 0xDE, 0x1E,
+-	0xE0, 0x1E, 0xE0, 0x1E, 0xE2, 0x1E, 0xE2, 0x1E,
+-	0xE4, 0x1E, 0xE4, 0x1E, 0xE6, 0x1E, 0xE6, 0x1E,
+-	0xE8, 0x1E, 0xE8, 0x1E, 0xEA, 0x1E, 0xEA, 0x1E,
+-	0xEC, 0x1E, 0xEC, 0x1E, 0xEE, 0x1E, 0xEE, 0x1E,
+-	0xF0, 0x1E, 0xF0, 0x1E, 0xF2, 0x1E, 0xF2, 0x1E,
+-	0xF4, 0x1E, 0xF4, 0x1E, 0xF6, 0x1E, 0xF6, 0x1E,
+-	0xF8, 0x1E, 0xF8, 0x1E, 0xFA, 0x1E, 0xFB, 0x1E,
+-	0xFC, 0x1E, 0xFD, 0x1E, 0xFE, 0x1E, 0xFF, 0x1E,
+-	0x08, 0x1F, 0x09, 0x1F, 0x0A, 0x1F, 0x0B, 0x1F,
+-	0x0C, 0x1F, 0x0D, 0x1F, 0x0E, 0x1F, 0x0F, 0x1F,
+-	0x08, 0x1F, 0x09, 0x1F, 0x0A, 0x1F, 0x0B, 0x1F,
+-	0x0C, 0x1F, 0x0D, 0x1F, 0x0E, 0x1F, 0x0F, 0x1F,
+-	0x18, 0x1F, 0x19, 0x1F, 0x1A, 0x1F, 0x1B, 0x1F,
+-	0x1C, 0x1F, 0x1D, 0x1F, 0x16, 0x1F, 0x17, 0x1F,
+-	0x18, 0x1F, 0x19, 0x1F, 0x1A, 0x1F, 0x1B, 0x1F,
+-	0x1C, 0x1F, 0x1D, 0x1F, 0x1E, 0x1F, 0x1F, 0x1F,
+-	0x28, 0x1F, 0x29, 0x1F, 0x2A, 0x1F, 0x2B, 0x1F,
+-	0x2C, 0x1F, 0x2D, 0x1F, 0x2E, 0x1F, 0x2F, 0x1F,
+-	0x28, 0x1F, 0x29, 0x1F, 0x2A, 0x1F, 0x2B, 0x1F,
+-	0x2C, 0x1F, 0x2D, 0x1F, 0x2E, 0x1F, 0x2F, 0x1F,
+-	0x38, 0x1F, 0x39, 0x1F, 0x3A, 0x1F, 0x3B, 0x1F,
+-	0x3C, 0x1F, 0x3D, 0x1F, 0x3E, 0x1F, 0x3F, 0x1F,
+-	0x38, 0x1F, 0x39, 0x1F, 0x3A, 0x1F, 0x3B, 0x1F,
+-	0x3C, 0x1F, 0x3D, 0x1F, 0x3E, 0x1F, 0x3F, 0x1F,
+-	0x48, 0x1F, 0x49, 0x1F, 0x4A, 0x1F, 0x4B, 0x1F,
+-	0x4C, 0x1F, 0x4D, 0x1F, 0x46, 0x1F, 0x47, 0x1F,
+-	0x48, 0x1F, 0x49, 0x1F, 0x4A, 0x1F, 0x4B, 0x1F,
+-	0x4C, 0x1F, 0x4D, 0x1F, 0x4E, 0x1F, 0x4F, 0x1F,
+-	0x50, 0x1F, 0x59, 0x1F, 0x52, 0x1F, 0x5B, 0x1F,
+-	0x54, 0x1F, 0x5D, 0x1F, 0x56, 0x1F, 0x5F, 0x1F,
+-	0x58, 0x1F, 0x59, 0x1F, 0x5A, 0x1F, 0x5B, 0x1F,
+-	0x5C, 0x1F, 0x5D, 0x1F, 0x5E, 0x1F, 0x5F, 0x1F,
+-	0x68, 0x1F, 0x69, 0x1F, 0x6A, 0x1F, 0x6B, 0x1F,
+-	0x6C, 0x1F, 0x6D, 0x1F, 0x6E, 0x1F, 0x6F, 0x1F,
+-	0x68, 0x1F, 0x69, 0x1F, 0x6A, 0x1F, 0x6B, 0x1F,
+-	0x6C, 0x1F, 0x6D, 0x1F, 0x6E, 0x1F, 0x6F, 0x1F,
+-	0xBA, 0x1F, 0xBB, 0x1F, 0xC8, 0x1F, 0xC9, 0x1F,
+-	0xCA, 0x1F, 0xCB, 0x1F, 0xDA, 0x1F, 0xDB, 0x1F,
+-	0xF8, 0x1F, 0xF9, 0x1F, 0xEA, 0x1F, 0xEB, 0x1F,
+-	0xFA, 0x1F, 0xFB, 0x1F, 0x7E, 0x1F, 0x7F, 0x1F,
+-	0x88, 0x1F, 0x89, 0x1F, 0x8A, 0x1F, 0x8B, 0x1F,
+-	0x8C, 0x1F, 0x8D, 0x1F, 0x8E, 0x1F, 0x8F, 0x1F,
+-	0x88, 0x1F, 0x89, 0x1F, 0x8A, 0x1F, 0x8B, 0x1F,
+-	0x8C, 0x1F, 0x8D, 0x1F, 0x8E, 0x1F, 0x8F, 0x1F,
+-	0x98, 0x1F, 0x99, 0x1F, 0x9A, 0x1F, 0x9B, 0x1F,
+-	0x9C, 0x1F, 0x9D, 0x1F, 0x9E, 0x1F, 0x9F, 0x1F,
+-	0x98, 0x1F, 0x99, 0x1F, 0x9A, 0x1F, 0x9B, 0x1F,
+-	0x9C, 0x1F, 0x9D, 0x1F, 0x9E, 0x1F, 0x9F, 0x1F,
+-	0xA8, 0x1F, 0xA9, 0x1F, 0xAA, 0x1F, 0xAB, 0x1F,
+-	0xAC, 0x1F, 0xAD, 0x1F, 0xAE, 0x1F, 0xAF, 0x1F,
+-	0xA8, 0x1F, 0xA9, 0x1F, 0xAA, 0x1F, 0xAB, 0x1F,
+-	0xAC, 0x1F, 0xAD, 0x1F, 0xAE, 0x1F, 0xAF, 0x1F,
+-	0xB8, 0x1F, 0xB9, 0x1F, 0xB2, 0x1F, 0xBC, 0x1F,
+-	0xB4, 0x1F, 0xB5, 0x1F, 0xB6, 0x1F, 0xB7, 0x1F,
+-	0xB8, 0x1F, 0xB9, 0x1F, 0xBA, 0x1F, 0xBB, 0x1F,
+-	0xBC, 0x1F, 0xBD, 0x1F, 0xBE, 0x1F, 0xBF, 0x1F,
+-	0xC0, 0x1F, 0xC1, 0x1F, 0xC2, 0x1F, 0xC3, 0x1F,
+-	0xC4, 0x1F, 0xC5, 0x1F, 0xC6, 0x1F, 0xC7, 0x1F,
+-	0xC8, 0x1F, 0xC9, 0x1F, 0xCA, 0x1F, 0xCB, 0x1F,
+-	0xC3, 0x1F, 0xCD, 0x1F, 0xCE, 0x1F, 0xCF, 0x1F,
+-	0xD8, 0x1F, 0xD9, 0x1F, 0xD2, 0x1F, 0xD3, 0x1F,
+-	0xD4, 0x1F, 0xD5, 0x1F, 0xD6, 0x1F, 0xD7, 0x1F,
+-	0xD8, 0x1F, 0xD9, 0x1F, 0xDA, 0x1F, 0xDB, 0x1F,
+-	0xDC, 0x1F, 0xDD, 0x1F, 0xDE, 0x1F, 0xDF, 0x1F,
+-	0xE8, 0x1F, 0xE9, 0x1F, 0xE2, 0x1F, 0xE3, 0x1F,
+-	0xE4, 0x1F, 0xEC, 0x1F, 0xE6, 0x1F, 0xE7, 0x1F,
+-	0xE8, 0x1F, 0xE9, 0x1F, 0xEA, 0x1F, 0xEB, 0x1F,
+-	0xEC, 0x1F, 0xED, 0x1F, 0xEE, 0x1F, 0xEF, 0x1F,
+-	0xF0, 0x1F, 0xF1, 0x1F, 0xF2, 0x1F, 0xF3, 0x1F,
+-	0xF4, 0x1F, 0xF5, 0x1F, 0xF6, 0x1F, 0xF7, 0x1F,
+-	0xF8, 0x1F, 0xF9, 0x1F, 0xFA, 0x1F, 0xFB, 0x1F,
+-	0xF3, 0x1F, 0xFD, 0x1F, 0xFE, 0x1F, 0xFF, 0x1F,
+-	0x00, 0x20, 0x01, 0x20, 0x02, 0x20, 0x03, 0x20,
+-	0x04, 0x20, 0x05, 0x20, 0x06, 0x20, 0x07, 0x20,
+-	0x08, 0x20, 0x09, 0x20, 0x0A, 0x20, 0x0B, 0x20,
+-	0x0C, 0x20, 0x0D, 0x20, 0x0E, 0x20, 0x0F, 0x20,
+-	0x10, 0x20, 0x11, 0x20, 0x12, 0x20, 0x13, 0x20,
+-	0x14, 0x20, 0x15, 0x20, 0x16, 0x20, 0x17, 0x20,
+-	0x18, 0x20, 0x19, 0x20, 0x1A, 0x20, 0x1B, 0x20,
+-	0x1C, 0x20, 0x1D, 0x20, 0x1E, 0x20, 0x1F, 0x20,
+-	0x20, 0x20, 0x21, 0x20, 0x22, 0x20, 0x23, 0x20,
+-	0x24, 0x20, 0x25, 0x20, 0x26, 0x20, 0x27, 0x20,
+-	0x28, 0x20, 0x29, 0x20, 0x2A, 0x20, 0x2B, 0x20,
+-	0x2C, 0x20, 0x2D, 0x20, 0x2E, 0x20, 0x2F, 0x20,
+-	0x30, 0x20, 0x31, 0x20, 0x32, 0x20, 0x33, 0x20,
+-	0x34, 0x20, 0x35, 0x20, 0x36, 0x20, 0x37, 0x20,
+-	0x38, 0x20, 0x39, 0x20, 0x3A, 0x20, 0x3B, 0x20,
+-	0x3C, 0x20, 0x3D, 0x20, 0x3E, 0x20, 0x3F, 0x20,
+-	0x40, 0x20, 0x41, 0x20, 0x42, 0x20, 0x43, 0x20,
+-	0x44, 0x20, 0x45, 0x20, 0x46, 0x20, 0x47, 0x20,
+-	0x48, 0x20, 0x49, 0x20, 0x4A, 0x20, 0x4B, 0x20,
+-	0x4C, 0x20, 0x4D, 0x20, 0x4E, 0x20, 0x4F, 0x20,
+-	0x50, 0x20, 0x51, 0x20, 0x52, 0x20, 0x53, 0x20,
+-	0x54, 0x20, 0x55, 0x20, 0x56, 0x20, 0x57, 0x20,
+-	0x58, 0x20, 0x59, 0x20, 0x5A, 0x20, 0x5B, 0x20,
+-	0x5C, 0x20, 0x5D, 0x20, 0x5E, 0x20, 0x5F, 0x20,
+-	0x60, 0x20, 0x61, 0x20, 0x62, 0x20, 0x63, 0x20,
+-	0x64, 0x20, 0x65, 0x20, 0x66, 0x20, 0x67, 0x20,
+-	0x68, 0x20, 0x69, 0x20, 0x6A, 0x20, 0x6B, 0x20,
+-	0x6C, 0x20, 0x6D, 0x20, 0x6E, 0x20, 0x6F, 0x20,
+-	0x70, 0x20, 0x71, 0x20, 0x72, 0x20, 0x73, 0x20,
+-	0x74, 0x20, 0x75, 0x20, 0x76, 0x20, 0x77, 0x20,
+-	0x78, 0x20, 0x79, 0x20, 0x7A, 0x20, 0x7B, 0x20,
+-	0x7C, 0x20, 0x7D, 0x20, 0x7E, 0x20, 0x7F, 0x20,
+-	0x80, 0x20, 0x81, 0x20, 0x82, 0x20, 0x83, 0x20,
+-	0x84, 0x20, 0x85, 0x20, 0x86, 0x20, 0x87, 0x20,
+-	0x88, 0x20, 0x89, 0x20, 0x8A, 0x20, 0x8B, 0x20,
+-	0x8C, 0x20, 0x8D, 0x20, 0x8E, 0x20, 0x8F, 0x20,
+-	0x90, 0x20, 0x91, 0x20, 0x92, 0x20, 0x93, 0x20,
+-	0x94, 0x20, 0x95, 0x20, 0x96, 0x20, 0x97, 0x20,
+-	0x98, 0x20, 0x99, 0x20, 0x9A, 0x20, 0x9B, 0x20,
+-	0x9C, 0x20, 0x9D, 0x20, 0x9E, 0x20, 0x9F, 0x20,
+-	0xA0, 0x20, 0xA1, 0x20, 0xA2, 0x20, 0xA3, 0x20,
+-	0xA4, 0x20, 0xA5, 0x20, 0xA6, 0x20, 0xA7, 0x20,
+-	0xA8, 0x20, 0xA9, 0x20, 0xAA, 0x20, 0xAB, 0x20,
+-	0xAC, 0x20, 0xAD, 0x20, 0xAE, 0x20, 0xAF, 0x20,
+-	0xB0, 0x20, 0xB1, 0x20, 0xB2, 0x20, 0xB3, 0x20,
+-	0xB4, 0x20, 0xB5, 0x20, 0xB6, 0x20, 0xB7, 0x20,
+-	0xB8, 0x20, 0xB9, 0x20, 0xBA, 0x20, 0xBB, 0x20,
+-	0xBC, 0x20, 0xBD, 0x20, 0xBE, 0x20, 0xBF, 0x20,
+-	0xC0, 0x20, 0xC1, 0x20, 0xC2, 0x20, 0xC3, 0x20,
+-	0xC4, 0x20, 0xC5, 0x20, 0xC6, 0x20, 0xC7, 0x20,
+-	0xC8, 0x20, 0xC9, 0x20, 0xCA, 0x20, 0xCB, 0x20,
+-	0xCC, 0x20, 0xCD, 0x20, 0xCE, 0x20, 0xCF, 0x20,
+-	0xD0, 0x20, 0xD1, 0x20, 0xD2, 0x20, 0xD3, 0x20,
+-	0xD4, 0x20, 0xD5, 0x20, 0xD6, 0x20, 0xD7, 0x20,
+-	0xD8, 0x20, 0xD9, 0x20, 0xDA, 0x20, 0xDB, 0x20,
+-	0xDC, 0x20, 0xDD, 0x20, 0xDE, 0x20, 0xDF, 0x20,
+-	0xE0, 0x20, 0xE1, 0x20, 0xE2, 0x20, 0xE3, 0x20,
+-	0xE4, 0x20, 0xE5, 0x20, 0xE6, 0x20, 0xE7, 0x20,
+-	0xE8, 0x20, 0xE9, 0x20, 0xEA, 0x20, 0xEB, 0x20,
+-	0xEC, 0x20, 0xED, 0x20, 0xEE, 0x20, 0xEF, 0x20,
+-	0xF0, 0x20, 0xF1, 0x20, 0xF2, 0x20, 0xF3, 0x20,
+-	0xF4, 0x20, 0xF5, 0x20, 0xF6, 0x20, 0xF7, 0x20,
+-	0xF8, 0x20, 0xF9, 0x20, 0xFA, 0x20, 0xFB, 0x20,
+-	0xFC, 0x20, 0xFD, 0x20, 0xFE, 0x20, 0xFF, 0x20,
+-	0x00, 0x21, 0x01, 0x21, 0x02, 0x21, 0x03, 0x21,
+-	0x04, 0x21, 0x05, 0x21, 0x06, 0x21, 0x07, 0x21,
+-	0x08, 0x21, 0x09, 0x21, 0x0A, 0x21, 0x0B, 0x21,
+-	0x0C, 0x21, 0x0D, 0x21, 0x0E, 0x21, 0x0F, 0x21,
+-	0x10, 0x21, 0x11, 0x21, 0x12, 0x21, 0x13, 0x21,
+-	0x14, 0x21, 0x15, 0x21, 0x16, 0x21, 0x17, 0x21,
+-	0x18, 0x21, 0x19, 0x21, 0x1A, 0x21, 0x1B, 0x21,
+-	0x1C, 0x21, 0x1D, 0x21, 0x1E, 0x21, 0x1F, 0x21,
+-	0x20, 0x21, 0x21, 0x21, 0x22, 0x21, 0x23, 0x21,
+-	0x24, 0x21, 0x25, 0x21, 0x26, 0x21, 0x27, 0x21,
+-	0x28, 0x21, 0x29, 0x21, 0x2A, 0x21, 0x2B, 0x21,
+-	0x2C, 0x21, 0x2D, 0x21, 0x2E, 0x21, 0x2F, 0x21,
+-	0x30, 0x21, 0x31, 0x21, 0x32, 0x21, 0x33, 0x21,
+-	0x34, 0x21, 0x35, 0x21, 0x36, 0x21, 0x37, 0x21,
+-	0x38, 0x21, 0x39, 0x21, 0x3A, 0x21, 0x3B, 0x21,
+-	0x3C, 0x21, 0x3D, 0x21, 0x3E, 0x21, 0x3F, 0x21,
+-	0x40, 0x21, 0x41, 0x21, 0x42, 0x21, 0x43, 0x21,
+-	0x44, 0x21, 0x45, 0x21, 0x46, 0x21, 0x47, 0x21,
+-	0x48, 0x21, 0x49, 0x21, 0x4A, 0x21, 0x4B, 0x21,
+-	0x4C, 0x21, 0x4D, 0x21, 0x32, 0x21, 0x4F, 0x21,
+-	0x50, 0x21, 0x51, 0x21, 0x52, 0x21, 0x53, 0x21,
+-	0x54, 0x21, 0x55, 0x21, 0x56, 0x21, 0x57, 0x21,
+-	0x58, 0x21, 0x59, 0x21, 0x5A, 0x21, 0x5B, 0x21,
+-	0x5C, 0x21, 0x5D, 0x21, 0x5E, 0x21, 0x5F, 0x21,
+-	0x60, 0x21, 0x61, 0x21, 0x62, 0x21, 0x63, 0x21,
+-	0x64, 0x21, 0x65, 0x21, 0x66, 0x21, 0x67, 0x21,
+-	0x68, 0x21, 0x69, 0x21, 0x6A, 0x21, 0x6B, 0x21,
+-	0x6C, 0x21, 0x6D, 0x21, 0x6E, 0x21, 0x6F, 0x21,
+-	0x60, 0x21, 0x61, 0x21, 0x62, 0x21, 0x63, 0x21,
+-	0x64, 0x21, 0x65, 0x21, 0x66, 0x21, 0x67, 0x21,
+-	0x68, 0x21, 0x69, 0x21, 0x6A, 0x21, 0x6B, 0x21,
+-	0x6C, 0x21, 0x6D, 0x21, 0x6E, 0x21, 0x6F, 0x21,
+-	0x80, 0x21, 0x81, 0x21, 0x82, 0x21, 0x83, 0x21,
+-	0x83, 0x21, 0xFF, 0xFF, 0x4B, 0x03, 0xB6, 0x24,
+-	0xB7, 0x24, 0xB8, 0x24, 0xB9, 0x24, 0xBA, 0x24,
+-	0xBB, 0x24, 0xBC, 0x24, 0xBD, 0x24, 0xBE, 0x24,
+-	0xBF, 0x24, 0xC0, 0x24, 0xC1, 0x24, 0xC2, 0x24,
+-	0xC3, 0x24, 0xC4, 0x24, 0xC5, 0x24, 0xC6, 0x24,
+-	0xC7, 0x24, 0xC8, 0x24, 0xC9, 0x24, 0xCA, 0x24,
+-	0xCB, 0x24, 0xCC, 0x24, 0xCD, 0x24, 0xCE, 0x24,
+-	0xCF, 0x24, 0xFF, 0xFF, 0x46, 0x07, 0x00, 0x2C,
+-	0x01, 0x2C, 0x02, 0x2C, 0x03, 0x2C, 0x04, 0x2C,
+-	0x05, 0x2C, 0x06, 0x2C, 0x07, 0x2C, 0x08, 0x2C,
+-	0x09, 0x2C, 0x0A, 0x2C, 0x0B, 0x2C, 0x0C, 0x2C,
+-	0x0D, 0x2C, 0x0E, 0x2C, 0x0F, 0x2C, 0x10, 0x2C,
+-	0x11, 0x2C, 0x12, 0x2C, 0x13, 0x2C, 0x14, 0x2C,
+-	0x15, 0x2C, 0x16, 0x2C, 0x17, 0x2C, 0x18, 0x2C,
+-	0x19, 0x2C, 0x1A, 0x2C, 0x1B, 0x2C, 0x1C, 0x2C,
+-	0x1D, 0x2C, 0x1E, 0x2C, 0x1F, 0x2C, 0x20, 0x2C,
+-	0x21, 0x2C, 0x22, 0x2C, 0x23, 0x2C, 0x24, 0x2C,
+-	0x25, 0x2C, 0x26, 0x2C, 0x27, 0x2C, 0x28, 0x2C,
+-	0x29, 0x2C, 0x2A, 0x2C, 0x2B, 0x2C, 0x2C, 0x2C,
+-	0x2D, 0x2C, 0x2E, 0x2C, 0x5F, 0x2C, 0x60, 0x2C,
+-	0x60, 0x2C, 0x62, 0x2C, 0x63, 0x2C, 0x64, 0x2C,
+-	0x65, 0x2C, 0x66, 0x2C, 0x67, 0x2C, 0x67, 0x2C,
+-	0x69, 0x2C, 0x69, 0x2C, 0x6B, 0x2C, 0x6B, 0x2C,
+-	0x6D, 0x2C, 0x6E, 0x2C, 0x6F, 0x2C, 0x70, 0x2C,
+-	0x71, 0x2C, 0x72, 0x2C, 0x73, 0x2C, 0x74, 0x2C,
+-	0x75, 0x2C, 0x75, 0x2C, 0x77, 0x2C, 0x78, 0x2C,
+-	0x79, 0x2C, 0x7A, 0x2C, 0x7B, 0x2C, 0x7C, 0x2C,
+-	0x7D, 0x2C, 0x7E, 0x2C, 0x7F, 0x2C, 0x80, 0x2C,
+-	0x80, 0x2C, 0x82, 0x2C, 0x82, 0x2C, 0x84, 0x2C,
+-	0x84, 0x2C, 0x86, 0x2C, 0x86, 0x2C, 0x88, 0x2C,
+-	0x88, 0x2C, 0x8A, 0x2C, 0x8A, 0x2C, 0x8C, 0x2C,
+-	0x8C, 0x2C, 0x8E, 0x2C, 0x8E, 0x2C, 0x90, 0x2C,
+-	0x90, 0x2C, 0x92, 0x2C, 0x92, 0x2C, 0x94, 0x2C,
+-	0x94, 0x2C, 0x96, 0x2C, 0x96, 0x2C, 0x98, 0x2C,
+-	0x98, 0x2C, 0x9A, 0x2C, 0x9A, 0x2C, 0x9C, 0x2C,
+-	0x9C, 0x2C, 0x9E, 0x2C, 0x9E, 0x2C, 0xA0, 0x2C,
+-	0xA0, 0x2C, 0xA2, 0x2C, 0xA2, 0x2C, 0xA4, 0x2C,
+-	0xA4, 0x2C, 0xA6, 0x2C, 0xA6, 0x2C, 0xA8, 0x2C,
+-	0xA8, 0x2C, 0xAA, 0x2C, 0xAA, 0x2C, 0xAC, 0x2C,
+-	0xAC, 0x2C, 0xAE, 0x2C, 0xAE, 0x2C, 0xB0, 0x2C,
+-	0xB0, 0x2C, 0xB2, 0x2C, 0xB2, 0x2C, 0xB4, 0x2C,
+-	0xB4, 0x2C, 0xB6, 0x2C, 0xB6, 0x2C, 0xB8, 0x2C,
+-	0xB8, 0x2C, 0xBA, 0x2C, 0xBA, 0x2C, 0xBC, 0x2C,
+-	0xBC, 0x2C, 0xBE, 0x2C, 0xBE, 0x2C, 0xC0, 0x2C,
+-	0xC0, 0x2C, 0xC2, 0x2C, 0xC2, 0x2C, 0xC4, 0x2C,
+-	0xC4, 0x2C, 0xC6, 0x2C, 0xC6, 0x2C, 0xC8, 0x2C,
+-	0xC8, 0x2C, 0xCA, 0x2C, 0xCA, 0x2C, 0xCC, 0x2C,
+-	0xCC, 0x2C, 0xCE, 0x2C, 0xCE, 0x2C, 0xD0, 0x2C,
+-	0xD0, 0x2C, 0xD2, 0x2C, 0xD2, 0x2C, 0xD4, 0x2C,
+-	0xD4, 0x2C, 0xD6, 0x2C, 0xD6, 0x2C, 0xD8, 0x2C,
+-	0xD8, 0x2C, 0xDA, 0x2C, 0xDA, 0x2C, 0xDC, 0x2C,
+-	0xDC, 0x2C, 0xDE, 0x2C, 0xDE, 0x2C, 0xE0, 0x2C,
+-	0xE0, 0x2C, 0xE2, 0x2C, 0xE2, 0x2C, 0xE4, 0x2C,
+-	0xE5, 0x2C, 0xE6, 0x2C, 0xE7, 0x2C, 0xE8, 0x2C,
+-	0xE9, 0x2C, 0xEA, 0x2C, 0xEB, 0x2C, 0xEC, 0x2C,
+-	0xED, 0x2C, 0xEE, 0x2C, 0xEF, 0x2C, 0xF0, 0x2C,
+-	0xF1, 0x2C, 0xF2, 0x2C, 0xF3, 0x2C, 0xF4, 0x2C,
+-	0xF5, 0x2C, 0xF6, 0x2C, 0xF7, 0x2C, 0xF8, 0x2C,
+-	0xF9, 0x2C, 0xFA, 0x2C, 0xFB, 0x2C, 0xFC, 0x2C,
+-	0xFD, 0x2C, 0xFE, 0x2C, 0xFF, 0x2C, 0xA0, 0x10,
+-	0xA1, 0x10, 0xA2, 0x10, 0xA3, 0x10, 0xA4, 0x10,
+-	0xA5, 0x10, 0xA6, 0x10, 0xA7, 0x10, 0xA8, 0x10,
+-	0xA9, 0x10, 0xAA, 0x10, 0xAB, 0x10, 0xAC, 0x10,
+-	0xAD, 0x10, 0xAE, 0x10, 0xAF, 0x10, 0xB0, 0x10,
+-	0xB1, 0x10, 0xB2, 0x10, 0xB3, 0x10, 0xB4, 0x10,
+-	0xB5, 0x10, 0xB6, 0x10, 0xB7, 0x10, 0xB8, 0x10,
+-	0xB9, 0x10, 0xBA, 0x10, 0xBB, 0x10, 0xBC, 0x10,
+-	0xBD, 0x10, 0xBE, 0x10, 0xBF, 0x10, 0xC0, 0x10,
+-	0xC1, 0x10, 0xC2, 0x10, 0xC3, 0x10, 0xC4, 0x10,
+-	0xC5, 0x10, 0xFF, 0xFF, 0x1B, 0xD2, 0x21, 0xFF,
+-	0x22, 0xFF, 0x23, 0xFF, 0x24, 0xFF, 0x25, 0xFF,
+-	0x26, 0xFF, 0x27, 0xFF, 0x28, 0xFF, 0x29, 0xFF,
+-	0x2A, 0xFF, 0x2B, 0xFF, 0x2C, 0xFF, 0x2D, 0xFF,
+-	0x2E, 0xFF, 0x2F, 0xFF, 0x30, 0xFF, 0x31, 0xFF,
+-	0x32, 0xFF, 0x33, 0xFF, 0x34, 0xFF, 0x35, 0xFF,
+-	0x36, 0xFF, 0x37, 0xFF, 0x38, 0xFF, 0x39, 0xFF,
+-	0x3A, 0xFF, 0x5B, 0xFF, 0x5C, 0xFF, 0x5D, 0xFF,
+-	0x5E, 0xFF, 0x5F, 0xFF, 0x60, 0xFF, 0x61, 0xFF,
+-	0x62, 0xFF, 0x63, 0xFF, 0x64, 0xFF, 0x65, 0xFF,
+-	0x66, 0xFF, 0x67, 0xFF, 0x68, 0xFF, 0x69, 0xFF,
+-	0x6A, 0xFF, 0x6B, 0xFF, 0x6C, 0xFF, 0x6D, 0xFF,
+-	0x6E, 0xFF, 0x6F, 0xFF, 0x70, 0xFF, 0x71, 0xFF,
+-	0x72, 0xFF, 0x73, 0xFF, 0x74, 0xFF, 0x75, 0xFF,
+-	0x76, 0xFF, 0x77, 0xFF, 0x78, 0xFF, 0x79, 0xFF,
+-	0x7A, 0xFF, 0x7B, 0xFF, 0x7C, 0xFF, 0x7D, 0xFF,
+-	0x7E, 0xFF, 0x7F, 0xFF, 0x80, 0xFF, 0x81, 0xFF,
+-	0x82, 0xFF, 0x83, 0xFF, 0x84, 0xFF, 0x85, 0xFF,
+-	0x86, 0xFF, 0x87, 0xFF, 0x88, 0xFF, 0x89, 0xFF,
+-	0x8A, 0xFF, 0x8B, 0xFF, 0x8C, 0xFF, 0x8D, 0xFF,
+-	0x8E, 0xFF, 0x8F, 0xFF, 0x90, 0xFF, 0x91, 0xFF,
+-	0x92, 0xFF, 0x93, 0xFF, 0x94, 0xFF, 0x95, 0xFF,
+-	0x96, 0xFF, 0x97, 0xFF, 0x98, 0xFF, 0x99, 0xFF,
+-	0x9A, 0xFF, 0x9B, 0xFF, 0x9C, 0xFF, 0x9D, 0xFF,
+-	0x9E, 0xFF, 0x9F, 0xFF, 0xA0, 0xFF, 0xA1, 0xFF,
+-	0xA2, 0xFF, 0xA3, 0xFF, 0xA4, 0xFF, 0xA5, 0xFF,
+-	0xA6, 0xFF, 0xA7, 0xFF, 0xA8, 0xFF, 0xA9, 0xFF,
+-	0xAA, 0xFF, 0xAB, 0xFF, 0xAC, 0xFF, 0xAD, 0xFF,
+-	0xAE, 0xFF, 0xAF, 0xFF, 0xB0, 0xFF, 0xB1, 0xFF,
+-	0xB2, 0xFF, 0xB3, 0xFF, 0xB4, 0xFF, 0xB5, 0xFF,
+-	0xB6, 0xFF, 0xB7, 0xFF, 0xB8, 0xFF, 0xB9, 0xFF,
+-	0xBA, 0xFF, 0xBB, 0xFF, 0xBC, 0xFF, 0xBD, 0xFF,
+-	0xBE, 0xFF, 0xBF, 0xFF, 0xC0, 0xFF, 0xC1, 0xFF,
+-	0xC2, 0xFF, 0xC3, 0xFF, 0xC4, 0xFF, 0xC5, 0xFF,
+-	0xC6, 0xFF, 0xC7, 0xFF, 0xC8, 0xFF, 0xC9, 0xFF,
+-	0xCA, 0xFF, 0xCB, 0xFF, 0xCC, 0xFF, 0xCD, 0xFF,
+-	0xCE, 0xFF, 0xCF, 0xFF, 0xD0, 0xFF, 0xD1, 0xFF,
+-	0xD2, 0xFF, 0xD3, 0xFF, 0xD4, 0xFF, 0xD5, 0xFF,
+-	0xD6, 0xFF, 0xD7, 0xFF, 0xD8, 0xFF, 0xD9, 0xFF,
+-	0xDA, 0xFF, 0xDB, 0xFF, 0xDC, 0xFF, 0xDD, 0xFF,
+-	0xDE, 0xFF, 0xDF, 0xFF, 0xE0, 0xFF, 0xE1, 0xFF,
+-	0xE2, 0xFF, 0xE3, 0xFF, 0xE4, 0xFF, 0xE5, 0xFF,
+-	0xE6, 0xFF, 0xE7, 0xFF, 0xE8, 0xFF, 0xE9, 0xFF,
+-	0xEA, 0xFF, 0xEB, 0xFF, 0xEC, 0xFF, 0xED, 0xFF,
+-	0xEE, 0xFF, 0xEF, 0xFF, 0xF0, 0xFF, 0xF1, 0xFF,
+-	0xF2, 0xFF, 0xF3, 0xFF, 0xF4, 0xFF, 0xF5, 0xFF,
+-	0xF6, 0xFF, 0xF7, 0xFF, 0xF8, 0xFF, 0xF9, 0xFF,
+-	0xFA, 0xFF, 0xFB, 0xFF, 0xFC, 0xFF, 0xFD, 0xFF,
+-	0xFE, 0xFF, 0xFF, 0xFF
+-};
+-- =
+
+2.25.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
