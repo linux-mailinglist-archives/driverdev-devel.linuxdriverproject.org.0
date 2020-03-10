@@ -1,47 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBA5E17EEDF
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 03:54:13 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D8DB417EFB9
+	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 05:40:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7ECBE88547;
-	Tue, 10 Mar 2020 02:54:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E50D88705F;
+	Tue, 10 Mar 2020 04:40:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vZ_-GC45Q28r; Tue, 10 Mar 2020 04:40:17 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 770108708D;
+	Tue, 10 Mar 2020 04:40:16 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EDF1E1BF39D
+ for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 04:40:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id E7E24884FC
+ for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 04:40:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OooAvLVSVFOk; Tue, 10 Mar 2020 02:54:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E3ADB88510;
-	Tue, 10 Mar 2020 02:54:08 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 82A8F1BF3BA
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 10 Mar 2020 02:54:06 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7FFA888137
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 10 Mar 2020 02:54:06 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Missing required header field: "Date"
-Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6hWXRBnG5wy4
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 10 Mar 2020 02:54:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.tarahanepooya.ir
- (static.152.177.40.188.clients.your-server.de [188.40.177.152])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6B8E187ED1
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 10 Mar 2020 02:54:03 +0000 (UTC)
-Received: from User (192-3-198-30-host.colocrossing.com [192.3.198.30]) by
- mail.tarahanepooya.ir with SMTP; Mon, 9 Mar 2020 18:57:38 +0330
-From: "SuperEnalotto / EuroMillion/ PowerBall Lotto <info"@goldislanguage.com
-Message-Id: <20200310025406.7FFA888137@hemlock.osuosl.org>
-Date: Tue, 10 Mar 2020 02:54:06 +0000 (UTC)
+ with ESMTP id hPb11Ov0uOj5 for <devel@linuxdriverproject.org>;
+ Tue, 10 Mar 2020 04:40:12 +0000 (UTC)
+X-Greylist: delayed 00:07:33 by SQLgrey-1.7.6
+Received: from mail.foescocursos.es (unknown [146.255.98.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id ADDC787F9B
+ for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 04:40:12 +0000 (UTC)
+Received: from 186.red-83-53-133.dynamicip.rima-tde.net
+ (186.red-83-53-133.dynamicip.rima-tde.net [83.53.133.186])
+ by mail.foescocursos.es (Postfix) with ESMTPSA id ABB1029085D
+ for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 05:32:36 +0100 (CET)
+Authentication-Results: mail.foescocursos.es;
+ spf=pass (sender IP is 83.53.133.186) smtp.mailfrom=info@formacionestatal.es
+ smtp.helo=186.red-83-53-133.dynamicip.rima-tde.net
+Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
+MIME-Version: 1.0
+From: info@formacionestatal.es
+To: devel@driverdev.osuosl.org
+Subject: Consulta FOESCO (Marzo 2020)
+X-Mailer: Smart_Send_4_3_5
+Date: Tue, 10 Mar 2020 05:32:35 +0100
+Message-ID: <135045128103042117512260@DESKTOP-UT04S71>
+X-Priority: 1
+X-MSMail-Priority: High
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,41 +60,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: notificationcenter2013@yahoo.com.hk
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: info@formacionestatal.es
+Content-Type: multipart/mixed; boundary="===============4100742938687740818=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
->
-Subject: Notification Of Winnings
-Date: Mon, 9 Mar 2020 08:27:37 -0700
+--===============4100742938687740818==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Buenos d=EDas
+
+
+
+Os informamos que se encuentra abierto el plazo de inscripci=F3n para la pr=
+esente Convocatoria de Cursos Bonificables para empleados (Marzo 2020)
+
+Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
+aci=F3n 2020 que disponen las empresas.
+
+
+Dese=E1is que os mandemos la informaci=F3n=3F
+
+
+Saludos.
+
+
+Alex Pons
+Director departamento formaci=F3n.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B171823AP
+www.foesco.com
+
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+
+
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
+la palabra BAJA en el asunto.
+
+--===============4100742938687740818==
+Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1251"
 Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-
-Dear : Winner
-
-We are pleased to inform you that as a result of our recent DRAWS held on the 28th of February,2020.You have officially Won $1.700.000,00 USD , Kindly Contact Mrs.Ruth Janssens for claims with the following details
-
-1. Full Name:----2.Gender/Age--- 3.Address-----:4.Mobile--- 5.Occupation
-
-Kindly Contact Mrs.Ruth Janssens
-================================================
-Claims Processing Officer: Mrs.Ruth Janssens
-e-Mail: claims2020claims@gmail.com
-===============================================
-
-Sincerely yours,
-SuperEnalotto / EuroMillion/ PowerBall Lotto
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============4100742938687740818==--
