@@ -1,46 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 253FA181493
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 10:19:54 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8EDA81814B7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 10:25:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A651787FF7;
-	Wed, 11 Mar 2020 09:19:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4785E21FAD;
+	Wed, 11 Mar 2020 09:25:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r55V6cf-Oqm7; Wed, 11 Mar 2020 09:19:50 +0000 (UTC)
+	with ESMTP id ZYPheS7FeX3v; Wed, 11 Mar 2020 09:24:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A273686388;
-	Wed, 11 Mar 2020 09:19:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E5C05203BB;
+	Wed, 11 Mar 2020 09:24:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BFC911BF5DB
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 09:19:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C9841BF5DB
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 09:24:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B7A2E873C9
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 09:19:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7529188072
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 09:24:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id duZ0Y8kcxhH3 for <devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 09:19:47 +0000 (UTC)
+ with ESMTP id WFzpwdCV6O7W for <devel@linuxdriverproject.org>;
+ Wed, 11 Mar 2020 09:24:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1CFC086388
- for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 09:19:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6719787EC5
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 09:24:55 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id B0AF7AB3D;
- Wed, 11 Mar 2020 09:19:45 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 55DB1AC23;
+ Wed, 11 Mar 2020 09:24:53 +0000 (UTC)
 From: Takashi Iwai <tiwai@suse.de>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: most: core: Use scnprintf() for avoiding potential
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH 0/3] staging: rtl*: Use scnprintf() for avoiding potential
  buffer overflow
-Date: Wed, 11 Mar 2020 10:19:44 +0100
-Message-Id: <20200311091944.23185-1-tiwai@suse.de>
+Date: Wed, 11 Mar 2020 10:24:48 +0100
+Message-Id: <20200311092451.23933-1-tiwai@suse.de>
 X-Mailer: git-send-email 2.16.4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -61,46 +62,34 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Since snprintf() returns the would-be-output size instead of the
-actual output size, the succeeding calls may go beyond the given
-buffer limit.  Fix it by replacing with scnprintf().
 
-Signed-off-by: Takashi Iwai <tiwai@suse.de>
----
- drivers/staging/most/core.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Hi,
 
-diff --git a/drivers/staging/most/core.c b/drivers/staging/most/core.c
-index 0c4ae6920d77..f6b38d9d57e6 100644
---- a/drivers/staging/most/core.c
-+++ b/drivers/staging/most/core.c
-@@ -472,7 +472,7 @@ static int print_links(struct device *dev, void *data)
- 
- 	list_for_each_entry(c, &iface->p->channel_list, list) {
- 		if (c->pipe0.comp) {
--			offs += snprintf(buf + offs,
-+			offs += scnprintf(buf + offs,
- 					 PAGE_SIZE - offs,
- 					 "%s:%s:%s\n",
- 					 c->pipe0.comp->name,
-@@ -480,7 +480,7 @@ static int print_links(struct device *dev, void *data)
- 					 dev_name(&c->dev));
- 		}
- 		if (c->pipe1.comp) {
--			offs += snprintf(buf + offs,
-+			offs += scnprintf(buf + offs,
- 					 PAGE_SIZE - offs,
- 					 "%s:%s:%s\n",
- 					 c->pipe1.comp->name,
-@@ -519,7 +519,7 @@ static ssize_t components_show(struct device_driver *drv, char *buf)
- 	int offs = 0;
- 
- 	list_for_each_entry(comp, &comp_list, list) {
--		offs += snprintf(buf + offs, PAGE_SIZE - offs, "%s\n",
-+		offs += scnprintf(buf + offs, PAGE_SIZE - offs, "%s\n",
- 				 comp->name);
- 	}
- 	return offs;
+here is a series of trivial patches just to convert suspicious
+snprintf() usages with the more safer one, scnprintf(), just like
+other few patches I've already sent out.
+
+
+Takashi
+
+===
+
+Takashi Iwai (3):
+  staging: rtl8188eu: Use scnprintf() for avoiding potential buffer
+    overflow
+  staging: rtl8192e: Use scnprintf() for avoiding potential buffer
+    overflow
+  staging: rtl8723bs: Use scnprintf() for avoiding potential buffer
+    overflow
+
+ drivers/staging/rtl8188eu/core/rtw_debug.c     | 16 ++++++++--------
+ drivers/staging/rtl8188eu/os_dep/ioctl_linux.c |  4 ++--
+ drivers/staging/rtl8192e/rtllib_rx.c           |  4 ++--
+ drivers/staging/rtl8192e/rtllib_wx.c           |  8 ++++----
+ drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 14 +++++++-------
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c |  4 ++--
+ 6 files changed, 25 insertions(+), 25 deletions(-)
+
 -- 
 2.16.4
 
