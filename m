@@ -1,74 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CB90181E27
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 17:43:51 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 66523220D0;
-	Wed, 11 Mar 2020 16:43:49 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FLYpA0WVfTd8; Wed, 11 Mar 2020 16:43:49 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 85C551FEDF;
-	Wed, 11 Mar 2020 16:43:48 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 181021BF3E3
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 16:43:46 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 06058181E34
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 17:45:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 14FD085650
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 16:43:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5F2D686BE2;
+	Wed, 11 Mar 2020 16:45:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MDF-UoL6dBS1; Wed, 11 Mar 2020 16:45:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1738085E28;
+	Wed, 11 Mar 2020 16:45:36 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 81F7E1BF3E3
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 16:45:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7DEFB214D2
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 16:45:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sjBxeLBpOubK for <devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 16:43:45 +0000 (UTC)
+ with ESMTP id CTAYW-+VqPz4 for <devel@linuxdriverproject.org>;
+ Wed, 11 Mar 2020 16:45:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
- [209.85.167.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 28D098553B
- for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 16:43:45 +0000 (UTC)
-Received: by mail-lf1-f65.google.com with SMTP id l7so2287535lfe.13
- for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 09:43:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=773L+w0I9HPnHgYZP79UDOcRjAnkNWqJrs4B1M0USW0=;
- b=IO+Y0P2orBze6ZN88rpUY1D9BvSX5XTj7jai0h1bBgeTJyfM+ukSfl08mOzLyRrSFS
- j9Esq3B9zJPhKOUpcNGzr/I171PhmxC5lfF4DE693yDNmgP+m/uqhjEGKmCdRYoA6r81
- 5/uPbt3OEHv0iFhINpWxxM5hqJ2AqYlxCQgdPfeGoDihncHzNWJI75wgQlcvIR/duVxr
- g2cpV5BqCAH0fwHpS3mbaznqRHbbsJkX5jZ/gTEsLARnTJJeFD8RTnjms3+JrKmmaVIG
- ATMVET+UKIueQB2hk6EnwTsO+rBbtro5RRHaGfamZIccRq+3zMgK9U62Fs/sLjtxU2Zm
- EOuA==
-X-Gm-Message-State: ANhLgQ3Icb6chjkiPThopUewJZOWPSL2lwG5stJQBD9Y3dt39LcLarZ0
- wm38flSpskSE2+dw6JOscdM=
-X-Google-Smtp-Source: ADFU+vupgM0nN8Yt6G4yQPQDbaxHbVAAVZo2CZGdMQfpGSFxgRsbJpNcnX4c2VIYIQf4tFlxP6oBMQ==
-X-Received: by 2002:a19:be03:: with SMTP id o3mr105298lff.84.1583945023431;
- Wed, 11 Mar 2020 09:43:43 -0700 (PDT)
-Received: from xi.terra (c-12aae455.07-184-6d6c6d4.bbcust.telenor.se.
- [85.228.170.18])
- by smtp.gmail.com with ESMTPSA id v27sm9092293lfq.78.2020.03.11.09.43.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Mar 2020 09:43:42 -0700 (PDT)
-Received: from johan by xi.terra with local (Exim 4.92.3)
- (envelope-from <johan@kernel.org>)
- id 1jC4SB-0006Xi-Cf; Wed, 11 Mar 2020 17:43:31 +0100
-Date: Wed, 11 Mar 2020 17:43:31 +0100
-From: Johan Hovold <johan@kernel.org>
-To: Takashi Iwai <tiwai@suse.de>
-Subject: Re: [PATCH RESEND] staging: greybus: loopback_test: Use scnprintf()
- for avoiding potential buffer overflow
-Message-ID: <20200311164331.GM14211@localhost>
-References: <20200311100535.29635-1-tiwai@suse.de>
- <20200311100959.GK14211@localhost>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200311100959.GK14211@localhost>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7CF672036B
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 16:45:33 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id 75F97ABCE;
+ Wed, 11 Mar 2020 16:45:31 +0000 (UTC)
+Date: Wed, 11 Mar 2020 17:45:31 +0100
+Message-ID: <s5h8sk67sd0.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH] staging: greybus: Use scnprintf() for avoiding potential
+ buffer overflow
+In-Reply-To: <20200311164002.GL14211@localhost>
+References: <20200311091906.22980-1-tiwai@suse.de>
+ <20200311095814.GI14211@localhost> <s5hmu8n8b0m.wl-tiwai@suse.de>
+ <20200311100903.GJ14211@localhost> <s5hy2s7nojd.wl-tiwai@suse.de>
+ <20200311164002.GL14211@localhost>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI/1.14.6 (Maruoka)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 Emacs/25.3
+ (x86_64-suse-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI 1.14.6 - "Maruoka")
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,32 +62,80 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Alex Elder <elder@kernel.org>, Johan Hovold <johan@kernel.org>,
- greybus-dev@lists.linaro.org
+Cc: Takashi Iwai <tiwai@suse.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alex Elder <elder@kernel.org>,
+ devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Mar 11, 2020 at 11:09:59AM +0100, Johan Hovold wrote:
-> On Wed, Mar 11, 2020 at 11:05:35AM +0100, Takashi Iwai wrote:
-> > Since snprintf() returns the would-be-output size instead of the
-> > actual output size, the succeeding calls may go beyond the given
-> > buffer limit.  Fix it by replacing with scnprintf().
-> > 
-> > Signed-off-by: Takashi Iwai <tiwai@suse.de>
-> > ---
-> > 
-> > Just corrected the subject prefix per request.
+On Wed, 11 Mar 2020 17:40:02 +0100,
+Johan Hovold wrote:
 > 
-> Acked-by: Johan Hovold <johan@kernel.org>
+> On Wed, Mar 11, 2020 at 12:01:26PM +0100, Takashi Iwai wrote:
+> > On Wed, 11 Mar 2020 11:09:03 +0100,
+> > Johan Hovold wrote:
+> > > 
+> > > On Wed, Mar 11, 2020 at 11:02:33AM +0100, Takashi Iwai wrote:
+> > > > On Wed, 11 Mar 2020 10:58:14 +0100,
+> > > > Johan Hovold wrote:
+> > > > > 
+> > > > > On Wed, Mar 11, 2020 at 10:19:06AM +0100, Takashi Iwai wrote:
+> > > > > > Since snprintf() returns the would-be-output size instead of the
+> > > > > > actual output size, the succeeding calls may go beyond the given
+> > > > > > buffer limit.  Fix it by replacing with scnprintf().
+> > > > > > 
+> > > > > > Signed-off-by: Takashi Iwai <tiwai@suse.de>
+> > > > > > ---
+> > > > > >  drivers/staging/greybus/tools/loopback_test.c | 24 ++++++++++++------------
+> > > > > 
+> > > > > Thanks for the fix.
+> > > > > 
+> > > > > Would you mind resending with a "staging: greybus: loopback_test:"
+> > > > > prefix since this is not a subsystem wide issue, bur rather a bug in a
+> > > > > specific user-space tool?
+> > > > 
+> > > > OK, will do that.
+> > > 
+> > > Thanks.
+> > > 
+> > > Perhaps you should replace the snprintf() at the start of the function
+> > > in question as well by the way.
+> > 
+> > Yeah, it's I also wonder while working on many other codes, too.
+> > I decided to minimize the changes at this time and concentrate only on
+> > the code that has a pattern like:
+> >    pos += snprintf(buf, limit - pos, ...)
+> 
+> But isn't the first snprintf() in such a sequence as much a part of the
+> problem as the following ones?
+> 
+> If the first pos = snprintf(buf, limit, ...) overflows buf, then the
+> next pos += snprintf(buf, limit - pos, ...) will be called with with a
+> negative size argument (i.e. a very large unsigned value), which
+> effectively breaks the length check regardless of whether you replace it
+> with scnprintf() or not. And all later calls will similarly continue
+> writing beyond the end of buf.
 
-I take that back, this patch should NOT be applied.
+Yeah, that's the possible case although most calls are fine with it
+since the limit is PAGE_SIZE or so.  This might need a bit more
+special care.
 
-This is user-space code so using scnprintf() doesn't make sense.
+> But wait a minute. This is user-space code, so there's no scnprintf().
+> Did you not compile test this? ;P
+>
+> In fact it seems no-one has for a while. This code is just broken and
+> doesn't even compile any more. Maybe we should just drop it instead.
 
-Johan
+Bah, I'm afraid that I overlooked this point!
+
+I've scraped over many places via a script-like work, and did the
+compile testing of the kernel, but not about tools.  If that's the
+case, sorry for the mess, feel free to drop it. 
+
+
+Takashi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
