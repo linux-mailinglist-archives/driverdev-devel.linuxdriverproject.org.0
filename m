@@ -2,67 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D52BA180420
-	for <lists+driverdev-devel@lfdr.de>; Tue, 10 Mar 2020 17:59:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 68E26180D76
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 02:26:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2A991886D1;
-	Tue, 10 Mar 2020 16:59:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5B64188138;
+	Wed, 11 Mar 2020 01:26:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZuwZ-MMrddn2; Tue, 10 Mar 2020 16:59:12 +0000 (UTC)
+	with ESMTP id xCRJxiWcNOJy; Wed, 11 Mar 2020 01:26:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8CE8F886C3;
-	Tue, 10 Mar 2020 16:59:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C688D880B2;
+	Wed, 11 Mar 2020 01:26:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CD5F11BF20D
- for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 16:59:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9B3811BF5A4
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 01:26:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C1C5188FFC
- for <devel@linuxdriverproject.org>; Tue, 10 Mar 2020 16:59:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 93F528815C
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 01:26:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0oN9ASAa7LxS for <devel@linuxdriverproject.org>;
- Tue, 10 Mar 2020 16:59:07 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0196.hostedemail.com
- [216.40.44.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 68AA588F8C
- for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 16:59:07 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave07.hostedemail.com (Postfix) with ESMTP id 7927B18030080
- for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 16:59:06 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay01.hostedemail.com (Postfix) with ESMTP id 4BA3D100FBB16;
- Tue, 10 Mar 2020 16:59:03 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2198:2199:2393:2553:2559:2562:2828:2892:3138:3139:3140:3141:3142:3353:3622:3653:3865:3866:3867:3868:3870:3871:3872:3873:3874:4321:5007:7514:7875:7903:10004:10400:10848:11026:11232:11658:11914:12043:12296:12297:12555:12740:12760:12895:13069:13255:13311:13357:13439:14181:14659:14721:21080:21451:21627:30012:30029:30054:30070:30075:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:13, LUA_SUMMARY:none
-X-HE-Tag: coat13_4ecf5281c8248
-X-Filterd-Recvd-Size: 2756
-Received: from XPS-9350.home (unknown [47.151.143.254])
- (Authenticated sender: joe@perches.com)
- by omf12.hostedemail.com (Postfix) with ESMTPA;
- Tue, 10 Mar 2020 16:59:01 +0000 (UTC)
-Message-ID: <3b19da8cb94aeb1e77452348dc528dd3b8a52a2a.camel@perches.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8188eu: rtw_mlme: Add
- space around operators
-From: Joe Perches <joe@perches.com>
-To: Julia Lawall <julia.lawall@inria.fr>, Shreeya Patel
- <shreeya.patel23498@gmail.com>
-Date: Tue, 10 Mar 2020 09:57:20 -0700
-In-Reply-To: <alpine.DEB.2.21.2003101554530.26409@hadrien>
-References: <20200310144702.14653-1-shreeya.patel23498@gmail.com>
- <alpine.DEB.2.21.2003101554530.26409@hadrien>
-User-Agent: Evolution 3.34.1-2 
+ with ESMTP id hgxhvmieDUrO for <devel@linuxdriverproject.org>;
+ Wed, 11 Mar 2020 01:25:59 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A247288158
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 01:25:59 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id c145so545326qke.12
+ for <devel@driverdev.osuosl.org>; Tue, 10 Mar 2020 18:25:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jP1h4LnU7XtbVr4y3Ipe7IVVDlnx9HE/9oHCfNpi+WM=;
+ b=DWmdEhxbRi4c6Wg+y0GATJ62iaarJpImMb/f9vZSKIsSkrBGKKUSaWo1E/dEpqSr/K
+ eVKPs/whf8Ze75a9+siOh36sJh2/cE3ZJu/u0VfyUP/ROogSYwfbm5K35GCnm+HYG14J
+ 6kCCGQfMt/EVaeMu9wBpnsZ1oPcTgUAmaui3r+qq8/YLsaTpHC0XkgLxzVGPaRoydonI
+ 62wywfcwFrdvhaf6z9Vo6wND3OmZVDITTcEsDRl0OgZBjnzb4dIgthnHwILPpa1GQkj+
+ /Ghaeh+KWp5v+irIAlE2EMwtmNNXF2Io8iOHY57H0Fo2Dnocm+yrL0hv7JZjohGRkGJO
+ HE7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jP1h4LnU7XtbVr4y3Ipe7IVVDlnx9HE/9oHCfNpi+WM=;
+ b=try4XOtlqtteFnF+ZwTiK8nmoXRQXhFxcAA4X/SMsUsM3uWlcp9pg1niy+chteIPKd
+ /3S00adjpjKERwPh5+ldAfGuJlHO1jUNq2gmcdVyPvpkSYixiZrNd65pW8hAFln+Ya1F
+ Px31yQAbv2NLqHo8Zwm4pbriwSWCMyl2mq4PKuKOIie7aIiVzTpfT+i+Y+lRU3WzvWCo
+ LXQ1tQ2sRHTMaFNYs/YC/1PzJhjOvrf8ycah+azepuqZuWIeaqvp6H1XgxhwUcJWSght
+ Dt7oodJI/Y1CGnRGF+tCctGQr24i22W2AHbbvtZ1Qe6/mNkGgqXC+yu/nCrBHKnbDIfT
+ c2nw==
+X-Gm-Message-State: ANhLgQ0dgGzLmDk331qDo/r7ExJYrOAVduUybyzH+jRHeA7bxIeY/18L
+ tNYdTk8i1sWOEEvfIva1tiY=
+X-Google-Smtp-Source: ADFU+vvmeAaY55VzzyTgfMyK56hvzzpG+chCK2Qehp/bdiWtE7hHp88BWGBXhRLtPCdJTnqEdHMMbg==
+X-Received: by 2002:a37:702:: with SMTP id 2mr626759qkh.134.1583889958494;
+ Tue, 10 Mar 2020 18:25:58 -0700 (PDT)
+Received: from 2158e4caaa32.ic.unicamp.br
+ (wifi-177-220-84-104.wifi.ic.unicamp.br. [177.220.84.104])
+ by smtp.gmail.com with ESMTPSA id i66sm4618730qkc.13.2020.03.10.18.25.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Mar 2020 18:25:57 -0700 (PDT)
+From: Thiago Souza Ferreira <thsouza2013@gmail.com>
+To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ lkcamp@lists.libreplanetbr.org
+Subject: [PATCH] staging: rtl8188eu: Fix block comments to use *
+Date: Wed, 11 Mar 2020 01:23:32 +0000
+Message-Id: <20200311012332.27498-1-thsouza2013@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -76,56 +86,163 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, nramas@linux.microsoft.com,
- daniel.baluta@gmail.com, sbrivio@redhat.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, hverkuil@xs4all.nl,
- outreachy-kernel@googlegroups.com, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2020-03-10 at 15:57 +0100, Julia Lawall wrote:
-> On Tue, 10 Mar 2020, Shreeya Patel wrote:
-> 
-> > Add space around operators for improving the code
-> > readability.
-> > 
-> > Reported by checkpatch.pl
-> > 
-> > Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
-> > ---
-> > 
-> > rtw_mlme_old.o - Previously produced object file before making any
-> > changes to the source code.
-> > rtw_mlme.o - Object file produced after compiling the changes done in source
-> > file.
-> > 
-> > Following is the output of diff between the previously produced object
-> > file and the object file produced after compiling the changes.
-> > 
-> > shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/core$ diff rtw_mlme_old.o rtw_mlme.o
-> > shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/core$
-> > 
-> > Following output shows that there was no other change in the source
-> > code except for whitespace.
-> > 
-> > shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/core/
-> > shreeya@Shreeya-Patel:~git/kernels/staging$
-> 
-> If this information is importamt, it should be above the line.  On the
-> other hand, it is much too detailed, making it hard to figure out what is
-> being said.  It would be better to just say diff of the .o files before
-> and after the changes shows no difference.  Likewise git diff -w shows no
-> difference.  That way one can quickly see what tests you did, without
-> being distracted by the machine name, the directory name, etc.
+Fix "Block comments use * on subsequent lines" warning of
+rtw_mlme_ext.c, found by checkpatch.pl script
 
-Exactly right.
+Signed-off-by: Thiago Souza Ferreira <thsouza2013@gmail.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_mlme_ext.c | 69 ++++++++++---------
+ 1 file changed, 35 insertions(+), 34 deletions(-)
 
-Keep at it Shreeya.  Almost done.
-
-[It's also nice to trim your replies Julia]
-
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+index 36841d20c..02b87a804 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+@@ -20,8 +20,8 @@
+ static u8 null_addr[ETH_ALEN] = {};
+ 
+ /**************************************************
+-OUI definitions for the vendor specific IE
+-***************************************************/
++ *OUI definitions for the vendor specific IE
++ ***************************************************/
+ const u8 RTW_WPA_OUI[] = {0x00, 0x50, 0xf2, 0x01};
+ const u8 WPS_OUI[] = {0x00, 0x50, 0xf2, 0x04};
+ static const u8 WMM_OUI[] = {0x00, 0x50, 0xf2, 0x02};
+@@ -33,16 +33,16 @@ const u8 WPA_TKIP_CIPHER[4] = {0x00, 0x50, 0xf2, 0x02};
+ const u8 RSN_TKIP_CIPHER[4] = {0x00, 0x0f, 0xac, 0x02};
+ 
+ /********************************************************
+-MCS rate definitions
+-*********************************************************/
++ *MCS rate definitions
++ *********************************************************/
+ const u8 MCS_rate_1R[16] = {
+ 	0xff, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+ 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+ };
+ 
+ /********************************************************
+-ChannelPlan definitions
+-*********************************************************/
++ *ChannelPlan definitions
++ *********************************************************/
+ static struct rt_channel_plan_2g RTW_ChannelPlan2G[RT_CHANNEL_DOMAIN_2G_MAX] = {
+ 	{{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 13},		/*  0x00, RT_CHANNEL_DOMAIN_2G_WORLD , Passive scan CH 12, 13 */
+ 	{{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 13},		/*  0x01, RT_CHANNEL_DOMAIN_2G_ETSI1 */
+@@ -173,10 +173,10 @@ struct xmit_frame *alloc_mgtxmitframe(struct xmit_priv *pxmitpriv)
+ }
+ 
+ /****************************************************************************
+-
+-Following are some TX functions for WiFi MLME
+-
+-*****************************************************************************/
++ *
++ * Following are some TX functions for WiFi MLME
++ *
++ *****************************************************************************/
+ 
+ void update_mgnt_tx_rate(struct adapter *padapter, u8 rate)
+ {
+@@ -1895,10 +1895,10 @@ unsigned int send_beacon(struct adapter *padapter)
+ }
+ 
+ /****************************************************************************
+-
+-Following are some utility functions for WiFi MLME
+-
+-*****************************************************************************/
++ *
++ *Following are some utility functions for WiFi MLME
++ *
++ *****************************************************************************/
+ 
+ static void site_survey(struct adapter *padapter)
+ {
+@@ -2497,10 +2497,11 @@ static void process_80211d(struct adapter *padapter, struct wlan_bssid_ex *bssid
+ }
+ 
+ /****************************************************************************
+-
+-Following are the callback functions for each subtype of the management frames
+-
+-*****************************************************************************/
++ *
++ * Following are the callback functions for each subtype of the management
++ * frames
++ *
++ *****************************************************************************/
+ 
+ static unsigned int OnProbeReq(struct adapter *padapter,
+ 			       struct recv_frame *precv_frame)
+@@ -3822,10 +3823,10 @@ static unsigned int OnAction(struct adapter *padapter,
+ }
+ 
+ /****************************************************************************
+-
+-Following are the initialization functions for WiFi MLME
+-
+-*****************************************************************************/
++ *
++ * Following are the initialization functions for WiFi MLME
++ *
++ *****************************************************************************/
+ 
+ static struct mlme_handler mlme_sta_tbl[] = {
+ 	{WIFI_ASSOCREQ,	  "OnAssocReq",	  &OnAssocReq},
+@@ -4151,10 +4152,10 @@ void mgt_dispatcher(struct adapter *padapter, struct recv_frame *precv_frame)
+ }
+ 
+ /****************************************************************************
+-
+-Following are the functions to report events
+-
+-*****************************************************************************/
++ *
++ * Following are the functions to report events
++ *
++ *****************************************************************************/
+ 
+ void report_survey_event(struct adapter *padapter,
+ 			 struct recv_frame *precv_frame)
+@@ -4405,10 +4406,10 @@ void report_add_sta_event(struct adapter *padapter, unsigned char *MacAddr,
+ }
+ 
+ /****************************************************************************
+-
+-Following are the event callback functions
+-
+-*****************************************************************************/
++ *
++ * Following are the event callback functions
++ *
++ *****************************************************************************/
+ 
+ /* for sta/adhoc mode */
+ void update_sta_info(struct adapter *padapter, struct sta_info *psta)
+@@ -4599,10 +4600,10 @@ void mlmeext_sta_del_event_callback(struct adapter *padapter)
+ }
+ 
+ /****************************************************************************
+-
+-Following are the functions for the timer handlers
+-
+-*****************************************************************************/
++ *
++ * Following are the functions for the timer handlers
++ *
++ *****************************************************************************/
+ 
+ static u8 chk_ap_is_alive(struct adapter *padapter, struct sta_info *psta)
+ {
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
