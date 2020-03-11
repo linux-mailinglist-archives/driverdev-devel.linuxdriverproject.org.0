@@ -1,83 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29EBB1824E0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 23:29:07 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 159831824E5
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 23:30:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 693D5228B4;
-	Wed, 11 Mar 2020 22:29:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BB8CA88A0D;
+	Wed, 11 Mar 2020 22:30:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J92mp4NkINZg; Wed, 11 Mar 2020 22:29:05 +0000 (UTC)
+	with ESMTP id 1rAh4TNSymHo; Wed, 11 Mar 2020 22:30:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1D0D8221FB;
-	Wed, 11 Mar 2020 22:29:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 982348846E;
+	Wed, 11 Mar 2020 22:30:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 558031BF488
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 22:29:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 876D51BF488
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 22:30:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4D70785E6E
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 22:29:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8081486AE4
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 22:30:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ee4GePL6DPKM for <devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 22:28:59 +0000 (UTC)
+ with ESMTP id q2lucGynvJys for <devel@linuxdriverproject.org>;
+ Wed, 11 Mar 2020 22:30:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
  [209.85.210.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B082685DEC
- for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 22:28:59 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id 2so2143443pfg.12
- for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 15:28:59 -0700 (PDT)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C154686A61
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 22:30:42 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id i13so2167637pfe.3
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 15:30:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:user-agent:in-reply-to:references:mime-version
- :content-transfer-encoding:subject:to:from:message-id;
- bh=OK2jvg8iIbxudu6ND4J8JJtzzocg+9lZtyCUh0iqcfs=;
- b=cNjnMmC5+csrT7n7xkH0NSj4vC7lV5+mQsK86AkZsmXEL8Ddsi1g9QpZqX0U58NqwU
- l1FldLSUdDzYy4r/dsZw502g/jEVxZDXMGCGyOSz6Ynye0NVU6V9bUM5D0nGDY5nx89t
- IU7PTinO4JYfVw9DBNKRCkXzJpoqHKN1XImHX0JH294EkDNNpXFY6lxCJ9r3QvyhyP7m
- skJzw12CpiJEcqgJDNIqP2j3gJbtuBCL6oxOj7j+y8g1FqYtb8rbp/Ebk+yRcq+Vfnsa
- COCA92W6WcakTBHakyj02K5Mflnv/qSf6FffeFsJ1gcEhDOf2r9zSRGCdtxSey/g6XCY
- nXwQ==
+ :content-transfer-encoding:subject:to:cc:from:message-id;
+ bh=VxId/5R2+lzGKp4xsQtvfpVORMMHYVxgyqrgJySMYzY=;
+ b=TbSHiffgBHgwXtx6lWGtUCIGwYo7aHUsh3UxIgr4iUYGZj78Lkbv3m0bjNFEsPt+/G
+ 0aomm2mocu8Rf+ku5opnW2fnZ/LiSJ3eE8sRt1RZNJlFdGa0RJnRWRxX8yulkaJjZb+4
+ I0Wq7BvsQpJObzG9dYfRtLMo7agM/Z13SNVfjv0rAxaVjvwZcFME9jKgB5GqQ2GJUYQS
+ +AH08f80G47e5pKa7h7HIxxP3t67tHVKGrTW6AnglzAQK62Spb6YJrGFNtHSCDxYzGdZ
+ UK8EQIeIqZ0S6KqtKjYpU8EDkerh/V7WIOPN72DAbjdzhMimCQITvjoa3Yivn9ZwM03c
+ smjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:user-agent:in-reply-to:references
- :mime-version:content-transfer-encoding:subject:to:from:message-id;
- bh=OK2jvg8iIbxudu6ND4J8JJtzzocg+9lZtyCUh0iqcfs=;
- b=iwnMuq00AfkuH6mPmvOkZhNzIdbbH4626U/dyWSe7KY7MINifVVtEtTRasaKrUw6vv
- QUYydExFwggOLAYjY6EIeYU1Ojm4q0luOOJIuifXSiTqEycpKn+Nm4zRLHaDQlRiDE6i
- nC8UlpGJpQuOfWogsWj+NhhpBLAPYKIj8X0SBgYj3fki5vbswpuBhw5fYH7HXObsRQcD
- pUI2DPZKSZwghoJPcg/2ipd/krgoJCYFZbnxaMD2My3R5ShDvu93eGDDecHQrzVxcQ+F
- rzscrdbycGTNmh1iVazESvGrgOaQ5KeAr2uLL00Ck5Hkwyi034qhg1hgsH1cLzJ+lmlN
- BUeQ==
-X-Gm-Message-State: ANhLgQ0Wj7mSNZnu+WyeJNkrfoKwOhsKt0iCmYzj6fS2cMev/vAdTH1R
- rizOog8lVXbTGuSWzEylIso=
-X-Google-Smtp-Source: ADFU+vtuQMMY52HPjZDuDX/2pzncUdQNWBbjslUBN7mA7FVQOPHA0VUEQXQ2n4V1ilOYcStsF3BG6A==
-X-Received: by 2002:a62:e20e:: with SMTP id a14mr4963341pfi.138.1583965739153; 
- Wed, 11 Mar 2020 15:28:59 -0700 (PDT)
+ :mime-version:content-transfer-encoding:subject:to:cc:from
+ :message-id;
+ bh=VxId/5R2+lzGKp4xsQtvfpVORMMHYVxgyqrgJySMYzY=;
+ b=Ydg1hRQh4zuVMrlkWcOewWQ7uMJjkA/ojX3zxV2LZMH5SO01LSyFhomFTFKRCguqok
+ LDi22hAEHms0lXatCdK6UBMQp6z5OnRaU2OhAvXQAkH76ykb386Aj2u6gWwcNttkuSQm
+ vV34KY7zjtS7+NhutXS6qP8YKT7HwaiZ55R4iQApIHw4AJk+ly5gXgsC21Dzw/PQdokD
+ TSCPgU1HkkmmDW3V6VuP5lSMdC1sGDdEUv5lg0Wg5kRpFNCO9mvnb5+56TIxPcRNHfQv
+ PJI42ZHsALfgfn0yvv1K1mu+2SSQPqgUti2rwOcWg0tKOdsw4JpyPRm35sDCzBuXorsH
+ E1lw==
+X-Gm-Message-State: ANhLgQ2N/Xleg4pgKPD7KHwGViV+RV7TyLvec7n0p2+Pv+ZjFlcMdtz5
+ 5T3fEXVxaBZSWNEfLUbegPQ=
+X-Google-Smtp-Source: ADFU+vvUdUiZ/3I5RAU7v1jAZt0rsCbzS2PwzEvQdXDuFP/h0EjEUfZ4WMu3QLeSizzxjP2xBkZa8Q==
+X-Received: by 2002:a62:f842:: with SMTP id c2mr5017437pfm.104.1583965842272; 
+ Wed, 11 Mar 2020 15:30:42 -0700 (PDT)
 Received: from [192.168.0.100] ([113.193.33.106])
- by smtp.gmail.com with ESMTPSA id z1sm641860pfa.16.2020.03.11.15.28.58
+ by smtp.gmail.com with ESMTPSA id v5sm1592244pff.209.2020.03.11.15.30.41
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 11 Mar 2020 15:28:58 -0700 (PDT)
-Date: Thu, 12 Mar 2020 03:58:55 +0530
+ Wed, 11 Mar 2020 15:30:41 -0700 (PDT)
+Date: Thu, 12 Mar 2020 04:00:40 +0530
 User-Agent: K-9 Mail for Android
-In-Reply-To: <0fed25f914c6f39b024dd3bbc4f11892c40f4a60.camel@perches.com>
-References: <20200311133811.2246-1-shreeya.patel23498@gmail.com>
- <0fed25f914c6f39b024dd3bbc4f11892c40f4a60.camel@perches.com>
+In-Reply-To: <20200311180428.6489fe9b@elisabeth>
+References: <20200311131742.31068-1-shreeya.patel23498@gmail.com>
+ <20200311180428.6489fe9b@elisabeth>
 MIME-Version: 1.0
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723bs: sdio_halinit:
- Remove unnecessary conditions
-To: Joe Perches <joe@perches.com>, gregkh@linuxfoundation.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com, sbrivio@redhat.com, daniel.baluta@gmail.com,
- nramas@linux.microsoft.com, hverkuil@xs4all.nl, Larry.Finger@lwfinger.net
+Subject: Re: [Outreachy kernel] [PATCH v4] Staging: rtl8188eu: rtw_mlme: Add
+ space around operators
+To: outreachy-kernel@googlegroups.com,Stefano Brivio <sbrivio@redhat.com>
 From: Shreeya Patel <shreeya.patel23498@gmail.com>
-Message-ID: <1CF27D55-EEB4-4A75-B767-A30845BD5E1B@gmail.com>
+Message-ID: <181B01E8-5D92-458F-9C5E-7271333B96F4@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,59 +88,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, daniel.baluta@gmail.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, hverkuil@xs4all.nl,
+ nramas@linux.microsoft.com, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hey Joe,
 
-On March 11, 2020 10:56:29 PM GMT+05:30, Joe Perches <joe@perches.com> wrote:
->On Wed, 2020-03-11 at 19:08 +0530, Shreeya Patel wrote:
->> Remove if and else conditions since both are leading to the
->> initialization of "valueDMATimeout" and "valueDMAPageCount" with
->> the same value.
+
+On March 11, 2020 10:34:28 PM GMT+05:30, Stefano Brivio
+ <sbrivio@redhat.com> wrote:
+
+Hey Stefano,
+
+>On Wed, 11 Mar 2020 18:47:42 +0530
+>Shreeya Patel <shreeya.patel23498@gmail.com> wrote:
 >
->You might consider removing the
->	/* Timeout value is calculated by 34 / (2^n) */
->comment entirely as it doesn't make much sense.
+>> Add space around operators for improving the code
+>> readability.
+>> Reported by checkpatch.pl
+>> 
+>> git diff -w shows no difference.
+>> diff of the .o files before and after the changes shows no
+>difference.
+>> 
+>> Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+>
+>This looks good to me. Further clean-ups here could probably make this
+>look less messy (there are long lines, unnecessary parentheses that are
+>rather confusing, especially on that 4/5 factor, "magic" constants that
+>might make sense to figure out the meaning of, etc.).
 >
 
-You want me to remove the other comments as well?
-Since Julia suggested in another email that the comments are not useful if we are removing the condition since they were applied to only one branch ( i.e. "if" branch )
-
+Thanks for reviewing. I will surely look at the other clean-ups as well :)
 
 Thanks
 
->For what N is "(34 / (2 ^ N))" = 6 ?
->
->> diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
->b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
->[]
->> @@ -551,18 +551,11 @@ static void HalRxAggr8723BSdio(struct adapter
->*padapter)
->>  
->>  	pregistrypriv = &padapter->registrypriv;
->>  
->> -	if (pregistrypriv->wifi_spec) {
->> -		/*  2010.04.27 hpfan */
->> -		/*  Adjust RxAggrTimeout to close to zero disable RxAggr,
->suggested by designer */
->> -		/*  Timeout value is calculated by 34 / (2^n) */
->> -		valueDMATimeout = 0x06;
->> -		valueDMAPageCount = 0x06;
->> -	} else {
->> -		/*  20130530, Isaac@SD1 suggest 3 kinds of parameter */
->> -		/*  TX/RX Balance */
->> -		valueDMATimeout = 0x06;
->> -		valueDMAPageCount = 0x06;
->> -	}
->> +	/*  2010.04.27 hpfan */
->> +	/*  Adjust RxAggrTimeout to close to zero disable RxAggr, suggested
->by designer */
->> +	/*  Timeout value is calculated by 34 / (2^n) */
->> +	valueDMATimeout = 0x06;
->> +	valueDMAPageCount = 0x06;
+>Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
 
 -- 
 Sent from my Android device with K-9 Mail. Please excuse my brevity.
