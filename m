@@ -2,50 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6C04181603
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 11:43:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6706D181636
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 11:53:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8476122264;
-	Wed, 11 Mar 2020 10:43:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 082A622225;
+	Wed, 11 Mar 2020 10:53:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DJxCEZ9S4U0V; Wed, 11 Mar 2020 10:43:53 +0000 (UTC)
+	with ESMTP id TBuidrJJrH6S; Wed, 11 Mar 2020 10:53:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 230C9221B5;
-	Wed, 11 Mar 2020 10:43:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 15A6222219;
+	Wed, 11 Mar 2020 10:52:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1F2821BF313
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 10:43:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C06141BF313
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 10:52:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 17B26860CE
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 10:43:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BD6E888651
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 10:52:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ucLAJJXzhHDM for <devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 10:43:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail3-relais-sop.national.inria.fr
- (mail3-relais-sop.national.inria.fr [192.134.164.104])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 20026860A2
- for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 10:43:45 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.70,540,1574118000"; d="scan'208";a="341993626"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
- by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2020 11:43:26 +0100
-Date: Wed, 11 Mar 2020 11:43:26 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: julia@hadrien
-To: Shreeya Patel <shreeya.patel23498@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v3] Staging: rtl8188eu: rtw_mlme: Add
- space around operators
-In-Reply-To: <20200311094332.29714-1-shreeya.patel23498@gmail.com>
-Message-ID: <alpine.DEB.2.21.2003111141560.2999@hadrien>
-References: <20200311094332.29714-1-shreeya.patel23498@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ with ESMTP id k-eGlK+JXI9t for <devel@linuxdriverproject.org>;
+ Wed, 11 Mar 2020 10:52:51 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx06.melco.co.jp (mx06.melco.co.jp [192.218.140.146])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1019E883CC
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 10:52:51 +0000 (UTC)
+Received: from mr06.melco.co.jp (mr06 [133.141.98.164])
+ by mx06.melco.co.jp (Postfix) with ESMTP id 0CF7B3A4426;
+ Wed, 11 Mar 2020 19:52:49 +0900 (JST)
+Received: from mr06.melco.co.jp (unknown [127.0.0.1])
+ by mr06.imss (Postfix) with ESMTP id 48cphJ74D6zRk04;
+ Wed, 11 Mar 2020 19:52:48 +0900 (JST)
+Received: from mf04_second.melco.co.jp (unknown [192.168.20.184])
+ by mr06.melco.co.jp (Postfix) with ESMTP id 48cphJ6lyVzRjys;
+ Wed, 11 Mar 2020 19:52:48 +0900 (JST)
+Received: from mf04.melco.co.jp (unknown [133.141.98.184])
+ by mf04_second.melco.co.jp (Postfix) with ESMTP id 48cphJ6g15zRjFt;
+ Wed, 11 Mar 2020 19:52:48 +0900 (JST)
+Received: from tux532.tad.melco.co.jp (unknown [133.141.243.226])
+ by mf04.melco.co.jp (Postfix) with ESMTP id 48cphJ62pqzRjFp;
+ Wed, 11 Mar 2020 19:52:48 +0900 (JST)
+Received: from tux532.tad.melco.co.jp
+ by tux532.tad.melco.co.jp (unknown) with ESMTP id 02BAqmqc028960;
+ Wed, 11 Mar 2020 19:52:48 +0900
+Received: from tux390.tad.melco.co.jp (tux390.tad.melco.co.jp [127.0.0.1])
+ by postfix.imss70 (Postfix) with ESMTP id 9FC3E17E075;
+ Wed, 11 Mar 2020 19:52:48 +0900 (JST)
+Received: from tux554.tad.melco.co.jp (tux100.tad.melco.co.jp [10.168.7.223])
+ by tux390.tad.melco.co.jp (Postfix) with ESMTP id 9323E17E073;
+ Wed, 11 Mar 2020 19:52:48 +0900 (JST)
+Received: from tux554.tad.melco.co.jp
+ by tux554.tad.melco.co.jp (unknown) with ESMTP id 02BAqm0t017644;
+ Wed, 11 Mar 2020 19:52:48 +0900
+From: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+To: Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp
+Subject: [PATCH 1/5] staging: exfat: conform 'pbr_sector_t' definition to
+ exFAT specification
+Date: Wed, 11 Mar 2020 19:52:41 +0900
+Message-Id: <20200311105245.125564-1-Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,210 +78,427 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, nramas@linux.microsoft.com,
- daniel.baluta@gmail.com, outreachy-kernel@googlegroups.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, hverkuil@xs4all.nl,
- sbrivio@redhat.com, Larry.Finger@lwfinger.net
+Cc: devel@driverdev.osuosl.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ motai.hirotaka@aj.mitsubishielectric.co.jp, linux-kernel@vger.kernel.org,
+ Mori.Takahiro@ab.MitsubishiElectric.co.jp, linux-fsdevel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Redefine 'pbr_sector_t' as 'boot_sector_t' to comply with exFAT specification.
+ - Redefine 'pbr_sector_t' as 'boot_sector_t'.
+ - Rename variable names including 'pbr'.
+ - Replace GET**()/SET**() macro with cpu_to_le**()/le**_ to_cpu().
+ - Remove fs_info_t.PBR_sector (always 0).
+ - Remove unused definitions.
 
+Reviewed-by: Takahiro Mori <Mori.Takahiro@ab.MitsubishiElectric.co.jp>
+Signed-off-by: Tetsuhiro Kohada <Kohada.Tetsuhiro@dc.MitsubishiElectric.co.jp>
+---
+ drivers/staging/exfat/exfat.h       | 139 +++++++---------------------
+ drivers/staging/exfat/exfat_core.c  |  62 ++++++-------
+ drivers/staging/exfat/exfat_super.c |  14 ++-
+ 3 files changed, 65 insertions(+), 150 deletions(-)
 
-On Wed, 11 Mar 2020, Shreeya Patel wrote:
+diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
+index c863d7566b57..0f730090cb30 100644
+--- a/drivers/staging/exfat/exfat.h
++++ b/drivers/staging/exfat/exfat.h
+@@ -35,17 +35,12 @@
+ #define DENTRY_SIZE		32	/* dir entry size */
+ #define DENTRY_SIZE_BITS	5
+ 
+-/* PBR entries */
+-#define PBR_SIGNATURE	0xAA55
+-#define EXT_SIGNATURE	0xAA550000
+-#define VOL_LABEL	"NO NAME    "	/* size should be 11 */
+-#define OEM_NAME	"MSWIN4.1"	/* size should be 8 */
+-#define STR_FAT12	"FAT12   "	/* size should be 8 */
+-#define STR_FAT16	"FAT16   "	/* size should be 8 */
+-#define STR_FAT32	"FAT32   "	/* size should be 8 */
+-#define STR_EXFAT	"EXFAT   "	/* size should be 8 */
+-#define VOL_CLEAN	0x0000
+-#define VOL_DIRTY	0x0002
++/* exFAT: 3 Main and Backup Boot Regions */
++#define BOOT_SIGNATURE		0xAA55
++#define EXBOOT_SIGNATURE	0xAA550000
++#define STR_EXFAT		"EXFAT   "	/* size should be 8 */
++#define VOL_CLEAN		0x0000
++#define VOL_DIRTY		0x0002
+ 
+ /* max number of clusters */
+ #define FAT12_THRESHOLD		4087		/* 2^12 - 1 + 2 (clu 0 & 1) */
+@@ -81,7 +76,7 @@
+ 
+ /* checksum types */
+ #define CS_DIR_ENTRY		0
+-#define CS_PBR_SECTOR		1
++#define CS_BOOT_SECTOR		1
+ #define CS_DEFAULT		2
+ 
+ #define CLUSTER_16(x)		((u16)(x))
+@@ -267,98 +262,29 @@ struct timestamp_t {
+ 	u16      year;       /* 0 ~ 127 (since 1980) */
+ };
+ 
+-/* MS_DOS FAT partition boot record (512 bytes) */
+-struct pbr_sector_t {
+-	u8       jmp_boot[3];
+-	u8       oem_name[8];
+-	u8       bpb[109];
+-	u8       boot_code[390];
+-	u8       signature[2];
+-};
+-
+-/* MS-DOS FAT12/16 BIOS parameter block (51 bytes) */
+-struct bpb16_t {
+-	u8       sector_size[2];
+-	u8       sectors_per_clu;
+-	u8       num_reserved[2];
+-	u8       num_fats;
+-	u8       num_root_entries[2];
+-	u8       num_sectors[2];
+-	u8       media_type;
+-	u8       num_fat_sectors[2];
+-	u8       sectors_in_track[2];
+-	u8       num_heads[2];
+-	u8       num_hid_sectors[4];
+-	u8       num_huge_sectors[4];
+-
+-	u8       phy_drv_no;
+-	u8       reserved;
+-	u8       ext_signature;
+-	u8       vol_serial[4];
+-	u8       vol_label[11];
+-	u8       vol_type[8];
+-};
+-
+-/* MS-DOS FAT32 BIOS parameter block (79 bytes) */
+-struct bpb32_t {
+-	u8       sector_size[2];
+-	u8       sectors_per_clu;
+-	u8       num_reserved[2];
+-	u8       num_fats;
+-	u8       num_root_entries[2];
+-	u8       num_sectors[2];
+-	u8       media_type;
+-	u8       num_fat_sectors[2];
+-	u8       sectors_in_track[2];
+-	u8       num_heads[2];
+-	u8       num_hid_sectors[4];
+-	u8       num_huge_sectors[4];
+-	u8       num_fat32_sectors[4];
+-	u8       ext_flags[2];
+-	u8       fs_version[2];
+-	u8       root_cluster[4];
+-	u8       fsinfo_sector[2];
+-	u8       backup_sector[2];
+-	u8       reserved[12];
+-
+-	u8       phy_drv_no;
+-	u8       ext_reserved;
+-	u8       ext_signature;
+-	u8       vol_serial[4];
+-	u8       vol_label[11];
+-	u8       vol_type[8];
+-};
+-
+-/* MS-DOS EXFAT BIOS parameter block (109 bytes) */
+-struct bpbex_t {
+-	u8       reserved1[53];
+-	u8       vol_offset[8];
+-	u8       vol_length[8];
+-	u8       fat_offset[4];
+-	u8       fat_length[4];
+-	u8       clu_offset[4];
+-	u8       clu_count[4];
+-	u8       root_cluster[4];
+-	u8       vol_serial[4];
+-	u8       fs_version[2];
+-	u8       vol_flags[2];
+-	u8       sector_size_bits;
+-	u8       sectors_per_clu_bits;
+-	u8       num_fats;
+-	u8       phy_drv_no;
+-	u8       perc_in_use;
+-	u8       reserved2[7];
+-};
+-
+-/* MS-DOS FAT file system information sector (512 bytes) */
+-struct fsi_sector_t {
+-	u8       signature1[4];
+-	u8       reserved1[480];
+-	u8       signature2[4];
+-	u8       free_cluster[4];
+-	u8       next_cluster[4];
+-	u8       reserved2[14];
+-	u8       signature3[2];
++/* exFAT: 3.1 Main and Backup Boot Sector (512 bytes) */
++struct boot_sector_t {
++	__u8	jmp_boot[3];
++	__u8	fs_name[8];
++	__u8	must_be_zero[53];
++	__le64	partition_offset;
++	__le64	vol_length;
++	__le32	fat_offset;
++	__le32	fat_length;
++	__le32	clu_offset;
++	__le32	clu_count;
++	__le32	root_cluster;
++	__le32	vol_serial;
++	__le16	fs_revision;
++	__le16	vol_flags;
++	__u8	bytes_per_sector_shift;
++	__u8	sectors_per_clu_shift;
++	__u8	num_fats;
++	__u8	drv_sel;
++	__u8	percent_in_use;
++	__u8	reserved[7];
++	__u8	boot_code[390];
++	__le16	boot_signature;
+ };
+ 
+ /* MS-DOS FAT directory entry (32 bytes) */
+@@ -469,7 +395,6 @@ struct fs_info_t {
+ 	u32      sectors_per_clu;        /* cluster size in sectors */
+ 	u32      sectors_per_clu_bits;
+ 
+-	u32      PBR_sector;             /* PBR sector */
+ 	u32      FAT1_start_sector;      /* FAT1 start sector */
+ 	u32      FAT2_start_sector;      /* FAT2 start sector */
+ 	u32      root_start_sector;      /* root dir start sector */
+@@ -481,7 +406,7 @@ struct fs_info_t {
+ 	u32      dentries_per_clu;       /* num of dentries per cluster */
+ 
+ 	u32      vol_flag;               /* volume dirty flag */
+-	struct buffer_head *pbr_bh;         /* PBR sector */
++	struct buffer_head *boot_bh;     /* BOOT sector */
+ 
+ 	u32      map_clu;                /* allocation bitmap start cluster */
+ 	u32      map_sectors;            /* num of allocation bitmap sectors */
+@@ -691,7 +616,7 @@ s32 resolve_path(struct inode *inode, char *path, struct chain_t *p_dir,
+ 		 struct uni_name_t *p_uniname);
+ 
+ /* file operation functions */
+-s32 exfat_mount(struct super_block *sb, struct pbr_sector_t *p_pbr);
++s32 exfat_mount(struct super_block *sb, struct boot_sector_t *p_boot);
+ s32 create_dir(struct inode *inode, struct chain_t *p_dir,
+ 	       struct uni_name_t *p_uniname, struct file_id_t *fid);
+ s32 create_file(struct inode *inode, struct chain_t *p_dir,
+diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
+index 374a4fe183f5..ca1039b7977c 100644
+--- a/drivers/staging/exfat/exfat_core.c
++++ b/drivers/staging/exfat/exfat_core.c
+@@ -81,8 +81,7 @@ static inline void exfat_bitmap_clear(u8 *bitmap, int i)
+ 
+ void fs_set_vol_flags(struct super_block *sb, u32 new_flag)
+ {
+-	struct pbr_sector_t *p_pbr;
+-	struct bpbex_t *p_bpb;
++	struct boot_sector_t *p_boot;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 
+ 	if (p_fs->vol_flag == new_flag)
+@@ -90,23 +89,21 @@ void fs_set_vol_flags(struct super_block *sb, u32 new_flag)
+ 
+ 	p_fs->vol_flag = new_flag;
+ 
+-	if (!p_fs->pbr_bh) {
+-		if (sector_read(sb, p_fs->PBR_sector,
+-				&p_fs->pbr_bh, 1) != 0)
++	if (!p_fs->boot_bh) {
++		if (sector_read(sb, 0, &p_fs->boot_bh, 1) != 0)
+ 			return;
+ 	}
+ 
+-	p_pbr = (struct pbr_sector_t *)p_fs->pbr_bh->b_data;
+-	p_bpb = (struct bpbex_t *)p_pbr->bpb;
+-	SET16(p_bpb->vol_flags, (u16)new_flag);
++	p_boot = (struct boot_sector_t *)p_fs->boot_bh->b_data;
++	p_boot->vol_flags = cpu_to_le16(new_flag);
+ 
+ 	/* XXX duyoung
+ 	 * what can we do here? (cuz fs_set_vol_flags() is void)
+ 	 */
+-	if ((new_flag == VOL_DIRTY) && (!buffer_dirty(p_fs->pbr_bh)))
+-		sector_write(sb, p_fs->PBR_sector, p_fs->pbr_bh, 1);
++	if ((new_flag == VOL_DIRTY) && (!buffer_dirty(p_fs->boot_bh)))
++		sector_write(sb, 0, p_fs->boot_bh, 1);
+ 	else
+-		sector_write(sb, p_fs->PBR_sector, p_fs->pbr_bh, 0);
++		sector_write(sb, 0, p_fs->boot_bh, 0);
+ }
+ 
+ void fs_error(struct super_block *sb)
+@@ -535,7 +532,7 @@ s32 load_alloc_bitmap(struct super_block *sb)
+ 					}
+ 				}
+ 
+-				p_fs->pbr_bh = NULL;
++				p_fs->boot_bh = NULL;
+ 				return 0;
+ 			}
+ 		}
+@@ -552,7 +549,7 @@ void free_alloc_bitmap(struct super_block *sb)
+ 	int i;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 
+-	brelse(p_fs->pbr_bh);
++	brelse(p_fs->boot_bh);
+ 
+ 	for (i = 0; i < p_fs->map_sectors; i++)
+ 		__brelse(p_fs->vol_amap[i]);
+@@ -2063,45 +2060,44 @@ s32 resolve_path(struct inode *inode, char *path, struct chain_t *p_dir,
+ 	return 0;
+ }
+ 
+-s32 exfat_mount(struct super_block *sb, struct pbr_sector_t *p_pbr)
++s32 exfat_mount(struct super_block *sb, struct boot_sector_t *p_boot)
+ {
+-	struct bpbex_t *p_bpb = (struct bpbex_t *)p_pbr->bpb;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 	struct bd_info_t *p_bd = &(EXFAT_SB(sb)->bd_info);
+ 
+-	if (p_bpb->num_fats == 0)
++	if (p_boot->num_fats == 0)
+ 		return -EFSCORRUPTED;
+ 
+-	p_fs->sectors_per_clu = 1 << p_bpb->sectors_per_clu_bits;
+-	p_fs->sectors_per_clu_bits = p_bpb->sectors_per_clu_bits;
++	p_fs->sectors_per_clu = 1 << p_boot->sectors_per_clu_shift;
++	p_fs->sectors_per_clu_bits = p_boot->sectors_per_clu_shift;
+ 	p_fs->cluster_size_bits = p_fs->sectors_per_clu_bits +
+ 				  p_bd->sector_size_bits;
+ 	p_fs->cluster_size = 1 << p_fs->cluster_size_bits;
+ 
+-	p_fs->num_FAT_sectors = GET32(p_bpb->fat_length);
++	p_fs->num_FAT_sectors = le32_to_cpu(p_boot->fat_length);
+ 
+-	p_fs->FAT1_start_sector = p_fs->PBR_sector + GET32(p_bpb->fat_offset);
+-	if (p_bpb->num_fats == 1)
++	p_fs->FAT1_start_sector = le32_to_cpu(p_boot->fat_offset);
++	if (p_boot->num_fats == 1)
+ 		p_fs->FAT2_start_sector = p_fs->FAT1_start_sector;
+ 	else
+ 		p_fs->FAT2_start_sector = p_fs->FAT1_start_sector +
+ 					  p_fs->num_FAT_sectors;
+ 
+-	p_fs->root_start_sector = p_fs->PBR_sector + GET32(p_bpb->clu_offset);
++	p_fs->root_start_sector = le32_to_cpu(p_boot->clu_offset);
+ 	p_fs->data_start_sector = p_fs->root_start_sector;
+ 
+-	p_fs->num_sectors = GET64(p_bpb->vol_length);
+-	p_fs->num_clusters = GET32(p_bpb->clu_count) + 2;
++	p_fs->num_sectors = le64_to_cpu(p_boot->vol_length);
++	p_fs->num_clusters = le32_to_cpu(p_boot->clu_count) + 2;
+ 	/* because the cluster index starts with 2 */
+ 
+-	p_fs->vol_id = GET32(p_bpb->vol_serial);
++	p_fs->vol_id = le32_to_cpu(p_boot->vol_serial);
+ 
+-	p_fs->root_dir = GET32(p_bpb->root_cluster);
++	p_fs->root_dir = le32_to_cpu(p_boot->root_cluster);
+ 	p_fs->dentries_in_root = 0;
+ 	p_fs->dentries_per_clu = 1 << (p_fs->cluster_size_bits -
+ 				       DENTRY_SIZE_BITS);
+ 
+-	p_fs->vol_flag = (u32)GET16(p_bpb->vol_flags);
++	p_fs->vol_flag = (u32)le16_to_cpu(p_boot->vol_flags);
+ 	p_fs->clu_srch_ptr = 2;
+ 	p_fs->used_clusters = UINT_MAX;
+ 
+@@ -2431,8 +2427,7 @@ int sector_read(struct super_block *sb, sector_t sec, struct buffer_head **bh,
+ 	s32 ret = -EIO;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 
+-	if ((sec >= (p_fs->PBR_sector + p_fs->num_sectors)) &&
+-	    (p_fs->num_sectors > 0)) {
++	if ((sec >= p_fs->num_sectors) && (p_fs->num_sectors > 0)) {
+ 		pr_err("[EXFAT] %s: out of range error! (sec = %llu)\n",
+ 		       __func__, (unsigned long long)sec);
+ 		fs_error(sb);
+@@ -2454,8 +2449,7 @@ int sector_write(struct super_block *sb, sector_t sec, struct buffer_head *bh,
+ 	s32 ret = -EIO;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 
+-	if (sec >= (p_fs->PBR_sector + p_fs->num_sectors) &&
+-	    (p_fs->num_sectors > 0)) {
++	if (sec >= p_fs->num_sectors && (p_fs->num_sectors > 0)) {
+ 		pr_err("[EXFAT] %s: out of range error! (sec = %llu)\n",
+ 		       __func__, (unsigned long long)sec);
+ 		fs_error(sb);
+@@ -2483,8 +2477,7 @@ int multi_sector_read(struct super_block *sb, sector_t sec,
+ 	s32 ret = -EIO;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 
+-	if (((sec + num_secs) > (p_fs->PBR_sector + p_fs->num_sectors)) &&
+-	    (p_fs->num_sectors > 0)) {
++	if (((sec + num_secs) > p_fs->num_sectors) && (p_fs->num_sectors > 0)) {
+ 		pr_err("[EXFAT] %s: out of range error! (sec = %llu, num_secs = %d)\n",
+ 		       __func__, (unsigned long long)sec, num_secs);
+ 		fs_error(sb);
+@@ -2506,8 +2499,7 @@ int multi_sector_write(struct super_block *sb, sector_t sec,
+ 	s32 ret = -EIO;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 
+-	if ((sec + num_secs) > (p_fs->PBR_sector + p_fs->num_sectors) &&
+-	    (p_fs->num_sectors > 0)) {
++	if ((sec + num_secs) > p_fs->num_sectors && (p_fs->num_sectors > 0)) {
+ 		pr_err("[EXFAT] %s: out of range error! (sec = %llu, num_secs = %d)\n",
+ 		       __func__, (unsigned long long)sec, num_secs);
+ 		fs_error(sb);
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index 75813d0fe7a7..bd257d401f7b 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -344,7 +344,7 @@ static inline void exfat_save_attr(struct inode *inode, u32 attr)
+ static int ffsMountVol(struct super_block *sb)
+ {
+ 	int i, ret;
+-	struct pbr_sector_t *p_pbr;
++	struct boot_sector_t *p_boot;
+ 	struct buffer_head *tmp_bh = NULL;
+ 	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+ 	struct bd_info_t *p_bd = &(EXFAT_SB(sb)->bd_info);
+@@ -376,12 +376,10 @@ static int ffsMountVol(struct super_block *sb)
+ 		goto out;
+ 	}
+ 
+-	p_fs->PBR_sector = 0;
++	p_boot = (struct boot_sector_t *)tmp_bh->b_data;
+ 
+-	p_pbr = (struct pbr_sector_t *)tmp_bh->b_data;
+-
+-	/* check the validity of PBR */
+-	if (GET16_A(p_pbr->signature) != PBR_SIGNATURE) {
++	/* check the validity of BOOT sector */
++	if (le16_to_cpu(p_boot->boot_signature) != BOOT_SIGNATURE) {
+ 		brelse(tmp_bh);
+ 		exfat_bdev_close(sb);
+ 		ret = -EFSCORRUPTED;
+@@ -390,7 +388,7 @@ static int ffsMountVol(struct super_block *sb)
+ 
+ 	/* fill fs_struct */
+ 	for (i = 0; i < 53; i++)
+-		if (p_pbr->bpb[i])
++		if (p_boot->must_be_zero[i])
+ 			break;
+ 
+ 	if (i < 53) {
+@@ -399,7 +397,7 @@ static int ffsMountVol(struct super_block *sb)
+ 		pr_info("EXFAT: Attempted to mount VFAT filesystem\n");
+ 		goto out;
+ 	} else {
+-		ret = exfat_mount(sb, p_pbr);
++		ret = exfat_mount(sb, p_boot);
+ 	}
+ 
+ 	brelse(tmp_bh);
+-- 
+2.25.1
 
-> Add space around operators for improving the code
-> readability.
->
-> Reported by checkpatch.pl
->
-> Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
-> ---
->
-> shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/core/
-> shreeya@Shreeya-Patel:~git/kernels/staging$
->
-> git diff -w shows no difference.
->
-> shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/core$ diff rtw_mlme_old.o rtw_mlme.o
-> shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/core$
->
-> diff of the .o files before and after the changes shows no difference
-
-Put the two sentences "git diff -w..." and "diff of the .o ..." above the
---- (but not the rest).  That shows what testing you did.  If someone has
-a problem with this code in the future, they will know that this patch
-can't be the source of that problem.
-
-julia
-
->
-> Changes in v3
->   - Make the diff output explanation more readable.
->
-> Changes in v2
->   - Include the file name in Subject to make it more specific.
->   - Add the output of diff of the .o files before and after the changes
-> to show no difference.
->   - Add the output of git diff -w to show no difference.
->
->  drivers/staging/rtl8188eu/core/rtw_mlme.c | 40 +++++++++++------------
->  1 file changed, 20 insertions(+), 20 deletions(-)
->
-> diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> index 8da955e8343b..9de2d421f6b1 100644
-> --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> @@ -149,7 +149,7 @@ static void _rtw_free_network(struct mlme_priv *pmlmepriv, struct wlan_network *
->  	    (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE)))
->  		lifetime = 1;
->  	if (!isfreeall) {
-> -		delta_time = (curr_time - pnetwork->last_scanned)/HZ;
-> +		delta_time = (curr_time - pnetwork->last_scanned) / HZ;
->  		if (delta_time < lifetime)/*  unit:sec */
->  			return;
->  	}
-> @@ -249,8 +249,8 @@ void rtw_generate_random_ibss(u8 *pibss)
->  	pibss[1] = 0x11;
->  	pibss[2] = 0x87;
->  	pibss[3] = (u8)(curtime & 0xff);/* p[0]; */
-> -	pibss[4] = (u8)((curtime>>8) & 0xff);/* p[1]; */
-> -	pibss[5] = (u8)((curtime>>16) & 0xff);/* p[2]; */
-> +	pibss[4] = (u8)((curtime >> 8) & 0xff);/* p[1]; */
-> +	pibss[5] = (u8)((curtime >> 16) & 0xff);/* p[2]; */
->  }
->
->  u8 *rtw_get_capability_from_ie(u8 *ie)
-> @@ -357,9 +357,9 @@ void update_network(struct wlan_bssid_ex *dst, struct wlan_bssid_ex *src,
->  			rssi_final = rssi_ori;
->  	} else {
->  		if (sq_smp != 101) { /* from the right channel */
-> -			ss_final = ((u32)(src->PhyInfo.SignalStrength)+(u32)(dst->PhyInfo.SignalStrength)*4)/5;
-> -			sq_final = ((u32)(src->PhyInfo.SignalQuality)+(u32)(dst->PhyInfo.SignalQuality)*4)/5;
-> -			rssi_final = (src->Rssi+dst->Rssi*4)/5;
-> +			ss_final = ((u32)(src->PhyInfo.SignalStrength) + (u32)(dst->PhyInfo.SignalStrength) * 4) / 5;
-> +			sq_final = ((u32)(src->PhyInfo.SignalQuality) + (u32)(dst->PhyInfo.SignalQuality) * 4) / 5;
-> +			rssi_final = (src->Rssi + dst->Rssi * 4) / 5;
->  		} else {
->  			/* bss info not receiving from the right channel, use the original RX signal infos */
->  			ss_final = dst->PhyInfo.SignalStrength;
-> @@ -510,7 +510,7 @@ static int rtw_is_desired_network(struct adapter *adapter, struct wlan_network *
->  	privacy = pnetwork->network.Privacy;
->
->  	if (check_fwstate(pmlmepriv, WIFI_UNDER_WPS)) {
-> -		if (rtw_get_wps_ie(pnetwork->network.ies+_FIXED_IE_LENGTH_, pnetwork->network.ie_length-_FIXED_IE_LENGTH_, NULL, &wps_ielen))
-> +		if (rtw_get_wps_ie(pnetwork->network.ies + _FIXED_IE_LENGTH_, pnetwork->network.ie_length - _FIXED_IE_LENGTH_, NULL, &wps_ielen))
->  			return true;
->  		else
->  			return false;
-> @@ -925,7 +925,7 @@ static void rtw_joinbss_update_network(struct adapter *padapter, struct wlan_net
->  	switch (pnetwork->network.InfrastructureMode) {
->  	case Ndis802_11Infrastructure:
->  		if (pmlmepriv->fw_state & WIFI_UNDER_WPS)
-> -			pmlmepriv->fw_state = WIFI_STATION_STATE|WIFI_UNDER_WPS;
-> +			pmlmepriv->fw_state = WIFI_STATION_STATE | WIFI_UNDER_WPS;
->  		else
->  			pmlmepriv->fw_state = WIFI_STATION_STATE;
->  		break;
-> @@ -1097,14 +1097,14 @@ static u8 search_max_mac_id(struct adapter *padapter)
->  #if defined(CONFIG_88EU_AP_MODE)
->  	if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
->  		for (aid = pstapriv->max_num_sta; aid > 0; aid--) {
-> -			if (pstapriv->sta_aid[aid-1])
-> +			if (pstapriv->sta_aid[aid - 1])
->  				break;
->  		}
->  		mac_id = aid + 1;
->  	} else
->  #endif
->  	{/* adhoc  id =  31~2 */
-> -		for (mac_id = NUM_STA-1; mac_id >= IBSS_START_MAC_ID; mac_id--) {
-> +		for (mac_id = NUM_STA - 1; mac_id >= IBSS_START_MAC_ID; mac_id--) {
->  			if (pmlmeinfo->FW_sta_info[mac_id].status == 1)
->  				break;
->  		}
-> @@ -1123,7 +1123,7 @@ void rtw_stassoc_hw_rpt(struct adapter *adapter, struct sta_info *psta)
->
->  	macid = search_max_mac_id(adapter);
->  	rtw_hal_set_hwreg(adapter, HW_VAR_TX_RPT_MAX_MACID, (u8 *)&macid);
-> -	media_status = (psta->mac_id<<8)|1; /*   MACID|OPMODE:1 connect */
-> +	media_status = (psta->mac_id << 8) | 1; /*   MACID|OPMODE:1 connect */
->  	rtw_hal_set_hwreg(adapter, HW_VAR_H2C_MEDIA_STATUS_RPT, (u8 *)&media_status);
->  }
->
-> @@ -1213,7 +1213,7 @@ void rtw_stadel_event_callback(struct adapter *adapter, u8 *pbuf)
->  	if (mac_id >= 0) {
->  		u16 media_status;
->
-> -		media_status = (mac_id<<8)|0; /*   MACID|OPMODE:0 means disconnect */
-> +		media_status = (mac_id << 8) | 0; /*   MACID|OPMODE:0 means disconnect */
->  		/* for STA, AP, ADHOC mode, report disconnect stauts to FW */
->  		rtw_hal_set_hwreg(adapter, HW_VAR_H2C_MEDIA_STATUS_RPT, (u8 *)&media_status);
->  	}
-> @@ -1640,7 +1640,7 @@ int rtw_restruct_wmm_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_
->  	for (i = 12; i < in_len; i += (in_ie[i + 1] + 2) /* to the next IE element */) {
->  		ielength = initial_out_len;
->
-> -		if (in_ie[i] == 0xDD && in_ie[i+2] == 0x00 && in_ie[i+3] == 0x50  && in_ie[i+4] == 0xF2 && in_ie[i+5] == 0x02 && i+5 < in_len) {
-> +		if (in_ie[i] == 0xDD && in_ie[i + 2] == 0x00 && in_ie[i + 3] == 0x50  && in_ie[i + 4] == 0xF2 && in_ie[i + 5] == 0x02 && i + 5 < in_len) {
->  			/* WMM element ID and OUI */
->  			/* Append WMM IE to the last index of out_ie */
->
-> @@ -1734,13 +1734,13 @@ int rtw_restruct_sec_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_
->  		authmode = _WPA2_IE_ID_;
->
->  	if (check_fwstate(pmlmepriv, WIFI_UNDER_WPS)) {
-> -		memcpy(out_ie+ielength, psecuritypriv->wps_ie, psecuritypriv->wps_ie_len);
-> +		memcpy(out_ie + ielength, psecuritypriv->wps_ie, psecuritypriv->wps_ie_len);
->
->  		ielength += psecuritypriv->wps_ie_len;
->  	} else if ((authmode == _WPA_IE_ID_) || (authmode == _WPA2_IE_ID_)) {
->  		/* copy RSN or SSN */
-> -		memcpy(&out_ie[ielength], &psecuritypriv->supplicant_ie[0], psecuritypriv->supplicant_ie[1]+2);
-> -		ielength += psecuritypriv->supplicant_ie[1]+2;
-> +		memcpy(&out_ie[ielength], &psecuritypriv->supplicant_ie[0], psecuritypriv->supplicant_ie[1] + 2);
-> +		ielength += psecuritypriv->supplicant_ie[1] + 2;
->  		rtw_report_sec_ie(adapter, authmode, psecuritypriv->supplicant_ie);
->  	}
->
-> @@ -1865,7 +1865,7 @@ unsigned int rtw_restructure_ht_ie(struct adapter *padapter, u8 *in_ie, u8 *out_
->
->  	phtpriv->ht_option = false;
->
-> -	p = rtw_get_ie(in_ie+12, _HT_CAPABILITY_IE_, &ielen, in_len-12);
-> +	p = rtw_get_ie(in_ie + 12, _HT_CAPABILITY_IE_, &ielen, in_len - 12);
->
->  	if (p && ielen > 0) {
->  		struct ieee80211_ht_cap ht_cap;
-> @@ -1904,16 +1904,16 @@ unsigned int rtw_restructure_ht_ie(struct adapter *padapter, u8 *in_ie, u8 *out_
->  		else
->  			ht_cap.ampdu_params_info |= IEEE80211_HT_CAP_AMPDU_DENSITY & 0x00;
->
-> -		rtw_set_ie(out_ie+out_len, _HT_CAPABILITY_IE_,
-> +		rtw_set_ie(out_ie + out_len, _HT_CAPABILITY_IE_,
->  			   sizeof(struct ieee80211_ht_cap),
->  			   (unsigned char *)&ht_cap, pout_len);
->
->  		phtpriv->ht_option = true;
->
-> -		p = rtw_get_ie(in_ie+12, _HT_ADD_INFO_IE_, &ielen, in_len-12);
-> +		p = rtw_get_ie(in_ie + 12, _HT_ADD_INFO_IE_, &ielen, in_len - 12);
->  		if (p && (ielen == sizeof(struct ieee80211_ht_addt_info))) {
->  			out_len = *pout_len;
-> -			rtw_set_ie(out_ie+out_len, _HT_ADD_INFO_IE_, ielen, p+2, pout_len);
-> +			rtw_set_ie(out_ie + out_len, _HT_ADD_INFO_IE_, ielen, p + 2, pout_len);
->  		}
->  	}
->  	return phtpriv->ht_option;
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200311094332.29714-1-shreeya.patel23498%40gmail.com.
->
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
