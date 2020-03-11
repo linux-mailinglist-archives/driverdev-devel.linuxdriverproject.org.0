@@ -1,37 +1,37 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F44B1817BB
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 13:19:21 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E5B71817AD
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 13:19:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D64F287683;
-	Wed, 11 Mar 2020 12:19:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C277E848A5;
+	Wed, 11 Mar 2020 12:19:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2MFai3urcOER; Wed, 11 Mar 2020 12:19:01 +0000 (UTC)
+	with ESMTP id okMW5yCrQ4wT; Wed, 11 Mar 2020 12:18:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E49E787466;
-	Wed, 11 Mar 2020 12:18:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 70DA584828;
+	Wed, 11 Mar 2020 12:18:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 232BF1BF599
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 12:18:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 974331BF599
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 12:18:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 134682156F
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 12:18:52 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 91DD12156F
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 12:18:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zhPnkB9Fg2ES for <devel@linuxdriverproject.org>;
+ with ESMTP id XfiyhlFad7zE for <devel@linuxdriverproject.org>;
  Wed, 11 Mar 2020 12:18:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
  [68.232.147.91])
- by silver.osuosl.org (Postfix) with ESMTPS id EA72A2077C
- for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 12:18:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 2CE7D22098
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 12:18:47 +0000 (UTC)
 Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
  Ajay.Kathat@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
@@ -52,12 +52,12 @@ Authentication-Results: esa1.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Ajay.Kathat@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: UFXKyPK5krnktHlhtd9C8CIrKxoqIL3K0F2cFzi/IwZaxOo+PjO/zSBFznkb6ArF9m7IkY8fuL
- 2DYvaxwXWdRBgIs0tjA3yTw++BuLuPx+DR/DYxyfOaLdludQydJNUHDoioRw7m+JF1HNb1m7Ff
- wDMck9+uxtpfjMTuxwCuTbjE4kGtkUHcY2QTUc73GJsb0udSefIK2qJz50DMw3RyyTTrjIOs9e
- 2yObTmgstNnhh2FEDbMCUVcSQKebKCsFu+JG1yIbtVbJQaaG+8gZ49cs/UJPUwwMs+Vn4P/y9K
- 2Do=
-X-IronPort-AV: E=Sophos;i="5.70,540,1574146800"; d="scan'208";a="71635207"
+IronPort-SDR: 0kciRDg7BjdfylVpVBWUo8WM7WjfrB47pazZKcV5GRQANoSDei4e/AFHdLANQd+ZJigS6wKzOZ
+ MZzxoYX9gzspuz0p8OgAnUp0AtWRl3aNHtyw7aBBKdwn9CA2b2cdhVJ6VvkxsKS8V0F2XUwHeZ
+ YA94io1c8LGy4LWZOpaFnGgIlrfuYyh3D6vgtqHEyOvn2BS6F+38b7iWRD6A1WauplwQBgIKsn
+ +wuVxix0rTPawxsmZFWTErOKCerh86qPfcz+XQ1xqCIAY/0BUDzET6G729xk31nXJYK1BtpR8U
+ jks=
+X-IronPort-AV: E=Sophos;i="5.70,540,1574146800"; d="scan'208";a="71635208"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
  by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
@@ -70,14 +70,14 @@ Received: from NAM10-MW2-obe.outbound.protection.outlook.com (10.10.215.89) by
  email.microchip.com (10.10.87.72) with Microsoft SMTP Server
  (version=TLS1_2, 
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
- Transport; Wed, 11 Mar 2020 05:18:41 -0700
+ Transport; Wed, 11 Mar 2020 05:18:42 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=d8C26iI9b5OFSFh9v/wWtgqPLijDbMSkL2/dpkmm7BQFUadaC2Y9HNjNlF2u6pTITgY9jA35pKGteLcN/zGegiWbqS3Mz6aPzqQdvWcZZKeEFGVUT2SJpPaetZzGxJILANN4Rm8bhhyGFLkPMFBp/yeeEr+L/Dzi1GcW/LaSVE28x9F6XL7Vdowd+C4Gv1R11bwVDwb5WKUmOTAa9IAIbKqU2rps3RP6ygi7Bt+9ZlF51efcOTTOfoLT9Vor9l9l2ovgB02ga6bBVitUGi4B3c2I3Xl8TMJCj406umFuQNVzbKbNwc8Cn96vnGtnzZen9NS7ub5nFmZR04W4KZPDMg==
+ b=bDSKoboLa6tWnU0GfJtoNIgr7Pu7K1/ImiRwkrZ2pcKbNA4CwA5qeoXGuiw0tiqhONnH08c38xvl6lZOerl1/Lj3iJuswjybUgk/xeVgKZyv1qFl1uB8roBoPK12+nvnSg5lHV0Vm4tuZPnXb5Sbo10JqBYpLMD0uxd6Lltkvrfz+zfXJAsHIS18zgaejBD16Unt0I5BeQ2XmJcSx+tTbmKGf8wx9KoHmNoTPdgao+T3wN0fQvd4Bnd2vLQNn4rHvUmqVZsU+jGqxjECS3jhrU3Oe1wb2BXQXRb2pR/y9ciMgBcYvIt8MI+bLow0xU6Zasuqm0e+mU/O8bQtYN0H3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8fqBoFwOpa2YZmAdj3Mi1awEx3AadnjLVU+7Ob+EfT4=;
- b=QcPNbwIUnLIR6zP4aACfLr18PZGUK8HNbD5+phFAeg6qWhHCcVWAP1OK4TSRv7xKDxOnlkvHkSsnoG6GhMq28aafLmU3H+Aw8Pn4tY5YnZZzCULN+yErqmFwDDQu8vJpwB/LZH6OiPYOgqGd6sxKRCpUMSsQai9sYjJvAlkGIc5wMEGcAVXXvkz4W3pzP5QtVeDOzKJm9hxzhpCvqqe1ZD7lYcUP2gfdw+nmP42phg7My/rP9dmkJJ6kyNDFa72lqWIlmWxYijP5KW+UMfPZ97VJn4STiTMeR/1gpi1nUv53G+1pNJjQgfpMiQa61geNQ7hZvgdlaFrF41cOyko+TA==
+ bh=R2hyFijpSxD8B1vp9pfBnZgARrhmzsNY8CIUqsPqbr4=;
+ b=P8mH0V/oWGUTUQT9CFLigbN1PQ6CdMnElYsxxWxmabLPEMZnws4til0nJGhjE80yEHuyFBHbe1+9vAYSMppODFfMg+qtrUBgb7TAekcSPV0FVgecKt5xHLa6PatawS3shaCSxpdEVS6QXaNmw66KaDEijtjaIZDs6PbVgkkZlj0Y/c5W50UNdMHdbZz4B9vt0VTZpAFlyn6FbUfEZ+vHR0mWBh8DFAiCXpRoUtya9LSyHAX2cV+1xp2kcd55n6fzVxX7e8T7VrCNOC2sz3+88Us46yxNd7RGDq5ohiEpv4rJoPdq1AOJk9PKMVwpLlZzKefa3+De1u6Y3K8/Hhq5PA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=microchip.com; dmarc=pass action=none
  header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
@@ -85,8 +85,8 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=microchiptechnology.onmicrosoft.com;
  s=selector2-microchiptechnology-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8fqBoFwOpa2YZmAdj3Mi1awEx3AadnjLVU+7Ob+EfT4=;
- b=gfLxgCPmPD+v9y7av5KHJ3MmemwfqS8Fl1O35gYC+OJqoFIrwCizgi+IMUay2a5xqcVNVh00SXrizUdwprR6e2RILUxiiajxZGF2FwXGo4zsd5bHl77Vmtd0t2Q+JIOc5aeuQyHUjg6CbsCwLPML1MfFYVsFM9CMabK+a+gEoHY=
+ bh=R2hyFijpSxD8B1vp9pfBnZgARrhmzsNY8CIUqsPqbr4=;
+ b=jxN0P+vOXCXXP6qcVFxPNr0y2BTLkQMLJpglmFt1s6ZoGZCZr04ZNbnTC25jDUKw6SNfds8B6tEBsr8qW4YPUfGEIaRdUcdZ4pAJ2dbkfgDojpz+OiUb0jAP12TLGO2XhOdUGYK+EOE6gQOZdVcdo6HaPEYh8tkNsQuhOTqmCpE=
 Received: from BYAPR11MB3125.namprd11.prod.outlook.com (2603:10b6:a03:8e::32)
  by BYAPR11MB2805.namprd11.prod.outlook.com (2603:10b6:a02:c1::15)
  with Microsoft SMTP Server (version=TLS1_2,
@@ -98,11 +98,11 @@ Received: from BYAPR11MB3125.namprd11.prod.outlook.com
  12:18:42 +0000
 From: <Ajay.Kathat@microchip.com>
 To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH v5 02/17] wilc1000: add hif.c
-Thread-Topic: [PATCH v5 02/17] wilc1000: add hif.c
-Thread-Index: AQHV958zf55pZO/a2EGz2Ue2XkxVeQ==
-Date: Wed, 11 Mar 2020 12:18:41 +0000
-Message-ID: <20200311121809.5610-3-ajay.kathat@microchip.com>
+Subject: [PATCH v5 03/17] wilc1000: add wlan_if.h
+Thread-Topic: [PATCH v5 03/17] wilc1000: add wlan_if.h
+Thread-Index: AQHV9580h4KMsvRKtESCFLBcZVNVdA==
+Date: Wed, 11 Mar 2020 12:18:42 +0000
+Message-ID: <20200311121809.5610-4-ajay.kathat@microchip.com>
 References: <20200311121809.5610-1-ajay.kathat@microchip.com>
 In-Reply-To: <20200311121809.5610-1-ajay.kathat@microchip.com>
 Accept-Language: en-US
@@ -112,15 +112,15 @@ X-MS-TNEF-Correlator:
 x-mailer: git-send-email 2.17.1
 x-originating-ip: [121.244.27.38]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 453165f7-a253-463b-0f1a-08d7c5b6567e
+x-ms-office365-filtering-correlation-id: 2c264f30-1f97-4d48-adf1-08d7c5b656d4
 x-ms-traffictypediagnostic: BYAPR11MB2805:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR11MB2805DF0FC7E69C3A8F932F72E3FC0@BYAPR11MB2805.namprd11.prod.outlook.com>
+x-microsoft-antispam-prvs: <BYAPR11MB2805C5F88E01FEB9F4FDF94EE3FC0@BYAPR11MB2805.namprd11.prod.outlook.com>
 x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:2582;
+x-ms-oob-tlc-oobclassifiers: OLM:5797;
 x-forefront-prvs: 0339F89554
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(39860400002)(376002)(136003)(346002)(396003)(366004)(199004)(478600001)(45080400002)(2906002)(71200400001)(8936002)(81166006)(81156014)(316002)(5660300002)(54906003)(6506007)(1076003)(8676002)(6512007)(86362001)(36756003)(107886003)(4326008)(6486002)(76116006)(91956017)(66476007)(64756008)(66446008)(66946007)(66556008)(6916009)(2616005)(186003)(30864003)(26005)(579004)(559001);
+ SFS:(10009020)(39860400002)(376002)(136003)(346002)(396003)(366004)(199004)(478600001)(2906002)(71200400001)(8936002)(81166006)(81156014)(316002)(5660300002)(54906003)(6506007)(1076003)(8676002)(6512007)(86362001)(36756003)(107886003)(4326008)(6486002)(76116006)(91956017)(66476007)(64756008)(66446008)(66946007)(66556008)(6916009)(2616005)(186003)(30864003)(26005)(579004)(559001);
  DIR:OUT; SFP:1101; SCL:1; SRVR:BYAPR11MB2805;
  H:BYAPR11MB3125.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; A:1; 
@@ -128,15 +128,15 @@ received-spf: None (protection.outlook.com: microchip.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: r2i7gxTNHv1/MbpGJSmQKPMNnrkQP685FP2RtLYzzIWFh7Xs5IFWt7H6aKFFBENbXX2SHPRhob7z3DPaRjtIt6zAWugx3Zg3t37VbwzkyOiAxoNfoavgq/vNAAEBhZ9BJjh7SOxdEdePX4J0mIvWpP7RG6VedDIZ3Zlr5pyAAGMoHs/bLwbgOkleZ4dRDthZaI1MGpiaMES1UOQO37/RTHcB7Paq2SkF9s7TIfco+dUhoNHwe3pUH3KFLlBxTEFS6VjOcsi4rJgclqarTVJLO5Hy6AqL8PsY0NH+MonvsUZpOLfNmqmWQTdBdk/qrK4h+/8QCSo0FGeIsW7kLpCsTyDZw6zP57mEk70kgOAazxRC5pccZ3aHVyTNKf6ukhOuzt5wTj4lj3GHtfGDDkgtBPbhzk8piB1fCmrMfvm44w05qsAFxMsiVPKCzk6QN6Xq
-x-ms-exchange-antispam-messagedata: uADznfoyQxxN42V6sGcCxqDeaOrfoJslbFDxIjY2icHzcy7/wl6omsnGEHkaYObk9a/ZKunqFLU8RCCh0pOExQHIysnyI9rQce5D3yZdnWgFmxlFHbqizwLnjcj96lvOklhhoRykHWHZa6vCVy1MYQ==
+x-microsoft-antispam-message-info: ErZMQN2DZ29OApy0AeMR9HkP4vDEQ4uueyT69uqUmwo+gD2jv8lWPzAAGQpKXW3AaGKUZugFPiVh8ZUeeHqMwxIei6MbgyKXFJ7+41+k1IfqbdKBxWTP4jwHgRqulu4ApYuGEHi1seO9XpdEXFEwF8c8p/Lp/m/GcbqvCwg0QRsRVRdicmummv6ukRGE1khF9FLitThcvevAXjiH8altPH7n2Wi/JyWOa3n9q4pNXxG29F5EUwtRYi+h/nIgst7ESyNEh9qEfp5dqfrPAOnOPFhEdazbTxp5emd/eLKK1XQPBhx8ufPZ52Df4SQCm4b3axT90jCo93PBV/RZZNGIxWreGH4Ew4O0jd/4rDEkYWBy1Oq9mGnLoKs4iSG87+pr6/1LmtmumJkFKY+ePah8lbm2DWDrl06bhUkN+B8/w4pICcL4yMZqE9am3P0dNUqq
+x-ms-exchange-antispam-messagedata: ZxTuoDm/sZazsHgJJfYw2EdZ4Aw7HqhHHmMOaqB0wiCwRdGvseZz5IT4rTJiEd20ZPAxm+SLta7dNvhxa7yx9OArIHXRqiF1OGx7Siun7kBpySoEZa3Rl4dn3K5bJQorKFV7jYtT6Moibm6afdZkPQ==
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 453165f7-a253-463b-0f1a-08d7c5b6567e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Mar 2020 12:18:41.3441 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2c264f30-1f97-4d48-adf1-08d7c5b656d4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Mar 2020 12:18:42.6293 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1ltBPjBK4Vza29yqJNEqngoxx3iLGlsWJnjxE5qfKwe62gmb1apCKI1C2eErvrE+P8azga2EacyzPwrVMGKhfyWuvsiBHiHT5+N5ubl6Wrw=
+X-MS-Exchange-CrossTenant-userprincipalname: AmxyjPD9ViCvkaJT32aGOJCHTGfEs3/MbDLDXQR2Fd5kY7EnXKPvcPYGsDuH47KAKLZm14g0mjofOH1JZPUVdOwpvfWSQLaQZz5AvCR/q9I=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB2805
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -161,1980 +161,824 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Ajay Singh <ajay.kathat@microchip.com>
 
-Moved 'drivers/staging/wilc1000/hif.c' to
-'drivers/net/wireless/microchip/wilc1000/hif.c'.
+Moved 'drivers/staging/wilc1000/wlan_if.h' to
+'drivers/net/wireless/microchip/wilc1000/wlan_if.h'.
 
 Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
 ---
- drivers/net/wireless/microchip/wilc1000/hif.c | 1959 +++++++++++++++++
- 1 file changed, 1959 insertions(+)
- create mode 100644 drivers/net/wireless/microchip/wilc1000/hif.c
+ .../net/wireless/microchip/wilc1000/wlan_if.h | 803 ++++++++++++++++++
+ 1 file changed, 803 insertions(+)
+ create mode 100644 drivers/net/wireless/microchip/wilc1000/wlan_if.h
 
-diff --git a/drivers/net/wireless/microchip/wilc1000/hif.c b/drivers/net/wireless/microchip/wilc1000/hif.c
+diff --git a/drivers/net/wireless/microchip/wilc1000/wlan_if.h b/drivers/net/wireless/microchip/wilc1000/wlan_if.h
 new file mode 100644
-index 000000000000..6c7de2f8d3f2
+index 000000000000..f85fd575136d
 --- /dev/null
-+++ b/drivers/net/wireless/microchip/wilc1000/hif.c
-@@ -0,0 +1,1959 @@
-+// SPDX-License-Identifier: GPL-2.0
++++ b/drivers/net/wireless/microchip/wilc1000/wlan_if.h
+@@ -0,0 +1,803 @@
++/* SPDX-License-Identifier: GPL-2.0 */
 +/*
 + * Copyright (c) 2012 - 2018 Microchip Technology Inc., and its subsidiaries.
 + * All rights reserved.
 + */
 +
-+#include "netdev.h"
++#ifndef WILC_WLAN_IF_H
++#define WILC_WLAN_IF_H
 +
-+#define WILC_HIF_SCAN_TIMEOUT_MS                5000
-+#define WILC_HIF_CONNECT_TIMEOUT_MS             9500
++#include <linux/netdevice.h>
++#include "fw.h"
 +
-+#define WILC_FALSE_FRMWR_CHANNEL		100
++/********************************************
++ *
++ *      Wlan Configuration ID
++ *
++ ********************************************/
 +
-+struct wilc_rcvd_mac_info {
-+	u8 status;
++enum bss_types {
++	WILC_FW_BSS_TYPE_INFRA = 0,
++	WILC_FW_BSS_TYPE_INDEPENDENT,
++	WILC_FW_BSS_TYPE_AP,
 +};
 +
-+struct wilc_set_multicast {
-+	u32 enabled;
-+	u32 cnt;
-+	u8 *mc_list;
++enum {
++	WILC_FW_OPER_MODE_B_ONLY = 0,	 /* 1, 2 M, otherwise 5, 11 M */
++	WILC_FW_OPER_MODE_G_ONLY,	 /* 6,12,24 otherwise 9,18,36,48,54 */
++	WILC_FW_OPER_MODE_G_MIXED_11B_1, /* 1,2,5.5,11 otherwise all on */
++	WILC_FW_OPER_MODE_G_MIXED_11B_2, /* 1,2,5,11,6,12,24 otherwise all on */
 +};
 +
-+struct wilc_del_all_sta {
-+	u8 assoc_sta;
-+	u8 mac[WILC_MAX_NUM_STA][ETH_ALEN];
++enum {
++	WILC_FW_PREAMBLE_SHORT = 0,	/* Short Preamble */
++	WILC_FW_PREAMBLE_LONG = 1,	/* Long Preamble */
++	WILC_FW_PREAMBLE_AUTO = 2,	/* Auto Preamble Selection */
 +};
 +
-+union wilc_message_body {
-+	struct wilc_rcvd_net_info net_info;
-+	struct wilc_rcvd_mac_info mac_info;
-+	struct wilc_set_multicast mc_info;
-+	struct wilc_remain_ch remain_on_ch;
-+	char *data;
++enum {
++	WILC_FW_PASSIVE_SCAN = 0,
++	WILC_FW_ACTIVE_SCAN = 1,
 +};
 +
-+struct host_if_msg {
-+	union wilc_message_body body;
-+	struct wilc_vif *vif;
-+	struct work_struct work;
-+	void (*fn)(struct work_struct *ws);
-+	struct completion work_comp;
-+	bool is_sync;
++enum {
++	WILC_FW_NO_POWERSAVE = 0,
++	WILC_FW_MIN_FAST_PS = 1,
++	WILC_FW_MAX_FAST_PS = 2,
++	WILC_FW_MIN_PSPOLL_PS = 3,
++	WILC_FW_MAX_PSPOLL_PS = 4
 +};
 +
-+/* 'msg' should be free by the caller for syc */
-+static struct host_if_msg*
-+wilc_alloc_work(struct wilc_vif *vif, void (*work_fun)(struct work_struct *),
-+		bool is_sync)
-+{
-+	struct host_if_msg *msg;
-+
-+	if (!work_fun)
-+		return ERR_PTR(-EINVAL);
-+
-+	msg = kzalloc(sizeof(*msg), GFP_ATOMIC);
-+	if (!msg)
-+		return ERR_PTR(-ENOMEM);
-+	msg->fn = work_fun;
-+	msg->vif = vif;
-+	msg->is_sync = is_sync;
-+	if (is_sync)
-+		init_completion(&msg->work_comp);
-+
-+	return msg;
-+}
-+
-+static int wilc_enqueue_work(struct host_if_msg *msg)
-+{
-+	INIT_WORK(&msg->work, msg->fn);
-+
-+	if (!msg->vif || !msg->vif->wilc || !msg->vif->wilc->hif_workqueue)
-+		return -EINVAL;
-+
-+	if (!queue_work(msg->vif->wilc->hif_workqueue, &msg->work))
-+		return -EINVAL;
-+
-+	return 0;
-+}
-+
-+/* The idx starts from 0 to (NUM_CONCURRENT_IFC - 1), but 0 index used as
-+ * special purpose in wilc device, so we add 1 to the index to starts from 1.
-+ * As a result, the returned index will be 1 to NUM_CONCURRENT_IFC.
-+ */
-+int wilc_get_vif_idx(struct wilc_vif *vif)
-+{
-+	return vif->idx + 1;
-+}
-+
-+/* We need to minus 1 from idx which is from wilc device to get real index
-+ * of wilc->vif[], because we add 1 when pass to wilc device in the function
-+ * wilc_get_vif_idx.
-+ * As a result, the index should be between 0 and (NUM_CONCURRENT_IFC - 1).
-+ */
-+static struct wilc_vif *wilc_get_vif_from_idx(struct wilc *wilc, int idx)
-+{
-+	int index = idx - 1;
-+	struct wilc_vif *vif;
-+
-+	if (index < 0 || index >= WILC_NUM_CONCURRENT_IFC)
-+		return NULL;
-+
-+	list_for_each_entry_rcu(vif, &wilc->vif_list, list) {
-+		if (vif->idx == index)
-+			return vif;
-+	}
-+
-+	return NULL;
-+}
-+
-+static int handle_scan_done(struct wilc_vif *vif, enum scan_event evt)
-+{
-+	int result = 0;
-+	u8 abort_running_scan;
-+	struct wid wid;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+	struct wilc_user_scan_req *scan_req;
-+
-+	if (evt == SCAN_EVENT_ABORTED) {
-+		abort_running_scan = 1;
-+		wid.id = WID_ABORT_RUNNING_SCAN;
-+		wid.type = WID_CHAR;
-+		wid.val = (s8 *)&abort_running_scan;
-+		wid.size = sizeof(char);
-+
-+		result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+		if (result) {
-+			netdev_err(vif->ndev, "Failed to set abort running\n");
-+			result = -EFAULT;
-+		}
-+	}
-+
-+	if (!hif_drv) {
-+		netdev_err(vif->ndev, "%s: hif driver is NULL\n", __func__);
-+		return result;
-+	}
-+
-+	scan_req = &hif_drv->usr_scan_req;
-+	if (scan_req->scan_result) {
-+		scan_req->scan_result(evt, NULL, scan_req->arg);
-+		scan_req->scan_result = NULL;
-+	}
-+
-+	return result;
-+}
-+
-+int wilc_scan(struct wilc_vif *vif, u8 scan_source, u8 scan_type,
-+	      u8 *ch_freq_list, u8 ch_list_len,
-+	      void (*scan_result_fn)(enum scan_event,
-+				     struct wilc_rcvd_net_info *, void *),
-+	      void *user_arg, struct cfg80211_scan_request *request)
-+{
-+	int result = 0;
-+	struct wid wid_list[5];
-+	u32 index = 0;
-+	u32 i, scan_timeout;
-+	u8 *buffer;
-+	u8 valuesize = 0;
-+	u8 *search_ssid_vals = NULL;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+
-+	if (hif_drv->hif_state >= HOST_IF_SCANNING &&
-+	    hif_drv->hif_state < HOST_IF_CONNECTED) {
-+		netdev_err(vif->ndev, "Already scan\n");
-+		result = -EBUSY;
-+		goto error;
-+	}
-+
-+	if (vif->connecting) {
-+		netdev_err(vif->ndev, "Don't do obss scan\n");
-+		result = -EBUSY;
-+		goto error;
-+	}
-+
-+	hif_drv->usr_scan_req.ch_cnt = 0;
-+
-+	if (request->n_ssids) {
-+		for (i = 0; i < request->n_ssids; i++)
-+			valuesize += ((request->ssids[i].ssid_len) + 1);
-+		search_ssid_vals = kmalloc(valuesize + 1, GFP_KERNEL);
-+		if (search_ssid_vals) {
-+			wid_list[index].id = WID_SSID_PROBE_REQ;
-+			wid_list[index].type = WID_STR;
-+			wid_list[index].val = search_ssid_vals;
-+			buffer = wid_list[index].val;
-+
-+			*buffer++ = request->n_ssids;
-+
-+			for (i = 0; i < request->n_ssids; i++) {
-+				*buffer++ = request->ssids[i].ssid_len;
-+				memcpy(buffer, request->ssids[i].ssid,
-+				       request->ssids[i].ssid_len);
-+				buffer += request->ssids[i].ssid_len;
-+			}
-+			wid_list[index].size = (s32)(valuesize + 1);
-+			index++;
-+		}
-+	}
-+
-+	wid_list[index].id = WID_INFO_ELEMENT_PROBE;
-+	wid_list[index].type = WID_BIN_DATA;
-+	wid_list[index].val = (s8 *)request->ie;
-+	wid_list[index].size = request->ie_len;
-+	index++;
-+
-+	wid_list[index].id = WID_SCAN_TYPE;
-+	wid_list[index].type = WID_CHAR;
-+	wid_list[index].size = sizeof(char);
-+	wid_list[index].val = (s8 *)&scan_type;
-+	index++;
-+
-+	if (scan_type == WILC_FW_PASSIVE_SCAN && request->duration) {
-+		wid_list[index].id = WID_PASSIVE_SCAN_TIME;
-+		wid_list[index].type = WID_SHORT;
-+		wid_list[index].size = sizeof(u16);
-+		wid_list[index].val = (s8 *)&request->duration;
-+		index++;
-+
-+		scan_timeout = (request->duration * ch_list_len) + 500;
-+	} else {
-+		scan_timeout = WILC_HIF_SCAN_TIMEOUT_MS;
-+	}
-+
-+	wid_list[index].id = WID_SCAN_CHANNEL_LIST;
-+	wid_list[index].type = WID_BIN_DATA;
-+
-+	if (ch_freq_list && ch_list_len > 0) {
-+		for (i = 0; i < ch_list_len; i++) {
-+			if (ch_freq_list[i] > 0)
-+				ch_freq_list[i] -= 1;
-+		}
-+	}
-+
-+	wid_list[index].val = ch_freq_list;
-+	wid_list[index].size = ch_list_len;
-+	index++;
-+
-+	wid_list[index].id = WID_START_SCAN_REQ;
-+	wid_list[index].type = WID_CHAR;
-+	wid_list[index].size = sizeof(char);
-+	wid_list[index].val = (s8 *)&scan_source;
-+	index++;
-+
-+	hif_drv->usr_scan_req.scan_result = scan_result_fn;
-+	hif_drv->usr_scan_req.arg = user_arg;
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, wid_list, index);
-+	if (result) {
-+		netdev_err(vif->ndev, "Failed to send scan parameters\n");
-+		goto error;
-+	}
-+
-+	hif_drv->scan_timer_vif = vif;
-+	mod_timer(&hif_drv->scan_timer,
-+		  jiffies + msecs_to_jiffies(scan_timeout));
-+
-+error:
-+
-+	kfree(search_ssid_vals);
-+
-+	return result;
-+}
-+
-+static int wilc_send_connect_wid(struct wilc_vif *vif)
-+{
-+	int result = 0;
-+	struct wid wid_list[4];
-+	u32 wid_cnt = 0;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+	struct wilc_conn_info *conn_attr = &hif_drv->conn_info;
-+	struct wilc_join_bss_param *bss_param = conn_attr->param;
-+
-+	wid_list[wid_cnt].id = WID_INFO_ELEMENT_ASSOCIATE;
-+	wid_list[wid_cnt].type = WID_BIN_DATA;
-+	wid_list[wid_cnt].val = conn_attr->req_ies;
-+	wid_list[wid_cnt].size = conn_attr->req_ies_len;
-+	wid_cnt++;
-+
-+	wid_list[wid_cnt].id = WID_11I_MODE;
-+	wid_list[wid_cnt].type = WID_CHAR;
-+	wid_list[wid_cnt].size = sizeof(char);
-+	wid_list[wid_cnt].val = (s8 *)&conn_attr->security;
-+	wid_cnt++;
-+
-+	wid_list[wid_cnt].id = WID_AUTH_TYPE;
-+	wid_list[wid_cnt].type = WID_CHAR;
-+	wid_list[wid_cnt].size = sizeof(char);
-+	wid_list[wid_cnt].val = (s8 *)&conn_attr->auth_type;
-+	wid_cnt++;
-+
-+	wid_list[wid_cnt].id = WID_JOIN_REQ_EXTENDED;
-+	wid_list[wid_cnt].type = WID_STR;
-+	wid_list[wid_cnt].size = sizeof(*bss_param);
-+	wid_list[wid_cnt].val = (u8 *)bss_param;
-+	wid_cnt++;
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, wid_list, wid_cnt);
-+	if (result) {
-+		netdev_err(vif->ndev, "failed to send config packet\n");
-+		goto error;
-+	} else {
-+		hif_drv->hif_state = HOST_IF_WAITING_CONN_RESP;
-+	}
-+
-+	return 0;
-+
-+error:
-+
-+	kfree(conn_attr->req_ies);
-+	conn_attr->req_ies = NULL;
-+
-+	return result;
-+}
-+
-+static void handle_connect_timeout(struct work_struct *work)
-+{
-+	struct host_if_msg *msg = container_of(work, struct host_if_msg, work);
-+	struct wilc_vif *vif = msg->vif;
-+	int result;
-+	struct wid wid;
-+	u16 dummy_reason_code = 0;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+
-+	if (!hif_drv) {
-+		netdev_err(vif->ndev, "%s: hif driver is NULL\n", __func__);
-+		goto out;
-+	}
-+
-+	hif_drv->hif_state = HOST_IF_IDLE;
-+
-+	if (hif_drv->conn_info.conn_result) {
-+		hif_drv->conn_info.conn_result(CONN_DISCONN_EVENT_CONN_RESP,
-+					       WILC_MAC_STATUS_DISCONNECTED,
-+					       hif_drv->conn_info.arg);
-+
-+	} else {
-+		netdev_err(vif->ndev, "%s: conn_result is NULL\n", __func__);
-+	}
-+
-+	wid.id = WID_DISCONNECT;
-+	wid.type = WID_CHAR;
-+	wid.val = (s8 *)&dummy_reason_code;
-+	wid.size = sizeof(char);
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to send disconnect\n");
-+
-+	hif_drv->conn_info.req_ies_len = 0;
-+	kfree(hif_drv->conn_info.req_ies);
-+	hif_drv->conn_info.req_ies = NULL;
-+
-+out:
-+	kfree(msg);
-+}
-+
-+void *wilc_parse_join_bss_param(struct cfg80211_bss *bss,
-+				struct cfg80211_crypto_settings *crypto)
-+{
-+	struct wilc_join_bss_param *param;
-+	struct ieee80211_p2p_noa_attr noa_attr;
-+	u8 rates_len = 0;
-+	const u8 *tim_elm, *ssid_elm, *rates_ie, *supp_rates_ie;
-+	const u8 *ht_ie, *wpa_ie, *wmm_ie, *rsn_ie;
-+	int ret;
-+	const struct cfg80211_bss_ies *ies = rcu_dereference(bss->ies);
-+
-+	param = kzalloc(sizeof(*param), GFP_KERNEL);
-+	if (!param)
-+		return NULL;
-+
-+	param->beacon_period = cpu_to_le16(bss->beacon_interval);
-+	param->cap_info = cpu_to_le16(bss->capability);
-+	param->bss_type = WILC_FW_BSS_TYPE_INFRA;
-+	param->ch = ieee80211_frequency_to_channel(bss->channel->center_freq);
-+	ether_addr_copy(param->bssid, bss->bssid);
-+
-+	ssid_elm = cfg80211_find_ie(WLAN_EID_SSID, ies->data, ies->len);
-+	if (ssid_elm) {
-+		if (ssid_elm[1] <= IEEE80211_MAX_SSID_LEN)
-+			memcpy(param->ssid, ssid_elm + 2, ssid_elm[1]);
-+	}
-+
-+	tim_elm = cfg80211_find_ie(WLAN_EID_TIM, ies->data, ies->len);
-+	if (tim_elm && tim_elm[1] >= 2)
-+		param->dtim_period = tim_elm[3];
-+
-+	memset(param->p_suites, 0xFF, 3);
-+	memset(param->akm_suites, 0xFF, 3);
-+
-+	rates_ie = cfg80211_find_ie(WLAN_EID_SUPP_RATES, ies->data, ies->len);
-+	if (rates_ie) {
-+		rates_len = rates_ie[1];
-+		if (rates_len > WILC_MAX_RATES_SUPPORTED)
-+			rates_len = WILC_MAX_RATES_SUPPORTED;
-+		param->supp_rates[0] = rates_len;
-+		memcpy(&param->supp_rates[1], rates_ie + 2, rates_len);
-+	}
-+
-+	if (rates_len < WILC_MAX_RATES_SUPPORTED) {
-+		supp_rates_ie = cfg80211_find_ie(WLAN_EID_EXT_SUPP_RATES,
-+						 ies->data, ies->len);
-+		if (supp_rates_ie) {
-+			u8 ext_rates = supp_rates_ie[1];
-+
-+			if (ext_rates > (WILC_MAX_RATES_SUPPORTED - rates_len))
-+				param->supp_rates[0] = WILC_MAX_RATES_SUPPORTED;
-+			else
-+				param->supp_rates[0] += ext_rates;
-+
-+			memcpy(&param->supp_rates[rates_len + 1],
-+			       supp_rates_ie + 2,
-+			       (param->supp_rates[0] - rates_len));
-+		}
-+	}
-+
-+	ht_ie = cfg80211_find_ie(WLAN_EID_HT_CAPABILITY, ies->data, ies->len);
-+	if (ht_ie)
-+		param->ht_capable = true;
-+
-+	ret = cfg80211_get_p2p_attr(ies->data, ies->len,
-+				    IEEE80211_P2P_ATTR_ABSENCE_NOTICE,
-+				    (u8 *)&noa_attr, sizeof(noa_attr));
-+	if (ret > 0) {
-+		param->tsf_lo = cpu_to_le32(ies->tsf);
-+		param->noa_enabled = 1;
-+		param->idx = noa_attr.index;
-+		if (noa_attr.oppps_ctwindow & IEEE80211_P2P_OPPPS_ENABLE_BIT) {
-+			param->opp_enabled = 1;
-+			param->opp_en.ct_window = noa_attr.oppps_ctwindow;
-+			param->opp_en.cnt = noa_attr.desc[0].count;
-+			param->opp_en.duration = noa_attr.desc[0].duration;
-+			param->opp_en.interval = noa_attr.desc[0].interval;
-+			param->opp_en.start_time = noa_attr.desc[0].start_time;
-+		} else {
-+			param->opp_enabled = 0;
-+			param->opp_dis.cnt = noa_attr.desc[0].count;
-+			param->opp_dis.duration = noa_attr.desc[0].duration;
-+			param->opp_dis.interval = noa_attr.desc[0].interval;
-+			param->opp_dis.start_time = noa_attr.desc[0].start_time;
-+		}
-+	}
-+	wmm_ie = cfg80211_find_vendor_ie(WLAN_OUI_MICROSOFT,
-+					 WLAN_OUI_TYPE_MICROSOFT_WMM,
-+					 ies->data, ies->len);
-+	if (wmm_ie) {
-+		struct ieee80211_wmm_param_ie *ie;
-+
-+		ie = (struct ieee80211_wmm_param_ie *)wmm_ie;
-+		if ((ie->oui_subtype == 0 || ie->oui_subtype == 1) &&
-+		    ie->version == 1) {
-+			param->wmm_cap = true;
-+			if (ie->qos_info & BIT(7))
-+				param->uapsd_cap = true;
-+		}
-+	}
-+
-+	wpa_ie = cfg80211_find_vendor_ie(WLAN_OUI_MICROSOFT,
-+					 WLAN_OUI_TYPE_MICROSOFT_WPA,
-+					 ies->data, ies->len);
-+	if (wpa_ie) {
-+		param->mode_802_11i = 1;
-+		param->rsn_found = true;
-+	}
-+
-+	rsn_ie = cfg80211_find_ie(WLAN_EID_RSN, ies->data, ies->len);
-+	if (rsn_ie) {
-+		int offset = 8;
-+
-+		param->mode_802_11i = 2;
-+		param->rsn_found = true;
-+		/* extract RSN capabilities */
-+		offset += (rsn_ie[offset] * 4) + 2;
-+		offset += (rsn_ie[offset] * 4) + 2;
-+		memcpy(param->rsn_cap, &rsn_ie[offset], 2);
-+	}
-+
-+	if (param->rsn_found) {
-+		int i;
-+
-+		param->rsn_grp_policy = crypto->cipher_group & 0xFF;
-+		for (i = 0; i < crypto->n_ciphers_pairwise && i < 3; i++)
-+			param->p_suites[i] = crypto->ciphers_pairwise[i] & 0xFF;
-+
-+		for (i = 0; i < crypto->n_akm_suites && i < 3; i++)
-+			param->akm_suites[i] = crypto->akm_suites[i] & 0xFF;
-+	}
-+
-+	return (void *)param;
-+}
-+
-+static void handle_rcvd_ntwrk_info(struct work_struct *work)
-+{
-+	struct host_if_msg *msg = container_of(work, struct host_if_msg, work);
-+	struct wilc_rcvd_net_info *rcvd_info = &msg->body.net_info;
-+	struct wilc_user_scan_req *scan_req = &msg->vif->hif_drv->usr_scan_req;
-+	const u8 *ch_elm;
-+	u8 *ies;
-+	int ies_len;
-+	size_t offset;
-+
-+	if (ieee80211_is_probe_resp(rcvd_info->mgmt->frame_control))
-+		offset = offsetof(struct ieee80211_mgmt, u.probe_resp.variable);
-+	else if (ieee80211_is_beacon(rcvd_info->mgmt->frame_control))
-+		offset = offsetof(struct ieee80211_mgmt, u.beacon.variable);
-+	else
-+		goto done;
-+
-+	ies = rcvd_info->mgmt->u.beacon.variable;
-+	ies_len = rcvd_info->frame_len - offset;
-+	if (ies_len <= 0)
-+		goto done;
-+
-+	ch_elm = cfg80211_find_ie(WLAN_EID_DS_PARAMS, ies, ies_len);
-+	if (ch_elm && ch_elm[1] > 0)
-+		rcvd_info->ch = ch_elm[2];
-+
-+	if (scan_req->scan_result)
-+		scan_req->scan_result(SCAN_EVENT_NETWORK_FOUND, rcvd_info,
-+				      scan_req->arg);
-+
-+done:
-+	kfree(rcvd_info->mgmt);
-+	kfree(msg);
-+}
-+
-+static void host_int_get_assoc_res_info(struct wilc_vif *vif,
-+					u8 *assoc_resp_info,
-+					u32 max_assoc_resp_info_len,
-+					u32 *rcvd_assoc_resp_info_len)
-+{
-+	int result;
-+	struct wid wid;
-+
-+	wid.id = WID_ASSOC_RES_INFO;
-+	wid.type = WID_STR;
-+	wid.val = assoc_resp_info;
-+	wid.size = max_assoc_resp_info_len;
-+
-+	result = wilc_send_config_pkt(vif, WILC_GET_CFG, &wid, 1);
-+	if (result) {
-+		*rcvd_assoc_resp_info_len = 0;
-+		netdev_err(vif->ndev, "Failed to send association response\n");
-+		return;
-+	}
-+
-+	*rcvd_assoc_resp_info_len = wid.size;
-+}
-+
-+static s32 wilc_parse_assoc_resp_info(u8 *buffer, u32 buffer_len,
-+				      struct wilc_conn_info *ret_conn_info)
-+{
-+	u8 *ies;
-+	u16 ies_len;
-+	struct wilc_assoc_resp *res = (struct wilc_assoc_resp *)buffer;
-+
-+	ret_conn_info->status = le16_to_cpu(res->status_code);
-+	if (ret_conn_info->status == WLAN_STATUS_SUCCESS) {
-+		ies = &buffer[sizeof(*res)];
-+		ies_len = buffer_len - sizeof(*res);
-+
-+		ret_conn_info->resp_ies = kmemdup(ies, ies_len, GFP_KERNEL);
-+		if (!ret_conn_info->resp_ies)
-+			return -ENOMEM;
-+
-+		ret_conn_info->resp_ies_len = ies_len;
-+	}
-+
-+	return 0;
-+}
-+
-+static inline void host_int_parse_assoc_resp_info(struct wilc_vif *vif,
-+						  u8 mac_status)
-+{
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+	struct wilc_conn_info *conn_info = &hif_drv->conn_info;
-+
-+	if (mac_status == WILC_MAC_STATUS_CONNECTED) {
-+		u32 assoc_resp_info_len;
-+
-+		memset(hif_drv->assoc_resp, 0, WILC_MAX_ASSOC_RESP_FRAME_SIZE);
-+
-+		host_int_get_assoc_res_info(vif, hif_drv->assoc_resp,
-+					    WILC_MAX_ASSOC_RESP_FRAME_SIZE,
-+					    &assoc_resp_info_len);
-+
-+		if (assoc_resp_info_len != 0) {
-+			s32 err = 0;
-+
-+			err = wilc_parse_assoc_resp_info(hif_drv->assoc_resp,
-+							 assoc_resp_info_len,
-+							 conn_info);
-+			if (err)
-+				netdev_err(vif->ndev,
-+					   "wilc_parse_assoc_resp_info() returned error %d\n",
-+					   err);
-+		}
-+	}
-+
-+	del_timer(&hif_drv->connect_timer);
-+	conn_info->conn_result(CONN_DISCONN_EVENT_CONN_RESP, mac_status,
-+			       hif_drv->conn_info.arg);
-+
-+	if (mac_status == WILC_MAC_STATUS_CONNECTED &&
-+	    conn_info->status == WLAN_STATUS_SUCCESS) {
-+		ether_addr_copy(hif_drv->assoc_bssid, conn_info->bssid);
-+		hif_drv->hif_state = HOST_IF_CONNECTED;
-+	} else {
-+		hif_drv->hif_state = HOST_IF_IDLE;
-+	}
-+
-+	kfree(conn_info->resp_ies);
-+	conn_info->resp_ies = NULL;
-+	conn_info->resp_ies_len = 0;
-+
-+	kfree(conn_info->req_ies);
-+	conn_info->req_ies = NULL;
-+	conn_info->req_ies_len = 0;
-+}
-+
-+static inline void host_int_handle_disconnect(struct wilc_vif *vif)
-+{
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+
-+	if (hif_drv->usr_scan_req.scan_result) {
-+		del_timer(&hif_drv->scan_timer);
-+		handle_scan_done(vif, SCAN_EVENT_ABORTED);
-+	}
-+
-+	if (hif_drv->conn_info.conn_result)
-+		hif_drv->conn_info.conn_result(CONN_DISCONN_EVENT_DISCONN_NOTIF,
-+					       0, hif_drv->conn_info.arg);
-+	else
-+		netdev_err(vif->ndev, "%s: conn_result is NULL\n", __func__);
-+
-+	eth_zero_addr(hif_drv->assoc_bssid);
-+
-+	hif_drv->conn_info.req_ies_len = 0;
-+	kfree(hif_drv->conn_info.req_ies);
-+	hif_drv->conn_info.req_ies = NULL;
-+	hif_drv->hif_state = HOST_IF_IDLE;
-+}
-+
-+static void handle_rcvd_gnrl_async_info(struct work_struct *work)
-+{
-+	struct host_if_msg *msg = container_of(work, struct host_if_msg, work);
-+	struct wilc_vif *vif = msg->vif;
-+	struct wilc_rcvd_mac_info *mac_info = &msg->body.mac_info;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+
-+	if (!hif_drv) {
-+		netdev_err(vif->ndev, "%s: hif driver is NULL\n", __func__);
-+		goto free_msg;
-+	}
-+
-+	if (!hif_drv->conn_info.conn_result) {
-+		netdev_err(vif->ndev, "%s: conn_result is NULL\n", __func__);
-+		goto free_msg;
-+	}
-+
-+	if (hif_drv->hif_state == HOST_IF_WAITING_CONN_RESP) {
-+		host_int_parse_assoc_resp_info(vif, mac_info->status);
-+	} else if (mac_info->status == WILC_MAC_STATUS_DISCONNECTED) {
-+		if (hif_drv->hif_state == HOST_IF_CONNECTED) {
-+			host_int_handle_disconnect(vif);
-+		} else if (hif_drv->usr_scan_req.scan_result) {
-+			del_timer(&hif_drv->scan_timer);
-+			handle_scan_done(vif, SCAN_EVENT_ABORTED);
-+		}
-+	}
-+
-+free_msg:
-+	kfree(msg);
-+}
-+
-+int wilc_disconnect(struct wilc_vif *vif)
-+{
-+	struct wid wid;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+	struct wilc_user_scan_req *scan_req;
-+	struct wilc_conn_info *conn_info;
-+	int result;
-+	u16 dummy_reason_code = 0;
-+
-+	wid.id = WID_DISCONNECT;
-+	wid.type = WID_CHAR;
-+	wid.val = (s8 *)&dummy_reason_code;
-+	wid.size = sizeof(char);
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result) {
-+		netdev_err(vif->ndev, "Failed to send disconnect\n");
-+		return result;
-+	}
-+
-+	scan_req = &hif_drv->usr_scan_req;
-+	conn_info = &hif_drv->conn_info;
-+
-+	if (scan_req->scan_result) {
-+		del_timer(&hif_drv->scan_timer);
-+		scan_req->scan_result(SCAN_EVENT_ABORTED, NULL, scan_req->arg);
-+		scan_req->scan_result = NULL;
-+	}
-+
-+	if (conn_info->conn_result) {
-+		if (hif_drv->hif_state == HOST_IF_WAITING_CONN_RESP)
-+			del_timer(&hif_drv->connect_timer);
-+
-+		conn_info->conn_result(CONN_DISCONN_EVENT_DISCONN_NOTIF, 0,
-+				       conn_info->arg);
-+	} else {
-+		netdev_err(vif->ndev, "%s: conn_result is NULL\n", __func__);
-+	}
-+
-+	hif_drv->hif_state = HOST_IF_IDLE;
-+
-+	eth_zero_addr(hif_drv->assoc_bssid);
-+
-+	conn_info->req_ies_len = 0;
-+	kfree(conn_info->req_ies);
-+	conn_info->req_ies = NULL;
-+
-+	return 0;
-+}
-+
-+int wilc_get_statistics(struct wilc_vif *vif, struct rf_info *stats)
-+{
-+	struct wid wid_list[5];
-+	u32 wid_cnt = 0, result;
-+
-+	wid_list[wid_cnt].id = WID_LINKSPEED;
-+	wid_list[wid_cnt].type = WID_CHAR;
-+	wid_list[wid_cnt].size = sizeof(char);
-+	wid_list[wid_cnt].val = (s8 *)&stats->link_speed;
-+	wid_cnt++;
-+
-+	wid_list[wid_cnt].id = WID_RSSI;
-+	wid_list[wid_cnt].type = WID_CHAR;
-+	wid_list[wid_cnt].size = sizeof(char);
-+	wid_list[wid_cnt].val = (s8 *)&stats->rssi;
-+	wid_cnt++;
-+
-+	wid_list[wid_cnt].id = WID_SUCCESS_FRAME_COUNT;
-+	wid_list[wid_cnt].type = WID_INT;
-+	wid_list[wid_cnt].size = sizeof(u32);
-+	wid_list[wid_cnt].val = (s8 *)&stats->tx_cnt;
-+	wid_cnt++;
-+
-+	wid_list[wid_cnt].id = WID_RECEIVED_FRAGMENT_COUNT;
-+	wid_list[wid_cnt].type = WID_INT;
-+	wid_list[wid_cnt].size = sizeof(u32);
-+	wid_list[wid_cnt].val = (s8 *)&stats->rx_cnt;
-+	wid_cnt++;
-+
-+	wid_list[wid_cnt].id = WID_FAILED_COUNT;
-+	wid_list[wid_cnt].type = WID_INT;
-+	wid_list[wid_cnt].size = sizeof(u32);
-+	wid_list[wid_cnt].val = (s8 *)&stats->tx_fail_cnt;
-+	wid_cnt++;
-+
-+	result = wilc_send_config_pkt(vif, WILC_GET_CFG, wid_list, wid_cnt);
-+	if (result) {
-+		netdev_err(vif->ndev, "Failed to send scan parameters\n");
-+		return result;
-+	}
-+
-+	if (stats->link_speed > TCP_ACK_FILTER_LINK_SPEED_THRESH &&
-+	    stats->link_speed != DEFAULT_LINK_SPEED)
-+		wilc_enable_tcp_ack_filter(vif, true);
-+	else if (stats->link_speed != DEFAULT_LINK_SPEED)
-+		wilc_enable_tcp_ack_filter(vif, false);
-+
-+	return result;
-+}
-+
-+static void handle_get_statistics(struct work_struct *work)
-+{
-+	struct host_if_msg *msg = container_of(work, struct host_if_msg, work);
-+	struct wilc_vif *vif = msg->vif;
-+	struct rf_info *stats = (struct rf_info *)msg->body.data;
-+
-+	wilc_get_statistics(vif, stats);
-+
-+	kfree(msg);
-+}
-+
-+static void wilc_hif_pack_sta_param(u8 *cur_byte, const u8 *mac,
-+				    struct station_parameters *params)
-+{
-+	ether_addr_copy(cur_byte, mac);
-+	cur_byte += ETH_ALEN;
-+
-+	put_unaligned_le16(params->aid, cur_byte);
-+	cur_byte += 2;
-+
-+	*cur_byte++ = params->supported_rates_len;
-+	if (params->supported_rates_len > 0)
-+		memcpy(cur_byte, params->supported_rates,
-+		       params->supported_rates_len);
-+	cur_byte += params->supported_rates_len;
-+
-+	if (params->ht_capa) {
-+		*cur_byte++ = true;
-+		memcpy(cur_byte, params->ht_capa,
-+		       sizeof(struct ieee80211_ht_cap));
-+	} else {
-+		*cur_byte++ = false;
-+	}
-+	cur_byte += sizeof(struct ieee80211_ht_cap);
-+
-+	put_unaligned_le16(params->sta_flags_mask, cur_byte);
-+	cur_byte += 2;
-+	put_unaligned_le16(params->sta_flags_set, cur_byte);
-+}
-+
-+static int handle_remain_on_chan(struct wilc_vif *vif,
-+				 struct wilc_remain_ch *hif_remain_ch)
-+{
-+	int result;
-+	u8 remain_on_chan_flag;
-+	struct wid wid;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+
-+	if (hif_drv->usr_scan_req.scan_result)
-+		return -EBUSY;
-+
-+	if (hif_drv->hif_state == HOST_IF_WAITING_CONN_RESP)
-+		return -EBUSY;
-+
-+	if (vif->connecting)
-+		return -EBUSY;
-+
-+	remain_on_chan_flag = true;
-+	wid.id = WID_REMAIN_ON_CHAN;
-+	wid.type = WID_STR;
-+	wid.size = 2;
-+	wid.val = kmalloc(wid.size, GFP_KERNEL);
-+	if (!wid.val)
-+		return -ENOMEM;
-+
-+	wid.val[0] = remain_on_chan_flag;
-+	wid.val[1] = (s8)hif_remain_ch->ch;
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	kfree(wid.val);
-+	if (result)
-+		return -EBUSY;
-+
-+	hif_drv->remain_on_ch.arg = hif_remain_ch->arg;
-+	hif_drv->remain_on_ch.expired = hif_remain_ch->expired;
-+	hif_drv->remain_on_ch.ch = hif_remain_ch->ch;
-+	hif_drv->remain_on_ch.cookie = hif_remain_ch->cookie;
-+	hif_drv->remain_on_ch_timer_vif = vif;
-+
-+	return 0;
-+}
-+
-+static int wilc_handle_roc_expired(struct wilc_vif *vif, u64 cookie)
-+{
-+	u8 remain_on_chan_flag;
-+	struct wid wid;
-+	int result;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+
-+	if (vif->priv.p2p_listen_state) {
-+		remain_on_chan_flag = false;
-+		wid.id = WID_REMAIN_ON_CHAN;
-+		wid.type = WID_STR;
-+		wid.size = 2;
-+
-+		wid.val = kmalloc(wid.size, GFP_KERNEL);
-+		if (!wid.val)
-+			return -ENOMEM;
-+
-+		wid.val[0] = remain_on_chan_flag;
-+		wid.val[1] = WILC_FALSE_FRMWR_CHANNEL;
-+
-+		result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+		kfree(wid.val);
-+		if (result != 0) {
-+			netdev_err(vif->ndev, "Failed to set remain channel\n");
-+			return -EINVAL;
-+		}
-+
-+		if (hif_drv->remain_on_ch.expired) {
-+			hif_drv->remain_on_ch.expired(hif_drv->remain_on_ch.arg,
-+						      cookie);
-+		}
-+	} else {
-+		netdev_dbg(vif->ndev, "Not in listen state\n");
-+	}
-+
-+	return 0;
-+}
-+
-+static void wilc_handle_listen_state_expired(struct work_struct *work)
-+{
-+	struct host_if_msg *msg = container_of(work, struct host_if_msg, work);
-+
-+	wilc_handle_roc_expired(msg->vif, msg->body.remain_on_ch.cookie);
-+	kfree(msg);
-+}
-+
-+static void listen_timer_cb(struct timer_list *t)
-+{
-+	struct host_if_drv *hif_drv = from_timer(hif_drv, t,
-+						      remain_on_ch_timer);
-+	struct wilc_vif *vif = hif_drv->remain_on_ch_timer_vif;
-+	int result;
-+	struct host_if_msg *msg;
-+
-+	del_timer(&vif->hif_drv->remain_on_ch_timer);
-+
-+	msg = wilc_alloc_work(vif, wilc_handle_listen_state_expired, false);
-+	if (IS_ERR(msg))
-+		return;
-+
-+	msg->body.remain_on_ch.cookie = vif->hif_drv->remain_on_ch.cookie;
-+
-+	result = wilc_enqueue_work(msg);
-+	if (result) {
-+		netdev_err(vif->ndev, "%s: enqueue work failed\n", __func__);
-+		kfree(msg);
-+	}
-+}
-+
-+static void handle_set_mcast_filter(struct work_struct *work)
-+{
-+	struct host_if_msg *msg = container_of(work, struct host_if_msg, work);
-+	struct wilc_vif *vif = msg->vif;
-+	struct wilc_set_multicast *set_mc = &msg->body.mc_info;
-+	int result;
-+	struct wid wid;
-+	u8 *cur_byte;
-+
-+	wid.id = WID_SETUP_MULTICAST_FILTER;
-+	wid.type = WID_BIN;
-+	wid.size = sizeof(struct wilc_set_multicast) + (set_mc->cnt * ETH_ALEN);
-+	wid.val = kmalloc(wid.size, GFP_KERNEL);
-+	if (!wid.val)
-+		goto error;
-+
-+	cur_byte = wid.val;
-+	put_unaligned_le32(set_mc->enabled, cur_byte);
-+	cur_byte += 4;
-+
-+	put_unaligned_le32(set_mc->cnt, cur_byte);
-+	cur_byte += 4;
-+
-+	if (set_mc->cnt > 0 && set_mc->mc_list)
-+		memcpy(cur_byte, set_mc->mc_list, set_mc->cnt * ETH_ALEN);
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to send setup multicast\n");
-+
-+error:
-+	kfree(set_mc->mc_list);
-+	kfree(wid.val);
-+	kfree(msg);
-+}
-+
-+static void handle_scan_timer(struct work_struct *work)
-+{
-+	struct host_if_msg *msg = container_of(work, struct host_if_msg, work);
-+
-+	handle_scan_done(msg->vif, SCAN_EVENT_ABORTED);
-+	kfree(msg);
-+}
-+
-+static void handle_scan_complete(struct work_struct *work)
-+{
-+	struct host_if_msg *msg = container_of(work, struct host_if_msg, work);
-+
-+	del_timer(&msg->vif->hif_drv->scan_timer);
-+
-+	handle_scan_done(msg->vif, SCAN_EVENT_DONE);
-+
-+	kfree(msg);
-+}
-+
-+static void timer_scan_cb(struct timer_list *t)
-+{
-+	struct host_if_drv *hif_drv = from_timer(hif_drv, t, scan_timer);
-+	struct wilc_vif *vif = hif_drv->scan_timer_vif;
-+	struct host_if_msg *msg;
-+	int result;
-+
-+	msg = wilc_alloc_work(vif, handle_scan_timer, false);
-+	if (IS_ERR(msg))
-+		return;
-+
-+	result = wilc_enqueue_work(msg);
-+	if (result)
-+		kfree(msg);
-+}
-+
-+static void timer_connect_cb(struct timer_list *t)
-+{
-+	struct host_if_drv *hif_drv = from_timer(hif_drv, t,
-+						      connect_timer);
-+	struct wilc_vif *vif = hif_drv->connect_timer_vif;
-+	struct host_if_msg *msg;
-+	int result;
-+
-+	msg = wilc_alloc_work(vif, handle_connect_timeout, false);
-+	if (IS_ERR(msg))
-+		return;
-+
-+	result = wilc_enqueue_work(msg);
-+	if (result)
-+		kfree(msg);
-+}
-+
-+int wilc_remove_wep_key(struct wilc_vif *vif, u8 index)
-+{
-+	struct wid wid;
-+	int result;
-+
-+	wid.id = WID_REMOVE_WEP_KEY;
-+	wid.type = WID_STR;
-+	wid.size = sizeof(char);
-+	wid.val = &index;
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev,
-+			   "Failed to send remove wep key config packet\n");
-+	return result;
-+}
-+
-+int wilc_set_wep_default_keyid(struct wilc_vif *vif, u8 index)
-+{
-+	struct wid wid;
-+	int result;
-+
-+	wid.id = WID_KEY_ID;
-+	wid.type = WID_CHAR;
-+	wid.size = sizeof(char);
-+	wid.val = &index;
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev,
-+			   "Failed to send wep default key config packet\n");
-+
-+	return result;
-+}
-+
-+int wilc_add_wep_key_bss_sta(struct wilc_vif *vif, const u8 *key, u8 len,
-+			     u8 index)
-+{
-+	struct wid wid;
-+	int result;
-+	struct wilc_wep_key *wep_key;
-+
-+	wid.id = WID_ADD_WEP_KEY;
-+	wid.type = WID_STR;
-+	wid.size = sizeof(*wep_key) + len;
-+	wep_key = kzalloc(wid.size, GFP_KERNEL);
-+	if (!wep_key)
-+		return -ENOMEM;
-+
-+	wid.val = (u8 *)wep_key;
-+
-+	wep_key->index = index;
-+	wep_key->key_len = len;
-+	memcpy(wep_key->key, key, len);
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev,
-+			   "Failed to add wep key config packet\n");
-+
-+	kfree(wep_key);
-+	return result;
-+}
-+
-+int wilc_add_wep_key_bss_ap(struct wilc_vif *vif, const u8 *key, u8 len,
-+			    u8 index, u8 mode, enum authtype auth_type)
-+{
-+	struct wid wid_list[3];
-+	int result;
-+	struct wilc_wep_key *wep_key;
-+
-+	wid_list[0].id = WID_11I_MODE;
-+	wid_list[0].type = WID_CHAR;
-+	wid_list[0].size = sizeof(char);
-+	wid_list[0].val = &mode;
-+
-+	wid_list[1].id = WID_AUTH_TYPE;
-+	wid_list[1].type = WID_CHAR;
-+	wid_list[1].size = sizeof(char);
-+	wid_list[1].val = (s8 *)&auth_type;
-+
-+	wid_list[2].id = WID_WEP_KEY_VALUE;
-+	wid_list[2].type = WID_STR;
-+	wid_list[2].size = sizeof(*wep_key) + len;
-+	wep_key = kzalloc(wid_list[2].size, GFP_KERNEL);
-+	if (!wep_key)
-+		return -ENOMEM;
-+
-+	wid_list[2].val = (u8 *)wep_key;
-+
-+	wep_key->index = index;
-+	wep_key->key_len = len;
-+	memcpy(wep_key->key, key, len);
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, wid_list,
-+				      ARRAY_SIZE(wid_list));
-+	if (result)
-+		netdev_err(vif->ndev,
-+			   "Failed to add wep ap key config packet\n");
-+
-+	kfree(wep_key);
-+	return result;
-+}
-+
-+int wilc_add_ptk(struct wilc_vif *vif, const u8 *ptk, u8 ptk_key_len,
-+		 const u8 *mac_addr, const u8 *rx_mic, const u8 *tx_mic,
-+		 u8 mode, u8 cipher_mode, u8 index)
-+{
-+	int result = 0;
-+	u8 t_key_len  = ptk_key_len + WILC_RX_MIC_KEY_LEN + WILC_TX_MIC_KEY_LEN;
-+
-+	if (mode == WILC_AP_MODE) {
-+		struct wid wid_list[2];
-+		struct wilc_ap_wpa_ptk *key_buf;
-+
-+		wid_list[0].id = WID_11I_MODE;
-+		wid_list[0].type = WID_CHAR;
-+		wid_list[0].size = sizeof(char);
-+		wid_list[0].val = (s8 *)&cipher_mode;
-+
-+		key_buf = kzalloc(sizeof(*key_buf) + t_key_len, GFP_KERNEL);
-+		if (!key_buf)
-+			return -ENOMEM;
-+
-+		ether_addr_copy(key_buf->mac_addr, mac_addr);
-+		key_buf->index = index;
-+		key_buf->key_len = t_key_len;
-+		memcpy(&key_buf->key[0], ptk, ptk_key_len);
-+
-+		if (rx_mic)
-+			memcpy(&key_buf->key[ptk_key_len], rx_mic,
-+			       WILC_RX_MIC_KEY_LEN);
-+
-+		if (tx_mic)
-+			memcpy(&key_buf->key[ptk_key_len + WILC_RX_MIC_KEY_LEN],
-+			       tx_mic, WILC_TX_MIC_KEY_LEN);
-+
-+		wid_list[1].id = WID_ADD_PTK;
-+		wid_list[1].type = WID_STR;
-+		wid_list[1].size = sizeof(*key_buf) + t_key_len;
-+		wid_list[1].val = (u8 *)key_buf;
-+		result = wilc_send_config_pkt(vif, WILC_SET_CFG, wid_list,
-+					      ARRAY_SIZE(wid_list));
-+		kfree(key_buf);
-+	} else if (mode == WILC_STATION_MODE) {
-+		struct wid wid;
-+		struct wilc_sta_wpa_ptk *key_buf;
-+
-+		key_buf = kzalloc(sizeof(*key_buf) + t_key_len, GFP_KERNEL);
-+		if (!key_buf)
-+			return -ENOMEM;
-+
-+		ether_addr_copy(key_buf->mac_addr, mac_addr);
-+		key_buf->key_len = t_key_len;
-+		memcpy(&key_buf->key[0], ptk, ptk_key_len);
-+
-+		if (rx_mic)
-+			memcpy(&key_buf->key[ptk_key_len], rx_mic,
-+			       WILC_RX_MIC_KEY_LEN);
-+
-+		if (tx_mic)
-+			memcpy(&key_buf->key[ptk_key_len + WILC_RX_MIC_KEY_LEN],
-+			       tx_mic, WILC_TX_MIC_KEY_LEN);
-+
-+		wid.id = WID_ADD_PTK;
-+		wid.type = WID_STR;
-+		wid.size = sizeof(*key_buf) + t_key_len;
-+		wid.val = (s8 *)key_buf;
-+		result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+		kfree(key_buf);
-+	}
-+
-+	return result;
-+}
-+
-+int wilc_add_rx_gtk(struct wilc_vif *vif, const u8 *rx_gtk, u8 gtk_key_len,
-+		    u8 index, u32 key_rsc_len, const u8 *key_rsc,
-+		    const u8 *rx_mic, const u8 *tx_mic, u8 mode,
-+		    u8 cipher_mode)
-+{
-+	int result = 0;
-+	struct wilc_gtk_key *gtk_key;
-+	int t_key_len = gtk_key_len + WILC_RX_MIC_KEY_LEN + WILC_TX_MIC_KEY_LEN;
-+
-+	gtk_key = kzalloc(sizeof(*gtk_key) + t_key_len, GFP_KERNEL);
-+	if (!gtk_key)
-+		return -ENOMEM;
-+
-+	/* fill bssid value only in station mode */
-+	if (mode == WILC_STATION_MODE &&
-+	    vif->hif_drv->hif_state == HOST_IF_CONNECTED)
-+		memcpy(gtk_key->mac_addr, vif->hif_drv->assoc_bssid, ETH_ALEN);
-+
-+	if (key_rsc)
-+		memcpy(gtk_key->rsc, key_rsc, 8);
-+	gtk_key->index = index;
-+	gtk_key->key_len = t_key_len;
-+	memcpy(&gtk_key->key[0], rx_gtk, gtk_key_len);
-+
-+	if (rx_mic)
-+		memcpy(&gtk_key->key[gtk_key_len], rx_mic, WILC_RX_MIC_KEY_LEN);
-+
-+	if (tx_mic)
-+		memcpy(&gtk_key->key[gtk_key_len + WILC_RX_MIC_KEY_LEN],
-+		       tx_mic, WILC_TX_MIC_KEY_LEN);
-+
-+	if (mode == WILC_AP_MODE) {
-+		struct wid wid_list[2];
-+
-+		wid_list[0].id = WID_11I_MODE;
-+		wid_list[0].type = WID_CHAR;
-+		wid_list[0].size = sizeof(char);
-+		wid_list[0].val = (s8 *)&cipher_mode;
-+
-+		wid_list[1].id = WID_ADD_RX_GTK;
-+		wid_list[1].type = WID_STR;
-+		wid_list[1].size = sizeof(*gtk_key) + t_key_len;
-+		wid_list[1].val = (u8 *)gtk_key;
-+
-+		result = wilc_send_config_pkt(vif, WILC_SET_CFG, wid_list,
-+					      ARRAY_SIZE(wid_list));
-+	} else if (mode == WILC_STATION_MODE) {
-+		struct wid wid;
-+
-+		wid.id = WID_ADD_RX_GTK;
-+		wid.type = WID_STR;
-+		wid.size = sizeof(*gtk_key) + t_key_len;
-+		wid.val = (u8 *)gtk_key;
-+		result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	}
-+
-+	kfree(gtk_key);
-+	return result;
-+}
-+
-+int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr *pmkid)
-+{
-+	struct wid wid;
-+
-+	wid.id = WID_PMKID_INFO;
-+	wid.type = WID_STR;
-+	wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
-+	wid.val = (u8 *)pmkid;
-+
-+	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+}
-+
-+int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
-+{
-+	int result;
-+	struct wid wid;
-+
-+	wid.id = WID_MAC_ADDR;
-+	wid.type = WID_STR;
-+	wid.size = ETH_ALEN;
-+	wid.val = mac_addr;
-+
-+	result = wilc_send_config_pkt(vif, WILC_GET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to get mac address\n");
-+
-+	return result;
-+}
-+
-+int wilc_set_join_req(struct wilc_vif *vif, u8 *bssid, const u8 *ies,
-+		      size_t ies_len)
-+{
-+	int result;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+	struct wilc_conn_info *conn_info = &hif_drv->conn_info;
-+
-+	if (bssid)
-+		ether_addr_copy(conn_info->bssid, bssid);
-+
-+	if (ies) {
-+		conn_info->req_ies_len = ies_len;
-+		conn_info->req_ies = kmemdup(ies, ies_len, GFP_KERNEL);
-+		if (!conn_info->req_ies)
-+			return -ENOMEM;
-+	}
-+
-+	result = wilc_send_connect_wid(vif);
-+	if (result)
-+		goto free_ies;
-+
-+	hif_drv->connect_timer_vif = vif;
-+	mod_timer(&hif_drv->connect_timer,
-+		  jiffies + msecs_to_jiffies(WILC_HIF_CONNECT_TIMEOUT_MS));
-+
-+	return 0;
-+
-+free_ies:
-+	kfree(conn_info->req_ies);
-+
-+	return result;
-+}
-+
-+int wilc_set_mac_chnl_num(struct wilc_vif *vif, u8 channel)
-+{
-+	struct wid wid;
-+	int result;
-+
-+	wid.id = WID_CURRENT_CHANNEL;
-+	wid.type = WID_CHAR;
-+	wid.size = sizeof(char);
-+	wid.val = &channel;
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to set channel\n");
-+
-+	return result;
-+}
-+
-+int wilc_set_operation_mode(struct wilc_vif *vif, int index, u8 mode,
-+			    u8 ifc_id)
-+{
-+	struct wid wid;
-+	int result;
-+	struct wilc_drv_handler drv;
-+
-+	wid.id = WID_SET_OPERATION_MODE;
-+	wid.type = WID_STR;
-+	wid.size = sizeof(drv);
-+	wid.val = (u8 *)&drv;
-+
-+	drv.handler = cpu_to_le32(index);
-+	drv.mode = (ifc_id | (mode << 1));
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to set driver handler\n");
-+
-+	return result;
-+}
-+
-+s32 wilc_get_inactive_time(struct wilc_vif *vif, const u8 *mac, u32 *out_val)
-+{
-+	struct wid wid;
-+	s32 result;
-+
-+	wid.id = WID_SET_STA_MAC_INACTIVE_TIME;
-+	wid.type = WID_STR;
-+	wid.size = ETH_ALEN;
-+	wid.val = kzalloc(wid.size, GFP_KERNEL);
-+	if (!wid.val)
-+		return -ENOMEM;
-+
-+	ether_addr_copy(wid.val, mac);
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	kfree(wid.val);
-+	if (result) {
-+		netdev_err(vif->ndev, "Failed to set inactive mac\n");
-+		return result;
-+	}
-+
-+	wid.id = WID_GET_INACTIVE_TIME;
-+	wid.type = WID_INT;
-+	wid.val = (s8 *)out_val;
-+	wid.size = sizeof(u32);
-+	result = wilc_send_config_pkt(vif, WILC_GET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to get inactive time\n");
-+
-+	return result;
-+}
-+
-+int wilc_get_rssi(struct wilc_vif *vif, s8 *rssi_level)
-+{
-+	struct wid wid;
-+	int result;
-+
-+	if (!rssi_level) {
-+		netdev_err(vif->ndev, "%s: RSSI level is NULL\n", __func__);
-+		return -EFAULT;
-+	}
-+
-+	wid.id = WID_RSSI;
-+	wid.type = WID_CHAR;
-+	wid.size = sizeof(char);
-+	wid.val = rssi_level;
-+	result = wilc_send_config_pkt(vif, WILC_GET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to get RSSI value\n");
-+
-+	return result;
-+}
-+
-+static int wilc_get_stats_async(struct wilc_vif *vif, struct rf_info *stats)
-+{
-+	int result;
-+	struct host_if_msg *msg;
-+
-+	msg = wilc_alloc_work(vif, handle_get_statistics, false);
-+	if (IS_ERR(msg))
-+		return PTR_ERR(msg);
-+
-+	msg->body.data = (char *)stats;
-+
-+	result = wilc_enqueue_work(msg);
-+	if (result) {
-+		netdev_err(vif->ndev, "%s: enqueue work failed\n", __func__);
-+		kfree(msg);
-+		return result;
-+	}
-+
-+	return result;
-+}
-+
-+int wilc_hif_set_cfg(struct wilc_vif *vif, struct cfg_param_attr *param)
-+{
-+	struct wid wid_list[4];
-+	int i = 0;
-+
-+	if (param->flag & WILC_CFG_PARAM_RETRY_SHORT) {
-+		wid_list[i].id = WID_SHORT_RETRY_LIMIT;
-+		wid_list[i].val = (s8 *)&param->short_retry_limit;
-+		wid_list[i].type = WID_SHORT;
-+		wid_list[i].size = sizeof(u16);
-+		i++;
-+	}
-+	if (param->flag & WILC_CFG_PARAM_RETRY_LONG) {
-+		wid_list[i].id = WID_LONG_RETRY_LIMIT;
-+		wid_list[i].val = (s8 *)&param->long_retry_limit;
-+		wid_list[i].type = WID_SHORT;
-+		wid_list[i].size = sizeof(u16);
-+		i++;
-+	}
-+	if (param->flag & WILC_CFG_PARAM_FRAG_THRESHOLD) {
-+		wid_list[i].id = WID_FRAG_THRESHOLD;
-+		wid_list[i].val = (s8 *)&param->frag_threshold;
-+		wid_list[i].type = WID_SHORT;
-+		wid_list[i].size = sizeof(u16);
-+		i++;
-+	}
-+	if (param->flag & WILC_CFG_PARAM_RTS_THRESHOLD) {
-+		wid_list[i].id = WID_RTS_THRESHOLD;
-+		wid_list[i].val = (s8 *)&param->rts_threshold;
-+		wid_list[i].type = WID_SHORT;
-+		wid_list[i].size = sizeof(u16);
-+		i++;
-+	}
-+
-+	return wilc_send_config_pkt(vif, WILC_SET_CFG, wid_list, i);
-+}
-+
-+static void get_periodic_rssi(struct timer_list *t)
-+{
-+	struct wilc_vif *vif = from_timer(vif, t, periodic_rssi);
-+
-+	if (!vif->hif_drv) {
-+		netdev_err(vif->ndev, "%s: hif driver is NULL", __func__);
-+		return;
-+	}
-+
-+	if (vif->hif_drv->hif_state == HOST_IF_CONNECTED)
-+		wilc_get_stats_async(vif, &vif->periodic_stat);
-+
-+	mod_timer(&vif->periodic_rssi, jiffies + msecs_to_jiffies(5000));
-+}
-+
-+int wilc_init(struct net_device *dev, struct host_if_drv **hif_drv_handler)
-+{
-+	struct host_if_drv *hif_drv;
-+	struct wilc_vif *vif = netdev_priv(dev);
-+	struct wilc *wilc = vif->wilc;
-+
-+	hif_drv  = kzalloc(sizeof(*hif_drv), GFP_KERNEL);
-+	if (!hif_drv)
-+		return -ENOMEM;
-+
-+	*hif_drv_handler = hif_drv;
-+
-+	vif->hif_drv = hif_drv;
-+
-+	if (wilc->clients_count == 0)
-+		mutex_init(&wilc->deinit_lock);
-+
-+	timer_setup(&vif->periodic_rssi, get_periodic_rssi, 0);
-+	mod_timer(&vif->periodic_rssi, jiffies + msecs_to_jiffies(5000));
-+
-+	timer_setup(&hif_drv->scan_timer, timer_scan_cb, 0);
-+	timer_setup(&hif_drv->connect_timer, timer_connect_cb, 0);
-+	timer_setup(&hif_drv->remain_on_ch_timer, listen_timer_cb, 0);
-+
-+	hif_drv->hif_state = HOST_IF_IDLE;
-+
-+	hif_drv->p2p_timeout = 0;
-+
-+	wilc->clients_count++;
-+
-+	return 0;
-+}
-+
-+int wilc_deinit(struct wilc_vif *vif)
-+{
-+	int result = 0;
-+	struct host_if_drv *hif_drv = vif->hif_drv;
-+
-+	if (!hif_drv) {
-+		netdev_err(vif->ndev, "%s: hif driver is NULL", __func__);
-+		return -EFAULT;
-+	}
-+
-+	mutex_lock(&vif->wilc->deinit_lock);
-+
-+	del_timer_sync(&hif_drv->scan_timer);
-+	del_timer_sync(&hif_drv->connect_timer);
-+	del_timer_sync(&vif->periodic_rssi);
-+	del_timer_sync(&hif_drv->remain_on_ch_timer);
-+
-+	if (hif_drv->usr_scan_req.scan_result) {
-+		hif_drv->usr_scan_req.scan_result(SCAN_EVENT_ABORTED, NULL,
-+						  hif_drv->usr_scan_req.arg);
-+		hif_drv->usr_scan_req.scan_result = NULL;
-+	}
-+
-+	hif_drv->hif_state = HOST_IF_IDLE;
-+
-+	kfree(hif_drv);
-+	vif->hif_drv = NULL;
-+	vif->wilc->clients_count--;
-+	mutex_unlock(&vif->wilc->deinit_lock);
-+	return result;
-+}
-+
-+void wilc_network_info_received(struct wilc *wilc, u8 *buffer, u32 length)
-+{
-+	int result;
-+	struct host_if_msg *msg;
-+	int id;
-+	struct host_if_drv *hif_drv;
-+	struct wilc_vif *vif;
-+
-+	id = get_unaligned_le32(&buffer[length - 4]);
-+	vif = wilc_get_vif_from_idx(wilc, id);
-+	if (!vif)
-+		return;
-+	hif_drv = vif->hif_drv;
-+
-+	if (!hif_drv) {
-+		netdev_err(vif->ndev, "driver not init[%p]\n", hif_drv);
-+		return;
-+	}
-+
-+	msg = wilc_alloc_work(vif, handle_rcvd_ntwrk_info, false);
-+	if (IS_ERR(msg))
-+		return;
-+
-+	msg->body.net_info.frame_len = get_unaligned_le16(&buffer[6]) - 1;
-+	msg->body.net_info.rssi = buffer[8];
-+	msg->body.net_info.mgmt = kmemdup(&buffer[9],
-+					  msg->body.net_info.frame_len,
-+					  GFP_KERNEL);
-+	if (!msg->body.net_info.mgmt) {
-+		kfree(msg);
-+		return;
-+	}
-+
-+	result = wilc_enqueue_work(msg);
-+	if (result) {
-+		netdev_err(vif->ndev, "%s: enqueue work failed\n", __func__);
-+		kfree(msg->body.net_info.mgmt);
-+		kfree(msg);
-+	}
-+}
-+
-+void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *buffer, u32 length)
-+{
-+	int result;
-+	struct host_if_msg *msg;
-+	int id;
-+	struct host_if_drv *hif_drv;
-+	struct wilc_vif *vif;
-+
-+	mutex_lock(&wilc->deinit_lock);
-+
-+	id = get_unaligned_le32(&buffer[length - 4]);
-+	vif = wilc_get_vif_from_idx(wilc, id);
-+	if (!vif) {
-+		mutex_unlock(&wilc->deinit_lock);
-+		return;
-+	}
-+
-+	hif_drv = vif->hif_drv;
-+
-+	if (!hif_drv) {
-+		mutex_unlock(&wilc->deinit_lock);
-+		return;
-+	}
-+
-+	if (!hif_drv->conn_info.conn_result) {
-+		netdev_err(vif->ndev, "%s: conn_result is NULL\n", __func__);
-+		mutex_unlock(&wilc->deinit_lock);
-+		return;
-+	}
-+
-+	msg = wilc_alloc_work(vif, handle_rcvd_gnrl_async_info, false);
-+	if (IS_ERR(msg)) {
-+		mutex_unlock(&wilc->deinit_lock);
-+		return;
-+	}
-+
-+	msg->body.mac_info.status = buffer[7];
-+	result = wilc_enqueue_work(msg);
-+	if (result) {
-+		netdev_err(vif->ndev, "%s: enqueue work failed\n", __func__);
-+		kfree(msg);
-+	}
-+
-+	mutex_unlock(&wilc->deinit_lock);
-+}
-+
-+void wilc_scan_complete_received(struct wilc *wilc, u8 *buffer, u32 length)
-+{
-+	int result;
-+	int id;
-+	struct host_if_drv *hif_drv;
-+	struct wilc_vif *vif;
-+
-+	id = get_unaligned_le32(&buffer[length - 4]);
-+	vif = wilc_get_vif_from_idx(wilc, id);
-+	if (!vif)
-+		return;
-+	hif_drv = vif->hif_drv;
-+
-+	if (!hif_drv)
-+		return;
-+
-+	if (hif_drv->usr_scan_req.scan_result) {
-+		struct host_if_msg *msg;
-+
-+		msg = wilc_alloc_work(vif, handle_scan_complete, false);
-+		if (IS_ERR(msg))
-+			return;
-+
-+		result = wilc_enqueue_work(msg);
-+		if (result) {
-+			netdev_err(vif->ndev, "%s: enqueue work failed\n",
-+				   __func__);
-+			kfree(msg);
-+		}
-+	}
-+}
-+
-+int wilc_remain_on_channel(struct wilc_vif *vif, u64 cookie,
-+			   u32 duration, u16 chan,
-+			   void (*expired)(void *, u64),
-+			   void *user_arg)
-+{
-+	struct wilc_remain_ch roc;
-+	int result;
-+
-+	roc.ch = chan;
-+	roc.expired = expired;
-+	roc.arg = user_arg;
-+	roc.duration = duration;
-+	roc.cookie = cookie;
-+	result = handle_remain_on_chan(vif, &roc);
-+	if (result)
-+		netdev_err(vif->ndev, "%s: failed to set remain on channel\n",
-+			   __func__);
-+
-+	return result;
-+}
-+
-+int wilc_listen_state_expired(struct wilc_vif *vif, u64 cookie)
-+{
-+	if (!vif->hif_drv) {
-+		netdev_err(vif->ndev, "%s: hif driver is NULL", __func__);
-+		return -EFAULT;
-+	}
-+
-+	del_timer(&vif->hif_drv->remain_on_ch_timer);
-+
-+	return wilc_handle_roc_expired(vif, cookie);
-+}
-+
-+void wilc_frame_register(struct wilc_vif *vif, u16 frame_type, bool reg)
-+{
-+	struct wid wid;
-+	int result;
-+	struct wilc_reg_frame reg_frame;
-+
-+	wid.id = WID_REGISTER_FRAME;
-+	wid.type = WID_STR;
-+	wid.size = sizeof(reg_frame);
-+	wid.val = (u8 *)&reg_frame;
-+
-+	memset(&reg_frame, 0x0, sizeof(reg_frame));
-+
-+	if (reg)
-+		reg_frame.reg = 1;
-+
-+	switch (frame_type) {
-+	case IEEE80211_STYPE_ACTION:
-+		reg_frame.reg_id = WILC_FW_ACTION_FRM_IDX;
-+		break;
-+
-+	case IEEE80211_STYPE_PROBE_REQ:
-+		reg_frame.reg_id = WILC_FW_PROBE_REQ_IDX;
-+		break;
-+
-+	default:
-+		break;
-+	}
-+	reg_frame.frame_type = cpu_to_le16(frame_type);
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to frame register\n");
-+}
-+
-+int wilc_add_beacon(struct wilc_vif *vif, u32 interval, u32 dtim_period,
-+		    struct cfg80211_beacon_data *params)
-+{
-+	struct wid wid;
-+	int result;
-+	u8 *cur_byte;
-+
-+	wid.id = WID_ADD_BEACON;
-+	wid.type = WID_BIN;
-+	wid.size = params->head_len + params->tail_len + 16;
-+	wid.val = kzalloc(wid.size, GFP_KERNEL);
-+	if (!wid.val)
-+		return -ENOMEM;
-+
-+	cur_byte = wid.val;
-+	put_unaligned_le32(interval, cur_byte);
-+	cur_byte += 4;
-+	put_unaligned_le32(dtim_period, cur_byte);
-+	cur_byte += 4;
-+	put_unaligned_le32(params->head_len, cur_byte);
-+	cur_byte += 4;
-+
-+	if (params->head_len > 0)
-+		memcpy(cur_byte, params->head, params->head_len);
-+	cur_byte += params->head_len;
-+
-+	put_unaligned_le32(params->tail_len, cur_byte);
-+	cur_byte += 4;
-+
-+	if (params->tail_len > 0)
-+		memcpy(cur_byte, params->tail, params->tail_len);
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to send add beacon\n");
-+
-+	kfree(wid.val);
-+
-+	return result;
-+}
-+
-+int wilc_del_beacon(struct wilc_vif *vif)
-+{
-+	int result;
-+	struct wid wid;
-+	u8 del_beacon = 0;
-+
-+	wid.id = WID_DEL_BEACON;
-+	wid.type = WID_CHAR;
-+	wid.size = sizeof(char);
-+	wid.val = &del_beacon;
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to send delete beacon\n");
-+
-+	return result;
-+}
-+
-+int wilc_add_station(struct wilc_vif *vif, const u8 *mac,
-+		     struct station_parameters *params)
-+{
-+	struct wid wid;
-+	int result;
-+	u8 *cur_byte;
-+
-+	wid.id = WID_ADD_STA;
-+	wid.type = WID_BIN;
-+	wid.size = WILC_ADD_STA_LENGTH + params->supported_rates_len;
-+	wid.val = kmalloc(wid.size, GFP_KERNEL);
-+	if (!wid.val)
-+		return -ENOMEM;
-+
-+	cur_byte = wid.val;
-+	wilc_hif_pack_sta_param(cur_byte, mac, params);
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result != 0)
-+		netdev_err(vif->ndev, "Failed to send add station\n");
-+
-+	kfree(wid.val);
-+
-+	return result;
-+}
-+
-+int wilc_del_station(struct wilc_vif *vif, const u8 *mac_addr)
-+{
-+	struct wid wid;
-+	int result;
-+
-+	wid.id = WID_REMOVE_STA;
-+	wid.type = WID_BIN;
-+	wid.size = ETH_ALEN;
-+	wid.val = kzalloc(wid.size, GFP_KERNEL);
-+	if (!wid.val)
-+		return -ENOMEM;
-+
-+	if (!mac_addr)
-+		eth_broadcast_addr(wid.val);
-+	else
-+		ether_addr_copy(wid.val, mac_addr);
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to del station\n");
-+
-+	kfree(wid.val);
-+
-+	return result;
-+}
-+
-+int wilc_del_allstation(struct wilc_vif *vif, u8 mac_addr[][ETH_ALEN])
-+{
-+	struct wid wid;
-+	int result;
-+	int i;
-+	u8 assoc_sta = 0;
-+	struct wilc_del_all_sta del_sta;
-+
-+	memset(&del_sta, 0x0, sizeof(del_sta));
-+	for (i = 0; i < WILC_MAX_NUM_STA; i++) {
-+		if (!is_zero_ether_addr(mac_addr[i])) {
-+			assoc_sta++;
-+			ether_addr_copy(del_sta.mac[i], mac_addr[i]);
-+		}
-+	}
-+
-+	if (!assoc_sta)
-+		return 0;
-+
-+	del_sta.assoc_sta = assoc_sta;
-+
-+	wid.id = WID_DEL_ALL_STA;
-+	wid.type = WID_STR;
-+	wid.size = (assoc_sta * ETH_ALEN) + 1;
-+	wid.val = (u8 *)&del_sta;
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to send delete all station\n");
-+
-+	return result;
-+}
-+
-+int wilc_edit_station(struct wilc_vif *vif, const u8 *mac,
-+		      struct station_parameters *params)
-+{
-+	struct wid wid;
-+	int result;
-+	u8 *cur_byte;
-+
-+	wid.id = WID_EDIT_STA;
-+	wid.type = WID_BIN;
-+	wid.size = WILC_ADD_STA_LENGTH + params->supported_rates_len;
-+	wid.val = kmalloc(wid.size, GFP_KERNEL);
-+	if (!wid.val)
-+		return -ENOMEM;
-+
-+	cur_byte = wid.val;
-+	wilc_hif_pack_sta_param(cur_byte, mac, params);
-+
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to send edit station\n");
-+
-+	kfree(wid.val);
-+	return result;
-+}
-+
-+int wilc_set_power_mgmt(struct wilc_vif *vif, bool enabled, u32 timeout)
-+{
-+	struct wid wid;
-+	int result;
-+	s8 power_mode;
-+
-+	if (enabled)
-+		power_mode = WILC_FW_MIN_FAST_PS;
-+	else
-+		power_mode = WILC_FW_NO_POWERSAVE;
-+
-+	wid.id = WID_POWER_MANAGEMENT;
-+	wid.val = &power_mode;
-+	wid.size = sizeof(char);
-+	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+	if (result)
-+		netdev_err(vif->ndev, "Failed to send power management\n");
-+
-+	return result;
-+}
-+
-+int wilc_setup_multicast_filter(struct wilc_vif *vif, u32 enabled, u32 count,
-+				u8 *mc_list)
-+{
-+	int result;
-+	struct host_if_msg *msg;
-+
-+	msg = wilc_alloc_work(vif, handle_set_mcast_filter, false);
-+	if (IS_ERR(msg))
-+		return PTR_ERR(msg);
-+
-+	msg->body.mc_info.enabled = enabled;
-+	msg->body.mc_info.cnt = count;
-+	msg->body.mc_info.mc_list = mc_list;
-+
-+	result = wilc_enqueue_work(msg);
-+	if (result) {
-+		netdev_err(vif->ndev, "%s: enqueue work failed\n", __func__);
-+		kfree(msg);
-+	}
-+	return result;
-+}
-+
-+int wilc_set_tx_power(struct wilc_vif *vif, u8 tx_power)
-+{
-+	struct wid wid;
-+
-+	wid.id = WID_TX_POWER;
-+	wid.type = WID_CHAR;
-+	wid.val = &tx_power;
-+	wid.size = sizeof(char);
-+
-+	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1);
-+}
-+
-+int wilc_get_tx_power(struct wilc_vif *vif, u8 *tx_power)
-+{
-+	struct wid wid;
-+
-+	wid.id = WID_TX_POWER;
-+	wid.type = WID_CHAR;
-+	wid.val = tx_power;
-+	wid.size = sizeof(char);
-+
-+	return wilc_send_config_pkt(vif, WILC_GET_CFG, &wid, 1);
-+}
++enum chip_ps_states {
++	WILC_CHIP_WAKEDUP = 0,
++	WILC_CHIP_SLEEPING_AUTO = 1,
++	WILC_CHIP_SLEEPING_MANUAL = 2
++};
++
++enum bus_acquire {
++	WILC_BUS_ACQUIRE_ONLY = 0,
++	WILC_BUS_ACQUIRE_AND_WAKEUP = 1,
++};
++
++enum bus_release {
++	WILC_BUS_RELEASE_ONLY = 0,
++	WILC_BUS_RELEASE_ALLOW_SLEEP = 1,
++};
++
++enum {
++	WILC_FW_NO_ENCRYPT = 0,
++	WILC_FW_ENCRYPT_ENABLED = BIT(0),
++	WILC_FW_WEP = BIT(1),
++	WILC_FW_WEP_EXTENDED = BIT(2),
++	WILC_FW_WPA = BIT(3),
++	WILC_FW_WPA2 = BIT(4),
++	WILC_FW_AES = BIT(5),
++	WILC_FW_TKIP = BIT(6)
++};
++
++enum {
++	WILC_FW_SEC_NO = WILC_FW_NO_ENCRYPT,
++	WILC_FW_SEC_WEP = WILC_FW_WEP | WILC_FW_ENCRYPT_ENABLED,
++	WILC_FW_SEC_WEP_EXTENDED = WILC_FW_WEP_EXTENDED | WILC_FW_SEC_WEP,
++	WILC_FW_SEC_WPA = WILC_FW_WPA | WILC_FW_ENCRYPT_ENABLED,
++	WILC_FW_SEC_WPA_AES = WILC_FW_AES | WILC_FW_SEC_WPA,
++	WILC_FW_SEC_WPA_TKIP = WILC_FW_TKIP | WILC_FW_SEC_WPA,
++	WILC_FW_SEC_WPA2 = WILC_FW_WPA2 | WILC_FW_ENCRYPT_ENABLED,
++	WILC_FW_SEC_WPA2_AES = WILC_FW_AES | WILC_FW_SEC_WPA2,
++	WILC_FW_SEC_WPA2_TKIP = WILC_FW_TKIP | WILC_FW_SEC_WPA2
++};
++
++enum authtype {
++	WILC_FW_AUTH_OPEN_SYSTEM = 1,
++	WILC_FW_AUTH_SHARED_KEY = 2,
++	WILC_FW_AUTH_ANY = 3,
++	WILC_FW_AUTH_IEEE8021 = 5
++};
++
++enum site_survey {
++	WILC_FW_SITE_SURVEY_1CH = 0,
++	WILC_FW_SITE_SURVEY_ALL_CH = 1,
++	WILC_FW_SITE_SURVEY_OFF = 2
++};
++
++enum {
++	WILC_FW_ACK_POLICY_NORMAL = 0,
++	WILC_FW_ACK_NO_POLICY,
++};
++
++enum {
++	WILC_FW_REKEY_POLICY_DISABLE = 1,
++	WILC_FW_REKEY_POLICY_TIME_BASE,
++	WILC_FW_REKEY_POLICY_PKT_BASE,
++	WILC_FW_REKEY_POLICY_TIME_PKT_BASE
++};
++
++enum {
++	WILC_FW_FILTER_NO = 0x00,
++	WILC_FW_FILTER_AP_ONLY = 0x01,
++	WILC_FW_FILTER_STA_ONLY = 0x02
++};
++
++enum {
++	WILC_FW_11N_PROT_AUTO = 0,	/* Auto */
++	WILC_FW_11N_NO_PROT,		/* Do not use any protection */
++	WILC_FW_11N_PROT_ERP,		/* Protect all ERP frame exchanges */
++	WILC_FW_11N_PROT_HT,		/* Protect all HT frame exchanges  */
++	WILC_FW_11N_PROT_GF		/* Protect all GF frame exchanges  */
++};
++
++enum {
++	WILC_FW_ERP_PROT_SELF_CTS,
++	WILC_FW_ERP_PROT_RTS_CTS,
++};
++
++enum {
++	WILC_FW_11N_OP_MODE_HT_MIXED = 1,
++	WILC_FW_11N_OP_MODE_HT_ONLY_20MHZ,
++	WILC_FW_11N_OP_MODE_HT_ONLY_20_40MHZ,
++};
++
++enum {
++	WILC_FW_OBBS_NONHT_NO_DETECT = 0,
++	WILC_FW_OBBS_NONHT_DETECT_ONLY = 1,
++	WILC_FW_OBBS_NONHT_DETECT_PROTECT = 2,
++	WILC_FW_OBBS_NONHT_DETECT_PROTECT_REPORT = 3,
++};
++
++enum {
++	WILC_FW_HT_PROT_RTS_CTS_NONHT = 0,  /* RTS-CTS at non-HT rate */
++	WILC_FW_HT_PROT_FIRST_FRAME_NONHT,  /* First frame at non-HT rate */
++	WILC_FW_HT_PROT_LSIG_TXOP,	    /* LSIG TXOP Protection */
++	WILC_FW_HT_PROT_FIRST_FRAME_MIXED,  /* First frame at Mixed format */
++};
++
++enum {
++	WILC_FW_SMPS_MODE_STATIC = 1,
++	WILC_FW_SMPS_MODE_DYNAMIC = 2,
++	WILC_FW_SMPS_MODE_MIMO = 3,	/* power save disable */
++};
++
++enum {
++	WILC_FW_TX_RATE_AUTO = 0,
++	WILC_FW_TX_RATE_MBPS_1 = 1,
++	WILC_FW_TX_RATE_MBPS_2 = 2,
++	WILC_FW_TX_RATE_MBPS_5_5 = 5,
++	WILC_FW_TX_RATE_MBPS_11 = 11,
++	WILC_FW_TX_RATE_MBPS_6 = 6,
++	WILC_FW_TX_RATE_MBPS_9 = 9,
++	WILC_FW_TX_RATE_MBPS_12 = 12,
++	WILC_FW_TX_RATE_MBPS_18 = 18,
++	WILC_FW_TX_RATE_MBPS_24 = 24,
++	WILC_FW_TX_RATE_MBPS_36 = 36,
++	WILC_FW_TX_RATE_MBPS_48 = 48,
++	WILC_FW_TX_RATE_MBPS_54 = 54
++};
++
++enum {
++	WILC_FW_DEFAULT_SCAN = 0,
++	WILC_FW_USER_SCAN = BIT(0),
++	WILC_FW_OBSS_PERIODIC_SCAN = BIT(1),
++	WILC_FW_OBSS_ONETIME_SCAN = BIT(2)
++};
++
++enum {
++	WILC_FW_ACTION_FRM_IDX = 0,
++	WILC_FW_PROBE_REQ_IDX = 1
++};
++
++enum wid_type {
++	WID_CHAR		= 0,
++	WID_SHORT		= 1,
++	WID_INT			= 2,
++	WID_STR			= 3,
++	WID_BIN_DATA		= 4,
++	WID_BIN			= 5,
++};
++
++struct wid {
++	u16 id;
++	enum wid_type type;
++	s32 size;
++	s8 *val;
++};
++
++enum {
++	WID_NIL				= 0xffff,
++
++	/*
++	 *  BSS Type
++	 *  -----------------------------------------------------------
++	 *  Configuration : Infrastructure   Independent   Access Point
++	 *  Values to set :         0               1            2
++	 *  -----------------------------------------------------------
++	 */
++	WID_BSS_TYPE			= 0x0000,
++
++	/*
++	 *  Transmit Rate
++	 *  -----------------------------------------------------------
++	 *  Configuration : 1  2  5.5  11  6  9  12  18  24  36  48  54
++	 *  Values to set : 1  2    5  11  6  9  12  18  24  36  48  54
++	 *  -----------------------------------------------------------
++	 */
++	WID_CURRENT_TX_RATE		= 0x0001,
++
++	/*
++	 *  Channel
++	 *  -----------------------------------------------------------
++	 *  Configuration(g) : 1  2  3  4  5  6  7  8  9 10 11 12 13 14
++	 *  Values to set    : 1  2  3  4  5  6  7  8  9 10 11 12 13 14
++	 *  -----------------------------------------------------------
++	 */
++	WID_CURRENT_CHANNEL		= 0x0002,
++
++	/*
++	 *  Preamble
++	 *  -----------------------------------------------------------
++	 *  Configuration :    short    long      Auto
++	 *  Values to set :       0       1         2
++	 *  -----------------------------------------------------------
++	 */
++	WID_PREAMBLE			= 0x0003,
++
++	/*
++	 * 11g operating mode (ignored if 11g not present)
++	 *  -----------------------------------------------------------
++	 *  Configuration :   HighPerf  Compat(RSet #1) Compat(RSet #2)
++	 *  Values to set :          1               2               3
++	 *  -----------------------------------------------------------
++	 */
++	WID_11G_OPERATING_MODE		= 0x0004,
++
++	/*
++	 *  Mac status (response only)
++	 *  -----------------------------------------------------------
++	 *  Configuration :   disconnect  connect
++	 *  Values to get :          0       1
++	 *  -----------------------------------------------------------
++	 */
++	WID_STATUS			= 0x0005,
++
++	/*
++	 *  Scan type
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Passive Scanning   Active Scanning
++	 *  Values to set :                  0                 1
++	 *  -----------------------------------------------------------
++	 */
++	WID_SCAN_TYPE			= 0x0007,
++
++	/*
++	 *  Key Id (WEP default key Id)
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Any value between 0 to 3
++	 *  Values to set :   Same value. Default is 0
++	 *  -----------------------------------------------------------
++	 */
++	WID_KEY_ID			= 0x0009,
++
++	/*
++	 *  QoS Enable
++	 *  -----------------------------------------------------------
++	 *  Configuration :   QoS Disable   WMM Enable
++	 *  Values to set :   0             1
++	 *  -----------------------------------------------------------
++	 */
++	WID_QOS_ENABLE			= 0x000A,
++
++	/*
++	 *  Power Management
++	 *  -----------------------------------------------------------
++	 *  Configuration : NO_POWERSAVE MIN_POWERSAVE MAX_POWERSAVE
++	 *  Values to set : 0            1             2
++	 *  -----------------------------------------------------------
++	 */
++	WID_POWER_MANAGEMENT		= 0x000B,
++
++	/*
++	 *  WEP/802 11I Configuration
++	 *  -----------------------------------------------------------
++	 *  Configuration:Disable WP40 WP104 WPA-AES WPA-TKIP RSN-AES RSN-TKIP
++	 *  Values (0x)  :   00     03   07     29       49       31      51
++	 *  Configuration:WPA-AES+TKIP RSN-AES+TKIP
++	 *  Values (0x)  :      69        71
++	 *  -----------------------------------------------------------
++	 */
++	WID_11I_MODE			= 0x000C,
++
++	/*
++	 *  WEP Configuration: Used in BSS STA mode only when WEP is enabled
++	 *  -----------------------------------------------------------
++	 *  Configuration : Open System Shared Key Any Type | 802.1x Auth
++	 *  Values (0x)   :    01             02         03 |    BIT2
++	 *  -----------------------------------------------------------
++	 */
++	WID_AUTH_TYPE			= 0x000D,
++
++	/*
++	 *  Site Survey Type
++	 *  -----------------------------------------------------------
++	 *  Configuration       :  Values to set
++	 *  Survey 1 Channel    :  0
++	 *  survey all Channels :  1
++	 *  Disable Site Survey :  2
++	 *  -----------------------------------------------------------
++	 */
++	WID_SITE_SURVEY			= 0x000E,
++
++	/*
++	 *  Listen Interval
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Any value between 1 to 255
++	 *  Values to set :   Same value. Default is 3
++	 *  -----------------------------------------------------------
++	 */
++	WID_LISTEN_INTERVAL		= 0x000F,
++
++	/*
++	 *  DTIM Period
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Any value between 1 to 255
++	 *  Values to set :   Same value. Default is 3
++	 *  -----------------------------------------------------------
++	 */
++	WID_DTIM_PERIOD			= 0x0010,
++
++	/*
++	 *  ACK Policy
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Normal Ack            No Ack
++	 *  Values to set :       0                   1
++	 *  -----------------------------------------------------------
++	 */
++	WID_ACK_POLICY			= 0x0011,
++
++	/*
++	 *  Reset MAC (Set only)
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Don't Reset	Reset	No Request
++	 *  Values to set :       0               1	    2
++	 *  -----------------------------------------------------------
++	 */
++	WID_RESET			= 0x0012,
++
++	/*
++	 *  Broadcast SSID Option: Setting this will adhere to "" SSID element
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Enable             Disable
++	 *  Values to set :   1                  0
++	 *  -----------------------------------------------------------
++	 */
++	WID_BCAST_SSID			= 0x0015,
++
++	/*
++	 *  Disconnect (Station)
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Association ID
++	 *  Values to set :   Association ID
++	 *  -----------------------------------------------------------
++	 */
++	WID_DISCONNECT			= 0x0016,
++
++	/*
++	 *  11a Tx Power Level
++	 *  -----------------------------------------------------------
++	 *  Configuration : Sets TX Power (Higher the value greater the power)
++	 *  Values to set : Any value between 0 and 63 (inclusive Default 48)
++	 *  -----------------------------------------------------------
++	 */
++	WID_TX_POWER_LEVEL_11A		= 0x0018,
++
++	/*
++	 *  Group Key Update Policy Selection
++	 *  -----------------------------------------------------------
++	 *  Configuration : Disabled timeBased packetBased timePacketBased
++	 *  Values to set :   1            2          3              4
++	 *  -----------------------------------------------------------
++	 */
++	WID_REKEY_POLICY		= 0x0019,
++
++	/*
++	 *  Allow Short Slot
++	 *  -----------------------------------------------------------
++	 *  Configuration : Disallow Short Slot      Allow Short Slot
++	 *          (Enable Only Long Slot) (Enable Short Slot if applicable)
++	 *  Values to set :    0         1
++	 *  -----------------------------------------------------------
++	 */
++	WID_SHORT_SLOT_ALLOWED		= 0x001A,
++
++	WID_PHY_ACTIVE_REG		= 0x001B,
++
++	/*
++	 *  11b Tx Power Level
++	 *  -----------------------------------------------------------
++	 *  Configuration : Sets TX Power (Higher the value greater the power)
++	 *  Values to set : Any value between 0 and 63 (inclusive Default 48)
++	 *  -----------------------------------------------------------
++	 */
++	WID_TX_POWER_LEVEL_11B		= 0x001D,
++
++	/*
++	 *  Scan Request
++	 *  -----------------------------------------------------------
++	 *  Configuration : Request default scan
++	 *  Values to set : 0
++	 *  -----------------------------------------------------------
++	 */
++	WID_START_SCAN_REQ		= 0x001E,
++
++	/*
++	 *  Rssi (get only)
++	 *  -----------------------------------------------------------
++	 *  Configuration :
++	 *  Values to get : Rssi value
++	 *  -----------------------------------------------------------
++	 */
++	WID_RSSI			= 0x001F,
++
++	/*
++	 * Join Request
++	 *  -----------------------------------------------------------
++	 *  Configuration : Request to join
++	 *  Values to set : index of scan result
++	 *  -----------------------------------------------------------
++	 */
++	WID_JOIN_REQ			= 0x0020,
++
++	WID_LINKSPEED			= 0x0026,
++
++	/*
++	 *  Enable User Control of TX Power
++	 *  -----------------------------------------------------------
++	 *  Configuration : Disable                  Enable
++	 *  Values to set :    0                       1
++	 *  -----------------------------------------------------------
++	 */
++	WID_USER_CONTROL_ON_TX_POWER	= 0x0027,
++
++	WID_MEMORY_ACCESS_8BIT		= 0x0029,
++
++	/*
++	 *  Enable Auto RX Sensitivity feature
++	 *  -----------------------------------------------------------
++	 *  Configuration : Disable                  Enable
++	 *  Values to set :    0                       1
++	 *  -----------------------------------------------------------
++	 */
++	WID_AUTO_RX_SENSITIVITY		= 0x0032,
++
++	/*
++	 *  Receive Buffer Based Ack
++	 *  -----------------------------------------------------------
++	 *  Configuration : Disable                  Enable
++	 *  Values to set :    0                       1
++	 *  -----------------------------------------------------------
++	 */
++	WID_DATAFLOW_CONTROL		= 0x0033,
++
++	/*
++	 *  Scan Filter
++	 *  -----------------------------------------------------------
++	 *  Configuration : Class       No filter   AP only   Station Only
++	 *  Values to set :                0           1           2
++	 *  Configuration : Priority    High Rssi   Low Rssi     Detect
++	 *  Values to set :                0          0x4         0x0
++	 *  Configuration : Channel     filter off  filter on
++	 *  Values to set :                0          0x10
++	 *  -----------------------------------------------------------
++	 */
++	WID_SCAN_FILTER			= 0x0036,
++
++	/*
++	 *  Link Loss Threshold (measure in the beacon period)
++	 *  -----------------------------------------------------------
++	 *  Configuration : Any value between 10 and 254(Set to 255 disable)
++	 *  Values to set : Same value. Default is 10
++	 *  -----------------------------------------------------------
++	 */
++	WID_LINK_LOSS_THRESHOLD		= 0x0037,
++
++	WID_ABORT_RUNNING_SCAN		= 0x003E,
++
++	/* NMAC Character WID list */
++	WID_WPS_START			= 0x0043,
++
++	/*
++	 *  Protection mode for MAC
++	 *  -----------------------------------------------------------
++	 *  Configuration :  Auto  No protection  ERP    HT    GF
++	 *  Values to set :  0     1              2      3     4
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_PROT_MECH		= 0x0080,
++
++	/*
++	 *  ERP Protection type for MAC
++	 *  -----------------------------------------------------------
++	 *  Configuration :  Self-CTS   RTS-CTS
++	 *  Values to set :  0          1
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_ERP_PROT_TYPE		= 0x0081,
++
++	/*
++	 *  HT Option Enable
++	 *  -----------------------------------------------------------
++	 *  Configuration :   HT Enable          HT Disable
++	 *  Values to set :   1                  0
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_ENABLE			= 0x0082,
++
++	/*
++	 *  11n Operating mode (Note that 11g operating mode will also be
++	 *  used in addition to this, if this is set to HT Mixed mode)
++	 *  -----------------------------------------------------------
++	 *   Configuration :  HT Mixed  HT Only-20MHz   HT Only-20/40MHz
++	 *  Values to set :     1         2               3
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_OPERATING_MODE		= 0x0083,
++
++	/*
++	 *  11n OBSS non-HT STA Detection flag
++	 *  -----------------------------------------------------------
++	 *  Configuration :  Do not detect
++	 *  Values to set :  0
++	 *  Configuration :  Detect, do not protect or report
++	 *  Values to set :  1
++	 *  Configuration :  Detect, protect and do not report
++	 *  Values to set :  2
++	 *  Configuration :  Detect, protect and report to other BSS
++	 *  Values to set :  3
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_OBSS_NONHT_DETECTION	= 0x0084,
++
++	/*
++	 *  11n HT Protection Type
++	 *  -----------------------------------------------------------
++	 *  Configuration :  RTS-CTS   First Frame Exchange at non-HT-rate
++	 *  Values to set :  0         1
++	 *  Configuration :  LSIG TXOP First Frame Exchange in Mixed Fmt
++	 *  Values to set :  2         3
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_HT_PROT_TYPE		= 0x0085,
++
++	/*
++	 *  11n RIFS Protection Enable Flag
++	 *  -----------------------------------------------------------
++	 *  Configuration :  Disable    Enable
++	 *  Values to set :  0          1
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_RIFS_PROT_ENABLE	= 0x0086,
++
++	/*
++	 *  SMPS Mode
++	 *  -----------------------------------------------------------
++	 *  Configuration :  Static   Dynamic   MIMO (Power Save Disabled)
++	 *  Values to set :  1        2         3
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_SMPS_MODE		= 0x0087,
++
++	/*
++	 *  Current transmit MCS
++	 *  -----------------------------------------------------------
++	 *  Configuration :  MCS Index for data rate
++	 *  Values to set :  0 to 7
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_CURRENT_TX_MCS		= 0x0088,
++
++	WID_11N_PRINT_STATS		= 0x0089,
++
++	/*
++	 *  11n Short GI Enable Flag
++	 *  -----------------------------------------------------------
++	 *  Configuration :  Disable    Enable
++	 *  Values to set :  0          1
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_SHORT_GI_ENABLE		= 0x008D,
++
++	/*
++	 *  11n RIFS Enable Flag
++	 *  -----------------------------------------------------------
++	 *  Configuration :  Disable    Enable
++	 *  Values to set :  0          1
++	 *  -----------------------------------------------------------
++	 */
++	WID_RIFS_MODE			= 0x0094,
++
++	/*
++	 *  TX Abort Feature
++	 *  -----------------------------------------------------------
++	 *  Configuration :  Disable Self CTS    Enable Self CTS
++	 *  Values to set :             0                      1
++	 *  Configuration :  Disable TX Abort    Enable TX Abort
++	 *  Values to set :             2                      3
++	 *  Configuration :  Enable HW TX Abort Enable SW TX Abort
++	 *  Values to set :             4                      5
++	 *  -----------------------------------------------------------
++	 */
++	WID_TX_ABORT_CONFIG		= 0x00A1,
++
++	WID_REG_TSSI_11B_VALUE		= 0x00A6,
++	WID_REG_TSSI_11G_VALUE		= 0x00A7,
++	WID_REG_TSSI_11N_VALUE		= 0x00A8,
++	WID_TX_CALIBRATION		= 0x00A9,
++	WID_DSCR_TSSI_11B_VALUE		= 0x00AA,
++	WID_DSCR_TSSI_11G_VALUE		= 0x00AB,
++	WID_DSCR_TSSI_11N_VALUE		= 0x00AC,
++
++	/*
++	 *  Immediate Block-Ack Support
++	 *  -----------------------------------------------------------
++	 *  Configuration : Disable                  Enable
++	 *  Values to set :    0                       1
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_IMMEDIATE_BA_ENABLED	= 0x00AF,
++
++	/*
++	 *  TXOP Disable Flag
++	 *  -----------------------------------------------------------
++	 *  Configuration : Disable                  Enable
++	 *  Values to set :    1                        0
++	 *  -----------------------------------------------------------
++	 */
++	WID_11N_TXOP_PROT_DISABLE	= 0x00B0,
++
++	WID_TX_POWER_LEVEL_11N		= 0x00B1,
++
++	/* Custom Character WID list */
++	/* SCAN Complete notification WID*/
++	WID_SCAN_COMPLETE		= 0x00C9,
++
++	WID_DEL_BEACON			= 0x00CA,
++
++	WID_LOG_TERMINAL_SWITCH		= 0x00CD,
++	WID_TX_POWER			= 0x00CE,
++	/*  EMAC Short WID list */
++	/*  RTS Threshold */
++	/*
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Any value between 256 to 2347
++	 *  Values to set :   Same value. Default is 2347
++	 *  -----------------------------------------------------------
++	 */
++	WID_RTS_THRESHOLD		= 0x1000,
++
++	/*
++	 *  Fragmentation Threshold
++	 *  -----------------------------------------------------------
++	 *  Configuration :   Any value between 256 to 2346
++	 *  Values to set :   Same value. Default is 2346
++	 *  -----------------------------------------------------------
++	 */
++	WID_FRAG_THRESHOLD		= 0x1001,
++
++	WID_SHORT_RETRY_LIMIT		= 0x1002,
++	WID_LONG_RETRY_LIMIT		= 0x1003,
++	WID_BEACON_INTERVAL		= 0x1006,
++	WID_MEMORY_ACCESS_16BIT		= 0x1008,
++	WID_PASSIVE_SCAN_TIME           = 0x100D,
++	WID_JOIN_START_TIMEOUT		= 0x100F,
++	WID_ASOC_TIMEOUT		= 0x1011,
++	WID_11I_PROTOCOL_TIMEOUT	= 0x1012,
++	WID_EAPOL_RESPONSE_TIMEOUT	= 0x1013,
++
++	/* NMAC Short WID list */
++	WID_11N_SIG_QUAL_VAL		= 0x1085,
++	WID_CCA_THRESHOLD		= 0x1087,
++
++	/* Custom Short WID list */
++
++	/* EMAC Integer WID list */
++	WID_FAILED_COUNT		= 0x2000,
++	WID_RETRY_COUNT			= 0x2001,
++	WID_MULTIPLE_RETRY_COUNT	= 0x2002,
++	WID_FRAME_DUPLICATE_COUNT	= 0x2003,
++	WID_ACK_FAILURE_COUNT		= 0x2004,
++	WID_RECEIVED_FRAGMENT_COUNT	= 0x2005,
++	WID_MCAST_RECEIVED_FRAME_COUNT	= 0x2006,
++	WID_FCS_ERROR_COUNT		= 0x2007,
++	WID_SUCCESS_FRAME_COUNT		= 0x2008,
++	WID_HUT_TX_COUNT		= 0x200A,
++	WID_TX_FRAGMENT_COUNT		= 0x200B,
++	WID_TX_MULTICAST_FRAME_COUNT	= 0x200C,
++	WID_RTS_SUCCESS_COUNT		= 0x200D,
++	WID_RTS_FAILURE_COUNT		= 0x200E,
++	WID_WEP_UNDECRYPTABLE_COUNT	= 0x200F,
++	WID_REKEY_PERIOD		= 0x2010,
++	WID_REKEY_PACKET_COUNT		= 0x2011,
++	WID_1X_SERV_ADDR		= 0x2012,
++	WID_STACK_IP_ADDR		= 0x2013,
++	WID_STACK_NETMASK_ADDR		= 0x2014,
++	WID_HW_RX_COUNT			= 0x2015,
++	WID_MEMORY_ADDRESS		= 0x201E,
++	WID_MEMORY_ACCESS_32BIT		= 0x201F,
++
++	/* NMAC Integer WID list */
++	/* Custom Integer WID list */
++	WID_GET_INACTIVE_TIME		= 0x2084,
++	/* EMAC String WID list */
++	WID_SSID			= 0x3000,
++	WID_FIRMWARE_VERSION		= 0x3001,
++	WID_OPERATIONAL_RATE_SET	= 0x3002,
++	WID_BSSID			= 0x3003,
++	WID_WEP_KEY_VALUE		= 0x3004,
++	WID_11I_PSK			= 0x3008,
++	WID_11E_P_ACTION_REQ		= 0x3009,
++	WID_1X_KEY			= 0x300A,
++	WID_HARDWARE_VERSION		= 0x300B,
++	WID_MAC_ADDR			= 0x300C,
++	WID_HUT_DEST_ADDR		= 0x300D,
++	WID_PHY_VERSION			= 0x300F,
++	WID_SUPP_USERNAME		= 0x3010,
++	WID_SUPP_PASSWORD		= 0x3011,
++	WID_SITE_SURVEY_RESULTS		= 0x3012,
++	WID_RX_POWER_LEVEL		= 0x3013,
++	WID_SET_STA_MAC_INACTIVE_TIME	= 0x3017,
++	WID_ADD_WEP_KEY			= 0x3019,
++	WID_REMOVE_WEP_KEY		= 0x301A,
++	WID_ADD_PTK			= 0x301B,
++	WID_ADD_RX_GTK			= 0x301C,
++	WID_ADD_TX_GTK			= 0x301D,
++	WID_REMOVE_KEY			= 0x301E,
++	WID_ASSOC_REQ_INFO		= 0x301F,
++	WID_ASSOC_RES_INFO		= 0x3020,
++	WID_MANUFACTURER		= 0x3026, /* Added for CAPI tool */
++	WID_MODEL_NAME			= 0x3027, /* Added for CAPI tool */
++	WID_MODEL_NUM			= 0x3028, /* Added for CAPI tool */
++	WID_DEVICE_NAME			= 0x3029, /* Added for CAPI tool */
++
++	/* NMAC String WID list */
++	WID_SET_OPERATION_MODE		= 0x3079,
++	WID_11N_P_ACTION_REQ		= 0x3080,
++	WID_HUT_TEST_ID			= 0x3081,
++	WID_PMKID_INFO			= 0x3082,
++	WID_FIRMWARE_INFO		= 0x3083,
++	WID_REGISTER_FRAME		= 0x3084,
++	WID_DEL_ALL_STA			= 0x3085,
++	WID_REMAIN_ON_CHAN		= 0x3996,
++	WID_SSID_PROBE_REQ		= 0x3997,
++	WID_JOIN_REQ_EXTENDED		= 0x3998,
++
++	WID_IP_ADDRESS			= 0x3999,
++
++	/* Custom String WID list */
++
++	/* EMAC Binary WID list */
++	WID_UAPSD_CONFIG		= 0x4001,
++	WID_UAPSD_STATUS		= 0x4002,
++	WID_WMM_AP_AC_PARAMS		= 0x4003,
++	WID_WMM_STA_AC_PARAMS		= 0x4004,
++	WID_NETWORK_INFO		= 0x4005,
++	WID_STA_JOIN_INFO		= 0x4006,
++	WID_CONNECTED_STA_LIST		= 0x4007,
++
++	/* NMAC Binary WID list */
++	WID_11N_AUTORATE_TABLE		= 0x4080,
++
++	WID_SCAN_CHANNEL_LIST		= 0x4084,
++
++	WID_INFO_ELEMENT_PROBE		= 0x4085,
++	WID_INFO_ELEMENT_ASSOCIATE	= 0x4086,
++	WID_ADD_STA			= 0X4087,
++	WID_REMOVE_STA			= 0X4088,
++	WID_EDIT_STA			= 0X4089,
++	WID_ADD_BEACON			= 0x408a,
++
++	WID_SETUP_MULTICAST_FILTER	= 0x408b,
++
++	/* Miscellaneous WIDs */
++	WID_ALL				= 0x7FFE,
++	WID_MAX				= 0xFFFF
++};
++
++#endif
 -- 
 2.24.0
 _______________________________________________
