@@ -1,85 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64A3A18215B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 19:58:25 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 29EBB1824E0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 23:29:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7DF6E86427;
-	Wed, 11 Mar 2020 18:58:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 693D5228B4;
+	Wed, 11 Mar 2020 22:29:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z3bIa3ENxHwE; Wed, 11 Mar 2020 18:58:23 +0000 (UTC)
+	with ESMTP id J92mp4NkINZg; Wed, 11 Mar 2020 22:29:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A772862AC;
-	Wed, 11 Mar 2020 18:58:22 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 1D0D8221FB;
+	Wed, 11 Mar 2020 22:29:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3298D1BF400
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 18:58:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 558031BF488
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 22:29:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2FF01862AC
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 18:58:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4D70785E6E
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 22:29:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PK9tRBDM01iy
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 18:58:19 +0000 (UTC)
+ with ESMTP id Ee4GePL6DPKM for <devel@linuxdriverproject.org>;
+ Wed, 11 Mar 2020 22:28:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8DD0486268
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 18:58:19 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id a141so3339745wme.2
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 11:58:19 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B082685DEC
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 22:28:59 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id 2so2143443pfg.12
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 15:28:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=8wh4nE9bCVn8Cqz0dv66qLtY8AelRLg/mHHNq+40Mfg=;
- b=tzwnb1DgJgtJCVZKSZrnp2uqM8Tjpralbu2jF5CEtvSVrV6uJvqtB25s8Ud422iC6V
- 5EtBuKOhgSbJIVBnf0ZtDYh6IL6uz7qZgcp0EUKfu9wj0ybf7rK+xLWQo/0exbZ6nl5j
- HsZRK7fou7gj2mCocmEPnxj9vUoioTEHTVUKuX2dFYIcvBP+H21GHjx1pOFVEF+iIs7+
- +msHr3OfOFK7Ft4nKTeKB0mg/4l+YGExt0zJOEt5NZswX20NA5D8a4UmTOMGYGNMnIRb
- ckQbX9k5jX9VHdgzIgiYZozdrlTRKCwIN7+83OQUpONW63D9vA0vvqf7xUiAHyuWP0h5
- uZDg==
+ h=date:user-agent:in-reply-to:references:mime-version
+ :content-transfer-encoding:subject:to:from:message-id;
+ bh=OK2jvg8iIbxudu6ND4J8JJtzzocg+9lZtyCUh0iqcfs=;
+ b=cNjnMmC5+csrT7n7xkH0NSj4vC7lV5+mQsK86AkZsmXEL8Ddsi1g9QpZqX0U58NqwU
+ l1FldLSUdDzYy4r/dsZw502g/jEVxZDXMGCGyOSz6Ynye0NVU6V9bUM5D0nGDY5nx89t
+ IU7PTinO4JYfVw9DBNKRCkXzJpoqHKN1XImHX0JH294EkDNNpXFY6lxCJ9r3QvyhyP7m
+ skJzw12CpiJEcqgJDNIqP2j3gJbtuBCL6oxOj7j+y8g1FqYtb8rbp/Ebk+yRcq+Vfnsa
+ COCA92W6WcakTBHakyj02K5Mflnv/qSf6FffeFsJ1gcEhDOf2r9zSRGCdtxSey/g6XCY
+ nXwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=8wh4nE9bCVn8Cqz0dv66qLtY8AelRLg/mHHNq+40Mfg=;
- b=pgSquVVl2UUgBOf3VHJeUc2ueMRmrxTQBW0TQ7hmwn0XJ2CyGYdyGSoj/SxKvy+MAS
- r5xXsoTA2NKP5VwtVzaU7euiX+bjsbji+K+qNutk2bLN4nralXZPHN0z240QtOK2DcU9
- VFIefPND50Sp9BqbwlxpiWFSDxcmgal7bZKD/ZfR2Ur55K9pjcO18h3spDmVlWWWslzX
- b3NMq4b+IWJBwtg5wd396iYoniOqFPSNF6CJR/o4PN0OWK+DrPlVNcJ16CCio2DxH0RS
- C0oVFzKlmJPcR6qmL/lDeXgACzyG3Fd1pIqeXs/h2fXl7PMxwg20LWhx/BwHPYDnjqAg
- ONRQ==
-X-Gm-Message-State: ANhLgQ0VvadGMByQlOs13o/bTk0YG9AA27af3yEgy+SP8vJiugVZRcPP
- pqD0AsDvuMFz3sQr6v2s8OMbmgSm
-X-Google-Smtp-Source: ADFU+vuxb9XEQkqUWk5+WckgRxeBPegGUGwQwawbss8AQZ4dVnYiXJ29jaEAFexWfqgAYoc9zsux7g==
-X-Received: by 2002:a1c:bcd4:: with SMTP id m203mr150176wmf.35.1583953098001; 
- Wed, 11 Mar 2020 11:58:18 -0700 (PDT)
-Received: from localhost.localdomain
- (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
- by smtp.gmail.com with ESMTPSA id n11sm38457120wrw.11.2020.03.11.11.58.16
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 11 Mar 2020 11:58:17 -0700 (PDT)
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 5/5] staging: mt7621-pci: release gpios after pci
- initialization
-Date: Wed, 11 Mar 2020 19:58:08 +0100
-Message-Id: <20200311185808.29166-6-sergio.paracuellos@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200311185808.29166-1-sergio.paracuellos@gmail.com>
-References: <20200311185808.29166-1-sergio.paracuellos@gmail.com>
+ h=x-gm-message-state:date:user-agent:in-reply-to:references
+ :mime-version:content-transfer-encoding:subject:to:from:message-id;
+ bh=OK2jvg8iIbxudu6ND4J8JJtzzocg+9lZtyCUh0iqcfs=;
+ b=iwnMuq00AfkuH6mPmvOkZhNzIdbbH4626U/dyWSe7KY7MINifVVtEtTRasaKrUw6vv
+ QUYydExFwggOLAYjY6EIeYU1Ojm4q0luOOJIuifXSiTqEycpKn+Nm4zRLHaDQlRiDE6i
+ nC8UlpGJpQuOfWogsWj+NhhpBLAPYKIj8X0SBgYj3fki5vbswpuBhw5fYH7HXObsRQcD
+ pUI2DPZKSZwghoJPcg/2ipd/krgoJCYFZbnxaMD2My3R5ShDvu93eGDDecHQrzVxcQ+F
+ rzscrdbycGTNmh1iVazESvGrgOaQ5KeAr2uLL00Ck5Hkwyi034qhg1hgsH1cLzJ+lmlN
+ BUeQ==
+X-Gm-Message-State: ANhLgQ0Wj7mSNZnu+WyeJNkrfoKwOhsKt0iCmYzj6fS2cMev/vAdTH1R
+ rizOog8lVXbTGuSWzEylIso=
+X-Google-Smtp-Source: ADFU+vtuQMMY52HPjZDuDX/2pzncUdQNWBbjslUBN7mA7FVQOPHA0VUEQXQ2n4V1ilOYcStsF3BG6A==
+X-Received: by 2002:a62:e20e:: with SMTP id a14mr4963341pfi.138.1583965739153; 
+ Wed, 11 Mar 2020 15:28:59 -0700 (PDT)
+Received: from [192.168.0.100] ([113.193.33.106])
+ by smtp.gmail.com with ESMTPSA id z1sm641860pfa.16.2020.03.11.15.28.58
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 11 Mar 2020 15:28:58 -0700 (PDT)
+Date: Thu, 12 Mar 2020 03:58:55 +0530
+User-Agent: K-9 Mail for Android
+In-Reply-To: <0fed25f914c6f39b024dd3bbc4f11892c40f4a60.camel@perches.com>
+References: <20200311133811.2246-1-shreeya.patel23498@gmail.com>
+ <0fed25f914c6f39b024dd3bbc4f11892c40f4a60.camel@perches.com>
 MIME-Version: 1.0
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723bs: sdio_halinit:
+ Remove unnecessary conditions
+To: Joe Perches <joe@perches.com>, gregkh@linuxfoundation.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com, sbrivio@redhat.com, daniel.baluta@gmail.com,
+ nramas@linux.microsoft.com, hverkuil@xs4all.nl, Larry.Finger@lwfinger.net
+From: Shreeya Patel <shreeya.patel23498@gmail.com>
+Message-ID: <1CF27D55-EEB4-4A75-B767-A30845BD5E1B@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,52 +90,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: ryder.lee@mediatek.com, driverdev-devel@linuxdriverproject.org,
- weijie.gao@mediatek.com, gerg@kernel.org, neil@brown.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-R3G's LEDs fail to initialize because one of them uses GPIO8
-Hence, release the GPIO resources after PCIe initialization.
+Hey Joe,
 
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
----
- drivers/staging/mt7621-pci/pci-mt7621.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+On March 11, 2020 10:56:29 PM GMT+05:30, Joe Perches <joe@perches.com> wrote:
+>On Wed, 2020-03-11 at 19:08 +0530, Shreeya Patel wrote:
+>> Remove if and else conditions since both are leading to the
+>> initialization of "valueDMATimeout" and "valueDMAPageCount" with
+>> the same value.
+>
+>You might consider removing the
+>	/* Timeout value is calculated by 34 / (2^n) */
+>comment entirely as it doesn't make much sense.
+>
 
-diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index 0880a21f2620..8399e4629e38 100644
---- a/drivers/staging/mt7621-pci/pci-mt7621.c
-+++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -482,6 +482,14 @@ static void mt7621_pcie_reset_ep_deassert(struct mt7621_pcie *pcie)
- 	mdelay(PERST_DELAY_US);
- }
- 
-+static void mt7621_pcie_release_gpios(struct mt7621_pcie *pcie)
-+{
-+	struct mt7621_pcie_port *port;
-+
-+	list_for_each_entry(port, &pcie->ports, list)
-+		gpiod_put(port->gpio_rst);
-+}
-+
- static void mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
-@@ -706,6 +714,8 @@ static int mt7621_pci_probe(struct platform_device *pdev)
- 		return err;
- 	}
- 
-+	mt7621_pcie_release_gpios(pcie);
-+
- 	return 0;
- }
- 
+You want me to remove the other comments as well?
+Since Julia suggested in another email that the comments are not useful if we are removing the condition since they were applied to only one branch ( i.e. "if" branch )
+
+
+Thanks
+
+>For what N is "(34 / (2 ^ N))" = 6 ?
+>
+>> diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+>b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+>[]
+>> @@ -551,18 +551,11 @@ static void HalRxAggr8723BSdio(struct adapter
+>*padapter)
+>>  
+>>  	pregistrypriv = &padapter->registrypriv;
+>>  
+>> -	if (pregistrypriv->wifi_spec) {
+>> -		/*  2010.04.27 hpfan */
+>> -		/*  Adjust RxAggrTimeout to close to zero disable RxAggr,
+>suggested by designer */
+>> -		/*  Timeout value is calculated by 34 / (2^n) */
+>> -		valueDMATimeout = 0x06;
+>> -		valueDMAPageCount = 0x06;
+>> -	} else {
+>> -		/*  20130530, Isaac@SD1 suggest 3 kinds of parameter */
+>> -		/*  TX/RX Balance */
+>> -		valueDMATimeout = 0x06;
+>> -		valueDMAPageCount = 0x06;
+>> -	}
+>> +	/*  2010.04.27 hpfan */
+>> +	/*  Adjust RxAggrTimeout to close to zero disable RxAggr, suggested
+>by designer */
+>> +	/*  Timeout value is calculated by 34 / (2^n) */
+>> +	valueDMATimeout = 0x06;
+>> +	valueDMAPageCount = 0x06;
+
 -- 
-2.25.1
-
+Sent from my Android device with K-9 Mail. Please excuse my brevity.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
