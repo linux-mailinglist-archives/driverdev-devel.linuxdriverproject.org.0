@@ -1,78 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA7D7181A96
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 14:59:17 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EAFC3181E19
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 17:40:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 421C586B7E;
-	Wed, 11 Mar 2020 13:59:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 33BA088845;
+	Wed, 11 Mar 2020 16:40:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1j7YaFJE-5TE; Wed, 11 Mar 2020 13:59:13 +0000 (UTC)
+	with ESMTP id 7cnwBOlnfF1R; Wed, 11 Mar 2020 16:40:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A500F860F2;
-	Wed, 11 Mar 2020 13:59:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2EF2B887DF;
+	Wed, 11 Mar 2020 16:40:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 54B3B1BF20D
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 13:59:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4D47B1BF3E3
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 16:40:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 50E3687ED2
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 13:59:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4879289005
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 16:40:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d39jCqYXxL7e for <devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 13:59:11 +0000 (UTC)
+ with ESMTP id iW-Rz4JPHYZA for <devel@linuxdriverproject.org>;
+ Wed, 11 Mar 2020 16:40:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4F94B87F8E
- for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 13:59:11 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id z65so1386127pfz.8
- for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 06:59:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id;
- bh=Rsh1wp6Fd0Yl2sa4e9abEs0k+S0Of//VtbBDH+QzLew=;
- b=ZMg/4OseM+M79oricWCYBpDoxsS2CVvN4cPMGCEe8P3CGHaPQ0w7BTSAkx274h4QJy
- +8yaIiFu0l5ahpzCUGJsrPJIIbm4POb1T75sMToETl85JplEDp0glnC61nH58DoykVZy
- +Tn5OCaCkGz4aqcAGCmadxrFeFBIf/k98brvePZLxpqZZyKO1e9bHE0CEsvcHcK8lnDX
- nUoKoHQGFQmF4aYwItlXO2UWvcaqVTwAJR2Bg1nq7npwmiEl3RA0SnjMwavfQjK1Mpxj
- D6khngidz4Q8aTQnmZm1XshHCvhTzf+44UJsjQx2MwnHDxHqcDZs/44mxarwMROEjBle
- vcBg==
+Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
+ [209.85.167.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2542088F93
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 16:40:17 +0000 (UTC)
+Received: by mail-lf1-f65.google.com with SMTP id c20so2322960lfb.0
+ for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 09:40:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id;
- bh=Rsh1wp6Fd0Yl2sa4e9abEs0k+S0Of//VtbBDH+QzLew=;
- b=iQu0LtR2NqgrTzgZDU2FlwCYnKOxozfDpR1SnESayoQtKs+hp+Lp4XZJ+PlI4FFTWz
- nZLygQ9Ko0fxEfft/iPCb36XonqxWPPTqg96QJk/swP1u3qX2BTZ76LKx2oy5FPRf8Y4
- /cVr6vNevDA7wHFNy5ebAMRwNiG3v9G2brDBu+eBrP5rdoTmYmvZ+d5aRvgV1CXjGwvA
- VuD3BiXxIf440TpkwgHJb50p9gSGP72of94wJRBeC4Qy4YFKJ62stWBrH49X90z0A11F
- +c805r2SO2NkzTPFMtaRJTQjF8qDnJ1c+H6A3+fnQ3ENoAyoDyuqXibBHSZaXNWsNMQW
- 8ddA==
-X-Gm-Message-State: ANhLgQ3Qx9JiCLHW8gTWZ8XcWjub/CxzIlA8q1fVv8zeiThK1azhNI49
- zMNw7mMugNHazSM6tr9fT7o=
-X-Google-Smtp-Source: ADFU+vv4XED4TC3aAvIDyuy+AczhSmqal1KUnGai7LncdXtqfH/DQowMoDp9kOdzEAJjzpb38KMCBA==
-X-Received: by 2002:aa7:914b:: with SMTP id 11mr3101406pfi.69.1583935150671;
- Wed, 11 Mar 2020 06:59:10 -0700 (PDT)
-Received: from localhost.localdomain ([2405:204:287:fb4d:18bc:a849:c699:3914])
- by smtp.gmail.com with ESMTPSA id
- b11sm5799287pjc.27.2020.03.11.06.59.05
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=CQIcBy++lHyFVoklpZOGyu0d/n/C4e98cfAviFgLA40=;
+ b=cWURHYjD/tJtxdg5ooSD5UUro/x+YBOlFk4y+tva8PrMe04Lp79cJYAsZBQ/F2DSw9
+ fYx+OUEu6TzSBsbfd0XuHXBaQ6lUcgsIKzVsqoZIcH8E7+Eg17pNwGZr+V8AFXqdQv/H
+ XXXkt0ykm80BPvUyDoUjxKyJWej3IPnJDalAyddxePh/H0FoAO85XG4sxqGWo/wLetIW
+ /iCz/cK1TT5cFnVGkjY+jk/0Kntgu9DyQpHwFGaxBH5Tx5qEihT5MmckIQhFpOEagfdg
+ UrOCkQEwxl4BSZdUYVqfaqdDidgBcVisd61HWRP1epISHnRk/rHPITcbJCpGeJMPBhuU
+ tgoQ==
+X-Gm-Message-State: ANhLgQ3qdLlxvn/e6A5QR+hkUAE93SaArzeSt8khEd75R06tL/R4oKXC
+ QglBTeptPC5OukljVXQ/EBc=
+X-Google-Smtp-Source: ADFU+vsKli5lM9s2I7oLXmnLiT+0q6KNC6an93G/DMH2bGr0eLj2LPw+wAZCmBEhWbVDAodTdHzFgg==
+X-Received: by 2002:ac2:5222:: with SMTP id i2mr2698506lfl.81.1583944815271;
+ Wed, 11 Mar 2020 09:40:15 -0700 (PDT)
+Received: from xi.terra (c-12aae455.07-184-6d6c6d4.bbcust.telenor.se.
+ [85.228.170.18])
+ by smtp.gmail.com with ESMTPSA id j6sm5961936lfb.13.2020.03.11.09.40.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Mar 2020 06:59:10 -0700 (PDT)
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
- sbrivio@redhat.com, daniel.baluta@gmail.com, nramas@linux.microsoft.com,
- hverkuil@xs4all.nl, shreeya.patel23498@gmail.com, Larry.Finger@lwfinger.net
-Subject: [Outreachy kernel] [PATCH] Staging: rtl8723bs: rtw_mlme: Remove
- unnecessary conditions
-Date: Wed, 11 Mar 2020 19:28:59 +0530
-Message-Id: <20200311135859.5626-1-shreeya.patel23498@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ Wed, 11 Mar 2020 09:40:14 -0700 (PDT)
+Received: from johan by xi.terra with local (Exim 4.92.3)
+ (envelope-from <johan@kernel.org>)
+ id 1jC4Oo-0006WF-Qu; Wed, 11 Mar 2020 17:40:02 +0100
+Date: Wed, 11 Mar 2020 17:40:02 +0100
+From: Johan Hovold <johan@kernel.org>
+To: Takashi Iwai <tiwai@suse.de>
+Subject: Re: [PATCH] staging: greybus: Use scnprintf() for avoiding potential
+ buffer overflow
+Message-ID: <20200311164002.GL14211@localhost>
+References: <20200311091906.22980-1-tiwai@suse.de>
+ <20200311095814.GI14211@localhost> <s5hmu8n8b0m.wl-tiwai@suse.de>
+ <20200311100903.GJ14211@localhost> <s5hy2s7nojd.wl-tiwai@suse.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <s5hy2s7nojd.wl-tiwai@suse.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,44 +82,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Alex Elder <elder@kernel.org>, Johan Hovold <johan@kernel.org>,
+ greybus-dev@lists.linaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unnecessary if and else conditions since both are leading to the
-initialization of "phtpriv->ampdu_enable" with the same value.
+On Wed, Mar 11, 2020 at 12:01:26PM +0100, Takashi Iwai wrote:
+> On Wed, 11 Mar 2020 11:09:03 +0100,
+> Johan Hovold wrote:
+> > 
+> > On Wed, Mar 11, 2020 at 11:02:33AM +0100, Takashi Iwai wrote:
+> > > On Wed, 11 Mar 2020 10:58:14 +0100,
+> > > Johan Hovold wrote:
+> > > > 
+> > > > On Wed, Mar 11, 2020 at 10:19:06AM +0100, Takashi Iwai wrote:
+> > > > > Since snprintf() returns the would-be-output size instead of the
+> > > > > actual output size, the succeeding calls may go beyond the given
+> > > > > buffer limit.  Fix it by replacing with scnprintf().
+> > > > > 
+> > > > > Signed-off-by: Takashi Iwai <tiwai@suse.de>
+> > > > > ---
+> > > > >  drivers/staging/greybus/tools/loopback_test.c | 24 ++++++++++++------------
+> > > > 
+> > > > Thanks for the fix.
+> > > > 
+> > > > Would you mind resending with a "staging: greybus: loopback_test:"
+> > > > prefix since this is not a subsystem wide issue, bur rather a bug in a
+> > > > specific user-space tool?
+> > > 
+> > > OK, will do that.
+> > 
+> > Thanks.
+> > 
+> > Perhaps you should replace the snprintf() at the start of the function
+> > in question as well by the way.
+> 
+> Yeah, it's I also wonder while working on many other codes, too.
+> I decided to minimize the changes at this time and concentrate only on
+> the code that has a pattern like:
+>    pos += snprintf(buf, limit - pos, ...)
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_mlme.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+But isn't the first snprintf() in such a sequence as much a part of the
+problem as the following ones?
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 71fcb466019a..48e9faf27321 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -2772,13 +2772,9 @@ void rtw_update_ht_cap(struct adapter *padapter, u8 *pie, uint ie_len, u8 channe
- 
- 	/* maybe needs check if ap supports rx ampdu. */
- 	if (!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable == 1) {
--		if (pregistrypriv->wifi_spec == 1) {
--			/* remove this part because testbed AP should disable RX AMPDU */
--			/* phtpriv->ampdu_enable = false; */
--			phtpriv->ampdu_enable = true;
--		} else {
--			phtpriv->ampdu_enable = true;
--		}
-+		/* remove this part because testbed AP should disable RX AMPDU */
-+		/* phtpriv->ampdu_enable = false; */
-+		phtpriv->ampdu_enable = true;
- 	} else if (pregistrypriv->ampdu_enable == 2) {
- 		/* remove this part because testbed AP should disable RX AMPDU */
- 		/* phtpriv->ampdu_enable = true; */
--- 
-2.17.1
+If the first pos = snprintf(buf, limit, ...) overflows buf, then the
+next pos += snprintf(buf, limit - pos, ...) will be called with with a
+negative size argument (i.e. a very large unsigned value), which
+effectively breaks the length check regardless of whether you replace it
+with scnprintf() or not. And all later calls will similarly continue
+writing beyond the end of buf.
 
+But wait a minute. This is user-space code, so there's no scnprintf().
+Did you not compile test this? ;P
+
+In fact it seems no-one has for a while. This code is just broken and
+doesn't even compile any more. Maybe we should just drop it instead.
+
+Johan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
