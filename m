@@ -1,81 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 739DD18215C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 19:58:26 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 64A3A18215B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 19:58:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC89F893A1;
-	Wed, 11 Mar 2020 18:58:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7DF6E86427;
+	Wed, 11 Mar 2020 18:58:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cng4tUdDolJh; Wed, 11 Mar 2020 18:58:24 +0000 (UTC)
+	with ESMTP id Z3bIa3ENxHwE; Wed, 11 Mar 2020 18:58:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 48A858927D;
-	Wed, 11 Mar 2020 18:58:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A772862AC;
+	Wed, 11 Mar 2020 18:58:22 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9E8881BF400
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3298D1BF400
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 18:58:21 +0000 (UTC)
+ Wed, 11 Mar 2020 18:58:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9B82D88A62
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2FF01862AC
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 18:58:21 +0000 (UTC)
+ Wed, 11 Mar 2020 18:58:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2-S0mQELUzys
+ with ESMTP id PK9tRBDM01iy
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 18:58:18 +0000 (UTC)
+ Wed, 11 Mar 2020 18:58:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3CAF688A5E
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8DD0486268
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 18:58:18 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id m9so4026440wro.12
+ Wed, 11 Mar 2020 18:58:19 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id a141so3339745wme.2
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Mar 2020 11:58:18 -0700 (PDT)
+ Wed, 11 Mar 2020 11:58:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=WeUhMBBaN3F2NEPM7PNYjW5fn3JSXPi9Sz2wpn2Z5jo=;
- b=HxYFhGnRcQBr4pCgv7Tw/1Elo/cjcIjTZ/xiDF683px8oF7312eUYhQeB5l2zEaxUh
- EyYYWHv4xJnrp6OSI2qsyNbWqaFo6zKggQGFlS+XNAWF0syNSDomYIIf4qbq81CdrFLy
- 4+F1254Lmnzb5CfxJTwkBHDQYhhVRzAvLxBaGDOtmuEQM86u8sGW2hD3RUwkuEcuWX7j
- QV8PLVmhSMYcRfiFJo4Eqizt81ri3pjR2uSSAu3b6/xt6LcfCktHbicJfGUqvsLHWIiu
- 9mib56ZNRyq5lIS6ph9MEwMb1NJfAqpKCa2tZgyxQT72nI2GoXGvS5AWdIeaSwpj0eby
- BilQ==
+ bh=8wh4nE9bCVn8Cqz0dv66qLtY8AelRLg/mHHNq+40Mfg=;
+ b=tzwnb1DgJgtJCVZKSZrnp2uqM8Tjpralbu2jF5CEtvSVrV6uJvqtB25s8Ud422iC6V
+ 5EtBuKOhgSbJIVBnf0ZtDYh6IL6uz7qZgcp0EUKfu9wj0ybf7rK+xLWQo/0exbZ6nl5j
+ HsZRK7fou7gj2mCocmEPnxj9vUoioTEHTVUKuX2dFYIcvBP+H21GHjx1pOFVEF+iIs7+
+ +msHr3OfOFK7Ft4nKTeKB0mg/4l+YGExt0zJOEt5NZswX20NA5D8a4UmTOMGYGNMnIRb
+ ckQbX9k5jX9VHdgzIgiYZozdrlTRKCwIN7+83OQUpONW63D9vA0vvqf7xUiAHyuWP0h5
+ uZDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=WeUhMBBaN3F2NEPM7PNYjW5fn3JSXPi9Sz2wpn2Z5jo=;
- b=EUZYFEn2YApQ7vSF1SmhkaI4S63Iy0uRGXGCBKDPZkPNK5ylXt3bMj5XLeBuw4AK7o
- +BDN/JCmuHIpQQFvxAYpzbBaOvADcdiyFpcqVTxt7iFtKxa9YTS6h9blNApaQLMFJ43n
- 0Tkkh1W8CRB4yICeD9DkLdbRPudMroz6PBbb9qA0pGtZ7Zodj9FkIEVpRKkudUPr+HzY
- Gkk+f1P2G+fy5ysE4Etg620iRZeGbfkursX1pBkU9NJbwjX9AGnoEWBF19shtrWnVamh
- TF3Lv2asOiAX7mdm/IMtq+B+OPNRMPgbq4fnZSwpeARh+oyMd9sPGiqj/ZvZiB43goWr
- Yl6g==
-X-Gm-Message-State: ANhLgQ03CgBWqvallfuLG2GJohUwEoHSNcoBV94CDSG1xXhh4zFm+G4R
- 0E96QMo4dRGXOuyd2pCMKFE=
-X-Google-Smtp-Source: ADFU+vuYHADfdExQPtfMn3iQHwpd9MtYt555YD9fta4DPRXMuN+Ran+Wu+KOkh08HN7CfFxriIaYjg==
-X-Received: by 2002:adf:d0c1:: with SMTP id z1mr5776883wrh.311.1583953096728; 
- Wed, 11 Mar 2020 11:58:16 -0700 (PDT)
+ bh=8wh4nE9bCVn8Cqz0dv66qLtY8AelRLg/mHHNq+40Mfg=;
+ b=pgSquVVl2UUgBOf3VHJeUc2ueMRmrxTQBW0TQ7hmwn0XJ2CyGYdyGSoj/SxKvy+MAS
+ r5xXsoTA2NKP5VwtVzaU7euiX+bjsbji+K+qNutk2bLN4nralXZPHN0z240QtOK2DcU9
+ VFIefPND50Sp9BqbwlxpiWFSDxcmgal7bZKD/ZfR2Ur55K9pjcO18h3spDmVlWWWslzX
+ b3NMq4b+IWJBwtg5wd396iYoniOqFPSNF6CJR/o4PN0OWK+DrPlVNcJ16CCio2DxH0RS
+ C0oVFzKlmJPcR6qmL/lDeXgACzyG3Fd1pIqeXs/h2fXl7PMxwg20LWhx/BwHPYDnjqAg
+ ONRQ==
+X-Gm-Message-State: ANhLgQ0VvadGMByQlOs13o/bTk0YG9AA27af3yEgy+SP8vJiugVZRcPP
+ pqD0AsDvuMFz3sQr6v2s8OMbmgSm
+X-Google-Smtp-Source: ADFU+vuxb9XEQkqUWk5+WckgRxeBPegGUGwQwawbss8AQZ4dVnYiXJ29jaEAFexWfqgAYoc9zsux7g==
+X-Received: by 2002:a1c:bcd4:: with SMTP id m203mr150176wmf.35.1583953098001; 
+ Wed, 11 Mar 2020 11:58:18 -0700 (PDT)
 Received: from localhost.localdomain
  (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
- by smtp.gmail.com with ESMTPSA id n11sm38457120wrw.11.2020.03.11.11.58.15
+ by smtp.gmail.com with ESMTPSA id n11sm38457120wrw.11.2020.03.11.11.58.16
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 11 Mar 2020 11:58:16 -0700 (PDT)
+ Wed, 11 Mar 2020 11:58:17 -0700 (PDT)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 4/5] staging: mt7621-pci: bindings: update doc accordly to
- last changes
-Date: Wed, 11 Mar 2020 19:58:07 +0100
-Message-Id: <20200311185808.29166-5-sergio.paracuellos@gmail.com>
+Subject: [PATCH v2 5/5] staging: mt7621-pci: release gpios after pci
+ initialization
+Date: Wed, 11 Mar 2020 19:58:08 +0100
+Message-Id: <20200311185808.29166-6-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200311185808.29166-1-sergio.paracuellos@gmail.com>
 References: <20200311185808.29166-1-sergio.paracuellos@gmail.com>
@@ -99,53 +99,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Properly update bindings documentation with added 'reset-gpios'
-property. Delete also 'perst-gpio' which is not being used anymore.
+R3G's LEDs fail to initialize because one of them uses GPIO8
+Hence, release the GPIO resources after PCIe initialization.
 
 Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- drivers/staging/mt7621-pci/mediatek,mt7621-pci.txt | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/staging/mt7621-pci/pci-mt7621.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/staging/mt7621-pci/mediatek,mt7621-pci.txt b/drivers/staging/mt7621-pci/mediatek,mt7621-pci.txt
-index 604ec813bd45..327a68267309 100644
---- a/drivers/staging/mt7621-pci/mediatek,mt7621-pci.txt
-+++ b/drivers/staging/mt7621-pci/mediatek,mt7621-pci.txt
-@@ -6,7 +6,6 @@ Required properties:
- - reg: Base addresses and lengths of the PCIe subsys and root ports.
- - bus-range: Range of bus numbers associated with this controller.
- - #address-cells: Address representation for root ports (must be 3)
--- perst-gpio: PCIe reset signal line.
- - pinctrl-names : The pin control state names.
- - pinctrl-0: The "default" pinctrl state.
- - #size-cells: Size representation for root ports (must be 2)
-@@ -24,6 +23,7 @@ Required properties:
-   See ../clocks/clock-bindings.txt for details.
- - clock-names: Must be "pcie0", "pcie1", "pcieN"... based on the number of
-   root ports.
-+- reset-gpios: GPIO specs for the reset pins.
+diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+index 0880a21f2620..8399e4629e38 100644
+--- a/drivers/staging/mt7621-pci/pci-mt7621.c
++++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+@@ -482,6 +482,14 @@ static void mt7621_pcie_reset_ep_deassert(struct mt7621_pcie *pcie)
+ 	mdelay(PERST_DELAY_US);
+ }
  
- In addition, the device tree node must have sub-nodes describing each PCIe port
- interface, having the following mandatory properties:
-@@ -49,7 +49,6 @@ Example for MT7621:
- 		#address-cells = <3>;
- 		#size-cells = <2>;
- 
--		perst-gpio = <&gpio 19 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pcie_pins>;
- 
-@@ -74,6 +73,10 @@ Example for MT7621:
- 		clocks = <&clkctrl 24 &clkctrl 25 &clkctrl 26>;
- 		clock-names = "pcie0", "pcie1", "pcie2";
- 
-+		reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>,
-+				<&gpio 8 GPIO_ACTIVE_LOW>,
-+				<&gpio 7 GPIO_ACTIVE_LOW>;
++static void mt7621_pcie_release_gpios(struct mt7621_pcie *pcie)
++{
++	struct mt7621_pcie_port *port;
 +
- 		pcie@0,0 {
- 			reg = <0x0000 0 0 0 0>;
- 			#address-cells = <3>;
++	list_for_each_entry(port, &pcie->ports, list)
++		gpiod_put(port->gpio_rst);
++}
++
+ static void mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
+ {
+ 	struct device *dev = pcie->dev;
+@@ -706,6 +714,8 @@ static int mt7621_pci_probe(struct platform_device *pdev)
+ 		return err;
+ 	}
+ 
++	mt7621_pcie_release_gpios(pcie);
++
+ 	return 0;
+ }
+ 
 -- 
 2.25.1
 
