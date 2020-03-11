@@ -1,47 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49D7C1814B9
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 10:25:05 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C85411814B6
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Mar 2020 10:25:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A7859880C5;
-	Wed, 11 Mar 2020 09:25:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0403187FF6;
+	Wed, 11 Mar 2020 09:24:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M2Io0jk+ZfVJ; Wed, 11 Mar 2020 09:25:02 +0000 (UTC)
+	with ESMTP id IwjVLiIjHahW; Wed, 11 Mar 2020 09:24:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 08FF387EC5;
-	Wed, 11 Mar 2020 09:25:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CB8F387E8E;
+	Wed, 11 Mar 2020 09:24:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8527E1BF5DB
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 09:24:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1EF9C1BF5DB
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 09:24:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 81EF287EC5
- for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 09:24:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1B7D087E5E
+ for <devel@linuxdriverproject.org>; Wed, 11 Mar 2020 09:24:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hT7SJSeKGxEX for <devel@linuxdriverproject.org>;
+ with ESMTP id RQgigmd4f0fD for <devel@linuxdriverproject.org>;
  Wed, 11 Mar 2020 09:24:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6CE5B87F73
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4AF6987D55
  for <devel@driverdev.osuosl.org>; Wed, 11 Mar 2020 09:24:55 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 63A46AC5C;
+ by mx2.suse.de (Postfix) with ESMTP id 73FD2AD26;
  Wed, 11 Mar 2020 09:24:53 +0000 (UTC)
 From: Takashi Iwai <tiwai@suse.de>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Larry Finger <Larry.Finger@lwfinger.net>
-Subject: [PATCH 1/3] staging: rtl8188eu: Use scnprintf() for avoiding
- potential buffer overflow
-Date: Wed, 11 Mar 2020 10:24:49 +0100
-Message-Id: <20200311092451.23933-2-tiwai@suse.de>
+Subject: [PATCH 2/3] staging: rtl8192e: Use scnprintf() for avoiding potential
+ buffer overflow
+Date: Wed, 11 Mar 2020 10:24:50 +0100
+Message-Id: <20200311092451.23933-3-tiwai@suse.de>
 X-Mailer: git-send-email 2.16.4
 In-Reply-To: <20200311092451.23933-1-tiwai@suse.de>
 References: <20200311092451.23933-1-tiwai@suse.de>
@@ -70,86 +70,69 @@ buffer limit.  Fix it by replacing with scnprintf().
 
 Signed-off-by: Takashi Iwai <tiwai@suse.de>
 ---
- drivers/staging/rtl8188eu/core/rtw_debug.c     | 16 ++++++++--------
- drivers/staging/rtl8188eu/os_dep/ioctl_linux.c |  4 ++--
- 2 files changed, 10 insertions(+), 10 deletions(-)
+ drivers/staging/rtl8192e/rtllib_rx.c | 4 ++--
+ drivers/staging/rtl8192e/rtllib_wx.c | 8 ++++----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_debug.c b/drivers/staging/rtl8188eu/core/rtw_debug.c
-index 6c2fe1a112ac..d0e41f2ef1ce 100644
---- a/drivers/staging/rtl8188eu/core/rtw_debug.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_debug.c
-@@ -15,7 +15,7 @@ int proc_get_drv_version(char *page, char **start,
- {
- 	int len = 0;
- 
--	len += snprintf(page + len, count - len, "%s\n", DRIVERVERSION);
-+	len += scnprintf(page + len, count - len, "%s\n", DRIVERVERSION);
- 
- 	*eof = 1;
- 	return len;
-@@ -86,16 +86,16 @@ int proc_get_read_reg(char *page, char **start,
- 
- 	switch (proc_get_read_len) {
- 	case 1:
--		len += snprintf(page + len, count - len, "usb_read8(0x%x)=0x%x\n", proc_get_read_addr, usb_read8(padapter, proc_get_read_addr));
-+		len += scnprintf(page + len, count - len, "usb_read8(0x%x)=0x%x\n", proc_get_read_addr, usb_read8(padapter, proc_get_read_addr));
- 		break;
- 	case 2:
--		len += snprintf(page + len, count - len, "usb_read16(0x%x)=0x%x\n", proc_get_read_addr, usb_read16(padapter, proc_get_read_addr));
-+		len += scnprintf(page + len, count - len, "usb_read16(0x%x)=0x%x\n", proc_get_read_addr, usb_read16(padapter, proc_get_read_addr));
- 		break;
- 	case 4:
--		len += snprintf(page + len, count - len, "usb_read32(0x%x)=0x%x\n", proc_get_read_addr, usb_read32(padapter, proc_get_read_addr));
-+		len += scnprintf(page + len, count - len, "usb_read32(0x%x)=0x%x\n", proc_get_read_addr, usb_read32(padapter, proc_get_read_addr));
- 		break;
- 	default:
--		len += snprintf(page + len, count - len, "error read length=%d\n", proc_get_read_len);
-+		len += scnprintf(page + len, count - len, "error read length=%d\n", proc_get_read_len);
- 		break;
- 	}
- 
-@@ -138,7 +138,7 @@ int proc_get_adapter_state(char *page, char **start,
- 	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
- 	int len = 0;
- 
--	len += snprintf(page + len, count - len, "bSurpriseRemoved=%d, bDriverStopped=%d\n",
-+	len += scnprintf(page + len, count - len, "bSurpriseRemoved=%d, bDriverStopped=%d\n",
- 						padapter->bSurpriseRemoved, padapter->bDriverStopped);
- 
- 	*eof = 1;
-@@ -170,11 +170,11 @@ int proc_get_best_channel(char *page, char **start,
- 		}
- 
- 		/*  debug */
--		len += snprintf(page + len, count - len, "The rx cnt of channel %3d = %d\n",
-+		len += scnprintf(page + len, count - len, "The rx cnt of channel %3d = %d\n",
- 					pmlmeext->channel_set[i].ChannelNum, pmlmeext->channel_set[i].rx_count);
- 	}
- 
--	len += snprintf(page + len, count - len, "best_channel_24G = %d\n", best_channel_24G);
-+	len += scnprintf(page + len, count - len, "best_channel_24G = %d\n", best_channel_24G);
- 
- 	*eof = 1;
- 	return len;
-diff --git a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-index ba53959e1303..9a89791720e0 100644
---- a/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8188eu/os_dep/ioctl_linux.c
-@@ -193,12 +193,12 @@ static char *translate_scan(struct adapter *padapter,
- 	/*Add basic and extended rates */
+diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
+index 0bae0a0a4cbe..d31b5e1c8df4 100644
+--- a/drivers/staging/rtl8192e/rtllib_rx.c
++++ b/drivers/staging/rtl8192e/rtllib_rx.c
+@@ -2092,7 +2092,7 @@ int rtllib_parse_info_param(struct rtllib_device *ieee,
+ 						 MAX_RATES_LENGTH);
+ 			for (i = 0; i < network->rates_len; i++) {
+ 				network->rates[i] = info_element->data[i];
+-				p += snprintf(p, sizeof(rates_str) -
++				p += scnprintf(p, sizeof(rates_str) -
+ 					      (p - rates_str), "%02X ",
+ 					      network->rates[i]);
+ 				if (rtllib_is_ofdm_rate
+@@ -2120,7 +2120,7 @@ int rtllib_parse_info_param(struct rtllib_device *ieee,
+ 						    MAX_RATES_EX_LENGTH);
+ 			for (i = 0; i < network->rates_ex_len; i++) {
+ 				network->rates_ex[i] = info_element->data[i];
+-				p += snprintf(p, sizeof(rates_str) -
++				p += scnprintf(p, sizeof(rates_str) -
+ 					      (p - rates_str), "%02X ",
+ 					      network->rates_ex[i]);
+ 				if (rtllib_is_ofdm_rate
+diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
+index beb40967936a..7e7df50164fb 100644
+--- a/drivers/staging/rtl8192e/rtllib_wx.c
++++ b/drivers/staging/rtl8192e/rtllib_wx.c
+@@ -114,7 +114,7 @@ static inline char *rtl819x_translate_scan(struct rtllib_device *ieee,
+ 	/* Add basic and extended rates */
  	max_rate = 0;
  	p = custom;
 -	p += snprintf(p, MAX_CUSTOM_LEN - (p - custom), " Rates (Mb/s): ");
 +	p += scnprintf(p, MAX_CUSTOM_LEN - (p - custom), " Rates (Mb/s): ");
- 	while (pnetwork->network.SupportedRates[i] != 0) {
- 		rate = pnetwork->network.SupportedRates[i]&0x7F;
+ 	for (i = 0, j = 0; i < network->rates_len;) {
+ 		if (j < network->rates_ex_len &&
+ 		    ((network->rates_ex[j] & 0x7F) <
+@@ -124,12 +124,12 @@ static inline char *rtl819x_translate_scan(struct rtllib_device *ieee,
+ 			rate = network->rates[i++] & 0x7F;
  		if (rate > max_rate)
  			max_rate = rate;
 -		p += snprintf(p, MAX_CUSTOM_LEN - (p - custom),
 +		p += scnprintf(p, MAX_CUSTOM_LEN - (p - custom),
  			      "%d%s ", rate >> 1, (rate & 1) ? ".5" : "");
- 		i++;
  	}
+ 	for (; j < network->rates_ex_len; j++) {
+ 		rate = network->rates_ex[j] & 0x7F;
+-		p += snprintf(p, MAX_CUSTOM_LEN - (p - custom),
++		p += scnprintf(p, MAX_CUSTOM_LEN - (p - custom),
+ 			      "%d%s ", rate >> 1, (rate & 1) ? ".5" : "");
+ 		if (rate > max_rate)
+ 			max_rate = rate;
+@@ -226,7 +226,7 @@ static inline char *rtl819x_translate_scan(struct rtllib_device *ieee,
+ 	 */
+ 	iwe.cmd = IWEVCUSTOM;
+ 	p = custom;
+-	p += snprintf(p, MAX_CUSTOM_LEN - (p - custom),
++	p += scnprintf(p, MAX_CUSTOM_LEN - (p - custom),
+ 		      " Last beacon: %lums ago",
+ 		      (jiffies - network->last_scanned) / (HZ / 100));
+ 	iwe.u.data.length = p - custom;
 -- 
 2.16.4
 
