@@ -1,53 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1580182771
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 04:42:15 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 96F541827F9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 05:57:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 49C1726604;
-	Thu, 12 Mar 2020 03:42:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 386D6891DB;
+	Thu, 12 Mar 2020 04:57:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7kQuVrigX4Pd; Thu, 12 Mar 2020 03:42:12 +0000 (UTC)
+	with ESMTP id c2-phQbIEOUd; Thu, 12 Mar 2020 04:57:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C65C0265DF;
-	Thu, 12 Mar 2020 03:42:10 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7E4EE88555;
+	Thu, 12 Mar 2020 04:57:00 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9DBB91BF346
- for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 03:42:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 459C21BF326
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 12 Mar 2020 04:56:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 90CEF265BB
- for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 03:42:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 366E9886A4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 12 Mar 2020 04:56:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bWr-e70HGf9p for <devel@linuxdriverproject.org>;
- Thu, 12 Mar 2020 03:42:06 +0000 (UTC)
+ with ESMTP id rnPB8nKvJWdF
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 12 Mar 2020 04:56:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.foescocursos.es (unknown [146.255.98.67])
- by silver.osuosl.org (Postfix) with ESMTPS id D17AA203B9
- for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 03:42:05 +0000 (UTC)
-Received: from 186.red-83-53-133.dynamicip.rima-tde.net
- (186.red-83-53-133.dynamicip.rima-tde.net [83.53.133.186])
- by mail.foescocursos.es (Postfix) with ESMTPSA id 319D4191324
- for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 04:41:46 +0100 (CET)
-Authentication-Results: mail.foescocursos.es;
- spf=pass (sender IP is 83.53.133.186) smtp.mailfrom=info@formacionestatal.es
- smtp.helo=186.red-83-53-133.dynamicip.rima-tde.net
-Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 893568862E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 12 Mar 2020 04:56:57 +0000 (UTC)
+Received: from [10.44.0.22] (unknown [103.48.210.53])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1B270206EB;
+ Thu, 12 Mar 2020 04:56:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1583989017;
+ bh=po7+enE4pCL7ZQl5M4A/cvwVlcUf1xWY7yFCUQif3TE=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=fQxX87Hh3GPoCLraXfNS31uvNkJSIOh4adWTWEJMWMMeqObrHIyRwfE/HL33s7r37
+ +kP+EEWuUOFkogoX1lM1Bd5Pnah5SSP2NQ4A5HcqvMytJrfocMwsHghWdreDNOIfYq
+ kAeh/8n8MqOlgVDNMuHO7TGbTIoLbUNBL9HkbBJI=
+Subject: Re: [PATCH v2 0/5] staging: mt7621-pci: re-do reset boot process
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ gregkh@linuxfoundation.org
+References: <20200311185808.29166-1-sergio.paracuellos@gmail.com>
+From: Greg Ungerer <gerg@kernel.org>
+Message-ID: <fec91f9d-1ad0-d98a-9f4a-346e70f3c22d@kernel.org>
+Date: Thu, 12 Mar 2020 14:56:51 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-From: info@formacionestatal.es
-To: devel@driverdev.osuosl.org
-Subject: Consulta FOESCO (Marzo 2020)
-X-Mailer: Smart_Send_4_3_5
-Date: Thu, 12 Mar 2020 04:41:43 +0100
-Message-ID: <13504512810304767126889@DESKTOP-UT04S71>
-X-Priority: 1
-X-MSMail-Priority: High
+In-Reply-To: <20200311185808.29166-1-sergio.paracuellos@gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,63 +71,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: info@formacionestatal.es
-Content-Type: multipart/mixed; boundary="===============0665874850968746074=="
+Cc: neil@brown.name, driverdev-devel@linuxdriverproject.org,
+ weijie.gao@mediatek.com, ryder.lee@mediatek.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============0665874850968746074==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Hi Sergio,
 
-Buenos d=EDas
+On 12/3/20 4:58 am, Sergio Paracuellos wrote:
+> Some time ago Greg Ungerer reported some random hangs using
+> the staging mt7621-pci driver:
+> 
+> See:
+> * http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2019-June/134947.html
+> 
+> Try to fix that is the main motivation of this patch series.
 
-
-
-Os informamos que se encuentra abierto el plazo de inscripci=F3n para la pr=
-esente Convocatoria de Cursos Bonificables para empleados (Marzo 2020)
-
-Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
-aci=F3n 2020 que disponen las empresas.
-
-
-Dese=E1is que os mandemos la informaci=F3n=3F
+Excellent!  I am glad to see an effort to get these problems resolved.
+I still have to switch back to much earlier version of this PCI
+driving code to get reliable working behavior.
 
 
-Saludos.
+> Also in openwrt there is a driver for mt7621-pci which seems was rewritten
+> from scratch (for kernel 4.14) by Ryder Lee and Weijie Gao from mediatek.
+> There the approach for reset assert-deassert process is to set as 'gpio'
+> the function for all the 'pcie' group for the pinctrl driver and use those
+> gpio's as a reset for the end points. The driver I am talking about is still
+> using legacy pci and legacy gpio kernel interfaces. IMHO, the correct thing
+> to do is make this staging driver properly clean and functional and put it
+> in its correct place in the mainline.
+> 
+> See:
+> * https://gist.github.com/dengqf6/7a9e9b4032d99f1a91dd9256c8a65c36
+> 
+> Because of all of this this patch series tries to avoid random hangs of boot
+> trying to use the 'reset-gpios' approach.
+> 
+> Changes are being tested by openwrt people and seems to work.
+> 
+> Hope this helps.
+
+What kernel did you generate these patches against?
+They didn't apply completely cleanly for me against 5.5 or 5.6.0-rc5.
+Minor reject and some fuzzing, easy enough to fix for testing.
+
+Running 5.6.0-rc5 I get the following failure on my hardware during boot:
+
+...
+rt2880-pinmux pinctrl: pcie is already enabled
+mt7621-pci 1e140000.pcie: Error applying setting, reverse things back
+mt7621-pci 1e140000.pcie: Unable to request GPIO reset in slot 1
+mt7621-pci 1e140000.pcie: Parsing DT failed
+mt7621-pci: probe of 1e140000.pcie failed with error -16
 
 
-Alex Pons
-Director departamento formaci=F3n.
+FWIW: running the original 5.6.0-rc5 code gives a few different
+PCI startup failures - but PCI devices never work properly. I can
+send the error trace output if useful, but it is similar to what
+I have posted in the past.
 
-FOESCO Formaci=F3n Estatal Continua.
-Entidad Organizadora: B171823AP
-www.foesco.com
-
-e-mail:     cursos@foesco.net
-Tel:     910 323 794
+Regards
+Greg
 
 
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
-la palabra BAJA en el asunto.
-
---===============0665874850968746074==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+> Changes in v2:
+>      * restore configuration for pers mode to GPIO.
+>      * Avoid to read FTS_NUM register in reset state.
+> 
+> Best regards,
+>      Sergio Paracuellos
+> 
+> 
+> Sergio Paracuellos (5):
+>    staging: mt7621-pci: use gpios for properly reset
+>    staging: mt7621-pci: change value for 'PERST_DELAY_US'
+>    staging: mt7621-dts: make use of 'reset-gpios' property for pci
+>    staging: mt7621-pci: bindings: update doc accordly to last changes
+>    staging: mt7621-pci: release gpios after pci initialization
+> 
+>   drivers/staging/mt7621-dts/mt7621.dtsi        | 11 ++-
+>   .../mt7621-pci/mediatek,mt7621-pci.txt        |  7 +-
+>   drivers/staging/mt7621-pci/pci-mt7621.c       | 94 ++++++++++++-------
+>   3 files changed, 72 insertions(+), 40 deletions(-)
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0665874850968746074==--
