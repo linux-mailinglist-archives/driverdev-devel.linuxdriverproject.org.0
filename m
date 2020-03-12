@@ -1,70 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42779182F34
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 12:31:35 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 997AE183293
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 15:14:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AD35989481;
-	Thu, 12 Mar 2020 11:31:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E1E60876E3;
+	Thu, 12 Mar 2020 14:14:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AP6VMvyzFORu; Thu, 12 Mar 2020 11:31:32 +0000 (UTC)
+	with ESMTP id zo21F5L4HQWG; Thu, 12 Mar 2020 14:14:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 041D089450;
-	Thu, 12 Mar 2020 11:31:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B792E87684;
+	Thu, 12 Mar 2020 14:14:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2962A1BF41C
- for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 11:31:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 137631BF420
+ for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 14:14:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 23FDD88B21
- for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 11:31:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 107BB8746D
+ for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 14:14:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7wzBypuijD1e for <devel@linuxdriverproject.org>;
- Thu, 12 Mar 2020 11:31:30 +0000 (UTC)
+ with ESMTP id 05hFc1ijkbdS for <devel@linuxdriverproject.org>;
+ Thu, 12 Mar 2020 14:14:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic301-31.consmr.mail.ne1.yahoo.com
- (sonic301-31.consmr.mail.ne1.yahoo.com [66.163.184.200])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E00F188AF4
- for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 11:31:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ymail.com; s=s2048;
- t=1584012689; bh=8xpm+cacAfAnFCbwSdgMceaBJxowNWaFZvEVU/zxgKw=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=t7V1pT8BaMX20gjsRcRBnasGC3orG8ZhJD0cvnFWT7knVIToCvh/B8tJlFex61ew7K39wLujohuKxwfSti+I+lLUvCeQcnfl9FrMmhJ3cyApp8UFAC7bKvGbwWFO6t2x927xuostrWBIkTxVoQuop77velJuSlhzb6h/L61/AumMwwvk7PIubijxdA865+SS8iF/f+43nM934M6DOE9on9HyG6MvhcRkU9jctXMmHe5Sjcvsay0Pu2ibtgnesrCBrDbSgsZ16ihWL9rSXDxthqrFtSm+SgQB/t97FspiAGdnDy2kOKusqR5FtUbQwpF/JDQ/cbGKaNAH24C8so1xEg==
-X-YMail-OSG: xEcFF6cVM1khonkntVP74NkwkBEYOYzqc4G_bHEc9iGAAY.uAxYNCGmRXhpcUrU
- vFKnILjTRp5MeGWGTbi_QUday3bE2490OyExRz72tT7wTSiv5t58ClVWrGkbfQI5Ld.o0gDV_y3G
- k_M5fgiEXLBZ8JI2FAWtb97Dg4PfBtHqMTcxdX6U0XFTS4C7hz8yKIYHD.zN0eeZIGgxRqPf2lNi
- cdmAQvDDxWfarXzHOLRbupHQjlrFq4bSv1fjlXUe327F.R3iZgj.Z.o4VKbrpfg3fQMs.R_uW_GC
- xMqXiTiqPrLgb106hIMKKB1hoAaW_dsPaVpgmToGQ.IYKfgILMe3LZ5zJFJrvqi6er9ENBebAg1k
- 9_.skRQSFUdYmgVgDBTj7QHubfJI5LkOHuqEV5EjKvLJwHIHrAAlPsl7MDc2PhLuxK_Mel5IpsC1
- dypNE26sXslRLTl1YWeFk5HymU08cNiyDg4TQc5o1XspLjwGfOl5DuOePbTphWzcJxDKoCFqylk0
- jKgVha9qISXTo_YMq46Dt.xjxhIUhHdmBpZblcc1kZ1uxh__3S4gh7E0aH8Xxa9O_ewQMx0TTrpu
- H9i3yOk4dAgbSxbM2zMdJqIfR3uUUlT4J8U_qpwLfB2mxARK_edHyyF8OVFK5Np0Uili66s6y.l5
- T_502RtScNCZ6TU3Dfrpuqky.fFAzB6JtbljQIdUBpGW8DKtkaxpMsc1SDNDjgp82KuCTgpvUyoZ
- 9VhPHECdYKxXvm6Jgu5p5Ibj3cA4pb04azzHOpEXGko4pMqIw8JuksGzbNCRuPRGee03x7EzLyhG
- C6gK6Z7yOTFJuDNnhjdsdNH8yDXB6lztrbTyDrcQ0LS3kGe1XF0zDA8q6H.y8ZRu1B0I2e6yuPoP
- bAep5wqO8sPz1EgfHgU8wqKW59wxztR8wJO7nO94kGk1PhSYicF_tF5lEmHgKlov880g8izO1hku
- WgjmeBNFUo81I71se5c.CeduXmuoBMmFqxsWjFtpNEIITkp3viM7ji4k93QAVOFBcZXTPBmjHcPg
- TdAxJCSMibC2MJLtHpGdr.GyeezG0GKO5AdiZF8QBfe1Lw074hueY8SG59hNZIUPNSxW9qTmZGk5
- 6VXrmeBGeaUS9wZpkwcmH2kOBqbj2vWFb4jW4iMJab5l1xgNRI6v_fNHPFaF6PacdCGtcHwCWt17
- rT9AawyaUkvSac_qVuQjwjTxvFHgddkZuABQX07kmrrsYQA8iBS18fidqlZ1.5XY.X55hejS8YLm
- C3tV7_KB2Xab_Y_NL0LF07LWxESh7hDAFwecuI9EJ0tBT5qA20TbPUNI2HSFULACQ93nOo8Csfcj
- p0gg-
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic301.consmr.mail.ne1.yahoo.com with HTTP; Thu, 12 Mar 2020 11:31:29 +0000
-Date: Thu, 12 Mar 2020 11:31:24 +0000 (UTC)
-From: Cherif Titi <marko.flores@ymail.com>
-Message-ID: <1357472395.690869.1584012684757@mail.yahoo.com>
-Subject: My Dear
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 090B386F9E
+ for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 14:14:51 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02CEAeqZ002776;
+ Thu, 12 Mar 2020 14:14:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=corp-2020-01-29;
+ bh=ukYai0Szp9GbgbGil4JNjUKZcGVTXYPk+TiQREDrQQI=;
+ b=ZE2YueL7kEDUoiyOZ7Yp7RhxSxIUXXNkgNPFtW0NnLgrMLhY7bic3Y0u90vHBtuwnRN7
+ DA1MW47Q8uC9bl6DeZ/qJlvbm+kmdoFuaDQ1HLH2jdxz+6/x44dUDQ0AFKNYeHLQmUb5
+ bnLRgvjECxK/3R6y3nBrFlGDeYao3oGWZ0D3N0iLDm0doZuqOtPOI3BSFNY10xGsz7AK
+ nb8bt68BYyNmVbhus+CGDaXCFDKvJvAQA/wlS5NiVNk8EjpOjQUzYUz/U7OdvXrf9MQW
+ 5qsHTTdUN410j759b/FKy/LZeYRZtGAwYGWGP7G10sADpaLE3NhdWlRNDu6rSpra+/ZL ig== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2130.oracle.com with ESMTP id 2ym31usttq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 12 Mar 2020 14:14:43 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02CE85WW090900;
+ Thu, 12 Mar 2020 14:14:43 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 2yqgvd117b-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 12 Mar 2020 14:14:42 +0000
+Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 02CEEfQO031130;
+ Thu, 12 Mar 2020 14:14:41 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 12 Mar 2020 07:14:40 -0700
+Date: Thu, 12 Mar 2020 17:14:35 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH 2/5] staging: wfx: fix lines ending with a comma instead
+ of a semicolon
+Message-ID: <20200312141435.GM11561@kadam>
+References: <20200310101356.182818-1-Jerome.Pouiller@silabs.com>
+ <20200310101356.182818-3-Jerome.Pouiller@silabs.com>
 MIME-Version: 1.0
-References: <1357472395.690869.1584012684757.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.15342 YMailNodin Mozilla/5.0 (Windows NT 6.1; Win64;
- x64; rv:73.0) Gecko/20100101 Firefox/73.0
+Content-Disposition: inline
+In-Reply-To: <20200310101356.182818-3-Jerome.Pouiller@silabs.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9557
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ malwarescore=0 adultscore=0
+ phishscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
+ definitions=main-2003120076
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9557
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ lowpriorityscore=0
+ spamscore=0 priorityscore=1501 impostorscore=0 bulkscore=0 suspectscore=0
+ phishscore=0 mlxlogscore=999 mlxscore=0 malwarescore=0 clxscore=1015
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
+ definitions=main-2003120076
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,41 +99,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: cheriftiti268@yahoo.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
- My Dear
+On Tue, Mar 10, 2020 at 11:13:53AM +0100, Jerome Pouiller wrote:
+> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> =
 
-I am Miss cherif Titi,20 years old and the only daughter of my late parents Dr.Richard Tit. My father was a highly reputable real estate developer who operated in the capital city of Ivory coast during his days
-
-It is sad to say that he passed away mysteriously in UK during one of his business trips abroad year 12th. JUNE 12, 2014. Though his sudden death, But God knows the truth! My mother died when I was just 4 years old,and since then my father took me so special Before his death on JUNE 12, 2014 he called his secretary who accompanied him to the hospital and told him that he has the sum of Nine million,five hundred thousand United State Dollars.(USD$9.500,000) left in bank
-
-He further told him that he deposited the money in my name, and finally issued a written instruction to his lawyer whom he said is in possession of all the necessary legal documents to this fund
-
-I am just 20 years old and a university undergraduate and really don't know what to do. Now I want an account overseas where I can transfer this funds. This is because I have suffered a lot of set backs as a result of incessant political crisis here in Ivory coast. The death of my father actually brought sorrow to my life
-
-Dear, I am in a sincere desire of your humble assistance in this regards,Your suggestions and ideas will be highly regarded.
+> Obviously introduced by mistake.
+> =
 
 
-Now permit me to ask these few questions:
+I have a Smatch check for when people use a comma instead of semi-colon,
+but I have never published it because it seems totally harmless.  I
+can't think of a reason why we should use semi-colons instead of commas.
 
-1. Can you honestly help me as your daughter
+regards,
+dan carpenter
 
-2. Can I completely trust you
-
-3. What percentage of the total amount in question will be good for you after the money is in your account
-
-Please contact me with my private email cheriftiti268@yahoo.com
-
-
-Please,Consider this and get back to me as soon as possible.
-
-
-My sincere regards,
-Mrs.cherif TITI
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
