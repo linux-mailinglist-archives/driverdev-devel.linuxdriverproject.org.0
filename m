@@ -1,82 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD802182BB7
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 10:00:57 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FCF4182BB8
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 10:01:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E5CF088AC9;
-	Thu, 12 Mar 2020 09:00:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4C1AF26509;
+	Thu, 12 Mar 2020 09:00:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pzVVbk63N2CZ; Thu, 12 Mar 2020 09:00:55 +0000 (UTC)
+	with ESMTP id 4FTRdkVq5uBr; Thu, 12 Mar 2020 09:00:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C9CFF8773D;
-	Thu, 12 Mar 2020 09:00:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B28EB2612E;
+	Thu, 12 Mar 2020 09:00:56 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4DB811BF332
+ by ash.osuosl.org (Postfix) with ESMTP id DB13E1BF332
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 12 Mar 2020 09:00:52 +0000 (UTC)
+ Thu, 12 Mar 2020 09:00:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 49B2485F81
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D811C85F81
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 12 Mar 2020 09:00:52 +0000 (UTC)
+ Thu, 12 Mar 2020 09:00:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c0Zet9pAHUcl
+ with ESMTP id OJWNt9Ne4TmC
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 12 Mar 2020 09:00:51 +0000 (UTC)
+ Thu, 12 Mar 2020 09:00:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
  [209.85.208.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6DE6E85F59
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D136085F59
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 12 Mar 2020 09:00:51 +0000 (UTC)
-Received: by mail-ed1-f66.google.com with SMTP id n18so6425689edw.9
+ Thu, 12 Mar 2020 09:00:52 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id h5so6462105edn.5
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 12 Mar 2020 02:00:51 -0700 (PDT)
+ Thu, 12 Mar 2020 02:00:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=iYvwgX7aQXxzuLCh6g1lnJiEmNUJ95sIyPRracLR/MU=;
- b=ML0YUCGMVY1GOf/M7jkMngq3R+PEnGlx1kYo8A7piIMxsJXiPb1OIVAzJujPI5IC9y
- jxC6gacJt48qZrgDO8FhFfSPwmf6KwKF+6cFAG0Dw3CXcfDrzwVvFA5EgqaNDs9t7z48
- OkG7GfCl13Z1gBXmaETDovzwDFgJ7FFskuIu7Aln6FUNoA8dfdcQoTvv5FaG18Q5oJvL
- AfzJf/6LmiEQaifzNbxDOIHoUpmT8Au9OoArMYyUw2RLXAbxXa68KlMztWfiwU172mi0
- UG/Z7N4B0CnUdPw3fMh8g8BKkfUElBhC7cxVQMhTePbtVP45N1VrgHBTIqQPEV4pnjqM
- M8kw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=mC6aKPf0JsvI4MW1VmEmjB3olnDEDIe+h2HRbKBFtmo=;
+ b=ijjRP/ZVXbjmiF+D3gA0P3w4xJtycGNIPM5XfWSMF98D+g5KbDfLF4iCh3L4KVem43
+ RC6chSwkrk43QX5mupymESMZeheNY8lBDJKh8FSOQQOUxeI67AIBP763u4w1MQKcMyIZ
+ jOkt0kdWsBP5V0ocbKI7YhZpP8//zKz7SJ1WEH8MYqlttxsbgq2c0lBgpdY9NVlytHAl
+ j8xOpEPZH3D1q8X2Az/78uiUb2al57Car+JW57rXi9/De9gxlwHIkL+t8JDSYjeXDJ/E
+ DKuXDohkYtC2E4I5T9ly3Cb5391Z824DfLkDXtDzFeDIWE24o2UHWvXhSbpIildnpw0s
+ NrOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=iYvwgX7aQXxzuLCh6g1lnJiEmNUJ95sIyPRracLR/MU=;
- b=YaxAHgrHpM5sNjqDTegi0MK4uoFqgOn9M4nmXiE5OG6MdyNyiLhZMLNkUWPK5Gty7P
- o/F5WQfO97iSbE4PKqzPwxgJwSRdl6xQVaK8J9/5pEaldfJSc4PdM0FQSAqd4MYl57S0
- H0J0g8TJRAek4JdSYTxxiEQcXMOXQ37E3O+8YV5PKFYk+WGQJHW0prJRy8j6+0+2zAQX
- CVNXwQa0105wmaf1V8FS1+VD3oSR1r1z76j6ZJ/WTrTbWU4xRIfgPMAbU0QyAHfRpKE8
- I76RsLUenohcxJN5gVv2otqJ1ZJ1y0OQNrL+lbryjGERd/9j8esTjpf09B+MuUsRncZQ
- ztqQ==
-X-Gm-Message-State: ANhLgQ3Uux9WdIV1NKuOiGXHMCnTnQC54mVvkgKAeS45OTxceKmm15XN
- IXBa59WnMFD+cYV/QfJvK3A=
-X-Google-Smtp-Source: ADFU+vvJMtM2xgVJ8fQXYy1xjnNm6F1m9g6tgWAhHu0x2LwicGKmTT+0mDXFl76TdeYcDVSnUhY5kg==
-X-Received: by 2002:a17:906:c78c:: with SMTP id
- cw12mr5615751ejb.171.1584003649722; 
- Thu, 12 Mar 2020 02:00:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=mC6aKPf0JsvI4MW1VmEmjB3olnDEDIe+h2HRbKBFtmo=;
+ b=nujJGqC8711wfCveCqugzXgyu12BAL1kpss3iGVDVYaa4L2YX9ZLkqmCivUDvdBS/t
+ UyyPv9NyTdy0YWFnvtjQW9QTCYksJ2POlghvo7C9x5qbWOJ2LftiJfW5C1wDmDz6p8OP
+ QCLCfBDGgkNbvNU40cYJVNyz+96dBQRdUsSzTXAznrxtyyLDYvsVlf4DDgfZjqwDbuQu
+ s3gr5jjH7BFfARWx6an6mPg/LfzKvLB/HKMz6F0atHxEI8s7zGhsGveQJjA+h5q5STYR
+ E/inLtaBokBVsQn1bqIfQRrf6bA4VVhoE5VpCIlT7nCyFkKG8jU8TKIAeCJodKWT/v6n
+ cPkg==
+X-Gm-Message-State: ANhLgQ2ngEX6NpCXDfaLqLSHvdVBozOoLK6lTppd160f2sHR2/5lDKGB
+ xATh3Es222buTMVPEG3CLPlokETe
+X-Google-Smtp-Source: ADFU+vudyONYn+HNmW5QfuTn8cMf8hak3q+mqi2u/vNwKqfmIMUNG26qbo26K5He5pjCmnpmOEimYQ==
+X-Received: by 2002:a17:906:ecee:: with SMTP id
+ qt14mr5948670ejb.297.1584003651126; 
+ Thu, 12 Mar 2020 02:00:51 -0700 (PDT)
 Received: from localhost.localdomain
  (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
- by smtp.gmail.com with ESMTPSA id p24sm1132711edx.34.2020.03.12.02.00.47
+ by smtp.gmail.com with ESMTPSA id p24sm1132711edx.34.2020.03.12.02.00.49
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 12 Mar 2020 02:00:48 -0700 (PDT)
+ Thu, 12 Mar 2020 02:00:50 -0700 (PDT)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v3 0/5] staging: mt7621-pci: re-do reset boot process
-Date: Thu, 12 Mar 2020 10:00:41 +0100
-Message-Id: <20200312090046.26869-1-sergio.paracuellos@gmail.com>
+Subject: [PATCH v3 1/5] staging: mt7621-pci: use gpios for properly reset
+Date: Thu, 12 Mar 2020 10:00:42 +0100
+Message-Id: <20200312090046.26869-2-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200312090046.26869-1-sergio.paracuellos@gmail.com>
+References: <20200312090046.26869-1-sergio.paracuellos@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -97,59 +99,221 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Some time ago Greg Ungerer reported some random hangs using
-the staging mt7621-pci driver:
+Original driver code was using three gpio's for reset
+asserts and deasserts the pcis. Instead of using that
+a general reset control with a perst gpio was introduced
+and it seems it is partially working but sometimes there
+are some unexpected hangs on boot. This commit make use of
+the three original gpios using 'reset-gpios' property of
+the device tree and removes the reset line and perst gpio.
+According to the mediatek application note v0.1 there are
+three gpios used for pcie ports reset control: gpio#19,
+gpio#8 and gpio#7 for slots 0, 1 and 2 respectively.
+This schema can be used separately for mt7621A but in some
+boards due to pin share issue, if the PCM and I2S function
+are enable at the same time, there are no enough GPIO to
+control per-port PCIe reset. In those cases gpio#19 is enought
+for reset the three ports together. Because of this we just
+try to get the three gpios but if some of them fail we are not
+failing in boot process, just prints a kernel notice and take
+after into account if the descriptor is or not valid in order
+to use it. All of them are set as GPIO output low configuration.
+The gpio descriptor's API takes device tree property into account
+and invert value if the pin is configured as active low.
+So we also have to properly request pins from device tree
+and set values correct in assert and deassert functions.
+After this changes the order to make all assert and
+deassert in the 'probe' process makes more sense:
+* Parse device tree.
+* make assert of the RC's and EP's before doing anything else.
+* make deassert of the RC's before initializing the phy.
+* Init the phy.
+* make deassert of the EP's before initialize pci ports.
+* Normal PCI initialization.
 
-See:
-* http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2019-June/134947.html 
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+---
+ drivers/staging/mt7621-pci/pci-mt7621.c | 82 +++++++++++++++----------
+ 1 file changed, 49 insertions(+), 33 deletions(-)
 
-Try to fix that is the main motivation of this patch series.
-
-Also in openwrt there is a driver for mt7621-pci which seems was rewritten
-from scratch (for kernel 4.14) by Ryder Lee and Weijie Gao from mediatek. 
-There the approach for reset assert-deassert process is to set as 'gpio'
-the function for all the 'pcie' group for the pinctrl driver and use those
-gpio's as a reset for the end points. The driver I am talking about is still
-using legacy pci and legacy gpio kernel interfaces. IMHO, the correct thing
-to do is make this staging driver properly clean and functional and put it
-in its correct place in the mainline.
-
-See:
-* https://gist.github.com/dengqf6/7a9e9b4032d99f1a91dd9256c8a65c36
-
-Because of all of this this patch series tries to avoid random hangs of boot
-trying to use the 'reset-gpios' approach.
-
-Changes are being tested by openwrt people and seems to work.
-
-Hope this helps.
-
-Changes in v3:
-    * Avoid to fail if gpio descriptor fails on get.
-    * re-do PATCH 1 commit message.
-    * Take into account gpio low polarity on request and assert and deassert.
-    * Review error path of driver to properly release gpio's resources.
-
-Changes in v2:
-    * restore configuration for pers mode to GPIO.
-    * Avoid to read FTS_NUM register in reset state.
-    * Release gpio's patch added
-
-Best regards,
-    Sergio Paracuellos
-
-Sergio Paracuellos (5):
-  staging: mt7621-pci: use gpios for properly reset
-  staging: mt7621-pci: change value for 'PERST_DELAY_US'
-  staging: mt7621-dts: make use of 'reset-gpios' property for pci
-  staging: mt7621-pci: bindings: update doc accordly to last changes
-  staging: mt7621-pci: release gpios after pci initialization
-
- drivers/staging/mt7621-dts/mt7621.dtsi        |  11 +-
- .../mt7621-pci/mediatek,mt7621-pci.txt        |   7 +-
- drivers/staging/mt7621-pci/pci-mt7621.c       | 107 +++++++++++-------
- 3 files changed, 80 insertions(+), 45 deletions(-)
-
+diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+index 770dabd3a70d..34f6bcd53fbf 100644
+--- a/drivers/staging/mt7621-pci/pci-mt7621.c
++++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+@@ -95,6 +95,7 @@
+  * @pcie: pointer to PCIe host info
+  * @phy: pointer to PHY control block
+  * @pcie_rst: pointer to port reset control
++ * @gpio_rst: gpio reset
+  * @slot: port slot
+  * @enabled: indicates if port is enabled
+  */
+@@ -104,6 +105,7 @@ struct mt7621_pcie_port {
+ 	struct mt7621_pcie *pcie;
+ 	struct phy *phy;
+ 	struct reset_control *pcie_rst;
++	struct gpio_desc *gpio_rst;
+ 	u32 slot;
+ 	bool enabled;
+ };
+@@ -117,8 +119,6 @@ struct mt7621_pcie_port {
+  * @offset: IO / Memory offset
+  * @dev: Pointer to PCIe device
+  * @ports: pointer to PCIe port information
+- * @perst: gpio reset
+- * @rst: pointer to pcie reset
+  * @resets_inverted: depends on chip revision
+  * reset lines are inverted.
+  */
+@@ -133,8 +133,6 @@ struct mt7621_pcie {
+ 		resource_size_t io;
+ 	} offset;
+ 	struct list_head ports;
+-	struct gpio_desc *perst;
+-	struct reset_control *rst;
+ 	bool resets_inverted;
+ };
+ 
+@@ -210,16 +208,16 @@ static void write_config(struct mt7621_pcie *pcie, unsigned int dev,
+ 	pcie_write(pcie, val, RALINK_PCI_CONFIG_DATA);
+ }
+ 
+-static inline void mt7621_perst_gpio_pcie_assert(struct mt7621_pcie *pcie)
++static inline void mt7621_rst_gpio_pcie_assert(struct mt7621_pcie_port *port)
+ {
+-	gpiod_set_value(pcie->perst, 0);
+-	mdelay(PERST_DELAY_US);
++	if (port->gpio_rst)
++		gpiod_set_value(port->gpio_rst, 1);
+ }
+ 
+-static inline void mt7621_perst_gpio_pcie_deassert(struct mt7621_pcie *pcie)
++static inline void mt7621_rst_gpio_pcie_deassert(struct mt7621_pcie_port *port)
+ {
+-	gpiod_set_value(pcie->perst, 1);
+-	mdelay(PERST_DELAY_US);
++	if (port->gpio_rst)
++		gpiod_set_value(port->gpio_rst, 0);
+ }
+ 
+ static inline bool mt7621_pcie_port_is_linkup(struct mt7621_pcie_port *port)
+@@ -367,6 +365,11 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
+ 	if (IS_ERR(port->phy))
+ 		return PTR_ERR(port->phy);
+ 
++	port->gpio_rst = devm_gpiod_get_index(dev, "reset", slot,
++					      GPIOD_OUT_LOW);
++	if (IS_ERR(port->gpio_rst))
++		dev_notice(dev, "Failed to get GPIO for PCIe%d\n", slot);
++
+ 	port->slot = slot;
+ 	port->pcie = pcie;
+ 
+@@ -383,12 +386,6 @@ static int mt7621_pcie_parse_dt(struct mt7621_pcie *pcie)
+ 	struct resource regs;
+ 	int err;
+ 
+-	pcie->perst = devm_gpiod_get(dev, "perst", GPIOD_OUT_HIGH);
+-	if (IS_ERR(pcie->perst)) {
+-		dev_err(dev, "failed to get gpio perst\n");
+-		return PTR_ERR(pcie->perst);
+-	}
+-
+ 	err = of_address_to_resource(node, 0, &regs);
+ 	if (err) {
+ 		dev_err(dev, "missing \"reg\" property\n");
+@@ -399,12 +396,6 @@ static int mt7621_pcie_parse_dt(struct mt7621_pcie *pcie)
+ 	if (IS_ERR(pcie->base))
+ 		return PTR_ERR(pcie->base);
+ 
+-	pcie->rst = devm_reset_control_get_exclusive(dev, "pcie");
+-	if (PTR_ERR(pcie->rst) == -EPROBE_DEFER) {
+-		dev_err(dev, "failed to get pcie reset control\n");
+-		return PTR_ERR(pcie->rst);
+-	}
+-
+ 	for_each_available_child_of_node(node, child) {
+ 		int slot;
+ 
+@@ -458,16 +449,49 @@ static int mt7621_pcie_init_port(struct mt7621_pcie_port *port)
+ 	return 0;
+ }
+ 
++static void mt7621_pcie_reset_assert(struct mt7621_pcie *pcie)
++{
++	struct mt7621_pcie_port *port;
++
++	list_for_each_entry(port, &pcie->ports, list) {
++		/* PCIe RC reset assert */
++		mt7621_control_assert(port);
++
++		/* PCIe EP reset assert */
++		mt7621_rst_gpio_pcie_assert(port);
++	}
++
++	mdelay(PERST_DELAY_US);
++}
++
++static void mt7621_pcie_reset_rc_deassert(struct mt7621_pcie *pcie)
++{
++	struct mt7621_pcie_port *port;
++
++	list_for_each_entry(port, &pcie->ports, list)
++		mt7621_control_deassert(port);
++}
++
++static void mt7621_pcie_reset_ep_deassert(struct mt7621_pcie *pcie)
++{
++	struct mt7621_pcie_port *port;
++
++	list_for_each_entry(port, &pcie->ports, list)
++		mt7621_rst_gpio_pcie_deassert(port);
++
++	mdelay(PERST_DELAY_US);
++}
++
+ static void mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
+ {
+ 	struct device *dev = pcie->dev;
+ 	struct mt7621_pcie_port *port, *tmp;
+-	u32 val = 0;
+ 	int err;
+ 
+ 	rt_sysc_m32(PERST_MODE_MASK, PERST_MODE_GPIO, MT7621_GPIO_MODE);
+ 
+-	mt7621_perst_gpio_pcie_assert(pcie);
++	mt7621_pcie_reset_assert(pcie);
++	mt7621_pcie_reset_rc_deassert(pcie);
+ 
+ 	list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
+ 		u32 slot = port->slot;
+@@ -476,16 +500,10 @@ static void mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
+ 		if (err) {
+ 			dev_err(dev, "Initiating port %d failed\n", slot);
+ 			list_del(&port->list);
+-		} else {
+-			val = read_config(pcie, slot, PCIE_FTS_NUM);
+-			dev_info(dev, "Port %d N_FTS = %x\n", slot,
+-				 (unsigned int)val);
+ 		}
+ 	}
+ 
+-	reset_control_assert(pcie->rst);
+-
+-	mt7621_perst_gpio_pcie_deassert(pcie);
++	mt7621_pcie_reset_ep_deassert(pcie);
+ 
+ 	list_for_each_entry(port, &pcie->ports, list) {
+ 		u32 slot = port->slot;
+@@ -499,8 +517,6 @@ static void mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
+ 			port->enabled = false;
+ 		}
+ 	}
+-
+-	reset_control_deassert(pcie->rst);
+ }
+ 
+ static void mt7621_pcie_enable_port(struct mt7621_pcie_port *port)
 -- 
 2.25.1
 
