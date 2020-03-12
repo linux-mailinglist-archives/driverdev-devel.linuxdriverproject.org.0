@@ -1,74 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95BB21833E8
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 15:58:12 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC46118362C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 17:31:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F2BEE86D6A;
-	Thu, 12 Mar 2020 14:58:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 050608852E;
+	Thu, 12 Mar 2020 16:31:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TsWDNIbNwvPx; Thu, 12 Mar 2020 14:58:10 +0000 (UTC)
+	with ESMTP id iGQOa6xi9fL2; Thu, 12 Mar 2020 16:31:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E914B86CF8;
-	Thu, 12 Mar 2020 14:58:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 43983884FB;
+	Thu, 12 Mar 2020 16:31:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EE6931BF420
- for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 14:58:07 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 084B11BF2C3
+ for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 16:31:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E7E6C880D5
- for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 14:58:07 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 00F4486CEF
+ for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 16:31:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FeDXjrAaLPoM for <devel@linuxdriverproject.org>;
- Thu, 12 Mar 2020 14:58:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
- [209.85.167.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1C070877F2
- for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 14:58:07 +0000 (UTC)
-Received: by mail-lf1-f67.google.com with SMTP id n13so3293264lfh.5
- for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 07:58:07 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=MdykorgHJ2m1Uy++8it61ejlAV2pQD4rRbpkRh1crhg=;
- b=oHF6HQpC5e9vLwSjdrquenvFa6cG3/4+8mEc6wiredTBXElqYV9NTj7haH1AmwrrnF
- N4EuOuATK3xQaO62QpVoDQpS12Bmx3e1PVedoadh5HVhRtoX07Vcsq0wAECFCph80qtm
- Ts3cDDAnxLDzSssRyk+181fzow5ms6gL7Q9+aaVcy+BItMxcoXtMKwBGLtX4w/gKno55
- lzjx8o59ctchw6hyZt1d+0hTkH/PMEOb4Duie/fRE7TtaMTXt2aOhh5QpCml5ZlKnmUr
- sGFf5wf+5GC7RicyvYemGFz/dsrGsvOFvKCaGesRoMYhcYdwRZv3oClpqhMRRUfvOBBD
- MbLQ==
-X-Gm-Message-State: ANhLgQ3PGVuvsHCYSz1HzCRau61qB2bIveELRuhhT75xBCQCxG27EaLj
- GX+EX7l6Wz6gEmQrLrGI8xM=
-X-Google-Smtp-Source: ADFU+vv44HF48yUbUtrQ6zG8TaNfTSOFBGd0BXJrP42WUadY2hV8NAqUZ171tik/AK9rVOjZWZ3Atg==
-X-Received: by 2002:a19:4354:: with SMTP id m20mr1522861lfj.166.1584025085350; 
- Thu, 12 Mar 2020 07:58:05 -0700 (PDT)
-Received: from xi.terra (c-12aae455.07-184-6d6c6d4.bbcust.telenor.se.
- [85.228.170.18])
- by smtp.gmail.com with ESMTPSA id j82sm15371068lfj.14.2020.03.12.07.58.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Mar 2020 07:58:04 -0700 (PDT)
-Received: from johan by xi.terra with local (Exim 4.92.3)
- (envelope-from <johan@kernel.org>)
- id 1jCPHV-00027Q-N7; Thu, 12 Mar 2020 15:57:53 +0100
-Date: Thu, 12 Mar 2020 15:57:53 +0100
-From: Johan Hovold <johan@kernel.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH] staging: greybus: Use scnprintf() for avoiding potential
- buffer overflow
-Message-ID: <20200312145753.GS14211@localhost>
-References: <20200311091906.22980-1-tiwai@suse.de>
- <20200311095814.GI14211@localhost> <20200312145111.GO11561@kadam>
+ with ESMTP id 8a9GIszxC0sz for <devel@linuxdriverproject.org>;
+ Thu, 12 Mar 2020 16:31:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from linux.microsoft.com (linux.microsoft.com [13.77.154.182])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 77C8786CE5
+ for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 16:31:03 +0000 (UTC)
+Received: from [10.137.112.111] (unknown [131.107.147.111])
+ by linux.microsoft.com (Postfix) with ESMTPSA id D182A200767C;
+ Thu, 12 Mar 2020 09:31:02 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com D182A200767C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1584030663;
+ bh=OjaD6vj5jDRRnc88DeZb3dxL22aY2mB5SenuU5W0AH8=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=T1oKFagdtk0+yUEjGk+EeSbt0BRqrPF+TjppnSaSCIZq6gHmgNzQEknovZwS+2trS
+ lrRXeniy/m7g0Asyv4MnTr5iv8afQj/mulQobN9l/AXEy3r5FpQ//mx0rYa/ihztaw
+ i97tvY9P7a0sVVFitEeD4C8621QkgO9MUfYDRzsY=
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723bs: rtw_mlme: Remove
+ unnecessary conditions
+To: Julia Lawall <julia.lawall@inria.fr>, Stefano Brivio <sbrivio@redhat.com>
+References: <20200311135859.5626-1-shreeya.patel23498@gmail.com>
+ <61a6c3d7-6592-b57b-6466-995309302cc2@linux.microsoft.com>
+ <20200312113416.23d3db5c@elisabeth>
+ <alpine.DEB.2.21.2003121145540.2418@hadrien>
+From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
+Message-ID: <b5daea1c-8172-93b6-0956-b31c3798d373@linux.microsoft.com>
+Date: Thu, 12 Mar 2020 09:31:33 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200312145111.GO11561@kadam>
+In-Reply-To: <alpine.DEB.2.21.2003121145540.2418@hadrien>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,36 +69,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
- Takashi Iwai <tiwai@suse.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Johan Hovold <johan@kernel.org>, greybus-dev@lists.linaro.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, daniel.baluta@gmail.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, hverkuil@xs4all.nl,
+ outreachy-kernel@googlegroups.com,
+ Shreeya Patel <shreeya.patel23498@gmail.com>, Larry.Finger@lwfinger.net
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Mar 12, 2020 at 05:51:11PM +0300, Dan Carpenter wrote:
-> On Wed, Mar 11, 2020 at 10:58:14AM +0100, Johan Hovold wrote:
-> > On Wed, Mar 11, 2020 at 10:19:06AM +0100, Takashi Iwai wrote:
-> > > Since snprintf() returns the would-be-output size instead of the
-> > > actual output size, the succeeding calls may go beyond the given
-> > > buffer limit.  Fix it by replacing with scnprintf().
-> > > 
-> > > Signed-off-by: Takashi Iwai <tiwai@suse.de>
-> > > ---
-> > >  drivers/staging/greybus/tools/loopback_test.c | 24 ++++++++++++------------
-> > 
-> > Thanks for the fix.
-> > 
-> > Would you mind resending with a "staging: greybus: loopback_test:"
-> > prefix since this is not a subsystem wide issue, bur rather a bug in a
-> > specific user-space tool?
+On 3/12/2020 3:49 AM, Julia Lawall wrote:
+
+Thanks for your input Julia and Stefano.
+
+>> That's my general preference as well, but I can't find any point in the
+>> "Describe your changes" section of submitting-patches.rst actually
+>> defining the order. I wouldn't imply that from the sequence the steps
+>> are presented in.
+>>
+>> In case it's possible to say everything with a single statement as
+>> Shreeya did here, though, I guess that becomes rather a linguistic
+>> factor, and I personally prefer the concise version here.
 > 
-> I'm surprised that user-space even has scnprintf().
+> https://kernelnewbies.org/PatchPhilosophy suggests:
+> 
+> In patch descriptions and in the subject, it is common and preferable to
+> use present-tense, imperative language. Write as if you are telling git
+> what to do with your patch.
 
-Yeah, see the rest of the thread.
+Use of imperative language is the approach I was thinking as well.
 
-Johan
+thanks,
+  -lakshmi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
