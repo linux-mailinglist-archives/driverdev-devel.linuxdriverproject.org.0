@@ -1,73 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C954C183B4B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 22:26:53 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EF0A183305
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 Mar 2020 15:30:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 75FBA86C2B;
-	Thu, 12 Mar 2020 21:26:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F1D7E89491;
+	Thu, 12 Mar 2020 14:30:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J-R-tItlXvtd; Thu, 12 Mar 2020 21:26:50 +0000 (UTC)
+	with ESMTP id ey+Ak21lCV9K; Thu, 12 Mar 2020 14:30:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 95A6986C31;
-	Thu, 12 Mar 2020 21:26:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2A11989476;
+	Thu, 12 Mar 2020 14:30:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A9A7B1BF3C8
- for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 21:26:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6795A1BF420
+ for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 14:30:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A578322925
- for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 21:26:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 63D0B26AF9
+ for <devel@linuxdriverproject.org>; Thu, 12 Mar 2020 14:30:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SQ93PNxV40cu for <devel@linuxdriverproject.org>;
- Thu, 12 Mar 2020 21:26:46 +0000 (UTC)
-X-Greylist: delayed 16:20:01 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0003.hostedemail.com
- [216.40.44.3])
- by silver.osuosl.org (Postfix) with ESMTPS id 93686203EE
- for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 21:26:46 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave04.hostedemail.com (Postfix) with ESMTP id 696C418028932
- for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 00:17:01 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay03.hostedemail.com (Postfix) with ESMTP id E1657837F27B;
- Thu, 12 Mar 2020 00:16:58 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3354:3622:3865:3866:3867:3868:3870:3871:3872:3873:3874:4321:5007:7807:7903:8957:10004:10400:10848:11232:11658:11914:12048:12297:12740:12760:12895:13069:13255:13311:13357:13439:14093:14096:14097:14180:14181:14659:14721:14777:21063:21080:21433:21627:21819:21939:21990:30012:30022:30054:30079:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: tree25_1f9cfc6638042
-X-Filterd-Recvd-Size: 2861
-Received: from XPS-9350.home (unknown [47.151.143.254])
- (Authenticated sender: joe@perches.com)
- by omf19.hostedemail.com (Postfix) with ESMTPA;
- Thu, 12 Mar 2020 00:16:57 +0000 (UTC)
-Message-ID: <2a080d9c5dc6206d9a255410a61d1d9cce26d944.camel@perches.com>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723bs: sdio_halinit:
- Remove unnecessary conditions
-From: Joe Perches <joe@perches.com>
-To: Shreeya Patel <shreeya.patel23498@gmail.com>,
- gregkh@linuxfoundation.org,  devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org,  outreachy-kernel@googlegroups.com,
- sbrivio@redhat.com, daniel.baluta@gmail.com,  nramas@linux.microsoft.com,
- hverkuil@xs4all.nl, Larry.Finger@lwfinger.net
-Date: Wed, 11 Mar 2020 17:15:14 -0700
-In-Reply-To: <1CF27D55-EEB4-4A75-B767-A30845BD5E1B@gmail.com>
-References: <20200311133811.2246-1-shreeya.patel23498@gmail.com>
- <0fed25f914c6f39b024dd3bbc4f11892c40f4a60.camel@perches.com>
- <1CF27D55-EEB4-4A75-B767-A30845BD5E1B@gmail.com>
-User-Agent: Evolution 3.34.1-2 
+ with ESMTP id tHU0Rmpvww3T for <devel@linuxdriverproject.org>;
+ Thu, 12 Mar 2020 14:30:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by silver.osuosl.org (Postfix) with ESMTPS id 604E226904
+ for <devel@driverdev.osuosl.org>; Thu, 12 Mar 2020 14:30:30 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02CEOXTS128041;
+ Thu, 12 Mar 2020 14:30:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=corp-2020-01-29;
+ bh=e+tMMkMgf3MCOE4jrlZHK/XcEXUQhd/9T6GE0jTowew=;
+ b=o8Alk+mrQWZE8S7fatgSRg4N395IURruMp/rnqUbD7lN7gw14Tp2R/fiFPyhlFtpa2dB
+ 6v4Tgi3LzhY9ChxapZjjrBvOaWcf25Qlx0pN3gO4+M8NgMzBARbLPU+vqX7PA5VdEC7m
+ 6nylhNiI1dNn2kbYNekgTqhHw7Ve5nooMcPt9q2Wz91nsgm3l1/3WvQjHytIDDxewpiQ
+ 5mdJfypHevWQfS+uiUA8fsB0xHoSo6rB/R2dzcl2HBGca8u1v0SjmUDos6zjDMJ9cs1n
+ c5iHKGShTRppZY4fyo6AexU32EIPKPqGBRkew/EazuI4yta+ou30cZ6bw/uUVcr1Elwg BA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2130.oracle.com with ESMTP id 2ym31uswt2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 12 Mar 2020 14:30:27 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02CEM679063104;
+ Thu, 12 Mar 2020 14:30:27 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3020.oracle.com with ESMTP id 2yqgvd1pgp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 12 Mar 2020 14:30:26 +0000
+Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 02CEUPjE018237;
+ Thu, 12 Mar 2020 14:30:25 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 12 Mar 2020 07:30:24 -0700
+Date: Thu, 12 Mar 2020 17:30:19 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH 3/5] staging: wfx: make warning about pending frame less
+ scary
+Message-ID: <20200312143019.GN11561@kadam>
+References: <20200310101356.182818-1-Jerome.Pouiller@silabs.com>
+ <20200310101356.182818-4-Jerome.Pouiller@silabs.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200310101356.182818-4-Jerome.Pouiller@silabs.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9557
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ malwarescore=0 adultscore=0
+ phishscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
+ definitions=main-2003120078
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9557
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ lowpriorityscore=0
+ spamscore=0 priorityscore=1501 impostorscore=0 bulkscore=0 suspectscore=0
+ phishscore=0 mlxlogscore=999 mlxscore=0 malwarescore=0 clxscore=1015
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2001150001
+ definitions=main-2003120078
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,59 +99,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 2020-03-12 at 03:58 +0530, Shreeya Patel wrote:
-> Hey Joe,
-> 
-> On March 11, 2020 10:56:29 PM GMT+05:30, Joe Perches <joe@perches.com> wrote:
-> > On Wed, 2020-03-11 at 19:08 +0530, Shreeya Patel wrote:
-> > > Remove if and else conditions since both are leading to the
-> > > initialization of "valueDMATimeout" and "valueDMAPageCount" with
-> > > the same value.
-> > 
-> > You might consider removing the
-> > 	/* Timeout value is calculated by 34 / (2^n) */
-> > comment entirely as it doesn't make much sense.
-> > 
-> 
-> You want me to remove the other comments as well?
-> Since Julia suggested in another email that the comments are not useful if we are removing the condition since they were applied to only one branch ( i.e. "if" branch )
+On Tue, Mar 10, 2020 at 11:13:54AM +0100, Jerome Pouiller wrote:
+> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> =
 
-It's not an either/or/both situation.
+> Removing station while some traffic is in progress may happen.
+> =
 
-Code like:
 
-	if (test) {
-		[block 1]
-	} else {
-		[block 2]
-	}
+You're doing this in every commit where you start the commit message in
+the subject and then just keep writing.  Take a look at your patch in
+this URL.  Try to find the subject.
 
-where the contents of block 1 and block 2 are identical
-exist for many reasons.  All of them need situational
-analysis to determine what the right thing to do is.
+https://marc.info/?l=3Dlinux-driver-devel&m=3D158383526527951&w=3D2
 
-Sometimes it's a defect from a copy/paste where some other
-code was intended on one of the blocks and so that one path
-has a defect somewhere and actually needs to be changed.
+The subject is far separated from the body of the commit message.  I
+normally read the patch first, then I read the commit message and I
+don't read the subject at all.  Or sometimes I only read the subject.
 
-Sometimes the blocks were originally different, but some
-code was removed from one of the blocks that lead to the
-blocks being identical.  Those can be consolidated.
+https://www.designershumor.com/2019/09/30/you-will-read-this-first-meme/
 
-Sometimes test can be removed, sometimes not.
+So it really helps me if the commit message restates the subject.  The
+truth is that I don't really even like the advice that Josh wrote in
+the howto about patch descriptions.  I normally start by explaining the
+problem then how I solved it.  But I try not to be a pedant, so long as
+I can understand the problem and the patch that's fine.  So how I would
+write this commit message is:
 
-For hardware drivers like this, it's sometimes useful to
-look at the latest code from the vendor and sometimes it's
-better to ask the vendor what the right thing do is.
+    The warning message about releasing a station while Tx is in
+    progress will trigger a stack trace, possibly a reboot depending
+    on the configuration, and a syzbot email.  It's not necessarily
+    a big deal that transmission is still in process so let's make the
+    warning less scary.
 
-It does appear in this case that the branches should be
-consolidated and comments in both branches removed.
+> Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> ---
+>  drivers/staging/wfx/sta.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> =
 
+> diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
+> index 03d0f224ffdb..010e13bcd33e 100644
+> --- a/drivers/staging/wfx/sta.c
+> +++ b/drivers/staging/wfx/sta.c
+> @@ -605,7 +605,9 @@ int wfx_sta_remove(struct ieee80211_hw *hw, struct ie=
+ee80211_vif *vif,
+>  	int i;
+>  =
+
+>  	for (i =3D 0; i < ARRAY_SIZE(sta_priv->buffered); i++)
+> -		WARN(sta_priv->buffered[i], "release station while Tx is in progress");
+> +		if (sta_priv->buffered[i])
+> +			dev_warn(wvif->wdev->dev, "release station while %d pending frame on =
+queue %d",
+> +				 sta_priv->buffered[i], i);
+
+Why print a warning message at all if this is a normal situation?  Just
+delete the whole thing.
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
