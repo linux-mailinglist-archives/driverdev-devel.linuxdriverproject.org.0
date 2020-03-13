@@ -1,78 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DE7518454F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 11:52:17 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 23124184557
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 11:55:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D11B989514;
-	Fri, 13 Mar 2020 10:52:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BA1B426FEB;
+	Fri, 13 Mar 2020 10:55:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TkpAJRQwHanX; Fri, 13 Mar 2020 10:52:15 +0000 (UTC)
+	with ESMTP id gKMDlhSS65oX; Fri, 13 Mar 2020 10:55:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C491F89451;
-	Fri, 13 Mar 2020 10:52:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8EFAA26FB6;
+	Fri, 13 Mar 2020 10:55:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 643941BF349
- for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:52:12 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8FA2A1BF349
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:55:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 60EF688499
- for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:52:12 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8C821873D6
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:55:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lgHswWN4tE09 for <devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 10:52:10 +0000 (UTC)
+ with ESMTP id HzLErGVF5FFM for <devel@linuxdriverproject.org>;
+ Fri, 13 Mar 2020 10:55:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from lb2-smtp-cloud8.xs4all.net (lb2-smtp-cloud8.xs4all.net
- [194.109.24.25])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8075C883E1
- for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 10:52:10 +0000 (UTC)
-Received: from [192.168.2.10] ([46.9.234.233])
- by smtp-cloud8.xs4all.net with ESMTPA
- id Chv9j1v5yhVf8ChvDjOTmd; Fri, 13 Mar 2020 11:52:08 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1584096728; bh=XgNQEpf17BQrRrtbwqWNWDVbPQDeyw/hevpZ0P7tT2Q=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=HEtJLVNwTfTp+Xt4zdLoxkqbbk42Vot59L4pqGVceHa5gQn0FKimkgQYS4+p03kBo
- AFTgw6BCCJ3C4Fs+RagzsYkef03tWeKWqCMLxKyO4SxwnoHLc+ZbGIc73eit7/4OlJ
- 3RJf/2MaY2eaUReeNxe23sSTSFvL/1TOnvHUJ0A+0OeYiD6VChqwMFBxi/zcOUChwF
- FEL7SXBAghggW0RzmE9y2D/UQeEwiV/aTleP0MGZsxKRlwSLj6zl8IBBQ0AU6xEjSG
- XGJvrqY85vrAW171lAI7gyjLGUkhjMfG1NwHiLQHWUDSLnIUDz4XyxHMLGiDyb+mrp
- 8i4gpkIe8Yq/Q==
-Subject: Re: [PATCH 2/8] media: adv748x: add audio mute control and output
- selection ioctls
-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- devel@driverdev.osuosl.org, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org
-References: <cover.1578924232.git.alexander.riesen@cetitec.com>
- <20200113141521.GC3606@pflmari>
- <ff34078d-895d-08c8-c64f-768e75388038@xs4all.nl>
- <20200313102600.GF3832@pflmari>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <c260defe-bb3c-0dc2-476f-5cf8ff27b915@xs4all.nl>
-Date: Fri, 13 Mar 2020 11:52:03 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1EAAC873A4
+ for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 10:55:34 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02DAqjep037961;
+ Fri, 13 Mar 2020 10:55:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=CTUdE2f8E8NgC8/4KDMI6yvjJ94p2sQr5a2U0IEbmvw=;
+ b=zLIUiQhEyI19lyjn/b2E9lHuqHWqZOdrL/KbpHZLXtaSUDi0BqBpVCAW7xWClAa7k8S7
+ Heq05K470y/1BswSW0DRVTKHg+LsiyDKr3x0YA1wTm07BfYD4+/83TUWeFpLjJsmQUhJ
+ YlR6VtTCJZLL+pJ2+CtACu7FHAZ9pV948qSvEzNIt9UXc4DPUncmqCZ4EkqxBDPyrMHk
+ pj3Blj4vO1+15xoVWVeR7fZlyItHv8aam/89NwVelIaP2sfVCJIbUkj15yQ0KlR+FAWs
+ mpoDttPVvARx4RxoNz2Mlr5SoFZ5ghp1qL+nNbeeq0vVCcL7LpP9ltuJEEuNbhQw9cMg rQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2yqtaeu8du-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 13 Mar 2020 10:55:32 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02DAqFS1154577;
+ Fri, 13 Mar 2020 10:55:31 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 2yqtaccvny-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 13 Mar 2020 10:55:31 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 02DAtTaB023409;
+ Fri, 13 Mar 2020 10:55:29 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 13 Mar 2020 03:55:28 -0700
+Date: Fri, 13 Mar 2020 13:55:23 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: sdio_halinit:
+ Remove unnecessary conditions
+Message-ID: <20200313105522.GU11561@kadam>
+References: <20200313104920.19974-1-shreeya.patel23498@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200313102600.GF3832@pflmari>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfEKRLqenygj6TEyXEiRcxy9HK3lxscJw3t3rlNCf90vl9x7Qy/dyNnY5TO60y8eB+miEY/CLUsiqnyR1ljHOd/oyWxwV3aot+7NoT973WtnujiMPYPyN
- aDnPTaJRDv+ewpgOSqFkUpt5JacbF38ctyDMSLx9dKkGz09HK5LX8G34Xqs1rAeOsyQMsAYWUy8S9bSyRA7tvnJ2ygeL7bEQgFwkJGBNQc7J1898AnTn/xuU
- yQG4fZS7ExOJNh60XuLqJHtFscxO/ETq5H2xqYJl7w1K9RGm18FCpR8BVu3OHXwfVU/C0ZSj5qoYeVh3QpEvLUm6kSXHYJrzR+Zla1drE2BeB4UD/L+d/GjS
- +BjEbtiIF/Dw8hrP35sYD++1NbzFFKqCjyrhtbnFiZ5lvJF2YGLl7do8rq6RJW8jaaxYKBe5XVFrB073oQNwpCjmrIQXGqN/SHzwbt9EFLss3Q6ndhDfGOc1
- dY3x1H5ULrq9ydbCbR4jwoZmT2gRKIfAiaYfdv0QHs3HZYjTC3+QtTWjY039CL91wysydPbgQ3eKZJ/dU2gu/IICfeeI3J1/g3EeDS8Xe4afMoB+ttnhFPtm
- 5Og=
+Content-Disposition: inline
+In-Reply-To: <20200313104920.19974-1-shreeya.patel23498@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9558
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ suspectscore=0
+ malwarescore=0 bulkscore=0 adultscore=0 mlxscore=0 spamscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2003130059
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9558
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ impostorscore=0
+ lowpriorityscore=0 bulkscore=0 priorityscore=1501 suspectscore=0
+ mlxlogscore=999 mlxscore=0 adultscore=0 malwarescore=0 spamscore=0
+ clxscore=1031 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2003130059
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,70 +98,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, nramas@linux.microsoft.com,
+ daniel.baluta@gmail.com, outreachy-kernel@googlegroups.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, hverkuil@xs4all.nl,
+ sbrivio@redhat.com, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 3/13/20 11:26 AM, Alex Riesen wrote:
-> Hi Hans,
-> 
-> Hans Verkuil, Fri, Mar 13, 2020 09:16:11 +0100:
->> On 1/13/20 3:15 PM, Alex Riesen wrote:
->>> This change implements audio-related V4L2 ioctls for the HDMI subdevice.
->>
->> This is really where things go wrong. These V4L2 audio ioctls are meant for
->> old PCI TV tuner devices where the audio was implemented as audio jack outputs
->> that are typically looped back to audio inputs on a (PCI) soundcard. And when
->> these ioctls were designed ALSA didn't even exist.
-> 
-> I see. That was before my time :)
-> 
->> Generally an hdmi driver will configure the i2s audio automatically, which is
->> typically connected to the SoC and controlled by the ALSA driver of the SoC,
->> but there may well be missing features (audio never got a lot of attention in
->> hdmi receivers). So what I would like to know is: what features are missing?
-> 
-> Well, the audio is missing. The current adv748x driver does not export the
-> audio features of the device at all. There is no code to enable the I2S audio
-> output and it is disabled (all clock and the data lines) by default.
+Thanks!
 
-Sorry, I was vague in my question. Obviously that needs to be added, but besides
-adding the low-level i2s support I was wondering if there are additional things
-that need to be exposed to userspace in order for audio to fully work.
+You sent the same patch twice.  Next time put a note under the ---
+"Resending because I had a typo in Greg's email address".
 
-> 
-> But, by now it seems to be clear that implementation of ALSA SoC DAI
-> interfaces is the way to support the audio.
-> 
-> And I am already slowly working on it.
-> 
->> Anything missing can likely be resolved by adding HDMI audio specific V4L2 controls,
->> which would be the right approach for this.
->>
->> So I would expect to see a proposal for V4L2_CID_DV_RX_AUDIO_ controls to be
->> added here:
->>
->> https://linuxtv.org/downloads/v4l-dvb-apis-new/uapi/v4l/ext-ctrls-dv.html
-> 
-> This seems to be an explicitly "digital video" control class. And it has no
-> control option for mute. Or did you mean a similarly structured new class for
-> "digital audio"?
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-There are no DV_ audio controls at all today. So any new audio controls would be
-added to the DV class. But if there is nothing that needs to be exposed, then
-nothing needs to be added :-)
-
-Regards,
-
-	Hans
-
-> 
-> This feels like an overkill for this particular driver...
-> 
-> Regards,
-> Alex
-> 
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
