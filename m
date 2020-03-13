@@ -2,79 +2,80 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B52DC184FF3
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 21:10:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E97B4184FEE
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 21:09:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5E89D86746;
-	Fri, 13 Mar 2020 20:10:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2B1CA8657C;
+	Fri, 13 Mar 2020 20:09:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JT4b+MAph7KS; Fri, 13 Mar 2020 20:10:19 +0000 (UTC)
+	with ESMTP id L2ayIHTEy3io; Fri, 13 Mar 2020 20:09:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D963B86418;
-	Fri, 13 Mar 2020 20:10:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AAB4B864E0;
+	Fri, 13 Mar 2020 20:09:25 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 01D601BF2C2
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 686901BF2C2
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 20:10:16 +0000 (UTC)
+ Fri, 13 Mar 2020 20:09:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F3B7787A11
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6328589811
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 20:10:15 +0000 (UTC)
+ Fri, 13 Mar 2020 20:09:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0qmjfAjPs2uK
+ with ESMTP id VsCD25yfJM-y
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 20:10:11 +0000 (UTC)
+ Fri, 13 Mar 2020 20:09:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 98F6F86E1F
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1B1FB89805
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 20:09:20 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id f3so6681332wrw.7
+ Fri, 13 Mar 2020 20:09:22 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id r7so8592750wmg.0
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 13:09:20 -0700 (PDT)
+ Fri, 13 Mar 2020 13:09:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6lR+L+vXebJl5TeieT5xct5SYU9u1oMZ6/YYSDNqW5I=;
- b=uo2It82swu47+ki7ki0jkpmk09oH1xKiNdpvlqbIVPO/Jyyqz5iIh/+b1E0/jY7Od3
- WUNxHaqHMyMjwj7TkBofgQGl83EyyCJ+nE8iWprZTlAL2DGgpFULv5BNzi1yxkNiG+w5
- KD5QpL3K0JdGK7paZjV8ea7k5kmq5f0LdraffeMbnLV21Jl+FfHDSfQ8zzKpBwwv+G8A
- MI7uiUsiKhmWY57jmVWlh02JRNSJ7zxVPyBIlyLPlc1vtjRpBwjV1kdiT3GliVlgRile
- NR8O2zf57Jppa18+3wgvUcBpRj8p8yS0VAulAN/4POpjaZGfsa+NfBhnKpwuZ4kyXggk
- rGyg==
+ bh=9Was5VHBSYy7tzsJhAW6/Uo5k1C3lF1au4du08mpM34=;
+ b=PKKOYASQjFnDzS/A4QV63JxtQYaUhwBmb5g0kQ0KlzfX7W7urRUB4UAGNpvyVLC8Pn
+ Xy7A3ZH2sDYL0D2FEjEa6MBW7AbBRPSeOUx4M3pX8aRwi3Cqkb5fcoOjLwRwHmEYmqGQ
+ gc1qfC1/cDvbmm3AsTeolCFV69tfY+Uhi2wd395TEBKSB+zM8rcM+tgmHtzAZUmUIHml
+ RGYYGXREj6dsOUXL1MJHdcvGHkPJig5V0kv8KGFfE8UzhMdTrAbumneL1MDXP86a3ql5
+ biD/p/FwWoaAk/iU3JeaY/zPjr8bQHpbraiM8pWxk4I1/vjshKb7AbBJamSNEycSUBd+
+ c/Cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6lR+L+vXebJl5TeieT5xct5SYU9u1oMZ6/YYSDNqW5I=;
- b=dJOFoa7lUVb9g2+Ij8ivBd+jOYu1HDj3qHGqTlmO2Iri2FKg7kwAS4IvsHypCsASVJ
- xGCi4CWoDHOVAS3QG+ovpuflelkWc0n6n/tgNdyWFJ4djgH7umX7SZntNgaLgQqPQV8b
- O+2qkMT9RxXBydZtzdYH5PkYFXJWwREh16KK7DTRmTQdPalUp6WgmNu3pwj87nJUCnJp
- GH9qAdMWpCk3rIKIKELOhDCkdbGO6LlgyR29/R43GXfALC6RG9MDVfeWWdWblwgrct3o
- dhmj4RgynSmOV/i6vyTun8Q1imFZotw6uF+j8DlhxfsFGgxK6fSmh7M8PP7N2JA8/1iJ
- +Vhg==
-X-Gm-Message-State: ANhLgQ0T67xdPiAmwPCrvGl7k7pIomx1sQOVicw6ym2aA3QcxH6O/Y59
- bnWlkbrg0/1fER2fXg5rKrI=
-X-Google-Smtp-Source: ADFU+vtNtZvx8nXfe3mL5gCQy3ybsl5W9g7LnSMQnICzQGTYviLZs4aZxi7C6Q92O3Ki0am3jee3Og==
-X-Received: by 2002:a5d:5089:: with SMTP id a9mr19886279wrt.187.1584130159075; 
- Fri, 13 Mar 2020 13:09:19 -0700 (PDT)
+ bh=9Was5VHBSYy7tzsJhAW6/Uo5k1C3lF1au4du08mpM34=;
+ b=fTG79ixe7FuccdfXuWEkw6oB0MjIiNOMANOUDhjFdeC/JdbNowx5w+QTgYtqWBq23y
+ prFxtFe+3HOevLXjhevMbadPjWGq+4/WJ92Zay0kHA2dMTL63Dy6s6ZM8pcihrGOf2g5
+ UQ7QOGZZIrkfHQmYtZEJoTzhh4OkkPWi2oea9bZop0JKTQvbn8v72/ccfZ+tEgnpuoEd
+ N71hndIf3D8sSzsoNF7fXql1EAVtGJVLQ+lMdqLvvlHwFdyAxhGdb5sGiEUtfmrv1H0G
+ uzlXqbo8K1kuAxsdYN9C2jks2M+YsOXHT7J/XcOQmfr+f9Zmei21dfuWZp7IU67seq8D
+ uX2Q==
+X-Gm-Message-State: ANhLgQ2m+hv+jzDAGdemgbqvVc/dLsg92YoV+V03f+P4d57wW6hNqk7D
+ KGAaR9BN8YD9nrsbNj8mIbg=
+X-Google-Smtp-Source: ADFU+vtnfxaV+c78q8HQxi44LaxnqK3Wt16Fpc2mPmSgsPhZDhwS94TqU3LnaVXsKKaT7v09hfh70A==
+X-Received: by 2002:a1c:7c08:: with SMTP id x8mr12173294wmc.84.1584130160506; 
+ Fri, 13 Mar 2020 13:09:20 -0700 (PDT)
 Received: from localhost.localdomain
  (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
- by smtp.gmail.com with ESMTPSA id b187sm2249422wmc.14.2020.03.13.13.09.17
+ by smtp.gmail.com with ESMTPSA id b187sm2249422wmc.14.2020.03.13.13.09.19
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Fri, 13 Mar 2020 13:09:18 -0700 (PDT)
+ Fri, 13 Mar 2020 13:09:20 -0700 (PDT)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v4 2/6] staging: mt7621-pci: change value for 'PERST_DELAY_MS'
-Date: Fri, 13 Mar 2020 21:09:09 +0100
-Message-Id: <20200313200913.24321-3-sergio.paracuellos@gmail.com>
+Subject: [PATCH v4 3/6] staging: mt7621-dts: make use of 'reset-gpios'
+ property for pci
+Date: Fri, 13 Mar 2020 21:09:10 +0100
+Message-Id: <20200313200913.24321-4-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200313200913.24321-1-sergio.paracuellos@gmail.com>
 References: <20200313200913.24321-1-sergio.paracuellos@gmail.com>
@@ -98,46 +99,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Value of 'PERST_DELAY_MS' is too high and it is ok just
-to set up to 100 ms. Update also define name from
-'PERST_DELAY_US' into 'PERST_DELAY_MS'
+Properly set pins for group pcie as 'gpio' function and declare
+gpio's in the pci node to make reset stuff properly functional.
+Delete no more needed general reset and previous pers gpio which
+is now being used in 'reset-gpios' property.
 
 Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- drivers/staging/mt7621-pci/pci-mt7621.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/mt7621-dts/mt7621.dtsi | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index 9b4fe8d31101..3d85ce788f9f 100644
---- a/drivers/staging/mt7621-pci/pci-mt7621.c
-+++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -86,7 +86,7 @@
- #define MEMORY_BASE			0x0
- #define PERST_MODE_MASK			GENMASK(11, 10)
- #define PERST_MODE_GPIO			BIT(10)
--#define PERST_DELAY_US			1000
-+#define PERST_DELAY_MS			100
+diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
+index d89d68ffa7bc..488474153535 100644
+--- a/drivers/staging/mt7621-dts/mt7621.dtsi
++++ b/drivers/staging/mt7621-dts/mt7621.dtsi
+@@ -286,7 +286,7 @@ mdio0 {
+ 		pcie_pins: pcie0 {
+ 			pcie0 {
+ 				groups = "pcie";
+-				function = "pcie rst";
++				function = "gpio";
+ 			};
+ 		};
  
- /**
-  * struct mt7621_pcie_port - PCIe port information
-@@ -463,7 +463,7 @@ static void mt7621_pcie_reset_assert(struct mt7621_pcie *pcie)
- 		mt7621_rst_gpio_pcie_assert(port);
- 	}
+@@ -512,7 +512,6 @@ pcie: pcie@1e140000 {
+ 		#address-cells = <3>;
+ 		#size-cells = <2>;
  
--	mdelay(PERST_DELAY_US);
-+	mdelay(PERST_DELAY_MS);
- }
+-		perst-gpio = <&gpio 19 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pcie_pins>;
  
- static void mt7621_pcie_reset_rc_deassert(struct mt7621_pcie *pcie)
-@@ -481,7 +481,7 @@ static void mt7621_pcie_reset_ep_deassert(struct mt7621_pcie *pcie)
- 	list_for_each_entry(port, &pcie->ports, list)
- 		mt7621_rst_gpio_pcie_deassert(port);
+@@ -532,13 +531,17 @@ pcie: pcie@1e140000 {
  
--	mdelay(PERST_DELAY_US);
-+	mdelay(PERST_DELAY_MS);
- }
+ 		status = "disabled";
  
- static void mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
+-		resets = <&rstctrl 23 &rstctrl 24 &rstctrl 25 &rstctrl 26>;
+-		reset-names = "pcie", "pcie0", "pcie1", "pcie2";
++		resets = <&rstctrl 24 &rstctrl 25 &rstctrl 26>;
++		reset-names = "pcie0", "pcie1", "pcie2";
+ 		clocks = <&clkctrl 24 &clkctrl 25 &clkctrl 26>;
+ 		clock-names = "pcie0", "pcie1", "pcie2";
+ 		phys = <&pcie0_phy 0>, <&pcie0_phy 1>, <&pcie1_phy 0>;
+ 		phy-names = "pcie-phy0", "pcie-phy1", "pcie-phy2";
+ 
++		reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>,
++				<&gpio 8 GPIO_ACTIVE_LOW>,
++				<&gpio 7 GPIO_ACTIVE_LOW>;
++
+ 		pcie@0,0 {
+ 			reg = <0x0000 0 0 0 0>;
+ 			#address-cells = <3>;
 -- 
 2.25.1
 
