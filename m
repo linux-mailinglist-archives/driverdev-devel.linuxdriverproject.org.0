@@ -1,78 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 732551844DF
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 11:29:31 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 18784184529
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 11:48:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9FE9C26FA8;
-	Fri, 13 Mar 2020 10:29:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6883188216;
+	Fri, 13 Mar 2020 10:46:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7LmE1xMCEglx; Fri, 13 Mar 2020 10:29:29 +0000 (UTC)
+	with ESMTP id LYFxFZXe8Enk; Fri, 13 Mar 2020 10:46:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A9F1926F4C;
-	Fri, 13 Mar 2020 10:29:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BB63187D6A;
+	Fri, 13 Mar 2020 10:46:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0E7C31BF349
- for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:29:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7C9981BF349
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:46:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0B5B386E25
- for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:29:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 799FA870D6
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:46:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sE4xfpKmMVay for <devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 10:29:25 +0000 (UTC)
+ with ESMTP id nqshylEYdIqD for <devel@linuxdriverproject.org>;
+ Fri, 13 Mar 2020 10:46:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
- [209.85.214.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9949286E09
- for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 10:29:25 +0000 (UTC)
-Received: by mail-pl1-f193.google.com with SMTP id d9so4029651plo.11
- for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 03:29:25 -0700 (PDT)
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 19A86870D2
+ for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 10:46:51 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id l36so3954520pjb.3
+ for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 03:46:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id;
- bh=kqXMRjosvrMwbkpWYYUMv/eKp41LgZaQN2jfs/TMCUU=;
- b=EWbg2LKqIyxcTZt54OZrlCbltZOHFk7QAr/BjENsjZfWl63N37tNSXyfPxxA0hTRu3
- or4rZWujQhztrFqJsYFJUd8k74Q1F4Tqhf2S3hd6rGIxw40W28bThPpt6NfqCcHbHQWA
- 4FXoQ7Pd1UOft3mx57iVigFUPwH0cIsV5yat2JaHnEto1jFCq+jPPaepNxUksBrEPIid
- vY9b4GzJoo4MUSaptYYtogEF/CGnjXQOAaYUFXQZCP0VmpL2vY5j+nwNFN0guSeNqH7Z
- D+3voASXKTB12c7Rt0W6n1c5MEXIcUb0v8hC0Y4iv+tApge+jorRS2kNNs5Gpg95KcqX
- CtFw==
+ bh=o6afTbf7/yCeF+VeaZhhomT+KkYIZitsMbrfbHYx5jo=;
+ b=rB/JrxX0L7LaAtUV00dCdFiedhiTR681/8tixC3LeFg+mmm/oXg1UoXM5C8wHRbfnZ
+ fhZ2bENDyBia9zKeDoain0e20+dVQldHc4w+6WHRXveP9NpqXpKJAfyXWEaUOHVWb9cF
+ 0fYHTuY9ZYI6bh8h4rwiiaPGCV4lqZsKOoIPDisRmUTiQAlmo1fJdz/PHZ76ep+qDac2
+ hGGZ33A4d3LhU9ZGvvurTqRgkJsr3kZn7a+BHs6Cqyg2oQ0Jlt6V0QF3w4SdSPbU9NTZ
+ /YPCNnoDIfm54kn3HrYFONeqKy8RbdGFDdtHcNRof1B9P+zh9H8ObS8EBDVKmlMWxGBC
+ 0JCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id;
- bh=kqXMRjosvrMwbkpWYYUMv/eKp41LgZaQN2jfs/TMCUU=;
- b=S2r9o5nrcpPXlyswbUp2dUXm9doGoZZVzKRQZ/jvuHqSl8Xlg+h/H67lHeJ5d0Pd6H
- N2S9Ge2YxO9vuwdAQN7nrbTnu5KCXcjgf62XvVEAmFbcRN0zF+LX8mvaCsZ9EvekqOW3
- GXiAUXb0XTC7NDAFY7WvA+VlfdFH1vIGH/hFQOSROSxqKf7Ifc/jLzeQCYc6uCIoHo8T
- UQ9g0xgDaaLv+SeqSY4NeB5qCRdfVUFhnIbRzjpQBbTNQg8oyYkKDoXNcVhiqqaS7rvR
- tLQiCWd4qPkfvqH7jn5GzeqfJ4dYrlKJRtsxiCoPD0k4z+tOvNqFtPUdWcX4w8BjWgyb
- BR7w==
-X-Gm-Message-State: ANhLgQ3lWchk1KpuuEs95J3qYRkt/3PqO8xrqgQboKg5gNs2Yf1bd6km
- mldnD20z+2QztTr+b4DL1Ow=
-X-Google-Smtp-Source: ADFU+vsY8iYgbuRFlAd9U61nsaldOQC1hqGGqTzZvDEDjvVId3qGfnZZieGIXk2tsNLODrFDhDxEhQ==
-X-Received: by 2002:a17:902:7592:: with SMTP id
- j18mr12588240pll.180.1584095365090; 
- Fri, 13 Mar 2020 03:29:25 -0700 (PDT)
+ bh=o6afTbf7/yCeF+VeaZhhomT+KkYIZitsMbrfbHYx5jo=;
+ b=HmmTYr7mmkwhOjAlL7IAmZamZF7G9bKGElqTBsKykkTb1yeKSQHiw8agaLj2hsH89e
+ b5xxjnD3SH3Vm627oSdDNvjBlmzJyJToENuq+4qqGB4CEXBBi+Qa6gdLiEzsvgxnuWWg
+ wocRocSiLnYSIYaEcDQkDv5Cg2Wu9eVF5YWakU2MaeMChhkJsvjEE5gCAPEuwA4jVBi4
+ YPgXFfLNb+VDUtHpOKUF/E06INvizb4rRkiV2koSkPMWsNDpsVVcGAy3LzP9FpZNMPjg
+ 4hFRNmMM+w4HS2vqXN4RD+uKbvJWcX6fWoPaiUmNZvRz1qWVF8jcvCLeXfhGDs6sYRAK
+ lV+g==
+X-Gm-Message-State: ANhLgQ0iTSvC48mi/FDL/ORRAjgeyV6DSL89fZBmulA2Ez4nHPP7ivJ4
+ vfd9JbuKvDhMLWrWjeoMcx8=
+X-Google-Smtp-Source: ADFU+vsBKShzUZkSlbgiH+IFdbb9Pnz5biKuJqGZx7Od9k3U6Ftq7+V5D8q4+UaAnGA7aLhmxhpf3Q==
+X-Received: by 2002:a17:90a:2042:: with SMTP id
+ n60mr1625659pjc.0.1584096410372; 
+ Fri, 13 Mar 2020 03:46:50 -0700 (PDT)
 Received: from localhost.localdomain ([2405:204:22f:d418:f8a5:7ca8:f99b:fa30])
  by smtp.gmail.com with ESMTPSA id
- u24sm55719326pgo.83.2020.03.13.03.29.20
+ p70sm1709171pjp.47.2020.03.13.03.46.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Mar 2020 03:29:24 -0700 (PDT)
+ Fri, 13 Mar 2020 03:46:49 -0700 (PDT)
 From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+To: regkh@linuxfoundation.org, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
  sbrivio@redhat.com, daniel.baluta@gmail.com, nramas@linux.microsoft.com,
  hverkuil@xs4all.nl, shreeya.patel23498@gmail.com, Larry.Finger@lwfinger.net
-Subject: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: rtw_mlme: Remove
- unnecessary conditions
-Date: Fri, 13 Mar 2020 15:59:12 +0530
-Message-Id: <20200313102912.17218-1-shreeya.patel23498@gmail.com>
+Subject: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: sdio_halinit:
+ Remove unnecessary conditions
+Date: Fri, 13 Mar 2020 16:16:40 +0530
+Message-Id: <20200313104640.19787-1-shreeya.patel23498@gmail.com>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -92,42 +92,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unnecessary if and else conditions since both are leading to the
-initialization of "phtpriv->ampdu_enable" with the same value.
-Also, remove the unnecessary else-if condition since it does nothing.
+Remove if and else conditions since both are leading to the
+initialization of "valueDMATimeout" and "valueDMAPageCount" with
+the same value.
+
+Found using coccinelle script.
 
 Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
 ---
 
 Changes in v2
-  - Remove unnecessary comments
-  - Remove unnecessary else-if condition which does nothing.
+  - Remove unnecessary comments.
 
- drivers/staging/rtl8723bs/core/rtw_mlme.c | 11 +----------
- 1 file changed, 1 insertion(+), 10 deletions(-)
+ drivers/staging/rtl8723bs/hal/sdio_halinit.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 71fcb466019a..d7a58af76ea0 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -2772,16 +2772,7 @@ void rtw_update_ht_cap(struct adapter *padapter, u8 *pie, uint ie_len, u8 channe
+diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+index e813382e78a6..4894f7d9a1d4 100644
+--- a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
++++ b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+@@ -551,18 +551,8 @@ static void HalRxAggr8723BSdio(struct adapter *padapter)
  
- 	/* maybe needs check if ap supports rx ampdu. */
- 	if (!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable == 1) {
--		if (pregistrypriv->wifi_spec == 1) {
--			/* remove this part because testbed AP should disable RX AMPDU */
--			/* phtpriv->ampdu_enable = false; */
--			phtpriv->ampdu_enable = true;
--		} else {
--			phtpriv->ampdu_enable = true;
--		}
--	} else if (pregistrypriv->ampdu_enable == 2) {
--		/* remove this part because testbed AP should disable RX AMPDU */
--		/* phtpriv->ampdu_enable = true; */
-+		phtpriv->ampdu_enable = true;
- 	}
+ 	pregistrypriv = &padapter->registrypriv;
  
- 	/* check Max Rx A-MPDU Size */
+-	if (pregistrypriv->wifi_spec) {
+-		/*  2010.04.27 hpfan */
+-		/*  Adjust RxAggrTimeout to close to zero disable RxAggr, suggested by designer */
+-		/*  Timeout value is calculated by 34 / (2^n) */
+-		valueDMATimeout = 0x06;
+-		valueDMAPageCount = 0x06;
+-	} else {
+-		/*  20130530, Isaac@SD1 suggest 3 kinds of parameter */
+-		/*  TX/RX Balance */
+-		valueDMATimeout = 0x06;
+-		valueDMAPageCount = 0x06;
+-	}
++	valueDMATimeout = 0x06;
++	valueDMAPageCount = 0x06;
+ 
+ 	rtw_write8(padapter, REG_RXDMA_AGG_PG_TH + 1, valueDMATimeout);
+ 	rtw_write8(padapter, REG_RXDMA_AGG_PG_TH, valueDMAPageCount);
 -- 
 2.17.1
 
