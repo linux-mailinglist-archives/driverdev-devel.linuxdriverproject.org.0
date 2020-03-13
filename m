@@ -2,59 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A39FA184301
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 09:54:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 446A31844D6
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 11:26:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AE6DA87A9D;
-	Fri, 13 Mar 2020 08:54:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E7A3788B07;
+	Fri, 13 Mar 2020 10:26:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H8G8IxYcfcfb; Fri, 13 Mar 2020 08:54:37 +0000 (UTC)
+	with ESMTP id MdvbeINKY-gN; Fri, 13 Mar 2020 10:26:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1CF7287BFF;
-	Fri, 13 Mar 2020 08:54:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 641C988AF4;
+	Fri, 13 Mar 2020 10:26:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 754F01BF30C
- for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 08:54:34 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 56C041BF349
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:26:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 663A588541
- for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 08:54:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 500FE874C1
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:26:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0LyMfGt0+j62 for <devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 08:54:33 +0000 (UTC)
+ with ESMTP id aXoVP_pTaoNs for <devel@linuxdriverproject.org>;
+ Fri, 13 Mar 2020 10:26:17 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.10])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9CCC188528
- for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 08:54:32 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.74])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1BB2F874A6
+ for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 10:26:16 +0000 (UTC)
 Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N3Kc8-1jL1qx1tbO-010J8x; Fri, 13 Mar 2020 09:54:21 +0100
+ mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1MkYsS-1jbbb229de-00m1eV; Fri, 13 Mar 2020 11:26:02 +0100
 Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id 9C7CE65014C;
- Fri, 13 Mar 2020 08:54:20 +0000 (UTC)
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id 67EE36501F5;
+ Fri, 13 Mar 2020 10:26:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at cetitec.com
 Received: from mail.cetitecgmbh.com ([127.0.0.1])
  by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
  [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vFMdboZuqIZV; Fri, 13 Mar 2020 09:54:20 +0100 (CET)
+ with ESMTP id tXMM2uOgK3Nx; Fri, 13 Mar 2020 11:26:01 +0100 (CET)
 Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id 4FC9864BDD0;
- Fri, 13 Mar 2020 09:54:20 +0100 (CET)
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id EB9EA64FEE5;
+ Fri, 13 Mar 2020 11:26:00 +0100 (CET)
 Received: from pflmari.corp.cetitec.com (10.10.2.141) by
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Fri, 13 Mar 2020 09:54:20 +0100
+ id 15.0.1497.2; Fri, 13 Mar 2020 11:26:01 +0100
 Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id F103B804F8; Fri, 13 Mar 2020 09:54:19 +0100 (CET)
-Date: Fri, 13 Mar 2020 09:54:19 +0100
+ id 9500F804F8; Fri, 13 Mar 2020 11:26:00 +0100 (CET)
+Date: Fri, 13 Mar 2020 11:26:00 +0100
 From: Alex Riesen <alexander.riesen@cetitec.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH 0/8] media: i2c: adv748x: add support for HDMI audio
-Message-ID: <20200313085419.GC3832@pflmari>
+Subject: Re: [PATCH 2/8] media: adv748x: add audio mute control and output
+ selection ioctls
+Message-ID: <20200313102600.GF3832@pflmari>
 Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  Kieran Bingham <kieran.bingham@ideasonboard.com>,
@@ -64,35 +65,34 @@ Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
  linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-renesas-soc@vger.kernel.org
-References: <20200113141459.GA3606@pflmari>
- <e93e6e1e-11dc-d505-7287-46b115a4a609@xs4all.nl>
- <20200313083107.GB3832@pflmari>
- <4ab3dd9f-26fb-ce38-170c-bba4b3777455@xs4all.nl>
+References: <cover.1578924232.git.alexander.riesen@cetitec.com>
+ <20200113141521.GC3606@pflmari>
+ <ff34078d-895d-08c8-c64f-768e75388038@xs4all.nl>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <4ab3dd9f-26fb-ce38-170c-bba4b3777455@xs4all.nl>
+In-Reply-To: <ff34078d-895d-08c8-c64f-768e75388038@xs4all.nl>
 X-Originating-IP: [10.10.2.141]
 X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
 X-EsetResult: clean, is OK
-X-EsetId: 37303A290D7F536A627063
-X-Provags-ID: V03:K1:ABHMpytBP6kLhQ1RrmfVmUIgQJnz+Fwtg6cGiLq4Rbk2Qp95sSF
- TY64/2qV9uD8jhraYuFCX2DWXrYORoVF2y1EC6DBmtPRJmzgricgIbg6D0+dxPid8Y80wV3
- XUfxC01hoKIaaRo8yIx138tQoe4vJqz+UnCNXV8hPzk60zsIj0qYn1T0N0f5nSv1Wc/hA3Y
- VW6TPfKaPQLT3Ov/jpqfQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:TZMq4/37hds=:8nOIIWjn3kD4J2O66muj4a
- VXq1Wm51s5ZQlkSVn3t7I7wqPcd77u/ElLl4hUKtlrqFmVGFySjre8kn2KP0oCv8UXDZBYVFq
- /Zw+4OLl101HlY0JUkddXIo8ORmz4VUDN6UE5IUEaWlPtqGy68i67jkIljT7e56cqJ+FjW6yE
- GfU2LUXsY/M0IPt2f/jiT1LLYNCRuv44Br4sUwTdnaUeXz5V0pbthUhtzP+olHMMVPBkKB4nb
- Wn37aZO8riFfVTNGfXRkMO7DgMuMloK3qBuypXpT2Ivc4Tp/PvD5zHBcMRlQLTt7qL+yPyZ0X
- ojGfQ8RcUaSlhyjKej/pNKT+ZHhCCi+bsqd7z2A+44aVe4P1AeAGovgnv2aJY895jL4ucmimm
- mK2iR3gzXiSnDgO3ec1UG66odQlKMlX0hgLb9nsxcsYGrETqtIoYAkpb53C3jlzrYaaBLNHk3
- kylIykwrvphcMzxBKzx70Emgyea3/p7ZjLndGVtK6yT4caI5BWQIpHpSVRUf4SAIMh5UHfKNH
- RR3qUpouf6cHRR7gs2Qz9WpgYokj8OjrHC6Ok3/ku/Ls0Rrixnqj81eXt7P3ug5ZuYcuiGhud
- CqOjStaajqJurdxfG0Sk1MyKB3k6Vd02RMpf8bN42KyRK9w54MyXSdC3PAA7mPjYErFhcqNwn
- lRdEwTWaY2KbHPWf03Lb5Im73JaH4g6pjQPU10ZK41JX4oK/Z8As+3WMzG7ta3YF1vaZyJW1l
- QNjlvcHitlXC4zsMEtZdeoNARFQBlLDp0TZ9Cs5M9cSikZaIIM60ITm1aBI8UmFo7c46vBOYI
- S5TP3mSUEXSQuyQQTUmL406aJYUIiQD2hOfK1HEad2EpgEJ6Zf4o2I765bntUIGS8KOo7KO
+X-EsetId: 37303A290D7F536A627061
+X-Provags-ID: V03:K1:pmRc/dG1ku1hUco+cU0pJmJkIsZimoq3eyRDNsQtuHdsIPbBkC0
+ 4FCaHFoQiKJCY0LxHdfYTK1gYRbqBfebjsEZ1NWa81AK/HJcPe3lDMnxRIBZQXl11KLhx7z
+ SD0etOc+nneciAeV9I24SK6kUDjeCXMy8a9P6dTWq9DppjM3ma11hS3SENmDP6Jm1padRlH
+ Ka0SLqEinwp4UtQcH/BlQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZaxZ+24ibLo=:c1xj2HmOiiT7P0OF2k8DOW
+ XaX2A2wFTELxyxbYE1tVYCvlNEsu3ed81azir53chhnbQyrwPWu5utikSlnKeHf4xu2cMRTxy
+ Oyjj18HpP+dB8eW6QCm6iweyWKVcP1NTLMtJOTx8h4FPKaCgajswc03QZRxLJRwNoJGWCgtIn
+ KVpNLJ9p1yCq9l4ZWbLGKwVhdOjyCWvRDnlSDlKtxxHugKbRLJv7Mvt/ec5NYwoXE5qOOuP4L
+ 0MQAn1IUf6HQyqDmlRW8zOwOl/dxSHL+4zFp1GvsNieo5BDRGo/UjEvSlGbSPIcPo7K+c7eqI
+ IpFTCFMnVlmoFJopsAyUQye3GapWvVGshe7cIwbR54q8DiJB1tUQWtn996S2Mnd4j0C8CMDek
+ 0wRgcsXVYDO1bZqAa0WwkhfZzqXRAUFona7kUzUajvBZ8xbqCklN+c5ES+r7kzGyleoE2pbP5
+ QfjdKLmYzC1XUDAuoFLma8D2OxvFrxJFEjXLAteYUVp0cklq10g0HceJuNlQtTeFY61gbDUJd
+ 7eCb4qAE137EfA+jIarEcDvJcS3UDDwq7UZRiTENCv3eUdT/0sJln8DwR/ZhWiOvxaSA8Of3q
+ 0piztpK/tcpiZ1f+5nZ+FHIGjGIGvso2/JxpBANut6UwCu2Xdf0A6G9JezUhgc1KTbhEhwrTo
+ hR1OmvSD+dqV2M/KyJH4hmC0W2rW3ViyLNLWUUfUIRTsmqzaUQ0cVgsv9oTumkbLOyGXm+B8k
+ HTn+D6XWixhHB1gDESYUKWk36vLSQhXBNifaYJckd/U6y4HXEPIlhDzLNa4mhZXRkRqXZP0mK
+ 7etH9sAqT59s35QgmTdHzUaYFHAVWZ3OWakuGbIvXImobhwMIMd4BH6b8nD/9jQYXAVD/a/
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,19 +116,50 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hans Verkuil, Fri, Mar 13, 2020 09:37:18 +0100:
-> On 3/13/20 9:31 AM, Alex Riesen wrote:
-> > Shall I submit the log-status separately?
-> 
-> Yes please. In my experience, log status is a very nice and very useful feature.
-> 
-> If you have other sensible cleanups, then feel free to add those as well.
+Hi Hans,
 
-Noted. I shall send it after the DAI series: less inter-series dependencies
-this way (the log-status needs a new routine used by the DAI code).
+Hans Verkuil, Fri, Mar 13, 2020 09:16:11 +0100:
+> On 1/13/20 3:15 PM, Alex Riesen wrote:
+> > This change implements audio-related V4L2 ioctls for the HDMI subdevice.
+> 
+> This is really where things go wrong. These V4L2 audio ioctls are meant for
+> old PCI TV tuner devices where the audio was implemented as audio jack outputs
+> that are typically looped back to audio inputs on a (PCI) soundcard. And when
+> these ioctls were designed ALSA didn't even exist.
+
+I see. That was before my time :)
+
+> Generally an hdmi driver will configure the i2s audio automatically, which is
+> typically connected to the SoC and controlled by the ALSA driver of the SoC,
+> but there may well be missing features (audio never got a lot of attention in
+> hdmi receivers). So what I would like to know is: what features are missing?
+
+Well, the audio is missing. The current adv748x driver does not export the
+audio features of the device at all. There is no code to enable the I2S audio
+output and it is disabled (all clock and the data lines) by default.
+
+But, by now it seems to be clear that implementation of ALSA SoC DAI
+interfaces is the way to support the audio.
+
+And I am already slowly working on it.
+
+> Anything missing can likely be resolved by adding HDMI audio specific V4L2 controls,
+> which would be the right approach for this.
+> 
+> So I would expect to see a proposal for V4L2_CID_DV_RX_AUDIO_ controls to be
+> added here:
+> 
+> https://linuxtv.org/downloads/v4l-dvb-apis-new/uapi/v4l/ext-ctrls-dv.html
+
+This seems to be an explicitly "digital video" control class. And it has no
+control option for mute. Or did you mean a similarly structured new class for
+"digital audio"?
+
+This feels like an overkill for this particular driver...
 
 Regards,
 Alex
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
