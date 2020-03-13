@@ -1,84 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B955184FF0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 21:10:19 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D0914185142
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 22:39:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1B76D87846;
-	Fri, 13 Mar 2020 20:10:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BC774879E1;
+	Fri, 13 Mar 2020 21:39:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BsMgB0pIqcL1; Fri, 13 Mar 2020 20:10:16 +0000 (UTC)
+	with ESMTP id OoldPrBx5Tx3; Fri, 13 Mar 2020 21:39:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 269E287234;
-	Fri, 13 Mar 2020 20:10:14 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0DAC787729;
+	Fri, 13 Mar 2020 21:38:59 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 42B201BF2C2
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 20:09:28 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C6211BF578
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 21:38:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3F74F89824
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 20:09:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 97DE287736
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 21:38:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FgZr-s2R2rQY
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 20:09:27 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1601F89814
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 20:09:26 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id n15so13656007wrw.13
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 13:09:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=JAHDUtFF30wEPbON+Vzv3Y0++XJxpOwdxP97l+ZARrs=;
- b=Upe5UScDtrR1Sc72UxMYqrqIrxpj6N+K7nAEhIIjYj0C2evyCQFNWsmj8INoD+Qgzu
- inWvzZN6An2MuDQTDpaxYVN18CLkaFiyrk39sJ/dyNBi+1rkEd87lP0KilKgqGxRr9Oz
- drrrpxfEZPtm7kF4Z0ay+/yO29jteVldMjJIpaBPl7myI+1hftSGIdZCGCSyeBCZk8wt
- iZSK5qQp5kKlg1Ue96u+HDIE1eKMhSjcnOdx0MsBOzuhHeGmdmYf7REhr5tlbZa52mbj
- 2/e7wbQNwf3Yhu8h3g6CsD+Amcmw86doOnZ9RGQ2qihdu0/FrNxEBt+1SYWVtV5Yszkx
- AYzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=JAHDUtFF30wEPbON+Vzv3Y0++XJxpOwdxP97l+ZARrs=;
- b=bqNxu4h9T908P3P7PL61jduyMm3GLw2GDKwKMkCWYc01REg1mGInuTZfTlqD3Bze63
- FR31tf/EfMWjy5Cp7zxk7yCF0y1To4OY2vAGNTi10Ef+5ZmAslZSWjbhNJIYOsoAkjlh
- YyyxXBoEcRlkk8tEl0W+AZW+4z76O4xRmrf7/GEV3GabVa6joQDgiqsX06bfDF0SI7Kq
- jtzzp0LzBsOVQR6ateKA5+6gAPez0yLYJcH5n9+WSwbxIrLY7d3u3gKevmsvxoENanFB
- RQueZSq6Bkc609WFvUara6h7iN89dxBRVL0xGMRTVb3K7894nyI8CsIJA2wknFOCtuDY
- IO0g==
-X-Gm-Message-State: ANhLgQ2rNXI35CoMVfptGr1bOdOHWHZCfb0K9ol0MXjDJcTOrVnt2hh1
- wqM8NO0L2sGDnnhQ60xcNOU=
-X-Google-Smtp-Source: ADFU+vt1NhFBIO7veWyeJi7bcK1BqKOkZjchjiN5b6we3fNmSZRKfZCwWBAFPKl8erHWHeXWdScx9A==
-X-Received: by 2002:a5d:474c:: with SMTP id o12mr1860118wrs.156.1584130164527; 
- Fri, 13 Mar 2020 13:09:24 -0700 (PDT)
-Received: from localhost.localdomain
- (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
- by smtp.gmail.com with ESMTPSA id b187sm2249422wmc.14.2020.03.13.13.09.23
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Fri, 13 Mar 2020 13:09:23 -0700 (PDT)
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v4 6/6] staging: mt7621-pci: delete no more needed
- 'mt7621_reset_port'
-Date: Fri, 13 Mar 2020 21:09:13 +0100
-Message-Id: <20200313200913.24321-7-sergio.paracuellos@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200313200913.24321-1-sergio.paracuellos@gmail.com>
-References: <20200313200913.24321-1-sergio.paracuellos@gmail.com>
+ with ESMTP id 2MHVT9ppaikG for <devel@linuxdriverproject.org>;
+ Fri, 13 Mar 2020 21:38:55 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0196.hostedemail.com
+ [216.40.44.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 81BEE87729
+ for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 21:38:55 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave05.hostedemail.com (Postfix) with ESMTP id C746C18037D51
+ for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 21:23:44 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay06.hostedemail.com (Postfix) with ESMTP id 42BE018017528;
+ Fri, 13 Mar 2020 21:23:42 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:968:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2194:2199:2393:2559:2562:2729:2828:3138:3139:3140:3141:3142:3353:3622:3865:3866:3867:3868:3871:3872:4225:4250:4321:5007:7903:10004:10400:10848:11026:11232:11657:11658:11914:12043:12048:12297:12679:12740:12760:12895:13069:13255:13311:13357:13439:13972:14096:14097:14659:14721:21080:21627:21990:30054:30056:30070:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: magic84_5a52c2e86bc2d
+X-Filterd-Recvd-Size: 2535
+Received: from XPS-9350.home (unknown [47.151.143.254])
+ (Authenticated sender: joe@perches.com)
+ by omf11.hostedemail.com (Postfix) with ESMTPA;
+ Fri, 13 Mar 2020 21:23:40 +0000 (UTC)
+Message-ID: <25a1aca2c993ecb70ba7cd9c9e38bce9170a98b0.camel@perches.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: rtw_mlme:
+ Remove unnecessary conditions
+From: Joe Perches <joe@perches.com>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>,
+ gregkh@linuxfoundation.org,  devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org,  outreachy-kernel@googlegroups.com,
+ sbrivio@redhat.com, daniel.baluta@gmail.com,  nramas@linux.microsoft.com,
+ hverkuil@xs4all.nl, Larry.Finger@lwfinger.net
+Date: Fri, 13 Mar 2020 14:21:57 -0700
+In-Reply-To: <20200313102912.17218-1-shreeya.patel23498@gmail.com>
+References: <20200313102912.17218-1-shreeya.patel23498@gmail.com>
+User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -92,55 +78,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: ryder.lee@mediatek.com, driverdev-devel@linuxdriverproject.org,
- weijie.gao@mediatek.com, gerg@kernel.org, neil@brown.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-After review all the resets at the beggining the function
-'mt7621_reset_port' is not needed anymore. Hence delete it
-and its uses.
+On Fri, 2020-03-13 at 15:59 +0530, Shreeya Patel wrote:
+> Remove unnecessary if and else conditions since both are leading to the
+> initialization of "phtpriv->ampdu_enable" with the same value.
+> Also, remove the unnecessary else-if condition since it does nothing.
+[]
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+[]
+> @@ -2772,16 +2772,7 @@ void rtw_update_ht_cap(struct adapter *padapter, u8 *pie, uint ie_len, u8 channe
+>  
+>  	/* maybe needs check if ap supports rx ampdu. */
+>  	if (!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable == 1) {
+> -		if (pregistrypriv->wifi_spec == 1) {
+> -			/* remove this part because testbed AP should disable RX AMPDU */
+> -			/* phtpriv->ampdu_enable = false; */
+> -			phtpriv->ampdu_enable = true;
+> -		} else {
+> -			phtpriv->ampdu_enable = true;
+> -		}
+> -	} else if (pregistrypriv->ampdu_enable == 2) {
+> -		/* remove this part because testbed AP should disable RX AMPDU */
+> -		/* phtpriv->ampdu_enable = true; */
+> +		phtpriv->ampdu_enable = true;
 
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
----
- drivers/staging/mt7621-pci/pci-mt7621.c | 13 -------------
- 1 file changed, 13 deletions(-)
+This isn't the same test.
 
-diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index 0d9dd14f6bec..973be9aa7bb2 100644
---- a/drivers/staging/mt7621-pci/pci-mt7621.c
-+++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -255,13 +255,6 @@ static inline void mt7621_control_deassert(struct mt7621_pcie_port *port)
- 		reset_control_assert(port->pcie_rst);
- }
- 
--static void mt7621_reset_port(struct mt7621_pcie_port *port)
--{
--	mt7621_control_assert(port);
--	msleep(100);
--	mt7621_control_deassert(port);
--}
--
- static void setup_cm_memory_region(struct mt7621_pcie *pcie)
- {
- 	struct resource *mem_resource = &pcie->mem;
-@@ -427,12 +420,6 @@ static int mt7621_pcie_init_port(struct mt7621_pcie_port *port)
- 	u32 slot = port->slot;
- 	int err;
- 
--	/*
--	 * Any MT7621 Ralink pcie controller that doesn't have 0x0101 at
--	 * the end of the chip_id has inverted PCI resets.
--	 */
--	mt7621_reset_port(port);
--
- 	err = phy_init(port->phy);
- 	if (err) {
- 		dev_err(dev, "failed to initialize port%d phy\n", slot);
--- 
-2.25.1
+This could be:
+ 	if ((!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable == 1)) ||
+	    pregistrypriv->ampdu_enable == 2)
+		phtpriv->ampdu_enable = true;
+
+Though it is probably more sensible to just set
+phtpriv->ampdu_enable without testing whether or
+not it's already set:
+
+	if (pregistrypriv->ampdu_enable == 1 ||
+	    pregistrypriv->ampdu_enable == 2)
+		phtpriv->ampdu_enable = true;
+
 
 _______________________________________________
 devel mailing list
