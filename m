@@ -1,98 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 446A31844D6
-	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 11:26:24 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 732551844DF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 13 Mar 2020 11:29:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E7A3788B07;
-	Fri, 13 Mar 2020 10:26:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9FE9C26FA8;
+	Fri, 13 Mar 2020 10:29:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MdvbeINKY-gN; Fri, 13 Mar 2020 10:26:21 +0000 (UTC)
+	with ESMTP id 7LmE1xMCEglx; Fri, 13 Mar 2020 10:29:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 641C988AF4;
-	Fri, 13 Mar 2020 10:26:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A9F1926F4C;
+	Fri, 13 Mar 2020 10:29:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 56C041BF349
- for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:26:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0E7C31BF349
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:29:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 500FE874C1
- for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:26:18 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0B5B386E25
+ for <devel@linuxdriverproject.org>; Fri, 13 Mar 2020 10:29:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aXoVP_pTaoNs for <devel@linuxdriverproject.org>;
- Fri, 13 Mar 2020 10:26:17 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.74])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1BB2F874A6
- for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 10:26:16 +0000 (UTC)
-Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MkYsS-1jbbb229de-00m1eV; Fri, 13 Mar 2020 11:26:02 +0100
-Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id 67EE36501F5;
- Fri, 13 Mar 2020 10:26:01 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at cetitec.com
-Received: from mail.cetitecgmbh.com ([127.0.0.1])
- by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
- [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tXMM2uOgK3Nx; Fri, 13 Mar 2020 11:26:01 +0100 (CET)
-Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id EB9EA64FEE5;
- Fri, 13 Mar 2020 11:26:00 +0100 (CET)
-Received: from pflmari.corp.cetitec.com (10.10.2.141) by
- PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Fri, 13 Mar 2020 11:26:01 +0100
-Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id 9500F804F8; Fri, 13 Mar 2020 11:26:00 +0100 (CET)
-Date: Fri, 13 Mar 2020 11:26:00 +0100
-From: Alex Riesen <alexander.riesen@cetitec.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH 2/8] media: adv748x: add audio mute control and output
- selection ioctls
-Message-ID: <20200313102600.GF3832@pflmari>
-Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-renesas-soc@vger.kernel.org
-References: <cover.1578924232.git.alexander.riesen@cetitec.com>
- <20200113141521.GC3606@pflmari>
- <ff34078d-895d-08c8-c64f-768e75388038@xs4all.nl>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ff34078d-895d-08c8-c64f-768e75388038@xs4all.nl>
-X-Originating-IP: [10.10.2.141]
-X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
- PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
-X-EsetResult: clean, is OK
-X-EsetId: 37303A290D7F536A627061
-X-Provags-ID: V03:K1:pmRc/dG1ku1hUco+cU0pJmJkIsZimoq3eyRDNsQtuHdsIPbBkC0
- 4FCaHFoQiKJCY0LxHdfYTK1gYRbqBfebjsEZ1NWa81AK/HJcPe3lDMnxRIBZQXl11KLhx7z
- SD0etOc+nneciAeV9I24SK6kUDjeCXMy8a9P6dTWq9DppjM3ma11hS3SENmDP6Jm1padRlH
- Ka0SLqEinwp4UtQcH/BlQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZaxZ+24ibLo=:c1xj2HmOiiT7P0OF2k8DOW
- XaX2A2wFTELxyxbYE1tVYCvlNEsu3ed81azir53chhnbQyrwPWu5utikSlnKeHf4xu2cMRTxy
- Oyjj18HpP+dB8eW6QCm6iweyWKVcP1NTLMtJOTx8h4FPKaCgajswc03QZRxLJRwNoJGWCgtIn
- KVpNLJ9p1yCq9l4ZWbLGKwVhdOjyCWvRDnlSDlKtxxHugKbRLJv7Mvt/ec5NYwoXE5qOOuP4L
- 0MQAn1IUf6HQyqDmlRW8zOwOl/dxSHL+4zFp1GvsNieo5BDRGo/UjEvSlGbSPIcPo7K+c7eqI
- IpFTCFMnVlmoFJopsAyUQye3GapWvVGshe7cIwbR54q8DiJB1tUQWtn996S2Mnd4j0C8CMDek
- 0wRgcsXVYDO1bZqAa0WwkhfZzqXRAUFona7kUzUajvBZ8xbqCklN+c5ES+r7kzGyleoE2pbP5
- QfjdKLmYzC1XUDAuoFLma8D2OxvFrxJFEjXLAteYUVp0cklq10g0HceJuNlQtTeFY61gbDUJd
- 7eCb4qAE137EfA+jIarEcDvJcS3UDDwq7UZRiTENCv3eUdT/0sJln8DwR/ZhWiOvxaSA8Of3q
- 0piztpK/tcpiZ1f+5nZ+FHIGjGIGvso2/JxpBANut6UwCu2Xdf0A6G9JezUhgc1KTbhEhwrTo
- hR1OmvSD+dqV2M/KyJH4hmC0W2rW3ViyLNLWUUfUIRTsmqzaUQ0cVgsv9oTumkbLOyGXm+B8k
- HTn+D6XWixhHB1gDESYUKWk36vLSQhXBNifaYJckd/U6y4HXEPIlhDzLNa4mhZXRkRqXZP0mK
- 7etH9sAqT59s35QgmTdHzUaYFHAVWZ3OWakuGbIvXImobhwMIMd4BH6b8nD/9jQYXAVD/a/
+ with ESMTP id sE4xfpKmMVay for <devel@linuxdriverproject.org>;
+ Fri, 13 Mar 2020 10:29:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
+ [209.85.214.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9949286E09
+ for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 10:29:25 +0000 (UTC)
+Received: by mail-pl1-f193.google.com with SMTP id d9so4029651plo.11
+ for <devel@driverdev.osuosl.org>; Fri, 13 Mar 2020 03:29:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id;
+ bh=kqXMRjosvrMwbkpWYYUMv/eKp41LgZaQN2jfs/TMCUU=;
+ b=EWbg2LKqIyxcTZt54OZrlCbltZOHFk7QAr/BjENsjZfWl63N37tNSXyfPxxA0hTRu3
+ or4rZWujQhztrFqJsYFJUd8k74Q1F4Tqhf2S3hd6rGIxw40W28bThPpt6NfqCcHbHQWA
+ 4FXoQ7Pd1UOft3mx57iVigFUPwH0cIsV5yat2JaHnEto1jFCq+jPPaepNxUksBrEPIid
+ vY9b4GzJoo4MUSaptYYtogEF/CGnjXQOAaYUFXQZCP0VmpL2vY5j+nwNFN0guSeNqH7Z
+ D+3voASXKTB12c7Rt0W6n1c5MEXIcUb0v8hC0Y4iv+tApge+jorRS2kNNs5Gpg95KcqX
+ CtFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id;
+ bh=kqXMRjosvrMwbkpWYYUMv/eKp41LgZaQN2jfs/TMCUU=;
+ b=S2r9o5nrcpPXlyswbUp2dUXm9doGoZZVzKRQZ/jvuHqSl8Xlg+h/H67lHeJ5d0Pd6H
+ N2S9Ge2YxO9vuwdAQN7nrbTnu5KCXcjgf62XvVEAmFbcRN0zF+LX8mvaCsZ9EvekqOW3
+ GXiAUXb0XTC7NDAFY7WvA+VlfdFH1vIGH/hFQOSROSxqKf7Ifc/jLzeQCYc6uCIoHo8T
+ UQ9g0xgDaaLv+SeqSY4NeB5qCRdfVUFhnIbRzjpQBbTNQg8oyYkKDoXNcVhiqqaS7rvR
+ tLQiCWd4qPkfvqH7jn5GzeqfJ4dYrlKJRtsxiCoPD0k4z+tOvNqFtPUdWcX4w8BjWgyb
+ BR7w==
+X-Gm-Message-State: ANhLgQ3lWchk1KpuuEs95J3qYRkt/3PqO8xrqgQboKg5gNs2Yf1bd6km
+ mldnD20z+2QztTr+b4DL1Ow=
+X-Google-Smtp-Source: ADFU+vsY8iYgbuRFlAd9U61nsaldOQC1hqGGqTzZvDEDjvVId3qGfnZZieGIXk2tsNLODrFDhDxEhQ==
+X-Received: by 2002:a17:902:7592:: with SMTP id
+ j18mr12588240pll.180.1584095365090; 
+ Fri, 13 Mar 2020 03:29:25 -0700 (PDT)
+Received: from localhost.localdomain ([2405:204:22f:d418:f8a5:7ca8:f99b:fa30])
+ by smtp.gmail.com with ESMTPSA id
+ u24sm55719326pgo.83.2020.03.13.03.29.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 Mar 2020 03:29:24 -0700 (PDT)
+From: Shreeya Patel <shreeya.patel23498@gmail.com>
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ sbrivio@redhat.com, daniel.baluta@gmail.com, nramas@linux.microsoft.com,
+ hverkuil@xs4all.nl, shreeya.patel23498@gmail.com, Larry.Finger@lwfinger.net
+Subject: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: rtw_mlme: Remove
+ unnecessary conditions
+Date: Fri, 13 Mar 2020 15:59:12 +0530
+Message-Id: <20200313102912.17218-1-shreeya.patel23498@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,60 +86,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
- devicetree@vger.kernel.org, Kieran Bingham <kieran.bingham@ideasonboard.com>,
- linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Hans,
+Remove unnecessary if and else conditions since both are leading to the
+initialization of "phtpriv->ampdu_enable" with the same value.
+Also, remove the unnecessary else-if condition since it does nothing.
 
-Hans Verkuil, Fri, Mar 13, 2020 09:16:11 +0100:
-> On 1/13/20 3:15 PM, Alex Riesen wrote:
-> > This change implements audio-related V4L2 ioctls for the HDMI subdevice.
-> 
-> This is really where things go wrong. These V4L2 audio ioctls are meant for
-> old PCI TV tuner devices where the audio was implemented as audio jack outputs
-> that are typically looped back to audio inputs on a (PCI) soundcard. And when
-> these ioctls were designed ALSA didn't even exist.
+Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+---
 
-I see. That was before my time :)
+Changes in v2
+  - Remove unnecessary comments
+  - Remove unnecessary else-if condition which does nothing.
 
-> Generally an hdmi driver will configure the i2s audio automatically, which is
-> typically connected to the SoC and controlled by the ALSA driver of the SoC,
-> but there may well be missing features (audio never got a lot of attention in
-> hdmi receivers). So what I would like to know is: what features are missing?
+ drivers/staging/rtl8723bs/core/rtw_mlme.c | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
 
-Well, the audio is missing. The current adv748x driver does not export the
-audio features of the device at all. There is no code to enable the I2S audio
-output and it is disabled (all clock and the data lines) by default.
-
-But, by now it seems to be clear that implementation of ALSA SoC DAI
-interfaces is the way to support the audio.
-
-And I am already slowly working on it.
-
-> Anything missing can likely be resolved by adding HDMI audio specific V4L2 controls,
-> which would be the right approach for this.
-> 
-> So I would expect to see a proposal for V4L2_CID_DV_RX_AUDIO_ controls to be
-> added here:
-> 
-> https://linuxtv.org/downloads/v4l-dvb-apis-new/uapi/v4l/ext-ctrls-dv.html
-
-This seems to be an explicitly "digital video" control class. And it has no
-control option for mute. Or did you mean a similarly structured new class for
-"digital audio"?
-
-This feels like an overkill for this particular driver...
-
-Regards,
-Alex
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+index 71fcb466019a..d7a58af76ea0 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+@@ -2772,16 +2772,7 @@ void rtw_update_ht_cap(struct adapter *padapter, u8 *pie, uint ie_len, u8 channe
+ 
+ 	/* maybe needs check if ap supports rx ampdu. */
+ 	if (!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable == 1) {
+-		if (pregistrypriv->wifi_spec == 1) {
+-			/* remove this part because testbed AP should disable RX AMPDU */
+-			/* phtpriv->ampdu_enable = false; */
+-			phtpriv->ampdu_enable = true;
+-		} else {
+-			phtpriv->ampdu_enable = true;
+-		}
+-	} else if (pregistrypriv->ampdu_enable == 2) {
+-		/* remove this part because testbed AP should disable RX AMPDU */
+-		/* phtpriv->ampdu_enable = true; */
++		phtpriv->ampdu_enable = true;
+ 	}
+ 
+ 	/* check Max Rx A-MPDU Size */
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
