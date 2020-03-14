@@ -1,63 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E2F691855FE
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Mar 2020 17:17:02 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 127AF185600
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Mar 2020 17:41:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8B67B88BE6;
-	Sat, 14 Mar 2020 16:17:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AD1CC87A30;
+	Sat, 14 Mar 2020 16:41:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yJv2YwieC2tx; Sat, 14 Mar 2020 16:16:59 +0000 (UTC)
+	with ESMTP id FeJwOsuow42X; Sat, 14 Mar 2020 16:41:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BC41E88BEF;
-	Sat, 14 Mar 2020 16:16:58 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7BAA587A28;
+	Sat, 14 Mar 2020 16:41:04 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 476FA1BF86C
- for <devel@linuxdriverproject.org>; Sat, 14 Mar 2020 16:16:55 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 571AA1BF42E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 14 Mar 2020 16:41:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 432D989772
- for <devel@linuxdriverproject.org>; Sat, 14 Mar 2020 16:16:55 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5127C87A28
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 14 Mar 2020 16:41:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NVV9+JkYH27w for <devel@linuxdriverproject.org>;
- Sat, 14 Mar 2020 16:16:55 +0000 (UTC)
+ with ESMTP id YPynI8P56Wm6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 14 Mar 2020 16:41:02 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from outbound.accesskenya.com (outbound.accesskenya.com
  [196.200.16.23])
- by hemlock.osuosl.org (Postfix) with SMTP id 88BE589778
- for <devel@driverdev.osuosl.org>; Sat, 14 Mar 2020 16:16:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with SMTP id DD7AA87A24
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 14 Mar 2020 16:41:01 +0000 (UTC)
 Received: from smtpout.accesskenya.com (smtpout.accesskenya.com
- [196.200.16.45])
- by outbound.accesskenya.com  with ESMTP id 02EGGqaF029462-02EGGqaG029462
- for <devel@driverdev.osuosl.org>; Sat, 14 Mar 2020 19:16:53 +0300
+ [196.200.16.40])
+ by outbound.accesskenya.com  with ESMTP id 02EGexsc012361-02EGexsd012361
+ for <driverdev-devel@linuxdriverproject.org>; Sat, 14 Mar 2020 19:40:59 +0300
 Received: from mail.nccke.com (HELO mail.devkisteel.com) ([41.215.8.186])
- by smtpout.accesskenya.com with ESMTP; 14 Mar 2020 19:16:52 +0300
+ by smtpout.accesskenya.com with ESMTP; 14 Mar 2020 19:40:58 +0300
 Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.devkisteel.com (Postfix) with ESMTP id A700C2982CBC;
- Sat, 14 Mar 2020 19:16:51 +0300 (EAT)
+ by mail.devkisteel.com (Postfix) with ESMTP id 1E61A2982D3C;
+ Sat, 14 Mar 2020 19:40:58 +0300 (EAT)
 Received: from mail.devkisteel.com ([127.0.0.1])
  by localhost (mail.devkisteel.com [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id Sid9o13Ih7xd; Sat, 14 Mar 2020 19:16:51 +0300 (EAT)
+ with ESMTP id 5mjQ4RB10zsu; Sat, 14 Mar 2020 19:40:57 +0300 (EAT)
 Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.devkisteel.com (Postfix) with ESMTP id 3300D2982B7A;
- Sat, 14 Mar 2020 19:16:51 +0300 (EAT)
+ by mail.devkisteel.com (Postfix) with ESMTP id B6AAD2982D28;
+ Sat, 14 Mar 2020 19:40:57 +0300 (EAT)
 X-Amavis-Modified: Mail body modified (using disclaimer) - mail.devkisteel.com
 X-Virus-Scanned: amavisd-new at devkisteel.com
 Received: from mail.devkisteel.com ([127.0.0.1])
  by localhost (mail.devkisteel.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id Yq_9iA5IjaOD; Sat, 14 Mar 2020 19:16:50 +0300 (EAT)
+ with ESMTP id QhoAWBIJl9Dj; Sat, 14 Mar 2020 19:40:57 +0300 (EAT)
 Received: from User (unknown [154.124.148.59])
- by mail.devkisteel.com (Postfix) with ESMTPA id E529E2982CBC;
- Sat, 14 Mar 2020 19:16:15 +0300 (EAT)
+ by mail.devkisteel.com (Postfix) with ESMTPA id 3AEDE2982D3C;
+ Sat, 14 Mar 2020 19:40:27 +0300 (EAT)
 From: "Ken Global Enterprise, Inc"<cfo@devkisteel.com>
 Subject: Inquiry for new Order!!!
-Date: Sat, 14 Mar 2020 16:16:24 -0000
+Date: Sat, 14 Mar 2020 16:40:31 -0000
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
@@ -65,7 +69,7 @@ X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-Cyberoam-smtpxy-version: 1.0.6.3
 X-Cyberoam-AV-Policy: default
-Message-Id: <20200314161615.E529E2982CBC@mail.devkisteel.com>
+Message-Id: <20200314164028.3AEDE2982D3C@mail.devkisteel.com>
 X-Cyberoam-smtpxy-version: 1.0.6.3
 X-Cyberoam-AV-Policy: default
 X-CTCH-PVer: 0000001
@@ -78,7 +82,7 @@ X-CTCH-Score: 4.680
 X-CTCH-ScoreCust: 0.000
 X-CTCH-Rules: FSL_CTYPE_WIN1251,NSL_RCVD_FROM_USER,
 X-MIME-Autoconverted: from 8bit to quoted-printable by
- outbound.accesskenya.com id 02EGGqaF029462-02EGGqaG029462
+ outbound.accesskenya.com id 02EGexsc012361-02EGexsd012361
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
