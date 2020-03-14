@@ -2,87 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 127AF185600
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Mar 2020 17:41:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E7D9A185608
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Mar 2020 17:48:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AD1CC87A30;
-	Sat, 14 Mar 2020 16:41:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9826687C89;
+	Sat, 14 Mar 2020 16:48:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FeJwOsuow42X; Sat, 14 Mar 2020 16:41:05 +0000 (UTC)
+	with ESMTP id H7uJn4k3z-9Z; Sat, 14 Mar 2020 16:48:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7BAA587A28;
-	Sat, 14 Mar 2020 16:41:04 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3456387A24;
+	Sat, 14 Mar 2020 16:48:32 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 571AA1BF42E
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 14 Mar 2020 16:41:03 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4BE841BF42E
+ for <devel@linuxdriverproject.org>; Sat, 14 Mar 2020 16:48:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5127C87A28
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 14 Mar 2020 16:41:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4479A27DC6
+ for <devel@linuxdriverproject.org>; Sat, 14 Mar 2020 16:48:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YPynI8P56Wm6
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 14 Mar 2020 16:41:02 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from outbound.accesskenya.com (outbound.accesskenya.com
- [196.200.16.23])
- by fraxinus.osuosl.org (Postfix) with SMTP id DD7AA87A24
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 14 Mar 2020 16:41:01 +0000 (UTC)
-Received: from smtpout.accesskenya.com (smtpout.accesskenya.com
- [196.200.16.40])
- by outbound.accesskenya.com  with ESMTP id 02EGexsc012361-02EGexsd012361
- for <driverdev-devel@linuxdriverproject.org>; Sat, 14 Mar 2020 19:40:59 +0300
-Received: from mail.nccke.com (HELO mail.devkisteel.com) ([41.215.8.186])
- by smtpout.accesskenya.com with ESMTP; 14 Mar 2020 19:40:58 +0300
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.devkisteel.com (Postfix) with ESMTP id 1E61A2982D3C;
- Sat, 14 Mar 2020 19:40:58 +0300 (EAT)
-Received: from mail.devkisteel.com ([127.0.0.1])
- by localhost (mail.devkisteel.com [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 5mjQ4RB10zsu; Sat, 14 Mar 2020 19:40:57 +0300 (EAT)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.devkisteel.com (Postfix) with ESMTP id B6AAD2982D28;
- Sat, 14 Mar 2020 19:40:57 +0300 (EAT)
-X-Amavis-Modified: Mail body modified (using disclaimer) - mail.devkisteel.com
-X-Virus-Scanned: amavisd-new at devkisteel.com
-Received: from mail.devkisteel.com ([127.0.0.1])
- by localhost (mail.devkisteel.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id QhoAWBIJl9Dj; Sat, 14 Mar 2020 19:40:57 +0300 (EAT)
-Received: from User (unknown [154.124.148.59])
- by mail.devkisteel.com (Postfix) with ESMTPA id 3AEDE2982D3C;
- Sat, 14 Mar 2020 19:40:27 +0300 (EAT)
-From: "Ken Global Enterprise, Inc"<cfo@devkisteel.com>
-Subject: Inquiry for new Order!!!
-Date: Sat, 14 Mar 2020 16:40:31 -0000
+ with ESMTP id bn5xvkvMqNc1 for <devel@linuxdriverproject.org>;
+ Sat, 14 Mar 2020 16:48:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
+ by silver.osuosl.org (Postfix) with ESMTPS id 88F0C2587B
+ for <devel@driverdev.osuosl.org>; Sat, 14 Mar 2020 16:48:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1584204500;
+ bh=V0rq/NHA00NI5YnNp0x0uYL1fI/UE5EKZlIF0XhdxTc=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=Tl6JyOy9PnWQt6pNUG3ocElgt9FO94bexMwx4hiNrTUOQQ83CcgqfPNPwjippwktq
+ 3+ODeLTsUUesZlq2EkDAQcAMV5MGBphyivWmOpVlGa1yAz9uKKU9H6JnP3D1Ynfvxu
+ YQ8ZpQsXPczT7Rd+Ia4m+EBb1wZWokUS8Urbohr4=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
+ (mrgmx104 [212.227.17.174]) with ESMTPSA (Nemesis) id
+ 1MmULx-1jdSIk43NZ-00iWkv; Sat, 14 Mar 2020 17:48:20 +0100
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Forest Bond <forest@alittletooquiet.net>
+Subject: [PATCH] staging: vt6656: Use ARRAY_SIZE instead of hardcoded size
+Date: Sat, 14 Mar 2020 17:47:54 +0100
+Message-Id: <20200314164754.8531-1-oscar.carter@gmx.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-Message-Id: <20200314164028.3AEDE2982D3C@mail.devkisteel.com>
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer: 0000001
-X-CTCH-Spam: Bulk
-X-CTCH-VOD: Unknown
-X-CTCH-Flags: 0
-X-CTCH-RefID: str=0001.0A090210.5E6CB595.0058, ss=3, sh, re=4.680, recu=0.000,
- reip=0.000, cl=3, cld=1, fgs=0
-X-CTCH-Score: 4.680
-X-CTCH-ScoreCust: 0.000
-X-CTCH-Rules: FSL_CTYPE_WIN1251,NSL_RCVD_FROM_USER,
-X-MIME-Autoconverted: from 8bit to quoted-printable by
- outbound.accesskenya.com id 02EGexsc012361-02EGexsd012361
+X-Provags-ID: V03:K1:VqoulxDnv12K6z91LHZ6YrGqLdCMqF0Pa57KICKH3pdWYb9OcmH
+ n+5VUMqHAwm75wJO38WkU/60n0tF2eZLwYkBW1d6yEGF7T05XxDjhljoF+sP9aKvmX+fRaT
+ Xh6y+PORdU4K3oA+v75KzDJLQLu8/+Y7io9eHAs0ytG9mIcivfooyZZpnptHw5zilPSPHAj
+ 3LGPGTQBflZSM8MAK/x9Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:nmiHKXiAsfs=:76KacINyKrVEAW6f0hRrrb
+ ksy7ji3KybY+TzDcpmAzjuqaL/CB3Dy7POvPvfqNGI77Pp3XgFJlhK21Nc07/xZZaEq66VmFX
+ +6VvkJVkksO6D5OirFBSvDlPvr5k3u0Tg8z6YNN02dsPQEmMBfizJDSOpDVj5jMI5GeQs/FI6
+ dzMs3akdffz5tDUDTEe0ZylyMyJzgeSlutMOm5fIbNVps1EBqyQHYHHDS8bVxqr99Q5eV9pB5
+ FTXk1Y9A8O2DUwCZOUrZ2+drvDy7c/+qDX7C0HoFpJnJeqKOpF2QcNFKHVJThMxvLgVwekbJB
+ 39CwZSN5CBGoYhn8+7IJjEiJqJveOYJIuEQskISW8FLaCjPS5QE7cFSJ5hT6dhLWfDgW7wNcj
+ GcIbwdPoAOIQMmvWovdjUkxGtxrtDKhMg+1ld2mtFGg4w0k82vJ9qNywoxyyQDQCjzOJ3ZA8P
+ Vvui9i3RuxKGbfBmrgEPLjVmWBhFV+RQZELWo5V/cr3wIunwGVSeMBe+I3YIyoLKWHWHHeq8c
+ BrCBTl4w/4yCZ77nTB8oo4u91ayYlLNOs9xCx3pEFj7gEXk8achIUzyOJYAcp/jZ/eW97SxeX
+ iuU8/Ub5mCNp173HQ0cEJU7pI4JWexj5JnBJ8wU2glD8GSOUiKSNMKJ6GlfbIenArrozn9WVU
+ Dcq1eRlfWX54kGeheNCGmhQnCtIwhpbC+P32S/nUZaM/00ep3+D1uzqcD1A4lDm6SdPc2BPqS
+ MZmVY41uSz52ggmp3ipfq2ZHrFeJHvPzHm56YzMz7j55McPGU6t/34j7gjfwu+f/9iUp1+MyQ
+ P4QZLIPnCm4M9fUQRW28INs2KWuSz3OcXUHGGlzd+EuRZmBpYg/xUDv+coGrUxCzkXFWxH4Fe
+ eyexbRFg1L4EtwVpk6G2x7NJr+QKJYvqdgH/JjdZFP3wgjFnfWqUJhHjzOZub7cM67g6zUOaY
+ PXEu71l3h6Rg8o1au1InLE67YfB4wJGe6Zc25yIQ+S1m7abzsSJZxIFaVkUoZzMIKg/rh7d9G
+ bnGgLYnQkO6GhT5HzEgjmdl6Wl5nFKlyaAq4SFq44VUxH/pkOf0FnNK/8LtuprwPnv6R9RMGO
+ L+DL1pSLHNLsvWL3Pu+adtjPHuAt2bPKBE+v6sIwojmOjLLvZMnsxUx4KUxMKRe8wbXtgn6lf
+ /GywaqFLAq3EDfOmd7fk+rf5YXXT7Lk2RguxZ1zs1IlPlASm2fAOgAWsyKPIE10YG5/lGzygu
+ kOrQpSi5JEPcUWICU
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,24 +85,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alicelouis82@outlook.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
+ Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8gRGVhciwKIApXZSBhcmUgaW50ZXJlc3RlZCBpbiBwdXJjaGFzaW5nIHlvdXIgcHJvZHVj
-dHMgYW5kIHdlIHNpbmNlcmVseSBob3BlIHRvIGVzdGFibGlzaCBhIGxvbmctdGVybSBidXNpbmVz
-cyByZWxhdGlvbiB3aXRoIHlvdXIgZXN0ZWVtZWQgY29tcGFueS4KIApQbGVhc2Uga2luZGx5IHBy
-b3ZpZGUgdXMgeW91ciBsYXRlc3QgY2F0YWxvZy4gQWxzbzoKtyAgICAgICAgIEluZm9ybSB1cyBh
-Ym91dCB5b3VyIG1pbmltdW0gb3JkZXIgcXVhbnRpdHkKtyAgICAgICAgIFBheW1lbnQgdGVybXMK
-tyAgICAgICAgIERlbGl2ZXJ5IHRpbWUKtyAgICAgICAgIFdhcnJhbnR5CiAKWW91ciBlYXJseSBy
-ZXBseSBpcyBoaWdobHkgYXBwcmVjaWF0ZWQhCiAKVGhhbmtzLAogCkFsaWNlIExvdWlzIHwgUHVy
-Y2hhc2luZyBNYW5hZ2VyCktlbiBHbG9iYWwgRW50ZXJwcmlzZSwgSW5jCiAKSGVhZCBvZmZpY2U6
-ODA4LCBDb25jb3JkIFRvd2VyCkR1YmFpIE1lZGlhIENpdHksIHAuby5ib3ggMzc0ODcsIER1YmFp
-LVVBRQpUOiArOTcxIDQgMzMgNTA4IDM0CkY6ICs5NzEgNCA0MiA1MzU5IDYxCkR1YmFpICBVLkEu
-RS4gKiBTUEFJTiAqSVNSQUVMKiBVU0EgKiBBRlJJQ0EKRS1tYWlsOiBhbGljZWxvdWlzODJAb3V0
-bG9vay5jb20KKG51bGwpCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
-dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aXZlcmRldi1kZXZlbAo=
+Use ARRAY_SIZE to replace the hardcoded size so we will never have a
+mismatch.
+
+Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+---
+ drivers/staging/vt6656/main_usb.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index 5e48b3ddb94c..4370941ffc04 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -23,6 +23,7 @@
+
+ #include <linux/etherdevice.h>
+ #include <linux/file.h>
++#include <linux/kernel.h>
+ #include "device.h"
+ #include "card.h"
+ #include "baseband.h"
+@@ -116,6 +117,7 @@ static int vnt_init_registers(struct vnt_private *priv)
+ 	int ii;
+ 	u8 tmp;
+ 	u8 calib_tx_iq = 0, calib_tx_dc = 0, calib_rx_iq = 0;
++	const int n_cck_pwr_tbl = ARRAY_SIZE(priv->cck_pwr_tbl);
+
+ 	dev_dbg(&priv->usb->dev, "---->INIbInitAdapter. [%d][%d]\n",
+ 		DEVICE_INIT_COLD, priv->packet_type);
+@@ -145,7 +147,7 @@ static int vnt_init_registers(struct vnt_private *priv)
+
+ 	init_cmd->init_class = DEVICE_INIT_COLD;
+ 	init_cmd->exist_sw_net_addr = priv->exist_sw_net_addr;
+-	for (ii = 0; ii < 6; ii++)
++	for (ii = 0; ii < ARRAY_SIZE(init_cmd->sw_net_addr); ii++)
+ 		init_cmd->sw_net_addr[ii] = priv->current_net_addr[ii];
+ 	init_cmd->short_retry_limit = priv->short_retry_limit;
+ 	init_cmd->long_retry_limit = priv->long_retry_limit;
+@@ -184,7 +186,7 @@ static int vnt_init_registers(struct vnt_private *priv)
+ 	priv->cck_pwr = priv->eeprom[EEP_OFS_PWR_CCK];
+ 	priv->ofdm_pwr_g = priv->eeprom[EEP_OFS_PWR_OFDMG];
+ 	/* load power table */
+-	for (ii = 0; ii < 14; ii++) {
++	for (ii = 0; ii < n_cck_pwr_tbl; ii++) {
+ 		priv->cck_pwr_tbl[ii] =
+ 			priv->eeprom[ii + EEP_OFS_CCK_PWR_TBL];
+ 		if (priv->cck_pwr_tbl[ii] == 0)
+@@ -200,7 +202,7 @@ static int vnt_init_registers(struct vnt_private *priv)
+ 	 * original zonetype is USA, but custom zonetype is Europe,
+ 	 * then need to recover 12, 13, 14 channels with 11 channel
+ 	 */
+-	for (ii = 11; ii < 14; ii++) {
++	for (ii = 11; ii < n_cck_pwr_tbl; ii++) {
+ 		priv->cck_pwr_tbl[ii] = priv->cck_pwr_tbl[10];
+ 		priv->ofdm_pwr_tbl[ii] = priv->ofdm_pwr_tbl[10];
+ 	}
+--
+2.20.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
