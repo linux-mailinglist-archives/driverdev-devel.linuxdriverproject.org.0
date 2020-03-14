@@ -2,84 +2,83 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CBB6A18559D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Mar 2020 12:28:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B18F1855E1
+	for <lists+driverdev-devel@lfdr.de>; Sat, 14 Mar 2020 16:06:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 05B1287A7D;
-	Sat, 14 Mar 2020 11:28:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B6D0F878C7;
+	Sat, 14 Mar 2020 15:06:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pZa5AKE2Yk3G; Sat, 14 Mar 2020 11:28:27 +0000 (UTC)
+	with ESMTP id u3D3KLWdo9aW; Sat, 14 Mar 2020 15:06:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9B21487776;
-	Sat, 14 Mar 2020 11:28:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8C8868651D;
+	Sat, 14 Mar 2020 15:06:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 80CA21BF82F
- for <devel@linuxdriverproject.org>; Sat, 14 Mar 2020 11:28:23 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 938CC1BF47A
+ for <devel@linuxdriverproject.org>; Sat, 14 Mar 2020 15:06:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 73DD120428
- for <devel@linuxdriverproject.org>; Sat, 14 Mar 2020 11:28:23 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8DDEB87765
+ for <devel@linuxdriverproject.org>; Sat, 14 Mar 2020 15:06:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cxzKZe-OV0px for <devel@linuxdriverproject.org>;
- Sat, 14 Mar 2020 11:28:22 +0000 (UTC)
+ with ESMTP id FLEZhvt-Rnpu for <devel@linuxdriverproject.org>;
+ Sat, 14 Mar 2020 15:06:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
- [209.85.216.65])
- by silver.osuosl.org (Postfix) with ESMTPS id B32682040C
- for <devel@driverdev.osuosl.org>; Sat, 14 Mar 2020 11:28:22 +0000 (UTC)
-Received: by mail-pj1-f65.google.com with SMTP id np16so5493344pjb.4
- for <devel@driverdev.osuosl.org>; Sat, 14 Mar 2020 04:28:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:date:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=IEb+NSlMbsrypsWmkX+nuM5EY+ct1whAxHi5by7wFZk=;
- b=bG5aihcWf/+r0MsUj2isrV4f3QSpFroQialqMuYStk5Nevs/PLSH6f2w49GWMx/oP6
- G2MdC00xkDVCEADr0Rjp6z5PRXrNvhCBgrvybUrvH4yVOZZh4GS9qNPsTlUlZ7B+4Fev
- 9VT71bq8ZUBkWy2isWKKxhVd2GqnDj/abb8FkanwvIqVSVBlYXXPBrO3P9qaOUKvrAOV
- 5x9sgvgdOlhXYH8lPEK7hfNHKkhKgf5w6dLTb/V0Ns1TIfcsJFplgHxrVOaNvSsa2pWy
- Sv/vGKqaEOmcV4kIUnJaUSZQU6+cumfyNoLy6T3rP8xyGpb9jJXOF0Y+h07gSmgKJqlO
- tNCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:date:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=IEb+NSlMbsrypsWmkX+nuM5EY+ct1whAxHi5by7wFZk=;
- b=TycK3VUpJuV9xBH+YQruATTunLP7tzANyS1G2k0pxxceh4wtiLFpk941d4WnAYlf/0
- m2MuheUKFhOAn+zPXOuJqQyA/N2/Srq9y1jsgN47WuGawLBMot18JolTXntGawuiKIag
- 9i5vmRtMOvBnPeoZ/UNtQAVBOtnnT882VMMRYVs93lr/6R95HE22rBBPsi9VEQ0yuzbz
- UzSSL9alOWpGrXhcTiZLjWZSukVbdZDGuf04+dOu7dG3d6MJeeuNc6HHadNIvVL4t7UJ
- GjJ0zOmocbCzzFZ5bj+LEZwAvIulFX8sc6u9BrKrBqOsqJrTxedfV9dWFhENUp5yYl4S
- PngA==
-X-Gm-Message-State: ANhLgQ3JXlMCRrUz5F/ht9Cby74WerfkhLRTEl47MZn2Tb2jtq4ofVrY
- CzVmlOFNzk7fb37sx+fwXOY=
-X-Google-Smtp-Source: ADFU+vvWDA/UB5PKw9LjOeGxLGURwiON+mQeVoXZ4PlIhdgEdD1da3aGdyT6lGwiv2m6wxkHaHO2lA==
-X-Received: by 2002:a17:90a:c715:: with SMTP id
- o21mr15127998pjt.160.1584185301961; 
- Sat, 14 Mar 2020 04:28:21 -0700 (PDT)
-Received: from Shreeya-Patel ([113.193.35.211])
- by smtp.googlemail.com with ESMTPSA id 8sm21886437pfp.67.2020.03.14.04.28.18
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 14 Mar 2020 04:28:21 -0700 (PDT)
-Message-ID: <4deeaef8f8e0f23a9adbfd7d98840624e2994cf2.camel@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: rtw_mlme:
- Remove unnecessary conditions
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: Joe Perches <joe@perches.com>, gregkh@linuxfoundation.org, 
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
- outreachy-kernel@googlegroups.com, sbrivio@redhat.com,
- daniel.baluta@gmail.com,  nramas@linux.microsoft.com, hverkuil@xs4all.nl,
- Larry.Finger@lwfinger.net
-Date: Sat, 14 Mar 2020 16:58:16 +0530
-In-Reply-To: <25a1aca2c993ecb70ba7cd9c9e38bce9170a98b0.camel@perches.com>
-References: <20200313102912.17218-1-shreeya.patel23498@gmail.com>
- <25a1aca2c993ecb70ba7cd9c9e38bce9170a98b0.camel@perches.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
-Mime-Version: 1.0
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 142C087749
+ for <devel@driverdev.osuosl.org>; Sat, 14 Mar 2020 15:06:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1584198385;
+ bh=C8oAC+ephMsyHFHAO7X3i49cAhiXb0eeDtczwsGpuBY=;
+ h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=X0bfji3Ag7ntgnU1jP5MbvUy15OywE9nxm+kruRLzj8Xb8MNugc37vF7HCherswoK
+ hy9I/gb1ldkeMI8qJPetvJ/0BxulOPzaPS2r/zPFAg0HzryBeQNxaaiApEyAKkL2z8
+ MnHX6LmCgzrI9OHz7QLfFV9FF0EQYkcXBdm0QEOs=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx104
+ [212.227.17.174]) with ESMTPSA (Nemesis) id 1MIMbU-1j7aRo3fVc-00EOx6; Sat, 14
+ Mar 2020 16:06:25 +0100
+Date: Sat, 14 Mar 2020 16:06:13 +0100
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: vt6656: Use BIT_ULL() macro instead of bit
+ shift operation
+Message-ID: <20200314150612.GA3153@ubuntu>
+References: <20200307104929.7710-1-oscar.carter@gmx.com>
+ <20200308065538.GF3983392@kroah.com> <20200308161047.GA3285@ubuntu>
+ <561bc968-f88c-40e3-f53c-5c03f74f75ea@gmail.com>
+ <20200310095011.GC2516963@kroah.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200310095011.GC2516963@kroah.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Provags-ID: V03:K1:G+I101FTrb9L8V0q7JzFuevV31mO2bV7RWoMbDwOukp6UUeCKq9
+ +tlYqu3jGMXEhMHEHIEsXsbz4IdRepEVTgZIvRVn9cpSusRzjJ78TveUhvQJBDdeWOoa4ig
+ ToC3HrPK54JvPJ/AEIj+o1XYeNy7M2DtvAJMw0kLgZz1Gd96la3yOBsEARVrGE1DF7/36LJ
+ I/aA6sB1JwFyTZq4kYyiA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:PzB98S/cDts=:cqzKzxBBaelaaO+fJFPBOw
+ YQH97IGcpGThKtwrFTRzG3Z2OiCTzNVK1kGMx4xIuV/ZOaf9hrAJTAs3bmUMaYNF2Y8RqqVIX
+ 0GSgCYSYk4dzR6+3DD/YgFiT9MgWXig8IbGrf4sKE0huDe7SANS+HVNFrpxb9av/Ghpn0Ebkd
+ hNTxUAMeLfw1Kek0mVM50BAwyIzdwL8jCQnQ8XFo9fgZjZ3RfRgc+UUgHRASnl3Ci3v+co2kf
+ MWN4kSPO3EK0VuCMGZ+p7dAYDl6fx/Y/h6+o1eiQVJgMmDzhSILfKVOvvOMFNfKWpoPE3F+Wt
+ fMOWLUn56XpjNoPJcBKPdPr/GE+/XtfIguHvJOEuJ7bTi+/iWe55TKmNkzNMa9g+dTckGP0vZ
+ fE580RUst7/Pdn1QKf/9mzbg2zL6yRp4ukD/pvSw65OvYRiFfH2S/14lGr+jH5vL32TMnxxO1
+ F8LyiBQSMageC+Sy6ViMP27Zh+ABRtO5lG9gKR0iQJ1TDnpfXt/e/lOk7ifspRrzA8zWyd/J/
+ 1PfNBOzbuIKAr9GX0hlOMCBcTM79JqhnOtmnmMK77mJL2ydRv3Diic6XblnDmRd4AGXCxEDEy
+ C8QuuApOCr0wFbS4YWzxVTh2M17c9AhTuqerQYW5PpCekChBn85IWRocouhB/22tnZLKQKWNd
+ Pu7XbfofDWSt5q0Q1ed69QrP7R16etXb/u8cRXAqwACaDuF98zg21vB3Db5gHTNfFqqwDQR2e
+ zxBLgRuNpvdDQV+DMU+vXxPwMoyZmlFg139l4RG4kVL4thkTlyERIDtYuwZC39FOztQe2g6R9
+ zvEkRx+PQ5lbllCeZNqcSkQ4RT6z8ppY3/7tlBEGUM6JiGT6ZfjhkFCIVUSp/DGlCMHfcZdBx
+ M+JeFje4Beh1DdCc1jtdewTqyARfgew4jhFZBdxrH/cst3q6RcA5RtQ5UJBFXFRSAoMsCY6Ob
+ iWsmZaOn+xkNUVbwV0RJlqwuexIf1Xk7U2IJ/Dg3WuihpJxkQJboGXSlyOS2GiwFCQSHSBku3
+ SI0LHfL7U145lCAm+Ia2+yFLQxwvtbeEdFHe4e4218x82NXpm7p6NmxDEb5iz47oqIRsAm8D1
+ FUpAblvWWqyK1onXY/ECIi3fNryfaVIdHAfPp7s3F04pMNA6C2yexgspNtEo+no02IiiH86gC
+ oim+okUTaqKjDW6wrZqfyng0wnLN9lreSq3pB5k0ohtYIQWMEID4gcmM4gOTYf7cgZHc2fpgi
+ cOk9ZpFSECYNkKgpx
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,84 +91,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
+ Forest Bond <forest@alittletooquiet.net>,
+ Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 2020-03-13 at 14:21 -0700, Joe Perches wrote:
+On Tue, Mar 10, 2020 at 10:50:11AM +0100, Greg Kroah-Hartman wrote:
+> On Sun, Mar 08, 2020 at 07:22:07PM +0000, Malcolm Priestley wrote:
+> > >>>   */
+> > >>>  #undef __NO_VERSION__
+> > >>>
+> > >>> +#include <linux/bits.h>
+> > >>>  #include <linux/etherdevice.h>
+> > >>>  #include <linux/file.h>
+> > >>>  #include "device.h"
+> > >>> @@ -802,8 +803,7 @@ static u64 vnt_prepare_multicast(struct ieee80211_hw *hw,
+> > >>>
+> > >>>  	netdev_hw_addr_list_for_each(ha, mc_list) {
+> > >>>  		bit_nr = ether_crc(ETH_ALEN, ha->addr) >> 26;
+> > >>> -
+> > >>> -		mc_filter |= 1ULL << (bit_nr & 0x3f);
+> > >>> +		mc_filter |= BIT_ULL(bit_nr);
+> > >>
+> > >> Are you sure this does the same thing?  You are not masking off bit_nr
+> > >> anymore, why not?
+> > >
+> > > My reasons are exposed below:
+> > >
+> > > The ether_crc function returns an u32 type (unsigned of 32 bits). Then the right
+> > > shift operand discards the 26 lsb bits (the bits shifted off the right side are
+> > > discarded). The 6 msb bits of the u32 returned by the ether_crc function are
+> > > positioned in bit 5 to bit 0 of the variable bit_nr. Due to the right shift
+> > > happens over an unsigned type, the 26 new bits added on the left side will be 0.
+> > >
+> > > In summary, after the right bit shift operation we obtain in the variable bit_nr
+> > > (unsigned of 32 bits) the value represented by the 6 msb bits of the value
+> > > returned by the ether_crc function. So, only the 6 lsb bits of the variable
+> > > bit_nr are important. The 26 msb bits of this variable are 0.
+> > >
+> > > In this situation, the "and" operation with the mask 0x3f (mask of 6 lsb bits)
+> > > is unnecessary due to its purpose is to reset (set to 0 value) the 26 msb bits
+> > > that are yet 0.
+> >
+> > The mask is only there out of legacy originally it was 31(0x1f) and the
+> > bit_nr spread across two mc_filter u32 arrays.
+> >
+> > The mask is not needed now it is u64.
+> >
+> > The patch is fine.
+>
+> Ok, then the changelog needs to be fixed up to explain all of this and
+> resent.
 
-Hi Joe,
+Ok, I will create a new version patch with all of this information and I will
+resend it.
 
-> On Fri, 2020-03-13 at 15:59 +0530, Shreeya Patel wrote:
-> > Remove unnecessary if and else conditions since both are leading to
-> > the
-> > initialization of "phtpriv->ampdu_enable" with the same value.
-> > Also, remove the unnecessary else-if condition since it does
-> > nothing.
-> 
-> []
-> > diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-> > b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-> 
-> []
-> > @@ -2772,16 +2772,7 @@ void rtw_update_ht_cap(struct adapter
-> > *padapter, u8 *pie, uint ie_len, u8 channe
-> >  
-> >  	/* maybe needs check if ap supports rx ampdu. */
-> >  	if (!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable ==
-> > 1) {
-> > -		if (pregistrypriv->wifi_spec == 1) {
-> > -			/* remove this part because testbed AP should
-> > disable RX AMPDU */
-> > -			/* phtpriv->ampdu_enable = false; */
-> > -			phtpriv->ampdu_enable = true;
-> > -		} else {
-> > -			phtpriv->ampdu_enable = true;
-> > -		}
-> > -	} else if (pregistrypriv->ampdu_enable == 2) {
-> > -		/* remove this part because testbed AP should disable
-> > RX AMPDU */
-> > -		/* phtpriv->ampdu_enable = true; */
-> > +		phtpriv->ampdu_enable = true;
-> 
-> This isn't the same test.
-> 
-> This could be:
->  	if ((!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable ==
-> 1)) ||
-> 	    pregistrypriv->ampdu_enable == 2)
-> 		phtpriv->ampdu_enable = true;
-> 
-> Though it is probably more sensible to just set
-> phtpriv->ampdu_enable without testing whether or
-> not it's already set:
-> 
-> 	if (pregistrypriv->ampdu_enable == 1 ||
-> 	    pregistrypriv->ampdu_enable == 2)
-> 		phtpriv->ampdu_enable = true;
+>
+> thanks,
+>
+> greg k-h
 
-But the else-if block which I removed in v2 of this patch had nothing
-in the block.
-It was not assigning any value to "phtpriv->ampdu_enable". ( basically
-it was empty and useless)
+thanks,
 
-Now as per your suggestion if I do the change then the value of
-"phtpriv->ampdu_enable" will be changed to true when we have
-"pregistrypriv->ampdu_enable == 2" condition. But in real it should be
-the same as it was by default coming from the start of the function.
-( This is because the else-if block was empty and doing nothing )
-
-Please let me know if I was able to make you understand my point of
-view here. Also, please correct me if I am wrong.
-
-
-Thanks
-
-
-> 
-> 
-
+Oscar
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
