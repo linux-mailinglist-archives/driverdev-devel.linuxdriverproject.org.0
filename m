@@ -2,61 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 192B91891E8
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Mar 2020 00:25:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CCF57189252
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Mar 2020 00:55:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 041E425AA5;
-	Tue, 17 Mar 2020 23:25:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 21CF620494;
+	Tue, 17 Mar 2020 23:55:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5fIkS-IGPK+u; Tue, 17 Mar 2020 23:25:16 +0000 (UTC)
+	with ESMTP id zGloEeamDzkO; Tue, 17 Mar 2020 23:55:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0F4AC20529;
-	Tue, 17 Mar 2020 23:25:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5F82B2046F;
+	Tue, 17 Mar 2020 23:55:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0F1B21BF314
- for <devel@linuxdriverproject.org>; Tue, 17 Mar 2020 23:25:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4B66E1BF2AB
+ for <devel@linuxdriverproject.org>; Tue, 17 Mar 2020 23:55:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id F3AC5889EE
- for <devel@linuxdriverproject.org>; Tue, 17 Mar 2020 23:25:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3CEDA88C17
+ for <devel@linuxdriverproject.org>; Tue, 17 Mar 2020 23:55:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6NRyvhjt3hLg for <devel@linuxdriverproject.org>;
- Tue, 17 Mar 2020 23:25:08 +0000 (UTC)
+ with ESMTP id 2Z+7W1B66UzR for <devel@linuxdriverproject.org>;
+ Tue, 17 Mar 2020 23:55:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8788A8887B
- for <devel@driverdev.osuosl.org>; Tue, 17 Mar 2020 23:25:08 +0000 (UTC)
-IronPort-SDR: ioTKPsbm6Cmn3QnVho4Zao2JxIhhKHapjM+dslgvUE242revd2KGgainoTEhXyx55eMPzAv7+0
- LNvz8NWhKC6w==
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9224388C16
+ for <devel@driverdev.osuosl.org>; Tue, 17 Mar 2020 23:55:20 +0000 (UTC)
+IronPort-SDR: FGoj2l8XZ11v3YF42sNZfO2r/tC77bb5GyyAYhNJjylWp61cU0kamDkPJ22s8VlgKTryBg/Wl6
+ RYuVOWtRuUDg==
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2020 16:25:07 -0700
-IronPort-SDR: kCpzlsyZEJE4lTfa7iTgvHwURYAk5ne81DZk7x3vcELnlDzWyMPYcYbRPtIMLH7nnMtqHUuN3X
- 2AWyNJw8SWhg==
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Mar 2020 16:55:19 -0700
+IronPort-SDR: rYm9wc7p6ggyXsNE4oa3qLAC+2nhkO0JboDcNl8k1cNUAO/bLrbow3Nc0OG2s6o3BUldpox49/
+ G1QWpJ74w63w==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.70,565,1574150400"; 
- d="gz'50?scan'50,208,50";a="417734673"
+ d="gz'50?scan'50,208,50";a="391249175"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 17 Mar 2020 16:25:04 -0700
+ by orsmga004.jf.intel.com with ESMTP; 17 Mar 2020 16:55:17 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jELa3-000GSA-M4; Wed, 18 Mar 2020 07:25:03 +0800
-Date: Wed, 18 Mar 2020 07:24:29 +0800
+ id 1jEM3I-0005oM-AM; Wed, 18 Mar 2020 07:55:16 +0800
+Date: Wed, 18 Mar 2020 07:54:30 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Kaaira Gupta <kgupta@es.iitr.ac.in>
-Subject: [staging:staging-testing 222/222] drivers/ide/ide-gd.c:362:10:
- sparse: warning: Initializer entry defined twice
-Message-ID: <202003180724.owQ2TGg8%lkp@intel.com>
+Subject: [staging:staging-testing 222/222]
+ drivers/mtd/nand/raw/nand_legacy.c:42:17: sparse: warning: cast from
+ restricted __le16
+Message-ID: <202003180728.te9ZFdLb%lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="C7zPtVaVf+AK4Oqc"
+Content-Type: multipart/mixed; boundary="tThc/1wpZn/ma/RB"
 Content-Disposition: inline
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -77,7 +78,7 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---C7zPtVaVf+AK4Oqc
+--tThc/1wpZn/ma/RB
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -96,54 +97,40 @@ Reported-by: kbuild test robot <lkp@intel.com>
 
 All warnings (new ones prefixed by >>):
 
->> drivers/ide/ide-gd.c:362:10: sparse: warning: Initializer entry defined twice
-   drivers/ide/ide-gd.c:364:10: sparse:   also defined here
---
->> drivers/scsi/sr.c:689:10: sparse: warning: Initializer entry defined twice
-   drivers/scsi/sr.c:691:10: sparse:   also defined here
---
->> drivers/block/paride/pcd.c:277:10: sparse: warning: Initializer entry defined twice
-   drivers/block/paride/pcd.c:279:10: sparse:   also defined here
---
->> sound/soc/codecs/rt1015.c:844:24: sparse: warning: symbol 'rt1015_aif_dai_ops' was not declared. Should it be static?
->> sound/soc/codecs/rt1015.c:849:27: sparse: warning: symbol 'rt1015_dai' was not declared. Should it be static?
---
->> net/netfilter/nft_set_pipapo.c:739:6: sparse: warning: symbol 'nft_pipapo_get' was not declared. Should it be static?
+>> drivers/mtd/nand/raw/nand_legacy.c:42:17: sparse: warning: cast from restricted __le16
 
-vim +362 drivers/ide/ide-gd.c
+vim +42 drivers/mtd/nand/raw/nand_legacy.c
 
-c103d6ee69f93e Arnd Bergmann             2019-03-15  357  
-83d5cde47dedf0 Alexey Dobriyan           2009-09-21  358  static const struct block_device_operations ide_gd_ops = {
-5fef0e5c028394 Bartlomiej Zolnierkiewicz 2008-10-17  359  	.owner			= THIS_MODULE,
-6e9624b8caec29 Arnd Bergmann             2010-08-07  360  	.open			= ide_gd_unlocked_open,
-b2f21e057dfbaa Al Viro                   2008-10-16  361  	.release		= ide_gd_release,
-8a6cfeb6deca3a Arnd Bergmann             2010-07-08 @362  	.ioctl			= ide_gd_ioctl,
-c103d6ee69f93e Arnd Bergmann             2019-03-15  363  #ifdef CONFIG_COMPAT
-c103d6ee69f93e Arnd Bergmann             2019-03-15  364  	.ioctl			= ide_gd_compat_ioctl,
-c103d6ee69f93e Arnd Bergmann             2019-03-15  365  #endif
-5fef0e5c028394 Bartlomiej Zolnierkiewicz 2008-10-17  366  	.getgeo			= ide_gd_getgeo,
-5b03a1b140e13a Tejun Heo                 2011-03-09  367  	.check_events		= ide_gd_check_events,
-c3e33e043f5e9c Tejun Heo                 2010-05-15  368  	.unlock_native_capacity	= ide_gd_unlock_native_capacity,
-5fef0e5c028394 Bartlomiej Zolnierkiewicz 2008-10-17  369  	.revalidate_disk	= ide_gd_revalidate_disk
-5fef0e5c028394 Bartlomiej Zolnierkiewicz 2008-10-17  370  };
-5fef0e5c028394 Bartlomiej Zolnierkiewicz 2008-10-17  371  
+3d4af7c195850c Boris Brezillon 2018-09-07  32  
+3d4af7c195850c Boris Brezillon 2018-09-07  33  /**
+3d4af7c195850c Boris Brezillon 2018-09-07  34   * nand_read_byte16 - [DEFAULT] read one byte endianness aware from the chip
+3d4af7c195850c Boris Brezillon 2018-09-07  35   * @chip: NAND chip object
+3d4af7c195850c Boris Brezillon 2018-09-07  36   *
+3d4af7c195850c Boris Brezillon 2018-09-07  37   * Default read function for 16bit buswidth with endianness conversion.
+3d4af7c195850c Boris Brezillon 2018-09-07  38   *
+3d4af7c195850c Boris Brezillon 2018-09-07  39   */
+3d4af7c195850c Boris Brezillon 2018-09-07  40  static uint8_t nand_read_byte16(struct nand_chip *chip)
+3d4af7c195850c Boris Brezillon 2018-09-07  41  {
+3d4af7c195850c Boris Brezillon 2018-09-07 @42  	return (uint8_t) cpu_to_le16(readw(chip->legacy.IO_ADDR_R));
+3d4af7c195850c Boris Brezillon 2018-09-07  43  }
+3d4af7c195850c Boris Brezillon 2018-09-07  44  
 
-:::::: The code at line 362 was first introduced by commit
-:::::: 8a6cfeb6deca3a8fefd639d898b0d163c0b5d368 block: push down BKL into .locked_ioctl
+:::::: The code at line 42 was first introduced by commit
+:::::: 3d4af7c195850cfccaddc2cf03b010b95236b695 mtd: rawnand: Move legacy code to nand_legacy.c
 
-:::::: TO: Arnd Bergmann <arnd@arndb.de>
-:::::: CC: Jens Axboe <jaxboe@fusionio.com>
+:::::: TO: Boris Brezillon <boris.brezillon@bootlin.com>
+:::::: CC: Miquel Raynal <miquel.raynal@bootlin.com>
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---C7zPtVaVf+AK4Oqc
+--tThc/1wpZn/ma/RB
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICJlFcV4AAy5jb25maWcAlDzbcty2ku/5iinnJXlIIsm27N0tPYAkOAMPSTAAOJrxC0uR
+H4sICOpfcV4AAy5jb25maWcAlDzbcty2ku/5iinnJXlIIsm27N0tPYAkOAMPSTAAOJrxC0uR
 x45qbcmryzn23283wEvjQsUnlUrE7sat0Wj0DfPzTz+v2NPj3Zerx5vrq8+fv68+HW+P91eP
 xw+rjzefj/+zKuSqkWbFC2F+B+Lq5vbp2x/f3p73569Wr38///3kt/vrl6vt8f72+HmV391+
 vPn0BO1v7m5/+vkn+PdnAH75Cl3d//fq0/X1b29WvxTHv26ubldvfn8NrV//6v4A0lw2pVj3
@@ -1480,7 +1467,7 @@ dJPReTzH7Nn9VBI6PCAX0o+ygculi6Bp/rqge7At/wxZoEPLj1rs1Md6V5BOZ7rxQM1vdcEw
 jwc4weleb+WWI5C8U9NbCFm5TVZEDuTeHMkPoY812Nhp555WDG3jkswvZK6u4U9fLjwI5atl
 /xHvbkq2x/oGZty2l5X8fOrgEu25pJMvJ+iAk+JNo2eyIiQpjavG/wfVvLnCC5sEAA==
 
---C7zPtVaVf+AK4Oqc
+--tThc/1wpZn/ma/RB
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1491,4 +1478,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---C7zPtVaVf+AK4Oqc--
+--tThc/1wpZn/ma/RB--
