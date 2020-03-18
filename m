@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EE7618A24D
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Mar 2020 19:26:57 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B609518A28D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Mar 2020 19:44:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 77E74267EF;
-	Wed, 18 Mar 2020 18:26:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 171CF877E8;
+	Wed, 18 Mar 2020 18:44:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u-xjfN9s4RWL; Wed, 18 Mar 2020 18:26:54 +0000 (UTC)
+	with ESMTP id gkAg93PEDV+v; Wed, 18 Mar 2020 18:44:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 451E0261DB;
-	Wed, 18 Mar 2020 18:26:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0AAA2877F5;
+	Wed, 18 Mar 2020 18:44:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C54A81BF3DD
- for <devel@linuxdriverproject.org>; Wed, 18 Mar 2020 18:26:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C0A051BF3DD
+ for <devel@linuxdriverproject.org>; Wed, 18 Mar 2020 18:44:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AD8A823455
- for <devel@linuxdriverproject.org>; Wed, 18 Mar 2020 18:26:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BA41987E36
+ for <devel@linuxdriverproject.org>; Wed, 18 Mar 2020 18:44:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3gXm2+Y1kjK0 for <devel@linuxdriverproject.org>;
- Wed, 18 Mar 2020 18:26:49 +0000 (UTC)
+ with ESMTP id hp6kNmu0ujqv for <devel@linuxdriverproject.org>;
+ Wed, 18 Mar 2020 18:44:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id 580A82052E
- for <devel@driverdev.osuosl.org>; Wed, 18 Mar 2020 18:26:49 +0000 (UTC)
-IronPort-SDR: 2+rm8SPtRmLrKwM+twHKKXpr72Pkpl2Woc+2xu938FpFwIiwROpSClA17JeAdWaEK9wVTkmQUF
- 0HuoNTZENlJA==
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0712787E34
+ for <devel@driverdev.osuosl.org>; Wed, 18 Mar 2020 18:44:01 +0000 (UTC)
+IronPort-SDR: 1DnLxpp5ZFaaoYAOTA3ht1zMNkPMRhmfuyxW5v/uoH6hO4pvtse5lA+Vi4+dB2e/pMh+VyszGU
+ dmDlRHuwo6hw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2020 11:26:48 -0700
-IronPort-SDR: SkY1BB1Jwj9Z7+H7DBDd+3mrV1VlUd9dyGXy2JxsyRDRIIsS3r4rWSiPe0Gja0tOZj8nJ2u7R7
- U8nguQzxKZug==
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Mar 2020 11:44:01 -0700
+IronPort-SDR: FSyPFqejUdBZr1O2XulxkrljJlvLsVAH9MtZ8nLHlerroIZva1V4dpZmQ45FfSIdPlgC55krsQ
+ 48j/I7Oq0P3A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,568,1574150400"; d="scan'208";a="244907527"
+X-IronPort-AV: E=Sophos;i="5.70,568,1574150400"; d="scan'208";a="291394182"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 18 Mar 2020 11:26:46 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 18 Mar 2020 11:44:00 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jEdOw-000FVO-67; Thu, 19 Mar 2020 02:26:46 +0800
-Date: Thu, 19 Mar 2020 02:26:20 +0800
+ id 1jEdfb-0008rL-Mt; Thu, 19 Mar 2020 02:43:59 +0800
+Date: Thu, 19 Mar 2020 02:43:13 +0800
 From: kbuild test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-linus] BUILD SUCCESS
- 14800df6a020d38847fec77ac5a43dc221e5edfc
-Message-ID: <5e7267cc.0TAOK8U4qfvmnkI1%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 281d90e24f1378967531d715decf6b81ecba664e
+Message-ID: <5e726bc1.35Tme/e9VJNs/5nJ%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,10 +73,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
-branch HEAD: 14800df6a020d38847fec77ac5a43dc221e5edfc  Merge tag 'iio-fixes-for-5.6a' of git://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 281d90e24f1378967531d715decf6b81ecba664e  Merge tag 'iio-5.7a' of git://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-next
 
-elapsed time: 480m
+elapsed time: 485m
 
 configs tested: 164
 configs skipped: 0
@@ -90,50 +90,46 @@ arm                              allyesconfig
 arm64                            allmodconfig
 arm64                             allnoconfig
 arm64                            allyesconfig
-arm                           efm32_defconfig
 arm                         at91_dt_defconfig
-arm                        shmobile_defconfig
-arm64                               defconfig
+arm                           efm32_defconfig
 arm                          exynos_defconfig
 arm                        multi_v5_defconfig
-arm                           sunxi_defconfig
 arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                               defconfig
 sparc                            allyesconfig
-nios2                         3c120_defconfig
-s390                             allmodconfig
-i386                             alldefconfig
-i386                              allnoconfig
-mips                             allyesconfig
-arc                              allyesconfig
+xtensa                          iss_defconfig
 nios2                         10m50_defconfig
 sh                          rsk7269_defconfig
 sh                            titan_defconfig
-riscv                    nommu_virt_defconfig
-ia64                             alldefconfig
-s390                          debug_defconfig
-alpha                               defconfig
-m68k                             allmodconfig
+i386                              allnoconfig
+i386                             alldefconfig
 i386                             allyesconfig
 i386                                defconfig
+ia64                             alldefconfig
 ia64                             allmodconfig
-ia64                                defconfig
 ia64                              allnoconfig
 ia64                             allyesconfig
+ia64                                defconfig
+nios2                         3c120_defconfig
 c6x                        evmc6678_defconfig
-xtensa                          iss_defconfig
 c6x                              allyesconfig
 xtensa                       common_defconfig
 openrisc                 simple_smp_defconfig
 openrisc                    or1ksim_defconfig
+alpha                               defconfig
 csky                                defconfig
 nds32                             allnoconfig
 nds32                               defconfig
 h8300                     edosk2674_defconfig
 h8300                    h8300h-sim_defconfig
 h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
 m68k                       m5475evb_defconfig
 m68k                          multi_defconfig
 m68k                           sun3_defconfig
+arc                              allyesconfig
 arc                                 defconfig
 microblaze                      mmu_defconfig
 microblaze                    nommu_defconfig
@@ -141,12 +137,13 @@ powerpc                           allnoconfig
 powerpc                             defconfig
 powerpc                       ppc64_defconfig
 powerpc                          rhel-kconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
 mips                           32r2_defconfig
 mips                         64r6el_defconfig
 mips                             allmodconfig
 mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
+mips                             allyesconfig
 parisc                            allnoconfig
 parisc                           allyesconfig
 parisc                generic-32bit_defconfig
@@ -175,8 +172,8 @@ sh                   randconfig-a001-20200318
 xtensa               randconfig-a001-20200318
 x86_64               randconfig-b001-20200318
 x86_64               randconfig-b002-20200318
-x86_64               randconfig-b003-20200318
 i386                 randconfig-b001-20200318
+x86_64               randconfig-b003-20200318
 i386                 randconfig-b002-20200318
 i386                 randconfig-b003-20200318
 x86_64               randconfig-c001-20200318
@@ -221,33 +218,36 @@ arm64                randconfig-a001-20200318
 ia64                 randconfig-a001-20200318
 powerpc              randconfig-a001-20200318
 sparc                randconfig-a001-20200318
-riscv                            allmodconfig
 riscv                             allnoconfig
 riscv                            allyesconfig
 riscv                               defconfig
+riscv                    nommu_virt_defconfig
 riscv                          rv32_defconfig
-s390                             alldefconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                                defconfig
+riscv                            allmodconfig
 s390                       zfcpdump_defconfig
+s390                          debug_defconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                             alldefconfig
+s390                                defconfig
 sh                               allmodconfig
-sh                  sh7785lcr_32bit_defconfig
 sh                                allnoconfig
+sh                  sh7785lcr_32bit_defconfig
 sparc                               defconfig
-sparc64                          allmodconfig
+sparc64                             defconfig
 sparc64                           allnoconfig
 sparc64                          allyesconfig
-sparc64                             defconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
+sparc64                          allmodconfig
 um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
 x86_64                              fedora-25
 x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
