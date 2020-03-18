@@ -1,78 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 178BA18A1B3
-	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Mar 2020 18:41:20 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3EE7618A24D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 18 Mar 2020 19:26:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9205586D37;
-	Wed, 18 Mar 2020 17:41:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 77E74267EF;
+	Wed, 18 Mar 2020 18:26:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JzWoMOKr_ue9; Wed, 18 Mar 2020 17:41:17 +0000 (UTC)
+	with ESMTP id u-xjfN9s4RWL; Wed, 18 Mar 2020 18:26:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BD32386D2A;
-	Wed, 18 Mar 2020 17:41:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 451E0261DB;
+	Wed, 18 Mar 2020 18:26:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 47FB71BF2F1
- for <devel@linuxdriverproject.org>; Wed, 18 Mar 2020 17:41:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C54A81BF3DD
+ for <devel@linuxdriverproject.org>; Wed, 18 Mar 2020 18:26:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 43904203CA
- for <devel@linuxdriverproject.org>; Wed, 18 Mar 2020 17:41:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AD8A823455
+ for <devel@linuxdriverproject.org>; Wed, 18 Mar 2020 18:26:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2u2TQbXmrMU0 for <devel@linuxdriverproject.org>;
- Wed, 18 Mar 2020 17:41:13 +0000 (UTC)
+ with ESMTP id 3gXm2+Y1kjK0 for <devel@linuxdriverproject.org>;
+ Wed, 18 Mar 2020 18:26:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
- by silver.osuosl.org (Postfix) with ESMTPS id 9FF5A203C4
- for <devel@driverdev.osuosl.org>; Wed, 18 Mar 2020 17:41:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1584553260;
- bh=vCgXZ2I+Xf8X2pR7gWvHEO+dE4EhgtLquAj/ck7xEj8=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=Vnjc0av1x3dyOYUm1G/PujvpeZYIxuWq5g0K5EM1+bvDSRx97FEIyTPrlb0kwY3JO
- cyOwYS2kLNsdSTPnvvj0Ldm1s/Ax7tK7PnGiHOtTLL4ySA+d0Cfcb1U1wlkL7zYPCI
- oPqk0mkwTKn7k8JqhaVhg9Sp1qVCL9F9a7x+hb2A=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx004 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1MgNh7-1jmYSq3rBv-00hyB0; Wed, 18 Mar 2020 18:41:00 +0100
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2] staging: vt6656: Use ARRAY_SIZE instead of hardcoded size
-Date: Wed, 18 Mar 2020 18:40:15 +0100
-Message-Id: <20200318174015.7515-1-oscar.carter@gmx.com>
-X-Mailer: git-send-email 2.20.1
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by silver.osuosl.org (Postfix) with ESMTPS id 580A82052E
+ for <devel@driverdev.osuosl.org>; Wed, 18 Mar 2020 18:26:49 +0000 (UTC)
+IronPort-SDR: 2+rm8SPtRmLrKwM+twHKKXpr72Pkpl2Woc+2xu938FpFwIiwROpSClA17JeAdWaEK9wVTkmQUF
+ 0HuoNTZENlJA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Mar 2020 11:26:48 -0700
+IronPort-SDR: SkY1BB1Jwj9Z7+H7DBDd+3mrV1VlUd9dyGXy2JxsyRDRIIsS3r4rWSiPe0Gja0tOZj8nJ2u7R7
+ U8nguQzxKZug==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,568,1574150400"; d="scan'208";a="244907527"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga003.jf.intel.com with ESMTP; 18 Mar 2020 11:26:46 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jEdOw-000FVO-67; Thu, 19 Mar 2020 02:26:46 +0800
+Date: Thu, 19 Mar 2020 02:26:20 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-linus] BUILD SUCCESS
+ 14800df6a020d38847fec77ac5a43dc221e5edfc
+Message-ID: <5e7267cc.0TAOK8U4qfvmnkI1%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:3Kz+2ZK4OkT6fKoYDfLfppenzBOKnJHXnSZKnWuc2wQdKuuSwgZ
- LC7YodICd25iZrsFRfAefnR1nwcvgWMJRL83EWkr2AlFfxdcBUpBmw8z5LGAuKbTBxEekPu
- cuhwcore9TN9yZRzgKZ7KtzQZUw4u+RoQT3ufB5V4eLBa4yNXTAocMGTRtXWWfDV9oVqZzK
- A/6CatuXREpwgHSSz1LDA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:h0lERaXlW6w=:LJHAJpG0QQhm7qQW5MIU2W
- vQ+W+2gzCPTT5SB/X/gU88eOYBHO07m1KgH8hhpaIcBe08pYO7dRN6QZ5Hobu/RCR5GYZ01zR
- P6Tt6eY3CWToJgq1vZBKeHMHKVW1IRxUmKWkSTu1YHPZJ7HCilW7NJqEjSlfZds53dCHy38I1
- Ne9myH0rDQY/1FI/JPnlEIemlkIHYmzwxRhyhBWsevC/5f7YuilKg9DEq9su1JaRyzYPgUE0u
- zgHIW44TsadL3lkaFmcPgKhB32soxBDy7yXlsFiQfFC5PDxSsbCMwBy3FsbfVrTnsXweJO8tx
- BqlBfyssM5r3KUjfOTr9cNQ7EXwJueeRMY1DDCef7yeGV714dYtZ3Shr7S820t/ck6QHyRgZ4
- l9QAum7kjtV+PAuyH4/FQgPvwys2Fl53hkTfa9CESDTSUp1eqP6MEuuZMCbNvGLHOBlgZBxUu
- hZZlXa39A1B+hARBRxpdq9Hpi9Vkw6Xwkg+V7L2qmRnw7EOZkUUN4AxVMLoOZOJX8e8Bh1xph
- i9UXQYAGM0SNjZTgsqtWKA8vS1v+vXXAS0FyrYoySqQEBiGC4jg7GX0Gq1staQftKlaq65xUJ
- sTbkhDI4sCVjqLpSzEf2+orp8+pIruLsGNqzFzW10FfEu/5MUDLKsTCiEGm/KkrkUFWIPidhE
- ZW4z/+BuZGUxSEj13CziCEPo+Wc2kZD5jKQ/wv8WqArWQQwm7lAR+pfoVWhr9rGBdBRPdyDcL
- gE5dM5f/F1jP93kjzy0nkR7NkQeOcYGf0D5bCOY81TsEPc/LehHZk4naBBT22Wq27xsJvcvtE
- qBZp98MdjWZni8nL27ZUjhLFhk1TkeE4z/guwCT72ZG6GB0vLF8RvCJqLQyUYyGHSdTYX7Xck
- XbfdDwHyclf/mQ/6RbQsU/nLGFKWqeERX+oLJjoVj8afThI2IQpe3P6KjbeiFyh+/vtULz9Xc
- nEq/yAEretjrWwbR+dQf67pyKt/3vBjPJfoKCf+uIke5oRJiNcsDfKonGD7ljD5P+gyPG0dgf
- vk/7iOVxtQ0SFMfm/va+3yaaDiCzeuo/T8lpFf1Lqhpp3dCtGrtClt6sthR7g+/JqOUaKj52C
- XRpSKGnmDzGSVdczoroMl59+HLwAqj6FVgNlZaHyEwdJehnAPNZXpeG7ug8OofRoT/XTKcR3N
- SwourUVrIriE3hOPWuGfszqhl3KlzYykplK9UDG0VvAvQuSJsyT9NCOmW6NgUmiOduWI8zN1P
- HKfrbqiKZsYejCKP0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,70 +67,191 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
- Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use ARRAY_SIZE to replace the hardcoded size so we will never have a
-mismatch.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
+branch HEAD: 14800df6a020d38847fec77ac5a43dc221e5edfc  Merge tag 'iio-fixes-for-5.6a' of git://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus
 
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+elapsed time: 480m
+
+configs tested: 164
+configs skipped: 0
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                              allmodconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm                           efm32_defconfig
+arm                         at91_dt_defconfig
+arm                        shmobile_defconfig
+arm64                               defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                           sunxi_defconfig
+arm                        multi_v7_defconfig
+sparc                            allyesconfig
+nios2                         3c120_defconfig
+s390                             allmodconfig
+i386                             alldefconfig
+i386                              allnoconfig
+mips                             allyesconfig
+arc                              allyesconfig
+nios2                         10m50_defconfig
+sh                          rsk7269_defconfig
+sh                            titan_defconfig
+riscv                    nommu_virt_defconfig
+ia64                             alldefconfig
+s390                          debug_defconfig
+alpha                               defconfig
+m68k                             allmodconfig
+i386                             allyesconfig
+i386                                defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+c6x                        evmc6678_defconfig
+xtensa                          iss_defconfig
+c6x                              allyesconfig
+xtensa                       common_defconfig
+openrisc                 simple_smp_defconfig
+openrisc                    or1ksim_defconfig
+csky                                defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+parisc                            allnoconfig
+parisc                           allyesconfig
+parisc                generic-32bit_defconfig
+parisc                generic-64bit_defconfig
+x86_64               randconfig-a001-20200318
+x86_64               randconfig-a002-20200318
+x86_64               randconfig-a003-20200318
+i386                 randconfig-a001-20200318
+i386                 randconfig-a002-20200318
+i386                 randconfig-a003-20200318
+riscv                randconfig-a001-20200318
+m68k                 randconfig-a001-20200318
+nds32                randconfig-a001-20200318
+alpha                randconfig-a001-20200318
+parisc               randconfig-a001-20200318
+mips                 randconfig-a001-20200318
+c6x                  randconfig-a001-20200318
+h8300                randconfig-a001-20200318
+microblaze           randconfig-a001-20200318
+nios2                randconfig-a001-20200318
+sparc64              randconfig-a001-20200318
+csky                 randconfig-a001-20200318
+openrisc             randconfig-a001-20200318
+s390                 randconfig-a001-20200318
+sh                   randconfig-a001-20200318
+xtensa               randconfig-a001-20200318
+x86_64               randconfig-b001-20200318
+x86_64               randconfig-b002-20200318
+x86_64               randconfig-b003-20200318
+i386                 randconfig-b001-20200318
+i386                 randconfig-b002-20200318
+i386                 randconfig-b003-20200318
+x86_64               randconfig-c001-20200318
+x86_64               randconfig-c002-20200318
+x86_64               randconfig-c003-20200318
+i386                 randconfig-c001-20200318
+i386                 randconfig-c002-20200318
+i386                 randconfig-c003-20200318
+x86_64               randconfig-d001-20200318
+x86_64               randconfig-d002-20200318
+x86_64               randconfig-d003-20200318
+i386                 randconfig-d001-20200318
+i386                 randconfig-d002-20200318
+i386                 randconfig-d003-20200318
+x86_64               randconfig-e001-20200318
+x86_64               randconfig-e002-20200318
+x86_64               randconfig-e003-20200318
+i386                 randconfig-e001-20200318
+i386                 randconfig-e002-20200318
+i386                 randconfig-e003-20200318
+x86_64               randconfig-f001-20200318
+x86_64               randconfig-f002-20200318
+x86_64               randconfig-f003-20200318
+i386                 randconfig-f001-20200318
+i386                 randconfig-f002-20200318
+i386                 randconfig-f003-20200318
+x86_64               randconfig-g001-20200318
+x86_64               randconfig-g002-20200318
+x86_64               randconfig-g003-20200318
+i386                 randconfig-g001-20200318
+i386                 randconfig-g002-20200318
+i386                 randconfig-g003-20200318
+x86_64               randconfig-h001-20200318
+x86_64               randconfig-h002-20200318
+x86_64               randconfig-h003-20200318
+i386                 randconfig-h001-20200318
+i386                 randconfig-h002-20200318
+i386                 randconfig-h003-20200318
+arc                  randconfig-a001-20200318
+arm                  randconfig-a001-20200318
+arm64                randconfig-a001-20200318
+ia64                 randconfig-a001-20200318
+powerpc              randconfig-a001-20200318
+sparc                randconfig-a001-20200318
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+s390                             alldefconfig
+s390                              allnoconfig
+s390                             allyesconfig
+s390                                defconfig
+s390                       zfcpdump_defconfig
+sh                               allmodconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                                allnoconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                             defconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                                  defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                               rhel-7.6
+
 ---
-Changelog v1 -> v2
-- Use ARRAY_SIZE(priv->cck_pwr_tbl) everywhere instead of introducing a new
-  variable to hold its value.
-
- drivers/staging/vt6656/main_usb.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index 5e48b3ddb94c..acfcc11c3b61 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -23,6 +23,7 @@
-
- #include <linux/etherdevice.h>
- #include <linux/file.h>
-+#include <linux/kernel.h>
- #include "device.h"
- #include "card.h"
- #include "baseband.h"
-@@ -145,7 +146,7 @@ static int vnt_init_registers(struct vnt_private *priv)
-
- 	init_cmd->init_class = DEVICE_INIT_COLD;
- 	init_cmd->exist_sw_net_addr = priv->exist_sw_net_addr;
--	for (ii = 0; ii < 6; ii++)
-+	for (ii = 0; ii < ARRAY_SIZE(init_cmd->sw_net_addr); ii++)
- 		init_cmd->sw_net_addr[ii] = priv->current_net_addr[ii];
- 	init_cmd->short_retry_limit = priv->short_retry_limit;
- 	init_cmd->long_retry_limit = priv->long_retry_limit;
-@@ -184,7 +185,7 @@ static int vnt_init_registers(struct vnt_private *priv)
- 	priv->cck_pwr = priv->eeprom[EEP_OFS_PWR_CCK];
- 	priv->ofdm_pwr_g = priv->eeprom[EEP_OFS_PWR_OFDMG];
- 	/* load power table */
--	for (ii = 0; ii < 14; ii++) {
-+	for (ii = 0; ii < ARRAY_SIZE(priv->cck_pwr_tbl); ii++) {
- 		priv->cck_pwr_tbl[ii] =
- 			priv->eeprom[ii + EEP_OFS_CCK_PWR_TBL];
- 		if (priv->cck_pwr_tbl[ii] == 0)
-@@ -200,7 +201,7 @@ static int vnt_init_registers(struct vnt_private *priv)
- 	 * original zonetype is USA, but custom zonetype is Europe,
- 	 * then need to recover 12, 13, 14 channels with 11 channel
- 	 */
--	for (ii = 11; ii < 14; ii++) {
-+	for (ii = 11; ii < ARRAY_SIZE(priv->cck_pwr_tbl); ii++) {
- 		priv->cck_pwr_tbl[ii] = priv->cck_pwr_tbl[10];
- 		priv->ofdm_pwr_tbl[ii] = priv->ofdm_pwr_tbl[10];
- 	}
---
-2.20.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
