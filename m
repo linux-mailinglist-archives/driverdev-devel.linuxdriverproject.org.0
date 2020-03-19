@@ -1,82 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC4C918B966
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Mar 2020 15:31:23 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FBBC18B9C3
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Mar 2020 15:52:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 63ED6204EA;
-	Thu, 19 Mar 2020 14:31:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3416886CAC;
+	Thu, 19 Mar 2020 14:51:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DE-j-8ZofnVs; Thu, 19 Mar 2020 14:31:20 +0000 (UTC)
+	with ESMTP id bs-nflsQHhtH; Thu, 19 Mar 2020 14:51:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9432F228BA;
-	Thu, 19 Mar 2020 14:31:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D476486CDB;
+	Thu, 19 Mar 2020 14:51:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7DEE11BF3EE
- for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 14:31:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5C6951BF9B6
+ for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 14:51:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7AE5787EAD
- for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 14:31:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5937287E77
+ for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 14:51:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f09enEfeUH9F for <devel@linuxdriverproject.org>;
- Thu, 19 Mar 2020 14:31:08 +0000 (UTC)
+ with ESMTP id MIlLHmLEWgQ5 for <devel@linuxdriverproject.org>;
+ Thu, 19 Mar 2020 14:51:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
- [209.85.160.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 91A7087DA2
- for <devel@driverdev.osuosl.org>; Thu, 19 Mar 2020 14:31:08 +0000 (UTC)
-Received: by mail-qt1-f196.google.com with SMTP id i26so1917800qtq.8
- for <devel@driverdev.osuosl.org>; Thu, 19 Mar 2020 07:31:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=XRSQwj1UAGfFwFNmHluoDtjjlKsZS6P7Rnz6LpsU95A=;
- b=SGIMX3xHO84a004q/8VkTuoMsggJuvBD/A86+Wrv4Mx0tgVtSuPjzWiXEaN6Bn5A/T
- mhqZuHlelAFqHD344f+dp3W3OXBw2enGfraRIOrLUnRmUFyD9YRuwYnPentZsckbWEVY
- UjCXcbuYWNoDspHpGdf1ofausJcngrFvLZUJdgLmo7FRgn0+IuMgVLmxYJ8qBMtBAXTW
- FsXX/qtGVT5W8Be8ffdP1UA6HwSt107yzqEtexbmcBWZ+cNGz0k00eHhBE8+gPhFAjBJ
- gJ4IfjvDLPIaxehBiYmAPQWvpFS19gwvEkh1vEZTmyG+K/20jNuENlLbOnF2+cSF+JHW
- gNxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=XRSQwj1UAGfFwFNmHluoDtjjlKsZS6P7Rnz6LpsU95A=;
- b=A8aSBrwZyPKek4pzTrq1eEEv6QpnilQ1LspYE/93uFv34vl1lGD7dV7AydkWnjgTYV
- HiiGAfXr9XyCcRfXHHHzC4NR7XJHkg56AjsQ+JdVMCMse9ynbVFBqtCoGovfRVsgYTSn
- FUUJR2H7lqXwEw8N2HUASIR/vLlNc8BQ4KDjMtRIgiYh/RkIzicIBXgnH15/OJ0a8I3i
- tuTEMsbyCXbUn+iT+wIEHL45FpVt1k6HZyZ5b6BBHhHXun2Mwj6HwHWhMGv7dTNGa5lW
- /k7FT3s0aXOcjq/1Mus+0vXX0Rc4tts5NXdGresDDK2A9eWtOFD1Ea16FJSEicFYFj4B
- mMCA==
-X-Gm-Message-State: ANhLgQ1oymLa/NAdDM5GiQkCOzf40LS9DZNP6izDTD/A7ybVgMNxlf4w
- 5FBZqVJYLZ7mqz2y+zZby9DVIaNf
-X-Google-Smtp-Source: ADFU+vuz+JajNyDzvlFJSq2zZNG5rNyxGSMccLcMGESj4RT4NteSECL7k1rp9JDXOopOGtlPP713Mw==
-X-Received: by 2002:ac8:4cdc:: with SMTP id l28mr3212774qtv.248.1584628266764; 
- Thu, 19 Mar 2020 07:31:06 -0700 (PDT)
-Received: from localhost.localdomain ([198.52.167.216])
- by smtp.gmail.com with ESMTPSA id l22sm1670368qkj.120.2020.03.19.07.31.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Mar 2020 07:31:06 -0700 (PDT)
-Subject: Re: [PATCH] staging: exfat: Fix checkpatch.pl camelcase issues
-To: Greg KH <gregkh@linuxfoundation.org>
-References: <20200319140647.3926-1-aravind.pub@gmail.com>
- <20200319141243.GA30888@kroah.com>
-From: Aravind Ceyardass <aravind.pub@gmail.com>
-Message-ID: <1fed9204-59fb-8a1e-5adf-28183b3651e4@gmail.com>
-Date: Thu, 19 Mar 2020 10:31:05 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 76F9387DDD
+ for <devel@driverdev.osuosl.org>; Thu, 19 Mar 2020 14:51:53 +0000 (UTC)
+IronPort-SDR: 8OCk7mIOGSUQ2PWEESILltDXNfjgCrr/ytRsAZw90KKbhIDpfa67Pb0lsUSfjn5UfXDB3ClhFe
+ XI8e+EgALYIg==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Mar 2020 07:51:52 -0700
+IronPort-SDR: V3qqlFiDweDvfN0S8ToryOmMR4Dc/OwXtqgzWvPcVq7Ztz/Nif778owFV9u1SRTIvQ9B8QoSIv
+ yWfQU5KkUZOA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,572,1574150400"; d="scan'208";a="234193894"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 19 Mar 2020 07:51:51 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jEwWU-0001r0-Kp; Thu, 19 Mar 2020 22:51:50 +0800
+Date: Thu, 19 Mar 2020 22:51:00 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:debugfs_remove_return_value] BUILD REGRESSION
+ c5b434b51b2daaacdd0c69736631eaead95d9111
+Message-ID: <5e7386d4.26uSQiAAZlWcA3QG%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <20200319141243.GA30888@kroah.com>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,43 +67,180 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-fsdevel@vger.kernel.org, devel@driverdev.osuosl.org,
- valdis.kletnieks@vt.edu
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  debugfs_remove_return_value
+branch HEAD: c5b434b51b2daaacdd0c69736631eaead95d9111  debugfs: remove return value of debugfs_create_u32()
 
+Regressions in current branch:
 
-On 3/19/20 10:12 AM, Greg KH wrote:
-> On Thu, Mar 19, 2020 at 10:06:47AM -0400, Aravind Ceyardass wrote:
->> Fix ffsCamelCase function names and mixed case enums
->>
->> Signed-off-by: Aravind Ceyardass <aravind.pub@gmail.com>
->> ---
->>  drivers/staging/exfat/TODO          |   1 -
->>  drivers/staging/exfat/exfat.h       |  12 +-
->>  drivers/staging/exfat/exfat_super.c | 222 ++++++++++++++--------------
->>  3 files changed, 117 insertions(+), 118 deletions(-)
-> 
-> These files are not in linux-next, or in my tree, anymore.
-> 
-> Please always work against the latest development tree so you do not
-> waste duplicated effort.
-> 
-> thanks,
-> 
-> greg k-h
-> 
+arch/powerpc/kernel/traps.c:2293:4: error: void value not ignored as it ought to be
 
-As a very beginner, I used the staging(git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git) tree based on what I read on kernelnewbies.org
+Error ids grouped by kconfigs:
 
-What tree or branch should I use instead?
+recent_errors
+`-- powerpc-allyesconfig
+    `-- arch-powerpc-kernel-traps.c:error:void-value-not-ignored-as-it-ought-to-be
 
-Thanks
+elapsed time: 483m
 
-Aravind
+configs tested: 146
+configs skipped: 0
+
+arm                              allmodconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                               defconfig
+sparc                            allyesconfig
+nds32                               defconfig
+h8300                     edosk2674_defconfig
+mips                      malta_kvm_defconfig
+arc                              allyesconfig
+ia64                             allyesconfig
+s390                                defconfig
+microblaze                      mmu_defconfig
+openrisc                    or1ksim_defconfig
+ia64                                defconfig
+powerpc                             defconfig
+m68k                           sun3_defconfig
+i386                             allyesconfig
+riscv                    nommu_virt_defconfig
+sh                                allnoconfig
+c6x                        evmc6678_defconfig
+c6x                              allyesconfig
+i386                              allnoconfig
+i386                             alldefconfig
+i386                                defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+nios2                         3c120_defconfig
+nios2                         10m50_defconfig
+xtensa                          iss_defconfig
+xtensa                       common_defconfig
+openrisc                 simple_smp_defconfig
+nds32                             allnoconfig
+csky                                defconfig
+alpha                               defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+arc                                 defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                             allyesconfig
+mips                      fuloong2e_defconfig
+parisc                            allnoconfig
+parisc                           allyesconfig
+parisc                generic-32bit_defconfig
+parisc                generic-64bit_defconfig
+i386                 randconfig-a003-20200319
+i386                 randconfig-a001-20200319
+x86_64               randconfig-a001-20200319
+x86_64               randconfig-a002-20200319
+i386                 randconfig-a002-20200319
+x86_64               randconfig-a003-20200319
+riscv                randconfig-a001-20200319
+m68k                 randconfig-a001-20200319
+nds32                randconfig-a001-20200319
+alpha                randconfig-a001-20200319
+parisc               randconfig-a001-20200319
+mips                 randconfig-a001-20200319
+c6x                  randconfig-a001-20200319
+h8300                randconfig-a001-20200319
+microblaze           randconfig-a001-20200319
+nios2                randconfig-a001-20200319
+sparc64              randconfig-a001-20200319
+csky                 randconfig-a001-20200319
+openrisc             randconfig-a001-20200319
+s390                 randconfig-a001-20200319
+sh                   randconfig-a001-20200319
+xtensa               randconfig-a001-20200319
+x86_64               randconfig-b001-20200319
+x86_64               randconfig-b002-20200319
+x86_64               randconfig-b003-20200319
+i386                 randconfig-b001-20200319
+i386                 randconfig-b002-20200319
+i386                 randconfig-b003-20200319
+x86_64               randconfig-c001-20200319
+i386                 randconfig-c001-20200319
+x86_64               randconfig-c002-20200319
+i386                 randconfig-c003-20200319
+x86_64               randconfig-c003-20200319
+i386                 randconfig-c002-20200319
+x86_64               randconfig-d001-20200319
+i386                 randconfig-d001-20200319
+i386                 randconfig-d003-20200319
+i386                 randconfig-d002-20200319
+x86_64               randconfig-d002-20200319
+x86_64               randconfig-d003-20200319
+x86_64               randconfig-f001-20200319
+x86_64               randconfig-f002-20200319
+x86_64               randconfig-f003-20200319
+i386                 randconfig-f001-20200319
+i386                 randconfig-f002-20200319
+i386                 randconfig-f003-20200319
+arc                  randconfig-a001-20200319
+arm                  randconfig-a001-20200319
+arm64                randconfig-a001-20200319
+ia64                 randconfig-a001-20200319
+powerpc              randconfig-a001-20200319
+sparc                randconfig-a001-20200319
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+s390                       zfcpdump_defconfig
+s390                          debug_defconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                             alldefconfig
+sh                               allmodconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                                  defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
