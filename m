@@ -1,60 +1,96 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8CDA18BDFC
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Mar 2020 18:27:33 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E40B518BE58
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Mar 2020 18:42:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F295B88453;
-	Thu, 19 Mar 2020 17:27:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EC9DB87EF0;
+	Thu, 19 Mar 2020 17:42:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8GmPNSA+uw3u; Thu, 19 Mar 2020 17:27:31 +0000 (UTC)
+	with ESMTP id kvtSdbsDF8tx; Thu, 19 Mar 2020 17:42:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 721A588424;
-	Thu, 19 Mar 2020 17:27:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6579387F49;
+	Thu, 19 Mar 2020 17:42:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5EBD11BF20B
- for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 17:27:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0B67A1BF20B
+ for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 17:42:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5276D2048D
- for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 17:27:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 07B2F20483
+ for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 17:42:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ABiObQtthchu for <devel@linuxdriverproject.org>;
- Thu, 19 Mar 2020 17:27:28 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id F1644203AF
- for <devel@driverdev.osuosl.org>; Thu, 19 Mar 2020 17:27:27 +0000 (UTC)
-IronPort-SDR: e3JSWZ2fXKIP2Mx4F/yAahc48DlOGFW6gooiIRsJEIRYjs98lWsOnrimSj2XNonD82nSwFYlIB
- NsK0/tJXMq+w==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Mar 2020 10:27:26 -0700
-IronPort-SDR: f3WAZpkxmieoAHec/qN8EIwc4LNwipxxwuJL0TR/HVEYB4p9sIL5LQaDNKpHw0xsm/RM8nC4ZU
- APKqNg1W/mIg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,572,1574150400"; d="scan'208";a="291686157"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 19 Mar 2020 10:27:25 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jEyx2-0001KH-PU; Fri, 20 Mar 2020 01:27:24 +0800
-Date: Fri, 20 Mar 2020 01:26:35 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- 99917e37b9e78b96af304ddeb4f9b82a5948bbd9
-Message-ID: <5e73ab4b.YogBx7rQrUDo3uVF%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id E5Fr1Yr4KTSQ for <devel@linuxdriverproject.org>;
+ Thu, 19 Mar 2020 17:42:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.13])
+ by silver.osuosl.org (Postfix) with ESMTPS id 943312050C
+ for <devel@driverdev.osuosl.org>; Thu, 19 Mar 2020 17:42:09 +0000 (UTC)
+Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
+ mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1M3UEW-1jEQwX2Lqc-000euR; Thu, 19 Mar 2020 18:41:43 +0100
+Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id E8FFE65021B;
+ Thu, 19 Mar 2020 17:41:41 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at cetitec.com
+Received: from mail.cetitecgmbh.com ([127.0.0.1])
+ by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
+ [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vd7tABGtwXbN; Thu, 19 Mar 2020 18:41:40 +0100 (CET)
+Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id 2839E64FB10;
+ Thu, 19 Mar 2020 18:41:40 +0100 (CET)
+Received: from pflmari.corp.cetitec.com (10.8.5.52) by
+ PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
+ id 15.0.1497.2; Thu, 19 Mar 2020 18:41:40 +0100
+Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
+ id 696CB8050C; Thu, 19 Mar 2020 18:41:39 +0100 (CET)
+Date: Thu, 19 Mar 2020 18:41:39 +0100
+From: Alex Riesen <alexander.riesen@cetitec.com>
+To: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Subject: [PATCH v2 00/10] media: adv748x: add support for HDMI audio
+Message-ID: <cover.1584639664.git.alexander.riesen@cetitec.com>
+Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
+ Kieran Bingham <kieran.bingham@ideasonboard.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ devel@driverdev.osuosl.org, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org
 MIME-Version: 1.0
+Content-Disposition: inline
+X-Originating-IP: [10.8.5.52]
+X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
+ PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
+X-EsetResult: clean, is OK
+X-EsetId: 37303A290D7F536A6D7762
+X-Provags-ID: V03:K1:mvDYqnPYL3BVimmptxRglwccrdzJ9m6QeBKfaLIDjh4sDza7r3X
+ QdeASc2IvBmpfRKnTcr+Hx3CGUl8j6GckfAQ6mqDk0eoQaNdJZxIl5NP68k29ZGxG3WXIlE
+ I+VBXTnhpFnQtxrwxYdJ9JluO7AzkoyJcJ3f2150JxbjmK8x9aa722MWqEtUoGG/Hjo4kNO
+ QXUJJ0I1r5UmyC++mo2dQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:CIkuGflbLG0=:qce+Kh7+XiEPleqp/rhhcf
+ 5RjPHnQLaGasfR2ASI+SyeDCa7W9H6UZ+akD3D4yn4YIOcd39XM5QDPu9W2wTLoD/V20f4Msh
+ kfOa53CybeOD4pkAQjiPvjtH751S6aCf81JUcXM1Qhf7BlX8ojgU8WA4TmCX9W6USMRj1uaP/
+ Cu/UUls0M3iRa2JWjBVrgnVdYD7clhLEIxuLli/KuSX7vI8NVftjbzDFup5Ky4KWTFKoB1mmI
+ hvgv05bm1G521Fw2fbG0JYIgFHjPWs5frzgmE0JVCMLzDqRMv3kJbfoT7/K09ebxvYOOMUa/e
+ tnDuTt6vqJKe19LsNoidbHKfKm8wdvYU3k1Cg5CitpoArvsBunREsi5NDqstnj0VsEZUFJhMG
+ ktz940c4vr+2d8cKHK8aYLTPjw8KUJVSzdwVeYTU5QYNXLTr9QD5+bF7jkHLw8L6sg6BIOMwo
+ sJKR/l6UNg322xTLGJAJE4mTNDQBybyztKRxWSMr2pf9YUVQ+DJpI3YSjBCC1X8ske/O8cnB/
+ Glwl3VYdUiZ2f7uUGzULzvzAWB9BNiKU9tl/GOczmEzSOFWzExVKIpzs4KcpxkCxs4VJm3Yt9
+ UYbWZ953efQzawxCF1A0Ts/T01Z1hx+6xuFI5p1KJP/BQ/FVC+aUoq+tbcxXRLHJJ0tX4lGOc
+ Qa0xvTk+w3IuRWiyxGMVsAtGx9RgLNu2gvPZ9iGelqjHQQISkHE0glarxj2QfKDClaBRv2mHo
+ sF081BO89BMVMLYJXCVoRJO43Y1wGzDfzvveaPVSGROpHe1/QJclwge8xAo1fJPKPvF3/JEsf
+ HCTdMsGaho78iRk1+WJnNh5KqyIJq4BsnVu1uT7v+inoPwLENRfcBi4+LsNS3L1R2ZqcMtw
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,166 +103,99 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Geert Uytterhoeven <geert@linux-m68k.org>, Laurent
+ Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: 99917e37b9e78b96af304ddeb4f9b82a5948bbd9  Revert "drivers: base: power: wakeup.c: Use built-in RCU list checking"
+This adds minimal support for accessing the HDMI audio provided through the
+I2S port available on ADV7481 and ADV7482 decoder devices by ADI.
+The port carries audio signal from the decoded HDMI stream.
 
-elapsed time: 483m
+Currently, the driver only supports I2S in TDM, 8 channels a 24bit at 48kHz.
+Furthermore, only left-justified, 8 slots, 32bit/slot TDM, at 256fs has been
+ever tried.
 
-configs tested: 139
-configs skipped: 0
+An ADV7482 on the Renesas Salvator-X ES1.1 (R8A77950 SoC) was used during
+development of this code.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Changes since v1:
+  - Add ssi4_ctrl pin group to the sound pins. The pins are responsible for
+    SCK4 (sample clock) WS4 and (word boundary input), and are required for
+    SSI audio input over I2S.
+    Reported-by: Geert Uytterhoeven <geert@linux-m68k.org>
 
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm                           efm32_defconfig
-arm                         at91_dt_defconfig
-arm                        shmobile_defconfig
-arm64                               defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                           sunxi_defconfig
-arm                        multi_v7_defconfig
-nds32                               defconfig
-h8300                     edosk2674_defconfig
-s390                          debug_defconfig
-s390                                defconfig
-ia64                             allyesconfig
-microblaze                      mmu_defconfig
-openrisc                    or1ksim_defconfig
-ia64                                defconfig
-powerpc                             defconfig
-i386                             allyesconfig
-riscv                    nommu_virt_defconfig
-c6x                        evmc6678_defconfig
-c6x                              allyesconfig
-i386                              allnoconfig
-i386                             alldefconfig
-i386                                defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-xtensa                          iss_defconfig
-xtensa                       common_defconfig
-nios2                         3c120_defconfig
-nios2                         10m50_defconfig
-openrisc                 simple_smp_defconfig
-nds32                             allnoconfig
-csky                                defconfig
-alpha                               defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-parisc                generic-64bit_defconfig
-parisc                generic-32bit_defconfig
-parisc                           allyesconfig
-i386                 randconfig-a003-20200319
-i386                 randconfig-a001-20200319
-x86_64               randconfig-a001-20200319
-x86_64               randconfig-a002-20200319
-i386                 randconfig-a002-20200319
-x86_64               randconfig-a003-20200319
-riscv                randconfig-a001-20200319
-m68k                 randconfig-a001-20200319
-nds32                randconfig-a001-20200319
-alpha                randconfig-a001-20200319
-parisc               randconfig-a001-20200319
-mips                 randconfig-a001-20200319
-h8300                randconfig-a001-20200319
-sparc64              randconfig-a001-20200319
-c6x                  randconfig-a001-20200319
-nios2                randconfig-a001-20200319
-microblaze           randconfig-a001-20200319
-csky                 randconfig-a001-20200319
-openrisc             randconfig-a001-20200319
-s390                 randconfig-a001-20200319
-sh                   randconfig-a001-20200319
-xtensa               randconfig-a001-20200319
-x86_64               randconfig-b001-20200319
-x86_64               randconfig-b002-20200319
-x86_64               randconfig-b003-20200319
-i386                 randconfig-b001-20200319
-i386                 randconfig-b002-20200319
-i386                 randconfig-b003-20200319
-x86_64               randconfig-c001-20200319
-i386                 randconfig-c001-20200319
-x86_64               randconfig-c002-20200319
-x86_64               randconfig-d001-20200319
-i386                 randconfig-d001-20200319
-x86_64               randconfig-f001-20200319
-x86_64               randconfig-f002-20200319
-x86_64               randconfig-f003-20200319
-i386                 randconfig-f001-20200319
-i386                 randconfig-f002-20200319
-i386                 randconfig-f003-20200319
-arc                  randconfig-a001-20200319
-arm                  randconfig-a001-20200319
-arm64                randconfig-a001-20200319
-ia64                 randconfig-a001-20200319
-powerpc              randconfig-a001-20200319
-sparc                randconfig-a001-20200319
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-s390                       zfcpdump_defconfig
-s390                             alldefconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
+  - Removed the audio clock C from the list of clocks of adv748x,
+    it is exactly the other way around.
+    Reported-by: Geert Uytterhoeven <geert@linux-m68k.org>
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+  - Add an instance of (currently) fixed rate I2S master clock (MCLK),
+    connected to the audio_clk_c line of the R-Car SoC.
+    Explicitly declare the device a clock producer and add it to the
+    list of clocks used by the audio system of the Salvator-X board.
+    Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
+
+  - The implementation of DAI driver has been moved in a separate file
+    and modified to activate audio decoding and I2S streaming using
+    snd_soc_dai_... interfaces. This allows the driver to be used with
+    just ALSA interfaces.
+
+  - The ioctls for selecting audio output and muting have been removed,
+    as not applicable.
+    Suggested-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+    I have left implementation of the QUERYCAP in, as it seems to be required
+    by v4l-ctl to support loading of EDID for this node. And setting the EDID
+    is one feature I desperately need: there are devices which plainly refuse
+    to talk to the sink if it does not provide EDID they like.
+
+  - A device tree configuration without audio port will disable the audio code
+    altogether, supporting integrations where the port is not connected.
+
+  - The patches have been re-arranged, starting with the generic changes and
+    changes not related to audio directly. Those will be probably sent as a
+    separate series later.
+
+  - The whole series has been rebased on top of v5.6-rc6
+
+Alex Riesen (10):
+  media: adv748x: fix end-of-line terminators in diagnostic statements
+  media: adv748x: include everything adv748x.h needs into the file
+  media: adv748x: reduce amount of code for bitwise modifications of
+    device registers
+  media: adv748x: add definitions for audio output related registers
+  media: adv748x: add support for HDMI audio
+  media: adv748x: only activate DAI if it is described in device tree
+  dt-bindings: adv748x: add information about serial audio interface
+    (I2S/TDM)
+  arm64: dts: renesas: salvator: add a connection from adv748x codec
+    (HDMI input) to the R-Car SoC
+  media: adv748x: add support for log_status ioctl
+  media: adv748x: allow the HDMI sub-device to accept EDID
+
+ .../devicetree/bindings/media/i2c/adv748x.txt |  16 +-
+ .../boot/dts/renesas/r8a77950-salvator-x.dts  |   3 +-
+ .../boot/dts/renesas/salvator-common.dtsi     |  47 +++-
+ drivers/media/i2c/adv748x/Makefile            |   3 +-
+ drivers/media/i2c/adv748x/adv748x-afe.c       |   2 -
+ drivers/media/i2c/adv748x/adv748x-core.c      |  56 +++-
+ drivers/media/i2c/adv748x/adv748x-csi2.c      |   4 +-
+ drivers/media/i2c/adv748x/adv748x-dai.c       | 261 ++++++++++++++++++
+ drivers/media/i2c/adv748x/adv748x-hdmi.c      | 208 +++++++++++++-
+ drivers/media/i2c/adv748x/adv748x.h           |  67 ++++-
+ 10 files changed, 633 insertions(+), 34 deletions(-)
+ create mode 100644 drivers/media/i2c/adv748x/adv748x-dai.c
+
+-- 
+2.25.1.25.g9ecbe7eb18
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
