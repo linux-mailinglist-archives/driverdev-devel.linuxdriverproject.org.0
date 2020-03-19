@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE2DB18BEB2
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Mar 2020 18:48:18 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC3C518BEDF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Mar 2020 19:01:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D04186D9C;
-	Thu, 19 Mar 2020 17:48:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 362EA87F92;
+	Thu, 19 Mar 2020 18:01:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DuuA7QtMFso1; Thu, 19 Mar 2020 17:48:16 +0000 (UTC)
+	with ESMTP id 9u2DJGERBTxI; Thu, 19 Mar 2020 18:01:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B7D6D86D9A;
-	Thu, 19 Mar 2020 17:48:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BCF8587F6F;
+	Thu, 19 Mar 2020 18:01:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9FE5D1BF20B
- for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 17:48:13 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 561E41BF28A
+ for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 18:01:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9C40C88189
- for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 17:48:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5311A86D0F
+ for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 18:01:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OWpVDdxV01R3 for <devel@linuxdriverproject.org>;
- Thu, 19 Mar 2020 17:48:11 +0000 (UTC)
+ with ESMTP id yEHrQXtECyDi for <devel@linuxdriverproject.org>;
+ Thu, 19 Mar 2020 18:01:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
  [213.167.242.64])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8BD4D88187
- for <devel@driverdev.osuosl.org>; Thu, 19 Mar 2020 17:48:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 826F286C34
+ for <devel@driverdev.osuosl.org>; Thu, 19 Mar 2020 18:01:33 +0000 (UTC)
 Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
  [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 18F68DC4;
- Thu, 19 Mar 2020 18:48:08 +0100 (CET)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id C8FDFA53;
+ Thu, 19 Mar 2020 19:01:30 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1584640088;
- bh=muRfNh5vu7uoti9IKGxoYTDOSnB1SG2YiU3akIX1p/0=;
+ s=mail; t=1584640891;
+ bh=J0G9o/JIk2L9YAMrgEYnSflrJ+3mDjoCeRH1I4lPqik=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=cDHAcd1CttFh1TV6F8AOFaQM8f/vHXwI08QWjwTnH1LKoh4ajd0MNenKWprm45YMj
- ZKY8mCezz94b7mV0DOtsNC9tYj63WmdxfLlEEtGDCY0/UUbaA+cY0vWguUYAzRdc7u
- 2+MDgK7xO3tQUNYW0YrS32+Q13zWmyxsyNOMuTLg=
-Date: Thu, 19 Mar 2020 19:48:02 +0200
+ b=l0WeQLfY4oPvGyf+T8Bwr1JXg9rF3wSCsAL/YwHYR/F4V+bPvcMIBVex2/JmFRkPq
+ wH0uwGnyJ0/qvbpO0VFVj+sYnrBU90JDCIx7sBKD7tzafPZrokKyt3pDfmx4om2Nkv
+ yNo/D2bEwfHVQcIjR59Xc9qhUHFpFJvvzC1CHe/o=
+Date: Thu, 19 Mar 2020 20:01:25 +0200
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Alex Riesen <alexander.riesen@cetitec.com>
-Subject: Re: [PATCH v2 02/10] media: adv748x: include everything adv748x.h
- needs into the file
-Message-ID: <20200319174802.GH14585@pendragon.ideasonboard.com>
+Subject: Re: [PATCH v2 07/10] dt-bindings: adv748x: add information about
+ serial audio interface (I2S/TDM)
+Message-ID: <20200319180125.GJ14585@pendragon.ideasonboard.com>
 References: <cover.1584639664.git.alexander.riesen@cetitec.com>
- <fe109d58eaa34d68cad0f34bb048f827b336e024.1584639664.git.alexander.riesen@cetitec.com>
+ <c9ff553f804f178a247dca356306948e971432fb.1584639664.git.alexander.riesen@cetitec.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <fe109d58eaa34d68cad0f34bb048f827b336e024.1584639664.git.alexander.riesen@cetitec.com>
+In-Reply-To: <c9ff553f804f178a247dca356306948e971432fb.1584639664.git.alexander.riesen@cetitec.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -79,93 +79,84 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alexander,
+Hi Alex,
 
 Thank you for the patch.
 
-On Thu, Mar 19, 2020 at 06:41:48PM +0100, Alex Riesen wrote:
-> To follow the established practice of not depending on others to
-> pull everything in.
-> 
+On Thu, Mar 19, 2020 at 06:42:36PM +0100, Alex Riesen wrote:
+> As the driver has some support for the audio interface of the device,
+> the bindings file should mention it.
+
+While at it, how about converting the bindings to YAML ? :-) It can of
+course be done on top.
+
+> Reviewed-by: Rob Herring <robh@kernel.org>
 > Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
-
-Good idea. While at it, could you include "adv748x.h" as the very first
-header in at least one of the C files ? That will help ensuring the
-header stays self-contained in the future.
-
 > ---
->  drivers/media/i2c/adv748x/adv748x-afe.c  | 2 --
->  drivers/media/i2c/adv748x/adv748x-core.c | 2 --
->  drivers/media/i2c/adv748x/adv748x-csi2.c | 2 --
->  drivers/media/i2c/adv748x/adv748x-hdmi.c | 2 --
->  drivers/media/i2c/adv748x/adv748x.h      | 2 ++
->  5 files changed, 2 insertions(+), 8 deletions(-)
+>  .../devicetree/bindings/media/i2c/adv748x.txt    | 16 +++++++++++++++-
+>  1 file changed, 15 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/i2c/adv748x/adv748x-afe.c b/drivers/media/i2c/adv748x/adv748x-afe.c
-> index dbbb1e4d6363..ab0479641c10 100644
-> --- a/drivers/media/i2c/adv748x/adv748x-afe.c
-> +++ b/drivers/media/i2c/adv748x/adv748x-afe.c
-> @@ -11,8 +11,6 @@
->  #include <linux/mutex.h>
->  #include <linux/v4l2-dv-timings.h>
+> diff --git a/Documentation/devicetree/bindings/media/i2c/adv748x.txt b/Documentation/devicetree/bindings/media/i2c/adv748x.txt
+> index 4f91686e54a6..7d6db052c294 100644
+> --- a/Documentation/devicetree/bindings/media/i2c/adv748x.txt
+> +++ b/Documentation/devicetree/bindings/media/i2c/adv748x.txt
+> @@ -2,7 +2,9 @@
 >  
-> -#include <media/v4l2-ctrls.h>
-> -#include <media/v4l2-device.h>
->  #include <media/v4l2-dv-timings.h>
->  #include <media/v4l2-ioctl.h>
+>  The ADV7481 and ADV7482 are multi format video decoders with an integrated
+>  HDMI receiver. They can output CSI-2 on two independent outputs TXA and TXB
+> -from three input sources HDMI, analog and TTL.
+> +from three input sources HDMI, analog and TTL. There is also support for an
+> +I2S compatible interface connected to the audio processor of the HDMI decoder.
+
+s/I2S compatible/I2S-compatible/ ?
+
+> +The interface has TDM capability (8 slots, 32 bits, left or right justified).
 >  
-> diff --git a/drivers/media/i2c/adv748x/adv748x-core.c b/drivers/media/i2c/adv748x/adv748x-core.c
-> index c3fb113cef62..345f009de121 100644
-> --- a/drivers/media/i2c/adv748x/adv748x-core.c
-> +++ b/drivers/media/i2c/adv748x/adv748x-core.c
-> @@ -20,8 +20,6 @@
->  #include <linux/slab.h>
->  #include <linux/v4l2-dv-timings.h>
+>  Required Properties:
 >  
-> -#include <media/v4l2-ctrls.h>
-> -#include <media/v4l2-device.h>
->  #include <media/v4l2-dv-timings.h>
->  #include <media/v4l2-fwnode.h>
->  #include <media/v4l2-ioctl.h>
-> diff --git a/drivers/media/i2c/adv748x/adv748x-csi2.c b/drivers/media/i2c/adv748x/adv748x-csi2.c
-> index c43ce5d78723..78d391009b5a 100644
-> --- a/drivers/media/i2c/adv748x/adv748x-csi2.c
-> +++ b/drivers/media/i2c/adv748x/adv748x-csi2.c
-> @@ -8,8 +8,6 @@
->  #include <linux/module.h>
->  #include <linux/mutex.h>
+> @@ -16,6 +18,8 @@ Required Properties:
+>      slave device on the I2C bus. The main address is mandatory, others are
+>      optional and remain at default values if not specified.
 >  
-> -#include <media/v4l2-ctrls.h>
-> -#include <media/v4l2-device.h>
->  #include <media/v4l2-ioctl.h>
+> +  - #clock-cells: must be <0> if the I2S port is used
+
+Wouldn't it be simpler to set it to 0 unconditionally ?
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+> +
+>  Optional Properties:
 >  
->  #include "adv748x.h"
-> diff --git a/drivers/media/i2c/adv748x/adv748x-hdmi.c b/drivers/media/i2c/adv748x/adv748x-hdmi.c
-> index c557f8fdf11a..0dffcdf79ff2 100644
-> --- a/drivers/media/i2c/adv748x/adv748x-hdmi.c
-> +++ b/drivers/media/i2c/adv748x/adv748x-hdmi.c
-> @@ -8,8 +8,6 @@
->  #include <linux/module.h>
->  #include <linux/mutex.h>
+>    - interrupt-names: Should specify the interrupts as "intrq1", "intrq2" and/or
+> @@ -47,6 +51,7 @@ are numbered as follows.
+>  	  TTL		sink		9
+>  	  TXA		source		10
+>  	  TXB		source		11
+> +	  I2S		source		12
 >  
-> -#include <media/v4l2-ctrls.h>
-> -#include <media/v4l2-device.h>
->  #include <media/v4l2-dv-timings.h>
->  #include <media/v4l2-ioctl.h>
+>  The digital output port nodes, when present, shall contain at least one
+>  endpoint. Each of those endpoints shall contain the data-lanes property as
+> @@ -72,6 +77,7 @@ Example:
 >  
-> diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
-> index fccb388ce179..09aab4138c3f 100644
-> --- a/drivers/media/i2c/adv748x/adv748x.h
-> +++ b/drivers/media/i2c/adv748x/adv748x.h
-> @@ -19,6 +19,8 @@
->   */
+>  		#address-cells = <1>;
+>  		#size-cells = <0>;
+> +		#clock-cells = <0>;
 >  
->  #include <linux/i2c.h>
-> +#include <media/v4l2-ctrls.h>
-> +#include <media/v4l2-device.h>
->  
->  #ifndef _ADV748X_H_
->  #define _ADV748X_H_
+>  		interrupt-parent = <&gpio6>;
+>  		interrupt-names = "intrq1", "intrq2";
+> @@ -113,4 +119,12 @@ Example:
+>  				remote-endpoint = <&csi20_in>;
+>  			};
+>  		};
+> +
+> +		port@c {
+> +			reg = <12>;
+> +
+> +			adv7482_i2s: endpoint {
+> +				remote-endpoint = <&i2s_in>;
+> +			};
+> +		};
+>  	};
 
 -- 
 Regards,
