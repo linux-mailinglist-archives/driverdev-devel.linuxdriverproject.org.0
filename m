@@ -1,63 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2190B18D4B9
-	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Mar 2020 17:42:42 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3613A18D4A4
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Mar 2020 17:39:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 754F387657;
-	Fri, 20 Mar 2020 16:42:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 35D8A87BB8;
+	Fri, 20 Mar 2020 16:39:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BSaai0v2WWuT; Fri, 20 Mar 2020 16:42:39 +0000 (UTC)
+	with ESMTP id v749vVKTpxJs; Fri, 20 Mar 2020 16:39:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6BA1187639;
-	Fri, 20 Mar 2020 16:42:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9700D87FD2;
+	Fri, 20 Mar 2020 16:39:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D8C4C1BF278
- for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 16:42:35 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D4DF1BF278
+ for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 16:39:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C8CB487583
- for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 16:42:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 697F286257
+ for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 16:39:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ape8FcdoLgQy for <devel@linuxdriverproject.org>;
- Fri, 20 Mar 2020 16:42:34 +0000 (UTC)
+ with ESMTP id PgIT0Hx6Wgbv for <devel@linuxdriverproject.org>;
+ Fri, 20 Mar 2020 16:39:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.130])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1A7CA8758A
- for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 16:42:33 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.133])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0808186256
+ for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 16:39:10 +0000 (UTC)
 Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N5max-1jMVXI308Z-017EiU for <devel@driverdev.osuosl.org>; Fri, 20 Mar
- 2020 17:42:31 +0100
+ mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1MHX3R-1j2M6n4317-00DUqQ for <devel@driverdev.osuosl.org>; Fri, 20 Mar
+ 2020 17:39:09 +0100
 Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id 645C964F8B2
- for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 16:42:31 +0000 (UTC)
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id BE877650123
+ for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 16:39:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at cetitec.com
 Received: from mail.cetitecgmbh.com ([127.0.0.1])
  by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
  [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qjfXm-_C2V_g for <devel@driverdev.osuosl.org>;
- Fri, 20 Mar 2020 17:42:29 +0100 (CET)
+ with ESMTP id pjaQz4ViuR8N for <devel@driverdev.osuosl.org>;
+ Fri, 20 Mar 2020 17:39:08 +0100 (CET)
 Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id EC58C64CA33
- for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 17:42:29 +0100 (CET)
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id 5442C64E6C2
+ for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 17:39:08 +0100 (CET)
 Received: from pflmari.corp.cetitec.com (10.8.5.41) by
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Fri, 20 Mar 2020 17:42:29 +0100
+ id 15.0.1497.2; Fri, 20 Mar 2020 17:39:08 +0100
 Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id D8C8280506; Fri, 20 Mar 2020 17:12:04 +0100 (CET)
+ id 33D6A80505; Fri, 20 Mar 2020 17:12:04 +0100 (CET)
 Date: Fri, 20 Mar 2020 17:12:04 +0100
 From: Alex Riesen <alexander.riesen@cetitec.com>
 To: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: [PATCH v3 09/11] arm64: dts: renesas: salvator: add a connection
- from adv748x codec (HDMI input) to the R-Car SoC
-Message-ID: <077a97942890b79fef2b271e889055fc07c74939.1584720678.git.alexander.riesen@cetitec.com>
+Subject: [PATCH v3 08/11] dt-bindings: adv748x: add information about serial
+ audio interface (I2S/TDM)
+Message-ID: <5e7da04cd003778cf525eac96d8bacdf4a245a13.1584720678.git.alexander.riesen@cetitec.com>
 Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  Kieran Bingham <kieran.bingham@ideasonboard.com>,
  Geert Uytterhoeven <geert@linux-m68k.org>,
@@ -79,25 +79,23 @@ X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
 X-EsetResult: clean, is OK
 X-EsetId: 37303A290D7F536A6D7660
-X-Provags-ID: V03:K1:dKIuYYDa+JWrYdyj8fTlqV1g24jEFaFKA9/29W4yMo1ZD/Q0HFj
- Cbi5g2vaf+KLsWO5sMki0o9InFgqpNj9/+CbQfAn42RLqSfT4Uv+PPfk52Q44kdXMjctFHg
- 1hYNiAdDV6pN0mMW5UTMQUbVa/vrEKZ2MqW6l1acK04IQTIZbLmsLtOqre5gU0vW//x/POr
- 8dB0jgkyuu/fC23KyQeLg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:C23Xh+spJpw=:r8tWFcdAsy56d1+GiBGWI4
- UVnxK6AVenGbzKGFzUIRGnjc5jD6o4q49cTeS+F/j+Nh3CTs2FR+eqLDG2Mla7dUBPd26xO+Q
- TzBgdxcdTnt+r+RIM0EC1PXzlUTT5SRZrYgqi5ABV6xwu7JjobL5zQsA1wYHqjqJ65tvvHhzs
- Dut489TgQjBXTg+fBWQqEw/RCKF2twEMa45iaGyenccjokRWYKFyw2awo6bsnBUQQgwFfri4n
- YhqnVXKAfDDkze+vT/KAWP7XYIFKmeXSlpNSSYzSYYASUpBSAVti479gqVg5rbR3AtRHjwgfu
- 2FJ0HHAlxPVm9gcTyAP7zVoFWe/BjxEvoAFG5s4EDLylAXrraBHXNZ4yB6fzpiUX/B9S/Gluz
- SSqmVvc06N5Pkdbh106qAm/h9WCXWdJCfr8XQKSe1rKp3kxMQkGl5H18pgXsV+kFzIu8wjO6b
- zqzqL+ab3lK9A+kV+acFcw3A3Ugv5JsFbkyae6ZY5q6UkmJRa9TZiMYdKSug40tgpkDdtdOh1
- XasG1kjOluPOu2oxWoGTCYMyTJR5RW+AA/RQ3fysTxSX3B1+GMtK6nKUcukHMw/G+yK06GCrr
- U1sYQV27YUC4kPhxMZXPffFYz497zAdhrkH10WIRV0585ECm9VZpSnUzNDtYfe5GDbyo74/CQ
- TykDDOBuB4za3luWLBk53Xj+6Uj/qzd9wD+sf2BqeuQ1VnH8rNbFvRhxSTpychqxapQcZk3my
- rz/JtIrmR9AGsPOu4mI3nl/UH0ADFTy2IQeTsQMwUvI+NE8/A+ubXOXjrR/kEUisF94g/95I4
- acJN+Yvl6htbrMZNp7lMrrAGMlCuQ7lRtq0WCIrnwTv7iExYo34JFv4D2i52wmAv2EcGijVOm
- o5Q69nGG6lYyBVisUjQ4oOmUXG9AQrPctwTY5zqJwxC9/yflkwxYmRpxYc3Slu9SDU3nnzH0O
- QeBbsClnTtyMcMqErmLToWIO9Vg+aH/U=
+X-Provags-ID: V03:K1:bel314Y9mD0f/6iDPym16I+z8AN7eZOze/1do83YtBYUF61RkEe
+ 0GRdJxfN1N6txn1UprZ5H06rwReG5D9Ts4/FzwM6S1G37X8pZ36Tgx4RgPc0LmNXnnlfF1L
+ PGqq/hTKzSKTfJzAkKEMI4+n+K0o3XHwNNwvwQPuLZ9mes32ejv9+ekHM1pS9xB7KWkWpO2
+ OPtvi8HLESnpj38J6zDRA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:26IaKqw4xNE=:PaW+C/mKakAiww0NlrT442
+ dLbRFEU8HCWQ2vw+LDx6V2wjRrSBPLA0tJpoJCpnPs5rhAxgzwSE7jW3QN+eE1uEiz9liGcoH
+ UPOU2TE6XL9JVDtMoVtIvNfE3X21+6BzVFilNMelUYo3jXRo9XiNV6PRQktvK9BTyAnI1JOVH
+ rk7NCNONzTnxKARWCjLyJKNCoWcwbpJMg7T4/noBgdKUu4TkREnAbY/rwWy3jNJVHaonsaWuv
+ pg1dSOZO/5s1wHth/FiRw2LRBZIODhYQ16MjO0NRi+q2GMJ0VyzYu59WJu4FuW7NN8gZejPtT
+ Of3JXvxUvVssVcq9R1nYeR1M7pRNsbzUJkXk9bcsNvyUZkhxOi7ROIwYk9yJVdEEjkuW6pwY0
+ VkucHvct9dmuHAtNFKdOVni6BWsJg+5wZdoKKQnPE1U6Ve9fM3MmZSxIXLk3WJJUHWSQ3q3Vg
+ TM8CfSap9a83FzeAQFVvIU9nlD4NbRdUu3cy6F7WUIMjhYiJzHZPEDjaha5xZy/CNvL5eIpsk
+ tliFOUAE2NGkKE47ILdPn8JZUG28eV/p7Bo31XfbuNm8lWEWANX34CJZpIdJqFEIwybC0r5gn
+ ii1OwROBlpb58VOfkdEo8t1CYqTrL003x62TM8yn/ckkLITtcUJePeNpJeKMaVUYm3aQG3Eo3
+ RyzU0yTTIAUySkFeLKno5iGP+q5loP9ErKhmpuXzps5Q4fBvRup1LG2WwHDRmic03k6KqvmfS
+ flF1bzHuMXm4Szq/QKdDsqfXDJb8oCAuwndq7JxP5CGjbwYEIzRLhKPNyl251X5Dg+V87CGtz
+ HjJF3E2hXh+N9Y8GLUONYLX2WoDWifJD1UVJDOUrPvPc1g1cU/rW3tcBpLc70K0ahGPmC4C
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,98 +121,63 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As all known variants of the Salvator board have the HDMI decoder
-chip (the ADV7482) connected to the SSI4 on R-Car SoC, the ADV7482
-endpoint and the connection definitions are placed in the common board
-file.
-For the same reason, the CLK_C clock line and I2C configuration (similar
-to the ak4613, on the same interface) are added into the common file.
+As the driver has some support for the audio interface of the device,
+the bindings file should mention it.
 
 Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
-Reviewed-by: Geert Uytterhoeven <geert@linux-m68k.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 --
 
-v2:
-
-Also add ssi4_ctrl pin group in the sound pins. The pins are
-responsible for SCK4 (sample clock) WS4 and (word boundary input),
-and are required for SSI audio input over I2S.
-
-Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
-
-The adv748x shall provide its own implementation of the output clock
-(MCLK), connected to the audio_clk_c line of the R-Car SoC.
-
-If the frequency of the ADV748x MCLK were fixed, the clock
-implementation were not necessary, but it does not seem so: the MCLK
-depends on the value in a speed multiplier register and the input sample
-rate (48kHz).
-
-Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
-
-Remove audio clock C from the clocks of adv7482.
-
-The clocks property of the video-receiver node lists the input
-clocks of the device, which is quite the opposite from the
-original intention: the adv7482 on Salvator X boards is a
-provide of the MCLK clock for I2S audio output.
-
-Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
-
-Remove old definition of &sound_card.dais and reduce size of changes
-in the Salvator-X specific device tree source.
-
-Declare video-receiver a clock producer, as the adv748x driver
-implements the master clock used I2S audio output.
-
-Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
-
-The driver provides only MCLK clock, not the SCLK and LRCLK,
-which are part of the I2S protocol.
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+v3: remove optionality off MCLK clock cell to ensure the description
+    matches the hardware no matter if the line is connected.
+    Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
 ---
- .../boot/dts/renesas/r8a77950-salvator-x.dts  |  3 +-
- .../boot/dts/renesas/salvator-common.dtsi     | 47 +++++++++++++++++--
- 2 files changed, 44 insertions(+), 6 deletions(-)
+ .../devicetree/bindings/media/i2c/adv748x.txt    | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts b/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
-index 2438825c9b22..e16c146808b6 100644
---- a/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
-+++ b/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
-@@ -146,7 +146,8 @@ &sata {
- &sound_card {
- 	dais = <&rsnd_port0	/* ak4613 */
- 		&rsnd_port1	/* HDMI0  */
--		&rsnd_port2>;	/* HDMI1  */
-+		&rsnd_port2	/* HDMI1  */
-+		&rsnd_port3>;	/* adv7482 hdmi-in  */
- };
+diff --git a/Documentation/devicetree/bindings/media/i2c/adv748x.txt b/Documentation/devicetree/bindings/media/i2c/adv748x.txt
+index 4f91686e54a6..50a753189b81 100644
+--- a/Documentation/devicetree/bindings/media/i2c/adv748x.txt
++++ b/Documentation/devicetree/bindings/media/i2c/adv748x.txt
+@@ -2,7 +2,9 @@
  
- &usb2_phy2 {
-diff --git a/arch/arm64/boot/dts/renesas/salvator-common.dtsi b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-index 98bbcafc8c0d..ead7f8d7a929 100644
---- a/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-+++ b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-@@ -460,7 +460,7 @@ pca9654: gpio@20 {
- 		#gpio-cells = <2>;
- 	};
+ The ADV7481 and ADV7482 are multi format video decoders with an integrated
+ HDMI receiver. They can output CSI-2 on two independent outputs TXA and TXB
+-from three input sources HDMI, analog and TTL.
++from three input sources HDMI, analog and TTL. There is also support for an
++I2S-compatible interface connected to the audio processor of the HDMI decoder.
++The interface has TDM capability (8 slots, 32 bits, left or right justified).
  
--	video-receiver@70 {
-+	adv7482_hdmi_in: video-receiver@70 {
- 		compatible = "adi,adv7482";
- 		reg = <0x70 0x71 0x72 0x73 0x74 0x75
- 		       0x60 0x61 0x62 0x63 0x64 0x65>;
-@@ -469,6 +469,7 @@ video-receiver@70 {
+ Required Properties:
+ 
+@@ -16,6 +18,8 @@ Required Properties:
+     slave device on the I2C bus. The main address is mandatory, others are
+     optional and remain at default values if not specified.
+ 
++  - #clock-cells: must be <0>
++
+ Optional Properties:
+ 
+   - interrupt-names: Should specify the interrupts as "intrq1", "intrq2" and/or
+@@ -47,6 +51,7 @@ are numbered as follows.
+ 	  TTL		sink		9
+ 	  TXA		source		10
+ 	  TXB		source		11
++	  I2S		source		12
+ 
+ The digital output port nodes, when present, shall contain at least one
+ endpoint. Each of those endpoints shall contain the data-lanes property as
+@@ -72,6 +77,7 @@ Example:
  
  		#address-cells = <1>;
  		#size-cells = <0>;
-+		#clock-cells = <0>; /* the MCLK for I2S output */
++		#clock-cells = <0>;
  
  		interrupt-parent = <&gpio6>;
  		interrupt-names = "intrq1", "intrq2";
-@@ -510,6 +511,15 @@ adv7482_txb: endpoint {
+@@ -113,4 +119,12 @@ Example:
  				remote-endpoint = <&csi20_in>;
  			};
  		};
@@ -223,77 +186,10 @@ index 98bbcafc8c0d..ead7f8d7a929 100644
 +			reg = <12>;
 +
 +			adv7482_i2s: endpoint {
-+				remote-endpoint = <&rsnd_endpoint3>;
-+				system-clock-direction-out;
++				remote-endpoint = <&i2s_in>;
 +			};
 +		};
  	};
- 
- 	csa_vdd: adc@7c {
-@@ -684,7 +694,8 @@ sdhi3_pins_uhs: sd3_uhs {
- 	};
- 
- 	sound_pins: sound {
--		groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a";
-+		groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a",
-+			 "ssi4_data", "ssi4_ctrl";
- 		function = "ssi";
- 	};
- 
-@@ -733,8 +744,8 @@ &rcar_sound {
- 	pinctrl-0 = <&sound_pins &sound_clk_pins>;
- 	pinctrl-names = "default";
- 
--	/* Single DAI */
--	#sound-dai-cells = <0>;
-+	/* multi DAI */
-+	#sound-dai-cells = <1>;
- 
- 	/* audio_clkout0/1/2/3 */
- 	#clock-cells = <1>;
-@@ -758,8 +769,19 @@ &rcar_sound {
- 		 <&cpg CPG_MOD 1020>, <&cpg CPG_MOD 1021>,
- 		 <&cpg CPG_MOD 1019>, <&cpg CPG_MOD 1018>,
- 		 <&audio_clk_a>, <&cs2000>,
--		 <&audio_clk_c>,
-+		 <&adv7482_hdmi_in>,
- 		 <&cpg CPG_CORE CPG_AUDIO_CLK_I>;
-+	clock-names = "ssi-all",
-+		      "ssi.9", "ssi.8", "ssi.7", "ssi.6",
-+		      "ssi.5", "ssi.4", "ssi.3", "ssi.2",
-+		      "ssi.1", "ssi.0",
-+		      "src.9", "src.8", "src.7", "src.6",
-+		      "src.5", "src.4", "src.3", "src.2",
-+		      "src.1", "src.0",
-+		      "mix.1", "mix.0",
-+		      "ctu.1", "ctu.0",
-+		      "dvc.0", "dvc.1",
-+		      "clk_a", "clk_b", "clk_c", "clk_i";
- 
- 	ports {
- 		#address-cells = <1>;
-@@ -777,6 +799,21 @@ rsnd_endpoint0: endpoint {
- 				capture  = <&ssi1 &src1 &dvc1>;
- 			};
- 		};
-+		rsnd_port3: port@3 {
-+			reg = <3>;
-+			rsnd_endpoint3: endpoint {
-+				remote-endpoint = <&adv7482_i2s>;
-+
-+				dai-tdm-slot-num = <8>;
-+				dai-tdm-slot-width = <32>;
-+				dai-format = "left_j";
-+				mclk-fs = <256>;
-+				bitclock-master = <&adv7482_i2s>;
-+				frame-master = <&adv7482_i2s>;
-+
-+				capture = <&ssi4>;
-+			};
-+		};
- 	};
- };
- 
 -- 
 2.25.1.25.g9ecbe7eb18
 
