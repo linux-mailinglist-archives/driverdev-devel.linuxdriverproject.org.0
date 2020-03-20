@@ -2,62 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F3B818D444
-	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Mar 2020 17:22:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2ED5218D454
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Mar 2020 17:25:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1F1B4875FE;
-	Fri, 20 Mar 2020 16:22:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3BCE48760A;
+	Fri, 20 Mar 2020 16:25:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5HaxxdOjWDp6; Fri, 20 Mar 2020 16:22:09 +0000 (UTC)
+	with ESMTP id V-eU2eHvgDgc; Fri, 20 Mar 2020 16:25:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 69C35875F6;
-	Fri, 20 Mar 2020 16:22:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BE7CF87613;
+	Fri, 20 Mar 2020 16:25:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4F2CA1BF278
- for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 16:22:06 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 67FB01BF278
+ for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 16:25:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4B1308836E
- for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 16:22:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6324B2044C
+ for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 16:25:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vJuP5rJdwJRs for <devel@linuxdriverproject.org>;
- Fri, 20 Mar 2020 16:22:05 +0000 (UTC)
+ with ESMTP id Xo+VSpo6nmUs for <devel@linuxdriverproject.org>;
+ Fri, 20 Mar 2020 16:25:32 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.187])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 709B88832D
- for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 16:22:04 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.134])
+ by silver.osuosl.org (Postfix) with ESMTPS id B8101203D4
+ for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 16:25:31 +0000 (UTC)
 Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MN5W9-1iwpYK3x1p-00J5BS for <devel@driverdev.osuosl.org>; Fri, 20 Mar
- 2020 17:22:01 +0100
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1MY5wD-1ilo8b2K0z-00YSQw for <devel@driverdev.osuosl.org>; Fri, 20 Mar
+ 2020 17:25:28 +0100
 Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id B1E9C650374
- for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 16:22:01 +0000 (UTC)
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id 49413650374
+ for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 16:25:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at cetitec.com
 Received: from mail.cetitecgmbh.com ([127.0.0.1])
  by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
  [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GAsLqWvodHs1 for <devel@driverdev.osuosl.org>;
- Fri, 20 Mar 2020 17:22:01 +0100 (CET)
+ with ESMTP id 8IepyeI3B2pp for <devel@driverdev.osuosl.org>;
+ Fri, 20 Mar 2020 17:25:27 +0100 (CET)
 Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id 44AE364F444
- for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 17:22:01 +0100 (CET)
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id E5C6D64D388
+ for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 17:25:27 +0100 (CET)
 Received: from pflmari.corp.cetitec.com (10.8.5.41) by
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Fri, 20 Mar 2020 17:22:01 +0100
+ id 15.0.1497.2; Fri, 20 Mar 2020 17:25:27 +0100
 Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id 2255B80500; Fri, 20 Mar 2020 17:11:46 +0100 (CET)
-Date: Fri, 20 Mar 2020 17:11:46 +0100
+ id E8DB480501; Fri, 20 Mar 2020 17:11:47 +0100 (CET)
+Date: Fri, 20 Mar 2020 17:11:47 +0100
 From: Alex Riesen <alexander.riesen@cetitec.com>
 To: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: [PATCH v3 03/11] media: adv748x: reduce amount of code for bitwise
- modifications of device registers
-Message-ID: <88950969b1d16ff5fcd1b3458356c4cf5a9e6cff.1584720678.git.alexander.riesen@cetitec.com>
+Subject: [PATCH v3 04/11] media: adv748x: add definitions for audio output
+ related registers
+Message-ID: <c4314afadd7e0882d8e2cbcbe2fe9c6a46775016.1584720678.git.alexander.riesen@cetitec.com>
 Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  Kieran Bingham <kieran.bingham@ideasonboard.com>,
  Geert Uytterhoeven <geert@linux-m68k.org>,
@@ -79,23 +79,23 @@ X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
 X-EsetResult: clean, is OK
 X-EsetId: 37303A290D7F536A6D7662
-X-Provags-ID: V03:K1:2r3UzGriidNzaSJnucpHaMJOItFSTZy5pbBhorhHR6oe1HgKjdY
- Nu4JuwtwmaJjq36b9Al0iep3rb6oWZTBpaOREkmeLfT06TOHwrwUsASa8aSvqwqoa+K7yak
- F1DAWMZ6VviyQ0DzQO6fw0ZruzcjM+7eYTmiOaS1wYVaywK+Hi7uslQO86QDtjwraJN8fn8
- y8rs/2irkSf4GVfTWLFgg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5CtubzhIhCc=:1AqLjwDSdn+S1yWVxXa52R
- 8EGFKcIifJgIZad5tSclnV52g6GZneWEWLKv8nqVJjJvSuvKAiesLvvFTY6UKUYzoX9+OJ5k2
- bPoR9Lys8eTd0W8SjrFR7q+d8ivtAruIT89C9/3p86PD8c5pfAjTxUYMFE8xaiG1hK4+qW4Kg
- NA+/xgOCFd02d7gqrHOhb9xuGCEbT2wyPaDWENcdELA1MeOTdTycFr7xEQ7oGry3ADZUpid+O
- Dfcqpdo/eL0Lsfmsnxg9/g4nsKozdDDSBrejBzfhSZvq1LjynozbjLE4hH8C7BRsf9ofTcbpG
- /IVI5m9pPMwAb7esKIPoIyxXWsrpjEr20okg7KwqMYgLpXYe0AfVK8SB2EYIeqSIzDXxl6r5z
- FWgTYI+t8/y1TffWUsrkQI4nQ0ZPVIxrZpVAX7yTH4zsApD4fZC3TuRRUiPk2F+j1P+AhraIz
- kCDXI+YTxKsY/TLumyTQu3hXoOY0ohR+xvyhFjUDwiDXIK+CCa9SkBXHt3f5wcfhKA/0lSfGh
- cRwIX+sIWcVKxnEyEAgoHQ3X3ofXWS32Xu4ImNnUoNAOwFeVNhKXkRWlH4mfcOcjmoFkHCGus
- EMHOuMq+94cJ7jS+6sa7tIJRqdl3us42F4IHjQInzmAaYnYEOuBpQKNxuFYqLgQy7BOWiAZ4P
- oXhHlf78pQGc5db0pPkJ9nf6pJdQ4G4mMp/h9eUhYqCfnR9AwPHAoic7VJtMBB3zoquDmo5WO
- qPKAyBOTsYSxbv5qH0EWZKIXwVtnkazSBcliafmi8mcC9upBYI3Kz32e7KLIBVVIC9pVK56VP
- avfZQbzEy7sqyhbd/aMWoS9m/M0IaGjbVKSuYPXY5muXq72cIyVf2T/JvTw69fazuo7AhWh
+X-Provags-ID: V03:K1:k8za5Bv23NC/8vPt0lQdnLb9JXXZ0j4SxvEiZ+xyckNTvwJq/Qr
+ aF8c5i5wG0EAeT3CoHLMVHdB90uNN+Eg1L76MkD0J51/S4p3NmyLDeRpz8Ez2PHMA8mzqop
+ /3XIRUZD3vy/lO6jb/IPiqqf5iTaPzLCbSgiyhF5oYeRo7wa5ERQyZxtRZT3UhUZY3wEny+
+ Bh0WMgOgYIi71tQ6EFcZA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:J2boN0oXiqQ=:TaAkZs5YFhp7Nod08iJc6G
+ GA8DD3BnBXxVUCUYiIebaXoM/9R+ukQAK/Kc9ryFYiCLc6jaI5cXrZSm0r/wysFwFgruggu55
+ GPSMeovfRhoE9HpblaRL3JrR6SB8b9AxUPstrIcU0FcEXbgNBRIcBnn478VnXkc8yCDzY2Eti
+ 6EudCBGSN/z8r+wW+9DzWliTiQOjKG8dvxL5axcwRb8VT6wM00BP29Pa6nqUxk/6h255arAQ+
+ 6sJnBXybiu81UCDTjbmLOr8nYWSirFaCpYdcXaK+NxYy4iohUYGj1h06iBfYc7drTAhc1SLSF
+ 5oaYF5nBYEH/LFWNjIpTkH8WEv8LE5a2L/vzn63RPLDbwPSUAtADfDBa5PEKNj5P5YG3QFFks
+ KWBNM2XCfyRPnd3NdIEY48MEa+fUoiBrvYmkCSCxPjZhnfe+xW2qMdJ9CFmn+avEqsn0O5+8G
+ xLM4RZGwkjwh/Cd39/LOsbD4z13r80U4Gyof89cfvM3wT6y4q7Ex4LpFzBL4YBSvcPNvIzhLq
+ 9cj5Wyz/qA4C8D8TdzQTU58JMq7b4Nf+RmKPcUspKD7BrvjfF5wfRO3rgiAMb49x0php9JZnh
+ ylbuCsZwtPIrSK5rBhjdEGOOD+FLj1lgL+8XA63VLjKy3PLHe40HrJlE5vHr5yTjxz1uPP2UW
+ PzgvA51wEl1n8P+9Q4Z6S1JHNa6c/1lEa5otYJxQmS1PC5KbYRLvNgGsKWmuzZyEd1UNUmf6p
+ S1QeRYounz8MM+Z2wrGIrGNNKjd4Ksw4GCf1eoI5mBeXo9aWYScFtJjgX+RvEeCKXpTOhwsQD
+ R/tsDXVGb7PZjyggSV9zH4ZzV/P3ZUkVnxMntx00eCRIHPVlyqH2YEaP51QYQhmls7hcoGt
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,78 +121,76 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The regmap provides a convenient utility for this.
-The hdmi_* and dpll_* register modification macros added for symmetry
-with the existing operations (io_*, sdp_*).
-
 Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
---
-v3: remove _update name in favor of existing _clrset
 ---
- drivers/media/i2c/adv748x/adv748x-core.c |  6 ++++++
- drivers/media/i2c/adv748x/adv748x.h      | 14 +++++++++++---
- 2 files changed, 17 insertions(+), 3 deletions(-)
+ drivers/media/i2c/adv748x/adv748x.h | 32 +++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
-diff --git a/drivers/media/i2c/adv748x/adv748x-core.c b/drivers/media/i2c/adv748x/adv748x-core.c
-index 5c59aad319d1..8580e6624276 100644
---- a/drivers/media/i2c/adv748x/adv748x-core.c
-+++ b/drivers/media/i2c/adv748x/adv748x-core.c
-@@ -133,6 +133,12 @@ static int adv748x_write_check(struct adv748x_state *state, u8 page, u8 reg,
- 	return *error;
- }
- 
-+int adv748x_update_bits(struct adv748x_state *state, u8 page, u8 reg, u8 mask,
-+			u8 value)
-+{
-+	return regmap_update_bits(state->regmap[page], reg, mask, value);
-+}
-+
- /* adv748x_write_block(): Write raw data with a maximum of I2C_SMBUS_BLOCK_MAX
-  * size to one or more registers.
-  *
 diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
-index 09aab4138c3f..0a9d78c2870b 100644
+index 0a9d78c2870b..1a1ea70086c6 100644
 --- a/drivers/media/i2c/adv748x/adv748x.h
 +++ b/drivers/media/i2c/adv748x/adv748x.h
-@@ -393,25 +393,33 @@ int adv748x_write(struct adv748x_state *state, u8 page, u8 reg, u8 value);
- int adv748x_write_block(struct adv748x_state *state, int client_page,
- 			unsigned int init_reg, const void *val,
- 			size_t val_len);
-+int adv748x_update_bits(struct adv748x_state *state, u8 page, u8 reg,
-+			u8 mask, u8 value);
+@@ -226,6 +226,11 @@ struct adv748x_state {
  
- #define io_read(s, r) adv748x_read(s, ADV748X_PAGE_IO, r)
- #define io_write(s, r, v) adv748x_write(s, ADV748X_PAGE_IO, r, v)
--#define io_clrset(s, r, m, v) io_write(s, r, (io_read(s, r) & ~(m)) | (v))
-+#define io_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_IO, r, m, v)
+ #define ADV748X_IO_VID_STD		0x05
  
- #define hdmi_read(s, r) adv748x_read(s, ADV748X_PAGE_HDMI, r)
- #define hdmi_read16(s, r, m) (((hdmi_read(s, r) << 8) | hdmi_read(s, (r)+1)) & (m))
- #define hdmi_write(s, r, v) adv748x_write(s, ADV748X_PAGE_HDMI, r, v)
-+#define hdmi_clrset(s, r, m, v) \
-+	adv748x_update_bits(s, ADV748X_PAGE_HDMI, r, m, v)
++#define ADV748X_IO_PAD_CONTROLS		0x0e
++#define ADV748X_IO_PAD_CONTROLS_TRI_AUD	BIT(5)
++#define ADV748X_IO_PAD_CONTROLS_PDN_AUD	BIT(1)
++#define ADV748X_IO_PAD_CONTROLS1	0x1d
 +
-+#define dpll_read(s, r) adv748x_read(s, ADV748X_PAGE_DPLL, r)
-+#define dpll_clrset(s, r, m, v) \
-+	adv748x_update_bits(s, ADV748X_PAGE_DPLL, r, m, v)
+ #define ADV748X_IO_10			0x10	/* io_reg_10 */
+ #define ADV748X_IO_10_CSI4_EN		BIT(7)
+ #define ADV748X_IO_10_CSI1_EN		BIT(6)
+@@ -248,7 +253,21 @@ struct adv748x_state {
+ #define ADV748X_IO_REG_FF		0xff
+ #define ADV748X_IO_REG_FF_MAIN_RESET	0xff
  
- #define repeater_read(s, r) adv748x_read(s, ADV748X_PAGE_REPEATER, r)
- #define repeater_write(s, r, v) adv748x_write(s, ADV748X_PAGE_REPEATER, r, v)
++/* DPLL Map */
++#define ADV748X_DPLL_MCLK_FS		0xb5
++#define ADV748X_DPLL_MCLK_FS_N_MASK	GENMASK(2, 0)
++
+ /* HDMI RX Map */
++#define ADV748X_HDMI_I2S		0x03	/* I2S mode and width */
++#define ADV748X_HDMI_I2SBITWIDTH_MASK	GENMASK(4, 0)
++#define ADV748X_HDMI_I2SOUTMODE_SHIFT	5
++#define ADV748X_HDMI_I2SOUTMODE_MASK	\
++	GENMASK(6, ADV748X_HDMI_I2SOUTMODE_SHIFT)
++#define ADV748X_I2SOUTMODE_I2S 0
++#define ADV748X_I2SOUTMODE_RIGHT_J 1
++#define ADV748X_I2SOUTMODE_LEFT_J 2
++#define ADV748X_I2SOUTMODE_SPDIF 3
++
+ #define ADV748X_HDMI_LW1		0x07	/* line width_1 */
+ #define ADV748X_HDMI_LW1_VERT_FILTER	BIT(7)
+ #define ADV748X_HDMI_LW1_DE_REGEN	BIT(5)
+@@ -260,6 +279,16 @@ struct adv748x_state {
+ #define ADV748X_HDMI_F1H1		0x0b	/* field1 height_1 */
+ #define ADV748X_HDMI_F1H1_INTERLACED	BIT(5)
  
- #define sdp_read(s, r) adv748x_read(s, ADV748X_PAGE_SDP, r)
- #define sdp_write(s, r, v) adv748x_write(s, ADV748X_PAGE_SDP, r, v)
--#define sdp_clrset(s, r, m, v) sdp_write(s, r, (sdp_read(s, r) & ~(m)) | (v))
-+#define sdp_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_SDP, r, m, v)
++#define ADV748X_HDMI_MUTE_CTRL		0x1a
++#define ADV748X_HDMI_MUTE_CTRL_MUTE_AUDIO BIT(4)
++#define ADV748X_HDMI_MUTE_CTRL_WAIT_UNMUTE_MASK	GENMASK(3, 1)
++#define ADV748X_HDMI_MUTE_CTRL_NOT_AUTO_UNMUTE	BIT(0)
++
++#define ADV748X_HDMI_AUDIO_MUTE_SPEED	0x0f
++#define ADV748X_HDMI_AUDIO_MUTE_SPEED_MASK	GENMASK(4, 0)
++#define ADV748X_MAN_AUDIO_DL_BYPASS BIT(7)
++#define ADV748X_AUDIO_DELAY_LINE_BYPASS BIT(6)
++
+ #define ADV748X_HDMI_HFRONT_PORCH	0x20	/* hsync_front_porch_1 */
+ #define ADV748X_HDMI_HFRONT_PORCH_MASK	0x1fff
  
- #define cp_read(s, r) adv748x_read(s, ADV748X_PAGE_CP, r)
- #define cp_write(s, r, v) adv748x_write(s, ADV748X_PAGE_CP, r, v)
--#define cp_clrset(s, r, m, v) cp_write(s, r, (cp_read(s, r) & ~(m)) | (v))
-+#define cp_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_CP, r, m, v)
+@@ -281,6 +310,9 @@ struct adv748x_state {
+ #define ADV748X_HDMI_TMDS_1		0x51	/* hdmi_reg_51 */
+ #define ADV748X_HDMI_TMDS_2		0x52	/* hdmi_reg_52 */
  
- #define tx_read(t, r) adv748x_read(t->state, t->page, r)
- #define tx_write(t, r, v) adv748x_write(t->state, t->page, r, v)
++#define ADV748X_HDMI_REG_6D		0x6d	/* hdmi_reg_6d */
++#define ADV748X_I2S_TDM_MODE_ENABLE BIT(7)
++
+ /* HDMI RX Repeater Map */
+ #define ADV748X_REPEATER_EDID_SZ	0x70	/* primary_edid_size */
+ #define ADV748X_REPEATER_EDID_SZ_SHIFT	4
 -- 
 2.25.1.25.g9ecbe7eb18
 
