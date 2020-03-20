@@ -1,60 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84F7118BF07
-	for <lists+driverdev-devel@lfdr.de>; Thu, 19 Mar 2020 19:06:28 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C94C18C6A2
+	for <lists+driverdev-devel@lfdr.de>; Fri, 20 Mar 2020 05:52:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2D77187FAF;
-	Thu, 19 Mar 2020 18:06:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ECE1887AF3;
+	Fri, 20 Mar 2020 04:52:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BlVoEn1njQ5l; Thu, 19 Mar 2020 18:06:26 +0000 (UTC)
+	with ESMTP id oCqwwY-OjL18; Fri, 20 Mar 2020 04:52:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0938887F85;
-	Thu, 19 Mar 2020 18:06:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C26E587A11;
+	Fri, 20 Mar 2020 04:52:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 49FF91BF343
- for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 18:06:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6C9B81BF2A4
+ for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 04:52:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 465902326C
- for <devel@linuxdriverproject.org>; Thu, 19 Mar 2020 18:06:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6488822855
+ for <devel@linuxdriverproject.org>; Fri, 20 Mar 2020 04:52:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kPBVvB8gHd9w for <devel@linuxdriverproject.org>;
- Thu, 19 Mar 2020 18:06:22 +0000 (UTC)
+ with ESMTP id lTrr9GZCrTQw for <devel@linuxdriverproject.org>;
+ Fri, 20 Mar 2020 04:52:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
- [213.167.242.64])
- by silver.osuosl.org (Postfix) with ESMTPS id 1A3F020370
- for <devel@driverdev.osuosl.org>; Thu, 19 Mar 2020 18:06:21 +0000 (UTC)
-Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
- [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id C2134A53;
- Thu, 19 Mar 2020 19:06:19 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1584641180;
- bh=VVvaLIWzHjPnx7c9DWjDC6foO+LDj42e8xSFQBar0P4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=UimCi9VH4MJ4LH+9sfUT3icjCjPFW6O/NFih77tIZyeAKixwX3eS6m7f7ZewK8Zet
- iF6Qhg931tJqVp0tbmVvBFRy2vQJeCANnTFOfjaVdgsMuIfoynUAKBh7xSLxuw783x
- D52R5yQdOPmXEsfCl3yBOwhdZwTXqUynZlF/+f7c=
-Date: Thu, 19 Mar 2020 20:06:14 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Alex Riesen <alexander.riesen@cetitec.com>
-Subject: Re: [PATCH v2 03/10] media: adv748x: reduce amount of code for
- bitwise modifications of device registers
-Message-ID: <20200319180614.GL14585@pendragon.ideasonboard.com>
-References: <cover.1584639664.git.alexander.riesen@cetitec.com>
- <099ebaa317156ec8edab973d0445851337139e6b.1584639664.git.alexander.riesen@cetitec.com>
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2502420352
+ for <devel@driverdev.osuosl.org>; Fri, 20 Mar 2020 04:52:27 +0000 (UTC)
+IronPort-SDR: WSn0/YpKLsK3DJKbgOxITDU4d5DQkQsLlsVDvhP3AWtBtIHZWkDO1nX0EQuUq5w83TnU+PvxKB
+ sMqT7RKj+NkQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Mar 2020 21:52:26 -0700
+IronPort-SDR: YSXOS0fehTMUKSIaSXQwLKcggsQBrp3o8r6D5tj/WQsqC+wbZSuedfmACxFjGTzSJUQcFgvcZJ
+ Hf0aHkGqV3+w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,283,1580803200"; d="scan'208";a="418594030"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga005.jf.intel.com with ESMTP; 19 Mar 2020 21:52:24 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jF9dw-000C8W-89; Fri, 20 Mar 2020 12:52:24 +0800
+Date: Fri, 20 Mar 2020 12:51:42 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 3fce0276f98a5e4263735f86c5c35361fafa7a59
+Message-ID: <5e744bde.myc5CXLEDncPRVNg%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <099ebaa317156ec8edab973d0445851337139e6b.1584639664.git.alexander.riesen@cetitec.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,101 +67,179 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- devicetree@vger.kernel.org, Kieran Bingham <kieran.bingham@ideasonboard.com>,
- linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alex,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 3fce0276f98a5e4263735f86c5c35361fafa7a59  staging: rtl8723bs: os_dep: Correct typo in comments
 
-Thank you for the patch.
+elapsed time: 733m
 
-On Thu, Mar 19, 2020 at 06:41:53PM +0100, Alex Riesen wrote:
-> The regmap provides a convenient utility for this.
-> 
-> Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
-> ---
->  drivers/media/i2c/adv748x/adv748x-core.c |  6 ++++++
->  drivers/media/i2c/adv748x/adv748x.h      | 15 ++++++++++++---
->  2 files changed, 18 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/media/i2c/adv748x/adv748x-core.c b/drivers/media/i2c/adv748x/adv748x-core.c
-> index 345f009de121..36164a254d7b 100644
-> --- a/drivers/media/i2c/adv748x/adv748x-core.c
-> +++ b/drivers/media/i2c/adv748x/adv748x-core.c
-> @@ -133,6 +133,12 @@ static int adv748x_write_check(struct adv748x_state *state, u8 page, u8 reg,
->  	return *error;
->  }
->  
-> +int adv748x_update_bits(struct adv748x_state *state, u8 page, u8 reg, u8 mask,
-> +			u8 value)
-> +{
-> +	return regmap_update_bits(state->regmap[page], reg, mask, value);
-> +}
-> +
->  /* adv748x_write_block(): Write raw data with a maximum of I2C_SMBUS_BLOCK_MAX
->   * size to one or more registers.
->   *
-> diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
-> index 09aab4138c3f..c5245464fffc 100644
-> --- a/drivers/media/i2c/adv748x/adv748x.h
-> +++ b/drivers/media/i2c/adv748x/adv748x.h
-> @@ -393,25 +393,34 @@ int adv748x_write(struct adv748x_state *state, u8 page, u8 reg, u8 value);
->  int adv748x_write_block(struct adv748x_state *state, int client_page,
->  			unsigned int init_reg, const void *val,
->  			size_t val_len);
-> +int adv748x_update_bits(struct adv748x_state *state, u8 page, u8 reg,
-> +			u8 mask, u8 value);
->  
->  #define io_read(s, r) adv748x_read(s, ADV748X_PAGE_IO, r)
->  #define io_write(s, r, v) adv748x_write(s, ADV748X_PAGE_IO, r, v)
-> -#define io_clrset(s, r, m, v) io_write(s, r, (io_read(s, r) & ~(m)) | (v))
-> +#define io_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_IO, r, m, v)
-> +#define io_update(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_IO, r, m, v)
+configs tested: 152
+configs skipped: 0
 
-Those two are identical. Do we need both ? I would standardize on either
-*_update or *_clrset for all the functions here. Apart from that,
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+arm                              allmodconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                               defconfig
+sparc                            allyesconfig
+h8300                       h8s-sim_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                             alldefconfig
+i386                                defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                                defconfig
+nios2                         3c120_defconfig
+nios2                         10m50_defconfig
+c6x                        evmc6678_defconfig
+xtensa                          iss_defconfig
+c6x                              allyesconfig
+xtensa                       common_defconfig
+openrisc                 simple_smp_defconfig
+openrisc                    or1ksim_defconfig
+alpha                               defconfig
+csky                                defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+m68k                       m5475evb_defconfig
+m68k                           sun3_defconfig
+m68k                          multi_defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                             allyesconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+parisc                            allnoconfig
+parisc                           allyesconfig
+parisc                generic-32bit_defconfig
+parisc                generic-64bit_defconfig
+x86_64               randconfig-a001-20200319
+x86_64               randconfig-a002-20200319
+x86_64               randconfig-a003-20200319
+i386                 randconfig-a001-20200319
+i386                 randconfig-a002-20200319
+i386                 randconfig-a003-20200319
+alpha                randconfig-a001-20200319
+m68k                 randconfig-a001-20200319
+mips                 randconfig-a001-20200319
+nds32                randconfig-a001-20200319
+parisc               randconfig-a001-20200319
+riscv                randconfig-a001-20200319
+c6x                  randconfig-a001-20200319
+h8300                randconfig-a001-20200319
+microblaze           randconfig-a001-20200319
+nios2                randconfig-a001-20200319
+sparc64              randconfig-a001-20200319
+xtensa               randconfig-a001-20200319
+csky                 randconfig-a001-20200319
+openrisc             randconfig-a001-20200319
+sh                   randconfig-a001-20200319
+s390                 randconfig-a001-20200319
+x86_64               randconfig-b001-20200319
+x86_64               randconfig-b002-20200319
+x86_64               randconfig-b003-20200319
+i386                 randconfig-b001-20200319
+i386                 randconfig-b002-20200319
+i386                 randconfig-b003-20200319
+x86_64               randconfig-d001-20200319
+x86_64               randconfig-d002-20200319
+x86_64               randconfig-d003-20200319
+i386                 randconfig-d001-20200319
+i386                 randconfig-d002-20200319
+i386                 randconfig-d003-20200319
+x86_64               randconfig-e001-20200319
+x86_64               randconfig-e002-20200319
+x86_64               randconfig-e003-20200319
+i386                 randconfig-e001-20200319
+i386                 randconfig-e002-20200319
+i386                 randconfig-e003-20200319
+x86_64               randconfig-g001-20200319
+x86_64               randconfig-g002-20200319
+x86_64               randconfig-g003-20200319
+i386                 randconfig-g001-20200319
+i386                 randconfig-g002-20200319
+i386                 randconfig-g003-20200319
+x86_64               randconfig-h001-20200319
+x86_64               randconfig-h002-20200319
+x86_64               randconfig-h003-20200319
+i386                 randconfig-h001-20200319
+i386                 randconfig-h002-20200319
+i386                 randconfig-h003-20200319
+arc                  randconfig-a001-20200320
+arm                  randconfig-a001-20200320
+arm64                randconfig-a001-20200320
+ia64                 randconfig-a001-20200320
+powerpc              randconfig-a001-20200320
+sparc                randconfig-a001-20200320
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+s390                       zfcpdump_defconfig
+s390                          debug_defconfig
+s390                             alldefconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                             allyesconfig
+s390                                defconfig
+sh                          rsk7269_defconfig
+sh                               allmodconfig
+sh                            titan_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                                allnoconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                             defconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                                  defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
 
->  
->  #define hdmi_read(s, r) adv748x_read(s, ADV748X_PAGE_HDMI, r)
->  #define hdmi_read16(s, r, m) (((hdmi_read(s, r) << 8) | hdmi_read(s, (r)+1)) & (m))
->  #define hdmi_write(s, r, v) adv748x_write(s, ADV748X_PAGE_HDMI, r, v)
-> +#define hdmi_update(s, r, m, v) \
-> +	adv748x_update_bits(s, ADV748X_PAGE_HDMI, r, m, v)
-> +
-> +#define dpll_read(s, r) adv748x_read(s, ADV748X_PAGE_DPLL, r)
-> +#define dpll_update(s, r, m, v) \
-> +	adv748x_update_bits(s, ADV748X_PAGE_DPLL, r, m, v)
->  
->  #define repeater_read(s, r) adv748x_read(s, ADV748X_PAGE_REPEATER, r)
->  #define repeater_write(s, r, v) adv748x_write(s, ADV748X_PAGE_REPEATER, r, v)
->  
->  #define sdp_read(s, r) adv748x_read(s, ADV748X_PAGE_SDP, r)
->  #define sdp_write(s, r, v) adv748x_write(s, ADV748X_PAGE_SDP, r, v)
-> -#define sdp_clrset(s, r, m, v) sdp_write(s, r, (sdp_read(s, r) & ~(m)) | (v))
-> +#define sdp_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_SDP, r, m, v)
->  
->  #define cp_read(s, r) adv748x_read(s, ADV748X_PAGE_CP, r)
->  #define cp_write(s, r, v) adv748x_write(s, ADV748X_PAGE_CP, r, v)
-> -#define cp_clrset(s, r, m, v) cp_write(s, r, (cp_read(s, r) & ~(m)) | (v))
-> +#define cp_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_CP, r, m, v)
->  
->  #define tx_read(t, r) adv748x_read(t->state, t->page, r)
->  #define tx_write(t, r, v) adv748x_write(t->state, t->page, r, v)
-
--- 
-Regards,
-
-Laurent Pinchart
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
