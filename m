@@ -2,80 +2,83 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FA9A18E191
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Mar 2020 14:36:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C80F18E192
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Mar 2020 14:36:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC9BB87D39;
-	Sat, 21 Mar 2020 13:36:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 447A587EA2;
+	Sat, 21 Mar 2020 13:36:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J6QZq-Cc8j0I; Sat, 21 Mar 2020 13:36:33 +0000 (UTC)
+	with ESMTP id ZKb3R+8oMc1k; Sat, 21 Mar 2020 13:36:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DB7DB87BC2;
-	Sat, 21 Mar 2020 13:36:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B6AFB87B0A;
+	Sat, 21 Mar 2020 13:36:36 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7F9AB1BF28C
+ by ash.osuosl.org (Postfix) with ESMTP id 0FC7C1BF28C
  for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 13:36:30 +0000 (UTC)
+ Sat, 21 Mar 2020 13:36:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7CAB587402
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 09F53873F3
  for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 13:36:30 +0000 (UTC)
+ Sat, 21 Mar 2020 13:36:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5V0eR9BmkGbZ
+ with ESMTP id LL-0ErYE0p9D
  for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 13:36:29 +0000 (UTC)
+ Sat, 21 Mar 2020 13:36:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 193FC873F3
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 01D68873FE
  for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 13:36:29 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id t7so6149168wrw.12
+ Sat, 21 Mar 2020 13:36:30 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id b2so10818757wrj.10
  for <driverdev-devel@linuxdriverproject.org>;
  Sat, 21 Mar 2020 06:36:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=S6pjToPD7iTuvdIQPBsLJdBfwWwZFjlTQFPaT5VIZyc=;
- b=Y1dnQ2m0PrmJQWtlnFtAgM/druIlkn1cYZXg2GarkRpaumU9tCIprPG61HOQ2q5A/+
- M7e7Qt+JscXddFh7/auZKIhcJaDdmttBHZlqxHujtc4U7Iws2vWO+Qr6ktLCpB9PUjWx
- 3VSFALDyE5Td9JAerdeepaY0rtqIHu9HT8wKSJPn5Y8LJxPxcnqewJOgcpo5Ak0D8qO9
- 6ipSs3fvcfEj1UGXHQFANkxwQfYEfddmLNnHcmtOeCJpWXeJ+kb8Tx0r730UlJJMfZES
- cvxeYqqvmSnPca/2gt/Gzt2Qu++Zih71sAsBuNnOHPO22zvfnPi/0fCWfEYpg2JRuy6V
- sngg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=HXrQOFG9Qdq+ceB+eHjkh5OkFGt1HAzvh4DIUTXXoH0=;
+ b=q8bGKIgde85hhV52DfD2v2pQNAVQSqsyj/qC1hatgtGH3uBw8Ya4MLMnDpE9ihZshR
+ yC5WFP4PIki9izAsWHLioH4IknFJvoOcu51bRdRihHNvZru0kTIW2b/AnQkEoJqVT+Y6
+ iBVZ5/EaJCM2TbQE5gIkNDMcqMo4beJfwEX9cWcpUAfOTLR126F1xYjzMsfoQ2SEI9x6
+ OEAN2I2zfI7QfrSbUBnZORh+E5mBF1qu3cX1V858szD6nfOyS2AD5jhJfhZOnqjB/kHk
+ wPgcOQIM+jEZ4jHU3G4QG+w5Gd4mvcmMZevIGE/oLF9ju9zzaeSB8NOvKJhUNm/L5s5/
+ rDjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=S6pjToPD7iTuvdIQPBsLJdBfwWwZFjlTQFPaT5VIZyc=;
- b=P4SIG7O04kD6rjYsu0H6G+84md3pJiPowG9exBFbF/S9Q0Dkiy00ntR2ubDymCN1hP
- 9yXsOKAi0w0uOcGJ3AzdEgTjT9vPoXnZuntcEvFe14O6k71I2oPknmPuVIQvUIgFyP02
- bi9PliX4wvi7UOZRbmiNmI6mO9KQrOIQvJxQvGU/+hx6Kr0SsNr+8lcyr8WkzX9SreP1
- 2K+9598keTINX8V0cZH70Ro286sxqyXgcYxvvwrnerkcR/3geTJX8MfMiFUdesF38uUr
- XhgGGf6UsOuuXDK1sRpm8K7Fz+VfIoIs/4OgIWAlhqhsZ7KlEV4k6SZtUGYqaN8akzlt
- uRbA==
-X-Gm-Message-State: ANhLgQ3H8ZnACit8IF+VkwS/ZygzQEI34hNbUNKaNlif/StlG6+qfLTP
- ktvo6kXSfU/XI9G/H/0z/bo=
-X-Google-Smtp-Source: ADFU+vvKP7sxs85djIa1TT5WNY6xdsNBVAPcfoidNLBrWWNfGpUY/TX322qqxhL8X2ZPUw1dPrOJ6A==
-X-Received: by 2002:adf:90cd:: with SMTP id i71mr17340688wri.63.1584797787432; 
- Sat, 21 Mar 2020 06:36:27 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=HXrQOFG9Qdq+ceB+eHjkh5OkFGt1HAzvh4DIUTXXoH0=;
+ b=Nq6p9wOXcCe2YF0aWDDy2QoHYSZ8KKR5kQ7dHJ9IsGwI4c/eJuns/Fb3OG5Pa0tti5
+ rbu8NIbOUPx9Wg5NWnGgxLP2Gr+w5cDuT8/OguWFA7KbCNPd1aWSkv1opd6njLPBvgK+
+ 2anCvQhezavAKB/1VxaXBGw5/Hx9ZemfWkmbVv8svVAaFwncWvUQSO7f14xhyjcOlGpr
+ G+1J04aIK/aT6+ux1iENAr4a7jiGFI1T03HEc4wKDivqr/IRR5BxLGH/TvUQP8Jo4cN4
+ 5aKaaONmlO789v+TjBjCk5DthtuFEhvS27yJjmEra4m3NYa86KVwu9cFyGR23FDBpRWH
+ FFjw==
+X-Gm-Message-State: ANhLgQ3fpOAMW4h04hfKsIH4YxPws9NI7B6ZLF032XhRhEp+LG1rGIm0
+ 9KN28PdUhb6jXfkcMxmczxvCOlYf
+X-Google-Smtp-Source: ADFU+vtwFkb1hO2oF9VMGxoRa2HFDNGPRp/WmbZwawfEGaN4SmGLqCqW7zFy5JAO7RzC/4baJx7pLQ==
+X-Received: by 2002:a5d:69c7:: with SMTP id s7mr17277692wrw.165.1584797788613; 
+ Sat, 21 Mar 2020 06:36:28 -0700 (PDT)
 Received: from localhost.localdomain
  (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
- by smtp.gmail.com with ESMTPSA id 195sm12676043wmb.8.2020.03.21.06.36.26
+ by smtp.gmail.com with ESMTPSA id 195sm12676043wmb.8.2020.03.21.06.36.27
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Sat, 21 Mar 2020 06:36:26 -0700 (PDT)
+ Sat, 21 Mar 2020 06:36:28 -0700 (PDT)
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 1/4] staging: mt7621-pci: use builtin_platform_driver()
-Date: Sat, 21 Mar 2020 14:36:21 +0100
-Message-Id: <20200321133624.31388-1-sergio.paracuellos@gmail.com>
+Subject: [PATCH 2/4] staging: mt7621-pci: add myself as a contributor of the
+ driver
+Date: Sat, 21 Mar 2020 14:36:22 +0100
+Message-Id: <20200321133624.31388-2-sergio.paracuellos@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200321133624.31388-1-sergio.paracuellos@gmail.com>
+References: <20200321133624.31388-1-sergio.paracuellos@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -95,30 +98,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Macro builtin_platform_driver can be used for builtin drivers
-that don't do anything in driver init. So, use the macro
-builtin_platform_driver and remove some boilerplate code.
+During a long time I have been cleaning and fixing this driver
+in order to use current kernel's apis and try to get it out of
+the staging area. At the end the driver is mt7621 specific and
+has been completely re-written. Hence, add myself to the header
+as a contributor of this driver.
 
 Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- drivers/staging/mt7621-pci/pci-mt7621.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+ drivers/staging/mt7621-pci/pci-mt7621.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index 1a76968b70c3..b8065b777ff6 100644
+index b8065b777ff6..5e80479ce653 100644
 --- a/drivers/staging/mt7621-pci/pci-mt7621.c
 +++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -725,9 +725,4 @@ static struct platform_driver mt7621_pci_driver = {
- 	},
- };
+@@ -13,6 +13,9 @@
+  *
+  * May 2011 Bruce Chang
+  * support RT6855/MT7620 PCIe
++ *
++ * 2018-2020 Sergio Paracuellos <sergio.paracuellos@gmail.com>
++ * Re-write the driver for SoC mt7621
+  */
  
--static int __init mt7621_pci_init(void)
--{
--	return platform_driver_register(&mt7621_pci_driver);
--}
--
--module_init(mt7621_pci_init);
-+builtin_platform_driver(mt7621_pci_driver);
+ #include <linux/bitops.h>
 -- 
 2.25.1
 
