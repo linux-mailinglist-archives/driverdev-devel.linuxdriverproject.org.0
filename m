@@ -1,84 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C76D618DE7F
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Mar 2020 08:27:05 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 114DC18DE80
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Mar 2020 08:28:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C5E2F87731;
-	Sat, 21 Mar 2020 07:27:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2790727A04;
+	Sat, 21 Mar 2020 07:28:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kjy2ms9kY895; Sat, 21 Mar 2020 07:27:02 +0000 (UTC)
+	with ESMTP id NvWpTQwnKucw; Sat, 21 Mar 2020 07:28:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6AA808771E;
-	Sat, 21 Mar 2020 07:27:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 31F722154C;
+	Sat, 21 Mar 2020 07:28:15 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F3AE71BF2B9
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 53B2D1BF2B9
  for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 07:26:58 +0000 (UTC)
+ Sat, 21 Mar 2020 07:28:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id F0C7E88171
+ by silver.osuosl.org (Postfix) with ESMTP id 4FB792152C
  for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 07:26:58 +0000 (UTC)
+ Sat, 21 Mar 2020 07:28:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jX-fkHYG-WvI
+ with ESMTP id 8FXd1Njrlm9i
  for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 07:26:57 +0000 (UTC)
+ Sat, 21 Mar 2020 07:28:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 61C0687ECB
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5A9FF2078B
  for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 07:26:57 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id h4so10127967wru.2
+ Sat, 21 Mar 2020 07:28:12 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id a49so8325095otc.11
  for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 00:26:57 -0700 (PDT)
+ Sat, 21 Mar 2020 00:28:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=lG9nkY2XZld0PmI0b9r5Yr+AM3pD+8axJrQD6+4yosE=;
- b=Q/BvUomDMjYIkN2UDvfQKl36lpIhwbR9kE9iu9kOtbIdd/CZXGv85FPo9Hk2pAkAW3
- 1pE6hWieINcuBuJKNXSYYLGPwzNSvXzks3Ke/0wMrCfDM9rwWkUVAVJy7zOgr+WNrtnz
- 7OvKFKmhLD3A4YlRPgqub+adZ6awc9uLME755C1gS+aV51NabxOZKnJgL+pDMnutHrWq
- 34RssmeTEEeEEl9rfj3HneHT99cn3xNqw8ZXCDywxt5k9vAYAXyvSXx3pQrVLpkKakNI
- EpsRlsk4SfAEynWoNiyijMWxXUNiktanILoWzd1uvYk+fe3joM8pnKiz/r915dJV5Jco
- nsjw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ehmxsElx8JC4+OTBkwJv81nkSr8Vpt5h0hNdNvgDzB8=;
+ b=D+drk0+FSDXYLQttkSOz4WWJlscrl2SpQlDWNqJNDIGr/zWmt0G2yZzYpO9yhh+qEV
+ qWzLHbpjKmDGy/dJQupxoLy07Wu7s3dUzfbpCpqBkiYIzCjAqZE4x126MuxP8pFzlSz+
+ 4Hzh3409zN//LKDifyNzSRDq4ZC7sEO7S/3sV6cH1aZGM5ih2nq52Y8PuLTsNuTHNhep
+ pXyMiQgJ2lK+2BmX88D12q8LjuVP8YQYrJy2Ya0oLTtRfi6vooq74nO7YUrZBJcEAEFo
+ koXQTw8nipymNqwzhPbjXvhvjFaeLf2RSoPanEWlHDrPNivNR07leGx3qFwfUcHOtzi+
+ u5KA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=lG9nkY2XZld0PmI0b9r5Yr+AM3pD+8axJrQD6+4yosE=;
- b=HY06bd+tTohb/brOgdLmzuLR/j+UAh2/OtekJg5J0wmPytwKVGDo05bDPe8EGexU6B
- Oypvrv2ve8P++HdTExZgsPbzru/BEN8jyUaoOfbQEue/PSX8XIVTCJqhjDyL2fwHL40p
- Zqu1mwxnYDJk8ClgBZXGUAG/1KxoULhimuE/yQJhXeZw6WGbkI4c+N48WIpWEvEsyYrn
- dkksYt/kHybqWT0voM7AK5GnYP33ocuoc9UqkWbCbuXMDHVFmYSSNR7K8l2JTtz5pWI7
- NqpEi1P5zIE3+aOIpz1wev/UPU0iuWbL48aRRFezh1762fUx+gFZVzRZWaIXZtQ9XUAq
- jx6Q==
-X-Gm-Message-State: ANhLgQ2MSaUCyqJLfF9ASWo8EmIlOATDzZXGm/J4SlIajmj5dnSUZvEq
- iUen3z/USN3AhMx8KYd1I00=
-X-Google-Smtp-Source: ADFU+vs5sOi8hiCRnJYXWs4cHjw6nig90S8JnfAJFJvsZNin6JW8MwfIeTdtZ5Wywr/TJ8AV61ypbQ==
-X-Received: by 2002:a5d:6289:: with SMTP id k9mr15642569wru.36.1584775615649; 
- Sat, 21 Mar 2020 00:26:55 -0700 (PDT)
-Received: from localhost.localdomain
- (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
- by smtp.gmail.com with ESMTPSA id w67sm10723126wmb.41.2020.03.21.00.26.54
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Sat, 21 Mar 2020 00:26:55 -0700 (PDT)
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 2/2] staging: mt7621-pci: delete release gpios related code
-Date: Sat, 21 Mar 2020 08:26:50 +0100
-Message-Id: <20200321072650.7784-3-sergio.paracuellos@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200321072650.7784-1-sergio.paracuellos@gmail.com>
-References: <20200321072650.7784-1-sergio.paracuellos@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ehmxsElx8JC4+OTBkwJv81nkSr8Vpt5h0hNdNvgDzB8=;
+ b=jy/XRgDFTrIseN0i2TFuWuKKiZOEXj/MtK/cs6lM+lteEYnNEQZHGHDN83sJ/7YOq7
+ JTuNxhb4GHuRKboq6OhAzmhCNNEkNwc7/7qcMGpd2C4pFlY2CnE7akZjVljiCiHc4tLm
+ HN00u+jG6paB5j9TB6cBsEY+wuW0GDifQpPf4A6Uep1xy6chkV+CFIMOK1HeXnxxb7v8
+ cZmWK99Uhd4SeHJaCY6Rnmzow3Pe8fTrw77yCfNesXrnigJRoaKkLCuAwmxg9fssgQSX
+ JlbnPD6I6P5afxn9V80SBAatIUyHU62vqRq8Yobqfi7LfqwZ7JudAXHvqD+xrCa37lTy
+ NinA==
+X-Gm-Message-State: ANhLgQ0aVkE93cOnI5cTbgAk/rRv2APdWM6P/SrfhwA6Vd4JEI55xPNn
+ 6P7P6n9pHQE7RGK2DcE1QlieP20F4YQeCO7ZRzEGL/V/
+X-Google-Smtp-Source: ADFU+vtyOyC/eqr/jPVd00MkaLdk/9M4jPOujjkMpnGVkn604ntMVCfBROCGXbA+MtZ+6hBazrzT95hBdZz4hJAYdTQ=
+X-Received: by 2002:a05:6830:3151:: with SMTP id
+ c17mr10626266ots.310.1584775691484; 
+ Sat, 21 Mar 2020 00:28:11 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200313200913.24321-1-sergio.paracuellos@gmail.com>
+ <20200313200913.24321-6-sergio.paracuellos@gmail.com>
+ <CAJsYDVKgx419P9f-Y7DaETejwaHwdbnT8+g-Uk4NoKB0qgqPKA@mail.gmail.com>
+ <CAMhs-H9-F+6QwD_LFihUk31mHn1B72LxR+i=AXgCFP0ESyjxKA@mail.gmail.com>
+ <CAJsYDV+O9TY2uDHrFU5+RxEsurowMH4uskkdkGnfQb9cxTk76g@mail.gmail.com>
+ <CAMhs-H9MdudEij_D84gFNSt70r_gv5joOxCCB+X4foHGeLTpEA@mail.gmail.com>
+ <CAMhs-H-jB3LT_hfZ2+FiqjmqaTRJwUfTGKxF852xBny-mMEO7Q@mail.gmail.com>
+ <CAJsYDVJF5eRiHdJpfHAvGwP3qNcq=X0FaGARH9JX5xbPmOjd+Q@mail.gmail.com>
+In-Reply-To: <CAJsYDVJF5eRiHdJpfHAvGwP3qNcq=X0FaGARH9JX5xbPmOjd+Q@mail.gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Sat, 21 Mar 2020 08:28:00 +0100
+Message-ID: <CAMhs-H8rWDf0ifqXCp_dFcGw37KOuL9BrZDKLot=_LyG4cN=Dw@mail.gmail.com>
+Subject: Re: [PATCH v4 5/6] staging: mt7621-pci: release gpios after pci
+ initialization
+To: Chuanhong Guo <gch981213@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,101 +93,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: neil@brown.name, driverdev-devel@linuxdriverproject.org, gerg@kernel.org
+Cc: ryder.lee@mediatek.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ driverdev-devel@linuxdriverproject.org, weijie.gao@mediatek.com,
+ Greg Ungerer <gerg@kernel.org>, NeilBrown <neil@brown.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Making gpio8 and gpio9 vendor specific and putting them
-into the specific dts file makes not needed to release
-gpios anymore because we are not occupying those pins
-in the first place if it is not necessary. When the
-device tree is parsed we can also check and return for
-the error because we rely in the fact that the related
-device for the board is correct.
+Hi,
 
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
----
- drivers/staging/mt7621-pci/pci-mt7621.c | 27 +++++++------------------
- 1 file changed, 7 insertions(+), 20 deletions(-)
+On Sat, Mar 21, 2020 at 7:36 AM Chuanhong Guo <gch981213@gmail.com> wrote:
+>
+> Hi!
+>
+> On Sat, Mar 21, 2020 at 12:34 AM Sergio Paracuellos
+> <sergio.paracuellos@gmail.com> wrote:
+> > > If I am understanding correctly for example for my gnubee this should
+> > > be as follows:
+> > >
+> > > diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi
+> > > b/drivers/staging/mt7621-dts/mt7621.dtsi
+> > > index 10fb497cf81a..9e5cf68731bb 100644
+> > > --- a/drivers/staging/mt7621-dts/mt7621.dtsi
+> > > +++ b/drivers/staging/mt7621-dts/mt7621.dtsi
+> > > @@ -538,9 +538,7 @@ pcie: pcie@1e140000 {
+> > >                 phys = <&pcie0_phy 1>, <&pcie2_phy 0>;
+> > >                 phy-names = "pcie-phy0", "pcie-phy2";
+> > >
+> > > -               reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>,
+> > > -                               <&gpio 8 GPIO_ACTIVE_LOW>,
+> > > -                               <&gpio 7 GPIO_ACTIVE_LOW>;
+> > > +               reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>;
+> > >
+> > >                 pcie@0,0 {
+> > >                         reg = <0x0000 0 0 0 0>;
+> > > sergio@camaron:~/staging$ git diff drivers/staging/mt7621-dts/gbpc1.dts
+> > > diff --git a/drivers/staging/mt7621-dts/gbpc1.dts
+> > > b/drivers/staging/mt7621-dts/gbpc1.dts
+> > > index 1fb560ff059c..a7c0d3115d72 100644
+> > > --- a/drivers/staging/mt7621-dts/gbpc1.dts
+> > > +++ b/drivers/staging/mt7621-dts/gbpc1.dts
+> > > @@ -114,6 +114,10 @@ &cpuclock {
+> > >  &pcie {
+> > >         pinctrl-names = "default";
+> > >         pinctrl-0 = <&pcie_pins>;
+> > > +
+> > > +       reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>,
+> > > +                       <&gpio 8 GPIO_ACTIVE_LOW>,
+> > > +                       <&gpio 7 GPIO_ACTIVE_LOW>;
+> > >         status = "okay";
+> > >  };
+> > >
+> > > Is this true? So changes will be only in the device tree but driver is
+> > > ok as it is.
+> >
+> > Well, I mean I should only remove the release part for gpios, right?
+>
+> Correct :)
 
-diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index 23b51789f72e..1a76968b70c3 100644
---- a/drivers/staging/mt7621-pci/pci-mt7621.c
-+++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -364,8 +364,8 @@ static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
- 	port->gpio_rst = devm_gpiod_get_index_optional(dev, "reset", slot,
- 						       GPIOD_OUT_LOW);
- 	if (IS_ERR(port->gpio_rst)) {
--		dev_notice(dev, "Failed to get GPIO for PCIe%d\n", slot);
--		port->gpio_rst = NULL;
-+		dev_err(dev, "Failed to get GPIO for PCIe%d\n", slot);
-+		return PTR_ERR(port->gpio_rst);
- 	}
- 
- 	port->slot = slot;
-@@ -474,15 +474,6 @@ static void mt7621_pcie_reset_ep_deassert(struct mt7621_pcie *pcie)
- 	mdelay(PERST_DELAY_MS);
- }
- 
--static void mt7621_pcie_release_gpios(struct mt7621_pcie *pcie)
--{
--	struct mt7621_pcie_port *port;
--
--	list_for_each_entry(port, &pcie->ports, list)
--		if (port->gpio_rst)
--			gpiod_put(port->gpio_rst);
--}
--
- static void mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
-@@ -684,7 +675,7 @@ static int mt7621_pci_probe(struct platform_device *pdev)
- 	err = mt7621_pci_parse_request_of_pci_ranges(pcie);
- 	if (err) {
- 		dev_err(dev, "Error requesting pci resources from ranges");
--		goto out_release_gpios;
-+		return err;
- 	}
- 
- 	/* set resources limits */
-@@ -698,8 +689,7 @@ static int mt7621_pci_probe(struct platform_device *pdev)
- 	err = mt7621_pcie_init_virtual_bridges(pcie);
- 	if (err) {
- 		dev_err(dev, "Nothing is connected in virtual bridges. Exiting...");
--		err = 0;
--		goto out_release_gpios;
-+		return 0;
- 	}
- 
- 	mt7621_pcie_enable_ports(pcie);
-@@ -709,19 +699,16 @@ static int mt7621_pci_probe(struct platform_device *pdev)
- 	err = mt7621_pcie_request_resources(pcie, &res);
- 	if (err) {
- 		dev_err(dev, "Error requesting resources\n");
--		goto out_release_gpios;
-+		return err;
- 	}
- 
- 	err = mt7621_pcie_register_host(bridge, &res);
- 	if (err) {
- 		dev_err(dev, "Error registering host\n");
--		goto out_release_gpios;
-+		return err;
- 	}
- 
--out_release_gpios:
--	mt7621_pcie_release_gpios(pcie);
--
--	return err;
-+	return 0;
- }
- 
- static const struct of_device_id mt7621_pci_ids[] = {
--- 
-2.25.1
+Thanks for let me know the correct way of doing this. Sent:
 
+http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2020-March/142567.html
+
+>
+> --
+> Regards,
+> Chuanhong Guo
+
+Best regards,
+    Sergio Paracuellos
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
