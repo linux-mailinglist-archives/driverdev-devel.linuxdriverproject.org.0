@@ -1,77 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C010A18E51A
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Mar 2020 23:19:57 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35EAF18E51F
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Mar 2020 23:21:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 141FC86A10;
-	Sat, 21 Mar 2020 22:19:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9141387897;
+	Sat, 21 Mar 2020 22:21:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3unYo9sBDTii; Sat, 21 Mar 2020 22:19:55 +0000 (UTC)
+	with ESMTP id aP2b2PHsLBAo; Sat, 21 Mar 2020 22:21:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BAFF88638E;
-	Sat, 21 Mar 2020 22:19:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CA90F8786B;
+	Sat, 21 Mar 2020 22:21:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E9DB71BF5A6
- for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 22:19:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 22ADC1BF5A6
+ for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 22:21:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E68538858D
- for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 22:19:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1FC8086640
+ for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 22:21:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GbXY5DcV79wF for <devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 22:19:52 +0000 (UTC)
+ with ESMTP id RkD8BCY0ANVL for <devel@linuxdriverproject.org>;
+ Sat, 21 Mar 2020 22:21:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f52.google.com (mail-pj1-f52.google.com
- [209.85.216.52])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 72CBE885F6
- for <devel@driverdev.osuosl.org>; Sat, 21 Mar 2020 22:19:52 +0000 (UTC)
-Received: by mail-pj1-f52.google.com with SMTP id bo3so4165214pjb.5
- for <devel@driverdev.osuosl.org>; Sat, 21 Mar 2020 15:19:52 -0700 (PDT)
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 74B7D86053
+ for <devel@driverdev.osuosl.org>; Sat, 21 Mar 2020 22:21:21 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id dw20so4548454pjb.0
+ for <devel@driverdev.osuosl.org>; Sat, 21 Mar 2020 15:21:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=Dcdv1o2OE9Dbud7mtcZE4La5oxeElzOfy/RpqBkNU70=;
- b=hVIRgwnpxdr69DeKdBTp+lmem0I+J1Srk0P5SlKdjskRkccRYyn8T7kWO43uveerfa
- /WlC//EaoG9P0xkUdAwMo1JOIcLFg3lZyM+OGAt06kQ2yF/kOlQHem+JTJzu2WEi45FV
- XqSUPnIvP/rAarBMKEySjJeyj9N6nShXt8DnGBpxbPED23J8HkBTgJaO85TlIyPlYzZn
- fllkCvtu3NwYUWgz0murvQmzEsdLr5peCBPXACC/ntu7On6jLl48TbtGjSnr8okcm8Iw
- gHxcR4NPlgVlcmLLMovEnYoYI32eQm4N07BMhtlmNqmJ5WQOTKDKYbgJpqyt3YMBeEDs
- xcqw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=YDt1O5yGZ6i7riNKjtcBfBSe+BjizbdVsG1m7rWg6PY=;
+ b=lWH71JTFjmKdK1+WU7n32xi2rrAA3ia70j/TFYjfkM7i3bGTNvL5LQDvKn7kGc/Loj
+ raS1GoaViYA5+yZFdhoeL5mpeVH/8Td6a+JiKqg98w8eESkAwGxlij3Bd2CXFcKRvKH/
+ D5f4f3J5N9c4bC8Qf6H7y68oLs/tBUxblHULQWksmeWcX55QexQs4TNYOJKXDhZS19Fz
+ 4N5/ZnPOEyoeGsq+oDXw058zvqlyIde0mJpkWnPa+1JyFIZcvzxa7SZWW3f7csjlWdQh
+ s2K+EtHEsdQEkicgWCRb/HkssUG7tGtuUf7pGl+PkrPoDHBdrKCzVMMRGXn5aV0p9uAX
+ 8v+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=Dcdv1o2OE9Dbud7mtcZE4La5oxeElzOfy/RpqBkNU70=;
- b=M6ynQvJgo4l4/Vxy6KzHzsoqtHtzoQjhahHGcmF30oJ2Y5IdGqZg1LdyXZnuEkC/rf
- soVubziX8Ub45ZGCQo8U/cxPH/HPuH4Qk5vpl9jmAaogfabOnWGxOFIt+noTIW0/H5NN
- u10NgDb2wZ2ZPToflpQ7RqklOXDlKXM8hCOq8ytOPdFJwEIoQEzYO5m7AgwGNccLg1tY
- edKI958J9j+syqVCAadL4vJbxz4bOyr6QtHocNRUap/UmMYkubRcHJWqEpwuR9xNwsng
- 2kTxwdvlRMmxcuxxetLdxkYyx/n2AfZDnQl4HF90t4ZNl4AHvRL9sUv6L7vox46Pd0Qs
- PP8A==
-X-Gm-Message-State: ANhLgQ1IeMUSd9Y8ItBosRflGKVtOx+bqur3pJxqZoFeW0aeDUMREf4L
- WyLW+Ml5W8u9IKkKSEPq710=
-X-Google-Smtp-Source: ADFU+vuGPpk2Oxq+TQ4+Lj0h3nCJ6Fdi7q+CLewZzExJF1znZyHMmVwkSjIPJmHvHmfMENT1DC2hVA==
-X-Received: by 2002:a17:90a:cc01:: with SMTP id
- b1mr10480287pju.121.1584829191777; 
- Sat, 21 Mar 2020 15:19:51 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=YDt1O5yGZ6i7riNKjtcBfBSe+BjizbdVsG1m7rWg6PY=;
+ b=nRY5I78IUqFbWQqrrymqld+X2J8ErePiqzTSAgVBy4/TTf3DdIxe7Mmdhl34oHiaMu
+ RG7gYIUG32Hbu4TJbzZvYtLUZ340SWvY8i/OBR37p7tac1IFazjpz2fRCdYsdX+O4GE0
+ EWYJnrarhyGTO+kKHukn8LJ9mHLoc9CFEuFZ54UojvQwn7cEFfG9a/oEaZstSK76z6MB
+ hpdowXNnzmXnqUij2gdpK0W6seYsDnyv/1RimViL6W54m7A8Oe83beXTGoY0KPIxtcJF
+ z1x9/fFcZ7ZgGSr8Beb1zmUxVqVBFdLfLm55NJTruIDiEZZ9HeEou9CrXiaLes8fyt58
+ Z8PA==
+X-Gm-Message-State: ANhLgQ3JMBnv1AUeiUA+dZ6pFnWIVQfq9WBcjpdBr7KM7wCRsQiPQvPX
+ Nn4nefTMgk6upOgDA9xTSPo=
+X-Google-Smtp-Source: ADFU+vsiHNFTV1nG+Qdz3weTi93Li0qmFI2E0dyrDWwMvRhKrMBUoS4V0ZTKtgFPYQx3s8zVJgi1hA==
+X-Received: by 2002:a17:90a:21ac:: with SMTP id
+ q41mr17311989pjc.41.1584829280895; 
+ Sat, 21 Mar 2020 15:21:20 -0700 (PDT)
 Received: from localhost.localdomain ([113.193.33.115])
- by smtp.gmail.com with ESMTPSA id k24sm8227389pgf.59.2020.03.21.15.19.49
+ by smtp.gmail.com with ESMTPSA id w19sm8744669pgm.27.2020.03.21.15.21.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 15:19:51 -0700 (PDT)
+ Sat, 21 Mar 2020 15:21:20 -0700 (PDT)
 From: Shreeya Patel <shreeya.patel23498@gmail.com>
 To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
  outreachy-kernel@googlegroups.com
-Subject: [Outreachy kernel] [PATCH 00/11] Staging: rtl8188eu: hal: Add space
- around operators
-Date: Sun, 22 Mar 2020 03:49:43 +0530
-Message-Id: <cover.1584826154.git.shreeya.patel23498@gmail.com>
+Subject: [Outreachy kernel] [PATCH 01/11] Staging: rtl8188eu: hal_com: Add
+ space around operators
+Date: Sun, 22 Mar 2020 03:51:13 +0530
+Message-Id: <19950c71482b3be0dd9518398af85e964f3b66b1.1584826154.git.shreeya.patel23498@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1584826154.git.shreeya.patel23498@gmail.com>
+References: <cover.1584826154.git.shreeya.patel23498@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,36 +94,68 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patchset adds space around operators and removes
-all the checkpatch warnings for the same from the files
-present under drivers/staging/rtl8188eu/hal/ directory.
+Add space around operators for improving the code
+readability.
+Reported by checkpatch.pl
 
-Shreeya Patel (11):
-  Staging: rtl8188eu: hal_com: Add space around operators
-  Staging: rtl8188eu: odm: Add space around operators
-  Staging: rtl8188eu: odm_hwconfig: Add space around operators
-  Staging: rtl8188eu: phy: Add space around operators
-  Staging: rtl8188eu: pwrseqcmd: Add space around operators
-  Staging: rtl8188eu: rf: Add space around operators
-  Staging: rtl8188eu: rf_cfg: Add space around operators
-  Staging: rtl8188eu: rtl8188e_cmd: Add space around operators
-  Staging: rtl8188eu: rtl8188e_hal_init: Add space around operators
-  Staging: rtl8188eu: rtl8188e_rxdesc: Add space around operators
-  Staging: rtl8188eu: rtl8188eu_xmit: Add space around operators
+git diff -w shows no difference.
+diff of the .o files before and after the changes shows no difference.
 
- drivers/staging/rtl8188eu/hal/hal_com.c       |  22 +--
- drivers/staging/rtl8188eu/hal/odm.c           |  48 +++---
- drivers/staging/rtl8188eu/hal/odm_hwconfig.c  |  54 +++----
- drivers/staging/rtl8188eu/hal/phy.c           | 138 +++++++++---------
- drivers/staging/rtl8188eu/hal/pwrseqcmd.c     |   2 +-
- drivers/staging/rtl8188eu/hal/rf.c            |  60 ++++----
- drivers/staging/rtl8188eu/hal/rf_cfg.c        |   4 +-
- drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c  |  42 +++---
- .../staging/rtl8188eu/hal/rtl8188e_hal_init.c |  44 +++---
- .../staging/rtl8188eu/hal/rtl8188e_rxdesc.c   |   2 +-
- .../staging/rtl8188eu/hal/rtl8188eu_xmit.c    |  32 ++--
- 11 files changed, 224 insertions(+), 224 deletions(-)
+Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+---
 
+shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/hal/hal_com.c
+shreeya@Shreeya-Patel:~git/kernels/staging$
+
+shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$ diff hal_com_old.o hal_com.o
+shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$
+
+
+ drivers/staging/rtl8188eu/hal/hal_com.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/hal/hal_com.c b/drivers/staging/rtl8188eu/hal/hal_com.c
+index 95f1b1431373..ebe19e076ff2 100644
+--- a/drivers/staging/rtl8188eu/hal/hal_com.c
++++ b/drivers/staging/rtl8188eu/hal/hal_com.c
+@@ -18,26 +18,26 @@ void dump_chip_info(struct HAL_VERSION	chip_vers)
+ 	uint cnt = 0;
+ 	char buf[128];
+ 
+-	cnt += sprintf((buf+cnt), "Chip Version Info: CHIP_8188E_");
+-	cnt += sprintf((buf+cnt), "%s_", chip_vers.ChipType == NORMAL_CHIP ?
++	cnt += sprintf((buf + cnt), "Chip Version Info: CHIP_8188E_");
++	cnt += sprintf((buf + cnt), "%s_", chip_vers.ChipType == NORMAL_CHIP ?
+ 		       "Normal_Chip" : "Test_Chip");
+-	cnt += sprintf((buf+cnt), "%s_", chip_vers.VendorType == CHIP_VENDOR_TSMC ?
++	cnt += sprintf((buf + cnt), "%s_", chip_vers.VendorType == CHIP_VENDOR_TSMC ?
+ 		       "TSMC" : "UMC");
+ 	if (chip_vers.CUTVersion == A_CUT_VERSION)
+-		cnt += sprintf((buf+cnt), "A_CUT_");
++		cnt += sprintf((buf + cnt), "A_CUT_");
+ 	else if (chip_vers.CUTVersion == B_CUT_VERSION)
+-		cnt += sprintf((buf+cnt), "B_CUT_");
++		cnt += sprintf((buf + cnt), "B_CUT_");
+ 	else if (chip_vers.CUTVersion == C_CUT_VERSION)
+-		cnt += sprintf((buf+cnt), "C_CUT_");
++		cnt += sprintf((buf + cnt), "C_CUT_");
+ 	else if (chip_vers.CUTVersion == D_CUT_VERSION)
+-		cnt += sprintf((buf+cnt), "D_CUT_");
++		cnt += sprintf((buf + cnt), "D_CUT_");
+ 	else if (chip_vers.CUTVersion == E_CUT_VERSION)
+-		cnt += sprintf((buf+cnt), "E_CUT_");
++		cnt += sprintf((buf + cnt), "E_CUT_");
+ 	else
+-		cnt += sprintf((buf+cnt), "UNKNOWN_CUT(%d)_",
++		cnt += sprintf((buf + cnt), "UNKNOWN_CUT(%d)_",
+ 			       chip_vers.CUTVersion);
+-	cnt += sprintf((buf+cnt), "1T1R_");
+-	cnt += sprintf((buf+cnt), "RomVer(0)\n");
++	cnt += sprintf((buf + cnt), "1T1R_");
++	cnt += sprintf((buf + cnt), "RomVer(0)\n");
+ 
+ 	pr_info("%s", buf);
+ }
 -- 
 2.17.1
 
