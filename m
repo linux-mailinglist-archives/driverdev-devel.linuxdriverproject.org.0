@@ -1,77 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C08618E389
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Mar 2020 19:00:34 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 76C318764B;
-	Sat, 21 Mar 2020 18:00:32 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iqtG9u7qP3rh; Sat, 21 Mar 2020 18:00:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 72F2686E9E;
-	Sat, 21 Mar 2020 18:00:31 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E348D1BF5E0
- for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 18:00:28 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 057C018E399
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Mar 2020 19:12:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DF3F288596
- for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 18:00:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 59CEB888B5;
+	Sat, 21 Mar 2020 18:12:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DXDPx3tG4wSO; Sat, 21 Mar 2020 18:12:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id E815E887AF;
+	Sat, 21 Mar 2020 18:12:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 300FB1BF8B4
+ for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 18:12:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2900B8761F
+ for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 18:12:01 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CnVdsGS-W7Z4 for <devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 18:00:28 +0000 (UTC)
+ with ESMTP id YxWDvxkDuTME for <devel@linuxdriverproject.org>;
+ Sat, 21 Mar 2020 18:12:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
- [209.85.167.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 127CB88045
- for <devel@driverdev.osuosl.org>; Sat, 21 Mar 2020 18:00:28 +0000 (UTC)
-Received: by mail-oi1-f195.google.com with SMTP id k8so10267171oik.2
- for <devel@driverdev.osuosl.org>; Sat, 21 Mar 2020 11:00:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ivkv2AjL6EXVAa1JYs7mqBfNjeboYRMwbrEQs14HIno=;
- b=XbhPjDLqCGh82zEUMZDThrIXKM7go6EERt4wwRUgHEGU7U891rzFc+8rx1jwxWr/WY
- rS/phtqOqkTNUHrk5ojBOjv/5vNPCpBT0KoeVft/J48L62wicEj7hhJQ8Rbttajorukz
- b/ZStvRxaw7GRDvzZuXtik8U00GV8gZbsG8i0OOrCDtnLdMjIInV6GIT1dwb6rel1QQN
- 9EmD3cUnXfY3dv70d5u9e5g8AhsXkMqGVBFCJORy88Z7KqJKNh4vutBJi27m1Fipv27m
- 3U2Oh7A/yV+qW2alfABnunrQ/RLTGpLaWXFYyS5u1z4VjA+ZyRxgf6clZCjhyR37+pjb
- EHsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=ivkv2AjL6EXVAa1JYs7mqBfNjeboYRMwbrEQs14HIno=;
- b=LhRv+8KGIZ2FyZrI7GCCn6skMO2LdwA6IUuS+9uyQWzcbT1HKW/+kI6nCz22M2D7Qa
- oXEvG+wmQDaov9ojv94tiAqvUp2VzjI9VqUIIayt9KCIk7PKoteiOVBaJNUR87X8WxWU
- V+JTfdsVaFNmVrBCeFhpE5Z2aSbih00wKmUeEVyb2QwnDLQiLJTcqjH/qEQznzTNrDU9
- Hr728RA1OiVTtlJpqetXZ6UHAgkEYuHdTWmvfuGFVESchs0KN8iiKXqWgoIZ8gtIIJRP
- CywwLGPbSOkXTCurcqmobAHBfn/LN130fvOeG5fnfKNbqh9NpGNJhTqzB17NNvioT2vp
- Q+8Q==
-X-Gm-Message-State: ANhLgQ3Dfos/ymmQsBczQmqK5tFDveQ0uqKeOXDps0+nYGGyEkREfBan
- SzKpsvw/QYcWlAAIvJT3cJE=
-X-Google-Smtp-Source: ADFU+vvd8OsdGBH2mOLpXI2e8IcKhXNKHRWEkIyD5UCURhyds+ifrpf9jikBmOCbTbWagq8VEVX+OQ==
-X-Received: by 2002:aca:54ca:: with SMTP id
- i193mr11471900oib.163.1584813627142; 
- Sat, 21 Mar 2020 11:00:27 -0700 (PDT)
-Received: from localhost.localdomain (cpe-24-31-245-230.kc.res.rr.com.
- [24.31.245.230])
- by smtp.gmail.com with ESMTPSA id u199sm3323892oif.25.2020.03.21.11.00.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 11:00:26 -0700 (PDT)
-From: Larry Finger <Larry.Finger@lwfinger.net>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8188eu: Add ASUS USB-N10 Nano B1 to device table
-Date: Sat, 21 Mar 2020 13:00:11 -0500
-Message-Id: <20200321180011.26153-1-Larry.Finger@lwfinger.net>
-X-Mailer: git-send-email 2.25.1
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 484E287196
+ for <devel@driverdev.osuosl.org>; Sat, 21 Mar 2020 18:12:00 +0000 (UTC)
+IronPort-SDR: 5UNVTskXlKOmoGeAFMtuZ1H0p/B9B0BVCGT3UaMECA5B/m7hCILai2cSa6I2GUx8BYf7RxPdlM
+ vOc4MTs6mJ8A==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Mar 2020 11:11:59 -0700
+IronPort-SDR: zFcwjEHnZ/Q2GVbYxXaB0CNZap3Rm1aVRMgDkEql2fh5oOum4aWE1dAJhUw+gXHo1jH5Zw8iES
+ 8UZ9yfxRlQMA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,289,1580803200"; d="scan'208";a="234820624"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 21 Mar 2020 11:11:58 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jFibF-000FSa-G5; Sun, 22 Mar 2020 02:11:57 +0800
+Date: Sun, 22 Mar 2020 02:11:06 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 3017e587e36819f87e53d3c8751afdf987c1f542
+Message-ID: <5e7658ba.U/JywPtSqpTVtv3K%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,38 +67,190 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org, kovi <zraetn@gmail.com>,
- Stable <stable@vger.kernel.org>, Larry Finger <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The ASUS USB-N10 Nano B1 has been reported as a new RTL8188EU device.
-Add it to the device tables.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 3017e587e36819f87e53d3c8751afdf987c1f542  staging: vt6656: Use BIT() macro in vnt_mac_reg_bits_* functions
 
-Signed-off-by: Larry Finger <Larry.Finger@lwfinger.net>
-Reported-by: kovi <zraetn@gmail.com>
-Cc: Stable <stable@vger.kernel.org>
+elapsed time: 484m
+
+configs tested: 163
+configs skipped: 0
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                              allmodconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm                           efm32_defconfig
+arm                         at91_dt_defconfig
+arm                        shmobile_defconfig
+arm64                               defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                           sunxi_defconfig
+arm                        multi_v7_defconfig
+sparc                            allyesconfig
+mips                      fuloong2e_defconfig
+ia64                             alldefconfig
+um                                  defconfig
+riscv                          rv32_defconfig
+sparc                               defconfig
+h8300                    h8300h-sim_defconfig
+mips                              allnoconfig
+parisc                generic-64bit_defconfig
+ia64                             allyesconfig
+nds32                               defconfig
+i386                              allnoconfig
+parisc                            allnoconfig
+i386                             allyesconfig
+i386                             alldefconfig
+i386                                defconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+nios2                         3c120_defconfig
+nios2                         10m50_defconfig
+c6x                        evmc6678_defconfig
+xtensa                          iss_defconfig
+c6x                              allyesconfig
+xtensa                       common_defconfig
+openrisc                 simple_smp_defconfig
+openrisc                    or1ksim_defconfig
+nds32                             allnoconfig
+csky                                defconfig
+alpha                               defconfig
+h8300                       h8s-sim_defconfig
+h8300                     edosk2674_defconfig
+m68k                       m5475evb_defconfig
+m68k                             allmodconfig
+m68k                           sun3_defconfig
+m68k                          multi_defconfig
+arc                                 defconfig
+arc                              allyesconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+mips                      malta_kvm_defconfig
+mips                             allyesconfig
+mips                         64r6el_defconfig
+mips                           32r2_defconfig
+mips                             allmodconfig
+parisc                generic-32bit_defconfig
+parisc                           allyesconfig
+x86_64               randconfig-a001-20200321
+x86_64               randconfig-a002-20200321
+x86_64               randconfig-a003-20200321
+i386                 randconfig-a001-20200321
+i386                 randconfig-a002-20200321
+i386                 randconfig-a003-20200321
+alpha                randconfig-a001-20200321
+m68k                 randconfig-a001-20200321
+mips                 randconfig-a001-20200321
+nds32                randconfig-a001-20200321
+parisc               randconfig-a001-20200321
+h8300                randconfig-a001-20200321
+microblaze           randconfig-a001-20200321
+nios2                randconfig-a001-20200321
+c6x                  randconfig-a001-20200321
+sparc64              randconfig-a001-20200321
+s390                 randconfig-a001-20200321
+xtensa               randconfig-a001-20200321
+csky                 randconfig-a001-20200321
+openrisc             randconfig-a001-20200321
+sh                   randconfig-a001-20200321
+x86_64               randconfig-b001-20200321
+x86_64               randconfig-b002-20200321
+x86_64               randconfig-b003-20200321
+i386                 randconfig-b001-20200321
+i386                 randconfig-b002-20200321
+i386                 randconfig-b003-20200321
+x86_64               randconfig-c001-20200321
+x86_64               randconfig-c002-20200321
+x86_64               randconfig-c003-20200321
+i386                 randconfig-c001-20200321
+i386                 randconfig-c002-20200321
+i386                 randconfig-c003-20200321
+x86_64               randconfig-d001-20200321
+x86_64               randconfig-d002-20200321
+x86_64               randconfig-d003-20200321
+i386                 randconfig-d001-20200321
+i386                 randconfig-d002-20200321
+i386                 randconfig-d003-20200321
+x86_64               randconfig-e001-20200321
+x86_64               randconfig-e002-20200321
+x86_64               randconfig-e003-20200321
+i386                 randconfig-e001-20200321
+i386                 randconfig-e002-20200321
+i386                 randconfig-e003-20200321
+x86_64               randconfig-f001-20200321
+x86_64               randconfig-f002-20200321
+x86_64               randconfig-f003-20200321
+i386                 randconfig-f001-20200321
+i386                 randconfig-f002-20200321
+i386                 randconfig-f003-20200321
+i386                 randconfig-g003-20200321
+x86_64               randconfig-g002-20200321
+i386                 randconfig-g001-20200321
+i386                 randconfig-g002-20200321
+x86_64               randconfig-g001-20200321
+x86_64               randconfig-g003-20200321
+x86_64               randconfig-h001-20200321
+x86_64               randconfig-h002-20200321
+x86_64               randconfig-h003-20200321
+i386                 randconfig-h001-20200321
+i386                 randconfig-h002-20200321
+i386                 randconfig-h003-20200321
+arm                  randconfig-a001-20200321
+arm64                randconfig-a001-20200321
+ia64                 randconfig-a001-20200321
+powerpc              randconfig-a001-20200321
+sparc                randconfig-a001-20200321
+arc                  randconfig-a001-20200321
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                       zfcpdump_defconfig
+s390                          debug_defconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                             alldefconfig
+s390                                defconfig
+sh                          rsk7269_defconfig
+sh                               allmodconfig
+sh                            titan_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                                allnoconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                               rhel-7.6
+
 ---
- drivers/staging/rtl8188eu/os_dep/usb_intf.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/staging/rtl8188eu/os_dep/usb_intf.c b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
-index b5d42f411dd8..b7f65026dba8 100644
---- a/drivers/staging/rtl8188eu/os_dep/usb_intf.c
-+++ b/drivers/staging/rtl8188eu/os_dep/usb_intf.c
-@@ -32,6 +32,7 @@ static const struct usb_device_id rtw_usb_id_tbl[] = {
- 	/****** 8188EUS ********/
- 	{USB_DEVICE(0x056e, 0x4008)}, /* Elecom WDC-150SU2M */
- 	{USB_DEVICE(0x07b8, 0x8179)}, /* Abocom - Abocom */
-+	{USB_DEVICE(0x0B05, 0x18F0)}, /* ASUS USB-N10 Nano B1 */
- 	{USB_DEVICE(0x2001, 0x330F)}, /* DLink DWA-125 REV D1 */
- 	{USB_DEVICE(0x2001, 0x3310)}, /* Dlink DWA-123 REV D1 */
- 	{USB_DEVICE(0x2001, 0x3311)}, /* DLink GO-USB-N150 REV B1 */
--- 
-2.25.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
