@@ -1,80 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 965EA18E53A
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 Mar 2020 23:30:16 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A14DE18E754
+	for <lists+driverdev-devel@lfdr.de>; Sun, 22 Mar 2020 08:21:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 194F4204B0;
-	Sat, 21 Mar 2020 22:30:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9B66E876FB;
+	Sun, 22 Mar 2020 07:21:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xb8vhZ0h1rws; Sat, 21 Mar 2020 22:30:14 +0000 (UTC)
+	with ESMTP id 446cHwXK1Arq; Sun, 22 Mar 2020 07:21:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AF81420345;
-	Sat, 21 Mar 2020 22:30:13 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 89B0187667;
+	Sun, 22 Mar 2020 07:21:35 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9A3E51BF5A6
- for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 22:30:10 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9CCFC1BF3BC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 22 Mar 2020 07:21:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9666320345
- for <devel@linuxdriverproject.org>; Sat, 21 Mar 2020 22:30:10 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 97AD987668
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 22 Mar 2020 07:21:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id g7GaBqvdh9+G for <devel@linuxdriverproject.org>;
- Sat, 21 Mar 2020 22:30:09 +0000 (UTC)
+ with ESMTP id i7UO6YdG5hGA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 22 Mar 2020 07:21:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
- [209.85.216.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 3057620335
- for <devel@driverdev.osuosl.org>; Sat, 21 Mar 2020 22:30:09 +0000 (UTC)
-Received: by mail-pj1-f66.google.com with SMTP id o12so430924pjs.2
- for <devel@driverdev.osuosl.org>; Sat, 21 Mar 2020 15:30:09 -0700 (PDT)
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 58FA387667
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 22 Mar 2020 07:21:32 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id c81so358069wmd.4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 22 Mar 2020 00:21:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=B5qFJrGFQqJyZwNKSurlZaktra2A1JiMh2eH8abzUa8=;
- b=E41elm12jd11riNXAxZcemim/OxYinkuqYLL8oC+r4tkR5+6JCTftkVbwJxr5NWhwd
- bQAP85rscxX0Jx/qnXpQqUDzgnu/EAKq8c24Y55N1UWxdS7IRe+ClebYXwlWq4DQPPDU
- PyVvsznktL62JBkK3d4x6NrQdzlJ0C0CUGGEFm8y+9Vqt3iNEY8HkxrPOXdGHtKNs6k5
- lN1OiTf71jTBZoRR7XrC1EYosNoiLW7gbmWH3SLT8BdBunOzNHGLulEKWbic20Q0iVz8
- e9XjmvnAsPDgVvnMeeXXh4X/c/+umih9KwNGJF8x3iMEENXElRKdiPXmt4rXl6FJYGQK
- +QJg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LTwp6VMRN0iU/Sb0IxKAWqEYzoUHEVEF9OFIyN//T4o=;
+ b=NtxowEaGHx4iV1asf9KPTbUdoADpqQNXKmXfNd2u2xM2ibdFdYeIPvixgjB/CiYV9M
+ UkKfMKjeBzbfxf+zjFs1hO8qNTA9zjGw6K+wcaIIa6ppBe/gWDM7DC1tgdRr9ehT4lEL
+ fKaNDwp7Zmf3D83CEpjIzt9nCeD7rClpHUpjEhEOJtz7C3fVjVBAttD7GwDa0ZHR0oZp
+ XQYGhinzRLZhW5g0xy9nlSqMYvPhMiLmqg2PPhnQ6cb2LIY+zY68Sh4+krkm9PpgXtp/
+ phlLVYXDOVl3xt61X0BbQNoxgYHt7RNZyPLF2C0LS6l0KKFDE6KsGneD2Y/QXeyhhv16
+ b+rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=B5qFJrGFQqJyZwNKSurlZaktra2A1JiMh2eH8abzUa8=;
- b=WRwxSbRjM+LL81FYPwl0QZ9jDSE5ks7CHL+ki69AJtVHYSIRGSRQ9tySX8OCrbPeXT
- QpD01KKsbyjMQZB+dvmvdPtmmNap/6LGf0uQLs05QGlnyjhqoDvkP3ZaWu1Jd3y5w2TK
- KyuMBcw81m5LS3AzVp3Vru6CANGC8kzLRLuX0sqRzhln+HLG9LuKt0eYtcE779A6k3k6
- Syl3/0Ct7Lfsva8ywULXY/02RmgKH1XUji1El/OgHN+tOClTyJDab2cKO6xpKXPK7CXU
- UIbFP31IjBa2hpVD4AF8n62DQy9obcQrmGoFmj68kbejg3kGrIz3KWMq72viBaaESlwl
- AtKQ==
-X-Gm-Message-State: ANhLgQ0MA+hiJltrb37tAYZR6tjJ7LDsNss7seNYkdZ0bxhNK208bDk/
- aBYFsGH2YTf0Palj8WYvCQo=
-X-Google-Smtp-Source: ADFU+vvkkhBVrJVmLGfrS6hCjDf1bFoMlXdSo23YEMHegOOqFAtPPj7TpLoW0FaWvzEON9K1okVv9Q==
-X-Received: by 2002:a17:902:b198:: with SMTP id
- s24mr14576295plr.89.1584829808477; 
- Sat, 21 Mar 2020 15:30:08 -0700 (PDT)
-Received: from localhost.localdomain ([113.193.33.115])
- by smtp.gmail.com with ESMTPSA id k6sm8136655pje.8.2020.03.21.15.30.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 15:30:08 -0700 (PDT)
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com
-Subject: [Outreachy kernel] [PATCH 11/11] Staging: rtl8188eu: rtl8188eu_xmit:
- Add space around operators
-Date: Sun, 22 Mar 2020 04:00:02 +0530
-Message-Id: <cf8c629e7aa360fb3f86329d8d7df7e49ec360d4.1584826154.git.shreeya.patel23498@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1584826154.git.shreeya.patel23498@gmail.com>
-References: <cover.1584826154.git.shreeya.patel23498@gmail.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LTwp6VMRN0iU/Sb0IxKAWqEYzoUHEVEF9OFIyN//T4o=;
+ b=qgelx6P8t3OxpjzQZDtJnqXTUdU6N3sk0Gw41VCcXuXfeWD7nGvBvam67laZ9fKlyr
+ oa6+XNgtzgVfnKgYCOilGO2s1mETeMIa/8NUTx28tlnmg6fDjv4xWpkM8gi2iAEBIcDQ
+ 2m7zCTIUYsDsmchps96XnitQm3cWn5uc12hcSRJFstMAfniSOYZKz48HRoyZHMyOljml
+ sSO41QDd6zQIP4qVHG88stHNv2wwQjNHHqXz6MO0UGTsdUhZPr355uvtDLNfsxRHldhr
+ fvScW+YAg01kme5U1ckLYPc/i8KwtP20NAoSrYJMet00Uzr+cKuQBrFvoc6NJWKaQI8X
+ bbqQ==
+X-Gm-Message-State: ANhLgQ3cBZc0ofEaW8OF7pBX8Izp/7VmwIRKrmwEs+GzxtWCLVD0aqAx
+ oURrmKnBf/Dyz1nTAOTV0IQ=
+X-Google-Smtp-Source: ADFU+vtdXdtVR9DGjo6DGHbY8qkhNm0eVBwnwF3+H9eqKy2fVFrUHJaxSIgZoNiiX5h/Yg7rZ5J2gw==
+X-Received: by 2002:a7b:c950:: with SMTP id i16mr19725464wml.97.1584861690577; 
+ Sun, 22 Mar 2020 00:21:30 -0700 (PDT)
+Received: from localhost.localdomain
+ (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
+ by smtp.gmail.com with ESMTPSA id y10sm15981097wma.9.2020.03.22.00.21.29
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Sun, 22 Mar 2020 00:21:29 -0700 (PDT)
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: mt7621-pci: avoid to set 'iomem_resource' addresses
+Date: Sun, 22 Mar 2020 08:21:28 +0100
+Message-Id: <20200322072128.4454-1-sergio.paracuellos@gmail.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,160 +89,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Shreeya Patel <shreeya.patel23498@gmail.com>
-MIME-Version: 1.0
+Cc: neil@brown.name, driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Add space around operators for improving the code
-readability.
-Reported by checkpatch.pl
+Setting up kernel resource 'iomem_resource' for PCI with
+addresses parsed from device tree gots into a conflict within
+the usb xhci driver:
 
-git diff -w shows no difference.
-diff of the .o files before and after the changes shows no difference.
+xhci-mtk 1e1c0000.xhci: can't request region for resource [mem 0x1e1c0000-0x1e1c0fff]
+xhci-mtk: probe of 1e1c0000.xhci failed with error -16
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+Don't assign it and maintain the default addresses for this
+resource seems to fix the problem. Checking legacy driver it
+is being only  setting the 'ioport_resource'.
+
+Fixes: 09dd629eeabb ("staging: mt7621-pci: fix io space and properly set resource limits")
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
+ drivers/staging/mt7621-pci/pci-mt7621.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
-shreeya@Shreeya-Patel:~git/kernels/staging$
-
-shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$ diff rtl8188eu_xmit_old.o rtl8188eu_xmit.o
-shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$
-
- .../staging/rtl8188eu/hal/rtl8188eu_xmit.c    | 32 +++++++++----------
- 1 file changed, 16 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c b/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
-index 2808f2b119bf..7d315bd438d4 100644
---- a/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
-+++ b/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
-@@ -58,12 +58,12 @@ void rtl8188e_fill_fake_txdesc(struct adapter *adapt, u8 *desc, u32 BufferLen, u
- 	/* offset 0 */
- 	ptxdesc->txdw0 |= cpu_to_le32(OWN | FSG | LSG); /* own, bFirstSeg, bLastSeg; */
- 
--	ptxdesc->txdw0 |= cpu_to_le32(((TXDESC_SIZE+OFFSET_SZ)<<OFFSET_SHT)&0x00ff0000); /* 32 bytes for TX Desc */
-+	ptxdesc->txdw0 |= cpu_to_le32(((TXDESC_SIZE + OFFSET_SZ) << OFFSET_SHT) & 0x00ff0000); /* 32 bytes for TX Desc */
- 
--	ptxdesc->txdw0 |= cpu_to_le32(BufferLen&0x0000ffff); /*  Buffer size + command header */
-+	ptxdesc->txdw0 |= cpu_to_le32(BufferLen & 0x0000ffff); /*  Buffer size + command header */
- 
- 	/* offset 4 */
--	ptxdesc->txdw1 |= cpu_to_le32((QSLT_MGNT<<QSEL_SHT)&0x00001f00); /*  Fixed queue of Mgnt queue */
-+	ptxdesc->txdw1 |= cpu_to_le32((QSLT_MGNT << QSEL_SHT) & 0x00001f00); /*  Fixed queue of Mgnt queue */
- 
- 	/* Set NAVUSEHDR to prevent Ps-poll AId filed to be changed to error vlaue by Hw. */
- 	if (ispspoll) {
-@@ -91,16 +91,16 @@ static void fill_txdesc_sectype(struct pkt_attrib *pattrib, struct tx_desc *ptxd
- 		/* SEC_TYPE : 0:NO_ENC,1:WEP40/TKIP,2:WAPI,3:AES */
- 		case _WEP40_:
- 		case _WEP104_:
--			ptxdesc->txdw1 |= cpu_to_le32((0x01<<SEC_TYPE_SHT)&0x00c00000);
-+			ptxdesc->txdw1 |= cpu_to_le32((0x01 << SEC_TYPE_SHT) & 0x00c00000);
- 			ptxdesc->txdw2 |= cpu_to_le32(0x7 << AMPDU_DENSITY_SHT);
- 			break;
- 		case _TKIP_:
- 		case _TKIP_WTMIC_:
--			ptxdesc->txdw1 |= cpu_to_le32((0x01<<SEC_TYPE_SHT)&0x00c00000);
-+			ptxdesc->txdw1 |= cpu_to_le32((0x01 << SEC_TYPE_SHT) & 0x00c00000);
- 			ptxdesc->txdw2 |= cpu_to_le32(0x7 << AMPDU_DENSITY_SHT);
- 			break;
- 		case _AES_:
--			ptxdesc->txdw1 |= cpu_to_le32((0x03<<SEC_TYPE_SHT)&0x00c00000);
-+			ptxdesc->txdw1 |= cpu_to_le32((0x03 << SEC_TYPE_SHT) & 0x00c00000);
- 			ptxdesc->txdw2 |= cpu_to_le32(0x7 << AMPDU_DENSITY_SHT);
- 			break;
- 		case _NO_PRIVACY_:
-@@ -127,7 +127,7 @@ static void fill_txdesc_vcs(struct pkt_attrib *pattrib, __le32 *pdw)
- 		*pdw |= cpu_to_le32(HW_RTS_EN);
- 		/*  Set RTS BW */
- 		if (pattrib->ht_en) {
--			*pdw |= (pattrib->bwmode&HT_CHANNEL_WIDTH_40) ?	cpu_to_le32(BIT(27)) : 0;
-+			*pdw |= (pattrib->bwmode & HT_CHANNEL_WIDTH_40) ?	cpu_to_le32(BIT(27)) : 0;
- 
- 			if (pattrib->ch_offset == HAL_PRIME_CHNL_OFFSET_LOWER)
- 				*pdw |= cpu_to_le32((0x01 << 28) & 0x30000000);
-@@ -144,7 +144,7 @@ static void fill_txdesc_vcs(struct pkt_attrib *pattrib, __le32 *pdw)
- static void fill_txdesc_phy(struct pkt_attrib *pattrib, __le32 *pdw)
- {
- 	if (pattrib->ht_en) {
--		*pdw |= (pattrib->bwmode&HT_CHANNEL_WIDTH_40) ?	cpu_to_le32(BIT(25)) : 0;
-+		*pdw |= (pattrib->bwmode & HT_CHANNEL_WIDTH_40) ?	cpu_to_le32(BIT(25)) : 0;
- 
- 		if (pattrib->ch_offset == HAL_PRIME_CHNL_OFFSET_LOWER)
- 			*pdw |= cpu_to_le32((0x01 << DATA_SC_SHT) & 0x003f0000);
-@@ -171,7 +171,7 @@ static s32 update_txdesc(struct xmit_frame *pxmitframe, u8 *pmem, s32 sz, u8 bag
- 
- 	if (adapt->registrypriv.mp_mode == 0) {
- 		if ((!bagg_pkt) && (urb_zero_packet_chk(adapt, sz) == 0)) {
--			ptxdesc = (struct tx_desc *)(pmem+PACKET_OFFSET_SZ);
-+			ptxdesc = (struct tx_desc *)(pmem + PACKET_OFFSET_SZ);
- 			pull = 1;
- 		}
+diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+index 1282a0815102..f1b35153ddd1 100644
+--- a/drivers/staging/mt7621-pci/pci-mt7621.c
++++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+@@ -682,8 +682,6 @@ static int mt7621_pci_probe(struct platform_device *pdev)
  	}
-@@ -263,11 +263,11 @@ static s32 update_txdesc(struct xmit_frame *pxmitframe, u8 *pmem, s32 sz, u8 bag
- 				ptxdesc->txdw4 |= cpu_to_le32(BIT(24));/*  DATA_SHORT */
- 			ptxdesc->txdw5 |= cpu_to_le32(MRateToHwRate(pmlmeext->tx_rate));
- 		}
--	} else if ((pxmitframe->frame_tag&0x0f) == MGNT_FRAMETAG) {
-+	} else if ((pxmitframe->frame_tag & 0x0f) == MGNT_FRAMETAG) {
- 		/* offset 4 */
- 		ptxdesc->txdw1 |= cpu_to_le32(pattrib->mac_id & 0x3f);
  
--		qsel = (uint)(pattrib->qsel&0x0000001f);
-+		qsel = (uint)(pattrib->qsel & 0x0000001f);
- 		ptxdesc->txdw1 |= cpu_to_le32((qsel << QSEL_SHT) & 0x00001f00);
+ 	/* set resources limits */
+-	iomem_resource.start = pcie->mem.start;
+-	iomem_resource.end = pcie->mem.end;
+ 	ioport_resource.start = pcie->io.start;
+ 	ioport_resource.end = pcie->io.end;
  
- 		ptxdesc->txdw1 |= cpu_to_le32((pattrib->raid << RATE_ID_SHT) & 0x000f0000);
-@@ -278,7 +278,7 @@ static s32 update_txdesc(struct xmit_frame *pxmitframe, u8 *pmem, s32 sz, u8 bag
- 			ptxdesc->txdw2 |= cpu_to_le32(BIT(19));
- 
- 		/* offset 12 */
--		ptxdesc->txdw3 |= cpu_to_le32((pattrib->seqnum<<SEQ_SHT)&0x0FFF0000);
-+		ptxdesc->txdw3 |= cpu_to_le32((pattrib->seqnum << SEQ_SHT) & 0x0FFF0000);
- 
- 		/* offset 20 */
- 		ptxdesc->txdw5 |= cpu_to_le32(RTY_LMT_EN);/* retry limit enable */
-@@ -288,7 +288,7 @@ static s32 update_txdesc(struct xmit_frame *pxmitframe, u8 *pmem, s32 sz, u8 bag
- 			ptxdesc->txdw5 |= cpu_to_le32(0x00300000);/* retry limit = 12 */
- 
- 		ptxdesc->txdw5 |= cpu_to_le32(MRateToHwRate(pmlmeext->tx_rate));
--	} else if ((pxmitframe->frame_tag&0x0f) == TXAGG_FRAMETAG) {
-+	} else if ((pxmitframe->frame_tag & 0x0f) == TXAGG_FRAMETAG) {
- 		DBG_88E("pxmitframe->frame_tag == TXAGG_FRAMETAG\n");
- 	} else {
- 		DBG_88E("pxmitframe->frame_tag = %d\n", pxmitframe->frame_tag);
-@@ -301,7 +301,7 @@ static s32 update_txdesc(struct xmit_frame *pxmitframe, u8 *pmem, s32 sz, u8 bag
- 		/* offset 8 */
- 
- 		/* offset 12 */
--		ptxdesc->txdw3 |= cpu_to_le32((pattrib->seqnum<<SEQ_SHT)&0x0fff0000);
-+		ptxdesc->txdw3 |= cpu_to_le32((pattrib->seqnum << SEQ_SHT) & 0x0fff0000);
- 
- 		/* offset 20 */
- 		ptxdesc->txdw5 |= cpu_to_le32(MRateToHwRate(pmlmeext->tx_rate));
-@@ -466,7 +466,7 @@ bool rtl8188eu_xmitframe_complete(struct adapter *adapt,
- 
- 	/* 3 2. aggregate same priority and same DA(AP or STA) frames */
- 	pfirstframe = pxmitframe;
--	len = xmitframe_need_length(pfirstframe) + TXDESC_SIZE + (pfirstframe->pkt_offset*PACKET_OFFSET_SZ);
-+	len = xmitframe_need_length(pfirstframe) + TXDESC_SIZE + (pfirstframe->pkt_offset * PACKET_OFFSET_SZ);
- 	pbuf_tail = len;
- 	pbuf = round_up(pbuf_tail, 8);
- 
-@@ -517,7 +517,7 @@ bool rtl8188eu_xmitframe_complete(struct adapter *adapt,
- 		pxmitframe->agg_num = 0; /*  not first frame of aggregation */
- 		pxmitframe->pkt_offset = 0; /*  not first frame of aggregation, no need to reserve offset */
- 
--		len = xmitframe_need_length(pxmitframe) + TXDESC_SIZE + (pxmitframe->pkt_offset*PACKET_OFFSET_SZ);
-+		len = xmitframe_need_length(pxmitframe) + TXDESC_SIZE + (pxmitframe->pkt_offset * PACKET_OFFSET_SZ);
- 
- 		if (round_up(pbuf + len, 8) > MAX_XMITBUF_SZ) {
- 			pxmitframe->agg_num = 1;
 -- 
-2.17.1
+2.25.1
 
 _______________________________________________
 devel mailing list
