@@ -1,84 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FBD418ED3B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Mar 2020 00:18:21 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E366918ED6F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Mar 2020 01:12:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8F8C488909;
-	Sun, 22 Mar 2020 23:18:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0D0B187A47;
+	Mon, 23 Mar 2020 00:12:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E8ZwRsRmgBaq; Sun, 22 Mar 2020 23:18:18 +0000 (UTC)
+	with ESMTP id Eoc8D3Xyg61H; Mon, 23 Mar 2020 00:12:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E4E26887EA;
-	Sun, 22 Mar 2020 23:18:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DF7FD865CF;
+	Mon, 23 Mar 2020 00:12:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A5CED1BF591
- for <devel@linuxdriverproject.org>; Sun, 22 Mar 2020 23:18:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 747D81BF2EB
+ for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 00:12:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9FA8B87C94
- for <devel@linuxdriverproject.org>; Sun, 22 Mar 2020 23:18:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6365B865CF
+ for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 00:12:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZsQynez26Ehr for <devel@linuxdriverproject.org>;
- Sun, 22 Mar 2020 23:18:15 +0000 (UTC)
+ with ESMTP id xesiBJd18n7k for <devel@linuxdriverproject.org>;
+ Mon, 23 Mar 2020 00:12:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0580187C83
- for <devel@driverdev.osuosl.org>; Sun, 22 Mar 2020 23:18:15 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id np9so5254914pjb.4
- for <devel@driverdev.osuosl.org>; Sun, 22 Mar 2020 16:18:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=sAqNs7cLCNrJManKOoO5nJSc+vgXtk4yt3qmrV/VGSA=;
- b=HIp+rh9WJhP9XJ05dPnVLE6lGZZVOrktfOxFWCcQc6e+ITUiDnTHi7eVBHR+gqTpz1
- 9E3jTzzgeo75fyj4YLXAKf43uYVdNqGlHsRWqpJqRGfJjb40PH/6cTyUF1nW7q9dF7Lh
- mVN1aweTD8A8eZagP0n40qUi52I+bbuwsKLRGB4QuwuqJfu4A+NVxrIEp779rGyrp9b8
- PHpzicfdVQHDOMxdmM/HPNdMb6K17ElTO2yxT1XFbYh1OMpDgaHtPnMpWthE4gQ2Jvct
- 4j85JZzluxPclQWmXmX0txu07361+pzqsbxmdf1w+Gt2KhoOYFOd4fOWiau20nAZxlaK
- vEcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=sAqNs7cLCNrJManKOoO5nJSc+vgXtk4yt3qmrV/VGSA=;
- b=JxP08DErzgb15pal/EaTSxQ7Llqm/WLjsue8PPufR0IbWp+WaKRuGMjcAfvIz/GXyy
- /9rvOy5dYVFXan2+aUrerWlFkrW42thBxTHcueOUKT7x4AB8ia+PReVXl7fBO0F8V9a/
- laOKPaPQ458rralO2jBhIZLXb3xg2uoqz4rh/7Dgvojt3QOPmICZdDwDCnhkYAbuLj1A
- Jwr+2c5aA6lb2X5bK1gjkxalfpxK9aFYYIRHVxMR7y6CXxfJM9HNOW5SACZQo77tTO+e
- WUH+9xByBBlBT/qi43ATjDGXPpRF5mfz1e73yfrHAxOFLYfj/n+qN6UK78kc258eVCtI
- Iz4Q==
-X-Gm-Message-State: ANhLgQ0ep7ui18WnOo+pjkI+IooLRZa/oKTMpczqaCOKpq4oy9t2+ntH
- rOHmeb3dAHJ8NfT0+ic7//o=
-X-Google-Smtp-Source: ADFU+vvdLVqHMNFGHPUVUc1e14qG8smozDKMLnqvr/DxMD5yvtO27wPyexteJOp/73/BvjTEUcO7VA==
-X-Received: by 2002:a17:902:694c:: with SMTP id
- k12mr18968806plt.173.1584919094450; 
- Sun, 22 Mar 2020 16:18:14 -0700 (PDT)
-Received: from Shreeya-Patel ([113.193.34.113])
- by smtp.googlemail.com with ESMTPSA id
- z12sm12403521pfj.144.2020.03.22.16.18.11
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 22 Mar 2020 16:18:13 -0700 (PDT)
-Message-ID: <f2b4f7f38a8a490ffc917f7199099ac95656c8c2.camel@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 01/11] Staging: rtl8188eu: hal_com:
- Add space around operators
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: Joe Perches <joe@perches.com>, Greg KH <gregkh@linuxfoundation.org>
-Date: Mon, 23 Mar 2020 04:48:08 +0530
-In-Reply-To: <e40d49aaa96a61019804255c2990d229b2eef7dc.camel@perches.com>
-References: <cover.1584826154.git.shreeya.patel23498@gmail.com>
- <19950c71482b3be0dd9518398af85e964f3b66b1.1584826154.git.shreeya.patel23498@gmail.com>
- <20200322112744.GC75383@kroah.com>
- <e40d49aaa96a61019804255c2990d229b2eef7dc.camel@perches.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
-Mime-Version: 1.0
+Received: from relmlie6.idc.renesas.com (relmlor2.renesas.com
+ [210.160.252.172])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 92A5483E0F
+ for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 00:12:02 +0000 (UTC)
+Date: 23 Mar 2020 09:12:00 +0900
+X-IronPort-AV: E=Sophos;i="5.72,294,1580742000"; d="scan'208";a="42319112"
+Received: from unknown (HELO relmlir6.idc.renesas.com) ([10.200.68.152])
+ by relmlie6.idc.renesas.com with ESMTP; 23 Mar 2020 09:12:00 +0900
+Received: from mercury.renesas.com (unknown [10.166.252.133])
+ by relmlir6.idc.renesas.com (Postfix) with ESMTP id 7E78240FAA09;
+ Mon, 23 Mar 2020 09:12:00 +0900 (JST)
+Message-ID: <87fte0lyjz.wl-kuninori.morimoto.gx@renesas.com>
+From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+To: Alex Riesen <alexander.riesen@cetitec.com>
+Subject: Re: [PATCH v2 08/10] arm64: dts: renesas: salvator: add a connection
+ from adv748x codec (HDMI input) to the R-Car SoC
+In-Reply-To: <ebda055ae4c898b4ca29e518f89d8f3f4be4d27c.1584639664.git.alexander.riesen@cetitec.com>
+References: <cover.1584639664.git.alexander.riesen@cetitec.com>
+ <ebda055ae4c898b4ca29e518f89d8f3f4be4d27c.1584639664.git.alexander.riesen@cetitec.com>
+User-Agent: Wanderlust/2.15.9 Emacs/25.2 Mule/6.0
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,59 +61,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
- linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
+Cc: Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
+ devicetree@vger.kernel.org, Kieran Bingham <kieran.bingham@ideasonboard.com>,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, 2020-03-22 at 08:09 -0700, Joe Perches wrote:
-> On Sun, 2020-03-22 at 12:27 +0100, Greg KH wrote:
 
-Hi Greg and Joe,
+Hi Alex
 
-> > On Sun, Mar 22, 2020 at 03:51:13AM +0530, Shreeya Patel wrote:
-> > > Add space around operators for improving the code
-> > > readability.
-> > > Reported by checkpatch.pl
-> > > 
-> > > git diff -w shows no difference.
-> > > diff of the .o files before and after the changes shows no
-> > > difference.
-> > 
-> > There is no need to have these two lines on every changelog comment
-> > in
-> > this series :(
+Thank you for your pa
+
+> As all known variants of the Salvator board have the HDMI decoder
+> chip (the ADV7482) connected to the SSI4 on R-Car SoC, the ADV7482
+> endpoint and the connection definitions are placed in the common board
+> file.
+> For the same reason, the CLK_C clock line and I2C configuration (similar
+> to the ak4613, on the same interface) are added into the common file.
 > 
-Yes I get that.
+> Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
+> Reviewed-by: Geert Uytterhoeven <geert@linux-m68k.org>
+(snip)
+> @@ -758,8 +769,19 @@ &rcar_sound {
+>  		 <&cpg CPG_MOD 1020>, <&cpg CPG_MOD 1021>,
+>  		 <&cpg CPG_MOD 1019>, <&cpg CPG_MOD 1018>,
+>  		 <&audio_clk_a>, <&cs2000>,
+> -		 <&audio_clk_c>,
+> +		 <&adv7482_hdmi_in>,
+>  		 <&cpg CPG_CORE CPG_AUDIO_CLK_I>;
+> +	clock-names = "ssi-all",
+> +		      "ssi.9", "ssi.8", "ssi.7", "ssi.6",
+> +		      "ssi.5", "ssi.4", "ssi.3", "ssi.2",
+> +		      "ssi.1", "ssi.0",
+> +		      "src.9", "src.8", "src.7", "src.6",
+> +		      "src.5", "src.4", "src.3", "src.2",
+> +		      "src.1", "src.0",
+> +		      "mix.1", "mix.0",
+> +		      "ctu.1", "ctu.0",
+> +		      "dvc.0", "dvc.1",
+> +		      "clk_a", "clk_b", "clk_c", "clk_i";
 
-> In my opinion, there's no need for a series here.
-> 
-> Whitespace only changes _should_ be done all at once.
-> 
-> Whitespace changes _could_ have changed string constants.
-> 
-> So noting that the patch in only whitespace and that
-> there isn't a difference in object files is useful as
-> it shows any change has been compiled and tested.
-> 
+I think you don't need to overwrite clock-names here in this case ?
 
-Joe, I feel the same thing, there is no need of a patch series
-for it but I was given a suggestion that it becomes difficult for the
-reviewers to review the patch so it is good to send a patchset instead.
+Thank you for your help !!
 
-But as you said, we are testing that there is no change in the object
-file so we can go ahead with a single patch for all the whitespace
-changes.
-
-If you feel this is right then can I go ahead and send a single patch
-for it? ( need your or Greg's confirmation before I do it )
-
-Thanks
-
-> 
-
+Best regards
+---
+Kuninori Morimoto
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
