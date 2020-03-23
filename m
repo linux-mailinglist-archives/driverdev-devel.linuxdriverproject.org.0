@@ -1,65 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B2A818F4CB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Mar 2020 13:39:23 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09FB718F4D1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Mar 2020 13:40:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 02BF6881BF;
-	Mon, 23 Mar 2020 12:39:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8C7EE22BA3;
+	Mon, 23 Mar 2020 12:40:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ATt1HnXF226F; Mon, 23 Mar 2020 12:39:20 +0000 (UTC)
+	with ESMTP id JfL8PowpIrdR; Mon, 23 Mar 2020 12:40:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6B82488179;
-	Mon, 23 Mar 2020 12:39:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 754742291B;
+	Mon, 23 Mar 2020 12:40:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DAE391BF3D5
- for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 12:39:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9446D1BF3D5
+ for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 12:40:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D76A288179
- for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 12:39:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8C83088182
+ for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 12:40:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p5gWkKg6jBij for <devel@linuxdriverproject.org>;
- Mon, 23 Mar 2020 12:39:18 +0000 (UTC)
+ with ESMTP id EdTDUpe0n8JI for <devel@linuxdriverproject.org>;
+ Mon, 23 Mar 2020 12:40:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
- [209.85.166.200])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2834088178
- for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 12:39:18 +0000 (UTC)
-Received: by mail-il1-f200.google.com with SMTP id w76so12631378ila.6
- for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 05:39:18 -0700 (PDT)
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A46E28817F
+ for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 12:40:15 +0000 (UTC)
+Received: by mail-il1-f199.google.com with SMTP id z19so12561505ils.20
+ for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 05:40:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:date:message-id:subject:from:to;
- bh=1cOyjRHn2L+bFqtxc+Fw7X4e1wgEro2ch7tZOkfYwL8=;
- b=Iag0OpDXDbGKwEJxryqO5tjZaRgzD1Yns4ZZU1xN6kJsi51d2T3qabiTHABBZbrdYe
- l8RWULkZNZ6aQCZ/xitE9m+lExMOJJtP3vtom8ogQgrkG50AM7VeklPM3VmbXoO7KuNL
- 0Ex3mWv4CC2SujoDaAC+xmjitxIO1pL5laPf1GVzxhldO7kRhFMIj42G/dLiym2BBCvZ
- FKD0GnfbiJCeiqmEcG48Ee6Vqw1BGjXye+2DbI1hR3UdMu5EeUuhTSf5O9MH/onnbQNh
- 7o/B0Ci56Kmae/vY1ETn6u4sasDgOOjwel+SgPaym4nFz6+nhYVRFt2oUDnqJjOybdDB
- W+PA==
-X-Gm-Message-State: ANhLgQ1xgixZ4xsdhV9LSlnKjRumTas8B6AQvYe5mG5vT4YBFjI/yfge
- kNNqrZqvoPSVeCrjE75wRB39zmQdReOsb0Cp0fOPbFZdcE4F
-X-Google-Smtp-Source: ADFU+vuJapsVlDzNfST80/RBMf3N0g3M5ZbnGss9Ev1QH8nWhAo+R9cbXbcb26BzE63HoqloYlyamyFkk7w1d6OLdYvBQ817Szvz
+ bh=sd5TWIKyh1qqWFF6KwpxYU67VG5X+U6rMqNnTsWSS9Y=;
+ b=ftYJKPzOi81v0CVVU8vplM7MJksx4ILNjCl8F3UH3Ggo53vknPYGtmIi4zSwNNikNB
+ JqHJ276E90W7R+3BdHZdx9PrSG9pxhayCDm780SktHGuAaVVZlPMs6PXz/fyF1CqTzZb
+ DlsFB3OZUy+sfU7Wlr3K1rfP52Q48+29sbktDt2l5fVNBgxevI+e+PkYJjbz5S57El7a
+ ww4vP904tTY5vXfcyvACrsMJTqCHrmswq8/J4nvoIwXXW+R6rkRA6m2JGl1VfGez4d7V
+ BAAxBETyOXHizHrX/tyXpZtkGCQewpUPMBuY43j2S9YLtlL4Z/yU97WgteY07ktu6B4W
+ X8Vw==
+X-Gm-Message-State: ANhLgQ1tFW5r1u/3FYkkosmQ3/90hzSpdVOKptchN0wOU6GlH37jVXgR
+ 2grkx0QzXnq+46rticvcDFa6v3sUeV2NIeWwmq+asOxQj0xN
+X-Google-Smtp-Source: ADFU+vvCsSOf70d5/8qdUtRuUFQKnuve4kAAYZvu+ttebpieoKpkKcU3BlgD4DKYP5VV2oGKkFpNExtbaqxAVXhsMvLkUCqFpw6f
 MIME-Version: 1.0
-X-Received: by 2002:a92:bac3:: with SMTP id t64mr15593062ill.299.1584967157444; 
- Mon, 23 Mar 2020 05:39:17 -0700 (PDT)
-Date: Mon, 23 Mar 2020 05:39:17 -0700
+X-Received: by 2002:a92:8312:: with SMTP id f18mr20145413ild.98.1584967214867; 
+ Mon, 23 Mar 2020 05:40:14 -0700 (PDT)
+Date: Mon, 23 Mar 2020 05:40:14 -0700
 X-Google-Appengine-App-Id: s~syzkaller
 X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <0000000000006678a105a184ecb7@google.com>
-Subject: KASAN: use-after-free Read in hfa384x_usbin_callback
-From: syzbot <syzbot+a57b24d359dc5577634a@syzkaller.appspotmail.com>
+Message-ID: <000000000000d2b60105a184ef30@google.com>
+Subject: WARNING: ODEBUG bug in prism2sta_disconnect_usb
+From: syzbot <syzbot+6d2e7f6fa90e27be9d62@syzkaller.appspotmail.com>
 To: andreyknvl@google.com, devel@driverdev.osuosl.org, 
  gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, 
- linux-usb@vger.kernel.org, nishkadg.linux@gmail.com, osdevtc@gmail.com, 
- syzkaller-bugs@googlegroups.com
+ linux-usb@vger.kernel.org, osdevtc@gmail.com, syzkaller-bugs@googlegroups.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,85 +82,67 @@ syzbot found the following crash on:
 
 HEAD commit:    e17994d1 usb: core: kcov: collect coverage from usb comple..
 git tree:       https://github.com/google/kasan.git usb-fuzzer
-console output: https://syzkaller.appspot.com/x/log.txt?x=15217373e00000
+console output: https://syzkaller.appspot.com/x/log.txt?x=1129afe3e00000
 kernel config:  https://syzkaller.appspot.com/x/.config?x=5d64370c438bc60
-dashboard link: https://syzkaller.appspot.com/bug?extid=a57b24d359dc5577634a
+dashboard link: https://syzkaller.appspot.com/bug?extid=6d2e7f6fa90e27be9d62
 compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=14a720ade00000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=1467b755e00000
+
+Unfortunately, I don't have any reproducer for this crash yet.
 
 IMPORTANT: if you fix the bug, please add the following tag to the commit:
-Reported-by: syzbot+a57b24d359dc5577634a@syzkaller.appspotmail.com
+Reported-by: syzbot+6d2e7f6fa90e27be9d62@syzkaller.appspotmail.com
 
-==================================================================
-BUG: KASAN: use-after-free in memcpy include/linux/string.h:381 [inline]
-BUG: KASAN: use-after-free in skb_put_data include/linux/skbuff.h:2284 [inline]
-BUG: KASAN: use-after-free in hfa384x_int_rxmonitor drivers/staging/wlan-ng/hfa384x_usb.c:3412 [inline]
-BUG: KASAN: use-after-free in hfa384x_usbin_rx drivers/staging/wlan-ng/hfa384x_usb.c:3312 [inline]
-BUG: KASAN: use-after-free in hfa384x_usbin_callback+0x1993/0x2360 drivers/staging/wlan-ng/hfa384x_usb.c:3026
-Read of size 34945 at addr ffff8881cda9f33c by task swapper/0/0
-
-CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.6.0-rc5-syzkaller #0
+------------[ cut here ]------------
+ODEBUG: free active (active state 0) object type: work_struct hint: hfa384x_usb_defer+0x0/0x430 include/linux/list.h:71
+WARNING: CPU: 0 PID: 95 at lib/debugobjects.c:485 debug_print_object+0x160/0x250 lib/debugobjects.c:485
+Kernel panic - not syncing: panic_on_warn set ...
+CPU: 0 PID: 95 Comm: kworker/0:2 Not tainted 5.6.0-rc5-syzkaller #0
 Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
+Workqueue: usb_hub_wq hub_event
 Call Trace:
- <IRQ>
  __dump_stack lib/dump_stack.c:77 [inline]
  dump_stack+0xef/0x16e lib/dump_stack.c:118
- print_address_description.constprop.0.cold+0xd3/0x314 mm/kasan/report.c:374
- __kasan_report.cold+0x37/0x77 mm/kasan/report.c:506
- kasan_report+0xe/0x20 mm/kasan/common.c:641
- check_memory_region_inline mm/kasan/generic.c:185 [inline]
- check_memory_region+0x152/0x1c0 mm/kasan/generic.c:192
- memcpy+0x20/0x50 mm/kasan/common.c:127
- memcpy include/linux/string.h:381 [inline]
- skb_put_data include/linux/skbuff.h:2284 [inline]
- hfa384x_int_rxmonitor drivers/staging/wlan-ng/hfa384x_usb.c:3412 [inline]
- hfa384x_usbin_rx drivers/staging/wlan-ng/hfa384x_usb.c:3312 [inline]
- hfa384x_usbin_callback+0x1993/0x2360 drivers/staging/wlan-ng/hfa384x_usb.c:3026
- __usb_hcd_giveback_urb+0x29a/0x550 drivers/usb/core/hcd.c:1650
- usb_hcd_giveback_urb+0x368/0x420 drivers/usb/core/hcd.c:1716
- dummy_timer+0x1258/0x32ae drivers/usb/gadget/udc/dummy_hcd.c:1966
- call_timer_fn+0x195/0x6f0 kernel/time/timer.c:1404
- expire_timers kernel/time/timer.c:1449 [inline]
- __run_timers kernel/time/timer.c:1773 [inline]
- __run_timers kernel/time/timer.c:1740 [inline]
- run_timer_softirq+0x5f9/0x1500 kernel/time/timer.c:1786
- __do_softirq+0x21e/0x950 kernel/softirq.c:292
- invoke_softirq kernel/softirq.c:373 [inline]
- irq_exit+0x178/0x1a0 kernel/softirq.c:413
- exiting_irq arch/x86/include/asm/apic.h:546 [inline]
- smp_apic_timer_interrupt+0x141/0x540 arch/x86/kernel/apic/apic.c:1146
- apic_timer_interrupt+0xf/0x20 arch/x86/entry/entry_64.S:829
- </IRQ>
-RIP: 0010:default_idle+0x28/0x300 arch/x86/kernel/process.c:696
-Code: cc cc 41 56 41 55 65 44 8b 2d 44 77 72 7a 41 54 55 53 0f 1f 44 00 00 e8 b6 62 b5 fb e9 07 00 00 00 0f 00 2d ea 0c 53 00 fb f4 <65> 44 8b 2d 20 77 72 7a 0f 1f 44 00 00 5b 5d 41 5c 41 5d 41 5e c3
-RSP: 0018:ffffffff87007d80 EFLAGS: 00000246 ORIG_RAX: ffffffffffffff13
-RAX: 0000000000000007 RBX: ffffffff8702cc40 RCX: 0000000000000000
-RDX: 0000000000000000 RSI: 0000000000000006 RDI: ffffffff8702d48c
-RBP: fffffbfff0e05988 R08: ffffffff8702cc40 R09: 0000000000000000
-R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
-R13: 0000000000000000 R14: ffffffff87e607c0 R15: 0000000000000000
- cpuidle_idle_call kernel/sched/idle.c:154 [inline]
- do_idle+0x3e0/0x500 kernel/sched/idle.c:269
- cpu_startup_entry+0x14/0x20 kernel/sched/idle.c:361
- start_kernel+0xe16/0xe5a init/main.c:998
- secondary_startup_64+0xb6/0xc0 arch/x86/kernel/head_64.S:242
-
-The buggy address belongs to the page:
-page:ffffea000736a600 refcount:32769 mapcount:0 mapping:0000000000000000 index:0x0 compound_mapcount: 0
-flags: 0x200000000010000(head)
-raw: 0200000000010000 dead000000000100 dead000000000122 0000000000000000
-raw: 0000000000000000 0000000000000000 00008001ffffffff 0000000000000000
-page dumped because: kasan: bad access detected
-
-Memory state around the buggy address:
- ffff8881cda9ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
- ffff8881cda9ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->ffff8881cdaa0000: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-                   ^
- ffff8881cdaa0080: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
- ffff8881cdaa0100: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-==================================================================
+ panic+0x2aa/0x6e1 kernel/panic.c:221
+ __warn.cold+0x2f/0x30 kernel/panic.c:582
+ report_bug+0x27b/0x2f0 lib/bug.c:195
+ fixup_bug arch/x86/kernel/traps.c:174 [inline]
+ fixup_bug arch/x86/kernel/traps.c:169 [inline]
+ do_error_trap+0x12b/0x1e0 arch/x86/kernel/traps.c:267
+ do_invalid_op+0x32/0x40 arch/x86/kernel/traps.c:286
+ invalid_op+0x23/0x30 arch/x86/entry/entry_64.S:1027
+RIP: 0010:debug_print_object+0x160/0x250 lib/debugobjects.c:485
+Code: dd 20 37 fc 85 48 89 fa 48 c1 ea 03 80 3c 02 00 0f 85 bf 00 00 00 48 8b 14 dd 20 37 fc 85 48 c7 c7 60 2b fc 85 e8 98 0b 29 ff <0f> 0b 83 05 0b 3a fb 05 01 48 83 c4 20 5b 5d 41 5c 41 5d c3 48 89
+RSP: 0018:ffff8881d58c76b0 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: 0000000000000003 RCX: 0000000000000000
+RDX: 0000000000040000 RSI: ffffffff812972fd RDI: ffffed103ab18ec8
+RBP: 0000000000000001 R08: ffff8881d58b8000 R09: fffffbfff1266e8f
+R10: fffffbfff1266e8e R11: ffffffff89337477 R12: ffffffff870d8b00
+R13: ffffffff8119f700 R14: ffff8881d963cd20 R15: ffff8881d35b8e38
+ __debug_check_no_obj_freed lib/debugobjects.c:967 [inline]
+ debug_check_no_obj_freed+0x2e1/0x445 lib/debugobjects.c:998
+ slab_free_hook mm/slub.c:1441 [inline]
+ slab_free_freelist_hook mm/slub.c:1477 [inline]
+ slab_free mm/slub.c:3024 [inline]
+ kfree+0x18a/0x300 mm/slub.c:3976
+ prism2sta_disconnect_usb+0x76e/0xc30 drivers/staging/wlan-ng/prism2usb.c:209
+ usb_unbind_interface+0x1bd/0x8a0 drivers/usb/core/driver.c:436
+ __device_release_driver drivers/base/dd.c:1137 [inline]
+ device_release_driver_internal+0x42f/0x500 drivers/base/dd.c:1168
+ bus_remove_device+0x2eb/0x5a0 drivers/base/bus.c:533
+ device_del+0x481/0xd30 drivers/base/core.c:2677
+ usb_disable_device+0x23d/0x790 drivers/usb/core/message.c:1237
+ usb_disconnect+0x293/0x900 drivers/usb/core/hub.c:2211
+ hub_port_connect drivers/usb/core/hub.c:5046 [inline]
+ hub_port_connect_change drivers/usb/core/hub.c:5335 [inline]
+ port_event drivers/usb/core/hub.c:5481 [inline]
+ hub_event+0x1a1d/0x4300 drivers/usb/core/hub.c:5563
+ process_one_work+0x94b/0x1620 kernel/workqueue.c:2264
+ process_scheduled_works kernel/workqueue.c:2326 [inline]
+ worker_thread+0x7ab/0xe20 kernel/workqueue.c:2412
+ kthread+0x318/0x420 kernel/kthread.c:255
+ ret_from_fork+0x24/0x30 arch/x86/entry/entry_64.S:352
+Kernel Offset: disabled
+Rebooting in 86400 seconds..
 
 
 ---
@@ -171,8 +152,6 @@ syzbot engineers can be reached at syzkaller@googlegroups.com.
 
 syzbot will keep track of this bug report. See:
 https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
-syzbot can test patches for this bug, for details see:
-https://goo.gl/tpsmEJ#testing-patches
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
