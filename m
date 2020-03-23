@@ -1,108 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BC5918F134
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Mar 2020 09:51:07 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC8CD18F15B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Mar 2020 10:03:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A2AB386591;
-	Mon, 23 Mar 2020 08:51:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 73B4C88150;
+	Mon, 23 Mar 2020 09:03:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zmu4UVHBnuiG; Mon, 23 Mar 2020 08:51:03 +0000 (UTC)
+	with ESMTP id CyHZy8kK9n2t; Mon, 23 Mar 2020 09:03:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E14C1864AA;
-	Mon, 23 Mar 2020 08:51:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8315387F9B;
+	Mon, 23 Mar 2020 09:03:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 283401BF2C9
- for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 08:50:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4AEED1BF3E1
+ for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 09:03:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 204E5204A7
- for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 08:50:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 46CC31FF98
+ for <devel@linuxdriverproject.org>; Mon, 23 Mar 2020 09:03:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2doQf4QaZN5z for <devel@linuxdriverproject.org>;
- Mon, 23 Mar 2020 08:50:20 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.10])
- by silver.osuosl.org (Postfix) with ESMTPS id D6F7420458
- for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 08:50:19 +0000 (UTC)
-Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MacWq-1jnyuR1db0-00c65R for <devel@driverdev.osuosl.org>; Mon, 23 Mar
- 2020 09:50:17 +0100
-Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id D65246503FF
- for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 08:50:16 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at cetitec.com
-Received: from mail.cetitecgmbh.com ([127.0.0.1])
- by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
- [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hFqjg82TAIKd for <devel@driverdev.osuosl.org>;
- Mon, 23 Mar 2020 09:50:16 +0100 (CET)
-Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id 8771864E63D
- for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 09:50:16 +0100 (CET)
-Received: from pflmari.corp.cetitec.com (10.8.5.4) by
- PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Mon, 23 Mar 2020 09:50:16 +0100
-Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id ED162804FB; Mon, 23 Mar 2020 09:50:00 +0100 (CET)
-Date: Mon, 23 Mar 2020 09:50:00 +0100
-From: Alex Riesen <alexander.riesen@cetitec.com>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH v3 09/11] arm64: dts: renesas: salvator: add a connection
- from adv748x codec (HDMI input) to the R-Car SoC
-Message-ID: <20200323085000.GE4298@pflmari>
-Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- driverdevel <devel@driverdev.osuosl.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>
-References: <cover.1584720678.git.alexander.riesen@cetitec.com>
- <077a97942890b79fef2b271e889055fc07c74939.1584720678.git.alexander.riesen@cetitec.com>
- <CAMuHMdXiG1upHQrCcuZgNLFOEoeDVcb0zWxh1BZZST5TOURDBQ@mail.gmail.com>
- <20200323084011.GC4298@pflmari>
- <CAMuHMdXa96P+boX9HgGMBKEXLKK91t3Jgu-Sy8mP5A5--EeP=A@mail.gmail.com>
+ with ESMTP id qIn7fVTBR5od for <devel@linuxdriverproject.org>;
+ Mon, 23 Mar 2020 09:03:33 +0000 (UTC)
+X-Greylist: delayed 00:05:11 by SQLgrey-1.7.6
+Received: from mail.foescocursos.es (unknown [146.255.98.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7683B2047C
+ for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 09:03:33 +0000 (UTC)
+Received: from 97.red-79-144-59.dynamicip.rima-tde.net
+ (46.red-79-144-58.dynamicip.rima-tde.net [79.144.58.46])
+ by mail.foescocursos.es (Postfix) with ESMTPSA id 85141491615
+ for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 09:58:18 +0100 (CET)
+Authentication-Results: mail.foescocursos.es;
+ spf=pass (sender IP is 79.144.58.46)
+ smtp.mailfrom=foesco14@formacionbonificable.es
+ smtp.helo=97.red-79-144-59.dynamicip.rima-tde.net
+Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAMuHMdXa96P+boX9HgGMBKEXLKK91t3Jgu-Sy8mP5A5--EeP=A@mail.gmail.com>
-X-Originating-IP: [10.8.5.4]
-X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
- PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
-X-EsetResult: clean, is OK
-X-EsetId: 37303A290D7F536A6D7066
-X-Provags-ID: V03:K1:klEgJ6YPiJc1d7RQWIXvGUotaovT1LsbJvFds5tSpND++mAFCbo
- xXf7o6sf58XaqRxPYrxWK9wfijGaovYpMOJuwWHz4UGOmQH0sLCqtd+UmE2vvc92RMNBDia
- xG/9pOUULJx8aGyUivEedy5TnjxrMvP5CKXtlzOF2nv1gXN0eJu9FPP5/7BUMaRvs0ZdWbE
- +F+Q2JRz90Kgv67cj0H3g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:emiNc1CM1Tc=:+yoVWMhWZk3WXrvOsu3C6l
- PXlrdvsWN21if3y4/hnEcCO1R3mAT9f2aKC7MeFQaH0asxYGWMgP3xTh5eMUTa2nofV1LvD2n
- Wy1VtCwkp62UKXcZDagXwULeYWd3dGZFaV+RfAYaRj/mJlJ3jHlCVQjMxDpL4jQFeFSgOZsrT
- LoLG08K+mcbM3/VT29mJ6qnXaoYcRJ4m1MaxRVHRiXC1nFKVslZ8Cbx9kr5JmfkmsUhbwLnmb
- EN2OlJg27k1JZd3mJenPkxhUq873DHRq94BYZwstvQX3QKFS3DLuvVG8UHlB7fEzB9KP0+S7e
- ZTF0Kxayaz/JaIrw/iTVXGp81AUAR+Ch297B8WR6RKm6F3VoE2oDmgCkyirtY14jevmmqZmam
- zg03H2Ci0Rq8PFTGbenVfT8k5FyR0HE7pPtj62rtz/uKVkFEAqd3rXsNAhRzTbUReMgmPn7Sy
- xdQNDxkpZX3yE9n6f7BggGBduV78j89Agu5IB8/qdZKsNNulSqanRFMKOYpdnxJ2WYEI02Dya
- oQ/fbmOYcqQKYxckY+eeaeQQb251pzp/m+Uj507QE0iICScVinyaTdxEQRAip3fZI3EjE2CDf
- nzV+nCSVsh9qbxb8Pyal6+3cd/JAgS0xYipz2JAwYrcwI4/OB9xQMG14xIQvJTqm2jKI9N3pD
- cbfNYqaMjkVTiqWiFzFoR9eMyvm7IAV16fwh0qmatD6v1l7vXFxA/cnTWItdg/yWgkdtc9qu1
- vvldGCgjmCvHgxSZUZGHcdeeGOeBc5BvsdYbGMhG6rXajFDoBTqncLJ7CQzbB0XB91CaOlEl9
- VDb+K2057g7mkcjK4GsJ5r6O9zctMHkZRmhQlEKuiuRONETAupLdOpds/OS9dnouxGYyoXS
+From: foesco14@formacionbonificable.es
+To: devel@driverdev.osuosl.org
+Subject: =?Windows-1252?Q?Formaci=F3n_Bonificable_E-Learning?=
+X-Mailer: Smart_Send_4_3_3
+Date: Mon, 23 Mar 2020 10:57:35 -0700
+Message-ID: <655648378010434311509@DESKTOP-EEN1J8F>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,48 +59,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- driverdevel <devel@driverdev.osuosl.org>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- "open list:OPEN FIRMWARE AND FLATTENED
- DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>, Linux Kernel Mailing
- List <linux-kernel@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Laurent
- Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: foesco14@formacionbonificable.es
+Content-Type: multipart/mixed; boundary="===============3660275612194678058=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Geert,
+--===============3660275612194678058==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Geert Uytterhoeven, Mon, Mar 23, 2020 09:48:00 +0100:
-> On Mon, Mar 23, 2020 at 9:41 AM Alex Riesen <alexander.riesen@cetitec.com> wrote:
-> > Geert Uytterhoeven, Mon, Mar 23, 2020 09:34:45 +0100:
-> > > On Fri, Mar 20, 2020 at 5:43 PM Alex Riesen <alexander.riesen@cetitec.com> wrote:
-> > > > Reviewed-by: Geert Uytterhoeven <geert@linux-m68k.org>
-> > >
-> > > Did I provide a Reviewed-by?
-> > >
-> > But you really did provide a lot of very useful information and it did help
-> > to improve the code. Shall I remove the tag still?
-> 
-> Please do so.
-> 
-> While I can point out issues in audio patches, my audio-foo is not strong
-> enough to provide an R-B, and I'll rely on the R-bs provided by others.
+Buenos d=EDas
 
-Done. I left the suggested-bys in the trailer. Hope those are alright.
 
-Regards,
-Alex
+
+Os informamos que se encuentra abierto el plazo de inscripci=F3n para la Co=
+nvocatoria de Cursos Bonificables para empleados (ABRIL 2020).
+
+Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
+aci=F3n 2020 que disponen las empresas.
+
+Dada la situaci=F3n en la que nos encontramos, todos los cursos se realizar=
+=E1n exclusivamente en modalidad individual E-learning a trav=E9s de la pla=
+taforma web y con total flexibilidad horaria.
+
+
+Dese=E1is que os mandemos la informaci=F3n=3F
+
+
+Saludos cordiales.
+
+
+Alex Pons
+Director departamento formaci=F3n.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B171823AP
+www.foesco.com
+
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+
+
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
+la palabra BAJA en el asunto.
+
+--===============3660275612194678058==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3660275612194678058==--
