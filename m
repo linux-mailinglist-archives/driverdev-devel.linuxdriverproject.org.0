@@ -2,68 +2,68 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 804C91905DD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 24 Mar 2020 07:46:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E1D71905E1
+	for <lists+driverdev-devel@lfdr.de>; Tue, 24 Mar 2020 07:46:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 23AD286008;
-	Tue, 24 Mar 2020 06:46:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2BF2286910;
+	Tue, 24 Mar 2020 06:46:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EZvXqp7UaG7t; Tue, 24 Mar 2020 06:46:07 +0000 (UTC)
+	with ESMTP id y34xgs4JPBAX; Tue, 24 Mar 2020 06:46:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E917686169;
-	Tue, 24 Mar 2020 06:46:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D57AB868B6;
+	Tue, 24 Mar 2020 06:46:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E0C701BF35E
- for <devel@linuxdriverproject.org>; Tue, 24 Mar 2020 06:46:04 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6FB211BF35E
+ for <devel@linuxdriverproject.org>; Tue, 24 Mar 2020 06:46:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D5F3087880
- for <devel@linuxdriverproject.org>; Tue, 24 Mar 2020 06:46:04 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6A634204AB
+ for <devel@linuxdriverproject.org>; Tue, 24 Mar 2020 06:46:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ui+FOvUfANyC for <devel@linuxdriverproject.org>;
- Tue, 24 Mar 2020 06:46:03 +0000 (UTC)
+ with ESMTP id ImohuFtn5PBJ for <devel@linuxdriverproject.org>;
+ Tue, 24 Mar 2020 06:46:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B6C638776A
- for <devel@driverdev.osuosl.org>; Tue, 24 Mar 2020 06:46:03 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id 22so10565685otf.0
- for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 23:46:03 -0700 (PDT)
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id B08922041B
+ for <devel@driverdev.osuosl.org>; Tue, 24 Mar 2020 06:46:13 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id w2so6505225oic.5
+ for <devel@driverdev.osuosl.org>; Mon, 23 Mar 2020 23:46:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2eW4tMn4FX+hsT8yqdVtaTKyglVePfRfLH2Gh1mT3r0=;
- b=Jst754ZEMPZZKo/tfiTpAjUUo9LUB9h1ZhqMTl6mYb05VxiWnWNBp+bjrJOzyvQCH1
- +oKGskgAXtUyatIITVG6JzzFZQSwh15z9Uid1fjPChwcLpLSsbtoBCB9IqurQtGu+VZ9
- 5PSH45pTwE5R3lpqpzVtCRbCX2svlW/JY47tOtOW/TWmuJ3P9JgEo+n6ZCurvbQViAR0
- GZ1yWkyRPajjrUQ6L1oTJFzXg5qXm31Rx9SmFLf3q2o/bSmHhLosd1ozy0pr6kaJJ+di
- aV5t4WPe0uU1ljZjXdMF2FSsPTcgmIpXOHeqa+10DJKVkO/cOkAYRTiPnEUbheisoEHk
- 9CfQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Y2Cpzw4E1MH/apRZiYWRudyXyqXaavHR/FmSYKlPnKY=;
+ b=b1jpTp4B/e8ld6W7K2xPIhclIcEVsAnvAe+EMuzBiS31/s3QhUZXKhkCgm3fPyQ1gx
+ TQ20cmvwMjxCRuIA8NJ79kYdOSYNrlNgQp3X6sxNUcLdmEcIjnBwLNnnBXn4xVDbM+tS
+ 9lhk1q/ObYf6vvmpG7fZDO3IEqxho3QLE6SSHTH2P8FyHGbDs3idTKvImBmobYGRigQP
+ PSwjHklEuXRsI1OwATpb+tEBuBXz7LXS6nEulfEHFzVAgtpmj5bBduh/KEwb0PtVbMMy
+ 0+u7HO7/LmL4AAycH6dKs6XyshBp2qXxGht81ERf8eIabT80Uhi+LHiu4/1Wr1IDPRii
+ YZyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2eW4tMn4FX+hsT8yqdVtaTKyglVePfRfLH2Gh1mT3r0=;
- b=tgFv+jp8aHzkycQQ4DHL+67PouCTKL5U63hRWin8xr5NEecuf2Esov3E1eu7O5NCxJ
- 9/KdchmYfEH+2D/EcXBkU/YFG3xyuplU2LerBCBYGthwDnMwrJmK2cjrOMp8NH1TbnNt
- 6epSgHiDMe1NBiSLz6rNnP3MkuLFa32YPr15PczcQPDMM1ChzfQHYeuTPUaXDQ4mXUfb
- WQtIZ9UuQxXIDfPJkKpWFAXxI8fw+9mkSSf+QX0TMXwET9EiJZqxXYjXMydJ8msBsR2f
- KizHXsEu5YJrN/Rz/bJDNjbcFKqQr1qH1wZQelupulA4WkoaFoaTGOh2TSp6LNg3hgO3
- iizg==
-X-Gm-Message-State: ANhLgQ1Aoo00+MYsFsj8CiZKSFR7hYV55u6CX25Xb/ODTdQ6uh/LLo/G
- 6MH8bQ3Z7loicl9zJTVYnbs=
-X-Google-Smtp-Source: ADFU+vvqZeYBZxXRd+XZTQYuQf7BCwkmcUoV939/28bSCLZHwGMZYqjEBecKjSiVhfEMx01PMTwoyQ==
-X-Received: by 2002:a9d:7488:: with SMTP id t8mr1139265otk.219.1585032362970; 
- Mon, 23 Mar 2020 23:46:02 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Y2Cpzw4E1MH/apRZiYWRudyXyqXaavHR/FmSYKlPnKY=;
+ b=jTXrbkcU2KZghL8UUse9end7CBcg6+K9YuzkgVupquWMyG7Ez64WPTkcEodR+HflyO
+ SrOBRop1sxoKNecdw0WZoAp0+NQTH6zYGJtAMVC+EgRot7fSwZuDxqdnLrJpfTB8npW8
+ uWLxpRX8aOS3t7q9FUIPxlfLUCpkJ0NPnSFTY5xPzv0bO+lOnjkSRaqCWYzD8y6aNyqC
+ 2gvF80sRQJG72G4pe2P6H7Mi1u/I7zZyLUPXhbI+lWzHD2Onw3L5a+WazTwBHU2FhC25
+ DgMlrRxfLEOJLbxOL17Aq8+YDHevkLa6GBMmuEk86IXCwU9xqYTZ/bR+XQYIOUdESfws
+ bfGg==
+X-Gm-Message-State: ANhLgQ2U6+OTOz7DAXyjxvgmLOgRipqrWAT0WQmyFbmmkE2iAgxQ4BqH
+ 1RylYQ1olGfNsOycCCDkahE=
+X-Google-Smtp-Source: ADFU+vsM+mBjfop2NBPyp3ELPu1FSyg2p9oSo3vNcQD9CE6eykdqD8v4ElqykaUcGRIGGvZM9AHhAg==
+X-Received: by 2002:aca:bd0b:: with SMTP id n11mr2240979oif.90.1585032372991; 
+ Mon, 23 Mar 2020 23:46:12 -0700 (PDT)
 Received: from localhost.localdomain ([47.144.161.84])
- by smtp.gmail.com with ESMTPSA id x1sm2910134ota.7.2020.03.23.23.46.01
+ by smtp.gmail.com with ESMTPSA id x1sm2910134ota.7.2020.03.23.23.46.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Mar 2020 23:46:02 -0700 (PDT)
+ Mon, 23 Mar 2020 23:46:12 -0700 (PDT)
 From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
 To: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>,
  Forest Bond <forest@alittletooquiet.net>,
@@ -73,11 +73,12 @@ To: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>,
  Malcolm Priestley <tvboxspy@gmail.com>,
  Oscar Carter <oscar.carter@gmx.com>, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 0/2] staging: vt6656: change function from always returning 0
- to void
-Date: Mon, 23 Mar 2020 23:45:43 -0700
-Message-Id: <20200324064545.1832227-1-jbwyatt4@gmail.com>
+Subject: [PATCH 1/2] staging: vt6656: remove unneeded variable: ret
+Date: Mon, 23 Mar 2020 23:45:44 -0700
+Message-Id: <20200324064545.1832227-2-jbwyatt4@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200324064545.1832227-1-jbwyatt4@gmail.com>
+References: <20200324064545.1832227-1-jbwyatt4@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -97,21 +98,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change vnt_radio_power_on from always returning 0 to void.
+Remove unneeded variable ret; replace with 0 for the return value.
 
-The first patch in this series was originally submitted as a 
-standalone patch. Greg Kroah-Hartman <gregkh@linuxfoundation.org> 
-suggested more changes to be made into a patchset.
+Update function documentation (comment) on the return status as
+suggested by Julia Lawall <julia.lawall@inria.fr>.
 
-John B. Wyatt IV (2):
-  staging: vt6656: remove unneeded variable: ret
-  staging: vt6656: change unused int return value to void
+Issue reported by coccinelle (coccicheck).
 
- drivers/staging/vt6656/card.c     | 9 ++-------
- drivers/staging/vt6656/card.h     | 2 +-
- drivers/staging/vt6656/main_usb.c | 4 +---
- 3 files changed, 4 insertions(+), 11 deletions(-)
+Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+---
+ drivers/staging/vt6656/card.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
+index dc3ab10eb630..05b57a2489a0 100644
+--- a/drivers/staging/vt6656/card.c
++++ b/drivers/staging/vt6656/card.c
+@@ -716,13 +716,11 @@ int vnt_radio_power_off(struct vnt_private *priv)
+  *  Out:
+  *      none
+  *
+- * Return Value: true if success; otherwise false
++ * Return Value: 0
+  *
+  */
+ int vnt_radio_power_on(struct vnt_private *priv)
+ {
+-	int ret = 0;
+-
+ 	vnt_exit_deep_sleep(priv);
+ 
+ 	vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
+@@ -741,7 +739,7 @@ int vnt_radio_power_on(struct vnt_private *priv)
+ 
+ 	vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
+ 
+-	return ret;
++	return 0;
+ }
+ 
+ void vnt_set_bss_mode(struct vnt_private *priv)
 -- 
 2.25.1
 
