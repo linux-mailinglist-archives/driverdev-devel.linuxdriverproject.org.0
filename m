@@ -2,58 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83E33191424
-	for <lists+driverdev-devel@lfdr.de>; Tue, 24 Mar 2020 16:22:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 58F5B191423
+	for <lists+driverdev-devel@lfdr.de>; Tue, 24 Mar 2020 16:22:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DC69888C95;
-	Tue, 24 Mar 2020 15:22:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EDD7E88C7F;
+	Tue, 24 Mar 2020 15:22:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xW3XKzZnaRX4; Tue, 24 Mar 2020 15:22:43 +0000 (UTC)
+	with ESMTP id Rvdhg-x13Sdm; Tue, 24 Mar 2020 15:22:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A4C1588C80;
-	Tue, 24 Mar 2020 15:22:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7B42D882F2;
+	Tue, 24 Mar 2020 15:21:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 407831BF3C4
- for <devel@linuxdriverproject.org>; Tue, 24 Mar 2020 15:22:40 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 04C611BF3C4
+ for <devel@linuxdriverproject.org>; Tue, 24 Mar 2020 15:21:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3D33B8796C
- for <devel@linuxdriverproject.org>; Tue, 24 Mar 2020 15:22:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0159685F77
+ for <devel@linuxdriverproject.org>; Tue, 24 Mar 2020 15:21:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e2q1B5Yha3OV for <devel@linuxdriverproject.org>;
- Tue, 24 Mar 2020 15:20:51 +0000 (UTC)
+ with ESMTP id 2wubw9_EHcRK for <devel@linuxdriverproject.org>;
+ Tue, 24 Mar 2020 15:21:53 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9B3DF88A64
- for <devel@driverdev.osuosl.org>; Tue, 24 Mar 2020 15:20:42 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F2A3D20788;
- Tue, 24 Mar 2020 15:20:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585063242;
- bh=fEhQh4PlVnifiVAaye+uPmKZQi7jjOmksH5ziSoYnC4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=d5iDaKj/9VarNgXC/LNohPOLOj6QCax66vnIxTWbcQl7h0moGh6EMSNfreVz4cc8x
- IukjG8ANgvFo+FnJ6Wv5PUh+nhjTJOxKoGHkeamoMrwz8hHdrk8S0+sRS4SmrwB2aY
- fJ5yMiQDMpne2505fKcl2KOotFpkMCbD6bSX/2aE=
-Date: Tue, 24 Mar 2020 16:20:40 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Bastien Nocera <hadess@hadess.net>
+Received: from relay6-d.mail.gandi.net (relay6-d.mail.gandi.net
+ [217.70.183.198])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 86B9E85F67
+ for <devel@driverdev.osuosl.org>; Tue, 24 Mar 2020 15:21:53 +0000 (UTC)
+X-Originating-IP: 83.155.44.161
+Received: from classic (mon69-7-83-155-44-161.fbx.proxad.net [83.155.44.161])
+ (Authenticated sender: hadess@hadess.net)
+ by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 1D8B2C0011;
+ Tue, 24 Mar 2020 15:21:47 +0000 (UTC)
+Message-ID: <73723ab7d2c64c7d5ce7e2ae05b857c965824168.camel@hadess.net>
 Subject: Re: [PATCH resend 3] staging: rtl8188eu: Add rtw_led_enable module
  parameter
-Message-ID: <20200324152040.GA2511658@kroah.com>
+From: Bastien Nocera <hadess@hadess.net>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date: Tue, 24 Mar 2020 16:21:47 +0100
+In-Reply-To: <20200324152040.GA2511658@kroah.com>
 References: <97d2ef68a6bcb7d1ece978eef6315e95732ca39d.camel@hadess.net>
+ <20200324152040.GA2511658@kroah.com>
+User-Agent: Evolution 3.36.0 (3.36.0-1.fc32) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <97d2ef68a6bcb7d1ece978eef6315e95732ca39d.camel@hadess.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,24 +67,25 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Mar 24, 2020 at 11:36:00AM +0100, Bastien Nocera wrote:
-> Make it possible to disable the LED, as it can be pretty annoying
-> depending on where it's located.
+On Tue, 2020-03-24 at 16:20 +0100, Greg Kroah-Hartman wrote:
+> On Tue, Mar 24, 2020 at 11:36:00AM +0100, Bastien Nocera wrote:
+> > Make it possible to disable the LED, as it can be pretty annoying
+> > depending on where it's located.
+> > 
+> > See also https://github.com/lwfinger/rtl8188eu/pull/304 for the
+> > out-of-tree version.
+> > 
+> > Signed-off-by: Bastien Nocera <hadess@hadess.net>
+> > ---
+> >  drivers/staging/rtl8188eu/core/rtw_led.c      | 6 ++++++
+> >  drivers/staging/rtl8188eu/include/drv_types.h | 2 ++
+> >  drivers/staging/rtl8188eu/os_dep/os_intfs.c   | 5 +++++
+> >  3 files changed, 13 insertions(+)
 > 
-> See also https://github.com/lwfinger/rtl8188eu/pull/304 for the
-> out-of-tree version.
-> 
-> Signed-off-by: Bastien Nocera <hadess@hadess.net>
-> ---
->  drivers/staging/rtl8188eu/core/rtw_led.c      | 6 ++++++
->  drivers/staging/rtl8188eu/include/drv_types.h | 2 ++
->  drivers/staging/rtl8188eu/os_dep/os_intfs.c   | 5 +++++
->  3 files changed, 13 insertions(+)
+> Why was this resent?  Didn't I just reject this?
 
+It wasn't resent, it's the same mail you already answered.
 
-Why was this resent?  Didn't I just reject this?
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
