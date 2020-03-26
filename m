@@ -2,62 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6FB9193D36
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 11:47:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 82868193D4B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 11:51:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E95AB88DC0;
-	Thu, 26 Mar 2020 10:47:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BFF8B88E3D;
+	Thu, 26 Mar 2020 10:51:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CXMy1324HaM1; Thu, 26 Mar 2020 10:47:32 +0000 (UTC)
+	with ESMTP id o7Tv6PEFXCbn; Thu, 26 Mar 2020 10:51:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 566FD88C3F;
-	Thu, 26 Mar 2020 10:47:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3B21B88D61;
+	Thu, 26 Mar 2020 10:51:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 506C11BF354
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 10:47:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1A7AE1BF354
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 10:51:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 471DB88CEA
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 10:47:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1072220767
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 10:51:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9wahUNGDAsS4 for <devel@linuxdriverproject.org>;
- Thu, 26 Mar 2020 10:47:29 +0000 (UTC)
+ with ESMTP id JYQfE39hclvP for <devel@linuxdriverproject.org>;
+ Thu, 26 Mar 2020 10:51:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.13])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3331C88C3F
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 10:47:29 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.135])
+ by silver.osuosl.org (Postfix) with ESMTPS id B0397204D7
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 10:51:37 +0000 (UTC)
 Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mv2gw-1jYwxi3egC-00qzrI for <devel@driverdev.osuosl.org>; Thu, 26 Mar
- 2020 11:47:26 +0100
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1MIdS1-1j3Rzu0cuD-00Eaj3 for <devel@driverdev.osuosl.org>; Thu, 26 Mar
+ 2020 11:51:35 +0100
 Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id 8367665047A
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 10:47:26 +0000 (UTC)
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id A35F364E3E5
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 10:51:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at cetitec.com
 Received: from mail.cetitecgmbh.com ([127.0.0.1])
  by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
  [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Yi6D7X53S0TM for <devel@driverdev.osuosl.org>;
- Thu, 26 Mar 2020 11:47:26 +0100 (CET)
+ with ESMTP id 1Jlp0xPpdRmh for <devel@driverdev.osuosl.org>;
+ Thu, 26 Mar 2020 11:51:34 +0100 (CET)
 Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id 2544C64F7DF
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 11:47:26 +0100 (CET)
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id 55F1F64DE77
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 11:51:34 +0100 (CET)
 Received: from pflmari.corp.cetitec.com (10.8.5.79) by
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Thu, 26 Mar 2020 11:47:25 +0100
+ id 15.0.1497.2; Thu, 26 Mar 2020 11:51:34 +0100
 Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id 4A99B80501; Thu, 26 Mar 2020 11:35:25 +0100 (CET)
-Date: Thu, 26 Mar 2020 11:35:25 +0100
+ id 220CD80503; Thu, 26 Mar 2020 11:35:42 +0100 (CET)
+Date: Thu, 26 Mar 2020 11:35:42 +0100
 From: Alex Riesen <alexander.riesen@cetitec.com>
 To: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: [PATCH v4 4/9] media: adv748x: add definitions for audio output
- related registers
-Message-ID: <c4314afadd7e0882d8e2cbcbe2fe9c6a46775016.1585218857.git.alexander.riesen@cetitec.com>
+Subject: [PATCH v4 6/9] media: adv748x: prepare/enable mclk when the audio is
+ used
+Message-ID: <c4469e5897f0974c3e6eaba7cd1d4be983cf84a9.1585218857.git.alexander.riesen@cetitec.com>
 Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  Kieran Bingham <kieran.bingham@ideasonboard.com>,
  Geert Uytterhoeven <geert@linux-m68k.org>,
@@ -79,23 +79,23 @@ X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
 X-EsetResult: clean, is OK
 X-EsetId: 37303A290D7F536A6D7C67
-X-Provags-ID: V03:K1:xsFJU6a9nJNjTnogIP1Z5UKAA29tvJtfW2DHPLKXcfpV83nPZs/
- 9stg60/hdpLNN6DTjubq6/PRArTBFwsp7IcmbaOz3IlDfLwOV2FUqVVMDdgn3QKU34RvjKe
- t4Ygd2FyRMw5LV+ROYcC6B5FLqhnVO+pcQ2LibUUuYJi/k/VYSCYrOpe5iEjtco646FbbwI
- 6v4U/hJzjHFTfHFY0GX5A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:n7JaEyijRJA=:R6E5tQy9YMXxFDzXcNBRLW
- /YKaWnlzj9gF77alMXa4yS7srU3iGqvqlKoQkjPOj7Aq5Cn7ONBtIJVW8DnF44qgGp/9AP8Nm
- /ye48oIqefNQ1qBKWTZBYGRxNyu6DnWW1mAmEHm8wY1/aDSwvupgHI/fbpGEXmExP0Z3QTG3O
- MzVgR8oO9CHY4q/lyFvenk0bpcthoowl7G8fYKhsXM8u1cRzREb1/tDWzfs4jt+fDYBbbFgBV
- JkfggwrmTFUY/mui9peOjgnDOS2QaHq1Z1+4fUcm1hOXw0gEEsGA2zItVlboAJkv+vRBq6E9I
- p2SkmNUGl/RBOi7mQiDDxwkECwNT0X2qoa+X0HYz3brJnj1hYgFKBQcP+nWy+BGkM0BpC/M0v
- nbhvUbiwThIYYBniIIinVgPoNyL3/n1GGQRVLXy7qt9Vye9valjumy6MjE9LVQaFa9E3X+4ih
- L/NPblXIJkmEBkYmTrY9iJISvvbreY4iSIbKLKT4roQG3cD8cxAK/mcIjMNeZzDuUmVKO/A4X
- yE4v9KBY3oq0JDxywe6/1FHZjRgzYHiL6aagwJPO4M1dJLUL96X29kmxStsZDCXlXx+9oDPP4
- 7rxwJie5sqzDoB7fb5dJP6td9+ru5bGkIT+5MYjnOsw58pMds0c1vl+fjAAy0e932s+fCpzNF
- Cy+dnJt32WRTysEbL5Z1SYbRw4DtBkI6jqefm+en2MOGndXvGNP5ooRDYzvfpmyTtkjRtD+yY
- c59nAOsVSFT8NPlMIN0f3UL+kA7G/9TBb/uPrWX0bEaZAuon0KSaMPCn/jwHOylX7MSQ/doiL
- icWj3MmzCKPT7f40qsiuvnPx3FLaqM4k/6LmRCMq/iPShFLWb47IpoAIh/TPtdV+g8dVo5w
+X-Provags-ID: V03:K1:Vy3ipQvZ0g655QL7PVbBKXVf43dmrv7Tzv7ZEXHu6sOJmXAJPiy
+ KuPuLeFIBuCrmPd8K4XgIyqsIljVE53srEG9MQ7ejP43CnPmAFytgzJgA2zb0tZP3lsiBrI
+ uS3ceK1YzO7R6wpobJBMMIkCO8JVdDrYFcfJIMMNFLkAjvpdVUSkx9d9HVO+c5z2qpU0t3t
+ C4ZFsmHvaItQqMnD3rNCg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:35eEMD4viy0=:OSCU2vRY9lrMgaCNtOQx/T
+ xx66RsLasQPcTR1+FqCt6BI9lA1hzMxxdpHPWP/fkhRpUD4iElv1d2HvYrEhXRfXFBVlC8dT6
+ AFr2uiIj9y3k1xoufDf0HvBLENndrYEOQho7PZ+VxiJROKdNtv2acdJTInnpiBWxCdxK3kty1
+ qA4JocI+OYd5+EMGzIWXcJMOzQJ83FutT6S8jx9FR5C5OfNQBYxBIlXmWdyVfQ5tzOP1ZiCys
+ IibprJKgsq30RkuMAjhkrPjPl3AHqrGOdgoc3lkJvb3s8/bPJb6YWAaG00AmPb982asR5+SqN
+ H5/yRns1ofRHuVOB5bBHEmAB+h5pg8e7lT6BtPsUCLhcxMaGa5xk/PGmdqBIrf8lcSjldZe06
+ QHNPoGJo/VX7ajRIgtBUNeB5eDZy2lYFAnKrPIaytIIrfNHRMJXb/QX/8WNkA783wLLvGN8Wh
+ UQaYEv0pnhA/huHXlIZkGHWywuuJdXGgmsuNtSomz12rxX3qMLVveq2SaZa5AbP6W3a9PVPci
+ 4Uj5el3Pn59bUZ6EiSJGVWCBUTB9mDD+kKTBSFPovQYY1rTbPe1Mn2H1FBy2qAVVLxEzBjOOc
+ qaxBKrRkObnAJXJTARgmu5Dv/5AC+5csmqr3PcmvUA2zead97/Rnug5PRZxu1111K2Xj8VH4f
+ OQKRtAUAezWXRgEvCHzG5B7qUl37mNihviMWqaYzYYWojqaPGtn6FkYWsdgkjYxSNqurlNmnZ
+ p+jAjtNz1T6jhQtIDlL9TccFt7TGdCsMgNZUr/S38echPqRs0t6lrSnIWtFIa5mx2KnutZCqf
+ TcC2QeRZnG4jvQZ7iJQix68fKYHePPbEmcvcNnd/5MMKXsFY+ZlLhn49YliuA/tY5AjW+Xz
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,76 +121,53 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
----
- drivers/media/i2c/adv748x/adv748x.h | 32 +++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+As there is nothing else (the consumers are supposed to do that) which
+enables the clock, do it in the driver.
 
-diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
-index 0a9d78c2870b..1a1ea70086c6 100644
---- a/drivers/media/i2c/adv748x/adv748x.h
-+++ b/drivers/media/i2c/adv748x/adv748x.h
-@@ -226,6 +226,11 @@ struct adv748x_state {
+Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
+--
+
+v3: added
+---
+ drivers/media/i2c/adv748x/adv748x-dai.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/i2c/adv748x/adv748x-dai.c b/drivers/media/i2c/adv748x/adv748x-dai.c
+index c9191f8f1ca8..185f78023e91 100644
+--- a/drivers/media/i2c/adv748x/adv748x-dai.c
++++ b/drivers/media/i2c/adv748x/adv748x-dai.c
+@@ -117,11 +117,22 @@ static int adv748x_dai_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
  
- #define ADV748X_IO_VID_STD		0x05
+ static int adv748x_dai_startup(struct snd_pcm_substream *sub, struct snd_soc_dai *dai)
+ {
++	int ret;
+ 	struct adv748x_state *state = state_of(dai);
  
-+#define ADV748X_IO_PAD_CONTROLS		0x0e
-+#define ADV748X_IO_PAD_CONTROLS_TRI_AUD	BIT(5)
-+#define ADV748X_IO_PAD_CONTROLS_PDN_AUD	BIT(1)
-+#define ADV748X_IO_PAD_CONTROLS1	0x1d
-+
- #define ADV748X_IO_10			0x10	/* io_reg_10 */
- #define ADV748X_IO_10_CSI4_EN		BIT(7)
- #define ADV748X_IO_10_CSI1_EN		BIT(6)
-@@ -248,7 +253,21 @@ struct adv748x_state {
- #define ADV748X_IO_REG_FF		0xff
- #define ADV748X_IO_REG_FF_MAIN_RESET	0xff
+ 	if (sub->stream != SNDRV_PCM_STREAM_CAPTURE)
+ 		return -EINVAL;
+-	return set_audio_pads_state(state, 1);
++	ret = set_audio_pads_state(state, 1);
++	if (ret)
++		goto fail;
++	ret = clk_prepare_enable(mclk_of(state));
++	if (ret)
++		goto fail_pwdn;
++	return 0;
++fail_pwdn:
++	set_audio_pads_state(state, 0);
++fail:
++	return ret;
+ }
  
-+/* DPLL Map */
-+#define ADV748X_DPLL_MCLK_FS		0xb5
-+#define ADV748X_DPLL_MCLK_FS_N_MASK	GENMASK(2, 0)
-+
- /* HDMI RX Map */
-+#define ADV748X_HDMI_I2S		0x03	/* I2S mode and width */
-+#define ADV748X_HDMI_I2SBITWIDTH_MASK	GENMASK(4, 0)
-+#define ADV748X_HDMI_I2SOUTMODE_SHIFT	5
-+#define ADV748X_HDMI_I2SOUTMODE_MASK	\
-+	GENMASK(6, ADV748X_HDMI_I2SOUTMODE_SHIFT)
-+#define ADV748X_I2SOUTMODE_I2S 0
-+#define ADV748X_I2SOUTMODE_RIGHT_J 1
-+#define ADV748X_I2SOUTMODE_LEFT_J 2
-+#define ADV748X_I2SOUTMODE_SPDIF 3
-+
- #define ADV748X_HDMI_LW1		0x07	/* line width_1 */
- #define ADV748X_HDMI_LW1_VERT_FILTER	BIT(7)
- #define ADV748X_HDMI_LW1_DE_REGEN	BIT(5)
-@@ -260,6 +279,16 @@ struct adv748x_state {
- #define ADV748X_HDMI_F1H1		0x0b	/* field1 height_1 */
- #define ADV748X_HDMI_F1H1_INTERLACED	BIT(5)
+ static int adv748x_dai_hw_params(struct snd_pcm_substream *sub,
+@@ -174,6 +185,7 @@ static void adv748x_dai_shutdown(struct snd_pcm_substream *sub, struct snd_soc_d
+ {
+ 	struct adv748x_state *state = state_of(dai);
  
-+#define ADV748X_HDMI_MUTE_CTRL		0x1a
-+#define ADV748X_HDMI_MUTE_CTRL_MUTE_AUDIO BIT(4)
-+#define ADV748X_HDMI_MUTE_CTRL_WAIT_UNMUTE_MASK	GENMASK(3, 1)
-+#define ADV748X_HDMI_MUTE_CTRL_NOT_AUTO_UNMUTE	BIT(0)
-+
-+#define ADV748X_HDMI_AUDIO_MUTE_SPEED	0x0f
-+#define ADV748X_HDMI_AUDIO_MUTE_SPEED_MASK	GENMASK(4, 0)
-+#define ADV748X_MAN_AUDIO_DL_BYPASS BIT(7)
-+#define ADV748X_AUDIO_DELAY_LINE_BYPASS BIT(6)
-+
- #define ADV748X_HDMI_HFRONT_PORCH	0x20	/* hsync_front_porch_1 */
- #define ADV748X_HDMI_HFRONT_PORCH_MASK	0x1fff
++	clk_disable_unprepare(mclk_of(state));
+ 	set_audio_pads_state(state, 0);
+ }
  
-@@ -281,6 +310,9 @@ struct adv748x_state {
- #define ADV748X_HDMI_TMDS_1		0x51	/* hdmi_reg_51 */
- #define ADV748X_HDMI_TMDS_2		0x52	/* hdmi_reg_52 */
- 
-+#define ADV748X_HDMI_REG_6D		0x6d	/* hdmi_reg_6d */
-+#define ADV748X_I2S_TDM_MODE_ENABLE BIT(7)
-+
- /* HDMI RX Repeater Map */
- #define ADV748X_REPEATER_EDID_SZ	0x70	/* primary_edid_size */
- #define ADV748X_REPEATER_EDID_SZ_SHIFT	4
 -- 
 2.25.1.25.g9ecbe7eb18
 
