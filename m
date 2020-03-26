@@ -1,81 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2641F194487
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 17:44:14 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 869092635C;
-	Thu, 26 Mar 2020 16:44:12 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HneSt+VV5iSg; Thu, 26 Mar 2020 16:44:12 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4D3562153D;
-	Thu, 26 Mar 2020 16:44:11 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 66ECB1BF289
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 16:44:09 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 24133194521
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 18:11:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 60D1488430
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 16:44:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B9AD288680;
+	Thu, 26 Mar 2020 17:11:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MXlXlVD9dmgQ; Thu, 26 Mar 2020 17:11:02 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6AF438867E;
+	Thu, 26 Mar 2020 17:10:59 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8F16F1BF3EB
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 17:10:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 866C789372
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 17:10:57 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K45RWDvnWtYn for <devel@linuxdriverproject.org>;
- Thu, 26 Mar 2020 16:44:07 +0000 (UTC)
+ with ESMTP id 98+U+OTyRLwa for <devel@linuxdriverproject.org>;
+ Thu, 26 Mar 2020 17:10:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.22])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CA5B088425
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 16:44:06 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EFA728936E
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 17:10:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1585241001;
- bh=UVbrUb+k2mZ8gQQp531jOp6OyS4N5ogYYHX6KJL1YCU=;
+ s=badeba3b8450; t=1585242645;
+ bh=hvqInh9aY84kozIuxBpF3a7NAoi9KTncxIFpjJt9bBo=;
  h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
- b=blxVZnnmMDa/b8P3caKBpshrtPnRziu3jzDhlTkuXpnrj+kNY0/4RZzksYDbh7hnw
- fLII8RoVZM59hxxC7Aj7CGOJQjjSYqWOqBatgQZzUauZKcb5LVFJH3ZIsIPtRRWNqP
- PBfb3GxDKCKxu36ivhmfFT6LVVOW/g3jq67uacfI=
+ b=KwxTTmSKCLthuf2GfZr5/jtUsyQ4kYDtguvgWdNYdUA/phY32xtMTnbS91sGex4ew
+ BQeKIG+4lhMjIObVUzVevw6Rgu/8EtMrDmJheMovb3NI/JxDnnW+aEc+BRgfLqObSS
+ 8EKqrkKqr4swymIbZ8GM/80srpWVfPClL0CVjwU4=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx104
- [212.227.17.174]) with ESMTPSA (Nemesis) id 1N1wpt-1jOCXY1wrp-012Jls; Thu, 26
- Mar 2020 17:43:21 +0100
-Date: Thu, 26 Mar 2020 17:43:05 +0100
+Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx005
+ [212.227.17.184]) with ESMTPSA (Nemesis) id 1MkHMZ-1jfpMq2kjR-00kfcV; Thu, 26
+ Mar 2020 18:10:45 +0100
+Date: Thu, 26 Mar 2020 18:10:43 +0100
 From: Oscar Carter <oscar.carter@gmx.com>
 To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH] staging: vt6656: Use BIT() macro instead of hex value
-Message-ID: <20200326164304.GA3629@ubuntu>
-References: <20200320171056.7841-1-oscar.carter@gmx.com>
- <20200323073518.GK4650@kadam>
+Subject: Re: [PATCH] staging: vt6656: Use BIT() macro in vnt_mac_reg_bits_*
+ functions
+Message-ID: <20200326171043.GB3629@ubuntu>
+References: <20200320181326.12156-1-oscar.carter@gmx.com>
+ <20200323073214.GJ4650@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200323073518.GK4650@kadam>
+In-Reply-To: <20200323073214.GJ4650@kadam>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Provags-ID: V03:K1:ISIX9ycQftVxIKBz3LnMcYJeXp51Z1jCaxo7XqwvIjHSJSTg4nM
- JHlz+vlVy60PwwLMtbHqQ73yjNPQcFb0B6WkzOj35hsEKcFQ/TGpipUFZFZI4kcjBBgamOm
- W6yGr/ypA+RtBgjIHDOsjMXSIy4D/Ldb9ZY6wYMLUdbkpbnNbtgs+YRD5ZaxiU4KIcftjfo
- zlA5IuYuFS7vx2G/IOXeQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:EXGQy6V7unU=:tkPDTF0Nvd+ujPunjlx3+r
- ONWMxR290GHbd7nj23A7c0sE5BxHQ2u0WEpXVey+UeIvPpfUVX671q+MFYlQB+Xh/VlJIOTMA
- GFI8OoPh1l4jL2+AqaOI3REcvrpKcGMNgRmNjGT9AkzDKEYabzMZIyqBmpMFtPEZZnL3wbJJ1
- uYIItOH8DcyUNX1rrOCO1soO5V8tUNJVtgfrXtUrIwt7PKkyuooaKcV7T93sM5XWB+4QGTJPA
- km8FuHEJJbEegto2Jtuw80yltvM2YYCewUlXeU0CJH2onnJb4PW03zoihfYQ9ASqDb2QBw9tj
- R0ALfO+fl6WM5eaiCO5sLXjUCNEor12FR5A29b1yfn94qJwj7GvU+E3bED9brSQ2q0shHetVj
- ZvIGLTv/bc5nwGTCBpE6pKRyWu4pde6j9ZafRryg1BgrhXNF6MmyRn/m42aGJvOuUZBJDsn5T
- qRTMPWi0CsHQrgoZswd0Of2XitvMlpoBUQnI5dPclaOzk+Xsz8yfH9mn9Ut6i2dGTFPnwq3bE
- lIG/KakrujCm5ylI9EVXcGmKu7aBH9d+8Fnmp4GVDUVM7eGORYBZ40/Q/O5+Ls5k3by7QoMVQ
- JSi4VnbaY6L1qE9sqdEIjUdCH6CHnNjJ4cgEX4POSSPhqKIJvucAeI6h04hVQwnHf0QgdQtfb
- WepzEcAPBGGGwckl/ezimRNP6UrwWpKJlvkB9Ldddeyd3ixbl0F2lSB/H+gTLb/qu2vJipc0Z
- dY5V9kcHmkOqUA3/aaaoyWc/pxkpQfChGEb1tbIvL++QjpWq6oWYOe7ldc4WsK6l4pgcYsyFR
- 2/1Ogtb+NJP6nFsL6temHUyoZNq6OzQtRl8PTKK/bH+ki8v1Zq99IimJiGOOgx21/wSeZxEEL
- 8unoondSozi5sjqrU6Ex3kR4ww9Cw5HIR/LyrpilYdLcg66K5xjxZUEVDFef+55Cd8ZtSmHI7
- YDamsQdrCNRX/vLwh8FCuHOzvyumN63Ql2SHvhGuhR/Rq1PKld8mMV/mv+XZxKGw5dyJYRILg
- jtQts1oz132BK8mFwjvHnJINdwxHCEH688kgSGo9JE0pXUJ6l4CrH3EY99yjJ28O0nMdRtE0D
- FxQPtzr5aHVnaWNO/JEW1+l+a5kqlzvSEi4GQ6UywDsjCXGaZ19HgRkAQQUQqE1g5C1tiswy5
- wAgOQcOGgdIFEBB/2YLq+MxGvz+WJQE/mkQ4PvAhRWt6S5/bdb71kvkljU6QM+FM6ivIS1di3
- D+4e4Eegi7Eolq97Y
+X-Provags-ID: V03:K1:O4+keqWShH3MXaNp9FG4v4kYmJ4mELgnL0HyqbFWwfZtObOpAfE
+ UyCDl2MuflZMd0WG6YPyRFLzX6iI3CQNPCGnOR0MHQrvxAS4SL58V2bposf8Tlonl3ivmkB
+ dFQFLjfVzoGZrHtkMqwyqO+YugPZ8WsKhBQA3ShWpY8Cv0wCQJ1J1NYVkwwR8NIHJ6xs5U+
+ XMpjBf+sT6X+UyxEioc/A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sH6Qqv5PV5A=:4VzFhpqAvOF3jlTjlng9rs
+ TEKvaPTISxxY3Pr7WjmYQ6hc62VJ75dq7JVx6SnkAFvptRXP19+70AmHko30FT8VBDcmZMe1D
+ DLA19OSzDKgEq6Zzi0iFPacTI/IqaaDE5C6Ya++C6V5xiCwqQBOaTa8Bq78FZsKwTxkp9ABtm
+ 90RKw4SC7FoWoqsXM102ci4fgRi7+0X7xZA38cuCU1ToBxi8knJ/Kf45hpaRKcXpq0kaoyTya
+ hN54quAv6JRzzWFDTuDuS70gPZXVJYgYfdx+PytNJ4XHVRqG/ZPI2M1TYjHfb2GZOnUohdbn8
+ sGDEXcbvJeLSTKbfI2M5w+t9tIjaBqLOTbEF/cP1Sr96gavTqeDK5Hqtetc8VeotIEUHFbXJq
+ 9rtKUeTx9cB5xOrG7BB4KT306gjTgHMDMHKe3zPAhQxaBdKo6uffzkkX2pDjpqi1DJVm3lLB3
+ l0Ur/McEN4EVXQZzL2aq1fF4KvR/X1pRzyaPob9CKMllH9FC5yBgYtlo/sAg1V9J7EupY8z7c
+ G+O2N2amIuyWQgyUQafzTxB3f3G6Ed4R8xb/2YYkS5xxOKeclYBqT8pn5520PUpfJIzEYMg/o
+ rjzlXilGUPrIg5B9wXgn+3RNGv17vCN7khtEVhITSVVQo3f/JY6cVv0/4PIXckNPhbnGAzoGg
+ AI8a7ecL42pjnTKtLk7EAh3yZ+B6Dgw6DNDmA0YLpFV/3BvEOJNzSZ7UeeIsvP7dzxv1UfhW5
+ JZLr87AJEyL9VOdFKDTj5Q6K0RMvWjMAeHWxffQge6Exfn49B7ZRqK7AoUhNJRESt35MDonAN
+ 6IlnjpWv42x1PqBv1KaNFm4iTopYdH0+Lm1WxyiwSwgqznBR/d0+zuxSOYvh1IxIwQb+YYzRt
+ WXM5Fx17aVOiECvu2wP7EbPXlRVbMJGXJyG2hY4eC2Fu+M4gGvCAz91dBcmm8sHB0OpSKe/oj
+ HbxG4+B2rok6vXWbwAkYE1i93IOhZyvZ8tKV8UcoMQapPkwYHWNtD0XZz7pu4gfdh887zRvzf
+ AAolpVA1su58DXKUm5KRTmgcnOnY31dfDTDjKVNtT9Li83FmapZfky3nbpVDLK6qJwsu/Smeb
+ KvLZdy5UOcZCeAVsTWj7Ftry3E+YCN4hOYJQ8h93dCIyOo/ZMxNeAdVVJbSuYarAkZu7gzqNR
+ TP+ydh5JiCptnFqDrWIZxfwBjx/kerdLjSw57rS3pNXcJkBYiGzZW1EA/1z9LdGYgZs3+0GPt
+ ZGDf0rIBFbXgv6wH0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,65 +91,54 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
  Malcolm Priestley <tvboxspy@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mukesh Ojha <mojha@codeaurora.org>, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
  Forest Bond <forest@alittletooquiet.net>,
- Ojaswin Mujoo <ojaswin25111998@gmail.com>
+ Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Mar 23, 2020 at 10:35:18AM +0300, Dan Carpenter wrote:
-> On Fri, Mar 20, 2020 at 06:10:56PM +0100, Oscar Carter wrote:
-> > -#define RSR_ADDRBROAD       0x80
-> > -#define RSR_ADDRMULTI       0x40
-> > +#define RSR_ADDRBROAD       BIT(7)
-> > +#define RSR_ADDRMULTI       BIT(6)
-> >  #define RSR_ADDRUNI         0x00
-> > -#define RSR_IVLDTYP         0x20        /* invalid packet type */
-> > -#define RSR_IVLDLEN         0x10        /* invalid len (> 2312 byte) */
-> > -#define RSR_BSSIDOK         0x08
-> > -#define RSR_CRCOK           0x04
-> > -#define RSR_BCNSSIDOK       0x02
-> > -#define RSR_ADDROK          0x01
-> > +#define RSR_IVLDTYP         BIT(5)	/* invalid packet type */
-> > +#define RSR_IVLDLEN         BIT(4)	/* invalid len (> 2312 byte) */
-> > +#define RSR_BSSIDOK         BIT(3)
-> > +#define RSR_CRCOK           BIT(2)
-> > +#define RSR_BCNSSIDOK       BIT(1)
-> > +#define RSR_ADDROK          BIT(0)
+On Mon, Mar 23, 2020 at 10:32:14AM +0300, Dan Carpenter wrote:
+> On Fri, Mar 20, 2020 at 07:13:26PM +0100, Oscar Carter wrote:
+> > +#include <linux/bits.h>
+> >  #include "mac.h"
+> >  #include "baseband.h"
+> >  #include "rf.h"
+> > @@ -468,7 +469,7 @@ int vnt_vt3184_init(struct vnt_private *priv)
+> >  		if (ret)
+> >  			goto end;
+> >
+> > -		ret = vnt_mac_reg_bits_on(priv, MAC_REG_PAPEDELAY, 0x01);
+> > +		ret = vnt_mac_reg_bits_on(priv, MAC_REG_PAPEDELAY, BIT(0));
 >
-> I like these ones because I do think the new version is more clear
-> now.
+> Everyone knows 0x01 is bit(0) already.  This isn't more clear.  It
+> should be a define instead of a magic number.
 >
-> >  /* Bits in the EnhanceCFG_0 register */
-> >  #define EnCFG_BBType_a		0x00
-> > -#define EnCFG_BBType_b		0x01
-> > -#define EnCFG_BBType_g		0x02
-> > -#define EnCFG_BBType_MASK	0x03
-> > -#define EnCFG_ProtectMd		0x20
-> > +#define EnCFG_BBType_b		BIT(0)
-> > +#define EnCFG_BBType_g		BIT(1)
-> > +#define EnCFG_BBType_MASK	(BIT(0) | BIT(1))
-> > +#define EnCFG_ProtectMd		BIT(5)
+I agree. I create a new define for this case.
+
+> > @@ -63,7 +64,8 @@ void vnt_set_channel(struct vnt_private *priv, u32 connection_channel)
+> >  	vnt_mac_reg_bits_on(priv, MAC_REG_MACCR, MACCR_CLRNAV);
+> >
+> >  	/* Set Channel[7] = 0 to tell H/W channel is changing now. */
+> > -	vnt_mac_reg_bits_off(priv, MAC_REG_CHANNEL, 0xb0);
+> > +	vnt_mac_reg_bits_off(priv, MAC_REG_CHANNEL,
+> > +			     (BIT(7) | BIT(5) | BIT(4)));
 >
-> Probably EnCFG_BBType_MASK should be defined using the other defines.
+> This one especially is just a lot longer now but still not clear.
 >
-> #define EnCFG_BBType_MASK (EnCFG_BBType_b | EnCFG_BBType_g)
->
-> Otherwise it looks good.  Can you change that one thing and then add
-> my Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
->
-Ok, i will make this change and i will send and incremental patch with the
-"Fixes:" tag due to the this patch has already been added to the staging-next
-branch of the greg staging tree.
+Like the previous one, i create a define. In this case to avoid the magic
+number or the OR operation between BIT macros.
 
 > regards,
 > dan carpenter
 >
-thanks,
+I will make these changes and i will send and incremental patch with the
+"Fixes:" tag due to the this patch has already been added to the staging-next
+branch of the greg staging tree.
 
+thanks,
 oscar carter
 _______________________________________________
 devel mailing list
