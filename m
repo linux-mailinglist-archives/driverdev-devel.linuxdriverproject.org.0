@@ -1,62 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD9C4193CF8
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 11:35:20 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9032193D04
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 11:38:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7F25F871CE;
-	Thu, 26 Mar 2020 10:35:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1CC7588D67;
+	Thu, 26 Mar 2020 10:38:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R9GxVoUi965z; Thu, 26 Mar 2020 10:35:18 +0000 (UTC)
+	with ESMTP id HzYHsLdAS2Ho; Thu, 26 Mar 2020 10:38:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B88D870B0;
-	Thu, 26 Mar 2020 10:35:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8249088AD3;
+	Thu, 26 Mar 2020 10:38:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CDE761BF354
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 10:35:15 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 260941BF354
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 10:38:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C9A7C870B0
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 10:35:15 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1F4B688AD3
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 10:38:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BmQrvqoO8E1C for <devel@linuxdriverproject.org>;
- Thu, 26 Mar 2020 10:35:15 +0000 (UTC)
+ with ESMTP id XDrneOFO6sWI for <devel@linuxdriverproject.org>;
+ Thu, 26 Mar 2020 10:38:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.135])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7424F8707B
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 10:35:14 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.73])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AC40A88A9E
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 10:38:35 +0000 (UTC)
 Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MQ5nE-1ivVFw0NOa-00M7W3 for <devel@driverdev.osuosl.org>; Thu, 26 Mar
- 2020 11:35:12 +0100
+ mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1M7KKA-1j9js43SiS-007nfN for <devel@driverdev.osuosl.org>; Thu, 26 Mar
+ 2020 11:38:32 +0100
 Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id 6123D650370
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 10:35:11 +0000 (UTC)
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id 6286864E837
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 10:38:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at cetitec.com
 Received: from mail.cetitecgmbh.com ([127.0.0.1])
  by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
  [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ko11V2pQUMg4 for <devel@driverdev.osuosl.org>;
- Thu, 26 Mar 2020 11:35:09 +0100 (CET)
+ with ESMTP id o10fy_P4iNjL for <devel@driverdev.osuosl.org>;
+ Thu, 26 Mar 2020 11:38:30 +0100 (CET)
 Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id E640865003B
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 11:35:09 +0100 (CET)
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id DB60C64DCAB
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 11:38:30 +0100 (CET)
 Received: from pflmari.corp.cetitec.com (10.8.5.79) by
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Thu, 26 Mar 2020 11:35:09 +0100
+ id 15.0.1497.2; Thu, 26 Mar 2020 11:38:30 +0100
 Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id 5832D804FB; Thu, 26 Mar 2020 11:34:54 +0100 (CET)
-Date: Thu, 26 Mar 2020 11:34:54 +0100
+ id 182C1804FD; Thu, 26 Mar 2020 11:34:57 +0100 (CET)
+Date: Thu, 26 Mar 2020 11:34:57 +0100
 From: Alex Riesen <alexander.riesen@cetitec.com>
 To: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: [PATCH v4 0/9] media: adv748x: add support for HDMI audio
-Message-ID: <cover.1585218857.git.alexander.riesen@cetitec.com>
+Subject: [PATCH v4 1/9] media: adv748x: fix end-of-line terminators in
+ diagnostic statements
+Message-ID: <df22a88b6a2006920bae857c53e45c34b31175d6.1585218857.git.alexander.riesen@cetitec.com>
 Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  Kieran Bingham <kieran.bingham@ideasonboard.com>,
  Geert Uytterhoeven <geert@linux-m68k.org>,
@@ -69,30 +70,32 @@ Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  devel@driverdev.osuosl.org, linux-media@vger.kernel.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  linux-renesas-soc@vger.kernel.org
+References: <cover.1585218857.git.alexander.riesen@cetitec.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <cover.1585218857.git.alexander.riesen@cetitec.com>
 X-Originating-IP: [10.8.5.79]
 X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
 X-EsetResult: clean, is OK
 X-EsetId: 37303A290D7F536A6D7C67
-X-Provags-ID: V03:K1:YAGSQ7i4gyf5Mb4TZeHV40nNGhNSyxaY34XH9BdAdBmCkN4/nkE
- mjsRXVS1c/6EItgeD8w0fg9qT/1DoBrYsVF+H+uB2ajtQpeLH2Y+gTIMFpykH6NHwUlpxOJ
- aqKJqLVBQDa7M3Jf/j7jlmjGdYuofgEyVsR1QPERn2I1rS+SE/wyAFtsBCcEaTaD7S4VIp8
- /fmHAno3CCs9aAY0pBNTQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wWVIP1hR9Ls=:QckWFRiaHHWnqBiByxYwzk
- C2wfh3brhA/2F1duRiYqJdDqJp3UGExqQWKxt6LpWkmnvFoZ3MVn/imLoK6UfN0qm3QKqwwxF
- SLoP3bDur9BZw9epti6CfVYDn1tnuzvwf3fYjssmbS7qm7tFn+YHURycIOBgQISN4oAL1cdc6
- ipVCloI+vFeDjS4stVeEcEzl9w6Q/sl84wADnSAyYTMduStkbrRLwd77ugpGrqEuvXxlxbLDv
- 8ZJdi8aL23agClI67W1j8/I2f7/q9P95ea3NrW6JdJtl2O4ntD/WV8X7/AcCtwn31GSxCTE9Q
- IimOZHdr954AAWsaNaMzxBaVETkUI4SPQfJxS8MnnbLkIMkGa0DRCbEariWv3rbciOe5TdHKc
- jRPQfGs6n5XmHZf1PdfVQAkt61spU5+g/TRMNhGDx8oQcSXLOgHb64PEEMZRkvv2DZ1pl672d
- fiYV5u/Nmg6xa00aauGKB/mOYbq6ajX20CfXX+OMQNhiNN+zFErIG79kfzfKs2N470ZNfsivk
- m1W4SDFKAk+dYTogvxm601qkHi639Eex8QkZTqmdjEJpD2g5VrFkOzSJdeNwNUMUXMB6ZUCDy
- dt2Ra14LY+fAB6jFcZPFkJSEpq9/tZKkGcRhzRBAU6+57IJM5KlvGsFZmqZan+gPC84/tp3X4
- Z+5fBhHcBfH09PMFgyI4kr9H/gmzMtZy0VDWGop1Oya24ihJtDfIIbukCbkAcub7iAInt9dEk
- q5p14cPOknrAZ7H37S3Ig3fEn/QvS02wpJ70NFVz5c1nxY9vVWMYl4BbVZMFNom6aNJ97Gf5r
- gcGmfApGqn3YSDStMyhJ9cEtt/wRwf6ymVopnedo/J8MYtCT8O9fX57qm/8qsODIdV6wNWI
+X-Provags-ID: V03:K1:CPvPsqWXpu3YGj1LKoWoqdL6KOiQAyyFYhUP+W/LIZ3cI8JWuN5
+ AY834gD7IAs0hXVfirtEslEaGl/gKn+6t7PmaqBaCjCK/Fca+q2ft3KV0hhoVJp002vo+Rk
+ FirOTRF6qbBP56aMvm6Kxg6uGOqol04o3QohCrLOyvq0+J5EDee7Z9KkegOEW5T8i0z1Xr2
+ EGv2UpIU2QgT8a/NF+ktg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xxAd+Ak4ntQ=:tnXR7F89Q3aP/aF9/w7VS2
+ gtlrMF/Q5igM30oVGo2Ph8UEHrUd+RMp++5VYVa3O9Uu3SSyUEgaITyqX9p54KphVfDpSv3il
+ hpkMPuuIajjTXUyLHw236rAwHQm29LIoRhuyFGktg7ifTOoBwcK3qIqC48npqRKqCtQ9DMQV7
+ uJNkr1LAilYfEGW6+oN7j7xtlXuonf1erSKj0usK+OvqPdRaL2ox8VrrX/n9FC8gEZ8yiJeya
+ i4/MHIrHi97t/HutVRUZ+TMYcRYlwOXSbEvYVA81Y8nlG+MU1A5/1IGCdPmzcV1SQzxxHX0pz
+ SH4NaIhBmdwI7x6gSHfXR1Wou4hT7X6u8GxWZ8kHT22gZEQ8MB5vOS+qBRoQXUOKiUISdVaGz
+ SfmMULW3QnM2diPOblqrnCJmgAQqdXIF4qZPiubnqDTRFls00LkjvL2yf0xuFbGmU0riyPo/m
+ OzevZMdogovsHQhWXp9/ODIQHzuxj/BAwksW9zAabuI2id2J/QdbfYaPZSxHSSZb9wghmo0YJ
+ +vV45GYqDwwjBBXrLCmFKDUBvB+/g1AhFAzuJrwMukNyQziStD5UBxaXAMyCHVav0e4pR1DD0
+ N1T32KZ0LdHbCogrK6aBBJRdGDvOUivcYAXOIj7p8ONYXVQgpF3kzd0XKcR5+RADkCDApXcfB
+ MMJVAA+6C0cUcr4lQh/ECuJhj9hUmv1R/wzPDSW3KChPNgSZQC+RP6OR2IbFg+lKvKPl7ofbR
+ J+wNU0EYGJZYuG/xzo4Eh39HEP50sRyeDqALGkNhLwr/98+dvu1m5eDr41v368txrG9nxrUFo
+ X0eVv2hY4unEgExKcKrb7OJ1TwMKhib80HGh8ERFpN5wcdpuHFvNEl4Wo3dRsP86/PhBhj0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,105 +121,128 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This adds minimal support for accessing the HDMI audio provided through the
-I2S port available on ADV7481 and ADV7482 decoder devices by ADI.
-The port carries audio signal from the decoded HDMI stream.
+Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+ drivers/media/i2c/adv748x/adv748x-core.c | 24 ++++++++++++------------
+ drivers/media/i2c/adv748x/adv748x-csi2.c |  2 +-
+ 2 files changed, 13 insertions(+), 13 deletions(-)
 
-Currently, the driver only supports I2S in TDM, 8 channels a 24bit at 48kHz.
-Furthermore, only left-justified, 8 slots, 32bit/slot TDM, at 256fs has been
-ever tried.
-
-An ADV7482 on the Renesas Salvator-X ES1.1 (R8A77950 SoC) was used during
-development of this code.
-
-Changes since v3:
-  - use clk_hw instead of clk
-    Suggested-by: Stephen Boyd <sboyd@kernel.org>
-
-  - formatting improvements and use const where possible
-
-  - removed implementation of log_status and EDID setting ioctls,
-    those will be submitted as separate patches.
-    Suggested-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-
-Changes since v2:
-  - prepare/enable the clock when it is used, as it seems nothing else does
-    this otherwise
-
-  - give the clock a unique name to ensure it can be registered if there are
-    multiple adv748x devices in the system
-
-  - remove optionality note from clock cell description to ensure the device
-    description matches the real device (the line is always present, even
-    if not used)
-
-Changes since v1:
-  - Add ssi4_ctrl pin group to the sound pins. The pins are responsible for
-    SCK4 (sample clock) WS4 and (word boundary input), and are required for
-    SSI audio input over I2S.
-    Reported-by: Geert Uytterhoeven <geert@linux-m68k.org>
-
-  - Removed the audio clock C from the list of clocks of adv748x,
-    it is exactly the other way around.
-    Reported-by: Geert Uytterhoeven <geert@linux-m68k.org>
-
-  - Add an instance of (currently) fixed rate I2S master clock (MCLK),
-    connected to the audio_clk_c line of the R-Car SoC.
-    Explicitly declare the device a clock producer and add it to the
-    list of clocks used by the audio system of the Salvator-X board.
-    Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
-
-  - The implementation of DAI driver has been moved in a separate file
-    and modified to activate audio decoding and I2S streaming using
-    snd_soc_dai_... interfaces. This allows the driver to be used with
-    just ALSA interfaces.
-
-  - The ioctls for selecting audio output and muting have been removed,
-    as not applicable.
-    Suggested-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-    I have left implementation of the QUERYCAP in, as it seems to be required
-    by v4l-ctl to support loading of EDID for this node. And setting the EDID
-    is one feature I desperately need: there are devices which plainly refuse
-    to talk to the sink if it does not provide EDID they like.
-
-  - A device tree configuration without audio port will disable the audio code
-    altogether, supporting integrations where the port is not connected.
-
-  - The patches have been re-arranged, starting with the generic changes and
-    changes not related to audio directly. Those will be probably sent as a
-    separate series later.
-
-  - The whole series has been rebased on top of v5.6-rc6
-
-Alex Riesen (9):
-  media: adv748x: fix end-of-line terminators in diagnostic statements
-  media: adv748x: include everything adv748x.h needs into the file
-  media: adv748x: reduce amount of code for bitwise modifications of
-    device registers
-  media: adv748x: add definitions for audio output related registers
-  media: adv748x: add support for HDMI audio
-  media: adv748x: prepare/enable mclk when the audio is used
-  media: adv748x: only activate DAI if it is described in device tree
-  dt-bindings: adv748x: add information about serial audio interface
-    (I2S/TDM)
-  arm64: dts: renesas: salvator: add a connection from adv748x codec
-    (HDMI input) to the R-Car SoC
-
- .../devicetree/bindings/media/i2c/adv748x.txt |  16 +-
- .../boot/dts/renesas/r8a77950-salvator-x.dts  |   3 +-
- .../boot/dts/renesas/salvator-common.dtsi     |  47 ++-
- drivers/media/i2c/adv748x/Makefile            |   3 +-
- drivers/media/i2c/adv748x/adv748x-afe.c       |   6 +-
- drivers/media/i2c/adv748x/adv748x-core.c      |  45 +--
- drivers/media/i2c/adv748x/adv748x-csi2.c      |   8 +-
- drivers/media/i2c/adv748x/adv748x-dai.c       | 278 ++++++++++++++++++
- drivers/media/i2c/adv748x/adv748x-hdmi.c      |   6 +-
- drivers/media/i2c/adv748x/adv748x.h           |  65 +++-
- 10 files changed, 435 insertions(+), 42 deletions(-)
- create mode 100644 drivers/media/i2c/adv748x/adv748x-dai.c
-
+diff --git a/drivers/media/i2c/adv748x/adv748x-core.c b/drivers/media/i2c/adv748x/adv748x-core.c
+index 23e02ff27b17..c3fb113cef62 100644
+--- a/drivers/media/i2c/adv748x/adv748x-core.c
++++ b/drivers/media/i2c/adv748x/adv748x-core.c
+@@ -623,11 +623,11 @@ static int adv748x_parse_dt(struct adv748x_state *state)
+ 
+ 	for_each_endpoint_of_node(state->dev->of_node, ep_np) {
+ 		of_graph_parse_endpoint(ep_np, &ep);
+-		adv_info(state, "Endpoint %pOF on port %d", ep.local_node,
++		adv_info(state, "Endpoint %pOF on port %d\n", ep.local_node,
+ 			 ep.port);
+ 
+ 		if (ep.port >= ADV748X_PORT_MAX) {
+-			adv_err(state, "Invalid endpoint %pOF on port %d",
++			adv_err(state, "Invalid endpoint %pOF on port %d\n",
+ 				ep.local_node, ep.port);
+ 
+ 			continue;
+@@ -635,7 +635,7 @@ static int adv748x_parse_dt(struct adv748x_state *state)
+ 
+ 		if (state->endpoints[ep.port]) {
+ 			adv_err(state,
+-				"Multiple port endpoints are not supported");
++				"Multiple port endpoints are not supported\n");
+ 			continue;
+ 		}
+ 
+@@ -702,62 +702,62 @@ static int adv748x_probe(struct i2c_client *client)
+ 	/* Discover and process ports declared by the Device tree endpoints */
+ 	ret = adv748x_parse_dt(state);
+ 	if (ret) {
+-		adv_err(state, "Failed to parse device tree");
++		adv_err(state, "Failed to parse device tree\n");
+ 		goto err_free_mutex;
+ 	}
+ 
+ 	/* Configure IO Regmap region */
+ 	ret = adv748x_configure_regmap(state, ADV748X_PAGE_IO);
+ 	if (ret) {
+-		adv_err(state, "Error configuring IO regmap region");
++		adv_err(state, "Error configuring IO regmap region\n");
+ 		goto err_cleanup_dt;
+ 	}
+ 
+ 	ret = adv748x_identify_chip(state);
+ 	if (ret) {
+-		adv_err(state, "Failed to identify chip");
++		adv_err(state, "Failed to identify chip\n");
+ 		goto err_cleanup_dt;
+ 	}
+ 
+ 	/* Configure remaining pages as I2C clients with regmap access */
+ 	ret = adv748x_initialise_clients(state);
+ 	if (ret) {
+-		adv_err(state, "Failed to setup client regmap pages");
++		adv_err(state, "Failed to setup client regmap pages\n");
+ 		goto err_cleanup_clients;
+ 	}
+ 
+ 	/* SW reset ADV748X to its default values */
+ 	ret = adv748x_reset(state);
+ 	if (ret) {
+-		adv_err(state, "Failed to reset hardware");
++		adv_err(state, "Failed to reset hardware\n");
+ 		goto err_cleanup_clients;
+ 	}
+ 
+ 	/* Initialise HDMI */
+ 	ret = adv748x_hdmi_init(&state->hdmi);
+ 	if (ret) {
+-		adv_err(state, "Failed to probe HDMI");
++		adv_err(state, "Failed to probe HDMI\n");
+ 		goto err_cleanup_clients;
+ 	}
+ 
+ 	/* Initialise AFE */
+ 	ret = adv748x_afe_init(&state->afe);
+ 	if (ret) {
+-		adv_err(state, "Failed to probe AFE");
++		adv_err(state, "Failed to probe AFE\n");
+ 		goto err_cleanup_hdmi;
+ 	}
+ 
+ 	/* Initialise TXA */
+ 	ret = adv748x_csi2_init(state, &state->txa);
+ 	if (ret) {
+-		adv_err(state, "Failed to probe TXA");
++		adv_err(state, "Failed to probe TXA\n");
+ 		goto err_cleanup_afe;
+ 	}
+ 
+ 	/* Initialise TXB */
+ 	ret = adv748x_csi2_init(state, &state->txb);
+ 	if (ret) {
+-		adv_err(state, "Failed to probe TXB");
++		adv_err(state, "Failed to probe TXB\n");
+ 		goto err_cleanup_txa;
+ 	}
+ 
+diff --git a/drivers/media/i2c/adv748x/adv748x-csi2.c b/drivers/media/i2c/adv748x/adv748x-csi2.c
+index 2091cda50935..c43ce5d78723 100644
+--- a/drivers/media/i2c/adv748x/adv748x-csi2.c
++++ b/drivers/media/i2c/adv748x/adv748x-csi2.c
+@@ -72,7 +72,7 @@ static int adv748x_csi2_registered(struct v4l2_subdev *sd)
+ 	struct adv748x_state *state = tx->state;
+ 	int ret;
+ 
+-	adv_dbg(state, "Registered %s (%s)", is_txa(tx) ? "TXA":"TXB",
++	adv_dbg(state, "Registered %s (%s)\n", is_txa(tx) ? "TXA":"TXB",
+ 			sd->name);
+ 
+ 	/*
 -- 
 2.25.1.25.g9ecbe7eb18
+
 
 _______________________________________________
 devel mailing list
