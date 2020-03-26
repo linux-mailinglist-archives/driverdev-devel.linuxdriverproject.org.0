@@ -1,52 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6397B1949D5
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 22:10:04 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80423194C33
+	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Mar 2020 00:24:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 10D0689361;
-	Thu, 26 Mar 2020 21:10:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6A2DF88A15;
+	Thu, 26 Mar 2020 23:24:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wxpHTNQrxmHG; Thu, 26 Mar 2020 21:10:01 +0000 (UTC)
+	with ESMTP id I4P9VX6VYF-I; Thu, 26 Mar 2020 23:24:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8506E892B5;
-	Thu, 26 Mar 2020 21:10:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6CC7088A07;
+	Thu, 26 Mar 2020 23:24:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 294321BF2FB
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 21:10:00 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 84E921BF284
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 23:24:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 24A758933D
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 21:10:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8217F203FA
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 23:24:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v5MO-Cw0DiA4 for <devel@linuxdriverproject.org>;
- Thu, 26 Mar 2020 21:09:58 +0000 (UTC)
+ with ESMTP id 6o5U8BQfePOT for <devel@linuxdriverproject.org>;
+ Thu, 26 Mar 2020 23:24:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.foescocursos.es (unknown [146.255.98.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 298F2892B5
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 21:09:57 +0000 (UTC)
-Received: from 97.red-79-144-59.dynamicip.rima-tde.net
- (46.red-79-144-58.dynamicip.rima-tde.net [79.144.58.46])
- by mail.foescocursos.es (Postfix) with ESMTPSA id CE634A1572
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 22:09:54 +0100 (CET)
-Authentication-Results: mail.foescocursos.es;
- spf=pass (sender IP is 79.144.58.46)
- smtp.mailfrom=foesco14@formacionbonificable.es
- smtp.helo=97.red-79-144-59.dynamicip.rima-tde.net
-Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 023BB20117
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 23:24:04 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1E79220774;
+ Thu, 26 Mar 2020 23:24:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1585265043;
+ bh=sKbjwMLJiBOphC69hyUcwuxnGfiE7NbpZaWocYhiKBI=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=AZ/H7YMzKQonndCgykCf0nkpaYYAiRtwcTjWHIhsnMtOS1s5JqVP7UPSaytWNr0yc
+ +aA7AR7u/Sbc+VFlXJGyrauaCv85MMm5ng3FYSeZxo5gWzDB6dZ2ul0xwm1XRpmnqT
+ Cip/uSiprVQH0ob9Y31qSjD1OTkGfoPIhC+FWUVs=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.5 05/28] staging: wfx: fix warning about freeing
+ in-use mutex during device unregister
+Date: Thu, 26 Mar 2020 19:23:34 -0400
+Message-Id: <20200326232357.7516-5-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200326232357.7516-1-sashal@kernel.org>
+References: <20200326232357.7516-1-sashal@kernel.org>
 MIME-Version: 1.0
-From: foesco14@formacionbonificable.es
-To: devel@driverdev.osuosl.org
-Subject: =?Windows-1252?Q?Formaci=F3n_Bonificable_E-Learning?=
-X-Mailer: Smart_Send_4_3_3
-Date: Thu, 26 Mar 2020 23:09:14 -0700
-Message-ID: <65564837801042063617930@DESKTOP-EEN1J8F>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,67 +69,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: foesco14@formacionbonificable.es
-Content-Type: multipart/mixed; boundary="===============8844980695944667287=="
+Cc: Sasha Levin <sashal@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============8844980695944667287==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-Buenos d=EDas
-
-
-
-Os informamos que se encuentra abierto el plazo de inscripci=F3n para la Co=
-nvocatoria de Cursos Bonificables para empleados (ABRIL 2020).
-
-Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
-aci=F3n 2020 que disponen las empresas.
-
-Dada la situaci=F3n en la que nos encontramos, todos los cursos se realizar=
-=E1n exclusivamente en modalidad individual E-learning a trav=E9s de la pla=
-taforma web y con total flexibilidad horaria.
-
-
-Dese=E1is que os mandemos la informaci=F3n=3F
-
-
-Saludos cordiales.
-
-
-Alex Pons
-Director departamento formaci=F3n.
-
-FOESCO Formaci=F3n Estatal Continua.
-Entidad Organizadora: B171823AP
-www.foesco.com
-
-e-mail:     cursos@foesco.net
-Tel:     910 323 794
-
-
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
-la palabra BAJA en el asunto.
-
---===============8844980695944667287==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============8844980695944667287==--
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKWyBV
+cHN0cmVhbSBjb21taXQgYmFiMGEwYjAzNDQyYTYyZmUzYWJlZmNiMjE2OWUwYjlmZjk1OTkwYyBd
+CgpBZnRlciBoaWZfc2h1dGRvd24oKSwgY29tbXVuaWNhdGlvbiB3aXRoIHRoZSBjaGlwIGlzIG5v
+IG1vcmUgcG9zc2libGUuCkl0IHRoZSBvbmx5IHJlcXVlc3QgdGhhdCBuZXZlciByZXBseS4gVGhl
+cmVmb3JlLCBoaWZfY21kLmxvY2sgaXMgbmV2ZXIKdW5sb2NrZWQuIGhpZl9zaHV0ZG93bigpIHVu
+bG9jayBpdHNlbGYgaGlmX2NtZC5sb2NrIHRvIGF2b2lkIGEgcG90ZW50aWFsCndhcm5pbmcgZHVy
+aW5nIGRpc3Bvc2FsIG9mIGRldmljZS4gaGlmX2NtZC5rZXlfcmVuZXdfbG9jayBzaG91bGQgYWxz
+bwpiZWVuIHVubG9ja2VkIGZvciB0aGUgc2FtZSByZWFzb24uCgpTaWduZWQtb2ZmLWJ5OiBKw6ly
+w7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Ckxpbms6IGh0dHBzOi8v
+bG9yZS5rZXJuZWwub3JnL3IvMjAyMDAzMTAxMDEzNTYuMTgyODE4LTItSmVyb21lLlBvdWlsbGVy
+QHNpbGFicy5jb20KU2lnbmVkLW9mZi1ieTogR3JlZyBLcm9haC1IYXJ0bWFuIDxncmVna2hAbGlu
+dXhmb3VuZGF0aW9uLm9yZz4KU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJu
+ZWwub3JnPgotLS0KIGRyaXZlcnMvc3RhZ2luZy93ZngvaGlmX3R4LmMgfCAxICsKIDEgZmlsZSBj
+aGFuZ2VkLCAxIGluc2VydGlvbigrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy93Zngv
+aGlmX3R4LmMgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl90eC5jCmluZGV4IGNiN2NkZGNiOTgx
+NTkuLjE2ZTdkMTkwNDMwZjMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy93ZngvaGlmX3R4
+LmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHguYwpAQCAtMTQxLDYgKzE0MSw3IEBA
+IGludCBoaWZfc2h1dGRvd24oc3RydWN0IHdmeF9kZXYgKndkZXYpCiAJZWxzZQogCQljb250cm9s
+X3JlZ193cml0ZSh3ZGV2LCAwKTsKIAltdXRleF91bmxvY2soJndkZXYtPmhpZl9jbWQubG9jayk7
+CisJbXV0ZXhfdW5sb2NrKCZ3ZGV2LT5oaWZfY21kLmtleV9yZW5ld19sb2NrKTsKIAlrZnJlZSho
+aWYpOwogCXJldHVybiByZXQ7CiB9Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRy
+aXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
