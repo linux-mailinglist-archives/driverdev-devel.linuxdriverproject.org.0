@@ -1,75 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D48D193E37
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 12:49:44 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 263D3193F43
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 13:51:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8D227261B1;
-	Thu, 26 Mar 2020 11:49:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 56F52872EF;
+	Thu, 26 Mar 2020 12:51:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id beY-VItdrado; Thu, 26 Mar 2020 11:49:41 +0000 (UTC)
+	with ESMTP id hH3SNZ0pbESU; Thu, 26 Mar 2020 12:51:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 229BD2609E;
-	Thu, 26 Mar 2020 11:49:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 67DD0872DD;
+	Thu, 26 Mar 2020 12:51:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 266691BF4D8
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 11:49:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D0D041BF3D9
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 12:51:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2264F88995
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 11:49:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CCD0388E95
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 12:51:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 55-Zy8926hLe for <devel@linuxdriverproject.org>;
- Thu, 26 Mar 2020 11:49:35 +0000 (UTC)
+ with ESMTP id QHwK2y9CRRAw for <devel@linuxdriverproject.org>;
+ Thu, 26 Mar 2020 12:51:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4B8B788F5B
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 11:49:35 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id r14so155981pfl.12
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 04:49:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hEatEacjftOwz4doHq3a+8v1BhjzNMpi1Byas/pc+5I=;
- b=UFVpWXeegMNBLmm2JpHMvGP+cw9UTIr2VBmcMUJkKOtmZ2IVwshdQP+iO/6qo1Oes4
- rSDwteO4ZCCMEPAC+DzQc3jsVmizSUV0NQZBz63rdT5uuqbakt6LgCb5DnTYOCeHmwRe
- 18psF9S4NFh54amrK61wOsuO5vdxmnK3dPMTtM1x3Q0hjUvIVDyo5ppQ8pfuHCkYw5OV
- 700EiXeOM5TjTT5a/xO9x0yzKIXOVya+4+TXZneKKn4AnERD4BN8IP6xXZ+k7iAWQwSl
- 5tgo27Dgz90OYrLtMNwqbNC0L8qkzdg0qELvAM7JLYKblL0JQLoBzfZZawhcRaTyy1zb
- toGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hEatEacjftOwz4doHq3a+8v1BhjzNMpi1Byas/pc+5I=;
- b=bmUpn6/yQieAUHq7gNENpw8wJt4EB3EiSMaEg8Z02NfcQHRo1kvncZtFASTlYITVh1
- KGXOmT31ESPIVLULAG8OhwJubVfXQgLEYt1pj1Zs6pWolBDv1v47LY0WMnCa0m7bbfkl
- ek/WNEZ5UsFBe8OtJICDw6Z2bHmSCEyqW7mQVCdGJoy+UWD/3F8bDWQDeumc5i9tPjx9
- obS2+b/3gPZR5cO6kvKVLesFV4I09gs1/Z8FzLfkXWZ/qDpbyjJmKbogjJkFDhTZuwg3
- FZWKLHSRDj+cKFoDKWTV8dOVG/EjaU6cGz3PlF/T/cDLctFArET7oa9PDEAQilqOtD3c
- RgEw==
-X-Gm-Message-State: ANhLgQ0JJWz2a7kewCNuIYs3yO4NI7nClOo3GxMuYyTmbtapIaUr3h3I
- lupV8m8tVKe1BetCwZumXXE+HOTEogIN1CPMQvi17A==
-X-Google-Smtp-Source: ADFU+vtL1ylpr6mkN2liOKuWC9LsnbbWZTmeEPaaf1PjfeJ5Vow+Wvh6/KDTtqvBQb2BMsD8+pqcY0V0qXXHDczMfnQ=
-X-Received: by 2002:a63:a062:: with SMTP id u34mr8214742pgn.286.1585223374630; 
- Thu, 26 Mar 2020 04:49:34 -0700 (PDT)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A7682884F1
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 12:51:25 +0000 (UTC)
+Received: from coco.lan (ip5f5ad4d8.dynamic.kabel-deutschland.de
+ [95.90.212.216])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6461B2073E;
+ Thu, 26 Mar 2020 12:51:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1585227085;
+ bh=zIulOGTEwdI3hssRscSNydLZe2G+oeZ2jtg11vXXxa0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=WpMbSseODo1E92lj7T40pAB2Wh74HRlkBa1JdDpsvagBvVQHLFLhCwDBinmDbKLLi
+ i1Ta5Atlrk9FKaPsD49ihgxy3OqThb8sItMvY4phyKyO/8Zd0NGMZTqn73rwFxHAgo
+ u2EV2sNSSV/qsPGJEVtONh5Uv2/xemv6KIEaDi7k=
+Date: Thu, 26 Mar 2020 13:51:13 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 0/4] media Kconfig reorg - part 2
+Message-ID: <20200326135113.73c257ba@coco.lan>
+In-Reply-To: <20200326101333.GH20581@pendragon.ideasonboard.com>
+References: <cover.1585151701.git.mchehab+huawei@kernel.org>
+ <6fadc6ea-8512-03ba-da30-43c64d7562f6@collabora.com>
+ <20200325223820.1c74aed3@coco.lan>
+ <20200325221343.GW19171@pendragon.ideasonboard.com>
+ <20200326092832.069a4d17@coco.lan>
+ <20200326101333.GH20581@pendragon.ideasonboard.com>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <0000000000006678a105a184ecb7@google.com>
- <CADG63jCCECPjZWmJfhn9RyJwFvDK3SYQTb8X2GPkrGumAuRfJA@mail.gmail.com>
- <CAAeHK+xi8zjUb8Laigmy7eKHU-36nhXdW_dCXp_MB1nPaLBW4g@mail.gmail.com>
- <CADG63jCnB=uLLYwDnPteaRbAC__WKKDZCBo8Xru6uhLTGd30rA@mail.gmail.com>
-In-Reply-To: <CADG63jCnB=uLLYwDnPteaRbAC__WKKDZCBo8Xru6uhLTGd30rA@mail.gmail.com>
-From: Andrey Konovalov <andreyknvl@google.com>
-Date: Thu, 26 Mar 2020 12:49:23 +0100
-Message-ID: <CAAeHK+wn0s90vDV2XgLHdUdVSQBK5aMuqeU5W5An7KncGpJ=9A@mail.gmail.com>
-Subject: Re: KASAN: use-after-free Read in hfa384x_usbin_callback
-To: Qiujun Huang <anenbupt@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,138 +70,133 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
- USB list <linux-usb@vger.kernel.org>,
- syzkaller-bugs <syzkaller-bugs@googlegroups.com>,
- LKML <linux-kernel@vger.kernel.org>, nishkadg.linux@gmail.com,
- osdevtc@gmail.com,
- syzbot <syzbot+a57b24d359dc5577634a@syzkaller.appspotmail.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Michal Simek <michal.simek@xilinx.com>, "Lad,
+ Prabhakar" <prabhakar.csengg@gmail.com>, Pavel Machek <pavel@ucw.cz>,
+ devel@driverdev.osuosl.org, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, Chen-Yu Tsai <wens@csie.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Steve Longerbeam <slongerbeam@gmail.com>, Bingbu Cao <bingbu.cao@intel.com>,
+ Tian Shu Qiu <tian.shu.qiu@intel.com>, Yong Zhi <yong.zhi@intel.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
+ Niklas =?UTF-8?B?U8O2ZGVybHVuZA==?= <niklas.soderlund@ragnatech.se>,
+ Helen Koike <helen.koike@collabora.com>, Yong Deng <yong.deng@magewell.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org,
+ Hyun Kwon <hyun.kwon@xilinx.com>, Heungjun Kim <riverful.kim@samsung.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-OK, then there's probably no need to test this one, if the other one
-was fixed by your patch.
+Em Thu, 26 Mar 2020 12:13:33 +0200
+Laurent Pinchart <laurent.pinchart@ideasonboard.com> escreveu:
 
-On Thu, Mar 26, 2020 at 12:48 PM Qiujun Huang <anenbupt@gmail.com> wrote:
->
-> Yes, they have the same root cause.
->
-> On Thu, Mar 26, 2020 at 6:45 PM Andrey Konovalov <andreyknvl@google.com> wrote:
-> >
-> > On Thu, Mar 26, 2020 at 3:52 AM Qiujun Huang <anenbupt@gmail.com> wrote:
-> > >
-> > > #syz test: https://github.com/google/kasan.git e17994d1
-> >
-> > Hi Qiujun,
-> >
-> > I've already duped this bug to "KASAN: slab-out-of-bounds Read in
-> > hfa384x_usbin_callback" since I had assumed they have the same root
-> > cause. Are those bugs different? We can undup if needed.
-> >
-> > Thanks!
-> >
-> > >
-> > > On Mon, Mar 23, 2020 at 8:39 PM syzbot
-> > > <syzbot+a57b24d359dc5577634a@syzkaller.appspotmail.com> wrote:
-> > > >
-> > > > Hello,
-> > > >
-> > > > syzbot found the following crash on:
-> > > >
-> > > > HEAD commit:    e17994d1 usb: core: kcov: collect coverage from usb comple..
-> > > > git tree:       https://github.com/google/kasan.git usb-fuzzer
-> > > > console output: https://syzkaller.appspot.com/x/log.txt?x=15217373e00000
-> > > > kernel config:  https://syzkaller.appspot.com/x/.config?x=5d64370c438bc60
-> > > > dashboard link: https://syzkaller.appspot.com/bug?extid=a57b24d359dc5577634a
-> > > > compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-> > > > syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=14a720ade00000
-> > > > C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=1467b755e00000
-> > > >
-> > > > IMPORTANT: if you fix the bug, please add the following tag to the commit:
-> > > > Reported-by: syzbot+a57b24d359dc5577634a@syzkaller.appspotmail.com
-> > > >
-> > > > ==================================================================
-> > > > BUG: KASAN: use-after-free in memcpy include/linux/string.h:381 [inline]
-> > > > BUG: KASAN: use-after-free in skb_put_data include/linux/skbuff.h:2284 [inline]
-> > > > BUG: KASAN: use-after-free in hfa384x_int_rxmonitor drivers/staging/wlan-ng/hfa384x_usb.c:3412 [inline]
-> > > > BUG: KASAN: use-after-free in hfa384x_usbin_rx drivers/staging/wlan-ng/hfa384x_usb.c:3312 [inline]
-> > > > BUG: KASAN: use-after-free in hfa384x_usbin_callback+0x1993/0x2360 drivers/staging/wlan-ng/hfa384x_usb.c:3026
-> > > > Read of size 34945 at addr ffff8881cda9f33c by task swapper/0/0
-> > > >
-> > > > CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.6.0-rc5-syzkaller #0
-> > > > Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
-> > > > Call Trace:
-> > > >  <IRQ>
-> > > >  __dump_stack lib/dump_stack.c:77 [inline]
-> > > >  dump_stack+0xef/0x16e lib/dump_stack.c:118
-> > > >  print_address_description.constprop.0.cold+0xd3/0x314 mm/kasan/report.c:374
-> > > >  __kasan_report.cold+0x37/0x77 mm/kasan/report.c:506
-> > > >  kasan_report+0xe/0x20 mm/kasan/common.c:641
-> > > >  check_memory_region_inline mm/kasan/generic.c:185 [inline]
-> > > >  check_memory_region+0x152/0x1c0 mm/kasan/generic.c:192
-> > > >  memcpy+0x20/0x50 mm/kasan/common.c:127
-> > > >  memcpy include/linux/string.h:381 [inline]
-> > > >  skb_put_data include/linux/skbuff.h:2284 [inline]
-> > > >  hfa384x_int_rxmonitor drivers/staging/wlan-ng/hfa384x_usb.c:3412 [inline]
-> > > >  hfa384x_usbin_rx drivers/staging/wlan-ng/hfa384x_usb.c:3312 [inline]
-> > > >  hfa384x_usbin_callback+0x1993/0x2360 drivers/staging/wlan-ng/hfa384x_usb.c:3026
-> > > >  __usb_hcd_giveback_urb+0x29a/0x550 drivers/usb/core/hcd.c:1650
-> > > >  usb_hcd_giveback_urb+0x368/0x420 drivers/usb/core/hcd.c:1716
-> > > >  dummy_timer+0x1258/0x32ae drivers/usb/gadget/udc/dummy_hcd.c:1966
-> > > >  call_timer_fn+0x195/0x6f0 kernel/time/timer.c:1404
-> > > >  expire_timers kernel/time/timer.c:1449 [inline]
-> > > >  __run_timers kernel/time/timer.c:1773 [inline]
-> > > >  __run_timers kernel/time/timer.c:1740 [inline]
-> > > >  run_timer_softirq+0x5f9/0x1500 kernel/time/timer.c:1786
-> > > >  __do_softirq+0x21e/0x950 kernel/softirq.c:292
-> > > >  invoke_softirq kernel/softirq.c:373 [inline]
-> > > >  irq_exit+0x178/0x1a0 kernel/softirq.c:413
-> > > >  exiting_irq arch/x86/include/asm/apic.h:546 [inline]
-> > > >  smp_apic_timer_interrupt+0x141/0x540 arch/x86/kernel/apic/apic.c:1146
-> > > >  apic_timer_interrupt+0xf/0x20 arch/x86/entry/entry_64.S:829
-> > > >  </IRQ>
-> > > > RIP: 0010:default_idle+0x28/0x300 arch/x86/kernel/process.c:696
-> > > > Code: cc cc 41 56 41 55 65 44 8b 2d 44 77 72 7a 41 54 55 53 0f 1f 44 00 00 e8 b6 62 b5 fb e9 07 00 00 00 0f 00 2d ea 0c 53 00 fb f4 <65> 44 8b 2d 20 77 72 7a 0f 1f 44 00 00 5b 5d 41 5c 41 5d 41 5e c3
-> > > > RSP: 0018:ffffffff87007d80 EFLAGS: 00000246 ORIG_RAX: ffffffffffffff13
-> > > > RAX: 0000000000000007 RBX: ffffffff8702cc40 RCX: 0000000000000000
-> > > > RDX: 0000000000000000 RSI: 0000000000000006 RDI: ffffffff8702d48c
-> > > > RBP: fffffbfff0e05988 R08: ffffffff8702cc40 R09: 0000000000000000
-> > > > R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
-> > > > R13: 0000000000000000 R14: ffffffff87e607c0 R15: 0000000000000000
-> > > >  cpuidle_idle_call kernel/sched/idle.c:154 [inline]
-> > > >  do_idle+0x3e0/0x500 kernel/sched/idle.c:269
-> > > >  cpu_startup_entry+0x14/0x20 kernel/sched/idle.c:361
-> > > >  start_kernel+0xe16/0xe5a init/main.c:998
-> > > >  secondary_startup_64+0xb6/0xc0 arch/x86/kernel/head_64.S:242
-> > > >
-> > > > The buggy address belongs to the page:
-> > > > page:ffffea000736a600 refcount:32769 mapcount:0 mapping:0000000000000000 index:0x0 compound_mapcount: 0
-> > > > flags: 0x200000000010000(head)
-> > > > raw: 0200000000010000 dead000000000100 dead000000000122 0000000000000000
-> > > > raw: 0000000000000000 0000000000000000 00008001ffffffff 0000000000000000
-> > > > page dumped because: kasan: bad access detected
-> > > >
-> > > > Memory state around the buggy address:
-> > > >  ffff8881cda9ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-> > > >  ffff8881cda9ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-> > > > >ffff8881cdaa0000: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-> > > >                    ^
-> > > >  ffff8881cdaa0080: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-> > > >  ffff8881cdaa0100: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-> > > > ==================================================================
-> > > >
-> > > >
-> > > > ---
-> > > > This bug is generated by a bot. It may contain errors.
-> > > > See https://goo.gl/tpsmEJ for more information about syzbot.
-> > > > syzbot engineers can be reached at syzkaller@googlegroups.com.
-> > > >
-> > > > syzbot will keep track of this bug report. See:
-> > > > https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
-> > > > syzbot can test patches for this bug, for details see:
-> > > > https://goo.gl/tpsmEJ#testing-patches
+> > > I'm not sure to follow you. Are you implying that this patch series,
+> > > which Helen has tested against a real user, not an experienced kernel
+> > > hacker, may make the configuration options more difficult for kernel
+> > > hackers, but improves the situation for users ?  
+> > 
+> > Come on, it is not harder for Kernel hackers. It is just different than
+> > what it used to be before the changes.  
+> 
+> Sorry, I didn't meant to say it would be more complex for me (I mostly
+> don't use menuconfig anyway, I edit the .config file manually :-)), but
+> I was reading your e-mail as implying that, and was wondering if it was
+> me misreading it.
+
+So, the new design will be less complex for you, as some dependencies were
+changed to be automatically set when a driver is selected (media controller
+and V4L2 subdev APIs) ;-)
+
+> 
+> > At the above experience, at the
+> > very first time this Kernel hacker looked on it, it was able to figure
+> > out how to enable the driver. I bet that, if you now repeat the experiment
+> > with the same guy, he would be able to enable another driver a lot quicker.
+> > 
+> > My view is that, with the option of either enable or disable the
+> > filtering mechanism, it will be easier for everybody:
+> > 
+> > - Distro maintainers for PCs can just disable platform and
+> >   test drivers, and keep the other drivers enabled;
+> > 
+> > - An experienced Kernel hacker will disable the filter and select
+> >   the needed drivers directly.
+> > 
+> > - An user wanting to test a driver with new patches (or a new driver)
+> >   use the filters to select the USB driver he needs (probably using the
+> >   media_tree.git, in order to see only the media options).  
+> 
+> My personal view is that this makes things more complex, and more
+> complexity usually means less clarity. If we want to be serious about
+> the usability of our Kconfig menu, we should get real users involved in
+> the design, at least by testing it on them, and getting feedback.
+> Otherwise we'll just be a bunch of kernel developers sitting in our
+> ivory tower thinking we know better than our users what is good for
+> them.
+
+The entire thing started by a proposal to change, in a way that it
+would be make things easier for m2m developers but harder for
+normal users.
+
+My proposal is to keep both behaviors, with a menu that would
+allow switching between those two different behaviors. 
+
+So, it should make both groups happy :-)
+
+Not much complexity added. It is the other way around: I took the
+time to do several Kconfig cleanups, in order to make the Kconfig 
+files cleaner and better organized (both internally and visually).
+
+-
+
+I don't object getting feedback from real users, but if we're
+willing to use such feedback in a consistent way, we need to have
+a group of people that could statistically represent the diversity
+that we have with the people which builds their own kernels.
+
+> > See, for some random distro maintainer, new Kconfig symbols pops up
+> > every time. Enabling all of them is usually a very bad idea. So, a
+> > filtering mechanism that would, for example, hide test and skeleton
+> > drivers to be built is a very nice feat, as it means a lot less
+> > symbols for them to study and decide whether such new options should
+> > be enabled or not  
+> 
+> The fact that test drivers are not shipped by some distros is annoying
+> for developers ;-) But that's a very small minority, and out of topic.
+
+Yes, agreed. Things could be easier for us if we could ask people
+to use a test driver when reporting certain bugs.
+
+On the other hand, having a test driver shipped by default together
+with a production Kernel don't make any sense for most usages. It
+would just make the Kernel package bigger and would never be used
+by the vast majority of users. It would also mean more work for
+security people that would be trying to do OS hardening.
+
+Well, Fedora has a kernel-debug Kernel, meant to be used
+when someone finds an issue on production and may require extra stuff
+to debug the Kernel. IMHO, it makes a lot of sense to have those test 
+drivers shipped there (perhaps packaged in separate, like on a 
+kernel-debug-media-test rpm).
+
+
+
+Thanks,
+Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
