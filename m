@@ -2,55 +2,65 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0649119347A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 00:19:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F29AA193518
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 01:47:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D8F6388418;
-	Wed, 25 Mar 2020 23:19:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5F1AC87C72;
+	Thu, 26 Mar 2020 00:47:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aGO9Up9R9VIM; Wed, 25 Mar 2020 23:19:51 +0000 (UTC)
+	with ESMTP id 1gYLIZUNbvSg; Thu, 26 Mar 2020 00:47:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2A2E9882F0;
-	Wed, 25 Mar 2020 23:19:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C9B03879FF;
+	Thu, 26 Mar 2020 00:47:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B15BE1BF345
- for <devel@linuxdriverproject.org>; Wed, 25 Mar 2020 23:19:48 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CCE851BF9B9
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 00:47:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id ADE37874A7
- for <devel@linuxdriverproject.org>; Wed, 25 Mar 2020 23:19:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C4710203E9
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 00:47:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I0sjH9JGdQ8i for <devel@linuxdriverproject.org>;
- Wed, 25 Mar 2020 23:19:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from pmg06.wadax.ne.jp (pmg06.wadax.ne.jp [211.133.134.210])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F11BA87196
- for <devel@driverdev.osuosl.org>; Wed, 25 Mar 2020 23:19:47 +0000 (UTC)
-Received: from pmg06.wadax.ne.jp (localhost.localdomain [127.0.0.1])
- by pmg06.wadax.ne.jp (Proxmox) with ESMTP id E9121468171F;
- Thu, 26 Mar 2020 05:25:14 +0900 (JST)
-Received: from wx30.wadax.ne.jp (wx30.wadax.ne.jp [202.218.232.130])
- by pmg06.wadax.ne.jp (Proxmox) with ESMTPS id E5737468F6C0;
- Thu, 26 Mar 2020 05:21:37 +0900 (JST)
-Received: from wx30.wadax.ne.jp (localhost [127.0.0.1])
- by wx30.wadax.ne.jp (Postfix) with ESMTP id EAE33C0156;
- Thu, 26 Mar 2020 05:21:29 +0900 (JST)
-Received: from info.gxhu1h22okvu5fmg1juajozsmg.mx.internal.cloudapp.net
- (unknown [104.46.232.54])
- by wx30.wadax.ne.jp (Postfix) with ESMTPA id 8CA38C0237;
- Thu, 26 Mar 2020 05:21:29 +0900 (JST)
+ with ESMTP id wgR2Ug1gJ+Gq for <devel@linuxdriverproject.org>;
+ Thu, 26 Mar 2020 00:47:02 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0244.hostedemail.com
+ [216.40.44.244])
+ by silver.osuosl.org (Postfix) with ESMTPS id BE7A3203CE
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 00:47:02 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave07.hostedemail.com (Postfix) with ESMTP id B79051801753D
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 00:10:41 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id 2F914100E8420;
+ Thu, 26 Mar 2020 00:10:39 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:960:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3351:3622:3865:4321:5007:7903:8957:10004:10400:10848:11026:11232:11657:11658:11914:12043:12297:12438:12740:12760:12895:13069:13161:13229:13311:13357:13439:14659:14721:21080:21627:30054:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: hose84_3fbcf8ba85931
+X-Filterd-Recvd-Size: 1625
+Received: from XPS-9350.home (unknown [47.151.136.130])
+ (Authenticated sender: joe@perches.com)
+ by omf15.hostedemail.com (Postfix) with ESMTPA;
+ Thu, 26 Mar 2020 00:10:37 +0000 (UTC)
+Message-ID: <9b369028adca4105c376094db569637cf8bb1fa2.camel@perches.com>
+Subject: Re: [PATCH] staging: rtl8188eu: cleanup long line in odm.c
+From: Joe Perches <joe@perches.com>
+To: Michael Straube <straube.linux@gmail.com>, gregkh@linuxfoundation.org
+Date: Wed, 25 Mar 2020 17:08:46 -0700
+In-Reply-To: <20200325215940.9225-1-straube.linux@gmail.com>
+References: <20200325215940.9225-1-straube.linux@gmail.com>
+User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Please Help The needy
-To: Recipients <main@dear.or.jp>
-From: "Ms. Reem" <main@dear.or.jp>
-Date: Wed, 25 Mar 2020 20:21:29 +0000
-Message-Id: <20200325202129.EAE33C0156@wx30.wadax.ne.jp>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,21 +73,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemhashimi2020@daum.net
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds assist Corona virus Symptoms and Causes.
+On Wed, 2020-03-25 at 22:59 +0100, Michael Straube wrote:
+> Cleanup line over 80 characters by removing unnecessary parentheses.
+[]
+> diff --git a/drivers/staging/rtl8188eu/hal/odm.c b/drivers/staging/rtl8188eu/hal/odm.c
+[]
+> @@ -590,7 +590,7 @@ void odm_CCKPacketDetectionThresh(struct odm_dm_struct *pDM_Odm)
+>  	if (pDM_Odm->bLinked) {
+>  		if (pDM_Odm->RSSI_Min > 25) {
+>  			CurCCK_CCAThres = 0xcd;
+> -		} else if ((pDM_Odm->RSSI_Min <= 25) && (pDM_Odm->RSSI_Min > 10)) {
+> +		} else if (pDM_Odm->RSSI_Min <= 25 && pDM_Odm->RSSI_Min > 10) {
 
-Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+The test above this already guarantees pDM_Odm->RSSI_Min <= 25
+so the block could be written just
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+		} else if (pDM->RSSI_Min > 10) {
 
-If you can handle the fund in a good investment. reply on this email only: reemalhashimi@daum.net
-Regards,
-Ms. Reem
+>  			CurCCK_CCAThres = 0x83;
+>  		} else {
+>  			if (FalseAlmCnt->Cnt_Cck_fail > 1000)
 
 _______________________________________________
 devel mailing list
