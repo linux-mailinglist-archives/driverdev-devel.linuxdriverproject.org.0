@@ -1,75 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7BBB193F99
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 14:19:04 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0384F193FBA
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 14:28:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 880058916D;
-	Thu, 26 Mar 2020 13:19:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3A2C28737E;
+	Thu, 26 Mar 2020 13:28:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id voiJdSdYROHJ; Thu, 26 Mar 2020 13:19:02 +0000 (UTC)
+	with ESMTP id bkTefihCzy5r; Thu, 26 Mar 2020 13:28:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B1A2088F93;
-	Thu, 26 Mar 2020 13:19:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2E5BE87361;
+	Thu, 26 Mar 2020 13:28:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B92971BF316
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 13:18:59 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B54C91BF316
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 13:28:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A952A8681A
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 13:18:59 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AED282157D
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 13:28:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kXmFoccGPR2s for <devel@linuxdriverproject.org>;
- Thu, 26 Mar 2020 13:18:59 +0000 (UTC)
+ with ESMTP id wujnRnjMV56L for <devel@linuxdriverproject.org>;
+ Thu, 26 Mar 2020 13:28:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2184D86816
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 13:18:59 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id u68so2764391pfb.2
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 06:18:59 -0700 (PDT)
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id A7FD62037E
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 13:28:29 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id s23so2107845plq.13
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 06:28:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=MJkPkspqNdlTX6vjl/CVTE6MfOICpoMgsRanROYZDJA=;
- b=ZYY3K1M9iitRcd6EivzWhtByjMfUm2QC7nJEzEqvmNi2BHtKjw1D0VwPlxDevm8XOG
- KY4kQmj1iOIlds+/r4wrch6lekBHMbNitd3cN/kLcDufaa75xMkzl5e1KLXAArD4Gv8o
- aOHFBtR7LGGQraP4yoK3Dxc4XUQCbA/APDgYzaGcETq6t9ljs+za/0OUXM9I9YwQOnVE
- KDGylfbCV7K6CbpXLpGCAG5KVzrRjPD/B84860n66Go1yoP7Kp7UQIPada57eU/nWDJp
- xoJzQOGllCn8LGGI1ZT2HmvnQaeCdZgUUDKU7fFmm5bamNufQ7cX3qdULpaNNbSw3Gom
- toCA==
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=9VMBXAMCwL7qm/FeM98BMJBlfVZIr+3WQNOcgxok4qo=;
+ b=OmakIFQfxCrQNfd8PVzCQSci2n6MNA7igCtPFOFRNTpd5G1xLmXqSri+roMLEcbbpm
+ wcGG2/KlQKEL4Y4uNNLJ9eWMmVGrt2TL7ymP7PvOnI60QX9GEFMRaPOVOFWhQDi13/Ek
+ fdk9qkgfiZMG5u8RdMKGWbP0emmHEwEWFlZbIVOFdt1Cmc8jQGZXdzgaC03xkNRcDRcU
+ JzKun+rZD4iThoE1OhE406GpUQbLhZopSRbtmeZyZoXXT8YVa9207fBrayLquQHQ8KnD
+ 9X6na/wlphZyexHgf4kx9Lebgy9a6Z7jhWhXcbF6zFFh6y71Wllrq1tJcNbwSrYrFWSs
+ l54g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=MJkPkspqNdlTX6vjl/CVTE6MfOICpoMgsRanROYZDJA=;
- b=YSnzSIpIgiYEPRkTaT7f/8iDjXEzHHE8keDZEiNyQb6NQBXkUdLPph58dcIdeVJiso
- KEfifnJJ4aT2c/82JL8m25cdoLA5vibBNmVVhMFmxeSEcoOat0e1tLUnqsxT3cAs4AdU
- CAFOR9nC0brn3TPPcS0JprS5ZY8P3LO4iyq14hc4ytGylS3v10O4JqOolU0770Y609BY
- nElDOj+zWlD/W5TWtSyc2C5iSZt/ro1vff4FAw25lDs1ihCAtaRTaHfP1kZnYnYVFnjX
- nY35q0Sg44M9HI52xwPQw1q4lxWUMWZ/++B8YT/0UKP6G9inaHxh9Pw4E8sHXnFg/xt1
- S1hQ==
-X-Gm-Message-State: ANhLgQ2N4gaBagp4eMldB0Ff0VzncjQFisvOtYAz1NGQ8SLvAHhBdY/i
- gF4/8tqq08H5P/lLhEJFyZc=
-X-Google-Smtp-Source: ADFU+vv8m75ygmS8rrbmOipJ/tGjAPTnpiZRwqj+1WUUWC8ibM7gtgVFzk0L6TywhtjKUZljawW/4Q==
-X-Received: by 2002:a63:2166:: with SMTP id s38mr8012574pgm.83.1585228738689; 
- Thu, 26 Mar 2020 06:18:58 -0700 (PDT)
-Received: from localhost ([161.117.239.120])
- by smtp.gmail.com with ESMTPSA id h4sm1669270pgk.72.2020.03.26.06.18.57
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 26 Mar 2020 06:18:58 -0700 (PDT)
-From: Qiujun Huang <hqjagain@gmail.com>
-To: gregkh@linuxfoundation.org,
-	osdevtc@gmail.com
-Subject: [PATCH] staging: wlan-ng: fix use-after-free Read in
- hfa384x_usbin_callback
-Date: Thu, 26 Mar 2020 21:18:50 +0800
-Message-Id: <20200326131850.17711-1-hqjagain@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=9VMBXAMCwL7qm/FeM98BMJBlfVZIr+3WQNOcgxok4qo=;
+ b=Pg36y9NqmWT88xEschF0HvXJZC4T8ViJOWz9e8Tz0LUDRUnf2UiQmi0eP0eYEhhvsG
+ wODBgLKDcsL5BdG1XeQi1BGM0GQAvcJG6Eep4LtVbUEa9CfUAmfqAoG6oWkEQVXkvtQa
+ Jx4X8Vobl8zZYENqv27bDMdRkl5Iy0lH6a0d8KPdSCM4+xpC8y/YR0iPHot1Gzt7Rlyb
+ jJgTNQszMMnSOyUqdX6+ArjSYKJ4V6Vcgn42BORyd8xveTXOa8Cglm96EzZ/Vm9y/3rk
+ uxHaTGbv9D9U4XMyMkLD5bcXXtNrXrABqDknADT4N+186xwtlZqs7/iJ4pvcUxIY4GBP
+ l2ZQ==
+X-Gm-Message-State: ANhLgQ1uRRkjD4d622YReYITq0I5WNooZE4tNN7GcJykiYyCNJ5Mn/Gs
+ ZPvrfqupyP4Qk3ilpsjn9yo=
+X-Google-Smtp-Source: ADFU+vtdj9jQbRa6FPxuUgqBp9Kg1xU6xet7VwDUriXEGjEXcCqo1jZ5IHInQG8rzICrdN7XUcTqUg==
+X-Received: by 2002:a17:902:aa4c:: with SMTP id
+ c12mr8508293plr.168.1585229309170; 
+ Thu, 26 Mar 2020 06:28:29 -0700 (PDT)
+Received: from simran-Inspiron-5558 ([2405:205:1208:56c8:8124:5e4b:ea06:7595])
+ by smtp.gmail.com with ESMTPSA id
+ q19sm1672840pgn.93.2020.03.26.06.28.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Mar 2020 06:28:28 -0700 (PDT)
+Date: Thu, 26 Mar 2020 18:58:23 +0530
+From: Simran Singhal <singhalsimran0@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH] staging: rtl8723bs: hal: Remove NULL check before kfree
+Message-ID: <20200326132823.GA18625@simran-Inspiron-5558>
+MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,38 +87,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Qiujun Huang <hqjagain@gmail.com>,
- anenbupt@gmail.com, linux-kernel@vger.kernel.org, hdanton@sina.com
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-We can't handle the case length > WLAN_DATA_MAXLEN.
-Because the size of rxfrm->data is WLAN_DATA_MAXLEN(2312), and we can't
-read more than that.
+NULL check before kfree is unnecessary so remove it.
 
-Thanks-to: Hillf Danton <hdanton@sina.com>
-Reported-and-tested-by: syzbot+7d42d68643a35f71ac8a@syzkaller.appspotmail.com
-Signed-off-by: Qiujun Huang <hqjagain@gmail.com>
+The following Coccinelle script was used to detect this:
+@@ expression E; @@
+- if (E != NULL) { kfree(E); }
++ kfree(E);
+@@ expression E; @@
+- if (E != NULL) { kfree(E); E = NULL; }
++ kfree(E);
++ E = NULL;
+
+Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/wlan-ng/hfa384x_usb.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
-index b71756ab0394..7fe64fcd385d 100644
---- a/drivers/staging/wlan-ng/hfa384x_usb.c
-+++ b/drivers/staging/wlan-ng/hfa384x_usb.c
-@@ -3372,6 +3372,8 @@ static void hfa384x_int_rxmonitor(struct wlandevice *wlandev,
- 	     WLAN_HDR_A4_LEN + WLAN_DATA_MAXLEN + WLAN_CRC_LEN)) {
- 		pr_debug("overlen frm: len=%zd\n",
- 			 skblen - sizeof(struct p80211_caphdr));
-+
-+		return;
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+index 1e8b61443408..cf68193a167f 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
+@@ -480,10 +480,8 @@ s32 rtl8723bs_init_recv_priv(struct adapter *padapter)
+ 		precvpriv->precv_buf = NULL;
  	}
  
- 	skb = dev_alloc_skb(skblen);
+-	if (precvpriv->pallocated_recv_buf) {
+-		kfree(precvpriv->pallocated_recv_buf);
+-		precvpriv->pallocated_recv_buf = NULL;
+-	}
++	kfree(precvpriv->pallocated_recv_buf);
++	precvpriv->pallocated_recv_buf = NULL;
+ 
+ exit:
+ 	return res;
+@@ -518,8 +516,6 @@ void rtl8723bs_free_recv_priv(struct adapter *padapter)
+ 		precvpriv->precv_buf = NULL;
+ 	}
+ 
+-	if (precvpriv->pallocated_recv_buf) {
+-		kfree(precvpriv->pallocated_recv_buf);
+-		precvpriv->pallocated_recv_buf = NULL;
+-	}
++	kfree(precvpriv->pallocated_recv_buf);
++	precvpriv->pallocated_recv_buf = NULL;
+ }
 -- 
 2.17.1
 
