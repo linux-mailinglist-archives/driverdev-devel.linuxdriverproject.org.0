@@ -1,129 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A41DC193A83
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 09:12:46 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3EAC193AD1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Mar 2020 09:28:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 456D68898B;
-	Thu, 26 Mar 2020 08:12:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0336185F78;
+	Thu, 26 Mar 2020 08:28:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iIe9mmBThZ3t; Thu, 26 Mar 2020 08:12:45 +0000 (UTC)
+	with ESMTP id sdWHdpvmlX_M; Thu, 26 Mar 2020 08:28:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 65D5C88805;
-	Thu, 26 Mar 2020 08:12:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D2868579E;
+	Thu, 26 Mar 2020 08:28:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EB1511BF380
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 08:12:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BFD6F1BF380
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 08:28:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E5C332157D
- for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 08:12:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B290680351
+ for <devel@linuxdriverproject.org>; Thu, 26 Mar 2020 08:28:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TbuqVt0wb9AC for <devel@linuxdriverproject.org>;
- Thu, 26 Mar 2020 08:12:41 +0000 (UTC)
+ with ESMTP id 9MyZMKad1p3Z for <devel@linuxdriverproject.org>;
+ Thu, 26 Mar 2020 08:28:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
- [68.232.149.84])
- by silver.osuosl.org (Postfix) with ESMTPS id D4C6721511
- for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 08:12:41 +0000 (UTC)
-IronPort-SDR: 2GNsSfZBakrU/jJJAHxDTjy1EKcKdASf5UlHLtZr+2UDnssQScmZq0FtIhFfSycqJ4WXpdOBU8
- J6PwcpKWSDti4kEUfvKtY6ayLYRrOCHb46HNXqDVPPD0E+1kQ/XLvon1I/sGf4IWfPCaQP8Uka
- D8HTUJcRqhMQ4YBuvIrgwjayIESw0Mcy+Yn2oPUcz1MeUAxcen0lI32VNENqeEa7ozc9YXfFgY
- FDCoA+7UhsPl5I1j4dFBNOLMj7w4MpnIvlDqeGJwugzBU++c4YApApU2YDgAKTKEaIzDtw+si1
- ZhE=
-X-IronPort-AV: E=Sophos;i="5.72,307,1580799600"; d="scan'208";a="70249287"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 26 Mar 2020 01:12:40 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 26 Mar 2020 01:12:40 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Thu, 26 Mar 2020 01:12:40 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RNBuvQcKOvs6IPk2kXsHl10Vir4kpYIg1N65pdj8n8uKYsJsKR1LiilSX4G+zDGvsl3FH+tSfUOy7KHLSJ0evOfClnRbwTsfGZfJKiyAyM8xElmV6gryh48SxJJ/05S8fJ0OBbxtCXhkryQZppiFmn8MBGRg3tCDNO4Iu9nXjSEv+s9ItBGkv9EQ4Vd+XeldRDJ/iyNNuoPi7O/7wBPM75v0NEVYmwCBAv2sMAT+uLwbAk5X8KOlqh6Vfj2mEn7tuNNeJp3xApQ7pL+S/yecurwR2t6GQvXDizyALFSHUwMpHyqN7eCQtH2S0JvCDKLoo4jRStg8AfdGSwPrNZBfaQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ynhFTjkfOZvG0Wxe4Lxm7iNU1ie+XzpI5ylFp1p/TNU=;
- b=WA5iE4Rap/aBTRU0bjSqM9Iwy3QXlQZsWzzqXDZ3/ZZWnlB1FgPa9Dz8HJQDwAVM2EgexTfp7e0e5lUeE7G/iIIDhZbL7SVA4LbVUtcltnB7tai+GVZODn5sGVZSG5Hhc2Sfboml9Uax/0nf8ZTs4yy8BGcVJBvNZoerjAhVCmGnXgckqbBBHbv04ywuBUgAxrD49+aYSRm/6NtjUc9Ef20av5ou8n7bNXE3ZqxrHm2VD6hkOF7VevWPhv3iDdzNCGm4oy+29UubJtGVaK9ZcFplPzSr+xPQC1Ls4E2e8vnWlTksqZ3c1BuLLSTtjylBO50hht4cfxRdQ25aGH7DkA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ynhFTjkfOZvG0Wxe4Lxm7iNU1ie+XzpI5ylFp1p/TNU=;
- b=R/pLoZKiT3zRQDVaIfCuSHs/eHs8vyLYO3KsXBiNFVilxXIRQpbXdjs01L8L36obPC+EnOkUh8zQkkzOvNHz0cU504DkV2f6DjEqbW4YGINkJpE89p8173uqhbGm5BaGFwE4DDsiAee05bw5pwmhi2b0CFdfZQmRNAy7/1CrmEs=
-Received: from BYAPR11MB3125.namprd11.prod.outlook.com (2603:10b6:a03:8e::32)
- by BYAPR11MB2950.namprd11.prod.outlook.com (2603:10b6:a03:8f::29)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2835.22; Thu, 26 Mar
- 2020 08:12:38 +0000
-Received: from BYAPR11MB3125.namprd11.prod.outlook.com
- ([fe80::c27:87cf:ca4:d86e]) by BYAPR11MB3125.namprd11.prod.outlook.com
- ([fe80::c27:87cf:ca4:d86e%4]) with mapi id 15.20.2835.021; Thu, 26 Mar 2020
- 08:12:38 +0000
-From: <Ajay.Kathat@microchip.com>
-To: <kvalo@codeaurora.org>
-Subject: Re: [PATCH] staging: wilc1000: remove label from examples in DT
- binding documentation
-Thread-Topic: [PATCH] staging: wilc1000: remove label from examples in DT
- binding documentation
-Thread-Index: AQHWAsRltX69oPURgUSNLfUw6CPRa6haf6o5gAAHagA=
-Date: Thu, 26 Mar 2020 08:12:38 +0000
-Message-ID: <25ec81ba-e060-3c0f-2a57-1248a5fd21a7@microchip.com>
-References: <20200325164234.14146-1-ajay.kathat@microchip.com>
- <87v9mrpnjh.fsf@tynnyri.adurom.net>
-In-Reply-To: <87v9mrpnjh.fsf@tynnyri.adurom.net>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Ajay.Kathat@microchip.com; 
-x-originating-ip: [183.82.22.58]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: a997e20a-a975-469a-1383-08d7d15d72eb
-x-ms-traffictypediagnostic: BYAPR11MB2950:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR11MB29508F6EAD21A682C77EADC7E3CF0@BYAPR11MB2950.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 0354B4BED2
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(346002)(39860400002)(396003)(366004)(136003)(376002)(6512007)(71200400001)(53546011)(86362001)(54906003)(81166006)(316002)(26005)(8936002)(31696002)(186003)(2906002)(966005)(478600001)(91956017)(4744005)(6916009)(66446008)(5660300002)(6506007)(6486002)(4326008)(81156014)(66476007)(2616005)(31686004)(66946007)(64756008)(8676002)(66556008)(76116006)(36756003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BYAPR11MB2950;
- H:BYAPR11MB3125.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: nJ9pGH0jTGpHQNYkfGeFddjdMvrWMl5AfkF5yq1P3WG/YEubZnr0XQHWEoJMd3Yv/UmnA56aBpLJWbVxNBPI3xF4Q0ZsJXLMov6neARJPs1v9ZEqf7irK4CybfSEDSIos9FoLhbsFXLDFluv/9iTGrAM67UxDuqMwGdv1SdxZb+UfjxXw3Tha7k2bOnO2rAyRNUN36d+FykRi6Z0nFM6IMpP4l+b5Vx79Zov38hf3f8vMKWVUUd/pfIhXNY29S266ZWgOmoWhX/pErfrin+1zwx8eS0Ju77xWkl0EOQ9QdlWoC0esQ3ylKhT0RaluNAbfa1Oh8zKApnBF803nZ0tF15RaB457VA1sX5PYgbheRuXNYAUpbysnvaphfjvcogQE7BuZJllt9cz2tZsde0dEkzBOrczBl0thMkmck+6z9SuZ84zY2yPeHQCS2+SL0zOgYbWkx7JBzVawICaUzWO56S7lBISQQMgCeE4w0SOLFmeRrWzTv3RTpioYC/Sy5mp//qIKk6B7nMYFj2ritEoqQ==
-x-ms-exchange-antispam-messagedata: wLTgFa6RTBf6ZZdYjEvDKTQvsGSIj+3sUo64aNYVMULa0Os3QhUlQItnL72Cc1to+iil5p/JYJua1Tu+4SHs8T+2N16I23Sx1lyTLXGhXtZs9TKZdUQ4Aj542L0xje4XjlXjd/CuvXEZml2Fh5K4Ww==
-Content-ID: <CFFCF2F9A3854F48AEEDE2085579C895@namprd11.prod.outlook.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C47DD86D92
+ for <devel@driverdev.osuosl.org>; Thu, 26 Mar 2020 08:28:44 +0000 (UTC)
+Received: from coco.lan (x2f7f9e9.dyn.telefonica.de [2.247.249.233])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1B6C32070A;
+ Thu, 26 Mar 2020 08:28:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1585211324;
+ bh=ReDk69Qo37KGy5ASDUUx4h0c+v4mtaJXcZof+Spm6f8=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=cEKU4NWO3blZyQDp6TDlbUH4YgHggIHDgjZhGXM9W+34CNHB6B+UmI9Ie5EYGBW2p
+ bMBWfeoXZXL7xAQDrudpzEMD9rHD73/y5qEoyuMq6xsXcoC0aL/Zkj83aHRFE9lwO/
+ 1ARof01IFCY54Qj2o3g1kW5vPx6rPRmAbqxCmQBo=
+Date: Thu, 26 Mar 2020 09:28:32 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 0/4] media Kconfig reorg - part 2
+Message-ID: <20200326092832.069a4d17@coco.lan>
+In-Reply-To: <20200325221343.GW19171@pendragon.ideasonboard.com>
+References: <cover.1585151701.git.mchehab+huawei@kernel.org>
+ <6fadc6ea-8512-03ba-da30-43c64d7562f6@collabora.com>
+ <20200325223820.1c74aed3@coco.lan>
+ <20200325221343.GW19171@pendragon.ideasonboard.com>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: a997e20a-a975-469a-1383-08d7d15d72eb
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Mar 2020 08:12:38.4387 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: gPyaSprehrbcgsaSI3wOmD4vYLOAAjSYMWt0bLW2OoqTFikS5sf9hxbk9Ywu0XRIu7Zx7ZMi4SjlUc3CQi8zH1TzuARDcWT6yIMRMnOZiBo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB2950
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,38 +67,219 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org, robh@kernel.org,
- gregkh@linuxfoundation.org, linux-wireless@vger.kernel.org,
- Adham.Abozaeid@microchip.com, johannes@sipsolutions.net
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Michal Simek <michal.simek@xilinx.com>, "Lad,
+ Prabhakar" <prabhakar.csengg@gmail.com>, Pavel Machek <pavel@ucw.cz>,
+ devel@driverdev.osuosl.org, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, Chen-Yu Tsai <wens@csie.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Steve Longerbeam <slongerbeam@gmail.com>, Bingbu Cao <bingbu.cao@intel.com>,
+ Tian Shu Qiu <tian.shu.qiu@intel.com>, Yong Zhi <yong.zhi@intel.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
+ Niklas =?UTF-8?B?U8O2ZGVybHVuZA==?= <niklas.soderlund@ragnatech.se>,
+ Helen Koike <helen.koike@collabora.com>, Yong Deng <yong.deng@magewell.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org,
+ Hyun Kwon <hyun.kwon@xilinx.com>, Heungjun Kim <riverful.kim@samsung.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Kalle,
+Em Thu, 26 Mar 2020 00:13:43 +0200
+Laurent Pinchart <laurent.pinchart@ideasonboard.com> escreveu:
 
-On 26/03/20 1:15 pm, Kalle Valo wrote:
+> Hi Mauro,
 > 
-> <Ajay.Kathat@microchip.com> writes:
+> On Wed, Mar 25, 2020 at 10:38:20PM +0100, Mauro Carvalho Chehab wrote:
+> > Em Wed, 25 Mar 2020 16:36:31 -0300 Helen Koike escreveu:  
+> > > On 3/25/20 1:03 PM, Mauro Carvalho Chehab wrote:  
+> > > > That's the second part of media Kconfig changes. The entire series is
+> > > > at:
+> > > > 
+> > > > 	https://git.linuxtv.org/mchehab/experimental.git/log/?h=media-kconfig    
+> > > 
+> > > I made a quick experiment (using this branch) with someone who works with the kernel for his master degree, but doesn't have much experience in kernel development in general.
+> > > I asked him to enable Vimc (from default configs, where multimedia starts disabled).
+> > > He knows that Vimc is a virtual camera driver, and this is how he behaved:
+> > > 
+> > > === Start of experiment:
+> > > 
+> > > * He pressed '/' and searched for vimc to see the location path.
+> > > * Then he enabled "Multimedia support" and went straight to "Media drivers" (which just shows USB and PCI).
+> > > * He went back to "Multimedia support", entered "Media device types" and enabled "Test drivers".
+> > > * He went back to "Media drivers" again and didn't find Vimc (nothing changed in this menu).
+> > > * He seemed a bit lost, going back and forth in the menus a couple of times.
+> > > * Then he pressed '/' again to search for vimc and see the location path, and he realized that there
+> > > should be an option called "V4L test drivers" under "Media drivers" that is not showing up.
+> > > * He went back to "Media device types" again and start re-reading the options.
+> > > * He selected "Cameras and video grabbers" ant went back to "Media drivers".
+> > > * He sees "V4L test drivers", selects it, and enter this menu.
+> > > * He selects "Virtual Media Controller Driver".
+> > > 
+> > > I asked his impressions, and he mentioned that he thought that enabling just "Test drivers" would be enough, without need
+> > > to combine "Test drivers" with "Cameras and video grabbers".
+> > > He also asked me why virtual drivers should be hidden, and he mentioned that the word "Virtual" in front would be enough.
+> > > 
+> > > Then I showed him he could have disabled the option "Filter devices by their types" to see everything at one (which he didn't
+> > > realized by himself until that moment, nor tried it out to see what would happen).
+> > > 
+> > > He mentioned that hiding is nice, because it shows less options, but not very nice to search for something.
+> > > He also mentioned that if he had understood the filter mechanism from the start, he would have disabled "Filter devices by their types" sooner.  
+> > 
+> > That's easy to solve: all it needs is to add something similar
+> > to this at drivers/media/Kconfig:
+> > 
+> > 	+	comment "Drivers are filtered by MEDIA_SUPPORT_FILTER"
+> > 	+		visible if MEDIA_SUPPORT_FILTER
+> > 	+
+> > 	+	comment "All available drivers are shown below"
+> > 	+		visible if !MEDIA_SUPPORT_FILTER
+> > 	+
+> > 	menu "Media drivers"
+> > 
+> > 	source "drivers/media/usb/Kconfig"
+> >   
+> > > === End of experiment
+> > > 
+> > > This was just one experiment from one person, I'll see if I can get some other people from lkcamp.dev group to also check
+> > > and send us their impressions. I think it would be nice to get more data about user experience, from people that are not used to
+> > > kernel development (kernel dev newbies for instance).
+> > > 
+> > > Just another remark from me:
+> > > 
+> > > From the default config, "Media drivers" shows USB and PCI,   
+> > 
+> > Well, assuming that there are 2 billion computers, 1% with Linux
+> > installed, and 10% of them have a media device (camera or TV),
+> > we have about 2 millions of people running Linux. That excludes
+> > Android and Embedded devices, where people usually don't touch.
+> > 
+> > During an entire year, there are about 4000 of Kernel developers 
+> > that has at least one patch accepted upstream (this number
+> > includes developers for Android and other SoCs). Also, the 
+> > number of Kernel developers submitting patches upstream for the
+> > media subsystem is around 20-40 people along an year.  
 > 
->> From: Ajay Singh <ajay.kathat@microchip.com>
->>
->> Remove labels and not relevant property from DT binding documentation
->> examples as suggested in [1].
->>
->> 1. https://patchwork.ozlabs.org/patch/1252837
+> $ git log --since 2019-01-01 --until 2020-01-01 --no-merges -- drivers/media/ | grep '^Author: ' | sort | uniq -c | wc -l   
+> 215
 > 
-> Just a nitpick but patchwork links are not that reliable in the long
-> run. Instead using a lore link is better as the message id is visible
-> directly from the URL.
+> There's some duplication of e-mail addresses, but it's still roughly an
+> order or magnitude bigger (and it's not counting staging, headers or
+> documentation).
 > 
+> > So, about 99,9998% of the users using the media subsystems aren't
+> > Kernel hackers. I bet that almost all of those will either need
+> > to enable USB or a PCI driver.  
+> 
+> And the extremely vast majority of these will never enable a kernel
+> option because they will never compile a kernel. They don't even know
+> what a kernel is :-)
+> 
+> > Granted, 99,9998% seems too optimistic, but, assuming that this
+> > would reduce to something like 80% (e. g. only 200 users
+> > would ever try to build a media driver, with is a *very conservative*
+> > number) this is still a lot more than the number of media Kernel
+> > developers.
+> > 
+> > Also, a Kernel hacker will sooner or later find a way to enable it.
+> > A normal user may find it a lot more trickier and will very likely
+> > require more support, if the menus are too technical and the
+> > default options are wrong.  
+> 
+> I'm not sure to follow you. Are you implying that this patch series,
+> which Helen has tested against a real user, not an experienced kernel
+> hacker, may make the configuration options more difficult for kernel
+> hackers, but improves the situation for users ?
 
-Sure. I will make use of lore link for future patches as this patch is
-already applied.
+Come on, it is not harder for Kernel hackers. It is just different than
+what it used to be before the changes. At the above experience, at the
+very first time this Kernel hacker looked on it, it was able to figure
+out how to enable the driver. I bet that, if you now repeat the experiment
+with the same guy, he would be able to enable another driver a lot quicker.
+
+My view is that, with the option of either enable or disable the
+filtering mechanism, it will be easier for everybody:
+
+- Distro maintainers for PCs can just disable platform and
+  test drivers, and keep the other drivers enabled;
+
+- An experienced Kernel hacker will disable the filter and select
+  the needed drivers directly.
+
+- An user wanting to test a driver with new patches (or a new driver)
+  use the filters to select the USB driver he needs (probably using the
+  media_tree.git, in order to see only the media options).
 
 
-Regards,
-Ajay
+> > -
+> > 
+> > Even with that, based on your small experiment (of someone from the
+> > area), I suspect that, if you had asked him to enable, for example,
+> > em28xx or dvbsky (with are some of the most popular drivers
+> > those days), he would be able to enable it a lot faster.  
+> 
+> This is the *only* real piece of evidence we have, let's not assume we
+> know better.
+> 
+> > > and selecting those doesn't do anything, and people can even think
+> > > that, if they want to enable an USB device, just enabling the USB option there is enough (which is not), since no drivers
+> > > shows up.  
+> > 
+> > It is hard to comment on individual experiments. In the past, our
+> > Kconfig system were like that: written for technical people with
+> > background on computer engineering and some experience building the
+> > Kernel.
+> > 
+> > E.g. people that knows that "/" activates a search mechanism at
+> > the Kernel building system.
+> > 
+> > We usually had to spend *a lot of time* both on IRC and on e-mail
+> > explaining people that just want to have their card supported,
+> > how to do that. After the reorg (with added those more user-faced
+> > interfaces), the number of people with problems reduced a lot.  
+> 
+> Don't you think that could come mainly from better support for media
+> devices in distributions ?
+> 
+> > Btw, if one tries to compile from media-build (with lots of users
+> > do), this is even more relevant.  
+> 
+> Can you quantify "lots of users" ?
+
+Enough to make us to decide that re-working the Kconfig menus and 
+add the MEDIA_SUPPORT_* and MEDIA_SUBDRV_AUTOSELECT would worth the
+efforts.
+
+Guess what? The efforts were fully paid, as it reduced a lot the
+amount of time we had to weekly spend helping people to build their
+Kernels in order to test support for their new hardware.
+
+It also helped a lot to set the right Kconfig options on distros.
+I did my contributions on that time by improving Fedora and on RHEL,
+making their build rely on MEDIA_SUPPORT_* and MEDIA_SUBDRV_AUTOSELECT.
+
+See, for some random distro maintainer, new Kconfig symbols pops up
+every time. Enabling all of them is usually a very bad idea. So, a
+filtering mechanism that would, for example, hide test and skeleton
+drivers to be built is a very nice feat, as it means a lot less
+symbols for them to study and decide whether such new options should
+be enabled or not
+
+Thanks,
+Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
