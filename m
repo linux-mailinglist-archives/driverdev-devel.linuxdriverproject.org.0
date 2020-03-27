@@ -1,58 +1,106 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C6D1F19528A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Mar 2020 09:04:41 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9517D195328
+	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Mar 2020 09:45:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 307B72635F;
-	Fri, 27 Mar 2020 08:04:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD63388A11;
+	Fri, 27 Mar 2020 08:45:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dL17AjY0E1AP; Fri, 27 Mar 2020 08:04:38 +0000 (UTC)
+	with ESMTP id u0qNiW5hU6mO; Fri, 27 Mar 2020 08:45:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8B5DC2624F;
-	Fri, 27 Mar 2020 08:04:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 802AF8885E;
+	Fri, 27 Mar 2020 08:45:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9E0041BF3BA
- for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 08:04:33 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C2A61BF3BA
+ for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 08:45:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9ACA2895A1
- for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 08:04:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 82EC520440
+ for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 08:45:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vuP4ww8ap0KF for <devel@linuxdriverproject.org>;
- Fri, 27 Mar 2020 08:04:32 +0000 (UTC)
+ with ESMTP id nGFWHab6SyGG for <devel@linuxdriverproject.org>;
+ Fri, 27 Mar 2020 08:45:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9F89B895A0
- for <devel@driverdev.osuosl.org>; Fri, 27 Mar 2020 08:04:32 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0940720714;
- Fri, 27 Mar 2020 08:04:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585296272;
- bh=rPnAP0Xfa76gafW25Xfs6v9g+Ufjrv7cMkDFifQ4Yqo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kD1gwN1gNWBTdi/O6BL6cEHljnsEuXu6AaMI/A35q+BWFkD+9XvByemufVB7BQbUb
- yVFFYZJvyoLJ2HEh1f1znFctppK+VlGPVsBvmcUI1FU8MNghgAaq87UOwK6+aiG0kQ
- yon0T/r+7Ys+en/rIfBy2M+OOmJdUpyfSCOA4wP4=
-Date: Fri, 27 Mar 2020 09:04:29 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Aiman Najjar <aiman.najjar@hurranet.com>
-Subject: Re: [PATCH] staging: rtl8712: fix checkpatch warnings
-Message-ID: <20200327080429.GB1627562@kroah.com>
-References: <20200326055616.GA3718@kernel-dev>
-MIME-Version: 1.0
+Received: from EUR03-VE1-obe.outbound.protection.outlook.com
+ (mail-eopbgr50057.outbound.protection.outlook.com [40.107.5.57])
+ by silver.osuosl.org (Postfix) with ESMTPS id EED13203A0
+ for <devel@driverdev.osuosl.org>; Fri, 27 Mar 2020 08:45:00 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=VBNkIwdB/pd67dEhtZ+P4ys+MNhLHviuorfOznTmkSOVe7G4z6M+PeYvgtY0fmx9nYHe4o30qJimSCnQBr5/Eh4ZZmV5IJR8kRb3K1fSpOCGl4ttFSpVGI6l/E8hTdm5o3qOn78+AlfAqdTZwgZCMmmnXEkjtHOEKfPdZCVg/jeat+1Dl8qHbvoxv2iZQ5Qxw3JXgk/cjiH39oq2I+5KueetZR1BKeQBcBYUwTCUt4mK6TczmmCUDZLOqBP+9hyeHdaowq6bvNDjH2Y7fGgM5B2hPf745XXA/biNltC64CY1UNpijW8GLBwv8swmiXZINPp7UkBdJoT8J3L2JN9okg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=uDVDUkV9KD0TsHdraLuhyqNaEgJgCKmfD3PS3xxBYLg=;
+ b=maahrf4vMFsRSfyO5AdSvemmDs9lzHvbLaIOTedtKY12KjqdIxQih975uRW6T5u8mRtGKFTKtEi+ZdoikBxNzkPHJDxSDf92IywQImm3e+U3x42Ohs/XIitkhvwvFxwJSyl+xOpDJijWd1qrZEb3eFBLCOduDlpxalEwus8CZguxe3LWl8K0cspKOoHbZyzcK02iDcu9+WwE2BFgEPGjpWDUO6UN7wq+4IjphpduDZq/d2QCz/U0jjxMRl/naXVhS+DU8xt6Sy8gzIurgSlYr8FXyW4DcMAFZLeOdGVR4HZqXGlaGRfME3C/W/IYK4HkrFHiXt2EmMkHx8Rcz6iBaQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=itdev.co.uk; dmarc=pass action=none header.from=itdev.co.uk;
+ dkim=pass header.d=itdev.co.uk; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=itdevltd.onmicrosoft.com; s=selector2-itdevltd-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=uDVDUkV9KD0TsHdraLuhyqNaEgJgCKmfD3PS3xxBYLg=;
+ b=vwpo0zwy46ACzbx7Ret02Lt4NuI9SSOJ4wjDT+eCmj7lKEi3lY9NRwbgcVPCEIiZuoBH5VRLRHlmjab67MJUkcwFtFWUiybhdrCdH5W7+36JYgKLxmXCmnvo1cwi+bve7a0VDIXrSfu4qvPX85bXwKKo5H/l08YQYT0TPCo+cDw=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=quentin.deslandes@itdev.co.uk; 
+Received: from DBBPR08MB4491.eurprd08.prod.outlook.com (20.179.44.144) by
+ DBBPR08MB5221.eurprd08.prod.outlook.com (20.179.46.81) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2856.19; Fri, 27 Mar 2020 08:44:57 +0000
+Received: from DBBPR08MB4491.eurprd08.prod.outlook.com
+ ([fe80::cce9:f055:f034:3659]) by DBBPR08MB4491.eurprd08.prod.outlook.com
+ ([fe80::cce9:f055:f034:3659%4]) with mapi id 15.20.2835.025; Fri, 27 Mar 2020
+ 08:44:57 +0000
+Date: Fri, 27 Mar 2020 08:44:54 +0000
+From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+To: Oscar Carter <oscar.carter@gmx.com>
+Subject: Re: [PATCH v2] staging: vt6656: Use DIV_ROUND_UP macro instead of
+ specific code
+Message-ID: <20200327084454.GA25025@jiffies>
+References: <20200326175902.14467-1-oscar.carter@gmx.com>
 Content-Disposition: inline
-In-Reply-To: <20200326055616.GA3718@kernel-dev>
+In-Reply-To: <20200326175902.14467-1-oscar.carter@gmx.com>
+X-ClientProxiedBy: LO2P123CA0002.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:600:a6::14) To DBBPR08MB4491.eurprd08.prod.outlook.com
+ (2603:10a6:10:d2::16)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from jiffies (5.151.93.48) by LO2P123CA0002.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:600:a6::14) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2856.19 via Frontend
+ Transport; Fri, 27 Mar 2020 08:44:55 +0000
+X-Originating-IP: [5.151.93.48]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ed257ed1-29ae-48b9-de12-08d7d22b201e
+X-MS-TrafficTypeDiagnostic: DBBPR08MB5221:
+X-Microsoft-Antispam-PRVS: <DBBPR08MB5221560637C5941CD2FCB407B3CC0@DBBPR08MB5221.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:765;
+X-Forefront-PRVS: 0355F3A3AE
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DBBPR08MB4491.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10009020)(136003)(39830400003)(396003)(346002)(376002)(366004)(44832011)(66556008)(6496006)(4326008)(86362001)(956004)(8936002)(52116002)(8676002)(508600001)(81156014)(81166006)(316002)(66476007)(1076003)(966005)(54906003)(53546011)(55016002)(66946007)(9576002)(186003)(26005)(5660300002)(2906002)(33716001)(6916009)(16526019)(33656002)(9686003)(518174003);
+ DIR:OUT; SFP:1101; 
+Received-SPF: None (protection.outlook.com: itdev.co.uk does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: SWInEy6VJcmPoD5whoOzlpf+vcoVNChLv7RcVN+KdnHCdO5JCLbZMTYRR0mwg0ok1mWlg4LwvFfOWNTCfudZhhW4pngK3qUwkoBLgp+p1q4kAmR5rCL0hbNb9zWYFnXxYvXDCXEIB9YQRYXSUX5xigxGGMf70VJGyKYG31EiQFIdThyn3rJgaqV7CnhaDii1BMEgas4BecA/hBw9lzxuJG3FkgvTFANeU9GnsnKkrXU0cDVZ9DhVz7CVBKReLYF9cWaV6oLddcBPBduNJLN5qeou5i0MDIl5WTYoaXKbn//96zijAEDFDm45Dpj4pRElyWeK2yAtnBf8EVy6m3FUtOVP3DFtD1Cwffnw79MqB5mYWpOEDc5+IGIk+Erv/o3CAYTkeNKOoDvBn5X2pE++csdayWrQL1JX9OADA8Im9ue7nEOH3cIHluqWcAyigZkaXgVB1aBKqnYJCfoFvfbaDYF5nnCIMKVv1yQt5Gnx6UeeDmYfu+FsNOcHak6LpjzbkfHEXw4I6prx6PezerfJ0tR9Zx5DqHGVWG4oJwF7EaYEkluPzdtzZHIZ0tX3V+pV
+X-MS-Exchange-AntiSpam-MessageData: Bqldo7jV0ulnvv9y9VCO3Y7SjqA6CnH1Cw4kg+haVWcLgs6UN/hN/c4hWOYP82siGxHmeZ50ST3D9gZCclGWj65dLNPxwh8mLJN6nE1zRkSrf1D8mC+Mu8qsXn9uHDd/u4zAuMIx8TDoFKM8d6TNLQ==
+X-OriginatorOrg: itdev.co.uk
+X-MS-Exchange-CrossTenant-Network-Message-Id: ed257ed1-29ae-48b9-de12-08d7d22b201e
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Mar 2020 08:44:57.1278 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2d2930c4-2251-45b4-ad79-3582c5f41740
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: LSiUisbJgUGX+yF+F9SNa5HvgXu+4IuHY/wbkfeWzPrZ6lmMECNPa2PIeCkRE7tpVruu6bs0NhnyYQAqjX6nG3sF8rSMOnJxV9sGLslwFy0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB5221
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,320 +113,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
- linux-kernel@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Forest Bond <forest@alittletooquiet.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Mar 26, 2020 at 01:56:16AM -0400, Aiman Najjar wrote:
-> This patch fixes remaining warnings in rtl871x_xmit.c of
-> rtl8712 staging driver
+On 03/26/20 18:59:02, Oscar Carter wrote:
+> Use DIV_ROUND_UP macro instead of specific code with the same purpose.
+> Also, remove the unused variables.
 > 
-> The following warnings are resolved:
-> 
-> WARNING: line over 80 characters
-> \#74: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:74:
-> +	* Please allocate memory with the sz = (struct xmit_frame) * NR_XMITFRAME,
-> 
-> WARNING: line over 80 characters
-> \#79: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:79:
-> +		kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4, GFP_ATOMIC);
-> 
-> WARNING: line over 80 characters
-> \#129: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:129:
-> +		pxmitbuf->pallocated_buf = kmalloc(MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ,
-> 
-> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrptxmickey'
-> \#378: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:378:
-> +					psecuritypriv->
-> +					XGrptxmickey[psecuritypriv->
-> 
-> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrpKeyid'
-> \#379: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:379:
-> +					XGrptxmickey[psecuritypriv->
-> +					XGrpKeyid].skey);
-> 
-> WARNING: Avoid multiple line dereference - prefer 'psta->sta_xmitpriv.txseq_tid[pattrib->priority]'
-> \#544: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:544:
-> +				pattrib->seqnum = psta->sta_xmitpriv.
-> +						 txseq_tid[pattrib->priority];
-> 
-> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->PrivacyKeyIndex'
-> \#636: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:636:
-> +					      (u8)psecuritypriv->
-> +					      PrivacyKeyIndex);
-> 
-> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrpKeyid'
-> \#643: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:643:
-> +						   (u8)psecuritypriv->
-> +						   XGrpKeyid);
-> 
-> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrpKeyid'
-> \#652: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:652:
-> +						   (u8)psecuritypriv->
-> +						   XGrpKeyid);
-> 
-> Signed-off-by: aimannajjar <aiman.najjar@hurranet.com>
+> Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 > ---
->  drivers/staging/rtl8712/rtl871x_xmit.c | 85 +++++++++++++-------------
->  1 file changed, 41 insertions(+), 44 deletions(-)
+> Changelog v1 -> v2
+> - Rebase the original patch [1] against the staging-next branch of the greg's
+>   staging.git tree.
 > 
-> diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
-> index f0b85338b567..82df5e26f8c8 100644
-> --- a/drivers/staging/rtl8712/rtl871x_xmit.c
-> +++ b/drivers/staging/rtl8712/rtl871x_xmit.c
-> @@ -71,12 +71,13 @@ int _r8712_init_xmit_priv(struct xmit_priv *pxmitpriv,
->  	_init_queue(&pxmitpriv->apsd_queue);
->  	_init_queue(&pxmitpriv->free_xmit_queue);
->  	/*
-> -	 * Please allocate memory with the sz = (struct xmit_frame) * NR_XMITFRAME,
-> +	 * Please allocate memory with sz = (struct xmit_frame) * NR_XMITFRAME,
->  	 * and initialize free_xmit_frame below.
->  	 * Please also apply  free_txobj to link_up all the xmit_frames...
->  	 */
->  	pxmitpriv->pallocated_frame_buf =
-> -		kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4, GFP_ATOMIC);
-> +		kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4,
-> +			GFP_ATOMIC);
->  	if (!pxmitpriv->pallocated_frame_buf) {
->  		pxmitpriv->pxmit_frame_buf = NULL;
->  		return -ENOMEM;
-> @@ -126,8 +127,8 @@ int _r8712_init_xmit_priv(struct xmit_priv *pxmitpriv,
->  	pxmitbuf = (struct xmit_buf *)pxmitpriv->pxmitbuf;
->  	for (i = 0; i < NR_XMITBUFF; i++) {
->  		INIT_LIST_HEAD(&pxmitbuf->list);
-> -		pxmitbuf->pallocated_buf = kmalloc(MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ,
-> -						   GFP_ATOMIC);
-> +		pxmitbuf->pallocated_buf =
-> +			kmalloc(MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ, GFP_ATOMIC);
->  		if (!pxmitbuf->pallocated_buf)
->  			return -ENOMEM;
->  		pxmitbuf->pbuf = pxmitbuf->pallocated_buf + XMITBUF_ALIGN_SZ -
-> @@ -350,7 +351,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
->  	struct	sta_info *stainfo;
->  	struct	qos_priv *pqospriv = &(padapter->mlmepriv.qospriv);
->  	struct	pkt_attrib  *pattrib = &pxmitframe->attrib;
-> -	struct	security_priv *psecuritypriv = &padapter->securitypriv;
-> +	struct	security_priv *psecpriv = &padapter->securitypriv;
->  	struct	xmit_priv *pxmitpriv = &padapter->xmitpriv;
->  	u8 priority[4] = {0x0, 0x0, 0x0, 0x0};
->  	bool bmcst = is_multicast_ether_addr(pattrib->ra);
-> @@ -368,15 +369,14 @@ static int xmitframe_addmic(struct _adapter *padapter,
->  					   0x0, 0x0};
->  			pframe = pxmitframe->buf_addr + TXDESC_OFFSET;
->  			if (bmcst) {
-> -				if (!memcmp(psecuritypriv->XGrptxmickey
-> -				   [psecuritypriv->XGrpKeyid].skey,
-> +				if (!memcmp(psecpriv->XGrptxmickey
-> +				   [psecpriv->XGrpKeyid].skey,
->  				   null_key, 16))
->  					return -ENOMEM;
->  				/*start to calculate the mic code*/
->  				r8712_secmicsetkey(&micdata,
-> -					 psecuritypriv->
-> -					 XGrptxmickey[psecuritypriv->
-> -					XGrpKeyid].skey);
-> +					psecpriv->XGrptxmickey
-> +					[psecpriv->XGrpKeyid].skey);
->  			} else {
->  				if (!memcmp(&stainfo->tkiptxmickey.skey[0],
->  					    null_key, 16))
-> @@ -416,7 +416,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
->  					length = pattrib->last_txcmdsz -
->  						  pattrib->hdrlen -
->  						  pattrib->iv_len -
-> -						  ((psecuritypriv->sw_encrypt)
-> +						  ((psecpriv->sw_encrypt)
->  						  ? pattrib->icv_len : 0);
->  					r8712_secmicappend(&micdata, payload,
->  							   length);
-> @@ -424,7 +424,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
->  				} else {
->  					length = pxmitpriv->frag_len -
->  					    pattrib->hdrlen - pattrib->iv_len -
-> -					    ((psecuritypriv->sw_encrypt) ?
-> +					    ((psecpriv->sw_encrypt) ?
->  					    pattrib->icv_len : 0);
->  					r8712_secmicappend(&micdata, payload,
->  							   length);
-> @@ -469,7 +469,7 @@ static sint xmitframe_swencrypt(struct _adapter *padapter,
->  }
->  
->  static int make_wlanhdr(struct _adapter *padapter, u8 *hdr,
-> -			struct pkt_attrib *pattrib)
-> +			struct pkt_attrib *pattr)
+>   [1] https://lore.kernel.org/lkml/20200322112342.9040-1-oscar.carter@gmx.com/
+> 
+>  drivers/staging/vt6656/baseband.c | 21 ++++-----------------
+>  1 file changed, 4 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+> index 0b5729abcbcd..a19a563d8bcc 100644
+> --- a/drivers/staging/vt6656/baseband.c
+> +++ b/drivers/staging/vt6656/baseband.c
+> @@ -23,6 +23,7 @@
+>   */
+> 
+>  #include <linux/bits.h>
+> +#include <linux/kernel.h>
+>  #include "mac.h"
+>  #include "baseband.h"
+>  #include "rf.h"
+> @@ -133,7 +134,6 @@ unsigned int vnt_get_frame_time(u8 preamble_type, u8 pkt_type,
 >  {
->  	u16 *qc;
->  
-> @@ -479,70 +479,70 @@ static int make_wlanhdr(struct _adapter *padapter, u8 *hdr,
->  	__le16 *fctrl = &pwlanhdr->frame_ctl;
->  
->  	memset(hdr, 0, WLANHDR_OFFSET);
-> -	SetFrameSubType(fctrl, pattrib->subtype);
-> -	if (pattrib->subtype & WIFI_DATA_TYPE) {
-> +	SetFrameSubType(fctrl, pattr->subtype);
-> +	if (pattr->subtype & WIFI_DATA_TYPE) {
->  		if (check_fwstate(pmlmepriv,  WIFI_STATION_STATE)) {
->  			/* to_ds = 1, fr_ds = 0; */
->  			SetToDs(fctrl);
->  			memcpy(pwlanhdr->addr1, get_bssid(pmlmepriv),
->  				ETH_ALEN);
-> -			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
-> -			memcpy(pwlanhdr->addr3, pattrib->dst, ETH_ALEN);
-> +			memcpy(pwlanhdr->addr2, pattr->src, ETH_ALEN);
-> +			memcpy(pwlanhdr->addr3, pattr->dst, ETH_ALEN);
->  		} else if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
->  			/* to_ds = 0, fr_ds = 1; */
->  			SetFrDs(fctrl);
-> -			memcpy(pwlanhdr->addr1, pattrib->dst, ETH_ALEN);
-> +			memcpy(pwlanhdr->addr1, pattr->dst, ETH_ALEN);
->  			memcpy(pwlanhdr->addr2, get_bssid(pmlmepriv),
->  				ETH_ALEN);
-> -			memcpy(pwlanhdr->addr3, pattrib->src, ETH_ALEN);
-> +			memcpy(pwlanhdr->addr3, pattr->src, ETH_ALEN);
->  		} else if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) ||
->  			   check_fwstate(pmlmepriv,
->  					 WIFI_ADHOC_MASTER_STATE)) {
-> -			memcpy(pwlanhdr->addr1, pattrib->dst, ETH_ALEN);
-> -			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
-> +			memcpy(pwlanhdr->addr1, pattr->dst, ETH_ALEN);
-> +			memcpy(pwlanhdr->addr2, pattr->src, ETH_ALEN);
->  			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv),
->  				ETH_ALEN);
->  		} else if (check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
-> -			memcpy(pwlanhdr->addr1, pattrib->dst, ETH_ALEN);
-> -			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
-> +			memcpy(pwlanhdr->addr1, pattr->dst, ETH_ALEN);
-> +			memcpy(pwlanhdr->addr2, pattr->src, ETH_ALEN);
->  			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv),
->  				ETH_ALEN);
->  		} else {
->  			return -EINVAL;
->  		}
->  
-> -		if (pattrib->encrypt)
-> +		if (pattr->encrypt)
->  			SetPrivacy(fctrl);
->  		if (pqospriv->qos_option) {
-> -			qc = (unsigned short *)(hdr + pattrib->hdrlen - 2);
-> -			if (pattrib->priority)
-> -				SetPriority(qc, pattrib->priority);
-> -			SetAckpolicy(qc, pattrib->ack_policy);
-> +			qc = (unsigned short *)(hdr + pattr->hdrlen - 2);
-> +			if (pattr->priority)
-> +				SetPriority(qc, pattr->priority);
-> +			SetAckpolicy(qc, pattr->ack_policy);
->  		}
->  		/* TODO: fill HT Control Field */
->  		/* Update Seq Num will be handled by f/w */
->  		{
->  			struct sta_info *psta;
-> -			bool bmcst = is_multicast_ether_addr(pattrib->ra);
-> +			bool bmcst = is_multicast_ether_addr(pattr->ra);
->  
-> -			if (pattrib->psta) {
-> -				psta = pattrib->psta;
-> +			if (pattr->psta) {
-> +				psta = pattr->psta;
->  			} else {
->  				if (bmcst)
->  					psta = r8712_get_bcmc_stainfo(padapter);
->  				else
->  					psta =
->  					 r8712_get_stainfo(&padapter->stapriv,
-> -					 pattrib->ra);
-> +					 pattr->ra);
->  			}
->  			if (psta) {
->  				psta->sta_xmitpriv.txseq_tid
-> -						  [pattrib->priority]++;
-> -				psta->sta_xmitpriv.txseq_tid[pattrib->priority]
-> +						  [pattr->priority]++;
-> +				psta->sta_xmitpriv.txseq_tid[pattr->priority]
->  						   &= 0xFFF;
-> -				pattrib->seqnum = psta->sta_xmitpriv.
-> -						  txseq_tid[pattrib->priority];
-> -				SetSeqNum(hdr, pattrib->seqnum);
-> +				pattr->seqnum =
-> +				  psta->sta_xmitpriv.txseq_tid[pattr->priority];
-> +				SetSeqNum(hdr, pattr->seqnum);
->  			}
->  		}
->  	}
-> @@ -589,7 +589,7 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
->  	addr_t addr;
->  	u8 *pframe, *mem_start, *ptxdesc;
->  	struct sta_info		*psta;
-> -	struct security_priv	*psecuritypriv = &padapter->securitypriv;
-> +	struct security_priv	*psecpriv = &padapter->securitypriv;
->  	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
->  	struct xmit_priv	*pxmitpriv = &padapter->xmitpriv;
->  	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
-> @@ -632,15 +632,13 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
->  				case _WEP40_:
->  				case _WEP104_:
->  					WEP_IV(pattrib->iv, psta->txpn,
-> -					       (u8)psecuritypriv->
-> -					       PrivacyKeyIndex);
-> +					       (u8)psecpriv->PrivacyKeyIndex);
->  					break;
->  				case _TKIP_:
->  					if (bmcst)
->  						TKIP_IV(pattrib->iv,
->  						    psta->txpn,
-> -						    (u8)psecuritypriv->
-> -						    XGrpKeyid);
-> +						    (u8)psecpriv->XGrpKeyid);
->  					else
->  						TKIP_IV(pattrib->iv, psta->txpn,
->  							0);
-> @@ -648,8 +646,7 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
->  				case _AES_:
->  					if (bmcst)
->  						AES_IV(pattrib->iv, psta->txpn,
-> -						    (u8)psecuritypriv->
-> -						    XGrpKeyid);
-> +						    (u8)psecpriv->XGrpKeyid);
->  					else
->  						AES_IV(pattrib->iv, psta->txpn,
->  						       0);
-> -- 
-> 2.20.1
+>  	unsigned int frame_time;
+>  	unsigned int preamble;
+> -	unsigned int tmp;
+>  	unsigned int rate = 0;
 > 
+>  	if (tx_rate > RATE_54M)
+> @@ -147,20 +147,11 @@ unsigned int vnt_get_frame_time(u8 preamble_type, u8 pkt_type,
+>  		else
+>  			preamble = 192;
+> 
+> -		frame_time = (frame_length * 80) / rate;
+> -		tmp = (frame_time * rate) / 80;
+> -
+> -		if (frame_length != tmp)
+> -			frame_time++;
+> -
+> +		frame_time = DIV_ROUND_UP(frame_length * 80, rate);
+>  		return preamble + frame_time;
+>  	}
+> -	frame_time = (frame_length * 8 + 22) / rate;
+> -	tmp = ((frame_time * rate) - 22) / 8;
+> -
+> -	if (frame_length != tmp)
+> -		frame_time++;
+> 
+> +	frame_time = DIV_ROUND_UP(frame_length * 8 + 22, rate);
+>  	frame_time = frame_time * 4;
+> 
+>  	if (pkt_type != PK_TYPE_11A)
+> @@ -214,11 +205,7 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+> 
+>  		break;
+>  	case RATE_5M:
+> -		count = (bit_count * 10) / 55;
+> -		tmp = (count * 55) / 10;
+> -
+> -		if (tmp != bit_count)
+> -			count++;
+> +		count = DIV_ROUND_UP(bit_count * 10, 55);
+> 
+>  		if (preamble_type == 1)
+>  			phy->signal = 0x0a;
+> --
+> 2.20.1
 
-Hi,
+Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
-
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
+Thanks,
+Quentin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
