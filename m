@@ -1,126 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84626195152
-	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Mar 2020 07:34:02 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6D1F19528A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Mar 2020 09:04:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A99AA875BB;
-	Fri, 27 Mar 2020 06:34:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 307B72635F;
+	Fri, 27 Mar 2020 08:04:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FH2giBfoGzED; Fri, 27 Mar 2020 06:33:58 +0000 (UTC)
+	with ESMTP id dL17AjY0E1AP; Fri, 27 Mar 2020 08:04:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56CE387583;
-	Fri, 27 Mar 2020 06:33:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8B5DC2624F;
+	Fri, 27 Mar 2020 08:04:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5FF2D1BF3EB
- for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 06:33:49 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E0041BF3BA
+ for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 08:04:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4C260886A5
- for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 06:33:49 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9ACA2895A1
+ for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 08:04:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ftjWHkNU41kk for <devel@linuxdriverproject.org>;
- Fri, 27 Mar 2020 06:33:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
- [216.71.150.166])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B782188B0D
- for <devel@driverdev.osuosl.org>; Fri, 27 Mar 2020 06:33:25 +0000 (UTC)
-IronPort-SDR: +QAoGsY7/7jBLj8vLjLoCo1Kv85Oylz2suoHBquW0TCi4swCRbrgEhLq3hGzjCytxGhFo5LY6d
- MzJKv7DiRhyclqmSvv06qnxQXuwjkhRe262VZ6yOCZDZTrckuPbz9Y5v6lZ4phw4ObYvcgCBWv
- jMwHN8pTDxUWNg0VcUXOubGIi9ZHlbWilBbOnhtJP5R/fL4L+iqpifNXsXvctSMDQedrUZRznr
- qi1Fh47EPBFF6fS9n1R3gSbdmEyousT2+gweL5/uF8z62OQPGkrlBIG1FJ6RBCQO4z6DSRlp66
- c5Q=
-X-IronPort-AV: E=Sophos;i="5.72,311,1580799600"; d="scan'208";a="70452434"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 26 Mar 2020 23:33:26 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 26 Mar 2020 23:33:23 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Thu, 26 Mar 2020 23:33:23 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WUxYGG0VzEJ3IR5Bl17hsd64naCCSQpNhRR5MloGkMObLqH2YfUfSRMiaOweDwLBzkNKnVre7EJdtKC6wFPC4j6MXyYCNnRIlD2Lyy5/hUDQcjWBZmDRZ/2MJFrj0PAB8Y19ZbG7ObCWjk1wSxsDpRpgFHnpL+tmrkyITsLUYWYRfhr1mxCKol/gihgR/DNEIzhBGAZNp03Wmbh8RVz6THZwZg5iR1WrRZ1EiW1un+u5oREBGI6GastL+XNrfgFsBBDKFQaufxxhr6gtykNwWERrOgmxgpqIu70VZD76bxoAG7NU4Py8fi872f0w1ZBV/7nldwnOc+iGCE2+SFWD0g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=v+FHaC2cDxz7we2ANw7qXo4BJsliKhNlAJAMbrj1e60=;
- b=li7OnTa9ELPRXLPhM+ru7Jw1qEuoPE+tuilZni4Yp2w0LgJjnVy7nCHphUZ6swb3S7iClGuqtWkyTxuZeBhY6ujYDxA5H0UwX+tsDae+q3un8iE6W+SGo2qRhKS2t1m3dcLSjeBEJFx179le9da2YgI5Gu4q0AY6fUmZSqkuPxnZtWihGzT452faBYN9898JK50MjXiMHvHamcSsc8AaR3Fwp7yQ/b+b8s9//L/RLXOejCDOfD45l/B7s5cPg8q0YC+0P8XNq4WyhncDRFvCady/DmwOl5+gPa+5iQzQVVOxtEyZ7XacUc+VwgLUQ8QwUHFeYamCb5IGOC63K3o8dA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=v+FHaC2cDxz7we2ANw7qXo4BJsliKhNlAJAMbrj1e60=;
- b=sOZzvyLmxfDdn8E+G7zJpDWLqn5PbxGAuwiFIo9PXwJ5qzMn+6xjabkHFSewWClKR2dNgFMl/N1aiQsZrwXEJMJMYpWAJgCjPzwz8gWmbxi/8hMNWBN5Sn9UvvCN7XHEZ/5DjXXj2Q89hMSjwNBtD8Ou7VLCcG86IgnAQgURxt4=
-Received: from BYAPR11MB3125.namprd11.prod.outlook.com (2603:10b6:a03:8e::32)
- by BYAPR11MB3397.namprd11.prod.outlook.com (2603:10b6:a03:1b::29)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2856.19; Fri, 27 Mar
- 2020 06:33:21 +0000
-Received: from BYAPR11MB3125.namprd11.prod.outlook.com
- ([fe80::c27:87cf:ca4:d86e]) by BYAPR11MB3125.namprd11.prod.outlook.com
- ([fe80::c27:87cf:ca4:d86e%4]) with mapi id 15.20.2835.021; Fri, 27 Mar 2020
- 06:33:21 +0000
-From: <Ajay.Kathat@microchip.com>
-To: <linux-wireless@vger.kernel.org>
-Subject: [PATCH v6 17/17] wilc1000: add Makefile and Kconfig files for
- wilc1000 compilation
-Thread-Topic: [PATCH v6 17/17] wilc1000: add Makefile and Kconfig files for
- wilc1000 compilation
-Thread-Index: AQHWBAGbrApgv2HB8UaaR09pNWOsRg==
-Date: Fri, 27 Mar 2020 06:33:21 +0000
-Message-ID: <20200327063302.20511-18-ajay.kathat@microchip.com>
-References: <20200327063302.20511-1-ajay.kathat@microchip.com>
-In-Reply-To: <20200327063302.20511-1-ajay.kathat@microchip.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: git-send-email 2.17.1
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Ajay.Kathat@microchip.com; 
-x-originating-ip: [183.82.22.58]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 8e79d0be-b640-41cb-1b7c-08d7d218be6a
-x-ms-traffictypediagnostic: BYAPR11MB3397:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR11MB33978611C324BD9DA0E237CCE3CC0@BYAPR11MB3397.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:4941;
-x-forefront-prvs: 0355F3A3AE
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(39850400004)(136003)(376002)(346002)(366004)(396003)(81156014)(26005)(8676002)(81166006)(76116006)(66446008)(66556008)(66476007)(36756003)(6512007)(66946007)(6486002)(64756008)(91956017)(2906002)(6506007)(4326008)(71200400001)(2616005)(107886003)(186003)(86362001)(5660300002)(478600001)(1076003)(6916009)(316002)(8936002)(54906003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BYAPR11MB3397;
- H:BYAPR11MB3125.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 5+zGm9WW3TQYyh0IY+8f5hcm1sa4pXMupY90kW5Tu9GYvhKEHirXNsyL3XF14IicDX4mknZ6DbQOIsFMkYv5Sy7mDOcB3UIg43zGP2hqSY4Tns+uZBm6QtGZbVd3HGZXO+TzygPRbz/v18XfxjJRfrcbMigh2W9ZYbUJIrYX0oDyU2AtNrDjW7g2yL04zFYBh5kmyak0NqgiDcug/FK3W7tgakuAHHGiIVh9uHIexs+7SLswqny6qkEUT80lO7cNkrZKp8/xjgRxU2KrefFqoec17SiH/fud1v+hXZynfYmg36025KzZatQpBY405fSsImRHdS8fnSenw0PMnqRLR3jY4aQ+99vSyetGtoL1WbWu2f4to7whyPa1YaBTvSbSN0MuvnNmHc/eblzErPcwdGWEbNAE6v2tBiPI6AAh/1olQ2VZqbef2BIrGsa5cVEj
-x-ms-exchange-antispam-messagedata: vKO+7qDIALVVfdGp6MXvBUHAE2myxeXkuNB1EIUh/tCSo3FfGPFRlZN5qi7rQM/vb9abh09AKaItWWGDtWzNRedM3EgyxLbjuwJ6/M/aVm1ZC45s7wXaehgB6SCzSakjStk8wVqvn3qyURbhPjuGcQ==
+ with ESMTP id vuP4ww8ap0KF for <devel@linuxdriverproject.org>;
+ Fri, 27 Mar 2020 08:04:32 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9F89B895A0
+ for <devel@driverdev.osuosl.org>; Fri, 27 Mar 2020 08:04:32 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0940720714;
+ Fri, 27 Mar 2020 08:04:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1585296272;
+ bh=rPnAP0Xfa76gafW25Xfs6v9g+Ufjrv7cMkDFifQ4Yqo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=kD1gwN1gNWBTdi/O6BL6cEHljnsEuXu6AaMI/A35q+BWFkD+9XvByemufVB7BQbUb
+ yVFFYZJvyoLJ2HEh1f1znFctppK+VlGPVsBvmcUI1FU8MNghgAaq87UOwK6+aiG0kQ
+ yon0T/r+7Ys+en/rIfBy2M+OOmJdUpyfSCOA4wP4=
+Date: Fri, 27 Mar 2020 09:04:29 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Aiman Najjar <aiman.najjar@hurranet.com>
+Subject: Re: [PATCH] staging: rtl8712: fix checkpatch warnings
+Message-ID: <20200327080429.GB1627562@kroah.com>
+References: <20200326055616.GA3718@kernel-dev>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8e79d0be-b640-41cb-1b7c-08d7d218be6a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Mar 2020 06:33:21.0738 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ACudVmYsPRTAREyCKrCX1lh2DEvtW5eK8B+ItUb15fB8ySop9zS+AceylOyq2kWp8+hp4iUFACVYbq0syNU3wUF0EEXSi7wOJjVTz5TpkSQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB3397
+Content-Disposition: inline
+In-Reply-To: <20200326055616.GA3718@kernel-dev>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -133,189 +65,320 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- Ajay.Kathat@microchip.com, Venkateswara.Kaja@microchip.com,
- gregkh@linuxfoundation.org, Nicolas.Ferre@microchip.com,
- Adham.Abozaeid@microchip.com, johannes@sipsolutions.net
+Cc: devel@driverdev.osuosl.org,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ linux-kernel@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Ajay Singh <ajay.kathat@microchip.com>
+On Thu, Mar 26, 2020 at 01:56:16AM -0400, Aiman Najjar wrote:
+> This patch fixes remaining warnings in rtl871x_xmit.c of
+> rtl8712 staging driver
+> 
+> The following warnings are resolved:
+> 
+> WARNING: line over 80 characters
+> \#74: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:74:
+> +	* Please allocate memory with the sz = (struct xmit_frame) * NR_XMITFRAME,
+> 
+> WARNING: line over 80 characters
+> \#79: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:79:
+> +		kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4, GFP_ATOMIC);
+> 
+> WARNING: line over 80 characters
+> \#129: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:129:
+> +		pxmitbuf->pallocated_buf = kmalloc(MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ,
+> 
+> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrptxmickey'
+> \#378: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:378:
+> +					psecuritypriv->
+> +					XGrptxmickey[psecuritypriv->
+> 
+> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrpKeyid'
+> \#379: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:379:
+> +					XGrptxmickey[psecuritypriv->
+> +					XGrpKeyid].skey);
+> 
+> WARNING: Avoid multiple line dereference - prefer 'psta->sta_xmitpriv.txseq_tid[pattrib->priority]'
+> \#544: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:544:
+> +				pattrib->seqnum = psta->sta_xmitpriv.
+> +						 txseq_tid[pattrib->priority];
+> 
+> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->PrivacyKeyIndex'
+> \#636: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:636:
+> +					      (u8)psecuritypriv->
+> +					      PrivacyKeyIndex);
+> 
+> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrpKeyid'
+> \#643: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:643:
+> +						   (u8)psecuritypriv->
+> +						   XGrpKeyid);
+> 
+> WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrpKeyid'
+> \#652: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:652:
+> +						   (u8)psecuritypriv->
+> +						   XGrpKeyid);
+> 
+> Signed-off-by: aimannajjar <aiman.najjar@hurranet.com>
+> ---
+>  drivers/staging/rtl8712/rtl871x_xmit.c | 85 +++++++++++++-------------
+>  1 file changed, 41 insertions(+), 44 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
+> index f0b85338b567..82df5e26f8c8 100644
+> --- a/drivers/staging/rtl8712/rtl871x_xmit.c
+> +++ b/drivers/staging/rtl8712/rtl871x_xmit.c
+> @@ -71,12 +71,13 @@ int _r8712_init_xmit_priv(struct xmit_priv *pxmitpriv,
+>  	_init_queue(&pxmitpriv->apsd_queue);
+>  	_init_queue(&pxmitpriv->free_xmit_queue);
+>  	/*
+> -	 * Please allocate memory with the sz = (struct xmit_frame) * NR_XMITFRAME,
+> +	 * Please allocate memory with sz = (struct xmit_frame) * NR_XMITFRAME,
+>  	 * and initialize free_xmit_frame below.
+>  	 * Please also apply  free_txobj to link_up all the xmit_frames...
+>  	 */
+>  	pxmitpriv->pallocated_frame_buf =
+> -		kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4, GFP_ATOMIC);
+> +		kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4,
+> +			GFP_ATOMIC);
+>  	if (!pxmitpriv->pallocated_frame_buf) {
+>  		pxmitpriv->pxmit_frame_buf = NULL;
+>  		return -ENOMEM;
+> @@ -126,8 +127,8 @@ int _r8712_init_xmit_priv(struct xmit_priv *pxmitpriv,
+>  	pxmitbuf = (struct xmit_buf *)pxmitpriv->pxmitbuf;
+>  	for (i = 0; i < NR_XMITBUFF; i++) {
+>  		INIT_LIST_HEAD(&pxmitbuf->list);
+> -		pxmitbuf->pallocated_buf = kmalloc(MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ,
+> -						   GFP_ATOMIC);
+> +		pxmitbuf->pallocated_buf =
+> +			kmalloc(MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ, GFP_ATOMIC);
+>  		if (!pxmitbuf->pallocated_buf)
+>  			return -ENOMEM;
+>  		pxmitbuf->pbuf = pxmitbuf->pallocated_buf + XMITBUF_ALIGN_SZ -
+> @@ -350,7 +351,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
+>  	struct	sta_info *stainfo;
+>  	struct	qos_priv *pqospriv = &(padapter->mlmepriv.qospriv);
+>  	struct	pkt_attrib  *pattrib = &pxmitframe->attrib;
+> -	struct	security_priv *psecuritypriv = &padapter->securitypriv;
+> +	struct	security_priv *psecpriv = &padapter->securitypriv;
+>  	struct	xmit_priv *pxmitpriv = &padapter->xmitpriv;
+>  	u8 priority[4] = {0x0, 0x0, 0x0, 0x0};
+>  	bool bmcst = is_multicast_ether_addr(pattrib->ra);
+> @@ -368,15 +369,14 @@ static int xmitframe_addmic(struct _adapter *padapter,
+>  					   0x0, 0x0};
+>  			pframe = pxmitframe->buf_addr + TXDESC_OFFSET;
+>  			if (bmcst) {
+> -				if (!memcmp(psecuritypriv->XGrptxmickey
+> -				   [psecuritypriv->XGrpKeyid].skey,
+> +				if (!memcmp(psecpriv->XGrptxmickey
+> +				   [psecpriv->XGrpKeyid].skey,
+>  				   null_key, 16))
+>  					return -ENOMEM;
+>  				/*start to calculate the mic code*/
+>  				r8712_secmicsetkey(&micdata,
+> -					 psecuritypriv->
+> -					 XGrptxmickey[psecuritypriv->
+> -					XGrpKeyid].skey);
+> +					psecpriv->XGrptxmickey
+> +					[psecpriv->XGrpKeyid].skey);
+>  			} else {
+>  				if (!memcmp(&stainfo->tkiptxmickey.skey[0],
+>  					    null_key, 16))
+> @@ -416,7 +416,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
+>  					length = pattrib->last_txcmdsz -
+>  						  pattrib->hdrlen -
+>  						  pattrib->iv_len -
+> -						  ((psecuritypriv->sw_encrypt)
+> +						  ((psecpriv->sw_encrypt)
+>  						  ? pattrib->icv_len : 0);
+>  					r8712_secmicappend(&micdata, payload,
+>  							   length);
+> @@ -424,7 +424,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
+>  				} else {
+>  					length = pxmitpriv->frag_len -
+>  					    pattrib->hdrlen - pattrib->iv_len -
+> -					    ((psecuritypriv->sw_encrypt) ?
+> +					    ((psecpriv->sw_encrypt) ?
+>  					    pattrib->icv_len : 0);
+>  					r8712_secmicappend(&micdata, payload,
+>  							   length);
+> @@ -469,7 +469,7 @@ static sint xmitframe_swencrypt(struct _adapter *padapter,
+>  }
+>  
+>  static int make_wlanhdr(struct _adapter *padapter, u8 *hdr,
+> -			struct pkt_attrib *pattrib)
+> +			struct pkt_attrib *pattr)
+>  {
+>  	u16 *qc;
+>  
+> @@ -479,70 +479,70 @@ static int make_wlanhdr(struct _adapter *padapter, u8 *hdr,
+>  	__le16 *fctrl = &pwlanhdr->frame_ctl;
+>  
+>  	memset(hdr, 0, WLANHDR_OFFSET);
+> -	SetFrameSubType(fctrl, pattrib->subtype);
+> -	if (pattrib->subtype & WIFI_DATA_TYPE) {
+> +	SetFrameSubType(fctrl, pattr->subtype);
+> +	if (pattr->subtype & WIFI_DATA_TYPE) {
+>  		if (check_fwstate(pmlmepriv,  WIFI_STATION_STATE)) {
+>  			/* to_ds = 1, fr_ds = 0; */
+>  			SetToDs(fctrl);
+>  			memcpy(pwlanhdr->addr1, get_bssid(pmlmepriv),
+>  				ETH_ALEN);
+> -			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
+> -			memcpy(pwlanhdr->addr3, pattrib->dst, ETH_ALEN);
+> +			memcpy(pwlanhdr->addr2, pattr->src, ETH_ALEN);
+> +			memcpy(pwlanhdr->addr3, pattr->dst, ETH_ALEN);
+>  		} else if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
+>  			/* to_ds = 0, fr_ds = 1; */
+>  			SetFrDs(fctrl);
+> -			memcpy(pwlanhdr->addr1, pattrib->dst, ETH_ALEN);
+> +			memcpy(pwlanhdr->addr1, pattr->dst, ETH_ALEN);
+>  			memcpy(pwlanhdr->addr2, get_bssid(pmlmepriv),
+>  				ETH_ALEN);
+> -			memcpy(pwlanhdr->addr3, pattrib->src, ETH_ALEN);
+> +			memcpy(pwlanhdr->addr3, pattr->src, ETH_ALEN);
+>  		} else if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) ||
+>  			   check_fwstate(pmlmepriv,
+>  					 WIFI_ADHOC_MASTER_STATE)) {
+> -			memcpy(pwlanhdr->addr1, pattrib->dst, ETH_ALEN);
+> -			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
+> +			memcpy(pwlanhdr->addr1, pattr->dst, ETH_ALEN);
+> +			memcpy(pwlanhdr->addr2, pattr->src, ETH_ALEN);
+>  			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv),
+>  				ETH_ALEN);
+>  		} else if (check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
+> -			memcpy(pwlanhdr->addr1, pattrib->dst, ETH_ALEN);
+> -			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
+> +			memcpy(pwlanhdr->addr1, pattr->dst, ETH_ALEN);
+> +			memcpy(pwlanhdr->addr2, pattr->src, ETH_ALEN);
+>  			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv),
+>  				ETH_ALEN);
+>  		} else {
+>  			return -EINVAL;
+>  		}
+>  
+> -		if (pattrib->encrypt)
+> +		if (pattr->encrypt)
+>  			SetPrivacy(fctrl);
+>  		if (pqospriv->qos_option) {
+> -			qc = (unsigned short *)(hdr + pattrib->hdrlen - 2);
+> -			if (pattrib->priority)
+> -				SetPriority(qc, pattrib->priority);
+> -			SetAckpolicy(qc, pattrib->ack_policy);
+> +			qc = (unsigned short *)(hdr + pattr->hdrlen - 2);
+> +			if (pattr->priority)
+> +				SetPriority(qc, pattr->priority);
+> +			SetAckpolicy(qc, pattr->ack_policy);
+>  		}
+>  		/* TODO: fill HT Control Field */
+>  		/* Update Seq Num will be handled by f/w */
+>  		{
+>  			struct sta_info *psta;
+> -			bool bmcst = is_multicast_ether_addr(pattrib->ra);
+> +			bool bmcst = is_multicast_ether_addr(pattr->ra);
+>  
+> -			if (pattrib->psta) {
+> -				psta = pattrib->psta;
+> +			if (pattr->psta) {
+> +				psta = pattr->psta;
+>  			} else {
+>  				if (bmcst)
+>  					psta = r8712_get_bcmc_stainfo(padapter);
+>  				else
+>  					psta =
+>  					 r8712_get_stainfo(&padapter->stapriv,
+> -					 pattrib->ra);
+> +					 pattr->ra);
+>  			}
+>  			if (psta) {
+>  				psta->sta_xmitpriv.txseq_tid
+> -						  [pattrib->priority]++;
+> -				psta->sta_xmitpriv.txseq_tid[pattrib->priority]
+> +						  [pattr->priority]++;
+> +				psta->sta_xmitpriv.txseq_tid[pattr->priority]
+>  						   &= 0xFFF;
+> -				pattrib->seqnum = psta->sta_xmitpriv.
+> -						  txseq_tid[pattrib->priority];
+> -				SetSeqNum(hdr, pattrib->seqnum);
+> +				pattr->seqnum =
+> +				  psta->sta_xmitpriv.txseq_tid[pattr->priority];
+> +				SetSeqNum(hdr, pattr->seqnum);
+>  			}
+>  		}
+>  	}
+> @@ -589,7 +589,7 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
+>  	addr_t addr;
+>  	u8 *pframe, *mem_start, *ptxdesc;
+>  	struct sta_info		*psta;
+> -	struct security_priv	*psecuritypriv = &padapter->securitypriv;
+> +	struct security_priv	*psecpriv = &padapter->securitypriv;
+>  	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
+>  	struct xmit_priv	*pxmitpriv = &padapter->xmitpriv;
+>  	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
+> @@ -632,15 +632,13 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
+>  				case _WEP40_:
+>  				case _WEP104_:
+>  					WEP_IV(pattrib->iv, psta->txpn,
+> -					       (u8)psecuritypriv->
+> -					       PrivacyKeyIndex);
+> +					       (u8)psecpriv->PrivacyKeyIndex);
+>  					break;
+>  				case _TKIP_:
+>  					if (bmcst)
+>  						TKIP_IV(pattrib->iv,
+>  						    psta->txpn,
+> -						    (u8)psecuritypriv->
+> -						    XGrpKeyid);
+> +						    (u8)psecpriv->XGrpKeyid);
+>  					else
+>  						TKIP_IV(pattrib->iv, psta->txpn,
+>  							0);
+> @@ -648,8 +646,7 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
+>  				case _AES_:
+>  					if (bmcst)
+>  						AES_IV(pattrib->iv, psta->txpn,
+> -						    (u8)psecuritypriv->
+> -						    XGrpKeyid);
+> +						    (u8)psecpriv->XGrpKeyid);
+>  					else
+>  						AES_IV(pattrib->iv, psta->txpn,
+>  						       0);
+> -- 
+> 2.20.1
+> 
 
-Added Makefile and Kconfig files for compiling wilc1000 module from
-'drivers/net/wireless/microchip/'.
+Hi,
 
-Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
----
- drivers/net/wireless/Kconfig                  |  1 +
- drivers/net/wireless/Makefile                 |  1 +
- drivers/net/wireless/microchip/Kconfig        | 15 ++++++
- drivers/net/wireless/microchip/Makefile       |  2 +
- .../net/wireless/microchip/wilc1000/Kconfig   | 47 +++++++++++++++++++
- .../net/wireless/microchip/wilc1000/Makefile  | 14 ++++++
- drivers/staging/Kconfig                       |  2 -
- drivers/staging/Makefile                      |  1 -
- 8 files changed, 80 insertions(+), 3 deletions(-)
- create mode 100644 drivers/net/wireless/microchip/Kconfig
- create mode 100644 drivers/net/wireless/microchip/Makefile
- create mode 100644 drivers/net/wireless/microchip/wilc1000/Kconfig
- create mode 100644 drivers/net/wireless/microchip/wilc1000/Makefile
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
-diff --git a/drivers/net/wireless/Kconfig b/drivers/net/wireless/Kconfig
-index 1c98d781ae49..86faf8f3d9b0 100644
---- a/drivers/net/wireless/Kconfig
-+++ b/drivers/net/wireless/Kconfig
-@@ -47,6 +47,7 @@ source "drivers/net/wireless/st/Kconfig"
- source "drivers/net/wireless/ti/Kconfig"
- source "drivers/net/wireless/zydas/Kconfig"
- source "drivers/net/wireless/quantenna/Kconfig"
-+source "drivers/net/wireless/microchip/Kconfig"
- 
- config PCMCIA_RAYCS
- 	tristate "Aviator/Raytheon 2.4GHz wireless support"
-diff --git a/drivers/net/wireless/Makefile b/drivers/net/wireless/Makefile
-index 6cfe74515c95..f9a51c2889ca 100644
---- a/drivers/net/wireless/Makefile
-+++ b/drivers/net/wireless/Makefile
-@@ -19,6 +19,7 @@ obj-$(CONFIG_WLAN_VENDOR_ST) += st/
- obj-$(CONFIG_WLAN_VENDOR_TI) += ti/
- obj-$(CONFIG_WLAN_VENDOR_ZYDAS) += zydas/
- obj-$(CONFIG_WLAN_VENDOR_QUANTENNA) += quantenna/
-+obj-$(CONFIG_WLAN_VENDOR_MICROCHIP) += microchip/
- 
- # 16-bit wireless PCMCIA client drivers
- obj-$(CONFIG_PCMCIA_RAYCS)	+= ray_cs.o
-diff --git a/drivers/net/wireless/microchip/Kconfig b/drivers/net/wireless/microchip/Kconfig
-new file mode 100644
-index 000000000000..a6b46fb6b1ec
---- /dev/null
-+++ b/drivers/net/wireless/microchip/Kconfig
-@@ -0,0 +1,15 @@
-+# SPDX-License-Identifier: GPL-2.0
-+config WLAN_VENDOR_MICROCHIP
-+	bool "Microchip devices"
-+	default y
-+	help
-+	If you have a wireless card belonging to this class, say Y.
-+
-+	Note that the answer to this question doesn't directly affect the
-+	kernel: saying N will just cause the configurator to skip all the
-+	questions about these cards. If you say Y, you will be asked for
-+	your specific card in the following questions.
-+
-+if WLAN_VENDOR_MICROCHIP
-+source "drivers/net/wireless/microchip/wilc1000/Kconfig"
-+endif # WLAN_VENDOR_MICROCHIP
-diff --git a/drivers/net/wireless/microchip/Makefile b/drivers/net/wireless/microchip/Makefile
-new file mode 100644
-index 000000000000..73b763c7393e
---- /dev/null
-+++ b/drivers/net/wireless/microchip/Makefile
-@@ -0,0 +1,2 @@
-+# SPDX-License-Identifier: GPL-2.0
-+obj-$(CONFIG_WILC1000)		+= wilc1000/
-diff --git a/drivers/net/wireless/microchip/wilc1000/Kconfig b/drivers/net/wireless/microchip/wilc1000/Kconfig
-new file mode 100644
-index 000000000000..80c92e8bf8a5
---- /dev/null
-+++ b/drivers/net/wireless/microchip/wilc1000/Kconfig
-@@ -0,0 +1,47 @@
-+# SPDX-License-Identifier: GPL-2.0
-+config WILC1000
-+	tristate
-+	help
-+	  Add support for the Atmel WILC1000 802.11 b/g/n SoC.
-+	  This provides Wi-FI over an SDIO or SPI interface, and
-+	  is usually found in IoT devices.
-+
-+	  This module only support IEEE 802.11n WiFi.
-+
-+config WILC1000_SDIO
-+	tristate "Atmel WILC1000 SDIO (WiFi only)"
-+	depends on CFG80211 && INET && MMC
-+	select WILC1000
-+	help
-+	  This module adds support for the SDIO interface of adapters using
-+	  WILC1000 chipset. The Atmel WILC1000 SDIO is a full speed interface.
-+	  It meets SDIO card specification version 2.0. The interface supports
-+	  the 1-bit/4-bit SD transfer mode at the clock range of 0-50 MHz.
-+	  The host can use this interface to read and write from any register
-+	  within the chip as well as configure the WILC1000 for data DMA.
-+	  To use this interface, pin9 (SDIO_SPI_CFG) must be grounded. Select
-+	  this if your platform is using the SDIO bus.
-+
-+config WILC1000_SPI
-+	tristate "Atmel WILC1000 SPI (WiFi only)"
-+	depends on CFG80211 && INET && SPI
-+	select WILC1000
-+	select CRC7
-+	help
-+	  This module adds support for the SPI interface of adapters using
-+	  WILC1000 chipset. The Atmel WILC1000 has a Serial Peripheral
-+	  Interface (SPI) that operates as a SPI slave. This SPI interface can
-+	  be used for control and for serial I/O of 802.11 data. The SPI is a
-+	  full-duplex slave synchronous serial interface that is available
-+	  immediately following reset when pin 9 (SDIO_SPI_CFG) is tied to
-+	  VDDIO. Select this if your platform is using the SPI bus.
-+
-+config WILC1000_HW_OOB_INTR
-+	bool "WILC1000 out of band interrupt"
-+	depends on WILC1000_SDIO
-+	help
-+	  This option enables out-of-band interrupt support for the WILC1000
-+	  chipset. This OOB interrupt is intended to provide a faster interrupt
-+	  mechanism for SDIO host controllers that don't support SDIO interrupt.
-+	  Select this option If the SDIO host controller in your platform
-+	  doesn't support SDIO time devision interrupt.
-diff --git a/drivers/net/wireless/microchip/wilc1000/Makefile b/drivers/net/wireless/microchip/wilc1000/Makefile
-new file mode 100644
-index 000000000000..a3305a0a888a
---- /dev/null
-+++ b/drivers/net/wireless/microchip/wilc1000/Makefile
-@@ -0,0 +1,14 @@
-+# SPDX-License-Identifier: GPL-2.0
-+obj-$(CONFIG_WILC1000) += wilc1000.o
-+
-+ccflags-y += -DFIRMWARE_1002=\"atmel/wilc1002_firmware.bin\" \
-+		-DFIRMWARE_1003=\"atmel/wilc1003_firmware.bin\"
-+
-+wilc1000-objs := cfg80211.o netdev.o mon.o \
-+			hif.o wlan_cfg.o wlan.o
-+
-+obj-$(CONFIG_WILC1000_SDIO) += wilc1000-sdio.o
-+wilc1000-sdio-objs += sdio.o
-+
-+obj-$(CONFIG_WILC1000_SPI) += wilc1000-spi.o
-+wilc1000-spi-objs += spi.o
-diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
-index baccd7c883cc..ef5e62e46704 100644
---- a/drivers/staging/Kconfig
-+++ b/drivers/staging/Kconfig
-@@ -80,8 +80,6 @@ source "drivers/staging/fbtft/Kconfig"
- 
- source "drivers/staging/fsl-dpaa2/Kconfig"
- 
--source "drivers/staging/wilc1000/Kconfig"
--
- source "drivers/staging/most/Kconfig"
- 
- source "drivers/staging/ks7010/Kconfig"
-diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
-index fdd03fd6e704..4db5165cb08b 100644
---- a/drivers/staging/Makefile
-+++ b/drivers/staging/Makefile
-@@ -30,7 +30,6 @@ obj-$(CONFIG_UNISYSSPAR)	+= unisys/
- obj-$(CONFIG_COMMON_CLK_XLNX_CLKWZRD)	+= clocking-wizard/
- obj-$(CONFIG_FB_TFT)		+= fbtft/
- obj-$(CONFIG_FSL_DPAA2)		+= fsl-dpaa2/
--obj-$(CONFIG_WILC1000)		+= wilc1000/
- obj-$(CONFIG_MOST)		+= most/
- obj-$(CONFIG_KS7010)		+= ks7010/
- obj-$(CONFIG_GREYBUS)		+= greybus/
--- 
-2.24.0
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- Your patch did many different things all at once, making it difficult
+  to review.  All Linux kernel patches need to only do one thing at a
+  time.  If you need to do multiple things (such as clean up all coding
+  style issues in a file/driver), do it in a sequence of patches, each
+  one doing only one thing.  This will make it easier to review the
+  patches to ensure that they are correct, and to help alleviate any
+  merge issues that larger patches can cause.
+
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
