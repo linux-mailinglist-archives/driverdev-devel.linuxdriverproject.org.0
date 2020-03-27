@@ -1,52 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5EDC1960C0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Mar 2020 22:53:22 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DAFC589390;
-	Fri, 27 Mar 2020 21:53:18 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char A0 hex):
-	From: "Bahar\240Zanjani"<admin@[...]
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JB+888VF2Nhy; Fri, 27 Mar 2020 21:53:17 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CE1B289357;
-	Fri, 27 Mar 2020 21:53:14 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5B8C91BF5AC
- for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 21:53:13 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 22F581960C3
+	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Mar 2020 22:56:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 357AF8781F
- for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 21:53:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 31E498794B;
+	Fri, 27 Mar 2020 21:56:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char A0 hex):
- From: "Bahar\302\240Zanjani"<admin@[...]
+	From: "Bahar\302\240Zanjani"<admin@[...]
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IUbT6D_SwEUz; Fri, 27 Mar 2020 21:56:34 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2237287949;
+	Fri, 27 Mar 2020 21:56:34 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 933081BF5AC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 27 Mar 2020 21:56:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8E71C8860B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 27 Mar 2020 21:56:32 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+X-Amavis-Alert: BAD HEADER SECTION, Non-encoded 8-bit data (char A0 hex):
+ From: "Bahar\240Zanjani"<admin@[...]
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pT-GVnu64TGu for <devel@linuxdriverproject.org>;
- Fri, 27 Mar 2020 21:53:04 +0000 (UTC)
+ with ESMTP id Rpt24rwXZg6R
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 27 Mar 2020 21:56:31 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.mosonass.ga (unknown [94.177.232.147])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6E8A486F1D
- for <devel@driverdev.osuosl.org>; Fri, 27 Mar 2020 21:53:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6F62B88607
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 27 Mar 2020 21:56:31 +0000 (UTC)
 Received: from User (unknown [175.100.20.198])
- by mail.mosonass.ga (Postfix) with ESMTPA id 4F17CB42D;
- Fri, 27 Mar 2020 10:05:07 -0400 (EDT)
+ by mail.mosonass.ga (Postfix) with ESMTPA id 477D4B525;
+ Fri, 27 Mar 2020 10:11:57 -0400 (EDT)
 From: "Bahar Zanjani"<admin@mosonass.ga>
 Subject: Cooperation
-Date: Fri, 27 Mar 2020 21:05:15 +0700
+Date: Fri, 27 Mar 2020 21:12:04 +0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200327215313.357AF8781F@fraxinus.osuosl.org>
+Message-Id: <20200327215632.8E71C8860B@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
