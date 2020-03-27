@@ -1,77 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99EB319583F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Mar 2020 14:44:29 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32DCB195B6D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Mar 2020 17:49:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0D42E88A87;
-	Fri, 27 Mar 2020 13:44:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8D91D87716;
+	Fri, 27 Mar 2020 16:49:36 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GL--CEuSRwI0; Fri, 27 Mar 2020 16:49:34 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DE00F8770A;
+	Fri, 27 Mar 2020 16:49:33 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 05E6B1BF299
+ for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 16:49:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 01CFE88816
+ for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 16:49:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IpeFIi36D+mX; Fri, 27 Mar 2020 13:44:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 168D088A18;
-	Fri, 27 Mar 2020 13:44:27 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 21CDA1BF301
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 27 Mar 2020 13:44:25 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1E69A8937D
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 27 Mar 2020 13:44:25 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sbAiwCuOLw+f
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 27 Mar 2020 13:44:24 +0000 (UTC)
+ with ESMTP id OUj3gygAtppS for <devel@linuxdriverproject.org>;
+ Fri, 27 Mar 2020 16:49:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f193.google.com (mail-il1-f193.google.com
- [209.85.166.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A627289387
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 27 Mar 2020 13:44:24 +0000 (UTC)
-Received: by mail-il1-f193.google.com with SMTP id j9so8793924ilr.7
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 27 Mar 2020 06:44:24 -0700 (PDT)
+Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com
+ [209.85.208.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 510CE88623
+ for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 16:49:31 +0000 (UTC)
+Received: by mail-ed1-f68.google.com with SMTP id cw6so11300312edb.9
+ for <devel@linuxdriverproject.org>; Fri, 27 Mar 2020 09:49:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=uIvUjlehSVigkxhw02yxSAS/Jekd0JL8sbxoZE/mhG8=;
- b=CWNX9l2UGIJBYDL8e4jKoBK3mg/HFG/VwWkS49sFUOwGcwaUXLkymaUmPK7xKJvmjg
- zXr71SvZFs7ZRMsD0a61S2oEsDu7CVNqG2wq94VRG+hDYkyTpmA0//GiuM3U5aZzAlaq
- 3/PuQXp+wK92IHJoiu77IfDw+JqWdhskTvgGNkIK/XPRc3LPuxpAyFi1XQHT1j3S5CzI
- 80j1Fg94ZapVYEplBPh1bw/oo97TcyY7shK3EGCEqeQjj+5wymT9gAOha9j2KODItYLT
- n+50BzsWR98TX9RE14ajukyEoO97IlgrAy11b1cinl/qOuib58ZBCriokyxANYk2DiaA
- fz2Q==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=jsv2ErPknI73smSdnngvvu/Pml3bBBSalSP1U+N6RSQ=;
+ b=qbPXFFi6+E6kYcNw/zc72ppnRWDlPoseWdqMHGMVYBy4p1yhrWrW4Vhm+L3+IMepnU
+ nfK+mxw/iSIQJPogZ/uAm/Al7MFDpdBpClWwKiiAzo8w1Xuw2K4svdwR1UaCUR3ECCSl
+ EhbU/Mp54EuSYPKe1MgydsQ0MQbXD68T04l9MJo6edy/XZQ3wRuWg4IxWHoTAzosRItV
+ yMQkwyNkzgT7P75I0DATmBdoEaLqYPDI2SSIMkrCRp6KYK2doUVAXyxd7Hs4c57zZ2LO
+ 5PVhxUzzPvOM5vFJoWeuOkFUMzxcUyuX2KQ7H0RGMnjRTJAwnv6+wQ+eU5Vd56UAOVk0
+ FIsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=uIvUjlehSVigkxhw02yxSAS/Jekd0JL8sbxoZE/mhG8=;
- b=SkgEvCs1eiG8o/G+akYJUcU1IKA35SjPJZB7Zxp65dCYH8svV+AQwZVfKZigzRxlk2
- dFdVM33X/sna+5lZZy5WOd0FXLi4hK8qekxb8siLsy2Y7Egcr9wR6iF20eYbv7BGGDKl
- wi7zaYYYnAVxa9gillEbbExKFREBGQvhgxLDd//3Djuf4UEpmDbaCawg6aNK2TAHoDyM
- 9KxG6MR0zmzLWgXu29psF13uZ7WvLDKM8xBmiuXtsYlYvyaMMGRinOnXDvxlZO7I2ivM
- b9PttN4TkYqSHdZg0u/piJHaoRjq3tU/NlpbDBRl9qyzAG9fWY0eC0H2sCFv0lUDpRG4
- Kd0g==
-X-Gm-Message-State: ANhLgQ1hO85A1PEpp3BoXn02ujIFd2iUQbUyFpomP3Jp7EGv8SYc494H
- JeEQbZjGCEzmfTCg9+hkpWuRlvBq83p1dUNix0k=
-X-Google-Smtp-Source: ADFU+vuGyUq6Xt30XsVnZknBzw7vgbGSOT3EkN27y6j60sKN/SE1S2BbwpdY7CfbeeKUYB3PqQ5FRrDx5j+vTikJrZk=
-X-Received: by 2002:a92:cb49:: with SMTP id f9mr13577899ilq.193.1585316663963; 
- Fri, 27 Mar 2020 06:44:23 -0700 (PDT)
+ :subject:to;
+ bh=jsv2ErPknI73smSdnngvvu/Pml3bBBSalSP1U+N6RSQ=;
+ b=TmJLH2xNv2ahRTtLK5upyHCbrYWiwZI2PS5CVZOLVbugt4f9b0NgByckcpsUZs1i2H
+ 4AOl5npgpJ07PuEkHzJtrwnfkIwM0htRaEchhj+URprPecJFajMvnLPWiTL/TdAtMqZ7
+ BBWptL0HtCrjdJrKD70OaTAMM9mDucvNr/AcJ4zcH2cr+2UsvN/V+bvQqHcMxOihURBw
+ rvO6ms4+19Ok9vd1a4MoISu5Gs18QUMmLY1rCtDwrFZtj8RMJJw1RwsNCtSJggXGnryB
+ tDhmf7yF/aA78JY51uLLgJgHq2W95oc0DK+JBzXGWop019D+ua/lAU6YY8C3QBsjzLbL
+ QLZw==
+X-Gm-Message-State: ANhLgQ3+ZsWmVR9y4qkLPL4Xfx1CuetQWtwDECPio+QxAZvRChxVOz+p
+ zvMJoiy2zvN08y66874T4x/tKCq/CtMrNPz4Wgc=
+X-Google-Smtp-Source: ADFU+vtw+be3dTuCZ81cfQdmKto7ufpN0zdfwCQWIHiKIt3zTvZYvG0OV/KPd6JBD64KUqECjmgaufvePcsKL3X59+M=
+X-Received: by 2002:a17:906:1e47:: with SMTP id
+ i7mr13386071ejj.286.1585327769341; 
+ Fri, 27 Mar 2020 09:49:29 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a5e:8817:0:0:0:0:0 with HTTP; Fri, 27 Mar 2020 06:44:23
+Received: by 2002:a05:6402:84c:0:0:0:0 with HTTP; Fri, 27 Mar 2020 09:49:28
  -0700 (PDT)
-From: Andrew Ede <consumingfirechurch4@gmail.com>
-Date: Fri, 27 Mar 2020 15:44:23 +0200
-Message-ID: <CAK6CGFdR_k3ecMryhXAp8JyUkPfuHqEmhJ1LE1d957vkCfBbcA@mail.gmail.com>
-Subject: HOW ARE YOU?
+From: "Mr. Mike Benz CEO Official Director IMF-Benin" <eco.bank1204@gmail.com>
+Date: Fri, 27 Mar 2020 17:49:28 +0100
+Message-ID: <CAOE+jADtR5-t2oAUOdWF0Vsc+3tM5FTxw798Onc++tD7NrL8+g@mail.gmail.com>
+Subject: Contact the JP Morgan Chase Bank Ny to receive your transfer
+ $12.5Million Us Dollars today.
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,34 +81,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: officework_progress@yahoo.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: jp.morganchasebankny13@yahoo.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-R29vZCBkYXkuCgpNeSByZWFzb24gb2YgY29udGFjdGluZyB5b3UgaXMgdGhhdCBJIGFuZCBteSBj
-b2xsZWFndWVzIHdvcmtpbmcgaW4gb3VyCmNvdW50cnnigJlzIE5hdGlvbmFsIFBldHJvbGV1bSBD
-b3Jwb3JhdGlvbiB3YW50IHRvIGJ1eSBhbnkgZXhpc3RpbmcKbW9kZXJuIGNydWRlIG9pbCByZWZp
-bmVyeSBpbiBhbnkgcGFydCBvZiB0aGUgd29ybGQuCgpXZSBhcmUgcmVhZHkgdG8gYnV5IGFueSBh
-dmFpbGFibGUgbGFuZCB0byBidWlsZCB0aGUgUmVmaW5lcnkgb3IgYnV5CnRoZSBleGlzdGluZyBv
-bmUgYW55d2hlcmUgb3V0c2lkZSBBZnJpY2EuIFdlIHdpbGwgbWFrZSB5b3Ugb3VyIGZvcmVpZ24K
-cGFydG5lciBhYnJvYWQgd2l0aCBzb21lIHBlcmNlbnRhZ2Ugc2hhcmVob2xkaW5nIGlmIHlvdSB3
-aWxsIGJlCmludGVyZXN0ZWQgdG8gd29yayB3aXRoIHVzIG9uIHRoaXMgcHJvamVjdC4KCldlIGhh
-dmUgdGhlIHN1bSBvZiAoJDYwMCBNaWxsaW9uIERvbGxhcnMpIFNpeCBIdW5kcmVkIE1pbGxpb24g
-RG9sbGFycwpmb3IgdGhpcyBwcm9qZWN0LgoKTWVhbndoaWxlLCB0aGlzIGFtb3VudCBvZiAoJDYw
-MCBNaWxsaW9uIERvbGxhcnMpIHdpbGwgYmUgYWNjZXNzaWJsZQp0aHJvdWdoIEZvcmVpZ24gQ29u
-dHJhY3QgUHVyY2hhc2UgRnVuZC4gV2UgYXJlIGdvaW5nIHRvIGNsYXJpZnkgd2hhdAp3ZSBtZWFu
-dCBieSBGb3JlaWduIENvbnRyYWN0IFB1cmNoYXNlIEZ1bmQgYXMgc29vbiBhcyB3ZSBoZWFyIGZy
-b20geW91CmZvciBiZXR0ZXIgdW5kZXJzdGFuZGluZyBhbmQgdGhlIHdheSBmb3J3YXJkLgoKSG93
-ZXZlciwgaW4gY2FzZSB5b3UgYXJlIG5vdCBjYXBhYmxlIHRvIGhhbmRsZSB0aGlzIHByb2plY3Qg
-d2l0aCB1cywKcGxlYXNlIGtpbmRseSBjb25uZWN0IHVzIHRvIGFueSBjYXBhYmxlIHBlcnNvbiBv
-ciBjb21wYW55IHRoYXQgd291bGQKaGFuZGxlIHRoZSBwcm9qZWN0IHdpdGggdXMgaW4gb3JkZXIg
-dG8gZW5hYmxlIHVzIHByb2NlZWQgYXQgb25jZS4KCldlIGhvcGUgdG8gaGVhciB5b3UgaW4gbm8g
-ZGlzdGFuY2UgdGltZSB0aHJvdWdoIHRoaXMgZS1tYWlsIGFkZHJlc3MKYXQ6IG9mZmljZXdvcmtf
-cHJvZ3Jlc3NAeWFob28uY29tLCBmb3IgaW1tZWRpYXRlIGNvbW11bmljYXRpb24gYW5kCm1vcmUg
-ZmFjdHMgb24gaG93IHRvIGdvIG9uLgoKV2l0aCByZXNwZWN0CgpCZXN0IFJlZ2FyZHMKCkFuZHJl
-dyBFZGUgYW5kIENvLCwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0
-cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-dmVyZGV2LWRldmVsCg==
+Attn: Dear.
+Happy to inform you,we have finally deposited your payment funds
+$12.5 million us dollars with our international Paying bank,
+JP Morgan Chase Bank Ny, this morning
+to transfer the payment amount of $12.500.000,00 Million Us Dollars to you
+Your transfer is ready for you now.
+Contact the JP Morgan Chase Bank Ny to receive your transfer $12.5Million
+Us Dollars today
+Director Eco bank-Benin: Dr. RICHARD LONGORIA
+Email id:  jp.morganchasebankny13@yahoo.com
+Tel/mobile, (917) 983-4846
+Note,I have paid the wire transfer and insurance fees for you
+But the only money you are to send to this bank is $25.00 us dollars
+Been for the activation of your payment files before funds been released to you
+Contact Him now to receive your transfer deposited this morning
+I wait for your reply upon confirmation
+Mr. Mike Benz
+CEO Official Director IMF-Benin
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
