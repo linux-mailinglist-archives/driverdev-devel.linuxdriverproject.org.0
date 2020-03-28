@@ -1,71 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49977196759
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Mar 2020 17:31:46 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CD80887C5A;
-	Sat, 28 Mar 2020 16:31:44 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R2MCld7CZbMX; Sat, 28 Mar 2020 16:31:44 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D986287770;
-	Sat, 28 Mar 2020 16:31:43 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2EF251BF2C9
- for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 16:31:41 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 55776196854
+	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Mar 2020 19:17:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2B60D86AEB
- for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 16:31:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 04B6486CF3;
+	Sat, 28 Mar 2020 18:17:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id i2Eigb_kFLyQ; Sat, 28 Mar 2020 18:17:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0E87086C78;
+	Sat, 28 Mar 2020 18:17:47 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6FE8C1BF57F
+ for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 18:17:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 41D182047A
+ for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 18:17:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mQAPtDZrIO2c for <devel@linuxdriverproject.org>;
- Sat, 28 Mar 2020 16:31:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from sender4-op-o14.zoho.com (sender4-op-o14.zoho.com
- [136.143.188.14])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BA30D86AE8
- for <devel@driverdev.osuosl.org>; Sat, 28 Mar 2020 16:31:40 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; t=1585413080; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=W8oA9fOJi/XAIOJXU6XhAyHxr+wYaLsPw5sqqNaUZ85vvAOcu+Vj1vQ56z8qgf15AutCSn3AOhuapy1dLorr2xOBaDdIcvxn5smXB1Q2S8FI4eabYOtyUNCfvIjBu8/Y9c0Vuoqsgm7M4LDev224eDvNIZDKndvfTWh/3pfQVHw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1585413080;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
- bh=r30IA0SFgRRCtxKTYYUNcQWC2l66w/oo3k+pQSUmJ44=; 
- b=hqlUmF+mlkYuQNil8qHfDMXPskka4IhbIf6PxYV77GcBXnx/nI4uBvdzyYt8zGvKKb83KIokgA+nZqVbe/uA65b64qE1ow4ulttTporgK/6u1cMfeK3zOMQL7wziD2g0jdhEU/fpamOuWK23l6EKEUxYv4JXg6esN5PHota1aaE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=hurranet.com;
- spf=pass  smtp.mailfrom=aiman.najjar@hurranet.com;
- dmarc=pass header.from=<aiman.najjar@hurranet.com>
- header.from=<aiman.najjar@hurranet.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1585413080; 
- s=zoho; d=hurranet.com; i=aiman.najjar@hurranet.com;
- h=From:To:Cc:Message-ID:Subject:Date:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type;
- bh=r30IA0SFgRRCtxKTYYUNcQWC2l66w/oo3k+pQSUmJ44=;
- b=lMNEFSThqOmxkh/7xYvh3tfmsfKvmwVq5jGOjvkUzYEYJRDvVqeYhwU0uMFfRQ0Q
- apEp8fHbVDn9G1bkMnxV+VHqNtSJXd+zlfqIKh8k1723MsvWRwu21Xe6KD3rjLEN3Fu
- bTnF9vDpO1EJp35+7VjOQdW4WUXKbhzjOViBeuuY=
-Received: from kernel-dev (097-100-022-132.res.spectrum.com [97.100.22.132])
- by mx.zohomail.com with SMTPS id 1585413078092311.25906734376474;
- Sat, 28 Mar 2020 09:31:18 -0700 (PDT)
-From: aimannajjar <aiman.najjar@hurranet.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Message-ID: <e31645933cc807d61d29c392bfd0dab8ea8b06b1.1585353747.git.aiman.najjar@hurranet.com>
-Subject: [PATCH v2 5/5] staging: rtl8712:fix multiline derefernce warnings
-Date: Fri, 27 Mar 2020 20:08:11 -0400
+ with ESMTP id 9ogrZ5JjdMMw for <devel@linuxdriverproject.org>;
+ Sat, 28 Mar 2020 18:17:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
+ by silver.osuosl.org (Postfix) with ESMTPS id DE3AF20358
+ for <devel@driverdev.osuosl.org>; Sat, 28 Mar 2020 18:17:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1585419453;
+ bh=8ClDFE5jb+D6WSqrYcYwBB3UMbtyV3apdX6dVPxKzro=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=RkKAzv7q1RFhXp+JE7EQOC9SrlCodxCVizulEnOAVVk3IV6/QNhftUYCskrt32qFL
+ SrkTa434F0Lf8PwamryZgwVEvchTks/FCLChl9FLJcM9ZNtLDd3b3NtjPAYWdHTTn7
+ ZxwjHlQ6bLhV3x6991SjByjovGQd4KsQEVvA9Nsc=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
+ (mrgmx104 [212.227.17.174]) with ESMTPSA (Nemesis) id
+ 1MvK4f-1jZVtN3fsX-00rHzd; Sat, 28 Mar 2020 19:17:33 +0100
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: vt6656: Refactor the vnt_update_pre_ed_threshold
+ function
+Date: Sat, 28 Mar 2020 19:17:06 +0100
+Message-Id: <20200328181706.14276-1-oscar.carter@gmx.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <cover.1585353747.git.aiman.najjar@hurranet.com>
-References: <20200327080429.GB1627562@kroah.com>
- <cover.1585353747.git.aiman.najjar@hurranet.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+X-Provags-ID: V03:K1:6wF4kJiH5B1RFFkaEFpYdT+DGqXNheQYuV0ArwKuD7MrY4UcAMb
+ TKBhovAJ5S2QtIMKshVTdD7M/1XC92uKlBri7nzTNelsw6uUsuxlpQpBIOMBbBnTfnfM3mx
+ uBzyuCxMEvFGJyhiY0d1XjjGdCT6XoGBhC3A8tC6bQ5+p4qUZsbwffpaCui/UlwYrhlJatR
+ wAbaPvRC8z8EUiUpfXWLQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:O/yTV3qRnN0=:uL8r9Uu/ngFkqmCQAlkZBt
+ C5M1+gmfMUulCSGsTwFf1MwNlC5JbaVobd9QcO+71gc9WjMArUT+W5bINfZ37GE2386blqkrM
+ o4F0u86ReYr9O4IgCdjmmf5Z2nY2CE+jQ5aSo/yaU2J5Ouyb8Le9s57hG3tPZVhcxKKt3laMK
+ o592g+ojZv0hPs9qZFIMH0KcNJAgbZjZCg28TMPuiZb0u1kAui8zJ7pm0FXP1n5FWTyg5oq2p
+ rJmLLi6K4fB01PsfV1xgz9yg3O7S7CQQb//dq7iXuwnj3no74LqVqprjU4HP1/MIhOOH909et
+ CLur2nsGD52PB4VR35DWKEdaYwYaSZOyqgJb/wYe0kBrmZ4cNrRBujwYLGAjCZtyDRRot7n52
+ fAraMYeG1I9Gc88qpqNSzZQWKCubXGw0fMFHpBwx8cTN5ukIpN/CsYSDWcG2b6pb5vlw9MooK
+ E3AzvWA8djnoIynGm/BFNv5DgkOIPNzZjKr6BtMh4FL/GnuNdMNZR3nhj4MKS4tZEkfqxTxiY
+ a4uTg53sK8m7+GcMOgcb2EeZaqDCp669F07EY1zBbzdgt4ohYkXnGPRR4XaZuwCluZyjrQBvs
+ BjDaQxQ79b9ApExqIz4dWaqqDsNjfySd2ZkJgZ3KWyvt4iDXuQHfzaQw0iOkAX+2/VZtbuLoi
+ uNk+MJWT6Nrhu7Ac7wa6flAP5mLKtAaQLAXr377AzLdk6i7E0zpgTK/5KDPax4lYMtZYPii8I
+ jgkEXw/X6vVthfZz4xeEr7he9/kh3r4hQ6NAFe1Xd3O0MxYyEatfhgSqvpRr1Z4mZ3UnYNsg9
+ xEYCsm1qaTP9i7l4aCyU2F39rCluWQWP33yBhid0JEtnobSLb1rDVHE3ez5aFO+jTDkQxvnbG
+ YnoQamyk1+1cZYYPrusPevcd+WGtvLcwK3gjgkW5grOqzuGA/LKc196NObXix9RfMwXyCJctR
+ z8EPeeZAro3427sb2vg/MIy1MNxz1lFpxKz4f3Rs+LJrDfOM+paCe+CpcfV0G4thwDm27FxBJ
+ dK80aLF55d4ndViUVwcli6rMjXIY0iShtfK/WBAvUSkElCDQWOPAdif2mp7PRDd4ZpD1RPyK8
+ 9L0KN/Qe1TRDQOmqvG3Mg+5kL99aVni27GMGsiPbuxfqJatickMAPKCP2h5u4vuGyZcLXwVWo
+ eWEJJUMTQdiOpHXHdvhYP4QF2CUKyXtnYhk+CqX33PZV9pBKhS+DkuVOLRX4ETQifBGbUADBh
+ Bocq7bNrZhx5NrZm6
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,81 +86,438 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, aimannajjar <aiman.najjar@hurranet.com>,
- Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
- linux-kernel@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes remaining checkpatch warnings
-in rtl871x_xmit.c:
+Create three arrays with the threshold data use in the switch statement
+of the vnt_update_pre_ed_threshold function. These three arrays contains
+elements of struct vnt_threshold new type.
 
-WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->PrivacyKeyIndex'
-636: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:636:
-+					      (u8)psecuritypriv->
-+					      PrivacyKeyIndex);
+Create a for loop in the vnt_update_pre_ed_threshold function to do
+exactly the same that the if-elseif-else statements in the switch
+statement.
 
-WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrpKeyid'
-643: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:643:
-+						   (u8)psecuritypriv->
-+						   XGrpKeyid);
+Also, remove the if check against the !cr_201 && !cr_206 due to now it
+is replace by the NULL check against the threshold pointer. When this
+pointer is NULL means that the cr_201 and cr_206 variables have not been
+assigned, that is the same that the old comparison against cr_201 and
+cr_206 due to these variables were initialized with 0.
 
-WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrpKeyid'
-652: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:652:
-+						   (u8)psecuritypriv->
-+						   XGrpKeyid);
+The statistics of the old baseband object file are:
 
-Signed-off-by: aimannajjar <aiman.najjar@hurranet.com>
+section              size   addr
+.text                3415      0
+.data                 576      0
+.bss                    0      0
+.rodata               120      0
+.comment               45      0
+.note.GNU-stack         0      0
+.note.gnu.property     28      0
+Total                4184
+
+The statistics of the new baseband object file are:
+
+section              size   addr
+.text                2209      0
+.data                 576      0
+.bss                    0      0
+.rodata               344      0
+.comment               45      0
+.note.GNU-stack         0      0
+.note.gnu.property     28      0
+Total                3202
+
+With this refactoring it increase a little the readonly data but it
+decrease much more the .text section. This refactoring decrease the
+footprint and makes the code more clear.
+
+Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 ---
- drivers/staging/rtl8712/rtl871x_xmit.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+ drivers/staging/vt6656/baseband.c | 335 +++++++++---------------------
+ 1 file changed, 100 insertions(+), 235 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
-index 04da7b318340..82df5e26f8c8 100644
---- a/drivers/staging/rtl8712/rtl871x_xmit.c
-+++ b/drivers/staging/rtl8712/rtl871x_xmit.c
-@@ -589,7 +589,7 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
- 	addr_t addr;
- 	u8 *pframe, *mem_start, *ptxdesc;
- 	struct sta_info		*psta;
--	struct security_priv	*psecuritypriv = &padapter->securitypriv;
-+	struct security_priv	*psecpriv = &padapter->securitypriv;
- 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
- 	struct xmit_priv	*pxmitpriv = &padapter->xmitpriv;
- 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
-@@ -632,15 +632,13 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
- 				case _WEP40_:
- 				case _WEP104_:
- 					WEP_IV(pattrib->iv, psta->txpn,
--					       (u8)psecuritypriv->
--					       PrivacyKeyIndex);
-+					       (u8)psecpriv->PrivacyKeyIndex);
- 					break;
- 				case _TKIP_:
- 					if (bmcst)
- 						TKIP_IV(pattrib->iv,
- 						    psta->txpn,
--						    (u8)psecuritypriv->
--						    XGrpKeyid);
-+						    (u8)psecpriv->XGrpKeyid);
- 					else
- 						TKIP_IV(pattrib->iv, psta->txpn,
- 							0);
-@@ -648,8 +646,7 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
- 				case _AES_:
- 					if (bmcst)
- 						AES_IV(pattrib->iv, psta->txpn,
--						    (u8)psecuritypriv->
--						    XGrpKeyid);
-+						    (u8)psecpriv->XGrpKeyid);
- 					else
- 						AES_IV(pattrib->iv, psta->txpn,
- 						       0);
--- 
+diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+index a19a563d8bcc..e03f83e1c394 100644
+--- a/drivers/staging/vt6656/baseband.c
++++ b/drivers/staging/vt6656/baseband.c
+@@ -115,6 +115,86 @@ static const u16 vnt_frame_time[MAX_RATE] = {
+ 	10, 20, 55, 110, 24, 36, 48, 72, 96, 144, 192, 216
+ };
+
++struct vnt_threshold {
++	u8 bb_pre_ed_rssi;
++	u8 cr_201;
++	u8 cr_206;
++};
++
++static const struct vnt_threshold al2230_vnt_threshold[] = {
++	{0, 0x00, 0x30},	/* Max sensitivity */
++	{68, 0x00, 0x36},
++	{67, 0x00, 0x43},
++	{66, 0x00, 0x51},
++	{65, 0x00, 0x62},
++	{64, 0x00, 0x79},
++	{63, 0x00, 0x93},
++	{62, 0x00, 0xb9},
++	{61, 0x00, 0xe3},
++	{60, 0x01, 0x18},
++	{59, 0x01, 0x54},
++	{58, 0x01, 0xa0},
++	{57, 0x02, 0x20},
++	{56, 0x02, 0xa0},
++	{55, 0x03, 0x00},
++	{53, 0x06, 0x00},
++	{51, 0x09, 0x00},
++	{49, 0x0e, 0x00},
++	{47, 0x15, 0x00},
++	{46, 0x1a, 0x00},
++	{45, 0xff, 0x00}
++};
++
++static const struct vnt_threshold vt3226_vnt_threshold[] = {
++	{0, 0x00, 0x24},	/* Max sensitivity */
++	{68, 0x00, 0x2d},
++	{67, 0x00, 0x36},
++	{66, 0x00, 0x43},
++	{65, 0x00, 0x52},
++	{64, 0x00, 0x68},
++	{63, 0x00, 0x80},
++	{62, 0x00, 0x9c},
++	{61, 0x00, 0xc0},
++	{60, 0x00, 0xea},
++	{59, 0x01, 0x30},
++	{58, 0x01, 0x70},
++	{57, 0x01, 0xb0},
++	{56, 0x02, 0x30},
++	{55, 0x02, 0xc0},
++	{53, 0x04, 0x00},
++	{51, 0x07, 0x00},
++	{49, 0x0a, 0x00},
++	{47, 0x11, 0x00},
++	{45, 0x18, 0x00},
++	{43, 0x26, 0x00},
++	{42, 0x36, 0x00},
++	{41, 0xff, 0x00}
++};
++
++static const struct vnt_threshold vt3342_vnt_threshold[] = {
++	{0, 0x00, 0x38},	/* Max sensitivity */
++	{66, 0x00, 0x43},
++	{65, 0x00, 0x52},
++	{64, 0x00, 0x68},
++	{63, 0x00, 0x80},
++	{62, 0x00, 0x9c},
++	{61, 0x00, 0xc0},
++	{60, 0x00, 0xea},
++	{59, 0x01, 0x30},
++	{58, 0x01, 0x70},
++	{57, 0x01, 0xb0},
++	{56, 0x02, 0x30},
++	{55, 0x02, 0xc0},
++	{53, 0x04, 0x00},
++	{51, 0x07, 0x00},
++	{49, 0x0a, 0x00},
++	{47, 0x11, 0x00},
++	{45, 0x18, 0x00},
++	{43, 0x26, 0x00},
++	{42, 0x36, 0x00},
++	{41, 0xff, 0x00}
++};
++
+ /*
+  * Description: Calculate data frame transmitting time
+  *
+@@ -572,254 +652,42 @@ int vnt_exit_deep_sleep(struct vnt_private *priv)
+
+ void vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning)
+ {
+-	u8 cr_201 = 0x0, cr_206 = 0x0;
++	const struct vnt_threshold *threshold = NULL;
++	u8 length;
++	u8 cr_201, cr_206;
+ 	u8 ed_inx = priv->bb_pre_ed_index;
+
+ 	switch (priv->rf_type) {
+ 	case RF_AL2230:
+ 	case RF_AL2230S:
+ 	case RF_AIROHA7230:
+-		if (scanning) { /* Max sensitivity */
+-			ed_inx = 0;
+-			cr_206 = 0x30;
+-			break;
+-		}
+-
+-		if (priv->bb_pre_ed_rssi <= 45) {
+-			ed_inx = 20;
+-			cr_201 = 0xff;
+-		} else if (priv->bb_pre_ed_rssi <= 46) {
+-			ed_inx = 19;
+-			cr_201 = 0x1a;
+-		} else if (priv->bb_pre_ed_rssi <= 47) {
+-			ed_inx = 18;
+-			cr_201 = 0x15;
+-		} else if (priv->bb_pre_ed_rssi <= 49) {
+-			ed_inx = 17;
+-			cr_201 = 0xe;
+-		} else if (priv->bb_pre_ed_rssi <= 51) {
+-			ed_inx = 16;
+-			cr_201 = 0x9;
+-		} else if (priv->bb_pre_ed_rssi <= 53) {
+-			ed_inx = 15;
+-			cr_201 = 0x6;
+-		} else if (priv->bb_pre_ed_rssi <= 55) {
+-			ed_inx = 14;
+-			cr_201 = 0x3;
+-		} else if (priv->bb_pre_ed_rssi <= 56) {
+-			ed_inx = 13;
+-			cr_201 = 0x2;
+-			cr_206 = 0xa0;
+-		} else if (priv->bb_pre_ed_rssi <= 57) {
+-			ed_inx = 12;
+-			cr_201 = 0x2;
+-			cr_206 = 0x20;
+-		} else if (priv->bb_pre_ed_rssi <= 58) {
+-			ed_inx = 11;
+-			cr_201 = 0x1;
+-			cr_206 = 0xa0;
+-		} else if (priv->bb_pre_ed_rssi <= 59) {
+-			ed_inx = 10;
+-			cr_201 = 0x1;
+-			cr_206 = 0x54;
+-		} else if (priv->bb_pre_ed_rssi <= 60) {
+-			ed_inx = 9;
+-			cr_201 = 0x1;
+-			cr_206 = 0x18;
+-		} else if (priv->bb_pre_ed_rssi <= 61) {
+-			ed_inx = 8;
+-			cr_206 = 0xe3;
+-		} else if (priv->bb_pre_ed_rssi <= 62) {
+-			ed_inx = 7;
+-			cr_206 = 0xb9;
+-		} else if (priv->bb_pre_ed_rssi <= 63) {
+-			ed_inx = 6;
+-			cr_206 = 0x93;
+-		} else if (priv->bb_pre_ed_rssi <= 64) {
+-			ed_inx = 5;
+-			cr_206 = 0x79;
+-		} else if (priv->bb_pre_ed_rssi <= 65) {
+-			ed_inx = 4;
+-			cr_206 = 0x62;
+-		} else if (priv->bb_pre_ed_rssi <= 66) {
+-			ed_inx = 3;
+-			cr_206 = 0x51;
+-		} else if (priv->bb_pre_ed_rssi <= 67) {
+-			ed_inx = 2;
+-			cr_206 = 0x43;
+-		} else if (priv->bb_pre_ed_rssi <= 68) {
+-			ed_inx = 1;
+-			cr_206 = 0x36;
+-		} else {
+-			ed_inx = 0;
+-			cr_206 = 0x30;
+-		}
++		threshold = al2230_vnt_threshold;
++		length = ARRAY_SIZE(al2230_vnt_threshold);
+ 		break;
+
+ 	case RF_VT3226:
+ 	case RF_VT3226D0:
+-		if (scanning)	{ /* Max sensitivity */
+-			ed_inx = 0;
+-			cr_206 = 0x24;
+-			break;
+-		}
+-
+-		if (priv->bb_pre_ed_rssi <= 41) {
+-			ed_inx = 22;
+-			cr_201 = 0xff;
+-		} else if (priv->bb_pre_ed_rssi <= 42) {
+-			ed_inx = 21;
+-			cr_201 = 0x36;
+-		} else if (priv->bb_pre_ed_rssi <= 43) {
+-			ed_inx = 20;
+-			cr_201 = 0x26;
+-		} else if (priv->bb_pre_ed_rssi <= 45) {
+-			ed_inx = 19;
+-			cr_201 = 0x18;
+-		} else if (priv->bb_pre_ed_rssi <= 47) {
+-			ed_inx = 18;
+-			cr_201 = 0x11;
+-		} else if (priv->bb_pre_ed_rssi <= 49) {
+-			ed_inx = 17;
+-			cr_201 = 0xa;
+-		} else if (priv->bb_pre_ed_rssi <= 51) {
+-			ed_inx = 16;
+-			cr_201 = 0x7;
+-		} else if (priv->bb_pre_ed_rssi <= 53) {
+-			ed_inx = 15;
+-			cr_201 = 0x4;
+-		} else if (priv->bb_pre_ed_rssi <= 55) {
+-			ed_inx = 14;
+-			cr_201 = 0x2;
+-			cr_206 = 0xc0;
+-		} else if (priv->bb_pre_ed_rssi <= 56) {
+-			ed_inx = 13;
+-			cr_201 = 0x2;
+-			cr_206 = 0x30;
+-		} else if (priv->bb_pre_ed_rssi <= 57) {
+-			ed_inx = 12;
+-			cr_201 = 0x1;
+-			cr_206 = 0xb0;
+-		} else if (priv->bb_pre_ed_rssi <= 58) {
+-			ed_inx = 11;
+-			cr_201 = 0x1;
+-			cr_206 = 0x70;
+-		} else if (priv->bb_pre_ed_rssi <= 59) {
+-			ed_inx = 10;
+-			cr_201 = 0x1;
+-			cr_206 = 0x30;
+-		} else if (priv->bb_pre_ed_rssi <= 60) {
+-			ed_inx = 9;
+-			cr_206 = 0xea;
+-		} else if (priv->bb_pre_ed_rssi <= 61) {
+-			ed_inx = 8;
+-			cr_206 = 0xc0;
+-		} else if (priv->bb_pre_ed_rssi <= 62) {
+-			ed_inx = 7;
+-			cr_206 = 0x9c;
+-		} else if (priv->bb_pre_ed_rssi <= 63) {
+-			ed_inx = 6;
+-			cr_206 = 0x80;
+-		} else if (priv->bb_pre_ed_rssi <= 64) {
+-			ed_inx = 5;
+-			cr_206 = 0x68;
+-		} else if (priv->bb_pre_ed_rssi <= 65) {
+-			ed_inx = 4;
+-			cr_206 = 0x52;
+-		} else if (priv->bb_pre_ed_rssi <= 66) {
+-			ed_inx = 3;
+-			cr_206 = 0x43;
+-		} else if (priv->bb_pre_ed_rssi <= 67) {
+-			ed_inx = 2;
+-			cr_206 = 0x36;
+-		} else if (priv->bb_pre_ed_rssi <= 68) {
+-			ed_inx = 1;
+-			cr_206 = 0x2d;
+-		} else {
+-			ed_inx = 0;
+-			cr_206 = 0x24;
+-		}
++		threshold = vt3226_vnt_threshold;
++		length = ARRAY_SIZE(vt3226_vnt_threshold);
+ 		break;
+
+ 	case RF_VT3342A0:
+-		if (scanning) { /* need Max sensitivity */
+-			ed_inx = 0;
+-			cr_206 = 0x38;
+-			break;
+-		}
+-
+-		if (priv->bb_pre_ed_rssi <= 41) {
+-			ed_inx = 20;
+-			cr_201 = 0xff;
+-		} else if (priv->bb_pre_ed_rssi <= 42) {
+-			ed_inx = 19;
+-			cr_201 = 0x36;
+-		} else if (priv->bb_pre_ed_rssi <= 43) {
+-			ed_inx = 18;
+-			cr_201 = 0x26;
+-		} else if (priv->bb_pre_ed_rssi <= 45) {
+-			ed_inx = 17;
+-			cr_201 = 0x18;
+-		} else if (priv->bb_pre_ed_rssi <= 47) {
+-			ed_inx = 16;
+-			cr_201 = 0x11;
+-		} else if (priv->bb_pre_ed_rssi <= 49) {
+-			ed_inx = 15;
+-			cr_201 = 0xa;
+-		} else if (priv->bb_pre_ed_rssi <= 51) {
+-			ed_inx = 14;
+-			cr_201 = 0x7;
+-		} else if (priv->bb_pre_ed_rssi <= 53) {
+-			ed_inx = 13;
+-			cr_201 = 0x4;
+-		} else if (priv->bb_pre_ed_rssi <= 55) {
+-			ed_inx = 12;
+-			cr_201 = 0x2;
+-			cr_206 = 0xc0;
+-		} else if (priv->bb_pre_ed_rssi <= 56) {
+-			ed_inx = 11;
+-			cr_201 = 0x2;
+-			cr_206 = 0x30;
+-		} else if (priv->bb_pre_ed_rssi <= 57) {
+-			ed_inx = 10;
+-			cr_201 = 0x1;
+-			cr_206 = 0xb0;
+-		} else if (priv->bb_pre_ed_rssi <= 58) {
+-			ed_inx = 9;
+-			cr_201 = 0x1;
+-			cr_206 = 0x70;
+-		} else if (priv->bb_pre_ed_rssi <= 59) {
+-			ed_inx = 8;
+-			cr_201 = 0x1;
+-			cr_206 = 0x30;
+-		} else if (priv->bb_pre_ed_rssi <= 60) {
+-			ed_inx = 7;
+-			cr_206 = 0xea;
+-		} else if (priv->bb_pre_ed_rssi <= 61) {
+-			ed_inx = 6;
+-			cr_206 = 0xc0;
+-		} else if (priv->bb_pre_ed_rssi <= 62) {
+-			ed_inx = 5;
+-			cr_206 = 0x9c;
+-		} else if (priv->bb_pre_ed_rssi <= 63) {
+-			ed_inx = 4;
+-			cr_206 = 0x80;
+-		} else if (priv->bb_pre_ed_rssi <= 64) {
+-			ed_inx = 3;
+-			cr_206 = 0x68;
+-		} else if (priv->bb_pre_ed_rssi <= 65) {
+-			ed_inx = 2;
+-			cr_206 = 0x52;
+-		} else if (priv->bb_pre_ed_rssi <= 66) {
+-			ed_inx = 1;
+-			cr_206 = 0x43;
+-		} else {
+-			ed_inx = 0;
+-			cr_206 = 0x38;
+-		}
++		threshold = vt3342_vnt_threshold;
++		length = ARRAY_SIZE(vt3342_vnt_threshold);
+ 		break;
+ 	}
+
++	if (!threshold)
++		return;
++
++	for (ed_inx = scanning ? 0 : length - 1; ed_inx > 0; ed_inx--) {
++		if (priv->bb_pre_ed_rssi <= threshold[ed_inx].bb_pre_ed_rssi)
++			break;
++	}
++
++	cr_201 = threshold[ed_inx].cr_201;
++	cr_206 = threshold[ed_inx].cr_206;
++
+ 	if (ed_inx == priv->bb_pre_ed_index && !scanning)
+ 		return;
+
+@@ -828,9 +696,6 @@ void vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning)
+ 	dev_dbg(&priv->usb->dev, "%s bb_pre_ed_rssi %d\n",
+ 		__func__, priv->bb_pre_ed_rssi);
+
+-	if (!cr_201 && !cr_206)
+-		return;
+-
+ 	vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0xc9, cr_201);
+ 	vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0xce, cr_206);
+ }
+--
 2.20.1
-
 
 _______________________________________________
 devel mailing list
