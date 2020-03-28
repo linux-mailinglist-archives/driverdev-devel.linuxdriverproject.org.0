@@ -1,74 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 876A71966E1
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Mar 2020 16:16:00 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C718196750
+	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Mar 2020 17:30:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0F801889B5;
-	Sat, 28 Mar 2020 15:15:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8CF6E87C57;
+	Sat, 28 Mar 2020 16:30:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U-BBaIcp-g1F; Sat, 28 Mar 2020 15:15:57 +0000 (UTC)
+	with ESMTP id cX9PHz0WC3bx; Sat, 28 Mar 2020 16:30:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 64460889A9;
-	Sat, 28 Mar 2020 15:15:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 42A46876F2;
+	Sat, 28 Mar 2020 16:30:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2C8EE1BF584
- for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 15:15:55 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8AA7A1BF2C9
+ for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 16:30:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 25E3B203A0
- for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 15:15:55 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8729D86AEB
+ for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 16:30:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nEUjCiXgJcqW for <devel@linuxdriverproject.org>;
- Sat, 28 Mar 2020 15:15:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 088912039C
- for <devel@driverdev.osuosl.org>; Sat, 28 Mar 2020 15:15:54 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id e9so4027071wme.4
- for <devel@driverdev.osuosl.org>; Sat, 28 Mar 2020 08:15:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=/c3uFVYUYQl/2XwBUimjSFjQvuiMRfSeEykM9N3l/I8=;
- b=JH8pKoaVaZS2J6ZoIu6qROkA7P8WHyc9ogiGRDBk3Np3vSo3wt0gSEM0W/vx3cIN0t
- /6yWD1DRFKp2WvJmZpxp2XjwVUtdFUqXXrOjgM5rGrcSnKyj3g+75WvT6mKPO/PwMqpS
- fYH6fApK1aslfPnW8GtHi/SrKZdGQg4/VbQoLajkYpLuADKLo2YOEJtV9iJe5kJx5iTr
- Iwz/NRnjTfSwr2ZH9QHnixEgCIJF9SJ1B1yveVIVAFXvc3wCtf52rOJCmjCTicvzo2yU
- A2LrFYcmwWZgAQVD9NhvEUNau9hYi8s80G6MdgXlIpgEuCDiGSHfUZNkmDAsl4btk98I
- j10Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=/c3uFVYUYQl/2XwBUimjSFjQvuiMRfSeEykM9N3l/I8=;
- b=cY42Vh8lxdxdUi8W+BEehGymhX7thmnoQqAxLUCy4zg3WdNw3syNdIB/M+7voVH+kV
- RHTgZ5PcHsr7yMSC8SpqC/4vbur3WpGqSD3YsM4oZTQF29YQ74JNHtrkUBlC4LtzF228
- eeJKyXeKwCfxJWJNuKwafNhpxTz5+VKErGszZM8f28tuSFmpr0zfEk/fb1RSXLTySjIh
- 0D9WgxKWvCMESY/TvJnugmEF8Trx6/BM2w2LiYsaueL+XFvecNq9vpFr55KatbHq+NdY
- c/rrdLFmCCGCxuLS736S+UeSFctABcmwO9Tm8utrOhp2CFv3TncgrMWA5HqNbJoQIVr0
- 8ZMA==
-X-Gm-Message-State: ANhLgQ2/SceR6wVOe2iSN/FPtcfWa9p/Yl7SJi/N0p3hZPdwL1bckIcn
- 5vDvAyN5t20kZtAwP7gRzd4=
-X-Google-Smtp-Source: ADFU+vtPbs4QlSi8mM/oGtaMDDmrCshfozdELZ+oX2z1vJJhlFbjHXNTskIEua0Q9Y80pyqtygO7/A==
-X-Received: by 2002:a1c:8149:: with SMTP id c70mr4277679wmd.123.1585408552450; 
- Sat, 28 Mar 2020 08:15:52 -0700 (PDT)
-Received: from linux.user.selfnet.de ([2001:7c7:212a:d400:d0b1:54e8:4350:d529])
- by smtp.googlemail.com with ESMTPSA id 5sm10321488wrs.20.2020.03.28.08.15.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 28 Mar 2020 08:15:52 -0700 (PDT)
-From: SandeshKenjanaAshok <sandeshkenjanaashok@gmail.com>
-To: 
-Subject: [PATCH] staging: android: ashmem: Declared file operation with const
- keyword
-Date: Sat, 28 Mar 2020 16:15:23 +0100
-Message-Id: <20200328151523.17516-1-sandeshkenjanaashok@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id A6FI51BL5BBp for <devel@linuxdriverproject.org>;
+ Sat, 28 Mar 2020 16:30:42 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from sender4-op-o14.zoho.com (sender4-op-o14.zoho.com
+ [136.143.188.14])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2588B86AE8
+ for <devel@driverdev.osuosl.org>; Sat, 28 Mar 2020 16:30:42 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; t=1585413038; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=kV3qt3YBKrbyMMMO2IkDxAuJBhAISaVrcpfjXkCRxFHeNAWzn4lE2WshIRa3FqC38rL74rZgwzx1+QYcwnNMCYk19s03pHhVJ9zshOVkqAnTo49hAIPLpH0aADRBsbQhefmGafoiqVPxSSWjmk5DJ+j1GhRuEFx9s+r958yjtgQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1585413038;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
+ bh=W8sqTVEMcyz6GbHdpLb1qcpeRJxeb3CDdvMKIWzOOas=; 
+ b=Zq+4ry9R+aoVGlV6RO+Lm+29iaZDpFTJEJ7LjNx/GCPOcDt2D4Uhx5wtsY9qvzTrCCV6JgdxTtvTxFU0qVBmOw10u/6Z064FBbAEBQMulYn0EjfgbWsrVoAhnDB+3SxIXv5wZNyAeX9Rx8NEkN74iEERPFmd140O1/iiijVIcrQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=hurranet.com;
+ spf=pass  smtp.mailfrom=aiman.najjar@hurranet.com;
+ dmarc=pass header.from=<aiman.najjar@hurranet.com>
+ header.from=<aiman.najjar@hurranet.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1585413038; 
+ s=zoho; d=hurranet.com; i=aiman.najjar@hurranet.com;
+ h=From:To:Cc:Message-ID:Subject:Date:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type;
+ bh=W8sqTVEMcyz6GbHdpLb1qcpeRJxeb3CDdvMKIWzOOas=;
+ b=WacWzqBFOl9ntZYDamCl6mn7PzNqKxPCqsjao9UX3/cVwxIdhlW5P5ETdK/nDsvj
+ rcVD1G4+G7V0mUzNl4SNZdCFwLRBIIUCQVvZ12Dg+S0nuKe8T8TlxxKoquOJHxmRpfB
+ kE7bfTmu95gM7BOhsnEQ/8UAFKYomKO5D9Sc30q4=
+Received: from kernel-dev (097-100-022-132.res.spectrum.com [97.100.22.132])
+ by mx.zohomail.com with SMTPS id 1585413035447344.88702204502886;
+ Sat, 28 Mar 2020 09:30:35 -0700 (PDT)
+From: aimannajjar <aiman.najjar@hurranet.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Message-ID: <cover.1585353747.git.aiman.najjar@hurranet.com>
+Subject: [PATCH v2 0/5] staging: rtl8712: fix rtl871x_xmit.c warnings
+Date: Fri, 27 Mar 2020 20:08:06 -0400
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200327080429.GB1627562@kroah.com>
+References: <20200327080429.GB1627562@kroah.com>
+MIME-Version: 1.0
+X-ZohoMailClient: External
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,40 +77,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- sandeshkenjanaashok@gmail.com,
- =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, aimannajjar <aiman.najjar@hurranet.com>,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ linux-kernel@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Warning found by checkpatch.pl script.
+This v2 of the patch breaks up the previous patch into
+a patchset of smaller patches.
 
-Signed-off-by: SandeshKenjanaAshok <sandeshkenjanaashok@gmail.com>
----
- drivers/staging/android/ashmem.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Overall, the patchset fixes the remaining 9 warnings
+in rtl871x_xmit.c.
 
-diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
-index 8044510d8ec6..fbb6ac9ba1ab 100644
---- a/drivers/staging/android/ashmem.c
-+++ b/drivers/staging/android/ashmem.c
-@@ -367,7 +367,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
- 
- static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
- {
--	static struct file_operations vmfile_fops;
-+	static const struct file_operations vmfile_fops;
- 	struct ashmem_area *asma = file->private_data;
- 	int ret = 0;
- 
+aimannajjar (5):
+  staging: rtl8712: fix checkpatch long-line warning
+  staging: rtl8712: fix long-line checkpatch warning
+  staging: rtl8712: fix checkpatch warnings
+  staging: rtl8712: fix multiline derefernce warning
+  staging: rtl8712:fix multiline derefernce warnings
+
+ drivers/staging/rtl8712/rtl871x_xmit.c | 85 +++++++++++++-------------
+ 1 file changed, 41 insertions(+), 44 deletions(-)
+
 -- 
-2.17.1
+2.20.1
+
 
 _______________________________________________
 devel mailing list
