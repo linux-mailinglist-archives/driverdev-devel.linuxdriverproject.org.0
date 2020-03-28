@@ -1,78 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B456B19668B
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Mar 2020 15:10:41 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 269E51966A3
+	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Mar 2020 15:18:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0DB468715C;
-	Sat, 28 Mar 2020 14:10:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5C8922048D;
+	Sat, 28 Mar 2020 14:18:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5m_bJhimvlxV; Sat, 28 Mar 2020 14:10:39 +0000 (UTC)
+	with ESMTP id 2Knf3lqLIMFg; Sat, 28 Mar 2020 14:18:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8F340870F6;
-	Sat, 28 Mar 2020 14:10:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A28F4203E7;
+	Sat, 28 Mar 2020 14:18:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 57BE71BF476
- for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 14:10:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E66281BF476
+ for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 14:18:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 51A3188C07
- for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 14:10:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E27B4888C7
+ for <devel@linuxdriverproject.org>; Sat, 28 Mar 2020 14:18:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6V0PKBFnYFC0 for <devel@linuxdriverproject.org>;
- Sat, 28 Mar 2020 14:10:35 +0000 (UTC)
+ with ESMTP id Sp4tpZp+hefX for <devel@linuxdriverproject.org>;
+ Sat, 28 Mar 2020 14:18:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.22])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CD03088BCD
- for <devel@driverdev.osuosl.org>; Sat, 28 Mar 2020 14:10:34 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D7BE4888B3
+ for <devel@driverdev.osuosl.org>; Sat, 28 Mar 2020 14:18:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1585404627;
- bh=HIDEZKg7AykOfEpAZWMSjf5Y8O/Z/Xqtejc6v4E6QRk=;
+ s=badeba3b8450; t=1585405086;
+ bh=SUx80C22dsCXi3ioaoBr0faA646Xc9AQsYzwECabVtM=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=Udp+Xn81bCboKS40mWYPzQ2oJ4IYByLyE+QhmLLciiOhKPvJSfn0mEVr74XCtQQ2i
- HPx9LVhXkrvEItXmjf0PdTinXJHeyPHasAPSUijqjD5cTZdCwLbxeN1pC/Tiarl+yV
- msueYBTIQL91q2f9aMa/cwJk/QjKx4olbeZAvWos=
+ b=BKwwzc+EcfWo75t1wQlgAxvoqfVeraDs/2nXNh1pWHE+dw+/55qtUlNveIiDg4aQt
+ 6/iHjdbiYLCKTlhc9qEI8jYW+7fq8Q7pYEgXem/p3Lku/DsyXee47iAX0JTLeMID4z
+ urbQnvxuJcTOE5j67/dPARSOA5TZnZojYpElLisA=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx105 [212.227.17.174]) with ESMTPSA (Nemesis) id
- 1MXp9Y-1ik2d43Vs4-00YEUC; Sat, 28 Mar 2020 15:10:27 +0100
+ (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
+ 1MeU4s-1jqQZd3Wjs-00aXqG; Sat, 28 Mar 2020 15:18:06 +0100
 From: Oscar Carter <oscar.carter@gmx.com>
 To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: vt6656: Use defines in preamble_type variables
-Date: Sat, 28 Mar 2020 15:09:55 +0100
-Message-Id: <20200328140955.23615-1-oscar.carter@gmx.com>
+Subject: [PATCH v2] staging: vt6656: Use defines in preamble_type variables
+Date: Sat, 28 Mar 2020 15:17:38 +0100
+Message-Id: <20200328141738.23810-1-oscar.carter@gmx.com>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:4qwPggfEBu5MUFm8FNxfZQgZqQe9rPwUA/31M3C/IRxc8RItije
- I35xUMIAB4igdortDKOqCpuJGMeIj6ezqh5dKEES/EW+gFOKdHCtwSpXAVIktUSuouEPXCE
- uT/cwNHuGXJWwe3IAEg8JC8FD/n4ATHWEKkokY1n6QZWxV5h72CnvMHfNbJsl5yhc8AUxwk
- wJO/uWLFs+KDoB4ebdTeQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:t+ipRfVZVbg=:KfY+aNl4fjMrZpVugqNWVW
- 8CsbQZoKPmTRR2udY+Pr9Y0xbIcYKu9e4N7nDuXsCoPqxmJzykzuVvek2UIHr/DgXIhzEHUr/
- D3lZbTF3w7zNzO5bXU7vz7Kki2erD23h7uU2UVvgnPdsK9BJP6NYXhmGBRgEs0ZaNJRquTVrO
- 7EwbXMz9P3UxdoK9KKVMRi/d/qpyxjnpZDzzbiEkTSJhSSz12yDlMMDlBOOItRtvOBfm1hyn/
- bQTeeTKLaLEiQythWX9AAe6eMmvLFebdH25jVtbgc/eDRGW42bhJSb+Ww8CChQUMA3q0TYYjf
- NT5W5LtJTxbscHAXp6Zqvg+OJJ0Ru/Vn1GjPRVFhJdXNwDWSzp5FIz8CyihUReOhkyESxw+sy
- vSi0vFPraCAxUpE0SuZ/0khbQXcxNEkyxjRmcaCU0HXbaDZ5C+6D0f0YdIPI7RA70OMgdmtQB
- qO72B+gUT/7Wq9oVEha9edKSw8BcTI2rcQhdd5Q1LS3eP5aySLsL/i5SfaiEJ6ZaaW2IxSaMg
- YWfOw8Qy3xCu5J4iw53jlrOw+Rz5Fmais90bU0wMDMdG+Qbc4mlgjp+iSS4Jzys5wCbFG6OGx
- iTpKkWdyZD8W3xisOTQTIFz1vIMYVzNhWAHFosUByDmovWOCuVS56wfipzp6qbRp6U6KnJJSf
- jGL6RHAI7C/goreakKWuKmABM0Bm+20Yjy5VwLCyEhzl3j6BQV+IU7aq1U491jmGfk5UdM+WT
- zDyXH1D5wGMgOtaESnUezfvnlJ/755ey/p+ychjiSNsMcKmY/XNvmh0IAaXqohZClBBxl/+BT
- jcELFuTAngIOEMtie6owwp+dvBd4Hq4vY2gf2CrgusWGkRrfwZzX1cmQ54n4viVfMgFxjIu5d
- kUsx+Xg8aPG2783bAmib2buWc4xxUMnVIO64r4Wx/vret3FTRoU44xj6O1SWdHaEM7MJ2LHxM
- 66aejWt2qvOvGUX3r7pWBmmqdTz18XEasmbjR6UY22/rMgYf/zBGdapAmyVDSH5aITMxf4DoB
- walEymN+udcVIBhygD/ssUdibAsx6REOqPAjvE3e73CLXw4nMK4LfgYNGf9+2pCgpivfsWSXf
- kVjHINxcwYUFM3YqFi5tSpBdel874hhIKurNeYJ+eIcTK3FosRmR707YZEbDH/SvrRhe6TpFb
- 4lANa1PFKUzAPZ1McPI2190ko1QtHAXKokFvQd1rsajQRXZ9mfUKdUGF+sIThhgDChywtzTFk
- 7uIyk2e/Tye6ki4So
+X-Provags-ID: V03:K1:taf/1qb6TVJpY5BRTC2GnU1NkcevxFOvDkNTlR0xv0nWwHz4mtA
+ urZ5cTR8TMK+wlutjrF49EGAUcp2LkvUEs2EIR3vO/nkktDOvsVybtVncearcNl+4ax9Ti/
+ chaXVjD4vdMXbo4C6X6nDx2Xbec50V501YW9YrFLmRVotwcme6hfUj3k5XIBcUxmPk3M23k
+ eggQB2hqgJXabcglDi39g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:h1F8Q0YvS4Y=:wWkmqCsp0Xg/95wLuyShEm
+ JoUbR4W0dj9+/DWfTu5ozK+gCuTqOZVyk2GoJ2RO/L4aZ7xBmmSOnSVSkqXKxB1NiTkFCvXVy
+ jRevW08UVhDpHfeM9H0hJjfMT+gHJQFNMdEMY5S+CfmpLdQwAOk7cRHYpXIZtU6az4L0n7fA3
+ drPO1v6KK9oeUh00cuBR3ry58KLGLYK4JM7Yd4M0mLmmCOai5aNqQAt2RtPf6qNPBMKsV2py/
+ w3MUdf5Rfhx1ja0vfFml7nmWyN/pOVoG2aH46q0NXSUD/NAqxu930a5y2iwlTawT3dOBh6quv
+ gO/IOhrMFqgRL9y3ThwhlmHhHHV5KVJXwO/39RJ1fqqXCGmgiD57gfK4QmqYCd0xB+km0KQAy
+ IcvyHcHJP5FfsQeFF8gYQ/AnfagC70ePIHT3N5Xt4lFU31tyW5EB2+Psw6EkgKdRXf3ip2r8N
+ D+RSuYnU0WY0u1a+k9KbMb9eLJxUlid24cdqFyWfySX+H6L4T4l8/RDOS/wVT7n1A6bIQKi/R
+ loNe2RODYuMEMBTJiSvvAmHYPsNZiT+cXjeK7rPlI4Q8m63nt5/B2Wz3951BPV2ia9gGHIJPZ
+ 4xjxfu4k66O9pBW8srOqb52UCJoaQawzWWckfxYArTK13QqJLxkyMaW9Q5z7FqcRGrUUDL7Xh
+ aqRxNggmgkCxOY7yhBgZwvgN4d68hIG0GYcYM7rhsMWPfc3Qg4tyUJ5vmycYDtJtNo7yf6SfL
+ zLUi8yRxrloLz3B6xZl+NtAPDtglSO/slzEj+WJd+8sV/LdGwHVOkjS57UyeF9F6zKrCFr+j/
+ m7LUAEDP6H2uwdyikkjymeYOYLpuwNG7GIWjJ+xGKinAB6qZSD7e7ElJ+uyb/sGQ7vE+tgtDH
+ lpGbfV7iOweaX9FBTWBX/lJUr3HIkKxEdDKA6XkuXhXYKEFw9+59DLfTzzTi4CUTB05UbXC1g
+ WWNcwyAAzflEjhIMu2y4N7qBOngIaJcoJ2ji5bT15he/nkhZe8rakzoLXHCveoU3VYe0AJtHX
+ IopucBoYniCDe0QdFtXJQZTzKfnLlo6DJj3cltqikVjzAwIjUUOhc8taZAE/Fa8yWV/Cg7mHE
+ qbdYXP8APNEw82ywpGmbpnN/5ilJLAx9bwN4OGkWR/0poccBweejsushWNuvBYiiUTf3ZxlFW
+ RIwfTrv2xq7eg91tBmPgPH3jxMZpa86HlihvSpIEF2HYKH8P/9BT/I66PltZ8CbASw+tAQsn7
+ WnaQ7XGVkImEQs1O+
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,13 +96,16 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Use the PREAMBLE_SHORT and PREAMBLE_LONG defines present in the file
 "baseband.h" to assign values to preamble_type variables. Also, use the
-same defines to make comparisons against this variables.
+same defines to make comparisons against these variables.
 
 In this way, avoid the use of numerical literals or boolean values and
 make the code more clear.
 
 Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 ---
+Changelog v1 -> v2
+- Spell checking correction in the changelog.
+
  drivers/staging/vt6656/baseband.c | 8 ++++----
  drivers/staging/vt6656/main_usb.c | 6 +++---
  2 files changed, 7 insertions(+), 7 deletions(-)
