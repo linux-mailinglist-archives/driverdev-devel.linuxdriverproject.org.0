@@ -2,69 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D05AA196F87
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Mar 2020 20:58:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C2086196F89
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Mar 2020 20:58:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D21D18818D;
-	Sun, 29 Mar 2020 18:58:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5AFA288222;
+	Sun, 29 Mar 2020 18:58:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YePtO4hhmmKD; Sun, 29 Mar 2020 18:58:45 +0000 (UTC)
+	with ESMTP id AUfXA3tvfI6a; Sun, 29 Mar 2020 18:58:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3E70487F8E;
-	Sun, 29 Mar 2020 18:58:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AEC6C88196;
+	Sun, 29 Mar 2020 18:58:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5E3881BF337
- for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 18:58:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3B37A1BF337
+ for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 18:58:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5AEF986355
- for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 18:58:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3829D85F60
+ for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 18:58:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mkr5ZrVz5PZd for <devel@linuxdriverproject.org>;
- Sun, 29 Mar 2020 18:58:42 +0000 (UTC)
+ with ESMTP id RIUOgP5uiGKU for <devel@linuxdriverproject.org>;
+ Sun, 29 Mar 2020 18:58:53 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from sender4-op-o14.zoho.com (sender4-op-o14.zoho.com
  [136.143.188.14])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 11D17861AA
- for <devel@driverdev.osuosl.org>; Sun, 29 Mar 2020 18:58:42 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; t=1585508318; cv=none; 
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C6BAC85F5F
+ for <devel@driverdev.osuosl.org>; Sun, 29 Mar 2020 18:58:53 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; t=1585508330; cv=none; 
  d=zohomail.com; s=zohoarc; 
- b=W64XuA28vwCHedPy4g4Pr0NI1WZ4YdQHPSHR+moI4H/2lmmdJL9tc45/8/+Mj3NfKwTakYeTrhL5OZeEYlhgwjmZ5WhXPYqWJeNcL9AaOPlEwRgVPjz97/iGuLhj3nZMBi9zWQe5UmH7fK967HvRDa2mFUPSkB7hFiIPMU6oF20=
+ b=NVZaM/NPBjclc4eqzftERihHB0SIYGpyCry619907Y7skG3ved2cUPuJauhR0X82It1VLQlQhvLAlY0V7Lsoajp9cqjPEYpRENOcuPlI+uGvE9nBkbVwZOYuCtUgD6JIZtl+s2+sQHGImf4RnckT1CIo5PqBSxLonFSU10eBswM=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1585508318;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To;
- bh=Ejy7caoP8kv6vxqeRtJspkA+5HqgQGadRYqmDpvXAQc=; 
- b=Y3xIkzedvRFwz/AcuqLQCYxyS3Jsl1o7flORRWiEkIfbC1usHZXP7rTgCT0O1rdw6hRkvYjSWLqRRQTz+Rvot8YnMO1+iKSKxIpjT6RAhjUl0U3gF/f3J4tkecCdxTz/R++WcNjobn39yHycDqhHItrFJ4T4zyRI4s0TCAZSMhI=
+ s=zohoarc; t=1585508330;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
+ bh=ezUEMqPpc9ilQcbK7oMGYWwoxxfkJK9+laWJNyAlIRw=; 
+ b=DAcn9HgwgML7z6XB7pR/ElUAcG/gkrxhvz5WIflw+G2Q9muEWtEW/APKW+rSmR/wASlkIuOEktBsqg/NhdmEoEcnSd/1jKpt9XhViU43ZuBfCTv/ZlMOO8KegVVcT6oGdlhvCuoFNAL0bJIpaDDoz7qMAbERW6CMv7SBRh9wPSU=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
  dkim=pass  header.i=hurranet.com;
  spf=pass  smtp.mailfrom=aiman.najjar@hurranet.com;
  dmarc=pass header.from=<aiman.najjar@hurranet.com>
  header.from=<aiman.najjar@hurranet.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1585508318; 
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1585508330; 
  s=zoho; d=hurranet.com; i=aiman.najjar@hurranet.com;
- h=From:To:Cc:Message-ID:Subject:Date:MIME-Version:Content-Transfer-Encoding:Content-Type;
- bh=Ejy7caoP8kv6vxqeRtJspkA+5HqgQGadRYqmDpvXAQc=;
- b=PTbM7Djsd3yEMs/MbAEUwn5DUQOZHR4lf91MuIsW5Od9/JvcPDulkS1/eNbm93pk
- r5zOQKN54zMLeVn2b8lZI6z01RwXzPUFzA8EfZOfbnZjQnIJ2sAo9I8Nnsq056xiYgT
- J54cDp558/8UlIdCkbH/45EPCEqvkvocQddZI4o8=
+ h=From:To:Cc:Message-ID:Subject:Date:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type;
+ bh=ezUEMqPpc9ilQcbK7oMGYWwoxxfkJK9+laWJNyAlIRw=;
+ b=Cpbj+3Fb/a8CaisD7juq//K4DCUZJCmL0rE8p1r3XD8g/MMH7RVfjUtSJ0I+Zc2/
+ bl+a30SXIQ/ntvsy5o5uQmtAzO5pfyoTE2Awj+arp+QqvBQA4SjuWd1c/MdsdUlZyTK
+ GHWhOgNkRm+Cwe28YDLhrJup3gSLDuUMJfxru6Bc=
 Received: from kernel-dev (097-100-022-132.res.spectrum.com [97.100.22.132])
- by mx.zohomail.com with SMTPS id 1585508315518867.1055470302647;
- Sun, 29 Mar 2020 11:58:35 -0700 (PDT)
+ by mx.zohomail.com with SMTPS id 1585508328742635.2117972556791;
+ Sun, 29 Mar 2020 11:58:48 -0700 (PDT)
 From: Aiman Najjar <aiman.najjar@hurranet.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Larry Finger <Larry.Finger@lwfinger.net>,
  Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Message-ID: <cover.1585508171.git.aiman.najjar@hurranet.com>
-Subject: [PATCH v3 0/5] staging: rtl8712: rtl871x_xmit.{c,
- h} code style improvements
-Date: Sun, 29 Mar 2020 14:57:42 -0400
+Message-ID: <acd523d0d24cc81fae9eb933a066d87815587cee.1585508171.git.aiman.najjar@hurranet.com>
+Subject: [PATCH v3 1/5] staging: rtl8712: fix checkpatch long-line warning
+Date: Sun, 29 Mar 2020 14:57:43 -0400
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.1585508171.git.aiman.najjar@hurranet.com>
+References: <cover.1585508171.git.aiman.najjar@hurranet.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -85,26 +86,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Make several improvements to code style of rtl871x_xmit.c and rtl871x_xmit.h.
+This patch fixes these two long-line checkpatch warnings
+in rtl871x_xmit.c:
 
-v1 -> v2: changes
-* Break up single pach into patchset of small patches
+WARNING: line over 80 characters
+\#74: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:74:
++       * Please allocate memory with the sz = (struct xmit_frame) * NR_XMITFRAME,
 
-v2 -> v3 changes:
-* [PATCH 4/5]: Applied suggestions by Joe to improve overall code quality (thanks Joe!)
+WARNING: line over 80 characters
+\#79: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:79:
++               kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4, GFP_ATOMIC);
 
+Signed-off-by: Aiman Najjar <aiman.najjar@hurranet.com>
+---
+ drivers/staging/rtl8712/rtl871x_xmit.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Aiman Najjar (5):
-  staging: rtl8712: fix checkpatch long-line warning
-  staging: rtl8712: fix long-line checkpatch warning
-  staging: rtl8712: fix checkpatch warnings
-  staging:rtl8712: code improvements to make_wlanhdr
-  staging: rtl8712:fix multiline derefernce warnings
-
- drivers/staging/rtl8712/rtl871x_xmit.c | 158 ++++++++++++-------------
- drivers/staging/rtl8712/rtl871x_xmit.h |   2 +-
- 2 files changed, 77 insertions(+), 83 deletions(-)
-
+diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
+index f0b85338b567..628e4bad1547 100644
+--- a/drivers/staging/rtl8712/rtl871x_xmit.c
++++ b/drivers/staging/rtl8712/rtl871x_xmit.c
+@@ -71,12 +71,13 @@ int _r8712_init_xmit_priv(struct xmit_priv *pxmitpriv,
+ 	_init_queue(&pxmitpriv->apsd_queue);
+ 	_init_queue(&pxmitpriv->free_xmit_queue);
+ 	/*
+-	 * Please allocate memory with the sz = (struct xmit_frame) * NR_XMITFRAME,
++	 * Please allocate memory with sz = (struct xmit_frame) * NR_XMITFRAME,
+ 	 * and initialize free_xmit_frame below.
+ 	 * Please also apply  free_txobj to link_up all the xmit_frames...
+ 	 */
+ 	pxmitpriv->pallocated_frame_buf =
+-		kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4, GFP_ATOMIC);
++		kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4,
++			GFP_ATOMIC);
+ 	if (!pxmitpriv->pallocated_frame_buf) {
+ 		pxmitpriv->pxmit_frame_buf = NULL;
+ 		return -ENOMEM;
 -- 
 2.20.1
 
