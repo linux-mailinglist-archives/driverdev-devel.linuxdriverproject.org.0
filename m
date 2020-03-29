@@ -2,67 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 901B8196F8E
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Mar 2020 20:59:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 17D93196F90
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Mar 2020 20:59:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 236888760E;
-	Sun, 29 Mar 2020 18:59:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AD1D58761E;
+	Sun, 29 Mar 2020 18:59:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1ylhi0iomPhg; Sun, 29 Mar 2020 18:59:19 +0000 (UTC)
+	with ESMTP id nTFSGa1mUGDs; Sun, 29 Mar 2020 18:59:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CD8A1875FE;
-	Sun, 29 Mar 2020 18:59:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C26CD872F8;
+	Sun, 29 Mar 2020 18:59:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7CEF21BF286
- for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 18:59:15 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CE1D61BF286
+ for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 18:59:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 76BD38758D
- for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 18:59:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CA69F20198
+ for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 18:59:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SimwMxA81L07 for <devel@linuxdriverproject.org>;
- Sun, 29 Mar 2020 18:59:14 +0000 (UTC)
+ with ESMTP id my06Gnif4pn3 for <devel@linuxdriverproject.org>;
+ Sun, 29 Mar 2020 18:59:24 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from sender4-op-o14.zoho.com (sender4-op-o14.zoho.com
  [136.143.188.14])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 15EE9872F8
- for <devel@driverdev.osuosl.org>; Sun, 29 Mar 2020 18:59:14 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; t=1585508336; cv=none; 
+ by silver.osuosl.org (Postfix) with ESMTPS id B160920104
+ for <devel@driverdev.osuosl.org>; Sun, 29 Mar 2020 18:59:24 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; t=1585508340; cv=none; 
  d=zohomail.com; s=zohoarc; 
- b=NJvwbYoArOZPU6rafbF8JpIvZrGeK3kRioXWfbVlSxAHNehWBz4t/Yi3H5hQqo/NzmgeEdhlXdW8Z5dQN7jITxxyGaj5LL+Uqn3lUGUWSZCIY66FcQZbP5JvJA6+hx+eVx/Ls2dsXrp1ibgSZRKG1+6xO/TzarUNWURe2vvofWg=
+ b=eqhdibtFvn3qt2Eb++DEvnmy4c+vluwIlqMi35NdykSlyl0Nz5F6R5xyXdXR4yq6Q1gAIfoDjPmQXWe1epHrYDTKBDtXb1c52sUwCOIFSYGJgFTqnAA+qbvo41CwS0oLtbvc2BV3DzkGdrRGj1hZx3ch02ovD5fDdRFHeNZnHiw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1585508336;
+ s=zohoarc; t=1585508340;
  h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
- bh=7DvZkxLZ70mjObufKOe6TKBBo3hEmLVhmgA1puv8dqI=; 
- b=SwKtbiSfnOfyiV9W/ShFfnzJQxsg/dsEQGXtjIhfcE+C5wS8d/KWfGdPTB6GVoJCAUn4Vvv9ma+587MsMY+QrKIu15wWdJvk2Fxssgnffh8wu4ooEG1P+eV/XcyZ5ThO9afCiYd9hAM3vT/WeVwfF13cAafvJ9JJw5R4FwS0T4Y=
+ bh=MuiLiAsrA5upVzkJTPsQoyFumgH4t0lXkV3qC5Ts/8I=; 
+ b=cfL2dzhj2NhoGonxnCyLviBuweGcZMLoikEauRsx5K6zZ5lbiG7t4weEAmZta1HCyh3CPbjbbRKe3ctZyyDIS6b/YYMs35phkrMpbcUHT1qzTmA/XRBFx7A1cjM+J6XniPzVN5OjdN/C4rsxvD7ZtF6x5msKvmwrz2G/uIkVRJo=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
  dkim=pass  header.i=hurranet.com;
  spf=pass  smtp.mailfrom=aiman.najjar@hurranet.com;
  dmarc=pass header.from=<aiman.najjar@hurranet.com>
  header.from=<aiman.najjar@hurranet.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1585508336; 
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1585508340; 
  s=zoho; d=hurranet.com; i=aiman.najjar@hurranet.com;
  h=From:To:Cc:Message-ID:Subject:Date:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type;
- bh=7DvZkxLZ70mjObufKOe6TKBBo3hEmLVhmgA1puv8dqI=;
- b=AV89a6qOmz+kzuDIJ/c18igCjGxMcKST2GxFf45LgGDayXk4TXy0QaFqtZXI1BwC
- wVXfqpTECXkrBYUOxi8UnGkfWkpFBVJfSY/Zw0f/QKxfW+cJ9KbgesHBJpg34iiBf42
- 0cKLBUWkABcLZ40iNGh1EHDI3IH/IMrPPXX9vc3Y=
+ bh=MuiLiAsrA5upVzkJTPsQoyFumgH4t0lXkV3qC5Ts/8I=;
+ b=UfZUyxH+UiH9C/xRm5HdM4ypKq8swoO16sHdFuLkg07DYRG5t/Ir6bGeuC5TCj03
+ TJnCheWa+yfQ4v5m4O6H3effAqKpWbxOA2de3h4VV4fSr5hAeZfLoB/rc78uBg8NFoV
+ ODOuty420Mnd8zUkj5S/VBUx4ufMIuPlz4caPJK8=
 Received: from kernel-dev (097-100-022-132.res.spectrum.com [97.100.22.132])
- by mx.zohomail.com with SMTPS id 1585508335002985.4646076988523;
- Sun, 29 Mar 2020 11:58:55 -0700 (PDT)
+ by mx.zohomail.com with SMTPS id 1585508338369107.26816775653185;
+ Sun, 29 Mar 2020 11:58:58 -0700 (PDT)
 From: Aiman Najjar <aiman.najjar@hurranet.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Larry Finger <Larry.Finger@lwfinger.net>,
  Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Message-ID: <ddd296c34c5b0206dfe5cf2e6cbe40e0a118c257.1585508171.git.aiman.najjar@hurranet.com>
-Subject: [PATCH v3 3/5] staging: rtl8712: fix checkpatch warnings
-Date: Sun, 29 Mar 2020 14:57:45 -0400
+Message-ID: <275773a0379e4a03839cd832d2ed952fd7bfee48.1585508171.git.aiman.najjar@hurranet.com>
+Subject: [PATCH v3 4/5] staging:rtl8712: code improvements to make_wlanhdr
+Date: Sun, 29 Mar 2020 14:57:46 -0400
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1585508171.git.aiman.najjar@hurranet.com>
 References: <cover.1585508171.git.aiman.najjar@hurranet.com>
@@ -86,75 +86,169 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes multiline dereference warnings in
-rtl871x_xmit.c:
+1. Refactor make_wlanhdr to improve code style.
+2. Use ether_addr_copy instead of memcpy to copy addresses.
 
-WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrptxmickey'
-379: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:379:
-+					psecuritypriv->
-+					XGrptxmickey[psecuritypriv->
-
-WARNING: Avoid multiple line dereference - prefer 'psecuritypriv->XGrpKeyid'
-380: FILE: drivers/staging//rtl8712/rtl871x_xmit.c:380:
-+					XGrptxmickey[psecuritypriv->
-+					XGrpKeyid].skey);
-
+Suggested-by: Joe Perches <joe@perches.com>
 Signed-off-by: Aiman Najjar <aiman.najjar@hurranet.com>
 ---
- drivers/staging/rtl8712/rtl871x_xmit.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ drivers/staging/rtl8712/rtl871x_xmit.c | 123 ++++++++++++-------------
+ drivers/staging/rtl8712/rtl871x_xmit.h |   2 +-
+ 2 files changed, 61 insertions(+), 64 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
-index 454c26f83406..0f789c821552 100644
+index 0f789c821552..21026297413c 100644
 --- a/drivers/staging/rtl8712/rtl871x_xmit.c
 +++ b/drivers/staging/rtl8712/rtl871x_xmit.c
-@@ -351,7 +351,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
- 	struct	sta_info *stainfo;
- 	struct	qos_priv *pqospriv = &(padapter->mlmepriv.qospriv);
- 	struct	pkt_attrib  *pattrib = &pxmitframe->attrib;
--	struct	security_priv *psecuritypriv = &padapter->securitypriv;
-+	struct	security_priv *psecpriv = &padapter->securitypriv;
- 	struct	xmit_priv *pxmitpriv = &padapter->xmitpriv;
- 	u8 priority[4] = {0x0, 0x0, 0x0, 0x0};
- 	bool bmcst = is_multicast_ether_addr(pattrib->ra);
-@@ -369,15 +369,14 @@ static int xmitframe_addmic(struct _adapter *padapter,
- 					   0x0, 0x0};
- 			pframe = pxmitframe->buf_addr + TXDESC_OFFSET;
- 			if (bmcst) {
--				if (!memcmp(psecuritypriv->XGrptxmickey
--				   [psecuritypriv->XGrpKeyid].skey,
-+				if (!memcmp(psecpriv->XGrptxmickey
-+				   [psecpriv->XGrpKeyid].skey,
- 				   null_key, 16))
- 					return -ENOMEM;
- 				/*start to calculate the mic code*/
- 				r8712_secmicsetkey(&micdata,
--					 psecuritypriv->
--					 XGrptxmickey[psecuritypriv->
--					XGrpKeyid].skey);
-+					psecpriv->XGrptxmickey
-+					[psecpriv->XGrpKeyid].skey);
- 			} else {
- 				if (!memcmp(&stainfo->tkiptxmickey.skey[0],
- 					    null_key, 16))
-@@ -417,7 +416,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
- 					length = pattrib->last_txcmdsz -
- 						  pattrib->hdrlen -
- 						  pattrib->iv_len -
--						  ((psecuritypriv->sw_encrypt)
-+						  ((psecpriv->sw_encrypt)
- 						  ? pattrib->icv_len : 0);
- 					r8712_secmicappend(&micdata, payload,
- 							   length);
-@@ -425,7 +424,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
- 				} else {
- 					length = pxmitpriv->frag_len -
- 					    pattrib->hdrlen - pattrib->iv_len -
--					    ((psecuritypriv->sw_encrypt) ?
-+					    ((psecpriv->sw_encrypt) ?
- 					    pattrib->icv_len : 0);
- 					r8712_secmicappend(&micdata, payload,
- 							   length);
+@@ -477,75 +477,72 @@ static int make_wlanhdr(struct _adapter *padapter, u8 *hdr,
+ 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+ 	struct qos_priv *pqospriv = &pmlmepriv->qospriv;
+ 	__le16 *fctrl = &pwlanhdr->frame_ctl;
++	u8 *bssid;
+ 
+ 	memset(hdr, 0, WLANHDR_OFFSET);
+ 	SetFrameSubType(fctrl, pattrib->subtype);
+-	if (pattrib->subtype & WIFI_DATA_TYPE) {
+-		if (check_fwstate(pmlmepriv,  WIFI_STATION_STATE)) {
+-			/* to_ds = 1, fr_ds = 0; */
+-			SetToDs(fctrl);
+-			memcpy(pwlanhdr->addr1, get_bssid(pmlmepriv),
+-				ETH_ALEN);
+-			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
+-			memcpy(pwlanhdr->addr3, pattrib->dst, ETH_ALEN);
+-		} else if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
+-			/* to_ds = 0, fr_ds = 1; */
+-			SetFrDs(fctrl);
+-			memcpy(pwlanhdr->addr1, pattrib->dst, ETH_ALEN);
+-			memcpy(pwlanhdr->addr2, get_bssid(pmlmepriv),
+-				ETH_ALEN);
+-			memcpy(pwlanhdr->addr3, pattrib->src, ETH_ALEN);
+-		} else if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) ||
+-			   check_fwstate(pmlmepriv,
+-					 WIFI_ADHOC_MASTER_STATE)) {
+-			memcpy(pwlanhdr->addr1, pattrib->dst, ETH_ALEN);
+-			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
+-			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv),
+-				ETH_ALEN);
+-		} else if (check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
+-			memcpy(pwlanhdr->addr1, pattrib->dst, ETH_ALEN);
+-			memcpy(pwlanhdr->addr2, pattrib->src, ETH_ALEN);
+-			memcpy(pwlanhdr->addr3, get_bssid(pmlmepriv),
+-				ETH_ALEN);
+-		} else {
+-			return -EINVAL;
+-		}
++	if (!(pattrib->subtype & WIFI_DATA_TYPE))
++		return 0;
+ 
+-		if (pattrib->encrypt)
+-			SetPrivacy(fctrl);
+-		if (pqospriv->qos_option) {
+-			qc = (unsigned short *)(hdr + pattrib->hdrlen - 2);
+-			if (pattrib->priority)
+-				SetPriority(qc, pattrib->priority);
+-			SetAckpolicy(qc, pattrib->ack_policy);
+-		}
+-		/* TODO: fill HT Control Field */
+-		/* Update Seq Num will be handled by f/w */
+-		{
+-			struct sta_info *psta;
+-			bool bmcst = is_multicast_ether_addr(pattrib->ra);
+-
+-			if (pattrib->psta) {
+-				psta = pattrib->psta;
+-			} else {
+-				if (bmcst)
+-					psta = r8712_get_bcmc_stainfo(padapter);
+-				else
+-					psta =
+-					 r8712_get_stainfo(&padapter->stapriv,
+-					 pattrib->ra);
+-			}
+-			if (psta) {
+-				psta->sta_xmitpriv.txseq_tid
+-						  [pattrib->priority]++;
+-				psta->sta_xmitpriv.txseq_tid[pattrib->priority]
+-						   &= 0xFFF;
+-				pattrib->seqnum = psta->sta_xmitpriv.
+-						  txseq_tid[pattrib->priority];
+-				SetSeqNum(hdr, pattrib->seqnum);
+-			}
++	bssid = get_bssid(pmlmepriv);
++
++	if (check_fwstate(pmlmepriv,  WIFI_STATION_STATE)) {
++		/* to_ds = 1, fr_ds = 0; */
++		SetToDs(fctrl);
++		ether_addr_copy(pwlanhdr->addr1, bssid);
++		ether_addr_copy(pwlanhdr->addr2, pattrib->src);
++		ether_addr_copy(pwlanhdr->addr3, pattrib->dst);
++	} else if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
++		/* to_ds = 0, fr_ds = 1; */
++		SetFrDs(fctrl);
++		ether_addr_copy(pwlanhdr->addr1, pattrib->dst);
++		ether_addr_copy(pwlanhdr->addr2, bssid);
++		ether_addr_copy(pwlanhdr->addr3, pattrib->src);
++	} else if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) ||
++		   check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE)) {
++		ether_addr_copy(pwlanhdr->addr1, pattrib->dst);
++		ether_addr_copy(pwlanhdr->addr2, pattrib->src);
++		ether_addr_copy(pwlanhdr->addr3, bssid);
++	} else if (check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
++		ether_addr_copy(pwlanhdr->addr1, pattrib->dst);
++		ether_addr_copy(pwlanhdr->addr2, pattrib->src);
++		ether_addr_copy(pwlanhdr->addr3, bssid);
++	} else {
++		return -EINVAL;
++	}
++
++	if (pattrib->encrypt)
++		SetPrivacy(fctrl);
++	if (pqospriv->qos_option) {
++		qc = (unsigned short *)(hdr + pattrib->hdrlen - 2);
++		if (pattrib->priority)
++			SetPriority(qc, pattrib->priority);
++		SetAckpolicy(qc, pattrib->ack_policy);
++	}
++	/* TODO: fill HT Control Field */
++	/* Update Seq Num will be handled by f/w */
++	{
++		struct sta_info *psta;
++		bool bmcst = is_multicast_ether_addr(pattrib->ra);
++
++		if (pattrib->psta)
++			psta = pattrib->psta;
++		else if (bmcst)
++			psta = r8712_get_bcmc_stainfo(padapter);
++		else
++			psta = r8712_get_stainfo(&padapter->stapriv,
++						 pattrib->ra);
++
++		if (psta) {
++			u16 *txtid = psta->sta_xmitpriv.txseq_tid;
++
++			txtid[pattrib->priority]++;
++			txtid[pattrib->priority] &= 0xFFF;
++			pattrib->seqnum = txtid[pattrib->priority];
++			SetSeqNum(hdr, pattrib->seqnum);
+ 		}
+ 	}
++
+ 	return 0;
+ }
+ 
+diff --git a/drivers/staging/rtl8712/rtl871x_xmit.h b/drivers/staging/rtl8712/rtl871x_xmit.h
+index f227828094bf..c0c0c781fe17 100644
+--- a/drivers/staging/rtl8712/rtl871x_xmit.h
++++ b/drivers/staging/rtl8712/rtl871x_xmit.h
+@@ -115,7 +115,7 @@ struct pkt_attrib {
+ 	u8	icv_len;
+ 	unsigned char iv[8];
+ 	unsigned char icv[8];
+-	u8	dst[ETH_ALEN];
++	u8	dst[ETH_ALEN] __aligned(2);	/* for ether_addr_copy */
+ 	u8	src[ETH_ALEN];
+ 	u8	ta[ETH_ALEN];
+ 	u8	ra[ETH_ALEN];
 -- 
 2.20.1
 
