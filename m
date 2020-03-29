@@ -1,70 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B24A196BE6
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Mar 2020 10:38:46 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01D65196BEC
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Mar 2020 10:43:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9469A88304;
-	Sun, 29 Mar 2020 08:38:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DAACC86D08;
+	Sun, 29 Mar 2020 08:43:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QwKFGOxD0amJ; Sun, 29 Mar 2020 08:38:44 +0000 (UTC)
+	with ESMTP id GIh1EuhvCfsX; Sun, 29 Mar 2020 08:43:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 855A287E9C;
-	Sun, 29 Mar 2020 08:38:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 359598684A;
+	Sun, 29 Mar 2020 08:43:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0D35A1BF286
- for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 08:38:41 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D3DF71BF286
+ for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 08:43:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 005B8203E0
- for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 08:38:41 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CE48986190
+ for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 08:43:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XYqCk8+hS8St for <devel@linuxdriverproject.org>;
- Sun, 29 Mar 2020 08:38:40 +0000 (UTC)
+ with ESMTP id GlZDg-MUZERo for <devel@linuxdriverproject.org>;
+ Sun, 29 Mar 2020 08:43:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 594752010F
- for <devel@driverdev.osuosl.org>; Sun, 29 Mar 2020 08:38:40 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id x1so5410308plm.4
- for <devel@driverdev.osuosl.org>; Sun, 29 Mar 2020 01:38:40 -0700 (PDT)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6A7808616A
+ for <devel@driverdev.osuosl.org>; Sun, 29 Mar 2020 08:43:34 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id e1so5400919plt.9
+ for <devel@driverdev.osuosl.org>; Sun, 29 Mar 2020 01:43:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=8IbFQBYANCkF12Hrlo9wNyHkWayXw9MSU6eCf6YHmKw=;
- b=feGw5WyZuV9ajZvRK9bfLB9F9YycMWXf/o/b6Bw89cGi0v1Ixl7KFkr3UQfF25pdj8
- f2oolo8vlDP0EVxxQmMqH+tUsBGgks7P9GiaNS74sfxP+lvhgdl8dzHDMg67pBtoB3t9
- 3DUfCftSZ0cV2oS/j7R23RLhccRa4SaED5bzizMTGOZYCLlG+/FJcH8eldmSDwSLSSe1
- vYJGYp2pgtzF0ETGIdgSmqdAb/bhw+//jpearh6CPbMeVwxQfxRFLQW2tZ0MClw9jZJ/
- sDFrZkwc/7Af7izojKVeK1f1RnqowGSlr0UsrohaodKAqtjQO0dEkYgLzMtndg79ts0x
- BuiA==
+ bh=Id8d23gHqbRL99BSISU6PhbbkVYUSOo5XcJrW6d+fG4=;
+ b=nTg8tyH+FegLXOkebwiGJ2y9whQZ/BxUnZJf/tkkoeL2aw3TZOllyMdv0NSpfV9cEm
+ MHJFWMcK3dkxiL5EnQ48t+1t2c0xQDnT3yr/gVUAr8sSTS70FQQI6VI6jxGSuXiMGzoJ
+ trkwSu6ZaJXH72eyjvNobSkiz060K1jBvdfqbpYE/FBTo0sKuvxPNGZVNiurkFt43s9Q
+ Rz5YLdooUXeUK+8V1/Xp9fxGm94aacy4hSkV9z7i+8OXWkxmwdmzNuQ3aIGppdSm1Nng
+ ruUN5weC++HGmv7H972u2CwQ6MpeqIBgClgA7q8vHiBQ8nI0+Ktle5mEXpnBxC5mJssN
+ /etQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=8IbFQBYANCkF12Hrlo9wNyHkWayXw9MSU6eCf6YHmKw=;
- b=liNIwzBMDx24cO6iYfTUlDPpFZ2RgwoEuVHZxF4OTNZw+4pjtI8cjIT+g8Ah1rG6RM
- mxsh2RE3qQlkZLYDpn8A45zEEg3L9UGM7yTfrYofYlHxehEO8jCeIv3Al1+jiLxm6BUT
- uHNLauMLP8tFbLxkcsj8rdLwHjTLez7mw26+FTcVMw04w9SAXBDqTfg4stpDzxSB9BIZ
- pCKGZHkvkyvAkKAW1mo325j4HilfGpUVElvgZCC4sv+P/RA7FRn6UN804Wc8v77Ht5uO
- ND1TYfTkk1grrWho8BuUNPAEqltuPNCQ3T/cCuGyQQOqqyOp3EsbzxoyNeQR2uodTD8A
- G3nw==
-X-Gm-Message-State: ANhLgQ0qA1bh5Wccr6jxFnSHJhy1hC6F5RqovXk8f1pOvg+3kZ8/Kn2t
- mWQL0fAu7zxv0rNylChJ4BU=
-X-Google-Smtp-Source: ADFU+vtV+6vWr188vCD3wNLrf9ol5lsQ6suYkZM2G7x+xuaJT+RWmpMskUFDVJONBugp/F2rlzzgIw==
-X-Received: by 2002:a17:90b:1a8b:: with SMTP id
- ng11mr9550535pjb.109.1585471119827; 
- Sun, 29 Mar 2020 01:38:39 -0700 (PDT)
+ bh=Id8d23gHqbRL99BSISU6PhbbkVYUSOo5XcJrW6d+fG4=;
+ b=qcnpbPWsxJgBZ+RyqmhVDvyq747GRqLibSmSheCkO+aiIInqPoT96mJaCbPQXvQW0w
+ wyGaomSgYFvBRCKnpsKAWB0d5AYCLx0isADYY0YZ8G/cE1dfBLb2/Wq2gsLo1ya2PJT+
+ wEl5257fKGCE9ZLFG5F5WueA3PWDwkzh/w3spqtcLYUjDisBGhE/hhWqQcmdrNFsthep
+ lKfZK2j84IIqIc7K5TTwxDhZ2z9WKbBA4BBKfSkf0539naHYysrrkSQYfXK57lab/ZPX
+ RePegTvArSTg7nSaUMXXUMuz1LOpT27Auqx+Dva3RGg6OyT1uMmMLrwWRs1BdOqpWij1
+ xYCg==
+X-Gm-Message-State: ANhLgQ2UV6/nFnjpzwvbDHew+/5em2aJbky4ULjc3dT8V0dhx+SOsz6r
+ t5hJFGylUF7UNOMzLKjNEdk=
+X-Google-Smtp-Source: ADFU+vsb7aOT1SwSB0fURY5Khnfm+kq8VNwOxOdMweq/f7MvFzJXDZPEJZvBmotlqmuMF/tQwam/rA==
+X-Received: by 2002:a17:90a:b003:: with SMTP id
+ x3mr9264046pjq.140.1585471414051; 
+ Sun, 29 Mar 2020 01:43:34 -0700 (PDT)
 Received: from OptiPlexFedora.fios-router.home ([47.144.161.84])
- by smtp.gmail.com with ESMTPSA id k189sm7256529pgc.24.2020.03.29.01.38.38
+ by smtp.gmail.com with ESMTPSA id w2sm1525487pff.195.2020.03.29.01.43.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 29 Mar 2020 01:38:39 -0700 (PDT)
+ Sun, 29 Mar 2020 01:43:33 -0700 (PDT)
 From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
 To: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>,
  Stefano Brivio <sbrivio@redhat.com>,
@@ -72,12 +72,11 @@ To: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Quentin Deslandes <quentin.deslandes@itdev.co.uk>,
  Colin Ian King <colin.king@canonical.com>,
- Malcolm Priestley <tvboxspy@gmail.com>,
- Oscar Carter <oscar.carter@gmx.com>, devel@driverdev.osuosl.org,
+ Malcolm Priestley <tvboxspy@gmail.com>, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2] staging: vt6656: add error code handling to unused variable
-Date: Sun, 29 Mar 2020 01:38:29 -0700
-Message-Id: <20200329083829.619127-1-jbwyatt4@gmail.com>
+Subject: [PATCH v3] staging: vt6656: add error code handling to unused variable
+Date: Sun, 29 Mar 2020 01:43:20 -0700
+Message-Id: <20200329084320.619503-1-jbwyatt4@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -107,15 +106,17 @@ Suggested-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
 Suggested-by: Stefano Brivio <sbrivio@redhat.com>
 Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
 ---
+v3: Forgot to add v2 code changes to commit.
+
 v2: Replace goto statements with return.
     Remove last if check because it was unneeded.
     Suggested-by: Julia Lawall <julia.lawall@inria.fr>
 
- drivers/staging/vt6656/card.c | 19 ++++++++++++++-----
- 1 file changed, 14 insertions(+), 5 deletions(-)
+ drivers/staging/vt6656/card.c | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index dc3ab10eb630..9d23c3ec1e60 100644
+index dc3ab10eb630..239012539e73 100644
 --- a/drivers/staging/vt6656/card.c
 +++ b/drivers/staging/vt6656/card.c
 @@ -723,9 +723,13 @@ int vnt_radio_power_on(struct vnt_private *priv)
@@ -125,16 +126,16 @@ index dc3ab10eb630..9d23c3ec1e60 100644
 -	vnt_exit_deep_sleep(priv);
 +	ret = vnt_exit_deep_sleep(priv);
 +	if (ret)
-+		goto end;
++		return ret;
  
 -	vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
 +	ret = vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
 +	if (ret)
-+		goto end;
++		return ret;
  
  	switch (priv->rf_type) {
  	case RF_AL2230:
-@@ -734,13 +738,18 @@ int vnt_radio_power_on(struct vnt_private *priv)
+@@ -734,14 +738,14 @@ int vnt_radio_power_on(struct vnt_private *priv)
  	case RF_VT3226:
  	case RF_VT3226D0:
  	case RF_VT3342A0:
@@ -145,17 +146,15 @@ index dc3ab10eb630..9d23c3ec1e60 100644
  		break;
  	}
 +	if (ret)
-+		goto end;
++		return ret;
  
 -	vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
-+	ret = vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
-+	if (ret)
-+		goto end;
- 
-+end:
- 	return ret;
+-
+-	return ret;
++	return vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
  }
  
+ void vnt_set_bss_mode(struct vnt_private *priv)
 -- 
 2.25.1
 
