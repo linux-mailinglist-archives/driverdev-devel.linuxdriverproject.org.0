@@ -1,85 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD74019838F
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 20:42:20 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71FB41983A1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 20:45:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AFB5C86885;
-	Mon, 30 Mar 2020 18:42:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 030F8227E1;
+	Mon, 30 Mar 2020 18:45:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 735bZCI1WR-Y; Mon, 30 Mar 2020 18:42:17 +0000 (UTC)
+	with ESMTP id mtATC2BBZk+T; Mon, 30 Mar 2020 18:45:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5CC0586672;
-	Mon, 30 Mar 2020 18:42:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B830E20768;
+	Mon, 30 Mar 2020 18:45:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 80BAA1BF324
- for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 18:42:14 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C15D1BF324
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 18:45:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7D00787D39
- for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 18:42:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 984718701E
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 18:45:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0sInp6-ST-pl for <devel@linuxdriverproject.org>;
- Mon, 30 Mar 2020 18:42:13 +0000 (UTC)
+ with ESMTP id XDw0X79ENsfE for <devel@linuxdriverproject.org>;
+ Mon, 30 Mar 2020 18:45:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9796687CDB
- for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 18:42:13 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id w10so23032926wrm.4
- for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 11:42:13 -0700 (PDT)
+Received: from mail-pf1-f175.google.com (mail-pf1-f175.google.com
+ [209.85.210.175])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0FD1F87015
+ for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 18:45:34 +0000 (UTC)
+Received: by mail-pf1-f175.google.com with SMTP id a24so2196542pfc.8
+ for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 11:45:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=8XRhKogyecKsSV4qW1x8hTrVeQGUH4iCc/CcjgU9mck=;
- b=TisMD6pc6Nd4x3AkXj4VNDomK/Xtj35nFvmaVY4nv5rIDfxx33N2APlyiTAHrAV+VP
- zs3VrrOhOHSW+aVcm+6AvKmp98Pt+z0Y8y5UmKhv4JeMiSxNUTUO5Ix8BJb+XZJyzhGB
- oTMdBAs918AYZFoFmsY4UszXjdtDqyW5zEtiBETWyWNgj4TMCM+QPTIZU4rLIfzexAGa
- BY5Ma5FjSYgeqDmOcliXyrw/KopFnuxwxjlhy3tD3YYxS6PHFG3OiL0Uyn3gJhNNc/k1
- ljVqKTfWz0UZ7WX1nu+jqrMgspXlghGq2KicbbSiNAaNwix6NK5IiT33+wtJOyIhAV5Y
- LYBQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9wol+ovrMueDkx4O+ZEeXlUF+lPxlG2M/9hBMAq0rDQ=;
+ b=lGnsXInSBhi87I3QI6h7raDe/x4KeVUALH840j659Z+daNe6ehRqhKNObsT3XqRPhU
+ IVFjIOJraw2Zqj5f8mk1vZfJPESaRljbCjPHrHI54d3Dy5Gn2YmDgQIeU/xC6Gf1ro1k
+ KU56WeJm8XFDW4ql8U4Xlhl9K5r+XIY1kVDQCLv6qWszf5Br27oQTYRXwpu1g/K0KcvN
+ K5q/iwRgxpx+1XzGfa6qcGG2pDWeNrzJ32nsGVLhoMuRwSFLKUXlGZm4ESxLw4sf/hsc
+ SoVhYcwJZ5YljDPwr/PW+7+cjHsLQqIOvkshbfwQubTQIBfKi1aU+Drs2SXAqm4vv8WT
+ bMFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=8XRhKogyecKsSV4qW1x8hTrVeQGUH4iCc/CcjgU9mck=;
- b=LVlSDefdngdkCSjX87k2HhdmTf+RI9K6lKj8j1LG7COejMWLpGncDFJDh8KEeaKHXG
- 54vU/1+H2FEAEM2XI8uBjLqXN2Kz7jmAtAfM+WjHLqnd4XDREbYcqjTsezCMgwFcSAVT
- UVOpmld8QboRplwa11+C0GSdzkBfz8PhCmho7I7XM1LD+DF1kdx/xJn0NtmzmwUiv5xb
- SaMtyX84wDSvyN45UafOC6VeVGA4RUEVNsaHDd7airBEwpi0o6LPcbJquE0zt1KYY5nV
- JYp9cHc+3OOztGee3VTVtTJBILnuAS9ITxTEo5nHObTrbMhHL6NjOi540mCq53/757z7
- 90Ug==
-X-Gm-Message-State: ANhLgQ2wI26XRVtlg9foTFGHju1c4UfC9tgmC8+JIppzb013Y+mnVgRg
- z8cYrO3MleMIgJ29pAfQjNY=
-X-Google-Smtp-Source: ADFU+vvyblRcuB/8qGRcZ3vhqfycuOq1xwgm01TAbEu5m3oAn9STi5PDPJAm79E//bCc1ncE13UYNw==
-X-Received: by 2002:adf:fb0a:: with SMTP id c10mr16054757wrr.272.1585593731920; 
- Mon, 30 Mar 2020 11:42:11 -0700 (PDT)
-Received: from [192.168.43.227] (188.29.165.144.threembb.co.uk.
- [188.29.165.144])
- by smtp.gmail.com with ESMTPSA id z12sm24608045wrt.27.2020.03.30.11.42.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Mar 2020 11:42:11 -0700 (PDT)
-Subject: Re: [Outreachy kernel] [PATCH v4] staging: vt6656: add error code
- handling to unused variable
-To: Stefano Brivio <sbrivio@redhat.com>, "John B. Wyatt IV"
- <jbwyatt4@gmail.com>
-References: <20200330164530.2919-1-jbwyatt4@gmail.com>
- <20200330191439.3bfcb658@elisabeth>
-From: Malcolm Priestley <tvboxspy@gmail.com>
-Message-ID: <c2e96efe-64d7-61d7-0c4f-58b318b47a68@gmail.com>
-Date: Mon, 30 Mar 2020 19:42:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ bh=9wol+ovrMueDkx4O+ZEeXlUF+lPxlG2M/9hBMAq0rDQ=;
+ b=ogzDWZOzHVSLWjilxoFBdWlga1fvhRtUdiLBjVN9TKlXCl7GIsdPGpPuvb8RJeor9T
+ q3utpE8wPrYTzldD1heksIePZfzYBvUfhh9tijOPPSRSrnYuW5r/Qq4Ku/Tw9IqEt0ns
+ 5CjIFvKBVlIQ82ExDecm/SAtTZA9suyUjVqzFzHYZ/gMsB8YomEsKI9BkwSra07R4OYJ
+ NYrCOyVqoShQNIAtL1BJk2i3417E2qCzIqqajwXsVYRdAKDhl6T1g5F6GbvcQ9S0/dip
+ a/qZBsUp5BRRTUQtLgf7Qnx7EkPryW8+6n1ChpS00ZeuT8N4DPF6653Y5xITsq+lWrWY
+ hXqg==
+X-Gm-Message-State: ANhLgQ2fmrL/I7tAJNUPOryx+XFrm1IODw3caovBJW08zdNrvKjoynes
+ KnlinyE3ZlqBmkpaUis7jk0=
+X-Google-Smtp-Source: ADFU+vunmqPw2uT4eqPeeR1QoIac+sHhFAoghR7V0FCU1nrZrah2LDXbaq3rdhqY0m1rnQCVSk8JJw==
+X-Received: by 2002:a62:1ace:: with SMTP id
+ a197mr13951840pfa.105.1585593933473; 
+ Mon, 30 Mar 2020 11:45:33 -0700 (PDT)
+Received: from OptiPlexFedora.fios-router.home ([47.144.161.84])
+ by smtp.gmail.com with ESMTPSA id 13sm3347202pfn.131.2020.03.30.11.45.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Mar 2020 11:45:33 -0700 (PDT)
+From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+To: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>,
+ Stefano Brivio <sbrivio@redhat.com>,
+ Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Quentin Deslandes <quentin.deslandes@itdev.co.uk>,
+ Colin Ian King <colin.king@canonical.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v5] staging: vt6656: add error code handling to unused variable
+Date: Mon, 30 Mar 2020 11:45:17 -0700
+Message-Id: <20200330184517.33074-1-jbwyatt4@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20200330191439.3bfcb658@elisabeth>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,62 +91,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Julia Lawall <julia.lawall@inria.fr>,
- outreachy-kernel@googlegroups.com, Forest Bond <forest@alittletooquiet.net>,
- Colin Ian King <colin.king@canonical.com>
+Cc: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 30/03/2020 18:14, Stefano Brivio wrote:
-> On Mon, 30 Mar 2020 09:45:30 -0700
-> "John B. Wyatt IV" <jbwyatt4@gmail.com> wrote:
-> 
->> Add error code handling to unused 'ret' variable that was never used.
->> Return an error code from functions called within vnt_radio_power_on.
->>
->> Issue reported by coccinelle (coccicheck).
->>
->> Suggested-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
->> Suggested-by: Stefano Brivio <sbrivio@redhat.com>
->> Suggested-by: Julia Lawall <julia.lawall@inria.fr>
->> Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
->> Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
->> ---
->> v4: Move Suggested-by: Julia Lawall above seperator line.
-> 
-> Actually, as Julia didn't suggest this patch, the place where you had
-> this in v3 was the right one.
----snip
->>   
->>   	switch (priv->rf_type) {
->>   	case RF_AL2230:
->> @@ -734,14 +738,14 @@ int vnt_radio_power_on(struct vnt_private *priv)
->>   	case RF_VT3226:
->>   	case RF_VT3226D0:
->>   	case RF_VT3342A0:
->> -		vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
->> -				    (SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
->> +		ret = vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
->> +					 (SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
-> 
-> 
-> Another thing that should be considered in this function is to restore
-> the previous hardware state on failures, but I think the way you're
-> handling this is possibly the safest, without hardware to test on.
-> 
-This section of hardware is controlled by mac80211 as is most of the driver.
+Add error code handling to unused 'ret' variable that was never used.
+Return an error code from functions called within vnt_radio_power_on.
 
-Users can turn the wireless off then on again to try again but to date 
-this is not known to fail with the hardware I have used.
+Issue reported by coccinelle (coccicheck).
 
-No problems with hardware with this patch.
+Suggested-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+Suggested-by: Stefano Brivio <sbrivio@redhat.com>
+Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+---
+v5: Remove Suggested-by: Julia Lawall above seperator line.
+    Remove break; statement in switch block.
+    break; removal checked by both gcc compile and checkpatch.
+    Suggested by Stefano Brivio <sbrivio@redhat.com>
 
-Tested-by: Malcolm Priestley <tvboxspy@gmail.com>
+v4: Move Suggested-by: Julia Lawall above seperator line.
+    Add Reviewed-by tag as requested by Quentin Deslandes.
 
+v3: Forgot to add v2 code changes to commit.
 
+v2: Replace goto statements with return.
+    Remove last if check because it was unneeded.
+    Suggested-by: Julia Lawall <julia.lawall@inria.fr>
+
+ drivers/staging/vt6656/card.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
+index dc3ab10eb630..27fc53accdfd 100644
+--- a/drivers/staging/vt6656/card.c
++++ b/drivers/staging/vt6656/card.c
+@@ -723,9 +723,13 @@ int vnt_radio_power_on(struct vnt_private *priv)
+ {
+ 	int ret = 0;
+ 
+-	vnt_exit_deep_sleep(priv);
++	ret = vnt_exit_deep_sleep(priv);
++	if (ret)
++		return ret;
+ 
+-	vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
++	ret = vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
++	if (ret)
++		return ret;
+ 
+ 	switch (priv->rf_type) {
+ 	case RF_AL2230:
+@@ -734,14 +738,15 @@ int vnt_radio_power_on(struct vnt_private *priv)
+ 	case RF_VT3226:
+ 	case RF_VT3226D0:
+ 	case RF_VT3342A0:
+-		vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
+-				    (SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
++		ret = vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
++					  (SOFTPWRCTL_SWPE2 | 
++					  SOFTPWRCTL_SWPE3));
+ 		break;
+ 	}
++	if (ret)
++		return ret;
+ 
+-	vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
+-
+-	return ret;
++	return vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
+ }
+ 
+ void vnt_set_bss_mode(struct vnt_private *priv)
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
