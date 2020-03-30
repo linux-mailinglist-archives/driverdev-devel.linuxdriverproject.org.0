@@ -1,71 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10E5F19860F
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 23:07:01 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A6961986C2
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 23:46:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 93A0522EE7;
-	Mon, 30 Mar 2020 21:06:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6BF0088615;
+	Mon, 30 Mar 2020 21:46:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zJoZBo7nPLp1; Mon, 30 Mar 2020 21:06:57 +0000 (UTC)
+	with ESMTP id LAfG4TGUv2bx; Mon, 30 Mar 2020 21:46:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C7AD2204FC;
-	Mon, 30 Mar 2020 21:06:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8833888604;
+	Mon, 30 Mar 2020 21:46:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6DB531BF3C3
- for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 21:06:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D1551BF3C3
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 21:46:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 666AC204FC
- for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 21:06:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6942E868EF
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 21:46:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sEUh4hPa17t2 for <devel@linuxdriverproject.org>;
- Mon, 30 Mar 2020 21:06:51 +0000 (UTC)
+ with ESMTP id r5CegT5AGDIC for <devel@linuxdriverproject.org>;
+ Mon, 30 Mar 2020 21:46:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-74.mimecast.com
- (us-smtp-delivery-74.mimecast.com [216.205.24.74])
- by silver.osuosl.org (Postfix) with ESMTPS id 5C0E32036D
- for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 21:06:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585602410;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=O5orfkpIWxG4X0fim40qmaOHzOaHEPG36AFc1Y+7h+M=;
- b=O6mWpXNnwpSfjsw+G7L4E8era2vUJYSlFo5Y+LKQGkjzrh6++mtgrhUsfx/zzbz2yCk9BO
- 4wxPsR6zp+lBdKulFZcg12eTHaG22LVDmI2eFa6YvMwyh8Fw/i2kSv7y3MhOZ3liDLTQZX
- N0gaXPQ0FQMecRel0ZALJa3fnnkr73M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-367-H3ehbNgZPFCmGVZexGte0w-1; Mon, 30 Mar 2020 17:06:48 -0400
-X-MC-Unique: H3ehbNgZPFCmGVZexGte0w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 275CA18A6EC0;
- Mon, 30 Mar 2020 21:06:46 +0000 (UTC)
-Received: from elisabeth (unknown [10.36.110.18])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A26CA48;
- Mon, 30 Mar 2020 21:06:42 +0000 (UTC)
-Date: Mon, 30 Mar 2020 23:06:34 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v5] staging: vt6656: add error code
- handling to unused variable
-Message-ID: <20200330230634.3b905158@elisabeth>
-In-Reply-To: <20200330184517.33074-1-jbwyatt4@gmail.com>
-References: <20200330184517.33074-1-jbwyatt4@gmail.com>
-Organization: Red Hat
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id ADE3186722
+ for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 21:46:27 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id c21so8625354pfo.5
+ for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 14:46:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3dcAoN1+dU5RRo0qINqwezngMlazlEYMLnB6EmXTGbk=;
+ b=gfMsUMHA4Pj+mLP3dWOOZyyRsxv5bDcLC9BidEGTSQ7NW9TvGI91+zRGqK0yyy5U6x
+ gAOQq0qrBTTm70t5+5tP7DkIG1xzxdTFpnly5Z/fztRTKFPbxV79ssKcqiTjSNbgZ9vk
+ PEfs7JFtlM/1pR+BGeTWQzvf9Dtz9dwxcEmkCG4YaD69Cd9F7R1y5IS6ogrdi7nS0WFA
+ Z3xDilkr1yhnZBQGijvSByqe11SdRg7tFFGPjp8mlr5/py8kat4vxrupCdnuimdxz1kj
+ EaOdRGf0Cjhh3Z1zmjmFlP+k1lvQf3/HgcNrAmz9HxaJKstu1+nJFpD5PZQic89HbJTN
+ Hynw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3dcAoN1+dU5RRo0qINqwezngMlazlEYMLnB6EmXTGbk=;
+ b=cRBb7C0KQaPgEnWER0WJfa98x311oFy436d6h93r6HuEheO6lOQQ4ER35n9mDbfzL/
+ wrNg+s+gZZnu65CcGFLEAir7VZuWqAkj8L0g7xMJiqrjPcp5Oo+tzdItCJQRDgRrtF2t
+ S4cFOa8bJB6dqzJZ+lPR7+rU3GUdjXCUx/BOcRx2bvifgkQ317N+LyOBOMQVhNzmEPyc
+ lozN9uQ8tjhTZqSBYwNYhceT8xWXcolzcrZuF23P5F3ULGgWgEDr9Mm5x4ImzacV9V6d
+ C8MsqkFKCkcHytpI94HkQAM+NH6L7Ilf0s42CCksjnJLsoK294OllQRyBpmDS/WDuTrj
+ LXWA==
+X-Gm-Message-State: ANhLgQ15TpuvymUBVGmiXWLlqoE8Q5wRW6eDOFGn6+ou93sX4Od7oPrT
+ CXulkMwy+31m0n96iwClG/0=
+X-Google-Smtp-Source: ADFU+vsWWWw+27Zr3XdfpX0Y8ZYk9FUe5zGzgJbqIr8iQx1frk620ctEY9spPZSzsBtxANrpi36Luw==
+X-Received: by 2002:a63:b40d:: with SMTP id s13mr15459446pgf.268.1585604787127; 
+ Mon, 30 Mar 2020 14:46:27 -0700 (PDT)
+Received: from OptiPlexFedora.fios-router.home ([47.144.161.84])
+ by smtp.gmail.com with ESMTPSA id q6sm403410pja.34.2020.03.30.14.46.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Mar 2020 14:46:26 -0700 (PDT)
+From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+To: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>,
+ Stefano Brivio <sbrivio@redhat.com>,
+ Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Quentin Deslandes <quentin.deslandes@itdev.co.uk>,
+ Colin Ian King <colin.king@canonical.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v6] staging: vt6656: add error code handling to unused variable
+Date: Mon, 30 Mar 2020 14:46:13 -0700
+Message-Id: <20200330214613.31078-1-jbwyatt4@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,53 +90,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Julia Lawall <julia.lawall@inria.fr>, outreachy-kernel@googlegroups.com,
- Forest Bond <forest@alittletooquiet.net>,
- Colin Ian King <colin.king@canonical.com>
+Cc: "John B. Wyatt IV" <jbwyatt4@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 30 Mar 2020 11:45:17 -0700
-"John B. Wyatt IV" <jbwyatt4@gmail.com> wrote:
+Add error code handling to unused 'ret' variable that was never used.
+Return an error code from functions called within vnt_radio_power_on.
 
-> Add error code handling to unused 'ret' variable that was never used.
-> Return an error code from functions called within vnt_radio_power_on.
-> 
-> Issue reported by coccinelle (coccicheck).
-> 
-> Suggested-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-> Suggested-by: Stefano Brivio <sbrivio@redhat.com>
-> Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-> Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
-> ---
-> v5: Remove Suggested-by: Julia Lawall above seperator line.
->     Remove break; statement in switch block.
->     break; removal checked by both gcc compile and checkpatch.
->
-> [...]
->
-> @@ -734,14 +738,15 @@ int vnt_radio_power_on(struct vnt_private *priv)
->  	case RF_VT3226:
->  	case RF_VT3226D0:
->  	case RF_VT3342A0:
-> -		vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
-> -				    (SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
-> +		ret = vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
-> +					  (SOFTPWRCTL_SWPE2 | 
-> +					  SOFTPWRCTL_SWPE3));
->  		break;
->  	}
-> +	if (ret)
-> +		return ret;
+Issue reported by coccinelle (coccicheck).
 
-Did you send the wrong version perhaps?
+Suggested-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+Suggested-by: Stefano Brivio <sbrivio@redhat.com>
+Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+---
+v6: Forgot to add all the v5 code to commit.
 
+v5: Remove Suggested-by: Julia Lawall above seperator line.
+	Remove break; statement in switch block.
+	break; removal checked by both gcc compile and checkpatch.
+	Suggested by Stefano Brivio <sbrivio@redhat.com>
+
+v4: Move Suggested-by: Julia Lawall above seperator line.
+    Add Reviewed-by tag as requested by Quentin Deslandes.
+
+v3: Forgot to add v2 code changes to commit.
+
+v2: Replace goto statements with return.
+    Remove last if check because it was unneeded.
+    Suggested-by: Julia Lawall <julia.lawall@inria.fr>
+
+ drivers/staging/vt6656/card.c | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
+index dc3ab10eb630..c947e8188384 100644
+--- a/drivers/staging/vt6656/card.c
++++ b/drivers/staging/vt6656/card.c
+@@ -723,9 +723,13 @@ int vnt_radio_power_on(struct vnt_private *priv)
+ {
+ 	int ret = 0;
+ 
+-	vnt_exit_deep_sleep(priv);
++	ret = vnt_exit_deep_sleep(priv);
++	if (ret)
++		return ret;
+ 
+-	vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
++	ret = vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
++	if (ret)
++		return ret;
+ 
+ 	switch (priv->rf_type) {
+ 	case RF_AL2230:
+@@ -734,14 +738,14 @@ int vnt_radio_power_on(struct vnt_private *priv)
+ 	case RF_VT3226:
+ 	case RF_VT3226D0:
+ 	case RF_VT3342A0:
+-		vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
+-				    (SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
+-		break;
++		ret = vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
++					  (SOFTPWRCTL_SWPE2 | 
++					  SOFTPWRCTL_SWPE3));
+ 	}
++	if (ret)
++		return ret;
+ 
+-	vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
+-
+-	return ret;
++	return vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
+ }
+ 
+ void vnt_set_bss_mode(struct vnt_private *priv)
 -- 
-Stefano
+2.25.1
 
 _______________________________________________
 devel mailing list
