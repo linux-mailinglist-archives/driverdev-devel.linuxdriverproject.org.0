@@ -1,78 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EC8D1973BA
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 07:13:22 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F26ED1973D0
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 07:24:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BEBAF8623E;
-	Mon, 30 Mar 2020 05:13:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 14AE422B20;
+	Mon, 30 Mar 2020 05:24:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dhQj-qeN7Qji; Mon, 30 Mar 2020 05:13:19 +0000 (UTC)
+	with ESMTP id FGyGU+qkB8ax; Mon, 30 Mar 2020 05:24:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C6C0E85E5C;
-	Mon, 30 Mar 2020 05:13:18 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id D1D332285E;
+	Mon, 30 Mar 2020 05:23:58 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 958151BF44A
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 30 Mar 2020 05:13:16 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EF5781BF44A
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 05:23:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 91B7985FD7
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 30 Mar 2020 05:13:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EC0CB86505
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 05:23:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0R3WeG1yy_dW
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 30 Mar 2020 05:13:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
- [209.85.222.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3046285E5C
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 30 Mar 2020 05:13:16 +0000 (UTC)
-Received: by mail-qk1-f195.google.com with SMTP id u4so17702616qkj.13
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 29 Mar 2020 22:13:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=82B0OONv9gwbZlPp43NzThDz2fRV+KRFwafOQ16joDw=;
- b=OuZr19tlK0LCL/nKe3emolw5buR1zjvwpIrx3lUWAZXm8kkPDTnQBBSq83RmGvV/+9
- Ozye6VmbcjHmslG9RanTEDL/07VmLUoPKI3tkNhK+vAIl1QFUNQdx3zITndDf1hj8nGJ
- ThA2mCuCPXVL+QVD1wNDRSlY8piELRnRn12GnXMvpBSOjH/R/63WArysIz82m3LyWCmm
- JwZ2RQ0yqHya9yutZXHB20GdAf7dUmkI3VtSejX3p0PxT8pLjEs87Oknfgx57g1yNIXQ
- IUbCc8UXYrReBIAaAvc8EewzbesoHlIk2kCD6IeG0nfQlZ3YRgapa9B9MquIqJzfWm37
- XZrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=82B0OONv9gwbZlPp43NzThDz2fRV+KRFwafOQ16joDw=;
- b=rMU8YoWsNIih1u6Zn6R2BlnpCtncv2qAPWVAOkXdCiIiDV2I+bRFGsJv0PZanZJ2DH
- pScz64msR0zupVEXjIOraBlkMRQ1D7Fqk9yL6+P3R67xDVO/7Vb1e3WZxGh5FNbWk2Le
- tXjIG2TZLarSw4g2QHGh2iPzkgJEA4/0gyRoFimF5rrBk+zkzHBsWxCe70nmxSEYLFmd
- 66buSWlVvYm5KekdDp9LG6B0w3EQU/d3r1H0ZDa2fLA/xa442uEHbj92n4KPcLCtkvOL
- WmtQyDuf6JbqdIsQtWPHxmTB+1gxdzZQ0YB9IcKYCDV5lh6tnw/3Y1gBWUma8FN1lAQg
- FZZA==
-X-Gm-Message-State: ANhLgQ0X42H18v2kvpz1pv9gP54yDaHNLoz0K86j56PKlyqv0Zfc8rai
- 4LPwSh39aCirjKYp+lgjAEiakP4p97AkmNbgYHs=
-X-Google-Smtp-Source: ADFU+vtj/DFbxXodFiHfKGTLL0D2ACgeL+nxGGMCiUIE2Xsme+tK9zVQHPpMrntaRAFuqredkyBwQwwG+l9S//mWniA=
-X-Received: by 2002:a05:620a:401:: with SMTP id
- 1mr9731984qkp.465.1585545195174; 
- Sun, 29 Mar 2020 22:13:15 -0700 (PDT)
+ with ESMTP id w+q+RlK0+9xo for <devel@linuxdriverproject.org>;
+ Mon, 30 Mar 2020 05:23:55 +0000 (UTC)
+X-Greylist: delayed 00:09:15 by SQLgrey-1.7.6
+Received: from ozlabs.org (bilbo.ozlabs.org [203.11.71.1])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 732E086499
+ for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 05:23:55 +0000 (UTC)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest
+ SHA256) (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 48rLHF3cWmz9sPk;
+ Mon, 30 Mar 2020 16:14:33 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=canb.auug.org.au;
+ s=201702; t=1585545278;
+ bh=4EEf/PratAIAfdAIaqM7alme3AOiAhBmkDtUjgsO4co=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=CP1Jse+MjIlJ6kW2s16fFcqC9sGpVidN9OEUbqfSM04WWsQ778wBmbXaogWxxubh0
+ UllTMMGMi+68jyx7lRR/yg3cEHA/28YA1+cCXz6qoRMBlg6kqneL4rmdNOWCGwQ56o
+ 7UVP8kJ/L+Pm5mUsAm2ldMtXZmjmW6lobBKWWUFBn5KKDozZ6kVWCgVIA3xM7RfHei
+ skV4FVyhyt8kaq5eKXO3GoLYRkxbph8ar0lIKsi65qbb5tZmSKQ0UwBENRJqmbz2p8
+ VaI9dlWnN3OSNsB3SZTOCenqfSC2RctljWUe3L0UyCndRtXuppKMQx9uN/COXA3Fty
+ grCwLo8a1lKzA==
+Date: Mon, 30 Mar 2020 16:14:31 +1100
+From: Stephen Rothwell <sfr@canb.auug.org.au>
+To: Randy Dunlap <rdunlap@infradead.org>
+Subject: Re: mmotm 2020-03-28-22-17 uploaded (staging/octeon/)
+Message-ID: <20200330161431.60a37031@canb.auug.org.au>
+In-Reply-To: <873495e9-d254-cb66-7a83-2517505a2b9b@infradead.org>
+References: <20200329051805.kfaUSHrn4%akpm@linux-foundation.org>
+ <873495e9-d254-cb66-7a83-2517505a2b9b@infradead.org>
 MIME-Version: 1.0
-Received: by 2002:ac8:3181:0:0:0:0:0 with HTTP; Sun, 29 Mar 2020 22:13:14
- -0700 (PDT)
-From: "maryalice - maryalice:" <maryalice00.06@gmail.com>
-Date: Mon, 30 Mar 2020 03:13:14 -0200
-Message-ID: <CAJrXg5TRbPKbqUKS=Gn5kt28YpvsLNQA8ZR+OmVeUj_kaN3ovg@mail.gmail.com>
-Subject: Reply For More Details.
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,25 +68,104 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: maryalice00.12@postribe.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ mm-commits@vger.kernel.org, Aaro Koskinen <aaro.koskinen@iki.fi>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ linux-kernel@vger.kernel.org, mhocko@suse.cz, linux-mm@kvack.org,
+ broonie@kernel.org, linux-next@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-fsdevel@vger.kernel.org,
+ akpm@linux-foundation.org
+Content-Type: multipart/mixed; boundary="===============3085151295883933731=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-My dear,
+--===============3085151295883933731==
+Content-Type: multipart/signed; boundary="Sig_/i7ee/j5=LxPeGDwdPn/49OA";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
 
-I am Mrs Maryalice Williams, I want to send you donation of two
-million seven hundred thousand Dollars ($2.7M) for volunteer projects
-in your country due to my ill health that could not permit me. Kindly
-reply for more details, and also send me the following details, as per
-below, your full Name ..........,  Address...........,
-Age...............,  Occupation ...............
+--Sig_/i7ee/j5=LxPeGDwdPn/49OA
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Remain blessed,
-Mrs. Maryalice Williams.
+Hi Randy,
+
+On Sun, 29 Mar 2020 09:12:31 -0700 Randy Dunlap <rdunlap@infradead.org> wro=
+te:
+>
+> On 3/28/20 10:18 PM, akpm@linux-foundation.org wrote:
+> > The mm-of-the-moment snapshot 2020-03-28-22-17 has been uploaded to
+> >=20
+> >    http://www.ozlabs.org/~akpm/mmotm/
+> >=20
+> > mmotm-readme.txt says
+> >=20
+> > README for mm-of-the-moment:
+> >=20
+> > http://www.ozlabs.org/~akpm/mmotm/
+> >=20
+> > This is a snapshot of my -mm patch queue.  Uploaded at random hopefully
+> > more than once a week.
+> >=20
+> > You will need quilt to apply these patches to the latest Linus release =
+(5.x
+> > or 5.x-rcY).  The series file is in broken-out.tar.gz and is duplicated=
+ in
+> > http://ozlabs.org/~akpm/mmotm/series =20
+>=20
+>=20
+> on i386 or x86_64:
+>=20
+> ../drivers/staging/octeon/ethernet-tx.c: In function =E2=80=98cvm_oct_xmi=
+t=E2=80=99:
+> ../drivers/staging/octeon/ethernet-tx.c:358:2: error: implicit declaratio=
+n of function =E2=80=98skb_reset_tc=E2=80=99; did you mean =E2=80=98skb_res=
+erve=E2=80=99? [-Werror=3Dimplicit-function-declaration]
+>   skb_reset_tc(skb);
+>   ^~~~~~~~~~~~
+>=20
+> It looks like this inline function has been removed from
+> <net/sch_generic.h>.
+>=20
+>=20
+> Looks like it should be this change:
+>=20
+> -	skb_reset_tc(skb);
+> +	skb_reset_redirect(skb);
+
+I applied the above as a merge resolution patch for the staging tree
+merge today, as the inline removal was a late change to Linus' tree.
+
+--=20
+Cheers,
+Stephen Rothwell
+
+--Sig_/i7ee/j5=LxPeGDwdPn/49OA
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEENIC96giZ81tWdLgKAVBC80lX0GwFAl6BgDcACgkQAVBC80lX
+0GyDuwgAhoSNIFnw3fBCuchmr1Y0lz9RtRLsQHPXWRBjpJbAmISNeVn4z3PgahRw
+vdfhy0CWnykQStM1VTseZYIaU1g4+rWSSr++AMZMgOuXPk1W8a/TJtf7JsKL4694
+UmigTCUgalnT/VpfHbLDf4M0PNC268KIJ6qVwCmxJ8/NIZmpVmzZj36C4icWJXC6
+JrDh69whM4yqAoXBbNWh2u2vNNk5rUVk0OP6DiGpv0UTtzOH/lGr8lhTXyOATLZz
++cLG7vrdNZvqgBO3NLAVDj5fBxnJXUtoeuhnQNWL9ksprctNHcGR+/7HPK3QjJyr
+KjR5AQiB+bZb51oYChE+4t9q0qPw7Q==
+=aiv9
+-----END PGP SIGNATURE-----
+
+--Sig_/i7ee/j5=LxPeGDwdPn/49OA--
+
+--===============3085151295883933731==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3085151295883933731==--
