@@ -1,79 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 919A6197686
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 10:33:07 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 737A9197970
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 12:41:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F094922C1A;
-	Mon, 30 Mar 2020 08:33:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E0FA9884EF;
+	Mon, 30 Mar 2020 10:41:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id os6GBt3GObqu; Mon, 30 Mar 2020 08:33:03 +0000 (UTC)
+	with ESMTP id rwyRTsqESCTL; Mon, 30 Mar 2020 10:41:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E86C1228EF;
-	Mon, 30 Mar 2020 08:33:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 531C0884D2;
+	Mon, 30 Mar 2020 10:41:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 314AC1BF35C
- for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 08:33:00 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2801A1BF2A1
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 10:41:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2E05B85F4B
- for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 08:33:00 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1F97487C98
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 10:41:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kjlBoeSBrXRQ for <devel@linuxdriverproject.org>;
- Mon, 30 Mar 2020 08:32:59 +0000 (UTC)
+ with ESMTP id qWwIrR-QOaQ9 for <devel@linuxdriverproject.org>;
+ Mon, 30 Mar 2020 10:41:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2800985F44
- for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 08:32:59 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id x11so17158032otp.6
- for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 01:32:59 -0700 (PDT)
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A639F87C8A
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 10:41:18 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id z14so2832675wmf.0
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 03:41:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=EmnByVjRRIj/dcGI2wocpvR+OQ9kOqGokD1SxfsI6FI=;
+ b=VQOLU62hdrjPHfq35FmkK7mKk/EUpHjZwQkngk/LArzcryqRMrHb9o43pzS2+151CB
+ h2r0DmGrvAjnNb49nUODIoHB7Snx2Q0sowFz+ffRFox9XZiOLbRV55SEi2kCHCNrzcRA
+ dT5xfenb5jk755fz3akDrqvjlGUUGSnMf+q5L8pQhhMD6xku6HWU4WPZ0T6RdDHtRTfB
+ ebaKeRhNwLh5/GBVrL6sf+Kbi2SyTASMI3SwYwG45yIgvpRkgD/0YMgtQjQHYNH2saoT
+ AiAybGoXRGmAHQTf/Ry3VtMYT9BQdYHxtx1H76d7Kle9tgpgqSOEvTOEnzirbTPJzz5+
+ tJFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=Gel9b97+smELIFrYMFWtxb4iAAaZuDZrq93k+9Vr7r4=;
- b=YOsR8ftwLKiEeZ7YukVlFQz1WHBlP68YfnPi6/99ctsKmSi2f0SbjPoipUPIUR1TAy
- 6TmVpW2fvu1DNAuMRAzztKMPjIQS7K1vFrWXTQ9m5zf37UKP7RruKepkMA/Uqkph3iY+
- RPjFTjT2j7WNk1bbq9eOgLB95Ds2ks4ynMDNsPBbGcPT+xIm4sCmO0r1XEwjnVeQaYoh
- 8bIPjD4EmgrI1sLpjfZmtMWWBI/Ar1Nifszqmo0BIg/MF/Ogr4qIFp/e8EY6la9o8NRm
- 80jIWjpTogwSKX9lW0AgM9uxeeRQLhE/uy1qNcY212Uk2uXtu+VNDrPvq+mtOZSaz+3a
- /iYA==
-X-Gm-Message-State: ANhLgQ0g8jH2TkdXkLeGunDXWP4od+XtLXZpRomKmPR46OKBSfT3+RIv
- 4Fi77jATaG36MQQTV573gRuINva1W1FqMOOJbKQ=
-X-Google-Smtp-Source: ADFU+vsqb9g7ydmxPiqUUnhhqa6SbE8Ps8XkrQDmUFKt73Iz/YKOQFjnoHB8Y6abBUc6tZj75G8C2+Fn3ZS8XPvCGPY=
-X-Received: by 2002:a05:6830:15c2:: with SMTP id
- j2mr7847135otr.107.1585557178365; 
- Mon, 30 Mar 2020 01:32:58 -0700 (PDT)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=EmnByVjRRIj/dcGI2wocpvR+OQ9kOqGokD1SxfsI6FI=;
+ b=omw88JfUoVy+PUJiWpBXsqhmhxsbSxJbCWLU5sDxZGSUXPFgiSZ12d+vWoaMDu/n+e
+ jiucEZmRyTFzWGilx49vNaEuMH+/tr/0AXx8H08MQmeT5tlSQ4IfmCiwlvo3l1Mu5OUh
+ 9kPMdr594UeIin4txNyi/Ok6GlbiK6a0WYr2/OcuSuwd5HQ+l633n4tA5ZznwsbMIV0E
+ vJJ8fwqXYHryIZ4SeDabI2pKuqTkDZIDMA1QxULxJbXZnEzSArdZ+f84n2LiTy1mqiEm
+ nxPESc1SptEO14LjHMqsuWVxfQzNnuHAH4jCkobBnTjv+aD7pyfLQZhL5DotaAf9Hnsx
+ +pVA==
+X-Gm-Message-State: ANhLgQ2sPqBjUje5IsE7R0PXHvMD8okje77rs2OSz47JIXQWw1KdmmB5
+ twYMbDQAS7v1hM3IgHPcPPMAzzC55kb1XETHK5k=
+X-Google-Smtp-Source: ADFU+vsxA+n38Wxy9V771nVV7IBY2BkIA2hZTfEUMNeE6Cve3gAcNTP4GjU8j3TPDP4cVuueQ/mBaEbtpko95Ucf1+Q=
+X-Received: by 2002:a7b:c404:: with SMTP id k4mr11964261wmi.37.1585564876904; 
+ Mon, 30 Mar 2020 03:41:16 -0700 (PDT)
 MIME-Version: 1.0
-References: <cover.1585218857.git.alexander.riesen@cetitec.com>
- <ad15f80df51c95a7c24498bb0bd3a46f55fbb62e.1585218857.git.alexander.riesen@cetitec.com>
-In-Reply-To: <ad15f80df51c95a7c24498bb0bd3a46f55fbb62e.1585218857.git.alexander.riesen@cetitec.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 30 Mar 2020 10:32:47 +0200
-Message-ID: <CAMuHMdV+joeNWJotKySVPHNW9OoT8+iODBwhK5fACspq2SX_eg@mail.gmail.com>
-Subject: Re: [PATCH v4 9/9] arm64: dts: renesas: salvator: add a connection
- from adv748x codec (HDMI input) to the R-Car SoC
-To: Alex Riesen <alexander.riesen@cetitec.com>, 
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
- driverdevel <devel@driverdev.osuosl.org>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>
+Received: by 2002:adf:fcc7:0:0:0:0:0 with HTTP; Mon, 30 Mar 2020 03:41:16
+ -0700 (PDT)
+From: Harvey Terence <ochefut11@gmail.com>
+Date: Mon, 30 Mar 2020 12:41:16 +0200
+Message-ID: <CAPCmsMNkzJWoM1WVk3TayTXVhUGAtY+_iCo520DZ7d+FCwt_Jg@mail.gmail.com>
+Subject: THANK YOU
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,121 +79,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: maab1@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alex,
+From Harvey Terence (Mr.)
 
-On Thu, Mar 26, 2020 at 11:55 AM Alex Riesen
-<alexander.riesen@cetitec.com> wrote:
-> As all known variants of the Salvator board have the HDMI decoder
-> chip (the ADV7482) connected to the SSI4 on R-Car SoC, the ADV7482
-> endpoint and the connection definitions are placed in the common board
-> file.
->
-> For the same reason, the CLK_C clock line and I2C configuration (similar
-> to the ak4613, on the same interface) are added into the common file.
->
-> Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
+25 Canada Square, Canary Wharf, London E14 5LB,
 
-Thanks for your patch!
+Good day
 
-> --- a/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-> +++ b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-> @@ -460,7 +460,7 @@ pca9654: gpio@20 {
->                 #gpio-cells = <2>;
->         };
->
-> -       video-receiver@70 {
-> +       adv7482_hdmi_in: video-receiver@70 {
->                 compatible = "adi,adv7482";
->                 reg = <0x70 0x71 0x72 0x73 0x74 0x75
->                        0x60 0x61 0x62 0x63 0x64 0x65>;
-> @@ -469,6 +469,7 @@ video-receiver@70 {
->
->                 #address-cells = <1>;
->                 #size-cells = <0>;
-> +               #clock-cells = <0>; /* the MCLK for I2S output */
->
->                 interrupt-parent = <&gpio6>;
->                 interrupt-names = "intrq1", "intrq2";
-> @@ -510,6 +511,15 @@ adv7482_txb: endpoint {
->                                 remote-endpoint = <&csi20_in>;
->                         };
->                 };
-> +
-> +               port@c {
-> +                       reg = <12>;
-> +
-> +                       adv7482_i2s: endpoint {
-> +                               remote-endpoint = <&rsnd_endpoint3>;
-> +                               system-clock-direction-out;
-> +                       };
-> +               };
+I am Mr. Harvey Terence, Operating Officer of this bank. With your
+honest assistant and cooperation, we can finalize this transaction
+within 7/14 working days.
 
-As the adv748x driver just ignores "invalid" endpoints...
+ I need a reliable and honest person who will be able to handle this
+business opportunity with me because of the need to involve a
+foreigner. I am contacting you because of such demand, and I believe
+you will work with me to achieve this purpose and will never turn down
+my request.
 
-> @@ -733,8 +744,8 @@ &rcar_sound {
->         pinctrl-0 = <&sound_pins &sound_clk_pins>;
->         pinctrl-names = "default";
->
-> -       /* Single DAI */
-> -       #sound-dai-cells = <0>;
-> +       /* multi DAI */
-> +       #sound-dai-cells = <1>;
->
->         /* audio_clkout0/1/2/3 */
->         #clock-cells = <1>;
-> @@ -758,8 +769,19 @@ &rcar_sound {
->                  <&cpg CPG_MOD 1020>, <&cpg CPG_MOD 1021>,
->                  <&cpg CPG_MOD 1019>, <&cpg CPG_MOD 1018>,
->                  <&audio_clk_a>, <&cs2000>,
-> -                <&audio_clk_c>,
-> +                <&adv7482_hdmi_in>,
->                  <&cpg CPG_CORE CPG_AUDIO_CLK_I>;
+Before the United States of America and Iraqi war, our bank customer
+Mr.Hatem Kamil Abdul Fatah, who was the deputy governor of Baghdad in
+Iraq and also a business man made a deposit of (GBP10,750,000.00) Ten
+Million, Seven Hundred And Fifty Thousand
+Pounds Sterling Only in a Bank account number: ABP-LN-685
+00/52207712321 over here in our bank.
 
-... and the rsnd driver ignores nonexistent-clocks, the DT change has no
-hard dependency on the driver change, and won't introduce regressions
-when included, right?
+But I later discovered that the Deputy Governor has been assassinated
+in Baghdad by unknown gun men.
 
-> @@ -777,6 +799,21 @@ rsnd_endpoint0: endpoint {
->                                 capture  = <&ssi1 &src1 &dvc1>;
->                         };
->                 };
-> +               rsnd_port3: port@3 {
-> +                       reg = <3>;
-> +                       rsnd_endpoint3: endpoint {
-> +                               remote-endpoint = <&adv7482_i2s>;
-> +
-> +                               dai-tdm-slot-num = <8>;
-> +                               dai-tdm-slot-width = <32>;
-> +                               dai-format = "left_j";
-> +                               mclk-fs = <256>;
-> +                               bitclock-master = <&adv7482_i2s>;
-> +                               frame-master = <&adv7482_i2s>;
-> +
-> +                               capture = <&ssi4>;
-> +                       };
-> +               };
->         };
->  };
+Below is the information about his death as a proof and verification
+of his assassination In Baghdad:
+http://news.bbc.co.uk/go/pr/fr/-/1/hi/world/middle_east/3970619.stm
 
-However, as salvator-common.dtsi is shared by all Salvator-X(S) variants,
-you'll have to add a dummy ssi4 node to r8a77961.dtsi first.
+During my further investigation after hearing of his assassination in
+Baghdad, I also discovered that Mr.Hatem Kamil Abdul Fatah did not
+declare any next of kin in his official papers including the paper
+work of his funds with our bank which might be because he embezzled
+this funds while in office and was afraid of revealing his political
+dignity when opening the above account number in our bank until his
+dead.
 
-Gr{oetje,eeting}s,
+My aim of contacting you is to assist me to receive this money in your
+bank account over there in your country and let me know how much
+commission you will receive out of the total fund when transferred
+into your oversea bank account?.
 
-                        Geert
+You will diligently transfer the balance to me through another bank
+account number from another bank I will forward to you as soon as the
+fund is transferred into your over sea account after deducting your
+commission from the whole sum or I will come over to your country to
+meet with you one on one for sharing of the fund or shall invested the
+fund into any lucrative business out there in your country together..
 
+We are going to process and perfect the transaction legally as bank to
+bank procedure has been put in place.
 
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+I need your urgent reply through my private E-mail address at:
+maab1@yahoo.com if you are interested to work with me.
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+I provide more details on how to process the approval of the fund in
+your name to be release for instant bank to bank wire transfer into
+any designated bank account of your choice without delay.
+
+Please keep this transaction safe and confidential as exposing this
+transaction will jeopardize my reputation in this Bank.
+
+I would like to hear from you in no distant time as soon as you read
+this mail through the above stated E-mail address so that we can
+proceed accordingly.
+
+Best Regards,
+
+Mr. Harvey Terence
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
