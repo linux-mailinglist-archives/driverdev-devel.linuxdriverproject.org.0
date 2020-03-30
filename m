@@ -1,71 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B68E9197193
-	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 03:05:47 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C59F1973B4
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Mar 2020 07:12:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2117B221F5;
-	Mon, 30 Mar 2020 01:05:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C40D186277;
+	Mon, 30 Mar 2020 05:12:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QM4UOoZMrdZH; Mon, 30 Mar 2020 01:05:45 +0000 (UTC)
+	with ESMTP id NnoMM93-w-IG; Mon, 30 Mar 2020 05:12:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C37A82153B;
-	Mon, 30 Mar 2020 01:05:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A9C138638E;
+	Mon, 30 Mar 2020 05:12:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A98FF1BF425
- for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 01:05:39 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5F63D1BF97C
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 05:12:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 99F822153E
- for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 01:05:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5AF468777D
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 05:12:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WP9rfNO60kqE for <devel@linuxdriverproject.org>;
- Mon, 30 Mar 2020 01:05:38 +0000 (UTC)
+ with ESMTP id Q0fp1vLz5xyw for <devel@linuxdriverproject.org>;
+ Mon, 30 Mar 2020 05:12:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-74.mimecast.com
- (us-smtp-delivery-74.mimecast.com [63.128.21.74])
- by silver.osuosl.org (Postfix) with ESMTPS id 50E242153B
- for <devel@driverdev.osuosl.org>; Mon, 30 Mar 2020 01:05:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585530337;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RuVMi+yzQuqrWt1PfGiMDTX9P2hZ817ws+8wqAp5qk0=;
- b=OFTc6ukA9Eu7/YROBinqV8JEddEk1WV2Oz9uDpKOL0yj+KcrLuMnp6Ztxyt8ANy4QmN59z
- 7CdVlf1taT9k7BG31u8hIh3Dy3g23Cg8bv1wZyfGgzW3JsRwVVWbVND6FFM8BlYfL4CEsZ
- g6tjNA9PKTSNl0ACLavVPW/vdNqMJYw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-38-w4fOFj-WPMetl7R3dG9Hmw-1; Sun, 29 Mar 2020 21:05:35 -0400
-X-MC-Unique: w4fOFj-WPMetl7R3dG9Hmw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 211B1189F77A;
- Mon, 30 Mar 2020 01:05:34 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.4])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0EED35C1BB;
- Mon, 30 Mar 2020 01:05:31 +0000 (UTC)
-Date: Mon, 30 Mar 2020 03:05:26 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Simran Singhal <singhalsimran0@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Add line after
- variable declarations
-Message-ID: <20200330030526.7a1a3b9d@elisabeth>
-In-Reply-To: <20200325164451.GA17569@simran-Inspiron-5558>
-References: <20200325164451.GA17569@simran-Inspiron-5558>
-Organization: Red Hat
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2D7F68776C
+ for <devel@linuxdriverproject.org>; Mon, 30 Mar 2020 05:12:36 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id o10so17693404qki.10
+ for <devel@linuxdriverproject.org>; Sun, 29 Mar 2020 22:12:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=82B0OONv9gwbZlPp43NzThDz2fRV+KRFwafOQ16joDw=;
+ b=Y5XAdEmx40RzmTY/Unaruy3U3PdTsM3JUn6EO0h9x87eiRWCjTtnwfyveYhKEAcZ6b
+ wq2gTZcTiUioDvV6U8MK2yAxv6suk5uP0xk5FFyjzkQiwGtwWpplZMut7Bdo6lKGMd4R
+ mTs+qj6il/m7T4L9Jk2r4/Npmx2EF1doy6ccopUFHOkjq5uOcilTCw6j7/VIg0z/q3vU
+ x8r1yxjx7jWKgx028IERja4fQ5977jT4aBm15NjmUPf3WKiUXzuXSwOORZu25bEsLxNV
+ PoZF7ldfdwUKQPrQOW6UNZ9X5GbiIgvWh6e4NV9fxQkd94jAZ7lPb3Lb1TqHSEApVFxH
+ VpSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=82B0OONv9gwbZlPp43NzThDz2fRV+KRFwafOQ16joDw=;
+ b=sWQZ1CJVJHkODgv8WvDwjdLAzkOFeWji8VwtSHr/CReG8EC6v0VswbPzQXolbV/Wvc
+ HuOMBxaP8E58tTU5JqVlWhAS6S9owOoR4j03I9/mKhj3jSWLN1A5OI/5583KZyhd6qSr
+ zWO9PvNNRd40qduQugxEf3nrt6vwdIlu6+S+6aeqHI98gihI4nrUkR/p+lOT941YiCqH
+ bCf/ElCE3WEqFTr5XDFf03oENbHu+opCMfdlgnOlIhM1GQEdqKEvMjIfJtaJOoChQ0qD
+ Z8Sa7IdhmbeQ8j499VmL6+njmWNtSke6QtM1Oxxo8bAv5R9uGQi4vV5BHnaj1KkFiyGc
+ Xhkg==
+X-Gm-Message-State: ANhLgQ1+o53q3Gd6+93BNwbdQykf3SaFJd+qviLWbZzywMmHXspyZX/E
+ 12YE704AXs110+uVZyyEqwUl5OxM5BqHWmTa3QM=
+X-Google-Smtp-Source: ADFU+vtEZKNIJ9cZu4lh443YL6EExzUUn6o0YrznXLg/T4NOf4KX5uaZtjDSSVPmC/vLmhbU4lf44de3px60QUpBGlU=
+X-Received: by 2002:a37:6388:: with SMTP id
+ x130mr10271756qkb.429.1585545155158; 
+ Sun, 29 Mar 2020 22:12:35 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Received: by 2002:ac8:3181:0:0:0:0:0 with HTTP; Sun, 29 Mar 2020 22:12:34
+ -0700 (PDT)
+From: "maryalice - maryalice:" <maryalice00.06@gmail.com>
+Date: Mon, 30 Mar 2020 03:12:34 -0200
+Message-ID: <CAJrXg5RDB4je2x-gKW826VJuALg0oOP_2dAXqEcfhtZidfAKpw@mail.gmail.com>
+Subject: Reply For More Details.
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,31 +80,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Reply-To: maryalice00.12@postribe.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Simran,
-
-On Wed, 25 Mar 2020 22:14:52 +0530
-Simran Singhal <singhalsimran0@gmail.com> wrote:
-
-> Add whiteline after variable declarations to remove the checkpatch.pl
-> warning:
-> WARNING: Missing a blank line after declarations
-> 
-> Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
-
-Sorry for the late review. This patch introduces similar changes to the
-other patches you posted to fix checkpatch warnings for rtl8723bs, so I
-think they should be posted as a patchset instead.
-
 -- 
-Stefano
+My dear,
 
+I am Mrs Maryalice Williams, I want to send you donation of two
+million seven hundred thousand Dollars ($2.7M) for volunteer projects
+in your country due to my ill health that could not permit me. Kindly
+reply for more details, and also send me the following details, as per
+below, your full Name ..........,  Address...........,
+Age...............,  Occupation ...............
+
+Remain blessed,
+Mrs. Maryalice Williams.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
