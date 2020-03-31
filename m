@@ -2,106 +2,90 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D82B1198E74
-	for <lists+driverdev-devel@lfdr.de>; Tue, 31 Mar 2020 10:30:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AE53199363
+	for <lists+driverdev-devel@lfdr.de>; Tue, 31 Mar 2020 12:29:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2D01985EF1;
-	Tue, 31 Mar 2020 08:30:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9138786B1D;
+	Tue, 31 Mar 2020 10:29:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bOyQHG7SLVFI; Tue, 31 Mar 2020 08:30:02 +0000 (UTC)
+	with ESMTP id mwnlc-OQvlwW; Tue, 31 Mar 2020 10:29:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C3B8385F15;
-	Tue, 31 Mar 2020 08:30:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 59C5A85F53;
+	Tue, 31 Mar 2020 10:29:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5FFCE1BF297
- for <devel@linuxdriverproject.org>; Tue, 31 Mar 2020 08:29:59 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 32CA71BF263
+ for <devel@linuxdriverproject.org>; Tue, 31 Mar 2020 10:29:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 51A4F875CB
- for <devel@linuxdriverproject.org>; Tue, 31 Mar 2020 08:29:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2F6BF85DE1
+ for <devel@linuxdriverproject.org>; Tue, 31 Mar 2020 10:29:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8uHkwm2MPHDI for <devel@linuxdriverproject.org>;
- Tue, 31 Mar 2020 08:29:57 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from EUR04-VI1-obe.outbound.protection.outlook.com
- (mail-eopbgr80073.outbound.protection.outlook.com [40.107.8.73])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5DB2A875DB
- for <devel@driverdev.osuosl.org>; Tue, 31 Mar 2020 08:29:57 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nPH8i2DQcO7/LbbxOvIVniHLyslPicyo1WGsBzFUoqemG/XC6JPnA6LqMX0yVCSyAgGgGLlbMoDFRJqknecirhPrEZD/uE4Yuheo3EazaJtlS9hkTw9r4dLRTxY+H9k0uawLr0xPVhFm1Y87aTPxNAFdEIXZRusv+kiORawY8nHkRQdrddaVNBYbLPxKjn0pmyMfkx+hjiZ34iQKavVgjeVWt71lAf22HESs7z7m8QuBcMKtDdxQGjLHj/RwMYdvZqKMl8IMuKQFfEjicHyiZ4qJuAow7R8M9xKCUAK5fNxC82Tt8vb6RdsSPnQbw87FNNI7gZXwLmpJsL33hWyI7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wav6kjNyTVj2opNC+yWLCLaK2+qyaHXK9/TSzlwy2hg=;
- b=gSjnOfWfGsISNpidC7F/Z0N4jbxjmzV8fu3Zc/zIyR9nonvTFLwIvCNoHiRrboIgKQZzPInPcxYBOmb9TZY5xamxaIokFXH+pRwGHGSZCv1lRpd2Zom3TTM/ugEHVXQViUA0gVB5dMFIkxUri4kVjPYgNbTB73cNu46WiozbW97AtedKyYc60wutl5mw6FvtF8/+VhhDRZ3XC4dvOZJ4yuCTCQYAb71yTqDN9YQBZ0Q+Vj/lQMoZUaEn6MM019wYKFtkNNcmgIUJHwnR64mu/k5ArGYPSB6CxvDe6UvDvCQiAQ5wSVEQu1UfatvFlXdB0S2VA4kRxp2pzphOxrLrFQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=itdev.co.uk; dmarc=pass action=none header.from=itdev.co.uk;
- dkim=pass header.d=itdev.co.uk; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=itdevltd.onmicrosoft.com; s=selector2-itdevltd-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wav6kjNyTVj2opNC+yWLCLaK2+qyaHXK9/TSzlwy2hg=;
- b=NZ9oN/5ASjNAWDl9u0l7QZAhyt5P6V+ktbPume6gMHw6Jk3EhlOAk/RuHcHlRZbl1mJWtJrIv5VMiRzBqomtFyZqOFfcxtQIvhgDWt6yxuP6oie4OfKHRUFzQkYjlcXJZCGOou1jvs8SRCEztHjcyKT5Wsd0+/y5YUwRrE6n118=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=quentin.deslandes@itdev.co.uk; 
-Received: from DBBPR08MB4491.eurprd08.prod.outlook.com (20.179.44.144) by
- DBBPR08MB4474.eurprd08.prod.outlook.com (20.179.40.147) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2856.20; Tue, 31 Mar 2020 08:29:54 +0000
-Received: from DBBPR08MB4491.eurprd08.prod.outlook.com
- ([fe80::cce9:f055:f034:3659]) by DBBPR08MB4491.eurprd08.prod.outlook.com
- ([fe80::cce9:f055:f034:3659%4]) with mapi id 15.20.2856.019; Tue, 31 Mar 2020
- 08:29:54 +0000
-Date: Tue, 31 Mar 2020 09:29:52 +0100
-From: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-To: Stefano Brivio <sbrivio@redhat.com>
-Subject: Re: [PATCH v8] staging: vt6656: add error code handling to unused
- variable
-Message-ID: <20200331082952.GA13403@jiffies>
-References: <20200330233900.36938-1-jbwyatt4@gmail.com>
- <20200331020103.13008f53@elisabeth>
-Content-Disposition: inline
-In-Reply-To: <20200331020103.13008f53@elisabeth>
-X-ClientProxiedBy: CWLP265CA0336.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:401:57::36) To DBBPR08MB4491.eurprd08.prod.outlook.com
- (2603:10a6:10:d2::16)
+ with ESMTP id fC06GWoBAbXq for <devel@linuxdriverproject.org>;
+ Tue, 31 Mar 2020 10:29:23 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 95C0E85F53
+ for <devel@driverdev.osuosl.org>; Tue, 31 Mar 2020 10:29:23 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02VAP1wB016863;
+ Tue, 31 Mar 2020 10:29:20 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=RE7RJ50ctwXcGb9Gg0IBmuEBmVKbP8bDDY8G4iwoz2M=;
+ b=PcYpXo0YU0rSIuaCXPV8nY5W+qmkFEosxk7fLBlzRNQY4OlA6Mx2XK8h7CntMIHtZiYP
+ 5JatUD3ErHtKeVAhK652hYHVh0G71Djq7pn4YNPGbWQCDc6RoFjEEKRGNGgK/05n4RNG
+ 4RceUI6svHbXPt0pyHTXPlH/Pw5STfVh+dJe6hL8BIE2ZcuL3oHepnnA4f/P9S4pCHuH
+ zKJ4E+5oxaTFnJ/ftfyN68Z4ATPGdjqOQ3UFIo9256az8wtU3EeswHJBjEg2/GZkifmi
+ 7vOda4rtJSyILUXNKfMGeU5bXlZkpBVfOLPTXs+5XMAn7kujRSVVWlsciJb7bPf71Pw2 Tw== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 303aqhf8ug-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 31 Mar 2020 10:29:20 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02VAMsmT010013;
+ Tue, 31 Mar 2020 10:29:19 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 302g2dtk6c-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 31 Mar 2020 10:29:19 +0000
+Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 02VATFDd011762;
+ Tue, 31 Mar 2020 10:29:15 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 31 Mar 2020 03:29:14 -0700
+Date: Tue, 31 Mar 2020 13:29:06 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Oscar Carter <oscar.carter@gmx.com>
+Subject: Re: [PATCH] staging: vt6656: Use defines in vnt_mac_reg_bits_*
+ functions
+Message-ID: <20200331102906.GA2066@kadam>
+References: <20200328095433.7879-1-oscar.carter@gmx.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from jiffies (5.151.93.48) by CWLP265CA0336.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:401:57::36) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2856.20 via Frontend
- Transport; Tue, 31 Mar 2020 08:29:53 +0000
-X-Originating-IP: [5.151.93.48]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 97a1b709-e73c-42eb-c306-08d7d54db049
-X-MS-TrafficTypeDiagnostic: DBBPR08MB4474:
-X-Microsoft-Antispam-PRVS: <DBBPR08MB4474B9C00C66C945F22212A9B3C80@DBBPR08MB4474.eurprd08.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:3276;
-X-Forefront-PRVS: 0359162B6D
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DBBPR08MB4491.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10009020)(346002)(366004)(136003)(376002)(39830400003)(396003)(186003)(5660300002)(8676002)(1076003)(9686003)(9576002)(81166006)(4744005)(52116002)(86362001)(66946007)(66476007)(54906003)(956004)(2906002)(316002)(44832011)(33656002)(55016002)(8936002)(6496006)(81156014)(53546011)(508600001)(16526019)(26005)(4326008)(66556008)(6916009)(7416002)(33716001);
- DIR:OUT; SFP:1101; 
-Received-SPF: None (protection.outlook.com: itdev.co.uk does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: AWmZCS+NKiYOGroA7jUSb6s87vgIZ0aaItk44lifMsaGBozUD8TGsxZBRRd4kItGStvbnezJEiJBh5vt+5O4VCRCCYDIZ4/Mo97xjWcnu4fOMHiWpOpeTEqpXvHlinEkgS6UGOHjz+7FxBWOcTAh4t2+EQAHzLLaqpHiMAGpS6UTCR2vcQRYU3DEzEqeu8vS49HbAl/TV8LtP/K45OHYJ7uHK4BDYEbp1pGXNpxrE9mpSiykKUoftS2J+HHe5D/k3MmgZbY9ja/sxI66SxvSo5f1Yd+eD2Y0CRpsgjQ1SGfBeyiPYVLtfIUxtN7u7PxXniCZ8M/1d9nhc4J9fGpey6dcBNl20ff3Sd8w1aBewGBW1IEIC7YSqfvtpxf7ivqlVV4u/gG+VgAi2XYn5Sp/xx9fUwTzR/B3G1uLQSuq69+y2kPjEmw1ySX5cI+iBd+p
-X-MS-Exchange-AntiSpam-MessageData: CGs9CA/GOqp59O0P6elyGOth+qaejZCNF3Gcpmg+l/vc/PYDIUeWoYniV84SmlBKUSqBO8GUJKtuajjHJ7n5YmGgXZbky2ry9ZzhMJ0wztr+Uuwa4+dK/4j+BoC0dddn18DIu0oe6S8OkQPxSxzmKw==
-X-OriginatorOrg: itdev.co.uk
-X-MS-Exchange-CrossTenant-Network-Message-Id: 97a1b709-e73c-42eb-c306-08d7d54db049
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Mar 2020 08:29:54.4086 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 2d2930c4-2251-45b4-ad79-3582c5f41740
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +cAhSLodrWa3NCov7Y/DuGHMWu2h8FIDXyjFQh8V4a96Zjle2Zrgjr900bqu8NTxgWTOC7MVeFp/EElijxjTod13AGZVKclS6O90VsJ1aoo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB4474
+Content-Disposition: inline
+In-Reply-To: <20200328095433.7879-1-oscar.carter@gmx.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9576
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ spamscore=0 mlxscore=0
+ adultscore=0 phishscore=0 bulkscore=0 suspectscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2003310094
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9576
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ phishscore=0 clxscore=1011
+ malwarescore=0 impostorscore=0 mlxlogscore=999 spamscore=0 mlxscore=0
+ priorityscore=1501 lowpriorityscore=0 adultscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2003310094
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,46 +98,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "John B. Wyatt IV" <jbwyatt4@gmail.com>,
- Malcolm Priestley <tvboxspy@gmail.com>,
+Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Julia Lawall <julia.lawall@inria.fr>, outreachy-kernel@googlegroups.com,
  Forest Bond <forest@alittletooquiet.net>,
+ Gabriela Bittencourt <gabrielabittencourt00@gmail.com>,
  Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 03/31/20 02:01:03, Stefano Brivio wrote:
-> On Mon, 30 Mar 2020 16:39:00 -0700
-> "John B. Wyatt IV" <jbwyatt4@gmail.com> wrote:
+On Sat, Mar 28, 2020 at 10:54:33AM +0100, Oscar Carter wrote:
+> Define the necessary bits in the CHANNEL, PAPEDELAY and GPIOCTL0
+> registers to can use them in the calls to vnt_mac_reg_bits_on and
+> vnt_mac_reg_bits_off functions. In this way, avoid the use of BIT()
+> macros and clarify the code.
 > 
-> > Add error code handling to unused 'ret' variable that was never used.
-> > Return an error code from functions called within vnt_radio_power_on.
-> > 
-> > Issue reported by coccinelle (coccicheck).
-> > 
-> > Suggested-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-> > Suggested-by: Stefano Brivio <sbrivio@redhat.com>
-> > Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
->   ^ This should be dropped unless Quentin agrees to this version as well
+> Fixes: 3017e587e368 ("staging: vt6656: Use BIT() macro in vnt_mac_reg_bits_* functions")
+> Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+> ---
+>  drivers/staging/vt6656/baseband.c |  6 ++++--
+>  drivers/staging/vt6656/card.c     |  3 +--
+>  drivers/staging/vt6656/mac.h      | 12 ++++++++++++
+>  drivers/staging/vt6656/main_usb.c |  2 +-
+>  4 files changed, 18 insertions(+), 5 deletions(-)
 > 
-> > Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+> diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+> index a19a563d8bcc..dd3c3bf5e8b5 100644
+> --- a/drivers/staging/vt6656/baseband.c
+> +++ b/drivers/staging/vt6656/baseband.c
+> @@ -442,7 +442,8 @@ int vnt_vt3184_init(struct vnt_private *priv)
+>  		if (ret)
+>  			goto end;
 > 
-> Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
-> 
-> -- 
-> Stefano
-> 
+> -		ret = vnt_mac_reg_bits_on(priv, MAC_REG_PAPEDELAY, BIT(0));
+> +		ret = vnt_mac_reg_bits_on(priv, MAC_REG_PAPEDELAY,
+> +					  PAPEDELAY_B0);
 
-Just reviewed it so John doesn't need to send a v9. Everything seems
-good, I'm happy and checkpatch is too.
+This doesn't clarify anything.  It makes it less clear because someone
+would assume B0 means something but it's just hiding a magic number
+behind a meaningless define.  B0 means BIT(0) which means nothing.  So
+now we have to jump through two hoops to find out that we don't know
+anything.
 
-Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+Just leave it as-is.  Same for the rest.
 
-Thanks,
-Quentin
+There problem is a hardware spec which explains what this stuff is.
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
