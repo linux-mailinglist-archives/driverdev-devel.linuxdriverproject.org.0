@@ -1,110 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FAA019AA17
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Apr 2020 13:05:35 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C44B19AC3C
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Apr 2020 15:00:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A05F873A3;
-	Wed,  1 Apr 2020 11:05:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5A20E881BB;
+	Wed,  1 Apr 2020 13:00:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B5mtl5vQX_oJ; Wed,  1 Apr 2020 11:05:33 +0000 (UTC)
+	with ESMTP id LlWKByR0bQBO; Wed,  1 Apr 2020 13:00:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A4E778738B;
-	Wed,  1 Apr 2020 11:05:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BF65B88159;
+	Wed,  1 Apr 2020 13:00:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B15551BF484
- for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 11:05:30 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 902121BF3D1
+ for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 13:00:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AB6528738B
- for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 11:05:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8C93186503
+ for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 13:00:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mD4fkrNe08qB for <devel@linuxdriverproject.org>;
- Wed,  1 Apr 2020 11:05:28 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com
- (mail-bn7nam10on2079.outbound.protection.outlook.com [40.107.92.79])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 98CAC8738C
- for <devel@driverdev.osuosl.org>; Wed,  1 Apr 2020 11:05:28 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CgZX1sVmmmsImtvIFJXGN68MmR6nkJUBC9vAOQj5pK0Tky998kAZXmmp5NlGf+mqmj2oUmAnnCiDgqLikEn5FqC5v1WfOnu6Z/Xid2U5AJaR7TZY7pTigbNDZBx3zem6M83OfnA+0G/YfMk8IqLdAQPK5LPiSOMIdWmvXo5iSzBt3lDLFS9p+6Fk+NACoG+LMO6br5pUzDivPO5nkxjLweEAfCTxEzf9jqG0fjU0nijiuAHNzo5i+k8VfXL2JcJEzX3y7KC+XtIY67ynJOAYiMK1lBP4d+tkFaWSy5h9WR4wgUXLfGZhvkC/qGc0exWU7WV7YdqW9hdnUrlbYP4Ybg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RPrxWdWGNJvYjUT2owohbDyOyC0Vbtfc7ra7B4ROlWQ=;
- b=BR5+gGsllV6XE30EYTOXrpuesGKnj3fu7Si7rTskYWmLcpuA0CLmdxStu7Z3fKO0Y3xMhQ+VFBr/Qf48fSsnMxPI+1+yQeEdm3o1m1sYYwuJrHuE0cRjkZs1aHIMX4LT7GCAYT7JJ3fzxUUn1G+AF8qsDmVz8LeAPkwn8TK8mj2o89wUSbbktwBBIkqk4CB97vn7PbpZvuWkKk+DnJqdunRJYSEzuNiALb0HiRzsmI+Xv0ddhJ2pDJ/BpGT+GQoRnSYPl+lRfnsLfiCvNVfOIIkN6l+7P6eEjbOqlUOb/RrsC5NV8AECcHVQ9C3+4JPELQs4XvqaKppDbRlATN7gWw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RPrxWdWGNJvYjUT2owohbDyOyC0Vbtfc7ra7B4ROlWQ=;
- b=Y5QjFHLSt+COTKOYugvB7uaQi6yDAfdAuLXrVGaKOYzSlFK4c5+aibM8+qvWUziGzLwJNOXlErbBHcTEupDyd5QIpj24OxqYA0Mu6XffXKlQ/EoNt8i9dnlX2nGEfYDelOyRGJ/Yq7u3O9aVRKAovM61b+WstvtNdSt1US1gJCY=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com (2603:10b6:208:13f::22)
- by MN2PR11MB4285.namprd11.prod.outlook.com (2603:10b6:208:191::32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2856.20; Wed, 1 Apr
- 2020 11:05:27 +0000
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3]) by MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3%7]) with mapi id 15.20.2856.019; Wed, 1 Apr 2020
- 11:05:27 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: devel@driverdev.osuosl.org,
-	linux-wireless@vger.kernel.org
-Subject: [PATCH 32/32] staging: wfx: remove hack about tx_rate policies
-Date: Wed,  1 Apr 2020 13:04:05 +0200
-Message-Id: <20200401110405.80282-33-Jerome.Pouiller@silabs.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200401110405.80282-1-Jerome.Pouiller@silabs.com>
-References: <20200401110405.80282-1-Jerome.Pouiller@silabs.com>
-X-ClientProxiedBy: SN4PR0501CA0156.namprd05.prod.outlook.com
- (2603:10b6:803:2c::34) To MN2PR11MB4063.namprd11.prod.outlook.com
- (2603:10b6:208:13f::22)
+ with ESMTP id c-hlMUeMn9Gn for <devel@linuxdriverproject.org>;
+ Wed,  1 Apr 2020 13:00:24 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
+ [148.163.135.77])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6D95B864F3
+ for <devel@driverdev.osuosl.org>; Wed,  1 Apr 2020 13:00:24 +0000 (UTC)
+Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
+ by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 031CufLh009889; Wed, 1 Apr 2020 09:00:23 -0400
+Received: from nwd2mta4.analog.com ([137.71.173.58])
+ by mx0a-00128a01.pphosted.com with ESMTP id 3023g5cb63-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 01 Apr 2020 09:00:23 -0400
+Received: from ASHBMBX8.ad.analog.com (ashbmbx8.ad.analog.com [10.64.17.5])
+ by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 031D0L7J057278
+ (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=FAIL); 
+ Wed, 1 Apr 2020 09:00:21 -0400
+Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1779.2; Wed, 1 Apr 2020
+ 09:00:20 -0400
+Received: from zeus.spd.analog.com (10.64.82.11) by ASHBMBX9.ad.analog.com
+ (10.64.17.10) with Microsoft SMTP Server id 15.1.1779.2 via Frontend
+ Transport; Wed, 1 Apr 2020 09:00:20 -0400
+Received: from localhost.localdomain ([10.48.65.12])
+ by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 031D0Hmv023654;
+ Wed, 1 Apr 2020 09:00:18 -0400
+From: Alexandru Ardelean <alexandru.ardelean@analog.com>
+To: <linux-iio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <devel@driverdev.osuosl.org>
+Subject: [PATCH 1/3] iio: kfifo: add iio_device_attach_kfifo_buffer() helper
+Date: Wed, 1 Apr 2020 15:59:34 +0300
+Message-ID: <20200401125936.6398-1-alexandru.ardelean@analog.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.silabs.com (2a01:e35:2435:66a0:1265:30ff:fefd:6e7f) by
- SN4PR0501CA0156.namprd05.prod.outlook.com (2603:10b6:803:2c::34) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2878.9 via Frontend
- Transport; Wed, 1 Apr 2020 11:05:25 +0000
-X-Mailer: git-send-email 2.25.1
-X-Originating-IP: [2a01:e35:2435:66a0:1265:30ff:fefd:6e7f]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 32e0810a-ea3f-483a-d92f-08d7d62c953a
-X-MS-TrafficTypeDiagnostic: MN2PR11MB4285:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MN2PR11MB4285F5AAEB2BEA5E1389C4A193C90@MN2PR11MB4285.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
-X-Forefront-PRVS: 03607C04F0
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR11MB4063.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10009020)(136003)(366004)(346002)(376002)(39850400004)(396003)(7696005)(8676002)(1076003)(16526019)(186003)(6666004)(5660300002)(86362001)(4326008)(52116002)(478600001)(66946007)(66476007)(54906003)(36756003)(8936002)(316002)(81156014)(6486002)(2906002)(66556008)(107886003)(81166006)(2616005);
- DIR:OUT; SFP:1101; 
-Received-SPF: None (protection.outlook.com: silabs.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: h1qeSPoIe//HHNak+pSUaABbmyQA0ggmemurZGzVSDHV+lsH1cpN8OAf/8aU4nhNl0W+3S0iqUzRf+2AGzPtIB8LzaAGwbi0U2IROY0z/HutS5cP1QrwhV6Bzwf2Jbgq84UJdSMBZDM/HPHK+CN2EeGiFv4X5gEndVIxxSoQPgs3zMPVtj0VtBKC+NifTRRZnUL78bUn/8KakfJc6CMldLkJ75r4hH0FV2OwO3MZ1FJw6xTCHlcAtvdgkmP3ui9VUleakgYwEaihpYz4eTr0tZOqcASrNdWYjnMImVuDpFldletzn8xt6aITj9NDg2w76doZWWs24uN0DM6NR35H/vRyNYHu+3j+zioeNVv90im0AtQu9NbXvMauWve8Il+2uogWtkVzMrnuC9W0cdl1wLy7pxk9BLl0dhYhokril2d2xDh8WaQ5c0PiS9/Vqy3T
-X-MS-Exchange-AntiSpam-MessageData: cvMgiYPn/2TlNtXfy5qZ+kggf3E9UStRlG5XJFEfPDo+64PfnBui3mS9D/ojNBsxW0L3Txg98ge5VDT8P2bdIlWbtcKymJBAyM+BBJAPG4a11S5Th6RcKlpyE4s4aYfU3cBveRbDKrKev87Fze31x51r4jwqVyqCIgCjvT1IC9CpytbrtIbDQ14EEIEkhUw/Tttaho/x7jogPwVT9usICg==
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 32e0810a-ea3f-483a-d92f-08d7d62c953a
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Apr 2020 11:05:26.9909 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: hauASE1EqdAfBmoLfcj8lpqkFGCLqgziLNRUVpvY5P57dY0ZtCHj09C+/vr5CUxg++HO6VtWmxvzV914g8KgQg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4285
+X-ADIRoutedOnPrem: True
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
+ definitions=2020-04-01_01:2020-03-31,
+ 2020-03-31 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ clxscore=1011 malwarescore=0 phishscore=0 adultscore=0 bulkscore=0
+ impostorscore=0 suspectscore=2 mlxlogscore=815 spamscore=0
+ lowpriorityscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2003020000 definitions=main-2004010117
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,55 +83,102 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: lars@metafoo.de, pmeerw@pmeerw.net, knaack.h@gmx.de,
+ lorenzo.bianconi83@gmail.com,
+ Alexandru Ardelean <alexandru.ardelean@analog.com>, jic23@kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKQ3Vy
-cmVudCBjb2RlIGNvbnRhaW5zIGEgd2VpcmQgaGFjayB0byBhdm9pZCBzd2l0Y2ggZnJvbSA1NE1i
-cHMgQ1RTIHRvCjFNYnBzLiBIb3dldmVyLCB3ZSBoYXZlIG5vdCBiZWVuIGFibGUgdG8gcmVwcm9k
-dWNlIHRoZSBwcm9ibGVtIGFuZApoYXJkd2FyZSB0ZWFtIGRvbid0IGtub3cgYW55IGRlZmVjdCBv
-ZiB0aGlzIGtpbmQuIFNvLCBpdCBzZWVtcyB0aGlzIGhhY2sKaXMgbm8gbW9yZSBuZWNlc3Nhcnku
-CgpTaWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFi
-cy5jb20+Ci0tLQogZHJpdmVycy9zdGFnaW5nL3dmeC9kYXRhX3R4LmMgfCA1MyAtLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDUzIGRlbGV0aW9ucygt
-KQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy93ZngvZGF0YV90eC5jIGIvZHJpdmVycy9z
-dGFnaW5nL3dmeC9kYXRhX3R4LmMKaW5kZXggMWQ5YTgwODlmM2QzLi45M2VkMGVkNjNiYjIgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy93ZngvZGF0YV90eC5jCisrKyBiL2RyaXZlcnMvc3Rh
-Z2luZy93ZngvZGF0YV90eC5jCkBAIC01MSw1OSArNTEsNiBAQCBzdGF0aWMgdm9pZCB3ZnhfdHhf
-cG9saWN5X2J1aWxkKHN0cnVjdCB3ZnhfdmlmICp3dmlmLCBzdHJ1Y3QgdHhfcG9saWN5ICpwb2xp
-Y3ksCiAJCWlmIChyYXRlc1tpXS5pZHggPCAwKQogCQkJYnJlYWs7CiAJY291bnQgPSBpOwotCi0J
-LyogSEFDSyEhISBEZXZpY2UgaGFzIHByb2JsZW1zIChhdCBsZWFzdCkgc3dpdGNoaW5nIGZyb20K
-LQkgKiA1NE1icHMgQ1RTIHRvIDFNYnBzLiBUaGlzIHN3aXRjaCB0YWtlcyBlbm9ybW91cyBhbW91
-bnQKLQkgKiBvZiB0aW1lICgxMDAtMjAwIG1zKSwgbGVhZGluZyB0byB2YWx1YWJsZSB0aHJvdWdo
-cHV0IGRyb3AuCi0JICogQXMgYSB3b3JrYXJvdW5kLCBhZGRpdGlvbmFsIGctcmF0ZXMgYXJlIGlu
-amVjdGVkIHRvIHRoZQotCSAqIHBvbGljeS4KLQkgKi8KLQlpZiAoY291bnQgPT0gMiAmJiAhKHJh
-dGVzWzBdLmZsYWdzICYgSUVFRTgwMjExX1RYX1JDX01DUykgJiYKLQkgICAgcmF0ZXNbMF0uaWR4
-ID4gNCAmJiByYXRlc1swXS5jb3VudCA+IDIgJiYKLQkgICAgcmF0ZXNbMV0uaWR4IDwgMikgewot
-CQlpbnQgbWlkX3JhdGUgPSAocmF0ZXNbMF0uaWR4ICsgNCkgPj4gMTsKLQotCQkvKiBEZWNyZWFz
-ZSBudW1iZXIgb2YgcmV0cmllcyBmb3IgdGhlIGluaXRpYWwgcmF0ZSAqLwotCQlyYXRlc1swXS5j
-b3VudCAtPSAyOwotCi0JCWlmIChtaWRfcmF0ZSAhPSA0KSB7Ci0JCQkvKiBLZWVwIGZhbGxiYWNr
-IHJhdGUgYXQgMU1icHMuICovCi0JCQlyYXRlc1szXSA9IHJhdGVzWzFdOwotCi0JCQkvKiBJbmpl
-Y3QgMSB0cmFuc21pc3Npb24gb24gbG93ZXN0IGctcmF0ZSAqLwotCQkJcmF0ZXNbMl0uaWR4ID0g
-NDsKLQkJCXJhdGVzWzJdLmNvdW50ID0gMTsKLQkJCXJhdGVzWzJdLmZsYWdzID0gcmF0ZXNbMV0u
-ZmxhZ3M7Ci0KLQkJCS8qIEluamVjdCAxIHRyYW5zbWlzc2lvbiBvbiBtaWQtcmF0ZSAqLwotCQkJ
-cmF0ZXNbMV0uaWR4ID0gbWlkX3JhdGU7Ci0JCQlyYXRlc1sxXS5jb3VudCA9IDE7Ci0KLQkJCS8q
-IEZhbGxiYWNrIHRvIDEgTWJwcyBpcyBhIHJlYWxseSBiYWQgdGhpbmcsCi0JCQkgKiBzbyBsZXQn
-cyB0cnkgdG8gaW5jcmVhc2UgcHJvYmFiaWxpdHkgb2YKLQkJCSAqIHN1Y2Nlc3NmdWwgdHJhbnNt
-aXNzaW9uIG9uIHRoZSBsb3dlc3QgZyByYXRlCi0JCQkgKiBldmVuIG1vcmUKLQkJCSAqLwotCQkJ
-aWYgKHJhdGVzWzBdLmNvdW50ID49IDMpIHsKLQkJCQktLXJhdGVzWzBdLmNvdW50OwotCQkJCSsr
-cmF0ZXNbMl0uY291bnQ7Ci0JCQl9Ci0KLQkJCS8qIEFkanVzdCBhbW91bnQgb2YgcmF0ZXMgZGVm
-aW5lZCAqLwotCQkJY291bnQgKz0gMjsKLQkJfSBlbHNlIHsKLQkJCS8qIEtlZXAgZmFsbGJhY2sg
-cmF0ZSBhdCAxTWJwcy4gKi8KLQkJCXJhdGVzWzJdID0gcmF0ZXNbMV07Ci0KLQkJCS8qIEluamVj
-dCAyIHRyYW5zbWlzc2lvbnMgb24gbG93ZXN0IGctcmF0ZSAqLwotCQkJcmF0ZXNbMV0uaWR4ID0g
-NDsKLQkJCXJhdGVzWzFdLmNvdW50ID0gMjsKLQotCQkJLyogQWRqdXN0IGFtb3VudCBvZiByYXRl
-cyBkZWZpbmVkICovCi0JCQljb3VudCArPSAxOwotCQl9Ci0JfQotCiAJZm9yIChpID0gMDsgaSA8
-IElFRUU4MDIxMV9UWF9NQVhfUkFURVM7ICsraSkgewogCQlpbnQgcmF0ZWlkOwogCQl1OCBjb3Vu
-dDsKLS0gCjIuMjUuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0
-cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-dmVyZGV2LWRldmVsCg==
+This change adds the iio_device_attach_kfifo_buffer() helper/short-hand,
+which groups the simple routine of allocating a kfifo buffers via
+devm_iio_kfifo_allocate() and calling iio_device_attach_buffer().
+
+The mode_flags parameter is required. The setup_ops parameter is optional.
+
+This function will be a bit more useful when needing to define multiple
+buffers per IIO device.
+
+One requirement [that is more a recommendation] for this helper, is to call
+it after 'indio_dev' has been populated.
+
+Also, one consequence related to using this helper is that the resource
+management of the buffer will be tied to 'indio_dev->dev'. Previously it
+was open-coded, and each driver does it slightly differently. Most of them
+tied it to the parent device, some of them to 'indio_dev->dev'.
+This shouldn't be a problem, and may be a good idea when adding more
+buffers per-device.
+
+Signed-off-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
+---
+ drivers/iio/buffer/kfifo_buf.c | 37 ++++++++++++++++++++++++++++++++++
+ include/linux/iio/kfifo_buf.h  |  4 ++++
+ 2 files changed, 41 insertions(+)
+
+diff --git a/drivers/iio/buffer/kfifo_buf.c b/drivers/iio/buffer/kfifo_buf.c
+index 3150f8ab984b..05b7c5fc6f1d 100644
+--- a/drivers/iio/buffer/kfifo_buf.c
++++ b/drivers/iio/buffer/kfifo_buf.c
+@@ -228,4 +228,41 @@ void devm_iio_kfifo_free(struct device *dev, struct iio_buffer *r)
+ }
+ EXPORT_SYMBOL(devm_iio_kfifo_free);
+ 
++/**
++ * iio_device_attach_kfifo_buffer - Allocate a kfifo buffer & attach it to an IIO device
++ * @indio_dev: The device the buffer should be attached to
++ * @mode_flags: The mode flags for this buffer (INDIO_BUFFER_SOFTWARE and/or
++ *		INDIO_BUFFER_TRIGGERED).
++ * @setup_ops: The setup_ops required to configure the HW part of the buffer (optional)
++ *
++ * This function allocates a kfifo buffer via devm_iio_kfifo_allocate() and
++ * attaches it to the IIO device via iio_device_attach_buffer().
++ * This is meant to be a bit of a short-hand/helper function as many driver
++ * seem to do this.
++ */
++int iio_device_attach_kfifo_buffer(struct iio_dev *indio_dev,
++				   int mode_flags,
++				   const struct iio_buffer_setup_ops *setup_ops)
++{
++	struct iio_buffer *buffer;
++
++	if (mode_flags)
++		mode_flags &= kfifo_access_funcs.modes;
++
++	if (!mode_flags)
++		return -EINVAL;
++
++	buffer = devm_iio_kfifo_allocate(&indio_dev->dev);
++	if (!buffer)
++		return -ENOMEM;
++
++	iio_device_attach_buffer(indio_dev, buffer);
++
++	indio_dev->modes |= mode_flags;
++	indio_dev->setup_ops = setup_ops;
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(iio_device_attach_kfifo_buffer);
++
+ MODULE_LICENSE("GPL");
+diff --git a/include/linux/iio/kfifo_buf.h b/include/linux/iio/kfifo_buf.h
+index 764659e01b68..2363a931be14 100644
+--- a/include/linux/iio/kfifo_buf.h
++++ b/include/linux/iio/kfifo_buf.h
+@@ -11,4 +11,8 @@ void iio_kfifo_free(struct iio_buffer *r);
+ struct iio_buffer *devm_iio_kfifo_allocate(struct device *dev);
+ void devm_iio_kfifo_free(struct device *dev, struct iio_buffer *r);
+ 
++int iio_device_attach_kfifo_buffer(struct iio_dev *indio_dev,
++				   int mode_flags,
++				   const struct iio_buffer_setup_ops *setup_ops);
++
+ #endif
+-- 
+2.17.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
