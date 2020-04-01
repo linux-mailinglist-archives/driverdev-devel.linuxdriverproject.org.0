@@ -2,56 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF33219B67F
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Apr 2020 21:41:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 32C8519BCE7
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 09:42:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 554F92563C;
-	Wed,  1 Apr 2020 19:41:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7998A2047B;
+	Thu,  2 Apr 2020 07:42:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Xi3o2WRzt3si; Wed,  1 Apr 2020 19:41:42 +0000 (UTC)
+	with ESMTP id k9QprH55He-3; Thu,  2 Apr 2020 07:42:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9B2E321526;
-	Wed,  1 Apr 2020 19:41:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B604820425;
+	Thu,  2 Apr 2020 07:42:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 863001BF2BE
- for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 19:41:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6267D1BF3FF
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 07:42:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 82EFF87871
- for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 19:41:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5447220425
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 07:42:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zrfWegd-QtW8 for <devel@linuxdriverproject.org>;
- Wed,  1 Apr 2020 19:41:36 +0000 (UTC)
-X-Greylist: delayed 00:06:24 by SQLgrey-1.7.6
-Received: from mail.politiaromana.ro (mail.politiaromana.ro [86.105.216.22])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D83D886E4E
- for <devel@driverdev.osuosl.org>; Wed,  1 Apr 2020 19:41:35 +0000 (UTC)
-Received: from [192.168.10.135] (helo=mail.politiaromana.ro)
- by mail.politiaromana.ro stage1 with esmtps (Exim MailCleaner) 
- id 1jJj8j-0002qE-VZ for <devel@driverdev.osuosl.org> 
- from <cazier@politiaromana.ro>; Wed, 01 Apr 2020 22:35:05 +0300
-Received: from OMEGA-D1-MAIL2 (192.168.10.141) by OMEGA-D1-MAIL1 (Axigen)
- with (ECDHE-RSA-AES128-GCM-SHA256 encrypted) ESMTPSA id 3C1088;
- Wed, 1 Apr 2020 22:35:05 +0300
-Received: from mail.politiaromana.ro (192.168.10.135)
- by OMEGA-D1-MAIL2 (Axigen) with (ECDHE-RSA-AES128-GCM-SHA256 encrypted)
- ESMTPSA id 10384D; Wed, 1 Apr 2020 22:35:05 +0300
-Received: from info.gxhu1h22okvu5fmg1juajozsmg.mx.internal.cloudapp.net
- (104.46.232.54) by OMEGA-D1-MAIL1 (Axigen) with ESMTPA id 2E650E;
- Wed, 1 Apr 2020 22:35:00 +0300
-Message-ID: <1585769705506470675@OMEGA-D1-MAIL1>
+ with ESMTP id ibQVq3oPGbGO for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 07:42:13 +0000 (UTC)
+X-Greylist: delayed 09:27:07 by SQLgrey-1.7.6
+Received: from mail.erainfotechbd.com (mail.erainfotechbd.com [203.76.150.134])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7ACAD203BE
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 07:42:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.erainfotechbd.com (Postfix) with ESMTP id CBE1230C7A29;
+ Thu,  2 Apr 2020 02:41:42 +0600 (+06)
+Received: from mail.erainfotechbd.com ([127.0.0.1])
+ by localhost (mail.erainfotechbd.com [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id 15RdaL-IeEIM; Thu,  2 Apr 2020 02:41:42 +0600 (+06)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.erainfotechbd.com (Postfix) with ESMTP id 279F230C7A0D;
+ Thu,  2 Apr 2020 02:41:39 +0600 (+06)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.erainfotechbd.com 279F230C7A0D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=erainfotechbd.com;
+ s=0CC05E32-B981-11E8-9D9A-2C4673791530; t=1585773699;
+ bh=DHuYtROTKQm1d4T0KKw4Zypvj3HY2EO8jATn5UajGs8=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=SSMClIVBFbtnBw1XFSazV9AXYpIyALIVLcalZpiE0WudngVf/JAwqa0vu7YLoSdTp
+ bJ+GlR+6Avu0s3RMUcFWeSqk+vDg4K87U8ON8wXlgGtY+tSv3Pl48rxJLRhnooSlhM
+ bEFAfqlcx+JXxXCbqSIA1xHyW553S70q1hL59Kfoua9RhGneRaBJpUeGTuRr/wAidY
+ nr2k2nAA6seTpUxJEf65zzJ8J82yM+CXLyxH2M/Dr4nHwHFuIX4KpWf83bGYo0KkJG
+ 7B5XB8fn7aJfGwlaR8oIIjTTnQDTcsiH/IYf4/4z9woTZofeQ5ixFN0Fv1ufLlmBRo
+ K7PEQUrOTKKDA==
+X-Virus-Scanned: amavisd-new at mail.erainfotechbd.com
+Received: from mail.erainfotechbd.com ([127.0.0.1])
+ by localhost (mail.erainfotechbd.com [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id lxUD4VNfHcHY; Thu,  2 Apr 2020 02:41:39 +0600 (+06)
+Received: from [185.234.217.64] (unknown [185.234.217.64])
+ by mail.erainfotechbd.com (Postfix) with ESMTPSA id 964AB30C79C7;
+ Thu,  2 Apr 2020 02:41:30 +0600 (+06)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Please Help People Around You
-To: Recipients <cazier@politiaromana.ro>
-From: "Ms. Reem" < cazier@politiaromana.ro>
-Date: Wed, 01 Apr 2020 19:34:53 +0000
-X-MailCleaner-RDNS: invalid reverse DNS for 192.168.10.135
+Subject: YOUR COMPENSATION FUNDS
+To: Recipients <abc@erainfotechbd.com>
+From: European Union Compensation Scheme <abc@erainfotechbd.com>
+Date: Wed, 01 Apr 2020 13:39:39 -0700
+Message-Id: <20200401204130.964AB30C79C7@mail.erainfotechbd.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,21 +77,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemhashimi2020@daum.net
+Reply-To: info@e-ucs.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds assist Corona virus Symptoms and Causes.
+Dear Beneficiary,
 
-Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+We are please to inform you that you have been selected for Monetary Compensation of Four Million Five Hundred Thousand Euros from The EUROPEAN UNION COMPENSATION SCHEME (EU), Through the European Union Economic and Financial Directorate (Mr.Marco Buti).
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+Reply for more details to file your compensation, Kindly provide us the below info.
 
-If you can handle the fund in a good investment. reply on this email only: reemalhashimi@daum.net
-Regards,
-Ms. Reem
+Full Names:
+Country:
+Telephone Number:
+
+
+Contact Person: (Mr.Hilton Neil)
+Contact E-mail: claimssinc@gmail.com
+Contact Number: (+44) 7451 275 521
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
