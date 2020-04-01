@@ -1,82 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77D7419AF1A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Apr 2020 17:52:31 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5682919B077
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Apr 2020 18:28:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5C142885A8;
-	Wed,  1 Apr 2020 15:52:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 474708777F;
+	Wed,  1 Apr 2020 16:28:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JE2joG2xZvuq; Wed,  1 Apr 2020 15:52:29 +0000 (UTC)
+	with ESMTP id rTRFBDgfWafr; Wed,  1 Apr 2020 16:28:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC8FE883B7;
-	Wed,  1 Apr 2020 15:52:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 313AA875E9;
+	Wed,  1 Apr 2020 16:28:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 441011BF57C
- for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 15:52:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E35311BF577
+ for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 16:28:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3F63986C63
- for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 15:52:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E0546876B6
+ for <devel@linuxdriverproject.org>; Wed,  1 Apr 2020 16:28:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5l-LSYEJi97V for <devel@linuxdriverproject.org>;
- Wed,  1 Apr 2020 15:52:25 +0000 (UTC)
+ with ESMTP id g8zJAERi9HqC for <devel@linuxdriverproject.org>;
+ Wed,  1 Apr 2020 16:28:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CE89885F19
- for <devel@driverdev.osuosl.org>; Wed,  1 Apr 2020 15:52:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1585756335;
- bh=3eq5ME+gVr4M1P00oIT+Rc42Nsmquyg/D1KhXARjebc=;
- h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
- b=J8/Y50VNM29aa4oWf6QVSkMPQ5QldSqWvvWeCCiE8oYn8Qo9Ne/tu8VYbo8F2+pIp
- ARnjLv4x73vE+/4CSfBtvRcBPhbbnVlRD0wyNB9eA+GY/V89bjEhX5tX8/IGTz56zn
- gy7/+1Sp5OFpjjiA/16bloA52QB0ACOAlDXHHnu4=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx105
- [212.227.17.174]) with ESMTPSA (Nemesis) id 1MAOJP-1jVSI01FWt-00BxKb; Wed, 01
- Apr 2020 17:52:15 +0200
-Date: Wed, 1 Apr 2020 17:52:13 +0200
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: vt6656: Define EnCFG_BBType_MASK as OR between
- previous defines
-Message-ID: <20200401155212.GB3109@ubuntu>
-References: <20200327165802.8445-1-oscar.carter@gmx.com>
- <20200330122714.GA113453@kroah.com>
+Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
+ [209.85.167.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 60ED6875E9
+ for <devel@driverdev.osuosl.org>; Wed,  1 Apr 2020 16:28:18 +0000 (UTC)
+Received: by mail-oi1-f196.google.com with SMTP id e4so22710394oig.9
+ for <devel@driverdev.osuosl.org>; Wed, 01 Apr 2020 09:28:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=rfCI3MmNMKhIWwdq7waZHHOt5wHpRU9+ke91xb3DAzE=;
+ b=XLuJzGPwZodRwLDuU4vnRMKYee0HoSwjmH+KzA3C1paBYmLw/gZL/WxsGWiJ6csFVx
+ GYtLwun7Q9BuXyh20Gh5W5m3iAmtMmWDsWP5/Hiyz9t9oCMSHWsRH6jqRIlfscGajmOY
+ ODz8EsNO2QWIOv27MA/9xzQ0cKRWK1J+4TwZULsPT3dLGu9AXhSuM5564Kd9nAMMNu2e
+ owPsuHDoJ8PvTEGs/HNEXx4ckd30dwIB91awdR+SZ3Mj5ghK+ABc0jVOtmSi7Vv90EkW
+ +irU4YAFm+y8hyJF9CyrybCWTwd7UunCG2w1xfI4bkBNTqxPlu+cJl7hTsxvQVrrO0BV
+ yfIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=rfCI3MmNMKhIWwdq7waZHHOt5wHpRU9+ke91xb3DAzE=;
+ b=pQdBChpWCZ4e/IDlGlMmPmUAHAg7h1hLZwrbi5SghwZejgpBkwB7jEC2alUfFlAU56
+ 2wQGnG7B3L5qAjJjw1s0ee3HYRMi7SXJSz66vBYnJyU7ZgPxghv5cIelxQ1yW03sTCdu
+ RPXL3GSNEDq07biDya+JAtsQlKRz8ZlKs44OBvRL97J1iXtjNYJiRGPvDks7yWVNm6H/
+ OGISanbixNX1JKzhTRirZjGjAU0BVYGqhj6xUPSPWL9Zapw0xEc70Hf3r23pf0Tjm0KE
+ 37lzGEz8P5N7zhej09kXkoyJpCLj81NUWik35dtx/MWfUFCMpAEhsDnh9vcqe/VfG2tI
+ I/Xw==
+X-Gm-Message-State: AGi0PuZONOpS1bW2Kh99vmPHwu4spncxoO7lbQo60qrcdsSEdnHOeCnr
+ nYY/WJ53PLZ+ybeZ1zZ/o8pAECFKwxERHrfftXE=
+X-Google-Smtp-Source: APiQypIJMJ5rrbTZ5ambbjOmsd3ABxHHZDxUZKwl8yNVpSl5krKa77goA2cWmdU8NZLsqiG5AQh67/51ctqFVFgby+0=
+X-Received: by 2002:aca:5317:: with SMTP id h23mr3529048oib.33.1585758497330; 
+ Wed, 01 Apr 2020 09:28:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200330122714.GA113453@kroah.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Provags-ID: V03:K1:dB1hbiDlJbRfAbWMS4n1nBjXSFgq/QwnCi6DMfpH0RNAsTOgxgH
- XCWhs4ZSr/MwKu4I/nOOSHNtvdzH+iYqOmQQnYlAXl0quY/fjEIZQSCP71kySq2b0hlMGRB
- Sv3JDtW4TPXt4YhaozzHcbnT+315pcpqcKogNwF+PjrX+6rLsHweLHH5BiTJFZQ9UaTwt+0
- gvM8cYc6Mi8bfkQ2AYZBQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7uJTvMvfw4I=:avgJoEJvY6zy5SsYKojpA1
- ChGOVZmebOVws/0GN+ZZB5Xvt3AQ6iQzbNxs4D/IbELyI+ZiRAD7MkjmyogUhcq0e5CMRdmKC
- 61DcSLgnJ6rtfW6k7Oz4PQ/a+PDRJbqban2SWGv9Ol9EaHfx8xWyCj+hY7UEPo6gXfNnKFJEc
- t9czfb+F62AUgW+cwljyaTjIcdzVcANx246pc/8MqFIk1cm/JJcqHDsh/hPisMJjDYwvk78Nr
- QcB8bM2EV0X5vIwPTyRNWxd0c2EGn8wpwYTJAjgYAWcsS1eqmzO2dlfIJjFir0Uxm5Wd52Too
- lDMdfI7TFYuvqtox4VmtNQk705laPv4wz60cB4l5UDoxWIhLNMjtv6sWwW66n4OT35VoakWY4
- 3+n2MBwoiWONfEzPoqq/viKjiS1JDqF9MNOMpB+52e0OIMT/8aR9khXcbHh3DHWu4nekZPSuS
- bHGdc+Ld9L88qEtMFu9dqRu8V7lt0nMI4IiSCEBNj51OjOlT+VTccgzc2939GLJKn11SpSt0D
- P7CzMqsvQF75mqKdh4v0JLsj6B2Gp1t/2KDpgiXPkbzORY82pYC5zPfjAa2JzQj3kADzIM/u9
- UjIch6GPUL8yU6itbKykrBeDVD91lJPKn63GU9K0PMiVb00IODoIPeGh03flFmN/XdCeAyQnB
- B2YC/QGdC9tm042h1q/6HGH5yWkxDmTo2avlkfumVLpgfgl9HRxa6xVU0+Mp5zifbjNVp9uA1
- rml0ipCLbhkAZKnw+UDkErwIarxnJtgXijHflnNs0vsZkSHz4fJwtjHG5iYOluD/QtBR94gYW
- Hg887eXVgwnkXT6THYbgw/2OCQ/uXDipKTvzlyL5q9NmlN8szm60a14zXv7ISfgomU51gDf5X
- P5n1TTxtJOsvdgQGuskdBbIFd2uYKbmLMcgPPUqIBoiP0lkEXo8nn0kLMlksv4gdxELo7A42k
- R4AowL2634Z1CDQJfImXUwlNMtODMw4rBppxvioGWCuugSY85o1AsAAqYd/qPGHP1qfx0Adxx
- 50pzKBInILBL71WDmI7/D284WwuQA5oQM7yrPUTUqgMuSQHdSQZZFZAtfgE3R06Hx1V2WcWpL
- dyYjmytQRFFL/0OIz0n2H+xHK7108GUBiBFPSkjH324zskzAbe6owwFjKFja7GysStvewr06E
- Hygc+/8GyfM75hitsiEO8a5FX+sl2LFIjf629kbbP0wEm8ZS8JY9QSAbGl98C7ETxK/0cnJZq
- S1x5i87Tpafkt1EZf
+Received: by 2002:a05:6839:2187:0:0:0:0 with HTTP; Wed, 1 Apr 2020 09:28:16
+ -0700 (PDT)
+From: Mrs Fatima Banneth <mrsveroibrahim@gmail.com>
+Date: Wed, 1 Apr 2020 17:28:16 +0100
+Message-ID: <CADdk66b4e6tVRtM2B=qrcXT+Qi6jRnkhn52jwiY8J3neFHOtcg@mail.gmail.com>
+Subject: Dear friend.
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,55 +79,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Forest Bond <forest@alittletooquiet.net>,
- Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org
+Reply-To: fatimabanneth017@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Mar 30, 2020 at 02:27:14PM +0200, Greg Kroah-Hartman wrote:
-> On Fri, Mar 27, 2020 at 05:58:02PM +0100, Oscar Carter wrote:
-> > Define the EnCFG_BBType_MASK bit as an OR operation between two previous
-> > defines instead of using the OR between two new BIT macros. Thus, the
-> > code is more clear.
-> >
-> > Fixes: a74081b44291 ("staging: vt6656: Use BIT() macro instead of hex value")
-> > Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
-> > Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-> > ---
-> >  drivers/staging/vt6656/mac.h | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/vt6656/mac.h b/drivers/staging/vt6656/mac.h
-> > index c532b27de37f..b01d9ee8677e 100644
-> > --- a/drivers/staging/vt6656/mac.h
-> > +++ b/drivers/staging/vt6656/mac.h
-> > @@ -177,7 +177,7 @@
-> >  #define EnCFG_BBType_a		0x00
-> >  #define EnCFG_BBType_b		BIT(0)
-> >  #define EnCFG_BBType_g		BIT(1)
-> > -#define EnCFG_BBType_MASK	(BIT(0) | BIT(1))
-> > +#define EnCFG_BBType_MASK	(EnCFG_BBType_b | EnCFG_BBType_g)
->
-> This does not "fix" anything, like your "Fixes:" tag implies.  It just
-> cleans up the code some more.  Only use Fixes: if it actually fixes a
-> problem introduced by a previous patch.
->
-Ok, thanks for the explanation.
+Dear friend.
 
-> Can you remove that line and resend?
->
-Yes, I will remove that line, I will create a new version of this patch and I
-will resend it.
+It's my pleasure to have contact with you, based on the critical
+condition I find myself, though, it's not financial problem, but my
+health, you might have know that cancer is not what to talk  about at
+home I have been in the hospital for 5 months now I am married to Mr.
+Abaulkarim Banneth who worked with Tunisia embassy in Burkina Faso for
+nine years before he died in the year 2008.We were married for eleven
+years without a child. He died after a brief illness that lasted for
+five days.
 
-> thanks.
->
-> greg k-h
+Since his death I decided not to remarry because of the attitude of
+his younger Brother who is just after properties. When my late husband
+was alive he deposited the sum of US$ 8.2million ( Eight million two
+hundred thousand dollars) in a bank in Burkina Faso for me, Presently
+this money is still in bank.
 
-Thanks,
-oscar carter
+And My Doctors told me that I don't have much time to live because of
+the cancer problem and i dont want to live this money in the bank for
+Government instead I decided to use it for Old people who cannot work
+again and Orphans who have nothing to eat because my Husband family
+people are very wicked, Having known my condition I decided to hand
+over this fund to a responsible person that have fear of God to take
+care of less-privileged people with this fund , please utilize this
+money the way I am going to instruct here I want you to take 30%
+Percent of the total money for yourself While 70% of the money will go
+to charity works and helping the Old people who have nothing to eat.
+
+I don't want my husband's efforts to be used by the Government and I
+dont want my Husband people to know about this money. I grew up as an
+Orphan and I don't have anybody as my family member, if you are really
+interested to help me please do not hesitate to indicate your interest
+to me. I will be very happy if you can write me through my private
+email addre(fatimabanneth017@gmail.com) for easy communication
+
+
+I wait for your response.
+My regards,
+Mrs Fatima Banneth
+written from Hospital
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
