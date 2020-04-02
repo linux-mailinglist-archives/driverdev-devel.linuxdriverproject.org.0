@@ -1,90 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5D1719C012
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 13:22:17 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2BB9B2049E;
-	Thu,  2 Apr 2020 11:22:15 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LDSSZ-z486BA; Thu,  2 Apr 2020 11:22:14 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id EBA5B203A9;
-	Thu,  2 Apr 2020 11:22:12 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BA66E1BF3F7
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 11:22:10 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6419219C047
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 13:35:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B71BB87B85
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 11:22:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 487B987E0B;
+	Thu,  2 Apr 2020 11:35:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TNUqDNCpgmo6; Thu,  2 Apr 2020 11:35:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id E114787D04;
+	Thu,  2 Apr 2020 11:35:13 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D2FF91BF3F7
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 11:35:11 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id CBCF5887F6
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 11:35:11 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1zreP2qUNGYq for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 11:22:10 +0000 (UTC)
+ with ESMTP id ps30ZfSvm1Qo for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 11:35:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2624987B72
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 11:22:10 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032BDkNn088511;
- Thu, 2 Apr 2020 11:21:53 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=AJdz6L/Vw6hmin7lipJ5B/HV3aW2/d8FK2eFPWDTde4=;
- b=V4h4DEgrooTwo8Gp+yNfnUO829ofSbMSOpY4QwsaBhwUR/u/3QLq/RSwdCHIFCD09MBC
- r0NMa/PxZhtLQ/hjZfX1DZgqFc6ZclYhtQnNq0T5FB3KRN5pbdJvILOpr/1L1PHuWs15
- q0SV99aD4I8h3ORwO+zk+VkJFZMqykQY027UFvjwB+ByslB51AIXMiymRW5iFDASZ9MD
- 2AqHKYknQR+61T5YsUkv1y/41zWr0H/+5v0d2HXN1yDg22n2Kvi63bEN4gWS91cfnDpf
- cBeluIcUn+Io+YuK/QLUCXLp0IJ1rjzEyJ+jqRDoxVchuWQkbT0M5A7SlWGRGpuRsj0/ jw== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2130.oracle.com with ESMTP id 303cevaqxp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 02 Apr 2020 11:21:53 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032BCx8q078899;
- Thu, 2 Apr 2020 11:21:53 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3030.oracle.com with ESMTP id 302g2jcvv1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 02 Apr 2020 11:21:53 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 032BLnCJ008878;
- Thu, 2 Apr 2020 11:21:49 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 02 Apr 2020 04:21:48 -0700
-Date: Thu, 2 Apr 2020 14:21:37 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: ltykernel@gmail.com
-Subject: Re: [Update PATCH] x86/Hyper-V: Initialize Syn timer clock when it's
-Message-ID: <20200402112137.GM2001@kadam>
-References: <20200330141708.12822-1-Tianyu.Lan@microsoft.com>
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 82939887EF
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 11:35:10 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id p10so3768194wrt.6
+ for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 04:35:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:references:subject:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=3jRj6ArkhLpwKk89KkNwwo0VNZLkATY3JVXtCwdIArM=;
+ b=K5EVHPS43D3wRMjNBYwFajRGzmakbnuj+UOMC+I3xmc/oBhq64lltzXE7tKv9ShvUq
+ CtkZGwuDchILQM06WFVgVpu9QVxOfiQOJPLogjjrq7Noy1yl/sgroQB7YifPJ9J2Q9Sn
+ nEWmbWbVkGjxYs1EGON1aNgsjj8TbBTVajQw2Cqh9bvzZiyLgOvXfqqaSwiChuPcvQwj
+ UXVolcpVUn68hUorItLk6ayhBoV+pxvY17WazrWj4vC5NQ059F0EJe2koBP1s1NG0ESl
+ 7eSrl2K/7zk/XIPmzVQ+x2c5+RHguj+65zeVfXvTlvo/Jx/GK13Jx3Kn4i8RrKOmmxci
+ eyfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:references:subject:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=3jRj6ArkhLpwKk89KkNwwo0VNZLkATY3JVXtCwdIArM=;
+ b=YZWj1XqfhWmD3yv1rzLtMchBfTwUcQabunceTjti9K9/eeBcXXh3cgIa2iIXti5r3k
+ 7McnuYlh7yYEBmtd+kUSHuZWNgt0sDx/qHhjBDXkdkW6TESjl9+EUrSV60itgMR354gW
+ bJEfBu/QQ61tHLHwOtjZCPpcJyow2kjz2u+sCt1m/E9IDeba4eFSQjXwDomQP6ei2G/P
+ KqJM86UE5qCN2QU7WEDjuJ08jqbIVurzQkZumKL9wkNUfFI+MTi5skCvjhqfM34+9oxP
+ sz9/I6nIdxP3GVhZPD5RGFeYWeyhn/QAmOir2n5zRiFCFHe+xa3SmXKzMH4zVRWP2Oor
+ BO8Q==
+X-Gm-Message-State: AGi0PuZgBSd3zA6++Js2XfPKmmujC55zlpYOdHI/hksms7zNTqP+0Epy
+ 1kpBwU1lG3pdv70/EQuJGk4=
+X-Google-Smtp-Source: APiQypJScYhchNteJw20HMwQtHnfXa6FcDztGwsdbPdIPctfKge9tKbWTf7Ki51Ie81cFzzp4rihKQ==
+X-Received: by 2002:adf:97d0:: with SMTP id t16mr3091065wrb.343.1585827308886; 
+ Thu, 02 Apr 2020 04:35:08 -0700 (PDT)
+Received: from [192.168.2.1] (ip51ccf9cd.speed.planet.nl. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id m19sm5863793wml.21.2020.04.02.04.35.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Apr 2020 04:35:08 -0700 (PDT)
+To: helen.koike@collabora.com
+References: <20200402000234.226466-3-helen.koike@collabora.com>
+Subject: Re: [PATCH 2/4] dt-bindings: media: rkisp1: move rockchip-isp1
+ bindings out of staging
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <7e53ec1e-33bd-3385-40a0-de3fd00ad1a1@gmail.com>
+Date: Thu, 2 Apr 2020 13:35:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200330141708.12822-1-Tianyu.Lan@microsoft.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9578
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- spamscore=0 mlxscore=0
- adultscore=0 phishscore=0 bulkscore=0 suspectscore=1 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004020102
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9578
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 adultscore=0
- clxscore=1011 phishscore=0 lowpriorityscore=0 spamscore=0 malwarescore=0
- suspectscore=1 mlxscore=0 impostorscore=0 mlxlogscore=999 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004020102
+In-Reply-To: <20200402000234.226466-3-helen.koike@collabora.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,21 +89,242 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: wei.liu@kernel.org, sthemmin@microsoft.com,
- Tianyu Lan <Tianyu.Lan@microsoft.com>, haiyangz@microsoft.com, x86@kernel.org,
- linux-kernel@vger.kernel.org, michael.h.kelley@microsoft.com, mingo@redhat.com,
- bp@alien8.de, hpa@zytor.com, devel@linuxdriverproject.org, tglx@linutronix.de,
- vkuznets@redhat.com
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ dafna.hirschfeld@collabora.com, heiko@sntech.de, karthik.poduval@gmail.com,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, mark.rutland@arm.com,
+ kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This doesn't apply to today's linux-next.
+Hi Helen,
 
-regards,
-dan carpenter
+> # SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> %YAML 1.2
+> ---
+> $id: http://devicetree.org/schemas/media/rockchip-isp1.yaml#
+> $schema: http://devicetree.org/meta-schemas/core.yaml#
+> 
 
+> title: Rockchip SoC Image Signal Processing unit v1
+
+Where do we need 'v1' for? Is there a 'v2'?
+
+> 
+> maintainers:
+>   - Helen Koike <helen.koike@collabora.com>
+> 
+> description: |
+>   Rockchip ISP1 is the Camera interface for the Rockchip series of SoCs
+>   which contains image processing, scaling, and compression functions.
+> 
+> properties:
+>   compatible:
+>     const: rockchip,rk3399-cif-isp
+> 
+>   reg:
+>     maxItems: 1
+> 
+>   interrupts:
+>     maxItems: 1
+> 
+>   iommus:
+>     maxItems: 1
+> 
+>   power-domains:
+>     maxItems: 1
+> 
+>   phys:
+>     maxItems: 1
+>     description: phandle for the PHY port
+> 
+>   phy-names:
+>     const: dphy
+> 
+>   clocks:
+>     items:
+>       - description: ISP clock
+>       - description: ISP AXI clock clock
+>       - description: ISP AXI clock  wrapper clock
+>       - description: ISP AHB clock clock
+>       - description: ISP AHB wrapper clock
+> 
+>   clock-names:
+>     items:
+>       - const: clk_isp
+>       - const: aclk_isp
+>       - const: aclk_isp_wrap
+>       - const: hclk_isp
+>       - const: hclk_isp_wrap
+> 
+>   # See ./video-interfaces.txt for details
+>   ports:
+>     type: object
+>     additionalProperties: false
+> 
+>     properties:
+>       "#address-cells":
+>         const: 1
+> 
+>       "#size-cells":
+>         const: 0
+> 
+>       port@0:
+>         type: object
+>         description: connection point for sensors at MIPI-DPHY RX0
+
+>         additionalProperties: false
+
+Nothing required here?
+
+> 
+>         properties:
+>           "#address-cells":
+>             const: 1
+> 
+>           "#size-cells":
+>             const: 0
+> 
+>           reg:
+>             const: 0
+> 
+>         patternProperties:
+>           endpoint:
+>             type: object
+>             additionalProperties: false
+> 
+>             properties:
+>               reg:
+>                 maxItems: 1
+> 
+>               data-lanes:
+>                 minItems: 1
+>                 maxItems: 4
+> 
+>               remote-endpoint: true
+> 
+>     required:
+
+>       - port@0
+
+The use of '@0' makes "#address-cells" and "#size-cells" also a requirement.
+
+- "#address-cells"
+- "#size-cells"
+
+> 
+> required:
+>   - compatible
+
+How about 'reg'?
+
+- reg
+
+>   - interrupts
+>   - clocks
+>   - clock-names
+>   - power-domains
+>   - iommus
+>   - phys
+>   - phy-names
+>   - ports
+> 
+> additionalProperties: false
+> 
+> examples:
+>   - |
+> 
+>     #include <dt-bindings/clock/rk3399-cru.h>
+>     #include <dt-bindings/interrupt-controller/arm-gic.h>
+>     #include <dt-bindings/power/rk3399-power.h>
+> 
+>     parent0: parent@0 {
+>         #address-cells = <2>;
+>         #size-cells = <2>;
+> 
+>         isp0: isp0@ff910000 {
+>             compatible = "rockchip,rk3399-cif-isp";
+>             reg = <0x0 0xff910000 0x0 0x4000>;
+>             interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+>             clocks = <&cru SCLK_ISP0>,
+>                      <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
+>                      <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
+>             clock-names = "clk_isp",
+>                           "aclk_isp", "aclk_isp_wrap",
+>                           "hclk_isp", "hclk_isp_wrap";
+>             power-domains = <&power RK3399_PD_ISP0>;
+>             iommus = <&isp0_mmu>;
+>             phys = <&dphy>;
+>             phy-names = "dphy";
+> 
+>             ports {
+>                 #address-cells = <1>;
+>                 #size-cells = <0>;
+> 
+>                 port@0 {
+>                     #address-cells = <1>;
+>                     #size-cells = <0>;
+>                     reg = <0>;
+> 
+>                     mipi_in_wcam: endpoint@0 {
+>                         reg = <0>;
+>                         remote-endpoint = <&wcam_out>;
+>                         data-lanes = <1 2>;
+>                     };
+> 
+>                     mipi_in_ucam: endpoint@1 {
+>                         reg = <1>;
+>                         remote-endpoint = <&ucam_out>;
+>                         data-lanes = <1>;
+>                     };
+>                 };
+>             };
+>         };
+> 
+
+>         i2c7: i2c@ff160000 {
+>             clock-frequency = <400000>;
+>             #address-cells = <1>;
+>             #size-cells = <0>;
+
+Incomplete example.
+From i2c-rk3x.yaml:
+
+required:
+  - compatible
+  - reg
+  - interrupts
+  - clocks
+  - clock-names
+
+> 
+>             wcam: camera@36 {
+>                 compatible = "ovti,ov5695";
+>                 reg = <0x36>;
+> 
+>                 port {
+>                     wcam_out: endpoint {
+>                         remote-endpoint = <&mipi_in_wcam>;
+>                         data-lanes = <1 2>;
+>                     };
+>                 };
+>             };
+> 
+>             ucam: camera@3c {
+>                 compatible = "ovti,ov2685";
+>                 reg = <0x3c>;
+> 
+>                   port {
+>                       ucam_out: endpoint {
+>                           remote-endpoint = <&mipi_in_ucam>;
+>                           data-lanes = <1>;
+>                       };
+>                   };
+>             };
+>         };
+>     };
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
