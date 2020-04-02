@@ -1,79 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B40E019C788
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 19:02:33 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA5CB19C7CD
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 19:20:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C38828919B;
-	Thu,  2 Apr 2020 17:02:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5EA6C87567;
+	Thu,  2 Apr 2020 17:20:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xS9IscLoDBqL; Thu,  2 Apr 2020 17:02:31 +0000 (UTC)
+	with ESMTP id wfOhl9cyeoO5; Thu,  2 Apr 2020 17:20:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 412768908C;
-	Thu,  2 Apr 2020 17:02:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6A30487559;
+	Thu,  2 Apr 2020 17:20:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 831811BF395
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 17:02:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 87CA61BF381
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 17:20:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8011A87558
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 17:02:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 80E8F87559
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 17:20:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GlZWnpNvKNOd for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 17:02:28 +0000 (UTC)
+ with ESMTP id fvvzRGOuCk12 for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 17:20:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2F9A887557
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 17:02:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1585846936;
- bh=8UWypK5pgVcYcqIwFlJJIKU66AJRcAaCGYCCv5rqHSc=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=kz5/1BLakRSoXGwoWbzj0G2RsRakRC3O083MpECK0lcusQNnUBrcvbBKK3RDqcJin
- K7dUMj5WTR471Ftf/q0RbDgXdzM0CFakZoCYpRUPJ+Yx++hOCSIMrQ5sXXG7ZKsoe9
- DWftEnWe1HekBoC3HXKCAMV7RonuRGQ756ByiSzE=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx104 [212.227.17.174]) with ESMTPSA (Nemesis) id
- 1MqJqN-1ixvlT1b4l-00nPcN; Thu, 02 Apr 2020 19:02:16 +0200
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2] staging: vt6656: Define EnCFG_BBType_MASK as OR between
- previous defines
-Date: Thu,  2 Apr 2020 19:01:03 +0200
-Message-Id: <20200402170103.22520-1-oscar.carter@gmx.com>
-X-Mailer: git-send-email 2.20.1
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CBC8E87558
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 17:20:24 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id 31so5190079wrs.3
+ for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 10:20:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:references:subject:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=UNJ1uaTiNqIRTE+G4swZEf2hRjorhqOonJ08sUIRMO8=;
+ b=jEtA31kCYdON/FahHCcg+UBAPDTy+pA+0phOgPakqyDAcWizWXyX2voqe6wOOShhz+
+ lad+2Y+Y76Nug9dGKGO4MM6Q2ZQKJ9czz0E/xBDjQE9N7mG0M95Try7/j0B2rbQceGCY
+ 4QG77bLGCkcn1eVcULRpr8BblLziRJEpSpsEADs3Ej1K29FH53U02Nrmnniz/6ugULeu
+ awM1dc0I4KYlvz2i210q6CiLt8W/7umpXeK1yi+U7B2WZJ8JF6mYeWRqD4Ftfi6PtGBw
+ JrXmtfnWOWSF88o9sP1cP/5Vxh0+0uzDr2Ku8qDONJcFTLIcEompanRTmp0Engu85CIO
+ PG6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:references:subject:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=UNJ1uaTiNqIRTE+G4swZEf2hRjorhqOonJ08sUIRMO8=;
+ b=DWuokVWtjPe7MxyBvBBCUdR8EuVATW6uEAoRKxN1Ln4fWugtvZ4bnSiydXSxV0AT/i
+ v/jm1m2mxnudQ+hoAT3yL5QPpH6fSILB/SkE5az9+VG/2XzWd8GC5eGsCWk1WPsXudhz
+ GevAubdhMQHFATpkHqFg0carBEVzvBQBo2iAOsQpJw7HrhJz7WBVGUyZjh/HSIwLWl7V
+ WiKR4gDQretARF/JWNA49dYI+ULWfzFKrioGR9CoK/MsU2JCUNG4gN+7qEb+qqy6fv6h
+ 3mmb5/bOFODKuY+s7+g2upeRXv+ghNFIyUF0ytzJDSn2i084+cGeck6e69Gef8FH9u04
+ Ui9A==
+X-Gm-Message-State: AGi0PuY481Yy1nkUDoI7UAaTdYX2K7rgrzLFwcv1y0puJLA2RlUqJ7pi
+ ucR8pMeYCfbK3KwGb583TsM=
+X-Google-Smtp-Source: APiQypKmwTbIEdvuK9WraXHHv2M4yWUIWm+FRJNIs5z6cWkO9BgGTzdDqqMxZD0Qzr89n/zfC45I+A==
+X-Received: by 2002:adf:9168:: with SMTP id j95mr4319844wrj.145.1585848023290; 
+ Thu, 02 Apr 2020 10:20:23 -0700 (PDT)
+Received: from [192.168.2.1] (ip51ccf9cd.speed.planet.nl. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id b199sm8670886wme.23.2020.04.02.10.20.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Apr 2020 10:20:22 -0700 (PDT)
+To: helen.koike@collabora.com
+References: <20200402000234.226466-5-helen.koike@collabora.com>
+Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add isp0 node for rk3399
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <1187d28a-6fb9-fd12-a422-8a4220a11e79@gmail.com>
+Date: Thu, 2 Apr 2020 19:20:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:92r1pGjCMbrGkXpHcqtHjCNU/M4fbFzS1R86MSFEIhWrF4H/JMF
- QemgjEJ4zbeOHAsxeXaaeTRQRiLIvKb60mA/Yd/ylGNPEBNj8muDZHsC79ZuoneZVb5DXY9
- b+HJBhz6t9R95in47coyaiolMD+vEBbQ3rnujgtm30qDo5Qtye+8KhtNNtsliMkdAt8HOjB
- wIU71B12rn5896tXfXZNg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lHToelEcjb4=:B1oScJRzOkmBzLG0RFEIvy
- /I6B8VNsZHjt6h+W5K1Y7eAaYKfTbRobNsysN2MepWDF1HtRSl9bN1zXj0EFWbUzJG2i1efTy
- ZMhzJHncqJFwydMF2XoibrOE++9YuFiyx0s77jVyXW2SI1u7V3MaQUz8OZWDAT7M6pWb9ZrL4
- dlwxh9PrfDXb+mK+0QT+lx1QswBSVEG/EPqfMxAraa/+lMDrtob0N4gsrL9JeR4kTamH3OzxE
- e4I5DjUrDlxkJJjiR9Ux2E0pRb8OD1hE3GlWbFrLd3cNvUHMKY4X5PNXGjbC4BKfsSvNtmZTs
- j16IDXQixAbLHBJiWbYZrqXlZJ+Bs5by1dg+bkhm9I7CgeKigJadNnwzAkfP27mjDG0juNnh6
- IfpPAVEPOZ7lwPIQ4EA/rjM9KD5B5aIrcjXRSuy9IKpRt3gNcRD15esP8yfb8mOMLtvnVzAaM
- Ck87DhuL4+mD1khLNL5yjzUvHOf2nECIvCFaKOcutsEROXx/clkQC633MFOzlVdlD9N/DMl22
- ip1EfV9iBJ5jYr4mNxeJe/qIzmjwseMuxhZ2uxZEmTeiItQprwdyZnOHHQlqiWuvvXSO23woT
- cC3YkGD3dPBN9/jm7yAsFgGTkr110YifGBoxnlMqOJOu/EGm5g/DT/DUtaGEpKjJyoO0Dkug9
- kcCmpn11uJkd7L2Uxn6kKBi7F2bsinGED+aOLtlr4bJP2W6zKLhlwJErlxHNE0uW4kZmnD+5A
- O50qfHsaaDgVmnmtiHWaSpcGqqiFQWHDvwVwmswWDTsRTTD/QardBDoXPUk8n9wl1Ay1vYE7S
- lkOFSlS2oLGOmAN+aSHLrDRfF3xosSslMeYqR8FRZln7di9nEmubiyysVhnrBaBAlEWV8YyXd
- pTLhCWH2XdiGNjAfhgA0qxV73pjGRe5rvA75pZ+IvsRTkF1AvOqfsgOFW7Beg7gknqFDUq/sS
- j++7Hirrx3Shep/1NW8TXGYlLo5AMsTsJwK/QquFUjUIM9Xh4iYBd+1PEMq2+pSXWNh+F9QGN
- O5v861QMyTaCIBfDBjQfOFy3wg6pgUlrSz7/szWi7ZYT6JGPLhIHe9zfUHq2PmFvh8+pr9tj1
- wCFyViMe+eWIvR6gfl8otWogem457GbD2jzFdgQYWb4Aq1C4bgnaHQeULV6t84Yk1/saOigl8
- p70HSeyhUdqTaPyg9ugGu7+hfDccSlPXaHFyVBZ3KtpwSztWcaW/316EQcWGrF8nqDzkvL2cW
- hUk4t4xb906JZax70
+In-Reply-To: <20200402000234.226466-5-helen.koike@collabora.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,43 +88,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- linux-kernel@vger.kernel.org, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ dafna.hirschfeld@collabora.com, heiko@sntech.de, karthik.poduval@gmail.com,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, mark.rutland@arm.com,
+ kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Define the EnCFG_BBType_MASK bit as an OR operation between two previous
-defines instead of using the OR between two new BIT macros. Thus, the
-code is more clear.
+Hi Helen,
 
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
----
-Changelog v1 -> v2
-- Remove the "Fixes:" tag line.
-- Add "Reviewed-by: Quentin Deslandes"
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index fc0295d2a65a1..815099a0cd0dd 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -1718,6 +1718,33 @@ vopb_mmu: iommu@ff903f00 {
+>  		status = "disabled";
+>  	};
+>  
+> +	isp0: isp0@ff910000 {
+> +		compatible = "rockchip,rk3399-cif-isp";
+> +		reg = <0x0 0xff910000 0x0 0x4000>;
+> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		clocks = <&cru SCLK_ISP0>,
+> +			 <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
+> +			 <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
+> +		clock-names = "clk_isp",
+> +			      "aclk_isp", "aclk_isp_wrap",
+> +			      "hclk_isp", "hclk_isp_wrap";
 
- drivers/staging/vt6656/mac.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> +		power-domains = <&power RK3399_PD_ISP0>;
+> +		iommus = <&isp0_mmu>;
+> +		phys = <&mipi_dphy_rx0>;
+> +		phy-names = "dphy";
 
-diff --git a/drivers/staging/vt6656/mac.h b/drivers/staging/vt6656/mac.h
-index c532b27de37f..b01d9ee8677e 100644
---- a/drivers/staging/vt6656/mac.h
-+++ b/drivers/staging/vt6656/mac.h
-@@ -177,7 +177,7 @@
- #define EnCFG_BBType_a		0x00
- #define EnCFG_BBType_b		BIT(0)
- #define EnCFG_BBType_g		BIT(1)
--#define EnCFG_BBType_MASK	(BIT(0) | BIT(1))
-+#define EnCFG_BBType_MASK	(EnCFG_BBType_b | EnCFG_BBType_g)
- #define EnCFG_ProtectMd		BIT(5)
+Maybe a little sort? But keep rest as it is. Also in example.
 
- /* Bits in the EnhanceCFG_1 register */
---
-2.20.1
+		iommus = <&isp0_mmu>;
+		phys = <&mipi_dphy_rx0>;
+		phy-names = "dphy";
+		power-domains = <&power RK3399_PD_ISP0>;
+
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			port@0 {
+
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				reg = <0>;
+
+Move reg above #address-cells. Change that in example as well.
+
+				reg = <0>;
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+> +			};
+> +		};
+> +	};
+> +
+>  	isp0_mmu: iommu@ff914000 {
+>  		compatible = "rockchip,iommu";
+>  		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+> -- 
+> 2.26.0
 
 _______________________________________________
 devel mailing list
