@@ -1,82 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EEA119CAC8
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 22:10:31 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BA2A19CBD2
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 22:45:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AB9148752A;
-	Thu,  2 Apr 2020 20:10:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6421326781;
+	Thu,  2 Apr 2020 20:45:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 31KH795DJS6f; Thu,  2 Apr 2020 20:10:29 +0000 (UTC)
+	with ESMTP id fN4Ib3+WrjtA; Thu,  2 Apr 2020 20:45:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 82791870BD;
-	Thu,  2 Apr 2020 20:10:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CF0112155D;
+	Thu,  2 Apr 2020 20:45:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A52171BF3E6
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 20:10:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F3BC71BF3E6
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 20:45:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A1AD787317
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 20:10:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F0AFC883BA
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 20:45:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id quyyrCwIjpeT for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 20:10:26 +0000 (UTC)
+ with ESMTP id oKHRGMWXHZqP for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 20:45:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DC72F870BD
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 20:10:25 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id a81so5085305wmf.5
- for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 13:10:25 -0700 (PDT)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1395B883B6
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 20:45:25 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id p10so5853158wrt.6
+ for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 13:45:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5UitrtcQcLyUuypDd55yvaCM6NIpqOgNi0sTpbymWqI=;
- b=jLUnozkZzk4wHj1zfjABKiOeRlA+KmFZy7xnaV7k84+hygjsJgnWCGl9rdGgKYZBLD
- EcCtl/2F/L+6SK6Nkmj7cSBZpmfEVcfaE/qebmIW6CTRo2jxjsafOZlyF0jYEup9bFUi
- KGbP6hKKwQjR8wryIky2THe219oIq9qoE2XBaUV/36TfgDLK5yNsRDQgzifAv3x+0ide
- +dXZS9T6AvOWhnXvKDqTZUIA3tBWJH6ohCIqHEGb5gqscpHUgOoqqI2D1xRjMnZ8VFkn
- kwdj5LogxrcQpwPdW6Q4ABa1wP7PSaceNqWWFLzdpN2R7BSMNvMX0ui6JP1NzEy59lPA
- WSgQ==
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=YlSD4Lk4f6lPWhUFQ2ne86biZ/yC8yucmHDeLcuroz8=;
+ b=WcH1BXGHgSoOwDNpAGxLwoMQUObcbxH48bpCbwmsD4Aje0/QKeSTyXkgBHCBQ4zgL7
+ CIM44HVSdSnj7NXv4oSdlrhyaiuTSUnvoCG9wFzuqxNEhd+hVEjdtsWxEEutxEiLOBEd
+ stSbvYVo2wBYfapMJBb+outBXc8Gmq8n9mwx3Tg91xtTzX4gbO6pYUfe0qjxe2ShMUwY
+ PSvjKeuRwl4aE459OokRwbiOkxRjQNuDsbxY5JJLP41LimY7bPFY+54qS8/Y+kUfeLhJ
+ JsjQhg/L3wxexVFuV/lu+qsI5FsgumBmgFn4/7bJ7SWD+N5c3rYqBPm4RzevTM7bS+lb
+ v98w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5UitrtcQcLyUuypDd55yvaCM6NIpqOgNi0sTpbymWqI=;
- b=Po4L3TWVK6K4exYG17cT2CFhLjzrjvZ3UeCz06oLug2lSJ2mSJTA544r+khrtnkjQC
- 7QIbi0k7pWOhNbisgNO7tVvN6zGTAMN/djosa7LzakUIG2PP8lB8efVOVQHs1CYXagCY
- HH9ayioKFT10JJPH6RjIlCU7kA/9mF30pn+Yegivfg2sS3TZX2Je0NiRixANOsk44On1
- tMa36l/XuCIdoT1VNSS4A0OHL7ruQnjnc6Y6heJgHWKw5hyRkHLRr3XeQ9FgLFZ4EOah
- wtFsH04YravNi7wH1CwpDSgTfMUBGGg8LJKW6yJPAhg1ZfX2L658bFKeNff764U3/8SY
- Irrg==
-X-Gm-Message-State: AGi0Pua8jOV/iMjJXJqtOpp6wHmbMCbFYK9EG+g1mUtYe6nfj+8G91RH
- yPqXlQPP60t5Fe3qulhLAEY=
-X-Google-Smtp-Source: APiQypIbEEkJukJIMkBcjNC0Z/IpCLXYe/ZM6jvYBjXgKEX9jEuufWBxIiPSsGTTRPDqcUTlIC+mKg==
-X-Received: by 2002:a1c:c257:: with SMTP id s84mr5274398wmf.9.1585858224173;
- Thu, 02 Apr 2020 13:10:24 -0700 (PDT)
-Received: from [192.168.2.1] (ip51ccf9cd.speed.planet.nl. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id r5sm8462481wmr.15.2020.04.02.13.10.22
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=YlSD4Lk4f6lPWhUFQ2ne86biZ/yC8yucmHDeLcuroz8=;
+ b=ii+UCdPoe1xhUwAsJalvGu6nSJgOUa/3wOYrQ2X586uBJTg8vOGBDlwoEkuFq61rP0
+ +2ux5YUB+r3+NjQXvutmqi1khG3Ly+2Nl2m+ttN5NlX7qNfESrwEyRI0+XaI3D57PGcj
+ oGcA5ZgO10tKdqHibqbap7oWrRfMqy0Z4LRXX2k+RUofbQqWWwNKS2fQIFdgFrWQrpSR
+ 3teVEX7BrgMh8aW0bJ3Ofd8zmveaaerlX5CorbbvsDpNAS2r46rLbV1gSJaKMPkKzzM5
+ /dEt88rrgqsFf7se/cfQ+TKlGNyqHFUDcGTiTapiQ+8TRlAmCh+TUUocEyNrFqHM+9K/
+ tUlA==
+X-Gm-Message-State: AGi0PubWF5dRtspngdBYcQljjbvZ5XNI3xbopmhxdCE9lmrdmTLQouae
+ 99dajMr8wrdSidZzIjLoR2iwLtAg
+X-Google-Smtp-Source: APiQypKptHzouBDkzkNWuInsaxcIl98/BYu6yzlazLnMr8SXiVDJ1fnt5++gATFVwZI+TqFErRusmQ==
+X-Received: by 2002:adf:f3d2:: with SMTP id g18mr2672777wrp.356.1585860323399; 
+ Thu, 02 Apr 2020 13:45:23 -0700 (PDT)
+Received: from [192.168.43.18] (188.29.165.56.threembb.co.uk. [188.29.165.56])
+ by smtp.gmail.com with ESMTPSA id
+ o9sm3986296wru.29.2020.04.02.13.45.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Apr 2020 13:10:23 -0700 (PDT)
-Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add isp0 node for rk3399
-To: Helen Koike <helen.koike@collabora.com>
-References: <20200402000234.226466-5-helen.koike@collabora.com>
- <1187d28a-6fb9-fd12-a422-8a4220a11e79@gmail.com>
- <d8b05dd4-1ece-9513-b2ec-0cb58f665c5e@collabora.com>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <20ae21a6-74b0-ff99-80d9-1a0ce2cc1aa5@gmail.com>
-Date: Thu, 2 Apr 2020 22:10:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thu, 02 Apr 2020 13:45:22 -0700 (PDT)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: [PATCH] staging: vt6656: replace al2230_power_table array with
+ formula.
+Message-ID: <e277409a-4509-d09c-515d-59b952f8310d@gmail.com>
+Date: Thu, 2 Apr 2020 21:45:21 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <d8b05dd4-1ece-9513-b2ec-0cb58f665c5e@collabora.com>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,101 +87,138 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- dafna.hirschfeld@collabora.com, heiko@sntech.de, karthik.poduval@gmail.com,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, mark.rutland@arm.com,
- kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 4/2/20 9:46 PM, Helen Koike wrote:
-> 
-> 
-> On 4/2/20 2:20 PM, Johan Jonker wrote:
->> Hi Helen,
->>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> index fc0295d2a65a1..815099a0cd0dd 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> @@ -1718,6 +1718,33 @@ vopb_mmu: iommu@ff903f00 {
->>>  		status = "disabled";
->>>  	};
->>>  
->>> +	isp0: isp0@ff910000 {
->>> +		compatible = "rockchip,rk3399-cif-isp";
->>> +		reg = <0x0 0xff910000 0x0 0x4000>;
->>> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
->>> +		clocks = <&cru SCLK_ISP0>,
->>> +			 <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
->>> +			 <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
->>> +		clock-names = "clk_isp",
->>> +			      "aclk_isp", "aclk_isp_wrap",
->>> +			      "hclk_isp", "hclk_isp_wrap";
->>
->>> +		power-domains = <&power RK3399_PD_ISP0>;
->>> +		iommus = <&isp0_mmu>;
->>> +		phys = <&mipi_dphy_rx0>;
->>> +		phy-names = "dphy";
->>
->> Maybe a little sort? But keep rest as it is. Also in example.
->>
->> 		iommus = <&isp0_mmu>;
->> 		phys = <&mipi_dphy_rx0>;
->> 		phy-names = "dphy";
->> 		power-domains = <&power RK3399_PD_ISP0>;
-> 
-> Are you proposing only to move power-domains after phy? And keep the rest?
-> What is the main logic?
+The power table can replaced with calculation 0x0404090 | (power << 12)
+removing array and length macro.
 
-There is no hard rule... It mostly depend on Heiko...
+variable power never goes beyond the maximum setting.
 
-For nodes:
-Sort things without reg alphabetical first,
-then sort the rest by reg address.
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
+---
+ drivers/staging/vt6656/rf.c | 79 ++-----------------------------------
+ 1 file changed, 4 insertions(+), 75 deletions(-)
 
-Inside nodes:
-If exists on top: compatible, reg and interrupts.
-In alphabetical order the required properties.
-Then in alphabetical order the other properties.
-And as last things that start with '#' in alphabetical order.
-
-> 
-> Thanks
-> Helen
-> 
->>
->>> +
->>> +		ports {
->>> +			#address-cells = <1>;
->>> +			#size-cells = <0>;
->>> +
->>> +			port@0 {
->>
->>> +				#address-cells = <1>;
->>> +				#size-cells = <0>;
->>> +				reg = <0>;
->>
->> Move reg above #address-cells. Change that in example as well.
->>
->> 				reg = <0>;
->> 				#address-cells = <1>;
->> 				#size-cells = <0>;
->>
->>> +			};
->>> +		};
->>> +	};
->>> +
->>>  	isp0_mmu: iommu@ff914000 {
->>>  		compatible = "rockchip,iommu";
->>>  		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
->>> -- 
->>> 2.26.0
->>
-
+diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+index 43237b7e1dbe..4f9aba0f21b0 100644
+--- a/drivers/staging/vt6656/rf.c
++++ b/drivers/staging/vt6656/rf.c
+@@ -27,7 +27,6 @@
+ #include "usbpipe.h"
+ 
+ #define CB_AL2230_INIT_SEQ    15
+-#define AL2230_PWR_IDX_LEN    64
+ 
+ #define CB_AL7230_INIT_SEQ    16
+ #define AL7230_PWR_IDX_LEN    64
+@@ -518,74 +517,6 @@ static u8 vt3342_channel_table1[CB_MAX_CHANNEL][3] = {
+ 	{0x03, 0x00, 0x04}
+ };
+ 
+-/* Power Table */
+-static const u32 al2230_power_table[AL2230_PWR_IDX_LEN] = {
+-	0x04040900,
+-	0x04041900,
+-	0x04042900,
+-	0x04043900,
+-	0x04044900,
+-	0x04045900,
+-	0x04046900,
+-	0x04047900,
+-	0x04048900,
+-	0x04049900,
+-	0x0404a900,
+-	0x0404b900,
+-	0x0404c900,
+-	0x0404d900,
+-	0x0404e900,
+-	0x0404f900,
+-	0x04050900,
+-	0x04051900,
+-	0x04052900,
+-	0x04053900,
+-	0x04054900,
+-	0x04055900,
+-	0x04056900,
+-	0x04057900,
+-	0x04058900,
+-	0x04059900,
+-	0x0405a900,
+-	0x0405b900,
+-	0x0405c900,
+-	0x0405d900,
+-	0x0405e900,
+-	0x0405f900,
+-	0x04060900,
+-	0x04061900,
+-	0x04062900,
+-	0x04063900,
+-	0x04064900,
+-	0x04065900,
+-	0x04066900,
+-	0x04067900,
+-	0x04068900,
+-	0x04069900,
+-	0x0406a900,
+-	0x0406b900,
+-	0x0406c900,
+-	0x0406d900,
+-	0x0406e900,
+-	0x0406f900,
+-	0x04070900,
+-	0x04071900,
+-	0x04072900,
+-	0x04073900,
+-	0x04074900,
+-	0x04075900,
+-	0x04076900,
+-	0x04077900,
+-	0x04078900,
+-	0x04079900,
+-	0x0407a900,
+-	0x0407b900,
+-	0x0407c900,
+-	0x0407d900,
+-	0x0407e900,
+-	0x0407f900
+-};
+-
+ /*
+  * Description: Write to IF/RF, by embedded programming
+  */
+@@ -685,10 +616,9 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ 
+ 	switch (priv->rf_type) {
+ 	case RF_AL2230:
+-		if (power >= AL2230_PWR_IDX_LEN)
+-			return false;
++		power_setting = 0x0404090 | (power << 12);
+ 
+-		ret &= vnt_rf_write_embedded(priv, al2230_power_table[power]);
++		ret &= vnt_rf_write_embedded(priv, power_setting);
+ 
+ 		if (rate <= RATE_11M)
+ 			ret &= vnt_rf_write_embedded(priv, 0x0001b400);
+@@ -696,10 +626,9 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ 			ret &= vnt_rf_write_embedded(priv, 0x0005a400);
+ 		break;
+ 	case RF_AL2230S:
+-		if (power >= AL2230_PWR_IDX_LEN)
+-			return false;
++		power_setting = 0x0404090 | (power << 12);
+ 
+-		ret &= vnt_rf_write_embedded(priv, al2230_power_table[power]);
++		ret &= vnt_rf_write_embedded(priv, power_setting);
+ 
+ 		if (rate <= RATE_11M) {
+ 			ret &= vnt_rf_write_embedded(priv, 0x040c1400);
+-- 
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
