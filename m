@@ -1,52 +1,89 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 118E619BC4E
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 09:11:43 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 58DAD19BD62
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 10:16:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 303D820471;
-	Thu,  2 Apr 2020 07:11:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AB0908789B;
+	Thu,  2 Apr 2020 08:16:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZfuxiOAoBrOR; Thu,  2 Apr 2020 07:11:39 +0000 (UTC)
+	with ESMTP id daFw0SjtJtwS; Thu,  2 Apr 2020 08:16:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 567A620409;
-	Thu,  2 Apr 2020 07:11:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 91149868C6;
+	Thu,  2 Apr 2020 08:16:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 783051BF3FF
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 07:11:35 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9AC2B1BF3AF
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 08:16:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 742E0203ED
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 07:11:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9725D86DD6
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 08:16:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 74hRBb7dIuNx for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 07:11:34 +0000 (UTC)
+ with ESMTP id HCCtzOHbhNAw for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 08:16:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail2-relais-roc.national.inria.fr
- (mail2-relais-roc.national.inria.fr [192.134.164.83])
- by silver.osuosl.org (Postfix) with ESMTPS id B6F5820409
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 07:11:33 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.72,334,1580770800"; d="scan'208";a="443452906"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
- by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 Apr 2020 09:11:30 +0200
-Date: Thu, 2 Apr 2020 09:11:30 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: android: ion: Fix parenthesis
- alignment
-In-Reply-To: <20200402012515.429329-1-jbwyatt4@gmail.com>
-Message-ID: <alpine.DEB.2.21.2004020910570.3014@hadrien>
-References: <20200402012515.429329-1-jbwyatt4@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 257D3868C6
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 08:16:10 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0328DQwQ143813;
+ Thu, 2 Apr 2020 08:16:09 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=mime-version :
+ message-id : date : from : to : cc : subject : references : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=O6BIiuKyZpO6P/IQ7LqOJjcZsm3+4lrzYTFGZULwaZg=;
+ b=ApHM7iN40FK5+SS6+xuNNpsMZf22crsmUKtWfIySGUSce5912uZPuHlBsEpr+M/GG+OM
+ gcOUdCfYMbvJK0FAv7KsPq5+ntPeyPWHkRnEl5FqbexJBz+VmgI+0/8/xO8oTaOC/4dw
+ KlhEBg9abY1TolO3X1sYzBNT4OgP+hAHonRAK6YR7SWqZmL2Mu1uxn1oUR9Ifm+i8J3U
+ 2xDuwyBmtvxi65vb8zqB1bIFofoiLQUoCTTwdGlXm4elqVi71pIZq06YQsIQ3wG6RN6e
+ gqT8KYg+xuCBy/m2Ju7EMeWtBiBd0GtnZfoLiAtLlQaLTZwLYpqK6KKK/DdmgLUDjpJf AA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 303aqhta04-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 02 Apr 2020 08:16:09 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0328CQ1r076164;
+ Thu, 2 Apr 2020 08:14:08 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 302g4v4hyu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 02 Apr 2020 08:14:08 +0000
+Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0328E6Dw020581;
+ Thu, 2 Apr 2020 08:14:06 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 02 Apr 2020 01:12:19 -0700
+USER-AGENT: Mutt/1.9.4 (2018-02-28)
 MIME-Version: 1.0
+Message-ID: <20200402081211.GC2001@kadam>
+Date: Thu, 2 Apr 2020 01:12:12 -0700 (PDT)
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Aiman Najjar <aiman.najjar@hurranet.com>
+Subject: Re: [PATCH] staging: rtl8712: fix checkpatch warnings
+References: <20200326055616.GA3718@kernel-dev>
+In-Reply-To: <20200326055616.GA3718@kernel-dev>
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9578
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ bulkscore=0 suspectscore=0
+ mlxscore=0 spamscore=0 malwarescore=0 mlxlogscore=851 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004020074
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9578
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ phishscore=0 clxscore=1011
+ malwarescore=0 impostorscore=0 mlxlogscore=905 spamscore=0 mlxscore=0
+ priorityscore=1501 lowpriorityscore=0 adultscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004020074
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,69 +96,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+Cc: devel@driverdev.osuosl.org,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- outreachy-kernel@googlegroups.com,
- =?ISO-8859-15?Q?Arve_Hj=F8nnev=E5g?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Laura Abbott <labbott@redhat.com>,
- Martijn Coenen <maco@android.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- Christian Brauner <christian@brauner.io>
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Thu, Mar 26, 2020 at 01:56:16AM -0400, Aiman Najjar wrote:
+> @@ -350,7 +351,7 @@ static int xmitframe_addmic(struct _adapter *padapter,
+>  	struct	sta_info *stainfo;
+>  	struct	qos_priv *pqospriv = &(padapter->mlmepriv.qospriv);
+>  	struct	pkt_attrib  *pattrib = &pxmitframe->attrib;
+> -	struct	security_priv *psecuritypriv = &padapter->securitypriv;
+> +	struct	security_priv *psecpriv = &padapter->securitypriv;
 
+This patch is doing too many things of course, but the other problem is
+that when you're renaming variables we don't what them to start with "p"
+to mean that they are a pointer.  "psecpriv" should just be "secpriv".
+That name is still kind of rubbish, but it's not against the rules like
+starting with a p for pointer.
 
-On Wed, 1 Apr 2020, John B. Wyatt IV wrote:
+regards,
+dan carpenter
 
-> Fix 2 parenthesis alignment issues.
-
-Please try to find a way to describe what you have done that doesn't
-involve the word "Fix".  What have you done and why?
-
-julia
-
-
->
-> Reported by checkpatch.
->
-> Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
-> ---
->  drivers/staging/android/ion/ion_page_pool.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/android/ion/ion_page_pool.c b/drivers/staging/android/ion/ion_page_pool.c
-> index f85ec5b16b65..0198b886d906 100644
-> --- a/drivers/staging/android/ion/ion_page_pool.c
-> +++ b/drivers/staging/android/ion/ion_page_pool.c
-> @@ -37,7 +37,7 @@ static void ion_page_pool_add(struct ion_page_pool *pool, struct page *page)
->  	}
->
->  	mod_node_page_state(page_pgdat(page), NR_KERNEL_MISC_RECLAIMABLE,
-> -							1 << pool->order);
-> +			    1 << pool->order);
->  	mutex_unlock(&pool->mutex);
->  }
->
-> @@ -57,7 +57,7 @@ static struct page *ion_page_pool_remove(struct ion_page_pool *pool, bool high)
->
->  	list_del(&page->lru);
->  	mod_node_page_state(page_pgdat(page), NR_KERNEL_MISC_RECLAIMABLE,
-> -							-(1 << pool->order));
-> +			    -(1 << pool->order));
->  	return page;
->  }
->
-> --
-> 2.25.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200402012515.429329-1-jbwyatt4%40gmail.com.
->
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
