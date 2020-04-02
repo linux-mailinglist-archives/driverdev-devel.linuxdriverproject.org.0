@@ -1,107 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5893919C4A6
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 16:47:55 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD4D319C4AE
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 16:49:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3845A26270;
-	Thu,  2 Apr 2020 14:47:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 87A0487265;
+	Thu,  2 Apr 2020 14:49:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kxDhCFM0z36f; Thu,  2 Apr 2020 14:47:52 +0000 (UTC)
+	with ESMTP id igG1jwVlN4BV; Thu,  2 Apr 2020 14:49:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 21B8B221CC;
-	Thu,  2 Apr 2020 14:47:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 67C5187251;
+	Thu,  2 Apr 2020 14:49:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CFCBB1BF9BD
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:47:48 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 26FAF1BF42C
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:49:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CC67788072
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:47:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 20F6026242
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:49:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id huYbtQd2RmYg for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 14:47:48 +0000 (UTC)
+ with ESMTP id X71pLsmG3HPi for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 14:49:22 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM02-CY1-obe.outbound.protection.outlook.com
- (mail-eopbgr760083.outbound.protection.outlook.com [40.107.76.83])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2888D8806F
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 14:47:48 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eW+bRmGT98Z0wAzczCutzwsf2pWrspD/1BJ07e2hYcci96mdinIX9JsnzWkwpvw1BWglgXBSRjIygamqWItdJCFJV0gQY7ykbtMV0s4O+QsNyiXd4/z0DdNRXs7W0Qh+OIKziqA6XRV5cFHos0HR42B9T93EcCTowwGImlucGI0oVLwDVoDb736rmQ5dTQvutgoyPSSfYaNaatxz3cgaWEx4VvUSsU+y6nlQQuCwG8Z5+n+OWDEcUd+LnEKfokl5eJLfVA4rbB8MyKID+kseJDpD9kgnjDE1AjSR2m5qC6FyLprS2G/YqUqZpnaH0wHb0dpzNeDwmWT5hmmQenLZxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tx5HaOlF5WMgiHCbnL8ck9EVglskddJgBgzgphBcfhg=;
- b=l0u8llp14V+KmDxwJPNUWozkuRo4EgaNJr8YbW2Jntb05yUPwR+gOlcIcZBGWbGxP47wHKK8K9DwHWV/Xt1I56y0/xSqMHnKzLVDW7US77py4rDROBgh7LBnxDdju6yFvzL1TD+rAxBo48q0e9yQevyOjV0+n6ivQAqaeV/bBBPp7tIYQrw8KWtqr4WeCIZ5RNgcuzheQnRWDFuOnv1G9Yq0RwOJ6GAci8wMvYpKwXM+p5yjcQearnqzdIMAlcJu7un+yVGsTZuhMcpGLH2L+YIYzKRNgFhRRPaoJKo21m0ehosmuXsR/zTCOdxiWi9UVerJ7r5S/l+7QR8yPnTXrQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tx5HaOlF5WMgiHCbnL8ck9EVglskddJgBgzgphBcfhg=;
- b=JmVEKs9vYVWjT3uIv1ioxHeO0cnhixvEBhJ9+bpI2oQ81WGcKzjxje9zWGu7shKQzZnIf0Re7Cs0pWv7WB1EQyDG0mrOz1Rw9ZXUgK7petsZfPj8rVy7nkU6shP8R253Hl/95sKCzIznuGpmZUqHfUQLKcsEpGLsvv1TuPRh8fU=
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com (2603:10b6:208:13f::22)
- by MN2PR11MB3758.namprd11.prod.outlook.com (2603:10b6:208:f6::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2856.20; Thu, 2 Apr
- 2020 14:47:46 +0000
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3]) by MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3%7]) with mapi id 15.20.2856.019; Thu, 2 Apr 2020
- 14:47:46 +0000
-From: =?iso-8859-1?Q?J=E9r=F4me_Pouiller?= <Jerome.Pouiller@silabs.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH 04/32] staging: wfx: remove "burst" mechanism
-Thread-Topic: [PATCH 04/32] staging: wfx: remove "burst" mechanism
-Thread-Index: AQHWCBVPTkK1g59Lj06+40sZrLfNVKhlzpUAgAAclgA=
-Date: Thu, 2 Apr 2020 14:47:45 +0000
-Message-ID: <2993281.fr9RtUPQsq@pc-42>
-References: <20200401110405.80282-1-Jerome.Pouiller@silabs.com>
- <20200401110405.80282-5-Jerome.Pouiller@silabs.com>
- <20200402130526.GR2001@kadam>
-In-Reply-To: <20200402130526.GR2001@kadam>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-x-originating-ip: [82.67.86.106]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 444f3428-2d65-4b2b-bf1d-08d7d714ce7f
-x-ms-traffictypediagnostic: MN2PR11MB3758:
-x-microsoft-antispam-prvs: <MN2PR11MB37580815BDFD6BF7FBDB90F493C60@MN2PR11MB3758.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-forefront-prvs: 0361212EA8
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR11MB4063.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10009020)(7916004)(376002)(39850400004)(366004)(346002)(136003)(396003)(26005)(71200400001)(81156014)(54906003)(33716001)(316002)(6916009)(186003)(6506007)(86362001)(6486002)(478600001)(8936002)(76116006)(66446008)(66476007)(91956017)(4326008)(81166006)(6512007)(66946007)(64756008)(2906002)(9686003)(66556008)(8676002)(5660300002)(39026012);
- DIR:OUT; SFP:1101; 
-received-spf: None (protection.outlook.com: silabs.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: bC7fT14yzI98ccEY6ZtlAx9o74t1ZzlwBZoJzOLqQn9W9/17zjRZeVQhQi2z6yRb/E9k/3a+t2UKnZ3n9KmJLguaZsmIIOYO7rMbSqyLBxNGjNZUw55VNCeAii7QQqqhGeEdcJS3sPxSLSWDrnvjSQ7oN0PCyBJYcKDa769oeQYO+u/tGBCGuiX71wnSarkSjsvBn24C2u0LB0q19elhVzMFjBbJVe9vJz8FFpXGJP15K7yzFOOb4F7X28lad+WM4e4oJGg1L+7VD0dFZ1P5cXirm1KMDbOVG0giZUgPqeq+/muuiEUeq9QnbpNJCCEJ8bFVQvu4MWLRpsymK86TeR0xhw3ks6Dr1hFCzDx7PeAisisyHv7c6QMzfGnDnM5kyrMWijsDTr8vqjYfRBNZiaD50fpa7ObYWOMwwCSD2+0HBO5fMS6/98JvAWBIu2I6+usrdiGQEIUe5L9pDRid7nsoU66VzlvdJvzfoMCO9eSahwxyTs8Q+rw0ChumBja/
-x-ms-exchange-antispam-messagedata: 9odATOtO0QhPTq2nAShPA3uNdLSMJJs/YnkXEXY0lj0iImpDumvCYlSWkZcuIZy06hhlg3PmhnaEFKytIn6oiKDCLyUbmpQY8v+kO860sZoCWjurZut1gPsxHJaxSdd8Rtjgf7qrxpTdRPSeQxVfmQ==
-x-ms-exchange-transport-forked: True
-Content-ID: <CC952B9C1189284E897517DD71B780CD@namprd11.prod.outlook.com>
+Received: from gloria.sntech.de (gloria.sntech.de [185.11.138.130])
+ by silver.osuosl.org (Postfix) with ESMTPS id 088FE221B5
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 14:49:21 +0000 (UTC)
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.89) (envelope-from <heiko@sntech.de>)
+ id 1jK19j-0008Cn-0m; Thu, 02 Apr 2020 16:49:19 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: add rx0 mipi-phy for rk3399
+Date: Thu, 02 Apr 2020 16:49:18 +0200
+Message-ID: <3198644.TY9RtKZRLE@diego>
+In-Reply-To: <76211530-73ff-5f36-8915-8bdc036d4369@gmail.com>
+References: <20200402000234.226466-4-helen.koike@collabora.com>
+ <105956984.FXDh2DO4ZE@diego> <76211530-73ff-5f36-8915-8bdc036d4369@gmail.com>
 MIME-Version: 1.0
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 444f3428-2d65-4b2b-bf1d-08d7d714ce7f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Apr 2020 14:47:45.9121 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: zx/YJxdY5VZnixGjai+QJ8SE7qSSsGWw1Nd/ejuGINiZEcstX9IMwL6vLwcIIEwHkz11QkCmmLxts7ZtM39zAA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3758
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,64 +57,111 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ dafna.hirschfeld@collabora.com, karthik.poduval@gmail.com,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ helen.koike@collabora.com, robh+dt@kernel.org, hverkuil-cisco@xs4all.nl,
+ mark.rutland@arm.com, kernel@collabora.com, ezequiel@collabora.com,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thursday 2 April 2020 15:05:26 CEST Dan Carpenter wrote:
-[...]
->                             ^^^^^^^^^
-> Not related to this this patch but this confused me initially.  UINT_MAX
-> would be more readable.
+Am Donnerstag, 2. April 2020, 16:37:52 CEST schrieb Johan Jonker:
+> On 4/2/20 4:31 PM, Heiko St=FCbner wrote:
+> > Am Donnerstag, 2. April 2020, 15:48:02 CEST schrieb Johan Jonker:
+> >> Hi Helen,
+> >>
+> >>> From: Helen Koike <helen.koike@collabora.com>
+> >>
+> >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/bo=
+ot/dts/rockchip/rk3399.dtsi
+> >>> index 33cc21fcf4c10..fc0295d2a65a1 100644
+> >>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >>> @@ -1394,6 +1394,17 @@ io_domains: io-domains {
+> >>>  			status =3D "disabled";
+> >>>  		};
+> >>>  =
+
+> >>
+> >>> +		mipi_dphy_rx0: mipi-dphy-rx0 {
+> >>
+> >> For Heiko sort syscon@ff770000 subnodes alphabetical or reg value firs=
+t?
+> > =
+
+> > Similar to main nodes ... so things without reg alphabetical,
+> > the rest by reg address
+> > =
+
+> alphabetical first:
 > =
 
-> The other unrelated question I had about this function was:
+> io-domains
+> mipi-dphy-rx0
+> usb2-phy@e450
+
+like this ... aka similar to what we do in the core nodes.
+
+For the record, pinctrl at the bottom of a soc.dtsi is ok.
+
+
+Heiko
+
+> .@..
 > =
 
->    402          /* search for a winner using edca params */
->    403          for (i =3D 0; i < IEEE80211_NUM_ACS; ++i) {
->                                 ^^^^^^^^^^^^^^^^^
-> IEEE80211_NUM_ACS is 4.
+> or
 > =
 
->    404                  int queued;
->    405
->    406                  edca =3D &wvif->edca_params[i];
->    407                  queued =3D wfx_tx_queue_get_num_queued(&wvif->wde=
-v->tx_queue[i],
->    408                                  tx_allowed_mask);
->    409                  if (!queued)
->    410                          continue;
->    411                  *total +=3D queued;
->    412                  score =3D ((edca->aifs + edca->cw_min) << 16) +
->    413                          ((edca->cw_max - edca->cw_min) *
->    414                           (get_random_int() & 0xFFFF));
->    415                  if (score < best && (winner < 0 || i !=3D 3)) {
->                                                            ^^^^^^
+> with reg values first:
 > =
 
-> Why do we not want winner to be 3?  It's unrelated to the patch but
-> there should be a comment next to that code probably.
+> .@..
+> emmc_phy: phy@f780
+> mipi-dphy-rx0
+> pcie-phy
 > =
 
->    416                          best =3D score;
->    417                          winner =3D i;
->    418                  }
->    419          }
+> > =
 
-Indeed. In add, this code is useless. That's why I drop this code in
-patch 22/32.
+> >>
+> >>> +			compatible =3D "rockchip,rk3399-mipi-dphy-rx0";
+> >>> +			clocks =3D <&cru SCLK_MIPIDPHY_REF>,
+> >>
+> >>> +				<&cru SCLK_DPHY_RX0_CFG>,
+> >>> +				<&cru PCLK_VIO_GRF>;
+> >>
+> >> Align                            ^
+> >>
+> >>> +			clock-names =3D "dphy-ref", "dphy-cfg", "grf";
+> >>> +			power-domains =3D <&power RK3399_PD_VIO>;
+> >>> +			#phy-cells =3D <0>;
+> >>> +			status =3D "disabled";
+> >>> +		};
+> >>> +
+> >>>  		u2phy0: usb2-phy@e450 {
+> >>>  			compatible =3D "rockchip,rk3399-usb2phy";
+> >>>  			reg =3D <0xe450 0x10>;
+> >>
+> >>
+> > =
 
--- =
+> > =
 
-J=E9r=F4me Pouiller
+> > =
+
+> > =
+
+> =
+
+> =
+
+
+
+
 
 _______________________________________________
 devel mailing list
