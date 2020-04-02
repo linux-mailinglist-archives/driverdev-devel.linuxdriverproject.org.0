@@ -1,91 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A918819BF28
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 12:16:16 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81F6F19BF31
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 12:19:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8AADA204A5;
-	Thu,  2 Apr 2020 10:16:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 26CA988689;
+	Thu,  2 Apr 2020 10:19:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PcKUJDv-yiv2; Thu,  2 Apr 2020 10:16:12 +0000 (UTC)
+	with ESMTP id 4JG7xJ3CbiV1; Thu,  2 Apr 2020 10:19:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8027D2047E;
-	Thu,  2 Apr 2020 10:16:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8740687938;
+	Thu,  2 Apr 2020 10:19:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E93581BF2CA
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 10:16:07 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 055031BF2CA
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 10:19:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DC5C22048F
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 10:16:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 01F158795A
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 10:19:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qCWwVitBmvVv for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 10:16:05 +0000 (UTC)
+ with ESMTP id g0prQyMeyB-m for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 10:19:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by silver.osuosl.org (Postfix) with ESMTPS id A7FDC20457
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 10:16:05 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032A9gGb085048;
- Thu, 2 Apr 2020 10:16:02 GMT
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BEC6487938
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 10:19:31 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032AHeUg076924;
+ Thu, 2 Apr 2020 10:19:30 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : references : mime-version : content-type :
  in-reply-to; s=corp-2020-01-29;
- bh=HWTIrpafr91HYrdV2dRbUksDVtLYW13UtWhLmOUYZWk=;
- b=gQQsS0Kgb7KsWSG8D141EAjoyO6P09bnxfmlWYuBqL9CCTWVspZLwsbP+tY7cu3i0Ke9
- F2OIAz+FZwriAK02Kvv1tzA7iNIA/Nt/pJQTgFlEkN67HvCis1DZPQ724DJWG5wM6eVe
- Am8xpUNTa12HngjjOOLt9lldapZxNl3cP7CafrZFFfM4jR1Wy5eVVVUTc0hK9Wg2T5NT
- HBX02rNs1gc7+3uDxQRB6OrE4urf/7T84At1qdqE763n5BDudGfBWLIlE+H877NK44V7
- WN7AHsJQUVNv1nEmJvCUxVGBZyt/dOzUuK1lZTHOtrxl8GMSZ1Oc2j6+K+66plR7D0Jr cA== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2130.oracle.com with ESMTP id 303cevafhk-1
+ bh=WagfC93/RvzrHfjL3JZzy15HAm+jQ3RaSf+gam9lNdc=;
+ b=D5sbUCQP1nH4X5j+lgLqVGYild/G4O+89qDm8eKl13f/5vEpb4Nd0Ua1Q/eRef7Xe6nq
+ rn87ZxoH+IPDOxLbzxI01m5ADqI77BJ0BoITXY9uNyjDNWicriUeittFwEUji8FnY0zV
+ EJvLysshc+OJZaVqix0mvq/uS4xI4scRmewjK8/b0zH0iXrhCgfGYMOyw/o7C+ZJNaqy
+ 1V9UXgh84mgxbocBnSRpbnAm9jp172KsVLtzwXCrKeRp3i/1oXrSp09n8KRQBgUyTpUW
+ YBVVzHSfVzty7SfxcI8/22zdpiVRMjOTnLK9Jlqbdw3TRACFh3s+kRCYQ5LcXXUyVce2 EA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 303yund2xn-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 02 Apr 2020 10:16:02 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032A8Koh062885;
- Thu, 2 Apr 2020 10:14:01 GMT
+ Thu, 02 Apr 2020 10:19:30 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032AGvZm195705;
+ Thu, 2 Apr 2020 10:17:29 GMT
 Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 302ga25b9p-1
+ by userp3030.oracle.com with ESMTP id 302g2j9ruy-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 02 Apr 2020 10:14:01 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 032ADveF027354;
- Thu, 2 Apr 2020 10:13:58 GMT
+ Thu, 02 Apr 2020 10:17:29 +0000
+Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 032AHSwb028832;
+ Thu, 2 Apr 2020 10:17:28 GMT
 Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 02 Apr 2020 03:13:57 -0700
-Date: Thu, 2 Apr 2020 13:13:47 +0300
+ with ESMTP ; Thu, 02 Apr 2020 03:17:28 -0700
+Date: Thu, 2 Apr 2020 13:17:20 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
-To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-Subject: Re: [PATCH v2] staging: vt6656: add error code handling to unused
- variable
-Message-ID: <20200402101347.GI2001@kadam>
-References: <20200329083829.619127-1-jbwyatt4@gmail.com>
+To: Michael Straube <straube.linux@gmail.com>
+Subject: Re: [PATCH] staging: rtl8188eu: refactor Efuse_GetCurrentSize()
+Message-ID: <20200402101720.GJ2001@kadam>
+References: <20200329100450.10126-1-straube.linux@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200329083829.619127-1-jbwyatt4@gmail.com>
+In-Reply-To: <20200329100450.10126-1-straube.linux@gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9578
  signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- mlxlogscore=960 bulkscore=0 mlxscore=0 spamscore=0 adultscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004020092
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ spamscore=0 mlxscore=0
+ adultscore=0 phishscore=0 bulkscore=0 suspectscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004020093
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9578
  signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 adultscore=0
- clxscore=1011 phishscore=0 lowpriorityscore=0 spamscore=0 malwarescore=0
- suspectscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 bulkscore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ lowpriorityscore=0
+ malwarescore=0 adultscore=0 priorityscore=1501 mlxlogscore=999 bulkscore=0
+ suspectscore=0 mlxscore=0 spamscore=0 impostorscore=0 clxscore=1011
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004020092
+ definitions=main-2004020093
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,18 +97,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Stefano Brivio <sbrivio@redhat.com>, Malcolm Priestley <tvboxspy@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Julia Lawall <julia.lawall@inria.fr>, outreachy-kernel@googlegroups.com,
- Forest Bond <forest@alittletooquiet.net>,
- Colin Ian King <colin.king@canonical.com>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Ignore this one.  John sent it by mistake and has already sent a v3.
+On Sun, Mar 29, 2020 at 12:04:50PM +0200, Michael Straube wrote:
+> Refactor while loop in Efuse_GetCurrentSize() to reduce indentation
+> level and clear line over 80 characters checkpatch warnings.
+> 
+> Signed-off-by: Michael Straube <straube.linux@gmail.com>
+
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 
 regards,
 dan carpenter
