@@ -2,75 +2,92 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADEAD19C3E5
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 16:22:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1704719C3E6
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 16:22:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0C5E0221CC;
-	Thu,  2 Apr 2020 14:22:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BDDAF22270;
+	Thu,  2 Apr 2020 14:22:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mvPbZ3XYUjwY; Thu,  2 Apr 2020 14:22:50 +0000 (UTC)
+	with ESMTP id xf7f2IOG16hZ; Thu,  2 Apr 2020 14:22:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F22A621507;
-	Thu,  2 Apr 2020 14:22:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6D5E6220D0;
+	Thu,  2 Apr 2020 14:22:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D9EA51BF42C
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:22:46 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 120C41BF42C
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:22:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D713187F76
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:22:46 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0EE04866E5
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:22:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jDlYyFg9KRbQ for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 14:22:46 +0000 (UTC)
+ with ESMTP id YRMPeVyYr535 for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 14:22:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com
- [209.85.208.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F011E87F74
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 14:22:45 +0000 (UTC)
-Received: by mail-ed1-f68.google.com with SMTP id de14so4370187edb.4
- for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 07:22:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=X5l2jaZkJKsz+6a6JrNWsRYAPhm8JPuWg1FWcX090vk=;
- b=s/gD43nV66taD1S/FZz0cS9daN9TfFM+URMomrNK6xbCQBfxKrXX3mfZlyNLZeeiEQ
- EBbnHR/pd1OZtJCTD0UcNkkD17VIXqiJ41ononawSTYxJUabgifUtLn9EBM1n8BWg/X+
- gc0R6l/H+egDSRcugdEAJIq7MYDfpYVS6F3sxE2YNmCQLoJmf5o7hv7b7NYCCsJzpj41
- 3D4c/k+5shkfCS4X3obDgj5t5+WvpipQEWJw4Lqgl28iMvqtdxjdCMxo5g5+OXY/A3p+
- /N4L1mXbpuR27dG5ktQW6Tcue+BEqY4rp76LaqOPQUcDvVwpXbVlBEhZsfK6I3Zyslwg
- DdZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=X5l2jaZkJKsz+6a6JrNWsRYAPhm8JPuWg1FWcX090vk=;
- b=WKDUc7fkHObRWkMiJLw/qnNV/d2OMmBVfPwEE7X3vQddRgFaweRxoFKW8qOH22vKG8
- MD6lTk5Jx26ffXpaeIXX7VGV3QAeEcm0Ucj77mUlAdon/O1AZ/VbB0K4zh+Iuwvc+XZc
- rNDWq0G5/rd8w/RJkWPXKq8wNZbhf1iRPSMphyfP4Jnjmeo/gAbGfGzxZaHeHPGevvsB
- xxYB1YuaqgjCA4sf9x2mRi4Yo+1kLpKCG98U/kdFVT4JsuEk+snQuZLMK1o1AUKy5SBD
- Dt9V2sJz6OxA6XX36ykz5t11lC6HgC77DSj3snLBPbxfeK18+KtVU4NBja0+S1qB2Uvh
- DWkQ==
-X-Gm-Message-State: AGi0PuZDN579b2Wl884qRMDU3HONCQ+nU+3y261IjDmbWogy0k2ml84p
- DbM/AHsOCaO/GRzbHRlGHR1LQrpiShbJ0UV+oG4=
-X-Google-Smtp-Source: APiQypIFj/u9vxavPc3V+SOdfgaJa6CUH7j5KYfb3LrSiDdy4GdJTPxbVwIHtHetP4fAXzeBZ80SIyrJ9Ee74O9pSok=
-X-Received: by 2002:a05:6402:7d0:: with SMTP id
- u16mr3240846edy.259.1585837364544; 
- Thu, 02 Apr 2020 07:22:44 -0700 (PDT)
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9334185FD4
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 14:22:49 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032EHaJY116789;
+ Thu, 2 Apr 2020 14:22:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=LchWqkCOvF0iI3Yl4nkkvqVWjHv0QHY1T2lFYjYjdcw=;
+ b=Y9FN2y8MisgEEiZItb8CmzjzDaHhEqld0nB75MP1jEXtGSyK/PGbaoHOc2EnXJeuYpQW
+ XBRvK28hNv4kuyWgSCGyrsm6izqD256/TC9PnwApQtovmSJBIkxvsCmbr6kvxHVJUOfD
+ jiqAYfnL74d1rbPXNPeFnbL+p6jt18sK+TbbStPOdDQkwYgJDO0rGeqUypmBV5Tr23HX
+ VaBbt25U5YjUq3VOvOnS6+OCEEtQW5GJLHDGJERXEzmzErY9HJ1ppHoWb3fI9iZsHJp6
+ l/5aem7vJunzTzZT72GB1xG3TgLsR7PaXrZzlLkgPiUfo9eDcav1cYIRgfh11uP6eZfA ag== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 303cevbqyc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 02 Apr 2020 14:22:48 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032EH9YO121714;
+ Thu, 2 Apr 2020 14:22:48 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3020.oracle.com with ESMTP id 304sjpmpn8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 02 Apr 2020 14:22:47 +0000
+Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 032EMjNn028738;
+ Thu, 2 Apr 2020 14:22:45 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 02 Apr 2020 07:22:44 -0700
+Date: Thu, 2 Apr 2020 17:22:37 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Rui Miguel Silva <rmfrfs@gmail.com>
+Subject: Re: [PATCH -next] staging: greybus: fix a missing-check bug in
+ gb_lights_light_config()
+Message-ID: <20200402142237.GT2001@kadam>
+References: <20200401030017.100274-1-chenzhou10@huawei.com>
+ <20200402122228.GP2001@kadam>
+ <20200402131618.653dkeuz7c2vuujf@arch-thunder.localdomain>
 MIME-Version: 1.0
-References: <CAEzXK1p5uuRy9kxfxpTS+hNR-WGWtc-393HP5pPgzjUq_Q-RbA@mail.gmail.com>
- <20200402104246.GL2001@kadam>
-In-Reply-To: <20200402104246.GL2001@kadam>
-From: =?UTF-8?B?THXDrXMgTWVuZGVz?= <luis.p.mendes@gmail.com>
-Date: Thu, 2 Apr 2020 15:22:33 +0100
-Message-ID: <CAEzXK1rZHDmhhXNQFVLccynM9WDbu4PzEvt5q_hMSTo1dOG4wg@mail.gmail.com>
-Subject: Re: [PATCH 01/01] staging: gasket: Fix incongruency in handling of
- sysfs entries creation
-To: Dan Carpenter <dan.carpenter@oracle.com>
+Content-Disposition: inline
+In-Reply-To: <20200402131618.653dkeuz7c2vuujf@arch-thunder.localdomain>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ adultscore=0 mlxscore=0
+ malwarescore=0 phishscore=0 suspectscore=0 mlxlogscore=999 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004020130
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 adultscore=0
+ clxscore=1015 phishscore=0 lowpriorityscore=0 spamscore=0 malwarescore=0
+ suspectscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004020130
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,30 +100,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Wentao Cai <etsai042@gmail.com>, Rob Springer <rspringer@google.com>,
- Todd Poynor <toddpoynor@google.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, elder@kernel.org,
+ Chen Zhou <chenzhou10@huawei.com>, gregkh@linuxfoundation.org,
+ johan@kernel.org, linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGkgRGFuLAoKQWggc29ycnksIG9rLCBJIHdpbGwgcmUtc2VuZCB0aGUgcGF0Y2ggdXNpbmcgZ2l0
-LgpDYW4geW91IHBsZWFzZSB0ZWxsIG1lIHdoaWNoIGlzIHRoZSBjb3JyZWN0IG1haWxpbmcgbGlz
-dCB0byB3aGVyZSB0aGlzCnBhdGNoIHNob3VsZCBiZSBzdWJtaXR0ZWQ/CgpUaGFua3MsCkx1w61z
-CgpPbiBUaHUsIEFwciAyLCAyMDIwIGF0IDExOjQyIEFNIERhbiBDYXJwZW50ZXIgPGRhbi5jYXJw
-ZW50ZXJAb3JhY2xlLmNvbT4gd3JvdGU6Cj4KPiBPbiBTdW4sIE1hciAyOSwgMjAyMCBhdCAxMDo1
-OToyMVBNICswMTAwLCBMdcOtcyBNZW5kZXMgd3JvdGU6Cj4gPiBGaXggaW5jb25ncnVlbmN5IGlu
-IGhhbmRsaW5nIG9mIHN5c2ZzIGVudHJpZXMgY3JlYXRpb24uCj4gPiBUaGlzIGlzc3VlIGNvdWxk
-IGNhdXNlIGludmFsaWQgbWVtb3J5IGFjY2Vzc2VzLCBieSBub3QgcHJvcGVybHkKPiA+IGRldGVj
-dGluZyB0aGUgZW5kIG9mIHRoZSBzeXNmcyBhdHRyaWJ1dGVzIGFycmF5Lgo+ID4KPgo+IFBsZWFz
-ZSBhZGQgYSBGaXhlcyB0YWcuCj4KPiBGaXhlczogODRjNDVkNWYzYmYxICgic3RhZ2luZzogZ2Fz
-a2V0OiBSZXBsYWNlIG1hY3JvIF9fQVRUUiB3aXRoIF9fQVRUUl9OVUxMIikKPgo+IFRoYXQgcGF0
-Y2ggd2FzIG5ldmVyIHNlbnQgdG8gdGhlIHByb3BlciBtYWlsaW5nIGxpc3QgZm9yIHJldmlldy4K
-Pgo+IEFueXdheSwgTHVpcywgeW91IHdpbGwgbmVlZCB0byByZXNlbmQgYmVjYXVzZSB5b3VyIHBh
-dGNoIGRvZXNuJ3QgYXBwbHkuCj4gUGxlYXNlIHJlYWQgdGhlIGZpcnN0IHBhcmFncmFwaHMgb2Yg
-RG9jdW1lbnRhdGlvbi9wcm9jZXNzL2VtYWlsLWNsaWVudHMucnN0Cj4KPiByZWdhcmRzLAo+IGRh
-biBjYXJwZW50ZXIKPgo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
-dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aXZlcmRldi1kZXZlbAo=
+On Thu, Apr 02, 2020 at 02:16:18PM +0100, Rui Miguel Silva wrote:
+> > > --- a/drivers/staging/greybus/light.c
+> > > +++ b/drivers/staging/greybus/light.c
+> > > @@ -1026,7 +1026,8 @@ static int gb_lights_light_config(struct gb_lights *glights, u8 id)
+> > >  
+> > >  	light->channels_count = conf.channel_count;
+> > >  	light->name = kstrndup(conf.name, NAMES_MAX, GFP_KERNEL);
+> > > -
+> > > +	if (!light->name)
+> > > +		return -ENOMEM;
+> > >  	light->channels = kcalloc(light->channels_count,
+> > >  				  sizeof(struct gb_channel), GFP_KERNEL);
+> > >  	if (!light->channels)
+> > 
+> > The clean up in this function is non-existant.  :(
+> 
+> Yeah, this have a central point to do the cleanups, gb_lights_release,
+> since we may have other lights already configured at this point, we
+> could cleanup this specific one here, but than would need to make sure
+> all other already configure got clean also.
+
+Central clean up functions never work correctly.
+
+For example, we allocate "cdev->name" in gb_lights_channel_config()
+before we register the channel later in gb_lights_register_all(glights);.
+Now imagine that the register fails.  Then when we're freeing it in
+__gb_lights_led_unregister() we see that the ->is_registered is false
+so we don't kfree(cdev->name).
+
+That's just a small memory leak.  But there are going to be tons of
+little bugs like that.
+
+Anyway it doesn't affect this patch so it's fine.
+
+regards,
+dan carpenter
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
