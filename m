@@ -1,82 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB57D19C0F7
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 14:16:57 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2E0919C102
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 14:22:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1617F204CB;
-	Thu,  2 Apr 2020 12:16:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D10B4888A7;
+	Thu,  2 Apr 2020 12:22:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A3Svc5r3zekk; Thu,  2 Apr 2020 12:16:54 +0000 (UTC)
+	with ESMTP id jPEVIJmDJ+ty; Thu,  2 Apr 2020 12:22:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C0083204A4;
-	Thu,  2 Apr 2020 12:16:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 898F7887DC;
+	Thu,  2 Apr 2020 12:22:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 27EBB1BF29C
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 12:16:50 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3BE7A1BF29C
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 12:22:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 21A8A87E93
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 12:16:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3329F8700B
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 12:22:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PNm1sOmttfmR for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 12:16:49 +0000 (UTC)
+ with ESMTP id pOIxOOusphz9 for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 12:22:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 585DD87E91
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 12:16:49 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id p10so3917927wrt.6
- for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 05:16:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:references:subject:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=9100ZMfQ3eWaJVwdNq9pSQeHCEwHDV/UJ/zuKVucMxA=;
- b=ALLV3AjWxKR07II/OzlDnRe+odhQFSFArcf8cWjQukJmd6WXsg9+vyfD8DfKX9gWMN
- o85KGRmQSCApKdFnuQRIdkmUme7sEKjqw5SXiIFrjdPkCVpclHE6AukhNWeb6yNKOhL8
- mSBvda/9k8hhDcs8hxq7Ir3tcfWNZFcNPUaqnc4VZGHD9WT/x2/UGQ7N9VjavMYukKnM
- K8ULMWCC9wgUMpVyfUQ+xkB0QzfidY2ZSgy9eCRnT7acIbLf8oyP71jF6JKhMbcYxj4Q
- HrYzq3IEOcIOy3d+DvXGwz17yj0IpLyHJbIGtAohcctCquPEvV8uOKDwrwF9JRdhOKkc
- 77Og==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:references:subject:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=9100ZMfQ3eWaJVwdNq9pSQeHCEwHDV/UJ/zuKVucMxA=;
- b=lc5AsUFJWJ6YKDDZH4RXdwJU27aZu2PlMDncsC1xZxmEN68tv9X7Cv8OGBLwaPtpDU
- ZWxr2H6CFmAQPboWjApArOASfSEpPF0FeHXf+O+lt64Abo/zDfEQJd7mowC659hqCrV9
- WPDgkhwQAVNhAdaQmluv6F3SxqQkrIjcae/JL2Yoin2o1kSYW2T7fiNPgIMfm+b3V/rZ
- tL67hkKwNen0SHEy9/lcCbftXPe/U6okVOaXCM9Nsqs2sB6OjSZWn35go4HhOIJXqA0L
- xeTywOKHLNGwJP8rl4TqALrxGbopj2kf+l96sZEc506OsbukbU0GQgi1fNMpMw5ElJwU
- mKDA==
-X-Gm-Message-State: AGi0PuYb8966x+9O4xtFUCVqU0kFPJEfSStIc2p+RNvA13yIFRWN1hrr
- PFqh+cyqGqKCL3oT33xCiTA=
-X-Google-Smtp-Source: APiQypKji7UWQsmE5huunWfu+sXG44AGFdjl0/jp9OPk+bxWF6qOU3UNOHuPQ1YmcSNtr/z7NyzQ1g==
-X-Received: by 2002:a5d:4c48:: with SMTP id n8mr3212293wrt.414.1585829807916; 
- Thu, 02 Apr 2020 05:16:47 -0700 (PDT)
-Received: from [192.168.2.1] (ip51ccf9cd.speed.planet.nl. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id y12sm4191207wrn.55.2020.04.02.05.16.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Apr 2020 05:16:47 -0700 (PDT)
-To: helen.koike@collabora.com
-References: <20200402000234.226466-2-helen.koike@collabora.com>
-Subject: Re: [PATCH 1/4] dt-bindings: phy: phy-rockchip-dphy-rx0: move
- rockchip dphy rx0 bindings out of staging
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <bfefe00c-5673-ddcb-4e2a-425eb4771002@gmail.com>
-Date: Thu, 2 Apr 2020 14:16:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9887985EBF
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 12:22:44 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032CMh9N054207;
+ Thu, 2 Apr 2020 12:22:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=wjPa325Z3IV06jAmrRHNcUJXKnsUHgOW0tGCxhUva8k=;
+ b=F58+0VBWEdhx898J5cgm3FeHG2fbyZcLUVIn+gsdigqtxTpYYBUqCp3y+KAYd8D7M1ix
+ EMBzfmBWUyn4FU9nF26A7g6rpmlPHetcG1mb6Qmb3AplJC1GSlYXi3Pc3mSCnjHFzTI+
+ TyGym3pG9j7ON7ce1m0ZlYT569vaP0Li03AIybR6ZudYXipt18R+uic5gLvb2jwEeXGs
+ ynHhvaD9221S9t6FQmX63NP1bYDI1AwdhF4f/kCJW2RjO2khFQLHGWgOTFXDHTl8JeyJ
+ /6N/cn/AFX0xb2+AJjPYM3NcsdL9MCi+rITP+FtZoXTPBqXTF405uaGklSk3yHiXqJrk SA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 303aqhug3v-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 02 Apr 2020 12:22:43 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 032CM8r1135759;
+ Thu, 2 Apr 2020 12:22:42 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3020.oracle.com with ESMTP id 302ga2b2tp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 02 Apr 2020 12:22:42 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 032CMeXK029118;
+ Thu, 2 Apr 2020 12:22:40 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 02 Apr 2020 05:22:39 -0700
+Date: Thu, 2 Apr 2020 15:22:28 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Chen Zhou <chenzhou10@huawei.com>
+Subject: Re: [PATCH -next] staging: greybus: fix a missing-check bug in
+ gb_lights_light_config()
+Message-ID: <20200402122228.GP2001@kadam>
+References: <20200401030017.100274-1-chenzhou10@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200402000234.226466-2-helen.koike@collabora.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200401030017.100274-1-chenzhou10@huawei.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9578
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ mlxlogscore=999 bulkscore=0 mlxscore=0 spamscore=0 adultscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004020113
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9578
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ phishscore=0 clxscore=1011
+ malwarescore=0 impostorscore=0 mlxlogscore=999 spamscore=0 mlxscore=0
+ priorityscore=1501 lowpriorityscore=0 adultscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004020113
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,98 +98,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- dafna.hirschfeld@collabora.com, heiko@sntech.de, karthik.poduval@gmail.com,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, mark.rutland@arm.com,
- kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, elder@kernel.org, greybus-dev@lists.linaro.org,
+ gregkh@linuxfoundation.org, johan@kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Helen,
-
-> # SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> %YAML 1.2
+On Wed, Apr 01, 2020 at 11:00:17AM +0800, Chen Zhou wrote:
+> In gb_lights_light_config(), 'light->name' is allocated by kstrndup().
+> It returns NULL when fails, add check for it.
+> 
+> Signed-off-by: Chen Zhou <chenzhou10@huawei.com>
 > ---
-> $id: http://devicetree.org/schemas/phy/rockchip-mipi-dphy-rx0.yaml#
-> $schema: http://devicetree.org/meta-schemas/core.yaml#
+>  drivers/staging/greybus/light.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> title: Rockchip SoC MIPI RX0 D-PHY Device Tree Bindings
-> 
-> maintainers:
->   - Helen Koike <helen.koike@collabora.com>
->   - Ezequiel Garcia <ezequiel@collabora.com>
-> 
-> description: |
->   The Rockchip SoC has a MIPI D-PHY bus with an RX0 entry which connects to
->   the ISP1 (Image Signal Processing unit v1.0) for CSI cameras.
-> 
-> properties:
->   compatible:
->     const: rockchip,rk3399-mipi-dphy-rx0
-> 
+> diff --git a/drivers/staging/greybus/light.c b/drivers/staging/greybus/light.c
+> index d6ba25f..d2672b6 100644
+> --- a/drivers/staging/greybus/light.c
+> +++ b/drivers/staging/greybus/light.c
+> @@ -1026,7 +1026,8 @@ static int gb_lights_light_config(struct gb_lights *glights, u8 id)
+>  
+>  	light->channels_count = conf.channel_count;
+>  	light->name = kstrndup(conf.name, NAMES_MAX, GFP_KERNEL);
+> -
+> +	if (!light->name)
+> +		return -ENOMEM;
+>  	light->channels = kcalloc(light->channels_count,
+>  				  sizeof(struct gb_channel), GFP_KERNEL);
+>  	if (!light->channels)
 
->   reg:
->     maxItems: 1
+The clean up in this function is non-existant.  :(
 
-If 'reg' is not used => remove it.
+regards,
+dan carpenter
 
-> 
->   clocks:
->     items:
->       - description: MIPI D-PHY ref clock
->       - description: MIPI D-PHY RX0 cfg clock
->       - description: Video in/out general register file clock
-> 
->   clock-names:
->     items:
->       - const: dphy-ref
->       - const: dphy-cfg
->       - const: grf
-> 
->   '#phy-cells':
->     const: 0
-> 
->   power-domains:
->     description: Video in/out power domain.
->     maxItems: 1
-> 
-> required:
->   - compatible
->   - clocks
->   - clock-names
->   - '#phy-cells'
->   - power-domains
-> 
-> additionalProperties: false
-> 
-> examples:
->   - |
-> 
->     /*
->      * MIPI D-PHY RX0 use registers in "general register files", it
->      * should be a child of the GRF.
->      *
->      * grf: syscon@ff770000 {
->      *  compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
->      *  ...
->      * };
->      */
-> 
->     #include <dt-bindings/clock/rk3399-cru.h>
->     #include <dt-bindings/power/rk3399-power.h>
-> 
->     mipi_dphy_rx0: mipi-dphy-rx0 {
->         compatible = "rockchip,rk3399-mipi-dphy-rx0";
->         clocks = <&cru SCLK_MIPIDPHY_REF>,
->                  <&cru SCLK_DPHY_RX0_CFG>,
->                  <&cru PCLK_VIO_GRF>;
->         clock-names = "dphy-ref", "dphy-cfg", "grf";
->         power-domains = <&power RK3399_PD_VIO>;
->         #phy-cells = <0>;
->     };
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
