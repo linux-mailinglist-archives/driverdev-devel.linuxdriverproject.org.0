@@ -2,62 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF54B19C945
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 20:58:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A69C419C951
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 21:01:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 68EFC883A1;
-	Thu,  2 Apr 2020 18:58:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 71EE08838D;
+	Thu,  2 Apr 2020 19:01:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9ngbigtM4Rvq; Thu,  2 Apr 2020 18:58:11 +0000 (UTC)
+	with ESMTP id mdbErinEAhMv; Thu,  2 Apr 2020 19:01:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 706528836D;
-	Thu,  2 Apr 2020 18:58:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ABF6888366;
+	Thu,  2 Apr 2020 19:01:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A61981BF3E9
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 18:58:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4413A1BF41D
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 19:01:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A2512873E4
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 18:58:07 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3FC6F8752D
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 19:01:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Os9MfJIrUfHW for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 18:58:05 +0000 (UTC)
+ with ESMTP id 88AM-5NhJQ4A for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 19:01:27 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.130])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2A72687555
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 18:58:04 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.10])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 31F048744C
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 19:01:27 +0000 (UTC)
 Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MhFpq-1ior170yuI-00eJW5 for <devel@driverdev.osuosl.org>; Thu, 02 Apr
- 2020 20:58:03 +0200
+ mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1ML9i0-1jbCGl0lV4-00IEUT for <devel@driverdev.osuosl.org>; Thu, 02 Apr
+ 2020 21:01:25 +0200
 Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id D14D9650882
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 18:58:02 +0000 (UTC)
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id E7007650ABB
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 19:01:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at cetitec.com
 Received: from mail.cetitecgmbh.com ([127.0.0.1])
  by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
  [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nwpuW7G_VQPw for <devel@driverdev.osuosl.org>;
- Thu,  2 Apr 2020 20:58:02 +0200 (CEST)
+ with ESMTP id nvJ9luXhFEnv for <devel@driverdev.osuosl.org>;
+ Thu,  2 Apr 2020 21:01:24 +0200 (CEST)
 Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id 8163E64C1FF
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 20:58:02 +0200 (CEST)
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id 7A6DB64FE1C
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 21:01:24 +0200 (CEST)
 Received: from pflmari.corp.cetitec.com (10.8.5.12) by
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Thu, 2 Apr 2020 20:58:02 +0200
+ id 15.0.1497.2; Thu, 2 Apr 2020 21:01:24 +0200
 Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id 2CFF680504; Thu,  2 Apr 2020 20:34:59 +0200 (CEST)
-Date: Thu, 2 Apr 2020 20:34:59 +0200
+ id 34C0C80505; Thu,  2 Apr 2020 20:35:06 +0200 (CEST)
+Date: Thu, 2 Apr 2020 20:35:06 +0200
 From: Alex Riesen <alexander.riesen@cetitec.com>
 To: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: [PATCH v5 7/9] media: adv748x: only activate DAI if it is described
- in device tree
-Message-ID: <c3c8ece14c0fbc987dc201c9b61dd22d98f83056.1585852001.git.alexander.riesen@cetitec.com>
+Subject: [PATCH v5 8/9] dt-bindings: adv748x: add information about serial
+ audio interface (I2S/TDM)
+Message-ID: <337b689519806178458ab77385c8ac6f510cb0da.1585852001.git.alexander.riesen@cetitec.com>
 Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  Kieran Bingham <kieran.bingham@ideasonboard.com>,
  Geert Uytterhoeven <geert@linux-m68k.org>,
@@ -79,23 +79,23 @@ X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
 X-EsetResult: clean, is OK
 X-EsetId: 37303A290D7F536A6C7266
-X-Provags-ID: V03:K1:wIyjS7EJaN7gxkljMfeht2Op58OtdGIYzpbDwQurAaguXZqqgVZ
- k1TUCbuT16cbo96Okw58v+ot/VWKoGfyM3bCAQSMqh6io7XGhjL0Tkqj4M7aGtC9INz6qbT
- u80K/C7rwjbiVlMwk/L+p7RgahvXc9lBud3vsTmp26SkKtaiAgWDRMDionGuXEYKDeIuPGV
- eNvoBfVcfiO0oX2+6sSkQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:FcTC2600Y78=:tNHOEcxQUIIs7wjtHkVulf
- kQNfoJ7r9q4Zimowiqs/gMluL6M+gxWJ+Nj96JG5m2O7YI0x9oYIDXxMNidpYsgj7AZBXOcf1
- STRGbOBOtJe0BgXDfdVjFACYQzPsbPsXBjeuKB0t0qbT+7Eq9TRRDdjkcIkXcZbTbXJLByLn7
- /o9evSS4BjIDmso0cWgj1taedWQ67B7bx2nyagw40K8BDlfWJiMGf1CrgBgYgEO1cP5EC4kwa
- JdUQL6Ovv8QdY/Fxdz1XJxyFMCzjiY17ZtTTfmsf/aV6alZ2YnX8kBr4DN0O0fzxu50fMmK3l
- 6yzZKA/LpFguZuKm1UUYBWsUi+I+LucKtcRfZNfoQnAEDVZs0P9lvs6GVvdVunXQggGayABoE
- PbqU2QYw7oAsnZ3gXrQU82Oo7VSrJ+Nhp7o2YwLigzAjdYbMcMQOS8Luq5qcZXbtjLm57CCyG
- LwopHH8o4AnD2Qv2ADV3pXvy5LMA+uM3Izqz86pfMlptEysC38qOL3tyrEFdPiNm1rlw59XN8
- tMFNSB4elk1FqzUUFQs04M4E3zly4SmO9AAHIZqimbv974Bf3hOo1Af6+hXlTNJv04BODJeia
- v3EchLKtr/mZAgwlJS2KmphZXP8Zfe0R4ptnJNoMZOUAxyBE45nTYhB2mhBZQ54I/gkW6rHms
- BTYrL7JKof025c7x9adb/ut/7dPFK6trbQEby8MhPH+dWliPWB8DHg8/pL/CWKaIxH19kXJ+P
- qUoaC0bSfBXlmK4EAl7jnhwStfbefj8PlZvbRE+q9X1zjlU8aTztjkzx9x/vKDpLvWpUvtUR7
- BtaHEfyEqfuRMWv9a3QE+xC7BIlyY4N8/N36qjYN3kTWgvv5CBWA0M6MXKxzH5Q3vXoHP2e
+X-Provags-ID: V03:K1:L2O9Xr/CTUY42jaH/7kPPqUcBYn6z/Q8whFhKjyjPS4c8GikicH
+ C/s6KxKQZDnTqUV/akmnwdGyZpERfnChkrEmhs+hf2abTCx508MLpgTka7pxzBhnYJvJuqr
+ jQjanM2WoAL12ig9KPzomCh4jSnztV5sXbTiPkuBy5humKClAoN8dMB9O5NKiM3QTcQkYsl
+ Pf91cnJnWhD9NfKPP58BQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:o3mmpeYV2uI=:HSQsTLKbn1vqlAVydQcTNk
+ K+15rGsJFboksBfuunIU6s4NCPlCbLwpTGWuajp5onofqlKnu+CBn3MCwaMy8/956Wlb72tav
+ LeGIaMhdZNVEnwak40ZBcktVVu1LNmII8/oS+kBNDWh8hODR52JBFXn5OAHkh0WWC4mLQZNwq
+ m6Kpvg8aGpt/bM1TqTF/sJXQKRM/LHJrK7iMwv36G36loWjuVakX8hZDfSpKFE+r89XRfk6xS
+ yT6/5uaj1Si9AWcdEQ2CK8TYIthjWnXq0bTnn+8ViT+z23S5G5Pqn5RqCKkQckUrgdHZk4SEb
+ ctXbdqeAwlDLVvyx4wWxZBs8q0PpInpLbJ797hE/E+0HsAFqYSzWAPG7Wrrv5Meb2tvq4F9j8
+ 53vMFCWJp/spd7BmdA5c5AoMTcQv5fExCimG7tcfhc4VES1K3u/s+2rC9zXi3s7+gJcHGsY/d
+ LcDbH9ZIqf94ODYXV+hPEZaZTMAsGW7hETsoULmblWrx9sef4NRnj+/6dCh7g33F7H9IQwbms
+ 9qpEutLPJpuU7TY5s9Lzumr3uRo5WBdgZe6dEFsUNJJAHZuG4V6pteW1MpZBHMfmvlCO5ZSvb
+ NjucBzWCUX7lnF7ZzbnXLFy2Q5SMge39Gf3XQxf79F7liabIZZ/otYwYzWBPhVBgsG15bkN3k
+ z7SgvxlZzCZgjszEptkYQZJVu/xryAli6LWxE81WXRHb2BKRVfxymDfiS7b08tCL9vsaFbQbQ
+ bK+DNvoLZhQWbUOaZiyYUDnk9QwsJvOPXrtodpDfmEs5Ry1h/C7qZtV7r0GVIRYfyQ1a1rj4w
+ AgJHZcUMX3jW3jTjzoUe8bQyo1tffdRPUtbMae9+zmqm1OXggsxs/jCyDJb4oXGhwd6hVWH
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,33 +121,75 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-To avoid setting it up even if the hardware is not actually connected
-to anything physically.
-
-Besides, the bindings explicitly notes that port definitions are
-"optional if they are not connected to anything at the hardware level".
+As the driver has some support for the audio interface of the device,
+the bindings file should mention it.
 
 Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
----
- drivers/media/i2c/adv748x/adv748x-dai.c | 5 +++++
- 1 file changed, 5 insertions(+)
+Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-diff --git a/drivers/media/i2c/adv748x/adv748x-dai.c b/drivers/media/i2c/adv748x/adv748x-dai.c
-index 185f78023e91..f9cc47fa9ad1 100644
---- a/drivers/media/i2c/adv748x/adv748x-dai.c
-+++ b/drivers/media/i2c/adv748x/adv748x-dai.c
-@@ -216,6 +216,11 @@ int adv748x_dai_init(struct adv748x_dai *dai)
- 	int ret;
- 	struct adv748x_state *state = adv748x_dai_to_state(dai);
+--
+
+v3: remove optionality off MCLK clock cell to ensure the description
+    matches the hardware no matter if the line is connected.
+    Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
+---
+ .../devicetree/bindings/media/i2c/adv748x.txt    | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/media/i2c/adv748x.txt b/Documentation/devicetree/bindings/media/i2c/adv748x.txt
+index 4f91686e54a6..50a753189b81 100644
+--- a/Documentation/devicetree/bindings/media/i2c/adv748x.txt
++++ b/Documentation/devicetree/bindings/media/i2c/adv748x.txt
+@@ -2,7 +2,9 @@
  
-+	if (!state->endpoints[ADV748X_PORT_I2S]) {
-+		adv_info(state, "no I2S port, DAI disabled\n");
-+		ret = 0;
-+		goto fail;
-+	}
- 	dai->mclk_name = kasprintf(GFP_KERNEL, "%s.%s-i2s-mclk",
- 				   state->dev->driver->name,
- 				   dev_name(state->dev));
+ The ADV7481 and ADV7482 are multi format video decoders with an integrated
+ HDMI receiver. They can output CSI-2 on two independent outputs TXA and TXB
+-from three input sources HDMI, analog and TTL.
++from three input sources HDMI, analog and TTL. There is also support for an
++I2S-compatible interface connected to the audio processor of the HDMI decoder.
++The interface has TDM capability (8 slots, 32 bits, left or right justified).
+ 
+ Required Properties:
+ 
+@@ -16,6 +18,8 @@ Required Properties:
+     slave device on the I2C bus. The main address is mandatory, others are
+     optional and remain at default values if not specified.
+ 
++  - #clock-cells: must be <0>
++
+ Optional Properties:
+ 
+   - interrupt-names: Should specify the interrupts as "intrq1", "intrq2" and/or
+@@ -47,6 +51,7 @@ are numbered as follows.
+ 	  TTL		sink		9
+ 	  TXA		source		10
+ 	  TXB		source		11
++	  I2S		source		12
+ 
+ The digital output port nodes, when present, shall contain at least one
+ endpoint. Each of those endpoints shall contain the data-lanes property as
+@@ -72,6 +77,7 @@ Example:
+ 
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
++		#clock-cells = <0>;
+ 
+ 		interrupt-parent = <&gpio6>;
+ 		interrupt-names = "intrq1", "intrq2";
+@@ -113,4 +119,12 @@ Example:
+ 				remote-endpoint = <&csi20_in>;
+ 			};
+ 		};
++
++		port@c {
++			reg = <12>;
++
++			adv7482_i2s: endpoint {
++				remote-endpoint = <&i2s_in>;
++			};
++		};
+ 	};
 -- 
 2.25.1.25.g9ecbe7eb18
 
