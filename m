@@ -1,63 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 068F719C8E3
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 20:37:45 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 381D319C8F0
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 20:41:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DD16488375;
-	Thu,  2 Apr 2020 18:37:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7010387581;
+	Thu,  2 Apr 2020 18:41:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1F6HLnIG7Z+L; Thu,  2 Apr 2020 18:37:42 +0000 (UTC)
+	with ESMTP id q1uoVzo1Xouc; Thu,  2 Apr 2020 18:41:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 84CFC88345;
-	Thu,  2 Apr 2020 18:37:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DB64387527;
+	Thu,  2 Apr 2020 18:41:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2B4CD1BF3E9
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 18:37:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7177E1BF3E9
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 18:41:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2776688348
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 18:37:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6BB7F88348
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 18:41:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OOlekTfm3s8T for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 18:37:39 +0000 (UTC)
+ with ESMTP id zsRmgbx2aR75 for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 18:41:00 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.135])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B593788345
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 18:37:38 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.73])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4161B8831B
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 18:41:00 +0000 (UTC)
 Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue011 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N32y5-1jCprh2XAD-013Pmy for <devel@driverdev.osuosl.org>; Thu, 02 Apr
- 2020 20:37:36 +0200
+ mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1M9ntb-1jNdXT1G3Z-005nz2 for <devel@driverdev.osuosl.org>; Thu, 02 Apr
+ 2020 20:40:58 +0200
 Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id 62BFA64F878
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 18:37:36 +0000 (UTC)
+ by mail.cetitecgmbh.com (Postfix) with ESMTP id C37AF650AA6
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 18:40:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at cetitec.com
 Received: from mail.cetitecgmbh.com ([127.0.0.1])
  by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
  [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6nrJVfvhjmXz for <devel@driverdev.osuosl.org>;
- Thu,  2 Apr 2020 20:37:35 +0200 (CEST)
+ with ESMTP id P9hyKxxvrznG for <devel@driverdev.osuosl.org>;
+ Thu,  2 Apr 2020 20:40:57 +0200 (CEST)
 Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id D9CA564B747
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 20:37:35 +0200 (CEST)
+ by mail.cetitecgmbh.com (Postfix) with ESMTPS id 538E8650867
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 20:40:57 +0200 (CEST)
 Received: from pflmari.corp.cetitec.com (10.8.5.12) by
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Thu, 2 Apr 2020 20:37:35 +0200
+ id 15.0.1497.2; Thu, 2 Apr 2020 20:40:57 +0200
 Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id 81892804FD; Thu,  2 Apr 2020 20:34:00 +0200 (CEST)
-Date: Thu, 2 Apr 2020 20:34:00 +0200
+ id 768EB804FE; Thu,  2 Apr 2020 20:34:03 +0200 (CEST)
+Date: Thu, 2 Apr 2020 20:34:03 +0200
 From: Alex Riesen <alexander.riesen@cetitec.com>
 To: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: [PATCH v5 1/9] media: adv748x: fix end-of-line terminators in
- diagnostic statements
-Message-ID: <2f2460435afa594ef417e70068b125af97ddca39.1585852001.git.alexander.riesen@cetitec.com>
+Subject: [PATCH v5 2/9] media: adv748x: include everything adv748x.h needs
+ into the file
+Message-ID: <046f909122e03286faf0a8916f30d56259656e14.1585852001.git.alexander.riesen@cetitec.com>
 Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
  Kieran Bingham <kieran.bingham@ideasonboard.com>,
  Geert Uytterhoeven <geert@linux-m68k.org>,
@@ -79,23 +79,23 @@ X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
  PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
 X-EsetResult: clean, is OK
 X-EsetId: 37303A290D7F536A6C7266
-X-Provags-ID: V03:K1:BbhEsGiI158sJIXoGrwXlNL5Zx65p90VRrGLxGiogyR9XEVIWwp
- bu7O3cDfxrzS/0cpnMCz9M+B7qjWYmeP83IA8c8hejnHyoCZ0dYvQ2RRuonZHVS/qtVIzgT
- +7kaY/RcaiwLssxZyqfw/GB+YTZFFxg6IMH0DUf0Mvp9IxNXVWUSbwpOKXK5JCgY84AtPmt
- Fouzrli9Ds8B1XNiwHB4w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GEIshgxRR9U=:bBkznUv6pkO3LTQi4FLSx2
- DzfNJmUvQWm1/X0iq9VSiTpuX94Zxq9IyFBwWGDccbboDMN0+DVcplHbudTL6YRKVdULgJIpz
- h4z1e6BEKjCtZccCTl5wRQ2mX6OHQTsFiPpR3zbQman2PvyRMhSv7KRyS3tlCrcnF/tpGYCkC
- tR5EaYfszBcBPnnbNQF5pFUa9ed1bhvDL+WLcd2OvIp2wFloM5aySi/U2qY0dQ+WhsL62u7Mk
- x4txXXRhnOmFWGWpIaI9vwwK7QdIP6WqbkS0DFMNB3n8WOapwTxA8l2JMrVu9MbtErJl88LSq
- 4vi8cqveP9WePhS0Kboo9iOxFB8WuIKHhVDP+UdzJRl2iSfj1rpyCTTAD6AVGdPyOKep/QzhL
- ZGAPKzfVMMQhGC2gIpMk0ENVZVt3cu0RkpmIVvsIcQP8jHuxGDJ1M/lkAoGYX6yXGJ5vj1x+L
- l8u3Kszb3t/ydVfuEjkPBAz9efPJMhFOyerW+ZiK+8eVb0q0kXDFuq5Wcq2+PoyXrVptUd7l7
- ybA1bivbprxv25ncSHHXQvajNVxPgVg2u7FNYBKU9kDy7TloiyKFSeqb/c9esJjQA+VQ6Uweu
- eovg2uRgLQ1PcXZaxio8KVbtEXqG9goe3WJaZDrE5nrLWrSZWi5ChrFtO/UExTIitxz30PYyN
- ln+8ROS7BVvPfcMidFioNEEWaNNpPcD44nMa6jk1POOWetKOfDPwd64/Q7mAd4KK6WAhPlY3O
- VZoZ0KKenvyebTROR0z+6W9PWm5zCpTacZduM7YySueV1qn9d5kkUpFPhnz1pPx58XtRDZBlI
- uQywAOMJR0xwAfYF5I90oyqEGLbKmU4biUIWgfegKPrzNjVMiIttdNmm7Ona9TZoVsY23hl
+X-Provags-ID: V03:K1:NgBIcQTKWy+QiC1EClsluN+BmhXqO3bwSaCzFV5MPGQANgMwQZ3
+ ZBq0nOJ51hI4scXx9y7yvS1wa+jh4p/bh2MIb/QwxSsymGK2+QdB8sp6DfuF97GaViOyzaX
+ SW5pJ9SlJ/HNE5AjGsMLBkq5pghQ/YjlAPD/s3h4g05sKScjabZym9SWNrJGTJ9hnAvfEmD
+ ppLly77MlYTqQz1yPE2pg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:lGdXWE3WCIA=:X0+/3p6iu9R/QEVLm3mAQq
+ g2s/8QV7Nzk+PghmWm/pMnnXtIGVrZfNwtUlWbkG4avb2tRwcm3EExqaxHIGhuh2PJk+SPqcY
+ rXh4MhKrWdC8GcV/ujQejb77YZYm738W3HCdZkrbnGsIEiMOrnPdrOy8hjNjK+8OZSbcKib7e
+ Cr4r8AtNykSP68nOuUL8a5GOTtMDlqSGzPanPl2yjFjcMnIPXrGNuWSzTnRXCIPVA8Wl9vh6c
+ GlavUrKhYjGYRT51XkTOJm213v2oGXKMwKv4bc/yvDTmCpWWLKGkwnw3jRslspErN+509Hl+Y
+ NJGZeuVe30eQReK9qkxUgaevk+YahqtiQocw5MPCUmCTENJcp6aDn0rKp2WSAVxM1CPctSnfK
+ gNhf0svhVQ9LT9kokfe82X8H687O84iZIkyBdCjDhBYziy/MXjPnAda/RtwJU5zHiNBgPSerg
+ w16YTShK74cdBpqxziY6ymU7Ue/C3t+S7Ekmhf4LGe8/7k+sPz74ZZY6pi6aAU0N+diOa0LLQ
+ JE/wyGiinhhjDBnnaQcW56OO68AQFFz+C3mEjWM0ne2E/3UygL5gErVeK3tiO/07X7FlaoNPE
+ 5IlYxZARAytd61H1Dk3WOUisz3PnGm49VKY1gtIJXUf2szA23HePF0SYo4CVIwTjSsx0h2ntP
+ 2HhAz/JNAigF8dxlGJ/N1IpWckHnstev1/lgFhPLL+v50ECWvsSKG7JIUfmWOWotgYlWrPgnI
+ /1Hq545QUcciRbeEGmyG8cQcS7DXQdil5/c6YJ63BWRNC7mHxRbASRMP0c1szXp+HqcYRF+UL
+ UF1rv5bW5imrjIcsaItY1YY8iL73D7K6X2ffD/b7UHX2GZOcjN4X6p4whp/3OSnR7QubZQ7
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,125 +121,132 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+To follow the established practice of not depending on others to
+pull everything in. While at it, make sure it stays like this.
+
 Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- drivers/media/i2c/adv748x/adv748x-core.c | 24 ++++++++++++------------
- drivers/media/i2c/adv748x/adv748x-csi2.c |  2 +-
- 2 files changed, 13 insertions(+), 13 deletions(-)
+ drivers/media/i2c/adv748x/adv748x-afe.c  | 6 ++----
+ drivers/media/i2c/adv748x/adv748x-core.c | 6 ++----
+ drivers/media/i2c/adv748x/adv748x-csi2.c | 6 ++----
+ drivers/media/i2c/adv748x/adv748x-hdmi.c | 6 ++----
+ drivers/media/i2c/adv748x/adv748x.h      | 2 ++
+ 5 files changed, 10 insertions(+), 16 deletions(-)
 
+diff --git a/drivers/media/i2c/adv748x/adv748x-afe.c b/drivers/media/i2c/adv748x/adv748x-afe.c
+index dbbb1e4d6363..5a25d1fbe25f 100644
+--- a/drivers/media/i2c/adv748x/adv748x-afe.c
++++ b/drivers/media/i2c/adv748x/adv748x-afe.c
+@@ -6,18 +6,16 @@
+  * Copyright (C) 2017 Renesas Electronics Corp.
+  */
+ 
++#include "adv748x.h"
++
+ #include <linux/delay.h>
+ #include <linux/module.h>
+ #include <linux/mutex.h>
+ #include <linux/v4l2-dv-timings.h>
+ 
+-#include <media/v4l2-ctrls.h>
+-#include <media/v4l2-device.h>
+ #include <media/v4l2-dv-timings.h>
+ #include <media/v4l2-ioctl.h>
+ 
+-#include "adv748x.h"
+-
+ /* -----------------------------------------------------------------------------
+  * SDP
+  */
 diff --git a/drivers/media/i2c/adv748x/adv748x-core.c b/drivers/media/i2c/adv748x/adv748x-core.c
-index 23e02ff27b17..c3fb113cef62 100644
+index c3fb113cef62..5c59aad319d1 100644
 --- a/drivers/media/i2c/adv748x/adv748x-core.c
 +++ b/drivers/media/i2c/adv748x/adv748x-core.c
-@@ -623,11 +623,11 @@ static int adv748x_parse_dt(struct adv748x_state *state)
+@@ -10,6 +10,8 @@
+  *	Kieran Bingham <kieran.bingham@ideasonboard.com>
+  */
  
- 	for_each_endpoint_of_node(state->dev->of_node, ep_np) {
- 		of_graph_parse_endpoint(ep_np, &ep);
--		adv_info(state, "Endpoint %pOF on port %d", ep.local_node,
-+		adv_info(state, "Endpoint %pOF on port %d\n", ep.local_node,
- 			 ep.port);
++#include "adv748x.h"
++
+ #include <linux/delay.h>
+ #include <linux/errno.h>
+ #include <linux/i2c.h>
+@@ -20,14 +22,10 @@
+ #include <linux/slab.h>
+ #include <linux/v4l2-dv-timings.h>
  
- 		if (ep.port >= ADV748X_PORT_MAX) {
--			adv_err(state, "Invalid endpoint %pOF on port %d",
-+			adv_err(state, "Invalid endpoint %pOF on port %d\n",
- 				ep.local_node, ep.port);
+-#include <media/v4l2-ctrls.h>
+-#include <media/v4l2-device.h>
+ #include <media/v4l2-dv-timings.h>
+ #include <media/v4l2-fwnode.h>
+ #include <media/v4l2-ioctl.h>
  
- 			continue;
-@@ -635,7 +635,7 @@ static int adv748x_parse_dt(struct adv748x_state *state)
- 
- 		if (state->endpoints[ep.port]) {
- 			adv_err(state,
--				"Multiple port endpoints are not supported");
-+				"Multiple port endpoints are not supported\n");
- 			continue;
- 		}
- 
-@@ -702,62 +702,62 @@ static int adv748x_probe(struct i2c_client *client)
- 	/* Discover and process ports declared by the Device tree endpoints */
- 	ret = adv748x_parse_dt(state);
- 	if (ret) {
--		adv_err(state, "Failed to parse device tree");
-+		adv_err(state, "Failed to parse device tree\n");
- 		goto err_free_mutex;
- 	}
- 
- 	/* Configure IO Regmap region */
- 	ret = adv748x_configure_regmap(state, ADV748X_PAGE_IO);
- 	if (ret) {
--		adv_err(state, "Error configuring IO regmap region");
-+		adv_err(state, "Error configuring IO regmap region\n");
- 		goto err_cleanup_dt;
- 	}
- 
- 	ret = adv748x_identify_chip(state);
- 	if (ret) {
--		adv_err(state, "Failed to identify chip");
-+		adv_err(state, "Failed to identify chip\n");
- 		goto err_cleanup_dt;
- 	}
- 
- 	/* Configure remaining pages as I2C clients with regmap access */
- 	ret = adv748x_initialise_clients(state);
- 	if (ret) {
--		adv_err(state, "Failed to setup client regmap pages");
-+		adv_err(state, "Failed to setup client regmap pages\n");
- 		goto err_cleanup_clients;
- 	}
- 
- 	/* SW reset ADV748X to its default values */
- 	ret = adv748x_reset(state);
- 	if (ret) {
--		adv_err(state, "Failed to reset hardware");
-+		adv_err(state, "Failed to reset hardware\n");
- 		goto err_cleanup_clients;
- 	}
- 
- 	/* Initialise HDMI */
- 	ret = adv748x_hdmi_init(&state->hdmi);
- 	if (ret) {
--		adv_err(state, "Failed to probe HDMI");
-+		adv_err(state, "Failed to probe HDMI\n");
- 		goto err_cleanup_clients;
- 	}
- 
- 	/* Initialise AFE */
- 	ret = adv748x_afe_init(&state->afe);
- 	if (ret) {
--		adv_err(state, "Failed to probe AFE");
-+		adv_err(state, "Failed to probe AFE\n");
- 		goto err_cleanup_hdmi;
- 	}
- 
- 	/* Initialise TXA */
- 	ret = adv748x_csi2_init(state, &state->txa);
- 	if (ret) {
--		adv_err(state, "Failed to probe TXA");
-+		adv_err(state, "Failed to probe TXA\n");
- 		goto err_cleanup_afe;
- 	}
- 
- 	/* Initialise TXB */
- 	ret = adv748x_csi2_init(state, &state->txb);
- 	if (ret) {
--		adv_err(state, "Failed to probe TXB");
-+		adv_err(state, "Failed to probe TXB\n");
- 		goto err_cleanup_txa;
- 	}
- 
+-#include "adv748x.h"
+-
+ /* -----------------------------------------------------------------------------
+  * Register manipulation
+  */
 diff --git a/drivers/media/i2c/adv748x/adv748x-csi2.c b/drivers/media/i2c/adv748x/adv748x-csi2.c
-index 2091cda50935..c43ce5d78723 100644
+index c43ce5d78723..c00d4f347d95 100644
 --- a/drivers/media/i2c/adv748x/adv748x-csi2.c
 +++ b/drivers/media/i2c/adv748x/adv748x-csi2.c
-@@ -72,7 +72,7 @@ static int adv748x_csi2_registered(struct v4l2_subdev *sd)
- 	struct adv748x_state *state = tx->state;
- 	int ret;
+@@ -5,15 +5,13 @@
+  * Copyright (C) 2017 Renesas Electronics Corp.
+  */
  
--	adv_dbg(state, "Registered %s (%s)", is_txa(tx) ? "TXA":"TXB",
-+	adv_dbg(state, "Registered %s (%s)\n", is_txa(tx) ? "TXA":"TXB",
- 			sd->name);
++#include "adv748x.h"
++
+ #include <linux/module.h>
+ #include <linux/mutex.h>
  
- 	/*
+-#include <media/v4l2-ctrls.h>
+-#include <media/v4l2-device.h>
+ #include <media/v4l2-ioctl.h>
+ 
+-#include "adv748x.h"
+-
+ static int adv748x_csi2_set_virtual_channel(struct adv748x_csi2 *tx,
+ 					    unsigned int vc)
+ {
+diff --git a/drivers/media/i2c/adv748x/adv748x-hdmi.c b/drivers/media/i2c/adv748x/adv748x-hdmi.c
+index c557f8fdf11a..f598acec3b5c 100644
+--- a/drivers/media/i2c/adv748x/adv748x-hdmi.c
++++ b/drivers/media/i2c/adv748x/adv748x-hdmi.c
+@@ -5,18 +5,16 @@
+  * Copyright (C) 2017 Renesas Electronics Corp.
+  */
+ 
++#include "adv748x.h"
++
+ #include <linux/module.h>
+ #include <linux/mutex.h>
+ 
+-#include <media/v4l2-ctrls.h>
+-#include <media/v4l2-device.h>
+ #include <media/v4l2-dv-timings.h>
+ #include <media/v4l2-ioctl.h>
+ 
+ #include <uapi/linux/v4l2-dv-timings.h>
+ 
+-#include "adv748x.h"
+-
+ /* -----------------------------------------------------------------------------
+  * HDMI and CP
+  */
+diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
+index fccb388ce179..09aab4138c3f 100644
+--- a/drivers/media/i2c/adv748x/adv748x.h
++++ b/drivers/media/i2c/adv748x/adv748x.h
+@@ -19,6 +19,8 @@
+  */
+ 
+ #include <linux/i2c.h>
++#include <media/v4l2-ctrls.h>
++#include <media/v4l2-device.h>
+ 
+ #ifndef _ADV748X_H_
+ #define _ADV748X_H_
 -- 
 2.25.1.25.g9ecbe7eb18
 
