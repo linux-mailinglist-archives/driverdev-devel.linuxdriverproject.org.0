@@ -1,70 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05E1219BBC1
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 08:36:08 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 118E619BC4E
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 09:11:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3AA5E86F3B;
-	Thu,  2 Apr 2020 06:36:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 303D820471;
+	Thu,  2 Apr 2020 07:11:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id abShh3rpLrmq; Thu,  2 Apr 2020 06:36:05 +0000 (UTC)
+	with ESMTP id ZfuxiOAoBrOR; Thu,  2 Apr 2020 07:11:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0BDD086D50;
-	Thu,  2 Apr 2020 06:36:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 567A620409;
+	Thu,  2 Apr 2020 07:11:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1DA411BF405
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 06:36:03 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 783051BF3FF
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 07:11:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1916586D50
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 06:36:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 742E0203ED
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 07:11:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oo-buB4oYVNS for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 06:36:02 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0192.hostedemail.com
- [216.40.44.192])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0959686D24
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 06:36:01 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave03.hostedemail.com (Postfix) with ESMTP id AA0B918019B01
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 05:56:16 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay02.hostedemail.com (Postfix) with ESMTP id 38DD15010;
- Thu,  2 Apr 2020 05:56:14 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1542:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2692:2828:3138:3139:3140:3141:3142:3354:3622:3865:3867:3868:4250:4321:4605:5007:6119:7514:7875:7903:10004:10400:10848:11026:11232:11473:11658:11914:12043:12048:12296:12297:12438:12555:12740:12760:12895:13439:13972:14096:14097:14181:14659:14721:21080:21627:21990:30012:30045:30046:30054:30070:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: judge59_8d939426bb842
-X-Filterd-Recvd-Size: 3915
-Received: from XPS-9350.home (unknown [47.151.136.130])
- (Authenticated sender: joe@perches.com)
- by omf20.hostedemail.com (Postfix) with ESMTPA;
- Thu,  2 Apr 2020 05:56:12 +0000 (UTC)
-Message-ID: <5d35084fcc0476fc2f43e3cf371f5078c0fbeeab.camel@perches.com>
-Subject: Re: [PATCH 1/2] staging: gasket: Fix 4 over 80 char warnings
-From: Joe Perches <joe@perches.com>
-To: "John B. Wyatt IV" <jbwyatt4@gmail.com>, 
- outreachy-kernel@googlegroups.com, Rob Springer <rspringer@google.com>,
- Todd Poynor <toddpoynor@google.com>, Ben Chan <benchan@chromium.org>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org, 
- linux-kernel@vger.kernel.org
-Date: Wed, 01 Apr 2020 22:54:17 -0700
-In-Reply-To: <20200402053617.826678-2-jbwyatt4@gmail.com>
-References: <20200402053617.826678-1-jbwyatt4@gmail.com>
- <20200402053617.826678-2-jbwyatt4@gmail.com>
-User-Agent: Evolution 3.34.1-2 
+ with ESMTP id 74hRBb7dIuNx for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 07:11:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail2-relais-roc.national.inria.fr
+ (mail2-relais-roc.national.inria.fr [192.134.164.83])
+ by silver.osuosl.org (Postfix) with ESMTPS id B6F5820409
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 07:11:33 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.72,334,1580770800"; d="scan'208";a="443452906"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+ by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Apr 2020 09:11:30 +0200
+Date: Thu, 2 Apr 2020 09:11:30 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: android: ion: Fix parenthesis
+ alignment
+In-Reply-To: <20200402012515.429329-1-jbwyatt4@gmail.com>
+Message-ID: <alpine.DEB.2.21.2004020910570.3014@hadrien>
+References: <20200402012515.429329-1-jbwyatt4@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -78,87 +59,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ outreachy-kernel@googlegroups.com,
+ =?ISO-8859-15?Q?Arve_Hj=F8nnev=E5g?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Laura Abbott <labbott@redhat.com>,
+ Martijn Coenen <maco@android.com>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 2020-04-01 at 22:36 -0700, John B. Wyatt IV wrote:
-> Fix 4 over 80 char warnings by caching long enum values into local
-> variables.
-> 
-> All enums are only used once inside each function (and once inside
-> the entire file).
-> 
+
+
+On Wed, 1 Apr 2020, John B. Wyatt IV wrote:
+
+> Fix 2 parenthesis alignment issues.
+
+Please try to find a way to describe what you have done that doesn't
+involve the word "Fix".  What have you done and why?
+
+julia
+
+
+>
 > Reported by checkpatch.
-> 
+>
 > Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
 > ---
->  drivers/staging/gasket/apex_driver.c | 13 +++++++++----
->  1 file changed, 9 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-> index 46199c8ca441..f48209ec7d24 100644
-> --- a/drivers/staging/gasket/apex_driver.c
-> +++ b/drivers/staging/gasket/apex_driver.c
-> @@ -253,6 +253,8 @@ static int apex_get_status(struct gasket_dev *gasket_dev)
->  /* Enter GCB reset state. */
->  static int apex_enter_reset(struct gasket_dev *gasket_dev)
->  {
-> +	int idle_gen_reg = APEX_BAR2_REG_IDLEGENERATOR_IDLEGEN_IDLEREGISTER;
-> +
-
-This indirection only makes the code more difficult to understand.
-
->  	if (bypass_top_level)
->  		return 0;
->  
-> @@ -263,7 +265,7 @@ static int apex_enter_reset(struct gasket_dev *gasket_dev)
->  	 *    - Enable GCB idle
->  	 */
->  	gasket_read_modify_write_64(gasket_dev, APEX_BAR_INDEX,
-> -				    APEX_BAR2_REG_IDLEGENERATOR_IDLEGEN_IDLEREGISTER,
-> +				    idle_gen_reg,
->  				    0x0, 1, 32);
->  
->  	/*    - Initiate DMA pause */
-> @@ -395,11 +397,12 @@ static int apex_device_cleanup(struct gasket_dev *gasket_dev)
->  	u64 scalar_error;
->  	u64 hib_error;
->  	int ret = 0;
-> +	int status = APEX_BAR2_REG_SCALAR_CORE_ERROR_STATUS;
->  
->  	hib_error = gasket_dev_read_64(gasket_dev, APEX_BAR_INDEX,
->  				       APEX_BAR2_REG_USER_HIB_ERROR_STATUS);
->  	scalar_error = gasket_dev_read_64(gasket_dev, APEX_BAR_INDEX,
-> -					  APEX_BAR2_REG_SCALAR_CORE_ERROR_STATUS);
-> +					  status);
->  
->  	dev_dbg(gasket_dev->dev,
->  		"%s 0x%p hib_error 0x%llx scalar_error 0x%llx\n",
-> @@ -584,6 +587,8 @@ static int apex_pci_probe(struct pci_dev *pci_dev,
->  	ulong page_table_ready, msix_table_ready;
->  	int retries = 0;
->  	struct gasket_dev *gasket_dev;
-> +	int page_table_init = APEX_BAR2_REG_KERNEL_HIB_PAGE_TABLE_INIT;
-> +	int msix_table_init = APEX_BAR2_REG_KERNEL_HIB_MSIX_TABLE_INIT;
->  
->  	ret = pci_enable_device(pci_dev);
->  	if (ret) {
-> @@ -606,10 +611,10 @@ static int apex_pci_probe(struct pci_dev *pci_dev,
->  	while (retries < APEX_RESET_RETRY) {
->  		page_table_ready =
->  			gasket_dev_read_64(gasket_dev, APEX_BAR_INDEX,
-> -					   APEX_BAR2_REG_KERNEL_HIB_PAGE_TABLE_INIT);
-> +					   page_table_init);
->  		msix_table_ready =
->  			gasket_dev_read_64(gasket_dev, APEX_BAR_INDEX,
-> -					   APEX_BAR2_REG_KERNEL_HIB_MSIX_TABLE_INIT);
-> +					   msix_table_init);
->  		if (page_table_ready && msix_table_ready)
->  			break;
->  		schedule_timeout(msecs_to_jiffies(APEX_RESET_DELAY));
-
+>  drivers/staging/android/ion/ion_page_pool.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/android/ion/ion_page_pool.c b/drivers/staging/android/ion/ion_page_pool.c
+> index f85ec5b16b65..0198b886d906 100644
+> --- a/drivers/staging/android/ion/ion_page_pool.c
+> +++ b/drivers/staging/android/ion/ion_page_pool.c
+> @@ -37,7 +37,7 @@ static void ion_page_pool_add(struct ion_page_pool *pool, struct page *page)
+>  	}
+>
+>  	mod_node_page_state(page_pgdat(page), NR_KERNEL_MISC_RECLAIMABLE,
+> -							1 << pool->order);
+> +			    1 << pool->order);
+>  	mutex_unlock(&pool->mutex);
+>  }
+>
+> @@ -57,7 +57,7 @@ static struct page *ion_page_pool_remove(struct ion_page_pool *pool, bool high)
+>
+>  	list_del(&page->lru);
+>  	mod_node_page_state(page_pgdat(page), NR_KERNEL_MISC_RECLAIMABLE,
+> -							-(1 << pool->order));
+> +			    -(1 << pool->order));
+>  	return page;
+>  }
+>
+> --
+> 2.25.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200402012515.429329-1-jbwyatt4%40gmail.com.
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
