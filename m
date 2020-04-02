@@ -2,59 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0A6719C0B5
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 14:11:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB57D19C0F7
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 14:16:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 197E9204BB;
-	Thu,  2 Apr 2020 12:11:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1617F204CB;
+	Thu,  2 Apr 2020 12:16:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rtYMTeuwPsaP; Thu,  2 Apr 2020 12:11:44 +0000 (UTC)
+	with ESMTP id A3Svc5r3zekk; Thu,  2 Apr 2020 12:16:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D1AE820485;
-	Thu,  2 Apr 2020 12:11:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C0083204A4;
+	Thu,  2 Apr 2020 12:16:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 61C471BF29C
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 12:11:29 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 27EBB1BF29C
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 12:16:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5DCEE20425
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 12:11:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 21A8A87E93
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 12:16:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Tz5J2VQj4CCa for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 12:11:28 +0000 (UTC)
+ with ESMTP id PNm1sOmttfmR for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 12:16:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id 410A020400
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 12:11:28 +0000 (UTC)
-IronPort-SDR: u0QKBEjRDmnCCuih4lEJR5KXtjYY4NyiMKNBa8IH69v4F0ZXvLZzD46/tWal6qL9/uKTASIWyy
- RU0tbNxc6vzA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Apr 2020 05:11:27 -0700
-IronPort-SDR: v23TJdgrf+K0rznURvUTelu+hJy5ShEMUnAaMYxVszfNoNfQNeUZufPYr3pl+OvULlUtzq2bNv
- GBl5JFjiDD9A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,335,1580803200"; d="scan'208";a="450911574"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 02 Apr 2020 05:11:26 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jJygw-000BvR-4M; Thu, 02 Apr 2020 20:11:26 +0800
-Date: Thu, 02 Apr 2020 20:10:39 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_remove_return_value] BUILD SUCCESS
- 927e420044b36db8b8be2ed95e7b723b7808ebe4
-Message-ID: <5e85d63f.oUwKwbSs2A1MZzog%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 585DD87E91
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 12:16:49 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id p10so3917927wrt.6
+ for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 05:16:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:references:subject:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=9100ZMfQ3eWaJVwdNq9pSQeHCEwHDV/UJ/zuKVucMxA=;
+ b=ALLV3AjWxKR07II/OzlDnRe+odhQFSFArcf8cWjQukJmd6WXsg9+vyfD8DfKX9gWMN
+ o85KGRmQSCApKdFnuQRIdkmUme7sEKjqw5SXiIFrjdPkCVpclHE6AukhNWeb6yNKOhL8
+ mSBvda/9k8hhDcs8hxq7Ir3tcfWNZFcNPUaqnc4VZGHD9WT/x2/UGQ7N9VjavMYukKnM
+ K8ULMWCC9wgUMpVyfUQ+xkB0QzfidY2ZSgy9eCRnT7acIbLf8oyP71jF6JKhMbcYxj4Q
+ HrYzq3IEOcIOy3d+DvXGwz17yj0IpLyHJbIGtAohcctCquPEvV8uOKDwrwF9JRdhOKkc
+ 77Og==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:references:subject:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9100ZMfQ3eWaJVwdNq9pSQeHCEwHDV/UJ/zuKVucMxA=;
+ b=lc5AsUFJWJ6YKDDZH4RXdwJU27aZu2PlMDncsC1xZxmEN68tv9X7Cv8OGBLwaPtpDU
+ ZWxr2H6CFmAQPboWjApArOASfSEpPF0FeHXf+O+lt64Abo/zDfEQJd7mowC659hqCrV9
+ WPDgkhwQAVNhAdaQmluv6F3SxqQkrIjcae/JL2Yoin2o1kSYW2T7fiNPgIMfm+b3V/rZ
+ tL67hkKwNen0SHEy9/lcCbftXPe/U6okVOaXCM9Nsqs2sB6OjSZWn35go4HhOIJXqA0L
+ xeTywOKHLNGwJP8rl4TqALrxGbopj2kf+l96sZEc506OsbukbU0GQgi1fNMpMw5ElJwU
+ mKDA==
+X-Gm-Message-State: AGi0PuYb8966x+9O4xtFUCVqU0kFPJEfSStIc2p+RNvA13yIFRWN1hrr
+ PFqh+cyqGqKCL3oT33xCiTA=
+X-Google-Smtp-Source: APiQypKji7UWQsmE5huunWfu+sXG44AGFdjl0/jp9OPk+bxWF6qOU3UNOHuPQ1YmcSNtr/z7NyzQ1g==
+X-Received: by 2002:a5d:4c48:: with SMTP id n8mr3212293wrt.414.1585829807916; 
+ Thu, 02 Apr 2020 05:16:47 -0700 (PDT)
+Received: from [192.168.2.1] (ip51ccf9cd.speed.planet.nl. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id y12sm4191207wrn.55.2020.04.02.05.16.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Apr 2020 05:16:47 -0700 (PDT)
+To: helen.koike@collabora.com
+References: <20200402000234.226466-2-helen.koike@collabora.com>
+Subject: Re: [PATCH 1/4] dt-bindings: phy: phy-rockchip-dphy-rx0: move
+ rockchip dphy rx0 bindings out of staging
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <bfefe00c-5673-ddcb-4e2a-425eb4771002@gmail.com>
+Date: Thu, 2 Apr 2020 14:16:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
+In-Reply-To: <20200402000234.226466-2-helen.koike@collabora.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,194 +89,98 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ dafna.hirschfeld@collabora.com, heiko@sntech.de, karthik.poduval@gmail.com,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, mark.rutland@arm.com,
+ kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  debugfs_remove_return_value
-branch HEAD: 927e420044b36db8b8be2ed95e7b723b7808ebe4  debugfs: remove return value of debugfs_create_u32()
+Hi Helen,
 
-elapsed time: 1375m
+> # SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> %YAML 1.2
+> ---
+> $id: http://devicetree.org/schemas/phy/rockchip-mipi-dphy-rx0.yaml#
+> $schema: http://devicetree.org/meta-schemas/core.yaml#
+> 
+> title: Rockchip SoC MIPI RX0 D-PHY Device Tree Bindings
+> 
+> maintainers:
+>   - Helen Koike <helen.koike@collabora.com>
+>   - Ezequiel Garcia <ezequiel@collabora.com>
+> 
+> description: |
+>   The Rockchip SoC has a MIPI D-PHY bus with an RX0 entry which connects to
+>   the ISP1 (Image Signal Processing unit v1.0) for CSI cameras.
+> 
+> properties:
+>   compatible:
+>     const: rockchip,rk3399-mipi-dphy-rx0
+> 
 
-configs tested: 167
-configs skipped: 0
+>   reg:
+>     maxItems: 1
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+If 'reg' is not used => remove it.
 
-arm64                            allyesconfig
-arm                              allyesconfig
-arm64                             allnoconfig
-arm                               allnoconfig
-arm                           efm32_defconfig
-arm                         at91_dt_defconfig
-arm                        shmobile_defconfig
-arm64                               defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                           sunxi_defconfig
-arm                        multi_v7_defconfig
-sparc                            allyesconfig
-m68k                       m5475evb_defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                             alldefconfig
-i386                                defconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             alldefconfig
-arm64                            allmodconfig
-arm                              allmodconfig
-nios2                         3c120_defconfig
-nios2                         10m50_defconfig
-c6x                        evmc6678_defconfig
-xtensa                          iss_defconfig
-c6x                              allyesconfig
-xtensa                       common_defconfig
-openrisc                 simple_smp_defconfig
-openrisc                    or1ksim_defconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                                defconfig
-alpha                               defconfig
-h8300                       h8s-sim_defconfig
-h8300                     edosk2674_defconfig
-m68k                             allmodconfig
-h8300                    h8300h-sim_defconfig
-m68k                           sun3_defconfig
-m68k                          multi_defconfig
-arc                                 defconfig
-arc                              allyesconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-mips                             allyesconfig
-mips                         64r6el_defconfig
-mips                              allnoconfig
-mips                           32r2_defconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                generic-64bit_defconfig
-parisc                generic-32bit_defconfig
-parisc                           allyesconfig
-x86_64               randconfig-a001-20200401
-x86_64               randconfig-a002-20200401
-x86_64               randconfig-a003-20200401
-i386                 randconfig-a001-20200401
-i386                 randconfig-a002-20200401
-i386                 randconfig-a003-20200401
-mips                 randconfig-a001-20200401
-nds32                randconfig-a001-20200401
-m68k                 randconfig-a001-20200401
-alpha                randconfig-a001-20200401
-parisc               randconfig-a001-20200401
-riscv                randconfig-a001-20200401
-sparc64              randconfig-a001-20200401
-h8300                randconfig-a001-20200401
-nios2                randconfig-a001-20200401
-microblaze           randconfig-a001-20200401
-c6x                  randconfig-a001-20200401
-csky                 randconfig-a001-20200401
-openrisc             randconfig-a001-20200401
-s390                 randconfig-a001-20200401
-sh                   randconfig-a001-20200401
-xtensa               randconfig-a001-20200401
-i386                 randconfig-b003-20200401
-x86_64               randconfig-b002-20200401
-x86_64               randconfig-b003-20200401
-i386                 randconfig-b001-20200401
-x86_64               randconfig-b001-20200401
-i386                 randconfig-b002-20200401
-x86_64               randconfig-c001-20200401
-x86_64               randconfig-c002-20200401
-x86_64               randconfig-c003-20200401
-i386                 randconfig-c001-20200401
-i386                 randconfig-c002-20200401
-i386                 randconfig-c003-20200401
-x86_64               randconfig-d001-20200401
-x86_64               randconfig-d002-20200401
-x86_64               randconfig-d003-20200401
-i386                 randconfig-d001-20200401
-i386                 randconfig-d002-20200401
-i386                 randconfig-d003-20200401
-i386                 randconfig-e001-20200401
-x86_64               randconfig-e002-20200401
-i386                 randconfig-e003-20200401
-x86_64               randconfig-e001-20200401
-i386                 randconfig-e002-20200401
-i386                 randconfig-f001-20200401
-i386                 randconfig-f003-20200401
-x86_64               randconfig-f003-20200401
-x86_64               randconfig-f001-20200401
-i386                 randconfig-f002-20200401
-x86_64               randconfig-f002-20200401
-x86_64               randconfig-g003-20200401
-i386                 randconfig-g003-20200401
-x86_64               randconfig-g002-20200401
-i386                 randconfig-g001-20200401
-i386                 randconfig-g002-20200401
-x86_64               randconfig-g001-20200401
-x86_64               randconfig-h001-20200402
-x86_64               randconfig-h002-20200402
-x86_64               randconfig-h003-20200402
-i386                 randconfig-h001-20200402
-i386                 randconfig-h002-20200402
-i386                 randconfig-h003-20200402
-x86_64               randconfig-h002-20200401
-i386                 randconfig-h002-20200401
-i386                 randconfig-h003-20200401
-i386                 randconfig-h001-20200401
-x86_64               randconfig-h001-20200401
-x86_64               randconfig-h003-20200401
-arc                  randconfig-a001-20200401
-arm                  randconfig-a001-20200401
-arm64                randconfig-a001-20200401
-ia64                 randconfig-a001-20200401
-powerpc              randconfig-a001-20200401
-sparc                randconfig-a001-20200401
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-s390                       zfcpdump_defconfig
-s390                          debug_defconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                             alldefconfig
-s390                                defconfig
-sh                          rsk7269_defconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+> 
+>   clocks:
+>     items:
+>       - description: MIPI D-PHY ref clock
+>       - description: MIPI D-PHY RX0 cfg clock
+>       - description: Video in/out general register file clock
+> 
+>   clock-names:
+>     items:
+>       - const: dphy-ref
+>       - const: dphy-cfg
+>       - const: grf
+> 
+>   '#phy-cells':
+>     const: 0
+> 
+>   power-domains:
+>     description: Video in/out power domain.
+>     maxItems: 1
+> 
+> required:
+>   - compatible
+>   - clocks
+>   - clock-names
+>   - '#phy-cells'
+>   - power-domains
+> 
+> additionalProperties: false
+> 
+> examples:
+>   - |
+> 
+>     /*
+>      * MIPI D-PHY RX0 use registers in "general register files", it
+>      * should be a child of the GRF.
+>      *
+>      * grf: syscon@ff770000 {
+>      *  compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
+>      *  ...
+>      * };
+>      */
+> 
+>     #include <dt-bindings/clock/rk3399-cru.h>
+>     #include <dt-bindings/power/rk3399-power.h>
+> 
+>     mipi_dphy_rx0: mipi-dphy-rx0 {
+>         compatible = "rockchip,rk3399-mipi-dphy-rx0";
+>         clocks = <&cru SCLK_MIPIDPHY_REF>,
+>                  <&cru SCLK_DPHY_RX0_CFG>,
+>                  <&cru PCLK_VIO_GRF>;
+>         clock-names = "dphy-ref", "dphy-cfg", "grf";
+>         power-domains = <&power RK3399_PD_VIO>;
+>         #phy-cells = <0>;
+>     };
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
