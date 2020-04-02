@@ -2,82 +2,106 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BAE5619C6AD
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 18:04:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F0E4419C6D2
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 18:14:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6267F85DF9;
-	Thu,  2 Apr 2020 16:04:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B68A873C9;
+	Thu,  2 Apr 2020 16:14:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1OGI0w3eyLQS; Thu,  2 Apr 2020 16:04:09 +0000 (UTC)
+	with ESMTP id oZNvjppB44it; Thu,  2 Apr 2020 16:14:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4989985D55;
-	Thu,  2 Apr 2020 16:04:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C20FE871FF;
+	Thu,  2 Apr 2020 16:14:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8ECC91BF592
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 16:04:06 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 607B01BF395
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 16:14:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 825912670B
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 16:04:06 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5C34B88ADB
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 16:14:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f6YTtjOty+cm for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 16:04:05 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by silver.osuosl.org (Postfix) with ESMTPS id ABB44203AB
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 16:04:05 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id a25so4931755wrd.0
- for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 09:04:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=qBVTjaLThJfumgo5ABo1WV3ZM7MbrBwLw7tmH+TZCSg=;
- b=kwmzilWpIVyO9RPctO+cX7UWmlcn0TxAF4fL+FpQSQJURfsVu2xLot/+y9d15PTkQE
- XWMzw1q9PtSSWuH9hxOuPR1bWKbxlAjy69znqTsRccXjq82wBemkSMvkxPHtF2AABG7x
- ifDlbdzrutQIByLyb8Q+EJi0TOXk1u4qnssc8dTMeGuJ8eBHvjw8jsPKyI873qd1/dVS
- WIb9YjrgdHF/Ad2SPQUNMwuU3WP8RY14JiuOpvT1Sbj1+5lKxYieQCum3oFl+CjmWv6j
- TM7pbWWr1WdE/1fxPqwC6FOpQl2s5X7KHFl8XJnarjar5fqrhf/6Ic+/57zKk8hqQx3Q
- frmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=qBVTjaLThJfumgo5ABo1WV3ZM7MbrBwLw7tmH+TZCSg=;
- b=GBX4bjSjVSd4Ew1vQUDb2FBus9jeDjXEEARcwWsRdZcccl38QEqJVo443ce1LzvclW
- IrTOqh0K/gyA7Uu59svg6ql3QejVb0+A4ExytAac9M3i2M4dt8VemLKkX4LdEdNCGsVO
- fiWM/98gkuTWJYDixdj59txqGbm7kX8echBaZ1Hk9eGMBx+9nsQMnH2eb9PfQRkHp60m
- 4Hc8bi1MkKrDW8jo6XOnUqfj6C6n6vHxOmw7M/RVSyL8JJJsZ/tJ01wRmhnxC9XUVLOI
- NNmfq0VvdhJYauYH+CaD2oI1u/nOQEHegjAug2KAJsSpwvmRlce0Md4zLI/CIp1kpTpP
- M3ng==
-X-Gm-Message-State: AGi0PuY4XCpvppX7+lUAGe6+WD8sB/gwzLDexHHAZmF3XY4HBGbSwAOG
- sqjBancyv0ZKs1U2/X8mvCA=
-X-Google-Smtp-Source: APiQypKxE40isqGXPYBa29scB1z8vPhNWxo1K4pgf8KCxsrh4y/cdK44Lrxa6WgqgtI8QdSesWLArg==
-X-Received: by 2002:a5d:4602:: with SMTP id t2mr4567354wrq.347.1585843444033; 
- Thu, 02 Apr 2020 09:04:04 -0700 (PDT)
-Received: from arch-thunder.localdomain (a109-49-46-234.cpe.netcabo.pt.
- [109.49.46.234])
- by smtp.gmail.com with ESMTPSA id y16sm7988816wrp.78.2020.04.02.09.04.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2020 09:04:03 -0700 (PDT)
-Date: Thu, 2 Apr 2020 17:04:00 +0100
-From: Rui Miguel Silva <rmfrfs@gmail.com>
+ with ESMTP id buJJq0y0Om6W for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 16:14:19 +0000 (UTC)
+X-Greylist: delayed 01:29:48 by SQLgrey-1.7.6
+Received: from NAM04-SN1-obe.outbound.protection.outlook.com
+ (mail-eopbgr700088.outbound.protection.outlook.com [40.107.70.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 38F80888A4
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 16:14:19 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WSEiKPbr8X5wL1jsZ5MvBPxxN6CiEOdeUKwfwfb60TjtsOpalGPaZ11pfm2da58bJbuQ7pqqLgapMYnCk++TPjsPR5QcH1fKIiAktoM3e8fYIUdjrAh2pzl1QsDkWWx0F7L4ecF6qSss+ZxHIcMl3F0DxelJhVtxdpf1u2YDYawxpomUX6f67qCYXzMkd9cQ6OiUK8AZqnj0Q3WxjzOVOnCJtW9HLzj7Wu2dsiL7v9NC31ag4Z/OABmMAwN5GoRbSUjX1EZH3csggEzFs5a7Qaxh8/eOfnRl6DY7lb5CppYhZ3U7kV54iY//fyH+hp71eSzBjU0uC6zsE2Ne1xnUaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+4NMsPse/N4poIiaYAtI0ewjmuBpTbdJRqPfkJBu4IY=;
+ b=aTV/kp5uOU5d7kY1JV6UBrR23gKBqjd+caVzp3PAfzub4vb112nzayHwKG2hWhfnrJuEyirVecLKYNZl5WkN1mBoE3rr31vg8Xhgx0giBlqWTUeY6AViIautxn8IfkyBdjfFp8PlYkHuQAGjNWC6xxpqD8BfZcnvz9p/6wZ4KAmOHjYpx9cD2+oT3NSsFGJU5HLV+clGPjIBZ/2yfohUD5Cp8UlaK/zz3iA1ZLnEbPedMK6P/TN0lPhJ5WUkhuo+fhA/ochiYeuYLdfBqdLVgoGcWzV33DD4F2R6O2r4ta0zsjwW9UyA2hGoOeOAU+kMxKvR4id4aO5hPhkd+D4MDQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+4NMsPse/N4poIiaYAtI0ewjmuBpTbdJRqPfkJBu4IY=;
+ b=Hc8/3VyCAxEr593thwxImCjUbxc23uSyxmFxbHO5ySNvrsExk0m02Kdgsuy7AFNm7zgtXq/fOPst2kiBKuxfzharoECq70P+mH5Xnwxh/FpzFlxio8cx220lYRs+rasOFLzT64rhCSCFvmwFYMGyGJtdGh3oGYmMQNz3GlSKF0c=
+Received: from MN2PR11MB4063.namprd11.prod.outlook.com (2603:10b6:208:13f::22)
+ by MN2PR11MB4583.namprd11.prod.outlook.com (2603:10b6:208:26a::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2878.16; Thu, 2 Apr
+ 2020 16:14:17 +0000
+Received: from MN2PR11MB4063.namprd11.prod.outlook.com
+ ([fe80::ade4:5702:1c8b:a2b3]) by MN2PR11MB4063.namprd11.prod.outlook.com
+ ([fe80::ade4:5702:1c8b:a2b3%7]) with mapi id 15.20.2856.019; Thu, 2 Apr 2020
+ 16:14:16 +0000
+From: =?iso-8859-1?Q?J=E9r=F4me_Pouiller?= <Jerome.Pouiller@silabs.com>
 To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH -next] staging: greybus: fix a missing-check bug in
- gb_lights_light_config()
-Message-ID: <20200402160400.cvgvd3da75x2f4qe@arch-thunder.localdomain>
-References: <20200401030017.100274-1-chenzhou10@huawei.com>
- <20200402122228.GP2001@kadam>
- <20200402131618.653dkeuz7c2vuujf@arch-thunder.localdomain>
- <20200402142237.GT2001@kadam>
+Subject: Re: [PATCH 01/32] staging: wfx: add sanity checks to hif_join()
+Thread-Topic: [PATCH 01/32] staging: wfx: add sanity checks to hif_join()
+Thread-Index: AQHWCBVMCH2afVbB10mhdLojoO/GiKhlyCWAgAA7MQA=
+Date: Thu, 2 Apr 2020 16:14:16 +0000
+Message-ID: <2026476.QLiXXEGFCf@pc-42>
+References: <20200401110405.80282-1-Jerome.Pouiller@silabs.com>
+ <20200401110405.80282-2-Jerome.Pouiller@silabs.com>
+ <20200402124223.GQ2001@kadam>
+In-Reply-To: <20200402124223.GQ2001@kadam>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Jerome.Pouiller@silabs.com; 
+x-originating-ip: [82.67.86.106]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 23c7bc09-d5a6-4eb0-9d8f-08d7d720e492
+x-ms-traffictypediagnostic: MN2PR11MB4583:
+x-microsoft-antispam-prvs: <MN2PR11MB4583BCB377290048452686E993C60@MN2PR11MB4583.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-forefront-prvs: 0361212EA8
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR11MB4063.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10009020)(7916004)(376002)(366004)(396003)(39850400004)(136003)(346002)(6486002)(5660300002)(54906003)(2906002)(4326008)(316002)(26005)(71200400001)(33716001)(478600001)(9686003)(6916009)(6506007)(6512007)(66556008)(8676002)(66574012)(76116006)(186003)(91956017)(66946007)(86362001)(66446008)(64756008)(8936002)(66476007)(81166006)(81156014);
+ DIR:OUT; SFP:1101; 
+received-spf: None (protection.outlook.com: silabs.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: QXfLnyujnRrxkaefmhb8mK1hVk4gZrn9ocGhu4GMEQLrEWzDvBdfaVog2mxrG0wuNvK3iKHsJtdD0Q4sniNep3SFDr7vV7d2WbtXJBLAZTUlmEJTes6VNTect8BZPm4HqHRkzv0qYWB5XeswMYPp9s/fL9xKa5Nb/OmGxSpwyJ7sM3aGzqgIljm41vc/kldNVsKtbEONyaRgm+mSAGORS+oeL1wz6gQ/+7ymTYuGA3I1Mnbc2W2eNst1Po3Ui39c3hBvBcuW+UlwK1V94eVeUIeYwjDfPRQiQex1LV3OUEpC0fZY8qu28/UkfV2ItXYJONwvpKMssTDQ2nwO65SY8vBS0xtN7bFhnmqirwgIfGLRxSgXwVAhXJtY8EYtnPXCPOP6Vwxlzd/80P0BemOnnxUxLQTYnoxHLIblyhwyyBf5lid62F20W4d9d+2b27oK
+x-ms-exchange-antispam-messagedata: MmEW+CrhGX0UtLkFUXHPuv8NcD8SCSc2ajZywqZ3pG20U+OJMEG2P1tNB1Qn/vK44WVyTxijT/25Ljqlf45BR8Q7EGrdOH7Sro5q1FA3MuqygCh1K8ZIElMGGg36XXT9ZEx6EOlydtpYT6QkhyaxAA==
+x-ms-exchange-transport-forked: True
+Content-ID: <08CAE85A1A96544D80CD9EE9C3D0BFFA@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200402142237.GT2001@kadam>
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 23c7bc09-d5a6-4eb0-9d8f-08d7d720e492
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Apr 2020 16:14:16.9004 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: b2KkUuV7Qy/z1/CxkOYexTCD6MQC+j2cytSat/9c4IuQhU0IBH3xPmjTD3Y5T3ERcqqIsJeZ4G/eQLQt7nlF0Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4583
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,62 +114,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, elder@kernel.org,
- Chen Zhou <chenzhou10@huawei.com>, gregkh@linuxfoundation.org,
- johan@kernel.org, linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
-On Thu, Apr 02, 2020 at 05:22:37PM +0300, Dan Carpenter wrote:
-> On Thu, Apr 02, 2020 at 02:16:18PM +0100, Rui Miguel Silva wrote:
-> > > > --- a/drivers/staging/greybus/light.c
-> > > > +++ b/drivers/staging/greybus/light.c
-> > > > @@ -1026,7 +1026,8 @@ static int gb_lights_light_config(struct gb_lights *glights, u8 id)
-> > > >  
-> > > >  	light->channels_count = conf.channel_count;
-> > > >  	light->name = kstrndup(conf.name, NAMES_MAX, GFP_KERNEL);
-> > > > -
-> > > > +	if (!light->name)
-> > > > +		return -ENOMEM;
-> > > >  	light->channels = kcalloc(light->channels_count,
-> > > >  				  sizeof(struct gb_channel), GFP_KERNEL);
-> > > >  	if (!light->channels)
-> > > 
-> > > The clean up in this function is non-existant.  :(
-> > 
-> > Yeah, this have a central point to do the cleanups, gb_lights_release,
-> > since we may have other lights already configured at this point, we
-> > could cleanup this specific one here, but than would need to make sure
-> > all other already configure got clean also.
-> 
-> Central clean up functions never work correctly.
+On Thursday 2 April 2020 14:42:23 CEST Dan Carpenter wrote:
+> On Wed, Apr 01, 2020 at 01:03:34PM +0200, Jerome Pouiller wrote:
+> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> >
+> > Add a few check on start of hif_join().
+> >
+> > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > ---
+> >  drivers/staging/wfx/hif_tx.c | 2 ++
+> >  1 file changed, 2 insertions(+)
+> >
+> > diff --git a/drivers/staging/wfx/hif_tx.c b/drivers/staging/wfx/hif_tx.c
+> > index 77bca43aca42..445906035e9d 100644
+> > --- a/drivers/staging/wfx/hif_tx.c
+> > +++ b/drivers/staging/wfx/hif_tx.c
+> > @@ -297,6 +297,8 @@ int hif_join(struct wfx_vif *wvif, const struct iee=
+e80211_bss_conf *conf,
+> >       struct hif_req_join *body =3D wfx_alloc_hif(sizeof(*body), &hif);
+>                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> We've got an allocation here.  It's a mistake to put the allocation in
+> the declaration block because you're going to forget to check for
+> failure.
 
-I agree.
+arf... this remark also applies to all functions of hif_tx.c. This
+issue has already been reported. I will send a patch that solve that in
+one batch.
 
-> 
-> For example, we allocate "cdev->name" in gb_lights_channel_config()
-> before we register the channel later in gb_lights_register_all(glights);.
-> Now imagine that the register fails.  Then when we're freeing it in
-> __gb_lights_led_unregister() we see that the ->is_registered is false
-> so we don't kfree(cdev->name).
-> 
-> That's just a small memory leak.  But there are going to be tons of
-> little bugs like that.
+> >       WARN_ON(!conf->basic_rates);
+> > +     WARN_ON(sizeof(body->ssid) < ssidlen);
+> =
 
-Yeah, when I have some cycles I'll go over that error codes paths and
-mitigate this kind of issues.
+> Put the variable on the left.  WARN_ON(ssidlen > sizeof(body->ssid)).
+> I'm not a big fan of adding this sort of debug code, just audit the
+> callers to see if it's possible or not.
 
-> 
-> Anyway it doesn't affect this patch so it's fine.
+My personal opinion is these checks does not replace the audit of the
+callers. It mainly provides a kind of documentation for the reader
+("not supported, please check the callers"). It is especially true when
+it is an internal API and there is only one caller.
 
-Yeah, thanks.
+> I have audited the caller for you, and I believe that this condition
+> *is possible* so we need to return -EINVAL in this situation to prevent
+> memory corruption.
+> =
 
-------
-Cheers,
-     Rui
+>         if (ssidlen > sizeof(body->ssid))
+>                 return -EINVAL;
+
+In this case, I think the problem will also impact wfx_do_join() (the
+only caller of hif_join()):
+
+   514          u8 ssid[IEEE80211_MAX_SSID_LEN];
+   [...]
+   538          if (!conf->ibss_joined)
+   539                  ssidie =3D ieee80211_bss_get_ie(bss, WLAN_EID_SSID);
+   540          if (ssidie) {
+   541                  ssidlen =3D ssidie[1];
+   542                  memcpy(ssid, &ssidie[2], ssidie[1]);
+   543          }
+   [...]
+   554          ret =3D hif_join(wvif, conf, wvif->channel, ssid, ssidlen);
+
+Does data returned by ieee80211_bss_get_ie() could be bigger than
+IEEE80211_MAX_SSID_LEN? Not sure. I am going to add a check in
+wfx_do_join(), just in case.
+
+
+-- =
+
+J=E9r=F4me Pouiller
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
