@@ -1,50 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6057919C42C
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 16:31:23 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3AC119C46C
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 16:38:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8AF3B87FF2;
-	Thu,  2 Apr 2020 14:31:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D12B8721B;
+	Thu,  2 Apr 2020 14:38:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HSzMoI0nAXbG; Thu,  2 Apr 2020 14:31:21 +0000 (UTC)
+	with ESMTP id wifgdYWqklJA; Thu,  2 Apr 2020 14:38:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 87D5C87FA5;
-	Thu,  2 Apr 2020 14:31:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DCE85871FD;
+	Thu,  2 Apr 2020 14:37:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 733FE1BF42C
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:31:18 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C97E41BF42C
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:37:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6EDB187FC3
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:31:18 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BD11C221B5
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 14:37:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HD5A6cuHpjUU for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 14:31:17 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from gloria.sntech.de (gloria.sntech.de [185.11.138.130])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DA22C87FA5
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 14:31:16 +0000 (UTC)
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <heiko@sntech.de>)
- id 1jK0sC-00087G-L4; Thu, 02 Apr 2020 16:31:12 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
+ with ESMTP id H92KBrubbuGy for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 14:37:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id D90BA221A9
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 14:37:56 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id s8so2352625wrt.7
+ for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 07:37:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=38AkG1J/VasVYvyO8FLPKGFVB9/daSIsdACwJ1jmT6w=;
+ b=mV6zDSYqDp5UdxncOWm+lXHPzCxZTPcsxD7Y4qZG6GxtIOI7n2Tt1tjtqODXe1XonP
+ OAXcNYyYlMJac/TvM+KVXpF303u1R9YTzAxas6XSeg4X8oEOkNwAVSdGtUffdrDiJtFp
+ flyV4X09h+4tTRXQOf0Myw+NBmc3NsNXpSdZAbDjVkQ9BKab39lNcHZswSQYu1Fpp7qj
+ CwD3rw5ZWHrB8RwDUhhLS+QuwfTVRKShQNQbrrhdOk14h5wFDHxeHqplJt0dE3v/jO2k
+ LMujXX5d5kt24SkX9dQ7Su173WskYyvHna90o4QbwOv3b0cwBqchVgNL2pDMZPI5zpHr
+ cHZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=38AkG1J/VasVYvyO8FLPKGFVB9/daSIsdACwJ1jmT6w=;
+ b=IEBGFbH1jDgNxnWNxuhgBBelyusErDVhVesw4r6F4K2wsbPrgcUngARbO8bOmkxGef
+ 0C8FHJAnOKDLvKfC23zVZdFvB1I/dgEXgAoMeeb4rIz7EABB2M7nt4u/ZOpCF+UdPzkm
+ 2EJC3jjzzOQPKjl6+S6lt+jEn8A6/lYDGiBXBWToUYozE1+1wQFQO8bY7NjO2wBjb6fQ
+ WuARQ+LLOgJOS6GYX9bIyOU0CltXB6Ylxx8x1bc8ErFqreTCq+D0meVRHmzLd8/LQKm6
+ 9oE6lEBHwoiTt2MMqkpnWhR0LX91AJaclmPya/0BOeKWu0SsVK9jNemPi2Kl+FFSvHPk
+ l1Ug==
+X-Gm-Message-State: AGi0PuZ1uO41FVrn59riLpsUql1R+7BvpuV2FGCZCPE8PapmEF21QirU
+ ZbnEbGYjckr/ZqPh+xgVEGg=
+X-Google-Smtp-Source: APiQypKP/NzZE8Bp6zRGZQB5jMxxV5ROKksg/0lNUpk/3V8+Un9IDmxt1EQ5jKflYscGyO2USHOJHQ==
+X-Received: by 2002:adf:97d0:: with SMTP id t16mr3865783wrb.343.1585838275269; 
+ Thu, 02 Apr 2020 07:37:55 -0700 (PDT)
+Received: from [192.168.2.1] (ip51ccf9cd.speed.planet.nl. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id e5sm7848520wru.92.2020.04.02.07.37.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Apr 2020 07:37:54 -0700 (PDT)
 Subject: Re: [PATCH 3/4] arm64: dts: rockchip: add rx0 mipi-phy for rk3399
-Date: Thu, 02 Apr 2020 16:31:11 +0200
-Message-ID: <105956984.FXDh2DO4ZE@diego>
-In-Reply-To: <970b9e48-e38f-7e7a-3472-7dc5a4737e58@gmail.com>
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
 References: <20200402000234.226466-4-helen.koike@collabora.com>
- <970b9e48-e38f-7e7a-3472-7dc5a4737e58@gmail.com>
+ <970b9e48-e38f-7e7a-3472-7dc5a4737e58@gmail.com> <105956984.FXDh2DO4ZE@diego>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <76211530-73ff-5f36-8915-8bdc036d4369@gmail.com>
+Date: Thu, 2 Apr 2020 16:37:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
+In-Reply-To: <105956984.FXDh2DO4ZE@diego>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,58 +95,36 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  helen.koike@collabora.com, robh+dt@kernel.org, hverkuil-cisco@xs4all.nl,
  mark.rutland@arm.com, kernel@collabora.com, ezequiel@collabora.com,
  linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Am Donnerstag, 2. April 2020, 15:48:02 CEST schrieb Johan Jonker:
-> Hi Helen,
-> 
-> > From: Helen Koike <helen.koike@collabora.com>
-> 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > index 33cc21fcf4c10..fc0295d2a65a1 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > @@ -1394,6 +1394,17 @@ io_domains: io-domains {
-> >  			status = "disabled";
-> >  		};
-> >  
-> 
-> > +		mipi_dphy_rx0: mipi-dphy-rx0 {
-> 
-> For Heiko sort syscon@ff770000 subnodes alphabetical or reg value first?
-
-Similar to main nodes ... so things without reg alphabetical,
-the rest by reg address
-
-
-> 
-> > +			compatible = "rockchip,rk3399-mipi-dphy-rx0";
-> > +			clocks = <&cru SCLK_MIPIDPHY_REF>,
-> 
-> > +				<&cru SCLK_DPHY_RX0_CFG>,
-> > +				<&cru PCLK_VIO_GRF>;
-> 
-> Align                            ^
-> 
-> > +			clock-names = "dphy-ref", "dphy-cfg", "grf";
-> > +			power-domains = <&power RK3399_PD_VIO>;
-> > +			#phy-cells = <0>;
-> > +			status = "disabled";
-> > +		};
-> > +
-> >  		u2phy0: usb2-phy@e450 {
-> >  			compatible = "rockchip,rk3399-usb2phy";
-> >  			reg = <0xe450 0x10>;
-> 
-> 
-
-
-
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gNC8yLzIwIDQ6MzEgUE0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEFtIERvbm5lcnN0YWcs
+IDIuIEFwcmlsIDIwMjAsIDE1OjQ4OjAyIENFU1Qgc2NocmllYiBKb2hhbiBKb25rZXI6Cj4+IEhp
+IEhlbGVuLAo+Pgo+Pj4gRnJvbTogSGVsZW4gS29pa2UgPGhlbGVuLmtvaWtlQGNvbGxhYm9yYS5j
+b20+Cj4+Cj4+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMz
+OTkuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4+IGlu
+ZGV4IDMzY2MyMWZjZjRjMTAuLmZjMDI5NWQyYTY1YTEgMTAwNjQ0Cj4+PiAtLS0gYS9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4+PiArKysgYi9hcmNoL2FybTY0L2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4+PiBAQCAtMTM5NCw2ICsxMzk0LDE3IEBAIGlv
+X2RvbWFpbnM6IGlvLWRvbWFpbnMgewo+Pj4gIAkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4+PiAg
+CQl9Owo+Pj4gIAo+Pgo+Pj4gKwkJbWlwaV9kcGh5X3J4MDogbWlwaS1kcGh5LXJ4MCB7Cj4+Cj4+
+IEZvciBIZWlrbyBzb3J0IHN5c2NvbkBmZjc3MDAwMCBzdWJub2RlcyBhbHBoYWJldGljYWwgb3Ig
+cmVnIHZhbHVlIGZpcnN0Pwo+IAo+IFNpbWlsYXIgdG8gbWFpbiBub2RlcyAuLi4gc28gdGhpbmdz
+IHdpdGhvdXQgcmVnIGFscGhhYmV0aWNhbCwKPiB0aGUgcmVzdCBieSByZWcgYWRkcmVzcwo+IAph
+bHBoYWJldGljYWwgZmlyc3Q6Cgppby1kb21haW5zCm1pcGktZHBoeS1yeDAKdXNiMi1waHlAZTQ1
+MAouQC4uCgpvcgoKd2l0aCByZWcgdmFsdWVzIGZpcnN0OgoKLkAuLgplbW1jX3BoeTogcGh5QGY3
+ODAKbWlwaS1kcGh5LXJ4MApwY2llLXBoeQoKPiAKPj4KPj4+ICsJCQljb21wYXRpYmxlID0gInJv
+Y2tjaGlwLHJrMzM5OS1taXBpLWRwaHktcngwIjsKPj4+ICsJCQljbG9ja3MgPSA8JmNydSBTQ0xL
+X01JUElEUEhZX1JFRj4sCj4+Cj4+PiArCQkJCTwmY3J1IFNDTEtfRFBIWV9SWDBfQ0ZHPiwKPj4+
+ICsJCQkJPCZjcnUgUENMS19WSU9fR1JGPjsKPj4KPj4gQWxpZ24gICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgXgo+Pgo+Pj4gKwkJCWNsb2NrLW5hbWVzID0gImRwaHktcmVmIiwgImRwaHktY2Zn
+IiwgImdyZiI7Cj4+PiArCQkJcG93ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszMzk5X1BEX1ZJTz47
+Cj4+PiArCQkJI3BoeS1jZWxscyA9IDwwPjsKPj4+ICsJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+
+Pj4gKwkJfTsKPj4+ICsKPj4+ICAJCXUycGh5MDogdXNiMi1waHlAZTQ1MCB7Cj4+PiAgCQkJY29t
+cGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktdXNiMnBoeSI7Cj4+PiAgCQkJcmVnID0gPDB4ZTQ1
+MCAweDEwPjsKPj4KPj4KPiAKPiAKPiAKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
+b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
