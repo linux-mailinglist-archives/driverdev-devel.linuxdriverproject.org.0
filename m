@@ -1,101 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C2E219C9CB
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 21:17:57 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE48019CA7C
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Apr 2020 21:46:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 69DC289294;
-	Thu,  2 Apr 2020 19:17:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 663DD268BF;
+	Thu,  2 Apr 2020 19:46:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QPdMJm5LJ1EN; Thu,  2 Apr 2020 19:17:55 +0000 (UTC)
+	with ESMTP id gsJ-mwT2sv+O; Thu,  2 Apr 2020 19:46:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A06D489284;
-	Thu,  2 Apr 2020 19:17:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D39A92674B;
+	Thu,  2 Apr 2020 19:46:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7064D1BF271
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 19:17:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0197F1BF271
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 19:46:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6C4808928B
- for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 19:17:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id F1C1987B8E
+ for <devel@linuxdriverproject.org>; Thu,  2 Apr 2020 19:46:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FzqbDeNgoi+j for <devel@linuxdriverproject.org>;
- Thu,  2 Apr 2020 19:17:51 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.130])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DF45889284
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 19:17:50 +0000 (UTC)
-Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mn2eN-1isQ2d1ODf-00k75T for <devel@driverdev.osuosl.org>; Thu, 02 Apr
- 2020 21:17:48 +0200
-Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id EEE2B650ABD
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 19:17:47 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at cetitec.com
-Received: from mail.cetitecgmbh.com ([127.0.0.1])
- by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
- [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dxYL8PITFHsf for <devel@driverdev.osuosl.org>;
- Thu,  2 Apr 2020 21:17:47 +0200 (CEST)
-Received: from pfwsexchange.corp.cetitec.com (unknown [10.10.1.99])
- by mail.cetitecgmbh.com (Postfix) with ESMTPS id 61FD0650027
- for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 21:17:47 +0200 (CEST)
-Received: from pflmari.corp.cetitec.com (10.8.5.12) by
- PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2; Thu, 2 Apr 2020 21:17:42 +0200
-Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id 4482E80506; Thu,  2 Apr 2020 20:35:13 +0200 (CEST)
-Date: Thu, 2 Apr 2020 20:35:13 +0200
-From: Alex Riesen <alexander.riesen@cetitec.com>
-To: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: [PATCH v5 9/9] arm64: dts: renesas: salvator: add a connection from
- adv748x codec (HDMI input) to the R-Car SoC
-Message-ID: <90f2c14fcbe5d06eefdaeadbe8a6efc8c91523f3.1585852001.git.alexander.riesen@cetitec.com>
-Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- devel@driverdev.osuosl.org, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org
-References: <cover.1585852001.git.alexander.riesen@cetitec.com>
+ with ESMTP id eWZpz7FMYuMW for <devel@linuxdriverproject.org>;
+ Thu,  2 Apr 2020 19:46:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C2B2E87B69
+ for <devel@driverdev.osuosl.org>; Thu,  2 Apr 2020 19:46:43 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: koike) with ESMTPSA id 0F4DB28A9AD
+Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add isp0 node for rk3399
+To: Johan Jonker <jbx6244@gmail.com>
+References: <20200402000234.226466-5-helen.koike@collabora.com>
+ <1187d28a-6fb9-fd12-a422-8a4220a11e79@gmail.com>
+From: Helen Koike <helen.koike@collabora.com>
+Message-ID: <d8b05dd4-1ece-9513-b2ec-0cb58f665c5e@collabora.com>
+Date: Thu, 2 Apr 2020 16:46:28 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1585852001.git.alexander.riesen@cetitec.com>
-X-Originating-IP: [10.8.5.12]
-X-ClientProxiedBy: PFWSEXCHANGE.corp.cetitec.com (10.10.1.99) To
- PFWSEXCHANGE.corp.cetitec.com (10.10.1.99)
-X-EsetResult: clean, is OK
-X-EsetId: 37303A290D7F536A6C7266
-X-Provags-ID: V03:K1:9z8qLX9sQ26AiP88pMI8ceqO+vnyExDbh7q15QBNpBEZCGxUJ+q
- 4gSw3mXyMzYaPo3VRaPJOtxV1w9iqRhFMEGq54f095BdSt9WvScYdFUrHzjXz7JPsI4Z4LT
- ryFOryIImQBtTSmpyclOxySovZW52EZQ4IBrn2rpBmi2ruzVW7+P7NyHS7P5VXNZEgRG5So
- aW+t93sjygeBulMY/HD4A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lcqs+5JA2AQ=:LV5K5RlTgeySAsqtNVz09P
- vIU9/vgSz+762a7rlfP+tnh4C4eJsx9avWL/4N1rI0AAj3AdnwLfu0h6uNjSXyMCVZ+AlpztI
- n5s6a66ska++G+XSfZdAyJeyR8YCxD0OLObHu+JwFqnMmCFlt7uiW19RE/YKSQP0F2iGeQTZq
- V7fQ/xfJdhQGbBuDmKmKXi9BujCxvnZHM+rCYPonjS1UJYh65TK4IF7o7H+hZDskWc0FZnQ/X
- kr24+9vbkKVWv/WRWNXLyZEUAf+7kcM2mXvhFuTvJLGY3/vypoxIRYeo4+/YZe8Bgsz9/0IMN
- cRz2x1fqckGnMeiwEuAIlRNjk1EirKhiKWEfTcIMWotyWi52aXswbEJXBx2Q+fbJMoxTiYJTf
- aQNb4pKa4gCCo899lnH3lN2zPjJbKnbAGZ7CFLIO9T74Aj8PyT+O1krzfGOIo4aZwzB54SXo3
- 7W9R4HjY50yGqTyUeu8yein8eJQTQWJshF7fD8B+ko37fTa7E4P7Ve58fG29ELXshZpm2iEnT
- llLGpS90mMvGoJbwnc/9vk+jkY+1z3MmhUPQKHuaBk9TyREtml8iZE5EJ6QyJOZUNp5cnphlJ
- gc4wfywIDWXXb7EkzVLRQBSZpWy8eyzAt74LiAWJX3di+rDn08cYq70F8Yfx/d3IoHHcN63y5
- +1iZWHAhncs3nIHh8xHB3QF5oNnjMuDikh0iDtFq9zsWG+6EQaN6D9sSnYs3nTPQMQRULyGDz
- 4svH6aFtQJpDKlEpSfJ4ugmfpnoAtQzgc1UpqU+lm/rZWB/E+/IK7IY0K95l4YzZ5VtQhnh9t
- 5ldHcuhUyTWsLUTEDLy42D+YQRD7LaQ1QHaB7VyQflUI4XkQISTyS4kEcRerO5O8oZJwOv9
+In-Reply-To: <1187d28a-6fb9-fd12-a422-8a4220a11e79@gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,203 +57,86 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Geert Uytterhoeven <geert@linux-m68k.org>, Laurent
- Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ dafna.hirschfeld@collabora.com, heiko@sntech.de, karthik.poduval@gmail.com,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, mark.rutland@arm.com,
+ kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-As all known variants of the Salvator board have the HDMI decoder
-chip (the ADV7482) connected to the SSI4 on R-Car SoC, the ADV7482
-endpoint and the connection definitions are placed in the common board
-file.
 
-For the same reason, the CLK_C clock line and I2C configuration (similar
-to the ak4613, on the same interface) are added into the common file.
 
-Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
+On 4/2/20 2:20 PM, Johan Jonker wrote:
+> Hi Helen,
+> 
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> index fc0295d2a65a1..815099a0cd0dd 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> @@ -1718,6 +1718,33 @@ vopb_mmu: iommu@ff903f00 {
+>>  		status = "disabled";
+>>  	};
+>>  
+>> +	isp0: isp0@ff910000 {
+>> +		compatible = "rockchip,rk3399-cif-isp";
+>> +		reg = <0x0 0xff910000 0x0 0x4000>;
+>> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+>> +		clocks = <&cru SCLK_ISP0>,
+>> +			 <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
+>> +			 <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
+>> +		clock-names = "clk_isp",
+>> +			      "aclk_isp", "aclk_isp_wrap",
+>> +			      "hclk_isp", "hclk_isp_wrap";
+> 
+>> +		power-domains = <&power RK3399_PD_ISP0>;
+>> +		iommus = <&isp0_mmu>;
+>> +		phys = <&mipi_dphy_rx0>;
+>> +		phy-names = "dphy";
+> 
+> Maybe a little sort? But keep rest as it is. Also in example.
+> 
+> 		iommus = <&isp0_mmu>;
+> 		phys = <&mipi_dphy_rx0>;
+> 		phy-names = "dphy";
+> 		power-domains = <&power RK3399_PD_ISP0>;
 
---
+Are you proposing only to move power-domains after phy? And keep the rest?
+What is the main logic?
 
-v5: Add dummy ssi4 node to the rcar sound card in r8a77961, as the
-    devices (Salvator-X 2nd version with R-Car M3 W+) also reference
-    salvator-common.dtsi.
-    Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
+Thanks
+Helen
 
-v2: Also add ssi4_ctrl pin group in the sound pins. The pins are
-    responsible for SCK4 (sample clock) WS4 and (word boundary input),
-    and are required for SSI audio input over I2S.
-
-    The adv748x shall provide its own implementation of the output clock
-    (MCLK), connected to the audio_clk_c line of the R-Car SoC.
-
-    If the frequency of the ADV748x MCLK were fixed, the clock
-    implementation were not necessary, but it does not seem so: the MCLK
-    depends on the value in a speed multiplier register and the input sample
-    rate (48kHz).
-
-    Remove audio clock C from the clocks of adv7482.
-
-    The clocks property of the video-receiver node lists the input
-    clocks of the device, which is quite the opposite from the
-    original intention: the adv7482 on Salvator X boards is a
-    provide of the MCLK clock for I2S audio output.
-
-    Remove old definition of &sound_card.dais and reduce size of changes
-    in the Salvator-X specific device tree source.
-
-    Declare video-receiver a clock producer, as the adv748x driver
-    implements the master clock used I2S audio output.
-
-    Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
-
-v2: The driver provides only MCLK clock, not the SCLK and LRCLK,
-    which are part of the I2S protocol.
-
-    Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
- .../boot/dts/renesas/r8a77950-salvator-x.dts  |  3 +-
- arch/arm64/boot/dts/renesas/r8a77961.dtsi     |  1 +
- .../boot/dts/renesas/salvator-common.dtsi     | 47 +++++++++++++++++--
- 3 files changed, 45 insertions(+), 6 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts b/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
-index 2438825c9b22..e16c146808b6 100644
---- a/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
-+++ b/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
-@@ -146,7 +146,8 @@ &sata {
- &sound_card {
- 	dais = <&rsnd_port0	/* ak4613 */
- 		&rsnd_port1	/* HDMI0  */
--		&rsnd_port2>;	/* HDMI1  */
-+		&rsnd_port2	/* HDMI1  */
-+		&rsnd_port3>;	/* adv7482 hdmi-in  */
- };
- 
- &usb2_phy2 {
-diff --git a/arch/arm64/boot/dts/renesas/r8a77961.dtsi b/arch/arm64/boot/dts/renesas/r8a77961.dtsi
-index be3824bda632..b79907beaf31 100644
---- a/arch/arm64/boot/dts/renesas/r8a77961.dtsi
-+++ b/arch/arm64/boot/dts/renesas/r8a77961.dtsi
-@@ -861,6 +861,7 @@ rcar_sound,src {
- 			rcar_sound,ssi {
- 				ssi0: ssi-0 { };
- 				ssi1: ssi-1 { };
-+				ssi4: ssi-4 { };
- 			};
- 		};
- 
-diff --git a/arch/arm64/boot/dts/renesas/salvator-common.dtsi b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-index 98bbcafc8c0d..ead7f8d7a929 100644
---- a/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-+++ b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
-@@ -460,7 +460,7 @@ pca9654: gpio@20 {
- 		#gpio-cells = <2>;
- 	};
- 
--	video-receiver@70 {
-+	adv7482_hdmi_in: video-receiver@70 {
- 		compatible = "adi,adv7482";
- 		reg = <0x70 0x71 0x72 0x73 0x74 0x75
- 		       0x60 0x61 0x62 0x63 0x64 0x65>;
-@@ -469,6 +469,7 @@ video-receiver@70 {
- 
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-+		#clock-cells = <0>; /* the MCLK for I2S output */
- 
- 		interrupt-parent = <&gpio6>;
- 		interrupt-names = "intrq1", "intrq2";
-@@ -510,6 +511,15 @@ adv7482_txb: endpoint {
- 				remote-endpoint = <&csi20_in>;
- 			};
- 		};
-+
-+		port@c {
-+			reg = <12>;
-+
-+			adv7482_i2s: endpoint {
-+				remote-endpoint = <&rsnd_endpoint3>;
-+				system-clock-direction-out;
-+			};
-+		};
- 	};
- 
- 	csa_vdd: adc@7c {
-@@ -684,7 +694,8 @@ sdhi3_pins_uhs: sd3_uhs {
- 	};
- 
- 	sound_pins: sound {
--		groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a";
-+		groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a",
-+			 "ssi4_data", "ssi4_ctrl";
- 		function = "ssi";
- 	};
- 
-@@ -733,8 +744,8 @@ &rcar_sound {
- 	pinctrl-0 = <&sound_pins &sound_clk_pins>;
- 	pinctrl-names = "default";
- 
--	/* Single DAI */
--	#sound-dai-cells = <0>;
-+	/* multi DAI */
-+	#sound-dai-cells = <1>;
- 
- 	/* audio_clkout0/1/2/3 */
- 	#clock-cells = <1>;
-@@ -758,8 +769,19 @@ &rcar_sound {
- 		 <&cpg CPG_MOD 1020>, <&cpg CPG_MOD 1021>,
- 		 <&cpg CPG_MOD 1019>, <&cpg CPG_MOD 1018>,
- 		 <&audio_clk_a>, <&cs2000>,
--		 <&audio_clk_c>,
-+		 <&adv7482_hdmi_in>,
- 		 <&cpg CPG_CORE CPG_AUDIO_CLK_I>;
-+	clock-names = "ssi-all",
-+		      "ssi.9", "ssi.8", "ssi.7", "ssi.6",
-+		      "ssi.5", "ssi.4", "ssi.3", "ssi.2",
-+		      "ssi.1", "ssi.0",
-+		      "src.9", "src.8", "src.7", "src.6",
-+		      "src.5", "src.4", "src.3", "src.2",
-+		      "src.1", "src.0",
-+		      "mix.1", "mix.0",
-+		      "ctu.1", "ctu.0",
-+		      "dvc.0", "dvc.1",
-+		      "clk_a", "clk_b", "clk_c", "clk_i";
- 
- 	ports {
- 		#address-cells = <1>;
-@@ -777,6 +799,21 @@ rsnd_endpoint0: endpoint {
- 				capture  = <&ssi1 &src1 &dvc1>;
- 			};
- 		};
-+		rsnd_port3: port@3 {
-+			reg = <3>;
-+			rsnd_endpoint3: endpoint {
-+				remote-endpoint = <&adv7482_i2s>;
-+
-+				dai-tdm-slot-num = <8>;
-+				dai-tdm-slot-width = <32>;
-+				dai-format = "left_j";
-+				mclk-fs = <256>;
-+				bitclock-master = <&adv7482_i2s>;
-+				frame-master = <&adv7482_i2s>;
-+
-+				capture = <&ssi4>;
-+			};
-+		};
- 	};
- };
- 
--- 
-2.25.1.25.g9ecbe7eb18
-
+> 
+>> +
+>> +		ports {
+>> +			#address-cells = <1>;
+>> +			#size-cells = <0>;
+>> +
+>> +			port@0 {
+> 
+>> +				#address-cells = <1>;
+>> +				#size-cells = <0>;
+>> +				reg = <0>;
+> 
+> Move reg above #address-cells. Change that in example as well.
+> 
+> 				reg = <0>;
+> 				#address-cells = <1>;
+> 				#size-cells = <0>;
+> 
+>> +			};
+>> +		};
+>> +	};
+>> +
+>>  	isp0_mmu: iommu@ff914000 {
+>>  		compatible = "rockchip,iommu";
+>>  		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+>> -- 
+>> 2.26.0
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
