@@ -2,77 +2,83 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 804EC19CE3F
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Apr 2020 03:42:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B899119CF46
+	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Apr 2020 06:25:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7F7BF86E73;
-	Fri,  3 Apr 2020 01:42:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 44A09868D0;
+	Fri,  3 Apr 2020 04:25:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yaEmRIiP2iTW; Fri,  3 Apr 2020 01:42:51 +0000 (UTC)
+	with ESMTP id 98_JPrvdGJrY; Fri,  3 Apr 2020 04:25:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4721E86E50;
-	Fri,  3 Apr 2020 01:42:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 69136863FF;
+	Fri,  3 Apr 2020 04:25:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1AC0E1BF3C6
- for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 01:42:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4FFF21BF38D
+ for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 04:25:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 175A886E51
- for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 01:42:49 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4C5D1863FF
+ for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 04:25:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NSETzx5PmN8s for <devel@linuxdriverproject.org>;
- Fri,  3 Apr 2020 01:42:47 +0000 (UTC)
+ with ESMTP id Te4FyNcT0cFV for <devel@linuxdriverproject.org>;
+ Fri,  3 Apr 2020 04:25:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
- [209.85.210.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B3C2686E50
- for <devel@driverdev.osuosl.org>; Fri,  3 Apr 2020 01:42:47 +0000 (UTC)
-Received: by mail-ot1-f67.google.com with SMTP id a6so5685266otb.10
- for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 18:42:47 -0700 (PDT)
+Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
+ [209.85.216.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C9F8E863E3
+ for <devel@driverdev.osuosl.org>; Fri,  3 Apr 2020 04:25:11 +0000 (UTC)
+Received: by mail-pj1-f65.google.com with SMTP id nu11so2408997pjb.1
+ for <devel@driverdev.osuosl.org>; Thu, 02 Apr 2020 21:25:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=4tU1ijP1oUMss+gZHdPAOpYayM4wwWRsIDBObxKGiVc=;
- b=jcNzEg9v7lRqKPNG1zObRdcQjh+gk/bUr/tEisbEtBl1s86IubloinTf3XxKH1pJ48
- MjFvtnWUc4FVghMd0K9IIenpvKmY9xJRkA2egW8LZ+LUUY9tckpWwmoo04mhVO8gHDhV
- SUzUrFy6U0Mn7jHtBlYogC+rMizjsYnn5t1IaCgnhBSJ6fMfoeBs/iY7UEcpa6hr707z
- UtNoR4N/9LmswlUU+NqsLQwPd+MphCGsdz+ezQPXx6Qxej1ggf5ZYg3H5U8848PxyTmQ
- vza2rb0NNr2iNeTGReJyDtVvixNzXmqiCsRyLI+k8tQmVi4zeskFKPMFFRswTaGL8fZa
- 03/g==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=AyD2kX0rtGFxJhOxxjgdsGTPUrD/FjXjSvw4eMWluYU=;
+ b=I+Q5xBnw6OlNyc1WeYEuiKJUTVH7pscJdTTt0CEbl2LzbrJ9EOwk04CgLOETAycBeQ
+ 0GyVQ2DWmVk0q5GewcChYtUHbGpq2sr/KkEvTTeZjZ99GSl3oVE6JvDmWhDwOoRGvmdl
+ HwBKGy5bBPEL9ZB6jGxhb+k02kWIErPtOdWSmKDH8nRok/kagwYsZGxVIE4MS1O2VyDc
+ nyI5qdFNfX4MZMNJQnuvlHqjiol3dLFc7SDOUYIbG25OJs3onxxEG09q5xMyM6LlD0wD
+ YFsyfoxiBFCX/BaijsYn8l830uwB5L/C1MAJL0M0D7psWtuGNZwy2sBzuQFIFFPUcABL
+ 4dEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=4tU1ijP1oUMss+gZHdPAOpYayM4wwWRsIDBObxKGiVc=;
- b=jjJV47NXjZXB4VY+5C3IB8P8HPP3wifQR+P61oqz1t4k2GejNNsLum1zhWm8+qOpIU
- dBvNtcu/tIalw0D9TDP6DMiBrpQ0FJWCbzSK7kuoEbqCEHzhjaN9GYiLmj6cgRH7iFHC
- a1w8nHfSjbYvKW3XzS9iIR4qMpHPwjcjE2XSTcJf+lGZBfZxvdIMnOqrzDcIdCrQFORu
- piTpgloJBiyut5Qy3j8sJJGuDvk+xeunRD89V6+UQZKtquttnd8Ndfkbaiz2+U2mgcdz
- 3H0lqE83VKWN10Ht+4vk6mK3UwZlSWrsKQlOWwn4iHPRkKha/VdmrIYNNimX/CpcwUij
- LcjQ==
-X-Gm-Message-State: AGi0PuZgD33EVJy3cXbC7w2DOOZObAyTniMDStMzbJwFEP8rBy7EN47S
- YdkrEBsCq0RGfSePpNFWf9g=
-X-Google-Smtp-Source: APiQypIjc/3Kcx764w5UPeyBdHuFZB5UHNoMG0fMVVZwIaKCuUDWOWnh/81/cNN7S7CRo41v7K/A5g==
-X-Received: by 2002:a4a:92cd:: with SMTP id j13mr5039878ooh.96.1585878166813; 
- Thu, 02 Apr 2020 18:42:46 -0700 (PDT)
-Received: from OptiPlexFedora ([47.144.161.84])
- by smtp.gmail.com with ESMTPSA id t19sm1809875oih.52.2020.04.02.18.42.45
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=AyD2kX0rtGFxJhOxxjgdsGTPUrD/FjXjSvw4eMWluYU=;
+ b=n5JwgprCvLR8B+NbbgApSmKFbgMU22O4lVqZneGrC16rK5aJA/g1YRmIWra9dGTCj6
+ jNv1HnlfmHDYGjBC1lhvsLWdV8Ox/aSmS03eSs2TQEXkBLwriKUNQPw6T9ddyujfKR2l
+ I7faic0ag7eT77E+xPbRxl7KVkZySXsx4QxUWO77XneHR1uMNYmPK3jdvz7NxP7S4DGw
+ UY9Dl7jj4pBZkdZHCwoHJzYPIfOft25X0e4Y3OVP7S59iiWKc9tRA1LY36CREhieNrMN
+ GIWzyaxGjPxjK/Wm1YGPbMQIy+zuVLjI4xOyNvTHDiG6s41Xga4a48GlCVGwnjxUF+jY
+ 5g7w==
+X-Gm-Message-State: AGi0PubFMrBcieMvEiLVAuIEbOm7STrLJMzGww0lHJqvXbml8cq56O6z
+ n+dXtn1QMX/Q+5aePGXTjc8=
+X-Google-Smtp-Source: APiQypLUFoTcgC53/RD9U2GcTptF5bIO1QeLIw/HD5iIXFZnYExMi6C3tKHE3v7Uavp2U/mKA1dw5Q==
+X-Received: by 2002:a17:902:82c5:: with SMTP id
+ u5mr6320102plz.254.1585887911382; 
+ Thu, 02 Apr 2020 21:25:11 -0700 (PDT)
+Received: from OptiPlexFedora.fios-router.home ([47.144.161.84])
+ by smtp.gmail.com with ESMTPSA id l190sm4760286pfl.212.2020.04.02.21.25.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2020 18:42:46 -0700 (PDT)
-Message-ID: <4bd376a6db77ef779972f377cc2c3789d03668e7.camel@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: emxx_udc: Remove unused code
+ Thu, 02 Apr 2020 21:25:10 -0700 (PDT)
 From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-To: Stefano Brivio <sbrivio@redhat.com>
-Date: Thu, 02 Apr 2020 18:42:44 -0700
-In-Reply-To: <20200403015057.7a972c79@elisabeth>
-References: <20200402021706.788533-1-jbwyatt4@gmail.com>
- <20200403015057.7a972c79@elisabeth>
-User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
+To: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>,
+ Laura Abbott <labbott@redhat.com>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>,
+ Todd Kjos <tkjos@android.com>, Martijn Coenen <maco@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>,
+ Christian Brauner <christian@brauner.io>, devel@driverdev.osuosl.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2] staging: android: ion: Align with parenthesis
+Date: Thu,  2 Apr 2020 21:24:48 -0700
+Message-Id: <20200403042448.863689-1-jbwyatt4@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -86,77 +92,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
- Saiyam Doshi <saiyamdoshi.in@gmail.com>, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: "John B. Wyatt IV" <jbwyatt4@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 2020-04-03 at 01:50 +0200, Stefano Brivio wrote:
-> On Wed,  1 Apr 2020 19:17:06 -0700
-> "John B. Wyatt IV" <jbwyatt4@gmail.com> wrote:
-> 
-> > Remove unused code surrounded by an #if 0 block.
-> > 
-> > Code has not been altered since 2014 as reported by git blame.
-> > 
-> > Reported by checkpatch.
-> > 
-> > Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
-> > ---
-> >  drivers/staging/emxx_udc/emxx_udc.h | 6 ------
-> >  1 file changed, 6 deletions(-)
-> > 
-> > diff --git a/drivers/staging/emxx_udc/emxx_udc.h
-> > b/drivers/staging/emxx_udc/emxx_udc.h
-> > index 9c2671cb32f7..bbfebe331033 100644
-> > --- a/drivers/staging/emxx_udc/emxx_udc.h
-> > +++ b/drivers/staging/emxx_udc/emxx_udc.h
-> > @@ -9,12 +9,6 @@
-> >  #define _LINUX_EMXX_H
-> >  
-> >  /*--------------------------------------------------------------
-> > -------------*/
-> > -/*----------------- Default undef */
-> > -#if 0
-> > -#define DEBUG
-> > -#define UDC_DEBUG_DUMP
-> > -#endif
-> > -
-> >  /*----------------- Default define */
-> >  #define	USE_DMA	1
-> >  #define USE_SUSPEND_WAIT	1
-> 
-> Formally, this is fine. But... think about it: this driver might be
-> rather buggy, so the first thing one might want to do with it is to
-> "enable" those two defines.
-> 
-> In general, that stuff has to disappear, and proper debugging
-> facilities have to be used, but with a driver in this state, as long
-> as
-> proper debugging facilities aren't there, you might be doing more
-> harm
-> than good.
+Align two different lines of arguments with the parenthesis
+of their respected function definitions. Fix style warnings
+of matching alignment.
 
-DEBUG is not actually used as far as I can tell (I am still new to
-kernel debugging systems to please correct me). There is only a pair of
-.c and .h files for this small driver.
+Reported by checkpatch.
 
-UDC_DEBUG_DUMP is only used twice in the entire kernel-both for if
-statements.
+Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+---
+v2: Change comment title and summary
+    Suggested-by: Julia Lawall <julia.lawall@inria.fr>
 
-Should we just set it to:
+ drivers/staging/android/ion/ion_page_pool.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-#define UDC_DEBUG_DUMP 0
-
-And leave the other 3 lines out? Please let me know for a v2.
-
-> 
-> -- 
-> Stefano
-> 
+diff --git a/drivers/staging/android/ion/ion_page_pool.c b/drivers/staging/android/ion/ion_page_pool.c
+index f85ec5b16b65..0198b886d906 100644
+--- a/drivers/staging/android/ion/ion_page_pool.c
++++ b/drivers/staging/android/ion/ion_page_pool.c
+@@ -37,7 +37,7 @@ static void ion_page_pool_add(struct ion_page_pool *pool, struct page *page)
+ 	}
+ 
+ 	mod_node_page_state(page_pgdat(page), NR_KERNEL_MISC_RECLAIMABLE,
+-							1 << pool->order);
++			    1 << pool->order);
+ 	mutex_unlock(&pool->mutex);
+ }
+ 
+@@ -57,7 +57,7 @@ static struct page *ion_page_pool_remove(struct ion_page_pool *pool, bool high)
+ 
+ 	list_del(&page->lru);
+ 	mod_node_page_state(page_pgdat(page), NR_KERNEL_MISC_RECLAIMABLE,
+-							-(1 << pool->order));
++			    -(1 << pool->order));
+ 	return page;
+ }
+ 
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
