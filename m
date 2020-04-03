@@ -1,92 +1,116 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5789A19D33D
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Apr 2020 11:12:53 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59AAA19D52F
+	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Apr 2020 12:43:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3F98B89161;
-	Fri,  3 Apr 2020 09:12:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ED5748609F;
+	Fri,  3 Apr 2020 10:43:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tIzPLShACl1D; Fri,  3 Apr 2020 09:12:51 +0000 (UTC)
+	with ESMTP id 0P+CNDHXAp7S; Fri,  3 Apr 2020 10:43:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4D75788F2E;
-	Fri,  3 Apr 2020 09:12:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 58E3385C56;
+	Fri,  3 Apr 2020 10:43:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CB54F1BF402
- for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 09:12:44 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B9CC51BF327
+ for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 10:43:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B7A632039D
- for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 09:12:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B5EC587147
+ for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 10:43:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8cbglOoDwZeC for <devel@linuxdriverproject.org>;
- Fri,  3 Apr 2020 09:12:43 +0000 (UTC)
+ with ESMTP id WeowWxHTxBtZ for <devel@linuxdriverproject.org>;
+ Fri,  3 Apr 2020 10:43:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by silver.osuosl.org (Postfix) with ESMTPS id 473B120349
- for <devel@driverdev.osuosl.org>; Fri,  3 Apr 2020 09:12:43 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03399rkp019032;
- Fri, 3 Apr 2020 09:12:41 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=byYACmK3/0xJohPsdTYhJy5m5zZAY1HnOE2pzi+zRgc=;
- b=O50q/jGwXTa//Z9bJhlK4iyRLWNhueAV3JAXu7FYtqL9KX5jDaEX1dn1ie4up8JVqaIm
- oecJAxwdybzx7YnoUMpY1BrYuSmbWMV+fkARFr3jIiMiDzszrdAWXF9Mz3u6qu5YlWYG
- xgwhbYA0MWYIbzf5lKift84oj9pB8qzTjmyX8q9GrcKO5xOVl2FG/Uvnr0VLmedFDxZB
- 7ssvlgrydwCZJ0J8pWAzvPbcSsg1UhqeLhwY4lqL1ZnNT2jgwLHQk5tE/Z6OdjxVbg4q
- unyJFV0BlNEoJ0SYMHYmEG0pbVgXnW/ZCUH+KUXINA2WGjb8yTFw57TtqU+CI724LlBD 2w== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 303yunjk82-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 03 Apr 2020 09:12:41 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0339788N136384;
- Fri, 3 Apr 2020 09:10:40 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3030.oracle.com with ESMTP id 302g2men6h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 03 Apr 2020 09:10:40 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0339Abrw025611;
- Fri, 3 Apr 2020 09:10:37 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 03 Apr 2020 02:10:36 -0700
-Date: Fri, 3 Apr 2020 12:10:29 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: George Spelvin <lkml@SDF.ORG>
-Subject: Re: [PATCH v3] staging: wilc1000: Use crc7 in lib/ rather than a
- private copy
-Message-ID: <20200403091029.GC2001@kadam>
-References: <20200326152251.19094-1-ajay.kathat@microchip.com>
- <20200402082745.GG2001@kadam> <20200402153034.GB2013@SDF.ORG>
+Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
+ [213.167.242.64])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C73A48713F
+ for <devel@driverdev.osuosl.org>; Fri,  3 Apr 2020 10:43:45 +0000 (UTC)
+Received: from [192.168.0.20]
+ (cpc89242-aztw30-2-0-cust488.18-1.cable.virginm.net [86.31.129.233])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9C5C4321;
+ Fri,  3 Apr 2020 12:43:41 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1585910622;
+ bh=7iTPc2MHfNIaPRQoxwy2rEVj6cLN33ZYd1sl6ZxpZ70=;
+ h=Reply-To:Subject:To:References:From:Date:In-Reply-To:From;
+ b=d1hkXTFFsYYXG0JbQFBX6qp5Uk2qKs+AQpMRKmdTAiDl1OmcqaabMPs5Fkbvl6ZbQ
+ VrsQ9ESM0piYOky5R31N45FXe+PSvoy/xXv79raidmDlVRYJ26zJGQPNOaDrtZRrL0
+ HAQ6cTu6RH0tvafCO8XkQFV50LQ3NTMGTJmL2viw=
+Subject: Re: [PATCH v5 1/9] media: adv748x: fix end-of-line terminators in
+ diagnostic statements
+To: Alex Riesen <alexander.riesen@cetitec.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ devel@driverdev.osuosl.org, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org
+References: <cover.1585852001.git.alexander.riesen@cetitec.com>
+ <2f2460435afa594ef417e70068b125af97ddca39.1585852001.git.alexander.riesen@cetitec.com>
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=kieran.bingham@ideasonboard.com; keydata=
+ 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
+ WZw01QYHU/GUV/zHJSFk
+Organization: Ideas on Board
+Message-ID: <a111380c-f563-8019-deb8-8916a679227b@ideasonboard.com>
+Date: Fri, 3 Apr 2020 11:43:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200402153034.GB2013@SDF.ORG>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- spamscore=0 mlxscore=0
- adultscore=0 phishscore=0 bulkscore=0 suspectscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004030078
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- lowpriorityscore=0
- malwarescore=0 adultscore=0 priorityscore=1501 mlxlogscore=999 bulkscore=0
- suspectscore=0 mlxscore=0 spamscore=0 impostorscore=0 clxscore=1015
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004030078
+In-Reply-To: <2f2460435afa594ef417e70068b125af97ddca39.1585852001.git.alexander.riesen@cetitec.com>
+Content-Language: en-GB
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,53 +123,149 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Ajay.Kathat@microchip.com,
- gregkh@linuxfoundation.org, linux-wireless@vger.kernel.org,
- Adham.Abozaeid@microchip.com, johannes@sipsolutions.net
+Reply-To: kieran.bingham@ideasonboard.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Apr 02, 2020 at 03:30:34PM +0000, George Spelvin wrote:
-> On Thu, Apr 02, 2020 at 11:27:45AM +0300, Dan Carpenter wrote:
-> > I don't know how this patch made it through two versions without anyone
-> > complaining that this paragraph should be done as a separate patch...
+Hi Alex,
+
+On 02/04/2020 19:34, Alex Riesen wrote:
+> Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+I guess we could have also added this directly to the helper macros, but
+there is indeed already a mixed usage so either way would require fixups
+to be consistent.
+
+So this is a good option ;-)
+
+Reviewed-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+
+> ---
+>  drivers/media/i2c/adv748x/adv748x-core.c | 24 ++++++++++++------------
+>  drivers/media/i2c/adv748x/adv748x-csi2.c |  2 +-
+>  2 files changed, 13 insertions(+), 13 deletions(-)
 > 
-> I often fold comment (and spacing/formatting) patches in to a main
-> patch, when touching adjacent code anyway and it doesn't cause
-> distracting clutter.
-> 
-> This seemed like such a case, which is why I submitted it as one.
-> But it's a bit of style thing.
+> diff --git a/drivers/media/i2c/adv748x/adv748x-core.c b/drivers/media/i2c/adv748x/adv748x-core.c
+> index 23e02ff27b17..c3fb113cef62 100644
+> --- a/drivers/media/i2c/adv748x/adv748x-core.c
+> +++ b/drivers/media/i2c/adv748x/adv748x-core.c
+> @@ -623,11 +623,11 @@ static int adv748x_parse_dt(struct adv748x_state *state)
+>  
+>  	for_each_endpoint_of_node(state->dev->of_node, ep_np) {
+>  		of_graph_parse_endpoint(ep_np, &ep);
+> -		adv_info(state, "Endpoint %pOF on port %d", ep.local_node,
+> +		adv_info(state, "Endpoint %pOF on port %d\n", ep.local_node,
+>  			 ep.port);
+>  
+>  		if (ep.port >= ADV748X_PORT_MAX) {
+> -			adv_err(state, "Invalid endpoint %pOF on port %d",
+> +			adv_err(state, "Invalid endpoint %pOF on port %d\n",
+>  				ep.local_node, ep.port);
+>  
+>  			continue;
+> @@ -635,7 +635,7 @@ static int adv748x_parse_dt(struct adv748x_state *state)
+>  
+>  		if (state->endpoints[ep.port]) {
+>  			adv_err(state,
+> -				"Multiple port endpoints are not supported");
+> +				"Multiple port endpoints are not supported\n");
+>  			continue;
+>  		}
+>  
+> @@ -702,62 +702,62 @@ static int adv748x_probe(struct i2c_client *client)
+>  	/* Discover and process ports declared by the Device tree endpoints */
+>  	ret = adv748x_parse_dt(state);
+>  	if (ret) {
+> -		adv_err(state, "Failed to parse device tree");
+> +		adv_err(state, "Failed to parse device tree\n");
+>  		goto err_free_mutex;
+>  	}
+>  
+>  	/* Configure IO Regmap region */
+>  	ret = adv748x_configure_regmap(state, ADV748X_PAGE_IO);
+>  	if (ret) {
+> -		adv_err(state, "Error configuring IO regmap region");
+> +		adv_err(state, "Error configuring IO regmap region\n");
+>  		goto err_cleanup_dt;
+>  	}
+>  
+>  	ret = adv748x_identify_chip(state);
+>  	if (ret) {
+> -		adv_err(state, "Failed to identify chip");
+> +		adv_err(state, "Failed to identify chip\n");
+>  		goto err_cleanup_dt;
+>  	}
+>  
+>  	/* Configure remaining pages as I2C clients with regmap access */
+>  	ret = adv748x_initialise_clients(state);
+>  	if (ret) {
+> -		adv_err(state, "Failed to setup client regmap pages");
+> +		adv_err(state, "Failed to setup client regmap pages\n");
+>  		goto err_cleanup_clients;
+>  	}
+>  
+>  	/* SW reset ADV748X to its default values */
+>  	ret = adv748x_reset(state);
+>  	if (ret) {
+> -		adv_err(state, "Failed to reset hardware");
+> +		adv_err(state, "Failed to reset hardware\n");
+>  		goto err_cleanup_clients;
+>  	}
+>  
+>  	/* Initialise HDMI */
+>  	ret = adv748x_hdmi_init(&state->hdmi);
+>  	if (ret) {
+> -		adv_err(state, "Failed to probe HDMI");
+> +		adv_err(state, "Failed to probe HDMI\n");
+>  		goto err_cleanup_clients;
+>  	}
+>  
+>  	/* Initialise AFE */
+>  	ret = adv748x_afe_init(&state->afe);
+>  	if (ret) {
+> -		adv_err(state, "Failed to probe AFE");
+> +		adv_err(state, "Failed to probe AFE\n");
+>  		goto err_cleanup_hdmi;
+>  	}
+>  
+>  	/* Initialise TXA */
+>  	ret = adv748x_csi2_init(state, &state->txa);
+>  	if (ret) {
+> -		adv_err(state, "Failed to probe TXA");
+> +		adv_err(state, "Failed to probe TXA\n");
+>  		goto err_cleanup_afe;
+>  	}
+>  
+>  	/* Initialise TXB */
+>  	ret = adv748x_csi2_init(state, &state->txb);
+>  	if (ret) {
+> -		adv_err(state, "Failed to probe TXB");
+> +		adv_err(state, "Failed to probe TXB\n");
+>  		goto err_cleanup_txa;
+>  	}
+>  
+> diff --git a/drivers/media/i2c/adv748x/adv748x-csi2.c b/drivers/media/i2c/adv748x/adv748x-csi2.c
+> index 2091cda50935..c43ce5d78723 100644
+> --- a/drivers/media/i2c/adv748x/adv748x-csi2.c
+> +++ b/drivers/media/i2c/adv748x/adv748x-csi2.c
+> @@ -72,7 +72,7 @@ static int adv748x_csi2_registered(struct v4l2_subdev *sd)
+>  	struct adv748x_state *state = tx->state;
+>  	int ret;
+>  
+> -	adv_dbg(state, "Registered %s (%s)", is_txa(tx) ? "TXA":"TXB",
+> +	adv_dbg(state, "Registered %s (%s)\n", is_txa(tx) ? "TXA":"TXB",
+>  			sd->name);
+>  
+>  	/*
 > 
 
-We're super strict in Staging.  :P  Greg is more strict than I am.
-
-> >> Cc: Adham Abozaeid <adham.abozaeid@microchip.com>
-> >> Cc: linux-wireless@vger.kernel.org
-> >> Reviewed-by: Ajay Singh <ajay.kathat@microchip.com>
-> >> Signed-off-by: George Spelvin <lkml@sdf.org>
-> >> ---
-> > 
-> > This should have you Signed-off-by.  The Reviewed-by is kind of assumed
-> > so you can drop that bit.  But everyone who touches a patch needs to
-> > add their signed off by.
-> 
-> Er... all he did was add "staging: " to the front of the title.
-> 
-> That's not a change to the code at all, and as trivial a change
-> to the commit message as adding "Reviewed-by:" to the end.
-> We don't need S-o-b for such things or we'd end up in a horrible
-> infinite recursion.
-
-You've misunderstood.  He sent the email so he has to add his
-Signed-off-by.  It's not at all related to changing anything in the
-patch.  That's how sign offs work.
-
-regards,
-dan carpenter
-
+-- 
+Regards
+--
+Kieran
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
