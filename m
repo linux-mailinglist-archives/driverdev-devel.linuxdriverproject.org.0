@@ -1,116 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CD3A19DE60
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Apr 2020 21:09:48 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 912C619E186
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Apr 2020 01:40:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C297287ED5;
-	Fri,  3 Apr 2020 19:09:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2B68426C70;
+	Fri,  3 Apr 2020 23:40:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eYi3RYtPcbhp; Fri,  3 Apr 2020 19:09:45 +0000 (UTC)
+	with ESMTP id C3+jtFzlI+lB; Fri,  3 Apr 2020 23:40:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B3F0487E92;
-	Fri,  3 Apr 2020 19:09:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E508020524;
+	Fri,  3 Apr 2020 23:40:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7E3D11BF404
- for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 19:09:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D9FD01BF419
+ for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 23:40:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7AA44867A8
- for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 19:09:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D6FD486B90
+ for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 23:40:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fNugtE+jFDEr for <devel@linuxdriverproject.org>;
- Fri,  3 Apr 2020 19:09:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
- [213.167.242.64])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5503E86174
- for <devel@driverdev.osuosl.org>; Fri,  3 Apr 2020 19:09:41 +0000 (UTC)
-Received: from [192.168.0.20]
- (cpc89242-aztw30-2-0-cust488.18-1.cable.virginm.net [86.31.129.233])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 691EF321;
- Fri,  3 Apr 2020 21:09:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1585940978;
- bh=/NWS/fJ63N5HitXDQaX4VqlvvepUgemEpRHliarM9QU=;
- h=Reply-To:Subject:To:References:From:Date:In-Reply-To:From;
- b=ZZ0LbixOtL/HlEyA4vKMy2fkUeyCT7CxUF4b+t0zIZoE2eF4NHV8KHBMNQHQFAEXK
- c/pbIXAizsil4hPKbVNleqLnNMNyXdKU809m/WImY3GUdDxXhS7EpsC7JQaAwe5ryc
- A1AQviFPRwFIzqPh7S82HwJpoXF49QF5hBLKUeEU=
-Subject: Re: [PATCH v5 3/9] media: adv748x: reduce amount of code for bitwise
- modifications of device registers
-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- devel@driverdev.osuosl.org, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org
-References: <cover.1585852001.git.alexander.riesen@cetitec.com>
- <72873dc73d3b9a1d46673978326dd5f4f0096a17.1585852001.git.alexander.riesen@cetitec.com>
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=kieran.bingham@ideasonboard.com; keydata=
- mQINBFYE/WYBEACs1PwjMD9rgCu1hlIiUA1AXR4rv2v+BCLUq//vrX5S5bjzxKAryRf0uHat
- V/zwz6hiDrZuHUACDB7X8OaQcwhLaVlq6byfoBr25+hbZG7G3+5EUl9cQ7dQEdvNj6V6y/SC
- rRanWfelwQThCHckbobWiQJfK9n7rYNcPMq9B8e9F020LFH7Kj6YmO95ewJGgLm+idg1Kb3C
- potzWkXc1xmPzcQ1fvQMOfMwdS+4SNw4rY9f07Xb2K99rjMwZVDgESKIzhsDB5GY465sCsiQ
- cSAZRxqE49RTBq2+EQsbrQpIc8XiffAB8qexh5/QPzCmR4kJgCGeHIXBtgRj+nIkCJPZvZtf
- Kr2EAbc6tgg6DkAEHJb+1okosV09+0+TXywYvtEop/WUOWQ+zo+Y/OBd+8Ptgt1pDRyOBzL8
- RXa8ZqRf0Mwg75D+dKntZeJHzPRJyrlfQokngAAs4PaFt6UfS+ypMAF37T6CeDArQC41V3ko
- lPn1yMsVD0p+6i3DPvA/GPIksDC4owjnzVX9kM8Zc5Cx+XoAN0w5Eqo4t6qEVbuettxx55gq
- 8K8FieAjgjMSxngo/HST8TpFeqI5nVeq0/lqtBRQKumuIqDg+Bkr4L1V/PSB6XgQcOdhtd36
- Oe9X9dXB8YSNt7VjOcO7BTmFn/Z8r92mSAfHXpb07YJWJosQOQARAQABtDBLaWVyYW4gQmlu
- Z2hhbSA8a2llcmFuLmJpbmdoYW1AaWRlYXNvbmJvYXJkLmNvbT6JAlcEEwEKAEECGwMFCwkI
- BwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQLdeYP70o/eNy1HqhHkZyEKRh/QUCXWTtygUJ
- CyJXZAAKCRChHkZyEKRh/f8dEACTDsbLN2nioNZMwyLuQRUAFcXNolDX48xcUXsWS2QjxaPm
- VsJx8Uy8aYkS85mdPBh0C83OovQR/OVbr8AxhGvYqBs3nQvbWuTl/+4od7DfK2VZOoKBAu5S
- QK2FYuUcikDqYcFWJ8DQnubxfE8dvzojHEkXw0sA4igINHDDFX3HJGZtLio+WpEFQtCbfTAG
- YZslasz1YZRbwEdSsmO3/kqy5eMnczlm8a21A3fKUo3g8oAZEFM+f4DUNzqIltg31OAB/kZS
- enKZQ/SWC8PmLg/ZXBrReYakxXtkP6w3FwMlzOlhGxqhIRNiAJfXJBaRhuUWzPOpEDE9q5YJ
- BmqQL2WJm1VSNNVxbXJHpaWMH1sA2R00vmvRrPXGwyIO0IPYeUYQa3gsy6k+En/aMQJd27dp
- aScf9am9PFICPY5T4ppneeJLif2lyLojo0mcHOV+uyrds9XkLpp14GfTkeKPdPMrLLTsHRfH
- fA4I4OBpRrEPiGIZB/0im98MkGY/Mu6qxeZmYLCcgD6qz4idOvfgVOrNh+aA8HzIVR+RMW8H
- QGBN9f0E3kfwxuhl3omo6V7lDw8XOdmuWZNC9zPq1UfryVHANYbLGz9KJ4Aw6M+OgBC2JpkD
- hXMdHUkC+d20dwXrwHTlrJi1YNp6rBc+xald3wsUPOZ5z8moTHUX/uPA/qhGsbkCDQRWBP1m
- ARAAzijkb+Sau4hAncr1JjOY+KyFEdUNxRy+hqTJdJfaYihxyaj0Ee0P0zEi35CbE6lgU0Uz
- tih9fiUbSV3wfsWqg1Ut3/5rTKu7kLFp15kF7eqvV4uezXRD3Qu4yjv/rMmEJbbD4cTvGCYI
- d6MDC417f7vK3hCbCVIZSp3GXxyC1LU+UQr3fFcOyCwmP9vDUR9JV0BSqHHxRDdpUXE26Dk6
- mhf0V1YkspE5St814ETXpEus2urZE5yJIUROlWPIL+hm3NEWfAP06vsQUyLvr/GtbOT79vXl
- En1aulcYyu20dRRxhkQ6iILaURcxIAVJJKPi8dsoMnS8pB0QW12AHWuirPF0g6DiuUfPmrA5
- PKe56IGlpkjc8cO51lIxHkWTpCMWigRdPDexKX+Sb+W9QWK/0JjIc4t3KBaiG8O4yRX8ml2R
- +rxfAVKM6V769P/hWoRGdgUMgYHFpHGSgEt80OKK5HeUPy2cngDUXzwrqiM5Sz6Od0qw5pCk
- NlXqI0W/who0iSVM+8+RmyY0OEkxEcci7rRLsGnM15B5PjLJjh1f2ULYkv8s4SnDwMZ/kE04
- /UqCMK/KnX8pwXEMCjz0h6qWNpGwJ0/tYIgQJZh6bqkvBrDogAvuhf60Sogw+mH8b+PBlx1L
- oeTK396wc+4c3BfiC6pNtUS5GpsPMMjYMk7kVvEAEQEAAYkCPAQYAQoAJgIbDBYhBJAt15g/
- vSj943LUeqEeRnIQpGH9BQJdizzIBQkLSKZiAAoJEKEeRnIQpGH9eYgQAJpjaWNgqNOnMTmD
- MJggbwjIotypzIXfhHNCeTkG7+qCDlSaBPclcPGYrTwCt0YWPU2TgGgJrVhYT20ierN8LUvj
- 6qOPTd+Uk7NFzL65qkh80ZKNBFddx1AabQpSVQKbdcLb8OFs85kuSvFdgqZwgxA1vl4TFhNz
- PZ79NAmXLackAx3sOVFhk4WQaKRshCB7cSl+RIng5S/ThOBlwNlcKG7j7W2MC06BlTbdEkUp
- ECzuuRBv8wX4OQl+hbWbB/VKIx5HKlLu1eypen/5lNVzSqMMIYkkZcjV2SWQyUGxSwq0O/sx
- S0A8/atCHUXOboUsn54qdxrVDaK+6jIAuo8JiRWctP16KjzUM7MO0/+4zllM8EY57rXrj48j
- sbEYX0YQnzaj+jO6kJtoZsIaYR7rMMq9aUAjyiaEZpmP1qF/2sYenDx0Fg2BSlLvLvXM0vU8
- pQk3kgDu7kb/7PRYrZvBsr21EIQoIjXbZxDz/o7z95frkP71EaICttZ6k9q5oxxA5WC6sTXc
- MW8zs8avFNuA9VpXt0YupJd2ijtZy2mpZNG02fFVXhIn4G807G7+9mhuC4XG5rKlBBUXTvPU
- AfYnB4JBDLmLzBFavQfvonSfbitgXwCG3vS+9HEwAjU30Bar1PEOmIbiAoMzuKeRm2LVpmq4
- WZw01QYHU/GUV/zHJSFk
-Organization: Ideas on Board
-Message-ID: <0a154fdf-15ed-6bcc-676a-8d8eb213d6dc@ideasonboard.com>
-Date: Fri, 3 Apr 2020 20:09:34 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.1
+ with ESMTP id nCMj6qgtNd5y for <devel@linuxdriverproject.org>;
+ Fri,  3 Apr 2020 23:40:32 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx.sdf.org (mx.sdf.org [205.166.94.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4F50786B85
+ for <devel@driverdev.osuosl.org>; Fri,  3 Apr 2020 23:40:32 +0000 (UTC)
+Received: from sdf.org (IDENT:lkml@faeroes.freeshell.org [205.166.94.9])
+ by mx.sdf.org (8.15.2/8.14.5) with ESMTPS id 033NeTPw000829
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits) verified NO);
+ Fri, 3 Apr 2020 23:40:29 GMT
+Received: (from lkml@localhost)
+ by sdf.org (8.15.2/8.12.8/Submit) id 033NeSdE027418;
+ Fri, 3 Apr 2020 23:40:28 GMT
+Date: Fri, 3 Apr 2020 23:40:28 +0000
+From: George Spelvin <lkml@SDF.ORG>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH v3] staging: wilc1000: Use crc7 in lib/ rather than a
+ private copy
+Message-ID: <20200403234028.GA11944@SDF.ORG>
+References: <20200326152251.19094-1-ajay.kathat@microchip.com>
+ <20200402082745.GG2001@kadam> <20200402153034.GB2013@SDF.ORG>
+ <20200403091029.GC2001@kadam>
 MIME-Version: 1.0
-In-Reply-To: <72873dc73d3b9a1d46673978326dd5f4f0096a17.1585852001.git.alexander.riesen@cetitec.com>
-Content-Language: en-GB
+Content-Disposition: inline
+In-Reply-To: <20200403091029.GC2001@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,104 +62,85 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: kieran.bingham@ideasonboard.com
+Cc: devel@driverdev.osuosl.org, lkml@sdf.org, Ajay.Kathat@microchip.com,
+ gregkh@linuxfoundation.org, linux-wireless@vger.kernel.org,
+ Adham.Abozaeid@microchip.com, johannes@sipsolutions.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alex,
-
-On 02/04/2020 19:34, Alex Riesen wrote:
-> The regmap provides a convenient utility for this.
-> The hdmi_* and dpll_* register modification macros added for symmetry
-> with the existing operations (io_*, sdp_*).
-
-
-Ah yes, perhaps I should have done that when I converted this driver to
-regmap :-) (although looking at the history I think that was
-pre-submission of the driver, so it's all a long time ago anyway).
-
-This also should prevent the issues we solved in 0d962e061a (media: i2c:
-adv748x: Fix unsafe macros), so I think it's still a good move.
-
-Reviewed-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-
-
-> Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+On Fri, Apr 03, 2020 at 12:10:29PM +0300, Dan Carpenter wrote:
+> On Thu, Apr 02, 2020 at 03:30:34PM +0000, George Spelvin wrote:
+> > On Thu, Apr 02, 2020 at 11:27:45AM +0300, Dan Carpenter wrote:
+> > > I don't know how this patch made it through two versions without anyone
+> > > complaining that this paragraph should be done as a separate patch...
+> > 
+> > I often fold comment (and spacing/formatting) patches in to a main
+> > patch, when touching adjacent code anyway and it doesn't cause
+> > distracting clutter.
+> > 
+> > This seemed like such a case, which is why I submitted it as one.
+> > But it's a bit of style thing.
+> > 
 > 
-> --
-> v3: remove _update name in favor of existing _clrset
-> ---
->  drivers/media/i2c/adv748x/adv748x-core.c |  6 ++++++
->  drivers/media/i2c/adv748x/adv748x.h      | 14 +++++++++++---
->  2 files changed, 17 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/media/i2c/adv748x/adv748x-core.c b/drivers/media/i2c/adv748x/adv748x-core.c
-> index 5c59aad319d1..8580e6624276 100644
-> --- a/drivers/media/i2c/adv748x/adv748x-core.c
-> +++ b/drivers/media/i2c/adv748x/adv748x-core.c
-> @@ -133,6 +133,12 @@ static int adv748x_write_check(struct adv748x_state *state, u8 page, u8 reg,
->  	return *error;
->  }
->  
-> +int adv748x_update_bits(struct adv748x_state *state, u8 page, u8 reg, u8 mask,
-> +			u8 value)
-> +{
-> +	return regmap_update_bits(state->regmap[page], reg, mask, value);
-> +}
-> +
->  /* adv748x_write_block(): Write raw data with a maximum of I2C_SMBUS_BLOCK_MAX
->   * size to one or more registers.
->   *
-> diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
-> index 09aab4138c3f..0a9d78c2870b 100644
-> --- a/drivers/media/i2c/adv748x/adv748x.h
-> +++ b/drivers/media/i2c/adv748x/adv748x.h
-> @@ -393,25 +393,33 @@ int adv748x_write(struct adv748x_state *state, u8 page, u8 reg, u8 value);
->  int adv748x_write_block(struct adv748x_state *state, int client_page,
->  			unsigned int init_reg, const void *val,
->  			size_t val_len);
-> +int adv748x_update_bits(struct adv748x_state *state, u8 page, u8 reg,
-> +			u8 mask, u8 value);
->  
->  #define io_read(s, r) adv748x_read(s, ADV748X_PAGE_IO, r)
->  #define io_write(s, r, v) adv748x_write(s, ADV748X_PAGE_IO, r, v)
-> -#define io_clrset(s, r, m, v) io_write(s, r, (io_read(s, r) & ~(m)) | (v))
-> +#define io_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_IO, r, m, v)
->  
->  #define hdmi_read(s, r) adv748x_read(s, ADV748X_PAGE_HDMI, r)
->  #define hdmi_read16(s, r, m) (((hdmi_read(s, r) << 8) | hdmi_read(s, (r)+1)) & (m))
->  #define hdmi_write(s, r, v) adv748x_write(s, ADV748X_PAGE_HDMI, r, v)
-> +#define hdmi_clrset(s, r, m, v) \
-> +	adv748x_update_bits(s, ADV748X_PAGE_HDMI, r, m, v)
-> +
-> +#define dpll_read(s, r) adv748x_read(s, ADV748X_PAGE_DPLL, r)
-> +#define dpll_clrset(s, r, m, v) \
-> +	adv748x_update_bits(s, ADV748X_PAGE_DPLL, r, m, v)
->  
->  #define repeater_read(s, r) adv748x_read(s, ADV748X_PAGE_REPEATER, r)
->  #define repeater_write(s, r, v) adv748x_write(s, ADV748X_PAGE_REPEATER, r, v)
->  
->  #define sdp_read(s, r) adv748x_read(s, ADV748X_PAGE_SDP, r)
->  #define sdp_write(s, r, v) adv748x_write(s, ADV748X_PAGE_SDP, r, v)
-> -#define sdp_clrset(s, r, m, v) sdp_write(s, r, (sdp_read(s, r) & ~(m)) | (v))
-> +#define sdp_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_SDP, r, m, v)
->  
->  #define cp_read(s, r) adv748x_read(s, ADV748X_PAGE_CP, r)
->  #define cp_write(s, r, v) adv748x_write(s, ADV748X_PAGE_CP, r, v)
-> -#define cp_clrset(s, r, m, v) cp_write(s, r, (cp_read(s, r) & ~(m)) | (v))
-> +#define cp_clrset(s, r, m, v) adv748x_update_bits(s, ADV748X_PAGE_CP, r, m, v)
->  
->  #define tx_read(t, r) adv748x_read(t->state, t->page, r)
->  #define tx_write(t, r, v) adv748x_write(t->state, t->page, r, v)
-> 
+> We're super strict in Staging.  :P  Greg is more strict than I am.
 
--- 
-Regards
---
-Kieran
+Okay, but it's my fault, not his.
+
+>> This should have you Signed-off-by.  The Reviewed-by is kind of assumed
+>>> so you can drop that bit.  But everyone who touches a patch needs to
+>>> add their signed off by.
+>> 
+>> Er... all he did was add "staging: " to the front of the title.
+>> 
+>> That's not a change to the code at all, and as trivial a change
+>> to the commit message as adding "Reviewed-by:" to the end.
+>> We don't need S-o-b for such things or we'd end up in a horrible
+>> infinite recursion.
+> 
+> You've misunderstood.  He sent the email so he has to add his
+> Signed-off-by.  It's not at all related to changing anything in the
+> patch.  That's how sign offs work.
+
+Looking at my commits (just because I remember how they went in),
+you seem to be right, but damn, submitting-patches.rst could be
+clearer on the subject.
+
+I understand that it's addressed more to patch authors than
+maintainers forwarding them, but I've read that thing a dozen times,
+and the description of S-o-b always seemed to be about copyright.
+
+So I had assumed that edits which were below the de minimus standard
+of copyright didn't need a separate S-o-b.
+
+Am I right that there should be an S-o-b from everyone from the
+patch author to the patch committer (as recorded in git)?  And the
+one exception is that we don't need S-o-b for git pulls after that,
+because the merge commits record the information?
+
+For example, my patch series ending at 4684fe95300c (v4.7-rc1~8^2)
+only has my S-o-b because it was pulled straight from my git server
+and merge 7e0fb73c52c4 (v4.7-rc1~8) records who merged it.
+
+But b5c56e0cdd62 has an S-o-b from both akpm and Linus because
+it went to akpm, into his quilt, and then as a patch series to Linus,
+who committed it.
+
+All of which is eactly why git-am has a -s option.
+
+That's not a hard rule to understand, but I wish submitting-patches
+*said* so somewhere, rather than having it be implied by the
+existence of option (c) in the DCO and the fact that it's *doesn't*
+say that someone else's S-o-b will suffice.
+
+And the git merge exception should be stated, because otherwise it's
+not clear what the limits of that exception are.  I had assumed that
+accumulating and forwarding patches in general was okay without a
+S-o-b.
+
+So thank you for enlightening me, and if you can confirm the rules,
+I'll prepare a Documentation/ patch to reduce re-occurrence.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
