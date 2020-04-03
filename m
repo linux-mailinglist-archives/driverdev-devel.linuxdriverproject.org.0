@@ -2,84 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3626F19D9AA
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Apr 2020 17:01:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29F4C19D9E7
+	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Apr 2020 17:16:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 364E886FBA;
-	Fri,  3 Apr 2020 15:01:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7969A870EF;
+	Fri,  3 Apr 2020 15:16:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8wdQm-4C_9Dy; Fri,  3 Apr 2020 15:01:46 +0000 (UTC)
+	with ESMTP id fWFaL2lta0Ha; Fri,  3 Apr 2020 15:16:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 62DA487051;
-	Fri,  3 Apr 2020 15:01:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1870C870BD;
+	Fri,  3 Apr 2020 15:16:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D1A871BF853
- for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 15:01:43 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id AD0E61BF281
+ for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 15:16:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C2BCA204C7
- for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 15:01:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A809786631
+ for <devel@linuxdriverproject.org>; Fri,  3 Apr 2020 15:16:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CTOl5cTbKYB4 for <devel@linuxdriverproject.org>;
- Fri,  3 Apr 2020 15:01:42 +0000 (UTC)
+ with ESMTP id NBNzfbyvjoDI for <devel@linuxdriverproject.org>;
+ Fri,  3 Apr 2020 15:16:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 11A43203AE
- for <devel@driverdev.osuosl.org>; Fri,  3 Apr 2020 15:01:42 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id r16so7459455wmg.5
- for <devel@driverdev.osuosl.org>; Fri, 03 Apr 2020 08:01:41 -0700 (PDT)
+Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com
+ [209.85.221.44])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BA767865EE
+ for <devel@driverdev.osuosl.org>; Fri,  3 Apr 2020 15:16:45 +0000 (UTC)
+Received: by mail-wr1-f44.google.com with SMTP id m17so8923715wrw.11
+ for <devel@driverdev.osuosl.org>; Fri, 03 Apr 2020 08:16:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references:reply-to;
  bh=sDns12DzSDhUNYedjPxBYIUZam64/1xEznokxCLCf+Q=;
- b=UkRQWilTW9w1n0gWdnLdbKcPw4Vl4KagACmSRI+NqoKo+KTZ2nzqLt+rUzXgfs6gEH
- cAcxCUYsSCbmUQYk3lV86oh54MdL1xdkTcJ0MssCOVDOGbIId9YepbSCBVMQQJSidxOj
- qe9GroB+PVBgrrSevHMWmLsxv15oOcwdl3D4P72bdbUUS4/aVKgxLDfwf6X9ABARXgje
- ItnhwFrKlb/ysRsFjQlDBB3ap/8nma3V70DUDA2+Y/+Y8OWCOfjbjF+H/Jjg3RMFHxDY
- lGFE1S3EEhUMwgAuQnmYwU/JoIpd+ILwpFQv2fMgpz3gDRAFvkcl1r1jv5dTtKO0t8zI
- WSgw==
+ b=YofFscYQio5kwSAXkJF7c+XpMz7sW88r66I0+xtbOFS+UarwpFyCmQvicCpCTH2qz5
+ KprYCzUF5nYFlg8gjlQlzTYthATqMsgiYbOI9ADvPvyY2sxwstIR4WgCMm5qU9WZiLHT
+ CLYPyCeWvH9XKo0gtaif4x6hBj13ciPJ7so9PJfwwiaIna4M0MoUldyWtJxh9Q7BLWZf
+ 6N9ZbxwSZxGV1vM1mO7dAPXgZapJ/rBAOnaGCvbLyvjBIPWMJya6Hdts/JDxPQOqCSoH
+ +2abtlT4yAETrR0eEVNPoG/jxz3Ivm4IAgw1zFYUrl0Qup186GlwkCMP7TNarm3C3brl
+ w9OQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:reply-to;
  bh=sDns12DzSDhUNYedjPxBYIUZam64/1xEznokxCLCf+Q=;
- b=FGH9zVd2QZU6mEs98WKvoDBysE+0RomVY0YdRt8X6kLA6v1zxT2emhfiu4ftp4V4b2
- q9ThmBXKom+uxMIZxNVXoKxYLyrHHvIuKTZ8yBUuf9QZ0ivvjw6As9BwRTxhetpOihEp
- VVyhy2fvef/ZqPODx/c4DmUZ4a/wxJtxVFbV1BE6HGipNZBcbWMYWKfwuR70ZH6q/yKb
- af5gLHaynhakucgAtjocar47xcEB9SDZ9A9Sel1OtW0d+hfoueyH8VNSvubFJInMs2MX
- rZ7AGAfRVssfkhPyj5Px99mFdQZyOQ+ob0EuAN7xm5IhTg7TOdZRkxwVMcfbrjakNpkN
- ph8g==
-X-Gm-Message-State: AGi0Puac5wnmDqGKM8idNs0OtwWscJ86CsPAkkivCFhb1C+3QF4OXHMk
- KoPlPeZdpuEZ1JL9/vF4TPU=
-X-Google-Smtp-Source: APiQypJ0eqKHDVfuz9gym1IcLzPByvzG2ykV3M2shwZNbS3yOs0P1TpRF1R14w5usoxRzTQlKZD+HA==
-X-Received: by 2002:a7b:c012:: with SMTP id c18mr6100886wmb.22.1585926100367; 
- Fri, 03 Apr 2020 08:01:40 -0700 (PDT)
+ b=ItE5ap3yZFfyKeYOkheKCoHhi8nJerL7k3I+/Vn511mhSoJHMtg5nIuhL/5QGqVpX8
+ CxcaLD9YTmrDtJioooRVCi0ePtI+cb1qh1PlZ/AlfSIdtX8bJR/VVFbweayDZTcYxVn6
+ Wf6uBbnByem7rWU3pG9is7y/Ol/7LWtoLIMXOyldfPttovPk46rL8+Q95BIv3FZ79Ibc
+ M7y5VLB6KL/tk9sEIZctZpbuXQxfBGT2LZeVLHkZ1G3+iQcuOKk1MOLoGCmb52rXgpR1
+ P4jlnffnRC9D6R0vDkBKGW0dBhTh+atxTbSbp6RJRzhNhH+QK8HGqgalD2Swb1T3tjAo
+ LNYQ==
+X-Gm-Message-State: AGi0PuZxAx+a9fyrNQf+ehKqUnIbJl32quv0yfryO6BN3gCivIDUeBVe
+ 1bWQXywFL/EZzlPkvkXAp+w=
+X-Google-Smtp-Source: APiQypJBr+AyxinqtyXXhx8klmplT8kMqrWyTUGOVwuiOghYJILPNgHd2pSk41zTtzpLAqHygdvANg==
+X-Received: by 2002:adf:e288:: with SMTP id v8mr7977522wri.141.1585927004036; 
+ Fri, 03 Apr 2020 08:16:44 -0700 (PDT)
 Received: from ENIAC10 (a79-168-108-217.cpe.netcabo.pt. [79.168.108.217])
- by smtp.gmail.com with ESMTPSA id m21sm11586654wmc.6.2020.04.03.08.01.39
+ by smtp.gmail.com with ESMTPSA id y1sm4568244wmd.14.2020.04.03.08.16.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Apr 2020 08:01:39 -0700 (PDT)
+ Fri, 03 Apr 2020 08:16:43 -0700 (PDT)
 Received: from ENIAC10 (localhost [127.0.0.1])
- by ENIAC10 (8.15.2/8.15.2/Debian-10) with ESMTP id 033F1cRG020529;
- Fri, 3 Apr 2020 16:01:38 +0100
+ by ENIAC10 (8.15.2/8.15.2/Debian-10) with ESMTP id 033FGgBd020805;
+ Fri, 3 Apr 2020 16:16:42 +0100
 Received: (from lpnm@localhost)
- by ENIAC10 (8.15.2/8.15.2/Submit) id 033F1a0g020505;
- Fri, 3 Apr 2020 16:01:36 +0100
+ by ENIAC10 (8.15.2/8.15.2/Submit) id 033FGfmo020798;
+ Fri, 3 Apr 2020 16:16:41 +0100
 From: Luis Mendes <luis.p.mendes@gmail.com>
 To: Dan Carpenter <dan.carpenter@oracle.com>
 Subject: [PATCH 01/01] staging: gasket: Fix incongruency in handling of sysfs
  entries creation
-Date: Fri,  3 Apr 2020 16:00:08 +0100
-Message-Id: <20200403150008.20458-1-luis.p.mendes@gmail.com>
+Date: Fri,  3 Apr 2020 16:15:34 +0100
+Message-Id: <20200403151534.20753-1-luis.p.mendes@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <[PATCH 01/01] staging: gasket: Fix incongruency in handling of
- sysfs entries creation>
-References: <[PATCH 01/01] staging: gasket: Fix incongruency in handling of
- sysfs entries creation>
+In-Reply-To: <20200403090655.GB2001@kadam>
+References: <20200403090655.GB2001@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
