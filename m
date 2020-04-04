@@ -1,81 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7619D19E56E
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Apr 2020 16:15:14 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A161819E6C0
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Apr 2020 19:28:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1D8ED86274;
-	Sat,  4 Apr 2020 14:15:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 77592884EE;
+	Sat,  4 Apr 2020 17:28:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0tn1tsn9QanA; Sat,  4 Apr 2020 14:15:12 +0000 (UTC)
+	with ESMTP id shocqO6xxQzp; Sat,  4 Apr 2020 17:28:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 36E478626C;
-	Sat,  4 Apr 2020 14:15:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D6149884B2;
+	Sat,  4 Apr 2020 17:28:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 59BE91BF20F
- for <devel@linuxdriverproject.org>; Sat,  4 Apr 2020 14:15:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2A7DD1BF2B5
+ for <devel@linuxdriverproject.org>; Sat,  4 Apr 2020 17:27:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 569C686274
- for <devel@linuxdriverproject.org>; Sat,  4 Apr 2020 14:15:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1D55B8624A
+ for <devel@linuxdriverproject.org>; Sat,  4 Apr 2020 17:27:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Gs0XI3wjiHJh for <devel@linuxdriverproject.org>;
- Sat,  4 Apr 2020 14:15:09 +0000 (UTC)
+ with ESMTP id Zu2O0lcElR2T for <devel@linuxdriverproject.org>;
+ Sat,  4 Apr 2020 17:27:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A3F198626C
- for <devel@driverdev.osuosl.org>; Sat,  4 Apr 2020 14:15:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1586009702;
- bh=lbbBWv1jwPbMkYTCVBcrHbtiC2lvaDdvG3tFhSrWSyQ=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=CgtrrvdWs3Mq9ZeXwaIb+wNGuu4dFG8pIXd1w2tOWcNvagN0J/hwES+OINqlbuVHA
- ibT+h+6kTu6jDPxqIjicwAtxPodL8lAtfRS/EVuV2RYNwkR7oZUfEugHKd8goxXWYF
- pUwf0RyYKPhdCJxRBFpW/GTK7Iwq+2JS6+Ul+jNY=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx104 [212.227.17.174]) with ESMTPSA (Nemesis) id
- 1M4Jqb-1jL0gm3qHh-000HBY; Sat, 04 Apr 2020 16:15:02 +0200
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 3/3] staging: vt6656: Remove unnecessary local variable
- initialization
-Date: Sat,  4 Apr 2020 16:14:00 +0200
-Message-Id: <20200404141400.3772-4-oscar.carter@gmx.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200404141400.3772-1-oscar.carter@gmx.com>
-References: <20200404141400.3772-1-oscar.carter@gmx.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D3E1D86248
+ for <devel@driverdev.osuosl.org>; Sat,  4 Apr 2020 17:27:52 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 034HRi5a039558;
+ Sat, 4 Apr 2020 17:27:51 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=AkiilIwBKQ8q6Fbxi2N5vnIT0ckEMpzvUWaBTQ4XtmY=;
+ b=dzg0gE5J75EsBDVSsd9C05Njz0ff5Z35BNrMOqKTi5KKhw+ZszHHEc9LMrmJ8z5WRHey
+ Y7jfQC05Tvkw7lH8gPVKYjWJQqLkul1pAJLNPFc8J9s7mVlcW2Q4SFaD9huNh+EI8N9v
+ B3L3Mkr2BYFqUOle4FPL8qJoTYqXFoZ9LDLF5xdWwLQjK+MzY/Vxhdh8ieh0tH66mZuf
+ RJNOs9OTnp89fSZFpUxWEiCt1rxdfR2d9awhFBZ4asaTxi6smUU21VVvzrngLk28/vGd
+ r9ihRGj48zhXDU0YIUjFDYWvoGRK4Gyue3VGe185Pcby3mn9S5CUltRinbLTZScEuXMZ GQ== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 306j6m1ccc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 04 Apr 2020 17:27:51 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 034H7MB3080143;
+ Sat, 4 Apr 2020 17:25:51 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3020.oracle.com with ESMTP id 306j21rc9b-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 04 Apr 2020 17:25:51 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 034HPjXS017911;
+ Sat, 4 Apr 2020 17:25:46 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Sat, 04 Apr 2020 10:25:44 -0700
+Date: Sat, 4 Apr 2020 20:25:37 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: George Spelvin <lkml@SDF.ORG>
+Subject: Re: [PATCH v3] staging: wilc1000: Use crc7 in lib/ rather than a
+ private copy
+Message-ID: <20200404172537.GI2066@kadam>
+References: <20200326152251.19094-1-ajay.kathat@microchip.com>
+ <20200402082745.GG2001@kadam> <20200402153034.GB2013@SDF.ORG>
+ <20200403091029.GC2001@kadam> <20200403234028.GA11944@SDF.ORG>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:nAfqjazem6z6y/TYc4YVW8HXnrU+5qkGZv6K0hwpbX56hkTo0gk
- rvX56M1E7K2nl2TqTVP43YAKDJIz9q00BxYhJSqwX3wXbhpL7AVpRNYo+H3Tbt4PGqmmKLm
- n9MHrB8go4cxKCHd/YD4liiUEf0sS/RYkHR73KW1WbVUytjy+Bds172D6f9LsGBe8DNfL+6
- vSP7vRZnk36c0I807aOjw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:V9S1WR/bcOA=:nrF5eOGjFx6DaaLTOR5Jex
- +WtFRJNf9RKBJxorTX2Kmw6bvRO00cuCRfe7gvFj5TB5Ci4cQhDG9SdvozNufiw8rvdohCoKY
- C+B+TzNlVRcurL6/sBCPg/UV2IiagnJXm2edPACgBw3t2a+REE1PAjVjNFJD/KmzPQxknS6IZ
- EkDPkFaOy9Og9+fqocpidtuhldAf9+KueZr7X1OBjU7R3bclgsCBd9DgKgTV6H1HEyOyuHpRk
- ckfkpAJkPA77fElx0dfTE/STnDDDXaiuXtT7GT2Hhl4aJaIXdgZBjwhNVtHCRZCycIfgNd2BF
- Vi1DXxPI+em/9EyYuMS8FoQDZm/TLswz0CJQXxtEB9IhW+HG7EjDbznywoXeWAWbrlvrBdgS6
- 3JR5jqdWb0SEZb+v+7WM+3SIkx/5NJMZojPfCvsnSokWfPWNWjQqFP9Om0X3M8YCQHi50TuU8
- kD4nJTeO4DOG/YJqhiO6p8kKkI8kQDQaYiNxEyZwBuqSg9OAuKfY94oZpX7oWpAreiW7AVhMO
- sGfz1wMnadxkqsExm2PUy3lp6Rm6+Ei3Fx8hM+cXIev9wMH421sO8D5XntFz/SUU/SSpjhfQj
- dZvDWtuZf8JUKXsBZXVbB+WCIguXjemslkFA7qH7G4FIiC3wzdPImsMzTTlVsT6gzjrmLp9RE
- DPbSRXYHzF/kJrFaKYfffz79c8+F+3Tg9/O4m14ooltoe4xDf+ygPprJ78m0c4Zb0w/m12ByR
- kd4KGAc4hOUKTXdAdnpg96qE1rMxNapgNq3L8kfj/mHUlsozx5u/1FULOWVuaI/155cvuGTDP
- HwxElkaRJONE5bQr5uMXjGc8ezLwMv3h5UPP9v4d7jkWU+I/nD44cnAHknrp+GLagiN8heO1B
- /LV/8xAq+MK+4ioSiOPgzbzcA50X817Ru0g9rCoQh2GLbfwAcPlhCgEOHu/jmKlhDIoTrDCJo
- 3l2nZtRkrVdQM9ijhp3nuAidzdmSRZuewwkqIrYqpHAIx3gnM40upueOFPgPELz3lgW/YdYKP
- 4ZjK+ClHG7PZ8Nf0yneMdClQzNueVYjZoi+rbDPnK0TVbSj1V4deL7fPTZVlkJXQM3X8av+D9
- UTLJ2+lxkhTbAmodql4RmEFIb2yEVRYPvf+xVupbn7GawADs1kxrNK5TIAD3PFHvKXNGm08j7
- 0WCsZDyPZ+3xcEu7++k3yMu5zQkUl2f78eleragrGKs1KVwEA24HRBSMc1PQnx3fNOPL//CIx
- Gt1aUYR35Py1VpTnz
+Content-Disposition: inline
+In-Reply-To: <20200403234028.GA11944@SDF.ORG>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9581
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ malwarescore=0 phishscore=0
+ mlxlogscore=909 spamscore=0 adultscore=0 mlxscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004040157
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9581
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxlogscore=975 spamscore=0
+ priorityscore=1501 suspectscore=0 lowpriorityscore=0 malwarescore=0
+ impostorscore=0 mlxscore=0 phishscore=0 adultscore=0 clxscore=1015
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004040161
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,35 +100,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Ajay.Kathat@microchip.com,
+ gregkh@linuxfoundation.org, linux-wireless@vger.kernel.org,
+ Adham.Abozaeid@microchip.com, johannes@sipsolutions.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Don't initialize the rate variable as it is set a few lines later.
+On Fri, Apr 03, 2020 at 11:40:28PM +0000, George Spelvin wrote:
+> I understand that it's addressed more to patch authors than
+> maintainers forwarding them, but I've read that thing a dozen times,
+> and the description of S-o-b always seemed to be about copyright.
+> 
 
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
----
- drivers/staging/vt6656/baseband.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+It's to say that you didn't add anything which you shouldn't have, for
+example, secret SCO UnixWare stuff.
 
-diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
-index a785f91c1566..04393ea6287d 100644
---- a/drivers/staging/vt6656/baseband.c
-+++ b/drivers/staging/vt6656/baseband.c
-@@ -135,7 +135,7 @@ unsigned int vnt_get_frame_time(u8 preamble_type, u8 pkt_type,
- {
- 	unsigned int frame_time;
- 	unsigned int preamble;
--	unsigned int rate = 0;
-+	unsigned int rate;
+> So I had assumed that edits which were below the de minimus standard
+> of copyright didn't need a separate S-o-b.
+> 
+> Am I right that there should be an S-o-b from everyone from the
+> patch author to the patch committer (as recorded in git)?  And the
+> one exception is that we don't need S-o-b for git pulls after that,
+> because the merge commits record the information?
 
- 	if (tx_rate >= ARRAY_SIZE(vnt_frame_time))
- 		return 0;
---
-2.20.1
+Yes.  Also if people added their S-o-b for git merges it would change
+the git hash for the patch which would suck.
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
