@@ -2,52 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66F6719E7E7
-	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Apr 2020 00:32:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F151219E84B
+	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Apr 2020 03:32:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D0BD85F8C;
-	Sat,  4 Apr 2020 22:32:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 01F868612E;
+	Sun,  5 Apr 2020 01:32:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ywat0HRYunk4; Sat,  4 Apr 2020 22:32:02 +0000 (UTC)
+	with ESMTP id j-D8hmlch9lI; Sun,  5 Apr 2020 01:32:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7189985B3D;
-	Sat,  4 Apr 2020 22:32:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CD4BD86119;
+	Sun,  5 Apr 2020 01:32:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D6F201BF82F
- for <devel@linuxdriverproject.org>; Sat,  4 Apr 2020 22:31:58 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B8A2B1BF25F
+ for <devel@linuxdriverproject.org>; Sun,  5 Apr 2020 01:32:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CB27785B3D
- for <devel@linuxdriverproject.org>; Sat,  4 Apr 2020 22:31:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A99E58823F
+ for <devel@linuxdriverproject.org>; Sun,  5 Apr 2020 01:32:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MFbeJRhEP5Ye for <devel@linuxdriverproject.org>;
- Sat,  4 Apr 2020 22:31:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from lujans08.lujan.gob.ar (lujans08.lujan.gob.ar [200.110.188.19])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 82E7085AA1
- for <devel@linuxdriverproject.org>; Sat,  4 Apr 2020 22:31:56 +0000 (UTC)
-Received: from [156.96.116.238] (gracie.drumgrey.com [156.96.116.238] (may be
- forged)) (authenticated bits=0)
- by lujans08.lujan.gob.ar (8.14.4/8.14.4) with ESMTP id 034JVUEh009901
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
- Sat, 4 Apr 2020 18:54:08 -0300
-Message-Id: <202004042154.034JVUEh009901@lujans08.lujan.gob.ar>
+ with ESMTP id 3Bow+vgXjkU3 for <devel@linuxdriverproject.org>;
+ Sun,  5 Apr 2020 01:32:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-il1-f194.google.com (mail-il1-f194.google.com
+ [209.85.166.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2C8A687FA4
+ for <devel@driverdev.osuosl.org>; Sun,  5 Apr 2020 01:32:38 +0000 (UTC)
+Received: by mail-il1-f194.google.com with SMTP id x16so11306859ilp.12
+ for <devel@driverdev.osuosl.org>; Sat, 04 Apr 2020 18:32:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:content-language
+ :user-agent;
+ bh=bbwT0JDvAgpa3Sushm5zcwL/0sAYePwp2JhJddCJiiQ=;
+ b=UZ2Of1lfXFzLiLN67Y1Dh+el7S6pI9/JnXxixypUqDZTvfnziK5W/HQOvTJM73N7oW
+ YS+vhoPuZDGk0V7c4lTbZTru7uljNgg2xGcvyHnz5VO8RtataUIUhNwWMmlemdjzDPxH
+ 1uVmtk1L72BEZjE6/eSrtoVCEZvw62pbTN+EleLWg1D2pqLvB7dy+e/AI42T3/zjaGDL
+ MkPqtGSIE6vMLZB6HKH2Rl8uKPP2SxSUhB7Xua4EqHKIMXaJ6XTW20UXg64PxcfOW1AD
+ kYZKzo8pOO9MUtDkfUfmbL3dezwPqsKtzWlvfbPDAdrrKXTOqGrFUoQERlhosKT5EaIA
+ 6GnA==
+X-Gm-Message-State: AGi0PuY+vLz5I/FnqY9c4CK2w8tgKztoyQPJhHyXXo+cUbH1VEpqTt25
+ 0VwFooDswF2WTjcIJBhzEg==
+X-Google-Smtp-Source: APiQypJIboR7CPmas3cH43grVLYaKmX7hmJ5bSlCUVLcJdeUJEMupnl7qTdmDv4uL+jfDP3xqrCl9g==
+X-Received: by 2002:a92:9149:: with SMTP id t70mr16383960ild.114.1586050357391; 
+ Sat, 04 Apr 2020 18:32:37 -0700 (PDT)
+Received: from rob-hp-laptop ([64.188.179.250])
+ by smtp.gmail.com with ESMTPSA id i16sm4429879ils.40.2020.04.04.18.32.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 04 Apr 2020 18:32:36 -0700 (PDT)
+Received: (nullmailer pid 24273 invoked by uid 1000);
+ Sun, 05 Apr 2020 01:32:35 -0000
+Date: Sat, 4 Apr 2020 19:32:35 -0600
+From: Rob Herring <robh@kernel.org>
+To: Ajay.Kathat@microchip.com
+Subject: Re: [PATCH v6 16/17] dt: bindings: net: add microchip,wilc1000.yaml
+Message-ID: <20200405013235.GA24105@bogus>
+References: <20200327063302.20511-1-ajay.kathat@microchip.com>
+ <20200327063302.20511-17-ajay.kathat@microchip.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: INSTRUCTIONS / WARNING FROM CENTRAL BANK. 04/04
-To: Recipients <test@asrockrackchina.com>
-From: "Mr. Godwin Emefiele" <test@asrockrackchina.com>
-Date: Sat, 04 Apr 2020 17:40:16 -0700
-X-Lujan-MailScanner-Information: Please contact the ISP for more information
-X-Lujan-MailScanner-ID: 034JVUEh009901
-X-Lujan-MailScanner: Found to be clean
-X-Lujan-MailScanner-SpamScore: s
-X-Lujan-MailScanner-From: test@asrockrackchina.com
+Content-Disposition: inline
+In-Reply-To: <20200327063302.20511-17-ajay.kathat@microchip.com>
+Content-Language: en-US
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,40 +81,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: cyrilcbn@yahoo.co.jp
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Ajay.Kathat@microchip.com, Venkateswara.Kaja@microchip.com,
+ gregkh@linuxfoundation.org, linux-wireless@vger.kernel.org,
+ Nicolas.Ferre@microchip.com, Adham.Abozaeid@microchip.com,
+ johannes@sipsolutions.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Esteemed Beneficiary,
+On Fri, 27 Mar 2020 06:33:20 +0000, <Ajay.Kathat@microchip.com> wrote:
+> 
+> From: Ajay Singh <ajay.kathat@microchip.com>
+> 
+> This file describes the binding details to connect wilc1000 device. It's
+> moved from staging to 'Documentation/devicetree/bindings/net/wireless'
+> path.
+> 
+> Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
+> ---
+>  .../net/wireless/microchip,wilc1000.yaml      | 71 +++++++++++++++++++
+>  1 file changed, 71 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/wireless/microchip,wilc1000.yaml
+> 
 
-This is to bring to your notice from the Executive Governor of the Central Bank Remittance Department that your outstanding contractual / inheritance payment which was suspended by the Nigerian government there by stopping the TRANSFER DEPARTMENT to pause the transfer of your contract fund to your nominated bank account. As a result of this development verification conducted by the Finance Ministry in conjunction with the Debt Verification Panel on your contract case file has been endorsed
-for payment awaiting your confirmations.
-
-In view of several efforts already made by us to contact you for the following reasons based on the new account submitted to this office on your behalf:
-
-(1) My Office desks have just received a sworn affidavit from Mr.Jim Hermann  from your country to re-route your payment into a new bank account.
-
-The sum of US$ 3.8 Million US Dollars ( THREE MILLION EIGHT HUNDRED THOUSAND  US Dollars) 
-(2) Please, confirm to our office if you have instructed Mr. Jim Hermann from your country to appoint an attorney/agent on your behalf thereby asking that he receive cash call remittance on your behalf.
-
-(3) It have come to our notice that you are being contacted by unauthorized individuals with respect to your Contract / Inheritance payment but unfortunately this office is not aware of your unofficial dealings and warned that it is at your own risk.
-
-(4) Please, also confirm if you have authorized Mr. Jim Hermann to change your banking particulars. Also re-confirm your details and, Private Telephone, your e-mail address,  so that we can cross-check it with our file records.
-
-We have decided to contact you for re-verification because we suspected that Mr. Jim Hermann is trying to divert your money through the sworn affidavit into a new different bank account. You are advised to get back to this office within 7days from today.
-
-
-Best Regards
-Mr.Godwin Emefiele
-Executive Governor Central Bank Nigeria
-
--- 
-This message has been scanned for viruses and
-dangerous content by MailScanner, and is
-believed to be clean.
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
