@@ -1,80 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFEA119FE1D
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 21:33:27 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F38F1A0145
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Apr 2020 00:48:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 14F2F885F6;
-	Mon,  6 Apr 2020 19:33:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0FDD586879;
+	Mon,  6 Apr 2020 22:48:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1iWnJYOI42P8; Mon,  6 Apr 2020 19:33:25 +0000 (UTC)
+	with ESMTP id cybqfrAxV30l; Mon,  6 Apr 2020 22:48:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 05873885E3;
-	Mon,  6 Apr 2020 19:33:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 81F1E86582;
+	Mon,  6 Apr 2020 22:48:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F41D41BF3D0
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 19:33:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 440281BF278
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 22:48:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E15E720505
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 19:33:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3FD6E8679B
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 22:48:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uTHs56ewvOxK for <devel@linuxdriverproject.org>;
- Mon,  6 Apr 2020 19:33:19 +0000 (UTC)
+ with ESMTP id B4yZIH3DO1dw for <devel@linuxdriverproject.org>;
+ Mon,  6 Apr 2020 22:48:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 847F6204F8
- for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 19:33:19 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id p10so912221wrt.6
- for <devel@driverdev.osuosl.org>; Mon, 06 Apr 2020 12:33:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:subject:to:cc:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=9iA2Xd8MbX8MeDRK88rJx+tp22J+csXn1fYwh/6669Q=;
- b=ZKbN0mIcat8AnMyiIpDXBdZfwuSYvXH9wmzYqosDdkyPbuKZ/6q5/ZCsYH0nKkl1OC
- vUy+C13qFfaU8fkDvZhV99e0mLrKhazn2oDSOZpe1jwR/SSPtVp8p8OzFer7JcNtQv3n
- AdR27SakYSyi4Yb71lxR7WfwHUvTPc73w0S+vZM3xa1a7L2aDAs5BR/vfMpPp1XoH1U3
- a9RK9Pkt93iFupvLfsjYGyS1CpeVwjVN4EbBjM8/caKuRVfysFIofZGwuWwHXRec17af
- EH1os5Dv3AmGyz78YcTTiVdSKqjQfd12IVhb1pIRsI+nER8A2W4Q/0ILPGE//OL5V4PR
- I2tQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=9iA2Xd8MbX8MeDRK88rJx+tp22J+csXn1fYwh/6669Q=;
- b=b4irpagHGxuoRrc0tgifDWSd3ils7Ma1UkarZUree5VPg3huM+sKfRN9yM1RqUM38o
- SkyoL43AC1JumSHNPqE9RFniSK0frl4Qwih0jCts/1W7vHay8L9qCJlzQfWEWH3s2iF2
- yCqVrnQzFYzlJtX8P5jmQZh4Uz4hzwsNDbwB+UuxU3NXpDIUDQUotynsVRIyxnT0tql7
- 24ltiZToovOVNpz4MskRCFoklMe/+6mNajbdrO9HdenhfUvFOxW1A11k+oKOSJGQe2/b
- i+FaNRTMU9UtXtTEYbqw7ZYMpmJvcX3m9sMh9bgjT3/b4slq61GUGwoJ92qnFC7/O2Ic
- F1Fw==
-X-Gm-Message-State: AGi0PuajHpjlttcuvZuoVGlSKh+8lO36bGglH5yaVzkzY0nJuJHxLpd3
- 6BjzpxWdmnwniZnC3ChAtUI=
-X-Google-Smtp-Source: APiQypL4fvmGlhMGPgPei4Tsk9B1DFmsaSIxmo16sVa47FV5d1fNgoXR/lKeS4OiLgjM0S+0BPqe/w==
-X-Received: by 2002:a5d:4988:: with SMTP id r8mr826012wrq.248.1586201597794;
- Mon, 06 Apr 2020 12:33:17 -0700 (PDT)
-Received: from [192.168.43.18] (188.29.165.56.threembb.co.uk. [188.29.165.56])
- by smtp.gmail.com with ESMTPSA id
- r5sm675404wmr.15.2020.04.06.12.33.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Apr 2020 12:33:17 -0700 (PDT)
-From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH 2/2 v2] staging: vt6656: rxtx remove rate change and
- current_rate.
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Message-ID: <3ba896aa-5ab2-affb-9ce5-7df8a9b3190a@gmail.com>
-Date: Mon, 6 Apr 2020 20:33:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 18F8286582
+ for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 22:48:35 +0000 (UTC)
+IronPort-SDR: QCcLzfamcbjQeEgWC0NnBMnIU28ZsKMlL8qYRDhfjdcMKt+lc0jotFFxhzByo8sT34ZsLuukW9
+ PjfArhXjglHA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Apr 2020 15:48:34 -0700
+IronPort-SDR: 0jSStnLJJxwVjRQK9Xphn9nev3fuf2tLUKXRNG6TvY8Gp+IwNq22iZ9TiA3XQ0pWIEOMp4V2G9
+ 9acDOVCqh2dg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,352,1580803200"; d="scan'208";a="254261433"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 06 Apr 2020 15:48:32 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jLaXg-000Fe4-58; Tue, 07 Apr 2020 06:48:32 +0800
+Date: Tue, 07 Apr 2020 06:47:51 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 28910cbdc813ef8d7fa14b78d220457388c05c61
+Message-ID: <5e8bb197.FZbTt3MBcm3w6I5R%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,88 +67,208 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- linux-wireless@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There is no longer any need to change power in vnt_tx_packet.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 28910cbdc813ef8d7fa14b78d220457388c05c61  staging: wfx: remove hack about tx_rate policies
 
-Remove current_rate in vnt_tx_packet and struct vnt_private as
-it is no longer used elsewhere.
+Error/Warning in current branch:
 
-Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
+drivers/staging/vt6655/baseband.c:1711:15: warning: The scope of the variable 'preamble' can be reduced. [variableScope]
+drivers/staging/vt6655/baseband.c:1912:16: warning: The scope of the variable 'by_value' can be reduced. [variableScope]
+drivers/staging/wfx/queue.c:349:18: warning: The scope of the variable 'skb' can be reduced. [variableScope]
+drivers/staging/wfx/queue.c:92:18: warning: The scope of the variable 'hif_msg' can be reduced. [variableScope]
+struct hif_msg *hif_msg;
+unsigned char by_value;
+
+Error/Warning ids grouped by kconfigs:
+
+recent_errors
+|-- i386-allmodconfig
+|   |-- drivers-staging-vt6655-baseband.c:warning:The-scope-of-the-variable-by_value-can-be-reduced.-variableScope
+|   |-- drivers-staging-vt6655-baseband.c:warning:The-scope-of-the-variable-preamble-can-be-reduced.-variableScope
+|   `-- unsigned-char-by_value
+`-- x86_64-allyesconfig
+    |-- drivers-staging-vt6655-baseband.c:warning:The-scope-of-the-variable-by_value-can-be-reduced.-variableScope
+    |-- drivers-staging-vt6655-baseband.c:warning:The-scope-of-the-variable-preamble-can-be-reduced.-variableScope
+    |-- drivers-staging-wfx-queue.c:warning:The-scope-of-the-variable-hif_msg-can-be-reduced.-variableScope
+    |-- drivers-staging-wfx-queue.c:warning:The-scope-of-the-variable-skb-can-be-reduced.-variableScope
+    |-- struct-hif_msg-hif_msg
+    `-- unsigned-char-by_value
+
+elapsed time: 483m
+
+configs tested: 157
+configs skipped: 0
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm64                            allyesconfig
+arm                              allyesconfig
+arm64                            allmodconfig
+arm                              allmodconfig
+arm64                             allnoconfig
+arm                               allnoconfig
+arm                           efm32_defconfig
+arm                         at91_dt_defconfig
+arm                        shmobile_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                           sunxi_defconfig
+arm64                               defconfig
+sparc                            allyesconfig
+ia64                                defconfig
+openrisc                 simple_smp_defconfig
+nios2                         10m50_defconfig
+riscv                          rv32_defconfig
+m68k                          multi_defconfig
+powerpc                             defconfig
+m68k                       m5475evb_defconfig
+um                           x86_64_defconfig
+i386                              allnoconfig
+i386                             alldefconfig
+i386                             allyesconfig
+i386                              debian-10.3
+i386                                defconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                             alldefconfig
+nios2                         3c120_defconfig
+c6x                        evmc6678_defconfig
+xtensa                          iss_defconfig
+c6x                              allyesconfig
+xtensa                       common_defconfig
+openrisc                    or1ksim_defconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                                defconfig
+alpha                               defconfig
+h8300                       h8s-sim_defconfig
+h8300                     edosk2674_defconfig
+m68k                             allmodconfig
+h8300                    h8300h-sim_defconfig
+m68k                           sun3_defconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+mips                             allyesconfig
+mips                         64r6el_defconfig
+mips                              allnoconfig
+mips                           32r2_defconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                           allyesconfig
+parisc                generic-32bit_defconfig
+parisc                generic-64bit_defconfig
+x86_64               randconfig-a003-20200406
+i386                 randconfig-a002-20200406
+x86_64               randconfig-a002-20200406
+x86_64               randconfig-a001-20200406
+i386                 randconfig-a001-20200406
+i386                 randconfig-a003-20200406
+mips                 randconfig-a001-20200406
+nds32                randconfig-a001-20200406
+m68k                 randconfig-a001-20200406
+parisc               randconfig-a001-20200406
+alpha                randconfig-a001-20200406
+riscv                randconfig-a001-20200406
+c6x                  randconfig-a001-20200406
+h8300                randconfig-a001-20200406
+microblaze           randconfig-a001-20200406
+nios2                randconfig-a001-20200406
+sparc64              randconfig-a001-20200406
+s390                 randconfig-a001-20200406
+xtensa               randconfig-a001-20200406
+csky                 randconfig-a001-20200406
+openrisc             randconfig-a001-20200406
+sh                   randconfig-a001-20200406
+x86_64               randconfig-b001-20200406
+x86_64               randconfig-b002-20200406
+x86_64               randconfig-b003-20200406
+i386                 randconfig-b001-20200406
+i386                 randconfig-b002-20200406
+i386                 randconfig-b003-20200406
+x86_64               randconfig-c001-20200406
+x86_64               randconfig-c002-20200406
+x86_64               randconfig-c003-20200406
+i386                 randconfig-c001-20200406
+i386                 randconfig-c002-20200406
+i386                 randconfig-c003-20200406
+i386                 randconfig-e001-20200406
+i386                 randconfig-e003-20200406
+x86_64               randconfig-e002-20200406
+x86_64               randconfig-e001-20200406
+i386                 randconfig-e002-20200406
+x86_64               randconfig-e003-20200406
+i386                 randconfig-f001-20200406
+x86_64               randconfig-f003-20200406
+i386                 randconfig-f003-20200406
+x86_64               randconfig-f001-20200406
+i386                 randconfig-f002-20200406
+x86_64               randconfig-h002-20200406
+i386                 randconfig-h002-20200406
+i386                 randconfig-h003-20200406
+i386                 randconfig-h001-20200406
+x86_64               randconfig-h003-20200406
+x86_64               randconfig-h001-20200406
+arc                  randconfig-a001-20200407
+arm                  randconfig-a001-20200407
+arm64                randconfig-a001-20200407
+ia64                 randconfig-a001-20200407
+powerpc              randconfig-a001-20200407
+sparc                randconfig-a001-20200407
+arm64                randconfig-a001-20200406
+sparc                randconfig-a001-20200406
+ia64                 randconfig-a001-20200406
+arc                  randconfig-a001-20200406
+arm                  randconfig-a001-20200406
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+s390                       zfcpdump_defconfig
+s390                          debug_defconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                             alldefconfig
+s390                                defconfig
+sh                          rsk7269_defconfig
+sh                               allmodconfig
+sh                            titan_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                                allnoconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                                  defconfig
+um                             i386_defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                               rhel-7.6
+
 ---
-v2
-Patch 1 had wrong array.
-
- drivers/staging/vt6656/device.h |  1 -
- drivers/staging/vt6656/rxtx.c   | 15 ++++-----------
- 2 files changed, 4 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
-index e6ee9411f080..41226cd599c6 100644
---- a/drivers/staging/vt6656/device.h
-+++ b/drivers/staging/vt6656/device.h
-@@ -344,7 +344,6 @@ struct vnt_private {
- 	u8 ofdm_pwr_tbl[14];
- 	u8 ofdm_a_pwr_tbl[42];
- 
--	u16 current_rate;
- 	u16 tx_rate_fb0;
- 	u16 tx_rate_fb1;
- 
-diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
-index 9439d190f431..8363d54cd821 100644
---- a/drivers/staging/vt6656/rxtx.c
-+++ b/drivers/staging/vt6656/rxtx.c
-@@ -547,7 +547,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
- 	struct vnt_tx_fifo_head *tx_buffer_head;
- 	struct vnt_usb_send_context *tx_context;
- 	unsigned long flags;
--	u16 tx_bytes, tx_header_size, tx_body_size, current_rate, duration_id;
-+	u16 tx_bytes, tx_header_size, tx_body_size, duration_id;
- 	u8 pkt_type;
- 	bool need_rts = false;
- 	bool need_mic = false;
-@@ -556,14 +556,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
- 
- 	rate = ieee80211_get_tx_rate(priv->hw, info);
- 
--	current_rate = rate->hw_value;
--	if (priv->current_rate != current_rate &&
--	    !(priv->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)) {
--		priv->current_rate = current_rate;
--		vnt_schedule_command(priv, WLAN_CMD_SETPOWER);
--	}
--
--	if (current_rate > RATE_11M) {
-+	if (rate->hw_value > RATE_11M) {
- 		if (info->band == NL80211_BAND_5GHZ) {
- 			pkt_type = PK_TYPE_11A;
- 		} else {
-@@ -593,7 +586,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
- 	tx_context->pkt_type = pkt_type;
- 	tx_context->need_ack = false;
- 	tx_context->frame_len = skb->len + 4;
--	tx_context->tx_rate = current_rate;
-+	tx_context->tx_rate =  rate->hw_value;
- 
- 	spin_unlock_irqrestore(&priv->lock, flags);
- 
-@@ -666,7 +659,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
- 		tx_context->frame_len += tx_key->icv_len;
- 	}
- 
--	tx_buffer_head->current_rate = cpu_to_le16(current_rate);
-+	tx_buffer_head->current_rate = cpu_to_le16(rate->hw_value);
- 
- 	duration_id = vnt_generate_tx_parameter(tx_context, tx_buffer, &mic_hdr,
- 						need_mic, need_rts);
--- 
-2.25.1
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
