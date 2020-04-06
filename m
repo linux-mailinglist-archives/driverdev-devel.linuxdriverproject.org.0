@@ -1,67 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E75119F739
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 15:52:02 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 35CF48850E;
-	Mon,  6 Apr 2020 13:52:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DB27t9a1paGf; Mon,  6 Apr 2020 13:52:00 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 825E5880C5;
-	Mon,  6 Apr 2020 13:51:57 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0301A1BF27F
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 13:51:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 16FB019F796
+	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 16:07:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F042A23039
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 13:51:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B4CC623449;
+	Mon,  6 Apr 2020 14:07:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DL2TdZVetBgJ; Mon,  6 Apr 2020 14:07:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id A27E6233B0;
+	Mon,  6 Apr 2020 14:07:47 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 21A771BF3D7
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 14:07:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1E65D85F98
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 14:07:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hzdsVweoG5R2 for <devel@linuxdriverproject.org>;
- Mon,  6 Apr 2020 13:51:54 +0000 (UTC)
-X-Greylist: delayed 00:05:40 by SQLgrey-1.7.6
-Received: from smtp66.iad3a.emailsrvr.com (smtp66.iad3a.emailsrvr.com
- [173.203.187.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 034022155F
- for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 13:51:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1586180773;
- bh=sx2GlTr1skgOMXpKH+SQvrYKaP6Enh0lTplHmXPTNik=;
- h=Subject:To:From:Date:From;
- b=RwgsTpCVtnWo4PMfPnROwtBYJIBV1+3EcSfnu+cJ3EevPf583Us7n0CxMHPHas/M5
- 5F1TpjK399HZNECibwwQR96StBM09VI+bEBPxB5wW6nY+/ItGc3Ph0YqK74JeamS9Y
- retU886mpZLrjwPesNHv6DCW1/igNTdAU8kmNLns=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp17.relay.iad3a.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id B2E5625590; 
- Mon,  6 Apr 2020 09:46:12 -0400 (EDT)
-X-Sender-Id: abbotti@mev.co.uk
-Received: from [10.0.0.173] (remote.quintadena.com [81.133.34.160])
- (using TLSv1.2 with cipher DHE-RSA-AES128-SHA)
- by 0.0.0.0:465 (trex/5.7.12); Mon, 06 Apr 2020 09:46:13 -0400
-Subject: Re: [PATCH] Staging: comedi: dt2815: remove set but not used variable
- 'hi'
-To: Wang Hai <wanghai38@huawei.com>, hsweeten@visionengravers.com,
- gregkh@linuxfoundation.org
-References: <1586264372-15872-1-git-send-email-wanghai38@huawei.com>
-From: Ian Abbott <abbotti@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <7e76bc61-7f3e-4bc8-4687-dd6d82c23dc1@mev.co.uk>
-Date: Mon, 6 Apr 2020 14:46:11 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ with ESMTP id KNf4GWt2Imhd for <devel@linuxdriverproject.org>;
+ Mon,  6 Apr 2020 14:07:43 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D1BB485F90
+ for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 14:07:43 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1B81F23741;
+ Mon,  6 Apr 2020 14:07:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1586182063;
+ bh=wDxIRPMlhMe/o1pXdj51xgZSnzW2C4Zp3pSFgaaLnsE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=VdjajAAUE4J3O7+IVXlo5tfLqdCO8wTdoKXGvy5lx2O7gihzAT7uf/bOGEuk0lIrj
+ NYSt5h8JaO2Xqa2xRnqtr1vhbdg+krp7nuAPBNVNuo14ZTWmhzFAZ3lPoVI31VZJF8
+ 7WxHZNBCSW4IiMkw2uJwxMZimg8dN4FZjPB9++44=
+Date: Mon, 6 Apr 2020 16:07:35 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Wang Hai <wanghai38@huawei.com>
+Subject: Re: [PATCH] staging: rtl8192u: Remove some set but not used variables
+Message-ID: <20200406140735.GA26701@kroah.com>
+References: <1586261264-37576-1-git-send-email-wanghai38@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <1586264372-15872-1-git-send-email-wanghai38@huawei.com>
-Content-Language: en-GB
-X-Classification-ID: a405988f-90a9-4235-8856-dcf8a6351cf0-1-1
+Content-Disposition: inline
+In-Reply-To: <1586261264-37576-1-git-send-email-wanghai38@huawei.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,59 +65,56 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, mst@redhat.com, c.cantanheide@gmail.com,
+ linux-kernel@vger.kernel.org, nishkadg.linux@gmail.com, mchehab@kernel.org,
+ navid.emamdoost@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 07/04/2020 13:59, Wang Hai wrote:
-> Fixes gcc '-Wunused-but-set-variable' warning:
-> 
-> drivers/staging/comedi/drivers/dt2815.c: In function dt2815_ao_insn:
-> drivers/staging/comedi/drivers/dt2815.c:91:19: warning: variable 'hi' set but not used [-Wunused-but-set-variable]
-> 
-> commit d6a929b7608a ("Staging: comedi: add dt2815 driver")
-> involved this, remove it.
-> 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: Wang Hai <wanghai38@huawei.com>
-> ---
->   drivers/staging/comedi/drivers/dt2815.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/comedi/drivers/dt2815.c b/drivers/staging/comedi/drivers/dt2815.c
-> index 83026ba..bcf85ec 100644
-> --- a/drivers/staging/comedi/drivers/dt2815.c
-> +++ b/drivers/staging/comedi/drivers/dt2815.c
-> @@ -88,12 +88,11 @@ static int dt2815_ao_insn(struct comedi_device *dev, struct comedi_subdevice *s,
->   	struct dt2815_private *devpriv = dev->private;
->   	int i;
->   	int chan = CR_CHAN(insn->chanspec);
-> -	unsigned int lo, hi;
-> +	unsigned int lo;
->   	int ret;
->   
->   	for (i = 0; i < insn->n; i++) {
->   		lo = ((data[i] & 0x0f) << 4) | (chan << 1) | 0x01;
-> -		hi = (data[i] & 0xff0) >> 4;
->   
->   		ret = comedi_timeout(dev, s, insn, dt2815_ao_status, 0x00);
->   		if (ret)
-> 
-
-That 'hi' value should be written to the hardware, but the driver is 
-broken.  I don't think this driver has ever been tested as working 
-because it has never written the 'hi' value to the hardware!
-
-I think I know how to fix it.  I'll send a patch.
-
--- 
--=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
--=( MEV Ltd. is a company registered in England & Wales. )=-
--=( Registered number: 02862268.  Registered address:    )=-
--=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gVHVlLCBBcHIgMDcsIDIwMjAgYXQgMDg6MDc6NDRBTSAtMDQwMCwgV2FuZyBIYWkgd3JvdGU6
+Cj4gRml4ZXMgZ2NjICctV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlJyB3YXJuaW5nOgo+IAo+IGRy
+aXZlcnMvc3RhZ2luZy9ydGw4MTkydS9yODE5MlVfY29yZS5jOiBJbiBmdW5jdGlvbiBydGw4MTky
+X2hhcmRfZGF0YV94bWl0Ogo+IGRyaXZlcnMvc3RhZ2luZy9ydGw4MTkydS9yODE5MlVfY29yZS5j
+OjkwNTo2OiB3YXJuaW5nOiB2YXJpYWJsZSDigJhyZXTigJkgc2V0IGJ1dCBub3QgdXNlZCBbLVd1
+bnVzZWQtYnV0LXNldC12YXJpYWJsZV0KPiBkcml2ZXJzL3N0YWdpbmcvcnRsODE5MnUvcjgxOTJV
+X2NvcmUuYzogSW4gZnVuY3Rpb24gcnRsODE5Ml9jb21taXQ6Cj4gZHJpdmVycy9zdGFnaW5nL3J0
+bDgxOTJ1L3I4MTkyVV9jb3JlLmM6MzQxODo2OiB3YXJuaW5nOiB2YXJpYWJsZSDigJhyZXNldF9z
+dGF0dXPigJkgc2V0IGJ1dCBub3QgdXNlZCBbLVd1bnVzZWQtYnV0LXNldC12YXJpYWJsZV0KPiAK
+PiBGaXhlczogOGZjODU5OGU2MWY2ICgiU3RhZ2luZzogQWRkZWQgUmVhbHRlayBydGw4MTkydSBk
+cml2ZXIgdG8gc3RhZ2luZyIpCj4gUmVwb3J0ZWQtYnk6IEh1bGsgUm9ib3QgPGh1bGtjaUBodWF3
+ZWkuY29tPgo+IFNpZ25lZC1vZmYtYnk6IFdhbmcgSGFpIDx3YW5naGFpMzhAaHVhd2VpLmNvbT4K
+PiAtLS0KPiAgZHJpdmVycy9zdGFnaW5nL3J0bDgxOTJ1L3I4MTkyVV9jb3JlLmMgfCA2ICsrLS0t
+LQo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+IAo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvcnRsODE5MnUvcjgxOTJVX2NvcmUuYyBiL2Ry
+aXZlcnMvc3RhZ2luZy9ydGw4MTkydS9yODE5MlVfY29yZS5jCj4gaW5kZXggZmNmYjkwMi4uYmIy
+ODY3MCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvcnRsODE5MnUvcjgxOTJVX2NvcmUu
+Ywo+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9ydGw4MTkydS9yODE5MlVfY29yZS5jCj4gQEAgLTkw
+Miw3ICs5MDIsNiBAQCBzdGF0aWMgdm9pZCBydGw4MTkyX2hhcmRfZGF0YV94bWl0KHN0cnVjdCBz
+a19idWZmICpza2IsIHN0cnVjdCBuZXRfZGV2aWNlICpkZXYsCj4gIAkJCQkgICBpbnQgcmF0ZSkK
+PiAgewo+ICAJc3RydWN0IHI4MTkyX3ByaXYgKnByaXYgPSAoc3RydWN0IHI4MTkyX3ByaXYgKilp
+ZWVlODAyMTFfcHJpdihkZXYpOwo+IC0JaW50IHJldDsKPiAgCXVuc2lnbmVkIGxvbmcgZmxhZ3M7
+Cj4gIAlzdHJ1Y3QgY2JfZGVzYyAqdGNiX2Rlc2MgPSAoc3RydWN0IGNiX2Rlc2MgKikoc2tiLT5j
+YiArIE1BWF9ERVZfQUREUl9TSVpFKTsKPiAgCXU4IHF1ZXVlX2luZGV4ID0gdGNiX2Rlc2MtPnF1
+ZXVlX2luZGV4Owo+IEBAIC05MTUsNyArOTE0LDcgQEAgc3RhdGljIHZvaWQgcnRsODE5Ml9oYXJk
+X2RhdGFfeG1pdChzdHJ1Y3Qgc2tfYnVmZiAqc2tiLCBzdHJ1Y3QgbmV0X2RldmljZSAqZGV2LAo+
+ICAJKihzdHJ1Y3QgbmV0X2RldmljZSAqKikoc2tiLT5jYikgPSBkZXY7Cj4gIAl0Y2JfZGVzYy0+
+YlR4RW5hYmxlRndDYWxjRHVyID0gMTsKPiAgCXNrYl9wdXNoKHNrYiwgcHJpdi0+aWVlZTgwMjEx
+LT50eF9oZWFkcm9vbSk7Cj4gLQlyZXQgPSBydGw4MTkyX3R4KGRldiwgc2tiKTsKPiArCXJ0bDgx
+OTJfdHgoZGV2LCBza2IpOwoKU2hvdWxkbid0IHdlIGRvIHNvbWV0aGluZyBhYm91dCBhbiBlcnJv
+ciBpZiB0aGF0IGZ1bmN0aW9uIHJldHVybnMgYW4KZXJyb3I/ICBXaHkgYXJlIHdlIGlnbm9yaW5n
+IGl0PwoKPiAgCj4gIAlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZwcml2LT50eF9sb2NrLCBmbGFn
+cyk7Cj4gIH0KPiBAQCAtMzQxNSw3ICszNDE0LDYgQEAgaW50IHJ0bDgxOTJfZG93bihzdHJ1Y3Qg
+bmV0X2RldmljZSAqZGV2KQo+ICB2b2lkIHJ0bDgxOTJfY29tbWl0KHN0cnVjdCBuZXRfZGV2aWNl
+ICpkZXYpCj4gIHsKPiAgCXN0cnVjdCByODE5Ml9wcml2ICpwcml2ID0gaWVlZTgwMjExX3ByaXYo
+ZGV2KTsKPiAtCWludCByZXNldF9zdGF0dXMgPSAwOwo+ICAKPiAgCWlmIChwcml2LT51cCA9PSAw
+KQo+ICAJCXJldHVybjsKPiBAQCAtMzQyNyw3ICszNDI1LDcgQEAgdm9pZCBydGw4MTkyX2NvbW1p
+dChzdHJ1Y3QgbmV0X2RldmljZSAqZGV2KQo+ICAJaWVlZTgwMjExX3NvZnRtYWNfc3RvcF9wcm90
+b2NvbChwcml2LT5pZWVlODAyMTEpOwo+ICAKPiAgCXJ0bDgxOTJfcnR4X2Rpc2FibGUoZGV2KTsK
+PiAtCXJlc2V0X3N0YXR1cyA9IF9ydGw4MTkyX3VwKGRldik7Cj4gKwlfcnRsODE5Ml91cChkZXYp
+OwoKU2FtZSBoZXJlLCBzaG91bGQgdGhhdCByZWFsbHkgYmUgaWdub3JlZD8KCnRoYW5rcywKCmdy
+ZWcgay1oCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
+dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
+ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
+ZXZlbAo=
