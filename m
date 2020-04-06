@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6C5519FE1A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 21:31:26 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EFEA119FE1D
+	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 21:33:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A1DE28654C;
-	Mon,  6 Apr 2020 19:31:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 14F2F885F6;
+	Mon,  6 Apr 2020 19:33:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1oValwkwusZF; Mon,  6 Apr 2020 19:31:23 +0000 (UTC)
+	with ESMTP id 1iWnJYOI42P8; Mon,  6 Apr 2020 19:33:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9C8348651A;
-	Mon,  6 Apr 2020 19:31:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 05873885E3;
+	Mon,  6 Apr 2020 19:33:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 368BC1BF3D0
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 19:31:21 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F41D41BF3D0
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 19:33:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 31B91878D8
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 19:31:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E15E720505
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 19:33:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S0e6xb4ZX7B5 for <devel@linuxdriverproject.org>;
- Mon,  6 Apr 2020 19:31:20 +0000 (UTC)
+ with ESMTP id uTHs56ewvOxK for <devel@linuxdriverproject.org>;
+ Mon,  6 Apr 2020 19:33:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
  [209.85.221.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 03728810FE
- for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 19:31:19 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id c15so870327wro.11
- for <devel@driverdev.osuosl.org>; Mon, 06 Apr 2020 12:31:19 -0700 (PDT)
+ by silver.osuosl.org (Postfix) with ESMTPS id 847F6204F8
+ for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 19:33:19 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id p10so912221wrt.6
+ for <devel@driverdev.osuosl.org>; Mon, 06 Apr 2020 12:33:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:subject:to:cc:message-id:date:user-agent:mime-version
  :content-language:content-transfer-encoding;
- bh=/kQNHEDh/bkkqbhxX6IPyNiYGrUrfqMnrewiXgIbgrY=;
- b=vOhqM1ENZMUSvoDSwr8IPvnjPcY4EZTZOz2TArZVPVEmZcnFL/6n87z7FZCe9TJoLh
- SktLPibj1oFPhe972CrnBWs36xIUqo+mvJJLR0JTxOcg9H8gHy0g7h377Ur7zyrk1FDa
- nt19Ed0s2wQ2nLKWnqeS2SUOISnzzz3XvuaMWkyWzX+YWcf55v7+wAbgFh4arAV+N/Tl
- 9tKWyzTQIgDFPR5njyDUwjm7EGnQl2Fs4N/xyTgEOJ510BGsHX7ILVMM6FCHcENh+3lH
- QwQ141HaIWKKv5203H3nizG2ltEaT0GKQUS6wr0IxizbQtvm7Fo68hhG37cN57E+5D8q
- ITsw==
+ bh=9iA2Xd8MbX8MeDRK88rJx+tp22J+csXn1fYwh/6669Q=;
+ b=ZKbN0mIcat8AnMyiIpDXBdZfwuSYvXH9wmzYqosDdkyPbuKZ/6q5/ZCsYH0nKkl1OC
+ vUy+C13qFfaU8fkDvZhV99e0mLrKhazn2oDSOZpe1jwR/SSPtVp8p8OzFer7JcNtQv3n
+ AdR27SakYSyi4Yb71lxR7WfwHUvTPc73w0S+vZM3xa1a7L2aDAs5BR/vfMpPp1XoH1U3
+ a9RK9Pkt93iFupvLfsjYGyS1CpeVwjVN4EbBjM8/caKuRVfysFIofZGwuWwHXRec17af
+ EH1os5Dv3AmGyz78YcTTiVdSKqjQfd12IVhb1pIRsI+nER8A2W4Q/0ILPGE//OL5V4PR
+ I2tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=/kQNHEDh/bkkqbhxX6IPyNiYGrUrfqMnrewiXgIbgrY=;
- b=GyN2MccDKlFQFrYBgI4wzdpn/H/0oWT4LJid0ClUWwNgNjt7wpcdDa4W0yLs/2lxUf
- VRUddi10NyDRe+q5SHASc21jW2WTyh2pBl3wK9isK5RAUQKSZ6WiAh0z1B5deO2g+AcK
- dtPYw+OzwpKjTLVzarWyI62fN5Xhp/NeNzdHr5LC/8c4w8A/p07BTvNz1zNyYPwuc+a1
- 2Ua7LnF89SFy74GBvC42OJsBDTCq9yAUOPnNtIjtAA4HxZkz9HhyUeLRljXlJvWwHPyh
- o4sYP+tDbHzDKuxWfqyp2zgk5rNqEsVUt36wu7mQ7j398TCQEinpFLEe5MXkAxpvcUem
- YBmQ==
-X-Gm-Message-State: AGi0PuaQkuMGQC1d8VBtm0136vEi8S1eZJ26+hvbqowVYh6slPy36nsJ
- iG9M5ICmxzqan5PA9ev4YD6Bq3ka
-X-Google-Smtp-Source: APiQypKOr55UPMB28HijqOsuCbtPXwZDrtdv/HyZ+iPOL1T8ySJhHx/bDOsRcklVbp4dpt+RB1hQ1A==
-X-Received: by 2002:adf:e288:: with SMTP id v8mr774995wri.141.1586201478265;
- Mon, 06 Apr 2020 12:31:18 -0700 (PDT)
+ bh=9iA2Xd8MbX8MeDRK88rJx+tp22J+csXn1fYwh/6669Q=;
+ b=b4irpagHGxuoRrc0tgifDWSd3ils7Ma1UkarZUree5VPg3huM+sKfRN9yM1RqUM38o
+ SkyoL43AC1JumSHNPqE9RFniSK0frl4Qwih0jCts/1W7vHay8L9qCJlzQfWEWH3s2iF2
+ yCqVrnQzFYzlJtX8P5jmQZh4Uz4hzwsNDbwB+UuxU3NXpDIUDQUotynsVRIyxnT0tql7
+ 24ltiZToovOVNpz4MskRCFoklMe/+6mNajbdrO9HdenhfUvFOxW1A11k+oKOSJGQe2/b
+ i+FaNRTMU9UtXtTEYbqw7ZYMpmJvcX3m9sMh9bgjT3/b4slq61GUGwoJ92qnFC7/O2Ic
+ F1Fw==
+X-Gm-Message-State: AGi0PuajHpjlttcuvZuoVGlSKh+8lO36bGglH5yaVzkzY0nJuJHxLpd3
+ 6BjzpxWdmnwniZnC3ChAtUI=
+X-Google-Smtp-Source: APiQypL4fvmGlhMGPgPei4Tsk9B1DFmsaSIxmo16sVa47FV5d1fNgoXR/lKeS4OiLgjM0S+0BPqe/w==
+X-Received: by 2002:a5d:4988:: with SMTP id r8mr826012wrq.248.1586201597794;
+ Mon, 06 Apr 2020 12:33:17 -0700 (PDT)
 Received: from [192.168.43.18] (188.29.165.56.threembb.co.uk. [188.29.165.56])
  by smtp.gmail.com with ESMTPSA id
- f20sm648154wmc.35.2020.04.06.12.31.17
+ r5sm675404wmr.15.2020.04.06.12.33.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Apr 2020 12:31:17 -0700 (PDT)
+ Mon, 06 Apr 2020 12:33:17 -0700 (PDT)
 From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH 1/2 v2] staging: vt6556: vnt_rf_setpower convert to use
- ieee80211_channel.
+Subject: [PATCH 2/2 v2] staging: vt6656: rxtx remove rate change and
+ current_rate.
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Message-ID: <9eab9af8-fde9-1dc6-fced-95c7a36ecc01@gmail.com>
-Date: Mon, 6 Apr 2020 20:31:16 +0100
+Message-ID: <3ba896aa-5ab2-affb-9ce5-7df8a9b3190a@gmail.com>
+Date: Mon, 6 Apr 2020 20:33:16 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
@@ -94,217 +94,79 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-ieee80211_channel contains all the necessary information to change
-power according to tx mode required.
+There is no longer any need to change power in vnt_tx_packet.
 
-vnt_rf_setpower is moved and so that vnt_rf_set_txpower the only
-caller becomes static.
+Remove current_rate in vnt_tx_packet and struct vnt_private as
+it is no longer used elsewhere.
 
 Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
 v2
-ARRAY_SIZE(priv->ofdm_pwr_tbl) pointing to wrong array.
+Patch 1 had wrong array.
 
- drivers/staging/vt6656/main_usb.c | 16 ++-----
- drivers/staging/vt6656/rf.c       | 79 +++++++++++++++----------------
- drivers/staging/vt6656/rf.h       |  3 +-
- drivers/staging/vt6656/wcmd.c     |  3 +-
- 4 files changed, 43 insertions(+), 58 deletions(-)
+ drivers/staging/vt6656/device.h |  1 -
+ drivers/staging/vt6656/rxtx.c   | 15 ++++-----------
+ 2 files changed, 4 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index dd89f98cc18c..3c76d3cb5bbe 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -685,15 +685,8 @@ static int vnt_config(struct ieee80211_hw *hw, u32 changed)
- 			priv->bb_type = BB_TYPE_11G;
- 	}
+diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
+index e6ee9411f080..41226cd599c6 100644
+--- a/drivers/staging/vt6656/device.h
++++ b/drivers/staging/vt6656/device.h
+@@ -344,7 +344,6 @@ struct vnt_private {
+ 	u8 ofdm_pwr_tbl[14];
+ 	u8 ofdm_a_pwr_tbl[42];
  
--	if (changed & IEEE80211_CONF_CHANGE_POWER) {
--		if (priv->bb_type == BB_TYPE_11B)
--			priv->current_rate = RATE_1M;
--		else
--			priv->current_rate = RATE_54M;
--
--		vnt_rf_setpower(priv, priv->current_rate,
--				conf->chandef.chan->hw_value);
--	}
-+	if (changed & IEEE80211_CONF_CHANGE_POWER)
-+		vnt_rf_setpower(priv, conf->chandef.chan);
+-	u16 current_rate;
+ 	u16 tx_rate_fb0;
+ 	u16 tx_rate_fb1;
  
- 	return 0;
- }
-@@ -747,9 +740,8 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
- 		vnt_update_pre_ed_threshold(priv, false);
- 	}
+diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
+index 9439d190f431..8363d54cd821 100644
+--- a/drivers/staging/vt6656/rxtx.c
++++ b/drivers/staging/vt6656/rxtx.c
+@@ -547,7 +547,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 	struct vnt_tx_fifo_head *tx_buffer_head;
+ 	struct vnt_usb_send_context *tx_context;
+ 	unsigned long flags;
+-	u16 tx_bytes, tx_header_size, tx_body_size, current_rate, duration_id;
++	u16 tx_bytes, tx_header_size, tx_body_size, duration_id;
+ 	u8 pkt_type;
+ 	bool need_rts = false;
+ 	bool need_mic = false;
+@@ -556,14 +556,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
  
--	if (changed & BSS_CHANGED_TXPOWER)
--		vnt_rf_setpower(priv, priv->current_rate,
--				conf->chandef.chan->hw_value);
-+	if (changed & (BSS_CHANGED_TXPOWER | BSS_CHANGED_BANDWIDTH))
-+		vnt_rf_setpower(priv, conf->chandef.chan);
+ 	rate = ieee80211_get_tx_rate(priv->hw, info);
  
- 	if (changed & BSS_CHANGED_BEACON_ENABLED) {
- 		dev_dbg(&priv->usb->dev,
-diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
-index 4f9aba0f21b0..633e2b9aca7a 100644
---- a/drivers/staging/vt6656/rf.c
-+++ b/drivers/staging/vt6656/rf.c
-@@ -537,42 +537,6 @@ int vnt_rf_write_embedded(struct vnt_private *priv, u32 data)
- 	return true;
- }
- 
--/* Set Tx power by rate and channel number */
--int vnt_rf_setpower(struct vnt_private *priv, u32 rate, u32 channel)
--{
--	u8 power = priv->cck_pwr;
--
--	if (channel == 0)
--		return -EINVAL;
--
--	switch (rate) {
--	case RATE_1M:
--	case RATE_2M:
--	case RATE_5M:
--	case RATE_11M:
--		channel--;
--
--		if (channel < sizeof(priv->cck_pwr_tbl))
--			power = priv->cck_pwr_tbl[channel];
--		break;
--	case RATE_6M:
--	case RATE_9M:
--	case RATE_12M:
--	case RATE_18M:
--	case RATE_24M:
--	case RATE_36M:
--	case RATE_48M:
--	case RATE_54M:
--		if (channel > CB_MAX_CHANNEL_24G)
--			power = priv->ofdm_a_pwr_tbl[channel - 15];
--		else
--			power = priv->ofdm_pwr_tbl[channel - 1];
--		break;
+-	current_rate = rate->hw_value;
+-	if (priv->current_rate != current_rate &&
+-	    !(priv->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)) {
+-		priv->current_rate = current_rate;
+-		vnt_schedule_command(priv, WLAN_CMD_SETPOWER);
 -	}
 -
--	return vnt_rf_set_txpower(priv, power, rate);
--}
--
- static u8 vnt_rf_addpower(struct vnt_private *priv)
- {
- 	s32 rssi = -priv->current_rssi;
-@@ -600,7 +564,8 @@ static u8 vnt_rf_addpower(struct vnt_private *priv)
- }
- 
- /* Set Tx power by power level and rate */
--int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
-+static int vnt_rf_set_txpower(struct vnt_private *priv, u8 power,
-+			      struct ieee80211_channel *ch)
- {
- 	u32 power_setting = 0;
- 	int ret = true;
-@@ -620,7 +585,7 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
- 
- 		ret &= vnt_rf_write_embedded(priv, power_setting);
- 
--		if (rate <= RATE_11M)
-+		if (ch->flags & IEEE80211_CHAN_NO_OFDM)
- 			ret &= vnt_rf_write_embedded(priv, 0x0001b400);
- 		else
- 			ret &= vnt_rf_write_embedded(priv, 0x0005a400);
-@@ -630,7 +595,7 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
- 
- 		ret &= vnt_rf_write_embedded(priv, power_setting);
- 
--		if (rate <= RATE_11M) {
-+		if (ch->flags & IEEE80211_CHAN_NO_OFDM) {
- 			ret &= vnt_rf_write_embedded(priv, 0x040c1400);
- 			ret &= vnt_rf_write_embedded(priv, 0x00299b00);
+-	if (current_rate > RATE_11M) {
++	if (rate->hw_value > RATE_11M) {
+ 		if (info->band == NL80211_BAND_5GHZ) {
+ 			pkt_type = PK_TYPE_11A;
  		} else {
-@@ -640,7 +605,7 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
- 		break;
+@@ -593,7 +586,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 	tx_context->pkt_type = pkt_type;
+ 	tx_context->need_ack = false;
+ 	tx_context->frame_len = skb->len + 4;
+-	tx_context->tx_rate = current_rate;
++	tx_context->tx_rate =  rate->hw_value;
  
- 	case RF_AIROHA7230:
--		if (rate <= RATE_11M)
-+		if (ch->flags & IEEE80211_CHAN_NO_OFDM)
- 			ret &= vnt_rf_write_embedded(priv, 0x111bb900);
- 		else
- 			ret &= vnt_rf_write_embedded(priv, 0x221bb900);
-@@ -670,8 +635,8 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
- 		if (power >= VT3226_PWR_IDX_LEN)
- 			return false;
+ 	spin_unlock_irqrestore(&priv->lock, flags);
  
--		if (rate <= RATE_11M) {
--			u16 hw_value = priv->hw->conf.chandef.chan->hw_value;
-+		if (ch->flags & IEEE80211_CHAN_NO_OFDM) {
-+			u16 hw_value = ch->hw_value;
+@@ -666,7 +659,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 		tx_context->frame_len += tx_key->icv_len;
+ 	}
  
- 			power_setting = ((0x3f - power) << 20) | (0xe07 << 8);
+-	tx_buffer_head->current_rate = cpu_to_le16(current_rate);
++	tx_buffer_head->current_rate = cpu_to_le16(rate->hw_value);
  
-@@ -716,6 +681,36 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
- 	return ret;
- }
- 
-+/* Set Tx power by channel number type */
-+int vnt_rf_setpower(struct vnt_private *priv,
-+		    struct ieee80211_channel *ch)
-+{
-+	u16 channel;
-+	u8 power = priv->cck_pwr;
-+
-+	if (!ch)
-+		return -EINVAL;
-+
-+	/* set channel number to array number */
-+	channel = ch->hw_value - 1;
-+
-+	if (ch->flags & IEEE80211_CHAN_NO_OFDM) {
-+		if (channel < ARRAY_SIZE(priv->cck_pwr_tbl))
-+			power = priv->cck_pwr_tbl[channel];
-+	} else if (ch->band == NL80211_BAND_5GHZ) {
-+		/* remove 14 channels to array size */
-+		channel -= 14;
-+
-+		if (channel < ARRAY_SIZE(priv->ofdm_a_pwr_tbl))
-+			power = priv->ofdm_a_pwr_tbl[channel];
-+	} else {
-+		if (channel < ARRAY_SIZE(priv->ofdm_pwr_tbl))
-+			power = priv->ofdm_pwr_tbl[channel];
-+	}
-+
-+	return vnt_rf_set_txpower(priv, power, ch);
-+}
-+
- /* Convert rssi to dbm */
- void vnt_rf_rssi_to_dbm(struct vnt_private *priv, u8 rssi, long *dbm)
- {
-diff --git a/drivers/staging/vt6656/rf.h b/drivers/staging/vt6656/rf.h
-index 7494546d71b8..493faaf4e2b5 100644
---- a/drivers/staging/vt6656/rf.h
-+++ b/drivers/staging/vt6656/rf.h
-@@ -41,8 +41,7 @@
- #define	VNT_RF_REG_LEN      0x17 /* 24 bit length */
- 
- int vnt_rf_write_embedded(struct vnt_private *priv, u32 data);
--int vnt_rf_setpower(struct vnt_private *priv, u32 rate, u32 channel);
--int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate);
-+int vnt_rf_setpower(struct vnt_private *priv, struct ieee80211_channel *ch);
- void vnt_rf_rssi_to_dbm(struct vnt_private *priv, u8 rssi, long *dbm);
- int vnt_rf_table_download(struct vnt_private *priv);
- 
-diff --git a/drivers/staging/vt6656/wcmd.c b/drivers/staging/vt6656/wcmd.c
-index 2c5250ca2801..0ccc87da394e 100644
---- a/drivers/staging/vt6656/wcmd.c
-+++ b/drivers/staging/vt6656/wcmd.c
-@@ -122,8 +122,7 @@ void vnt_run_command(struct work_struct *work)
- 
- 	case WLAN_CMD_SETPOWER_START:
- 
--		vnt_rf_setpower(priv, priv->current_rate,
--				priv->hw->conf.chandef.chan->hw_value);
-+		vnt_rf_setpower(priv, priv->hw->conf.chandef.chan);
- 
- 		break;
- 
+ 	duration_id = vnt_generate_tx_parameter(tx_context, tx_buffer, &mic_hdr,
+ 						need_mic, need_rts);
 -- 
 2.25.1
 _______________________________________________
