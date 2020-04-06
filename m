@@ -2,91 +2,106 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81E6619F446
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 13:17:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B880019F499
+	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 13:32:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7F3B885FA4;
-	Mon,  6 Apr 2020 11:17:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EB33B85FE6;
+	Mon,  6 Apr 2020 11:32:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cau_YjkR0yhk; Mon,  6 Apr 2020 11:17:41 +0000 (UTC)
+	with ESMTP id 8jSHrWQeaq4s; Mon,  6 Apr 2020 11:32:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7EBEE85E25;
-	Mon,  6 Apr 2020 11:17:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BBAA285F7F;
+	Mon,  6 Apr 2020 11:32:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A90981BF3DA
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 11:17:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9B7461BF3DA
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 11:32:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A5F278746E
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 11:17:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9420D2313D
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 11:32:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AgoE+KsJQDPL for <devel@linuxdriverproject.org>;
- Mon,  6 Apr 2020 11:17:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0734886E9E
- for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 11:17:37 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 036BCs6L171432;
- Mon, 6 Apr 2020 11:17:36 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=t/xaaVqoQ/f/LgZxiyUJNJ/HPdDx97I+V6UPT7T73Zw=;
- b=op7BhCUD4O5Hlxxvd7xIJ4LK49myZgaMiGIEvstZRtuaFWhns33Lx6VwfNORKMzC1v4t
- 490nlGGClpFAFDq64tNUZu7oyuJ6EJHyGkqwzXQ7jtdUCa4cexrDlNvQz9L7o8sLidBM
- FdDPjcIlWDtQSTDZxvm1eofypB0MfSjSrl4KgXKETdCpzgXm0TTOgpf5JvrhdXDfRVLI
- mq2e2UVZCcV1dcTf08AfDfwRsDNCciS9mkYpRiMlWPTv0j/UpWdd1bG3h2o2Q7ooq2GJ
- 8BOjgaoEIwo7n7qGZHUk0srv5Kv3lk65/rCiQr91v7ZRigLiZOJ9ZLSO8dlm7u1+tQit Nw== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 306jvmx43d-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 06 Apr 2020 11:17:36 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 036BCMIt096403;
- Mon, 6 Apr 2020 11:17:35 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 30839prnq8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 06 Apr 2020 11:17:35 +0000
-Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 036BHYXX025088;
- Mon, 6 Apr 2020 11:17:34 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 06 Apr 2020 04:17:33 -0700
-Date: Mon, 6 Apr 2020 14:17:26 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Oscar Carter <oscar.carter@gmx.com>
-Subject: Re: [PATCH 3/3] staging: vt6656: Remove unnecessary local variable
- initialization
-Message-ID: <20200406111726.GF2001@kadam>
-References: <20200404141400.3772-1-oscar.carter@gmx.com>
- <20200404141400.3772-4-oscar.carter@gmx.com>
+ with ESMTP id VDhkCAYEYpXV for <devel@linuxdriverproject.org>;
+ Mon,  6 Apr 2020 11:32:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12on2055.outbound.protection.outlook.com [40.107.243.55])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2AC51230F3
+ for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 11:32:24 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CQv7aJVxoI6LjWYBHMVcVfrO/O6hg2vgVr8IgWcy+m5LOAwGoeRm/SxFe/yUdLJ9k9OrmzESNZQQEgAUVH6a6wvnXjapg2sdywggTYV7Ko4EB3ZV2hJCHwZzUpBEMbBiv3ixfzIQBhYuIsGubU6LW9m+DovRjZl3HTGz1Drd7NaEJgmgCwVFY81nipA3KMqLdkQizLLJ7stnlQf5M94alDIzl7F5bLiFEoT7yE1Va/W34xCV98OeLaB6bYGq3uGq/IpTZSBYucDc2wLehfv/ABPfGXdXHI3a6yzRwsU1fGodGHQ6aRjs4fUyoO5R1No+fmaQog0IA58Nb5U4w87NiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rCfg3DeG9nVcwyxoXOblYQwsAn9E/l2Q6VO1zJZcd4w=;
+ b=Ce2QKLojCSadVJidtt6GyHAZulYQMq2HtyKXuzUQguNad+8lKLavr9dpPyH363VpycAgx3qPRARuZeoPN3xpJUdDgXbNZuNovLnMjWS+YzkFYJd8tC3an8OwgbztkJ7bNiQh9IcYnd5jjavRhnfo7IMAXgAbk5DDaPBu5fbgB3mrcv9RwJWbXOwSgG9UchLTxxsO3YmAdsLuo7+BkZLX9HKonc6IUbmxhzLDOm+QhPPCKb7NmJsoRHGQtXot+apzrQi/5ebL5mLTWWG8FUlwL7F5qynwhH5oCyREfeUccIw40tr2DZtxD+qQ6fRys95EMALnIIYA3DTQhz6ycY6XXQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rCfg3DeG9nVcwyxoXOblYQwsAn9E/l2Q6VO1zJZcd4w=;
+ b=E6AzDXSN93xRlIP4LA8/3AxY34vp60Jsy+xhDPN4dX5ovA4txTy/htLDWscqqKwMRysLugImoWAly5zdSNys/iBKW1vHFC0SzASTG4U5KLMLKomj8eXFxYUovj0dmfweqnaO3t5Ti+p0Ab5oTT3iRJVEutf36AuMF0bE51s4Zts=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=Jerome.Pouiller@silabs.com; 
+Received: from BN6PR11MB4052.namprd11.prod.outlook.com (2603:10b6:405:7a::37)
+ by BN6PR11MB3860.namprd11.prod.outlook.com (2603:10b6:405:77::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2878.15; Mon, 6 Apr
+ 2020 11:18:13 +0000
+Received: from BN6PR11MB4052.namprd11.prod.outlook.com
+ ([fe80::e0af:e9de:ffce:7376]) by BN6PR11MB4052.namprd11.prod.outlook.com
+ ([fe80::e0af:e9de:ffce:7376%3]) with mapi id 15.20.2878.018; Mon, 6 Apr 2020
+ 11:18:13 +0000
+From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+To: devel@driverdev.osuosl.org,
+	linux-wireless@vger.kernel.org
+Subject: [PATCH 00/11] staging: wfx: clean up HIF API
+Date: Mon,  6 Apr 2020 13:17:45 +0200
+Message-Id: <20200406111756.154086-1-Jerome.Pouiller@silabs.com>
+X-Mailer: git-send-email 2.25.1
+X-ClientProxiedBy: DM5PR05CA0010.namprd05.prod.outlook.com
+ (2603:10b6:3:d4::20) To BN6PR11MB4052.namprd11.prod.outlook.com
+ (2603:10b6:405:7a::37)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200404141400.3772-4-oscar.carter@gmx.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9582
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- spamscore=0 malwarescore=0
- mlxscore=0 mlxlogscore=999 bulkscore=0 suspectscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004060098
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9582
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- suspectscore=0
- mlxlogscore=999 mlxscore=0 bulkscore=0 adultscore=0 priorityscore=1501
- lowpriorityscore=0 clxscore=1015 malwarescore=0 impostorscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004060098
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-42.silabs.com (2a01:e35:2435:66a0:544b:f17b:7ae8:fb7) by
+ DM5PR05CA0010.namprd05.prod.outlook.com (2603:10b6:3:d4::20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2900.13 via Frontend Transport; Mon, 6 Apr 2020 11:18:11 +0000
+X-Mailer: git-send-email 2.25.1
+X-Originating-IP: [2a01:e35:2435:66a0:544b:f17b:7ae8:fb7]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: d6e2bc58-1cf5-41e3-71ea-08d7da1c321a
+X-MS-TrafficTypeDiagnostic: BN6PR11MB3860:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BN6PR11MB38602A2E895F8D18385A91A693C20@BN6PR11MB3860.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2276;
+X-Forefront-PRVS: 0365C0E14B
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN6PR11MB4052.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10009020)(396003)(39850400004)(346002)(366004)(136003)(376002)(186003)(16526019)(7696005)(52116002)(36756003)(5660300002)(107886003)(316002)(54906003)(66946007)(66476007)(4326008)(2616005)(66556008)(1076003)(66574012)(81166006)(6666004)(6486002)(8936002)(2906002)(86362001)(81156014)(8676002)(478600001);
+ DIR:OUT; SFP:1101; 
+Received-SPF: None (protection.outlook.com: silabs.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Dnu3Doaw4wceTVYieOvg19ClMhb2sb2P04SepSzpM6CHmtO7O4TbbZMbN1YaiuUgNNZWuQCymHtBfxW9h/zDK4ZTVWvGPD9GL5/wPuXLJE2mqPqeRabNxtkTc+hMdmqpCDKrSTVO+nfNmoQ/SnqYGDiHu+M8beIC48Bss2JOjjjLc+FKEMtFXMTT9ElUEWpv7skkDhNKqlBitkd+pmA+dCBxFtFFvoEOHCU/3F+6G7xz8R+/4U8WWwzSxE3SG41IVAiaU6SSNSAaDvFT+7HkHeObi+au1JyTolBehAZS8HzfhMaDpH3ye5uGPHJ0uiyvU4bXPrdFniAnA2YTglHrdAKfRSA77OU9qL3CKbWXzlolx2q4QNVkf+kBrOB0ngjwk2agd4CcK4zuxVv+WjTxlj7mF7fm51EcJLt69Q9ZxCMuepZ64RusghADRbQ+WrrQ
+X-MS-Exchange-AntiSpam-MessageData: 9fB274sGGN8tVHqcPC25WqntnvTJggXjcNBTYbuL0jqHkhHE9FjQkSrcnUa86890hrkyjvdUlXrrTA6SNlEhZulCv2/GKEVF+83ArLkAJm2rQmyq0dZHPuOvg8vb0vESaH6JL7pAB3+r/FrLU4l9eGDy6y/hWq0RPMkRdlLvQV2r1On898iNfS4ysykj/viAxTBLH5myH0Y4SW1jcTzpuA==
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d6e2bc58-1cf5-41e3-71ea-08d7da1c321a
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Apr 2020 11:18:13.6154 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ptHsPmEyn+PAR5l4M6LbIVnBW7VpKKnYXzvsPO0PR9epHXOGycO4b9ON0Rowb2o9VhAD0NKThkotagaz/jTqiw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB3860
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,20 +114,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Malcolm Priestley <tvboxspy@gmail.com>,
- Forest Bond <forest@alittletooquiet.net>, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-regards,
-dan carpenter
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKSGVs
+bG8gYWxsLAoKVGhpcyBzZXJpZXMgdHJ5IHRvIGNsZWFuIHVwIHRoZSBIYXJkd2FyZSBJbnRlckZh
+Y2UgKEhJRikgQVBJIG9mIHRoZQp3ZnggZHJpdmVyLgoKTm90aWNlIGl0IGludGVuZGVkIHRvIGJl
+IGFwcGxpZWQgb24gdG9wIG9mIFB1bGwtUmVxdWVzdCBuYW1lZAoic3RhZ2luZzogd2Z4OiByZXdv
+cmsgdGhlIFR4IHF1ZXVlIi4KCkrDqXLDtG1lIFBvdWlsbGVyICgxMSk6CiAgc3RhZ2luZzogd2Z4
+OiBkcm9wIHVudXNlZCBXRlhfTElOS19JRF9HQ19USU1FT1VUCiAgc3RhZ2luZzogd2Z4OiByZWxv
+Y2F0ZSBMSU5LX0lEX05PX0FTU09DIGFuZCBNQVhfU1RBX0lOX0FQX01PREUgdG8gaGlmCiAgICBB
+UEkKICBzdGFnaW5nOiB3Zng6IHJlbG9jYXRlIFRYX1JFVFJZX1BPTElDWV9NQVggYW5kIFRYX1JF
+VFJZX1BPTElDWV9JTlZBTElECiAgICB0byBoaWYgQVBJCiAgc3RhZ2luZzogd2Z4OiByZW1vdmUg
+dW51c2VkIGRlZmluaXRpb25zIGZyb20gdGhlIGhpZiBBUEkKICBzdGFnaW5nOiB3Zng6IHJlbW92
+ZSB1c2VsZXNzIGRlZmluZXMKICBzdGFnaW5nOiB3Zng6IGZpeCBlbmRpYW5uZXNzIG9mIGhpZiBB
+UEkKICBzdGFnaW5nOiB3Zng6IGFsaWduIG1lbWJlcnMgZGVjbGFyYXRpb25zIGluIGhpZiBBUEkK
+ICBzdGFnaW5nOiB3Zng6IHBsYWNlIGhpZl90eF9taWIgZnVuY3Rpb25zIGludG8gYSAuYyBmaWxl
+CiAgc3RhZ2luZzogd2Z4OiBhbGxvdyB0byBjb25uZWN0IGFuIElCU1Mgd2l0aCBhbiBleGlzdGlu
+ZyBTU0lECiAgc3RhZ2luZzogd2Z4OiBtYWtlIGhpZl9pZV90YWJsZV9lbnRyeSBjb25zdAogIHN0
+YWdpbmc6IHdmeDogc2VuZCBqdXN0IG5lY2Vzc2FyeSBieXRlcwoKIGRyaXZlcnMvc3RhZ2luZy93
+ZngvTWFrZWZpbGUgICAgICAgICAgfCAgIDEgKwogZHJpdmVycy9zdGFnaW5nL3dmeC9kYXRhX3R4
+LmMgICAgICAgICB8ICAyMCArLQogZHJpdmVycy9zdGFnaW5nL3dmeC9kYXRhX3R4LmggICAgICAg
+ICB8ICAgMiArLQogZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfYXBpX2NtZC5oICAgICB8IDYyNSAr
+KysrKysrKysrKystLS0tLS0tLS0tLS0KIGRyaXZlcnMvc3RhZ2luZy93ZngvaGlmX2FwaV9nZW5l
+cmFsLmggfCA0MjkgKysrKysrKy0tLS0tLS0tLQogZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfYXBp
+X21pYi5oICAgICB8IDY3MSArKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLQogZHJpdmVycy9zdGFn
+aW5nL3dmeC9oaWZfdHguYyAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9zdGFnaW5nL3dmeC9o
+aWZfdHhfbWliLmMgICAgICB8IDM5NyArKysrKysrKysrKysrKysKIGRyaXZlcnMvc3RhZ2luZy93
+ZngvaGlmX3R4X21pYi5oICAgICAgfCA0MzUgKystLS0tLS0tLS0tLS0tLS0KIGRyaXZlcnMvc3Rh
+Z2luZy93Zngva2V5LmMgICAgICAgICAgICAgfCAgIDEgKwogZHJpdmVycy9zdGFnaW5nL3dmeC9t
+YWluLmMgICAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9zdGFnaW5nL3dmeC9xdWV1ZS5oICAg
+ICAgICAgICB8ICAgMyAtCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jICAgICAgICAgICAgIHwg
+ICA1ICstCiAxMyBmaWxlcyBjaGFuZ2VkLCAxMTg1IGluc2VydGlvbnMoKyksIDE0MDggZGVsZXRp
+b25zKC0pCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHhfbWli
+LmMKCi0tIAoyLjI1LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
+dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aXZlcmRldi1kZXZlbAo=
