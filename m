@@ -1,61 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7985819FC27
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 19:58:18 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61A9B19FD71
+	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 20:47:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4012687E9D;
-	Mon,  6 Apr 2020 17:58:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6BF77885A8;
+	Mon,  6 Apr 2020 18:47:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zqZvRcQ5-u8o; Mon,  6 Apr 2020 17:58:15 +0000 (UTC)
+	with ESMTP id NuMW9Jatdpqx; Mon,  6 Apr 2020 18:47:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BBC9887C2E;
-	Mon,  6 Apr 2020 17:58:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D2C4C87582;
+	Mon,  6 Apr 2020 18:47:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 710281BF59C
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 17:58:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 35BD21BF2F2
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 18:47:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6DBF787B08
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 17:58:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 328098855F
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 18:47:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MmbnI0qRthkS for <devel@linuxdriverproject.org>;
- Mon,  6 Apr 2020 17:58:11 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BC39087AB1
- for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 17:58:11 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1730D206F8;
- Mon,  6 Apr 2020 17:58:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586195891;
- bh=e06vrVeML9BgrogDrHrkIp58yEz5FUbz+0h5lORW6os=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=X0Fr7y1LzcIEae6Qsb4GharopeCTFtdrHj4Qn6VPzfRayz6ZNT4l00fWUty2aW0g/
- +ANDIgha7SuFM59OpjHfzpBhpn8VhhGc73P3D5yrkEvpyutNBWwcuRwJ5kTz42fAa1
- 8D2/Kgi9YmHFX4/sFIjHzGQYoAL3lCy5VvBr+64E=
-Date: Mon, 6 Apr 2020 19:58:08 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Oscar Carter <oscar.carter@gmx.com>
-Subject: Re: [PATCH 2/3] staging: vt6656: Use define instead of magic number
- for tx_rate
-Message-ID: <20200406175808.GB167424@kroah.com>
-References: <20200404141400.3772-1-oscar.carter@gmx.com>
- <20200404141400.3772-3-oscar.carter@gmx.com>
- <20200406142212.GA48502@kroah.com> <20200406163835.GB3230@ubuntu>
+ with ESMTP id 2oxfVzw-IVrO for <devel@linuxdriverproject.org>;
+ Mon,  6 Apr 2020 18:47:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3102F88534
+ for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 18:47:44 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id h2so479623wmb.4
+ for <devel@driverdev.osuosl.org>; Mon, 06 Apr 2020 11:47:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=lzcBKkjxp8VNlvoc55S9INhyKVtvaQvjMFisDWaOmFc=;
+ b=o4Zp5hm1A5OMVJwq3HaaoVe/Hp6/rIZDguvsv1FczUTBbCXJ0lLy6SuwpJ2TLBtzcR
+ HWs6DsaynG8OSkjTfL3UrZ8zvPRfoixj6zSoIYVrK9e/SxRYsRv5JrZ7WeMVadTnJ6o0
+ VemPZEYzSu7OAbHvwVycndthAzG3ueht8RBHLvCYF441m6ezQBXbfrEk8CRLoQj7Fk3u
+ KfFZleagosmWEB9x0wPaYeE1/DKNLXirQsDpSBKRO5WgUQMVbiu4VELvVFqn1dOp52cj
+ s5V8ptdyQnT7aG2P20BqkZ51VEBfIi68HpHjEWInTKvxkoVyy2sb+yFyFLoLMrkEb14n
+ mChQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=lzcBKkjxp8VNlvoc55S9INhyKVtvaQvjMFisDWaOmFc=;
+ b=Nfjkj7KP5MQWuAdFWXk9FWZRrP4Ywq3BjjonPuO2gCtvk5ZbbGce53X04PiJAUkUxt
+ ZdbDsOyQYSdurTxd5ksq7hJ+4KDaFfY8H1S5t9ueaVKSR7HMA00q35P8H1XVxS7FdIHF
+ 12aOpNndtwcb7nBmtv7sDp6KrTWHq0NAMv+I+x6IMJFAnkwbN+r3vuI84cQv7eBoQrR8
+ g29DkIeblUlTY/bi8eVmZk0U8BoPlZMCV5Ys2nSrda+dkPOKu6zIlPg516KXQvw4+wwi
+ /wD7GHAwVycC0N6HY3QT14O3/GKisAE6V/W45A+5JsbgEtwlrBRKLbh7QUaleHyda9Ap
+ kGyg==
+X-Gm-Message-State: AGi0PuYu8vmBmoH3HLbJZYSHhqay3HC9nnyka5OweisnVd8xFOpdrhuP
+ EiTW2dAjkBUDMtTKZ90rp/E=
+X-Google-Smtp-Source: APiQypIEskwnx2I6rgoRkJY8/pDXIBx7JaLmEjxKhwWKhLvk5gVbRv+/hqq4h22JUaR5eOA51Cxrog==
+X-Received: by 2002:a7b:c012:: with SMTP id c18mr459851wmb.22.1586198862626;
+ Mon, 06 Apr 2020 11:47:42 -0700 (PDT)
+Received: from [192.168.43.18] (188.29.165.56.threembb.co.uk. [188.29.165.56])
+ by smtp.gmail.com with ESMTPSA id
+ f1sm29161144wrv.37.2020.04.06.11.47.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Apr 2020 11:47:42 -0700 (PDT)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: [PATCH 1/2] staging: vt6556: vnt_rf_setpower convert to use
+ ieee80211_channel.
+Message-ID: <6e9ffe4d-a651-d17e-ebf2-2bd6f766e6dd@gmail.com>
+Date: Mon, 6 Apr 2020 19:47:40 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200406163835.GB3230@ubuntu>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,60 +87,223 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
- linux-kernel@vger.kernel.org, Dan Carpenter <dan.carpenter@oracle.com>,
- Forest Bond <forest@alittletooquiet.net>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Apr 06, 2020 at 06:38:36PM +0200, Oscar Carter wrote:
-> On Mon, Apr 06, 2020 at 04:22:12PM +0200, Greg Kroah-Hartman wrote:
-> > On Sat, Apr 04, 2020 at 04:13:59PM +0200, Oscar Carter wrote:
-> > > Use the define RATE_11M present in the file "device.h" instead of the
-> > > magic number 3. So the code is more clear.
-> > >
-> > > Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
-> > > Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-> > > ---
-> > >  drivers/staging/vt6656/baseband.c | 3 ++-
-> > >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
-> > > index 3e4bd637849a..a785f91c1566 100644
-> > > --- a/drivers/staging/vt6656/baseband.c
-> > > +++ b/drivers/staging/vt6656/baseband.c
-> > > @@ -24,6 +24,7 @@
-> > >
-> > >  #include <linux/bits.h>
-> > >  #include <linux/kernel.h>
-> > > +#include "device.h"
-> > >  #include "mac.h"
-> > >  #include "baseband.h"
-> > >  #include "rf.h"
-> > > @@ -141,7 +142,7 @@ unsigned int vnt_get_frame_time(u8 preamble_type, u8 pkt_type,
-> > >
-> > >  	rate = (unsigned int)vnt_frame_time[tx_rate];
-> > >
-> > > -	if (tx_rate <= 3) {
-> > > +	if (tx_rate <= RATE_11M) {
-> > >  		if (preamble_type == 1)
-> > >  			preamble = 96;
-> > >  		else
-> > > --
-> > > 2.20.1
-> >
-> > This doesn't apply to my tree :(
-> >
-> Sorry, but I don't understand what it means. This meant that I need to rebase
-> this patch against your staging-next branch of your staging tree ?
+ieee80211_channel contains all the necessary information to change
+power according to tx mode required.
 
-Yes, and 3/3 as well, because I dropped the 1/3 patch here.
+vnt_rf_setpower is moved and so that vnt_rf_set_txpower the only
+caller becomes static.
 
-thanks,
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
+---
+ drivers/staging/vt6656/main_usb.c | 16 ++-----
+ drivers/staging/vt6656/rf.c       | 79 +++++++++++++++----------------
+ drivers/staging/vt6656/rf.h       |  3 +-
+ drivers/staging/vt6656/wcmd.c     |  3 +-
+ 4 files changed, 43 insertions(+), 58 deletions(-)
 
-greg k-h
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index dd89f98cc18c..3c76d3cb5bbe 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -685,15 +685,8 @@ static int vnt_config(struct ieee80211_hw *hw, u32 changed)
+ 			priv->bb_type = BB_TYPE_11G;
+ 	}
+ 
+-	if (changed & IEEE80211_CONF_CHANGE_POWER) {
+-		if (priv->bb_type == BB_TYPE_11B)
+-			priv->current_rate = RATE_1M;
+-		else
+-			priv->current_rate = RATE_54M;
+-
+-		vnt_rf_setpower(priv, priv->current_rate,
+-				conf->chandef.chan->hw_value);
+-	}
++	if (changed & IEEE80211_CONF_CHANGE_POWER)
++		vnt_rf_setpower(priv, conf->chandef.chan);
+ 
+ 	return 0;
+ }
+@@ -747,9 +740,8 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
+ 		vnt_update_pre_ed_threshold(priv, false);
+ 	}
+ 
+-	if (changed & BSS_CHANGED_TXPOWER)
+-		vnt_rf_setpower(priv, priv->current_rate,
+-				conf->chandef.chan->hw_value);
++	if (changed & (BSS_CHANGED_TXPOWER | BSS_CHANGED_BANDWIDTH))
++		vnt_rf_setpower(priv, conf->chandef.chan);
+ 
+ 	if (changed & BSS_CHANGED_BEACON_ENABLED) {
+ 		dev_dbg(&priv->usb->dev,
+diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+index 4f9aba0f21b0..633e2b9aca7a 100644
+--- a/drivers/staging/vt6656/rf.c
++++ b/drivers/staging/vt6656/rf.c
+@@ -537,42 +537,6 @@ int vnt_rf_write_embedded(struct vnt_private *priv, u32 data)
+ 	return true;
+ }
+ 
+-/* Set Tx power by rate and channel number */
+-int vnt_rf_setpower(struct vnt_private *priv, u32 rate, u32 channel)
+-{
+-	u8 power = priv->cck_pwr;
+-
+-	if (channel == 0)
+-		return -EINVAL;
+-
+-	switch (rate) {
+-	case RATE_1M:
+-	case RATE_2M:
+-	case RATE_5M:
+-	case RATE_11M:
+-		channel--;
+-
+-		if (channel < sizeof(priv->cck_pwr_tbl))
+-			power = priv->cck_pwr_tbl[channel];
+-		break;
+-	case RATE_6M:
+-	case RATE_9M:
+-	case RATE_12M:
+-	case RATE_18M:
+-	case RATE_24M:
+-	case RATE_36M:
+-	case RATE_48M:
+-	case RATE_54M:
+-		if (channel > CB_MAX_CHANNEL_24G)
+-			power = priv->ofdm_a_pwr_tbl[channel - 15];
+-		else
+-			power = priv->ofdm_pwr_tbl[channel - 1];
+-		break;
+-	}
+-
+-	return vnt_rf_set_txpower(priv, power, rate);
+-}
+-
+ static u8 vnt_rf_addpower(struct vnt_private *priv)
+ {
+ 	s32 rssi = -priv->current_rssi;
+@@ -600,7 +564,8 @@ static u8 vnt_rf_addpower(struct vnt_private *priv)
+ }
+ 
+ /* Set Tx power by power level and rate */
+-int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
++static int vnt_rf_set_txpower(struct vnt_private *priv, u8 power,
++			      struct ieee80211_channel *ch)
+ {
+ 	u32 power_setting = 0;
+ 	int ret = true;
+@@ -620,7 +585,7 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ 
+ 		ret &= vnt_rf_write_embedded(priv, power_setting);
+ 
+-		if (rate <= RATE_11M)
++		if (ch->flags & IEEE80211_CHAN_NO_OFDM)
+ 			ret &= vnt_rf_write_embedded(priv, 0x0001b400);
+ 		else
+ 			ret &= vnt_rf_write_embedded(priv, 0x0005a400);
+@@ -630,7 +595,7 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ 
+ 		ret &= vnt_rf_write_embedded(priv, power_setting);
+ 
+-		if (rate <= RATE_11M) {
++		if (ch->flags & IEEE80211_CHAN_NO_OFDM) {
+ 			ret &= vnt_rf_write_embedded(priv, 0x040c1400);
+ 			ret &= vnt_rf_write_embedded(priv, 0x00299b00);
+ 		} else {
+@@ -640,7 +605,7 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ 		break;
+ 
+ 	case RF_AIROHA7230:
+-		if (rate <= RATE_11M)
++		if (ch->flags & IEEE80211_CHAN_NO_OFDM)
+ 			ret &= vnt_rf_write_embedded(priv, 0x111bb900);
+ 		else
+ 			ret &= vnt_rf_write_embedded(priv, 0x221bb900);
+@@ -670,8 +635,8 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ 		if (power >= VT3226_PWR_IDX_LEN)
+ 			return false;
+ 
+-		if (rate <= RATE_11M) {
+-			u16 hw_value = priv->hw->conf.chandef.chan->hw_value;
++		if (ch->flags & IEEE80211_CHAN_NO_OFDM) {
++			u16 hw_value = ch->hw_value;
+ 
+ 			power_setting = ((0x3f - power) << 20) | (0xe07 << 8);
+ 
+@@ -716,6 +681,36 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ 	return ret;
+ }
+ 
++/* Set Tx power by channel number type */
++int vnt_rf_setpower(struct vnt_private *priv,
++		    struct ieee80211_channel *ch)
++{
++	u16 channel;
++	u8 power = priv->cck_pwr;
++
++	if (!ch)
++		return -EINVAL;
++
++	/* set channel number to array number */
++	channel = ch->hw_value - 1;
++
++	if (ch->flags & IEEE80211_CHAN_NO_OFDM) {
++		if (channel < ARRAY_SIZE(priv->cck_pwr_tbl))
++			power = priv->cck_pwr_tbl[channel];
++	} else if (ch->band == NL80211_BAND_5GHZ) {
++		/* remove 14 channels to array size */
++		channel -= 14;
++
++		if (channel < ARRAY_SIZE(priv->ofdm_a_pwr_tbl))
++			power = priv->ofdm_a_pwr_tbl[channel];
++	} else {
++		if (channel < ARRAY_SIZE(priv->ofdm_a_pwr_tbl))
++			power = priv->ofdm_pwr_tbl[channel];
++	}
++
++	return vnt_rf_set_txpower(priv, power, ch);
++}
++
+ /* Convert rssi to dbm */
+ void vnt_rf_rssi_to_dbm(struct vnt_private *priv, u8 rssi, long *dbm)
+ {
+diff --git a/drivers/staging/vt6656/rf.h b/drivers/staging/vt6656/rf.h
+index 7494546d71b8..493faaf4e2b5 100644
+--- a/drivers/staging/vt6656/rf.h
++++ b/drivers/staging/vt6656/rf.h
+@@ -41,8 +41,7 @@
+ #define	VNT_RF_REG_LEN      0x17 /* 24 bit length */
+ 
+ int vnt_rf_write_embedded(struct vnt_private *priv, u32 data);
+-int vnt_rf_setpower(struct vnt_private *priv, u32 rate, u32 channel);
+-int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate);
++int vnt_rf_setpower(struct vnt_private *priv, struct ieee80211_channel *ch);
+ void vnt_rf_rssi_to_dbm(struct vnt_private *priv, u8 rssi, long *dbm);
+ int vnt_rf_table_download(struct vnt_private *priv);
+ 
+diff --git a/drivers/staging/vt6656/wcmd.c b/drivers/staging/vt6656/wcmd.c
+index 2c5250ca2801..0ccc87da394e 100644
+--- a/drivers/staging/vt6656/wcmd.c
++++ b/drivers/staging/vt6656/wcmd.c
+@@ -122,8 +122,7 @@ void vnt_run_command(struct work_struct *work)
+ 
+ 	case WLAN_CMD_SETPOWER_START:
+ 
+-		vnt_rf_setpower(priv, priv->current_rate,
+-				priv->hw->conf.chandef.chan->hw_value);
++		vnt_rf_setpower(priv, priv->hw->conf.chandef.chan);
+ 
+ 		break;
+ 
+-- 
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
