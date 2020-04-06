@@ -2,91 +2,91 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 271A719F43A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 13:15:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A7EEC19F43F
+	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Apr 2020 13:16:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5E3CD232A7;
-	Mon,  6 Apr 2020 11:15:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EAB3E232A7;
+	Mon,  6 Apr 2020 11:16:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 22Fj+IxKfCp9; Mon,  6 Apr 2020 11:15:40 +0000 (UTC)
+	with ESMTP id BD7RI1WvpDbf; Mon,  6 Apr 2020 11:16:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A1F3C231C8;
-	Mon,  6 Apr 2020 11:15:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5B61D23086;
+	Mon,  6 Apr 2020 11:16:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B9FFB1BF3DA
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 11:15:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7F2B91BF3DA
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 11:16:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B663D85E25
- for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 11:15:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7991685E25
+ for <devel@linuxdriverproject.org>; Mon,  6 Apr 2020 11:16:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x4KdGffbZSbd for <devel@linuxdriverproject.org>;
- Mon,  6 Apr 2020 11:15:35 +0000 (UTC)
+ with ESMTP id caTsZpAxe3p8 for <devel@linuxdriverproject.org>;
+ Mon,  6 Apr 2020 11:16:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EECA985E08
- for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 11:15:34 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 036BCt5u171444;
- Mon, 6 Apr 2020 11:15:33 GMT
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E8E6085E08
+ for <devel@driverdev.osuosl.org>; Mon,  6 Apr 2020 11:16:34 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 036BEsm1027462;
+ Mon, 6 Apr 2020 11:16:32 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : references : mime-version : content-type :
  in-reply-to; s=corp-2020-01-29;
- bh=QVjxrJ8QSz+DelTGjFdQ/F/1RkfZlL9u7ceZFM/P5eE=;
- b=EMJfk10GM9MpU7Co0nc1cEz9LCFsf3eR9nuSc8gdbobAj97/byE2iB0ItD7qxR/mSzCB
- dwLYc2xB5yguezCQzpBJEFU3tu8quCpKGQcwrVmoW+gYPz7T8oh8tdzXipcNhR92nQf2
- 2ZfrPoGQ72jz0SPY6nwoyVAFJaE85E3ssdbU5d5ZvAxCoo/X6fC4/jWJNaa/S4TdCHZe
- TDp2zbp0KMevFd8Wk1OcV960UjUOe7JHF7nCCaSklX+3EE0j91WNT97VP/PKyPKB8YQm
- XNO1Ag6QAoxzq5gQsCmZwR3Xm1e2SqcIogaKiwDs3YD2bjgqPhr4bvf7e58BEyKKwEEL CA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 306jvmx3uk-1
+ bh=ilwv4Ed7O2Ujkx8B7MXNeINOP9n9d6qmP9wV8mhqvWc=;
+ b=RHXDjsof0ah063H+WqxSHhFQ++LnlaPENIAHsRn/5jOagJC9ZRLk6kyHxScqqr9Iud0p
+ Z2DAzrF4US94qt5TUAeO6EPJisUALt/y5Bhhd1OgG29yxMptCzJC8wNIn3RrjpGLq1ek
+ KsgQlQGJDa17WPyUNr8mcr+WESSeSx9MkcUCRkh34nlrUHAgXK2Cr7qkmd5FYc+xwdiP
+ WTJBRs2VCxVbkmFlCvYbE1t8NOFLP8xt6PEA6RKwcAIJqYoTBzmP7SvzTrWqkOOgVkh1
+ Q8m3XL+w1k64UxbCO586kPRAUgLVGH+vaeENDnXdKipfAqW1TCpWVIUL1vkB33N39W+A cQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 306j6m66d0-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 06 Apr 2020 11:15:32 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 036BCaZl176512;
- Mon, 6 Apr 2020 11:13:32 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 3073spqqer-1
+ Mon, 06 Apr 2020 11:16:32 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 036BDDVn161280;
+ Mon, 6 Apr 2020 11:16:32 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3030.oracle.com with ESMTP id 3073qcu8s0-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 06 Apr 2020 11:13:32 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 036BDUxr015538;
- Mon, 6 Apr 2020 11:13:31 GMT
+ Mon, 06 Apr 2020 11:16:32 +0000
+Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 036BGTxJ017931;
+ Mon, 6 Apr 2020 11:16:29 GMT
 Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 06 Apr 2020 04:13:30 -0700
-Date: Mon, 6 Apr 2020 14:13:23 +0300
+ with ESMTP ; Mon, 06 Apr 2020 04:16:29 -0700
+Date: Mon, 6 Apr 2020 14:16:22 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
 To: Oscar Carter <oscar.carter@gmx.com>
-Subject: Re: [PATCH 1/3] staging: vt6656: Use ARRAY_SIZE instead of define
- RATE_54M
-Message-ID: <20200406111323.GD2001@kadam>
+Subject: Re: [PATCH 2/3] staging: vt6656: Use define instead of magic number
+ for tx_rate
+Message-ID: <20200406111622.GE2001@kadam>
 References: <20200404141400.3772-1-oscar.carter@gmx.com>
- <20200404141400.3772-2-oscar.carter@gmx.com>
+ <20200404141400.3772-3-oscar.carter@gmx.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200404141400.3772-2-oscar.carter@gmx.com>
+In-Reply-To: <20200404141400.3772-3-oscar.carter@gmx.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9582
  signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- phishscore=0 spamscore=0
- malwarescore=0 suspectscore=0 adultscore=0 bulkscore=0 mlxlogscore=792
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ mlxscore=0 mlxlogscore=999
+ spamscore=0 bulkscore=0 adultscore=0 malwarescore=0 suspectscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
  definitions=main-2004060098
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9582
  signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- suspectscore=0
- mlxlogscore=853 mlxscore=0 bulkscore=0 adultscore=0 priorityscore=1501
- lowpriorityscore=0 clxscore=1015 malwarescore=0 impostorscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004060098
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxlogscore=999 spamscore=0
+ priorityscore=1501 suspectscore=0 lowpriorityscore=0 malwarescore=0
+ impostorscore=0 mlxscore=0 phishscore=0 adultscore=0 clxscore=1015
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004060098
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,17 +107,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Apr 04, 2020 at 04:13:58PM +0200, Oscar Carter wrote:
-> Use ARRAY_SIZE to replace the define RATE_54M so we will never have a
-> mismatch. In this way, avoid the possibility of a buffer overflow if
-> this define is changed in the future to a greater value.
+On Sat, Apr 04, 2020 at 04:13:59PM +0200, Oscar Carter wrote:
+> Use the define RATE_11M present in the file "device.h" instead of the
+> magic number 3. So the code is more clear.
 > 
+> Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+> ---
+>  drivers/staging/vt6656/baseband.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+> index 3e4bd637849a..a785f91c1566 100644
+> --- a/drivers/staging/vt6656/baseband.c
+> +++ b/drivers/staging/vt6656/baseband.c
+> @@ -24,6 +24,7 @@
+> 
+>  #include <linux/bits.h>
+>  #include <linux/kernel.h>
+> +#include "device.h"
+>  #include "mac.h"
+>  #include "baseband.h"
+>  #include "rf.h"
+> @@ -141,7 +142,7 @@ unsigned int vnt_get_frame_time(u8 preamble_type, u8 pkt_type,
+> 
+>  	rate = (unsigned int)vnt_frame_time[tx_rate];
+> 
+> -	if (tx_rate <= 3) {
+> +	if (tx_rate <= RATE_11M) {
 
-Future proofing is not really a valid reason to change this.  We have to
-assume that future programmers are not idiots.
+This is nice.  And if we don't apply patch 1 then it's even nicer
+because then "tx_rate" is treated consistently.
 
-The only valid reason to do this is readability, but I'm not convinced
-the new version is more readable.
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 
 regards,
 dan carpenter
