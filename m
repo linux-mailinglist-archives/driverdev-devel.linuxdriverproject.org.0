@@ -2,115 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A30501A1120
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Apr 2020 18:21:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 503531A1167
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Apr 2020 18:31:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8580386D05;
-	Tue,  7 Apr 2020 16:21:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C8BA87196;
+	Tue,  7 Apr 2020 16:31:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B20KdbzME3D2; Tue,  7 Apr 2020 16:21:12 +0000 (UTC)
+	with ESMTP id rrpB-DA3jNup; Tue,  7 Apr 2020 16:31:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 74C2486B11;
-	Tue,  7 Apr 2020 16:21:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2CA3E86E6A;
+	Tue,  7 Apr 2020 16:31:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B0EF91BF47F
- for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 16:21:09 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C191C1BF47F
+ for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 16:31:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AC45385778
- for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 16:21:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BDE3987C3F
+ for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 16:31:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XOKnAxEfFyLJ for <devel@linuxdriverproject.org>;
- Tue,  7 Apr 2020 16:21:06 +0000 (UTC)
+ with ESMTP id MgyKSiMNBfb2 for <devel@linuxdriverproject.org>;
+ Tue,  7 Apr 2020 16:31:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
- [213.167.242.64])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B856785775
- for <devel@driverdev.osuosl.org>; Tue,  7 Apr 2020 16:21:06 +0000 (UTC)
-Received: from [192.168.0.20]
- (cpc89242-aztw30-2-0-cust488.18-1.cable.virginm.net [86.31.129.233])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id ECAE659E;
- Tue,  7 Apr 2020 18:21:02 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1586276463;
- bh=9k/b210bXaKEO0jP41fWojcwSZNdDKVOFMT4jx7nUwQ=;
- h=Reply-To:Subject:To:References:From:Date:In-Reply-To:From;
- b=qbnRb6pYBIZS7TlG/84hivA/od637j1PGl9FswDR3DIvgKuIC60YeCh3IjKqEIeJc
- y1olhG9pByPV/uac90EJnYtDfaSGqs+3K0wK8N0ag94KRilmfeXGquR8GFO0vhdRXu
- 6yPVNVvS4IhzGy3eExXFp109ws0f3MrD/R7b4kAY=
-Subject: Re: [PATCH v5 4/9] media: adv748x: add definitions for audio output
- related registers
-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- devel@driverdev.osuosl.org, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org
-References: <cover.1585852001.git.alexander.riesen@cetitec.com>
- <26573ecdb48aa816f802b9d8bbe5f74157248021.1585852001.git.alexander.riesen@cetitec.com>
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=kieran.bingham@ideasonboard.com; keydata=
- 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
- WZw01QYHU/GUV/zHJSFk
-Organization: Ideas on Board
-Message-ID: <a0ff0a59-bd6e-044b-5669-679126c23323@ideasonboard.com>
-Date: Tue, 7 Apr 2020 17:21:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.1
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D90AB87C20
+ for <devel@driverdev.osuosl.org>; Tue,  7 Apr 2020 16:31:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1586277031;
+ bh=dRrnNHMV0G1JWqD9csNXwBisLe5gckVpiKr95ecTaME=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=A2xmSSgoRNLUHu1/Szg6r1vDXUsZTOb+KG/SzV/HDceLZWBO/U+Oj6HDrV1WnDhko
+ pZONpBSR2un/s1WzpCBwdlNsEXB1ArF8I4rMsRAUI4I2meaksyoywhLJQwfZtLVpft
+ JZLwizq6DZjy+zoHK0ZZayf0QKAisQygb+nN8OGQ=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
+ (mrgmx004 [212.227.17.184]) with ESMTPSA (Nemesis) id
+ 1MxlzI-1j5qfp01K2-00zFIB; Tue, 07 Apr 2020 18:30:31 +0200
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2 0/2] staging: vt6656: Cleanup of the vnt_get_frame_time
+ function
+Date: Tue,  7 Apr 2020 18:29:57 +0200
+Message-Id: <20200407162959.7318-1-oscar.carter@gmx.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <26573ecdb48aa816f802b9d8bbe5f74157248021.1585852001.git.alexander.riesen@cetitec.com>
-Content-Language: en-GB
+X-Provags-ID: V03:K1:NC+4dIil97qHJle9P/jL4lfVPLU6zXIGv3DcNsA37CN31QtovPX
+ g7fC2WiIKUbfZfLe+tWJ81AyrwAkQRoJb1waEYYfBFIGlt01IJeZLY8c6h2SuLhTXyoOqCu
+ QdbyepCYd+xIjSrQABk1eOP7vfnjvOujorDEly3sdLmenh1JbXdWPDQ5TadppU4ww9j7Msd
+ MyGcNYOv90QOACHIxHshw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:mGXCBEHfOME=:awlMunGY2CwfFgGND6vS6a
+ Sj8Eg86ye8tBzkbBpLedSEy1NZP08VL0lFBpCa9LyqtbFy3H2M0PnzB4r+i6wI4xEHGeiuh4v
+ RfoOegHBOARWSVd9hw7MyTKTj3GvG47PjLtiExj8EQ5P8GwIR9byBlZmPUdDKTnqa9osGv0UQ
+ oI67n5/JuTw9UlvLW9NK0B1TxHZcX+0I51Oa0N+1InDVzQikHOu5+MwiKl73skTMpPMBGSEbh
+ 3SsiOuM1W7lhLe9gUA0codB4JVdNT873A8IjkjJ6ufdVjEhF2GVzZspLfUXmKKs732+O5PD/x
+ 3NZKDoT9AsuZtQWwxfhiBYYKFq29csza+BnG2ASLImn0U2N/tIpxVSPSmAPcnQ4vnGXHbtFBj
+ 6Hm1kGn0iSs2jcEzFdL/diJenSzPN+Y4s67/gIHsnSeiMBvTyfYtMSryl5wJhJIp5BaySAvfm
+ nY3KgGlSq9vUGjFBv2ZZVTJ+uHYIfHtQgLpvHqroM4ldgEMDd3m2q7iCnVI5xQvK+U0HVnj8h
+ 724JzXWiYdSBPxIzq+hMCjOl+mut7n7TQluS35+jH4b3QFJj8W5q6KsmIpVAVbv17A2bTGYUF
+ xGDIfB+Z0pQ9jg8n6FtOTY5QTwu2IqMrNGbcypYRCP1GTEn367P8TAi54xgUBYo/lhsdoACGw
+ fIqodTTbCTmq5kfTN+c+tnJVd0rD+T8tTha3Ps2V77wCNaN1lJSUXSpMY0vvZd7f1RvY/a8x8
+ 1TBRgiDjkmRQLLntOmfZCIflAbNgWVtyIbk+TCUBtWjuNVhzj8h5rMzlXWQi4tGKV0/55mLfP
+ 9dw6xFD1LA96LHPkW7QvC/Th0K+Yn55L7lqAj3iCiFDzFKfCXhJTCZTpbmRXPuSn7FeLv2a6w
+ yPe8fZH5uyh9gA/86Vd8M1xtCEYlo7237h90vznZNdLIZZwRjpquvf4N48SIuZvjzLCPTZ4FE
+ 6JaJCD5dY38FvtNSzn7B9YvEDVxJ4PwM4MMYsK3CYo5kdlbWVI+dmHoEXXqL3pInTywrj3YXJ
+ M8OJ3cnxShFT0MOmUYVHt0x2hTM3B1NHHIoujU96DMZBlUMj0Px2tZhnRHEP3UnqWSZpxwy15
+ 5yIdaDXzpAkwJxAx0UMktmwtMGoAxgx9M2rPOo4WCHlLe6xj8hmO+3XAgZ5dUwo8ZDW0dypsb
+ bUEcsI/EIM0NQIKUoC7yAkekUICa6f6I00PI/Pm0r7iu5N7aBWwS9rPIO6u6tcbjOyBUJQDn7
+ kQ9GDukuzpk4ptoAs
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,151 +86,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: kieran.bingham@ideasonboard.com
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alex,
+This patch series makes a cleanup of the vnt_get_frame_time function.
 
-On 02/04/2020 19:34, Alex Riesen wrote:
-> Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
-> ---
->  drivers/media/i2c/adv748x/adv748x.h | 32 +++++++++++++++++++++++++++++
->  1 file changed, 32 insertions(+)
-> 
-> diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
-> index 0a9d78c2870b..1a1ea70086c6 100644
-> --- a/drivers/media/i2c/adv748x/adv748x.h
-> +++ b/drivers/media/i2c/adv748x/adv748x.h
-> @@ -226,6 +226,11 @@ struct adv748x_state {
->  
->  #define ADV748X_IO_VID_STD		0x05
->  
-> +#define ADV748X_IO_PAD_CONTROLS		0x0e
-> +#define ADV748X_IO_PAD_CONTROLS_TRI_AUD	BIT(5)
-> +#define ADV748X_IO_PAD_CONTROLS_PDN_AUD	BIT(1)
-> +#define ADV748X_IO_PAD_CONTROLS1	0x1d
+The first patch makes use of the define RATE_11M instead of a magic
+number. The second patch remove unnecessary local variable initialization.
 
-What is CONTROLS1 (1d) referenced from here?
+Changelog v1 -> v2
+- Not use the ARRAY_SIZE macro to compare against the tx_rate variable.
 
-There's no 'field' matching for this register, and the 'bits' (0, 2, 3,
-4) correspond to "pdn_spi, pdn_pix, '-', tri_spi"
+Oscar Carter (2):
+  staging: vt6656: Use define instead of magic number for tx_rate
+  staging: vt6656: Remove unnecessary local variable initialization
 
-Perhaps we need to define those bit fields accordingly and reference
-them where they get used directly?
+ drivers/staging/vt6656/baseband.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Perhaps calling bit 3 as:
- #define ADV748X_IO_PAD_CONTROLS_BIT_3	BIT(3)
-
-Or
- #define ADV748X_IO_PAD_CONTROLS_RESVD	BIT(3)
-
-(Unless you have documentation that better describes it?)
-
-
-> +
->  #define ADV748X_IO_10			0x10	/* io_reg_10 */
->  #define ADV748X_IO_10_CSI4_EN		BIT(7)
->  #define ADV748X_IO_10_CSI1_EN		BIT(6)
-> @@ -248,7 +253,21 @@ struct adv748x_state {
->  #define ADV748X_IO_REG_FF		0xff
->  #define ADV748X_IO_REG_FF_MAIN_RESET	0xff
->  
-> +/* DPLL Map */
-> +#define ADV748X_DPLL_MCLK_FS		0xb5
-> +#define ADV748X_DPLL_MCLK_FS_N_MASK	GENMASK(2, 0)
-> +
->  /* HDMI RX Map */
-> +#define ADV748X_HDMI_I2S		0x03	/* I2S mode and width */
-
-Looks like a more appropriate name than the datasheets
-"hdmi_register_03h" :-D
-
-
-> +#define ADV748X_HDMI_I2SBITWIDTH_MASK	GENMASK(4, 0)
-> +#define ADV748X_HDMI_I2SOUTMODE_SHIFT	5
-> +#define ADV748X_HDMI_I2SOUTMODE_MASK	\
-> +	GENMASK(6, ADV748X_HDMI_I2SOUTMODE_SHIFT)
-
-I'd be very tempted to ignore the 80char limit here and put that on the
-line above ... or find a way to remove the 1 character...
-
-In fact, given the entry there - how about just leaving this as:
-
-#define ADV748X_HDMI_I2SOUTMODE_MASK	GENMASK(6, 5)
-
-
-> +#define ADV748X_I2SOUTMODE_I2S 0
-> +#define ADV748X_I2SOUTMODE_RIGHT_J 1
-> +#define ADV748X_I2SOUTMODE_LEFT_J 2
-> +#define ADV748X_I2SOUTMODE_SPDIF 3
-
-Can we align these value in the column with the other values?
-
-And as much as I hate long define names, it seems a bit odd that these
-suddenly lack the HDMI_ part of the define prefix...
-
-Should we either remove the HDMI_ from
- ADV748X_HDMI_I2SBITWIDTH_MASK
- ADV748X_HDMI_I2SOUTMODE_SHIFT
- ADV748X_HDMI_I2SOUTMODE_MASK
-
-or add it to
- ADV748X_I2SOUTMODE_I2S
- ADV748X_I2SOUTMODE_RIGHT_J
- ADV748X_I2SOUTMODE_LEFT_J
- ADV748X_I2SOUTMODE_SPDIF
-
-?
-
-> +
->  #define ADV748X_HDMI_LW1		0x07	/* line width_1 */
->  #define ADV748X_HDMI_LW1_VERT_FILTER	BIT(7)
->  #define ADV748X_HDMI_LW1_DE_REGEN	BIT(5)
-> @@ -260,6 +279,16 @@ struct adv748x_state {
->  #define ADV748X_HDMI_F1H1		0x0b	/* field1 height_1 */
->  #define ADV748X_HDMI_F1H1_INTERLACED	BIT(5)
->  
-> +#define ADV748X_HDMI_MUTE_CTRL		0x1a
-> +#define ADV748X_HDMI_MUTE_CTRL_MUTE_AUDIO BIT(4)
-> +#define ADV748X_HDMI_MUTE_CTRL_WAIT_UNMUTE_MASK	GENMASK(3, 1)
-> +#define ADV748X_HDMI_MUTE_CTRL_NOT_AUTO_UNMUTE	BIT(0)
-> +
-> +#define ADV748X_HDMI_AUDIO_MUTE_SPEED	0x0f
-
-Can we keep the register definitions in address order please?
-
-> +#define ADV748X_HDMI_AUDIO_MUTE_SPEED_MASK	GENMASK(4, 0)
-> +#define ADV748X_MAN_AUDIO_DL_BYPASS BIT(7)
-> +#define ADV748X_AUDIO_DELAY_LINE_BYPASS BIT(6)
-
-Those bits do not describe the register they are in, not sure how to
-address that without exceptionally long names though.. :-(
-
-So perhaps how you've got them might be the best option...
-
-> +
->  #define ADV748X_HDMI_HFRONT_PORCH	0x20	/* hsync_front_porch_1 */
->  #define ADV748X_HDMI_HFRONT_PORCH_MASK	0x1fff
->  
-> @@ -281,6 +310,9 @@ struct adv748x_state {
->  #define ADV748X_HDMI_TMDS_1		0x51	/* hdmi_reg_51 */
->  #define ADV748X_HDMI_TMDS_2		0x52	/* hdmi_reg_52 */
->  
-> +#define ADV748X_HDMI_REG_6D		0x6d	/* hdmi_reg_6d */
-> +#define ADV748X_I2S_TDM_MODE_ENABLE BIT(7)
-> +
->  /* HDMI RX Repeater Map */
->  #define ADV748X_REPEATER_EDID_SZ	0x70	/* primary_edid_size */
->  #define ADV748X_REPEATER_EDID_SZ_SHIFT	4
-> 
-
--- 
-Regards
 --
-Kieran
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
