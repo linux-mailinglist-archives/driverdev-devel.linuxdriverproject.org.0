@@ -1,91 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86A661A0EF8
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Apr 2020 16:16:36 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8010987D7C;
-	Tue,  7 Apr 2020 14:16:33 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eM84skLktX2n; Tue,  7 Apr 2020 14:16:33 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E948287D33;
-	Tue,  7 Apr 2020 14:16:32 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5CBCD1BF866
- for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 14:16:31 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 868D51A1030
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Apr 2020 17:28:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 58F9086A54
- for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 14:16:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 01B6181FEB;
+	Tue,  7 Apr 2020 15:28:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id W_BcZIVkC-dW; Tue,  7 Apr 2020 15:28:49 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 98A6681E2E;
+	Tue,  7 Apr 2020 15:28:48 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 64A961BF2C7
+ for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 15:28:46 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 5CECF20467
+ for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 15:28:46 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FDruvp4LCGWF for <devel@linuxdriverproject.org>;
- Tue,  7 Apr 2020 14:16:30 +0000 (UTC)
+ with ESMTP id wFl2iZKpM1Wz for <devel@linuxdriverproject.org>;
+ Tue,  7 Apr 2020 15:28:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9E87586A51
- for <devel@driverdev.osuosl.org>; Tue,  7 Apr 2020 14:16:30 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 037ED3vM172731;
- Tue, 7 Apr 2020 14:16:29 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- content-transfer-encoding : in-reply-to; s=corp-2020-01-29;
- bh=yK09YV7sHccZ+in/N/EnR8J9sdEjaYyJawI3sE50HS8=;
- b=Eqs64c8kq+8i/FiSWw/q+MCzbqzmXi52Nmfj3oTE7D9H7jPPRxsvTmN53Px4uiEdTG/Y
- EZT1ZMQNhAANBVqumbdqC0fYBs+NnI3MesiDvtQeWK/HJueP3dwK53jfA5C7bo1sDFXd
- oOznTTn2BzQLt4XKgtW3grdsq2lfrKnJcGpsLL6bR9bMTQdlfuMo7LQF0EhvqVj5IFdJ
- TJsFNLRe5tkWvoEsVPFZbO0bWbRSsBJyAaTof2LYyY8yeCWcxLOnzL4K0Zr2tOPQ10PU
- UTBczpNo3Bdm3jEoffqcCjqkD/27DifD4NM4vvchNzowuWqHSqlgTCmLP/OiQdnpnfc8 Lg== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 306jvn570u-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 07 Apr 2020 14:16:29 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 037ECTPD066162;
- Tue, 7 Apr 2020 14:16:29 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 30839tfuee-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 07 Apr 2020 14:16:29 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 037EGQHo007736;
- Tue, 7 Apr 2020 14:16:26 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 07 Apr 2020 07:16:25 -0700
-Date: Tue, 7 Apr 2020 17:16:16 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Wang Hai <wanghai38@huawei.com>
-Subject: Re: [PATCH] Staging: rtl8192e: remove set but not used variable
- 'tmpRegC'
-Message-ID: <20200407141616.GL2001@kadam>
-References: <1586262964-4582-1-git-send-email-wanghai38@huawei.com>
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
+ by silver.osuosl.org (Postfix) with ESMTPS id BE66320035
+ for <devel@driverdev.osuosl.org>; Tue,  7 Apr 2020 15:28:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1586273312;
+ bh=PW9nWiKEd4LakOhfHv+P2aNfB5cbJPHqrZElCVNMsHI=;
+ h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=kaGPRZ5Pb5Jl4JT5OHwQs9zQoba7YCf9yp6aQmBYtk79E+YnZgZlQAlthQA3XtJ2L
+ HdmIw0jBk6F6Y3ubpUOwQNVxUX2FM6B+LZzlhfWFn7nbrEyfod6zD2bWnvjvuaQ9gI
+ eFJH0S6p0pa9HjbYHmOsercsWlZiqih1E0YeN5ig=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx005
+ [212.227.17.184]) with ESMTPSA (Nemesis) id 1MTABZ-1jjrDk4Al5-00UeuO; Tue, 07
+ Apr 2020 17:28:32 +0200
+Date: Tue, 7 Apr 2020 17:28:19 +0200
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 2/3] staging: vt6656: Use define instead of magic number
+ for tx_rate
+Message-ID: <20200407152819.GA3495@ubuntu>
+References: <20200404141400.3772-1-oscar.carter@gmx.com>
+ <20200404141400.3772-3-oscar.carter@gmx.com>
+ <20200406142212.GA48502@kroah.com> <20200406163835.GB3230@ubuntu>
+ <20200406175808.GB167424@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1586262964-4582-1-git-send-email-wanghai38@huawei.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9583
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- spamscore=0 malwarescore=0
- mlxscore=0 mlxlogscore=999 bulkscore=0 suspectscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004070124
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9583
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- suspectscore=0
- mlxlogscore=999 mlxscore=0 bulkscore=0 adultscore=0 priorityscore=1501
- lowpriorityscore=0 clxscore=1011 malwarescore=0 impostorscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004070124
+In-Reply-To: <20200406175808.GB167424@kroah.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Provags-ID: V03:K1:/PHq5dWE5ZsCFqBfzBcgj4+7MRSAkm+q4J6GW5SBYhn4bC2tRUr
+ POqW/pDtJ5STZOQVSpsI4KgnQymPOJTcTtWLXbB0E6PKgEcXdfXNnVNvoS4M+Ne9Soll92U
+ grmm61i5EUQLs1Lj7oiPngN/oNHNjJQ7+1mJftE9J1xZbo2+/xACpfonCFMyTE45R83bewl
+ 3ZielW7WQjJjdjDyQ3ggw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:KWHlGHO0NxA=:DwVW0Dc6tAB3N55mcpQllp
+ F5GlXjvXA1wcDtMZDMJdUaq/sLx8BS4/HVf9V+R6VM9sS+us9fHmDvemRcfcxCXyn3qGk+jVK
+ KSl7QA0ZAeiy9xOV4uhSAzR8VYFlXzHG7UExOJfvN5vpGk0199TFVEWAhZ1IhZ07FhfZ4kqKm
+ ku/HLJavaPf3z3zmFMIQVze6mkER8OEOq1tYC544T7yOkqT4Fv+orQo3ZtodSeZYkWoJagZhA
+ +2g0aEGz+sTAANLI/jUkK6eclZFwQY44b/AhtMdV+lLjmPShUD+XNs5KYDuY/V2ULGrM1QK56
+ B6lw9bAzme6aMzscKkMddf0hCdBaMGo/t6XEFn4e9LOSeDcAzVgOl/nyaYwlB1DYlbXZzk0SS
+ AmCt5EkJWOsYfgNHKpGKuT1h+3Nu0S2rxreCVD2m+Cx7RsBA8v1lCL3nY7fMhtoEVB1ve6hbh
+ lI1ZeRstR/ZSBHFhmLoOQs6M8DD+c279aLq+gV+MZCaZH/XSQ6+HztSrBEiHsP/DbUet0G6ne
+ oxpBmuQGi55RcAvgUEcXbGVxGvtJ+YQUvX+TOtq2hDG+WsEz7vh3DCV3mMgzrXtHd0xWakvxA
+ 53HOL8FlbSekUWKTv1cva42IZdz+8fKy7MNZBBN7UEJTxDiMuGok4sbIGd39sICFdGLnoT2m4
+ 9yJs/jU44IM5r6a8ULy5qd1c3RzKkUuUcUnZUIM5LlR72nQ+qR+n27NiKDfOEav3Gt9G0RRm4
+ VtuPhaYOB6TCeDnDYX8DeIwv1TZoPbTIGdu/DuQcn4OshjY0h+SrSVH2pNgI6RSAUJTPf22cC
+ 3CddTH9/ZR3jpnbcYnHQ537OA+w4sI/2/Zmw8kjloQLktLuM+5mEkHPDGCMk81DTRNaIWi2Ka
+ BG3XjWz2lwBiDsdCRzWn6yUT58pzc6NanEbLZZVH+bFaG7wbp0sZt/wcIT0ZhgNqYxrShSkHt
+ MCm6uOXThcU3oSDKz5YKD2h35t2svCDzJv/y96iy34z+fThIRAXlN5XChLIKtP6JlVDawb66C
+ +DMvWuC32WXYV1IwgTvIWT6g60e7v706/5vAO7mwGb/s9H+9PgdOfQMohzcnYBOhUFbQnu1C9
+ 7n5XDxezRjKQwvhcCtb/h8QPlEkk0wFKboXeF2f0Y0xOQxcIBbJjjgsLtD8mknipPCY8fHr+6
+ J/7FDGzqoz5O8OjX3RtUg/LOPEbAz4CvH13sm/Gz+MQs5/uf9mO/gW0Q4hGhIt1389wuPoP/C
+ GOjS9OeeN30dPiWbR
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,42 +91,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, robsonde@gmail.com, puranjay12@gmail.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- zhengbin13@huawei.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
+ Forest Bond <forest@alittletooquiet.net>,
+ Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gVHVlLCBBcHIgMDcsIDIwMjAgYXQgMDg6MzY6MDRBTSAtMDQwMCwgV2FuZyBIYWkgd3JvdGU6
-Cj4gRml4ZXMgZ2NjICctV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlJyB3YXJuaW5nOgo+IAo+IGRy
-aXZlcnMvc3RhZ2luZy9ydGw4MTkyZS9ydGw4MTkyZS9yODE5MkVfZGV2LmM6IEluIGZ1bmN0aW9u
-IHJ0bDkyZV9zdGFydF9hZGFwdGVyOgo+IGRyaXZlcnMvc3RhZ2luZy9ydGw4MTkyZS9ydGw4MTky
-ZS9yODE5MkVfZGV2LmM6NjkzOjE1OiB3YXJuaW5nOiB2YXJpYWJsZSDigJh0bXBSZWdD4oCZIHNl
-dCBidXQgbm90IHVzZWQgWy1XdW51c2VkLWJ1dC1zZXQtdmFyaWFibGVdCj4gCj4gY29tbWl0IDk0
-YTc5OTQyNWVlZSAoInJ0bDgxOTJlOiBTcGxpdCBpbnRvIHR3byBkaXJlY3RvcmllcyIpCj4gaW52
-b2x2ZWQgdGhpcywgcmVtb3ZlIGl0Lgo+IAo+IFJlcG9ydGVkLWJ5OiBIdWxrIFJvYm90IDxodWxr
-Y2lAaHVhd2VpLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBXYW5nIEhhaSA8d2FuZ2hhaTM4QGh1YXdl
-aS5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvc3RhZ2luZy9ydGw4MTkyZS9ydGw4MTkyZS9yODE5MkVf
-ZGV2LmMgfCA2ICsrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAzIGRl
-bGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvcnRsODE5MmUvcnRs
-ODE5MmUvcjgxOTJFX2Rldi5jIGIvZHJpdmVycy9zdGFnaW5nL3J0bDgxOTJlL3J0bDgxOTJlL3I4
-MTkyRV9kZXYuYwo+IGluZGV4IGRkY2Q3ODguLmZmOTM0YWUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9zdGFnaW5nL3J0bDgxOTJlL3J0bDgxOTJlL3I4MTkyRV9kZXYuYwo+ICsrKyBiL2RyaXZlcnMv
-c3RhZ2luZy9ydGw4MTkyZS9ydGw4MTkyZS9yODE5MkVfZGV2LmMKPiBAQCAtNjkwLDcgKzY5MCw3
-IEBAIGJvb2wgcnRsOTJlX3N0YXJ0X2FkYXB0ZXIoc3RydWN0IG5ldF9kZXZpY2UgKmRldikKPiAg
-CXU4IHRtcHZhbHVlOwo+ICAJdTggSUNWZXJzaW9uLCBTd2l0Y2hpbmdSZWd1bGF0b3JPdXRwdXQ7
-Cj4gIAlib29sIGJmaXJtd2FyZW9rID0gdHJ1ZTsKPiAtCXUzMiB0bXBSZWdBLCB0bXBSZWdDLCBU
-ZW1wQ0NrOwo+ICsJdTMyIHRtcFJlZ0EsIFRlbXBDQ2s7Cj4gIAlpbnQgaSA9IDA7Cj4gIAl1MzIg
-cmV0cnlfdGltZXMgPSAwOwo+ICAKPiBAQCAtODg5LDggKzg4OSw4IEBAIGJvb2wgcnRsOTJlX3N0
-YXJ0X2FkYXB0ZXIoc3RydWN0IG5ldF9kZXZpY2UgKmRldikKPiAgCQlpZiAocHJpdi0+SUNfQ3V0
-ID49IElDX1ZlcnNpb25DdXRfRCkgewo+ICAJCQl0bXBSZWdBID0gcnRsOTJlX2dldF9iYl9yZWco
-ZGV2LCByT0ZETTBfWEFUeElRSW1iYWxhbmNlLAo+ICAJCQkJCQkgICAgYk1hc2tEV29yZCk7Cj4g
-LQkJCXRtcFJlZ0MgPSBydGw5MmVfZ2V0X2JiX3JlZyhkZXYsIHJPRkRNMF9YQ1R4SVFJbWJhbGFu
-Y2UsCj4gLQkJCQkJCSAgICBiTWFza0RXb3JkKTsKPiArCQkJcnRsOTJlX2dldF9iYl9yZWcoZGV2
-LCByT0ZETTBfWENUeElRSW1iYWxhbmNlLAo+ICsJCQkJCSAgYk1hc2tEV29yZCk7CgpEZWxldGUg
-dGhlIGNhbGwgYXMgd2VsbC4KCnJlZ2FyZHMsCmRhbiBjYXJwZW50ZXIKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZl
-bEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9q
-ZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Mon, Apr 06, 2020 at 07:58:08PM +0200, Greg Kroah-Hartman wrote:
+> On Mon, Apr 06, 2020 at 06:38:36PM +0200, Oscar Carter wrote:
+> > On Mon, Apr 06, 2020 at 04:22:12PM +0200, Greg Kroah-Hartman wrote:
+> > > On Sat, Apr 04, 2020 at 04:13:59PM +0200, Oscar Carter wrote:
+> > > > Use the define RATE_11M present in the file "device.h" instead of the
+> > > > magic number 3. So the code is more clear.
+> > > >
+> > > > Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+> > > > Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > > > ---
+> > > >  drivers/staging/vt6656/baseband.c | 3 ++-
+> > > >  1 file changed, 2 insertions(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+> > > > index 3e4bd637849a..a785f91c1566 100644
+> > > > --- a/drivers/staging/vt6656/baseband.c
+> > > > +++ b/drivers/staging/vt6656/baseband.c
+> > > > @@ -24,6 +24,7 @@
+> > > >
+> > > >  #include <linux/bits.h>
+> > > >  #include <linux/kernel.h>
+> > > > +#include "device.h"
+> > > >  #include "mac.h"
+> > > >  #include "baseband.h"
+> > > >  #include "rf.h"
+> > > > @@ -141,7 +142,7 @@ unsigned int vnt_get_frame_time(u8 preamble_type, u8 pkt_type,
+> > > >
+> > > >  	rate = (unsigned int)vnt_frame_time[tx_rate];
+> > > >
+> > > > -	if (tx_rate <= 3) {
+> > > > +	if (tx_rate <= RATE_11M) {
+> > > >  		if (preamble_type == 1)
+> > > >  			preamble = 96;
+> > > >  		else
+> > > > --
+> > > > 2.20.1
+> > >
+> > > This doesn't apply to my tree :(
+> > >
+> > Sorry, but I don't understand what it means. This meant that I need to rebase
+> > this patch against your staging-next branch of your staging tree ?
+>
+> Yes, and 3/3 as well, because I dropped the 1/3 patch here.
+>
+Ok, I will create a new patch series version rebased against your staging-next
+branch and I will send it.
+
+> thanks,
+>
+> greg k-h
+
+thanks,
+oscar carter
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
