@@ -1,81 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99BAC1A1165
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Apr 2020 18:31:19 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88CB41A11D2
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Apr 2020 18:39:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6D929204B4;
-	Tue,  7 Apr 2020 16:31:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 039A385C00;
+	Tue,  7 Apr 2020 16:39:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F8az337FMser; Tue,  7 Apr 2020 16:31:17 +0000 (UTC)
+	with ESMTP id SgYnbea__JNi; Tue,  7 Apr 2020 16:39:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 18F6F203F1;
-	Tue,  7 Apr 2020 16:31:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1D94885B4D;
+	Tue,  7 Apr 2020 16:39:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D0E4D1BF47F
- for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 16:31:13 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E7E761BF47F
+ for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 16:39:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CABDB86E9F
- for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 16:31:13 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E3F4887BFE
+ for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 16:39:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FKjiHa4jSwg3 for <devel@linuxdriverproject.org>;
- Tue,  7 Apr 2020 16:31:12 +0000 (UTC)
+ with ESMTP id 0MfRhCwksX+9 for <devel@linuxdriverproject.org>;
+ Tue,  7 Apr 2020 16:39:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6136486E6A
- for <devel@driverdev.osuosl.org>; Tue,  7 Apr 2020 16:31:12 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0772E87B6D
+ for <devel@driverdev.osuosl.org>; Tue,  7 Apr 2020 16:39:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1586277060;
- bh=mGcNn/hciDAa1MtlzL+yKAo9BVtXHK66bYlr9Vx0ozY=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=ClIVEwm8T5Aa6VcCJQASK9GNmTiUt+aynyqNP6ZIf6TmCASZnR9d6SbWM4IKwXToa
- uDSaYF8YhZf7vRVraaXIW0ZEyzNelb3YOG308tHYAYxA6JtvRIZ+MrvngK+GJFa7vl
- uqD6AKqDz/szviFV+2smJlBnTz8UcQdkDFI7Iz78=
+ s=badeba3b8450; t=1586277573;
+ bh=KDnY7+9cyTUORfefslSpVuilBVC7HemGqZGdd6Cz9tI=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=fVwgyyI251NbZTILwBCXR4K6qQrBP/eruwXPz3J1sF4F6e3IHF5wA15DfAwXNTDY9
+ xrWXkS36Geie8926Y881QMAayCLgMsclk+P1fZcgPLCC7IYU1SX4RdEvG6O/b24oC7
+ /RzpJ0zR3yEXHL2YJZPpjYL+lFVuBSqGxesSm8YU=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
  (mrgmx004 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1MMobO-1jcQZU17Xo-00IjSr; Tue, 07 Apr 2020 18:31:00 +0200
+ 1MhD2O-1irUWd1rRy-00ePF5; Tue, 07 Apr 2020 18:39:33 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
 To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 2/2] staging: vt6656: Remove unnecessary local variable
- initialization
-Date: Tue,  7 Apr 2020 18:29:59 +0200
-Message-Id: <20200407162959.7318-3-oscar.carter@gmx.com>
+Subject: [PATCH v3 0/2] staging: vt6656: Cleanup of the vnt_get_frame_time
+ function
+Date: Tue,  7 Apr 2020 18:39:13 +0200
+Message-Id: <20200407163915.7491-1-oscar.carter@gmx.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200407162959.7318-1-oscar.carter@gmx.com>
-References: <20200407162959.7318-1-oscar.carter@gmx.com>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:UaY/NzihUNA7noUE4WYo5a2HMtl4iCD2xIPTYOXp8Y36W5So9s9
- SU6FGSAaXWqjiMZ+i4KJ+VgUy1o+JX72oXb9tGYSU58Q3IE3l7lUNmJPAvdGFCh48Kza7zj
- 7q6va4Abvh8S41q4PvJ+72V6UcyBlL5Qt5XqjKFU3uR9tqibS5MqVDox6PBNVo36I7SHFWt
- /W6duAPkz/YzcdTJBKIGw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ssw9doPq2OE=:oj/WuGNg3mz2KQVXrTZJeP
- fqAuIHxpbaf8nQtNhm5rog717riSqPIP9MJVR/TfCLgQ+fmJ/hE74+AWu/MS3pqQl35et2TMn
- qqbvBObj6sYgYPBJlIbbymW76ahkZ/UOA34FTmLKesPEWt19QOCFKHKOBn9+/1g+oZJQ2qYN6
- PTHCVFNSUfKPlTHrogTTk4iTJALA4ZI6gq9ppXx4vO8ZICEfLB/I7u+pPdpmPmg6IbVLparz8
- 9iq+Uc6FSBJ+QFzgvpHFIOJe3Mb/mBGtIswp8SWtbUc5iLrSF+8iBizALt2XJlhu5gDPaCORv
- lG/hnCDCLGhZac+TBcRkz6utSTNrHlV2qS6+f2f42d2pomdirIMNPkyxUlipbuUyY1u/7ITVV
- Mj6G+WVyaKmxToKy7z95rRLvd1ekCz9sljzF6iATGiIEkMt4MnqIwNfbxZ/J1rJEXLCSXwZXt
- R2MSpUhVsCoZe27VGOlhzqnz1OQ3T7V9gvP0VTMXKFobkhKpvbdseop5DGUMvczxEe0E8GkEo
- hT2G2eNis6gD1zDZROpep64c3e6n0adUNuq3pNCQz9ZUAHHbUjm+7fxKUqwz2Vcoc2Q/T3Ykm
- nMH9t/nyYBgHNa732VtdBlPeo8NN/tCkrbyS59jhoUvopE61fHouTfIaItTk6O2tWztposGa4
- lsoifrY/ybmGmHoNJ9cxitVrgJkaYIa0HrSgmU6UmpSbrE2hpqqaR3BWRJbtD0lClHDMrOnJX
- rAavBiWwk7HLMZsXDWm8PlDAYHpwS+BNabVl00Y1zGRMc/v4L9zuXzQ2G8Yb+sGVHQtWcPZJE
- yOBy7lpV3YvKZ/02C2cn50B1jBY2ygbv2H0zFhgOrV2CsfC980RQRs1opxOAqCQt3GI5EkAi4
- rhKE0w86Jtp6LeQLsnNGHYhW8GueyyDghIcx/kYRJw2rNiPvLXgyupEmHQ5axpuyeMvWzk/Q/
- z1gY0N5Rx1+YCXsIcvxAyx7JaIktqkHwqi7+Fa0S1KCR4/4WwrG7XTH3FBPGpY9A/EZWBH53o
- eeExstw5rCO5Z06p2LS+p4Gp1DR7Optf4xIIf/wd6viST0hM1bE7AcCsplcEp0B19N921KLDT
- CTwChosCov30WcasUYwCvNMCIsvt46NW6kLhfwVq7XkJlgwG7uqMEwBx71N6z0L/TYXQF5nQF
- CH21trLuLwMydyHMfR22ptE1QIBsYG6KfL7nuyI+AEezOtNDP8uQjCOjINwN1Lnjswcmm+d5q
- xDpKp27KcK33HmY/g
+X-Provags-ID: V03:K1:w0yevbcyk0crSmkW4QvrWRrn4IVxqoT1Occkris07LGxOIyTubZ
+ KZMIBv9n6yRb/alAhKIcLMZROlUryBr4kq9DhbL+nBfPs+EVOwQhzW20s+Yf2r/h3Ndh+HC
+ oIT+HUcXIHVfQScFGYtx3KBo5cBo6acgIK3QWe+eg2X8hnzUBVUQLDx5qgRZik/axEPgbcr
+ 3UDMFTU8/4Dg7FFfmWjEw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:y5zllwH5DgI=:RI69gCbJOCYG1KkS8Pm+PC
+ JqujLrTeUlhUejIYn8Ak0AjsFBhy8K3OYXSFLCr3CL8BFS1+sx8ot75OqphdTObqOdrqht2AC
+ p2wHPusfO74k91nOyuaxKreijBSGUFgyBLF2FFMF8cUB1kdsbStIG3nzjb9RfMbifEzsXEQHk
+ tFM9sYrjxm/Z6cK8d7NtS/QePSogBbby9SNkSmnQrAmwv4Y6Osp8I2TIMz/vykz7Ix3t42U0U
+ VhgAGNzaBoQUW0FZn75Ie3S6XZSDad3ocmWEROawMlUL2PURl/QB1Aa3ioBXzpyHKcWmQnxVk
+ aqpYrmw0Rr4Rg+eu+xJqWAQVpQrwGwI3nGeyyz52UIO4v0MMEVtpgCNCKWG0byebzmaTGOHZt
+ jTxx8qPnf+WWC1AnYYqFBhqxOKrrjCxoaFagif0LolUAeY7ENAbblqu0pnb5c0C0YYoitEZYU
+ YNu1N+vG64PMqAXNC8vzaD2FBW4XRMVa83cl+xxC681O6wJKr1dGrKYqgEwoS76poFQu2k5hl
+ qAEsLI+omVdYja0oq/z5QzZhz7EW7Ip3HpoR2vajIguUHKKkKvN57XVuBSxd40Z4MbWmVzmFk
+ ajj6lrybBCqFialDCo50W73zEQ5dQmMqn/kVL/sICW2RiYNCM/nDBIm2PN5hVn0PtlaIh1Fey
+ bTrD7t1RmC/5iZ7YrRsE7GIOMV+DvoM5aPF/fzFQrHh8Hb/bLLmQKc80hBA6v3b0xPi9KQhc3
+ 7sB0l0h9qw8n8NLxSbGHTrHcB96Rbb0RojrruGAOmciVMMkaZBneLljgCcLUhPtyGq3ouQFXs
+ 24xUhC8CdHUHPjXKLBoc+ELxAtyZK6YVUpCrub0R91q7mtdO5k2C2E+gDa76QKTajNS2kcHlo
+ FgFH72BpvBBO9dv3d2IdNC/r3PvcaPlVttZvpibQs0XBHzY8XkVVRkAL3X+tMdjbyTBoQHkqM
+ 1DuqGQGvKlDeOBDoXcFzp1JcYG1nL3rbkzuiuU7GPNbewP46iCucnRkPYUagYm8CNqp1u/5Ot
+ ZJDthoGy2utRixNqrPpnvIQ8FerUUVVHYIIQGzvmLtLHicNTymLKAleP3eZDcjm706Xy6V+pa
+ rw4RCsNS1sgxNcMH88BsaGGkHME2vM/8hTZDM9uQ3G/J6wFUcVaFFNlPyHGm/gGoBqsOAJL9z
+ 5Q6crayq/HoIkpSPDSWNXFpu1J7kkCr+PcrO8uoiYZIiGMJR81qveItKgXS8r1xC3voMVXw6T
+ T4YUzE2LNMTHXL8UR
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,27 +94,24 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Don't initialize the rate variable as it is set a few lines later.
+This patch series makes a cleanup of the vnt_get_frame_time function.
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
----
- drivers/staging/vt6656/baseband.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+The first patch makes use of the define RATE_11M instead of a magic
+number. The second patch remove unnecessary local variable initialization.
 
-diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
-index 092e56668a09..5d9bc97916a5 100644
---- a/drivers/staging/vt6656/baseband.c
-+++ b/drivers/staging/vt6656/baseband.c
-@@ -135,7 +135,7 @@ unsigned int vnt_get_frame_time(u8 preamble_type, u8 pkt_type,
- {
- 	unsigned int frame_time;
- 	unsigned int preamble;
--	unsigned int rate = 0;
-+	unsigned int rate;
+Changelog v1 -> v2
+- Not use the ARRAY_SIZE macro to compare against the tx_rate variable.
 
- 	if (tx_rate > RATE_54M)
- 		return 0;
+Changelog v2 -> v3
+- Use the version number in the subject line of patch 1/2 and 2/2.
+
+Oscar Carter (2):
+  staging: vt6656: Use define instead of magic number for tx_rate
+  staging: vt6656: Remove unnecessary local variable initialization
+
+ drivers/staging/vt6656/baseband.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
 --
 2.20.1
 
