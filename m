@@ -1,95 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5AD51A155C
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Apr 2020 20:56:21 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B8AC1A12B0
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Apr 2020 19:27:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8390E87E16;
-	Tue,  7 Apr 2020 18:56:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8B36820767;
+	Tue,  7 Apr 2020 17:27:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CtfOO-iYLWoG; Tue,  7 Apr 2020 18:56:20 +0000 (UTC)
+	with ESMTP id o7ztC6MouCEi; Tue,  7 Apr 2020 17:27:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0584387D65;
-	Tue,  7 Apr 2020 18:56:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DB5F02047E;
+	Tue,  7 Apr 2020 17:27:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B81691BF83B
- for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 18:56:17 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CE8D51BF275
+ for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 17:27:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B3163857A3
- for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 18:56:17 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C4E11878C4
+ for <devel@linuxdriverproject.org>; Tue,  7 Apr 2020 17:27:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LBKhCAeESNlx for <devel@linuxdriverproject.org>;
- Tue,  7 Apr 2020 18:56:15 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.187])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3D54E857CB
- for <devel@driverdev.osuosl.org>; Tue,  7 Apr 2020 18:56:15 +0000 (UTC)
-Received: from mail.cetitecgmbh.com ([87.190.42.90]) by
- mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N63i4-1jF83l3ZlY-016OMo; Tue, 07 Apr 2020 20:55:53 +0200
-Received: from pflvmailgateway.corp.cetitec.com (unknown [127.0.0.1])
- by mail.cetitecgmbh.com (Postfix) with ESMTP id CDD20650D25;
- Tue,  7 Apr 2020 18:55:52 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at cetitec.com
-Received: from mail.cetitecgmbh.com ([127.0.0.1])
- by pflvmailgateway.corp.cetitec.com (pflvmailgateway.corp.cetitec.com
- [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aQtsZ5Ms7amw; Tue,  7 Apr 2020 20:55:52 +0200 (CEST)
-Received: from pflmari.corp.cetitec.com (unknown [10.8.5.64])
- by mail.cetitecgmbh.com (Postfix) with ESMTPSA id 7953C650C78;
- Tue,  7 Apr 2020 20:55:52 +0200 (CEST)
-Received: by pflmari.corp.cetitec.com (Postfix, from userid 1000)
- id 25125804FB; Tue,  7 Apr 2020 20:55:52 +0200 (CEST)
-Date: Tue, 7 Apr 2020 20:55:52 +0200
-From: Alex Riesen <alexander.riesen@cetitec.com>
-To: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: Re: [PATCH v5 4/9] media: adv748x: add definitions for audio output
- related registers
-Message-ID: <20200407185552.GB4711@pflmari>
-Mail-Followup-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- devel@driverdev.osuosl.org, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org
-References: <cover.1585852001.git.alexander.riesen@cetitec.com>
- <26573ecdb48aa816f802b9d8bbe5f74157248021.1585852001.git.alexander.riesen@cetitec.com>
- <a0ff0a59-bd6e-044b-5669-679126c23323@ideasonboard.com>
- <20200407171327.GA4711@pflmari>
- <9bdf0c48-ca1c-addc-aca4-5f1889d0ae93@ideasonboard.com>
+ with ESMTP id 3Wg9zXbWlkb2 for <devel@linuxdriverproject.org>;
+ Tue,  7 Apr 2020 17:27:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.foescocursos.es (unknown [146.255.98.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A0C30860DC
+ for <devel@driverdev.osuosl.org>; Tue,  7 Apr 2020 17:27:11 +0000 (UTC)
+Received: from 185.red-79-154-236.dynamicip.rima-tde.net
+ (185.red-79-154-236.dynamicip.rima-tde.net [79.154.236.185])
+ by mail.foescocursos.es (Postfix) with ESMTPSA id 3AA63891213
+ for <devel@driverdev.osuosl.org>; Tue,  7 Apr 2020 19:26:34 +0200 (CEST)
+Authentication-Results: mail.foescocursos.es;
+ spf=pass (sender IP is 79.154.236.185)
+ smtp.mailfrom=foesco14@formacionbonificable.es
+ smtp.helo=185.red-79-154-236.dynamicip.rima-tde.net
+Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <9bdf0c48-ca1c-addc-aca4-5f1889d0ae93@ideasonboard.com>
-X-Provags-ID: V03:K1:mlqOTlROnvuPn/Bp0rhvemUwLBfH+wEU3AszbHL7bAVzDC0NseA
- orK+ajHcxK5l/D5AfvSOpTjAeNpQ4bwkiou2Gc07pWlM15Ail9HnNQw2z3q5ctC4hmVoR/r
- ZgYcbijq62M1vQGApij1ZwbXOoMNdQYPjxzHvp8RZPN2xZjbL/zhb6R3xCq0xcmDm6ksfSt
- dGmcJUvJf3GkWOeaos4Tg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:2Y/f0zZXcQc=:j5lHhdYj5j/wt4MwsyTLqm
- fygGYlkcuIygH8S30D36KXCjW7/imx9g97zcCbbhFU8zc5RGzbc5SJweUT55VDDrqBS5XVgsS
- klXXGMgD9DoDUkM+ooozjNA2AdMmG4F2R4TA4AKa0w6qkV4QEYwxIxTwTqX8ov0axcBPvF4kO
- lEVgWAY+4p29ts5GUkT4sFIjMVzNUBvJK5TrsEvtUZsL6l9qaeRiBhkA9rGpTegNzZnC2KzQk
- DVxz00WD7aFs6SC6cV4rr8AVTnmIqqrFlu0JQxufTMS8RL8Q08sEHJus5X+X2tYf+UEBX4E17
- cO0+nGhSs5/M0cNNbd5TfMhSg92KuzTnYIY/qPDga/E+YMvCYMHtIisVj5GYKLpj/hW+Ox32L
- V+5SAQkoyDQPYROfjkCqs1koH+hcoH6AjF16xADE5pjMg2hfqgWcmq9p/K0diRJeLK0qw9rXH
- crbw5ALVXwYv4Y3G29knZKANX6z19dNsQStqzm3M+7AaNYmHikYb/zRVS/PkQ/yky+KtQMNWc
- i/u22BpvLPMzO1tyyOqS7+u+wyOddSyXnwOqwj05gxuwSOzNZwMLBxJC4qHovtiE9E+QgEWdm
- oplLBdj2CGLWRYwbTTyvFzrKfWnHoQ4rsQEyRKTNU41XdaKtP2ZTzHjXBgw4QScumR8HE7K7q
- 1IMiLdTbMgfyKDdnbBm+/K3wYAD2/PrzR7Q0xkqivaAd7wQr/NYLZsMN6rsAD8u+Ze7RtycMK
- zeLgd7SUvN42dQCkTi2Ozp117Gm096csTZeYffeu6+NdqRa73QBiLf2IWgdnJHPM40aYyR6dO
- oD7x3xEzJyqOYVSE3ML/qHW/efRdRPfjp/szEvK6DNCJD+8eujgd/3/sS/hzN+tL0YxQ1Y2
+From: foesco14@formacionbonificable.es
+To: devel@driverdev.osuosl.org
+Subject: CURSOS BONIFICABLES DESDE CASA (Empleados activos y en ERTE)
+X-Mailer: Smart_Send_4_3_3
+Date: Tue, 7 Apr 2020 19:25:25 -0700
+Message-ID: <56164854086401081714371@DESKTOP-EEN1J8F>
+X-Priority: 1
+X-MSMail-Priority: High
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,99 +61,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devel@driverdev.osuosl.org,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: foesco14@formacionbonificable.es
+Content-Type: multipart/mixed; boundary="===============3862282261900441951=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Kieran Bingham, Tue, Apr 07, 2020 20:44:04 +0200:
-> Hi Alex,
-> 
-> With all the changes you've described below:
-> 
-> Reviewed-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-> 
+--===============3862282261900441951==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Thanks. Will be in v6 like this below:
+Buenos d=EDas
 
-diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
-index 0a9d78c2870b..e1d8cb01ebf8 100644
---- a/drivers/media/i2c/adv748x/adv748x.h
-+++ b/drivers/media/i2c/adv748x/adv748x.h
-@@ -226,6 +226,16 @@ struct adv748x_state {
- 
- #define ADV748X_IO_VID_STD		0x05
- 
-+#define ADV748X_IO_PAD_CONTROLS		0x0e
-+#define ADV748X_IO_PAD_CONTROLS_TRI_LLC	BIT(7)
-+#define ADV748X_IO_PAD_CONTROLS_TRI_PIX	BIT(6)
-+#define ADV748X_IO_PAD_CONTROLS_TRI_AUD	BIT(5)
-+#define ADV748X_IO_PAD_CONTROLS_TRI_SPI	BIT(4)
-+#define ADV748X_IO_PAD_CONTROLS_BIT_3	BIT(3)
-+#define ADV748X_IO_PAD_CONTROLS_PDN_PIX	BIT(2)
-+#define ADV748X_IO_PAD_CONTROLS_PDN_AUD	BIT(1)
-+#define ADV748X_IO_PAD_CONTROLS_PDN_SPI	BIT(0)
-+
- #define ADV748X_IO_10			0x10	/* io_reg_10 */
- #define ADV748X_IO_10_CSI4_EN		BIT(7)
- #define ADV748X_IO_10_CSI1_EN		BIT(6)
-@@ -248,7 +258,20 @@ struct adv748x_state {
- #define ADV748X_IO_REG_FF		0xff
- #define ADV748X_IO_REG_FF_MAIN_RESET	0xff
- 
-+/* DPLL Map */
-+#define ADV748X_DPLL_MCLK_FS		0xb5
-+#define ADV748X_DPLL_MCLK_FS_N_MASK	GENMASK(2, 0)
-+
- /* HDMI RX Map */
-+#define ADV748X_HDMI_I2S		0x03	/* I2S mode and width */
-+#define ADV748X_HDMI_I2SBITWIDTH_MASK	GENMASK(4, 0)
-+#define ADV748X_HDMI_I2SOUTMODE_SHIFT	5
-+#define ADV748X_HDMI_I2SOUTMODE_MASK  GENMASK(6, ADV748X_HDMI_I2SOUTMODE_SHIFT)
-+#define ADV748X_HDMI_I2SOUTMODE_I2S	0
-+#define ADV748X_HDMI_I2SOUTMODE_RIGHT_J	1
-+#define ADV748X_HDMI_I2SOUTMODE_LEFT_J	2
-+#define ADV748X_HDMI_I2SOUTMODE_SPDIF	3
-+
- #define ADV748X_HDMI_LW1		0x07	/* line width_1 */
- #define ADV748X_HDMI_LW1_VERT_FILTER	BIT(7)
- #define ADV748X_HDMI_LW1_DE_REGEN	BIT(5)
-@@ -260,6 +283,16 @@ struct adv748x_state {
- #define ADV748X_HDMI_F1H1		0x0b	/* field1 height_1 */
- #define ADV748X_HDMI_F1H1_INTERLACED	BIT(5)
- 
-+#define ADV748X_HDMI_AUDIO_MUTE_SPEED	0x0f
-+#define ADV748X_HDMI_AUDIO_MUTE_SPEED_MASK	GENMASK(4, 0)
-+#define ADV748X_MAN_AUDIO_DL_BYPASS	BIT(7)
-+#define ADV748X_AUDIO_DELAY_LINE_BYPASS	BIT(6)
-+
-+#define ADV748X_HDMI_MUTE_CTRL		0x1a
-+#define ADV748X_HDMI_MUTE_CTRL_MUTE_AUDIO	BIT(4)
-+#define ADV748X_HDMI_MUTE_CTRL_WAIT_UNMUTE_MASK	GENMASK(3, 1)
-+#define ADV748X_HDMI_MUTE_CTRL_NOT_AUTO_UNMUTE	BIT(0)
-+
- #define ADV748X_HDMI_HFRONT_PORCH	0x20	/* hsync_front_porch_1 */
- #define ADV748X_HDMI_HFRONT_PORCH_MASK	0x1fff
- 
-@@ -281,6 +314,9 @@ struct adv748x_state {
- #define ADV748X_HDMI_TMDS_1		0x51	/* hdmi_reg_51 */
- #define ADV748X_HDMI_TMDS_2		0x52	/* hdmi_reg_52 */
- 
-+#define ADV748X_HDMI_REG_6D		0x6d	/* hdmi_reg_6d */
-+#define ADV748X_I2S_TDM_MODE_ENABLE	BIT(7)
-+
- /* HDMI RX Repeater Map */
- #define ADV748X_REPEATER_EDID_SZ	0x70	/* primary_edid_size */
- #define ADV748X_REPEATER_EDID_SZ_SHIFT	4
+
+
+Se encuentra abierto el plazo de inscripci=F3n de Cursos Bonificables para =
+empleados en activo y en situaci=F3n de ERTE.
+
+
+Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
+aci=F3n 2020 que dispone las empresa.
+
+Se realizan desde casa en modalidad individual E-learning a trav=E9s de la =
+plataforma web y con total flexibilidad horaria.
+
+
+Dese=E1is que os mandemos la informaci=F3n=3F
+
+
+Saludos cordiales.
+
+
+Alex Pons
+Director departamento formaci=F3n.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B171823AP
+www.foesco.com
+
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+
+
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
+la palabra BAJA en el asunto.
+
+--===============3862282261900441951==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3862282261900441951==--
