@@ -1,48 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E72D1A1E8B
-	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Apr 2020 12:07:45 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B0531A2695
+	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Apr 2020 17:59:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CB4D78793F;
-	Wed,  8 Apr 2020 10:07:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D7579882DD;
+	Wed,  8 Apr 2020 15:59:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5thTeZ-7wXlb; Wed,  8 Apr 2020 10:07:42 +0000 (UTC)
+	with ESMTP id tyTeMKYqbca3; Wed,  8 Apr 2020 15:59:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 84DBD87708;
-	Wed,  8 Apr 2020 10:07:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5CA4688292;
+	Wed,  8 Apr 2020 15:59:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 472021BF2CB
- for <devel@linuxdriverproject.org>; Wed,  8 Apr 2020 10:07:39 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9FEC51BF275
+ for <devel@linuxdriverproject.org>; Wed,  8 Apr 2020 15:59:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 43CBC8691A
- for <devel@linuxdriverproject.org>; Wed,  8 Apr 2020 10:07:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9AF0A88292
+ for <devel@linuxdriverproject.org>; Wed,  8 Apr 2020 15:59:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U3XwXAlVRsoX for <devel@linuxdriverproject.org>;
- Wed,  8 Apr 2020 10:07:39 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from b39.coreserver.jp (b39.coreserver.jp [202.172.25.40])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6F3FC85BE4
- for <devel@driverdev.osuosl.org>; Wed,  8 Apr 2020 10:07:38 +0000 (UTC)
-Received: (qmail 423792 invoked by uid 89); 8 Apr 2020 18:49:01 +0900
-Received: from unknown (HELO User) (mayu@r-h.co.jp@52.231.37.177)
- by b39.coreserver.jp with SMTP; 8 Apr 2020 18:49:01 +0900
-From: "Hello"<mayu@r-h.co.jp>
-Subject: Hello Friend   08/04/2020/
-Date: Wed, 8 Apr 2020 09:49:01 -0000
+ with ESMTP id hc4Q36V5+HJ3 for <devel@linuxdriverproject.org>;
+ Wed,  8 Apr 2020 15:59:13 +0000 (UTC)
+X-Greylist: delayed 00:05:18 by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.13])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A05B1875DA
+ for <devel@driverdev.osuosl.org>; Wed,  8 Apr 2020 15:59:12 +0000 (UTC)
+Received: from threadripper.lan ([149.172.19.189]) by mrelayeu.kundenserver.de
+ (mreue106 [212.227.15.145]) with ESMTPA (Nemesis) id
+ 1MTAW9-1jjUM20lyh-00UXnC; Wed, 08 Apr 2020 17:53:29 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH] media: staging: rkisp1: avoid unused variable warning
+Date: Wed,  8 Apr 2020 17:52:44 +0200
+Message-Id: <20200408155325.2077345-1-arnd@arndb.de>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200408100739.43CBC8691A@fraxinus.osuosl.org>
+X-Provags-ID: V03:K1:68Z72znrNvEuHIJsN20T/ABmAB4bmydH1GC38M8EeLkViwTTCj5
+ pGlc7UTVbkUzb3TX+27y7HvCoxt6g49BGBUEx+iIZG69x2Sw/ZAeDGz4YJQ/1RylPMQQTYI
+ zejJf3aUKH6QMhCjW2+TZbGrVbYkE02vPqUUa6B8COUi1NZ10c+LnN9+a5YJYKVdNmBmcX6
+ jwT6sd1yAggxfj72OZTEw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Awc+4kQhE8c=:sfAq2pQt8/fe4nw3avggR9
+ qLMntFK2qNiGCAWdTFNewRQz9kJVMd+JPvJ71CjVEDrmHCOCST9/TgUI/nLPqCqQV7Qf2V194
+ 3aLNwp9zNSoqAkCbosHPlfLHR+O+nUpY6ItE1Vww/5ayA7SV2049g9Rb1qQ40WFtlytyC+v/j
+ 2IXpNuKPwgmKdD5cTg7oAiDpT/Go/h7y04N4E/NlFbwYh6OAaIvM3Z6uPIaM5FjoclseQCCNO
+ esYVPNqfZPWYkXSfjE9u6TePc8NyA9wQtQi6QcUK9nYB5AzjM/BmyA4WovUpwByzEVJQRy1PS
+ k6+wXuPtnOcOShVfl6OOrHcsbaZeIejYciOBydHza0v5tm+tMzy+bEYoq+7zNRo1aYrR2ojEl
+ HiYXhzd7Z1iBuKpIsLV8WaJ447El0EtmBwo4GelzYnzhhWO1QqaHF/n1G2mV2FfAIodsQWnJr
+ atxHX6RywJ6i4E0H7mR36Yp2dsI5cnYSYIXsrVFt1OuuIfMewt07mN+2z9cpKIOEF6vkIg4TP
+ X2sNXvjoiJkfwRAXzl7YjIKsSnLQOPK3ZpJQ0YFaeX8jaRUXVZtd6h3VAF/ydUKinWitpFn6l
+ u4ybm+uMMuUD9F773+uoa1OFrQ3JnC1TKP8HG0DVb0V5+gAtTKBpRzEfZt7pwxlvXROJwOgbO
+ YUc14fZywXQAcr10v7iUh4uWW+d75kiV/Z5BNnn+gaxJk3H+2qf9uIJPABv1F0sZKgPu71ZrO
+ gDzb4PNmel2tHIt6SKQSBxmZeF3j8CbR9zqYmBMeNV8+pAeaBD4kKRllEoyVNA/qbfQLSHu1X
+ r89xQV3nAPR7o4YAT55oeHG/rWGbALDF9hqPgyJkG/Bf5idjmpZONOHclDNBtltcck35KwZLM
+ AzU9OBJi5byUp8hwYseChhsZ7kXmTPuShEWwoo1phCgVJMLmh9suF8qlKZVOr/ZfIf58vfiZm
+ 2jyBZKwW/YAC2D3qVZeiiqFQmk7oLeIzgvzEj1r+er2hRq/9U+igYhSGEuLJ15dN0CITatO03
+ aA==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,29 +74,86 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: hashimyreem78@gmail.com
+Cc: devel@driverdev.osuosl.org, Eddie Cai <eddie.cai.linux@gmail.com>,
+ Jacob Chen <cc@rock-chips.com>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Jacob Chen <jacob2.chen@rock-chips.com>,
+ Jeffy Chen <jeffy.chen@rock-chips.com>, Yichong Zhong <zyc@rock-chips.com>,
+ linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Allon Huang <allon.huang@rock-chips.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-rockchip@lists.infradead.org,
+ Shunqian Zheng <zhengsq@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good day,
+When compile-testing with CONFIG_OF disabled, we get a warning
+about an unused variable, and about inconsistent Kconfig dependencies:
 
-My name is Reem E. Hashimy, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee.
+WARNING: unmet direct dependencies detected for PHY_ROCKCHIP_DPHY_RX0
+  Depends on [n]: STAGING [=y] && STAGING_MEDIA [=y] && MEDIA_SUPPORT [=m] && (ARCH_ROCKCHIP [=n] || COMPILE_TEST [=y]) && OF [=n]
+  Selected by [m]:
+  - VIDEO_ROCKCHIP_ISP1 [=m] && STAGING [=y] && STAGING_MEDIA [=y] && MEDIA_SUPPORT [=m] && VIDEO_V4L2 [=m] && VIDEO_V4L2_SUBDEV_API [=y] && (ARCH_ROCKCHIP [=n] || COMPILE_TEST [=y])
+
+drivers/staging/media/rkisp1/rkisp1-dev.c: In function 'rkisp1_probe':
+drivers/staging/media/rkisp1/rkisp1-dev.c:457:22: error: unused variable 'node' [-Werror=unused-variable]
+  457 |  struct device_node *node = pdev->dev.of_node;
+
+Simply open-coding the pointer dereference in the only place
+the variable is used avoids the warning in all configurations,
+so we can allow compile-testing as well.
+
+Fixes: d65dd85281fb ("media: staging: rkisp1: add Rockchip ISP1 base driver")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig | 2 +-
+ drivers/staging/media/rkisp1/rkisp1-dev.c           | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig b/drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig
+index bd0147624de1..dd5d4d741bdd 100644
+--- a/drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig
++++ b/drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig
+@@ -2,7 +2,7 @@
  
-I am writing you to manage my funds I received as financial gratification from various foreign companies I assisted to receive participation slot in the incoming Dubai World Expo 2020. 
-
-The amount is $44,762,906.00 United States dollars.The cumulative deposit were given as an expression of appreciation from the various foreign companies whose applications received approval to participate in the in-coming Dubai Expo 2020. But I could not receive the various gratifications to my personal account in my country because my social status as a married Muslim lady with limitations to certain investment opportunities. 
+ config PHY_ROCKCHIP_DPHY_RX0
+ 	tristate "Rockchip MIPI Synopsys DPHY RX0 driver"
+-	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
++	depends on (ARCH_ROCKCHIP && OF) || COMPILE_TEST
+ 	select GENERIC_PHY_MIPI_DPHY
+ 	select GENERIC_PHY
+ 	help
+diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
+index b1b3c058e957..5e7e797aad71 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-dev.c
++++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
+@@ -454,7 +454,6 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
  
-For this reason, an agreement was reached with a consulting firm to keep the funds in open beneficiary account with a financial institution where it will be possible to instruct transfer of the funds to a third party account for investment purpose which is the reason I am contacting you to receive and manage the funds as my investment partner. 
-
-The detail will be discuss on your indication of interest with your information and capacity to manage the fund.
-
-However, if you are not ready to take up responsibility in this partnership, please do not reply.
+ static int rkisp1_probe(struct platform_device *pdev)
+ {
+-	struct device_node *node = pdev->dev.of_node;
+ 	const struct rkisp1_match_data *clk_data;
+ 	const struct of_device_id *match;
+ 	struct device *dev = &pdev->dev;
+@@ -463,7 +462,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 	unsigned int i;
+ 	int ret, irq;
  
-While looking forward to good partnership, I am wishing you safe living.
-my Regards
-Reem Hashimy.
+-	match = of_match_node(rkisp1_of_match, node);
++	match = of_match_node(rkisp1_of_match, pdev->dev.of_node);
+ 	rkisp1 = devm_kzalloc(dev, sizeof(*rkisp1), GFP_KERNEL);
+ 	if (!rkisp1)
+ 		return -ENOMEM;
+-- 
+2.26.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
