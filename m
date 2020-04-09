@@ -1,75 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D4F31A31D1
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Apr 2020 11:34:17 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF2271A325C
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Apr 2020 12:16:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8339C876FB;
-	Thu,  9 Apr 2020 09:34:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C90386B5E;
+	Thu,  9 Apr 2020 10:16:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LIU9ojliOCl5; Thu,  9 Apr 2020 09:34:15 +0000 (UTC)
+	with ESMTP id GBKy9-bmLPl8; Thu,  9 Apr 2020 10:16:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9656A87580;
-	Thu,  9 Apr 2020 09:34:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E951686AC8;
+	Thu,  9 Apr 2020 10:16:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EE6991BF4E4
- for <devel@linuxdriverproject.org>; Thu,  9 Apr 2020 09:34:12 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D611E1BF2CC
+ for <devel@linuxdriverproject.org>; Thu,  9 Apr 2020 10:16:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EB49E875E0
- for <devel@linuxdriverproject.org>; Thu,  9 Apr 2020 09:34:12 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D29E286AC8
+ for <devel@linuxdriverproject.org>; Thu,  9 Apr 2020 10:16:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a8V-jClGDsAp for <devel@linuxdriverproject.org>;
- Thu,  9 Apr 2020 09:34:12 +0000 (UTC)
+ with ESMTP id Gpi_Miy-Uyze for <devel@linuxdriverproject.org>;
+ Thu,  9 Apr 2020 10:16:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0087987580
- for <devel@driverdev.osuosl.org>; Thu,  9 Apr 2020 09:34:11 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id h2so3194818wmb.4
- for <devel@driverdev.osuosl.org>; Thu, 09 Apr 2020 02:34:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=7Q2NlCB63D2LhEGr0HwhcxP6aGwq461tbuIJ0oEX06M=;
- b=vVpj55hQZQvgH3Z3cGf73X1rvd1ZOVmJt3Ojbs5phtb5O/acyRVL6aXtux8iatz1KW
- X5oGIWVhTAcFuSlTN6gsnCxnj1V62CTHduOJdt3pQ5QlskkmM78GJwS6/I/oUr3Qrxaj
- n+ngvXzE5rJbiNcEToDunyRvf+5xjbYfoswYjfHEds2j93MQ+kAokg+7Bnztmv7TBPvz
- 0x9nt1MHgx8bK+aE6PUNX84lPoYI+LUhDQFpxTnxL4fiodyCQQJkmGFuLeAJpGzC3g3e
- C5DWz/P5hQ1Eylw1ZkLkl2zGGSRsmb7uyjTvGD3AOVMZx7Leh0hqKUhfvkgePzvJlywS
- 45OQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=7Q2NlCB63D2LhEGr0HwhcxP6aGwq461tbuIJ0oEX06M=;
- b=g7mYJgs0mMQUPfG5nMgC49OskshJoxiEtEf7QkUHcipoJ8GkIxxYIXgiqoaTV8LNKp
- 7rLC0uWFuv9j1OKarIWmW9m5O330mYjan1uW8f5M7XRPIpFUC7fpDDKBg/yh2l60Xgjk
- yWzYwqvXHYbPAylADeJiUe0IYvovnI4uSWVgDNWsVlk2zUP9k7YR7Yur2O7kTqusT5r1
- Of5aNkqKCVq9MXJbswMG65nkm63z3qVJbt2e9JOtpPgxusKLpmY+H9WZxD97nQnHBmkq
- BJqtizMWRl1pJPchPIorToTXW41hdK1avy4su73nN9/Wu+A2M8D46jwvRuaQCpXoIFm5
- J3NQ==
-X-Gm-Message-State: AGi0PuYEZCdlGdR/MO8/G+FubQ9FIT/zMMYPR9qyZVTnRN+7ZxY36TAW
- IaOFeIZ1jPu5T5kt/tfTgKM=
-X-Google-Smtp-Source: APiQypKUHubOBZw6V5DlQzjZbiHuk+zbVkHxWC7aj0wXhW0gzw3QUStWWUeaA3X1nOIr1T7nMS9ajQ==
-X-Received: by 2002:a7b:c4c9:: with SMTP id g9mr282591wmk.171.1586424850185;
- Thu, 09 Apr 2020 02:34:10 -0700 (PDT)
-Received: from localhost (ip1f115f16.dynamic.kabel-deutschland.de.
- [31.17.95.22])
- by smtp.gmail.com with ESMTPSA id f63sm2764515wma.47.2020.04.09.02.34.09
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 09 Apr 2020 02:34:09 -0700 (PDT)
-From: Oliver Graute <oliver.graute@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v1] staging: fbtft: fb_st7789v: Initialize the Display
-Date: Thu,  9 Apr 2020 11:25:32 +0200
-Message-Id: <1586424337-26602-1-git-send-email-oliver.graute@gmail.com>
-X-Mailer: git-send-email 2.7.4
-X-Patchwork-Bot: notify
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D7D0A8699B
+ for <devel@driverdev.osuosl.org>; Thu,  9 Apr 2020 10:16:31 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 039ADtZl069500;
+ Thu, 9 Apr 2020 10:16:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=39Ni081FXBK7Yqe2dP5DkBkYVP3K7UrlF3aJOoZyVRU=;
+ b=mjDUXopOwz5JjapBHkk4egTZ+9hEIiMoV1gq+KdePC/2pa/W+f5m5Ah5GZ09RJk2IU1Q
+ GqQR9h9HPdQb1gYMMLAa05i3R8jfnGUyR6ggHA0q1nN94s3vH/QjM/+xIdL5fp4NYFuB
+ 511yMNHDqedn0vhfyvcKroOoMt+9f0M4nMv9wK65RAHJtrJePS2T5ialLOfnpa01mA1j
+ Hq6MuIXoOvOdSqrrKmMSK4YcR/xgLy/+5aF8ZtfUqV6TW28l/wRhmfUxAN2Q/UVTiM/s
+ 1x9vDJp4rvMzLVoAiyUSDLjXOfEHUOGSaSiOSYQIXu83++uRlYv5mRLix+cE0SqyG/Pg VA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 3091m10nsc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 09 Apr 2020 10:16:29 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 039ABlp1070488;
+ Thu, 9 Apr 2020 10:14:29 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3020.oracle.com with ESMTP id 3091m7fj9e-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 09 Apr 2020 10:14:29 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 039AEO0q032019;
+ Thu, 9 Apr 2020 10:14:24 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 09 Apr 2020 03:14:23 -0700
+Date: Thu, 9 Apr 2020 13:14:16 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Oliver Graute <oliver.graute@gmail.com>
+Subject: Re: [PATCH v1] staging: fbtft: fb_st7789v: enabled inversion
+Message-ID: <20200409101416.GN2001@kadam>
+References: <1586424250-25897-1-git-send-email-oliver.graute@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1586424250-25897-1-git-send-email-oliver.graute@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9585
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ bulkscore=0 mlxscore=0
+ malwarescore=0 spamscore=0 adultscore=0 suspectscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004090077
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9585
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ mlxlogscore=999 mlxscore=0
+ priorityscore=1501 phishscore=0 suspectscore=0 bulkscore=0
+ lowpriorityscore=0 impostorscore=0 malwarescore=0 clxscore=1011
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004090077
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,72 +98,41 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- Oliver Graute <oliver.graute@kococonnector.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org
-MIME-Version: 1.0
+ gregkh@linuxfoundation.org, Oliver Graute <oliver.graute@kococonnector.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Oliver Graute <oliver.graute@kococonnector.com>
+On Thu, Apr 09, 2020 at 11:24:05AM +0200, Oliver Graute wrote:
+> From: Oliver Graute <oliver.graute@kococonnector.com>
+> 
+> Enable inversion mode
+> 
+> Signed-off-by: Oliver Graute <oliver.graute@kococonnector.com>
+> ---
+>  drivers/staging/fbtft/fb_st7789v.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/staging/fbtft/fb_st7789v.c b/drivers/staging/fbtft/fb_st7789v.c
+> index 3c3f387936e8..84c5af2dc9a0 100644
+> --- a/drivers/staging/fbtft/fb_st7789v.c
+> +++ b/drivers/staging/fbtft/fb_st7789v.c
+> @@ -120,6 +120,10 @@ static int init_display(struct fbtft_par *par)
+>  	write_reg(par, PWCTRL1, 0xA4, 0xA1);
+>  
+>  	write_reg(par, MIPI_DCS_SET_DISPLAY_ON);
+> +
+> +	/* enable inversion mode */
+> +	write_reg(par, 0x21);
 
-Set Gamma Values and Register Values for the HSD20_IPS
+Use the define and delete the comment.
 
-Signed-off-by: Oliver Graute <oliver.graute@kococonnector.com>
----
- drivers/staging/fbtft/fb_st7789v.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+	write_reg(par, MIPI_DCS_ENTER_INVERT_MODE);
 
-diff --git a/drivers/staging/fbtft/fb_st7789v.c b/drivers/staging/fbtft/fb_st7789v.c
-index 84c5af2dc9a0..b0aa96b703a8 100644
---- a/drivers/staging/fbtft/fb_st7789v.c
-+++ b/drivers/staging/fbtft/fb_st7789v.c
-@@ -17,8 +17,8 @@
- #define DRVNAME "fb_st7789v"
- 
- #define DEFAULT_GAMMA \
--	"70 2C 2E 15 10 09 48 33 53 0B 19 18 20 25\n" \
--	"70 2C 2E 15 10 09 48 33 53 0B 19 18 20 25"
-+	"D0 05 0A 09 08 05 2E 44 45 0F 17 16 2B 33\n" \
-+	"D0 05 0A 09 08 05 2E 43 45 0F 16 16 2B 33"
- 
- /**
-  * enum st7789v_command - ST7789V display controller commands
-@@ -83,13 +83,13 @@ static int init_display(struct fbtft_par *par)
- 	/* set pixel format to RGB-565 */
- 	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, MIPI_DCS_PIXEL_FMT_16BIT);
- 
--	write_reg(par, PORCTRL, 0x08, 0x08, 0x00, 0x22, 0x22);
-+	write_reg(par, PORCTRL, 0x05, 0x05, 0x00, 0x33, 0x33);
- 
- 	/*
- 	 * VGH = 13.26V
- 	 * VGL = -10.43V
- 	 */
--	write_reg(par, GCTRL, 0x35);
-+	write_reg(par, GCTRL, 0x75);
- 
- 	/*
- 	 * VDV and VRH register values come from command write
-@@ -101,13 +101,13 @@ static int init_display(struct fbtft_par *par)
- 	 * VAP =  4.1V + (VCOM + VCOM offset + 0.5 * VDV)
- 	 * VAN = -4.1V + (VCOM + VCOM offset + 0.5 * VDV)
- 	 */
--	write_reg(par, VRHS, 0x0B);
-+	write_reg(par, VRHS, 0x13);
- 
- 	/* VDV = 0V */
- 	write_reg(par, VDVS, 0x20);
- 
- 	/* VCOM = 0.9V */
--	write_reg(par, VCOMS, 0x20);
-+	write_reg(par, VCOMS, 0x22);
- 
- 	/* VCOM offset = 0V */
- 	write_reg(par, VCMOFSET, 0x20);
--- 
-2.17.1
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
