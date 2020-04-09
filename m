@@ -1,90 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E6861A326A
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Apr 2020 12:22:19 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2A321A330D
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Apr 2020 13:17:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6D5D6861C1;
-	Thu,  9 Apr 2020 10:22:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5C30687A87;
+	Thu,  9 Apr 2020 11:17:01 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s7LGlvzBzdQx; Thu,  9 Apr 2020 11:17:00 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2EA038781C;
+	Thu,  9 Apr 2020 11:16:59 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 040B21BF3BC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  9 Apr 2020 11:16:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id EF63087568
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  9 Apr 2020 11:16:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rmSQbtql-yPU; Thu,  9 Apr 2020 10:22:17 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D059185DB5;
-	Thu,  9 Apr 2020 10:22:16 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0E3E31BF2CC
- for <devel@linuxdriverproject.org>; Thu,  9 Apr 2020 10:22:15 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0AFBC85A49
- for <devel@linuxdriverproject.org>; Thu,  9 Apr 2020 10:22:15 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LsRSs5WNqrfr for <devel@linuxdriverproject.org>;
- Thu,  9 Apr 2020 10:22:14 +0000 (UTC)
+ with ESMTP id NKF2XgrK91EQ
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  9 Apr 2020 11:16:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DB7298560E
- for <devel@driverdev.osuosl.org>; Thu,  9 Apr 2020 10:22:13 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 039AD3F2162825;
- Thu, 9 Apr 2020 10:22:13 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=d0vbh1SNAcfSwbd6w+AzaTccs3Ec+MTzHAp5ctJy/mI=;
- b=i22hPosZiC/dM+p3jpWetJjF42Y2kWHZbHkD+VgbrR48kvvVmP+4UMTpUhHObeenMkhb
- 7kieRdzf8MJgNG252Vn2lddlxAS1iymIblQU3kAElcjKOYqKTzjFCRN81IgBlw1wPsos
- UP9dKE9ZCi7Q9HmsTjc6C2UoJbJRXP0C6ujRtdy2nVl7Q0c/Kad2RQl7G+AnNHHGnl75
- JtV4toMaM2PbmJrXooZFto+IcC126Dx1/2sFtvLsjrA1Hqg6t1Al4ts1fqbxdRloe1GQ
- 2H9tdylmPE/VYHtHEE3QcxJUoI56rt6zC4BKVU9LONMpnk0nu4WuKmRseQiThfRXKV/M Rg== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 309gw4cj49-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 Apr 2020 10:22:13 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 039ALakk093384;
- Thu, 9 Apr 2020 10:22:12 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 3091m7g8m5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 Apr 2020 10:22:12 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 039AMBAk020185;
- Thu, 9 Apr 2020 10:22:11 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 09 Apr 2020 03:22:10 -0700
-Date: Thu, 9 Apr 2020 13:22:03 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Oliver Graute <oliver.graute@gmail.com>
-Subject: Re: [PATCH v1] staging: fbtft: fb_st7789v: Initialize the Display
-Message-ID: <20200409102013.GP2001@kadam>
-References: <1586424337-26602-1-git-send-email-oliver.graute@gmail.com>
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 19BC78710D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  9 Apr 2020 11:16:56 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id h2so3486327wmb.4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 09 Apr 2020 04:16:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vhQ2Pfznn3C1oqtuIXZCwUFBXYKoOtCTzcWGjTNpqrU=;
+ b=uDmVKdt3Cc9d6RN1nqT8qyte4oNvBVq95dt9scuElDhoo+VEwmvkNwHsHJfvme8xFt
+ sqkM40TOzrQQlGhpl1f1BN8x1197BeQoTbJ7SYNzad4p6eY+AowRyVGeBOC4E90msQ9P
+ NEQpHhH3Clw+Y1vXPG4703dPc/hA0zs7yZzJFhtBr3I2yNT50l+lSY/MJ4PChx2vi5/9
+ 7/D8NAQRmZXKU6ZyCaW1b6sJpYEZjVdvDU2TIKzOldi5ri4nlzdtrwalC7hMoUYZ2HVQ
+ od6WvipCSMe+KwP0cWguECTtDprfzUL6j0yYuzmNK8GtTTXbpymoc//rGAcuoNruO4mm
+ BP6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vhQ2Pfznn3C1oqtuIXZCwUFBXYKoOtCTzcWGjTNpqrU=;
+ b=iqsTF8bv0dJejrhCXJ4+eYltTAdkUnT65Ry12dxs54++z7VRzdyInfsmMDQ3TJ3PvP
+ GRz2uz5rbLvlhe9TV5cPwq5a6M9yHMpR9W8Zg5tDCxZ3KC48lAodaX2whiQQywl34E6q
+ oOel4ivfCG8paudiRL5/lYqsMqU3X2s+PnTU917Vheev7y+hqcqSmKRHWTRkfq7b6IPS
+ HG9LWVtc7Ym0aDKEMD/yKfX54qM2fkuKngmYvuVAmc4A5NrIovefn+lCCqOM0S/Rix0P
+ Kwr4swzezY8NRwwvcQgZzwyq4nL1Vs7LNNU3yiaSXFPhVCX7FIfWWYKEXlyPI7cQMZ6n
+ AliQ==
+X-Gm-Message-State: AGi0Pub2ZZ+3/TGa1IeD6eWlDeQBy0XwKEnmmHY5A4D9JgtVEziCj22w
+ pRKDzW0a4nJVdIKBCHXM6MA=
+X-Google-Smtp-Source: APiQypI+TJ5Xf+pg3fhOdnlLFnDixbBJJvpqb6LRTO1kBMx85hNYh80lg41z801KWizuyTS8/mKhiA==
+X-Received: by 2002:a05:600c:c5:: with SMTP id u5mr2402527wmm.98.1586431014425; 
+ Thu, 09 Apr 2020 04:16:54 -0700 (PDT)
+Received: from localhost.localdomain
+ (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
+ by smtp.gmail.com with ESMTPSA id c4sm3480448wmb.5.2020.04.09.04.16.53
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 09 Apr 2020 04:16:53 -0700 (PDT)
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: mt7621-pci: properly power off dual-ported pcie phy
+Date: Thu,  9 Apr 2020 13:16:52 +0200
+Message-Id: <20200409111652.30964-1-sergio.paracuellos@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1586424337-26602-1-git-send-email-oliver.graute@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9585
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- bulkscore=0 mlxscore=0
- malwarescore=0 spamscore=0 adultscore=0 suspectscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004090078
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9585
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 bulkscore=0
- phishscore=0 lowpriorityscore=0 impostorscore=0 clxscore=1015
- suspectscore=0 malwarescore=0 spamscore=0 mlxlogscore=999 mlxscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004090077
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,61 +89,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- gregkh@linuxfoundation.org, Oliver Graute <oliver.graute@kococonnector.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Cc: neil@brown.name, driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Apr 09, 2020 at 11:25:32AM +0200, Oliver Graute wrote:
-> From: Oliver Graute <oliver.graute@kococonnector.com>
-> 
-> Set Gamma Values and Register Values for the HSD20_IPS
-> 
-> Signed-off-by: Oliver Graute <oliver.graute@kococonnector.com>
-> ---
->  drivers/staging/fbtft/fb_st7789v.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/staging/fbtft/fb_st7789v.c b/drivers/staging/fbtft/fb_st7789v.c
-> index 84c5af2dc9a0..b0aa96b703a8 100644
-> --- a/drivers/staging/fbtft/fb_st7789v.c
-> +++ b/drivers/staging/fbtft/fb_st7789v.c
-> @@ -17,8 +17,8 @@
->  #define DRVNAME "fb_st7789v"
->  
->  #define DEFAULT_GAMMA \
-> -	"70 2C 2E 15 10 09 48 33 53 0B 19 18 20 25\n" \
-> -	"70 2C 2E 15 10 09 48 33 53 0B 19 18 20 25"
-> +	"D0 05 0A 09 08 05 2E 44 45 0F 17 16 2B 33\n" \
-> +	"D0 05 0A 09 08 05 2E 43 45 0F 16 16 2B 33"
+Pcie phy for pcie0 and pcie1 is shared using a dual ported
+one. Current code was assuming that if nothing is connected
+in pcie0 it won't be also nothing connected in pcie1. This
+assumtion is wrong for some devices such us 'Mikrotik rbm33g'
+and 'ZyXEL LTE3301-PLUS' where only connecting a card to the
+second bus on the phy is possible. For such devices kernel
+hangs in the same point because of the wrong poweroff of the
+phy getting the following trace:
 
-How do you know this won't break someone else's setup?
+mt7621-pci-phy 1e149000.pcie-phy: PHY for 0xbe149000 (dual port = 1)
+mt7621-pci-phy 1e14a000.pcie-phy: PHY for 0xbe14a000 (dual port = 0)
+mt7621-pci-phy 1e149000.pcie-phy: Xtal is 40MHz
+mt7621-pci-phy 1e14a000.pcie-phy: Xtal is 40MHz
+mt7621-pci 1e140000.pcie: pcie0 no card, disable it (RST & CLK)
+[hangs]
 
->  
->  /**
->   * enum st7789v_command - ST7789V display controller commands
-> @@ -83,13 +83,13 @@ static int init_display(struct fbtft_par *par)
->  	/* set pixel format to RGB-565 */
->  	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, MIPI_DCS_PIXEL_FMT_16BIT);
->  
-> -	write_reg(par, PORCTRL, 0x08, 0x08, 0x00, 0x22, 0x22);
-> +	write_reg(par, PORCTRL, 0x05, 0x05, 0x00, 0x33, 0x33);
+The wrong assumption is located in the 'mt7621_pcie_init_ports'
+function where we are just making a power off of the phy for
+slots 0 and 2 if nothing is connected in them. Hence, only
+poweroff the phy if nothing is connected in both slot 0 and
+slot 1 avoiding the kernel to hang.
 
-Without knowing anything at all about this driver, it feels like this
-should be:
+Fixes: 5737cfe87a9c ("staging: mt7621-pci: avoid to poweroff the phy for slot one")
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+---
+ drivers/staging/mt7621-pci/pci-mt7621.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-	if (new_hardware)
-		write_reg(par, PORCTRL, 0x05, 0x05, 0x00, 0x33, 0x33);
-	else
-		write_reg(par, PORCTRL, 0x08, 0x08, 0x00, 0x22, 0x22);
-
-Same comment for the rest of the patch.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+index f58e3a51fc71..b9d460a9c041 100644
+--- a/drivers/staging/mt7621-pci/pci-mt7621.c
++++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+@@ -502,17 +502,25 @@ static void mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
+ 
+ 	mt7621_pcie_reset_ep_deassert(pcie);
+ 
++	tmp = NULL;
+ 	list_for_each_entry(port, &pcie->ports, list) {
+ 		u32 slot = port->slot;
+ 
+ 		if (!mt7621_pcie_port_is_linkup(port)) {
+ 			dev_err(dev, "pcie%d no card, disable it (RST & CLK)\n",
+ 				slot);
+-			if (slot != 1)
+-				phy_power_off(port->phy);
+ 			mt7621_control_assert(port);
+ 			mt7621_pcie_port_clk_disable(port);
+ 			port->enabled = false;
++
++			if (slot == 0) {
++				tmp = port;
++				continue;
++			}
++
++			if (slot == 1 && tmp && !tmp->enabled)
++				phy_power_off(tmp->phy);
++
+ 		}
+ 	}
+ }
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
