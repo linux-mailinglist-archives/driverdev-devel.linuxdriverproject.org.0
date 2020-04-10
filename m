@@ -1,81 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C21961A45AC
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Apr 2020 13:29:28 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 73D6288289;
-	Fri, 10 Apr 2020 11:29:26 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hBLmaAIJ-+JS; Fri, 10 Apr 2020 11:29:26 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D9B8288258;
-	Fri, 10 Apr 2020 11:29:25 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4AD101BF2FB
- for <devel@linuxdriverproject.org>; Fri, 10 Apr 2020 11:29:23 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 62B681A45AE
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Apr 2020 13:29:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 47D3A877F1
- for <devel@linuxdriverproject.org>; Fri, 10 Apr 2020 11:29:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CC22388141;
+	Fri, 10 Apr 2020 11:29:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cgfC216omx64; Fri, 10 Apr 2020 11:29:35 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id D1D77880E9;
+	Fri, 10 Apr 2020 11:29:34 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2A0D01BF2FB
+ for <devel@linuxdriverproject.org>; Fri, 10 Apr 2020 11:29:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 26BD185A22
+ for <devel@linuxdriverproject.org>; Fri, 10 Apr 2020 11:29:33 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fRE4lheEBvEu for <devel@linuxdriverproject.org>;
- Fri, 10 Apr 2020 11:29:22 +0000 (UTC)
+ with ESMTP id HPm-b7b-Brd5 for <devel@linuxdriverproject.org>;
+ Fri, 10 Apr 2020 11:29:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9A8B9875A9
- for <devel@driverdev.osuosl.org>; Fri, 10 Apr 2020 11:29:21 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8187A85450
+ for <devel@driverdev.osuosl.org>; Fri, 10 Apr 2020 11:29:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1586518154;
- bh=KtSi/VbBy7h2f5/PPhtzMU8agjhettQ5lYTN7Xt9ILg=;
+ s=badeba3b8450; t=1586518164;
+ bh=sWYYu3vMxv+gaoLrrDxDuwL+UgyJB+3aK94jNvqAN2Q=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=CnTn4UWZFmtqmOQPprxvfziLGj0UNzSaWAMsHldOsEc2eijtqPMNDt5XFc7mY1lO0
- ERfla1e/sCiLcrXm+53FOrHVcF0OgVxvekkn5No8OCWWv1FtI1/t0u1DGhF6ye/Gjk
- Sl8a+by4nIIbl2CdM1gos0uZueTzQLtqeTVAbfgY=
+ b=BJJD/x4jqvq8NcP0wyK/pY2vf35HluMdDC/CRo2x4vNPk1INvVbmM1P45Dg8ktR5t
+ 0K98hBx4DsqcxZ1DxdcBs6y2ByhlQDZSTp2RyXhuf/GtgonQAWX9Y0QemAf1toHdZz
+ eeGzFriMDkuXGFNF/ojelaf8tu6DKp4P5hzljEA0=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
  (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1MXp9i-1jm6uT3Rbo-00Y6om; Fri, 10 Apr 2020 13:29:13 +0200
+ 1M8ykW-1jK6gn3GvW-0069YE; Fri, 10 Apr 2020 13:29:23 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
 To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/2] staging: vt6656: Refactor the assignment of the
- phy->signal variable
-Date: Fri, 10 Apr 2020 13:28:33 +0200
-Message-Id: <20200410112834.17490-2-oscar.carter@gmx.com>
+Subject: [PATCH 2/2] staging: vt6656: Remove duplicate code for the
+ phy->service assignment
+Date: Fri, 10 Apr 2020 13:28:34 +0200
+Message-Id: <20200410112834.17490-3-oscar.carter@gmx.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200410112834.17490-1-oscar.carter@gmx.com>
 References: <20200410112834.17490-1-oscar.carter@gmx.com>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:GwHkx9hixyR4J7tLmd1opGX8K7/qhqgCPuFQ/YcedJdrilOfwu+
- aU4l87PFkEMzp5Y6AvS6hiFvnUcR6reyHplEQKp9JypEER0PulQuDpWYGoemqdV07i7qO4T
- caKntc7XbJtAeWY+ox0XRXABBOSi7rwwOmpEkUmRSq0yEJ4VOV3Lyx1LTaGqyCYLB6Yc5FP
- Zzg9WT57t41Zx14VkHFmg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DAq6SO9FoRQ=:Q8Ifa0KpW6o/8CEISXwc/Y
- LaDlaBgPZ66JQxFeeiGcxEsQRrENavN0Wcy8ijatwrGdCAL/tPXrhyjt9XfCgN+sbMtAc34b/
- NjB6IV1Uv8lsP4CNWeYl+uDyCWDVCDQgqSGrUmZdve+/TwHljScqekaNBJtvqsQdtmLnbXpc2
- ca3svRUZYRPFcxKgzKL3/o5cWqFBPskA6+9DE85QEQO1o+jwjzrEmioWkUnb3BakYQVQs7iel
- wZVSUoujaIBJCvs8VnFasIU7RGYbMAlLSXfpxfTLWJLzE11ra/r1994DMONK3kKr1tV+ZlGjh
- +EgxpihynHhOv0OGgO+B0xl5GZPMNkb8P7k0UurjDUF2868dzu1KFbfInXoTAe6zCTm7fENQw
- po0REyPWzHpXuUB97GDswM9Eo9xzLdNadYMZM0cYVXPkrv0RyLRQy0GCiWMhaqJ8fkaUGLjFq
- dBynEJUYt8wReJ3nbbVnqKgsCiUVuQUAn6dDwB2zjzYBAm6BUPFikcJwoJ7OUZ9zN8D70o+hk
- mXpscY3fYTS8JcoOhfTVqasAox5dLz7V0XL1s4lP4aWlE6ruRirm02c+nzqvn/sLI4O73eKbM
- yCfOYGDaXWqUN2GEHctjeZmU/Im61JywiMwEu8464HUkrP7M/eV16RQwnVXK09bV/rzZB9uA9
- kHoDGmGTU1G/3qn6Jm/cKW1OStX20MSjaIRgzSfJ3ezLq+KTaj3qxiCWUxnRzo/Mlm2DBZEyu
- BAfT6Snx3p/cwy9efx6X/jFdtHW/JJV3yDGhCctZKV2kzC4twaYF/pDBAxPbfEtIsPuUXn3V/
- bhatlWfFKeeTMOR1DhHsfqsvauCJGnAJNHv9QuhdsabHd422uFExv3CGr9+o95NGB1l/kZzuQ
- DAnFA2BoAm4ucHO45eflGaYUm0znSKp6yvtkAcA28xY7qYpoSZgO0bY04xMS4V+SoquM1YywK
- W6Q4F/ApVrmFMqd3AvK5Z3m5ATG+JTgQPLTG85l2gBSgei9FRF61e1vVqR4BCJIwLXYP5785X
- nmxZpn64BbuU8TKn5FJuUA4B6rDagxfkqLTRBQIVdC05RSorHIUCtnjhofOpPkNi/kr0Y46eE
- lZaIV3dzrCy6RL4nV54d+m3uE91ZVwGabOZ5GKzV8FdmxadcJH7tnoJs/3HFueXWN24a/fiR5
- kjLZDY9cyY2NO1yAl20TjKs5nkMyVBPB0fNn6Y3vrN1H9P7lwj8k2t/Dc+EjsrFeUBLQUEheI
- Szf5wbYc1hYGZix5M
+X-Provags-ID: V03:K1:NjWxbGtEZJAAq5q9d0g2t52pyLQL1cNj7YfLf+Ywk7tnZX8Z8KN
+ 2L7jusOoUGtMZ3F+D+HvU/4v/Y2MJvSrSsCwkMmdN2Vaa7ZySflHMSQksANCnXHsiYoGW01
+ aTfO/HAQ3gVRnIU5cY1Sq3mswAmE33pYsOjybyVw4MXUaQMxpS39YCg4py91AvMMduKgN+T
+ RwEVZ5LjVyW7eiKMft81w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Wy3xv9jGFSk=:iAyDj2NhE+ynqdygNhH/Ct
+ lZQnd11jEtK6UzJ4SewJPHxNRA4JXoKiHjrwX7pUE5qartSUu3m8EpylNCFZpjMd620UnfHBR
+ UltOpJtACX1h3ajBGnLpHpPOJEzjvb+2vZX6vdMS56TKtGrV/4UGutYOA0m6sh4LdSVW3WL3p
+ Bk3tRzv2YXSK7xo6W1Nh7kFg3SGAFk4en3oKPDh2WtS9hALqvo55in/McWaEDvtRP9/44hnz9
+ bYD9smU8rGdctYXcQgoHK/fYyFIZKmm/tUhqcjXJwJ/dIepOHrH0KdiS79BWc9Jktw5KNQq4R
+ Rt+VPMPJmiQAmYxAxWe6R+msp3rWoJQq4YXNPT6j7wq9OejXClghKig35O1oEKXbqh5/L4LMB
+ 7AWKUCjGgtz9kMCW1SWSOOkXNmLqpM13Yl2mo1+DIo+cdrOcC4hkAHJp9HwkO8fojWCL5nsZk
+ JSdokShKYloxHY7fM/SvHeV+bM45boJNQ1t/o2M5Rfxajf7elqFX6T11OLwv81TTls6QxIhjw
+ 6yQ+NQYXyLYX3P8vyBxbHiQ5FgmqWZzZsaiLksJvsT5wg2HLif6+061lF7h8hQ9i/J0w7+raL
+ jZgI2a1maJmiYw+FZVHhUFoA6gSqq6KiTa7CtQN78jiAFeQlN+dCPVaOLKi3OprYe2XrSFii5
+ OqpwEdTaITiZgc8AIaz4tTX47kF7KM/yO6XUXMPZrPw4gvRwZjx3w9A8iPpSGSR1cA6WqnnlL
+ ZfuyCbeWlyVUqtNbpd83KcFO7/usoNRWUFwAGXWgdQzwYIJK1qA3mWiNEIpukg5slgSJgGnJo
+ H/Nr3jqoj0CeqsI0EqkdfdwZEy3yWqQwlNgzJbnNddaGL2fa8UdHkX98oF1DGKYQHSU/OWb8W
+ r4+8/tTcDzWDulK/40SxRrqmSxtv5IRz0DQJl60G5QsOAuqZhVxaf8WWiBTR0m0WLLjtr5W+Y
+ EPSezMjas8FlTk1I2f7ny9cDpJHMQxBoUepkoVTZs4R6q97J95d/hPuUTf58UCX8AUnLOzifL
+ iFsamqG94K+vyaLRRFdRpHeu5HXLHiB19xyRZUcvkWSRf4U7Jx8ZB8BdDm49XD9dJ42MkfByy
+ T301XQhMWWaegvyetpTrB1K8me4afHvSv/CxOxC8PNYLQpeC1IV/ir8C3cZstvCYBdOjn6ueZ
+ l8OR/Mua4jaeUVseenZ9ykHfQs0neyAA3vpqqKveIMS5PlBjKptE3vvjrYOLu62rh3r1ATME4
+ PUrhHEoHzvXUIu2vi
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,158 +95,34 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Create a constant array with the values of the "phy->signal" for every
-rate. Remove all "phy->signal" assignments inside the switch statement
-and replace these with a single reading from the new vnt_phy_signal
-array.
+Take out the "phy->service" assignment from the if-else statement due to
+it's the same for the two branches.
 
 Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 ---
- drivers/staging/vt6656/baseband.c | 101 +++++++-----------------------
- 1 file changed, 21 insertions(+), 80 deletions(-)
+ drivers/staging/vt6656/baseband.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
-index a19a563d8bcc..47f93bf6e07b 100644
+index 47f93bf6e07b..b0054f6c07e6 100644
 --- a/drivers/staging/vt6656/baseband.c
 +++ b/drivers/staging/vt6656/baseband.c
-@@ -115,6 +115,21 @@ static const u16 vnt_frame_time[MAX_RATE] = {
- 	10, 20, 55, 110, 24, 36, 48, 72, 96, 144, 192, 216
- };
+@@ -233,14 +233,13 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+ 			       : preamble_type == PREAMBLE_SHORT;
 
-+static const u8 vnt_phy_signal[][2] = {
-+	{0x00, 0x00},	/* RATE_1M  */
-+	{0x01, 0x09},	/* RATE_2M  */
-+	{0x02, 0x0a},	/* RATE_5M  */
-+	{0x03, 0x0b},	/* RATE_11M */
-+	{0x8b, 0x9b},	/* RATE_6M  */
-+	{0x8f, 0x9f},	/* RATE_9M  */
-+	{0x8a, 0x9a},	/* RATE_12M */
-+	{0x8e, 0x9e},	/* RATE_18M */
-+	{0x89, 0x99},	/* RATE_24M */
-+	{0x8d, 0x9d},	/* RATE_36M */
-+	{0x88, 0x98},	/* RATE_48M */
-+	{0x8c, 0x9c}	/* RATE_54M */
-+};
-+
- /*
-  * Description: Calculate data frame transmitting time
-  *
-@@ -183,6 +198,7 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
- 	u32 count = 0;
- 	u32 tmp;
- 	int ext_bit;
-+	int i, j;
- 	u8 preamble_type = priv->preamble_type;
-
- 	bit_count = frame_length * 8;
-@@ -191,27 +207,12 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
- 	switch (tx_rate) {
- 	case RATE_1M:
- 		count = bit_count;
--
--		phy->signal = 0x00;
--
- 		break;
- 	case RATE_2M:
- 		count = bit_count / 2;
--
--		if (preamble_type == 1)
--			phy->signal = 0x09;
--		else
--			phy->signal = 0x01;
--
- 		break;
- 	case RATE_5M:
- 		count = DIV_ROUND_UP(bit_count * 10, 55);
--
--		if (preamble_type == 1)
--			phy->signal = 0x0a;
--		else
--			phy->signal = 0x02;
--
- 		break;
- 	case RATE_11M:
- 		count = bit_count / 11;
-@@ -224,74 +225,14 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
- 				ext_bit = true;
- 		}
-
--		if (preamble_type == 1)
--			phy->signal = 0x0b;
--		else
--			phy->signal = 0x03;
--
--		break;
--	case RATE_6M:
--		if (pkt_type == PK_TYPE_11A)
--			phy->signal = 0x9b;
--		else
--			phy->signal = 0x8b;
--
--		break;
--	case RATE_9M:
--		if (pkt_type == PK_TYPE_11A)
--			phy->signal = 0x9f;
--		else
--			phy->signal = 0x8f;
--
--		break;
--	case RATE_12M:
--		if (pkt_type == PK_TYPE_11A)
--			phy->signal = 0x9a;
--		else
--			phy->signal = 0x8a;
--
--		break;
--	case RATE_18M:
--		if (pkt_type == PK_TYPE_11A)
--			phy->signal = 0x9e;
--		else
--			phy->signal = 0x8e;
--
--		break;
--	case RATE_24M:
--		if (pkt_type == PK_TYPE_11A)
--			phy->signal = 0x99;
--		else
--			phy->signal = 0x89;
--
- 		break;
--	case RATE_36M:
--		if (pkt_type == PK_TYPE_11A)
--			phy->signal = 0x9d;
--		else
--			phy->signal = 0x8d;
-+	}
-
--		break;
--	case RATE_48M:
--		if (pkt_type == PK_TYPE_11A)
--			phy->signal = 0x98;
--		else
--			phy->signal = 0x88;
-+	i = tx_rate > RATE_54M ? RATE_54M : tx_rate;
-+	j = tx_rate > RATE_11M ? pkt_type == PK_TYPE_11A
-+			       : preamble_type == PREAMBLE_SHORT;
-
--		break;
--	case RATE_54M:
--		if (pkt_type == PK_TYPE_11A)
--			phy->signal = 0x9c;
--		else
--			phy->signal = 0x8c;
--		break;
--	default:
--		if (pkt_type == PK_TYPE_11A)
--			phy->signal = 0x9c;
--		else
--			phy->signal = 0x8c;
--		break;
--	}
-+	phy->signal = vnt_phy_signal[i][j];
+ 	phy->signal = vnt_phy_signal[i][j];
++	phy->service = 0x00;
 
  	if (pkt_type == PK_TYPE_11B) {
- 		phy->service = 0x00;
+-		phy->service = 0x00;
+ 		if (ext_bit)
+ 			phy->service |= 0x80;
+ 		phy->len = cpu_to_le16((u16)count);
+ 	} else {
+-		phy->service = 0x00;
+ 		phy->len = cpu_to_le16((u16)frame_length);
+ 	}
+ }
 --
 2.20.1
 
