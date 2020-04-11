@@ -1,75 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D64B91A5331
-	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Apr 2020 19:42:43 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CFA441A5371
+	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Apr 2020 20:44:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F1CA187E60;
-	Sat, 11 Apr 2020 17:42:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4694985FD6;
+	Sat, 11 Apr 2020 18:44:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kHxK3dPqvdWJ; Sat, 11 Apr 2020 17:42:41 +0000 (UTC)
+	with ESMTP id b-W2kcECC0Cn; Sat, 11 Apr 2020 18:44:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5754687E4D;
-	Sat, 11 Apr 2020 17:42:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6838A8506A;
+	Sat, 11 Apr 2020 18:44:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ACDBC1BF29E
- for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 17:42:38 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A9671BF35A
+ for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 18:44:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A41DA87E40
- for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 17:42:38 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6B65E8506A
+ for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 18:44:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qm5T8MdQJIhT for <devel@linuxdriverproject.org>;
- Sat, 11 Apr 2020 17:42:37 +0000 (UTC)
+ with ESMTP id dsiZcLN5jp_X for <devel@linuxdriverproject.org>;
+ Sat, 11 Apr 2020 18:44:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f65.google.com (mail-ed1-f65.google.com
- [209.85.208.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6CD5687AAF
- for <devel@driverdev.osuosl.org>; Sat, 11 Apr 2020 17:42:37 +0000 (UTC)
-Received: by mail-ed1-f65.google.com with SMTP id ca21so3995491edb.7
- for <devel@driverdev.osuosl.org>; Sat, 11 Apr 2020 10:42:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=e61/lw3LcPWdbUCePtXNS18yHZNyuLTCED3Qz5AQidg=;
- b=fo891R1f8nlqYAqA8l8VK8vyKEIAbj0uutXxo2yqmAziMQ4EasyxDP0RH2zuwmycTv
- 1/zdC4dh2uTWTSFiA3OYD+H+3AcTI9B4wXcU3zyo5TB1DLwzUkgbFYBjtFUJYBfbRTX0
- Kl7QGTjPk/2/tZCzVJ3WHPxoWILa/WP8uciYw=
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5665B84FB9
+ for <devel@driverdev.osuosl.org>; Sat, 11 Apr 2020 18:44:13 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id p10so5807898wrt.6
+ for <devel@driverdev.osuosl.org>; Sat, 11 Apr 2020 11:44:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=qbAmXv4gkYEwPnYlm13uMGO26cFv1d8KW0uIxq26NJw=;
+ b=cvQQAS+swf3auT6zitPbY5XWfGIw7RnfYp7Dxseu021Xf/hURAnd731xd6ByMxVnE5
+ /5JE3mSQS8GZFCkAnWFNrpEVii3xArS3junVB5xXvd5RWMHqI30ucHBOkxnQhvD4str+
+ b8dJw9J+/lnsUfEEEa70oCPkucQ1/bCFEX6Jv2tpK3abJC0WkuwIE8J1g1xqODSdbdg5
+ 6ZHLpCVQqfxPz9470trQqSuzHZYuD2Y7wV5G1XJOCgg8VCc8olFqUZi4HI2q3CHyge97
+ Jp5ezl1AQAnqiupfowBmEd6r1tjn+CWmZxK1hP3aEXPADSrwMwthS2V87qUOfeEsMyTa
+ cKWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=e61/lw3LcPWdbUCePtXNS18yHZNyuLTCED3Qz5AQidg=;
- b=sAIkDhz8iK4vLLTxwxHCSBY7A23fFXM/vO6fCS5ygIj8bfWwoFDETZGwCJ6QCgjtMG
- BH9QJXqHk0awYoUEadsr9kZ6dHg4JOH4NAw3Alz2ljDFghXcFdIaO5CXaqQqsY5TmvBT
- k9oAPdHc5DDQJiG58a6XunQC/eQ4HNIfvF+tgwIVDOuHbRreFUkIqWwQVahHs50xycfn
- UEd6XWL1yUa1f5FhWgOI9O5r9LBKjbK1tADMDDe9+VDEOmGfgu2CPR1m+qNWwbSiCo1t
- cY3L1VlI2LUp+E0SB5aSIpKeIwc6/8tdEAobGIrlh/YzpalRgXjB8MFcUy/0H3UXsTkr
- LW7g==
-X-Gm-Message-State: AGi0PuZz9cq87Oz6TAENh7/WwWs+JVeUcicc72Y+M+IGlqYD8FRkWrsP
- pc0SdjYm8GnOm80q3eMoSn+o4zL/6wfSaxXJ
-X-Google-Smtp-Source: APiQypJKcfFoAB4ZvmjtYh9c4vCgpnCENg82oBpK/7cK65AgJOlLHsrjbhBs+fXwU9o2uMCaSQe0Zg==
-X-Received: by 2002:adf:8543:: with SMTP id 61mr10006419wrh.243.1586626634449; 
- Sat, 11 Apr 2020 10:37:14 -0700 (PDT)
-Received: from tfiga.c.googlers.com.com
- (205.215.190.35.bc.googleusercontent.com. [35.190.215.205])
- by smtp.gmail.com with ESMTPSA id x8sm8618512wrn.27.2020.04.11.10.37.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 11 Apr 2020 10:37:13 -0700 (PDT)
-From: Tomasz Figa <tfiga@chromium.org>
-To: linux-media@vger.kernel.org
-Subject: [PATCH] media: staging: ipu3: Fix stale list entries on parameter
- queue failure
-Date: Sat, 11 Apr 2020 17:37:10 +0000
-Message-Id: <20200411173710.226247-1-tfiga@chromium.org>
-X-Mailer: git-send-email 2.26.0.110.g2183baf09c-goog
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=qbAmXv4gkYEwPnYlm13uMGO26cFv1d8KW0uIxq26NJw=;
+ b=BqAP9o6EagQi/cgzice73KS3vPV27DwIdn0TAf2AbyaEE6kqIG3R//jz59Qe5m6dw3
+ 3YFXXYVV/9byc0Buz8GyD6Q7Oic4/AlSJoPHvkDlebOUoVAfnEjwfUTgQbGFUQmrbYFb
+ SFolENMaiHQn8v7oxo2r1WkddLyUnreQtqLdsLXkewL5U8Rp/bypzOjzuIE7ugi+D0UQ
+ wZs+ETzb4t+BO6YJK1eYwv/FIQLAMU0RHMfDGUjyzZ/Edd0f0cJn1un5LSsAqeXrRZMM
+ PXaD5VSz5HH94IE1Y6tIBNz/BZUYP91kL8SzerNQTRw5e/TBDlFw8CW4cjXxrB/onS9T
+ Wvhw==
+X-Gm-Message-State: AGi0PuZJOfkpM+VFg7JoTCHTzqgaEkzojh2OGj4aod+Vpjnr6qdWCqme
+ XXESYdTmQRXBoxyQVXe6xMo=
+X-Google-Smtp-Source: APiQypJ3zKSW2SWMJsrR6BbvGffixQ66eGbsiimoQxdXQw1I4Iew0RnzUW2XkmuNLPKkVqHQ49Zp+A==
+X-Received: by 2002:a5d:4748:: with SMTP id o8mr10538702wrs.422.1586630651762; 
+ Sat, 11 Apr 2020 11:44:11 -0700 (PDT)
+Received: from [192.168.43.18] (94.197.121.102.threembb.co.uk.
+ [94.197.121.102])
+ by smtp.gmail.com with ESMTPSA id y1sm8592049wmd.14.2020.04.11.11.44.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 11 Apr 2020 11:44:11 -0700 (PDT)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: [PATCH] staging: vt6656: formulate rspinf values into tables
+Message-ID: <311b59f0-4098-b5a1-6a50-53568b81377c@gmail.com>
+Date: Sat, 11 Apr 2020 19:44:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,190 +86,247 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, jacopo mondi <jacopo@jmondi.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Tomasz Figa <tfiga@chromium.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Tianshu Qiu <tian.shu.qiu@intel.com>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Oscar Carter <oscar.carter@gmx.com>, linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When queuing parameters fails, current code bails out without deleting
-the corresponding vb2 buffer from the driver buffer list, but the buffer
-is returned to vb2. This leads to stale list entries and a crash when
-the driver stops streaming:
+Four tables can be extracted from RSPINF_A_* based on BB_TYPE_11A or
+else being GB rates.
 
-[  224.935561] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  224.998932] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  225.064430] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  225.128534] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  225.194945] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  225.360363] ------------[ cut here ]------------
-[  225.360372] WARNING: CPU: 0 PID: 6704 at
-drivers/media/common/videobuf2/videobuf2-core.c:927
-vb2_buffer_done+0x20f/0x21a [videobuf2_common]
-[  225.360374] Modules linked in: snd_seq_dummy snd_seq snd_seq_device
-veth bridge stp llc tun nf_nat_tftp nf_conntrack_tftp nf_nat_ftp
-nf_conntrack_ftp esp6 ah6 ip6t_REJECT ip6t_ipv6header cmac rfcomm uinput
-ipu3_imgu(C) ipu3_cio2 iova videobuf2_v4l2 videobuf2_common
-videobuf2_dma_sg videobuf2_memops ov13858 ov5670 v4l2_fwnode dw9714
-acpi_als xt_MASQUERADE fuse iio_trig_sysfs cros_ec_sensors_ring
-cros_ec_light_prox cros_ec_sensors cros_ec_sensors_core
-industrialio_triggered_buffer kfifo_buf industrialio
-cros_ec_sensorsupport cdc_ether btusb btrtl btintel btbcm usbnet
-bluetooth ecdh_generic ecc hid_google_hammer iwlmvm iwl7000_mac80211
-r8152 mii lzo_rle lzo_compress iwlwifi zram cfg80211 joydev
-[  225.360400] CPU: 0 PID: 6704 Comm: CameraDeviceOps Tainted: G
-C        5.4.30 #5
-[  225.360402] Hardware name: HP Soraka/Soraka, BIOS
-Google_Soraka.10431.106.0 12/03/2019
-[  225.360405] RIP: 0010:vb2_buffer_done+0x20f/0x21a [videobuf2_common]
-[  225.360408] Code: 5e 41 5f 5d e9 e0 16 5a d4 41 8b 55 08 48 c7 c7 8f
-8b 5c c0 48 c7 c6 36 9a 5c c0 44 89 f9 31 c0 e8 a5 1c 5b d4 e9 53 fe ff
-ff <0f> 0b eb a3 e8 12 d7 43 d4 eb 97 0f 1f 44 00 00 55 48 89 e5 41 56
-[  225.360410] RSP: 0018:ffff9468ab32fba8 EFLAGS: 00010297
-[  225.360412] RAX: ffff8aa7a51577a8 RBX: dead000000000122 RCX:
-ffff8aa7a51577a8
-[  225.360414] RDX: 0000000000000000 RSI: 0000000000000006 RDI:
-ffff8aa7a5157400
-[  225.360416] RBP: ffff9468ab32fbd8 R08: ffff8aa64e47e600 R09:
-0000000000000000
-[  225.360418] R10: 0000000000000000 R11: ffffffffc06036e6 R12:
-dead000000000100
-[  225.360420] R13: ffff8aa7820f1940 R14: ffff8aa7a51577a8 R15:
-0000000000000006
-[  225.360422] FS:  00007c1146ffd700(0000) GS:ffff8aa7baa00000(0000)
-knlGS:0000000000000000
-[  225.360424] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  225.360426] CR2: 00007aea3473a000 CR3: 00000000537d6004 CR4:
-00000000003606f0
-[  225.360427] Call Trace:
-[  225.360434]  imgu_return_all_buffers+0x6f/0x8e [ipu3_imgu]
-[  225.360438]  imgu_vb2_stop_streaming+0xd6/0xf0 [ipu3_imgu]
-[  225.360441]  __vb2_queue_cancel+0x33/0x22d [videobuf2_common]
-[  225.360443]  vb2_core_streamoff+0x16/0x78 [videobuf2_common]
-[  225.360448]  __video_do_ioctl+0x33d/0x42a
-[  225.360452]  video_usercopy+0x34a/0x615
-[  225.360455]  ? video_ioctl2+0x16/0x16
-[  225.360458]  v4l2_ioctl+0x46/0x53
-[  225.360462]  do_vfs_ioctl+0x50a/0x787
-[  225.360465]  ksys_ioctl+0x58/0x83
-[  225.360468]  __x64_sys_ioctl+0x1a/0x1e
-[  225.360470]  do_syscall_64+0x54/0x68
-[  225.360474]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
-[  225.360476] RIP: 0033:0x7c118030f497
-[  225.360479] Code: 8a 66 90 48 8b 05 d1 d9 2b 00 64 c7 00 26 00 00 00
-48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f
-05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d a1 d9 2b 00 f7 d8 64 89 01 48
-[  225.360480] RSP: 002b:00007c1146ffa5a8 EFLAGS: 00000246 ORIG_RAX:
-0000000000000010
-[  225.360483] RAX: ffffffffffffffda RBX: 00007c1140010018 RCX:
-00007c118030f497
-[  225.360484] RDX: 00007c114001019c RSI: 0000000040045613 RDI:
-000000000000004c
-[  225.360486] RBP: 00007c1146ffa700 R08: 00007c1140010048 R09:
-0000000000000000
-[  225.360488] R10: 0000000000000000 R11: 0000000000000246 R12:
-00007c11400101b0
-[  225.360489] R13: 00007c1140010200 R14: 00007c1140010048 R15:
-0000000000000001
-[  225.360492] ---[ end trace 73625ecfbd1c930e ]---
-[  225.360498] general protection fault: 0000 [#1] PREEMPT SMP PTI
-[  225.360501] CPU: 0 PID: 6704 Comm: CameraDeviceOps Tainted: G
-WC        5.4.30 #5
-[  225.360502] Hardware name: HP Soraka/Soraka, BIOS
-Google_Soraka.10431.106.0 12/03/2019
-[  225.360505] RIP: 0010:imgu_return_all_buffers+0x52/0x8e [ipu3_imgu]
-[  225.360507] Code: d4 49 8b 85 70 0a 00 00 49 81 c5 70 0a 00 00 49 39
-c5 74 3b 49 bc 00 01 00 00 00 00 ad de 49 8d 5c 24 22 4c 8b 30 48 8b 48
-08 <49> 89 4e 08 4c 89 31 4c 89 20 48 89 58 08 48 8d b8 58 fc ff ff 44
-[  225.360509] RSP: 0018:ffff9468ab32fbe8 EFLAGS: 00010293
-[  225.360511] RAX: ffff8aa7a51577a8 RBX: dead000000000122 RCX:
-dead000000000122
-[  225.360512] RDX: 0000000000000000 RSI: 0000000000000006 RDI:
-ffff8aa7a5157400
-[  225.360514] RBP: ffff9468ab32fc18 R08: ffff8aa64e47e600 R09:
-0000000000000000
-[  225.360515] R10: 0000000000000000 R11: ffffffffc06036e6 R12:
-dead000000000100
-[  225.360517] R13: ffff8aa7820f1940 R14: dead000000000100 R15:
-0000000000000006
-[  225.360519] FS:  00007c1146ffd700(0000) GS:ffff8aa7baa00000(0000)
-knlGS:0000000000000000
-[  225.360521] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  225.360523] CR2: 00007aea3473a000 CR3: 00000000537d6004 CR4:
-00000000003606f0
-[  225.360525] Call Trace:
-[  225.360528]  imgu_vb2_stop_streaming+0xd6/0xf0 [ipu3_imgu]
-[  225.360531]  __vb2_queue_cancel+0x33/0x22d [videobuf2_common]
-[  225.360534]  vb2_core_streamoff+0x16/0x78 [videobuf2_common]
-[  225.360537]  __video_do_ioctl+0x33d/0x42a
-[  225.360540]  video_usercopy+0x34a/0x615
-[  225.360542]  ? video_ioctl2+0x16/0x16
-[  225.360546]  v4l2_ioctl+0x46/0x53
-[  225.360548]  do_vfs_ioctl+0x50a/0x787
-[  225.360551]  ksys_ioctl+0x58/0x83
-[  225.360554]  __x64_sys_ioctl+0x1a/0x1e
-[  225.360556]  do_syscall_64+0x54/0x68
-[  225.360559]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
-[  225.360561] RIP: 0033:0x7c118030f497
-[  225.360563] Code: 8a 66 90 48 8b 05 d1 d9 2b 00 64 c7 00 26 00 00 00
-48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f
-05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d a1 d9 2b 00 f7 d8 64 89 01 48
-[  225.360565] RSP: 002b:00007c1146ffa5a8 EFLAGS: 00000246 ORIG_RAX:
-0000000000000010
-[  225.360567] RAX: ffffffffffffffda RBX: 00007c1140010018 RCX:
-00007c118030f497
-[  225.360569] RDX: 00007c114001019c RSI: 0000000040045613 RDI:
-000000000000004c
-[  225.360570] RBP: 00007c1146ffa700 R08: 00007c1140010048 R09:
-0000000000000000
-[  225.360572] R10: 0000000000000000 R11: 0000000000000246 R12:
-00007c11400101b0
-[  225.360574] R13: 00007c1140010200 R14: 00007c1140010048 R15:
-0000000000000001
-[  225.360576] Modules linked in: snd_seq_dummy snd_seq snd_seq_device
-veth bridge stp llc tun nf_nat_tftp nf_conntrack_tftp nf_nat_ftp
-nf_conntrack_ftp esp6 ah6 ip6t_REJECT ip6t_ipv6header cmac rfcomm uinput
-ipu3_imgu(C) ipu3_cio2 iova videobuf2_v4l2 videobuf2_common
-videobuf2_dma_sg videobuf2_memops ov13858 ov567
+Preamble short or long tables from fixed size len of 14 for RSPINF_B rates.
 
-Fix this by moving the list_del() call just below the list_first_entry()
-call when the buffer no longer needs to be in the list.
+Remove function vnt_calculate_ofdm_rate and replace with the tables
+calling RSPINF_A and RSPINF_B separately.
 
-Fixes: 8ecc7c9da013 ("media: staging/intel-ipu3: parameter buffer refactoring")
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- drivers/staging/media/ipu3/ipu3.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/vt6656/card.c | 196 +++++++---------------------------
+ 1 file changed, 40 insertions(+), 156 deletions(-)
 
-diff --git a/drivers/staging/media/ipu3/ipu3.c b/drivers/staging/media/ipu3/ipu3.c
-index 4d53aad31483..7a1d1881483b 100644
---- a/drivers/staging/media/ipu3/ipu3.c
-+++ b/drivers/staging/media/ipu3/ipu3.c
-@@ -261,6 +261,7 @@ int imgu_queue_buffers(struct imgu_device *imgu, bool initial, unsigned int pipe
+diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
+index 82c775bd20d2..dedb343f3ef3 100644
+--- a/drivers/staging/vt6656/card.c
++++ b/drivers/staging/vt6656/card.c
+@@ -74,99 +74,25 @@ void vnt_set_channel(struct vnt_private *priv, u32 connection_channel)
+ 			   (u8)(connection_channel | 0x80));
+ }
  
- 			ivb = list_first_entry(&imgu_pipe->nodes[node].buffers,
- 					       struct imgu_vb2_buffer, list);
-+			list_del(&ivb->list);
- 			vb = &ivb->vbb.vb2_buf;
- 			r = imgu_css_set_parameters(&imgu->css, pipe,
- 						    vb2_plane_vaddr(vb, 0));
-@@ -274,7 +275,6 @@ int imgu_queue_buffers(struct imgu_device *imgu, bool initial, unsigned int pipe
- 			vb2_buffer_done(vb, VB2_BUF_STATE_DONE);
- 			dev_dbg(&imgu->pci_dev->dev,
- 				"queue user parameters %d to css.", vb->index);
--			list_del(&ivb->list);
- 		} else if (imgu_pipe->queue_enabled[node]) {
- 			struct imgu_css_buffer *buf =
- 				imgu_queue_getbuf(imgu, node, pipe);
+-/*
+- * Description: Calculate TxRate and RsvTime fields for RSPINF in OFDM mode.
+- *
+- * Parameters:
+- * In:
+- *	rate	- Tx Rate
+- *	bb_type	- Tx Packet type
+- * Out:
+- *	tx_rate	- pointer to RSPINF TxRate field
+- *	rsv_time- pointer to RSPINF RsvTime field
+- *
+- * Return Value: none
+- *
+- */
+-static void vnt_calculate_ofdm_rate(u16 rate, u8 bb_type,
+-				    u8 *tx_rate, u8 *rsv_time)
+-{
+-	switch (rate) {
+-	case RATE_6M:
+-		if (bb_type == BB_TYPE_11A) {
+-			*tx_rate = 0x9b;
+-			*rsv_time = 24;
+-		} else {
+-			*tx_rate = 0x8b;
+-			*rsv_time = 30;
+-		}
+-		break;
+-	case RATE_9M:
+-		if (bb_type == BB_TYPE_11A) {
+-			*tx_rate = 0x9f;
+-			*rsv_time = 16;
+-		} else {
+-			*tx_rate = 0x8f;
+-			*rsv_time = 22;
+-		}
+-		break;
+-	case RATE_12M:
+-		if (bb_type == BB_TYPE_11A) {
+-			*tx_rate = 0x9a;
+-			*rsv_time = 12;
+-		} else {
+-			*tx_rate = 0x8a;
+-			*rsv_time = 18;
+-		}
+-		break;
+-	case RATE_18M:
+-		if (bb_type == BB_TYPE_11A) {
+-			*tx_rate = 0x9e;
+-			*rsv_time = 8;
+-		} else {
+-			*tx_rate = 0x8e;
+-			*rsv_time = 14;
+-		}
+-		break;
+-	case RATE_36M:
+-		if (bb_type == BB_TYPE_11A) {
+-			*tx_rate = 0x9d;
+-			*rsv_time = 4;
+-		} else {
+-			*tx_rate = 0x8d;
+-			*rsv_time = 10;
+-		}
+-		break;
+-	case RATE_48M:
+-		if (bb_type == BB_TYPE_11A) {
+-			*tx_rate = 0x98;
+-			*rsv_time = 4;
+-		} else {
+-			*tx_rate = 0x88;
+-			*rsv_time = 10;
+-		}
+-		break;
+-	case RATE_54M:
+-		if (bb_type == BB_TYPE_11A) {
+-			*tx_rate = 0x9c;
+-			*rsv_time = 4;
+-		} else {
+-			*tx_rate = 0x8c;
+-			*rsv_time = 10;
+-		}
+-		break;
+-	case RATE_24M:
+-	default:
+-		if (bb_type == BB_TYPE_11A) {
+-			*tx_rate = 0x99;
+-			*rsv_time = 8;
+-		} else {
+-			*tx_rate = 0x89;
+-			*rsv_time = 14;
+-		}
+-		break;
+-	}
+-}
++static const u8 vnt_rspinf_b_short_table[] = {
++	0x70, 0x00, 0x00, 0x00, 0x38, 0x00, 0x09, 0x00,
++	0x15, 0x00, 0x0a, 0x00, 0x0b, 0x00, 0x0b, 0x80
++};
++
++static const u8 vnt_rspinf_b_long_table[] = {
++	0x70, 0x00, 0x00, 0x00, 0x38, 0x00, 0x01, 0x00,
++	0x15, 0x00, 0x02, 0x00, 0x0b, 0x00, 0x03, 0x80
++};
++
++static const u8 vnt_rspinf_a_table[] = {
++	0x9b, 0x1e, 0x9f, 0x16, 0x9a, 0x12, 0x9e, 0x0e, 0x99,
++	0x0e, 0x9d, 0x0a, 0x98, 0x0a, 0x9c, 0x0a, 0x9c, 0x0a
++};
++
++static const u8 vnt_rspinf_gb_table[] = {
++	0x8b, 0x1e, 0x8f, 0x16, 0x8a, 0x12, 0x8e, 0x0e, 0x89,
++	0x0e, 0x8d, 0x0a, 0x88, 0x0a, 0x8c, 0x0a, 0x8c, 0x0a
++};
+ 
+ /*
+  * Description: Set RSPINF
+@@ -183,74 +109,32 @@ static void vnt_calculate_ofdm_rate(u16 rate, u8 bb_type,
+ 
+ void vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
+ {
+-	struct vnt_phy_field phy[4];
+-	u8 tx_rate[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0}; /* For OFDM */
+-	u8 rsv_time[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+-	u8 data[34];
+-	int i;
+-
+-	/*RSPINF_b_1*/
+-	vnt_get_phy_field(priv, 14, RATE_1M, PK_TYPE_11B, &phy[0]);
+-
+-	/*RSPINF_b_2*/
+-	vnt_get_phy_field(priv, 14, RATE_2M, PK_TYPE_11B, &phy[1]);
+-
+-	/*RSPINF_b_5*/
+-	vnt_get_phy_field(priv, 14, RATE_5M, PK_TYPE_11B, &phy[2]);
+-
+-	/*RSPINF_b_11*/
+-	vnt_get_phy_field(priv, 14, RATE_11M, PK_TYPE_11B, &phy[3]);
+-
+-	/*RSPINF_a_6*/
+-	vnt_calculate_ofdm_rate(RATE_6M, bb_type, &tx_rate[0], &rsv_time[0]);
++	const u8 *data;
++	u16 len;
+ 
+-	/*RSPINF_a_9*/
+-	vnt_calculate_ofdm_rate(RATE_9M, bb_type, &tx_rate[1], &rsv_time[1]);
+-
+-	/*RSPINF_a_12*/
+-	vnt_calculate_ofdm_rate(RATE_12M, bb_type, &tx_rate[2], &rsv_time[2]);
+-
+-	/*RSPINF_a_18*/
+-	vnt_calculate_ofdm_rate(RATE_18M, bb_type, &tx_rate[3], &rsv_time[3]);
+-
+-	/*RSPINF_a_24*/
+-	vnt_calculate_ofdm_rate(RATE_24M, bb_type, &tx_rate[4], &rsv_time[4]);
+-
+-	/*RSPINF_a_36*/
+-	vnt_calculate_ofdm_rate(RATE_36M, bb_type, &tx_rate[5], &rsv_time[5]);
+-
+-	/*RSPINF_a_48*/
+-	vnt_calculate_ofdm_rate(RATE_48M, bb_type, &tx_rate[6], &rsv_time[6]);
+-
+-	/*RSPINF_a_54*/
+-	vnt_calculate_ofdm_rate(RATE_54M, bb_type, &tx_rate[7], &rsv_time[7]);
+-
+-	/*RSPINF_a_72*/
+-	vnt_calculate_ofdm_rate(RATE_54M, bb_type, &tx_rate[8], &rsv_time[8]);
+-
+-	put_unaligned(phy[0].len, (u16 *)&data[0]);
+-	data[2] = phy[0].signal;
+-	data[3] = phy[0].service;
+-
+-	put_unaligned(phy[1].len, (u16 *)&data[4]);
+-	data[6] = phy[1].signal;
+-	data[7] = phy[1].service;
+-
+-	put_unaligned(phy[2].len, (u16 *)&data[8]);
+-	data[10] = phy[2].signal;
+-	data[11] = phy[2].service;
++	if (priv->preamble_type) {
++		data = vnt_rspinf_b_short_table;
++		len = ARRAY_SIZE(vnt_rspinf_b_short_table);
++	} else {
++		data = vnt_rspinf_b_long_table;
++		len = ARRAY_SIZE(vnt_rspinf_b_long_table);
++	}
+ 
+-	put_unaligned(phy[3].len, (u16 *)&data[12]);
+-	data[14] = phy[3].signal;
+-	data[15] = phy[3].service;
++	 /* RSPINF_b_1 to RSPINF_b_11 */
++	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_RSPINF_B_1,
++			MESSAGE_REQUEST_MACREG, len, data);
+ 
+-	for (i = 0; i < 9; i++) {
+-		data[16 + i * 2] = tx_rate[i];
+-		data[16 + i * 2 + 1] = rsv_time[i];
++	if (bb_type == BB_TYPE_11A) {
++		data = vnt_rspinf_a_table;
++		len = ARRAY_SIZE(vnt_rspinf_a_table);
++	} else {
++		data = vnt_rspinf_gb_table;
++		len = ARRAY_SIZE(vnt_rspinf_gb_table);
+ 	}
+ 
+-	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_RSPINF_B_1,
+-			MESSAGE_REQUEST_MACREG, 34, &data[0]);
++	/* RSPINF_a_6 to RSPINF_a_72 */
++	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_RSPINF_A_6,
++			MESSAGE_REQUEST_MACREG, len, data);
+ }
+ 
+ /*
 -- 
-2.26.0.110.g2183baf09c-goog
-
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
