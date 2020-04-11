@@ -1,79 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB1151A5199
-	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Apr 2020 14:26:50 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 047E81A519D
+	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Apr 2020 14:26:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8322885E7D;
-	Sat, 11 Apr 2020 12:26:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A23C48763E;
+	Sat, 11 Apr 2020 12:26:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mit9t234yMDv; Sat, 11 Apr 2020 12:26:47 +0000 (UTC)
+	with ESMTP id ShY+YVwDDI6r; Sat, 11 Apr 2020 12:26:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 19A1785A80;
-	Sat, 11 Apr 2020 12:26:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1071487525;
+	Sat, 11 Apr 2020 12:26:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BB0E11BF5DE
- for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 12:26:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 327A21BF5DE
+ for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 12:26:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9AF0620346
- for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 12:26:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2EFA187532
+ for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 12:26:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XJexKMQ6Re-z for <devel@linuxdriverproject.org>;
- Sat, 11 Apr 2020 12:26:43 +0000 (UTC)
+ with ESMTP id H0SwLuOno2sg for <devel@linuxdriverproject.org>;
+ Sat, 11 Apr 2020 12:26:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mout.gmx.net (mout.gmx.net [212.227.17.22])
- by silver.osuosl.org (Postfix) with ESMTPS id 16F562014B
- for <devel@driverdev.osuosl.org>; Sat, 11 Apr 2020 12:26:42 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 85ED187525
+ for <devel@driverdev.osuosl.org>; Sat, 11 Apr 2020 12:26:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1586607993;
- bh=4hHsNUVkQV9v7/8ao41kNuAADHTJ68ks2yQHMevy140=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=EBUFnCrO777CJjhKR7nhiQO37mFan3iWgtTj94GkRy+SyBAdxe/igKiEHwECG9fOb
- iIqZoER/KD9W+x8ctgr75pi/X9DKiOfk4bYw2CIGVcuzsf4O/fL+UNHGOGz7BDbTb9
- M0G3PDdngDN2CGPDK8d+X4sYN96xDrWXWxzrKba4=
+ s=badeba3b8450; t=1586608000;
+ bh=Qe5TIhwuZ0lnZ5c49QtZbb8+6UAILtOmv8OpMKPtW/s=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=j9Z1itcolLDUNFB+tj54D1Kb9LAbS8mZQl0wvvKcbrD1f2D7k9xOe+sEkQQIjE3Tq
+ LXK/VcHu07BbpCy3TWXZJHLOZT0HIiwhFey59Qa6pbV3X7j1yupRYn0JAVCn+zuhdg
+ JfzWD2yGlDrvXayoqhHV9zaIKcpg2rbUHLp28TDI=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
  (mrgmx104 [212.227.17.174]) with ESMTPSA (Nemesis) id
- 1Mf078-1imFV52Gh0-00gY0w; Sat, 11 Apr 2020 14:26:33 +0200
+ 1MFbRm-1jVRde2QSU-00H59S; Sat, 11 Apr 2020 14:26:40 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
 To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 0/2] staging: vt6656: Refactor the vnt_get_phy_field
- function
-Date: Sat, 11 Apr 2020 14:26:08 +0200
-Message-Id: <20200411122610.7901-1-oscar.carter@gmx.com>
+Subject: [PATCH v2 1/2] staging: vt6656: Refactor the assignment of the
+ phy->signal variable
+Date: Sat, 11 Apr 2020 14:26:09 +0200
+Message-Id: <20200411122610.7901-2-oscar.carter@gmx.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200411122610.7901-1-oscar.carter@gmx.com>
+References: <20200411122610.7901-1-oscar.carter@gmx.com>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:c0cUxYG3a8+61l/gjTsW94CeUH6i5ypd4hksGc9lSoZz7Kc7JJ3
- 1G6GzCMT5OQbfiXBE42vit41rsFKswJ9Xjxryf1ao61HRyopIzQvzkqztyGMcU8Xv8IQC9f
- H8kNroG1gxGx3gkHDVNDL+hSy0CbeG4qgkzC/uOH+zve2RYZosuyc6DH9f0xntEa735vrgl
- hwQuEMD1UCWgFiF3yNGOQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RJ48s7JR1nM=:8eriPuTNs/aGxAPNWenNMX
- LCSw8JrIPp1QsUcL9dz2eL9NDtMAuKE611J3xZrC2NEDjKSuX2TBjZNr83mUZd5XsZupZjlHM
- wWKk2htD32CWV6hKKjNg10LcuZ3syDY7yqLsPszaIYUT8Nf77jYKCwQHYp0vcvzx6gam55kV0
- V3Cn3EK1v1TftdxybITVkHeAzBxEJNu6OHCZSmB6byIt9EARsGnruffPRkw9RU70sCruMrTzj
- g9DhVdmXra/YwekgU8YIKVJtjwc6UFlTvPB0PHHIsy2JwgiaapVubsCXce3G0eIbGlFfkqNm8
- CAWjiqjSNE23WnLzum+SJfwMS+29FdbPgIwEyoSZzlTwMH2sTcsrNDF83q6Cxb7DdJe6YlYFB
- aMAcQhVShgMqv27KyTe4+zIDf3e/ZHz6NB0VfHNYoCpqZw5wHBsyrsR7RUCmARULMakYeiHN0
- 83e/cmLT0+3UkLMzZe08no/aTx49Cjn397qd3TIacOFBTj0Bhv3dj4a6mSL3cob3Rq/7XMINM
- e6MSgpW9J8aUgY8jJXHyZ66MzuYlbYPVlTfjhynikObdVhVCaqVxeDlaBUMWsKKJpwQfhkL/q
- qQhJ40im8TeLQrypEPV+dpAxs8Uccjs+ZOU4jVoz6LdYJ/A4C/7bmg4QdfHAQOEklh9GTFtMA
- CK5p91U1NCiM1n8Nn56BTn18FxrLnui+3ceOcSWSQuqYQiUqSQsarL9X4CDUvt02jStRQJfOf
- ebX1dbeIZTn24PV8jgGgyuOBKDEwj0udq9B9JpGQpcp/qHxcL9qVyotHJIyoRz126LMW6zrYQ
- bzs0tD6Cr9rBqsAK/L813/S/2CyCUv8Bc0McowYqhu5cBYHJChJ3AW0lbMwq1O2rZx2ZNXYcu
- TP0VFkhNhjRW3vOjmSSb2kvUOmFKtcx7AHwiD7Yq3khIEz7PlKg7Mpr8+Jy4y5utGOiD2tddk
- ltwrMxreyxoGGc0J2hMw1LD4vG7vWVZr0zeNKucYnWThT9wvCsF1CS6FhVO5mOA77P5UzdMM7
- Y9BLmymfGL8178miHtPjBXiIG8pzF3AjWrq6U7wwQ1M6RbXikjr3PBeKoKXXCsMtLiJXc0hy2
- 8td+1SRlKE2rzCf+UKq+ONz0B26PZChgt4BQTxiYWMIUCC49pS3sHXvFvco2t1oE8qa5Q7fff
- 6cHQZ2MtXuSCbxaNqpJqPG0aqGbDibqMOCCJPN/JUjyT85lme4zm4BpuRi+PlxlwlUOM7FPEP
- K336fSA4dYjlO2HGU
+X-Provags-ID: V03:K1:ZbsLyPJkFpbPl9JOMkJVgPELbbkpG+CtT4twaz1GSAXQ5zaan7a
+ PDa4lFhU9GuERl6zX3zSWCXhYctwzy8e9q/7DsJXL0YdKtTA+0Gbt1/tG6yqwg7JMYyXgI2
+ ULp8MsacRUTFEatRc7HE6uVkpv24OZWNWa/BMerZG2LFoY/3Dl03E/Uc/sx6XLUrT/IGTyP
+ YXV8kXZpqw+o70p5ezqJA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+FvOKfZMQ5Y=:ahFcYghwnA88kwwwTL6F2X
+ FWUE+QFn0IT8cHNUi770MPJCksl0ifdZ+fs4GzJyVXE1xFJIVWdgZYv/wQMxdsnOVDdHCgfDs
+ lnf+uD8jmGxSeb4TVFt57W0ERJ22f6r9iaMcvMmtKVp4W493GSqfnMiZE9T1SEaJhnQxvcTrb
+ 49LY9skLeiOZmwaOlBDEMRByiP6l5Wi/zrn87z7L9LT8arJQ6Gm0VGSrQH+/bzYar2acWlPoL
+ Dk63f+lhOYnFGWZqfnj7352sFnx6zCUey0xn5qHzF9bFyxKFQ8q9HsGFBHYQedD/K9/VQZ8Rm
+ K8zKNY34ff3STHXXc33RfUVbc6hOC9Vw+/HXPCMXaP/DI1LJDqFx9o+A8awcdhIjXOLO6p9jA
+ rGdgGmW0WE4GkR+6ZjmDGAnUpn4WaIJIL8l1a6KV+v9LmoLyXROVd9NW/Ysk9chZ0TY0sEKVk
+ lkUSTZQgOtyJe+XpbHXaFFZBReZXxfcxPz7L7TcNYGgDgHTUltONmfTUl3U03JLgjJwk9WuEs
+ Ht9uvRuqRc14WJSFy1BT8TbvEVS78AyJbQfhF1I1Qt5VuqQDiAJJhjc3dbeEqPHN2PJbM7CQT
+ nJdYWZSRQI9qOdfkv19u97bbiczpacdo427vgABceFPX4ZgNfVJ05hR9CDwiaoRUWkxykDwb7
+ MsGQOJDFE1OdLqNZl0SPkc7droZFDJjUgVgszd8xGqP+hfy2AWTg26ZUgM9XL8htH5XTKYXvG
+ LWVBOixvnkDJ993PoPb0Bgpuc145/EdqGU0/gYZ+MAnbTEF6HPIPhJdbGPZyJkSHSJTq8/vog
+ Pv/Z8g1QEjHJRDlMaX6bS8UAcwlDLh/7M5QhD2cPQupAU+63KVGW7FpAwKzxYvSaA9pb9ojn9
+ 5FVbG8pQsTEVhTVJ10NtzDbdp7jVa+RE+FUm1F3SBKBUUGET1e0tbIHp7T7utRXhLu8Kfc6Rn
+ grelfrV7Z9fTbEhpcAE3kBtknkWHZ96QiQZtD4S0ca6BRBrvNRmM+cTawo3L5YX5s1agq9xsj
+ Sb/q5E24CiMnSCwsi7Maf3T8MCViZPSgINL9CnSsTCCM67DZ8l4d+ivZOJQj1v3aHcA1ncH7g
+ HyW8F+K+BFszfgzyam5btFT+Ps61plX4jXOn3rsav35p+xMgEnJMhTN8NSOkYYBuzpNBQMf88
+ /Fccj17JAf+tseFIgqj54OHR7J55jaz9GKmjEB5RDQDgP35ysvqBOkNQ4R/O9a1WR+iCjrMF5
+ AtKTnmp24v/k/5TGp
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,28 +95,168 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch series makes a refactor of the vnt_get_phy_field function
-through two patches.
+Create a constant array with the values of the "phy->signal" for every
+rate. Remove all "phy->signal" assignments inside the switch statement
+and replace these with a single reading from the new vnt_phy_signal
+array.
 
-The first one refactors the assignment of the "phy->signal" variable
-using a constant array with the correct values for every rate.
+The constant array can be of one dimension because the OR mask with
+BIT(3) or BIT(4) allow obtain a second value according to the rate,
+the preamble_type and the pkt_type.
 
-The second patch removes duplicate code for the assignment of the
-"phy->service" variable by putting it outside the if-else statement due
-to it's the same for the two branches.
+Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+---
+ drivers/staging/vt6656/baseband.c | 105 ++++++++----------------------
+ 1 file changed, 26 insertions(+), 79 deletions(-)
 
-Changelog v1 -> v2:
-- Remove one dimension from the constant array for the "phy->signal"
-  values and use an OR mask instead of the second array dimension as
-  Malcolm Priestley has suggested.
+diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+index a19a563d8bcc..05cc4797df52 100644
+--- a/drivers/staging/vt6656/baseband.c
++++ b/drivers/staging/vt6656/baseband.c
+@@ -115,6 +115,21 @@ static const u16 vnt_frame_time[MAX_RATE] = {
+ 	10, 20, 55, 110, 24, 36, 48, 72, 96, 144, 192, 216
+ };
 
-Oscar Carter (2):
-  staging: vt6656: Refactor the assignment of the phy->signal variable
-  staging: vt6656: Remove duplicate code for the phy->service assignment
++static const u8 vnt_phy_signal[] = {
++	0x00,	/* RATE_1M  */
++	0x01,	/* RATE_2M  */
++	0x02,	/* RATE_5M  */
++	0x03,	/* RATE_11M */
++	0x8b,	/* RATE_6M  */
++	0x8f,	/* RATE_9M  */
++	0x8a,	/* RATE_12M */
++	0x8e,	/* RATE_18M */
++	0x89,	/* RATE_24M */
++	0x8d,	/* RATE_36M */
++	0x88,	/* RATE_48M */
++	0x8c	/* RATE_54M */
++};
++
+ /*
+  * Description: Calculate data frame transmitting time
+  *
+@@ -183,6 +198,8 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+ 	u32 count = 0;
+ 	u32 tmp;
+ 	int ext_bit;
++	int i;
++	u8 mask = 0;
+ 	u8 preamble_type = priv->preamble_type;
 
- drivers/staging/vt6656/baseband.c | 108 ++++++++----------------------
- 1 file changed, 27 insertions(+), 81 deletions(-)
+ 	bit_count = frame_length * 8;
+@@ -191,27 +208,12 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+ 	switch (tx_rate) {
+ 	case RATE_1M:
+ 		count = bit_count;
+-
+-		phy->signal = 0x00;
+-
+ 		break;
+ 	case RATE_2M:
+ 		count = bit_count / 2;
+-
+-		if (preamble_type == 1)
+-			phy->signal = 0x09;
+-		else
+-			phy->signal = 0x01;
+-
+ 		break;
+ 	case RATE_5M:
+ 		count = DIV_ROUND_UP(bit_count * 10, 55);
+-
+-		if (preamble_type == 1)
+-			phy->signal = 0x0a;
+-		else
+-			phy->signal = 0x02;
+-
+ 		break;
+ 	case RATE_11M:
+ 		count = bit_count / 11;
+@@ -224,75 +226,20 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+ 				ext_bit = true;
+ 		}
 
+-		if (preamble_type == 1)
+-			phy->signal = 0x0b;
+-		else
+-			phy->signal = 0x03;
+-
+-		break;
+-	case RATE_6M:
+-		if (pkt_type == PK_TYPE_11A)
+-			phy->signal = 0x9b;
+-		else
+-			phy->signal = 0x8b;
+-
+ 		break;
+-	case RATE_9M:
+-		if (pkt_type == PK_TYPE_11A)
+-			phy->signal = 0x9f;
+-		else
+-			phy->signal = 0x8f;
+-
+-		break;
+-	case RATE_12M:
+-		if (pkt_type == PK_TYPE_11A)
+-			phy->signal = 0x9a;
+-		else
+-			phy->signal = 0x8a;
+-
+-		break;
+-	case RATE_18M:
+-		if (pkt_type == PK_TYPE_11A)
+-			phy->signal = 0x9e;
+-		else
+-			phy->signal = 0x8e;
+-
+-		break;
+-	case RATE_24M:
+-		if (pkt_type == PK_TYPE_11A)
+-			phy->signal = 0x99;
+-		else
+-			phy->signal = 0x89;
+-
+-		break;
+-	case RATE_36M:
+-		if (pkt_type == PK_TYPE_11A)
+-			phy->signal = 0x9d;
+-		else
+-			phy->signal = 0x8d;
+-
+-		break;
+-	case RATE_48M:
+-		if (pkt_type == PK_TYPE_11A)
+-			phy->signal = 0x98;
+-		else
+-			phy->signal = 0x88;
++	}
+
+-		break;
+-	case RATE_54M:
++	if (tx_rate > RATE_11M) {
+ 		if (pkt_type == PK_TYPE_11A)
+-			phy->signal = 0x9c;
+-		else
+-			phy->signal = 0x8c;
+-		break;
+-	default:
+-		if (pkt_type == PK_TYPE_11A)
+-			phy->signal = 0x9c;
+-		else
+-			phy->signal = 0x8c;
+-		break;
++			mask = BIT(4);
++	} else if (tx_rate > RATE_1M) {
++		if (preamble_type == PREAMBLE_SHORT)
++			mask = BIT(3);
+ 	}
+
++	i = tx_rate > RATE_54M ? RATE_54M : tx_rate;
++	phy->signal = vnt_phy_signal[i] | mask;
++
+ 	if (pkt_type == PK_TYPE_11B) {
+ 		phy->service = 0x00;
+ 		if (ext_bit)
 --
 2.20.1
 
