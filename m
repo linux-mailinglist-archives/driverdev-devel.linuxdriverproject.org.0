@@ -1,85 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A05A11A48DD
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Apr 2020 19:17:46 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4855D1A4DA3
+	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Apr 2020 05:43:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7E4EA88220;
-	Fri, 10 Apr 2020 17:17:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DB3732202C;
+	Sat, 11 Apr 2020 03:43:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 42Kq-d1+YfsC; Fri, 10 Apr 2020 17:17:43 +0000 (UTC)
+	with ESMTP id 3BpGEQ6dyz2E; Sat, 11 Apr 2020 03:43:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5591E88166;
-	Fri, 10 Apr 2020 17:17:43 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 1A3B120487;
+	Sat, 11 Apr 2020 03:43:52 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 38D281BF408
- for <devel@linuxdriverproject.org>; Fri, 10 Apr 2020 17:17:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0A3791BF9B4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 11 Apr 2020 03:43:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3057688177
- for <devel@linuxdriverproject.org>; Fri, 10 Apr 2020 17:17:41 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id F1542860A2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 11 Apr 2020 03:43:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GbzEkgIear-d for <devel@linuxdriverproject.org>;
- Fri, 10 Apr 2020 17:17:39 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.22])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 57A8D88166
- for <devel@driverdev.osuosl.org>; Fri, 10 Apr 2020 17:17:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1586539050;
- bh=OknhL+dWbzP6DoI+4HmmR01y+Q6JNKzHBccrGewbg+Q=;
- h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
- b=OUVGMDqOpWObl63V+g4fyTdDqjN+zyXimTh7l/EmnhO399VKex+evYkdpxeWafbXJ
- 4t2RG/hqH+8Mcjz7dADWbRX8LR7DKKcxZjUGrWHXzbmka4A01w6a071brI4ypgDedB
- Ds/X6G57GBfUxprPzIypXb32BGaSIb+883Y3goqU=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx104
- [212.227.17.174]) with ESMTPSA (Nemesis) id 1N95iR-1jBbC92uLH-0168wW; Fri, 10
- Apr 2020 19:17:30 +0200
-Date: Fri, 10 Apr 2020 19:17:28 +0200
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: Re: [PATCH 1/2] staging: vt6656: Refactor the assignment of the
- phy->signal variable
-Message-ID: <20200410171728.GB3426@ubuntu>
-References: <20200410112834.17490-1-oscar.carter@gmx.com>
- <20200410112834.17490-2-oscar.carter@gmx.com>
- <986e8e5e-245a-cc70-2c6f-8ac3a4a485c9@gmail.com>
- <20200410155911.GA3426@ubuntu>
- <fcc434e9-9da4-4f24-19cc-bac8fc7166ec@gmail.com>
+ with ESMTP id bR4KMdEBpxXn
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 11 Apr 2020 03:43:49 +0000 (UTC)
+X-Greylist: delayed 00:17:29 by SQLgrey-1.7.6
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AD2DB86072
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 11 Apr 2020 03:43:48 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id 8A306AC46;
+ Sat, 11 Apr 2020 03:26:16 +0000 (UTC)
+From: NeilBrown <neil@brown.name>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ gregkh@linuxfoundation.org
+Date: Sat, 11 Apr 2020 13:26:11 +1000
+Subject: Re: [PATCH] staging: mt7621-pci: simplify
+ 'mt7621_pcie_init_virtual_bridges' function
+In-Reply-To: <20200308091928.17177-1-sergio.paracuellos@gmail.com>
+References: <20200308091928.17177-1-sergio.paracuellos@gmail.com>
+Message-ID: <878sj2vh2k.fsf@notabene.neil.brown.name>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <fcc434e9-9da4-4f24-19cc-bac8fc7166ec@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Provags-ID: V03:K1:27q35nxGK3q2xRnJOp8V1guiMD64c05HSKVZUFVsHrBN06g+XxU
- gmed7ieyuTcUN8SocH7KH/wdtl0oRegNqzj+LR62Q28TSjpnvxLU9FZiFoIiLUwGDXi+RCd
- S2x2vpyt28gTK+LW2/Uh7gyvcCIQTznVb1j+q5YLLS3chRJzb8bM7VrOw6gidXyOCPemFxQ
- 7fIlu53q0hwhvZOSy740w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JHeNEQktVis=:DS5il7YFW+VCEYBpd5CTMc
- x/jQIsgaThVTYZGeuoeweM9p+Um73hbo1NDVCL2ZhWebQm787C85e4H0OBmwWY4kfLP8p7cEp
- q8oIcOULG2asKqiX7jXLjA8mnEBku6GcAufTPZhu2ECHUNA81UI4HpQArgwE/1mbVS+0L3Cfy
- bHStxL0chAJklE9MnAfWzBH7BphaEVrOadTfjeViOWuZS+BQwQUr/Xy19/MrvQP0588F5e9uC
- 3EzkQf37qx6wbCPXrdnK/1GYLbXsANAahIpPG3TfcEKelabWsCY30GLyZu3ii4mMOECCLqFy2
- DJPKshZ5nxFel+QZ//50C8m9hgKsk0nMkGnGzN1hGszlfMAUJEOEGxET0zodjJWgepUUEcXyw
- f5AjixWy0423ucVdpf2I7JCjLZdrXZEjZVaX33lIpOJ4rmmdjdNToiW78BWtmH6Jel6/AIoEq
- 9+yduamGSWOT/bRIirbXntgtgBd4tqv9ANhC/E1NTf+SuDx2QOGZY5cZAs+FZyRS4d0czFLTC
- HniQVBXeNWROukWPxNkHFNpnp1WxNHJPIQBmRQEugOwapKw56VpWLXGeOZi9j0/S3x01H0H2+
- CK7BvnHFtFrw18O4FNUCXkHkRfMZ99/LIlIf6mZJ5qGtJtl8RnmM/75GVa7ptSsIDUcH4IT0G
- /N0f7guFzqzj0bEH3ERXAbcF8dvOPS61g72alZOfeyBNa0sUrN09Y84PowsdsPHxAvPWP0h+l
- /nfeJfV2fzFfVivxHRGWkgl7Zs9Gi+t4ISyLcYdm5lTs26gRwWH3jswhA5L9ieGNfnvYs4u6N
- yBpNPIMKXgqFMo4on9QxvCVHUcFYvUnVIdzTqLffuczAasWpEgT3u/ZsNE+RndtgmOxyPGXGX
- Pm256flWpzQtF449YMSca4I5J02v1OmFOZuSdA+/6N1okG9v99k83ZjVa7zHQPSRCBWwMdd7D
- Nb7/mh0BuEgjxie3zh6qm0HXTDQy/Fhs7eQNrIpdb7UsaRjihKFy9QzHM1Wj2rP72AzM2lD2f
- ggLKYrU6VN5zuEjZFjROuHMd6C7mOeqVWLfMB0jVq7S/QlXcYD81+kIIHq87wnNW704dW2gc6
- yfRrbFQKfwLlWTeQAcg4BrQLHtbZflhvHCzcpQKls/KBB4mJY9IpLW9yMMwCQn8jizjf67Wmr
- DztBRiZIyKm+CrkPTwzg9AkZUB60InBl3YCO7+l8QFh+ESwWqBE8vQaUtiIJVD5wtgWuwsiI9
- FfHMKs+BCbDC1EHXW
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,62 +61,215 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Forest Bond <forest@alittletooquiet.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: driverdev-devel@linuxdriverproject.org
+Content-Type: multipart/mixed; boundary="===============7289510890634176728=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Apr 10, 2020 at 05:40:52PM +0100, Malcolm Priestley wrote:
->
->
-> On 10/04/2020 16:59, Oscar Carter wrote:
-> > On Fri, Apr 10, 2020 at 04:37:59PM +0100, Malcolm Priestley wrote:
-> > >
-> > >
-> > > On 10/04/2020 12:28, Oscar Carter wrote:
-> > > > Create a constant array with the values of the "phy->signal" for every
-> > > > rate. Remove all "phy->signal" assignments inside the switch statement
-> > > > and replace these with a single reading from the new vnt_phy_signal
-> > > > array.
-> > > >
-> > > > Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
-> > > > ---
-> > > >    drivers/staging/vt6656/baseband.c | 101 +++++++-----------------------
-> > > >    1 file changed, 21 insertions(+), 80 deletions(-)
-> > > >
-> > > > diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
-> > > > index a19a563d8bcc..47f93bf6e07b 100644
-> > > > --- a/drivers/staging/vt6656/baseband.c
-> > > > +++ b/drivers/staging/vt6656/baseband.c
-> > > > @@ -115,6 +115,21 @@ static const u16 vnt_frame_time[MAX_RATE] = {
-> > > >    	10, 20, 55, 110, 24, 36, 48, 72, 96, 144, 192, 216
-> > > >    };
-> > >
-> > > Actually you don't need the second values
-> >
-> > Great.
-> > > >
-> > > > +static const u8 vnt_phy_signal[][2] = {
-> > > > +	{0x00, 0x00},	/* RATE_1M  */
-> > > The driver would never attempt use preamble at this rate
-> > > so it's safe to include in with the next 3 rates
-> Sorry got this wrong the driver is trying to do preamble (short)
-> at this rate and it is not working.
->
-> So don't apply it to RATE_1M rate.
+--===============7289510890634176728==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
 
-Ok, I take it into account.
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Mar 08 2020, Sergio Paracuellos wrote:
+
+> Function 'mt7621_pcie_init_virtual_bridges' is a bit mess and can be
+> refactorized properly in a cleaner way. Introduce new 'pcie_rmw' inline
+> function helper to do clear and set the correct bits this function needs
+> to work.
 >
-> Regards
+> Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> ---
+> Changes are only compile tested.
+>  drivers/staging/mt7621-pci/pci-mt7621.c | 85 ++++++++++---------------
+>  1 file changed, 33 insertions(+), 52 deletions(-)
 >
-> Malcolm
->
+> diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt=
+7621-pci/pci-mt7621.c
+> index 3633c924848e..1f860c5ef588 100644
+> --- a/drivers/staging/mt7621-pci/pci-mt7621.c
+> +++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+> @@ -57,13 +57,13 @@
+>  #define RALINK_PCI_IOBASE		0x002C
+>=20=20
+>  /* PCICFG virtual bridges */
+> -#define MT7621_BR0_MASK			GENMASK(19, 16)
+> -#define MT7621_BR1_MASK			GENMASK(23, 20)
+> -#define MT7621_BR2_MASK			GENMASK(27, 24)
+> -#define MT7621_BR_ALL_MASK		GENMASK(27, 16)
+> -#define MT7621_BR0_SHIFT		16
+> -#define MT7621_BR1_SHIFT		20
+> -#define MT7621_BR2_SHIFT		24
+> +#define PCIE_P2P_MAX			3
+
+This is one of my bug-bears.  The number "3" here is not a MAXimum.
+It is a count or a number.  It is how many masks there are.
+The masks are numbered 0, 1, 2 so the maximum is 2.
+I would rename this  PCI_P2P_CNT.
+
+
+> +#define PCIE_P2P_BR_DEVNUM_SHIFT(p)	(16 + (p) * 4)
+> +#define PCIE_P2P_BR_DEVNUM0_SHIFT	PCIE_P2P_BR_DEVNUM_SHIFT(0)
+> +#define PCIE_P2P_BR_DEVNUM1_SHIFT	PCIE_P2P_BR_DEVNUM_SHIFT(1)
+> +#define PCIE_P2P_BR_DEVNUM2_SHIFT	PCIE_P2P_BR_DEVNUM_SHIFT(2)
+> +#define PCIE_P2P_BR_DEVNUM_MASK		0xf
+> +#define PCIE_P2P_BR_DEVNUM_MASK_FULL	(0xfff << PCIE_P2P_BR_DEVNUM0_SHIFT)
+>=20=20
+>  /* PCIe RC control registers */
+>  #define MT7621_PCIE_OFFSET		0x2000
+> @@ -154,6 +154,15 @@ static inline void pcie_write(struct mt7621_pcie *pc=
+ie, u32 val, u32 reg)
+>  	writel(val, pcie->base + reg);
+>  }
+>=20=20
+> +static inline void pcie_rmw(struct mt7621_pcie *pcie, u32 reg, u32 clr, =
+u32 set)
+> +{
+> +	u32 val =3D readl(pcie->base + reg);
+> +
+> +	val &=3D ~clr;
+> +	val |=3D set;
+> +	writel(val, pcie->base + reg);
+> +}
+> +
+>  static inline u32 pcie_port_read(struct mt7621_pcie_port *port, u32 reg)
+>  {
+>  	return readl(port->base + reg);
+> @@ -554,7 +563,9 @@ static void mt7621_pcie_enable_ports(struct mt7621_pc=
+ie *pcie)
+>  static int mt7621_pcie_init_virtual_bridges(struct mt7621_pcie *pcie)
+>  {
+>  	u32 pcie_link_status =3D 0;
+> -	u32 val =3D 0;
+> +	u32 n;
+> +	int i;
+> +	u32 p2p_br_devnum[PCIE_P2P_MAX];
+>  	struct mt7621_pcie_port *port;
+>=20=20
+>  	list_for_each_entry(port, &pcie->ports, list) {
+> @@ -567,50 +578,20 @@ static int mt7621_pcie_init_virtual_bridges(struct =
+mt7621_pcie *pcie)
+>  	if (pcie_link_status =3D=3D 0)
+>  		return -1;
+>=20=20
+> -	/*
+> -	 * pcie(2/1/0) link status	pcie2_num	pcie1_num	pcie0_num
+> -	 * 3'b000			x		x		x
+> -	 * 3'b001			x		x		0
+> -	 * 3'b010			x		0		x
+> -	 * 3'b011			x		1		0
+> -	 * 3'b100			0		x		x
+> -	 * 3'b101			1		x		0
+> -	 * 3'b110			1		0		x
+> -	 * 3'b111			2		1		0
+> -	 */
+> -	switch (pcie_link_status) {
+> -	case 2:
+> -		val =3D pcie_read(pcie, RALINK_PCI_PCICFG_ADDR);
+> -		val &=3D ~(MT7621_BR0_MASK | MT7621_BR1_MASK);
+> -		val |=3D 0x1 << MT7621_BR0_SHIFT;
+> -		val |=3D 0x0 << MT7621_BR1_SHIFT;
+> -		pcie_write(pcie, val, RALINK_PCI_PCICFG_ADDR);
+> -		break;
+> -	case 4:
+> -		val =3D pcie_read(pcie, RALINK_PCI_PCICFG_ADDR);
+> -		val &=3D ~MT7621_BR_ALL_MASK;
+> -		val |=3D 0x1 << MT7621_BR0_SHIFT;
+> -		val |=3D 0x2 << MT7621_BR1_SHIFT;
+> -		val |=3D 0x0 << MT7621_BR2_SHIFT;
+> -		pcie_write(pcie, val, RALINK_PCI_PCICFG_ADDR);
+> -		break;
+> -	case 5:
+> -		val =3D pcie_read(pcie, RALINK_PCI_PCICFG_ADDR);
+> -		val &=3D ~MT7621_BR_ALL_MASK;
+> -		val |=3D 0x0 << MT7621_BR0_SHIFT;
+> -		val |=3D 0x2 << MT7621_BR1_SHIFT;
+> -		val |=3D 0x1 << MT7621_BR2_SHIFT;
+> -		pcie_write(pcie, val, RALINK_PCI_PCICFG_ADDR);
+> -		break;
+> -	case 6:
+> -		val =3D pcie_read(pcie, RALINK_PCI_PCICFG_ADDR);
+> -		val &=3D ~MT7621_BR_ALL_MASK;
+> -		val |=3D 0x2 << MT7621_BR0_SHIFT;
+> -		val |=3D 0x0 << MT7621_BR1_SHIFT;
+> -		val |=3D 0x1 << MT7621_BR2_SHIFT;
+> -		pcie_write(pcie, val, RALINK_PCI_PCICFG_ADDR);
+> -		break;
+> -	}
+> +	n =3D 0;
+> +	for (i =3D 0; i < PCIE_P2P_MAX; i++)
+
+Here, for example, 'i' never reaches the MAX value.  Surely that is wrong.
+
+> +		if (pcie_link_status & BIT(i))
+> +			p2p_br_devnum[i] =3D n++;
+> +
+> +	for (i =3D 0; i < PCIE_P2P_MAX; i++)
+> +		if ((pcie_link_status & BIT(i)) =3D=3D 0)
+> +			p2p_br_devnum[i] =3D n++;
+
+This second for loop seems like a change in functionality to what we had
+before.  Is that correct?  I seems to make sense but as you didn't flag
+the change in the commit message I thought I would ask.
+
+Also I feel it would help to have a comment explaining what was going
+on.  There was a big comment here before.  It wasn't particularly
+helpful, but it was a little better than nothing.
+Maybe:
+
+ /* Assign device numbers from zero to the enabled ports, then assigning
+  * remaining device numbers to any disabled ports
+  */
+
 Thanks,
+NeilBrown
 
-Oscar Carter
+
+> +
+> +	pcie_rmw(pcie, RALINK_PCI_CONFIG_ADDR,
+> +		 PCIE_P2P_BR_DEVNUM_MASK_FULL,
+> +		 (p2p_br_devnum[0] << PCIE_P2P_BR_DEVNUM0_SHIFT) |
+> +		 (p2p_br_devnum[1] << PCIE_P2P_BR_DEVNUM1_SHIFT) |
+> +		 (p2p_br_devnum[2] << PCIE_P2P_BR_DEVNUM2_SHIFT));
+>=20=20
+>  	return 0;
+>  }
+> --=20
+> 2.19.1
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEG8Yp69OQ2HB7X0l6Oeye3VZigbkFAl6RONMACgkQOeye3VZi
+gbm3oQ//UyMX3EVbLNnRWBm1VZljgBZwJkPrjc+VPxQx59nqHo3GN4P0JeaJyQD+
+fvT8OeCyMGJjXCWtatEJO0cxFusFCapbwm5iHfRPYD/Kp9MJRQ8lH8vL+giQv8Kf
+kzOCFuIO+HpcwC48yRSzTsNECivUE2Qi5HQwbhGryFgVcni4MQWZHL2N0VtFsG5W
++aYRZcYS7BEUO/8R2ViKs1hvfO/OQKjMwDL7m65KtP8CbbVdzCegCqqb1xi1cbvY
+h+RE2FD8NUdJ5Z03aTMj+wKdkyW9JB4Q71mL5a6q3Soi1KD9X7OVvc1blPEa1aqa
+6tqMX4OmQXt+0ozGqJoeWdq12EPUOcp0MRvglCDnEuJRF0pDn/mDBUsF0oGXXkjU
+YcpRqcdYQHBe3r+YNDmfvNhhs6Dfn1xsARehC7/fT2atsFBKwB6Q83xptv5WpZ0z
+eZum2VKP0eguYta2sMf9yuSic+oJdL6X8ZJDCrD27/DBH5u6oWfMuTXLBY6GDBmU
+4Ik8z7S6ePqAqdcGeeDJnOBANIsvKAz4AcrdLi+6T80cSZ+VEA+TQL8CuUI7Fdwu
+EUjDb4nYQttiJgv0ccksFmYLTdeT5VIiRRnZbM7WTV88MBQ4PgNOBIcS4FWo/w9E
+wPfwHP59DdgV9NAua/0wZk6co5eQG4O9GJi6ONbILHEny9JW1fQ=
+=qX5Q
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============7289510890634176728==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============7289510890634176728==--
