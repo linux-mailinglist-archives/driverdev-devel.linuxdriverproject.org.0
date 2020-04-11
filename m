@@ -1,81 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62B521A521F
-	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Apr 2020 14:52:00 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FB9D1A5285
+	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Apr 2020 16:51:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6BF1D877E2;
-	Sat, 11 Apr 2020 12:51:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 66ED322728;
+	Sat, 11 Apr 2020 14:50:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XasAQYQO-n7d; Sat, 11 Apr 2020 12:51:58 +0000 (UTC)
+	with ESMTP id n0H4VTUq-zAm; Sat, 11 Apr 2020 14:50:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CB29086C0A;
-	Sat, 11 Apr 2020 12:51:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C25132079D;
+	Sat, 11 Apr 2020 14:50:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A12671BF5DE
- for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 12:51:55 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5EEF51BF410
+ for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 14:50:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 95EB68698E
- for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 12:51:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5B2CE21551
+ for <devel@linuxdriverproject.org>; Sat, 11 Apr 2020 14:50:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jbfXaFqZKnlb for <devel@linuxdriverproject.org>;
- Sat, 11 Apr 2020 12:51:54 +0000 (UTC)
+ with ESMTP id KYo2GzC16lMH for <devel@linuxdriverproject.org>;
+ Sat, 11 Apr 2020 14:50:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1CA0A86A7C
- for <devel@driverdev.osuosl.org>; Sat, 11 Apr 2020 12:51:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1586609507;
- bh=SVlJCMTqCvv1c7w+nfXau/qquMjlmrvygXkqNvJ5DeA=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=OTvl5qOXk+sZS01NtSzMawPXJv0EYDrjhqI10N/3pkGGezTZs3HAjDudN4e16ZWcc
- zuF8/XcNpehMy8FWThKLijWm/kamBmjNE3AdnC7ooPqfa97w+mDmAVz7JCdTfHYbrR
- KdRweir4YfuEMKZoFeVMopiFrq06cp3FUjtQhAZQ=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx004 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1N3se2-1jELf10eY4-00zjYw; Sat, 11 Apr 2020 14:51:47 +0200
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 2/2] staging: vt6656: Remove unnecessary local variable
- initialization
-Date: Sat, 11 Apr 2020 14:51:04 +0200
-Message-Id: <20200411125104.9625-3-oscar.carter@gmx.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200411125104.9625-1-oscar.carter@gmx.com>
-References: <20200411125104.9625-1-oscar.carter@gmx.com>
+Received: from cmccmta1.chinamobile.com (cmccmta1.chinamobile.com
+ [221.176.66.79])
+ by silver.osuosl.org (Postfix) with ESMTP id 57D902079D
+ for <devel@driverdev.osuosl.org>; Sat, 11 Apr 2020 14:50:51 +0000 (UTC)
+Received: from spf.mail.chinamobile.com (unknown[172.16.121.7]) by
+ rmmx-syy-dmz-app04-12004 (RichMail) with SMTP id 2ee45e91d925d4b-15fa2;
+ Sat, 11 Apr 2020 22:50:13 +0800 (CST)
+X-RM-TRANSID: 2ee45e91d925d4b-15fa2
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from localhost.localdomain (unknown[223.104.145.126])
+ by rmsmtp-syy-appsvr04-12004 (RichMail) with SMTP id 2ee45e91d923f00-9d4e6;
+ Sat, 11 Apr 2020 22:50:13 +0800 (CST)
+X-RM-TRANSID: 2ee45e91d923f00-9d4e6
+From: Tang Bin <tangbin@cmss.chinamobile.com>
+To: gregkh@linuxfoundation.org, arve@android.com, maco@android.com,
+ tkjos@android.com, joel@joelfernandes.org, christian@brauner.io
+Subject: [PATCH] binderfs: Fix binderfs.c selftest compilation warning
+Date: Sat, 11 Apr 2020 22:51:51 +0800
+Message-Id: <20200411145151.5576-1-tangbin@cmss.chinamobile.com>
+X-Mailer: git-send-email 2.20.1.windows.1
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:tNvyN6LT2MEV85uEyIvoHXTQfbD8/HTPpV5C1/Zxar6stA3PZZA
- vn95fFukMuJQmtJ5nhhR8aTK7OPF0cUt/h45oKgo/X1le6zM1k2F7roBba5JTdS8sxsZJwj
- lZyAFU5fAi54xlkRBEBdSH5sjJh1M6Q9wRUppoGTTYw773O/OQKphcsgaOw5QgPVpsCjbwy
- nm9jj9EuwRlwt6xh8QjEw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:nkd81Q42ko0=:946dBrp9QK3j+5gy9BSKYx
- VZeqvLvElj8sRI6cNqg5AgSfQgowxwakhPM61IUjEliUWe1b8RrJ2cNsIg9pPFul1TYISIOUE
- uso0JQLMRrY3viawSLTiDRDlhHgQDGatTrJPQtUGt3vP/RcLjO8rciXwhOb9h5OsKvUIOTZwC
- m4W+Dceb2Ljeem6Mbdl4WDLez8zxkY4zF7qExo+SPVMDW5Gwb48pA86zedVq+VIJsyCo8/O9l
- ne2IYlrrrWa0z6sfPYhsbZ+GvJT/EwkcTKX6WxModm/b3lcYRyhjzolvSwpFzg7OmQAv3EN+z
- XMAO8omytfdi3yH1h21A9EoTidDYUZahU+scmErNJKmC+oD/tNBGzRZGifXaQ+1+zomFAEG2A
- 9XbEw1kQlNkF+IEZ/Md0kf9xqLPAB7aQLhNhADFEFmr2R7FHwvzEtjkJAQZThIA71cAsoI5sT
- 5qXcLOjtQ9J+IWqMiWte7TVahmwjjePgY5ikQq09IswbLcuREWwmQds2BCeNV03hRGxhdKzpA
- D3XTho4XZCFPzjRKJexVxIb0ZJNTPseinHqG09Ffkoo+W4DE56KsaMlzmKnCqTs1JHgm1jHQb
- 9mzOV3f4VoF6NGeB8vh7Bb1UXGrvbCMBU5SrEPVFrrba8HNVNUiumZhkC37dOy4nLOHshcoIz
- pwthBwIZpC3MD2XEtKBNWnB6YhafuBrPz21sCzXHIrNeFWi+jGtl82C0+Y0f/Gx1LBJnspmSP
- LwT48sIFq3ce9B5Us2Fwd4wNCtWF5KQEsen4fLY9iIshU9OdNP34HjvYAkH6YzPcyUSvfVWrf
- Z9U1k5X89O+IKUwUUrOH/OUSUDmMGKoqokzjg2dlzTtjujnFZb41TImohek5zJDFWAODnh5A0
- UA7jwtLhUIXEQoWZFfbgN/+L5LQ7WgIGTf87yZy/umAieauY4gZYpx77fuEkkizYL02iS6tx+
- Is57eWnqgk4hGzPHIS//YoeGx6M8R67b/r98+0ZADOFuQkaBseRVRCA4f1e+IohSGRH4p4JDr
- 9/OPm7CmTykYoar0qYYCuIUgzzzYJx9kkCq86J+p6n4eLnumqDC88JCGQJ3rYSVnmkuxrzxvS
- siQ1NGXoTYArAfYInDORlc9I3eQqan45lexf5AL47+GWju7t4zipG/xoFKzgNInzR23/jaYda
- kDxwXLx6PDj5EE+65eGXm8+V8yD5G+Qatut2PKKI4ED06WRVc468CVGr/AshfDfT6zBfboaTs
- gj2ySC++1UdUS/rBk
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,37 +62,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Tang Bin <tangbin@cmss.chinamobile.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Don't initialize the ret variable as it is set a few lines later.
-
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
----
- drivers/staging/vt6656/baseband.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
-index 276210a7284e..10d1f2cbb3d9 100644
---- a/drivers/staging/vt6656/baseband.c
-+++ b/drivers/staging/vt6656/baseband.c
-@@ -352,7 +352,7 @@ int vnt_set_antenna_mode(struct vnt_private *priv, u8 antenna_mode)
-
- int vnt_vt3184_init(struct vnt_private *priv)
- {
--	int ret = 0;
-+	int ret;
- 	u16 length;
- 	u8 *addr;
- 	u8 data;
---
-2.20.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+Rml4IG1pc3NpbmcgYnJhY2VzIGNvbXBpbGF0aW9uIHdhcm5pbmcgaW4gdGhlIEFSTQpjb21waWxl
+ciBlbnZpcm9ubWVudDoKICAgIGRyaXZlcnMvYW5kcm9pZC9iaW5kZXJmcy5jOiBJbiBmdW5jdGlv
+biAnYmluZGVyZnNfZmlsbF9zdXBlcic6CiAgICBkcml2ZXJzL2FuZHJvaWQvYmluZGVyZnMuYzo2
+NTA6OTogd2FybmluZzogbWlzc2luZyBicmFjZXMgYXJvdW5kIGluaXRpYWxpemVyIFstV21pc3Np
+bmctYnJhY2VzXQogICAgICBzdHJ1Y3QgYmluZGVyZnNfZGV2aWNlIGRldmljZV9pbmZvID0geyAw
+IH07CiAgICBkcml2ZXJzL2FuZHJvaWQvYmluZGVyZnMuYzo2NTA6OTogd2FybmluZzogKG5lYXIg
+aW5pdGlhbGl6YXRpb24gZm9yIOKAmGRldmljZV9pbmZvLm5hbWXigJkpIFstV21pc3NpbmctYnJh
+Y2VzXQoKU2lnbmVkLW9mZi1ieTogVGFuZyBCaW4gPHRhbmdiaW5AY21zcy5jaGluYW1vYmlsZS5j
+b20+Ci0tLQogZHJpdmVycy9hbmRyb2lkL2JpbmRlcmZzLmMgfCAyICstCiAxIGZpbGUgY2hhbmdl
+ZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2Fu
+ZHJvaWQvYmluZGVyZnMuYyBiL2RyaXZlcnMvYW5kcm9pZC9iaW5kZXJmcy5jCmluZGV4IDllY2Fk
+NzQxOC4uNzg1MjhlMSAxMDA2NDQKLS0tIGEvZHJpdmVycy9hbmRyb2lkL2JpbmRlcmZzLmMKKysr
+IGIvZHJpdmVycy9hbmRyb2lkL2JpbmRlcmZzLmMKQEAgLTY1MCw3ICs2NTAsNyBAQCBzdGF0aWMg
+aW50IGJpbmRlcmZzX2ZpbGxfc3VwZXIoc3RydWN0IHN1cGVyX2Jsb2NrICpzYiwgc3RydWN0IGZz
+X2NvbnRleHQgKmZjKQogCXN0cnVjdCBiaW5kZXJmc19pbmZvICppbmZvOwogCXN0cnVjdCBiaW5k
+ZXJmc19tb3VudF9vcHRzICpjdHggPSBmYy0+ZnNfcHJpdmF0ZTsKIAlzdHJ1Y3QgaW5vZGUgKmlu
+b2RlID0gTlVMTDsKLQlzdHJ1Y3QgYmluZGVyZnNfZGV2aWNlIGRldmljZV9pbmZvID0geyAwIH07
+CisJc3RydWN0IGJpbmRlcmZzX2RldmljZSBkZXZpY2VfaW5mbyA9IHt9OwogCWNvbnN0IGNoYXIg
+Km5hbWU7CiAJc2l6ZV90IGxlbjsKIAotLSAKMi43LjQKCgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4
+ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
