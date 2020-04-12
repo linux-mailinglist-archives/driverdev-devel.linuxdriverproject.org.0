@@ -1,61 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0C8B1A5E36
-	for <lists+driverdev-devel@lfdr.de>; Sun, 12 Apr 2020 13:18:35 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 521BD1A5E5F
+	for <lists+driverdev-devel@lfdr.de>; Sun, 12 Apr 2020 13:56:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3E00E87E9B;
-	Sun, 12 Apr 2020 11:18:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 659502045F;
+	Sun, 12 Apr 2020 11:56:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IQcYMnsYKMYc; Sun, 12 Apr 2020 11:18:32 +0000 (UTC)
+	with ESMTP id ZRGodvcyzM-L; Sun, 12 Apr 2020 11:56:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7CE3387EB0;
-	Sun, 12 Apr 2020 11:18:32 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 21E3B2042A;
+	Sun, 12 Apr 2020 11:56:39 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C2C2D1BF5A7
- for <devel@linuxdriverproject.org>; Sun, 12 Apr 2020 11:18:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C2D421BF5A7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 12 Apr 2020 11:56:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B8FF187D11
- for <devel@linuxdriverproject.org>; Sun, 12 Apr 2020 11:18:30 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BF1CB86CD7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 12 Apr 2020 11:56:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FlHbl99MhdfM for <devel@linuxdriverproject.org>;
- Sun, 12 Apr 2020 11:18:29 +0000 (UTC)
+ with ESMTP id e3Nm9eL7apMZ
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 12 Apr 2020 11:56:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 95D85878A0
- for <devel@driverdev.osuosl.org>; Sun, 12 Apr 2020 11:18:29 +0000 (UTC)
-Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
- [82.4.196.95])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1555C206E9;
- Sun, 12 Apr 2020 11:18:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586690309;
- bh=KVxlN5pn9biEvZszl+Y+7ZXezrAEjJJg578pji2Cn5A=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=AELM0sLAn6vjIN6P4iu0wZmzKagd5DqiyEGAjE0ScHaCoZwabaIsabcfwpw4APzVL
- XyRtESekXsjNZeKly+q9PJZ7qN1pAeEryAR5klskxUwDL5Td6SrLz16TQZioDOKbbk
- DcEKF6AgVS+bylCoQ3fQCGFrJgFDILOXCZRuh9zU=
-Date: Sun, 12 Apr 2020 12:18:24 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
-Subject: Re: [PATCH 1/3] iio: kfifo: add iio_device_attach_kfifo_buffer()
- helper
-Message-ID: <20200412121824.2319c12d@archlinux>
-In-Reply-To: <48e7f8d5f090971e0c48c0134ebb2dca86a0f144.camel@analog.com>
-References: <20200401125936.6398-1-alexandru.ardelean@analog.com>
- <20200405114602.160c690b@archlinux>
- <48e7f8d5f090971e0c48c0134ebb2dca86a0f144.camel@analog.com>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F169A86C94
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 12 Apr 2020 11:56:35 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id x11so6455595otp.6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 12 Apr 2020 04:56:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=h5r3LliWQ3VcYXyNYI+MjSL4Rvk8c00ETY3JZt0otwU=;
+ b=flXoDhO3B77CF6RbEI3XIxqCN8kAZoNGZHo9IM321JeExrTAv/FMp+hdWbK3hzUxeO
+ x8hkL2gd6JuMyVE42eMfUSgGqWTF1OTB1SZpCszs6UFkVA/SPbMIwE2Mcc2/Aje2+yW4
+ wOYicBR57mLkM/0XhDZb1S2sT+dhiFusbsL5giQ8EPXgnWuC+2kQ+ZnEoMuXKLm1iN2b
+ FwHOwKvTkLhnEDpbR+5VRzbbZConwAFppnwKOR4ITzPT6JiwFElWeP+qega7ttzhfhv3
+ Q+fKqumv1b9nHXYdZCjQqcV4947Kc8Sue7kReRtLpe+ariygJGdFE3noGL/rXPnEubAO
+ qcVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=h5r3LliWQ3VcYXyNYI+MjSL4Rvk8c00ETY3JZt0otwU=;
+ b=eVo6w/3+33tCfCq04sC4YKkvIQqJUMi7aIAK2o0PJtK78gK3RPaupKeGjjhaEPyXid
+ K9t+7FZiI0/5UuWHIg9mAm2OnwF7Ax71E6OAe7td6n1OFKoh+roUg3vRxiRedUen/Vvq
+ 1ZaLmfD9EdU00m594A2TuU9hkcai3y/UFeHg8y6yDhaTer82sI+ue+nT0UkUN0YPIPMR
+ uZcTwyjkLaBrGImh3cGLVwx1yzcRYnmgiP6rObbLVUJnoJUhAYUg03b36Vt9JUg0CoXQ
+ hjwkJK6/6k44lrxwO60xco71IR1MOR3vawwSAoqLP3HzpadSfd8/lnFYGj2KxzhbW2a3
+ 92aA==
+X-Gm-Message-State: AGi0PuaCBBwFf5oDV1qawNyto12WoEDT3kAEJdkVH/E/EK3Kplq3kIL0
+ 1L6b5SAFGfjBWoqtGyV7Z0RUZjSxth11lLebPxy5xDzN
+X-Google-Smtp-Source: APiQypJlyjCT3S3M74ZE7pk4tkZOmyM1b+JMATERkeB8PqbcJAvHR2pCwkTsOrwKBnxZyYdUVy5a11qfAt6HgFAFyVw=
+X-Received: by 2002:a05:6830:1d67:: with SMTP id
+ l7mr10590336oti.72.1586692595098; 
+ Sun, 12 Apr 2020 04:56:35 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200412102926.15346-1-sergio.paracuellos@gmail.com>
+In-Reply-To: <20200412102926.15346-1-sergio.paracuellos@gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Sun, 12 Apr 2020 13:56:24 +0200
+Message-ID: <CAMhs-H9DE-CQ=f5qqnuHPddm7E-vFK1j3j54WXz3ckZPrziTHA@mail.gmail.com>
+Subject: Re: [PATCH] staging: mt7621-dts: fix PCIe interrupt mapping
+To: Greg KH <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,194 +85,127 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "lars@metafoo.de" <lars@metafoo.de>,
- "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>,
- "lorenzo.bianconi83@gmail.com" <lorenzo.bianconi83@gmail.com>
+Cc: NeilBrown <neil@brown.name>, driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 6 Apr 2020 08:12:42 +0000
-"Ardelean, Alexandru" <alexandru.Ardelean@analog.com> wrote:
+Hi all,
 
-> On Sun, 2020-04-05 at 11:46 +0100, Jonathan Cameron wrote:
-> > [External]
-> > 
-> > On Wed, 1 Apr 2020 15:59:34 +0300
-> > Alexandru Ardelean <alexandru.ardelean@analog.com> wrote:
-> >   
-> > > This change adds the iio_device_attach_kfifo_buffer() helper/short-hand,
-> > > which groups the simple routine of allocating a kfifo buffers via
-> > > devm_iio_kfifo_allocate() and calling iio_device_attach_buffer().
-> > > 
-> > > The mode_flags parameter is required. The setup_ops parameter is optional.
-> > > 
-> > > This function will be a bit more useful when needing to define multiple
-> > > buffers per IIO device.
-> > > 
-> > > One requirement [that is more a recommendation] for this helper, is to call
-> > > it after 'indio_dev' has been populated.
-> > > 
-> > > Also, one consequence related to using this helper is that the resource
-> > > management of the buffer will be tied to 'indio_dev->dev'. Previously it
-> > > was open-coded, and each driver does it slightly differently. Most of them
-> > > tied it to the parent device, some of them to 'indio_dev->dev'.
-> > > This shouldn't be a problem, and may be a good idea when adding more
-> > > buffers per-device.  
-> > 
-> > I'm glad you highlighted this subtlety.  I'm not sure it's safe in all cases
-> > because the result is that the managed cleanup for this will occur once we
-> > get to the cleanup for devm_iio_device_alloc and we release the indio_dev->dev
-> > 
-> > That would put it 'after' any other devm calls that are still hung off the
-> > parent
-> > device.
-> > 
-> > Now the question is whether that ever causes us problems... See next patch.
-> > It potentially does.  I think we need to provide the dev separately even
-> > if it feels a bit silly to do so.  Scope management is complex so I don't
-> > really want to force people to mix and match between different devices
-> > and so get it wrong by accident.
-> > 
-> > The other issue is that it's not readily apparent from the naming that
-> > this function is registering stuff that is cleaned up automatically or
-> > that it even allocates anything that might need that..
-> > 
-> > devm_iio_device_attach_new_kfifo_buffer maybe?
-> > 
-> > I'm sort of wondering if we should do what dma did and have
-> > 
-> > iiom_device_attach_new_kfifo_buffer to indicate it's managed in the
-> > scope of the iio device?
-> > 
-> > What do people think?
-> > 
-> > However, see patch 2 before commenting.  Reality is I'm not sure forcing
-> > managed calls to hang off iio_dev->dev is a good idea (at this stage given
-> > where we are).  
-> 
-> What I am really after with this patch is to hide away these:
->      iio_kfifo_free(indio_dev->buffer);
->      iio_buffer_set_attrs(indio_dev->buffer, xxxx_fifo_attributes); 
-> i.e. not have 'indio_dev->buffer' open-coded in drivers, and hide it in IIO core
-> somewhere.
-> Some ideas can go in parallel [like this one] to add support for multiple
-> buffers.
-> 
-> So, I will think of a better [less sloppy] V2 for this.
-> 
-> One intermediate alternative is to do 'iio_device_kfifo_free(indio_dev)', but
-> I'll still try to think of a better devm_ approach.
-> devm_iio_device_attach_new_kfifo_buffer() sounds a bit long but may work.
-> iiom_device_attach_new_kfifo_buffer() can also work.
-> 
-> What if we just default attaching to the parent device?
+On Sun, Apr 12, 2020 at 12:29 PM Sergio Paracuellos
+<sergio.paracuellos@gmail.com> wrote:
+>
+> MT7621 has three assigned interrupts for the pcie. This
+> interrupts should properly being mapped taking into account
+> which devices are finally connected in which bus. Because of
+> this current information of these mappings is not enough and
+> should be a little modified to properly got interrupts working
+> for any scenario. For example, as it is now, if we only have
+> connected pcie1 on PCI enumeration will get that bus 1 is using
+> slot 0 for this pci device and the interrupt will be wrongly
+> mapped to the one in pcie0 istead of use the good one for pcie1.
+> Hence, add interrupt map information to pcie child nodes and
+> properly update the global pcie node information.
+>
+> Fixes: 46d093124df4 ("staging: mt7621-pci: improve interrupt mapping")
+> Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> ---
+>
+> Tested in gnubee pc1 (which uses all the buses and also worked without
+> changes) and tested also in ZyXEL LTE3301-PLUS which has PCIe and a
+> mt7615e connected to second bus on the first phy where the current
+> mapping was failing and this changes seems to fix the mapping problems.
+>
+> On gnubee we get:
+>
+> # cat /proc/interrupts
+>          CPU0       CPU1       CPU2       CPU3
+> ...
+>
+> 23:          0          0          0          0  MIPS GIC  11  ahci[0000:01:00.0]
+> 24:          0          0          0          0  MIPS GIC  31  ahci[0000:02:00.0]
+> 25:        279          0          0          0  MIPS GIC  32  ahci[0000:03:00.0]
+>
+> On the ZyXEL LTE3301-PLUS before this changes (wrongly '23' (pcie0 one) is assigned):
+>
+> root@OpenWrt:/# cat /proc/interrupts
+>           CPU0       CPU1       CPU2       CPU3
+> ...
+>
+> 23:          0          0          0          0  MIPS GIC  11  mt7615e
+>
+> After this changes:
+>
+> root@OpenWrt:/# cat /proc/interrupts
+>           CPU0       CPU1       CPU2       CPU3
+> ...
+>
+> 24:         85          0          0          0  MIPS GIC  31  mt7615e
+>
+> Thanks!
+>
+>  drivers/staging/mt7621-dts/mt7621.dtsi | 17 +++++++++++++----
+>  1 file changed, 13 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
+> index 9e5cf68731bb..bee7731eb60a 100644
+> --- a/drivers/staging/mt7621-dts/mt7621.dtsi
+> +++ b/drivers/staging/mt7621-dts/mt7621.dtsi
+> @@ -524,10 +524,10 @@ pcie: pcie@1e140000 {
+>                 >;
+>
+>                 #interrupt-cells = <1>;
+> -               interrupt-map-mask = <0xF0000 0 0 1>;
+> -               interrupt-map = <0x10000 0 0 1 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>,
+> -                               <0x20000 0 0 1 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>,
+> -                               <0x30000 0 0 1 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
+> +               interrupt-map-mask = <0xF800 0 0 0>;
+> +               interrupt-map = <0x0000 0 0 0 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>,
+> +                               <0x0800 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>,
+> +                               <0x1000 0 0 0 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
+>
+>                 status = "disabled";
+>
+> @@ -544,6 +544,9 @@ pcie@0,0 {
+>                         reg = <0x0000 0 0 0 0>;
+>                         #address-cells = <3>;
+>                         #size-cells = <2>;
+> +                       #interrupt-cells = <1>;
+> +                       interrupt-map-mask = <0 0 0 0>;
+> +                       interrupt-map = <0 0 0 0 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>;
+>                         ranges;
+>                         bus-range = <0x00 0xff>;
+>                 };
+> @@ -552,6 +555,9 @@ pcie@1,0 {
+>                         reg = <0x0800 0 0 0 0>;
+>                         #address-cells = <3>;
+>                         #size-cells = <2>;
+> +                       #interrupt-cells = <1>;
+> +                       interrupt-map-mask = <0 0 0 0>;
+> +                       interrupt-map = <0 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
+>                         ranges;
+>                         bus-range = <0x00 0xff>;
+>                 };
+> @@ -560,6 +566,9 @@ pcie@2,0 {
+>                         reg = <0x1000 0 0 0 0>;
+>                         #address-cells = <3>;
+>                         #size-cells = <2>;
+> +                       #interrupt-cells = <1>;
+> +                       interrupt-map-mask = <0 0 0 0>;
+> +                       interrupt-map = <0 0 0 0 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
+>                         ranges;
+>                         bus-range = <0x00 0xff>;
+>                 };
+> --
+> 2.25.1
+>
 
-That would work and be consistent with the vast majority of current cases.
+Forget about this patch I was told the ZyXEL side was not working as
+expected. Sorry for the noise. Keep investigating.
 
-> 
-> Would it work to also attach the parent device in devm_iio_device_alloc() by
-> default?
-
-That would need a thorough audit to check nothing crazy is done by
-a driver with an odd structure.  Such a driver would (I think) be
-buggy though as the child lifetime should be dependent on the parent
-and not some other device.
-
-> Or change 'iio_device_alloc()' to take a parent device as argument?
-
-I think there are only a couple of users, so that would work.
-
-> Which for devm_iio_device_alloc(dev,...) would implicitly mean that 'dev' is
-> 'parent'?
-
-I think that's a fair assumption (though needs a sanity check)
-
-> 
-> These are just some thoughts.
-> 
-> 
-> > 
-> > Thanks
-> > 
-> > Jonathan
-> > 
-> >   
-> > > Signed-off-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
-> > > ---
-> > >  drivers/iio/buffer/kfifo_buf.c | 37 ++++++++++++++++++++++++++++++++++
-> > >  include/linux/iio/kfifo_buf.h  |  4 ++++
-> > >  2 files changed, 41 insertions(+)
-> > > 
-> > > diff --git a/drivers/iio/buffer/kfifo_buf.c b/drivers/iio/buffer/kfifo_buf.c
-> > > index 3150f8ab984b..05b7c5fc6f1d 100644
-> > > --- a/drivers/iio/buffer/kfifo_buf.c
-> > > +++ b/drivers/iio/buffer/kfifo_buf.c
-> > > @@ -228,4 +228,41 @@ void devm_iio_kfifo_free(struct device *dev, struct
-> > > iio_buffer *r)
-> > >  }
-> > >  EXPORT_SYMBOL(devm_iio_kfifo_free);
-> > >  
-> > > +/**
-> > > + * iio_device_attach_kfifo_buffer - Allocate a kfifo buffer & attach it to
-> > > an IIO device
-> > > + * @indio_dev: The device the buffer should be attached to
-> > > + * @mode_flags: The mode flags for this buffer (INDIO_BUFFER_SOFTWARE
-> > > and/or
-> > > + *		INDIO_BUFFER_TRIGGERED).
-> > > + * @setup_ops: The setup_ops required to configure the HW part of the
-> > > buffer (optional)
-> > > + *
-> > > + * This function allocates a kfifo buffer via devm_iio_kfifo_allocate() and
-> > > + * attaches it to the IIO device via iio_device_attach_buffer().
-> > > + * This is meant to be a bit of a short-hand/helper function as many driver
-> > > + * seem to do this.
-> > > + */
-> > > +int iio_device_attach_kfifo_buffer(struct iio_dev *indio_dev,
-> > > +				   int mode_flags,
-> > > +				   const struct iio_buffer_setup_ops *setup_ops)
-> > > +{
-> > > +	struct iio_buffer *buffer;
-> > > +
-> > > +	if (mode_flags)
-> > > +		mode_flags &= kfifo_access_funcs.modes;
-> > > +
-> > > +	if (!mode_flags)
-> > > +		return -EINVAL;
-> > > +
-> > > +	buffer = devm_iio_kfifo_allocate(&indio_dev->dev);
-> > > +	if (!buffer)
-> > > +		return -ENOMEM;
-> > > +
-> > > +	iio_device_attach_buffer(indio_dev, buffer);
-> > > +
-> > > +	indio_dev->modes |= mode_flags;
-> > > +	indio_dev->setup_ops = setup_ops;
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +EXPORT_SYMBOL_GPL(iio_device_attach_kfifo_buffer);
-> > > +
-> > >  MODULE_LICENSE("GPL");
-> > > diff --git a/include/linux/iio/kfifo_buf.h b/include/linux/iio/kfifo_buf.h
-> > > index 764659e01b68..2363a931be14 100644
-> > > --- a/include/linux/iio/kfifo_buf.h
-> > > +++ b/include/linux/iio/kfifo_buf.h
-> > > @@ -11,4 +11,8 @@ void iio_kfifo_free(struct iio_buffer *r);
-> > >  struct iio_buffer *devm_iio_kfifo_allocate(struct device *dev);
-> > >  void devm_iio_kfifo_free(struct device *dev, struct iio_buffer *r);
-> > >  
-> > > +int iio_device_attach_kfifo_buffer(struct iio_dev *indio_dev,
-> > > +				   int mode_flags,
-> > > +				   const struct iio_buffer_setup_ops
-> > > *setup_ops);
-> > > +
-> > >  #endif  
-
+Thanks,
+    Sergio Paracuellos
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
