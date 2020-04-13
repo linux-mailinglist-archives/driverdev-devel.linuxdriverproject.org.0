@@ -1,83 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A523F1A67A1
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 16:13:50 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C3B61A6820
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 16:25:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3E0EB8204B;
-	Mon, 13 Apr 2020 14:13:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 12DB286F8D;
+	Mon, 13 Apr 2020 14:25:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O89BJ1fxjD8x; Mon, 13 Apr 2020 14:13:47 +0000 (UTC)
+	with ESMTP id gZlA2S8kyiDh; Mon, 13 Apr 2020 14:25:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3462684922;
-	Mon, 13 Apr 2020 14:13:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4606C8708F;
+	Mon, 13 Apr 2020 14:25:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 430531BF3A0
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 14:13:43 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 97ACE1BF3A0
+ for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 14:25:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3EAEB8471C
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 14:13:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 946C38496B
+ for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 14:25:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5uVFoxt2bj9p for <devel@linuxdriverproject.org>;
- Mon, 13 Apr 2020 14:13:42 +0000 (UTC)
+ with ESMTP id sDwEQnf9w7FI for <devel@linuxdriverproject.org>;
+ Mon, 13 Apr 2020 14:25:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 98E0D83C53
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 14:13:41 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D235984961
+ for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 14:25:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1586787209;
- bh=fsy7pbyVHuLxcF0YdSrvHewVvvVq1Q53I/0F2aOE4NE=;
+ s=badeba3b8450; t=1586787920;
+ bh=unSxpRsDMlSBh+KoqlcyvwQe1MQ6kpwfYI9Sofambco=;
  h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
- b=ALACTwc9Ve7aA1UcHApC2Tu9knx4ZjbO+KhmHxfHIgFeUphJwt6p2vqLZIO+P0lKm
- UQKHwlIXA0ZAPQj5dNnVOX4u4pK9qiwbv7ThrRBhP+3qZ75hEyPy6Gidd5PQ4/1/SB
- 6wfAszM4lWTp2WO5P3Vfd47I02HRbehPNvoPwPJg=
+ b=KSKUCpzMYxIDjfTfAXxreQwd8mrMmlmXg5LToQ+gbJUTfOu+uaTgZhjRykAkrsYtf
+ JJVUHiUGuDIJLonU38hHVdjlEOugNHKVOyYv+dEZea4RajEls9Z9R30YOiTQdAaQZb
+ VgceuapE7AidmTxFQHO0iv5Gp4RTovZrkKqFkIb8=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx105
- [212.227.17.174]) with ESMTPSA (Nemesis) id 1Mxm3K-1j3i4N01aY-00zJfT; Mon, 13
- Apr 2020 16:13:29 +0200
-Date: Mon, 13 Apr 2020 16:13:15 +0200
+Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx005
+ [212.227.17.184]) with ESMTPSA (Nemesis) id 1MPog5-1jbw6u3ZK7-00MuTb; Mon, 13
+ Apr 2020 16:25:19 +0200
+Date: Mon, 13 Apr 2020 16:25:17 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v3 1/2] staging: vt6656: Use define instead of magic
- number for tx_rate
-Message-ID: <20200413141315.GA3101@ubuntu>
-References: <20200407163915.7491-1-oscar.carter@gmx.com>
- <20200407163915.7491-2-oscar.carter@gmx.com>
- <20200413125633.GB3127208@kroah.com>
+Subject: Re: [PATCH v2 1/2] staging: vt6656: Refactor the assignment of the
+ phy->signal variable
+Message-ID: <20200413142517.GB3101@ubuntu>
+References: <20200411122610.7901-1-oscar.carter@gmx.com>
+ <20200411122610.7901-2-oscar.carter@gmx.com>
+ <20200413125616.GA3127208@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200413125633.GB3127208@kroah.com>
+In-Reply-To: <20200413125616.GA3127208@kroah.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Provags-ID: V03:K1:2ADjKbcyP1Uqbfc5HGXxmv9sHYISCCpoF8znnylwnSdy1Rqg4DD
- hA6GTRi2oACLltq5zb6Mg2OQgEB5UWYLsxZhrhCsF6BF1k/8atd3FF4A8avCv0CTy7pIUqb
- japaMQ/DQICbgyeQmwAQRlZrZic9tzJ48oviQ/V7j6M1ThR9lIIQPW0in0u8qA03N+pPlO/
- /ISpu8D/nEZ+yDSKdI+RQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:U8SuuQS1uaU=:3TnpPg9hfWRzjErBGedKeu
- FoUa76tpPcI/Y3GT1ukoPg4NrshP+0QgZMPtBu0sicyKL5YOYKsXYpS6AtCWp2wHt1h4VRdJR
- TSCP/Y3B+uAnxB/4eHC6XkTItGhARYj4XJMfR60N0LP+jZ+KSvp81EH6/09iCGmubnRLbjjC6
- e/0W+f+qXBdRN193VyMEAz1JZiknG6c16KYuwwmqu7I6YedPFxWl6vDF87mITvkQpMWe5Yyot
- fIkVWYn0AaxKP76+w0HVH+nNTBE805g5+TTPaIJKB6JcnY8Ye/7zskwzvsSeqzgqXrm5557Ts
- xbZBUu47dAp5H7VRkWTIkgjn02tVCzKTLSmwu570XB5/DTekWA1hXEO2wsfBN7769la8qtUdd
- UxVxjIjjNyJ+DIv86BRLfMCYNSjixe6MLurywlVcojs8ajDn8ZrL6Z8G9DY/2ephJxN/sJzVR
- djBlm4dD8K+f7bUS1PsEBBltxNlipJE1A788fEbeZ2JFjtCpWMC6cHZI8SU8QsUoFdwnRP5EK
- Mzii4T6+oB0oeFyH3rHS115Pbbl3Q09zfGYx1nGy86jMNT6pphQlYEIrFPkzkf+snA+bD8N/N
- xVgeVP53B60CYjBKu8p/3xqcnZL0uN51oMyF5mLc2TRCKanZ9b20IqzYF4eZPQLKNS9wVuk4P
- DEhA1/0hqnVdO8RLeovrElbuPztCb+UPrNx5ZJ+Vq1UHCsw1sM8/b1ux8HWnF6yn6PZ+F17I2
- clDPF4fUTqFDhjNTOHPPSZM/KuSRC8C2sL7xMGja08JirFx321mcVTwB74QP1DotvHEAUTotF
- ysCNt/rWB4mkMsIXJFvC5vC75pzdlwY3q5g9kjG0NLeXKUh1tcQm/MvSWDsQhW/PnCSH4sv1r
- pLIaVVXP9PIi6fekzG0lZZUtJ6Y8mlA4n8DyMo0t0srFGIMT7haZb4DuWerz/GbT/MJ0pmbqB
- xoJaFPm+96vSiyTfm5ESEyCgjbE6auRxCOEsCyoODTFeFZYnnQLirmfWjJa/ZFByqi5xaJ213
- FkuEXlw4iJjf93l4xbgVrujtiH3T8iwpig90b7oO/lVjonBXy4qLugDEykftGxz3011ysiO33
- VV+qcMQG0klJubBAAlt4XPZnsAnAlBOzALeKQu6TxoxBd63EidsK+XvnJC39MBbXoixYwy87b
- vlvjGG29KaoJhWteU2Ostp88/6fKhdi1lZsAsQCq0Uf+zdp+8b8jNyOFosUq/SqcnSz1R0w+Y
- t/nXdeIgUQ5yIzM6a
+X-Provags-ID: V03:K1:sePqCH0veJcZP+UIPEJ20g1Mqu5U4j9dYnY8IkxX8Q47yMA7N/8
+ Wy/a1qW5CHeJCk6ifgR5vVx2PyXdvmAfWxZDj4gd/9c8rBiqy+ao1FhmoBa3HhQCOa28/s8
+ dFFGhHn4Gs/vk8ozR41que6OktruwYTZcr64xHy16rB7Js/Srj3fq/2rUZFxW6/ai5+g04U
+ yBh/g+Fau6fxGBmwbhqMA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6wRIMaxwNqc=:hcxYmiiQ7Sp467P4jDYvMO
+ 9xiS2Jevx9BkqYY5WJUDUzDiFTSa/K68mp5bPWOzNaq2RuAzq+D5H4vVsgGyLmzih9uRqtmkb
+ 1qbnc1ojp0rYNkenfRSgKPGixOZmc6IaxfaHp+eMA4dDY7ZWEKTXPpBcvnLDGMiORt3fCgHv5
+ /t/cKyRWMaoGOPRBRMwc5M51ULkfLSs5lZRdfYbrxAnbOImcaNZViQ4KPBlR7FXprTSZTc8gK
+ /sH7j8Qh4bT/PoZh3cZl9mw6PKpsVrtUQ8SASmH8/Iv+tW+qmeyU0aqGeJCL2Yx5REUiHN4W3
+ G4J/Xw1XdZT3r7NARiBJqqQwPRWg4XL6m+lBWtmXr/E9SPCCvFkldXe8HRR9dmFE4gsn5CvGs
+ n8qNcH8aviSL5eKxYuhnFM99eyJN+zF+BRI0UQVKyK7hG49Q5i06bd/vHmS31pZjDDz3lxnGF
+ mqVIAuyKcGCtoLiEOoOLfD0RPIRsAPZlbrvso8PuAfvlTmJ2n+4h62nmF/IF/nOQYqESX1QMG
+ 0A0/zp50tSdAiWnTfpo8rseW8lSGahkQR7ABJuvWsqNF7Amsyd7hXuXsmjlkezXEsbbUBdZpw
+ uAGCkTC3UeQA/y8/g86kpL0QeP2v8XsZNg8Q9/AjzFJITNpbmh+c9hspE31swIQy5YY/7hqW1
+ VTwbSz+Q61cx5nQ2QCvOPzDxgUl2HV51p/+Ak9GuqBANj0rCZehRl4itkElk14WomNjVahYQf
+ wBbdcPUEllczahbWu4j1HQkYWEN7EvZqt7oooDQf1FPrqeOymYaB14DP9J0S+5n513uR4zKV2
+ kZ82CuBpt+vTJTKQGEvArwwwgsmdOC71AmiyPpk1du7Vqo52QGEklb9Q3BRWeAoKQWVz7V4mw
+ uvTITLacjbP4C47G0M7gRTqPbL8fvN3im7iCLKp8f06Ekt+NaYg7VwJHuIXfjVduBC4ZgVTHm
+ Zl/5RFWoG0fL9/mx2p81AvV+4Mw3wghmOxEPaz5DKScldeKo8AqhJbg/9C+tovnPOG0TPT5Vp
+ Q+gFBEaHxq3+QZq/E2aAo3x0NHBfD53GInxm+IMjVL42IURkkOUvOQS68afXjNn57j1sLM8/Q
+ gAZPnfAWaz2hD5Kd9KZuEQLGtXiAjVYSnTTXPZUWnr2jSKuBAhiODe/i95kg0w/BOgD6qSoyN
+ OzzsvtqQt/V97nPtuQdDJPHU01Bur5UyPMSOoW4HKWqq1PF8PjhoOH0ADdhu3RarPU62MpApY
+ Y40pplkhJvTTzDcQc
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,34 +90,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
- Forest Bond <forest@alittletooquiet.net>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
+ Oscar Carter <oscar.carter@gmx.com>, Forest Bond <forest@alittletooquiet.net>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Apr 13, 2020 at 02:56:33PM +0200, Greg Kroah-Hartman wrote:
-> On Tue, Apr 07, 2020 at 06:39:14PM +0200, Oscar Carter wrote:
-> > Use the define RATE_11M present in the file "device.h" instead of the
-> > magic number 3. So the code is more clear.
+On Mon, Apr 13, 2020 at 02:56:16PM +0200, Greg Kroah-Hartman wrote:
+> On Sat, Apr 11, 2020 at 02:26:09PM +0200, Oscar Carter wrote:
+> > Create a constant array with the values of the "phy->signal" for every
+> > rate. Remove all "phy->signal" assignments inside the switch statement
+> > and replace these with a single reading from the new vnt_phy_signal
+> > array.
 > >
-> > Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > The constant array can be of one dimension because the OR mask with
+> > BIT(3) or BIT(4) allow obtain a second value according to the rate,
+> > the preamble_type and the pkt_type.
+> >
 > > Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 > > ---
-> >  drivers/staging/vt6656/baseband.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
+> >  drivers/staging/vt6656/baseband.c | 105 ++++++++----------------------
+> >  1 file changed, 26 insertions(+), 79 deletions(-)
 >
-> This patch did not apply to my tree, please rebase and resend.
+> This series did not apply to my tree, please rebase and resend.
+
+Rebase the patchs is a normal process in the development or am I doing something
+wrong ?
+
 >
-I need to rebase only this patch for this serie so, it's necessary to send all
-the serie or only this patch?
-
-If it's only this patch I need to indicate v4 in the subject or a v2 due it's
-related only with this patch?
-
 > thanks,
 >
 > greg k-h
