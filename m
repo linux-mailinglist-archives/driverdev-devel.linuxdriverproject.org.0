@@ -2,75 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 974D71A6BC6
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 20:01:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D30901A6BC7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 20:01:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8AA6F84D9A;
-	Mon, 13 Apr 2020 18:01:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 57D2084EDB;
+	Mon, 13 Apr 2020 18:01:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l1pgzoOLRFBE; Mon, 13 Apr 2020 18:01:44 +0000 (UTC)
+	with ESMTP id zLUK2q7EMHAD; Mon, 13 Apr 2020 18:01:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 978F284495;
-	Mon, 13 Apr 2020 18:01:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8909384B26;
+	Mon, 13 Apr 2020 18:01:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A0A521BF319
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 18:01:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 20C3A1BF319
+ for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 18:01:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 99CEE20485
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 18:01:40 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1A77220485
+ for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 18:01:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AqFK-7KFawGN for <devel@linuxdriverproject.org>;
- Mon, 13 Apr 2020 18:01:39 +0000 (UTC)
+ with ESMTP id jukIe2Mu2Vtg for <devel@linuxdriverproject.org>;
+ Mon, 13 Apr 2020 18:01:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by silver.osuosl.org (Postfix) with ESMTPS id A2F7A20445
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 18:01:39 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id d17so4154334wrg.11
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 11:01:39 -0700 (PDT)
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id BCD1320445
+ for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 18:01:40 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id e26so10098166wmk.5
+ for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 11:01:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=jtIFW64tqyzoS91eUJxx5MhAP/GYnVTnLiFyemtk0AQ=;
- b=GlWukAqWN4kKrCdSoNvWoOv0MNGWjyr5PFiB5lTZEXPTICJntkpwhQuYwok2YROgGr
- 4Y8symHxEqddLpJvxZvp2Jn8cGZQuz3m03x+cI4WHBWceNZeKtmtpUxkvd5q8ea/Hj7A
- WCDhsU9R1ryHIFhMVVdrdUalEBqy07aQUSHewxbe9oX6IYAUiiq/3umQgr0tcZO+dYvr
- 3O55YMWocL8PZ7OWS5Uf8tqjWkM2SewXnVbUlEQH7I0aJQmYQxBA2nWvB/dS761Uh+pC
- zP9BcuEwFD3TZ0N+ULgsKHrmZprsi00Vn1jTQ3mJBGpENxJ897tXH3kGYN7B//ipaOy0
- F8gg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=D5Z8dE6ImcAXCyeDIiVasuREmY3KTQoR9IpkKMh44/4=;
+ b=LkKPLLGnKbN6uNj8eGVWgc58SBnatJbKP+wJAlc3m98nOdSKl2ouCtfNLXlAtkth12
+ GFkXHBlZt8QmbmV+JxT8w4Kif9hmFtGAFZ0k0GvZ/EjEYKbXJcw/p5K2hVODx9321Vhw
+ RjMjMvcdrq0TEnUc+3UvDsF6v3vQWcTTK3eNM/6VKyuK3dRM6MceGY7YDy/kJCjlholR
+ TuaqoDN6aSgUa/t8yTm5rMKdJHdbN6xbFMNi4C6l2u+/iP43DYWvCDetXVk6Pz29/arU
+ krMsHVHEAEaXp/jVCpipG/nu603a428AlmHK8sQiZ4PAKjhA9PWlQcHT8HExUW8e8psS
+ vBeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=jtIFW64tqyzoS91eUJxx5MhAP/GYnVTnLiFyemtk0AQ=;
- b=gCTV1JM9mBQV0EOumzFuTitQaZDRap84iOaH1S4M8bXZDy5np0Vj1Sfraev4dWH6W0
- CW6Bsam4pcNHO+lgI3grUfQnn+S9oXTtVPcmkqpo4qzwgAYXZarJ/CoF7+V4TSewg2dL
- HR2qEfMB9teqFezhLztv0zucy4OG+6V9NqrZtkrutUauan8sOWpRKFOXtx/oOPhhVa1e
- jqo6/ep80RbnvYMm5xpB5OW3lU2R+I/WDAucz5M3EF4V8rS4qMFhKVqKx7P5NJVUyscF
- td7zdmZJcuv11AXmrwvjOpv0tfru46CTYnhlc3ksopWSwJyKjzBc6dqrnx+f2qzWrfvh
- uhcQ==
-X-Gm-Message-State: AGi0Puatlz+Qy2YDqNEgcCe4kxChfdKlXTlbdQcbK3p/DFlh8HN6rOjn
- hL4wDi31NiHQuRztUfbquHA=
-X-Google-Smtp-Source: APiQypL5lttZkoc5Kc3BNlqZPngoyBZqQ3DXc9NyXD93WP0QxbKEUwrJFJpfwwg32FBCWdi9w00CcQ==
-X-Received: by 2002:adf:fc92:: with SMTP id g18mr10527368wrr.10.1586800898120; 
- Mon, 13 Apr 2020 11:01:38 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=D5Z8dE6ImcAXCyeDIiVasuREmY3KTQoR9IpkKMh44/4=;
+ b=mkbegnXqO31rA97j6r2t7Dbu4hxH5PqRjhZkytyqYIY8RPYDDMoU/FLvbYX2B7ew8i
+ //H9xGikPJsMMZfTR1W/E5Wa5tdOTWNMSpqx1c5EhIqUYfxDUOIuUEaF3gnvjHvuOJJG
+ LZ7G///5GW/NABYFwakl/58sSiRuBmvLH5niF6uAPjHOeI6SagM0UT/hgm1JTScqtZ+5
+ NwF1z7jbnD+Ni8nC/IjLKNCQdI8kPbRKWO1noIGGqQPDEGFmMJWdEDrdojedPNvGBK3E
+ uOreIdqvKC/mNiGvUcAQZ0Lxv/O0RTlYn9uNQi97NYPBdqnEG40thYugjXk997uZtfAZ
+ wuvQ==
+X-Gm-Message-State: AGi0Pua3DjIUMdmTnuFpN0atCIUpBI0K/UpFVZeNXY4ITY4L2993rkOn
+ SlTx77ktC47O/chBdetWs9Q=
+X-Google-Smtp-Source: APiQypJHyeTWGfUue3wbfzPGKb804c1ZjjAg1iFK5H3NhowtMKoC5CFnuvNJYZmxrslpuL3de8EmKA==
+X-Received: by 2002:a1c:4409:: with SMTP id r9mr20365172wma.165.1586800899152; 
+ Mon, 13 Apr 2020 11:01:39 -0700 (PDT)
 Received: from localhost.localdomain
  (dslb-092-073-054-241.092.073.pools.vodafone-ip.de. [92.73.54.241])
- by smtp.gmail.com with ESMTPSA id u3sm6476181wrt.93.2020.04.13.11.01.36
+ by smtp.gmail.com with ESMTPSA id u3sm6476181wrt.93.2020.04.13.11.01.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Apr 2020 11:01:37 -0700 (PDT)
+ Mon, 13 Apr 2020 11:01:38 -0700 (PDT)
 From: Michael Straube <straube.linux@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 0/3] staging: rtl8188eu: checkpatch cleanups in hal/fw.c
-Date: Mon, 13 Apr 2020 19:59:54 +0200
-Message-Id: <20200413175957.30165-1-straube.linux@gmail.com>
+Subject: [PATCH 1/3] staging: rtl8188eu: rename define to upper case
+Date: Mon, 13 Apr 2020 19:59:55 +0200
+Message-Id: <20200413175957.30165-2-straube.linux@gmail.com>
 X-Mailer: git-send-email 2.26.0
+In-Reply-To: <20200413175957.30165-1-straube.linux@gmail.com>
+References: <20200413175957.30165-1-straube.linux@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,18 +93,50 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This series clears the last remaining checkpatch issues in the file
-hal/fw.c.
+Rename 'FWDL_ChkSum_rpt' to 'FWDL_CHKSUM_RPT' as defines are normaly
+named all upper case. Also clears a camel case checkpatch warning.
 
-Michael Straube (3):
-  staging: rtl8188eu: rename define to upper case
-  staging: rtl8188eu: cleanup long line in fw.c
-  staging: rtl8188eu: make const char array static
-
- drivers/staging/rtl8188eu/hal/fw.c                | 7 ++++---
+Signed-off-by: Michael Straube <straube.linux@gmail.com>
+---
+ drivers/staging/rtl8188eu/hal/fw.c                | 4 ++--
  drivers/staging/rtl8188eu/include/rtl8188e_spec.h | 2 +-
- 2 files changed, 5 insertions(+), 4 deletions(-)
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/staging/rtl8188eu/hal/fw.c b/drivers/staging/rtl8188eu/hal/fw.c
+index 486ee4bd4744..dbf7883f9ed7 100644
+--- a/drivers/staging/rtl8188eu/hal/fw.c
++++ b/drivers/staging/rtl8188eu/hal/fw.c
+@@ -111,7 +111,7 @@ static int _rtl88e_fw_free_to_go(struct adapter *adapt)
+ 
+ 	do {
+ 		value32 = usb_read32(adapt, REG_MCUFWDL);
+-		if (value32 & FWDL_ChkSum_rpt)
++		if (value32 & FWDL_CHKSUM_RPT)
+ 			break;
+ 	} while (counter++ < POLLING_READY_TIMEOUT_COUNT);
+ 
+@@ -192,7 +192,7 @@ int rtl88eu_download_fw(struct adapter *adapt)
+ 		rtl88e_firmware_selfreset(adapt);
+ 	}
+ 	_rtl88e_enable_fw_download(adapt, true);
+-	usb_write8(adapt, REG_MCUFWDL, usb_read8(adapt, REG_MCUFWDL) | FWDL_ChkSum_rpt);
++	usb_write8(adapt, REG_MCUFWDL, usb_read8(adapt, REG_MCUFWDL) | FWDL_CHKSUM_RPT);
+ 	_rtl88e_write_fw(adapt, download_data, download_size);
+ 	_rtl88e_enable_fw_download(adapt, false);
+ 
+diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_spec.h b/drivers/staging/rtl8188eu/include/rtl8188e_spec.h
+index dd943c831d91..be30c9434a29 100644
+--- a/drivers/staging/rtl8188eu/include/rtl8188e_spec.h
++++ b/drivers/staging/rtl8188eu/include/rtl8188e_spec.h
+@@ -817,7 +817,7 @@ So the following defines for 92C is not entire!!!!!!
+ /* 2 MCUFWDL */
+ #define MCUFWDL_EN			BIT(0)
+ #define MCUFWDL_RDY			BIT(1)
+-#define FWDL_ChkSum_rpt			BIT(2)
++#define FWDL_CHKSUM_RPT			BIT(2)
+ #define MACINI_RDY			BIT(3)
+ #define BBINI_RDY			BIT(4)
+ #define RFINI_RDY			BIT(5)
 -- 
 2.26.0
 
