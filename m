@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECF0E1A63F5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 10:06:04 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4B4EB203EE;
-	Mon, 13 Apr 2020 08:06:02 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fgFgmW68cB1w; Mon, 13 Apr 2020 08:06:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C98E22001C;
-	Mon, 13 Apr 2020 08:06:00 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AF4FD1BF3D8
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 08:05:58 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 247EC1A651B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 12:20:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AC59B8659B
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 08:05:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 337DD8777C;
+	Mon, 13 Apr 2020 10:20:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GqaT54cdo9wk; Mon, 13 Apr 2020 10:20:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3358F877B1;
+	Mon, 13 Apr 2020 10:20:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 87B011BF2B7
+ for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 10:20:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 827CD847C3
+ for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 10:20:39 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LEAUWs9bomkj for <devel@linuxdriverproject.org>;
- Mon, 13 Apr 2020 08:05:58 +0000 (UTC)
+ with ESMTP id HpGSqqSNf0nf for <devel@linuxdriverproject.org>;
+ Mon, 13 Apr 2020 10:20:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 06D0D87111
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 08:05:57 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id d77so8598558wmd.3
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 01:05:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=pF3os/zIvJX+FxOE+3LXE7wUPykZDFerUtI/+GJzXq4=;
- b=eQUAZWLFUuw+i5lPKOUDRRGyhb4POIW1/mU/kKyDEUPZakUEZYiYBl9io2BD8+fUQc
- 8s9XF4/u392LD16GU6Zf8IiW2322rtyc4y/YIBfUdDDRj+6zh/fTbILbG84lQiiC9Dmk
- AhPQChC6pumuVGguYWznU5KAP1KwgS7k68x09Jef7LlFdIVbALgGNB1uuzmQ7VeTIo7y
- puluWgntI/gSdajBI2t9AcV2wXJHeqvbFLXQYhMW+a16Mu7eBEyIpTMEZ1yELCI2A/8M
- 6ABws4YNAmC3lqXYesPlebDNTLNWT5dJa1GsYyzipIO3wy7ntLjgcI9A8Ey+5nYFUXuH
- k9CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=pF3os/zIvJX+FxOE+3LXE7wUPykZDFerUtI/+GJzXq4=;
- b=mz0E2GV1jN3lkKV+0fsmquR/L4hYZp/NPQI7WI91Icy9oEUq0LErA3gQLK6nOzaF2z
- eULKCeIq7Z4VIo/MdLUx2MfNj3VmbBCknazLx6QSKwSyE6PHWC8hZ09PBE4WNriRLbat
- YaiUqJ/Nln6mggigEeMIQgEgUzgi9vyjtRJEvw1KJavNzADfWGNxBhjF8mE209vpE/qx
- ML8O/dAy1nSUqAqKcT+0oPMncTaJZ5I/V7jUms03bQNKxKIQ85KNT2spokSztbYyLqvI
- zaTf/mtPC7Znz45gU9SaiKO08Ww2u7/KuiQcx2iTjXMx0o/9wKWghzBuAP32TX5sz8YS
- uUCg==
-X-Gm-Message-State: AGi0PubfWE2s8Ulnbz9NUOSvGfwIYit+P8OcB7DuFTsyjTe/13bpBrlO
- 9j3gMQLmgSk//XBWlgah7Dg=
-X-Google-Smtp-Source: APiQypLNndLmyzXn/0Rdm9JTfoVXrXepFBHuEFg9lZbLD1HxF7imHbvanJtQQ4bhSGkLyndLHsN53w==
-X-Received: by 2002:a1c:8106:: with SMTP id c6mr17348218wmd.88.1586765156226; 
- Mon, 13 Apr 2020 01:05:56 -0700 (PDT)
-Received: from localhost.localdomain ([31.4.236.192])
- by smtp.gmail.com with ESMTPSA id k3sm13669900wmf.16.2020.04.13.01.05.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Apr 2020 01:05:55 -0700 (PDT)
-From: carlosteniswarrior@gmail.com
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: Comedi: Drivers: das08: Fixed some coding style
- issues
-Date: Mon, 13 Apr 2020 10:05:55 +0200
-Message-Id: <20200413080555.29267-1-carlosteniswarrior@gmail.com>
-X-Mailer: git-send-email 2.26.0
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CDC40844CA
+ for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 10:20:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1586773200;
+ bh=QiOr1DeVPm8b1WI0oWjMb4zAXSFo1UBAnReM7F1ktdM=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=fLFFHluGxWstu0No/gZbOyDkPtMQ/+viCNDTbqlL06TXxyXHEZvCOg8gKPv5TAV9/
+ a+3+myAJ9SZjBx44jfLOZHsrE2YWhloO053GnGVQyw22Awvk1cF6q61cKhpidVt/ct
+ R0yS/z0E2hBlxDDI5FCDoPc+tsREEalDpRoyRWRQ=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
+ (mrgmx105 [212.227.17.174]) with ESMTPSA (Nemesis) id
+ 1MDhhX-1jWQWG3Gb9-00An7f; Mon, 13 Apr 2020 12:19:59 +0200
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: vt6656: Return error code in vnt_rf_write_embedded
+ function
+Date: Mon, 13 Apr 2020 12:19:31 +0200
+Message-Id: <20200413101931.6334-1-oscar.carter@gmx.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
+X-Provags-ID: V03:K1:gKYAHCKsplbokEjqMBJ57pEksNP3lEOJ+XgziKN3JbeKRuYgO9e
+ XfoTV3qN68FeLE1NYV04cgw9wWdNDMJm8imol2QfC0anzzCXIC5DLB24bgC2sZcgX259DM4
+ Fv8L69cPcFBdFvzSNvqdtF0TxZX8WqZeArHm7DCaOWgQ+IB1RQJ4A7eE8ZOlQVHSAQ99SXV
+ 52gS/a9U3lKOYQMz+sVYQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TRGExfgQuJw=:OWz++pYOkcTjIa1pR1SQ6g
+ wVNMlzZ3JJsOhaCbSGfbnrMgTxCPXXyfi3Z448b9GqtrWWlE9nrVRKCxyasjsmDIytLYBJtys
+ 5HQ41j7ylHaK1bjOdVVAsMrbEUih3A7zde/+6s/GxdV31a4g8GX9+w+cM+UrSwJ9tvSMwStr/
+ ujQEEE+u7/372PvqW34utaMO/za3pZ7Q8zCufyaFTFyk0CBCDXi80VrOLn39UVmogh2YiupBm
+ rlJJ5LswXx5TFhTWemrTd+jacC7/1ihSH0/AsxqR1vdhbnneLO87vET/ZeKkxmU+nOh+ON/W/
+ DbLe6llWKGIIzwn+KO1atks76md3Mp15qbovhthsjPelIHqNTRG9jMWEVeQI8IxRkYUbu8UZg
+ FXEiRywGqWF7C4kBNQ/Uhbf5UtLjXfYnEj339DkaYWR90vLXD6cRdS4XjVT0KVslgsV+Uk/hD
+ A+KVCeOy0uJF8n54z/HxICbupHLkYZq6hl+loMBZz0P+7u6cNhNU/zS3u0Jyes0ldaVah5LBR
+ 0/m3P4mUKTlHSAlWDyURJ8kxeBGwpznv1f4H0JDRm9b5A6xge0vXGhvX7fsnNGCG0AJ3HI8gC
+ cwzaP1AtE9wmQZJCKnAYPG4BMo/djy9mEzP1JO3dLmW+xydfMcgj2c9R5NZPCcM5QDFDVOYXX
+ S+4zvnlvthusjbxCAXjfZzf3OxqW9MQzUL/A7GjVSLnO0pi1kVohNT/DRM3gv9gdqgf5EMXPq
+ 80HwW1zt/ayt/QnnJG5ip/wBIzeM4zwF5Y13mOOMDXHlWL6848Oiri5T05LWWk7RQrPIjrVzq
+ wtKHskkfJKtvG7rs6Ovr045XtHa/VM3p1HG3wsa3vynCUSucNf2dZ5U/wJ9W5REmp5mKfWD03
+ RM6XNVeIhgEC25lICORLpeDbckgipCyfXYtvy2qKOA2tS13W1THxrpcT++KK4nZu4t9mMd+H6
+ xnN4tmkdbkhbhr20yHkP1fVZF3GLSXt6E0BY6xbjMq+SwiHUDAcMLjtRQUvefLfQ7lUDsigmh
+ IGNRI6iHJno7DXwna3wnwXYZb4mvWtw/rmQRH1KiYMUl7mPfPzK5mne1r1SqQCDXz+drdT9vM
+ TW0kwSTZ5LCMO4SLBsH4jC/gY91uVCns+vIe9hdTyy2rd/tNTrpF1kDmiC3LJ6b8U1IIv9USC
+ IPNI6h3VGskGh3jGn0Z6YSA2AGAmbM+bcsRt6+jpjjr5Mae8mUgdSPf1AGXC3FO92HQ1TQFsl
+ dtqn81HYwDzdtgS2E
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,37 +86,235 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Carlos Guerrero Alvarez <carlosteniswarrior@gmail.com>,
- linux-kernel@vger.kernel.org
+Cc: Malcolm Priestley <tvboxspy@gmail.com>, devel@driverdev.osuosl.org,
+ Oscar Carter <oscar.carter@gmx.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed a coding style issue caused by some declarations that weren't separated.
+Use the error code returned by the vnt_control_out function as the
+returned value of the vnt_rf_write_embedded function instead of a
+boolean value.
 
-Signed-off-by: Carlos Guerrero Alvarez <carlosteniswarrior@gmail.com>
+Then, fix all vnt_rf_write_embedded calls removing the "and" operations
+and replace with a direct assignment to the ret variable and add a check
+condition after every call.
+
+Also replace the boolean values true or false in the vnt_rf_set_txpower
+function to 0 or error code EINVAL to follow the coding style guide.
+
+The vnt_rf_set_txpower function is called only in the vnt_rf_setpower
+function that already returns error codes. The calls to this function
+(vnt_rf_set_txpower) not use the returned values, so they not need to be
+fixed.
+
+Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 ---
- drivers/staging/comedi/drivers/das08.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/staging/vt6656/rf.c | 99 ++++++++++++++++++++++++-------------
+ 1 file changed, 64 insertions(+), 35 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/das08.c b/drivers/staging/comedi/drivers/das08.c
-index 65e5f2e6c122..f884f5841788 100644
---- a/drivers/staging/comedi/drivers/das08.c
-+++ b/drivers/staging/comedi/drivers/das08.c
-@@ -141,7 +141,9 @@ static const struct comedi_lrange *const das08_ai_lranges[] = {
- static const int das08_pgh_ai_gainlist[] = {
- 	8, 0, 10, 2, 12, 4, 14, 6, 1, 3, 5, 7
- };
+diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+index 4f9aba0f21b0..5270ef511af9 100644
+--- a/drivers/staging/vt6656/rf.c
++++ b/drivers/staging/vt6656/rf.c
+@@ -21,6 +21,7 @@
+  *
+  */
+
++#include <linux/errno.h>
+ #include "mac.h"
+ #include "rf.h"
+ #include "baseband.h"
+@@ -531,10 +532,8 @@ int vnt_rf_write_embedded(struct vnt_private *priv, u32 data)
+ 	reg_data[2] = (u8)(data >> 16);
+ 	reg_data[3] = (u8)(data >> 24);
+
+-	vnt_control_out(priv, MESSAGE_TYPE_WRITE_IFRF,
+-			0, 0, ARRAY_SIZE(reg_data), reg_data);
+-
+-	return true;
++	return vnt_control_out(priv, MESSAGE_TYPE_WRITE_IFRF, 0, 0,
++			       ARRAY_SIZE(reg_data), reg_data);
+ }
+
+ /* Set Tx power by rate and channel number */
+@@ -603,14 +602,14 @@ static u8 vnt_rf_addpower(struct vnt_private *priv)
+ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ {
+ 	u32 power_setting = 0;
+-	int ret = true;
++	int ret = 0;
+
+ 	power += vnt_rf_addpower(priv);
+ 	if (power > VNT_RF_MAX_POWER)
+ 		power = VNT_RF_MAX_POWER;
+
+ 	if (priv->power == power)
+-		return true;
++		return 0;
+
+ 	priv->power = power;
+
+@@ -618,35 +617,50 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ 	case RF_AL2230:
+ 		power_setting = 0x0404090 | (power << 12);
+
+-		ret &= vnt_rf_write_embedded(priv, power_setting);
++		ret = vnt_rf_write_embedded(priv, power_setting);
++		if (ret)
++			return ret;
+
+ 		if (rate <= RATE_11M)
+-			ret &= vnt_rf_write_embedded(priv, 0x0001b400);
++			ret = vnt_rf_write_embedded(priv, 0x0001b400);
+ 		else
+-			ret &= vnt_rf_write_embedded(priv, 0x0005a400);
++			ret = vnt_rf_write_embedded(priv, 0x0005a400);
 +
- static const int das08_pgl_ai_gainlist[] = { 8, 0, 2, 4, 6, 1, 3, 5, 7 };
+ 		break;
+ 	case RF_AL2230S:
+ 		power_setting = 0x0404090 | (power << 12);
+
+-		ret &= vnt_rf_write_embedded(priv, power_setting);
++		ret = vnt_rf_write_embedded(priv, power_setting);
++		if (ret)
++			return ret;
+
+ 		if (rate <= RATE_11M) {
+-			ret &= vnt_rf_write_embedded(priv, 0x040c1400);
+-			ret &= vnt_rf_write_embedded(priv, 0x00299b00);
++			ret = vnt_rf_write_embedded(priv, 0x040c1400);
++			if (ret)
++				return ret;
 +
- static const int das08_pgm_ai_gainlist[] = { 8, 0, 10, 12, 14, 9, 11, 13, 15 };
- 
- static const int *const das08_ai_gainlists[] = {
--- 
-2.26.0
++			ret = vnt_rf_write_embedded(priv, 0x00299b00);
+ 		} else {
+-			ret &= vnt_rf_write_embedded(priv, 0x0005a400);
+-			ret &= vnt_rf_write_embedded(priv, 0x00099b00);
++			ret = vnt_rf_write_embedded(priv, 0x0005a400);
++			if (ret)
++				return ret;
++
++			ret = vnt_rf_write_embedded(priv, 0x00099b00);
+ 		}
++
+ 		break;
+
+ 	case RF_AIROHA7230:
+ 		if (rate <= RATE_11M)
+-			ret &= vnt_rf_write_embedded(priv, 0x111bb900);
++			ret = vnt_rf_write_embedded(priv, 0x111bb900);
+ 		else
+-			ret &= vnt_rf_write_embedded(priv, 0x221bb900);
++			ret = vnt_rf_write_embedded(priv, 0x221bb900);
++
++		if (ret)
++			return ret;
+
+ 		if (power >= AL7230_PWR_IDX_LEN)
+-			return false;
++			return -EINVAL;
+
+ 		/*
+ 		 * 0x080F1B00 for 3 wire control TxGain(D10)
+@@ -654,61 +668,76 @@ int vnt_rf_set_txpower(struct vnt_private *priv, u8 power, u32 rate)
+ 		 */
+ 		power_setting = 0x080c0b00 | (power << 12);
+
+-		ret &= vnt_rf_write_embedded(priv, power_setting);
+-
++		ret = vnt_rf_write_embedded(priv, power_setting);
+ 		break;
+
+ 	case RF_VT3226:
+ 		if (power >= VT3226_PWR_IDX_LEN)
+-			return false;
++			return -EINVAL;
+ 		power_setting = ((0x3f - power) << 20) | (0x17 << 8);
+
+-		ret &= vnt_rf_write_embedded(priv, power_setting);
+-
++		ret = vnt_rf_write_embedded(priv, power_setting);
+ 		break;
+ 	case RF_VT3226D0:
+ 		if (power >= VT3226_PWR_IDX_LEN)
+-			return false;
++			return -EINVAL;
+
+ 		if (rate <= RATE_11M) {
+ 			u16 hw_value = priv->hw->conf.chandef.chan->hw_value;
+
+ 			power_setting = ((0x3f - power) << 20) | (0xe07 << 8);
+
+-			ret &= vnt_rf_write_embedded(priv, power_setting);
+-			ret &= vnt_rf_write_embedded(priv, 0x03c6a200);
++			ret = vnt_rf_write_embedded(priv, power_setting);
++			if (ret)
++				return ret;
++
++			ret = vnt_rf_write_embedded(priv, 0x03c6a200);
++			if (ret)
++				return ret;
+
+ 			dev_dbg(&priv->usb->dev,
+ 				"%s 11b channel [%d]\n", __func__, hw_value);
+
+ 			hw_value--;
+
+-			if (hw_value < ARRAY_SIZE(vt3226d0_lo_current_table))
+-				ret &= vnt_rf_write_embedded(priv,
++			if (hw_value < ARRAY_SIZE(vt3226d0_lo_current_table)) {
++				ret = vnt_rf_write_embedded(priv,
+ 					vt3226d0_lo_current_table[hw_value]);
++				if (ret)
++					return ret;
++			}
+
+-			ret &= vnt_rf_write_embedded(priv, 0x015C0800);
++			ret = vnt_rf_write_embedded(priv, 0x015C0800);
+ 		} else {
+ 			dev_dbg(&priv->usb->dev,
+ 				"@@@@ %s> 11G mode\n", __func__);
+
+ 			power_setting = ((0x3f - power) << 20) | (0x7 << 8);
+
+-			ret &= vnt_rf_write_embedded(priv, power_setting);
+-			ret &= vnt_rf_write_embedded(priv, 0x00C6A200);
+-			ret &= vnt_rf_write_embedded(priv, 0x016BC600);
+-			ret &= vnt_rf_write_embedded(priv, 0x00900800);
++			ret = vnt_rf_write_embedded(priv, power_setting);
++			if (ret)
++				return ret;
++
++			ret = vnt_rf_write_embedded(priv, 0x00C6A200);
++			if (ret)
++				return ret;
++
++			ret = vnt_rf_write_embedded(priv, 0x016BC600);
++			if (ret)
++				return ret;
++
++			ret = vnt_rf_write_embedded(priv, 0x00900800);
+ 		}
++
+ 		break;
+
+ 	case RF_VT3342A0:
+ 		if (power >= VT3342_PWR_IDX_LEN)
+-			return false;
++			return -EINVAL;
+
+ 		power_setting =  ((0x3f - power) << 20) | (0x27 << 8);
+
+-		ret &= vnt_rf_write_embedded(priv, power_setting);
+-
++		ret = vnt_rf_write_embedded(priv, power_setting);
+ 		break;
+ 	default:
+ 		break;
+--
+2.20.1
 
 _______________________________________________
 devel mailing list
