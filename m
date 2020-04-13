@@ -1,67 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA1B81A6922
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 17:49:27 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AF8B41A6924
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 17:50:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4566A834BE;
-	Mon, 13 Apr 2020 15:49:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 03D4A853FC;
+	Mon, 13 Apr 2020 15:50:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YH1G2Rr94CSM; Mon, 13 Apr 2020 15:49:20 +0000 (UTC)
+	with ESMTP id WSybOPRWnINE; Mon, 13 Apr 2020 15:50:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D74B78242B;
-	Mon, 13 Apr 2020 15:49:15 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id CFB2385149;
+	Mon, 13 Apr 2020 15:50:26 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CA7311BF97E
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 15:49:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 187E21BF318
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 13 Apr 2020 15:50:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AFAC7203A0
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 15:49:01 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1505E203A0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 13 Apr 2020 15:50:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id azJHsC1WX+5g for <devel@linuxdriverproject.org>;
- Mon, 13 Apr 2020 15:48:55 +0000 (UTC)
-X-Greylist: delayed 00:06:56 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0186.hostedemail.com
- [216.40.44.186])
- by silver.osuosl.org (Postfix) with ESMTPS id AF7FC20006
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 15:48:55 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave05.hostedemail.com (Postfix) with ESMTP id C83B118027477
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 15:41:59 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay06.hostedemail.com (Postfix) with ESMTP id 3BC1A18224504;
- Mon, 13 Apr 2020 15:41:57 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:42:355:379:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3351:3622:3865:3866:3867:3868:3870:3872:3873:4250:4321:5007:7223:10004:10400:10848:11232:11658:11914:12043:12295:12297:12740:12760:12895:13069:13095:13311:13357:13439:14180:14659:14777:21080:21433:21627:21819:21990:30022:30054:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:4, LUA_SUMMARY:none
-X-HE-Tag: dolls70_4b08d2e0a8857
-X-Filterd-Recvd-Size: 1657
-Received: from XPS-9350.home (unknown [47.151.136.130])
- (Authenticated sender: joe@perches.com)
- by omf09.hostedemail.com (Postfix) with ESMTPA;
- Mon, 13 Apr 2020 15:41:55 +0000 (UTC)
-Message-ID: <ba11f20b35eb1b4fbdcaf353eeec29950146af9f.camel@perches.com>
-Subject: Re: [PATCH 1/2] staging: rtl8192u: Refactoring setKey function
-From: Joe Perches <joe@perches.com>
-To: Greg KH <gregkh@linuxfoundation.org>, Camylla Goncalves Cantanheide
- <c.cantanheide@gmail.com>
-Date: Mon, 13 Apr 2020 08:39:48 -0700
-In-Reply-To: <20200413125015.GA3077651@kroah.com>
-References: <20200413030129.861-1-c.cantanheide@gmail.com>
- <20200413125015.GA3077651@kroah.com>
-User-Agent: Evolution 3.34.1-2 
+ with ESMTP id tt3xeaaZLM+B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 13 Apr 2020 15:50:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2A76120458
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 13 Apr 2020 15:50:22 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id k1so3402452wrx.4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 13 Apr 2020 08:50:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=tX6PpMy/WsZRKlN7MHaQWxtTukro7KqWNVhBxmQnDRo=;
+ b=ZfyZPPs+X6DkS5x20mr9M7Rt2H7qSAs75N3AIXhdP7/WkvJhm+DAuwIRytoA+3MzS6
+ 3AonUPQtDnCJm7LJyuDKMD4zz8EIEQYPI3srvtn/LCqk7ClDzW6u/wSEHkSvR6SW9Ayx
+ N2OAErfCGr6Do+sJRjVHt9h1c57oyaDuz75Wto6cFrED/HlmnRBW6292gN6AzjR5f3jc
+ eOb6Qxv2R29vGO1cQvhdgVNM1QnCLO8ecm1LK3NVuij0SAQv/SXy3vZjgVvERqaOktyQ
+ alVyQgOFEl/XbFcv0cxkxyDWWdGnd0plmyrCUkwLPcb66TeKOqZ6MpHJaA1Ah0kQ4XeY
+ a6Fg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=tX6PpMy/WsZRKlN7MHaQWxtTukro7KqWNVhBxmQnDRo=;
+ b=XmHmpGGGogFfMzP7gjHLbOzyH60b6OeEPvpND94l5ePSNymuF9yaYdbOf6z5Z3FvUJ
+ gmI5RU/2fm8BBwX9uLJ6ProLpYYgepMzi1oo/jsEdiIKzZIJ3kwmE3oq6VxFNWvOo8o1
+ 8D+G+RQgOVu4cjhUBYGPyRfjRm27IhU7fbb5frr5XYOqKEES0/01IWGmcHLTu5G6f3Yv
+ KxOC2QtE6WUSkyBQe0pw+f8YxjTgZAbEv4BZAcPV1k7sJfX8fpRtZrWuSrwyUr6xFX4M
+ ZJsP36FEgfZkRyQ7YcyJB7sSNaioTBsF76baloGKO6n1liBQ3v8LgcR66VuJhimfvGrm
+ 5KnQ==
+X-Gm-Message-State: AGi0PuZP4/+dtoPIdoVOudO7c4mfdL5xyx53P2J2wNAEdSkjLBIyMRQn
+ B/Yv1xTH0alX4gLMW1bLTaI=
+X-Google-Smtp-Source: APiQypLm9AsdZ7N0mnBtFTgDlABUKyXWtC6pdYtvmdPCuTQwEy43vleRYC09NYEVH1bPPLp1D/T7Vw==
+X-Received: by 2002:a5d:5001:: with SMTP id e1mr16795267wrt.27.1586793020453; 
+ Mon, 13 Apr 2020 08:50:20 -0700 (PDT)
+Received: from localhost.localdomain
+ (134.red-83-46-193.dynamicip.rima-tde.net. [83.46.193.134])
+ by smtp.gmail.com with ESMTPSA id q9sm15158828wrp.61.2020.04.13.08.50.19
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 13 Apr 2020 08:50:20 -0700 (PDT)
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 1/3] staging: mt7621-pci: rename 'PCIE_P2P_MAX' into
+ 'PCIE_P2P_CNT'
+Date: Mon, 13 Apr 2020 17:50:16 +0200
+Message-Id: <20200413155018.31921-1-sergio.paracuellos@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -75,34 +90,86 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- lkcamp@lists.libreplanetbr.org, nishkadg.linux@gmail.com,
- navid.emamdoost@gmail.com
+Cc: neil@brown.name, driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2020-04-13 at 14:50 +0200, Greg KH wrote:
-> On Mon, Apr 13, 2020 at 03:01:28AM +0000, Camylla Goncalves Cantanheide wrote:
-> > Changes of the local variable value and
-> > modification in the seletive repetition structure.
-[]
-> > diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-[]
-> You are receiving this message because of the following common error(s)
-> as indicated below:
-[]
-> greg k-h's patch email bot
+Definition 'PCIE_P2P_MAX' is '3'. The value here is not a MAXimum.
+It is a count or a number. It is how many masks there are.
+The masks are numbered 0, 1, 2 so the maximum is 2. Hence rename
+variable into 'PCIE_P2P_CNT' which is a more accurate name.
 
-Hey Greg.
+Suggested-by: NeilBrown <neil@brown.name>
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+---
+ drivers/staging/mt7621-pci/pci-mt7621.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-I think I wrote most (all?) of this as a suggestion
-to Camylla.
-
-It's a refactoring patch which would be difficult
-or impossible to separate into multiple patches.
-
+diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+index 36207243a71b..6a9f4b6cdd93 100644
+--- a/drivers/staging/mt7621-pci/pci-mt7621.c
++++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+@@ -55,7 +55,7 @@
+ #define RALINK_PCI_IOBASE		0x002C
+ 
+ /* PCICFG virtual bridges */
+-#define PCIE_P2P_MAX			3
++#define PCIE_P2P_CNT			3
+ #define PCIE_P2P_BR_DEVNUM_SHIFT(p)	(16 + (p) * 4)
+ #define PCIE_P2P_BR_DEVNUM0_SHIFT	PCIE_P2P_BR_DEVNUM_SHIFT(0)
+ #define PCIE_P2P_BR_DEVNUM1_SHIFT	PCIE_P2P_BR_DEVNUM_SHIFT(1)
+@@ -138,7 +138,7 @@ struct mt7621_pcie {
+ 	} offset;
+ 	unsigned long io_map_base;
+ 	struct list_head ports;
+-	int irq_map[PCIE_P2P_MAX];
++	int irq_map[PCIE_P2P_CNT];
+ 	bool resets_inverted;
+ };
+ 
+@@ -607,8 +607,8 @@ static int mt7621_pcie_init_virtual_bridges(struct mt7621_pcie *pcie)
+ 	u32 pcie_link_status = 0;
+ 	u32 n;
+ 	int i = 0;
+-	u32 p2p_br_devnum[PCIE_P2P_MAX];
+-	int irqs[PCIE_P2P_MAX];
++	u32 p2p_br_devnum[PCIE_P2P_CNT];
++	int irqs[PCIE_P2P_CNT];
+ 	struct mt7621_pcie_port *port;
+ 
+ 	list_for_each_entry(port, &pcie->ports, list) {
+@@ -623,11 +623,11 @@ static int mt7621_pcie_init_virtual_bridges(struct mt7621_pcie *pcie)
+ 		return -1;
+ 
+ 	n = 0;
+-	for (i = 0; i < PCIE_P2P_MAX; i++)
++	for (i = 0; i < PCIE_P2P_CNT; i++)
+ 		if (pcie_link_status & BIT(i))
+ 			p2p_br_devnum[i] = n++;
+ 
+-	for (i = 0; i < PCIE_P2P_MAX; i++)
++	for (i = 0; i < PCIE_P2P_CNT; i++)
+ 		if ((pcie_link_status & BIT(i)) == 0)
+ 			p2p_br_devnum[i] = n++;
+ 
+@@ -639,11 +639,11 @@ static int mt7621_pcie_init_virtual_bridges(struct mt7621_pcie *pcie)
+ 
+ 	/* Assign IRQs */
+ 	n = 0;
+-	for (i = 0; i < PCIE_P2P_MAX; i++)
++	for (i = 0; i < PCIE_P2P_CNT; i++)
+ 		if (pcie_link_status & BIT(i))
+ 			pcie->irq_map[n++] = irqs[i];
+ 
+-	for (i = n; i < PCIE_P2P_MAX; i++)
++	for (i = n; i < PCIE_P2P_CNT; i++)
+ 		pcie->irq_map[i] = -1;
+ 
+ 	return 0;
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
