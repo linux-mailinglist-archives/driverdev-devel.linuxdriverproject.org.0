@@ -2,47 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E6DB1A6ABB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 18:59:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 169DD1AB801
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Apr 2020 08:28:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8336784DE6;
-	Mon, 13 Apr 2020 16:59:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 87A2884499;
+	Thu, 16 Apr 2020 06:28:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tDVu5km5S6b6; Mon, 13 Apr 2020 16:59:33 +0000 (UTC)
+	with ESMTP id EOu17wB7cWBG; Thu, 16 Apr 2020 06:28:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 77E4084B1C;
-	Mon, 13 Apr 2020 16:59:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F1A2C844DC;
+	Thu, 16 Apr 2020 06:28:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8093E1BF20B
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 16:59:30 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DD4C1BF954
+ for <devel@linuxdriverproject.org>; Thu, 16 Apr 2020 06:28:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7D81E84BF3
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 16:59:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 59FAF8359A
+ for <devel@linuxdriverproject.org>; Thu, 16 Apr 2020 06:28:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8N_WR5h3l9qX for <devel@linuxdriverproject.org>;
- Mon, 13 Apr 2020 16:59:29 +0000 (UTC)
+ with ESMTP id WGIzYd0zkDKN for <devel@linuxdriverproject.org>;
+ Thu, 16 Apr 2020 06:28:49 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from vkten.in (vkten.in [104.244.73.96])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6A15C84B1C
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 16:59:29 +0000 (UTC)
-Received: (qmail 15697 invoked from network); 13 Apr 2020 16:59:26 -0000
-Received: from unknown (HELO localhost) (vkor@vkten.in@117.209.137.67)
- de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
- by vkten with ESMTPSA; 13 Apr 2020 16:59:26 -0000
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: vc04_services: bcm2835-audio: Make function
- arguments alignment match open parenthesis
-Date: Mon, 13 Apr 2020 22:29:05 +0530
-Message-Id: <20200413165905.6081-1-vkor@vkten.in>
-X-Mailer: git-send-email 2.20.1
+Received: from ns2.sss-consultants.co.jp
+ (153-149-98-64.compute.jp-w1.cloudn-service.com [153.149.98.64])
+ by whitealder.osuosl.org (Postfix) with SMTP id 13E8D82146
+ for <devel@linuxdriverproject.org>; Thu, 16 Apr 2020 06:28:48 +0000 (UTC)
+Received: (qmail 18935 invoked by uid 0); 14 Apr 2020 02:51:33 +0900
+Received: from unknown (HELO User) (spam@sss-consultants.co.jp@13.71.189.40)
+ by dns-mail-fms.w1a.internal with SMTP; 14 Apr 2020 02:51:33 +0900
+From: "Maria Idemba"<pepe@worldline.ca>
+Subject: TRANSACTION
+Date: Mon, 13 Apr 2020 17:51:33 -0000
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200416062851.59FAF8359A@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,49 +56,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, devel@driverdev.osuosl.org,
- R Veera Kumar <vkor@vkten.in>, Florian Fainelli <f.fainelli@gmail.com>,
- Scott Branden <sbranden@broadcom.com>, Ray Jui <rjui@broadcom.com>,
- linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org
+Reply-To: maria27idemba@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Make function arguments alignment match open parenthesis.
-Found using checkpatch.pl.
+Dear Sir,
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
----
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+My Name is Ms Maria Idemba; Manager  Of BOA  Bank Abidjan Ci ; On the course of 2014/2015 Financial Annual Report, A Surplus Profit of Fifteen  Million Nine Hundred and Fifty Thousand Us Dollars , [ $ 15,950,000.00 ] Was Discovered and Placed in a SUSPENSE ACCOUNT Without Any Beneficiary.
 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
-index 33485184a98a..f783b632141b 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
-@@ -233,7 +233,7 @@ static int snd_bcm2835_pcm_prepare(struct snd_pcm_substream *substream)
- }
- 
- static void snd_bcm2835_pcm_transfer(struct snd_pcm_substream *substream,
--	struct snd_pcm_indirect *rec, size_t bytes)
-+				     struct snd_pcm_indirect *rec, size_t bytes)
- {
- 	struct snd_pcm_runtime *runtime = substream->runtime;
- 	struct bcm2835_alsa_stream *alsa_stream = runtime->private_data;
-@@ -346,7 +346,7 @@ int snd_bcm2835_new_pcm(struct bcm2835_chip *chip, const char *name,
- 			&snd_bcm2835_playback_ops);
- 
- 	snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_DEV,
--		chip->card->dev, 128 * 1024, 128 * 1024);
-+				       chip->card->dev, 128 * 1024, 128 * 1024);
- 
- 	if (spdif)
- 		chip->pcm_spdif = pcm;
--- 
-2.20.1
+As an Employee Of the Bank , I can NOT be Directly Connected to the Fund For Security Reasons, That is why I am contacting You for us to Work Together as Partners to Receive the Said Fund in Your Account For INVESTMENT in Your Country.
 
+The percentage Ratio is thus: 40% for you , 60 % for me and my colleagues .
+
+Note: There is Practically No Risks Involved in this Transaction ,  It is 100% Risk Free and Shall Be Legally Bounded, All You Need to do is to Stand as the BENEFICIARY to the Deposit For a Proper Wire to Your Account  .If you Find this Proposal Suitable For you, get back  For Full Details and Procedures .
+
+Best Regards .
+
+Ms Maria Idemba
+Manager Boa -Ci
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
