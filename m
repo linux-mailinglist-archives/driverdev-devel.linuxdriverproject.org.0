@@ -1,83 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8C411A617C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 04:22:47 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6CD0985CD5;
-	Mon, 13 Apr 2020 02:22:45 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ibz57na5fq5S; Mon, 13 Apr 2020 02:22:44 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4F7C185BCE;
-	Mon, 13 Apr 2020 02:22:43 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1EFC81BF2B8
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 02:22:41 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D07B11A61AA
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Apr 2020 05:01:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1B6FA2036E
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 02:22:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A53262045F;
+	Mon, 13 Apr 2020 03:01:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0aqBOFCB86Jp; Mon, 13 Apr 2020 03:01:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 6528C203E9;
+	Mon, 13 Apr 2020 03:01:36 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BD8291BF2B8
+ for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 03:01:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id B6E6485B8A
+ for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 03:01:33 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eikkPX4UoY7e for <devel@linuxdriverproject.org>;
- Mon, 13 Apr 2020 02:22:39 +0000 (UTC)
+ with ESMTP id LgEBBbX10JDp for <devel@linuxdriverproject.org>;
+ Mon, 13 Apr 2020 03:01:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 2F72120020
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 02:22:39 +0000 (UTC)
-IronPort-SDR: 1kjqioC5X77aN2arQQgSa0xxEx0sXiPNGLfzqoBgHVGzdMatayldQkUzx8FoZWvv7qssi6cdr/
- JJkV2EFAritA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Apr 2020 19:22:38 -0700
-IronPort-SDR: XuPfvtRx0cSIpr3HgXz8E9gGSA3J60hBjn5kQ6izNreK5wulRLfyT0KUDo4H701jonlBRu9M1E
- 5DsmMMoKul/A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,377,1580803200"; d="scan'208";a="266046201"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by orsmga008.jf.intel.com with ESMTP; 12 Apr 2020 19:22:38 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Sun, 12 Apr 2020 19:22:37 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Sun, 12 Apr 2020 19:22:37 -0700
-Received: from shsmsx108.ccr.corp.intel.com (10.239.4.97) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
- via Frontend Transport; Sun, 12 Apr 2020 19:22:37 -0700
-Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.225]) by
- SHSMSX108.ccr.corp.intel.com ([169.254.8.7]) with mapi id 14.03.0439.000;
- Mon, 13 Apr 2020 10:22:34 +0800
-From: "Cao, Bingbu" <bingbu.cao@intel.com>
-To: Tomasz Figa <tfiga@chromium.org>, "linux-media@vger.kernel.org"
- <linux-media@vger.kernel.org>
-Subject: RE: [PATCH] media: staging: ipu3: Fix stale list entries on
- parameter queue failure
-Thread-Topic: [PATCH] media: staging: ipu3: Fix stale list entries on
- parameter queue failure
-Thread-Index: AQHWECfbLei6sIF2j0WoeDjNtq7hfah2U1wg
-Date: Mon, 13 Apr 2020 02:22:34 +0000
-Message-ID: <EE45BB6704246A4E914B70E8B61FB42A15D89788@SHSMSX104.ccr.corp.intel.com>
-References: <20200411173710.226247-1-tfiga@chromium.org>
-In-Reply-To: <20200411173710.226247-1-tfiga@chromium.org>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1708C85B68
+ for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 03:01:33 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id c63so8268402qke.2
+ for <devel@driverdev.osuosl.org>; Sun, 12 Apr 2020 20:01:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9mQX+KyXjCVkEwrSR2o41b1Ot5pYdAT4bZiqTAuIYN0=;
+ b=aJaWdMZkG1cE5j/Wm8VZt8qgiOX8psJyOjp/o9CICZev/QYcRMFKDimRoNo5hH/Qu1
+ Y3jGDooRVtdbrsIBFLqBpqbsXFa85w5osXid8My4Dw8C0CbQzez1XWzW2S19AW2NqqB1
+ NlbnPlc9kqy1J5+sgGlAf24hUhfrqY7WRoq3qUHVVPzBAuBNQaCgra39URVcSZRtt0z3
+ nXLOWaDQQohYJjJZFgaDLSAg2O7r5Hsaw56MrUh501zlYBna/YdLHxz+1e8zZFEHHlvr
+ 72obBKgvXHrvsYRPjFP0hHTq+EGeTFMQ2AvAwJRJazasdALpPX3XKONIb1IlKN04tn18
+ TyYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9mQX+KyXjCVkEwrSR2o41b1Ot5pYdAT4bZiqTAuIYN0=;
+ b=pZv+yp8d7eNV9c3v7M3U6ln/ixJNyLJ0c4Ik64dynrcWmo1bBZnyKU81KINITve/hK
+ s97e1p49urKYedkXK1jHmHCNAiqNVhyftxsMv4gtdY3DpUUv3myLie8BfO6kTbLwR75r
+ 0yMFiAiv3s8pLe1rC2Z3Ij4R1+PuwPjVCDkasHxVC3tCqNk7T2sMymdw1TosfZRvLuoc
+ XPGWvkkh1niGmTGpEclEIXnT0ybcY9MWRvXD0phbBD55Dcs1owGWMQszbmnwmza7SuOu
+ 7oOgjE7o3igNf+HDVP+rwFWS5fCG3ehraMQHYuHQimcC7xNmer3zezBK1rJiPD+aGO4a
+ W4fw==
+X-Gm-Message-State: AGi0PuYUOusdz1X0HA19yPmKbgWcDHh8NvlZeiEgdFJ+CD+kuNKGU81t
+ nWrNyDSf8swFmex77sgpUwA=
+X-Google-Smtp-Source: APiQypJZp9gK8i5BNduuh+7QfE4lAzdYgPYn7wCiXiZdGKkngk+UH8/k/2jGb1lsTCCHQFbF3an3BQ==
+X-Received: by 2002:a37:e10c:: with SMTP id c12mr5385520qkm.483.1586746891631; 
+ Sun, 12 Apr 2020 20:01:31 -0700 (PDT)
+Received: from localhost.localdomain ([189.78.178.135])
+ by smtp.gmail.com with ESMTPSA id i20sm7208754qkl.135.2020.04.12.20.01.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 12 Apr 2020 20:01:30 -0700 (PDT)
+From: Camylla Goncalves Cantanheide <c.cantanheide@gmail.com>
+To: gregkh@linuxfoundation.org, navid.emamdoost@gmail.com,
+ sylphrenadin@gmail.com, nishkadg.linux@gmail.com, stephen@brennan.io,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ lkcamp@lists.libreplanetbr.org
+Subject: [PATCH 1/2] staging: rtl8192u: Refactoring setKey function
+Date: Mon, 13 Apr 2020 03:01:28 +0000
+Message-Id: <20200413030129.861-1-c.cantanheide@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -91,212 +86,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- jacopo mondi <jacopo@jmondi.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, "Qiu, 
- Tian Shu" <tian.shu.qiu@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi, Tomasz,
+Changes of the local variable value and
+modification in the seletive repetition structure.
 
-Thanks for your patch.
+Signed-off-by: Camylla Goncalves Cantanheide <c.cantanheide@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U_core.c | 52 ++++++++++++--------------
+ 1 file changed, 24 insertions(+), 28 deletions(-)
 
-________________________
-BRs,  
-Bingbu Cao                          
-
-
-> -----Original Message-----
-> From: Tomasz Figa <tfiga@chromium.org>
-> Sent: Sunday, April 12, 2020 1:37 AM
-> To: linux-media@vger.kernel.org
-> Cc: Sakari Ailus <sakari.ailus@linux.intel.com>; Mauro Carvalho Chehab
-> <mchehab@kernel.org>; Greg Kroah-Hartman <gregkh@linuxfoundation.org>; Qiu,
-> Tian Shu <tian.shu.qiu@intel.com>; Cao, Bingbu <bingbu.cao@intel.com>;
-> devel@driverdev.osuosl.org; linux-kernel@vger.kernel.org; Laurent Pinchart
-> <laurent.pinchart@ideasonboard.com>; jacopo mondi <jacopo@jmondi.org>;
-> Tomasz Figa <tfiga@chromium.org>
-> Subject: [PATCH] media: staging: ipu3: Fix stale list entries on parameter
-> queue failure
-> 
-> When queuing parameters fails, current code bails out without deleting the
-> corresponding vb2 buffer from the driver buffer list, but the buffer is
-> returned to vb2. This leads to stale list entries and a crash when the
-> driver stops streaming:
-> 
-> [  224.935561] ipu3-imgu 0000:00:05.0: set parameters failed.
-> [  224.998932] ipu3-imgu 0000:00:05.0: set parameters failed.
-> [  225.064430] ipu3-imgu 0000:00:05.0: set parameters failed.
-> [  225.128534] ipu3-imgu 0000:00:05.0: set parameters failed.
-> [  225.194945] ipu3-imgu 0000:00:05.0: set parameters failed.
-> [  225.360363] ------------[ cut here ]------------ [  225.360372] WARNING:
-> CPU: 0 PID: 6704 at
-> drivers/media/common/videobuf2/videobuf2-core.c:927
-> vb2_buffer_done+0x20f/0x21a [videobuf2_common] [  225.360374] Modules linked
-> in: snd_seq_dummy snd_seq snd_seq_device veth bridge stp llc tun nf_nat_tftp
-> nf_conntrack_tftp nf_nat_ftp nf_conntrack_ftp esp6 ah6 ip6t_REJECT
-> ip6t_ipv6header cmac rfcomm uinput
-> ipu3_imgu(C) ipu3_cio2 iova videobuf2_v4l2 videobuf2_common videobuf2_dma_sg
-> videobuf2_memops ov13858 ov5670 v4l2_fwnode dw9714 acpi_als xt_MASQUERADE
-> fuse iio_trig_sysfs cros_ec_sensors_ring cros_ec_light_prox cros_ec_sensors
-> cros_ec_sensors_core industrialio_triggered_buffer kfifo_buf industrialio
-> cros_ec_sensorsupport cdc_ether btusb btrtl btintel btbcm usbnet bluetooth
-> ecdh_generic ecc hid_google_hammer iwlmvm iwl7000_mac80211
-> r8152 mii lzo_rle lzo_compress iwlwifi zram cfg80211 joydev [  225.360400]
-> CPU: 0 PID: 6704 Comm: CameraDeviceOps Tainted: G
-> C        5.4.30 #5
-> [  225.360402] Hardware name: HP Soraka/Soraka, BIOS
-> Google_Soraka.10431.106.0 12/03/2019
-> [  225.360405] RIP: 0010:vb2_buffer_done+0x20f/0x21a [videobuf2_common]
-> [  225.360408] Code: 5e 41 5f 5d e9 e0 16 5a d4 41 8b 55 08 48 c7 c7 8f 8b
-> 5c c0 48 c7 c6 36 9a 5c c0 44 89 f9 31 c0 e8 a5 1c 5b d4 e9 53 fe ff ff <0f>
-> 0b eb a3 e8 12 d7 43 d4 eb 97 0f 1f 44 00 00 55 48 89 e5 41 56 [  225.360410]
-> RSP: 0018:ffff9468ab32fba8 EFLAGS: 00010297 [  225.360412] RAX:
-> ffff8aa7a51577a8 RBX: dead000000000122 RCX:
-> ffff8aa7a51577a8
-> [  225.360414] RDX: 0000000000000000 RSI: 0000000000000006 RDI:
-> ffff8aa7a5157400
-> [  225.360416] RBP: ffff9468ab32fbd8 R08: ffff8aa64e47e600 R09:
-> 0000000000000000
-> [  225.360418] R10: 0000000000000000 R11: ffffffffc06036e6 R12:
-> dead000000000100
-> [  225.360420] R13: ffff8aa7820f1940 R14: ffff8aa7a51577a8 R15:
-> 0000000000000006
-> [  225.360422] FS:  00007c1146ffd700(0000) GS:ffff8aa7baa00000(0000)
-> knlGS:0000000000000000
-> [  225.360424] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [  225.360426] CR2: 00007aea3473a000 CR3: 00000000537d6004 CR4:
-> 00000000003606f0
-> [  225.360427] Call Trace:
-> [  225.360434]  imgu_return_all_buffers+0x6f/0x8e [ipu3_imgu] [  225.360438]
-> imgu_vb2_stop_streaming+0xd6/0xf0 [ipu3_imgu] [  225.360441]
-> __vb2_queue_cancel+0x33/0x22d [videobuf2_common] [  225.360443]
-> vb2_core_streamoff+0x16/0x78 [videobuf2_common] [  225.360448]
-> __video_do_ioctl+0x33d/0x42a [  225.360452]  video_usercopy+0x34a/0x615
-> [  225.360455]  ? video_ioctl2+0x16/0x16 [  225.360458]
-> v4l2_ioctl+0x46/0x53 [  225.360462]  do_vfs_ioctl+0x50a/0x787 [  225.360465]
-> ksys_ioctl+0x58/0x83 [  225.360468]  __x64_sys_ioctl+0x1a/0x1e [  225.360470]
-> do_syscall_64+0x54/0x68 [  225.360474]
-> entry_SYSCALL_64_after_hwframe+0x44/0xa9
-> [  225.360476] RIP: 0033:0x7c118030f497
-> [  225.360479] Code: 8a 66 90 48 8b 05 d1 d9 2b 00 64 c7 00 26 00 00 00
-> 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f
-> 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d a1 d9 2b 00 f7 d8 64 89 01 48
-> [  225.360480] RSP: 002b:00007c1146ffa5a8 EFLAGS: 00000246 ORIG_RAX:
-> 0000000000000010
-> [  225.360483] RAX: ffffffffffffffda RBX: 00007c1140010018 RCX:
-> 00007c118030f497
-> [  225.360484] RDX: 00007c114001019c RSI: 0000000040045613 RDI:
-> 000000000000004c
-> [  225.360486] RBP: 00007c1146ffa700 R08: 00007c1140010048 R09:
-> 0000000000000000
-> [  225.360488] R10: 0000000000000000 R11: 0000000000000246 R12:
-> 00007c11400101b0
-> [  225.360489] R13: 00007c1140010200 R14: 00007c1140010048 R15:
-> 0000000000000001
-> [  225.360492] ---[ end trace 73625ecfbd1c930e ]--- [  225.360498] general
-> protection fault: 0000 [#1] PREEMPT SMP PTI [  225.360501] CPU: 0 PID: 6704
-> Comm: CameraDeviceOps Tainted: G
-> WC        5.4.30 #5
-> [  225.360502] Hardware name: HP Soraka/Soraka, BIOS
-> Google_Soraka.10431.106.0 12/03/2019
-> [  225.360505] RIP: 0010:imgu_return_all_buffers+0x52/0x8e [ipu3_imgu]
-> [  225.360507] Code: d4 49 8b 85 70 0a 00 00 49 81 c5 70 0a 00 00 49 39
-> c5 74 3b 49 bc 00 01 00 00 00 00 ad de 49 8d 5c 24 22 4c 8b 30 48 8b 48
-> 08 <49> 89 4e 08 4c 89 31 4c 89 20 48 89 58 08 48 8d b8 58 fc ff ff 44
-> [  225.360509] RSP: 0018:ffff9468ab32fbe8 EFLAGS: 00010293 [  225.360511]
-> RAX: ffff8aa7a51577a8 RBX: dead000000000122 RCX:
-> dead000000000122
-> [  225.360512] RDX: 0000000000000000 RSI: 0000000000000006 RDI:
-> ffff8aa7a5157400
-> [  225.360514] RBP: ffff9468ab32fc18 R08: ffff8aa64e47e600 R09:
-> 0000000000000000
-> [  225.360515] R10: 0000000000000000 R11: ffffffffc06036e6 R12:
-> dead000000000100
-> [  225.360517] R13: ffff8aa7820f1940 R14: dead000000000100 R15:
-> 0000000000000006
-> [  225.360519] FS:  00007c1146ffd700(0000) GS:ffff8aa7baa00000(0000)
-> knlGS:0000000000000000
-> [  225.360521] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [  225.360523] CR2: 00007aea3473a000 CR3: 00000000537d6004 CR4:
-> 00000000003606f0
-> [  225.360525] Call Trace:
-> [  225.360528]  imgu_vb2_stop_streaming+0xd6/0xf0 [ipu3_imgu] [  225.360531]
-> __vb2_queue_cancel+0x33/0x22d [videobuf2_common] [  225.360534]
-> vb2_core_streamoff+0x16/0x78 [videobuf2_common] [  225.360537]
-> __video_do_ioctl+0x33d/0x42a [  225.360540]  video_usercopy+0x34a/0x615
-> [  225.360542]  ? video_ioctl2+0x16/0x16 [  225.360546]
-> v4l2_ioctl+0x46/0x53 [  225.360548]  do_vfs_ioctl+0x50a/0x787 [  225.360551]
-> ksys_ioctl+0x58/0x83 [  225.360554]  __x64_sys_ioctl+0x1a/0x1e [  225.360556]
-> do_syscall_64+0x54/0x68 [  225.360559]
-> entry_SYSCALL_64_after_hwframe+0x44/0xa9
-> [  225.360561] RIP: 0033:0x7c118030f497
-> [  225.360563] Code: 8a 66 90 48 8b 05 d1 d9 2b 00 64 c7 00 26 00 00 00
-> 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f
-> 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d a1 d9 2b 00 f7 d8 64 89 01 48
-> [  225.360565] RSP: 002b:00007c1146ffa5a8 EFLAGS: 00000246 ORIG_RAX:
-> 0000000000000010
-> [  225.360567] RAX: ffffffffffffffda RBX: 00007c1140010018 RCX:
-> 00007c118030f497
-> [  225.360569] RDX: 00007c114001019c RSI: 0000000040045613 RDI:
-> 000000000000004c
-> [  225.360570] RBP: 00007c1146ffa700 R08: 00007c1140010048 R09:
-> 0000000000000000
-> [  225.360572] R10: 0000000000000000 R11: 0000000000000246 R12:
-> 00007c11400101b0
-> [  225.360574] R13: 00007c1140010200 R14: 00007c1140010048 R15:
-> 0000000000000001
-> [  225.360576] Modules linked in: snd_seq_dummy snd_seq snd_seq_device veth
-> bridge stp llc tun nf_nat_tftp nf_conntrack_tftp nf_nat_ftp nf_conntrack_ftp
-> esp6 ah6 ip6t_REJECT ip6t_ipv6header cmac rfcomm uinput
-> ipu3_imgu(C) ipu3_cio2 iova videobuf2_v4l2 videobuf2_common videobuf2_dma_sg
-> videobuf2_memops ov13858 ov567
-> 
-> Fix this by moving the list_del() call just below the list_first_entry()
-> call when the buffer no longer needs to be in the list.
-> 
-> Fixes: 8ecc7c9da013 ("media: staging/intel-ipu3: parameter buffer
-> refactoring")
-> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-> ---
->  drivers/staging/media/ipu3/ipu3.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/ipu3/ipu3.c
-> b/drivers/staging/media/ipu3/ipu3.c
-> index 4d53aad31483..7a1d1881483b 100644
-> --- a/drivers/staging/media/ipu3/ipu3.c
-> +++ b/drivers/staging/media/ipu3/ipu3.c
-> @@ -261,6 +261,7 @@ int imgu_queue_buffers(struct imgu_device *imgu, bool
-> initial, unsigned int pipe
-> 
->  			ivb = list_first_entry(&imgu_pipe->nodes[node].buffers,
->  					       struct imgu_vb2_buffer, list);
-> +			list_del(&ivb->list);
->  			vb = &ivb->vbb.vb2_buf;
->  			r = imgu_css_set_parameters(&imgu->css, pipe,
->  						    vb2_plane_vaddr(vb, 0));
-> @@ -274,7 +275,6 @@ int imgu_queue_buffers(struct imgu_device *imgu, bool
-> initial, unsigned int pipe
->  			vb2_buffer_done(vb, VB2_BUF_STATE_DONE);
->  			dev_dbg(&imgu->pci_dev->dev,
->  				"queue user parameters %d to css.", vb->index);
-> -			list_del(&ivb->list);
->  		} else if (imgu_pipe->queue_enabled[node]) {
->  			struct imgu_css_buffer *buf =
->  				imgu_queue_getbuf(imgu, node, pipe);
-> --
-
-Reviewed-by: Bingbu Cao <bingbu.cao@intel.com>
-
-> 2.26.0.110.g2183baf09c-goog
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index 9b8d85a4855d..87c02aee3854 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -4880,7 +4880,7 @@ void EnableHWSecurityConfig8192(struct net_device *dev)
+ void setKey(struct net_device *dev, u8 entryno, u8 keyindex, u16 keytype,
+ 	    u8 *macaddr, u8 defaultkey, u32 *keycontent)
+ {
+-	u32 target_command = 0;
++	u32 target_command = CAM_CONTENT_COUNT * entryno |  BIT(31) | BIT(16);
+ 	u32 target_content = 0;
+ 	u16 us_config = 0;
+ 	u8 i;
+@@ -4890,39 +4890,35 @@ void setKey(struct net_device *dev, u8 entryno, u8 keyindex, u16 keytype,
+ 
+ 	RT_TRACE(COMP_SEC,
+ 		 "====>to %s, dev:%p, EntryNo:%d, KeyIndex:%d, KeyType:%d, MacAddr%pM\n",
+-        	 __func__, dev, entryno, keyindex, keytype, macaddr);
++		 __func__, dev, entryno, keyindex, keytype, macaddr);
+ 
+ 	if (defaultkey)
+ 		us_config |= BIT(15) | (keytype << 2);
+ 	else
+ 		us_config |= BIT(15) | (keytype << 2) | keyindex;
+ 
+-	for (i = 0; i < CAM_CONTENT_COUNT; i++) {
+-		target_command  = i + CAM_CONTENT_COUNT * entryno;
+-		target_command |= BIT(31) | BIT(16);
+-
+-		if (i == 0) { /* MAC|Config */
+-			target_content = (u32)(*(macaddr + 0)) << 16 |
+-					(u32)(*(macaddr + 1)) << 24 |
+-					(u32)us_config;
+-
+-			write_nic_dword(dev, WCAMI, target_content);
+-			write_nic_dword(dev, RWCAM, target_command);
+-		} else if (i == 1) { /* MAC */
+-			target_content = (u32)(*(macaddr + 2))	 |
+-					(u32)(*(macaddr + 3)) <<  8 |
+-					(u32)(*(macaddr + 4)) << 16 |
+-					(u32)(*(macaddr + 5)) << 24;
+-			write_nic_dword(dev, WCAMI, target_content);
+-			write_nic_dword(dev, RWCAM, target_command);
+-		} else {
+-			/* Key Material */
+-			if (keycontent) {
+-				write_nic_dword(dev, WCAMI,
+-						*(keycontent + i - 2));
+-				write_nic_dword(dev, RWCAM, target_command);
+-                	}
+-		}
++	target_content = macaddr[0] << 16 |
++			 macaddr[0] << 24 |
++			(u32)us_config;
++
++	write_nic_dword(dev, WCAMI, target_content);
++	write_nic_dword(dev, RWCAM, target_command++);
++
++	/* MAC */
++	target_content = macaddr[2]	  |
++			 macaddr[3] <<  8 |
++			 macaddr[4] << 16 |
++			 macaddr[5] << 24;
++	write_nic_dword(dev, WCAMI, target_content);
++	write_nic_dword(dev, RWCAM, target_command++);
++
++	/* Key Material */
++	if (!keycontent)
++		return;
++
++	for (i = 2; i < CAM_CONTENT_COUNT; i++) {
++		write_nic_dword(dev, WCAMI, *keycontent++);
++		write_nic_dword(dev, RWCAM, target_command++);
+ 	}
+ }
+ 
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
