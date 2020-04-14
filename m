@@ -1,59 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38CD31A7FBE
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 16:28:20 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 44BF220797;
-	Tue, 14 Apr 2020 14:28:18 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Xa++9EH5tccR; Tue, 14 Apr 2020 14:28:17 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7D183203A4;
-	Tue, 14 Apr 2020 14:28:16 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8E4461BF477
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 14:28:13 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 301001A7FE3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 16:35:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8511286272
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 14:28:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1BECC86BD5;
+	Tue, 14 Apr 2020 14:35:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id b+I3ZOvRLceN; Tue, 14 Apr 2020 14:35:17 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id D5F5586A3C;
+	Tue, 14 Apr 2020 14:35:16 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E11C1BF477
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 14:35:06 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 58C77204EA
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 14:35:06 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6GDGQl68hv49 for <devel@linuxdriverproject.org>;
- Tue, 14 Apr 2020 14:28:12 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 40914857A4
- for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 14:28:12 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 911E7206D5;
- Tue, 14 Apr 2020 14:28:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586874492;
- bh=AUCP5LBXtPGJHjbn/Oope7bBN8YqMNL+wwsvw4qP3kg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=H3IYucfMVmoo+un3KX+EOcHYqVdDOVrDLZRI2LvpvT48wGw3GAG383C3V6cHD8c6n
- IftZ5V3CcP1AL1DtUz8dWDECPuGtky0eivrzBKEODddbpefvrUrwHnTMj5S7Lo2vEY
- WlixpeUCffKCDY4igxJYWeEsjBILC5sBgzc2S70Y=
-Date: Tue, 14 Apr 2020 16:28:10 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: =?iso-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>
-Subject: Re: [PATCH] staging: android: ion: Skip sync if not mapped
-Message-ID: <20200414142810.GA958163@kroah.com>
-References: <20200414134629.54567-1-orjan.eide@arm.com>
- <20200414141849.55654-1-orjan.eide@arm.com>
+ with ESMTP id bVIi1Vhj4oGu for <devel@linuxdriverproject.org>;
+ Tue, 14 Apr 2020 14:35:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1A066204ED
+ for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 14:35:05 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1jOMeU-0001ro-Q9; Tue, 14 Apr 2020 14:35:02 +0000
+From: Colin King <colin.king@canonical.com>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+Subject: [PATCH][next] staging: vt6656: remove redundant assignment to
+ variable ed_inx
+Date: Tue, 14 Apr 2020 15:35:02 +0100
+Message-Id: <20200414143502.237803-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200414141849.55654-1-orjan.eide@arm.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,95 +58,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, nd@arm.com, Todd Kjos <tkjos@android.com>,
- Lecopzer Chen <lecopzer.chen@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
- Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>, john.stultz@linaro.org,
- anders.pedersen@arm.com, Joel Fernandes <joel@joelfernandes.org>,
- "Darren Hart \(VMware\)" <dvhart@infradead.org>,
- Laura Abbott <labbott@redhat.com>, Martijn Coenen <maco@android.com>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Christian Brauner <christian@brauner.io>, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Apr 14, 2020 at 04:18:47PM +0200, =D8rjan Eide wrote:
-> Only sync the sg-list of an Ion dma-buf attachment when the attachment
-> is actually mapped on the device.
-> =
+From: Colin Ian King <colin.king@canonical.com>
 
-> dma-bufs may be synced at any time. It can be reached from user space
-> via DMA_BUF_IOCTL_SYNC, so there are no guarantees from callers on when
-> syncs may be attempted, and dma_buf_end_cpu_access() and
-> dma_buf_begin_cpu_access() may not be paired.
-> =
+The variable ed_inx is being initialized with a value that is never
+read and it is being updated later with a new value. The initialization
+is redundant and can be removed.
 
-> Since the sg_list's dma_address isn't set up until the buffer is used
-> on the device, and dma_map_sg() is called on it, the dma_address will be
-> NULL if sync is attempted on the dma-buf before it's mapped on a device.
-> =
+Addresses-Coverity: ("Unused value")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/staging/vt6656/baseband.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Before v5.0 (commit 55897af63091 ("dma-direct: merge swiotlb_dma_ops
-> into the dma_direct code")) this was a problem as the dma-api (at least
-> the swiotlb_dma_ops on arm64) would use the potentially invalid
-> dma_address. How that failed depended on how the device handled physical
-> address 0. If 0 was a valid address to physical ram, that page would get
-> flushed a lot, while the actual pages in the buffer would not get synced
-> correctly. While if 0 is an invalid physical address it may cause a
-> fault and trigger a crash.
-> =
+diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+index 512d2a5b0b8e..a8bd7f9f8ada 100644
+--- a/drivers/staging/vt6656/baseband.c
++++ b/drivers/staging/vt6656/baseband.c
+@@ -655,7 +655,7 @@ void vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning)
+ 	const struct vnt_threshold *threshold = NULL;
+ 	u8 length;
+ 	u8 cr_201, cr_206;
+-	u8 ed_inx = priv->bb_pre_ed_index;
++	u8 ed_inx;
+ 
+ 	switch (priv->rf_type) {
+ 	case RF_AL2230:
+-- 
+2.25.1
 
-> In v5.0 this was incidentally fixed by commit 55897af63091 ("dma-direct:
-> merge swiotlb_dma_ops into the dma_direct code"), as this moved the
-> dma-api to use the page pointer in the sg_list, and (for Ion buffers at
-> least) this will always be valid if the sg_list exists at all.
-> =
-
-> But, this issue is re-introduced in v5.3 with
-> commit 449fa54d6815 ("dma-direct: correct the physical addr in
-> dma_direct_sync_sg_for_cpu/device") moves the dma-api back to the old
-> behaviour and picks the dma_address that may be invalid.
-> =
-
-> dma-buf core doesn't ensure that the buffer is mapped on the device, and
-> thus have a valid sg_list, before calling the exporter's
-> begin_cpu_access.
-> =
-
-> Signed-off-by: =D8rjan Eide <orjan.eide@arm.com>
-> ---
->  drivers/staging/android/ion/ion.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> =
-
-> Resubmit without disclaimer, sorry about that.
-> =
-
-> This seems to be part of a bigger issue where dma-buf exporters assume
-> that their dma-buf begin_cpu_access and end_cpu_access callbacks have a
-> certain guaranteed behavior, which isn't ensured by dma-buf core.
-> =
-
-> This patch fixes this in ion only, but it also needs to be fixed for
-> other exporters, either handled like this in each exporter, or in
-> dma-buf core before calling into the exporters.
-> =
-
-> diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/android/=
-ion/ion.c
-> index 38b51eace4f9..7b752ba0cb6d 100644
-> --- a/drivers/staging/android/ion/ion.c
-> +++ b/drivers/staging/android/ion/ion.c
-
-Now that we have the dma-buff stuff in the tree, do we even need the
-ion code in the kernel anymore?  Can't we delete it now?
-
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
