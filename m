@@ -1,76 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7865E1A74D1
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 09:30:57 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DAC781A75F5
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 10:25:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 84C7F878AF;
-	Tue, 14 Apr 2020 07:30:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AE585847AC;
+	Tue, 14 Apr 2020 08:25:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EWJmtZJq1vze; Tue, 14 Apr 2020 07:30:54 +0000 (UTC)
+	with ESMTP id oep6DCwEwuNW; Tue, 14 Apr 2020 08:25:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F0F368753F;
-	Tue, 14 Apr 2020 07:30:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 846B4845DB;
+	Tue, 14 Apr 2020 08:25:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DCD421BF30B
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 07:30:51 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E4A71BF2AE
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 08:25:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D97648753F
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 07:30:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2B7408527D
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 08:25:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YAQHVLkaImzj for <devel@linuxdriverproject.org>;
- Tue, 14 Apr 2020 07:30:51 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0020587397
- for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 07:30:50 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id a81so12749802wmf.5
- for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 00:30:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+Rwt7p9rV0ZpScS3OX0rGuyv3x/Zc5Fmy91OFilUZ1Y=;
- b=QWhgMvQbdUrtrel97IpCVi+K+iGufbSjnOoA6HrP+kHc7QLpRClgyLZPt/To2X1zLD
- zGwi7s7p30TVDfrGjxYXVA5WRFotAT2cgStakuBB5AvgCMtB/TQdUiIXnNZvcKT8p7XL
- EZ0L/ZNkOV618PvidBgSPyXtklufOJ/WK2MRpHnzHLCKIapm0o8+VM9z2JtFUT3CtqE7
- 5/cmytS2jTxz8sa1YnDlC50zOH4qOmDsqM+ss1rQq05M5tqsOTzMQuL2KC3bhil0ocCx
- G0A9XlRrVG/OE/hUtszlsyfRtUikc9wa540m+78690soPnF2DD4wrAUKSQCzONBW5CXF
- 6pbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+Rwt7p9rV0ZpScS3OX0rGuyv3x/Zc5Fmy91OFilUZ1Y=;
- b=FZtovuYQkAo6fnCUh1H3xDOo4clIkRoO4/T4lqfLCEbgk2zb/i5rZrnyok6erHwjB5
- r0Y+lHLo+5cxzKZql7pBREecXLGMNZ+wEydgC2bjUQTJaNpA/UuqUxNWw86p5KP4AZpi
- Dk45jvB+Ln34OEEZeWTp1qX3s81LU+tcexdXHdm47wGamG6CNr05ldZf/vnPqBnTckBG
- i8El2fvgc0AfbcvBC+mx+8NAOYFdpWBSFbiRLK9p2VbtyrPTjf8rpfj5hDVJuvOQYZ9d
- b7HUFAlbrkaDeZMi0zql/0rYv6JJwUZNC4IYplU3zmvb8DO5snEGToQSHmunyAWWG+kF
- WFVg==
-X-Gm-Message-State: AGi0PubdzWYJhhyDdv9FNL4oTrudnC8FbymCZf18/Z1ghVLbXYF0vxNP
- /GuUDApn8lE0PY0mVwFtqho=
-X-Google-Smtp-Source: APiQypIR5EPu+VhS8tNtQUnOjVREATqTvrressnlxnmBB29KUQZb99svQvmsU19ioztDuD9CYUCwKg==
-X-Received: by 2002:a1c:4186:: with SMTP id o128mr2448247wma.21.1586849449238; 
- Tue, 14 Apr 2020 00:30:49 -0700 (PDT)
-Received: from localhost.localdomain ([31.4.236.74])
- by smtp.gmail.com with ESMTPSA id g74sm17755486wme.44.2020.04.14.00.30.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Apr 2020 00:30:48 -0700 (PDT)
-From: carlosteniswarrior@gmail.com
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: fbtft : fbtft-bus: fixed two checkpatch errors
-Date: Tue, 14 Apr 2020 09:30:47 +0200
-Message-Id: <20200414073047.2757-1-carlosteniswarrior@gmail.com>
-X-Mailer: git-send-email 2.26.0
+ with ESMTP id uP5FrhxQLFrY for <devel@linuxdriverproject.org>;
+ Tue, 14 Apr 2020 08:25:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9D99E82146
+ for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 08:25:08 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id ED02C20578;
+ Tue, 14 Apr 2020 08:25:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1586852708;
+ bh=xxacNN54FtarsJjPAzYq/IC6+kgP7e5TbdVrVbqAinc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=nLQ5Jpw5ON3N940xKP7Q/SBKNWa5Cej5DM+MUoEpI7Uk3v3GcdkWTe3aAx4fMaok9
+ SNxT6vDEM0Y0+BQlSUHRNi/xcQB4akm8vZ+DJLSKB2vFfxv3X2VVgLOugi4/e1O9GG
+ RulZpMuvIxKecT819POw7h1KMmbZspm11B17wIiQ=
+Date: Tue, 14 Apr 2020 10:25:06 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: carlosteniswarrior@gmail.com
+Subject: Re: [PATCH] Staging: fbtft : fbtft-bus: fixed two checkpatch errors
+Message-ID: <20200414082506.GB10645@kroah.com>
+References: <20200414073047.2757-1-carlosteniswarrior@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200414073047.2757-1-carlosteniswarrior@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,33 +65,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux@jaseg.net, devel@driverdev.osuosl.org,
- =?UTF-8?q?Carlos=20Guerrero=20=C3=81lvarez?=
- <carlosteniswarrior@gmail.com>, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux@jaseg.net, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogQ2FybG9zIEd1ZXJyZXJvIMOBbHZhcmV6IDxjYXJsb3N0ZW5pc3dhcnJpb3JAZ21haWwu
-Y29tPgoKRml4ZWQgdHdvIGNoZWNrcGF0Y2ggc3BhY2UgcHJvaGliaXRlZCBiZWZvcmUgdGhhdCBj
-bG9zZSBwYXJlbnRoZXNpcyBlcnJvcnMuCgpTaWduZWQtb2ZmLWJ5OiBDYXJsb3MgR3VlcnJlcm8g
-w4FsdmFyZXogPGNhcmxvc3Rlbmlzd2FycmlvckBnbWFpbC5jb20+Ci0tLQogZHJpdmVycy9zdGFn
-aW5nL2ZidGZ0L2ZidGZ0LWJ1cy5jIHwgNCArKy0tCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRp
-b25zKCspLCAyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9mYnRm
-dC9mYnRmdC1idXMuYyBiL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYnRmdC1idXMuYwppbmRleCA2
-M2M2NWRkNjdiMTcuLmNkYjQ1MWRkM2ZkZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL2Zi
-dGZ0L2ZidGZ0LWJ1cy5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9mYnRmdC9mYnRmdC1idXMuYwpA
-QCAtNjIsOSArNjIsOSBAQCBvdXQ6CQkJCQkJCQkJICAgICAgXAogfSAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgXAogRVhQT1JUX1NZTUJPTChmdW5jKTsKIAotZGVmaW5lX2ZidGZ0X3dyaXRlX3JlZyhmYnRm
-dF93cml0ZV9yZWc4X2J1czgsIHU4LCB1OCwgKQorZGVmaW5lX2ZidGZ0X3dyaXRlX3JlZyhmYnRm
-dF93cml0ZV9yZWc4X2J1czgsIHU4LCB1OCwpCiBkZWZpbmVfZmJ0ZnRfd3JpdGVfcmVnKGZidGZ0
-X3dyaXRlX3JlZzE2X2J1czgsIF9fYmUxNiwgdTE2LCBjcHVfdG9fYmUxNikKLWRlZmluZV9mYnRm
-dF93cml0ZV9yZWcoZmJ0ZnRfd3JpdGVfcmVnMTZfYnVzMTYsIHUxNiwgdTE2LCApCitkZWZpbmVf
-ZmJ0ZnRfd3JpdGVfcmVnKGZidGZ0X3dyaXRlX3JlZzE2X2J1czE2LCB1MTYsIHUxNiwpCiAKIHZv
-aWQgZmJ0ZnRfd3JpdGVfcmVnOF9idXM5KHN0cnVjdCBmYnRmdF9wYXIgKnBhciwgaW50IGxlbiwg
-Li4uKQogewotLSAKMi4yNi4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9y
-ZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcml2ZXJkZXYtZGV2ZWwK
+On Tue, Apr 14, 2020 at 09:30:47AM +0200, carlosteniswarrior@gmail.com wrot=
+e:
+> From: Carlos Guerrero =C1lvarez <carlosteniswarrior@gmail.com>
+> =
+
+> Fixed two checkpatch space prohibited before that close parenthesis error=
+s.
+> =
+
+> Signed-off-by: Carlos Guerrero =C1lvarez <carlosteniswarrior@gmail.com>
+> ---
+>  drivers/staging/fbtft/fbtft-bus.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> =
+
+> diff --git a/drivers/staging/fbtft/fbtft-bus.c b/drivers/staging/fbtft/fb=
+tft-bus.c
+> index 63c65dd67b17..cdb451dd3fde 100644
+> --- a/drivers/staging/fbtft/fbtft-bus.c
+> +++ b/drivers/staging/fbtft/fbtft-bus.c
+> @@ -62,9 +62,9 @@ out:									      \
+>  }                                                                       =
+      \
+>  EXPORT_SYMBOL(func);
+>  =
+
+> -define_fbtft_write_reg(fbtft_write_reg8_bus8, u8, u8, )
+> +define_fbtft_write_reg(fbtft_write_reg8_bus8, u8, u8,)
+>  define_fbtft_write_reg(fbtft_write_reg16_bus8, __be16, u16, cpu_to_be16)
+> -define_fbtft_write_reg(fbtft_write_reg16_bus16, u16, u16, )
+> +define_fbtft_write_reg(fbtft_write_reg16_bus16, u16, u16,)
+
+If I remember correct, the original code here is required, due to how
+some older versions of gcc works.
+
+Did you test-build this?  Did it work properly?
+
+I would just leave this alone,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
