@@ -1,69 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BA501A76D1
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 11:01:43 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8CB7F1A77E3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 11:53:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 78FC3204C6;
-	Tue, 14 Apr 2020 09:01:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9328E878C8;
+	Tue, 14 Apr 2020 09:53:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l7-i5YaRHlBv; Tue, 14 Apr 2020 09:01:39 +0000 (UTC)
+	with ESMTP id ek6zFW8pEv4W; Tue, 14 Apr 2020 09:53:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A3DC62043E;
-	Tue, 14 Apr 2020 09:01:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 08B5186F85;
+	Tue, 14 Apr 2020 09:53:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AC3901BF314
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 09:01:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 109EE1BF2A7
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 09:53:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 993E32041D
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 09:01:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0BE1A20035
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 09:53:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wePNifKSEESc for <devel@linuxdriverproject.org>;
- Tue, 14 Apr 2020 09:01:33 +0000 (UTC)
+ with ESMTP id KLM4SvzNZ9vz for <devel@linuxdriverproject.org>;
+ Tue, 14 Apr 2020 09:53:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 5A65D203E3
- for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 09:01:33 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id a81so13028081wmf.5
- for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 02:01:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ZSEHFc2eh+N6K60wyVHbBWfK0AmjMN90oe2OMNtMMJ0=;
- b=ts5ipioF8KrFPy4dnXNSXz4NlIkjENWHu2GckM2r12zv5LZ5hMOdeLqKDeQYBoc+8T
- 7elL5EfBHKL9RAEhQD8Q6kwGpCUeSsPeRYXlT+MR21nfGr8wrju5qQXdvjaQENotSagR
- 9LLYYhgztVHljd4Xl1lKYJNN4Z8DI3FIBWMbaX6L2nD2K4hw08WCTLwFMpWPMMF5Cyas
- snZVsSxd7H2hKFDvVT5snyTmAzwwnHdfohbjBnCJSOsVBq99Rp/6JhFD9GcVYp7YDQ+S
- NLmzsfoMmp8TqlVDf9v0O98HRjNxcVNTJIEy6ubhEBFWHO+LryrN0b2qYNJnU+eLc+K6
- Pj/w==
-X-Gm-Message-State: AGi0PuZKXHWW1rdJIVch7zuIik5PTuFtST1CpX4UhMiGHHyLkFzgSRor
- 70jEn1c0VLtJaakB+Rswkuf+mk3/
-X-Google-Smtp-Source: APiQypIjMMKQ1krTcIb7iRe2Mn/fScrYHKTluZiYEwYRZsrwjhiGsUjKHrgwCKNk20IxGSD17N1euw==
-X-Received: by 2002:a1c:a913:: with SMTP id s19mr23660673wme.134.1586854891811; 
- Tue, 14 Apr 2020 02:01:31 -0700 (PDT)
-Received: from localhost (ip-37-188-180-223.eurotel.cz. [37.188.180.223])
- by smtp.gmail.com with ESMTPSA id n6sm18637096wrs.81.2020.04.14.02.01.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Apr 2020 02:01:30 -0700 (PDT)
-Date: Tue, 14 Apr 2020 11:01:29 +0200
-From: Michal Hocko <mhocko@kernel.org>
-To: Waiman Long <longman@redhat.com>
-Subject: Re: [PATCH 1/2] mm, treewide: Rename kzfree() to kfree_sensitive()
-Message-ID: <20200414090129.GE4629@dhcp22.suse.cz>
-References: <20200413211550.8307-1-longman@redhat.com>
- <20200413211550.8307-2-longman@redhat.com>
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id E120B2001A
+ for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 09:53:21 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03E9rIGZ039973;
+ Tue, 14 Apr 2020 09:53:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=RNjbjBea2yPyYlo8Dy1KxUbyXQZ2fhl+B1f7RROmYig=;
+ b=Gjd9tEgQJA1CCDoAV1Z92vjUXYP74T69H8YNOOuMssWNn9d76B3PH534Z910ajqs86qs
+ HFdFPxhYRQtvrKB3dRqZQVdqE5V7j69bU195C5Y8emf5f2XVTdLFzCqqL8Y5TcVtv+x/
+ ZWLsNA8klKgEjKshwIilh7b59w6ydlR+l/VDQ3iwsrQYjsXDqAUlYwnR2QFDj44uw4y6
+ LLo2X2ziSLxVnZnvcUY4qkYfbLPQBHQife7ldkZ9QjJfDIcZfyglJNogkJNtl8tJUPy1
+ 6AL6tBkW04ShfKMsRNkKnvD6PM8WkPpIRDJewIZ6fHKFlGecsKbaU3bDhKDXwHO6nMUK bQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 30b6hpke05-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 14 Apr 2020 09:53:18 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03E9qxPS089717;
+ Tue, 14 Apr 2020 09:53:12 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3020.oracle.com with ESMTP id 30bqm1ad9g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 14 Apr 2020 09:53:11 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 03E9r8Sk028919;
+ Tue, 14 Apr 2020 09:53:08 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 14 Apr 2020 02:53:07 -0700
+Date: Tue, 14 Apr 2020 12:52:50 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: MugilRaj <dmugil2000@gmail.com>
+Subject: Re: [PATCH] taging: android: ashmem: Declared const key
+Message-ID: <20200414095249.GE1163@kadam>
+References: <1586633396-24237-1-git-send-email-dmugil2000@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200413211550.8307-2-longman@redhat.com>
+In-Reply-To: <1586633396-24237-1-git-send-email-dmugil2000@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9590
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxlogscore=999
+ adultscore=0 mlxscore=0 phishscore=0 malwarescore=0 spamscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004140081
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9590
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ adultscore=0
+ mlxlogscore=999 clxscore=1011 mlxscore=0 phishscore=0 suspectscore=0
+ lowpriorityscore=0 bulkscore=0 malwarescore=0 priorityscore=1501
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004140081
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,72 +97,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-btrfs@vger.kernel.org,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- virtualization@lists.linux-foundation.org, David Howells <dhowells@redhat.com>,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
- kasan-dev@googlegroups.com, samba-technical@lists.samba.org,
- linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
- James Morris <jmorris@namei.org>, Matthew Wilcox <willy@infradead.org>,
- cocci@systeme.lip6.fr, linux-wpan@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, David Rientjes <rientjes@google.com>,
- linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org, linux-nfs@vger.kernel.org,
- linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-integrity@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-cifs@vger.kernel.org,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
- netdev@vger.kernel.org, Joe Perches <joe@perches.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org
+Cc: mugil2301 <110117057@nitt.edu>, devel@driverdev.osuosl.org,
+ Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon 13-04-20 17:15:49, Waiman Long wrote:
-> As said by Linus:
-> 
->   A symmetric naming is only helpful if it implies symmetries in use.
->   Otherwise it's actively misleading.
-> 
->   In "kzalloc()", the z is meaningful and an important part of what the
->   caller wants.
-> 
->   In "kzfree()", the z is actively detrimental, because maybe in the
->   future we really _might_ want to use that "memfill(0xdeadbeef)" or
->   something. The "zero" part of the interface isn't even _relevant_.
-> 
-> The main reason that kzfree() exists is to clear sensitive information
-> that should not be leaked to other future users of the same memory
-> objects.
-> 
-> Rename kzfree() to kfree_sensitive() to follow the example of the
-> recently added kvfree_sensitive() and make the intention of the API
-> more explicit. In addition, memzero_explicit() is used to clear the
-> memory to make sure that it won't get optimized away by the compiler.
-> 
-> The renaming is done by using the command sequence:
-> 
->   git grep -w --name-only kzfree |\
->   xargs sed -i 's/\bkzfree\b/kfree_sensitive/'
-> 
-> followed by some editing of the kfree_sensitive() kerneldoc and the
-> use of memzero_explicit() instead of memset().
-> 
-> Suggested-by: Joe Perches <joe@perches.com>
-> Signed-off-by: Waiman Long <longman@redhat.com>
+On Sun, Apr 12, 2020 at 12:59:56AM +0530, MugilRaj wrote:
+> From: mugil2301 <110117057@nitt.edu>
+        ^^^^^^^^^
+1) Real name.
 
-Makes sense. I haven't checked all the conversions and will rely on the
-script doing the right thing. The core MM part is correct.
+2) Add a commit message.
 
-Acked-by: Michal Hocko <mhocko@suse.com>
--- 
-Michal Hocko
-SUSE Labs
+> 
+> Signed-off-by: mugil2301 <110117057@nitt.edu>
+                 ^^^^^^^^^
+3) Real name here as well.
+
+> ---
+>  drivers/staging/android/ashmem.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
+> index 8044510..50f882a 100644
+> --- a/drivers/staging/android/ashmem.c
+> +++ b/drivers/staging/android/ashmem.c
+> @@ -367,7 +367,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
+>  
+>  static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
+>  {
+> -	static struct file_operations vmfile_fops;
+> +	static const  struct file_operations vmfile_fops;
+                    ^^
+4) Too many space characters.
+
+Please resend.
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
