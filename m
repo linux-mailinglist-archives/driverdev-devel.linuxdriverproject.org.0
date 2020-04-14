@@ -2,52 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78FA41A7834
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 12:13:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9367C1A7845
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 12:17:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B0642204BE;
-	Tue, 14 Apr 2020 10:13:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0614F203B4;
+	Tue, 14 Apr 2020 10:17:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id io0WbQ8pXDiK; Tue, 14 Apr 2020 10:13:41 +0000 (UTC)
+	with ESMTP id o39hMHqJ2bzS; Tue, 14 Apr 2020 10:17:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BEDE420390;
-	Tue, 14 Apr 2020 10:13:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 77C7520005;
+	Tue, 14 Apr 2020 10:17:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 215CB1BF255
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 10:13:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1415C1BF255
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 10:17:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1BAC687884
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 10:13:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 10B948541F
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 10:17:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SCdMDs7XKoi2 for <devel@linuxdriverproject.org>;
- Tue, 14 Apr 2020 10:13:38 +0000 (UTC)
+ with ESMTP id j4Sm4KAakxTD for <devel@linuxdriverproject.org>;
+ Tue, 14 Apr 2020 10:17:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C996387877
- for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 10:13:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4A81984F80
+ for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 10:17:09 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 86AE4AD9F;
- Tue, 14 Apr 2020 10:13:34 +0000 (UTC)
-Message-ID: <aa55686f19ce8afaa383b9c9ef52d0a87f5c6eb6.camel@suse.de>
-Subject: Re: [PATCH] staging: vc04_services: remove set but not used
- 'local_entity_uc'
+ by mx2.suse.de (Postfix) with ESMTP id A99E6AAFD;
+ Tue, 14 Apr 2020 10:17:06 +0000 (UTC)
+Message-ID: <f88988c4059799dd21c4c0bf9d13df494eff2c4f.camel@suse.de>
+Subject: Re: [PATCH] staging: vc04_services: bcm2835-audio: Make function
+ arguments alignment match open parenthesis
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Jason Yan <yanaijie@huawei.com>, gregkh@linuxfoundation.org, 
- marcgonzalez@google.com, jamal.k.shareef@gmail.com,
- nishkadg.linux@gmail.com,  bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, devel@driverdev.osuosl.org, 
- linux-kernel@vger.kernel.org
-Date: Tue, 14 Apr 2020 12:13:33 +0200
-In-Reply-To: <20200409085339.47255-1-yanaijie@huawei.com>
-References: <20200409085339.47255-1-yanaijie@huawei.com>
+To: R Veera Kumar <vkor@vkten.in>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>
+Date: Tue, 14 Apr 2020 12:17:05 +0200
+In-Reply-To: <20200413165905.6081-1-vkor@vkten.in>
+References: <20200413165905.6081-1-vkor@vkten.in>
 User-Agent: Evolution 3.34.2 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -62,31 +58,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4217906416323411497=="
+Cc: devel@driverdev.osuosl.org, Florian Fainelli <f.fainelli@gmail.com>,
+ Scott Branden <sbranden@broadcom.com>, Ray Jui <rjui@broadcom.com>,
+ linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============6225624272781117857=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============4217906416323411497==
+--===============6225624272781117857==
 Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-juXL22/nRsflnczJYuVl"
+	protocol="application/pgp-signature"; boundary="=-HvMJdd4MlU6lzP+RDzxu"
 
 
---=-juXL22/nRsflnczJYuVl
+--=-HvMJdd4MlU6lzP+RDzxu
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, 2020-04-09 at 16:53 +0800, Jason Yan wrote:
-> Fix the following gcc warning:
+On Mon, 2020-04-13 at 22:29 +0530, R Veera Kumar wrote:
+> Make function arguments alignment match open parenthesis.
+> Found using checkpatch.pl.
 >=20
-> drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:2356:16:
-> warning: variable =E2=80=98local_entity_uc=E2=80=99 set but not used
-> [-Wunused-but-set-variable]
->   int local_uc, local_entity_uc;
->                 ^~~~~~~~~~~~~~~
->=20
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: Jason Yan <yanaijie@huawei.com>
+> Signed-off-by: R Veera Kumar <vkor@vkten.in>
 > ---
 
 Reviewed-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
@@ -95,27 +89,27 @@ Thanks,
 Nicolas
 
 
---=-juXL22/nRsflnczJYuVl
+--=-HvMJdd4MlU6lzP+RDzxu
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl6VjM0ACgkQlfZmHno8
-x/6KtQf/WWaeBaE3Fg3/MPD+6pLhpA1yJ8ifZMJQ7lV2vGPy27O/uYxGO3vP6dF/
-ATOajy2Ua1PzffJ8799dQLDV6WUAXnZM0/s1wIicj3CKpOywNDpvvax/8+RCpWOb
-CxPorX454DgecibOHfzA/7wy2lrCV6zvc14F3lLB6o45ylKCEpygIBZC85KPEBnV
-bBgxSo3VOcgrQDMieB0bcb6m2Sz/niEqmf2PxSo3vD85oMTYgYrADf1Le+Jbam02
-3D+JmZKv3BkAzHkxHMhMGIWATzlo1Ub4BshVpgU4sy2Ru90dl4WBuiOrzgItRf4s
-GzgoEf75Ky0YWFolvldyijhZ1DHF0g==
-=4j5h
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl6VjaEACgkQlfZmHno8
+x/7QNAf+KEkgvllarl1bp7iHEIeawYA2hzu5cIUgBMq3Qn9pI9VDHNI3I8DG4EQb
+gOHmJHG635oIvSU3ZVXbgSPRdomFsuXGO7t6te5WdYuhkNVkNyuSuVioOJk6Qdfx
+54HT/S9tPICxf3lMZ7ga2JlSDFlHOEtdFEGy7yi6c+miPwkscp1/c6vOxDojOEp1
+0Z9iPRSVTGAjKPJOF0Pik1S5cEwowScrdFF2m7Oku0F6ae71sv0eJ+8rZGmqP8Bj
+ypzQVcXJYr9pIAGnq/8tRlt4d+IzSSPKxUpTcZZ67RBC/3opTf183ajZGOCTjZd1
+CMKcxOYHmJdhwso9ulwPstE+ogLEaA==
+=UMAf
 -----END PGP SIGNATURE-----
 
---=-juXL22/nRsflnczJYuVl--
+--=-HvMJdd4MlU6lzP+RDzxu--
 
 
---===============4217906416323411497==
+--===============6225624272781117857==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -126,5 +120,5 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============4217906416323411497==--
+--===============6225624272781117857==--
 
