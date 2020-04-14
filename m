@@ -1,59 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C7271A6F59
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 00:37:58 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BB5E8852F8;
-	Mon, 13 Apr 2020 22:37:56 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vaxwQOqHTUZd; Mon, 13 Apr 2020 22:37:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A2DF8538A;
-	Mon, 13 Apr 2020 22:37:51 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 56F731BF299
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 22:37:49 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 16BFD1A7016
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 02:30:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 526308650D
- for <devel@linuxdriverproject.org>; Mon, 13 Apr 2020 22:37:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A9DE384C09;
+	Tue, 14 Apr 2020 00:30:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DNXwEisF+kDu; Tue, 14 Apr 2020 00:30:06 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3A84186773;
+	Tue, 14 Apr 2020 00:30:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 94F781BF3A9
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 00:30:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 8BDB6204D8
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 00:30:02 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VKlMt8smu6-U for <devel@linuxdriverproject.org>;
- Mon, 13 Apr 2020 22:37:48 +0000 (UTC)
+ with ESMTP id cTereKPu7LFg for <devel@linuxdriverproject.org>;
+ Tue, 14 Apr 2020 00:30:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3E3C4863F4
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 22:37:48 +0000 (UTC)
-IronPort-SDR: uXw5GSR76ykShJpRLsjsIG845BQAph4q3WY0/U8cLSV45ua16sKhPXisa6wis9uVuPdrQ9tNBL
- lfroTFgSyyrg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Apr 2020 15:37:47 -0700
-IronPort-SDR: fZ4OR4nzhEp+uhLbdrSsICnGg8FH71tjuC8nprvJhmcDnqojP/5tqGVZJTK6La4tATGh6U/6OY
- wDYtfaE/v5Ng==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,380,1580803200"; d="scan'208";a="426849643"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 13 Apr 2020 15:37:45 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jO7i3-00078j-Qj; Tue, 14 Apr 2020 06:37:43 +0800
-Date: Tue, 14 Apr 2020 06:36:53 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-linus] BUILD SUCCESS
- ed87d33ddbcd9a1c3b5ae87995da34e6f51a862c
-Message-ID: <5e94e985.OgUdOlT8dOqEih6S%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 849451FEBF
+ for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 00:30:00 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id v23so5313098pfm.1
+ for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 17:30:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=GtP40NBc6K+wY7TevCqJVJVyGGxw6eyhk3x6njvRZbI=;
+ b=PMRE9MFBjRNguCLZJxvQ0tC6cbj5HN/L0mNJHOjg1H5naWvyPaji8Uw6CjXqOQ2azW
+ MhWs/LuNrHlvICFisvb7Cy6SJ3VKQrmiHJlokad5hGoOXcGXzDY3vorrrgpyAZrAVUDE
+ dUN76VdbMCLvs9G10TRyVoj/R2uKEUPKhrkRhwWPh9Qq6Oj8zqhrDAXwnWHye+K8R3ym
+ lDZQumSHVx6+RupP9U0o1EyjztcXPr7zTXefIIyzd+nYkxQBJg3bKkumuWN4k6N/hrZC
+ eN210smaNX58gX6QVglgalvDGfi5xzWfnOSt7/cWPG1d3xQeaexIo7gZ03EO3NRYAH/8
+ 2wUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=GtP40NBc6K+wY7TevCqJVJVyGGxw6eyhk3x6njvRZbI=;
+ b=UwVQe/qjOFj1udBAB6AIJ42kJw2EPJTp+OwkFeNsSLQvuFxeDXtCGiTzJHwPoff5pc
+ Rt7v3tYc6oNaK1jdo1VZhxsZZx6pSocbDgTQ/jhUGh0WWgaAVw9KjFSCRP5Rq569vPob
+ 7ZswJT4gBQEeWQagPFFuV2P8na8IcjQxVdFoqTeIdEFTBU8lKwPk9cxgDroVGuGpfdWr
+ 5uIOayTWh+rpp27G8HNKz33nmC5w25KBJaYU+0RemDWEaNwBEJUqS7iBt+g54DbM6wpi
+ Rj2QpUsEwfH82OqGGb2uiHElI9AMceK+RjwlmWvjqgtD0VcQ0ecgcuPw1q6dNOF5lRwx
+ ZmkA==
+X-Gm-Message-State: AGi0PuY/3dVK+/28zMJYLUwobShS7GYv3BMHf2fmClq4YoHF1jGqu86o
+ Iw9Sqi/EzzZOmGQu/HPraWiwbg==
+X-Google-Smtp-Source: APiQypL5W5g7xmsU3GZXO1UecYYPwVLK1dPD412glciRM3pdZ8NSkRu/LjnNHn8Pg6Fxg4L/cgCpIw==
+X-Received: by 2002:a62:dd48:: with SMTP id w69mr10144721pff.86.1586824199909; 
+ Mon, 13 Apr 2020 17:29:59 -0700 (PDT)
+Received: from [2620:15c:17:3:3a5:23a7:5e32:4598]
+ ([2620:15c:17:3:3a5:23a7:5e32:4598])
+ by smtp.gmail.com with ESMTPSA id g11sm10055136pjs.17.2020.04.13.17.29.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Apr 2020 17:29:59 -0700 (PDT)
+Date: Mon, 13 Apr 2020 17:29:58 -0700 (PDT)
+From: David Rientjes <rientjes@google.com>
+X-X-Sender: rientjes@chino.kir.corp.google.com
+To: Waiman Long <longman@redhat.com>
+Subject: Re: [PATCH 1/2] mm, treewide: Rename kzfree() to kfree_sensitive()
+In-Reply-To: <20200413211550.8307-2-longman@redhat.com>
+Message-ID: <alpine.DEB.2.21.2004131729410.260270@chino.kir.corp.google.com>
+References: <20200413211550.8307-1-longman@redhat.com>
+ <20200413211550.8307-2-longman@redhat.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -67,193 +88,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: linux-btrfs@vger.kernel.org,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ virtualization@lists.linux-foundation.org, David Howells <dhowells@redhat.com>,
+ linux-mm@kvack.org, linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
+ kasan-dev@googlegroups.com, samba-technical@lists.samba.org,
+ linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
+ linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
+ James Morris <jmorris@namei.org>, Matthew Wilcox <willy@infradead.org>,
+ cocci@systeme.lip6.fr, Linus Torvalds <torvalds@linux-foundation.org>,
+ intel-wired-lan@lists.osuosl.org, linux-wpan@vger.kernel.org,
+ linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org, linux-nfs@vger.kernel.org,
+ linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-integrity@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-cifs@vger.kernel.org,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
+ linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ linux-ppp@vger.kernel.org, Joe Perches <joe@perches.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
+ wireguard@lists.zx2c4.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
-branch HEAD: ed87d33ddbcd9a1c3b5ae87995da34e6f51a862c  staging: comedi: dt2815: fix writing hi byte of analog output
+On Mon, 13 Apr 2020, Waiman Long wrote:
 
-elapsed time: 480m
+> As said by Linus:
+> 
+>   A symmetric naming is only helpful if it implies symmetries in use.
+>   Otherwise it's actively misleading.
+> 
+>   In "kzalloc()", the z is meaningful and an important part of what the
+>   caller wants.
+> 
+>   In "kzfree()", the z is actively detrimental, because maybe in the
+>   future we really _might_ want to use that "memfill(0xdeadbeef)" or
+>   something. The "zero" part of the interface isn't even _relevant_.
+> 
+> The main reason that kzfree() exists is to clear sensitive information
+> that should not be leaked to other future users of the same memory
+> objects.
+> 
+> Rename kzfree() to kfree_sensitive() to follow the example of the
+> recently added kvfree_sensitive() and make the intention of the API
+> more explicit. In addition, memzero_explicit() is used to clear the
+> memory to make sure that it won't get optimized away by the compiler.
+> 
+> The renaming is done by using the command sequence:
+> 
+>   git grep -w --name-only kzfree |\
+>   xargs sed -i 's/\bkzfree\b/kfree_sensitive/'
+> 
+> followed by some editing of the kfree_sensitive() kerneldoc and the
+> use of memzero_explicit() instead of memset().
+> 
+> Suggested-by: Joe Perches <joe@perches.com>
+> Signed-off-by: Waiman Long <longman@redhat.com>
 
-configs tested: 166
-configs skipped: 0
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                               defconfig
-sparc                            allyesconfig
-um                             i386_defconfig
-i386                             allyesconfig
-openrisc                 simple_smp_defconfig
-i386                              allnoconfig
-i386                             alldefconfig
-i386                              debian-10.3
-i386                                defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                                defconfig
-alpha                               defconfig
-h8300                       h8s-sim_defconfig
-h8300                     edosk2674_defconfig
-m68k                       m5475evb_defconfig
-m68k                             allmodconfig
-h8300                    h8300h-sim_defconfig
-m68k                           sun3_defconfig
-m68k                          multi_defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-parisc                           allyesconfig
-parisc                generic-32bit_defconfig
-parisc                generic-64bit_defconfig
-x86_64               randconfig-a001-20200413
-x86_64               randconfig-a002-20200413
-x86_64               randconfig-a003-20200413
-i386                 randconfig-a001-20200413
-i386                 randconfig-a002-20200413
-i386                 randconfig-a003-20200413
-alpha                randconfig-a001-20200413
-m68k                 randconfig-a001-20200413
-mips                 randconfig-a001-20200413
-nds32                randconfig-a001-20200413
-parisc               randconfig-a001-20200413
-riscv                randconfig-a001-20200413
-c6x                  randconfig-a001-20200413
-h8300                randconfig-a001-20200413
-microblaze           randconfig-a001-20200413
-nios2                randconfig-a001-20200413
-sparc64              randconfig-a001-20200413
-s390                 randconfig-a001-20200413
-xtensa               randconfig-a001-20200413
-sh                   randconfig-a001-20200413
-openrisc             randconfig-a001-20200413
-csky                 randconfig-a001-20200413
-x86_64               randconfig-b001-20200413
-x86_64               randconfig-b002-20200413
-x86_64               randconfig-b003-20200413
-i386                 randconfig-b001-20200413
-i386                 randconfig-b002-20200413
-i386                 randconfig-b003-20200413
-x86_64               randconfig-c001-20200413
-x86_64               randconfig-c002-20200413
-x86_64               randconfig-c003-20200413
-i386                 randconfig-c001-20200413
-i386                 randconfig-c002-20200413
-i386                 randconfig-c003-20200413
-x86_64               randconfig-d001-20200413
-x86_64               randconfig-d002-20200413
-x86_64               randconfig-d003-20200413
-i386                 randconfig-d001-20200413
-i386                 randconfig-d002-20200413
-i386                 randconfig-d003-20200413
-x86_64               randconfig-e001-20200413
-i386                 randconfig-e002-20200413
-i386                 randconfig-e001-20200413
-x86_64               randconfig-e002-20200413
-i386                 randconfig-e003-20200413
-x86_64               randconfig-e003-20200413
-x86_64               randconfig-f001-20200413
-x86_64               randconfig-f002-20200413
-x86_64               randconfig-f003-20200413
-i386                 randconfig-f001-20200413
-i386                 randconfig-f002-20200413
-i386                 randconfig-f003-20200413
-x86_64               randconfig-g001-20200413
-x86_64               randconfig-g002-20200413
-x86_64               randconfig-g003-20200413
-i386                 randconfig-g001-20200413
-i386                 randconfig-g002-20200413
-i386                 randconfig-g003-20200413
-x86_64               randconfig-h001-20200413
-x86_64               randconfig-h002-20200413
-x86_64               randconfig-h003-20200413
-i386                 randconfig-h001-20200413
-i386                 randconfig-h002-20200413
-i386                 randconfig-h003-20200413
-arc                  randconfig-a001-20200413
-arm                  randconfig-a001-20200413
-arm64                randconfig-a001-20200413
-ia64                 randconfig-a001-20200413
-powerpc              randconfig-a001-20200413
-sparc                randconfig-a001-20200413
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-s390                             alldefconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-sh                          rsk7269_defconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                           x86_64_defconfig
-um                                  defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Acked-by: David Rientjes <rientjes@google.com>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
