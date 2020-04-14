@@ -1,75 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D93D31A7BDD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 15:09:26 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 18DB21A7C02
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 15:12:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E091485631;
-	Tue, 14 Apr 2020 13:09:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A5D9A86429;
+	Tue, 14 Apr 2020 13:12:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eIJfUe4ZQyiu; Tue, 14 Apr 2020 13:09:24 +0000 (UTC)
+	with ESMTP id BpPt5QmXIJvs; Tue, 14 Apr 2020 13:12:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7910F842AC;
-	Tue, 14 Apr 2020 13:09:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EB3D086356;
+	Tue, 14 Apr 2020 13:12:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9FBB31BF3BA
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 13:09:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 341E91BF3BA
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 13:12:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 13D09203A5
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 13:09:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 308902050B
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 13:12:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kln2HWDCHa90 for <devel@linuxdriverproject.org>;
- Tue, 14 Apr 2020 13:09:06 +0000 (UTC)
+ with ESMTP id fP7uiQDtD5Np for <devel@linuxdriverproject.org>;
+ Tue, 14 Apr 2020 13:12:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by silver.osuosl.org (Postfix) with ESMTPS id 280D2203A4
- for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 13:09:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586869744;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hBYiVbPBfUS+AcwD+sXBpDKSbw0tQLOGN9sYzZKYAmI=;
- b=E5pMf7teSFCC9JBnhS8f1BEJGtHVCJl+K0eYRvlRC8I2leFPfJPujGr6n8UoPKVEP628Yj
- LeoRRdC1wPdu+ZSHIq2mUq+0MwCV0R9WCfoudeU0Y8EYnCoJiUMMwG0u1LBcXji8r7CCH4
- JNVTKqUyJxPJZUS3WO2yloZbdDsuhi8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-106-PA7uLtZsM327ACx1G3T_7g-1; Tue, 14 Apr 2020 09:07:49 -0400
-X-MC-Unique: PA7uLtZsM327ACx1G3T_7g-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 96CEA8048E4;
- Tue, 14 Apr 2020 13:07:05 +0000 (UTC)
-Received: from warthog.procyon.org.uk (ovpn-113-129.rdu2.redhat.com
- [10.10.113.129])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5AB5418A8E;
- Tue, 14 Apr 2020 13:06:57 +0000 (UTC)
-Organization: Red Hat UK Ltd. Registered Address: Red Hat UK Ltd, Amberley
- Place, 107-111 Peascod Street, Windsor, Berkshire, SI4 1TE, United
- Kingdom.
- Registered in England and Wales under Company Registration No. 3798903
-From: David Howells <dhowells@redhat.com>
-In-Reply-To: <20200413211550.8307-2-longman@redhat.com>
-References: <20200413211550.8307-2-longman@redhat.com>
- <20200413211550.8307-1-longman@redhat.com>
-To: Waiman Long <longman@redhat.com>, herbert@gondor.apana.org.au
-Subject: Re: [PATCH 1/2] mm, treewide: Rename kzfree() to kfree_sensitive()
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id 58706204E9
+ for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 13:12:25 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03ED9Xal011159;
+ Tue, 14 Apr 2020 13:12:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=e7ZC9eF80V3HjAabjgEI+dUq9TU4s7TJqhKZXh3sEoM=;
+ b=MIWAs/yQSRGjq+QFCOzkTAoi+OY1McNWJPC2BkXuO9D+U4aFugujrFVVm+1qHpsHfgrB
+ ZS6ekk3X06ZYjCpeIpaFCPYfiJkcP47RJSoO/shrFFBHbnC2ek9F2ZxK1S0k5eDnXYfx
+ MTE97611O8W9Ie79lO9cXZxskvrBEyCz0qlpMeNsQoDbRONeeSSrx/LSNDU0I0v1mVGg
+ ptWTwjjIPOxjcuZCsVSKf5VlQOnndGexYFpWn/9EA4SDWBk6aQcUejTrvr1c4Dm2ptLB
+ hf1o4GTq/QOLUN1EDEHrAszhyhBZnDoLGOrL8hdyB+nuF0LxZa0lhcFCn6RoHsSGSBtS CA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 30b6hpmgu5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 14 Apr 2020 13:12:23 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03ED7FlX017508;
+ Tue, 14 Apr 2020 13:12:22 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 30ctaa58tx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 14 Apr 2020 13:12:22 +0000
+Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 03EDCLUl011000;
+ Tue, 14 Apr 2020 13:12:21 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 14 Apr 2020 06:12:20 -0700
+Date: Tue, 14 Apr 2020 16:12:14 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Oscar Carter <oscar.carter@gmx.com>
+Subject: Re: [RFC] staging: vt6656: Add formula to the vnt_rf_addpower function
+Message-ID: <20200414131214.GI1163@kadam>
+References: <20200413140209.4520-1-oscar.carter@gmx.com>
 MIME-Version: 1.0
-Content-ID: <3807473.1586869616.1@warthog.procyon.org.uk>
-Date: Tue, 14 Apr 2020 14:06:56 +0100
-Message-ID: <3807474.1586869616@warthog.procyon.org.uk>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Disposition: inline
+In-Reply-To: <20200413140209.4520-1-oscar.carter@gmx.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9590
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ suspectscore=0
+ spamscore=0 adultscore=0 mlxscore=0 phishscore=0 mlxlogscore=999
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004140108
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9590
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ adultscore=0
+ mlxlogscore=999 clxscore=1015 mlxscore=0 phishscore=0 suspectscore=0
+ lowpriorityscore=0 bulkscore=0 malwarescore=0 priorityscore=1501
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004140108
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,70 +97,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-btrfs@vger.kernel.org,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- virtualization@lists.linux-foundation.org, David Howells <dhowells@redhat.com>,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
- kasan-dev@googlegroups.com, samba-technical@lists.samba.org,
- linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
- James Morris <jmorris@namei.org>, Matthew Wilcox <willy@infradead.org>,
- cocci@systeme.lip6.fr, linux-wpan@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, David Rientjes <rientjes@google.com>,
- linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org, linux-nfs@vger.kernel.org,
- linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-integrity@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-cifs@vger.kernel.org,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
- netdev@vger.kernel.org, Joe Perches <joe@perches.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org
+Cc: Malcolm Priestley <tvboxspy@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ Forest Bond <forest@alittletooquiet.net>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Waiman Long <longman@redhat.com> wrote:
+On Mon, Apr 13, 2020 at 04:02:09PM +0200, Oscar Carter wrote:
+> diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+> index 4f9aba0f21b0..3b200d7290a5 100644
+> --- a/drivers/staging/vt6656/rf.c
+> +++ b/drivers/staging/vt6656/rf.c
+> @@ -575,28 +575,14 @@ int vnt_rf_setpower(struct vnt_private *priv, u32 rate, u32 channel)
+> 
+>  static u8 vnt_rf_addpower(struct vnt_private *priv)
+>  {
+> +	s32 base;
 
-> As said by Linus:
-> 
->   A symmetric naming is only helpful if it implies symmetries in use.
->   Otherwise it's actively misleading.
-> 
->   In "kzalloc()", the z is meaningful and an important part of what the
->   caller wants.
-> 
->   In "kzfree()", the z is actively detrimental, because maybe in the
->   future we really _might_ want to use that "memfill(0xdeadbeef)" or
->   something. The "zero" part of the interface isn't even _relevant_.
-> 
-> The main reason that kzfree() exists is to clear sensitive information
-> that should not be leaked to other future users of the same memory
-> objects.
-> 
-> Rename kzfree() to kfree_sensitive() to follow the example of the
-> recently added kvfree_sensitive() and make the intention of the API
-> more explicit. In addition, memzero_explicit() is used to clear the
-> memory to make sure that it won't get optimized away by the compiler.
-> 
-> The renaming is done by using the command sequence:
-> 
->   git grep -w --name-only kzfree |\
->   xargs sed -i 's/\bkzfree\b/kfree_sensitive/'
-> 
-> followed by some editing of the kfree_sensitive() kerneldoc and the
-> use of memzero_explicit() instead of memset().
-> 
-> Suggested-by: Joe Perches <joe@perches.com>
-> Signed-off-by: Waiman Long <longman@redhat.com>
+Just use "int".  s32 is for when signed 32 bit is specified in the
+hardware.  I realize that it's done in this file, but if all your
+friends jumped off a bridge doesn't mean you should drink their kool-aid.
 
-Since this changes a lot of crypto stuff, does it make sense for it to go via
-the crypto tree?
+>  	s32 rssi = -priv->current_rssi;
+> 
+>  	if (!rssi)
+>  		return 7;
+> 
+> -	if (priv->rf_type == RF_VT3226D0) {
+> -		if (rssi < -70)
+> -			return 9;
+> -		else if (rssi < -65)
+> -			return 7;
+> -		else if (rssi < -60)
+> -			return 5;
+> -	} else {
+> -		if (rssi < -80)
+> -			return 9;
+> -		else if (rssi < -75)
+> -			return 7;
+> -		else if (rssi < -70)
+> -			return 5;
+> -	}
+> -
+> -	return 0;
+> +	base = (priv->rf_type == RF_VT3226D0) ? -60 : -70;
+> +	return (rssi < base--) ? ((rssi - base) / -5) * 2 + 5 : 0;
+                       ^^^^^^
+I quite hate this postop.  It would have been cleaner to write it like:
 
-Acked-by: David Howells <dhowells@redhat.com>
+	return (rssi < base) ? ((rssi - (base - 1)) / -5) * 2 + 5 : 0
+
+I'm sorry, I'm not clever enough to figure out the potential values of
+"rssi".  How did you work out this formula?  It feels like it came from
+a standard or something?  Do we not have a function already which
+implements the standard?
+
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
