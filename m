@@ -1,81 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16BFD1A7016
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 02:30:08 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A04DC1A72E8
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Apr 2020 07:18:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A9DE384C09;
-	Tue, 14 Apr 2020 00:30:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B38C220508;
+	Tue, 14 Apr 2020 05:18:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DNXwEisF+kDu; Tue, 14 Apr 2020 00:30:06 +0000 (UTC)
+	with ESMTP id CKs2hBxDpjYD; Tue, 14 Apr 2020 05:18:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3A84186773;
-	Tue, 14 Apr 2020 00:30:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8237F20403;
+	Tue, 14 Apr 2020 05:18:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 94F781BF3A9
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 00:30:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7D53D1BF331
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 05:18:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8BDB6204D8
- for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 00:30:02 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6EC7620403
+ for <devel@linuxdriverproject.org>; Tue, 14 Apr 2020 05:18:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cTereKPu7LFg for <devel@linuxdriverproject.org>;
- Tue, 14 Apr 2020 00:30:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 849451FEBF
- for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 00:30:00 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id v23so5313098pfm.1
- for <devel@driverdev.osuosl.org>; Mon, 13 Apr 2020 17:30:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=GtP40NBc6K+wY7TevCqJVJVyGGxw6eyhk3x6njvRZbI=;
- b=PMRE9MFBjRNguCLZJxvQ0tC6cbj5HN/L0mNJHOjg1H5naWvyPaji8Uw6CjXqOQ2azW
- MhWs/LuNrHlvICFisvb7Cy6SJ3VKQrmiHJlokad5hGoOXcGXzDY3vorrrgpyAZrAVUDE
- dUN76VdbMCLvs9G10TRyVoj/R2uKEUPKhrkRhwWPh9Qq6Oj8zqhrDAXwnWHye+K8R3ym
- lDZQumSHVx6+RupP9U0o1EyjztcXPr7zTXefIIyzd+nYkxQBJg3bKkumuWN4k6N/hrZC
- eN210smaNX58gX6QVglgalvDGfi5xzWfnOSt7/cWPG1d3xQeaexIo7gZ03EO3NRYAH/8
- 2wUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=GtP40NBc6K+wY7TevCqJVJVyGGxw6eyhk3x6njvRZbI=;
- b=UwVQe/qjOFj1udBAB6AIJ42kJw2EPJTp+OwkFeNsSLQvuFxeDXtCGiTzJHwPoff5pc
- Rt7v3tYc6oNaK1jdo1VZhxsZZx6pSocbDgTQ/jhUGh0WWgaAVw9KjFSCRP5Rq569vPob
- 7ZswJT4gBQEeWQagPFFuV2P8na8IcjQxVdFoqTeIdEFTBU8lKwPk9cxgDroVGuGpfdWr
- 5uIOayTWh+rpp27G8HNKz33nmC5w25KBJaYU+0RemDWEaNwBEJUqS7iBt+g54DbM6wpi
- Rj2QpUsEwfH82OqGGb2uiHElI9AMceK+RjwlmWvjqgtD0VcQ0ecgcuPw1q6dNOF5lRwx
- ZmkA==
-X-Gm-Message-State: AGi0PuY/3dVK+/28zMJYLUwobShS7GYv3BMHf2fmClq4YoHF1jGqu86o
- Iw9Sqi/EzzZOmGQu/HPraWiwbg==
-X-Google-Smtp-Source: APiQypL5W5g7xmsU3GZXO1UecYYPwVLK1dPD412glciRM3pdZ8NSkRu/LjnNHn8Pg6Fxg4L/cgCpIw==
-X-Received: by 2002:a62:dd48:: with SMTP id w69mr10144721pff.86.1586824199909; 
- Mon, 13 Apr 2020 17:29:59 -0700 (PDT)
-Received: from [2620:15c:17:3:3a5:23a7:5e32:4598]
- ([2620:15c:17:3:3a5:23a7:5e32:4598])
- by smtp.gmail.com with ESMTPSA id g11sm10055136pjs.17.2020.04.13.17.29.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Apr 2020 17:29:59 -0700 (PDT)
-Date: Mon, 13 Apr 2020 17:29:58 -0700 (PDT)
-From: David Rientjes <rientjes@google.com>
-X-X-Sender: rientjes@chino.kir.corp.google.com
-To: Waiman Long <longman@redhat.com>
-Subject: Re: [PATCH 1/2] mm, treewide: Rename kzfree() to kfree_sensitive()
-In-Reply-To: <20200413211550.8307-2-longman@redhat.com>
-Message-ID: <alpine.DEB.2.21.2004131729410.260270@chino.kir.corp.google.com>
-References: <20200413211550.8307-1-longman@redhat.com>
- <20200413211550.8307-2-longman@redhat.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ with ESMTP id 1zeNJjROjLGY for <devel@linuxdriverproject.org>;
+ Tue, 14 Apr 2020 05:18:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail2.rbpf.bs (rbpf.bs [24.51.93.195])
+ by silver.osuosl.org (Postfix) with ESMTP id 7357D203CC
+ for <devel@driverdev.osuosl.org>; Tue, 14 Apr 2020 05:18:29 +0000 (UTC)
+Received: from unknown (HELO User) ([180.214.239.142])
+ by mail2.rbpf.bs with SMTP; 14 Apr 2020 01:17:11 -0400
+From: "Mr. Samuel  Okojere"<samokojere@sc.com>
+Subject: Hello    
+Date: Mon, 13 Apr 2020 22:17:28 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200414051830.6EC7620403@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,67 +54,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-btrfs@vger.kernel.org,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- virtualization@lists.linux-foundation.org, David Howells <dhowells@redhat.com>,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
- kasan-dev@googlegroups.com, samba-technical@lists.samba.org,
- linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
- James Morris <jmorris@namei.org>, Matthew Wilcox <willy@infradead.org>,
- cocci@systeme.lip6.fr, Linus Torvalds <torvalds@linux-foundation.org>,
- intel-wired-lan@lists.osuosl.org, linux-wpan@vger.kernel.org,
- linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org, linux-nfs@vger.kernel.org,
- linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-integrity@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-cifs@vger.kernel.org,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
- linux-ppp@vger.kernel.org, Joe Perches <joe@perches.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- wireguard@lists.zx2c4.com
+Reply-To: ecopays@vipmail.hu
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 13 Apr 2020, Waiman Long wrote:
+Dear Sir/Madam,
 
-> As said by Linus:
-> 
->   A symmetric naming is only helpful if it implies symmetries in use.
->   Otherwise it's actively misleading.
-> 
->   In "kzalloc()", the z is meaningful and an important part of what the
->   caller wants.
-> 
->   In "kzfree()", the z is actively detrimental, because maybe in the
->   future we really _might_ want to use that "memfill(0xdeadbeef)" or
->   something. The "zero" part of the interface isn't even _relevant_.
-> 
-> The main reason that kzfree() exists is to clear sensitive information
-> that should not be leaked to other future users of the same memory
-> objects.
-> 
-> Rename kzfree() to kfree_sensitive() to follow the example of the
-> recently added kvfree_sensitive() and make the intention of the API
-> more explicit. In addition, memzero_explicit() is used to clear the
-> memory to make sure that it won't get optimized away by the compiler.
-> 
-> The renaming is done by using the command sequence:
-> 
->   git grep -w --name-only kzfree |\
->   xargs sed -i 's/\bkzfree\b/kfree_sensitive/'
-> 
-> followed by some editing of the kfree_sensitive() kerneldoc and the
-> use of memzero_explicit() instead of memset().
-> 
-> Suggested-by: Joe Perches <joe@perches.com>
-> Signed-off-by: Waiman Long <longman@redhat.com>
+We are consultants to several government within the Ecowas sub-region and have been mandated to assist people with funds ,contract payments inheritance and other forms of payment within Africa which has not been paid for several years.
 
-Acked-by: David Rientjes <rientjes@google.com>
+There is good news and you don't have to give up because we will assist you file for the appeal and release of such funds and make such you are paid within the shortest possible time at no extra cost to you.
+
+Do reply for more details.
+
+Best Regards,
+
+Samuel
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
