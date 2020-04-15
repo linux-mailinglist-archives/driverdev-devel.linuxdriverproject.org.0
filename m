@@ -2,112 +2,107 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3F3E1A9923
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Apr 2020 11:41:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 49F931AAD01
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Apr 2020 18:12:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B9B8F87EDB;
-	Wed, 15 Apr 2020 09:41:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C9AFA87820;
+	Wed, 15 Apr 2020 16:12:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TY+IbJ+H1qDg; Wed, 15 Apr 2020 09:41:04 +0000 (UTC)
+	with ESMTP id tIEoSvd+Ia7r; Wed, 15 Apr 2020 16:12:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2AA4D87DFF;
-	Wed, 15 Apr 2020 09:41:04 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id DF546857A2;
+	Wed, 15 Apr 2020 16:12:14 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 605DE1BF95A
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 Apr 2020 09:41:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6C4491BF326
+ for <devel@linuxdriverproject.org>; Wed, 15 Apr 2020 16:12:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 595858508E
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 Apr 2020 09:41:01 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 68CA285DCA
+ for <devel@linuxdriverproject.org>; Wed, 15 Apr 2020 16:12:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6piWGWQp43Mg
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 Apr 2020 09:40:58 +0000 (UTC)
+ with ESMTP id wdr57DPWF0Jh for <devel@linuxdriverproject.org>;
+ Wed, 15 Apr 2020 16:12:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2066.outbound.protection.outlook.com [40.107.243.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B0B13850EA
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 15 Apr 2020 09:40:58 +0000 (UTC)
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2075.outbound.protection.outlook.com [40.107.220.75])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 48F2084A33
+ for <devel@driverdev.osuosl.org>; Wed, 15 Apr 2020 16:12:11 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jNzZtv/Ka3UAAFGSNamaPHazGZNkZ7UOGW+gdKcRlbJoaDXEmv4lEAgoxochkbJlVKyk01N2/KenJS3ConarD/E9HSd1MQgm2n+y1+a6abCvi9zgm+mlowUjuJ5gcqBE5mIk54qR8/PgIbnD/ttSgTrmXotEQpYOBj4Wu8Z7cIWW9qCO5YdnkIcZYLZrwrCZVd8Ep9zNkiM5+wd0nY50pxxdGDYXfDajn901y2jdtgSm4YTNXDeE3i5hiwD6tlyjszxIqZsNB2zais6QWIZ5mc2i0zXU9FlSzH1Hr3eN7k8YtipkXQ6+H2smA9VWivsE/e3NHryRoJgFhGt1680RFA==
+ b=dKHAQ+5+goXh1acgHNCj8H5ee37N9gIAqHwYI5au3uRQqG8CaIYokYZP1hrpA9Hm6f+MxZ0uOri2YEnyfPLFDVYtEBf+6GNVFI6zf6BR/tw/ZXGlWGiqTFrxTrp0KEXTmlgqBZoL2LiD87+3fEdn2hW13YIZk85YiJSQR+raRXnFCGeRY2EQbJwy0vBIqna02N+DPPssDDdcbGbGMv0RQRYkQnQry4viN1m1dV+mKCy5yP2DRkjjAiEVDdNlHze5aEXqOy06uynFqIn0Ih2R5aX/QvXUibCvMNIVtCgHNmGkwCqJ4JQDJpzqz10p8Grd+1YRPwmm/vrXBJHtKX0SoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uzPM2bFjichi8cmEwIsh3rEQyZSJG5LS9i1D9r5dlLE=;
- b=QkXkLTGQOjmuL3jaVWYF1ZXoaWZTu5wWvpWdLMKqo02jB3YJQEYCr3SAy2vMXDe2mdgOMp+WaxG7Ez/dspTrUl4JYmO978Td1SiEkYhTuqbYL64pneQWSvr6CLzMaTBfjdOY251lBmFvf5H35WojluV3j7uZVhHez0rWykX2W/EdPKknAe4oTRgvnCgp4PZFUjqTWE9bLh7N4qRVo1gr5/IhxelFT8bgiTrfIbM8dl/rFxmGuTH5xGhYG+h9vbpNEUeggfqkM/uahMXOzJ+CTDg3g5xeRZRfIUiEMdvJDt0Fv43P7olOdDUIA9xB2dDqlMm6JzXKx09nwoKeNn6sKg==
+ bh=hNKsHEJP/VKZtmDt4JTSPFNDm15L7SxRxvkDxasxFdc=;
+ b=IRzfmYfAmXWbKndo29ApRikWMGkIRZ4FuXUVHoCnC9WAuVvQxhDCCIt4I2D86VabWxsv/Dppw/2QgjACBPwDpGvjjBc9D2WrjNL3ms3XgFzvrPrONyrQ3OM6hFeLsKOoVJZHDQMZJA8ZcPDfqmT1r+FOLESR7GLdLGAUGgFUf8vwcDSgQhSDQnCNTI/0e8EWxjG0vrc65jc6Ps31vkIhuMhBwXKXZZzSNLO/fuBThA8MeAiMpo2Co0dxu4uOuzItfqUhchkmPl0m4lkD92GByZq/xU0ecBypy3rnparBmDJw7G3/ef0ye2rjSZu/djAnCPH7/JwMc7hdD4dxUugNnQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
  dkim=pass header.d=silabs.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uzPM2bFjichi8cmEwIsh3rEQyZSJG5LS9i1D9r5dlLE=;
- b=fnkdFJ3v+1ia9PrSID7Lyg3Ht5gOZbYO7B75M/EWW1yMMH177EaAKpBfUfpjYQLU2stYAY3Ezh0LDp90wfGWzgwQi34+sUoxH3oq5oigoelcFsglOXZfOXxMt6E2UqQNf5YvwDmgSp+96haptR/2kigOpjD7kOH9ALHt2bFi8LI=
+ bh=hNKsHEJP/VKZtmDt4JTSPFNDm15L7SxRxvkDxasxFdc=;
+ b=S5zFdA8VZxGG/HPjyz4RT5o7XMuJEzVZ6xjbYdtVtIGlz5b4KnPSLmwGfkn2QFOZlxTtHgqcnG9qWURhSGZf3TP4U6AVbTkYLCJFnU/Zb5wLWiNyU7ZyL4GmiRMWuBoopt3G8IkJ5YQv1wDCWFkchRYJoZ9DmSMcvv9iNN68074=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=Jerome.Pouiller@silabs.com; 
 Received: from MWHPR11MB1775.namprd11.prod.outlook.com (2603:10b6:300:10e::14)
- by MWHPR11MB1503.namprd11.prod.outlook.com (2603:10b6:301:f::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2900.28; Wed, 15 Apr
- 2020 09:40:55 +0000
+ by MWHPR11MB1408.namprd11.prod.outlook.com (2603:10b6:300:24::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.25; Wed, 15 Apr
+ 2020 16:12:09 +0000
 Received: from MWHPR11MB1775.namprd11.prod.outlook.com
  ([fe80::81d5:b62b:3770:ffbe]) by MWHPR11MB1775.namprd11.prod.outlook.com
  ([fe80::81d5:b62b:3770:ffbe%10]) with mapi id 15.20.2921.024; Wed, 15 Apr
- 2020 09:40:55 +0000
-From: =?iso-8859-1?Q?J=E9r=F4me_Pouiller?= <Jerome.Pouiller@silabs.com>
-To: "driverdev-devel@linuxdriverproject.org"
- <driverdev-devel@linuxdriverproject.org>
-Subject: Re: [staging:staging-next 127/127] drivers/staging/wfx/bh.c:88:32:
- sparse: warning: restricted __le16 degrades to integer
-Thread-Topic: [staging:staging-next 127/127] drivers/staging/wfx/bh.c:88:32:
- sparse: warning: restricted __le16 degrades to integer
-Thread-Index: AQHWEkLzL5XihvG5T0WoWxFgh1TM46h4ZhmAgAGJSYA=
-Date: Wed, 15 Apr 2020 09:40:55 +0000
-Message-ID: <2038274.3UdEj8IezB@pc-42>
-References: <202004141712.L6CqySje%lkp@intel.com>
- <20200414101315.GB37302@kroah.com>
-In-Reply-To: <20200414101315.GB37302@kroah.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-x-originating-ip: [82.67.86.106]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 81d538c9-6c4e-4053-0d2e-08d7e1211880
-x-ms-traffictypediagnostic: MWHPR11MB1503:
-x-microsoft-antispam-prvs: <MWHPR11MB15032B1F1CA389E1F7EF432293DB0@MWHPR11MB1503.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:635;
-x-forefront-prvs: 0374433C81
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ 2020 16:12:09 +0000
+From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+To: devel@driverdev.osuosl.org,
+	linux-wireless@vger.kernel.org
+Subject: [PATCH 00/20] staging: wfx: simplify filtering
+Date: Wed, 15 Apr 2020 18:11:27 +0200
+Message-Id: <20200415161147.69738-1-Jerome.Pouiller@silabs.com>
+X-Mailer: git-send-email 2.25.1
+X-ClientProxiedBy: PR1PR01CA0027.eurprd01.prod.exchangelabs.com
+ (2603:10a6:102::40) To MWHPR11MB1775.namprd11.prod.outlook.com
+ (2603:10b6:300:10e::14)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-42.home (2a01:e35:2435:66a0:544b:f17b:7ae8:fb7) by
+ PR1PR01CA0027.eurprd01.prod.exchangelabs.com (2603:10a6:102::40) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.25 via Frontend
+ Transport; Wed, 15 Apr 2020 16:12:05 +0000
+X-Mailer: git-send-email 2.25.1
+X-Originating-IP: [2a01:e35:2435:66a0:544b:f17b:7ae8:fb7]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 54e93146-d3b8-4f33-b458-08d7e157bf9b
+X-MS-TrafficTypeDiagnostic: MWHPR11MB1408:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <MWHPR11MB1408C32B8A4381D75289D41593DB0@MWHPR11MB1408.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4303;
+X-Forefront-PRVS: 0374433C81
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MWHPR11MB1775.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(10009020)(7916004)(136003)(396003)(346002)(39850400004)(376002)(366004)(91956017)(54906003)(64756008)(33716001)(966005)(66946007)(26005)(71200400001)(9686003)(186003)(66476007)(66556008)(66446008)(66574012)(76116006)(6506007)(6916009)(8936002)(2906002)(8676002)(6486002)(81156014)(4326008)(86362001)(316002)(5660300002)(6512007)(478600001)(39026012);
+ SFS:(10009020)(366004)(8886007)(8936002)(5660300002)(2906002)(6666004)(86362001)(8676002)(81156014)(66574012)(1076003)(4326008)(52116002)(54906003)(107886003)(186003)(16526019)(66556008)(66476007)(36756003)(2616005)(6512007)(6486002)(6506007)(66946007)(498600001);
  DIR:OUT; SFP:1101; 
-received-spf: None (protection.outlook.com: silabs.com does not designate
+Received-SPF: None (protection.outlook.com: silabs.com does not designate
  permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 0/4cCoP+SvgD8fCZutdJJYEsh3U5zNgb0HFG4k6LyJf0puGQcVNfu2xZPexfMp4Y0gCbpSZujeoJpugWD+FIgI6OBkzkSf8oLAptuFknzcFrfChceFZFG0yEsIrYtvBm+ss8OpVzPjYmCPixqIlmm3NdCODLEF97bQ7/S6vWB0/ZppGYI+bVHUSmuq9GmUf2zAiLWo9H7pgsulww9cMclMLQ7aqk8y6U9ax08jl/jgq5hYW8IcqsVgNYyCCUI25G5qhRwik9Zg3JL0dAubP+S7ZiEcWtW3PRacWL79jg3ybke9eB/4801wAbmpDna8cML1FtdKgjhmdRnIr1BYBNfEBYfIiymotKViM2KXK1pNsuGxOofVEn42mjv4qtAF2K/2zbg8qVlQLIpiJXnm+fYuSdKcoOGV6EkKsWVwn27XJOFEhCwB8+UvZjjQ1bTzbXUCy1Gyuqs8nxp4GetJfVs9FTNynyvvXuIPtcH3e8q7WzlPZVKdJLdRNviSELF2QJ/BlX9jJ4eB3/9frcDPhsnIr4LQS+ZkMCNE28shRVi4WfmHXuK9vJcuZEm3yTkrk9ri+zbtbzA10ZBNUy1YHyAQ==
-x-ms-exchange-antispam-messagedata: Pq5QAzisB23GW28VQpbbKjNshBAt6JivZ1x3Zv5UpP1jbCxHyo7UAtCDwkQji6OPp56jIAl50oitB74orcWbcIfclFM5/9p9BuZW4TjHIVEo6TLQuBY5EyRGUq33Y2Yo1HXMQ2khhLB0+2qkhxnGcw==
-x-ms-exchange-transport-forked: True
-Content-ID: <B6A457F871999343B9698C3FCC7F1F4D@namprd11.prod.outlook.com>
-MIME-Version: 1.0
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: /PxQhcvCnwdXvcP/Oy5oSwOWizRaVKrF1OYXaACM0cDAbwRvGmp9dUJLZL8cgL8lXS6Ln2bS9IiZl/ea6yNHXv8+NhS1pSxutJWLg0oecJR8kG3L8tN6hvDTtIMw53ntSEw+bV25m6NPInPaL/GLaa69cgfHI4fTcypuZslF4UehujSajFcVZxXyetTuBUoH3g0aoUUmI499HSjvPEzW3o1Eg1/gf3qbNrOh1ZjxiRQBMScu3MZc5veXGjnWXU2jYGfQ4K35f/+9aN5n5SNzZTtk3EKlIKKJ1jZVR/WegsX8c6X2aDEa3BqddUj+xOS0XUhvei7x7xiRxpGAnbyZiImNh+SNWFpltA32eKydIfW0GreqOOZem0wJacH9JceMx3CuljYYSjqIRqv3vZtLLJy6NuginRwUGi/vx3WalKllGMGoQXRZUyzAOO/pJJmM
+X-MS-Exchange-AntiSpam-MessageData: KKZLvU+69XnT6g1WsGZ0bxGoFHg4lCEaRKLtb713APgUuBON29Iv7wp8EObgvx+TW/HmHXxB3vCeT8bFAmf6wBQkYi49jjBg7E/6n2vsh4rhE3gUSHq5AK5r9nJBfrIcbkN6Vcr4MT9AA0TCCtu4YOA1GbVv7MaWm5iLIIr2pzVCOURX+rHVNG4FhUr+/k8lJhQSm22KckzyO58JRQ4fww==
 X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 81d538c9-6c4e-4053-0d2e-08d7e1211880
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Apr 2020 09:40:55.6050 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: TSK97dmNPCekV9MsJgeMFhIXcnRf7ttNLMtgrxRHMyjo8y2FBtQBVGCmPO1rzeGQMLpFGE/JEQICe/kbq2LgRg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1503
+X-MS-Exchange-CrossTenant-Network-Message-Id: 54e93146-d3b8-4f33-b458-08d7e157bf9b
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Apr 2020 16:12:09.3619 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: E+uqeTPMkHLkOpWgJs9gGrBXoV1qkU7RDZUZsuMjjGVOE08MvknFC58QmFlahbbSElzwqZ4diiwMIXeszT5ajg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1408
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,54 +115,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Malcolm Priestley <tvboxspy@gmail.com>,
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "kbuild-all@lists.01.org" <kbuild-all@lists.01.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tuesday 14 April 2020 12:13:15 CEST Greg Kroah-Hartman wrote:
-> On Tue, Apr 14, 2020 at 05:55:15PM +0800, kbuild test robot wrote:
-> > tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.=
-git staging-next
-> > head:   ce920326663b3df22c94ade99a8b234baa6ccaa5
-> > commit: ce920326663b3df22c94ade99a8b234baa6ccaa5 [127/127] staging: vt6=
-656: formulate rspinf values into tables
-> > reproduce:
-> >         # apt-get install sparse
-> >         # sparse version:
-> >         git checkout ce920326663b3df22c94ade99a8b234baa6ccaa5
-> >         make ARCH=3Dx86_64 allmodconfig
-> >         make C=3D1 CF=3D'-fdiagnostic-prefix -D__CHECK_ENDIAN__'
-> >
-> > If you fix the issue, kindly add following tag as appropriate
-> > Reported-by: kbuild test robot <lkp@intel.com>
-> =
-
-> I don't think that the warning you point out here, is caused by the
-> patch you say.  Please fix up on the 0-day side...
-
-
-The warning is probably caused by:
-
-    staging: wfx: fix endianness of hif API
-
-    The chip expects little endian in all structs it sends/receives. This
-    patch fixes the hif API to reflect this fact. Sparse should now report
-    meaningful errors.
-
-And indeed, Sparse now reports ton of errors :). I am currently working
-on these warnings. I hope to provide a patch soon.
-
-
--- =
-
-J=E9r=F4me Pouiller
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKVGhl
+IGZyYW1lIGZpbHRlcmluZyBpcyBtb3JlIGNvbXBsZXggdGhhbiBuZWNlc3NhcnkuIFRoaXMgc2Vy
+aWVzIHNpbXBsaWZ5CnRoZSAgd2hvbGUgcHJvY2VzcyBhbmQgaG9wZWZ1bGx5IGZpeGVzIHNvbWUg
+Y29ybmVyIGNhc2VzLgoKSsOpcsO0bWUgUG91aWxsZXIgKDIwKToKICBzdGFnaW5nOiB3Zng6IHVw
+ZGF0ZSBmaWx0ZXJpbmcgZXZlbiBpZiBub3QgY29ubmVjdGVkCiAgc3RhZ2luZzogd2Z4OiBzaW1w
+bGlmeSB3ZnhfdXBkYXRlX2ZpbHRlcmluZygpCiAgc3RhZ2luZzogd2Z4OiByZXdvcmsgd2Z4X2Nv
+bmZpZ3VyZV9maWx0ZXIoKQogIHN0YWdpbmc6IHdmeDogc2ltcGxpZnkgaGFuZGxpbmcgb2YgYmVh
+Y29uIGZpbHRlciBkdXJpbmcgam9pbiBwcm9jZXNzCiAgc3RhZ2luZzogd2Z4OiB3ZnhfdXBkYXRl
+X2ZpbHRlcmluZ193b3JrKCkgaXMgbm8gbW9yZSB1c2VkCiAgc3RhZ2luZzogd2Z4OiBkbyBub3Qg
+d2FpdCBmb3IgYSBkdGltIGJlZm9yZSBhc3NvY2lhdGUKICBzdGFnaW5nOiB3Zng6IGRpc2FibGlu
+ZyBiZWFjb24gZmlsdGVyaW5nIGFmdGVyIGhpZl9yZXNldCgpIGlzIHVzZWxlc3MKICBzdGFnaW5n
+OiB3Zng6IGRvIG5vdCB1c2UgYnVpbHQtaW4gQVVUT19FUlAgZmVhdHVyZQogIHN0YWdpbmc6IHdm
+eDogc3RvcCBjaGFuZ2luZyBmaWx0ZXJpbmcgcnVsZSBpbiB3ZnhfaHdfc2NhbigpCiAgc3RhZ2lu
+Zzogd2Z4OiBlbnN1cmUgdGhhdCBwcm9iZSByZXF1ZXN0cyBhcmUgZmlsdGVyZWQgd2hlbiBBUAog
+IHN0YWdpbmc6IHdmeDogZHJvcCB1c2VsZXNzIHdmeF9md2RfcHJvYmVfcmVxKCkKICBzdGFnaW5n
+OiB3Zng6IGFsaWduIHNlbWFudGljIG9mIGJlYWNvbiBmaWx0ZXIgd2l0aCBvdGhlciBmaWx0ZXJz
+CiAgc3RhZ2luZzogd2Z4OiBhbGlnbiBzZW1hbnRpYyBvZiBwcm9iZSByZXF1ZXN0IGZpbHRlciB3
+aXRoIG90aGVyCiAgICBmaWx0ZXJzCiAgc3RhZ2luZzogd2Z4OiBkcm9wIHN0cnVjdCB3ZnhfZ3Jw
+X2FkZHJfdGFibGUKICBzdGFnaW5nOiB3Zng6IGRyb3AgdXNlbGVzcyBjYWxsIHRvIGhpZl9zZXRf
+cnhfZmlsdGVyKCkKICBzdGFnaW5nOiB3Zng6IGRyb3AgdXNlbGVzcyBhdHRyaWJ1dGVzICdmaWx0
+ZXJfcHJicmVxJyBhbmQKICAgICdmaWx0ZXJfYnNzaWQnCiAgc3RhZ2luZzogd2Z4OiBzcGxpdCBv
+dXQgd2Z4X2ZpbHRlcl9iZWFjb24oKQogIHN0YWdpbmc6IHdmeDogZHJvcCB1c2VsZXNzIGZpbHRl
+ciB1cGRhdGUgd2hlbiBzdGFydGluZyBBUAogIHN0YWdpbmc6IHdmeDogZHJvcCB1c2VsZXNzIGF0
+dHJpYnV0ZSAnZmlsdGVyX21jYXN0JwogIHN0YWdpbmc6IHdmeDogdXBkYXRlIFRPRE8KCiBkcml2
+ZXJzL3N0YWdpbmcvd2Z4L1RPRE8gICAgICAgICB8ICA0MCArKystLS0tLQogZHJpdmVycy9zdGFn
+aW5nL3dmeC9kYXRhX3J4LmMgICAgfCAgMTIgLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl90
+eF9taWIuYyB8ICAgNCArLQogZHJpdmVycy9zdGFnaW5nL3dmeC9tYWluLmMgICAgICAgfCAgIDEg
+LQogZHJpdmVycy9zdGFnaW5nL3dmeC9zY2FuLmMgICAgICAgfCAgIDEgLQogZHJpdmVycy9zdGFn
+aW5nL3dmeC9zdGEuYyAgICAgICAgfCAxNzEgKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0t
+LQogZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuaCAgICAgICAgfCAgIDggLS0KIGRyaXZlcnMvc3Rh
+Z2luZy93Zngvd2Z4LmggICAgICAgIHwgICA3ICstCiA4IGZpbGVzIGNoYW5nZWQsIDEwMSBpbnNl
+cnRpb25zKCspLCAxNDMgZGVsZXRpb25zKC0pCgotLSAKMi4yNS4xCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxA
+bGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVj
+dC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
