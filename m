@@ -2,60 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C42F91ABDCB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Apr 2020 12:25:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3EBCE1ABDE0
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Apr 2020 12:29:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CA39D87099;
-	Thu, 16 Apr 2020 10:25:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3766C86B90;
+	Thu, 16 Apr 2020 10:29:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ofmIq0f5XTCo; Thu, 16 Apr 2020 10:25:15 +0000 (UTC)
+	with ESMTP id uzL88cL4AEfv; Thu, 16 Apr 2020 10:29:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 794F386777;
-	Thu, 16 Apr 2020 10:25:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2041D8679A;
+	Thu, 16 Apr 2020 10:29:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E3D6F1BF3F2
- for <devel@linuxdriverproject.org>; Thu, 16 Apr 2020 10:25:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3D8BD1BF3F2
+ for <devel@linuxdriverproject.org>; Thu, 16 Apr 2020 10:29:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E059386581
- for <devel@linuxdriverproject.org>; Thu, 16 Apr 2020 10:25:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3A5D487089
+ for <devel@linuxdriverproject.org>; Thu, 16 Apr 2020 10:29:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ivetsmd7uYVW for <devel@linuxdriverproject.org>;
- Thu, 16 Apr 2020 10:25:12 +0000 (UTC)
+ with ESMTP id xBPKvJdvXwhI for <devel@linuxdriverproject.org>;
+ Thu, 16 Apr 2020 10:29:10 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1FC3286569
- for <devel@driverdev.osuosl.org>; Thu, 16 Apr 2020 10:25:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C4FC9861A2
+ for <devel@driverdev.osuosl.org>; Thu, 16 Apr 2020 10:29:10 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 457552192A;
- Thu, 16 Apr 2020 10:25:11 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 265482192A;
+ Thu, 16 Apr 2020 10:29:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587032711;
- bh=lKwbnEdUTTba3AJVKzmuvKJ2X9FO6D210s3WkJT/zZQ=;
+ s=default; t=1587032950;
+ bh=OssfVZy2Gtzt3T7P0reeqZMpIV9JxrCPL2xhmitTd9E=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=W2uMPyIU+mZIh4oNdYX1OAnVqWzjphWKBN2GBWPvfUx+i38L7tiemQkppi+gxHlZW
- JlF2YNYah1X+HwUMB3yZOQ35X0ro+n9Y78fNlVj/EfyxfoZZsOyB5MYhQSYl8R4ERW
- H/AbdIG7irc1sh8ffKpw66MvAQ+0sft+pvgi+fyg=
-Date: Thu, 16 Apr 2020 12:25:08 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH] staging: android: ion: Skip sync if not mapped
-Message-ID: <20200416102508.GA820251@kroah.com>
-References: <20200414134629.54567-1-orjan.eide@arm.com>
- <20200414141849.55654-1-orjan.eide@arm.com>
- <20200414142810.GA958163@kroah.com>
- <CALAqxLX-SUhHPH6ewt-s9cEMc8DtMTgXem=JruAkLofuJf1syg@mail.gmail.com>
+ b=0azUCD7j9RcZZiV9fqaX3mrmQxuFB5X+uVyL8ub/d/3Jq5rCsvrD/6RQAKxkop2lS
+ j4FUnBxx+wMRujUOfJqV1bhPGXblv7c1o0DoGeu8Fr243fX6VxwL6R/Ign9lW35kSB
+ /FIInuhbq4/sC5RnrupM6QhJ5cvYAf99B4nQjIAE=
+Date: Thu, 16 Apr 2020 12:29:08 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Carlos Guerrero =?iso-8859-1?Q?=C1lvarez?= <carlosteniswarrior@gmail.com>
+Subject: Re: [PATCH] Staging: Comedi: Drivers: das08: Fixed some coding style
+ issues
+Message-ID: <20200416102908.GC820251@kroah.com>
+References: <20200413080555.29267-1-carlosteniswarrior@gmail.com>
+ <20200413125140.GC3077651@kroah.com>
+ <CAB_Ssx7B13Lm-twHuEOzP4EODQ7kqd5jA0mxZS5SnpqxJ65XBg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CALAqxLX-SUhHPH6ewt-s9cEMc8DtMTgXem=JruAkLofuJf1syg@mail.gmail.com>
+In-Reply-To: <CAB_Ssx7B13Lm-twHuEOzP4EODQ7kqd5jA0mxZS5SnpqxJ65XBg@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,118 +68,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>, Laura Abbott <labbott@redhat.com>,
- Todd Kjos <tkjos@android.com>, Lecopzer Chen <lecopzer.chen@mediatek.com>,
- Arnd Bergmann <arnd@arndb.de>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- lkml <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Anders Pedersen <anders.pedersen@arm.com>,
- Joel Fernandes <joel@joelfernandes.org>,
- "Darren Hart \(VMware\)" <dvhart@infradead.org>,
- =?iso-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, nd <nd@arm.com>,
- Martijn Coenen <maco@android.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- Christian Brauner <christian@brauner.io>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Apr 14, 2020 at 09:41:31PM -0700, John Stultz wrote:
-> On Tue, Apr 14, 2020 at 7:28 AM Greg Kroah-Hartman
-> <gregkh@linuxfoundation.org> wrote:
-> >
-> > On Tue, Apr 14, 2020 at 04:18:47PM +0200, =D8rjan Eide wrote:
-> > > Only sync the sg-list of an Ion dma-buf attachment when the attachment
-> > > is actually mapped on the device.
-> > >
-> > > dma-bufs may be synced at any time. It can be reached from user space
-> > > via DMA_BUF_IOCTL_SYNC, so there are no guarantees from callers on wh=
-en
-> > > syncs may be attempted, and dma_buf_end_cpu_access() and
-> > > dma_buf_begin_cpu_access() may not be paired.
-> > >
-> > > Since the sg_list's dma_address isn't set up until the buffer is used
-> > > on the device, and dma_map_sg() is called on it, the dma_address will=
- be
-> > > NULL if sync is attempted on the dma-buf before it's mapped on a devi=
-ce.
-> > >
-> > > Before v5.0 (commit 55897af63091 ("dma-direct: merge swiotlb_dma_ops
-> > > into the dma_direct code")) this was a problem as the dma-api (at lea=
-st
-> > > the swiotlb_dma_ops on arm64) would use the potentially invalid
-> > > dma_address. How that failed depended on how the device handled physi=
-cal
-> > > address 0. If 0 was a valid address to physical ram, that page would =
-get
-> > > flushed a lot, while the actual pages in the buffer would not get syn=
-ced
-> > > correctly. While if 0 is an invalid physical address it may cause a
-> > > fault and trigger a crash.
-> > >
-> > > In v5.0 this was incidentally fixed by commit 55897af63091 ("dma-dire=
-ct:
-> > > merge swiotlb_dma_ops into the dma_direct code"), as this moved the
-> > > dma-api to use the page pointer in the sg_list, and (for Ion buffers =
-at
-> > > least) this will always be valid if the sg_list exists at all.
-> > >
-> > > But, this issue is re-introduced in v5.3 with
-> > > commit 449fa54d6815 ("dma-direct: correct the physical addr in
-> > > dma_direct_sync_sg_for_cpu/device") moves the dma-api back to the old
-> > > behaviour and picks the dma_address that may be invalid.
-> > >
-> > > dma-buf core doesn't ensure that the buffer is mapped on the device, =
-and
-> > > thus have a valid sg_list, before calling the exporter's
-> > > begin_cpu_access.
-> > >
-> > > Signed-off-by: =D8rjan Eide <orjan.eide@arm.com>
-> > > ---
-> > >  drivers/staging/android/ion/ion.c | 12 ++++++++++++
-> > >  1 file changed, 12 insertions(+)
-> > >
-> > > Resubmit without disclaimer, sorry about that.
-> > >
-> > > This seems to be part of a bigger issue where dma-buf exporters assume
-> > > that their dma-buf begin_cpu_access and end_cpu_access callbacks have=
- a
-> > > certain guaranteed behavior, which isn't ensured by dma-buf core.
-> > >
-> > > This patch fixes this in ion only, but it also needs to be fixed for
-> > > other exporters, either handled like this in each exporter, or in
-> > > dma-buf core before calling into the exporters.
-> > >
-> > > diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/andr=
-oid/ion/ion.c
-> > > index 38b51eace4f9..7b752ba0cb6d 100644
-> > > --- a/drivers/staging/android/ion/ion.c
-> > > +++ b/drivers/staging/android/ion/ion.c
-> >
-> > Now that we have the dma-buff stuff in the tree, do we even need the
-> > ion code in the kernel anymore?  Can't we delete it now?
-> >
-> =
+A: http://en.wikipedia.org/wiki/Top_post
+Q: Were do I find info about this thing called top-posting?
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
 
-> I agree that we shouldn't be taking further (non-security/cleanup)
-> patches to the ION code.
-> =
+A: No.
+Q: Should I include quotations after my reply?
 
-> I'd like to give developers a little bit of a transition period (I was
-> thinking a year, but really just one LTS release that has both would
-> do) where they can move their ION heaps over to dmabuf heaps and test
-> both against the same tree.
-> =
+http://daringfireball.net/2007/07/on_top
 
-> But I do think we can mark it as deprecated and let folks know that
-> around the end of the year it will be deleted.
+On Mon, Apr 13, 2020 at 04:55:08PM +0200, Carlos Guerrero =C1lvarez wrote:
+> What do you mean with the From line?
 
-No one ever notices "depreciated" things, they only notice if the code
-is no longer there :)
-
-So I'm all for just deleting it and seeing who even notices...
+Look at the patch you sent, the "From:" line on your email does not have
+your name, only your email address.  Please fix that up when you resend
+any future patches.
 
 thanks,
 
