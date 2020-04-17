@@ -2,52 +2,42 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C55711ABD52
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Apr 2020 11:52:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15D371AD5D3
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Apr 2020 07:56:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 037AC87E62;
-	Thu, 16 Apr 2020 09:52:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4137885B48;
+	Fri, 17 Apr 2020 05:56:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iNYk76fhV-rt; Thu, 16 Apr 2020 09:52:50 +0000 (UTC)
+	with ESMTP id n1xD+wLISR8k; Fri, 17 Apr 2020 05:56:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 638388715D;
-	Thu, 16 Apr 2020 09:52:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9D88E85B3C;
+	Fri, 17 Apr 2020 05:56:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 80F891BF8B4
- for <devel@linuxdriverproject.org>; Thu, 16 Apr 2020 09:52:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8342E1BF86B
+ for <devel@linuxdriverproject.org>; Fri, 17 Apr 2020 05:56:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 69C4022193
- for <devel@linuxdriverproject.org>; Thu, 16 Apr 2020 09:52:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7FB33860EF
+ for <devel@linuxdriverproject.org>; Fri, 17 Apr 2020 05:56:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RSeJ71UIwMjM for <devel@linuxdriverproject.org>;
- Thu, 16 Apr 2020 09:52:45 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.foescocursos.es (unknown [146.255.98.68])
- by silver.osuosl.org (Postfix) with ESMTPS id AE70F220CE
- for <devel@driverdev.osuosl.org>; Thu, 16 Apr 2020 09:52:41 +0000 (UTC)
-Received: from DESKTOPEEN1J8FHome (195.red-83-42-23.dynamicip.rima-tde.net
- [83.42.23.195])
- by mail.foescocursos.es (Postfix) with ESMTPSA id B3E7889011F
- for <devel@driverdev.osuosl.org>; Thu, 16 Apr 2020 11:50:36 +0200 (CEST)
-Authentication-Results: mail.foescocursos.es;
- spf=pass (sender IP is 83.42.23.195)
- smtp.mailfrom=foesco14@formacionbonificable.es smtp.helo=DESKTOPEEN1J8FHome
-Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
+ with ESMTP id XRTmJ5ZR_0kn for <devel@linuxdriverproject.org>;
+ Fri, 17 Apr 2020 05:56:48 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from slot0.linksioapo.ga (slot0.linksioapo.ga [45.86.68.249])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 475BF860C9
+ for <devel@driverdev.osuosl.org>; Fri, 17 Apr 2020 05:56:48 +0000 (UTC)
 MIME-Version: 1.0
-From: foesco14@formacionbonificable.es
-To: devel@driverdev.osuosl.org
-Subject: CURSOS BONIFICABLES DESDE CASA (Empleados activos y en ERTE)
-X-Mailer: Smart_Send_4_3_3
-Date: Thu, 16 Apr 2020 11:49:14 -0700
-Message-ID: <67044794439441485026347@DESKTOP-EEN1J8F>
-X-Priority: 1
-X-MSMail-Priority: High
+Content-Description: Mail message body
+Subject: INQUIRY
+To: Recipients <services@leskone.com>
+From: Rej888 Int'l Trading Inc <services@leskone.com>
+Date: Thu, 16 Apr 2020 22:56:44 -0700
+Message-ID: <0.0.5.8B6.1D6147CFB2BDF7C.0@slot0.linksioapo.ga>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,67 +50,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: foesco14@formacionbonificable.es
-Content-Type: multipart/mixed; boundary="===============5734693087437080119=="
+Reply-To: sales-rej888-trading1@mail.ua
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============5734693087437080119==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
 
-Buenos d=EDas
+Hello
 
+I am Ms. evangeline mulay from Rej888 Int'l Trading Inc.I am the Commercial Manager. 
 
+We are glad to see that you are a dealer in some of the products we are interested on and we are looking to get a new supplier who can be able to meet up with our current buying demands but first we need answers to the
+questions below if
 
-Se encuentra abierto el plazo de inscripci=F3n de Cursos Bonificables para =
-empleados en activo y en situaci=F3n de ERTE.
+1.You Can ship to Phillipines 
+2.Product list
+3. Advice on payment terms warranty.
+4. The Minimum Order Quantity (M.O.Q) and Delivery time for F.O.B.
 
+I would appreciate your response about the above questions so we can
+proceed with the items needed.
 
-Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
-aci=F3n 2020 que dispone las empresa.
+Expecting your urgent immediate feedback.
 
-Se realizan desde casa en modalidad individual E-learning a trav=E9s de la =
-plataforma web y con total flexibilidad horaria.
+Thanks.
 
-
-Dese=E1is que os mandemos la informaci=F3n=3F
-
-
-Saludos cordiales.
-
-
-Alex Pons
-Director departamento formaci=F3n.
-
-FOESCO Formaci=F3n Estatal Continua.
-Entidad Organizadora: B171823AP
-www.foesco.com
-
-e-mail:     cursos@foesco.net
-Tel:     910 323 794
-
-
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
-la palabra BAJA en el asunto.
-
---===============5734693087437080119==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+contact person :Ms. evangeline mulay
+Commercial Manager of Rej888 Int'l Trading Inc.
+10th st.
+mabalacat
+pampanga
+Zip Code:2010
+Philippines
+T:63-815-6316562
+F:63-8013-802091
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============5734693087437080119==--
