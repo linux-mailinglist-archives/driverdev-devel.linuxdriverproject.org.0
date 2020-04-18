@@ -1,78 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 824151AEAF3
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Apr 2020 10:36:47 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 132921AEC72
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Apr 2020 14:37:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 93C59227D1;
-	Sat, 18 Apr 2020 08:36:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 080D0877F4;
+	Sat, 18 Apr 2020 12:37:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7SwP3PB6wAya; Sat, 18 Apr 2020 08:36:44 +0000 (UTC)
+	with ESMTP id h9ysUiRrAnVb; Sat, 18 Apr 2020 12:37:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 505EF20462;
-	Sat, 18 Apr 2020 08:36:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C298685335;
+	Sat, 18 Apr 2020 12:37:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9AF061BF426
- for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 08:36:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C3CE11BF5AD
+ for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 12:37:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 97864850D6
- for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 08:36:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C0A42859BD
+ for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 12:37:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3KNE2ixy5bqi for <devel@linuxdriverproject.org>;
- Sat, 18 Apr 2020 08:36:38 +0000 (UTC)
+ with ESMTP id 7pwAsa+X4xGa for <devel@linuxdriverproject.org>;
+ Sat, 18 Apr 2020 12:37:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
- [209.85.208.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D8A758502B
- for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 08:36:37 +0000 (UTC)
-Received: by mail-lj1-f195.google.com with SMTP id k21so4478684ljh.2
- for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 01:36:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7/6//M0ZzMZYaNauz99M15j4KPCmpQuIwWItAHuzh60=;
- b=NxfPyiq4iJXOVjnaTadZFBInGPBNrnbwZ79ocfZASYenBByQJX7OwzgXw/uWkRFsuF
- YVlkYkSzm0Aq1f/HP+qpg0pWKrV7fpCWwjrruh0jDKc1wom8NtWA139shgTnJIdPrr02
- Z4c77VP9R6gGMx/rVVzVTw1Y7XJTHk69h39PG2HsiuDiQj6Mvt5UYdDsRUwCB1y8ruQC
- F4ltdwb0/b9dIzlIoR/RpK5mjt60xe8Ss/KIOOb9nZjmyZifgVpzVNmVLU6tSj+7LPF0
- hNlooU8F7cYFvLCpmSBlOyFbriJABQsUB6dGdSGw+UFc+y7DKIbcYckY+gXwEXbQc/em
- 2KrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7/6//M0ZzMZYaNauz99M15j4KPCmpQuIwWItAHuzh60=;
- b=NR5UsnzmUuhLX3A+4zsxejPhTxvIdSmySg30iRADJKxj/L2lGLUpEHIAEhCpQTDN8x
- duf569R8QA3ShD7OzCAAzaDhiIvvr/8H/Z9mpK+tT1yVq4og5VvNxK9by4KuZnRXZnvF
- x3cj7nLTgDnQ9wbGG62ZM/+bM0+nIciiqJLHm7Tf5vFNR0gQwbqlX2hHQjxR1KPQm8V5
- Ap4TT9tvVboyiaA2Srgj8wKIIv1spo6ESkdxmZfFP2om0h3VCxKvMoFTIqe0Bz7JOEjQ
- 69pNIfJDiWs8BquomZoY3j6iRMdVxI2T5FkDjd0mmLhQoSxtoJc070ErTxVqwnsaXJS5
- 68Tw==
-X-Gm-Message-State: AGi0PuZqDzXqkQyT5QxjHy+ggWLgZM+8bfpO9HgGHNLOAgnYjYLzMYCU
- 7xdP4GKzlGGxM7tU5qcGJ5Q=
-X-Google-Smtp-Source: APiQypIthhBFvflX4gjyM6Gsi3RoSgfX3rp14yMBdfeREtXfa2h5ZEY36SPuub64uRymEDGdJ8qx5Q==
-X-Received: by 2002:a2e:330e:: with SMTP id d14mr4338860ljc.153.1587198996062; 
- Sat, 18 Apr 2020 01:36:36 -0700 (PDT)
-Received: from alpha (84.188.smarthome.spb.ru. [80.249.188.84])
- by smtp.gmail.com with ESMTPSA id j14sm19484204lfm.73.2020.04.18.01.36.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 18 Apr 2020 01:36:35 -0700 (PDT)
-Received: (nullmailer pid 3769 invoked by uid 1000);
- Sat, 18 Apr 2020 08:41:14 -0000
-From: Ivan Safonov <insafonov@gmail.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>
-Subject: [PATCH] staging:r8188eu: avoid skb_clone for amsdu to msdu conversion
-Date: Sat, 18 Apr 2020 11:41:12 +0300
-Message-Id: <20200418084112.3723-1-insafonov@gmail.com>
-X-Mailer: git-send-email 2.24.1
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5B56585335
+ for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 12:37:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1587213447;
+ bh=0i/Wz1llh1JOZqgylVTquYfWudmh4cFW62cFUXvwLDE=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=FVVsQjWiDxrPBsm0UJtstJ6Jm/1Or6n8OFy+Ot6NJXK5L39oHoIXxLBcqu8RXkmt2
+ ciiAACTBhPpzKv41DByK8gP4opXDBm52JXZFJuYgzB4knLlpyVNfmDcU1oMupMZK1T
+ koWQaIqMHKowJOCwoNCM5OSFJSR269Zm9aVahTfg=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
+ (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
+ 1MGyxN-1jTrTI09jf-00E6CB; Sat, 18 Apr 2020 14:37:27 +0200
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 0/2] staging: vt6656: Check the return value of
+ vnt_control_out_* calls
+Date: Sat, 18 Apr 2020 14:36:57 +0200
+Message-Id: <20200418123659.4475-1-oscar.carter@gmx.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
+X-Provags-ID: V03:K1:oHlXilqcAogjPYcNvsKaQo1op9W4zPB+NOtoYbdz9XTTX7lvo0Z
+ aBEh9Dtgohr+QMLgRhMGkUfUPRwa++UUtvVdt+BDi6IvD6gZ+kf4jPJNMWT0Zlfe6plQ8ty
+ NCtV35xEEmj9Hx4QVpQl6CwsjB897/GgXbAs4akASpRCVQviZF5M/i3T1OlftMOQv1KxeH3
+ LzUV+rGtkSougqSnCZOhA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:aJaPwoWp/lk=:hM8LfiBBdcnb0n6aCBj9Ur
+ 15vcMOUG7JRgSp8JroL4CO/dThgU+80pU183sFVz6maYQei5r1Ail4y3Qf46cSAO3PHxp2Mzn
+ P2DSFqZPqAxAgZEAN7dt+aWpEuulh78eGuW56VbKtC+7WH1SAftvERxmRDqQYENlYLc4l10MZ
+ r6qW8aUnLKdPJnvYHP/LEfrL6inROjslHlxkb/UvV5/vKb5Sii1/X5f4otj18mEXmC+Wp5Dl9
+ q7wJDgkG+5t4cabZ+pLcQRsy4CpK1M4DrkPFNyO6YdFhVBeYV0LuG7ZKwYs9OFQEzl8TIQGyv
+ ksIJfRJpSVpw/1fQmjLVvhjzAYBbr5Wx7EA4AdqhCDqn0rWhFZcPyS3THPBWj566UZqmiIUeO
+ ktB4/vNUf8u5/eYjyi8N0Tgn0nKXqpdr/xQZiG7CiLjW7Oxz/kuemeLyW9ID9wdO8eWx5ijRy
+ Cvr0DV7ykJ4DUUDdiylxNx1gTuM3vbNHVGHO61/7Az5MEb9VDpaRgU0naZg/aSMd/C1pmRlCX
+ WzpjG3t5JQFDyTeuxlZaAD7nC2HvE+3hRYWYsx/BMYzZ3QG4gbdH8ey97VhKKKJcVrpy3gq5Z
+ wBGgzoHwcU+qCfPg/6sjTBWb2zUqtbTv8HqPaPwRU/dHWlNgPW/SCa3aEay40xszP0RI31eRE
+ RqHC4bh2nMlQXDHms83yeZJLZqcoggfsjiT24onQlsAkSirqSlKo3UGr+D2ANCs/B38wldCo0
+ 5jsuDs6sdxzB+Dvw0fI5sy7ItKnbwiFebsh0khRO9f9WinviF8GZWmKBwBZi/ynHRzlYUZ2CZ
+ PE3UOdCIQwsZCSuwN/PtTt+SU4mwjbXoXcKmgTj2QScOTT/5dxEWUBDXcqhyKQwp9vEpYYJci
+ w1ULHfAPB28Ri+lYjGjlbHsm7BUv0XDDAKxnq0vPLGoYnbJp6Pw5NGzhAAM7v2ysqyO1ZHek0
+ cuy7Qvoze8J72qxXh6owh92PVvIMULTwGsrsqXCneH/FFyFWZg7rFNkQTcfKtqJry892mXqsI
+ 1lN4B3uZy35oyhq7B7E4skpmLSZttZhKjuzpUUIQvL/hYL5WVhM/2rFg4/BYzhWdt+FepPHgX
+ v9YUMCykLZDEcqGnxTnG8gbDcJ5eO7s4V+5IN427o3jB2I+6IBUbYzF2M2vJM9wHHy4PSdfz6
+ esuYDAERlSGBKVksy8l6YoOAjL30bg4sAhBrsnhu5a5iwRRx9HYwL0gO1AKI5tRmLgnnYcYsc
+ 2A+SBiyafrSt0QkAF
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,56 +86,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Ivan Safonov <insafonov@gmail.com>,
- Puranjay Mohan <puranjay12@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Saurav Girepunje <saurav.girepunje@gmail.com>
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>,
+ "John B. Wyatt IV" <jbwyatt4@gmail.com>, linux-kernel@vger.kernel.org,
+ Stefano Brivio <sbrivio@redhat.com>, Colin Ian King <colin.king@canonical.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-skb clones use same data buffer, so tail of one skb is corrupted by beginning of next skb.
+This patch series checks the return value of vnt_control_out_* function
+calls.
 
-Signed-off-by: Ivan Safonov <insafonov@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_recv.c | 19 ++++++-------------
- 1 file changed, 6 insertions(+), 13 deletions(-)
+The first patch checks the return value and when necessary modify the
+function prototype to be able to return the new checked error code.
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index d4278361e002..a036ef104198 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -1525,21 +1525,14 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
- 
- 		/* Allocate new skb for releasing to upper layer */
- 		sub_skb = dev_alloc_skb(nSubframe_Length + 12);
--		if (sub_skb) {
--			skb_reserve(sub_skb, 12);
--			skb_put_data(sub_skb, pdata, nSubframe_Length);
--		} else {
--			sub_skb = skb_clone(prframe->pkt, GFP_ATOMIC);
--			if (sub_skb) {
--				sub_skb->data = pdata;
--				sub_skb->len = nSubframe_Length;
--				skb_set_tail_pointer(sub_skb, nSubframe_Length);
--			} else {
--				DBG_88E("skb_clone() Fail!!! , nr_subframes=%d\n", nr_subframes);
--				break;
--			}
-+		if (!sub_skb) {
-+			DBG_88E("dev_alloc_skb() Fail!!! , nr_subframes=%d\n", nr_subframes);
-+			break;
- 		}
- 
-+		skb_reserve(sub_skb, 12);
-+		skb_put_data(sub_skb, pdata, nSubframe_Length);
-+
- 		subframes[nr_subframes++] = sub_skb;
- 
- 		if (nr_subframes >= MAX_SUBFRAME_COUNT) {
--- 
-2.24.1
+The second patch replaces the documentation of functions that their
+prototype has changed by the kernel-doc style, fixing the parameters and
+return value.
+
+Oscar Carter (2):
+  staging: vt6656: Check the return value of vnt_control_out_* calls
+  staging: vt6656: Fix functions' documentation
+
+ drivers/staging/vt6656/baseband.c |  35 +++---
+ drivers/staging/vt6656/baseband.h |   4 +-
+ drivers/staging/vt6656/card.c     | 198 +++++++++++++++---------------
+ drivers/staging/vt6656/card.h     |  18 +--
+ drivers/staging/vt6656/mac.c      | 143 ++++++++++-----------
+ drivers/staging/vt6656/mac.h      |  26 ++--
+ drivers/staging/vt6656/power.c    |  24 ++--
+ drivers/staging/vt6656/power.h    |   2 +-
+ 8 files changed, 217 insertions(+), 233 deletions(-)
+
+--
+2.20.1
 
 _______________________________________________
 devel mailing list
