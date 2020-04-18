@@ -2,98 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5339F1AE051
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Apr 2020 17:00:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 824151AEAF3
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Apr 2020 10:36:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9310321563;
-	Fri, 17 Apr 2020 15:00:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 93C59227D1;
+	Sat, 18 Apr 2020 08:36:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ay5s4NdWGbAw; Fri, 17 Apr 2020 15:00:25 +0000 (UTC)
+	with ESMTP id 7SwP3PB6wAya; Sat, 18 Apr 2020 08:36:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B4C33203CE;
-	Fri, 17 Apr 2020 15:00:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 505EF20462;
+	Sat, 18 Apr 2020 08:36:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3E21B1BF867
- for <devel@linuxdriverproject.org>; Fri, 17 Apr 2020 15:00:20 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9AF061BF426
+ for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 08:36:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 33105203F9
- for <devel@linuxdriverproject.org>; Fri, 17 Apr 2020 15:00:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 97864850D6
+ for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 08:36:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 47X-svJGsbNd for <devel@linuxdriverproject.org>;
- Fri, 17 Apr 2020 15:00:19 +0000 (UTC)
+ with ESMTP id 3KNE2ixy5bqi for <devel@linuxdriverproject.org>;
+ Sat, 18 Apr 2020 08:36:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by silver.osuosl.org (Postfix) with ESMTPS id B08C1203CE
- for <devel@driverdev.osuosl.org>; Fri, 17 Apr 2020 15:00:18 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id k13so2186566wrw.7
- for <devel@driverdev.osuosl.org>; Fri, 17 Apr 2020 08:00:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:mail-followup-to:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to; bh=+pLzXV2uoWONcvIXLG60QmJnpF6qpxalQJEJVAlU5ZU=;
- b=SJlFo73fheabH5hiH/RJ37KRFeF6vcj+J3TT+NQ5Qiwt4UY2A/7hQayUJEKsxeJqiz
- W6eqjB1ojrsvckINI7UM64sPHV2ixzU9iDWbpnLaZ5Xi/8osCdcnlRDz4ZKgGfjR6ct/
- 24JhjZMz3V23pEJ7WWIDMpIpFcUhNftInHJYM=
+Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
+ [209.85.208.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D8A758502B
+ for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 08:36:37 +0000 (UTC)
+Received: by mail-lj1-f195.google.com with SMTP id k21so4478684ljh.2
+ for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 01:36:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7/6//M0ZzMZYaNauz99M15j4KPCmpQuIwWItAHuzh60=;
+ b=NxfPyiq4iJXOVjnaTadZFBInGPBNrnbwZ79ocfZASYenBByQJX7OwzgXw/uWkRFsuF
+ YVlkYkSzm0Aq1f/HP+qpg0pWKrV7fpCWwjrruh0jDKc1wom8NtWA139shgTnJIdPrr02
+ Z4c77VP9R6gGMx/rVVzVTw1Y7XJTHk69h39PG2HsiuDiQj6Mvt5UYdDsRUwCB1y8ruQC
+ F4ltdwb0/b9dIzlIoR/RpK5mjt60xe8Ss/KIOOb9nZjmyZifgVpzVNmVLU6tSj+7LPF0
+ hNlooU8F7cYFvLCpmSBlOyFbriJABQsUB6dGdSGw+UFc+y7DKIbcYckY+gXwEXbQc/em
+ 2KrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id
- :mail-followup-to:references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to;
- bh=+pLzXV2uoWONcvIXLG60QmJnpF6qpxalQJEJVAlU5ZU=;
- b=MgfMQp0LLpvXYRibSbdLPeKlG8kFd52pcXcR+71AeG0tuplN5Oy0dwhfBdMAGhGkCm
- V5ZXv0bnRO6XY1KEQdey87m+DZonKxdCHUye/egxuP2gayEC7Uglji9ksY1hJfJL37MW
- zSc4c6iJ7TaE7WVhR+7LiCBa9KdfruTs+RVbcNHkbqDh/w0LzD4EgP7Tgk3sx5TTxygg
- VnYNPiGquUgl+/QkUwq4WsfC/PwpYfVz4OPpIqSjoWH4HhwV3+OWcXVPDJ/xPFlLYvUx
- pHLLm0F3zhe4tvSOebhheI0hoIIbf5vm+9cVTOYdpeM/dzvp+CqzeuwDG1513+h1/7UI
- Y62A==
-X-Gm-Message-State: AGi0PuYnNLTDl1EWaWvkkbsQ70yM4uMKfZs1ivxs8/Qh1kiDDPsHC4Y8
- r4ZZFh75Yg1MhzsQchfOc5D7SA==
-X-Google-Smtp-Source: APiQypI+XqYbgKYVQ6aVc9PEFMJyQDjicsm1whYiSRv3ZukR4N/x6YDtB22FRHpXAK0g1o+ga1mJiw==
-X-Received: by 2002:adf:f8cd:: with SMTP id f13mr4216226wrq.119.1587135616818; 
- Fri, 17 Apr 2020 08:00:16 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id g186sm8077661wme.7.2020.04.17.08.00.15
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7/6//M0ZzMZYaNauz99M15j4KPCmpQuIwWItAHuzh60=;
+ b=NR5UsnzmUuhLX3A+4zsxejPhTxvIdSmySg30iRADJKxj/L2lGLUpEHIAEhCpQTDN8x
+ duf569R8QA3ShD7OzCAAzaDhiIvvr/8H/Z9mpK+tT1yVq4og5VvNxK9by4KuZnRXZnvF
+ x3cj7nLTgDnQ9wbGG62ZM/+bM0+nIciiqJLHm7Tf5vFNR0gQwbqlX2hHQjxR1KPQm8V5
+ Ap4TT9tvVboyiaA2Srgj8wKIIv1spo6ESkdxmZfFP2om0h3VCxKvMoFTIqe0Bz7JOEjQ
+ 69pNIfJDiWs8BquomZoY3j6iRMdVxI2T5FkDjd0mmLhQoSxtoJc070ErTxVqwnsaXJS5
+ 68Tw==
+X-Gm-Message-State: AGi0PuZqDzXqkQyT5QxjHy+ggWLgZM+8bfpO9HgGHNLOAgnYjYLzMYCU
+ 7xdP4GKzlGGxM7tU5qcGJ5Q=
+X-Google-Smtp-Source: APiQypIthhBFvflX4gjyM6Gsi3RoSgfX3rp14yMBdfeREtXfa2h5ZEY36SPuub64uRymEDGdJ8qx5Q==
+X-Received: by 2002:a2e:330e:: with SMTP id d14mr4338860ljc.153.1587198996062; 
+ Sat, 18 Apr 2020 01:36:36 -0700 (PDT)
+Received: from alpha (84.188.smarthome.spb.ru. [80.249.188.84])
+ by smtp.gmail.com with ESMTPSA id j14sm19484204lfm.73.2020.04.18.01.36.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Apr 2020 08:00:16 -0700 (PDT)
-Date: Fri, 17 Apr 2020 17:00:13 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: android: ion: Skip sync if not mapped
-Message-ID: <20200417150013.GN3456981@phenom.ffwll.local>
-Mail-Followup-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- John Stultz <john.stultz@linaro.org>,
- driverdevel <devel@driverdev.osuosl.org>, nd <nd@arm.com>,
- Todd Kjos <tkjos@android.com>,
- Lecopzer Chen <lecopzer.chen@mediatek.com>,
- Arnd Bergmann <arnd@arndb.de>, lkml <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Anders Pedersen <anders.pedersen@arm.com>,
- Joel Fernandes <joel@joelfernandes.org>,
- "Darren Hart (VMware)" <dvhart@infradead.org>,
- =?iso-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>,
- Laura Abbott <labbott@redhat.com>,
- Martijn Coenen <maco@android.com>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Christian Brauner <christian@brauner.io>,
- linux-media@vger.kernel.org
-References: <20200414134629.54567-1-orjan.eide@arm.com>
- <20200414141849.55654-1-orjan.eide@arm.com>
- <20200414142810.GA958163@kroah.com>
- <CALAqxLX-SUhHPH6ewt-s9cEMc8DtMTgXem=JruAkLofuJf1syg@mail.gmail.com>
- <20200416102508.GA820251@kroah.com>
+ Sat, 18 Apr 2020 01:36:35 -0700 (PDT)
+Received: (nullmailer pid 3769 invoked by uid 1000);
+ Sat, 18 Apr 2020 08:41:14 -0000
+From: Ivan Safonov <insafonov@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH] staging:r8188eu: avoid skb_clone for amsdu to msdu conversion
+Date: Sat, 18 Apr 2020 11:41:12 +0300
+Message-Id: <20200418084112.3723-1-insafonov@gmail.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200416102508.GA820251@kroah.com>
-X-Operating-System: Linux phenom 5.3.0-3-amd64 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,139 +85,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>, Laura Abbott <labbott@redhat.com>,
- Todd Kjos <tkjos@android.com>, Lecopzer Chen <lecopzer.chen@mediatek.com>,
- Arnd Bergmann <arnd@arndb.de>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- lkml <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- John Stultz <john.stultz@linaro.org>,
- Anders Pedersen <anders.pedersen@arm.com>,
- Joel Fernandes <joel@joelfernandes.org>,
- "Darren Hart \(VMware\)" <dvhart@infradead.org>,
- =?iso-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, nd <nd@arm.com>,
- Martijn Coenen <maco@android.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- Christian Brauner <christian@brauner.io>, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, Ivan Safonov <insafonov@gmail.com>,
+ Puranjay Mohan <puranjay12@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Saurav Girepunje <saurav.girepunje@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Apr 16, 2020 at 12:25:08PM +0200, Greg Kroah-Hartman wrote:
-> On Tue, Apr 14, 2020 at 09:41:31PM -0700, John Stultz wrote:
-> > On Tue, Apr 14, 2020 at 7:28 AM Greg Kroah-Hartman
-> > <gregkh@linuxfoundation.org> wrote:
-> > >
-> > > On Tue, Apr 14, 2020 at 04:18:47PM +0200, =D8rjan Eide wrote:
-> > > > Only sync the sg-list of an Ion dma-buf attachment when the attachm=
-ent
-> > > > is actually mapped on the device.
-> > > >
-> > > > dma-bufs may be synced at any time. It can be reached from user spa=
-ce
-> > > > via DMA_BUF_IOCTL_SYNC, so there are no guarantees from callers on =
-when
-> > > > syncs may be attempted, and dma_buf_end_cpu_access() and
-> > > > dma_buf_begin_cpu_access() may not be paired.
-> > > >
-> > > > Since the sg_list's dma_address isn't set up until the buffer is us=
-ed
-> > > > on the device, and dma_map_sg() is called on it, the dma_address wi=
-ll be
-> > > > NULL if sync is attempted on the dma-buf before it's mapped on a de=
-vice.
-> > > >
-> > > > Before v5.0 (commit 55897af63091 ("dma-direct: merge swiotlb_dma_ops
-> > > > into the dma_direct code")) this was a problem as the dma-api (at l=
-east
-> > > > the swiotlb_dma_ops on arm64) would use the potentially invalid
-> > > > dma_address. How that failed depended on how the device handled phy=
-sical
-> > > > address 0. If 0 was a valid address to physical ram, that page woul=
-d get
-> > > > flushed a lot, while the actual pages in the buffer would not get s=
-ynced
-> > > > correctly. While if 0 is an invalid physical address it may cause a
-> > > > fault and trigger a crash.
-> > > >
-> > > > In v5.0 this was incidentally fixed by commit 55897af63091 ("dma-di=
-rect:
-> > > > merge swiotlb_dma_ops into the dma_direct code"), as this moved the
-> > > > dma-api to use the page pointer in the sg_list, and (for Ion buffer=
-s at
-> > > > least) this will always be valid if the sg_list exists at all.
-> > > >
-> > > > But, this issue is re-introduced in v5.3 with
-> > > > commit 449fa54d6815 ("dma-direct: correct the physical addr in
-> > > > dma_direct_sync_sg_for_cpu/device") moves the dma-api back to the o=
-ld
-> > > > behaviour and picks the dma_address that may be invalid.
-> > > >
-> > > > dma-buf core doesn't ensure that the buffer is mapped on the device=
-, and
-> > > > thus have a valid sg_list, before calling the exporter's
-> > > > begin_cpu_access.
-> > > >
-> > > > Signed-off-by: =D8rjan Eide <orjan.eide@arm.com>
-> > > > ---
-> > > >  drivers/staging/android/ion/ion.c | 12 ++++++++++++
-> > > >  1 file changed, 12 insertions(+)
-> > > >
-> > > > Resubmit without disclaimer, sorry about that.
-> > > >
-> > > > This seems to be part of a bigger issue where dma-buf exporters ass=
-ume
-> > > > that their dma-buf begin_cpu_access and end_cpu_access callbacks ha=
-ve a
-> > > > certain guaranteed behavior, which isn't ensured by dma-buf core.
-> > > >
-> > > > This patch fixes this in ion only, but it also needs to be fixed for
-> > > > other exporters, either handled like this in each exporter, or in
-> > > > dma-buf core before calling into the exporters.
-> > > >
-> > > > diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/an=
-droid/ion/ion.c
-> > > > index 38b51eace4f9..7b752ba0cb6d 100644
-> > > > --- a/drivers/staging/android/ion/ion.c
-> > > > +++ b/drivers/staging/android/ion/ion.c
-> > >
-> > > Now that we have the dma-buff stuff in the tree, do we even need the
-> > > ion code in the kernel anymore?  Can't we delete it now?
-> > >
-> > =
+skb clones use same data buffer, so tail of one skb is corrupted by beginning of next skb.
 
-> > I agree that we shouldn't be taking further (non-security/cleanup)
-> > patches to the ION code.
-> > =
+Signed-off-by: Ivan Safonov <insafonov@gmail.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 19 ++++++-------------
+ 1 file changed, 6 insertions(+), 13 deletions(-)
 
-> > I'd like to give developers a little bit of a transition period (I was
-> > thinking a year, but really just one LTS release that has both would
-> > do) where they can move their ION heaps over to dmabuf heaps and test
-> > both against the same tree.
-> > =
+diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+index d4278361e002..a036ef104198 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_recv.c
++++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+@@ -1525,21 +1525,14 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
+ 
+ 		/* Allocate new skb for releasing to upper layer */
+ 		sub_skb = dev_alloc_skb(nSubframe_Length + 12);
+-		if (sub_skb) {
+-			skb_reserve(sub_skb, 12);
+-			skb_put_data(sub_skb, pdata, nSubframe_Length);
+-		} else {
+-			sub_skb = skb_clone(prframe->pkt, GFP_ATOMIC);
+-			if (sub_skb) {
+-				sub_skb->data = pdata;
+-				sub_skb->len = nSubframe_Length;
+-				skb_set_tail_pointer(sub_skb, nSubframe_Length);
+-			} else {
+-				DBG_88E("skb_clone() Fail!!! , nr_subframes=%d\n", nr_subframes);
+-				break;
+-			}
++		if (!sub_skb) {
++			DBG_88E("dev_alloc_skb() Fail!!! , nr_subframes=%d\n", nr_subframes);
++			break;
+ 		}
+ 
++		skb_reserve(sub_skb, 12);
++		skb_put_data(sub_skb, pdata, nSubframe_Length);
++
+ 		subframes[nr_subframes++] = sub_skb;
+ 
+ 		if (nr_subframes >= MAX_SUBFRAME_COUNT) {
+-- 
+2.24.1
 
-> > But I do think we can mark it as deprecated and let folks know that
-> > around the end of the year it will be deleted.
-> =
-
-> No one ever notices "depreciated" things, they only notice if the code
-> is no longer there :)
-> =
-
-> So I'm all for just deleting it and seeing who even notices...
-
-+1 on just deleting ion and watching if anyone notices. In case you're
-typing that patch, here's my:
-
-Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
-
--Daniel
--- =
-
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
