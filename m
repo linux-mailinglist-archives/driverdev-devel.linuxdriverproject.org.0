@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 561C11AF24C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Apr 2020 18:24:59 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C1B01AF26A
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Apr 2020 18:43:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9586B860D6;
-	Sat, 18 Apr 2020 16:24:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DB3768644F;
+	Sat, 18 Apr 2020 16:43:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q6Tdf7AVMGRW; Sat, 18 Apr 2020 16:24:57 +0000 (UTC)
+	with ESMTP id 41mCAwjSQUpH; Sat, 18 Apr 2020 16:43:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8A1DB85721;
-	Sat, 18 Apr 2020 16:24:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 71E7784C1E;
+	Sat, 18 Apr 2020 16:43:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C23C51BF479
- for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 16:24:54 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A13741BF479
+ for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 16:43:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BEB55877A0
- for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 16:24:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 991BA86B90
+ for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 16:43:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nciNS5Sk-iyA for <devel@linuxdriverproject.org>;
- Sat, 18 Apr 2020 16:24:54 +0000 (UTC)
+ with ESMTP id oG1cRJdoq-Hb for <devel@linuxdriverproject.org>;
+ Sat, 18 Apr 2020 16:43:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F1D24872A6
- for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 16:24:53 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id d17so6582006wrg.11
- for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 09:24:53 -0700 (PDT)
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AFD5A86838
+ for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 16:43:28 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id i10so6627321wrv.10
+ for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 09:43:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=to:cc:from:subject:message-id:date:user-agent:mime-version
  :content-language:content-transfer-encoding;
- bh=XGEj3VJB73XMSjdKjc291NmLGevIXZKdlnrTsayg+jI=;
- b=SIZzTwJn1Yk5or/nLv3lvJko9gK7r7meNLSAizJaXd2P+BkrneGSkZaX7F7PvWRHGx
- tskb8uW80qPF4B1Wflmodvg1Ku2ssALa/mnOMD8UHGbC9M0bNUFmUvDgCxh1hSsv+OuC
- NCqnDREXNCtElIaiBEXV9lOObMRnMql0d8Aiec9C6IW0u/cpOFUjFQg771wuAuTLdSgw
- 18yYusrLrPg86sbv1amNBFhJVoauC+mJqk8fmg6gEQohbqRyVOFwX0Ra/bupcedSVs58
- 2/P9WYshzBp/Jssq94je885lPDRKRsVQQK7dpP3fimazY1DB/0ByqQV0StDCVbQIu/Ml
- gHcw==
+ bh=iNg283N5W06QIOUQwrr2Mr28fG26BEGAnQLlw95W7Vk=;
+ b=l4uwzmH+jB63wEowrpIUnU4NvYXXNyzkgm3JWMrire8H4Fyl7C7U+UXIK7Xt9fxuhY
+ weY5EYdExkKjbUQ2bW/+ylqeBqJu5TLyetCQjiwLYxnOD31WMsm2Dx48jd4dgeUnHtgO
+ /fukPtmyddwX/PrW5rH7o+3WevBP1qT7oPx4rfwKQy3sOUTYtvXop5cjTkuD1YDxjjlW
+ H7ZRR6dE/PZeNL9/CfO90f+e7xK1E6YlV7cuvFSKNKf79d7mWexVWqkTa19igO7lUPbD
+ yw/4GTxcQAffh4u0dPV9es/MCvJ59/+zAw98c71u8fsiZ9WrGwSTfw1xJAgYUwvurlWE
+ 8LvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=XGEj3VJB73XMSjdKjc291NmLGevIXZKdlnrTsayg+jI=;
- b=QQJClttgq3TcMBvIrnm3RBi+H/ToI3uyMmHqyFPBdKj/we5a6mFThZ8K4TiMfxG6Q6
- WBA/5yF8gvIZs627HpOh/e4QB8Jpj/Dr4EFf1oQZu06IsUR8MrX9WdGaq3FQBfsZofoZ
- O2WV0y/L5eVW9Wn4GRJ4CC0F2KL92y5mbhCHEvU0wzWeER54HiMgMShufi029LZ/2mTs
- qEs6hztxw54Q4dAk5ZEX00U2hbtYd9R+tx2cWYAjRDl2WVzDseE0sHjDqRGpIL9GRbmv
- nSSUu0UICY3vYsw7jCTKHvMAoH182i6kYWypEl9gcuxgBNtY2thrursc066C7IRA6Dm7
- Pi4A==
-X-Gm-Message-State: AGi0Puay2uEmX4MoAx5wC72cgVsDA6Ja9TVZAs7MtXV/Q8E74P/GAGc5
- juriDVwuB9/fQ+dxTjVKJHM=
-X-Google-Smtp-Source: APiQypJ6/MElbXcE0UnT48kiPNKQIpXKPuGW3gXNfoZXTy3FbSd75/GBbPf07PiHkG4fgsT381XeUQ==
-X-Received: by 2002:a5d:4447:: with SMTP id x7mr9540180wrr.299.1587227092419; 
- Sat, 18 Apr 2020 09:24:52 -0700 (PDT)
+ bh=iNg283N5W06QIOUQwrr2Mr28fG26BEGAnQLlw95W7Vk=;
+ b=jI9xmW8Yyu1PzDF1B5SN80BRdNtae+5EVRgabFiAKhcBQfqVYHmg8NuKzxp/iU4ehU
+ AY8Z3llEalgngqSuIZrHBEMWB6QuxSOiNMO5amPZwdzXZzrRePJTarUyzZaJOQ/JgoRZ
+ wjHowcyGR+drE0WMucRwB3iB/L4fXl9QzkPm4fyPzLpkF3w9T2epwy3R6Qy657uu2boc
+ qUNWYEmLTLOYGbtcZ5RwfB1N+EP7cDWbMb86wHeSJBL+RSZlw5ZH/2CueprZ036XJMxH
+ VnzsKVntYqXJc41vHlOH1A/mp1SnnpR982LpuML+9bkMLKsNmfMnwUTjMktA+caaJH69
+ n8jg==
+X-Gm-Message-State: AGi0PuZLDq7K+jb3GVOSNoRXcdnUEaZIrKF19f1eoLYb3R7a47Lp//VU
+ QkT/4RhbUaKERSCvpeHJibw=
+X-Google-Smtp-Source: APiQypId+j/j49QIFvlMqBsMHGeD1CVJ88jDuC8ok/VU2cD12xD/KDvuO7yl6NvnrkAnOwTjg/uVTw==
+X-Received: by 2002:adf:8b45:: with SMTP id v5mr10396563wra.175.1587228207209; 
+ Sat, 18 Apr 2020 09:43:27 -0700 (PDT)
 Received: from [192.168.43.18] (188.29.165.57.threembb.co.uk. [188.29.165.57])
  by smtp.gmail.com with ESMTPSA id
- x18sm35822640wrs.11.2020.04.18.09.24.51
+ i97sm38784035wri.1.2020.04.18.09.43.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Apr 2020 09:24:51 -0700 (PDT)
+ Sat, 18 Apr 2020 09:43:26 -0700 (PDT)
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH] staging: vt6656: Don't set RCR_MULTICAST or RCR_BROADCAST by
- default.
-Message-ID: <2c24c33d-68c4-f343-bd62-105422418eac@gmail.com>
-Date: Sat, 18 Apr 2020 17:24:50 +0100
+Subject: [PATCH] staging: vt6656: Fix drivers TBTT timing counter.
+Message-ID: <375d0b25-e8bc-c8f7-9b10-6cc705d486ee@gmail.com>
+Date: Sat, 18 Apr 2020 17:43:24 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
@@ -95,39 +94,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-mac80211/users control whether multicast is on or off don't enable it by default.
+The drivers TBTT counter is not synchronized with mac80211 timestamp.
 
-Fixes an issue when multicast/broadcast is always on allowing other beacons through
-in power save.
+Reorder the functions and use vnt_update_next_tbtt to do the final
+synchronize.
 
-Fixes: db8f37fa3355 ("staging: vt6656: mac80211 conversion: main_usb add functions...")
+Fixes: c15158797df6 ("staging: vt6656: implement TSF counter")
 Cc: stable <stable@vger.kernel.org>
 Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- drivers/staging/vt6656/main_usb.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ drivers/staging/vt6656/main_usb.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index 3c76d3cb5bbe..b2729d5eadfb 100644
+index b2729d5eadfb..4213679345eb 100644
 --- a/drivers/staging/vt6656/main_usb.c
 +++ b/drivers/staging/vt6656/main_usb.c
-@@ -801,15 +801,11 @@ static void vnt_configure(struct ieee80211_hw *hw,
- {
- 	struct vnt_private *priv = hw->priv;
- 	u8 rx_mode = 0;
--	int rc;
+@@ -762,12 +762,15 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
+ 			vnt_mac_reg_bits_on(priv, MAC_REG_TFTCTL,
+ 					    TFTCTL_TSFCNTREN);
  
- 	*total_flags &= FIF_ALLMULTI | FIF_OTHER_BSS | FIF_BCN_PRBRESP_PROMISC;
- 
--	rc = vnt_control_in(priv, MESSAGE_TYPE_READ, MAC_REG_RCR,
--			    MESSAGE_REQUEST_MACREG, sizeof(u8), &rx_mode);
+-			vnt_adjust_tsf(priv, conf->beacon_rate->hw_value,
+-				       conf->sync_tsf, priv->current_tsf);
 -
--	if (!rc)
--		rx_mode = RCR_MULTICAST | RCR_BROADCAST;
-+	vnt_control_in(priv, MESSAGE_TYPE_READ, MAC_REG_RCR,
-+		       MESSAGE_REQUEST_MACREG, sizeof(u8), &rx_mode);
+ 			vnt_mac_set_beacon_interval(priv, conf->beacon_int);
  
- 	dev_dbg(&priv->usb->dev, "rx mode in = %x\n", rx_mode);
+ 			vnt_reset_next_tbtt(priv, conf->beacon_int);
++
++			vnt_adjust_tsf(priv, conf->beacon_rate->hw_value,
++				       conf->sync_tsf, priv->current_tsf);
++
++			vnt_update_next_tbtt(priv,
++					     conf->sync_tsf, conf->beacon_int);
+ 		} else {
+ 			vnt_clear_current_tsf(priv);
  
 -- 
 2.25.1
