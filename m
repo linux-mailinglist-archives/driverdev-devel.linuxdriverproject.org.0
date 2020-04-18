@@ -1,78 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A843D1AECD2
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Apr 2020 15:46:49 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 561C11AF24C
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Apr 2020 18:24:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D6AD1859D1;
-	Sat, 18 Apr 2020 13:46:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9586B860D6;
+	Sat, 18 Apr 2020 16:24:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lLYxAyEu-0jz; Sat, 18 Apr 2020 13:46:47 +0000 (UTC)
+	with ESMTP id q6Tdf7AVMGRW; Sat, 18 Apr 2020 16:24:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3215D85D30;
-	Sat, 18 Apr 2020 13:46:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8A1DB85721;
+	Sat, 18 Apr 2020 16:24:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 881F91BF364
- for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 13:46:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C23C51BF479
+ for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 16:24:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 81F8084F7A
- for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 13:46:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BEB55877A0
+ for <devel@linuxdriverproject.org>; Sat, 18 Apr 2020 16:24:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wDEIcBEo5LOa for <devel@linuxdriverproject.org>;
- Sat, 18 Apr 2020 13:46:43 +0000 (UTC)
+ with ESMTP id nciNS5Sk-iyA for <devel@linuxdriverproject.org>;
+ Sat, 18 Apr 2020 16:24:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 22FD684964
- for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 13:46:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1587217591;
- bh=BpcHpbLXJb+WHF2RoThe4fFeGdSByivKbXya/PGIWw4=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=LsysFO3+kglKOhmgmcfoghAYzKBKEP4aFieLpxChOiJtqzm8l9jy4IaTK+CDG+otY
- Piwopf0zXDGe8It2w0jpOaVxuwnms6RVlBLizOs6bhXX0Vpr+9sSgM4JYch9g/BJIm
- R9vCu7Ab61QX6RGh+IqUJ5tT2uv1Pg3Y0ESAvrG0=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx004 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1MlNtP-1iyCoE1ZXh-00lpbR; Sat, 18 Apr 2020 15:46:31 +0200
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: vt6656: Refactor the vnt_ofdm_min_rate function
-Date: Sat, 18 Apr 2020 15:45:53 +0200
-Message-Id: <20200418134553.6415-1-oscar.carter@gmx.com>
-X-Mailer: git-send-email 2.20.1
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F1D24872A6
+ for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 16:24:53 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id d17so6582006wrg.11
+ for <devel@driverdev.osuosl.org>; Sat, 18 Apr 2020 09:24:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=XGEj3VJB73XMSjdKjc291NmLGevIXZKdlnrTsayg+jI=;
+ b=SIZzTwJn1Yk5or/nLv3lvJko9gK7r7meNLSAizJaXd2P+BkrneGSkZaX7F7PvWRHGx
+ tskb8uW80qPF4B1Wflmodvg1Ku2ssALa/mnOMD8UHGbC9M0bNUFmUvDgCxh1hSsv+OuC
+ NCqnDREXNCtElIaiBEXV9lOObMRnMql0d8Aiec9C6IW0u/cpOFUjFQg771wuAuTLdSgw
+ 18yYusrLrPg86sbv1amNBFhJVoauC+mJqk8fmg6gEQohbqRyVOFwX0Ra/bupcedSVs58
+ 2/P9WYshzBp/Jssq94je885lPDRKRsVQQK7dpP3fimazY1DB/0ByqQV0StDCVbQIu/Ml
+ gHcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=XGEj3VJB73XMSjdKjc291NmLGevIXZKdlnrTsayg+jI=;
+ b=QQJClttgq3TcMBvIrnm3RBi+H/ToI3uyMmHqyFPBdKj/we5a6mFThZ8K4TiMfxG6Q6
+ WBA/5yF8gvIZs627HpOh/e4QB8Jpj/Dr4EFf1oQZu06IsUR8MrX9WdGaq3FQBfsZofoZ
+ O2WV0y/L5eVW9Wn4GRJ4CC0F2KL92y5mbhCHEvU0wzWeER54HiMgMShufi029LZ/2mTs
+ qEs6hztxw54Q4dAk5ZEX00U2hbtYd9R+tx2cWYAjRDl2WVzDseE0sHjDqRGpIL9GRbmv
+ nSSUu0UICY3vYsw7jCTKHvMAoH182i6kYWypEl9gcuxgBNtY2thrursc066C7IRA6Dm7
+ Pi4A==
+X-Gm-Message-State: AGi0Puay2uEmX4MoAx5wC72cgVsDA6Ja9TVZAs7MtXV/Q8E74P/GAGc5
+ juriDVwuB9/fQ+dxTjVKJHM=
+X-Google-Smtp-Source: APiQypJ6/MElbXcE0UnT48kiPNKQIpXKPuGW3gXNfoZXTy3FbSd75/GBbPf07PiHkG4fgsT381XeUQ==
+X-Received: by 2002:a5d:4447:: with SMTP id x7mr9540180wrr.299.1587227092419; 
+ Sat, 18 Apr 2020 09:24:52 -0700 (PDT)
+Received: from [192.168.43.18] (188.29.165.57.threembb.co.uk. [188.29.165.57])
+ by smtp.gmail.com with ESMTPSA id
+ x18sm35822640wrs.11.2020.04.18.09.24.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 18 Apr 2020 09:24:51 -0700 (PDT)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: [PATCH] staging: vt6656: Don't set RCR_MULTICAST or RCR_BROADCAST by
+ default.
+Message-ID: <2c24c33d-68c4-f343-bd62-105422418eac@gmail.com>
+Date: Sat, 18 Apr 2020 17:24:50 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:4JFtHOTdQkeOmzXA0/LYjINxluFdAMpRqtHOhwpeJebrmU3ZkS5
- Q6AZ0qRJj0o+UMJAXBvV0+IS1ZG+0Sc9noMFEdOLWtcbi3f8mf7Jpbq1LPWx9TahJKznBxM
- 57T+a5xcnh9OULhjG2AFQ3CdtbIXmQUc23VQfhF3CysqoLuqnWHWJcn7ERswBrKExzt44bB
- Hs6i3S4vPfVDZ5zCZXQXw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:aa2gM4tW/X8=:ut/0Mb0Rrp4UmD3apbwkAR
- Ho6S626EEb4Pyvij+acmOhAnTftZatO6XC02S9vbdFevjOgN7b7K7fLxgRu+FDMYOawc3dVFA
- isLSqdtGoo3yCkNGuNe+FI2/sP6ulLjVNAlu4O5kZOiME/oK2OCU7fnEqbeW3dE1sGDMXSl0x
- hreOMXUaJ4mPv+HDV7iG86ePePSE1WzCrb6vibnjTflqRS+f1PGF4T+F2Qy51XqZYeGDDTi0U
- 2ueJdZEmaRG6l6Abk99F37GzvpGjk13JrnjtlU7MVpYvQdGqggm0NY5yUY3dxliTshzwWWv9a
- nf/ewqeZuTn+lpuwGff1voM+/o9AWRgyoA9N1bDdAaf+5Hw/BrArQRgjzRydxXl+C3Qs/19ON
- UZPXl20YlKMH6ztGRy6jgQI5puvbFglvNlDZFUZnk8xAhbApZh3g2fNxFLH5xmhoJOnG12H1c
- yJYDu6+mLWTipR6NF0PW7RUem/rrJuxVpa/CXxofZGcEopLg/XTU4s3kAdUklqj99n1nasS6G
- kgR/44xN924GlSYTYcVJRMO5VwYzayy9t9cHPLWEN5YO7gWu3Nps5ICPYGhKsIZrw972IjVRM
- wjOrrse9iXfqo45p/zO2J+YVDp5bsCkVjlxfo0B2QyFtvk8t0ARRrfs5nOT9QW5BVGHv7jZni
- Bf9gTHKtSKRWiDHl39wTGoEqOK1APoicCzhbEUuRi+j0eTo2lqY+ZBbbOuT6f9lN0zMvBf6gb
- vXMp/GuO0DxevWEg8a2ItMCR9ggFgWo7tzEXbGUXpavAoXH2EVZIbl0LeCX+VbRg5rqV2MBuS
- 2kQqg8n9/utToGBlQcb9yIW0uAB+L+b4p2glGA/xRozOVNG3auL74o6OBz7TNYpHQOmtXq1cs
- BSgLlpJOunyX0BIYCjJCjCA8093r1jl30iOqMhMnHnAu0geV+WrT6C/iEpBK7Iw0jD1ZIWfB8
- nXmIWKsTDK6wO+xU5mElP0nJi8yib3s2iMnz8Bbpb5J+MO05FFg0JBQ/orj9thIlkyc6+k2oa
- p2ADOHqxLdOdxyc7NxamvNUvjP+jrQSRuYTUZ6OJTKR7R9YrOF8fSCCwBAOyYOd9lbsjfyA7R
- 9U4IWWigeBoas4GnKLXRWynXs24F9oOlS2O+U5DEkJVG20dLGZlkrftdzLgExEMw3Q1N6jweX
- ns7L9x7pSDsjNJKzSDpe0m0adt3z62e/yffuKt6FTYN0qA0o8E6YaJksoozFq+VPRuAw1JgTg
- MPBy4I2Fx4pcJk3Bo
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,73 +87,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Malcolm Priestley <tvboxspy@gmail.com>,
- "John B . Wyatt IV" <jbwyatt4@gmail.com>, linux-kernel@vger.kernel.org,
- Stefano Brivio <sbrivio@redhat.com>, Colin Ian King <colin.king@canonical.com>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Oscar Carter <oscar.carter@gmx.com>, linux-wireless@vger.kernel.org,
+ stable@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace the for loop by a ternary operator whose condition is an AND
-bitmask against the priv->basic_rates variable.
+mac80211/users control whether multicast is on or off don't enable it by default.
 
-The purpose of the for loop was to check if any of bits from RATE_54M to
-RATE_6M was set, but it's not necessary to check every individual bit.
-The same result can be achieved using only one single mask which
-comprises all the commented bits.
+Fixes an issue when multicast/broadcast is always on allowing other beacons through
+in power save.
 
-This way avoid the iteration over an unnecessary for loop.
-
-Also change the return type to bool because it's the type that this
-function returns.
-
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+Fixes: db8f37fa3355 ("staging: vt6656: mac80211 conversion: main_usb add functions...")
+Cc: stable <stable@vger.kernel.org>
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- drivers/staging/vt6656/card.c | 11 ++---------
- drivers/staging/vt6656/card.h |  2 +-
- 2 files changed, 3 insertions(+), 10 deletions(-)
+ drivers/staging/vt6656/main_usb.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index 9bd37e57c727..adaf93cf653a 100644
---- a/drivers/staging/vt6656/card.c
-+++ b/drivers/staging/vt6656/card.c
-@@ -248,16 +248,9 @@ void vnt_update_top_rates(struct vnt_private *priv)
- 	priv->top_cck_basic_rate = top_cck;
- }
-
--int vnt_ofdm_min_rate(struct vnt_private *priv)
-+bool vnt_ofdm_min_rate(struct vnt_private *priv)
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index 3c76d3cb5bbe..b2729d5eadfb 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -801,15 +801,11 @@ static void vnt_configure(struct ieee80211_hw *hw,
  {
--	int ii;
+ 	struct vnt_private *priv = hw->priv;
+ 	u8 rx_mode = 0;
+-	int rc;
+ 
+ 	*total_flags &= FIF_ALLMULTI | FIF_OTHER_BSS | FIF_BCN_PRBRESP_PROMISC;
+ 
+-	rc = vnt_control_in(priv, MESSAGE_TYPE_READ, MAC_REG_RCR,
+-			    MESSAGE_REQUEST_MACREG, sizeof(u8), &rx_mode);
 -
--	for (ii = RATE_54M; ii >= RATE_6M; ii--) {
--		if ((priv->basic_rates) & ((u16)BIT(ii)))
--			return true;
--	}
--
--	return false;
-+	return priv->basic_rates & GENMASK(RATE_54M, RATE_6M) ? true : false;
- }
-
- u8 vnt_get_pkt_type(struct vnt_private *priv)
-diff --git a/drivers/staging/vt6656/card.h b/drivers/staging/vt6656/card.h
-index 75cd340c0cce..eaa15d0c291a 100644
---- a/drivers/staging/vt6656/card.h
-+++ b/drivers/staging/vt6656/card.h
-@@ -29,7 +29,7 @@ void vnt_set_channel(struct vnt_private *priv, u32 connection_channel);
- void vnt_set_rspinf(struct vnt_private *priv, u8 bb_type);
- void vnt_update_ifs(struct vnt_private *priv);
- void vnt_update_top_rates(struct vnt_private *priv);
--int vnt_ofdm_min_rate(struct vnt_private *priv);
-+bool vnt_ofdm_min_rate(struct vnt_private *priv);
- void vnt_adjust_tsf(struct vnt_private *priv, u8 rx_rate,
- 		    u64 time_stamp, u64 local_tsf);
- bool vnt_get_current_tsf(struct vnt_private *priv, u64 *current_tsf);
---
-2.20.1
-
+-	if (!rc)
+-		rx_mode = RCR_MULTICAST | RCR_BROADCAST;
++	vnt_control_in(priv, MESSAGE_TYPE_READ, MAC_REG_RCR,
++		       MESSAGE_REQUEST_MACREG, sizeof(u8), &rx_mode);
+ 
+ 	dev_dbg(&priv->usb->dev, "rx mode in = %x\n", rx_mode);
+ 
+-- 
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
