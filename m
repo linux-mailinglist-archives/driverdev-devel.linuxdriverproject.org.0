@@ -1,81 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0621C1AF978
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Apr 2020 12:51:03 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F7F91AF975
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Apr 2020 12:49:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 407C887812;
-	Sun, 19 Apr 2020 10:51:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CA2CD20403;
+	Sun, 19 Apr 2020 10:49:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S7pFoVYjnSir; Sun, 19 Apr 2020 10:50:59 +0000 (UTC)
+	with ESMTP id yKpBie-5iFx6; Sun, 19 Apr 2020 10:49:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7389987829;
-	Sun, 19 Apr 2020 10:50:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 85F23203FE;
+	Sun, 19 Apr 2020 10:49:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7F91B1BF2B4
- for <devel@linuxdriverproject.org>; Sun, 19 Apr 2020 10:50:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 690731BF2B4
+ for <devel@linuxdriverproject.org>; Sun, 19 Apr 2020 10:49:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7BAFE86004
- for <devel@linuxdriverproject.org>; Sun, 19 Apr 2020 10:50:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 65905854DB
+ for <devel@linuxdriverproject.org>; Sun, 19 Apr 2020 10:49:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PIN0xR6k5vbq for <devel@linuxdriverproject.org>;
- Sun, 19 Apr 2020 10:50:21 +0000 (UTC)
+ with ESMTP id wFesAuzkUTLf for <devel@linuxdriverproject.org>;
+ Sun, 19 Apr 2020 10:49:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7936F8602E
- for <devel@driverdev.osuosl.org>; Sun, 19 Apr 2020 10:50:17 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D54BA854D7
+ for <devel@driverdev.osuosl.org>; Sun, 19 Apr 2020 10:49:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1587293332;
- bh=oJl1V44SYlfqrSsWFE18wsMXsp36NtGo7f/zkPGONYA=;
+ s=badeba3b8450; t=1587293337;
+ bh=oiCl10dnqu2MRDWuRbka7zAznUFMBfpARUEr8Zh5OrM=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=R62UB+EjayIc0SJzDtCwVRH/tVJzG/3uCdzQ0unrXX1wtRGtZq6LnYp+98MCMO+0q
- 97AGUZaw0tSCboyiMoAuIyLDUkdkBanb4RzGNWYyY9x8PVfh6JYXN0Xjl8AZUaVjHj
- 5uvAAyvblFcEyw8/4qE7dK3QU3VGwBCWKIcuVa8Q=
+ b=eBCG9qhiZVS0SW64b4lbj8Cb6hV7Ph0D6L3NdZwROAGvf/IoQe23V6bv+TZIW6o5P
+ HgemFtLoMr/Xy4VKX2RlRMSAvOip2NVaaDnvIr0X/a97e13M2LFgOxorCcmORFniRU
+ QdoZkXluR+lcsSjNkEpZT4RDcANLQPAgbuBKt+Sw=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
  (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1MhlKs-1img0x3LUG-00dqY8; Sun, 19 Apr 2020 12:48:51 +0200
+ 1MiJZE-1im7mo3rzK-00fVF4; Sun, 19 Apr 2020 12:48:57 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
 To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 1/2] staging: vt6656: Check the return value of
- vnt_control_out_* calls
-Date: Sun, 19 Apr 2020 12:48:20 +0200
-Message-Id: <20200419104821.6127-2-oscar.carter@gmx.com>
+Subject: [PATCH v2 2/2] staging: vt6656: Remove functions' documentation
+Date: Sun, 19 Apr 2020 12:48:21 +0200
+Message-Id: <20200419104821.6127-3-oscar.carter@gmx.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200419104821.6127-1-oscar.carter@gmx.com>
 References: <20200419104821.6127-1-oscar.carter@gmx.com>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:EF/dujcdZZbnnHL5QqHYd0xiOxZoTCmqnqeC/i3NJGmh8uVov2/
- Gp6CNfpPPQSbWvczzJHNOKIUxFXV+PwaC0Tta40bdnv5nz14oDJ3+gWZl3YGFbNAn9NJDmA
- Ty2cKY0RYM6GLhKvHfGzUGfiFbP5zzz6Gqrt6+dodg2N+9XqWUSOvSmwwS5YBHAfQtm/guO
- 37IZpLp41kBOlVjlW9mDQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:bK0d3M2Nl7E=:iUkqsjOaKvb7s/9S5oUjt2
- NXLMlSBDXcHqQXhe/BdxAaQ5lRynyz9C7ibRgVwNyALxXGgqEMMq32yNuYRBZzjgv522ZMcLq
- EcsJq+rDkeKyBsNSqhOnrfEcKhuQ5d8FcE+UigDYz4pl/bZDpqO7yySSETiX629ldfcEqnYrr
- tyVlEO5Uu7MF3pLMpkiWHA0Eqql5X+abM75ebLTmnABeFCCtCgisK4/KxJFqgtaaHhY/g9CfQ
- kKIV7nxRKsuIwCY4Um+0L0/gS+3Avu3U3IKE9WaXIFD3zsiF2osQf5VoOQPw85okS1uiZenCP
- bKhUa6XkdeFfz+hMMGpSV3urpyPsgNxn/lkbnXCofhGN19XnHFt1NMRZAj8Vg3V203hKZZU2U
- uSsKhlSsT90qR+ln7MpxeDO2125nYfCHmbfE3fhYrU4paBUYPx9es/mF2txC8W9Kx5zPHP3vi
- 761bBjupRqMjMAeTLYW6K2kUQ4MCALvGbNvvoFeb5ieU1u6f5AV3BcuXfQhQhcldvOGULnyYd
- Rs2Kal1YWBco/Gr/eqGrfu0rRaOy71tVUGpK+j2RAc1v0k5v/WHPgE2fGdyBE64gVCGrW659+
- kb7ZgGjhwrhWeeDQjKCGxhnS0J20W/A0xmqGEWtasS9wxawYV6zqJWVRUgPqO3hGwIKvsU/W1
- Q8pLV3CZ8HrEbmb8+gBJCkyobwY1QFvxf726wOcGZrLMbXo4Inmio8n5zdHc6VrikyAXa9Dr2
- ssoL91xd+vm9hiVEBJYz8khmsHg99jB5nUvmvHT2Ie0MMdNh3vFlg+j8NVWX8VUzHSIpTL1/Y
- qvZmyd8Xgj2e8kEfP/+1+lsWkJcoE/mofJY/WtOyh03g5pv3GpER1dG2UEYK8cwHFQN5ck1wd
- 4sTzss/rvhycLd6JxLI3EYcouxkevb3Npz8WI8k55Fyv4dAbqvG/DzvXG1rO12VsFw1Em3L+m
- InVSEyg5L/OulAP8ENBIX6BX6uFgoGgyXCAezjtPhhu5KfwhFHz17jf4avvxvMNOMv9Vhglxw
- DCPS0KlVXAQxJrNn5HsYfLntNzynu0dsA10ilhVTY27x95Rn6Jz1lYdHOSullveuCLZy2/JEB
- zPyIESvu5xTDklgmFlNB9AHPQgvpkS6zVZ2twZ5SFPGqR5ZbOLp1zoXmrR58t5r8wzor3imfq
- rPYThIEBPAkdJdtKMMPVlUfTTVyvDxR+ZBMg2oXr68W0VrtBoT/IoH5Fnxb8rxulyg9V5J8kk
- cAdXRRo4hJ62M9H1W
+X-Provags-ID: V03:K1:bWw9GnsA25V31ydyY7KLlxyve8/+XHkoA3VqPgpjLU7q04809g+
+ Xs4HSQNz/iCzsQfNAPMSIHGNC27N+BhchGwlTnyNa7+pl1YWcQzarqi+uemdE+mIaw2KPXF
+ YRMHllo2lkaMoI9yy9gqA0M1XMY3eCx7NLu6pabDbyxGhPTt7nh/1Abx+wDmXCwGWPb1Ith
+ qNmejkKcZXKB8p35LrW1A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:JQBLykTbI6Y=:+csqz4VZl25BH3d8eH5GRh
+ v0zDtkp5hfOCtxvnntsnGDdLQlNedh5u6j3sBEAAWJFRgSGZ7PTv0Jesxjz3l3TnsqgKhPAtO
+ kjmY47nDdYLnUf/CuZlmY/KCZM1VTSQWkIYFFin2ujpe1Nplm7qUTi/z9rFGLt/J3kfy0sIXH
+ n3PKxhbodH1eg7Y9lcgILQVF0nTWwGbTcZLYEZjVR7uMwvnnYO1fgnd7TUiuw+/TomuWRIsSy
+ ZOawqkvtiiJse3yfG9MLHPlWDS1JZBMckV9rUzUOE7CwJTdNmSws6lq862gu2yqRcbiTRlJR1
+ fHTQyZ29izSh8Xky8eYBme+h4QiZeqknvngooGxPn6sKl/tvXKMIPtfHx8EGy0Wi6J9IKwmhs
+ 16FW9k94nOTPUCPV//puxInjwRzLeUYjV5xFKn4jXStg53JL/XzVJEfhC2Nn4NkeoGpsQyOwN
+ mXNRtsnQE+0JpFw9gYJwMFc2kHRIcaBDSPpbBeadUfM60wOiKMWUSFtetKIIbZPH6hYHNzZE5
+ W/n/mzbrlst+oG6X/+/8A7ch/ICN+bKuUYzJY+xCChhtO1aC7blrvTVfqGTmJHNE7j9dQS9A/
+ EfXprGcryrp6qYiw7m3g6saR53KPRGOrMjbII9vKA0iaSTEfBLV1EIIo7x7PEqCTgihF1qaMe
+ m1JcpUPrd2C0n5f1Pji0DCnXFwX0EgofDIHEsCGfxL/hS5Ns1niAQ1Z6fxk/PtMV1Kfj0Qww2
+ DzoXcN6r80IxthSkNeb2cjDVDRgt4sF1GL/RDDCOxDf3yV5kN5d24Q1DDUMOhr6+c0RGT7E8S
+ t9bO5Q8Pml9s9miPedgOdGwVZXDuJYX3TBZfbV2oH7Xfa5FGiia33CuxHsxMn++rQIOuhJR2r
+ gTNQwAFG3AtvxugyosyORxttpFnwVb2oF66jLHAGDd90NBJ9zW4cDom2OlD8eIKAAHbWFjRYa
+ OqFjDR6OC+qbALO31abQlHpC4rAN7sm2Ov/YDaK92DCt5Rr14JgyVk4VBD2+pdQCWjt53FEbt
+ 2AoYGHrrcrBYAQznwRMR8TjlV6U7jivPRB9CrqJnw6Uoz7bQgNR6pSFOp9749Fr4vudxfePAU
+ /IK8/QsiAmfwBGn3WCDm8EbcFTpuAAwG7pjzCaDP2nJ/2OQT4lVNs+1CN3a71XWsfnT5Any4G
+ lswzWRuvXSH+XxUM/+OwjMMPKeSf+av+ee93bDMZr59Jz1fGcm2t/SJ2ntSFptt12/1f1ETxQ
+ Hucu857LsWEI4tr0V
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,697 +97,246 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Check the return value of vnt_control_out_* function calls. When
-necessary modify the function prototype to be able to return the new
-checked error code.
-
-It's safe to modify all the function prototypes without fix the call
-because the only change is the return value from void to int. If before
-the call didn't check the return value, now neither.
+Remove the functions' documentation as the names of the functions are
+clear enought. Also, the actual documentation it's not correct in all
+cases.
 
 Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 ---
- drivers/staging/vt6656/baseband.c | 35 ++++++-----
- drivers/staging/vt6656/baseband.h |  4 +-
- drivers/staging/vt6656/card.c     | 97 ++++++++++++++++++++-----------
- drivers/staging/vt6656/card.h     | 18 +++---
- drivers/staging/vt6656/mac.c      | 76 ++++++++++++------------
- drivers/staging/vt6656/mac.h      | 26 ++++-----
- drivers/staging/vt6656/power.c    | 12 +++-
- drivers/staging/vt6656/power.h    |  2 +-
- 8 files changed, 156 insertions(+), 114 deletions(-)
+ drivers/staging/vt6656/card.c  | 79 ----------------------------------
+ drivers/staging/vt6656/mac.c   | 52 ----------------------
+ drivers/staging/vt6656/power.c | 10 -----
+ 3 files changed, 141 deletions(-)
 
-diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
-index e0352405e4cf..91cf00615ef3 100644
---- a/drivers/staging/vt6656/baseband.c
-+++ b/drivers/staging/vt6656/baseband.c
-@@ -23,6 +23,7 @@
-  */
-
- #include <linux/bits.h>
-+#include <linux/errno.h>
- #include <linux/kernel.h>
- #include "mac.h"
- #include "baseband.h"
-@@ -559,21 +560,22 @@ int vnt_set_short_slot_time(struct vnt_private *priv)
-
- 	ret = vnt_control_in_u8(priv, MESSAGE_REQUEST_BBREG, 0xe7, &bb_vga);
- 	if (ret)
--		goto end;
-+		return ret;
-
- 	if (bb_vga == priv->bb_vga[0])
- 		priv->bb_rx_conf |= 0x20;
-
--	ret = vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0x0a,
--				 priv->bb_rx_conf);
--
--end:
--	return ret;
-+	return vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0x0a,
-+				  priv->bb_rx_conf);
- }
-
--void vnt_set_vga_gain_offset(struct vnt_private *priv, u8 data)
-+int vnt_set_vga_gain_offset(struct vnt_private *priv, u8 data)
- {
--	vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0xE7, data);
-+	int ret;
-+
-+	ret = vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0xE7, data);
-+	if (ret)
-+		return ret;
-
- 	/* patch for 3253B0 Baseband with Cardbus module */
- 	if (priv->short_slot_time)
-@@ -581,7 +583,8 @@ void vnt_set_vga_gain_offset(struct vnt_private *priv, u8 data)
- 	else
- 		priv->bb_rx_conf |= 0x20; /* 0010 0000 */
-
--	vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0x0a, priv->bb_rx_conf);
-+	return vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0x0a,
-+				  priv->bb_rx_conf);
- }
-
- /*
-@@ -622,12 +625,13 @@ int vnt_exit_deep_sleep(struct vnt_private *priv)
- 	return vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0x0d, 0x01);
- }
-
--void vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning)
-+int vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning)
- {
- 	const struct vnt_threshold *threshold = NULL;
- 	u8 length;
- 	u8 cr_201, cr_206;
- 	u8 ed_inx = priv->bb_pre_ed_index;
-+	int ret;
-
- 	switch (priv->rf_type) {
- 	case RF_AL2230:
-@@ -650,7 +654,7 @@ void vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning)
- 	}
-
- 	if (!threshold)
--		return;
-+		return -EINVAL;
-
- 	for (ed_inx = scanning ? 0 : length - 1; ed_inx > 0; ed_inx--) {
- 		if (priv->bb_pre_ed_rssi <= threshold[ed_inx].bb_pre_ed_rssi)
-@@ -661,14 +665,17 @@ void vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning)
- 	cr_206 = threshold[ed_inx].cr_206;
-
- 	if (ed_inx == priv->bb_pre_ed_index && !scanning)
--		return;
-+		return 0;
-
- 	priv->bb_pre_ed_index = ed_inx;
-
- 	dev_dbg(&priv->usb->dev, "%s bb_pre_ed_rssi %d\n",
- 		__func__, priv->bb_pre_ed_rssi);
-
--	vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0xc9, cr_201);
--	vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0xce, cr_206);
-+	ret = vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0xc9, cr_201);
-+	if (ret)
-+		return ret;
-+
-+	return vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0xce, cr_206);
- }
-
-diff --git a/drivers/staging/vt6656/baseband.h b/drivers/staging/vt6656/baseband.h
-index dc42aa6ae1d9..8739988bf9e8 100644
---- a/drivers/staging/vt6656/baseband.h
-+++ b/drivers/staging/vt6656/baseband.h
-@@ -80,11 +80,11 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
- 		       u16 tx_rate, u8 pkt_type, struct vnt_phy_field *phy);
-
- int vnt_set_short_slot_time(struct vnt_private *priv);
--void vnt_set_vga_gain_offset(struct vnt_private *priv, u8 data);
-+int vnt_set_vga_gain_offset(struct vnt_private *priv, u8 data);
- int vnt_set_antenna_mode(struct vnt_private *priv, u8 antenna_mode);
- int vnt_vt3184_init(struct vnt_private *priv);
- int vnt_set_deep_sleep(struct vnt_private *priv);
- int vnt_exit_deep_sleep(struct vnt_private *priv);
--void vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning);
-+int vnt_update_pre_ed_threshold(struct vnt_private *priv, int scanning);
-
- #endif /* __BASEBAND_H__ */
 diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index 9bd37e57c727..99ad56b7617d 100644
+index 99ad56b7617d..e5e44d0a07ff 100644
 --- a/drivers/staging/vt6656/card.c
 +++ b/drivers/staging/vt6656/card.c
-@@ -27,6 +27,7 @@
-  */
+@@ -46,16 +46,6 @@ static const u16 cw_rxbcntsf_off[MAX_RATE] = {
+ 	192, 96, 34, 17, 34, 23, 17, 11, 8, 5, 4, 3
+ };
 
- #include <linux/bits.h>
-+#include <linux/errno.h>
- #include "device.h"
- #include "card.h"
- #include "baseband.h"
-@@ -55,10 +56,12 @@ static const u16 cw_rxbcntsf_off[MAX_RATE] = {
-  *  Out:
-  *      none
-  */
--void vnt_set_channel(struct vnt_private *priv, u32 connection_channel)
-+int vnt_set_channel(struct vnt_private *priv, u32 connection_channel)
+-/*
+- * Description: Set NIC media channel
+- *
+- * Parameters:
+- *  In:
+- *      pDevice             - The adapter to be set
+- *      connection_channel  - Channel to be set
+- *  Out:
+- *      none
+- */
+ int vnt_set_channel(struct vnt_private *priv, u32 connection_channel)
  {
-+	int ret;
-+
- 	if (connection_channel > CB_MAX_CHANNEL || !connection_channel)
--		return;
-+		return -EINVAL;
+ 	int ret;
+@@ -99,19 +89,6 @@ static const u8 vnt_rspinf_gb_table[] = {
+ 	0x0e, 0x8d, 0x0a, 0x88, 0x0a, 0x8c, 0x0a, 0x8c, 0x0a
+ };
 
- 	/* clear NAV */
- 	vnt_mac_reg_bits_on(priv, MAC_REG_MACCR, MACCR_CLRNAV);
-@@ -67,11 +70,13 @@ void vnt_set_channel(struct vnt_private *priv, u32 connection_channel)
- 	vnt_mac_reg_bits_off(priv, MAC_REG_CHANNEL,
- 			     (BIT(7) | BIT(5) | BIT(4)));
-
--	vnt_control_out(priv, MESSAGE_TYPE_SELECT_CHANNEL,
--			connection_channel, 0, 0, NULL);
-+	ret = vnt_control_out(priv, MESSAGE_TYPE_SELECT_CHANNEL,
-+			      connection_channel, 0, 0, NULL);
-+	if (ret)
-+		return ret;
-
--	vnt_control_out_u8(priv, MESSAGE_REQUEST_MACREG, MAC_REG_CHANNEL,
--			   (u8)(connection_channel | 0x80));
-+	return vnt_control_out_u8(priv, MESSAGE_REQUEST_MACREG, MAC_REG_CHANNEL,
-+				  (u8)(connection_channel | 0x80));
- }
-
- static const u8 vnt_rspinf_b_short_table[] = {
-@@ -107,10 +112,11 @@ static const u8 vnt_rspinf_gb_table[] = {
-  *
-  */
-
--void vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
-+int vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
+-/*
+- * Description: Set RSPINF
+- *
+- * Parameters:
+- *  In:
+- *      pDevice             - The adapter to be set
+- *  Out:
+- *      none
+- *
+- * Return Value: None.
+- *
+- */
+-
+ int vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
  {
  	const u8 *data;
- 	u16 len;
-+	int ret;
-
- 	if (priv->preamble_type) {
- 		data = vnt_rspinf_b_short_table;
-@@ -121,8 +127,10 @@ void vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
- 	}
-
- 	 /* RSPINF_b_1 to RSPINF_b_11 */
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_RSPINF_B_1,
--			MESSAGE_REQUEST_MACREG, len, data);
-+	ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_RSPINF_B_1,
-+			      MESSAGE_REQUEST_MACREG, len, data);
-+	if (ret)
-+		return ret;
-
- 	if (bb_type == BB_TYPE_11A) {
- 		data = vnt_rspinf_a_table;
-@@ -133,8 +141,8 @@ void vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
- 	}
-
- 	/* RSPINF_a_6 to RSPINF_a_72 */
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_RSPINF_A_6,
--			MESSAGE_REQUEST_MACREG, len, data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_RSPINF_A_6,
-+			       MESSAGE_REQUEST_MACREG, len, data);
+@@ -145,18 +122,6 @@ int vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
+ 			       MESSAGE_REQUEST_MACREG, len, data);
  }
 
- /*
-@@ -149,10 +157,11 @@ void vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
-  * Return Value: None.
-  *
-  */
--void vnt_update_ifs(struct vnt_private *priv)
-+int vnt_update_ifs(struct vnt_private *priv)
+-/*
+- * Description: Update IFS
+- *
+- * Parameters:
+- *  In:
+- *	priv - The adapter to be set
+- * Out:
+- *	none
+- *
+- * Return Value: None.
+- *
+- */
+ int vnt_update_ifs(struct vnt_private *priv)
  {
  	u8 max_min = 0;
- 	u8 data[4];
-+	int ret;
-
- 	if (priv->packet_type == PK_TYPE_11A) {
- 		priv->slot = C_SLOT_SHORT;
-@@ -212,13 +221,15 @@ void vnt_update_ifs(struct vnt_private *priv)
- 	data[2] = (u8)priv->eifs;
- 	data[3] = (u8)priv->slot;
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_SIFS,
--			MESSAGE_REQUEST_MACREG, 4, &data[0]);
-+	ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_SIFS,
-+			      MESSAGE_REQUEST_MACREG, 4, &data[0]);
-+	if (ret)
-+		return ret;
-
- 	max_min |= 0xa0;
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_CWMAXMIN0,
--			MESSAGE_REQUEST_MACREG, 1, &max_min);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_CWMAXMIN0,
-+			       MESSAGE_REQUEST_MACREG, 1, &max_min);
+@@ -300,21 +265,6 @@ u64 vnt_get_tsf_offset(u8 rx_rate, u64 tsf1, u64 tsf2)
+ 	return tsf1 - tsf2 - (u64)cw_rxbcntsf_off[rx_rate % MAX_RATE];
  }
 
- void vnt_update_top_rates(struct vnt_private *priv)
-@@ -304,8 +315,8 @@ u64 vnt_get_tsf_offset(u8 rx_rate, u64 tsf1, u64 tsf2)
-  * Return Value: none
-  *
-  */
--void vnt_adjust_tsf(struct vnt_private *priv, u8 rx_rate,
--		    u64 time_stamp, u64 local_tsf)
-+int vnt_adjust_tsf(struct vnt_private *priv, u8 rx_rate,
-+		   u64 time_stamp, u64 local_tsf)
+-/*
+- * Description: Sync. TSF counter to BSS
+- *              Get TSF offset and write to HW
+- *
+- * Parameters:
+- *  In:
+- *      priv		- The adapter to be sync.
+- *      time_stamp	- Rx BCN's TSF
+- *      local_tsf	- Local TSF
+- *  Out:
+- *      none
+- *
+- * Return Value: none
+- *
+- */
+ int vnt_adjust_tsf(struct vnt_private *priv, u8 rx_rate,
+ 		   u64 time_stamp, u64 local_tsf)
  {
- 	u64 tsf_offset = 0;
- 	u8 data[8];
-@@ -321,8 +332,8 @@ void vnt_adjust_tsf(struct vnt_private *priv, u8 rx_rate,
- 	data[6] = (u8)(tsf_offset >> 48);
- 	data[7] = (u8)(tsf_offset >> 56);
-
--	vnt_control_out(priv, MESSAGE_TYPE_SET_TSFTBTT,
--			MESSAGE_REQUEST_TSF, 0, 8, data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_SET_TSFTBTT,
-+			       MESSAGE_REQUEST_TSF, 0, 8, data);
+@@ -408,20 +358,6 @@ u64 vnt_get_next_tbtt(u64 tsf, u16 beacon_interval)
+ 	return tsf;
  }
 
- /*
-@@ -411,7 +422,7 @@ u64 vnt_get_next_tbtt(u64 tsf, u16 beacon_interval)
-  * Return Value: none
-  *
-  */
--void vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
-+int vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
+-/*
+- * Description: Set NIC TSF counter for first Beacon time
+- *              Get NEXTTBTT from adjusted TSF and Beacon Interval
+- *
+- * Parameters:
+- *  In:
+- *      dwIoBase        - IO Base
+- *	beacon_interval - Beacon Interval
+- *  Out:
+- *      none
+- *
+- * Return Value: none
+- *
+- */
+ int vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
  {
  	u64 next_tbtt = 0;
- 	u8 data[8];
-@@ -429,8 +440,8 @@ void vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
- 	data[6] = (u8)(next_tbtt >> 48);
- 	data[7] = (u8)(next_tbtt >> 56);
-
--	vnt_control_out(priv, MESSAGE_TYPE_SET_TSFTBTT,
--			MESSAGE_REQUEST_TBTT, 0, 8, data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_SET_TSFTBTT,
-+			       MESSAGE_REQUEST_TBTT, 0, 8, data);
+@@ -444,21 +380,6 @@ int vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
+ 			       MESSAGE_REQUEST_TBTT, 0, 8, data);
  }
 
- /*
-@@ -448,10 +459,11 @@ void vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
-  * Return Value: none
-  *
-  */
--void vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
--			  u16 beacon_interval)
-+int vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
-+			 u16 beacon_interval)
+-/*
+- * Description: Sync NIC TSF counter for Beacon time
+- *              Get NEXTTBTT and write to HW
+- *
+- * Parameters:
+- *  In:
+- *	priv		- The adapter to be set
+- *      tsf		- Current TSF counter
+- *      beacon_interval - Beacon Interval
+- *  Out:
+- *      none
+- *
+- * Return Value: none
+- *
+- */
+ int vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
+ 			 u16 beacon_interval)
  {
- 	u8 data[8];
-+	int ret;
-
- 	tsf = vnt_get_next_tbtt(tsf, beacon_interval);
-
-@@ -464,10 +476,13 @@ void vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
- 	data[6] = (u8)(tsf >> 48);
- 	data[7] = (u8)(tsf >> 56);
-
--	vnt_control_out(priv, MESSAGE_TYPE_SET_TSFTBTT,
--			MESSAGE_REQUEST_TBTT, 0, 8, data);
-+	ret = vnt_control_out(priv, MESSAGE_TYPE_SET_TSFTBTT,
-+			      MESSAGE_REQUEST_TBTT, 0, 8, data);
-+	if (ret)
-+		return ret;
-
- 	dev_dbg(&priv->usb->dev, "%s TBTT: %8llx\n", __func__, tsf);
-+	return 0;
- }
-
- /*
-@@ -556,8 +571,10 @@ int vnt_radio_power_on(struct vnt_private *priv)
- 	return vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
- }
-
--void vnt_set_bss_mode(struct vnt_private *priv)
-+int vnt_set_bss_mode(struct vnt_private *priv)
- {
-+	int ret = 0;
-+
- 	if (priv->rf_type == RF_AIROHA7230 && priv->bb_type == BB_TYPE_11A)
- 		vnt_mac_set_bb_type(priv, BB_TYPE_11G);
- 	else
-@@ -566,11 +583,16 @@ void vnt_set_bss_mode(struct vnt_private *priv)
- 	priv->packet_type = vnt_get_pkt_type(priv);
-
- 	if (priv->bb_type == BB_TYPE_11A)
--		vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0x88, 0x03);
-+		ret = vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG,
-+					 0x88, 0x03);
- 	else if (priv->bb_type == BB_TYPE_11B)
--		vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0x88, 0x02);
-+		ret = vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG,
-+					 0x88, 0x02);
- 	else if (priv->bb_type == BB_TYPE_11G)
--		vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG, 0x88, 0x08);
-+		ret = vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG,
-+					 0x88, 0x08);
-+	if (ret)
-+		return ret;
-
- 	vnt_update_ifs(priv);
- 	vnt_set_rspinf(priv, (u8)priv->bb_type);
-@@ -579,8 +601,10 @@ void vnt_set_bss_mode(struct vnt_private *priv)
- 		if (priv->rf_type == RF_AIROHA7230) {
- 			priv->bb_vga[0] = 0x20;
-
--			vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG,
--					   0xe7, priv->bb_vga[0]);
-+			ret = vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG,
-+						 0xe7, priv->bb_vga[0]);
-+			if (ret)
-+				return ret;
- 		}
-
- 		priv->bb_vga[2] = 0x10;
-@@ -589,8 +613,10 @@ void vnt_set_bss_mode(struct vnt_private *priv)
- 		if (priv->rf_type == RF_AIROHA7230) {
- 			priv->bb_vga[0] = 0x1c;
-
--			vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG,
--					   0xe7, priv->bb_vga[0]);
-+			ret = vnt_control_out_u8(priv, MESSAGE_REQUEST_BBREG,
-+						 0xe7, priv->bb_vga[0]);
-+			if (ret)
-+				return ret;
- 		}
-
- 		priv->bb_vga[2] = 0x0;
-@@ -598,4 +624,5 @@ void vnt_set_bss_mode(struct vnt_private *priv)
- 	}
-
- 	vnt_set_vga_gain_offset(priv, priv->bb_vga[0]);
-+	return 0;
- }
-diff --git a/drivers/staging/vt6656/card.h b/drivers/staging/vt6656/card.h
-index 75cd340c0cce..5ef8bad9607e 100644
---- a/drivers/staging/vt6656/card.h
-+++ b/drivers/staging/vt6656/card.h
-@@ -25,23 +25,23 @@
-
- struct vnt_private;
-
--void vnt_set_channel(struct vnt_private *priv, u32 connection_channel);
--void vnt_set_rspinf(struct vnt_private *priv, u8 bb_type);
--void vnt_update_ifs(struct vnt_private *priv);
-+int vnt_set_channel(struct vnt_private *priv, u32 connection_channel);
-+int vnt_set_rspinf(struct vnt_private *priv, u8 bb_type);
-+int vnt_update_ifs(struct vnt_private *priv);
- void vnt_update_top_rates(struct vnt_private *priv);
- int vnt_ofdm_min_rate(struct vnt_private *priv);
--void vnt_adjust_tsf(struct vnt_private *priv, u8 rx_rate,
--		    u64 time_stamp, u64 local_tsf);
-+int vnt_adjust_tsf(struct vnt_private *priv, u8 rx_rate,
-+		   u64 time_stamp, u64 local_tsf);
- bool vnt_get_current_tsf(struct vnt_private *priv, u64 *current_tsf);
- bool vnt_clear_current_tsf(struct vnt_private *priv);
--void vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval);
--void vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
--			  u16 beacon_interval);
-+int vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval);
-+int vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
-+			 u16 beacon_interval);
- u64 vnt_get_next_tbtt(u64 tsf, u16 beacon_interval);
- u64 vnt_get_tsf_offset(u8 rx_rate, u64 tsf1, u64 tsf2);
- int vnt_radio_power_off(struct vnt_private *priv);
- int vnt_radio_power_on(struct vnt_private *priv);
- u8 vnt_get_pkt_type(struct vnt_private *priv);
--void vnt_set_bss_mode(struct vnt_private *priv);
-+int vnt_set_bss_mode(struct vnt_private *priv);
-
- #endif /* __CARD_H__ */
 diff --git a/drivers/staging/vt6656/mac.c b/drivers/staging/vt6656/mac.c
-index 5cacf6e60e90..639172fad0f3 100644
+index 639172fad0f3..da7067c34643 100644
 --- a/drivers/staging/vt6656/mac.c
 +++ b/drivers/staging/vt6656/mac.c
-@@ -35,12 +35,13 @@
-  * Return Value: none
-  *
-  */
--void vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter)
-+int vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter)
+@@ -22,19 +22,6 @@
+ #include "mac.h"
+ #include "usbpipe.h"
+
+-/*
+- * Description:
+- *      Write MAC Multicast Address Mask
+- *
+- * Parameters:
+- *  In:
+- *	mc_filter (mac filter)
+- *  Out:
+- *      none
+- *
+- * Return Value: none
+- *
+- */
+ int vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter)
  {
  	__le64 le_mc = cpu_to_le64(mc_filter);
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_MAR0,
--			MESSAGE_REQUEST_MACREG, sizeof(le_mc), (u8 *)&le_mc);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_MAR0,
-+			       MESSAGE_REQUEST_MACREG, sizeof(le_mc),
-+			       (u8 *)&le_mc);
+@@ -44,17 +31,6 @@ int vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter)
+ 			       (u8 *)&le_mc);
  }
 
- /*
-@@ -54,20 +55,21 @@ void vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter)
-  *
-  *
-  */
--void vnt_mac_shutdown(struct vnt_private *priv)
-+int vnt_mac_shutdown(struct vnt_private *priv)
+-/*
+- * Description:
+- *      Shut Down MAC
+- *
+- * Parameters:
+- *  In:
+- *  Out:
+- *      none
+- *
+- *
+- */
+ int vnt_mac_shutdown(struct vnt_private *priv)
  {
--	vnt_control_out(priv, MESSAGE_TYPE_MACSHUTDOWN, 0, 0, 0, NULL);
-+	return vnt_control_out(priv, MESSAGE_TYPE_MACSHUTDOWN, 0, 0, 0, NULL);
+ 	return vnt_control_out(priv, MESSAGE_TYPE_MACSHUTDOWN, 0, 0, 0, NULL);
+@@ -72,40 +48,12 @@ int vnt_mac_set_bb_type(struct vnt_private *priv, u8 type)
+ 			       data);
  }
 
--void vnt_mac_set_bb_type(struct vnt_private *priv, u8 type)
-+int vnt_mac_set_bb_type(struct vnt_private *priv, u8 type)
+-/*
+- * Description:
+- *      Disable the Key Entry by MISCFIFO
+- *
+- * Parameters:
+- *  In:
+- *      dwIoBase        - Base Address for MAC
+- *
+- *  Out:
+- *      none
+- *
+- * Return Value: none
+- *
+- */
+ int vnt_mac_disable_keyentry(struct vnt_private *priv, u8 entry_idx)
  {
- 	u8 data[2];
-
- 	data[0] = type;
- 	data[1] = EnCFG_BBType_MASK;
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG0,
--			MESSAGE_REQUEST_MACREG,	ARRAY_SIZE(data), data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG0,
-+			       MESSAGE_REQUEST_MACREG,	ARRAY_SIZE(data),
-+			       data);
+ 	return vnt_control_out(priv, MESSAGE_TYPE_CLRKEYENTRY, 0, 0,
+ 			       sizeof(entry_idx), &entry_idx);
  }
 
- /*
-@@ -84,10 +86,10 @@ void vnt_mac_set_bb_type(struct vnt_private *priv, u8 type)
-  * Return Value: none
-  *
-  */
--void vnt_mac_disable_keyentry(struct vnt_private *priv, u8 entry_idx)
-+int vnt_mac_disable_keyentry(struct vnt_private *priv, u8 entry_idx)
+-/*
+- * Description:
+- *      Set the Key by MISCFIFO
+- *
+- * Parameters:
+- *  In:
+- *      dwIoBase        - Base Address for MAC
+- *
+- *  Out:
+- *      none
+- *
+- * Return Value: none
+- *
+- */
+ int vnt_mac_set_keyentry(struct vnt_private *priv, u16 key_ctl, u32 entry_idx,
+ 			 u32 key_idx, u8 *addr, u8 *key)
  {
--	vnt_control_out(priv, MESSAGE_TYPE_CLRKEYENTRY, 0, 0,
--			sizeof(entry_idx), &entry_idx);
-+	return vnt_control_out(priv, MESSAGE_TYPE_CLRKEYENTRY, 0, 0,
-+			       sizeof(entry_idx), &entry_idx);
- }
-
- /*
-@@ -104,8 +106,8 @@ void vnt_mac_disable_keyentry(struct vnt_private *priv, u8 entry_idx)
-  * Return Value: none
-  *
-  */
--void vnt_mac_set_keyentry(struct vnt_private *priv, u16 key_ctl, u32 entry_idx,
--			  u32 key_idx, u8 *addr, u8 *key)
-+int vnt_mac_set_keyentry(struct vnt_private *priv, u16 key_ctl, u32 entry_idx,
-+			 u32 key_idx, u8 *addr, u8 *key)
- {
- 	struct vnt_mac_set_key set_key;
- 	u16 offset;
-@@ -124,9 +126,9 @@ void vnt_mac_set_keyentry(struct vnt_private *priv, u16 key_ctl, u32 entry_idx,
- 	dev_dbg(&priv->usb->dev, "offset %d key ctl %d set key %24ph\n",
- 		offset, key_ctl, (u8 *)&set_key);
-
--	vnt_control_out(priv, MESSAGE_TYPE_SETKEY, offset,
--			(u16)key_idx, sizeof(struct vnt_mac_set_key),
--			(u8 *)&set_key);
-+	return vnt_control_out(priv, MESSAGE_TYPE_SETKEY, offset,
-+			       (u16)key_idx, sizeof(struct vnt_mac_set_key),
-+			       (u8 *)&set_key);
- }
-
- int vnt_mac_reg_bits_off(struct vnt_private *priv, u8 reg_ofs, u8 bits)
-@@ -151,76 +153,76 @@ int vnt_mac_reg_bits_on(struct vnt_private *priv, u8 reg_ofs, u8 bits)
- 			       MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
- }
-
--void vnt_mac_write_word(struct vnt_private *priv, u8 reg_ofs, u16 word)
-+int vnt_mac_write_word(struct vnt_private *priv, u8 reg_ofs, u16 word)
- {
- 	u8 data[2];
-
- 	data[0] = (u8)(word & 0xff);
- 	data[1] = (u8)(word >> 8);
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE, reg_ofs,
--			MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE, reg_ofs,
-+			       MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
- }
-
--void vnt_mac_set_bssid_addr(struct vnt_private *priv, u8 *addr)
-+int vnt_mac_set_bssid_addr(struct vnt_private *priv, u8 *addr)
- {
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_BSSID0,
--			MESSAGE_REQUEST_MACREG, ETH_ALEN, addr);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_BSSID0,
-+			       MESSAGE_REQUEST_MACREG, ETH_ALEN, addr);
- }
-
--void vnt_mac_enable_protect_mode(struct vnt_private *priv)
-+int vnt_mac_enable_protect_mode(struct vnt_private *priv)
- {
- 	u8 data[2];
-
- 	data[0] = EnCFG_ProtectMd;
- 	data[1] = EnCFG_ProtectMd;
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG0,
--			MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG0,
-+			       MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
- }
-
--void vnt_mac_disable_protect_mode(struct vnt_private *priv)
-+int vnt_mac_disable_protect_mode(struct vnt_private *priv)
- {
- 	u8 data[2];
-
- 	data[0] = 0;
- 	data[1] = EnCFG_ProtectMd;
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG0,
--			MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG0,
-+			       MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
- }
-
--void vnt_mac_enable_barker_preamble_mode(struct vnt_private *priv)
-+int vnt_mac_enable_barker_preamble_mode(struct vnt_private *priv)
- {
- 	u8 data[2];
-
- 	data[0] = EnCFG_BarkerPream;
- 	data[1] = EnCFG_BarkerPream;
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG2,
--			MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG2,
-+			       MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
- }
-
--void vnt_mac_disable_barker_preamble_mode(struct vnt_private *priv)
-+int vnt_mac_disable_barker_preamble_mode(struct vnt_private *priv)
- {
- 	u8 data[2];
-
- 	data[0] = 0;
- 	data[1] = EnCFG_BarkerPream;
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG2,
--			MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE_MASK, MAC_REG_ENCFG2,
-+			       MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
- }
-
--void vnt_mac_set_beacon_interval(struct vnt_private *priv, u16 interval)
-+int vnt_mac_set_beacon_interval(struct vnt_private *priv, u16 interval)
- {
- 	u8 data[2];
-
- 	data[0] = (u8)(interval & 0xff);
- 	data[1] = (u8)(interval >> 8);
-
--	vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_BI,
--			MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
-+	return vnt_control_out(priv, MESSAGE_TYPE_WRITE, MAC_REG_BI,
-+			       MESSAGE_REQUEST_MACREG, ARRAY_SIZE(data), data);
- }
-
- int vnt_mac_set_led(struct vnt_private *priv, u8 state, u8 led)
-diff --git a/drivers/staging/vt6656/mac.h b/drivers/staging/vt6656/mac.h
-index b01d9ee8677e..dae70b5c7634 100644
---- a/drivers/staging/vt6656/mac.h
-+++ b/drivers/staging/vt6656/mac.h
-@@ -355,21 +355,21 @@ struct vnt_mac_set_key {
- 	u8 key[WLAN_KEY_LEN_CCMP];
- } __packed;
-
--void vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter);
--void vnt_mac_shutdown(struct vnt_private *priv);
--void vnt_mac_set_bb_type(struct vnt_private *priv, u8 type);
--void vnt_mac_disable_keyentry(struct vnt_private *priv, u8 entry_idx);
--void vnt_mac_set_keyentry(struct vnt_private *priv, u16 key_ctl, u32 entry_idx,
--			  u32 key_idx, u8 *addr, u8 *key);
-+int vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter);
-+int vnt_mac_shutdown(struct vnt_private *priv);
-+int vnt_mac_set_bb_type(struct vnt_private *priv, u8 type);
-+int vnt_mac_disable_keyentry(struct vnt_private *priv, u8 entry_idx);
-+int vnt_mac_set_keyentry(struct vnt_private *priv, u16 key_ctl, u32 entry_idx,
-+			 u32 key_idx, u8 *addr, u8 *key);
- int vnt_mac_reg_bits_off(struct vnt_private *priv, u8 reg_ofs, u8 bits);
- int vnt_mac_reg_bits_on(struct vnt_private *priv, u8 reg_ofs, u8 bits);
--void vnt_mac_write_word(struct vnt_private *priv, u8 reg_ofs, u16 word);
--void vnt_mac_set_bssid_addr(struct vnt_private *priv, u8 *addr);
--void vnt_mac_enable_protect_mode(struct vnt_private *priv);
--void vnt_mac_disable_protect_mode(struct vnt_private *priv);
--void vnt_mac_enable_barker_preamble_mode(struct vnt_private *priv);
--void vnt_mac_disable_barker_preamble_mode(struct vnt_private *priv);
--void vnt_mac_set_beacon_interval(struct vnt_private *priv, u16 interval);
-+int vnt_mac_write_word(struct vnt_private *priv, u8 reg_ofs, u16 word);
-+int vnt_mac_set_bssid_addr(struct vnt_private *priv, u8 *addr);
-+int vnt_mac_enable_protect_mode(struct vnt_private *priv);
-+int vnt_mac_disable_protect_mode(struct vnt_private *priv);
-+int vnt_mac_enable_barker_preamble_mode(struct vnt_private *priv);
-+int vnt_mac_disable_barker_preamble_mode(struct vnt_private *priv);
-+int vnt_mac_set_beacon_interval(struct vnt_private *priv, u16 interval);
- int vnt_mac_set_led(struct vnt_private *privpriv, u8 state, u8 led);
-
- #endif /* __MAC_H__ */
 diff --git a/drivers/staging/vt6656/power.c b/drivers/staging/vt6656/power.c
-index 7a086c72d5a8..2d8d5a332a63 100644
+index 2d8d5a332a63..d160a0773943 100644
 --- a/drivers/staging/vt6656/power.c
 +++ b/drivers/staging/vt6656/power.c
-@@ -87,17 +87,23 @@ void vnt_enable_power_saving(struct vnt_private *priv, u16 listen_interval)
-  *
-  */
-
--void vnt_disable_power_saving(struct vnt_private *priv)
-+int vnt_disable_power_saving(struct vnt_private *priv)
- {
-+	int ret;
-+
- 	/* disable power saving hw function */
--	vnt_control_out(priv, MESSAGE_TYPE_DISABLE_PS, 0,
--			0, 0, NULL);
-+	ret = vnt_control_out(priv, MESSAGE_TYPE_DISABLE_PS, 0,
-+			      0, 0, NULL);
-+	if (ret)
-+		return ret;
-
- 	/* clear AutoSleep */
- 	vnt_mac_reg_bits_off(priv, MAC_REG_PSCFG, PSCFG_AUTOSLEEP);
-
- 	/* set always listen beacon */
- 	vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_ALBCN);
-+
-+	return 0;
+@@ -77,16 +77,6 @@ void vnt_enable_power_saving(struct vnt_private *priv, u16 listen_interval)
+ 	dev_dbg(&priv->usb->dev,  "PS:Power Saving Mode Enable...\n");
  }
 
- /*
-diff --git a/drivers/staging/vt6656/power.h b/drivers/staging/vt6656/power.h
-index 58755ae16e5a..160872026db3 100644
---- a/drivers/staging/vt6656/power.h
-+++ b/drivers/staging/vt6656/power.h
-@@ -18,7 +18,7 @@
-
- #define C_PWBT	1000 /* micro sec. power up before TBTT */
-
--void vnt_disable_power_saving(struct vnt_private *priv);
-+int vnt_disable_power_saving(struct vnt_private *priv);
- void vnt_enable_power_saving(struct vnt_private *priv, u16 listen_interval);
- int vnt_next_tbtt_wakeup(struct vnt_private *priv);
-
+-/*
+- *
+- * Routine Description:
+- * Disable hw power saving functions
+- *
+- * Return Value:
+- *    None.
+- *
+- */
+-
+ int vnt_disable_power_saving(struct vnt_private *priv)
+ {
+ 	int ret;
 --
 2.20.1
 
