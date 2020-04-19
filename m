@@ -1,80 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F7F91AF975
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Apr 2020 12:49:20 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 65DC41AF98C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Apr 2020 13:21:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CA2CD20403;
-	Sun, 19 Apr 2020 10:49:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3175F86174;
+	Sun, 19 Apr 2020 11:21:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yKpBie-5iFx6; Sun, 19 Apr 2020 10:49:18 +0000 (UTC)
+	with ESMTP id tUdlrVDpJI0t; Sun, 19 Apr 2020 11:21:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 85F23203FE;
-	Sun, 19 Apr 2020 10:49:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C7414857A4;
+	Sun, 19 Apr 2020 11:20:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 690731BF2B4
- for <devel@linuxdriverproject.org>; Sun, 19 Apr 2020 10:49:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 892621BF5AA
+ for <devel@linuxdriverproject.org>; Sun, 19 Apr 2020 11:20:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 65905854DB
- for <devel@linuxdriverproject.org>; Sun, 19 Apr 2020 10:49:14 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 86420852FE
+ for <devel@linuxdriverproject.org>; Sun, 19 Apr 2020 11:20:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wFesAuzkUTLf for <devel@linuxdriverproject.org>;
- Sun, 19 Apr 2020 10:49:13 +0000 (UTC)
+ with ESMTP id r73tJ9GDueCc for <devel@linuxdriverproject.org>;
+ Sun, 19 Apr 2020 11:20:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D54BA854D7
- for <devel@driverdev.osuosl.org>; Sun, 19 Apr 2020 10:49:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1587293337;
- bh=oiCl10dnqu2MRDWuRbka7zAznUFMBfpARUEr8Zh5OrM=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=eBCG9qhiZVS0SW64b4lbj8Cb6hV7Ph0D6L3NdZwROAGvf/IoQe23V6bv+TZIW6o5P
- HgemFtLoMr/Xy4VKX2RlRMSAvOip2NVaaDnvIr0X/a97e13M2LFgOxorCcmORFniRU
- QdoZkXluR+lcsSjNkEpZT4RDcANLQPAgbuBKt+Sw=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1MiJZE-1im7mo3rzK-00fVF4; Sun, 19 Apr 2020 12:48:57 +0200
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 2/2] staging: vt6656: Remove functions' documentation
-Date: Sun, 19 Apr 2020 12:48:21 +0200
-Message-Id: <20200419104821.6127-3-oscar.carter@gmx.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200419104821.6127-1-oscar.carter@gmx.com>
-References: <20200419104821.6127-1-oscar.carter@gmx.com>
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BDB3885166
+ for <devel@driverdev.osuosl.org>; Sun, 19 Apr 2020 11:20:56 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id u127so6829613wmg.1
+ for <devel@driverdev.osuosl.org>; Sun, 19 Apr 2020 04:20:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=oqIZa3zYdSKtfEDW9ORxtSFvOk9NL3nLKI1j4QeSOmQ=;
+ b=Bi0/GvMW65TgGIUxdL7xdk4vUKiw75Y3eeIbhx/Hf8Ct93Lh3J9p2G7NAdrwrRJTZ4
+ u/sYbkMNGWcyMu+n9L7PpzSe8it37ZEqkXaoy8csZlthHAv51yHP8Bk56SJaV9BOXybI
+ VkC0PosRPTZ5Jwg5SE2KlUgUs3JKc5/8RwK/wLKs9w7STzfDsVw8cZqdjuHKQdxR0Wsz
+ qvpcwE+xPiqkd0KAKzOvSEev/uSuw6mh8ZVx4L10+Uvj/GlLvhFek+nvwVw0TdxspHns
+ 5Zxf3N34FfJxK/tugrNxVLGfjiYvRwSAxNhnyEd75Ec+RogEg+CG1gWBxc3uTK2k8lxg
+ 8rHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=oqIZa3zYdSKtfEDW9ORxtSFvOk9NL3nLKI1j4QeSOmQ=;
+ b=k99gMp6+eZlxGahDuLJa5BP02Nfv0imSEbgfqPJMrbxxjzoiU/Lrr1+gk2DmvkbTkm
+ edKF2zamDNf/mKE6XPTNCB3ZMDcPZV+j5XHdcBWp+b7TZLnQ1a0egqBE8bRknjb2AmVb
+ +TM1ckJGKgNpBVW2BxtM+T91IS9a/hDdRc3vwRupA946hYrJhPiEnLR78cilOYD3M7Gj
+ NHTXcX5Jf2CyjMOlWhVPSdyijxBE1WaLyWFkNV+twB4DIB+bnpEFv2b/GdP96rvQCV3F
+ c8/EVlYWWJTk4U2Dj8/wRedieRfj1cpb1mGN6FXdbrzTm9vp5yWzHENAr1LrG8Mm3wam
+ NDQA==
+X-Gm-Message-State: AGi0PuYiCM83ZxQrkHOv48H9hFr9StDx8GYfKLqSxxctui0/EOsuuhwL
+ aS4Exsei0NJJoxJ/0qhkiAo=
+X-Google-Smtp-Source: APiQypITdwLs5sm4fkLQ+Cc9wBCnJAbhHoWvcC9iP4kttxUEj+2b/aAk0pp922KwhaduX4klj4gh6A==
+X-Received: by 2002:a1c:ba56:: with SMTP id k83mr12141163wmf.1.1587295255163; 
+ Sun, 19 Apr 2020 04:20:55 -0700 (PDT)
+Received: from [192.168.43.18] (188.29.165.57.threembb.co.uk. [188.29.165.57])
+ by smtp.gmail.com with ESMTPSA id
+ h2sm14536720wmb.16.2020.04.19.04.20.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 19 Apr 2020 04:20:54 -0700 (PDT)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: [PATCH] staging: vt6656: call vnt_update_pre_ed_threshold from
+ vnt_config.
+Message-ID: <1b00c112-347c-b0bb-61ed-a874ee448ff8@gmail.com>
+Date: Sun, 19 Apr 2020 12:20:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:bWw9GnsA25V31ydyY7KLlxyve8/+XHkoA3VqPgpjLU7q04809g+
- Xs4HSQNz/iCzsQfNAPMSIHGNC27N+BhchGwlTnyNa7+pl1YWcQzarqi+uemdE+mIaw2KPXF
- YRMHllo2lkaMoI9yy9gqA0M1XMY3eCx7NLu6pabDbyxGhPTt7nh/1Abx+wDmXCwGWPb1Ith
- qNmejkKcZXKB8p35LrW1A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JQBLykTbI6Y=:+csqz4VZl25BH3d8eH5GRh
- v0zDtkp5hfOCtxvnntsnGDdLQlNedh5u6j3sBEAAWJFRgSGZ7PTv0Jesxjz3l3TnsqgKhPAtO
- kjmY47nDdYLnUf/CuZlmY/KCZM1VTSQWkIYFFin2ujpe1Nplm7qUTi/z9rFGLt/J3kfy0sIXH
- n3PKxhbodH1eg7Y9lcgILQVF0nTWwGbTcZLYEZjVR7uMwvnnYO1fgnd7TUiuw+/TomuWRIsSy
- ZOawqkvtiiJse3yfG9MLHPlWDS1JZBMckV9rUzUOE7CwJTdNmSws6lq862gu2yqRcbiTRlJR1
- fHTQyZ29izSh8Xky8eYBme+h4QiZeqknvngooGxPn6sKl/tvXKMIPtfHx8EGy0Wi6J9IKwmhs
- 16FW9k94nOTPUCPV//puxInjwRzLeUYjV5xFKn4jXStg53JL/XzVJEfhC2Nn4NkeoGpsQyOwN
- mXNRtsnQE+0JpFw9gYJwMFc2kHRIcaBDSPpbBeadUfM60wOiKMWUSFtetKIIbZPH6hYHNzZE5
- W/n/mzbrlst+oG6X/+/8A7ch/ICN+bKuUYzJY+xCChhtO1aC7blrvTVfqGTmJHNE7j9dQS9A/
- EfXprGcryrp6qYiw7m3g6saR53KPRGOrMjbII9vKA0iaSTEfBLV1EIIo7x7PEqCTgihF1qaMe
- m1JcpUPrd2C0n5f1Pji0DCnXFwX0EgofDIHEsCGfxL/hS5Ns1niAQ1Z6fxk/PtMV1Kfj0Qww2
- DzoXcN6r80IxthSkNeb2cjDVDRgt4sF1GL/RDDCOxDf3yV5kN5d24Q1DDUMOhr6+c0RGT7E8S
- t9bO5Q8Pml9s9miPedgOdGwVZXDuJYX3TBZfbV2oH7Xfa5FGiia33CuxHsxMn++rQIOuhJR2r
- gTNQwAFG3AtvxugyosyORxttpFnwVb2oF66jLHAGDd90NBJ9zW4cDom2OlD8eIKAAHbWFjRYa
- OqFjDR6OC+qbALO31abQlHpC4rAN7sm2Ov/YDaK92DCt5Rr14JgyVk4VBD2+pdQCWjt53FEbt
- 2AoYGHrrcrBYAQznwRMR8TjlV6U7jivPRB9CrqJnw6Uoz7bQgNR6pSFOp9749Fr4vudxfePAU
- /IK8/QsiAmfwBGn3WCDm8EbcFTpuAAwG7pjzCaDP2nJ/2OQT4lVNs+1CN3a71XWsfnT5Any4G
- lswzWRuvXSH+XxUM/+OwjMMPKeSf+av+ee93bDMZr59Jz1fGcm2t/SJ2ntSFptt12/1f1ETxQ
- Hucu857LsWEI4tr0V
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,259 +87,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Malcolm Priestley <tvboxspy@gmail.com>,
- "John B. Wyatt IV" <jbwyatt4@gmail.com>, linux-kernel@vger.kernel.org,
- Stefano Brivio <sbrivio@redhat.com>, Colin Ian King <colin.king@canonical.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Oscar Carter <oscar.carter@gmx.com>, linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the functions' documentation as the names of the functions are
-clear enought. Also, the actual documentation it's not correct in all
-cases.
+vnt_update_pre_ed_threshold needs to be updated more often so
+call from vnt_config where it updated on any of config changes.
 
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+It must have maximum sensitivity when the device is off channel
+or idle.
+
+Remove all the other calls in scanning and bss.
+
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- drivers/staging/vt6656/card.c  | 79 ----------------------------------
- drivers/staging/vt6656/mac.c   | 52 ----------------------
- drivers/staging/vt6656/power.c | 10 -----
- 3 files changed, 141 deletions(-)
+ drivers/staging/vt6656/main_usb.c | 28 ++++++----------------------
+ 1 file changed, 6 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index 99ad56b7617d..e5e44d0a07ff 100644
---- a/drivers/staging/vt6656/card.c
-+++ b/drivers/staging/vt6656/card.c
-@@ -46,16 +46,6 @@ static const u16 cw_rxbcntsf_off[MAX_RATE] = {
- 	192, 96, 34, 17, 34, 23, 17, 11, 8, 5, 4, 3
- };
-
--/*
-- * Description: Set NIC media channel
-- *
-- * Parameters:
-- *  In:
-- *      pDevice             - The adapter to be set
-- *      connection_channel  - Channel to be set
-- *  Out:
-- *      none
-- */
- int vnt_set_channel(struct vnt_private *priv, u32 connection_channel)
- {
- 	int ret;
-@@ -99,19 +89,6 @@ static const u8 vnt_rspinf_gb_table[] = {
- 	0x0e, 0x8d, 0x0a, 0x88, 0x0a, 0x8c, 0x0a, 0x8c, 0x0a
- };
-
--/*
-- * Description: Set RSPINF
-- *
-- * Parameters:
-- *  In:
-- *      pDevice             - The adapter to be set
-- *  Out:
-- *      none
-- *
-- * Return Value: None.
-- *
-- */
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index 3268d86fe93b..4bca0b99cf45 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -763,6 +763,12 @@ static int vnt_config(struct ieee80211_hw *hw, u32 changed)
+ 	if (changed & IEEE80211_CONF_CHANGE_POWER)
+ 		vnt_rf_setpower(priv, conf->chandef.chan);
+ 
++	if (conf->flags & (IEEE80211_CONF_OFFCHANNEL | IEEE80211_CONF_IDLE))
++		/* Set max sensitivity*/
++		vnt_update_pre_ed_threshold(priv, true);
++	else
++		vnt_update_pre_ed_threshold(priv, false);
++
+ 	return 0;
+ }
+ 
+@@ -810,7 +816,6 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
+ 
+ 		vnt_set_short_slot_time(priv);
+ 		vnt_set_vga_gain_offset(priv, priv->bb_vga[0]);
+-		vnt_update_pre_ed_threshold(priv, false);
+ 	}
+ 
+ 	if (changed & (BSS_CHANGED_BASIC_RATES | BSS_CHANGED_ERP_PREAMBLE |
+@@ -937,25 +942,6 @@ static int vnt_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 	return 0;
+ }
+ 
+-static void vnt_sw_scan_start(struct ieee80211_hw *hw,
+-			      struct ieee80211_vif *vif,
+-			      const u8 *addr)
+-{
+-	struct vnt_private *priv = hw->priv;
 -
- int vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
- {
- 	const u8 *data;
-@@ -145,18 +122,6 @@ int vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
- 			       MESSAGE_REQUEST_MACREG, len, data);
- }
-
--/*
-- * Description: Update IFS
-- *
-- * Parameters:
-- *  In:
-- *	priv - The adapter to be set
-- * Out:
-- *	none
-- *
-- * Return Value: None.
-- *
-- */
- int vnt_update_ifs(struct vnt_private *priv)
- {
- 	u8 max_min = 0;
-@@ -300,21 +265,6 @@ u64 vnt_get_tsf_offset(u8 rx_rate, u64 tsf1, u64 tsf2)
- 	return tsf1 - tsf2 - (u64)cw_rxbcntsf_off[rx_rate % MAX_RATE];
- }
-
--/*
-- * Description: Sync. TSF counter to BSS
-- *              Get TSF offset and write to HW
-- *
-- * Parameters:
-- *  In:
-- *      priv		- The adapter to be sync.
-- *      time_stamp	- Rx BCN's TSF
-- *      local_tsf	- Local TSF
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_adjust_tsf(struct vnt_private *priv, u8 rx_rate,
- 		   u64 time_stamp, u64 local_tsf)
- {
-@@ -408,20 +358,6 @@ u64 vnt_get_next_tbtt(u64 tsf, u16 beacon_interval)
- 	return tsf;
- }
-
--/*
-- * Description: Set NIC TSF counter for first Beacon time
-- *              Get NEXTTBTT from adjusted TSF and Beacon Interval
-- *
-- * Parameters:
-- *  In:
-- *      dwIoBase        - IO Base
-- *	beacon_interval - Beacon Interval
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
- {
- 	u64 next_tbtt = 0;
-@@ -444,21 +380,6 @@ int vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
- 			       MESSAGE_REQUEST_TBTT, 0, 8, data);
- }
-
--/*
-- * Description: Sync NIC TSF counter for Beacon time
-- *              Get NEXTTBTT and write to HW
-- *
-- * Parameters:
-- *  In:
-- *	priv		- The adapter to be set
-- *      tsf		- Current TSF counter
-- *      beacon_interval - Beacon Interval
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
- 			 u16 beacon_interval)
- {
-diff --git a/drivers/staging/vt6656/mac.c b/drivers/staging/vt6656/mac.c
-index 639172fad0f3..da7067c34643 100644
---- a/drivers/staging/vt6656/mac.c
-+++ b/drivers/staging/vt6656/mac.c
-@@ -22,19 +22,6 @@
- #include "mac.h"
- #include "usbpipe.h"
-
--/*
-- * Description:
-- *      Write MAC Multicast Address Mask
-- *
-- * Parameters:
-- *  In:
-- *	mc_filter (mac filter)
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter)
- {
- 	__le64 le_mc = cpu_to_le64(mc_filter);
-@@ -44,17 +31,6 @@ int vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter)
- 			       (u8 *)&le_mc);
- }
-
--/*
-- * Description:
-- *      Shut Down MAC
-- *
-- * Parameters:
-- *  In:
-- *  Out:
-- *      none
-- *
-- *
-- */
- int vnt_mac_shutdown(struct vnt_private *priv)
- {
- 	return vnt_control_out(priv, MESSAGE_TYPE_MACSHUTDOWN, 0, 0, 0, NULL);
-@@ -72,40 +48,12 @@ int vnt_mac_set_bb_type(struct vnt_private *priv, u8 type)
- 			       data);
- }
-
--/*
-- * Description:
-- *      Disable the Key Entry by MISCFIFO
-- *
-- * Parameters:
-- *  In:
-- *      dwIoBase        - Base Address for MAC
-- *
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_mac_disable_keyentry(struct vnt_private *priv, u8 entry_idx)
- {
- 	return vnt_control_out(priv, MESSAGE_TYPE_CLRKEYENTRY, 0, 0,
- 			       sizeof(entry_idx), &entry_idx);
- }
-
--/*
-- * Description:
-- *      Set the Key by MISCFIFO
-- *
-- * Parameters:
-- *  In:
-- *      dwIoBase        - Base Address for MAC
-- *
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_mac_set_keyentry(struct vnt_private *priv, u16 key_ctl, u32 entry_idx,
- 			 u32 key_idx, u8 *addr, u8 *key)
- {
-diff --git a/drivers/staging/vt6656/power.c b/drivers/staging/vt6656/power.c
-index 2d8d5a332a63..d160a0773943 100644
---- a/drivers/staging/vt6656/power.c
-+++ b/drivers/staging/vt6656/power.c
-@@ -77,16 +77,6 @@ void vnt_enable_power_saving(struct vnt_private *priv, u16 listen_interval)
- 	dev_dbg(&priv->usb->dev,  "PS:Power Saving Mode Enable...\n");
- }
-
--/*
-- *
-- * Routine Description:
-- * Disable hw power saving functions
-- *
-- * Return Value:
-- *    None.
-- *
-- */
+-	/* Set max sensitivity*/
+-	vnt_update_pre_ed_threshold(priv, true);
+-}
 -
- int vnt_disable_power_saving(struct vnt_private *priv)
+-static void vnt_sw_scan_complete(struct ieee80211_hw *hw,
+-				 struct ieee80211_vif *vif)
+-{
+-	struct vnt_private *priv = hw->priv;
+-
+-	/* Return sensitivity to channel level*/
+-	vnt_update_pre_ed_threshold(priv, false);
+-}
+-
+ static int vnt_get_stats(struct ieee80211_hw *hw,
+ 			 struct ieee80211_low_level_stats *stats)
  {
- 	int ret;
---
-2.20.1
-
+@@ -1001,8 +987,6 @@ static const struct ieee80211_ops vnt_mac_ops = {
+ 	.prepare_multicast	= vnt_prepare_multicast,
+ 	.configure_filter	= vnt_configure,
+ 	.set_key		= vnt_set_key,
+-	.sw_scan_start		= vnt_sw_scan_start,
+-	.sw_scan_complete	= vnt_sw_scan_complete,
+ 	.get_stats		= vnt_get_stats,
+ 	.get_tsf		= vnt_get_tsf,
+ 	.set_tsf		= vnt_set_tsf,
+-- 
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
