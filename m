@@ -1,77 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E0671B0674
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Apr 2020 12:21:56 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3372F85C37;
-	Mon, 20 Apr 2020 10:21:54 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HhF6rd8W4PhP; Mon, 20 Apr 2020 10:21:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8EA1F85785;
-	Mon, 20 Apr 2020 10:21:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0A3621BF407
- for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 10:21:51 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 780E81B067E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Apr 2020 12:25:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 032B1204FE
- for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 10:21:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DD604207A9;
+	Mon, 20 Apr 2020 10:25:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rJBONqz3tAR5; Mon, 20 Apr 2020 10:25:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id B8D7D204FE;
+	Mon, 20 Apr 2020 10:25:07 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 49A1A1BF407
+ for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 10:25:05 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4525C863D9
+ for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 10:25:05 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9uDoc7iS89Ir for <devel@linuxdriverproject.org>;
- Mon, 20 Apr 2020 10:21:49 +0000 (UTC)
-X-Greylist: delayed 00:06:34 by SQLgrey-1.7.6
-Received: from smtp110.ord1c.emailsrvr.com (smtp110.ord1c.emailsrvr.com
- [108.166.43.110])
- by silver.osuosl.org (Postfix) with ESMTPS id 8C85C20015
- for <devel@driverdev.osuosl.org>; Mon, 20 Apr 2020 10:21:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
- s=20190322-9u7zjiwi; t=1587377714;
- bh=KE+p7nNz2ulsXQ37ZSxFILCnrC3V3T2DkQkwLsftGEs=;
- h=Subject:To:From:Date:From;
- b=CvDuyE0Z+g2G9s2Gni0Wv0vFUbJGSIBmFLj4U6Dp1bZZrfPV165Lcp6o3VzQujoQX
- psPfQJMNvi+dXEictMOYRYeN3WaOK68D3ptwDeVrSSyFwCxri+rpOENnlyYalgMtxd
- qO8/z8J01IRpQmZZPTyk+jBmz17ooMiC62XvroDw=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
- s=20190130-41we5z8j; t=1587377714;
- bh=KE+p7nNz2ulsXQ37ZSxFILCnrC3V3T2DkQkwLsftGEs=;
- h=Subject:To:From:Date:From;
- b=YD6ZZr+NVivTfMnXYy3qJaA8bX2C1qNXKS5LQhJL3LKkAR9M1R4vJu5gddOmUd1i3
- /7c6zO2TaFOlQFzotuOnp9HXh5dqW0mmhDlaNrpKJ/lZ0FaihDzerJAE+PbNNzHxNX
- ijF9WO6p1KpErJpm5uaN0AUvCrEOFpPrN1QH6OgU=
-X-Auth-ID: abbotti@mev.co.uk
-Received: by smtp6.relay.ord1c.emailsrvr.com (Authenticated sender:
- abbotti-AT-mev.co.uk) with ESMTPSA id 96E37A0109; 
- Mon, 20 Apr 2020 06:15:13 -0400 (EDT)
-X-Sender-Id: abbotti@mev.co.uk
-Received: from [10.0.0.173] (remote.quintadena.com [81.133.34.160])
- (using TLSv1.2 with cipher DHE-RSA-AES128-SHA)
- by 0.0.0.0:465 (trex/5.7.12); Mon, 20 Apr 2020 06:15:14 -0400
-Subject: Re: [PATCH] staging: comedi: Fix comedi_device refcnt leak in
- comedi_open
-To: Xiyu Yang <xiyuyang19@fudan.edu.cn>,
- H Hartley Sweeten <hsweeten@visionengravers.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Xin Tan <tanxin.ctf@gmail.com>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-References: <1587361459-83622-1-git-send-email-xiyuyang19@fudan.edu.cn>
-From: Ian Abbott <abbotti@mev.co.uk>
-Organization: MEV Ltd.
-Message-ID: <a5988c23-e552-b787-feb0-2d1bda8f1668@mev.co.uk>
-Date: Mon, 20 Apr 2020 11:15:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ with ESMTP id S8fcC8zWNN-v for <devel@linuxdriverproject.org>;
+ Mon, 20 Apr 2020 10:25:03 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sv31.star.ne.jp (sv31.star.ne.jp [157.112.187.32])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4B5438507B
+ for <devel@driverdev.osuosl.org>; Mon, 20 Apr 2020 10:25:03 +0000 (UTC)
+Received: from virusgw1.netowl.jp (virusgw1.netowl.jp [157.112.191.243])
+ by sv31.star.ne.jp (Postfix) with ESMTP id 3E25618856DF1C;
+ Mon, 20 Apr 2020 19:24:04 +0900 (JST)
+Received: from sv31.star.ne.jp (157.112.187.32)
+ by virusgw1.netowl.jp (F-Secure/fsigk_smtp/521/virusgw1.netowl.jp);
+ Mon, 20 Apr 2020 19:24:04 +0900 (JST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/521/virusgw1.netowl.jp)
+Received: from User (unknown [52.231.48.187])
+ by sv31.star.ne.jp (Postfix) with ESMTPA id C801C188579306;
+ Mon, 20 Apr 2020 19:23:59 +0900 (JST)
+From: "Reem Ebrahim Al-Hashimi"<saiyo@piezostudio.com>
+Subject: +++H e l l o+++
+Date: Mon, 20 Apr 2020 10:24:02 -0000
 MIME-Version: 1.0
-In-Reply-To: <1587361459-83622-1-git-send-email-xiyuyang19@fudan.edu.cn>
-Content-Language: en-GB
-X-Classification-ID: 061321d8-5d6b-4c3f-b7bb-fc78540ae002-1-1
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200420102359.C801C188579306@sv31.star.ne.jp>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,61 +62,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: yuanxzhang@fudan.edu.cn, kjlu@umn.edu
+Reply-To: reemal-hashimi@yandex.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 20/04/2020 06:44, Xiyu Yang wrote:
-> comedi_open() invokes comedi_dev_get_from_minor(), which returns a
-> reference of the COMEDI device to "dev" with increased refcount.
-> 
-> When comedi_open() returns, "dev" becomes invalid, so the refcount
-> should be decreased to keep refcount balanced.
-> 
-> The reference counting issue happens in one exception handling path of
-> comedi_open(). When "cfp" allocation is failed, the refcnt increased by
-> comedi_dev_get_from_minor() is not decreased, causing a refcnt leak.
-> 
-> Fix this issue by calling comedi_dev_put() on this error path when "cfp"
-> allocation is failed.
-> 
-> Fixes: 20f083c07565 ("staging: comedi: prepare support for per-file read
-> and write subdevices")
-> Signed-off-by: Xiyu Yang <xiyuyang19@fudan.edu.cn>
-> Signed-off-by: Xin Tan <tanxin.ctf@gmail.com>
-> ---
->   drivers/staging/comedi/comedi_fops.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
-> index 08d1bbbebf2d..e84b4fb493d6 100644
-> --- a/drivers/staging/comedi/comedi_fops.c
-> +++ b/drivers/staging/comedi/comedi_fops.c
-> @@ -2725,8 +2725,10 @@ static int comedi_open(struct inode *inode, struct file *file)
->   	}
->   
->   	cfp = kzalloc(sizeof(*cfp), GFP_KERNEL);
-> -	if (!cfp)
-> +	if (!cfp) {
-> +		comedi_dev_put(dev);
->   		return -ENOMEM;
-> +	}
->   
->   	cfp->dev = dev;
->   
-> 
+Hello,
 
-Thanks for spotting that!
+My name is Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE. Kindly visit this link for more understanding: https://en.wikipedia.org/wiki/Reem_Al_Hashimi
 
-Signed-off-by: Ian Abbott <abbotti@mev.co.uk>
+I write to solicit for your partnership in claiming of $47Million from a Financial Home in Cambodia.
 
--- 
--=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
--=( MEV Ltd. is a company registered in England & Wales. )=-
--=( Registered number: 02862268.  Registered address:    )=-
--=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
+The aforementioned fund $47 Million is my share percentage from my Oil/Gas deal with Cambodia/Vietnam Government within  2013/2014, influentially I don't want my government to know about the fund. If this proposal interests you, let me know by sending me an email and I will send to you detailed Information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except me and I know how to carry out the entire transaction.
+
+Furthermore, as a Minister of Petroleum, I am not allowed to be part of such a deal, because it's against my country's professional practice policy. So I am compelled to ask that you will stand on my behalf and receive this fund into any account that is solely controlled by you.
+
+I will compensate you with 30% of the total amount involved as gratification for being my partner in the transfer. Reply to my private email as stated: reemal-hashimi@yandex.com
+
+Regards,
+Reem Ebrahim Al-Hashimi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
