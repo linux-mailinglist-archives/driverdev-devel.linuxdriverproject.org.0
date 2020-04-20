@@ -2,54 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0D661B096E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Apr 2020 14:35:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B0381B08F1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Apr 2020 14:11:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DF3BC87AFF;
-	Mon, 20 Apr 2020 12:35:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2AED287ADB;
+	Mon, 20 Apr 2020 12:11:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rcdXPbOq9g5M; Mon, 20 Apr 2020 12:35:09 +0000 (UTC)
+	with ESMTP id QWJGTivpX6HC; Mon, 20 Apr 2020 12:11:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6126387A00;
-	Mon, 20 Apr 2020 12:35:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 94DA28796D;
+	Mon, 20 Apr 2020 12:11:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5FB161BF407
- for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 12:35:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 456221BF29F
+ for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 12:11:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5C8EB87A62
- for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 12:35:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 41C9C87985
+ for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 12:11:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mDyzyTjRuaNf for <devel@linuxdriverproject.org>;
- Mon, 20 Apr 2020 12:35:06 +0000 (UTC)
+ with ESMTP id OG+Xi+o14Xmv for <devel@linuxdriverproject.org>;
+ Mon, 20 Apr 2020 12:11:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 14D2F87A60
- for <devel@driverdev.osuosl.org>; Mon, 20 Apr 2020 12:35:05 +0000 (UTC)
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 42114F8280CD990CF8CC;
- Mon, 20 Apr 2020 20:35:01 +0800 (CST)
-Received: from [127.0.0.1] (10.166.213.7) by DGGEMS402-HUB.china.huawei.com
- (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 20 Apr 2020
- 20:34:59 +0800
-Subject: Re: [PATCH] staging: mt7621-pinctrl: Use correct pointer type
- argument for sizeof
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <20200420123755.4353-1-yanaijie@huawei.com>
- <20200420121900.GD2659@kadam>
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1FF048796D
+ for <devel@driverdev.osuosl.org>; Mon, 20 Apr 2020 12:11:24 +0000 (UTC)
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id A7A2F913A48CE846EB2E;
+ Mon, 20 Apr 2020 20:11:21 +0800 (CST)
+Received: from huawei.com (10.175.124.28) by DGGEMS401-HUB.china.huawei.com
+ (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Mon, 20 Apr 2020
+ 20:11:13 +0800
 From: Jason Yan <yanaijie@huawei.com>
-Message-ID: <c6b155a6-28ae-e0f9-b866-4d17e8a45706@huawei.com>
-Date: Mon, 20 Apr 2020 20:34:59 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.2
+To: <gregkh@linuxfoundation.org>, <matthias.bgg@gmail.com>,
+ <nishkadg.linux@gmail.com>, <devel@driverdev.osuosl.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH] staging: mt7621-pinctrl: Use correct pointer type argument
+ for sizeof
+Date: Mon, 20 Apr 2020 20:37:55 +0800
+Message-ID: <20200420123755.4353-1-yanaijie@huawei.com>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-In-Reply-To: <20200420121900.GD2659@kadam>
-X-Originating-IP: [10.166.213.7]
+X-Originating-IP: [10.175.124.28]
 X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -63,37 +62,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- nishkadg.linux@gmail.com, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="gbk"; Format="flowed"
+Cc: Jason Yan <yanaijie@huawei.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgrU2iAyMDIwLzQvMjAgMjA6MTksIERhbiBDYXJwZW50ZXIg0LS1wDoKPiBPbiBNb24sIEFwciAy
-MCwgMjAyMCBhdCAwODozNzo1NVBNICswODAwLCBKYXNvbiBZYW4gd3JvdGU6Cj4+IEZpeCB0aGUg
-Zm9sbG93aW5nIGNvY2NpY2hlY2sgd2FybmluZzoKPj4KPj4gZHJpdmVycy9zdGFnaW5nL210NzYy
-MS1waW5jdHJsL3BpbmN0cmwtcnQyODgwLmM6MjIzOjE0LTM2OiBXQVJOSU5HOiBVc2UKPj4gY29y
-cmVjdCBwb2ludGVyIHR5cGUgYXJndW1lbnQgZm9yIHNpemVvZgo+Pgo+PiBTaWduZWQtb2ZmLWJ5
-OiBKYXNvbiBZYW4gPHlhbmFpamllQGh1YXdlaS5jb20+Cj4+IC0tLQo+PiAgIGRyaXZlcnMvc3Rh
-Z2luZy9tdDc2MjEtcGluY3RybC9waW5jdHJsLXJ0Mjg4MC5jIHwgMiArLQo+PiAgIDEgZmlsZSBj
-aGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9zdGFnaW5nL210NzYyMS1waW5jdHJsL3BpbmN0cmwtcnQyODgwLmMgYi9kcml2ZXJz
-L3N0YWdpbmcvbXQ3NjIxLXBpbmN0cmwvcGluY3RybC1ydDI4ODAuYwo+PiBpbmRleCBkMGYwNjc5
-MGQzOGYuLjg4ODNmMmE4ZWE1NyAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL210NzYy
-MS1waW5jdHJsL3BpbmN0cmwtcnQyODgwLmMKPj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL210NzYy
-MS1waW5jdHJsL3BpbmN0cmwtcnQyODgwLmMKPj4gQEAgLTIyMCw3ICsyMjAsNyBAQCBzdGF0aWMg
-aW50IHJ0Mjg4MF9waW5tdXhfaW5kZXgoc3RydWN0IHJ0Mjg4MF9wcml2ICpwKQo+PiAgIAkvKiBh
-bGxvY2F0ZSBvdXIgZnVuY3Rpb24gYW5kIGdyb3VwIG1hcHBpbmcgaW5kZXggYnVmZmVycyAqLwo+
-PiAgIAlmID0gcC0+ZnVuYyA9IGRldm1fa2NhbGxvYyhwLT5kZXYsCj4+ICAgCQkJCSAgIHAtPmZ1
-bmNfY291bnQsCj4+IC0JCQkJICAgc2l6ZW9mKHN0cnVjdCBydDI4ODBfcG14X2Z1bmMpLAo+PiAr
-CQkJCSAgIHNpemVvZihzdHJ1Y3QgcnQyODgwX3BteF9mdW5jICopLAo+IAo+IFllcy4gIFRoaXMg
-Zml4ZXMgYSBidWcuICBXZSB3ZXJlIGFsbG9jYXRpbmcgdG9vIG11Y2ggZGF0YS4gIEJ1dCB0aGUK
-PiBwcmVmZXJlZCBzdHlsZSBpczoKPiAKPiAJCQkJc2l6ZW9mKCpwLT5mdW5jKSwKPiAKPiBQbGVh
-c2UgY291bGQgeW91IHJlc2VuZD8KPiAKClN1cmUsIEkgd2lsbCBjb29rIGEgbmV3IG9uZS4KCj4g
-cmVnYXJkcywKPiBkYW4gY2FycGVudGVyCj4gCj4gCj4gLgo+IAoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxp
-bnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qu
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Fix the following coccicheck warning:
+
+drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c:223:14-36: WARNING: Use
+correct pointer type argument for sizeof
+
+Signed-off-by: Jason Yan <yanaijie@huawei.com>
+---
+ drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
+index d0f06790d38f..8883f2a8ea57 100644
+--- a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
++++ b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
+@@ -220,7 +220,7 @@ static int rt2880_pinmux_index(struct rt2880_priv *p)
+ 	/* allocate our function and group mapping index buffers */
+ 	f = p->func = devm_kcalloc(p->dev,
+ 				   p->func_count,
+-				   sizeof(struct rt2880_pmx_func),
++				   sizeof(struct rt2880_pmx_func *),
+ 				   GFP_KERNEL);
+ 	gpio_func.groups = devm_kcalloc(p->dev, p->group_count, sizeof(int),
+ 					GFP_KERNEL);
+-- 
+2.21.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
