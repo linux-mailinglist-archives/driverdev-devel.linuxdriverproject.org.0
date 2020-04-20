@@ -2,55 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE46C1B0CE4
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Apr 2020 15:38:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 46D171B0F2C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Apr 2020 17:03:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4CBAE85D78;
-	Mon, 20 Apr 2020 13:38:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E3B3185F7C;
+	Mon, 20 Apr 2020 15:03:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZZM_7HXzHG0r; Mon, 20 Apr 2020 13:38:57 +0000 (UTC)
+	with ESMTP id zAq1X-izJ33v; Mon, 20 Apr 2020 15:03:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B368385DE1;
-	Mon, 20 Apr 2020 13:38:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D43A885F41;
+	Mon, 20 Apr 2020 15:03:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DB8AD1BF3AF
- for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 13:38:53 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 98E711BF402
+ for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 15:03:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D7E4187C41
- for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 13:38:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 956C685F43
+ for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 15:03:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P3Stq82SCHww for <devel@linuxdriverproject.org>;
- Mon, 20 Apr 2020 13:38:52 +0000 (UTC)
+ with ESMTP id 07ULd5xnG3y5 for <devel@linuxdriverproject.org>;
+ Mon, 20 Apr 2020 15:03:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A80EE8709D
- for <devel@driverdev.osuosl.org>; Mon, 20 Apr 2020 13:38:52 +0000 (UTC)
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 9673631221DD9CA2C719;
- Mon, 20 Apr 2020 21:36:40 +0800 (CST)
-Received: from [127.0.0.1] (10.166.213.7) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Mon, 20 Apr 2020
- 21:36:34 +0800
-Subject: Re: [PATCH v2] staging: mt7621-pinctrl: Use correct pointer type
- argument for sizeof
-To: Greg KH <gregkh@linuxfoundation.org>
-References: <20200420124151.4356-1-yanaijie@huawei.com>
- <20200420130715.GA4040736@kroah.com>
-From: Jason Yan <yanaijie@huawei.com>
-Message-ID: <6df8fd83-9888-1aab-c5a6-87e5b2f942ca@huawei.com>
-Date: Mon, 20 Apr 2020 21:36:34 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.2
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DB2DB85E27
+ for <devel@driverdev.osuosl.org>; Mon, 20 Apr 2020 15:03:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1587394970;
+ bh=UKp6RZgHShYAmKVbesztqxr3F4SKLa25qyvH+LYRqdo=;
+ h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=QkHS3g3pdle4TC8kHb4WPmuDR9KemXpd9xmBW9HZHzU252e/oYWSHIA7z8ik/c6rI
+ YdX4bWgC8rSPNT5/AGoZUp9zykj7O7TuUnAkaAGK4z2TupBdLgRDqTuqHSqmkI76OM
+ sJaAoJbk1HsjuFrgcBoDXiaiEBwF08bWdjw7PXFM=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx104
+ [212.227.17.174]) with ESMTPSA (Nemesis) id 1MdvmY-1iqfQi2Y0E-00b29o; Mon, 20
+ Apr 2020 17:02:50 +0200
+Date: Mon, 20 Apr 2020 17:02:35 +0200
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] staging: vt6656: Use fls instead of for loop in
+ vnt_update_top_rates
+Message-ID: <20200420150235.GA3159@ubuntu>
+References: <20200419100921.5421-1-oscar.carter@gmx.com>
+ <20200420121059.GC2659@kadam>
 MIME-Version: 1.0
-In-Reply-To: <20200420130715.GA4040736@kroah.com>
-X-Originating-IP: [10.166.213.7]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20200420121059.GC2659@kadam>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Provags-ID: V03:K1:mrdDQPBU8m/XBdil0FuPsqApP+2l8/R3mwWkslSCtwk5wfJPtYO
+ P3/o9SY70LgD/gxGoyuElX+f8xR5sqe0yo1oHGSgpu0uk96/Ce8npiu9dB5xubDV572D5rj
+ U5j6Mpzho8W0b5NCRnXsznrsIf6yXwD8IevkZO8UrbwlqOdeosC3skJMbBTs28bJR5Xdx17
+ GInshLSu7RoWi3Azn9gEw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4isIjZ3xBHw=:+CoVJ6MmnMv3Rer7ZGBmM6
+ wfCnj1/Tkjrj5qms9QEZFN7cQo8OMMixdoUUusLj8tIMKui+CEVbiHtFrtMxLUZFOTsvXFcJT
+ hBvrizJI9hQyJXcSKbu72MtKt9DGr8lFXE6hZp1g/PjcrWplqgbp7kJPNTxr0OUJFqPtVbuhA
+ 0PYx7gnANvoTM5oHVzhv1AMFMN+LFEw33fcBQBJgqIHG2tF+VjVXmhkXzAmsVPqp5Zi9M4Mjp
+ 54s7RbNUL3YtzA0kMVDK7X9t/FmOCRXjo3DVGUWvbRYQTPmxNIk3znU8YsycySmC15M/c5bya
+ /44BE15HFjLiGTa6UoSGy80Px/nnnK3QJmkv+8CoOLKuj5Ur6myCh5B57ezjDbqVdtkHV6JZk
+ //I/CROuJw+cJ2vroibpirttaPn4u1nU7Sjbcrud/3CbiYP5g5o4USd9dS0VUHyYNx64ab2RV
+ QH/jXU5FoKDbq+O650cVYG4QMiIKj0SgdKCBygIzVxAhj376GwWy2Tho+9kjP1aS2XQINledV
+ 6yW+mSqnIhyOFV7jrDdWRHigAMV8RD3Eg1WJrnmoCE4Q9983gnG+SnFE9fzUqFiAMainoybi/
+ 7A1+gEKBzytfP1Y2v0iUqoNA+nnfaodlCqGxiv0Fts1g0S2DZrDYMoXE2xoGGMdGNWigSEkNq
+ NCbpdjyAvrQR8xZnkxa9sv1by8oUQT4xrauYb+ey5Q60ADFq1qvOehQLv710mR8ZkiFzj8Hb7
+ eazYc5tR6M9AjKVMqBhVfNImUW0uAdT6fumgx44ial1r1F6E0r9n0VK3Zrrhs8pfh2PEfJOEN
+ A9Qn7BRBfxfC7FHTBbAC9S/KqoyoxtteAc5m7rjUqHroQxCyjTd/0nSE1iHl5aQkYo9LjV4uP
+ +8bglft+kmnMWQDedZrZR0LyJGHX1X/EKzq07Ypo6Zepebe6lKEFX+nqVcFLmOtpE4fr1nPPP
+ V2lu6qfSGflW4RXgtBTVWCzt55iHx5mYjbAF7g6wvsvRXKuzrVQ29tGfeL3SqPzyBIEZO+bY7
+ pJkHqhPXHANZgdRfLO4g2XzSA/OTCfdlZ0OM9iWgOkB3Zc7QPCW5QTEui7HMsMQ5o0gB4EdUJ
+ ejx862tQvtnHj/RzAh/MAPvAEjd8xb4DM6GHVEy+y7xH3wbgC4tN/gPMsqivxem9mdVgOqJfo
+ RN1yfbx2mzg2RwWEz6xh47qen05jWE8KXMReROxEx5fw63cDGOoJQ7x7jBgvaWhzY74SUozC7
+ HH5FwrE+iZ6C49Ivi
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,25 +89,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, nishkadg.linux@gmail.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="gbk"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, "John B . Wyatt IV" <jbwyatt4@gmail.com>,
+ Oscar Carter <oscar.carter@gmx.com>, Malcolm Priestley <tvboxspy@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Forest Bond <forest@alittletooquiet.net>,
+ Colin Ian King <colin.king@canonical.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgrU2iAyMDIwLzQvMjAgMjE6MDcsIEdyZWcgS0gg0LS1wDoKPiBPbiBNb24sIEFwciAyMCwgMjAy
-MCBhdCAwODo0MTo1MVBNICswODAwLCBKYXNvbiBZYW4gd3JvdGU6Cj4+IEZpeCB0aGUgZm9sbG93
-aW5nIGNvY2NpY2hlY2sgd2FybmluZzoKPj4KPj4gZHJpdmVycy9zdGFnaW5nL210NzYyMS1waW5j
-dHJsL3BpbmN0cmwtcnQyODgwLmM6MjIzOjE0LTM2OiBXQVJOSU5HOiBVc2UKPj4gY29ycmVjdCBw
-b2ludGVyIHR5cGUgYXJndW1lbnQgZm9yIHNpemVvZgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBKYXNv
-biBZYW4gPHlhbmFpamllQGh1YXdlaS5jb20+Cj4+IC0tLQo+PiAgIGRyaXZlcnMvc3RhZ2luZy9t
-dDc2MjEtcGluY3RybC9waW5jdHJsLXJ0Mjg4MC5jIHwgMiArLQo+PiAgIDEgZmlsZSBjaGFuZ2Vk
-LCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAo+IFdoYXQgY2hhbmdlZCBmcm9tIHYx
-PyAgQWx3YXlzIHB1dCB0aGF0IGJlbG93IHRoZSAtLS0gbGluZS4KPiAKPiBQbGVhc2UgZml4IHVw
-IGFuZCBzZW5kIGEgdjMuCj4gCgpPSy4KCj4gdGhhbmtzLAo+IAo+IGdyZWcgay1oCj4gCj4gLgo+
-IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwg
-bWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRl
-di5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVs
-Cg==
+On Mon, Apr 20, 2020 at 03:10:59PM +0300, Dan Carpenter wrote:
+> On Sun, Apr 19, 2020 at 12:09:21PM +0200, Oscar Carter wrote:
+> > -	for (i = RATE_11M;; i--) {
+> > -		if (priv->basic_rates & (u16)(1 << i)) {
+> > -			top_cck = i;
+> > -			break;
+> > -		}
+> > -		if (i == RATE_1M)
+> > -			break;
+> > -	}
+> > +	pos = fls(priv->basic_rates & GENMASK(RATE_54M, RATE_6M));
+> > +	priv->top_ofdm_basic_rate = pos ? pos-- : RATE_24M;
+>                                           ^^^^^
+> Argh...  Come on.  I don't want to have to break out the C standard to
+> see if this is defined behavior and where the sequence points are.  A
+> pre-op would be clear but the most clear thing is to write it like this:
+>
+> 	priv->top_ofdm_basic_rate = pos ? (pos - 1) : RATE_24M;
+>
+Ok, I do the modification as you suggested and resend a new version.
+>
+> >
+> > -	priv->top_cck_basic_rate = top_cck;
+> > +	pos = fls(priv->basic_rates & GENMASK(RATE_11M, RATE_1M));
+> > +	priv->top_cck_basic_rate = pos ? pos-- : RATE_1M;
+>                                          ^^^^^
+> Same.
+>
+> regards,
+> dan carpenter
+>
+thanks,
+oscar carter
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
