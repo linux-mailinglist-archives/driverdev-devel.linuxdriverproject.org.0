@@ -1,55 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 780E81B067E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Apr 2020 12:25:11 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E73581B0802
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Apr 2020 13:50:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DD604207A9;
-	Mon, 20 Apr 2020 10:25:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E2FFF87C20;
+	Mon, 20 Apr 2020 11:50:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rJBONqz3tAR5; Mon, 20 Apr 2020 10:25:08 +0000 (UTC)
+	with ESMTP id 2HKBnHbiZL52; Mon, 20 Apr 2020 11:50:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B8D7D204FE;
-	Mon, 20 Apr 2020 10:25:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 494E287532;
+	Mon, 20 Apr 2020 11:50:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 49A1A1BF407
- for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 10:25:05 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E7FD21BF429
+ for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 11:50:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4525C863D9
- for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 10:25:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E1DAD87532
+ for <devel@linuxdriverproject.org>; Mon, 20 Apr 2020 11:50:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S8fcC8zWNN-v for <devel@linuxdriverproject.org>;
- Mon, 20 Apr 2020 10:25:03 +0000 (UTC)
+ with ESMTP id BB2h+Ok44Isu for <devel@linuxdriverproject.org>;
+ Mon, 20 Apr 2020 11:50:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sv31.star.ne.jp (sv31.star.ne.jp [157.112.187.32])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4B5438507B
- for <devel@driverdev.osuosl.org>; Mon, 20 Apr 2020 10:25:03 +0000 (UTC)
-Received: from virusgw1.netowl.jp (virusgw1.netowl.jp [157.112.191.243])
- by sv31.star.ne.jp (Postfix) with ESMTP id 3E25618856DF1C;
- Mon, 20 Apr 2020 19:24:04 +0900 (JST)
-Received: from sv31.star.ne.jp (157.112.187.32)
- by virusgw1.netowl.jp (F-Secure/fsigk_smtp/521/virusgw1.netowl.jp);
- Mon, 20 Apr 2020 19:24:04 +0900 (JST)
-X-Virus-Status: clean(F-Secure/fsigk_smtp/521/virusgw1.netowl.jp)
-Received: from User (unknown [52.231.48.187])
- by sv31.star.ne.jp (Postfix) with ESMTPA id C801C188579306;
- Mon, 20 Apr 2020 19:23:59 +0900 (JST)
-From: "Reem Ebrahim Al-Hashimi"<saiyo@piezostudio.com>
-Subject: +++H e l l o+++
-Date: Mon, 20 Apr 2020 10:24:02 -0000
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 224F386F85
+ for <devel@driverdev.osuosl.org>; Mon, 20 Apr 2020 11:50:54 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03KBmReK180764;
+ Mon, 20 Apr 2020 11:50:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=s2LVxJ+JZrr/smGblvIHLVLe9Ff645vXk6rZ9nwVGHk=;
+ b=BvqWTbbdwCaJNEcQvWj7f5O3DBXF1OR7xWgCcOOZCRnaBe2TuyBK7s0jB4C25hc2BHz9
+ 8aIvdGzlvkv6tvEJ8FuHPuexzSeSL6vdqtlYOY+F7oggBxFpIh0lHfwiYh1QBMD3gtbB
+ +UQXFZpUPNOxbqhEnOi9cd0DQ9QmlALdbiE4I9TfY0M7tghW1Yu2YidUnYqSA8ufq3SI
+ OEf1uk+Y6cu3zZCPXHZ4j+XlPVBqc38vB+APR0rRNCXyLdQyrGGvc9HCxJ3JozG8z+3L
+ tzqb1CgMeg6ux3lA+fYyMMGZEEt/4LPczgoQX/u/8RluWQu4eyrCDZ357mzk/CuSOcbq 5g== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 30fsgkpq1g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 20 Apr 2020 11:50:53 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03KBlUpN017851;
+ Mon, 20 Apr 2020 11:50:52 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 30gb3qaej3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 20 Apr 2020 11:50:52 +0000
+Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 03KBoo16019766;
+ Mon, 20 Apr 2020 11:50:51 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 20 Apr 2020 04:50:50 -0700
+Date: Mon, 20 Apr 2020 14:50:44 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: carlosteniswarrior@gmail.com
+Subject: Re: [PATCH 2/2] Staging: rtl8188eu: core: rtw_pwrctrl: fixed a
+ coding style issue
+Message-ID: <20200420115044.GB2659@kadam>
+References: <20200419082122.17202-1-carlosteniswarrior@gmail.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200420102359.C801C188579306@sv31.star.ne.jp>
+Content-Disposition: inline
+In-Reply-To: <20200419082122.17202-1-carlosteniswarrior@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9596
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 adultscore=0
+ mlxlogscore=874 phishscore=0 suspectscore=1 bulkscore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004200106
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9596
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ priorityscore=1501
+ lowpriorityscore=0 mlxlogscore=947 malwarescore=0 clxscore=1011
+ spamscore=0 bulkscore=0 phishscore=0 suspectscore=1 impostorscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004200106
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,26 +98,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemal-hashimi@yandex.com
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+Where is patch 1/2?
 
-My name is Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE. Kindly visit this link for more understanding: https://en.wikipedia.org/wiki/Reem_Al_Hashimi
+On Sun, Apr 19, 2020 at 10:21:22AM +0200, carlosteniswarrior@gmail.com wrote:
+> From: porfavorde <carlosteniswarrior@gmail.com>
+        ^^^^^^^^^^
 
-I write to solicit for your partnership in claiming of $47Million from a Financial Home in Cambodia.
+Fix your name.
 
-The aforementioned fund $47 Million is my share percentage from my Oil/Gas deal with Cambodia/Vietnam Government within  2013/2014, influentially I don't want my government to know about the fund. If this proposal interests you, let me know by sending me an email and I will send to you detailed Information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except me and I know how to carry out the entire transaction.
 
-Furthermore, as a Minister of Petroleum, I am not allowed to be part of such a deal, because it's against my country's professional practice policy. So I am compelled to ask that you will stand on my behalf and receive this fund into any account that is solely controlled by you.
+> 
+> Fixed a checkpatch.pl warning: the constant should be in
+> the right side of the comparison.
+> 
+> Signed-off-by: porfavorde <carlosteniswarrior@gmail.com>
+                 ^^^^^^^^^^
+And here as well.
 
-I will compensate you with 30% of the total amount involved as gratification for being my partner in the transfer. Reply to my private email as stated: reemal-hashimi@yandex.com
+regards,
+dan carpenter
 
-Regards,
-Reem Ebrahim Al-Hashimi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
