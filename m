@@ -2,90 +2,61 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F5691B2EAD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Apr 2020 20:01:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 474251B30BF
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Apr 2020 21:56:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A1A5887CDA;
-	Tue, 21 Apr 2020 18:01:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D8BD48830D;
+	Tue, 21 Apr 2020 19:56:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+X-Amavis-Alert: BAD HEADER SECTION, Header field occurs more than once: "To"
+	occurs 3 times
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sStchZRT1gha; Tue, 21 Apr 2020 18:01:22 +0000 (UTC)
+	with ESMTP id d7mpJlFOIq49; Tue, 21 Apr 2020 19:56:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 43A4F87CB2;
-	Tue, 21 Apr 2020 18:01:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6059488137;
+	Tue, 21 Apr 2020 19:56:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7980D1BF35F
- for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 18:01:19 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F7141BF3A1
+ for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 19:56:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6F34886A10
- for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 18:01:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0990988137
+ for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 19:56:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+X-Amavis-Alert: BAD HEADER SECTION, Header field occurs more than once: "To"
+ occurs 3 times
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VQS16PsCsu0Z for <devel@linuxdriverproject.org>;
- Tue, 21 Apr 2020 18:01:18 +0000 (UTC)
+ with ESMTP id DiiGTQIctRpD for <devel@linuxdriverproject.org>;
+ Tue, 21 Apr 2020 19:56:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 219D7869EA
- for <devel@driverdev.osuosl.org>; Tue, 21 Apr 2020 18:01:18 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03LHwabV118752;
- Tue, 21 Apr 2020 18:01:17 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=QGVtEOqCgBB+Nv3ETNm0ncvtWTeDNDelHZbNu+wNNYg=;
- b=nwQ42tRv1Wbt9K+XBtbw1IMUiEwtCbSLIhgOO8tqXver3yYbKYCa9BIXlA4BdRMZNgS4
- gaTBD3VsRhGEzhBaUW0Thax5QSSOdE+Yq9Os7BQ6swnpO/M5Eo2ZEja71mZvb2l5dl0b
- VkGSk7V5d5oBc+1sQGVKEf/8JhGZpjkNaA4oZhvR+uQHnzyJZZhT7/taqH0sFNnoJK9Q
- eVQuYFiepGMsiKTpdnd+m0/42ALhW0j3HEPX7tkIok5gpmrvrE8++eubDAV2IQq+Rzsb
- 0oHBcZwy7vKam9hIYwe7/BSl6w0JdKXQZFF9gpAMIoyJKxuhHJoDiXR0foKcE05ZXxFT PQ== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 30fsgkxhjk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 21 Apr 2020 18:01:15 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03LHuT3W140790;
- Tue, 21 Apr 2020 18:01:15 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 30gbbeesen-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 21 Apr 2020 18:01:14 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 03LI1BSF000995;
- Tue, 21 Apr 2020 18:01:12 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 21 Apr 2020 11:01:11 -0700
-Date: Tue, 21 Apr 2020 21:01:02 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Denis Straghkov <d.straghkov@ispras.ru>
-Subject: Re: [PATCH] Staging: rtl8723bs: rtw_wlan_util: Add size check of
- SSID IE
-Message-ID: <20200421180102.GF2659@kadam>
-References: <20200421170806.18783-1-d.straghkov@ispras.ru>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200421170806.18783-1-d.straghkov@ispras.ru>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9598
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- malwarescore=0
- suspectscore=21 mlxlogscore=999 adultscore=0 mlxscore=0 phishscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004210138
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9598
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- priorityscore=1501
- lowpriorityscore=0 mlxlogscore=999 malwarescore=0 clxscore=1015
- spamscore=0 bulkscore=0 phishscore=0 suspectscore=21 impostorscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004210138
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 78E588808D
+ for <devel@driverdev.osuosl.org>; Tue, 21 Apr 2020 19:56:15 +0000 (UTC)
+Received: from localhost (unknown [137.135.114.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0B38120747;
+ Tue, 21 Apr 2020 19:56:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1587498975;
+ bh=6x/wFhtn8aM071j72/VXJj4F4EHWZDkKIF9PYyRrkKM=;
+ h=Date:From:To:To:To:Cc:Cc:Cc:Subject:In-Reply-To:References:From;
+ b=0kx5FJf08ZpB3GtSdyjo56633EJ8qs8lNmDQZKMKzwfslo6dmtB+TK27QpvKXxgzn
+ LNZkcB75jQQjuwJ9M1CsVcGlJEOiGN7uwGPMmeRopZcKknz0DEcYiXhRV2NGOuBpYf
+ u7uNXDIm1L48XJg5XpT7OA+gq+OEd5kxPYAVJE60=
+Date: Tue, 21 Apr 2020 19:56:14 +0000
+From: Sasha Levin <sashal@kernel.org>
+To: Sasha Levin <sashal@kernel.org>
+To: Malcolm Priestley <tvboxspy@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: vt6656: Power save stop wake_up_count wrap
+ around.
+In-Reply-To: <fce47bb5-7ca6-7671-5094-5c6107302f2b@gmail.com>
+References: <fce47bb5-7ca6-7671-5094-5c6107302f2b@gmail.com>
+Message-Id: <20200421195615.0B38120747@mail.kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,45 +69,80 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ stable@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Apr 21, 2020 at 08:08:06PM +0300, Denis Straghkov wrote:
->  	/* checking SSID */
-> +	ssid_len = 0;
->  	p = rtw_get_ie(bssid->IEs + _FIXED_IE_LENGTH_, _SSID_IE_, &len, bssid->IELength - _FIXED_IE_LENGTH_);
-> -	if (!p) {
-> -		DBG_871X("%s marc: cannot find SSID for survey event\n", __func__);
-> -		hidden_ssid = true;
-> -	} else {
-> -		hidden_ssid = false;
-> -	}
-> -
-> -	if ((NULL != p) && (false == hidden_ssid && (*(p + 1)))) {
-> -		memcpy(bssid->Ssid.Ssid, (p + 2), *(p + 1));
-> -		bssid->Ssid.SsidLength = *(p + 1);
-> -	} else {
-> -		bssid->Ssid.SsidLength = 0;
-> -		bssid->Ssid.Ssid[0] = '\0';
-> -	}
-> +        if (p) {
-> +                ssid_len = *(p + 1);
-> +                if (ssid_len > NDIS_802_11_LENGTH_SSID)
-> +                        ssid_len = 0;
-> +        }
-> +        memcpy(bssid->Ssid.Ssid, (p + 2), ssid_len);
-> +        bssid->Ssid.SsidLength = ssid_len;
+Hi
 
-This is using spaces instead of tabs.  Please run ./scripts/checkpatch.pl
-on your patch.
+[This is an automated email]
 
-regargs,
-dan carpenter
+This commit has been processed because it contains a "Fixes:" tag
+fixing commit: 43c93d9bf5e2 ("staging: vt6656: implement power saving code.").
 
+The bot has tested the following trees: v5.6.5, v5.5.18, v5.4.33, v4.19.116, v4.14.176, v4.9.219, v4.4.219.
+
+v5.6.5: Failed to apply! Possible dependencies:
+    10e9a359cea7 ("staging: vt6656: Delete int.c/h file and move functions to usbpipe")
+
+v5.5.18: Failed to apply! Possible dependencies:
+    10e9a359cea7 ("staging: vt6656: Delete int.c/h file and move functions to usbpipe")
+
+v5.4.33: Failed to apply! Possible dependencies:
+    10e9a359cea7 ("staging: vt6656: Delete int.c/h file and move functions to usbpipe")
+
+v4.19.116: Failed to apply! Possible dependencies:
+    10e9a359cea7 ("staging: vt6656: Delete int.c/h file and move functions to usbpipe")
+    69cc1f925e1a ("staging: vt6656: limit reg output to block size")
+    7156f7d9c387 ("staging: vt6656: avoid discarding called function's return code")
+    9df8a97088f2 ("staging: vt6656: Fix styling of the comment related to SPDX-License-Identifier")
+
+v4.14.176: Failed to apply! Possible dependencies:
+    10e9a359cea7 ("staging: vt6656: Delete int.c/h file and move functions to usbpipe")
+    69cc1f925e1a ("staging: vt6656: limit reg output to block size")
+    6b4c6ce89204 ("staging: vt6656: add SPDX identifiers to all vt6656 driver files")
+    7156f7d9c387 ("staging: vt6656: avoid discarding called function's return code")
+    9df8a97088f2 ("staging: vt6656: Fix styling of the comment related to SPDX-License-Identifier")
+
+v4.9.219: Failed to apply! Possible dependencies:
+    0ef48913354e ("staging:vt6656:mac.c Aligned code to match open parenthesis")
+    10e9a359cea7 ("staging: vt6656: Delete int.c/h file and move functions to usbpipe")
+    69cc1f925e1a ("staging: vt6656: limit reg output to block size")
+    6b4c6ce89204 ("staging: vt6656: add SPDX identifiers to all vt6656 driver files")
+    6ddcf34f113a ("staging: vt6656: Add missing identifier names")
+    7156f7d9c387 ("staging: vt6656: avoid discarding called function's return code")
+    759fc3c1e9b6 ("Staging: vt6656: Align lines to match open parenthesis")
+    812930665872 ("staging: vt6656: Alignment should match open parenthesis")
+    9df8a97088f2 ("staging: vt6656: Fix styling of the comment related to SPDX-License-Identifier")
+    a4dc9bd6a35d ("staging: vt6656: convert spaces to tabs for rf.c")
+    e2aefba617e3 ("staging:vt6656:baseband.h: fix function definition argument without identifier name issue")
+
+v4.4.219: Failed to apply! Possible dependencies:
+    10e9a359cea7 ("staging: vt6656: Delete int.c/h file and move functions to usbpipe")
+    1322739849a8 ("staging:vt6656:baseband.h: Fix alignment issue")
+    555d7a3ada13 ("staging:vt6656:dpc.h:fix parantheses alignment")
+    5678824069d5 ("staging: vt6656: Add space to align functions")
+    69cc1f925e1a ("staging: vt6656: limit reg output to block size")
+    6b4c6ce89204 ("staging: vt6656: add SPDX identifiers to all vt6656 driver files")
+    6ddcf34f113a ("staging: vt6656: Add missing identifier names")
+    7156f7d9c387 ("staging: vt6656: avoid discarding called function's return code")
+    759fc3c1e9b6 ("Staging: vt6656: Align lines to match open parenthesis")
+    9df8a97088f2 ("staging: vt6656: Fix styling of the comment related to SPDX-License-Identifier")
+    a9f47a456ae5 ("staging:vt6656:card.c:fix alignment checks")
+    e2aefba617e3 ("staging:vt6656:baseband.h: fix function definition argument without identifier name issue")
+
+
+NOTE: The patch will not be queued to stable trees until it is upstream.
+
+How should we proceed with this patch?
+
+-- 
+Thanks
+Sasha
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
