@@ -1,61 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4825A1B30CA
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Apr 2020 21:56:28 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28D8B1B31E9
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Apr 2020 23:25:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5F15885778;
-	Tue, 21 Apr 2020 19:56:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AB52E8759B;
+	Tue, 21 Apr 2020 21:25:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Header field occurs more than once: "To"
-	occurs 3 times
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Sq3QWE70sKuc; Tue, 21 Apr 2020 19:56:25 +0000 (UTC)
+	with ESMTP id STlgILg+fqWY; Tue, 21 Apr 2020 21:25:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4E48C8521D;
-	Tue, 21 Apr 2020 19:56:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2D2AE87592;
+	Tue, 21 Apr 2020 21:25:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DD32C1BF3A1
- for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 19:56:23 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 94FA41BF304
+ for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 21:25:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D89A6882E7
- for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 19:56:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 910D120402
+ for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 21:25:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Header field occurs more than once: "To"
- occurs 3 times
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 25TCUqcJOzWK for <devel@linuxdriverproject.org>;
- Tue, 21 Apr 2020 19:56:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8831488236
- for <devel@driverdev.osuosl.org>; Tue, 21 Apr 2020 19:56:23 +0000 (UTC)
-Received: from localhost (unknown [137.135.114.1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2A91020747;
- Tue, 21 Apr 2020 19:56:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587498983;
- bh=92sqrSPkQErIEihvZCpDELC2haa1dFyWUE+gZfEtXRQ=;
- h=Date:From:To:To:To:Cc:Cc:Cc:Subject:In-Reply-To:References:From;
- b=O2Zi+FG3u9nlMDf57NjvQUINE8D3D8DoqXOXphjpTaDpP5bB3ki67yXqPKiCU4ZMM
- /UkWTmCwsI+6Dfp60w1I3WIB3gRw+8a+f2x8sI4mf+FjC/PzFlR0kVJfudJ7tGRebN
- 6YfjZnGpc4bxuIp4+geH1owrviG2qjdWrIae6Uhs=
-Date: Tue, 21 Apr 2020 19:56:22 +0000
-From: Sasha Levin <sashal@kernel.org>
-To: Sasha Levin <sashal@kernel.org>
-To: Malcolm Priestley <tvboxspy@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: vt6656: Fix pairwise key entry save.
-In-Reply-To: <da2f7e7f-1658-1320-6eee-0f55770ca391@gmail.com>
-References: <da2f7e7f-1658-1320-6eee-0f55770ca391@gmail.com>
-Message-Id: <20200421195623.2A91020747@mail.kernel.org>
+ with ESMTP id rk0dU6kI3GgV for <devel@linuxdriverproject.org>;
+ Tue, 21 Apr 2020 21:25:48 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.ispras.ru (mail.ispras.ru [83.149.199.45])
+ by silver.osuosl.org (Postfix) with ESMTP id C2DF5203C4
+ for <devel@driverdev.osuosl.org>; Tue, 21 Apr 2020 21:25:48 +0000 (UTC)
+Received: from localhost.localdomain (unknown [188.123.230.157])
+ by mail.ispras.ru (Postfix) with ESMTPSA id 6DAFBCD46A;
+ Wed, 22 Apr 2020 00:25:46 +0300 (MSK)
+From: Denis Straghkov <d.straghkov@ispras.ru>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2] Staging: rtl8723bs: rtw_wlan_util: Add size check of SSID
+ IE
+Date: Wed, 22 Apr 2020 00:25:25 +0300
+Message-Id: <20200421212525.24962-1-d.straghkov@ispras.ru>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,42 +53,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- stable@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Denis Straghkov <d.straghkov@ispras.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi
+Add size check of SSID information element in incoming 802.11
+frames, to prevent memcpy() of IE in array bssid->Ssid.Ssid, with
+size more than 32 bytes.
 
-[This is an automated email]
+Signed-off-by: Denis Straghkov <d.straghkov@ispras.ru>
+---
+Changes in v2:
+  - Replace spaces on tabs.
 
-This commit has been processed because it contains a "Fixes:" tag
-fixing commit: f9ef05ce13e4 ("staging: vt6656: Fix pairwise key for non station modes").
+ .../staging/rtl8723bs/core/rtw_wlan_util.c    | 22 +++++++------------
+ 1 file changed, 8 insertions(+), 14 deletions(-)
 
-The bot has tested the following trees: v5.6.5, v5.5.18, v5.4.33, v4.19.116, v4.14.176, v4.9.219, v4.4.219.
-
-v5.6.5: Build OK!
-v5.5.18: Build OK!
-v5.4.33: Build OK!
-v4.19.116: Build OK!
-v4.14.176: Build OK!
-v4.9.219: Failed to apply! Possible dependencies:
-    5e38e15e689b ("staging:vt6656:key.c Aligned code with open parenthesis")
-
-v4.4.219: Failed to apply! Possible dependencies:
-    5e38e15e689b ("staging:vt6656:key.c Aligned code with open parenthesis")
-
-
-NOTE: The patch will not be queued to stable trees until it is upstream.
-
-How should we proceed with this patch?
-
+diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+index 110338dbe372..69bcd172b298 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+@@ -1271,13 +1271,13 @@ int rtw_check_bcn_info(struct adapter *Adapter, u8 *pframe, u32 packet_len)
+ 	unsigned char *pbuf;
+ 	u32 wpa_ielen = 0;
+ 	u8 *pbssid = GetAddr3Ptr(pframe);
+-	u32 hidden_ssid = 0;
+ 	struct HT_info_element *pht_info = NULL;
+ 	struct rtw_ieee80211_ht_cap *pht_cap = NULL;
+ 	u32 bcn_channel;
+ 	unsigned short	ht_cap_info;
+ 	unsigned char ht_info_infos_0;
+ 	struct mlme_priv *pmlmepriv = &Adapter->mlmepriv;
++	int ssid_len;
+ 
+ 	if (is_client_associated_to_ap(Adapter) == false)
+ 		return true;
+@@ -1370,21 +1370,15 @@ int rtw_check_bcn_info(struct adapter *Adapter, u8 *pframe, u32 packet_len)
+ 	}
+ 
+ 	/* checking SSID */
++	ssid_len = 0;
+ 	p = rtw_get_ie(bssid->IEs + _FIXED_IE_LENGTH_, _SSID_IE_, &len, bssid->IELength - _FIXED_IE_LENGTH_);
+-	if (!p) {
+-		DBG_871X("%s marc: cannot find SSID for survey event\n", __func__);
+-		hidden_ssid = true;
+-	} else {
+-		hidden_ssid = false;
+-	}
+-
+-	if ((NULL != p) && (false == hidden_ssid && (*(p + 1)))) {
+-		memcpy(bssid->Ssid.Ssid, (p + 2), *(p + 1));
+-		bssid->Ssid.SsidLength = *(p + 1);
+-	} else {
+-		bssid->Ssid.SsidLength = 0;
+-		bssid->Ssid.Ssid[0] = '\0';
++	if (p) {
++		ssid_len = *(p + 1);
++		if (ssid_len > NDIS_802_11_LENGTH_SSID)
++			ssid_len = 0;
+ 	}
++	memcpy(bssid->Ssid.Ssid, (p + 2), ssid_len);
++	bssid->Ssid.SsidLength = ssid_len;
+ 
+ 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("%s bssid.Ssid.Ssid:%s bssid.Ssid.SsidLength:%d "
+ 				"cur_network->network.Ssid.Ssid:%s len:%d\n", __func__, bssid->Ssid.Ssid,
 -- 
-Thanks
-Sasha
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
