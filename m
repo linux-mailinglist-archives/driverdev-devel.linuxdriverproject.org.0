@@ -2,63 +2,44 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C53B61B2106
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Apr 2020 10:05:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8EAC51B2E1B
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Apr 2020 19:18:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0983088362;
-	Tue, 21 Apr 2020 08:05:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D982D87F9F;
+	Tue, 21 Apr 2020 17:18:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oZcNo57-FCTV; Tue, 21 Apr 2020 08:05:49 +0000 (UTC)
+	with ESMTP id Oem0PM9mPT5B; Tue, 21 Apr 2020 17:18:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5069088345;
-	Tue, 21 Apr 2020 08:05:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BEA2087E07;
+	Tue, 21 Apr 2020 17:18:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9922D1BF312
- for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 08:05:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DA9591BF35D
+ for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 17:18:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 94EEA87899
- for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 08:05:47 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D079D86D91
+ for <devel@linuxdriverproject.org>; Tue, 21 Apr 2020 17:18:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KFuNs8hJ4rqW for <devel@linuxdriverproject.org>;
- Tue, 21 Apr 2020 08:05:46 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E92AB876C6
- for <devel@driverdev.osuosl.org>; Tue, 21 Apr 2020 08:05:46 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 557F32071C;
- Tue, 21 Apr 2020 08:05:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587456346;
- bh=MIsMOSthC5x1b/v9D2P+kZ/IzkE0C1W/5y/jCBKmXJE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=yu5yyQyNv4XIUAiv3IrPdT9binnqLDUcLtF7ShkV4r61pPbSv6Au4+iJXCqCjh/fi
- tiP+gTI/LQ36uKxAfSnU3sqBXrqR2nA9HcuR6BUtj+q2brAM+lrlX6zkJZbvB/18Vw
- jcZFKMEUb0ULBEhzpnRvj1BNYgQDXY0zSfDsD9ng=
-Date: Tue, 21 Apr 2020 10:05:44 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH] staging: android: ion: Skip sync if not mapped
-Message-ID: <20200421080544.GA611314@kroah.com>
-References: <20200414134629.54567-1-orjan.eide@arm.com>
- <20200414141849.55654-1-orjan.eide@arm.com>
- <20200414142810.GA958163@kroah.com>
- <CALAqxLX-SUhHPH6ewt-s9cEMc8DtMTgXem=JruAkLofuJf1syg@mail.gmail.com>
- <20200416102508.GA820251@kroah.com>
- <20200420082207.ui7iyg7dsnred2vv@wittgenstein>
- <CALAqxLW-txNEqW=P_9VTxvOVu_fgpjzHHDbR5BhtpYwhg1SXgw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CALAqxLW-txNEqW=P_9VTxvOVu_fgpjzHHDbR5BhtpYwhg1SXgw@mail.gmail.com>
+ with ESMTP id iWM6aaKSuxN9 for <devel@linuxdriverproject.org>;
+ Tue, 21 Apr 2020 17:18:09 +0000 (UTC)
+X-Greylist: delayed 00:09:56 by SQLgrey-1.7.6
+Received: from mail.ispras.ru (mail.ispras.ru [83.149.199.45])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 01976863DE
+ for <devel@driverdev.osuosl.org>; Tue, 21 Apr 2020 17:18:08 +0000 (UTC)
+Received: from localhost.localdomain (unknown [188.123.230.157])
+ by mail.ispras.ru (Postfix) with ESMTPSA id C2F80CD468;
+ Tue, 21 Apr 2020 20:08:10 +0300 (MSK)
+From: Denis Straghkov <d.straghkov@ispras.ru>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] Staging: rtl8723bs: rtw_wlan_util: Add size check of SSID IE
+Date: Tue, 21 Apr 2020 20:08:06 +0300
+Message-Id: <20200421170806.18783-1-d.straghkov@ispras.ru>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,81 +52,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>,
- =?iso-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>,
- Todd Kjos <tkjos@android.com>, Lecopzer Chen <lecopzer.chen@mediatek.com>,
- Arnd Bergmann <arnd@arndb.de>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- lkml <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Laura Abbott <labbott@redhat.com>, Anders Pedersen <anders.pedersen@arm.com>,
- Joel Fernandes <joel@joelfernandes.org>,
- "Darren Hart \(VMware\)" <dvhart@infradead.org>,
- Christian Brauner <christian.brauner@ubuntu.com>, nd <nd@arm.com>,
- Martijn Coenen <maco@android.com>, Laura Abbott <laura@labbott.name>,
- Christian Brauner <christian@brauner.io>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Denis Straghkov <d.straghkov@ispras.ru>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Apr 20, 2020 at 01:03:39PM -0700, John Stultz wrote:
-> On Mon, Apr 20, 2020 at 1:22 AM Christian Brauner
-> <christian.brauner@ubuntu.com> wrote:
-> > On Thu, Apr 16, 2020 at 12:25:08PM +0200, Greg Kroah-Hartman wrote:
-> > > On Tue, Apr 14, 2020 at 09:41:31PM -0700, John Stultz wrote:
-> > > > But I do think we can mark it as deprecated and let folks know that
-> > > > around the end of the year it will be deleted.
-> > >
-> > > No one ever notices "depreciated" things, they only notice if the code
-> > > is no longer there :)
-> > >
-> > > So I'm all for just deleting it and seeing who even notices...
-> >
-> > Agreed.
-> 
-> I mean, I get there's not much love for ION in staging, and I too am
-> eager to see it go, but I also feel like in the discussions around
-> submitting the dmabuf heaps at talks, etc, that there was clear value
-> in removing ION after a short time so that folks could transition
-> being able to test both implementations against the same kernel so
-> performance regressions, etc could be worked out.
-> 
-> I am actively getting many requests for help for vendors who are
-> looking at dmabuf heaps and are starting the transition process, and
-> I'm trying my best to motivate them to directly work within the
-> community so their needed heap functionality can go upstream. But it's
-> going to be a process, and their first attempts aren't going to
-> magically land upstream.  I think being able to really compare their
-> implementations as they iterate and push things upstream will help in
-> order to be able to have upstream solutions that are also properly
-> functional for production usage.
+Add size check of SSID information element in incoming 802.11
+frames, to prevent memcpy() of IE in array bssid->Ssid.Ssid, with
+size more than 32 bytes.
 
-But we are not accepting any new ion allocators or changes at the
-moment, so I don't see how the ion code in the kernel is helping/hurting
-anything here.
+Signed-off-by: Denis Straghkov <d.straghkov@ispras.ru>
+---
+ .../staging/rtl8723bs/core/rtw_wlan_util.c    | 24 +++++++------------
+ 1 file changed, 9 insertions(+), 15 deletions(-)
 
-There has been a bunch of changes to the ion code recently, in the
-Android kernel trees, in order to get a lot of the different
-manufacturer "forks" of ion back together into one place.  But again,
-those patches are not going to be sent upstream for merging so how is
-ion affecting the dmabuf code at all here?
+diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+index 110338dbe372..08eb09e29015 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+@@ -1271,13 +1271,13 @@ int rtw_check_bcn_info(struct adapter *Adapter, u8 *pframe, u32 packet_len)
+ 	unsigned char *pbuf;
+ 	u32 wpa_ielen = 0;
+ 	u8 *pbssid = GetAddr3Ptr(pframe);
+-	u32 hidden_ssid = 0;
+ 	struct HT_info_element *pht_info = NULL;
+ 	struct rtw_ieee80211_ht_cap *pht_cap = NULL;
+ 	u32 bcn_channel;
+ 	unsigned short	ht_cap_info;
+ 	unsigned char ht_info_infos_0;
+ 	struct mlme_priv *pmlmepriv = &Adapter->mlmepriv;
++	int ssid_len;
+ 
+ 	if (is_client_associated_to_ap(Adapter) == false)
+ 		return true;
+@@ -1370,21 +1370,15 @@ int rtw_check_bcn_info(struct adapter *Adapter, u8 *pframe, u32 packet_len)
+ 	}
+ 
+ 	/* checking SSID */
++	ssid_len = 0;
+ 	p = rtw_get_ie(bssid->IEs + _FIXED_IE_LENGTH_, _SSID_IE_, &len, bssid->IELength - _FIXED_IE_LENGTH_);
+-	if (!p) {
+-		DBG_871X("%s marc: cannot find SSID for survey event\n", __func__);
+-		hidden_ssid = true;
+-	} else {
+-		hidden_ssid = false;
+-	}
+-
+-	if ((NULL != p) && (false == hidden_ssid && (*(p + 1)))) {
+-		memcpy(bssid->Ssid.Ssid, (p + 2), *(p + 1));
+-		bssid->Ssid.SsidLength = *(p + 1);
+-	} else {
+-		bssid->Ssid.SsidLength = 0;
+-		bssid->Ssid.Ssid[0] = '\0';
+-	}
++        if (p) {
++                ssid_len = *(p + 1);
++                if (ssid_len > NDIS_802_11_LENGTH_SSID)
++                        ssid_len = 0;
++        }
++        memcpy(bssid->Ssid.Ssid, (p + 2), ssid_len);
++        bssid->Ssid.SsidLength = ssid_len;
+ 
+ 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("%s bssid.Ssid.Ssid:%s bssid.Ssid.SsidLength:%d "
+ 				"cur_network->network.Ssid.Ssid:%s len:%d\n", __func__, bssid->Ssid.Ssid,
+-- 
+2.17.1
 
-> The dmabuf heaps have been in an official kernel now for all of three
-> weeks. So yea, we can "delete [ION] and see who even notices", but I
-> worry that may seem a bit like contempt for the folks doing the work
-> on transitioning over, which doesn't help getting them to participate
-> within the community.
-
-But they aren't participating in the community today as no one is
-touching the ion code.  So I fail to see how keeping a dead-end-version
-of ion in the kernel tree really affects anyone these days.
-
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
