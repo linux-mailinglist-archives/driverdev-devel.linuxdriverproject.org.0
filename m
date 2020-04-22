@@ -1,91 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FB591B3BBE
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Apr 2020 11:51:16 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED8E61B48E7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Apr 2020 17:39:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 627A7862B4;
-	Wed, 22 Apr 2020 09:28:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C46F287CAB;
+	Wed, 22 Apr 2020 15:39:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kZUShgQd_0wr; Wed, 22 Apr 2020 09:28:14 +0000 (UTC)
+	with ESMTP id izRTih0O2T41; Wed, 22 Apr 2020 15:39:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E854C86207;
-	Wed, 22 Apr 2020 09:28:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0B23A878C1;
+	Wed, 22 Apr 2020 15:39:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3D3001BF866
- for <devel@linuxdriverproject.org>; Wed, 22 Apr 2020 09:28:11 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7EDD11BF489
+ for <devel@linuxdriverproject.org>; Wed, 22 Apr 2020 15:39:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 33AA5221B1
- for <devel@linuxdriverproject.org>; Wed, 22 Apr 2020 09:28:11 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7A0888769A
+ for <devel@linuxdriverproject.org>; Wed, 22 Apr 2020 15:39:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ftaq-CSPfRGt for <devel@linuxdriverproject.org>;
- Wed, 22 Apr 2020 09:28:10 +0000 (UTC)
+ with ESMTP id 6bwiuhNf-AaF for <devel@linuxdriverproject.org>;
+ Wed, 22 Apr 2020 15:39:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by silver.osuosl.org (Postfix) with ESMTPS id 7B6FF20360
- for <devel@driverdev.osuosl.org>; Wed, 22 Apr 2020 09:28:10 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03M9IWNL021568;
- Wed, 22 Apr 2020 09:28:08 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=q2xPT9aYNv3n8ZfbCyQkPK3lG0v/KfOw17OG2y43ouA=;
- b=Pn1An8SPixeffO+nPVD6F5Z3Qk6jb2a9EJXXSznQP0tNxOKtdqSWtfeHuku8W3jzKQuI
- vWn4Ua81OwO5LEUNKT4/fVjdlCasq5JTxDeWQT1cAEr38mtSZGC2KK/TMh32kH2ptzSM
- /VVQvXhBEl4ztGi8Pm9tSRtDJf3OGe+oV8HqIStRrgSDNmDbKyjB2n2xN7u+hWyb48ez
- dJ/SFLCjyjPS1sdxXIhaUfe0p0LYTorUJ03j+uktu8kr0fR1Gf8Fb/F7GlJppFZEw5Tm
- cT5UxozCf1BFv4K922TazmKf6Xg3yZObXy4rWFVebRijqPh31KvMktPyLg642CVBo4Y7 Kw== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2120.oracle.com with ESMTP id 30fsgm1pfj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 22 Apr 2020 09:28:08 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03M9HUdv116360;
- Wed, 22 Apr 2020 09:26:07 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 30gb926sxj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 22 Apr 2020 09:26:07 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 03M9Q5xW023163;
- Wed, 22 Apr 2020 09:26:06 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 22 Apr 2020 02:26:04 -0700
-Date: Wed, 22 Apr 2020 12:25:58 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Denis Straghkov <d.straghkov@ispras.ru>
-Subject: Re: [PATCH v2] Staging: rtl8723bs: rtw_wlan_util: Add size check of
- SSID IE
-Message-ID: <20200422092558.GH2659@kadam>
-References: <20200421212525.24962-1-d.straghkov@ispras.ru>
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EE8FC8768A
+ for <devel@driverdev.osuosl.org>; Wed, 22 Apr 2020 15:39:16 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id f7so1264398pfa.9
+ for <devel@driverdev.osuosl.org>; Wed, 22 Apr 2020 08:39:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=OSzsOQN8Z1q5Ww0pPBotbwJfApA1ur1KHIVoOxI4Rrw=;
+ b=g6+ewChR1dfm8d7rbsEaXxVVw8tca9f8lcTqPwL2DHu8RVOvpgak8FFsHJXn+8zdJS
+ TQomHYy5JEP16wiHIJhMl/Yc9H4L53lH3a+NN0gwQHA/cUPbTgdjfbnOGoV06w85VQko
+ FYaEXTatbcNneu451BucAl8GA6y4rDMBGfp91F2ct/NmwErVYA1PrgbKsdrsecqH5zZU
+ IxhBj6rybFoKPmm1hwe7/vSczGLbji8kQOFjcmwVrdQeWXO4Srz8afR2NfWbPjNGY26L
+ wj5sCPFs3NaCS/iFMIKPuks34mkZf/24JcUzlwl0af5LMGlXQj2cLmxEK582nA5xD1b2
+ uz6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=OSzsOQN8Z1q5Ww0pPBotbwJfApA1ur1KHIVoOxI4Rrw=;
+ b=NLQsq0djSxaNdaYbCsSy6KZk5O/t0Q9TeSXJcegqLXBTySLIe2bglOgTcUq5l+rkwK
+ HB8wO4rBiugeVsdUTUnW0Bdqel5/UXA60150RvlQXxe0opfbFClrq/qk+J0KC8J6RB+Y
+ w4156SEg+Nd9uADbbTfFI1evSbJ1w0rVyrT2iacM14tMs47p1i1rISH1Y63h7pnTk2WN
+ hNdhvDo3jLimWgOh9SqcvyedTedxBJMqnGz6841lnLwprqLMbrf7An9X6pBQ6Z3Nb1+F
+ mR94FBgRRrgzNKaIX76x3MI3e+QhLwGPIHKwvlGepq3ioPfTyxAe3SPFhqRB4l/LUpwE
+ CFcQ==
+X-Gm-Message-State: AGi0Pua8QvRIYCWN6itcUymoHx+ZpNnq3jwpmfnXOM//DVEBcy5g4iPF
+ zZd34jSFIY2KWoo1x+lQEqQ=
+X-Google-Smtp-Source: APiQypI3c0dky0npRWJ2vqUNhjgaVx/d2aoSqIAgxb9oK5DJxVFZ+N0yGfof2GL4IhuULOChQShSDA==
+X-Received: by 2002:a63:e607:: with SMTP id g7mr26503214pgh.303.1587569956501; 
+ Wed, 22 Apr 2020 08:39:16 -0700 (PDT)
+Received: from blackclown ([182.70.139.46])
+ by smtp.gmail.com with ESMTPSA id m14sm5358050pgk.56.2020.04.22.08.39.14
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 22 Apr 2020 08:39:15 -0700 (PDT)
+Date: Wed, 22 Apr 2020 21:09:00 +0530
+From: Suraj Upadhyay <usuraj35@gmail.com>
+To: jerome.pouiller@silabs.com, gregkh@linuxfoundation.org
+Subject: [PATCH] staging: wfx: cleanup long lines in data_tx.c
+Message-ID: <20200422153900.GA6184@blackclown>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200421212525.24962-1-d.straghkov@ispras.ru>
 User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9598
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- adultscore=0
- bulkscore=0 suspectscore=18 malwarescore=0 phishscore=0 spamscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004220075
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9598
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- priorityscore=1501
- lowpriorityscore=0 mlxlogscore=999 malwarescore=0 clxscore=1015
- spamscore=0 bulkscore=0 phishscore=0 suspectscore=18 impostorscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004220075
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,19 +83,107 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Thanks!
+Break lines with length over 80 characters to conform
+to the linux coding style. Issue found by checkpatch.
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
+---
+ drivers/staging/wfx/data_tx.c | 25 +++++++++++++++++--------
+ 1 file changed, 17 insertions(+), 8 deletions(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
+index c30e4f5b6e2d..85ad94de20e5 100644
+--- a/drivers/staging/wfx/data_tx.c
++++ b/drivers/staging/wfx/data_tx.c
+@@ -165,7 +165,8 @@ static int wfx_tx_policy_upload(struct wfx_vif *wvif)
+ 		spin_lock_bh(&wvif->tx_policy_cache.lock);
+ 		for (i = 0; i < HIF_TX_RETRY_POLICY_MAX; ++i)
+ 			if (!policies[i].uploaded &&
+-			    memzcmp(policies[i].rates, sizeof(policies[i].rates)))
++			    memzcmp(policies[i].rates,
++				    sizeof(policies[i].rates)))
+ 				break;
+ 		if (i < HIF_TX_RETRY_POLICY_MAX) {
+ 			policies[i].uploaded = true;
+@@ -290,7 +291,8 @@ static void wfx_tx_fixup_rates(struct ieee80211_tx_rate *rates)
+ 		if (rates[i].idx == -1) {
+ 			rates[i].idx = 0;
+ 			rates[i].count = 8; // == hw->max_rate_tries
+-			rates[i].flags = rates[i - 1].flags & IEEE80211_TX_RC_MCS;
++			rates[i].flags = rates[i - 1].flags &
++					 IEEE80211_TX_RC_MCS;
+ 			break;
+ 		}
+ 	}
+@@ -318,7 +320,9 @@ static u8 wfx_tx_get_rate_id(struct wfx_vif *wvif,
+ 	return rate_id;
+ }
+ 
+-static struct hif_ht_tx_parameters wfx_tx_get_tx_parms(struct wfx_dev *wdev, struct ieee80211_tx_info *tx_info)
++static struct
++hif_ht_tx_parameters wfx_tx_get_tx_parms(struct wfx_dev *wdev,
++					 struct ieee80211_tx_info *tx_info)
+ {
+ 	struct ieee80211_tx_rate *rate = &tx_info->driver_rates[0];
+ 	struct hif_ht_tx_parameters ret = { };
+@@ -381,7 +385,8 @@ static int wfx_tx_inner(struct wfx_vif *wvif, struct ieee80211_sta *sta,
+ 	hif_msg->id = HIF_REQ_ID_TX;
+ 	hif_msg->interface = wvif->id;
+ 	if (skb->len > wvif->wdev->hw_caps.size_inp_ch_buf) {
+-		dev_warn(wvif->wdev->dev, "requested frame size (%d) is larger than maximum supported (%d)\n",
++		dev_warn(wvif->wdev->dev,
++			 "requested frame size (%d) is larger than maximum supported (%d)\n",
+ 			 skb->len, wvif->wdev->hw_caps.size_inp_ch_buf);
+ 		skb_pull(skb, wmsg_len);
+ 		return -EIO;
+@@ -394,7 +399,8 @@ static int wfx_tx_inner(struct wfx_vif *wvif, struct ieee80211_sta *sta,
+ 	// data for debug.
+ 	req->packet_id = queue_id << 28 |
+ 			 IEEE80211_SEQ_TO_SN(le16_to_cpu(hdr->seq_ctrl)) << 16 |
+-			 (atomic_add_return(1, &wvif->wdev->packet_id) & 0xFFFF);
++			 (atomic_add_return(1, &wvif->wdev->packet_id) &
++			  0xFFFF);
+ 	req->data_flags.fc_offset = offset;
+ 	if (tx_info->flags & IEEE80211_TX_CTL_SEND_AFTER_DTIM)
+ 		req->data_flags.after_dtim = 1;
+@@ -517,7 +523,8 @@ void wfx_tx_confirm_cb(struct wfx_vif *wvif, const struct hif_cnf_tx *arg)
+ 		if (tx_count < rate->count &&
+ 		    arg->status == HIF_STATUS_RETRY_EXCEEDED &&
+ 		    arg->ack_failures)
+-			dev_dbg(wvif->wdev->dev, "all retries were not consumed: %d != %d\n",
++			dev_dbg(wvif->wdev->dev,
++				"all retries were not consumed: %d != %d\n",
+ 				rate->count, tx_count);
+ 		if (tx_count <= rate->count && tx_count &&
+ 		    arg->txed_rate != wfx_get_hw_rate(wvif->wdev, rate))
+@@ -557,7 +564,8 @@ void wfx_tx_confirm_cb(struct wfx_vif *wvif, const struct hif_cnf_tx *arg)
+ 		else
+ 			tx_info->flags |= IEEE80211_TX_STAT_ACK;
+ 	} else if (arg->status == HIF_REQUEUE) {
+-		WARN(!arg->tx_result_flags.requeue, "incoherent status and result_flags");
++		WARN(!arg->tx_result_flags.requeue,
++		     "incoherent status and result_flags");
+ 		if (tx_info->flags & IEEE80211_TX_CTL_SEND_AFTER_DTIM) {
+ 			wvif->after_dtim_tx_allowed = false; // DTIM period elapsed
+ 			schedule_work(&wvif->update_tim_work);
+@@ -595,7 +603,8 @@ void wfx_flush(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		if (wait_event_timeout(wdev->tx_dequeue,
+ 				       wfx_tx_queue_empty(wdev, queue, vif_id),
+ 				       msecs_to_jiffies(1000)) <= 0)
+-			dev_warn(wdev->dev, "frames queued while flushing tx queues?");
++			dev_warn(wdev->dev,
++				 "frames queued while flushing tx queues?");
+ 	}
+ 	wfx_tx_flush(wdev);
+ 	if (wdev->chip_frozen)
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
