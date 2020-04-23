@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA4E81B6607
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Apr 2020 23:14:36 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C8F1A1B6612
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Apr 2020 23:18:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E49DE86E23;
-	Thu, 23 Apr 2020 21:14:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2870E88699;
+	Thu, 23 Apr 2020 21:18:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HQz3WGKuGdm8; Thu, 23 Apr 2020 21:14:34 +0000 (UTC)
+	with ESMTP id uPCeh+ufrXZN; Thu, 23 Apr 2020 21:18:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C967286DE7;
-	Thu, 23 Apr 2020 21:14:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7BC0B8861D;
+	Thu, 23 Apr 2020 21:18:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 60B511BF2E5
- for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 21:14:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 76D951BF2E5
+ for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 21:18:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5D51686DE8
- for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 21:14:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7390686DEE
+ for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 21:18:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rl8H6a0ZgLrC for <devel@linuxdriverproject.org>;
- Thu, 23 Apr 2020 21:14:31 +0000 (UTC)
+ with ESMTP id 8TLRiH0jN963 for <devel@linuxdriverproject.org>;
+ Thu, 23 Apr 2020 21:18:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A54F386DE7
- for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 21:14:31 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id f13so8280542wrm.13
- for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 14:14:31 -0700 (PDT)
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BEC8386DE7
+ for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 21:18:01 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id z6so8371191wml.2
+ for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 14:18:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=to:cc:from:subject:message-id:date:user-agent:mime-version
  :content-language:content-transfer-encoding;
- bh=UqaUzhYpxz0lrWzJ6DPc0vNRY+etRrC0oeksk1Ww4Gs=;
- b=X2cJfeRWZp0JzMd8jTTQTj/Rb9Dl4QcQ4QoXMJZVALw3/l3qK8TpKqATlP4WVHvGDl
- N6bbd0rPPK49L39qy86FyYkc6bT8dPCdCwITha53gNhvImFyWSBpt3q1v9/xEnhNGJH7
- hj/7pcZS9qGaeJzB1OABn7AeB2MFfNEPIbFJnL3kmntVHsZhBy4heVBXnc4HNXfEoXAk
- V749tq9CvafXPuchZkyzNqSGFJ9IqKp6LYYOJ+hQn7LsL7BHt1kC2zgLqySoFZy5EI5h
- ekc84s/IrDp8rzqgm5bYwCcmwHcGeM8iKifX7VnwoGrfmH4rSDxwg9fuYLnVdla4uYyV
- bAHA==
+ bh=3UMfdWcimBn25JH2myhA40azE0PlplXVveJxc9S5LYk=;
+ b=uamWr4MnC2gvgpYgfAIoTG2UxaKYkmo+H+l1vvu+mlG+aJJkhnvh5nR+bkVjcBEYLx
+ NCZyuMLSdXLuMGrWhTvfRkAE1oxzj/Tex41zV2hlhGRJf77rq+JVrsbp+Nn5wbmBjSON
+ fztN2Y/voSToxjv3cnPgB+vpZ5gHTOWSQRA+aou4GYBKE66aDT+jifF5ztFBBFWwv8bb
+ O1B7qrQFjtmSCXhMigoRppHUAV3ky63ayC3zweUP9OC1TLMw/8zZGvLEGfBoX/xQ6d4v
+ cb5tDs1pMhXG3CNlb11iQzm4V9AZD6xdd4Uh7mx8p/TjlHy8MkIJVyH1lb60dPp34P/x
+ /Zzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=UqaUzhYpxz0lrWzJ6DPc0vNRY+etRrC0oeksk1Ww4Gs=;
- b=DfF7Y85r29E6w5gCZ5h5ynchteyGIJ7EwWgQLTe9AQ9gVLHoRN+4eBBpd9tNCqTj/y
- L6psMuVgD0BSH+maE/WvBSzjutvXQj80sJF+uMdEX/sQiHM9j4AzR6oXBndBYugLUfkV
- 0BG7eQpS7rl3KWycKCb2E93DdZRnzu2+euscolwcf5+p6UdbKU0S3uipPvTvrR0ehuEf
- BfzIB/8zoVcuMfxBBKsGgIJw0a8ivJaXr9QiFSur+jzzL6n8OR6wLx0LK5KsvebqJ1Tj
- F8wMToadu1O2jjXCHJg86N9g7Wk0TJqAAJ7+O5bGcDAZUQMXndsTdMqweu0EfNAWE3yT
- K+gw==
-X-Gm-Message-State: AGi0PubmeUEumehjUPEnjYtkU3MEyaNSSksPWMp//igFSb+QmTW279T0
- 0jMdH0lgLLe2WRS67bNB/4w=
-X-Google-Smtp-Source: APiQypLJzaiDg90Z9WoWkrOF+3EiBl2eIFduhI556E3nTfHEb6slLEJsFaZbrZWwnZWngt+HJKL13g==
-X-Received: by 2002:a5d:5085:: with SMTP id a5mr7552471wrt.394.1587676470238; 
- Thu, 23 Apr 2020 14:14:30 -0700 (PDT)
+ bh=3UMfdWcimBn25JH2myhA40azE0PlplXVveJxc9S5LYk=;
+ b=CuiLZYP0DArSh1jOiRdT9UIlY/s0Y+MWuHV8KjGoPfiwsdPe6Sy9dyfv9WIZXFHEaQ
+ zCxlgqoNey+VOXIECAcijQa9CK93kt2/8Holzenw7mqoll7yVCj0qwhUNR9WxkwYmUcU
+ LiKIoIg4QgKryaVc91oUEkOIv+LJGvxdGOv/Qij84p4dbkaawmQguQxTHJbTqjEMOOuF
+ /Lw6++zOf8zBsAcHOt5deM8icIpJ13Ik8DLvCiOLm80YmUey/AbXrhYaHBBbt+j1fg02
+ Lx1BhC0gD3oMCp/V+LDXQHUDs5Z4OvMok/5Lo6VMuOOp2TdLxYWb95Cd5u3zUpJUf2sn
+ 0raQ==
+X-Gm-Message-State: AGi0Puadhq3BReWrPWCro5eWPMoWUJlG0Jq8801mf5ytfDMLn96B8Qkz
+ Qycxf4vkbj+XG9P23SKUwfE=
+X-Google-Smtp-Source: APiQypL14SL2t3MTWCC5IqHR6QKM17e2Mz6mwndEh3M6aXyfBYq39YCccjsK43uXeZBOPEM+4ZNhbQ==
+X-Received: by 2002:a7b:c190:: with SMTP id y16mr6615537wmi.50.1587676680314; 
+ Thu, 23 Apr 2020 14:18:00 -0700 (PDT)
 Received: from [192.168.43.18] (94.197.120.138.threembb.co.uk.
  [94.197.120.138])
- by smtp.gmail.com with ESMTPSA id j68sm5538616wrj.32.2020.04.23.14.14.29
+ by smtp.gmail.com with ESMTPSA id j3sm5373507wrw.28.2020.04.23.14.17.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Apr 2020 14:14:29 -0700 (PDT)
+ Thu, 23 Apr 2020 14:17:59 -0700 (PDT)
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH 1/2] staging: vt6656: Remove set short time in
- vnt_init_registers.
-Message-ID: <a2bfc4f5-3f7f-3718-6056-2907a004477f@gmail.com>
-Date: Thu, 23 Apr 2020 22:14:28 +0100
+Subject: [PATCH 2/2] staging: vt6656: Remove preamble_type setting from
+ vnt_tx_packet.
+Message-ID: <04874ae5-0859-7cb5-619a-ac96a207be5d@gmail.com>
+Date: Thu, 23 Apr 2020 22:17:58 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
@@ -94,38 +94,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The short time is set in vnt_bss_info_changed no need to set it
+preamble_type is set in vnt_bss_info_changed no need to set it
 here.
 
 Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- drivers/staging/vt6656/main_usb.c | 13 -------------
- 1 file changed, 13 deletions(-)
+ drivers/staging/vt6656/rxtx.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index 4bca0b99cf45..c0545932866c 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -401,19 +401,6 @@ static int vnt_init_registers(struct vnt_private *priv)
- 	dev_dbg(&priv->usb->dev, "Network address = %pM\n",
- 		priv->current_net_addr);
+diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
+index 7e15534e52ff..f56a2b02fe36 100644
+--- a/drivers/staging/vt6656/rxtx.c
++++ b/drivers/staging/vt6656/rxtx.c
+@@ -729,11 +729,6 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 	if (ieee80211_has_retry(hdr->frame_control))
+ 		tx_buffer_head->fifo_ctl |= cpu_to_le16(FIFOCTL_LRETRY);
  
--	/*
--	 * set BB and packet type at the same time
--	 * set Short Slot Time, xIFS, and RSPINF
--	 */
--	if (priv->bb_type == BB_TYPE_11A)
--		priv->short_slot_time = true;
+-	if (tx_rate->flags & IEEE80211_TX_RC_USE_SHORT_PREAMBLE)
+-		priv->preamble_type = PREAMBLE_SHORT;
 -	else
--		priv->short_slot_time = false;
+-		priv->preamble_type = PREAMBLE_LONG;
 -
--	ret = vnt_set_short_slot_time(priv);
--	if (ret)
--		goto end;
--
- 	priv->radio_ctl = priv->eeprom[EEP_OFS_RADIOCTL];
- 
- 	if ((priv->radio_ctl & EEP_RADIOCTL_ENABLE) != 0) {
+ 	if (tx_rate->flags & IEEE80211_TX_RC_USE_RTS_CTS) {
+ 		need_rts = true;
+ 		tx_buffer_head->fifo_ctl |= cpu_to_le16(FIFOCTL_RTS);
 -- 
 2.25.1
 _______________________________________________
