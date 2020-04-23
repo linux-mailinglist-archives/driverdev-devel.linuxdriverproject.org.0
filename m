@@ -1,82 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DA1F1B5BFC
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Apr 2020 14:57:47 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD1A01B5CA4
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Apr 2020 15:33:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D3C488571;
-	Thu, 23 Apr 2020 12:57:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 79F818784C;
+	Thu, 23 Apr 2020 13:33:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iUJqewblyr-Y; Thu, 23 Apr 2020 12:57:45 +0000 (UTC)
+	with ESMTP id WiR8oxR-QF7U; Thu, 23 Apr 2020 13:33:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 132D6885AE;
-	Thu, 23 Apr 2020 12:57:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 08B6986CC0;
+	Thu, 23 Apr 2020 13:33:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 954BD1BF392
- for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 12:57:41 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DD6661BF358
+ for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 13:33:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 919BF86CDE
- for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 12:57:41 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CD297226CF
+ for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 13:33:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S30z6l7gJwj2 for <devel@linuxdriverproject.org>;
- Thu, 23 Apr 2020 12:57:40 +0000 (UTC)
+ with ESMTP id XoIpxC0oz+sk for <devel@linuxdriverproject.org>;
+ Thu, 23 Apr 2020 13:33:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f66.google.com (mail-lf1-f66.google.com
- [209.85.167.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 124BD86CDB
- for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 12:57:40 +0000 (UTC)
-Received: by mail-lf1-f66.google.com with SMTP id 131so4638142lfh.11
- for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 05:57:39 -0700 (PDT)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 548EC2041E
+ for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 13:33:45 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id b11so6868122wrs.6
+ for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 06:33:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=4IzPwc1p9rewfVDR02gT5iXJHo6WGDgE1h5tGgQZ7mU=;
- b=COuoas++m8kh9KGRXhiHJqYkkHYcP2R0N9n5x/wRuy2uQAOiKMUli60CJGPV8ZscFZ
- 2UX2tqj9zWW4Y/0dTcTe9p757t/rMDVRNrurrUWydEh1XnEE9ot/ompCf8RWgCa5aGfN
- YamULePVFJRNtd3QFOqj3bGv726bt3Iz2EG+1lN2JL6trl3YggjbqDDuq2xlaeRrNn9r
- JTR27Whjw9ywKLa2pWK+CXNY+iVGP+b+p9BMwEpI2wT/3AZoVlKlola/yMOW1wxee7XT
- ADuxv8fMWvZHbcZMC2QPrK6FBFchlTHP6JCeeoj05kbeq7uppxFHQwltie7WwMKoeHmG
- 6hVQ==
+ bh=0Mxnr6QHfY5l0I7jQqZWYhUgYSSrzd0fZHj7N3zbutY=;
+ b=VuH56kWd003boJuQQcUlw8yVQmGe1BHZSvNdF/cY7EpN4JQOs8Miy6zpbzOtbAL5TA
+ tD6pAoBxupOUJE+vpfkf1o1ofVZbwDudQV3/1JM8c6ZooCk2GazIUtTqKgUbISjq4KGQ
+ +AC8O0Aphrq9v23aGS4oVwBJ2mm+nhjCa0WmRNmxlppUbHMLLAIkIB9OpYx+/UoW28s5
+ DtHlCvRf6TUGyU2+w6WYWSjiQYowqvbr/uRLT7lcuG1y6fsRNSc4hJr9PZiRxgE0IW4N
+ eg/Sar2b2uNOVTodH/4Ic8t8kbRSYHuRzc7TaMXuX5V+SFEsZfBeeyLJdhr5SuQ3VnmG
+ ZBMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=4IzPwc1p9rewfVDR02gT5iXJHo6WGDgE1h5tGgQZ7mU=;
- b=D9Wy4cqkReT5CVZ3B7Mh1GwEMJfmXaNekCWKqBAU2VbeDpAqtyZoC4Ilubisfxfolh
- g6rtFQN+b6WM/rO3Nj2ix/UrmB8MK+kMV+2YAP48/xbeHZpTbFI605hlA239dQBfQKgB
- k18Db4gsVkctt6a+W3AyZRsIxcih/La88Ir/WZnxIaDsQ1Ge7gvjgCeRAarxyYjNM65C
- VkZrcrgje75ztzUtRSF8YBQv0bc5p5sMPLiZki8MAtY8MuQpPY/+eC2Met4fZj1hCX0F
- bkDSW6Fl45t3/znxQpMwbbOFdcfISRy00oWpITvEHT0RcSmz8j9UqxWRV2YmeI6jgmOr
- o5qw==
-X-Gm-Message-State: AGi0PuZezwrgZsLGlliKDHzmYTHFuP2Mu5O1Z6F8SdKT8P2r1OxoZY7F
- Mc9KqpU1tg/+4jGmJlO2FBo=
-X-Google-Smtp-Source: APiQypKjCMt6tyu6ESzGYYRAyReUyR+rMLEyV+2RwlMUA8K/CbCT76O9ynYNvxp9+GM34j8UL9NZMw==
-X-Received: by 2002:ac2:4c9a:: with SMTP id d26mr2340685lfl.112.1587646657974; 
- Thu, 23 Apr 2020 05:57:37 -0700 (PDT)
-Received: from [192.168.0.160] (84.188.smarthome.spb.ru. [80.249.188.84])
- by smtp.gmail.com with ESMTPSA id s7sm1807991lfb.40.2020.04.23.05.57.36
+ bh=0Mxnr6QHfY5l0I7jQqZWYhUgYSSrzd0fZHj7N3zbutY=;
+ b=NG4mQFB/1rhyEQRn58FlBIMF9zbqm4WCJMVOtrJ35j356ED4JDa9qpNE/T7Vh4h6Q0
+ JCcu1/8thS6ZT07FKZkeHdncSnV5AWk8R0lY08KlgVdk3x3HLEJsql9SyJo8ifww8rcs
+ A7iZJB6WuNRBghIBIE+LuK+zjIqMIormONRlsFp4YS/GfoN6so6nYNhsAqCc8SK9Xej+
+ 7LaN+F5yKAj92pO/BBlcp7iMeclkrJDA0OyTEzUPWjD+xQlz3JU4og+2lLrB8gGDAMs+
+ +pWFnAJdOYl9RpYw4FQkBBn10HQKlzBaoRNk8m8WCM3V32ZvGRg4JbXu8auMi2djng90
+ bBgw==
+X-Gm-Message-State: AGi0PuYXkK64B4kJLtsOJ0bF0csmLiHkdYY9xPmYC15DFmzUarNFItn5
+ jPbyQJqhkcZz9H8mqpBXSDA=
+X-Google-Smtp-Source: APiQypLpY8N4F27spciix9Sp0I6NywG1ZST5sjbgl6JI+cEYUmY2EnFBHiU/1vkTiDZA9R8SP6bOVA==
+X-Received: by 2002:adf:f4cb:: with SMTP id h11mr589133wrp.191.1587648823644; 
+ Thu, 23 Apr 2020 06:33:43 -0700 (PDT)
+Received: from [192.168.2.1] (ip51ccf9cd.speed.planet.nl. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id v7sm12489779wmg.3.2020.04.23.06.33.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Apr 2020 05:57:36 -0700 (PDT)
-Subject: Re: [PATCH] staging:r8188eu: avoid skb_clone for amsdu to msdu
- conversion
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <20200418084112.3723-1-insafonov@gmail.com>
- <20200423112910.GA3768232@kroah.com>
-From: Ivan Safonov <insafonov@gmail.com>
-Message-ID: <fc167249-b052-89f8-1cee-b7d9bcff0d2c@gmail.com>
-Date: Thu, 23 Apr 2020 16:02:10 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ Thu, 23 Apr 2020 06:33:43 -0700 (PDT)
+Subject: Re: [PATCH v2 6/9] dt-bindings: media: rkisp1: move rockchip-isp1
+ bindings out of staging
+To: Helen Koike <helen.koike@collabora.com>, devicetree@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20200403161538.1375908-1-helen.koike@collabora.com>
+ <20200403161538.1375908-7-helen.koike@collabora.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <32115405-8a29-29ee-69e2-7c662689ecfd@gmail.com>
+Date: Thu, 23 Apr 2020 15:33:41 +0200
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200423112910.GA3768232@kroah.com>
+In-Reply-To: <20200403161538.1375908-7-helen.koike@collabora.com>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,87 +91,110 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Saurav Girepunje <saurav.girepunje@gmail.com>,
- linux-kernel@vger.kernel.org, Puranjay Mohan <puranjay12@gmail.com>,
- Larry Finger <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com,
+ dafna.hirschfeld@collabora.com, heiko@sntech.de, kishon@ti.com,
+ linux-kernel@vger.kernel.org, karthik.poduval@gmail.com, robh+dt@kernel.org,
+ hverkuil-cisco@xs4all.nl, kernel@collabora.com, ezequiel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 4/23/20 2:29 PM, Greg Kroah-Hartman wrote:
-> On Sat, Apr 18, 2020 at 11:41:12AM +0300, Ivan Safonov wrote:
->> skb clones use same data buffer, so tail of one skb is corrupted by beginning of next skb.
+Hi Helen,
+
+
+>   clocks:
+>     items:
+>       - description: ISP clock
+>       - description: ISP AXI clock clock
+>       - description: ISP AXI clock  wrapper clock
+>       - description: ISP AHB clock clock
+
+Too many clocks here             ^
+Too many spaces here                 ^
+
+>       - description: ISP AHB wrapper clock
+
+We can expect 4 to 5 clocks.
+With 5 clocks and a different description this layout is maybe not so handy.
+
+As first change:
+
+  clocks:
+    maxItems: 5
+    description:
+      rk3399 clocks
+        ISP clock
+        ISP AXI clock
+        ISP AXI wrapper clock
+        ISP AHB clock
+        ISP AHB wrapper clock
+
+And then later:
+
+  clocks:
+    maxItems: 5
+    description:
+      rk3288 clocks
+        ISP clock
+        ISP AXI clock
+        ISP AHB clock
+        ISP Pixel clock
+        ISP JPEG source clock
+      rk3399 clocks
+        ISP clock
+        ISP AXI clock
+        ISP AXI wrapper clock
+        ISP AHB clock
+        ISP AHB wrapper clock
+
+With 4 clocks:
+
+  clocks:
+    minItems: 4
+    maxItems: 5
+    description:
+      rk1808 clocks
+      rk3288 clocks
+      rk3326 clocks
+      rk3368 clocks
+      rk3399 clocks
+[..]
+
+
 > 
-> Please properly wrap your changelog text at the correct column (72).
+>   clock-names:
+>     items:
+>       - const: clk_isp
+>       - const: aclk_isp
+>       - const: aclk_isp_wrap
+>       - const: hclk_isp
+>       - const: hclk_isp_wrap
+
+
+
+On 4/3/20 6:15 PM, Helen Koike wrote:
+> Move rkisp1 bindings to Documentation/devicetree/bindings/media
 > 
-> Also, your subject: line does not have the correct driver name :(
-
-Correct driver name is 'r8188eu':
-
-1. 
-http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/2016-June/090556.html 
-:
-> One other point, it is customary to start the patch subject with "staging: 
-> rtl8188eu: ..." for drivers in staging. I also prefer using r8188eu rather than 
-> rtl8188eu as the former is the actual name of the driver, but either will work.
-
-2. ./drivers/staging/rtl8188eu/os_dep/usb_intf.c lines 483-522/522 (END):
-> static struct usb_driver rtl8188e_usb_drv = {
->         .name = "r8188eu",
->         .probe = rtw_drv_init,
->         .disconnect = rtw_dev_remove,
->         .id_table = rtw_usb_id_tbl,
->         .suspend =  rtw_suspend,
->         .resume = rtw_resume,
->         .reset_resume = rtw_resume,
-> };
+> Verified with:
+> make ARCH=arm64 dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 > 
-> module_usb_driver(rtl8188e_usb_drv)
-
-Subject contain this name.
-
->>
->> Signed-off-by: Ivan Safonov <insafonov@gmail.com>
->> ---
->>   drivers/staging/rtl8188eu/core/rtw_recv.c | 19 ++++++-------------
->>   1 file changed, 6 insertions(+), 13 deletions(-)
->>
->> diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
->> index d4278361e002..a036ef104198 100644
->> --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
->> +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
->> @@ -1525,21 +1525,14 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
->>   
->>   		/* Allocate new skb for releasing to upper layer */
->>   		sub_skb = dev_alloc_skb(nSubframe_Length + 12);
->> -		if (sub_skb) {
->> -			skb_reserve(sub_skb, 12);
->> -			skb_put_data(sub_skb, pdata, nSubframe_Length);
->> -		} else {
->> -			sub_skb = skb_clone(prframe->pkt, GFP_ATOMIC);
->> -			if (sub_skb) {
->> -				sub_skb->data = pdata;
->> -				sub_skb->len = nSubframe_Length;
->> -				skb_set_tail_pointer(sub_skb, nSubframe_Length);
->> -			} else {
->> -				DBG_88E("skb_clone() Fail!!! , nr_subframes=%d\n", nr_subframes);
->> -				break;
->> -			}
->> +		if (!sub_skb) {
->> +			DBG_88E("dev_alloc_skb() Fail!!! , nr_subframes=%d\n", nr_subframes);
->> +			break;
->>   		}
->>   
->> +		skb_reserve(sub_skb, 12);
->> +		skb_put_data(sub_skb, pdata, nSubframe_Length);
->> +
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> ---
 > 
-> Have you tested this?
+> V2:
+> - no changes
+> 
+>  .../devicetree/bindings/media/rockchip-isp1.yaml                  | 0
+>  1 file changed, 0 insertions(+), 0 deletions(-)
+>  rename {drivers/staging/media/rkisp1/Documentation => Documentation}/devicetree/bindings/media/rockchip-isp1.yaml (100%)
+> 
+> diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> similarity index 100%
+> rename from drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> rename to Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> 
 
-I have not test this change.
-
-Ivan Safonov.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
