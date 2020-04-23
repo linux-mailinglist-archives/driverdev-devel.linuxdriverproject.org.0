@@ -1,84 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94C091B5B8E
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Apr 2020 14:37:01 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1810F86CDE;
-	Thu, 23 Apr 2020 12:37:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l-SzTtjxQBhU; Thu, 23 Apr 2020 12:36:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AE7DA8687B;
-	Thu, 23 Apr 2020 12:36:58 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 066201BF392
- for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 12:36:57 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 921991B5BBA
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Apr 2020 14:48:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E0EAB2041C
- for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 12:36:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AF6FE232FA;
+	Thu, 23 Apr 2020 12:48:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BES9ULdE0YMJ; Thu, 23 Apr 2020 12:48:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 2C962232F2;
+	Thu, 23 Apr 2020 12:48:17 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9A8271BF392
+ for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 12:48:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 96CD686CB5
+ for <devel@linuxdriverproject.org>; Thu, 23 Apr 2020 12:48:14 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SbQqTTUCgb+7 for <devel@linuxdriverproject.org>;
- Thu, 23 Apr 2020 12:36:54 +0000 (UTC)
+ with ESMTP id 14XbeN9OQHTM for <devel@linuxdriverproject.org>;
+ Thu, 23 Apr 2020 12:48:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
- [209.85.128.67])
- by silver.osuosl.org (Postfix) with ESMTPS id F155C203A6
- for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 12:36:53 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id x25so6253680wmc.0
- for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 05:36:53 -0700 (PDT)
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DEE6086CB2
+ for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 12:48:12 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id x4so6303006wmj.1
+ for <devel@driverdev.osuosl.org>; Thu, 23 Apr 2020 05:48:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mi3rnUMPvy/QR3Ps6vsxVuv41qLYHh/uNXwCdOf964o=;
- b=PgsVLVg2fEE4UgEw5ybsRRcMm8D0szEHNj4jYCN/y3Piw4K0Zvmgpeth5Hjb8gCVI0
- Y2HAif5w2DxAfImAwIjZYnbyP7fEaBREjKHo0lML6cKH1VCtmlwGLGXxHftgpxo7RyJk
- 5ta54tkpyf8ALl3fGhh7E3u2HGxUH2dYnvxhZ8FMENxzdzOtQmlhJPnxAadF68Z+W+uf
- V2We74ZXkgSjQP/TIAUvhG6NnMiAjbgwaE6w/Kt2o6aFnsYbbqeZjmXF+ac+tinjBO/U
- p6YlOnEegbdG2PF+zK/S49wjLppEutcfSgHcBipTrQvS9xAjVt25l7orY3r29/DAPQFs
- eEMw==
+ bh=AIWDZqBU/m1xMWhrZfTJgdQpK0v0DeS2ch8sjIFRn1o=;
+ b=IWSs9nbgcZK6vbN6AxMc7DXCMIRSEXT+zXxFa2memXXRINJEoe9BBuUC1XuEul8cU5
+ faG8X/sEDFm2OAPncZD6JmPNo/L1TCNX6CfNM11N3DEfoFStIKSDEELn15N3Z+5P4PUy
+ wUaZgTs5CIAU/qMmi+8RxsyD9Ca+MjwUfOhdK2mWesajkf1G2Z7IYe5KxwnsnPiaMn9D
+ 35ZJSQFo6N12ePSS4VxpnFbMFNX8ublLbVA6itFGlvvFB7iRh5VEwbegt6KIanp/CSoF
+ yY3yAFC6idyTWu1j/1GNB3sus005W1MD6LDsqf++mUuPvql+q7Y1flk4g+/GCpd8t7Vb
+ yBiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=mi3rnUMPvy/QR3Ps6vsxVuv41qLYHh/uNXwCdOf964o=;
- b=md+ENeHX+J7vaaBISQcZ+bVCyIdmGJTU7UwJb2rVg4mPuxL5a243x9nPU0kgDzIa3O
- 8RgLfQq709xm8X8nhAVi0/85xuea89T68Red0mbDtEjlXS8uuqAcDdYn5sSWydo5BUsg
- 0ceTYaSb1hwf15vUGwz9BYHx6IEJWy/SKK/h46H5xFg3K492KT7heItN7BLZ/tIQ1dRf
- FotQjFk8QNP1/J1Wjl7ZSjLi2KUJD/kce445JEfjt22rN89WcHYtdRTph+2fhS9c9fzi
- a+2uk8DUelCJzEe46W3KLjTr606Yk6KcAnagK/uw26KSCapkxNmSErH+HLZM36SAZw+i
- JqMg==
-X-Gm-Message-State: AGi0PuZ2OsuUU7GeBKr8koOpT8D1b3q1S/XUJMFMqAppGvAciMjxdo1Q
- XiEwXYLvluripnS/vwNZY7Y=
-X-Google-Smtp-Source: APiQypLOTc7Zk2kFUmf/qLTme2iOBIANPeVm3oJWV5ReTH48bHyBCwfMNIZwZ1IBZDmEt730DGE/4A==
-X-Received: by 2002:a05:600c:2316:: with SMTP id
- 22mr3898972wmo.164.1587645412306; 
- Thu, 23 Apr 2020 05:36:52 -0700 (PDT)
+ bh=AIWDZqBU/m1xMWhrZfTJgdQpK0v0DeS2ch8sjIFRn1o=;
+ b=aorNyqh6HNq2I6gSvs10a9QB2sJb7IKg7p+kpkRpJwhGh5j++0yU188suARoyuYh4E
+ lF7rmeNA6flw4rReBGzBXDNK/DA942woq07eOAG0PH27RH/catlweWA/8IDpInNmMK1f
+ hoqvfiZbvqwEMLw1ot6282t3lm3CV5pUd60rWOwGeDdlK3W4QGzaPOB5Tt/g/G70sVWW
+ TKN2M29PhFmhaKe84GLqEjZU/8heekZSIh4NGIfiHKDUqlD7jQkC4vhgsgZtCQbjzF2K
+ H8Bz30xeD3Y3NT4dhgL+bgrEu7CKf7tlauNNfBy0ND+EwXf+vJv92bIu8/l2ne0/bwTl
+ tpXg==
+X-Gm-Message-State: AGi0Pua+3yS8iAHRuZ6DFy4M1WLqEuEaBXuO2HE2j+BCG2zTdBxQTcEd
+ pQz111jUWMFwkp8BSIOBhoU=
+X-Google-Smtp-Source: APiQypLbjw45ucXMMdNEze5vzTmLlFY1dYkm9XBnrtS1Rr4KNXzqteQX0stoMFeih45vI8iuRblXRQ==
+X-Received: by 2002:a1c:5683:: with SMTP id k125mr3897667wmb.17.1587646091198; 
+ Thu, 23 Apr 2020 05:48:11 -0700 (PDT)
 Received: from [192.168.2.1] (ip51ccf9cd.speed.planet.nl. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id 68sm3672991wrm.65.2020.04.23.05.36.50
+ by smtp.gmail.com with ESMTPSA id f8sm3626512wrm.14.2020.04.23.05.48.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Apr 2020 05:36:51 -0700 (PDT)
-Subject: Re: [PATCH v2 6/9] dt-bindings: media: rkisp1: move rockchip-isp1
- bindings out of staging
+ Thu, 23 Apr 2020 05:48:10 -0700 (PDT)
+Subject: Re: [PATCH v2 7/9] media: MAINTAINERS: rkisp1: add path to dt-bindings
 To: Helen Koike <helen.koike@collabora.com>, devicetree@vger.kernel.org,
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20200403161538.1375908-1-helen.koike@collabora.com>
- <20200403161538.1375908-7-helen.koike@collabora.com>
+ <20200403161538.1375908-8-helen.koike@collabora.com>
 From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <7da8fb4d-018e-894a-884b-760eaf2959e6@gmail.com>
-Date: Thu, 23 Apr 2020 14:36:49 +0200
+Message-ID: <6cc8ac87-761b-de5d-7104-6f55f419a4d1@gmail.com>
+Date: Thu, 23 Apr 2020 14:48:09 +0200
 User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200403161538.1375908-7-helen.koike@collabora.com>
+In-Reply-To: <20200403161538.1375908-8-helen.koike@collabora.com>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -103,39 +101,44 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Hi Helen,
 
-make ARCH=arm dt_binding_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-  SCHEMA  Documentation/devicetree/bindings/processed-schema-examples.yaml
-  SCHEMA  Documentation/devicetree/bindings/processed-schema.yaml
-  CHKDT   Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-  DTC
-Documentation/devicetree/bindings/media/rockchip-isp1.example.dt.yaml
-Documentation/devicetree/bindings/media/rockchip-isp1.example.dts:22.27-99.11:
-Warning (unit_address_vs_reg): /example-0/parent@0: node has a unit
-name, but no reg or ranges property
-  CHECK
-Documentation/devicetree/bindings/media/rockchip-isp1.example.dt.yaml
-
 On 4/3/20 6:15 PM, Helen Koike wrote:
-> Move rkisp1 bindings to Documentation/devicetree/bindings/media
+> The Rockchip ISP bindings was moved out of staging.
+> Update MAINTAINERS file with the new path.
 > 
-> Verified with:
-> make ARCH=arm64 dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> 
+> Suggested-by: Johan Jonker <jbx6244@gmail.com>
 > Signed-off-by: Helen Koike <helen.koike@collabora.com>
 > ---
 > 
 > V2:
-> - no changes
+> - This is a new patch in the series
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
 > 
->  .../devicetree/bindings/media/rockchip-isp1.yaml                  | 0
->  1 file changed, 0 insertions(+), 0 deletions(-)
->  rename {drivers/staging/media/rkisp1/Documentation => Documentation}/devicetree/bindings/media/rockchip-isp1.yaml (100%)
-> 
-> diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> similarity index 100%
-> rename from drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> rename to Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index d66ac41ef5872..726044b84cf23 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -14303,6 +14303,7 @@ M:	Helen Koike <helen.koike@collabora.com>
+>  L:	linux-media@vger.kernel.org
+
+L:	linux-rockchip@lists.infradead.org
+
+>  S:	Maintained
+
+>  F:	drivers/staging/media/rkisp1/
+> +F:	Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+
+Rebase.
+The MAINTAINERS document was recently sort.
+Check entries with:
+
+./scripts/parse-maintainers.pl --input=MAINTAINERS --output=MAINTAINERS
+--order
+
+>  
+>  ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
+>  M:	Jacob Chen <jacob-chen@iotwrt.com>
 > 
 
 _______________________________________________
