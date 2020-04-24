@@ -1,111 +1,139 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 247491B6EE6
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Apr 2020 09:23:58 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80A0D1B711E
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Apr 2020 11:41:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 42CE486C7C;
-	Fri, 24 Apr 2020 07:23:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A609424AF5;
+	Fri, 24 Apr 2020 09:41:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Voue0BnypcZt; Fri, 24 Apr 2020 07:23:55 +0000 (UTC)
+	with ESMTP id dh5DvctFD-6X; Fri, 24 Apr 2020 09:41:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2207186ED0;
-	Fri, 24 Apr 2020 07:23:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ED3962044B;
+	Fri, 24 Apr 2020 09:41:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9A08E1BF3AD
- for <devel@linuxdriverproject.org>; Fri, 24 Apr 2020 07:23:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 115F41BF842
+ for <devel@linuxdriverproject.org>; Fri, 24 Apr 2020 09:41:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 962F188744
- for <devel@linuxdriverproject.org>; Fri, 24 Apr 2020 07:23:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0DB5B86493
+ for <devel@linuxdriverproject.org>; Fri, 24 Apr 2020 09:41:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6CrNKxZTkGdg for <devel@linuxdriverproject.org>;
- Fri, 24 Apr 2020 07:23:51 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2116.outbound.protection.outlook.com [40.107.220.116])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2E2C68873B
- for <devel@driverdev.osuosl.org>; Fri, 24 Apr 2020 07:23:51 +0000 (UTC)
+ with ESMTP id jQcCtTFH9crT for <devel@linuxdriverproject.org>;
+ Fri, 24 Apr 2020 09:41:40 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
+ [68.232.154.123])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B576B86268
+ for <devel@driverdev.osuosl.org>; Fri, 24 Apr 2020 09:41:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1587721300; x=1619257300;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=/aAoHxfxUh4C7gtMRbP8Axn11eHji48KlimHmFBRdTk=;
+ b=u3E73+go/u4dLZfytPaDVKhY8bR/dETkhki+0VOBF51K/T39NERHNzFv
+ 9EjYHIZ07+3j9XYtFwfQT1GERR5L98zpsD2AIo8BTT5jLHNAx9PHo8VB7
+ ZRNYDk8SFlmF0LctO8oTgUgRXTf5XxLsVi4OZe1srbLpM0GxnO8bPLy+M
+ 76+F9K5hgZYU6tD8SPWAKJNWw38RsrZfwN8fzk/qtR91i16QDIT06tsqq
+ nxiHHD32IMQS9bfBJ020GASr8d+UUFjmt0uxkC0XtQ86yA5/KchrBDtY5
+ V6y7i4IPVm7AzIRleYl0FNvjLZB2Vqc2tdl/KluhKy+BdHr6owfpxSadt A==;
+IronPort-SDR: SugeHfCelkbcUYL76zepOY63ZR/wa8wBy+nOCXe3MQhA2IOwttArBAyGOLwP09/BEmJ3LtYVHK
+ Jibf3aBBdo1VREy2m20PUZB4Ry30ekKAz8qBn50G7k9L0OauTJAlDM5tq+kTDUdBn1+g/bjUz7
+ QyHjJjKzfbAKnW18u1whQXakaSjAz9+tKPoBlnfxs79sdBXNoY0rmTXzm6i51yNJAaymZM96fQ
+ qWMA+yZ93Z2Dz7JcyVjVaJng1ziZ1SnzclpKDRWn2ti4iPyfArtiJ73UxeeRySawdjqzjGZHYc
+ R7I=
+X-IronPort-AV: E=Sophos;i="5.73,311,1583218800"; d="scan'208";a="71407323"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 24 Apr 2020 02:41:39 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Fri, 24 Apr 2020 02:41:03 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Fri, 24 Apr 2020 02:41:39 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Kyj0OEqJld9fxHTYwAxeN/i6O17nUPWE58XPXl6Ms8/1AfdgBCYnyYGW6e1ZMkZ8mzu4U+aXhV7IvYEgX0e9Bwv0yTd8ow/m2Wy7QFaKXUwSkkq+KHQSZjemBx6/TUeXqA3L4TOlYVtinsqWmegINW5Pkk/7cYye6EtC/CjjolJm5ByyR4Fj+pqkHFUE5c/7SLsQpfpRE5iGgdhYmtUvQTjpKr7EMXoDOtiobvdL3MuMlIU+a+EG1Kgcp7jDG26aHwv+0LAdz0qJ5DtNedbRUhtZpYL4P3ZQxTQ4nqKGDIQt+2VxR65lXhx8VJRcwhGeh9Kkh6DTGd62Qen0OUzPRA==
+ b=liGEssBkPUSq2fVlexIZN7zy0WmRSkSxt6/zTvrcxLVO8fK3HfzEezxiT7qAQwtoj5yQBMJSb7mz5xO6ufkNaWAg7ZOs7HvcD6HSVWz2orDUwlhO7nHmzWp7nFZ0gwk74VSGfpXf9ZlG/OYWEP1sxzfWWT2Z3BSClcu776GjJ7kkGadqMvXWJW9zVvhH996aOTs8os3TgaDT6GANmK++qzu4UC3+J94iv2DnDNQkjgIEx6scxijvOFbFh2f9eTXz9G6m3Adyz7LZdQLIpdBfq3/w0157AGCufwjQxoHFBSJIq4CqUO9/vWZk8x59qBb9ei7wi8NGmi+IZ2+OByvd9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5+K/zYEtWLLkYt899xdr3onmc+0JXgF4WWsPpVU9VTg=;
- b=hSXCyzO02VuyIy1N+/kDoPzwjsdVz05ESQJJNce/rv7psIl1MoleP51Hg9rhCFEfFwBMh0NoW+A/uv6sdMzJS558bGgYDimZi8Fzsf7bvtNGEQr8DT4z6Ku1+gRa9r3rTkDx374LYY9vQXSwESHzl55yFEHDiB11RWJBstI8bN/r+Fty+tM+vRIRGTY8PEbBw60REdaTvH4yCvaKOjfyeIk3tBEi6PRBjTaQua0FdIuf1f7/08Vatyul/++8mD44mpyOPFwCfMQgl5ZyHQuQePkIfMArZpo0m4VP3mmcVNCD2ktmoonRTiGc7lwpiPfzx/wYk65erdqXYapXbn1xJw==
+ bh=/aAoHxfxUh4C7gtMRbP8Axn11eHji48KlimHmFBRdTk=;
+ b=TQlx5AzUyGqGeUo48XtZQywUqazgYSsaxAo+BHM6Z4qt2C0eimR+RIu2Ey77tAxNli8r1kH2fMh52caX0Jx6APoSXngBz1bVWbYYPCMSgegMW8ZIlefJ1/lZyvcrSRM6on+O1hvOWW3imQxb8WjD0v8nhsCfXJfMHnF4DYSIl8UnfN120B2YHX9+/kR+H/Rng3v9qq0vDc2hJkcHsW8igf8Pej/Q0tyswQakg7uk5++EF6uRUm3SElh55fMH2uvloDHDYyNwRiJP5jxYjgb5BXcUaeGmg+8TpkLT3HxkKS738bPflDhlBHJFSsxYmSClm4p2YMhLL/4VuMjWqfbodA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5+K/zYEtWLLkYt899xdr3onmc+0JXgF4WWsPpVU9VTg=;
- b=ARLOFE8mpaLHhN1C6r48TU3yZc8DNeX/1uId0zrO+dPFItuJxk30Ma86t8eDAaG33EdJJ0letuA88cBEj+L9tVic8zxdPKBa+YC3+UXvqSEjhH6iqFAtVfm9EWYZmi+txw3MAF/UcOFQ1pDSAPEQMVF71BQneKPxO4zNIxOTWPg=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=xji@analogixsemi.com; 
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by BY5PR04MB7107.namprd04.prod.outlook.com (2603:10b6:a03:22f::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.27; Fri, 24 Apr
- 2020 06:51:33 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::4517:bcc8:a3bd:407f]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::4517:bcc8:a3bd:407f%6]) with mapi id 15.20.2921.030; Fri, 24 Apr 2020
- 06:51:33 +0000
-Date: Fri, 24 Apr 2020 14:51:25 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v7 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
- DP bridge driver
-Message-ID: <20200424065124.GA31922@xin-VirtualBox>
-References: <cover.1582529411.git.xji@analogixsemi.com>
- <a81adcf2e79d440edcb7b3989f31efcb80a6e9ff.1582529411.git.xji@analogixsemi.com>
- <CANMq1KBfB6tXFqYGvr=8fV_bpCV5GbVHeEbRs+fuaZba65-OPw@mail.gmail.com>
-Content-Disposition: inline
-In-Reply-To: <CANMq1KBfB6tXFqYGvr=8fV_bpCV5GbVHeEbRs+fuaZba65-OPw@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-ClientProxiedBy: HK2PR02CA0194.apcprd02.prod.outlook.com
- (2603:1096:201:21::30) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
-MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from xin-VirtualBox (114.247.245.254) by
- HK2PR02CA0194.apcprd02.prod.outlook.com (2603:1096:201:21::30) with Microsoft
- SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
- 15.20.2937.13 via Frontend Transport; Fri, 24 Apr 2020 06:51:32 +0000
-X-Originating-IP: [114.247.245.254]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ed264fab-2b30-4a02-6b2b-08d7e81beced
-X-MS-TrafficTypeDiagnostic: BY5PR04MB7107:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BY5PR04MB710786FED4BB327686FFCAF5C7D00@BY5PR04MB7107.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6430;
-X-Forefront-PRVS: 03838E948C
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ bh=/aAoHxfxUh4C7gtMRbP8Axn11eHji48KlimHmFBRdTk=;
+ b=NqYSkgf5dghTPDtJM8qF0o0QMfDWJNrN2YRAMunpuDIsiYH8ylR4UafFveziIHdwiiZaR/9dUh6nj6svQ1LjTqdWJ2t/SJnyoDjRwemLUr02DHTQSZI+kXJgcVFdKBFR16Rn2eQXMvguqt97ytkt26g17LbK1W4wCziR5rTsJJI=
+Received: from DM6PR11MB3420.namprd11.prod.outlook.com (2603:10b6:5:69::31) by
+ DM6PR11MB3772.namprd11.prod.outlook.com (2603:10b6:5:143::28) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2937.13; Fri, 24 Apr 2020 09:41:36 +0000
+Received: from DM6PR11MB3420.namprd11.prod.outlook.com
+ ([fe80::91cb:6555:db9b:53fa]) by DM6PR11MB3420.namprd11.prod.outlook.com
+ ([fe80::91cb:6555:db9b:53fa%7]) with mapi id 15.20.2921.030; Fri, 24 Apr 2020
+ 09:41:36 +0000
+From: <Christian.Gromm@microchip.com>
+To: <lkp@intel.com>
+Subject: Re: b276527539 ("staging: most: move core files out of the staging
+ .."): [   12.247349] BUG: kernel NULL pointer dereference, address: 00000000
+Thread-Topic: b276527539 ("staging: most: move core files out of the staging
+ .."): [   12.247349] BUG: kernel NULL pointer dereference, address: 00000000
+Thread-Index: AQHWBc+TuKJ+f2owr0iaAkl6WPDuc6iILXeA
+Date: Fri, 24 Apr 2020 09:41:36 +0000
+Message-ID: <1e725f60c598cd8a5f167fd63ade6ee173960f01.camel@microchip.com>
+References: <20200329133917.GE11705@shao2-debian>
+In-Reply-To: <20200329133917.GE11705@shao2-debian>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.30.5-1.1 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Christian.Gromm@microchip.com; 
+x-originating-ip: [46.142.77.233]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: a3d9ab3c-8a85-4e49-2389-08d7e833aead
+x-ms-traffictypediagnostic: DM6PR11MB3772:
+x-microsoft-antispam-prvs: <DM6PR11MB3772D7BA237A2215EE158A92F8D00@DM6PR11MB3772.namprd11.prod.outlook.com>
+x-bypassexternaltag: True
+x-ms-oob-tlc-oobclassifiers: OLM:133;
+x-forefront-prvs: 03838E948C
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3420.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(10019020)(39840400004)(366004)(396003)(136003)(346002)(376002)(2906002)(478600001)(6496006)(16526019)(186003)(66556008)(33716001)(54906003)(107886003)(26005)(316002)(66946007)(66476007)(86362001)(52116002)(4326008)(53546011)(9686003)(8676002)(1076003)(8936002)(55016002)(33656002)(5660300002)(6666004)(81156014)(956004)(7416002)(6916009);
- DIR:OUT; SFP:1102; 
-Received-SPF: None (protection.outlook.com: analogixsemi.com does not
- designate permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: dbY7EGESs+tn09HUp2sN8PPgwYlku1KP7aFBdwU+tApM16rrFwQemUhUC9Ir+elbzAU2x0MAAkIYKI6aG3Tk4IwH9VTyIhUPCkC+ocWzfq2y9Ol1+H4UjROfVdZ7ZzrUHk79rk0xLa8bV2WmncWI68z63IgHKckY461grJY9nQ2z6yLJFYzM6UiyLAS7Yh4WXCIadCZ2kK5RcnL0h0CWKYhP7LbWEJR1cUTBJpQGkjsl0eeA3lKxfDkx+Y037ODZ/UMiEbedKu4vgUuro0W/me70/7OCWBo1nXo3bGKASZBqzqZ5ZXIpflmRScDaHoGqzu8yOA86rqhmE3jsliB/hDdTW5KBdE4DJQdePfL7WyJrv6/mefP9MPU3vvs2s98K1Jvt5WrGHY8DL97YLM3Fkz2XEiUan2Ahsjeewh/U/w/gu+2OpxcGw2qa3vjp+Y6n
-X-MS-Exchange-AntiSpam-MessageData: 41Esy56dCLI+1vaQ5wrReK5u2kT7ZJgNlTuarADgQIOfQ4Vj/osKy/yySe5pz8SSZSFF1bvlK3EzbwLnTADPbiND2Lguk5BKI4c5zF5oav0V1cMGjLo5KzZcsWLSe+bCYcOz6703Hxu1CCa+iRwMiQ==
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ed264fab-2b30-4a02-6b2b-08d7e81beced
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Apr 2020 06:51:33.5745 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jPOzm+3x85Jm8M+E65WQnCj7ZCkIpB856jJxpBp18e28XjkBALQdOe4cO9+e+DOZn7avOkh3CED+vae5QcwLIg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB7107
+ SFS:(366004)(376002)(39860400002)(136003)(346002)(396003)(6916009)(966005)(66556008)(186003)(5660300002)(64756008)(6512007)(66446008)(6486002)(26005)(91956017)(66476007)(478600001)(76116006)(36756003)(2906002)(66946007)(4326008)(2616005)(6506007)(81156014)(8676002)(8936002)(316002)(71200400001)(86362001)(54906003);
+ DIR:OUT; SFP:1101; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 1IlCTUfwI9Y2cqiecw/AHrHAq+dYEv32yvDP9Wb3H+RTHcmaMBZZdYMwRPFn+Na9IjWE0n1FwRelJKRoJmCHDPxLihSg64IQCcaEIgO9JcVD6/SOknCj8KRiQ3zki2FMqoZ85LoTY1fKdIda2jkvQ1izPHsU3wO1ZuHeA4rsZ/hOxTqGkvKWjf/8HrETqdEh2UDiwWlPctCJ4qkT4Ih2s+ZEpB0+nJvyBvwetkMsTgnpoTiGU4EQFHS0T2AbhjoiHgl0w6gs7KsCDooASEqeCuFjYUQueFNqafgoWRQuzlJvXoBu+GQ0DfH8lox2dL/7medjmKhjb9NofhHSdpjrYHphp/l3upxGHznGstJfZkBNLClh/EENOET7dp1/M3VgRtTJ5pI8V3hi8YkSsjIKcpKj533ksMDJfZ806WvxqDLkiIDM0ww26gz9N2QkLPq9OBFuc+TYtDdyB/OgUOYHH/yBuyYKUvK1e2jYoavYYk7d0qyK+uzGO59PcXS1vKvNC9aHarvKNlgit9LWAw30+A==
+x-ms-exchange-antispam-messagedata: Y26urbJ1a2G3QyY+JQGwvhEVihWCYtAbuP3I/AYjr6dl7wvGaXgasva6LkveLk04kXpPPMktXhxY8hfrgn9xoREY5llmld3PyGVbXwYyJet9HQZZ8ZC3m9JCsJmGw2bq+fvWW7Av61B++HM7/nOeBg==
+x-ms-exchange-transport-forked: True
+Content-ID: <8E516CCD77ECBA40B5FEAA3E64E72631@namprd11.prod.outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: a3d9ab3c-8a85-4e49-2389-08d7e833aead
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Apr 2020 09:41:36.6793 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: B4GDJxkuqrpeKYD4pwvStaWh2RMfUI1s8Uu5l7jbdcd+cRqMxTNiYjgNvPyoJMnhcM32YfwacJ3LvZM1su3hhQsuizm9d3cmX9rDiJg3DoA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3772
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,231 +146,101 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
- Pi-Hsun Shih <pihsun@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>,
- Sheng Pan <span@analogixsemi.com>
+Cc: devel@driverdev.osuosl.org, lkp@lists.01.org, linux-kernel@vger.kernel.org,
+ gregkh@linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Apr 23, 2020 at 07:55:15PM +0800, Nicolas Boichat wrote:
-> Hi,
+On Sun, 2020-03-29 at 21:39 +0800, kernel test robot wrote:
+> EXTERNAL EMAIL: Do not click links or open attachments unless you
+> know the content is safe
 > 
-> Just commenting on the mode_fixup function that was added in v7.
+> Greetings,
 > 
-> On Tue, Feb 25, 2020 at 2:15 PM Xin Ji <xji@analogixsemi.com> wrote:
-> >
-> > The ANX7625 is an ultra-low power 4K Mobile HD Transmitter designed
-> > for portable device. It converts MIPI DSI/DPI to DisplayPort 1.3 4K.
-> >
-> > The ANX7625 can support both USB Type-C PD feature and MIPI DSI/DPI
-> > to DP feature. This driver only enabled MIPI DSI/DPI to DP feature.
-> >
-> > Signed-off-by: Xin Ji <xji@analogixsemi.com>
-> > ---
-> >  drivers/gpu/drm/bridge/Makefile           |    2 +-
-> >  drivers/gpu/drm/bridge/analogix/Kconfig   |    6 +
-> >  drivers/gpu/drm/bridge/analogix/Makefile  |    1 +
-> >  drivers/gpu/drm/bridge/analogix/anx7625.c | 2172 +++++++++++++++++++++++++++++
-> >  drivers/gpu/drm/bridge/analogix/anx7625.h |  410 ++++++
-> >  5 files changed, 2590 insertions(+), 1 deletion(-)
-> >  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
-> >  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
-> >
-> > diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
-> > index 4934fcf..bcd388a 100644
-> > --- a/drivers/gpu/drm/bridge/Makefile
-> > +++ b/drivers/gpu/drm/bridge/Makefile
-> [snip]
-> > +static bool anx7625_bridge_mode_fixup(struct drm_bridge *bridge,
-> > +                                     const struct drm_display_mode *mode,
-> > +                                     struct drm_display_mode *adj)
-> > +{
-> > +       struct anx7625_data *ctx = bridge_to_anx7625(bridge);
-> > +       struct device *dev = &ctx->client->dev;
-> > +       u32 hsync, hfp, hbp, hactive, hblanking;
-> > +       u32 adj_hsync, adj_hfp, adj_hbp, adj_hblanking, delta_adj;
-> > +       u32 vref, adj_clock;
-> > +
-> > +       DRM_DEV_DEBUG_DRIVER(dev, "drm mode fixup set\n");
-> > +
-> > +       mutex_lock(&ctx->lock);
+> 0day kernel testing robot got the below dmesg and the first bad
+> commit is
 > 
-> Why do you need this lock?
-Seems no need this lock, I'll remove it.
+> https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+> staging-next
 > 
-> > +
-> > +       hactive = mode->hdisplay;
+> commit b276527539188f1f61c082ebef27803db93e536d
+> Author:     Christian Gromm <christian.gromm@microchip.com>
+> AuthorDate: Tue Mar 10 14:02:40 2020 +0100
+> Commit:     Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> CommitDate: Tue Mar 24 13:42:44 2020 +0100
 > 
-> This is never used, drop it?
-OK, I'll drop it.
+>     staging: most: move core files out of the staging area
 > 
-> > +       hsync = mode->hsync_end - mode->hsync_start;
-> > +       hfp = mode->hsync_start - mode->hdisplay;
-> > +       hbp = mode->htotal - mode->hsync_end;
-> > +       hblanking = mode->htotal - mode->hdisplay;
-> > +
-> > +       DRM_DEV_DEBUG_DRIVER(dev, "before mode fixup\n");
-> > +       DRM_DEV_DEBUG_DRIVER(dev, "hsync(%d),hfp(%d),hbp(%d),clock(%d)\n",
-> > +                            hsync,
-> > +                            hfp,
-> > +                            hbp,
-> > +                            adj->clock);
-> > +       DRM_DEV_DEBUG_DRIVER(dev, "hsync_start(%d),hsync_end(%d),htotal(%d)\n",
-> > +                            adj->hsync_start,
-> > +                            adj->hsync_end,
-> > +                            adj->htotal);
-> > +
-> > +       adj_hfp = hfp;
-> > +       adj_hsync = hsync;
-> > +       adj_hbp = hbp;
-> > +       adj_hblanking = hblanking;
-> > +
-> > +       /* plus 1 if hfp is odd */
+>     This patch moves the core module to the /drivers/most directory
+>     and makes all necessary changes in order to not break the build.
 > 
-> A better way to word these comments is to say "hfp needs to be even",
-> otherwise, you're just repeating what we can already see in the code.
-OK
+>     Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+>     Link: 
+> https://lore.kernel.org/r/1583845362-26707-2-git-send-email-christian.gromm@microchip.com
+>     Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 > 
-> > +       if (hfp & 0x1) {
-> > +               adj_hfp = hfp + 1;
+> 22dd4acc80  Staging: speakup: Add identifier name to function
+> declaration arguments.
+> b276527539  staging: most: move core files out of the staging area
+> e681bb287f  staging: vt6656: Use DIV_ROUND_UP macro instead of
+> specific code
+> +-------------------------------------------------------+----------
+> --+------------+------------+
+> >                                                       | 22dd4acc80
+> > | b276527539 | e681bb287f |
+> +-------------------------------------------------------+----------
+> --+------------+------------+
+> > boot_successes                                        |
+> > 26         | 0          | 0          |
+> > boot_failures                                         |
+> > 8          | 11         | 11         |
+> > WARNING:possible_circular_locking_dependency_detected |
+> > 8          |            |            |
+> > BUG:kernel_NULL_pointer_dereference,address           |
+> > 0          | 11         | 11         |
+> > Oops:#[##]                                            |
+> > 0          | 11         | 11         |
+> > EIP:__list_add_valid                                  |
+> > 0          | 11         | 11         |
+> > Kernel_panic-not_syncing:Fatal_exception              |
+> > 0          | 11         | 11         |
+> +-------------------------------------------------------+----------
+> --+------------+------------+
 > 
-> adj_hfp -= 1 for consistency?
-OK
+> If you fix the issue, kindly add following tag
+> Reported-by: kernel test robot <lkp@intel.com>
 > 
-> > +               adj_hblanking += 1;
-> > +       }
-> > +
-> > +       /* minus 1 if hbp is odd */
-> > +       if (hbp & 0x1) {
-> > +               adj_hbp = hbp - 1;
-> 
-> ditto, adj_hbp -= 1;
-OK
-> 
-> > +               adj_hblanking -= 1;
-> > +       }
-> > +
-> > +       /* plus 1 if hsync is odd */
-> > +       if (hsync & 0x1) {
-> > +               if (adj_hblanking < hblanking)
-> > +                       adj_hsync = hsync + 1;
-> 
-> ditto
-OK
-> 
-> > +               else
-> > +                       adj_hsync = hsync - 1;
-> 
-> ditto
-OK
-> 
-> > +       }
-> > +
-> > +       /*
-> > +        * once illegal timing detected, use default HFP, HSYNC, HBP
-> > +        */
-> > +       if (hblanking < HBLANKING_MIN || (hfp < HP_MIN && hbp < HP_MIN)) {
-> 
-> should this be adj_hblanking/adj_hfp/adj_hbp?
-NO, need check original HFP and HBP, if they are not legal, driver need
-set default value to adj_hsync, adj_hfp, adj_hbp.
-> 
-> > +               adj_hsync = SYNC_LEN_DEF;
-> > +               adj_hfp = HFP_HBP_DEF;
-> > +               adj_hbp = HFP_HBP_DEF;
-> > +               vref = adj->clock * 1000 / (adj->htotal * adj->vtotal);
-> > +               if (hblanking < HBLANKING_MIN) {
-> > +                       delta_adj = HBLANKING_MIN - hblanking;
-> > +                       adj_clock = vref * delta_adj * adj->vtotal;
-> > +                       adj->clock += DIV_ROUND_UP(adj_clock, 1000);
-> > +               } else {
-> > +                       delta_adj = hblanking - HBLANKING_MIN;
-> > +                       adj_clock = vref * delta_adj * adj->vtotal;
-> > +                       adj->clock -= DIV_ROUND_UP(adj_clock, 1000);
-> > +               }
-> > +
-> > +               DRM_WARN("illegal hblanking timing, use default.\n");
-> > +               DRM_WARN("hfp(%d),hbp(%d),hsync(%d).\n", hfp, hbp, hsync);
-> 
-> How likely is it that this mode is going to work? Can you just return
-> false here to reject the mode?
-We want to set the default minimal Hblancking value, then it may display,
-otherwise. If we just return false, there is no display for sure.
-> 
-> > +       } else if (adj_hfp < HP_MIN) {
-> > +               /* adjust hfp if hfp less than HP_MIN */
-> > +               delta_adj = HP_MIN - adj_hfp;
-> > +               adj_hfp = HP_MIN;
-> > +
-> > +               /*
-> > +                * balance total HBlanking pixel, if HBP hasn't enough space,
-> 
-> "does not have enough space"
-OK
-> 
-> > +                * adjust HSYNC length, otherwize adjust HBP
-> 
-> otherwise
-OK
-> 
-> > +                */
-> > +               if ((adj_hbp - delta_adj) < HP_MIN)
-> > +                       /* hbp not enough space */
-> > +                       adj_hsync -= delta_adj;
-> > +               else
-> > +                       adj_hbp -= delta_adj;
-> > +       } else if (adj_hbp < HP_MIN) {
-> > +               delta_adj = HP_MIN - adj_hbp;
-> > +               adj_hbp = HP_MIN;
-> > +
-> > +               /*
-> > +                * balance total HBlanking pixel, if HBP hasn't enough space,
-> > +                * adjust HSYNC length, otherwize adjust HBP
-> > +                */
-> > +               if ((adj_hfp - delta_adj) < HP_MIN)
-> > +                       /* hbp not enough space */
-> > +                       adj_hsync -= delta_adj;
-> > +               else
-> > +                       adj_hfp -= delta_adj;
-> > +       }
-> > +
-> > +       DRM_DEV_DEBUG_DRIVER(dev, "after mode fixup\n");
-> > +       DRM_DEV_DEBUG_DRIVER(dev, "hsync(%d),hfp(%d),hbp(%d),clock(%d)\n",
-> 
-> Add spaces after commas in your debug strings (same above and below).
-OK
-> 
-> > +                            adj_hsync,
-> > +                            adj_hfp,
-> > +                            adj_hbp,
-> > +                            adj->clock);
-> 
-> Put these 4 on a single line.
-OK
-> 
-> > +
-> > +       /* reconstruct timing */
-> > +       adj->hsync_start = adj->hdisplay + adj_hfp;
-> > +       adj->hsync_end = adj->hsync_start + adj_hsync;
-> > +       adj->htotal = adj->hsync_end + adj_hbp;
-> > +       DRM_DEV_DEBUG_DRIVER(dev, "hsync_start(%d),hsync_end(%d),htotal(%d)\n",
-> > +                            adj->hsync_start,
-> > +                            adj->hsync_end,
-> > +                            adj->htotal);
-> > +
-> > +       mutex_unlock(&ctx->lock);
-> > +
-> > +       return true;
-> > +}
-> > +
-> > [snip]
+> [   12.242090] no options.
+> [   12.245364] FPGA DOWNLOAD --->
+> [   12.245723] FPGA image file name: xlinx_fpga_firmware.bit
+> [   12.246548] GPIO INIT FAIL!!
+> [   12.246995] most_sound: init()
+> [   12.247349] BUG: kernel NULL pointer dereference, address: 
+
+
+The init order of the modules is wrong in case the driver is
+being built in-tree.
+
+The init function of module most_sound is called before the
+core itself is being initialized.
+
+[    5.179189] most_sound: init()
+[    5.180205] mostcore: __init()
+
+Hence the list used in the core to store and track the
+registered components has not been initialized with
+INIT_LIST_HEAD(&comp_list) by the time the sound module
+tries to register itself with the core.
+
+The Kconfig of most_sound, however, has a dependency to
+MOST. How can the build system be forced to initialize the
+core module first?
+
+thanks,
+Chris  
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
