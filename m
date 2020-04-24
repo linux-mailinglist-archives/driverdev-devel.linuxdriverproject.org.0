@@ -1,80 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FF331B75E9
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Apr 2020 14:49:52 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C4FA11B761C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Apr 2020 15:02:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 75DA52002A;
-	Fri, 24 Apr 2020 12:49:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 80639867B9;
+	Fri, 24 Apr 2020 13:02:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QD5GObLSZp-F; Fri, 24 Apr 2020 12:49:49 +0000 (UTC)
+	with ESMTP id GcR2wGiMyJee; Fri, 24 Apr 2020 13:01:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0C4992041B;
-	Fri, 24 Apr 2020 12:49:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EAA8A86190;
+	Fri, 24 Apr 2020 13:01:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4BDC41BF348
- for <devel@linuxdriverproject.org>; Fri, 24 Apr 2020 12:49:45 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9EDE41BF372
+ for <devel@linuxdriverproject.org>; Fri, 24 Apr 2020 13:01:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 412FA88304
- for <devel@linuxdriverproject.org>; Fri, 24 Apr 2020 12:49:45 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9927D87B82
+ for <devel@linuxdriverproject.org>; Fri, 24 Apr 2020 13:01:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7XE8G-IpBpWx for <devel@linuxdriverproject.org>;
- Fri, 24 Apr 2020 12:49:43 +0000 (UTC)
+ with ESMTP id vfjvKtNORvWe for <devel@linuxdriverproject.org>;
+ Fri, 24 Apr 2020 13:01:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
- [209.85.216.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 47F0B882B2
- for <devel@driverdev.osuosl.org>; Fri, 24 Apr 2020 12:49:43 +0000 (UTC)
-Received: by mail-pj1-f66.google.com with SMTP id y6so3835670pjc.4
- for <devel@driverdev.osuosl.org>; Fri, 24 Apr 2020 05:49:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=uC2/p4RFgTEv6gK1u1RWyAJblPPgS8/cfRxIcvP+Zmg=;
- b=clKYIOnj6AYWFVwxBITX0c2CMkW694tIL60wcNXbq/+dI2JbqlKLUMNfjP6VAAobbx
- gfVm7BJ33VOLjQ/b3enC3ejGD2qszGwLKiP4MMlEndEqghjr9s/r/U2/JX8Egf57DiCM
- 9WA7Bf1qtekMoPfdHK9h0befHv23tlsJtZ86OeV/wqpXUsi3weA7xHOLIC6wdxjM6MBW
- VeVHEm1hjAtXzp1NqJztHViymF6DZxxcpEEzTaUXihJlyHG8l/c//Kfvdd3Ikao6QSii
- 9y0awom544Yf2Hn6CTdFXL2/YkD7vpbf3gOw5qJonJzoyqhlsEEYIYLsi6/zfoPFxzlf
- fxFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=uC2/p4RFgTEv6gK1u1RWyAJblPPgS8/cfRxIcvP+Zmg=;
- b=H4jD1dAbh6SAXmUosHCDHezZF626wBWU1rcZyWTla/3s913NffBJigBGZ0ZPxrwPV1
- KvveuDmE+Nk7/GG9c0jZfNG9UpIwKRnWHOag86mA/3GU2fnuoCiiNfALD7qZX35CQ/Qb
- gAgdTsWzPRm19JHzctTOcr4Ld6PrmBak4FldGf02GSuim7leUsYMi9FHRffbAfNwl1nI
- 2OldoLfxSZiXCc1QSk2Dm82HBI6d5AG94TyrzGdvDwXdzoiyFWTDBmiP44WGtjZFywRJ
- at5KgWPPOJKBHCUGy5MDJYkZ4jNrNQTIv9gcD38jEGpeEexKtC/AvKGSrDEpe2/Fctr3
- HBow==
-X-Gm-Message-State: AGi0Pua3aUU4DB2r4qGzkODTXgH5xxOeSg+9TkE3Hvu+Spvg7iiEK5y7
- pGGpvFNm0W1V72Vy2lsf8Zw=
-X-Google-Smtp-Source: APiQypJXCFnzC0T8S8VKrymEH2eJrMUjFHnHVDn/zH/MEdUUqEhsA1M/NKla1AzHQGAgogXRhiQCfw==
-X-Received: by 2002:a17:902:d70f:: with SMTP id
- w15mr9109688ply.138.1587732582915; 
- Fri, 24 Apr 2020 05:49:42 -0700 (PDT)
-Received: from blackclown ([171.60.179.95])
- by smtp.gmail.com with ESMTPSA id u21sm4968911pga.21.2020.04.24.05.49.38
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 24 Apr 2020 05:49:41 -0700 (PDT)
-Date: Fri, 24 Apr 2020 18:19:26 +0530
-From: Suraj Upadhyay <usuraj35@gmail.com>
-To: jerome.pouiller@silabs.com
-Subject: Re: [PATCH] staging: wfx: cleanup long lines in data_tx.c
-Message-ID: <20200424124926.GA17373@blackclown>
-References: <20200422153900.GA6184@blackclown>
- <2253201.upfRyW1aZW@pc-42>
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4F381877B3
+ for <devel@driverdev.osuosl.org>; Fri, 24 Apr 2020 13:01:55 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03OCqlFw193994;
+ Fri, 24 Apr 2020 13:01:54 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=FL8oOyNRXvYuWU+VLpC8MgYgzxS8aUTEYyMPQQVQSX4=;
+ b=oKq8GXHJvR1WJkWK5fh72eg4nyaUKTMcTZnA95TsOiVoJZgHUVuf6dN8cvDNEJ9RUc+d
+ 8iq7pn41GoD7TLSLVxnHVs71iypvZacy/pl02SQQnyTxaZIWbdPkH49w3hsWUIQzBF6L
+ 4UAq+/j4UNceWxGbgx3kXHztao2tM9OB5oEkppTeGqCufJYt6zQC6/ZQ+7DWEKfbiH24
+ QRWPJf+HqU5iCext9ovKzQ9L48fnI5kfj+SEI3O7mc2Pz46MOfrjU++RBXwmY7XyTxAX
+ Zlf9/HHwDMFEb2bMwuO13AHlEgrF6aYiaFQ6wCEnGarN5lXVcLToqfQFpcxUQ186anFm og== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 30ketdm7fh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 24 Apr 2020 13:01:54 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03OCvkIf068191;
+ Fri, 24 Apr 2020 12:59:53 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3030.oracle.com with ESMTP id 30gb3xbvtq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 24 Apr 2020 12:59:53 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 03OCxqof028966;
+ Fri, 24 Apr 2020 12:59:52 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 24 Apr 2020 05:59:51 -0700
+Date: Fri, 24 Apr 2020 15:59:45 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Suraj Upadhyay <usuraj35@gmail.com>
+Subject: Re: [PATCH v2] staging: wfx: cleanup long lines in data_tx.c
+Message-ID: <20200424125945.GP2659@kadam>
+References: <20200424124105.GA18534@blackclown>
 MIME-Version: 1.0
-In-Reply-To: <2253201.upfRyW1aZW@pc-42>
+Content-Disposition: inline
+In-Reply-To: <20200424124105.GA18534@blackclown>
 User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9600
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 adultscore=0
+ mlxlogscore=999 phishscore=0 suspectscore=0 bulkscore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004240102
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9600
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 spamscore=0
+ impostorscore=0 bulkscore=0 mlxlogscore=999 phishscore=0 mlxscore=0
+ priorityscore=1501 clxscore=1015 suspectscore=0 adultscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004240102
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,76 +97,71 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- dan.carpenter@oracle.com
-Content-Type: multipart/mixed; boundary="===============5826109964687063228=="
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Fri, Apr 24, 2020 at 06:11:32PM +0530, Suraj Upadhyay wrote:
+>  static int wfx_get_hw_rate(struct wfx_dev *wdev,
+>  			   const struct ieee80211_tx_rate *rate)
+>  {
+> +	struct ieee80211_rate tmp;
+>  	if (rate->idx < 0)
+>  		return -1;
+>  	if (rate->flags & IEEE80211_TX_RC_MCS) {
+> @@ -31,7 +32,8 @@ static int wfx_get_hw_rate(struct wfx_dev *wdev,
+>  	}
+>  	// WFx only support 2GHz, else band information should be retrieved
+>  	// from ieee80211_tx_info
+> -	return wdev->hw->wiphy->bands[NL80211_BAND_2GHZ]->bitrates[rate->idx].hw_value;
+> +	tmp = wdev->hw->wiphy->bands[NL80211_BAND_2GHZ]->bitrates[rate->idx];
+> +	return tmp.hw_value;
 
---===============5826109964687063228==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="DocE+STaALJfprDB"
-Content-Disposition: inline
+The original was better.  Just leave this one as-is.  It's okay to go
+over 80 characters if there isn't a better option.
+
+>  }
+>  
+>  /* TX policy cache implementation */
+> @@ -159,14 +161,16 @@ static int wfx_tx_policy_upload(struct wfx_vif *wvif)
+>  {
+>  	struct tx_policy *policies = wvif->tx_policy_cache.cache;
+>  	u8 tmp_rates[12];
+> -	int i;
+> +	int i, tmp;
+>  
+>  	do {
+>  		spin_lock_bh(&wvif->tx_policy_cache.lock);
+> -		for (i = 0; i < HIF_TX_RETRY_POLICY_MAX; ++i)
+> -			if (!policies[i].uploaded &&
+> -			    memzcmp(policies[i].rates, sizeof(policies[i].rates)))
+> +		for (i = 0; i < HIF_TX_RETRY_POLICY_MAX; ++i) {
+> +			tmp = memzcmp(policies[i].rates,
+> +				      sizeof(policies[i].rates));
+> +			if (!policies[i].uploaded && tmp)
+>  				break;
+
+The original was better.  I was hoping you would do:
+
+			struct tx_policy *policy = &policies[i];
+
+			if (!policy->uploaded &&
+			    memzcmp(policy->rates, sizeof(policies->rates))
+				break;
 
 
---DocE+STaALJfprDB
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> +		}
+>  		if (i < HIF_TX_RETRY_POLICY_MAX) {
+>  			policies[i].uploaded = true;
+>  			memcpy(tmp_rates, policies[i].rates, sizeof(tmp_rates));
 
-On Thu, Apr 23, 2020 at 09:29:28AM +0000, Jerome Pouiller wrote:
-> Hello Suraj,
->=20
-> Thank you for your contribution.
-This would be my first patch to linux-kernel :)
-
-> On Wednesday 22 April 2020 17:39:00 CEST Suraj Upadhyay wrote:
-> >=20
-> > Break lines with length over 80 characters to conform
-> > to the linux coding style. Issue found by checkpatch.
-> >=20
-> > Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
->=20
-> Is this reported by checkpatch? The strings can exceed 80 columns.
-No, it's not. Actually I am using vim with some plugins and it was
-showing red their. So, I thought why not make these strings in a new
-line.
-
-> J=E9r=F4me Pouiller
->=20
-
---DocE+STaALJfprDB
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl6i4FYACgkQ+gRsbIfe
-744NFg/+K7LCGsRpnJr/OgCb2VgMmZ4KWXENRA5AQ++9O6rqt484dVk9dztC3rhX
-82GUJS4hyNpRWpqnREJiJSkklpo7nq9b98rGlBuTu4kEySEclq6ByU3ym4Xq6E3O
-wcZazZUI7tuSw4J1qUojOwHhApgHAuK5d8hLoogsPOxk7Ymhlm/1fqXZss6IDOKb
-potWtqhYn+ixL9e5/A5GQZGg2MZe+GVdb66/0yc2gIC6EtmSArY1JXsXBwcHaq61
-B2se5WCqMkoBK0ZvZqW7IDKBHam6/VP0uhbCaf8SSUK8doKWEc1ALugueiZL+Nxm
-oLGhY7Q0Cw2T5xwjxAZxOFU8CWbN+bwVCAens5b4ocamWhiVQ3SjRZQcv++XWsPz
-ueKyoNy6zcoC5SfoZGc6zUAGRhrmBb4hROInd3pzuxYYdykynDjkis5rgg2XU1OL
-GiKx/kNyN7zyTBHknwZBPAa3T6ZXgzK999R8Zq6BvG75ngf71jO+CcypSyDPuzmz
-idDNHLNnxHbX7P7sZ0YbTP4P0pOG3nks/48v+0s75bp7btud+bcnBuVkw3qTE30t
-hWXDwtl1qWetpnCy1/9d9RxeiPya28+nL/R9afBtiTqN73QNiPzSfbVS/oEmu3fP
-gMQw/YZy2a/6ietO4a73UT7ceSmwL0HnDrqFPghv1lWp6bZSUFs=
-=UOYc
------END PGP SIGNATURE-----
-
---DocE+STaALJfprDB--
-
---===============5826109964687063228==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============5826109964687063228==--
