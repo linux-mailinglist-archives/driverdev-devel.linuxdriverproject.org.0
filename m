@@ -2,58 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CE3A1B85DF
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 12:57:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 814D91B8628
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 13:32:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F2335881A8;
-	Sat, 25 Apr 2020 10:57:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D6A3A88193;
+	Sat, 25 Apr 2020 11:32:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IScd5Uovuads; Sat, 25 Apr 2020 10:57:20 +0000 (UTC)
+	with ESMTP id wQOiGlo-046w; Sat, 25 Apr 2020 11:32:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 41D6A87999;
-	Sat, 25 Apr 2020 10:57:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1778188158;
+	Sat, 25 Apr 2020 11:32:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 591B41BF5A6
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 10:57:18 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EF44B1BF5F4
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 11:32:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5616685EBB
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 10:57:18 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E970286A26
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 11:32:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MgPSM-cKj98s for <devel@linuxdriverproject.org>;
- Sat, 25 Apr 2020 10:57:17 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DF35F85EAA
- for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 10:57:17 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 26F5620714;
- Sat, 25 Apr 2020 10:57:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587812237;
- bh=ahHvZa0kV6fBVPT9PiZNAdoAVU0at8XiPcIB1IJsIuA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=RJLWAhjpyWqkesSXczSZP4wjmmg7mjfrlnfwilcjybZ/lUZunCc3mjSw+FUXRsy2/
- zDqLD76OEKs7T1iWq9h+MHzGtb38wNq8OGnmw41NvvdhpocxnagXdWBlSR2z9tbELa
- s5jL9vxlpvjs6J4u5m41j9GHndKTtY1lkTGroQ/A=
-Date: Sat, 25 Apr 2020 12:57:14 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Oscar Carter <oscar.carter@gmx.com>
-Subject: Re: [PATCH v2] staging: vt6656: Add formula to the vnt_rf_addpower
- function
-Message-ID: <20200425105714.GA2071664@kroah.com>
-References: <20200423170557.10401-1-oscar.carter@gmx.com>
+ with ESMTP id 1smzQ-oMc7dm for <devel@linuxdriverproject.org>;
+ Sat, 25 Apr 2020 11:32:48 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
+ [209.85.214.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C7A3586816
+ for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 11:32:48 +0000 (UTC)
+Received: by mail-pl1-f193.google.com with SMTP id t4so4755866plq.12
+ for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 04:32:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=B+W3fSIG0b01sQcBXySLrSav3xx3u2le0H6T3QghDFc=;
+ b=l1kxZJcgEZpWRkALjXbUTcNA5ovU6ZVUM+f+oU9UoRc+U1gx3uJm5xfdBxRAeD3n9L
+ fAxDfIkwcceZZTkgaSS+yT5IlMil3cCWU5rC9wqyyBCdHXPyGxUK6rdJZ8qksFjCuBCM
+ 2DKZIV0J76PsZg54a3BKJXw1xYIEPIGnSoGiBwJ0gfSfa/TB7jGYVauH5vnRc6P7yrE/
+ Y/9Fju11gHyDpSu08+dF2JTT6HapwaAQki4WkCEklQIBCjdwNZ5UI2fBq+58XW5dsqnU
+ Tw8mVkhLsHcg7ivEeskt28Dr747PxVDb6MBAGDRp1Qv7LoefGNIg8BXuha0/u/3fooN4
+ qWVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=B+W3fSIG0b01sQcBXySLrSav3xx3u2le0H6T3QghDFc=;
+ b=aZYiyJwshy3buUSd2A973H8wosAblfwwzkaO4V28WC19jkK5QGbt/YSXk3yW8IfSBN
+ XQc1cI/4Y5Rjj6YXcwQJh6HGRVeXg/7PbhNQppvZpKm+c4AhPpd/r9FsLsMurLhjOcuL
+ kczuVK4hbtp4MjOJDtQIGaITDnBVpQ5Z2oqBbhCs+ZujOygEo0OEATFw3aElfgoj+Y6H
+ FQX03b/n3+NiBtfoiIJrW3JbXjBylI2lsT0BXvEX1dgEVT0LLjKgwGFYnxhdunrCqLdj
+ 11vOw5v8ZtRFqEjSRa2j/kHYLRV+Hw1DjT+OOQD1Fxmr0tjjQ74HScotOR8MuV07F86F
+ JYmg==
+X-Gm-Message-State: AGi0PuYQrpuv26/dVmrIK/ZIehgW2HXgcwNOElHOoPGqUb3iCjbY/qW2
+ JO+gPFAjXgjYI6/ZNkmUw4U=
+X-Google-Smtp-Source: APiQypIK/Xv6UYq8rj92xpSeAb1sCBvmF7UA2YD7f5RGsSJKV20elDO5tweYidskW68GMpg/4xDJOA==
+X-Received: by 2002:a17:90a:db91:: with SMTP id
+ h17mr12504358pjv.10.1587814368263; 
+ Sat, 25 Apr 2020 04:32:48 -0700 (PDT)
+Received: from blackclown ([171.60.181.170])
+ by smtp.gmail.com with ESMTPSA id f13sm1612636pgr.14.2020.04.25.04.32.45
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Sat, 25 Apr 2020 04:32:47 -0700 (PDT)
+Date: Sat, 25 Apr 2020 17:02:34 +0530
+From: Suraj Upadhyay <usuraj35@gmail.com>
+To: jerome.pouiller@silabs.com, gregkh@linuxfoundation.org
+Subject: [PATCH v4] staging: wfx: cleanup long lines in data_tx.c
+Message-ID: <20200425113234.GA14492@blackclown>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200423170557.10401-1-oscar.carter@gmx.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,73 +83,218 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Malcolm Priestley <tvboxspy@gmail.com>,
- Forest Bond <forest@alittletooquiet.net>,
- Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============9165871998595634663=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Apr 23, 2020 at 07:05:57PM +0200, Oscar Carter wrote:
-> Use a formula to calculate the return value of the vnt_rf_addpower
-> function instead of the "if" statement with literal values for every
-> case.
-> 
-> Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
-> ---
-> Changelog v1 -> v2
-> - Change the type of "base" variable from s32 to int as Dan Carpenter
->   suggested.
-> - Remove the "--" postoperator and replace with (base - 1) as Dan
->   Carpenter suggested. Also, as this expression has a minus before the
->   parenthesis, remove it an apply the minus operator changing the sign of
->   "base" and literal "1".
-> 
->  drivers/staging/vt6656/rf.c | 20 +++-----------------
->  1 file changed, 3 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
-> index 06fa8867cfa3..612fd4a59f8a 100644
-> --- a/drivers/staging/vt6656/rf.c
-> +++ b/drivers/staging/vt6656/rf.c
-> @@ -538,28 +538,14 @@ int vnt_rf_write_embedded(struct vnt_private *priv, u32 data)
-> 
->  static u8 vnt_rf_addpower(struct vnt_private *priv)
->  {
-> +	int base;
->  	s32 rssi = -priv->current_rssi;
-> 
->  	if (!rssi)
->  		return 7;
-> 
-> -	if (priv->rf_type == RF_VT3226D0) {
-> -		if (rssi < -70)
-> -			return 9;
-> -		else if (rssi < -65)
-> -			return 7;
-> -		else if (rssi < -60)
-> -			return 5;
-> -	} else {
-> -		if (rssi < -80)
-> -			return 9;
-> -		else if (rssi < -75)
-> -			return 7;
-> -		else if (rssi < -70)
-> -			return 5;
-> -	}
-> -
-> -	return 0;
-> +	base = (priv->rf_type == RF_VT3226D0) ? -60 : -70;
-> +	return (rssi < base) ? ((rssi - base + 1) / -5) * 2 + 5 : 0;
 
-I _hate_ ? : functions, just spell this out please as a real if()
-statement.
+--===============9165871998595634663==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="fdj2RfSjLxBAspz7"
+Content-Disposition: inline
 
-thanks,
 
-greg k-h
+--fdj2RfSjLxBAspz7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Break lines with length over 80 characters to
+conform to the linux coding style and refactor
+wherever necessary.
+
+Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
+---
+
+Changes in v4:
+	- Added a space after declaration in wfx_get_hw_rate().
+	- A checkpatch warning for this commit is retained at line 75,
+	  to maintain uniformity in function declarations. (Reviewer
+	  jerome suggested).
+
+Changes in v3:
+        - Changed the temporary variable name for the memzcmp statement
+          to is_used. (as suggested).
+        - Added a temporary ieee80211_supported_band variable to address
+          the problem in wfx_get_hw_rate() more efficiently. (not
+          suggested, but still).
+
+Changes in v2:
+        - Introduced a temporary variable for the memzcmp statement.
+        - Addressed the checkpatch problem with wfx_get_hw_rate().
+        - Restored the function definition of wfx_tx_get_tx_parms
+          as suggested by the reviewer.
+        - Added suggested changes for req->packet_id statement.
+
+ drivers/staging/wfx/data_tx.c | 40 +++++++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
+index 9c1a91207dd8..2f8a254fa453 100644
+--- a/drivers/staging/wfx/data_tx.c
++++ b/drivers/staging/wfx/data_tx.c
+@@ -20,6 +20,8 @@
+ static int wfx_get_hw_rate(struct wfx_dev *wdev,
+ 			   const struct ieee80211_tx_rate *rate)
+ {
++	struct ieee80211_supported_band *band;
++
+ 	if (rate->idx < 0)
+ 		return -1;
+ 	if (rate->flags & IEEE80211_TX_RC_MCS) {
+@@ -31,7 +33,8 @@ static int wfx_get_hw_rate(struct wfx_dev *wdev,
+ 	}
+ 	// WFx only support 2GHz, else band information should be retrieved
+ 	// from ieee80211_tx_info
+-	return wdev->hw->wiphy->bands[NL80211_BAND_2GHZ]->bitrates[rate->idx].hw_=
+value;
++	band =3D wdev->hw->wiphy->bands[NL80211_BAND_2GHZ];
++	return band->bitrates[rate->idx].hw_value;
+ }
+=20
+ /* TX policy cache implementation */
+@@ -159,14 +162,16 @@ static int wfx_tx_policy_upload(struct wfx_vif *wvif)
+ {
+ 	struct tx_policy *policies =3D wvif->tx_policy_cache.cache;
+ 	u8 tmp_rates[12];
+-	int i;
++	int i, is_used;
+=20
+ 	do {
+ 		spin_lock_bh(&wvif->tx_policy_cache.lock);
+-		for (i =3D 0; i < HIF_TX_RETRY_POLICY_MAX; ++i)
+-			if (!policies[i].uploaded &&
+-			    memzcmp(policies[i].rates, sizeof(policies[i].rates)))
++		for (i =3D 0; i < HIF_TX_RETRY_POLICY_MAX; ++i) {
++			is_used =3D memzcmp(policies[i].rates,
++					  sizeof(policies[i].rates));
++			if (!policies[i].uploaded && is_used)
+ 				break;
++		}
+ 		if (i < HIF_TX_RETRY_POLICY_MAX) {
+ 			policies[i].uploaded =3D true;
+ 			memcpy(tmp_rates, policies[i].rates, sizeof(tmp_rates));
+@@ -290,7 +295,8 @@ static void wfx_tx_fixup_rates(struct ieee80211_tx_rate=
+ *rates)
+ 		if (rates[i].idx =3D=3D -1) {
+ 			rates[i].idx =3D 0;
+ 			rates[i].count =3D 8; // =3D=3D hw->max_rate_tries
+-			rates[i].flags =3D rates[i - 1].flags & IEEE80211_TX_RC_MCS;
++			rates[i].flags =3D rates[i - 1].flags &
++					 IEEE80211_TX_RC_MCS;
+ 			break;
+ 		}
+ 	}
+@@ -318,7 +324,8 @@ static u8 wfx_tx_get_rate_id(struct wfx_vif *wvif,
+ 	return rate_id;
+ }
+=20
+-static struct hif_ht_tx_parameters wfx_tx_get_tx_parms(struct wfx_dev *wde=
+v, struct ieee80211_tx_info *tx_info)
++static struct hif_ht_tx_parameters wfx_tx_get_tx_parms(struct wfx_dev *wde=
+v,
++						       struct ieee80211_tx_info *tx_info)
+ {
+ 	struct ieee80211_tx_rate *rate =3D &tx_info->driver_rates[0];
+ 	struct hif_ht_tx_parameters ret =3D { };
+@@ -381,7 +388,8 @@ static int wfx_tx_inner(struct wfx_vif *wvif, struct ie=
+ee80211_sta *sta,
+ 	hif_msg->id =3D HIF_REQ_ID_TX;
+ 	hif_msg->interface =3D wvif->id;
+ 	if (skb->len > wvif->wdev->hw_caps.size_inp_ch_buf) {
+-		dev_warn(wvif->wdev->dev, "requested frame size (%d) is larger than maxi=
+mum supported (%d)\n",
++		dev_warn(wvif->wdev->dev,
++			 "requested frame size (%d) is larger than maximum supported (%d)\n",
+ 			 skb->len, wvif->wdev->hw_caps.size_inp_ch_buf);
+ 		skb_pull(skb, wmsg_len);
+ 		return -EIO;
+@@ -392,9 +400,10 @@ static int wfx_tx_inner(struct wfx_vif *wvif, struct i=
+eee80211_sta *sta,
+ 	// packet_id just need to be unique on device. 32bits are more than
+ 	// necessary for that task, so we tae advantage of it to add some extra
+ 	// data for debug.
+-	req->packet_id =3D queue_id << 28 |
+-			 IEEE80211_SEQ_TO_SN(le16_to_cpu(hdr->seq_ctrl)) << 16 |
+-			 (atomic_add_return(1, &wvif->wdev->packet_id) & 0xFFFF);
++	req->packet_id =3D atomic_add_return(1, &wvif->wdev->packet_id) & 0xFFFF;
++	req->packet_id |=3D IEEE80211_SEQ_TO_SN(le16_to_cpu(hdr->seq_ctrl)) << 16;
++	req->packet_id |=3D queue_id << 28;
++
+ 	req->data_flags.fc_offset =3D offset;
+ 	if (tx_info->flags & IEEE80211_TX_CTL_SEND_AFTER_DTIM)
+ 		req->data_flags.after_dtim =3D 1;
+@@ -517,7 +526,8 @@ void wfx_tx_confirm_cb(struct wfx_vif *wvif, const stru=
+ct hif_cnf_tx *arg)
+ 		if (tx_count < rate->count &&
+ 		    arg->status =3D=3D HIF_STATUS_RETRY_EXCEEDED &&
+ 		    arg->ack_failures)
+-			dev_dbg(wvif->wdev->dev, "all retries were not consumed: %d !=3D %d\n",
++			dev_dbg(wvif->wdev->dev,
++				"all retries were not consumed: %d !=3D %d\n",
+ 				rate->count, tx_count);
+ 		if (tx_count <=3D rate->count && tx_count &&
+ 		    arg->txed_rate !=3D wfx_get_hw_rate(wvif->wdev, rate))
+@@ -554,7 +564,8 @@ void wfx_tx_confirm_cb(struct wfx_vif *wvif, const stru=
+ct hif_cnf_tx *arg)
+ 		else
+ 			tx_info->flags |=3D IEEE80211_TX_STAT_ACK;
+ 	} else if (arg->status =3D=3D HIF_REQUEUE) {
+-		WARN(!arg->tx_result_flags.requeue, "incoherent status and result_flags"=
+);
++		WARN(!arg->tx_result_flags.requeue,
++		     "incoherent status and result_flags");
+ 		if (tx_info->flags & IEEE80211_TX_CTL_SEND_AFTER_DTIM) {
+ 			wvif->after_dtim_tx_allowed =3D false; // DTIM period elapsed
+ 			schedule_work(&wvif->update_tim_work);
+@@ -588,7 +599,8 @@ void wfx_flush(struct ieee80211_hw *hw, struct ieee8021=
+1_vif *vif,
+ 		if (wait_event_timeout(wdev->tx_dequeue,
+ 				       wfx_tx_queue_empty(wdev, queue, vif_id),
+ 				       msecs_to_jiffies(1000)) <=3D 0)
+-			dev_warn(wdev->dev, "frames queued while flushing tx queues?");
++			dev_warn(wdev->dev,
++				 "frames queued while flushing tx queues?");
+ 	}
+ 	wfx_tx_flush(wdev);
+ 	if (wdev->chip_frozen)
+--=20
+2.17.1
+
+
+--fdj2RfSjLxBAspz7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl6kH8gACgkQ+gRsbIfe
+744T+A/7BbxW6wKy7I5b3vvOMx57gWO8LdDZiVaSNVoKicPelvxaWMDcL7uRNrRA
+s8x7UyIzmqh3bEXKJX1fhTP5SlNURo6XNbtKvU4yKD5r8wG1uCpWfXy4BcIEhVSu
++0PrGLKiw7Oj+TirnRZ4rns7n26bbHUcoi9e8lfqCmIzv7KDDW/J8MlSYloef2mm
+L/rNGA6MoJ2P1I5yS8esP4tCWtXpSWHSRg71vrNgioYHeJhCCfhHrlQyxUf+x/m3
+YZxXoSBi21aGrmUIp+PkHH9eLmc/Z/1d0rK9IUqqFeDXBVK5ZYR5Tmax4E3Lmbmn
+RscbUS3mOQhJ0dSB51yeI+U8CAlScEjF9Tdp4SKyXik6m2RM1bGr9YAAvkDgl3Cd
+AMi7FOzDmHg4CFGI1eHzKIKSZ5IAUEhE2vxGnDOxvNDStoXmd9UBnP2Bi/wO2oNi
+dvch8Vf4S+RjhExNxugJVvJ8U4b7pL8mhLO+dotIDC729A8uisZ9QHU5WctTZUdA
+lYfUX6CqZh4m4BO810Ni7JnGjb2GNW8nMF2v0z8PMK4KmBSxxgPUx1x08/GJdZan
+tCk6i5QkneGDYnRax8RbDkFYAzefSt05Cis+bE1zVbJDhZJzvH+UtJv/F8ot9tLZ
+Z/YeBXs6pxRrXcy5YSp2xXJ3snhcN/K+EZtEHyVfqIQqij5PRfQ=
+=UVQ5
+-----END PGP SIGNATURE-----
+
+--fdj2RfSjLxBAspz7--
+
+--===============9165871998595634663==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============9165871998595634663==--
