@@ -1,80 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33D841B868B
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5EA3C1B868C
 	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 14:40:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id ABE50862FB;
-	Sat, 25 Apr 2020 12:40:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F2B7A86B19;
+	Sat, 25 Apr 2020 12:40:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bogth8vqQdLS; Sat, 25 Apr 2020 12:40:01 +0000 (UTC)
+	with ESMTP id G5gbkrrpZP86; Sat, 25 Apr 2020 12:40:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 128B685E2B;
-	Sat, 25 Apr 2020 12:40:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0FD6F869D7;
+	Sat, 25 Apr 2020 12:40:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 393391BF3FD
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 12:39:56 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 053861BF3FD
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 12:40:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 35DEC880C2
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 12:39:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 003AE204DF
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 12:40:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p3Eb5vuk84nt for <devel@linuxdriverproject.org>;
- Sat, 25 Apr 2020 12:39:55 +0000 (UTC)
+ with ESMTP id cH+ew0q-bhcT for <devel@linuxdriverproject.org>;
+ Sat, 25 Apr 2020 12:39:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 982F888084
- for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 12:39:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id B9477204CF
+ for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 12:39:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1587818386;
- bh=1SIn20szDlQ1F4nqk/0hZ4TyVykqVcZwhLZeWLcVgGw=;
+ s=badeba3b8450; t=1587818391;
+ bh=V4mn8XWOidnV35lpF6k4PLGi3eJjtkJ7bFNpYDHAFrM=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=MZWbrsqn2bp0LXGKm2V7LgrvHAhex5rDATqhiahLGB/XRiuenc5gv1ehwhidL0eFb
- vikFHZ47knPaNzTA1KrV5PVYyoGod4tfTYTg6zMNqh+3zny36LDVEE72BWkEGPrQGk
- XexarK/nud65maPXI/fzBKIW/xX1BLQiwn6LeTZM=
+ b=DideTJiB8slIn57i6tk5GiN8UIMfAoDmIKzYHYyQMAEuNQLmih/z/6GShZPvTb4wO
+ g01Y2hE6Oe7L7A5QhUxlUfzQ3TCschYdobkUDxw62R6ipgcCYc7AxozJI2XlcKBRcK
+ ab1tlYkZQwqaEEKDuZplwvzg+raJRrv+WQNgCQoY=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
  (mrgmx004 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1MyKDe-1jGQyk1Nlc-00ydV5; Sat, 25 Apr 2020 14:39:46 +0200
+ 1MBUqL-1jLOki1TNn-00D2no; Sat, 25 Apr 2020 14:39:51 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
 To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 2/3] staging: vt6656: Use return instead of goto
-Date: Sat, 25 Apr 2020 14:38:43 +0200
-Message-Id: <20200425123844.7959-3-oscar.carter@gmx.com>
+Subject: [PATCH 3/3] staging: vt6656: Remove duplicate code in
+ vnt_rf_table_download
+Date: Sat, 25 Apr 2020 14:38:44 +0200
+Message-Id: <20200425123844.7959-4-oscar.carter@gmx.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200425123844.7959-1-oscar.carter@gmx.com>
 References: <20200425123844.7959-1-oscar.carter@gmx.com>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:sGY3ikEfwZKdQXuJ2Ru64c19gYQpIsD/6uUw9Ul0BFBAtl/zNIu
- r2ezFMrU4BwH75/n12wBVwcUNDPI0I0d6i5TLK7BsEU61hyelkoL4ivctN2t0aZmRJHI7yp
- nVwJGV1zS7R+mDMG4pywISSwI7l44dKxFG8uzZiTXrTsncTl7HWYcj3rU/qVNEM0aMx4joO
- 0NFl85JTbBlvdR0MKw7GQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:XYzhrhaQobQ=:95754qRKPj/ltbWzxh+qgU
- /46cAPgTr5PgTktRkwd13dhEaFcWI8a/OF0fkS9Of4tFvuHiHU0ONRMpkpzB8Rg+4Tqgd1kxu
- FVUvmSuVxwdsMhtoAp/qR9Gz7BAfmHkBxqliXTx3d3LBM/5bpjrNH6Rm8L0zC1fzzttkgjHpn
- AStQM/fwjWRro6QgSm+f/Wdnn8x9+f+mw/YEIAJVDSTDPSt6/abzjp3ro+CkhY/bklH6np68X
- XiP506k5OnNiqYAJLZnF6cW/mIchsppjaHCE37ZfecV+k2J0IGKpWOY3BShCIfAzZF3g25I3Z
- omtTdo6rLA+hcLiu8EbveVfPNWuMtovUMNZby0KYWLlf76jmsQ4JBF6qmxV1N571QVNojVPH4
- v4BIHqaGFjQTfWHIagmX0+MTFGiTgMSRtDy1qXwcxwLEq8kMaL2Z51Zau3hRnutzNtFsRVu7i
- FJmJ+JcvhCtUU8kV3MEQgEoom0h+tB2hm4cHf6j6GSb92LB+L4yJ3ENhh7z9UD7fpB5T7X65C
- zciZx4GBgMUkWSfrLVkQkc7N1GVXohA1nqQljCjbrAYDDofwz0cheZ1rGzhpSUPNfri8btKJT
- 0ZpZi7/bQkIJmwapNSraJoBu8nWTy9uchRAnYSsQkZKnO2rtCl02XKtEZaE0w+iaEmtBMhDRl
- 5p/cDLKSSXVUXqzbyEkr22gmy2oIbH3dQwehhrw6UyufSITWe5itE/PCEpTqS8xAK0iFSqen6
- WpfJLMx+pdqAu450iGU+FQsZZ5PMlJ0AyRGAusDIbUiD9pCjS8P4uoVgQHN0oOoURrJhEiWIw
- wGhQ7PQZc5MyDOTJXGp9D6+4LT14qcJpvKnN+4KMFCE8iuKWMX88ltTRDT+JG33OMrxleCMk1
- GOXifpblP2hSiZHsG5C0R/lHF3Wy+ygmxOd1wjlR2prYDsI+3FHDIUeAAsVZ9+Oq0U2TmtSHU
- Wo93mzkyUM5GoNx8gnxzbGF62ET9/c98MR1YD6iSKicJBFuBZDLw5xIbaq+pzFzZQtGCLjFd2
- 6Tvn/zxNUtHVePmtGFKsnsL+W8UMUPutciX7gPlefZz+G4t1VQqwEW4Tfj2KF9IHap93HNIIj
- A4MU6bG1ovxCzBN6+ilT8HSTKgeHmkOhPZcrYUsVT2l+qTuj55VZsTvdsS8YVCS+z5VbNv+7e
- 2WQQ2ZJNPBVtVq99T4qrBCHtw+K8g11YPmgmhtUa971o0tvaA79HAws9qFVjrE69yEE4BWpzS
- uZvnL1QDzlptNoSit
+X-Provags-ID: V03:K1:jqFWb70n9RfPKgUObno8Iw7CMmVxtFSt4+RfiveChfRkOcYAhBu
+ IKwax26Nf3eDVNaBLhEa6abtpz6Qvym96PAmR1e3Rl0SGHTPnP9nJRWQUt6Mi+uQNbcot4R
+ md0AWx/88QtPQsObcWnSBeMrYQiKMAC7AWaTuYAxf/7tpPiwPAhkwi47Rm9N6gvtakJWAuZ
+ z0vxNJ1DB0llerY+cDpnQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LoMAp7C5TW8=:1t2tuXAJZXVaYNrNcE7NnC
+ XY7MRqDjGFQEHQ/XG6qzyHGMKwV32XvKQeqIkqarfZEB8+N2XPY3Xp6KmQn9E3hiRJR6IQUgb
+ daxY8d+yYF1/DaNKcmJQ9vdhksqVYxnSBq3OaQW7Cm4qGmAywnQ/T2Y7w9fA/hrnnMW6xJHFP
+ F3E5uPy8xDe3s8cFgVbUxWWWn8ByFZUvxcga67s0K30zbt8TNi86P9r3yFUc2kJSiVm1nzxqz
+ r3ydMguppQoe4eCtGKgLuAYLZJaFbgYKRgpwO8+8bN1qI3pyd9OQsS7Tnyykvjn5NHBBwBRqx
+ MnQjibK+yF/SNiyeSpqQqm4PkAP/gKWK1oTj0fl2YG3feIWIr4CudqAgReTn+v4RIZlv4t/jt
+ jLJS5HzEct1oksRtgy5/XF0jUA57VrpJRDJaU4PZVnq2Vhwa0bk2GI+SLm187+UVDc8YmsDzk
+ EvtKZQXPRBPXOZhuaXMKYSoZw1Rfnkh/n58b5JXe4dmqSZS+rBF9oQ9yAX6Q/3E31UZV5nW/c
+ wa1L3QJvbQ9l21sGM4flh8GlvbONRUHNMs7MDceQHL01iPlMCLv77HNpL1iemi7UaYhuV2SXI
+ MyTfxPeko1EBUH9xWM0enjAKxTCPFEBpsY9i5xKoKFMzX/TL9kZbG9a8te5limkkZhQcbfXUg
+ VfEfLNJfwsrQ08SV9T3zomRVuw7zS3fbgRMMJvPdpCLwrpKFiAO/jR2h2zxghGi8hknLxTm+Y
+ frzF44boLMjj89TJs/b6IEtp9UXX5cuq70m4YeUNmrCRkphATk3I7mc7cyIgLUonZ9RtRrMUn
+ SDeJfFhMOmoenvgrsBI8sMGPCx82fVTQMfpdHzF1tZcYRe39VdLAOaVM3KetetqouiPsfXRqn
+ X5xV2bVsj7kQMDOMNPB3rRryc24M68x0Ay2BTGOcqJmeKMD5Rsg5fICuVjCBRkXoTKH1Ix2PS
+ fAvtI1K4pcFVBPZxHQVCT98QGXgfKn/BX7lW6oS+mNKkLg5QK4PrybWDDHyCVzPo6fRjShf+g
+ FUzhs6E8cs6jbUPWG2flc24Z26Igm19E+73Ay66d4yWoJNSpqezkaKRCsglz4WjN2ww7z/3yI
+ yDlT3q3K9RnvfI1CsulqXhnRurA9NLQXeDpZ0ycql60vJ8tU1EtTZ4AEdSdppJdTI+Gmh88De
+ Sc5RUgGpju+kIf2kYimCtZKINWNSsC5kdsZfM4MO7hYfnYwPuINmjlWrWLCYi9O3TZB2Y/AJR
+ viNmYMfHYR41h21/3
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,82 +95,106 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Replace the "goto" statements with a direct "return ret" as the jump
-label only returns the ret variable.
+Replace three while loops with three calls to the vnt_control_out_blocks
+function. This way avoid repeat a functionality that already exists.
 
-Also, remove the unnecessary variable initialization because the ret
-variable is set a few lines later.
+Also remove the variables that now are not used.
 
 Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 ---
- drivers/staging/vt6656/rf.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ drivers/staging/vt6656/rf.c | 65 +++++++------------------------------
+ 1 file changed, 12 insertions(+), 53 deletions(-)
 
 diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
-index 82d3b6081b5b..888b6fcb6e91 100644
+index 888b6fcb6e91..420e9869af76 100644
 --- a/drivers/staging/vt6656/rf.c
 +++ b/drivers/staging/vt6656/rf.c
-@@ -766,7 +766,7 @@ void vnt_rf_rssi_to_dbm(struct vnt_private *priv, u8 rssi, long *dbm)
-
- int vnt_rf_table_download(struct vnt_private *priv)
- {
--	int ret = 0;
-+	int ret;
+@@ -769,7 +769,6 @@ int vnt_rf_table_download(struct vnt_private *priv)
+ 	int ret;
  	u16 length1 = 0, length2 = 0, length3 = 0;
  	u8 *addr1 = NULL, *addr2 = NULL, *addr3 = NULL;
- 	u16 length, value;
-@@ -819,7 +819,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 	ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, 0,
- 			      MESSAGE_REQUEST_RF_INIT, length1, addr1);
- 	if (ret)
--		goto end;
-+		return ret;
+-	u16 length, value;
+
+ 	switch (priv->rf_type) {
+ 	case RF_AL2230:
+@@ -822,40 +821,14 @@ int vnt_rf_table_download(struct vnt_private *priv)
+ 		return ret;
 
  	/* Channel Table 0 */
- 	value = 0;
-@@ -832,7 +832,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
- 				      MESSAGE_REQUEST_RF_CH0, length, addr2);
+-	value = 0;
+-	while (length2 > 0) {
+-		if (length2 >= 64)
+-			length = 64;
+-		else
+-			length = length2;
+-
+-		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
+-				      MESSAGE_REQUEST_RF_CH0, length, addr2);
+-		if (ret)
+-			return ret;
+-
+-		length2 -= length;
+-		value += length;
+-		addr2 += length;
+-	}
+-
+-	/* Channel table 1 */
+-	value = 0;
+-	while (length3 > 0) {
+-		if (length3 >= 64)
+-			length = 64;
+-		else
+-			length = length3;
+-
+-		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
+-				      MESSAGE_REQUEST_RF_CH1, length, addr3);
+-		if (ret)
+-			return ret;
++	ret = vnt_control_out_blocks(priv, VNT_REG_BLOCK_SIZE,
++				     MESSAGE_REQUEST_RF_CH0, length2, addr2);
++	if (ret)
++		return ret;
+
+-		length3 -= length;
+-		value += length;
+-		addr3 += length;
+-	}
++	/* Channel Table 1 */
++	ret = vnt_control_out_blocks(priv, VNT_REG_BLOCK_SIZE,
++				     MESSAGE_REQUEST_RF_CH1, length3, addr3);
+
+ 	if (priv->rf_type == RF_AIROHA7230) {
+ 		length1 = CB_AL7230_INIT_SEQ * 3;
+@@ -869,25 +842,11 @@ int vnt_rf_table_download(struct vnt_private *priv)
  		if (ret)
--			goto end;
-+			return ret;
+ 			return ret;
 
- 		length2 -= length;
- 		value += length;
-@@ -850,7 +850,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
- 				      MESSAGE_REQUEST_RF_CH1, length, addr3);
- 		if (ret)
--			goto end;
-+			return ret;
-
- 		length3 -= length;
- 		value += length;
-@@ -867,7 +867,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, 0,
- 				      MESSAGE_REQUEST_RF_INIT2, length1, addr1);
- 		if (ret)
--			goto end;
-+			return ret;
-
- 		/* Channel Table 0 */
- 		value = 0;
-@@ -881,7 +881,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 					      MESSAGE_REQUEST_RF_CH2, length,
- 					      addr2);
- 			if (ret)
--				goto end;
-+				return ret;
-
- 			length2 -= length;
- 			value += length;
-@@ -889,6 +889,5 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 		}
+-		/* Channel Table 0 */
+-		value = 0;
+-		while (length2 > 0) {
+-			if (length2 >= 64)
+-				length = 64;
+-			else
+-				length = length2;
+-
+-			ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
+-					      MESSAGE_REQUEST_RF_CH2, length,
+-					      addr2);
+-			if (ret)
+-				return ret;
+-
+-			length2 -= length;
+-			value += length;
+-			addr2 += length;
+-		}
++		/* Channel Table 2 */
++		ret = vnt_control_out_blocks(priv, VNT_REG_BLOCK_SIZE,
++					     MESSAGE_REQUEST_RF_CH2, length2,
++					     addr2);
  	}
 
--end:
--	return ret;
-+	return 0;
+-	return 0;
++	return ret;
  }
 --
 2.20.1
