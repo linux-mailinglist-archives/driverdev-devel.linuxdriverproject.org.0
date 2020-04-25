@@ -1,77 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 290571B8542
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 11:30:42 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE2401B85A2
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 12:26:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 01BFD881E2;
-	Sat, 25 Apr 2020 09:30:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D853D8586A;
+	Sat, 25 Apr 2020 10:26:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0se3U-SrUKky; Sat, 25 Apr 2020 09:30:39 +0000 (UTC)
+	with ESMTP id Dob3-xyGTEna; Sat, 25 Apr 2020 10:26:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6630088166;
-	Sat, 25 Apr 2020 09:30:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DDC4A85187;
+	Sat, 25 Apr 2020 10:26:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A08971BF5F6
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 09:30:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1DFB41BF5A6
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 10:26:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9CF8886CE7
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 09:30:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 188CE868E5
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 10:26:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sgJFQBUqo9kC for <devel@linuxdriverproject.org>;
- Sat, 25 Apr 2020 09:30:36 +0000 (UTC)
+ with ESMTP id DIVzZxrmGN-G for <devel@linuxdriverproject.org>;
+ Sat, 25 Apr 2020 10:26:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A984786B68
- for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 09:30:35 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id k13so14395323wrw.7
- for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 02:30:35 -0700 (PDT)
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4C4828610A
+ for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 10:26:29 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id d15so12873833wrx.3
+ for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 03:26:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=HqIOpvjAX4aB+i0alurBPqHQCQRYmgJifFMe4+PDeSc=;
- b=DUxj4mDQiE/jn60mXBqDyIIczs085H9kop9QRKaMAq8ft5OCBdGAJbSmf8Zb1OVuxk
- eUzXFjyXVfccJWsBENIond1vHrjdeHxhlRpgjh509u3BzGpCWaafxxdXqWL9arnVeQ17
- J4wngiImwieQ6kJ0K5mEkkd9IImZdSs60wnVfQNtyEuYhZYPKEC+QiEyvytoH6T+Xv/s
- kwEcXleVw4pRzInOu9tp1O0mEomdsZgE02BsYRamRCFk/Lv3+VyjRPIYIVEekMLDTuaO
- S7+u3dAowYaiuNkxbp0nTN9D7Y+o9CKvxMcjoSAQIa5RmgnfsmN5UjpfndvhYFElDFUW
- NVZg==
+ h=subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=38vQVlaeSZZxQKTG5783RHBThukGsAZS9fXDacuiSmU=;
+ b=Gtltwj0k57U62g3GeZY/ggJ/mqgonj4qLUD4I/84b2SMyKNoDqeJgn+5UvjjQOONUP
+ GW0HTpsf8e4kCqutI5ZmRFpWyZEjlAEXYJ5Tab9bg9EsltOW0/+H+xTPibrRGazG4Lua
+ hfU8xDNpSJLVh28JIz/mn5NIXR2sCLcHWBwouhMXi0iFjkGJSnM51FXntz8oT281viLr
+ xTR+J1oor1Eq74xYVBYEbH17KiQveAWiFIC6KoGDcft0kNTJaTSACfOppnQQ/hvtYt5X
+ KRtuVTMUjx0qn1402Z/Uw/g0SvySIr/oFOHy2xXe2dDxHhtUv+7DMp+Vzur+xHT/kegY
+ H5sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=HqIOpvjAX4aB+i0alurBPqHQCQRYmgJifFMe4+PDeSc=;
- b=IZKGUCxyLaYw0ehdDdHYcp9EnUe5YSgf4cuIWN/AaTu/7dHY1j1vAIs6/CXFnRpwio
- PrF3P8BAEBaNmo2kRiaptuE+2tbR0QLSOFwhD/qWc34GBsoeCpFqXusVaEeuL57wE/au
- 77ng1qbvmStd69Vg6psNob79zc4u28uBWj/AsFBUN5BJYQ6MH/6moqErcWpJ9r8GCGUx
- Z49DI81vERKnIcZrN1/JL2iOWDAyBHdQxR1ouRb+QHMVZ83g7M3spH/F6J0gTEuP0dfA
- o+II7Y/sNtvn7/HGZP/MQaHHeQE17kAUUzZekKJWhDdgfqvsIBqImlWD4ezrhJ9lwUaT
- xd5g==
-X-Gm-Message-State: AGi0Puaqp2D0EpuvM38dySrrs4EbjuSgmd5hGrc1/b1ttknsaABGYi56
- 7TmS1HbQxfjIhahxQlkkAfo=
-X-Google-Smtp-Source: APiQypI+RYtCtuxA4FvRIxtod8076du/gFx3J/mEpn4RTDVu1Wq/eruzAVbLdgUgiXC+CA+dOqTHfA==
-X-Received: by 2002:a5d:610e:: with SMTP id v14mr15831207wrt.159.1587807033996; 
- Sat, 25 Apr 2020 02:30:33 -0700 (PDT)
-Received: from localhost.localdomain
- (dslb-178-006-252-221.178.006.pools.vodafone-ip.de. [178.6.252.221])
- by smtp.gmail.com with ESMTPSA id w6sm12318805wrm.86.2020.04.25.02.30.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 25 Apr 2020 02:30:33 -0700 (PDT)
-From: Michael Straube <straube.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8188eu: remove some superfluous comments
-Date: Sat, 25 Apr 2020 11:28:22 +0200
-Message-Id: <20200425092822.19925-1-straube.linux@gmail.com>
-X-Mailer: git-send-email 2.26.1
+ bh=38vQVlaeSZZxQKTG5783RHBThukGsAZS9fXDacuiSmU=;
+ b=MuBgL0BYq4yfRLa3of216112ce/FEqNAdkFgifhJgdFbd8gj/XUtgsIgR8Y1RdLs5F
+ dD7RTHumBnQmednmw1lwyZZKO8lOzTuXQQdN6JLVL+kdk/aDleIltOYoWdLM0cNV78CZ
+ FspG1tdnXADN9+M1xMUC4oK08CDJxO9PXksoMjRHYNja2C71NZmcLvbuDCuQir/7G1nr
+ pk36Xku/XIu2dDfHFpS4TwpEFHbnPYMx57+JPFCxWeQlrr4nQdv0Pprsts6kmHQG4NU0
+ Ir2wPOouvz3hs6q+ApYzRDueEtPd+GDkOx2Cll/KOAIoVvzqQfHbM3TswYKD8KuDMHxA
+ sDow==
+X-Gm-Message-State: AGi0Pua2OxfS24AAMMi91zWEBNstDFbxBNadXlDRhH3ZQbes3V/ioVsO
+ eWcbizT4oOxkOwLPab5l1Cg=
+X-Google-Smtp-Source: APiQypLKhIXBnlPPWWk/gKSpTt8Isfngp6z63ky08yVA/WfgmVJlqnu5se6FfXzXT+S3m4drxLKiOQ==
+X-Received: by 2002:adf:e8c2:: with SMTP id k2mr16315312wrn.396.1587810387771; 
+ Sat, 25 Apr 2020 03:26:27 -0700 (PDT)
+Received: from [192.168.43.18] (94.197.120.138.threembb.co.uk.
+ [94.197.120.138])
+ by smtp.gmail.com with ESMTPSA id t16sm6533125wmi.27.2020.04.25.03.26.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 25 Apr 2020 03:26:27 -0700 (PDT)
+Subject: Re: [PATCH] staging: vt6656: rxtx: remove duration_id and void
+ returns.
+From: Malcolm Priestley <tvboxspy@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+References: <7e44c528-2a3a-6a3d-0b47-0307d27a1c8b@gmail.com>
+Message-ID: <d870351d-8d0e-9ed2-852f-90dcbae52bbe@gmail.com>
+Date: Sat, 25 Apr 2020 11:26:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
+In-Reply-To: <7e44c528-2a3a-6a3d-0b47-0307d27a1c8b@gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,65 +90,18 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry.Finger@lwfinger.net
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Oscar Carter <oscar.carter@gmx.com>, linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove some obviously superflous comments.
+Drop this patch there is a mistake in it.
 
-Signed-off-by: Michael Straube <straube.linux@gmail.com>
----
- drivers/staging/rtl8188eu/hal/odm.c          | 2 --
- drivers/staging/rtl8188eu/hal/odm_hwconfig.c | 2 --
- drivers/staging/rtl8188eu/hal/rtl8188e_dm.c  | 3 ---
- 3 files changed, 7 deletions(-)
+Regards
 
-diff --git a/drivers/staging/rtl8188eu/hal/odm.c b/drivers/staging/rtl8188eu/hal/odm.c
-index b3cc40527730..28974808839d 100644
---- a/drivers/staging/rtl8188eu/hal/odm.c
-+++ b/drivers/staging/rtl8188eu/hal/odm.c
-@@ -5,8 +5,6 @@
-  *
-  ******************************************************************************/
- 
--/*  include files */
--
- #include "odm_precomp.h"
- #include "phy.h"
- 
-diff --git a/drivers/staging/rtl8188eu/hal/odm_hwconfig.c b/drivers/staging/rtl8188eu/hal/odm_hwconfig.c
-index a6f2731b076d..65a346ae3cb0 100644
---- a/drivers/staging/rtl8188eu/hal/odm_hwconfig.c
-+++ b/drivers/staging/rtl8188eu/hal/odm_hwconfig.c
-@@ -5,8 +5,6 @@
-  *
-  ******************************************************************************/
- 
--/*  include files */
--
- #include "odm_precomp.h"
- 
- #define READ_AND_CONFIG     READ_AND_CONFIG_MP
-diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
-index 241f55b92808..1af919ff6d93 100644
---- a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
-+++ b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
-@@ -29,9 +29,6 @@ static void dm_InitGPIOSetting(struct adapter *Adapter)
- 	usb_write8(Adapter, REG_GPIO_MUXCFG, tmp1byte);
- }
- 
--/*  */
--/*  functions */
--/*  */
- static void Init_ODM_ComInfo_88E(struct adapter *Adapter)
- {
- 	struct hal_data_8188e *hal_data = Adapter->HalData;
--- 
-2.26.1
-
+Malcolm
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
