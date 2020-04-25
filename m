@@ -1,82 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 293631B86EC
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 16:08:40 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 56B021B870F
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 16:33:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D0B4B20509;
-	Sat, 25 Apr 2020 14:02:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2E7FD86AFE;
+	Sat, 25 Apr 2020 14:17:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iyAl4Ggs+drp; Sat, 25 Apr 2020 14:02:58 +0000 (UTC)
+	with ESMTP id TAqnEP6KbJoS; Sat, 25 Apr 2020 14:17:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3C97A2038D;
-	Sat, 25 Apr 2020 14:02:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E538D86840;
+	Sat, 25 Apr 2020 14:17:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6F2601BF30E
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 14:02:54 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3660F1BF5E9
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 14:16:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5451A203A7
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 14:02:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 31EB48681A
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 14:16:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VjZ2lsYGL3Bo for <devel@linuxdriverproject.org>;
- Sat, 25 Apr 2020 14:02:53 +0000 (UTC)
+ with ESMTP id WQyL8ic3EExU for <devel@linuxdriverproject.org>;
+ Sat, 25 Apr 2020 14:16:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
- by silver.osuosl.org (Postfix) with ESMTPS id 103FB2038D
- for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 14:02:51 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B1FF3867FF
+ for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 14:16:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1587823359;
- bh=cbbVI1PGCNAqbeyhd0rn3+oxRl+wxXYseCxr5QBOBU0=;
- h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
- b=W01P/S7JvlociG9FeQ4GrGUrkdfG1pKgbWIQDCeMEt3qaSoP15oRM3VwsiLdMrSzS
- PS0ZaJ1Ssryu3m4IJoNtoXc/iXxxeF5nxy+Is5ZSrLEkY4jNCRjAHl88GpL2gMeKfS
- MIcDgF7SVwkAYa7bCP3w7hSJAx3lhX1foFDXVRbw=
+ s=badeba3b8450; t=1587824136;
+ bh=IWQTeuFzj3IxK0YDbZnpgKnVOiUTK+tBGaUm0YMS1Po=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=IIVUyI9TgCaWJ+Pa39x+2sBjdplJhLA0bZmfVWz9iarkCsb6CwA2R/DFN4GMOWI6g
+ U9JOiwY8CJ4Kb2SMjvbpo62yN4/u8QJ2koIWt8iQS3FMsjL//ZeRr8HeKNX48xxzM1
+ tM4UBrX3RVxYaR40GS+wc0sWdeICKEvAZPcBdrW0=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx104
- [212.227.17.174]) with ESMTPSA (Nemesis) id 1MhlGq-1ixhSp2JcW-00dn93; Sat, 25
- Apr 2020 16:02:39 +0200
-Date: Sat, 25 Apr 2020 16:02:37 +0200
+Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
+ (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
+ 1MIx3I-1jmdMY1tIQ-00KOK1; Sat, 25 Apr 2020 16:15:36 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2] staging: vt6656: Add formula to the vnt_rf_addpower
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v3] staging: vt6656: Add formula to the vnt_rf_addpower
  function
-Message-ID: <20200425140237.GB3213@ubuntu>
-References: <20200423170557.10401-1-oscar.carter@gmx.com>
- <20200425105714.GA2071664@kroah.com>
+Date: Sat, 25 Apr 2020 16:15:14 +0200
+Message-Id: <20200425141514.5528-1-oscar.carter@gmx.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200425105714.GA2071664@kroah.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Provags-ID: V03:K1:Azk07uiBcDqWvl5IdR2SJ0a5orfygJTMkzEvVInPXE/rufeIZw7
- +ONWWNso4Gqutk6/xuv2Boky+OMDG/cSxFy5e36//K2AuTFzmyCmRg6NvTvvwx3D2zgQGwN
- FfCxUsf7DERunEQ1miLQ7P76b3UfhleohSoxDZgdkiP1fUDLY8gwEyBBmDzj90edfJNacEK
- m8zZ7jf/Ixb9p1TdpUAhw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:nAjiWf6LWYs=:PG/MUaPGxZ06hcvjWN2f8U
- jBkRp0WLdpdYsP0b8IPRHiU0qq/xBcSq0yCLf2Bhd52dIQ/bWx7CXFiBDFNYjg7eikTZJAxG4
- wQbjhlRWJcSRpdwMCptGL2vo+6LffaOqOcci3OhROj7juUL1gEXVLoNhOTdsXcjSu6zMMfGCp
- WiE0kLdYb57V44aZGB/vcMfThS5aRGxdxCxQJ+23gaGidW/IsgVOYENEsdmJZiDldymSvASS1
- zFvIjhtxa1xHkKeI4holYEibNc4n9F1n0toTVMckCJ8yfji+dkt4t+3TiPm43REYQxLW/5zOJ
- 4KXrUpc1GMyvjYNC2TgpjlEZ1Mqnu3J1goqSSHQpnlWT27sh/PBKAUxnr9iwKEkGIafmD3+E5
- wQO8GPFahn0IyBQMRZmATPB5vt2LriJk+gtjj5CIJJ1RUgytwiS/ZmORU1KNpwtuwh4LYo2KD
- JspDnhicXL0YLFvfL5WibN1kLh54DNu97rto+dEY3ToN4dYKPM+2eKdX2XAJFyszjyGCThVKC
- gJkvxN7QtyFqavIFUbKtU3GPAIiYe2Ch0JhycYBDc0qbSfRoXzYjHHi2NS0LdS0kfd6ApqRLn
- /4jIjaGhE/xl+M/+8MUEstvumpHzRlX0oBRe/l3n9teGalJTuOMMT9/dTSl4/t3uZvN73J1za
- ZrTU7JI0rS7mvNA/LyJnGeNWmDWWAW5iENJ5GO7H5jI3epH9sSNDtJzXyQ5rshOyp03290zQe
- J+i8pTPq8Jc6Zdj+Yp0u7JlMx782ZX04+Z8ven9+J3YxNjgRdjDE2rIitJogZpVAJ5hserVHa
- tGIa03QyWHi+6gCs9bXlJlWxOlmcYMXOwZEwNYdRgiv+yJhKxAC99CFJGgMEegWp3j0JGkTjR
- ADOSbLAQ4vQK1vDC7GiqulOSfdaCnPOQ1rGrPFJ7ETdYR3aoEBc4YUlObiONRbEcr4KJWE4od
- ivU5/AgeeIVem7Ipkd/wMuWFMuTWQ510pAfTjmosglKw4ERKsHK1dJyueTEEfdHp5E8HTMZKK
- itPcNDnr6aXaI8kWwwoCA0mpFzwfUW1PHRG+aealEpujwaJ7eKPg1xXJiCjd7DkBhDGGAEC6t
- By1o+gtnLlBLbaf2g4q53HnppZjFFw8d1BHsa5pu+0/MrJpoiWS9c16X0Vmmccgeq6PGJTn5x
- 5sChTGqEfFUs/XtR4vxrZjRKXuX3zi/boMvSrmabjrJ2FRtgEscSrdPKftHMNelaw+O2VKBCP
- 7w3Q24ZwGdkTsehrK
+X-Provags-ID: V03:K1:zaJ9e5GSSCmq7FylQ3qk0AEDJdvYTo8X9vCSWiONP3IrKhH7cGH
+ 2z9NLhlyhqMIjKypZuU+ASCo9UhL9fdvklN+LTmKYbSEE6P4rhn61QfipfMQPIF6fYA2fw8
+ 6toaktOR039LC4AKhNTbGhv1vjSVJ3QQYSvaFVtAE5ZWYjAC+3aVV3eqlhIVBMtssDfYE/u
+ RdP6xVLa9K/6TFOtJL7/A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fYwMpEDHYMk=:fDA2L151AazJs6IPY6aL38
+ 2a2p8qy0axLJN3xhDEZwRV37XRu8IX5SUeByiwphE6wXieG6rJ5X4yZeQBdNSns/BDkwKhVTi
+ XY6UVoyUihXeiYOO8FblzkEQPmEe1U2YFoXlU7Z1S3+knbt9dbOGvDHTZO1FQbnQ6fojSV5Rk
+ x/OiJL5ekcC3EOwL0/qLfWGiA4K4b/iH+tPpKOMsC2Z2QUoavu+II7mUVUGIj7ZZYVmgVTw0X
+ ohIpOgXJ9iAThg5pJrbWtnn8Fr0M3BbNhUb0XR1eacLwYgnoV/DRng3g4kbwG5IRFrrU8x7pP
+ 0tRcBlc5nE66Z09U/L5mrb4EtWlEUQdbyyQoDQ+Df/ghxE4BDAazOnXXqgqPRt6dPP+ewN3Zk
+ xv6bz4K0IDEIjKcfvKAY/PG4z3qIowB6vsRnjHu8+59R1tp7pYmtnhviXH8kWWbrebx17gAEI
+ 1UOEiYSHecXX011Bxqcgw8qcxks5E5YcEQQULO0/LbGvDyJJMZC6RnrVo2DPN+JdiHWvYhOXI
+ yPKiC/Jw4SIOXkvoj0jTvS/DfM1w/4+HoBS3wKAG+zR540yZkgCq+8r0G7piXra9q7GaKdF1x
+ VI7XwXuVfXHGv97U6lIuH+MrfTv7IrAr8h/qzU7EVz8IoZ8OjzJCnyYpWsr9zbluDCZros/6E
+ Q2+w1mhSypQmPMUNNXaCTI9Q8qQP8mxnIl59rVTsGIbVEsMD5Givf+te1/2iJcic+5t4yIg5p
+ AEWspC5+C11d5LmGVQbS1hkTwQFDicyIoGVO7spYDmnY6qRkkWqiEbUapOtHa43eapgeXPZ9U
+ IDwHbSauP7IkWWk2UEM1aKTqKOxa7256rY8DNs2C03GqE48Cyoe9tclM5feHqmxfRkcmo7hQm
+ hybAonLQEGOvTasQhv3DLeZGxsPCwE17kOCpGiC01UcbGFCCVBQzZ1znpwNtzpphgfpT3SYGv
+ qkihfYyZ/9oSUhqdHSzX5Ru3AGyhjf0Te7nhhHJzWfHB1L0Nodsfw37AZ2vkWTww+kHk7p+mC
+ I1vp860Fgy0CmW+ERzG6sMsxGwZkZtYUeBOpigcPLpwWQCDPYdht/gdTL7DeKCy11aziTrt/i
+ MsaGEO8lkOMCHCHRyhhhql4whAS5n3qunMNFIgD8YVWW4qSEhUDUbY7U0U11To/dKXzEIO4yp
+ 8u6xhBqDNZCcMNLfEV2ndXM2RmgQ/c/Sp9ZVSws+Myl+2AfeiZ88hdxXdaMEXx4UJe6TvwYqp
+ XO9Kgqbr1TLE8zSwt
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,78 +88,75 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
  Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
- Forest Bond <forest@alittletooquiet.net>,
  Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Apr 25, 2020 at 12:57:14PM +0200, Greg Kroah-Hartman wrote:
-> On Thu, Apr 23, 2020 at 07:05:57PM +0200, Oscar Carter wrote:
-> > Use a formula to calculate the return value of the vnt_rf_addpower
-> > function instead of the "if" statement with literal values for every
-> > case.
-> >
-> > Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
-> > ---
-> > Changelog v1 -> v2
-> > - Change the type of "base" variable from s32 to int as Dan Carpenter
-> >   suggested.
-> > - Remove the "--" postoperator and replace with (base - 1) as Dan
-> >   Carpenter suggested. Also, as this expression has a minus before the
-> >   parenthesis, remove it an apply the minus operator changing the sign of
-> >   "base" and literal "1".
-> >
-> >  drivers/staging/vt6656/rf.c | 20 +++-----------------
-> >  1 file changed, 3 insertions(+), 17 deletions(-)
-> >
-> > diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
-> > index 06fa8867cfa3..612fd4a59f8a 100644
-> > --- a/drivers/staging/vt6656/rf.c
-> > +++ b/drivers/staging/vt6656/rf.c
-> > @@ -538,28 +538,14 @@ int vnt_rf_write_embedded(struct vnt_private *priv, u32 data)
-> >
-> >  static u8 vnt_rf_addpower(struct vnt_private *priv)
-> >  {
-> > +	int base;
-> >  	s32 rssi = -priv->current_rssi;
-> >
-> >  	if (!rssi)
-> >  		return 7;
-> >
-> > -	if (priv->rf_type == RF_VT3226D0) {
-> > -		if (rssi < -70)
-> > -			return 9;
-> > -		else if (rssi < -65)
-> > -			return 7;
-> > -		else if (rssi < -60)
-> > -			return 5;
-> > -	} else {
-> > -		if (rssi < -80)
-> > -			return 9;
-> > -		else if (rssi < -75)
-> > -			return 7;
-> > -		else if (rssi < -70)
-> > -			return 5;
-> > -	}
-> > -
-> > -	return 0;
-> > +	base = (priv->rf_type == RF_VT3226D0) ? -60 : -70;
-> > +	return (rssi < base) ? ((rssi - base + 1) / -5) * 2 + 5 : 0;
->
-> I _hate_ ? : functions, just spell this out please as a real if()
-> statement.
->
-Ok, I will do the modification and I will resend a new version patch.
+Use a formula to calculate the return value of the vnt_rf_addpower
+function instead of the "if" statement with literal values for every
+case.
 
-> thanks,
->
-> greg k-h
+Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+---
+Changelog v1 -> v2
+- Change the type of "base" variable from s32 to int as Dan Carpenter
+  suggested.
+- Remove the "--" postoperator and replace with (base - 1) as Dan
+  Carpenter suggested. Also, as this expression has a minus before the
+  parenthesis, remove it an apply the minus operator changing the sign of
+  "base" and literal "1".
 
-thanks,
+Changelog v2 -> v3
+- Replace ternary operators with the equivalents "if" statements as Greg
+  Kroah-Hartman suggested.
 
-oscar carter
+ drivers/staging/vt6656/rf.c | 23 ++++++++---------------
+ 1 file changed, 8 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+index 06fa8867cfa3..05c9d06f84dd 100644
+--- a/drivers/staging/vt6656/rf.c
++++ b/drivers/staging/vt6656/rf.c
+@@ -538,26 +538,19 @@ int vnt_rf_write_embedded(struct vnt_private *priv, u32 data)
+
+ static u8 vnt_rf_addpower(struct vnt_private *priv)
+ {
++	int base;
+ 	s32 rssi = -priv->current_rssi;
+
+ 	if (!rssi)
+ 		return 7;
+
+-	if (priv->rf_type == RF_VT3226D0) {
+-		if (rssi < -70)
+-			return 9;
+-		else if (rssi < -65)
+-			return 7;
+-		else if (rssi < -60)
+-			return 5;
+-	} else {
+-		if (rssi < -80)
+-			return 9;
+-		else if (rssi < -75)
+-			return 7;
+-		else if (rssi < -70)
+-			return 5;
+-	}
++	if (priv->rf_type == RF_VT3226D0)
++		base = -60;
++	else
++		base = -70;
++
++	if (rssi < base)
++		return ((rssi - base + 1) / -5) * 2 + 5;
+
+ 	return 0;
+ }
+--
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
