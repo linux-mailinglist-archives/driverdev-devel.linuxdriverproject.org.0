@@ -1,80 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A152A1B868A
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 14:39:59 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 33D841B868B
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 14:40:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 390F586BDB;
-	Sat, 25 Apr 2020 12:39:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ABE50862FB;
+	Sat, 25 Apr 2020 12:40:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 19LL7LCng1Uf; Sat, 25 Apr 2020 12:39:57 +0000 (UTC)
+	with ESMTP id Bogth8vqQdLS; Sat, 25 Apr 2020 12:40:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 32B7086AFF;
-	Sat, 25 Apr 2020 12:39:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 128B685E2B;
+	Sat, 25 Apr 2020 12:40:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E33551BF3FD
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 12:39:54 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 393391BF3FD
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 12:39:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DF402204DF
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 12:39:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 35DEC880C2
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 12:39:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Jbdx8fHBQbOL for <devel@linuxdriverproject.org>;
- Sat, 25 Apr 2020 12:39:53 +0000 (UTC)
+ with ESMTP id p3Eb5vuk84nt for <devel@linuxdriverproject.org>;
+ Sat, 25 Apr 2020 12:39:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by silver.osuosl.org (Postfix) with ESMTPS id 284B2204CF
- for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 12:39:52 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 982F888084
+ for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 12:39:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1587818382;
- bh=5SG9BzflKv7Fzm0xhOrgRj/a0QfgGzvqTTTXIn76vpo=;
+ s=badeba3b8450; t=1587818386;
+ bh=1SIn20szDlQ1F4nqk/0hZ4TyVykqVcZwhLZeWLcVgGw=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=fOQfXH9Q94acOyDU/TPyocNRBEW1AfVm+OHknxQNtjWoRKBhWwWNXEfn46tDlnjpB
- dJF1nnFRY91xg0VXrWWHBuecllyQCISmMxvOy4oJO77hq+Fn1uDpgxvfDwUoXB6FQ6
- RqdKtf4bfn1Ja5KrJBit7dhypIE/F2LDXoxrAPQA=
+ b=MZWbrsqn2bp0LXGKm2V7LgrvHAhex5rDATqhiahLGB/XRiuenc5gv1ehwhidL0eFb
+ vikFHZ47knPaNzTA1KrV5PVYyoGod4tfTYTg6zMNqh+3zny36LDVEE72BWkEGPrQGk
+ XexarK/nud65maPXI/fzBKIW/xX1BLQiwn6LeTZM=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
  (mrgmx004 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1N7i8O-1j73rY1VQo-014jNt; Sat, 25 Apr 2020 14:39:42 +0200
+ 1MyKDe-1jGQyk1Nlc-00ydV5; Sat, 25 Apr 2020 14:39:46 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
 To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/3] staging: vt6656: Remove the local variable "array"
-Date: Sat, 25 Apr 2020 14:38:42 +0200
-Message-Id: <20200425123844.7959-2-oscar.carter@gmx.com>
+Subject: [PATCH 2/3] staging: vt6656: Use return instead of goto
+Date: Sat, 25 Apr 2020 14:38:43 +0200
+Message-Id: <20200425123844.7959-3-oscar.carter@gmx.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200425123844.7959-1-oscar.carter@gmx.com>
 References: <20200425123844.7959-1-oscar.carter@gmx.com>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:ikptTVomcIa2Ak7P7aCNKI7F/Z4TRsm7UP1vbjo5KQhjN5KFMp6
- 0kORStaVnog4RmjXsa3eWaiEex0BmLVuKpWsH/xlL5lQfoDYvBCumG+5ymj1JDYvevzcuSn
- h/ONhh6m7iC37TO4ujHhggau0OTKzwfJcsXlrE4hQTVSdHj0W6k5GjUA/K9JOZExy2vy7ff
- fTc6/GgGkybLw2YrvcUcw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:xQYBUl6RL+s=:7xj96gcFiAkfTrHzVSKQlm
- fB4z9umJFgAs5BEvq6+0sy/OYuPlwz6czjpToK9TbwpGMUZc+jJsgAdZd1yuTA+ZsbKJMj+u1
- wgF03r1m5HFOXXOY77+k99+K4eke+MRKrq/EANUFX2v3VbgM4Cjt+TT++rY8ci5cW2ZPvSJG8
- pW1krlUSbAgQfYRRvQ1rGokzV0MYeVSUBr7YuFwCs9UXgwrN34LDwVoyKu5CG5Q50roJs5DXd
- R9L2tJoexDoVrjU/YLfGChI0XciUwgC+A7lkjALIYkuzvYuIaJvEJsOzg6jVop0t78dnxH0MN
- 4Fv51ACWzKGgK5nI0JqTSj24PgyasuZxBZYbEH/K/r6dtvH5CMt162y5YfU9+gZwh8PSXz+A3
- y51/QS5AGjDCeBUgZ4KJ1AagJ7b+LRxUvjgN1LpH7UqaxJltv232XqQ5fuGgi2n58uGzRR/kr
- Rq5sPKeDaxWUnkfUPtSC47gC0smaasgJqp9RiEKEuc/bq6nDqeIbZMXguGKzNApLEorAQoxFm
- 9+ZR3AZD+DCwYAhgWRHoFUN6Ol+QaUavULNsJN0qxncf5x8T/Fq++7v68YbkurvffVmXXcqZt
- azgyfXGcL1p7ayXlGI2XXapLLy5J+UK0TcLqD2OgFpQEpykvEkCcGMBw1X1fv4Jsru50SImfQ
- wMM613aEqeTnHNNNOwUwCov7c5//JOJmaOSUbnHCodLVY/BooK5mMGfeuBGayS5hiNSgkZNIK
- 01EOsTuVFODYJY1v9SoBRtz44+QFwNYXJCcFHrerSJfabC1Pf0zprOhMwTu0GqkLQSJxpeLnJ
- cAcgW8pGKCqSssN8zu7dT3FaG4ZJQduEOEuEmpxzhOuW3q64fTXQoM2/O45AIfSQgkt61MZs6
- mhcT6oqFzPhrSN2RUSQ7kQvMRlF2fXhRfRSas1Rur2DiRziMIQgqAYSdNmVPdAGl0/M8q+dFx
- j0Xn8G8ke31rUjdcZrG71cycXvPnhgkQbUmbL263M88OQG+ZLub/ekAGHykZwdyf27YRX2nqo
- 3QFB46nVKhE1IlOQY9P0KKhgg1pIf2HKzXBtW7zjolWFfXJWtyZbbEn4DS8Qp9caudebnobTy
- uAuLkPoTW7Lr0dQGJqh55Fzo+J3rZjeUyKEpzEjyWmzsGfNispds70MKg+tbpDjVhPecPtzFz
- uqjbpoz+D/EghR77NCMaB5ieNIwve65WVFAQAm3Sf06UeBmjq/uvdju1eZrcIW09/b1RkX9kr
- tC7wijsRdXHBm2qEp
+X-Provags-ID: V03:K1:sGY3ikEfwZKdQXuJ2Ru64c19gYQpIsD/6uUw9Ul0BFBAtl/zNIu
+ r2ezFMrU4BwH75/n12wBVwcUNDPI0I0d6i5TLK7BsEU61hyelkoL4ivctN2t0aZmRJHI7yp
+ nVwJGV1zS7R+mDMG4pywISSwI7l44dKxFG8uzZiTXrTsncTl7HWYcj3rU/qVNEM0aMx4joO
+ 0NFl85JTbBlvdR0MKw7GQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:XYzhrhaQobQ=:95754qRKPj/ltbWzxh+qgU
+ /46cAPgTr5PgTktRkwd13dhEaFcWI8a/OF0fkS9Of4tFvuHiHU0ONRMpkpzB8Rg+4Tqgd1kxu
+ FVUvmSuVxwdsMhtoAp/qR9Gz7BAfmHkBxqliXTx3d3LBM/5bpjrNH6Rm8L0zC1fzzttkgjHpn
+ AStQM/fwjWRro6QgSm+f/Wdnn8x9+f+mw/YEIAJVDSTDPSt6/abzjp3ro+CkhY/bklH6np68X
+ XiP506k5OnNiqYAJLZnF6cW/mIchsppjaHCE37ZfecV+k2J0IGKpWOY3BShCIfAzZF3g25I3Z
+ omtTdo6rLA+hcLiu8EbveVfPNWuMtovUMNZby0KYWLlf76jmsQ4JBF6qmxV1N571QVNojVPH4
+ v4BIHqaGFjQTfWHIagmX0+MTFGiTgMSRtDy1qXwcxwLEq8kMaL2Z51Zau3hRnutzNtFsRVu7i
+ FJmJ+JcvhCtUU8kV3MEQgEoom0h+tB2hm4cHf6j6GSb92LB+L4yJ3ENhh7z9UD7fpB5T7X65C
+ zciZx4GBgMUkWSfrLVkQkc7N1GVXohA1nqQljCjbrAYDDofwz0cheZ1rGzhpSUPNfri8btKJT
+ 0ZpZi7/bQkIJmwapNSraJoBu8nWTy9uchRAnYSsQkZKnO2rtCl02XKtEZaE0w+iaEmtBMhDRl
+ 5p/cDLKSSXVUXqzbyEkr22gmy2oIbH3dQwehhrw6UyufSITWe5itE/PCEpTqS8xAK0iFSqen6
+ WpfJLMx+pdqAu450iGU+FQsZZ5PMlJ0AyRGAusDIbUiD9pCjS8P4uoVgQHN0oOoURrJhEiWIw
+ wGhQ7PQZc5MyDOTJXGp9D6+4LT14qcJpvKnN+4KMFCE8iuKWMX88ltTRDT+JG33OMrxleCMk1
+ GOXifpblP2hSiZHsG5C0R/lHF3Wy+ygmxOd1wjlR2prYDsI+3FHDIUeAAsVZ9+Oq0U2TmtSHU
+ Wo93mzkyUM5GoNx8gnxzbGF62ET9/c98MR1YD6iSKicJBFuBZDLw5xIbaq+pzFzZQtGCLjFd2
+ 6Tvn/zxNUtHVePmtGFKsnsL+W8UMUPutciX7gPlefZz+G4t1VQqwEW4Tfj2KF9IHap93HNIIj
+ A4MU6bG1ovxCzBN6+ilT8HSTKgeHmkOhPZcrYUsVT2l+qTuj55VZsTvdsS8YVCS+z5VbNv+7e
+ 2WQQ2ZJNPBVtVq99T4qrBCHtw+K8g11YPmgmhtUa971o0tvaA79HAws9qFVjrE69yEE4BWpzS
+ uZvnL1QDzlptNoSit
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,91 +94,83 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the local variable "array" and all the memcpy function calls
-because this copy operation from different arrays to this variable is
-unnecessary.
+Replace the "goto" statements with a direct "return ret" as the jump
+label only returns the ret variable.
 
-The same result can be achieved using the arrays directly.
+Also, remove the unnecessary variable initialization because the ret
+variable is set a few lines later.
 
 Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 ---
- drivers/staging/vt6656/rf.c | 21 +++++----------------
- 1 file changed, 5 insertions(+), 16 deletions(-)
+ drivers/staging/vt6656/rf.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
-index 06fa8867cfa3..82d3b6081b5b 100644
+index 82d3b6081b5b..888b6fcb6e91 100644
 --- a/drivers/staging/vt6656/rf.c
 +++ b/drivers/staging/vt6656/rf.c
-@@ -770,7 +770,6 @@ int vnt_rf_table_download(struct vnt_private *priv)
+@@ -766,7 +766,7 @@ void vnt_rf_rssi_to_dbm(struct vnt_private *priv, u8 rssi, long *dbm)
+
+ int vnt_rf_table_download(struct vnt_private *priv)
+ {
+-	int ret = 0;
++	int ret;
  	u16 length1 = 0, length2 = 0, length3 = 0;
  	u8 *addr1 = NULL, *addr2 = NULL, *addr3 = NULL;
  	u16 length, value;
--	u8 array[256];
+@@ -819,7 +819,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
+ 	ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, 0,
+ 			      MESSAGE_REQUEST_RF_INIT, length1, addr1);
+ 	if (ret)
+-		goto end;
++		return ret;
 
- 	switch (priv->rf_type) {
- 	case RF_AL2230:
-@@ -817,10 +816,8 @@ int vnt_rf_table_download(struct vnt_private *priv)
+ 	/* Channel Table 0 */
+ 	value = 0;
+@@ -832,7 +832,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
+ 		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
+ 				      MESSAGE_REQUEST_RF_CH0, length, addr2);
+ 		if (ret)
+-			goto end;
++			return ret;
+
+ 		length2 -= length;
+ 		value += length;
+@@ -850,7 +850,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
+ 		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
+ 				      MESSAGE_REQUEST_RF_CH1, length, addr3);
+ 		if (ret)
+-			goto end;
++			return ret;
+
+ 		length3 -= length;
+ 		value += length;
+@@ -867,7 +867,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
+ 		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, 0,
+ 				      MESSAGE_REQUEST_RF_INIT2, length1, addr1);
+ 		if (ret)
+-			goto end;
++			return ret;
+
+ 		/* Channel Table 0 */
+ 		value = 0;
+@@ -881,7 +881,7 @@ int vnt_rf_table_download(struct vnt_private *priv)
+ 					      MESSAGE_REQUEST_RF_CH2, length,
+ 					      addr2);
+ 			if (ret)
+-				goto end;
++				return ret;
+
+ 			length2 -= length;
+ 			value += length;
+@@ -889,6 +889,5 @@ int vnt_rf_table_download(struct vnt_private *priv)
+ 		}
  	}
 
- 	/* Init Table */
--	memcpy(array, addr1, length1);
--
- 	ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, 0,
--			      MESSAGE_REQUEST_RF_INIT, length1, array);
-+			      MESSAGE_REQUEST_RF_INIT, length1, addr1);
- 	if (ret)
- 		goto end;
-
-@@ -832,10 +829,8 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 		else
- 			length = length2;
-
--		memcpy(array, addr2, length);
--
- 		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
--				      MESSAGE_REQUEST_RF_CH0, length, array);
-+				      MESSAGE_REQUEST_RF_CH0, length, addr2);
- 		if (ret)
- 			goto end;
-
-@@ -852,10 +847,8 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 		else
- 			length = length3;
-
--		memcpy(array, addr3, length);
--
- 		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
--				      MESSAGE_REQUEST_RF_CH1, length, array);
-+				      MESSAGE_REQUEST_RF_CH1, length, addr3);
- 		if (ret)
- 			goto end;
-
-@@ -870,11 +863,9 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 		addr1 = &al7230_init_table_amode[0][0];
- 		addr2 = &al7230_channel_table2[0][0];
-
--		memcpy(array, addr1, length1);
--
- 		/* Init Table 2 */
- 		ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, 0,
--				      MESSAGE_REQUEST_RF_INIT2, length1, array);
-+				      MESSAGE_REQUEST_RF_INIT2, length1, addr1);
- 		if (ret)
- 			goto end;
-
-@@ -886,11 +877,9 @@ int vnt_rf_table_download(struct vnt_private *priv)
- 			else
- 				length = length2;
-
--			memcpy(array, addr2, length);
--
- 			ret = vnt_control_out(priv, MESSAGE_TYPE_WRITE, value,
- 					      MESSAGE_REQUEST_RF_CH2, length,
--					      array);
-+					      addr2);
- 			if (ret)
- 				goto end;
-
+-end:
+-	return ret;
++	return 0;
+ }
 --
 2.20.1
 
