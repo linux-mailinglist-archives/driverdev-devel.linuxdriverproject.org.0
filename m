@@ -1,80 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADC8F1B86D2
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 15:43:58 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 293631B86EC
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Apr 2020 16:08:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C13778825E;
-	Sat, 25 Apr 2020 13:43:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D0B4B20509;
+	Sat, 25 Apr 2020 14:02:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lZT27cpm+2TI; Sat, 25 Apr 2020 13:43:56 +0000 (UTC)
+	with ESMTP id iyAl4Ggs+drp; Sat, 25 Apr 2020 14:02:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 32088875DA;
-	Sat, 25 Apr 2020 13:43:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3C97A2038D;
+	Sat, 25 Apr 2020 14:02:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D27451BF30E
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 13:43:53 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F2601BF30E
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 14:02:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CEFF585BB5
- for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 13:43:53 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5451A203A7
+ for <devel@linuxdriverproject.org>; Sat, 25 Apr 2020 14:02:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fdeiRwqjiYgd for <devel@linuxdriverproject.org>;
- Sat, 25 Apr 2020 13:43:52 +0000 (UTC)
+ with ESMTP id VjZ2lsYGL3Bo for <devel@linuxdriverproject.org>;
+ Sat, 25 Apr 2020 14:02:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 331B085B99
- for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 13:43:52 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
+ by silver.osuosl.org (Postfix) with ESMTPS id 103FB2038D
+ for <devel@driverdev.osuosl.org>; Sat, 25 Apr 2020 14:02:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1587822218;
- bh=x8O70XQaSCW+c8VqVnixR5a/X1u5BURnrLA7uFFttdE=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=f6jtbB+Uc4VFjdgoUbVwlb1/0B3hWoKhXsGRF/F64q4gLuIZMO77GlXVIv07ZBOUX
- kWAvMsLSFq5fNrIqzisAmZMCTTVOiwLoHhRAM3hwFbAWelCWQ+lk3o4a8U2rMd4jF9
- 5bNie3KwIS5fkGDW6FlMOlhZme31xIvDVxczkdQU=
+ s=badeba3b8450; t=1587823359;
+ bh=cbbVI1PGCNAqbeyhd0rn3+oxRl+wxXYseCxr5QBOBU0=;
+ h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=W01P/S7JvlociG9FeQ4GrGUrkdfG1pKgbWIQDCeMEt3qaSoP15oRM3VwsiLdMrSzS
+ PS0ZaJ1Ssryu3m4IJoNtoXc/iXxxeF5nxy+Is5ZSrLEkY4jNCRjAHl88GpL2gMeKfS
+ MIcDgF7SVwkAYa7bCP3w7hSJAx3lhX1foFDXVRbw=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx105 [212.227.17.174]) with ESMTPSA (Nemesis) id
- 1M26r3-1jUo402ssj-002VUf; Sat, 25 Apr 2020 15:43:37 +0200
+Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx104
+ [212.227.17.174]) with ESMTPSA (Nemesis) id 1MhlGq-1ixhSp2JcW-00dn93; Sat, 25
+ Apr 2020 16:02:39 +0200
+Date: Sat, 25 Apr 2020 16:02:37 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
-To: Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v4 2/2] staging: vt6656: Remove functions' documentation
-Date: Sat, 25 Apr 2020 15:42:57 +0200
-Message-Id: <20200425134257.4502-3-oscar.carter@gmx.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200425134257.4502-1-oscar.carter@gmx.com>
-References: <20200425134257.4502-1-oscar.carter@gmx.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2] staging: vt6656: Add formula to the vnt_rf_addpower
+ function
+Message-ID: <20200425140237.GB3213@ubuntu>
+References: <20200423170557.10401-1-oscar.carter@gmx.com>
+ <20200425105714.GA2071664@kroah.com>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:k/1x0jL0VXrEUVQIpDV35NTfGtregwc5nb4Z8EUL/N0DVxqAO94
- rk0i/A47PjyGIBYZ0tq4Ra5OEjMjY+hEcIH+OfqcLCFIuxynDWTMfX5ZaTVZvTPBNi/YXxi
- ZA8eo+YKHRddS+1r38DuaezLW/dq0NCkgmZnwP216LQBY/GLo2nWm/AyJ5WwnFokJMlU5E1
- z5/4ZxBkA5UynE8HBpHPQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RfsE30ElFig=:UOjEXlCIy9wrAqQDYlvweC
- GH4uxRVF+RUCxeTFQfyvEwE7KL5V46dVL0tAN6vokzmAAEd91H4cues605AZSptWuh3yJ1BWt
- MF/tTkTAYqnK3KZk2HjbYK6Cf/v6wkW2keo+O79XdGUwexDaLhH2Dwg8kfz5NLRXx6CAn3ruL
- OuC9HFs8BHUSOnSDtLKIt3SsnGUejvBqm1Vm/wHzmngDLkym5eJSWb5g/aZaEzEoe+qxHeJLU
- NGJRzGJGnlJCT9ucWYavV4GE1suo9f9RSmODQX1CqVtXt//O7tvfJqUBKTnU+l4L3ihi6oy6p
- BhE4dQ1tLQNlQJNvhCsYxVxbatZQvQTXj80hyKkrRL37hRaUkAR/g4ak8Lu8nFXUqTUD2JrcV
- liUcA7rwBDELSZ21kMqIifNOGKawyhC3Q5kXHJV0iwQH2eaUTR2/8EdUC+jPM49P2NS7f82nJ
- q4H06UPj9ddZK83HFyP+X4BOdpE/YGvg6aMobJ/FGoiljnS2lBuckFDmxBm91avDKCBqZ8JWy
- 9cUCEvCPROJLX3NlXhcthfAENn2bTB1OUUE4/34DNc2FL88wieQnQkwgGwqebnsxV6eTHUAr/
- 7coBWgSjxoJnF3id8xdctB8v1N93LMCELc0b1/6XjhPdfyLkYftfewnaHdzgfOCr5rO7Xyjw4
- BwmXO/9lIlZZxTmiUdkRHxtCFb0fQBBmeArts8S2H2OPH33iQSzeZMpcNrcLbEWvUoRZY08ev
- GV/mFS2PacYUgSbj3dTad9gB4Qf75o9kWCvTni6c0Tcg+11TMBCIIHHKbJ2gH9YUGyXqmk8PD
- /YBRuoUj+nJdRZkQ97dwRUzdfVEFptmWSmHaUn9fMBu8r70n5M1TbzaIUJpOf6hBk4Q2+3htA
- /xT7YnOruMFbeJYXUBi/DoHtZbWh8ia45epDR++5OV8QmpdDMGGbMsPYf+TVinz1OTrp+6Zdr
- 7c7yi64CHx1swBarqTHXggITJfLncvxxCp7VEGWoQMhxZhnhAYSlFtP02MuDpv9mtWgpzw5dq
- sFVJRTbcPfbeMIBggRTuvRIC/IhnB0Fawj/RdLG+A2W5bO3jrh/HoUofOWnyMOXEoHJgLU2ll
- Dz/itAotnexsjaPfCUziC/TikVz7uv2vMY1lwv1na7SQ4c8gYA0vzDQvt3CZLcjuwHTC3z7F4
- RrMr8geGebYJvwGkC8Jy0Nk02Kra8xULCjC+1MAg5S7lLl0Oc5NLbpyrOQwrz9e16aVTd+3Im
- 1SFZwAhE3eROs28e9
+Content-Disposition: inline
+In-Reply-To: <20200425105714.GA2071664@kroah.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Provags-ID: V03:K1:Azk07uiBcDqWvl5IdR2SJ0a5orfygJTMkzEvVInPXE/rufeIZw7
+ +ONWWNso4Gqutk6/xuv2Boky+OMDG/cSxFy5e36//K2AuTFzmyCmRg6NvTvvwx3D2zgQGwN
+ FfCxUsf7DERunEQ1miLQ7P76b3UfhleohSoxDZgdkiP1fUDLY8gwEyBBmDzj90edfJNacEK
+ m8zZ7jf/Ixb9p1TdpUAhw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:nAjiWf6LWYs=:PG/MUaPGxZ06hcvjWN2f8U
+ jBkRp0WLdpdYsP0b8IPRHiU0qq/xBcSq0yCLf2Bhd52dIQ/bWx7CXFiBDFNYjg7eikTZJAxG4
+ wQbjhlRWJcSRpdwMCptGL2vo+6LffaOqOcci3OhROj7juUL1gEXVLoNhOTdsXcjSu6zMMfGCp
+ WiE0kLdYb57V44aZGB/vcMfThS5aRGxdxCxQJ+23gaGidW/IsgVOYENEsdmJZiDldymSvASS1
+ zFvIjhtxa1xHkKeI4holYEibNc4n9F1n0toTVMckCJ8yfji+dkt4t+3TiPm43REYQxLW/5zOJ
+ 4KXrUpc1GMyvjYNC2TgpjlEZ1Mqnu3J1goqSSHQpnlWT27sh/PBKAUxnr9iwKEkGIafmD3+E5
+ wQO8GPFahn0IyBQMRZmATPB5vt2LriJk+gtjj5CIJJ1RUgytwiS/ZmORU1KNpwtuwh4LYo2KD
+ JspDnhicXL0YLFvfL5WibN1kLh54DNu97rto+dEY3ToN4dYKPM+2eKdX2XAJFyszjyGCThVKC
+ gJkvxN7QtyFqavIFUbKtU3GPAIiYe2Ch0JhycYBDc0qbSfRoXzYjHHi2NS0LdS0kfd6ApqRLn
+ /4jIjaGhE/xl+M/+8MUEstvumpHzRlX0oBRe/l3n9teGalJTuOMMT9/dTSl4/t3uZvN73J1za
+ ZrTU7JI0rS7mvNA/LyJnGeNWmDWWAW5iENJ5GO7H5jI3epH9sSNDtJzXyQ5rshOyp03290zQe
+ J+i8pTPq8Jc6Zdj+Yp0u7JlMx782ZX04+Z8ven9+J3YxNjgRdjDE2rIitJogZpVAJ5hserVHa
+ tGIa03QyWHi+6gCs9bXlJlWxOlmcYMXOwZEwNYdRgiv+yJhKxAC99CFJGgMEegWp3j0JGkTjR
+ ADOSbLAQ4vQK1vDC7GiqulOSfdaCnPOQ1rGrPFJ7ETdYR3aoEBc4YUlObiONRbEcr4KJWE4od
+ ivU5/AgeeIVem7Ipkd/wMuWFMuTWQ510pAfTjmosglKw4ERKsHK1dJyueTEEfdHp5E8HTMZKK
+ itPcNDnr6aXaI8kWwwoCA0mpFzwfUW1PHRG+aealEpujwaJ7eKPg1xXJiCjd7DkBhDGGAEC6t
+ By1o+gtnLlBLbaf2g4q53HnppZjFFw8d1BHsa5pu+0/MrJpoiWS9c16X0Vmmccgeq6PGJTn5x
+ 5sChTGqEfFUs/XtR4vxrZjRKXuX3zi/boMvSrmabjrJ2FRtgEscSrdPKftHMNelaw+O2VKBCP
+ 7w3Q24ZwGdkTsehrK
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,258 +90,79 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Malcolm Priestley <tvboxspy@gmail.com>,
- "John B. Wyatt IV" <jbwyatt4@gmail.com>, linux-kernel@vger.kernel.org,
- Stefano Brivio <sbrivio@redhat.com>, Colin Ian King <colin.king@canonical.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>, linux-kernel@vger.kernel.org,
+ Forest Bond <forest@alittletooquiet.net>,
  Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove the functions' documentation as the names of the functions are
-clear enought. Also, the actual documentation it's not correct in all
-cases.
+On Sat, Apr 25, 2020 at 12:57:14PM +0200, Greg Kroah-Hartman wrote:
+> On Thu, Apr 23, 2020 at 07:05:57PM +0200, Oscar Carter wrote:
+> > Use a formula to calculate the return value of the vnt_rf_addpower
+> > function instead of the "if" statement with literal values for every
+> > case.
+> >
+> > Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+> > ---
+> > Changelog v1 -> v2
+> > - Change the type of "base" variable from s32 to int as Dan Carpenter
+> >   suggested.
+> > - Remove the "--" postoperator and replace with (base - 1) as Dan
+> >   Carpenter suggested. Also, as this expression has a minus before the
+> >   parenthesis, remove it an apply the minus operator changing the sign of
+> >   "base" and literal "1".
+> >
+> >  drivers/staging/vt6656/rf.c | 20 +++-----------------
+> >  1 file changed, 3 insertions(+), 17 deletions(-)
+> >
+> > diff --git a/drivers/staging/vt6656/rf.c b/drivers/staging/vt6656/rf.c
+> > index 06fa8867cfa3..612fd4a59f8a 100644
+> > --- a/drivers/staging/vt6656/rf.c
+> > +++ b/drivers/staging/vt6656/rf.c
+> > @@ -538,28 +538,14 @@ int vnt_rf_write_embedded(struct vnt_private *priv, u32 data)
+> >
+> >  static u8 vnt_rf_addpower(struct vnt_private *priv)
+> >  {
+> > +	int base;
+> >  	s32 rssi = -priv->current_rssi;
+> >
+> >  	if (!rssi)
+> >  		return 7;
+> >
+> > -	if (priv->rf_type == RF_VT3226D0) {
+> > -		if (rssi < -70)
+> > -			return 9;
+> > -		else if (rssi < -65)
+> > -			return 7;
+> > -		else if (rssi < -60)
+> > -			return 5;
+> > -	} else {
+> > -		if (rssi < -80)
+> > -			return 9;
+> > -		else if (rssi < -75)
+> > -			return 7;
+> > -		else if (rssi < -70)
+> > -			return 5;
+> > -	}
+> > -
+> > -	return 0;
+> > +	base = (priv->rf_type == RF_VT3226D0) ? -60 : -70;
+> > +	return (rssi < base) ? ((rssi - base + 1) / -5) * 2 + 5 : 0;
+>
+> I _hate_ ? : functions, just spell this out please as a real if()
+> statement.
+>
+Ok, I will do the modification and I will resend a new version patch.
 
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
----
- drivers/staging/vt6656/card.c  | 79 ----------------------------------
- drivers/staging/vt6656/mac.c   | 52 ----------------------
- drivers/staging/vt6656/power.c | 10 -----
- 3 files changed, 141 deletions(-)
+> thanks,
+>
+> greg k-h
 
-diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index 341796da2561..872717f9df49 100644
---- a/drivers/staging/vt6656/card.c
-+++ b/drivers/staging/vt6656/card.c
-@@ -46,16 +46,6 @@ static const u16 cw_rxbcntsf_off[MAX_RATE] = {
- 	192, 96, 34, 17, 34, 23, 17, 11, 8, 5, 4, 3
- };
+thanks,
 
--/*
-- * Description: Set NIC media channel
-- *
-- * Parameters:
-- *  In:
-- *      pDevice             - The adapter to be set
-- *      connection_channel  - Channel to be set
-- *  Out:
-- *      none
-- */
- int vnt_set_channel(struct vnt_private *priv, u32 connection_channel)
- {
- 	int ret;
-@@ -99,19 +89,6 @@ static const u8 vnt_rspinf_gb_table[] = {
- 	0x0e, 0x8d, 0x0a, 0x88, 0x0a, 0x8c, 0x0a, 0x8c, 0x0a
- };
-
--/*
-- * Description: Set RSPINF
-- *
-- * Parameters:
-- *  In:
-- *      pDevice             - The adapter to be set
-- *  Out:
-- *      none
-- *
-- * Return Value: None.
-- *
-- */
--
- int vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
- {
- 	const u8 *data;
-@@ -145,18 +122,6 @@ int vnt_set_rspinf(struct vnt_private *priv, u8 bb_type)
- 			       MESSAGE_REQUEST_MACREG, len, data);
- }
-
--/*
-- * Description: Update IFS
-- *
-- * Parameters:
-- *  In:
-- *	priv - The adapter to be set
-- * Out:
-- *	none
-- *
-- * Return Value: None.
-- *
-- */
- int vnt_update_ifs(struct vnt_private *priv)
- {
- 	u8 max_min = 0;
-@@ -277,21 +242,6 @@ u64 vnt_get_tsf_offset(u8 rx_rate, u64 tsf1, u64 tsf2)
- 	return tsf1 - tsf2 - (u64)cw_rxbcntsf_off[rx_rate % MAX_RATE];
- }
-
--/*
-- * Description: Sync. TSF counter to BSS
-- *              Get TSF offset and write to HW
-- *
-- * Parameters:
-- *  In:
-- *      priv		- The adapter to be sync.
-- *      time_stamp	- Rx BCN's TSF
-- *      local_tsf	- Local TSF
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_adjust_tsf(struct vnt_private *priv, u8 rx_rate,
- 		   u64 time_stamp, u64 local_tsf)
- {
-@@ -385,20 +335,6 @@ u64 vnt_get_next_tbtt(u64 tsf, u16 beacon_interval)
- 	return tsf;
- }
-
--/*
-- * Description: Set NIC TSF counter for first Beacon time
-- *              Get NEXTTBTT from adjusted TSF and Beacon Interval
-- *
-- * Parameters:
-- *  In:
-- *      dwIoBase        - IO Base
-- *	beacon_interval - Beacon Interval
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
- {
- 	u64 next_tbtt = 0;
-@@ -421,21 +357,6 @@ int vnt_reset_next_tbtt(struct vnt_private *priv, u16 beacon_interval)
- 			       MESSAGE_REQUEST_TBTT, 0, 8, data);
- }
-
--/*
-- * Description: Sync NIC TSF counter for Beacon time
-- *              Get NEXTTBTT and write to HW
-- *
-- * Parameters:
-- *  In:
-- *	priv		- The adapter to be set
-- *      tsf		- Current TSF counter
-- *      beacon_interval - Beacon Interval
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
- 			 u16 beacon_interval)
- {
-diff --git a/drivers/staging/vt6656/mac.c b/drivers/staging/vt6656/mac.c
-index 639172fad0f3..da7067c34643 100644
---- a/drivers/staging/vt6656/mac.c
-+++ b/drivers/staging/vt6656/mac.c
-@@ -22,19 +22,6 @@
- #include "mac.h"
- #include "usbpipe.h"
-
--/*
-- * Description:
-- *      Write MAC Multicast Address Mask
-- *
-- * Parameters:
-- *  In:
-- *	mc_filter (mac filter)
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter)
- {
- 	__le64 le_mc = cpu_to_le64(mc_filter);
-@@ -44,17 +31,6 @@ int vnt_mac_set_filter(struct vnt_private *priv, u64 mc_filter)
- 			       (u8 *)&le_mc);
- }
-
--/*
-- * Description:
-- *      Shut Down MAC
-- *
-- * Parameters:
-- *  In:
-- *  Out:
-- *      none
-- *
-- *
-- */
- int vnt_mac_shutdown(struct vnt_private *priv)
- {
- 	return vnt_control_out(priv, MESSAGE_TYPE_MACSHUTDOWN, 0, 0, 0, NULL);
-@@ -72,40 +48,12 @@ int vnt_mac_set_bb_type(struct vnt_private *priv, u8 type)
- 			       data);
- }
-
--/*
-- * Description:
-- *      Disable the Key Entry by MISCFIFO
-- *
-- * Parameters:
-- *  In:
-- *      dwIoBase        - Base Address for MAC
-- *
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_mac_disable_keyentry(struct vnt_private *priv, u8 entry_idx)
- {
- 	return vnt_control_out(priv, MESSAGE_TYPE_CLRKEYENTRY, 0, 0,
- 			       sizeof(entry_idx), &entry_idx);
- }
-
--/*
-- * Description:
-- *      Set the Key by MISCFIFO
-- *
-- * Parameters:
-- *  In:
-- *      dwIoBase        - Base Address for MAC
-- *
-- *  Out:
-- *      none
-- *
-- * Return Value: none
-- *
-- */
- int vnt_mac_set_keyentry(struct vnt_private *priv, u16 key_ctl, u32 entry_idx,
- 			 u32 key_idx, u8 *addr, u8 *key)
- {
-diff --git a/drivers/staging/vt6656/power.c b/drivers/staging/vt6656/power.c
-index 2d8d5a332a63..d160a0773943 100644
---- a/drivers/staging/vt6656/power.c
-+++ b/drivers/staging/vt6656/power.c
-@@ -77,16 +77,6 @@ void vnt_enable_power_saving(struct vnt_private *priv, u16 listen_interval)
- 	dev_dbg(&priv->usb->dev,  "PS:Power Saving Mode Enable...\n");
- }
-
--/*
-- *
-- * Routine Description:
-- * Disable hw power saving functions
-- *
-- * Return Value:
-- *    None.
-- *
-- */
--
- int vnt_disable_power_saving(struct vnt_private *priv)
- {
- 	int ret;
---
-2.20.1
-
+oscar carter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
