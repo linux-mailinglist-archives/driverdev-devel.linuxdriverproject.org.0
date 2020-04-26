@@ -2,71 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DF461B9489
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Apr 2020 00:31:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B5661B948E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Apr 2020 00:36:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 09F6585A58;
-	Sun, 26 Apr 2020 22:15:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C931485B12;
+	Sun, 26 Apr 2020 22:27:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dh1VgUjx0nCm; Sun, 26 Apr 2020 22:14:59 +0000 (UTC)
+	with ESMTP id 5HvtD7oEKyoY; Sun, 26 Apr 2020 22:27:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E263858DD;
-	Sun, 26 Apr 2020 22:14:59 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 85CA785A7D;
+	Sun, 26 Apr 2020 22:27:22 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6EE371BF375
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 26 Apr 2020 22:14:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D5A9D1BF375
+ for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 22:27:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6BA80858DD
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 26 Apr 2020 22:14:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D21BD860D1
+ for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 22:27:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R2MSr0eYhlSc
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 26 Apr 2020 22:14:56 +0000 (UTC)
+ with ESMTP id JZnYG5xzKnve for <devel@linuxdriverproject.org>;
+ Sun, 26 Apr 2020 22:27:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic308-9.consmr.mail.ne1.yahoo.com
- (sonic308-9.consmr.mail.ne1.yahoo.com [66.163.187.32])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3944D85797
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 26 Apr 2020 22:14:56 +0000 (UTC)
+Received: from sonic308-2.consmr.mail.bf2.yahoo.com
+ (sonic308-2.consmr.mail.bf2.yahoo.com [74.6.130.41])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 500DF860CE
+ for <devel@driverdev.osuosl.org>; Sun, 26 Apr 2020 22:27:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1587939295; bh=CK8hs5QhawDF3aaQkLB8GL9CYcLbe/kQaGmJkokiQes=;
+ t=1587940038; bh=CK8hs5QhawDF3aaQkLB8GL9CYcLbe/kQaGmJkokiQes=;
  h=Date:From:Reply-To:Subject:References:From:Subject;
- b=fnd8oQUT/BN5kKB9/1HSumFq5SDXU/zso/2CneUtg3dbv1Aiz46XtoGPqaco45V9Bqn5QH2FYGXKwg9o0ExoKlFL6KNqn5dThVFeIwTiSeoHYrLK01DHrcaHF49Yrebma05rkNjE0t/QT3eKNDJq4EgoPHyPE78sX+MXcvMZ3tDEytobY5Rl4u1BextjxREqSmr9jK/VrDvRg0yyu/sKyffrTqD4WvEbjWu1HlxIgO8mU6uWu1cuoRn3a/y+o4pVytkX65y55eBkQRM/IBoGPkH++DADJOXFc69TBRpsJg8sfVkfEpqPWmhyKyJ+kvyj4yBOi6IAbbH+b8MfuNMiOg==
-X-YMail-OSG: 5749R.EVM1n_6M5ZnPwrH_aUWLmYje2hbKV46nU7gmHNCTvFbAlhR2P2px0zcKc
- vl.CIHWeDXtkmvuRObYNm_J83b0kXPrA_1mWvREzwNW9pb_5kp5FrsChCN63JQEhsjwjpSfTDmRc
- J7gwuG7RGoDlAlFOIEdNN..TNN_A8E2FKBwAUY76RG097r5B8NE48aj1g.t3qeo.vJNLpBbIoHRX
- hs9Ayp25TjF8aAZlrgyW17NrzqV.nAdnFLc9Gt2iuI9sWlQvD6rWy81ytgjt4OSYXDtcmxTrIqiq
- jPWXm8pDOGrXvQ2GPXkvTFAiebgAaJAAnV1yCC_z8c20m_rL.Uy7T.2kCHYZHVOxItwzCICQj66F
- Ju1RA2UUa.8Xr_bi6VmXrLC.ozsxtY8QFMyp4OdkpPqa8W4vVQc8hYXuZlAge9iG70gIgKOII0Z6
- v_UoLgFr2WW.v1YN.ZIefgH0ENYNjsL4vXrHDJxDcxRYZkO5_dzTuIfvbXuO3X96DzN3_o64SVyS
- tIWajz0N_5uUx5GDWhZZ9lerxIZ.QGGLjoNLHZBtdExJKhR08JEClP59_EtsyjeMek17Z4H.6lo0
- KW6VsfZ5_wR9EAFHlJaxJPOOcToB7ksXWBzUTHTyWjQnklpnOgwUdnVmuSMztY9i6yJElMxZj_iN
- rF4b34rvQ31yajXUppL.ZmPrr8wIQIiB.SGv7eOIoVXldq943Dom5CJ6QwGFYo8oeNEACGGtls6f
- e4sucTW6T7ipJRCgRpYuW5fNh3XuAnSwVfW_2KzLpgSJtZKEhrm5sQLvgXWJpNjdbI8XewNQdoPU
- bEWfWJbl1GG6_0GBLsbLzJUHCaW1EQnhsuBkpfctB4MGhFQDRNIKBTORFvHM5YSCMfpwmiEhcH_A
- vNXq8B9NWg5Zg506iBrLT8YBN_QE_MmZhGpjmR2lzDPbTo5MHmMrBObOfPnalpu1.gnZwIdNzWWZ
- ojH0AuHJo4V9S0A8fPEiRZod.ApN4pGRvMt3Hroh8nRle4xjUwvFKtS3GJI7yboihVAG3x_wNUW2
- xnejKx7bdbmM9d0sxd8_BlwHaPfAgEWRIdWnkR35WGmfxwUqU0lHHIxw6D2dmTNgrlpEvYlHkTlK
- _3JQNvdesPDTynVlO6msorPwSLPMCDOfIyRJi_FXSYej47QqZVfSPRtsaFJWqgjtSI_ZbIQYt4aA
- PVP5cCCY3RgethiJzUeRvHYuTfhbT_p5.gbgujpPL5jDYjQiRlN43GucDS.YYgcHXsk7IbHerc5R
- crTXmDlM80_tQmNG5Ake.UAkNZv.WjJYjAHhBkQzjdA8AmXTrY3CehVYRa5wcnzAEUL3tD2tksT.
- V9w--
+ b=Hjx3n6AvMpYlgF4pKSQa73ufcy6RlAtmPFs3nMSeT290qKX3pOIqCC0VVPdka2NnKqOH/TUfHfP/jXBKmkdSaTcQqC/FhvlhSBg6VfKl+W5pcycvnil0N5VeTzfp3YUQPM+uONNT7lMOQQeEAEPQzbGJzo0ocW0H4Rk6N0gO+LzJCPRiJ4joNqOqQHAgSS+xcnea504QtlSnNjkO6u17QqBJIoP/cuhfnX/Yi/Yesteb4aKL36ffrsjvr2ZAQE2zDSMY73hYg0/bJrFKgHcCGPQ/RS5IwNVfPo+0XyKc2G/znkVKbekkfOmIaqkaDZRgrA3dBzZ1dVP+HXyTs9hwMw==
+X-YMail-OSG: A_vcivUVM1md47cEQ6niD7w79JrLuFuqm3WzLiYVy4_AGPSWPcOsFPuqDLmk3J9
+ uDZXRRA9BhcsdD29vAJ6ddbqYs1ARFJY0fUATBMI3jMYDR04hb9Fgy_7VS_eYfKsaqbyVRqwlRAo
+ mqjNiPA6N3PVyezXbVyoUndkw1OMj.UAUqqNEWtUUkUzstY_9WBDaJ0ZmpsHO7FZDAYT_V4yYa95
+ n.aK6rP18Qw_dFYuu3sBmxLyuNLod3VDsVC793UQRuIeIGMPsuAeMnu.tYqrExUKmzOumDuAquM0
+ lvZto.uoJlw1VGipbJZWDrqvYVbwy6MjbifuOOwQsVhYuEWGWLo9H80YSctpBAZdb29h2CMY6Ucn
+ Y0XlqmH9HqoHJH4a.wwUyCkpLRKga968Zy2TcDnHujD_kst5KpFK0c29pO7q35QX2CRN67FpBlMi
+ H17LL8XUGyh3u9Kr10mAJzbhiPxlxmAUfrGVR5xiiShN5llAQjpcnLcBx6DrIsV7sUWeuHyLCGV5
+ IkMpTgHCZyMwOd7pJ4cyGMLGcoLLFXu0IzxaUmByDj9I8FPPOWlPRu8BOw5ZnIPMq6Dnmc89.FLU
+ jQfYgTXl8kOgAWto0qQkc7Qn692qnnesR8p_SuqVLrAOEkgxWgl8RteyN5Z2uiM4ktz_tdBNGPVs
+ ag3H7tUPfiQ9F0HfnC2_PK9EmuzM08l9EOB9frIlcYcxLpnVhELiGP1NmIhjoDHS2ngu3xUhSKDy
+ jgQdfjEQfFh1kAfbwT.Xzu67EBvNiV7Fllw.BHp5tF1nCAvZmO7ycOKYcyqI.L6QbYE_U023WIr6
+ RHlg5RNDC.IfRgbmWc6yoo8oQ1bldJW9tvUZOZypGjhaK9nw09rRUWgNdFZ7OHxgLyFcoXH9Jq30
+ XfhZiIGAyGD_4V4H1bTbO7uHBHYuZYzxPkHQh7hBfYITuqvl3mLdNAaad1cLKD6FRORHGH0hCssi
+ v6a5Ki5MMdk9h9T0kXbQH8qMyoz1muOmYp5G_N8VMqYE0lCXxUotXD71F1Ppf1R7.eH3bCWGVdj.
+ JLVsIDpXoGSTbnVk08MywLqlI5eKVTlXCnb_cb0QeyZaema8.DwhJBVGuAEGuBPvT4_Bx2r0cKIe
+ ufXPjonmlBRKbDeOVsyvXjSYkjGUxrz9ako_IzF6XrrUCzHgmxx6rHwB1sQydnOrFcWXFp97bffw
+ .8bswu.TgwGmqiwQ4nEmhXQtVf14heKmfovPxQwOSrjYXxDH2sWX5HaYXPS0KVX0xd5NAfhyRmXV
+ 0l0aL8Hovlxzaa4Tkc_.MqXwd9bOpfWNXEGaalEte7ZIZywZ0YFQcFKIv5V1EwJmpFCpZEeGov0E
+ -
 Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic308.consmr.mail.ne1.yahoo.com with HTTP; Sun, 26 Apr 2020 22:14:55 +0000
-Date: Sun, 26 Apr 2020 22:14:54 +0000 (UTC)
-From: Stephanie Leo <stephanieleo966@yahoo.com>
-Message-ID: <1640289392.624607.1587939294604@mail.yahoo.com>
+ sonic308.consmr.mail.bf2.yahoo.com with HTTP; Sun, 26 Apr 2020 22:27:18 +0000
+Date: Sun, 26 Apr 2020 22:27:16 +0000 (UTC)
+From: Stephanie Leo <stephanie.leo65@yahoo.com>
+Message-ID: <1755502527.415887.1587940036387@mail.yahoo.com>
 Subject: From Stephanie
 MIME-Version: 1.0
-References: <1640289392.624607.1587939294604.ref@mail.yahoo.com>
+References: <1755502527.415887.1587940036387.ref@mail.yahoo.com>
 X-Mailer: WebService/1.1.15756 YMailNodin Mozilla/5.0 (Windows NT 6.1;
  rv:75.0) Gecko/20100101 Firefox/75.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
