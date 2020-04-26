@@ -1,51 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 00F1B1B8DBB
-	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Apr 2020 09:59:55 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A48C81B90C2
+	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Apr 2020 15:59:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AA53787BD9;
-	Sun, 26 Apr 2020 07:59:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D194C20C92;
+	Sun, 26 Apr 2020 13:59:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ko77FS6qj4c4; Sun, 26 Apr 2020 07:59:52 +0000 (UTC)
+	with ESMTP id DUTkZ+-E3zmj; Sun, 26 Apr 2020 13:59:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2DBE887B2B;
-	Sun, 26 Apr 2020 07:59:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1AB8B20371;
+	Sun, 26 Apr 2020 13:59:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0CA551BF20D
- for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 07:59:48 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1212C1BF20D
+ for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 13:59:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0981985775
- for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 07:59:48 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0EC8587C16
+ for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 13:59:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1OWxRHkwwXNV for <devel@linuxdriverproject.org>;
- Sun, 26 Apr 2020 07:59:46 +0000 (UTC)
+ with ESMTP id MoNCK-QP+tc0 for <devel@linuxdriverproject.org>;
+ Sun, 26 Apr 2020 13:59:41 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mta.ak107.secure.ne.jp (ak107.secure.ne.jp [150.60.159.8])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 19E4E8575B
- for <devel@driverdev.osuosl.org>; Sun, 26 Apr 2020 07:59:45 +0000 (UTC)
-Received: from ak107.secure.ne.jp (localhost [127.0.0.1])
- by mta.ak107.secure.ne.jp (Postfix) with SMTP id 3091D59671D
- for <devel@driverdev.osuosl.org>; Sun, 26 Apr 2020 16:35:52 +0900 (JST)
-Received: (qmail 29546 invoked from network); 26 Apr 2020 16:29:24 +0900
-Received: from unknown (HELO User) (roaji-imari@yamaoku.co.jp@180.222.184.76)
- by 0 with SMTP; 26 Apr 2020 16:29:24 +0900
+Received: from c157664e.mwprem.net (c157664e.mwprem.net [60.43.151.183])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CAE0B87C0C
+ for <devel@driverdev.osuosl.org>; Sun, 26 Apr 2020 13:59:41 +0000 (UTC)
+Received: from User (unknown [180.222.184.76])
+ by c157664e.mwprem.net (Postfix) with ESMTPA id 8F748E2819;
+ Sun, 26 Apr 2020 17:10:12 +0900 (JST)
 From: "Reem al-Hashimi"<roaji-imari@yamaoku.co.jp>
-Subject: Re: Funds to Investment..?
-Date: Sun, 26 Apr 2020 07:29:23 -0000
+Subject: Re: Funds to Investment..??
+Date: Sun, 26 Apr 2020 08:10:12 -0000
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200426073552.3091D59671D@mta.ak107.secure.ne.jp>
+Message-Id: <20200426081012.8F748E2819@c157664e.mwprem.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
