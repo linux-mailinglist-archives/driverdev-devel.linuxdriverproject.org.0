@@ -1,59 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CACD1B920E
-	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Apr 2020 19:23:40 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BFC561B94A7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Apr 2020 01:28:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 320342150A;
-	Sun, 26 Apr 2020 17:07:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 683DB861CF;
+	Sun, 26 Apr 2020 23:19:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TiiNInAIgTdh; Sun, 26 Apr 2020 17:07:28 +0000 (UTC)
+	with ESMTP id A-86Bcp4NKUh; Sun, 26 Apr 2020 23:19:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 79C18214D2;
-	Sun, 26 Apr 2020 17:07:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 389E98472A;
+	Sun, 26 Apr 2020 23:19:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1EDEB1BF406
- for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 17:07:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9E9B41BF3A7
+ for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 23:18:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1B714850AD
- for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 17:07:24 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9AEED85BEE
+ for <devel@linuxdriverproject.org>; Sun, 26 Apr 2020 23:18:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ryn7y2sqURYa for <devel@linuxdriverproject.org>;
- Sun, 26 Apr 2020 17:07:23 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9A319850A8
- for <devel@driverdev.osuosl.org>; Sun, 26 Apr 2020 17:07:23 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F2538206DD;
- Sun, 26 Apr 2020 17:07:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587920843;
- bh=m/VKesCt+bSjvJbxbM7RgCA5iwVllI10bgTkvbJ77BQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=cFGxIVfTY+0wzn3ctsM/1XSTavz4OoQyJ5MhlQ4Rzl2/13oTi9RZdwPSiNXCsa8/Y
- /6yS6AGbt96EmBEuySmvWZL+AKEiEqclFAE3N8TtUNTjz5/NyYiqzCjiSy8eBlkIS2
- 7FcDVl6aBxlifq9E4BrpnKPbmaaI9n3AppCpTEIs=
-Date: Sun, 26 Apr 2020 19:07:19 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: John Oldman <john.oldman@polehill.co.uk>
-Subject: Re: [PATCH] Staging: mt7621-dma: mtk-hsdma.c: Fix Missing a blank
- line after declarations
-Message-ID: <20200426170719.GA2138855@kroah.com>
-References: <20200426161319.23941-1-john.oldman@polehill.co.uk>
+ with ESMTP id 6CawXmF9nhjo for <devel@linuxdriverproject.org>;
+ Sun, 26 Apr 2020 23:18:58 +0000 (UTC)
+X-Greylist: delayed 04:40:08 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0171.hostedemail.com
+ [216.40.44.171])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 94E9685BE4
+ for <devel@driverdev.osuosl.org>; Sun, 26 Apr 2020 23:18:58 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave03.hostedemail.com (Postfix) with ESMTP id C648418024E03
+ for <devel@driverdev.osuosl.org>; Sun, 26 Apr 2020 17:22:58 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id 0C47F100E7B40;
+ Sun, 26 Apr 2020 17:22:56 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:617:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3871:3872:3873:4250:4321:5007:9040:10004:10400:10848:11026:11232:11473:11658:11914:12043:12297:12438:12555:12740:12760:12895:13069:13255:13311:13357:13439:14181:14659:14721:21080:21451:21611:21627:21939:30012:30034:30054:30080:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: dog92_70c4842a5302f
+X-Filterd-Recvd-Size: 2818
+Received: from XPS-9350.home (unknown [47.151.136.130])
+ (Authenticated sender: joe@perches.com)
+ by omf18.hostedemail.com (Postfix) with ESMTPA;
+ Sun, 26 Apr 2020 17:22:54 +0000 (UTC)
+Message-ID: <a3faa2e1e66eb5cba91181b0b916ceba1676d5d6.camel@perches.com>
+Subject: Re: [PATCH] drivers: staging: rts5208: rtsx.c fix Unbalanced braces
+ around else statement issue
+From: Joe Perches <joe@perches.com>
+To: John Oldman <john.oldman@polehill.co.uk>, gregkh@linuxfoundation.org
+Date: Sun, 26 Apr 2020 10:22:53 -0700
+In-Reply-To: <20200426160235.23836-1-john.oldman@polehill.co.uk>
+References: <20200426160235.23836-1-john.oldman@polehill.co.uk>
+User-Agent: Evolution 3.36.1-2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200426161319.23941-1-john.oldman@polehill.co.uk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,45 +74,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org, hslester96@gmail.com,
+ micky_ching@realsil.com.cn, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Apr 26, 2020 at 05:13:19PM +0100, John Oldman wrote:
-> Fixed coding style issue
-
-No you didn't :)
-
+On Sun, 2020-04-26 at 17:02 +0100, John Oldman wrote:
+> Fix coding style issue
 > 
 > Signed-off-by: John Oldman <john.oldman@polehill.co.uk>
 > ---
->  drivers/staging/mt7621-dma/mtk-hsdma.c | 1 +
->  1 file changed, 1 insertion(+)
+>  drivers/staging/rts5208/rtsx.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> index 14592ed9ce98..dd35d0bce6ca 100644
-> --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-> +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> @@ -157,6 +157,7 @@ struct mtk_hsdam_engine {
->  	struct device_dma_parameters dma_parms;
->  	void __iomem *base;
->  	struct tasklet_struct task;
-> +
->  	volatile unsigned long chan_issued;
->  
->  	struct mtk_hsdma_chan chan[1];
+> diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
+> index be0053c795b7..ca836ca2ee81 100644
+> --- a/drivers/staging/rts5208/rtsx.c
+> +++ b/drivers/staging/rts5208/rtsx.c
+> @@ -419,10 +419,8 @@ static int rtsx_control_thread(void *__dev)
+>  				chip->srb->device->id,
+>  				(u8)chip->srb->device->lun);
+>  			chip->srb->result = DID_BAD_TARGET << 16;
+> -		}
+> -
+> -		/* we've got a command, let's do it! */
+> -		else {
+> +		} else {
+> +			/* we've got a command, let's do it! */
+>  			scsi_show_command(chip);
+>  			rtsx_invoke_transport(chip->srb, chip);
+>  		}
 
-This file seems to be the "does the submitter look at the patch they are
-sending" litmus test.
+Please look at the code blocks you are changing and
+if you are trying to fix unbalanced else blocks, do
+all the blocks, not just one of many consecutive.
 
-Does that really do what you think it does?
+		/* reject the command if the direction indicator
+		 * is UNKNOWN
+		 */
+		if (chip->srb->sc_data_direction == DMA_BIDIRECTIONAL) {
+			dev_err(&dev->pci->dev, "UNKNOWN data direction\n");
+			chip->srb->result = DID_ERROR << 16;
+		}
 
-thanks,
+		/* reject if target != 0 or if LUN is higher than
+		 * the maximum known LUN
+		 */
+		else if (chip->srb->device->id) {
+			dev_err(&dev->pci->dev, "Bad target number (%d:%d)\n",
+				chip->srb->device->id,
+				(u8)chip->srb->device->lun);
+			chip->srb->result = DID_BAD_TARGET << 16;
+		}
 
-greg k-h
+		else if (chip->srb->device->lun > chip->max_lun) {
+			dev_err(&dev->pci->dev, "Bad LUN (%d:%d)\n",
+				chip->srb->device->id,
+				(u8)chip->srb->device->lun);
+			chip->srb->result = DID_BAD_TARGET << 16;
+		}
+
+		/* we've got a command, let's do it! */
+		else {
+			scsi_show_command(chip);
+			rtsx_invoke_transport(chip->srb, chip);
+		}
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
