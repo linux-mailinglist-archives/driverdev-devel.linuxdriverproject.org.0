@@ -1,92 +1,109 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5EA1F1B95C9
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Apr 2020 06:21:52 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0D270875BE;
-	Mon, 27 Apr 2020 04:21:50 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FwflnSEPHEfC; Mon, 27 Apr 2020 04:21:48 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AE4F187535;
-	Mon, 27 Apr 2020 04:21:46 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 907191BF97A
- for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 04:21:43 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C23D71B97D3
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Apr 2020 08:58:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8D25D8620F
- for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 04:21:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 19D14862BC;
+	Mon, 27 Apr 2020 06:49:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ldtiINFWcTfr; Mon, 27 Apr 2020 06:49:53 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD249862A0;
+	Mon, 27 Apr 2020 06:49:52 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B1F2C1BF3DA
+ for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 06:49:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id ACA4A87A6E
+ for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 06:49:50 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jMkKjIONp235 for <devel@linuxdriverproject.org>;
- Mon, 27 Apr 2020 04:21:43 +0000 (UTC)
-X-Greylist: delayed 00:08:23 by SQLgrey-1.7.6
-Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com
- [66.111.4.28])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D67BA85EF9
- for <devel@driverdev.osuosl.org>; Mon, 27 Apr 2020 04:21:42 +0000 (UTC)
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailout.nyi.internal (Postfix) with ESMTP id 1D0F85C00DE;
- Mon, 27 Apr 2020 00:15:18 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Mon, 27 Apr 2020 00:15:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rylan.coffee; h=
- date:from:to:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=b2k2hy0obFtFe40lOY3WleQMvx/
- DeMs6uYX07xiuYUM=; b=llX/86K09l8ElFJedOdbRBX28xXwWgVXDiSP1UmlzEc
- 0syw5duUk8wRFEenqJyGIEzj3uejgA/RAO0ihDyctwuBRKt4En+wVRZLcxe4Bb9O
- eJeL8PqhhR2XcPF86CsVkKqVnTZ4FIT68rPZx14qmHE2wgJx8CDiUZzFuO5BieX0
- pNtoIz5K12kEQQ5yK0CdgtK65RPRZLToydcdVErJ25xkPJ3ZYsmqmaU7adsJp8Jc
- CBzvIGiyWfj2dDQJ7f5PvXY0opTznBPMrlRwul81cEqdtRvQUvGdJP7NVbzh2nEv
- HHXiGC7k4oHPNYZGfEhTLBi7utfgiAAol2Vkj4w2new==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=b2k2hy
- 0obFtFe40lOY3WleQMvx/DeMs6uYX07xiuYUM=; b=AlKMLq1bLc892cBt1Q1KmH
- 64s5VqdC0fR2BCskqdMmeTDsrFAJUvB19qD9+rdCGLIHrPTy+b2mqyieQPz3vl6Y
- QXMVd86z3xEPE21Vm3oX2GuGIYQPBbSGeu4GbfBLhGS5maEihFTX4UdNu7jpQI8w
- WSTlDD9g4gS306oNBHLDdytTNh5cqgKlWwsDR35pkpV5v0tW56qjDkWJiUiF8hnp
- YIBn1zxhySKqwJWQIiz5XctteeJO+/4HskGAHixqchPRIqbbvGNrUkCldujXUHR2
- qNmdfSSUGCbgI32etLuy8ZTrar6ewFShjd11rrTrtn9rBhqzZaoJAH0NzSFbx0rA
- ==
-X-ME-Sender: <xms:VVymXh84y6tCANY9_Y_ncc6r5-QCGhwGOfqqJ9RNkpt9TLq4Qon5Lw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedrheekgdekvdcutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggujgesthdtredttddtjeenucfhrhhomheptfihlhgrnhcu
- ffhmvghllhhouceomhgrihhlsehrhihlrghnrdgtohhffhgvvgeqnecukfhppedutdekrd
- egledrudehkedrkeegnecuvehluhhsthgvrhfuihiivgepvdenucfrrghrrghmpehmrghi
- lhhfrhhomhepmhgrihhlsehrhihlrghnrdgtohhffhgvvg
-X-ME-Proxy: <xmx:VVymXuod60fD-NHqfvXPabNrd-OqBDq8iulf3jv79mvzYPhlRNje-Q>
- <xmx:VVymXsVmbP3nIDuarlYiRlGuLe4QB4pgdeJx_Uf4Yrn2bSbVJM5vsg>
- <xmx:VVymXpJyts3RNPEbSi-swCQfx_v0abltrYHVqGZNlNXlU22Cdr8ZxQ>
- <xmx:VlymXr1ioOfPPgoUySYicbyyax3FGEoCfJSXL7qPQIu033VdiQ5uiA>
-Received: from athena (pool-108-49-158-84.bstnma.fios.verizon.net
- [108.49.158.84])
- by mail.messagingengine.com (Postfix) with ESMTPA id A9D47328005D;
- Mon, 27 Apr 2020 00:15:17 -0400 (EDT)
-Date: Mon, 27 Apr 2020 00:15:18 -0400
-From: Rylan Dmello <mail@rylan.coffee>
-To: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- netdev@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Benjamin Poirier <bpoirier@suse.com>,
- Jiri Pirko <jpirko@redhat.com>
-Subject: [PATCH 3/3] staging: qlge: Remove print statements for lbq_clean_idx
- and lbq_free_cnt
-Message-ID: <aa7e0197f4e34cec0855124e45696e33dd9527e5.1587959245.git.mail@rylan.coffee>
-References: <cover.1587959245.git.mail@rylan.coffee>
-MIME-Version: 1.0
+ with ESMTP id g4NPPVfMC3oW for <devel@linuxdriverproject.org>;
+ Mon, 27 Apr 2020 06:49:49 +0000 (UTC)
+X-Greylist: delayed 00:17:18 by SQLgrey-1.7.6
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2139.outbound.protection.outlook.com [40.107.93.139])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BBA8686B6F
+ for <devel@driverdev.osuosl.org>; Mon, 27 Apr 2020 06:49:49 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=R3f1TqztJ7qdzvktdu8ecqEWQTkbk2lJJ77/CwxHCZX6t7M6PGNutfUwTTDSVoUB4gFTzMaPh+P+ilek9OQQYfTVQQwJlMnCuHvS1jHyMB8NUHqCX4Ix1ujGtfsoMdC68N/pRJ/czw8txSJYIea7ckVWarE5XBjOsKDceYFKDkpKVFwwV0z2KAMZFntGeesIsbi0LEFirk9hMhvJXj9jmrdG7O7f8jB8PjcW0oSJUMPUbVf4JUQ0KeqBkru8iGOno5UKoVheCrmXCVq2fzH0z0WvwfUSx3ogEaASvT0JU9KI4qshX0z1G1YTaCwFs2+4wy6mCEjN/LdSEDShKY8wYA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=L1vEZx+ii7oiAmIQAPtzDrPHycucDeLrHLIwYEbM2PM=;
+ b=b62GeAZN9IOLtxkj64uVUExxQbUJ5sI6BmT9XtM0Su2h6ZWIkCyN8HwvIHyrUvyRob2ZVEDgg5rEiIx3XvDJz3B2JQFDDyEP0L/lVauwFTVHj4ejeRtZCkytQ5QpSXaIbcS23JL+igkdZd1+L2qVpHstwP8HKCjtA/Y71YuUR6Jk+7iO9TcaOIJYEaSQFMVFVzhRC+GxEzYsdpD2CKnstZvAyUWHrtj5qhGCKkcKY/XLwQdVxWVFUwdgl7FmwXi16AN/cSTAN/JsR24ULozcx7jbI+J2UACwymbwXzU4WlRJBeBfODW0r4MokuhcVTLcGzAAty06hPQ2JS/IC6zVhA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=L1vEZx+ii7oiAmIQAPtzDrPHycucDeLrHLIwYEbM2PM=;
+ b=XrY2LCS6GfA/L1T5ZnsV4z5y9krDBoQe0qRkifPycopfTUYIRGiHKvXorCgs8QovP7uYRbmPYRsy73lBsPfL7s9g7w6YNxCliNUAquHF09lQXceA8clWQhrBQPfvfUK47b9U0v17Q77PGqqWN4GNuLFycrHID1oMKP9rWOwXsBk=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=xji@analogixsemi.com; 
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BY5PR04MB6518.namprd04.prod.outlook.com (2603:10b6:a03:1d4::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.22; Mon, 27 Apr
+ 2020 06:16:58 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::4517:bcc8:a3bd:407f]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::4517:bcc8:a3bd:407f%6]) with mapi id 15.20.2937.023; Mon, 27 Apr 2020
+ 06:16:58 +0000
+Date: Mon, 27 Apr 2020 14:16:49 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: devel@driverdev.osuosl.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andrzej Hajda <a.hajda@samsung.com>, Nicolas Boichat <drinkcat@google.com>
+Subject: [PATCH v8 0/2] Add initial support for slimport anx7625
+Message-ID: <cover.1587880280.git.xji@analogixsemi.com>
 Content-Disposition: inline
-In-Reply-To: <cover.1587959245.git.mail@rylan.coffee>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-ClientProxiedBy: HK0PR01CA0068.apcprd01.prod.exchangelabs.com
+ (2603:1096:203:a6::32) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from xin-VirtualBox (114.247.245.254) by
+ HK0PR01CA0068.apcprd01.prod.exchangelabs.com (2603:1096:203:a6::32) with
+ Microsoft SMTP Server (version=TLS1_0,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id 15.20.2937.13 via Frontend
+ Transport; Mon, 27 Apr 2020 06:16:57 +0000
+X-Originating-IP: [114.247.245.254]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 2d9987d7-da09-4710-1d6c-08d7ea7296e2
+X-MS-TrafficTypeDiagnostic: BY5PR04MB6518:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BY5PR04MB65181628BA1065A5C29816F1C7AF0@BY5PR04MB6518.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Forefront-PRVS: 0386B406AA
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(366004)(376002)(136003)(346002)(39840400004)(396003)(6486002)(81156014)(8936002)(5660300002)(36756003)(8676002)(26005)(2906002)(6496006)(52116002)(110136005)(54906003)(66476007)(66556008)(66946007)(956004)(2616005)(7416002)(6666004)(4326008)(186003)(16526019)(478600001)(316002)(86362001)(107886003);
+ DIR:OUT; SFP:1102; 
+Received-SPF: None (protection.outlook.com: analogixsemi.com does not
+ designate permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 6r37cKsqOBSADQm3oRKxMO4TFzmoaBSy3HIJMItwLBiLYRiravaJuWsH3lBoj+kL+9pAEZw9P/btBs1ZT73AFD18L8NZfhQktv6//V8cg+6DE6IsoEwm1Q2pQ3H/MH3hPpheU+Pe0CIUE51ERaaeel9v+cGWgCTS0LpfpHd0Q+vJ/QOctbZA4zXoj9DqOyDhl6rwy/YXDKY9OvOdyn3Fj2Axz2t8kaqJJOiKmW/A2nwfMXdjsll401tDXGUA6gBRLJSty54ZPdglXXdLesocGwzIb8WHAmC41pFsY9DF/64qhDo2JNOS0wGJIWnp2WRO3ryu83D7J8keqORFrBoTbOBYcKbJV3Y9BV+Xk7JxLpD81FNHDW7UKgx99vlXPsfSQlvJd9cQiVoMH6XWJn3APXxtnQhp3HUTpLcN03IkZ72cA3qhbl5MDlxMb3u/9XAD
+X-MS-Exchange-AntiSpam-MessageData: okjFoQJuHGc3/j0K6wILkYRH3rpIwO7NtmGqjWPZxQ5J5AA4Al2MTtUuU1Eiz8rWpFUxdQqtv+tNbZsNddR2yZHWDpyQN9hhn1ZbeEix8pthb7WvzRcgtEsfzbzmEBDTNO0WOgkpQOAwm+FIxuCKppjITEg/rafoEFa+vKkxm3GSkfZ/EAmXygdjy3zVMh5CmznymFT+nOGaIMWZZ/0xZ1s1NxPO2O7PHTHAe9mPFtTmDhHP0c5Eh4G5WYMiWp7+PXkX+GPiCKCmWapSEHTeeGHg5LTCLbmTFNi/m6w/rAtb8UolMQbURIbBL3wbe230hHGyu9Ee9bpYpwxUhLruVxWMPtZAMIqfSZiFD+z8TlyY+D7eANbZ3To2vT+7+UmnPg7nd5nL7BZ4FPpy0WrGDwhyfmUsjJRHucr6RhOnv7W4Ty1bQsP+KDDaJc8v8HBAiDkBeui5nzzEJqpWT04DTA2HGBU9Ey17rqXiT50DWuCblpCnL4koPU6cq2vPkQZh76LFoWlIxwIEkB2Sf73cOLp3P5T6JCiL6ymttAsUvxGH8deF8dcjGGY6iSdzDbArnB6wfMrieDdgZBbYRTyFXXc9DQi2oo0PFlRvbTEoC6r4gIJZtBe7hzz3r+BbtCKFD1U/6RpLie0u5AJiyLP4B4NcLT+KOHuPkvMz88nyF7bHHrLbl4Xj+14V9HOhbYaOsCBIR3GJhuzdeNETm98MUG20o76ZgnDhfiFEQDSWOieg2YjXxoWodrCx+Mku5m20MPhEwzCO5DMiZjTdtyPAy9Mm12yEOCSM3Q2apkJ5tAb01bbw+08JIfIQ3EhCKQD/
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2d9987d7-da09-4710-1d6c-08d7ea7296e2
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2020 06:16:57.8391 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: C1P2Vfr6OvtDR/Im5DrRd9+iY4glaLTb2lhPlh03BXjJTrhSl6dLOLP5y9ZA4xN8ExPT/PdU1mdkhvNaHMF3VQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6518
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,41 +116,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
+ Nicolas Boichat <drinkcat@chromium.org>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Sheng Pan <span@analogixsemi.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove debug print statements referring to non-existent fields
-'lbq_clean_idx' and 'lbq_free_cnt' in the 'rx_ring' struct, which causes
-a compilation failure when QL_DEV_DUMP is set.
+Hi all,
 
-These fields were initially removed as a part of commit aec626d2092f
-("staging: qlge: Update buffer queue prod index despite oom") in 2019.
+The following series add support for the Slimport ANX7625 transmitter, a
+ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
 
-Their replacement fields ('next_to_use' and 'next_to_clean') are already
-being printed, so this patch does not add new debug statements for them.
+This is the v8 version, any mistakes, please let me know, I will fix it in
+the next series. This series fix several coding format and description.
 
-Signed-off-by: Rylan Dmello <mail@rylan.coffee>
----
- drivers/staging/qlge/qlge_dbg.c | 2 --
- 1 file changed, 2 deletions(-)
+Thanks,
+Xin
 
-diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
-index bf157baace54..058889687907 100644
---- a/drivers/staging/qlge/qlge_dbg.c
-+++ b/drivers/staging/qlge/qlge_dbg.c
-@@ -1757,8 +1757,6 @@ void ql_dump_rx_ring(struct rx_ring *rx_ring)
- 	       rx_ring->lbq.prod_idx_db_reg);
- 	pr_err("rx_ring->lbq.next_to_use = %d\n", rx_ring->lbq.next_to_use);
- 	pr_err("rx_ring->lbq.next_to_clean = %d\n", rx_ring->lbq.next_to_clean);
--	pr_err("rx_ring->lbq_clean_idx = %d\n", rx_ring->lbq_clean_idx);
--	pr_err("rx_ring->lbq_free_cnt = %d\n", rx_ring->lbq_free_cnt);
- 
- 	pr_err("rx_ring->sbq.base = %p\n", rx_ring->sbq.base);
- 	pr_err("rx_ring->sbq.base_dma = %llx\n",
+
+
+Xin Ji (2):
+  dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter binding
+  drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to DP bridge driver
+
+ .../bindings/display/bridge/anx7625.yaml           |   91 +
+ drivers/gpu/drm/bridge/Makefile                    |    2 +-
+ drivers/gpu/drm/bridge/analogix/Kconfig            |    6 +
+ drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
+ drivers/gpu/drm/bridge/analogix/anx7625.c          | 2158 ++++++++++++++++++++
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |  410 ++++
+ 6 files changed, 2667 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.yaml
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
+
 -- 
-2.26.2
+2.7.4
 
 _______________________________________________
 devel mailing list
