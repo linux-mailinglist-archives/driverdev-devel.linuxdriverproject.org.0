@@ -2,108 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FD7F1BA507
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Apr 2020 15:41:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FC1D1BA568
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Apr 2020 15:52:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B242587DB0;
-	Mon, 27 Apr 2020 13:41:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D925387D6C;
+	Mon, 27 Apr 2020 13:52:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8cp--b5Ve2gB; Mon, 27 Apr 2020 13:41:53 +0000 (UTC)
+	with ESMTP id 7249BlRr5r74; Mon, 27 Apr 2020 13:52:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1BAD087D48;
-	Mon, 27 Apr 2020 13:41:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4AC2387B7D;
+	Mon, 27 Apr 2020 13:52:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7032B1BF97D
- for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 13:41:51 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 52F0A1BF38C
+ for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 13:52:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6CF0F866DD
- for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 13:41:51 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4FB8C85C95
+ for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 13:52:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w+2WTzBSThAt for <devel@linuxdriverproject.org>;
- Mon, 27 Apr 2020 13:41:50 +0000 (UTC)
+ with ESMTP id l6DC1a9gTmX3 for <devel@linuxdriverproject.org>;
+ Mon, 27 Apr 2020 13:52:28 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2055.outbound.protection.outlook.com [40.107.244.55])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 06B9D8670F
- for <devel@driverdev.osuosl.org>; Mon, 27 Apr 2020 13:41:49 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hElmyXNazKewLsrWD5OXIqxVSO/ziDUkS+JDpRolLR+y0LbOWklcqH/f98CooshHtHygJ4JNR9ajOLjGIi5ouExYYSRzJFof/aMqND8dnCGsAGMno+o+CwA3NG2TBmCDjANovDxuiAZeUp/uxjdZaPG/kUXf61sqnAkovS3bPMpe6JS1mpizEr9WpYW4XKd7DVg2H8JErQ2jvn8jDqG+cXdIo4qP4W2JA1LDhhCco5VZ/8d+8Dfq4DijqVWo3OsHAZuRrH07HIQfx8OLNiHYgD2vSh8UiltKqbgTTXO7QLa7p7hXvmXTiM6mhlc0mBdoi0/2fJ5vgf5oHpOeuS4iqA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oywlY9bZiBzuqdYxVPOHJa4gwfeS6Tzsat0A43dBjSY=;
- b=dhXmDQ59nRw7UbSiYrexENrpHVGGsPle4M8mDRcYBnlRSkPH/PmpmNJv/m3hSYPXJsVZd/s+ME6ZF0BiuYpsKNCeG3JjmXWXZjduHybkh/Qay5Qu+zrWec0mLdbprP2y3qKAsGytjj9bl8lGKBGLbTpAecb7381/SZdhFMB1s6uqThvhwBUDR8mkd6BOxUOKYVNUugjWhRFTmykAIKNj9rpqLRYtCgMmfT2u+Pyujf1jtigOyR1IG/PPFE1MNBkAn1Q0KCycqjI9lIYqNIPcjZoVvJXc/Y9Ow86tFrS1xtT1MO0OI6vugDUSJmaJUROlnWUbKuoIZFSoHv6VNdxWIw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oywlY9bZiBzuqdYxVPOHJa4gwfeS6Tzsat0A43dBjSY=;
- b=A/kGiUFZACL9L7uMGeo4Vn59BHXiTym89dQNYgI4hTkJrxxp0kqeEQ8HRYrqoQ6ioMFQ6GLXOWgRkzlLA4A5jZX2e4sLsf1euuEEUJVbl5m8c8/6LFn1wnoHqQ0F1SRLqISF3zJSVdVl5v2GYIR6MxvZvs3uFPjm0W8N1ZW83/o=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-Received: from MWHPR11MB1775.namprd11.prod.outlook.com (2603:10b6:300:10e::14)
- by MWHPR11MB1424.namprd11.prod.outlook.com (2603:10b6:300:26::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.22; Mon, 27 Apr
- 2020 13:41:48 +0000
-Received: from MWHPR11MB1775.namprd11.prod.outlook.com
- ([fe80::81d5:b62b:3770:ffbe]) by MWHPR11MB1775.namprd11.prod.outlook.com
- ([fe80::81d5:b62b:3770:ffbe%10]) with mapi id 15.20.2937.023; Mon, 27 Apr
- 2020 13:41:48 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: devel@driverdev.osuosl.org,
-	linux-wireless@vger.kernel.org
-Subject: [PATCH 17/17] staging: wfx: update list of errors
-Date: Mon, 27 Apr 2020 15:40:31 +0200
-Message-Id: <20200427134031.323403-18-Jerome.Pouiller@silabs.com>
-X-Mailer: git-send-email 2.26.1
-In-Reply-To: <20200427134031.323403-1-Jerome.Pouiller@silabs.com>
-References: <20200427134031.323403-1-Jerome.Pouiller@silabs.com>
-X-ClientProxiedBy: PR0P264CA0232.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:1e::28) To MWHPR11MB1775.namprd11.prod.outlook.com
- (2603:10b6:300:10e::14)
-MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.home (2a01:e35:2435:66a0:544b:f17b:7ae8:fb7) by
- PR0P264CA0232.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:1e::28) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2937.13 via Frontend Transport; Mon, 27 Apr 2020 13:41:45 +0000
-X-Mailer: git-send-email 2.26.1
-X-Originating-IP: [2a01:e35:2435:66a0:544b:f17b:7ae8:fb7]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 79757a0a-b4ac-47ff-60ba-08d7eab0bb77
-X-MS-TrafficTypeDiagnostic: MWHPR11MB1424:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR11MB1424EF2E5636DA6C7FF54C1393AF0@MWHPR11MB1424.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:3968;
-X-Forefront-PRVS: 0386B406AA
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR11MB1775.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(136003)(39850400004)(376002)(346002)(396003)(366004)(8886007)(66476007)(66556008)(4326008)(81156014)(86362001)(8936002)(15650500001)(6486002)(52116002)(6666004)(6506007)(5660300002)(16526019)(6512007)(1076003)(478600001)(8676002)(36756003)(186003)(2616005)(54906003)(107886003)(66574012)(2906002)(316002)(66946007);
- DIR:OUT; SFP:1101; 
-Received-SPF: None (protection.outlook.com: silabs.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: rNlXHZlcZeju6QSx0ra3m3uoRLTRt1AQZCWMp9RvIiwud6hqN8TLCblknZSSQ0yjR4ZmcztM9Ok+uvvKrsxMoq3c46SQAtfw08R9LRpRg7esUAaynMsGsNM1Am6cLn8sOLgaN7CUlLbwb0TgF9ci+0fTuuBTHNiQ2Iu+gpC6FrjPbxEiYRghuKqFoEdOLxLcrZHlhqGmKQ42c3VADh7XQGuKom86d+/4AH8GknG5yjNZMowqvKUFmJc62z+/eLPVsY0rG6DN5fNUP9yyCdq7gnJTc1oQW/cJLIfekC5z0qDcJzJ8ub4c8LnKbY2shENBk9gwHNdgQIyfZcUtwB6HUfFCzMFVdiAonggOlkDocw51DZmnK9Ua4d4D/0RPwX+z0/n0wXQ47Q0bLb+xN74vfXMmmLpd1WSVk1gtqQbEnlwaT0WCU7SA640kRwKSdKjr
-X-MS-Exchange-AntiSpam-MessageData: k9Xum+BeU4wB/fIkmZ5bWPh5Ex5f72sFP5L/4CsUw8bIqtn78ZBhQkK9mjLMC6DCdPATfCAAsxGOOc6SHMlMO8S/KFqAyiNwuqdWfKfWSFAPO7ZTkxrG6ZZNt6EDFw9bkkxzpLr0I7peAswhxJWjojIynAFGgCWUVR/wCTmYSde8X0WlXVDMfGstwI9skBDBrw4XT5MlzarypKAHTolms3aVQoqiKKAIPPQf5444U7uBe5auan4yq9SwH+rlSQBdJpprxTIyhWQlSOuMipJ8+pOWFZHB2XbOjdk1bEUpYR8YT0sg0sRMDTgHusTYpqIZU+qjpO2yOxwCKc62UBe2GRcIUSalaayvWTwxMzjOXieOSMc+9Qx0KKVD7QdnKSr3FHlZXUI2Q8n7NsJq564x8b+Xlnl1btvMOMCITfNSCVaBcqcAsOGvQQ6WDsUtSYkKRD1scJjKfef5E0h6ZbzaZGwL14WY3Wpcc0gcdlmFWNGTMqXN4g4kervwOFZyX+1bkI/57Kmz7nwsmrI6Qieeznrj/njQiJHBBf0I3mXpqlO3j9EKm940TcQo5H8jbFuEQ42wjDpzL+TNQ8Mm5kgS8ZJN4qs9/59Ha6expHkz89byNyvd/FaC+f6XM6xs+C1bheJyjp4eEvUIPKdF+A3ISszn+fXpABedvqaSMGIZnzbtpPvhy/3hA9sCvFAePoLbkoxpBj7VhxQXDvb+lhiIR95HwTxwIdYv3yKAjJroLugqut1QR2SrvRglgxWzDmqvSxacUU8FUIVDYmA+CSWKGdU2E0PRvzzJCkSRCe41v1FCxx2aLgJa0kViGezgciWv6vOuDnwgLB96rLwYVJC4je08n07fuSJ5+Fr3GtlpeIQ=
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 79757a0a-b4ac-47ff-60ba-08d7eab0bb77
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2020 13:41:47.8810 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jFX+ANsKeszk4+TxuKo9nC1OY1ZEvZx88h7gYEUlRphstWrk8iufFvqipx4u4CMqgwzWidnKpvMkYfASiZnz8Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1424
+Received: from re-prd-fep-047.btinternet.com (mailomta18-re.btinternet.com
+ [213.120.69.111])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9CA2A8589C
+ for <devel@driverdev.osuosl.org>; Mon, 27 Apr 2020 13:52:27 +0000 (UTC)
+Received: from re-prd-rgout-004.btmx-prd.synchronoss.net ([10.2.54.7])
+ by re-prd-fep-047.btinternet.com with ESMTP id
+ <20200427135225.OJLA11726.re-prd-fep-047.btinternet.com@re-prd-rgout-004.btmx-prd.synchronoss.net>;
+ Mon, 27 Apr 2020 14:52:25 +0100
+Authentication-Results: btinternet.com;
+ auth=pass (LOGIN) smtp.auth=j.oldman998@btinternet.com
+X-Originating-IP: [31.51.225.56]
+X-OWM-Source-IP: 31.51.225.56 (GB)
+X-OWM-Env-Sender: j.oldman998@btinternet.com
+X-VadeSecure-score: verdict=clean score=0/300, class=clean
+X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduhedrheelgdeijecutefuodetggdotefrodftvfcurfhrohhfihhlvgemuceutffkvffkuffjvffgnffgvefqofdpqfgfvfenuceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofestddtredtredttdenucfhrhhomheplfhohhhnucfqlhgumhgrnhcuoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqnecukfhppeefuddrhedurddvvdehrdehieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhephhgvlhhopehhvghnrhihrdhhohhmvgdpihhnvghtpeefuddrhedurddvvdehrdehiedpmhgrihhlfhhrohhmpeeojhhohhhnrdholhgumhgrnhesphholhgvhhhilhhlrdgtohdruhhkqedprhgtphhtthhopeeouggvvhgvlhesughrihhvvghruggvvhdrohhsuhhoshhlrdhorhhgqedprhgtphhtthhopeeoghhrvghgkhhhsehlihhnuhigfhhouhhnuggrthhiohhnrdhorhhgqedprhgtphhtthhopeeohhhslhgvshhtvghrleeisehgmhgrihhlrdgtohhmqedprhgtphhtthhopeeojhhohhhnrdholhgumhgrnhesphholhgvhhhilhhlrdgtohdruhhkqedprhgtphhtthhopeeolhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgqe
+X-RazorGate-Vade-Verdict: clean 0
+X-RazorGate-Vade-Classification: clean
+Received: from henry.home (31.51.225.56) by
+ re-prd-rgout-004.btmx-prd.synchronoss.net (5.8.340) (authenticated as
+ j.oldman998@btinternet.com)
+ id 5E3A181A0D612935; Mon, 27 Apr 2020 14:52:25 +0100
+From: John Oldman <john.oldman@polehill.co.uk>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 1/2] drivers: staging: rts5208: rtsx.c fix Unbalanced braces
+ around else statement issue
+Date: Mon, 27 Apr 2020 14:52:11 +0100
+Message-Id: <20200427135212.26285-1-john.oldman@polehill.co.uk>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,128 +68,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, John Oldman <john.oldman@polehill.co.uk>,
+ hslester96@gmail.com, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKVGhl
-IGRldmljZSByYWlzZXMgZXJyb3IgaW5kaWNhdGlvbnMgd2hlbiBpdCB0aGlua3MgdGhlcmUgaXMg
-YSBidWcgaW4gdGhlCmRyaXZlciBhbmQgaXQgY2FuJ3QgcmVjb3ZlciBpdCAod2hpbGUgaXQgcmFp
-c2VzIGV4Y2VwdGlvbiB3aGVuIGEgYnVnIGlzCmRldGVjdGVkIGluIHRoZSBkZXZpY2UpLgoKVGhl
-IGN1cnJlbnQgbGlzdCBvZiBvZiBlcnJvcnMgd2FzIGEgYml0IGRhdGVkLgoKVGhpcyBwYXRjaCBj
-bGVhbnMgdXAgdGhlIGxpc3Qgb2YgZXJyb3JzIGFuZCB0aGUgYXNzb2NpYXRlZCBtZXNzYWdlLiBJ
-dAppcyBhbHNvIHRoZSByaWdodCB0aW1lIHRvIGNsZWFuIHVwIHRoZSB3YXkgdGhlIGVycm9yIGlu
-ZGljYXRpb25zIGFyZQpoYW5kbGVkLiBSZXBsYWNlIHRoZSBzd2l0Y2guLmNhc2Ugd2l0aCBhIGNs
-ZWFuIGxvb3Agb3ZlciBhbiBhcnJheS4KClNpZ25lZC1vZmYtYnk6IErDqXLDtG1lIFBvdWlsbGVy
-IDxqZXJvbWUucG91aWxsZXJAc2lsYWJzLmNvbT4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2hp
-Zl9hcGlfZ2VuZXJhbC5oIHwgIDI4ICsrKystLS0KIGRyaXZlcnMvc3RhZ2luZy93ZngvaGlmX3J4
-LmMgICAgICAgICAgfCAxMTQgKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0KIDIgZmlsZXMgY2hh
-bmdlZCwgODYgaW5zZXJ0aW9ucygrKSwgNTYgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9zdGFnaW5nL3dmeC9oaWZfYXBpX2dlbmVyYWwuaCBiL2RyaXZlcnMvc3RhZ2luZy93Zngv
-aGlmX2FwaV9nZW5lcmFsLmgKaW5kZXggMWMwMTBmMTVjNmQwLi5mMDEzNWQyNzEyMGMgMTAwNjQ0
-Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy93ZngvaGlmX2FwaV9nZW5lcmFsLmgKKysrIGIvZHJpdmVy
-cy9zdGFnaW5nL3dmeC9oaWZfYXBpX2dlbmVyYWwuaApAQCAtMjI0LDE3ICsyMjQsMjMgQEAgc3Ry
-dWN0IGhpZl9pbmRfZ2VuZXJpYyB7CiB9IF9fcGFja2VkOwogCiBlbnVtIGhpZl9lcnJvciB7Ci0J
-SElGX0VSUk9SX0ZJUk1XQVJFX1JPTExCQUNLICAgICAgID0gMHgwLAotCUhJRl9FUlJPUl9GSVJN
-V0FSRV9ERUJVR19FTkFCTEVEICA9IDB4MSwKLQlISUZfRVJST1JfT1VUREFURURfU0VTU0lPTl9L
-RVkgICAgPSAweDIsCi0JSElGX0VSUk9SX0lOVkFMSURfU0VTU0lPTl9LRVkgICAgID0gMHgzLAot
-CUhJRl9FUlJPUl9PT1JfVk9MVEFHRSAgICAgICAgICAgICA9IDB4NCwKLQlISUZfRVJST1JfUERT
-X1ZFUlNJT04gICAgICAgICAgICAgPSAweDUsCi0JSElGX0VSUk9SX09PUl9URU1QRVJBVFVSRSAg
-ICAgICAgID0gMHg2LAotCUhJRl9FUlJPUl9SRVFfRFVSSU5HX0tFWV9FWENIQU5HRSA9IDB4NywK
-LQlISUZfRVJST1JfTVVMVElfVFhfQ05GX1NFQ1VSRUxJTksgPSAweDgsCi0JSElGX0VSUk9SX1NF
-Q1VSRUxJTktfT1ZFUkZMT1cgICAgID0gMHg5LAotCUhJRl9FUlJPUl9TRUNVUkVMSU5LX0RFQ1JZ
-UFRJT04gICA9IDB4YQorCUhJRl9FUlJPUl9GSVJNV0FSRV9ST0xMQkFDSyAgICAgICAgICAgPSAw
-eDAwLAorCUhJRl9FUlJPUl9GSVJNV0FSRV9ERUJVR19FTkFCTEVEICAgICAgPSAweDAxLAorCUhJ
-Rl9FUlJPUl9TTEtfT1VUREFURURfU0VTU0lPTl9LRVkgICAgPSAweDAyLAorCUhJRl9FUlJPUl9T
-TEtfU0VTU0lPTl9LRVkgICAgICAgICAgICAgPSAweDAzLAorCUhJRl9FUlJPUl9PT1JfVk9MVEFH
-RSAgICAgICAgICAgICAgICAgPSAweDA0LAorCUhJRl9FUlJPUl9QRFNfUEFZTE9BRCAgICAgICAg
-ICAgICAgICAgPSAweDA1LAorCUhJRl9FUlJPUl9PT1JfVEVNUEVSQVRVUkUgICAgICAgICAgICAg
-PSAweDA2LAorCUhJRl9FUlJPUl9TTEtfUkVRX0RVUklOR19LRVlfRVhDSEFOR0UgPSAweDA3LAor
-CUhJRl9FUlJPUl9TTEtfTVVMVElfVFhfVU5TVVBQT1JURUQgICAgPSAweDA4LAorCUhJRl9FUlJP
-Ul9TTEtfT1ZFUkZMT1cgICAgICAgICAgICAgICAgPSAweDA5LAorCUhJRl9FUlJPUl9TTEtfREVD
-UllQVElPTiAgICAgICAgICAgICAgPSAweDBhLAorCUhJRl9FUlJPUl9TTEtfV1JPTkdfRU5DUllQ
-VElPTl9TVEFURSAgPSAweDBiLAorCUhJRl9FUlJPUl9ISUZfQlVTX0ZSRVFVRU5DWV9UT09fTE9X
-ICAgPSAweDBjLAorCUhJRl9FUlJPUl9ISUZfUlhfREFUQV9UT09fTEFSR0UgICAgICAgPSAweDBl
-LAorCUhJRl9FUlJPUl9ISUZfVFhfUVVFVUVfRlVMTCAgICAgICAgICAgPSAweDBkLAorCUhJRl9F
-UlJPUl9ISUZfQlVTICAgICAgICAgICAgICAgICAgICAgPSAweDBmLAorCUhJRl9FUlJPUl9QRFNf
-VEVTVEZFQVRVUkUgICAgICAgICAgICAgPSAweDEwLAogfTsKIAogc3RydWN0IGhpZl9pbmRfZXJy
-b3IgewpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfcnguYyBiL2RyaXZlcnMv
-c3RhZ2luZy93ZngvaGlmX3J4LmMKaW5kZXggNzgzZjMwMWQ1OGE4Li5iNzg2NzE0YTg3NTUgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy93ZngvaGlmX3J4LmMKKysrIGIvZHJpdmVycy9zdGFn
-aW5nL3dmeC9oaWZfcnguYwpAQCAtMjUzLDUxICsyNTMsNiBAQCBzdGF0aWMgaW50IGhpZl9zdXNw
-ZW5kX3Jlc3VtZV9pbmRpY2F0aW9uKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LAogCXJldHVybiAwOwog
-fQogCi1zdGF0aWMgaW50IGhpZl9lcnJvcl9pbmRpY2F0aW9uKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2
-LAotCQkJCWNvbnN0IHN0cnVjdCBoaWZfbXNnICpoaWYsIGNvbnN0IHZvaWQgKmJ1ZikKLXsKLQlj
-b25zdCBzdHJ1Y3QgaGlmX2luZF9lcnJvciAqYm9keSA9IGJ1ZjsKLQl1OCAqcFJvbGxiYWNrID0g
-KHU4ICopIGJvZHktPmRhdGE7Ci0JdTMyICpwU3RhdHVzID0gKHUzMiAqKSBib2R5LT5kYXRhOwot
-Ci0Jc3dpdGNoIChib2R5LT50eXBlKSB7Ci0JY2FzZSBISUZfRVJST1JfRklSTVdBUkVfUk9MTEJB
-Q0s6Ci0JCWRldl9lcnIod2Rldi0+ZGV2LAotCQkJImFzeW5jaHJvbm91cyBlcnJvcjogZmlybXdh
-cmUgcm9sbGJhY2sgZXJyb3IgJWRcbiIsCi0JCQkqcFJvbGxiYWNrKTsKLQkJYnJlYWs7Ci0JY2Fz
-ZSBISUZfRVJST1JfRklSTVdBUkVfREVCVUdfRU5BQkxFRDoKLQkJZGV2X2Vycih3ZGV2LT5kZXYs
-ICJhc3luY2hyb25vdXMgZXJyb3I6IGZpcm13YXJlIGRlYnVnIGZlYXR1cmUgZW5hYmxlZFxuIik7
-Ci0JCWJyZWFrOwotCWNhc2UgSElGX0VSUk9SX09VVERBVEVEX1NFU1NJT05fS0VZOgotCQlkZXZf
-ZXJyKHdkZXYtPmRldiwgImFzeW5jaHJvbm91cyBlcnJvcjogc2VjdXJlIGxpbmsgb3V0ZGF0ZWQg
-a2V5OiAlIy44eFxuIiwKLQkJCSpwU3RhdHVzKTsKLQkJYnJlYWs7Ci0JY2FzZSBISUZfRVJST1Jf
-SU5WQUxJRF9TRVNTSU9OX0tFWToKLQkJZGV2X2Vycih3ZGV2LT5kZXYsICJhc3luY2hyb25vdXMg
-ZXJyb3I6IGludmFsaWQgc2Vzc2lvbiBrZXlcbiIpOwotCQlicmVhazsKLQljYXNlIEhJRl9FUlJP
-Ul9PT1JfVk9MVEFHRToKLQkJZGV2X2Vycih3ZGV2LT5kZXYsICJhc3luY2hyb25vdXMgZXJyb3I6
-IG91dC1vZi1yYW5nZSBvdmVydm9sdGFnZTogJSMuOHhcbiIsCi0JCQkqcFN0YXR1cyk7Ci0JCWJy
-ZWFrOwotCWNhc2UgSElGX0VSUk9SX09PUl9URU1QRVJBVFVSRToKLQkJZGV2X2Vycih3ZGV2LT5k
-ZXYsICJhc3luY2hyb25vdXMgZXJyb3I6IG91dC1vZi1yYW5nZSB0ZW1wZXJhdHVyZTogJSMuOHhc
-biIsCi0JCQkqcFN0YXR1cyk7Ci0JCWJyZWFrOwotCWNhc2UgSElGX0VSUk9SX1BEU19WRVJTSU9O
-OgotCQlkZXZfZXJyKHdkZXYtPmRldiwKLQkJCSJhc3luY2hyb25vdXMgZXJyb3I6IHdyb25nIFBE
-UyBwYXlsb2FkIG9yIHZlcnNpb246ICUjLjh4XG4iLAotCQkJKnBTdGF0dXMpOwotCQlicmVhazsK
-LQlkZWZhdWx0OgotCQlkZXZfZXJyKHdkZXYtPmRldiwgImFzeW5jaHJvbm91cyBlcnJvcjogdW5r
-bm93biAoJWQpXG4iLAotCQkJYm9keS0+dHlwZSk7Ci0JCWJyZWFrOwotCX0KLQl3ZGV2LT5jaGlw
-X2Zyb3plbiA9IHRydWU7Ci0JcmV0dXJuIDA7Ci19Ci0KIHN0YXRpYyBpbnQgaGlmX2dlbmVyaWNf
-aW5kaWNhdGlvbihzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwKIAkJCQkgIGNvbnN0IHN0cnVjdCBoaWZf
-bXNnICpoaWYsIGNvbnN0IHZvaWQgKmJ1ZikKIHsKQEAgLTMyOCw2ICsyODMsNzUgQEAgc3RhdGlj
-IGludCBoaWZfZ2VuZXJpY19pbmRpY2F0aW9uKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LAogCX0KIH0K
-IAorc3RhdGljIGNvbnN0IHN0cnVjdCB7CisJaW50IHZhbDsKKwljb25zdCBjaGFyICpzdHI7CisJ
-Ym9vbCBoYXNfcGFyYW07Cit9IGhpZl9lcnJvcnNbXSA9IHsKKwl7IEhJRl9FUlJPUl9GSVJNV0FS
-RV9ST0xMQkFDSywKKwkJInJvbGxiYWNrIHN0YXR1cyIgfSwKKwl7IEhJRl9FUlJPUl9GSVJNV0FS
-RV9ERUJVR19FTkFCTEVELAorCQkiZGVidWcgZmVhdHVyZSBlbmFibGVkIiB9LAorCXsgSElGX0VS
-Uk9SX1BEU19QQVlMT0FELAorCQkiUERTIHZlcnNpb24gaXMgbm90IHN1cHBvcnRlZCIgfSwKKwl7
-IEhJRl9FUlJPUl9QRFNfVEVTVEZFQVRVUkUsCisJCSJQRFMgYXNrIGZvciBhbiB1bmtub3duIHRl
-c3QgbW9kZSIgfSwKKwl7IEhJRl9FUlJPUl9PT1JfVk9MVEFHRSwKKwkJIm91dC1vZi1yYW5nZSBw
-b3dlciBzdXBwbHkgdm9sdGFnZSIsIHRydWUgfSwKKwl7IEhJRl9FUlJPUl9PT1JfVEVNUEVSQVRV
-UkUsCisJCSJvdXQtb2YtcmFuZ2UgdGVtcGVyYXR1cmUiLCB0cnVlIH0sCisJeyBISUZfRVJST1Jf
-U0xLX1JFUV9EVVJJTkdfS0VZX0VYQ0hBTkdFLAorCQkic2VjdXJlIGxpbmsgZG9lcyBub3QgZXhw
-ZWN0IHJlcXVlc3QgZHVyaW5nIGtleSBleGNoYW5nZSIgfSwKKwl7IEhJRl9FUlJPUl9TTEtfU0VT
-U0lPTl9LRVksCisJCSJzZWN1cmUgbGluayBzZXNzaW9uIGtleSBpcyBpbnZhbGlkIiB9LAorCXsg
-SElGX0VSUk9SX1NMS19PVkVSRkxPVywKKwkJInNlY3VyZSBsaW5rIG92ZXJmbG93IiB9LAorCXsg
-SElGX0VSUk9SX1NMS19XUk9OR19FTkNSWVBUSU9OX1NUQVRFLAorCQkic2VjdXJlIGxpbmsgbWVz
-c2FnZXMgbGlzdCBkb2VzIG5vdCBtYXRjaCBtZXNzYWdlIGVuY3J5cHRpb24iIH0sCisJeyBISUZf
-RVJST1JfSElGX0JVU19GUkVRVUVOQ1lfVE9PX0xPVywKKwkJImJ1cyBjbG9jayBpcyB0b28gc2xv
-dyAoPDFrSHopIiB9LAorCXsgSElGX0VSUk9SX0hJRl9SWF9EQVRBX1RPT19MQVJHRSwKKwkJIkhJ
-RiBtZXNzYWdlIHRvbyBsYXJnZSIgfSwKKwkvLyBGb2xsb3dpbmcgZXJyb3JzIG9ubHkgZXhpc3Rz
-IGluIG9sZCBmaXJtd2FyZSB2ZXJzaW9uczoKKwl7IEhJRl9FUlJPUl9ISUZfVFhfUVVFVUVfRlVM
-TCwKKwkJIkhJRiBtZXNzYWdlcyBxdWV1ZSBpcyBmdWxsIiB9LAorCXsgSElGX0VSUk9SX0hJRl9C
-VVMsCisJCSJISUYgYnVzIiB9LAorCXsgSElGX0VSUk9SX1NMS19NVUxUSV9UWF9VTlNVUFBPUlRF
-RCwKKwkJInNlY3VyZSBsaW5rIGRvZXMgbm90IHN1cHBvcnQgbXVsdGktdHggY29uZmlybWF0aW9u
-cyIgfSwKKwl7IEhJRl9FUlJPUl9TTEtfT1VUREFURURfU0VTU0lPTl9LRVksCisJCSJzZWN1cmUg
-bGluayBzZXNzaW9uIGtleSBpcyBvdXRkYXRlZCIgfSwKKwl7IEhJRl9FUlJPUl9TTEtfREVDUllQ
-VElPTiwKKwkJInNlY3VyZSBsaW5rIHBhcmFtcyAobm9uY2Ugb3IgdGFnKSBtaXNtYXRjaCIgfSwK
-K307CisKK3N0YXRpYyBpbnQgaGlmX2Vycm9yX2luZGljYXRpb24oc3RydWN0IHdmeF9kZXYgKndk
-ZXYsCisJCQkJY29uc3Qgc3RydWN0IGhpZl9tc2cgKmhpZiwgY29uc3Qgdm9pZCAqYnVmKQorewor
-CWNvbnN0IHN0cnVjdCBoaWZfaW5kX2Vycm9yICpib2R5ID0gYnVmOworCWludCB0eXBlID0gbGUz
-Ml90b19jcHUoYm9keS0+dHlwZSk7CisJaW50IHBhcmFtID0gKHM4KWJvZHktPmRhdGFbMF07CisJ
-aW50IGk7CisKKwlmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShoaWZfZXJyb3JzKTsgaSsrKQor
-CQlpZiAodHlwZSA9PSBoaWZfZXJyb3JzW2ldLnZhbCkKKwkJCWJyZWFrOworCWlmIChpIDwgQVJS
-QVlfU0laRShoaWZfZXJyb3JzKSkKKwkJaWYgKGhpZl9lcnJvcnNbaV0uaGFzX3BhcmFtKQorCQkJ
-ZGV2X2Vycih3ZGV2LT5kZXYsICJhc3luY2hyb25vdXMgZXJyb3I6ICVzOiAlZFxuIiwKKwkJCQlo
-aWZfZXJyb3JzW2ldLnN0ciwgcGFyYW0pOworCQllbHNlCisJCQlkZXZfZXJyKHdkZXYtPmRldiwg
-ImFzeW5jaHJvbm91cyBlcnJvcjogJXNcbiIsCisJCQkJaGlmX2Vycm9yc1tpXS5zdHIpOworCWVs
-c2UKKwkJZGV2X2Vycih3ZGV2LT5kZXYsICJhc3luY2hyb25vdXMgZXJyb3I6IHVua25vd246ICUw
-OHhcbiIsIHR5cGUpOworCXByaW50X2hleF9kdW1wKEtFUk5fSU5GTywgImhpZjogIiwgRFVNUF9Q
-UkVGSVhfT0ZGU0VULAorCQkgICAgICAgMTYsIDEsIGhpZiwgaGlmLT5sZW4sIGZhbHNlKTsKKwl3
-ZGV2LT5jaGlwX2Zyb3plbiA9IHRydWU7CisKKwlyZXR1cm4gMDsKK307CisKIHN0YXRpYyBpbnQg
-aGlmX2V4Y2VwdGlvbl9pbmRpY2F0aW9uKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LAogCQkJCSAgICBj
-b25zdCBzdHJ1Y3QgaGlmX21zZyAqaGlmLCBjb25zdCB2b2lkICpidWYpCiB7Ci0tIAoyLjI2LjEK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1h
-aWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYu
-bGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Fix coding stype issue
+
+Signed-off-by: John Oldman <john.oldman@polehill.co.uk>
+---
+ drivers/staging/rts5208/rtsx.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
+index be0053c795b7..ca836ca2ee81 100644
+--- a/drivers/staging/rts5208/rtsx.c
++++ b/drivers/staging/rts5208/rtsx.c
+@@ -419,10 +419,8 @@ static int rtsx_control_thread(void *__dev)
+ 				chip->srb->device->id,
+ 				(u8)chip->srb->device->lun);
+ 			chip->srb->result = DID_BAD_TARGET << 16;
+-		}
+-
+-		/* we've got a command, let's do it! */
+-		else {
++		} else {
++			/* we've got a command, let's do it! */
+ 			scsi_show_command(chip);
+ 			rtsx_invoke_transport(chip->srb, chip);
+ 		}
+-- 
+2.17.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
