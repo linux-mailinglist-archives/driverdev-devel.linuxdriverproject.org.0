@@ -1,51 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C8311BAD2D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Apr 2020 20:49:41 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C12FA1B951C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Apr 2020 04:26:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 35FC287F84;
-	Mon, 27 Apr 2020 18:49:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1C82785815;
+	Mon, 27 Apr 2020 02:18:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H4PODXZexQF3; Mon, 27 Apr 2020 18:49:40 +0000 (UTC)
+	with ESMTP id 50JS3G7-dNGR; Mon, 27 Apr 2020 02:18:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B0F8F87ED9;
-	Mon, 27 Apr 2020 18:49:39 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3D9DA858D3;
+	Mon, 27 Apr 2020 02:18:10 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6DC5F1BF35B
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 27 Apr 2020 18:49:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D1C6A1BF389
+ for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 02:17:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6AAA287ED9
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 27 Apr 2020 18:49:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CE9FA85BCE
+ for <devel@linuxdriverproject.org>; Mon, 27 Apr 2020 02:17:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NO-uhUAB85j1
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 27 Apr 2020 18:49:35 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ttx-group.com (mail.ttx-group.com [182.160.106.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3F55187ED2
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 27 Apr 2020 18:49:35 +0000 (UTC)
-Received: (qmail 16049 invoked by uid 1008); 27 Apr 2020 05:05:57 +0600
-Received: from unknown (HELO ?204.10.162.134?)
- (masud.m@ttx-group.com@204.10.162.134)
- by ttx-group.com with SMTP; 27 Apr 2020 05:05:57 +0600
+ with ESMTP id hlgqO37LTE9y for <devel@linuxdriverproject.org>;
+ Mon, 27 Apr 2020 02:17:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8A510848F0
+ for <devel@driverdev.osuosl.org>; Mon, 27 Apr 2020 02:17:46 +0000 (UTC)
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 7F4CD604439C8E50E61F;
+ Mon, 27 Apr 2020 10:17:40 +0800 (CST)
+Received: from [127.0.0.1] (10.166.213.7) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Mon, 27 Apr 2020
+ 10:17:29 +0800
+Subject: Re: [PATCH] staging: rtl8723bs: remove set but not used
+ 'pregistrypriv'
+To: <gregkh@linuxfoundation.org>, <hariprasad.kelam@gmail.com>,
+ <devel@driverdev.osuosl.org>, <linux-kernel@vger.kernel.org>
+References: <20200426094334.24346-1-yanaijie@huawei.com>
+From: Jason Yan <yanaijie@huawei.com>
+Message-ID: <d141d9e7-5310-672a-9ffd-6be1b448261a@huawei.com>
+Date: Mon, 27 Apr 2020 10:17:29 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.2
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Product Inquiry
-To: driverdev-devel@linuxdriverproject.org
-From: "Mr. Okrapah Adjei" <masud.m@ttx-group.com>
-Date: Sun, 26 Apr 2020 16:03:45 -0700
-Message-Id: <20200427184937.6AAA287ED9@hemlock.osuosl.org>
+In-Reply-To: <20200426094334.24346-1-yanaijie@huawei.com>
+X-Originating-IP: [10.166.213.7]
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,26 +63,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: okrapahadjei233@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Hulk Robot <hulkci@huawei.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Sir,
-
-We got your company information through an exhaustive search.
-
-Our scope is basically to search for foreign companies to bid for contract supply on commission basis.
-
-We are interested in buying your products in a larger quantity if only you can supply and open for business.
-
-Best Regard,
-Mr. Okrapah Adjei
-CEO
-OK-Adjei Sourcing Ltd
-Accra,Ghana
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+U29ycnksIGl0IGhhcyBhbHJlYWR5IGJlZW4gZml4ZWQgYnkgWXVlSGFpYmluZy4gUGxlYXNlIGln
+bm9yZSB0aGlzLgoK5ZyoIDIwMjAvNC8yNiAxNzo0MywgSmFzb24gWWFuIOWGmemBkzoKPiBGaXgg
+dGhlIGZvbGxvd2luZyBnY2Mgd2FybmluZzoKPiAKPiBkcml2ZXJzL3N0YWdpbmcvcnRsODcyM2Jz
+L2hhbC9zZGlvX2hhbGluaXQuYzo1NDc6MjQ6IHdhcm5pbmc6IHZhcmlhYmxlCj4g4oCYcHJlZ2lz
+dHJ5cHJpduKAmSBzZXQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlXQo+
+ICAgIHN0cnVjdCByZWdpc3RyeV9wcml2ICpwcmVnaXN0cnlwcml2Owo+ICAgICAgICAgICAgICAg
+ICAgICAgICAgICBefn5+fn5+fn5+fn5+Cj4gCj4gUmVwb3J0ZWQtYnk6IEh1bGsgUm9ib3QgPGh1
+bGtjaUBodWF3ZWkuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEphc29uIFlhbiA8eWFuYWlqaWVAaHVh
+d2VpLmNvbT4KPiAtLS0KPiAgIGRyaXZlcnMvc3RhZ2luZy9ydGw4NzIzYnMvaGFsL3NkaW9faGFs
+aW5pdC5jIHwgNCAtLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgNCBkZWxldGlvbnMoLSkKPiAKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3J0bDg3MjNicy9oYWwvc2Rpb19oYWxpbml0LmMg
+Yi9kcml2ZXJzL3N0YWdpbmcvcnRsODcyM2JzL2hhbC9zZGlvX2hhbGluaXQuYwo+IGluZGV4IDc4
+NTNhZjUzMDUxZC4uZTQyZDhjMThlMWFlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9y
+dGw4NzIzYnMvaGFsL3NkaW9faGFsaW5pdC5jCj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL3J0bDg3
+MjNicy9oYWwvc2Rpb19oYWxpbml0LmMKPiBAQCAtNTQ0LDEzICs1NDQsOSBAQCBzdGF0aWMgdm9p
+ZCBfSW5pdFJldHJ5RnVuY3Rpb24oc3RydWN0IGFkYXB0ZXIgKnBhZGFwdGVyKQo+ICAgCj4gICBz
+dGF0aWMgdm9pZCBIYWxSeEFnZ3I4NzIzQlNkaW8oc3RydWN0IGFkYXB0ZXIgKnBhZGFwdGVyKQo+
+ICAgewo+IC0Jc3RydWN0IHJlZ2lzdHJ5X3ByaXYgKnByZWdpc3RyeXByaXY7Cj4gICAJdTggdmFs
+dWVETUFUaW1lb3V0Owo+ICAgCXU4IHZhbHVlRE1BUGFnZUNvdW50Owo+ICAgCj4gLQo+IC0JcHJl
+Z2lzdHJ5cHJpdiA9ICZwYWRhcHRlci0+cmVnaXN0cnlwcml2Owo+IC0KPiAgIAl2YWx1ZURNQVRp
+bWVvdXQgPSAweDA2Owo+ICAgCXZhbHVlRE1BUGFnZUNvdW50ID0gMHgwNjsKPiAgIAo+IAoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51
+eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
