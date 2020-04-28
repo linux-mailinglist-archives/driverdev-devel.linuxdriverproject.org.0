@@ -1,62 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 538441BC446
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Apr 2020 17:58:53 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E6ABF1BC60E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Apr 2020 19:04:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8229C84B88;
-	Tue, 28 Apr 2020 15:58:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 04738228D5;
+	Tue, 28 Apr 2020 17:04:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Oyiyr1mVBuS8; Tue, 28 Apr 2020 15:58:50 +0000 (UTC)
+	with ESMTP id MSTwZNL2nk1X; Tue, 28 Apr 2020 17:04:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 55D498405F;
-	Tue, 28 Apr 2020 15:58:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 315FD228BD;
+	Tue, 28 Apr 2020 17:04:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3A09D1BF2EB
- for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 15:58:48 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A38C21BF37B
+ for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 17:04:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 36E7984543
- for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 15:58:48 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 889058827C
+ for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 17:04:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x5c8p+vt3Jzg for <devel@linuxdriverproject.org>;
- Tue, 28 Apr 2020 15:58:47 +0000 (UTC)
+ with ESMTP id y-BKhEY1sdPl for <devel@linuxdriverproject.org>;
+ Tue, 28 Apr 2020 17:04:07 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AABCB8405F
- for <devel@driverdev.osuosl.org>; Tue, 28 Apr 2020 15:58:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5D19F8625C
+ for <devel@driverdev.osuosl.org>; Tue, 28 Apr 2020 17:04:07 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 08D74206C0;
- Tue, 28 Apr 2020 15:58:46 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id ACF6120730;
+ Tue, 28 Apr 2020 17:04:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588089527;
- bh=qXrJ1X738mDatImKsjVwSd8Q17d8jVla98VKaBYOuR4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=FUfYbW3GbJdy2X49J3YY7Qd2zXiDhOXFr2vX+KqhyXFF/aB6tldFv6Ygm/uDWhMzR
- zHLTBYQClEk5AnwX8f3FtfDJHzxrQePDL73NQz17IbAOAHKvormV6KCwuGJBvvb5Ok
- uSWckYHOlHmUOJ/bR/ou+63j64apAeMiwfsvJB1E=
-Date: Tue, 28 Apr 2020 17:58:45 +0200
-From: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
-To: "Stahl, Manuel" <manuel.stahl@iis-extern.fraunhofer.de>
-Subject: Re: [PATCH v4] Add new uio device for PCI with dynamic memory
- allocation
-Message-ID: <20200428155845.GA1611284@kroah.com>
-References: <1507296707.2915.14.camel@iis-extern.fraunhofer.de>
- <20200416163830.30623-1-manuel.stahl@iis-extern.fraunhofer.de>
- <20200428135443.GA1437053@kroah.com>
- <6e93bbcb4ba85b4cc143aa8e3e7254071b3c8bdb.camel@iis-extern.fraunhofer.de>
+ s=default; t=1588093447;
+ bh=+BzuoEta3GpkJhXTYu0wLZOwyAEizrEkeMqnK9YrukY=;
+ h=Date:From:To:Cc:Subject:From;
+ b=Px8EXGW46wQvZImhVdLaAEVzRsdigCFe9OPIo9u6BBPu/ji0c9Nmn9GKXDsiFrNTe
+ bgw6v7L30kMNrfoanY8ho7PFz56gIiyxHQg4W5dyrt7Mlmu45We4TAYZ4APiat7q/+
+ 5m0a5zNLlhVK4v3UMaHDJXg3EP/cvyUTlHf4KEbU=
+Date: Tue, 28 Apr 2020 19:04:05 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Rui Miguel Silva <rmfrfs@gmail.com>,
+ Steve Longerbeam <slongerbeam@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+Subject: [PATCH] staging: media: imx: no need to check return value of
+ debugfs_create functions
+Message-ID: <20200428170405.GA1649098@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6e93bbcb4ba85b4cc143aa8e3e7254071b3c8bdb.camel@iis-extern.fraunhofer.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,32 +67,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "hjk@linutronix.de" <hjk@linutronix.de>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "sojkam1@fel.cvut.cz" <sojkam1@fel.cvut.cz>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Apr 28, 2020 at 03:47:42PM +0000, Stahl, Manuel wrote:
-> > 
-> > > +		return err;
-> > > +	}
-> > > +	pci_set_master(pdev);
-> > > +
-> > > +	dev_info(&pdev->dev, "Legacy IRQ: %i", pdev->irq);
-> > 
-> > Again, remove, be quiet :)
-> 
-> Use dev_dbg() or remove completely?
+When calling debugfs functions, there is no need to ever check the
+return value.  The function can work or not, but the code logic should
+never do something different based on this.
 
-If it helps in debugging, dev_dbg() is fine to use.
+Cc: Rui Miguel Silva <rmfrfs@gmail.com>
+Cc: Steve Longerbeam <slongerbeam@gmail.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Shawn Guo <shawnguo@kernel.org>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
+Cc: Fabio Estevam <festevam@gmail.com>
+Cc: NXP Linux Team <linux-imx@nxp.com>
+Cc: linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/staging/media/imx/imx7-mipi-csis.c | 29 ++++------------------
+ 1 file changed, 5 insertions(+), 24 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/media/imx/imx7-mipi-csis.c b/drivers/staging/media/imx/imx7-mipi-csis.c
+index fbc1a924652a..d7c9e7343f1f 100644
+--- a/drivers/staging/media/imx/imx7-mipi-csis.c
++++ b/drivers/staging/media/imx/imx7-mipi-csis.c
+@@ -915,33 +915,14 @@ static int mipi_csis_dump_regs_show(struct seq_file *m, void *private)
+ }
+ DEFINE_SHOW_ATTRIBUTE(mipi_csis_dump_regs);
+ 
+-static int mipi_csis_debugfs_init(struct csi_state *state)
++static void mipi_csis_debugfs_init(struct csi_state *state)
+ {
+-	struct dentry *d;
+-
+-	if (!debugfs_initialized())
+-		return -ENODEV;
+-
+ 	state->debugfs_root = debugfs_create_dir(dev_name(state->dev), NULL);
+-	if (!state->debugfs_root)
+-		return -ENOMEM;
+-
+-	d = debugfs_create_bool("debug_enable", 0600, state->debugfs_root,
+-				&state->debug);
+-	if (!d)
+-		goto remove_debugfs;
+-
+-	d = debugfs_create_file("dump_regs", 0600, state->debugfs_root,
+-				state, &mipi_csis_dump_regs_fops);
+-	if (!d)
+-		goto remove_debugfs;
+-
+-	return 0;
+-
+-remove_debugfs:
+-	debugfs_remove_recursive(state->debugfs_root);
+ 
+-	return -ENOMEM;
++	debugfs_create_bool("debug_enable", 0600, state->debugfs_root,
++			    &state->debug);
++	debugfs_create_file("dump_regs", 0600, state->debugfs_root, state,
++			    &mipi_csis_dump_regs_fops);
+ }
+ 
+ static void mipi_csis_debugfs_exit(struct csi_state *state)
+-- 
+2.26.2
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
