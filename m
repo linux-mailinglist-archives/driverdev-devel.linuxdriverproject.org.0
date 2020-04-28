@@ -1,70 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60B721BB7F9
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Apr 2020 09:47:02 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6AD51BB898
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Apr 2020 10:14:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2EBAC86D08;
-	Tue, 28 Apr 2020 07:46:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9AABE8623B;
+	Tue, 28 Apr 2020 08:14:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EU-FPTyZlK1g; Tue, 28 Apr 2020 07:46:58 +0000 (UTC)
+	with ESMTP id n0S7XCIZ14JA; Tue, 28 Apr 2020 08:14:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DA78C8539F;
-	Tue, 28 Apr 2020 07:46:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 51C2086241;
+	Tue, 28 Apr 2020 08:14:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 008891BF28D
- for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 07:46:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 249451BF312
+ for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 08:14:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F108D83970
- for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 07:46:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 213B6864C1
+ for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 08:14:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5eMLWsQ7oebj for <devel@linuxdriverproject.org>;
- Tue, 28 Apr 2020 07:46:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 70AD9834E6
- for <devel@driverdev.osuosl.org>; Tue, 28 Apr 2020 07:46:55 +0000 (UTC)
-Received: from pali.im (pali.im [31.31.79.79])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 17626206A5;
- Tue, 28 Apr 2020 07:46:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588060015;
- bh=Yu1yHSEbM7UvnreW4VbWBBp6FDeif1jXQ1bMBO+35AI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=g2J9L/Z+US9yUFhggxbwGgaoN7BfTgOzNGAVSF1W5yHTLAAUrfEJlrEUrQcnmb8EF
- RLN+hTR6fYKIh+o67x++dRLLYAJWkrIpdE/m2b58mO8xyXA+0PhsI+A1akVDTLXjZ6
- 7kDJXwmhsUojV8JTeFGQZMzmIpADrf4RwY2RL1xw=
-Received: by pali.im (Postfix)
- id 2E053735; Tue, 28 Apr 2020 09:46:53 +0200 (CEST)
-Date: Tue, 28 Apr 2020 09:46:53 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Sasha Levin <sashal@kernel.org>
-Subject: Re: exfat upcase table for code points above U+FFFF (Was: Re:
- [PATCH] staging: exfat: add exfat filesystem code to staging)
-Message-ID: <20200428074653.kcq6ibj6rjlrnau7@pali>
-References: <20190830075647.wvhrx4asnkrfkkwk@pali>
- <20191016140353.4hrncxa5wkx47oau@pali>
- <20191016143113.GS31224@sasha-vm>
- <20191016160349.pwghlg566hh2o7id@pali>
- <20191016203317.GU31224@sasha-vm>
- <20191017075008.2uqgdimo3hrktj3i@pali>
- <20200213000656.hx5wdofkcpg7aoyo@pali>
- <20200213211847.GA1734@sasha-vm>
- <20200421213045.skv2dvgm3xuspbl7@pali>
- <20200427154913.GR13035@sasha-vm>
+ with ESMTP id oh2UyM3nIPoJ for <devel@linuxdriverproject.org>;
+ Tue, 28 Apr 2020 08:14:15 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from sipsolutions.net (s3.sipsolutions.net [144.76.43.62])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C33AE854B3
+ for <devel@driverdev.osuosl.org>; Tue, 28 Apr 2020 08:14:15 +0000 (UTC)
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.93) (envelope-from <johannes@sipsolutions.net>)
+ id 1jTLNc-000xL6-HI; Tue, 28 Apr 2020 10:14:12 +0200
+From: Johannes Berg <johannes@sipsolutions.net>
+To: linux-wireless@vger.kernel.org
+Subject: [PATCH 1/2] staging: rtl8723bs: remove mgmt_frame_register method
+Date: Tue, 28 Apr 2020 10:14:02 +0200
+Message-Id: <20200428101400.ae19d651ec38.Ieb15844bb5ab93b3d7931d6561f42e3316ef8251@changeid>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200427154913.GR13035@sasha-vm>
-User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,46 +54,71 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Christoph Hellwig <hch@infradead.org>,
- Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Sasha Levin <alexander.levin@microsoft.com>, linux-fsdevel@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Johannes Berg <johannes.berg@intel.com>,
+ Sergey Matyukevich <geomatsi@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gTW9uZGF5IDI3IEFwcmlsIDIwMjAgMTE6NDk6MTMgU2FzaGEgTGV2aW4gd3JvdGU6Cj4gT24g
-VHVlLCBBcHIgMjEsIDIwMjAgYXQgMTE6MzA6NDVQTSArMDIwMCwgUGFsaSBSb2jDoXIgd3JvdGU6
-Cj4gPiBPbiBUaHVyc2RheSAxMyBGZWJydWFyeSAyMDIwIDE2OjE4OjQ3IFNhc2hhIExldmluIHdy
-b3RlOgo+ID4gPiBPbiBUaHUsIEZlYiAxMywgMjAyMCBhdCAwMTowNjo1NkFNICswMTAwLCBQYWxp
-IFJvaMOhciB3cm90ZToKPiA+ID4gPiBJbiByZWxlYXNlZCBleEZBVCBzcGVjaWZpY2F0aW9uIGlz
-IG5vdCB3cml0dGVuIGhvdyBhcmUgVW5pY29kZSBjb2RlCj4gPiA+ID4gcG9pbnRzIGFib3ZlIFUr
-RkZGRiByZXByZXNlbnRlZCBpbiBleEZBVCB1cGNhc2UgdGFibGUuIE5vcm1hbGx5IGluCj4gPiA+
-ID4gVVRGLTE2IGFyZSBVbmljb2RlIGNvZGUgcG9pbnRzIGFib3ZlIFUrRkZGRiByZXByZXNlbnRl
-ZCBieSBzdXJyb2dhdGUKPiA+ID4gPiBwYWlycyBidXQgY29tcHJlc3Npb24gZm9ybWF0IG9mIGV4
-RkFUIHVwY2FzZSB0YWJsZSBpcyBub3QgY2xlYXIgaG93IHRvCj4gPiA+ID4gZG8gaXQgdGhlcmUu
-Cj4gPiA+ID4KPiA+ID4gPiBBcmUgeW91IGFibGUgdG8gc2VuZCBxdWVzdGlvbiBhYm91dCB0aGlz
-IHByb2JsZW0gdG8gcmVsZXZhbnQgTVMgcGVvcGxlPwo+ID4gPiA+Cj4gPiA+ID4gTmV3IExpbnV4
-IGltcGxlbWVudGF0aW9uIG9mIGV4ZmF0IHdoaWNoIGlzIHdhaXRpbmcgb24gbWFpbGluZyBsaXN0
-IGp1c3QKPiA+ID4gPiBkbyBub3Qgc3VwcG9ydCBVbmljb2RlIGNvZGUgcG9pbnRzIGFib3ZlIFUr
-RkZGRiBpbiBleEZBVCB1cGNhc2UgdGFibGUuCj4gPiA+IAo+ID4gPiBTdXJlLCBJJ2xsIGZvcndh
-cmQgdGhpcyBxdWVzdGlvbiBvbi4gSSdsbCBzZWUgaWYgSSBjYW4gZ2V0IHNvbWVvbmUgZnJvbQo+
-ID4gPiB0aGVpciB0ZWFtIHdobyBjb3VsZCBiZSBhdmFpbGFibGUgdG8gYW5zd2VyIHF1ZXN0aW9u
-cyBzdWNoIGFzIHRoZXNlIGluCj4gPiA+IHRoZSBmdXR1cmUgLSBNaWNyb3NvZnQgaXMgaW50ZXJl
-c3RlZCBpbiBtYWludGFpbmluZyBjb21wYXRpYmxpdHkgYmV0d2Vlbgo+ID4gPiBMaW51eCBhbmQg
-V2luZG93cyBleEZBVCBpbXBsZW1lbnRhdGlvbnMuCj4gPiAKPiA+IEhlbGxvIFNhc2hhISBIYXZl
-IHlvdSBnb3QgYW55IGFuc3dlciBmcm9tIGV4ZmF0IE1TIHRlYW0gYWJvdXQgdXBjYXNlCj4gPiB0
-YWJsZSBmb3IgVW5pY29kZSBjb2RlIHBvaW50cyBhYm92ZSBVK0ZGRkY/Cj4gCj4gU29ycnkgZm9y
-IHRha2luZyBzbyBsb25nLiBUaGlzIGlzIG15IHVuZGVyc3RhbmRpbmcgZnJvbSB0aGUgV2luZG93
-cwo+IGZvbGtzOiBXaW5kb3dzIGZpbGVzeXN0ZW1zIGp1c3QgZG9uJ3Qgc3VwcG9ydCB2YXJpYWJs
-ZSBlbmNvZGluZyBsZW5ndGgsCj4gYW5kIGV4cGVjdCBVQ1MtMiBzdHJpbmdzLgoKT2ssIHNvIHNo
-b3VsZCBJIHVuZGVyc3RhbmQgeW91ciBhbnN3ZXIgYXMgZXhGQVQgdXBjYXNlIHRhYmxlIGRvZXMg
-bm90CnN1cHBvcnQgcmVwcmVzZW50aW5nIFVuaWNvZGUgY29kZSBwb2ludHMgYWJvdmUgVStGRkZG
-IGFuZCB0aGVyZWZvcmUKZXhGQVQgaW1wbGVtZW50YXRpb24gc2hvdWxkIGV4cGVjdCB0aGF0IHRv
-dXBwZXIodSkgPSB1IGFuZCB0b2xvd2VyKHUpID0gdQpmb3IgYW55IFVuaWNvZGUgY29kZSBwb2lu
-dCB1IGluIHJhbmdlIFtVKzEwMDAwLCBVKzEwRkZGRl0/IFRoaXMgaXMgaG93CmN1cnJlbnQgZXhm
-YXQgbGludXggZHJpdmVyIGJlaGF2ZS4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVj
-dC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+From: Johannes Berg <johannes.berg@intel.com>
+
+This was changed in cfg80211, so having it broke things, but
+there's no need to adjust since it's an empty implementation.
+Just remove it.
+
+Fixes: 6cd536fe62ef ("cfg80211: change internal management frame registration API")
+Signed-off-by: Johannes Berg <johannes.berg@intel.com>
+---
+ .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 24 -------------------
+ 1 file changed, 24 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+index 1ba85a43f05a..cd31ad2b8a7b 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -3163,29 +3163,6 @@ static int cfg80211_rtw_mgmt_tx(struct wiphy *wiphy,
+ 	return ret;
+ }
+ 
+-static void cfg80211_rtw_mgmt_frame_register(struct wiphy *wiphy,
+-	struct wireless_dev *wdev,
+-	u16 frame_type, bool reg)
+-{
+-	struct net_device *ndev = wdev_to_ndev(wdev);
+-	struct adapter *adapter;
+-
+-	if (ndev == NULL)
+-		goto exit;
+-
+-	adapter = (struct adapter *)rtw_netdev_priv(ndev);
+-
+-#ifdef DEBUG_CFG80211
+-	DBG_871X(FUNC_ADPT_FMT" frame_type:%x, reg:%d\n", FUNC_ADPT_ARG(adapter),
+-		frame_type, reg);
+-#endif
+-
+-	if (frame_type != (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_PROBE_REQ))
+-		return;
+-exit:
+-	return;
+-}
+-
+ #if defined(CONFIG_PNO_SUPPORT)
+ static int cfg80211_rtw_sched_scan_start(struct wiphy *wiphy,
+ 		struct net_device *dev,
+@@ -3397,7 +3374,6 @@ static struct cfg80211_ops rtw_cfg80211_ops = {
+ 	.change_bss = cfg80211_rtw_change_bss,
+ 
+ 	.mgmt_tx = cfg80211_rtw_mgmt_tx,
+-	.mgmt_frame_register = cfg80211_rtw_mgmt_frame_register,
+ 
+ #if defined(CONFIG_PNO_SUPPORT)
+ 	.sched_scan_start = cfg80211_rtw_sched_scan_start,
+-- 
+2.25.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
