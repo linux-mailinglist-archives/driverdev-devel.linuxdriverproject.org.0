@@ -1,59 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E70D51BBB64
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Apr 2020 12:42:14 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52C2C1BBD0C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Apr 2020 14:07:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 343FE862AC;
-	Tue, 28 Apr 2020 10:42:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9F4D187120;
+	Tue, 28 Apr 2020 12:07:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CcV8gb2wnJwY; Tue, 28 Apr 2020 10:42:12 +0000 (UTC)
+	with ESMTP id ZyDQctBkyDHV; Tue, 28 Apr 2020 12:07:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 436B3860F6;
-	Tue, 28 Apr 2020 10:42:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B248386FEA;
+	Tue, 28 Apr 2020 12:07:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8030B1BF277
- for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 10:42:10 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A73331BF32A
+ for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 12:07:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7BBFB878F7
- for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 10:42:10 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8EE782277A
+ for <devel@linuxdriverproject.org>; Tue, 28 Apr 2020 12:07:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PKOCiv1rb1U2 for <devel@linuxdriverproject.org>;
- Tue, 28 Apr 2020 10:42:09 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 54DA687E40
- for <devel@driverdev.osuosl.org>; Tue, 28 Apr 2020 10:42:09 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A7D36206D9;
- Tue, 28 Apr 2020 10:42:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588070529;
- bh=CvEzbuCfH4+7PgmhF93OcCUlpgwCqTZYnfybiXHV8/I=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=O8saSke60GAMFfflqYFA1fvYiKEOXGCYpCXzaZ88cMJDx2OMK6q2ZgUl0aCzEbRQ1
- jrkgdfDk7TiAkNgrBjRO1Yxki5drTIwAQQOkOlF7iiCwEpWgttzO9NUvzU+m0DYyW9
- CoPKdTLtFrM+EXN6YP6eYb/XyjyVltLcmp4Dwr9g=
-Date: Tue, 28 Apr 2020 12:42:06 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: John Oldman <john.oldman@polehill.co.uk>
-Subject: Re: [PATCH-3] staging: rts5208: rtsx: Use balanced braces for
- if/else if blocks
-Message-ID: <20200428104206.GA1131692@kroah.com>
-References: <20200428102804.28795-1-john.oldman@polehill.co.uk>
+ with ESMTP id UH1WFAy2OjM2 for <devel@linuxdriverproject.org>;
+ Tue, 28 Apr 2020 12:06:58 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id 948B02273B
+ for <devel@driverdev.osuosl.org>; Tue, 28 Apr 2020 12:06:58 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03SC3SLM037296;
+ Tue, 28 Apr 2020 12:06:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=OSf6jYhMrgn/dtTnYSI73L6/78HrXWbkBlk67OBSPnA=;
+ b=rO+Phk3amJ6wJjrSEgneLJoNdCOWQEChKG8r8NYnFFIEcRQh+MJSJkmsknbCkKd2H5Dx
+ ke9TGc7Avzv6OaYyC2rfBqo30QZ47ubVU14ZDYQWPvfuthALUDbfhJp1D8zXGJmbev5P
+ EjR8fSc9c/KBJXUQADZZur+ram+UBeV7SxiyDrJA2xc7F5lhrQ/2QmfuWp1fyaatlVYp
+ 5Co6yfDSUUZhzlDsOnhmoCuK45U3TPLZmXQqqpQnTp0r2DsV9D05OnHpq0Af6TfEs793
+ G7GfRNfx76JLBlIXEBHZtIgXrwgU9YJrprYYxmrmkEnOqiIf7pWB1pFGg8JRL32a/BPM 8w== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 30p2p04qng-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 28 Apr 2020 12:06:57 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03SC2AoX004893;
+ Tue, 28 Apr 2020 12:04:56 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 30mxwyk421-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 28 Apr 2020 12:04:56 +0000
+Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 03SC4rdL001889;
+ Tue, 28 Apr 2020 12:04:53 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 28 Apr 2020 05:04:52 -0700
+Date: Tue, 28 Apr 2020 15:04:45 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Rylan Dmello <mail@rylan.coffee>, Kaaira Gupta <kgupta@es.iitr.ac.in>
+Subject: Re: [PATCH 1/3] staging: qlge: Remove unnecessary parentheses around
+ struct field
+Message-ID: <20200428120445.GB2014@kadam>
+References: <cover.1587959245.git.mail@rylan.coffee>
+ <4dea7a7fae6a56c51cc19228b82a3c230029f54b.1587959245.git.mail@rylan.coffee>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200428102804.28795-1-john.oldman@polehill.co.uk>
+In-Reply-To: <4dea7a7fae6a56c51cc19228b82a3c230029f54b.1587959245.git.mail@rylan.coffee>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9604
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=25
+ spamscore=0 bulkscore=0
+ suspectscore=0 mlxlogscore=999 phishscore=0 malwarescore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004280097
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9604
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ phishscore=0 clxscore=1011
+ bulkscore=0 adultscore=7 lowpriorityscore=0 impostorscore=0 malwarescore=0
+ mlxscore=0 suspectscore=0 mlxlogscore=999 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004280097
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,43 +99,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Benjamin Poirier <bpoirier@suse.com>,
+ GR-Linux-NIC-Dev@marvell.com, Manish Chopra <manishc@marvell.com>,
+ Jiri Pirko <jpirko@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Apr 28, 2020 at 11:28:04AM +0100, John Oldman wrote:
-> Coding style issues
+On Mon, Apr 27, 2020 at 12:14:11AM -0400, Rylan Dmello wrote:
+> Remove unnecessary parentheses around a struct field accessor that
+> causes a build failure when QL_DEV_DUMP is set.
+> 
+> Signed-off-by: Rylan Dmello <mail@rylan.coffee>
 
+Add a Fixes tag.
 
-Hi,
+Fixes: 67e6cf7338e1 ("staging: qlge: add braces around macro arguments")
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+regards,
+dan carpenter
 
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
