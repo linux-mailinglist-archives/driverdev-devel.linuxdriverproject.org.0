@@ -1,64 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A9A81BE0AC
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 16:21:36 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AD0711BE27C
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 17:23:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A7A548843E;
-	Wed, 29 Apr 2020 14:21:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 93B5C87B08;
+	Wed, 29 Apr 2020 15:23:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8I7plTUS4WFX; Wed, 29 Apr 2020 14:21:33 +0000 (UTC)
+	with ESMTP id hakxOt-8+LNN; Wed, 29 Apr 2020 15:23:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id ABC4588453;
-	Wed, 29 Apr 2020 14:21:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6922F84CE0;
+	Wed, 29 Apr 2020 15:23:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E98651BF3A8
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 14:21:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A5FEC1BF36C
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 15:23:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E619E84474
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 14:21:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9DB1F203D0
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 15:23:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ape1Ap6vMC22 for <devel@linuxdriverproject.org>;
- Wed, 29 Apr 2020 14:21:29 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.74])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4AFB084471
- for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 14:21:28 +0000 (UTC)
-Received: from threadripper.lan ([149.172.19.189]) by mrelayeu.kundenserver.de
- (mreue106 [212.227.15.145]) with ESMTPA (Nemesis) id
- 1N6LMN-1j5IaG1fUP-016gSa; Wed, 29 Apr 2020 16:21:21 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
+ with ESMTP id lF+tSy+kI37L for <devel@linuxdriverproject.org>;
+ Wed, 29 Apr 2020 15:23:35 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
+ by silver.osuosl.org (Postfix) with ESMTPS id EE4BD2039A
+ for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 15:23:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1588173805;
+ bh=GcHRv0rAgKFwgsjelUrExs3T53xrQyyhBZEE2rZ5Dbk=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=JpmXrA7U6MlejyX26kR0oWhcjqRx98P0o7VFtpRO4KMuua5wPB7gkk8Ida9v/vEqo
+ CV8VklOKdp1bUSOQZ2Ovu4Dt8WxjTGk1rkiXJL1J7oC9ZO5YPLY/9+3eyoBo7gVY2h
+ gO0Zw+B3jtfc47f5ffls7txQlyy9nzh50+gR3gxU=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
+ (mrgmx105 [212.227.17.174]) with ESMTPSA (Nemesis) id
+ 1N8XPt-1j7UHF33jN-014RUL; Wed, 29 Apr 2020 17:23:24 +0200
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: wfx: avoid compiler warning on empty array
-Date: Wed, 29 Apr 2020 16:21:09 +0200
-Message-Id: <20200429142119.1735196-1-arnd@arndb.de>
-X-Mailer: git-send-email 2.26.0
+Subject: [PATCH 0/2] staging: vt6656: Refactor the vnt_set_bss_mode function
+Date: Wed, 29 Apr 2020 17:23:05 +0200
+Message-Id: <20200429152307.5871-1-oscar.carter@gmx.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:9VR6xSDPQ8g1NPHjws4CXVoCdGkwhOxNYK2KCEQwm7vtwokhGcO
- CYnU04XokIbuhXe8Zua9Z6fgLTEXNk+RCbcIZ4srK+52KJ4s02oc7e9STFvO7XVcgl5B7F2
- eglp9gEEofWWxonxeOCmFbegVWtUPEFVtUHH2YpxP/kZ1Bw1XRMn58D23v1za2ou9U8IO6L
- 7hbaPK0cV565ri1GIipHQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:y1/KdhnlWZM=:jbj+5QBLT9zgufaVm/rZOE
- IpGQVwVYlS79n4eonJdiE/HEHj6bptBqv7FbbYTXnUSPdqkR2SUevxjLAPHbtRd0oIuN8lzaQ
- L6crLUrklH5H0tbTqNZ0mX8OHK9nV4b1aPrpkgqBU36Hzy1VkFmuSY7fW6Zj89GlK3HjVWuBZ
- iJ6d3r4UNMN4tsHW/67ipN9E2KVJddSp3PesTiA99os3uuavMrDS+HGzocfLYDlf8k+JJReDI
- Io77ZoxIZiCGXq1ocOJTo+k/A3wNf58w+k8ZxzqUWy5A+NKl62Jr50aFZzzZqkwyCxdyuJGT3
- MoPK03uwUslBUta75Pz1a0ICGtNwOO+/GVulccoaTl3T3JQZ4afPLLTJBo7iwVwI3Vlyk0Bli
- ehBj1srTmXR4S7syJHkpWEBaOA98o/vy6hNxqj78NuPA3lwAZ4L07OJqu5C3UoCEwCjwJ5okb
- yG7EyQ3XNypNL3nKpk72jGOVkYNSkM05nT9Lnxhce6tUq7/phCj9nDwSLk/gfC0U2up+kdw9n
- 2VzFD/4iz09iCof1J52rrW0sKlGxqPdDnXFmF9zNrIC+c+43P2iaQe3IIb34yj3fRwKQWcJw8
- rpTd+PVfTsX153GQjwsmBzbBTWsZQr9mf2Xo3QMLgh4Xt8IFrDyj6YJtIwsik+cSUuqU/q0SX
- E1gyNQf6HrkvhWGKCUKpbaHyY9s2KFqum4JDqStrtsBJoL/tJ8/T2bxW7QMuhWnSnkgQBnxQC
- lY2gCD8Lfr+Z7HI9z14t/GFKvnyko8KyXlytZwr4Wua6ojbwgRfZ6kX4b4Xe80ZV8j97J0NAI
- fo36petyUrj/KBsXWvPVkQxpm/qXzimiwNDMjeXiknzeT/dSwM=
+X-Provags-ID: V03:K1:QTtDDKVu45EKxONkVYZ84xzya9K22bDajjAk0LxjM01tyYbrzp0
+ lGf66pb7pp1RQ7xRkdPDTcZM5hzhanqt5J4V3CXmtA8MpI4LJqIhBvboJzTPnxxo7rlhSq7
+ zhqjxZwL4B0xjAWlA1tkW+/5SUMn5NxIkH3IzpR08w5I4vNmw93KVxkGQxcoLj/ewRMbpwF
+ odLUAZpUItxzmmonMC05w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wAGH+quArug=:OlxilicYbAMFNVJfSqGjUW
+ AxhNI80+S9PUUb3zA35bTdBLWxTVcE8zJs7zslXygcr60ywrBPI4ap/AxvyT6deS3u+BpEJEQ
+ BAh2pqIWXXHPk1ya+4aYNzFnoKl/CRfLNI5ByrOgN7AYps2NI4J68WgJP4OYOm5nf+7xRXsqd
+ uRHsLYJFS1FrEGEa5nlCWWIZOLlZSUN2tkT1H70srn6wK0vK9Libi/2SnsKTVnzHuYaQiJ4b9
+ t1JkNYzHcZ3kbhef9wGqfLx1pNdlui3ADfwcs3LuTbN1PVt+eCXy6CMpaF4/pBmYmUyWU63ng
+ xxwiCTVWX22iunyrqIvcPJkgwHNUmiTnrgJsHihw5IzXBNL27r3vZ0IPGiimBseIiyak+USD3
+ /tTNlV4V1zN1aNlscKKoOaweonl+Jkkfe7MTxaL88nAma4QoLB0es448ZqjtkND/vraTrPkkr
+ mMZ/v31E2D/PdDPaqZPtIsh5XQK/VT8tk4TLzTjhcLH7ds18AbrdCk7lr+6lCp8V6tAbMUvhD
+ mAInM0RYOaMGGs0U3t/r3nw66jS2ZdkNpx7ellOo+vnvzxLTPGv5ruSzbIwFVu87gh9g7dfOh
+ vwK2IAKHPrtfMumRB5j4D/3NxmXJEghhkbqrvXtU7p5rXgnm6l2GmyIbxUOCs/r3Dnuts0V4S
+ 3RBj/n2LZzLhQqNW5toN/zhic3/MvG7rxhzjAvq7KOtZYiSioPo3GZVw4f+gbviWjDKDeCeR0
+ ocrrkm0wXOHX2MwqSX5Tf6Vs2rkzlaoMS5lus0iMiIwAi1Usw/2RQToNAzqvRK4FUOx1JXwjf
+ jsolx9pf59kqDDQ8isVetpWA6iZA0Dsywicpj1UjEyNHzBFOi0qEOfnAtHbM/+idVSA2VTNG+
+ 6vH6WLhqpUbZiNIPfDXJ7YBXirngDhEsPafqMVDvB0///awn3Of4mHqkIpTognMZx58sqfxQ+
+ W3E7J+g75oj+Tq5OO6ygowHYFb2tWG4B/DO7hlXysjvKeCc87Wg8gaFOhZe2ZYFm2G8JLW5px
+ 0XiitTMlEafALqRKbuAgb/WThIIZjqVFMnUFKjCAuHYJ6tYm72UD7V46KsjqIjJTUtO5nXcDR
+ sfCWIt900xW39WrOYtyIGUgdD04HtUTwXvAwxysiELagE2HRPQuKpm8o0CZvjP49ZUqtWYiVJ
+ 6K2wsbHorbXylFBr8JtUvEBjchWBR5yNRHiei4HTV7joF3u3Ijopw8KYJPMrJAB1dGxuYHi5N
+ EeJ1iXZYhTRTyByVf
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,74 +85,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jules Irenge <jbi.octave@gmail.com>,
- linux-kernel@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
- =?UTF-8?q?Micha=C5=82=20Miros=C5=82aw?= <mirq-linux@rere.qmqm.pl>
+Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
+ Malcolm Priestley <tvboxspy@gmail.com>,
+ "John B. Wyatt IV" <jbwyatt4@gmail.com>, linux-kernel@vger.kernel.org,
+ Colin Ian King <colin.king@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-When CONFIG_OF is disabled, gcc-9 produces a warning about the
-wfx_sdio_of_match[] array having a declaration without a dimension:
+This patch series refactors the vnt_set_bss_mode function through two
+patches.
 
-drivers/staging/wfx/bus_sdio.c:159:34: error: array 'wfx_sdio_of_match' assumed to have one element [-Werror]
-  159 | static const struct of_device_id wfx_sdio_of_match[];
-      |                                  ^~~~~~~~~~~~~~~~~
+The first one checks the return value of all the functions that return
+zero if successful or a negative error code on failure.
 
-Move the proper declaration up and out of the #ifdef instead.
+The second patch removes all the duplicate code in the "if, else if, else"
+statements as all the branches in every "if" are almost the same.
 
-Fixes: a7a91ca5a23d ("staging: wfx: add infrastructure for new driver")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/staging/wfx/bus_sdio.c | 19 ++++++++-----------
- 1 file changed, 8 insertions(+), 11 deletions(-)
+Oscar Carter (2):
+  staging: vt6656: Check the return values in vnt_set_bss_mode function
+  staging: vt6656: Refactor the vnt_set_bss_mode function
 
-diff --git a/drivers/staging/wfx/bus_sdio.c b/drivers/staging/wfx/bus_sdio.c
-index dedc3ff58d3e..c2e4bd1e3b0a 100644
---- a/drivers/staging/wfx/bus_sdio.c
-+++ b/drivers/staging/wfx/bus_sdio.c
-@@ -156,7 +156,13 @@ static const struct hwbus_ops wfx_sdio_hwbus_ops = {
- 	.align_size		= wfx_sdio_align_size,
- };
- 
--static const struct of_device_id wfx_sdio_of_match[];
-+static const struct of_device_id wfx_sdio_of_match[] = {
-+	{ .compatible = "silabs,wfx-sdio" },
-+	{ .compatible = "silabs,wf200" },
-+	{ },
-+};
-+MODULE_DEVICE_TABLE(of, wfx_sdio_of_match);
-+
- static int wfx_sdio_probe(struct sdio_func *func,
- 			  const struct sdio_device_id *id)
- {
-@@ -248,15 +254,6 @@ static const struct sdio_device_id wfx_sdio_ids[] = {
- };
- MODULE_DEVICE_TABLE(sdio, wfx_sdio_ids);
- 
--#ifdef CONFIG_OF
--static const struct of_device_id wfx_sdio_of_match[] = {
--	{ .compatible = "silabs,wfx-sdio" },
--	{ .compatible = "silabs,wf200" },
--	{ },
--};
--MODULE_DEVICE_TABLE(of, wfx_sdio_of_match);
--#endif
--
- struct sdio_driver wfx_sdio_driver = {
- 	.name = "wfx-sdio",
- 	.id_table = wfx_sdio_ids,
-@@ -264,6 +261,6 @@ struct sdio_driver wfx_sdio_driver = {
- 	.remove = wfx_sdio_remove,
- 	.drv = {
- 		.owner = THIS_MODULE,
--		.of_match_table = of_match_ptr(wfx_sdio_of_match),
-+		.of_match_table = wfx_sdio_of_match,
- 	}
- };
--- 
-2.26.0
+ drivers/staging/vt6656/card.c | 77 ++++++++++++++++++-----------------
+ 1 file changed, 39 insertions(+), 38 deletions(-)
+
+--
+2.20.1
 
 _______________________________________________
 devel mailing list
