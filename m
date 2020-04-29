@@ -1,62 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9225B1BD87B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 11:41:49 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0941C1BDB7A
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 14:12:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 922DA8774C;
-	Wed, 29 Apr 2020 09:41:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E83A587880;
+	Wed, 29 Apr 2020 12:12:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n-07lSnrzqUc; Wed, 29 Apr 2020 09:41:47 +0000 (UTC)
+	with ESMTP id 9I4Ud4YDIdMH; Wed, 29 Apr 2020 12:12:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 03D7C8702D;
-	Wed, 29 Apr 2020 09:41:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C819C8789E;
+	Wed, 29 Apr 2020 12:12:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 446511BF309
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 09:41:44 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EC30C1BF5AC
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 12:12:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 40F2D86762
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 09:41:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E4A4E87853
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 12:12:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LH4ddknQZFOA for <devel@linuxdriverproject.org>;
- Wed, 29 Apr 2020 09:41:43 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A079D81AD1
- for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 09:41:43 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 00DE62073E;
- Wed, 29 Apr 2020 09:41:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588153303;
- bh=AG5TFQjS0TvO7P2NrdT+6GM8hq5daMrhEGzYpdrsVw8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Hm8896I728fS54R8e60Rm+0EU2cD8L9ZwDgyfgFL+9eaCwKaqGavDdau5oK8KOPjV
- c2uOqi6/bwTgKj33Wnfuvgw1PubZmlJvzbH/jYgTIZtTbd49msJ5wyKLH1SQ/q1E+r
- GNcegYa6TkdGV7gtBbMvfahji+toB12Z74Agvm+o=
-Date: Wed, 29 Apr 2020 11:41:41 +0200
-From: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
-To: "Stahl, Manuel" <manuel.stahl@iis-extern.fraunhofer.de>
-Subject: Re: [PATCH v4] Add new uio device for PCI with dynamic memory
- allocation
-Message-ID: <20200429094141.GB2080576@kroah.com>
-References: <1507296707.2915.14.camel@iis-extern.fraunhofer.de>
- <20200416163830.30623-1-manuel.stahl@iis-extern.fraunhofer.de>
- <20200428135443.GA1437053@kroah.com>
- <eb405ab3782844e379629a655a3dcaf38dd2552d.camel@iis-extern.fraunhofer.de>
+ with ESMTP id KCKNf2Ow0dx4 for <devel@linuxdriverproject.org>;
+ Wed, 29 Apr 2020 12:12:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
+ [209.85.166.69])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F2305842F2
+ for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 12:12:03 +0000 (UTC)
+Received: by mail-io1-f69.google.com with SMTP id j17so2188717iow.5
+ for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 05:12:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:date:in-reply-to:message-id:subject
+ :from:to;
+ bh=PcO8Kd1YBitB52qqPhTJQcKlql/IIwrSnAimZeG48WY=;
+ b=IUjD9X2sGckUNiBTvGmO/vaXopvecYoRpbjrywkSv2K6biFJL+NEnWfua6qKK5XZDF
+ xIt8DY/APhyeGbi5hzRuBI5aoKjhEPQrD1E3QMJZ6e5SoWw9W7ZhpEyhHzvOokL5l4IR
+ uwx5055PWQBa/x8XRB+3JrQ9IQ6idwYjUmBnpujXT/QBeQlKMKC9KFjZTZcqbt2tNyVM
+ xAz2RazJ4OJcIJ0ZqBMT59oQOu+ILyQUdhq/lrYTVC0V3PXdqdPJPRCMvauetH5Jyjsf
+ H97rMQZZ3SP1gk2Py9hGiflvhYWrbhIgG5/BmButRcGzp0y8EWmfKaJdZnbIajxgZcUH
+ 9PvA==
+X-Gm-Message-State: AGi0PuauwjL463z48+LJtui6v4/JBmiaiMOWjHByRA2KjCfBkB1bSQkB
+ aP/cVu2c98CywKPzt1RU0CQ11ivcOfcLDzPkcBHFm7PdlR+Q
+X-Google-Smtp-Source: APiQypJP2W68RxtxIieiSS1l8KwM59eBNQMIxwjGv9JUZ6878yRXgSmubwKDBS1vqBOIm8e+WhASeRnX1wkEPaga96kMUFN9cOqO
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <eb405ab3782844e379629a655a3dcaf38dd2552d.camel@iis-extern.fraunhofer.de>
+X-Received: by 2002:a92:6c0b:: with SMTP id h11mr72208ilc.158.1588162322766;
+ Wed, 29 Apr 2020 05:12:02 -0700 (PDT)
+Date: Wed, 29 Apr 2020 05:12:02 -0700
+In-Reply-To: <00000000000051770905984d38d3@google.com>
+X-Google-Appengine-App-Id: s~syzkaller
+X-Google-Appengine-App-Id-Alias: syzkaller
+Message-ID: <0000000000001821b605a46cdb7f@google.com>
+Subject: Re: WARNING in exfat_bdev_read
+From: syzbot <syzbot+1930da7118e99b06e4ab@syzkaller.appspotmail.com>
+To: alexander.levin@microsoft.com, davem@davemloft.net, 
+ devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, 
+ linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ mchehab@kernel.org, namjae.jeon@samsung.com, pragat.pandya@gmail.com, 
+ syzkaller-bugs@googlegroups.com, valdis.kletnieks@vt.edu
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,66 +75,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "sojkam1@fel.cvut.cz" <sojkam1@fel.cvut.cz>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Apr 29, 2020 at 07:51:01AM +0000, Stahl, Manuel wrote:
-> On Di, 2020-04-28 at 15:54 +0200, gregkh @ linuxfoundation . org wrote:
-> > On Thu, Apr 16, 2020 at 06:38:30PM +0200, Manuel Stahl wrote:
-> > > 
-> > > + *
-> > > + * Since the driver does not declare any device ids, you must allocate
-> > > + * id and bind the device to the driver yourself.  For example:
-> > > + *
-> > > + * # echo "8086 10f5" > /sys/bus/pci/drivers/uio_pci_dmem_genirq/new_id
-> > > + * # echo -n 0000:00:19.0 > /sys/bus/pci/drivers/e1000e/unbind
-> > > + * # echo -n 0000:00:19.0 > /sys/bus/pci/drivers/uio_pci_dmem_genirq/bind
-> > > + * # ls -l /sys/bus/pci/devices/0000:00:19.0/driver
-> > > + * .../0000:00:19.0/driver -> ../../../bus/pci/drivers/uio_pci_dmem_genirq
-> > > + *
-> > > + * Or use a modprobe alias:
-> > > + * # alias pci:v000010EEd00001000sv*sd*sc*i* uio_pci_dmem_genirq
-> > > + *
-> > > + * Driver won't bind to devices which do not support the Interrupt Disable Bit
-> > > + * in the command register. All devices compliant to PCI 2.3 (circa 2002) and
-> > > + * all compliant PCI Express devices should support this bit.
-> > > + *
-> > > + * The DMA mask bits and sizes of dynamic regions are derived from module
-> > > + * parameters.
-> > > + *
-> > > + * The format for specifying dynamic region sizes in module parameters
-> > > + * is as follows:
-> > > + *
-> > > + * uio_pci_dmem_genirq.dmem_sizes := <uio_dmem_sizes_def>[;<uio_dmem_sizes_def>]
-> > > + * <uio_dmem_sizes_def>           := <pci_id>:<size>[,<size>]
-> > > + * <pci_id>                       := <vendor>:<device>
-> > > + * <size>                         := standard linux memsize
-> > > + *
-> > > + * Examples:
-> > > + *
-> > > + * 1) UIO dmem device with 3 dynamic regions:
-> > > + * uio_pci_dmem_genirq.dmem_sizes=8086:10f5:4K,16K,4M
-> > > + *
-> > > + * 2) Two UIO dmem devices with different number of dynamic regions:
-> > > + * uio_pci_dmem_genirq.dmem_sizes=8086:10f5:4K,16K,4M;1234:0001:8K
-> > 
-> > Module parameters are horrid, are you sure there is no other way?
-> 
-> You're right, seemed to be the simplest solution back when we started developing this driver. I will try to change it to sysfs, so that one can add regions while the module is already loaded.
+syzbot suspects this bug was fixed by commit:
 
-/me hands you some \n characters...
+commit 5f33771fb0ac484d6e8cc34cb1e27c37442cd0db
+Author: Namjae Jeon <namjae.jeon@samsung.com>
+Date:   Fri Jan 3 01:13:45 2020 +0000
 
-Anyway, configfs is for configuring stuff, don't make a sysfs file that
-you have to somehow "parse" please.
+    staging: exfat: add STAGING prefix to config names
 
-thanks,
+bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=1407f818100000
+start commit:   32ef9553 Merge tag 'fsnotify_for_v5.5-rc1' of git://git.ke..
+git tree:       upstream
+kernel config:  https://syzkaller.appspot.com/x/.config?x=ff560c3de405258c
+dashboard link: https://syzkaller.appspot.com/bug?extid=1930da7118e99b06e4ab
+syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=10e208a6e00000
+C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=11f83882e00000
 
-greg k-h
+If the result looks correct, please mark the bug fixed by replying with:
+
+#syz fix: staging: exfat: add STAGING prefix to config names
+
+For information about bisection process see: https://goo.gl/tpsmEJ#bisection
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
