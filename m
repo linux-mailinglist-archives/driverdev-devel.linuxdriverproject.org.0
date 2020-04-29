@@ -1,79 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53D211BE695
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 20:48:28 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7DE41BE6D3
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 21:00:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 19B412344A;
-	Wed, 29 Apr 2020 18:48:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3E2CE88461;
+	Wed, 29 Apr 2020 19:00:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id az49nuNiA+eD; Wed, 29 Apr 2020 18:48:24 +0000 (UTC)
+	with ESMTP id zEAmT5097rAs; Wed, 29 Apr 2020 19:00:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AC54D204D2;
-	Wed, 29 Apr 2020 18:48:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A259688395;
+	Wed, 29 Apr 2020 19:00:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1DE551BF59F
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 18:48:20 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7B4E21BF59F
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 19:00:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 18EB9876F6
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 18:48:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4A506231E9
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 19:00:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zg9ZW00ZjjPP for <devel@linuxdriverproject.org>;
- Wed, 29 Apr 2020 18:48:18 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9AF4B86DB2
- for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 18:48:18 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id d17so3783274wrg.11
- for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 11:48:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=CDyB54AjrNjFSRl8MhLod74ljRZRfy3XowXumg1NuYA=;
- b=RFScoR6J8meDk+PuK2qeAGbRkEVzZHhD1uzBwEJ3DQIcVuxphdWlDVf0fgX2hJIqBx
- YTz6jzAXFrAfbNp47ifFA2RHHuWlxI9AIinVzfZPApdRnXhllA5zFbpzSnfuRilh8jhG
- skmXqtlsKN1kxXtdIrVJXiLYbKYSbauT0rT0uuy3Mmx+5rdUj41bDCsHOBjB4rz+jmFQ
- Qgi6AgskeaeEHq70tSzHYCON5fAPq5ctWxmzLifGl26WCWnUatDX9Ll1iCLpjQivmWSq
- Z1hgFT8YHzZtM8kXgf77XOOYVfWf7TNswDuplPDs1/PQdSBrhjvcW//GfxvLLQMtHeRt
- J6vQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=CDyB54AjrNjFSRl8MhLod74ljRZRfy3XowXumg1NuYA=;
- b=ILWqf56CDpW0d+BtRTYejbHdZLGazGd/tgm9jEBfAk9sZHJ2GYDMqF4iSEbDy3FyB+
- n0fKud7pXB+1MS+Q5G0QBYiMSkcWXqHfGehq+E9OOC96GBm5Xe3fukat5XeqiESPW3Gm
- 1Npb6Apg4MDsII6hc+9wF05bWOPjH0/JwGfi09tlOpx7MSfuheJ8YeMnahyCO/F/Xwjk
- 7RQmWdbyMirm3ZRiS48y6m2BjArK1OFv6Wbuj1FmTxBtnI6MZQEWtn/MM4IJpKzds9nl
- cVIqvZMb3CeyowcvySBAM4iUbADAPmglE/A2oSsb8EdRgoniglW701mb0MnIotdSOdal
- JjsQ==
-X-Gm-Message-State: AGi0Pua5naUT1yyIwabWe0FPqxb2gW0GXaYngvvDM/XHy2O//IAAtFhp
- JxqjkK47g3miFXGlqNwc0b8=
-X-Google-Smtp-Source: APiQypK15N3MYMdXuYh567Rs8EzSzfvFBlvE/iyAcEzmCfK8JKzNtPKARNjeW+aRpjc3w8l3d/RF+g==
-X-Received: by 2002:adf:e5c8:: with SMTP id a8mr44341553wrn.56.1588186096957; 
- Wed, 29 Apr 2020 11:48:16 -0700 (PDT)
-Received: from [192.168.43.18] (188.29.164.11.threembb.co.uk. [188.29.164.11])
- by smtp.gmail.com with ESMTPSA id
- 17sm8790455wmo.2.2020.04.29.11.48.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Apr 2020 11:48:16 -0700 (PDT)
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH 3/3] staging: vt6656: return all key calls to mac80211 stack.
-Message-ID: <f1be8ba0-9513-55cb-de9d-dcd4341e5b78@gmail.com>
-Date: Wed, 29 Apr 2020 19:48:14 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ with ESMTP id Pvg0sfkyELLK for <devel@linuxdriverproject.org>;
+ Wed, 29 Apr 2020 19:00:42 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.134])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9323A204D2
+ for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 19:00:41 +0000 (UTC)
+Received: from threadripper.lan ([149.172.19.189]) by mrelayeu.kundenserver.de
+ (mreue011 [212.227.15.129]) with ESMTPA (Nemesis) id
+ 1MEFfB-1jLvSk42HV-00AE83; Wed, 29 Apr 2020 21:00:24 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: David Lin <dtwlin@gmail.com>, Johan Hovold <johan@kernel.org>,
+ Alex Elder <elder@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Axel Haslam <ahaslam@baylibre.com>
+Subject: [PATCH] greybus: uart: fix uninitialized flow control variable
+Date: Wed, 29 Apr 2020 21:00:09 +0200
+Message-Id: <20200429190022.12671-1-arnd@arndb.de>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-Content-Language: en-US
+X-Provags-ID: V03:K1:Mlh1BapjxIyzREDPZHO4Hsp4KHejN/8Ty1YIQCptm26zBMM5I3P
+ wQTQKDgLNwYUCbAgRy4fe93olczzoNzwMHGD9JAaN5/yWKmh5SFbVNZfUZOS6Fx/8cAo3oi
+ /azCZ5byWZRmS0620KRUL+RlGTToj0G0ZRT15dQ49siFwfOA5k+TUt8LYAOsL8Lm4800AQq
+ 9osmsZVASt7O7yqPQpkVQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:KGOa0CrtfLc=:CWMlEOVkWkLMggCRWjllmT
+ wbM/3K/fRtpJ28a/tXXlV0dZxMoQegCX0a8EWZEqsT0gxOEsGbFmpi9Y/TjFxAG9ZD/es3WJi
+ pZfVawR6Hz+z/JTUEVssBCpVXH7h2h5/FrOO9AGuS12Oqrv/wDzWgyKpIe/GS7xg4XLoweITD
+ 5w8nyW9cYFuGh8GoEq82RVqO7J/qbfcEiPcQ6CDpkA5NHHulX0N8az7QsQAMqW+kNWqQLU+ej
+ 0uQNHrxNbJM68U8KbgNfM4hW07bHN+SxCAecphVoOPiDhWQg3A/KuomKLXhq0ExjD847a8FpT
+ KgPmN+zKVKhJCj9r1sNLRu9JumHKu5/KM4PcRgcX/9UV8AHWhPYISeM/oRNJjzm2TTKRTcSc5
+ fZ8mtFc74F4yZEyxtEufzQc9AJIMGXZKKWwhHhXrUm/03bQFttRgy6foKMcvYN6BMAHPnh1+R
+ fKhN48XsvrsVo4yVlOaZHai2tB3bzW2Jq2WSgfgLT5KLEv0aMYqxwtbqEXUosJeKZEwbJXLjI
+ tSJRoAdQvnLjDUo716/qR3Dhrua60vBzngu0mWddP3PAhcQInGA9vdADtta4Qcc1b2ssrZ01l
+ BUYU/9xybCkqzA3QeU8kQsB9hYBu03jxzE4m+pl2afsT5hizpm8cJuEB1KEDeblgZkYf7TrXy
+ cyqU9pc3nExqtODcgmd2GAXOapIZdVyFQv3LPKdY7MYZD9ATIkzvF9vEoor0TDS7KKbe1fp0P
+ 5ckuxbImGobBOxpJRsaXahO5enR6X91hWfVLKJApkJ8ExESmf290qzGOeXWwD5aGo1evDQJVv
+ vDHXeBjvIgG0KVouw0ZAXgjlMx38ZpQvdqkrLPgleiYzpvBxA4=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,74 +73,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Oscar Carter <oscar.carter@gmx.com>, linux-wireless@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Arnd Bergmann <arnd@arndb.de>,
+ Viresh Kumar <viresh.kumar@linaro.org>, Mark Greer <mgreer@animalcreek.com>,
+ linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org,
+ Greg Kroah-Hartman <gregkh@google.com>,
+ Johan Hovold <johan@hovoldconsulting.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-vnt_mac_set_keyentry can return USB calls so return them to
-mac80211.
+gcc-10 points out an uninitialized variable use:
 
-Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
+drivers/staging/greybus/uart.c: In function 'gb_tty_set_termios':
+drivers/staging/greybus/uart.c:540:24: error: 'newline.flow_control' is used uninitialized in this function [-Werror=uninitialized]
+  540 |   newline.flow_control |= GB_SERIAL_AUTO_RTSCTS_EN;
+
+Instead of using |= and &= on the uninitialized variable, use a
+direct assignment.
+
+Fixes: e55c25206d5c ("greybus: uart: Handle CRTSCTS flag in termios")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- drivers/staging/vt6656/key.c | 20 +++++++++-----------
- 1 file changed, 9 insertions(+), 11 deletions(-)
+ drivers/staging/greybus/uart.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/vt6656/key.c b/drivers/staging/vt6656/key.c
-index de54cc3ff95a..c66cb53cfc09 100644
---- a/drivers/staging/vt6656/key.c
-+++ b/drivers/staging/vt6656/key.c
-@@ -91,9 +91,8 @@ static int vnt_set_keymode(struct ieee80211_hw *hw, u8 *mac_addr,
- 			key->key[15] |= 0x80;
+diff --git a/drivers/staging/greybus/uart.c b/drivers/staging/greybus/uart.c
+index 55c51143bb09..4ffb334cd5cd 100644
+--- a/drivers/staging/greybus/uart.c
++++ b/drivers/staging/greybus/uart.c
+@@ -537,9 +537,9 @@ static void gb_tty_set_termios(struct tty_struct *tty,
  	}
  
--	vnt_mac_set_keyentry(priv, key_mode, entry, key_inx, bssid, key->key);
--
--	return 0;
-+	return vnt_mac_set_keyentry(priv, key_mode, entry,
-+				    key_inx, bssid, key->key);
- }
+ 	if (C_CRTSCTS(tty) && C_BAUD(tty) != B0)
+-		newline.flow_control |= GB_SERIAL_AUTO_RTSCTS_EN;
++		newline.flow_control = GB_SERIAL_AUTO_RTSCTS_EN;
+ 	else
+-		newline.flow_control &= ~GB_SERIAL_AUTO_RTSCTS_EN;
++		newline.flow_control = 0;
  
- int vnt_set_keys(struct ieee80211_hw *hw, struct ieee80211_sta *sta,
-@@ -102,7 +101,6 @@ int vnt_set_keys(struct ieee80211_hw *hw, struct ieee80211_sta *sta,
- 	struct vnt_private *priv = hw->priv;
- 	u8 *mac_addr = NULL;
- 	u8 key_dec_mode = 0;
--	int ret = 0;
- 
- 	if (sta)
- 		mac_addr = &sta->addr[0];
-@@ -115,7 +113,9 @@ int vnt_set_keys(struct ieee80211_hw *hw, struct ieee80211_sta *sta,
- 
- 		key->flags |= IEEE80211_KEY_FLAG_GENERATE_IV;
- 
--		return ret;
-+		return vnt_set_keymode(hw, mac_addr, key, VNT_KEY_DEFAULTKEY,
-+				       KEY_CTL_WEP);
-+
- 	case WLAN_CIPHER_SUITE_TKIP:
- 		key->flags |= IEEE80211_KEY_FLAG_GENERATE_MMIC;
- 		key->flags |= IEEE80211_KEY_FLAG_GENERATE_IV;
-@@ -136,11 +136,9 @@ int vnt_set_keys(struct ieee80211_hw *hw, struct ieee80211_sta *sta,
- 	}
- 
- 	if (key->flags & IEEE80211_KEY_FLAG_PAIRWISE)
--		vnt_set_keymode(hw, mac_addr, key, VNT_KEY_PAIRWISE,
--				key_dec_mode);
--	else
--		vnt_set_keymode(hw, mac_addr, key,
--				VNT_KEY_GROUP_ADDRESS, key_dec_mode);
-+		return vnt_set_keymode(hw, mac_addr, key, VNT_KEY_PAIRWISE,
-+				       key_dec_mode);
- 
--	return 0;
-+	return vnt_set_keymode(hw, mac_addr, key,
-+				VNT_KEY_GROUP_ADDRESS, key_dec_mode);
- }
+ 	if (memcmp(&gb_tty->line_coding, &newline, sizeof(newline))) {
+ 		memcpy(&gb_tty->line_coding, &newline, sizeof(newline));
 -- 
-2.25.1
+2.26.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
