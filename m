@@ -1,60 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C891D1BD586
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 09:16:27 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 976DC876F4;
-	Wed, 29 Apr 2020 07:16:25 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sXgwo3upOsI4; Wed, 29 Apr 2020 07:16:25 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 034AF87082;
-	Wed, 29 Apr 2020 07:16:25 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 600521BF361
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 07:16:22 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 22EDA1BD597
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 09:21:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5C7D384DD1
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 07:16:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E7BD88481F;
+	Wed, 29 Apr 2020 07:21:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id g79SmYqvff03; Wed, 29 Apr 2020 07:21:27 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9C88C8464C;
+	Wed, 29 Apr 2020 07:21:24 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AAC621BF361
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 07:21:21 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 9F9B322DE3
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 07:21:21 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k6G-Ik-4sPFM for <devel@linuxdriverproject.org>;
- Wed, 29 Apr 2020 07:16:21 +0000 (UTC)
+ with ESMTP id 7v7wSnQIkPB7 for <devel@linuxdriverproject.org>;
+ Wed, 29 Apr 2020 07:21:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2CB1684D81
- for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 07:16:20 +0000 (UTC)
-IronPort-SDR: uLErZgUyKB249ElX1TXqfHRjzbm1oFBvvfl7bcLcK72pLPGgmNmAzfsWjn4d32WuhPqtdZZzZN
- Ff3KK332KVdw==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2020 00:16:19 -0700
-IronPort-SDR: f0vziDkU/0IGyKhHgsdxpmHtaEO7iHUOIBVR6xM3ev6qNDPnNihVpM8R4C7ee8bvVNZ50Hv27h
- KGF7vgH07epg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,330,1583222400"; d="scan'208";a="432466568"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 29 Apr 2020 00:16:17 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jTgx6-0005tg-TC; Wed, 29 Apr 2020 15:16:16 +0800
-Date: Wed, 29 Apr 2020 15:16:07 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- 48ebea5026d692c5ab0a7d303f0fe1f8ba046e0f
-Message-ID: <5ea929b7.xshiTo8cW3g6EoUi%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com
+ [148.163.135.77])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4B93122DC7
+ for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 07:21:19 +0000 (UTC)
+Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
+ by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 03T7FcRf029194; Wed, 29 Apr 2020 03:21:18 -0400
+Received: from nwd2mta3.analog.com ([137.71.173.56])
+ by mx0a-00128a01.pphosted.com with ESMTP id 30pes2c83a-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 29 Apr 2020 03:21:18 -0400
+Received: from SCSQMBX11.ad.analog.com (scsqmbx11.ad.analog.com [10.77.17.10])
+ by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 03T7LGc3060520
+ (version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128
+ verify=FAIL); Wed, 29 Apr 2020 03:21:16 -0400
+Received: from SCSQMBX11.ad.analog.com (10.77.17.10) by
+ SCSQMBX11.ad.analog.com (10.77.17.10) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1779.2; Wed, 29 Apr 2020 00:21:15 -0700
+Received: from zeus.spd.analog.com (10.64.82.11) by SCSQMBX11.ad.analog.com
+ (10.77.17.10) with Microsoft SMTP Server id 15.1.1779.2 via Frontend
+ Transport; Wed, 29 Apr 2020 00:21:15 -0700
+Received: from localhost.localdomain ([10.48.65.12])
+ by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 03T7LCcS006213;
+ Wed, 29 Apr 2020 03:21:12 -0400
+From: Alexandru Ardelean <alexandru.ardelean@analog.com>
+To: <linux-iio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <devel@driverdev.osuosl.org>
+Subject: [PATCH] staging: iio: ad2s1210: Fix SPI reading
+Date: Wed, 29 Apr 2020 10:21:29 +0300
+Message-ID: <20200429072129.81504-1-alexandru.ardelean@analog.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
+X-ADIRoutedOnPrem: True
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
+ definitions=2020-04-29_02:2020-04-28,
+ 2020-04-29 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 spamscore=0
+ mlxscore=0 suspectscore=0 bulkscore=0 phishscore=0 priorityscore=1501
+ clxscore=1015 malwarescore=0 impostorscore=0 lowpriorityscore=0
+ mlxlogscore=960 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004290059
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,218 +83,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: Dragos Bogdan <dragos.bogdan@analog.com>, gregkh@linuxfoundation.org,
+ Alexandru Ardelean <alexandru.ardelean@analog.com>, jic23@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: 48ebea5026d692c5ab0a7d303f0fe1f8ba046e0f  firmware_loader: move fw_fallback_config to a private kernel symbol namespace
+From: Dragos Bogdan <dragos.bogdan@analog.com>
 
-elapsed time: 724m
+If the serial interface is used, the 8-bit address should be latched using
+the rising edge of the WR/FSYNC signal.
 
-configs tested: 191
-configs skipped: 0
+This basically means that a CS change is required between the first byte
+sent, and the second one.
+This change splits the single-transfer transfer of 2 bytes into 2 transfers
+with a single byte, and CS change in-between.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm64                            allyesconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm                              allmodconfig
-arm64                             allnoconfig
-arm                               allnoconfig
-arm                           efm32_defconfig
-arm                         at91_dt_defconfig
-arm                        shmobile_defconfig
-arm64                               defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                           sunxi_defconfig
-arm                        multi_v7_defconfig
-sparc                            allyesconfig
-powerpc                    adder875_defconfig
-openrisc                    or1ksim_defconfig
-riscv                               defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                             alldefconfig
-i386                                defconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                        generic_defconfig
-ia64                          tiger_defconfig
-ia64                         bigsur_defconfig
-ia64                             allyesconfig
-ia64                             alldefconfig
-m68k                       m5475evb_defconfig
-m68k                             allmodconfig
-m68k                       bvme6000_defconfig
-m68k                           sun3_defconfig
-m68k                          multi_defconfig
-nios2                         3c120_defconfig
-nios2                         10m50_defconfig
-c6x                        evmc6678_defconfig
-xtensa                          iss_defconfig
-c6x                              allyesconfig
-xtensa                       common_defconfig
-openrisc                 simple_smp_defconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                                defconfig
-alpha                               defconfig
-h8300                       h8s-sim_defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-arc                                 defconfig
-arc                              allyesconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-mips                malta_kvm_guest_defconfig
-mips                         tb0287_defconfig
-mips                       capcella_defconfig
-mips                           ip32_defconfig
-mips                  decstation_64_defconfig
-mips                      loongson3_defconfig
-mips                          ath79_defconfig
-mips                        bcm63xx_defconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-mips                            ar7_defconfig
-mips                             allyesconfig
-mips                         64r6el_defconfig
-mips                              allnoconfig
-mips                           32r2_defconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                generic-64bit_defconfig
-parisc                generic-32bit_defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                  mpc866_ads_defconfig
-powerpc                    amigaone_defconfig
-powerpc                     ep8248e_defconfig
-powerpc                          g5_defconfig
-powerpc                     mpc512x_defconfig
-powerpc                      chrp32_defconfig
-powerpc                       holly_defconfig
-parisc               randconfig-a001-20200428
-m68k                 randconfig-a001-20200428
-alpha                randconfig-a001-20200428
-nds32                randconfig-a001-20200428
-riscv                randconfig-a001-20200428
-parisc               randconfig-a001-20200429
-m68k                 randconfig-a001-20200429
-alpha                randconfig-a001-20200429
-mips                 randconfig-a001-20200429
-nds32                randconfig-a001-20200429
-riscv                randconfig-a001-20200429
-nios2                randconfig-a001-20200428
-h8300                randconfig-a001-20200428
-c6x                  randconfig-a001-20200428
-sparc64              randconfig-a001-20200428
-microblaze           randconfig-a001-20200428
-nios2                randconfig-a001-20200429
-h8300                randconfig-a001-20200429
-c6x                  randconfig-a001-20200429
-sparc64              randconfig-a001-20200429
-microblaze           randconfig-a001-20200429
-sh                   randconfig-a001-20200428
-csky                 randconfig-a001-20200428
-s390                 randconfig-a001-20200428
-xtensa               randconfig-a001-20200428
-openrisc             randconfig-a001-20200428
-x86_64               randconfig-a001-20200428
-i386                 randconfig-a003-20200428
-x86_64               randconfig-a003-20200428
-i386                 randconfig-a002-20200428
-i386                 randconfig-a001-20200428
-x86_64               randconfig-a002-20200428
-i386                 randconfig-c002-20200428
-i386                 randconfig-c001-20200428
-x86_64               randconfig-c001-20200428
-i386                 randconfig-c003-20200428
-x86_64               randconfig-c003-20200428
-x86_64               randconfig-d001-20200428
-i386                 randconfig-d002-20200428
-i386                 randconfig-d001-20200428
-x86_64               randconfig-d003-20200428
-i386                 randconfig-d003-20200428
-x86_64               randconfig-e002-20200429
-i386                 randconfig-e003-20200429
-i386                 randconfig-e002-20200429
-x86_64               randconfig-e003-20200429
-i386                 randconfig-e001-20200429
-x86_64               randconfig-e001-20200429
-x86_64               randconfig-f002-20200428
-i386                 randconfig-f002-20200428
-i386                 randconfig-f003-20200428
-x86_64               randconfig-f003-20200428
-i386                 randconfig-f001-20200428
-x86_64               randconfig-f001-20200428
-x86_64               randconfig-h001-20200429
-i386                 randconfig-h003-20200429
-x86_64               randconfig-h003-20200429
-i386                 randconfig-h002-20200429
-i386                 randconfig-h001-20200429
-x86_64               randconfig-h001-20200428
-i386                 randconfig-h003-20200428
-x86_64               randconfig-h003-20200428
-x86_64               randconfig-h002-20200428
-i386                 randconfig-h001-20200428
-i386                 randconfig-h002-20200428
-ia64                 randconfig-a001-20200428
-powerpc              randconfig-a001-20200428
-arm64                randconfig-a001-20200428
-sparc                randconfig-a001-20200429
-ia64                 randconfig-a001-20200429
-powerpc              randconfig-a001-20200429
-arm                  randconfig-a001-20200429
-arc                  randconfig-a001-20200429
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-s390                       zfcpdump_defconfig
-s390                          debug_defconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                             alldefconfig
-s390                                defconfig
-sh                          rsk7269_defconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
-
+Signed-off-by: Dragos Bogdan <dragos.bogdan@analog.com>
+Signed-off-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/staging/iio/resolver/ad2s1210.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/iio/resolver/ad2s1210.c b/drivers/staging/iio/resolver/ad2s1210.c
+index 4b25a3a314ed..ed404355ea4c 100644
+--- a/drivers/staging/iio/resolver/ad2s1210.c
++++ b/drivers/staging/iio/resolver/ad2s1210.c
+@@ -130,17 +130,24 @@ static int ad2s1210_config_write(struct ad2s1210_state *st, u8 data)
+ static int ad2s1210_config_read(struct ad2s1210_state *st,
+ 				unsigned char address)
+ {
+-	struct spi_transfer xfer = {
+-		.len = 2,
+-		.rx_buf = st->rx,
+-		.tx_buf = st->tx,
++	struct spi_transfer xfers[] = {
++		{
++			.len = 1,
++			.rx_buf = &st->rx[0],
++			.tx_buf = &st->tx[0],
++			.cs_change = 1,
++		}, {
++			.len = 1,
++			.rx_buf = &st->rx[1],
++			.tx_buf = &st->tx[1],
++		},
+ 	};
+ 	int ret = 0;
+ 
+ 	ad2s1210_set_mode(MOD_CONFIG, st);
+ 	st->tx[0] = address | AD2S1210_MSB_IS_HIGH;
+ 	st->tx[1] = AD2S1210_REG_FAULT;
+-	ret = spi_sync_transfer(st->sdev, &xfer, 1);
++	ret = spi_sync_transfer(st->sdev, xfers, 2);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-- 
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
