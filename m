@@ -2,82 +2,63 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DC441BDF9B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 15:53:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A9A81BE0AC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 16:21:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 32EA088427;
-	Wed, 29 Apr 2020 13:53:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A7A548843E;
+	Wed, 29 Apr 2020 14:21:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VIZcTD6EZePz; Wed, 29 Apr 2020 13:53:17 +0000 (UTC)
+	with ESMTP id 8I7plTUS4WFX; Wed, 29 Apr 2020 14:21:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8571D87C88;
-	Wed, 29 Apr 2020 13:53:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ABC4588453;
+	Wed, 29 Apr 2020 14:21:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1396D1BF32E
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 13:53:14 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E98651BF3A8
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 14:21:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0E85C883DA
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 13:53:14 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E619E84474
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 14:21:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RnuuG8abr7w2 for <devel@linuxdriverproject.org>;
- Wed, 29 Apr 2020 13:53:10 +0000 (UTC)
+ with ESMTP id ape1Ap6vMC22 for <devel@linuxdriverproject.org>;
+ Wed, 29 Apr 2020 14:21:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx-relay77-hz1.antispameurope.com
- (mx-relay77-hz1.antispameurope.com [94.100.132.239])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6389887C88
- for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 13:53:09 +0000 (UTC)
-Received: from mailgw1.iis.fraunhofer.de ([153.96.172.4]) by
- mx-relay77-hz1.antispameurope.com; Wed, 29 Apr 2020 15:53:05 +0200
-Received: from mail.iis.fraunhofer.de (mail03.iis.fhg.de [153.96.171.212])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mailgw1.iis.fraunhofer.de (Postfix) with ESMTPS id 8733D2400082;
- Wed, 29 Apr 2020 15:53:02 +0200 (CEST)
-Received: from mail01.iis.fhg.de (2001:638:a0a:1111:fd91:8c2a:e4a5:e74e) by
- mail03.iis.fhg.de (2001:638:a0a:1111:314f:f22c:4a37:b25a) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Wed, 29 Apr 2020 15:53:02 +0200
-Received: from mail01.iis.fhg.de ([fe80::fd91:8c2a:e4a5:e74e]) by
- mail01.iis.fhg.de ([fe80::fd91:8c2a:e4a5:e74e%12]) with mapi id
- 15.00.1395.000; Wed, 29 Apr 2020 15:53:02 +0200
-From: "Stahl, Manuel" <manuel.stahl@iis-extern.fraunhofer.de>
-To: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v4] Add new uio device for PCI with dynamic memory
- allocation
-Thread-Topic: [PATCH v4] Add new uio device for PCI with dynamic memory
- allocation
-Thread-Index: AQHWFA15mQXQpLHKR0emWdXVXY2Gm6iOf4GAgAEst4CAAB7rgIAARjmA
-Date: Wed, 29 Apr 2020 13:53:02 +0000
-Message-ID: <03b6755c07fb19420a7fb21b434b137aaa238893.camel@iis-extern.fraunhofer.de>
-References: <1507296707.2915.14.camel@iis-extern.fraunhofer.de>
- <20200416163830.30623-1-manuel.stahl@iis-extern.fraunhofer.de>
- <20200428135443.GA1437053@kroah.com>
- <eb405ab3782844e379629a655a3dcaf38dd2552d.camel@iis-extern.fraunhofer.de>
- <20200429094141.GB2080576@kroah.com>
-In-Reply-To: <20200429094141.GB2080576@kroah.com>
-Accept-Language: de-DE, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [153.96.171.210]
-Content-ID: <360A9EF8EDE7BB4B89D615F459782861@iis.fhg.de>
+Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.74])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4AFB084471
+ for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 14:21:28 +0000 (UTC)
+Received: from threadripper.lan ([149.172.19.189]) by mrelayeu.kundenserver.de
+ (mreue106 [212.227.15.145]) with ESMTPA (Nemesis) id
+ 1N6LMN-1j5IaG1fUP-016gSa; Wed, 29 Apr 2020 16:21:21 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: wfx: avoid compiler warning on empty array
+Date: Wed, 29 Apr 2020 16:21:09 +0200
+Message-Id: <20200429142119.1735196-1-arnd@arndb.de>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-X-cloud-security-sender: manuel.stahl@iis-extern.fraunhofer.de
-X-cloud-security-recipient: devel@driverdev.osuosl.org
-X-cloud-security-crypt: load encryption module
-X-cloud-security-Virusscan: CLEAN
-X-cloud-security-disclaimer: This E-Mail was scanned by E-Mailservice on
- mx-relay77-hz1.antispameurope.com with AED91602119
-X-cloud-security-connect: mailgw1.iis.fraunhofer.de[153.96.172.4], TLS=1,
- IP=153.96.172.4
-X-cloud-security: scantime:.3293
+X-Provags-ID: V03:K1:9VR6xSDPQ8g1NPHjws4CXVoCdGkwhOxNYK2KCEQwm7vtwokhGcO
+ CYnU04XokIbuhXe8Zua9Z6fgLTEXNk+RCbcIZ4srK+52KJ4s02oc7e9STFvO7XVcgl5B7F2
+ eglp9gEEofWWxonxeOCmFbegVWtUPEFVtUHH2YpxP/kZ1Bw1XRMn58D23v1za2ou9U8IO6L
+ 7hbaPK0cV565ri1GIipHQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:y1/KdhnlWZM=:jbj+5QBLT9zgufaVm/rZOE
+ IpGQVwVYlS79n4eonJdiE/HEHj6bptBqv7FbbYTXnUSPdqkR2SUevxjLAPHbtRd0oIuN8lzaQ
+ L6crLUrklH5H0tbTqNZ0mX8OHK9nV4b1aPrpkgqBU36Hzy1VkFmuSY7fW6Zj89GlK3HjVWuBZ
+ iJ6d3r4UNMN4tsHW/67ipN9E2KVJddSp3PesTiA99os3uuavMrDS+HGzocfLYDlf8k+JJReDI
+ Io77ZoxIZiCGXq1ocOJTo+k/A3wNf58w+k8ZxzqUWy5A+NKl62Jr50aFZzzZqkwyCxdyuJGT3
+ MoPK03uwUslBUta75Pz1a0ICGtNwOO+/GVulccoaTl3T3JQZ4afPLLTJBo7iwVwI3Vlyk0Bli
+ ehBj1srTmXR4S7syJHkpWEBaOA98o/vy6hNxqj78NuPA3lwAZ4L07OJqu5C3UoCEwCjwJ5okb
+ yG7EyQ3XNypNL3nKpk72jGOVkYNSkM05nT9Lnxhce6tUq7/phCj9nDwSLk/gfC0U2up+kdw9n
+ 2VzFD/4iz09iCof1J52rrW0sKlGxqPdDnXFmF9zNrIC+c+43P2iaQe3IIb34yj3fRwKQWcJw8
+ rpTd+PVfTsX153GQjwsmBzbBTWsZQr9mf2Xo3QMLgh4Xt8IFrDyj6YJtIwsik+cSUuqU/q0SX
+ E1gyNQf6HrkvhWGKCUKpbaHyY9s2KFqum4JDqStrtsBJoL/tJ8/T2bxW7QMuhWnSnkgQBnxQC
+ lY2gCD8Lfr+Z7HI9z14t/GFKvnyko8KyXlytZwr4Wua6ojbwgRfZ6kX4b4Xe80ZV8j97J0NAI
+ fo36petyUrj/KBsXWvPVkQxpm/qXzimiwNDMjeXiknzeT/dSwM=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,82 +71,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "sojkam1@fel.cvut.cz" <sojkam1@fel.cvut.cz>
+Cc: devel@driverdev.osuosl.org, Jules Irenge <jbi.octave@gmail.com>,
+ linux-kernel@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
+ =?UTF-8?q?Micha=C5=82=20Miros=C5=82aw?= <mirq-linux@rere.qmqm.pl>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mi, 2020-04-29 at 11:41 +0200, gregkh@linuxfoundation.org wrote:
-> On Wed, Apr 29, 2020 at 07:51:01AM +0000, Stahl, Manuel wrote:
-> > On Di, 2020-04-28 at 15:54 +0200, gregkh @ linuxfoundation . org wrote:
-> > > On Thu, Apr 16, 2020 at 06:38:30PM +0200, Manuel Stahl wrote:
-> > > > 
-> > > > + *
-> > > > + * Since the driver does not declare any device ids, you must allocate
-> > > > + * id and bind the device to the driver yourself.  For example:
-> > > > + *
-> > > > + * # echo "8086 10f5" > /sys/bus/pci/drivers/uio_pci_dmem_genirq/new_id
-> > > > + * # echo -n 0000:00:19.0 > /sys/bus/pci/drivers/e1000e/unbind
-> > > > + * # echo -n 0000:00:19.0 > /sys/bus/pci/drivers/uio_pci_dmem_genirq/bind
-> > > > + * # ls -l /sys/bus/pci/devices/0000:00:19.0/driver
-> > > > + * .../0000:00:19.0/driver -> ../../../bus/pci/drivers/uio_pci_dmem_genirq
-> > > > + *
-> > > > + * Or use a modprobe alias:
-> > > > + * # alias pci:v000010EEd00001000sv*sd*sc*i* uio_pci_dmem_genirq
-> > > > + *
-> > > > + * Driver won't bind to devices which do not support the Interrupt Disable Bit
-> > > > + * in the command register. All devices compliant to PCI 2.3 (circa 2002) and
-> > > > + * all compliant PCI Express devices should support this bit.
-> > > > + *
-> > > > + * The DMA mask bits and sizes of dynamic regions are derived from module
-> > > > + * parameters.
-> > > > + *
-> > > > + * The format for specifying dynamic region sizes in module parameters
-> > > > + * is as follows:
-> > > > + *
-> > > > + * uio_pci_dmem_genirq.dmem_sizes := <uio_dmem_sizes_def>[;<uio_dmem_sizes_def>]
-> > > > + * <uio_dmem_sizes_def>           := <pci_id>:<size>[,<size>]
-> > > > + * <pci_id>                       := <vendor>:<device>
-> > > > + * <size>                         := standard linux memsize
-> > > > + *
-> > > > + * Examples:
-> > > > + *
-> > > > + * 1) UIO dmem device with 3 dynamic regions:
-> > > > + * uio_pci_dmem_genirq.dmem_sizes=8086:10f5:4K,16K,4M
-> > > > + *
-> > > > + * 2) Two UIO dmem devices with different number of dynamic regions:
-> > > > + * uio_pci_dmem_genirq.dmem_sizes=8086:10f5:4K,16K,4M;1234:0001:8K
-> > > 
-> > > Module parameters are horrid, are you sure there is no other way?
-> > 
-> > You're right, seemed to be the simplest solution back when we started developing this driver. I will try to change it to sysfs, so that one can add regions while the module is already loaded.
-> 
-> /me hands you some \n characters...
-> 
-> Anyway, configfs is for configuring stuff, don't make a sysfs file that
-> you have to somehow "parse" please.
+When CONFIG_OF is disabled, gcc-9 produces a warning about the
+wfx_sdio_of_match[] array having a declaration without a dimension:
 
-Looking back at this driver after some years I realized again the reason
-for using kernel parameters:
+drivers/staging/wfx/bus_sdio.c:159:34: error: array 'wfx_sdio_of_match' assumed to have one element [-Werror]
+  159 | static const struct of_device_id wfx_sdio_of_match[];
+      |                                  ^~~~~~~~~~~~~~~~~
 
-The current UIO API needs the information about available memory maps when
-registering a new UIO device with __uio_register_device(), which obviously
-needs to be called during probe() in uio_pci_dmem_genirq. Otherwise there
-is no device file in /dev to open for user space applications.
+Move the proper declaration up and out of the #ifdef instead.
 
-After that there is no function to update the uio_map info. So we can either
-keep the module parameters and allocate the DMA memory during probe() or
-allocate the DMA memory during mmap() and
-  a) replicate parts of uio_dev_add_attributes() in this driver to update sysfs
-  b) add a function in uio.c to allow updates to the uio_map
+Fixes: a7a91ca5a23d ("staging: wfx: add infrastructure for new driver")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/staging/wfx/bus_sdio.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
 
-Which way would you go?
+diff --git a/drivers/staging/wfx/bus_sdio.c b/drivers/staging/wfx/bus_sdio.c
+index dedc3ff58d3e..c2e4bd1e3b0a 100644
+--- a/drivers/staging/wfx/bus_sdio.c
++++ b/drivers/staging/wfx/bus_sdio.c
+@@ -156,7 +156,13 @@ static const struct hwbus_ops wfx_sdio_hwbus_ops = {
+ 	.align_size		= wfx_sdio_align_size,
+ };
+ 
+-static const struct of_device_id wfx_sdio_of_match[];
++static const struct of_device_id wfx_sdio_of_match[] = {
++	{ .compatible = "silabs,wfx-sdio" },
++	{ .compatible = "silabs,wf200" },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, wfx_sdio_of_match);
++
+ static int wfx_sdio_probe(struct sdio_func *func,
+ 			  const struct sdio_device_id *id)
+ {
+@@ -248,15 +254,6 @@ static const struct sdio_device_id wfx_sdio_ids[] = {
+ };
+ MODULE_DEVICE_TABLE(sdio, wfx_sdio_ids);
+ 
+-#ifdef CONFIG_OF
+-static const struct of_device_id wfx_sdio_of_match[] = {
+-	{ .compatible = "silabs,wfx-sdio" },
+-	{ .compatible = "silabs,wf200" },
+-	{ },
+-};
+-MODULE_DEVICE_TABLE(of, wfx_sdio_of_match);
+-#endif
+-
+ struct sdio_driver wfx_sdio_driver = {
+ 	.name = "wfx-sdio",
+ 	.id_table = wfx_sdio_ids,
+@@ -264,6 +261,6 @@ struct sdio_driver wfx_sdio_driver = {
+ 	.remove = wfx_sdio_remove,
+ 	.drv = {
+ 		.owner = THIS_MODULE,
+-		.of_match_table = of_match_ptr(wfx_sdio_of_match),
++		.of_match_table = wfx_sdio_of_match,
+ 	}
+ };
+-- 
+2.26.0
 
-Best regards,
-Manuel Stahl
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
