@@ -1,73 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD3041BE89F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 22:35:22 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 534871BE8D9
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Apr 2020 22:42:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CE35887A33;
-	Wed, 29 Apr 2020 20:35:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4D35A23509;
+	Wed, 29 Apr 2020 20:42:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tR1b69gItY8d; Wed, 29 Apr 2020 20:35:20 +0000 (UTC)
+	with ESMTP id wY2AQ4V37wTJ; Wed, 29 Apr 2020 20:42:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E669C87913;
-	Wed, 29 Apr 2020 20:35:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DD2EE204AB;
+	Wed, 29 Apr 2020 20:42:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4AA381BF336
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 20:35:18 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 22E761BF963
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 20:42:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 424698790A
- for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 20:35:18 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1F20E86B16
+ for <devel@linuxdriverproject.org>; Wed, 29 Apr 2020 20:42:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zp7n9lkA2vUC for <devel@linuxdriverproject.org>;
- Wed, 29 Apr 2020 20:35:17 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.130])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E366A87913
- for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 20:35:16 +0000 (UTC)
-Received: from mail-qk1-f178.google.com ([209.85.222.178]) by
- mrelayeu.kundenserver.de (mreue010 [212.227.15.129]) with ESMTPSA (Nemesis)
- id 1M4K6z-1jTcJ91Oi1-000O0W for <devel@driverdev.osuosl.org>; Wed, 29 Apr
- 2020 22:35:14 +0200
-Received: by mail-qk1-f178.google.com with SMTP id l78so3495849qke.7
- for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 13:35:13 -0700 (PDT)
-X-Gm-Message-State: AGi0PuZQfkV2hX46mgwrS33CW7PY8Vh8hnbEQcnwCUws2tL+fGg+gmM4
- q7zMx6lPlSjcc3PCWI2Hr9zNcBaO55XWD5i4tb0=
-X-Google-Smtp-Source: APiQypKmqhe1J42Dc9NNIPPjb6h2NIdLKVnO4btIHTL91FOrFIt6m/guokM0LsSiDAM68xNngDTmSmEt8UP92RQMJ6c=
-X-Received: by 2002:a37:63d0:: with SMTP id x199mr276734qkb.3.1588192512920;
- Wed, 29 Apr 2020 13:35:12 -0700 (PDT)
+ with ESMTP id h692yvTaRuzf for <devel@linuxdriverproject.org>;
+ Wed, 29 Apr 2020 20:42:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 84BFC86AC6
+ for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 20:42:31 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id z6so3546178wml.2
+ for <devel@driverdev.osuosl.org>; Wed, 29 Apr 2020 13:42:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=qvNqW9VZY66NQpuYi1BXOqqn8Ol0ghGRclu1yj76a0g=;
+ b=mI1jxagVTde/2+QB8gtV8Urph7bI+p+XTMxzhrzTl0+5UA7qrcpJbZd31OOwH1M8vN
+ 4+5l+AsL/MwI+C8Hy+/Ml0KmIJn5k0MnZtRDy4hHft9QCi6fpcCUNQy7mOS4jDN77+eq
+ KDw26U0ESjng/XsujG5zH2mGgfcZlF1is7CuOgcSBmy81sdQJiOnD16okUZ+KmltwI4S
+ HpfqwUhuC7Hth+ksDw3md/X1MCK0VCxpkXM+JiT6OEqSW02Oeat5tGYX8zoXsWFN1Tzh
+ xZQd2Xyu6X/XDSwC+50lI77fsz+C3vQaTKJKO2JW83P9a4AetDevAX9JrJ4VN1wNVS18
+ j3xA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=qvNqW9VZY66NQpuYi1BXOqqn8Ol0ghGRclu1yj76a0g=;
+ b=s3vuT+8/3f3PMCZS07OIl6lSSgh70E6TczdePv0ZlFcch5CXRSceCB86Ts+vftWr9G
+ 7uG6tweAnMhUbWwtJ0piJLgBqouBzo2EErJqZazVZBSxtnqoNmmh3bG+AEfbASao79PH
+ 6T1INdQNoAE8mKArD6do7Rj8fAjvp1JgPEPYiSZmB7WqIbooCGe7gSMML+9nIGBfxeWX
+ 5AB4MXusFw+z8NmPFbifwUUuzK0LisoYMGWBmuUri7DqmWxiO1DJvP+UatGSlnn+X0hx
+ iz1vDzpmrR3kUqva8J2+2jV0lJ0twu07xAic9BdYOUPG8EPhu+R1SQHuFFmnsFR2KXm6
+ kgxA==
+X-Gm-Message-State: AGi0PuYF6EcHtgRMU5hSwW9hd/xunXBWggtRcVDAZ215ZfUOeDDIGI43
+ mojP6Th3qQ1S2Ua6Ar/kppw=
+X-Google-Smtp-Source: APiQypJ7lb8uaUfck/aZZAepxN5DdNIHQ9nKKlza+wq00+O7uKr7Hnb3k06Q05law0YNY7agvXTwaA==
+X-Received: by 2002:a7b:c118:: with SMTP id w24mr5004212wmi.173.1588192950047; 
+ Wed, 29 Apr 2020 13:42:30 -0700 (PDT)
+Received: from [192.168.43.18] (188.29.164.11.threembb.co.uk. [188.29.164.11])
+ by smtp.gmail.com with ESMTPSA id
+ c25sm9095214wmb.44.2020.04.29.13.42.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 29 Apr 2020 13:42:29 -0700 (PDT)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: PATCH] staging: vt6656: use struct wiphy retry short and long
+ settings.
+Message-ID: <fbb8da09-ee46-2249-ff29-daaaff1a64e6@gmail.com>
+Date: Wed, 29 Apr 2020 21:42:27 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-References: <20200429142119.1735196-1-arnd@arndb.de> <3943343.tW1xmJHsB6@pc-42>
-In-Reply-To: <3943343.tW1xmJHsB6@pc-42>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Wed, 29 Apr 2020 22:34:56 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a1e=-H_b8_GPJW5-uufye5_6OJ6f+ZWErjKPWkxSRSigw@mail.gmail.com>
-Message-ID: <CAK8P3a1e=-H_b8_GPJW5-uufye5_6OJ6f+ZWErjKPWkxSRSigw@mail.gmail.com>
-Subject: Re: [PATCH] staging: wfx: avoid compiler warning on empty array
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-X-Provags-ID: V03:K1:2Un6tQ1kE5cAI06FmSzfIWMeWWdv1K7y1Im/AeGpeBu/j0Ru4wa
- peT2tLQp3zjh6E6sUF3BTv0H+xQJIqQV4nUP8he422ATku0X33l9BEL5GuKRvM2NcbGxCcs
- GSCWh0+PLPYX54bnCvdiYCYJGaHYvPM7cfGNxCPfoSwn+Adnh9dBULgHRw8EVD61fB0lJE+
- c7Zm0YpQ1WvJZhySKsQcQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:eMcqCTw5M+8=:olt4sIyawbA8TD42IxX1MZ
- 1KsDy3JuRR5EiC/fCQI0L+K1BJjv8WcF3pW25ixVaztASKiCQureFQ1Zl+iu+NKR1y8FNbe4l
- h4MDrqKsTN2Bxp1SkldYqVkC8W9Av79XjOMEHO6ZUWgEkj7BaMfinZYhsibv4i4JXN4BxIkSd
- 0/1nPoJQqj7+1ZVaIJAAyVUhaRiwcc4nHYz+RyrxLCry/o6ve62wHPykMDA7ptSHcopuAO10G
- jSN9DdFvLdFlZEVqsqm5hju8TUbjoiMf1Q2XUW2djqZOY1XeVvpDw9sOpE/IwqxmedThv0igF
- QyO1/cWEPcH3BaKljSEG0K/tmcP0BDlBvCmivSe9vHz+wQxE+wAxM67/MIM/C959k9wMVXvTe
- Tb9ejYQL0xE5iAXE0fTkzn//gg8Y2YkdkxSQnm8aA6XnA9Kx2lITHMGWXXShVpNLIsEPhduec
- TfFSZ6R7ggahEeKk9isjm7kptMI5t5RbfxLTiWffxuolM/ImGtT/mki3sydo9c+aOz96Nj6e4
- cpiIk9XicD3X9COmppvURGeY7rwd7cBq56wLTFAbbi6L40zYK6ns8BCUAsteCed7x7GyohEv2
- Ioo0TlPv8ZC5waRpA/7dY8oUzOD8MtG3UipyFyPJCVjJB+cFouj3t3Bz1NSb466YgDEhRctlo
- J7/o/UK0WZzVKs+0cDzoWJajkJAqpuP/i9bJ127C81M62Zf25NzmQyJn5UBgazwALIYg/WkNF
- vORJVicMbPtyo62u5+pfF9CKikm8vvTTZ8DAsju26pcX8LQwrS45kNmpWIRsCArV0ZXb/PyjH
- klPMHxnNh6+ImChCa86Qnj3vaeQg1PmFY+Zt6V3KYOP7gjUQO8=
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,37 +88,70 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jules Irenge <jbi.octave@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>
+ Oscar Carter <oscar.carter@gmx.com>, linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Apr 29, 2020 at 6:04 PM Jerome Pouiller
-<Jerome.Pouiller@silabs.com> wrote:
-> On Wednesday 29 April 2020 16:21:09 CEST Arnd Bergmann wrote:
-> >
-> > -static const struct of_device_id wfx_sdio_of_match[];
-> > +static const struct of_device_id wfx_sdio_of_match[] = {
-> > +       { .compatible = "silabs,wfx-sdio" },
-> > +       { .compatible = "silabs,wf200" },
-> > +       { },
-> > +};
-> > +MODULE_DEVICE_TABLE(of, wfx_sdio_of_match);
->
-> I suggest to keep the '#ifdef CONFIG_OF' around this definition. If
-> CONFIG_OF is undefined, of_match_ptr() and of_match_node() will be NULL
-> and it should compile.
+Remove driver options for short and long retry and use the ones
+set by user in wiphy.
 
-I would generally always go for fewer #ifdef instead of more when the result
-is the same. Are you worried about wasting 600 bytes of object code size for
-the array on systems that need this driver but not CONFIG_OF, or something
-else?
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
+---
+ drivers/staging/vt6656/device.h   | 3 ---
+ drivers/staging/vt6656/main_usb.c | 8 ++------
+ 2 files changed, 2 insertions(+), 9 deletions(-)
 
-     Arnd
+diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
+index d1c6e9594a19..d19d802b5d4f 100644
+--- a/drivers/staging/vt6656/device.h
++++ b/drivers/staging/vt6656/device.h
+@@ -351,9 +351,6 @@ struct vnt_private {
+ 	u16 tx_rate_fb0;
+ 	u16 tx_rate_fb1;
+ 
+-	u8 short_retry_limit;
+-	u8 long_retry_limit;
+-
+ 	enum nl80211_iftype op_mode;
+ 
+ 	int short_slot_time;
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index b1a7a6709ca7..03873a877d9a 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -59,8 +59,6 @@ MODULE_PARM_DESC(tx_buffers, "Number of receive usb tx buffers");
+ 
+ #define RTS_THRESH_DEF     2347
+ #define FRAG_THRESH_DEF     2346
+-#define SHORT_RETRY_DEF     8
+-#define LONG_RETRY_DEF     4
+ 
+ /* BasebandType[] baseband type selected
+  * 0: indicate 802.11a type
+@@ -93,8 +91,6 @@ static void vnt_set_options(struct vnt_private *priv)
+ 	else
+ 		priv->num_rcb = vnt_rx_buffers;
+ 
+-	priv->short_retry_limit = SHORT_RETRY_DEF;
+-	priv->long_retry_limit = LONG_RETRY_DEF;
+ 	priv->op_mode = NL80211_IFTYPE_UNSPECIFIED;
+ 	priv->bb_type = BBP_TYPE_DEF;
+ 	priv->packet_type = priv->bb_type;
+@@ -223,8 +219,8 @@ static int vnt_init_registers(struct vnt_private *priv)
+ 	init_cmd->exist_sw_net_addr = priv->exist_sw_net_addr;
+ 	for (ii = 0; ii < ARRAY_SIZE(init_cmd->sw_net_addr); ii++)
+ 		init_cmd->sw_net_addr[ii] = priv->current_net_addr[ii];
+-	init_cmd->short_retry_limit = priv->short_retry_limit;
+-	init_cmd->long_retry_limit = priv->long_retry_limit;
++	init_cmd->short_retry_limit = priv->hw->wiphy->retry_short;
++	init_cmd->long_retry_limit = priv->hw->wiphy->retry_long;
+ 
+ 	/* issue card_init command to device */
+ 	ret = vnt_control_out(priv, MESSAGE_TYPE_CARDINIT, 0, 0,
+-- 
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
