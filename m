@@ -1,65 +1,94 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16EF01BF4CB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 12:03:23 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3CBBC24C39;
-	Thu, 30 Apr 2020 10:03:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gV-qVSUyvsVb; Thu, 30 Apr 2020 10:03:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 54832207A6;
-	Thu, 30 Apr 2020 10:03:18 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DF4B61BF86C
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 10:03:12 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BC371BF4FB
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 12:10:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D6E0B87DFE
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 10:03:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DC8D187E1F;
+	Thu, 30 Apr 2020 10:10:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bMvN1odpLeL6; Thu, 30 Apr 2020 10:10:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9E8DA87E08;
+	Thu, 30 Apr 2020 10:10:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C73FB1BF322
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 10:10:41 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id B45E8204F1
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 10:10:41 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UYKH+Oj8wx5D for <devel@linuxdriverproject.org>;
- Thu, 30 Apr 2020 10:03:12 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0246.hostedemail.com
- [216.40.44.246])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0CA3587E08
- for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 10:03:11 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay02.hostedemail.com (Postfix) with ESMTP id DDE4F1263;
- Thu, 30 Apr 2020 10:03:09 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:968:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3871:3873:4321:5007:7903:10004:10400:10848:11026:11232:11473:11658:11914:12043:12296:12297:12740:12760:12895:13069:13161:13229:13311:13357:13439:14659:14721:21080:21627:21939:21990:30046:30054:30070:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:5, LUA_SUMMARY:none
-X-HE-Tag: grip36_8fddf9ae77656
-X-Filterd-Recvd-Size: 1988
-Received: from XPS-9350.home (unknown [47.151.136.130])
- (Authenticated sender: joe@perches.com)
- by omf20.hostedemail.com (Postfix) with ESMTPA;
- Thu, 30 Apr 2020 10:03:08 +0000 (UTC)
-Message-ID: <4c91091b304fc5df2a2f292a1e0c78d80217bb94.camel@perches.com>
+ with ESMTP id FLMaXXNTorLa for <devel@linuxdriverproject.org>;
+ Thu, 30 Apr 2020 10:10:40 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by silver.osuosl.org (Postfix) with ESMTPS id 85B35204DD
+ for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 10:10:40 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03U9wtDG044025;
+ Thu, 30 Apr 2020 10:10:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=5WhGcq90rfMBRqKV0qb10Jbha9Kn+6XcelGD6TM+nHo=;
+ b=jS4fO3pEbYQLmfAdBVeBEL97Vc+ySSqlzQqty9S2gK4Qdz8bU7ZTqWDfUVa3E6VAWz2u
+ gAaVpz338nMUpXb1U7PZZyIZTdk7e/Oxg6Dvx+V+HMxNk6f7MzXo2FpgmK4r3Eq97ZUS
+ sAdGfnpdqauMl2mP07sUtXHGUYdJgn6/c2mjyvehF3bnu7RGgBW+wqEwGMHhoQIaBAlT
+ gMJjaD4siEPLuOlBuUcukGyuCGCueXATJ4YogQ4+QjDXEHEyIz5JLWoFyEKEdOAHZdjX
+ zfg5c2wo8YJl1jzSih6Pm78hhwF5Fh0LnC9XDOPi6ZUdwV7IJHHVQ/PNfCHeHG721Po8 tA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 30nucgajn0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 30 Apr 2020 10:10:39 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03UA6XDC113255;
+ Thu, 30 Apr 2020 10:08:39 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3030.oracle.com with ESMTP id 30qtkvykbc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 30 Apr 2020 10:08:38 +0000
+Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 03UA8bQi028097;
+ Thu, 30 Apr 2020 10:08:37 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 30 Apr 2020 10:08:36 +0000
+Date: Thu, 30 Apr 2020 13:08:28 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Joe Perches <joe@perches.com>
 Subject: Re: [PATCH v2 2/7] staging: qlge: Remove gotos from
  ql_set_mac_addr_reg
-From: Joe Perches <joe@perches.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Rylan Dmello <mail@rylan.coffee>
-Date: Thu, 30 Apr 2020 03:03:07 -0700
-In-Reply-To: <20200430093835.GT2014@kadam>
+Message-ID: <20200430100828.GU2014@kadam>
 References: <cover.1588209862.git.mail@rylan.coffee>
  <a6f485e43eb55e8fdc64a7a346cb0419b55c3cb6.1588209862.git.mail@rylan.coffee>
  <20200430093835.GT2014@kadam>
-User-Agent: Evolution 3.36.1-2 
+ <4c91091b304fc5df2a2f292a1e0c78d80217bb94.camel@perches.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <4c91091b304fc5df2a2f292a1e0c78d80217bb94.camel@perches.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9606
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ suspectscore=0 mlxscore=0
+ phishscore=0 mlxlogscore=991 adultscore=0 malwarescore=0 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004300081
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9606
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1015
+ priorityscore=1501
+ mlxlogscore=999 impostorscore=0 suspectscore=0 malwarescore=0
+ lowpriorityscore=0 mlxscore=0 spamscore=0 adultscore=0 phishscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004300081
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,38 +104,49 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
  Manish Chopra <manishc@marvell.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
+ Rylan Dmello <mail@rylan.coffee>, netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 2020-04-30 at 12:38 +0300, Dan Carpenter wrote:
-> On Wed, Apr 29, 2020 at 09:33:04PM -0400, Rylan Dmello wrote:
-> > As suggested by Joe Perches, this patch removes the 'exit' label
-> > from the ql_set_mac_addr_reg function and replaces the goto
-> > statements with break statements.
-[]
-> > diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-[]
-> > @@ -336,22 +336,20 @@ static int ql_set_mac_addr_reg(struct ql_adapter *qdev, u8 *addr, u32 type,
-> >  
-> >  		status = ql_wait_reg_rdy(qdev, MAC_ADDR_IDX, MAC_ADDR_MW, 0);
-> >  		if (status)
-> > -			goto exit;
-> > +			break;
+On Thu, Apr 30, 2020 at 03:03:07AM -0700, Joe Perches wrote:
+> On Thu, 2020-04-30 at 12:38 +0300, Dan Carpenter wrote:
+> > On Wed, Apr 29, 2020 at 09:33:04PM -0400, Rylan Dmello wrote:
+> > > As suggested by Joe Perches, this patch removes the 'exit' label
+> > > from the ql_set_mac_addr_reg function and replaces the goto
+> > > statements with break statements.
+> []
+> > > diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
+> []
+> > > @@ -336,22 +336,20 @@ static int ql_set_mac_addr_reg(struct ql_adapter *qdev, u8 *addr, u32 type,
+> > >  
+> > >  		status = ql_wait_reg_rdy(qdev, MAC_ADDR_IDX, MAC_ADDR_MW, 0);
+> > >  		if (status)
+> > > -			goto exit;
+> > > +			break;
+> > 
+> > Just "return status".  A direct return is immediately clear but with a
+> > break statement then you have to look down a bit and then scroll back.
 > 
-> Just "return status".  A direct return is immediately clear but with a
-> break statement then you have to look down a bit and then scroll back.
+> To me, 6 of 1, half dozen of other as
+> all the case breaks could be returns.
+> 
+> So either form is fine with me.
+> 
+> The old form was poor through.
 
-To me, 6 of 1, half dozen of other as
-all the case breaks could be returns.
+With a goto exit or a break you have to scroll down to exactly the same
+place.  There is no difference at all.
 
-So either form is fine with me.
+Anyway, I'm actually fine with this patch series as-is.  It improves
+a whole lot of stuff and doesn't cause any problems which weren't
+there to begin with.
 
-The old form was poor through.
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
