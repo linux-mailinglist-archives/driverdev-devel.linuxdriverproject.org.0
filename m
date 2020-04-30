@@ -1,75 +1,96 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20E4B1BF94B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 15:22:42 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 651001BF9AA
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 15:37:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 842A086D2F;
-	Thu, 30 Apr 2020 13:22:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D5FC224F97;
+	Thu, 30 Apr 2020 13:37:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UGOKQIlWFcyN; Thu, 30 Apr 2020 13:22:39 +0000 (UTC)
+	with ESMTP id RrQ-RWRsJEBf; Thu, 30 Apr 2020 13:37:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3E48186D2B;
-	Thu, 30 Apr 2020 13:22:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 788A924DD1;
+	Thu, 30 Apr 2020 13:37:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B8D781BF387
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 13:22:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E2F751BF387
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 13:37:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B2D3B86C1E
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 13:22:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D24F787E15
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 13:37:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bv_noZcwhnva for <devel@linuxdriverproject.org>;
- Thu, 30 Apr 2020 13:22:35 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.131])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C265D86DD5
- for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 13:22:09 +0000 (UTC)
-Received: from mail-qv1-f54.google.com ([209.85.219.54]) by
- mrelayeu.kundenserver.de (mreue012 [212.227.15.129]) with ESMTPSA (Nemesis)
- id 1M2gt5-1jSmtE1Bj5-004FGK for <devel@driverdev.osuosl.org>; Thu, 30 Apr
- 2020 15:22:07 +0200
-Received: by mail-qv1-f54.google.com with SMTP id ck5so2902294qvb.11
- for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 06:22:06 -0700 (PDT)
-X-Gm-Message-State: AGi0PuZLJXyE8iOIIBp2wZ4xOif1gTSxhWMQ9mM3Eq4eWsKyK4Q8SzjD
- unM8LJ0poYk9buDHJqwrVo0IV7sxXWk1eUmL2hI=
-X-Google-Smtp-Source: APiQypLuqw7/v6Gh8dAGdkb3SrT/lgJqjVQEkm7oovSCJMnVMwaKvPbW2WJQKu+eMQVtBvXDbWBidCWN2fMbtSmOSbU=
-X-Received: by 2002:a0c:ea43:: with SMTP id u3mr2739084qvp.211.1588252925601; 
- Thu, 30 Apr 2020 06:22:05 -0700 (PDT)
+ with ESMTP id 2zUhjYvw-1XH for <devel@linuxdriverproject.org>;
+ Thu, 30 Apr 2020 13:37:42 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9B98287686
+ for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 13:37:41 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id x17so6941765wrt.5
+ for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 06:37:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=date:from:to:cc:subject:message-id:mail-followup-to:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=cIp9DbU+6rRfiPbG8uAVaJPBU9twoue+ADTvawohLJ4=;
+ b=AUQMg9Bfr7hBR51Z28J9x9t2Irvw2vW5PyG4R/MxI6yDPK6/b/N3PFe0ZbPEv/oNXD
+ MX/9JYqZK8jR0AvdRC6mo7BRI2JjjnAX3A4N7FC2xazulqlbx3GfSuQFUyJZhPZ12dNt
+ UQTEgyH586iFrg6yerVwQymf3ZQWBP7qFMeTs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id
+ :mail-followup-to:references:mime-version:content-disposition
+ :in-reply-to;
+ bh=cIp9DbU+6rRfiPbG8uAVaJPBU9twoue+ADTvawohLJ4=;
+ b=QcsskKi8nbVQjiMCaeP/MVLVsJ7jW9tuhGWQw2BsuO/8DbA1y6krMS29pOXOuc7UCr
+ 3ZvjKOwAsc+oLWJE2a5KkyqmbkexJS53LZKSuNonTQbqiezNtNp/OPn146pK3Fv1ThhG
+ vRRhsyG/OqwAh5WgfHVcfwHbNsITkW5W/cTBDaBzrtn26bm3HdiHexSsPMS5q/udwOez
+ QjhX/SwXtMoVMV8ByVHqJ+AZMPU0lKt747oKjU0I5VjSzyBok6MkUPuBd/e5LPBmlw7R
+ XIm11zaGIT7ZuMAtCbWSFJMuJE8BvVQDzacO+2OToW7k9lq2VGZQBfOEuygvvyEbODre
+ Amjw==
+X-Gm-Message-State: AGi0PuaKEKgMOys5i6oDcOik4Rf/ZcvXyUhTjR95J5T7EOX9jXeo/cem
+ 6nJavlNAoBjHGgLePR7ztCzcQQ==
+X-Google-Smtp-Source: APiQypL9RK8HI6QxyV+3Rq7Wl6MRj5xlTTsfy+Y6JwCeDq2W1PgLcVkhMuTOPlnyqwhEdYENozbNbQ==
+X-Received: by 2002:adf:df8d:: with SMTP id z13mr4003100wrl.304.1588253859692; 
+ Thu, 30 Apr 2020 06:37:39 -0700 (PDT)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+ by smtp.gmail.com with ESMTPSA id o3sm4146326wru.68.2020.04.30.06.37.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Apr 2020 06:37:38 -0700 (PDT)
+Date: Thu, 30 Apr 2020 15:37:31 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Xin Ji <xji@analogixsemi.com>
+Subject: Re: [PATCH v7 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
+ DP bridge driver
+Message-ID: <20200430133731.GA10381@phenom.ffwll.local>
+Mail-Followup-To: Xin Ji <xji@analogixsemi.com>,
+ Nicolas Boichat <drinkcat@google.com>, devel@driverdev.osuosl.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Jonas Karlman <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Pi-Hsun Shih <pihsun@chromium.org>,
+ Sheng Pan <span@analogixsemi.com>,
+ Qilin Wen <qwen@analogixsemi.com>, Ming Liu <mliu@analogixsemi.com>
+References: <cover.1582529411.git.xji@analogixsemi.com>
+ <a81adcf2e79d440edcb7b3989f31efcb80a6e9ff.1582529411.git.xji@analogixsemi.com>
+ <CANMq1KBfB6tXFqYGvr=8fV_bpCV5GbVHeEbRs+fuaZba65-OPw@mail.gmail.com>
+ <20200424065124.GA31922@xin-VirtualBox>
+ <CANMq1KBJ6f74aNAr8BwC3wz8MEeJzwXOQE44gv6C=DNzYmUWCQ@mail.gmail.com>
+ <20200428100508.GD3456981@phenom.ffwll.local>
+ <20200430033614.GA6645@xin-VirtualBox>
 MIME-Version: 1.0
-References: <20200429142119.1735196-1-arnd@arndb.de> <3943343.tW1xmJHsB6@pc-42>
- <CAK8P3a1e=-H_b8_GPJW5-uufye5_6OJ6f+ZWErjKPWkxSRSigw@mail.gmail.com>
- <3063047.NHY2raB2sq@pc-42>
-In-Reply-To: <3063047.NHY2raB2sq@pc-42>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Thu, 30 Apr 2020 15:21:49 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a3Per2f3noAzgN7brQ3g_4EN-vNLcv40k7_vtH+qZG4wA@mail.gmail.com>
-Message-ID: <CAK8P3a3Per2f3noAzgN7brQ3g_4EN-vNLcv40k7_vtH+qZG4wA@mail.gmail.com>
-Subject: Re: [PATCH] staging: wfx: avoid compiler warning on empty array
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-X-Provags-ID: V03:K1:I9DrfSdUNJGRScgcHvwaaufF7V+Eiq5u6DoNphxqUFulYpeQm9B
- RQvCCSTjHSsc4BtfI6jcq9G400h9dKYYKdnFjL2gEBjgM/L3/QOzuj86OPPt5i2PaqWmgSt
- z9v6zFdJBhAhV0cbLMB6pNoykrDtQm00t6jJiMHAXUyTOAeGQZ5WkbaXnZsvwkSThB5xL0n
- R4jJJZjoNpprWIEdn46oQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mmoCnnAqRK8=:iWdkpmi5AxRCWxBo99sgvl
- GrTcbRE1FIlorzmJ7AZOiKpdwNr+KQ56uO9Z5AE+W1w1eW5lFIZTO6NLycE2tcstUr11oGNf7
- n6jdxCvcbGOaVdYLcA+rUqVfKulpH5NspYK5dq91CajM5F8oAjhidYXUAG2FQgG5W2HIDwTWV
- Pd8SiLDhqwaNou5QR1sDN9Fr7UTQNRHqSRjoH7a3vY0ZDvZ89JGdFcKliZtoCktecNSUCbJ5N
- p8C821J65Zd4TGw8XrSth1ajCEGfNjNiuYOp97rwfEAggVOQtFigNE8GrJQThj6P6G4ubff3O
- +JmEwlHqHscALJR4H5acH/X1tqrrytz2McOZE+Los05H93gbwi2In99w1D6a7RAdeBmZr2Pn6
- JS1ASGESbqzdSkKezwSv2h8JbbgZOVv9eEJLm/WIMSPzLC+LQ81Q7kzrWAt25/85fuQzszwsA
- Jvhd7NcWJN9t8vdUlAk5r0cNPR3vTKMX1VvJbbzIhY/xZuoZJo8FJk1HsDQabIRaadUhgjTtF
- 4zIb0U2StFFEUFtwCLnTJwsYpEQmN5dam6NQSIxB8fos0odx4tixNdI/pVZs1P34JiXFTZDUM
- qLNZni0CjI/QMlfEcIudp9xb5fHUV+kRinXQ9xc+djCW1bi9oEjE63/UpqgCfIBvmk3AzFfVc
- mgUyWJFQXuSzoU5aZwgPaAKKnfRI7rIyrMkXWfH+S2TzJJxR8QvgjO2cBR7cLanM6UrH3V7al
- KBFI6uYxYVK4kfKJNhWwrzFy4iHjfOw/k2OZNfk/M2OJTnbKf8wuG6cN7crg5hq9c0siGZEqq
- o3pIw5RWFKSTpwJx0NJywRoUORPOhB64ezbFuLY0xFpiAd1gP4=
+Content-Disposition: inline
+In-Reply-To: <20200430033614.GA6645@xin-VirtualBox>
+X-Operating-System: Linux phenom 5.4.0-4-amd64 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,57 +103,90 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jules Irenge <jbi.octave@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>
+Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Qilin Wen <qwen@analogixsemi.com>, Jonas Karlman <jonas@kwiboo.se>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Andrzej Hajda <a.hajda@samsung.com>, Ming Liu <mliu@analogixsemi.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>,
+ Sheng Pan <span@analogixsemi.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Apr 30, 2020 at 10:42 AM Jerome Pouiller
-<Jerome.Pouiller@silabs.com> wrote:
-> On Wednesday 29 April 2020 22:34:56 CEST Arnd Bergmann wrote:
-> > On Wed, Apr 29, 2020 at 6:04 PM Jerome Pouiller
-> > <Jerome.Pouiller@silabs.com> wrote:
-> > > On Wednesday 29 April 2020 16:21:09 CEST Arnd Bergmann wrote:
+On Thu, Apr 30, 2020 at 11:36:14AM +0800, Xin Ji wrote:
+> On Tue, Apr 28, 2020 at 12:05:08PM +0200, Daniel Vetter wrote:
+> > On Fri, Apr 24, 2020 at 08:12:04PM +0800, Nicolas Boichat wrote:
+> > > On Fri, Apr 24, 2020 at 2:51 PM Xin Ji <xji@analogixsemi.com> wrote:
 > > > >
-> > > > -static const struct of_device_id wfx_sdio_of_match[];
-> > > > +static const struct of_device_id wfx_sdio_of_match[] = {
-> > > > +       { .compatible = "silabs,wfx-sdio" },
-> > > > +       { .compatible = "silabs,wf200" },
-> > > > +       { },
-> > > > +};
-> > > > +MODULE_DEVICE_TABLE(of, wfx_sdio_of_match);
-> > >
-> > > I suggest to keep the '#ifdef CONFIG_OF' around this definition. If
-> > > CONFIG_OF is undefined, of_match_ptr() and of_match_node() will be NULL
-> > > and it should compile.
-> >
-> > I would generally always go for fewer #ifdef instead of more when the result
-> > is the same. Are you worried about wasting 600 bytes of object code size for
-> > the array on systems that need this driver but not CONFIG_OF, or something
-> > else?
->
-> I am not very concerned about the size of the object. However, I think
-> that all the modules should apply the same policy regarding the device
-> tables. With a few greps, I found 3954 struct of_device_id. About 500 are
-> inside #ifdef and about 1000 use of_match_ptr().
->
-> Should we consider that the structs of_device_id have to be defined even
-> if CONFIG_OF is not defined? And In this case, should we drop
-> of_match_ptr()?
->
-> Or in contrary, when kernel is compiled without CONFIG_OF, no modules
-> should contains OF entries in its device table?
+> > > > On Thu, Apr 23, 2020 at 07:55:15PM +0800, Nicolas Boichat wrote:
+> > > > > Hi,
+> > > > >
+> > > > > Just commenting on the mode_fixup function that was added in v7.
+> > > > >
+> > > > [snip]
+> > > > > > +       /*
+> > > > > > +        * once illegal timing detected, use default HFP, HSYNC, HBP
+> > > > > > +        */
+> > > > > > +       if (hblanking < HBLANKING_MIN || (hfp < HP_MIN && hbp < HP_MIN)) {
+> > > > >
+> > > > > should this be adj_hblanking/adj_hfp/adj_hbp?
+> > > > NO, need check original HFP and HBP, if they are not legal, driver need
+> > > > set default value to adj_hsync, adj_hfp, adj_hbp.
+> > > > >
+> > > > > > +               adj_hsync = SYNC_LEN_DEF;
+> > > > > > +               adj_hfp = HFP_HBP_DEF;
+> > > > > > +               adj_hbp = HFP_HBP_DEF;
+> > > > > > +               vref = adj->clock * 1000 / (adj->htotal * adj->vtotal);
+> > > > > > +               if (hblanking < HBLANKING_MIN) {
+> > > > > > +                       delta_adj = HBLANKING_MIN - hblanking;
+> > > > > > +                       adj_clock = vref * delta_adj * adj->vtotal;
+> > > > > > +                       adj->clock += DIV_ROUND_UP(adj_clock, 1000);
+> > > > > > +               } else {
+> > > > > > +                       delta_adj = hblanking - HBLANKING_MIN;
+> > > > > > +                       adj_clock = vref * delta_adj * adj->vtotal;
+> > > > > > +                       adj->clock -= DIV_ROUND_UP(adj_clock, 1000);
+> > > > > > +               }
+> > > > > > +
+> > > > > > +               DRM_WARN("illegal hblanking timing, use default.\n");
+> > > > > > +               DRM_WARN("hfp(%d),hbp(%d),hsync(%d).\n", hfp, hbp, hsync);
+> > > > >
+> > > > > How likely is it that this mode is going to work? Can you just return
+> > > > > false here to reject the mode?
+> > > > We want to set the default minimal Hblancking value, then it may display,
+> > > > otherwise. If we just return false, there is no display for sure.
+> > > 
+> > > Right, understand your argument. I'm pondering if it's not just better
+> > > to reject the mode rather than trying a timing that is definitely
+> > > quite different from what the monitor was asking for. No super strong
+> > > opinion, I'll let other people on the list weigh in.
+> > 
+> > Yeah mode_fixup is supposed to be used to adjust the mode in intermediate
+> > stages (e.g. if you go from progressive to interlaced only at the end of
+> > your pipeline or something like that). It's not meant for adjusting the
+> > mode yout actually put out through a hdmi or dp connector. For fixed
+> > panels adjusting modes to fit the panel is also fairly common, but not for
+> > external outputs.
+> > 
+> > Since this is a DP bridge I'd say no adjusting, just reject what doesn't
+> > fit.
+> We have found some panel which HBP less than 8, if we reject to adjust
+> video timing, then there is no display. The customer does not accept it,
+> they push us to fix it, the only resolve way is to adjust timing.
 
-I think the drivers that use an #ifdef here just do so for historic reasons.
-In the linux-2.6 days, this caused build failures, but just leaving them
-defined has worked for a long time.
+Are we talking about external DP screen here, or some built-in panel? For
+the later case we do a lot of mode adjusting in many drivers ...
 
-       Arnd
+I haven't checked, by if our connector type is eDP then this should be all
+fine.
+-Daniel
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
