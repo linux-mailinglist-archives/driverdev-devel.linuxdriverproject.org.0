@@ -1,104 +1,108 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E26E41BF323
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 10:42:35 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EB6D91BF4D0
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 12:03:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 213BD24B99;
-	Thu, 30 Apr 2020 08:42:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3C0B486CF8;
+	Thu, 30 Apr 2020 10:03:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZDd9QEjXajhE; Thu, 30 Apr 2020 08:42:31 +0000 (UTC)
+	with ESMTP id QpNiZgL7oZ9W; Thu, 30 Apr 2020 10:03:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 969DB24B85;
-	Thu, 30 Apr 2020 08:42:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 283E486BCC;
+	Thu, 30 Apr 2020 10:03:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8771D1BF2B8
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 08:42:26 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6BF6A1BF86C
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 10:03:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 81D548780A
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 08:42:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6808E86C06
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 10:03:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SWXt5m89f2h6 for <devel@linuxdriverproject.org>;
- Thu, 30 Apr 2020 08:42:25 +0000 (UTC)
+ with ESMTP id HiGAKxjMIG8Y for <devel@linuxdriverproject.org>;
+ Thu, 30 Apr 2020 10:03:49 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2070.outbound.protection.outlook.com [40.107.94.70])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CD4B08770E
- for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 08:42:25 +0000 (UTC)
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2104.outbound.protection.outlook.com [40.107.220.104])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1F0C186BCC
+ for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 10:03:49 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bY5oTOT3Uurr56+s6r6HUGMGwihFYkTf90rqFUHgXVMLFDcfFKwIJtMy72za2BtYucUB8RC3epw1m4StwDBeaTjjIRuOZpyrIGUV0DezfhWE1KT9SG1aV+YMYumrCYD5ipqW7XwjzSPXkRD1GgUpBor4qo49VcvuEtN/C106KZ7nTEWlPi5TdYqrJyhyNmW7dG+uC4BJQ2WSeiqm0LvpMYWKNbbquHHBNfvFCz5CUWUUyAVkuwJ65koIfv8HUjzUPRTeosdxTFsYGfnKjQrds/ajDLEd5CT9SxfMVIFG1Uv9G1zTUe2oIYZEztk+BDXiwAtcMDkULNFSJQfu0bfaWA==
+ b=ATpRf9wJ7xKwysWfc45YuFmLwb4XX5Dewt/DcbFPAdhqO1UDBennCNLNcFiEWluHViXHjD8tC1u68z1P3UOcC8pWEfMTEL2sx3v9dVJ7vsDeP5DT6l/IjBlCcxi5CL8IwHmfNXlB+COkmIlDBtnJjjSu16O2CWIyJTC2rN5Cbn91hQ52kWqrSWXtXdQjFygUnUEvRJVuluRjJNN6nhlQeEFek8C1oCg2WctI2JISqyxe+c+6gRStMxRTxbDGobUMDEK7sz2sTAL/ZM7Fx7Wxku5q1DfpN9Yfq3sbfPkRvVTRQTvxlsOi0FISD9ZuPxeUQxE8NY8O36mnZND+7XQoQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fLMYmDA8OiZV/mj92uTE2ZW9VR2ko3o5mecVSnYPYGI=;
- b=F8Rqg/gplADWwzzW5fvl02LZTAMswzfJJIG0FjtmkT7rQtTKtd3rSc0loj7YJgv9itACXRy+hsY7B6vL/Yyny1B2L+6dO+WMNg/wyfIx0x8aZa8Wo0HQraoJ4iowy4XJdpTiJTmBrzyzYCtpmTfPHj+9NFIt8EfBdKWRnbAGPFECoDmpJF1fIGBlQ/pJiLFzSZE8lZYCITo7Kkmmh+EW9vgOYkHz/2dg2ColryWUq5QRX+C8PnG+0/Cjf1i77ZM+PM5BhKE6uOEdfzZkeQXt7zQ7ZcNIEjZRzmrCQn1IxM7Cn9N+uK3WcvFrGPMSsSZnDTy6cArR3fBd6NJjriAJDQ==
+ bh=PjcputcpAVuejRSE+h+UbIwkTAKlbMOSs7rIgggz7jM=;
+ b=H7vbsL5I7lmWwn0+eBaPPerx7Jwf291KCQ6Og4rp5AIkVlJLrg0V7iJJcoJ/4ZDQXvjxZq5Y3OodsblXT/LHoip5C/c2yAFkKndkL/cxmwmwM3IO2yMI+DrAPWSF6V45uMAZ+QozU7IbBrKRqtGq2GL+9b9teQBL+VRtSLYLubHLydl+xgpaFJLwSi2KpkTkb1dZ+lgoDPAQflX9PslHkGY0iReLnatfYSt/vG90tFQYjLqqENHfnyHa9ZJ1nISGBoHjU6iO6syvcuZKwKrySwTCIa43uzu96dl4VIbVuyNWXLv9dk6oi/HR5a78aZJK/Pzh2VwpLKrbzsnS1/D3sw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fLMYmDA8OiZV/mj92uTE2ZW9VR2ko3o5mecVSnYPYGI=;
- b=P/WXp0AVQn0kXtzc643p7N81nLI1IFfaTdmbTeAU9rF4ViJj/obE5pMO1WtbAbT913abyaL6/ZSTc0OZDuqOLsemYhJGoMyiBpoqBp5eHjyAvIBGOIdwj8Q3HqjNiCsuLpejWYobB/QYifimheNGHU8bK8CfA/3AXCjB1AQrBHY=
-Received: from MWHPR11MB1775.namprd11.prod.outlook.com (2603:10b6:300:10e::14)
- by MWHPR11MB1392.namprd11.prod.outlook.com (2603:10b6:300:24::14)
+ bh=PjcputcpAVuejRSE+h+UbIwkTAKlbMOSs7rIgggz7jM=;
+ b=EcCinpGUCZSAbH0mArOawo0xEitT5exwza4JOZ6dWbPO6NXpH61bPu4lZ3nZciUtVvpURzAClKj/7Ywj8Ivfea4AcQ9EP9LVsx+QCyoJg407ITahLcVFAHwMyuMS1QH3PVxbcMRO4SmBV1nifbFBDsUHBkOl70MEp2qSPPM9gog=
+Authentication-Results: analogixsemi.com; dkim=none (message not signed)
+ header.d=none;analogixsemi.com; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BY5PR04MB6625.namprd04.prod.outlook.com (2603:10b6:a03:219::23)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.13; Thu, 30 Apr
- 2020 08:42:24 +0000
-Received: from MWHPR11MB1775.namprd11.prod.outlook.com
- ([fe80::81d5:b62b:3770:ffbe]) by MWHPR11MB1775.namprd11.prod.outlook.com
- ([fe80::81d5:b62b:3770:ffbe%10]) with mapi id 15.20.2937.028; Thu, 30 Apr
- 2020 08:42:24 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH] staging: wfx: avoid compiler warning on empty array
-Thread-Topic: [PATCH] staging: wfx: avoid compiler warning on empty array
-Thread-Index: AQHWHjF5vlfoO7puXUWgUhn1WHjUDaiQQ0QAgABLogCAAMtAgA==
-Date: Thu, 30 Apr 2020 08:42:24 +0000
-Message-ID: <3063047.NHY2raB2sq@pc-42>
-References: <20200429142119.1735196-1-arnd@arndb.de> <3943343.tW1xmJHsB6@pc-42>
- <CAK8P3a1e=-H_b8_GPJW5-uufye5_6OJ6f+ZWErjKPWkxSRSigw@mail.gmail.com>
-In-Reply-To: <CAK8P3a1e=-H_b8_GPJW5-uufye5_6OJ6f+ZWErjKPWkxSRSigw@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: arndb.de; dkim=none (message not signed)
- header.d=none;arndb.de; dmarc=none action=none header.from=silabs.com;
-x-originating-ip: [82.67.86.106]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: c70ee467-daf5-4bcc-834a-08d7ece267c9
-x-ms-traffictypediagnostic: MWHPR11MB1392:
-x-microsoft-antispam-prvs: <MWHPR11MB13922D6E5B0F3DB1C7CD830793AA0@MWHPR11MB1392.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 0389EDA07F
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR11MB1775.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(7916004)(376002)(366004)(136003)(39850400004)(396003)(346002)(53546011)(316002)(2906002)(6512007)(6506007)(9686003)(6916009)(26005)(66556008)(33716001)(91956017)(64756008)(66476007)(76116006)(66946007)(66446008)(8936002)(4326008)(6486002)(5660300002)(186003)(71200400001)(86362001)(8676002)(54906003)(478600001)(39026012);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: vvGPfMgYOcm6ed5rE9isX9N+zvQFgFmyj8nDinzWU5LsJ3kAQ1NArXH95qSI3ZYjbHrZ/6lx24KWoZhKhBQbwrZU89anZEGvoekzZuWTukf+kkmPu10NpBrL5auw7ZIv+0D49S8rbWX7zgu4INJhri9RnbaHLBELq+EF7apAxTn99xJwworILMcDm8yIJLbD1MMCqfe3Gb7qvE0OEkT0dHqERRyu27SU19P/SJCiEYbwZRLy5BZ6j/Yz7tm9j08Z/djbVMuaWRjqO4iC3vLjrHfQiLmvuxOJ06v0lSuY9STchsutfCmstP9gC3cr2tEDYRF3civXnvNvqoR/pM3cLptwvgfECzCdRMC+YrmuxjZkQa6K71v5/OOY92sBaYmoE2deuV7/wBUn89ldXHLbtwEoWS8fUq0rq1A3ySX15CajxioKnrDNblD7cJAQRbyxELq3qOPjAzPW4WW62OTgar6X/Zuz3YjS3ka41TN1u1w6pItvXmIkbj5Jzke9DdT8
-x-ms-exchange-antispam-messagedata: Qh7UVM5uAiEv07nL5ofAF76vGoDAJ4RS/bfclpaTGIqjDfxFks9GELVEJuyg3iF6lIMmeeGA8hjY12Ir3Gtb10yICa4AirU+ku7iIo5quw/CV+AK8DhBapKW4JFZxiR0Sx7ai4jcdjum3LUgKFkqHQDrr4G38SdN/ngfdEYetZ3+EMjVAVI4QJbIwXmAe965YRVNdrk24O2OlonwiPmv2P2j9Ek9GstabqiMoQ1ygFqOm1eLpYb6bALUcqTCNlpbsF4YCg6UTvfdzrJBPfgPM3p4on/VR37qRKBH/VYw42R7NyZtYMuOpkpxfnbhSw1Jdrnh2Rh3hNhx/3vkv3fgj/uzjcQhfSSgt4vXP4QG4F9Ef7VQuwPrs5eR3q9UV/MO7BTyJ5oQoWf7NfKfjyUus7jyJA/O8+BBVQ0rLpXDLjaRXWDQPLP2twLoQRfREqsxSuv7ttSyJh2BlBJQSSGUjMgzFPRyWr88s2gz1aD8VDg8nbv9D3FB/7gd+TfRYJIirtN+wBv+b4wMwv6mzSuLyDVqg8LPaT0jzLjjR034k5BNhN8pWDuOwUVeX1XLO0GOm7DCR5ZZEhIuLJ7fzNRSfd09fap2hNJThlDCPuYa6BHJItnzskMFGOr2QiKdItLeOj0If5EDUZVMkv4zKPyHZLdkRFbj7gWYIbx2JhpwXw7Rox/qyRlMXQgvibHWOIXebiRNtSlh2iHdPSfocpBBSQrwzYS8ZhIETUt/TkMc0bWHJVMjWblXyclMECX6itU71lvuilu099XtXYJu8I0fkxleBGq3g/2FEYPfno/viDo=
-x-ms-exchange-transport-forked: True
-Content-ID: <DC950E9F6F97BF43BF18998A290B3C60@namprd11.prod.outlook.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.19; Thu, 30 Apr
+ 2020 09:31:45 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::4517:bcc8:a3bd:407f]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::4517:bcc8:a3bd:407f%6]) with mapi id 15.20.2958.020; Thu, 30 Apr 2020
+ 09:31:44 +0000
+Date: Thu, 30 Apr 2020 17:31:36 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: devel@driverdev.osuosl.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andrzej Hajda <a.hajda@samsung.com>, Nicolas Boichat <drinkcat@google.com>,
+ Sam Ravnborg <sam@ravnborg.org>
+Subject: [PATCH v9 0/2] Add initial support for slimport anx7625
+Message-ID: <cover.1588236052.git.xji@analogixsemi.com>
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-ClientProxiedBy: HK2PR02CA0206.apcprd02.prod.outlook.com
+ (2603:1096:201:20::18) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c70ee467-daf5-4bcc-834a-08d7ece267c9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Apr 2020 08:42:24.3548 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: hgIAjaych58pblB2dsP+1hSGCpQk5jkUhuts/owEH4jLLFtFuC0eTTDbyEJr1qy0dASIOYotseX1cHEihzoGgg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1392
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from xin-VirtualBox (114.247.245.254) by
+ HK2PR02CA0206.apcprd02.prod.outlook.com (2603:1096:201:20::18) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.2958.19 via Frontend Transport; Thu, 30 Apr 2020 09:31:44 +0000
+X-Originating-IP: [114.247.245.254]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 813215dc-d5f7-4de6-d1d4-08d7ece94c1d
+X-MS-TrafficTypeDiagnostic: BY5PR04MB6625:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BY5PR04MB6625230A8C5E304C1DB0F5CAC7AA0@BY5PR04MB6625.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Forefront-PRVS: 0389EDA07F
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: oHh5ZHcBhVY1LkzUt35CHsQF+drWUKmfGLxxDy4vYfGhYLtsttnOGrtnEd+9SMNXGRRtFd5I+6Yp0GuvxN7pN0TkcKi1vo23Afu1JE9h7hMbNvsBYi+OwQyy0zFxYTCMtsZs22yExeYv0vukdaXOFNk2mduldlMB+Sg6T1X13N3R0OnYCjbZ3KvlsM6Zf6y6Huk8MTWh1P/LyOQ1KEkau+nimkEDrWOh/B/Dewgj5Zh+PmFLgZKTdJTVii6gBnIPDYOQ9z5gIccGG8piBQhsZW1FnIG+ljmw1/jhNYZcjPq9Nudjw0vFbNGtpzUvG5xCIqWge2AHJNIbnJ85jS7sqv+GzAvdjLECGp9A80H6VDwuxS2/BodmjO2k/HMer8bAne06r1iQaXpdCrKTQ8nw0jAHZwVwVPwdTLcstF9DaUW+ifQIpiYYJTS0YmWRXBhI
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(136003)(376002)(346002)(396003)(366004)(39840400004)(26005)(7416002)(2906002)(16526019)(186003)(5660300002)(2616005)(86362001)(956004)(52116002)(478600001)(316002)(6496006)(6666004)(8676002)(8936002)(36756003)(4326008)(107886003)(54906003)(6486002)(66476007)(66946007)(66556008)(110136005);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: gUYdRKjnIidZhk4/KobQo9qmzZKdTLMuNA+jKlY6Edu2PWighVmwNABYPEOhVSQAt5MMnJHQLhD/SMGjcYVJG9IQO85Nv/p7JfcA0uMHv/18Ovl3llD7Iag2FyNV7lwijFG1sGcZ1pbtHzYMGCxmWyrxdkR+xTzKSXA/pUNtBO+BMib6hoF9suuhPEbNL6OVgfiYUgLKY9hJXz/omyWSyTwhiUB0YOgKKgUKs8ajliHo1d7DLR9ilgnLnUlwQ+bTLeq8KljffTnfm5TQvYUt2LtoHLHCCiHFPfLBKz5pnNTBcfNXD0mLZK87HxXXiQ18WFf84IRXRln3q8KY+5X23V8HdmSeNnRTrlA2KXAIodRZjxNvfM/PT2m0KHMegSnl2txLREQtndAvf+tlp0q1uMeZTMD1hL005qTmOBlYlxxbeW+ysUxCEN6zm3FY/bXxRtyg2c6ThggO/r24sv4lZgdDjATz87L1wF9bGkCPyWVldIAszJG2G1U3Nk3ZAMkhK5FP7viJJscIWy+H/1HKAiGfbJcVqAu4YapPiCWgr7LDJBqcQPcw1Ktzcxn3Rl/9KhxYRzOsjqKa59xbZ2K54u3OP9Tv+VhVZbFgCgDhFCGoSjlJpIrfOBiUIWrYbhiDMXXZ0MgZb6rdZWPV96kehlMIBE215iz6vCnLsYbtQR3jIEs3f1cen0wAHA+1BNJFXL+1pJZVJn3OtyBQFsdlk7qzCyhDA1Ayv2nDIDSZgWKSXkIavxS3NHzDsFWBvJW/GOZSXakYpVb5lXW3Q84kucfzPXtBU9ts7SEDip8kY2jDfV6lUaKqT00X9Nl2sTtl
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 813215dc-d5f7-4de6-d1d4-08d7ece94c1d
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Apr 2020 09:31:44.6893 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: KdZ9dOSajEN9oIiE78XWCnkgyzspLif2NVEVNKhbylvAQWC8hAuGw1sd+hYRK6WfnsQYuAkP7BWMT2r0erYGsQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6625
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,58 +115,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jules Irenge <jbi.octave@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?iso-8859-2?Q?Micha=B3_Miros=B3aw?= <mirq-linux@rere.qmqm.pl>
-Content-Type: text/plain; charset="iso-8859-2"
-Content-Transfer-Encoding: quoted-printable
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
+ Nicolas Boichat <drinkcat@chromium.org>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Sheng Pan <span@analogixsemi.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wednesday 29 April 2020 22:34:56 CEST Arnd Bergmann wrote:
-> =
+Hi all,
 
-> On Wed, Apr 29, 2020 at 6:04 PM Jerome Pouiller
-> <Jerome.Pouiller@silabs.com> wrote:
-> > On Wednesday 29 April 2020 16:21:09 CEST Arnd Bergmann wrote:
-> > >
-> > > -static const struct of_device_id wfx_sdio_of_match[];
-> > > +static const struct of_device_id wfx_sdio_of_match[] =3D {
-> > > +       { .compatible =3D "silabs,wfx-sdio" },
-> > > +       { .compatible =3D "silabs,wf200" },
-> > > +       { },
-> > > +};
-> > > +MODULE_DEVICE_TABLE(of, wfx_sdio_of_match);
-> >
-> > I suggest to keep the '#ifdef CONFIG_OF' around this definition. If
-> > CONFIG_OF is undefined, of_match_ptr() and of_match_node() will be NULL
-> > and it should compile.
-> =
+The following series add support for the Slimport ANX7625 transmitter, a
+ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
 
-> I would generally always go for fewer #ifdef instead of more when the res=
-ult
-> is the same. Are you worried about wasting 600 bytes of object code size =
-for
-> the array on systems that need this driver but not CONFIG_OF, or something
-> else?
 
-I am not very concerned about the size of the object. However, I think
-that all the modules should apply the same policy regarding the device
-tables. With a few greps, I found 3954 struct of_device_id. About 500 are
-inside #ifdef and about 1000 use of_match_ptr().
+This is the v9 version, any mistakes, please let me know, I will fix it in
+the next series.
 
-Should we consider that the structs of_device_id have to be defined even
-if CONFIG_OF is not defined? And In this case, should we drop
-of_match_ptr()?
+Change history:
+v9: Fix comments from Sam, Nicolas, Daniel
+ - Remove extcon interface.
+ - Remove DPI support.
+ - Fix dt_binding_check complains.
+ - Code clean up and update description.
 
-Or in contrary, when kernel is compiled without CONFIG_OF, no modules
-should contains OF entries in its device table?
+v8: Fix comments from Nicolas.
+ - Fix several coding format.
+ - Update description.
 
--- =
+v7:
+ - Fix critical timing(eg:odd hfp/hbp) in "mode_fixup" interface,
+   enhance MIPI RX tolerance by setting register MIPI_DIGITAL_ADJ_1 to 0x3D.
 
-J=E9r=F4me Pouiller
+
+Xin Ji (2):
+  dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter binding
+  drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to DP bridge driver
+
+ .../bindings/display/bridge/analogix,anx7625.yaml  |   97 +
+ drivers/gpu/drm/bridge/Makefile                    |    2 +-
+ drivers/gpu/drm/bridge/analogix/Kconfig            |    8 +
+ drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
+ drivers/gpu/drm/bridge/analogix/anx7625.c          | 1959 ++++++++++++++++++++
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |  397 ++++
+ 6 files changed, 2463 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
+
+-- 
+2.7.4
 
 _______________________________________________
 devel mailing list
