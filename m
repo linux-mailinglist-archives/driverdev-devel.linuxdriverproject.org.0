@@ -2,91 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB6071BEDA8
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 03:35:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 929591BEDDF
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 03:52:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 610A187D53;
-	Thu, 30 Apr 2020 01:35:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2DD7387D53;
+	Thu, 30 Apr 2020 01:52:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id psXhT6ZtgS+y; Thu, 30 Apr 2020 01:35:20 +0000 (UTC)
+	with ESMTP id i0AMxH8AKDu6; Thu, 30 Apr 2020 01:52:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8DB1E87D0C;
-	Thu, 30 Apr 2020 01:35:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0A23F87D45;
+	Thu, 30 Apr 2020 01:52:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F104D1BF316
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 01:35:17 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B71B1BF39F
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 01:51:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ED7938854A
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 01:35:17 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 06A3F23E65
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 01:51:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x0ToKXlJmsCS for <devel@linuxdriverproject.org>;
- Thu, 30 Apr 2020 01:35:17 +0000 (UTC)
+ with ESMTP id mhwUdgtw3fnw for <devel@linuxdriverproject.org>;
+ Thu, 30 Apr 2020 01:51:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com
- [66.111.4.25])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4852B88548
- for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 01:35:17 +0000 (UTC)
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailout.nyi.internal (Postfix) with ESMTP id 52EC15C012E;
- Wed, 29 Apr 2020 21:35:16 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute1.internal (MEProxy); Wed, 29 Apr 2020 21:35:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rylan.coffee; h=
- date:from:to:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=XX5ohvsksBkQGH5jbDa4t+EQwah
- gIjz54VbrjjxbWJY=; b=r9gRGvtScYbH5in9aalUzwkJr/sKf1BncihRT0mNAHT
- gaEJ3V12kbplqnc+7COsqikx8Qv0X6Hb+uXMW6LTWbU23tsA9F7yL0LBbjsHVyMy
- ToewGhdtZop2zlTSBYaQjCRP5k73Q/DhMFpJur5XzAc6enZQTeuhn3ZVxMm/QNw6
- bFaBmTpwdK0ToGK4rc7LtSw4Wpwsni7jOhumeAKL7jAkM2n0zItJnqHnThZlvfbU
- iTScQhVqBoewR+8H72MvcsC76aAxjsjMrnwy5ktVdNSEsOtrVZL8mvJpQ+XBrmuK
- jR6Qsru3JDh7wwuTBaRTc696q4PoTYg3Iy47ij7Yabw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=XX5ohv
- sksBkQGH5jbDa4t+EQwahgIjz54VbrjjxbWJY=; b=4WJhQ8eXa13H7Byw6ikUXH
- D1RpSw38kXM2q26mmlPBLIzDw5h9iT3O5x7rylGnlA5Glcr+86JQWRVYDTjVwQK0
- HGM+KWdfD2nfPx8lJfl4JqzD1KRv6AvGOb8VS7o4ZFQ+sMkkkyp9duX/jjmIdLZ8
- xTzMQC71FGqnUPNomsK+7nwIbH87yaYh/dUVwBg6l4IusE5aDEVYPHIuPD0RAr3+
- oxmBuBXajzJTLUWEtE9+Isj7TBdPyz7gs33EZaL4jdPZCL5TiYeCdYLdnXlGm9el
- i1K2m6jUkBe1aJ577hlRGr1bLhp1S5kmH44JqR6/rPyUG3hmRAfKnvlMZ111HX+g
- ==
-X-ME-Sender: <xms:VCuqXtY90SDK0St5lHn7_oAvpZhxHLArDg0rGLNkVSW-ThNal22prg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedrieeggdegjecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggujgesthdtredttddtjeenucfhrhhomheptfihlhgrnhcu
- ffhmvghllhhouceomhgrihhlsehrhihlrghnrdgtohhffhgvvgeqnecuggftrfgrthhtvg
- hrnhepjeffvefffeevgfdtteegudffieduveeuhfettddvueehveethfffgeetfeeghfeu
- necukfhppedutdekrdegledrudehkedrkeegnecuvehluhhsthgvrhfuihiivgepheenuc
- frrghrrghmpehmrghilhhfrhhomhepmhgrihhlsehrhihlrghnrdgtohhffhgvvg
-X-ME-Proxy: <xmx:VCuqXtvEoL6it9M_qxN7xt5qz1FIcJKZ8lQAoe13oY32aMyHgmk6bQ>
- <xmx:VCuqXuvdsW2Mc_1fzxFvmOhnNEESF9IDLyh6C2iRLUAFymfxutwe_w>
- <xmx:VCuqXmrvnd5C4B4FY99qPLAk02TUEFVeh7RPxWPO2YA2T8WvbFN1LQ>
- <xmx:VCuqXmrakKYuK6fgDUbYgSaPYo_OOZOr3Wm-hN5nIkC5xHdT_kPuGw>
-Received: from athena (pool-108-49-158-84.bstnma.fios.verizon.net
- [108.49.158.84])
- by mail.messagingengine.com (Postfix) with ESMTPA id E66533065EFE;
- Wed, 29 Apr 2020 21:35:15 -0400 (EDT)
-Date: Wed, 29 Apr 2020 21:35:15 -0400
-From: Rylan Dmello <mail@rylan.coffee>
-To: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- netdev@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Joe Perches <joe@perches.com>
-Subject: [PATCH v2 7/7] staging: qlge: Fix function argument alignment
- warning in ql_init_device
-Message-ID: <12c7c34330b410e4ee8b9b5634f1a50ceb9c3590.1588209862.git.mail@rylan.coffee>
-References: <cover.1588209862.git.mail@rylan.coffee>
-MIME-Version: 1.0
-Content-Disposition: inline
+Received: from smtprelay.hostedemail.com (smtprelay0024.hostedemail.com
+ [216.40.44.24])
+ by silver.osuosl.org (Postfix) with ESMTPS id F13AA204AE
+ for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 01:51:56 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave08.hostedemail.com (Postfix) with ESMTP id DDCCF182D514E
+ for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 01:51:54 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay08.hostedemail.com (Postfix) with ESMTP id 51CBD182CED28;
+ Thu, 30 Apr 2020 01:51:52 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1537:1566:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3622:3866:3867:3868:3870:4321:5007:7903:10004:10400:10848:11232:11658:11914:12048:12296:12297:12740:12760:12895:13069:13255:13311:13357:13439:14181:14659:14721:21080:21451:21627:30012:30054:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: lock88_4a60899a54114
+X-Filterd-Recvd-Size: 1288
+Received: from XPS-9350.home (unknown [47.151.136.130])
+ (Authenticated sender: joe@perches.com)
+ by omf20.hostedemail.com (Postfix) with ESMTPA;
+ Thu, 30 Apr 2020 01:51:50 +0000 (UTC)
+Message-ID: <d03d6118f6640ac170c8e55fb0846b73f75f6f3c.camel@perches.com>
+Subject: Re: [PATCH v2 0/7] staging: qlge: Checkpatch.pl indentation fixes
+ in qlge_main.c
+From: Joe Perches <joe@perches.com>
+To: Rylan Dmello <mail@rylan.coffee>, Manish Chopra <manishc@marvell.com>, 
+ GR-Linux-NIC-Dev@marvell.com, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>,  netdev@vger.kernel.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Date: Wed, 29 Apr 2020 18:51:49 -0700
 In-Reply-To: <cover.1588209862.git.mail@rylan.coffee>
+References: <cover.1588209862.git.mail@rylan.coffee>
+User-Agent: Evolution 3.36.1-2 
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,41 +82,16 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix checkpatch.pl check:
+On Wed, 2020-04-29 at 21:31 -0400, Rylan Dmello wrote:
+> This patchset fixes some indentation- and style-related issues in qlge_main.c
+> reported by checkpatch.pl, such as:
+> 
+>   WARNING: Avoid multiple line dereference
+>   WARNING: line over 80 characters
+>   WARNING: suspect code indent for conditional statements
 
-  CHECK: Alignment should match open parenthesis
+All of this looks reasonable to me.
 
-Signed-off-by: Rylan Dmello <mail@rylan.coffee>
----
- drivers/staging/qlge/qlge_main.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-index fa708c722033..93df4f79b21d 100644
---- a/drivers/staging/qlge/qlge_main.c
-+++ b/drivers/staging/qlge/qlge_main.c
-@@ -4433,8 +4433,7 @@ static int ql_init_device(struct pci_dev *pdev, struct net_device *ndev,
- 	pdev->needs_freset = 1;
- 	pci_save_state(pdev);
- 	qdev->reg_base =
--	    ioremap(pci_resource_start(pdev, 1),
--			    pci_resource_len(pdev, 1));
-+		ioremap(pci_resource_start(pdev, 1), pci_resource_len(pdev, 1));
- 	if (!qdev->reg_base) {
- 		dev_err(&pdev->dev, "Register mapping failed.\n");
- 		err = -ENOMEM;
-@@ -4443,8 +4442,7 @@ static int ql_init_device(struct pci_dev *pdev, struct net_device *ndev,
- 
- 	qdev->doorbell_area_size = pci_resource_len(pdev, 3);
- 	qdev->doorbell_area =
--	    ioremap(pci_resource_start(pdev, 3),
--			    pci_resource_len(pdev, 3));
-+		ioremap(pci_resource_start(pdev, 3), pci_resource_len(pdev, 3));
- 	if (!qdev->doorbell_area) {
- 		dev_err(&pdev->dev, "Doorbell register mapping failed.\n");
- 		err = -ENOMEM;
--- 
-2.26.2
 
 _______________________________________________
 devel mailing list
