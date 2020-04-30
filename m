@@ -1,113 +1,110 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05AA01BEEEB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 06:10:11 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22BED1BF197
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Apr 2020 09:34:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EB1FF86CDD;
-	Thu, 30 Apr 2020 04:10:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C1E7A24BE6;
+	Thu, 30 Apr 2020 07:34:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SWef8JQUEpeO; Thu, 30 Apr 2020 04:10:09 +0000 (UTC)
+	with ESMTP id G3Y0qVGkj4c4; Thu, 30 Apr 2020 07:33:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2011386CB7;
-	Thu, 30 Apr 2020 04:10:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7A3D3241AE;
+	Thu, 30 Apr 2020 07:33:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7F2681BF289
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 04:09:22 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0BAB61BF2C5
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 07:33:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 76A4387CEC
- for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 04:09:22 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0654786C7A
+ for <devel@linuxdriverproject.org>; Thu, 30 Apr 2020 07:33:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZkCNpmamlM9k for <devel@linuxdriverproject.org>;
- Thu, 30 Apr 2020 04:09:20 +0000 (UTC)
+ with ESMTP id HaIN7r36CJ5K for <devel@linuxdriverproject.org>;
+ Thu, 30 Apr 2020 07:33:52 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2114.outbound.protection.outlook.com [40.107.220.114])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9E2F285629
- for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 04:09:20 +0000 (UTC)
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2130.outbound.protection.outlook.com [40.107.93.130])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A962486C77
+ for <devel@driverdev.osuosl.org>; Thu, 30 Apr 2020 07:33:52 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GsW6z1TNwNgnVO8Jtm95REVlh3cXYqHa7zRLyInLUwXNwfk3lL/8C6Ok0VNDQOYnXwjiIOvYDP7LgJwDYGqgKrYZEEC4c7s24hsaFJMaifIGgFl11CuVzG5TnjbqoIwiaWUOl6WWDgnU9nrQOxDXgA8s6FqJ7DsgiDvqrQRVWmBVkmLNYOqOP0rX+UENom9clsMu9oTmZhDubUhvD9qiiOBw069EvUkDGB3+WgZMgMCJTn85RtMnin7kMsDcU90dBbdsId8nxcMYVkDsVeiwY+2ucpiZGkwO21z6BG65MQo39MKWMllP5zFwlwOiJpODpfW2Jp4u2Y9E8FZW5mok2A==
+ b=Je7izg2x4U70dG19t9RZWnWuUoIz4kJcbZmzwJRoHQE0pbZwmvimRiZkKkDoDsok5wbBFTLT7gU0Kw23oFFptGKNxknaj6+bDtijST42T3M4dyFJuuQiz0ANHqfdWCV7xopJJ2I6cn4MkcAZrhHr1jUT+9tFAYU8iXPgdKx6t6i/HF0HrIK3fgAsUEQWxVTIRKkKSbm8FEhKVcibwPNIRgrj71hv8NlUQnI4ATfMmdhMNTQdsgzeGCInNJmvCHSOsTmyl0WCbsEbniMgAnVEh/6sRWQmQXgR8Yg9zt4WAcO8yLmqq2dMU/sxUCdSJy2Yk+Usaz0EmBW2a3UjKno1dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NobJXkBPXkhSADDNjB5Em1tDmWoTMnJuWf4RyXVOZgE=;
- b=dX1OMnvdTc1SXjNEBXppz5bsfMIrbNOyxDT1prJFF5m6z2J0BXC865CAcnvuX0/wFsdcwgUcmH/fRYopFTBhn6zUgMO/X42xS6ulpCGT34ypZH+gOxVAxPU3iOpomeWbcgnaZEyx1i9PSFag0R3+BuANHdG0+S7ruBQHCkAcWQdfpuMZbLEqnABwwsj/VURqkiNlBtqw/FD6LJx0BH1DHOyV8gcx5SV9JYRe8a1GFx3/ZIE9UB1iWi1FNbrVsvkVgFL3xt2IK1wjiANn/St9JIg7Pg84cwsbDQ2COGCfcR453XsaBjrJLVrFDShHR73sR7OSQj1JYoZtf6Yu0RQDpQ==
+ bh=/qQ/yx6abKRIL0FsJwS93t9eFiymJD6IOqEolKEMHSc=;
+ b=KqVx1zu+cEtV7QoFhRHs9uzQKEKdp9kYPcJMTygx4x7mPdV+bJyyNDiZyYxgC+pFwzr+HXcKdHzlrqG5djM04O9RqwNGuDkUEqasb5MllXVZyhZcFSzBQEow5dBysasg+lSYO8EewyBfVU2/slYzthAw3KAkrGtgXvjoduH9MpKlSexjs2b6gsPk/gHDDFu1Sz63uw+cZk1YhEN9tifG4ftmZs7uJ927H43UloebwwRmd2XauUqiYiB/m/cXAxLD77miO/TsRoyx6OAnSl4o/SRoMStEwEzbsy1NfZ5xf8zcdjWImeNzoevjVPdot0OJFNFx/U8sQ/63gYD8ToiOKw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
  header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NobJXkBPXkhSADDNjB5Em1tDmWoTMnJuWf4RyXVOZgE=;
- b=bbOosWt9g75v9D0E6bTYiFdMgK0wEKVA4hJShHWgjL8kXgPIokSE4FOCbxTwPde9VnCquaoiysowg5WQse+m/bUxC3JVmQnCMXXcbAzyolpeTUUa6Ye1c9K5Vtbaqrm9NuA11vlnzSWJuS7V8xXOse4GKzu3i7otX0OROELaFCQ=
+ bh=/qQ/yx6abKRIL0FsJwS93t9eFiymJD6IOqEolKEMHSc=;
+ b=GAq8Py8eNemiPtRXyVx9KrccuDl78mU1IVzgeSa3Gu4bu3rnqMRn1k563jW4f/INZYpVZTPQqv68Y7j0GOs1ARquJMpA/oSNVqKOAPibhAxiuv9w7shnistGzBMgthu41tL2LS7DfeLWRSRD+oYtbTAMA286i/u7lxQzAhqts4c=
 Authentication-Results: analogixsemi.com; dkim=none (message not signed)
  header.d=none;analogixsemi.com; dmarc=none action=none
  header.from=analogixsemi.com;
 Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by BY5PR04MB6689.namprd04.prod.outlook.com (2603:10b6:a03:228::24)
+ by BY5PR04MB6996.namprd04.prod.outlook.com (2603:10b6:a03:224::7)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.22; Thu, 30 Apr
- 2020 03:36:21 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.20; Thu, 30 Apr
+ 2020 06:01:40 +0000
 Received: from BY5PR04MB6739.namprd04.prod.outlook.com
  ([fe80::4517:bcc8:a3bd:407f]) by BY5PR04MB6739.namprd04.prod.outlook.com
  ([fe80::4517:bcc8:a3bd:407f%6]) with mapi id 15.20.2958.020; Thu, 30 Apr 2020
- 03:36:21 +0000
-Date: Thu, 30 Apr 2020 11:36:14 +0800
+ 06:01:40 +0000
+Date: Thu, 30 Apr 2020 14:01:32 +0800
 From: Xin Ji <xji@analogixsemi.com>
-To: Daniel Vetter <daniel@ffwll.ch>, Nicolas Boichat <drinkcat@google.com>
-Subject: Re: [PATCH v7 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
- DP bridge driver
-Message-ID: <20200430033614.GA6645@xin-VirtualBox>
-References: <cover.1582529411.git.xji@analogixsemi.com>
- <a81adcf2e79d440edcb7b3989f31efcb80a6e9ff.1582529411.git.xji@analogixsemi.com>
- <CANMq1KBfB6tXFqYGvr=8fV_bpCV5GbVHeEbRs+fuaZba65-OPw@mail.gmail.com>
- <20200424065124.GA31922@xin-VirtualBox>
- <CANMq1KBJ6f74aNAr8BwC3wz8MEeJzwXOQE44gv6C=DNzYmUWCQ@mail.gmail.com>
- <20200428100508.GD3456981@phenom.ffwll.local>
+To: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH v8 1/2] dt-bindings: drm/bridge: anx7625: MIPI to DP
+ transmitter binding
+Message-ID: <20200430060132.GB6645@xin-VirtualBox>
+References: <cover.1587880280.git.xji@analogixsemi.com>
+ <67ccead807b7d0a50df479cab2c9d325041224bc.1587880280.git.xji@analogixsemi.com>
+ <20200427184909.GA15880@ravnborg.org>
 Content-Disposition: inline
-In-Reply-To: <20200428100508.GD3456981@phenom.ffwll.local>
+In-Reply-To: <20200427184909.GA15880@ravnborg.org>
 User-Agent: Mutt/1.5.24 (2015-08-30)
-X-ClientProxiedBy: HK0PR03CA0097.apcprd03.prod.outlook.com
- (2603:1096:203:b0::13) To BY5PR04MB6739.namprd04.prod.outlook.com
+X-ClientProxiedBy: HK2PR0302CA0008.apcprd03.prod.outlook.com
+ (2603:1096:202::18) To BY5PR04MB6739.namprd04.prod.outlook.com
  (2603:10b6:a03:229::8)
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from xin-VirtualBox (114.247.245.254) by
- HK0PR03CA0097.apcprd03.prod.outlook.com (2603:1096:203:b0::13) with Microsoft
+ HK2PR0302CA0008.apcprd03.prod.outlook.com (2603:1096:202::18) with Microsoft
  SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
- 15.20.2958.19 via Frontend Transport; Thu, 30 Apr 2020 03:36:21 +0000
+ 15.20.2979.14 via Frontend Transport; Thu, 30 Apr 2020 06:01:39 +0000
 X-Originating-IP: [114.247.245.254]
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: afd949fc-13f3-4530-db6c-08d7ecb7a696
-X-MS-TrafficTypeDiagnostic: BY5PR04MB6689:
+X-MS-Office365-Filtering-Correlation-Id: 2dd22024-81d2-4e30-5a7f-08d7eccbf34c
+X-MS-TrafficTypeDiagnostic: BY5PR04MB6996:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BY5PR04MB66892C68B5FAB0B2EDBDEFC7C7AA0@BY5PR04MB6689.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-Microsoft-Antispam-PRVS: <BY5PR04MB69961C26C836FCE568FD4156C7AA0@BY5PR04MB6996.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
 X-Forefront-PRVS: 0389EDA07F
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: p1wKTUCAorEQzSmWXb16+TfXpi7ak4u6Uo9yDI4N/9w50fl9MTf/bALCd8xUOq7I2uo8r82yoC18GzEcxS2auKQXtyCCQZBcI2+ln159Rg0UDz+Fdz+WrpAIQIT8apCnJx0XQ3nFLYS9EnQrI8lr9mJdAGLz4vzNa44l5kNRwUxfZeGhktKxP39nc3zm48TGN+Skj00DHPv+DD9ESitvnTfMkptc2CjJTbPCiORLYp8uHPoG9I6NUiYQUYjpuFwCroX+olTmsvXfZAN62wcTiPpANZSZ3WYXbq9dYP3wjnL0mOXrm5roulmad9irsHWXW+Pax4eq9qtHAPQKJtGLjNA/hFe2z+EILL1seMm13p4Puqm1QL+lFnSsvkJ1SNBF/OC3bNc7fhcdS+84e3be2lw2Tq4AjN9cI0yBEKgyvVjnCQS4raYWjgJCr44Ctqkg+GC3UdDMIk/zc/V+huRI+5C1A0Oj/tx1YA2qkl2dEQBGS2Nj9YONValHbHFn8lE2CWWlD6fIxY0fJcLP75AIqA==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(39840400004)(376002)(396003)(366004)(136003)(346002)(54906003)(33656002)(2906002)(86362001)(33716001)(966005)(6496006)(8676002)(53546011)(478600001)(956004)(6666004)(110136005)(186003)(52116002)(16526019)(66556008)(66476007)(4326008)(5660300002)(9686003)(26005)(1076003)(8936002)(316002)(55016002)(107886003)(66946007)(83080400001)(7416002);
+ SFS:(136003)(366004)(346002)(39840400004)(396003)(376002)(1076003)(66556008)(4326008)(66476007)(186003)(66946007)(55016002)(7416002)(16526019)(26005)(956004)(9686003)(2906002)(6666004)(54906003)(6916009)(8936002)(6496006)(86362001)(33656002)(8676002)(107886003)(33716001)(478600001)(5660300002)(52116002)(316002);
  DIR:OUT; SFP:1102; 
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: J8qfGlcmC+zJfoJRULtpnFIIIxLF2e9KlZcOdFy86THRh8q4gzj1wuXHjW/wbZ2BQgz2gBLV86OLd6T8sYJjhLx2AmP69spvcc9BUE+V9x5gnwFriXAn6hXTL2ATtezt5OE7CprgeBZhwNcWsha0VjCNdaG9GGT8DYU5DAFmzVaifYSxexlEZ+V9LSxlsk0wMkamns84nYTqnV0vrpZM9oMGyUfrvxk6QE89Zl3WYqJiEF4RG6nVGB95iEmPPN0cNwMZQQfrKHxekGptj5V7zxBz+VDXJeaQIQJTMdqEYDHgpkdRadVIrozW4E8yZVncZPAo1VcwGdarcR4L9SehVTSEDB1dTeTFFwLQxzjYlVU6S0bxKeqZTgX8qNigcnHIuRmF4bN48ZJDH5ClBzY1amxLGjznYEQk69ooQE9Eu7wlVDeVloHaHEhvRvcBvdBYhUwU6Jbbprbs/0eatVqw2sB84SMpiaCxNatSzYre4jntwA1KryoY/GqksELVNBjamlWyrNO8fpCv1oci+KCrew==
-X-MS-Exchange-AntiSpam-MessageData: OwR1GrqwP0B0d49LgRW34Qxp0S19hefkb47QgPvh5CGYyA0CaFkO7KQS4cHKucP15T2NuHQxRtSFcB3Hli8WWXE1L8sApcQzkwrl5es5chl8DQtNBQ9KzmYwG7DgzGA8Yv7olkUWRG8zZ3y8k081L0TnS/EytJ/zpBd3p7bbkjJ7Oo8K715N/+ntp5oJua3qh7XH//d88l+u9fXG5Nmt1mm2xng+DJ/BsCgYyWU15GXG+bYSxek2skYFtple96KK59DOemvVRyRixMw/iCFF8n4NXqIQ6Pygt3yL5eRA3QUzrQGx5lGvU+iLqCT54KjIRVhEI1HYTXOW3yZ75a7ZSUb01+HLyFHtQ7cO3sY+gWhXZbvBF3YmSuhlZYwFi03fYhmo2ot6ihptdNBQsSRMGyBM31/ZuyVujLEr+Rxl2yr3oESaVp6NXslra67FX5TSP46jlqPt+rp+051wu8NoYCRZmJJNJ4dhQCsbxTCWr7z7t8Z1Z4bmk+Qcfkb52UUdfPAUhOSNvB/jaVHt6bYpU+pURKSQy1VmgnH97SVbv282DLjpd1W6YKreTy65gXv8Db13LbSTyOeiD+bmSMc9rKpuQY5L9GizBGn7FX2tibNPO4ke4jztOCx7+mn+ULKt3AucZoH3tKxxI5ELHA1GJ1WkcuiVNtdv1+zF11AsIwl9p96PWPv4MCdb3Aihef0Lpc435lJX24vwRPApJJAEEw7SfMwYu5JS2jvo8SjL0MdL8ZmRQRZ/izv9GlhN3Evo0HFOVYyPvP9FDL8eDgScFqqjMdej29ScPTV65OBSiJ9jetkugCx/rwqRVcTlvtwJ
+X-MS-Exchange-AntiSpam-MessageData: nSvanHTZKE2srxNW9ynwr+/C978IjFo8Euit5SYaVmg17h3RVK+ylFxz2Dl/1v5n56/fGzlzaUQQap/KXcY799KAUlNhi3tpziwAnVk2QG0l9T8oSjjBiXQrt/M5QmqlZbzFcDkAKLJr7XRXmdrSBHXd6Lu/I3J6ly2dx5+cxsUl8slI8IZKPr4B4cfCOTs/lXpHcp4ym/kgtTlgd/dufyTOwMAAMg4/YeIVk5/nJQZazYmpPw3PN8zuJ2sUso93LGVp6KnPWSXLl9yhcbRra7LBTpjbuP3Usc9s+AJkOCSSdaDZ8BDCfoZXxB/2y41X7HW+jtlGGhGDBCDhB+M8twhV4FwWDvjxeTXHRs5o4CHbqV/9p7JKN3ackUJifTCj8KHeMPQSda4KT75p571vdk4iA2Tj2kEvDKHdMXwd/KUx/yuDn1ZR1bvUZ/N85YlUF9Y8+zj96EvFYdfpvOSSF2UB38vqzkbXcD0BQCPoMWxW+Xa4z5OeQxkDWuPVg77zfbJIrrY4/zPD+M5TIIN/duDj0gju3JL7BwcEjcWoV6JXDom+t9NBHZUvajVcTXTEznPlZDC6j/a+fYgf6YbWGAmRxNPn4Bp4xJT2hJL2M3s1Xqpd9XXAmzeGqGtBDSF+w+xMyPxfcHNPLgqRxjYgjv1gCKykmDwT+jUwVI2GTTX98sYjAwk/RUPj75jK8mq7TdhKZBZCkpKdqhDl+uHpphfb34PppQceaL9oQx4V09YFQMLXZn+iZROm9AP3v1G9FZQq3tePhvq/nYvdR0NUs+lWSqDkUlZKPL0uUt25FyqvEUFAJy5B2tulGUZUKjH8
 X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: afd949fc-13f3-4530-db6c-08d7ecb7a696
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Apr 2020 03:36:21.8142 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2dd22024-81d2-4e30-5a7f-08d7eccbf34c
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Apr 2020 06:01:40.6422 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: MZu3UXc5OZOqfS1+eQaQojDNiqgtL/weWTK3JV8Ge9YpTbhm5R9M3GS2HhApxB7FeaMRmAUnKeIlNEzx9BtVkg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6689
+X-MS-Exchange-CrossTenant-UserPrincipalName: CAVPU8Me5UJF7/8kK/IXKTOCyZHLJE9JYvbRUvi2uXMw8LSxvb/454Gqo3Q4nBrHN24imSUQ5bSHfiuXhRpwZA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6996
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,10 +119,9 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
  Pi-Hsun Shih <pihsun@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Qilin Wen <qwen@analogixsemi.com>,
- Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>,
- Ming Liu <mliu@analogixsemi.com>,
+ David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Andrzej Hajda <a.hajda@samsung.com>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>,
  Sheng Pan <span@analogixsemi.com>
@@ -134,69 +130,205 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Apr 28, 2020 at 12:05:08PM +0200, Daniel Vetter wrote:
-> On Fri, Apr 24, 2020 at 08:12:04PM +0800, Nicolas Boichat wrote:
-> > On Fri, Apr 24, 2020 at 2:51 PM Xin Ji <xji@analogixsemi.com> wrote:
-> > >
-> > > On Thu, Apr 23, 2020 at 07:55:15PM +0800, Nicolas Boichat wrote:
-> > > > Hi,
-> > > >
-> > > > Just commenting on the mode_fixup function that was added in v7.
-> > > >
-> > > [snip]
-> > > > > +       /*
-> > > > > +        * once illegal timing detected, use default HFP, HSYNC, HBP
-> > > > > +        */
-> > > > > +       if (hblanking < HBLANKING_MIN || (hfp < HP_MIN && hbp < HP_MIN)) {
-> > > >
-> > > > should this be adj_hblanking/adj_hfp/adj_hbp?
-> > > NO, need check original HFP and HBP, if they are not legal, driver need
-> > > set default value to adj_hsync, adj_hfp, adj_hbp.
-> > > >
-> > > > > +               adj_hsync = SYNC_LEN_DEF;
-> > > > > +               adj_hfp = HFP_HBP_DEF;
-> > > > > +               adj_hbp = HFP_HBP_DEF;
-> > > > > +               vref = adj->clock * 1000 / (adj->htotal * adj->vtotal);
-> > > > > +               if (hblanking < HBLANKING_MIN) {
-> > > > > +                       delta_adj = HBLANKING_MIN - hblanking;
-> > > > > +                       adj_clock = vref * delta_adj * adj->vtotal;
-> > > > > +                       adj->clock += DIV_ROUND_UP(adj_clock, 1000);
-> > > > > +               } else {
-> > > > > +                       delta_adj = hblanking - HBLANKING_MIN;
-> > > > > +                       adj_clock = vref * delta_adj * adj->vtotal;
-> > > > > +                       adj->clock -= DIV_ROUND_UP(adj_clock, 1000);
-> > > > > +               }
-> > > > > +
-> > > > > +               DRM_WARN("illegal hblanking timing, use default.\n");
-> > > > > +               DRM_WARN("hfp(%d),hbp(%d),hsync(%d).\n", hfp, hbp, hsync);
-> > > >
-> > > > How likely is it that this mode is going to work? Can you just return
-> > > > false here to reject the mode?
-> > > We want to set the default minimal Hblancking value, then it may display,
-> > > otherwise. If we just return false, there is no display for sure.
+Hi Sam, thanks for your comments.
+
+On Mon, Apr 27, 2020 at 08:49:09PM +0200, Sam Ravnborg wrote:
+> Hi Xin Ji
+> 
+> On Mon, Apr 27, 2020 at 02:17:46PM +0800, Xin Ji wrote:
+> > The ANX7625 is an ultra-low power 4K Mobile HD Transmitter designed
+> > for portable device. It converts MIPI to DisplayPort 1.3 4K.
+> 
+> Thanks for providing this binding.
+> When you re-submit please also send to devicetree@vger.kernel.org.
+OK
+> 
+> Running the binding through dt_binding_check gives me:
+> 
+> /home/sam/drm/linux.git/Documentation/devicetree/bindings/display/bridge/anx7625.yaml: ignoring, error in schema:
+> warning: no schema found in file: /home/sam/drm/linux.git/Documentation/devicetree/bindings/display/bridge/anx7625.yaml
+> make[2]: *** [/home/sam/drm/linux.git/Documentation/devicetree/bindings/Makefile:42: Documentation/devicetree/bindings/processed-schema.yaml] Error 255
+> make[2]: *** Waiting for unfinished jobs....
+> /home/sam/drm/linux.git/Documentation/devicetree/bindings/display/bridge/anx7625.yaml: Additional properties are not allowed ('example' was unexpected)
+> /home/sam/drm/linux.git/Documentation/devicetree/bindings/display/bridge/anx7625.yaml: Additional properties are not allowed ('example' was unexpected)
+> 
+> See writing-schemas.rst for instruction installing tools etc.
+OK
+> 
 > > 
-> > Right, understand your argument. I'm pondering if it's not just better
-> > to reject the mode rather than trying a timing that is definitely
-> > quite different from what the monitor was asking for. No super strong
-> > opinion, I'll let other people on the list weigh in.
+> > You can add support to your board with binding.
+> > 
+> > Example:
+> > 	anx7625_bridge: encoder@58 {
+> > 		compatible = "analogix,anx7625";
+> > 		reg = <0x58>;
+> > 		status = "okay";
+> > 		panel-flags = <1>;
+> > 		enable-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
+> > 		reset-gpios = <&pio 73 GPIO_ACTIVE_HIGH>;
+> > 		#address-cells = <1>;
+> > 		#size-cells = <0>;
+> > 
+> > 		port@0 {
+> > 		  reg = <0>;
+> > 		  anx_1_in: endpoint {
+> > 		    remote-endpoint = <&mipi_dsi>;
+> > 		  };
+> > 		};
+> > 
+> > 		port@2 {
+> > 		  reg = <2>;
+> > 		  anx_1_out: endpoint {
+> > 		    remote-endpoint = <&panel_in>;
+> > 		  };
+> > 		};
+> > 	};
+> > 
+> > Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> > ---
+> >  .../bindings/display/bridge/anx7625.yaml           | 91 ++++++++++++++++++++++
+> >  1 file changed, 91 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/display/bridge/anx7625.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/display/bridge/anx7625.yaml b/Documentation/devicetree/bindings/display/bridge/anx7625.yaml
+> > new file mode 100644
+> > index 0000000..1149ebb
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/display/bridge/anx7625.yaml
 > 
-> Yeah mode_fixup is supposed to be used to adjust the mode in intermediate
-> stages (e.g. if you go from progressive to interlaced only at the end of
-> your pipeline or something like that). It's not meant for adjusting the
-> mode yout actually put out through a hdmi or dp connector. For fixed
-> panels adjusting modes to fit the panel is also fairly common, but not for
-> external outputs.
+> Name the file "analogix,anx7625.yaml".
+> (We should rename anx6345.yaml, so others do not omit the company name)
+OK
 > 
-> Since this is a DP bridge I'd say no adjusting, just reject what doesn't
-> fit.
-We have found some panel which HBP less than 8, if we reject to adjust
-video timing, then there is no display. The customer does not accept it,
-they push us to fix it, the only resolve way is to adjust timing.
-> -Daniel
-> -- 
-> Daniel Vetter
-> Software Engineer, Intel Corporation
-> http://blog.ffwll.ch
+> > @@ -0,0 +1,91 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +# Copyright 2019 Analogix Semiconductor, Inc.
+> > +%YAML 1.2
+> > +---
+> > +$id: "http://devicetree.org/schemas/display/bridge/anx7625.yaml#"
+> > +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> > +
+> > +title: Analogix ANX7625 SlimPort (4K Mobile HD Transmitter)
+> > +
+> > +maintainers:
+> > +  - Xin Ji <xji@analogixsemi.com>
+> > +
+> > +description: |
+> > +  The ANX7625 is an ultra-low power 4K Mobile HD Transmitter
+> > +  designed for portable devices.
+> > +
+> > +properties:
+> > +  "#address-cells": true
+> > +  "#size-cells": true
+> > +
+> > +  compatible:
+> > +    items:
+> > +      - const: analogix,anx7625
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  panel-flags:
+> > +    description: indicate the panel is internal or external.
+> > +    maxItems: 1
+> This property hint at something needs to be modelled in a different way.
+> I do not recall other bindings need similar info.
+I'll change it to vendor,int-property
+> 
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> A description would be nice.
+OK
+> 
+> > +
+> > +  enable-gpios:
+> > +    description: used for power on chip control, POWER_EN pin D2.
+> > +    maxItems: 1
+> > +
+> > +  reset-gpios:
+> > +    description: used for reset chip control, RESET_N pin B7.
+> > +    maxItems: 1
+> > +
+> > +  port@0:
+> > +    type: object
+> > +    description:
+> > +      A port node pointing to MIPI DSI host port node.
+> > +
+> > +  port@1:
+> > +    type: object
+> > +    description:
+> > +      A port node pointing to MIPI DPI host port node.
+> Maybe explain how it differs from port@0 and why it is optional.
+It seems this port is not need any more, I'll remove this port.
+> 
+> > +
+> > +  port@2:
+> > +    type: object
+> > +    description:
+> > +      A port node pointing to panel port node.
+> Unless there is a good reason not to then please use a ports node, like
+> you see in almost (all?) other bridge bindings.
+I'll use ports node.
+> 
+> > +
+> > +required:
+> > +  - "#address-cells"
+> > +  - "#size-cells"
+> > +  - compatible
+> > +  - reg
+> > +  - port@0
+> > +  - port@2
+> 
+> additionalProperties: false??
+OK
+> 
+> 
+> > +
+> > +example:
+> It must be named "examples:" - this is what dt_binding_check complains
+> about.
+OK
+> 
+> > +  - |
+> > +    anx7625_bridge: encoder@58 {
+> > +        compatible = "analogix,anx7625";
+> > +        reg = <0x58>;
+> > +        status = "okay";
+> No status in examples.
+OK
+> 
+> > +        panel-flags = <1>;
+> > +        enable-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
+> You need to include a header file to pull in GPIO_ACTIVE_HIGH - see what
+> other bindings do.
+> > +        reset-gpios = <&pio 73 GPIO_ACTIVE_HIGH>;
+> > +        #address-cells = <1>;
+> > +        #size-cells = <0>;
+> > +
+> > +        port@0 {
+> > +          reg = <0>;
+> Be consistent with indent. My personal preference is 4 spaces.
+OK
+> 
+> > +          anx_1_in: endpoint {
+> > +            remote-endpoint = <&mipi_dsi>;
+> > +          };
+> > +        };
+> > +
+> > +        port@2 {
+> > +          reg = <2>;
+> > +          anx_1_out: endpoint {
+> > +            remote-endpoint = <&panel_in>;
+> > +          };
+> > +        };
+> > +    };
+> 
+> Lot's of small comments. But if this is your first binding then this is
+> expected.
+> Looks forward for v2.
+> 
+> 	Sam
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
