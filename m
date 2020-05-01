@@ -1,79 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DBDB1C1A14
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 May 2020 17:52:09 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8A751C1B16
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 May 2020 19:03:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6A0F388500;
-	Fri,  1 May 2020 15:52:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1BE6B25935;
+	Fri,  1 May 2020 17:03:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OfsmWS-O6IrS; Fri,  1 May 2020 15:52:06 +0000 (UTC)
+	with ESMTP id vPqD7YmsNd3T; Fri,  1 May 2020 17:03:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C4241884F0;
-	Fri,  1 May 2020 15:52:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7765C2050A;
+	Fri,  1 May 2020 17:03:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 273D91BF5DE
- for <devel@linuxdriverproject.org>; Fri,  1 May 2020 15:52:00 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7F5441BF255
+ for <devel@linuxdriverproject.org>; Fri,  1 May 2020 17:03:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 22108884DB
- for <devel@linuxdriverproject.org>; Fri,  1 May 2020 15:52:00 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7AAF5872E2
+ for <devel@linuxdriverproject.org>; Fri,  1 May 2020 17:03:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UOzU9qUnc5J9 for <devel@linuxdriverproject.org>;
- Fri,  1 May 2020 15:51:59 +0000 (UTC)
+ with ESMTP id fc7f7uRJ2yMK for <devel@linuxdriverproject.org>;
+ Fri,  1 May 2020 17:03:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 93764884D9
- for <devel@driverdev.osuosl.org>; Fri,  1 May 2020 15:51:58 +0000 (UTC)
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2C380872DF
+ for <devel@driverdev.osuosl.org>; Fri,  1 May 2020 17:03:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1588348311;
- bh=Wz8oCljjf+pGcIWMlf9OE38JXdnBDknY5RaRZdi4y3M=;
+ s=badeba3b8450; t=1588352587;
+ bh=im7UoRGRqKTmxhp4QzZMb5sui+SkwX0MbHQyE4WNRh4=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=aAgYhZE/u8eCnWJu13ATjbpppodgnZ+/Z3F4Q0sh0SKym7hVKig8aErdWKx2mGJ7r
- y9KiuDU+vv6yeULkseT/EG1os/wcfIOoeqatAlCWW0bbTtiaCCPRHNkgH61cLe33Xt
- joskGnjnbNM0V0FS8VNvnozVfZ2sfeB/BxLZDuw4=
+ b=PJsQ/R8E9aJ5gReDGn0eGTtHAjbO+cS6bIVE2l3zp7DA1cVrp/9ghI72RBVQ/ob7t
+ GY+cqwA/6sNwGto1LLPJdv5yPGuFXYsdYhftSPfxWMjK5351S3Uw0OzSW++VdNvgGI
+ 4aex6ufg3J4qfh7K7+FtS0Z0m3acSKGry5gxXTgw=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
- (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1MKbkM-1jimWA30l2-00Kz05; Fri, 01 May 2020 17:51:50 +0200
+ (mrgmx004 [212.227.17.184]) with ESMTPSA (Nemesis) id
+ 1MKbgE-1jinaw3mAu-00KyZz; Fri, 01 May 2020 19:03:07 +0200
 From: Oscar Carter <oscar.carter@gmx.com>
-To: Rob Springer <rspringer@google.com>, Todd Poynor <toddpoynor@google.com>,
- Ben Chan <benchan@chromium.org>, Richard Yeh <rcy@google.com>
-Subject: [PATCH] staging: gasket: Check the return value of
- gasket_get_bar_index()
-Date: Fri,  1 May 2020 17:51:18 +0200
-Message-Id: <20200501155118.13380-1-oscar.carter@gmx.com>
+To: Adham Abozaeid <adham.abozaeid@microchip.com>,
+ Ajay Singh <ajay.kathat@microchip.com>
+Subject: [PATCH] staging: wilc1000: Increase the size of wid_list array
+Date: Fri,  1 May 2020 19:02:39 +0200
+Message-Id: <20200501170239.16917-1-oscar.carter@gmx.com>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:PsVbLqj2wDQXQ4FP2WgMRm537F1O/5A8A6KmP7hLmsmwUIi4XSL
- BRVl9Zl9T/K4QhTVHcSHdte4gUOszm2Iw6wxWU8DNJet3QDFDE7hH/kP7icksifqTWUbzUD
- uwkY47MjR3JyZKbm+yi8UGlLUA+vi+gOloDKzYeaVyLBNecrGMouFK5w48+yEFSA+vFKOQ5
- iyfNxmGpZemueyxJ0PQaQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:HtdhmCohi4s=:c+sgk2e0yTPS4N8MCQ4s/o
- CjXhDYuRTkDhQZJ0ucJKHdcsN4Drm8A+4ebGEQaroZ26W6gR3T0JCERmrPSwr2mT6oTKx+HYt
- 5yvAHqEXAFyAg6lROIQ+a3T5vbhR6vTksdGp+fu+Ruqbh9QUbWA2tRPi93pEscv9YJhPZdKif
- dThgXqUl2hwu9MtiM9ycgFL3Cb+ziaQJox/qLh20QLpvlWZ2LjkVATFh9N2w9WavqpZlmWaZe
- 4coogMWQiTFpoCkKr7iS+KM7jdEv5SrS6u3CgB/vZklNWwIHIGKIVInYBxEskkWWaVN9oRVl1
- lBhZwRf7TKKw4ZCWmNxj+hRjW4IAFxnPsbjBwwXOx90I8PZKe9oduuonqJYVoqRp2p1gPg7/J
- YK0QF/8Y5QqewoFNOFfUETwbbeqF+JxzKUmlg4xkpHxDUbiWmdwZt1mhfNRK4yuBTe/mPvJJz
- 9Vs+A6rgpBjahR/DqEy07qz8+6mN/uiSVw/NhlFhoS03ETQB577MgiFHnHYYq5OWWvhCHOVA+
- U8/y8ZInRZ+RouyA0+9g1zXuIkXBP6Xikj1pIMy5TbnJGFU+v5+R5Gi/QUQZMhb51Gxy63Il2
- dhVewivWbVrtPcZxCE3T+Pxsjgs4kqrgpoyCLnEKp9DnGL3d9qKnfZgXwO6L/NMQiqkgnd6GE
- uTZa2y7qsHr0Pu0zVPEUFn/lilp18zTQQvYzsdMJsMEj/dVoY3BFFXwO+3KGor+uQlBCOxZpX
- cT9loL9HmW8VHTWLZ+jcRStYxFvsNiBfcX5wTMvC6rUTQMB1lKMua9ud9xxJ2Z9dhUNxqu9dM
- D1wL96n/R00OAVKwIUz3gQXcv14L8CBcftYQX/7cvndjZ3gqXOqQ8Gixqh98JR416BNBf4ih3
- bQ5PvywclY3fLxv+AuCj9v+39mCk9fz4CS6T/rw3q17feNqUHUq49phIlzl3Iz9Tcc8266TIT
- T/KQq0Ikn5JfRaRreJaQW5oeXldiTyPUs5HqO/YLfvmFW/zbR7frqJ3X4jkKLhbyEToEG53gF
- rb7kQBtypv08oo87j9UNuGrUG6jXMS7zoVMml1cl2BMBkn0LyAFjcLb3ktLNAIWTQpjfydN+4
- FLTImjYPXsfay52GiHXTfbBt7GvnJByG9xKGY/HuKeifl9fgw4FWmwVzJyrUkqVrdVBXwJMaA
- b56YpU1avPWSyusYLzWmxy26fgiiFIiCQkxWG9Vmhu/TRwsgPicsExBJPi/gs/05qKwloZNBo
- qcRye2FBqYWemqsRr
+X-Provags-ID: V03:K1:l8IGiAo/+ZjQsmQfamzYuV5ZICWBc4esNNlTP6qfdg60KXL+SFI
+ TAoOphehrGDD5qftiHjSRkuwN9mrFcL6aMazBYOeG6MmGT/rZNvgt4NsRzg7L+zZEtGSA4Y
+ b+9Dh9y1tV7hmF+QSTcejPH8ct6NGKp0ElRn/PKnkSJHnkOCLfA8JiCv2+rLiMGMgxh+U8m
+ A8m18mv9ZgRTrcn+wWwBA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:qG98HsMxVf0=:Nk6O7bJeZMQsMWt585Nx8H
+ IS8Ll6KBFedpl1WmvXyemO1oswyIgz89xyMl6SlfEyQJvvk9HQHy4RbVl4GZfoWqi8v/2kXVR
+ k5keEG9q1Em8V5vzHi6YecJaq1hw5WYn31ZPxZud7Tfq2dMEemUzwRI3rI3B6uM/qxX7nEyOR
+ Xk56xGX7PpZQR8CgMYfCOTDSdieB7L1WCxAbx8FR9ji2NZzEJJw/0TY3xUQ8YBhPkxzcGfCEx
+ Sp2mf0EPZG0kya4CCjk07pgWrzQpLppgZITx3ijKoUUGz5u9wEVG1ZrR53v9ua20yWi9G64cm
+ h4JbS300kf/hAyR59HG3Bi2I43bAuTJncP11JAkETIKW6dCMNaOeVi+7GSajj+ic3ZhxesckE
+ +ejs82H6C289QhMl1l5S0EHytBJ4ZaaOmK+VrY8vDUs3oVg/dcJYZEhdbm/twyswNfc+1129l
+ NVVnpQdytgP/Vj8tJ0VwxAnjhz1uxrwXy5yIIaTGS+gSq3HnsoVC61J22Z0PchCzdVJu7MThP
+ UUIkqulWaE5HzU0GnPhfB7rvIIJIFDleEdmek4vJ9siKwRhM0r876wRSnosQZtDuqqFMYAZa0
+ /rg18PRghnnu+RPWnkzXtHsTwLzeAKYn8+4wYb8AYnATG82NFCnXA3Fd0ndmeq7kMZEnbyJtp
+ OQhed3oRsAFfgn0kDVTOY3hTPZ6XYI7yo4aDzropnSAToAo4TfO9A3k6K5S0AKdq65L3o8Z86
+ SkPVTLsr4o2UsSwbgmRDOKSHM3o3jpbFMwmPIxMMWzhcUgYDh5NmtHVgkXv8RjdmYvTBmcF9S
+ GZDT60Qt7WppFLZsHigna/ZzDOR2Ax5c1Nm4JLriE/syQpkJ8xz+57N0mdxQv+YWtIDQPpuyw
+ E/+/t1yFTIBTA0jbBwpdCtCrDml6ESfju6ofRnDhh+CurpL8Q2R3W71ffD8ujK50uOMuAQL5/
+ MnO0nznr7XvgkTB5kCQzVeZ7JDJhrSo1R0C+tUBLdBax7ZJmcdPbsb3oPbmFgorCjaSl47Jdj
+ QVmak2uddP+7WoLj3uBYqnOuWA8O2B0sGV2D1zVe+EBUwTC3PUGud2cfLWw34VckTkA+eT4VJ
+ 6BuYl4FxbvBuW+w4+gJS+bq32gDCuab1XU01MWcB3sZUl7/gbizNG4YzgC9ac1kGU9KtWCCkR
+ wcCVwbmFuojubMUrylM9cTlf3YbbmXTinkYbDFaZwWvKk+pyyD6T9eX4SvURGbbCu1Z/cHcrE
+ NWzra6Ae54LKajJUS
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,41 +85,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Oscar Carter <oscar.carter@gmx.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- John Joseph <jnjoseph@google.com>, linux-kernel@vger.kernel.org,
- Simon Que <sque@chromium.org>
+Cc: Rachel Kim <rachel.kim@atmel.com>, Dean Lee <dean.lee@atmel.com>,
+ Chris Park <chris.park@atmel.com>, Oscar Carter <oscar.carter@gmx.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ linux-wireless@vger.kernel.org, Johnny Kim <johnny.kim@atmel.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Check the return value of gasket_get_bar_index function as it can return
-a negative one (-EINVAL). If this happens, a negative index is used in
-the "gasket_dev->bar_data" array.
+Increase by one the size of wid_list array as index variable can reach a
+value of 5. If this happens, an out-of-bounds access is performed.
 
-Addresses-Coverity-ID: 1438542 ("Negative array index read")
-Fixes: 9a69f5087ccc2 ("drivers/staging: Gasket driver framework + Apex driver")
+Addresses-Coverity-ID: 1451981 ("Out-of-bounds access")
+Fixes: c5c77ba18ea66 ("staging: wilc1000: Add SDIO/SPI 802.11 driver")
 Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
 ---
- drivers/staging/gasket/gasket_core.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/staging/wilc1000/hif.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
-index 8e0575fcb4c8..67325fbaf760 100644
---- a/drivers/staging/gasket/gasket_core.c
-+++ b/drivers/staging/gasket/gasket_core.c
-@@ -925,6 +925,10 @@ do_map_region(const struct gasket_dev *gasket_dev, struct vm_area_struct *vma,
- 		gasket_get_bar_index(gasket_dev,
- 				     (vma->vm_pgoff << PAGE_SHIFT) +
- 				     driver_desc->legacy_mmap_address_offset);
-+
-+	if (bar_index < 0)
-+		return DO_MAP_REGION_INVALID;
-+
- 	phys_base = gasket_dev->bar_data[bar_index].phys_base + phys_offset;
- 	while (mapped_bytes < map_length) {
- 		/*
+diff --git a/drivers/staging/wilc1000/hif.c b/drivers/staging/wilc1000/hif.c
+index 6c7de2f8d3f2..128943c3be4f 100644
+--- a/drivers/staging/wilc1000/hif.c
++++ b/drivers/staging/wilc1000/hif.c
+@@ -151,7 +151,7 @@ int wilc_scan(struct wilc_vif *vif, u8 scan_source, u8 scan_type,
+ 	      void *user_arg, struct cfg80211_scan_request *request)
+ {
+ 	int result = 0;
+-	struct wid wid_list[5];
++	struct wid wid_list[6];
+ 	u32 index = 0;
+ 	u32 i, scan_timeout;
+ 	u8 *buffer;
 --
 2.20.1
 
