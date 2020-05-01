@@ -1,136 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3B3E1C1CFA
-	for <lists+driverdev-devel@lfdr.de>; Fri,  1 May 2020 20:26:30 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 844A08928F;
-	Fri,  1 May 2020 18:26:28 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gwZBjTdN5X2v; Fri,  1 May 2020 18:26:28 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E288C8927A;
-	Fri,  1 May 2020 18:26:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EE46A1BF5A4
- for <devel@linuxdriverproject.org>; Fri,  1 May 2020 18:26:25 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA8421C1F12
+	for <lists+driverdev-devel@lfdr.de>; Fri,  1 May 2020 22:56:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EA6B284964
- for <devel@linuxdriverproject.org>; Fri,  1 May 2020 18:26:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 57F75870AA;
+	Fri,  1 May 2020 20:56:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BS7mn9YYa4gX; Fri,  1 May 2020 20:56:51 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C52F586F8D;
+	Fri,  1 May 2020 20:56:50 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C6781BF322
+ for <devel@linuxdriverproject.org>; Fri,  1 May 2020 20:56:49 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0946888530
+ for <devel@linuxdriverproject.org>; Fri,  1 May 2020 20:56:49 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id O9fQkVvHjvyY for <devel@linuxdriverproject.org>;
- Fri,  1 May 2020 18:26:25 +0000 (UTC)
+ with ESMTP id 7DuG2vm6RKqw for <devel@linuxdriverproject.org>;
+ Fri,  1 May 2020 20:56:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
- [68.232.153.233])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0F3CB848C2
- for <devel@driverdev.osuosl.org>; Fri,  1 May 2020 18:26:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1588357584; x=1619893584;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=PIRPaN60fTlCFx9K33pyHUQ2otoRHaqKbGWd807SjGw=;
- b=sJgg+6hrLLcBz40N0PwlArMl//it9WSbHGIFu9xP65Mmd12RicJ+ROBc
- z2/S+6LH3JiY0CMh7GefiYvu3iFzEyqZQRqM5+HGOhlZFcgNmxvbYCHp5
- WCv8xNx/1vMMO+c93xt1DihvrYRaxqCM2+5AeVnziJBud6oi99MvojVTC
- h8rSIg//RW05+oAFSEwcv6E/urxpJlGQSq1FfXZJ1nG5iXgN8FLjSH+KK
- rOisi159ztx5awsAphsrfcwJbahJTN3CfympIH1jqjwOImY98rBmFBlC/
- ziLOR7yPvKhobPFq/8CXRmTxGVZCaDbeW/Jz/LGU8b1fxyHn8GusS9zau w==;
-IronPort-SDR: vKAlqmVFbINQSZvfh7pzCFu5RkgXNUJ5l5ZZA3T2Zah+6t3/M7AyT6FHb/CoghmDquVBQA0on8
- sNGwiZj+lLYJc9U7Ne1jOSnZWJTJsOtSMTQ5oKaY9jDmOoL4rdP9P6eP5yHrpvpNsTlPTnE+/+
- tt+J3+5gy6NiQX3xgt+MQ5nRDRETuBo9IRsbqz3HRoXHjx0fjwduZm6HDpvo7zz6AzXU07mNpb
- 9pERmxKCmRjMUOTp+uigV8kpAUjwEnnGbGm7WYSIilQVJucluciyXIpq4wsbl8ND0nvXmv2LlX
- ZVM=
-X-IronPort-AV: E=Sophos;i="5.73,340,1583218800"; d="scan'208";a="75239471"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 01 May 2020 11:26:12 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 1 May 2020 11:26:12 -0700
-Received: from NAM04-BN3-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Fri, 1 May 2020 11:26:12 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TrnpkteGK6YeLZccCiWmd5YKlz89lyW5Na3O2AuIMbxQHyhrg12lnB95Pid/JpfixUoDCfwLyQtHnulHuEyCDNAf+tO7XK6GDcwtxT/+cfh9eoIv0Xc0n00YK4n/WGzHKi+nqIzBmKm3wxmNRZVgak5DgNKLnoQg5paFV9inIsn5qN67PY5IoEbLId+RZbfLamwcvtstGULmGlV/1qrAN9sAREtFuUbFLdh6XJuSK5wj88k+qQIKi4atJcNkLtbvHLKamFepF05a2GJOxJRyXuRK67Db1oRpFJMedD51JVF8MJVQUR2MJDOl8tZuaGVvCFB9cV4VT0kE6+a6EZtQsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PIRPaN60fTlCFx9K33pyHUQ2otoRHaqKbGWd807SjGw=;
- b=Gr2hmOIek7ZSRSHd6xA+o1TSO37iqTLn9BbVAHKCMfYkgsQ56hUP4HR5vrfiVARBEGCQG5DlZGnR7zlwNqh8PhT9nXi+0eNmQ4O5Yr/dslUxOgcaE0b9mou3034KptIsvPkh9XzKkLZHNQWRvfmX3mtTrcQYelMyD7g8z7MsFeNVaZHVY+WWWu4Kr/6LhAnLH76n1zS6E0TM466AmLfGWz0Bm6qdGmQsi6m/150U0PkWGCQzE81XwNqSvtgbzkQRicZwTRmhzkcixmpINv4njDat1z+HOF0aG4o1Ovq7BiJWuVyq/fFSLszhASNEaIXECopjfd8LCMT3ScJKEixQWA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PIRPaN60fTlCFx9K33pyHUQ2otoRHaqKbGWd807SjGw=;
- b=e5SCxUG52Ts7MbphvDniaO34fv7Zd+sJzeLf22X8A+GOqGdfbZE7ueau//4RCsF6tG1yNYBSdSE4M6yfisM2KbJHeJKU7QaPIPmAqipn9wNiaj0mXe+XM704e9bvZfB9uVtxp21hBmbNRdgHVTKCwv1Bg2atcLYni9+0hmPf5YM=
-Received: from BYAPR11MB3125.namprd11.prod.outlook.com (2603:10b6:a03:8e::32)
- by BYAPR11MB2584.namprd11.prod.outlook.com (2603:10b6:a02:c8::31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.20; Fri, 1 May
- 2020 18:26:11 +0000
-Received: from BYAPR11MB3125.namprd11.prod.outlook.com
- ([fe80::7c0f:1690:7a0d:151e]) by BYAPR11MB3125.namprd11.prod.outlook.com
- ([fe80::7c0f:1690:7a0d:151e%6]) with mapi id 15.20.2958.027; Fri, 1 May 2020
- 18:26:11 +0000
-From: <Ajay.Kathat@microchip.com>
-To: <oscar.carter@gmx.com>, <adham.abozaeid@microchip.com>
-Subject: Re: [PATCH] staging: wilc1000: Increase the size of wid_list array
-Thread-Topic: [PATCH] staging: wilc1000: Increase the size of wid_list array
-Thread-Index: AQHWH9p15EDtUahgUUOmtzThN7PF6KiTjEEA
-Date: Fri, 1 May 2020 18:26:10 +0000
-Message-ID: <555a8486-8a9f-44a6-3423-78981955765a@microchip.com>
-References: <20200501170239.16917-1-oscar.carter@gmx.com>
-In-Reply-To: <20200501170239.16917-1-oscar.carter@gmx.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
-authentication-results: gmx.com; dkim=none (message not signed)
- header.d=none;gmx.com; dmarc=none action=none header.from=microchip.com;
-x-originating-ip: [183.82.186.57]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0ef6aa3f-3f4d-4885-b0c3-08d7edfd1fb4
-x-ms-traffictypediagnostic: BYAPR11MB2584:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR11MB258495AE0EDDC933C7E6EA0AE3AB0@BYAPR11MB2584.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:332;
-x-forefront-prvs: 0390DB4BDA
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: npAJHMX3XKD1yxCNNQChks2DsJa9JkStnKjxR4xPP8x9YLeQorMambiCydCE40cRS2E+OpCTa+Uw5IvTFwgxjVwIi2grGcwCz4os5R3mMjzBVqjEqseFlzJiOGz7oUAzcbEQPFV4YGPzJUV2veyb9/opF0s5ZNLkrUKYpWSOQmfvYfy/N3ew8DCuhr4TE5BRTp5SLBOYIQc+fVjiB+xOXtA3gDzj6j9aVgbzhi/H3oHeBJTxKyORoLmIRgR4Lo0Sb87+hgWQt00SJ0wucgEDk7QjdSvJTNPAakKUbwe8Br4VkTiHBgP00Hh9BMGkODGLBRXVsCCpOAUiP+5xvI1rtW3Pp3KUqPEEsVzwUQLdvTBha2kjJb/hg7bHFc7ZXZ6Cp+B6bPkHmnkR1wUrUlwvIeriiFJwHgix64iduDPMCByFQNV8Hidf4wYF5PjgPoV+
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3125.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(366004)(396003)(376002)(39860400002)(136003)(346002)(6486002)(26005)(186003)(36756003)(53546011)(4326008)(6506007)(31686004)(2616005)(6636002)(2906002)(71200400001)(316002)(54906003)(76116006)(86362001)(8936002)(31696002)(5660300002)(478600001)(110136005)(66556008)(8676002)(6512007)(66476007)(66946007)(64756008)(91956017)(66446008);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: Or9Y7dyf4XEaUZtx4/CrX5Y+E22HpqPGqhS6S390JHqp8zrUpgfC67HP58e/UQIKwncywKRPaKQt3/3JcJlk58M5uT/tjBwi9V02aR1J98IsvRJukVY0UQInkSlwrxvOQjyIMgDCsWRigG0nOmQjosEHtd5TmmqUboNkKBU+obBgn+tsb0PtejxbNMiGuG1ziDydz2juMWHBPkDbVwscqFTmvDh1P0itchkagm5Mchai2W5+194sTtMJbHv7v4zg3jp5bZcp6JP/bLO7jGPQtmtugZOxh1rwRL2AUiyf+20+2rUfotVTsfkLJTHo7gTMReLVT7iynT0mfvAy65o+ktZ0TZoPYqHTpJN/lYE07xIPkv5Ox2S/FtSoI3d8IRpEzJ3tZkuI3DvMBbbl/c+k0VOtssuve86UMqMtSw8UNHszdhkLv7Jckre9VevAbNRCh0YIRi+rTeu7KKXtvV+HRKawS8Ov+jufd4ipeIQ73lxgn8l01cHq5EOi8TXbgW2B8SzXo3dFdBm7YD9ZlXRY36YZa/RsPcaujAYib0wWXYJBlxnVMhMHJbHZIZGbAdvsmTKy4fnb7fdpoP7zjSOxsovzHc3aNggDNZrxp3xAScauTQkH7VexEwtwhfTsJ7ak7+/7AJYIzzC4MR5p/c9eVLanyKhGViA+OHUeTFxSFGpf6bpk6HEIprcXOruQKfHg4vrTbPlwyWgrzpHBaW/OqkCst8BSHUcC5KXa40dQKtvBb6BrR8ONiWJXvTujL9+IvGRkiccltI5LjA9ng6RKfTH5nLCPM8GVSOtdyOC8ECI=
-Content-ID: <D93DE193E320F548A3F82B07D28BA73A@namprd11.prod.outlook.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 682D688528
+ for <devel@driverdev.osuosl.org>; Fri,  1 May 2020 20:56:48 +0000 (UTC)
+Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
+ [95.90.213.197])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id F1368208DB;
+ Fri,  1 May 2020 20:56:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588366608;
+ bh=rHa/OUq4PCsz9/I6xh/fl/AbvwyJsSpGvaGWFA1Ua1U=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=XJ4MPi+Xk1wLagRs5xrnEzQ97LT2Ssh2H8lUmfB1Z2Rfz25GybxBfX7QMt76w8ryp
+ 6ZF/uPDIRvnWYxF1jqFOyZS4kvkUwcwn7YgO/761pu8KJAXjpgnjaTK06Qimwl2WLb
+ b0YixU1Lpm8xP7oU+iPrUTcpqisXpTNQrE0DXGRU=
+Received: from mchehab by mail.kernel.org with local (Exim 4.92.3)
+ (envelope-from <mchehab@kernel.org>)
+ id 1jUciD-00FVhI-Rm; Fri, 01 May 2020 22:56:45 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: 
+Subject: [PATCH] media: atomisp: use add_qos_request instead of update
+Date: Fri,  1 May 2020 22:56:33 +0200
+Message-Id: <0df754194a1939de813f37897eaa825a120f7aca.1588366521.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.25.4
+In-Reply-To: <20200501192844.397efcaa@ASUS>
+References: <20200501192844.397efcaa@ASUS>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0ef6aa3f-3f4d-4885-b0c3-08d7edfd1fb4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 May 2020 18:26:10.8929 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZFm7ZdfcPhSAKv0L5Oq3XBSG6FRSlT2wf5CW1Fv/hvBh25dDxzmqPjVcBDCbeWGozwsjd1twKY8agFtIqMatHWG9D/Lp31umiS/VRluS5fY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB2584
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -143,54 +68,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: rachel.kim@atmel.com, dean.lee@atmel.com, chris.park@atmel.com,
- gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-wireless@vger.kernel.org, johnny.kim@atmel.com,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Patrik Gfeller <patrik.gfeller@gmail.com>, Alan Cox <alan@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+It doesn't make senst to update a request that was not
+created. So, instead of using cpu_latency_qos_update_request(),
+let's use, instead cpu_latency_qos_add_request() at device
+probing code.
 
-On 01/05/20 10:32 pm, Oscar Carter wrote:
-> EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
-> 
-> Increase by one the size of wid_list array as index variable can reach a
-> value of 5. If this happens, an out-of-bounds access is performed.
-> 
-> Addresses-Coverity-ID: 1451981 ("Out-of-bounds access")
-> Fixes: c5c77ba18ea66 ("staging: wilc1000: Add SDIO/SPI 802.11 driver")
+This should fix this issue:
 
-The code changes are fine. But the correct commit for Fixes tag should be
+[    9.691775] cpu_latency_qos_update_request called for unknown object
+[    9.695279] WARNING: CPU: 3 PID: 523 at kernel/power/qos.c:296 cpu_latency_qos_update_request+0x3a/0xb0
+[    9.698826] Modules linked in: snd_soc_acpi_intel_match snd_rawmidi snd_soc_acpi snd_soc_rl6231 snd_soc_core ath mac80211 snd_compress snd_hdmi_lpe_audio ac97_bus hid_sensor_accel_3d snd_pcm_dmaengine hid_sensor_gyro_3d hid_sensor_trigger industrialio_triggered_buffer kfifo_buf hid_sensor_iio_common processor_thermal_device industrialio cfg80211 snd_pcm snd_seq intel_rapl_common atomisp(C+) libarc4 intel_soc_dts_iosf cros_ec_ishtp intel_xhci_usb_role_switch mei_txe cros_ec videobuf_vmalloc mei roles atomisp_ov2680(C) videobuf_core snd_seq_device snd_timer spi_pxa2xx_platform videodev snd mc dw_dmac intel_hid dw_dmac_core 8250_dw soundcore int3406_thermal int3400_thermal intel_int0002_vgpio acpi_pad acpi_thermal_rel soc_button_array int3403_thermal int340x_thermal_zone mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid crct10dif_pclmul crc32_pclmul ghash_clmulni_intel i915 mmc_block
+  i2c_algo_bit
+[    9.698885]  aesni_intel crypto_simd drm_kms_helper cryptd syscopyarea sysfillrect glue_helper sysimgblt fb_sys_fops cec intel_ish_ipc drm lpc_ich intel_ishtp hid_asus intel_soc_pmic_chtdc_ti asus_wmi i2c_hid sparse_keymap sdhci_acpi wmi video sdhci hid_generic usbhid hid
+[    9.736699] CPU: 3 PID: 523 Comm: systemd-udevd Tainted: G         C        5.7.0-rc1+ #2
+[    9.741309] Hardware name: ASUSTeK COMPUTER INC. T101HA/T101HA, BIOS T101HA.305 01/24/2018
+[    9.745962] RIP: 0010:cpu_latency_qos_update_request+0x3a/0xb0
+[    9.750615] Code: 89 e5 41 55 41 54 41 89 f4 53 48 89 fb 48 81 7f 28 e0 7f c6 9e 74 1c 48 c7 c6 60 f3 65 9e 48 c7 c7 e8 a9 99 9e e8 b2 a6 f9 ff <0f> 0b 5b 41 5c 41 5d 5d c3 0f 1f 44 00 00 44 3b 23 74 ef 44 89 e2
+[    9.760065] RSP: 0018:ffffa865404f39c0 EFLAGS: 00010282
+[    9.764734] RAX: 0000000000000000 RBX: ffff9d2aefc84350 RCX: 0000000000000000
+[    9.769435] RDX: ffff9d2afbfa97c0 RSI: ffff9d2afbf99808 RDI: ffff9d2afbf99808
+[    9.774125] RBP: ffffa865404f39d8 R08: 0000000000000304 R09: 0000000000aaaaaa
+[    9.778804] R10: 0000000000000000 R11: 0000000000000001 R12: 00000000ffffffff
+[    9.783491] R13: ffff9d2afb4640b0 R14: ffffffffc07ecf20 R15: 0000000091000000
+[    9.788187] FS:  00007efe67ff8880(0000) GS:ffff9d2afbf80000(0000) knlGS:0000000000000000
+[    9.792864] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    9.797482] CR2: 00007ffc6424bdc8 CR3: 0000000178998000 CR4: 00000000001006e0
+[    9.802126] Call Trace:
+[    9.806775]  atomisp_pci_probe.cold.19+0x15f/0x116f [atomisp]
+[    9.811441]  local_pci_probe+0x47/0x80
+[    9.816085]  pci_device_probe+0xff/0x1b0
+[    9.820706]  really_probe+0x1c8/0x3e0
+[    9.825247]  driver_probe_device+0xd9/0x120
+[    9.829769]  device_driver_attach+0x58/0x60
+[    9.834294]  __driver_attach+0x8f/0x150
+[    9.838782]  ? device_driver_attach+0x60/0x60
+[    9.843205]  ? device_driver_attach+0x60/0x60
+[    9.847634]  bus_for_each_dev+0x79/0xc0
+[    9.852033]  ? kmem_cache_alloc_trace+0x167/0x230
+[    9.856462]  driver_attach+0x1e/0x20
 
-Fixes: f5a3cb90b802d ("staging: wilc1000: add passive scan support")
+Reported-by: Patrik Gfeller <patrik.gfeller@gmail.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ drivers/staging/media/atomisp/pci/atomisp_v4l2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
+index 297f55a01b1b..f1bae9712720 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
+@@ -1751,7 +1751,7 @@ static int atomisp_pci_probe(struct pci_dev *dev,
+ 
+ 	atomisp_msi_irq_init(isp, dev);
+ 
+-	cpu_latency_qos_update_request(&isp->pm_qos, PM_QOS_DEFAULT_VALUE);
++	cpu_latency_qos_add_request(&isp->pm_qos, PM_QOS_DEFAULT_VALUE);
+ 
+ 	/*
+ 	 * for MRFLD, Software/firmware needs to write a 1 to bit 0 of
+-- 
+2.25.4
 
-Regards,
-Ajay
-
-> Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
-> ---
->  drivers/staging/wilc1000/hif.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/wilc1000/hif.c b/drivers/staging/wilc1000/hif.c
-> index 6c7de2f8d3f2..128943c3be4f 100644
-> --- a/drivers/staging/wilc1000/hif.c
-> +++ b/drivers/staging/wilc1000/hif.c
-> @@ -151,7 +151,7 @@ int wilc_scan(struct wilc_vif *vif, u8 scan_source, u8 scan_type,
->               void *user_arg, struct cfg80211_scan_request *request)
->  {
->         int result = 0;
-> -       struct wid wid_list[5];
-> +       struct wid wid_list[6];
->         u32 index = 0;
->         u32 i, scan_timeout;
->         u8 *buffer;
-> --
-> 2.20.1
-> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
