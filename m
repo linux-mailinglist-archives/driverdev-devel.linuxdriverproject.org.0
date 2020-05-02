@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB4E61C220B
-	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 02:48:48 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 761F7893A1;
-	Sat,  2 May 2020 00:48:47 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qqhtnM5WRtk0; Sat,  2 May 2020 00:48:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BDB6789394;
-	Sat,  2 May 2020 00:48:46 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5973D1BF9C6
- for <devel@linuxdriverproject.org>; Sat,  2 May 2020 00:48:45 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D5A31C2495
+	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 13:05:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4B05187244
- for <devel@linuxdriverproject.org>; Sat,  2 May 2020 00:48:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AC7C686934;
+	Sat,  2 May 2020 11:05:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6D8wD6BYMvMu; Sat,  2 May 2020 11:05:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 24924862C9;
+	Sat,  2 May 2020 11:05:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 195191BF859
+ for <devel@linuxdriverproject.org>; Sat,  2 May 2020 11:05:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0C5EC8863D
+ for <devel@linuxdriverproject.org>; Sat,  2 May 2020 11:05:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mpi8q72jfaiG for <devel@linuxdriverproject.org>;
- Sat,  2 May 2020 00:48:44 +0000 (UTC)
+ with ESMTP id Vcis6JNrQMpv for <devel@linuxdriverproject.org>;
+ Sat,  2 May 2020 11:05:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 48A3C8723A
- for <devel@driverdev.osuosl.org>; Sat,  2 May 2020 00:48:44 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id mq3so587141pjb.1
- for <devel@driverdev.osuosl.org>; Fri, 01 May 2020 17:48:44 -0700 (PDT)
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1281A8863B
+ for <devel@driverdev.osuosl.org>; Sat,  2 May 2020 11:05:16 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id k1so14894978wrx.4
+ for <devel@driverdev.osuosl.org>; Sat, 02 May 2020 04:05:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=uhO2zvJdUEjjA+Ad6DDoLPqccr/R1guurJGlpT0l+5c=;
- b=dD9Q9LUOXNANUJPiaxVQ0c32mWrZVLkhfx3N8EZtAetSkaTiDLsme27IupUpg0kruu
- mSTSaQ8U/Zqzob+r8U/hvIgFlFYsrXdng7ncFaW5WzNOjkEPkgEuEx5IuhWYkYVQiG2u
- hZDji/20MrnviVTN0G8dvxEStcDzjVxN7UPN/Y7Aj1gOMlmQBj6YKZvtTsTDhDgW/WiA
- wtWi722HcnXah4vVaiHjm6ubyaovERZQZtPpnV+IYyS1rAwLBaWjV9o1CQkkgvTU2QVu
- H1zW+HJK6erp4sPT8I3H2vgAC2oVsepE5+0jZnW0dbivH5KJzMMgkteNSK5yFqI9+Gye
- yatQ==
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=RMuptJbJbjulTJohKmbdW41ZrhcsbjdJdZhgU26yP3s=;
+ b=m136dddol7qXyrZQOrEVLCeoYpx/kpsFoA4iVZlO0JKs9oA1dRqqVC08BxSfcJBuSs
+ /nM2MtYbywVleLpOe+G0o5tCVFIO4eqsXXQEMEIJF91HMitDpxg1C5fHKQFT5LwG0TUb
+ tv2/P/rM31qPNX974Hjl0picqor8bET50H7XAK7Os8I7JuBZ9MXpKK4MSkSg2NHSONUu
+ kiF+MRuQsd0NnDYXq7Zk4IeWf2vtgNqwPKghynAyH4aAY9CbOBmhmD9V6a7/Ea0TA1xJ
+ oFRuRznVF0iMFWRA/YHdR83JZiT3oriSYgtW05txPKLldmdOrLJT+q2+6br6CS8HGx5s
+ BU9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=uhO2zvJdUEjjA+Ad6DDoLPqccr/R1guurJGlpT0l+5c=;
- b=dTezB6GMOfHjiql3mbakd3Kzr4WQDTX27nsMKPLZ8jVQzdAuQ8d3FmG4rpEt5mmEo6
- vk5RljUS8ieDLfKsLhc9+Uavd8I0l6juc7XeVoKJ6MDkOcJHUOuOX7Y1U32Uc12GSD9W
- nfQASIf4g0m+i9CxEyaHatoehdGPiP2jpEgZ/56i50ccz1I0hyQMvdFF20s+1x8zYp1y
- 8rGYFdubdVHjaEkd0vTk2YbCWMcG1JvJMyOTOxpZEB1+0a5/9HdX1Q+Oig9LYzpZRDDQ
- rXrYT2VIHPf4RFZG7Y/lMpSqy6cCsJey+CGYY+6XyYTW/e1hgtGe7NliZrKY0EsOEN41
- lOiQ==
-X-Gm-Message-State: AGi0PubAuvvwZvbvD3I5FefLkF4aJugCu/VM7Ekna46n4gg07rf5X6FX
- LsmVJj7sT4SfdpJGjCgNLMjRCkqMk2w=
-X-Google-Smtp-Source: APiQypJm1uQ7w1TNeg8jyLqg6FCvIV1sHfz2eFMh65zJsu6nuLVxmYoUJEaNK0auvlO1AbCe8pxapg==
-X-Received: by 2002:a17:902:704a:: with SMTP id
- h10mr7031346plt.235.1588380523419; 
- Fri, 01 May 2020 17:48:43 -0700 (PDT)
-Received: from amber ([116.88.148.100])
- by smtp.gmail.com with ESMTPSA id u3sm3219961pfb.105.2020.05.01.17.48.41
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 01 May 2020 17:48:42 -0700 (PDT)
-Date: Sat, 2 May 2020 08:47:50 +0800
-From: Yu Jian Wu <yujian.wu1@gmail.com>
-To: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8723bs: os_dep: Cleanup pointer casting code style
-Message-ID: <20200502004747.GA16480@amber>
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=RMuptJbJbjulTJohKmbdW41ZrhcsbjdJdZhgU26yP3s=;
+ b=GTTRT3RGxjqpxy2qjByMfzoAowpU7CNz6AdYLhqh2rm2cwR+YcDsG14dAILgg+SnPS
+ /Uu7agUOQn5hRMThnKSz+BteYdKFvGWWMdh2AmpWEFH6MQ8lIkRTBJmOZN/oNpPtqQ2Q
+ YsMyIwk4oK77dBT0dw7Kzohuma11pJMslj7HypKG4xaLYSgxNpy3Xd/8eRcaAZNufSF5
+ 3aqsuTQhiruYGAliny/2mjiVLmw0WgXwKe0ug3j6Agr6CzWPe0ciGsPSDHeZw4gEVURv
+ LlBTqRC7J/ubz5IEWtd7n8KbRaGEYCTZUk+3XdD0AvHMstldFiCicsfML9Ynugo/qvia
+ HKIg==
+X-Gm-Message-State: AGi0PubuJ85ZWMKPBQaa9qiwQGoDzLg6sCWs7q5vbwGtmjSpPm86qD4h
+ 7gLC/V8Or0UC54NvNHdsxYo=
+X-Google-Smtp-Source: APiQypJb633Iabl5mydKD4TmXV9+wPUDtEA0xJEPHoroma1IFa6V+n6KEr9qrQgFsCXyClg0Yn12Bg==
+X-Received: by 2002:adf:8302:: with SMTP id 2mr1297910wrd.114.1588417514396;
+ Sat, 02 May 2020 04:05:14 -0700 (PDT)
+Received: from [192.168.43.18] (94.197.121.192.threembb.co.uk.
+ [94.197.121.192])
+ by smtp.gmail.com with ESMTPSA id p6sm8374161wrt.3.2020.05.02.04.05.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 02 May 2020 04:05:13 -0700 (PDT)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: [PATCH ] staging: vt6656: refactor power save operation
+Message-ID: <5f32a399-bb35-2b77-7c37-a852393a9df7@gmail.com>
+Date: Sat, 2 May 2020 12:05:12 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,107 +86,146 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: hdegoede@redhat.com, yujian.wu1@gmail.com, Larry.Finger@lwfinger.net
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Oscar Carter <oscar.carter@gmx.com>, linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Cleanup by adding a space between type and pointer, in accordance with
-checkpatch.pl message "(foo*)" should be "(foo *)".
+At present the power save wake uses the listening interval and
+the slow path to wake up.
 
-Signed-off-by: Yu Jian Wu <yujian.wu1@gmail.com>
+The following using a beacon interval of 100 and
+listen interval of 5.
+
+The TBTT set at 100 wake-up sequence;
+100 TTBT wake-up set to listen interval.
+200 TTBT
+300 TTBT
+400 TTBT --> call vnt_next_tbtt_wakeup on slow path
+	Beacon heard and passed through at the approx 500 interval.
+500 TTBT
+600 TTBT wakeup set to listen interval
+
+The TTBT set at 500 wake-up sequence and always listen flagged on;
+100 No TTBT
+200 No TTBT
+300 No TTBT
+400 No TTBT
+500 TTBT - beacon heard and passed through
+600 No TTBT
+
+A further enhancement because the TTBT is more precise
+the dtim_period can be used instead.
+
+When Power save is off the TTBT continues to run at the listen
+interval but all the other beacons are passed.
+
+The code in vnt_int_process_data is no longer required. 
+
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c    | 16 ++++++++--------
- drivers/staging/rtl8723bs/os_dep/recv_linux.c    |  2 +-
- 2 files changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/vt6656/device.h   |  2 --
+ drivers/staging/vt6656/main_usb.c | 11 +++++++++--
+ drivers/staging/vt6656/power.c    | 12 ++----------
+ drivers/staging/vt6656/usbpipe.c  | 13 -------------
+ 4 files changed, 11 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-index b037868fbf22..8377bc75e308 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-@@ -98,7 +98,7 @@ static struct ieee80211_channel rtw_2ghz_channels[] = {
+diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
+index 4d596853a3ee..d19d802b5d4f 100644
+--- a/drivers/staging/vt6656/device.h
++++ b/drivers/staging/vt6656/device.h
+@@ -383,8 +383,6 @@ struct vnt_private {
+ 	u8 bb_pre_ed_rssi;
+ 	u8 bb_pre_ed_index;
  
- static void rtw_2g_channels_init(struct ieee80211_channel *channels)
- {
--	memcpy((void*)channels, (void*)rtw_2ghz_channels,
-+	memcpy((void *)channels, (void *)rtw_2ghz_channels,
- 		sizeof(struct ieee80211_channel)*RTW_2G_CHANNELS_NUM
- 	);
+-	u16 wake_up_count;
+-
+ 	/* command timer */
+ 	struct delayed_work run_command_work;
+ 
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index 7db1e044ad26..b5790d4d7152 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -824,10 +824,17 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
+ 	if (changed & (BSS_CHANGED_ASSOC | BSS_CHANGED_BEACON_INFO) &&
+ 	    priv->op_mode != NL80211_IFTYPE_AP) {
+ 		if (conf->assoc && conf->beacon_rate) {
++			u16 ps_beacon_int = conf->beacon_int;
++
++			if (conf->dtim_period)
++				ps_beacon_int *= conf->dtim_period;
++			else if (hw->conf.listen_interval)
++				ps_beacon_int *= hw->conf.listen_interval;
++
+ 			vnt_mac_reg_bits_on(priv, MAC_REG_TFTCTL,
+ 					    TFTCTL_TSFCNTREN);
+ 
+-			vnt_mac_set_beacon_interval(priv, conf->beacon_int);
++			vnt_mac_set_beacon_interval(priv, ps_beacon_int);
+ 
+ 			vnt_reset_next_tbtt(priv, conf->beacon_int);
+ 
+@@ -835,7 +842,7 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
+ 				       conf->sync_tsf, priv->current_tsf);
+ 
+ 			vnt_update_next_tbtt(priv,
+-					     conf->sync_tsf, conf->beacon_int);
++					     conf->sync_tsf, ps_beacon_int);
+ 		} else {
+ 			vnt_clear_current_tsf(priv);
+ 
+diff --git a/drivers/staging/vt6656/power.c b/drivers/staging/vt6656/power.c
+index d160a0773943..2f49c870272a 100644
+--- a/drivers/staging/vt6656/power.c
++++ b/drivers/staging/vt6656/power.c
+@@ -63,16 +63,8 @@ void vnt_enable_power_saving(struct vnt_private *priv, u16 listen_interval)
+ 	 */
+ 	vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_GO2DOZE);
+ 
+-	if (listen_interval >= 2) {
+-		/* clear always listen beacon */
+-		vnt_mac_reg_bits_off(priv, MAC_REG_PSCTL, PSCTL_ALBCN);
+-
+-		/* first time set listen next beacon */
+-		vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_LNBCN);
+-	} else {
+-		/* always listen beacon */
+-		vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_ALBCN);
+-	}
++	/* always listen beacon */
++	vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_ALBCN);
+ 
+ 	dev_dbg(&priv->usb->dev,  "PS:Power Saving Mode Enable...\n");
  }
-@@ -133,8 +133,8 @@ static struct ieee80211_supported_band *rtw_spt_band_alloc(
- 	if (!spt_band)
- 		goto exit;
+diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
+index e8efdeadb1a7..5603f3cbb33c 100644
+--- a/drivers/staging/vt6656/usbpipe.c
++++ b/drivers/staging/vt6656/usbpipe.c
+@@ -202,19 +202,6 @@ static void vnt_int_process_data(struct vnt_private *priv)
+ 	if (int_data->isr0 & ISR_BNTX && priv->op_mode == NL80211_IFTYPE_AP)
+ 		vnt_schedule_command(priv, WLAN_CMD_BECON_SEND);
  
--	spt_band->channels = (struct ieee80211_channel*)(((u8 *)spt_band)+sizeof(struct ieee80211_supported_band));
--	spt_band->bitrates = (struct ieee80211_rate*)(((u8 *)spt_band->channels)+sizeof(struct ieee80211_channel)*n_channels);
-+	spt_band->channels = (struct ieee80211_channel *)(((u8 *)spt_band)+sizeof(struct ieee80211_supported_band));
-+	spt_band->bitrates = (struct ieee80211_rate *)(((u8 *)spt_band->channels)+sizeof(struct ieee80211_channel)*n_channels);
- 	spt_band->band = band;
- 	spt_band->n_channels = n_channels;
- 	spt_band->n_bitrates = n_bitrates;
-@@ -347,7 +347,7 @@ struct cfg80211_bss *rtw_cfg80211_inform_bss(struct adapter *padapter, struct wl
- 	memcpy(pbuf, pnetwork->network.IEs, pnetwork->network.IELength);
- 	len += pnetwork->network.IELength;
+-	if (int_data->isr0 & ISR_TBTT &&
+-	    priv->hw->conf.flags & IEEE80211_CONF_PS) {
+-		if (!priv->wake_up_count)
+-			priv->wake_up_count = priv->hw->conf.listen_interval;
+-
+-		if (priv->wake_up_count)
+-			--priv->wake_up_count;
+-
+-		/* Turn on wake up to listen next beacon */
+-		if (priv->wake_up_count == 1)
+-			vnt_schedule_command(priv, WLAN_CMD_TBTT_WAKEUP);
+-	}
+-
+ 	priv->current_tsf = le64_to_cpu(int_data->tsf);
  
--	*((__le64*)pbuf) = cpu_to_le64(notify_timestamp);
-+	*((__le64 *)pbuf) = cpu_to_le64(notify_timestamp);
- 
- 	bss = cfg80211_inform_bss_frame(wiphy, notify_channel, (struct ieee80211_mgmt *)buf,
- 		len, notify_signal, GFP_ATOMIC);
-@@ -1118,7 +1118,7 @@ static int cfg80211_rtw_add_key(struct wiphy *wiphy, struct net_device *ndev,
- 	else if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
- 	{
- 		if (mac_addr)
--			memcpy(param->sta_addr, (void*)mac_addr, ETH_ALEN);
-+			memcpy(param->sta_addr, (void *)mac_addr, ETH_ALEN);
- 
- 		ret = rtw_cfg80211_ap_set_encryption(ndev, param, param_len);
- 	}
-@@ -2474,7 +2474,7 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
- 		 * for two MAC addresses
- 		 */
- 		skb_pull(skb, dot11_hdr_len + qos_len + snap_len - sizeof(src_mac_addr) * 2);
--		pdata = (unsigned char*)skb->data;
-+		pdata = (unsigned char *)skb->data;
- 		memcpy(pdata, dst_mac_addr, sizeof(dst_mac_addr));
- 		memcpy(pdata + sizeof(dst_mac_addr), src_mac_addr, sizeof(src_mac_addr));
- 
-@@ -2529,7 +2529,7 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
- 
- 		pframe = (u8 *)(pmgntframe->buf_addr) + TXDESC_OFFSET;
- 
--		memcpy(pframe, (void*)buf, len);
-+		memcpy(pframe, (void *)buf, len);
- 		pattrib->pktlen = len;
- 
- 		pwlanhdr = (struct ieee80211_hdr *)pframe;
-@@ -3019,7 +3019,7 @@ static int _cfg80211_rtw_mgmt_tx(struct adapter *padapter, u8 tx_ch, const u8 *b
- 
- 	pframe = (u8 *)(pmgntframe->buf_addr) + TXDESC_OFFSET;
- 
--	memcpy(pframe, (void*)buf, len);
-+	memcpy(pframe, (void *)buf, len);
- 	pattrib->pktlen = len;
- 
- 	pwlanhdr = (struct ieee80211_hdr *)pframe;
-diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-index 60c35d92ba29..0535dabc1bf5 100644
---- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-@@ -230,7 +230,7 @@ static void rtw_os_ksocket_send(struct adapter *padapter, union recv_frame *prec
- 
- 		if (rx_pid == psta->pid) {
- 			int i;
--			u16 len = *(u16*)(skb->data+ETH_HLEN+2);
-+			u16 len = *(u16 *)(skb->data+ETH_HLEN+2);
- 			DBG_871X("eth, RC: len = 0x%x\n", len);
- 
- 			for (i = 0; i < len; i++)
+ 	low_stats->dot11RTSSuccessCount += int_data->rts_success;
 -- 
-2.17.1
-
-
+2.25.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
