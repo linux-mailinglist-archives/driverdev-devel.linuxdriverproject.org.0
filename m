@@ -1,19 +1,19 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3592E1C2625
-	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 16:29:12 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 063E21C2626
+	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 16:29:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8D02887269;
+	by hemlock.osuosl.org (Postfix) with ESMTP id DECAA88C52;
 	Sat,  2 May 2020 14:29:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3_nA7QcKURtE; Sat,  2 May 2020 14:29:09 +0000 (UTC)
+	with ESMTP id 1f5TYdp-3sjX; Sat,  2 May 2020 14:29:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5CB9487246;
-	Sat,  2 May 2020 14:29:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5D31D8886D;
+	Sat,  2 May 2020 14:29:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
