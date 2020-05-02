@@ -1,56 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 063E21C2626
-	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 16:29:13 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B21241C2628
+	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 16:30:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DECAA88C52;
-	Sat,  2 May 2020 14:29:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EF15A8836C;
+	Sat,  2 May 2020 14:29:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1f5TYdp-3sjX; Sat,  2 May 2020 14:29:10 +0000 (UTC)
+	with ESMTP id cL375AbSbh4B; Sat,  2 May 2020 14:29:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5D31D8886D;
-	Sat,  2 May 2020 14:29:10 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id E071788372;
+	Sat,  2 May 2020 14:29:54 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 53B491BF2F8;
- Sat,  2 May 2020 14:29:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 918E81BF2F8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  2 May 2020 14:29:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 50C278723E;
- Sat,  2 May 2020 14:29:07 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8E34E87257
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  2 May 2020 14:29:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id utoSN1M-U_XH; Sat,  2 May 2020 14:29:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id Lnr9E8ZP_kcR
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  2 May 2020 14:29:53 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from vps.duracellbetray.org (slot0.duracellbetray.org [45.95.169.78])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BAE0087211;
- Sat,  2 May 2020 14:29:06 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 24F9C87252
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  2 May 2020 14:29:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=duracellbetray.org; s=mail; h=Content-Transfer-Encoding:Content-Type:
  Message-ID:Reply-To:Subject:To:From:Date:MIME-Version:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=WG9IZ2tCpCjzoteI7CzthaG2jRUEMJ6Skzo6TpgFeOI=; b=IXGSv4b5lh09Qs3bKTqUpv2l1B
- IW2ZETvgyDhFm2mr5dR98MFEDLCCfTqPhw8EfKVX2e/wyj5xth9FXUa8uVhrAdz7KHJJhUuF6IXAp
- EhECv/CNZ1WhLm4LlXPCY/DotPSnE0/Qs+7W1hqtM7I03EMltuIMD4P8bUytQ5KOGNOo=;
+ bh=WG9IZ2tCpCjzoteI7CzthaG2jRUEMJ6Skzo6TpgFeOI=; b=iHomps9terscSInt5GvpeSY9Pn
+ ph2SQn7jPTt+UG2tF3m0NQnPxCKzlwQ54SDLXO491II4UCfr7WN8EzIM/SE3ycEEbBA76PtphoRLy
+ FFWS7eyaRQvCzaatbALkThBpjFhSEGEf967A8ohlHkNYq8TDThXe10Jq+Dlm0MXpOYQg=;
 Received: from [127.0.0.1] (helo=localhost)
  by vps.duracellbetray.org with esmtp (Exim 4.92.3)
  (envelope-from <info@duracellbetray.org>)
- id 1jUt76-0003qW-CN; Sat, 02 May 2020 10:27:32 -0400
+ id 1jUt8C-0003zG-Bq; Sat, 02 May 2020 10:28:40 -0400
 MIME-Version: 1.0
-Date: Sat, 02 May 2020 07:27:32 -0700
+Date: Sat, 02 May 2020 07:28:40 -0700
 From: "Mr. Okrapah Adjei" <info@duracellbetray.org>
 To: undisclosed-recipients:;
 Subject: Product inquiry
 User-Agent: Roundcube Webmail/1.4.3
-Message-ID: <a74caff4c0f56606ea8f9686d0406548@duracellbetray.org>
+Message-ID: <78c72e5085f5ec0697fb108959f1e112@duracellbetray.org>
 X-Sender: info@duracellbetray.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
