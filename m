@@ -1,78 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B217F1C24AD
-	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 13:20:25 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9826F1C24B0
+	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 13:21:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 90DA320445;
-	Sat,  2 May 2020 11:20:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 075BD86F50;
+	Sat,  2 May 2020 11:21:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A-BxB+tR9i5a; Sat,  2 May 2020 11:20:23 +0000 (UTC)
+	with ESMTP id K24N-pXErU3s; Sat,  2 May 2020 11:21:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 462EE20416;
-	Sat,  2 May 2020 11:20:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F3D2086E97;
+	Sat,  2 May 2020 11:21:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7DFA41BF859
- for <devel@linuxdriverproject.org>; Sat,  2 May 2020 11:20:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 64BE81BF859
+ for <devel@linuxdriverproject.org>; Sat,  2 May 2020 11:21:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7A5498884E
- for <devel@linuxdriverproject.org>; Sat,  2 May 2020 11:20:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 61A0188846
+ for <devel@linuxdriverproject.org>; Sat,  2 May 2020 11:21:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7N5lsLwOZTNY for <devel@linuxdriverproject.org>;
- Sat,  2 May 2020 11:20:17 +0000 (UTC)
+ with ESMTP id 9YVw9nBuM0RK for <devel@linuxdriverproject.org>;
+ Sat,  2 May 2020 11:21:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 20E5588846
- for <devel@driverdev.osuosl.org>; Sat,  2 May 2020 11:20:17 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id x18so14929026wrq.2
- for <devel@driverdev.osuosl.org>; Sat, 02 May 2020 04:20:17 -0700 (PDT)
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AE3D188844
+ for <devel@driverdev.osuosl.org>; Sat,  2 May 2020 11:21:46 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id 188so2819587wmc.2
+ for <devel@driverdev.osuosl.org>; Sat, 02 May 2020 04:21:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:subject:to:cc:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=zG92LUO0XKhl+2rKG8DLuLjU1DQt2zx+8L0OU1LdhEg=;
- b=CajDlDompy/b7v/KVRpoPSuTyFN6imZedHipJVWvDbARZcR7D4O4A8D+oyFNS4/4yl
- LEC7fkKEA9MiPWJ8fefGXvp9r8xfIGPwoX3YDJsM6geogeOiMFGpV5w8QCJAdIFinTkA
- XtIH31W+jf2kxGao58jqf9y6uZ2jTwxNv6TaMlYuFPuTS//lbrWP/nLZET73qo/anki5
- pQZzOpjqaj+sEp657osnWPMORd3l5ur0KA35vqIPdNltxllVhVBWxJxnFXyZgIrfPjgf
- joiPK4QrQbanEKg1dABYB+tF9+sER2yP6LwCjbpknWHRCxlSuMdjHFx3hiLkV3v9slr7
- kxRA==
+ h=subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=sJijT4a1j9nQvyWg75je7ZT6OCbMpgJ+rujJ98q3RnQ=;
+ b=BOcpjQBkHnP1PlW8xPC/wdiykrjWFuE8hLh3MtOcRba0RLejNkTqQeJdAFx25MGmZa
+ Ql43zdR+ngo/brPlqZFoeYN9uYRA38RNKuTmn751g3QOSo3FG5t8MseCloz2baIlnbBS
+ JcdqFUGjERaHx+OMtJKotHunNy0XuS5TTbWQjFKCoR81Sn5AH5ZPndj9rWcvvjpD220M
+ 6FT6+WLvHtSFH4h3a5NvBzCRDsoluQr8Ak4IvEeIpyXyl+djOhngV52YhNvOqqz+4gq9
+ feD9ze1xBnY0PgDpk/C/vo1CB5G5lJW7uvZ4saMqQEjH4zrfIOf3NVAfyR82GbET4702
+ 9h7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=zG92LUO0XKhl+2rKG8DLuLjU1DQt2zx+8L0OU1LdhEg=;
- b=Z9My586yEKzR+1lyIKOg8bMKQ6EL6c3kSfXNDZ1HD8Tf296aGqt1uu7rjFIJWvHe58
- vibM2LN9i+sNTHifrahRLk7+J/MJtiLZEQLFpru4o7fEjA67rn+BJf4wYBu0SBMBANVl
- 0bBxeRSVMXAU6KB7BOeWX93cnFZXLdrombBl5HgOB/outFHvWQ3SmIV3FGMHSJl9zJRg
- Nk3uo6p047kHgDIA3RFUlcWSk+LOEOIzr6hiOGWuClhBrVOJoAOR7fc4Wh0ntw1r5/AA
- 6Xa2YUQ501xDKs9CAqrmq0HXlkpJ0UbtNX+glK4P1B1RhRqRxzpd2houQ4xm5XVSyzpK
- wdYQ==
-X-Gm-Message-State: AGi0PubLse4FEnvFVpkRDvv/itNGNjgDIxmkLxRnjrh2kB0b8XqWbPcc
- c1nHVapLpePZ4J9YAIrfGQQ=
-X-Google-Smtp-Source: APiQypIq19iGDKSKYpeZF07PAnvlfWy0/zba4sLjDHej3+RyEDXWoQV9A4crYF20ogkLiGKD4TMVxw==
-X-Received: by 2002:adf:f48a:: with SMTP id l10mr8514091wro.231.1588418415682; 
- Sat, 02 May 2020 04:20:15 -0700 (PDT)
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=sJijT4a1j9nQvyWg75je7ZT6OCbMpgJ+rujJ98q3RnQ=;
+ b=L1suILuKrIzHQiT5M5dht2Bhmrr0VWoMMYuznmb90fQfdPqFUhrFnYRwN5Rrv3/1k6
+ uGvxacS8FXWMdw8uOMEDA/18DWWS6iv8nOTCrnEXwS1QGz+9P6DGBAhVm5TLnO83KHhp
+ 70Jy1oKxLa0pbFBhDl5HXFmg5HXBuNDg9dy91sjLAnK1pkC+Hs4659i3YAZ0XpaVn+Ze
+ m7zh9n1OOHPD4qANjXutEmsX/a9xDFX2TUXbThMJUn5FWJwQVOCweWWgosoj6Hg1g5kC
+ +UlRVdRf/6S7BvDlnm/ppw8mdZsZH7fdYE/rmh5tx1eBcTti0jgOjw8Mf26Yp3G77zz7
+ nXeg==
+X-Gm-Message-State: AGi0PuaVw+0RtcZcTrF8wAkReRrWhpbMKMVJhvGZpP6IfoDXnaw5t0wA
+ LyUWtHscn35IlYGENSp5WZY=
+X-Google-Smtp-Source: APiQypLEGt097/krdyEeil57drfCN3k7Xxf2DKsE7CMV6LGKvZxzdohRE05WiuWepAfSdkRQLHJYcw==
+X-Received: by 2002:a1c:5642:: with SMTP id k63mr4181685wmb.188.1588418505003; 
+ Sat, 02 May 2020 04:21:45 -0700 (PDT)
 Received: from [192.168.43.18] (94.197.121.192.threembb.co.uk.
  [94.197.121.192])
- by smtp.gmail.com with ESMTPSA id s11sm8867679wrp.79.2020.05.02.04.20.14
+ by smtp.gmail.com with ESMTPSA id h2sm3789426wmf.34.2020.05.02.04.21.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 02 May 2020 04:20:15 -0700 (PDT)
+ Sat, 02 May 2020 04:21:44 -0700 (PDT)
+Subject: Re: [PATCH ] staging: vt6656: refactor power save operation
 From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH v2] staging: vt6656: refactor power save operation
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Message-ID: <5a188bd8-7049-8063-f24d-96768ce9a6ed@gmail.com>
-Date: Sat, 2 May 2020 12:20:13 +0100
+References: <5f32a399-bb35-2b77-7c37-a852393a9df7@gmail.com>
+Message-ID: <26ab54ee-9f42-4c2a-e823-f1eccfe24dfb@gmail.com>
+Date: Sat, 2 May 2020 12:21:43 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
+In-Reply-To: <5f32a399-bb35-2b77-7c37-a852393a9df7@gmail.com>
 Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -93,141 +96,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-At present the power save wake uses the listening interval and
-the slow path to wake up.
+Drop this patch v2 sent corrected TTBT.
 
-The following using a beacon interval of 100 and
-listen interval of 5.
+Regards
 
-The TBTT set at 100 wake-up sequence;
-100 TBTT wake-up set to listen interval.
-200 TBTT
-300 TBTT
-400 TBTT --> call vnt_next_tbtt_wakeup on slow path
-	Beacon heard and passed through at the approx 500 interval.
-500 TBTT
-600 TBTT wake-up set to listen interval
 
-The TBTT set at 500 wake-up sequence and always listen flagged on;
-100 No TBTT
-200 No TBTT
-300 No TBTT
-400 No TBTT
-500 TBTT - beacon heard and passed through
-600 No TBTT
-
-A further enhancement because the TBTT is more precise
-the dtim_period can be used instead.
-
-When Power save is off the TBTT continues to run at the listen
-interval but all the other beacons are passed.
-
-The code in vnt_int_process_data is no longer required. 
-
-Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
----
-v2 Corrected TTBT to TBTT
- 
- drivers/staging/vt6656/device.h   |  2 --
- drivers/staging/vt6656/main_usb.c | 11 +++++++++--
- drivers/staging/vt6656/power.c    | 12 ++----------
- drivers/staging/vt6656/usbpipe.c  | 13 -------------
- 4 files changed, 11 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
-index 4d596853a3ee..d19d802b5d4f 100644
---- a/drivers/staging/vt6656/device.h
-+++ b/drivers/staging/vt6656/device.h
-@@ -383,8 +383,6 @@ struct vnt_private {
- 	u8 bb_pre_ed_rssi;
- 	u8 bb_pre_ed_index;
- 
--	u16 wake_up_count;
--
- 	/* command timer */
- 	struct delayed_work run_command_work;
- 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index 7db1e044ad26..b5790d4d7152 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -824,10 +824,17 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
- 	if (changed & (BSS_CHANGED_ASSOC | BSS_CHANGED_BEACON_INFO) &&
- 	    priv->op_mode != NL80211_IFTYPE_AP) {
- 		if (conf->assoc && conf->beacon_rate) {
-+			u16 ps_beacon_int = conf->beacon_int;
-+
-+			if (conf->dtim_period)
-+				ps_beacon_int *= conf->dtim_period;
-+			else if (hw->conf.listen_interval)
-+				ps_beacon_int *= hw->conf.listen_interval;
-+
- 			vnt_mac_reg_bits_on(priv, MAC_REG_TFTCTL,
- 					    TFTCTL_TSFCNTREN);
- 
--			vnt_mac_set_beacon_interval(priv, conf->beacon_int);
-+			vnt_mac_set_beacon_interval(priv, ps_beacon_int);
- 
- 			vnt_reset_next_tbtt(priv, conf->beacon_int);
- 
-@@ -835,7 +842,7 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
- 				       conf->sync_tsf, priv->current_tsf);
- 
- 			vnt_update_next_tbtt(priv,
--					     conf->sync_tsf, conf->beacon_int);
-+					     conf->sync_tsf, ps_beacon_int);
- 		} else {
- 			vnt_clear_current_tsf(priv);
- 
-diff --git a/drivers/staging/vt6656/power.c b/drivers/staging/vt6656/power.c
-index d160a0773943..2f49c870272a 100644
---- a/drivers/staging/vt6656/power.c
-+++ b/drivers/staging/vt6656/power.c
-@@ -63,16 +63,8 @@ void vnt_enable_power_saving(struct vnt_private *priv, u16 listen_interval)
- 	 */
- 	vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_GO2DOZE);
- 
--	if (listen_interval >= 2) {
--		/* clear always listen beacon */
--		vnt_mac_reg_bits_off(priv, MAC_REG_PSCTL, PSCTL_ALBCN);
--
--		/* first time set listen next beacon */
--		vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_LNBCN);
--	} else {
--		/* always listen beacon */
--		vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_ALBCN);
--	}
-+	/* always listen beacon */
-+	vnt_mac_reg_bits_on(priv, MAC_REG_PSCTL, PSCTL_ALBCN);
- 
- 	dev_dbg(&priv->usb->dev,  "PS:Power Saving Mode Enable...\n");
- }
-diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
-index e8efdeadb1a7..5603f3cbb33c 100644
---- a/drivers/staging/vt6656/usbpipe.c
-+++ b/drivers/staging/vt6656/usbpipe.c
-@@ -202,19 +202,6 @@ static void vnt_int_process_data(struct vnt_private *priv)
- 	if (int_data->isr0 & ISR_BNTX && priv->op_mode == NL80211_IFTYPE_AP)
- 		vnt_schedule_command(priv, WLAN_CMD_BECON_SEND);
- 
--	if (int_data->isr0 & ISR_TBTT &&
--	    priv->hw->conf.flags & IEEE80211_CONF_PS) {
--		if (!priv->wake_up_count)
--			priv->wake_up_count = priv->hw->conf.listen_interval;
--
--		if (priv->wake_up_count)
--			--priv->wake_up_count;
--
--		/* Turn on wake up to listen next beacon */
--		if (priv->wake_up_count == 1)
--			vnt_schedule_command(priv, WLAN_CMD_TBTT_WAKEUP);
--	}
--
- 	priv->current_tsf = le64_to_cpu(int_data->tsf);
- 
- 	low_stats->dot11RTSSuccessCount += int_data->rts_success;
--- 
-2.25.1
+Malcolm
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
