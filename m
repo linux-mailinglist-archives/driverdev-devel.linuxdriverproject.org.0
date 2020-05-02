@@ -2,58 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34A131C27FF
-	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 21:25:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D67A1C2883
+	for <lists+driverdev-devel@lfdr.de>; Sun,  3 May 2020 00:16:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EE38120796;
-	Sat,  2 May 2020 19:25:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 821EE2152E;
+	Sat,  2 May 2020 22:16:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TSdIVS6222mr; Sat,  2 May 2020 19:25:20 +0000 (UTC)
+	with ESMTP id EAbd78IY-MRF; Sat,  2 May 2020 22:16:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 294E72042E;
-	Sat,  2 May 2020 19:25:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D6DD221135;
+	Sat,  2 May 2020 22:16:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A542B1BF3BE
- for <devel@linuxdriverproject.org>; Sat,  2 May 2020 19:25:16 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B3B9A1BF326
+ for <devel@linuxdriverproject.org>; Sat,  2 May 2020 22:16:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9C0E5203FF
- for <devel@linuxdriverproject.org>; Sat,  2 May 2020 19:25:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B01E888329
+ for <devel@linuxdriverproject.org>; Sat,  2 May 2020 22:16:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 590RG546uf+Z for <devel@linuxdriverproject.org>;
- Sat,  2 May 2020 19:25:16 +0000 (UTC)
+ with ESMTP id rRkFBnKCrEOx for <devel@linuxdriverproject.org>;
+ Sat,  2 May 2020 22:16:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from oogw0101.ocn.ad.jp (oogw0101.ocn.ad.jp [153.128.48.4])
- by silver.osuosl.org (Postfix) with ESMTP id 54B7F203F0
- for <devel@driverdev.osuosl.org>; Sat,  2 May 2020 19:25:16 +0000 (UTC)
-Received: from cmn-spm-mts-004c1.ocn.ad.jp (cmn-spm-mts-004c1.ocn.ad.jp
- [153.153.67.139])
- by oogw0101.ocn.ad.jp (Postfix) with ESMTP id 33B24D00497;
- Sun,  3 May 2020 04:25:15 +0900 (JST)
-Received: from mgw-vc-mts-006c1.ocn.ad.jp ([153.138.238.213])
- by cmn-spm-mts-004c1.ocn.ad.jp with ESMTP
- id UxfSjtP2CwVAyUxlDjrOFv; Sun, 03 May 2020 04:25:15 +0900
-X-BIZ-RELAY: yes
-Received: from sgs-vcgw110.ocn.ad.jp ([153.149.236.73])
- by mgw-vc-mts-006c1.ocn.ad.jp with ESMTP
- id UxlCjIkU8kz0aUxlCjMJ9A; Sun, 03 May 2020 04:25:15 +0900
-Received: from c157664e.mwprem.net (c157664e.mwprem.net [60.43.151.183])
- by sgs-vcgw110.ocn.ad.jp (Postfix) with SMTP id 23DA582027D;
- Sun,  3 May 2020 04:25:13 +0900 (JST)
-From: "Reem al-Hashimi"<family@matsudo-shakyo.com>
-Subject: Re: Thanks For Your Reply
-Date: Sat, 2 May 2020 19:25:13 -0000
-MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200502192511.84749E1470@c157664e.mwprem.net>
+Received: from mail.kocurkovo.cz (mail.kocurkovo.cz [185.8.236.170])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E67BF8832F
+ for <devel@driverdev.osuosl.org>; Sat,  2 May 2020 22:16:47 +0000 (UTC)
+Received: by mail.kocurkovo.cz (Postfix, from userid 1000)
+ id B192612C2; Sun,  3 May 2020 00:16:43 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.kocurkovo.cz B192612C2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kocurkovo.cz;
+ s=mail; t=1588457803;
+ bh=D1yVzfofhzgl2jyS+MzwMI9d59GdyX9BHALuoik3STQ=;
+ h=From:To:Cc:Subject:Date:From;
+ b=mH0HzzozQRISqFyg6F0oBk+M4cXj6maqRPhSb1QQ2JlzojRmC61ZROcAfKCkcWKy7
+ a6Vqrt8K8G9fTKil4xr4miYZAtTfpp2P3xihoPZ2tc7k+19dywu7CGeDg/V55fQFl5
+ wxkSV125aSLm9KkBHbJv6BpnXy5Tw4CCI9ljjZH4=
+From: Matej Dujava <mdujava@kocurkovo.cz>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] staging: vt6655: return early if not bNeedAck
+Date: Sun,  3 May 2020 00:16:33 +0200
+Message-Id: <1588457794-31438-1-git-send-email-mdujava@kocurkovo.cz>
+X-Mailer: git-send-email 1.8.3.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,21 +61,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemhashimi2020@daum.net
+Cc: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>,
+ Stefano Brivio <sbrivio@redhat.com>, Briana Oursler <briana.oursler@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds assist Corona virus Symptoms and Causes.
+This patch will check for bNeedAck before making bb_get_frame_time call, so
+in case we dont need uAckTime, we can return early.
 
-Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+Signed-off-by: Matej Dujava <mdujava@kocurkovo.cz>
+---
+ drivers/staging/vt6655/rxtx.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index 2f9c2ead3cb8..dda578436e64 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -166,15 +166,16 @@ s_uGetTxRsvTime(
+ 	unsigned int uDataTime, uAckTime;
+ 
+ 	uDataTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, cbFrameLength, wRate);
++
++	if (!bNeedAck)
++		return uDataTime;
++
+ 	if (byPktType == PK_TYPE_11B) /* llb,CCK mode */
+ 		uAckTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, (unsigned short)pDevice->byTopCCKBasicRate);
+ 	else /* 11g 2.4G OFDM mode & 11a 5G OFDM mode */
+ 		uAckTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, (unsigned short)pDevice->byTopOFDMBasicRate);
+ 
+-	if (bNeedAck)
+-		return uDataTime + pDevice->uSIFS + uAckTime;
+-	else
+-		return uDataTime;
++	return uDataTime + pDevice->uSIFS + uAckTime;
+ }
+ 
+ static __le16 vnt_rxtx_rsvtime_le16(struct vnt_private *priv, u8 pkt_type,
+-- 
+2.26.2
 
-If you can handle the fund in a good investment. reply on this email only: reemalhashimi@daum.net
-Regards,
-Ms. Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
