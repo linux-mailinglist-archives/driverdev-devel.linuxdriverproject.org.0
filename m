@@ -1,72 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 125CA1C280F
-	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 21:39:53 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED9781C2788
+	for <lists+driverdev-devel@lfdr.de>; Sat,  2 May 2020 20:23:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AC35986DBF;
-	Sat,  2 May 2020 19:39:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C1145882F2;
+	Sat,  2 May 2020 18:15:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EfSjOtVU0xRB; Sat,  2 May 2020 19:39:49 +0000 (UTC)
+	with ESMTP id DLH6ZxbEu16p; Sat,  2 May 2020 18:15:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 60E2285F10;
-	Sat,  2 May 2020 19:39:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AA573882B1;
+	Sat,  2 May 2020 18:15:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DB5321BF3BE
- for <devel@linuxdriverproject.org>; Sat,  2 May 2020 19:39:46 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B9D731BF239
+ for <devel@linuxdriverproject.org>; Sat,  2 May 2020 18:15:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D7E75883CA
- for <devel@linuxdriverproject.org>; Sat,  2 May 2020 19:39:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id ACC7320368
+ for <devel@linuxdriverproject.org>; Sat,  2 May 2020 18:15:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gyDISdTM77q6 for <devel@linuxdriverproject.org>;
- Sat,  2 May 2020 19:39:46 +0000 (UTC)
+ with ESMTP id IuJAsMOu9fbc for <devel@linuxdriverproject.org>;
+ Sat,  2 May 2020 18:15:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.itb.pl (mail.itb.pl [195.187.73.224])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5FC2D8835E
- for <devel@driverdev.osuosl.org>; Sat,  2 May 2020 19:39:46 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.itb.pl (Postfix) with ESMTP id 0665091DECB;
- Sat,  2 May 2020 19:16:49 +0200 (CEST)
-Received: from mail.itb.pl ([127.0.0.1])
- by localhost (mail.itb.pl [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id d9wh3th1aCpR; Sat,  2 May 2020 19:16:48 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by mail.itb.pl (Postfix) with ESMTP id 2282F919AEB;
- Sat,  2 May 2020 19:16:47 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.itb.pl 2282F919AEB
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=itb.pl;
- s=F2EC57A2-1E7E-11E7-B289-CFC75DFE65C2; t=1588439807;
- bh=xg+yaCflZXQj61odadouetjB4mkJeOewiCT4LQ3mb2k=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=MtXKC1DmL8Qv0PzK+YPA7wJobQARODN11I8IITCXzd4j/w1iGmrOUIpZIQMgNiGIV
- S5LsQvT+NKUQnUSIj9H6dB4wBPmaqKKDKhQj+Llu64Swqse33xbJ/EP0gZKThflK1q
- 6NSuYXeidN74U+QJiKahMwgP5xw4aDnNedyEfYAGINglnBjUYosi5oNN9PJ4dNXwW+
- j9bEF+cnxdgsVEVMQfut6Za0twYosNf/Fud21yqe9WCpSlJlmxrZ3Au/e8es6xyqz0
- 90Eqqjia/1tBRLtkhWqw6VZkarYtJPAv+VfOBVFCgJodoE6JYgQm9gWIHH8cXVaUPE
- gJBv3Djgq/vqQ==
-X-Virus-Scanned: amavisd-new at itb.pl
-Received: from mail.itb.pl ([127.0.0.1])
- by localhost (mail.itb.pl [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id wqXwxdU1dQp3; Sat,  2 May 2020 19:16:47 +0200 (CEST)
-Received: from DESKTOP-393ANUD.www.huaweimobilewifi.com (unknown [105.8.3.111])
- by mail.itb.pl (Postfix) with ESMTPSA id 9CDC394A062;
- Sat,  2 May 2020 19:16:39 +0200 (CEST)
+Received: from oogw2106.ocn.ad.jp (oogw2106.ocn.ad.jp [61.118.32.7])
+ by silver.osuosl.org (Postfix) with ESMTP id 7D2C120022
+ for <devel@driverdev.osuosl.org>; Sat,  2 May 2020 18:15:48 +0000 (UTC)
+Received: from cmn-spm-mts-004c1.ocn.ad.jp (cmn-spm-mts-004c1.ocn.ad.jp
+ [153.153.67.139])
+ by oogw2106.ocn.ad.jp (Postfix) with ESMTP id AD281200920;
+ Sun,  3 May 2020 03:15:46 +0900 (JST)
+Received: from mgw-vc-mts-006c1.ocn.ad.jp ([153.138.238.213])
+ by cmn-spm-mts-004c1.ocn.ad.jp with ESMTP
+ id UwYujtOM8wVAyUwfyjrNcJ; Sun, 03 May 2020 03:15:46 +0900
+X-BIZ-RELAY: yes
+Received: from sgs-vcgw109.ocn.ad.jp ([153.149.236.70])
+ by mgw-vc-mts-006c1.ocn.ad.jp with ESMTP
+ id UwfyjIjIrkz0aUwfyjMI0D; Sun, 03 May 2020 03:15:46 +0900
+Received: from c157664e.mwprem.net (c157664e.mwprem.net [60.43.151.183])
+ by sgs-vcgw109.ocn.ad.jp (Postfix) with SMTP id A59CB420284;
+ Sun,  3 May 2020 03:15:44 +0900 (JST)
+From: "Reem al-Hashimi"<family@matsudo-shakyo.com>
+Subject: Re: Thanks For Your Reply
+Date: Sat, 2 May 2020 18:15:43 -0000
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Kreditangebot
-To: Recipients <m.kawulok@itb.pl>
-From: "ELITE LOANS" <m.kawulok@itb.pl>
-Date: Sat, 02 May 2020 19:16:31 +0200
-X-Antivirus: Avast (VPS 200501-0, 05/01/2020), Outbound message
-X-Antivirus-Status: Clean
-Message-Id: <20200502171639.9CDC394A062@mail.itb.pl>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200502181543.47599E1399@c157664e.mwprem.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,23 +66,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: info@eliteloangroup.co.za
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: reemhashimi2020@daum.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Brauchen Sie einen Kredit? Wir sind ein zertifiziertes und akkreditiertes p=
-rivates Darlehensunternehmen. Elite-Darlehen bietet Gesch=E4ftsdarlehen, Wo=
-hnungsbaudarlehen, Schuldenkonsolidierung. =
+My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds assist Corona virus Symptoms and Causes.
 
-Kontakt f=FCr weitere Informationen.
+Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
 
--- =
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
 
-This email has been checked for viruses by Avast antivirus software.
-https://www.avast.com/antivirus
-
+If you can handle the fund in a good investment. reply on this email only: reemalhashimi@daum.net
+Regards,
+Ms. Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
