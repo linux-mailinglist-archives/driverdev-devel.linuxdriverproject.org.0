@@ -1,58 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FE181C2BF0
-	for <lists+driverdev-devel@lfdr.de>; Sun,  3 May 2020 13:51:17 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F7641C2CBB
+	for <lists+driverdev-devel@lfdr.de>; Sun,  3 May 2020 15:29:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2995889128;
-	Sun,  3 May 2020 11:38:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6A8EB87126;
+	Sun,  3 May 2020 13:29:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cQ1XF01-2DGM; Sun,  3 May 2020 11:38:01 +0000 (UTC)
+	with ESMTP id RtoLVs8YAoP2; Sun,  3 May 2020 13:29:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 637D888A9E;
-	Sun,  3 May 2020 11:38:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8E58D870F9;
+	Sun,  3 May 2020 13:29:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E3BC71BF326
- for <devel@linuxdriverproject.org>; Sun,  3 May 2020 11:37:58 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 17FE11BF414
+ for <devel@linuxdriverproject.org>; Sun,  3 May 2020 13:29:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CFEB82042C
- for <devel@linuxdriverproject.org>; Sun,  3 May 2020 11:37:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0F52687E79
+ for <devel@linuxdriverproject.org>; Sun,  3 May 2020 13:29:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nUrZfwxzbpAX for <devel@linuxdriverproject.org>;
- Sun,  3 May 2020 11:37:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id EE270203E9
- for <devel@driverdev.osuosl.org>; Sun,  3 May 2020 11:37:57 +0000 (UTC)
-Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
- [82.4.196.95])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id AD391205ED;
- Sun,  3 May 2020 11:37:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588505877;
- bh=OGiegH7Y1FcxfJPta06unb8ZfPJOBLzHj+Vjm8Hkpx8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=vp6Y4Ep0lWA1Y4PuaJnYLumR21o8vn0i6qN0yzg0KEGVHySvo6IDkZwOGTDWN+dzb
- +8wwpQfi1mPsQwurWMoEtqL27el0vr9YVFcGPfcXjPg1e6eyurKUaLE/KgQUxw2TaN
- h7r/sjEF0kXYBQd8+gwnwPvNcB4gadGeY37nP3FI=
-Date: Sun, 3 May 2020 12:37:53 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Alexandru Ardelean <alexandru.ardelean@analog.com>
-Subject: Re: [PATCH] staging: iio: ad2s1210: Fix SPI reading
-Message-ID: <20200503123753.29ea8be0@archlinux>
-In-Reply-To: <20200429072129.81504-1-alexandru.ardelean@analog.com>
-References: <20200429072129.81504-1-alexandru.ardelean@analog.com>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
+ with ESMTP id WY0f0yCEkc7t for <devel@linuxdriverproject.org>;
+ Sun,  3 May 2020 13:29:25 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kocurkovo.cz (mail.kocurkovo.cz [185.8.236.170])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9278487E71
+ for <devel@driverdev.osuosl.org>; Sun,  3 May 2020 13:29:25 +0000 (UTC)
+Received: by mail.kocurkovo.cz (Postfix, from userid 1000)
+ id 2F14618CB; Sun,  3 May 2020 15:29:21 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.kocurkovo.cz 2F14618CB
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kocurkovo.cz;
+ s=mail; t=1588512561;
+ bh=sFGicPa3iLNjtjg478e1D/ADKIbqHmDGGrFqDiMuM28=;
+ h=From:To:Cc:Subject:Date:From;
+ b=J5YZ98QNwPOE7zMGAJcdy0+zJ+4wM6lDHfap69Pv1uE9FX9ZYPKebsXY9AQykWEPx
+ +TcX4PicRyyxpAw+3ADw/MXgeXtuD1qgzvWRHIvR22EZ+AzNM6sp3KTcBnPjzmgAG5
+ E8OSxswCPgpKi9w4I3csq09kV6Iz9rS9mUwc9c9s=
+From: Matej Dujava <mdujava@kocurkovo.cz>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 0/5] Cleaning s_uGetDataDuration function
+Date: Sun,  3 May 2020 15:29:07 +0200
+Message-Id: <1588512552-12297-1-git-send-email-mdujava@kocurkovo.cz>
+X-Mailer: git-send-email 1.8.3.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,79 +61,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Dragos Bogdan <dragos.bogdan@analog.com>,
- gregkh@linuxfoundation.org
+Cc: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>,
+ Stefano Brivio <sbrivio@redhat.com>, Briana Oursler <briana.oursler@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 29 Apr 2020 10:21:29 +0300
-Alexandru Ardelean <alexandru.ardelean@analog.com> wrote:
+This patch set will eliminate few checkpatch LONG_LINE errors.
+Simplify code paths by:
+  - returning at the end of case body
+  - removing unnecessary else branches
 
-> From: Dragos Bogdan <dragos.bogdan@analog.com>
-> 
-> If the serial interface is used, the 8-bit address should be latched using
-> the rising edge of the WR/FSYNC signal.
-> 
-> This basically means that a CS change is required between the first byte
-> sent, and the second one.
-> This change splits the single-transfer transfer of 2 bytes into 2 transfers
-> with a single byte, and CS change in-between.
-> 
-> Signed-off-by: Dragos Bogdan <dragos.bogdan@analog.com>
-> Signed-off-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
+Matej Dujava (5):
+  staging: vt6655: merge two switch cases in s_uGetDataDuration
+  staging: vt6655: do calculation of uAckTime first
+  staging: vt6655: remove else after return and invert condition
+  staging: vt6655: return at the ond of case body
+  staging: vt6655: extract index manupulation out of function call
 
-Fixes tag would have been nice. I've had a go by picking a patch where I
-refactored this code, but I think the issue probably predates that one.
-Its in 2011 so I doubt anyone will try going past that with backports ;)
+ drivers/staging/vt6655/rxtx.c | 140 ++++++++++++----------------------
+ 1 file changed, 48 insertions(+), 92 deletions(-)
 
-Applied to the fixes-togreg branch of iio.git and marked for stable.
-
-I'm guessing this means you have hardware and hope to get this one out
-of staging shortly? *crosses fingers* :)
-
-Jonathan
-
-> ---
->  drivers/staging/iio/resolver/ad2s1210.c | 17 ++++++++++++-----
->  1 file changed, 12 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/staging/iio/resolver/ad2s1210.c b/drivers/staging/iio/resolver/ad2s1210.c
-> index 4b25a3a314ed..ed404355ea4c 100644
-> --- a/drivers/staging/iio/resolver/ad2s1210.c
-> +++ b/drivers/staging/iio/resolver/ad2s1210.c
-> @@ -130,17 +130,24 @@ static int ad2s1210_config_write(struct ad2s1210_state *st, u8 data)
->  static int ad2s1210_config_read(struct ad2s1210_state *st,
->  				unsigned char address)
->  {
-> -	struct spi_transfer xfer = {
-> -		.len = 2,
-> -		.rx_buf = st->rx,
-> -		.tx_buf = st->tx,
-> +	struct spi_transfer xfers[] = {
-> +		{
-> +			.len = 1,
-> +			.rx_buf = &st->rx[0],
-> +			.tx_buf = &st->tx[0],
-> +			.cs_change = 1,
-> +		}, {
-> +			.len = 1,
-> +			.rx_buf = &st->rx[1],
-> +			.tx_buf = &st->tx[1],
-> +		},
->  	};
->  	int ret = 0;
->  
->  	ad2s1210_set_mode(MOD_CONFIG, st);
->  	st->tx[0] = address | AD2S1210_MSB_IS_HIGH;
->  	st->tx[1] = AD2S1210_REG_FAULT;
-> -	ret = spi_sync_transfer(st->sdev, &xfer, 1);
-> +	ret = spi_sync_transfer(st->sdev, xfers, 2);
->  	if (ret < 0)
->  		return ret;
->  
+--
+2.26.2
 
 _______________________________________________
 devel mailing list
