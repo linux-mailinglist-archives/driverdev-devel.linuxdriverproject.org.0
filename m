@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B8371C2E73
-	for <lists+driverdev-devel@lfdr.de>; Sun,  3 May 2020 20:02:23 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 550041C2FDA
+	for <lists+driverdev-devel@lfdr.de>; Sun,  3 May 2020 23:55:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DFD97884EF;
-	Sun,  3 May 2020 18:02:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 429C5864F2;
+	Sun,  3 May 2020 21:55:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L4dD34h6CwVe; Sun,  3 May 2020 18:02:20 +0000 (UTC)
+	with ESMTP id g2uESCs3NZwS; Sun,  3 May 2020 21:55:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 49D8188370;
-	Sun,  3 May 2020 18:02:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0523986433;
+	Sun,  3 May 2020 21:55:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 795EF1BF475
- for <devel@linuxdriverproject.org>; Sun,  3 May 2020 18:02:18 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C99C51BF377
+ for <devel@linuxdriverproject.org>; Sun,  3 May 2020 21:55:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 63D3E22654
- for <devel@linuxdriverproject.org>; Sun,  3 May 2020 18:02:18 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C69DE86433
+ for <devel@linuxdriverproject.org>; Sun,  3 May 2020 21:55:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HZIomVU02MXd for <devel@linuxdriverproject.org>;
- Sun,  3 May 2020 18:02:18 +0000 (UTC)
+ with ESMTP id savszYwWahsJ for <devel@linuxdriverproject.org>;
+ Sun,  3 May 2020 21:55:07 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from oogw0305.ocn.ad.jp (oogw0305.ocn.ad.jp [153.128.48.75])
- by silver.osuosl.org (Postfix) with ESMTP id 0E9DD20462
- for <devel@driverdev.osuosl.org>; Sun,  3 May 2020 18:02:17 +0000 (UTC)
-Received: from cmn-spm-mts-025c1.ocn.ad.jp (cmn-spm-mts-025c1.ocn.ad.jp
- [153.138.238.89])
- by oogw0305.ocn.ad.jp (Postfix) with ESMTP id D50AD7005F2;
- Mon,  4 May 2020 03:02:16 +0900 (JST)
-Received: from mgw-vc-mts-006c1.ocn.ad.jp ([153.138.238.213])
- by cmn-spm-mts-025c1.ocn.ad.jp with ESMTP
- id VIqNj0CTzjpfvVIwSjoJCP; Mon, 04 May 2020 03:02:16 +0900
+Received: from oogw0209.ocn.ad.jp (oogw0209.ocn.ad.jp [153.153.62.10])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DFE90863C5
+ for <devel@driverdev.osuosl.org>; Sun,  3 May 2020 21:55:06 +0000 (UTC)
+Received: from cmn-spm-mts-024c1.ocn.ad.jp (cmn-spm-mts-024c1.ocn.ad.jp
+ [153.138.238.219])
+ by oogw0209.ocn.ad.jp (Postfix) with ESMTP id 4FB85680674;
+ Mon,  4 May 2020 06:55:05 +0900 (JST)
+Received: from mgw-vc-mts-008c1.ocn.ad.jp ([153.138.238.159])
+ by cmn-spm-mts-024c1.ocn.ad.jp with ESMTP
+ id VMRsjgA6AwDucVMZlj93rl; Mon, 04 May 2020 06:55:05 +0900
 X-BIZ-RELAY: yes
-Received: from sgs-vcgw104.ocn.ad.jp ([153.149.234.198])
- by mgw-vc-mts-006c1.ocn.ad.jp with ESMTP
- id VIwSjJ8Ejkz0aVIwSjMfk5; Mon, 04 May 2020 03:02:16 +0900
+Received: from sgs-vcgw110.ocn.ad.jp ([153.149.236.73])
+ by mgw-vc-mts-008c1.ocn.ad.jp with ESMTP
+ id VMZljTEXpTY7TVMZljDEIg; Mon, 04 May 2020 06:55:05 +0900
 Received: from c157664e.mwprem.net (c157664e.mwprem.net [60.43.151.183])
- by sgs-vcgw104.ocn.ad.jp (Postfix) with SMTP id C0B9BC0285;
- Mon,  4 May 2020 03:02:14 +0900 (JST)
+ by sgs-vcgw110.ocn.ad.jp (Postfix) with SMTP id 13032820276;
+ Mon,  4 May 2020 06:55:03 +0900 (JST)
 From: "Reem al-Hashimi"<family@matsudo-shakyo.com>
-Subject: Re: Thanks For Reply
-Date: Sun, 3 May 2020 18:02:13 -0000
+Subject: Re: Thanks For Reply???
+Date: Sun, 3 May 2020 21:55:02 -0000
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200503180211.E1F8CE1501@c157664e.mwprem.net>
+Message-Id: <20200503215459.9114BE1715@c157664e.mwprem.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
