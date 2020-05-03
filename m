@@ -1,53 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 58D791C2DAC
-	for <lists+driverdev-devel@lfdr.de>; Sun,  3 May 2020 17:51:19 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DCA91C2D9B
+	for <lists+driverdev-devel@lfdr.de>; Sun,  3 May 2020 17:43:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6268686DBF;
-	Sun,  3 May 2020 15:43:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 702D4875F9;
+	Sun,  3 May 2020 15:43:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rFcSnlHOescF; Sun,  3 May 2020 15:43:22 +0000 (UTC)
+	with ESMTP id 5LXQXPgkf7pj; Sun,  3 May 2020 15:43:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 657D386E8F;
-	Sun,  3 May 2020 15:43:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5D37A8758B;
+	Sun,  3 May 2020 15:43:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7DB451BF578
- for <devel@linuxdriverproject.org>; Sun,  3 May 2020 15:43:19 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 96F8E1BF578
+ for <devel@linuxdriverproject.org>; Sun,  3 May 2020 15:43:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 795FA20368
- for <devel@linuxdriverproject.org>; Sun,  3 May 2020 15:43:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 909B3884CF
+ for <devel@linuxdriverproject.org>; Sun,  3 May 2020 15:43:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 915nRvv1Xuze for <devel@linuxdriverproject.org>;
+ with ESMTP id Xzc9IDeQhMhu for <devel@linuxdriverproject.org>;
  Sun,  3 May 2020 15:43:17 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kocurkovo.cz (mail.kocurkovo.cz [185.8.236.170])
- by silver.osuosl.org (Postfix) with ESMTPS id A278F20355
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C41BE88488
  for <devel@driverdev.osuosl.org>; Sun,  3 May 2020 15:43:17 +0000 (UTC)
 Received: by mail.kocurkovo.cz (Postfix, from userid 1000)
- id 39E3518CB; Sun,  3 May 2020 17:43:14 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.kocurkovo.cz 39E3518CB
+ id ED15C18FF; Sun,  3 May 2020 17:43:14 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.kocurkovo.cz ED15C18FF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kocurkovo.cz;
  s=mail; t=1588520594;
- bh=D1yVzfofhzgl2jyS+MzwMI9d59GdyX9BHALuoik3STQ=;
+ bh=dsnpnhjrUHSaXiLLDmToUkfJQoMhJ20hDN9zjO5mUkU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=GCtrceY1uU/zJzU2l0nYB8IVqA3K3jE/gVDpH2NmmwIW5tpGbocbDJdKvtmtySCoi
- 4hh2EsYD9Rr4D+2zMm2yOH0MKP3BkUwjp6ZNb0p6pJtpRiHLyb/h9awnCwdCmGbf83
- vBCN2/xSvo5G+8DBkzMZKZrVG9Vvo6vvZ3wiTIXE=
+ b=dNl8rEgHTdjcTOYqUrmg3v2b5wHHcXb1BdxBabqikOyXK123vafgx2aoXqE6xWS3D
+ lwtXfjrXONakQmZ+13MXj9HCpugFjjBeOsb5E+nwqpQ4RQhbJOdY3rx37EkBfX84H1
+ 5fMCEQbhw6lYLbpVaYJwiCwkxGoS02e251iPGFI4=
 From: Matej Dujava <mdujava@kocurkovo.cz>
 To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 1/2] staging: vt6655: return early if not bNeedAck
-Date: Sun,  3 May 2020 17:42:49 +0200
-Message-Id: <1588520570-14388-2-git-send-email-mdujava@kocurkovo.cz>
+Subject: [PATCH v2 2/2] staging: vt6655: fix LONG_LINE warning
+Date: Sun,  3 May 2020 17:42:50 +0200
+Message-Id: <1588520570-14388-3-git-send-email-mdujava@kocurkovo.cz>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1588520570-14388-1-git-send-email-mdujava@kocurkovo.cz>
 References: <1588520570-14388-1-git-send-email-mdujava@kocurkovo.cz>
@@ -71,39 +71,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch will check for bNeedAck before making bb_get_frame_time call, so
-in case we dont need uAckTime, we can return early.
+This patch will fix LONG_LINE error from checkpatch, by using ternary
+operator.
 
 Signed-off-by: Matej Dujava <mdujava@kocurkovo.cz>
 ---
- drivers/staging/vt6655/rxtx.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/staging/vt6655/rxtx.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 2f9c2ead3cb8..dda578436e64 100644
+index dda578436e64..994c19f1de43 100644
 --- a/drivers/staging/vt6655/rxtx.c
 +++ b/drivers/staging/vt6655/rxtx.c
-@@ -166,15 +166,16 @@ s_uGetTxRsvTime(
- 	unsigned int uDataTime, uAckTime;
+@@ -170,10 +170,14 @@ s_uGetTxRsvTime(
+ 	if (!bNeedAck)
+ 		return uDataTime;
  
- 	uDataTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, cbFrameLength, wRate);
-+
-+	if (!bNeedAck)
-+		return uDataTime;
-+
- 	if (byPktType == PK_TYPE_11B) /* llb,CCK mode */
- 		uAckTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, (unsigned short)pDevice->byTopCCKBasicRate);
- 	else /* 11g 2.4G OFDM mode & 11a 5G OFDM mode */
- 		uAckTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, (unsigned short)pDevice->byTopOFDMBasicRate);
+-	if (byPktType == PK_TYPE_11B) /* llb,CCK mode */
+-		uAckTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, (unsigned short)pDevice->byTopCCKBasicRate);
+-	else /* 11g 2.4G OFDM mode & 11a 5G OFDM mode */
+-		uAckTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, (unsigned short)pDevice->byTopOFDMBasicRate);
++	/*
++	 * CCK mode  - 11b
++	 * OFDM mode - 11g 2.4G & 11a 5G
++	 */
++	uAckTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14,
++				     byPktType == PK_TYPE_11B ?
++				     pDevice->byTopCCKBasicRate :
++				     pDevice->byTopOFDMBasicRate);
  
--	if (bNeedAck)
--		return uDataTime + pDevice->uSIFS + uAckTime;
--	else
--		return uDataTime;
-+	return uDataTime + pDevice->uSIFS + uAckTime;
+ 	return uDataTime + pDevice->uSIFS + uAckTime;
  }
- 
- static __le16 vnt_rxtx_rsvtime_le16(struct vnt_private *priv, u8 pkt_type,
 -- 
 2.26.2
 
