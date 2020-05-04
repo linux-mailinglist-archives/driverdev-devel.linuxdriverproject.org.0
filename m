@@ -2,143 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DEDF1C3F4D
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 May 2020 18:03:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ADBC11C41F8
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 May 2020 19:15:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E4A0488CCE;
-	Mon,  4 May 2020 16:03:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F252B8843E;
+	Mon,  4 May 2020 17:15:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 07KQ4faIjdyG; Mon,  4 May 2020 16:03:55 +0000 (UTC)
+	with ESMTP id W08WXK0e51LR; Mon,  4 May 2020 17:15:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4A39088B0B;
-	Mon,  4 May 2020 16:03:55 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 096848844C;
+	Mon,  4 May 2020 17:15:21 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B5AA01BF3E0
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  4 May 2020 16:03:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7E2281BF328
+ for <devel@linuxdriverproject.org>; Mon,  4 May 2020 17:15:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B19A3876CB
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  4 May 2020 16:03:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 79D2F86914
+ for <devel@linuxdriverproject.org>; Mon,  4 May 2020 17:15:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3U6L0QB3IaLQ
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  4 May 2020 16:03:49 +0000 (UTC)
+ with ESMTP id 2kOOypzTREgh for <devel@linuxdriverproject.org>;
+ Mon,  4 May 2020 17:15:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
- [68.232.153.233])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C5F98869EA
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  4 May 2020 16:03:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1588608229; x=1620144229;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=TNCOVddrv1I7GKGY4O5DscOzBLLQ26keurnGugA8MiI=;
- b=XQBTEISF+lPAld5MVV4RTAHxagbSMXFwFlQsENcczVzF5I1tVZ40YFdj
- Y2Adp8d88B16M7WXQnW/RD898F8d3u1cZzWOQn+hsaiE7ugzugTAASWWP
- rYsriJ4fcOZBDHA0Bxr3cEoCQZ/JKiafuqXUFL9rZ3vwwOAkA5fzeFZtC
- v/TcERDoeDd4JfQTsSVH8fSkzOnW1euYoo4c8ofrPUuHmq4RmM/xELer0
- ksMaycVayHkPkG2RkiyP0Pr94MvfbIxXQ/a4cL8ni85rigkAPF+2ASVjj
- El7Wr/GJ1hLne8VRffAdKGAYGmJhtno72EkVSujtK5iqiiz+I5WrnTD2t A==;
-IronPort-SDR: XjjOzgb6dEegPl3G8O66qD31mteTwvoV0w39BlBtrRpouGpyXB5jsHrM0XsdXkv7DFW0tKQFSa
- i9rtn3eKRrYcy8f9i/yGxZ0IAK67NTIxVQUUcgxUaS4ybdGU6jtPDJ70hO+zSFZIKV4FfRR9Px
- eJimO/qTR7oEDMM3jPVQiF8VLVLnNyVKRnJOGG9ETBU8PLxM2goHfPKQrTcn3onekUxCdWFs2t
- az3nFRknLXDEG0hsQkFxQmt3LgzwuK5tAoZUxJssMA6ErrY3j0qE5FNG92NF9RVqadvpjs/V0N
- OWw=
-X-IronPort-AV: E=Sophos;i="5.73,352,1583218800"; d="scan'208";a="75440174"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 04 May 2020 09:03:49 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 4 May 2020 09:03:48 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.71) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
- Transport; Mon, 4 May 2020 09:03:49 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Te8vTTC8V/3edfl8F+Ehiq5D4LTJ/P9h2yvWMEzCKRX1PMX/+WSZ7sx+ca09TdsTPUxVUsiWzSLzqZ/0/ZS1JWdZyDJBfWfj3Pr7keFyZxmG35LvGJi5mi2Zsq0pam3vaPm8YALYZT83FXo9FyXGEmQ6fbM2f+xEV7UYStDHLe4m1UEXN2P6JX2TIaOFlPw/t0TyqLtSW486xQXDz79lQ21NtUCp4lrHCNoMCe+c4GeWDu1eHERYEF4igqzZD1XA0NobS3U85Rql3UxJShLJjDtEh1vvzXstqoha56h1JGTfH3S5CfoQk+M6HmfZFVqYla1qzfraZJ3QTnKGXsLeng==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TNCOVddrv1I7GKGY4O5DscOzBLLQ26keurnGugA8MiI=;
- b=kUqlkOdtclcdmnyyI/u0R/C98Co5vWTf12u9486aorDFVB9Y7XtqEq+m/Ju3z9N5/5jhQf/Af9U87PFqxpmmP6haB0+hs5Uwq/pkizMOxb9VSYMJN7G/QHvM0m745BMWXAgzT961+JZB9sixa1gvThmBya+H86y6lTseont6z9+V0iZjLbdSDCQt2+jaZ4HK04ss6A9ff7dTrbfm/U3g09J3II5OP0A1qYTfcaf+J7xxE+oC9bJ0H0eiGD4vToTdsoFE3nEPc5q0m3YpkSMbtG157fUm2kmho633Q6/u8M6KWwqj1+tHMOupdE2VeM8NhNXnkxfOe4x4EI+0fW7RmQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TNCOVddrv1I7GKGY4O5DscOzBLLQ26keurnGugA8MiI=;
- b=IA8XkByOeD93ZmSouQql8VQ1G1J63oGt+o3ffNIOMeO3DjLjVFQziWn9LfTyMRF0j8PDZgcJDNm8n8eo7ybm4mrjR4WNG3Om2jxb2cQr3Sxz6o8GbEaTxp8p+WYoj9w0YWo5RvPAe3G5r/AIP6yEkpwKHtAKI4HhJvtf9qScB6w=
-Received: from DM6PR11MB3420.namprd11.prod.outlook.com (2603:10b6:5:69::31) by
- DM6PR11MB2569.namprd11.prod.outlook.com (2603:10b6:5:c6::11) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2958.20; Mon, 4 May 2020 16:03:47 +0000
-Received: from DM6PR11MB3420.namprd11.prod.outlook.com
- ([fe80::91cb:6555:db9b:53fa]) by DM6PR11MB3420.namprd11.prod.outlook.com
- ([fe80::91cb:6555:db9b:53fa%7]) with mapi id 15.20.2958.030; Mon, 4 May 2020
- 16:03:47 +0000
-From: <Christian.Gromm@microchip.com>
-To: <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: most: usb: fix exception handling
-Thread-Topic: [PATCH] staging: most: usb: fix exception handling
-Thread-Index: AQHWIhoVnv7HMheeEU+zKrWe/lCBBaiX8t2AgAAXSgCAAAYfgIAABrQA
-Date: Mon, 4 May 2020 16:03:47 +0000
-Message-ID: <acba33c5bf57ba07f63987bc8341a06ce61d0649.camel@microchip.com>
-References: <1588599840-13237-1-git-send-email-christian.gromm@microchip.com>
- <20200504135431.GA2311301@kroah.com>
- <5a1b21ac4bc63312784ee2cfb0cf153044d8d8d7.camel@microchip.com>
- <20200504153947.GA2687183@kroah.com>
-In-Reply-To: <20200504153947.GA2687183@kroah.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.30.5-1.1 
-authentication-results: linuxfoundation.org; dkim=none (message not signed)
- header.d=none;linuxfoundation.org; dmarc=none action=none
- header.from=microchip.com;
-x-originating-ip: [46.142.167.48]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 69032a74-83ab-4dfa-78a7-08d7f044bab3
-x-ms-traffictypediagnostic: DM6PR11MB2569:
-x-microsoft-antispam-prvs: <DM6PR11MB25694461086ED09A5165F6A6F8A60@DM6PR11MB2569.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 03932714EB
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: L8blXTjmJK8YLHW2z4W44KmtdVVig4JOcy8PbGtu5r31Fl3D8vaBcP0rKar/G+Fhs5nSyfLsXdFbF1X8NNv3vtD2R5JC3t62DMHyFnnLmSMx2ZoFl5fb4Hx6BgN/s53G+wh2ZkumpSmcTtY7bBdIo7eRsm37gecBog1FtTf2g7VdNCp9fNAw6UNxlcM5QUjj5GvcVUKF1TdNepwuPQnElAtpnE/tuTBdH0USfGTelSNRkQzcqfAlda1JREjZA1c5XM+qz7FNTlowjLcTXFpC+hWrIHEgSzgeHkW++GYWAbkhN8w9tF31D8a0E9LA2gwcbudrCaHslxf9rmw9Bp/ST9MGHT/68d6+vJAI+FvmO6AkpWBqpuiQcK/Y41G3Z9jkfH9lzoCc3UuhnL2Y/6qZ4bvrYaVb7RiP1ZRtjPNgU7ach0KkX8LE/ta+ao3Ewtld
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3420.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(396003)(39860400002)(346002)(366004)(376002)(136003)(66556008)(478600001)(186003)(316002)(2906002)(6506007)(26005)(66446008)(6486002)(91956017)(76116006)(2616005)(6512007)(64756008)(66946007)(6916009)(71200400001)(5660300002)(66476007)(8676002)(86362001)(4326008)(8936002)(36756003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: nomppFi07En22UTWvw9aadh/ZgOon18DXlulikK2IZYmyIl4tmpkCUBfqJvOhKM9E5CJZqspLJ7wZRjXDyKY2EqlHioB0c7I5aywDYzRDItqRHIimF96eeSXrFaite1/tIZhPFhfJB85jMp3zJ85YHDIev3aiHVoqiWEB+Aef5bPNgPRq431EvNLBtL89XlRj4mVgg1RMx/YfkFVy3R08+AtcCq5Y0gdyCS4aXxAMoOWnjr8jb/l2WvMI3uWzWFkyhGcFAh6eYF4XEmqmcn/mi8rlcDtIJuFxSSTGeLTXtDoDUlLl7Fh3/iTG1/yChJKXcxJAmq4vP3yZzAMQN2KRtMDysVEveCTc3bw5EQR3ChrhNKon8e71QLyHfs+7hAEr2yHu8OZKsy82d1P+NpAynOgJiezKK7WtvOrPk+eDLiADjsZN+2Cf7hgGawj2m25psxLxEAc0LAHy9BrQuBMyT/UkZnqH2u6QGicHpsMxHNuoDVbX2Tq0YixohEl68NZyh49QB7K9zoOZz0+sm0LP3It6RnsXnt24ZKZWR81fFBy1199SFl5eJE+DSFd+IkT+cwjtY7tx5W4InkeF7jMkvrKwk5hyQH+j2YVcHfjAM5OQEprsHhWgEj+H8Dj6OOliMoG5/Jjz7O+IABrcTxy+Ue5W8Plky/4F0wRqlVXx+PRfhbZeVdVZNl6PMRantbANt2Y7ZAxu6NtcV4MJttuJjbiUvdoHBq+PBf27WZMIPGvoDTUt5cf4ahFDzORAo0TxTlc82I949A9fyT5ceHak6or4oi493wmBRPU5FBayW8=
-x-ms-exchange-transport-forked: True
-Content-ID: <5C5C8F62A351C2438A4723C0C2B5ADED@namprd11.prod.outlook.com>
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D94578690E
+ for <devel@driverdev.osuosl.org>; Mon,  4 May 2020 17:15:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1588612478;
+ bh=Xn2gavpIWQ0DU9ZY9hafpAe5jpDKjLmd0xje7CYpgmc=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=EfYfqCXCZOqypRU3p1pX4jc+GeXcmvn5DmOxGyxMF8hG/L/+kTn8CUr9hfg5/CQqC
+ k9ExJJXq/vVZNR99F6rFwWBPKo+4R/xr2Xe47SRP8oiwXBlw8SI7fS+xT4DIXGp/hN
+ dJklvHLbNmGEcfPx2CfcM6vT5cmA903mzQNn/c2o=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([83.52.229.196]) by mail.gmx.com
+ (mrgmx104 [212.227.17.174]) with ESMTPSA (Nemesis) id
+ 1M59C8-1jWkbS1PZk-001Ceo; Mon, 04 May 2020 19:14:38 +0200
+From: Oscar Carter <oscar.carter@gmx.com>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: vt6656: Use const for read only data
+Date: Mon,  4 May 2020 19:14:14 +0200
+Message-Id: <20200504171414.11307-1-oscar.carter@gmx.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 69032a74-83ab-4dfa-78a7-08d7f044bab3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 May 2020 16:03:47.5811 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ahbdSBumsgoSog7+Vw7Skiz6CNKjHzg5GnO5xsvIHSaQVu9B/OR3TgXeuXGUVpmKQAqF+nAXUc55DY0Lvvqbfy8QSN5CVpCiCoifrMJEj9Y=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB2569
+X-Provags-ID: V03:K1:W2BgVsJlKeKnlRgESKOPI70DFJmdz7SkMPgF8b+m6IATUWf0mPI
+ KKSPRPKZ1EgVG84VYUssGWlM2SqASk7qlKkU7wQuqRzHaKiC/2rZOMnepl57EltmRZaZ4IM
+ WcESfzrgRVEHk97ee7paRX12EwKW1lJYwnwkHoftWHbSGWZYjY/2ns2LPXZW5e2Te00hRHc
+ QvmAB73sK7FRrVmbV0tUw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oiEO+z/IRwU=:VBHum2bZZDCoQ5X0LiFcnP
+ Fv+lM12uZzd09aYz2aHCVQAXvUfPL7Mqzg9pfmEsCPtuSHVmISFuuqhHrKsAacMOEF0hneQ08
+ KuTJDW+kLWgxGr6GAatzkdwKN3ZXwOhCd6UG74vfUiPvq68zLh1Hd5VjYoHg69hbVC3skEdJZ
+ rcIXFDfDepNuoqVMcUQaRWrLK/kiaLqhnrjcTx0clTfNaSeueiVh7kwC+HeKftY9lQMF2RGQu
+ +n6s1jBg94xAkxu5lL0e2H8W1bayZ/wgatPzHzsgaD2MP7/iXGQqf2IxjXqPfM0pOrwfbPCVw
+ /FrfI91XSjZinrTVU7sdqshrmkCxVhIrIY9PwzrTI7GPxb1R4rRjaJlVwP+rz8b9a3Pu6cCv1
+ GrbydcouhUv9IovoR5nwdsfVAdyIxwiqf9uq9UMoH0dscPRLHpH54I5kwROy0ZyLCaq9tGq2g
+ jOmeqfily2/NgcZOaousIEOtBX+2YKx8iCiqf396jYH0iz5pAsU4QIzJ9m6zho/Yf3H2SpGlT
+ qxLMeHDW48mF/Xk9LROXKc5TjnB6J6ACObZw6205IKD4f3TUakOapGDM/USF1ps7O2RRHmA2/
+ Jr6kGLpIJrjdbjn0pbrvKGtVYMAb4SNILlNEn0it6IGewb3sWGCNGbIKWcjqCwwiIvC6cW2sc
+ 0MMBP8shNHe5Dv//L4nhnUe4k/R0utDmn0ma7AM3dnzLdSCgZ2riextecw9wQzBVHojT9cR/9
+ fZpN9NerEz2uSmrKA9DNBL1Md+YyKna0Vy9wB8HVlkhxCL3poqzFVtZn1KPebwGsw2TR8p2Xe
+ 5Zzw0yayAKHiHOialvE7EeXiQ0+Rgj3dR/2tC9B1ChfRq+2uld8Hs7YvwGRlbwB3wMp8QrPFt
+ 2N29npzjk5Fj/wabiyE8md6MDcuFwFpijrDfkX2bNrBGAAuVd6rD9OVuWobcaB08Cv6Besy9j
+ s1Zq5NNOwJZ7DhJeFuGAxYAfOT7ns6av5fO/5B1cQnuSbwx2DsBeEpMVwwSEwYYIj1aOG8dWw
+ Ix8taN5lTbwSf+pjTwd8tlWwSu9yeuV0VqWxabLummNw4UM88AvNEaEh/8sTF7n9lgaodp98u
+ Cb7dHAR8WMAExacUF/sFXhWz37FPR4dgcIDEVaPTy6R9Wl+4D2GJ6m567KAvE5oVGyiOKolHR
+ EFySnlAU+HS/11DSfZxEkTidMcB2EKzrNTXHauZaGPUg176Kig+x6kDGzDYvY2b113RnAfNni
+ Em9QK2C0PXiegChfw
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -151,62 +85,148 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org
+Cc: devel@driverdev.osuosl.org, Benjamin Sherman <benjamin@bensherman.io>,
+ Oscar Carter <oscar.carter@gmx.com>, Malcolm Priestley <tvboxspy@gmail.com>,
+ linux-kernel@vger.kernel.org, Colin Ian King <colin.king@canonical.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 2020-05-04 at 17:39 +0200, Greg KH wrote:
-> EXTERNAL EMAIL: Do not click links or open attachments unless you
-> know the content is safe
-> 
-> On Mon, May 04, 2020 at 03:17:53PM +0000, 
-> Christian.Gromm@microchip.com wrote:
-> > On Mon, 2020-05-04 at 15:54 +0200, Greg KH wrote:
-> > > EXTERNAL EMAIL: Do not click links or open attachments unless you
-> > > know the content is safe
-> > > 
-> > > On Mon, May 04, 2020 at 03:44:00PM +0200, Christian Gromm wrote:
-> > > > This patch fixes error handling on function parameters.
-> > > 
-> > > What does that mean?  If I don't understand it, I think it needs
-> > > to
-> > > be
-> > > made a lot more explicit as to why you are making these changes
-> > > :)
-> > > 
-> > > > Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-> > > 
-> > > Any "Fixes:" tag for this?
-> > 
-> > No. Just wanted to fix some obvious things, before adding
-> > it to stable, as discussed in our last email thread.
-> 
-> Remember, no one has context when reading a git commit log, please
-> spell
-> it out :)
-> 
-> > > SHould it go to stable if it really resolves issues?
-> > 
-> > No. Once you accept this, I'll add it to stable anyway.
-> 
-> How?  Put the cc: stable on a patch if it fixes a real bug.  I don't
-> see
-> what this "fixes" still...
+Use const for the arrays that are used as "read only". Also, modify the
+prototype of vnt_control_out_blocks() function to use a pointer to a
+const type.
 
-The interface pointer provided as a function parameter has already
-been used before it has been checked against NULL. :(
+The vnt_vt3184_al2230 array can't be converted to const as it's modified
+later.
 
-Once I have the unnecessary parameter checking removed, the problem 
-will be removed too.
+Then in the vnt_vt3184_init() function use two types of pointers (to
+const type and to no const type) to avoid the compiler warning:
 
-Can you please drop this patch and I'll send a new one. V2 does not
-make very much sense, as the patch will be doing somethig differnt 
-now.
+assignment discards 'const' qualifiers from pointer target type
 
-thanks,
-Chris
+This way decrease the .data section and increase the .rodata section
+limiting the surface attack.
+
+Before this change:
+-------------------
+
+drivers/staging/vt6656/baseband.o  :
+section              size   addr
+.text                1278      0
+.data                 576      0
+.bss                    0      0
+.rodata               319      0
+.comment               45      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+Total                2250
+
+After this change:
+------------------
+
+drivers/staging/vt6656/baseband.o  :
+section              size   addr
+.text                1278      0
+.data                 256      0
+.bss                    0      0
+.rodata               640      0
+.comment               45      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+Total                2251
+
+Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
+---
+ drivers/staging/vt6656/baseband.c | 14 +++++++++-----
+ drivers/staging/vt6656/usbpipe.c  |  2 +-
+ drivers/staging/vt6656/usbpipe.h  |  2 +-
+ 3 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/staging/vt6656/baseband.c b/drivers/staging/vt6656/baseband.c
+index 1d75acaec8f3..41ae779ec61f 100644
+--- a/drivers/staging/vt6656/baseband.c
++++ b/drivers/staging/vt6656/baseband.c
+@@ -31,7 +31,7 @@
+ #include "rf.h"
+ #include "usbpipe.h"
+
+-static u8 vnt_vt3184_agc[] = {
++static const u8 vnt_vt3184_agc[] = {
+ 	0x00, 0x00, 0x02, 0x02, 0x04, 0x04, 0x06, 0x06,
+ 	0x08, 0x08, 0x0a, 0x0a, 0x0c, 0x0c, 0x0e, 0x0e, /* 0x0f */
+ 	0x10, 0x10, 0x12, 0x12, 0x14, 0x14, 0x16, 0x16,
+@@ -78,7 +78,7 @@ static u8 vnt_vt3184_al2230[] = {
+ };
+
+ /* {{RobertYu:20060515, new BB setting for VT3226D0 */
+-static u8 vnt_vt3184_vt3226d0[] = {
++static const u8 vnt_vt3184_vt3226d0[] = {
+ 	0x31, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00,
+ 	0x70, 0x45, 0x2a, 0x76, 0x00, 0x00, 0x80, 0x00, /* 0x0f */
+ 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+@@ -243,7 +243,8 @@ int vnt_vt3184_init(struct vnt_private *priv)
+ {
+ 	int ret;
+ 	u16 length;
+-	u8 *addr;
++	u8 *addr = NULL;
++	const u8 *c_addr;
+ 	u8 data;
+
+ 	ret = vnt_control_in(priv, MESSAGE_TYPE_READ, 0, MESSAGE_REQUEST_EEPROM,
+@@ -275,7 +276,7 @@ int vnt_vt3184_init(struct vnt_private *priv)
+ 		   (priv->rf_type == RF_VT3342A0)) {
+ 		priv->bb_rx_conf = vnt_vt3184_vt3226d0[10];
+ 		length = sizeof(vnt_vt3184_vt3226d0);
+-		addr = vnt_vt3184_vt3226d0;
++		c_addr = vnt_vt3184_vt3226d0;
+
+ 		priv->bb_vga[0] = 0x20;
+ 		priv->bb_vga[1] = 0x10;
+@@ -291,8 +292,11 @@ int vnt_vt3184_init(struct vnt_private *priv)
+ 		goto end;
+ 	}
+
++	if (addr)
++		c_addr = addr;
++
+ 	ret = vnt_control_out_blocks(priv, VNT_REG_BLOCK_SIZE,
+-				     MESSAGE_REQUEST_BBREG, length, addr);
++				     MESSAGE_REQUEST_BBREG, length, c_addr);
+ 	if (ret)
+ 		goto end;
+
+diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
+index 91b62c3dff7b..fb5e1b0dce6b 100644
+--- a/drivers/staging/vt6656/usbpipe.c
++++ b/drivers/staging/vt6656/usbpipe.c
+@@ -77,7 +77,7 @@ int vnt_control_out_u8(struct vnt_private *priv, u8 reg, u8 reg_off, u8 data)
+ }
+
+ int vnt_control_out_blocks(struct vnt_private *priv,
+-			   u16 block, u8 reg, u16 length, u8 *data)
++			   u16 block, u8 reg, u16 length, const u8 *data)
+ {
+ 	int ret = 0, i;
+
+diff --git a/drivers/staging/vt6656/usbpipe.h b/drivers/staging/vt6656/usbpipe.h
+index 35697b58d748..1f0b2566c288 100644
+--- a/drivers/staging/vt6656/usbpipe.h
++++ b/drivers/staging/vt6656/usbpipe.h
+@@ -52,7 +52,7 @@ int vnt_control_out_u8(struct vnt_private *priv, u8 reg, u8 ref_off, u8 data);
+ int vnt_control_in_u8(struct vnt_private *priv, u8 reg, u8 reg_off, u8 *data);
+
+ int vnt_control_out_blocks(struct vnt_private *priv,
+-			   u16 block, u8 reg, u16 len, u8 *data);
++			   u16 block, u8 reg, u16 len, const u8 *data);
+
+ int vnt_start_interrupt_urb(struct vnt_private *priv);
+ int vnt_submit_rx_urb(struct vnt_private *priv, struct vnt_rcb *rcb);
+--
+2.20.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
