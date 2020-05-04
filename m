@@ -1,119 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF36A1C3A1A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 May 2020 14:54:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 298481C3B86
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 May 2020 15:44:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 655E288A51;
-	Mon,  4 May 2020 12:54:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 36C238776F;
+	Mon,  4 May 2020 13:44:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3cSOnclTZFnu; Mon,  4 May 2020 12:54:31 +0000 (UTC)
+	with ESMTP id XNe8vxT8to1t; Mon,  4 May 2020 13:44:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8A66F888DE;
-	Mon,  4 May 2020 12:54:31 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 071FE87763;
+	Mon,  4 May 2020 13:44:09 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BA3681BF380
- for <devel@linuxdriverproject.org>; Mon,  4 May 2020 12:54:28 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 30E8D1BF41E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  4 May 2020 13:44:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B1B23887BB
- for <devel@linuxdriverproject.org>; Mon,  4 May 2020 12:54:28 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 27FF722EE7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  4 May 2020 13:44:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id O9-q+98wxyt9 for <devel@linuxdriverproject.org>;
- Mon,  4 May 2020 12:54:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mailout1.w1.samsung.com (mailout1.w1.samsung.com
- [210.118.77.11])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7274C88637
- for <devel@driverdev.osuosl.org>; Mon,  4 May 2020 12:54:27 +0000 (UTC)
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
- by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200504125425euoutp01e6f28ad89164d273bb0675347ae41f31~L1G6yHu9N2849828498euoutp01I
- for <devel@driverdev.osuosl.org>; Mon,  4 May 2020 12:54:25 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
- 20200504125425euoutp01e6f28ad89164d273bb0675347ae41f31~L1G6yHu9N2849828498euoutp01I
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1588596865;
- bh=nL6s2qmhXVj8ojZqxdlRyULSFgOINvfslVF6oVYkjYo=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BI3SS6WgGwHE6z6hb8H2c3rnXkhkt7VLJTt0LS0pGoNowiCWFFnG2ql+QKz4aVIG0
- HeTD9424iZz7JBQObzI4cdFbEUO2GRQqSFI65na/9OWtkwAJX4vgpVhtiq+hPkHN5J
- o3ApZuT2se/h5vL6bEMG2R1V/FFj6Z6e1KB/wh+8=
-Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20200504125425eucas1p18f24436a94facbca4aad0c4973fc3bb1~L1G6Z0i_m1058810588eucas1p1l;
- Mon,  4 May 2020 12:54:25 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
- eusmges2new.samsung.com (EUCPMTA) with SMTP id 93.E2.60679.08010BE5; Mon,  4
- May 2020 13:54:25 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20200504125424eucas1p2a654aa95d553e10422dcb5125f960a49~L1G6KQaoN0599205992eucas1p2E;
- Mon,  4 May 2020 12:54:24 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200504125424eusmtrp1f37551067796b55c518d1f9421bfaf01~L1G6JlmPT2497724977eusmtrp1i;
- Mon,  4 May 2020 12:54:24 +0000 (GMT)
-X-AuditID: cbfec7f4-0e5ff7000001ed07-bd-5eb01080de42
-Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
- eusmgms2.samsung.com (EUCPMTA) with SMTP id 2F.06.07950.08010BE5; Mon,  4
- May 2020 13:54:24 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20200504125424eusmtip27a30e28a337f5989f1eb1fc1e87c59b2~L1G5df-nc0241002410eusmtip2K;
- Mon,  4 May 2020 12:54:24 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 21/21] staging: ion: fix sg_table nents vs. orig_nents
- misuse
-Date: Mon,  4 May 2020 14:53:59 +0200
-Message-Id: <20200504125359.5678-21-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200504125359.5678-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0VSaUwTYRDNt9tul6aFpZDwiURiIxI0nPpjBc8Ek03wh1GJN1plAwRaSJc7
- MSKoaAHlMIpIEJWEoyAITUXkBimXUKUQRG4kBiKHoQIlSm1ZxH9v3rw3bzIZHBW1cu3xEFkk
- LZdJwsQYn6NuM/S63iIqAjyMFQiZ1tOBkG+yy7mkUZ2BkrXdazxS92sBI4uVHxAyv8GHLK5d
- RUi9bgIhK6cGuGRfTS5GlrWO8MimxW9csnNkiXfUkirNKwXUaH0Lh6pbzudQwwO1GPV2eZxL
- jaVoEKqq4Cb1dX0KpbIGCwH1/ksCRi3U92PUA1UJoJYqd5wUXuAfDKTDQqJpufvhq/zgZ9N+
- EWrnWOP4RyQB5O5UAByHxH7YmHJCAfi4iCgCULcywGULPYDzhgIeWywBOJpeaupYbDiSNYub
- qkIAc5KVYMuirP+EmlUY4QkVcwrMjG2JOwC2pwnMIpRIQqHWmALMDRviFGzXT2+IOIQTNDxe
- 2TALiUNQVTaCsHGOUFnRiJqXtTDxT9OczXMgMcSDkxnsHEj4wg7V9831bOCsRsVjsQPsykrl
- sIYkACd6ynhskQpgX2L2ptsHDvesYeYElHCB5TXuLH0M5mn7EfZKlnBwztpMoyaYqX6CsrQQ
- 3rsrYtW7YY7m9VZsk/YzymIKZk9WbZ6xxXSt+WkkHTjm/A/LB6AE2NFRjDSIZrxkdIwbI5Ey
- UbIgt+vh0kpg+q2udY2+GtT8vtYMCByIBcJzS+UBIq4kmomTNgOIo2JbYfVtEyUMlMTF0/Lw
- K/KoMJppBttxjthOuO/lzGURESSJpENpOoKW/+siuIV9AmDKt+1djcc98tz+nBW86B0bcg01
- WN3Pj1s1yEfHUH9Hv4uR74yZz2P1ZxyGHef8yg60Wbmo3PWFw+fnH3rLThe/uhG46xHmHTUT
- 4D1SqF5AYqyVTOLEkRSvnlin4/wfFr4l2llF2kKDi65bM4421fl3zhVXTxYlrQkv/XSwFjiJ
- OUywxHMPKmckfwFtt0aZVwMAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrKIsWRmVeSWpSXmKPExsVy+t/xe7oNAhviDCZN0LPoPXeSyWLjjPWs
- Fv+3TWS22HPmF7vFla/v2SxWrj7KZLFgv7XFyj0/mCy+XHnIZLHp8TVWi8u75rBZrD1yl93i
- 4IcnrBan7n5md+DzWDNvDaPHvX2HWTz2flvA4nHn2h42j+3fHrB63O8+zuSxeUm9x+1/j5k9
- Jt9Yzuix+2YDm8f7fVfZPPq2rGL0+LxJLoA3Ss+mKL+0JFUhI7+4xFYp2tDCSM/Q0kLPyMRS
- z9DYPNbKyFRJ384mJTUnsyy1SN8uQS9j9lPvgm3qFf8fnGVqYJyj2MXIySEhYCLRfvwDaxcj
- F4eQwFJGiRPPzzFBJGQkTk5rYIWwhSX+XOtigyj6xCjR178SrIhNwFCi6y1EQkSgk1FiWvdH
- dhCHWaCbWeL6omlA7RwcwgIBEru2S4I0sAioSvyc9p0ZxOYVsJXYsvYu1DZ5idUbDjCDlHMC
- xWf2qoOEhQTyJe4+/ccygZFvASPDKkaR1NLi3PTcYiO94sTc4tK8dL3k/NxNjMAo2nbs55Yd
- jF3vgg8xCnAwKvHwbvi6Pk6INbGsuDL3EKMEB7OSCO+OFqAQb0piZVVqUX58UWlOavEhRlOg
- myYyS4km5wMjPK8k3tDU0NzC0tDc2NzYzEJJnLdD4GCMkEB6YklqdmpqQWoRTB8TB6dUA+Ol
- zzJNPgUTDhRLFj/fem7xsZO/7iqurD0vylZdeUA/YJkCxza7V/2fc59kOprOdJa87mpb+5Vx
- ton7sopHNRN8XKbc23PAKKfLNdj26wsRnvXvwtg3u51289exT/7JWH1k0n82mdQdQVp/GBev
- 2DzJ4cdC9S6mJ4VLp/2J/HKHX6Q53FNmlYsSS3FGoqEWc1FxIgAuM6M4uAIAAA==
-X-CMS-MailID: 20200504125424eucas1p2a654aa95d553e10422dcb5125f960a49
-X-Msg-Generator: CA
-X-RootMTR: 20200504125424eucas1p2a654aa95d553e10422dcb5125f960a49
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200504125424eucas1p2a654aa95d553e10422dcb5125f960a49
-References: <20200504125017.5494-1-m.szyprowski@samsung.com>
- <20200504125359.5678-1-m.szyprowski@samsung.com>
- <CGME20200504125424eucas1p2a654aa95d553e10422dcb5125f960a49@eucas1p2.samsung.com>
+ with ESMTP id p6RgSc4edBnT
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  4 May 2020 13:44:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
+ [216.71.150.166])
+ by silver.osuosl.org (Postfix) with ESMTPS id 41D02203D5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  4 May 2020 13:44:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1588599846; x=1620135846;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=tRt426a9NaHfWwsmyzzxQ7T/m3M76kxa4tVMeKwHs3A=;
+ b=kkBO8xk6e9a1g/76updyuLJDqtnTWT8m851hLEH+NUY3xgEHe7uw9p54
+ mNHS7ACU3zySQcTpmY4cp8Q1gn1k8m6Ay9gDnJl/Dlu2rgAUfhm3Xg/Bx
+ lgNo2nYAmW2woaBOVD81Hxojm7rtdai7aMeXbxYCE2nQNbWelHv1y8vnm
+ iA0hu+xspxeeTE1rVVV0GWdc1pb+qPb0LdP/tYNQMoxstJTHjfbw/k//P
+ 2hTOp0EURk0BjF468e4wa/Ksa2lwob7XE35X+octdbUzwz0syFEdoGhAN
+ irXnUxA9FOzdtTJ/20utLzxzwy0xWlSRdH9FLIfdypfR3oT38dGg3sGhB Q==;
+IronPort-SDR: 8sRE6mCUY7k0sajr25NgsO7+r2NN+EUWjKPjdhucFYs1fQlVM8cxYlnW3vh2pCwuDlRrpEc56G
+ oL7KL9h5LI1x/KIRWCIn87d6OJdk5m+Bb5apFEUQov9xvjLBed3KN5r8hp9mgXzLtRJovJlEWe
+ EgkaFJPHhhKj+E66e3LnC7qSWnpNpJ1gRnhhM2d+0xCQ/PcOwUwGk4yIKDHoD8UnwKybdkU82N
+ GhmJz9fMBGcNtXw/NlSkcNObxgUXTEvZqVkduWw+NfR/DFEgZ5mMtg53y2rIygHvJ+TgzOW+fl
+ qQI=
+X-IronPort-AV: E=Sophos;i="5.73,352,1583218800"; d="scan'208";a="74667670"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 04 May 2020 06:44:05 -0700
+Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 4 May 2020 06:44:08 -0700
+Received: from localhost.localdomain (10.10.115.15) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
+ 15.1.1713.5 via Frontend Transport; Mon, 4 May 2020 06:44:03 -0700
+From: Christian Gromm <christian.gromm@microchip.com>
+To: <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: most: usb: fix exception handling
+Date: Mon, 4 May 2020 15:44:00 +0200
+Message-ID: <1588599840-13237-1-git-send-email-christian.gromm@microchip.com>
+X-Mailer: git-send-email 2.7.4
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,144 +83,119 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>, Sumit Semwal <sumit.semwal@linaro.org>,
- Daniel Vetter <daniel@ffwll.ch>, Laura Abbott <labbott@redhat.com>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
-MIME-Version: 1.0
+Cc: Christian Gromm <christian.gromm@microchip.com>,
+ driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The Documentation/DMA-API-HOWTO.txt states that dma_map_sg returns the
-numer of the created entries in the DMA address space. However the
-subsequent calls to dma_sync_sg_for_{device,cpu} and dma_unmap_sg must be
-called with the original number of entries passed to dma_map_sg. The
-sg_table->nents in turn holds the result of the dma_map_sg call as stated
-in include/linux/scatterlist.h. Adapt the code to obey those rules.
+This patch fixes error handling on function parameters.
 
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 ---
-For more information, see '[PATCH v2 00/21] DRM: fix struct sg_table nents
-vs. orig_nents misuse' thread: https://lkml.org/lkml/2020/5/4/373
----
- drivers/staging/android/ion/ion.c             | 17 +++++++++--------
- drivers/staging/android/ion/ion_heap.c        |  6 +++---
- drivers/staging/android/ion/ion_system_heap.c |  2 +-
- 3 files changed, 13 insertions(+), 12 deletions(-)
+ drivers/staging/most/usb/usb.c | 33 +++++++++++++++++----------------
+ 1 file changed, 17 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/android/ion/ion.c
-index 38b51ea..b14170c 100644
---- a/drivers/staging/android/ion/ion.c
-+++ b/drivers/staging/android/ion/ion.c
-@@ -147,14 +147,14 @@ static struct sg_table *dup_sg_table(struct sg_table *table)
- 	if (!new_table)
- 		return ERR_PTR(-ENOMEM);
- 
--	ret = sg_alloc_table(new_table, table->nents, GFP_KERNEL);
-+	ret = sg_alloc_table(new_table, table->orig_nents, GFP_KERNEL);
- 	if (ret) {
- 		kfree(new_table);
- 		return ERR_PTR(-ENOMEM);
- 	}
- 
- 	new_sg = new_table->sgl;
--	for_each_sg(table->sgl, sg, table->nents, i) {
-+	for_each_sg(table->sgl, sg, table->orig_nents, i) {
- 		memcpy(new_sg, sg, sizeof(*sg));
- 		new_sg->dma_address = 0;
- 		new_sg = sg_next(new_sg);
-@@ -227,8 +227,9 @@ static struct sg_table *ion_map_dma_buf(struct dma_buf_attachment *attachment,
- 
- 	table = a->table;
- 
--	if (!dma_map_sg(attachment->dev, table->sgl, table->nents,
--			direction))
-+	table->nents = dma_map_sg(attachment->dev, table->sgl,
-+				  table->orig_nents, direction);
-+	if (!table->nents)
- 		return ERR_PTR(-ENOMEM);
- 
- 	return table;
-@@ -238,7 +239,7 @@ static void ion_unmap_dma_buf(struct dma_buf_attachment *attachment,
- 			      struct sg_table *table,
- 			      enum dma_data_direction direction)
+diff --git a/drivers/staging/most/usb/usb.c b/drivers/staging/most/usb/usb.c
+index e8c5a8c..e5276524 100644
+--- a/drivers/staging/most/usb/usb.c
++++ b/drivers/staging/most/usb/usb.c
+@@ -229,14 +229,14 @@ static unsigned int get_stream_frame_size(struct most_channel_config *cfg)
+  */
+ static int hdm_poison_channel(struct most_interface *iface, int channel)
  {
--	dma_unmap_sg(attachment->dev, table->sgl, table->nents, direction);
-+	dma_unmap_sg(attachment->dev, table->sgl, table->orig_nents, direction);
- }
+-	struct most_dev *mdev = to_mdev(iface);
++	struct most_dev *mdev;
+ 	unsigned long flags;
+ 	spinlock_t *lock; /* temp. lock */
  
- static int ion_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma)
-@@ -297,7 +298,7 @@ static int ion_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
+ 	if (unlikely(!iface)) {
+-		dev_warn(&mdev->usb_device->dev, "Poison: Bad interface.\n");
+-		return -EIO;
++		return -EFAULT;
+ 	}
++	mdev = to_mdev(iface);
+ 	if (unlikely(channel < 0 || channel >= iface->num_channels)) {
+ 		dev_warn(&mdev->usb_device->dev, "Channel ID out of range.\n");
+ 		return -ECHRNG;
+@@ -278,13 +278,13 @@ static int hdm_add_padding(struct most_dev *mdev, int channel, struct mbo *mbo)
+ 	unsigned int j, num_frames;
  
- 	mutex_lock(&buffer->lock);
- 	list_for_each_entry(a, &buffer->attachments, list) {
--		dma_sync_sg_for_cpu(a->dev, a->table->sgl, a->table->nents,
-+		dma_sync_sg_for_cpu(a->dev, a->table->sgl, a->table->orig_nents,
- 				    direction);
+ 	if (!frame_size)
+-		return -EIO;
++		return -EFAULT;
+ 	num_frames = mbo->buffer_length / frame_size;
+ 
+ 	if (num_frames < 1) {
+ 		dev_err(&mdev->usb_device->dev,
+ 			"Missed minimal transfer unit.\n");
+-		return -EIO;
++		return -EINVAL;
  	}
  
-@@ -320,8 +321,8 @@ static int ion_dma_buf_end_cpu_access(struct dma_buf *dmabuf,
+ 	for (j = num_frames - 1; j > 0; j--)
+@@ -312,7 +312,7 @@ static int hdm_remove_padding(struct most_dev *mdev, int channel,
+ 	unsigned int j, num_frames;
  
- 	mutex_lock(&buffer->lock);
- 	list_for_each_entry(a, &buffer->attachments, list) {
--		dma_sync_sg_for_device(a->dev, a->table->sgl, a->table->nents,
--				       direction);
-+		dma_sync_sg_for_device(a->dev, a->table->sgl,
-+				       a->table->orig_nents, direction);
- 	}
- 	mutex_unlock(&buffer->lock);
+ 	if (!frame_size)
+-		return -EIO;
++		return -EFAULT;
+ 	num_frames = mbo->processed_length / USB_MTU;
  
-diff --git a/drivers/staging/android/ion/ion_heap.c b/drivers/staging/android/ion/ion_heap.c
-index 0755b11..f2f7ca7 100644
---- a/drivers/staging/android/ion/ion_heap.c
-+++ b/drivers/staging/android/ion/ion_heap.c
-@@ -38,7 +38,7 @@ void *ion_heap_map_kernel(struct ion_heap *heap,
- 	else
- 		pgprot = pgprot_writecombine(PAGE_KERNEL);
+ 	for (j = 1; j < num_frames; j++)
+@@ -560,7 +560,7 @@ static int hdm_enqueue(struct most_interface *iface, int channel,
+ 	void *virt_address;
  
--	for_each_sg(table->sgl, sg, table->nents, i) {
-+	for_each_sg(table->sgl, sg, table->orig_nents, i) {
- 		int npages_this_entry = PAGE_ALIGN(sg->length) / PAGE_SIZE;
- 		struct page *page = sg_page(sg);
+ 	if (unlikely(!iface || !mbo))
+-		return -EIO;
++		return -EFAULT;
+ 	if (unlikely(iface->num_channels <= channel || channel < 0))
+ 		return -ECHRNG;
  
-@@ -71,7 +71,7 @@ int ion_heap_map_user(struct ion_heap *heap, struct ion_buffer *buffer,
- 	int i;
- 	int ret;
+@@ -666,18 +666,18 @@ static int hdm_configure_channel(struct most_interface *iface, int channel,
+ {
+ 	unsigned int num_frames;
+ 	unsigned int frame_size;
+-	struct most_dev *mdev = to_mdev(iface);
+-	struct device *dev = &mdev->usb_device->dev;
++	struct most_dev *mdev;
++	struct device *dev;
  
--	for_each_sg(table->sgl, sg, table->nents, i) {
-+	for_each_sg(table->sgl, sg, table->orig_nents, i) {
- 		struct page *page = sg_page(sg);
- 		unsigned long remainder = vma->vm_end - addr;
- 		unsigned long len = sg->length;
-@@ -142,7 +142,7 @@ int ion_heap_buffer_zero(struct ion_buffer *buffer)
- 	else
- 		pgprot = pgprot_writecombine(PAGE_KERNEL);
++	if (unlikely(!iface || !conf))
++		return -EFAULT;
++	mdev = to_mdev(iface);
++	dev = &mdev->usb_device->dev;
+ 	mdev->is_channel_healthy[channel] = true;
+ 	mdev->clear_work[channel].channel = channel;
+ 	mdev->clear_work[channel].mdev = mdev;
+ 	INIT_WORK(&mdev->clear_work[channel].ws, wq_clear_halt);
  
--	return ion_heap_sglist_zero(table->sgl, table->nents, pgprot);
-+	return ion_heap_sglist_zero(table->sgl, table->orig_nents, pgprot);
- }
+-	if (unlikely(!iface || !conf)) {
+-		dev_err(dev, "Bad interface or config pointer.\n");
+-		return -EINVAL;
+-	}
+ 	if (unlikely(channel < 0 || channel >= iface->num_channels)) {
+ 		dev_err(dev, "Channel ID out of range.\n");
+ 		return -EINVAL;
+@@ -747,11 +747,12 @@ static void hdm_request_netinfo(struct most_interface *iface, int channel,
+ {
+ 	struct most_dev *mdev;
  
- int ion_heap_pages_zero(struct page *page, size_t size, pgprot_t pgprot)
-diff --git a/drivers/staging/android/ion/ion_system_heap.c b/drivers/staging/android/ion/ion_system_heap.c
-index b83a1d1..34f6e81 100644
---- a/drivers/staging/android/ion/ion_system_heap.c
-+++ b/drivers/staging/android/ion/ion_system_heap.c
-@@ -162,7 +162,7 @@ static void ion_system_heap_free(struct ion_buffer *buffer)
- 	if (!(buffer->private_flags & ION_PRIV_FLAG_SHRINKER_FREE))
- 		ion_heap_buffer_zero(buffer);
+-	BUG_ON(!iface);
++	if (!iface || !on_netinfo) {
++		WARN_ON(1);
++		return;
++	}
+ 	mdev = to_mdev(iface);
+ 	mdev->on_netinfo = on_netinfo;
+-	if (!on_netinfo)
+-		return;
  
--	for_each_sg(table->sgl, sg, table->nents, i)
-+	for_each_sg(table->sgl, sg, table->orig_nents, i)
- 		free_buffer_page(sys_heap, buffer, sg_page(sg));
- 	sg_free_table(table);
- 	kfree(table);
+ 	mdev->link_stat_timer.expires = jiffies + HZ;
+ 	mod_timer(&mdev->link_stat_timer, mdev->link_stat_timer.expires);
 -- 
-1.9.1
+2.7.4
 
 _______________________________________________
 devel mailing list
