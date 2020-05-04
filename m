@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A6681C3BC7
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 May 2020 15:54:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 156A21C3BCD
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 May 2020 15:55:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EBA82230A4;
-	Mon,  4 May 2020 13:54:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AB47123115;
+	Mon,  4 May 2020 13:55:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iB25ZqzGeI9J; Mon,  4 May 2020 13:54:38 +0000 (UTC)
+	with ESMTP id ZIhlxeN7f6fV; Mon,  4 May 2020 13:55:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8792520430;
-	Mon,  4 May 2020 13:54:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 290E020447;
+	Mon,  4 May 2020 13:55:53 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1618D1BF41E
+ by ash.osuosl.org (Postfix) with ESMTP id CBD451BF41E
  for <driverdev-devel@linuxdriverproject.org>;
- Mon,  4 May 2020 13:54:35 +0000 (UTC)
+ Mon,  4 May 2020 13:55:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0BEED88360
+ by hemlock.osuosl.org (Postfix) with ESMTP id C4A518835D
  for <driverdev-devel@linuxdriverproject.org>;
- Mon,  4 May 2020 13:54:35 +0000 (UTC)
+ Mon,  4 May 2020 13:55:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kf9SOTFAuT5X
+ with ESMTP id dk3BtxUAE4ZH
  for <driverdev-devel@linuxdriverproject.org>;
- Mon,  4 May 2020 13:54:34 +0000 (UTC)
+ Mon,  4 May 2020 13:55:49 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6E5D28835D
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4821888356
  for <driverdev-devel@linuxdriverproject.org>;
- Mon,  4 May 2020 13:54:34 +0000 (UTC)
+ Mon,  4 May 2020 13:55:49 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id CB90020721;
- Mon,  4 May 2020 13:54:33 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id AA49720721;
+ Mon,  4 May 2020 13:55:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588600474;
- bh=OuQ+FhdbBHGH1XqA01f+DSnZVOSwYx7Alk6BuUY6yLU=;
+ s=default; t=1588600549;
+ bh=//wk/rJKjZjGzgW6nnnwkVpN5FRy02OsbVLJoPkWcR8=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=GraQHCrLa5gWw9bkjR/q4IlRQHWUFmEjFlIz7wYtsCU8WBQnBv5qgpCHSf3r7Qwjk
- +qs/bj0yiSn0kmM/LCAcxYr4xEPKqEsgcEVeLE08Kll2b+yCAJHzIyt6XqgyJki0kk
- lzdZy22WWmcw7oYzB2hffoCzfj5/ZZxXfjYjZ5PQ=
-Date: Mon, 4 May 2020 15:54:31 +0200
+ b=fNTaKHW8Y7LW2KAKHA+IyxKwshq/YhlQGRw+gh+ZPeFcoRhSQHmKHGgX5i4PhGQKQ
+ trPjzWe1XOq1vzG1JqLwdbeV2/usAX76n3LkwIT7M949oLLuwKKzUx+4NkXIGB/sEe
+ q7Apop79MEirHu1z3zjXsHJl6g8EGcP4NC0MBNjg=
+Date: Mon, 4 May 2020 15:55:46 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Christian Gromm <christian.gromm@microchip.com>
 Subject: Re: [PATCH] staging: most: usb: fix exception handling
-Message-ID: <20200504135431.GA2311301@kroah.com>
+Message-ID: <20200504135546.GB2311301@kroah.com>
 References: <1588599840-13237-1-git-send-email-christian.gromm@microchip.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -77,15 +77,40 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 On Mon, May 04, 2020 at 03:44:00PM +0200, Christian Gromm wrote:
 > This patch fixes error handling on function parameters.
-
-What does that mean?  If I don't understand it, I think it needs to be
-made a lot more explicit as to why you are making these changes :) 
-
+> 
 > Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+> ---
+>  drivers/staging/most/usb/usb.c | 33 +++++++++++++++++----------------
+>  1 file changed, 17 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/staging/most/usb/usb.c b/drivers/staging/most/usb/usb.c
+> index e8c5a8c..e5276524 100644
+> --- a/drivers/staging/most/usb/usb.c
+> +++ b/drivers/staging/most/usb/usb.c
+> @@ -229,14 +229,14 @@ static unsigned int get_stream_frame_size(struct most_channel_config *cfg)
+>   */
+>  static int hdm_poison_channel(struct most_interface *iface, int channel)
+>  {
+> -	struct most_dev *mdev = to_mdev(iface);
+> +	struct most_dev *mdev;
+>  	unsigned long flags;
+>  	spinlock_t *lock; /* temp. lock */
+>  
+>  	if (unlikely(!iface)) {
+> -		dev_warn(&mdev->usb_device->dev, "Poison: Bad interface.\n");
+> -		return -EIO;
+> +		return -EFAULT;
 
-Any "Fixes:" tag for this?
+-EFAULT is ONLY for when you have an error with copying memory to/from
+userspace.
 
-SHould it go to stable if it really resolves issues?
+This should just be -EINVAL, right?
+
+And how can iface ever be NULL?
+
+And why unlikely() there, can you measure the difference with/without
+it?  If not, please drop as the compiler/CPU can do it faster than you
+ever can.
 
 thanks,
 
