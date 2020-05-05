@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0735C1C525D
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E2A41C525E
 	for <lists+driverdev-devel@lfdr.de>; Tue,  5 May 2020 12:00:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2F3778953C;
-	Tue,  5 May 2020 10:00:44 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZHdwXWJ1j3Jy; Tue,  5 May 2020 10:00:43 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8D165894D2;
+	by silver.osuosl.org (Postfix) with ESMTP id 5FA0C234AC;
 	Tue,  5 May 2020 10:00:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XBYwgnB4KtZ7; Tue,  5 May 2020 10:00:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 0D920204EE;
+	Tue,  5 May 2020 10:00:41 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C04EF1BF2E4
+ by ash.osuosl.org (Postfix) with ESMTP id B620D1BF2E4
  for <driverdev-devel@linuxdriverproject.org>;
- Tue,  5 May 2020 10:00:37 +0000 (UTC)
+ Tue,  5 May 2020 10:00:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BCF57878AF
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B2F2D878AF
  for <driverdev-devel@linuxdriverproject.org>;
- Tue,  5 May 2020 10:00:37 +0000 (UTC)
+ Tue,  5 May 2020 10:00:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fhWpeMgxf1F4
+ with ESMTP id uVxEHvdbH3sK
  for <driverdev-devel@linuxdriverproject.org>;
- Tue,  5 May 2020 10:00:35 +0000 (UTC)
+ Tue,  5 May 2020 10:00:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
  [68.232.149.84])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F33C68784F
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1E7AF8788F
  for <driverdev-devel@linuxdriverproject.org>;
- Tue,  5 May 2020 10:00:34 +0000 (UTC)
+ Tue,  5 May 2020 10:00:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1588672834; x=1620208834;
+ t=1588672836; x=1620208836;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=GYKcX7/sEGQ5tFflO9vUER+BCFQCqBuLr24Kv2tpwz0=;
- b=aKTbm8ZinagW88HxaC+f4Qr9bRBO4tZRNXqlqmXOPiSqGIwz+J73JRCD
- Lo0n8GkmYV5mLypz9StVJieBeIeexf5QTR3UovuZUoXm+L+bkDsiTBHWQ
- cHsd0RIKTDN4i+doGBe+RAsDYGX8GEITZyQdbl8/DmfeO3NWXdrACOO5w
- gMnFnrOtyAjKKDDnYGpA9DDSud4Dtxzc0QxE/k4oZklE8qdpQOarNDGcx
- EUQO8tBdbReM2ynZOIJj/nEPJ/6nSuzlRIHw3TaWtPo/iao/j1Rg7ALrn
- vG++ScYOLT88+G7+D1nU+bpkD+grYrVWIqOJtRaQrgJOrLzj6vitZOIrk Q==;
-IronPort-SDR: RGqRHfLYoG5JrAWW/RNpVGldvmbbemv2ZikboemJhD/LvOOwNbq8yBCXbrMi1BkIh3xLrLnkBY
- SRsholU02iEDv/nBpSuwNSKIWiu46tO8lwmy7nzHmQYJibvTyaF/ndIeOaz6tIHLoqv8BMhS+M
- HhsteeyNG3W0qzoKBwwcfDl/MHo3yE8EPK72dU+UXSNQ+MMZ2x8PELFNe7Wj8IYG5TkYHjf1de
- w7YNZi9f1ITlqR/Pr36UxddwtcJws31Jz3RZN0CUYQKt70GO06siVtZmgrA9b0ahJxs3boo5B9
- W9A=
-X-IronPort-AV: E=Sophos;i="5.73,354,1583218800"; d="scan'208";a="74250518"
+ bh=PzVrejahgsQ46RCKgDEaRmo9uv0O5rkWydddSEwwRpc=;
+ b=DVRjkNjQU6GCsUsEAavBy+btfbjHRko6oxA8QHQeB5U2F4YMC3XP835x
+ wFLDeooc64Pgw63BmaYsOZo9md/NpHF7Y2RFfqTDTC7oshoM0vV1p9duT
+ ctwa5Yd7ly2mT3iK+EyOhK9o0KgveO0uM7ZXMF6EsuFwomRmgwKZGuGoO
+ H4eDjc8jX1GnSyN9WgurzoGqW/jLApky2Rn/AnJRbz8Pxm324Hvh+7qWG
+ JvQq6ArLNJfZfaylDi5L0NZHvE7Rw0L1vB5lxpOEbgqRMShYyY3tMC+b8
+ fGe6fOINj6dQT3HAA3G983xzsYXwYu6FmBNo7OFPvLHYkh55+uU/3hrZs A==;
+IronPort-SDR: ZnY7rdfetiugGuIESWUHD6eDFmNAlXk8t3W/BEuGGmFdIjPBYIlGyTsN0udCLs06fVl7GHW2en
+ nLw0dMqA0bY8CpZs+DaYqQQaCUWeqv+dplwkRX9iJdxB+eMatQV3nIBCg+tYbeDxUzmPejjPkE
+ seO72cCJoEvM/R77Kms65tVczmPyQHKyujk4+YpTiuit0QS+GI9nfLK4MlynsHHxKiHdo02P7n
+ 2PuV3FlQN4Ma+oMQWhhR+cGrncXMcNYjTmeNQqSV5Aq3EEIWU0kj0z4Dez5ToeGNfTv+SAbdsz
+ J3s=
+X-IronPort-AV: E=Sophos;i="5.73,354,1583218800"; d="scan'208";a="74250519"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
  by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 05 May 2020 03:00:34 -0700
+ 05 May 2020 03:00:35 -0700
 Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
  15.1.1713.5; Tue, 5 May 2020 03:00:35 -0700
 Received: from localhost.localdomain (10.10.115.15) by
  chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Tue, 5 May 2020 03:00:33 -0700
+ 15.1.1713.5 via Frontend Transport; Tue, 5 May 2020 03:00:34 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/4] staging: most: usb: remove overcautious parameter checking
-Date: Tue, 5 May 2020 12:00:26 +0200
-Message-ID: <1588672829-28883-2-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH 2/4] staging: most: usb: use EINVAL error code
+Date: Tue, 5 May 2020 12:00:27 +0200
+Message-ID: <1588672829-28883-3-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1588672829-28883-1-git-send-email-christian.gromm@microchip.com>
 References: <1588672829-28883-1-git-send-email-christian.gromm@microchip.com>
@@ -93,58 +93,61 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The interface pointer passed to a core API function cannot be NULL. This
-patch removes unnessecary the sanity check of the pointer.
+This patch replaces the error code EIO with EINVAL, when there is no IO
+happening.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/staging/most/usb/usb.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ drivers/staging/most/usb/usb.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/most/usb/usb.c b/drivers/staging/most/usb/usb.c
-index e8c5a8c..9527e31 100644
+index 9527e31..1087ad9 100644
 --- a/drivers/staging/most/usb/usb.c
 +++ b/drivers/staging/most/usb/usb.c
-@@ -233,10 +233,6 @@ static int hdm_poison_channel(struct most_interface *iface, int channel)
- 	unsigned long flags;
- 	spinlock_t *lock; /* temp. lock */
+@@ -274,13 +274,13 @@ static int hdm_add_padding(struct most_dev *mdev, int channel, struct mbo *mbo)
+ 	unsigned int j, num_frames;
  
--	if (unlikely(!iface)) {
--		dev_warn(&mdev->usb_device->dev, "Poison: Bad interface.\n");
+ 	if (!frame_size)
 -		return -EIO;
--	}
- 	if (unlikely(channel < 0 || channel >= iface->num_channels)) {
- 		dev_warn(&mdev->usb_device->dev, "Channel ID out of range.\n");
- 		return -ECHRNG;
-@@ -559,7 +555,7 @@ static int hdm_enqueue(struct most_interface *iface, int channel,
- 	unsigned long length;
++		return -EINVAL;
+ 	num_frames = mbo->buffer_length / frame_size;
+ 
+ 	if (num_frames < 1) {
+ 		dev_err(&mdev->usb_device->dev,
+ 			"Missed minimal transfer unit.\n");
+-		return -EIO;
++		return -EINVAL;
+ 	}
+ 
+ 	for (j = num_frames - 1; j > 0; j--)
+@@ -308,7 +308,7 @@ static int hdm_remove_padding(struct most_dev *mdev, int channel,
+ 	unsigned int j, num_frames;
+ 
+ 	if (!frame_size)
+-		return -EIO;
++		return -EINVAL;
+ 	num_frames = mbo->processed_length / USB_MTU;
+ 
+ 	for (j = 1; j < num_frames; j++)
+@@ -556,7 +556,7 @@ static int hdm_enqueue(struct most_interface *iface, int channel,
  	void *virt_address;
  
--	if (unlikely(!iface || !mbo))
-+	if (unlikely(!mbo))
- 		return -EIO;
+ 	if (unlikely(!mbo))
+-		return -EIO;
++		return -EINVAL;
  	if (unlikely(iface->num_channels <= channel || channel < 0))
  		return -ECHRNG;
-@@ -674,8 +670,8 @@ static int hdm_configure_channel(struct most_interface *iface, int channel,
- 	mdev->clear_work[channel].mdev = mdev;
- 	INIT_WORK(&mdev->clear_work[channel].ws, wq_clear_halt);
  
--	if (unlikely(!iface || !conf)) {
--		dev_err(dev, "Bad interface or config pointer.\n");
-+	if (unlikely(!conf)) {
-+		dev_err(dev, "Bad config pointer.\n");
- 		return -EINVAL;
+@@ -577,7 +577,7 @@ static int hdm_enqueue(struct most_interface *iface, int channel,
+ 
+ 	if ((conf->direction & MOST_CH_TX) && mdev->padding_active[channel] &&
+ 	    hdm_add_padding(mdev, channel, mbo)) {
+-		retval = -EIO;
++		retval = -EINVAL;
+ 		goto err_free_urb;
  	}
- 	if (unlikely(channel < 0 || channel >= iface->num_channels)) {
-@@ -747,7 +743,6 @@ static void hdm_request_netinfo(struct most_interface *iface, int channel,
- {
- 	struct most_dev *mdev;
  
--	BUG_ON(!iface);
- 	mdev = to_mdev(iface);
- 	mdev->on_netinfo = on_netinfo;
- 	if (!on_netinfo)
 -- 
 2.7.4
 
