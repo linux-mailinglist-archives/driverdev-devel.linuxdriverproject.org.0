@@ -1,91 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FC9B1C6E51
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 May 2020 12:25:30 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2F0B9886D5;
-	Wed,  6 May 2020 10:25:28 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9dq0dCAyH4cH; Wed,  6 May 2020 10:25:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9C64B88644;
-	Wed,  6 May 2020 10:25:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 070691BF471
- for <devel@linuxdriverproject.org>; Wed,  6 May 2020 10:25:25 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C90D51C6FA6
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 May 2020 13:51:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 018C58773E
- for <devel@linuxdriverproject.org>; Wed,  6 May 2020 10:25:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4DA5B87D45;
+	Wed,  6 May 2020 11:51:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tdlxq2V950rf; Wed,  6 May 2020 11:51:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id EA2D787951;
+	Wed,  6 May 2020 11:51:06 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E9CE51BF836
+ for <devel@linuxdriverproject.org>; Wed,  6 May 2020 11:51:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id CD2E924F06
+ for <devel@linuxdriverproject.org>; Wed,  6 May 2020 11:51:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qq+9xwElHao3 for <devel@linuxdriverproject.org>;
- Wed,  6 May 2020 10:25:24 +0000 (UTC)
+ with ESMTP id GejOXCrXaTy5 for <devel@linuxdriverproject.org>;
+ Wed,  6 May 2020 11:51:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3253087739
- for <devel@driverdev.osuosl.org>; Wed,  6 May 2020 10:25:24 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 046AHoD8054916;
- Wed, 6 May 2020 10:25:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=kifplgKTxbmGsIF+s+53NwdGe6nklN1ira/VA94aWAU=;
- b=DEz/SbX8G6fg1ZJR0km/EDe/276HOOwVXqwlF5iRSsUfUWYtaJmjvWGwhi7HdVs0NmOr
- sdw1CxMiQdfE2nRFtOuWJxKawl85y+rj8O6m2JZyUrLNk6qYPIUhManAy4bW38RR756e
- c4ZqSm5gO21AFmXm1JdNr0JAciHKanmI2O0t5KK0iYrNzEQMwNyLOqTJ3k9f8jPQfitb
- JoLfEVAm1Uq/KCuwKp4yMEJFMFukVXS8lL4gE2hw5Ts6jIFQntpvQ7ZXQs0LBzVeSG2f
- K01o+Zk5nmPZqprFkNWFE5Q6IX5Jx73AmpoIfI84EusxxAIvw4GqYho2a+xlf0D5C74z cg== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 30s1gn9cs0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 06 May 2020 10:25:23 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 046AHrWM171148;
- Wed, 6 May 2020 10:25:22 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3030.oracle.com with ESMTP id 30t1r7eq92-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 06 May 2020 10:25:22 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 046APJtN014271;
- Wed, 6 May 2020 10:25:19 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 06 May 2020 03:25:18 -0700
-Date: Wed, 6 May 2020 13:25:12 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Yu Jian Wu <yujian.wu1@gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: os_dep: Cleanup pointer casting code
- style
-Message-ID: <20200506102512.GB9365@kadam>
-References: <20200502004747.GA16480@amber>
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id F2C3E204EB
+ for <devel@driverdev.osuosl.org>; Wed,  6 May 2020 11:51:03 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id z1so891723pfn.3
+ for <devel@driverdev.osuosl.org>; Wed, 06 May 2020 04:51:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=NCWVLraG9Z8gnxmAn0SmeF0f40Gs+IBXqSv5TRfXTeo=;
+ b=lcrEA0GGS/ODMtk1F9EbQgx/zhTGO7HwxM1q3YwRF1yV7sz+TG/gC9gvwnsxPQWUl5
+ JzJDdag0D4HdVsx00o/HcFoqylOGBpDNPCWbqQ/5lsZ5Sj9+rB8rWUcyx2SqsNwKdLq8
+ BRigHnSvx7Vx35Rhg2+39JJe9beD0dmVijEfEI5qklWM9IkysJcJsh92eP1QXtfb1/gB
+ MpDZquvW1w0za/4eaHctNyYMhfXiCTbYy7yX0Fye2B7xdAqne9CJx8jqDuQgCCjKk5JG
+ Rwed3oTTBNks+c1PQ37hE8Do/pVC9jiUjJdHmhoGcK51qUlm/m7+vArPv65nyVvo/gqc
+ 6lMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=NCWVLraG9Z8gnxmAn0SmeF0f40Gs+IBXqSv5TRfXTeo=;
+ b=cCHKCZsAqxZBw+isvHMOT/K8Av7qlwFm0+ivHPaeGvaDTuUdER9LumlYp7mO8Iaz9j
+ /OQt1VwzzMtAPuLCjyaDz4k8jBLAUFzAuCDiTXYpLbvtU74S3nQHsv8XiqqUBv9aPnlK
+ 1hWtFn5aSqQr0zkI0cGcz8Y4SJAa/5mb48yOW9+5HfOYB1VemmIWzLG76gQlqIr0l+w/
+ xvTRY8x5rKQTmCdXxZFvXNWlLaihuwEyOMZieMQ0ChFyA8KyDKsuyjEzSIrjJTkHPpLU
+ vWoNkuHLhE0PPUnOBHB52rkwv9NwrRT/fnazSrhAU59YrfZvdlOn6YrUKrz051vfcbW9
+ 5QKg==
+X-Gm-Message-State: AGi0PuZ8Iwrmc2LwK+jz3C9QhneZskgN1llYjVfle1E9T3ngl3uBByoV
+ edLnNAAjrUbciOgSWbZBRnv3RTzgFhVNmQEOIklSiQ==
+X-Google-Smtp-Source: APiQypLbnuslSjWfPJCL6GH8TRgkchj+mtZa+8D31hKdGt3QwTAT7sKf3dYFt1pz5KQgKBc84Vw4pl1Pwk8as9editc=
+X-Received: by 2002:a63:a61:: with SMTP id z33mr6595886pgk.440.1588765863165; 
+ Wed, 06 May 2020 04:51:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200502004747.GA16480@amber>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9612
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- adultscore=0 suspectscore=0
- spamscore=0 mlxlogscore=999 malwarescore=0 phishscore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2005060081
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9612
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- suspectscore=0 mlxscore=0
- spamscore=0 clxscore=1011 priorityscore=1501 bulkscore=0 phishscore=0
- impostorscore=0 malwarescore=0 lowpriorityscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2005060081
+References: <00000000000039420505a14e4951@google.com>
+ <1588755226.13662.17.camel@suse.com>
+In-Reply-To: <1588755226.13662.17.camel@suse.com>
+From: Andrey Konovalov <andreyknvl@google.com>
+Date: Wed, 6 May 2020 13:50:52 +0200
+Message-ID: <CAAeHK+zOdghTAu647iKBEU+0LqkYYOk0f7gPk_4T6BjNi=2sAQ@mail.gmail.com>
+Subject: Re: KASAN: slab-out-of-bounds Read in hfa384x_usbin_callback
+To: Oliver Neukum <oneukum@suse.com>
+Content-Type: multipart/mixed; boundary="000000000000e870ed05a4f96035"
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,45 +81,99 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- Larry.Finger@lwfinger.net, hdegoede@redhat.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org,
+ syzbot <syzbot+7d42d68643a35f71ac8a@syzkaller.appspotmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ USB list <linux-usb@vger.kernel.org>,
+ syzkaller-bugs <syzkaller-bugs@googlegroups.com>,
+ LKML <linux-kernel@vger.kernel.org>, nishkadg.linux@gmail.com
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, May 02, 2020 at 08:47:50AM +0800, Yu Jian Wu wrote:
-> Cleanup by adding a space between type and pointer, in accordance with
-> checkpatch.pl message "(foo*)" should be "(foo *)".
-> 
-> Signed-off-by: Yu Jian Wu <yujian.wu1@gmail.com>
-> ---
->  .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c    | 16 ++++++++--------
->  drivers/staging/rtl8723bs/os_dep/recv_linux.c    |  2 +-
->  2 files changed, 9 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-> index b037868fbf22..8377bc75e308 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-> @@ -98,7 +98,7 @@ static struct ieee80211_channel rtw_2ghz_channels[] = {
->  
->  static void rtw_2g_channels_init(struct ieee80211_channel *channels)
->  {
-> -	memcpy((void*)channels, (void*)rtw_2ghz_channels,
-> +	memcpy((void *)channels, (void *)rtw_2ghz_channels,
+--000000000000e870ed05a4f96035
+Content-Type: text/plain; charset="UTF-8"
 
-These casts aren't required.  It would be better to remove them.
+On Wed, May 6, 2020 at 10:54 AM Oliver Neukum <oneukum@suse.com> wrote:
+>
+> Am Freitag, den 20.03.2020, 12:28 -0700 schrieb syzbot:
+> > Hello,
+> >
+> > syzbot found the following crash on:
+> >
+> > HEAD commit:    e17994d1 usb: core: kcov: collect coverage from usb comple..
+> > git tree:       https://github.com/google/kasan.git usb-fuzzer
+> > console output: https://syzkaller.appspot.com/x/log.txt?x=11d74573e00000
+> > kernel config:  https://syzkaller.appspot.com/x/.config?x=5d64370c438bc60
+> > dashboard link: https://syzkaller.appspot.com/bug?extid=7d42d68643a35f71ac8a
+> > compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
+> > syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=15fa561de00000
+> > C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=15d74573e00000
+> >
+> > IMPORTANT: if you fix the bug, please add the following tag to the commit:
+> > Reported-by: syzbot+7d42d68643a35f71ac8a@syzkaller.appspotmail.com
+> >
+>
+> Hi,
+>
+> is this bug still active and can a test be run on it? I requested one
+> yesterday. If my analysis is correct this bug has security
+> implications, so it is kind of important.
 
-	memcpy(channels, rtw_2ghz_channels,
-	       sizeof(*channel) * RTW_2G_CHANNELS_NUM);
+I see your request in the queue and it's been registered and
+completed, but for some reason syzbot didn't send an email with a
+response.
 
-Same for a bunch of the others as well.
+Let me try this once again:
 
-regards,
-dan carpenter
+#syz test: https://github.com/google/kasan.git e17994d1
+
+--000000000000e870ed05a4f96035
+Content-Type: application/octet-stream; 
+	name="0001-hfa384x_usb-fix-buffer-overflow.patch"
+Content-Disposition: attachment; 
+	filename="0001-hfa384x_usb-fix-buffer-overflow.patch"
+Content-Transfer-Encoding: base64
+Content-ID: <f_k9va5uf00>
+X-Attachment-Id: f_k9va5uf00
+
+RnJvbSA2ZGJjYWM4YzRiNjQ1NjAwMTYxZmVhZmM1NTc2NjU3OTA1ZjE1ZDY1IE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBPbGl2ZXIgTmV1a3VtIDxvbmV1a3VtQHN1c2UuY29tPgpEYXRl
+OiBUdWUsIDUgTWF5IDIwMjAgMTM6NDY6MjYgKzAyMDAKU3ViamVjdDogW1BBVENIXSBoZmEzODR4
+X3VzYjogZml4IGJ1ZmZlciBvdmVyZmxvdwoKVGhlIGRyaXZlciB0cnVzdHMgdGhlIGRhdGFfbGVu
+IGNvbWluZyBmcm9tIHRoZSBoYXJkd2FyZQp3aXRob3V0IHZlcmlmaWNhdGlvbi4gVGhhdCBtZWFu
+cyB0aGF0IHRoaXMgb3BlbnMKYSB2ZWN0b3IgYnkgd2hpY2ggYW4gYXR0YWNrZXIgY2FuIHNtYXNo
+IDY0SyBvZiB0aGUgaGVhcC4KClNpZ25lZC1vZmYtYnk6IE9saXZlciBOZXVrdW0gPG9uZXVrdW1A
+c3VzZS5jb20+Ci0tLQogZHJpdmVycy9zdGFnaW5nL3dsYW4tbmcvaGZhMzg0eF91c2IuYyB8IDEy
+ICsrKysrKystLS0tLQogMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlv
+bnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvd2xhbi1uZy9oZmEzODR4X3VzYi5j
+IGIvZHJpdmVycy9zdGFnaW5nL3dsYW4tbmcvaGZhMzg0eF91c2IuYwppbmRleCBmYTFiZjhiMDY5
+ZmQuLjViNjQ5N2Q4YzllMiAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL3dsYW4tbmcvaGZh
+Mzg0eF91c2IuYworKysgYi9kcml2ZXJzL3N0YWdpbmcvd2xhbi1uZy9oZmEzODR4X3VzYi5jCkBA
+IC0zMzUzLDkgKzMzNTMsOSBAQCBzdGF0aWMgdm9pZCBoZmEzODR4X2ludF9yeG1vbml0b3Ioc3Ry
+dWN0IHdsYW5kZXZpY2UgKndsYW5kZXYsCiAJCQkJICBzdHJ1Y3QgaGZhMzg0eF91c2Jfcnhmcm0g
+KnJ4ZnJtKQogewogCXN0cnVjdCBoZmEzODR4X3J4X2ZyYW1lICpyeGRlc2MgPSAmcnhmcm0tPmRl
+c2M7Ci0JdW5zaWduZWQgaW50IGhkcmxlbiA9IDA7Ci0JdW5zaWduZWQgaW50IGRhdGFsZW4gPSAw
+OwotCXVuc2lnbmVkIGludCBza2JsZW4gPSAwOworCXVuc2lnbmVkIGludCBoZHJsZW47CisJdW5z
+aWduZWQgaW50IGRhdGFsZW47CisJdW5zaWduZWQgaW50IHNrYmxlbjsKIAl1OCAqZGF0YXA7CiAJ
+dTE2IGZjOwogCXN0cnVjdCBza19idWZmICpza2I7CkBAIC0zNDEzLDggKzM0MTMsMTAgQEAgc3Rh
+dGljIHZvaWQgaGZhMzg0eF9pbnRfcnhtb25pdG9yKHN0cnVjdCB3bGFuZGV2aWNlICp3bGFuZGV2
+LAogCSAqLwogCXNrYl9wdXRfZGF0YShza2IsICZyeGRlc2MtPmZyYW1lX2NvbnRyb2wsIGhkcmxl
+bik7CiAKLQkvKiBJZiBhbnksIGNvcHkgdGhlIGRhdGEgZnJvbSB0aGUgY2FyZCB0byB0aGUgc2ti
+ICovCi0JaWYgKGRhdGFsZW4gPiAwKSB7CisJLyogSWYgYW55LCBjb3B5IHRoZSBkYXRhIGZyb20g
+dGhlIGNhcmQgdG8gdGhlIHNrYiwKKwkgKiBhcyBsb25nIGFzIGl0IGZpdHMsIGxlc3Qgd2Ugc21h
+c2ggYSBidWZmZXIKKwkgKi8KKwlpZiAoZGF0YWxlbiA+IDAgJiYgZGF0YWxlbiA8PSBza2JsZW4g
+LSBoZHJsZW4pIHsKIAkJZGF0YXAgPSBza2JfcHV0X2RhdGEoc2tiLCByeGZybS0+ZGF0YSwgZGF0
+YWxlbik7CiAKIAkJLyogY2hlY2sgZm9yIHVuZW5jcnlwdGVkIHN0dWZmIGlmIFdFUCBiaXQgc2V0
+LiAqLwotLSAKMi4xNi40Cgo=
+--000000000000e870ed05a4f96035
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--000000000000e870ed05a4f96035--
