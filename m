@@ -2,59 +2,107 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6C351C6656
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 May 2020 05:29:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D40E81C69BB
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 May 2020 09:03:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9B6DA24763;
-	Wed,  6 May 2020 03:29:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 41D8524763;
+	Wed,  6 May 2020 07:03:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SyMJnKj+kZ3z; Wed,  6 May 2020 03:29:36 +0000 (UTC)
+	with ESMTP id gZobGHEI8UyV; Wed,  6 May 2020 07:03:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3D71C204D4;
-	Wed,  6 May 2020 03:29:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 35580204E2;
+	Wed,  6 May 2020 07:03:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D87011BF33B
- for <devel@linuxdriverproject.org>; Wed,  6 May 2020 03:29:31 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CAD8B1BF86D
+ for <devel@linuxdriverproject.org>; Wed,  6 May 2020 07:03:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D524686D91
- for <devel@linuxdriverproject.org>; Wed,  6 May 2020 03:29:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BE5DD204E2
+ for <devel@linuxdriverproject.org>; Wed,  6 May 2020 07:03:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y42TAX-g5dVi for <devel@linuxdriverproject.org>;
- Wed,  6 May 2020 03:29:31 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E4CA7877B4
- for <devel@driverdev.osuosl.org>; Wed,  6 May 2020 03:29:30 +0000 (UTC)
-IronPort-SDR: nRzIxwXh0o3jVYDxKemYCgDTZlUFqPjIq5aTTVrVjED53ksRW0j4ESxtafMG3OGuyNtJAGjynY
- xWJQZRfKWHOg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 May 2020 20:29:26 -0700
-IronPort-SDR: EXNltoPtVuMf1a9HxAoIqugwSzolys+75bqdbh9NW1+BXgy476KFyenFsYaZQGO3PQCA5MRHr5
- MbKke2olCWMw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,357,1583222400"; d="scan'208";a="461619711"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 05 May 2020 20:29:25 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jWAkO-0003v5-Qs; Wed, 06 May 2020 11:29:24 +0800
-Date: Wed, 06 May 2020 11:28:34 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- c78c31b374a68be79cb4a03ef5b6c187f034e903
-Message-ID: <5eb22ee2.VQ0N/y4pgLGVL1bo%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id 8zM9CuMUC0R5 for <devel@linuxdriverproject.org>;
+ Wed,  6 May 2020 07:03:16 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12on2103.outbound.protection.outlook.com [40.107.243.103])
+ by silver.osuosl.org (Postfix) with ESMTPS id 86BCC20441
+ for <devel@driverdev.osuosl.org>; Wed,  6 May 2020 07:03:16 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bd3MXJ21fiiJBi6q/qEgZA0gBPDObtZCu6QcKcJXzZbFI6CRO/2XmnfdYMVenUvr+Jk76qtgQDSYN0ufzrIKXfK53sJtKadGaR0wCLAviDC5bxQkZknvBQ726Kj6ox5jS3/vC/5PI0zNT0mm57MxwIzCbGstj3UhRJUFbX5HlTE4RpC63yeSUJr25VVerFyOc2o6NPn+f8QagTHXQNdT9ANT5c9kBNdFVvYRGWSkSORjRxEzqVDm7vSX8gy8iR85s79s2653pvn3tlz6WqIbz/v4x7gYETsOLg2oMSNZw57aL7mO8SnaZVes6JmC9xvYs2vq+k02cLX3w15xH687aA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=arPWgkbqCxYiF846dvxZKrNCNOffi3X8NaWn5xGkDM0=;
+ b=OPdwZZdzlsvIsKJ3YvW3w78GDHBucd+2r1FPYMWBMWDtVcIkfPHkppuij+hXC72XX9kpHgeFJXunOWzr2vURRrssrK++xv2UzvnsSDID+XFVl/OBKntxOEsfx2MkPE+6NBvdr7hi9t+JeAdhsAZzEZ2LQ3fHIIDInfh5nLlxcVx1E/GJPJsTvi63NK9xAwExhwPCjKJCIwZSkFRoJLv35+aObByDN2xGgNjeXFUveNNN4UXzJglkTzpNeamwA0yecM3AmiEYzNlPizL/ZA2fEnshwWAAz5wq5N8zRb+9A3SwXqXmTx+zTudf7o4eDkTPUoM3rxSMc62PaQUxDPZE4A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=arPWgkbqCxYiF846dvxZKrNCNOffi3X8NaWn5xGkDM0=;
+ b=AJ4likgLNpQH4aswzibrMY/cetKXaofqPuC71Rvfsv12mMP6VDk0TiQyOEwYO1FbC9krwRjvqZ8tP6VYgFzEyNSFtoybrgA+27IzXuvxeMThBHSIORiXNcVEWUYvI/eMgRiNN/8jIGwGJ4IiRAkZtZ6Kb+d2CgDnwy+INNbGpy4=
+Authentication-Results: analogixsemi.com; dkim=none (message not signed)
+ header.d=none;analogixsemi.com; dmarc=none action=none
+ header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BY5PR04MB6755.namprd04.prod.outlook.com (2603:10b6:a03:22d::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.28; Wed, 6 May
+ 2020 07:03:13 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::4517:bcc8:a3bd:407f]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::4517:bcc8:a3bd:407f%6]) with mapi id 15.20.2979.028; Wed, 6 May 2020
+ 07:03:13 +0000
+Date: Wed, 6 May 2020 15:03:08 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: devel@driverdev.osuosl.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andrzej Hajda <a.hajda@samsung.com>, Nicolas Boichat <drinkcat@google.com>,
+ Sam Ravnborg <sam@ravnborg.org>
+Subject: [PATCH v10 0/2] Add initial support for slimport anx7625
+Message-ID: <cover.1588747998.git.xji@analogixsemi.com>
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-ClientProxiedBy: HK2PR04CA0071.apcprd04.prod.outlook.com
+ (2603:1096:202:15::15) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from xin-VirtualBox (114.247.245.254) by
+ HK2PR04CA0071.apcprd04.prod.outlook.com (2603:1096:202:15::15) with Microsoft
+ SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
+ 15.20.2979.27 via Frontend Transport; Wed, 6 May 2020 07:03:12 +0000
+X-Originating-IP: [114.247.245.254]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 22c94a82-492b-48d9-47ce-08d7f18b8ab6
+X-MS-TrafficTypeDiagnostic: BY5PR04MB6755:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BY5PR04MB6755AB72B0C2EED881FDF4B9C7A40@BY5PR04MB6755.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Forefront-PRVS: 03950F25EC
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: yYYdGn5EEcsKQ2yHXoLhy5RqW5wot4Hf+gRzhl7rRIOQ5uO3c/F0oCa6yKPzrBGOSylYC8AKioQjFpd70F6iquKqEyoS+0FcKWdKCAyGCfE8/ao1VZsE+7CJ4qVcy7M7sVT+JKJaCP6Wmvjpvqky+xCyfCe8Nd+z/STEtFn+OPIChQD0i6s2yDZKZI7MXqjsU+TJLDKMCiKBVZd9AM1aIDK7YoNtXXnIju5rw1lxNXVB/0ynX3HZlLv2hgVK2yGvAwntYvMTwLIAwIYOdlk4EuxK/KflS0zvwJgalvKBJqcVfurkeewjgjQAuN8iN+WdHvc29hNMll6uzmztcf0elPBIm03jhIYIxZ4j5JgsKdutBoQjr/UO2NtSp7MIZi7053b+5ydFAOx+u3nsvvBloHBSMqe3LZgBX5cQvxQM746X69vRcpOmtFcGLnoHLMuIaH20h+4bLB3i+TTf2WtcmD+HvhKty/hdyzIdlvtKFgGW/X+0rbLTPqcGOSGgZh1+tjQKQF2YkBgQf5pJTxo7dA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(396003)(346002)(39830400003)(136003)(376002)(366004)(33430700001)(7416002)(186003)(5660300002)(36756003)(478600001)(16526019)(8676002)(33440700001)(66946007)(66476007)(316002)(66556008)(4326008)(54906003)(110136005)(52116002)(956004)(2616005)(86362001)(6666004)(8936002)(6486002)(6496006)(107886003)(26005)(2906002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: a35T7SjFWfRtW9UDn5EBmhVOyoLLi0f0PfW5FZfFjWxGkVevRFe0LEzauZC1pdKw01Lnx3ZC8u+ie/4IXDlsTcrdJtEY3j9eqptxuZPJ58sLii8uLp+MY5+iFOvqW9okUIspO5s6KjQSGviVXs19AjH5IP2CWeOBF9gLVU0P8ZpNUjVawAd/jrAr0M1RVrlfzwhGVhN2h+b73PF2E4btlROTuOcAR9BlMenM1LaGCZxUL1HlCp/sJ8bYTG92b2SVjhJ+UMKBqLT0/Ol0oEd/7Dr2jCzZLtLEL3JZmaLLPbOGPkxljGsGGsqy8R47mv/lpMs+vT8a1EKHkM9fVfTSBBJ/9ed3OrY47zSwB7JfpVTG0qFQj1FVTokkgdRpxQgICaUawGQeUqqgb/Kd0ikdaG+xEFrp7HNMEkYZTzW7NqWK+64Ke1fECUtvClC0MXGhUYOSXbsQTbYk2xKeFM68HoS678M/HddxOFfEjACwGX1Jyxo1yU8F4zB6Dnmg6A+Yftfkb/cuUEiw0RAAV32fnbatRxj5bqxI4zFUtxJ0KgnjXyRLMpFaDUNpnHiey8C5RBiHqi7bbXAa6FAcJE7QF4aFthauD+6EJ8k81Whqa4Ceaz4+ccW4T5FgZUnLkwRwjYzxuickoUYGui0v2+7NmU4xNFWnOMS8qO2oKog3D5ypZuiXhUTblUqlkrlbwDf+1Wmwd4cmV9r4FFCMnn3haJER8tMlqz6xvKqUSeesnNuSpciHqRKMXZkZ3qm1tFHiYcafrl3/eYFYGjM+ZXNQowfhzH1QvhbZ3AD7MLt6/dzOL+NvgjZGsdYAlIwXeQMf
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 22c94a82-492b-48d9-47ce-08d7f18b8ab6
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 May 2020 07:03:13.0933 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: eMU0laaag6aqTKuZ3fTXuKNknVqUO4NuTA0qrGf/0PaC+Mmb2SB6PqNRJ3nKjbz9HqoMgMMnPIwwfwhCgBiXJQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6755
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,230 +115,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
+ Nicolas Boichat <drinkcat@chromium.org>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Sheng Pan <span@analogixsemi.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: c78c31b374a68be79cb4a03ef5b6c187f034e903  Revert "Revert "driver core: Set fw_devlink to "permissive" behavior by default""
+Hi all,
 
-elapsed time: 671m
+The following series add support for the Slimport ANX7625 transmitter, a
+ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
 
-configs tested: 203
-configs skipped: 0
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+This is the v10 version, any mistakes, please let me know, I will fix it in
+the next series.
 
-arm                           efm32_defconfig
-arm                         at91_dt_defconfig
-arm                        shmobile_defconfig
-arm64                               defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                           sunxi_defconfig
-arm                        multi_v7_defconfig
-arm64                            allyesconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm                              allmodconfig
-arm64                             allnoconfig
-arm                               allnoconfig
-sparc                            allyesconfig
-parisc                            allnoconfig
-powerpc                             defconfig
-powerpc                           defconfig-4
-powerpc                           defconfig-5
-powerpc                           defconfig-3
-microblaze                    nommu_defconfig
-i386                                defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                             alldefconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                        generic_defconfig
-ia64                          tiger_defconfig
-ia64                         bigsur_defconfig
-ia64                             allyesconfig
-ia64                             alldefconfig
-m68k                       m5475evb_defconfig
-m68k                             allmodconfig
-m68k                       bvme6000_defconfig
-m68k                           sun3_defconfig
-m68k                          multi_defconfig
-nios2                         3c120_defconfig
-nios2                         10m50_defconfig
-c6x                        evmc6678_defconfig
-c6x                              allyesconfig
-openrisc                 simple_smp_defconfig
-openrisc                    or1ksim_defconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                                defconfig
-alpha                               defconfig
-h8300                       h8s-sim_defconfig
-h8300                     edosk2674_defconfig
-xtensa                          iss_defconfig
-h8300                    h8300h-sim_defconfig
-xtensa                       common_defconfig
-arc                                 defconfig
-arc                              allyesconfig
-microblaze                      mmu_defconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-mips                            ar7_defconfig
-mips                             allyesconfig
-mips                         64r6el_defconfig
-mips                              allnoconfig
-mips                           32r2_defconfig
-mips                malta_kvm_guest_defconfig
-mips                         tb0287_defconfig
-mips                       capcella_defconfig
-mips                           ip32_defconfig
-mips                  decstation_64_defconfig
-mips                      loongson3_defconfig
-mips                          ath79_defconfig
-mips                        bcm63xx_defconfig
-mips                             allmodconfig
-parisc                generic-64bit_defconfig
-parisc                generic-32bit_defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                      chrp32_defconfig
-powerpc                       holly_defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-powerpc                           allnoconfig
-powerpc                  mpc866_ads_defconfig
-powerpc                    amigaone_defconfig
-powerpc                    adder875_defconfig
-powerpc                     ep8248e_defconfig
-powerpc                          g5_defconfig
-powerpc                     mpc512x_defconfig
-m68k                 randconfig-a001-20200505
-mips                 randconfig-a001-20200505
-m68k                 randconfig-a001-20200503
-mips                 randconfig-a001-20200503
-nds32                randconfig-a001-20200503
-alpha                randconfig-a001-20200503
-parisc               randconfig-a001-20200503
-riscv                randconfig-a001-20200503
-nds32                randconfig-a001-20200505
-parisc               randconfig-a001-20200505
-alpha                randconfig-a001-20200505
-riscv                randconfig-a001-20200505
-h8300                randconfig-a001-20200503
-nios2                randconfig-a001-20200503
-microblaze           randconfig-a001-20200503
-c6x                  randconfig-a001-20200503
-sparc64              randconfig-a001-20200503
-xtensa               randconfig-a001-20200503
-openrisc             randconfig-a001-20200503
-csky                 randconfig-a001-20200503
-s390                 randconfig-a001-20200505
-xtensa               randconfig-a001-20200505
-sh                   randconfig-a001-20200505
-openrisc             randconfig-a001-20200505
-csky                 randconfig-a001-20200505
-i386                 randconfig-b003-20200503
-x86_64               randconfig-b002-20200503
-i386                 randconfig-b001-20200503
-x86_64               randconfig-b003-20200503
-x86_64               randconfig-b001-20200503
-i386                 randconfig-b002-20200503
-i386                 randconfig-b003-20200505
-x86_64               randconfig-b002-20200505
-i386                 randconfig-b001-20200505
-x86_64               randconfig-b001-20200505
-x86_64               randconfig-b003-20200505
-i386                 randconfig-b002-20200505
-i386                 randconfig-b003-20200502
-i386                 randconfig-b001-20200502
-x86_64               randconfig-b003-20200502
-x86_64               randconfig-b001-20200502
-i386                 randconfig-b002-20200502
-x86_64               randconfig-d001-20200505
-i386                 randconfig-d003-20200505
-i386                 randconfig-d001-20200505
-x86_64               randconfig-d003-20200505
-x86_64               randconfig-d002-20200505
-i386                 randconfig-d002-20200505
-x86_64               randconfig-d001-20200503
-i386                 randconfig-d003-20200503
-x86_64               randconfig-d003-20200503
-i386                 randconfig-d001-20200503
-x86_64               randconfig-d002-20200503
-i386                 randconfig-d002-20200503
-x86_64               randconfig-e003-20200503
-x86_64               randconfig-e002-20200503
-i386                 randconfig-e003-20200503
-x86_64               randconfig-e001-20200503
-i386                 randconfig-e002-20200503
-i386                 randconfig-e001-20200503
-i386                 randconfig-f003-20200505
-x86_64               randconfig-f001-20200505
-x86_64               randconfig-f003-20200505
-i386                 randconfig-f001-20200505
-i386                 randconfig-f002-20200505
-x86_64               randconfig-a003-20200505
-x86_64               randconfig-a001-20200505
-i386                 randconfig-a001-20200505
-i386                 randconfig-a003-20200505
-i386                 randconfig-a002-20200505
-x86_64               randconfig-g003-20200503
-i386                 randconfig-g003-20200503
-i386                 randconfig-g002-20200503
-x86_64               randconfig-g001-20200503
-i386                 randconfig-g001-20200503
-i386                 randconfig-g003-20200505
-i386                 randconfig-g002-20200505
-i386                 randconfig-g001-20200505
-x86_64               randconfig-g002-20200505
-ia64                 randconfig-a001-20200505
-powerpc              randconfig-a001-20200505
-arm                  randconfig-a001-20200505
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-s390                       zfcpdump_defconfig
-s390                          debug_defconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                             alldefconfig
-s390                                defconfig
-sh                          rsk7269_defconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
+Change history:
+v10: Fix comments from Rob Herring, Daniel.
+ - Fix dt_binding_check warning.
+ - Update description.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+v9: Fix comments from Sam, Nicolas, Daniel
+ - Remove extcon interface.
+ - Remove DPI support.
+ - Fix dt_binding_check complains.
+ - Code clean up and update description.
+
+v8: Fix comments from Nicolas.
+ - Fix several coding format.
+ - Update description.
+
+v7:
+ - Fix critical timing(eg:odd hfp/hbp) in "mode_fixup" interface,
+   enhance MIPI RX tolerance by setting register MIPI_DIGITAL_ADJ_1 to 0x3D.
+
+
+Xin Ji (2):
+  dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter binding
+  drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to DP bridge driver
+
+ .../bindings/display/bridge/analogix,anx7625.yaml  |   98 +
+ drivers/gpu/drm/bridge/Makefile                    |    2 +-
+ drivers/gpu/drm/bridge/analogix/Kconfig            |    8 +
+ drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
+ drivers/gpu/drm/bridge/analogix/anx7625.c          | 1961 ++++++++++++++++++++
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |  397 ++++
+ 6 files changed, 2466 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
+ create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
+
+-- 
+2.7.4
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
