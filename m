@@ -1,53 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3FAF1C6C41
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 May 2020 10:54:28 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8C5DB886B7;
-	Wed,  6 May 2020 08:54:26 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zgd7JvensFky; Wed,  6 May 2020 08:54:26 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 07A818863B;
-	Wed,  6 May 2020 08:54:26 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DCF741BF4DB
- for <devel@linuxdriverproject.org>; Wed,  6 May 2020 08:54:23 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 368101C6DFB
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 May 2020 12:07:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CEB39856C8
- for <devel@linuxdriverproject.org>; Wed,  6 May 2020 08:54:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D5CB087798;
+	Wed,  6 May 2020 10:06:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 91LZVDySGBE2; Wed,  6 May 2020 10:06:58 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 947AF8787C;
+	Wed,  6 May 2020 10:06:57 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 103281BF471
+ for <devel@linuxdriverproject.org>; Wed,  6 May 2020 10:06:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0D146869D9
+ for <devel@linuxdriverproject.org>; Wed,  6 May 2020 10:06:55 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hxrx3d+3PxAI for <devel@linuxdriverproject.org>;
- Wed,  6 May 2020 08:54:21 +0000 (UTC)
+ with ESMTP id jvgLDYb30VUm for <devel@linuxdriverproject.org>;
+ Wed,  6 May 2020 10:06:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0FE678559F
- for <devel@driverdev.osuosl.org>; Wed,  6 May 2020 08:54:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 22A358672E
+ for <devel@driverdev.osuosl.org>; Wed,  6 May 2020 10:06:53 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 362F8AB8F;
- Wed,  6 May 2020 08:54:20 +0000 (UTC)
-Message-ID: <1588755226.13662.17.camel@suse.com>
-Subject: Re: KASAN: slab-out-of-bounds Read in hfa384x_usbin_callback
-From: Oliver Neukum <oneukum@suse.com>
-To: syzbot <syzbot+7d42d68643a35f71ac8a@syzkaller.appspotmail.com>, 
- andreyknvl@google.com, devel@driverdev.osuosl.org,
- gregkh@linuxfoundation.org,  linux-kernel@vger.kernel.org,
- linux-usb@vger.kernel.org,  nishkadg.linux@gmail.com,
- syzkaller-bugs@googlegroups.com
-Date: Wed, 06 May 2020 10:53:46 +0200
-In-Reply-To: <00000000000039420505a14e4951@google.com>
-References: <00000000000039420505a14e4951@google.com>
-X-Mailer: Evolution 3.26.6 
-Mime-Version: 1.0
+ by mx2.suse.de (Postfix) with ESMTP id E1564AF85;
+ Wed,  6 May 2020 10:06:53 +0000 (UTC)
+Received: by quack2.suse.cz (Postfix, from userid 1000)
+ id 6FC051E12B1; Wed,  6 May 2020 12:06:49 +0200 (CEST)
+Date: Wed, 6 May 2020 12:06:49 +0200
+From: Jan Kara <jack@suse.cz>
+To: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [RFC] mm/gup.c: Updated return value of
+ {get|pin}_user_pages_fast()
+Message-ID: <20200506100649.GI17863@quack2.suse.cz>
+References: <1588706059-4208-1-git-send-email-jrdr.linux@gmail.com>
+ <0bfe4a8a-0d91-ef9b-066f-2ea7c68571b3@nvidia.com>
+ <CAFqt6zZMsQkOdjAb2k1EjwX=DtZ8gKfbRzwvreHOX-0vJLngNg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAFqt6zZMsQkOdjAb2k1EjwX=DtZ8gKfbRzwvreHOX-0vJLngNg@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,38 +62,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: Jan Kara <jack@suse.cz>, Linux-MM <linux-mm@kvack.org>,
+ inux-ia64@vger.kernel.org,
+ "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ rds-devel@oss.oracle.com, linux-rdma@vger.kernel.org, kuba@kernel.org,
+ fenghua.yu@intel.com, John Hubbard <jhubbard@nvidia.com>,
+ santosh.shilimkar@oracle.com,
+ =?iso-8859-1?B?Suly9G1l?= Glisse <jglisse@redhat.com>,
+ Rob Springer <rspringer@google.com>, Todd Poynor <toddpoynor@google.com>,
+ Tony Luck <tony.luck@intel.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Jens Wiklander <jens.wiklander@linaro.org>,
+ tee-dev@lists.linaro.org, Greg KH <gregkh@linuxfoundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Am Freitag, den 20.03.2020, 12:28 -0700 schrieb syzbot:
-> Hello,
+On Wed 06-05-20 02:06:56, Souptick Joarder wrote:
+> On Wed, May 6, 2020 at 1:08 AM John Hubbard <jhubbard@nvidia.com> wrote:
+> >
+> > On 2020-05-05 12:14, Souptick Joarder wrote:
+> > > Currently {get|pin}_user_pages_fast() have 3 return value 0, -errno
+> > > and no of pinned pages. The only case where these two functions will
+> > > return 0, is for nr_pages <= 0, which doesn't find a valid use case.
+> > > But if at all any, then a -ERRNO will be returned instead of 0, which
+> > > means {get|pin}_user_pages_fast() will have 2 return values -errno &
+> > > no of pinned pages.
+> > >
+> > > Update all the callers which deals with return value 0 accordingly.
+> >
+> > Hmmm, seems a little shaky. In order to do this safely, I'd recommend
+> > first changing gup_fast/pup_fast so so that they return -EINVAL if
+> > the caller specified nr_pages==0, and of course auditing all callers,
+> > to ensure that this won't cause problems.
 > 
-> syzbot found the following crash on:
-> 
-> HEAD commit:    e17994d1 usb: core: kcov: collect coverage from usb comple..
-> git tree:       https://github.com/google/kasan.git usb-fuzzer
-> console output: https://syzkaller.appspot.com/x/log.txt?x=11d74573e00000
-> kernel config:  https://syzkaller.appspot.com/x/.config?x=5d64370c438bc60
-> dashboard link: https://syzkaller.appspot.com/bug?extid=7d42d68643a35f71ac8a
-> compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-> syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=15fa561de00000
-> C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=15d74573e00000
-> 
-> IMPORTANT: if you fix the bug, please add the following tag to the commit:
-> Reported-by: syzbot+7d42d68643a35f71ac8a@syzkaller.appspotmail.com
-> 
+> While auditing it was figured out, there are 5 callers which cares for
+> return value
+> 0 of gup_fast/pup_fast. What problem it might cause if we change
+> gup_fast/pup_fast
+> to return -EINVAL and update all the callers in a single commit ?
 
-Hi,
+Well, first I'd ask a different question: Why do you want to change the
+current behavior? It's not like the current behavior is confusing.  Callers
+that pass >0 pages can happily rely on the simple behavior of < 0 return on
+error or > 0 return if we mapped some pages. Callers that can possibly ask
+to map 0 pages can get 0 pages back - kind of expected - and I don't see
+any benefit in trying to rewrite these callers to handle -EINVAL instead...
 
-is this bug still active and can a test be run on it? I requested one
-yesterday. If my analysis is correct this bug has security
-implications, so it is kind of important.
-
-	Regards
-		Oliver
-
+								Honza
+-- 
+Jan Kara <jack@suse.com>
+SUSE Labs, CR
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
