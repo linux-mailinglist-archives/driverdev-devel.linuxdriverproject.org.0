@@ -1,77 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EF481CA860
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 May 2020 12:31:59 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 094D61CAB5D
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 May 2020 14:43:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5272E87C0B;
-	Fri,  8 May 2020 10:31:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 535BD221B7;
+	Fri,  8 May 2020 12:43:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S98vY2B9eM5u; Fri,  8 May 2020 10:31:56 +0000 (UTC)
+	with ESMTP id zZ-LyBKoi3BT; Fri,  8 May 2020 12:43:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 45ECF87A02;
-	Fri,  8 May 2020 10:31:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 778B52043D;
+	Fri,  8 May 2020 12:43:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4E8BF1BF44A
- for <devel@linuxdriverproject.org>; Fri,  8 May 2020 10:31:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C923B1BF330
+ for <devel@linuxdriverproject.org>; Fri,  8 May 2020 12:43:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3E5B622005
- for <devel@linuxdriverproject.org>; Fri,  8 May 2020 10:31:53 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C3C3E20411
+ for <devel@linuxdriverproject.org>; Fri,  8 May 2020 12:43:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zJjIMu5HGobG for <devel@linuxdriverproject.org>;
- Fri,  8 May 2020 10:31:50 +0000 (UTC)
+ with ESMTP id 8BP8cdzl8RPi for <devel@linuxdriverproject.org>;
+ Fri,  8 May 2020 12:43:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qv1-f65.google.com (mail-qv1-f65.google.com
- [209.85.219.65])
- by silver.osuosl.org (Postfix) with ESMTPS id DE75D21FAC
- for <devel@driverdev.osuosl.org>; Fri,  8 May 2020 10:31:49 +0000 (UTC)
-Received: by mail-qv1-f65.google.com with SMTP id p13so472042qvt.12
- for <devel@driverdev.osuosl.org>; Fri, 08 May 2020 03:31:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6dP2jMNPQsZdSAJhJ6MDPMx67KqvxJzY9GhFnqIx2nk=;
- b=WuRIha2t1hu4+kgAAoqf3PUAcQc3HLs+6zHxn/yQx9XfnH3LnCFYcXQrrEtCr4feW0
- kM4RNwVd4nUM9EN+JrXXt1fvKwvYvwEsKIgwl03fnCRCSs2xvipL+4l66S8Ar3keanbD
- wxZ9j+G3ne5lMz7OoYKtrKo/G3TkWGS6VjTaEFD5hrSAz5/A4iEZl35sevFCejUZXLsC
- 6LjHv42X6ecIWCtNPbHYvFMaa+k1Gsks+Zvxxg/H1UvtJff+Lf42vzJ41k4vpenhqZvb
- Rh8xKckgbcJ42LYaQQkrBpQR5ZJ+i7+GXauVc0karlxHJ97oADlWVYaAHt/1bSf0eufi
- umtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6dP2jMNPQsZdSAJhJ6MDPMx67KqvxJzY9GhFnqIx2nk=;
- b=uTyAX8Sd2ovwANtpFIfjbvPv4afcqfHs2JzNuYr+XeCVorUhcGVZdWYASdk5amrYi5
- H8pdPfzk6HNEJMfFQe6Ddznka2WQmxXmsfmgbRUdO9jampp6vLi71ZwS7CXBPtD8fqP/
- SEYxv18pVDbs8zJEtVazQ6UDhT7u5RBiLwVVVBl8cfeB//KLOQEUvJluUWUZx3WR20op
- n1EXsEsS/ld/VZYUfAtj7R42fXtuiKB4n+Lh8OqmECCOqyCcvEnm+WR84hq6TppSg8Sy
- oU449FD6KRXhS3+bKuO1Hskb2+GOO0EA4Ev1hMb6iGtEwXZC5/iUIiFQ5bekTViw6TiB
- 81dg==
-X-Gm-Message-State: AGi0Puamr/XdVOOhVg1QMqRlL/SdKf0zTH+u6ZNCZMmWSWJIXGHpACQV
- Q/72ifdmuhm6zAqoCO54e31DvRN8J8AxuRH+JfVXtw==
-X-Google-Smtp-Source: APiQypKOgDuOO4vCj2tNv2s9EWuO43oANYIdLrScZ0FTT+tx9u4QGE8t7AZV8n18iyH3LONxHESCfTe4GoJhvgiwheM=
-X-Received: by 2002:ad4:53a2:: with SMTP id j2mr2124620qvv.159.1588933908444; 
- Fri, 08 May 2020 03:31:48 -0700 (PDT)
+Received: from huawei.com (lhrrgout.huawei.com [185.176.76.210])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4E290203F9
+ for <devel@driverdev.osuosl.org>; Fri,  8 May 2020 12:43:33 +0000 (UTC)
+Received: from lhreml710-chm.china.huawei.com (unknown [172.18.7.108])
+ by Forcepoint Email with ESMTP id 6032C5A5AE26CA40D204;
+ Fri,  8 May 2020 13:43:30 +0100 (IST)
+Received: from localhost (10.47.95.97) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1913.5; Fri, 8 May 2020
+ 13:43:29 +0100
+Date: Fri, 8 May 2020 13:43:07 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] staging: iio: ad5933: rework probe to use devm_
+ function variants
+Message-ID: <20200508134307.0000233a@Huawei.com>
+In-Reply-To: <20200507095016.GC9365@kadam>
+References: <20200428093128.60747-1-alexandru.ardelean@analog.com>
+ <20200502192542.63cc25a2@archlinux> <20200507095016.GC9365@kadam>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-References: <00000000000039420505a14e4951@google.com>
- <1588755226.13662.17.camel@suse.com>
- <CAAeHK+zOdghTAu647iKBEU+0LqkYYOk0f7gPk_4T6BjNi=2sAQ@mail.gmail.com>
- <CAAeHK+xu_0BrnM5SKo5zNFvwunMDQWa+foD-y7MpnqjkP8tcbg@mail.gmail.com>
- <CACT4Y+b3q4C-1+L6Sa3fgOYEa3+XGuzfrfauaH_v9KXS7xH9Yw@mail.gmail.com>
-In-Reply-To: <CACT4Y+b3q4C-1+L6Sa3fgOYEa3+XGuzfrfauaH_v9KXS7xH9Yw@mail.gmail.com>
-From: Dmitry Vyukov <dvyukov@google.com>
-Date: Fri, 8 May 2020 12:31:37 +0200
-Message-ID: <CACT4Y+YBz0uAqYw0_-1eRsuUgHvPgpwrf2RGyHJwsyAUGbBd5g@mail.gmail.com>
-Subject: Re: KASAN: slab-out-of-bounds Read in hfa384x_usbin_callback
-To: Andrey Konovalov <andreyknvl@google.com>,
- syzkaller <syzkaller@googlegroups.com>
+X-Originating-IP: [10.47.95.97]
+X-ClientProxiedBy: lhreml743-chm.china.huawei.com (10.201.108.193) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,72 +66,56 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- USB list <linux-usb@vger.kernel.org>,
- syzbot <syzbot+7d42d68643a35f71ac8a@syzkaller.appspotmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Oliver Neukum <oneukum@suse.com>,
- syzkaller-bugs <syzkaller-bugs@googlegroups.com>,
- LKML <linux-kernel@vger.kernel.org>, nishkadg.linux@gmail.com
+Cc: devel@driverdev.osuosl.org, linux-iio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+ Alexandru Ardelean <alexandru.ardelean@analog.com>,
+ Jonathan Cameron <jic23@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, May 8, 2020 at 11:33 AM Dmitry Vyukov <dvyukov@google.com> wrote:
->
-> On Thu, May 7, 2020 at 5:56 PM 'Andrey Konovalov' via syzkaller-bugs
-> <syzkaller-bugs@googlegroups.com> wrote:
-> >
-> > On Wed, May 6, 2020 at 1:50 PM Andrey Konovalov <andreyknvl@google.com> wrote:
-> > >
-> > > On Wed, May 6, 2020 at 10:54 AM Oliver Neukum <oneukum@suse.com> wrote:
-> > > >
-> > > > Am Freitag, den 20.03.2020, 12:28 -0700 schrieb syzbot:
-> > > > > Hello,
-> > > > >
-> > > > > syzbot found the following crash on:
-> > > > >
-> > > > > HEAD commit:    e17994d1 usb: core: kcov: collect coverage from usb comple..
-> > > > > git tree:       https://github.com/google/kasan.git usb-fuzzer
-> > > > > console output: https://syzkaller.appspot.com/x/log.txt?x=11d74573e00000
-> > > > > kernel config:  https://syzkaller.appspot.com/x/.config?x=5d64370c438bc60
-> > > > > dashboard link: https://syzkaller.appspot.com/bug?extid=7d42d68643a35f71ac8a
-> > > > > compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-> > > > > syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=15fa561de00000
-> > > > > C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=15d74573e00000
-> > > > >
-> > > > > IMPORTANT: if you fix the bug, please add the following tag to the commit:
-> > > > > Reported-by: syzbot+7d42d68643a35f71ac8a@syzkaller.appspotmail.com
-> > > > >
-> > > >
-> > > > Hi,
-> > > >
-> > > > is this bug still active and can a test be run on it? I requested one
-> > > > yesterday. If my analysis is correct this bug has security
-> > > > implications, so it is kind of important.
-> > >
-> > > I see your request in the queue and it's been registered and
-> > > completed, but for some reason syzbot didn't send an email with a
-> > > response.
-> > >
-> > > Let me try this once again:
-> > >
-> > > #syz test: https://github.com/google/kasan.git e17994d1
-> >
-> > Still no response. Dmitry, any idea what could be wrong here?
->
-> I suspect it has something to do with the fact that the bug is already
-> fixed (has a fixing commit).
->
-> ...right, it was broken by:
-> https://github.com/google/syzkaller/commit/f8368f999a1964df6d39a225cd3f5ab3942dd755
-> and we lack a test for this scenario. It was supposed to only disable
-> mailing of bisection jobs.
+On Thu, 7 May 2020 12:50:16 +0300
+Dan Carpenter <dan.carpenter@oracle.com> wrote:
 
-Fixed in https://github.com/google/syzkaller/commit/2b98fdbcbcac6e99d12c88857406ef446bcac872
-and added a test to fix this behavior for future.
-Thanks for the report.
+> On Sat, May 02, 2020 at 07:25:42PM +0100, Jonathan Cameron wrote:
+> > On Tue, 28 Apr 2020 12:31:28 +0300
+> > Alexandru Ardelean <alexandru.ardelean@analog.com> wrote:  
+> > > +static void ad5933_cleanup(void *data)
+> > > +{
+> > > +	struct ad5933_state *st = data;
+> > > +
+> > > +	clk_disable_unprepare(st->mclk);
+> > > +	regulator_disable(st->reg);  
+> > 
+> > Please do two separate callbacks so that these can be handled
+> > in the correct places.  I.e. you do something then immediately
+> > register the handler to undo it.
+> > 
+> > Currently you can end up disabling a clock you haven't enabled
+> > (which I am fairly sure will give you an error message).  
+> 
+> Yeah.  It does.
+> 
+> It feels like we should just make a devm_ version of regulator_enable().
+> Or potentially this is more complicated than it seems, but in that case
+> probably adding devm_add_action_or_reset() is more complicated than it
+> seems as well.
+> 
+> regards,
+> dan carpenter
+
+It has been a while since that was last proposed.   At the time the
+counter argument was that you should almost always be doing some form
+of PM and hence the regulator shouldn't have the same lifetime as the
+driver.   Reality is that a lot of simple drivers either don't do
+PM or have elected to not turn the regulator off so as to retain state
+etc.
+
+Mark what do you think?
+
+Jonathan
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
