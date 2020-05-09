@@ -1,51 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F15A1CC179
-	for <lists+driverdev-devel@lfdr.de>; Sat,  9 May 2020 14:54:16 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 247C925935;
-	Sat,  9 May 2020 12:54:13 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Sg9yv4PXUZHb; Sat,  9 May 2020 12:54:12 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 717AD22FD5;
-	Sat,  9 May 2020 12:54:10 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 82FC81BF3DD
- for <devel@linuxdriverproject.org>; Sat,  9 May 2020 12:54:07 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40BEF1CC198
+	for <lists+driverdev-devel@lfdr.de>; Sat,  9 May 2020 15:07:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7D3E086FFD
- for <devel@linuxdriverproject.org>; Sat,  9 May 2020 12:54:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 22DF78716B;
+	Sat,  9 May 2020 13:07:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KskX_AJolA4A; Sat,  9 May 2020 13:07:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B814870E5;
+	Sat,  9 May 2020 13:07:33 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7BEF21BF83E
+ for <devel@linuxdriverproject.org>; Sat,  9 May 2020 13:07:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 782A588A37
+ for <devel@linuxdriverproject.org>; Sat,  9 May 2020 13:07:31 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cY_YZPFXaMVm for <devel@linuxdriverproject.org>;
- Sat,  9 May 2020 12:54:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3FCDA86F80
- for <devel@driverdev.osuosl.org>; Sat,  9 May 2020 12:54:06 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id CE30B2A2CA6
-Message-ID: <9fdceef69a390235225a8fd08f89f67be9c5c920.camel@collabora.com>
-Subject: Re: [PATCH v2 8/9] arm64: dts: rockchip: add rx0 mipi-phy for rk3399
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Helen Koike <helen.koike@collabora.com>, devicetree@vger.kernel.org, 
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko
- Stuebner <heiko@sntech.de>
-Date: Sat, 09 May 2020 09:53:53 -0300
-In-Reply-To: <20200403161538.1375908-9-helen.koike@collabora.com>
-References: <20200403161538.1375908-1-helen.koike@collabora.com>
- <20200403161538.1375908-9-helen.koike@collabora.com>
-Organization: Collabora
-User-Agent: Evolution 3.36.0-1 
-MIME-Version: 1.0
+ with ESMTP id wlxkNGc1O47O for <devel@linuxdriverproject.org>;
+ Sat,  9 May 2020 13:07:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from sa-prd-fep-041.btinternet.com (mailomta9-sa.btinternet.com
+ [213.120.69.15])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 72BEC886EA
+ for <devel@driverdev.osuosl.org>; Sat,  9 May 2020 13:07:28 +0000 (UTC)
+Received: from sa-prd-rgout-004.btmx-prd.synchronoss.net ([10.2.38.7])
+ by sa-prd-fep-041.btinternet.com with ESMTP id
+ <20200509130726.KSVB7822.sa-prd-fep-041.btinternet.com@sa-prd-rgout-004.btmx-prd.synchronoss.net>;
+ Sat, 9 May 2020 14:07:26 +0100
+Authentication-Results: btinternet.com;
+ auth=pass (LOGIN) smtp.auth=j.oldman998@btinternet.com
+X-Originating-IP: [31.53.141.224]
+X-OWM-Source-IP: 31.53.141.224 (GB)
+X-OWM-Env-Sender: j.oldman998@btinternet.com
+X-VadeSecure-score: verdict=clean score=0/300, class=clean
+X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduhedrkeehgdeitdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemuceutffkvffkuffjvffgnffgvefqofdpqfgfvfenuceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofestddtredtredttdenucfhrhhomheplfhohhhnucfqlhgumhgrnhcuoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqnecuggftrfgrthhtvghrnhepgeeftdfhfeeuiefhgfekfeethedutddtfeduteevleevfedvfefhjeeijefhgffgnecukfhppeefuddrheefrddugedurddvvdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehhvghlohephhgvnhhrhidrhhhomhgvpdhinhgvthepfedurdehfedrudeguddrvddvgedpmhgrihhlfhhrohhmpeeojhhohhhnrdholhgumhgrnhesphholhgvhhhilhhlrdgtohdruhhkqedprhgtphhtthhopeeosggtmhdqkhgvrhhnvghlqdhfvggvuggsrggtkhdqlhhishhtsegsrhhorggutghomhdrtghomheqpdhrtghpthhtohepoeguvghvvghlsegurhhivhgvrhguvghvrdhoshhuohhslhdrohhrgheqpdhrtghpthhtohepoehgrhgvghhkhheslhhinhhugihfohhunhgurghtihhonhdrohhrgheqpdhrtghpthhtohepoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqpdhrtghpthhtohepoehlihhnuhigqdgrrhhmqdhkvghrnhgvlheslhhi
+ shhtshdr
+ ihhnfhhrrgguvggrugdrohhrgheqpdhrtghpthhtohepoehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgheqpdhrtghpthhtohepoehlihhnuhigqdhrphhiqdhkvghrnhgvlheslhhishhtshdrihhnfhhrrgguvggrugdrohhrgheqpdhrtghpthhtohepoehnshgrvghniihjuhhlihgvnhhnvgesshhushgvrdguvgeq
+X-RazorGate-Vade-Verdict: clean 0
+X-RazorGate-Vade-Classification: clean
+Received: from henry.home (31.53.141.224) by
+ sa-prd-rgout-004.btmx-prd.synchronoss.net (5.8.340) (authenticated as
+ j.oldman998@btinternet.com)
+ id 5E3A27DB0FC00535; Sat, 9 May 2020 14:07:26 +0100
+From: John Oldman <john.oldman@polehill.co.uk>
+To: nsaenzjulienne@suse.de
+Subject: [PATCH] staging: vc04_services: interface: vchiq_arm:
+ vchiq_connected.c: Block comments should align the * on each line
+Date: Sat,  9 May 2020 14:07:14 +0100
+Message-Id: <20200509130714.10586-1-john.oldman@polehill.co.uk>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,80 +70,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, mark.rutland@arm.com,
- dafna.hirschfeld@collabora.com, heiko@sntech.de, kishon@ti.com,
- linux-kernel@vger.kernel.org, karthik.poduval@gmail.com, robh+dt@kernel.org,
- hverkuil-cisco@xs4all.nl, jbx6244@gmail.com, kernel@collabora.com
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, John Oldman <john.oldman@polehill.co.uk>,
+ bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Heiko,
+Coding style issue
 
-On Fri, 2020-04-03 at 13:15 -0300, Helen Koike wrote:
-> From: Shunqian Zheng <zhengsq@rock-chips.com>
-> 
-> Designware MIPI D-PHY, used for ISP0 in rk3399.
-> 
-> Verified with:
-> make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
-> 
-> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
-> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> 
-> ---
-> 
-> Changes in v2:
-> - fix alignment of clocks
-> 
-> V1:
-> This patchset came from the original ISP series from Rockchip:
-> 
->     https://patchwork.kernel.org/patch/10267409/
-> 
+Signed-off-by: John Oldman <john.oldman@polehill.co.uk>
+---
+ .../interface/vchiq_arm/vchiq_connected.c     | 32 +++++++++----------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
 
-Can you take the devicetree changes (patches 8 and 9) ?
-
-Thanks,
-Ezequiel
-
-> The only difference is:
-> - add phy-cells
-> - update compatible to "rockchip,rk3399-mipi-dphy-rx0"
-> - commit message
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 33cc21fcf4c10..6b3380b10e596 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1394,6 +1394,17 @@ io_domains: io-domains {
->  			status = "disabled";
->  		};
->  
-> +		mipi_dphy_rx0: mipi-dphy-rx0 {
-> +			compatible = "rockchip,rk3399-mipi-dphy-rx0";
-> +			clocks = <&cru SCLK_MIPIDPHY_REF>,
-> +				 <&cru SCLK_DPHY_RX0_CFG>,
-> +				 <&cru PCLK_VIO_GRF>;
-> +			clock-names = "dphy-ref", "dphy-cfg", "grf";
-> +			power-domains = <&power RK3399_PD_VIO>;
-> +			#phy-cells = <0>;
-> +			status = "disabled";
-> +		};
-> +
->  		u2phy0: usb2-phy@e450 {
->  			compatible = "rockchip,rk3399-usb2phy";
->  			reg = <0xe450 0x10>;
-> -- 
-> 2.26.0
-> 
-> 
-
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c
+index 1640906e3929..993535bbc479 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c
+@@ -15,10 +15,10 @@ static   int                        g_once_init;
+ static   struct mutex               g_connected_mutex;
+ 
+ /****************************************************************************
+-*
+-* Function to initialize our lock.
+-*
+-***************************************************************************/
++ *
++ * Function to initialize our lock.
++ *
++ ***************************************************************************/
+ 
+ static void connected_init(void)
+ {
+@@ -29,13 +29,13 @@ static void connected_init(void)
+ }
+ 
+ /****************************************************************************
+-*
+-* This function is used to defer initialization until the vchiq stack is
+-* initialized. If the stack is already initialized, then the callback will
+-* be made immediately, otherwise it will be deferred until
+-* vchiq_call_connected_callbacks is called.
+-*
+-***************************************************************************/
++ *
++ * This function is used to defer initialization until the vchiq stack is
++ * initialized. If the stack is already initialized, then the callback will
++ * be made immediately, otherwise it will be deferred until
++ * vchiq_call_connected_callbacks is called.
++ *
++ ***************************************************************************/
+ 
+ void vchiq_add_connected_callback(VCHIQ_CONNECTED_CALLBACK_T callback)
+ {
+@@ -64,11 +64,11 @@ void vchiq_add_connected_callback(VCHIQ_CONNECTED_CALLBACK_T callback)
+ }
+ 
+ /****************************************************************************
+-*
+-* This function is called by the vchiq stack once it has been connected to
+-* the videocore and clients can start to use the stack.
+-*
+-***************************************************************************/
++ *
++ * This function is called by the vchiq stack once it has been connected to
++ * the videocore and clients can start to use the stack.
++ *
++ ***************************************************************************/
+ 
+ void vchiq_call_connected_callbacks(void)
+ {
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
