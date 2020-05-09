@@ -1,59 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C77FB1CBE7A
-	for <lists+driverdev-devel@lfdr.de>; Sat,  9 May 2020 09:43:08 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5262B1CBF9F
+	for <lists+driverdev-devel@lfdr.de>; Sat,  9 May 2020 11:07:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6F2AB88F88;
-	Sat,  9 May 2020 07:43:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B39187293;
+	Sat,  9 May 2020 09:07:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SiF-1kLKhIyZ; Sat,  9 May 2020 07:43:06 +0000 (UTC)
+	with ESMTP id PyLQXONVRcZD; Sat,  9 May 2020 09:07:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CA1B688C2F;
-	Sat,  9 May 2020 07:43:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 10C2487245;
+	Sat,  9 May 2020 09:07:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1F5331BF38B
- for <devel@linuxdriverproject.org>; Sat,  9 May 2020 07:43:03 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 378A71BF23F
+ for <devel@linuxdriverproject.org>; Sat,  9 May 2020 09:07:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1B01F87583
- for <devel@linuxdriverproject.org>; Sat,  9 May 2020 07:43:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2E158227AD
+ for <devel@linuxdriverproject.org>; Sat,  9 May 2020 09:07:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6s1Ka41dRvEb for <devel@linuxdriverproject.org>;
- Sat,  9 May 2020 07:43:02 +0000 (UTC)
+ with ESMTP id mGkPxHZ7nRbp for <devel@linuxdriverproject.org>;
+ Sat,  9 May 2020 09:07:37 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1459E8756D
- for <devel@driverdev.osuosl.org>; Sat,  9 May 2020 07:43:02 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 34DFC24953;
- Sat,  9 May 2020 07:43:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589010181;
- bh=ptvuRf7F2tJWhTTSAUYDoRicbbLI9qbZu6bxKj0Ytfo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=B6A2qaFw13v7+IrUNrtLZqbOyi3DfgMxp+SwN5G45vf8tIYmYkeRHEKE6cY3XuwNL
- FJhNwSluLOHM0Ln4VkuDdV1lDs8JsUyoYyhaz8MMePDWnH2EmJMD8wJzcwHGQJnHs5
- cm+nBEPh80VKgFj8hzD9eM/5ptRE3WmJyBu7bbRU=
-Date: Sat, 9 May 2020 09:42:58 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Qiuhao Li <Qiuhao.Li@outlook.com>
-Subject: Re: [PATCH] staging: rtl8188eu: use usleep_range() for ATIM window
- size
-Message-ID: <20200509074258.GB1831917@kroah.com>
-References: <HK0PR01MB28684D4FFF457F5979ECFC27FCA30@HK0PR01MB2868.apcprd01.prod.exchangelabs.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <HK0PR01MB28684D4FFF457F5979ECFC27FCA30@HK0PR01MB2868.apcprd01.prod.exchangelabs.com>
+Received: from mail.kocurkovo.cz (mail.kocurkovo.cz [185.8.236.170])
+ by silver.osuosl.org (Postfix) with ESMTPS id DBF83227A0
+ for <devel@driverdev.osuosl.org>; Sat,  9 May 2020 09:07:36 +0000 (UTC)
+Received: by mail.kocurkovo.cz (Postfix, from userid 1000)
+ id A32C611D4; Sat,  9 May 2020 11:07:32 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.kocurkovo.cz A32C611D4
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kocurkovo.cz;
+ s=mail; t=1589015252;
+ bh=BQFL8wc2JPcaE2sLzGeBHq1Wirj6vteV2jC4e9PWYV4=;
+ h=From:To:Cc:Subject:Date:From;
+ b=oU0QDZi42jzlQodaW5G4ZSJElWFmop77WTN3m9Lp4coGctSJ4BIW+2okV5ZLrGV6z
+ bTn19JoPASEeVCktoTydGKPvWHcdKJPaUe2xUgu6NCC7qUXgURbdEWjJ97KgTikwgW
+ SZaYdE5pcWBwUryMzC2Ljz8/SlrTpJC3iqKJGC0U=
+From: Matej Dujava <mdujava@kocurkovo.cz>
+To: Forest Bond <forest@alittletooquiet.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+Subject: [PATCH] staging: vt6656: vt6655: clean Makefiles
+Date: Sat,  9 May 2020 11:07:27 +0200
+Message-Id: <1589015247-738-1-git-send-email-mdujava@kocurkovo.cz>
+X-Mailer: git-send-email 1.8.3.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,39 +60,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry.Finger@lwfinger.net
+Cc: linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, May 09, 2020 at 03:19:31PM +0800, Qiuhao Li wrote:
-> According to Documentation/timers/timers-howto.rst, sleeping for small
-> milliseconds should use usleep_range() instead of msleep().
-> 
-> Signed-off-by: Qiuhao Li <Qiuhao.Li@outlook.com>
-> ---
->  drivers/staging/rtl8188eu/core/rtw_mlme_ext.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-> index 8d035f67ef61..61fdd942c30a 100644
-> --- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-> +++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-> @@ -5406,7 +5406,8 @@ u8 tx_beacon_hdl(struct adapter *padapter, unsigned char *pbuf)
->  			return H2C_SUCCESS;
->  
->  		if ((pstapriv->tim_bitmap & BIT(0)) && (psta_bmc->sleepq_len > 0)) {
-> -			msleep(10);/*  10ms, ATIM(HIQ) Windows */
-> +			/* 10ms, ATIM(HIQ) Windows */
-> +			usleep_range(10000, 10001);
+This patch is removing CFLAGS that are defining flags that are not used.
 
-How do you know this will work properly?  Can you test this?
+Signed-off-by: Matej Dujava <mdujava@kocurkovo.cz>
+---
+ drivers/staging/vt6655/Makefile      | 27 ++++++++++++---------------
+ drivers/staging/vt6655/device_main.c |  1 -
+ drivers/staging/vt6656/Makefile      |  7 ++-----
+ 3 files changed, 14 insertions(+), 21 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/vt6655/Makefile b/drivers/staging/vt6655/Makefile
+index a151f30fc46f..eda08a1516ab 100644
+--- a/drivers/staging/vt6655/Makefile
++++ b/drivers/staging/vt6655/Makefile
+@@ -1,18 +1,15 @@
+ # SPDX-License-Identifier: GPL-2.0
+-# TODO: all of these should be removed
+-ccflags-y := -DLINUX -D__KERNEL__ -D__NO_VERSION__
+-ccflags-y += -DHOSTAP
+-
+-vt6655_stage-y +=	device_main.o \
+-	card.o \
+-	channel.o \
+-	mac.o \
+-	baseband.o \
+-	rxtx.o \
+-	dpc.o \
+-	power.o \
+-	srom.o \
+-	key.o \
+-	rf.o
+ 
+ obj-$(CONFIG_VT6655) +=	vt6655_stage.o
++
++vt6655_stage-y +=	device_main.o \
++			card.o \
++			channel.o \
++			mac.o \
++			baseband.o \
++			rxtx.o \
++			dpc.o \
++			power.o \
++			srom.o \
++			key.o \
++			rf.o
+diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+index 5889023d19c4..41cbec4134b0 100644
+--- a/drivers/staging/vt6655/device_main.c
++++ b/drivers/staging/vt6655/device_main.c
+@@ -32,7 +32,6 @@
+  *
+  * Revision History:
+  */
+-#undef __NO_VERSION__
+ 
+ #include <linux/file.h>
+ #include "device.h"
+diff --git a/drivers/staging/vt6656/Makefile b/drivers/staging/vt6656/Makefile
+index a0f3862dea75..aac323d6a684 100644
+--- a/drivers/staging/vt6656/Makefile
++++ b/drivers/staging/vt6656/Makefile
+@@ -1,7 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+-# TODO: all of these should be removed
+-ccflags-y := -DLINUX -D__KERNEL__ -DEXPORT_SYMTAB -D__NO_VERSION__
+-ccflags-y += -DHOSTAP
++
++obj-$(CONFIG_VT6656) +=	vt6656_stage.o
+ 
+ vt6656_stage-y +=	main_usb.o \
+ 			card.o  \
+@@ -14,5 +13,3 @@ vt6656_stage-y +=	main_usb.o \
+ 			rf.o \
+ 			usbpipe.o \
+ 			channel.o
+-
+-obj-$(CONFIG_VT6656) +=	vt6656_stage.o
+-- 
+2.26.2
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
