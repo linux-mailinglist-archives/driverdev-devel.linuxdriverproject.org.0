@@ -1,75 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5C741CC3B8
-	for <lists+driverdev-devel@lfdr.de>; Sat,  9 May 2020 20:47:21 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A92EC1CC41F
+	for <lists+driverdev-devel@lfdr.de>; Sat,  9 May 2020 21:30:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5AAF722DEC;
-	Sat,  9 May 2020 18:47:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5B10F88802;
+	Sat,  9 May 2020 19:30:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Iu5lGipumeBS; Sat,  9 May 2020 18:47:18 +0000 (UTC)
+	with ESMTP id clAg3xLT88IE; Sat,  9 May 2020 19:30:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E8E0C20484;
-	Sat,  9 May 2020 18:47:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DB9D6887AF;
+	Sat,  9 May 2020 19:30:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 765551BF83B
- for <devel@linuxdriverproject.org>; Sat,  9 May 2020 18:47:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DC19C1BF83A
+ for <devel@linuxdriverproject.org>; Sat,  9 May 2020 19:30:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6969820484
- for <devel@linuxdriverproject.org>; Sat,  9 May 2020 18:47:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CFF36203D5
+ for <devel@linuxdriverproject.org>; Sat,  9 May 2020 19:30:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8jaZA5ql1Fw3 for <devel@linuxdriverproject.org>;
- Sat,  9 May 2020 18:47:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
- [209.85.167.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 82EB820481
- for <devel@driverdev.osuosl.org>; Sat,  9 May 2020 18:47:13 +0000 (UTC)
-Received: by mail-lf1-f67.google.com with SMTP id h26so4068789lfg.6
- for <devel@driverdev.osuosl.org>; Sat, 09 May 2020 11:47:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:reply-to:from:date:message-id
- :subject:to:cc;
- bh=r2VqzdQ3t3l9GLlfIblPu8fIc2SHZonPe2y2Y9yrzwA=;
- b=GNin6+nWM1QP0m2z2hzY8zsRxqDBXtplG9wjFmOI1ojkUNRLK/92I4+Q7OAX+WzfxJ
- jeP6kJWDxAzjEZPTJifP7QYUSRiOgFJ0ke4eAeXHoWxJc0jOMZjK1g5wF0zWOpZxTuhv
- sv0T/R7VPmB2U+RjECSIWuLjjX+Gx2KuWI36/teOaZZHLHYxC3t51ccoY/x9Hv9XdvK6
- jV09Kal555yn4AtGCKL0piKHqimwgL45NBm2bp5fgO9slMCOhh0JzQ+CHBC4lhDoLPvp
- i4ihRv9OUGLBDyKhHPev4lxHDLhsTsxQ34cMV7CmmZYgwfYd/TG5gdUR7BY59qve9I0v
- uyew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
- :from:date:message-id:subject:to:cc;
- bh=r2VqzdQ3t3l9GLlfIblPu8fIc2SHZonPe2y2Y9yrzwA=;
- b=TcLjuBQGKu0hyvq317z4quzTqrHmpPHPAOTtDlz1+Lza7/XwJ9pPQo+q/3Z2bs70S4
- QC9IeNaXiSjnSvyFnwnGz3AAcaS7x6Ph28jYo+/nHKZ6TDF2xD9dH2SBm8Y+5bHavyWC
- Wpo3VYVJw3z2ZFn1pV6m7Q5OJnDwCcTQzv7d9iTsR+VqozNxVe11EkKh2PJVPovtBdRZ
- ffRzubZ0hVJiKhLrfE73X1f7XTF1CEsyDPNf88WckR04cCcR+sbnhDU6XpzA1Po/xZQB
- +XKqaGK+Os8Mobx+34MyDMybVfeZNDS5x/nIiBoEQ17hxjvqp7ocej+Z8gagEbS15LYm
- AS7A==
-X-Gm-Message-State: AOAM532bioosBLc+IgHNy0NHdHUmehFuRXL70pJEbY/rnI3yGTOxUHq5
- A4fpGxnIJXUGhyvd3jm9/N2CY4Lze9bPS48Xsrs=
-X-Google-Smtp-Source: ABdhPJy9gyB1ktrqC1Zd3HyibZp0l6obehCp4vpCDO0qkgRUMj3Vjub/ykfUERbE41LdjhQm/0RhnA0bO0Yeti7gp9Q=
-X-Received: by 2002:ac2:4945:: with SMTP id o5mr5705467lfi.21.1589050031766;
- Sat, 09 May 2020 11:47:11 -0700 (PDT)
+ with ESMTP id 33yl3VLOkNFZ for <devel@linuxdriverproject.org>;
+ Sat,  9 May 2020 19:30:26 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kocurkovo.cz (mail.kocurkovo.cz [185.8.236.170])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4F63E203C4
+ for <devel@driverdev.osuosl.org>; Sat,  9 May 2020 19:30:26 +0000 (UTC)
+Received: by mail.kocurkovo.cz (Postfix, from userid 1000)
+ id 32BF3E5C; Sat,  9 May 2020 21:30:22 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.kocurkovo.cz 32BF3E5C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kocurkovo.cz;
+ s=mail; t=1589052622;
+ bh=3NqGALpJejJs6fZ2p4UE2vn0NWmO4nMUqcpgpgZA2OU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=YkDubO0lgoq4RjOfZ4pS4p8/SWmkZcksTIYnf0vfbdLCguIWi7jvDYlQiMUjkCBoG
+ g4b1WYrHDfM0Xr0B8bPIXso1ISuEDDVBz2nYLDJXtAEYJCGU6hYwmeWWVLNMaOb0AS
+ oDUc8qo4vFcjM1g8OHazyukew77MMq1h37zioEGk=
+Date: Sat, 9 May 2020 21:30:22 +0200
+From: Matej Dujava <mdujava@kocurkovo.cz>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: vt6656: vt6655: clean Makefiles
+Message-ID: <20200509193022.GA4665@new.kocurkovo.cz>
+Mail-Followup-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Forest Bond <forest@alittletooquiet.net>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+References: <1589015247-738-1-git-send-email-mdujava@kocurkovo.cz>
+ <20200509170714.GC2482887@kroah.com>
 MIME-Version: 1.0
-References: <20200509130714.10586-1-john.oldman@polehill.co.uk>
- <20200509171131.GA2495033@kroah.com>
-In-Reply-To: <20200509171131.GA2495033@kroah.com>
-From: John Oldman <john.oldman60@gmail.com>
-Date: Sat, 9 May 2020 19:47:00 +0100
-Message-ID: <CAMJX__Skgr+1ZO5JxwnwRt6A1C5rBc50cUDSN+6BM4pmYGPY4w@mail.gmail.com>
-Subject: Re: [PATCH] staging: vc04_services: interface: vchiq_arm:
- vchiq_connected.c: Block comments should align the * on each line
-To: Greg KH <gregkh@linuxfoundation.org>
+Content-Disposition: inline
+In-Reply-To: <20200509170714.GC2482887@kroah.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,35 +67,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: john.oldman@polehill.co.uk
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- John Oldman <john.oldman@polehill.co.uk>,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, Forest Bond <forest@alittletooquiet.net>,
+ linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Greg
-
-Yea, thanks for the feedback.
-
-Will fix and resend...
-
-John
-
-
-On Sat, 9 May 2020 at 18:11, Greg KH <gregkh@linuxfoundation.org> wrote:
+On Sat, May 09, 2020 at 07:07:14PM +0200, Greg Kroah-Hartman wrote:
+>On Sat, May 09, 2020 at 11:07:27AM +0200, Matej Dujava wrote:
+>> This patch is removing CFLAGS that are defining flags that are not used.
 >
-> On Sat, May 09, 2020 at 02:07:14PM +0100, John Oldman wrote:
-> > Coding style issue
+>You are also modifying the indentation and moving lines around for no
+>reason :(
 >
-> Your subject line needs to be much shorter, don't you think?
+>Please only do one thing for a patch, and always describe everything you
+>do in the changelog text.
+
+sorry, I will split it into two separate patches and resend as v2
+
+Thanks,
+Matej
+
 >
-> Please fix up and resend.
+>Can you fix this up and send a v2?
 >
-> greg k-h
+>thanks,
+>
+>greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
