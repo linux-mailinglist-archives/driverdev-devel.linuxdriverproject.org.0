@@ -2,63 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA6DB1CEF1A
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 May 2020 10:28:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 599611CE50A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 11 May 2020 22:07:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 593F386FA3;
-	Tue, 12 May 2020 08:28:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BB2EB86FB7;
+	Mon, 11 May 2020 20:07:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id weuadgkSy2PP; Tue, 12 May 2020 08:28:47 +0000 (UTC)
+	with ESMTP id bPrXVs6ODbow; Mon, 11 May 2020 20:07:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D523886F78;
-	Tue, 12 May 2020 08:28:46 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9CCA586F81;
+	Mon, 11 May 2020 20:07:00 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4BFA11BF2AB
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 12 May 2020 08:28:45 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EF68D1BF396
+ for <devel@linuxdriverproject.org>; Mon, 11 May 2020 20:06:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 47DDD2046C
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 12 May 2020 08:28:45 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E99D7881BB
+ for <devel@linuxdriverproject.org>; Mon, 11 May 2020 20:06:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3zHaHbpdOZCI
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 12 May 2020 08:28:43 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 18E70203A2
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 12 May 2020 08:28:43 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 43E95206A3;
- Tue, 12 May 2020 08:28:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589272122;
- bh=7RuoiwtdXbjU5E/bE+GPnT11/3NNMit5u9rAnsnFk9s=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hURymR3FiR13WuWVys7r7yn6p1lKKJKhuOl2Z3MYBq2KJyKKgnIqXOOR1ht1dDXpb
- X+vtTZCkoB9hEjTuc2KyG9tne4q3HkiN92Z39eb5wwr6B7nTfKokX8Pp3bGQB5YKTk
- aWAtRI4tHJv9NAb7uVVD/HNJIzF8LNSzbQt+OEqE=
-Date: Mon, 11 May 2020 18:33:46 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Christian.Gromm@microchip.com
-Subject: Re: [PATCH RFC] drivers: most: add USB adapter driver
-Message-ID: <20200511163346.GA2236392@kroah.com>
-References: <1589190675-21145-1-git-send-email-christian.gromm@microchip.com>
- <20200511114713.GA1671075@kroah.com>
- <266714a09283d7b5cc9f0720415db7e86bf18387.camel@microchip.com>
+ with ESMTP id CyCO1FwJym7R for <devel@linuxdriverproject.org>;
+ Mon, 11 May 2020 20:06:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from hqnvemgate25.nvidia.com (hqnvemgate25.nvidia.com
+ [216.228.121.64])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F3A16880ED
+ for <devel@driverdev.osuosl.org>; Mon, 11 May 2020 20:06:56 +0000 (UTC)
+Received: from hqpgpgate102.nvidia.com (Not Verified[216.228.121.13]) by
+ hqnvemgate25.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5eb9b0160000>; Mon, 11 May 2020 13:05:42 -0700
+Received: from hqmail.nvidia.com ([172.20.161.6])
+ by hqpgpgate102.nvidia.com (PGP Universal service);
+ Mon, 11 May 2020 13:06:56 -0700
+X-PGP-Universal: processed;
+ by hqpgpgate102.nvidia.com on Mon, 11 May 2020 13:06:56 -0700
+Received: from [10.2.160.186] (10.124.1.5) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Mon, 11 May
+ 2020 20:06:56 +0000
+Subject: Re: [PATCH -next] media: tegra: Make tegra210_video_formats static
+To: Samuel Zou <zou_wei@huawei.com>, <mchehab@kernel.org>,
+ <gregkh@linuxfoundation.org>, <thierry.reding@gmail.com>,
+ <jonathanh@nvidia.com>
+References: <1589196015-8945-1-git-send-email-zou_wei@huawei.com>
+From: Sowjanya Komatineni <skomatineni@nvidia.com>
+Message-ID: <095bb6a1-c4a0-1983-ac5e-701969aa3346@nvidia.com>
+Date: Mon, 11 May 2020 13:06:54 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <266714a09283d7b5cc9f0720415db7e86bf18387.camel@microchip.com>
+In-Reply-To: <1589196015-8945-1-git-send-email-zou_wei@huawei.com>
+X-Originating-IP: [10.124.1.5]
+X-ClientProxiedBy: HQMAIL101.nvidia.com (172.20.187.10) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1589227542; bh=8NkRMhmEgp8vXL9arKWTRj7av/YgRy1DwkZ7Z7QGPWE=;
+ h=X-PGP-Universal:Subject:To:CC:References:From:Message-ID:Date:
+ User-Agent:MIME-Version:In-Reply-To:X-Originating-IP:
+ X-ClientProxiedBy:Content-Type:Content-Transfer-Encoding:
+ Content-Language;
+ b=D8FW17cg1BSjdvPU1ki890GVx4lYKBEGU6UFG0wwJ4u96XRHd5+fc6+xKa0yNuXWH
+ Zskx93VyA9IjGdy1i+JpzQzs1L1pLn0r4zRok4JZjSP3HGvUtQPTOLbinaXw+qALoV
+ xu1VsC/Kk3vHwmVyIcA+EfuMptOQcusr1SxSCD5vvDPXwM10XCgZD0JXx0xuu99maw
+ xm5VdHS4SfKrfcrN2bi7N0HqCRfIgcJ0Y+QXyIvtCX1nnqduQRuqWY641yQFbLPqIM
+ U2NXXRNVr97FzDGtyVrtjk0kWjwxsua1t4mKBGuJBCZwD6SIpSjBWk1GO/bMVYZ7KU
+ vUHA4XF2lBpXA==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,110 +83,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org, linux-usb@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, linux-tegra@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, May 11, 2020 at 02:46:58PM +0000, Christian.Gromm@microchip.com wrote:
-> On Mon, 2020-05-11 at 13:47 +0200, Greg KH wrote:
-> > EXTERNAL EMAIL: Do not click links or open attachments unless you
-> > know the content is safe
-> > 
-> > On Mon, May 11, 2020 at 11:51:15AM +0200, Christian Gromm wrote:
-> > > This patch adds the MOST USB adapter driver to the stable branch.
-> > > This is
-> > > a follow-up to commit <b276527>.
-> > 
-> > I do not understand the "a follow-up..." sentance.  Always use the
-> > format of:
-> >         b27652753918 ("staging: most: move core files out of the
-> > staging area")
-> > when writing kernel commits in changelogs.
-> > 
-> > Also, that commit doesn't really mean anything here, this is a
-> > stand-alone driver for the most subsystem.  This changelog needs
-> > work.
-> 
-> Purpose was sharing the information that this is patch is
-> only one part of moving the complete driver stack. That a
-> first step has alread been done and others are to follow.
-> But you're probably right and nobody realy needs to know.
-> 
-> I'll skip this.
-> 
-> > 
-> > > Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-> > > ---
-> > >  drivers/most/Kconfig          |    6 +
-> > >  drivers/most/Makefile         |    2 +
-> > >  drivers/most/usb/Kconfig      |   14 +
-> > >  drivers/most/usb/Makefile     |    4 +
-> > >  drivers/most/usb/usb.c        | 1262
-> > > +++++++++++++++++++++++++++++++++++++++++
-> > 
-> > Why not just call this file most-usb.c so you don't have to do the
-> > 2-step Makefile work.  Also, why a whole subdir for a single .c file?
-> 
-> To keep the staging layout.
 
-No need to do that, this is a new layout :)
-
-> > > +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
-> > 
-> > You shouldn't need any pr_*() calls because this is a driver and you
-> > always have access to the struct device * it controls.  So drop this
-> > and
-> > fix up the remaining pr_*() calls to be dev_*() instead.
-> 
-> There are helper functions that actually don't have access to the
-> struct device and it felt like an overhead to pass the device
-> pointer just for logging purposes.
-
-pr_* calls show almost nothing when it comes to the actual device/driver
-being affected.  That's why the dev_*() functions are there, please use
-them.
-
-> > > +/**
-> > > + * struct most_dci_obj - Direct Communication Interface
-> > > + * @kobj:position in sysfs
-> > > + * @usb_device: pointer to the usb device
-> > > + * @reg_addr: register address for arbitrary DCI access
-> > > + */
-> > > +struct most_dci_obj {
-> > > +     struct device dev;
-> > 
-> > Wait, why is a USB driver creating something with a separate struct
-> > device embedded in it?  Shouldn't the most core handle stuff like
-> > this?
-> 
-> The driver adds an ABI interface that belongs to USB only. This keeps
-> the core generic.
-
-So this same type of thing is also needed in the other bus controllers
-(serial, i2c, etc.)?
-
-Creating a new device implies it lives on a bus, and almost always the
-bus code for creating/managing that code lives in a single place, not in
-the individual drivers.  Why doesn't the most core handle this?  What
-does the most core do?  :)
-
-
-> > > +static DEVICE_ATTR(arb_address, 0644, value_show, value_store);
-> > > +static DEVICE_ATTR(arb_value, 0644, value_show, value_store);
-> > 
-> > Loads of sysfs files with no documentation for them?
-> > 
-> 
-> see driver/staging/most/Documentation
-
-Add it as part of this patch series, as you are moving these sysfs files
-into the "real" part of the kernel and belong out of drivers/staging/
-
-thanks,
-
-greg k-h
+On 5/11/20 4:20 AM, Samuel Zou wrote:
+> Fix the following sparse warning:
+>
+> drivers/staging/media/tegra-video/tegra210.c:589:33: warning: symbol 'tegra210_video_formats' was not declared.
+>
+> The tegra210_video_formats has only call site within tegra210.c
+> It should be static
+>
+> Fixes: 423d10a99b30 ("media: tegra: Add Tegra210 Video input driver")
+> Reported-by: Hulk Robot<hulkci@huawei.com>
+> Signed-off-by: Samuel Zou<zou_wei@huawei.com>
+> ---
+>   drivers/staging/media/tegra-video/tegra210.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+Acked-by: Sowjanya Komatineni <skomatineni@nvidia.com>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
