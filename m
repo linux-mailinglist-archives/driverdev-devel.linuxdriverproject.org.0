@@ -1,109 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95AD11CDF88
-	for <lists+driverdev-devel@lfdr.de>; Mon, 11 May 2020 17:50:40 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DA6DB1CEF1A
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 May 2020 10:28:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3BAEA2606C;
-	Mon, 11 May 2020 15:50:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 593F386FA3;
+	Tue, 12 May 2020 08:28:48 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id weuadgkSy2PP; Tue, 12 May 2020 08:28:47 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D523886F78;
+	Tue, 12 May 2020 08:28:46 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4BFA11BF2AB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 12 May 2020 08:28:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 47DDD2046C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 12 May 2020 08:28:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PjjC14QaivRI; Mon, 11 May 2020 15:50:38 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4A6DF25D10;
-	Mon, 11 May 2020 15:50:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A6E6E1BF3C1
- for <devel@linuxdriverproject.org>; Mon, 11 May 2020 15:50:23 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A301B87D7F
- for <devel@linuxdriverproject.org>; Mon, 11 May 2020 15:50:23 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ffSasz-zhP7v for <devel@linuxdriverproject.org>;
- Mon, 11 May 2020 15:50:21 +0000 (UTC)
+ with ESMTP id 3zHaHbpdOZCI
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 12 May 2020 08:28:43 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2071.outbound.protection.outlook.com [40.107.244.71])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D63F08819C
- for <devel@driverdev.osuosl.org>; Mon, 11 May 2020 15:50:21 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Bs/aVAgZv9VqwODNdXkkcW924ZsbFuOkboNRkkN8WMGZk1lM/Is1aEG+p2C/5OhJYYwnk83sNmRRjovxeT9uRNQJOripFff17t3B0Y7epTIPV6zJWVn+uiZlAwnAnHxzmyJvaAFtx3Pd2g4VzwRMn99qsb7bPkqAD/yHTuAwhYhzT4gaxzj5yOJVztzrQA9hrexPRiw2EqLnM5W2WMwabI8ACEyVWlghiX+rija8zX2iSmIjiJ/TO5PPxgVvaMkYjm2KTx7Dz1TiRdhWUTuEnfVh0mrwbdGsrv+qVUEfHJSHKe7CyAsTVb42rprr3SUPnQiQeMIGvlqTW5XU3/gUOw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iT/OMJBcfsRkPe6vAx1P07qFqYJx6s8Pt4Ip2IXw6Ic=;
- b=g+gvNdrbD/OipuIxaXAd7HPzcHRo5jXZNbwFXYundMP40TfQbsOYUGi86LnfXJh7+LMoEbFkIo+EAzaNcIg90TcDc8BalHZiv4PFhggC082Yx3AcGt3NkKayr9Kj5RiZ37cJJUtGOtvED6+T+uuz3DyTVE/CtquAuwZyoxTBEdfX8HzJMgOy28OiZkOj4RnIxcGcVwuQvzrFQ0MDcksPxKY8d0ysblxV9nxF73ey+SLYMS3q3TuwGCxfNy1b7DdJa2E1U7/IEkd2VW+EMe5MiKHM/LYPD/1GRXTXn8lhs50Nr9jStJn6gmeCRS2oNhJVBgvmGL05n1wParlueNmYCw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iT/OMJBcfsRkPe6vAx1P07qFqYJx6s8Pt4Ip2IXw6Ic=;
- b=oDE+VGiHC0w1Uj+B9WVLDSvcbRXgO6fhFn/gBCAPApJHnOh554VjW2GcZZgtifBrWwF0bCTGfLW98E/htVGhxldsrLwSXJqH1sEm6YnbfrnlL6igrRXL+lhXsy7Px3gNHuo9NEA2dJzCDdahAd5AF4FLsrD4N0sSeumF3x3CxzI=
-Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
- header.d=none;driverdev.osuosl.org; dmarc=none action=none
- header.from=silabs.com;
-Received: from MWHPR11MB1775.namprd11.prod.outlook.com (2603:10b6:300:10e::14)
- by MWHPR11MB1968.namprd11.prod.outlook.com (2603:10b6:300:113::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.26; Mon, 11 May
- 2020 15:50:21 +0000
-Received: from MWHPR11MB1775.namprd11.prod.outlook.com
- ([fe80::e055:3e6d:ff4:56da]) by MWHPR11MB1775.namprd11.prod.outlook.com
- ([fe80::e055:3e6d:ff4:56da%5]) with mapi id 15.20.2979.033; Mon, 11 May 2020
- 15:50:21 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: devel@driverdev.osuosl.org,
-	linux-wireless@vger.kernel.org
-Subject: [PATCH 17/17] staging: wfx: update TODO
-Date: Mon, 11 May 2020 17:49:30 +0200
-Message-Id: <20200511154930.190212-18-Jerome.Pouiller@silabs.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200511154930.190212-1-Jerome.Pouiller@silabs.com>
-References: <20200511154930.190212-1-Jerome.Pouiller@silabs.com>
-X-ClientProxiedBy: SN6PR2101CA0026.namprd21.prod.outlook.com
- (2603:10b6:805:106::36) To MWHPR11MB1775.namprd11.prod.outlook.com
- (2603:10b6:300:10e::14)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 18E70203A2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 12 May 2020 08:28:43 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 43E95206A3;
+ Tue, 12 May 2020 08:28:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1589272122;
+ bh=7RuoiwtdXbjU5E/bE+GPnT11/3NNMit5u9rAnsnFk9s=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=hURymR3FiR13WuWVys7r7yn6p1lKKJKhuOl2Z3MYBq2KJyKKgnIqXOOR1ht1dDXpb
+ X+vtTZCkoB9hEjTuc2KyG9tne4q3HkiN92Z39eb5wwr6B7nTfKokX8Pp3bGQB5YKTk
+ aWAtRI4tHJv9NAb7uVVD/HNJIzF8LNSzbQt+OEqE=
+Date: Mon, 11 May 2020 18:33:46 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Christian.Gromm@microchip.com
+Subject: Re: [PATCH RFC] drivers: most: add USB adapter driver
+Message-ID: <20200511163346.GA2236392@kroah.com>
+References: <1589190675-21145-1-git-send-email-christian.gromm@microchip.com>
+ <20200511114713.GA1671075@kroah.com>
+ <266714a09283d7b5cc9f0720415db7e86bf18387.camel@microchip.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.silabs.com (82.67.86.106) by
- SN6PR2101CA0026.namprd21.prod.outlook.com (2603:10b6:805:106::36) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3021.2 via Frontend
- Transport; Mon, 11 May 2020 15:50:19 +0000
-X-Mailer: git-send-email 2.26.2
-X-Originating-IP: [82.67.86.106]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c7692626-b90f-4fed-8a01-08d7f5c30283
-X-MS-TrafficTypeDiagnostic: MWHPR11MB1968:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR11MB19686A3DF12B2CF5743E966893A10@MWHPR11MB1968.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
-X-Forefront-PRVS: 04004D94E2
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: n2VCt/2IJYavhsazcLKJF0P+cFbP0Ek6kfmq6/r8Da/qhtsE7lxX/KppV/k2w/atz36CFh9yCRZv4EEpmWuZqyvrOPRflpeTqdSlNLvMBY5PY5dOadFL+iMJld7afi4XJXOEIRjiykxVeMWp19n+p0vufC3NhgnHoLIpO8KaijiDpc5EsfQqGOCwtzQfQjJSZ6jshx7xBb5euDfaI6WlK7G+Pzc7iTugUsdHhXLrJjxvZsGfLEXNsFl83lMZJ7NO81fok5RbaC7btOBRFDfJUxiQxvODA1KFbMfiE6R978TAgPuyte8h8qcjDO7ZFrSJ7z9PouRgaQc5nppzYYxjderTBRx0K6GPJRYIyOSz69WyoqvMwroOnfuQYQvNd+so4iAEETD+td36batsJgwXIuFi02va7F1DtIZq6KQ98hb31vfhQ82f1iWimsDmJ6bQtcgLgLttC48LPiFd8j4bEf+DYvrEQDFPzLmQBshi7okhvVcjxoHpAwmzeG/DDhV5E5A2vZeER7MdTWdHLuJg343ubIk29ZbYVoL5+S8Sl2OX2gH0Kk7v/SOEPxzdpFm1Qysjns9oc/jtICWGG4DboV7beiiovOJdV+RehasEdyI=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR11MB1775.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(39850400004)(346002)(136003)(396003)(376002)(366004)(33430700001)(186003)(52116002)(86362001)(316002)(5660300002)(7696005)(6486002)(33440700001)(478600001)(54906003)(6666004)(4326008)(107886003)(66574014)(36756003)(16526019)(26005)(15650500001)(8936002)(956004)(2616005)(8676002)(1076003)(66476007)(66946007)(966005)(66556008)(2906002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: wXcEZIaYbKYHeapouqHpJDPlxtG63wGOGsCqA4IgVLSm9bzBwi8mBXiRQfzh3lOrrV4xsCJOWpnZyI4er/mZ09XAi95fcKpRVmw6ZyqB9dcI73yluuGNdqnDJkFSJaeM3FPmOBCoLWKn0xxAcvhnaKWmnnx94Xnpgkt46LLL/+AozfLC0Br7wHPjjouBQyYIqYHc9rJtLxvrdG6f8HCTA77TLCCDrSXqMfMTtZkHnaeHOohDu4HH2ihgESy4leOavI9H+xpSDUdhBUqgj+lpGPISB19oo+03d8PCC/+i/qwCpBPMF8wosLhEZ5wl2bgSt7wLWVCe6HgiJP3xLLBD14R7W32k/gG7zxU46lmn2jT2MPTLXKWCl+rJW7T491WdqgvwGUYbn6HTDvWa1m4bmWMDn8RQAx+Y/ujXBz8hK5awAKzjzQ9zJocKsq5wJh43mH6J4aMmFeSKjtqs9JG/4jqokWKawcEXIqfbnij/N2c=
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c7692626-b90f-4fed-8a01-08d7f5c30283
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 May 2020 15:50:20.8796 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Vq26kolM0H+KiHNKi5hDNJJSRLBS0u7xZhOyLT9DrMqktMicV/i2BYmdWeNQvwV7/dnjx+NfWK8Yinr3030MNA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1968
+Content-Disposition: inline
+In-Reply-To: <266714a09283d7b5cc9f0720415db7e86bf18387.camel@microchip.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,45 +71,111 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: driverdev-devel@linuxdriverproject.org, linux-usb@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKVXBk
-YXRlIHRoZSBUT0RPIGxpc3QgYXNzb2NpYXRlZCB0byB0aGUgd2Z4IGRyaXZlciB3aXRoIHRoZSBs
-YXN0CnByb2dyZXNzZXMuCgpTaWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21l
-LnBvdWlsbGVyQHNpbGFicy5jb20+Ci0tLQogZHJpdmVycy9zdGFnaW5nL3dmeC9UT0RPIHwgMTkg
-LS0tLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDE5IGRlbGV0aW9ucygtKQoKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy93ZngvVE9ETyBiL2RyaXZlcnMvc3RhZ2luZy93Zngv
-VE9ETwppbmRleCBmY2EzMzMyZTQyY2UuLjQyYmYzNmQ0Mzk3MCAxMDA2NDQKLS0tIGEvZHJpdmVy
-cy9zdGFnaW5nL3dmeC9UT0RPCisrKyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvVE9ETwpAQCAtMywz
-MiArMywxMyBAQCBzdGFnaW5nIGRpcmVjdG9yeS4KIAogICAtIFRoZSBISUYgQVBJIGlzIG5vdCB5
-ZXQgY2xlYW4gZW5vdWdoLgogCi0gIC0gRml4IHN1cHBvcnQgZm9yIGJpZyBlbmRpYW4gYXJjaGl0
-ZWN0dXJlcy4gU2VlOgotICAgICAgIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xrbWwvMjAxOTEx
-MTEyMDI4NTIuR1gyNjUzMEBaZW5JVi5saW51eC5vcmcudWsKLQotICAtIFRoZSBwb2ludGVycyBy
-ZXR1cm5lZCBieSBhbGxvY2F0aW9uIGZ1bmN0aW9ucyBhcmUgYWx3YXlzIGNoZWNrZWQuCi0KICAg
-LSBUaGUgY29kZSB0aGF0IGNoZWNrIHRoZSBjb3JlY3RuZXNzIG9mIHJlY2VpdmVkIG1lc3NhZ2Ug
-KGluIHJ4X2hlbHBlcigpKSBjYW4KICAgICBiZSBpbXByb3ZlZC4gU2VlOgogICAgICAgIGh0dHBz
-Oi8vbG9yZS5rZXJuZWwub3JnL2RyaXZlcmRldi1kZXZlbC8yMzAyNzg1LjZDN09EQzJMWW1AcGMt
-NDIvCiAKLSAgLSBTdXBwb3J0IGZvciBTRElPIHdpdGggZXh0ZXJuYWwgSVJRIGlzIGJyb2tlbi4K
-LQogICAtIEFzIHN1Z2dlc3RlZCBieSBGZWxpeCwgcmF0ZSBjb250cm9sIGNvdWxkIGJlIGltcHJv
-dmVkIGZvbGxvd2luZyB0aGlzIGlkZWE6CiAgICAgICAgIGh0dHBzOi8vbG9yZS5rZXJuZWwub3Jn
-L2xrbWwvMzA5OTU1OS5ndjNRNzVLbk4xQHBjLTQyLwogCi0gIC0gV2hlbiBkcml2ZXIgaXMgYWJv
-dXQgdG8gbG9vc2UgQlNTLCBpdCBmb3JnZSBpdHMgb3duIE51bGwgRnVuYyByZXF1ZXN0IChzZWUK
-LSAgICB3ZnhfY3FtX2Jzc2xvc3Nfc20oKSkuIEl0IHNob3VsZCB1c2UgbWVjaGFuaXNtIHByb3Zp
-ZGVkIGJ5IG1hYzgwMjExLgotCi0gIC0gTW9uaXRvcmluZyBtb2RlIGlzIG5vdCBpbXBsZW1lbnRl
-ZCBkZXNwaXRlIGJlaW5nIG1hbmRhdG9yeSBieSBtYWM4MDIxMS4KLQotICAtIFRoZSAic3RhdGUi
-IGZpZWxkIGZyb20gd2Z4X3ZpZiBzaG91bGQgYmUgcmVwbGFjZWQgYnkgInZpZi0+dHlwZSIuCi0K
-LSAgLSBJdCBzZWVtcyB0aGF0IHdmeF91cGxvYWRfa2V5cygpIGlzIHVzZWxlc3MuCi0KLSAgLSAi
-ZXZlbnRfcXVldWUiIGZyb20gd2Z4X3ZpZiBzZWVtcyBvdmVya2lsbC4gVGhlc2UgZXZlbnQgYXJl
-IHJhcmUgYW5kIHRoZXkKLSAgICAgcHJvYmFibHkgY291bGQgYmUgaGFuZGxlZCBpbiBhIHNpbXBs
-ZXIgZmFzaGlvbi4KLQogICAtIEZlYXR1cmUgY2FsbGVkICJzZWN1cmUgbGluayIgc2hvdWxkIGJl
-IGVpdGhlciBkZXZlbG9wZWQgKHVzaW5nIGtlcm5lbAogICAgIGNyeXB0byBBUEkpIG9yIGRyb3Bw
-ZWQuCiAKLS0gCjIuMjYuMgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcK
-aHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpdmVyZGV2LWRldmVsCg==
+On Mon, May 11, 2020 at 02:46:58PM +0000, Christian.Gromm@microchip.com wrote:
+> On Mon, 2020-05-11 at 13:47 +0200, Greg KH wrote:
+> > EXTERNAL EMAIL: Do not click links or open attachments unless you
+> > know the content is safe
+> > 
+> > On Mon, May 11, 2020 at 11:51:15AM +0200, Christian Gromm wrote:
+> > > This patch adds the MOST USB adapter driver to the stable branch.
+> > > This is
+> > > a follow-up to commit <b276527>.
+> > 
+> > I do not understand the "a follow-up..." sentance.  Always use the
+> > format of:
+> >         b27652753918 ("staging: most: move core files out of the
+> > staging area")
+> > when writing kernel commits in changelogs.
+> > 
+> > Also, that commit doesn't really mean anything here, this is a
+> > stand-alone driver for the most subsystem.  This changelog needs
+> > work.
+> 
+> Purpose was sharing the information that this is patch is
+> only one part of moving the complete driver stack. That a
+> first step has alread been done and others are to follow.
+> But you're probably right and nobody realy needs to know.
+> 
+> I'll skip this.
+> 
+> > 
+> > > Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+> > > ---
+> > >  drivers/most/Kconfig          |    6 +
+> > >  drivers/most/Makefile         |    2 +
+> > >  drivers/most/usb/Kconfig      |   14 +
+> > >  drivers/most/usb/Makefile     |    4 +
+> > >  drivers/most/usb/usb.c        | 1262
+> > > +++++++++++++++++++++++++++++++++++++++++
+> > 
+> > Why not just call this file most-usb.c so you don't have to do the
+> > 2-step Makefile work.  Also, why a whole subdir for a single .c file?
+> 
+> To keep the staging layout.
+
+No need to do that, this is a new layout :)
+
+> > > +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+> > 
+> > You shouldn't need any pr_*() calls because this is a driver and you
+> > always have access to the struct device * it controls.  So drop this
+> > and
+> > fix up the remaining pr_*() calls to be dev_*() instead.
+> 
+> There are helper functions that actually don't have access to the
+> struct device and it felt like an overhead to pass the device
+> pointer just for logging purposes.
+
+pr_* calls show almost nothing when it comes to the actual device/driver
+being affected.  That's why the dev_*() functions are there, please use
+them.
+
+> > > +/**
+> > > + * struct most_dci_obj - Direct Communication Interface
+> > > + * @kobj:position in sysfs
+> > > + * @usb_device: pointer to the usb device
+> > > + * @reg_addr: register address for arbitrary DCI access
+> > > + */
+> > > +struct most_dci_obj {
+> > > +     struct device dev;
+> > 
+> > Wait, why is a USB driver creating something with a separate struct
+> > device embedded in it?  Shouldn't the most core handle stuff like
+> > this?
+> 
+> The driver adds an ABI interface that belongs to USB only. This keeps
+> the core generic.
+
+So this same type of thing is also needed in the other bus controllers
+(serial, i2c, etc.)?
+
+Creating a new device implies it lives on a bus, and almost always the
+bus code for creating/managing that code lives in a single place, not in
+the individual drivers.  Why doesn't the most core handle this?  What
+does the most core do?  :)
+
+
+> > > +static DEVICE_ATTR(arb_address, 0644, value_show, value_store);
+> > > +static DEVICE_ATTR(arb_value, 0644, value_show, value_store);
+> > 
+> > Loads of sysfs files with no documentation for them?
+> > 
+> 
+> see driver/staging/most/Documentation
+
+Add it as part of this patch series, as you are moving these sysfs files
+into the "real" part of the kernel and belong out of drivers/staging/
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
