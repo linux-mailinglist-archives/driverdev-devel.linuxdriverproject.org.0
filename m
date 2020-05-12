@@ -1,120 +1,103 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EFE21CF067
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 May 2020 11:01:43 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 910931CF157
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 May 2020 11:17:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8BA9525729;
-	Tue, 12 May 2020 09:01:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3BF4B86F54;
+	Tue, 12 May 2020 09:17:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s16SqpUFHCjL; Tue, 12 May 2020 09:01:40 +0000 (UTC)
+	with ESMTP id 5ByzY5aOkfSG; Tue, 12 May 2020 09:17:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 20D7B21507;
-	Tue, 12 May 2020 09:01:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2825285683;
+	Tue, 12 May 2020 09:17:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3F4C41BF5DF
- for <devel@linuxdriverproject.org>; Tue, 12 May 2020 09:01:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 90DAA1BF28C
+ for <devel@linuxdriverproject.org>; Tue, 12 May 2020 09:17:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3467C880ED
- for <devel@linuxdriverproject.org>; Tue, 12 May 2020 09:01:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8BFF7881BB
+ for <devel@linuxdriverproject.org>; Tue, 12 May 2020 09:17:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id blTob7b15qgF for <devel@linuxdriverproject.org>;
- Tue, 12 May 2020 09:01:30 +0000 (UTC)
+ with ESMTP id XXCx+3bJ81qK for <devel@linuxdriverproject.org>;
+ Tue, 12 May 2020 09:17:51 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mailout1.w1.samsung.com (mailout1.w1.samsung.com
- [210.118.77.11])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9517E88161
- for <devel@driverdev.osuosl.org>; Tue, 12 May 2020 09:01:29 +0000 (UTC)
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200512090128euoutp019c80394e6235b2ea0999dbad8e158d90~OPFzc8q_j2641626416euoutp01O
- for <devel@driverdev.osuosl.org>; Tue, 12 May 2020 09:01:28 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
- 20200512090128euoutp019c80394e6235b2ea0999dbad8e158d90~OPFzc8q_j2641626416euoutp01O
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1589274088;
- bh=5NGMaE4Pq4Gr2vd+9hsaDXuy+T7oe1nlC85nQzi6s74=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=IvcD8/ZcabHxbl72bWaWdsYAopPN1EQoGJ60nBaZkzpOyRmcznVfeopawWGtV34e0
- VyOfaIfaWxhobpdbLpsWj3Nug3kIoLsYEnJIwjZ4LW/vPpYm3HcW9VSSAZvYfrtXuT
- rpY8AiCkbP3dJSNPelkrRdBth6Cft82hfJ2p+JZA=
-Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTP id
- 20200512090127eucas1p29cf72b429b59cdb7355ad7d1473bda4b~OPFzRZ7iF2661826618eucas1p2j;
- Tue, 12 May 2020 09:01:27 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
- eusmges1new.samsung.com (EUCPMTA) with SMTP id 3D.67.61286.7E56ABE5; Tue, 12
- May 2020 10:01:27 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20200512090127eucas1p19889d83b1c750dcdc869323e8d1946a3~OPFy9MUqQ2838128381eucas1p1P;
- Tue, 12 May 2020 09:01:27 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200512090127eusmtrp1a3807a059ca1740ced7a4d55072ad119~OPFy8bt4b0183401834eusmtrp11;
- Tue, 12 May 2020 09:01:27 +0000 (GMT)
-X-AuditID: cbfec7f2-ef1ff7000001ef66-ae-5eba65e70eaf
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms2.samsung.com (EUCPMTA) with SMTP id E6.03.07950.7E56ABE5; Tue, 12
- May 2020 10:01:27 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200512090126eusmtip178d4ef6401588445a17a097376736bca~OPFyE8_nj1257212572eusmtip1x;
- Tue, 12 May 2020 09:01:26 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v4 33/38] staging: tegra-vde: fix common struct sg_table
- related issues
-Date: Tue, 12 May 2020 11:00:53 +0200
-Message-Id: <20200512090058.14910-33-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200512090058.14910-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0WSe0iTURjGO/uuk2afU/BgYTAyS8hbQaeMKCo6CUH1R2EXbeWXl9yUfWkp
- UZoWNjUyqdbKKRpa3rbmWjUt71pq66KEkTrLQrSraTexy9bX5b/f+5z3OQ/P4bCEfITyYePU
- B3iNWpmgoN1Ia/s3+6IR3hYZ/O51CMqz35OgazojhX5a8wlU3z3FoMrxYYB6P72nUWapkUZX
- K9skqLghDGXpS0g02ftcgszDTyjUY7tEo1zTdQqdnNTTqLp1gEFl5mkJavrwkkLfbAZylSeu
- MlQBPHinhcS3PxeT+JZ+gMHmipM0vvF5iMINhVUMduR0SHDt5aP42Y9hAhf0lQNc9zSdxnmZ
- 72h8ylIB8ITZd9Os7W4rovmEuBReE7Ryt1us5dQrMmmcO1Sb42DSgc5dC1gWckvg/aYoLXBj
- 5dwVAL/XZwNxmASwp+gCJQ4TAE4Yssm/joKzy0S9HEBb8xvmn6PTMeZ0SFmaC4Hat1raxV7c
- cQDv5s10McF1k7D762IXe3IRMDdvnHQxyfnBp52Nv/dl3EpoOjP4+x7IzYWVpkbCxVKn7iia
- Jl1hkMtnYd/XSSAurYUv2jJIkT3hWIeFEXkO7CrI/WPIBPC5vZoRh1xnuWO6P+4w2G+fol3d
- CG4hNNqCRHk1nDYW0WJld9j31kMs4A7PWM8ToiyD2Sfk4vZ8qO+o+Rfb9PAxITKGFx6YaPGB
- 2gC0GtqZ02Cu/n9YMQAVwJtPFlQxvBCi5g8GCkqVkKyOCdybqDID5/fr+tHx8Sb49HhPM+BY
- oJgpyw69FSmnlClCqqoZQJZQeMmy4pySLFqZmsZrEqM0yQm80Axms6TCW7a4ZHSXnItRHuD3
- 83wSr/l7KmGlPunA58sMYV6l31LVfZ0uOGOn9/J+8tJ06Pes9ROvh8Jlm63YgOfFn4u46HGo
- q+5lzZGhmK37Wi3sGr+oHFn+F6lxja1c3TIatO3RyIbQ1rMO++EFYE5ZeOEW35KNfgFVvqrw
- tPh1Pe7+z5hef2pEWrfjZqPinDajZMZU6VikKbPaAhSkEKsMCSA0gvIX/dPjWHoDAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrFIsWRmVeSWpSXmKPExsVy+t/xu7rPU3fFGew/JW3Re+4kk8XGGetZ
- Lf5vm8hssefML3aL1R8fM1pc+fqezaJ58Xo2i5WrjzJZLNhvbdEyaxGLxZcrD5ksNj2+xmpx
- edccNoueDVtZLTq/zGKzWHvkLrvFsk1/mCwOfnjCavFz1zwWB2GPNfPWMHrc23eYxWPvtwUs
- Hjtn3WX32LSqk81j+7cHrB77565h97jffZzJY/OSeo/b/x4ze0y+sZzRY/fNBjaP3uZ3bB59
- W1YxenzeJBfAH6VnU5RfWpKqkJFfXGKrFG1oYaRnaGmhZ2RiqWdobB5rZWSqpG9nk5Kak1mW
- WqRvl6CXsaXvKUvBR4GKzd332RsYZ/B1MXJwSAiYSEyeatnFyMUhJLCUUeLB43bGLkZOoLiM
- xMlpDawQtrDEn2tdbBBFnxglZnf/ZAJJsAkYSnS9hUiICHQySkzr/sgO4jAL3GCRmLvlAztI
- lbBAuMTZF5+YQWwWAVWJm6cOsIHYvAJ2Ehsm3YNaIS+xesMBsBpOoPj9+X9YQGwhgUKJR1ff
- skxg5FvAyLCKUSS1tDg3PbfYSK84Mbe4NC9dLzk/dxMjMB63Hfu5ZQdj17vgQ4wCHIxKPLwd
- RjvjhFgTy4orcw8xSnAwK4nwtmQChXhTEiurUovy44tKc1KLDzGaAh01kVlKNDkfmCrySuIN
- TQ3NLSwNzY3Njc0slMR5OwQOxggJpCeWpGanphakFsH0MXFwSjUwiq5apvhvq99i+812f2y9
- i9+/fLOft7Pv2DomAQH+f+wTryZvXtdWEbXVSXHSRsZFYW4su2cyBZw9NfvwSqOkhp0xy2Yy
- CwldF7iw5HmzhMiFuRczAvr2mj1z+NV5OPX6g1zBjP5EFpWpGkf21KxVOLxdIfpv0oJFHVd2
- Gc5cXRj99cu56XlfI5VYijMSDbWYi4oTAfqsapLdAgAA
-X-CMS-MailID: 20200512090127eucas1p19889d83b1c750dcdc869323e8d1946a3
-X-Msg-Generator: CA
-X-RootMTR: 20200512090127eucas1p19889d83b1c750dcdc869323e8d1946a3
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200512090127eucas1p19889d83b1c750dcdc869323e8d1946a3
-References: <20200512085710.14688-1-m.szyprowski@samsung.com>
- <20200512090058.14910-1-m.szyprowski@samsung.com>
- <CGME20200512090127eucas1p19889d83b1c750dcdc869323e8d1946a3@eucas1p1.samsung.com>
+Received: from NAM02-CY1-obe.outbound.protection.outlook.com
+ (mail-eopbgr760070.outbound.protection.outlook.com [40.107.76.70])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5819D8743E
+ for <devel@driverdev.osuosl.org>; Tue, 12 May 2020 09:17:51 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=e8aHGadc+QjL6av5LiaCgg1B/nnm/7rjFTF1oeT0ET9tgAPPH+Qvvm7EwFxI5cllGnMc0yDvq4u0c0O1OGLEOf5m9XrXZ/LZu+8rJzQyzBKPbun0hA//4C7YyPx09HGokrOdc4Gui30io/j7vtHbFf2HEvn+ajK3TqnqNx1oAJo9dr+TAgfkvPkpvqpVCrzRwuerLuxQQqiGc5l4qNxseF6MbgmU5oEduK/Vv8acMk9+2xU6Q6eapnQqWhEXqQhj+rBRHwFX1f2AnmE+5B0QJkr+oe+XP5Vg6k/dsVP8OH/3DgImtUczQ4BjFwWCtrgGaKts0DtG49QnExU+iIrQ1g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oQIZYYMUaZOPQPhubg++Qf1Qbaw9EpTpFqQ06SmBOKk=;
+ b=TArrBnEkzjDvUmzgHTxgcNcvNBXhkr4+5qyiB3t/vmdQb9+dkPIPIW6LJa9lFndETvFbZZn0svoCIfd1fihdIiY+unT4cmrLQzJ921n6WQJ1TjV5Krqro2XHK2G9X+mIbuDgKEUMDU9biI6cknz7aYWdDpGXIfr2bABupFtowxmqMFT8qpAO8I2n3q7bzRj4/g0af0ilI6DTsP4zfh5zxOrOOrxuMMgRoy2msDdu8irJIAlb9CQS0JXujJzb1jPqF+XPYQaBssoxLRhpXTWdJWX9NSmBOhF2xjPZ+y0hRUpnYUeZo5brra0Jo8vAZSmYurMT927Z65mz4OvcejmHoA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oQIZYYMUaZOPQPhubg++Qf1Qbaw9EpTpFqQ06SmBOKk=;
+ b=iTR2dBwwzQ8e+ux/pLeIb2s1gXEBDWLzqShiDlCwk7A262dczu7JfM/G08+vOyvWniqG8KWyLIjnkUGHA3r4KyD09dOlR+YBKpQIrDYbQJtUOxw69awZ2Iz57wOuOdeeCqpIvXfuhUK0HpyDazZtKIYhzOJa2K7RPbO63QZCtAY=
+Authentication-Results: oracle.com; dkim=none (message not signed)
+ header.d=none;oracle.com; dmarc=none action=none header.from=silabs.com;
+Received: from MWHPR11MB1775.namprd11.prod.outlook.com (2603:10b6:300:10e::14)
+ by MWHPR11MB1726.namprd11.prod.outlook.com (2603:10b6:300:23::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.34; Tue, 12 May
+ 2020 09:03:21 +0000
+Received: from MWHPR11MB1775.namprd11.prod.outlook.com
+ ([fe80::e055:3e6d:ff4:56da]) by MWHPR11MB1775.namprd11.prod.outlook.com
+ ([fe80::e055:3e6d:ff4:56da%5]) with mapi id 15.20.2979.033; Tue, 12 May 2020
+ 09:03:21 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] staging: wfx: unlock on error path
+Date: Tue, 12 May 2020 11:03:16 +0200
+Message-ID: <2556639.E3UUflA7rB@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <20200512083656.GA251760@mwanda>
+References: <20200512083656.GA251760@mwanda>
+X-ClientProxiedBy: SN2PR01CA0013.prod.exchangelabs.com (2603:10b6:804:2::23)
+ To MWHPR11MB1775.namprd11.prod.outlook.com (2603:10b6:300:10e::14)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-42.localnet (82.67.86.106) by
+ SN2PR01CA0013.prod.exchangelabs.com (2603:10b6:804:2::23) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3000.20 via Frontend Transport; Tue, 12 May 2020 09:03:20 +0000
+X-Originating-IP: [82.67.86.106]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 96b693e6-92a5-4d00-61de-08d7f65351c4
+X-MS-TrafficTypeDiagnostic: MWHPR11MB1726:
+X-Microsoft-Antispam-PRVS: <MWHPR11MB1726D856F0DE368D4DA9A59393BE0@MWHPR11MB1726.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:3631;
+X-Forefront-PRVS: 0401647B7F
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: e6RFzfZ93BJvuZeRsK8A2mMF4GVwQaQ+3N6Tf6bewa6oMaGDAzvfH2SGwe5PW0vW2/KLj0ORYUMIXktwEYqcYDvt17my5dTFfnCmr9X6ijXgSvd9Y2WEhrQ2Efq/FdQtIh2/MljvbOAM5B7fdR5DkTOLRvQM4JLKSa6k11T58Azt/sVD+luzZbRFTBEA93zVIyUwxxEpUSSxVx+ic/pkU3eHFqa5WKEXyZghuWYxAjExYwVHBhHihDTtIFy693PybuRsB4X3NH0YT+FxcYdPQNV3ws6+BeGHZlqiKDwVq2VM41nyc73H1QvmqWACg7YOUMcbuTDTb/kfjKEM6pl0I5bGuURwI0MtechO6XeONpkrKElkuaA9fY1qMMuC89rsmyNUjFxQcPZalzgIF/3GwPpVLqpdwWRCtFiDzHMl7/YyZ//atyn9pnTFv+i3/sDrFhwyJaC4GpfEBGBFwqgaHJrOssRQoHgpqXrKynNyWNX4pD9RbfCXXiq0PbkEz9ju+x65Lo1vdAuTjlEBBPfBJR42eq4zzAQERIOXq4YCP7TxMKj7RiZ3Gh13Bwr5TcWY
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR11MB1775.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(346002)(366004)(396003)(39850400004)(376002)(136003)(33430700001)(6506007)(6916009)(6512007)(36916002)(4326008)(86362001)(66476007)(66556008)(6666004)(66946007)(478600001)(16526019)(6486002)(66574014)(33440700001)(33716001)(316002)(9686003)(8936002)(5660300002)(8676002)(2906002)(26005)(186003)(52116002)(956004)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: XsZSOD/Ubz2G0Hxozse3EJ8EzPxBSZfsEsiMJqQnN6MZEYG8iPql1AzGw9Vzh9uGdXHxt/dvI7SPJJ3E5uIyhkNVldhDRzO0IkPAU5g51r5UhWNny8/R5CJt+PJxyspxc5U8yKgDbPn9FPus71bmXZg4liFVoYYrUqg3INS66WQxhqokbR2dElCPiuVB4UCvDdU09YoPE0mkmGP04Sg+0b66kIFE+ZYc5J5KRRgNtBewLMzsDYXpb1qSpOfbFLb4DDrE0uVQ7iSr9NvXHsZMa4qkxEqOgogJbmPD98noiAoJn88+C2lJ5Apw9IVG+rsvvK9ZuPJyUFLj7APPOmF76yW/STbHGOs+hrG+Ruh0zsDexSpIz/3m42ERUokQeUky1Zw96gDdO3gClR7ODC72XPoS9gbzPMNhI6/l0yFCUDQi3NyR+cBCG/x10TiyKiIEFVxtKJTJwC4eI1Y4M95eQSSLdCkX0naXPGpIKBNLBiA=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 96b693e6-92a5-4d00-61de-08d7f65351c4
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2020 09:03:21.3746 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: VcHsNrcRX5YOwt7Nh0SXYReUyd4TQPuKvx4yg98D1bA49C57rCqvD3BU2w+f8pL/vXoPNLotol/dIqn9c/JyUQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1726
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,72 +110,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- linux-tegra@vger.kernel.org, Dmitry Osipenko <digetx@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel-janitors@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The Documentation/DMA-API-HOWTO.txt states that the dma_map_sg() function
-returns the number of the created entries in the DMA address space.
-However the subsequent calls to the dma_sync_sg_for_{device,cpu}() and
-dma_unmap_sg must be called with the original number of the entries
-passed to the dma_map_sg().
+On Tuesday 12 May 2020 10:36:56 CEST Dan Carpenter wrote:
+> =
 
-struct sg_table is a common structure used for describing a non-contiguous
-memory buffer, used commonly in the DRM and graphics subsystems. It
-consists of a scatterlist with memory pages and DMA addresses (sgl entry),
-as well as the number of scatterlist entries: CPU pages (orig_nents entry)
-and DMA mapped pages (nents entry).
+> We need to release the tx_lock on the error path before returning.
+> =
 
-It turned out that it was a common mistake to misuse nents and orig_nents
-entries, calling DMA-mapping functions with a wrong number of entries or
-ignoring the number of mapped entries returned by the dma_map_sg()
-function.
+> Fixes: d1c015b4ef6f ("staging: wfx: rewrite wfx_hw_scan()")
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+> ---
+> From static analysis.  Not tested.
+> =
 
-To avoid such issues, lets use a common dma-mapping wrappers operating
-directly on the struct sg_table objects and use scatterlist page
-iterators where possible. This, almost always, hides references to the
-nents and orig_nents entries, making the code robust, easier to follow
-and copy/paste safe.
+>  drivers/staging/wfx/scan.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> =
 
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
-For more information, see '[PATCH v4 00/38] DRM: fix struct sg_table nents
-vs. orig_nents misuse' thread:
-https://lore.kernel.org/dri-devel/20200512085710.14688-1-m.szyprowski@samsung.com/T/
----
- drivers/staging/media/tegra-vde/iommu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> diff --git a/drivers/staging/wfx/scan.c b/drivers/staging/wfx/scan.c
+> index 76761e4960dd7..eff1be9fb28f8 100644
+> --- a/drivers/staging/wfx/scan.c
+> +++ b/drivers/staging/wfx/scan.c
+> @@ -57,8 +57,10 @@ static int send_scan_req(struct wfx_vif *wvif,
+>         wvif->scan_abort =3D false;
+>         reinit_completion(&wvif->scan_complete);
+>         timeout =3D hif_scan(wvif, req, start_idx, i - start_idx);
+> -       if (timeout < 0)
+> +       if (timeout < 0) {
+> +               wfx_tx_unlock(wvif->wdev);
+>                 return timeout;
+> +       }
+>         ret =3D wait_for_completion_timeout(&wvif->scan_complete, timeout=
+);
+>         if (req->channels[start_idx]->max_power !=3D wvif->vif->bss_conf.=
+txpower)
+>                 hif_set_output_power(wvif, wvif->vif->bss_conf.txpower);
+> --
+> 2.26.2
+> =
 
-diff --git a/drivers/staging/media/tegra-vde/iommu.c b/drivers/staging/media/tegra-vde/iommu.c
-index 6af863d..adf8dc7 100644
---- a/drivers/staging/media/tegra-vde/iommu.c
-+++ b/drivers/staging/media/tegra-vde/iommu.c
-@@ -36,8 +36,8 @@ int tegra_vde_iommu_map(struct tegra_vde *vde,
- 
- 	addr = iova_dma_addr(&vde->iova, iova);
- 
--	size = iommu_map_sg(vde->domain, addr, sgt->sgl, sgt->nents,
--			    IOMMU_READ | IOMMU_WRITE);
-+	size = iommu_map_sgtable(vde->domain, addr, sgt,
-+				 IOMMU_READ | IOMMU_WRITE);
- 	if (!size) {
- 		__free_iova(&vde->iova, iova);
- 		return -ENXIO;
--- 
-1.9.1
+> =
+
+
+Good catch!
+
+Reviewed-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+
+-- =
+
+J=E9r=F4me Pouiller
+
 
 _______________________________________________
 devel mailing list
