@@ -2,55 +2,72 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5AD161D1ECF
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 21:16:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 776B41D1F61
+	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 21:38:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DE25089442;
-	Wed, 13 May 2020 19:16:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 35D08880A1;
+	Wed, 13 May 2020 19:38:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ml8n2RBh9-0d; Wed, 13 May 2020 19:16:02 +0000 (UTC)
+	with ESMTP id LFvXTr0Y-ZB4; Wed, 13 May 2020 19:38:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D64AF884DE;
-	Wed, 13 May 2020 19:16:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3E9198940B;
+	Wed, 13 May 2020 19:38:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4BF921BF321
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 19:15:59 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 318031BF321
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 19:38:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 48F1A88466
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 19:15:59 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 27AA82263E
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 19:38:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QDtU-PlHr++s for <devel@linuxdriverproject.org>;
- Wed, 13 May 2020 19:15:57 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kocurkovo.cz (mail.kocurkovo.cz [185.8.236.170])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9FC248842E
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 19:15:57 +0000 (UTC)
-Received: by mail.kocurkovo.cz (Postfix, from userid 1000)
- id A73B81D44; Wed, 13 May 2020 21:15:54 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.kocurkovo.cz A73B81D44
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kocurkovo.cz;
- s=mail; t=1589397354;
- bh=QJApaYVVjDV2ZABMuLXN+EsQlfEtvul5TQM0jLYTCcs=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=pjix9LRIvZi9HTHKf4BWi2D2O3Qt7Q8Q0+9yhAsAflKrmPGL+gXemnPV75KJ31oUb
- cE1Wu42Uh1FJHT818WNb+qxYkzJ/QxgVlYNZc6gmz1scpViY1jObCM/PCj2EWvOdBm
- EPC93Ugxaynw7oZa/BX97BRvzsOc8i31TmMWgbVw=
-From: Matej Dujava <mdujava@kocurkovo.cz>
-To: Forest Bond <forest@alittletooquiet.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-Subject: [PATCH v3 2/2] staging: vt6655: vt6656: change order of makefile
- variable definitions
-Date: Wed, 13 May 2020 21:15:51 +0200
-Message-Id: <1589397351-24655-3-git-send-email-mdujava@kocurkovo.cz>
-X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <1589397351-24655-1-git-send-email-mdujava@kocurkovo.cz>
-References: <1589397351-24655-1-git-send-email-mdujava@kocurkovo.cz>
+ with ESMTP id pVlL6x3GB3ul for <devel@linuxdriverproject.org>;
+ Wed, 13 May 2020 19:38:15 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-vs1-f65.google.com (mail-vs1-f65.google.com
+ [209.85.217.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 08DA222786
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 19:38:15 +0000 (UTC)
+Received: by mail-vs1-f65.google.com with SMTP id h9so543912vsa.3
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 12:38:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Ke4uWAP9sQZ5K5ZqcbNueL/vqjGx4KuSfWacNnG9IP8=;
+ b=KNAIVCs5xSS7MZJNvGuxgkkkhNsEsO5VSgsdXDdeQrNZCf9D+Sn2/2tSsN24QHNc8p
+ AvOTOqWe+sx6il52JIgv4kXuEZRZ0u51yvR7MKLbd9tIyP/Xzg0IqYK18kjhr/kYWe8G
+ 42W/luCMqYbPVnfkpDJFoAuovJCbFmCn0DUVGtv2AI+0lmnPI1YqLE94SS104mzu4Bjn
+ J7x8nTO846CB35bhaKjcdPKDUbf8Oyd0b6uSZ9hhsip1o3y4p9Xj3RyjiOkcm4fR3SZb
+ rWElA7JW0rGfwLmbIywb7vTWW//w2WZ3cy/2DbHbqz7sRN8cCVSvbfjnaB4p2AXGG6Ig
+ xLiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Ke4uWAP9sQZ5K5ZqcbNueL/vqjGx4KuSfWacNnG9IP8=;
+ b=QzlIl2Y2Mq8HsMIgwR3/aeOThaBJTxYeg7vLZg6OQkB5XfxvGtmJ2HXldf0d1+66vr
+ 3o+I4172dD5HxVD8rWTIOpiBTMp3OSOqzGViLAlvzS0tP20AbjKasSwEXuda1SM52XcW
+ 4W7baSaOlilabSpwuyzZlXEhWEdajhoQCNX3033F+NrK241fS4l7mL4EdjcwTFKMJQ7J
+ FeDjWeLNqPal06Z8Zm+vWACDqzL+uzOpAaGKjQLHm9A24JzDNLkPcck1bNyVqlO0TJJN
+ u1//z+fk1ZCVRjctJc8bCmhhmrwmd2fwrlaoiYl3br5GPA1bESOxs3KAavN0dG0us6GH
+ RgzQ==
+X-Gm-Message-State: AOAM5302SxrPPC552fCsxAXRmomMMxllE03JW8q0cVVPydMikqz3Iltg
+ Cx+Jv4OZ61AjZKWxZhmpigBIoXnToBkwRYtuBQA=
+X-Google-Smtp-Source: ABdhPJxXY5J5q/rrCCt9ey3fgywEcsxm9dJjt4mAdeE5DwUTG5N/TW670z8VUoUjQ46NKw8Hm0DCwBQ7+Eq+mRYUQ04=
+X-Received: by 2002:a67:7f0a:: with SMTP id a10mr669800vsd.147.1589398693723; 
+ Wed, 13 May 2020 12:38:13 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200507212912.599433-1-alexandre.belloni@bootlin.com>
+ <20200513174530.GA32096@animalcreek.com>
+In-Reply-To: <20200513174530.GA32096@animalcreek.com>
+From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+Date: Thu, 14 May 2020 01:07:36 +0530
+Message-ID: <CAAs3649-3dAmUqjLiEP8Ar3dKamp7ek1o0R5WN3g8kxTgz6fFg@mail.gmail.com>
+Subject: Re: [PATCH] greybus: audio: remove unused code
+To: Mark Greer <mgreer@animalcreek.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,85 +80,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alex Elder <elder@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org,
+ greybus-dev@lists.linaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch will add indentation to multiline variable and put
-obj-$(CONFIG_X) at the beginning of the file. This order of variables is
-used in other drives, so this will make vt665x Makefiles fit into the
-pattern.
+On Wed, May 13, 2020 at 11:15 PM Mark Greer <mgreer@animalcreek.com> wrote:
+>
+> On Thu, May 07, 2020 at 11:29:11PM +0200, Alexandre Belloni wrote:
+> > GREYBUS_AUDIO_MSM8994 is not an existing configuration option and as
+> > reported in September 2016, it depends on an "out-of-tree qualcomm audio
+> > driver". This driver never made it upstream.
+> >
+> > https://lore.kernel.org/lkml/20160921073905.GA31263@kroah.com/
+> >
+> > Moreover, there doesn't seem to be any interest in actually fixing the
+> > driver as it uses ASoC APIs that have been removed from the kernel in 2018
+> > as shown by its use of snd_soc_register_codec and
+> > snd_soc_codec_get_drvdata, removed in commit 999f7f5af8eb ("ASoC: remove
+> > Codec related code").
+> >
+> > Signed-off-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
+> > ---
+Hi Alexandre,
 
-Indentation is fixed in vt6655/Makefile.
+As mentioned in the mail archive referred, the GB Codec driver that is
+currently available in kernel tree is dependent on qualcomm audio
+driver. And some time later I made some minor modifications to remove
+the unnecessary dependencies. However, I missed to share the same with
+the community :(
 
-Order of variable declaration is changed in vt6656/Makefile.
+Thanks to you for triggering the thread. Now, I could retrieve my local
+changes and I have been in the process of updating it again to make it
+compatible with latest kernel.
 
-Signed-off-by: Matej Dujava <mdujava@kocurkovo.cz>
----
-v1: Initial patch
-v2: This patch was split from original bigger patch
-v3: Added more info about what and why it's removed
+I'm planning to share the same here in the next few days.  I'll mark you
+in CC to seek your review comments as well.
 
- drivers/staging/vt6655/Makefile | 24 ++++++++++++------------
- drivers/staging/vt6656/Makefile |  4 ++--
- 2 files changed, 14 insertions(+), 14 deletions(-)
+In case, I'm unable to make those changes to the staging tree, I would
+also recommend to drop this code. Kindly let me know your opinion.
 
-diff --git a/drivers/staging/vt6655/Makefile b/drivers/staging/vt6655/Makefile
-index e70357ec0af8..eda08a1516ab 100644
---- a/drivers/staging/vt6655/Makefile
-+++ b/drivers/staging/vt6655/Makefile
-@@ -1,15 +1,15 @@
- # SPDX-License-Identifier: GPL-2.0
- 
--vt6655_stage-y +=	device_main.o \
--	card.o \
--	channel.o \
--	mac.o \
--	baseband.o \
--	rxtx.o \
--	dpc.o \
--	power.o \
--	srom.o \
--	key.o \
--	rf.o
--
- obj-$(CONFIG_VT6655) +=	vt6655_stage.o
-+
-+vt6655_stage-y +=	device_main.o \
-+			card.o \
-+			channel.o \
-+			mac.o \
-+			baseband.o \
-+			rxtx.o \
-+			dpc.o \
-+			power.o \
-+			srom.o \
-+			key.o \
-+			rf.o
-diff --git a/drivers/staging/vt6656/Makefile b/drivers/staging/vt6656/Makefile
-index f696a9d7a143..aac323d6a684 100644
---- a/drivers/staging/vt6656/Makefile
-+++ b/drivers/staging/vt6656/Makefile
-@@ -1,5 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- 
-+obj-$(CONFIG_VT6656) +=	vt6656_stage.o
-+
- vt6656_stage-y +=	main_usb.o \
- 			card.o  \
- 			mac.o   \
-@@ -11,5 +13,3 @@ vt6656_stage-y +=	main_usb.o \
- 			rf.o \
- 			usbpipe.o \
- 			channel.o
--
--obj-$(CONFIG_VT6656) +=	vt6656_stage.o
--- 
-2.26.2
+--
+thanks,
+./va
 
+>
+> Everything you say is true but it is still kinda sad to see this go.
+> But that is life...  If and when someone has the motivation to get this
+> working again they can take a look at the git history.
+>
+> Thanks for this, Alexandre.
+>
+> Acked-by: Mark Greer <mgreer@animalcreek.com>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
