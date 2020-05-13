@@ -2,74 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FD711D1243
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 14:06:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EB4CB1D1D66
+	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 20:25:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0B42787FA6;
-	Wed, 13 May 2020 12:06:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BEBD4883DF;
+	Wed, 13 May 2020 18:25:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Eqvy6dMBscTA; Wed, 13 May 2020 12:06:26 +0000 (UTC)
+	with ESMTP id nQNVDi+tVljf; Wed, 13 May 2020 18:25:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 84ABB87EF6;
-	Wed, 13 May 2020 12:06:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1009C88447;
+	Wed, 13 May 2020 18:25:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9F70D1BF2E5
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 12:06:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D9AA21BF95F
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 18:25:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 931CE2042B
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 12:06:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CED48221AB
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 18:25:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6UnMsZOSuY6s for <devel@linuxdriverproject.org>;
- Wed, 13 May 2020 12:06:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
- [209.85.208.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 43ECF1FD90
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 12:06:21 +0000 (UTC)
-Received: by mail-lj1-f195.google.com with SMTP id u15so17499630ljd.3
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 05:06:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:reply-to:from:date:message-id
- :subject:to:cc;
- bh=rqWzzkOtBCpmgaVCKpj7+jaGD37zCFqeMtexNP5QRuE=;
- b=qeD6Nm2mKPVu1exoYnpXJhhjBKHZdaUMDm2AWDFhZys9RnaspB+P9VkYujGl31nKqn
- WagkYgVtSZCMVipmZjuysPlRWLkGigdsNodZaDhc8L2KEn/n+Aw5NlowCNryZdhwjJuZ
- I9a/eMvfwWEwNfBAin+KyqE8TYwXYIKwsKK5kx0W4srvRYKEU6cic5if37CexbOe7xS0
- bzXvtii3T3raofA0lLhK649Whj5GXdeYkJEF+6/JSFgiGI9sB03QalwmwGx5+Beo6eyE
- B8IRfi1FpydyMtcRG9+Cz8cFmpY5Io9Gk1UvzF3XnQ59sCTh9fi8i9S9h6NmsJmNxg4i
- Tgkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
- :from:date:message-id:subject:to:cc;
- bh=rqWzzkOtBCpmgaVCKpj7+jaGD37zCFqeMtexNP5QRuE=;
- b=MU6PFydR47iqAY0EhClSDci4BLA8BcEM0PyslNOnBCj2xfDgMKTVgq3HqbTbnCCM1j
- Z+T/41abT12h/FpRTYcbNML3vtVbBFC66OitkIVfFJQW/YR8uxRo3BsjOIEjCwqqXcYa
- 4h9glT59fI/ow6lLtL0DTDL+Ye0XULvu5SXOUU5/6YaxOk2BQHtkkFf+HKJSoJyJpUGG
- qJJPeLNVWxGiWOolqHD02IUoIhGrVCz7l7JlYqcHuSqQkAZOXFTWzTowa0hP1Nfp3e6l
- aLlQNfq6VZCa56o/gk84v+uKZx6rhyX06BkfU2sLxvHgqYrXHfgmtPcNes4a1Oq0fg0R
- mOpA==
-X-Gm-Message-State: AOAM533JCAdhlTzES0pkiGkWFWvhfkuCSWTvNcRBlXKDTp3+LXfUJ9pa
- g/soXdEkZeOl3stM8oihwDPAXtsL4FHE/sNZoLY=
-X-Google-Smtp-Source: ABdhPJySqd5aKEee2N8mNCkrbF8REchFhQ7yF5jLHkOX7270Pxv7mqJsGVq7Ix9WFSznPLx8EacrYqvbMQJ7yygKp68=
-X-Received: by 2002:a2e:8590:: with SMTP id b16mr17846575lji.45.1589371579390; 
- Wed, 13 May 2020 05:06:19 -0700 (PDT)
+ with ESMTP id NNejK8IYGivj for <devel@linuxdriverproject.org>;
+ Wed, 13 May 2020 18:25:11 +0000 (UTC)
+X-Greylist: delayed 03:25:26 by SQLgrey-1.7.6
+Received: from mailserver1.advcloud.vip (unknown [39.98.55.170])
+ by silver.osuosl.org (Postfix) with ESMTPS id C4D6C21515
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 18:25:10 +0000 (UTC)
+Received: from User (unknown [69.61.84.242])
+ by mailserver1.advcloud.vip (Postfix) with ESMTPA id 268C024ABC;
+ Wed, 13 May 2020 20:45:00 +0800 (CST)
+From: "VERUMLEM KLEITH"<plastiikdemir@gmail.com>
+Subject: WINNING NOTIFICATION.
+Date: Wed, 13 May 2020 05:45:54 -0700
 MIME-Version: 1.0
-References: <20200510101308.10451-1-john.oldman@polehill.co.uk>
- <20200513115823.GC953616@kroah.com>
-In-Reply-To: <20200513115823.GC953616@kroah.com>
-From: John Oldman <john.oldman60@gmail.com>
-Date: Wed, 13 May 2020 13:06:08 +0100
-Message-ID: <CAMJX__Qx_MyOmqiphz_Fg0X8itu8PDtNNpFTKqxGabK6v1bsLg@mail.gmail.com>
-Subject: Re: [PATCH V3] staging: vc04_services: vchiq_connected.c: Block
- comment alignment
-To: Greg KH <gregkh@linuxfoundation.org>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200513182512.CED48221AB@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,68 +55,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: john.oldman@polehill.co.uk
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- John Oldman <john.oldman@polehill.co.uk>,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: mike.beekens@execs.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-yea I agree, will re-submit...
-Cheers
-john
-
-On Wed, 13 May 2020 at 12:58, Greg KH <gregkh@linuxfoundation.org> wrote:
->
-> On Sun, May 10, 2020 at 11:13:08AM +0100, John Oldman wrote:
-> > Coding style issue
-> > This patch clears the checkpatch.pl "Block comments should align the * on each line" warning.
-> >
-> > Signed-off-by: John Oldman <john.oldman@polehill.co.uk>
-> > ---
-> > v1: Initial attempt.
-> > v2: Resubmitted with shorter comment line, as suggested by Greg KH.
-> > v3: Resubmitted with descriptiuon text moved into the comment area.
-> >
-> >  .../interface/vchiq_arm/vchiq_connected.c     | 32 +++++++++----------
-> >  1 file changed, 16 insertions(+), 16 deletions(-)
-> >
-> > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c
-> > index 1640906e3929..993535bbc479 100644
-> > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c
-> > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_connected.c
-> > @@ -15,10 +15,10 @@ static   int                        g_once_init;
-> >  static   struct mutex               g_connected_mutex;
-> >
-> >  /****************************************************************************
-> > -*
-> > -* Function to initialize our lock.
-> > -*
-> > -***************************************************************************/
-> > + *
-> > + * Function to initialize our lock.
-> > + *
-> > + ***************************************************************************/
-> >
-> >  static void connected_init(void)
->
-> Shouldn't that really be written as:
->
-> /* Function to initialize our lock */
-> static void connect_init(void);
->
->
-> No need for the /****** mess, and no need for the blank line.
->
-> Simple and clean is best.
->
-> thanks,
->
-> greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R29vZ2xlIEluY29ycG9yYXRpb26uLgpCZWxncmF2ZSBIb3VzZSwKNzYgQnVja2luZ2hhbSBQYWxh
+Y2UgUm9hZCwKTG9uZG9uIFNXMVcgOVRRLApVbml0ZWQgS2luZ2RvbS4KCkF0dGVudGlvbjogTHVj
+a3kgV2lubmVyLgoKR09PR0xFIFdJTk5JTkcgTk9USUZJQ0FUSU9OLgoKV2Ugd2lzaCB0byBjb25n
+cmF0dWxhdGUgeW91IG9uIHRoaXMgbm90ZSwgZm9yIGJlaW5nIHBhcnQgb2Ygb3VyIGx1Y2t5IHdp
+bm5lcnMgc2VsZWN0ZWQgdGhpcyB5ZWFyLiBUaGlzIHByb21vdGlvbiB3YXMgc2V0LXVwIHRvIGVu
+Y291cmFnZSB0aGUgYWN0aXZlIHVzZSBvZiAKdGhlIEdvb2dsZSBzZWFyY2ggZW5naW5lIGFuZCB0
+aGUgR29vZ2xlIGFuY2lsbGFyeSBzZXJ2aWNlcy4gSGVuY2Ugd2UgZG8gYmVsaWV2ZSB3aXRoIHlv
+dXIgcHJpemUgd2lubmluZywgeW91IHdpbGwgY29udGludWUgdG8gYmUgYWN0aXZlIGFuZCBwYXRy
+b25pemUgdG8gdGhpcyBjb21wYW55LiAKCkdvb2dsZSBpcyBub3cgdGhlIGxlYWRpbmcgc2VhcmNo
+IGVuZ2luZSB3b3JsZHdpZGUsIGFuZCBpbiBhbiBlZmZvcnQgdG8gZW5zdXJlIHRoYXQgaXQgcmVt
+YWlucyB0aGUgbW9zdCB3aWRlbHkgdXNlZCBzZWFyY2ggZW5naW5lLiBBbiBFYXN0ZXIgb25saW5l
+IGUtbWFpbCBiYWxsb3Rpbmcgd2FzIGNhcnJpZWQgb3V0IG9uIHRoZSAxMHRoIG9mIEFwcmlsLCAy
+MDIwIHdpdGhvdXQgeW91ciBrbm93bGVkZ2UuIFJlc3VsdHMgd2VyZSBvZmZpY2lhbGx5IHJlbGVh
+c2VkIHRvZGF5LiBXZSB3aXNoIHRvIGZvcm1hbGx5IGFubm91bmNlIHRvIHlvdSB0aGF0IHlvdXIg
+ZW1haWwgYWRkcmVzcyB3YXMgYXR0YWNoZWQgdG8gYSBsdW1wIHN1bSBvZiCjODUwLDAwMC4wMCB7
+RWlnaHQgSHVuZHJlZCBhbmQgRmlmdHkgVGhvdXNhbmQgR3JlYXQgQnJpdGlzaCBQb3VuZHMgU3Rl
+cmxpbmd9LgoKSE9XIERJRCBZT1UgV0lOPwoKTHVja3kgd2lubmVycyBkaWQgbm90IGhhdmUgdG8g
+cHVyY2hhc2UgYSB0aWNrZXQgdG8gcGFydGljaXBhdGUgaW4gdGhlIGxvdHRlcnkgcHJvZ3JhbS4g
+RW1haWwgYWRkcmVzc2VzIHdhcyBzZWxlY3RlZCBmcm9tICBOb3J0aCBBbWVyaWNhLCBTb3V0aCBB
+bWVyaWNhLCBBc2lhLCBFdXJvcGUsIE1pZGRsZSBFYXN0LCBhbmQgQWZyaWNhIHJlZ2lvbnMuIFRo
+aXMgcHJvbW90aW9uIHdhcyBzZXQtdXAgdG8gZW5jb3VyYWdlIHRoZSBhY3RpdmUgdXNhZ2Ugb2Yg
+dGhlIEdPT0dMRShSKSBicmFuZC4gSGVuY2Ugd2UgZG8gYmVsaWV2ZSB0aGF0IHdpdGggeW91ciBw
+cml6ZSB3aW5uaW5nLCB5b3Ugd2lsbCBjb250aW51ZSB0byBiZSBhY3RpdmUgYW5kIHBhdHJvbml6
+ZSBHT09HTEUgc2VydmljZXMuCgpUaGVzZSBhcmUgeW91ciBwcml6ZSB3aW5uaW5nIGRldGFpbHMu
+ClNlY3VyaXR5IENvZGUvQmF0Y2ggTnVtYmVyOiBHVUsvNDUzMjM0NUcKVGlja2V0IE51bWJlcjog
+R1VLLzY5OS8zMy8yMDIwCldpbm5pbmcgTnVtYmVyOiBHVUsvODc3Lzc5OC8yMDIwCgpJbmZvcm1h
+dGlvbiByZXF1aXJlZCBmcm9tIHlvdSBhcmUgcGFydCBvZiBvdXIgcHJlY2F1dGlvbmFyeSBtZWFz
+dXJlIHRvIGF2b2lkIGRvdWJsZSBjbGFpbXMgYW5kIHVud2FycmFudGVkIGFidXNlIG9mIHRoaXMg
+cHJvZ3JhbS4gVG8gY2xhaW0geW91ciB3aW5uaW5nLCBQbGVhc2UgZmlsbCBvdXQgdGhlIGluZm9y
+bWF0aW9uIGJlbG93OgoKKDEpIFlvdXIgY29udGFjdCBhZGRyZXNzOgooMikgWW91ciBEaXJlY3Qg
+VGVsZXBob25lL21vYmlsZSBudW1iZXJzOgooMykgWW91ciBOYXRpb25hbGl0eS9Db3VudHJ5Ogoo
+NCkgWW91ciBGdWxsIE5hbWU6Cig1KSBTZXg6Cig2KSBPY2N1cGF0aW9uOgooNykgQWdlOgoKUGxl
+YXNlIGNvbnRhY3Qgb3VyIENsYWltcyBPZmZpY2VyOgpNUiBNSUNIQUVMIEJFRUtFTlMKR09PR0xF
+IFZBTElEQVRJT04gT0ZGSUNFIERFUEFSVE1FTlQgKFVLKS4KRS1tYWlsOiBtaWtlLmJlZWtlbnNA
+ZXhlY3MuY29tCgpUaGUgR29vZ2xlIFByb21vdGlvbiBBd2FyZCBUZWFtIGhhcyBkaXNjb3ZlcmVk
+IGEgaHVnZSBudW1iZXIgb2YgZG91YmxlIGNsYWltcyBkdWUgdG8gd2lubmVycyBpbmZvcm1pbmcg
+Y2xvc2UgZnJpZW5kcywgcmVsYXRpdmVzIGFuZCB0aGlyZCBwYXJ0aWVzIGFib3V0IHRoZWlyIHdp
+bm5pbmdzIGFuZCBhbHNvIHNoYXJpbmcgdGhlaXIgaWRlbnRpZmljYXRpb24gbnVtYmVycy4gQXMg
+YSByZXN1bHQgb2YgdGhpcywgdGhlc2UgZnJpZW5kcyB0cnkgdG8gY2xhaW0gdGhlIHdpbm5pbmdz
+IG9uIGJlaGFsZiBvZiB0aGUgcmVhbCB3aW5uZXJzLiBUaGUgZ29vZ2xlIHByb21vdGlvbiBhd2Fy
+ZCAKY29tbWl0dGVlIGhhcyByZWFjaGVkIGEgZGVjaXNpb24gZnJvbSB0aGUgaGVhZHF1YXJ0ZXJz
+IGF0IHRoZSBVbml0ZWQgS2luZ2RvbSB0aGF0IGFueSBkb3VibGUgY2xhaW0gZGlzY292ZXJlZCBi
+eSB0aGUgTG90dGVyeSBCb2FyZCB3aWxsIHJlc3VsdCB0byB0aGUgZGlzcXVhbGlmaWNhdGlvbiBv
+ZiB0aGUgd2lubmVyLiBTbyB5b3UgYXJlIGhlcmVieSBzdHJvbmdseSBhZHZpc2VkIG9uY2UgbW9y
+ZSB0byBrZWVwIHlvdXIgd2lubmluZ3MgCnN0cmljdGx5IGNvbmZpZGVudGlhbCB1bnRpbCB5b3Ug
+Y2xhaW0geW91ciBwcml6ZS4KCkNvbmdyYXR1bGF0aW9ucyBmcm9tIHRoZSBTdGFmZnMgYW5kIE1l
+bWJlcnMgb2YgdGhlIEdvb2dsZSBJbnRlcmFjdGl2ZSBMb3R0ZXJ5IEJvYXJkIENvbW1pc3Npb24u
+CgpZb3VycyBTaW5jZXJlbHksCk1SUy4gVkVSVU1MRU0gS0xFSVRILgpHT09HTEUgWk9OQUwgQ09P
+UkRJTkFUT1IKTE9ORE9OLFVOSVRFRCBLSU5HRE9NCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZl
+cnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
