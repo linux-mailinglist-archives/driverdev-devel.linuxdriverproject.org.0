@@ -2,77 +2,119 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F1771D13BF
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 15:01:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB27C1D153A
+	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 15:33:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AB38889228;
-	Wed, 13 May 2020 13:01:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A3A298939D;
+	Wed, 13 May 2020 13:33:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U7HUacX8Q5wu; Wed, 13 May 2020 13:01:06 +0000 (UTC)
+	with ESMTP id FtZB9zzKKARh; Wed, 13 May 2020 13:33:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 29A2888F85;
-	Wed, 13 May 2020 13:01:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DDB0989372;
+	Wed, 13 May 2020 13:33:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 25B9A1BF2E5
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 13:01:03 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 551F51BF3FE
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 13:33:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 225E088DDA
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 13:01:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4F668882B1
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 13:33:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0vQTe5DimZEi for <devel@linuxdriverproject.org>;
- Wed, 13 May 2020 13:01:02 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 20F1788ABC
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 13:01:02 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id f15so6792222plr.3
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 06:01:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=dNZP1hODCFjbYeHZ6HY6IqS7arCegZXm1NX93ncNYxA=;
- b=F0eVoq99v+yZoZPlVsmr5bfX3WQzXzO3jrEsoLbHFRaz0rh71VAnMcLeKslTMoPYo0
- +f6bs4L/o0N2GPA8gn+8xkcbMVODC5FRfti908GOviJRtZwjk77Bn5xIn1vshLoPxroN
- dkfHUGXWlq/SmhudSjrHYNJbTJ2gA0lHSSnRTvrbsMT4rO54nw5hSLudmy5lgtcPBuNY
- 30CHSvoFyacwDHXxAx/vFw1w11b5SCEH8uWUWS9JZOLL65V4LB6aTLnRMZl+dYfREpr3
- jEq6KSZL4bT5POgEdLkUnLUqT4MdnCE83Gj6cLz5lBxAmstQSnJU9vZTeU14jQqjuOQM
- cadw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=dNZP1hODCFjbYeHZ6HY6IqS7arCegZXm1NX93ncNYxA=;
- b=IMeBmVSzG/nbhvuZwjEY2o/EnQc/CNID4AnE/zxQk9jdZg9jLEOIIP0O9ZlB14YwzU
- 9apb/NrwdKeP6p3Iq+MCECTg9oT7OlRYt2mTg5ynCm0zkDBBgOsRsLFbyaFSodTYIOY1
- 8Z0eiTnlIkuDU1xWE0FBKlQ6T3XNGFsvKWbHJGkY6sEm8Xqx+ZTjrBzHjJbBbpeExTBG
- l+PEt6GN52ENCygTNRZbpt/JCqQTRnsftQLnsKCn3mjMesJAjz67VwtguvQttkaus+U4
- RoDp33hcBM7dO/fh448ssS8dVogbI023TbKJSm8qz2DMAFBtNlIf/LBwn/oRCxV5i3c8
- Xx9g==
-X-Gm-Message-State: AGi0Pub6nIrk4l5+EEYyYNENepAn+nJc4CiKUC1Y8FPNxArMQyqpLoE/
- /qqtpxyVEwv2fVywRDedVZ8=
-X-Google-Smtp-Source: APiQypLLSQgmWWxsG4cq2ppEMWxlqwHTqTZBjGb31C6Q9n1uRmshCtRcG2vBumhlfetaI0nbfHsN4Q==
-X-Received: by 2002:a17:902:b107:: with SMTP id
- q7mr24093526plr.177.1589374861634; 
- Wed, 13 May 2020 06:01:01 -0700 (PDT)
-Received: from localhost ([203.205.141.39])
- by smtp.gmail.com with ESMTPSA id 188sm14544421pfg.218.2020.05.13.06.01.00
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 13 May 2020 06:01:00 -0700 (PDT)
-From: Xiangyang Zhang <xyz.sun.ok@gmail.com>
-To: manishc@marvell.com,
-	GR-Linux-NIC-Dev@marvell.com
-Subject: [PATCH] staging: qlge: Remove unnecessary spaces in qlge_main.c
-Date: Wed, 13 May 2020 21:00:42 +0800
-Message-Id: <20200513130042.13185-1-xyz.sun.ok@gmail.com>
-X-Mailer: git-send-email 2.19.1
-MIME-Version: 1.0
+ with ESMTP id LHNFvxV0jAr4 for <devel@linuxdriverproject.org>;
+ Wed, 13 May 2020 13:33:22 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mailout1.w1.samsung.com (mailout1.w1.samsung.com
+ [210.118.77.11])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 07668882FC
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 13:33:22 +0000 (UTC)
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+ by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20200513133320euoutp0152917b5554ed21d6efa784a0a016950b~Omcd6A2sk2269422694euoutp01a
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 13:33:20 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
+ 20200513133320euoutp0152917b5554ed21d6efa784a0a016950b~Omcd6A2sk2269422694euoutp01a
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1589376800;
+ bh=f33otPT6DOcOeLl0Wl3ABs4zD3ZmT52B/iGlsE1Ehiw=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=E6iAh7oJ0Ugdzmq5fH31Gk9nbdpLLrHS1hwIGRMrOPD0kEGaRIqxSE+BRP0V0xFSR
+ FL70VDjrE48JYQvLq+qE9uGbu9tTfUKK5qWqRK744qZapqD2h6MPm9cNTxmOTUBj0v
+ Cb+TMyeLykLcOnbFLp89XZkbQjadS2QDgScnVdf0=
+Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTP id
+ 20200513133320eucas1p238f7c2d468dcb4322b9908f86ae9b64b~Omcdi7sx22029120291eucas1p2l;
+ Wed, 13 May 2020 13:33:20 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+ eusmges1new.samsung.com (EUCPMTA) with SMTP id F6.D5.61286.027FBBE5; Wed, 13
+ May 2020 14:33:20 +0100 (BST)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+ 20200513133319eucas1p2eaae7e606163ec1b211a07a80a52655d~OmcdJV3VD1009610096eucas1p2T;
+ Wed, 13 May 2020 13:33:19 +0000 (GMT)
+Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
+ eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20200513133319eusmtrp1e9453a6aa118cc06986aae2b66588d44~OmcdIhu9s1050610506eusmtrp1a;
+ Wed, 13 May 2020 13:33:19 +0000 (GMT)
+X-AuditID: cbfec7f2-f0bff7000001ef66-79-5ebbf720de7a
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+ eusmgms1.samsung.com (EUCPMTA) with SMTP id 73.2A.08375.F17FBBE5; Wed, 13
+ May 2020 14:33:19 +0100 (BST)
+Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
+ eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200513133318eusmtip1d8476743c7e5537dc0f4e87e16e8aa14~OmccMjpFT3222032220eusmtip1F;
+ Wed, 13 May 2020 13:33:18 +0000 (GMT)
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
+ linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v5 31/38] staging: ion: remove dead code
+Date: Wed, 13 May 2020 15:32:38 +0200
+Message-Id: <20200513133245.6408-31-m.szyprowski@samsung.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200513133245.6408-1-m.szyprowski@samsung.com>
+X-Brightmail-Tracker: H4sIAAAAAAAAA0WSfUzMcRzH973fYw/Hr5P5LjZ2lk1bpbH5Wh5K/vhiw8ZfRhz9djVd5X6V
+ aOOKM51EMhJxylN1uVS7rEupuENpJ+m5SPmjptKzorjrd/jv9Xm/P5/v+7PPviwhG6G82Iio
+ WF4dpYiU066kyTLd4Ltiyhy6piudRpca3kjQ8OwnGj3NNFIoaWgl+m1KJ1BF/QyDmiaGaXQ2
+ 10ijvIJXEqSvCkQPNd4or+KHBI039UhQcW8zhT6U36ZR4csuBpkMGgpVf++j0NuuMQbpm2eY
+ IE9sMpsobLhjAHg2e4TA3ZW1JH4+qSfxvdEJCnc2V9C4bPIzhauyDQz+dNEqwSX3z+COuV4C
+ Z7Q+AtjcpqHxcOVHGqeV5oM9HvtdN4bxkRHxvNp/82HX8BT9CyrmizSh2mIiNWDITQdcWMit
+ g8bKXqADrqyMewxgyeUUSizGAUy7NuJ0xgDsT71K/h1Jq81yGo8AbLFOMf9G3s0ZaUcXzQVA
+ 3aBunj05LYCvL7k7mggulYL9RUXzxiIOwaTZccrBJOcNpyztwMFSbhPUmeudccthQdELwsEu
+ dn2gs8qpZ7MwZSJR5G1QW/gViLwIDlhLGZGXwbqMVNIRDLmzAPY0FDJikQrgh+RM50Qg7GyY
+ sW/E2tdbDY3l/g6EXDCsuxAi4gLYOujhaCbseNV0gxBlKbxwXia+sQpmWZ/8S622NRIiY9hn
+ bHIeqxZAS0opcwUsz/qfpQcgHyzh4wSVkhcCovgTfoJCJcRFKf2ORquKgf0j1s1ZR5+BicYj
+ NYBjgdxditrNoTJKES+cVNUAyBJyT+kuo12ShilOnuLV0YfUcZG8UAOWsqR8iXRtTv9BGadU
+ xPLHeD6GV/91JayLlwacm23VWrrdElQ2eY8v7jDezenYYlm8/nhS2233hSHKoV6P97s37Hzw
+ 9qdPVVnxDIptlBR7Hg3+VhlkO7V2w6/cvedkucp1W4cSk28l2ZaSY0f2uuSE27putuwIDjh9
+ /eYBi0fbdtNd7XRWhFConV49OZieV98dmqE3eMf/yjQce75PTgrhigAfQi0o/gCt2DPrhAMA
+ AA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrCIsWRmVeSWpSXmKPExsVy+t/xu7ry33fHGSx7qmbRe+4kk8X7v/fZ
+ LDbOWM9q0fhO2eL/tonMFnvO/GK3uPL1PZtF8+L1bBYrVx9lsliw39piWYOqxco9P5gsvlx5
+ yGSx6fE1VovLu+awWaw9cpfdYtuaBlaLgx+esFqcuvuZ3WLBtV/sDiIe23ZvY/VYM28No8ff
+ uR+ZPe7tO8zisffbAhaPhZ++snrcubaHzWP7twesHvvnrmH3uN99nMlj85J6j9v/HjN7TL6x
+ nNFj980GNo/3+66yefRtWcUYIBilZ1OUX1qSqpCRX1xiqxRtaGGkZ2hpoWdkYqlnaGwea2Vk
+ qqRvZ5OSmpNZllqkb5egl9G54ABrwSPeioPHtrE0ML7j7mLk5JAQMJHoOzyLsYuRi0NIYCmj
+ xLyuN8wQCRmJk9MaWCFsYYk/17rYIIo+MUqsfX2QCSTBJmAo0fUWIiEi0MkoMa37IzuIwyww
+ g1Vi3YF77CBVwgIWEo1/v4CNYhFQlfh+7BYjiM0rYCvRtfsMC8QKeYnVGw6AreYEir+6sx8s
+ LiSQL7F38T62CYx8CxgZVjGKpJYW56bnFhvqFSfmFpfmpesl5+duYgTG6LZjPzfvYLy0MfgQ
+ owAHoxIPr8Wt3XFCrIllxZW5hxglOJiVRHj91gOFeFMSK6tSi/Lji0pzUosPMZoCHTWRWUo0
+ OR+YPvJK4g1NDc0tLA3Njc2NzSyUxHk7BA7GCAmkJ5akZqemFqQWwfQxcXBKNTCqJfYtk3ie
+ 06H49L3fTsGqzR7/qi893jJ5WeiSjQ+8dJwa5p1Z9aha+bzFR3unq6XPW9v5/jod0emOb9JT
+ bLvDrdKhbdW6lk3meOctk6Pv310v6Ox6+fg1+/WrK/4F1grOSVIw+6Y/ZX/qigCfVSfTNluW
+ 5MjO6Q08si1V9XA7/4Yyl7WMfWZKLMUZiYZazEXFiQAXpYPF5wIAAA==
+X-CMS-MailID: 20200513133319eucas1p2eaae7e606163ec1b211a07a80a52655d
+X-Msg-Generator: CA
+X-RootMTR: 20200513133319eucas1p2eaae7e606163ec1b211a07a80a52655d
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20200513133319eucas1p2eaae7e606163ec1b211a07a80a52655d
+References: <20200513132114.6046-1-m.szyprowski@samsung.com>
+ <20200513133245.6408-1-m.szyprowski@samsung.com>
+ <CGME20200513133319eucas1p2eaae7e606163ec1b211a07a80a52655d@eucas1p2.samsung.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,184 +127,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- Xiangyang Zhang <xyz.sun.ok@gmail.com>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ David Airlie <airlied@linux.ie>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>,
+ Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>,
+ Daniel Vetter <daniel@ffwll.ch>, Joel Fernandes <joel@joelfernandes.org>,
+ Laura Abbott <labbott@redhat.com>, Robin Murphy <robin.murphy@arm.com>,
+ Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix checkpatch.pl check:
+ion_heap_pages_zero() function is not used at all, so remove it to
+simplify the ion_heap_sglist_zero() function later.
 
-  CHECK: No space is necessary after a cast
-
-Signed-off-by: Xiangyang Zhang <xyz.sun.ok@gmail.com>
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
 ---
- drivers/staging/qlge/qlge_main.c | 36 ++++++++++++++++----------------
- 1 file changed, 18 insertions(+), 18 deletions(-)
+For more information, see '[PATCH v5 00/38] DRM: fix struct sg_table nents
+vs. orig_nents misuse' thread:
+https://lore.kernel.org/linux-iommu/20200513132114.6046-1-m.szyprowski@samsung.com/T/
+---
+ drivers/staging/android/ion/ion.h      | 1 -
+ drivers/staging/android/ion/ion_heap.c | 9 ---------
+ 2 files changed, 10 deletions(-)
 
-diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-index 93df4f79b21d..a9163fb659d9 100644
---- a/drivers/staging/qlge/qlge_main.c
-+++ b/drivers/staging/qlge/qlge_main.c
-@@ -236,8 +236,8 @@ int ql_write_cfg(struct ql_adapter *qdev, void *ptr, int size, u32 bit,
- 		goto exit;
- 	}
+diff --git a/drivers/staging/android/ion/ion.h b/drivers/staging/android/ion/ion.h
+index 74914a2..c199e88 100644
+--- a/drivers/staging/android/ion/ion.h
++++ b/drivers/staging/android/ion/ion.h
+@@ -177,7 +177,6 @@ struct ion_heap {
+ int ion_heap_map_user(struct ion_heap *heap, struct ion_buffer *buffer,
+ 		      struct vm_area_struct *vma);
+ int ion_heap_buffer_zero(struct ion_buffer *buffer);
+-int ion_heap_pages_zero(struct page *page, size_t size, pgprot_t pgprot);
  
--	ql_write32(qdev, ICB_L, (u32) map);
--	ql_write32(qdev, ICB_H, (u32) (map >> 32));
-+	ql_write32(qdev, ICB_L, (u32)map);
-+	ql_write32(qdev, ICB_H, (u32)(map >> 32));
+ /**
+  * ion_heap_init_shrinker
+diff --git a/drivers/staging/android/ion/ion_heap.c b/drivers/staging/android/ion/ion_heap.c
+index 0755b11..9c23b23 100644
+--- a/drivers/staging/android/ion/ion_heap.c
++++ b/drivers/staging/android/ion/ion_heap.c
+@@ -145,15 +145,6 @@ int ion_heap_buffer_zero(struct ion_buffer *buffer)
+ 	return ion_heap_sglist_zero(table->sgl, table->nents, pgprot);
+ }
  
- 	mask = CFG_Q_MASK | (bit << 16);
- 	value = bit | (q_id << CFG_Q_SHIFT);
-@@ -439,7 +439,7 @@ static int ql_set_mac_addr(struct ql_adapter *qdev, int set)
- 	status = ql_sem_spinlock(qdev, SEM_MAC_ADDR_MASK);
- 	if (status)
- 		return status;
--	status = ql_set_mac_addr_reg(qdev, (u8 *) addr,
-+	status = ql_set_mac_addr_reg(qdev, (u8 *)addr,
- 				     MAC_ADDR_TYPE_CAM_MAC,
- 				     qdev->func * MAX_CQ);
- 	ql_sem_unlock(qdev, SEM_MAC_ADDR_MASK);
-@@ -841,7 +841,7 @@ int ql_read_xgmac_reg64(struct ql_adapter *qdev, u32 reg, u64 *data)
- 	if (status)
- 		goto exit;
- 
--	*data = (u64) lo | ((u64) hi << 32);
-+	*data = (u64)lo | ((u64)hi << 32);
- 
- exit:
- 	return status;
-@@ -1631,7 +1631,7 @@ static void ql_process_mac_rx_skb(struct ql_adapter *qdev,
- 		} else if ((ib_mac_rsp->flags2 & IB_MAC_IOCB_RSP_U) &&
- 				(ib_mac_rsp->flags3 & IB_MAC_IOCB_RSP_V4)) {
- 			/* Unfragmented ipv4 UDP frame. */
--			struct iphdr *iph = (struct iphdr *) skb->data;
-+			struct iphdr *iph = (struct iphdr *)skb->data;
- 
- 			if (!(iph->frag_off &
- 				htons(IP_MF|IP_OFFSET))) {
-@@ -1920,7 +1920,7 @@ static void ql_process_mac_split_rx_intr(struct ql_adapter *qdev,
- 		} else if ((ib_mac_rsp->flags2 & IB_MAC_IOCB_RSP_U) &&
- 				(ib_mac_rsp->flags3 & IB_MAC_IOCB_RSP_V4)) {
- 		/* Unfragmented ipv4 UDP frame. */
--			struct iphdr *iph = (struct iphdr *) skb->data;
-+			struct iphdr *iph = (struct iphdr *)skb->data;
- 
- 			if (!(iph->frag_off &
- 				htons(IP_MF|IP_OFFSET))) {
-@@ -2301,7 +2301,7 @@ static int __qlge_vlan_rx_add_vid(struct ql_adapter *qdev, u16 vid)
- 	u32 enable_bit = MAC_ADDR_E;
- 	int err;
- 
--	err = ql_set_mac_addr_reg(qdev, (u8 *) &enable_bit,
-+	err = ql_set_mac_addr_reg(qdev, (u8 *)&enable_bit,
- 				  MAC_ADDR_TYPE_VLAN, vid);
- 	if (err)
- 		netif_err(qdev, ifup, qdev->ndev,
-@@ -2332,7 +2332,7 @@ static int __qlge_vlan_rx_kill_vid(struct ql_adapter *qdev, u16 vid)
- 	u32 enable_bit = 0;
- 	int err;
- 
--	err = ql_set_mac_addr_reg(qdev, (u8 *) &enable_bit,
-+	err = ql_set_mac_addr_reg(qdev, (u8 *)&enable_bit,
- 				  MAC_ADDR_TYPE_VLAN, vid);
- 	if (err)
- 		netif_err(qdev, ifup, qdev->ndev,
-@@ -2473,7 +2473,7 @@ static int ql_tso(struct sk_buff *skb, struct ob_mac_tso_iocb_req *mac_iocb_ptr)
- 
- 		mac_iocb_ptr->opcode = OPCODE_OB_MAC_TSO_IOCB;
- 		mac_iocb_ptr->flags3 |= OB_MAC_TSO_IOCB_IC;
--		mac_iocb_ptr->frame_len = cpu_to_le32((u32) skb->len);
-+		mac_iocb_ptr->frame_len = cpu_to_le32((u32)skb->len);
- 		mac_iocb_ptr->total_hdrs_len =
- 		    cpu_to_le16(skb_transport_offset(skb) + tcp_hdrlen(skb));
- 		mac_iocb_ptr->net_trans_offset =
-@@ -2511,7 +2511,7 @@ static void ql_hw_csum_setup(struct sk_buff *skb,
- 	__sum16 *check;
- 
- 	mac_iocb_ptr->opcode = OPCODE_OB_MAC_TSO_IOCB;
--	mac_iocb_ptr->frame_len = cpu_to_le32((u32) skb->len);
-+	mac_iocb_ptr->frame_len = cpu_to_le32((u32)skb->len);
- 	mac_iocb_ptr->net_trans_offset =
- 		cpu_to_le16(skb_network_offset(skb) |
- 		skb_transport_offset(skb) << OB_MAC_TRANSPORT_HDR_SHIFT);
-@@ -2542,7 +2542,7 @@ static netdev_tx_t qlge_send(struct sk_buff *skb, struct net_device *ndev)
- 	struct ql_adapter *qdev = netdev_priv(ndev);
- 	int tso;
- 	struct tx_ring *tx_ring;
--	u32 tx_ring_idx = (u32) skb->queue_mapping;
-+	u32 tx_ring_idx = (u32)skb->queue_mapping;
- 
- 	tx_ring = &qdev->tx_ring[tx_ring_idx];
- 
-@@ -2569,7 +2569,7 @@ static netdev_tx_t qlge_send(struct sk_buff *skb, struct net_device *ndev)
- 	mac_iocb_ptr->txq_idx = tx_ring_idx;
- 	tx_ring_desc->skb = skb;
- 
--	mac_iocb_ptr->frame_len = cpu_to_le16((u16) skb->len);
-+	mac_iocb_ptr->frame_len = cpu_to_le16((u16)skb->len);
- 
- 	if (skb_vlan_tag_present(skb)) {
- 		netif_printk(qdev, tx_queued, KERN_DEBUG, qdev->ndev,
-@@ -2992,7 +2992,7 @@ static int ql_start_rx_ring(struct ql_adapter *qdev, struct rx_ring *rx_ring)
- 	rx_ring->sbq.base_indirect_dma = shadow_reg_dma;
- 
- 	/* PCI doorbell mem area + 0x00 for consumer index register */
--	rx_ring->cnsmr_idx_db_reg = (u32 __iomem *) doorbell_area;
-+	rx_ring->cnsmr_idx_db_reg = (u32 __iomem *)doorbell_area;
- 	rx_ring->cnsmr_idx = 0;
- 	rx_ring->curr_entry = rx_ring->cq_base;
- 
-@@ -3092,7 +3092,7 @@ static int ql_start_tx_ring(struct ql_adapter *qdev, struct tx_ring *tx_ring)
- 	 * Assign doorbell registers for this tx_ring.
- 	 */
- 	/* TX PCI doorbell mem area for tx producer index */
--	tx_ring->prod_idx_db_reg = (u32 __iomem *) doorbell_area;
-+	tx_ring->prod_idx_db_reg = (u32 __iomem *)doorbell_area;
- 	tx_ring->prod_idx = 0;
- 	/* TX PCI doorbell mem area + 0x04 */
- 	tx_ring->valid_db_reg = doorbell_area + 0x04;
-@@ -3115,7 +3115,7 @@ static int ql_start_tx_ring(struct ql_adapter *qdev, struct tx_ring *tx_ring)
- 	ql_init_tx_ring(qdev, tx_ring);
- 
- 	err = ql_write_cfg(qdev, wqicb, sizeof(*wqicb), CFG_LRQ,
--			   (u16) tx_ring->wq_id);
-+			   (u16)tx_ring->wq_id);
- 	if (err) {
- 		netif_err(qdev, ifup, qdev->ndev, "Failed to load tx_ring.\n");
- 		return err;
-@@ -3447,7 +3447,7 @@ static int ql_start_rss(struct ql_adapter *qdev)
- 	struct ricb *ricb = &qdev->ricb;
- 	int status = 0;
- 	int i;
--	u8 *hash_id = (u8 *) ricb->hash_cq_id;
-+	u8 *hash_id = (u8 *)ricb->hash_cq_id;
- 
- 	memset((void *)ricb, 0, sizeof(*ricb));
- 
-@@ -4202,7 +4202,7 @@ static void qlge_set_multicast_list(struct net_device *ndev)
- 			goto exit;
- 		i = 0;
- 		netdev_for_each_mc_addr(ha, ndev) {
--			if (ql_set_mac_addr_reg(qdev, (u8 *) ha->addr,
-+			if (ql_set_mac_addr_reg(qdev, (u8 *)ha->addr,
- 						MAC_ADDR_TYPE_MULTI_MAC, i)) {
- 				netif_err(qdev, hw, qdev->ndev,
- 					  "Failed to loadmulticast address.\n");
-@@ -4239,7 +4239,7 @@ static int qlge_set_mac_address(struct net_device *ndev, void *p)
- 	status = ql_sem_spinlock(qdev, SEM_MAC_ADDR_MASK);
- 	if (status)
- 		return status;
--	status = ql_set_mac_addr_reg(qdev, (u8 *) ndev->dev_addr,
-+	status = ql_set_mac_addr_reg(qdev, (u8 *)ndev->dev_addr,
- 				     MAC_ADDR_TYPE_CAM_MAC,
- 				     qdev->func * MAX_CQ);
- 	if (status)
+-int ion_heap_pages_zero(struct page *page, size_t size, pgprot_t pgprot)
+-{
+-	struct scatterlist sg;
+-
+-	sg_init_table(&sg, 1);
+-	sg_set_page(&sg, page, size, 0);
+-	return ion_heap_sglist_zero(&sg, 1, pgprot);
+-}
+-
+ void ion_heap_freelist_add(struct ion_heap *heap, struct ion_buffer *buffer)
+ {
+ 	spin_lock(&heap->free_lock);
 -- 
-2.19.1
+1.9.1
 
 _______________________________________________
 devel mailing list
