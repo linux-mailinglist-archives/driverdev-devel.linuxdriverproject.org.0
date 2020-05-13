@@ -1,120 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E4CF1D1530
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 15:33:36 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 468631D17A3
+	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 16:32:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5BD66882F5;
-	Wed, 13 May 2020 13:33:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 872A386F38;
+	Wed, 13 May 2020 14:32:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H6JJqVGsSazF; Wed, 13 May 2020 13:33:33 +0000 (UTC)
+	with ESMTP id ucxKjCBL0B6n; Wed, 13 May 2020 14:32:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B3B63882C7;
-	Wed, 13 May 2020 13:33:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 335F286C5A;
+	Wed, 13 May 2020 14:32:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AECFD1BF3FE
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 13:33:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B1E3A1BF484
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 14:32:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A83308821D
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 13:33:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A3A342210F
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 14:32:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n+7vW9z2rFBw for <devel@linuxdriverproject.org>;
- Wed, 13 May 2020 13:33:23 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mailout1.w1.samsung.com (mailout1.w1.samsung.com
- [210.118.77.11])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CAA9688211
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 13:33:23 +0000 (UTC)
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
- by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200513133322euoutp0151bf52cd2e03ee4de8171a4d776c1d83~OmcfoAiI92269422694euoutp01d
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 13:33:22 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
- 20200513133322euoutp0151bf52cd2e03ee4de8171a4d776c1d83~OmcfoAiI92269422694euoutp01d
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1589376802;
- bh=sMCpKm/mYI1T1jeLS6Xad9LPvFW5tKSA1dr4LtDjiIU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=mr4wLD6FGoGr0Ke7iFGnF8UceZn/iX27FLELv3m99A2EXIUP7WHWjWHKsDj4nPpIP
- ZyvI8OqrabY9ExFvd9zi8AcPljJcENt1I/GMb0d4cs0cRhpPl2Nyj7vbIMqsF/gZn5
- QTMGevhHPCAtUVPVg9o8qorsy/m4lhBrDlTZnW/8=
-Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTP id
- 20200513133322eucas1p2d95ee605cb9c29fd95c682d21005ada9~OmcfYZhv21009610096eucas1p2W;
- Wed, 13 May 2020 13:33:22 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
- eusmges1new.samsung.com (EUCPMTA) with SMTP id F8.D5.61286.227FBBE5; Wed, 13
- May 2020 14:33:22 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20200513133321eucas1p13acea3aa6219ce5f7076c7677ef9eae3~Omce9qmhP0785007850eucas1p1E;
- Wed, 13 May 2020 13:33:21 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200513133321eusmtrp1ce353d78d9c1837784c5060b07716ef4~Omce86CR61050710507eusmtrp1X;
- Wed, 13 May 2020 13:33:21 +0000 (GMT)
-X-AuditID: cbfec7f2-f0bff7000001ef66-81-5ebbf722ae93
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms2.samsung.com (EUCPMTA) with SMTP id EC.47.07950.127FBBE5; Wed, 13
- May 2020 14:33:21 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200513133320eusmtip1c65f8b0654a7f1d159d86a9a57b5fe30~OmceAbuLj0693406934eusmtip1c;
- Wed, 13 May 2020 13:33:20 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v5 33/38] staging: tegra-vde: fix common struct sg_table
- related issues
-Date: Wed, 13 May 2020 15:32:40 +0200
-Message-Id: <20200513133245.6408-33-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200513133245.6408-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0WSWUwTURSGvZ3pdKgUh2LkBhdME3GJghU1N6BEAw/jizHRF0lAikwAZTEd
- FjEakSqytLgQtwYM4sJWKBREpCyyiQjWKiDIIpAaIygguywBWwb17Tv/OX/+c08uiYkH+Q5k
- cFgEIw+ThUgIIV76etawSzKj992dY8KQytDEQ0X3tXy0VHoLQxUtcwKUN2YCqG1qlECKx1oC
- 5eQ18FBGtTu6qs7E0WTbAA/pTJ/4qLU8jUDKwud8lDipJlB+fa8APdMt8FDNr698NFv+ED9k
- R2seagD9paoOpyunM3D6pbpXQOtyEwn6xXQ/n65O1wjovuRGHl385DLdvWjC6NTOLEDrP8cS
- tEoxQtApJbmAntBtOrbGW3gggAkJjmLkLh5+wqDSu9/xc+PU+Z9GJT8WPLBJAlYkpPbCpr5K
- kASEpJjKBvBuXTfOFZMA9tx5ulJMANgVb8T+Wgzt7QTXyAKwXNHP+2d5l36bZ5kiKClMGk4i
- LLyWugbgG5W1hTGqBYctv10tbEedhEULZbiFcWoLjE1IBxYWUQdhe9V1gktzhHmFr5aTrcz6
- UE/18kqQUpFQP24A3JAX7Ehpxjm2g0ONJQKON8DmVOWKQQHggCFfwBVKAFvj7q+43WGPYc4c
- R5rX2w615S6cfBiOjhiXZUjZwM5hW+4BNvB26T2Mk0UwIV7MTTtBdWPBv9ga48eVa9EwW9En
- 4A5UB+C8upi4CRzV/8MyAMgF9kwkGxrIsNIwJtqZlYWykWGBzqfDQ3XA/AGbFxvHy8DUR/9a
- QJFAYi1CXXpfMV8WxcaE1gJIYpK1oqNasyQKkMVcYOThp+SRIQxbC9aTuMRe5Jo56COmAmUR
- zFmGOcfI/3Z5pJVDLNg/E7UwjT12Pn5Deuzt0qPkA0fBibE4231N85RKX5Bj27RHG+d2ZfV8
- 5lOqI1OakGv7Ibv2henWBFgyngmOXuX9vLvDkOej9NytEXn1rfP/dmSr94+ai35BwZ6zNwc2
- Z51gE4ViWNXrZrXzUUN/lcYrZuPgtks1bfXvK66nOek9iiQ4GyST7sDkrOwPWfDyNHwDAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrNIsWRmVeSWpSXmKPExsVy+t/xu7qK33fHGdzbrWjRe+4kk8XGGetZ
- Lf5vm8hssefML3aL1R8fM1pc+fqezaJ58Xo2i5WrjzJZLNhvbdEyaxGLxZcrD5ksNj2+xmpx
- edccNoueDVtZLTq/zGKzWHvkLrvFsk1/mCwOfnjCavFz1zwWB2GPNfPWMHrc23eYxWPvtwUs
- Hjtn3WX32LSqk81j+7cHrB77565h97jffZzJY/OSeo/b/x4ze0y+sZzRY/fNBjaP3uZ3bB59
- W1YxenzeJBfAH6VnU5RfWpKqkJFfXGKrFG1oYaRnaGmhZ2RiqWdobB5rZWSqpG9nk5Kak1mW
- WqRvl6CXsW3aC5aCTwIVby70sDYwzuTrYuTkkBAwkTh39SpbFyMXh5DAUkaJidtfMkMkZCRO
- TmtghbCFJf5c64Iq+sQoseXXfrAiNgFDia63EAkRgU5GiWndH9lBHGaBGywSc7d8YAepEhYI
- l3g7ZQ4LiM0ioCrR0DGXEcTmFbCVuLqvnQ1ihbzE6g0HwKZyAsVf3dkPVi8kkC+xd/E+tgmM
- fAsYGVYxiqSWFuem5xYb6RUn5haX5qXrJefnbmIERuS2Yz+37GDsehd8iFGAg1GJh9fi1u44
- IdbEsuLK3EOMEhzMSiK8fuuBQrwpiZVVqUX58UWlOanFhxhNgY6ayCwlmpwPTBZ5JfGGpobm
- FpaG5sbmxmYWSuK8HQIHY4QE0hNLUrNTUwtSi2D6mDg4pRoY1xz1mTXv2TeNJ493mhRmmfoI
- Tn/FLlosVPk8LWnepql6azkc+090O9woL+F/dt3Nj/f+a5W/WU3pkw/vYfDVvPjy/fG4i2I+
- RWZ9Xunsu3lW/tq6yK5gvfD5fxLObe5VZzNOPHjz8pDMTIneGO7SyStvfPetz4nx/Xbvps81
- Y+EtWuo2gTMnKrEUZyQaajEXFScCALAaeATeAgAA
-X-CMS-MailID: 20200513133321eucas1p13acea3aa6219ce5f7076c7677ef9eae3
-X-Msg-Generator: CA
-X-RootMTR: 20200513133321eucas1p13acea3aa6219ce5f7076c7677ef9eae3
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200513133321eucas1p13acea3aa6219ce5f7076c7677ef9eae3
-References: <20200513132114.6046-1-m.szyprowski@samsung.com>
- <20200513133245.6408-1-m.szyprowski@samsung.com>
- <CGME20200513133321eucas1p13acea3aa6219ce5f7076c7677ef9eae3@eucas1p1.samsung.com>
+ with ESMTP id x7clucro9CAE for <devel@linuxdriverproject.org>;
+ Wed, 13 May 2020 14:32:13 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9DED8220EF
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 14:32:12 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id y3so21161080wrt.1
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 07:32:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=e5l1ivHxvrs1cxo8s+YGVNADN8Rkef6bb/X9HBvnEUo=;
+ b=jYfhdyXMvfikdAmp4t94kn7Oqc+gcUglu6kotXtK7pCKoEZcxVf+D/gfJXZgnlA3tY
+ VcjpeS5YBLgOvzR5lH8nd8xcxAdRH5J/1H+Rx0YuTlUz/0uGIY6A8YBpL08huizZsKAk
+ pQTiCU//78OYtJbklytYh8aNf58msaMeP+CHrBi+IMPVFrxmNPRXvWfqUONnqkYrCTX6
+ gvaFx+iNa4Fpv9gfJJ9qbT4HuW1APNIdtSjeNhLXuUCQ+UFiSiHNQBRrDklcXRcQBRGJ
+ /WFHn0p2Cbgl8iZvetZyCwySHcma/dxORA0r5kTxv83q873p1+IsAj4VwSbTtPefwDf3
+ YB4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=e5l1ivHxvrs1cxo8s+YGVNADN8Rkef6bb/X9HBvnEUo=;
+ b=FEaeJos3s3nHRFX5+thl35hiyCiIi+IzjCC+Vz1rL0bd3IzMsPmkIFrMUtxGXiCDqA
+ Mp70YpVYPeOoHlHSt6oqjhCTVpxRrIBA7TIN5wp7myEF+GUtYupFnFziXp6KvCRAwT0E
+ jsgLhbekT2tTg6Ih1UBB391VfO+2VUfn/QFoMIPTmxMByHYcEcEBAafl+94R641Ypt2a
+ 6zqMmmxxuB+ih3oLR8PryM09xhNlBREnm/NjZTPx+hGY0Jnf9CClaeV1EudJXJHhAOP9
+ tEGONeeRlN4Uk6buRzga70FowyCena0tuxVcQwAzmx+BpEodRdfJ9gFWSeJSYixS2xKt
+ aCug==
+X-Gm-Message-State: AGi0PuaaHoSfmMZ4OKRb3Jribk5QbzcVhM7zy1grm4VnDBjuzFPBmigv
+ XlejG9BU6CuI89O2vL2T4sA=
+X-Google-Smtp-Source: APiQypLALuA0r2EITrx0jgdNwC0QL/EE50fO/i1b1frjQJxz76h8l1YXSRVhSmv9cyqfKw97a8V3XQ==
+X-Received: by 2002:adf:ee03:: with SMTP id y3mr29782517wrn.190.1589380330471; 
+ Wed, 13 May 2020 07:32:10 -0700 (PDT)
+Received: from localhost
+ (ipv6-fd0e7292a9d5c758.ost.clients.hamburg.freifunk.net.
+ [2a03:2267:4:0:fd0e:7292:a9d5:c758])
+ by smtp.gmail.com with ESMTPSA id b2sm25212812wrm.30.2020.05.13.07.32.08
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 13 May 2020 07:32:09 -0700 (PDT)
+From: Oliver Graute <oliver.graute@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: fbtft: fb_st7789v: Initialize the Display
+Date: Wed, 13 May 2020 16:30:46 +0200
+Message-Id: <1589380299-21871-1-git-send-email-oliver.graute@gmail.com>
+X-Mailer: git-send-email 2.7.4
+X-Patchwork-Bot: notify
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,72 +83,116 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- linux-tegra@vger.kernel.org, Dmitry Osipenko <digetx@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
+ Oliver Graute <oliver.graute@kococonnector.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, dan.carpenter@oracle.com
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The Documentation/DMA-API-HOWTO.txt states that the dma_map_sg() function
-returns the number of the created entries in the DMA address space.
-However the subsequent calls to the dma_sync_sg_for_{device,cpu}() and
-dma_unmap_sg must be called with the original number of the entries
-passed to the dma_map_sg().
+From: Oliver Graute <oliver.graute@kococonnector.com>
 
-struct sg_table is a common structure used for describing a non-contiguous
-memory buffer, used commonly in the DRM and graphics subsystems. It
-consists of a scatterlist with memory pages and DMA addresses (sgl entry),
-as well as the number of scatterlist entries: CPU pages (orig_nents entry)
-and DMA mapped pages (nents entry).
+Set Gamma Values and Register Values for the HSD20_IPS Panel
 
-It turned out that it was a common mistake to misuse nents and orig_nents
-entries, calling DMA-mapping functions with a wrong number of entries or
-ignoring the number of mapped entries returned by the dma_map_sg()
-function.
-
-To avoid such issues, lets use a common dma-mapping wrappers operating
-directly on the struct sg_table objects and use scatterlist page
-iterators where possible. This, almost always, hides references to the
-nents and orig_nents entries, making the code robust, easier to follow
-and copy/paste safe.
-
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Signed-off-by: Oliver Graute <oliver.graute@kococonnector.com>
 ---
-For more information, see '[PATCH v5 00/38] DRM: fix struct sg_table nents
-vs. orig_nents misuse' thread:
-https://lore.kernel.org/linux-iommu/20200513132114.6046-1-m.szyprowski@samsung.com/T/
----
- drivers/staging/media/tegra-vde/iommu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/tegra-vde/iommu.c b/drivers/staging/media/tegra-vde/iommu.c
-index 6af863d..adf8dc7 100644
---- a/drivers/staging/media/tegra-vde/iommu.c
-+++ b/drivers/staging/media/tegra-vde/iommu.c
-@@ -36,8 +36,8 @@ int tegra_vde_iommu_map(struct tegra_vde *vde,
+need information howto set HSD20_IPS Panel at run time and not at compile time
+
+Changes for v2:
+ - added define for HSD20_IPS_GAMMA values
+ - check for HSD20_IPS define
+ - enabled MIPI_DCS_ENTER_INVERT_MODE
+
+ drivers/staging/fbtft/fb_st7789v.c | 32 +++++++++++++++++++++++++-----
+ 1 file changed, 27 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/fbtft/fb_st7789v.c b/drivers/staging/fbtft/fb_st7789v.c
+index 3c3f387936e8..ebc17e05ecd0 100644
+--- a/drivers/staging/fbtft/fb_st7789v.c
++++ b/drivers/staging/fbtft/fb_st7789v.c
+@@ -20,6 +20,12 @@
+ 	"70 2C 2E 15 10 09 48 33 53 0B 19 18 20 25\n" \
+ 	"70 2C 2E 15 10 09 48 33 53 0B 19 18 20 25"
  
- 	addr = iova_dma_addr(&vde->iova, iova);
++#define HSD20_IPS_GAMMA \
++	"D0 05 0A 09 08 05 2E 44 45 0F 17 16 2B 33\n" \
++	"D0 05 0A 09 08 05 2E 43 45 0F 16 16 2B 33"
++
++#define HSD20_IPS "true"
++
+ /**
+  * enum st7789v_command - ST7789V display controller commands
+  *
+@@ -82,14 +88,20 @@ static int init_display(struct fbtft_par *par)
  
--	size = iommu_map_sg(vde->domain, addr, sgt->sgl, sgt->nents,
--			    IOMMU_READ | IOMMU_WRITE);
-+	size = iommu_map_sgtable(vde->domain, addr, sgt,
-+				 IOMMU_READ | IOMMU_WRITE);
- 	if (!size) {
- 		__free_iova(&vde->iova, iova);
- 		return -ENXIO;
+ 	/* set pixel format to RGB-565 */
+ 	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, MIPI_DCS_PIXEL_FMT_16BIT);
++	if (HSD20_IPS)
++		write_reg(par, PORCTRL, 0x05, 0x05, 0x00, 0x33, 0x33);
+ 
+-	write_reg(par, PORCTRL, 0x08, 0x08, 0x00, 0x22, 0x22);
++	else
++		write_reg(par, PORCTRL, 0x08, 0x08, 0x00, 0x22, 0x22);
+ 
+ 	/*
+ 	 * VGH = 13.26V
+ 	 * VGL = -10.43V
+ 	 */
+-	write_reg(par, GCTRL, 0x35);
++	if (HSD20_IPS)
++		write_reg(par, GCTRL, 0x75);
++	else
++		write_reg(par, GCTRL, 0x35);
+ 
+ 	/*
+ 	 * VDV and VRH register values come from command write
+@@ -101,13 +113,19 @@ static int init_display(struct fbtft_par *par)
+ 	 * VAP =  4.1V + (VCOM + VCOM offset + 0.5 * VDV)
+ 	 * VAN = -4.1V + (VCOM + VCOM offset + 0.5 * VDV)
+ 	 */
+-	write_reg(par, VRHS, 0x0B);
++	if (HSD20_IPS)
++		write_reg(par, VRHS, 0x13);
++	else
++		write_reg(par, VRHS, 0x0B);
+ 
+ 	/* VDV = 0V */
+ 	write_reg(par, VDVS, 0x20);
+ 
+ 	/* VCOM = 0.9V */
+-	write_reg(par, VCOMS, 0x20);
++	if (HSD20_IPS)
++		write_reg(par, VCOMS, 0x22);
++	else
++		write_reg(par, VCOMS, 0x20);
+ 
+ 	/* VCOM offset = 0V */
+ 	write_reg(par, VCMOFSET, 0x20);
+@@ -120,6 +138,10 @@ static int init_display(struct fbtft_par *par)
+ 	write_reg(par, PWCTRL1, 0xA4, 0xA1);
+ 
+ 	write_reg(par, MIPI_DCS_SET_DISPLAY_ON);
++
++	if (HSD20_IPS)
++		write_reg(par, MIPI_DCS_ENTER_INVERT_MODE);
++
+ 	return 0;
+ }
+ 
+@@ -234,7 +256,7 @@ static struct fbtft_display display = {
+ 	.height = 320,
+ 	.gamma_num = 2,
+ 	.gamma_len = 14,
+-	.gamma = DEFAULT_GAMMA,
++	.gamma = HSD20_IPS_GAMMA,
+ 	.fbtftops = {
+ 		.init_display = init_display,
+ 		.set_var = set_var,
 -- 
-1.9.1
+2.17.1
 
 _______________________________________________
 devel mailing list
