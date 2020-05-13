@@ -1,92 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6E5E1D0A91
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 10:13:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22EAC1D119B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 13:41:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0623A86B8A;
-	Wed, 13 May 2020 08:13:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 60A0387F7C;
+	Wed, 13 May 2020 11:41:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wv6OinQh_wAr; Wed, 13 May 2020 08:13:30 +0000 (UTC)
+	with ESMTP id aVA4UtveiF0D; Wed, 13 May 2020 11:41:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0047D86B74;
-	Wed, 13 May 2020 08:13:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4047F86A4D;
+	Wed, 13 May 2020 11:41:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 96C1F1BF589
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 08:13:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9DE181BF4DB
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 11:41:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 92FFC86B74
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 08:13:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9A1CD86303
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 11:41:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7p2OMGfx7IYs for <devel@linuxdriverproject.org>;
- Wed, 13 May 2020 08:13:27 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 164D086200
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 08:13:27 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04D88Lrg005188;
- Wed, 13 May 2020 08:13:25 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=ax0j26Qez9eBRtMmFc586ytztVig5XUVKr6NUdGKGB4=;
- b=hNh0fal6iHbhT24ibRhSlaR/64mDUnbW1HTzX0SUlEk0LRs1IHolXkuQiEwc5MeTR0ER
- XCfuPuPWgQeOgZZLfAWr8rpL5vZCEJQ9m/qpmq6MfWMoLdK37LI8vIkqFhl3QGxHykIh
- G7NbTlkArPRksHKErLJghb6s+V2r6LZ08amm018ada8vpegt8h/XpljE9hy+dhEe27+p
- 6OrYZDxZ598TvyqToNPqbAiLykLTYqZPMCB9zFngr2b4EFCcgxZiPNisYuZJmjotqprf
- jqqG0Kvw0jT+LWaDbhyuDOI9wzcgC0Mf+aj/Y68mJk428ccqxbZPAxCgg4XhuMeG6wU1 YQ== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2130.oracle.com with ESMTP id 3100yftpn5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 13 May 2020 08:13:25 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04D88UFX099799;
- Wed, 13 May 2020 08:11:25 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 3100ykkjpp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 13 May 2020 08:11:25 +0000
-Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04D8BOTN013695;
- Wed, 13 May 2020 08:11:24 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 13 May 2020 01:11:23 -0700
-Date: Wed, 13 May 2020 11:11:17 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: Re: [PATCH 2/6] staging: vt6656: vnt_get_rtscts_duration_le use
- ieee80211_rts_duration
-Message-ID: <20200513081117.GC2078@kadam>
-References: <377a4cc3-cfe3-91aa-cf71-1063f311426a@gmail.com>
- <20200513080758.GB2078@kadam>
+ with ESMTP id Df1n3VpPzOPs for <devel@linuxdriverproject.org>;
+ Wed, 13 May 2020 11:41:30 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3D32686228
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 11:41:30 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id x2so7886946pfx.7
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 04:41:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jvvYDsDzRmhFLM4A9oVavXTflTQql5yNcbzYUVmhfHM=;
+ b=LcjCZBTk984pSAqEaQLI7C5L6PnGB68x8usQUPH8/EGOhPZw2EZWvpvSHY2tXdJ9kB
+ DcLAv5fSjF+Pfh62wm18ADjpRxFhfs+V/NcnJGMX6cnqtxRHtzKCf19bTiD2WtlFsltO
+ eszN19ys5wXoK0OJl7R9miz4r65j0BI29rVfcfed0IQO5SyjE1JXNDpctxWnQzIWVYah
+ MCGp2YTIAb1DY8PHDdvfRxQcs5aeESqLCQB2Jo2s2ukS2cJ6umz0lp1aE0xloUVJvUhL
+ WS/VnGWq81gbmnEIqxD8Fa0QD1CIbhTV5+TK7mvOfyWe+K5IA8WRFEgsappl1OJ09EVb
+ HInw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jvvYDsDzRmhFLM4A9oVavXTflTQql5yNcbzYUVmhfHM=;
+ b=cWXaOIaE90EHXlT7nv2ul5eqkOxGo9zvNA7P+9koaBwYPnW8clrkv0+Egax6U3TllS
+ 0hekC+o764xFVS9I+Zq4S0AfJcH6Kq2a+HBjHCBiJ2RBPIQhcwkhMpWWyvCy+qkQMUON
+ S5d/AiF40/rZ9IhZAXTBOZU8EUJdKQlSKrpZ8Ygy6SYIHJkrhOmUrJbHMdy9MWZ58Dq+
+ +4To22KC3Ifv9+qaV0dPMbTQO2c92rdy7MVz/RghegwnhArcp6z7dIC9lwCn+0jpVzSv
+ VWpwIXPYl2rROA11n5T/B+yiuUxUszOHb+MTBN3R0f0X+j9L8SRjr9F9Ts9j3SiIpjCM
+ s8xA==
+X-Gm-Message-State: AGi0Pubv8UapVh4TsN9tMIyrrU9W4EmpFXxIURAU/dgOjS8HXQYwM9p5
+ qjIzA4L0kZeMykU6hEbIoT8=
+X-Google-Smtp-Source: APiQypJ2fzLimkKBCJzMa3CUHEDSDv9lWQdCBA2HiCqhvjfxuliwudX2IO8Fps8d8HAMqWklmofJxw==
+X-Received: by 2002:a63:360f:: with SMTP id d15mr23107940pga.102.1589370089460; 
+ Wed, 13 May 2020 04:41:29 -0700 (PDT)
+Received: from localhost.localdomain ([42.108.246.232])
+ by smtp.googlemail.com with ESMTPSA id g9sm12992533pgj.89.2020.05.13.04.41.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 May 2020 04:41:28 -0700 (PDT)
+From: Anmol <anmol.karan123@gmail.com>
+X-Google-Original-From: Anmol <anmol.karan123@.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: android: ashmem: Fixed a issue related to
+ file_operations
+Date: Wed, 13 May 2020 17:11:16 +0530
+Message-Id: <20200513114116.26410-1-user@debian>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200513080758.GB2078@kadam>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9619
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- adultscore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 suspectscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2005130075
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9619
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 adultscore=0
- cotscore=-2147483648 mlxscore=0 suspectscore=0 spamscore=0 impostorscore=0
- mlxlogscore=999 malwarescore=0 clxscore=1015 phishscore=0 bulkscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2005130075
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,22 +85,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Oscar Carter <oscar.carter@gmx.com>, linux-wireless@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Anmol <anmol.karan123@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Btw, I don't know if this has already been applied.  I'm fine with
-applying it as-is.  The code doesn't hurt anything and it disappears
-later in the series anyways.
+From: Anmol <anmol.karan123@gmail.com>
 
-I only mentioned this about fall through for future reference.
+Fixed a issue related to struct file_operations which should normally be const.
 
-regards,
-dan carpenter
+Signed-off-by: Anmol <anmol.karan123@gmail.com>
+---
+ drivers/staging/android/ashmem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
+index 8044510d8ec6..fbb6ac9ba1ab 100644
+--- a/drivers/staging/android/ashmem.c
++++ b/drivers/staging/android/ashmem.c
+@@ -367,7 +367,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
+ 
+ static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
+ {
+-	static struct file_operations vmfile_fops;
++	static const struct file_operations vmfile_fops;
+ 	struct ashmem_area *asma = file->private_data;
+ 	int ret = 0;
+ 
+-- 
+2.20.1
 
 _______________________________________________
 devel mailing list
