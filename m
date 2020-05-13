@@ -1,73 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 776B41D1F61
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 21:38:22 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 35D08880A1;
-	Wed, 13 May 2020 19:38:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LFvXTr0Y-ZB4; Wed, 13 May 2020 19:38:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3E9198940B;
-	Wed, 13 May 2020 19:38:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 318031BF321
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 19:38:16 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27EF31D1FD5
+	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 22:08:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 27AA82263E
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 19:38:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8FFEE2673A;
+	Wed, 13 May 2020 20:08:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pAI9lvtTilLw; Wed, 13 May 2020 20:08:11 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 40FA326742;
+	Wed, 13 May 2020 20:08:10 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3EB311BF3CB
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 20:08:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3B9FB87F0A
+ for <devel@linuxdriverproject.org>; Wed, 13 May 2020 20:08:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pVlL6x3GB3ul for <devel@linuxdriverproject.org>;
- Wed, 13 May 2020 19:38:15 +0000 (UTC)
+ with ESMTP id cmcxczjQ86YI for <devel@linuxdriverproject.org>;
+ Wed, 13 May 2020 20:08:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-vs1-f65.google.com (mail-vs1-f65.google.com
- [209.85.217.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 08DA222786
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 19:38:15 +0000 (UTC)
-Received: by mail-vs1-f65.google.com with SMTP id h9so543912vsa.3
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 12:38:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Ke4uWAP9sQZ5K5ZqcbNueL/vqjGx4KuSfWacNnG9IP8=;
- b=KNAIVCs5xSS7MZJNvGuxgkkkhNsEsO5VSgsdXDdeQrNZCf9D+Sn2/2tSsN24QHNc8p
- AvOTOqWe+sx6il52JIgv4kXuEZRZ0u51yvR7MKLbd9tIyP/Xzg0IqYK18kjhr/kYWe8G
- 42W/luCMqYbPVnfkpDJFoAuovJCbFmCn0DUVGtv2AI+0lmnPI1YqLE94SS104mzu4Bjn
- J7x8nTO846CB35bhaKjcdPKDUbf8Oyd0b6uSZ9hhsip1o3y4p9Xj3RyjiOkcm4fR3SZb
- rWElA7JW0rGfwLmbIywb7vTWW//w2WZ3cy/2DbHbqz7sRN8cCVSvbfjnaB4p2AXGG6Ig
- xLiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Ke4uWAP9sQZ5K5ZqcbNueL/vqjGx4KuSfWacNnG9IP8=;
- b=QzlIl2Y2Mq8HsMIgwR3/aeOThaBJTxYeg7vLZg6OQkB5XfxvGtmJ2HXldf0d1+66vr
- 3o+I4172dD5HxVD8rWTIOpiBTMp3OSOqzGViLAlvzS0tP20AbjKasSwEXuda1SM52XcW
- 4W7baSaOlilabSpwuyzZlXEhWEdajhoQCNX3033F+NrK241fS4l7mL4EdjcwTFKMJQ7J
- FeDjWeLNqPal06Z8Zm+vWACDqzL+uzOpAaGKjQLHm9A24JzDNLkPcck1bNyVqlO0TJJN
- u1//z+fk1ZCVRjctJc8bCmhhmrwmd2fwrlaoiYl3br5GPA1bESOxs3KAavN0dG0us6GH
- RgzQ==
-X-Gm-Message-State: AOAM5302SxrPPC552fCsxAXRmomMMxllE03JW8q0cVVPydMikqz3Iltg
- Cx+Jv4OZ61AjZKWxZhmpigBIoXnToBkwRYtuBQA=
-X-Google-Smtp-Source: ABdhPJxXY5J5q/rrCCt9ey3fgywEcsxm9dJjt4mAdeE5DwUTG5N/TW670z8VUoUjQ46NKw8Hm0DCwBQ7+Eq+mRYUQ04=
-X-Received: by 2002:a67:7f0a:: with SMTP id a10mr669800vsd.147.1589398693723; 
- Wed, 13 May 2020 12:38:13 -0700 (PDT)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 69B5487C03
+ for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 20:08:06 +0000 (UTC)
+IronPort-SDR: Wn2mmIWvfnLULxMs8xso+as/GBLvXfSpnPtuVPJOLTDedCEwQv7oLpB78gwi3Kpd+5JIKTS54T
+ WfMMZLxDlzQQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 May 2020 13:08:05 -0700
+IronPort-SDR: zsfsDADlPylmg/a/b2at9i0yPwpNYkPLTeGr/Bqm+LffLTzN9TT4zbB9aGzzH4elet6ZwB3yNw
+ Z900d5G5PVfA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,388,1583222400"; d="scan'208";a="437629498"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga005.jf.intel.com with ESMTP; 13 May 2020 13:08:04 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jYxff-000IOv-Sr; Thu, 14 May 2020 04:08:03 +0800
+Date: Thu, 14 May 2020 04:07:35 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-linus] BUILD SUCCESS
+ f0b9d875faa4499afe3381404c3795e9da84bc00
+Message-ID: <5ebc5387.scilXak0aacNmrAL%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-References: <20200507212912.599433-1-alexandre.belloni@bootlin.com>
- <20200513174530.GA32096@animalcreek.com>
-In-Reply-To: <20200513174530.GA32096@animalcreek.com>
-From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-Date: Thu, 14 May 2020 01:07:36 +0530
-Message-ID: <CAAs3649-3dAmUqjLiEP8Ar3dKamp7ek1o0R5WN3g8kxTgz6fFg@mail.gmail.com>
-Subject: Re: [PATCH] greybus: audio: remove unused code
-To: Mark Greer <mgreer@animalcreek.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,63 +67,169 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alex Elder <elder@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org,
- greybus-dev@lists.linaro.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, May 13, 2020 at 11:15 PM Mark Greer <mgreer@animalcreek.com> wrote:
->
-> On Thu, May 07, 2020 at 11:29:11PM +0200, Alexandre Belloni wrote:
-> > GREYBUS_AUDIO_MSM8994 is not an existing configuration option and as
-> > reported in September 2016, it depends on an "out-of-tree qualcomm audio
-> > driver". This driver never made it upstream.
-> >
-> > https://lore.kernel.org/lkml/20160921073905.GA31263@kroah.com/
-> >
-> > Moreover, there doesn't seem to be any interest in actually fixing the
-> > driver as it uses ASoC APIs that have been removed from the kernel in 2018
-> > as shown by its use of snd_soc_register_codec and
-> > snd_soc_codec_get_drvdata, removed in commit 999f7f5af8eb ("ASoC: remove
-> > Codec related code").
-> >
-> > Signed-off-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> > ---
-Hi Alexandre,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
+branch HEAD: f0b9d875faa4499afe3381404c3795e9da84bc00  staging: wfx: unlock on error path
 
-As mentioned in the mail archive referred, the GB Codec driver that is
-currently available in kernel tree is dependent on qualcomm audio
-driver. And some time later I made some minor modifications to remove
-the unnecessary dependencies. However, I missed to share the same with
-the community :(
+elapsed time: 480m
 
-Thanks to you for triggering the thread. Now, I could retrieve my local
-changes and I have been in the process of updating it again to make it
-compatible with latest kernel.
+configs tested: 142
+configs skipped: 10
 
-I'm planning to share the same here in the next few days.  I'll mark you
-in CC to seek your review comments as well.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-In case, I'm unable to make those changes to the staging tree, I would
-also recommend to drop this code. Kindly let me know your opinion.
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+sparc                            allyesconfig
+m68k                             allyesconfig
+h8300                     edosk2674_defconfig
+mips                     decstation_defconfig
+sh                          rsk7201_defconfig
+mips                          rm200_defconfig
+riscv                    nommu_virt_defconfig
+mips                      pistachio_defconfig
+xtensa                           alldefconfig
+sh                           se7722_defconfig
+openrisc                         alldefconfig
+arm                        cerfcube_defconfig
+arm                         assabet_defconfig
+arm                     davinci_all_defconfig
+arc                          axs101_defconfig
+m68k                        mvme16x_defconfig
+arc                              alldefconfig
+sh                          sdk7786_defconfig
+arm                            hisi_defconfig
+arm                          exynos_defconfig
+arm                            mps2_defconfig
+s390                       zfcpdump_defconfig
+m68k                       m5249evb_defconfig
+m68k                          sun3x_defconfig
+sh                           se7619_defconfig
+sh                ecovec24-romimage_defconfig
+arc                            hsdk_defconfig
+arm                          iop32x_defconfig
+riscv                             allnoconfig
+arm                          moxart_defconfig
+sh                               allmodconfig
+sh                             espt_defconfig
+arm                            xcep_defconfig
+microblaze                          defconfig
+arm                         orion5x_defconfig
+arm                        shmobile_defconfig
+powerpc                    gamecube_defconfig
+sh                           se7343_defconfig
+m68k                       m5475evb_defconfig
+arm                         s3c2410_defconfig
+sh                   rts7751r2dplus_defconfig
+mips                     loongson1c_defconfig
+c6x                        evmc6472_defconfig
+um                               alldefconfig
+arm                        clps711x_defconfig
+powerpc                    adder875_defconfig
+parisc                generic-64bit_defconfig
+arm                        vexpress_defconfig
+i386                              allnoconfig
+i386                                defconfig
+i386                              debian-10.3
+i386                             allyesconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a006-20200513
+i386                 randconfig-a005-20200513
+i386                 randconfig-a003-20200513
+i386                 randconfig-a001-20200513
+i386                 randconfig-a004-20200513
+i386                 randconfig-a002-20200513
+x86_64               randconfig-a005-20200513
+x86_64               randconfig-a003-20200513
+x86_64               randconfig-a006-20200513
+x86_64               randconfig-a004-20200513
+x86_64               randconfig-a001-20200513
+x86_64               randconfig-a002-20200513
+i386                 randconfig-a012-20200513
+i386                 randconfig-a016-20200513
+i386                 randconfig-a014-20200513
+i386                 randconfig-a011-20200513
+i386                 randconfig-a013-20200513
+i386                 randconfig-a015-20200513
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+x86_64                              defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+sparc                               defconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
 
---
-thanks,
-./va
-
->
-> Everything you say is true but it is still kinda sad to see this go.
-> But that is life...  If and when someone has the motivation to get this
-> working again they can take a look at the git history.
->
-> Thanks for this, Alexandre.
->
-> Acked-by: Mark Greer <mgreer@animalcreek.com>
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
