@@ -1,63 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED5B31D2CB1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 12:28:10 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 605D01D31C5
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 15:49:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B9D2875F3;
-	Thu, 14 May 2020 10:28:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B9DE48977A;
+	Thu, 14 May 2020 13:49:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6sKwc_H_xW1Q; Thu, 14 May 2020 10:28:07 +0000 (UTC)
+	with ESMTP id 5gTB6J5ooUU1; Thu, 14 May 2020 13:49:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C70FC87692;
-	Thu, 14 May 2020 10:28:05 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4014988936;
+	Thu, 14 May 2020 13:49:45 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D21FC1BF404
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 10:28:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4B54D1BF31F
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 13:49:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C882E89590
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 10:28:03 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 47C8389758
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 13:49:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RoUDg8FlDFOz
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 10:28:03 +0000 (UTC)
+ with ESMTP id WEQLrTpVVUEH for <devel@linuxdriverproject.org>;
+ Thu, 14 May 2020 13:49:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4DF2C8958A
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 10:28:03 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9B1BC206DA;
- Thu, 14 May 2020 10:28:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589452083;
- bh=hAvvmC7GroHv7ZgWP/NYN0lVqlr+JyvKlza9/MIngvo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=EbaSk1K/o+7jqN70XnllY/y7me8Q/dlyaoQUhO7BJQ1GT+aKbUhXrHWsWBxbAdYr/
- nKFWl7VnPH1XBEkxp7+J0rruP0e7vQzg3ISW7dltukayj4GfeX5rW0++FKgSkT0WLF
- X1BvVVwtGP5WRqLWKx8PGVGmDVbFJnlTmbQgQR6Q=
-Date: Thu, 14 May 2020 12:25:46 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Christian Gromm <christian.gromm@microchip.com>
-Subject: Re: [PATCH v2 1/8] drivers: most: add usb adapter driver
-Message-ID: <20200514102546.GA1828756@kroah.com>
-References: <1589449976-11378-1-git-send-email-christian.gromm@microchip.com>
- <1589449976-11378-2-git-send-email-christian.gromm@microchip.com>
+Received: from correo.tnschile.cl (host-167-250-196-7.ipv4.tnschile.com
+ [167.250.196.7])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0AD4688F7E
+ for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 13:49:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by correo.tnschile.cl (Postfix) with ESMTP id 449F625E67D4;
+ Tue, 17 Mar 2020 18:41:19 -0300 (-03)
+Received: from correo.tnschile.cl ([127.0.0.1])
+ by localhost (correo.tnschile.cl [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id GEXbtDEY01J4; Tue, 17 Mar 2020 18:41:18 -0300 (-03)
+Received: from localhost (localhost [127.0.0.1])
+ by correo.tnschile.cl (Postfix) with ESMTP id A470825E7092;
+ Tue, 17 Mar 2020 18:41:17 -0300 (-03)
+X-Virus-Scanned: amavisd-new at correo.tnschile.cl
+Received: from correo.tnschile.cl ([127.0.0.1])
+ by localhost (correo.tnschile.cl [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id TLALz_-lCOZ6; Tue, 17 Mar 2020 18:41:17 -0300 (-03)
+Received: from [64.188.23.236] (unknown [167.250.196.25])
+ by correo.tnschile.cl (Postfix) with ESMTPS id 64F8C25E67D4;
+ Tue, 17 Mar 2020 18:41:09 -0300 (-03)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1589449976-11378-2-git-send-email-christian.gromm@microchip.com>
+Content-Description: Mail message body
+Subject: Important Message.
+To: Recipients <>
+From: "HSBC Bank Dubai, UAE" <>
+Date: Thu, 14 May 2020 04:30:32 -0700
+Message-Id: <20200317214109.64F8C25E67D4@correo.tnschile.cl>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,33 +67,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org, linux-usb@vger.kernel.org
+Reply-To: marwanhadi090@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, May 14, 2020 at 11:52:49AM +0200, Christian Gromm wrote:
-> This patch adds the usb driver source file most_usb.c and
-> modifies the Makefile and Kconfig accordingly.
-> 
-> Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-> ---
-> v2:
-> Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> 	- don't remove usb driver from staging area
-> 	- don't touch staging/most/Kconfig
-> 	- remove subdirectory for USB driver and put source file into
-> 	  drivers/most
+Hello,
 
-Hm, no, can you invert this series?  I'll gladly take the "fixes" for
-the existing code in staging, and then we can do a new review after that
-of the file being added to match what is in staging.  I think you might
-have missed at least one change that happened there already :(
 
-thanks,
+I am Mr. Marwan Hadi, Head of Wealth Management, at HSBC Bank Dubai, UAE.  I have been in search of someone with the name  ''Hakuyo, so i came online in search of name or email that look like his, i think it is by the will of God to come across you now, i am having some important business discussion i wish to share with you, it is in connection with your email and you are going to benefit from it.
 
-greg k-h
+One Late Peter Hakuyo, a citizen of your country and a crude Oil dealer made a fixed deposit with my bank valued at US$70,000,000.00 (Seventy Million United State Dollars) the due date for the deposit contract was on the 17th of March 2020,sadly peter was among the death victims of covid-19 cases in China , My bank management is yet to know about his death, i knew about it because he was my friend and i am his account officer. Peter did not mention any Next of Kin/ Heir when the account was opened, so few months ago i was going through his account details and noticed that his account needs to be renew or to terminate the contract, so i thought of it again and again and i decided to get a next of Kin so that the fund can be out of HSBC Bank, now i am seeking for your co-operation so we can get the fund to our self instead of allowing it to remain in the bank and if the bank do not hear from Late Peter they will use the fund for their personal use, i have prayed and made a very
+  good home grand work concerning this transaction before contacting you, since you have same last name with late Peter my bank head quarters will release the fund to you as the rightful next of Kin to the fund, there is no risk involved in this transaction all i want is for you to keep this transaction secret between the both of us, do not discuss with anybody about this transaction i am here to guide you all through this transaction, the fund will be transferred to your account.
+
+I am not a greedy person, so I am suggesting we share the funds equal, 50/50% to both parties, my share will assist me to start my own company which has been my dream. Let me know your mind on this and please do treat this information as TOP SECRET. We shall go over the details once I receive your urgent response through my email address.
+
+Email: marwanhadi090@gmail.com
+
+Regards,
+Marwan Hadi.
+
+Head of Retail Banking and Wealth Management, at HSBC Bank Dubai, UAE
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
