@@ -2,59 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E13A61D1FE1
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 May 2020 22:14:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D3D91D2877
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 09:04:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2448486C7E;
-	Wed, 13 May 2020 20:14:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D797E88959;
+	Thu, 14 May 2020 07:04:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zm7GDfGIqecY; Wed, 13 May 2020 20:14:10 +0000 (UTC)
+	with ESMTP id jRXURdTdT2Bt; Thu, 14 May 2020 07:04:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F05F9819A8;
-	Wed, 13 May 2020 20:14:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6E446888D4;
+	Thu, 14 May 2020 07:04:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EBC7A1BF3CB
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 20:14:07 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 98ADE1BF389
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 07:04:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E865E865CF
- for <devel@linuxdriverproject.org>; Wed, 13 May 2020 20:14:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 954CE89356
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 07:04:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DPyajlqaeIkP for <devel@linuxdriverproject.org>;
- Wed, 13 May 2020 20:14:07 +0000 (UTC)
+ with ESMTP id 8aF8cPCzGLR8 for <devel@linuxdriverproject.org>;
+ Thu, 14 May 2020 07:04:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 499FD854C0
- for <devel@driverdev.osuosl.org>; Wed, 13 May 2020 20:14:07 +0000 (UTC)
-IronPort-SDR: DXV8lmWdw5NlFRLaJmXlar2H2+HtvPeNqVABW7CzMqwF4Qp/su+4ADg/JlsQukr2cTJrjvN6j3
- dRKRtoMCPpOg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 May 2020 13:14:06 -0700
-IronPort-SDR: 3sM2s1l2Vynb2L6nyKOMOfyFhNE0LbDyMTOsUUzbV1D3tQP9k/BCUlRb8fc5A0fG2gYxGNFArv
- FDIhZsXhucvQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,388,1583222400"; d="scan'208";a="280618896"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 13 May 2020 13:14:05 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jYxlU-000DaV-On; Thu, 14 May 2020 04:14:04 +0800
-Date: Thu, 14 May 2020 04:13:53 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 8a01032e02c8a0fb3e9f33791023b62dee73cc03
-Message-ID: <5ebc5501.r5thYoBDlEJEtadM%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
+ [209.85.167.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8C55E89285
+ for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 07:04:51 +0000 (UTC)
+Received: by mail-lf1-f67.google.com with SMTP id a4so1631406lfh.12
+ for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 00:04:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=I9WnzFdmVQbheZ8Ai9Qer5xXiDc1MgImnC5EGlPBIDA=;
+ b=NtdDuAdJ5CcN1uFU9Qm9V5s87zvsyk2qvicP4p1o5qZOtxLc8SWB3RnMKtaOpqRIa/
+ j//aqiiK/zQVA2FH+09/yPIZYwcymLN2t72qriVFKxYDfdDWbbDU5+HPXQD3z32akvQG
+ nM/GtV4xl2+oYoBzK82E+zCzeT/TADsx2NbRs5Cy+J+VEVnyKoyDqgcD1RiiRo1yDL/g
+ yDDhFkm4UE1YxgQoQ99TU+P+pxFCHoAs91Iqkp4GzOwG203d+Lj33nfjP4stYO81ldmz
+ 8Nu5mq5OwUkJmiYjTaceaUIsOvjqMTj000qBwOJJbqxvxcvoOfUyhPMBSyznH/3cOCgO
+ JbKQ==
+X-Gm-Message-State: AOAM532YZVUt1+LRVEf6+V18g9HnGPIVF5fkKUGI73nIRRDGnBFY9ps6
+ z6tbK6Ruepfo9P6YOpVPyuI=
+X-Google-Smtp-Source: ABdhPJzbhRRGhNeIlXT1SpAvrdP+VLu4RYUXW0vcX5PRMC55VImUYwDNmGzuxiMOD5YnC/GXLi5E5A==
+X-Received: by 2002:ac2:5542:: with SMTP id l2mr2220386lfk.113.1589439889686; 
+ Thu, 14 May 2020 00:04:49 -0700 (PDT)
+Received: from xi.terra (c-beaee455.07-184-6d6c6d4.bbcust.telenor.se.
+ [85.228.174.190])
+ by smtp.gmail.com with ESMTPSA id c20sm937831ljk.59.2020.05.14.00.04.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 May 2020 00:04:45 -0700 (PDT)
+Received: from johan by xi.terra with local (Exim 4.92.3)
+ (envelope-from <johan@kernel.org>)
+ id 1jZ7vA-00018d-2b; Thu, 14 May 2020 09:04:44 +0200
+Date: Thu, 14 May 2020 09:04:44 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Alex Elder <elder@linaro.org>
+Subject: Re: [greybus-dev] [PATCH] greybus: uart: fix uninitialized flow
+ control variable
+Message-ID: <20200514070444.GB25962@localhost>
+References: <20200429190022.12671-1-arnd@arndb.de>
+ <7146e1ca-1fc7-61ab-e798-7b017c7c974b@linaro.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <7146e1ca-1fc7-61ab-e798-7b017c7c974b@linaro.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,165 +81,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
+ Arnd Bergmann <arnd@arndb.de>, Axel Haslam <ahaslam@baylibre.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>, David Lin <dtwlin@gmail.com>,
+ greybus-dev@lists.linaro.org, Greg Kroah-Hartman <gregkh@google.com>,
+ linux-kernel@vger.kernel.org, Johan Hovold <johan@hovoldconsulting.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
-branch HEAD: 8a01032e02c8a0fb3e9f33791023b62dee73cc03  staging: vt6656: Remove logically dead code
+On Wed, Apr 29, 2020 at 03:00:44PM -0500, Alex Elder wrote:
+> On 4/29/20 2:00 PM, Arnd Bergmann wrote:
+> > gcc-10 points out an uninitialized variable use:
+> 
+> Wow, nice, checking individual uninitialized fields within
+> the structure.
+> 
+> The structure should really be zero-initialized anyway; it's
+> passed as a structure in a message elsewhere.  With your
+> change, all fields in the structure are written, but in
+> theory the structure could change and stack garbage could
+> be sent over the wire.
+> 
+> What do you think of doing this instead?  Or in addition?
+> 
+>         struct gb_tty_line_coding newline = { };
+> 
+> (Presumably that would also silence the warning.)
+> 
+> I endorse of your change, either way.
 
-elapsed time: 485m
+Looks like Greg ended up applying an identical version of this patch
+that was submitted this week instead.
 
-configs tested: 138
-configs skipped: 9
+Taking a closer look at this code I noticed we have two versions of this
+line-coding struct which are supposed by be identical, but which could
+get out of sync (and have once already it turns out).
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-m68k                             allyesconfig
-sparc                            allyesconfig
-h8300                     edosk2674_defconfig
-mips                     decstation_defconfig
-sh                          rsk7201_defconfig
-mips                          rm200_defconfig
-riscv                    nommu_virt_defconfig
-mips                      pistachio_defconfig
-xtensa                           alldefconfig
-sh                           se7722_defconfig
-openrisc                         alldefconfig
-arm                        cerfcube_defconfig
-arm                         assabet_defconfig
-arm                     davinci_all_defconfig
-arc                          axs101_defconfig
-m68k                        mvme16x_defconfig
-arc                              alldefconfig
-s390                       zfcpdump_defconfig
-m68k                       m5249evb_defconfig
-m68k                          sun3x_defconfig
-sh                           se7619_defconfig
-sh                ecovec24-romimage_defconfig
-arc                            hsdk_defconfig
-arm                          iop32x_defconfig
-riscv                             allnoconfig
-arm                        shmobile_defconfig
-powerpc                    gamecube_defconfig
-sh                           se7343_defconfig
-m68k                       m5475evb_defconfig
-arm                         s3c2410_defconfig
-sh                   rts7751r2dplus_defconfig
-arm                         shannon_defconfig
-nios2                            alldefconfig
-arm                           corgi_defconfig
-arm                         lpc32xx_defconfig
-mips                      loongson3_defconfig
-mips                     loongson1c_defconfig
-c6x                        evmc6472_defconfig
-um                               alldefconfig
-arm                        clps711x_defconfig
-powerpc                    adder875_defconfig
-parisc                generic-64bit_defconfig
-arm                        vexpress_defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-xtensa                              defconfig
-arc                                 defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a006-20200513
-i386                 randconfig-a005-20200513
-i386                 randconfig-a003-20200513
-i386                 randconfig-a001-20200513
-i386                 randconfig-a004-20200513
-i386                 randconfig-a002-20200513
-x86_64               randconfig-a005-20200513
-x86_64               randconfig-a003-20200513
-x86_64               randconfig-a006-20200513
-x86_64               randconfig-a004-20200513
-x86_64               randconfig-a001-20200513
-x86_64               randconfig-a002-20200513
-i386                 randconfig-a012-20200513
-i386                 randconfig-a016-20200513
-i386                 randconfig-a014-20200513
-i386                 randconfig-a011-20200513
-i386                 randconfig-a013-20200513
-i386                 randconfig-a015-20200513
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                                defconfig
-x86_64                              defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-sparc                               defconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Johan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
