@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6BDA1D31B6
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 15:46:57 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FB9E1D31B7
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 15:47:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5EBC287AA8;
-	Thu, 14 May 2020 13:46:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A4A4B26FFF;
+	Thu, 14 May 2020 13:47:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OMh8VE4S7nPG; Thu, 14 May 2020 13:46:51 +0000 (UTC)
+	with ESMTP id xilFj1eeya9x; Thu, 14 May 2020 13:46:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 20E4E87A7B;
-	Thu, 14 May 2020 13:46:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D4FA9270F9;
+	Thu, 14 May 2020 13:46:50 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5E7391BF31F
+ by ash.osuosl.org (Postfix) with ESMTP id D9A5E1BF31F
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 13:46:43 +0000 (UTC)
+ Thu, 14 May 2020 13:46:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5A908270F9
+ by silver.osuosl.org (Postfix) with ESMTP id D1E7C226B7
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 13:46:43 +0000 (UTC)
+ Thu, 14 May 2020 13:46:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ak4fJ63sK2p8
+ with ESMTP id ABqg+a0JDB95
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 13:46:39 +0000 (UTC)
+ Thu, 14 May 2020 13:46:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
  [216.71.150.166])
- by silver.osuosl.org (Postfix) with ESMTPS id 43C1B26FFF
+ by silver.osuosl.org (Postfix) with ESMTPS id 3B98227036
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 13:46:39 +0000 (UTC)
+ Thu, 14 May 2020 13:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1589464000; x=1621000000;
+ t=1589464002; x=1621000002;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=q62AaMvRlnJWHFhcdKw6BSnQ1+0vKJEbrDyzf0ZKEbo=;
- b=dpVuYCI9ObPruUUE8I/1t/DJzGnzITTfDiY9Ykn0LXE3jcr4jS9d7xtP
- 0ZajLaf/3E8xgMFckRWkcL/DFxh1A6n5kcjPNCTGc0yaCF+KjohfUjEyY
- THeTUR86Bc/m2dafgpeGzs9D5opJmQ08j3PF0nMnl/uR8sJO+/SkaYqgV
- bxSeCq2H53EeGnG0u+B1/uFHlApZve66zezje4trgaOsHwMGd/6gwVIH+
- 4P9ylDIFc7pYIP8Obpj5MOaoU9lc9+SfE5Oq+FgZcNQPbJ4yEe1B+uUFe
- BMZW52v9R3MEC+QKAVwXG8PGPoxdETfDRwKTQWZhn1eHDucL6O9m8vY6W g==;
-IronPort-SDR: QT6xHZ9BqKXJ2PUNCtCgHwvy7pOtuQTx074zY1NHlqE5YyMnZf0noO+zNWS8PVhHsvpZd9J9QQ
- WulfXVwhJ7IkQL0VIGo+U1iFKQVKC7B3f8jwnpduc8/jmXwva6Xx9eVjhmed9Jq9mNeyQ7M8Yz
- Q6IupYP51Q3uAkjXbvO7oIbm8+Xht6s16ZTipc7lSRWhwoAb3RJyZIjws571EeoQdaDhYLwMhX
- dLS67wuk6cdETux4QZMBWbOGvPlJ85M5hfyv/xaz9sJu72LANtCJRk8TdgNGMUHWFhmOxJiQwa
- woE=
-X-IronPort-AV: E=Sophos;i="5.73,391,1583218800"; d="scan'208";a="75894437"
+ bh=NAWNHUGkWVqHw4OIUXqxJ6p/XpmnlbIkD3/DmN+xwEo=;
+ b=mjGPZElZ0P/lipEk7IoqMBqYoxW5Sqrdk3kFd1FHnxOU/S8EzeA5a8hj
+ /j3SaAKvLgOJIgIqj8uhuD6OrsDYUqC9LCMWzW87XBgIyCxQf6mFl6aA6
+ 1K180EkyhdTTlFssyeJh+WxIxl8q4CKCr6FjBFFVd8p12CGUlgWDHzQAb
+ ZfA1lHcdja2OMliAxdm3eXXR8E/G2r8hjHmJr0TduAiFjMU/8kHHmqEUl
+ yY89OcQb4n8ZO24UJrGO4879jutBQCkTWSI+UlFEWgltjuyKGlyovz2Ok
+ F3wbNBm7LF8B8yZLnxnxgTpk01ilPzJbZ/QtsodXiXKgQAj+h0/9Svo2a w==;
+IronPort-SDR: EqNu7ea7kDXbyk5j5o1+az4/iDy/TFMy05hMc11XCCLyhb0pllfMDptckjwWFzMjoj3/ry8IeT
+ R9a+K3ccXQ72D+kEAJn6Ooo2GSV+WCC/YyIiuAJI8Y8XJ4ISswmP+c+xl12iL9VEPf9zkkNXqw
+ QQcIsADDChHsgm0u9FX0OdFd15aLIvYiW5H9Fkmv29NyS0S8uvyRQ81/3o2RfslUYksk9PPTHX
+ gvlZxGFjB9KlfFk7hDCJvVT8Dr4o0hu9kLthfjN+bUd+7mELMGe2hsnR+6vDZMomkZcuyjWY6x
+ ruA=
+X-IronPort-AV: E=Sophos;i="5.73,391,1583218800"; d="scan'208";a="75894442"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
  by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 14 May 2020 06:46:40 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ 14 May 2020 06:46:42 -0700
+Received: from chn-vm-ex02.mchp-main.com (10.10.87.72) by
+ chn-vm-ex02.mchp-main.com (10.10.87.72) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 14 May 2020 06:46:38 -0700
+ 15.1.1713.5; Thu, 14 May 2020 06:46:42 -0700
 Received: from localhost.localdomain (10.10.115.15) by
  chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Thu, 14 May 2020 06:46:40 -0700
+ 15.1.1713.5 via Frontend Transport; Thu, 14 May 2020 06:46:41 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH 4/7] staging: most: usb: use dev_dbg function
-Date: Thu, 14 May 2020 15:46:26 +0200
-Message-ID: <1589463989-30029-5-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH 5/7] staging: most: fix typo in Kconfig
+Date: Thu, 14 May 2020 15:46:27 +0200
+Message-ID: <1589463989-30029-6-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1589463989-30029-1-git-send-email-christian.gromm@microchip.com>
 References: <1589463989-30029-1-git-send-email-christian.gromm@microchip.com>
@@ -93,35 +93,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch replaces the functions dev_notice with dev_dbg to silence
-the driver during normal operation.
+This patch corrects the typo in the Kconfig file where it says
+tranceiver instead of transceiver.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Reported-by: Randy Dunlap <rdunlap@infradead.org>
 ---
- drivers/staging/most/usb/usb.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/most/usb/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/most/usb/usb.c b/drivers/staging/most/usb/usb.c
-index 25e114d..882f59e 100644
---- a/drivers/staging/most/usb/usb.c
-+++ b/drivers/staging/most/usb/usb.c
-@@ -1130,13 +1130,13 @@ hdm_probe(struct usb_interface *interface, const struct usb_device_id *id)
- 		init_usb_anchor(&mdev->busy_urbs[i]);
- 		spin_lock_init(&mdev->channel_lock[i]);
- 	}
--	dev_notice(dev, "claimed gadget: Vendor=%4.4x ProdID=%4.4x Bus=%02x Device=%02x\n",
-+	dev_dbg(dev, "claimed gadget: Vendor=%4.4x ProdID=%4.4x Bus=%02x Device=%02x\n",
- 		le16_to_cpu(usb_dev->descriptor.idVendor),
- 		le16_to_cpu(usb_dev->descriptor.idProduct),
- 		usb_dev->bus->busnum,
- 		usb_dev->devnum);
+diff --git a/drivers/staging/most/usb/Kconfig b/drivers/staging/most/usb/Kconfig
+index a86f1f6..75dc25c 100644
+--- a/drivers/staging/most/usb/Kconfig
++++ b/drivers/staging/most/usb/Kconfig
+@@ -7,7 +7,7 @@ config MOST_USB
+ 	tristate "USB"
+ 	depends on USB && NET
+ 	help
+-	  Say Y here if you want to connect via USB to network tranceiver.
++	  Say Y here if you want to connect via USB to network transceiver.
+ 	  This device driver depends on the networking AIM.
  
--	dev_notice(dev, "device path: /sys/bus/usb/devices/%d-%s:%d.%d\n",
-+	dev_dbg(dev, "device path: /sys/bus/usb/devices/%d-%s:%d.%d\n",
- 		usb_dev->bus->busnum,
- 		usb_dev->devpath,
- 		usb_dev->config->desc.bConfigurationValue,
+ 	  To compile this driver as a module, choose M here: the
 -- 
 2.7.4
 
