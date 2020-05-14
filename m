@@ -1,74 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D3D91D2877
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 09:04:58 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id ABE701D287B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 09:06:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D797E88959;
-	Thu, 14 May 2020 07:04:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 39C2E89612;
+	Thu, 14 May 2020 07:06:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jRXURdTdT2Bt; Thu, 14 May 2020 07:04:55 +0000 (UTC)
+	with ESMTP id X2XGROgMQiUX; Thu, 14 May 2020 07:06:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6E446888D4;
-	Thu, 14 May 2020 07:04:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A934889356;
+	Thu, 14 May 2020 07:06:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 98ADE1BF389
- for <devel@linuxdriverproject.org>; Thu, 14 May 2020 07:04:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C140D1BF389
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 07:06:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 954CE89356
- for <devel@linuxdriverproject.org>; Thu, 14 May 2020 07:04:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BDEEE89356
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 07:06:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8aF8cPCzGLR8 for <devel@linuxdriverproject.org>;
- Thu, 14 May 2020 07:04:51 +0000 (UTC)
+ with ESMTP id vfYQVILwJYtv for <devel@linuxdriverproject.org>;
+ Thu, 14 May 2020 07:06:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f67.google.com (mail-lf1-f67.google.com
- [209.85.167.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8C55E89285
- for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 07:04:51 +0000 (UTC)
-Received: by mail-lf1-f67.google.com with SMTP id a4so1631406lfh.12
- for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 00:04:51 -0700 (PDT)
+Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
+ [209.85.167.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 30ED589285
+ for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 07:06:03 +0000 (UTC)
+Received: by mail-lf1-f65.google.com with SMTP id 188so1651432lfa.10
+ for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 00:06:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=I9WnzFdmVQbheZ8Ai9Qer5xXiDc1MgImnC5EGlPBIDA=;
- b=NtdDuAdJ5CcN1uFU9Qm9V5s87zvsyk2qvicP4p1o5qZOtxLc8SWB3RnMKtaOpqRIa/
- j//aqiiK/zQVA2FH+09/yPIZYwcymLN2t72qriVFKxYDfdDWbbDU5+HPXQD3z32akvQG
- nM/GtV4xl2+oYoBzK82E+zCzeT/TADsx2NbRs5Cy+J+VEVnyKoyDqgcD1RiiRo1yDL/g
- yDDhFkm4UE1YxgQoQ99TU+P+pxFCHoAs91Iqkp4GzOwG203d+Lj33nfjP4stYO81ldmz
- 8Nu5mq5OwUkJmiYjTaceaUIsOvjqMTj000qBwOJJbqxvxcvoOfUyhPMBSyznH/3cOCgO
- JbKQ==
-X-Gm-Message-State: AOAM532YZVUt1+LRVEf6+V18g9HnGPIVF5fkKUGI73nIRRDGnBFY9ps6
- z6tbK6Ruepfo9P6YOpVPyuI=
-X-Google-Smtp-Source: ABdhPJzbhRRGhNeIlXT1SpAvrdP+VLu4RYUXW0vcX5PRMC55VImUYwDNmGzuxiMOD5YnC/GXLi5E5A==
-X-Received: by 2002:ac2:5542:: with SMTP id l2mr2220386lfk.113.1589439889686; 
- Thu, 14 May 2020 00:04:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=AkkqkBerykie1YrDXFBzsGueOMJwtySKBnmKIyb/rqw=;
+ b=tbFFc8gtImEmuZINRKyhToOMM6GCs6wkkrh9phI4GRazYs5RV9SQkdkyk08iKG2DHm
+ OVkH4boO0Fb9ToEUUI05INw0faYi6c+yW3Z6BYraPBWRYl/ApPNoJBO99NVg+2C3BKi3
+ CDLPdf0Fhh7BiNz0rthC7uJDAqnrKjUIzwqVq/uNN/DXtexNi8z+xr2N1VCWPLpoXOM1
+ 1R/Kdsq6T6Rra+TZY/fzh07UlbW/g+9nMnSELeSB/gXM0ewb2QFT3gBI9rXz+J287zpW
+ F4TIVaxP59JI6f+Z6+lb+fM2z5guk5ZGz1ZNEanNXQGG6kM/m65dVcM2SN14DLSFnA2r
+ 21hQ==
+X-Gm-Message-State: AOAM532R47EuWJckvyk13UVcytmsp3RWq3Q7MyEcrrLdd2GKVcnFlcbk
+ Bikc4BWVZiP4vHjTcrOw5QwiIIvm
+X-Google-Smtp-Source: ABdhPJz8HCH9ZpQl9l+RruScNIJF1fFDO1Ykv1t0+vZomr5Soo9N7qsIOBMEwdNO/Dwx0UEqrebWGQ==
+X-Received: by 2002:a19:ad49:: with SMTP id s9mr2292027lfd.9.1589439961465;
+ Thu, 14 May 2020 00:06:01 -0700 (PDT)
 Received: from xi.terra (c-beaee455.07-184-6d6c6d4.bbcust.telenor.se.
  [85.228.174.190])
- by smtp.gmail.com with ESMTPSA id c20sm937831ljk.59.2020.05.14.00.04.41
+ by smtp.gmail.com with ESMTPSA id k24sm911175ljg.92.2020.05.14.00.06.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 May 2020 00:04:45 -0700 (PDT)
+ Thu, 14 May 2020 00:06:00 -0700 (PDT)
 Received: from johan by xi.terra with local (Exim 4.92.3)
- (envelope-from <johan@kernel.org>)
- id 1jZ7vA-00018d-2b; Thu, 14 May 2020 09:04:44 +0200
-Date: Thu, 14 May 2020 09:04:44 +0200
+ (envelope-from <johan@xi.terra>)
+ id 1jZ7wQ-0001AB-Ut; Thu, 14 May 2020 09:06:03 +0200
 From: Johan Hovold <johan@kernel.org>
-To: Alex Elder <elder@linaro.org>
-Subject: Re: [greybus-dev] [PATCH] greybus: uart: fix uninitialized flow
- control variable
-Message-ID: <20200514070444.GB25962@localhost>
-References: <20200429190022.12671-1-arnd@arndb.de>
- <7146e1ca-1fc7-61ab-e798-7b017c7c974b@linaro.org>
+To: David Lin <dtwlin@gmail.com>, Johan Hovold <johan@kernel.org>,
+ Alex Elder <elder@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: greybus: uart: replace driver line-coding struct
+Date: Thu, 14 May 2020 09:05:48 +0200
+Message-Id: <20200514070548.4423-1-johan@kernel.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <7146e1ca-1fc7-61ab-e798-7b017c7c974b@linaro.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,46 +79,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
- Arnd Bergmann <arnd@arndb.de>, Axel Haslam <ahaslam@baylibre.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Johan Hovold <johan@kernel.org>, David Lin <dtwlin@gmail.com>,
- greybus-dev@lists.linaro.org, Greg Kroah-Hartman <gregkh@google.com>,
- linux-kernel@vger.kernel.org, Johan Hovold <johan@hovoldconsulting.com>
+Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Apr 29, 2020 at 03:00:44PM -0500, Alex Elder wrote:
-> On 4/29/20 2:00 PM, Arnd Bergmann wrote:
-> > gcc-10 points out an uninitialized variable use:
-> 
-> Wow, nice, checking individual uninitialized fields within
-> the structure.
-> 
-> The structure should really be zero-initialized anyway; it's
-> passed as a structure in a message elsewhere.  With your
-> change, all fields in the structure are written, but in
-> theory the structure could change and stack garbage could
-> be sent over the wire.
-> 
-> What do you think of doing this instead?  Or in addition?
-> 
->         struct gb_tty_line_coding newline = { };
-> 
-> (Presumably that would also silence the warning.)
-> 
-> I endorse of your change, either way.
+Drop the driver version of the line-coding request and use the protocol
+definition directly as was originally intended instead.
 
-Looks like Greg ended up applying an identical version of this patch
-that was submitted this week instead.
+This specifically avoids having the two versions of what is supposed to
+be the same struct ever getting out of sync.
 
-Taking a closer look at this code I noticed we have two versions of this
-line-coding struct which are supposed by be identical, but which could
-get out of sync (and have once already it turns out).
+Note that this has in fact already happened once when the protocol
+definition had its implicit padding removed while the driver struct
+wasn't updated. The fact that we used the size of the then larger driver
+struct when memcpying its content to the stack didn't exactly make
+things better. A later addition of a flow-control field incidentally
+made the structures match again.
 
-Johan
+Signed-off-by: Johan Hovold <johan@kernel.org>
+---
+ drivers/staging/greybus/uart.c | 19 ++++---------------
+ 1 file changed, 4 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/staging/greybus/uart.c b/drivers/staging/greybus/uart.c
+index 55c51143bb09..84de56800a21 100644
+--- a/drivers/staging/greybus/uart.c
++++ b/drivers/staging/greybus/uart.c
+@@ -40,14 +40,6 @@
+ #define GB_UART_FIRMWARE_CREDITS	4096
+ #define GB_UART_CREDIT_WAIT_TIMEOUT_MSEC	10000
+ 
+-struct gb_tty_line_coding {
+-	__le32	rate;
+-	__u8	format;
+-	__u8	parity;
+-	__u8	data_bits;
+-	__u8	flow_control;
+-};
+-
+ struct gb_tty {
+ 	struct gbphy_device *gbphy_dev;
+ 	struct tty_port port;
+@@ -66,7 +58,7 @@ struct gb_tty {
+ 	struct mutex mutex;
+ 	u8 ctrlin;	/* input control lines */
+ 	u8 ctrlout;	/* output control lines */
+-	struct gb_tty_line_coding line_coding;
++	struct gb_uart_set_line_coding_request line_coding;
+ 	struct work_struct tx_work;
+ 	struct kfifo write_fifo;
+ 	bool close_pending;
+@@ -288,12 +280,9 @@ static void  gb_uart_tx_write_work(struct work_struct *work)
+ 
+ static int send_line_coding(struct gb_tty *tty)
+ {
+-	struct gb_uart_set_line_coding_request request;
+-
+-	memcpy(&request, &tty->line_coding,
+-	       sizeof(tty->line_coding));
+ 	return gb_operation_sync(tty->connection, GB_UART_TYPE_SET_LINE_CODING,
+-				 &request, sizeof(request), NULL, 0);
++				 &tty->line_coding, sizeof(tty->line_coding),
++				 NULL, 0);
+ }
+ 
+ static int send_control(struct gb_tty *gb_tty, u8 control)
+@@ -493,9 +482,9 @@ static int gb_tty_break_ctl(struct tty_struct *tty, int state)
+ static void gb_tty_set_termios(struct tty_struct *tty,
+ 			       struct ktermios *termios_old)
+ {
++	struct gb_uart_set_line_coding_request newline;
+ 	struct gb_tty *gb_tty = tty->driver_data;
+ 	struct ktermios *termios = &tty->termios;
+-	struct gb_tty_line_coding newline;
+ 	u8 newctrl = gb_tty->ctrlout;
+ 
+ 	newline.rate = cpu_to_le32(tty_get_baud_rate(tty));
+-- 
+2.26.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
