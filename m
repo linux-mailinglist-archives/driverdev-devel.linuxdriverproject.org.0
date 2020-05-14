@@ -1,39 +1,39 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67C241D2BD9
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 11:53:16 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C6EA1D2BE0
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 11:53:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E30B0879C8;
-	Thu, 14 May 2020 09:53:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D915388BA1;
+	Thu, 14 May 2020 09:53:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vCaPg6n8xb3s; Thu, 14 May 2020 09:53:13 +0000 (UTC)
+	with ESMTP id IOdkFwhtN6Rq; Thu, 14 May 2020 09:53:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 72D808790F;
-	Thu, 14 May 2020 09:53:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CA52A88B72;
+	Thu, 14 May 2020 09:53:10 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 60DC81BF342
+ by ash.osuosl.org (Postfix) with ESMTP id 6CDE61BF342
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 09:53:07 +0000 (UTC)
+ Thu, 14 May 2020 09:53:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5CA97876FF
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4A3EF8793E
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 09:53:07 +0000 (UTC)
+ Thu, 14 May 2020 09:53:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y88XB6vuyrRA
+ with ESMTP id oQZXS4_rK_3Y
  for <driverdev-devel@linuxdriverproject.org>;
  Thu, 14 May 2020 09:53:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
  [68.232.153.233])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9ADF8873FA
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C5B95878BC
  for <driverdev-devel@linuxdriverproject.org>;
  Thu, 14 May 2020 09:53:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
@@ -41,36 +41,35 @@ DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  t=1589449984; x=1620985984;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=XaiyOzJbm9tSQ61/hL3KmBzEmbAKGicNIZ5Lz5YPXeg=;
- b=l1Q5WKaBgiZwh6ATgg3FQuJX5Ka1KCSOqHzdY6VqcbYWhELg0/Mv56K6
- MT5it9qINCcA+OVxCQJgdAJLzFF5kIjk8zGAUG4KYFfQnXeX1/tzR4TgN
- QUbUP82vLw4A/ct3NteueoEwu5rgBX7Bj3M2wmCh43qr/5j65xMTOc4Jt
- sFiyVq+KMq2CdfB3ClQuCkuZ6NUWSwm76URyGIcEYkqMv0extVTWChPKx
- fPtjnjkikr6YMspAE2TaTgggcyEs7wAtoaySpzBkqjpjsezWL/76sAaUy
- bsZknVwJCZiwWh84QFvcOOuR6jpIo9GMfxTtjO4sd3YV1SaVvQszP7jdN Q==;
-IronPort-SDR: R/pp8qEZdCEbOKg1Aa/xvbar2wtBHLJSFk+z6KsvVsFkSuSj/dDfV/BqfIzHKMJ/awhPK9rnfP
- VITdidjD2a4XR2/aUQUa3FyJw45H5EBHUWV2JQojx3YMoW2LhSJCk6WgbrWVR2Mp46oTIcu8pY
- e4TZTxttgz0CYNocnP7f2DdGNAt1tKX3ym7eIFLhmOq7ehyRl6oj67GAvtjWtm96xfCogVb/HE
- U0EdToCKDKKUEH+/PG+//0k33GwGow5pRSikBQJHFH5lr4/jFVKrNbFPBR9mefymiLmtc98VPi
- zsc=
-X-IronPort-AV: E=Sophos;i="5.73,390,1583218800"; d="scan'208";a="76630476"
+ bh=XQTa58qUeJuhzxM/FNXFxnIbhZJuNUPuS+qW9gZgjBI=;
+ b=hCe1GCstZYBF5NMXnZrHiE5bj2aNaG2+j7ZYcLvKY/zN37vdMugZAHjH
+ cefa1WLP6heDZbwJTrf3wAVajzyfm0N31bwOd8NM/uzB0M/WtCQLDhBS7
+ Vz13kYQ77Sd+F5kaB34M2pzoJz21fW46R1noGyAVKLBqJ5dFGF0RhpaIP
+ FlLEiWmtKfE5oN/2+yKFiM6X/gTB1WPrdecZLxAi3JJHGEdILm/S84NZH
+ gJl4lMhU1EnDdFdyJ8oiKB/ecspYNWcQya+W0JEpnhUrh5U9Km2fL3go0
+ OQY351kZtjaXoge5axURrptpY1JENBvu7YsCxShPWThmAHFyGdQRCbVW+ g==;
+IronPort-SDR: gqJo9s9O/+ithtdDTS78AXTAjvJ8Cv0eJFpfPrb5N4PToXTmJkkCJNcwM88I4PCpkoX/P9+FAg
+ NUEmcEOEor1YOuTA9rklfY2H/dwto4tn8HSX+VOkSUMP0D+saz9UoQ9Dl7tVtKkXOVU4C06OGl
+ aLOzWvQkyXxLa2uddHmL7zqEuzO2gM1E79apkKB3sX7JPJjGDIb8zfLdTK40yaI93zpFj5wIxs
+ 6tjBcGzN5LmfjKXVg/8GrSMTAQtJNhu/VMcuWxTSPPRrvdYBjcV02JlMe1GTZGqEF2B1zyN9Hd
+ Pi0=
+X-IronPort-AV: E=Sophos;i="5.73,390,1583218800"; d="scan'208";a="76630477"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
  by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 14 May 2020 02:53:03 -0700
+ 14 May 2020 02:53:04 -0700
 Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
  chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 14 May 2020 02:53:02 -0700
+ 15.1.1713.5; Thu, 14 May 2020 02:53:03 -0700
 Received: from localhost.localdomain (10.10.115.15) by
  chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Thu, 14 May 2020 02:53:01 -0700
+ 15.1.1713.5 via Frontend Transport; Thu, 14 May 2020 02:53:02 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 2/8] drivers: most: usb: use dev_*() functions to print
- messages
-Date: Thu, 14 May 2020 11:52:50 +0200
-Message-ID: <1589449976-11378-3-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH v2 3/8] drivers: most: usb: remove reference to USB error codes
+Date: Thu, 14 May 2020 11:52:51 +0200
+Message-ID: <1589449976-11378-4-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1589449976-11378-1-git-send-email-christian.gromm@microchip.com>
 References: <1589449976-11378-1-git-send-email-christian.gromm@microchip.com>
@@ -94,90 +93,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch removes the pr_*() functions and uses dev_*() instead.
+This patch removes the reference to the driver API file for USB error
+codes.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
 v2:
 
- drivers/most/most_usb.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/most/most_usb.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/most/most_usb.c b/drivers/most/most_usb.c
-index daa5e4b..0846b38 100644
+index 0846b38..49d0b40 100644
 --- a/drivers/most/most_usb.c
 +++ b/drivers/most/most_usb.c
-@@ -5,7 +5,6 @@
-  * Copyright (C) 2013-2015 Microchip Technology Germany II GmbH & Co. KG
+@@ -477,8 +477,6 @@ static void hdm_write_completion(struct urb *urb)
+  * controller use to indicate a transfer has failed because of device
+  * disconnect.  In the interval before the hub driver starts disconnect
+  * processing, devices may receive such fault reports for every request.
+- *
+- * See <https://www.kernel.org/doc/Documentation/driver-api/usb/error-codes.rst>
   */
- 
--#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
- #include <linux/module.h>
- #include <linux/fs.h>
- #include <linux/usb.h>
-@@ -186,13 +185,14 @@ static inline int start_sync_ep(struct usb_device *usb_dev, u16 ep)
-  * get_stream_frame_size - calculate frame size of current configuration
-  * @cfg: channel configuration
-  */
--static unsigned int get_stream_frame_size(struct most_channel_config *cfg)
-+static unsigned int get_stream_frame_size(struct most_channel_config *cfg,
-+					  struct device *dev)
+ static void hdm_read_completion(struct urb *urb)
  {
- 	unsigned int frame_size = 0;
- 	unsigned int sub_size = cfg->subbuffer_size;
- 
- 	if (!sub_size) {
--		pr_warn("Misconfig: Subbuffer size zero.\n");
-+		dev_warn(dev, "Misconfig: Subbuffer size zero.\n");
- 		return frame_size;
- 	}
- 	switch (cfg->data_type) {
-@@ -201,7 +201,7 @@ static unsigned int get_stream_frame_size(struct most_channel_config *cfg)
- 		break;
- 	case MOST_CH_SYNC:
- 		if (cfg->packets_per_xact == 0) {
--			pr_warn("Misconfig: Packets per XACT zero\n");
-+			dev_warn(dev, "Misconfig: Packets per XACT zero\n");
- 			frame_size = 0;
- 		} else if (cfg->packets_per_xact == 0xFF) {
- 			frame_size = (USB_MTU / sub_size) * sub_size;
-@@ -210,7 +210,7 @@ static unsigned int get_stream_frame_size(struct most_channel_config *cfg)
- 		}
- 		break;
- 	default:
--		pr_warn("Query frame size of non-streaming channel\n");
-+		dev_warn(dev, "Query frame size of non-streaming channel\n");
- 		break;
- 	}
- 	return frame_size;
-@@ -270,7 +270,7 @@ static int hdm_poison_channel(struct most_interface *iface, int channel)
- static int hdm_add_padding(struct most_dev *mdev, int channel, struct mbo *mbo)
- {
- 	struct most_channel_config *conf = &mdev->conf[channel];
--	unsigned int frame_size = get_stream_frame_size(conf);
-+	unsigned int frame_size = get_stream_frame_size(conf, &mdev->dev);
- 	unsigned int j, num_frames;
- 
- 	if (!frame_size)
-@@ -304,7 +304,7 @@ static int hdm_remove_padding(struct most_dev *mdev, int channel,
- 			      struct mbo *mbo)
- {
- 	struct most_channel_config *const conf = &mdev->conf[channel];
--	unsigned int frame_size = get_stream_frame_size(conf);
-+	unsigned int frame_size = get_stream_frame_size(conf, &mdev->dev);
- 	unsigned int j, num_frames;
- 
- 	if (!frame_size)
-@@ -696,7 +696,7 @@ static int hdm_configure_channel(struct most_interface *iface, int channel,
- 
- 	mdev->padding_active[channel] = true;
- 
--	frame_size = get_stream_frame_size(conf);
-+	frame_size = get_stream_frame_size(conf, &mdev->dev);
- 	if (frame_size == 0 || frame_size > USB_MTU) {
- 		dev_warn(dev, "Misconfig: frame size wrong\n");
- 		return -EINVAL;
 -- 
 2.7.4
 
