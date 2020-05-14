@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E19971D2BE3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 11:53:24 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9AA1B1D2BDB
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 11:53:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9486F88B5D;
-	Thu, 14 May 2020 09:53:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1427489696;
+	Thu, 14 May 2020 09:53:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ztfTbFNse3Hp; Thu, 14 May 2020 09:53:22 +0000 (UTC)
+	with ESMTP id T-Qdqi3tFIws; Thu, 14 May 2020 09:53:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9EE2D88B85;
-	Thu, 14 May 2020 09:53:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1054789694;
+	Thu, 14 May 2020 09:53:15 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C006D1BF342
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D08D21BF342
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 09:53:06 +0000 (UTC)
+ Thu, 14 May 2020 09:53:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BD0BC88B47
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CD809876FF
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 09:53:06 +0000 (UTC)
+ Thu, 14 May 2020 09:53:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M-WdpfamvnyT
+ with ESMTP id xp1QFHEnf1rH
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 09:53:06 +0000 (UTC)
+ Thu, 14 May 2020 09:53:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
- [68.232.149.84])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0680088B5D
+Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
+ [68.232.154.123])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 527F5878BC
  for <driverdev-devel@linuxdriverproject.org>;
- Thu, 14 May 2020 09:53:05 +0000 (UTC)
+ Thu, 14 May 2020 09:53:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1589449985; x=1620985985;
+ t=1589449988; x=1620985988;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=Mmw5hIPN0sKQmWjs3u78F9H5tWaBpxFqYIUb5M3NgL0=;
- b=indvnUJEv0mUipQPOw1ckWoPPvTQjCmN1EapOvjsf02f4aVFsxNdHi/a
- f7HHolNwubZ+qZ3dQVTLzPbFUOea+IAaflixGBdbZBsf4C4Qzt1htMXiG
- t3e2Exdwmjsj8E3/OKD3yC0QLC4g5UjoXvlt3gmEPU/ZXpqVZLNbg7Aaj
- Qzs1ZJhkKBJJtdmMOAbbjeWCopfLo/MqrfgKY2ZNE9KLeqzOY/y1tOHcf
- E/AS+NbZfzDowDDPrxmd/IKuz3eRiHqWCFToRjZCOq1tGmSAhA6VYRqa0
- g3+1AUAQ7o3nGKD3sWvKbq6GRIu9EKwusDugBbDlx85r1WGq0i4FEgqss A==;
-IronPort-SDR: Pb+6G9Wuk+s0TdWRLxI6dy9N3aB6clfYRYun3iDWldHb7ralsK6p26Xwf0YcxkmwHRbwLVAtY9
- YKKp1e+RL4rPdX25ePYaQFrnOTJ0UWSaVK4gA0xdIlr0pQA6dh6q9J+6MZaZGWTifHMbhfpK1D
- iW+doTtZkXSQCmBJEmAlwCQtXSgNgj3GrsXyE82IvuNyeoTjQirHRVgY5EaY2mfjyfuPG8M1nI
- Us6Tg8huRFB5pj2AzqFzad8heh66OwQA+KaIsR+EC7YOov0gg1KhVBnE17IoobI+YGrkaFJz66
- HT4=
-X-IronPort-AV: E=Sophos;i="5.73,390,1583218800"; d="scan'208";a="75245167"
+ bh=ulFIoRuFlAhbgBKdyPyVoH1HEiouU5Elxw0OIIY1pcQ=;
+ b=NqflolDYci8TG3eyax4SuyhVL8BLFmCD03VbNSQLD736raf/GEdP7UvU
+ hRzoMZjgmva3GxefR49rVni/2BWa16TwiuUhhWq1u/gVpUFylElrnOzwi
+ q+R2VYAvSN4iWb63NP/Bx38cMee3rhnmsmhcWvrfbP3ooYMthdzpe8QeG
+ JMJqD69e5IVE8RMCx7zNCWz7DO4HXQFR93XnfqhZeYwsUv4Rwv1/yAr+8
+ FSnx49oa9dA3pm4ivTOOmsOPTWslYkZr0lB7MxYwYxQqNoHMm8tQGgic4
+ k3or0JFn1c3nVLCIqM2XlbqZYzieJ59gIp9R/xnH12pMznv/GqNgST2XY A==;
+IronPort-SDR: TM7+S6WU4eYPGBPIPzHkhIql2l8pYsqIPF+JMTyc2i432h/zcoWusOV06+MzErVFQRGnmDiosP
+ w/iZ/MrQMtx2M+KFkM3Vn2Uh0616G4Zqqdne1RTdcJMv2jLzSz72sgNd/UUfHpWED0lbTENucI
+ 6YkgwPGJjmsrpjqgw5bFRW+mzCIMliQIxAvOfnJ8rj6ho3u8+v/UrHQcqRmHWVTH+Z/+D4fLeT
+ BzWVlCNVpUOVGhoKtNOWrCGOkEpjVrEg+OPf/w78FbmojNitpW8Q7W0UC7fTnBrZ+elSw0LrRq
+ 254=
+X-IronPort-AV: E=Sophos;i="5.73,390,1583218800"; d="scan'208";a="73430412"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 14 May 2020 02:53:05 -0700
+ by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 14 May 2020 02:53:07 -0700
 Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 14 May 2020 02:53:04 -0700
+ 15.1.1713.5; Thu, 14 May 2020 02:53:06 -0700
 Received: from localhost.localdomain (10.10.115.15) by
  chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Thu, 14 May 2020 02:53:04 -0700
+ 15.1.1713.5 via Frontend Transport; Thu, 14 May 2020 02:53:05 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 4/8] drivers: most: usb: check number of reported endpoints
-Date: Thu, 14 May 2020 11:52:52 +0200
-Message-ID: <1589449976-11378-5-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH v2 5/8] drivers: most: usb: use dev_dbg function
+Date: Thu, 14 May 2020 11:52:53 +0200
+Message-ID: <1589449976-11378-6-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1589449976-11378-1-git-send-email-christian.gromm@microchip.com>
 References: <1589449976-11378-1-git-send-email-christian.gromm@microchip.com>
@@ -93,54 +93,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch checks the number of endpoints reported by the USB
-interface descriptor and throws an error if the number exceeds
-MAX_NUM_ENDPOINTS.
+This patch replaces the functions dev_notice with dev_dbg to silence
+the driver during normal operation.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
 v2:
 
- drivers/most/most_usb.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ drivers/most/most_usb.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/most/most_usb.c b/drivers/most/most_usb.c
-index 49d0b40..1655fcd 100644
+index 1655fcd..35620a1 100644
 --- a/drivers/most/most_usb.c
 +++ b/drivers/most/most_usb.c
-@@ -1044,13 +1044,17 @@ hdm_probe(struct usb_interface *interface, const struct usb_device_id *id)
- 	unsigned int num_endpoints;
- 	struct most_channel_capability *tmp_cap;
- 	struct usb_endpoint_descriptor *ep_desc;
--	int ret = 0;
-+	int ret;
+@@ -1129,13 +1129,13 @@ hdm_probe(struct usb_interface *interface, const struct usb_device_id *id)
+ 		init_usb_anchor(&mdev->busy_urbs[i]);
+ 		spin_lock_init(&mdev->channel_lock[i]);
+ 	}
+-	dev_notice(dev, "claimed gadget: Vendor=%4.4x ProdID=%4.4x Bus=%02x Device=%02x\n",
++	dev_dbg(dev, "claimed gadget: Vendor=%4.4x ProdID=%4.4x Bus=%02x Device=%02x\n",
+ 		   le16_to_cpu(usb_dev->descriptor.idVendor),
+ 		   le16_to_cpu(usb_dev->descriptor.idProduct),
+ 		   usb_dev->bus->busnum,
+ 		   usb_dev->devnum);
  
- 	if (!mdev)
--		goto err_out_of_memory;
-+		return -ENOMEM;
- 
- 	usb_set_intfdata(interface, mdev);
- 	num_endpoints = usb_iface_desc->desc.bNumEndpoints;
-+	if (num_endpoints > MAX_NUM_ENDPOINTS) {
-+		kfree(mdev);
-+		return -EINVAL;
-+	}
- 	mutex_init(&mdev->io_mutex);
- 	INIT_WORK(&mdev->poll_work_obj, wq_netinfo);
- 	timer_setup(&mdev->link_stat_timer, link_stat_timer_handler, 0);
-@@ -1179,11 +1183,6 @@ hdm_probe(struct usb_interface *interface, const struct usb_device_id *id)
- 	kfree(mdev->conf);
- err_free_mdev:
- 	put_device(&mdev->dev);
--err_out_of_memory:
--	if (ret == 0 || ret == -ENOMEM) {
--		ret = -ENOMEM;
--		dev_err(dev, "out of memory\n");
--	}
- 	return ret;
- }
- 
+-	dev_notice(dev, "device path: /sys/bus/usb/devices/%d-%s:%d.%d\n",
++	dev_dbg(dev, "device path: /sys/bus/usb/devices/%d-%s:%d.%d\n",
+ 		   usb_dev->bus->busnum,
+ 		   usb_dev->devpath,
+ 		   usb_dev->config->desc.bConfigurationValue,
 -- 
 2.7.4
 
