@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52F711D39FD
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 20:53:46 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81CA51D3A0B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 20:54:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1016220468;
-	Thu, 14 May 2020 18:53:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2FAE887AA0;
+	Thu, 14 May 2020 18:54:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v8GL3gIt4LYj; Thu, 14 May 2020 18:53:43 +0000 (UTC)
+	with ESMTP id ZbcU52CnupJU; Thu, 14 May 2020 18:54:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6EDD32045F;
-	Thu, 14 May 2020 18:53:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 25F6E87AD5;
+	Thu, 14 May 2020 18:54:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 50B631BF38C
- for <devel@linuxdriverproject.org>; Thu, 14 May 2020 18:53:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B03F91BF38C
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 18:54:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4C57E8873B
- for <devel@linuxdriverproject.org>; Thu, 14 May 2020 18:53:35 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id AC7D08873B
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 18:54:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BLTc1rtRz4lx for <devel@linuxdriverproject.org>;
- Thu, 14 May 2020 18:53:30 +0000 (UTC)
+ with ESMTP id OBOz7bEtOv9y for <devel@linuxdriverproject.org>;
+ Thu, 14 May 2020 18:54:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8149C88494
- for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 18:53:30 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7B3CD8853F
+ for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 18:54:30 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 665AF206DC;
- Thu, 14 May 2020 18:53:29 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 88DD0206DC;
+ Thu, 14 May 2020 18:54:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589482410;
- bh=eZRcI0qpAtMv8iWDAH9TOYTs+TyskQuVqxXt3Acec28=;
+ s=default; t=1589482470;
+ bh=8ElzDdtljUWzEJ0IxlL7wSTXglV8OpP7aHXhIwdbxnU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=c2WMnAh2FDL19ZvKEn1JWhq8v1szTxolbxwO3Vtcjow1HmqUJTXyIpIyI4Z8UsvqF
- iVYlxllGAm0rvWZ7pMdYfB6GE4Pv1cIji4HmKCVhK6I9bUCt9fAN4SVwx/97qXMe+1
- 2JEh8OZxfk1D8v7je+yR0zey+8sIoLoatBWd40fQ=
+ b=UN66Wo9I2p7sHX6cWToAFz4laovEOog13iu28EG1XyxHetfmad3F5qPWbO9e6wm1e
+ ZEOyHh1EWMNSc9WXPS5QA0c+vRoiMwc9Iho/8b0dlO2PE5uY1W1PUVJva9ZqPMi2jx
+ opM0xWTyV3PZQ5ncOJSQb6NSKGeBKTWGFGwJXo8s=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 15/49] most: core: use function subsys_initcall()
-Date: Thu, 14 May 2020 14:52:36 -0400
-Message-Id: <20200514185311.20294-15-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 13/31] most: core: use function subsys_initcall()
+Date: Thu, 14 May 2020 14:53:55 -0400
+Message-Id: <20200514185413.20755-13-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200514185311.20294-1-sashal@kernel.org>
-References: <20200514185311.20294-1-sashal@kernel.org>
+In-Reply-To: <20200514185413.20755-1-sashal@kernel.org>
+References: <20200514185413.20755-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -96,10 +96,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/most/core.c b/drivers/staging/most/core.c
-index 8e9a0b67c6ed3..0c9560bbd9a6d 100644
+index 25a077f4ea94d..724a6fb1731bf 100644
 --- a/drivers/staging/most/core.c
 +++ b/drivers/staging/most/core.c
-@@ -1602,7 +1602,7 @@ static void __exit most_exit(void)
+@@ -1621,7 +1621,7 @@ static void __exit most_exit(void)
  	ida_destroy(&mdev_id);
  }
  
