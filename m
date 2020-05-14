@@ -1,73 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E43F41D2A3C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 10:36:06 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E3FF1D2BD1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 11:53:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 63F2A8808F;
-	Thu, 14 May 2020 08:36:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 92FE687855;
+	Thu, 14 May 2020 09:53:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s+6v1ENml2BK; Thu, 14 May 2020 08:36:05 +0000 (UTC)
+	with ESMTP id yf_9f_vHXpZU; Thu, 14 May 2020 09:53:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8022687196;
-	Thu, 14 May 2020 08:36:04 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1D5C287909;
+	Thu, 14 May 2020 09:53:05 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7B0C31BF2C2
- for <devel@linuxdriverproject.org>; Thu, 14 May 2020 08:36:02 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 80C1D1BF342
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 May 2020 09:53:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 73DBC87E6A
- for <devel@linuxdriverproject.org>; Thu, 14 May 2020 08:36:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 78E3E87855
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 May 2020 09:53:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gEtJcOHtp25X for <devel@linuxdriverproject.org>;
- Thu, 14 May 2020 08:36:02 +0000 (UTC)
+ with ESMTP id WhV0i1WOPT_m
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 May 2020 09:53:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f194.google.com (mail-il1-f194.google.com
- [209.85.166.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E2C1286645
- for <devel@linuxdriverproject.org>; Thu, 14 May 2020 08:36:01 +0000 (UTC)
-Received: by mail-il1-f194.google.com with SMTP id 17so2488398ilj.3
- for <devel@linuxdriverproject.org>; Thu, 14 May 2020 01:36:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=F7/O7u6Yoy17a0y4VZuNuFz95QIROjdd9b1YfUvRjNY=;
- b=mPQOpp2ygDsFKBHWpDul9+ylovwa8+miiC6oJa5tZd8KlegTqz2nDoAaHg47Nb2MZ5
- qltaRaM7muKMHeXOrO2fwpa3wFwmv3kW3DStEUy2KNcOqDggAoKwgJGViwaTjR+rHHZC
- 8+eEyJOvqmyZTzDdW34GxJ1YvN7CvOWGhV4RqPpV2oGimC5+5tQXqIJTELRy2U6/j73p
- zGXovuOoK1sB3pW0xDOkrZg8E64bgJ8oQomJ+J+9ZjA8rnMIJ9/1k3Y3RN+gdH1V/IXh
- /2zoCq7uUJgGIZJshS8wys0H4ISssk1sn6/xiTn93PiMnnIGnnHSC6Om47nRWmqZtnaO
- tv0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=F7/O7u6Yoy17a0y4VZuNuFz95QIROjdd9b1YfUvRjNY=;
- b=P+GGo1tcqSqwVP6IrnKXt+LzSV5MO50w3cK17OxkCbyjkQXD3OMsRCk0gIGuo5919q
- DHQCKF5uGh1FvgoWpsrzYxorBCJYo2qAaJhemjVVr6GhFM1YopN0xt9qHVi3X+XcILoW
- oQoQakPuytmPNFTMHrLaCKVhqfObs5t34+lKbDUvoDBzX0q2oSoxJHTXqtWWeg2WNPVh
- +6I2NvP9L8uMtAF7MIMjK1XWXPbpuo8JZEs7gsjrP/Z2KhObBDHwVbQsyA92EqL/IT2v
- MK6r2CiZd8eWeb7nLRKaKLyRlB73w3zzvyfdPHg5IdaGRRrmZGTQBVcBp8N7ok9FVDyX
- SDQQ==
-X-Gm-Message-State: AOAM532f9I5LMOMVivXGqCxHuzDe8iERPxBXGW+7ZARbURiBy2co/jjD
- 2IpWu0MTZZoMINwVigafKRFhBFkVMHU47t2jBg==
-X-Google-Smtp-Source: ABdhPJwI3wxLR/z0EoYdZ83lvE+gMIwM5l2mg9Tp46y2SZM2AEdqekuNDjqnmBdXCEPVgv8aEvfoHvypS2EVvO/w+BU=
-X-Received: by 2002:a92:d40f:: with SMTP id q15mr3235047ilm.97.1589445361238; 
- Thu, 14 May 2020 01:36:01 -0700 (PDT)
+Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
+ [68.232.147.91])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C0022873FA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 May 2020 09:53:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1589449980; x=1620985980;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=4BYb23KO7xGiRWlCsZBOQqfF7mP3kChQE5nAO2UmTUA=;
+ b=FYh6c6buO1DyWP/085XjdJluJwaqIrtTQeL00Wcx3UvDRnQKmbuCs40J
+ qnwXYsA635K4tFpcru4Nb9FQpw43NMu964JLvhjRQrdL5v+82GKj6Z9j2
+ /fRG8YmdLUxuK8s7cMfxdVKPNz45aEQ+CCP1rxGIKmAQJ9VNRlzsVLwCH
+ EDs3Wb0DMMUpw5D4TbNzmAujVvCstKAm22kE6evclFVO7MtGdxLuyAhl0
+ aVbvmJozoGxISh6jdEKUnPgRZXvaw6GO+49LRu/YJoJNxxZ2UnQvrEmQW
+ kXl2d6yaSN0EEe9EXbH1YARCV34Oj+UwEwn8l4Yp6drUBDHJw0UegaByO Q==;
+IronPort-SDR: G2/ae2QsK6sMGEbhnQ0HNyZmFvfzjaiv5YgWOB4BpdB9tYPAdFhoFXTClG3H8YIlxVcZRecWDT
+ 2BATNHH7EkwTErzf0p9fn9aj0HCcpJo6hJXsurn75kyh10a5GAopUF/Za/HbctKfoQa761YPw8
+ bcE85p9dp5CLkqfhtjOKasIzrpJVzLCsmwm3AhkvQaFnKP8Cnk/hmxpUY4r3omzIQ5PvV87cOd
+ bv3Hid1J+2aUjge+X783VXjgzLVw5ApYzP53w5/0trZu2w/B5NbLMphEUjuQT8KzKuYXcgUhyv
+ WwM=
+X-IronPort-AV: E=Sophos;i="5.73,390,1583218800"; d="scan'208";a="79589202"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 14 May 2020 02:53:00 -0700
+Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Thu, 14 May 2020 02:53:03 -0700
+Received: from localhost.localdomain (10.10.115.15) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
+ 15.1.1713.5 via Frontend Transport; Thu, 14 May 2020 02:52:58 -0700
+From: Christian Gromm <christian.gromm@microchip.com>
+To: <gregkh@linuxfoundation.org>
+Subject: [PATCH v2 0/8] staging: most: move USB adapter driver to stable branch
+Date: Thu, 14 May 2020 11:52:48 +0200
+Message-ID: <1589449976-11378-1-git-send-email-christian.gromm@microchip.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Received: by 2002:a92:ce45:0:0:0:0:0 with HTTP; Thu, 14 May 2020 01:36:00
- -0700 (PDT)
-From: "M. Wiberg Caitlin" <mwibergcaitlin997@gmail.com>
-Date: Thu, 14 May 2020 08:36:00 +0000
-Message-ID: <CAOw4te2W-L2zP-5SfBBT+-U+uNhDVAeHpfqzyPXLvVNmZwvrTg@mail.gmail.com>
-Subject: HI
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,31 +83,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrsjaneyzachary4@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Christian Gromm <christian.gromm@microchip.com>,
+ driverdev-devel@linuxdriverproject.org, linux-usb@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gCkRlYXIgQmVsb3ZlZCwKCknigJltIE1SUy5KQU5FWSBaQUNIQVJZLCA2OXllYXJzIG9sZCBh
-ZmZlY3RlZCB3aXRoIGJyZWFzdCBjYW5jZXIsIHRoZSB3aWZlCgpvZiBsYXRlIEdhYnJpZWxsYSBL
-ZW5uZWR5LCAgdGhlIERpcmVjdG9yIG9mIEhpZ2ggUml2ZXIgR29sZCBNaW5lcyBMdGQKCkJ1cmtp
-bmEgRmFzbyBXZXN0IEFmcmljYS4gSSBhbSBjb250YWN0aW5nIHlvdSBiZWNhdXNlIG9mIG15IGhl
-YWx0aAoKY29uZGl0aW9uLGkgbmVlZCBhIHJlbGlhYmxlIHBlcnNvbiwgd2hvIHdpbGwgaGFuZGxl
-IHRoaXMgcHJvamVjdAoKYWNjb3JkaW5nbHksIGFjY29tcGxpc2ggbXkgaGVhcnQgZGVzaXJlIGFu
-ZCB1dGlsaXplIHRoaXMgZnVuZC4gSSBoYXZlCgpkZWNpZGVkIHRvIGRvbmF0ZSB0aGUgc3VtIFR3
-ZW50eS1GaXZlIE1pbGxpb24gVHdvIEh1bmRyZWQgVGhvdXNhbmQgVW5pdGVkCgpTdGF0ZSBEb2xs
-YXJzIE9ubHkgKCQyNSwyMDAsMDAwLjAwKSB0byBDaGFyaXR5IE9yZ2FuaXphdGlvbnMgb3IgdG8K
-CnN1cHBvcnQgdGhlIE9ycGhhbnMsIE1vdGhlcmxlc3MgQmFiaWVzLExlc3MgcHJpdmlsZWdlZCBh
-bmQgZnJlZSBNZWRpY2FsICYKCk1lZGljaW5lIFBvb3IgUGVvcGxlJ3MgYXJvdW5kIHRoZSBXb3Js
-ZCBzaW5jZSBJIGRvbiB0IGhhdmUgYW55IGNoaWxkIGFuZAoKZG8gbm90IHdhbnQgdGhlIGJhbmsg
-dGFrZSBvdmVyIHRoZSBmdW5kLiBJIGRvbid0IHJlYWxseSBrbm93IGlmIGkgYW0KCmdvaW5nIHRv
-IHN1cnZpdmUgdGhpcyBzdGFnZSwgdGhlcmVmb3JlIGlmIHlvdSByZWFkeSB0byBoYW5kbGUgdGhp
-cwoKcHJvamVjdCwga2luZGx5IHJlc3BvbnNlIHNvIHRoYXQgaSB3aWxsIGluc3RydWN0IHRoZSBi
-YW5rIHRvIHRyYW5zZmVyIHRoZQoKZnVuZCB0byB5b3VyIGFjY291bnQuCgpDb250YWN0IG15IHBy
-aXZhdGUgZW1haWwgb25seSBpZiB5b3UgYXJlIGludGVyZXN0ZWQKCihtcnNqYW5leXphY2hhcnk0
-QGdtYWlsLmNvbSkKClJlbWFpbiBibGVzc2VkIGluIHRoZSBuYW1lIG9mIHRoZSBMb3JkLgoKUmVn
-YXJkcwoKTXJzLkphbmV5IFphY2hhcnkKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVj
-dC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+This series moves the USB adapter driver to the stable branch and fixes
+the comments/findings on the submitted code.
+
+v2:
+	- create a patch set to address the comments on submitted code
+
+Christian Gromm (8):
+  drivers: most: add usb adapter driver
+  drivers: most: usb: use dev_*() functions to print messages
+  drivers: most: usb: remove reference to USB error codes
+  drivers: most: usb: check number of reported endpoints
+  drivers: most: usb: use dev_dbg function
+  drivers: most: fix typo in Kconfig
+  drivers: most: usb: use macro ATTRIBUTE_GROUPS
+  Documentation: ABI: correct sysfs attribute description of MOST driver
+
+ Documentation/ABI/testing/sysfs-bus-most |  104 +--
+ drivers/most/Kconfig                     |   12 +
+ drivers/most/Makefile                    |    2 +
+ drivers/most/most_usb.c                  | 1252 ++++++++++++++++++++++++++++++
+ 4 files changed, 1319 insertions(+), 51 deletions(-)
+ create mode 100644 drivers/most/most_usb.c
+
+-- 
+2.7.4
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
