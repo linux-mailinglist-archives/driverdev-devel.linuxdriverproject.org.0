@@ -1,56 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E5CB1D4D1C
-	for <lists+driverdev-devel@lfdr.de>; Fri, 15 May 2020 13:57:59 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 079BC89A32;
-	Fri, 15 May 2020 11:57:58 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lac8ckp3D4yl; Fri, 15 May 2020 11:57:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 98E69899FB;
-	Fri, 15 May 2020 11:57:53 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 159ED1BF290
- for <devel@linuxdriverproject.org>; Fri, 15 May 2020 11:57:52 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 43B821D5C1A
+	for <lists+driverdev-devel@lfdr.de>; Sat, 16 May 2020 00:13:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 11D4E87D90
- for <devel@linuxdriverproject.org>; Fri, 15 May 2020 11:57:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 078328823F;
+	Fri, 15 May 2020 22:13:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CpZaPcIyomCE; Fri, 15 May 2020 22:13:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9B4DF8821D;
+	Fri, 15 May 2020 22:13:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E8F521BF5F5
+ for <devel@linuxdriverproject.org>; Fri, 15 May 2020 22:13:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id DDF27204A9
+ for <devel@linuxdriverproject.org>; Fri, 15 May 2020 22:13:16 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X8gUeeYUvyu4 for <devel@linuxdriverproject.org>;
- Fri, 15 May 2020 11:57:47 +0000 (UTC)
-X-Greylist: delayed 00:10:29 by SQLgrey-1.7.6
-Received: from server5.gtabd.com (server3.hostingta.com [203.191.33.69])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1A70687C52
- for <devel@driverdev.osuosl.org>; Fri, 15 May 2020 11:57:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=simple; d=server5.gtabd.com; h=
- reply-to:from:subject:date:mime-version:content-type
- :content-transfer-encoding; s=dkim1; bh=pv1VirYBNN/IfVnCJFiTGA/U
- wfA=; b=T+ZwTyynJD2DqKKJT49A5zHpjLrMlGxKHgBuIk6/J1pou0fWvBYd99Zo
- 8X5EAiCy+LT1D2lq3he0zu7bYlbPYEWGL99cUcMCIstK7ta0peGTBGjxK5a6345a
- EdhRF4MzheyzTSMPd0wtLOiD/AEbgX/70ngC9XzK7EyckdNE5uI=
-Received: (qmail 14115 invoked by uid 89); 15 May 2020 11:46:22 -0000
-Received: by simscan 1.4.0 ppid: 13502, pid: 14100, t: 0.5876s
- scanners: attach: 1.4.0 clamav: 0.101.2/m:59/d:25812
-Received: from unknown (HELO User) (36718600@agranidoer.com@185.196.8.248)
- by server5.gtabd.com with ESMTPA; 15 May 2020 11:46:21 -0000
-From: "Ms. Liang Tina"<jhn203@agranidoer.com>
-Subject: Atl: Ms. Liang Tina
-Date: Fri, 15 May 2020 11:46:21 -0700
+ with ESMTP id 1ig5r1EdSDQU for <devel@linuxdriverproject.org>;
+ Fri, 15 May 2020 22:13:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by silver.osuosl.org (Postfix) with ESMTPS id 031C12002E
+ for <devel@driverdev.osuosl.org>; Fri, 15 May 2020 22:13:15 +0000 (UTC)
+IronPort-SDR: ImntUJwr8sNhrd47ubk6LT2Bh8I9ZBi9fM2f2YgQ29fNJe8NAEghXKuX/g0iqzL9nWRHsT4o2D
+ w58oY7Lxk2aQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 May 2020 15:13:16 -0700
+IronPort-SDR: k8x4RrA2zHoQtKrqDDfEtKphA9QRlIEOVvcWmL0Uxjexs5IOEgUrmU1V6TT/0VJdtU0xdSIGyI
+ YOnCRGYbmjWg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,396,1583222400"; d="scan'208";a="252161455"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 15 May 2020 15:13:14 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jZiZt-000EVB-EY; Sat, 16 May 2020 06:13:13 +0800
+Date: Sat, 16 May 2020 06:13:00 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-linus] BUILD SUCCESS
+ bcb392871813ef9e233645557d6dd85bb1a6f41a
+Message-ID: <5ebf13ec.SIQme8gD2sFH0nJO%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200515115752.11D4E87D90@fraxinus.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,35 +67,129 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: liangt861@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8gRGVhciAKIApJIGFtIE1zLiBMaWFuZyBUaW5hLGZlbWFsZSBhbmQgdGhlIEF1ZGl0IE1h
-bmFnZXIgQXNpYQpGb3JlaWduIENvbnRyYWN0b3KScyBTZXR0bGVtZW50IENlbnRyZSBDaGluYSBC
-cmFuY2guIE15IG9mZmljZSBtb25pdG9ycwphbmQgY29udHJvbHMgYWxsIGZvcmVpZ24gY29udHJh
-Y3Qgc2V0dGxlbWVudCBoZXJlIGluIEh1YmVpIFByb3ZpbmNlIG9mIENoaW5hLgpJIGFtIHRoZSBm
-aW5hbCBzaWduYXRvcnkgdG8gZXZlcnkgcGF5bWVudCBmaWxlcyBmb3IgdGhlIHJlbWl0dGFuY2Ug
-b2YgaHVnZQpmdW5kcyBtb3Zpbmcgd2l0aGluIGJvdGggb24gdGhlIGxvY2FsIGFuZCBpbnRlcm5h
-dGlvbmFsIGxldmVscyBpbiBsaW5lIHdpdGggZm9yZWlnbiBjbGFpbSBzZXR0bGVtZW50LgogCkkg
-d2lzaCB0byBwbGFjZSB5b3VyIG5hbWUgYXMgdGhlIGJlbmVmaWNpYXJ5IG9mIGVpZ2h0ZWVuIG1p
-bGxpb24gZml2ZSBodW5kcmVkIHRob3VzYW5kIGRvbGxhcnMgZnJvbSBhbiBvdmVyLWludm9pY2Vk
-IGNvbnRyYWN0IGFtb3VudCBoZXJlIGluIG15IG9mZmljZS4KIApJIGFzc3VyZSB5b3UgdGhhdCB0
-aGlzIHRyYW5zYWN0aW9uIHdpbGwgYmUgZXhlY3V0ZWQgdW5kZXIgYSBsZWdpdGltYXRlCmFycmFu
-Z2VtZW50IHRoYXQgd2lsbCBwcm90ZWN0IHlvdSBmcm9tIGFueSBicmVhY2ggb2YgdGhlIGxhdyBi
-b3RoIGluIHlvdXIgY291bnRyeSBhbmQgaGVyZSBpbiBDaGluYSBvbmNlIHRoZSBmdW5kIGlzIHRy
-YW5zZmVycmVkIHRvIHlvdXIgYmFuayBhY2NvdW50LgpJIHRoZXJlZm9yZSBzb2xpY2l0IHlvdXIg
-Y29vcGVyYXRpb24gdG8gYmUgaW4gY29sbGFib3JhdGlvbiB3aXRoIG1lIHRvCmhhdmUgdGhpcyBk
-b25lLCBJIHdpbGwgbmVlZCB5b3UgdG8gcHJvdmlkZSB0aGUgZm9sbG93aW5nIGluZm9ybWF0aW9u
-IHVyZ2VudGx5IHRvIGVuYWJsZSBtZSBzdGFydCB0aGUgcHJvY2Vzc2luZyBvZiB0aGUgYWxsIHRo
-ZSByZWxldmFudCBsZWdhbCBkb2N1bWVudHMgZm9yIHRoZSBmdW5kIHJlbWl0dGFuY2UuCiAKMSlO
-YW1lOgoyKUFkZHJlc3M6CjMpVGVsOgo0KUFnZToKIApPdXIgc2hhcmluZyBwYXR0ZXJuIG9uY2Ug
-c3VjY2Vzc2Z1bCBpcyA0MCBwZXJjZW50IGZvciB5b3VyIGFzc2lzdGFuY2UKd2hpbGUgSSByZXRh
-aW4gNjAgcGVyY2VudAogClBsZWFzZSByZXBseSBzdHJpY3RseSBvbiB0aGlzIG15IGRpcmVjdCBl
-bWFpbCBhZGRyZXNzOiAgbGlhbmd0ODYxQGdtYWlsLmNvbQogCldhaXRpbmcgZm9yIHlvdXIgcmVw
-bHkgc29vbi4KIApZb3VycyBGYWl0aGZ1bGx5LApNcy4gTGlhbmcgVGluYS4KX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRl
-dmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnBy
-b2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
+branch HEAD: bcb392871813ef9e233645557d6dd85bb1a6f41a  Merge tag 'iio-fixes-for-5.7b' of https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio into staging-linus
+
+elapsed time: 484m
+
+configs tested: 101
+configs skipped: 1
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+mips                             allyesconfig
+m68k                             allyesconfig
+sparc                            allyesconfig
+arc                                 defconfig
+arm                        shmobile_defconfig
+m68k                       m5208evb_defconfig
+parisc                              defconfig
+sparc64                          allmodconfig
+mips                          lasat_defconfig
+i386                              allnoconfig
+i386                                defconfig
+i386                              debian-10.3
+i386                             allyesconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a006-20200515
+i386                 randconfig-a005-20200515
+i386                 randconfig-a003-20200515
+i386                 randconfig-a001-20200515
+i386                 randconfig-a004-20200515
+i386                 randconfig-a002-20200515
+i386                 randconfig-a012-20200515
+i386                 randconfig-a016-20200515
+i386                 randconfig-a014-20200515
+i386                 randconfig-a011-20200515
+i386                 randconfig-a013-20200515
+i386                 randconfig-a015-20200515
+x86_64               randconfig-a005-20200515
+x86_64               randconfig-a003-20200515
+x86_64               randconfig-a006-20200515
+x86_64               randconfig-a004-20200515
+x86_64               randconfig-a001-20200515
+x86_64               randconfig-a002-20200515
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+x86_64                              defconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
