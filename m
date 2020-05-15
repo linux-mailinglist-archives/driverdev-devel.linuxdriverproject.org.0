@@ -1,110 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94BD11D4400
-	for <lists+driverdev-devel@lfdr.de>; Fri, 15 May 2020 05:19:21 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6522E1D3D87
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 May 2020 21:31:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6597887853;
-	Fri, 15 May 2020 03:19:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DCACC895CF;
+	Thu, 14 May 2020 19:31:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T7lZ6nrsgaTg; Fri, 15 May 2020 03:19:19 +0000 (UTC)
+	with ESMTP id urCcQBPT4BLm; Thu, 14 May 2020 19:31:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8CF4A876FD;
-	Fri, 15 May 2020 03:19:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E7A16895AD;
+	Thu, 14 May 2020 19:31:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CB2D01BF5A3
- for <devel@linuxdriverproject.org>; Fri, 15 May 2020 03:19:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 702071BF37E
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 19:31:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BE47A86DCE
- for <devel@linuxdriverproject.org>; Fri, 15 May 2020 03:19:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 655D888AC3
+ for <devel@linuxdriverproject.org>; Thu, 14 May 2020 19:31:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lGvK6fei0QTW for <devel@linuxdriverproject.org>;
- Fri, 15 May 2020 03:19:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2104.outbound.protection.outlook.com [40.107.220.104])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E9F65876E4
- for <devel@driverdev.osuosl.org>; Fri, 15 May 2020 03:19:04 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WenjPcFGgg2hvr8fgTL422xlnzXkX8PeDUuqlFYR+xb+iHP6QbO66kzajp61pOKSu7AZW+YG2AgjwMnDxCpFr2DtbDD7d2kUg28HXQoua7+mRBJbbYc06/9tvjy3LnVOKVHZSOkjaFKDdTupgllmTeEVEFvmfi+wlBdt8AO3jwM/BPiZ//Y/Ce6GS/8F1dbALAXxd9CYvcs3cmiXO9OTPVE4hhetREX8RBP+eWT6lL+XuYFurTokaIxvkWpqFvk57YoNyA+tpMz+HJONE8LzSvbh/Rkj6wLCR6bwYdVJOcfVT33rpqX8FCZOwZgnBmv46RFsydzPhJ7L1NqDVP3JAw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ugfZ6U/q5VakCvs/r70vo820Lx99Y5fQA/SjnrGWhrY=;
- b=gy2fi5TC4ihS1KTG1P4rUd9ybE2NfgoCF+SeWdHq3xthu5xdZYbKoXyRu2OvvDsFdhaXi3kqLnqyKxYdg55b8Z3kYTV96gtZigk91iMoxmeKBEZMgFeZS/6HxA7TWP3oBZq2mZbP4jVPvCEfJKFKIhizWqQRm7nZToipZs9weUPlHq1NgMwSxaENzh//Z26RR0G5mNwAilfLY81VIReKarOB/aQ7WGnal7EVYN6cR0ULULtN5IfqcXtR+wmNnNI4qUb0QZ4PiSC9wRFoWGFyXx4wtV8GA+n+782nCafWuotjJ3cTFcNxFfc8hDX3Irk1eZu1w9DmcDVcc7zPni42XA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ugfZ6U/q5VakCvs/r70vo820Lx99Y5fQA/SjnrGWhrY=;
- b=fsq4n7q77zFlKWZHhuM9CcW0gtQ87Nu9UhKpJrhEd8zl5ikgvqotOj72CPr3viMaxpIqJ3eFocccc5WSP1V8L4FuGEmGNAR3yBUKx0+vv3HqynQ0Xn/ooUFypcnCvMicBIsbdrKNiCpvpWFhvM/WXCdbfbUCGq45yhOIH9RMchk=
-Authentication-Results: analogixsemi.com; dkim=none (message not signed)
- header.d=none;analogixsemi.com; dmarc=none action=none
- header.from=analogixsemi.com;
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by BY5PR04MB6583.namprd04.prod.outlook.com (2603:10b6:a03:1d3::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3000.20; Fri, 15 May
- 2020 02:45:59 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::4517:bcc8:a3bd:407f]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::4517:bcc8:a3bd:407f%6]) with mapi id 15.20.3000.022; Fri, 15 May 2020
- 02:45:58 +0000
-Date: Fri, 15 May 2020 10:45:52 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v10 1/2] dt-bindings: drm/bridge: anx7625: MIPI to DP
- transmitter binding
-Message-ID: <20200515024552.GA11753@xin-VirtualBox>
-References: <cover.1588747998.git.xji@analogixsemi.com>
- <b720f7d2c5338813d31b7f715f59ca68c367d5a8.1588747998.git.xji@analogixsemi.com>
- <20200514145432.GA6091@bogus>
-Content-Disposition: inline
-In-Reply-To: <20200514145432.GA6091@bogus>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-ClientProxiedBy: HK2PR06CA0016.apcprd06.prod.outlook.com
- (2603:1096:202:2e::28) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
+ with ESMTP id ZVPDk4sDViqc for <devel@linuxdriverproject.org>;
+ Thu, 14 May 2020 19:31:41 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.foescocursos.es (unknown [146.255.98.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B498F88AAD
+ for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 19:31:41 +0000 (UTC)
+Received: from 38.red-83-42-19.dynamicip.rima-tde.net
+ (38.red-83-42-19.dynamicip.rima-tde.net [83.42.19.38])
+ by mail.foescocursos.es (Postfix) with ESMTPSA id AD7BCD1C34
+ for <devel@driverdev.osuosl.org>; Thu, 14 May 2020 21:31:27 +0200 (CEST)
+Authentication-Results: mail.foescocursos.es;
+ spf=pass (sender IP is 83.42.19.38)
+ smtp.mailfrom=foesco14@formacionbonificable.es
+ smtp.helo=38.red-83-42-19.dynamicip.rima-tde.net
+Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from xin-VirtualBox (114.247.245.254) by
- HK2PR06CA0016.apcprd06.prod.outlook.com (2603:1096:202:2e::28) with Microsoft
- SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
- 15.20.3000.25 via Frontend Transport; Fri, 15 May 2020 02:45:58 +0000
-X-Originating-IP: [114.247.245.254]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 9ccce5ed-8c26-4624-543e-08d7f87a18f0
-X-MS-TrafficTypeDiagnostic: BY5PR04MB6583:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BY5PR04MB65837A370268722E5C0FC8A7C7BD0@BY5PR04MB6583.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4714;
-X-Forefront-PRVS: 04041A2886
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: UqEWEg/X8iIa+znI8yLYOZX0/TAl9tbeVRAaOhyvknmkKVsG3gyzWZqBxIXJNml2enKYlBgTvdAvR0h2JZWh1Ex5rbBuNpBxXZ/ruYJr5g0aKhIfkWRlgRZ93F8KEb1NSqhOhaC8oTFbXOn95FpOKrW1qA2ImvWmb2uA/Vff75vApYKkXiv787wNoNYiRvTw4NoY3vcUW1H50+WobQZkP8Yi10kv2jJhQ1uimWPhhv+Q+fhycTNxI3N50PzHaa5UrCf7MpAHkePHoHMbeY2ac0rIgtzggKr7Jw03nNTLo7oHKF0o94nz+YHdTgmqPStqezGLElzQURAb5YCq1M2rs/2o5j6PBPCSQjJRfQjG+wFMYyZ829xgbHa0DIyTgo7Kj0uHq/GdCbpDH8fIDjnRf+01Nm3jjYba5UcHYXc/L/z0Zvlc5kRZNFXtqNcteAbLh0aXt0z6I+OV9VpuhSSCI7a+762lfDW0Gzj8m+qNe9kgIa41k/ejJieZXK0wdNwbNAT3AeyNQly0KuyMLxk3QA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(346002)(136003)(376002)(366004)(396003)(39840400004)(8936002)(2906002)(6496006)(52116002)(8676002)(316002)(6916009)(86362001)(54906003)(16526019)(7416002)(26005)(186003)(956004)(55016002)(4326008)(66946007)(1076003)(33716001)(5660300002)(9686003)(66556008)(478600001)(107886003)(33656002)(66476007)(6666004);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: y976YP3kawGNAFPOYmD+WLiJCIsmiMQqB7LOsHSvp6wFlEdsrgu2yvkXdqLbbUaPCYqKSQX8B8l4hd2QmS7FtQ5RDy5AEFXrS7mv+klnpYfdu2cAVI7XHETV6V7Zadaxhiib07mEHDrdhPXxNM3jFdt/vfl20DQLhNofnEjZyXuL9xOozrvqu/mo/TqjENIvlJvQXN3ZvNYe5Us7U+jGqTf8QefMOZybBS7MJVn/NaLsyR0VcAWNZ7U7w2pxu6FiUjjW2HxXtypUfmpt9HdK0Pn/pQO1Qx9tKQXxdBJJnzN4gNNF/oCeIdMOf46P2V6wrsYEy4jAUJLPr/faTBZidoRUuIChxESq6pU5NzHRDGcLqSfMf+ZFjc2JffC1ELyPpGB8akPQ7ELrT3l8HE9ECJh4bQKqZm4BGlYelAUKLT4Adk3eBK7FAtKZAJBXqe3c5RWIceCghodoaGuolH8rlwo4tu9+GwyhunMKiri/n/ZT4rgRbdSxyPj4rBHyIoCg
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9ccce5ed-8c26-4624-543e-08d7f87a18f0
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 May 2020 02:45:58.7233 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: pqz+qU3xje6GJ9oXnD5pPlqfdh+FloccM0M4DdPzd0TsHNyust/7ilgxysseOqNncuS8zRd0UtuWleUpb1DRIg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6583
+From: foesco14@formacionbonificable.es
+To: devel@driverdev.osuosl.org
+Subject: CURSOS BONIFICABLES DESDE CASA (Empleados activos y en ERTE)
+X-Mailer: Smart_Send_4_3_3
+Date: Thu, 14 May 2020 21:29:15 -0700
+Message-ID: <6424472437936274079667@DESKTOP-EEN1J8F>
+X-Priority: 1
+X-MSMail-Priority: High
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,185 +61,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
- Pi-Hsun Shih <pihsun@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, Dan Carpenter <dan.carpenter@oracle.com>,
- Sheng Pan <span@analogixsemi.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: foesco14@formacionbonificable.es
+Content-Type: multipart/mixed; boundary="===============8354411889603273109=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Rob Herring,
+--===============8354411889603273109==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Thanks for your comments.
+Buenos d=EDas
 
-On Thu, May 14, 2020 at 09:54:32AM -0500, Rob Herring wrote:
-> On Wed, May 06, 2020 at 03:04:20PM +0800, Xin Ji wrote:
-> > The ANX7625 is an ultra-low power 4K Mobile HD Transmitter designed
-> > for portable device. It converts MIPI to DisplayPort 1.3 4K.
-> > 
-> > You can add support to your board with binding.
-> 
-> We have an example in the binding, no reason to also put in the commit 
-> msg.
-OK
-> 
-> > 
-> > Example:
-> > 	anx7625_bridge: encoder@58 {
-> > 		compatible = "analogix,anx7625";
-> > 		reg = <0x58>;
-> > 		status = "okay";
-> > 		enable-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
-> > 		reset-gpios = <&pio 73 GPIO_ACTIVE_HIGH>;
-> > 
-> > 		ports {
-> > 			#address-cells = <1>;
-> > 			#size-cells = <0>;
-> > 
-> > 			mipi2dp_bridge_in: port@0 {
-> > 				reg = <0>;
-> > 				anx7625_in: endpoint {
-> > 					remote-endpoint = <&mipi_dsi>;
-> > 				};
-> > 			};
-> > 
-> > 			mipi2dp_bridge_out: port@1 {
-> > 				reg = <1>;
-> > 				anx7625_out: endpoint {
-> > 					remote-endpoint = <&panel_in>;
-> > 				};
-> > 			};
-> > 		};
-> > 	};
-> > 
-> > Signed-off-by: Xin Ji <xji@analogixsemi.com>
-> > ---
-> >  .../bindings/display/bridge/analogix,anx7625.yaml  | 98 ++++++++++++++++++++++
-> >  1 file changed, 98 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml b/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-> > new file mode 100644
-> > index 0000000..6e54176
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-> > @@ -0,0 +1,98 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +# Copyright 2019 Analogix Semiconductor, Inc.
-> > +%YAML 1.2
-> > +---
-> > +$id: "http://devicetree.org/schemas/display/bridge/analogix,anx7625.yaml#"
-> > +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> > +
-> > +title: Analogix ANX7625 SlimPort (4K Mobile HD Transmitter)
-> > +
-> > +maintainers:
-> > +  - Xin Ji <xji@analogixsemi.com>
-> > +
-> > +description: |
-> > +  The ANX7625 is an ultra-low power 4K Mobile HD Transmitter
-> > +  designed for portable devices.
-> > +
-> > +properties:
-> > +  "#address-cells": true
-> > +  "#size-cells": true
-> 
-> These don't belong here.
-OK
-> 
-> > +
-> > +  compatible:
-> > +    items:
-> > +      - const: analogix,anx7625
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    description: used for interrupt pin B8.
-> > +    maxItems: 1
-> > +
-> > +  enable-gpios:
-> > +    description: used for power on chip control, POWER_EN pin D2.
-> > +    maxItems: 1
-> > +
-> > +  reset-gpios:
-> > +    description: used for reset chip control, RESET_N pin B7.
-> > +    maxItems: 1
-> > +
-> > +  ports:
-> > +    type: object
-> > +
-> > +    properties:
-> > +      port@0:
-> > +        type: object
-> > +        description:
-> > +          Video port for MIPI DSI input.
-> > +
-> > +      port@1:
-> > +        type: object
-> > +        description:
-> > +          Video port for panel or connector.
-> > +
-> > +    required:
-> > +        - port@0
-> > +        - port@1
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - ports
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/gpio/gpio.h>
-> > +
-> > +    i2c0 {
-> > +        #address-cells = <1>;
-> > +        #size-cells = <0>;
-> > +
-> > +        anx7625_bridge: encoder@58 {
-> 
-> Drop any unused labels.
-OK
-> 
-> > +            compatible = "analogix,anx7625";
-> > +            reg = <0x58>;
-> > +            enable-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
-> > +            reset-gpios = <&pio 73 GPIO_ACTIVE_HIGH>;
-> > +
-> > +            ports {
-> > +                #address-cells = <1>;
-> > +                #size-cells = <0>;
-> > +
-> > +                mipi2dp_bridge_in: port@0 {
-> > +                    reg = <0>;
-> > +                    anx7625_in: endpoint {
-> > +                        remote-endpoint = <&mipi_dsi>;
-> > +                    };
-> > +                };
-> > +
-> > +                mipi2dp_bridge_out: port@1 {
-> > +                    reg = <1>;
-> > +                    anx7625_out: endpoint {
-> > +                        remote-endpoint = <&panel_in>;
-> > +                    };
-> > +                };
-> > +            };
-> > +        };
-> > +    };
-> > -- 
-> > 2.7.4
-> > 
+
+
+Se encuentra abierto el plazo de inscripci=F3n de Cursos Bonificables para =
+empleados en activo y en situaci=F3n de ERTE.
+
+
+Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
+aci=F3n 2020 que dispone las empresa.
+
+Se realizan desde casa en modalidad individual E-learning a trav=E9s de la =
+plataforma web y con total flexibilidad horaria.
+
+
+Dese=E1is que os mandemos la informaci=F3n=3F
+
+
+Saludos cordiales.
+
+
+Alex Pons
+Director departamento formaci=F3n.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B171823AP
+www.foesco.com
+
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+
+
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
+la palabra BAJA en el asunto.
+
+--===============8354411889603273109==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============8354411889603273109==--
