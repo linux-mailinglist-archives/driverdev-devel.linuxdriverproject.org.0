@@ -2,59 +2,59 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D72EF1D56D7
-	for <lists+driverdev-devel@lfdr.de>; Fri, 15 May 2020 18:55:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 03B671D56E4
+	for <lists+driverdev-devel@lfdr.de>; Fri, 15 May 2020 18:57:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 83EE987E2E;
-	Fri, 15 May 2020 16:55:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AD534867BD;
+	Fri, 15 May 2020 16:57:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jezfzklsPRvm; Fri, 15 May 2020 16:55:45 +0000 (UTC)
+	with ESMTP id JAqJ45LQDFuC; Fri, 15 May 2020 16:56:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 08C7486274;
-	Fri, 15 May 2020 16:55:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4CA7786274;
+	Fri, 15 May 2020 16:56:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9335C1BF28E
- for <devel@linuxdriverproject.org>; Fri, 15 May 2020 16:55:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1D9561BF28E
+ for <devel@linuxdriverproject.org>; Fri, 15 May 2020 16:56:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8E55C88DFA
- for <devel@linuxdriverproject.org>; Fri, 15 May 2020 16:55:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1A01B88E16
+ for <devel@linuxdriverproject.org>; Fri, 15 May 2020 16:56:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 59z6R0S1pLiE for <devel@linuxdriverproject.org>;
- Fri, 15 May 2020 16:55:35 +0000 (UTC)
+ with ESMTP id svqW3xW3L3ad for <devel@linuxdriverproject.org>;
+ Fri, 15 May 2020 16:56:53 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from re-prd-fep-049.btinternet.com (mailomta26-re.btinternet.com
- [213.120.69.119])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8927F88DF3
- for <devel@driverdev.osuosl.org>; Fri, 15 May 2020 16:55:34 +0000 (UTC)
-Received: from re-prd-rgout-002.btmx-prd.synchronoss.net ([10.2.54.5])
- by re-prd-fep-049.btinternet.com with ESMTP id
- <20200515165532.IPEA8801.re-prd-fep-049.btinternet.com@re-prd-rgout-002.btmx-prd.synchronoss.net>;
- Fri, 15 May 2020 17:55:32 +0100
+Received: from sa-prd-fep-049.btinternet.com (mailomta6-sa.btinternet.com
+ [213.120.69.12])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8C33088E0F
+ for <devel@driverdev.osuosl.org>; Fri, 15 May 2020 16:56:52 +0000 (UTC)
+Received: from sa-prd-rgout-001.btmx-prd.synchronoss.net ([10.2.38.4])
+ by sa-prd-fep-049.btinternet.com with ESMTP id
+ <20200515165650.IJDJ4342.sa-prd-fep-049.btinternet.com@sa-prd-rgout-001.btmx-prd.synchronoss.net>;
+ Fri, 15 May 2020 17:56:50 +0100
 Authentication-Results: btinternet.com;
  auth=pass (LOGIN) smtp.auth=j.oldman998@btinternet.com
 X-Originating-IP: [31.53.141.224]
 X-OWM-Source-IP: 31.53.141.224 (GB)
 X-OWM-Env-Sender: j.oldman998@btinternet.com
 X-VadeSecure-score: verdict=clean score=0/300, class=clean
-X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduhedrleekgddutdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuueftkffvkffujffvgffngfevqffopdfqfgfvnecuuegrihhlohhuthemuceftddunecunecujfgurhephffvufffkffosedttdertdertddtnecuhfhrohhmpeflohhhnhcuqfhlughmrghnuceojhhohhhnrdholhgumhgrnhesphholhgvhhhilhhlrdgtohdruhhkqeenucggtffrrghtthgvrhhnpeegfedthfefueeihffgkeefteehuddttdefudetveelveefvdefhfejieejhffggfenucfkphepfedurdehfedrudeguddrvddvgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhephhgvlhhopehhvghnrhihrdhhohhmvgdpihhnvghtpeefuddrheefrddugedurddvvdegpdhmrghilhhfrhhomhepoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqpdhrtghpthhtohepoeguvghvvghlsegurhhivhgvrhguvghvrdhoshhuohhslhdrohhrgheqpdhrtghpthhtohepoehgrhgvghhkhheslhhinhhugihfohhunhgurghtihhonhdrohhrgheqpdhrtghpthhtohepoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqpdhrtghpthhtohepoehkrghirdhhvghnghdrfhgvnhhgsegtrghnohhnihgtrghlrdgtohhmqedprhgtphhtthhopeeolhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
+X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduhedrleekgddutdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuueftkffvkffujffvgffngfevqffopdfqfgfvnecuuegrihhlohhuthemuceftddunecunecujfgurhephffvufffkffosedttdertdertddtnecuhfhrohhmpeflohhhnhcuqfhlughmrghnuceojhhohhhnrdholhgumhgrnhesphholhgvhhhilhhlrdgtohdruhhkqeenucggtffrrghtthgvrhhnpeegfedthfefueeihffgkeefteehuddttdefudetveelveefvdefhfejieejhffggfenucfkphepfedurdehfedrudeguddrvddvgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhephhgvlhhopehhvghnrhihrdhhohhmvgdpihhnvghtpeefuddrheefrddugedurddvvdegpdhmrghilhhfrhhomhepoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqpdhrtghpthhtohepoeguvghvvghlsegurhhivhgvrhguvghvrdhoshhuohhslhdrohhrgheqpdhrtghpthhtohepoehgrhgvghhkhheslhhinhhugihfohhunhgurghtihhonhdrohhrgheqpdhrtghpthhtohepoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqpdhrtghpthhtohepoehkrghirdhhvghnghdrfhgvnhhgsegtrghnohhnihgtrghlrdgtohhmqedprhgtphhtthhopeeolhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
  qe
 X-RazorGate-Vade-Verdict: clean 0
 X-RazorGate-Vade-Classification: clean
 Received: from henry.home (31.53.141.224) by
- re-prd-rgout-002.btmx-prd.synchronoss.net (5.8.340) (authenticated as
+ sa-prd-rgout-001.btmx-prd.synchronoss.net (5.8.340) (authenticated as
  j.oldman998@btinternet.com)
- id 5E3A15B610AAE225; Fri, 15 May 2020 17:55:32 +0100
+ id 5E3A241110D90CCF; Fri, 15 May 2020 17:56:50 +0100
 From: John Oldman <john.oldman@polehill.co.uk>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: rtl8723bs: os_de: if-else coding style issue
-Date: Fri, 15 May 2020 17:54:31 +0100
-Message-Id: <20200515165431.12819-1-john.oldman@polehill.co.uk>
+Subject: [PATCH V2] Staging: rtl8723bs: os_de: if-else coding style issue
+Date: Fri, 15 May 2020 17:56:46 +0100
+Message-Id: <20200515165646.12867-1-john.oldman@polehill.co.uk>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
