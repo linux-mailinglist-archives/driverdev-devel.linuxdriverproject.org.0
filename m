@@ -1,108 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11EF91D4863
-	for <lists+driverdev-devel@lfdr.de>; Fri, 15 May 2020 10:34:42 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A0961D4959
+	for <lists+driverdev-devel@lfdr.de>; Fri, 15 May 2020 11:21:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3FF0F87697;
-	Fri, 15 May 2020 08:34:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2C33E2E6FF;
+	Fri, 15 May 2020 09:21:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4mNjG77olJR8; Fri, 15 May 2020 08:34:40 +0000 (UTC)
+	with ESMTP id GA-6PxXoFnpx; Fri, 15 May 2020 09:21:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3632E8610A;
-	Fri, 15 May 2020 08:34:35 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id 9DB3A2E5A9;
+	Fri, 15 May 2020 09:21:28 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5CA4D1BF285
- for <devel@linuxdriverproject.org>; Fri, 15 May 2020 08:34:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F30391BF2C1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 15 May 2020 09:21:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5783B87CC0
- for <devel@linuxdriverproject.org>; Fri, 15 May 2020 08:34:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id F00BB87D37
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 15 May 2020 09:21:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lO6m8tY5IQNg for <devel@linuxdriverproject.org>;
- Fri, 15 May 2020 08:34:26 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam11on2071.outbound.protection.outlook.com [40.107.223.71])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 204E987D1E
- for <devel@driverdev.osuosl.org>; Fri, 15 May 2020 08:34:26 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dN0uEAiJ+AFyi7SNEb6yH/0LGVsHyi8/A65N9Mz6jKJ3XiWqHdoj0fCkMCTlNRKHg/30W7NwizRd/SITPbUOT5Uaoj8QyYlmVsCwkyoddatuvrqFH99YigiNlszILLnCE5OfFHVImDIQocLYX9t7fkVRVcNoWiWEuYxMB2ggCIs3k5lOnedw3fVtzv03CyTkRQE9DADH+Vo+9QVedXRLlan5xser40gzvLsVsK34RzuKeGSn5Ru7ILzzsxiQLsr5LcK8rjrZCf4kgXPANgOgx9iFHMQvujoR0oXSmqg3y1m5mnKN8KGdVts9CMHCNpmFgWylsZWhqTE8c8hDdB38xg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HiN9WqBvuXb/S5iY+mscQrScVRKkiyxt6itUyF7ulLk=;
- b=lAgjcxPs3ls95LJO4rDxADmTMGC/phEpccOlsx8cxMWUIV84rNdKySmQ7x+WR9N42dCQ7J94sZz59n5Xg6aDbIBU8k83B3grPT1OSVFFPw7PCx5gyPKsBXX73gAPvlvU57M0dbM5+NGk8legaZIrfv2Kknw3VwuqlYAng86uNqI8Fv1eeuSB8gPPA2kCjIWTu3Ndhje8jFCUmXb4WXffTh3zFv7Fntecq9vxgyohSPqzeCMj6Mor/sonUWt/w8Gjcwkn4wTHCutlZzKK3gwtq6sGh7uacQyqFv/J+jNa2PeqtFIMCh3PDF+B24yYcWjXAefH1rOnlfYWhY3XX3JokQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HiN9WqBvuXb/S5iY+mscQrScVRKkiyxt6itUyF7ulLk=;
- b=KyPr5+EbEwMTxL/c0JdjnQal3c9T3umvMnCP35XkAARbepAq1dh6DtmwVnQCJ8uGdWkTw5dJhtsmdRuVo4or3qMQ4How/x9nCEC/Kodn9gRKm/Ki2s0VcbDp6F5KiLf0lEQU5zcdU5LmwjUthLA904ODM1wk18jnWm4nF2DI4KM=
-Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
- header.d=none;driverdev.osuosl.org; dmarc=none action=none
- header.from=silabs.com;
-Received: from MWHPR11MB1775.namprd11.prod.outlook.com (2603:10b6:300:10e::14)
- by MWHPR11MB1310.namprd11.prod.outlook.com (2603:10b6:300:28::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.26; Fri, 15 May
- 2020 08:34:24 +0000
-Received: from MWHPR11MB1775.namprd11.prod.outlook.com
- ([fe80::e055:3e6d:ff4:56da]) by MWHPR11MB1775.namprd11.prod.outlook.com
- ([fe80::e055:3e6d:ff4:56da%5]) with mapi id 15.20.3000.022; Fri, 15 May 2020
- 08:34:24 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: devel@driverdev.osuosl.org,
-	linux-wireless@vger.kernel.org
-Subject: [PATCH 19/19] staging: wfx: remove false positive warning
-Date: Fri, 15 May 2020 10:33:25 +0200
-Message-Id: <20200515083325.378539-20-Jerome.Pouiller@silabs.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200515083325.378539-1-Jerome.Pouiller@silabs.com>
-References: <20200515083325.378539-1-Jerome.Pouiller@silabs.com>
-X-ClientProxiedBy: PR0P264CA0076.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:18::16) To MWHPR11MB1775.namprd11.prod.outlook.com
- (2603:10b6:300:10e::14)
+ with ESMTP id E64L4wx1NW-b
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 15 May 2020 09:21:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
+ [216.71.150.166])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A155E87D2A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 15 May 2020 09:21:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1589534482; x=1621070482;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=Wpc2Ubd7jxe20vWKldyIQapLjZWeAIR+myyeB2Nv59g=;
+ b=J1RlxtPZsjH/zrr92qteh1wuOzXoUb/IcY/koZBVcYmJnRHxJZaO4yKO
+ hHxaOiCohBKw4fcNbplpg+4ypYnL6mIXZS+YwklNHYPNcQjQM1B24/H4A
+ UPNWUKu+e8J+f88Y1W5vw/j6um0g9qdsHau49SrG/nlKBddv4msL3iEU5
+ Blfhu8DbdZ8ftALtusGFgen9YooDIZqJbhSn+nlSJnp3mIynEqr8s+lkl
+ t6q9HXX8qnQvvW60lQ0OvLZOJk8T+RIXDTxK3Es8HEhdGbJ1KIqlIMOiw
+ 3Za8dqXa6+eFU6BWShCuxb4lSTL8MpeUdCM1cOxAV4xTx3c2M4hDfrq4t g==;
+IronPort-SDR: 6z7GK07rqAbGInFCPmB0m2kxoHCwhjm1QlaLl6QBQXARG8febrY9GRKFilj1bPU6DEHeVgfcss
+ C7P8hvUJh4Fg96SF3aZrEvvInfnam+u6ZhQUPqFX6jik0Q+KtkVuKVM2pEUGThEekQCcaYNMp5
+ SQ0D0HMuy6p0A6OOhwBdx2MADGnRGEDbTrNZneHWDbXhUungox6OAv1e0diJsa1UZ42miNaulg
+ IHUOtz00KOH1m7K5Zq3zbstAwDzJhbQf/xWy5Qsjb6JJrMS/oDZf4+aJnIQ8N4QxIHEtIZtnfa
+ v8A=
+X-IronPort-AV: E=Sophos;i="5.73,394,1583218800"; d="scan'208";a="76018826"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 15 May 2020 02:21:09 -0700
+Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Fri, 15 May 2020 02:21:12 -0700
+Received: from localhost.localdomain (10.10.115.15) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
+ 15.1.1713.5 via Frontend Transport; Fri, 15 May 2020 02:21:07 -0700
+From: Christian Gromm <christian.gromm@microchip.com>
+To: <gregkh@linuxfoundation.org>
+Subject: [PATCH v3 0/7] staging: most: usb: fix issues found in code audit
+Date: Fri, 15 May 2020 11:20:58 +0200
+Message-ID: <1589534465-7423-1-git-send-email-christian.gromm@microchip.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.home (82.67.86.106) by
- PR0P264CA0076.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:18::16) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3000.24 via Frontend Transport; Fri, 15 May 2020 08:34:22 +0000
-X-Mailer: git-send-email 2.26.2
-X-Originating-IP: [82.67.86.106]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 8d091337-e80d-4f96-bd4c-08d7f8aac5e2
-X-MS-TrafficTypeDiagnostic: MWHPR11MB1310:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR11MB1310A944230BE29A3DD14D3893BD0@MWHPR11MB1310.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:49;
-X-Forefront-PRVS: 04041A2886
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: QGf/ub8g2yeGcCyJAZTcAemvIsLz3nSSRPKRRAQrevK09oUrmeC9xBqlok0r09wE/RXL1KhhdJs6f4glJpQSvzdpOcSEwF5DkWvGxgG+6s/tOr6grnjB75j6mmmZlTNs7oXqePtdCPnvzPOxrf3kn2qw2vGacAy5EBHV5i4ud3VQGytWvBU4l8joideGDVfaswgf5Nxpg9QwgN22kHssnejlCEC3QYsAiwJhBadsJkPaYXhRGJtJU4VWAGHBIxnL5O+UsKTHQS6iSDkL498IOeLG6iXwHgeVALo9y2XRnTN7vBFBFUtEIBdppTqxTXF1rCJUgrSmtcUUyOjTl9ZL8RHJT/5ojDZzM3D1eF5q9boeubj+BylgqsjaOShzLHARBmjyDk9B1lxznLG06Lc39uWm/+fNyVR8GQOAC4B6lya/s2DQYpTZPHusoquAwciZqvsWdQQlimYeFOcS4TteLzBI9/15AlcWuUbfc/NptFQ1xZppxopq7OFLXzgkMEH7TU0lb+2XM8hRCbpPiEoO1w==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR11MB1775.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(346002)(136003)(376002)(366004)(39850400004)(396003)(8886007)(66556008)(186003)(6512007)(66946007)(966005)(6506007)(36756003)(316002)(66476007)(26005)(52116002)(16526019)(54906003)(2906002)(2616005)(478600001)(66574014)(107886003)(956004)(8936002)(86362001)(8676002)(6486002)(5660300002)(4326008)(1076003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: inATRghY4H5F+9Uql+MFY9jp0zrfEjwg5vqDQX2REFya+vuBcJaRBdTb3STcsxs3DpQI9GqDeTm54b472G0xVcp6F2riKUW5kvv7sZ5ViBBXTqDcUMURTvvS58B80Qd8fNN6ajaLykmYwPV2/bUPwtI4C/LFOgnGGvEdDIAzZxfWp99x/f6kXTTvlox4b6TCeQQwYD6lwWuNaBa2LNc3rwzprTTb/JYkiSOQ5qnw6iostwy820SMk43VbfJgelyuoJ5hTuaxh/lu4Oa1ycSYgSO4FkoEFZyF+0b/WPtgS0gXygZ0zavLrgN9qYJpLDdViFGcp7J3dRddnvSGfbXB6+5yUEGGJ/3GVfOlItc87yneRuuCCGJk4UkT8w//TSr7D450EEYr++3oggr78pXSuaLrbe0mjwIm7W01qRs1/gdOhsgAfX85nsc452eyCokpjSgI6cHAOBn/4Vv6JFqZKgiOUIKRNrVCUOiDwAeWgpw=
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8d091337-e80d-4f96-bd4c-08d7f8aac5e2
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 May 2020 08:34:24.5324 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: iu7dcBhK39srP+ZAcb6AqKAL9M7vfKlQ2yyZ29kLU4QRMkcJ3KwVZ83ZdZBx+VT/qUt5HEVQ4MTwwpyfScsoaQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1310
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,44 +83,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Christian Gromm <christian.gromm@microchip.com>,
+ driverdev-devel@linuxdriverproject.org, linux-usb@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKV2hl
-biBhIHN0YXRpb24gaXMgcmVtb3ZlZCwgdGhlIGRyaXZlciBjaGVjayB0aGF0IGFsbCB0aGUgVHgg
-ZnJhbWVzIHdlcmUKY29ycmVjdGx5IHNlbnQuIEhvd2V2ZXIsIHRoZSBzdGF0aW9uIGNhbiBiZSBy
-ZW1vdmVkIGJlZm9yZSBhbGwgdGhlIFR4CmZyYW1lcyB3ZXJlIGFja25vd2xlZGdlZCBhbmQgYSBm
-YWxzZSBwb3NpdGl2ZSB3YXJuaW5nIGNhbiBiZSBlbWl0dGVkLgoKVGhlIHByZXZpb3VzIGNvbW1p
-dCBoYXMgYWRkZWQgYSB0cmFjZSB3aGVuIGRyaXZlciByZWNlaXZlZCBhbgphY2tub3dsZWRnZSBm
-b3IgYSBub24tZXhpc3RlbnQgc3RhdGlvbi4gSXQgYXBwZWFyIHRoYXQgdGhlc2UgZXZlbnRzCmFy
-ZSBwZXJmZWN0bHkgY29ycmVsYXRlZCBhbmQgdGhlcmUgaXMgbm8gbGVhay4KCk5vdywgdGhlIHN1
-YmplY3QgaXMgcGVyZmVjdGx5IHVuZGVyc3Rvb2QuIFJlbW92ZSB0aGUgd2FybmluZy4gSnVzdCBr
-ZWVwCmEgZGVidWcgdHJhY2UgaW4gY2FzZSB3ZSBoYXZlIGFueSBkb3VidCBpbiB0aGUgZnV0dXJl
-LgoKSW4gdGhlIHBhc3QsIHRoZSBzdWJqZWN0IGhhcyBhbHJlYWR5IGJlZW4gZGlzY3Vzc2VkIGhl
-cmU6CiAgIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2RyaXZlcmRldi1kZXZlbC82Mjg3OTI0Lmdo
-R0ZVTWszT0RAcGMtNDIvCgpGaXhlczogNGJiYzZhM2U3YWQwICgic3RhZ2luZzogd2Z4OiBtYWtl
-IHdhcm5pbmcgYWJvdXQgcGVuZGluZyBmcmFtZSBsZXNzIHNjYXJ5IikKU2lnbmVkLW9mZi1ieTog
-SsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgotLS0KIGRyaXZl
-cnMvc3RhZ2luZy93Zngvc3RhLmMgfCA2ICsrKystLQogMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0
-aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvd2Z4
-L3N0YS5jIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuYwppbmRleCBmNDQ4OTU3YzFhOTIuLjYw
-MTVjZDJjNGQ4YSAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuYworKysgYi9k
-cml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jCkBAIC00NDEsOCArNDQxLDEwIEBAIGludCB3Znhfc3Rh
-X3JlbW92ZShzdHJ1Y3QgaWVlZTgwMjExX2h3ICpodywgc3RydWN0IGllZWU4MDIxMV92aWYgKnZp
-ZiwKIAogCWZvciAoaSA9IDA7IGkgPCBBUlJBWV9TSVpFKHN0YV9wcml2LT5idWZmZXJlZCk7IGkr
-KykKIAkJaWYgKHN0YV9wcml2LT5idWZmZXJlZFtpXSkKLQkJCWRldl93YXJuKHd2aWYtPndkZXYt
-PmRldiwgInJlbGVhc2Ugc3RhdGlvbiB3aGlsZSAlZCBwZW5kaW5nIGZyYW1lIG9uIHF1ZXVlICVk
-IiwKLQkJCQkgc3RhX3ByaXYtPmJ1ZmZlcmVkW2ldLCBpKTsKKwkJCS8vIE5vdCBhbiBlcnJvciBp
-ZiBwYWlyZWQgd2l0aCB0cmFjZSBpbgorCQkJLy8gd2Z4X3R4X3VwZGF0ZV9zdGEoKQorCQkJZGV2
-X2RiZyh3dmlmLT53ZGV2LT5kZXYsICJyZWxlYXNlIHN0YXRpb24gd2hpbGUgJWQgcGVuZGluZyBm
-cmFtZSBvbiBxdWV1ZSAlZCIsCisJCQkJc3RhX3ByaXYtPmJ1ZmZlcmVkW2ldLCBpKTsKIAkvLyBT
-ZWUgbm90ZSBpbiB3Znhfc3RhX2FkZCgpCiAJaWYgKCFzdGFfcHJpdi0+bGlua19pZCkKIAkJcmV0
-dXJuIDA7Ci0tIAoyLjI2LjIKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
-Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaXZlcmRldi1kZXZlbAo=
+This series fixes the comments/findings on the previously submitted code
+of the USB adapter driver. The fixes should be applied in staging before
+moving the driver out as one patch.
+
+v2:
+	modded patch 2/7
+v3:
+	modded patch 3/7
+
+Christian Gromm (7):
+  staging: most: usb: use dev_*() functions to print messages
+  staging: most: usb: remove reference to USB error codes
+  staging: most: usb: check number of reported endpoints
+  staging: most: usb: use dev_dbg function
+  staging: most: fix typo in Kconfig
+  staging: most: usb: use macro ATTRIBUTE_GROUPS
+  Documentation: ABI: correct sysfs attribute description of MOST driver
+
+ Documentation/ABI/testing/sysfs-bus-most | 104 ++++++++++----------
+ drivers/staging/most/usb/Kconfig         |   2 +-
+ drivers/staging/most/usb/usb.c           | 159 ++++++-------------------------
+ 3 files changed, 81 insertions(+), 184 deletions(-)
+
+-- 
+2.7.4
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
