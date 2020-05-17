@@ -1,78 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D5921D6633
-	for <lists+driverdev-devel@lfdr.de>; Sun, 17 May 2020 07:47:31 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC1101D6771
+	for <lists+driverdev-devel@lfdr.de>; Sun, 17 May 2020 12:37:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BA77F86C1B;
-	Sun, 17 May 2020 05:47:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4DE2620509;
+	Sun, 17 May 2020 10:37:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TkBRvR4tTvhq; Sun, 17 May 2020 05:47:27 +0000 (UTC)
+	with ESMTP id s-CK9FxqhaZo; Sun, 17 May 2020 10:37:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CBB2286AE3;
-	Sun, 17 May 2020 05:47:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 89CAE204C4;
+	Sun, 17 May 2020 10:37:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A16601BF48C
- for <devel@linuxdriverproject.org>; Sun, 17 May 2020 05:47:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8A3431BF46A
+ for <devel@linuxdriverproject.org>; Sun, 17 May 2020 10:37:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9DEA886AE3
- for <devel@linuxdriverproject.org>; Sun, 17 May 2020 05:47:24 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 86CC2864D0
+ for <devel@linuxdriverproject.org>; Sun, 17 May 2020 10:37:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gxoxLDCT4nJZ for <devel@linuxdriverproject.org>;
- Sun, 17 May 2020 05:47:23 +0000 (UTC)
+ with ESMTP id INvY4pOneifS for <devel@linuxdriverproject.org>;
+ Sun, 17 May 2020 10:37:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4BF3B86ADD
- for <devel@driverdev.osuosl.org>; Sun, 17 May 2020 05:47:23 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id t40so3139088pjb.3
- for <devel@driverdev.osuosl.org>; Sat, 16 May 2020 22:47:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=drmII/PwGs2+j+RC/yUKrWEgxCX9gLQZgVT9e2wht+c=;
- b=WzUYx0wYfkC13YkdNT/husM8BOe7dmAbzZac3CVLTwuF/tG87AgQBU2iZsVagBcAFK
- NrGpTa4TXzk3oqL3VHxHFn3yuwq+SHOmlaY5JM5ZoeUW+I6O6YNvd6d8kOFQVp1WT1YY
- zWfUcNpZIPCP/DlNDgqTa7/pMbr2rPH02TQqkQf26OWuU/ZVfIdFKoctbRVsDy76Ok3k
- Ht7O+zm50YbFrylSy5v5J5GS5g/Pncn+rFgilkxUw4yBAOoRprBMQtSf5MOUrc8C3tMR
- kFvRLdr7cPhYjA2y3/qlQupLk26IwvqcENTK0XnoxZPhdDma0awdiYKjRj7XARUoyCyC
- 3Cyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=drmII/PwGs2+j+RC/yUKrWEgxCX9gLQZgVT9e2wht+c=;
- b=A0yA09/DzzEy5+wvrbCvtaxY73yvcgAQPC2eXf0fs7nadYYjNMg70JDl6r/xd2kXNm
- ZFiHu5086LPIdrOBKb12BB156Oa83qDe+JThj/gHILKCMTJzDTCLZAa6P+qrgvZfA0m4
- CUhi/xTeqBtTJ98z2/7ZOtdpEwo2FKgaE9shWJe6PMaUDGA/b95EnHYEgNLPHKdZ2CSS
- PmsO6+VIOgViQ/KiNl5/oDW8LUSZhrI29D3FGY5mHpYURZkD5dd6SV1S3QUNBBqEz9Ac
- i9dh2oqwqbKogf2zVp3nexm9mxz81MEOFAVwp89Z4d3ei6nmp/eROVCUZmRkhgs5e5TE
- /ZDg==
-X-Gm-Message-State: AOAM531kfPh46LFgZddKssY9OXyNWY/w+YIcKSPfT+MA5ixEbRTC1E0l
- kbo3IoJ1DUFlLmzBtY3Hf9k=
-X-Google-Smtp-Source: ABdhPJye4WrT8yxOZNSKYH+VbCBliyGbSYG3H3GtqNgBv6eSe+mFst0mHVKXrqp9MpENO6SjSLpu+A==
-X-Received: by 2002:a17:90a:e30e:: with SMTP id
- x14mr10799845pjy.141.1589694442867; 
- Sat, 16 May 2020 22:47:22 -0700 (PDT)
-Received: from localhost ([203.205.141.39])
- by smtp.gmail.com with ESMTPSA id v5sm875450pjy.4.2020.05.16.22.47.21
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 16 May 2020 22:47:22 -0700 (PDT)
-From: Xiangyang Zhang <xyz.sun.ok@gmail.com>
-To: manishc@marvell.com,
-	GR-Linux-NIC-Dev@marvell.com
-Subject: [PATCH] staging: qlge: unmap dma when lock failed
-Date: Sun, 17 May 2020 13:46:38 +0800
-Message-Id: <20200517054638.10764-1-xyz.sun.ok@gmail.com>
-X-Mailer: git-send-email 2.19.1
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CB6DB83469
+ for <devel@driverdev.osuosl.org>; Sun, 17 May 2020 10:37:33 +0000 (UTC)
+IronPort-SDR: X0tMysfDzrwv43RwfZVVeJIetMcdhF8oVx6G2wj32X0W2hPWmQ3SVmHWDWbplPlLRpR/Hn1Qv/
+ 9Khnno2Bjrdw==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 May 2020 03:37:33 -0700
+IronPort-SDR: 2rlnOupOePzsQUHffcSW1gW2CbpqjzJsQZ9i7w03d6UV3xwGUf8PdYYGyr0payF3VpXIAH4DW2
+ hSu96fBPL47g==
+X-IronPort-AV: E=Sophos;i="5.73,403,1583222400"; d="scan'208";a="254201128"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 May 2020 03:37:31 -0700
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id 9C0CD20803; Sun, 17 May 2020 13:36:59 +0300 (EEST)
+Date: Sun, 17 May 2020 13:36:59 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH] media: ipu3: add a module to probe sensors via ACPI
+Message-ID: <20200517103659.GS17578@paasikivi.fi.intel.com>
+References: <12fbe3f5c6a16c5f3447adbc09fe27ceb2b16823.1589625807.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <12fbe3f5c6a16c5f3447adbc09fe27ceb2b16823.1589625807.git.mchehab+huawei@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,45 +68,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- Xiangyang Zhang <xyz.sun.ok@gmail.com>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Bingbu Cao <bingbu.cao@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Tian Shu Qiu <tian.shu.qiu@intel.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-DMA not unmapped when lock failed, this patch fixed it.
+Hi Mauro,
 
-Signed-off-by: Xiangyang Zhang <xyz.sun.ok@gmail.com>
----
- drivers/staging/qlge/qlge_main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Thanks for the patch.
 
-diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-index a9163fb659d9..402edaeffe12 100644
---- a/drivers/staging/qlge/qlge_main.c
-+++ b/drivers/staging/qlge/qlge_main.c
-@@ -227,7 +227,7 @@ int ql_write_cfg(struct ql_adapter *qdev, void *ptr, int size, u32 bit,
- 
- 	status = ql_sem_spinlock(qdev, SEM_ICB_MASK);
- 	if (status)
--		return status;
-+		goto lock_failed;
- 
- 	status = ql_wait_cfg(qdev, bit);
- 	if (status) {
-@@ -249,6 +249,7 @@ int ql_write_cfg(struct ql_adapter *qdev, void *ptr, int size, u32 bit,
- 	status = ql_wait_cfg(qdev, bit);
- exit:
- 	ql_sem_unlock(qdev, SEM_ICB_MASK);	/* does flush too */
-+lock_failed:
- 	dma_unmap_single(&qdev->pdev->dev, map, size, direction);
- 	return status;
- }
+On Sat, May 16, 2020 at 12:43:39PM +0200, Mauro Carvalho Chehab wrote:
+> On devices without ACPI, or which ACPI is not prepared to
+> export sensor data via DT, we need a different probing
+> method.
+> 
+> This little driver adds initial support to probe the
+> sensors found on a Dell Latitude 7285.
+> 
+> For now, it just detects the hardware and use request_module()
+> to load a sensor driver.
+> 
+> In the specific case of this device, the ACPI DTST dable
+> describes 2 camera sensors for this module, but the
+> current upstream doesn't have yet drivers for such
+> sensors. So, this patch just detects the PMIC used on
+> this device and tries to load a sensor.
+> 
+> Once the sensor gets added, some additional code will
+> be needed to pass via platform_data other details, like
+> callbacks for PMIC's command to turn the sensor on/off
+> and other sensor-specific settings.
+> 
+> The idea of this patch was inspired on how the sensors
+> are probed by the staging atomisp driver.
+> 
+> The current result of this driver with the Dell
+> Latitude 7285 is:
+> 
+> 	ipu3_acpi i2c-INT3477:00: ipu3_acpi_probe: ACPI detected it on bus ID=LNK1, HID=INT3477
+> 	ipu3_acpi i2c-INT3477:00: Found DMI entry for 'Latitude 7285' with sensor INT3477
+> 	ipu3_acpi i2c-INT3477:00: Loading sensor module ov8858
+> 	ipu3_acpi i2c-OVTI9234:00: ipu3_acpi_probe: ACPI detected it on bus ID=LNK2, HID=OVTI9234
+> 	ipu3_acpi i2c-OVTI9234:00: Found DMI entry for 'Latitude 7285' with sensor OVTI9234
+> 	ipu3_acpi i2c-OVTI9234:00: Loading sensor module ov9234
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+
+...
+
+> +/*
+> + * Should list known sensor devices found at DSDT table as "CAM0", "CAM1", ...
+> + *
+> + * The table below is probably incomplete. It came from the DSDT table found
+> + * at a Dell Latitude 7285 (Method HCID).
+> + */
+> +static const struct acpi_device_id ipu3_acpi_acpi_match[] = {
+> +	{"INT3471"},
+> +	{"INT33BE"},
+> +	{"INT3476"},
+> +	{"INT3477"},
+> +	{"INT3474"},
+> +	{"INT3473"},
+> +	{"INT3475"},
+> +	{"INT3478"},
+> +	{"INT3479"},
+> +	{"INT347A"},
+> +	{"INT347B"},
+> +	{"OVTI9234"},
+> +	{"OVTI9734"},
+> +	{"OVTI8856"},
+> +	{"OVTIF860"},
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(acpi, ipu3_acpi_acpi_match);
+
+Instead of creating a new way to probe drivers on ACPI systems, please add
+the appropriate ACPI device IDs to the respective drivers. E.g.
+drivers/media/i2c/imx319.c implements this.
+
 -- 
-2.19.1
+Kind regards,
 
+Sakari Ailus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
