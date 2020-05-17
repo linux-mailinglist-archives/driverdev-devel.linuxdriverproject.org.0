@@ -1,61 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC1101D6771
-	for <lists+driverdev-devel@lfdr.de>; Sun, 17 May 2020 12:37:41 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4DE2620509;
-	Sun, 17 May 2020 10:37:40 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s-CK9FxqhaZo; Sun, 17 May 2020 10:37:39 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 89CAE204C4;
-	Sun, 17 May 2020 10:37:37 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8A3431BF46A
- for <devel@linuxdriverproject.org>; Sun, 17 May 2020 10:37:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 313B81D6B64
+	for <lists+driverdev-devel@lfdr.de>; Sun, 17 May 2020 19:24:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 86CC2864D0
- for <devel@linuxdriverproject.org>; Sun, 17 May 2020 10:37:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B7AA3869F8;
+	Sun, 17 May 2020 17:24:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8gnYs-ZXmYHE; Sun, 17 May 2020 17:24:40 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A3BAB868E4;
+	Sun, 17 May 2020 17:24:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 16E7A1BF45A
+ for <devel@linuxdriverproject.org>; Sun, 17 May 2020 17:24:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 133A887DAE
+ for <devel@linuxdriverproject.org>; Sun, 17 May 2020 17:24:37 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id INvY4pOneifS for <devel@linuxdriverproject.org>;
- Sun, 17 May 2020 10:37:33 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CB6DB83469
- for <devel@driverdev.osuosl.org>; Sun, 17 May 2020 10:37:33 +0000 (UTC)
-IronPort-SDR: X0tMysfDzrwv43RwfZVVeJIetMcdhF8oVx6G2wj32X0W2hPWmQ3SVmHWDWbplPlLRpR/Hn1Qv/
- 9Khnno2Bjrdw==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 May 2020 03:37:33 -0700
-IronPort-SDR: 2rlnOupOePzsQUHffcSW1gW2CbpqjzJsQZ9i7w03d6UV3xwGUf8PdYYGyr0payF3VpXIAH4DW2
- hSu96fBPL47g==
-X-IronPort-AV: E=Sophos;i="5.73,403,1583222400"; d="scan'208";a="254201128"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 May 2020 03:37:31 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 9C0CD20803; Sun, 17 May 2020 13:36:59 +0300 (EEST)
-Date: Sun, 17 May 2020 13:36:59 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: Re: [PATCH] media: ipu3: add a module to probe sensors via ACPI
-Message-ID: <20200517103659.GS17578@paasikivi.fi.intel.com>
-References: <12fbe3f5c6a16c5f3447adbc09fe27ceb2b16823.1589625807.git.mchehab+huawei@kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <12fbe3f5c6a16c5f3447adbc09fe27ceb2b16823.1589625807.git.mchehab+huawei@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ with ESMTP id fHQXVnhaXMik for <devel@linuxdriverproject.org>;
+ Sun, 17 May 2020 17:24:35 +0000 (UTC)
+X-Greylist: delayed 00:19:24 by SQLgrey-1.7.6
+Received: from mail-oo1-f73.google.com (mail-oo1-f73.google.com
+ [209.85.161.73])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A4D5B87C1C
+ for <devel@driverdev.osuosl.org>; Sun, 17 May 2020 17:24:35 +0000 (UTC)
+Received: by mail-oo1-f73.google.com with SMTP id y22so5118399oos.12
+ for <devel@driverdev.osuosl.org>; Sun, 17 May 2020 10:24:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=dkKURodgy3jG25cttpEp0uozoRnJeq6PMT5tfOrDLMc=;
+ b=c2WNejfzhlGZ3P7COgoKcgaGQmYN9GbCo3TZGtgDsctU+GOOILokXIIcEQEUP++4ni
+ Akdz8ZwieN/0Sqo73N74yBxrnC3FvNyNH+P6Rp/39iCcqRUHDpF35dpFm3oN4xbudPy3
+ am3Cx9OuOnyFj/wELyamEieULTj+eWQ8Df5/MIfj2NddB51OckvZtfyhppjiG85Xi7/X
+ /x5w1CNwaLXWVmVVTUhtnfXMzR8ksP3Si5hijShMK9ynQaCB7cJzrvmj9g58/AV0rgYG
+ 8VKeBaqEtVoeFZj7WvQKX7s363Xk9xQqQooX+hyeJ5NXd+Bre/qxPrkyjKmmzNMs9nb+
+ E6ZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=dkKURodgy3jG25cttpEp0uozoRnJeq6PMT5tfOrDLMc=;
+ b=XxgRlST+5lQIW6BixkaMNaxC/HFtAcUi2zteROYjRf0GNVG+m6IEgd+VZ+vR1UNYyz
+ HmsdZl5apmah71L9fFtspy/Y8mJeio7vWSSf8p4s7l1JbJIi3KibJbLDSAHtkHou2fAU
+ f3laVLPDHaovBpw33Cd+BeI5ZYztFUYalnMe0dk69U6PAgm7azdhN9qquO8V7dU4z+n2
+ 5S5QKYOaE5aLDd+O34zxCjb9Podpbj6j84sAqRLd+Alyl1Sr7S3ILLXOLENNGO12jou1
+ WYfeWaji8fRTXWWDVkKeTBmEDpfjAivmyDPjbbI+gRd+sMoSr13pa6Cy8OpRxiEjK1dp
+ NXgw==
+X-Gm-Message-State: AOAM531bZdOQzHB3r7UiTkFgndNc3VrO23gfHzb6qhUPES8lVKrMoGiM
+ 1AK8J/RFL54Y9N9FMaabVIkw6eo00reP
+X-Google-Smtp-Source: ABdhPJxDTquhIBmuESw8P1Fcsz3tWHgDQGUMMjXDzdziCYf6XSrBlqY2/KV3gLMesKKUSWGyK0NYJFyEEnR1
+X-Received: by 2002:a25:7607:: with SMTP id r7mr20541261ybc.493.1589734704157; 
+ Sun, 17 May 2020 09:58:24 -0700 (PDT)
+Date: Sun, 17 May 2020 17:58:19 +0100
+Message-Id: <20200517165819.136715-1-pterjan@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.26.2.761.g0e0b3e54be-goog
+Subject: [PATCH] staging: rtl8192u: Merge almost duplicate code
+From: Pascal Terjan <pterjan@google.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,92 +78,199 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Bingbu Cao <bingbu.cao@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Tian Shu Qiu <tian.shu.qiu@intel.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Pascal Terjan <pterjan@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Mauro,
+This causes a change in behaviour:
+- stats also get updated when reordering, this seems like it should be
+  the case but those lines were commented out.
+- sub_skb NULL check now happens early in both cases, previously it
+  happened only after dereferencing it 12 times, so it may not actually
+  be needed.
 
-Thanks for the patch.
+Signed-off-by: Pascal Terjan <pterjan@google.com>
+---
+ .../staging/rtl8192u/ieee80211/ieee80211_rx.c | 126 +++++++-----------
+ 1 file changed, 49 insertions(+), 77 deletions(-)
 
-On Sat, May 16, 2020 at 12:43:39PM +0200, Mauro Carvalho Chehab wrote:
-> On devices without ACPI, or which ACPI is not prepared to
-> export sensor data via DT, we need a different probing
-> method.
-> 
-> This little driver adds initial support to probe the
-> sensors found on a Dell Latitude 7285.
-> 
-> For now, it just detects the hardware and use request_module()
-> to load a sensor driver.
-> 
-> In the specific case of this device, the ACPI DTST dable
-> describes 2 camera sensors for this module, but the
-> current upstream doesn't have yet drivers for such
-> sensors. So, this patch just detects the PMIC used on
-> this device and tries to load a sensor.
-> 
-> Once the sensor gets added, some additional code will
-> be needed to pass via platform_data other details, like
-> callbacks for PMIC's command to turn the sensor on/off
-> and other sensor-specific settings.
-> 
-> The idea of this patch was inspired on how the sensors
-> are probed by the staging atomisp driver.
-> 
-> The current result of this driver with the Dell
-> Latitude 7285 is:
-> 
-> 	ipu3_acpi i2c-INT3477:00: ipu3_acpi_probe: ACPI detected it on bus ID=LNK1, HID=INT3477
-> 	ipu3_acpi i2c-INT3477:00: Found DMI entry for 'Latitude 7285' with sensor INT3477
-> 	ipu3_acpi i2c-INT3477:00: Loading sensor module ov8858
-> 	ipu3_acpi i2c-OVTI9234:00: ipu3_acpi_probe: ACPI detected it on bus ID=LNK2, HID=OVTI9234
-> 	ipu3_acpi i2c-OVTI9234:00: Found DMI entry for 'Latitude 7285' with sensor OVTI9234
-> 	ipu3_acpi i2c-OVTI9234:00: Loading sensor module ov9234
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-
-...
-
-> +/*
-> + * Should list known sensor devices found at DSDT table as "CAM0", "CAM1", ...
-> + *
-> + * The table below is probably incomplete. It came from the DSDT table found
-> + * at a Dell Latitude 7285 (Method HCID).
-> + */
-> +static const struct acpi_device_id ipu3_acpi_acpi_match[] = {
-> +	{"INT3471"},
-> +	{"INT33BE"},
-> +	{"INT3476"},
-> +	{"INT3477"},
-> +	{"INT3474"},
-> +	{"INT3473"},
-> +	{"INT3475"},
-> +	{"INT3478"},
-> +	{"INT3479"},
-> +	{"INT347A"},
-> +	{"INT347B"},
-> +	{"OVTI9234"},
-> +	{"OVTI9734"},
-> +	{"OVTI8856"},
-> +	{"OVTIF860"},
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(acpi, ipu3_acpi_acpi_match);
-
-Instead of creating a new way to probe drivers on ACPI systems, please add
-the appropriate ACPI device IDs to the respective drivers. E.g.
-drivers/media/i2c/imx319.c implements this.
-
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+index e101f7b13c7e..3309f64be4c9 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+@@ -520,55 +520,67 @@ static bool AddReorderEntry(struct rx_ts_record *pTS, struct rx_reorder_entry *p
+ 	return true;
+ }
+ 
+-void ieee80211_indicate_packets(struct ieee80211_device *ieee, struct ieee80211_rxb **prxbIndicateArray, u8  index)
++void indicate_packets(struct ieee80211_device *ieee, struct ieee80211_rxb *rxb)
+ {
+-	u8 i = 0, j = 0;
++	struct net_device_stats *stats = &ieee->stats;
++	struct net_device *dev = ieee->dev;
+ 	u16 ethertype;
+-//	if(index > 1)
+-//		IEEE80211_DEBUG(IEEE80211_DL_REORDER,"%s(): hahahahhhh, We indicate packet from reorder list, index is %u\n",__func__,index);
+-	for (j = 0; j < index; j++) {
+-//added by amy for reorder
+-		struct ieee80211_rxb *prxb = prxbIndicateArray[j];
+-		for (i = 0; i < prxb->nr_subframes; i++) {
+-			struct sk_buff *sub_skb = prxb->subframes[i];
++	u8 i;
++
++	for (i = 0; i < rxb->nr_subframes; i++) {
++		struct sk_buff *sub_skb = rxb->subframes[i];
++
++		if (!sub_skb)
++			continue;
+ 
+ 		/* convert hdr + possible LLC headers into Ethernet header */
+-			ethertype = (sub_skb->data[6] << 8) | sub_skb->data[7];
+-			if (sub_skb->len >= 8 &&
+-				((memcmp(sub_skb->data, rfc1042_header, SNAP_SIZE) == 0 &&
+-				  ethertype != ETH_P_AARP && ethertype != ETH_P_IPX) ||
+-				 memcmp(sub_skb->data, bridge_tunnel_header, SNAP_SIZE) == 0)) {
++		ethertype = (sub_skb->data[6] << 8) | sub_skb->data[7];
++		if (sub_skb->len >= 8 &&
++		    ((!memcmp(sub_skb->data, rfc1042_header, SNAP_SIZE) &&
++			ethertype != ETH_P_AARP &&
++			ethertype != ETH_P_IPX) ||
++		     !memcmp(sub_skb->data, bridge_tunnel_header, SNAP_SIZE))) {
+ 			/* remove RFC1042 or Bridge-Tunnel encapsulation and
+ 			 * replace EtherType */
+-				skb_pull(sub_skb, SNAP_SIZE);
+-				memcpy(skb_push(sub_skb, ETH_ALEN), prxb->src, ETH_ALEN);
+-				memcpy(skb_push(sub_skb, ETH_ALEN), prxb->dst, ETH_ALEN);
+-			} else {
++			skb_pull(sub_skb, SNAP_SIZE);
++		} else {
+ 			/* Leave Ethernet header part of hdr and full payload */
+-				put_unaligned_be16(sub_skb->len, skb_push(sub_skb, 2));
+-				memcpy(skb_push(sub_skb, ETH_ALEN), prxb->src, ETH_ALEN);
+-				memcpy(skb_push(sub_skb, ETH_ALEN), prxb->dst, ETH_ALEN);
+-			}
+-			//stats->rx_packets++;
+-			//stats->rx_bytes += sub_skb->len;
++			put_unaligned_be16(sub_skb->len, skb_push(sub_skb, 2));
++		}
++		memcpy(skb_push(sub_skb, ETH_ALEN), rxb->src, ETH_ALEN);
++		memcpy(skb_push(sub_skb, ETH_ALEN), rxb->dst, ETH_ALEN);
++
++		stats->rx_packets++;
++		stats->rx_bytes += sub_skb->len;
++		if (is_multicast_ether_addr(rxb->dst))
++			stats->multicast++;
+ 
+ 		/* Indicate the packets to upper layer */
+-			if (sub_skb) {
+-				sub_skb->protocol = eth_type_trans(sub_skb, ieee->dev);
+-				memset(sub_skb->cb, 0, sizeof(sub_skb->cb));
+-				sub_skb->dev = ieee->dev;
+-				sub_skb->ip_summed = CHECKSUM_NONE; /* 802.11 crc not sufficient */
+-				//skb->ip_summed = CHECKSUM_UNNECESSARY; /* 802.11 crc not sufficient */
+-				ieee->last_rx_ps_time = jiffies;
+-				netif_rx(sub_skb);
+-			}
+-		}
++		sub_skb->protocol = eth_type_trans(sub_skb, dev);
++		memset(sub_skb->cb, 0, sizeof(sub_skb->cb));
++		sub_skb->dev = dev;
++		/* 802.11 crc not sufficient */
++		sub_skb->ip_summed = CHECKSUM_NONE;
++		ieee->last_rx_ps_time = jiffies;
++		netif_rx(sub_skb);
++	}
++}
++
++void ieee80211_indicate_packets(struct ieee80211_device *ieee,
++				struct ieee80211_rxb **prxbIndicateArray,
++				u8 index)
++{
++	u8 i;
++
++	for (i = 0; i < index; i++) {
++		struct ieee80211_rxb *prxb = prxbIndicateArray[i];
++
++		indicate_packets(ieee, prxb);
+ 		kfree(prxb);
+ 		prxb = NULL;
+ 	}
+ }
+ 
+-
+ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
+ 				    struct ieee80211_rxb *prxb,
+ 				    struct rx_ts_record *pTS, u16 SeqNum)
+@@ -721,6 +733,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
+ 
+ 	/* Handling pending timer. Set this timer to prevent from long time Rx buffering.*/
+ 	if (index > 0) {
++		u8 i;
+ 		// Cancel previous pending timer.
+ 	//	del_timer_sync(&pTS->rx_pkt_pending_timer);
+ 		pTS->rx_timeout_indicate_seq = 0xffff;
+@@ -877,7 +890,6 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 	u16 fc, type, stype, sc;
+ 	struct net_device_stats *stats;
+ 	unsigned int frag;
+-	u16 ethertype;
+ 	//added by amy for reorder
+ 	u8	TID = 0;
+ 	u16	SeqNum = 0;
+@@ -1260,47 +1272,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 
+ //added by amy for reorder
+ 	if (!ieee->pHTInfo->bCurRxReorderEnable || !pTS) {
+-//added by amy for reorder
+-		for (i = 0; i < rxb->nr_subframes; i++) {
+-			struct sk_buff *sub_skb = rxb->subframes[i];
+-
+-			if (sub_skb) {
+-				/* convert hdr + possible LLC headers into Ethernet header */
+-				ethertype = (sub_skb->data[6] << 8) | sub_skb->data[7];
+-				if (sub_skb->len >= 8 &&
+-						((memcmp(sub_skb->data, rfc1042_header, SNAP_SIZE) == 0 &&
+-						  ethertype != ETH_P_AARP && ethertype != ETH_P_IPX) ||
+-						 memcmp(sub_skb->data, bridge_tunnel_header, SNAP_SIZE) == 0)) {
+-					/* remove RFC1042 or Bridge-Tunnel encapsulation and
+-					 * replace EtherType */
+-					skb_pull(sub_skb, SNAP_SIZE);
+-					memcpy(skb_push(sub_skb, ETH_ALEN), src, ETH_ALEN);
+-					memcpy(skb_push(sub_skb, ETH_ALEN), dst, ETH_ALEN);
+-				} else {
+-					u16 len;
+-					/* Leave Ethernet header part of hdr and full payload */
+-					len = be16_to_cpu(htons(sub_skb->len));
+-					memcpy(skb_push(sub_skb, 2), &len, 2);
+-					memcpy(skb_push(sub_skb, ETH_ALEN), src, ETH_ALEN);
+-					memcpy(skb_push(sub_skb, ETH_ALEN), dst, ETH_ALEN);
+-				}
+-
+-				stats->rx_packets++;
+-				stats->rx_bytes += sub_skb->len;
+-				if (is_multicast_ether_addr(dst)) {
+-					stats->multicast++;
+-				}
+-
+-				/* Indicate the packets to upper layer */
+-				sub_skb->protocol = eth_type_trans(sub_skb, dev);
+-				memset(sub_skb->cb, 0, sizeof(sub_skb->cb));
+-				sub_skb->dev = dev;
+-				sub_skb->ip_summed = CHECKSUM_NONE; /* 802.11 crc not sufficient */
+-				//skb->ip_summed = CHECKSUM_UNNECESSARY; /* 802.11 crc not sufficient */
+-				ieee->last_rx_ps_time = jiffies;
+-				netif_rx(sub_skb);
+-			}
+-		}
++		indicate_packets(ieee, rxb);
+ 		kfree(rxb);
+ 		rxb = NULL;
+ 
 -- 
-Kind regards,
+2.26.2.761.g0e0b3e54be-goog
 
-Sakari Ailus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
