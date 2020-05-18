@@ -2,90 +2,82 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E88A81D79CB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 18 May 2020 15:27:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BD6A1D895E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 18 May 2020 22:37:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2AF3921509;
-	Mon, 18 May 2020 13:27:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 587CD221D2;
+	Mon, 18 May 2020 20:37:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 48-0QDelA3Kq; Mon, 18 May 2020 13:27:35 +0000 (UTC)
+	with ESMTP id bHpROYUE4ClB; Mon, 18 May 2020 20:37:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A9DF020434;
-	Mon, 18 May 2020 13:27:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 24AD2220DD;
+	Mon, 18 May 2020 20:37:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1D92A1BF386
- for <devel@linuxdriverproject.org>; Mon, 18 May 2020 13:27:33 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A0BBD1BF37F
+ for <devel@linuxdriverproject.org>; Mon, 18 May 2020 20:37:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0918A20444
- for <devel@linuxdriverproject.org>; Mon, 18 May 2020 13:27:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9D48D8614E
+ for <devel@linuxdriverproject.org>; Mon, 18 May 2020 20:37:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nh56GVxLU4Qz for <devel@linuxdriverproject.org>;
- Mon, 18 May 2020 13:27:32 +0000 (UTC)
+ with ESMTP id 6g0mW8glzHIT for <devel@linuxdriverproject.org>;
+ Mon, 18 May 2020 20:37:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by silver.osuosl.org (Postfix) with ESMTPS id 3BE4020434
- for <devel@driverdev.osuosl.org>; Mon, 18 May 2020 13:27:32 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04IDR0k6045161;
- Mon, 18 May 2020 13:27:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=BCGosJHcbcUtce4Hxg02+p38p5RdXX0moe9TSLTeZGQ=;
- b=EH+gpxtAPFyj5QeBSa5jhy+E/Rx23WKIT0T9TAicRU2pvtwcI75sQpBVVBvW3Xm5dfZW
- hxYu0ZQ38W0e9C42My9dRMBYGMFD34h7+d6if5yVnVtxTnE2rdifnr6W3WTJ/8vu+oGU
- utc4PkvEskNy2xWT/VSxfxjwA1AuidCfQBSKKS31KjzwbALLQudOdjL/KWnci0a2WdGX
- nM5pUE0LYFE1+1DmL1MUwsC07VkTlRyJM5BBn5NM+zBrPxfKMHMJt29rKxZHU4eO5zs8
- xgqr27U0RubvYJ+1zfEwGakzooe+hP1bVfBTOG7fo1cLCuwqrkOd6BdGUGzT4DSwgFlg wA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 3127kqxrat-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 18 May 2020 13:27:31 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04IDOUs4108508;
- Mon, 18 May 2020 13:25:30 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 313ghyusxm-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 18 May 2020 13:25:30 +0000
-Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04IDPTlA004663;
- Mon, 18 May 2020 13:25:30 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 18 May 2020 06:25:29 -0700
-Date: Mon, 18 May 2020 16:25:23 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Pascal Terjan <pterjan@google.com>
-Subject: Re: [PATCH] staging: rtl8192u: Merge almost duplicate code
-Message-ID: <20200518132523.GK2078@kadam>
-References: <20200517165819.136715-1-pterjan@google.com>
- <CAANdO=Li7FUbVQk6m+CksZBv1zy-F+-1tN9oYZ4niYJ0utRfXA@mail.gmail.com>
+Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
+ [209.85.208.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BB7F486199
+ for <devel@driverdev.osuosl.org>; Mon, 18 May 2020 20:37:17 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id l25so4999357edj.4
+ for <devel@driverdev.osuosl.org>; Mon, 18 May 2020 13:37:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=googlemail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=07U9JgzItnQ21O3cGWVkQXvBXHI4OBd4+wXXui3XRR0=;
+ b=Z1AP4zi61x3wo9PxT/phHkmzA3EL3TiC2l4ce5QYnRI+gNaIBCtZsusW5TnU2XKX8k
+ u4dN0vnaZyFrVTywHk/jJGtJbXwUO6MtJzW2sDNSukwbQMetMsYIOSyW63CCr1qRhuHr
+ PbKaHJb4k4yJIM8bIrmaSl4NodDBLaiz9tMyihW0DJN9l0pg802XJdP8mm3EllBmK0fD
+ g4KLJY4jEtoaezDx1LWVKEYWU7xXWMp01XJGicRTj2vG+YCCJRA9ITE/VNAgg+mYYW8z
+ 0CwP+Gyp0DfGvUZP/SE0X3uYsznT0nE0bv4XTXqMdAeh4WQ3iqzaD0XLulU/wWdkmWQz
+ H0ZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=07U9JgzItnQ21O3cGWVkQXvBXHI4OBd4+wXXui3XRR0=;
+ b=K0zChYQWBpogHYXFLDnv13CzBE3ygaUH7SM+lSfZHuyNBR5qxrAA3GEw5N5SzrB7d3
+ HubZMI97AoHtmiN62iyS0ZUCcKcSa9k8qHh5jN0pszdyHPMKiK1y7HTNZ9QR72ojK+cW
+ sclGpMQGCZwX/g2uhWRhPeRtw2u5D9hacz2X+HrpAH1Nl1bxV/4F45N6TaL3/nbzPR+3
+ eOdAMI1tptkOJOcAsx2y3YLPgXdvd6DQmaPWqrk2HvpY6UGuTNMdZA5p6RklLD26pe9o
+ x7WJw2Nqm0j6QvwO+TbOHvVW7fYrOayJigBBQ2hwfWLhwbImsBWRQGUJP17uXKCrOz3p
+ AweA==
+X-Gm-Message-State: AOAM532jBwJtvDnmNB/U+IFE2XRcXIbmn5o3Ux0r4gMgjftYEYT8vYa4
+ KhF7aiqzqcwRObuVM1xuxbBLVi1fRcFLIQQGsXw=
+X-Google-Smtp-Source: ABdhPJy5JXiayrpQcj/jHe174FGQYD6A3Gu5IvH/UisH5NSWucd/M4A20R9xxjUK69lv7FRQy5b2OYjITsgwLhYY8YA=
+X-Received: by 2002:a50:a985:: with SMTP id n5mr15258638edc.338.1589834235965; 
+ Mon, 18 May 2020 13:37:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAANdO=Li7FUbVQk6m+CksZBv1zy-F+-1tN9oYZ4niYJ0utRfXA@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9624
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- spamscore=0 malwarescore=0
- mlxscore=0 adultscore=0 bulkscore=0 suspectscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2005180120
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9624
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0 spamscore=0
- bulkscore=0 clxscore=1015 priorityscore=1501 mlxscore=0 impostorscore=0
- suspectscore=0 mlxlogscore=999 malwarescore=0 cotscore=-2147483648
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2005180120
+References: <bcefba5b-107c-716b-bb60-5b4b2476894b@o2online.de>
+ <CAFBinCD8-tr97GCVhBi5R1nzxLhy=_6VuLY8ubUO1SDTFjiELw@mail.gmail.com>
+ <22af498b-44a0-ced3-86f3-114427a73910@o2online.de>
+ <CAFBinCCGAkhPCwOW=mAvsV2qdixq8Gf8yQw1gYErHpz7KmuAZg@mail.gmail.com>
+ <5de6db87-a71f-d14c-390d-b0caeab5d650@o2online.de>
+ <CAFBinCDB9c2uMRXO9DKSX4hC7EBgnRfBa+BM5-VdEPZeieKn_w@mail.gmail.com>
+ <813dfc08-f13a-dcac-0bd9-821d188bba08@o2online.de>
+ <CAFBinCCgZF5Pu944q-_+V0yQ-nc6q82xDjJHjsnj6=uOQL+DEw@mail.gmail.com>
+ <8cbbf90c-54ba-8fa3-3386-022c9c997a20@o2online.de>
+ <CAFBinCBukGbzgO-Y1dCRYXZHhX2PcSEQQ_XvhHqLcnw0fGDP8w@mail.gmail.com>
+ <a95f5fe1-4376-f872-961a-c2237c36811c@o2online.de>
+In-Reply-To: <a95f5fe1-4376-f872-961a-c2237c36811c@o2online.de>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Mon, 18 May 2020 22:37:05 +0200
+Message-ID: <CAFBinCCgFtv=u4ZKW3rdoDPZ_jh3jU03MDxHoDk=pbi+4pxB_w@mail.gmail.com>
+Subject: Re: RTL8723BS driver doesn't work for,me but I can help testing
+To: Tobias Baumann <017623705678@o2online.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,48 +90,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, May 17, 2020 at 09:25:05PM +0100, Pascal Terjan wrote:
-> On Sun, 17 May 2020 at 17:58, Pascal Terjan <pterjan@google.com> wrote:
-> >
-> > This causes a change in behaviour:
-> > - stats also get updated when reordering, this seems like it should be
-> >   the case but those lines were commented out.
-> > - sub_skb NULL check now happens early in both cases, previously it
-> >   happened only after dereferencing it 12 times, so it may not actually
-> >   be needed.
-> >
-> 
-> Hi,
-> I actually noticed the same duplicated code (and same late NULL check)
-> in drivers/staging/rtl8192e/rtllib_rx.c
-> drivers/staging/rtl8712/rtl8712_recv.c has only one copy of the code
-> but with the late NULL check
-> drivers/staging/rtl8188eu/core/rtw_recv.c has only one copy of the
-> code and doesn't do any NULL check
-> 
-> Now I wonder how to proceed. The code is not great so it would not
-> feel right to make it reusable.
-> Should I continue improving it on this driver only first (maybe trying
-> to reuse ieee80211_data_to_8023_exthdr from net/wireless/util.c for
-> example)?
+Hi Tobias,
 
-It looks like the NULL check could be removed, but it's also fine to
-keep it so long as it's not after a NULL dereference.
+On Mon, May 18, 2020 at 7:59 AM Tobias Baumann <017623705678@o2online.de> wrote:
+>
+> hi martin
+>
+> i activate your patch ; wlan works ;  also with only  edit GPIOX_11 wlan
+> works
+>
+> its now GPIO-402 out high ACTIVE_LOW  ( 3.3V on pin12)
+great, thank you for doing the research!
 
-Do whatever you have the energy to do...  It would be nice if people who
-fix bugs in these Realtek drivers would check the other drivers as well
-but for cleanups basically everyone just works on one driver only.
+did you find out if GPIOAO_6 is needed at all?
+the 3.10 kernel enables it and sets it to HIGH. my understanding is
+that you didn't change this one so the output is still LOW.
+so I'm wondering if it is needed at all (I wouldn't be surprised if it
+was not needed, these 3.10 kernel .dts files seem to be copy&pasted
+from various vendors and do not necessarily reflect the actual
+hardware setup inside the box)
 
-regards,
-dan carpenter
+> i also attached the performance infos  Wlan0->Router and RAM->SDHC
+that's pretty good, great to see that it works fine for you :-)
 
+
+Martin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
