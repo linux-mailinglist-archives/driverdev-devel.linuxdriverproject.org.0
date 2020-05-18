@@ -1,81 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BEF61D6DD8
-	for <lists+driverdev-devel@lfdr.de>; Mon, 18 May 2020 00:32:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D81221D6FFC
+	for <lists+driverdev-devel@lfdr.de>; Mon, 18 May 2020 06:54:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 020C8207A4;
-	Sun, 17 May 2020 22:32:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4DA2B88398;
+	Mon, 18 May 2020 04:54:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hyikFa6gRIAH; Sun, 17 May 2020 22:32:18 +0000 (UTC)
+	with ESMTP id SCutjgH3S83b; Mon, 18 May 2020 04:54:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1B6512052A;
-	Sun, 17 May 2020 22:32:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B2BEB8836A;
+	Mon, 18 May 2020 04:54:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 136861BF390
- for <devel@linuxdriverproject.org>; Sun, 17 May 2020 22:32:13 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A74781BF3DF
+ for <devel@linuxdriverproject.org>; Mon, 18 May 2020 04:54:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0AF648770B
- for <devel@linuxdriverproject.org>; Sun, 17 May 2020 22:32:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A3A2B858B8
+ for <devel@linuxdriverproject.org>; Mon, 18 May 2020 04:54:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X3LoJG8MmW-e for <devel@linuxdriverproject.org>;
- Sun, 17 May 2020 22:32:12 +0000 (UTC)
+ with ESMTP id tIHyC4aZ7FEq for <devel@linuxdriverproject.org>;
+ Mon, 18 May 2020 04:54:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f67.google.com (mail-ed1-f67.google.com
- [209.85.208.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 032AD87684
- for <devel@driverdev.osuosl.org>; Sun, 17 May 2020 22:32:12 +0000 (UTC)
-Received: by mail-ed1-f67.google.com with SMTP id i16so2455275edv.1
- for <devel@driverdev.osuosl.org>; Sun, 17 May 2020 15:32:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=googlemail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=IY9zS+ciSstxD/NCOg/Nwls054kIjwxMDZxFCipe6hE=;
- b=S0eNyWfA2fopxCroDGihEhhcZW8xaBIo/KUpm2LepunFcwLeBToH4YXfrfNfRXEgqL
- QcgaS+PFgFnQHF+MHA9yvkLF9/cbPWg5i0yb8Caj2rGIAwhYgVEu+kCS3SAQQxOS2/9N
- ezlXMBEzbn6qeA3U7MLQa/SxRaiQX6aA+MXDTAy4oSw7fuGk6CXOf/dZ8+GBHpLR124C
- d2qj2lGMPxPqnaCJfCNog1uTmTxsrcJJ6soozdqT/qvlpmbD4FWcsrkDHAwgASRp+UIf
- bchelc6IYVIwT/RdSz03EtHjUpE74+5t+ymH6dWmXWIRZxWdOvMzfHeSZ0RJ6NKOiId+
- nh8Q==
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 25BCC85852
+ for <devel@driverdev.osuosl.org>; Mon, 18 May 2020 04:54:13 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id cx22so1128959pjb.1
+ for <devel@driverdev.osuosl.org>; Sun, 17 May 2020 21:54:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=CNyAh3C19OfyBhM8UYQrB5bR+7wKmGoyo3pyav8YnVo=;
+ b=BsCVTvxE0mGB5xc/3+LSNQW99Lq6bU0DvZnZ7VAbz3ttY2BP2Qjxecfp/BUfMEsCFV
+ jZoOi2MgCyZConAzujtJZwKveV8yckPzTq7SCpQuKdCk58EAaLhE3rWvuu4VJt5PlpiH
+ NkdeL6e6F8UpgW0FdQrDQja+1QMUl78qTTyhIUCJaLO6hlW6qU6MAl/r7jUCiBM1RYzT
+ c7TRlKmCbZlO8x4vPJ/P1O5M9nGZPljHjKZ8h9JvjF/LZPnTxNUu/Tn6QbN/cGtlIIGx
+ xqo1TzA+VmnV50mgLBTcvy2JljOeGq1D6CXH3W6DjOgNviBKCjIYEugK62csu1ZOJYIr
+ pc9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=IY9zS+ciSstxD/NCOg/Nwls054kIjwxMDZxFCipe6hE=;
- b=EAXtV0jvA21N+CvcumdTJB8Oa5V9pGzfPXKVfd9ydD0ryEBFX3wK0mwCgj8LcjFn+9
- SWK91NmNJzs2Vvcs6p3bpEWyAd20z+GLxQvX9Bnzr159RQDGnrSM5lOQzl8LiJixma8Y
- 1yNcaXedE36OcPzLsz+3HD7ux7Qu8K8qiU6Ux8u/mM3BfePImybkBjx6G+avB77ZzFQB
- rrojg2RKEnMBrMDTIvwcCCuF0qHCpHwntsmLdQnUTvMf1O8DfkVwF2RLF81SqUeKDp7S
- Eqv2rxsdIOqJHTV4F4+Nsqq6+1S7p5mJkXit2I35zetzlSlvYgrhdRYIR+FoQ4lL36PF
- o9zQ==
-X-Gm-Message-State: AOAM5317d6akhybPa1qqJ7ppi83zT+rSkHz16h4r5y83ujCu2dBAk+EP
- 7dP446gFFklat1cAkVK6IUrWxSK06UVoYFa/6s8=
-X-Google-Smtp-Source: ABdhPJxWix1AovVBpXEwVGAxHQ9R2kNb0eLRBFOI6DIZP5JcSg67Q/IWOOjBt8j5rDb16WWams2NWT0R3BQh/zo2OWY=
-X-Received: by 2002:a50:c014:: with SMTP id r20mr10680846edb.110.1589754730321; 
- Sun, 17 May 2020 15:32:10 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=CNyAh3C19OfyBhM8UYQrB5bR+7wKmGoyo3pyav8YnVo=;
+ b=S5r0I+sKvT22VcVLGuS27mJLYNM1Bxb0c+nhigylPMJlNbiAAmZrxW0JMt+TET10Cj
+ hBCPojFpfKE7PtNK+yx0x8tdg8nnndQo7EOGhEqiGpmqUcoWOxpIzm24IB0I8fIhvVaD
+ XYHMSrJ4F20X7+p8V9IcGI4Pdob9CtVqHOBrm04ILTnghH46PSCHtkiy3Y5DPAJf4Q46
+ gWVO6LvMG0KabnyAulcRiOmJGREs6nI4FJAHDmAy+lS8VjDoiA5IKi9QVSwdfJNNDvsC
+ v1O1aKlIXwrwgVsMVEqG9mh5uHuJLXPjUFd96GNR8yI31bjsywFnI/5UprEUcCAjpuTz
+ TlgA==
+X-Gm-Message-State: AOAM532qLy1bKy9uPVWBupAJEfJGsM79QubotoIP/dZc7KArBLwJ5Zkd
+ icfs80FJP9rDhSMoDz/qzx8=
+X-Google-Smtp-Source: ABdhPJzqwUM4FYI2rhy+2ZBNtNxAHPmwoAipKaMxVpRm7Z/NIRE2PgJIIrTSk05knuGDBQfGA/9Www==
+X-Received: by 2002:a17:90a:ce18:: with SMTP id
+ f24mr3604918pju.198.1589777652680; 
+ Sun, 17 May 2020 21:54:12 -0700 (PDT)
+Received: from f3 (ae055068.dynamic.ppp.asahi-net.or.jp. [14.3.55.68])
+ by smtp.gmail.com with ESMTPSA id q3sm1549124pgp.69.2020.05.17.21.54.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 17 May 2020 21:54:11 -0700 (PDT)
+Date: Mon, 18 May 2020 13:54:07 +0900
+From: Benjamin Poirier <benjamin.poirier@gmail.com>
+To: Xiangyang Zhang <xyz.sun.ok@gmail.com>
+Subject: Re: [PATCH] staging: qlge: unmap dma when lock failed
+Message-ID: <20200518045407.GA73179@f3>
+References: <20200517054638.10764-1-xyz.sun.ok@gmail.com>
 MIME-Version: 1.0
-References: <bcefba5b-107c-716b-bb60-5b4b2476894b@o2online.de>
- <CAFBinCD8-tr97GCVhBi5R1nzxLhy=_6VuLY8ubUO1SDTFjiELw@mail.gmail.com>
- <22af498b-44a0-ced3-86f3-114427a73910@o2online.de>
- <CAFBinCCGAkhPCwOW=mAvsV2qdixq8Gf8yQw1gYErHpz7KmuAZg@mail.gmail.com>
- <5de6db87-a71f-d14c-390d-b0caeab5d650@o2online.de>
- <CAFBinCDB9c2uMRXO9DKSX4hC7EBgnRfBa+BM5-VdEPZeieKn_w@mail.gmail.com>
- <813dfc08-f13a-dcac-0bd9-821d188bba08@o2online.de>
- <CAFBinCCgZF5Pu944q-_+V0yQ-nc6q82xDjJHjsnj6=uOQL+DEw@mail.gmail.com>
- <8cbbf90c-54ba-8fa3-3386-022c9c997a20@o2online.de>
-In-Reply-To: <8cbbf90c-54ba-8fa3-3386-022c9c997a20@o2online.de>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Mon, 18 May 2020 00:31:59 +0200
-Message-ID: <CAFBinCBukGbzgO-Y1dCRYXZHhX2PcSEQQ_XvhHqLcnw0fGDP8w@mail.gmail.com>
-Subject: Re: RTL8723BS driver doesn't work for,me but I can help testing
-To: Tobias Baumann <017623705678@o2online.de>
+Content-Disposition: inline
+In-Reply-To: <20200517054638.10764-1-xyz.sun.ok@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,52 +86,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
+Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
+ manishc@marvell.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Tobias,
+On 2020-05-17 13:46 +0800, Xiangyang Zhang wrote:
+> DMA not unmapped when lock failed, this patch fixed it.
+> 
 
-On Sun, May 17, 2020 at 11:05 PM Tobias Baumann
-<017623705678@o2online.de> wrote:
->
-> hi martin
->
-> sorry for cc -problem it was my fault in thunderbird
->
-> thanks for dtb file but this file has problem kernel stop with
->
-> [    6.122092] mmc0: new high speed SDIO card at address 0001
-> [   35.804258] VCCK: disabling
-> [   35.808781] platform pwmleds: deferred probe pending
-> [   35.812625] platform sound: deferred probe pending
-pwmleds was also there in your last dmesg
-please ignore the sound part, I haven't tested it on that particular
-board in a while
+Fixes: 4322c5bee85e ("qlge: Expand coverage of hw lock for config register.")
 
-
-> [  215.804295] random: crng init done
->
-> (last time deferred probe was gcc problem )
->
-> please can you provide me with dts file and i complile at my linux box
-> or maybe only the change line and i use the dtb from image and edit the
-> lines like the usb patch
-you can get all my patches from here: [0]
-as always: some of them are not even in linux-next yet and there's a
-reason for that ;-)
-I have changed the GPIO_ACTIVE_* polarity for the two GPIOs in the
-sdio_pwrseq node if you want to do that by yourself.
-
-
-Best regards,
-Martin
-
-
-[0] https://github.com/xdarklight/linux/tree/meson-mx-integration-5.8-20200517
+> Signed-off-by: Xiangyang Zhang <xyz.sun.ok@gmail.com>
+> ---
+>  drivers/staging/qlge/qlge_main.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
