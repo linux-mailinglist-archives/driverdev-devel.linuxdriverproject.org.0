@@ -2,86 +2,81 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2266C1D8FEC
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 May 2020 08:21:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ACEB71D9172
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 May 2020 09:54:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2BAB02262B;
-	Tue, 19 May 2020 06:21:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0F8AD2268C;
+	Tue, 19 May 2020 07:54:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZRdeCC5K9VD0; Tue, 19 May 2020 06:21:29 +0000 (UTC)
+	with ESMTP id etNidsq9nAH3; Tue, 19 May 2020 07:54:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 69D8F221DC;
-	Tue, 19 May 2020 06:21:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AFBD8221DC;
+	Tue, 19 May 2020 07:53:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AF3251BF2FF
- for <devel@linuxdriverproject.org>; Tue, 19 May 2020 06:21:24 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C228D1BF2CE
+ for <devel@linuxdriverproject.org>; Tue, 19 May 2020 07:53:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AB59587852
- for <devel@linuxdriverproject.org>; Tue, 19 May 2020 06:21:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BEE4288313
+ for <devel@linuxdriverproject.org>; Tue, 19 May 2020 07:53:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fSLCZzmyDyvu for <devel@linuxdriverproject.org>;
- Tue, 19 May 2020 06:21:23 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail18c50.megamailservers.eu (mail81c50.megamailservers.eu
- [91.136.10.91])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CE383878A8
- for <devel@driverdev.osuosl.org>; Tue, 19 May 2020 06:21:22 +0000 (UTC)
-X-Authenticated-User: 017623705678@o2online.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=megamailservers.eu;
- s=maildub; t=1589869278;
- bh=bICxOQkKWptX/IVuhwdUQBYTZXOzDZV8tWkiB06kPZk=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=aIRDb6AHzj4Zkla7eGQfHpE8+9vTBNWYZUfl2fNGe6h0cc50ecNkd0pYGfcl4cyi5
- n9NhB7/VsEcr76oqLrtfc9qexTGR9DkYfBJFAr+VSqh6trtStfIXo5nygWor+NuqdH
- dhmdXqhrVaLexdPKzgvdwy8r6yuxdQ9wVyqZTknc=
-Feedback-ID: 017623705678@o2
-Received: from [192.168.2.2]
- (dslb-178-011-017-047.178.011.pools.vodafone-ip.de [178.11.17.47])
- (authenticated bits=0)
- by mail18c50.megamailservers.eu (8.14.9/8.13.1) with ESMTP id 04J6LE8B005870; 
- Tue, 19 May 2020 06:21:15 +0000
-Subject: Re: RTL8723BS driver doesn't work for,me but I can help testing
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-References: <bcefba5b-107c-716b-bb60-5b4b2476894b@o2online.de>
- <CAFBinCD8-tr97GCVhBi5R1nzxLhy=_6VuLY8ubUO1SDTFjiELw@mail.gmail.com>
- <22af498b-44a0-ced3-86f3-114427a73910@o2online.de>
- <CAFBinCCGAkhPCwOW=mAvsV2qdixq8Gf8yQw1gYErHpz7KmuAZg@mail.gmail.com>
- <5de6db87-a71f-d14c-390d-b0caeab5d650@o2online.de>
- <CAFBinCDB9c2uMRXO9DKSX4hC7EBgnRfBa+BM5-VdEPZeieKn_w@mail.gmail.com>
- <813dfc08-f13a-dcac-0bd9-821d188bba08@o2online.de>
- <CAFBinCCgZF5Pu944q-_+V0yQ-nc6q82xDjJHjsnj6=uOQL+DEw@mail.gmail.com>
- <8cbbf90c-54ba-8fa3-3386-022c9c997a20@o2online.de>
- <CAFBinCBukGbzgO-Y1dCRYXZHhX2PcSEQQ_XvhHqLcnw0fGDP8w@mail.gmail.com>
- <a95f5fe1-4376-f872-961a-c2237c36811c@o2online.de>
- <CAFBinCCgFtv=u4ZKW3rdoDPZ_jh3jU03MDxHoDk=pbi+4pxB_w@mail.gmail.com>
-From: Tobias Baumann <017623705678@o2online.de>
-Message-ID: <c244b34f-8958-0cbd-38e6-a786aef56e7c@o2online.de>
-Date: Tue, 19 May 2020 08:21:14 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ with ESMTP id pR89KKKV1Qoi for <devel@linuxdriverproject.org>;
+ Tue, 19 May 2020 07:53:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 533E18830F
+ for <devel@driverdev.osuosl.org>; Tue, 19 May 2020 07:53:56 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id 145so6136683pfw.13
+ for <devel@driverdev.osuosl.org>; Tue, 19 May 2020 00:53:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=90JtBfQaO8CnvkM0ghj/tqXgttRAyyfAqTnngOdG3VI=;
+ b=QZO8oZykFmocOOl7aFZ5ZbeTmoRkpjI18Td4wZGWrZ/LXrDrQpu266ulbaz9sRnBBh
+ vwwADHvaUzikHT6Wla/j3q6OMfJpjv+OUkbs/Sk8R4r/bMNZJ0MGxdGMQFsPq3xbjf9p
+ ZiVE6fug3h4OnadEuedJpLkeDkU3wUBJKKP+kQif3MbbOfixbBpfbVFhlyhrnA6255Xl
+ xHNMQRMbBX8zdkzwBtsAR0mmoG8c8r4hviMLnjSemk0ByePhYHr7UWoh4VPaHwaQrDLg
+ bqsYj2TV1NnfCu8v+CARZCLzBbN+hD2tUIuTT88HnqtSQElGwld4hBhTh0W1dpwr0wh/
+ Dedw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=90JtBfQaO8CnvkM0ghj/tqXgttRAyyfAqTnngOdG3VI=;
+ b=Lh3rt90mBV5/sXwPU9gd3c+IuK2FhNT7Gk9Pv//VHR/oGRDHstZf04FHcyug2BVkfI
+ 5uSkow1aMpfkXmszN1osfztr7PY4KFUCIRp7MXVbPE01wvTSXcSbnDvbq5RRjGHnWKd9
+ D1bKM2rdn75HChYDtLwPjfF+llbXxLwuEb49kq5mhKk7/hUb/VcHwzD3cEjeO9eYS9u/
+ jLtLi06ZvIq9470JySJrie0QsMkw2BcLS7iBXw3/79hGhqUGvBPj8jsuascO2CiO1JPM
+ Tpokv8QEc7qnlm3ZQTergii+xDmcs9UJmZkSvAz2LYFMp1XkdyCwiR4sdBDB/0XIxR2A
+ jHTQ==
+X-Gm-Message-State: AOAM530lcZ9V3I0axMIGBRe/HJKcy7znXhJ6tQP6ntT/Y0HZOld4z6sK
+ NWb3rcjrFAuvHN5suTw5tdA=
+X-Google-Smtp-Source: ABdhPJxMXA/j3m1VvlI5LVe0U7oVHJU9KIkdRwb3MBlxteaI8UdHaYhfylaqH+Ww2/HL4gxrdhjs4g==
+X-Received: by 2002:a62:3006:: with SMTP id w6mr20807466pfw.29.1589874835786; 
+ Tue, 19 May 2020 00:53:55 -0700 (PDT)
+Received: from gmail.com ([192.55.54.40])
+ by smtp.gmail.com with ESMTPSA id mn19sm1432158pjb.8.2020.05.19.00.53.52
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 19 May 2020 00:53:55 -0700 (PDT)
+Date: Tue, 19 May 2020 13:23:49 +0530
+From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Subject: Re: [PATCH V1 5/6] staging: greybus: audio: Add helper APIs for
+ dynamic audio modules
+Message-ID: <20200519075347.GA18002@gmail.com>
+References: <cover.1589734179.git.vaibhav.sr@gmail.com>
+ <c1339e4d57c8b39bd25197d4514fabd868b829b1.1589734179.git.vaibhav.sr@gmail.com>
+ <20200517173706.GB34497@piout.net>
 MIME-Version: 1.0
-In-Reply-To: <CAFBinCCgFtv=u4ZKW3rdoDPZ_jh3jU03MDxHoDk=pbi+4pxB_w@mail.gmail.com>
-Content-Language: de-DE
-X-Antivirus: AVG (VPS 200518-0, 18.05.2020), Outbound message
-X-Antivirus-Status: Clean
-X-CTCH-RefID: str=0001.0A782F1A.5EC37A8E.0094, ss=1, re=0.000, recu=0.000,
- reip=0.000, cl=1, cld=1, fgs=0
-X-CTCH-VOD: Unknown
-X-CTCH-Spam: Unknown
-X-CTCH-Score: 0.000
-X-CTCH-Rules: 
-X-CTCH-Flags: 0
-X-CTCH-ScoreCust: 0.000
-X-CSC: 0
-X-CHA: v=2.3 cv=K8Zc4BeI c=1 sm=1 tr=0 a=cfXdPu6Ul6OsnrHrce2WRQ==:117
- a=cfXdPu6Ul6OsnrHrce2WRQ==:17 a=IkcTkHD0fZMA:10 a=oCcaPWc0AAAA:8
- a=DZZeUtYjHzpd_z8FqtsA:9 a=QEXdDO2ut3YA:10
+Content-Disposition: inline
+In-Reply-To: <20200517173706.GB34497@piout.net>
+User-Agent: Mutt/1.10.1+3 (f9293d646485) (2018-09-22)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,43 +89,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, hdegoede@redhat.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>, Mark Greer <mgreer@animalcreek.com>,
+ greybus-dev@lists.linaro.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Z29vZCBtb3JuaW5nCgppIGdvdCB0aGUgbmV3IGltYWdlIGZyb20gb2xlZyhiYWxiZXMxNTApIDIw
-MjAwNTE4IFJDNcKgIGFuZCBzb21lIG1vcmUgCmZlZWRiYWNrCgp3aXRoIG15IHBhdGNoIGFuZCBv
-bGVnIFJDNSBob3RzdGFydChzaHV0ZG93biBub3cpwqAgZG8gbm90IHdvcmsgd2l0aCBteSAKYm94
-ICggd2xhbiBnb2VzIGJhY2sgdG8gc2xlZXAgbW9kZSBhbHdheXMpCgp3aXRoIG15IHBhdGNoIGNo
-YW5jZcKgIDEgb2YgNSB0aWxsIDEgb2YgMyB0aGF0IG15IHdsYW4gaXMgdXAgYW5kIG5vdCAKc2xl
-ZXAgZnJvbSBjb2xkIHN0YXJ0Cgp3aXRoIG9sZWcgY2hhbmNlIDEgb2YgMiB0aWxsIDFvZiAzIGZy
-b20gY29sZCBzdGFydCB0aGF0IHdsYW4gaXMgdXDCoCAuIAoobWF5YmUgYmVjYXVzZSBvZiBwaGFu
-ZGxlIG9yZGVyPykKCmkgdGhpbmcgdGhlcmUgaXMgbWF5YmUgYSB0aW1taW5nIHByb2JsZW0gYmV0
-d2VlbsKgIHdsYW4gZGlzICwgc2Rpb8KgIGRhdGEgCmFuZMKgIGhvc3Qgd2FrZSB1cCB3bGFuIC4K
-Cml0IGNvdWxkIGJlIHRoYXQgR1BJT0FPXzYgaXMgdGhlIGhvc3Qgd2FrZSB1cCB3bGFuID8gaXMg
-aXQgcG9zc2libGUgdG8gCmNoYW5nZSB0aGUgYWN0aXZhdGlvbiBvcmRlciBmb3IgdGhlIGdwaW8g
-cGlucyBieSBjaGFuZ2UgaXQgaW4gZHRzID8KClRvYmlhcwoKCgpBbSAxOC4wNS4yMDIwIHVtIDIy
-OjM3IHNjaHJpZWIgTWFydGluIEJsdW1lbnN0aW5nbDoKPiBIaSBUb2JpYXMsCj4KPiBPbiBNb24s
-IE1heSAxOCwgMjAyMCBhdCA3OjU5IEFNIFRvYmlhcyBCYXVtYW5uIDwwMTc2MjM3MDU2NzhAbzJv
-bmxpbmUuZGU+IHdyb3RlOgo+PiBoaSBtYXJ0aW4KPj4KPj4gaSBhY3RpdmF0ZSB5b3VyIHBhdGNo
-IDsgd2xhbiB3b3JrcyA7ICBhbHNvIHdpdGggb25seSAgZWRpdCBHUElPWF8xMSB3bGFuCj4+IHdv
-cmtzCj4+Cj4+IGl0cyBub3cgR1BJTy00MDIgb3V0IGhpZ2ggQUNUSVZFX0xPVyAgKCAzLjNWIG9u
-IHBpbjEyKQo+IGdyZWF0LCB0aGFuayB5b3UgZm9yIGRvaW5nIHRoZSByZXNlYXJjaCEKPgo+IGRp
-ZCB5b3UgZmluZCBvdXQgaWYgR1BJT0FPXzYgaXMgbmVlZGVkIGF0IGFsbD8KPiB0aGUgMy4xMCBr
-ZXJuZWwgZW5hYmxlcyBpdCBhbmQgc2V0cyBpdCB0byBISUdILiBteSB1bmRlcnN0YW5kaW5nIGlz
-Cj4gdGhhdCB5b3UgZGlkbid0IGNoYW5nZSB0aGlzIG9uZSBzbyB0aGUgb3V0cHV0IGlzIHN0aWxs
-IExPVy4KPiBzbyBJJ20gd29uZGVyaW5nIGlmIGl0IGlzIG5lZWRlZCBhdCBhbGwgKEkgd291bGRu
-J3QgYmUgc3VycHJpc2VkIGlmIGl0Cj4gd2FzIG5vdCBuZWVkZWQsIHRoZXNlIDMuMTAga2VybmVs
-IC5kdHMgZmlsZXMgc2VlbSB0byBiZSBjb3B5JnBhc3RlZAo+IGZyb20gdmFyaW91cyB2ZW5kb3Jz
-IGFuZCBkbyBub3QgbmVjZXNzYXJpbHkgcmVmbGVjdCB0aGUgYWN0dWFsCj4gaGFyZHdhcmUgc2V0
-dXAgaW5zaWRlIHRoZSBib3gpCj4KPj4gaSBhbHNvIGF0dGFjaGVkIHRoZSBwZXJmb3JtYW5jZSBp
-bmZvcyAgV2xhbjAtPlJvdXRlciBhbmQgUkFNLT5TREhDCj4gdGhhdCdzIHByZXR0eSBnb29kLCBn
-cmVhdCB0byBzZWUgdGhhdCBpdCB3b3JrcyBmaW5lIGZvciB5b3UgOi0pCj4KPgo+IE1hcnRpbgo+
-CgotLSAKRGllc2UgRS1NYWlsIHd1cmRlIHZvbiBBVkcgYXVmIFZpcmVuIGdlcHLDvGZ0LgpodHRw
-Oi8vd3d3LmF2Zy5jb20KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
-dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aXZlcmRldi1kZXZlbAo=
+On Sun, May 17, 2020 at 07:37:06PM +0200, Alexandre Belloni wrote:
+> Hi,
+> 
+> On 17/05/2020 22:47:20+0530, Vaibhav Agarwal wrote:
+> > Greybus Codec driver allows modules to be dynamically added and removed,
+> > which further requires updating the DAPM configurations as well.
+> > 
+> > With current snd_soc architecture, dynamic audio modules is not yet
+> > supported. This patch provides helper APIs to update DAPM configurations
+> > in response to modules which are dynamically added or removed. The
+> > source is primarily based on snd_dapm.c
+> > 
+> 
+> I really think you should send this patch series to the ASoC
+> maintainers, especially this patch. The main goal shouldn't be to simply
+> fix compilation issues but to try to get the driver out of staging else,
+> the current situation will happen again.
+
+Agree Alexandre. I'll share this with ASoC maintainers as well.
+
+Also, I'm seeking opinion regarding the scope of pushing GB Audio out of 
+staging tree. I'm keen to make the relevant changes and work actively 
+for the same. However, I don't have a real device to test the latest 
+code and thus not sure if the changes can be pushed to sound soc tree.
+GB maintainers, kindly share your opinion.
+
+--
+Regards,
+Vaibhav
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
