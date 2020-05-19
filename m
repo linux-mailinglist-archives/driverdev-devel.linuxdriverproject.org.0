@@ -1,68 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C13231D90C8
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 May 2020 09:15:19 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E30741D8CF2
+	for <lists+driverdev-devel@lfdr.de>; Tue, 19 May 2020 03:12:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4C55084ADA;
-	Tue, 19 May 2020 07:15:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3705F882CC;
+	Tue, 19 May 2020 01:12:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4OwHoPqibEPr; Tue, 19 May 2020 07:15:16 +0000 (UTC)
+	with ESMTP id FRcXICLS-ylS; Tue, 19 May 2020 01:12:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BEFF786AC6;
-	Tue, 19 May 2020 07:15:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AFD27882BD;
+	Tue, 19 May 2020 01:12:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3933B1BF2CE
- for <devel@linuxdriverproject.org>; Tue, 19 May 2020 07:15:13 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F28471BF359
+ for <devel@linuxdriverproject.org>; Tue, 19 May 2020 01:12:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 35A63878BD
- for <devel@linuxdriverproject.org>; Tue, 19 May 2020 07:15:13 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E98EF882BD
+ for <devel@linuxdriverproject.org>; Tue, 19 May 2020 01:12:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MRJKG8UrT66K for <devel@linuxdriverproject.org>;
- Tue, 19 May 2020 07:15:11 +0000 (UTC)
-X-Greylist: delayed 03:15:25 by SQLgrey-1.7.6
-Received: from mail.veritas.edu.ng (mail.veritas.edu.ng [157.230.180.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4D90B87899
- for <devel@driverdev.osuosl.org>; Tue, 19 May 2020 07:15:11 +0000 (UTC)
-Received: from localhost (vunazimbra [127.0.0.1])
- by mail.veritas.edu.ng (Postfix) with ESMTP id EA83710EB0F3D;
- Tue, 19 May 2020 01:11:07 +0000 (UTC)
-Received: from mail.veritas.edu.ng ([127.0.0.1])
- by localhost (mail.veritas.edu.ng [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id OJKuClSsNXw2; Tue, 19 May 2020 01:11:07 +0000 (UTC)
-Received: from localhost (vunazimbra [127.0.0.1])
- by mail.veritas.edu.ng (Postfix) with ESMTP id 2B53810EB0B25;
- Tue, 19 May 2020 00:32:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.9.2 mail.veritas.edu.ng 2B53810EB0B25
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=veritas.edu.ng;
- s=77DB87F6-482B-11E6-9314-50CCB38249F2; t=1589848364;
- bh=oYeOwTtTK4mcRNNK0JGL7ZOgP8mm7StpJG1pujYq4Z0=;
- h=Content-Type:MIME-Version:Content-Transfer-Encoding:Subject:To:
- From:Date:Reply-To:Message-Id;
- b=G2aTUp5AyJPCZjZfWGEs7pe1gXVnAEEt+2hD4bCWq3NbNl1nKp8sgTGdjFc2bY3s7
- oJXHGRJhoMa0qP7bCcj08viMHaA5gh5wdToaiGflPO3YDLYrBQP+zFg5UDnrqvUUM3
- od+CioObRdnuvk/Eps7z/BbR+Ka07E295Yo04BaA=
-X-Virus-Scanned: amavisd-new at mail.veritas.edu.ng
-Received: from mail.veritas.edu.ng ([127.0.0.1])
- by localhost (mail.veritas.edu.ng [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 0YwBAlt8_KdG; Tue, 19 May 2020 00:32:43 +0000 (UTC)
-Received: from [10.50.74.169] (unknown [105.4.7.222])
- by mail.veritas.edu.ng (Postfix) with ESMTPSA id 796A810E3ABD3;
- Mon, 18 May 2020 23:34:36 +0000 (UTC)
-MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: =?utf-8?q?Wohlt=C3=A4tigkeitsspende_von_2=2E000=2E000_Millionen_Euro?=
-To: Recipients <oladelet@veritas.edu.ng>
-From: ''Charles jackson'' <oladelet@veritas.edu.ng>
-Date: Tue, 19 May 2020 01:34:27 +0200
-Message-Id: <20200518233436.796A810E3ABD3@mail.veritas.edu.ng>
+ with ESMTP id Br6dF3THkDKp for <devel@linuxdriverproject.org>;
+ Tue, 19 May 2020 01:12:37 +0000 (UTC)
+X-Greylist: delayed 00:26:47 by SQLgrey-1.7.6
+Received: from mail-qv1-f65.google.com (mail-qv1-f65.google.com
+ [209.85.219.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 213DB882B0
+ for <devel@driverdev.osuosl.org>; Tue, 19 May 2020 01:12:37 +0000 (UTC)
+Received: by mail-qv1-f65.google.com with SMTP id er16so5217520qvb.0
+ for <devel@driverdev.osuosl.org>; Mon, 18 May 2020 18:12:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=leaflabs-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id;
+ bh=SpKrU1LZHPDz7aM+ZRqKdIZt+rjg7Am2w59IOfBqqwA=;
+ b=mJipiPmcY8YsiwBF7viBGc6FPfNozTL9S6e1V2gzodnopOOTOJ+uNbxF7ncPoo5r9R
+ +hyfgU6U39JjKrZcg+XoLcEKYRQwnQq1GpJOCv4ZrtdzI0mGmsd+63/2DUF2MPheWuWC
+ zrjjNsAHzA2M/ye9HNdKSCG3+X1q0sB2PjgdjGAID48Aj3zWJyHold9UG2QykiuUzXzK
+ I13mriaXSN/c1yr4+3LIh8m3DxvZvpW8BUWI4xJs0gxWKikSSeCHPAFdoz59+aOLuarv
+ vQo6eoN75WUaSFpoU7jrY0VSE3AIZGo7LdwrleAajQe5iaUJiLpeGgFzj9BcoIo7nLih
+ ZWEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=SpKrU1LZHPDz7aM+ZRqKdIZt+rjg7Am2w59IOfBqqwA=;
+ b=oJLEmVAu1XDdbkO/CkTAC43jhbJJZEtRZ5oZl7nslIx/1hmMZJ98MI+7ZFW28bEeKA
+ WGBU2fa85fW4wAh+WMV0s+rG6XZpIds/A+UjnzSxaYyl3FQ4DEwjddeQVF7HMbZESHUw
+ scaCTbDevnNJKnL2rfhULeVu+QYid0KqZN1qg+QP3aI3poLvolotwuiAqdDhLQlXm6zv
+ xvA1+TQhwEcpkwRFyuZLweR7tnGvOvyosvqH88T3RvutzC41soLHF0ixO6e45aYqVY2m
+ ykaa9vsiD6uW4Xp4hc/1ckVOvXoWgjj9fgTrwGZZ0G0VyOsjHRXB3S/rCTWmA6VSlOQ8
+ 4x7g==
+X-Gm-Message-State: AOAM5329pBYb+r82NIHPfEdR3m+ZPCOkCJ3bfssylJwR9Fiyn+PkMPQO
+ S1l3xm4+oeiR4lQ7QCsM7t3aCACQkzA=
+X-Google-Smtp-Source: ABdhPJxJS7CthGaemy5vzNrIYxqUmcnmeIw1PYxtinAkRj5eHPysxhWhVtbrl4ENMVaMV5AI8t/yXg==
+X-Received: by 2002:ad4:4f87:: with SMTP id em7mr9708469qvb.192.1589849149349; 
+ Mon, 18 May 2020 17:45:49 -0700 (PDT)
+Received: from ubuntu-virtualbox.localdomain
+ (209-6-156-57.s56.c3-0.sbo-ubr1.sbo.ma.cable.rcncustomer.com. [209.6.156.57])
+ by smtp.gmail.com with ESMTPSA id l22sm9312392qki.45.2020.05.18.17.45.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2020 17:45:48 -0700 (PDT)
+From: Mitchell Tasman <tasman@leaflabs.com>
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jamal Shareef <jamal.k.shareef@gmail.com>,
+ Marcelo Diop-Gonzalez <marcgonzalez@google.com>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>
+Subject: [PATCH] staging: vchiq_arm: cast with __force as needed
+Date: Mon, 18 May 2020 20:45:31 -0400
+Message-Id: <20200519004531.33158-1-tasman@leaflabs.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,27 +86,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: charlesjacksonjr001@gmail.com
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
+ Mitchell Tasman <tasman@leaflabs.com>, linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Lieber Freund,
+In several cases where a pointer marked as __user is
+(intentionally) assigned or passed to a non-marked target,
+cast to the target pointer type with a __force directive
+to quiet warnings from sparse.
 
-Ich bin Herr Charles W Jackson, North Carolina, Vereinigte Staaten von Amerika, der Mega-Gewinner von 344 Millionen US-Dollar. Beim Mega-Millions-Jackpot spende ich an 5 zuf&auml;llige Personen. Wenn Sie diese E-Mail erhalten, wurde Ihre E-Mail zu einem Spinball, den ich am h&auml;ufigsten verteilt habe von meinem Verm&ouml;gen an eine Reihe von Wohlt&auml;tigkeitsorganisationen. Ich habe mich freiwillig entschlossen, Ihnen als einer der ausgew&auml;hlten 5 einen Betrag von &euro; 2.000.000,00 zu spenden, um meine Gewinne zu &uuml;berpr&uuml;fen.
-Dies ist Ihr Spendencode: [CJ530342019]
+Signed-off-by: Mitchell Tasman <tasman@leaflabs.com>
+---
+ .../vc04_services/interface/vchiq_arm/vchiq_2835_arm.c     | 7 ++++---
+ .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c  | 4 +++-
+ 2 files changed, 7 insertions(+), 4 deletions(-)
 
-www.youtube.com/watch?v=BSr8myiLPMQ
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+index c18c6ca0b6c0..38a13e4618a8 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+@@ -371,14 +371,15 @@ create_pagelist(char __user *buf, size_t count, unsigned short type)
+ 	pagelistinfo->scatterlist = scatterlist;
+ 	pagelistinfo->scatterlist_mapped = 0;
+ 
+-	if (is_vmalloc_addr(buf)) {
++	if (is_vmalloc_addr((void __force *)buf)) {
+ 		unsigned long length = count;
+ 		unsigned int off = offset;
+ 
+ 		for (actual_pages = 0; actual_pages < num_pages;
+ 		     actual_pages++) {
+-			struct page *pg = vmalloc_to_page(buf + (actual_pages *
+-								 PAGE_SIZE));
++			struct page *pg =
++				vmalloc_to_page((void __force *)(buf +
++						 (actual_pages * PAGE_SIZE)));
+ 			size_t bytes = PAGE_SIZE - off;
+ 
+ 			if (!pg) {
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index 2d3e114f4a66..28ea8c3a4cba 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -1209,7 +1209,9 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 
+ 					/* The completion must point to the
+ 					** msgbuf. */
+-					completion->header = msgbuf;
++					completion->header =
++						(struct vchiq_header __force *)
++						msgbuf;
+ 				}
+ 
+ 				if ((completion->reason ==
+-- 
+2.17.1
 
-Antworten Sie auf diese E-Mail mit dem SPENDER-CODE: 
-
-charlesjacksonjr001@gmail.com
-
-Ich hoffe, Sie und Ihre Familie gl&uuml;cklich zu machen
-
-Sch&ouml;ne Gr&uuml;&szlig;e
-Mr. Charles Jackson
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
