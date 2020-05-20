@@ -1,61 +1,95 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91D821DB155
-	for <lists+driverdev-devel@lfdr.de>; Wed, 20 May 2020 13:18:44 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AE0F1DB4D1
+	for <lists+driverdev-devel@lfdr.de>; Wed, 20 May 2020 15:19:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0B9E78687B;
-	Wed, 20 May 2020 11:18:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0AC5A24368;
+	Wed, 20 May 2020 13:19:53 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2qIyP5qtTYNf; Wed, 20 May 2020 13:19:52 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 550242408D;
+	Wed, 20 May 2020 13:19:43 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E9B931BF477
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 20 May 2020 13:19:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id DB048800C4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 20 May 2020 13:19:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HBpkVGKVAhWp; Wed, 20 May 2020 11:18:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C95AE86A4D;
-	Wed, 20 May 2020 11:18:38 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 62F4F1BF23B
- for <devel@linuxdriverproject.org>; Wed, 20 May 2020 11:18:36 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 53F7B8639F
- for <devel@linuxdriverproject.org>; Wed, 20 May 2020 11:18:36 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X0cLEP4GOjMQ for <devel@linuxdriverproject.org>;
- Wed, 20 May 2020 11:18:34 +0000 (UTC)
+ with ESMTP id 05aJjd4+OXVo
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 20 May 2020 13:17:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D9BBF86365
- for <devel@driverdev.osuosl.org>; Wed, 20 May 2020 11:18:34 +0000 (UTC)
-Received: from coco.lan (ip5f5ad5c5.dynamic.kabel-deutschland.de
- [95.90.213.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5420E207D3;
- Wed, 20 May 2020 11:18:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589973514;
- bh=xmiH2GGliKbCenb8wGbOl9pYxqp6+Trt9CCWyk2HTwI=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=IhiEU8SY37AE1P/HERI2SLcU+kpzoOmeItXJ2Eln5Ba6O51DNplk1bUkWV/xwjvQr
- asFO7keRVuT36C/KWtC2aqI8XwhX900YdevBzIrGRRYnTufGJdaQXU2MSlZ5hgJc9a
- d3fSCT125YpY1xmZO57i08prruyQ91JM7BZ+N9iU=
-Date: Wed, 20 May 2020 13:18:30 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: Re: [PATCH] media: ipu3: add a module to probe sensors via ACPI
-Message-ID: <20200520131830.3ff45919@coco.lan>
-In-Reply-To: <20200520082608.GV20066@paasikivi.fi.intel.com>
-References: <12fbe3f5c6a16c5f3447adbc09fe27ceb2b16823.1589625807.git.mchehab+huawei@kernel.org>
- <20200517103659.GS17578@paasikivi.fi.intel.com>
- <20200520094400.5137e7f2@coco.lan>
- <20200520082608.GV20066@paasikivi.fi.intel.com>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0EB9887872
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 20 May 2020 13:17:50 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KDBvOE022334;
+ Wed, 20 May 2020 13:17:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=1UEm3eHDNd6/A/uOPS/kWx/7ce3EDttkRWae9EEbMFQ=;
+ b=j1a7YVV3agz2N8dKsGbM+NIQR1ivt7GjFKBLtSIWJA17bgWOpnGhpcVt4bki8qP6bQHD
+ 9xNxBc1siscQoDpdR+OhGBkcnf/BRRZcE/2qkVRIZVe6aeOAiTiCwJSx+BmTg/u4plFe
+ idRyhXbe38058Iy3KGHeH2UtIu/flAR7w9Tvq2AlpJVJrasg7LFNsIK1cyjg+7+NPSyV
+ 0RAj/3o5ENnz9Ltp0h/XBAXwLzO7r95HSPVV2j7GdZLwsPDeGjTDRl7FCH234YmWcGiT
+ Bs+znvUcRIc1MeFa9iXeRhd9BhaZs8x3TT1n40HrqBrozzhXFY10UMDHswjGdGsqHpZZ DA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 31284m31h7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 20 May 2020 13:17:49 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KDD8kE150200;
+ Wed, 20 May 2020 13:17:49 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3020.oracle.com with ESMTP id 312t37mc8x-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 20 May 2020 13:17:49 +0000
+Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04KDHm4p016682;
+ Wed, 20 May 2020 13:17:48 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 20 May 2020 06:17:46 -0700
+Date: Wed, 20 May 2020 16:17:40 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Christian Gromm <christian.gromm@microchip.com>
+Subject: Re: [PATCH v2 1/8] drivers: most: add usb adapter driver
+Message-ID: <20200520131740.GR2078@kadam>
+References: <1589449976-11378-1-git-send-email-christian.gromm@microchip.com>
+ <1589449976-11378-2-git-send-email-christian.gromm@microchip.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1589449976-11378-2-git-send-email-christian.gromm@microchip.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9626
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ spamscore=0 mlxlogscore=999
+ phishscore=0 mlxscore=0 malwarescore=0 suspectscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005200114
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9626
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ mlxscore=0
+ cotscore=-2147483648 impostorscore=0 malwarescore=0 mlxlogscore=999
+ lowpriorityscore=0 phishscore=0 spamscore=0 bulkscore=0 adultscore=0
+ priorityscore=1501 clxscore=1015 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2005200114
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,310 +102,1336 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Bingbu Cao <bingbu.cao@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Tian Shu Qiu <tian.shu.qiu@intel.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: gregkh@linuxfoundation.org, driverdev-devel@linuxdriverproject.org,
+ linux-usb@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Wed, 20 May 2020 11:26:08 +0300
-Sakari Ailus <sakari.ailus@linux.intel.com> escreveu:
-
-> Hi Mauro,
+On Thu, May 14, 2020 at 11:52:49AM +0200, Christian Gromm wrote:
+> This patch adds the usb driver source file most_usb.c and
+> modifies the Makefile and Kconfig accordingly.
 > 
-> On Wed, May 20, 2020 at 09:44:00AM +0200, Mauro Carvalho Chehab wrote:
-> > Hi Sakari,
-> > 
-> > Em Sun, 17 May 2020 13:36:59 +0300
-> > Sakari Ailus <sakari.ailus@linux.intel.com> escreveu:
-> >   
-> > > Hi Mauro,
-> > > 
-> > > Thanks for the patch.  
-> > 
-> > Thanks for reviewing it.
-> >   
-> > > 
-> > > On Sat, May 16, 2020 at 12:43:39PM +0200, Mauro Carvalho Chehab wrote:  
-> > > > On devices without ACPI, or which ACPI is not prepared to
-> > > > export sensor data via DT, we need a different probing
-> > > > method.
-> > > > 
-> > > > This little driver adds initial support to probe the
-> > > > sensors found on a Dell Latitude 7285.
-> > > > 
-> > > > For now, it just detects the hardware and use request_module()
-> > > > to load a sensor driver.
-> > > > 
-> > > > In the specific case of this device, the ACPI DTST dable
-> > > > describes 2 camera sensors for this module, but the
-> > > > current upstream doesn't have yet drivers for such
-> > > > sensors. So, this patch just detects the PMIC used on
-> > > > this device and tries to load a sensor.
-> > > > 
-> > > > Once the sensor gets added, some additional code will
-> > > > be needed to pass via platform_data other details, like
-> > > > callbacks for PMIC's command to turn the sensor on/off
-> > > > and other sensor-specific settings.
-> > > > 
-> > > > The idea of this patch was inspired on how the sensors
-> > > > are probed by the staging atomisp driver.
-> > > > 
-> > > > The current result of this driver with the Dell
-> > > > Latitude 7285 is:
-> > > > 
-> > > > 	ipu3_acpi i2c-INT3477:00: ipu3_acpi_probe: ACPI detected it on bus ID=LNK1, HID=INT3477
-> > > > 	ipu3_acpi i2c-INT3477:00: Found DMI entry for 'Latitude 7285' with sensor INT3477
-> > > > 	ipu3_acpi i2c-INT3477:00: Loading sensor module ov8858
-> > > > 	ipu3_acpi i2c-OVTI9234:00: ipu3_acpi_probe: ACPI detected it on bus ID=LNK2, HID=OVTI9234
-> > > > 	ipu3_acpi i2c-OVTI9234:00: Found DMI entry for 'Latitude 7285' with sensor OVTI9234
-> > > > 	ipu3_acpi i2c-OVTI9234:00: Loading sensor module ov9234
-> > > > 
-> > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>    
-> > 
-> > With regards to the approach this patch took: it is currently
-> > incomplete: the I2C core doesn't currently allow to have two 
-> > drivers for the same I2C address at the same bus. So, if we end by having
-> > some ancillary drivers to help the I2C core to work with media devs,
-> > we may need some changes at I2C core (or to use an I2C virtual mux).  
+> Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+> ---
+> v2:
+> Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> 	- don't remove usb driver from staging area
+> 	- don't touch staging/most/Kconfig
+> 	- remove subdirectory for USB driver and put source file into
+> 	  drivers/most
 > 
-> Are the two really on the same bus with the same address? Both sensors
-> support address selection in hardware...
-
-What I tried to do is to have an ACPI-probed driver loading a "normal" 
-non-ACPI driver.
-
-> > > > +/*
-> > > > + * Should list known sensor devices found at DSDT table as "CAM0", "CAM1", ...
-> > > > + *
-> > > > + * The table below is probably incomplete. It came from the DSDT table found
-> > > > + * at a Dell Latitude 7285 (Method HCID).
-> > > > + */
-> > > > +static const struct acpi_device_id ipu3_acpi_acpi_match[] = {
-> > > > +	{"INT3471"},
-> > > > +	{"INT33BE"},
-> > > > +	{"INT3476"},
-> > > > +	{"INT3477"},
-> > > > +	{"INT3474"},
-> > > > +	{"INT3473"},
-> > > > +	{"INT3475"},
-> > > > +	{"INT3478"},
-> > > > +	{"INT3479"},
-> > > > +	{"INT347A"},
-> > > > +	{"INT347B"},
-> > > > +	{"OVTI9234"},
-> > > > +	{"OVTI9734"},
-> > > > +	{"OVTI8856"},
-> > > > +	{"OVTIF860"},
-> > > > +	{},
-> > > > +};
-> > > > +MODULE_DEVICE_TABLE(acpi, ipu3_acpi_acpi_match);    
-> > > 
-> > > Instead of creating a new way to probe drivers on ACPI systems, please add
-> > > the appropriate ACPI device IDs to the respective drivers. E.g.
-> > > drivers/media/i2c/imx319.c implements this.  
-> > 
-> > The ACPI code at imx319 is incomplete. I mean, it will only tell the I2C
-> > core that the driver should be probed via ACPI, but it tells nothing
-> > how to power up the device. It just assumes that the driver will work
-> > using pm_runtime support.  
+>  drivers/most/Kconfig    |   12 +
+>  drivers/most/Makefile   |    2 +
+>  drivers/most/most_usb.c | 1262 +++++++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 1276 insertions(+)
+>  create mode 100644 drivers/most/most_usb.c
 > 
-> The driver is complete; this is how it is supposed to work with ACPI.
-> 
-> Also note that there are systems where this works at the moment, using the
-> the above ACPI HIDs. Those must not be broken.
+> diff --git a/drivers/most/Kconfig b/drivers/most/Kconfig
+> index 58d7999..8650683 100644
+> --- a/drivers/most/Kconfig
+> +++ b/drivers/most/Kconfig
+> @@ -13,3 +13,15 @@ menuconfig MOST
+>  	  module will be called most_core.
+>  
+>  	  If in doubt, say N here.
+> +
+> +if MOST
+> +config MOST_USB
+> +	tristate "USB"
+> +	depends on USB && NET
+> +	help
+> +	  Say Y here if you want to connect via USB to network tranceiver.
+> +	  This device driver depends on the networking AIM.
+> +
+> +	  To compile this driver as a module, choose M here: the
+> +	  module will be called most_usb.
+> +endif
+> diff --git a/drivers/most/Makefile b/drivers/most/Makefile
+> index e810cd3..97ffc06 100644
+> --- a/drivers/most/Makefile
+> +++ b/drivers/most/Makefile
+> @@ -2,3 +2,5 @@
+>  obj-$(CONFIG_MOST) += most_core.o
+>  most_core-y :=	core.o \
+>  		configfs.o
+> +
+> +obj-$(CONFIG_MOST_USB) += most_usb.o
+> diff --git a/drivers/most/most_usb.c b/drivers/most/most_usb.c
+> new file mode 100644
+> index 0000000..daa5e4b
+> --- /dev/null
+> +++ b/drivers/most/most_usb.c
+> @@ -0,0 +1,1262 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * usb.c - Hardware dependent module for USB
+> + *
+> + * Copyright (C) 2013-2015 Microchip Technology Germany II GmbH & Co. KG
+> + */
+> +
+> +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+> +#include <linux/module.h>
+> +#include <linux/fs.h>
+> +#include <linux/usb.h>
+> +#include <linux/slab.h>
+> +#include <linux/init.h>
+> +#include <linux/cdev.h>
+> +#include <linux/device.h>
+> +#include <linux/list.h>
+> +#include <linux/completion.h>
+> +#include <linux/mutex.h>
+> +#include <linux/spinlock.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/workqueue.h>
+> +#include <linux/sysfs.h>
+> +#include <linux/dma-mapping.h>
+> +#include <linux/etherdevice.h>
+> +#include <linux/uaccess.h>
+> +#include <linux/most.h>
+> +
+> +#define USB_MTU			512
+> +#define NO_ISOCHRONOUS_URB	0
+> +#define AV_PACKETS_PER_XACT	2
+> +#define BUF_CHAIN_SIZE		0xFFFF
+> +#define MAX_NUM_ENDPOINTS	30
+> +#define MAX_SUFFIX_LEN		10
+> +#define MAX_STRING_LEN		80
+> +#define MAX_BUF_SIZE		0xFFFF
+> +
+> +#define USB_VENDOR_ID_SMSC	0x0424  /* VID: SMSC */
+> +#define USB_DEV_ID_BRDG		0xC001  /* PID: USB Bridge */
+> +#define USB_DEV_ID_OS81118	0xCF18  /* PID: USB OS81118 */
+> +#define USB_DEV_ID_OS81119	0xCF19  /* PID: USB OS81119 */
+> +#define USB_DEV_ID_OS81210	0xCF30  /* PID: USB OS81210 */
+> +/* DRCI Addresses */
+> +#define DRCI_REG_NI_STATE	0x0100
+> +#define DRCI_REG_PACKET_BW	0x0101
+> +#define DRCI_REG_NODE_ADDR	0x0102
+> +#define DRCI_REG_NODE_POS	0x0103
+> +#define DRCI_REG_MEP_FILTER	0x0140
+> +#define DRCI_REG_HASH_TBL0	0x0141
+> +#define DRCI_REG_HASH_TBL1	0x0142
+> +#define DRCI_REG_HASH_TBL2	0x0143
+> +#define DRCI_REG_HASH_TBL3	0x0144
+> +#define DRCI_REG_HW_ADDR_HI	0x0145
+> +#define DRCI_REG_HW_ADDR_MI	0x0146
+> +#define DRCI_REG_HW_ADDR_LO	0x0147
+> +#define DRCI_REG_BASE		0x1100
+> +#define DRCI_COMMAND		0x02
+> +#define DRCI_READ_REQ		0xA0
+> +#define DRCI_WRITE_REQ		0xA1
+> +
+> +/**
+> + * struct most_dci_obj - Direct Communication Interface
+> + * @kobj:position in sysfs
+> + * @usb_device: pointer to the usb device
+> + * @reg_addr: register address for arbitrary DCI access
+> + */
+> +struct most_dci_obj {
+> +	struct device dev;
+> +	struct usb_device *usb_device;
+> +	u16 reg_addr;
+> +};
+> +
+> +#define to_dci_obj(p) container_of(p, struct most_dci_obj, dev)
+> +
+> +struct most_dev;
+> +
+> +struct clear_hold_work {
+> +	struct work_struct ws;
+> +	struct most_dev *mdev;
+> +	unsigned int channel;
+> +	int pipe;
+> +};
+> +
+> +#define to_clear_hold_work(w) container_of(w, struct clear_hold_work, ws)
+> +
+> +/**
+> + * struct most_dev - holds all usb interface specific stuff
+> + * @usb_device: pointer to usb device
+> + * @iface: hardware interface
+> + * @cap: channel capabilities
+> + * @conf: channel configuration
+> + * @dci: direct communication interface of hardware
+> + * @ep_address: endpoint address table
+> + * @description: device description
+> + * @suffix: suffix for channel name
+> + * @channel_lock: synchronize channel access
+> + * @padding_active: indicates channel uses padding
+> + * @is_channel_healthy: health status table of each channel
+> + * @busy_urbs: list of anchored items
+> + * @io_mutex: synchronize I/O with disconnect
+> + * @link_stat_timer: timer for link status reports
+> + * @poll_work_obj: work for polling link status
+> + */
+> +struct most_dev {
+> +	struct device dev;
+> +	struct usb_device *usb_device;
+> +	struct most_interface iface;
+> +	struct most_channel_capability *cap;
+> +	struct most_channel_config *conf;
+> +	struct most_dci_obj *dci;
+> +	u8 *ep_address;
+> +	char description[MAX_STRING_LEN];
+> +	char suffix[MAX_NUM_ENDPOINTS][MAX_SUFFIX_LEN];
+> +	spinlock_t channel_lock[MAX_NUM_ENDPOINTS]; /* sync channel access */
+> +	bool padding_active[MAX_NUM_ENDPOINTS];
+> +	bool is_channel_healthy[MAX_NUM_ENDPOINTS];
+> +	struct clear_hold_work clear_work[MAX_NUM_ENDPOINTS];
+> +	struct usb_anchor *busy_urbs;
+> +	struct mutex io_mutex;
+> +	struct timer_list link_stat_timer;
+> +	struct work_struct poll_work_obj;
+> +	void (*on_netinfo)(struct most_interface *most_iface,
+> +			   unsigned char link_state, unsigned char *addrs);
+> +};
+> +
+> +#define to_mdev(d) container_of(d, struct most_dev, iface)
+> +#define to_mdev_from_dev(d) container_of(d, struct most_dev, dev)
+> +#define to_mdev_from_work(w) container_of(w, struct most_dev, poll_work_obj)
+> +
+> +static void wq_clear_halt(struct work_struct *wq_obj);
+> +static void wq_netinfo(struct work_struct *wq_obj);
+> +
+> +/**
+> + * drci_rd_reg - read a DCI register
+> + * @dev: usb device
+> + * @reg: register address
+> + * @buf: buffer to store data
+> + *
+> + * This is reads data from INIC's direct register communication interface
+> + */
+> +static inline int drci_rd_reg(struct usb_device *dev, u16 reg, u16 *buf)
+> +{
+> +	int retval;
+> +	__le16 *dma_buf = kzalloc(sizeof(*dma_buf), GFP_KERNEL);
 
-If Atomisp driver would be using the sensor, what's there won't make
-it work.
+I really hate allocations hidden in the declaration block.  :/
 
-For example, this is the sensor driver for the device I'm using here to
-test the atomisp driver:
+> +	u8 req_type = USB_DIR_IN | USB_TYPE_VENDOR | USB_RECIP_DEVICE;
+> +
+> +	if (!dma_buf)
+> +		return -ENOMEM;
+> +
+> +	retval = usb_control_msg(dev, usb_rcvctrlpipe(dev, 0),
+> +				 DRCI_READ_REQ, req_type,
+> +				 0x0000,
+> +				 reg, dma_buf, sizeof(*dma_buf), 5 * HZ);
+> +	*buf = le16_to_cpu(*dma_buf);
+> +	kfree(dma_buf);
+> +
+> +	return retval;
 
-	https://git.linuxtv.org/media_tree.git/tree/drivers/staging/media/atomisp/i2c/atomisp-ov2680.c
+Why bother returning positive values here when none of the callers use
+that?
 
-It does contain an ACPI table at the end:
+> +}
+> +
+> +/**
+> + * drci_wr_reg - write a DCI register
+> + * @dev: usb device
+> + * @reg: register address
+> + * @data: data to write
+> + *
+> + * This is writes data to INIC's direct register communication interface
+> + */
+> +static inline int drci_wr_reg(struct usb_device *dev, u16 reg, u16 data)
+> +{
+> +	return usb_control_msg(dev,
+> +			       usb_sndctrlpipe(dev, 0),
+> +			       DRCI_WRITE_REQ,
+> +			       USB_DIR_OUT | USB_TYPE_VENDOR | USB_RECIP_DEVICE,
+> +			       data,
+> +			       reg,
+> +			       NULL,
+> +			       0,
+> +			       5 * HZ);
+> +}
+> +
+> +static inline int start_sync_ep(struct usb_device *usb_dev, u16 ep)
+> +{
+> +	return drci_wr_reg(usb_dev, DRCI_REG_BASE + DRCI_COMMAND + ep * 16, 1);
+> +}
+> +
+> +/**
+> + * get_stream_frame_size - calculate frame size of current configuration
+> + * @cfg: channel configuration
+> + */
+> +static unsigned int get_stream_frame_size(struct most_channel_config *cfg)
+> +{
+> +	unsigned int frame_size = 0;
+> +	unsigned int sub_size = cfg->subbuffer_size;
+> +
+> +	if (!sub_size) {
+> +		pr_warn("Misconfig: Subbuffer size zero.\n");
+> +		return frame_size;
 
-	static const struct acpi_device_id ov2680_acpi_match[] = {
-		{"XXOV2680"},
-		{"OVTI2680"},
-		{},
-	};
-	MODULE_DEVICE_TABLE(acpi, ov2680_acpi_match);
+I wish this were a "return 0;"
 
-Which causes the driver to be properly probed via ACPI.
+> +	}
+> +	switch (cfg->data_type) {
+> +	case MOST_CH_ISOC:
+> +		frame_size = AV_PACKETS_PER_XACT * sub_size;
+> +		break;
+> +	case MOST_CH_SYNC:
+> +		if (cfg->packets_per_xact == 0) {
+> +			pr_warn("Misconfig: Packets per XACT zero\n");
+> +			frame_size = 0;
+> +		} else if (cfg->packets_per_xact == 0xFF) {
+> +			frame_size = (USB_MTU / sub_size) * sub_size;
+> +		} else {
+> +			frame_size = cfg->packets_per_xact * sub_size;
+> +		}
+> +		break;
+> +	default:
+> +		pr_warn("Query frame size of non-streaming channel\n");
+> +		break;
+> +	}
+> +	return frame_size;
+> +}
+> +
+> +/**
+> + * hdm_poison_channel - mark buffers of this channel as invalid
+> + * @iface: pointer to the interface
+> + * @channel: channel ID
+> + *
+> + * This unlinks all URBs submitted to the HCD,
+> + * calls the associated completion function of the core and removes
+> + * them from the list.
+> + *
+> + * Returns 0 on success or error code otherwise.
+> + */
+> +static int hdm_poison_channel(struct most_interface *iface, int channel)
+> +{
+> +	struct most_dev *mdev = to_mdev(iface);
+> +	unsigned long flags;
+> +	spinlock_t *lock; /* temp. lock */
+> +
+> +	if (channel < 0 || channel >= iface->num_channels) {
+> +		dev_warn(&mdev->usb_device->dev, "Channel ID out of range.\n");
+> +		return -ECHRNG;
+> +	}
+> +
+> +	lock = mdev->channel_lock + channel;
+> +	spin_lock_irqsave(lock, flags);
+> +	mdev->is_channel_healthy[channel] = false;
+> +	spin_unlock_irqrestore(lock, flags);
+> +
+> +	cancel_work_sync(&mdev->clear_work[channel].ws);
+> +
+> +	mutex_lock(&mdev->io_mutex);
+> +	usb_kill_anchored_urbs(&mdev->busy_urbs[channel]);
+> +	if (mdev->padding_active[channel])
+> +		mdev->padding_active[channel] = false;
+> +
+> +	if (mdev->conf[channel].data_type == MOST_CH_ASYNC) {
+> +		del_timer_sync(&mdev->link_stat_timer);
+> +		cancel_work_sync(&mdev->poll_work_obj);
+> +	}
+> +	mutex_unlock(&mdev->io_mutex);
+> +	return 0;
+> +}
+> +
+> +/**
+> + * hdm_add_padding - add padding bytes
+> + * @mdev: most device
+> + * @channel: channel ID
+> + * @mbo: buffer object
+> + *
+> + * This inserts the INIC hardware specific padding bytes into a streaming
+> + * channel's buffer
+> + */
+> +static int hdm_add_padding(struct most_dev *mdev, int channel, struct mbo *mbo)
+> +{
+> +	struct most_channel_config *conf = &mdev->conf[channel];
+> +	unsigned int frame_size = get_stream_frame_size(conf);
+> +	unsigned int j, num_frames;
+> +
+> +	if (!frame_size)
+> +		return -EINVAL;
+> +	num_frames = mbo->buffer_length / frame_size;
+> +
+> +	if (num_frames < 1) {
+> +		dev_err(&mdev->usb_device->dev,
+> +			"Missed minimal transfer unit.\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	for (j = num_frames - 1; j > 0; j--)
+> +		memmove(mbo->virt_address + j * USB_MTU,
+> +			mbo->virt_address + j * frame_size,
+> +			frame_size);
+> +	mbo->buffer_length = num_frames * USB_MTU;
+> +	return 0;
+> +}
+> +
+> +/**
+> + * hdm_remove_padding - remove padding bytes
+> + * @mdev: most device
+> + * @channel: channel ID
+> + * @mbo: buffer object
+> + *
+> + * This takes the INIC hardware specific padding bytes off a streaming
+> + * channel's buffer.
+> + */
+> +static int hdm_remove_padding(struct most_dev *mdev, int channel,
+> +			      struct mbo *mbo)
+> +{
+> +	struct most_channel_config *const conf = &mdev->conf[channel];
+> +	unsigned int frame_size = get_stream_frame_size(conf);
+> +	unsigned int j, num_frames;
+> +
+> +	if (!frame_size)
+> +		return -EINVAL;
+> +	num_frames = mbo->processed_length / USB_MTU;
+> +
+> +	for (j = 1; j < num_frames; j++)
+> +		memmove(mbo->virt_address + frame_size * j,
+> +			mbo->virt_address + USB_MTU * j,
+> +			frame_size);
+> +
+> +	mbo->processed_length = frame_size * num_frames;
+> +	return 0;
+> +}
+> +
+> +/**
+> + * hdm_write_completion - completion function for submitted Tx URBs
+> + * @urb: the URB that has been completed
+> + *
+> + * This checks the status of the completed URB. In case the URB has been
+> + * unlinked before, it is immediately freed. On any other error the MBO
+> + * transfer flag is set. On success it frees allocated resources and calls
+> + * the completion function.
+> + *
+> + * Context: interrupt!
+> + */
+> +static void hdm_write_completion(struct urb *urb)
+> +{
+> +	struct mbo *mbo = urb->context;
+> +	struct most_dev *mdev = to_mdev(mbo->ifp);
+> +	unsigned int channel = mbo->hdm_channel_id;
+> +	spinlock_t *lock = mdev->channel_lock + channel;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(lock, flags);
+> +
+> +	mbo->processed_length = 0;
+> +	mbo->status = MBO_E_INVAL;
+> +	if (likely(mdev->is_channel_healthy[channel])) {
+> +		switch (urb->status) {
+> +		case 0:
+> +		case -ESHUTDOWN:
+> +			mbo->processed_length = urb->actual_length;
+> +			mbo->status = MBO_SUCCESS;
+> +			break;
+> +		case -EPIPE:
+> +			dev_warn(&mdev->usb_device->dev,
+> +				 "Broken pipe on ep%02x\n",
+> +				 mdev->ep_address[channel]);
+> +			mdev->is_channel_healthy[channel] = false;
+> +			mdev->clear_work[channel].pipe = urb->pipe;
+> +			schedule_work(&mdev->clear_work[channel].ws);
+> +			break;
+> +		case -ENODEV:
+> +		case -EPROTO:
+> +			mbo->status = MBO_E_CLOSE;
+> +			break;
+> +		}
+> +	}
+> +
+> +	spin_unlock_irqrestore(lock, flags);
+> +
+> +	if (likely(mbo->complete))
+> +		mbo->complete(mbo);
+> +	usb_free_urb(urb);
+> +}
+> +
+> +/**
+> + * hdm_read_completion - completion function for submitted Rx URBs
+> + * @urb: the URB that has been completed
+> + *
+> + * This checks the status of the completed URB. In case the URB has been
+> + * unlinked before it is immediately freed. On any other error the MBO transfer
+> + * flag is set. On success it frees allocated resources, removes
+> + * padding bytes -if necessary- and calls the completion function.
+> + *
+> + * Context: interrupt!
+> + *
+> + * **************************************************************************
+> + *                   Error codes returned by in urb->status
+> + *                   or in iso_frame_desc[n].status (for ISO)
+> + * *************************************************************************
+> + *
+> + * USB device drivers may only test urb status values in completion handlers.
+> + * This is because otherwise there would be a race between HCDs updating
+> + * these values on one CPU, and device drivers testing them on another CPU.
+> + *
+> + * A transfer's actual_length may be positive even when an error has been
+> + * reported.  That's because transfers often involve several packets, so that
+> + * one or more packets could finish before an error stops further endpoint I/O.
+> + *
+> + * For isochronous URBs, the urb status value is non-zero only if the URB is
+> + * unlinked, the device is removed, the host controller is disabled or the total
+> + * transferred length is less than the requested length and the URB_SHORT_NOT_OK
+> + * flag is set.  Completion handlers for isochronous URBs should only see
+> + * urb->status set to zero, -ENOENT, -ECONNRESET, -ESHUTDOWN, or -EREMOTEIO.
+> + * Individual frame descriptor status fields may report more status codes.
+> + *
+> + *
+> + * 0			Transfer completed successfully
+> + *
+> + * -ENOENT		URB was synchronously unlinked by usb_unlink_urb
+> + *
+> + * -EINPROGRESS		URB still pending, no results yet
+> + *			(That is, if drivers see this it's a bug.)
+> + *
+> + * -EPROTO (*, **)	a) bitstuff error
+> + *			b) no response packet received within the
+> + *			   prescribed bus turn-around time
+> + *			c) unknown USB error
+> + *
+> + * -EILSEQ (*, **)	a) CRC mismatch
+> + *			b) no response packet received within the
+> + *			   prescribed bus turn-around time
+> + *			c) unknown USB error
+> + *
+> + *			Note that often the controller hardware does not
+> + *			distinguish among cases a), b), and c), so a
+> + *			driver cannot tell whether there was a protocol
+> + *			error, a failure to respond (often caused by
+> + *			device disconnect), or some other fault.
+> + *
+> + * -ETIME (**)		No response packet received within the prescribed
+> + *			bus turn-around time.  This error may instead be
+> + *			reported as -EPROTO or -EILSEQ.
+> + *
+> + * -ETIMEDOUT		Synchronous USB message functions use this code
+> + *			to indicate timeout expired before the transfer
+> + *			completed, and no other error was reported by HC.
+> + *
+> + * -EPIPE (**)		Endpoint stalled.  For non-control endpoints,
+> + *			reset this status with usb_clear_halt().
+> + *
+> + * -ECOMM		During an IN transfer, the host controller
+> + *			received data from an endpoint faster than it
+> + *			could be written to system memory
+> + *
+> + * -ENOSR		During an OUT transfer, the host controller
+> + *			could not retrieve data from system memory fast
+> + *			enough to keep up with the USB data rate
+> + *
+> + * -EOVERFLOW (*)	The amount of data returned by the endpoint was
+> + *			greater than either the max packet size of the
+> + *			endpoint or the remaining buffer size.  "Babble".
+> + *
+> + * -EREMOTEIO		The data read from the endpoint did not fill the
+> + *			specified buffer, and URB_SHORT_NOT_OK was set in
+> + *			urb->transfer_flags.
+> + *
+> + * -ENODEV		Device was removed.  Often preceded by a burst of
+> + *			other errors, since the hub driver doesn't detect
+> + *			device removal events immediately.
+> + *
+> + * -EXDEV		ISO transfer only partially completed
+> + *			(only set in iso_frame_desc[n].status, not urb->status)
+> + *
+> + * -EINVAL		ISO madness, if this happens: Log off and go home
+> + *
+> + * -ECONNRESET		URB was asynchronously unlinked by usb_unlink_urb
+> + *
+> + * -ESHUTDOWN		The device or host controller has been disabled due
+> + *			to some problem that could not be worked around,
+> + *			such as a physical disconnect.
+> + *
+> + *
+> + * (*) Error codes like -EPROTO, -EILSEQ and -EOVERFLOW normally indicate
+> + * hardware problems such as bad devices (including firmware) or cables.
+> + *
+> + * (**) This is also one of several codes that different kinds of host
+> + * controller use to indicate a transfer has failed because of device
+> + * disconnect.  In the interval before the hub driver starts disconnect
+> + * processing, devices may receive such fault reports for every request.
+> + *
+> + * See <https://www.kernel.org/doc/Documentation/driver-api/usb/error-codes.rst>
+> + */
+> +static void hdm_read_completion(struct urb *urb)
+> +{
+> +	struct mbo *mbo = urb->context;
+> +	struct most_dev *mdev = to_mdev(mbo->ifp);
+> +	unsigned int channel = mbo->hdm_channel_id;
+> +	struct device *dev = &mdev->usb_device->dev;
+> +	spinlock_t *lock = mdev->channel_lock + channel;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(lock, flags);
+> +
+> +	mbo->processed_length = 0;
+> +	mbo->status = MBO_E_INVAL;
+> +	if (likely(mdev->is_channel_healthy[channel])) {
+> +		switch (urb->status) {
+> +		case 0:
+> +		case -ESHUTDOWN:
+> +			mbo->processed_length = urb->actual_length;
+> +			mbo->status = MBO_SUCCESS;
+> +			if (mdev->padding_active[channel] &&
+> +			    hdm_remove_padding(mdev, channel, mbo)) {
+> +				mbo->processed_length = 0;
+> +				mbo->status = MBO_E_INVAL;
+> +			}
+> +			break;
+> +		case -EPIPE:
+> +			dev_warn(dev, "Broken pipe on ep%02x\n",
+> +				 mdev->ep_address[channel]);
+> +			mdev->is_channel_healthy[channel] = false;
+> +			mdev->clear_work[channel].pipe = urb->pipe;
+> +			schedule_work(&mdev->clear_work[channel].ws);
+> +			break;
+> +		case -ENODEV:
+> +		case -EPROTO:
+> +			mbo->status = MBO_E_CLOSE;
+> +			break;
+> +		case -EOVERFLOW:
+> +			dev_warn(dev, "Babble on ep%02x\n",
+> +				 mdev->ep_address[channel]);
+> +			break;
+> +		}
+> +	}
+> +
+> +	spin_unlock_irqrestore(lock, flags);
+> +
+> +	if (likely(mbo->complete))
+> +		mbo->complete(mbo);
+> +	usb_free_urb(urb);
+> +}
+> +
+> +/**
+> + * hdm_enqueue - receive a buffer to be used for data transfer
+> + * @iface: interface to enqueue to
+> + * @channel: ID of the channel
+> + * @mbo: pointer to the buffer object
+> + *
+> + * This allocates a new URB and fills it according to the channel
+> + * that is being used for transmission of data. Before the URB is
+> + * submitted it is stored in the private anchor list.
+> + *
+> + * Returns 0 on success. On any error the URB is freed and a error code
+> + * is returned.
+> + *
+> + * Context: Could in _some_ cases be interrupt!
+> + */
+> +static int hdm_enqueue(struct most_interface *iface, int channel,
+> +		       struct mbo *mbo)
+> +{
+> +	struct most_dev *mdev = to_mdev(iface);
+> +	struct most_channel_config *conf;
+> +	int retval = 0;
+> +	struct urb *urb;
+> +	unsigned long length;
+> +	void *virt_address;
+> +
+> +	if (!mbo)
+> +		return -EINVAL;
+> +	if (iface->num_channels <= channel || channel < 0)
+> +		return -ECHRNG;
+> +
+> +	conf = &mdev->conf[channel];
+> +
+> +	mutex_lock(&mdev->io_mutex);
+> +	if (!mdev->usb_device) {
+> +		retval = -ENODEV;
+> +		goto unlock_io_mutex;
+> +	}
+> +
+> +	urb = usb_alloc_urb(NO_ISOCHRONOUS_URB, GFP_ATOMIC);
 
-However, this sensor driver (and all other sensor drivers meant to work
-with ISP2xxx chipsets) require this ancillary code:
+You could move this before the mutex_lock().  Would GFP_ATOMIC still be
+required?
 
-	https://git.linuxtv.org/media_tree.git/tree/drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c
+> +	if (!urb) {
+> +		retval = -ENOMEM;
+> +		goto unlock_io_mutex;
+> +	}
+> +
+> +	if ((conf->direction & MOST_CH_TX) && mdev->padding_active[channel] &&
+> +	    hdm_add_padding(mdev, channel, mbo)) {
+> +		retval = -EINVAL;
+> +		goto err_free_urb;
+> +	}
+> +
+> +	urb->transfer_dma = mbo->bus_address;
+> +	virt_address = mbo->virt_address;
+> +	length = mbo->buffer_length;
+> +
+> +	if (conf->direction & MOST_CH_TX) {
+> +		usb_fill_bulk_urb(urb, mdev->usb_device,
+> +				  usb_sndbulkpipe(mdev->usb_device,
+> +						  mdev->ep_address[channel]),
+> +				  virt_address,
+> +				  length,
+> +				  hdm_write_completion,
+> +				  mbo);
+> +		if (conf->data_type != MOST_CH_ISOC &&
+> +		    conf->data_type != MOST_CH_SYNC)
+> +			urb->transfer_flags |= URB_ZERO_PACKET;
+> +	} else {
+> +		usb_fill_bulk_urb(urb, mdev->usb_device,
+> +				  usb_rcvbulkpipe(mdev->usb_device,
+> +						  mdev->ep_address[channel]),
+> +				  virt_address,
+> +				  length + conf->extra_len,
+> +				  hdm_read_completion,
+> +				  mbo);
+> +	}
+> +	urb->transfer_flags |= URB_NO_TRANSFER_DMA_MAP;
+> +
+> +	usb_anchor_urb(urb, &mdev->busy_urbs[channel]);
+> +
+> +	retval = usb_submit_urb(urb, GFP_KERNEL);
+> +	if (retval) {
+> +		dev_err(&mdev->usb_device->dev,
+> +			"URB submit failed with error %d.\n", retval);
+> +		goto err_unanchor_urb;
+> +	}
+> +	goto unlock_io_mutex;
 
-Which parses the BIOS shipped on such devices.
+Replace the goto with:
 
-The code there needs to identify if one of those I2C PMIC drivers
-were also loaded:
+	mutex_unlock(&mdev->io_mutex);
+	return 0;
 
-	#define PMIC_ACPI_AXP		"INT33F4:00"	/* XPower AXP288 PMIC */
-	#define PMIC_ACPI_TI		"INT33F5:00"	/* Dollar Cove TI PMIC */
-	#define PMIC_ACPI_CRYSTALCOVE	"INT33FD:00"	/* Crystal Cove PMIC */
+It lets you move the lock around more easily.
 
-As those 3 different PMICs may control the sensor power up/down.
-Some devices may also use a regulator driver. The ancillary routines
-have some logic to detect the PMIC type (with can very from different
-versions of the Atom CPU).
+> +
+> +err_unanchor_urb:
+> +	usb_unanchor_urb(urb);
+> +err_free_urb:
+> +	usb_free_urb(urb);
+> +unlock_io_mutex:
+> +	mutex_unlock(&mdev->io_mutex);
+> +	return retval;
+> +}
+> +
+> +static void *hdm_dma_alloc(struct mbo *mbo, u32 size)
+> +{
+> +	struct most_dev *mdev = to_mdev(mbo->ifp);
+> +
+> +	return usb_alloc_coherent(mdev->usb_device, size, GFP_KERNEL,
+> +				  &mbo->bus_address);
+> +}
+> +
+> +static void hdm_dma_free(struct mbo *mbo, u32 size)
+> +{
+> +	struct most_dev *mdev = to_mdev(mbo->ifp);
+> +
+> +	usb_free_coherent(mdev->usb_device, size, mbo->virt_address,
+> +			  mbo->bus_address);
+> +}
+> +
+> +/**
+> + * hdm_configure_channel - receive channel configuration from core
+> + * @iface: interface
+> + * @channel: channel ID
+> + * @conf: structure that holds the configuration information
+> + *
+> + * The attached network interface controller (NIC) supports a padding mode
+> + * to avoid short packets on USB, hence increasing the performance due to a
+> + * lower interrupt load. This mode is default for synchronous data and can
+> + * be switched on for isochronous data. In case padding is active the
+> + * driver needs to know the frame size of the payload in order to calculate
+> + * the number of bytes it needs to pad when transmitting or to cut off when
+> + * receiving data.
+> + *
+> + */
+> +static int hdm_configure_channel(struct most_interface *iface, int channel,
+> +				 struct most_channel_config *conf)
+> +{
+> +	unsigned int num_frames;
+> +	unsigned int frame_size;
+> +	struct most_dev *mdev = to_mdev(iface);
+> +	struct device *dev = &mdev->usb_device->dev;
+> +
+> +	mdev->is_channel_healthy[channel] = true;
+> +	mdev->clear_work[channel].channel = channel;
+> +	mdev->clear_work[channel].mdev = mdev;
+> +	INIT_WORK(&mdev->clear_work[channel].ws, wq_clear_halt);
+> +
+> +	if (!conf) {
+> +		dev_err(dev, "Bad config pointer.\n");
+> +		return -EINVAL;
+> +	}
+> +	if (channel < 0 || channel >= iface->num_channels) {
+> +		dev_err(dev, "Channel ID out of range.\n");
+> +		return -EINVAL;
+> +	}
+> +	if (!conf->num_buffers || !conf->buffer_size) {
+> +		dev_err(dev, "Misconfig: buffer size or #buffers zero.\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (conf->data_type != MOST_CH_SYNC &&
+> +	    !(conf->data_type == MOST_CH_ISOC &&
+> +	      conf->packets_per_xact != 0xFF)) {
+> +		mdev->padding_active[channel] = false;
+> +		/*
+> +		 * Since the NIC's padding mode is not going to be
+> +		 * used, we can skip the frame size calculations and
+> +		 * move directly on to exit.
+> +		 */
 
-The driver also need to get sensor-specific platform data.
+I absolutely hate that we're skipping the other checks...  At least
+zero out the frame size information so that we don't save invalid data.
 
-For the sensor I have, it need those:
+> +		goto exit;
+> +	}
+> +
+> +	mdev->padding_active[channel] = true;
+> +
+> +	frame_size = get_stream_frame_size(conf);
+> +	if (frame_size == 0 || frame_size > USB_MTU) {
+> +		dev_warn(dev, "Misconfig: frame size wrong\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	num_frames = conf->buffer_size / frame_size;
+> +
+> +	if (conf->buffer_size % frame_size) {
+> +		u16 old_size = conf->buffer_size;
+> +
+> +		conf->buffer_size = num_frames * frame_size;
+> +		dev_warn(dev, "%s: fixed buffer size (%d -> %d)\n",
+> +			 mdev->suffix[channel], old_size, conf->buffer_size);
+> +	}
+> +
+> +	/* calculate extra length to comply w/ HW padding */
+> +	conf->extra_len = num_frames * (USB_MTU - frame_size);
+> +
+> +exit:
+> +	mdev->conf[channel] = *conf;
+> +	if (conf->data_type == MOST_CH_ASYNC) {
+> +		u16 ep = mdev->ep_address[channel];
+> +
+> +		if (start_sync_ep(mdev->usb_device, ep) < 0)
+> +			dev_warn(dev, "sync for ep%02x failed", ep);
+> +	}
+> +	return 0;
+> +}
+> +
+> +/**
+> + * hdm_request_netinfo - request network information
+> + * @iface: pointer to interface
+> + * @channel: channel ID
+> + *
+> + * This is used as trigger to set up the link status timer that
+> + * polls for the NI state of the INIC every 2 seconds.
+> + *
+> + */
+> +static void hdm_request_netinfo(struct most_interface *iface, int channel,
+> +				void (*on_netinfo)(struct most_interface *,
+> +						   unsigned char,
+> +						   unsigned char *))
+> +{
+> +	struct most_dev *mdev = to_mdev(iface);
+> +
+> +	mdev->on_netinfo = on_netinfo;
+> +	if (!on_netinfo)
+> +		return;
+> +
+> +	mdev->link_stat_timer.expires = jiffies + HZ;
+> +	mod_timer(&mdev->link_stat_timer, mdev->link_stat_timer.expires);
+> +}
+> +
+> +/**
+> + * link_stat_timer_handler - schedule work obtaining mac address and link status
+> + * @data: pointer to USB device instance
+> + *
+> + * The handler runs in interrupt context. That's why we need to defer the
+> + * tasks to a work queue.
+> + */
+> +static void link_stat_timer_handler(struct timer_list *t)
+> +{
+> +	struct most_dev *mdev = from_timer(mdev, t, link_stat_timer);
+> +
+> +	schedule_work(&mdev->poll_work_obj);
+> +	mdev->link_stat_timer.expires = jiffies + (2 * HZ);
+> +	add_timer(&mdev->link_stat_timer);
+> +}
+> +
+> +/**
+> + * wq_netinfo - work queue function to deliver latest networking information
+> + * @wq_obj: object that holds data for our deferred work to do
+> + *
+> + * This retrieves the network interface status of the USB INIC
+> + */
+> +static void wq_netinfo(struct work_struct *wq_obj)
+> +{
+> +	struct most_dev *mdev = to_mdev_from_work(wq_obj);
+> +	struct usb_device *usb_device = mdev->usb_device;
+> +	struct device *dev = &usb_device->dev;
+> +	u16 hi, mi, lo, link;
+> +	u8 hw_addr[6];
+> +
+> +	if (drci_rd_reg(usb_device, DRCI_REG_HW_ADDR_HI, &hi) < 0) {
+> +		dev_err(dev, "Vendor request 'hw_addr_hi' failed\n");
+> +		return;
+> +	}
+> +
+> +	if (drci_rd_reg(usb_device, DRCI_REG_HW_ADDR_MI, &mi) < 0) {
+> +		dev_err(dev, "Vendor request 'hw_addr_mid' failed\n");
+> +		return;
+> +	}
+> +
+> +	if (drci_rd_reg(usb_device, DRCI_REG_HW_ADDR_LO, &lo) < 0) {
+> +		dev_err(dev, "Vendor request 'hw_addr_low' failed\n");
+> +		return;
+> +	}
+> +
+> +	if (drci_rd_reg(usb_device, DRCI_REG_NI_STATE, &link) < 0) {
+> +		dev_err(dev, "Vendor request 'link status' failed\n");
+> +		return;
+> +	}
+> +
+> +	hw_addr[0] = hi >> 8;
+> +	hw_addr[1] = hi;
+> +	hw_addr[2] = mi >> 8;
+> +	hw_addr[3] = mi;
+> +	hw_addr[4] = lo >> 8;
+> +	hw_addr[5] = lo;
+> +
+> +	if (mdev->on_netinfo)
+> +		mdev->on_netinfo(&mdev->iface, link, hw_addr);
+> +}
+> +
+> +/**
+> + * wq_clear_halt - work queue function
+> + * @wq_obj: work_struct object to execute
+> + *
+> + * This sends a clear_halt to the given USB pipe.
+> + */
+> +static void wq_clear_halt(struct work_struct *wq_obj)
+> +{
+> +	struct clear_hold_work *clear_work = to_clear_hold_work(wq_obj);
+> +	struct most_dev *mdev = clear_work->mdev;
+> +	unsigned int channel = clear_work->channel;
+> +	int pipe = clear_work->pipe;
+> +
+> +	mutex_lock(&mdev->io_mutex);
+> +	most_stop_enqueue(&mdev->iface, channel);
+> +	usb_kill_anchored_urbs(&mdev->busy_urbs[channel]);
+> +	if (usb_clear_halt(mdev->usb_device, pipe))
+> +		dev_warn(&mdev->usb_device->dev, "Failed to reset endpoint.\n");
+> +
+> +	/* If the functional Stall condition has been set on an
+> +	 * asynchronous rx channel, we need to clear the tx channel
+> +	 * too, since the hardware runs its clean-up sequence on both
+> +	 * channels, as they are physically one on the network.
+> +	 *
+> +	 * The USB interface that exposes the asynchronous channels
+> +	 * contains always two endpoints, and two only.
+> +	 */
+> +	if (mdev->conf[channel].data_type == MOST_CH_ASYNC &&
+> +	    mdev->conf[channel].direction == MOST_CH_RX) {
+> +		int peer = 1 - channel;
+                ^^^^^^^^^^^^^^^^^^^^^^
+This is too tricky.  At the start of the function channel seems to be a
+number between 0-30 so this looks like "peer" can be negative.
+Presumably, only the first two channels are MOST_CH_ASYNC and MOST_CH_RX?
 
-	{"OVTI2680:00_CsiPort", "1"},
-	{"OVTI2680:00_CsiLanes", "1"},
-	{"OVTI2680:00_CsiFmt", "15"},
-	{"OVTI2680:00_CsiBayer", "0"},
-	{"OVTI2680:00_CamClk", "1"},
+But could we just write it like:
 
-From some tests and from the comments at the atomisp driver, there are
-3 ways used by BIOS developers to store those information:
+		if (channel == 0)
+			peer = 1;
+		else
+			peer = 0;
 
-1) via this EFI variable:
 
-	#define GMIN_CFG_VAR_EFI_GUID EFI_GUID(0xecb54cd9, 0xe5ae, 0x4fdc, \
-					        0xa9, 0x71, 0xe8, 0x77,     \
-					        0x75, 0x60, 0x68, 0xf7)
+> +		int snd_pipe = usb_sndbulkpipe(mdev->usb_device,
+> +					       mdev->ep_address[peer]);
+> +		usb_clear_halt(mdev->usb_device, snd_pipe);
+> +	}
+> +	mdev->is_channel_healthy[channel] = true;
+> +	most_resume_enqueue(&mdev->iface, channel);
+> +	mutex_unlock(&mdev->io_mutex);
+> +}
+> +
+> +/**
+> + * hdm_usb_fops - file operation table for USB driver
+> + */
+> +static const struct file_operations hdm_usb_fops = {
+> +	.owner = THIS_MODULE,
+> +};
+> +
+> +/**
+> + * usb_device_id - ID table for HCD device probing
+> + */
+> +static const struct usb_device_id usbid[] = {
+> +	{ USB_DEVICE(USB_VENDOR_ID_SMSC, USB_DEV_ID_BRDG), },
+> +	{ USB_DEVICE(USB_VENDOR_ID_SMSC, USB_DEV_ID_OS81118), },
+> +	{ USB_DEVICE(USB_VENDOR_ID_SMSC, USB_DEV_ID_OS81119), },
+> +	{ USB_DEVICE(USB_VENDOR_ID_SMSC, USB_DEV_ID_OS81210), },
+> +	{ } /* Terminating entry */
+> +};
+> +
+> +struct regs {
+> +	const char *name;
+> +	u16 reg;
+> +};
+> +
+> +static const struct regs ro_regs[] = {
+> +	{ "ni_state", DRCI_REG_NI_STATE },
+> +	{ "packet_bandwidth", DRCI_REG_PACKET_BW },
+> +	{ "node_address", DRCI_REG_NODE_ADDR },
+> +	{ "node_position", DRCI_REG_NODE_POS },
+> +};
+> +
+> +static const struct regs rw_regs[] = {
+> +	{ "mep_filter", DRCI_REG_MEP_FILTER },
+> +	{ "mep_hash0", DRCI_REG_HASH_TBL0 },
+> +	{ "mep_hash1", DRCI_REG_HASH_TBL1 },
+> +	{ "mep_hash2", DRCI_REG_HASH_TBL2 },
+> +	{ "mep_hash3", DRCI_REG_HASH_TBL3 },
+> +	{ "mep_eui48_hi", DRCI_REG_HW_ADDR_HI },
+> +	{ "mep_eui48_mi", DRCI_REG_HW_ADDR_MI },
+> +	{ "mep_eui48_lo", DRCI_REG_HW_ADDR_LO },
+> +};
+> +
+> +static int get_stat_reg_addr(const struct regs *regs, int size,
+> +			     const char *name, u16 *reg_addr)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < size; i++) {
+> +		if (!strcmp(name, regs[i].name)) {
+> +			*reg_addr = regs[i].reg;
+> +			return 0;
+> +		}
+> +	}
+> +	return -EFAULT;
 
-2) by reading _DSM from the camera information:
+This should be -EINVAL
 
-        Device (CAM1)
-        {
-            Name (_ADR, Zero)  // _ADR: Address
-            Name (_HID, "OVTI2680")  // _HID: Hardware ID
-	...
-            Name (C1CD, Buffer (0x0220){})
-            Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
-            {
-                If ((Arg0 == ToUUID ("dc2f6c4f-045b-4f1d-97b9-882a6860a4be")))
-                {
-                    Local0 = Package (0x12)
-                        {
-                            "CamId", 
-                            "ov2680", 
-                            "CamType", 
-                            "1", 
-                            "CsiPort", 
-                            "0", 
-                            "CsiLanes", 
-                            "1", 
-                            "CsiFmt", 
-                            "15", 
-                            "CsiBayer", 
-                            "0", 
-                            "CamClk", 
-                            "1", 
-                            "Regulator1p8v", 
-                            "0", 
-                            "Regulator2p8v", 
-                            "0"
-                        }
-                    Return (Local0)
-                }
-	...
+> +}
+> +
+> +#define get_static_reg_addr(regs, name, reg_addr) \
+> +	get_stat_reg_addr(regs, ARRAY_SIZE(regs), name, reg_addr)
+> +
+> +static ssize_t value_show(struct device *dev, struct device_attribute *attr,
+> +			  char *buf)
+> +{
+> +	const char *name = attr->attr.name;
+> +	struct most_dci_obj *dci_obj = to_dci_obj(dev);
+> +	u16 val;
+> +	u16 reg_addr;
+> +	int err;
+> +
+> +	if (!strcmp(name, "arb_address"))
 
-   (The current version of atomisp driver doesn't parse it yet)
+I feel like most of these strcmp() should be sysfs_streq().
 
-3) Still, some devices don't have neither of them, so the driver needs
-   to have their values hardcoded.
+> +		return snprintf(buf, PAGE_SIZE, "%04x\n", dci_obj->reg_addr);
+> +
+> +	if (!strcmp(name, "arb_value"))
+> +		reg_addr = dci_obj->reg_addr;
+> +	else if (get_static_reg_addr(ro_regs, name, &reg_addr) &&
+> +		 get_static_reg_addr(rw_regs, name, &reg_addr))
+> +		return -EFAULT;
 
-It sounds to me that (2) is actually an evolution of (1). So, older BIOS
-would use GMIN_CFG_VAR_EFI_GUID way, while newer would use the _DSM
-way, and others may just hardcode it inside the driver or at the
-Windows .INF files.
+-EINVAL
 
-So we need some code to parse device-specific ACPI stuff.
+> +
+> +	err = drci_rd_reg(dci_obj->usb_device, reg_addr, &val);
+> +	if (err < 0)
+> +		return err;
+> +
+> +	return snprintf(buf, PAGE_SIZE, "%04x\n", val);
+> +}
+> +
+> +static ssize_t value_store(struct device *dev, struct device_attribute *attr,
+> +			   const char *buf, size_t count)
+> +{
+> +	u16 val;
+> +	u16 reg_addr;
+> +	const char *name = attr->attr.name;
+> +	struct most_dci_obj *dci_obj = to_dci_obj(dev);
+> +	struct usb_device *usb_dev = dci_obj->usb_device;
+> +	int err = kstrtou16(buf, 16, &val);
 
-As I mentioned above, in the case of ISP2xxx, a single parser is used
-for all atomisp-based devices.
+Could we move function calls which can fail out of the declaration block?
+Otherwise there is a blank or worse between the call and the error
+check.
 
-So, except if all BIOS manufacturers started to provide an unified
-reliable way to store camera data for IPU3 and newer versions
-(with I seriously doubt), we'll need to add a parser for those
-ACPI-specific things.
+> +
+> +	if (err)
+> +		return err;
+> +
+> +	if (!strcmp(name, "arb_address")) {
 
-Such code could be added directly at the sensor drivers, but I
-suspect that this will generate a lot of code duplication, making
-it very painful to maintain.
+Use sysfs_streq()?
 
-So, IMHO, we should work on some code that would be parsing it
-outside the sensor driver itself.
+> +		dci_obj->reg_addr = val;
+> +		return count;
+> +	}
+> +
+> +	if (!strcmp(name, "arb_value"))
+> +		err = drci_wr_reg(usb_dev, dci_obj->reg_addr, val);
+> +	else if (!strcmp(name, "sync_ep"))
+> +		err = start_sync_ep(usb_dev, val);
+> +	else if (!get_static_reg_addr(rw_regs, name, &reg_addr))
+> +		err = drci_wr_reg(usb_dev, reg_addr, val);
+> +	else
+> +		return -EFAULT;
 
-> 
-> > 
-> > It also doesn't tell how to get device-specific platform data from
-> > the BIOS (with is machine-specific).  
-> 
-> In some systems that is the case, yes. It means system specific drivers or
-> fixups at least to some extent.
-> 
-> > 
-> > Also, at least in the case of the atomisp approach, a single code
-> > to parse BIOS for devices with ISP2300/ISP2400/ISP2401/ISP2500 should
-> > work with all sensors supported by those models.
-> > 
-> > Copying those inside all sensor drivers is probably a bad idea.
-> > I mean, we should likely need a core support for parsing it, as
-> > the code is the same for a given set of PCI IDs.  
-> 
-> Agreed. The more we can keep that away from the sensor drivers, the better.
-> 
-> > 
-> > -
-> > 
-> > As the atomisp driver is now minimally working, my plan is to merge
-> > it upstream, under staging.  
-> 
-> How is it "minimally working" for you?
+A lot of -EFAULT should be changed to -EINVAL.  Search for it everywhere,
+please.
 
-- Atomisp driver probes fine and detects its associated hardware;
-- Atomisp firmware code loads and runs properly (as far as we were
-  able to test it);
-- Sensor and ISP are properly powered up;
-- v4l2-ctl and qv4l2 can read from device's controls;
-- If set to the sensor resolution and format, streaming causes
-  the driver code to receive IRQ as frame buffers arrive;
+> +
+> +	if (err < 0)
+> +		return err;
+> +
+> +	return count;
+> +}
+> +
+> +static DEVICE_ATTR(ni_state, 0444, value_show, NULL);
+> +static DEVICE_ATTR(packet_bandwidth, 0444, value_show, NULL);
+> +static DEVICE_ATTR(node_address, 0444, value_show, NULL);
+> +static DEVICE_ATTR(node_position, 0444, value_show, NULL);
+> +static DEVICE_ATTR(sync_ep, 0200, NULL, value_store);
+> +static DEVICE_ATTR(mep_filter, 0644, value_show, value_store);
+> +static DEVICE_ATTR(mep_hash0, 0644, value_show, value_store);
+> +static DEVICE_ATTR(mep_hash1, 0644, value_show, value_store);
+> +static DEVICE_ATTR(mep_hash2, 0644, value_show, value_store);
+> +static DEVICE_ATTR(mep_hash3, 0644, value_show, value_store);
+> +static DEVICE_ATTR(mep_eui48_hi, 0644, value_show, value_store);
+> +static DEVICE_ATTR(mep_eui48_mi, 0644, value_show, value_store);
+> +static DEVICE_ATTR(mep_eui48_lo, 0644, value_show, value_store);
+> +static DEVICE_ATTR(arb_address, 0644, value_show, value_store);
+> +static DEVICE_ATTR(arb_value, 0644, value_show, value_store);
+> +
+> +static struct attribute *dci_attrs[] = {
+> +	&dev_attr_ni_state.attr,
+> +	&dev_attr_packet_bandwidth.attr,
+> +	&dev_attr_node_address.attr,
+> +	&dev_attr_node_position.attr,
+> +	&dev_attr_sync_ep.attr,
+> +	&dev_attr_mep_filter.attr,
+> +	&dev_attr_mep_hash0.attr,
+> +	&dev_attr_mep_hash1.attr,
+> +	&dev_attr_mep_hash2.attr,
+> +	&dev_attr_mep_hash3.attr,
+> +	&dev_attr_mep_eui48_hi.attr,
+> +	&dev_attr_mep_eui48_mi.attr,
+> +	&dev_attr_mep_eui48_lo.attr,
+> +	&dev_attr_arb_address.attr,
+> +	&dev_attr_arb_value.attr,
+> +	NULL,
+> +};
+> +
+> +static struct attribute_group dci_attr_group = {
+> +	.attrs = dci_attrs,
+> +};
+> +
+> +static const struct attribute_group *dci_attr_groups[] = {
+> +	&dci_attr_group,
+> +	NULL,
+> +};
+> +
+> +static void release_dci(struct device *dev)
+> +{
+> +	struct most_dci_obj *dci = to_dci_obj(dev);
+> +
+> +	kfree(dci);
+> +}
+> +
+> +static void release_mdev(struct device *dev)
+> +{
+> +	struct most_dev *mdev = to_mdev_from_dev(dev);
+> +
+> +	kfree(mdev);
+> +}
+> +/**
+> + * hdm_probe - probe function of USB device driver
+> + * @interface: Interface of the attached USB device
+> + * @id: Pointer to the USB ID table.
+> + *
+> + * This allocates and initializes the device instance, adds the new
+> + * entry to the internal list, scans the USB descriptors and registers
+> + * the interface with the core.
+> + * Additionally, the DCI objects are created and the hardware is sync'd.
+> + *
+> + * Return 0 on success. In case of an error a negative number is returned.
+> + */
+> +static int
+> +hdm_probe(struct usb_interface *interface, const struct usb_device_id *id)
+> +{
+> +	struct usb_host_interface *usb_iface_desc = interface->cur_altsetting;
+> +	struct usb_device *usb_dev = interface_to_usbdev(interface);
+> +	struct device *dev = &usb_dev->dev;
+> +	struct most_dev *mdev = kzalloc(sizeof(*mdev), GFP_KERNEL);
+> +	unsigned int i;
+> +	unsigned int num_endpoints;
+> +	struct most_channel_capability *tmp_cap;
+> +	struct usb_endpoint_descriptor *ep_desc;
+> +	int ret = 0;
+> +
+> +	if (!mdev)
+> +		goto err_out_of_memory;
 
-There are still lots of issues:
+The "goto" checks for if err isn't set an defaults to -ENOMEM.  Please
+just set the error code.  But actually here the appropriate thing is
+to just return directly:
 
-- the memory allocation code there is very suspicious, and
-  it cause troubles, depending on what userspace does
-  (for example, using the scaler);
+	mdev = kzalloc(sizeof(*mdev), GFP_KERNEL);
+	if (!mdev)
+		return -ENOMEM;
 
-- right now, VIDIOC_DQBUF doesn't return anything (using
-  a very simple app with the absolute minimum set of ioctls
-  needed to start streaming).
-  Yet, the driver receives IRQs notifying that new frames
-  arrived. So, from the chipset PoV, streaming is working.
-  I suspect that the current driver is waiting for userspace
-  to receive V4L2 events before releasing buffers via DQBUF.
+> +
+> +	usb_set_intfdata(interface, mdev);
+> +	num_endpoints = usb_iface_desc->desc.bNumEndpoints;
+> +	mutex_init(&mdev->io_mutex);
+> +	INIT_WORK(&mdev->poll_work_obj, wq_netinfo);
+> +	timer_setup(&mdev->link_stat_timer, link_stat_timer_handler, 0);
+> +
+> +	mdev->usb_device = usb_dev;
+> +	mdev->link_stat_timer.expires = jiffies + (2 * HZ);
+> +
+> +	mdev->iface.mod = hdm_usb_fops.owner;
+> +	mdev->iface.dev = &mdev->dev;
+> +	mdev->iface.driver_dev = &interface->dev;
+> +	mdev->iface.interface = ITYPE_USB;
+> +	mdev->iface.configure = hdm_configure_channel;
+> +	mdev->iface.request_netinfo = hdm_request_netinfo;
+> +	mdev->iface.enqueue = hdm_enqueue;
+> +	mdev->iface.poison_channel = hdm_poison_channel;
+> +	mdev->iface.dma_alloc = hdm_dma_alloc;
+> +	mdev->iface.dma_free = hdm_dma_free;
+> +	mdev->iface.description = mdev->description;
+> +	mdev->iface.num_channels = num_endpoints;
+> +
+> +	snprintf(mdev->description, sizeof(mdev->description),
+> +		 "%d-%s:%d.%d",
+> +		 usb_dev->bus->busnum,
+> +		 usb_dev->devpath,
+> +		 usb_dev->config->desc.bConfigurationValue,
+> +		 usb_iface_desc->desc.bInterfaceNumber);
+> +
+> +	mdev->dev.init_name = mdev->description;
+> +	mdev->dev.parent = &interface->dev;
+> +	mdev->dev.release = release_mdev;
+> +	mdev->conf = kcalloc(num_endpoints, sizeof(*mdev->conf), GFP_KERNEL);
+> +	if (!mdev->conf)
+> +		goto err_free_mdev;
+> +
+> +	mdev->cap = kcalloc(num_endpoints, sizeof(*mdev->cap), GFP_KERNEL);
+> +	if (!mdev->cap)
+> +		goto err_free_conf;
+> +
+> +	mdev->iface.channel_vector = mdev->cap;
+> +	mdev->ep_address = kcalloc(num_endpoints, sizeof(*mdev->ep_address), GFP_KERNEL);
+> +	if (!mdev->ep_address)
+> +		goto err_free_cap;
+> +
+> +	mdev->busy_urbs = kcalloc(num_endpoints, sizeof(*mdev->busy_urbs), GFP_KERNEL);
+> +	if (!mdev->busy_urbs)
+> +		goto err_free_ep_address;
+> +
+> +	tmp_cap = mdev->cap;
+> +	for (i = 0; i < num_endpoints; i++) {
+> +		ep_desc = &usb_iface_desc->endpoint[i].desc;
+> +		mdev->ep_address[i] = ep_desc->bEndpointAddress;
+> +		mdev->padding_active[i] = false;
+> +		mdev->is_channel_healthy[i] = true;
+> +
+> +		snprintf(&mdev->suffix[i][0], MAX_SUFFIX_LEN, "ep%02x",
+> +			 mdev->ep_address[i]);
+> +
+> +		tmp_cap->name_suffix = &mdev->suffix[i][0];
+> +		tmp_cap->buffer_size_packet = MAX_BUF_SIZE;
+> +		tmp_cap->buffer_size_streaming = MAX_BUF_SIZE;
+> +		tmp_cap->num_buffers_packet = BUF_CHAIN_SIZE;
+> +		tmp_cap->num_buffers_streaming = BUF_CHAIN_SIZE;
+> +		tmp_cap->data_type = MOST_CH_CONTROL | MOST_CH_ASYNC |
+> +				     MOST_CH_ISOC | MOST_CH_SYNC;
+> +		if (usb_endpoint_dir_in(ep_desc))
+> +			tmp_cap->direction = MOST_CH_RX;
+> +		else
+> +			tmp_cap->direction = MOST_CH_TX;
+> +		tmp_cap++;
+> +		init_usb_anchor(&mdev->busy_urbs[i]);
+> +		spin_lock_init(&mdev->channel_lock[i]);
+> +	}
+> +	dev_notice(dev, "claimed gadget: Vendor=%4.4x ProdID=%4.4x Bus=%02x Device=%02x\n",
+> +		   le16_to_cpu(usb_dev->descriptor.idVendor),
+> +		   le16_to_cpu(usb_dev->descriptor.idProduct),
+> +		   usb_dev->bus->busnum,
+> +		   usb_dev->devnum);
+> +
+> +	dev_notice(dev, "device path: /sys/bus/usb/devices/%d-%s:%d.%d\n",
+> +		   usb_dev->bus->busnum,
+> +		   usb_dev->devpath,
+> +		   usb_dev->config->desc.bConfigurationValue,
+> +		   usb_iface_desc->desc.bInterfaceNumber);
+> +
+> +	ret = most_register_interface(&mdev->iface);
+> +	if (ret)
+> +		goto err_free_busy_urbs;
+> +
+> +	mutex_lock(&mdev->io_mutex);
+> +	if (le16_to_cpu(usb_dev->descriptor.idProduct) == USB_DEV_ID_OS81118 ||
+> +	    le16_to_cpu(usb_dev->descriptor.idProduct) == USB_DEV_ID_OS81119 ||
+> +	    le16_to_cpu(usb_dev->descriptor.idProduct) == USB_DEV_ID_OS81210) {
+> +		mdev->dci = kzalloc(sizeof(*mdev->dci), GFP_KERNEL);
+> +		if (!mdev->dci) {
+> +			mutex_unlock(&mdev->io_mutex);
+> +			most_deregister_interface(&mdev->iface);
 
-> > Before going ahead and fixing other troubles there at atomisp,
-> > I may try to port the needed ACPI bits from the atomisp-ov2880 
-> > staging driver into the mainline one. This should be an interesting 
-> > exercise to check what's missing there.
-> > 
-> > Even if the atomisp never gets out of staging, doing that will help
-> > to identify what it would take for a sensor to be able to work with
-> > more than one different ISP. As as result, we may design something
-> > that will properly support ACPI at the media subsystem.  
-> 
-> Hmm. Generally ACPI based devices are supported, there are no issues as
-> such there. The ACPI tables in some systems, though, are a problem.
+Free iface after the goto.
 
-As I said, the problem is not probing the sensor via ACPI, but, instead,
-to be able receive platform-specific data.
+> +			ret = -ENOMEM;
+> +			goto err_free_busy_urbs;
+> +		}
+> +
+> +		mdev->dci->dev.init_name = "dci";
+> +		mdev->dci->dev.parent = get_device(mdev->iface.dev);
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Does this get_device() need a matching put_device() somewhere?  I'm not
+totally sure how the ->parent stuff works...
 
-Thanks,
-Mauro
+> +		mdev->dci->dev.groups = dci_attr_groups;
+> +		mdev->dci->dev.release = release_dci;
+> +		if (device_register(&mdev->dci->dev)) {
+> +			mutex_unlock(&mdev->io_mutex);
+> +			most_deregister_interface(&mdev->iface);
+> +			ret = -ENOMEM;
+> +			goto err_free_dci;
+> +		}
+> +		mdev->dci->usb_device = mdev->usb_device;
+> +	}
+> +	mutex_unlock(&mdev->io_mutex);
+> +	return 0;
+> +err_free_dci:
+> +	put_device(&mdev->dci->dev);
+> +err_free_busy_urbs:
+> +	kfree(mdev->busy_urbs);
+> +err_free_ep_address:
+> +	kfree(mdev->ep_address);
+> +err_free_cap:
+> +	kfree(mdev->cap);
+> +err_free_conf:
+> +	kfree(mdev->conf);
+> +err_free_mdev:
+> +	put_device(&mdev->dev);
+> +err_out_of_memory:
+> +	if (ret == 0 || ret == -ENOMEM) {
+> +		ret = -ENOMEM;
+> +		dev_err(dev, "out of memory\n");
+> +	}
+> +	return ret;
+> +}
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
