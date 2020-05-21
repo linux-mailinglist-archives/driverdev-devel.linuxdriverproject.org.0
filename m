@@ -1,61 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22FAB1DC210
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 00:31:09 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BAE0287026;
-	Wed, 20 May 2020 22:31:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YDaJP1ByytaF; Wed, 20 May 2020 22:31:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56B0186EC2;
-	Wed, 20 May 2020 22:31:06 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A11C01BF475
- for <devel@linuxdriverproject.org>; Wed, 20 May 2020 22:31:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 51E751DC38B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 02:24:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 90BC3204DB
- for <devel@linuxdriverproject.org>; Wed, 20 May 2020 22:31:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2671524C10;
+	Thu, 21 May 2020 00:24:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DOjwfT3cyKNU for <devel@linuxdriverproject.org>;
- Wed, 20 May 2020 22:31:01 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs15.siol.net [185.57.226.206])
- by silver.osuosl.org (Postfix) with ESMTPS id 700E32049D
- for <devel@driverdev.osuosl.org>; Wed, 20 May 2020 22:31:01 +0000 (UTC)
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7tluEeUa07Zg; Thu, 21 May 2020 00:24:25 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id D668C203DD;
+	Thu, 21 May 2020 00:24:24 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 978161BF4D8
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 00:24:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id 5F0AD521CA5;
- Thu, 21 May 2020 00:30:58 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at psrvmta09.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta09.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id WVPCA-mzMnE8; Thu, 21 May 2020 00:30:58 +0200 (CEST)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id E1B7A521CA2;
- Thu, 21 May 2020 00:30:57 +0200 (CEST)
-Received: from jernej-laptop.localnet (cpe-194-152-20-232.static.triera.net
- [194.152.20.232]) (Authenticated sender: jernej.skrabec@siol.net)
- by mail.siol.net (Postfix) with ESMTPA id 6D5FC521C9C;
- Thu, 21 May 2020 00:30:57 +0200 (CEST)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
-To: mripard@kernel.org, paul.kocialkowski@bootlin.com,
- Nicolas Dufresne <nicolas@ndufresne.ca>
-Subject: Re: [PATCH] media: cedrus: Add support for VP8 decoding
-Date: Thu, 21 May 2020 00:30:56 +0200
-Message-ID: <2875977.BS6FNRR2HQ@jernej-laptop>
-In-Reply-To: <ee0aa12fdf1655c4e563b8fc9753a5ab5e52f4cf.camel@ndufresne.ca>
-References: <20200520210129.132816-1-jernej.skrabec@siol.net>
- <ee0aa12fdf1655c4e563b8fc9753a5ab5e52f4cf.camel@ndufresne.ca>
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 930AE86F28
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 00:24:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ILhRf9JOL65w for <devel@linuxdriverproject.org>;
+ Thu, 21 May 2020 00:24:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8B22886E7E
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 00:24:21 +0000 (UTC)
+Received: from localhost (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 15881205CB;
+ Thu, 21 May 2020 00:24:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1590020661;
+ bh=so+02LeLE1MjLDY4FVscmq2Bc9Vlqajs1T7f42XyVzU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=plmatdw9xMdFVvPnxMzUj7O296h9pEw9c2BEakKQ2nbJJ2lhlCq6CRIJ3QKgPgEyS
+ uoGKwyCYmYXxv+L9AURVWQxZPE6f1rktSaHCjzPVgoSn3tcsaOrpLCRgdEiczwfMNr
+ u7kswe98o2IVWBhLnROPkuxl+PNB+aqZ5Ab4N56U=
+Date: Wed, 20 May 2020 20:24:20 -0400
+From: Sasha Levin <sashal@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH AUTOSEL 5.6 16/62] most: core: use function
+ subsys_initcall()
+Message-ID: <20200521002420.GH33628@sasha-vm>
+References: <20200514185147.19716-1-sashal@kernel.org>
+ <20200514185147.19716-16-sashal@kernel.org>
+ <20200515065914.GB1006524@kroah.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200515065914.GB1006524@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,104 +67,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, wens@csie.org, hverkuil-cisco@xs4all.nl,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, Christian Gromm <christian.gromm@microchip.com>,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dne sreda, 20. maj 2020 ob 23:43:40 CEST je Nicolas Dufresne napisal(a):
-> Le mercredi 20 mai 2020 =E0 23:01 +0200, Jernej Skrabec a =E9crit :
-> > VP8 in Cedrus shares same engine as H264.
-> > =
+On Fri, May 15, 2020 at 08:59:14AM +0200, Greg Kroah-Hartman wrote:
+>On Thu, May 14, 2020 at 02:51:01PM -0400, Sasha Levin wrote:
+>> From: Christian Gromm <christian.gromm@microchip.com>
+>>
+>> [ Upstream commit 5e56bc06e18dfc8a66180fa369384b36e2ab621a ]
+>>
+>> This patch replaces function module_init() with subsys_initcall().
+>> It is needed to ensure that the core module of the driver is
+>> initialized before a component tries to register with the core. This
+>> leads to a NULL pointer dereference if the driver is configured as
+>> in-tree.
+>>
+>> Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
+>> Reported-by: kernel test robot <lkp@intel.com>
+>> Link: https://lore.kernel.org/r/1587741394-22021-1-git-send-email-christian.gromm@microchip.com
+>> Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+>> Signed-off-by: Sasha Levin <sashal@kernel.org>
+>> ---
+>>  drivers/staging/most/core.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/most/core.c b/drivers/staging/most/core.c
+>> index 0c4ae6920d77d..409c48c597f2f 100644
+>> --- a/drivers/staging/most/core.c
+>> +++ b/drivers/staging/most/core.c
+>> @@ -1484,7 +1484,7 @@ static void __exit most_exit(void)
+>>  	ida_destroy(&mdev_id);
+>>  }
+>>
+>> -module_init(most_init);
+>> +subsys_initcall(most_init);
+>>  module_exit(most_exit);
+>>  MODULE_LICENSE("GPL");
+>>  MODULE_AUTHOR("Christian Gromm <christian.gromm@microchip.com>");
+>
+>This is not needed in 5.6 and older kernels due to the most/core.c code
+>being in staging for these releases.  It only became an issue when it
+>moved out of staging.
+>
+>So please drop this from here and any older trees you might have
+>selected it for.
 
-> > Note that it seems necessary to call bitstream parsing functions,
-> > to parse frame header, otherwise decoded image is garbage. This is
-> > contrary to what is driver supposed to do. However, values are not
-> > really used, so this might be acceptable. It's possible that bitstream
-> =
+Now dropped, thanks!
 
-> Have you verified that all values passed through controls are not used
-> ? To remain a stateless driver, there is no requirement for parsed data
-> to be used, the only requirement is that the reference are used.
-> Otherwise doing parallel decoding of two stream of different stream
-> would be broken. Have you verified that parallel decoding is working as
-> expected ?
-
-I'm not sure if you understand what I meant. Although userspace app parses =
-
-frame header and fills all data in VP8 control, driver parses frame header =
-
-again, using HW bitstream parsing functionality in cedrus_read_header(). =
-
-Without that second header parsing in HW, decoded image is garbage. Note th=
-at =
-
-cedrus_read_header() discards all parsed values and relies on those provide=
-d =
-
-in controls.
-
-This parsing doesn't cause any problems with parallel decoding or anything. =
-
-It's done during frame decoding job, so it doesn't affect any state. It's j=
-ust =
-
-that we shouldn't need to parse header in driver because all data is alread=
-y =
-
-provided in controls. It seems that Cedrus core was never tested without th=
-at =
-
-HW frame header parsing. I found out that HEVC and H264 frames can sometime=
-s =
-
-also be wrongly decoded if no bitstream parsing function is triggered in HW =
-
-before final decoding.
-
-I spend a lot of time trying to avoid that header parsing, but I couldn't f=
-ind =
-
-any way around it.
-
-In another words, Cedrus VPU provides two functionalities - HW bitstream =
-
-parsing (to speed up header parsing) and video decoding. One would thought =
-
-that video decoding can be used independently, if all data from header is =
-
-already known, but it can't be.
-
-Best regards,
-Jernej
-
-> =
-
-> > parsing functions set some internal VPU state, which is later necessary
-> > for proper decoding. Biggest suspect is "VP8 probs update" trigger.
-> > =
-
-> > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-> > ---
-> > =
-
-> >  drivers/staging/media/sunxi/cedrus/Makefile   |   3 +-
-> >  drivers/staging/media/sunxi/cedrus/cedrus.c   |   8 +
-> >  drivers/staging/media/sunxi/cedrus/cedrus.h   |  15 +
-> >  .../staging/media/sunxi/cedrus/cedrus_dec.c   |   5 +
-> >  .../staging/media/sunxi/cedrus/cedrus_hw.c    |   1 +
-> >  .../staging/media/sunxi/cedrus/cedrus_regs.h  |  80 ++
-> >  .../staging/media/sunxi/cedrus/cedrus_video.c |   9 +
-> >  .../staging/media/sunxi/cedrus/cedrus_vp8.c   | 699 ++++++++++++++++++
-> >  8 files changed, 819 insertions(+), 1 deletion(-)
-> >  create mode 100644 drivers/staging/media/sunxi/cedrus/cedrus_vp8.c
-
-
-
+-- 
+Thanks,
+Sasha
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
