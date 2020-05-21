@@ -1,74 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2FAC1DCA12
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 11:33:21 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 856C51DCA44
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 11:38:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 65374891BC;
-	Thu, 21 May 2020 09:33:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 582C124CEB;
+	Thu, 21 May 2020 09:38:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xsg5zPhpiWgF; Thu, 21 May 2020 09:33:20 +0000 (UTC)
+	with ESMTP id 0Qfd0ke7Lxka; Thu, 21 May 2020 09:38:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B960B89161;
-	Thu, 21 May 2020 09:33:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CB4E2241AE;
+	Thu, 21 May 2020 09:38:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C222F1BF47D
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:33:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EE9BF1BF47D
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:38:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BC92189161
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:33:16 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E8E3288B22
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:38:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EzeAaivF5Kte for <devel@linuxdriverproject.org>;
- Thu, 21 May 2020 09:33:14 +0000 (UTC)
+ with ESMTP id p3pk0eToVGVQ for <devel@linuxdriverproject.org>;
+ Thu, 21 May 2020 09:38:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
  [209.85.221.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 94DF288AEE
- for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 09:33:14 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id l18so5983357wrn.6
- for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 02:33:14 -0700 (PDT)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DCCAF88AEE
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 09:38:29 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id g12so4799599wrw.1
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 02:38:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:subject:to:cc:message-id:date:user-agent:mime-version
  :content-language:content-transfer-encoding;
- bh=TRsInQSBwN+shLNJB6dj9nN2OgX9fcoBCx1Y8zTY1JE=;
- b=kqgstXurDIFYnkHExtT62KqsA7sxo8V5X8yBsY+QlbYBBsrH8oEFGFkOD8nhkCm8x+
- Slbed7rXS/DzANGdhdtfJhcvC0uwbdy/sI/+GuU7WLj4wO09I62QCfGzybutw8HSFry2
- Fw0rBUluxG/MlZ6zDbOjKO3X7z/1qq/0lKAgACmeIrNKKvl4xn3Yvc2d2TIl7/IYzNxe
- YdUZar/wsb/hz99bvqs1HRLn4Vv044mT8MvVQpxlFAO/AbwVXJKXcxR8Lg72E8lTLUvx
- L10KKDBnXj8S2Xwt10oknp7naZLXCqV2HcaAqnghSUyIGMFmqlqzAZ7MCZ88eO8NX3eU
- Hx7Q==
+ bh=OgyKLtsl9tNNZ+v+VLvWxQraa+qu3UB9bjlUpwB1inI=;
+ b=kFN0jhhJnSIpf27pQnJxKA3G7ECLmLhcTQoiAu2pGIBpKqn8lQNBFvWEjdxEJuAL9E
+ T+RNjyehSBZk51qqRYYRCJXMQMJcwOHr0/PmONibbePBVo5FjGyrYQcC0evwTZTQRP0m
+ JB1I8RM9HLyTTbjzSW+sOXzAClB/dR0V0nR9WmNfata8nP2cNyw5ZxOwa6XTqIKCWMvT
+ DE0zbikggO7Ja0K2OewPVAEgLJsjhR70R6f+gP/Gyv1MtC7qs2xdKwtlnOdjnqIQq4Z8
+ rPvGT16/TvlL7mtHK40K9/EnvmqMG6HTvVuY79p/rv/kjMXN2HuVWBMBv5W5ZgnWMET5
+ z1nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=TRsInQSBwN+shLNJB6dj9nN2OgX9fcoBCx1Y8zTY1JE=;
- b=clvPxapeontucKQPVkHpmDbdvvojqhOnoVeQyJvDDOVvZfX5z4rBZrJKfbEXu6A7do
- rtUK12YSe+zpwcxDRk1GEmV9p6OPEiojAymEST1Cak0qFXnFHzAqUHAf9QQTSJRlFXBN
- JzsFWDFEVCGUGjdREHyZMCVNCONS5TkyG5did9JRxVDy0kOm8EJuKclv6zGwtXVzczUP
- B/l7PaIeX7HxLbtIamV7wK7vMFeqEsMK0oNj7HRD28I7kRdSE4/25qNAiwrxwfNaiZqZ
- uin2TUlforYrq2V+MF6U8LtbqMTxf94C5gnJsvdhJCmhtxKnljPRj25hOmk2s4iYhCJy
- Ew2Q==
-X-Gm-Message-State: AOAM532h2ks8k5Ub2i+Rm8ySl3wy9+721Kt9fIJqbEnB3Z51LWFBcOzG
- rUGyD4uIzFKeeLNsHTJipKBpvEn1/FBRLQ==
-X-Google-Smtp-Source: ABdhPJzAaHKK0g2fpCO5WomK+FhJORBjK6lJ0C8ilrGJjwYls4pqfsTh5rLTN3WJifhnZgS6CJ+Tzg==
-X-Received: by 2002:adf:9d91:: with SMTP id p17mr7454308wre.119.1590053592966; 
- Thu, 21 May 2020 02:33:12 -0700 (PDT)
+ bh=OgyKLtsl9tNNZ+v+VLvWxQraa+qu3UB9bjlUpwB1inI=;
+ b=ZTuFhRks3llA/MDjvgOF9DK+in29RrILusmZEY1nkNbUX1eIvo/7MBXEcRylBOwOQi
+ Pfm7LWAgXb2Yj6uTUgFKKE5Qs/0w02UDnjI/WlE6qVBpKFjKkz3fzVZYcExeCMLp3yYf
+ We/3bh4Rp0ermxcjPEb7scC32+7HwjyHFD3/NLE3Mkksu4uWVlsmSDhFpQzASBwUBPsD
+ aSe0GYq6cIYw2RLQcIdulSFNfQxqt9kTD1S+LV/upQQC4FeHQA+goUoDaFeuC1Fu7Y+A
+ Rp7tYaZf43PDth8GZ1hSffWAgo/fzZaXz2y2ts63QO78wY9d617rKEkX1dyc0LMknGow
+ x27g==
+X-Gm-Message-State: AOAM533FmCD2zSLpouYTblI/l3QWR9uGVcx43e4fCohlI+B4ZrbfzH6f
+ mnLkuoeecu0Am1pLadHYJnOYaW49BhWflg==
+X-Google-Smtp-Source: ABdhPJyQ2cs17INGlJLY+RvMyXNB1VzYC+aF4aMyXhxT1NEgIo3yqdwW4TIiKjW5rR8eXjYXBmKk6A==
+X-Received: by 2002:a5d:4041:: with SMTP id w1mr7746562wrp.245.1590053908476; 
+ Thu, 21 May 2020 02:38:28 -0700 (PDT)
 Received: from [192.168.43.18] ([85.255.237.70])
- by smtp.gmail.com with ESMTPSA id 89sm5966904wrj.37.2020.05.21.02.33.12
+ by smtp.gmail.com with ESMTPSA id e22sm5553779wrc.41.2020.05.21.02.38.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 21 May 2020 02:33:12 -0700 (PDT)
+ Thu, 21 May 2020 02:38:28 -0700 (PDT)
 From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH 02/10] staging: vt6656: rxtx remove unused need_ack
+Subject: [PATCH 03/10] staging: vt6656: Move vnt_mic_hdr pointers to
+ vnt_fill_txkey
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Message-ID: <f19dfbde-23a6-ba79-d988-576d2e3bcf62@gmail.com>
-Date: Thu, 21 May 2020 10:33:11 +0100
+Message-ID: <6420a6ae-82eb-f794-fa7c-bac419222ad6@gmail.com>
+Date: Thu, 21 May 2020 10:38:26 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
@@ -92,50 +93,112 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-need_ack is no longer used by driver remove it.
+mic_hdr has three possible locations ieee80211_tx_info can controls
+these with control.use_cts_prot for rts or cts exchange or otherwise
+the rts/data position.
+
+Removing double pointer.
 
 Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- drivers/staging/vt6656/device.h | 1 -
- drivers/staging/vt6656/rxtx.c   | 5 +----
- 2 files changed, 1 insertion(+), 5 deletions(-)
+ drivers/staging/vt6656/rxtx.c | 37 ++++++++++++++---------------------
+ 1 file changed, 15 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
-index 0486aabba061..d89f564a13c4 100644
---- a/drivers/staging/vt6656/device.h
-+++ b/drivers/staging/vt6656/device.h
-@@ -246,7 +246,6 @@ struct vnt_usb_send_context {
- 	u8 type;
- 	u8 pkt_no;
- 	u8 pkt_type;
--	u8 need_ack;
- 	bool in_use;
- };
- 
 diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
-index a47f42bedfa9..24acc2de0fb9 100644
+index 24acc2de0fb9..87fe7df07f03 100644
 --- a/drivers/staging/vt6656/rxtx.c
 +++ b/drivers/staging/vt6656/rxtx.c
-@@ -539,7 +539,6 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+@@ -356,40 +356,30 @@ static void vnt_rxtx_ab(struct vnt_usb_send_context *tx_context,
  
- 	tx_context->skb = skb;
- 	tx_context->pkt_type = pkt_type;
--	tx_context->need_ack = false;
- 	tx_context->frame_len = skb->len + 4;
- 	tx_context->tx_rate =  rate->hw_value;
+ static void vnt_generate_tx_parameter(struct vnt_usb_send_context *tx_context,
+ 				      struct vnt_tx_buffer *tx_buffer,
+-				      struct vnt_mic_hdr **mic_hdr,
+ 				      u32 need_mic, bool need_rts)
+ {
+ 	if (tx_context->pkt_type == PK_TYPE_11GB ||
+ 	    tx_context->pkt_type == PK_TYPE_11GA) {
+ 		if (need_rts) {
+-			if (need_mic)
+-				*mic_hdr =
+-					&tx_buffer->tx_head.tx_rts.tx.mic.hdr;
+-
+ 			vnt_rxtx_rts(tx_context, &tx_buffer->tx_head, need_mic);
  
-@@ -587,10 +586,8 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
- 			cpu_to_le16(DEFAULT_MSDU_LIFETIME_RES_64us);
+ 			return;
+ 		}
+ 
+-		if (need_mic)
+-			*mic_hdr = &tx_buffer->tx_head.tx_cts.tx.mic.hdr;
+-
+ 		vnt_rxtx_cts(tx_context, &tx_buffer->tx_head, need_mic);
+ 
+ 		return;
  	}
  
--	if (!(info->flags & IEEE80211_TX_CTL_NO_ACK)) {
-+	if (!(info->flags & IEEE80211_TX_CTL_NO_ACK))
- 		tx_buffer_head->fifo_ctl |= cpu_to_le16(FIFOCTL_NEEDACK);
--		tx_context->need_ack = true;
--	}
+-	if (need_mic)
+-		*mic_hdr = &tx_buffer->tx_head.tx_ab.tx.mic.hdr;
+-
+ 	vnt_rxtx_ab(tx_context, &tx_buffer->tx_head, need_rts, need_mic);
+ }
  
- 	if (ieee80211_has_retry(hdr->frame_control))
- 		tx_buffer_head->fifo_ctl |= cpu_to_le16(FIFOCTL_LRETRY);
+-static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
++static void vnt_fill_txkey(struct vnt_tx_buffer *tx_buffer,
+ 			   u8 *key_buffer, struct ieee80211_key_conf *tx_key,
+-			   struct sk_buff *skb, u16 payload_len,
+-			   struct vnt_mic_hdr *mic_hdr)
++			   struct sk_buff *skb, u16 payload_len)
+ {
++	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
++	struct vnt_mic_hdr *mic_hdr;
+ 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+ 	u64 pn64;
+ 	u8 *iv = ((u8 *)hdr + ieee80211_get_hdrlen_from_skb(skb));
+@@ -416,9 +406,14 @@ static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
+ 
+ 		break;
+ 	case WLAN_CIPHER_SUITE_CCMP:
+-
+-		if (!mic_hdr)
+-			return;
++		if (info->control.use_cts_prot) {
++			if (info->control.use_rts)
++				mic_hdr = &tx_buffer->tx_head.tx_rts.tx.mic.hdr;
++			else
++				mic_hdr = &tx_buffer->tx_head.tx_cts.tx.mic.hdr;
++		} else {
++			mic_hdr = &tx_buffer->tx_head.tx_ab.tx.mic.hdr;
++		}
+ 
+ 		mic_hdr->id = 0x59;
+ 		mic_hdr->payload_len = cpu_to_be16(payload_len);
+@@ -497,7 +492,6 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 	struct ieee80211_rate *rate;
+ 	struct ieee80211_key_conf *tx_key;
+ 	struct ieee80211_hdr *hdr;
+-	struct vnt_mic_hdr *mic_hdr = NULL;
+ 	struct vnt_tx_buffer *tx_buffer;
+ 	struct vnt_tx_fifo_head *tx_buffer_head;
+ 	struct vnt_usb_send_context *tx_context;
+@@ -624,16 +618,15 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 
+ 	tx_buffer_head->current_rate = cpu_to_le16(rate->hw_value);
+ 
+-	vnt_generate_tx_parameter(tx_context, tx_buffer, &mic_hdr,
+-				  need_mic, need_rts);
++	vnt_generate_tx_parameter(tx_context, tx_buffer, need_mic, need_rts);
+ 
+ 	tx_buffer_head->frag_ctl |= cpu_to_le16(FRAGCTL_NONFRAG);
+ 
+ 	if (info->control.hw_key) {
+ 		tx_key = info->control.hw_key;
+ 		if (tx_key->keylen > 0)
+-			vnt_fill_txkey(tx_context, tx_buffer_head->tx_key,
+-				       tx_key, skb, tx_body_size, mic_hdr);
++			vnt_fill_txkey(tx_buffer, tx_buffer_head->tx_key,
++				       tx_key, skb, tx_body_size);
+ 	}
+ 
+ 	priv->seq_counter = (le16_to_cpu(hdr->seq_ctrl) &
 -- 
 2.25.1
 
