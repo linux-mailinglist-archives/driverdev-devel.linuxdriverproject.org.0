@@ -1,94 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDB321DC9B9
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 11:15:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DD71A241AE;
-	Thu, 21 May 2020 09:15:29 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VMxLeUqzxqrc; Thu, 21 May 2020 09:15:29 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8810F23067;
-	Thu, 21 May 2020 09:15:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 408511BF47D
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:15:25 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BFFB1DCA0C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 11:31:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3CE0488C64
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:15:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7C9D888FD0;
+	Thu, 21 May 2020 09:31:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0tkiYMojNWgf; Thu, 21 May 2020 09:31:44 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id DFFA287AAE;
+	Thu, 21 May 2020 09:31:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8137B1BF47D
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:31:41 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7BA6123067
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:31:41 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Jxj-8LGm9dsu for <devel@linuxdriverproject.org>;
- Thu, 21 May 2020 09:15:24 +0000 (UTC)
+ with ESMTP id nZdGeOE2itUw for <devel@linuxdriverproject.org>;
+ Thu, 21 May 2020 09:31:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4206488C48
- for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 09:15:24 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04L9BnJU127976;
- Thu, 21 May 2020 09:15:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=bh+xl74w9Pkh3905HBogf0NGla+VU7nalNxpQKJpDgo=;
- b=a0EChYEYNnlwmOCKS9rkx0gOHg77FbolOr/EsqMpLpNqzEj6dp9cUgIAvocRavU8hKtM
- HE4kYMhm3vNYS98f217SdV1SDOoxIJVYpdszoh/yr6jJmwEvw9no7Zwy/TLjw9q58nea
- l3Ofrm3CeWWoHG8oKFLSyCF9rdfifmuKTAMoY3Izj6BCKs+c9DIBgmB4uZSz0jMAXbhs
- Vdj3K3b1SRl1FGwi1BJeN5iuMokY5B+MytX6jgG9AsF3bjOIyKm2x/yN7st9DhmT18Ez
- myajXBxweymmQP8+yoRVWWluBETYiA7zkLv30XZ/lL6T17Dhw4qq6fWUM/grRwFdUe5F Dg== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 31284m7gfe-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 21 May 2020 09:15:23 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04L9DERq169437;
- Thu, 21 May 2020 09:15:22 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 312t3aj105-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 21 May 2020 09:15:22 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04L9FE7h011073;
- Thu, 21 May 2020 09:15:15 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 21 May 2020 02:15:14 -0700
-Date: Thu, 21 May 2020 12:15:05 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: dinghao.liu@zju.edu.cn
-Subject: Re: Re: [PATCH] media: staging: tegra-vde: fix runtime pm imbalance
- on error
-Message-ID: <20200521091505.GF30374@kadam>
-References: <20200520095148.10995-1-dinghao.liu@zju.edu.cn>
- <2b5d64f5-825f-c081-5d03-02655c2d9491@gmail.com>
- <20200520150230.GC30374@kadam>
- <2a46539d.b977f.1723553aa81.Coremail.dinghao.liu@zju.edu.cn>
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id E626C228B3
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 09:31:39 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id x14so600441wrp.2
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 02:31:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:subject:to:cc:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=8Xy4F09kjG4qIrtXe0CxsoffCIloB6B/lxDeVupgx+c=;
+ b=WOMHCO5r/+JSEOLRQoG3VeYHZXyajd4nIwrHzdZTMVxYgAVcJtB05oRN/b7D3TolcF
+ uxhlTyhchzznNp8zN1t0/ne9LK1wzUoU5Pja8+R89KkeL+ZkrcNJa9pB9nxL2QCHygXk
+ aKeW5qI5OhqFMMjcfYSfAXZnhGLfDsLFyvcHjUs9gb2PAbBh6ZcdG3jiujodbAQPlKXu
+ MCowsC4d/ZAMmETSsVaQ/Yeil47+p6EZT2su6Up/Xt5gGi0GqaEBTXaXahHkDUe+I4Oq
+ bpRN1Z3SWe3uQkQ+GD3ndyhBPGXvMzL0EtZ36BLKvmLkW0NHsttmlEml55oRnI9UD8EQ
+ Axqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=8Xy4F09kjG4qIrtXe0CxsoffCIloB6B/lxDeVupgx+c=;
+ b=f+Pug8x3VrJ6gKp2P7MGGQ5p2ywpC4ozcR2Bnv9AeZ6lEvruFZAp6/YGl59itGDcgc
+ +SSGORcPihX+CqPwA+gYmM1B6zAoqr3BATdBXNVo0+trI4kskNxPP8BU176Qsq9RiDZT
+ KBQPjjo5UuZ7bRGsLh4hokhtdVG4GZ9fSPp9TD84GQYsuQDyIdmV6AwmiTgI0X4NF6Au
+ B/heNlUDR+fSNCoqz76VhqjdeKxetxMGVDtCCkiubGbDiMydflC77Ehf1Lln5H5KUym5
+ HByRfAlybHpGqzjlWoiyrG2hrEsXs9Ddlf9o1kfXwoz7XLSSsEOCOuO26AFDNFrsoy33
+ sXpQ==
+X-Gm-Message-State: AOAM531JP49jDocv/giwEMkOnn+7SgZQMsKU1yLnpT47axCslmec7FVy
+ onnRBufQsn4pNg9kQXEdZiM=
+X-Google-Smtp-Source: ABdhPJx+RjkbunaR4c0lPQOZgi/mZNT9ej++tVyCFe65wtpfyzXVGccrQLe7AQBay545mTqhhbQYLw==
+X-Received: by 2002:adf:a15c:: with SMTP id r28mr2922817wrr.337.1590053498236; 
+ Thu, 21 May 2020 02:31:38 -0700 (PDT)
+Received: from [192.168.43.18] ([85.255.237.70])
+ by smtp.gmail.com with ESMTPSA id g69sm929660wmg.15.2020.05.21.02.31.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 21 May 2020 02:31:37 -0700 (PDT)
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: [PATCH 01/10] staging: vt6656: remove ieee80211_hdr from
+ vnt_usb_send_context.
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Message-ID: <556fab01-aa1e-154e-149e-c04feeb76efa@gmail.com>
+Date: Thu, 21 May 2020 10:31:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2a46539d.b977f.1723553aa81.Coremail.dinghao.liu@zju.edu.cn>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9627
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- spamscore=0 mlxlogscore=999
- phishscore=0 mlxscore=0 malwarescore=0 suspectscore=29 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2005210067
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9627
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=29
- mlxscore=0
- cotscore=-2147483648 impostorscore=0 malwarescore=0 mlxlogscore=999
- lowpriorityscore=0 phishscore=0 spamscore=0 bulkscore=0 adultscore=0
- priorityscore=1501 clxscore=1015 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2005210067
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,36 +86,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Len Brown <len.brown@intel.com>,
- linux-pm@vger.kernel.org, kjlu@umn.edu,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>, Pavel Machek <pavel@ucw.cz>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-tegra@vger.kernel.org,
- Dmitry Osipenko <digetx@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-media@vger.kernel.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, May 21, 2020 at 11:42:55AM +0800, dinghao.liu@zju.edu.cn wrote:
-> Hi, Dan,
-> 
-> I agree the best solution is to fix __pm_runtime_resume(). But there are also 
-> many cases that assume pm_runtime_get_sync() will change PM usage 
-> counter on error. According to my static analysis results, the number of these 
-> "right" cases are larger. Adjusting __pm_runtime_resume() directly will introduce 
-> more new bugs. Therefore I think we should resolve the "bug" cases individually.
-> 
+It is only used in one place were it can be pointed to at skb->data.
 
-That's why I was saying that we may need to introduce a new replacement
-function for pm_runtime_get_sync() that works as expected.
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
+---
+ drivers/staging/vt6656/device.h | 1 -
+ drivers/staging/vt6656/rxtx.c   | 5 +----
+ 2 files changed, 1 insertion(+), 5 deletions(-)
 
-There is no reason why we have to live with the old behavior.
+diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
+index d1b19dcaf991..0486aabba061 100644
+--- a/drivers/staging/vt6656/device.h
++++ b/drivers/staging/vt6656/device.h
+@@ -238,7 +238,6 @@ struct vnt_rcb {
+ struct vnt_usb_send_context {
+ 	void *priv;
+ 	struct sk_buff *skb;
+-	struct ieee80211_hdr *hdr;
+ 	void *tx_buffer;
+ 	unsigned int buf_len;
+ 	u32 frame_len;
+diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
+index 8f9904c8045c..a47f42bedfa9 100644
+--- a/drivers/staging/vt6656/rxtx.c
++++ b/drivers/staging/vt6656/rxtx.c
+@@ -73,8 +73,6 @@ static struct vnt_usb_send_context
+ 		context = priv->tx_context[ii];
+ 		if (!context->in_use) {
+ 			context->in_use = true;
+-			context->hdr = NULL;
+-
+ 			return context;
+ 		}
+ 	}
+@@ -392,7 +390,7 @@ static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
+ 			   struct sk_buff *skb, u16 payload_len,
+ 			   struct vnt_mic_hdr *mic_hdr)
+ {
+-	struct ieee80211_hdr *hdr = tx_context->hdr;
++	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+ 	u64 pn64;
+ 	u8 *iv = ((u8 *)hdr + ieee80211_get_hdrlen_from_skb(skb));
+ 
+@@ -544,7 +542,6 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 	tx_context->need_ack = false;
+ 	tx_context->frame_len = skb->len + 4;
+ 	tx_context->tx_rate =  rate->hw_value;
+-	tx_context->hdr = hdr;
+ 
+ 	spin_unlock_irqrestore(&priv->lock, flags);
+ 
+-- 
+2.25.1
 
-regards,
-dan carpenter
 
 _______________________________________________
 devel mailing list
