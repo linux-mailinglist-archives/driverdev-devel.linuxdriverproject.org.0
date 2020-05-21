@@ -1,60 +1,94 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 328F11DC903
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 10:47:55 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BDB321DC9B9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 11:15:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9034288251;
-	Thu, 21 May 2020 08:47:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DD71A241AE;
+	Thu, 21 May 2020 09:15:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cFI-nls1KtaF; Thu, 21 May 2020 08:47:51 +0000 (UTC)
+	with ESMTP id VMxLeUqzxqrc; Thu, 21 May 2020 09:15:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D35FB88213;
-	Thu, 21 May 2020 08:47:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8810F23067;
+	Thu, 21 May 2020 09:15:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AE6151BF599
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 08:47:48 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 408511BF47D
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:15:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A536B8710C
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 08:47:48 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3CE0488C64
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:15:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LI0juzeYAuAj for <devel@linuxdriverproject.org>;
- Thu, 21 May 2020 08:47:47 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from re-prd-fep-044.btinternet.com (mailomta4-re.btinternet.com
- [213.120.69.97])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 398DB86FB7
- for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 08:47:46 +0000 (UTC)
-Received: from re-prd-rgout-001.btmx-prd.synchronoss.net ([10.2.54.4])
- by re-prd-fep-044.btinternet.com with ESMTP id
- <20200521084744.KRVR4009.re-prd-fep-044.btinternet.com@re-prd-rgout-001.btmx-prd.synchronoss.net>;
- Thu, 21 May 2020 09:47:44 +0100
-Authentication-Results: btinternet.com;
- auth=pass (LOGIN) smtp.auth=j.oldman998@btinternet.com
-X-Originating-IP: [31.53.141.224]
-X-OWM-Source-IP: 31.53.141.224 (GB)
-X-OWM-Env-Sender: j.oldman998@btinternet.com
-X-VadeSecure-score: verdict=clean score=0/300, class=clean
-X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduhedrudduuddgtdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuueftkffvkffujffvgffngfevqffopdfqfgfvnecuuegrihhlohhuthemuceftddunecunecujfgurhephffvufffkffosedttdertdertddtnecuhfhrohhmpeflohhhnhcuqfhlughmrghnuceojhhohhhnrdholhgumhgrnhesphholhgvhhhilhhlrdgtohdruhhkqeenucggtffrrghtthgvrhhnpeegfedthfefueeihffgkeefteehuddttdefudetveelveefvdefhfejieejhffggfenucfkphepfedurdehfedrudeguddrvddvgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhephhgvlhhopehhvghnrhihrdhhohhmvgdpihhnvghtpeefuddrheefrddugedurddvvdegpdhmrghilhhfrhhomhepoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqpdhrtghpthhtohepoeguvghvvghlsegurhhivhgvrhguvghvrdhoshhuohhslhdrohhrgheqpdhrtghpthhtohepoehgrhgvghhkhheslhhinhhugihfohhunhgurghtihhonhdrohhrgheqpdhrtghpthhtohepoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqpdhrtghpthhtohepoehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgheq
-X-RazorGate-Vade-Verdict: clean 0
-X-RazorGate-Vade-Classification: clean
-Received: from henry.home (31.53.141.224) by
- re-prd-rgout-001.btmx-prd.synchronoss.net (5.8.340) (authenticated as
- j.oldman998@btinternet.com)
- id 5E3A147D11B190C7; Thu, 21 May 2020 09:47:44 +0100
-From: John Oldman <john.oldman@polehill.co.uk>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8192e: Using comparison to true is error prone
-Date: Thu, 21 May 2020 09:47:32 +0100
-Message-Id: <20200521084732.12576-1-john.oldman@polehill.co.uk>
-X-Mailer: git-send-email 2.17.1
+ with ESMTP id Jxj-8LGm9dsu for <devel@linuxdriverproject.org>;
+ Thu, 21 May 2020 09:15:24 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4206488C48
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 09:15:24 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04L9BnJU127976;
+ Thu, 21 May 2020 09:15:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=bh+xl74w9Pkh3905HBogf0NGla+VU7nalNxpQKJpDgo=;
+ b=a0EChYEYNnlwmOCKS9rkx0gOHg77FbolOr/EsqMpLpNqzEj6dp9cUgIAvocRavU8hKtM
+ HE4kYMhm3vNYS98f217SdV1SDOoxIJVYpdszoh/yr6jJmwEvw9no7Zwy/TLjw9q58nea
+ l3Ofrm3CeWWoHG8oKFLSyCF9rdfifmuKTAMoY3Izj6BCKs+c9DIBgmB4uZSz0jMAXbhs
+ Vdj3K3b1SRl1FGwi1BJeN5iuMokY5B+MytX6jgG9AsF3bjOIyKm2x/yN7st9DhmT18Ez
+ myajXBxweymmQP8+yoRVWWluBETYiA7zkLv30XZ/lL6T17Dhw4qq6fWUM/grRwFdUe5F Dg== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 31284m7gfe-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 21 May 2020 09:15:23 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04L9DERq169437;
+ Thu, 21 May 2020 09:15:22 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3020.oracle.com with ESMTP id 312t3aj105-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 21 May 2020 09:15:22 +0000
+Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04L9FE7h011073;
+ Thu, 21 May 2020 09:15:15 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 21 May 2020 02:15:14 -0700
+Date: Thu, 21 May 2020 12:15:05 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: dinghao.liu@zju.edu.cn
+Subject: Re: Re: [PATCH] media: staging: tegra-vde: fix runtime pm imbalance
+ on error
+Message-ID: <20200521091505.GF30374@kadam>
+References: <20200520095148.10995-1-dinghao.liu@zju.edu.cn>
+ <2b5d64f5-825f-c081-5d03-02655c2d9491@gmail.com>
+ <20200520150230.GC30374@kadam>
+ <2a46539d.b977f.1723553aa81.Coremail.dinghao.liu@zju.edu.cn>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <2a46539d.b977f.1723553aa81.Coremail.dinghao.liu@zju.edu.cn>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9627
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ spamscore=0 mlxlogscore=999
+ phishscore=0 mlxscore=0 malwarescore=0 suspectscore=29 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005210067
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9627
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=29
+ mlxscore=0
+ cotscore=-2147483648 impostorscore=0 malwarescore=0 mlxlogscore=999
+ lowpriorityscore=0 phishscore=0 spamscore=0 bulkscore=0 adultscore=0
+ priorityscore=1501 clxscore=1015 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2005210067
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,75 +101,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, John Oldman <john.oldman@polehill.co.uk>,
- linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Len Brown <len.brown@intel.com>,
+ linux-pm@vger.kernel.org, kjlu@umn.edu,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Pavel Machek <pavel@ucw.cz>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-tegra@vger.kernel.org,
+ Dmitry Osipenko <digetx@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-clear below issues reported by checkpatch.pl:
+On Thu, May 21, 2020 at 11:42:55AM +0800, dinghao.liu@zju.edu.cn wrote:
+> Hi, Dan,
+> 
+> I agree the best solution is to fix __pm_runtime_resume(). But there are also 
+> many cases that assume pm_runtime_get_sync() will change PM usage 
+> counter on error. According to my static analysis results, the number of these 
+> "right" cases are larger. Adjusting __pm_runtime_resume() directly will introduce 
+> more new bugs. Therefore I think we should resolve the "bug" cases individually.
+> 
 
-CHECK: Using comparison to true is error prone
-CHECK: Using comparison to false is error prone
+That's why I was saying that we may need to introduce a new replacement
+function for pm_runtime_get_sync() that works as expected.
 
-Signed-off-by: John Oldman <john.oldman@polehill.co.uk>
----
- drivers/staging/rtl8192e/rtl8192e/rtl_dm.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+There is no reason why we have to live with the old behavior.
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-index 43494a2b6f05..462835684e8b 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-@@ -456,7 +456,7 @@ static void _rtl92e_dm_bandwidth_autoswitch(struct net_device *dev)
- 	if (priv->CurrentChannelBW == HT_CHANNEL_WIDTH_20 ||
- 	   !priv->rtllib->bandwidth_auto_switch.bautoswitch_enable)
- 		return;
--	if (priv->rtllib->bandwidth_auto_switch.bforced_tx20Mhz == false) {
-+	if (!priv->rtllib->bandwidth_auto_switch.bforced_tx20Mhz) {
- 		if (priv->undecorated_smoothed_pwdb <=
- 		    priv->rtllib->bandwidth_auto_switch.threshold_40Mhzto20Mhz)
- 			priv->rtllib->bandwidth_auto_switch.bforced_tx20Mhz = true;
-@@ -1297,7 +1297,7 @@ static void _rtl92e_dm_dig_init(struct net_device *dev)
- static void _rtl92e_dm_ctrl_initgain_byrssi(struct net_device *dev)
- {
- 
--	if (dm_digtable.dig_enable_flag == false)
-+	if (!dm_digtable.dig_enable_flag)
- 		return;
- 
- 	if (dm_digtable.dig_algorithm == DIG_ALGO_BY_FALSE_ALARM)
-@@ -1332,7 +1332,7 @@ static void _rtl92e_dm_ctrl_initgain_byrssi_driver(struct net_device *dev)
- 	u8 i;
- 	static u8	fw_dig;
- 
--	if (dm_digtable.dig_enable_flag == false)
-+	if (!dm_digtable.dig_enable_flag)
- 		return;
- 
- 	if (dm_digtable.dig_algorithm_switch)
-@@ -1366,7 +1366,7 @@ static void _rtl92e_dm_ctrl_initgain_byrssi_false_alarm(struct net_device *dev)
- 	static u32 reset_cnt;
- 	u8 i;
- 
--	if (dm_digtable.dig_enable_flag == false)
-+	if (!dm_digtable.dig_enable_flag)
- 		return;
- 
- 	if (dm_digtable.dig_algorithm_switch) {
-@@ -1501,7 +1501,7 @@ static void _rtl92e_dm_initial_gain(struct net_device *dev)
- 		reset_cnt = 0;
- 	}
- 
--	if (rtllib_act_scanning(priv->rtllib, true) == true) {
-+	if (rtllib_act_scanning(priv->rtllib, true)) {
- 		force_write = 1;
- 		return;
- 	}
--- 
-2.17.1
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
