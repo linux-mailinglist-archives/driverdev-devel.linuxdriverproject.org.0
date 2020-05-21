@@ -1,46 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B35CE1DCE9C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 15:53:07 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5AA5E25BEA;
-	Thu, 21 May 2020 13:53:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W+lVJeVhFmZk; Thu, 21 May 2020 13:53:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8E5C725BF4;
-	Thu, 21 May 2020 13:53:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A21CC1BF361
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 13:52:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C6D61DCE96
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 15:50:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9EDD0875D9
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 13:52:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B6EC5872CF;
+	Thu, 21 May 2020 13:50:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ev1wr-Nxw1gs; Thu, 21 May 2020 13:50:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2838286EFF;
+	Thu, 21 May 2020 13:50:45 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 623AF1BF361
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 13:50:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5E5C0885FB
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 13:50:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bI2dN3LNryeL for <devel@linuxdriverproject.org>;
- Thu, 21 May 2020 13:52:57 +0000 (UTC)
-X-Greylist: delayed 00:10:11 by SQLgrey-1.7.6
-Received: from abadannews.com (highmail.servercms2.com [79.175.145.54])
- by fraxinus.osuosl.org (Postfix) with SMTP id 7F1AA875CD
- for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 13:52:56 +0000 (UTC)
-Received: from e-mail.ua[41.79.219.213] by WIN-6FVLCI4VMSL[79.175.145.54]
- (SMTPD32); Thu, 21 May 2020 18:08:54 +0430
-From: MRS. CHRISTY MCCOOL<lewimelissa04@e-mail.ua>
-To: devel@driverdev.osuosl.org
-Subject: MY DONATION FOR THE LESS PRIVILEGED IN THIS TIME OF PANDEMIC
-Date: 21 May 2020 06:42:16 -0700
-Message-ID: <20200521064215.60C9932FEE6B3A40@e-mail.ua>
+ with ESMTP id 3Qw05rIy2cv2 for <devel@linuxdriverproject.org>;
+ Thu, 21 May 2020 13:50:42 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 905BC885F4
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 13:50:42 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1jblao-0006b4-Gr; Thu, 21 May 2020 13:50:38 +0000
+From: Colin King <colin.king@canonical.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Oliver Graute <oliver.graute@kococonnector.com>,
+ dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
+ devel@driverdev.osuosl.org
+Subject: [PATCH] staging: fbtft: fb_st7789v: make HSD20_IPS numeric and not a
+ string
+Date: Thu, 21 May 2020 14:50:38 +0100
+Message-Id: <20200521135038.345878-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Antivirus: Avast (VPS 200520-0, 05/19/2020), Outbound message
-X-Antivirus-Status: Clean
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,32 +60,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: christymccool1@gmail.com
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I write to ask for your consent to carry out humanitarian 
-projects and help the less privileged in this time of pandemic 
-all over the world, I suffer from advanced cancer that prevents 
-me from realizing my dreams. The doctor informed me that my days 
-are numbered due to my degrading health. That's why I want to 
-send you this sum of money ($4,000,000.00) Four million dollars 
-so you can use it to help orphanages, the homeless and widows in 
-this time this deathly virus (Covid 19) that is holding the world 
-into ransom. 35% for you while you use 65% for the project, if 
-you think you can give these poor children and the poor widow a 
-glimpse of hope and joy, let me know by replying to my private 
-email that is (christymccool1@gmail.com) Thank you for your 
-cooperation and assistance.
+From: Colin Ian King <colin.king@canonical.com>
 
+Currently HSD20_IPS is defined as "true" and will always result in a
+non-zero result even if it is defined as "false" because it is an array
+and that will never be zero. Fix this by defining it as an integer 1
+rather than a literal string.
 
-CHRISTY MCCOOL
+Addessses-Coverity: ("Array compared against 0")
+Fixes: f03c9b788472 ("staging: fbtft: fb_st7789v: Initialize the Display")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/staging/fbtft/fb_st7789v.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/staging/fbtft/fb_st7789v.c b/drivers/staging/fbtft/fb_st7789v.c
+index ebc17e05ecd0..3a280cc1892c 100644
+--- a/drivers/staging/fbtft/fb_st7789v.c
++++ b/drivers/staging/fbtft/fb_st7789v.c
+@@ -24,7 +24,7 @@
+ 	"D0 05 0A 09 08 05 2E 44 45 0F 17 16 2B 33\n" \
+ 	"D0 05 0A 09 08 05 2E 43 45 0F 16 16 2B 33"
+ 
+-#define HSD20_IPS "true"
++#define HSD20_IPS 1
+ 
+ /**
+  * enum st7789v_command - ST7789V display controller commands
 -- 
-This email has been checked for viruses by Avast antivirus software.
-https://www.avast.com/antivirus
+2.25.1
 
 _______________________________________________
 devel mailing list
