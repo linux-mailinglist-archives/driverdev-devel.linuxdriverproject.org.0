@@ -1,79 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77CF21DCA92
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 11:57:55 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 20280891ED;
-	Thu, 21 May 2020 09:57:54 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1fSsIMRwnyvH; Thu, 21 May 2020 09:57:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7BD0C89216;
-	Thu, 21 May 2020 09:57:53 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EE4311BF47D
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:57:51 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id F1B881DCC01
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 13:22:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DAAFA204E9
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 09:57:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4B42C250E3;
+	Thu, 21 May 2020 11:21:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ly19PQ2PmKhZ; Thu, 21 May 2020 11:21:58 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id D6CFE24F92;
+	Thu, 21 May 2020 11:21:56 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6861A1BF425
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 11:21:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 650A08862D
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 11:21:54 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Axnktya7p49d for <devel@linuxdriverproject.org>;
- Thu, 21 May 2020 09:57:51 +0000 (UTC)
+ with ESMTP id nnG+nQTt6Ki1 for <devel@linuxdriverproject.org>;
+ Thu, 21 May 2020 11:21:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by silver.osuosl.org (Postfix) with ESMTPS id F2556204D3
- for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 09:57:50 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id c3so1813973wru.12
- for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 02:57:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:subject:to:cc:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=fgA73O2odwNS1tE9Pa7tUkjFkww58qXLyvI3wxAGKjU=;
- b=agHXvB9IT1FaOvbx9VBAx1tGWOiHgA8EhJXKShdYxPUkSCTPsVQqA2rrQXzdtVILEd
- /LmY8fSF87tlAG977QQW770ocB5zu6WgVOTRbo/6e/5qPN6GMwqG7xj554qI0gWb7AWE
- J01Z8TgtSAR+a111SS9SN39QWkY5vUVp7xwzVQwhdjG7IkDkLoj6FVke4tzolDDlr+bu
- YQ27sdEpl2f7xgQ/RE75enP7jii02jV0Bnad7FjQCVMMyfDeieG7Ff8DpgDmOSOHaAYv
- L03lWd9MZrNfZ+4CBR5zPFBcd4JCUagdPpkeqcsyl+S4shqmQvqztlg70ZifhD3KG2jm
- 3e3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=fgA73O2odwNS1tE9Pa7tUkjFkww58qXLyvI3wxAGKjU=;
- b=iusnuUo7Ge2aJ0HTaO003/UVmj49aodT00iWlWbk5l/9HlzGu/QZ1AfB2VaXCLYO+E
- oTy8mUNnq1E2Wod8zpU+GmHYwN9KN9e8+EKzdb6ogVa4GHHf4QWbxJgLDrWxVgyf0ACE
- q7Boc+I2/Qfi3/Kv0lU0Mmd2gYefcoA/PWvZEvHSP1qWbLU4sYlparVVSFcnttuhTKJk
- C9efhlSccMZ5ULVNyUW4tj7+TVuWIg46G4srGqo5bZM0Cv4+Kt7+/qCv5TtUMri3AesJ
- IzV13xaENwe10Au+e/jdQxQdheNUNj0JE+suIQG+Fxt0+ytvxF/nWeHeheLF71zHpCgp
- pyTA==
-X-Gm-Message-State: AOAM533Fix6hoMdL/o2RAUBDCxAzkcsia9Qt0kZ80F5uf5OIreeFkPvj
- Cva3LJNCJbsUCFR92wD5/gI9Nrcp9d2Tgg==
-X-Google-Smtp-Source: ABdhPJyfRUcGXaKzvRC6WobHIyznva1VDzu0wm3fu0c2BI7bVUcUR9g3IzrGd0Bs0XkF+Zydj5CI8A==
-X-Received: by 2002:adf:8302:: with SMTP id 2mr8201081wrd.114.1590055069527;
- Thu, 21 May 2020 02:57:49 -0700 (PDT)
-Received: from [192.168.43.18] ([85.255.237.70])
- by smtp.gmail.com with ESMTPSA id a12sm5724063wro.68.2020.05.21.02.57.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 21 May 2020 02:57:49 -0700 (PDT)
-From: Malcolm Priestley <tvboxspy@gmail.com>
-Subject: [PATCH 10/10] staging: vt6656: move key frag controls to
- vnt_fill_txkey
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Message-ID: <bb91b159-387a-005b-f614-c541de128c40@gmail.com>
-Date: Thu, 21 May 2020 10:57:47 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 53E04884DB
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 11:21:52 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04LBLoa1142341;
+ Thu, 21 May 2020 11:21:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=zDxy18VJXMKyiEMNyaTfSbB5Ym8PfYq9SfswI99nuIA=;
+ b=c8xNMDVGL5RMNeM39+tJAoMXk61kOfDm6zMxA/j0tZsCRqNUtiMH6D2UTI9ClNeGryYv
+ k9YoOQB7CerLJnfoiPsdAn0gfS5pG8zYqIr5EUlbi5ueeL/dHlp/GBwETFklSIfV9pJ+
+ dbu+meo1r0gD7QeJ5pA+ASByn/dZnCJRWBpnSPhrLsA0/Gf/4AHwlJVzJZIpEYyeUXY1
+ 4lFat/mZ6aE9ZhVmXAjJRU+qLrhKcnBw7lrDLYtwIQ8xE/jRI8vY6ldQVO8pZYRaipKY
+ HHlIb94xydQH35jtGhh84yHPN1QgaYEamAg/3Na9Wkt1POoN2dOeBmSNIw7o+pxHcB0I iQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2120.oracle.com with ESMTP id 31284m7y7h-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 21 May 2020 11:21:50 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04LBDFVv176434;
+ Thu, 21 May 2020 11:21:46 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3020.oracle.com with ESMTP id 3150226mmf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 21 May 2020 11:21:46 +0000
+Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04LBLdYS005721;
+ Thu, 21 May 2020 11:21:39 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 21 May 2020 04:21:39 -0700
+Date: Thu, 21 May 2020 14:21:31 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Dinghao Liu <dinghao.liu@zju.edu.cn>
+Subject: Re: [PATCH] [v2] media: staging: tegra-vde: fix runtime pm imbalance
+ on error
+Message-ID: <20200521112131.GG30374@kadam>
+References: <20200521062746.6656-1-dinghao.liu@zju.edu.cn>
 MIME-Version: 1.0
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200521062746.6656-1-dinghao.liu@zju.edu.cn>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9627
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxscore=0 mlxlogscore=999
+ adultscore=0 bulkscore=0 suspectscore=18 phishscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005210084
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9627
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=18
+ mlxscore=0
+ cotscore=-2147483648 impostorscore=0 malwarescore=0 mlxlogscore=999
+ lowpriorityscore=0 phishscore=0 spamscore=0 bulkscore=0 adultscore=0
+ priorityscore=1501 clxscore=1015 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2005210085
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,83 +98,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- linux-wireless@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kjlu@umn.edu, linux-kernel@vger.kernel.org,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org,
+ Dmitry Osipenko <digetx@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-vnt_fill_txkey now has access to tx_buffer move cipher frag controls
+On Thu, May 21, 2020 at 02:27:45PM +0800, Dinghao Liu wrote:
+> pm_runtime_get_sync() increments the runtime PM usage counter even
+> the call returns an error code. Thus a pairing decrement is needed
+> on the error handling path to keep the counter balanced.
+> 
+> Signed-off-by: Dinghao Liu <dinghao.liu@zju.edu.cn>
 
-The icv_len is the only thing needed from hw_key in vnt_tx_packet.
+Let's stop working around the bug in pm_runtime_get_sync() and write
+a replacement for it instead.
 
-Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
----
- drivers/staging/vt6656/rxtx.c | 23 +++++------------------
- 1 file changed, 5 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
-index bbe449af8acf..9ee57f7c0c88 100644
---- a/drivers/staging/vt6656/rxtx.c
-+++ b/drivers/staging/vt6656/rxtx.c
-@@ -323,10 +323,12 @@ static bool vnt_fill_txkey(struct vnt_tx_buffer *tx_buffer, struct sk_buff *skb)
- 			       tx_key->key, WLAN_KEY_LEN_WEP40);
- 		}
- 
-+		fifo->frag_ctl |= cpu_to_le16(FRAGCTL_LEGACY);
- 		break;
- 	case WLAN_CIPHER_SUITE_TKIP:
- 		ieee80211_get_tkip_p2k(tx_key, skb, fifo->tx_key);
- 
-+		fifo->frag_ctl |= cpu_to_le16(FRAGCTL_TKIP);
- 		break;
- 	case WLAN_CIPHER_SUITE_CCMP:
- 		if (info->control.use_cts_prot) {
-@@ -369,6 +371,7 @@ static bool vnt_fill_txkey(struct vnt_tx_buffer *tx_buffer, struct sk_buff *skb)
- 
- 		memcpy(fifo->tx_key, tx_key->key, WLAN_KEY_LEN_CCMP);
- 
-+		fifo->frag_ctl |= cpu_to_le16(FRAGCTL_AES);
- 		return true;
- 	default:
- 		break;
-@@ -504,7 +507,6 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
- 	struct ieee80211_tx_rate *tx_rate = &info->control.rates[0];
- 	struct ieee80211_rate *rate;
--	struct ieee80211_key_conf *tx_key;
- 	struct ieee80211_hdr *hdr;
- 	struct vnt_tx_buffer *tx_buffer;
- 	struct vnt_tx_fifo_head *tx_buffer_head;
-@@ -606,23 +608,8 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
- 	tx_buffer_head->frag_ctl =
- 			cpu_to_le16(ieee80211_get_hdrlen_from_skb(skb) << 10);
- 
--	if (info->control.hw_key) {
--		tx_key = info->control.hw_key;
--		switch (info->control.hw_key->cipher) {
--		case WLAN_CIPHER_SUITE_WEP40:
--		case WLAN_CIPHER_SUITE_WEP104:
--			tx_buffer_head->frag_ctl |= cpu_to_le16(FRAGCTL_LEGACY);
--			break;
--		case WLAN_CIPHER_SUITE_TKIP:
--			tx_buffer_head->frag_ctl |= cpu_to_le16(FRAGCTL_TKIP);
--			break;
--		case WLAN_CIPHER_SUITE_CCMP:
--			tx_buffer_head->frag_ctl |= cpu_to_le16(FRAGCTL_AES);
--		default:
--			break;
--		}
--		tx_context->frame_len += tx_key->icv_len;
--	}
-+	if (info->control.hw_key)
-+		tx_context->frame_len += info->control.hw_key->icv_len;
- 
- 	tx_buffer_head->current_rate = cpu_to_le16(rate->hw_value);
- 
--- 
-2.25.1
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
