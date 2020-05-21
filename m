@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39B8C1DD578
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 20:00:21 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 786771DD57C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 May 2020 20:01:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 71FC089409;
-	Thu, 21 May 2020 18:00:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B51BE204D8;
+	Thu, 21 May 2020 18:00:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ElCnwBqiamsE; Thu, 21 May 2020 18:00:18 +0000 (UTC)
+	with ESMTP id JVrOIwYaYA-I; Thu, 21 May 2020 18:00:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 32809893E8;
-	Thu, 21 May 2020 18:00:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2EB8921519;
+	Thu, 21 May 2020 18:00:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AB9F81BF9B5
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 18:00:12 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 22BA51BF3A0
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 18:00:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A2FBA87566
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 18:00:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1EB1788631
+ for <devel@linuxdriverproject.org>; Thu, 21 May 2020 18:00:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cKisRxhTumBK for <devel@linuxdriverproject.org>;
- Thu, 21 May 2020 18:00:12 +0000 (UTC)
+ with ESMTP id TEqw+rmkGsXt for <devel@linuxdriverproject.org>;
+ Thu, 21 May 2020 18:00:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
- [209.85.218.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CC933873AD
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 18:00:11 +0000 (UTC)
-Received: by mail-ej1-f68.google.com with SMTP id x1so9904884ejd.8
- for <devel@linuxdriverproject.org>; Thu, 21 May 2020 11:00:11 -0700 (PDT)
+Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
+ [209.85.208.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7A90388613
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 18:00:38 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id l25so7279582edj.4
+ for <devel@driverdev.osuosl.org>; Thu, 21 May 2020 11:00:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=eUkxBv6Ns+W77hPeff5W44hdx05bIoCu8Yc9VruEClw=;
- b=n3gN3uTrWjqb1fLn/6ZcvJHfZ+UhibNTqi+TFQzDa5++14yxepDNg72N0jdZKQvpzk
- +Tqivc/ApycVumme+U5TDTNiLJIEuNcxaE2k/eJbaotFUWnqtcAWpA6OpRZuZrPaMudw
- UglpzEy6a284xoMYLL/NbleEm/fgvsfvVnYziBxgAdQL4rY0JmJ1Lws6TX7ZFLzgcCbe
- 0btDrVJWwUI1NZ+7z5zGgfk1siqP0m8KI6UZUxh7/c5k+Ep5m7WVpkSikXsejTDp05VP
- r7ryRNr7cNDpSrjNs7KvBxEcE0NpC+M9w+FLFQrGBmEWkVRJ7ugVJHX+b+bn+ndZ8iR6
- PhyA==
+ bh=pfQs+IIfcmzsYpTnjJCzMAcoRiR+Y5Dc4AXmiYBhj5s=;
+ b=lXjXE9eC0b/VQ0L4ugB6k/VUWBjctw9BRnR1tzYHIRd+k5dxWXoFYDbHSvuMjaIwA5
+ 6D8i1cf3SHHn/rmUMLjOaFnJdv0b9vkCRJXHtP3AfWWr4CRIrIRBMGIRgphsGHdmVfIy
+ tejVEoriM2exRifh1+a94bcBvKhlR1O/iK6Unxh51kV1hMARstVcGxPFrTYHSzsaT1jb
+ ltirnTHYBCB8/ZcDDDiHWPJsjiG6jr9hQ27r6QGEI3WdVQFmF6r0lqihD5y6/2bTQgGE
+ shqI/RIewn/9r54YaotemLe8v6DiBN1I7ky0z3Y+o6DjegXLSLW/zaBsqLwswFz6u82r
+ 0qZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
- bh=eUkxBv6Ns+W77hPeff5W44hdx05bIoCu8Yc9VruEClw=;
- b=XrygJL6FWmQY4490BcbHkFbHnb3QU7ovvll3E0V60HZ6hbtLnSS5bpONl162UxEoWw
- KWDW0oePkMSavSMIglu2g/rkmAS2vxD3+ePxObfwL3pe245b+2fl/w6u9RKueEKXM5vg
- l9sOyv49PwTzm35/i8PLmy4QVgRtuuSyiAF91udT2qm38hkZf7piUzM0gU+ypyWT6fUF
- msDlX0s3SnhObc7d9cQgWkqIubPwhyNyB8rgNszozFX8LeIuVqTd9PeNw+aWmW/FHOyK
- +YzQUg7HwCjkAS1pbYzZMUhuVFPG3IkgjJe9fwf0eRq39dH8AoBK6kF8hdAvxxwDxkbB
- vVog==
-X-Gm-Message-State: AOAM532mMF8jGRbU18wySDBFRd1xA6aeJjsH9M6aBQFikGjJhYldxIWJ
- 959TOHzieCyhkhahzlE670UThAsZC7Iho5speRc=
-X-Google-Smtp-Source: ABdhPJy8iWsEjvdoDtrHKZfvk996ZjCoPcQtT/IoTAOy/XbzvmFZ4ctt0ETlakzJVH9D87Lr4QZiGMn2I3HSGyj8MbY=
-X-Received: by 2002:a17:906:498a:: with SMTP id
- p10mr4844123eju.163.1590084010086; 
- Thu, 21 May 2020 11:00:10 -0700 (PDT)
+ bh=pfQs+IIfcmzsYpTnjJCzMAcoRiR+Y5Dc4AXmiYBhj5s=;
+ b=GghfqnNrWyEuJgxtHQxieSEQB39ifWRrdTP4WIqZliQ96BJ8x3dly+AUWfo6keIQmd
+ tJQ5bmibz/megLWh81fTa6qt8PFxkYuUvh+2rzSOVfpigNKMhmBmR8tL+F470fa4W5Rt
+ fJysPGjOFDKPrIXZxwR8oO3lg/hjGVu5il28ZCzJ2I3Jox1gVPmeum6dyAAWa85RnZTG
+ L8QxKpjcz5fkjwb60gUMOHbhYYPFfpK1gDzuXE+KrZG47epbRXEOtdpTlUriGGSiTAbs
+ UBVv1+OonbbhCWlZ2U0GHzfPSp4VUp8uVzuPZUZNqKC68m49CPWNjEe1tbjPrcfxZhbs
+ jiUw==
+X-Gm-Message-State: AOAM533w+Jdj8wnIZ/IDK0SMAAR9cRTAugATspFFT7GjIkYR/aRIG30D
+ m17LvnrGI4kK7nac/sVlJbKkY7CllGRkEVi5oMc=
+X-Google-Smtp-Source: ABdhPJxYGJq6CRmNJjdX8PzASP3RTjNNFAQ/7dviQkqh7Ok3WTJuI9t7j6N9BiYZV62hDaKv2M3GCPktxxhkHYNwdnA=
+X-Received: by 2002:a50:ec0d:: with SMTP id g13mr1786275edr.296.1590084036715; 
+ Thu, 21 May 2020 11:00:36 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:aa7:d7d2:0:0:0:0:0 with HTTP; Thu, 21 May 2020 11:00:09
+Received: by 2002:aa7:d7d2:0:0:0:0:0 with HTTP; Thu, 21 May 2020 11:00:36
  -0700 (PDT)
 From: Barrister Robert Richter UN-Attorney at Law Court-Benin
  <eco.bank1204@gmail.com>
-Date: Thu, 21 May 2020 20:00:09 +0200
-Message-ID: <CAOE+jADcrG=5WVjkdFRJcC4wAxP1EtLE-qittF47J2ksTqaJug@mail.gmail.com>
+Date: Thu, 21 May 2020 20:00:36 +0200
+Message-ID: <CAOE+jABvXMpYFRxwYwJtyhYCU2Ep4f5uwyS+_ai2mca4mxUvtg@mail.gmail.com>
 Subject: Contact JP Morgan Chase Bank NY USA to receive your transfer
  $35.700,000Million USD Deposited this Morning
 To: undisclosed-recipients:;
-Content-Type: multipart/mixed; boundary="00000000000096069105a62c48cd"
+Content-Type: multipart/mixed; boundary="0000000000002c27a805a62c4aa0"
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,7 +86,7 @@ Reply-To: jpmorganchasebanknyusa@gmail.com
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---00000000000096069105a62c48cd
+--0000000000002c27a805a62c4aa0
 Content-Type: text/plain; charset="UTF-8"
 
 Dear Friend.
@@ -107,7 +106,7 @@ God Bless you
 Barrister Robert Richter
 UN-Attorney at Law Court-Benin
 
---00000000000096069105a62c48cd
+--0000000000002c27a805a62c4aa0
 Content-Type: image/jpeg; name="Barrister  Robert Richter 2.jpg"
 Content-Disposition: attachment; filename="Barrister  Robert Richter 2.jpg"
 Content-Transfer-Encoding: base64
@@ -308,7 +307,7 @@ lEe+uk1BfQhgYIpUq7eQwQClt/apmGjjfsNNWQW0BgilSop2kwNcki2VuHI/VbkRsacbhN4bXdPj
 SpVKsKJvD+G5GW5mJdCCCTIkdx0q/Yfjou25W2Bftw5HJkHv5Ty0Ox+NKlXL+I6XFKPrOPzQ5T/r
 8Ga9NlmnsT4fZZcM6uoI1VhInsIqtcW4a2EY37P+FIzpPuzzXu7uXhsqVcfJFW0dDHJqmFMNxUMo
 PaJpUqVYmjaf/9k=
---00000000000096069105a62c48cd
+--0000000000002c27a805a62c4aa0
 Content-Type: image/jpeg; name="Barrister  Robert Richter.jpg"
 Content-Disposition: attachment; filename="Barrister  Robert Richter.jpg"
 Content-Transfer-Encoding: base64
@@ -500,7 +499,7 @@ AMmSCTl8fOgDpbwPEWcQ1y+gTOSyrmDHLJVdpA0A51qnRj+v47zX6mhz2z+/Z/cP8RoSk7/saKWv
 wZgacttTZ50pKeIGSFFdyCu26U1UQpHxDQKh3hUjG7r6/amGqU2PEkcKuQSvfqPMf7fStB4FxEDA
 iyxlRediNNyFjlJ3O9Zvgv6RfX6UadHNj++f4Vqv6fsTJ0QsW5S5NoZYYEchB5R5iizAdI/1ayVn
 ny50O8d/pF8h/EKiYj3j+eVSnD5s6ceRqKP/2Q==
---00000000000096069105a62c48cd
+--0000000000002c27a805a62c4aa0
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -511,4 +510,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---00000000000096069105a62c48cd--
+--0000000000002c27a805a62c4aa0--
