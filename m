@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B15531DE510
-	for <lists+driverdev-devel@lfdr.de>; Fri, 22 May 2020 13:07:50 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A7DD1DE50F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 22 May 2020 13:07:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0EF3325B01;
-	Fri, 22 May 2020 11:07:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6043688B83;
+	Fri, 22 May 2020 11:07:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U83Z9vtPfDtj; Fri, 22 May 2020 11:07:47 +0000 (UTC)
+	with ESMTP id Ff3m6nF62Uc3; Fri, 22 May 2020 11:07:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C71792036E;
-	Fri, 22 May 2020 11:07:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 38FA788B1F;
+	Fri, 22 May 2020 11:07:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E8F981BF32D
+ by ash.osuosl.org (Postfix) with ESMTP id 6297F1BF32D
  for <devel@linuxdriverproject.org>; Fri, 22 May 2020 11:07:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E3AC02036E
+ by silver.osuosl.org (Postfix) with ESMTP id 549522582D
  for <devel@linuxdriverproject.org>; Fri, 22 May 2020 11:07:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NGaETqrIUufF for <devel@linuxdriverproject.org>;
+ with ESMTP id 8-fJq-AHUsfy for <devel@linuxdriverproject.org>;
  Fri, 22 May 2020 11:07:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id 494E725734
+ by silver.osuosl.org (Postfix) with ESMTPS id 19C762036E
  for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 11:07:41 +0000 (UTC)
-IronPort-SDR: EJ9OH6Gf/q2h9BE8GI/C1j5mjcThMC6rDjNATiVfp8cIUzjlHa4IIev3trBA0eWAIjXn4GHcUr
- R7nHyBR4zMSA==
+IronPort-SDR: AZiMzdL/WlUgcBs0mqBX4nlWP9p/Sv2Nb8lB0HkDs1FkqUxgKEI2+E11BoCMVexUuHpbyeXzyX
+ VR9R+H0USkVA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 May 2020 04:07:41 -0700
-IronPort-SDR: szUzq/POkDtr0AokrWyuwy1naDrbgFYz/h7WE3zNQOl00eGEkyyBdupHY242HkvSFgIxiwV0Ph
- x8krTCng3plg==
+ 22 May 2020 04:07:40 -0700
+IronPort-SDR: ue/M+7P2BSTTY+BXHG6TY400t9AEafs1O9UjKu7SayCMKgZxUd+XaxP1qCcYaWl+SyFAFr5IHW
+ uvcKj0PgOveg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,421,1583222400"; d="scan'208";a="265396448"
+X-IronPort-AV: E=Sophos;i="5.73,421,1583222400"; d="scan'208";a="440820566"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 22 May 2020 04:07:39 -0700
+ by orsmga005.jf.intel.com with ESMTP; 22 May 2020 04:07:39 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jc5Wc-000EcL-VS; Fri, 22 May 2020 19:07:38 +0800
-Date: Fri, 22 May 2020 19:07:17 +0800
+ id 1jc5Wc-000EaQ-OR; Fri, 22 May 2020 19:07:38 +0800
+Date: Fri, 22 May 2020 19:07:28 +0800
 From: kbuild test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- 2cd38fd15e4ebcfe917a443734820269f8b5ba2b
-Message-ID: <5ec7b265.ziT+Cz9FVaX6IpJg%lkp@intel.com>
+Subject: [driver-core:driver-core-linus] BUILD SUCCESS
+ 4ef12f7198023c09ad6d25b652bd8748c965c7fa
+Message-ID: <5ec7b270.rrK9c+IrlKGpzDZr%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,8 +73,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: 2cd38fd15e4ebcfe917a443734820269f8b5ba2b  driver core: Remove unnecessary is_fwnode_dev variable in device_add()
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-linus
+branch HEAD: 4ef12f7198023c09ad6d25b652bd8748c965c7fa  kobject: Make sure the parent does not get released before its children
 
 elapsed time: 1454m
 
