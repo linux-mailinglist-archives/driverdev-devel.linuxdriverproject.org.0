@@ -1,87 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4EE9D1DE92C
-	for <lists+driverdev-devel@lfdr.de>; Fri, 22 May 2020 16:43:26 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DBD7E1DEEA5
+	for <lists+driverdev-devel@lfdr.de>; Fri, 22 May 2020 19:54:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E471E25D10;
-	Fri, 22 May 2020 14:43:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D80E088706;
+	Fri, 22 May 2020 17:54:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CejuJpuNHzra; Fri, 22 May 2020 14:43:23 +0000 (UTC)
+	with ESMTP id 93y3PazPq-rI; Fri, 22 May 2020 17:54:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B5F9825C56;
-	Fri, 22 May 2020 14:43:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B6093886DD;
+	Fri, 22 May 2020 17:54:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A86441BF2E4
- for <devel@linuxdriverproject.org>; Fri, 22 May 2020 14:43:19 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 489951BF3BC
+ for <devel@linuxdriverproject.org>; Fri, 22 May 2020 17:54:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 96D5988C30
- for <devel@linuxdriverproject.org>; Fri, 22 May 2020 14:43:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 45E4587A5F
+ for <devel@linuxdriverproject.org>; Fri, 22 May 2020 17:54:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BRBKEFw2JZOg for <devel@linuxdriverproject.org>;
- Fri, 22 May 2020 14:43:17 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f65.google.com (mail-ed1-f65.google.com
- [209.85.208.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2F9C688ADA
- for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 14:43:17 +0000 (UTC)
-Received: by mail-ed1-f65.google.com with SMTP id l25so9436309edj.4
- for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 07:43:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=pEMnosclMENELxtgkfNlqnRlbAPuv7/WGXXU3o+3Wgk=;
- b=qKkCPN704QYXuch7cQD5KsRch8SM+Fq9IMwTFvTcpf3kTg9cv+vqBfsXxt8gM8j3Ck
- Z/5F24AEHclpbrV533kWoRNzD8W/PoJ1/F8OMl5/gkA6fQ5kFMT0x0EVK+HlFxnEyw5A
- 9A/+BuuLZYZ5B3ULz6GxHOD/Xsu7SL9y3PwtgpWz3j7OmG1OIk9eHlrwfl48yzdxwEez
- N8c+nA2nTGE+TC5t4C8meFkKsC1sgs62kFquqYj3uVPPezktkThNmH9JMhblVQ3Kzrb6
- x05tyFSQccbls+scPBrEeI7pNjNRycpdGUWrnFlw/QpC4bb0RohfFJIT9nd0nQoChgZZ
- UqBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=pEMnosclMENELxtgkfNlqnRlbAPuv7/WGXXU3o+3Wgk=;
- b=csGrHjqLanDkdDK7h11Lwl0ZD+wioAYp9r3t2wpBsJCXj9DSDsqjDbthYiLlnM9bE4
- peZihcKlrB8He2KZYRHt2lik89LH9jrkV3M8cEwSrBCPe4PbQEBP+niGJFkxQo7R91FG
- phw9wFVYQ8wzJCYoaaeLBSEK6iEHDsR4uOEpES95GAvFGqqRlvlMMPCsyl9RWYnrQUSo
- 3wkvHvv/jlZYScODRwgpxci55YDkdEoZeXsG6ouHjPWpHXdZ78mRvCoFIUQ14obPQbHD
- fQGaSyVSbLUlOAafLIa1hOziUUUcZ8LibuA+gaqI5YjfQkimUivAl1qMRAX1toFFI69x
- v7Mw==
-X-Gm-Message-State: AOAM531PWKvjOCkvUxJKsesyqyu2ygEG3RRMKccmiigYsBeuHy7F66xg
- tN6IfNDKG0Ru4O9mB9eSBJI=
-X-Google-Smtp-Source: ABdhPJxQKMSVP7UsCOBRlGM0TjNDYKXZhvaGaCnYahr/v+jJ65GzxqvZSy31ohwwlHMRkM8jH6VSTg==
-X-Received: by 2002:a05:6402:946:: with SMTP id
- h6mr3309459edz.245.1590158595504; 
- Fri, 22 May 2020 07:43:15 -0700 (PDT)
-Received: from localhost (pd9e51079.dip0.t-ipconnect.de. [217.229.16.121])
- by smtp.gmail.com with ESMTPSA id w14sm8284896ejk.13.2020.05.22.07.43.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2020 07:43:13 -0700 (PDT)
-Date: Fri, 22 May 2020 16:43:12 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: Re: [PATCH] media: staging: tegra-vde: fix runtime pm imbalance
- on error
-Message-ID: <20200522144312.GA2374603@ulmo>
-References: <20200520095148.10995-1-dinghao.liu@zju.edu.cn>
- <2b5d64f5-825f-c081-5d03-02655c2d9491@gmail.com>
- <20200520150230.GC30374@kadam>
- <2a46539d.b977f.1723553aa81.Coremail.dinghao.liu@zju.edu.cn>
- <20200521091505.GF30374@kadam>
- <CAJZ5v0irLayBUPRWNT1tcZivz9inS1YbUgGj5WXvucLKKwRQAw@mail.gmail.com>
- <20200521173901.GA22310@kadam> <20200522131031.GL2163848@ulmo>
- <20200522132318.GM30374@kadam>
+ with ESMTP id U99YqGzT2ovU for <devel@linuxdriverproject.org>;
+ Fri, 22 May 2020 17:54:04 +0000 (UTC)
+X-Greylist: delayed 00:40:00 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0252.hostedemail.com
+ [216.40.44.252])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0BDCE87A55
+ for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 17:54:03 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave05.hostedemail.com (Postfix) with ESMTP id 7A65918028E8B
+ for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 16:36:10 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay05.hostedemail.com (Postfix) with ESMTP id E613418028231;
+ Fri, 22 May 2020 16:36:07 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 10, 1, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:800:960:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2198:2199:2393:2553:2559:2562:2693:2828:3138:3139:3140:3141:3142:3353:3622:3865:3866:3867:3868:3870:3871:3872:3874:4031:4321:4419:5007:6119:7514:8909:8957:10007:10400:10848:11026:11232:11658:11914:12043:12296:12297:12555:12740:12760:12895:13069:13311:13357:13439:14096:14097:14181:14659:14721:21080:21324:21451:21611:21627:21740:21939:30012:30020:30029:30054:30056:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:1:0,
+ LFtime:2, LUA_SUMMARY:none
+X-HE-Tag: pan16_100eb4426d28
+X-Filterd-Recvd-Size: 3024
+Received: from XPS-9350.home (unknown [47.151.136.130])
+ (Authenticated sender: joe@perches.com)
+ by omf06.hostedemail.com (Postfix) with ESMTPA;
+ Fri, 22 May 2020 16:36:06 +0000 (UTC)
+Message-ID: <6ab4139ec78928961a19e5fdbda139bb8cff9cb5.camel@perches.com>
+Subject: Re: [PATCH] taging: speakup: remove volatile
+From: Joe Perches <joe@perches.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>, MugilRaj <dmugil2000@gmail.com>
+Date: Fri, 22 May 2020 09:36:05 -0700
+In-Reply-To: <20200522103406.GK30374@kadam>
+References: <1590138989-6091-1-git-send-email-dmugil2000@gmail.com>
+ <20200522103406.GK30374@kadam>
+User-Agent: Evolution 3.36.2-0ubuntu1 
 MIME-Version: 1.0
-In-Reply-To: <20200522132318.GM30374@kadam>
-User-Agent: Mutt/1.13.1 (2019-12-14)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,194 +74,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Len Brown <len.brown@intel.com>,
- dinghao.liu@zju.edu.cn, Linux PM <linux-pm@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>, Kangjie Lu <kjlu@umn.edu>,
- Pavel Machek <pavel@ucw.cz>, linux-tegra <linux-tegra@vger.kernel.org>,
- Dmitry Osipenko <digetx@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============4459297920033001814=="
+Cc: devel@driverdev.osuosl.org, Kirk Reiser <kirk@reisers.ca>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, speakup@linux-speakup.org,
+ linux-kernel@vger.kernel.org, Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Chris Brannon <chris@the-brannons.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Fri, 2020-05-22 at 13:34 +0300, Dan Carpenter wrote:
+> On Fri, May 22, 2020 at 02:46:28PM +0530, MugilRaj wrote:
+> > fix checkpatch.pl warning, which is Use of volatile is usually wrong: see
+> > Documentation/process/volatile-considered-harmful.rst
+> > Signed-off-by: MugilRaj <dmugil2000@gmail.com>
+> 
+> Please put a blank before the Signed-off-by line.
+> 
+> Probably there should be a space between your first and last name.  It's
+> supposed to your legal name like for signing a legal document so use
+> whatever is appropriate legal documents in your country.
+> 
+> Also the Documentation/process/volatile-considered-harmful.rst explains
+> that people often use "volatile" when they should be using locking for
+> synchronization.  That seems to be the case here.  So the correct fix is
+> to add locking.  That's a little bit complicated to do and requires
+> testing.
+> 
+> If we apply this patch, then we have silenced the warning so now someone
+> will have to look for the bug.  But if we leave it as-is, then everyone
+> will know that the code is buggy.  So let's leave it as-is until we are
+> able to fix the bug.
+> 
+> It's always better to have easy to find bugs, than hidden bugs.
 
---===============4459297920033001814==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="sdtB3X0nJg68CQEu"
-Content-Disposition: inline
+And better still to comment known opportunities to
+improve the code so the next time someone tries to
+remove this volatile, there's a comment right there
+showing what's necessary instead.
 
+Something like:
+---
+ drivers/staging/speakup/speakup_decext.c | 1 +
+ 1 file changed, 1 insertion(+)
 
---sdtB3X0nJg68CQEu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/staging/speakup/speakup_decext.c b/drivers/staging/speakup/speakup_decext.c
+index 7408eb29cf38..e68e6046bb51 100644
+--- a/drivers/staging/speakup/speakup_decext.c
++++ b/drivers/staging/speakup/speakup_decext.c
+@@ -21,6 +21,7 @@
+ #define SYNTH_CLEAR 0x03
+ #define PROCSPEECH 0x0b
+ 
++/* TODO: Remove volatile, maybe add locks to read_buff_add and synth_full() ? */
+ static volatile unsigned char last_char;
+ 
+ static void read_buff_add(u_char ch)
 
-On Fri, May 22, 2020 at 04:23:18PM +0300, Dan Carpenter wrote:
-> On Fri, May 22, 2020 at 03:10:31PM +0200, Thierry Reding wrote:
-> > On Thu, May 21, 2020 at 08:39:02PM +0300, Dan Carpenter wrote:
-> > > On Thu, May 21, 2020 at 05:22:05PM +0200, Rafael J. Wysocki wrote:
-> > > > On Thu, May 21, 2020 at 11:15 AM Dan Carpenter <dan.carpenter@oracl=
-e.com> wrote:
-> > > > >
-> > > > > On Thu, May 21, 2020 at 11:42:55AM +0800, dinghao.liu@zju.edu.cn =
-wrote:
-> > > > > > Hi, Dan,
-> > > > > >
-> > > > > > I agree the best solution is to fix __pm_runtime_resume(). But =
-there are also
-> > > > > > many cases that assume pm_runtime_get_sync() will change PM usa=
-ge
-> > > > > > counter on error. According to my static analysis results, the =
-number of these
-> > > > > > "right" cases are larger. Adjusting __pm_runtime_resume() direc=
-tly will introduce
-> > > > > > more new bugs. Therefore I think we should resolve the "bug" ca=
-ses individually.
-> > > > > >
-> > > > >
-> > > > > That's why I was saying that we may need to introduce a new repla=
-cement
-> > > > > function for pm_runtime_get_sync() that works as expected.
-> > > > >
-> > > > > There is no reason why we have to live with the old behavior.
-> > > >=20
-> > > > What exactly do you mean by "the old behavior"?
-> > >=20
-> > > I'm suggesting we leave pm_runtime_get_sync() alone but we add a new
-> > > function which called pm_runtime_get_sync_resume() which does somethi=
-ng
-> > > like this:
-> > >=20
-> > > static inline int pm_runtime_get_sync_resume(struct device *dev)
-> > > {
-> > > 	int ret;
-> > >=20
-> > > 	ret =3D __pm_runtime_resume(dev, RPM_GET_PUT);
-> > > 	if (ret < 0) {
-> > > 		pm_runtime_put(dev);
-> > > 		return ret;
-> > > 	}
-> > > 	return 0;
-> > > }
-> > >=20
-> > > I'm not sure if pm_runtime_put() is the correct thing to do?  The oth=
-er
-> > > thing is that this always returns zero on success.  I don't know that
-> > > drivers ever care to differentiate between one and zero returns.
-> > >=20
-> > > Then if any of the caller expect that behavior we update them to use =
-the
-> > > new function.
-> >=20
-> > Does that really have many benefits, though? I understand that this
-> > would perhaps be easier to use because it is more in line with how other
-> > functions operate. On the other hand, in some cases you may want to call
-> > a different version of pm_runtime_put() on failure, as discussed in
-> > other threads.
->=20
-> I wasn't CC'd on the other threads so I don't know.  :/
-
-It was actually earlier in this thread, see here for example:
-
-	http://patchwork.ozlabs.org/project/linux-tegra/patch/20200520095148.10995=
--1-dinghao.liu@zju.edu.cn/#2438776
-
-> I have always assumed it was something like this but I don't know the
-> details and there is no documentation.
-
-Now, I don't know more than you do, but it sounds to me like there are
-multiple valid ways that we can use to drop the runtime PM reference and
-whatever we choose to do in this new function may not always be the
-right thing.
-
-> http://sweng.the-davies.net/Home/rustys-api-design-manifesto
-> You're essentially arguing that it's a #1 on Rusty's scale but ideally
-> we would want to be at #7.
-
-I think we could probably get it to at least a 3 or a 4 on that list if
-we add a bit of documentation and fix all existing users.
-
-Yes, 7 would be better than that, but I think we have to weigh the cost
-of the added fragmentation versus the benefits that it gives us.
-
-> > Even ignoring that issue, any existing callsites that are leaking the
-> > reference would have to be updated to call the new function, which would
-> > be pretty much the same amount of work as updating the callsites to fix
-> > the leak, right?
->=20
-> With the current API we're constantly adding bugs.  I imagine that once
-> we add a straight forward default and some documentation then we will
-> solve this.
-
-In my experience this stuff is often copy/pasted, so once we fix up all
-of the bugs (and perhaps even add a coccinelle script) we shoudl be
-seeing less bugs added all the time.
-
-That said, I'm not opposed to adding a new function if we can make it
-actually result in an overall improvement. What I'd hate to do is add a
-new API that we all think is superior but then ends up not being usable
-in half of the cases.
-
-> > So if instead we just fix up the leaks, we might have a case of an API
-> > that doesn't work as some of us (myself included) expected it, but at
-> > least it would be consistent. If we add another variant things become
-> > fragmented and therefore even more complicated to use and review.
->=20
-> That's the approach that we've been trying and it's clearly not working.
-
-I think this is something we can likely solve through education and
-documentation. Runtime PM is still a fairly new topic that not a lot of
-people have experience with (at least if I extrapolate from the many
-issues I've run into lately related to runtime PM), so I think it just
-takes time for everyone to catch up. This looks similar to me to how we
-used to have every allocation failure print out an error, even though
-the allocator already complains pretty loudly when things go wrong. Now
-we've removed most (if not all) of the redundant error messages and it's
-become common knowledge among most maintainers, so new instances
-typically get caught during review.
-
-But again, if you can come up with a good alternative that works for the
-majority of cases I think that would also be fine. Getting things right
-without actually knowing any of the background is obviously better than
-having to actually educate people. =3D)
-
-Thierry
-
---sdtB3X0nJg68CQEu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl7H5P4ACgkQ3SOs138+
-s6Fm5xAAuyo73K+oaTfn9V3Xq+33bmmc26jVlg+RaqH4wb7uGlyZ3RnfCrpZ5no2
-UsfcaSG3gQjWqMjRIUDFTt4n7upoJVkQ4LnWHOxOTKE6z1dtzdm0b+U29MuGeEnj
-ETKlbh9FBF+uQtyoPW+5KL2msrgBW8Wt5xRhWcN7W6Mkzg90urOK91+QpZlnuc8a
-B2ENjxDrUhhnMll00CkvbvQ+ihH53MpkVJ+3L8fOO5pC9yHrZkM71lPOH5obfuCh
-bYzHLEN9Hy3np3VSTavM0PJCqQVzx8b9cwk0PN+hSx/hd2HWzn1jWp822UmFotJu
-hUQV+epUX9Y99tdJXQQwYAET0oqC9vm9kQ8xdhmSRUKi5srwtEnzmlvIhMlYoqSf
-JO8iJcOVUFJdiYL9Uv+JsVnhIU4l8vSLwz7vhpHOJIwgR8AJOKcQ55+9H+jucqD7
-ozeXdsOxiVjskuHH5Qv8UYHXqtWrMI+PL8CIFsGw2P75NgUEW7UXWHijCsgC7dqC
-vAe6ya6sEtZleXp1eE1k93sAW6CVi1ZyCOGweZBeJyUE9TqnjHzWJJWwr+4gfoii
-0Iz93Q29sVVaLlPyT0LTlELr4+bXtDL2PstGn5NHxhGxW2yyG2gLkt5ua3lOlDmx
-1rWK9TFElvt2Of4CXSUU/XXvpMYcDjsRdL7miZ8rwFVyh66aIIU=
-=l737
------END PGP SIGNATURE-----
-
---sdtB3X0nJg68CQEu--
-
---===============4459297920033001814==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============4459297920033001814==--
