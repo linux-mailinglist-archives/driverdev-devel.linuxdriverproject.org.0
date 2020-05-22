@@ -1,90 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0D941DE48E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 22 May 2020 12:36:29 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B29EF1DE509
+	for <lists+driverdev-devel@lfdr.de>; Fri, 22 May 2020 13:06:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 36B34258C4;
-	Fri, 22 May 2020 10:36:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4591687963;
+	Fri, 22 May 2020 11:06:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OOdqOMoNzj2K; Fri, 22 May 2020 10:36:27 +0000 (UTC)
+	with ESMTP id FY9vICydUfbz; Fri, 22 May 2020 11:06:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E26DC204AA;
-	Fri, 22 May 2020 10:36:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1C0EF87949;
+	Fri, 22 May 2020 11:06:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 885701BF337
- for <devel@linuxdriverproject.org>; Fri, 22 May 2020 10:36:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E5B231BF32D
+ for <devel@linuxdriverproject.org>; Fri, 22 May 2020 11:06:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6EBD020465
- for <devel@linuxdriverproject.org>; Fri, 22 May 2020 10:36:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E02F225734
+ for <devel@linuxdriverproject.org>; Fri, 22 May 2020 11:06:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HEyj4HwCi+Zr for <devel@linuxdriverproject.org>;
- Fri, 22 May 2020 10:36:22 +0000 (UTC)
+ with ESMTP id UfTCXY6ds+rQ for <devel@linuxdriverproject.org>;
+ Fri, 22 May 2020 11:06:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by silver.osuosl.org (Postfix) with ESMTPS id 99F34203C9
- for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 10:36:22 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04MAXNnw065360;
- Fri, 22 May 2020 10:36:21 GMT
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id A893D2036E
+ for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 11:06:36 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04MAvWxd051474;
+ Fri, 22 May 2020 11:06:35 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : references : mime-version : content-type :
  in-reply-to; s=corp-2020-01-29;
- bh=K27L96mmV4GmzDbNladkq7oBFSKsiC4OG9GSzTfY0Ak=;
- b=BCpOf+BKx5AqZuHLlQvpkhfyOOlTJ2mOxlBW1TFVIzh3GdXhVWby1IxuqOq2J6Cgikvc
- 1nHdQ4FRh1opqD1mtvnxyWpkK/lazqvA81Szytq3Ifor6fXs8He485Rnc8G6DHdX2nKb
- 1Ak9x9YzyG5Zp9q+SFPzcYI1UJJIBPgAEmebcDCO+s9KyKjGqHf9oZJsVMXLbfUEAydH
- k3iOGswe2xdTMG6Rw3yq1wfRz2y741cauIcTPbLUg7yUA/27cMssCgL+KzkZxn6sD5Q2
- T6LsQgjKIkTUhHh+m+NKIxbJer/YFT4t+/dqxfp6FBbj9pgj/Gqh628O/TpAJMRo2it2 +Q== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 3127krn4hb-1
+ bh=h+IhCi8QC7aiB6PiDJQfHb4bxl8n8/F15j3Q6LkLP+I=;
+ b=tLWSc+oUFd4uWsuo+lM/HJquZ33VFhTJYIWFrNsnMwOQVFlAeRjOSGVjx9M2hmikH+TC
+ acdf+ONyST5Ky0EkQV5P1cpZ3WnHst6Wjprk8+ndVxcPV2SNuwpfwHX22mYTDKCenlZn
+ nFLhHJLj5Mn1tWLFlDWlKfn+zh239YJ/pZ+AvBGExVN/Xrp/9PhOp5OiuZgU8yoaTPdD
+ mZbTRBVHQFHXfYtUaRMZ22fBi47Pt5UMLe4T08PDOKxUxU0DkyhUpv+yToTi3dOqgVWf
+ YhM6Re4gOs8/PUj9t52D5MwIodrqAVbeue8MOTYJfxlI5S98Dj1lYeQkEyXwOLlAKy4R lg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 31501rkq8n-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 22 May 2020 10:36:21 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04MAXGkp165946;
- Fri, 22 May 2020 10:34:20 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 312t3e55g5-1
+ Fri, 22 May 2020 11:06:34 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04MB2jmR094300;
+ Fri, 22 May 2020 11:06:34 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 313gj79sxf-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 22 May 2020 10:34:20 +0000
-Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04MAYEBO031342;
- Fri, 22 May 2020 10:34:17 GMT
+ Fri, 22 May 2020 11:06:34 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04MB6Wfu000538;
+ Fri, 22 May 2020 11:06:32 GMT
 Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 22 May 2020 03:34:13 -0700
-Date: Fri, 22 May 2020 13:34:07 +0300
+ with ESMTP ; Fri, 22 May 2020 04:06:31 -0700
+Date: Fri, 22 May 2020 14:06:24 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
-To: MugilRaj <dmugil2000@gmail.com>
-Subject: Re: [PATCH] taging: speakup: remove volatile
-Message-ID: <20200522103406.GK30374@kadam>
-References: <1590138989-6091-1-git-send-email-dmugil2000@gmail.com>
+To: Mitchell Tasman <tasman@leaflabs.com>
+Subject: Re: [PATCH] staging: vchiq_arm: cast with __force as needed
+Message-ID: <20200522110623.GL30374@kadam>
+References: <20200519004531.33158-1-tasman@leaflabs.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1590138989-6091-1-git-send-email-dmugil2000@gmail.com>
+In-Reply-To: <20200519004531.33158-1-tasman@leaflabs.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9628
  signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- spamscore=0 mlxlogscore=788
- phishscore=0 mlxscore=0 malwarescore=0 suspectscore=0 adultscore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ spamscore=0 malwarescore=0
+ mlxscore=0 adultscore=0 bulkscore=0 suspectscore=0 mlxlogscore=999
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2005220086
+ definitions=main-2005220091
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9628
  signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0 spamscore=0
- bulkscore=0 clxscore=1011 priorityscore=1501 mlxscore=0 impostorscore=0
- suspectscore=0 mlxlogscore=822 malwarescore=0 cotscore=-2147483648
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2005220086
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 spamscore=0
+ mlxlogscore=999 clxscore=1011 priorityscore=1501 cotscore=-2147483648
+ impostorscore=0 bulkscore=0 adultscore=0 malwarescore=0 phishscore=0
+ mlxscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2005220090
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,38 +97,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Kirk Reiser <kirk@reisers.ca>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, speakup@linux-speakup.org,
- linux-kernel@vger.kernel.org, Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Chris Brannon <chris@the-brannons.com>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Marcelo Diop-Gonzalez <marcgonzalez@google.com>, linux-kernel@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Jamal Shareef <jamal.k.shareef@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, May 22, 2020 at 02:46:28PM +0530, MugilRaj wrote:
-> fix checkpatch.pl warning, which is Use of volatile is usually wrong: see
-> Documentation/process/volatile-considered-harmful.rst
-> Signed-off-by: MugilRaj <dmugil2000@gmail.com>
+On Mon, May 18, 2020 at 08:45:31PM -0400, Mitchell Tasman wrote:
+> In several cases where a pointer marked as __user is
+> (intentionally) assigned or passed to a non-marked target,
+> cast to the target pointer type with a __force directive
+> to quiet warnings from sparse.
+> 
+> Signed-off-by: Mitchell Tasman <tasman@leaflabs.com>
+> ---
+>  .../vc04_services/interface/vchiq_arm/vchiq_2835_arm.c     | 7 ++++---
+>  .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c  | 4 +++-
+>  2 files changed, 7 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+> index c18c6ca0b6c0..38a13e4618a8 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+> @@ -371,14 +371,15 @@ create_pagelist(char __user *buf, size_t count, unsigned short type)
+>  	pagelistinfo->scatterlist = scatterlist;
+>  	pagelistinfo->scatterlist_mapped = 0;
+>  
+> -	if (is_vmalloc_addr(buf)) {
+> +	if (is_vmalloc_addr((void __force *)buf)) {
 
-Please put a blank before the Signed-off-by line.
+Am I reading this correctly???
 
-Probably there should be a space between your first and last name.  It's
-supposed to your legal name like for signing a legal document so use
-whatever is appropriate legal documents in your country.
+This is actually a user controlled pointer that comes from the
+vchiq_ioctl() when we do VCHIQ_IOC_QUEUE_BULK_TRANSMIT/RECEIVE.  So we
+take random pointer from user space and if it happens to point to kernel
+space then we trust it and presumably start BULK_TRANSMITing data to
+it???
 
-Also the Documentation/process/volatile-considered-harmful.rst explains
-that people often use "volatile" when they should be using locking for
-synchronization.  That seems to be the case here.  So the correct fix is
-to add locking.  That's a little bit complicated to do and requires
-testing.
-
-If we apply this patch, then we have silenced the warning so now someone
-will have to look for the bug.  But if we leave it as-is, then everyone
-will know that the code is buggy.  So let's leave it as-is until we are
-able to fix the bug.
-
-It's always better to have easy to find bugs, than hidden bugs.
+LOL....  This doesn't seem safe at all.
 
 regards,
 dan carpenter
