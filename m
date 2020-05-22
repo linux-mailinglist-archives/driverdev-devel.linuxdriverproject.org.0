@@ -1,98 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 877D11DEEA2
-	for <lists+driverdev-devel@lfdr.de>; Fri, 22 May 2020 19:50:56 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9676B1DE8AD
+	for <lists+driverdev-devel@lfdr.de>; Fri, 22 May 2020 16:21:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DAE7387845;
-	Fri, 22 May 2020 17:50:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DAB7988C5B;
+	Fri, 22 May 2020 14:21:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DJFvh0PixZwm; Fri, 22 May 2020 17:50:47 +0000 (UTC)
+	with ESMTP id XnyalcW18kPS; Fri, 22 May 2020 14:21:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 67AFC876BD;
-	Fri, 22 May 2020 17:50:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3A0F388C50;
+	Fri, 22 May 2020 14:21:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3EDA01BF3BC
- for <devel@linuxdriverproject.org>; Fri, 22 May 2020 17:50:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E3491BF2E4
+ for <devel@linuxdriverproject.org>; Fri, 22 May 2020 14:21:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 35D0320494
- for <devel@linuxdriverproject.org>; Fri, 22 May 2020 17:50:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5ACA888C2F
+ for <devel@linuxdriverproject.org>; Fri, 22 May 2020 14:21:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LfyqP16Q3ZlW for <devel@linuxdriverproject.org>;
- Fri, 22 May 2020 17:50:43 +0000 (UTC)
+ with ESMTP id KUKcsCkLTNEl for <devel@linuxdriverproject.org>;
+ Fri, 22 May 2020 14:21:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by silver.osuosl.org (Postfix) with ESMTPS id 5776B1FFFF
- for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 17:50:43 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04MHg0BB003279;
- Fri, 22 May 2020 17:50:41 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to :
- subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=Y5AXc/cpSAeSmxucaXQUpDP0kiRMqR98nq1i3vlmXro=;
- b=GUs3p2oTIgP2UCZ9nvvO+JUfUUnqedORu4HYHpVBhSGkNl+SBUeU6ymkKradd+x3VzPx
- YRG58/wdLXVXp1kAY3KXpD4P60I/9JqbTduDN0t1r/66U+ri2npaIZ7XWDlAjtWjD9Bk
- b5hoOWEUm6RsCXTT+Kectvb07ygYqr84QEcHj1Fo4dOO9+rpm5vMbFr/1jg3tcUZTevN
- qiE2gBMArgJzlAaLcRfTL9ZaXCvUpctTqUV1DIWwSCn8Mcqf9UnXL5CAsqjrMAR1YaXq
- tvoanOcxtK2pKuXO2RqMRxFBzcpopYNSRc1gDxLiJC5OHhHsFAi25FVOE2mfCwEe9JAN bA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 31284mf0w0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 22 May 2020 17:50:41 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04MHmjIm121754;
- Fri, 22 May 2020 17:50:41 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 313gj7un2r-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 22 May 2020 17:50:41 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04MHockS008585;
- Fri, 22 May 2020 17:50:39 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 22 May 2020 10:50:38 -0700
-Date: Fri, 22 May 2020 20:50:31 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Joe Perches <joe@perches.com>, MugilRaj <dmugil2000@gmail.com>,
- devel@driverdev.osuosl.org, Kirk Reiser <kirk@reisers.ca>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- speakup@linux-speakup.org, linux-kernel@vger.kernel.org,
- Chris Brannon <chris@the-brannons.com>
-Subject: Re: [PATCH] taging: speakup: remove volatile
-Message-ID: <20200522175031.GO30374@kadam>
-References: <1590138989-6091-1-git-send-email-dmugil2000@gmail.com>
- <20200522103406.GK30374@kadam>
- <6ab4139ec78928961a19e5fdbda139bb8cff9cb5.camel@perches.com>
- <20200522171312.s2ciifuxozwav2ym@function>
+Received: from mail.foescocursos.es (unknown [146.255.98.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9949588C16
+ for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 14:21:00 +0000 (UTC)
+Received: from 170.red-83-32-33.dynamicip.rima-tde.net
+ (170.red-83-32-33.dynamicip.rima-tde.net [83.32.33.170])
+ by mail.foescocursos.es (Postfix) with ESMTPSA id 0C70D8910D0
+ for <devel@driverdev.osuosl.org>; Fri, 22 May 2020 16:17:48 +0200 (CEST)
+Authentication-Results: mail.foescocursos.es;
+ spf=pass (sender IP is 83.32.33.170)
+ smtp.mailfrom=foesco14@formacionbonificable.es
+ smtp.helo=170.red-83-32-33.dynamicip.rima-tde.net
+Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200522171312.s2ciifuxozwav2ym@function>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9629
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- spamscore=0 malwarescore=0
- mlxscore=0 adultscore=0 bulkscore=0 suspectscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2005220143
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9629
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- mlxscore=0
- cotscore=-2147483648 impostorscore=0 malwarescore=0 mlxlogscore=999
- lowpriorityscore=0 phishscore=0 spamscore=0 bulkscore=0 adultscore=0
- priorityscore=1501 clxscore=1015 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2005220142
+From: foesco14@formacionbonificable.es
+To: devel@driverdev.osuosl.org
+Subject: CURSOS BONIFICABLES DESDE CASA (Empleados activos y en ERTE)
+X-Mailer: Smart_Send_4_3_3
+Date: Fri, 22 May 2020 16:15:00 -0700
+Message-ID: <52644861191921788616398@DESKTOP-EEN1J8F>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,17 +59,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: foesco14@formacionbonificable.es
+Content-Type: multipart/mixed; boundary="===============7763495359105530030=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I did *really look* at the code when I was reviewing this patch.  :P
+--===============7763495359105530030==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-regards,
-dan carpenter
+Buenos d=EDas
+
+
+
+Se encuentra abierto el plazo de inscripci=F3n de Cursos Bonificables para =
+empleados en activo y en situaci=F3n de ERTE.
+
+
+Todos los cursos son Bonificables con cargo al Cr=E9dito de Formaci=F3n 202=
+0 que dispone las empresa.
+
+Se realizan desde casa en modalidad individual E-learning a trav=E9s de la =
+plataforma web y con total flexibilidad horaria.
+
+
+Dese=E1is que os mandemos la informaci=F3n=3F
+
+
+Saludos cordiales.
+
+
+Alex Pons
+Director departamento formaci=F3n.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B171823AP
+www.foesco.com
+
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+
+
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
+la palabra BAJA en el asunto.
+
+--===============7763495359105530030==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============7763495359105530030==--
