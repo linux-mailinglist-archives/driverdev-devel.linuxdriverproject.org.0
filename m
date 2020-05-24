@@ -1,81 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3863F1DFF3C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 24 May 2020 15:58:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A4261DFF4D
+	for <lists+driverdev-devel@lfdr.de>; Sun, 24 May 2020 16:08:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CF67D8827F;
-	Sun, 24 May 2020 13:58:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 08EFE87730;
+	Sun, 24 May 2020 14:08:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xNvfCU4g32FG; Sun, 24 May 2020 13:58:29 +0000 (UTC)
+	with ESMTP id sOn57E3a3WxG; Sun, 24 May 2020 14:08:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2E2298806D;
-	Sun, 24 May 2020 13:58:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C2AE88769F;
+	Sun, 24 May 2020 14:08:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0CE881BF379
- for <devel@linuxdriverproject.org>; Sun, 24 May 2020 13:58:25 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 26EF71BF407
+ for <devel@linuxdriverproject.org>; Sun, 24 May 2020 14:08:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0969C8806D
- for <devel@linuxdriverproject.org>; Sun, 24 May 2020 13:58:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 18CDF8769E
+ for <devel@linuxdriverproject.org>; Sun, 24 May 2020 14:08:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7sT5sYKzONAG for <devel@linuxdriverproject.org>;
- Sun, 24 May 2020 13:58:24 +0000 (UTC)
+ with ESMTP id I+Fh0gBFdFLO for <devel@linuxdriverproject.org>;
+ Sun, 24 May 2020 14:08:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f67.google.com (mail-ed1-f67.google.com
- [209.85.208.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3223988046
- for <devel@driverdev.osuosl.org>; Sun, 24 May 2020 13:58:24 +0000 (UTC)
-Received: by mail-ed1-f67.google.com with SMTP id d24so12969280eds.11
- for <devel@driverdev.osuosl.org>; Sun, 24 May 2020 06:58:24 -0700 (PDT)
+Received: from mail-ed1-f65.google.com (mail-ed1-f65.google.com
+ [209.85.208.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C4E1E853E3
+ for <devel@driverdev.osuosl.org>; Sun, 24 May 2020 14:08:42 +0000 (UTC)
+Received: by mail-ed1-f65.google.com with SMTP id e10so13030631edq.0
+ for <devel@driverdev.osuosl.org>; Sun, 24 May 2020 07:08:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=Y9GFlVX6iZi5TB3ykNza+0McOKgu7mipE2JC0Ij8tgI=;
- b=GDbN5uiv98WI7qD4CkOILF84Ff7vggJNTOzZtuDulUsKY8F/3GUND9cJlcJ4WjorpH
- ArISA8XM/CpU4HCwCO7Za7k3gYp/Lvcl8rnwEyDbncYWaRpAWrJjGiYgnjNrw3vA5gWo
- qrdcUoF0bfGDdPJ+G3e9Qk0YFuJjPLOpveb8Y5pgB1anVgTO2c7TA7igN1bcfGnNEbeb
- tQ7dwC7o1MCKLKXFXnYXS6UpJ8cGJon2O0z1JwtGhsxRm0xa3yD5m+M8bPaNssFaBIfL
- dDgRaMD7o4NfXUSpTMOZKnOWW0Qd21O78DhPPMSdirUNwgvZ2j1oHqp0HGICLiUOZWVf
- GZKw==
+ bh=oOPa+ZvfDR3HcvpFO6vT0WShjxXnzg9SNOFTcwUbROg=;
+ b=hWqY7sN6lFkh6DfzmV1owOmZkQPJS/Vmb5dpb8VaxSnYiRK8E+r5nv0ALwqzt4nh0V
+ Bts8MYfihYbzSchAhdShqE5sJH2T72xpqgSgoruGdSP8QFsUutg7aDjv//lFz39tXRoi
+ 5VzW13t1tllwjQqhi4SI4U6ugwn8RcL1hKH33nyvi129MvkSMz7ojb+kSQ4MH6o3G4Gl
+ qmltsyNL8HjVqK9u/EbMUz87KvJo8Gs2mQQ0d2GUqkVXjL8YxohHArneQ13oqfqPRTaW
+ NofPg7j2IO+wulosLimD9dA1BM6s+QvUB1j5etzGFfrhi1ut5mUgaXY0mx5tlYSUV9Zz
+ xN5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=Y9GFlVX6iZi5TB3ykNza+0McOKgu7mipE2JC0Ij8tgI=;
- b=iYHTWVbCVdjtw0WlSseG0Blh+j/m742/KUbOR+ZqQteLlx8LSky0RR+dtLZyRYRoZS
- r+sUkadZg7yr6lY66NyXo1BVfS6Oh6yRCk9tuyRqrgC5S2NGJZ9wdU+TGgEqZ/PMtcOS
- uNWk2rH3NbpP0Qfh66PPe0HKcXihXcWmEN8//bjleGi1F8ixzSel+HsaK8g6fiqvmLhP
- 1YyZK0BtQR3ouzb6JoAkYWPK+10zZn3XHlreQh/BRRy+lctMn0nwCrRYWNKusog8LfVe
- lSCgUfjz+UY29wXDu3G4QnflFVIGWQ5QCm0vxxdVTFLPvRh5tAX/HaZTRBTq4r2X+LPx
- h/yg==
-X-Gm-Message-State: AOAM532xB0c/30lrxY55q3EmcF+669TwBD6ee2LuHeKhArAgusmU+igz
- RVouWU8Gq18P7KFQazgdmPg=
-X-Google-Smtp-Source: ABdhPJy9dth36uK4+dZC8N+VYdLVpodxucDjb8UNAu7TaDNEKm/3OOUzkTpPHCqczJgr/N7obYsfYw==
-X-Received: by 2002:aa7:d590:: with SMTP id r16mr10720505edq.304.1590328702474; 
- Sun, 24 May 2020 06:58:22 -0700 (PDT)
+ bh=oOPa+ZvfDR3HcvpFO6vT0WShjxXnzg9SNOFTcwUbROg=;
+ b=M3b3YE3p7DOuazxXLeCCWDjdTfXtm40AfXKZ2yIrFM160dlCBLgZPoofWNH4mzspFg
+ dUIXM4ZquNfDCNQV2/7QxDxeOQKMAJPps/v8GsD5VG3HRgG5fPb/N0WFVOC1QXP6bUfr
+ EDFCkfethyjN+Nr8ffGreKxDAs1KVVUqLccDvg7b+0fgn2ivDNGPssN875nYzh5sdK4f
+ a4zpAXKmqDIaCe3sCjaMVcgwVzoMNDsSOY+ZVJo0AZ4/XV6O+D8QzEhT/lKfvj8vzDa6
+ xmOpNUfssDugN/oRS9I8jhbgT3mj7AeJPi1hzkrnZCLYxFbvEUf8fp48SLpdAz4r8z1Q
+ 2V3Q==
+X-Gm-Message-State: AOAM533bAaLCl1fHSbZoV+gbAxX/Py1+OvkoE/AqefEiCX2rmiP9/Lzp
+ bL10U/IN9C9UV+bHXUjEpSM=
+X-Google-Smtp-Source: ABdhPJzh1UeIujqeorr1WiLLnh8/PGj+rE0hSQm2S6Uo6GAYrdacJxOfQWztG7PCwRs6VurIxf3mfQ==
+X-Received: by 2002:a50:abe3:: with SMTP id u90mr11208483edc.278.1590329321092; 
+ Sun, 24 May 2020 07:08:41 -0700 (PDT)
 Received: from ltop.local ([2a02:a03f:b7f9:7600:ed3c:ef0e:6f3d:f78f])
- by smtp.gmail.com with ESMTPSA id s19sm13371877eja.91.2020.05.24.06.58.20
+ by smtp.gmail.com with ESMTPSA id q25sm4990305edw.77.2020.05.24.07.08.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 06:58:21 -0700 (PDT)
-Date: Sun, 24 May 2020 15:58:20 +0200
+ Sun, 24 May 2020 07:08:40 -0700 (PDT)
+Date: Sun, 24 May 2020 16:08:38 +0200
 From: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
 To: GAURAV PATHAK <gauravpathak129@gmail.com>
 Subject: Re: [PATCH] Removing ununsed variable int lo, hi, int data and int i
  from comedi/drivers/dt2814.c.
-Message-ID: <20200524135820.snuv3bffhctwndme@ltop.local>
+Message-ID: <20200524140838.urnzunavhoic6c72@ltop.local>
 References: <20200524113613.GA19734@xebrium.com>
  <20200524121044.fzpm6hkqrrpa2yhc@ltop.local>
- <20200524124919.GA6889@xebrium.com>
+ <20200524133218.GA1391@xebrium.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200524124919.GA6889@xebrium.com>
+In-Reply-To: <20200524133218.GA1391@xebrium.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,52 +95,21 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, May 24, 2020 at 06:19:22PM +0530, GAURAV PATHAK wrote:
-> Thanks a lot for your reply.
-> I am trying to run sparse on drivers/staging directory,
-> but I am not getting any useful warnings.
-> Steps that I did:
+On Sun, May 24, 2020 at 07:02:20PM +0530, GAURAV PATHAK wrote:
 > 
-> - Referred https://www.kernel.org/doc/man-pages/linux-next.html to get
-> linux-next latest tag next-20200522.
-> - After that executed following commands:
-> 	- make mrproper; make clean; make distclean
-> 	- make defconfig
-> 	- make menuconfig (Enabled all Staging Drivers with M)
-> 	- make modules_prepare
-> 	- make C=1 M=drivers/staging (Also tried individual directories
-> 	  inside staging directory e.g. make C=1 M=drivers/staging/comedi/drivers)
+> For few drivers, I am getting:
 > 
-> I am not getting any warning, I have attached the output in text format.
+> CC [M]  drivers/staging/vt6656/key.o
+>   CHECK   drivers/staging/vt6656/rf.c
+> /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h:417:9: warning: preprocessor token offsetof redefined
+> ./include/linux/stddef.h:17:9: this was the original definition
 > 
-> Any pointers for finding warning using sparse in drivers/staging
-> directory will be helpful. I really appretiate your guidance in this
-> regard.
+> but I guess these are false positive, as #undef offsetof is already present in ./include/linux/stddef.h.
 
-Well it seems that most staging drivers have no sparse warnings at all.
-I only see somes in the following staging drivers:
-	drivers/staging/isdn/
-	drivers/staging/kpc2000/
-	drivers/staging/uwb/
-	drivers/staging/vc04_services/
-	drivers/staging/wfx/
-	drivers/staging/wusbcore/
+But there is no #undef in /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h
+which seems to be sometimes included after Linux's include/linux/stddef.h
 
-Your commands seems to be good but I would advice you to use 'C=2'
-instead of 'C=1' in order for sparse to effectively run on each
-input file even when the corresponding .o file already exists.
-
-The simplest to use is:
-	- make allmodconfig
-	- make -j8 drivers/staging/
-This will just compile all the files without running sparse.
-So all warnings will be from the compiler.
-The you can run:
-	- make C=2 drivers/staging/
-which will only run sparse (and will thus be much faster).
- 
-Best regards,
--- Luc
+-- Luc 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
