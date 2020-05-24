@@ -1,77 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46F081DFDA7
-	for <lists+driverdev-devel@lfdr.de>; Sun, 24 May 2020 10:31:21 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5B0B1DFDF4
+	for <lists+driverdev-devel@lfdr.de>; Sun, 24 May 2020 11:27:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 71E808618F;
-	Sun, 24 May 2020 08:30:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 79F70878BB;
+	Sun, 24 May 2020 09:27:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4Pw97BkHwXfW; Sun, 24 May 2020 08:30:54 +0000 (UTC)
+	with ESMTP id nXCfMON3dDVf; Sun, 24 May 2020 09:27:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3EBC385F05;
-	Sun, 24 May 2020 08:30:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 92C02877F8;
+	Sun, 24 May 2020 09:27:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 669511BF3D2
- for <devel@linuxdriverproject.org>; Sun, 24 May 2020 08:30:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 385E61BF395
+ for <devel@linuxdriverproject.org>; Sun, 24 May 2020 09:27:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7E21A85D61
- for <devel@linuxdriverproject.org>; Sun, 24 May 2020 08:30:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 29D7088301
+ for <devel@linuxdriverproject.org>; Sun, 24 May 2020 09:27:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gxnAI2ixQ0ID for <devel@linuxdriverproject.org>;
- Sun, 24 May 2020 08:30:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f67.google.com (mail-ej1-f67.google.com
- [209.85.218.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F349985D08
- for <devel@driverdev.osuosl.org>; Sun, 24 May 2020 08:30:35 +0000 (UTC)
-Received: by mail-ej1-f67.google.com with SMTP id a2so17529609ejb.10
- for <devel@driverdev.osuosl.org>; Sun, 24 May 2020 01:30:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=86C6qQlpj66Vdu46Is+yMMwh5i/kAr5WUUQnyqcq9nw=;
- b=f/2AKCpDmqUEshPrE7Wk4dThtsUXAUuOvBREWBCWtdTJKMWgsKWoKykMtqNery1Ziw
- sjHbcZsbq6dh82xXTDdvHee0IpZrdjv7c/c2RDMtqmT/xLZ8YKoeXMgxPR0RPH2C3KTt
- Oj6zEwI8rXXvdFwD1xkS9kOiJQwXUjA/F1yKyXWnUnfIypca6C/gFigvCdj75W47krr3
- DJf8wtMaq9PWbYt5wBVtb5vQPwwTxnj7Iu4X+hKrmfRNoXMYGGqqjqmpMiUWA2wRLGKh
- O8VHXrmFnNZ/xRTS8q5aKtIQVEQxQFpcoi/hWLWIGHWsA0VlWobTfqCgU5Iiw3oSv18D
- qLVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=86C6qQlpj66Vdu46Is+yMMwh5i/kAr5WUUQnyqcq9nw=;
- b=d3sGFb2JLasmHYbD9sS+NnhMPb721mN2iY9PFENDWcwKs1m0pEbip1cSXfLBlcoiX7
- Df/t76NjKjyq182csn63PwH441FC/OyVwqt4a0H6EFRd2jlm+GR71f48h3BC9dZBJbyT
- q036ZvzBHNMGn7WCNO1JoYxzaR4vnZ/DxohTjoJwOFiKiAKmQvm+rj1yU/C2bKSFqcGQ
- /fFBod6pfLgyf++kswZ/++aepbSmn9MaMFFzY6v4SgDCCimWw2qy5KF9Hxlh9OSxdCbq
- 1cnHZadyuvZMBhn6TrqOhJYXtI6M/47NR9axV7umgIIsFAoNnl+GXwuEieza794GFm0/
- 8m5g==
-X-Gm-Message-State: AOAM531KfoWHRsgj6arAXFmHBprjHXDE5Eb/RIX5kQITJ6KsIooaisDw
- gAuvXJD9tzIGJ0orOgbYzI8=
-X-Google-Smtp-Source: ABdhPJyDmd1aAO6M8pHpbFtz+KWAKSSM/4ZTyXwcwqhOUmXidYFZDslKjBLQ2fqs4Fi3nQBBO7lFxw==
-X-Received: by 2002:a17:906:7e03:: with SMTP id
- e3mr1282041ejr.363.1590309034281; 
- Sun, 24 May 2020 01:30:34 -0700 (PDT)
-Received: from localhost.localdomain
- (dslb-178-006-252-177.178.006.pools.vodafone-ip.de. [178.6.252.177])
- by smtp.gmail.com with ESMTPSA id d22sm12430381ejb.15.2020.05.24.01.30.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 01:30:33 -0700 (PDT)
-From: Michael Straube <straube.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8188eu: clean up some declarations
-Date: Sun, 24 May 2020 10:27:48 +0200
-Message-Id: <20200524082748.12901-1-straube.linux@gmail.com>
-X-Mailer: git-send-email 2.26.2
+ with ESMTP id aLUuqFWhagAQ for <devel@linuxdriverproject.org>;
+ Sun, 24 May 2020 09:27:47 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0214.hostedemail.com
+ [216.40.44.214])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 10EB8881CC
+ for <devel@driverdev.osuosl.org>; Sun, 24 May 2020 09:27:46 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave01.hostedemail.com (Postfix) with ESMTP id 9978E1813C179
+ for <devel@driverdev.osuosl.org>; Sun, 24 May 2020 08:51:59 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay02.hostedemail.com (Postfix) with ESMTP id 2FA4C52C1;
+ Sun, 24 May 2020 08:51:57 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:69:355:379:599:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1535:1544:1593:1594:1711:1730:1747:1777:1792:2194:2199:2393:2559:2562:2828:3138:3139:3140:3141:3142:3355:3622:3865:3867:3868:3870:3874:4321:4605:5007:8957:9592:10004:10848:11026:11232:11473:11657:11658:11914:12043:12291:12297:12438:12555:12683:12740:12760:12895:13439:13972:14110:14659:14721:21080:21627:30054:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: run46_151812526d37
+X-Filterd-Recvd-Size: 5163
+Received: from XPS-9350.home (unknown [47.151.136.130])
+ (Authenticated sender: joe@perches.com)
+ by omf03.hostedemail.com (Postfix) with ESMTPA;
+ Sun, 24 May 2020 08:51:53 +0000 (UTC)
+Message-ID: <cc610c7f97dfd5899ab8b751fdfb9670a0cc761e.camel@perches.com>
+Subject: Re: [PATCH] staging: rtl8188eu: clean up some declarations
+From: Joe Perches <joe@perches.com>
+To: Michael Straube <straube.linux@gmail.com>, gregkh@linuxfoundation.org
+Date: Sun, 24 May 2020 01:51:50 -0700
+In-Reply-To: <20200524082748.12901-1-straube.linux@gmail.com>
+References: <20200524082748.12901-1-straube.linux@gmail.com>
+User-Agent: Evolution 3.36.2-0ubuntu1 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -92,22 +80,83 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Clean up some array declarations in phy_iq_calibrate() to reduce
-indentation and clear line over 80 characters checkpatch warnings.
+On Sun, 2020-05-24 at 10:27 +0200, Michael Straube wrote:
+> Clean up some array declarations in phy_iq_calibrate() to reduce
+> indentation and clear line over 80 characters checkpatch warnings.
 
-Signed-off-by: Michael Straube <straube.linux@gmail.com>
+Better still would be to mark these as static const
+and also mark the functions that use them to take
+const pointers
+
+Something like:
 ---
- drivers/staging/rtl8188eu/hal/phy.c | 33 +++++++++++++++--------------
- 1 file changed, 17 insertions(+), 16 deletions(-)
+ drivers/staging/rtl8188eu/hal/phy.c | 52 ++++++++++++++++++++-----------------
+ 1 file changed, 28 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 5eca3625d5a8..a0522d6764d6 100644
+index 5eca3625d5a8..9a4f1b84fefc 100644
 --- a/drivers/staging/rtl8188eu/hal/phy.c
 +++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -953,25 +953,26 @@ static void phy_iq_calibrate(struct adapter *adapt, s32 result[][8],
+@@ -786,7 +786,7 @@ static void pathb_fill_iqk(struct adapter *adapt, bool iqkok, s32 result[][8],
+ 	}
+ }
+ 
+-static void save_adda_registers(struct adapter *adapt, u32 *addareg,
++static void save_adda_registers(struct adapter *adapt, const u32 *addareg,
+ 				u32 *backup, u32 register_num)
+ {
+ 	u32 i;
+@@ -795,7 +795,7 @@ static void save_adda_registers(struct adapter *adapt, u32 *addareg,
+ 		backup[i] = phy_query_bb_reg(adapt, addareg[i], bMaskDWord);
+ }
+ 
+-static void save_mac_registers(struct adapter *adapt, u32 *mac_reg,
++static void save_mac_registers(struct adapter *adapt, const u32 *mac_reg,
+ 			       u32 *backup)
+ {
+ 	u32 i;
+@@ -806,7 +806,7 @@ static void save_mac_registers(struct adapter *adapt, u32 *mac_reg,
+ 	backup[i] = usb_read32(adapt, mac_reg[i]);
+ }
+ 
+-static void reload_adda_reg(struct adapter *adapt, u32 *adda_reg,
++static void reload_adda_reg(struct adapter *adapt, const u32 *adda_reg,
+ 			    u32 *backup, u32 regiester_num)
+ {
+ 	u32 i;
+@@ -816,7 +816,7 @@ static void reload_adda_reg(struct adapter *adapt, u32 *adda_reg,
+ }
+ 
+ static void reload_mac_registers(struct adapter *adapt,
+-				 u32 *mac_reg, u32 *backup)
++				 const u32 *mac_reg, u32 *backup)
+ {
+ 	u32 i;
+ 
+@@ -826,7 +826,7 @@ static void reload_mac_registers(struct adapter *adapt,
+ 	usb_write32(adapt, mac_reg[i], backup[i]);
+ }
+ 
+-static void path_adda_on(struct adapter *adapt, u32 *adda_reg,
++static void path_adda_on(struct adapter *adapt, const u32 *adda_reg,
+ 			 bool is_path_a_on, bool is2t)
+ {
+ 	u32 path_on;
+@@ -844,7 +844,8 @@ static void path_adda_on(struct adapter *adapt, u32 *adda_reg,
+ 		phy_set_bb_reg(adapt, adda_reg[i], bMaskDWord, path_on);
+ }
+ 
+-static void mac_setting_calibration(struct adapter *adapt, u32 *mac_reg, u32 *backup)
++static void mac_setting_calibration(struct adapter *adapt, const u32 *mac_reg,
++				    u32 *backup)
+ {
+ 	u32 i = 0;
+ 
+@@ -952,26 +953,29 @@ static void phy_iq_calibrate(struct adapter *adapt, s32 result[][8],
+ 	struct odm_dm_struct *dm_odm = &adapt->HalData->odmpriv;
  	u32 i;
  	u8 path_a_ok, path_b_ok;
- 	u32 adda_reg[IQK_ADDA_REG_NUM] = {
+-	u32 adda_reg[IQK_ADDA_REG_NUM] = {
 -					  rFPGA0_XCD_SwitchControl, rBlue_Tooth,
 -					  rRx_Wait_CCA, rTx_CCK_RFON,
 -					  rTx_CCK_BBON, rTx_OFDM_RFON,
@@ -117,6 +166,10 @@ index 5eca3625d5a8..a0522d6764d6 100644
 -					  rRx_TO_Rx, rStandby,
 -					  rSleep, rPMPD_ANAEN};
 -
+-	u32 iqk_mac_reg[IQK_MAC_REG_NUM] = {
+-					    REG_TXPAUSE, REG_BCN_CTRL,
+-					    REG_BCN_CTRL_1, REG_GPIO_MUXCFG};
++	static const u32 adda_reg[IQK_ADDA_REG_NUM] = {
 +		rFPGA0_XCD_SwitchControl, rBlue_Tooth,
 +		rRx_Wait_CCA, rTx_CCK_RFON,
 +		rTx_CCK_BBON, rTx_OFDM_RFON,
@@ -126,19 +179,19 @@ index 5eca3625d5a8..a0522d6764d6 100644
 +		rRx_TO_Rx, rStandby,
 +		rSleep, rPMPD_ANAEN
 +	};
- 	u32 iqk_mac_reg[IQK_MAC_REG_NUM] = {
--					    REG_TXPAUSE, REG_BCN_CTRL,
--					    REG_BCN_CTRL_1, REG_GPIO_MUXCFG};
--
++
++	static const u32 iqk_mac_reg[IQK_MAC_REG_NUM] = {
 +		REG_TXPAUSE, REG_BCN_CTRL,
 +		REG_BCN_CTRL_1, REG_GPIO_MUXCFG
 +	};
+ 
  	/* since 92C & 92D have the different define in IQK_BB_REG */
- 	u32 iqk_bb_reg_92c[IQK_BB_REG_NUM] = {
+-	u32 iqk_bb_reg_92c[IQK_BB_REG_NUM] = {
 -					      rOFDM0_TRxPathEnable, rOFDM0_TRMuxPar,
 -					      rFPGA0_XCD_RFInterfaceSW, rConfig_AntA, rConfig_AntB,
 -					      rFPGA0_XAB_RFInterfaceSW, rFPGA0_XA_RFInterfaceOE,
 -					      rFPGA0_XB_RFInterfaceOE, rFPGA0_RFMOD};
++	static const u32 iqk_bb_reg_92c[IQK_BB_REG_NUM] = {
 +		rOFDM0_TRxPathEnable, rOFDM0_TRMuxPar,
 +		rFPGA0_XCD_RFInterfaceSW, rConfig_AntA, rConfig_AntB,
 +		rFPGA0_XAB_RFInterfaceSW, rFPGA0_XA_RFInterfaceOE,
@@ -147,8 +200,7 @@ index 5eca3625d5a8..a0522d6764d6 100644
  
  	u32 retry_count = 9;
  
--- 
-2.26.2
+
 
 _______________________________________________
 devel mailing list
