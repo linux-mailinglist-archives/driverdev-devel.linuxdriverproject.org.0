@@ -1,61 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70A591E0753
-	for <lists+driverdev-devel@lfdr.de>; Mon, 25 May 2020 08:56:24 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DA701E084F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 25 May 2020 09:59:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DAB5C875B7;
-	Mon, 25 May 2020 06:56:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C3ED18651D;
+	Mon, 25 May 2020 07:59:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8VMGY+VDm8lq; Mon, 25 May 2020 06:56:22 +0000 (UTC)
+	with ESMTP id 6XPu5fsERwLr; Mon, 25 May 2020 07:59:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE88286BCF;
-	Mon, 25 May 2020 06:56:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D332486352;
+	Mon, 25 May 2020 07:59:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 49A681BF21A
- for <devel@linuxdriverproject.org>; Mon, 25 May 2020 06:56:17 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 93E8C1BF20D
+ for <devel@linuxdriverproject.org>; Mon, 25 May 2020 07:59:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 46A4087DAF
- for <devel@linuxdriverproject.org>; Mon, 25 May 2020 06:56:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8EAFE85A46
+ for <devel@linuxdriverproject.org>; Mon, 25 May 2020 07:59:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KQvE9clpmy28 for <devel@linuxdriverproject.org>;
- Mon, 25 May 2020 06:56:16 +0000 (UTC)
+ with ESMTP id 16dWtKdQbaWu for <devel@linuxdriverproject.org>;
+ Mon, 25 May 2020 07:59:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D4FCD87E3C
- for <devel@driverdev.osuosl.org>; Mon, 25 May 2020 06:56:16 +0000 (UTC)
-Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
- [95.90.213.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 93279208DB;
- Mon, 25 May 2020 06:56:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1590389776;
- bh=Vq4wXzHAXl+Pr5VKcaCg79cLNb8KGa1Alh8POOU+lKI=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Pj5P1R3uLFR9o6MYaSNZ2AfLFcIXBxZmDDCGjOZOVwPROGvRfNyvQ0Wxr6ijKRKkM
- aDmig1Ge4vQmSBBnKrAy1ECSW4sZDKU7T+L/H/nZmBqvRuDYdxXIrNM6o7M7CQCVw1
- c6k5PhurpKIBeJgeok2xYHsrQ8+p/bWIwEWllwcs=
-Received: from mchehab by mail.kernel.org with local (Exim 4.93)
- (envelope-from <mchehab@kernel.org>)
- id 1jd71y-001d7S-Hv; Mon, 25 May 2020 08:56:14 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: 
-Subject: [PATCH 11/11] media: atomisp: fix size of delay_frames array
-Date: Mon, 25 May 2020 08:56:10 +0200
-Message-Id: <0357fca3c06faf1fbae5f33a3fa09420f64aad93.1590389536.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <cover.1590389536.git.mchehab+huawei@kernel.org>
-References: <cover.1590389536.git.mchehab+huawei@kernel.org>
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C1E48859EA
+ for <devel@driverdev.osuosl.org>; Mon, 25 May 2020 07:59:22 +0000 (UTC)
+IronPort-SDR: ovcHdbBdTmEf2xibCol4CjDqwpDIKjFdLUf9XJN1ynzFLyXJMuSZ8XDP1T9/9I5YzcqRun8u9y
+ hKUOT2oM5CHw==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 May 2020 00:59:22 -0700
+IronPort-SDR: JCflhIxsquaU9jhCHP8S8Po3dtELmDzOwNyYpv6d/pEWqukzelsjKP1kXl6JsOwTICJ595Zn0q
+ sqklKAb4vz8A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,432,1583222400"; d="scan'208";a="375366423"
+Received: from kuha.fi.intel.com ([10.237.72.162])
+ by fmsmga001.fm.intel.com with SMTP; 25 May 2020 00:59:19 -0700
+Received: by kuha.fi.intel.com (sSMTP sendmail emulation);
+ Mon, 25 May 2020 10:59:18 +0300
+Date: Mon, 25 May 2020 10:59:18 +0300
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: [PATCH] media: ipu3: add a module to probe sensors via ACPI
+Message-ID: <20200525075918.GE1910854@kuha.fi.intel.com>
+References: <12fbe3f5c6a16c5f3447adbc09fe27ceb2b16823.1589625807.git.mchehab+huawei@kernel.org>
+ <20200517103659.GS17578@paasikivi.fi.intel.com>
+ <20200520094400.5137e7f2@coco.lan>
+ <20200520082608.GV20066@paasikivi.fi.intel.com>
+ <20200520131830.3ff45919@coco.lan>
+ <CAHp75VduEGyzobm0hkXzWmFfZb-uMAEWG-wc89b7M7zVzZ_4LA@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAHp75VduEGyzobm0hkXzWmFfZb-uMAEWG-wc89b7M7zVzZ_4LA@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,81 +72,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
+ Tian Shu Qiu <tian.shu.qiu@intel.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Right now, the variables that define the max number of
-delay frames is defined as:
+On Thu, May 21, 2020 at 11:00:19AM +0300, Andy Shevchenko wrote:
+> +Cc: Heikki (swnode expert)
+> 
+> On Wed, May 20, 2020 at 2:19 PM Mauro Carvalho Chehab
+> <mchehab+huawei@kernel.org> wrote:
+> > Em Wed, 20 May 2020 11:26:08 +0300
+> > Sakari Ailus <sakari.ailus@linux.intel.com> escreveu:
+> 
+> ...
+> 
+> > As I said, the problem is not probing the sensor via ACPI, but, instead,
+> > to be able receive platform-specific data.
+> 
+> There is no problem with swnodes, except missing parts (*).
+> I have Skylake laptop with IPU3 and with half-baked ACPI tables, but
+> since we have drivers in place with fwnode support, we only need to
+> recreate fwnode graph in some board file to compensate the gap in
+> ACPI.
+> 
+> *) Missing part is graph support for swnodes. With that done it will
+> be feasible to achieve the rest.
+> I forgot if we have anything for this already done. Heikki?
 
-	#define VIDEO_FRAME_DELAY		2
-	#define MAX_NUM_VIDEO_DELAY_FRAMES	(VIDEO_FRAME_DELAY + 1)
-	#define NUM_PREVIEW_DVS_FRAMES          (2)
-	#define MAX_NUM_DELAY_FRAMES   MAX(MAX_NUM_VIDEO_DELAY_FRAMES, NUM_PREVIEW_DVS_FRAMES)
+I did implement the fwnode_graph* callbacks for swnodes, but I need to
+rebase that patch on top of Dmitry's reference property changes.
 
-In other words, we have:
-	MAX_NUM_VIDEO_DELAY_FRAMES = 3
-	MAX_NUM_DELAY_FRAMES = 2
+thanks,
 
-The MAX_NUM_DELAY_FRAMES macro is used only only when allocating
-memory. On all other parts, including looping over such array,
-MAX_NUM_VIDEO_DELAY_FRAMES is used instead, like:
-
-	void sh_css_binary_args_reset(struct sh_css_binary_args *args)
-	{
-		unsigned int i;
-	...
-
-		for (i = 0; i < MAX_NUM_VIDEO_DELAY_FRAMES; i++)
-			args->delay_frames[i] = NULL;
-
-Which will cause buffer overflows, with may override the next array
-(tnr_frames[]).
-
-In practice, this may not be causing real issues, as the code
-checks for num_delay_frames on some parts (but not everywhere).
-
-So, get rid of the smallest value.
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- drivers/staging/media/atomisp/pci/ia_css_pipe.h | 2 +-
- drivers/staging/media/atomisp/pci/sh_css_defs.h | 2 --
- 2 files changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/staging/media/atomisp/pci/ia_css_pipe.h b/drivers/staging/media/atomisp/pci/ia_css_pipe.h
-index 91653952f1a7..9c9e1264feb0 100644
---- a/drivers/staging/media/atomisp/pci/ia_css_pipe.h
-+++ b/drivers/staging/media/atomisp/pci/ia_css_pipe.h
-@@ -31,7 +31,7 @@ struct ia_css_preview_settings {
- 	struct ia_css_binary vf_pp_binary;
- 
- 	/* 2401 only for these two - do we in fact use them for anything real */
--	struct ia_css_frame *delay_frames[MAX_NUM_DELAY_FRAMES];
-+	struct ia_css_frame *delay_frames[MAX_NUM_VIDEO_DELAY_FRAMES];
- 	struct ia_css_frame *tnr_frames[NUM_TNR_FRAMES];
- 
- 	struct ia_css_pipe *copy_pipe;
-diff --git a/drivers/staging/media/atomisp/pci/sh_css_defs.h b/drivers/staging/media/atomisp/pci/sh_css_defs.h
-index fcd5081edf82..d444af82c309 100644
---- a/drivers/staging/media/atomisp/pci/sh_css_defs.h
-+++ b/drivers/staging/media/atomisp/pci/sh_css_defs.h
-@@ -225,8 +225,6 @@ RGB[0,8191],coef[-8192,8191] -> RGB[0,8191]
- 
- #define NUM_VIDEO_TNR_FRAMES		2
- 
--#define MAX_NUM_DELAY_FRAMES	MAX(MAX_NUM_VIDEO_DELAY_FRAMES, NUM_PREVIEW_DVS_FRAMES)
--
- /* Note that this is the define used to configure all data structures common for all modes */
- /* It should be equal or bigger to the max number of DVS frames for all possible modes */
- /* Rules: these implement logic shared between the host code and ISP firmware.
 -- 
-2.26.2
-
+heikki
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
