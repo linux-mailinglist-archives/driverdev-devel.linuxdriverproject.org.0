@@ -1,85 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9A5A1E14FA
-	for <lists+driverdev-devel@lfdr.de>; Mon, 25 May 2020 21:56:59 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B8991E179D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 00:10:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7867E869D3;
-	Mon, 25 May 2020 19:56:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DA6378575B;
+	Mon, 25 May 2020 22:10:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wx7K5JX9TUkV; Mon, 25 May 2020 19:56:56 +0000 (UTC)
+	with ESMTP id h9wACnoTujO7; Mon, 25 May 2020 22:10:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1BDC1875E9;
-	Mon, 25 May 2020 19:56:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DD091852D5;
+	Mon, 25 May 2020 22:10:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EF65F1BF28D
- for <devel@linuxdriverproject.org>; Mon, 25 May 2020 19:56:53 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4AAC11BF311
+ for <devel@linuxdriverproject.org>; Mon, 25 May 2020 22:10:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E5B46203D1
- for <devel@linuxdriverproject.org>; Mon, 25 May 2020 19:56:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 474A6852D5
+ for <devel@linuxdriverproject.org>; Mon, 25 May 2020 22:10:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v1tQbtkZdIHd for <devel@linuxdriverproject.org>;
- Mon, 25 May 2020 19:56:52 +0000 (UTC)
-X-Greylist: delayed 00:06:03 by SQLgrey-1.7.6
-Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
- [209.85.222.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 3841E20005
- for <devel@driverdev.osuosl.org>; Mon, 25 May 2020 19:56:52 +0000 (UTC)
-Received: by mail-qk1-f194.google.com with SMTP id b6so18385820qkh.11
- for <devel@driverdev.osuosl.org>; Mon, 25 May 2020 12:56:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=leaflabs-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=CBPda5NA99jy1A5gbIBXWbIi5pPJWudA4hi9ywStCK8=;
- b=AFwEOdJXx9pmke4TFlrGLvTobL3pkHPcTeYy1VQ/+NvoFFCp6uirMXgQ82v8Zl8lNw
- dSUO3wm4ySpmHP4HelChS2Nh3NbDfp5DUqxcKyw+YzzMm1mPA39vsq8fTKmDauRWXz80
- dKj6Lw74fKNBb2AZSPqrJdEiv9X3fj8XpYj5nI9ETulqC7pEvJ8nNt1tiUsajsT9xhUK
- /2Pw9Z1aKCLtkn4jCV7lj1Qem68tYBkGTKk32B4gIMIO84gkwXe5YW+zoaTaV8zKNBKP
- lygN2dgGZJH5JDESQd1/jbD8os9LxmYezSp25v318vJiJeTvo0XVOtJTfuYRxfsK5DgP
- iUPA==
+ with ESMTP id sTySHInK8sBT for <devel@linuxdriverproject.org>;
+ Mon, 25 May 2020 22:10:29 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
+ [209.85.160.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AA0A084974
+ for <devel@driverdev.osuosl.org>; Mon, 25 May 2020 22:10:29 +0000 (UTC)
+Received: by mail-qt1-f194.google.com with SMTP id a23so14767866qto.1
+ for <devel@driverdev.osuosl.org>; Mon, 25 May 2020 15:10:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=R6Xa8EN86SAGRoi2M/m/xTMLbavyUnpTJzYQ9R1jq8Y=;
+ b=NYwY4NBFAVlIMSZEDh3nZmLd5bQhtDlnsA2UWVh9bPNBYyibm7m/3xBI6tOgFxhcNt
+ 9hdBjg0CuD8cbKIRl+s9PsE1xI7h4QU6ZrpINWwzGvHC3OSXaD15YQZD5u+q6vd5bBz0
+ 8jd8kHFoSndEd208hs3mzYp14rKxhBBWvE+R8O0fMbHCKAMEy9PKWClMOn8wtG0YuDuS
+ ruIZ2r5GJfTdnQaMAPlu8F0uih6kwtNsHJhYFcrZooL2m2G+M1UNIWUZLHLBpw7TfFH8
+ WYSDf6QOy1zm7uXbC5fzTe2zhkgYhSUsV1hqGvvS1du8o8fd8+CBjy6LEZVahpuVoO3x
+ BnFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=CBPda5NA99jy1A5gbIBXWbIi5pPJWudA4hi9ywStCK8=;
- b=YBGQtvlhvuw3F8+Ao1tsUTE0iCOQDKHytxLR38qHciscXo/A3UICQkM7ywdo2hYt+Z
- P23BaZZwaD0b9qUOgWrfp2VYfvlhxczEBk0TV3TLMzjWYU98tZUGiZCpHwVd1o+Z5nd2
- 5f+mNT1C2GksgEjcUeFAliWCIsjAQOWQHFeEMJE7aCPhdgOKbqHDg5g+7dfx2Em1yhxJ
- 6uxUMuc0pqa7IhmbmA1h5lMwkBQm2YCA7jhZh6DXijfLsgwwqVw+yJIuaxW5IeeylJnf
- g4z4eHsyKmdFp7gr1fcPzS+gSA7mKzSwD2yKBWz4lBRlPSX40ybpFIVH/ROrFFvEqX0D
- /LVA==
-X-Gm-Message-State: AOAM533G6kZKskNr5iQB1DiS7gMdsc6jYdwlmEQThYctz/RDrsvLK99C
- jBTg1ffA/BSU/V/8CVwevQWXK1xnJng=
-X-Google-Smtp-Source: ABdhPJy2ocMQraNI2+O+UyJv/WlvUwdvZdG5MF0q1EO9a6FaJj8c2aCSHVNxa636iD1znd8Fs29E6g==
-X-Received: by 2002:a37:63d0:: with SMTP id
- x199mr24878172qkb.271.1590436248754; 
- Mon, 25 May 2020 12:50:48 -0700 (PDT)
-Received: from [192.168.189.130]
- (209-6-156-57.s56.c3-0.sbo-ubr1.sbo.ma.cable.rcncustomer.com. [209.6.156.57])
- by smtp.gmail.com with ESMTPSA id i14sm2984009qkl.105.2020.05.25.12.50.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 May 2020 12:50:48 -0700 (PDT)
-Subject: Re: [PATCH] staging: vchiq_arm: cast with __force as needed
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <20200519004531.33158-1-tasman@leaflabs.com>
- <20200522110623.GL30374@kadam>
-From: Mitchell Tasman <tasman@leaflabs.com>
-Message-ID: <4dcf963f-ce9a-fa2b-09c9-c8657f407167@leaflabs.com>
-Date: Mon, 25 May 2020 15:50:46 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=R6Xa8EN86SAGRoi2M/m/xTMLbavyUnpTJzYQ9R1jq8Y=;
+ b=cArkb6ZyLqVBJRqbxjHdIyutzI7ozRDowxHSqjynw5Y+M1bAln0+v8oyEX/E3pebGj
+ 7YYN7OFOj7lUhUylz2K4HCOuwAVO0ZcskZ6TSJvs5WViIieQ9gFdiQ7uP4q9j0BmPDpr
+ TRTKOKlIeB7EufakLs5OgejmBdC1jz0kWdOjJQoxfSemnA1xJ1UEO/NmVGspyCsdvqyg
+ EbR1L5Fp+8RbNU6bbZhgQxFb57c3gGtTQOxpKb0GRco6vP8j05wwPgPAqzdo/n4tqoO2
+ q3rqjh7oJZ/Jm6ZWdXv2tviybcmS10irncD5mwZ6bVNgxsbpOWnaW3P6+pSO1x5KvPhN
+ ZJEg==
+X-Gm-Message-State: AOAM5332sFZBGMyxtq9pAV1uRXBzDtSL7afR0UnO4flgbWV0nm+c3dmb
+ 9Q8nBoriH2P7CS3bG6RxgUeX4+vImdY=
+X-Google-Smtp-Source: ABdhPJxb+ASkMvAMQ/poC/yE7dD2nitdX3FyZCJTBmNOuFy7G/1XUhu0mA8tKRVakV9ziGvOaobBsA==
+X-Received: by 2002:ac8:fa7:: with SMTP id b36mr14631508qtk.100.1590444628403; 
+ Mon, 25 May 2020 15:10:28 -0700 (PDT)
+Received: from igor-Aspire-F5-573G ([189.84.32.31])
+ by smtp.gmail.com with ESMTPSA id 5sm1280380qko.14.2020.05.25.15.10.27
+ (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+ Mon, 25 May 2020 15:10:28 -0700 (PDT)
+Date: Mon, 25 May 2020 19:10:25 -0300
+From: Igor Ribeiro Barbosa Duarte <igor.ribeiro.duarte@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: wlan-ng: Fix number of characters warning style.
+Message-ID: <20200525221025.GA27612@igor-Aspire-F5-573G>
 MIME-Version: 1.0
-In-Reply-To: <20200522110623.GL30374@kadam>
-Content-Language: en-US
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,62 +83,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Marcelo Diop-Gonzalez <marcgonzalez@google.com>, linux-kernel@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
- Jamal Shareef <jamal.k.shareef@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org, igor.ribeiro.duarte@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 5/22/20 7:06 AM, Dan Carpenter wrote:
-> On Mon, May 18, 2020 at 08:45:31PM -0400, Mitchell Tasman wrote:
->> In several cases where a pointer marked as __user is
->> (intentionally) assigned or passed to a non-marked target,
->> cast to the target pointer type with a __force directive
->> to quiet warnings from sparse.
->>
->> Signed-off-by: Mitchell Tasman <tasman@leaflabs.com>
->> ---
->>  .../vc04_services/interface/vchiq_arm/vchiq_2835_arm.c     | 7 ++++---
->>  .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c  | 4 +++-
->>  2 files changed, 7 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
->> index c18c6ca0b6c0..38a13e4618a8 100644
->> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
->> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
->> @@ -371,14 +371,15 @@ create_pagelist(char __user *buf, size_t count, unsigned short type)
->>  	pagelistinfo->scatterlist = scatterlist;
->>  	pagelistinfo->scatterlist_mapped = 0;
->>  
->> -	if (is_vmalloc_addr(buf)) {
->> +	if (is_vmalloc_addr((void __force *)buf)) {
-> 
-> Am I reading this correctly???
-> 
-> This is actually a user controlled pointer that comes from the
-> vchiq_ioctl() when we do VCHIQ_IOC_QUEUE_BULK_TRANSMIT/RECEIVE.  So we
-> take random pointer from user space and if it happens to point to kernel
-> space then we trust it and presumably start BULK_TRANSMITing data to
-> it???
-> 
-> LOL....  This doesn't seem safe at all.
+Fix checkpatch error "WARNING: line over 80 characters" at cfg80211.c:451
 
-Is additional validation of buf and its extent necessary and sufficient, e.g. perhaps access_ok(buf, count * PAGE_SIZE) somewhere along the call chain?  Or does vhciq_arm need to take a different approach in the area that Dan Carpenter flagged?
+Signed-off-by: Igor Ribeiro Barbosa Duarte <igor.ribeiro.duarte@gmail.com>
+---
+ drivers/staging/wlan-ng/cfg80211.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-Thank you.
+diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
+index fac38c8..a911bcd 100644
+--- a/drivers/staging/wlan-ng/cfg80211.c
++++ b/drivers/staging/wlan-ng/cfg80211.c
+@@ -447,9 +447,10 @@ static int prism2_connect(struct wiphy *wiphy, struct net_device *dev,
+ 	/* Set the channel */
+ 	if (channel) {
+ 		chan = ieee80211_frequency_to_channel(channel->center_freq);
+-		result = prism2_domibset_uint32(wlandev,
+-						DIDMIB_DOT11PHY_DSSSTABLE_CURRENTCHANNEL,
+-						chan);
++		result = prism2_domibset_uint32
++			 (wlandev,
++			  DIDMIB_DOT11PHY_DSSSTABLE_CURRENTCHANNEL,
++			  chan);
+ 		if (result)
+ 			goto exit;
+ 	}
+-- 
+2.7.4
 
-> 
-> regards,
-> dan carpenter
-> 
-
-Regards,
-Mitch
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
