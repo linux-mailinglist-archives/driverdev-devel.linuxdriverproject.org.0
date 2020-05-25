@@ -1,84 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA85D1E06AF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 25 May 2020 08:11:54 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F0F691E073D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 25 May 2020 08:46:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1D7D287AE7;
-	Mon, 25 May 2020 06:11:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4B0932262E;
+	Mon, 25 May 2020 06:46:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 38OcnfbLQC33; Mon, 25 May 2020 06:11:52 +0000 (UTC)
+	with ESMTP id Znpmj6yWYGAf; Mon, 25 May 2020 06:46:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 97CD0876A0;
-	Mon, 25 May 2020 06:11:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E0011203E6;
+	Mon, 25 May 2020 06:46:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 840201BF21A
- for <devel@linuxdriverproject.org>; Mon, 25 May 2020 06:11:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 29AB41BF21A
+ for <devel@linuxdriverproject.org>; Mon, 25 May 2020 06:46:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7E72485F18
- for <devel@linuxdriverproject.org>; Mon, 25 May 2020 06:11:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8D9CE81CAD
+ for <devel@linuxdriverproject.org>; Mon, 25 May 2020 06:46:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yHsiyNxo6F-T for <devel@linuxdriverproject.org>;
- Mon, 25 May 2020 06:11:50 +0000 (UTC)
+ with ESMTP id 2aFnORotlW67 for <devel@linuxdriverproject.org>;
+ Mon, 25 May 2020 06:46:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
- [209.85.222.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EEF7F85D8F
- for <devel@driverdev.osuosl.org>; Mon, 25 May 2020 06:11:49 +0000 (UTC)
-Received: by mail-qk1-f195.google.com with SMTP id z80so16726511qka.0
- for <devel@driverdev.osuosl.org>; Sun, 24 May 2020 23:11:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9IziVmgyfYM4YsH6OqHb3uAGAVG/qg0TjTfH8HoMiuk=;
- b=MmmC83QK+HaGsZEdKs3X2dpoX60/5ZUMa4upYpL4I37SmCRG7DhOAg2VDy6SSGUHkw
- On09QQ9AE1/qiQJUBqJIlACn9XBuRHZZdJnbOprCP/0pDLsYRwaMCVZugrf5/QAWuDPo
- lqm2Fx6bcBbkbaFZjDPf5156JT4CGkeRit0Ie2WAOn6D9nmEHL0U5O2hXrt9WwKZ9+XR
- pgM3nY9agX3CixvjaI3d+7pSMXQDGs4QAOt47yKIW3RJ7u0NFuws+ndGuhjTm2zR0CNH
- dx/Bt3I/y9qyAx205ZN4FJeEI8ntgT8qJmCgNrz8As0ROZVjSGXeoFk6q5Z6cfNSomsk
- 7F0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9IziVmgyfYM4YsH6OqHb3uAGAVG/qg0TjTfH8HoMiuk=;
- b=apIlHNvwb9JTBHRA5mXGnDwyZJwT0yipNeGonsaIgYWk0Lp7x9ho7suTbeTHF3v3bH
- eJmxKbSHnYNeMQ5YcabC7b3uSoy3omzgPmhYD/KbrguJXqEVwwCpDBR+z5xcbWEUbJ9i
- OIfWHf6heZbZD7qwv3n49EC2jwkBTliKZocCC7MlpO4y/XBey5qMv4kjHR+fNhyNh2TT
- FuBkLDVXQRwAhl7MqgacuVBunBYH2wdr0dKU9E6UGhV6PoZWpyXFHmBTREt/IpZbDHMT
- fi0lfm7/VMkW+MAfkNJ5/qiw6X854SkE2m2knzQp4YbFqsGTlWvWQjD3PK7too+9+7sB
- zCFQ==
-X-Gm-Message-State: AOAM5305CNHleMxAVj36w00YZOe0UL4U+kTDvwNtnu5p9B3+hvbJ54YI
- 7+W59OkR2IkLRW93Rp+/xA==
-X-Google-Smtp-Source: ABdhPJz4W7rG9gQgXFStdiHwzFfGeyODFuXYL4YmkKJh6WuzG4oJm1BVoOlr5k6sYisCAknLIRAiwg==
-X-Received: by 2002:a37:2783:: with SMTP id
- n125mr24350464qkn.335.1590387108835; 
- Sun, 24 May 2020 23:11:48 -0700 (PDT)
-Received: from localhost (cpe-104-162-195-29.nyc.res.rr.com. [104.162.195.29])
- by smtp.gmail.com with ESMTPSA id
- 193sm2045786qkn.94.2020.05.24.23.11.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 24 May 2020 23:11:48 -0700 (PDT)
-From: Till Varoquaux <till.varoquaux@gmail.com>
-To: kernel-janitors@vger.kernel.org,
-	pure.logic@nexus-software.ie
-Subject: [PATCH] staging: greybus: loopback: fix a spelling error.
-Date: Mon, 25 May 2020 02:10:43 -0400
-Message-Id: <20200518051314.1785567-1-till.varoquaux@gmail.com>
-X-Mailer: git-send-email 2.25.4
-Received: from localhost (cpe-104-162-195-29.nyc.res.rr.com. [104.162.195.29])
- by smtp.gmail.com with ESMTPSA id e3sm8401074qtj.25.2020.05.17.22.13.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 17 May 2020 22:13:55 -0700 (PDT)
-X-Mailer: git-send-email 2.25.4
+Received: from sonic308-19.consmr.mail.ir2.yahoo.com
+ (sonic308-19.consmr.mail.ir2.yahoo.com [77.238.178.147])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CAFBD87B21
+ for <devel@driverdev.osuosl.org>; Mon, 25 May 2020 06:46:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1590389193; bh=boeRiY98ojshyC5cCGJ/TJhXpd7nOtdyaesZY9RLZZg=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=H5sjtLYPIfKBgcSdyRTZMRimH/Jx0htg37V6vJNVN44bT/8bCQjosKbMQMNin+r/l0att/XZkCepzV6/E4GiOAbkHYOYAZpGGxFhr/lhzEHF81MYoeaw89ud088BHw7GC/D2I3v9JsBiAwuFJwqYrwZUYchu8s1VGuezAnco69DREMOdOiNvhIUInPEU2rhMKoU2HwHN7Mby+sbVlb/z6yvQJsDfowQwEZgaNFDJixS5jl95sCswCKtKeZQDA4SjWrAESk9QVncgQfyNEPZJORIexcPtaXjMQaP2/Vf8WK7Sw3hUNzxO/gTK1wMs6M4Q6pO5Dzdtc6+roffEt7Kuvg==
+X-YMail-OSG: A0PuhAcVM1lH.CWsZGcT_U5b.V.l8pxOu1uhmLbRRD.LCF.bVpnEFrc1nu1iLLu
+ r3hY2KFvgHwz9qoUvDo3Dp7K2w3Fua5YW4pwmXQDlL7AXj2SzW67DicQ2ZdpBsqVhRN6O0vxMMlI
+ _hvzSl0aVOpKFA8Jl6Q7i88cGO94SDLrI_a7bcKIR6d7w.RehQryBJqNk5xe9g_vWAT84M.FKQ24
+ m3ZwiC.rKKCt6yMha5QUbCj1wod9Lf5wJvIul9_cW2NhvS1AVZ8KvD0g1gd9Mt_A82WBaWxyJYxL
+ G60V46bNhqfNWa5GGAdujC8BRgBWOw_1C5FEJyOo1iTYRJu5pICTqTo2gqPywtmWRNUuMw4nRWle
+ ErdCU17f_cRe57T71J7sCBKt75Onw21OT7wZ8IrwCNCUzJnQicjcjHwUs_Jpr4WMFx431abtErVn
+ SFS_KZO5vxHpR2_i8KRQ3hc5k.cLEhwA_LOaeBT85oTt4S3LMhqs6aqS8VOY3KfvHjSkQbfpT03I
+ ttcaPU6JQpjTs2X8sS_i5aqsaUJGff0rWXvCdeltuGLaQY_gKQKWQU10DnU7qJUZWlhGMU47Zrhd
+ yel_CXR9EwajBYO5XiWBFzFe2vkPptr33KdZyErqNuVkRmY1_sNNqzj78hBjjlP5211oH0YrDlu3
+ mcsLxW9LuhpWMyH17iq7CY_pGcALMzmSd_6cj84WQA_tFT21CoxDv.71tuW7YBmMpMerEqQUjpyw
+ RF55P6q.6NH.2BtocWRuVMXid2GLfUnvZ_NnUoPu86SEiB9wVXTM3MejkUIHbONrmlK4Iy4ZPwKK
+ pyu9MrlzgCmUdBWC2GZKo0Q5KXIhbUteiVqflwu7aAewTl9kuWzY2YYddD9l0bNezA26WaK4Q5yO
+ oUEuzn3T_2NV3jGeyZeLEzidV7kqS2yG306kMykfpy2mDXtQIDHNGj0nyCW.NFUjycKK9CE1eQB6
+ 92FiY1tE2mGrcGARkrRJGhRs_poMe.m1FzxFfSvM2gn2kj4oWuFYQUFKHqpI3x2lLsI7W1rTrXd5
+ FjD3WSNMpzV.XJVL6.I18ls1RGvh8B2TSCvcxkOzzDMDQEWYq554F2Zlg42YTKK30ZihJ4CjvIHp
+ ff3Ih7BrXHWGFaYASML2S6WGOfBXXd_hUb.1yMxEEmOh73kfQ98OWv7NxZMy05vXGJq.M0zjfjLX
+ rnegl8a7mNaV5HPRLYtndPDDO.w2Iilprad8M189t5g8iMOUH6yKLMJF._B34cGIk_IwHNGSw78L
+ r5OKynYbDoAnPvqSGZqL41tzf9SuD1c6Rxd3cvdB6kaNCQZg4zD4dOtOXZ3_Vz7nM5g6FFAQ-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic308.consmr.mail.ir2.yahoo.com with HTTP; Mon, 25 May 2020 06:46:33 +0000
+Date: Mon, 25 May 2020 06:46:31 +0000 (UTC)
+From: Aisha Gaddafi <worldofjahovah97534@yahoo.com>
+Message-ID: <1018947305.5008645.1590389191568@mail.yahoo.com>
+Subject: Hello Dear
 MIME-Version: 1.0
+References: <1018947305.5008645.1590389191568.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.15960 YMailNodin Mozilla/5.0 (Windows NT 6.1; Win64;
+ x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138
+ Safari/537.36
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,39 +77,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
- trivial@kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Till Varoquaux <till.varoquaux@gmail.com>, Johan Hovold <johan@kernel.org>,
- linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org
+Reply-To: aishagaddafi110@hotmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Successed -> succeeded.
 
-Signed-off-by: Till Varoquaux <till.varoquaux@gmail.com>
 
----
- drivers/staging/greybus/loopback.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh,
 
-diff --git a/drivers/staging/greybus/loopback.c b/drivers/staging/greybus/loopback.c
-index 583d9708a191..2471448ba42a 100644
---- a/drivers/staging/greybus/loopback.c
-+++ b/drivers/staging/greybus/loopback.c
-@@ -135,7 +135,7 @@ static ssize_t name##_##field##_show(struct device *dev,	\
- 			    char *buf)					\
- {									\
- 	struct gb_loopback *gb = dev_get_drvdata(dev);			\
--	/* Report 0 for min and max if no transfer successed */		\
-+	/* Report 0 for min and max if no transfer succeeded */		\
- 	if (!gb->requests_completed)					\
- 		return sprintf(buf, "0\n");				\
- 	return sprintf(buf, "%" #type "\n", gb->name.field);		\
--- 
-2.25.4
+Hello Dear
 
+How are you doing today,I came across your e-mail contact prior a private search while in need of your assistance.
+ I hope my mail meet you in good condition of health? Dear I have decided to contact you after much thought considering the fact that we have not meet before, but because of some circumstance obliged me, I decided to contact you due to the urgency of my present situation here in the refugee camp for your rescue and also for a business venture/project which I need your assistant in this business establishment in your country as my foreign partner as well as my legal appointed trustee.
+
+I am Aisha Muammar Gaddafi, the only daughter of the embattled president of Libya, Hon. Muammar Gaddafi. Am a single Mother and a Widow with three Children.
+ I am currently residing in Burkina Faso unfortunately as a refugee. I am writing this mail with tears and sorrow from my heart asking for your urgent help. I have passed through pains and sorrowful moment since the death of my late father.
+
+At the meantime, my family is the target of Western nations led by Nato who wants to destroy my father at all costs. Our investments and bank accounts in several countries are their targets to freeze. My Father of blessed memory deposited the sum of Twenty Seven Million, Five Hundred Thousand, Dollars ($27.500.000.000) in Bank Of Africa Burkina Faso which he used my name as the next of kin. I have been commissioned by the Bank to present an interested foreign investor/partner who can stand as my trustee and receive the fund in his account for a possible investment in his country due to my refugee status here in Burkina Faso.
+
+I am in search of an honest and reliable person who will help me and stand as my trustee so that I will present him to the Bank for the transfer of the fund to his bank account overseas. I have chosen to contact you after my prayers and I believe that you will not betray my trust. But rather take me as your own sister or daughter. I am willing to negotiate investment/business profit sharing ratio with you base on the future investment earning profits.
+Apologetic for my pictures I will enclose it in my next mail and more about me when I hear from you okay. Please I want you to contact me here (Aishagaddafi110@hotmail.com) for more details.
+
+best regard
+Yours Sincerely.
+Aisha Gaddafi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
