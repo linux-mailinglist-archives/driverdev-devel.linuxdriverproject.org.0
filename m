@@ -1,81 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 587CF1E2566
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 17:28:09 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5DE0123420;
-	Tue, 26 May 2020 15:28:06 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UsIo1576Hc5c; Tue, 26 May 2020 15:28:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1D1B622D2D;
-	Tue, 26 May 2020 15:28:03 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C23811BF97F
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 15:28:00 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B4A241E25FA
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 17:50:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BB00386248
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 15:28:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9A0CF84F2A;
+	Tue, 26 May 2020 15:50:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PLjK7l4X0dTo; Tue, 26 May 2020 15:50:28 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 55EC584EB4;
+	Tue, 26 May 2020 15:50:27 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 88D401BF842
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 15:50:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 854D9885C6
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 15:50:25 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8x8-IvrsR18p for <devel@linuxdriverproject.org>;
- Tue, 26 May 2020 15:28:00 +0000 (UTC)
+ with ESMTP id krt-v1+S-yRp for <devel@linuxdriverproject.org>;
+ Tue, 26 May 2020 15:50:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qv1-f65.google.com (mail-qv1-f65.google.com
- [209.85.219.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 16673845C0
- for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 15:28:00 +0000 (UTC)
-Received: by mail-qv1-f65.google.com with SMTP id r3so9634161qve.1
- for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 08:28:00 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0667287E5F
+ for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 15:50:25 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id n15so10363219pfd.0
+ for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 08:50:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=oKHucmkrBFB5G9OuhH47zidizeVEq6rHyX6FUAtNefk=;
- b=aJQB4B+erUktdaSpoDm+C9mioqlfTdaO2N/iu4nV1Rs1JoYFmvORg3P28v83CM0J2k
- FOtmfJYkNUX6cAwHi1Th00KUnDw4znAI48Fk0yiO+zaMMG2qZI/+7kG6zMOe5kVZ1Yic
- R00N3Y91p6ZndHB+bXzwiApqIjCD8jmRw/lzaP1Ml43KoEU5FiZXtSfHwJrLDfIWn4Vx
- efPw9D5HAZBfuWbASnW3jclQcmZgbYsNxO6B+qulnsgmvBeVDD04RfeWVle1OXj791Fd
- BHtb5Z9jNsv4Bu27V2bQRREvj7+V+/zzI1jgtjjoegDC5g1qfi4Ks3cfq5dbOCx/VwwP
- oocA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=d3s/pLD7nj21hdmawAnqZB1ca29MHptDmSGTKYK3W3E=;
+ b=QKFX4CITtkj0CzudSzbINE+WsFl8jYzCH4/L49e7eTSLDSW8YU3cdeyr64P+uWfTez
+ PzEGwsQydooBPeGb/KC/hNndMrssm5L26f66v3vzOSGwQOv8bs6NvpqhPBv5f5H56vfI
+ dXZD7h5EVQnyoy2zzEjtHR78n1nMa0E97F8yfejzpD2Ytzgpj52QALvPLsSo/oOirLws
+ lNP+bZ94PfDCHM2a6p/5RpobGWXYOdph5VZPC9X1t14NZpeXCvIyZD0wZzKbkzfQU554
+ b1RToMXt+izSjJnSnDh6ODPmI1fCx+P9Lqf3W9+OjrdjydTd2vVMemNqfKzkf38UCm2J
+ V0HQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=oKHucmkrBFB5G9OuhH47zidizeVEq6rHyX6FUAtNefk=;
- b=YmJgIlTWX4o980BrMY9/z9V+3PjBEYQZU6h2iOVTBbt4wXIxyksnnYvm8Mou+5CuS7
- e4q7Gs4SRfxcqdpBkwPIjnJNWitylR/fAvzlD43hIF2qVBnxiyDiMbSG3lfsgBlyUJi5
- gUiP25W97KnkubSIo7Z7raXzixBB4gEq+rnCs7i0b+Q0piycFXrMBqripo9PRAVG8/MW
- RdyoE9Dt6Eb8n+2x9b7iZi6m4/2bo8UG8SOkRBUiwH2hIm7vApkj9MQEAi66squhnU6K
- 6rz4bT8+l5ARbsfp19Lc1oMHl2uuXHlMPPKG7HhCkj76VuRhYhbwC/SYj2smfXVN8qa+
- qaEg==
-X-Gm-Message-State: AOAM532Y3Hsrih+pK6xLNO5bARxvQuakarHj4JSqKrjn2oGrziqusMoT
- VNXDxVBx/yGaReBrZXo4q5v/4d0YBwg=
-X-Google-Smtp-Source: ABdhPJyJ4fdDWg8XYQmVafCnDQ/hXl2uywgtD6SePotMX262aaKc8jXeeshMu+0cy0FdGm6GJCRUBw==
-X-Received: by 2002:a05:6214:5b1:: with SMTP id
- by17mr20178659qvb.37.1590506878868; 
- Tue, 26 May 2020 08:27:58 -0700 (PDT)
-Received: from igor-Aspire-F5-573G ([189.84.32.31])
- by smtp.gmail.com with ESMTPSA id n206sm17151921qke.20.2020.05.26.08.27.57
- (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
- Tue, 26 May 2020 08:27:58 -0700 (PDT)
-Date: Tue, 26 May 2020 12:27:55 -0300
-From: Igor Ribeiro Barbosa Duarte <igor.ribeiro.duarte@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: wlan-ng: Fix number of characters warning style.
-Message-ID: <20200526152755.GA24141@igor-Aspire-F5-573G>
-References: <20200525221025.GA27612@igor-Aspire-F5-573G>
- <20200526055932.GB2576013@kroah.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=d3s/pLD7nj21hdmawAnqZB1ca29MHptDmSGTKYK3W3E=;
+ b=cvOxxZ02UDf3eHHrWygZhruDJ9FOHRJno65VsvXfr+GYy9P5LQ15z8TvvBpKf8aC64
+ BdU9IUl/wYiAH+wq1pGxfjz9maAxJEX2Offx+QqGoEgPyuFKbI7+Rscm9/b4LTi7znWS
+ eV1SYxot2YNxhOZboby5MG1OQvaJ6stE9QD+VEdzfz9KwysOfS2DM4TF5ax4gp51w2E7
+ U/EYT7rPPjbcs//gjsBDHyFi8bTacCvWEW/mPAp1xFGmkDju+sEwcgUNIWwJgBVeX+m9
+ 8VSTMcYU141YubNd2hoV6TLxP2Ll4dOc/jKEoRziopamlTr/W9buOIEotBThG6hlGbwm
+ pM7A==
+X-Gm-Message-State: AOAM532IPNcC5WSOPF3XHqElHUqMa3DsLjZRsfmgcJ1vnfCSa4v7GI2x
+ J71+cDK8KtrgU9+coVy4NGE=
+X-Google-Smtp-Source: ABdhPJykFr2Mf58LTlQqpfXnm0pnNTayQT7pcse1ruLBQO76W+Fs+bE5UCQNS98JnMdlm+dnJSUHtA==
+X-Received: by 2002:a63:1c1:: with SMTP id 184mr1688258pgb.203.1590508224497; 
+ Tue, 26 May 2020 08:50:24 -0700 (PDT)
+Received: from gaurav-pc ([182.70.106.85])
+ by smtp.gmail.com with ESMTPSA id m2sm16671pjk.52.2020.05.26.08.50.20
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 26 May 2020 08:50:23 -0700 (PDT)
+From: gaurav <gauravpathak129@gmail.com>
+X-Google-Original-From: "gaurav" <gaurav@gaurav-pc>
+Received: by gaurav-pc (sSMTP sendmail emulation);
+ Tue, 26 May 2020 21:20:18 +0530
+To: dan.carpenter@oracle.com
+Subject: [PATCH v2] Staging: comedi: dt2814: remove unused assignments
+Date: Tue, 26 May 2020 21:20:16 +0530
+Message-Id: <20200526155016.9146-1-gauravpathak129@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200526150954.GA30374@kadam>
+References: <20200526150954.GA30374@kadam>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200526055932.GB2576013@kroah.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,50 +88,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, igor.ribeiro.duarte@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, abbotti@mev.co.uk,
+ Gaurav Pathak <gauravpathak129@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, May 26, 2020 at 07:59:32AM +0200, Greg KH wrote:
-> On Mon, May 25, 2020 at 07:10:25PM -0300, Igor Ribeiro Barbosa Duarte wrote:
-> > Fix checkpatch error "WARNING: line over 80 characters" at cfg80211.c:451
-> > 
-> > Signed-off-by: Igor Ribeiro Barbosa Duarte <igor.ribeiro.duarte@gmail.com>
-> > ---
-> >  drivers/staging/wlan-ng/cfg80211.c | 7 ++++---
-> >  1 file changed, 4 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-> > index fac38c8..a911bcd 100644
-> > --- a/drivers/staging/wlan-ng/cfg80211.c
-> > +++ b/drivers/staging/wlan-ng/cfg80211.c
-> > @@ -447,9 +447,10 @@ static int prism2_connect(struct wiphy *wiphy, struct net_device *dev,
-> >  	/* Set the channel */
-> >  	if (channel) {
-> >  		chan = ieee80211_frequency_to_channel(channel->center_freq);
-> > -		result = prism2_domibset_uint32(wlandev,
-> > -						DIDMIB_DOT11PHY_DSSSTABLE_CURRENTCHANNEL,
-> > -						chan);
-> > +		result = prism2_domibset_uint32
-> > +			 (wlandev,
-> > +			  DIDMIB_DOT11PHY_DSSSTABLE_CURRENTCHANNEL,
-> > +			  chan);
-> 
-> The original really is easier to read and understand, don't you think
-> so?
-> 
-> Checkpatch is a hint, it doesn't always have to be followed exactly.
-> Perhaps that crazy #define could be shortened, or use a more
-> conventional name?
-> 
-> thanks,
-> 
-> greg k-h
-
-Right, I'll check this. Thank you.
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+U2lsZW5jZSBmb2xsb3dpbmcgY29tcGlsZXIgd2FybmluZzoKZHJpdmVycy9zdGFnaW5nL2NvbWVk
+aS9kcml2ZXJzL2R0MjgxNC5jOiBJbiBmdW5jdGlvbiDigJhkdDI4MTRfaW50ZXJydXB04oCZOgpk
+cml2ZXJzL3N0YWdpbmcvY29tZWRpL2RyaXZlcnMvZHQyODE0LmM6MTkzOjY6IHdhcm5pbmc6IHZh
+cmlhYmxlIOKAmGRhdGHigJkgc2V0IGJ1dCBub3QgdXNlZCBbLVd1bnVzZWQtYnV0LXNldC12YXJp
+YWJsZV0KICBpbnQgZGF0YTsKICAgICAgXn5+fgpkcml2ZXJzL3N0YWdpbmcvY29tZWRpL2RyaXZl
+cnMvZHQyODE0LmM6IEluIGZ1bmN0aW9uIOKAmGR0MjgxNF9hdHRhY2jigJk6CmRyaXZlcnMvc3Rh
+Z2luZy9jb21lZGkvZHJpdmVycy9kdDI4MTQuYzoyMzI6Njogd2FybmluZzogdmFyaWFibGUg4oCY
+aeKAmSBzZXQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlXQogIGludCBp
+OwogICAgICBeCgpTaWduZWQtb2ZmLWJ5OiBHYXVyYXYgUGF0aGFrIDxnYXVyYXZwYXRoYWsxMjlA
+Z21haWwuY29tPgotLS0KIHYyOiBVcGRhdGUgc3ViamVjdCBhbmQgY29tbWl0IG1lc3NhZ2UuCiBk
+cml2ZXJzL3N0YWdpbmcvY29tZWRpL2RyaXZlcnMvZHQyODE0LmMgfCAxMCAtLS0tLS0tLS0tCiAx
+IGZpbGUgY2hhbmdlZCwgMTAgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFn
+aW5nL2NvbWVkaS9kcml2ZXJzL2R0MjgxNC5jIGIvZHJpdmVycy9zdGFnaW5nL2NvbWVkaS9kcml2
+ZXJzL2R0MjgxNC5jCmluZGV4IGQyYzcxNTczNzM2MS4uZWVhNTg3ZDYzZTE4IDEwMDY0NAotLS0g
+YS9kcml2ZXJzL3N0YWdpbmcvY29tZWRpL2RyaXZlcnMvZHQyODE0LmMKKysrIGIvZHJpdmVycy9z
+dGFnaW5nL2NvbWVkaS9kcml2ZXJzL2R0MjgxNC5jCkBAIC0xODYsMjIgKzE4NiwxNSBAQCBzdGF0
+aWMgaW50IGR0MjgxNF9haV9jbWQoc3RydWN0IGNvbWVkaV9kZXZpY2UgKmRldiwgc3RydWN0IGNv
+bWVkaV9zdWJkZXZpY2UgKnMpCiAKIHN0YXRpYyBpcnFyZXR1cm5fdCBkdDI4MTRfaW50ZXJydXB0
+KGludCBpcnEsIHZvaWQgKmQpCiB7Ci0JaW50IGxvLCBoaTsKIAlzdHJ1Y3QgY29tZWRpX2Rldmlj
+ZSAqZGV2ID0gZDsKIAlzdHJ1Y3QgZHQyODE0X3ByaXZhdGUgKmRldnByaXYgPSBkZXYtPnByaXZh
+dGU7CiAJc3RydWN0IGNvbWVkaV9zdWJkZXZpY2UgKnMgPSBkZXYtPnJlYWRfc3ViZGV2OwotCWlu
+dCBkYXRhOwogCiAJaWYgKCFkZXYtPmF0dGFjaGVkKSB7CiAJCWRldl9lcnIoZGV2LT5jbGFzc19k
+ZXYsICJzcHVyaW91cyBpbnRlcnJ1cHRcbiIpOwogCQlyZXR1cm4gSVJRX0hBTkRMRUQ7CiAJfQog
+Ci0JaGkgPSBpbmIoZGV2LT5pb2Jhc2UgKyBEVDI4MTRfREFUQSk7Ci0JbG8gPSBpbmIoZGV2LT5p
+b2Jhc2UgKyBEVDI4MTRfREFUQSk7Ci0KLQlkYXRhID0gKGhpIDw8IDQpIHwgKGxvID4+IDQpOwot
+CiAJaWYgKCEoLS1kZXZwcml2LT5udHJpZykpIHsKIAkJaW50IGk7CiAKQEAgLTIyOSw3ICsyMjIs
+NiBAQCBzdGF0aWMgaW50IGR0MjgxNF9hdHRhY2goc3RydWN0IGNvbWVkaV9kZXZpY2UgKmRldiwg
+c3RydWN0IGNvbWVkaV9kZXZjb25maWcgKml0KQogCXN0cnVjdCBkdDI4MTRfcHJpdmF0ZSAqZGV2
+cHJpdjsKIAlzdHJ1Y3QgY29tZWRpX3N1YmRldmljZSAqczsKIAlpbnQgcmV0OwotCWludCBpOwog
+CiAJcmV0ID0gY29tZWRpX3JlcXVlc3RfcmVnaW9uKGRldiwgaXQtPm9wdGlvbnNbMF0sIDB4Mik7
+CiAJaWYgKHJldCkKQEAgLTI0MSw4ICsyMzMsNiBAQCBzdGF0aWMgaW50IGR0MjgxNF9hdHRhY2go
+c3RydWN0IGNvbWVkaV9kZXZpY2UgKmRldiwgc3RydWN0IGNvbWVkaV9kZXZjb25maWcgKml0KQog
+CQlkZXZfZXJyKGRldi0+Y2xhc3NfZGV2LCAicmVzZXQgZXJyb3IgKGZhdGFsKVxuIik7CiAJCXJl
+dHVybiAtRUlPOwogCX0KLQlpID0gaW5iKGRldi0+aW9iYXNlICsgRFQyODE0X0RBVEEpOwotCWkg
+PSBpbmIoZGV2LT5pb2Jhc2UgKyBEVDI4MTRfREFUQSk7CiAKIAlpZiAoaXQtPm9wdGlvbnNbMV0p
+IHsKIAkJcmV0ID0gcmVxdWVzdF9pcnEoaXQtPm9wdGlvbnNbMV0sIGR0MjgxNF9pbnRlcnJ1cHQs
+IDAsCi0tIAoyLjE3LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
+dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aXZlcmRldi1kZXZlbAo=
