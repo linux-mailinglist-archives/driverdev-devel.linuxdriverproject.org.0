@@ -1,61 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6377F1E1C59
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 09:36:09 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9635486E2A;
-	Tue, 26 May 2020 07:36:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zr+EUzhV1aQA; Tue, 26 May 2020 07:36:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BB1BF8588A;
-	Tue, 26 May 2020 07:36:06 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 426281BF263
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 07:36:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B5D781E1D82
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 10:41:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3F25F882F7
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 07:36:04 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4D9A3883BC;
+	Tue, 26 May 2020 08:41:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id c1irve2YuNIj; Tue, 26 May 2020 08:41:23 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id B98D188330;
+	Tue, 26 May 2020 08:41:22 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A606E1BF29C
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 08:41:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9EE4E85E77
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 08:41:20 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wg16tRURywar for <devel@linuxdriverproject.org>;
- Tue, 26 May 2020 07:36:03 +0000 (UTC)
+ with ESMTP id mpuDMe9upV53 for <devel@linuxdriverproject.org>;
+ Tue, 26 May 2020 08:41:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 194AA88168
- for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 07:36:02 +0000 (UTC)
-IronPort-SDR: j1VW2JZUbuS5YvAFyT8U1rT15k0rlMBxXF/HzugF7z1h5iFBDI3cWUUKSfjL01g5O/MboZeXZZ
- mzDmej7v7P/w==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2020 00:36:00 -0700
-IronPort-SDR: 46aTuq7NjwpWhzAiHccscyYJ39qzlH9922BL4BndXf1vLTl2+ARjtzTBxHn43keF3IdYPiBfXN
- XkSmzuQIuyFw==
-X-IronPort-AV: E=Sophos;i="5.73,436,1583222400"; d="scan'208";a="413724922"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2020 00:35:59 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 7565F208B5; Tue, 26 May 2020 10:35:57 +0300 (EEST)
-Date: Tue, 26 May 2020 10:35:57 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: Re: [PATCH 00/11] Some fixes and cleanups for atomisp driver
-Message-ID: <20200526073557.GK7618@paasikivi.fi.intel.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 157E985C00
+ for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 08:41:20 +0000 (UTC)
+Received: from coco.lan (ip5f5ad5c5.dynamic.kabel-deutschland.de
+ [95.90.213.197])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 130A32075F;
+ Tue, 26 May 2020 08:41:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1590482479;
+ bh=U7YCn0pFqNnM1v0+Hrv8eqtblogkxRNYSfptbk8i3qQ=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=oltZ4LmKyAn+ohAy+PnO2uzZb7xI2NUUuQL6Ybqo5+nBjFhGChyAkylHP0WHrPx0N
+ 5szIFU1IMRayJbcochM4NV0NfZ35C1Yj4EHAUhsvBtij3XaMkfSAEJU4LWUlwB3Tgd
+ C1Q4CKvdrKAjsfJwVj0K2HPbIxvorfAa1Y3vtFpU=
+Date: Tue, 26 May 2020 10:41:11 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: Re: [PATCH 09/11] media: atomisp: partially get rid of one
+ abstraction layer
+Message-ID: <20200526104111.52a6ef23@coco.lan>
+In-Reply-To: <20200526072605.GJ7618@paasikivi.fi.intel.com>
 References: <cover.1590389536.git.mchehab+huawei@kernel.org>
+ <9c0522e86c0d858d7268621e9ad398df9c1f9e06.1590389536.git.mchehab+huawei@kernel.org>
+ <20200526072605.GJ7618@paasikivi.fi.intel.com>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1590389536.git.mchehab+huawei@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,15 +74,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, May 25, 2020 at 08:55:59AM +0200, Mauro Carvalho Chehab wrote:
-> The atomisp driver has lots of issues. This series get rid of a few of
-> them and updates the TODO list to reflect the current status and
-> provide more details aboug some items.
+Em Tue, 26 May 2020 10:26:05 +0300
+Sakari Ailus <sakari.ailus@linux.intel.com> escreveu:
 
-Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> Hi Mauro,
+> 
+> On Mon, May 25, 2020 at 08:56:08AM +0200, Mauro Carvalho Chehab wrote:
+> > The very same macros are defined as CSS_foo and IA_CSS_foo.
+> > 
+> > Remove this abstraction, as it just make things confusing,
+> > for no good reason.  
+> 
+> I think this boils down to which prefix should the uAPI structs of this
+> driver use. I'd prefer atomisp_something, ia_css has been used internally,
+> and that probably has been there in later firmware versions (vs. just css).
+> 
+> At this point removing the duplication makes sense though, so I'm not
+> proposing changes here.
 
--- 
-Sakari Ailus
+Yeah, agreed. From CSS PoV, there are several abstraction layers: the "hive"
+code, the "css" code (overlayed by a css layer for isp2400 and another one
+for isp2401), the "ia_css" layer, the "compat_css20" layer, and the
+"ia_css" layer. Finally, the "atomisp" upper layer.
+
+From namespace PoV, IA_CSS_foo is worse than CSS_foo. The best would be 
+to use ATOMISP_foo, but there are still too much layers there abstracting
+the code. For now, I prefer to keep the name used by the "IA_" layer,
+in order to avoid needing to deal with symbol conflicts. Let's get
+rid of it when we remove the IA_ abstraction as a hole.
+
+Btw, the vast majority of this driver's source code is due to all those
+layers.
+
+We need to be careful to remove them. There are even some duplicated
+structures there for the same thing, with some ugly compile-time
+checks to identify if the same struct (with different name) still
+preserves the same size. For now, I'm refraining touching these, as 
+some of those structs could be used by the firmware (check needed).
+
+My plan is to do the renaming once we get rid of those abstractions.
+
+-
+
+Btw, from practical PoV, I suspect that the next layer to be
+removed would be the atomisp_compat_css20 one. Several functions
+there are just wrapper ones.
+
+Thanks,
+Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
