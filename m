@@ -1,91 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B5131E23C9
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 16:14:12 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 826181E241B
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 16:31:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9B06B810BD;
-	Tue, 26 May 2020 14:14:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 726B82318D;
+	Tue, 26 May 2020 14:31:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gkG1yGk5ZENo; Tue, 26 May 2020 14:14:09 +0000 (UTC)
+	with ESMTP id AR-fl9ivPCKZ; Tue, 26 May 2020 14:31:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7AB488768A;
-	Tue, 26 May 2020 14:14:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A076E23265;
+	Tue, 26 May 2020 14:31:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 460BF1BF25B
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 14:14:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B1A461BF25B
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 14:31:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3B05B86008
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 14:14:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AD364861DE
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 14:31:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XKX2VrS7_zMC for <devel@linuxdriverproject.org>;
- Tue, 26 May 2020 14:14:04 +0000 (UTC)
+ with ESMTP id DSmfd0b55tMo for <devel@linuxdriverproject.org>;
+ Tue, 26 May 2020 14:31:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BB55785C47
- for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 14:14:04 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04QEBYQA115726;
- Tue, 26 May 2020 14:14:04 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=S09x31i6+1vUsnN+GNrXe9O/IqVLa0U7OWONP7nefJo=;
- b=rp2w0onuTA5IQwZujQX+wGDvv255/OC9cZKdO/HKQ7NQoE/cg/QxY/Z35b3oiQtV5AXo
- Ls/n5eqsnPyjQ+h4em5a06xjrRLnNcpjkZH7D0CEBE4bQsSASLHuORHqm4em8AeZwZDX
- ywN1satG7rycpcXMIWjlsmPd8q88rOEHkvml75C7SADjVUmbH6EZTHo9wYCUsNLLyse3
- s1kXgQjW8phly5IY4OAVnNhZt3nFZ8xJpmnVUDJEKu42s7c9HJP+XPM396nHBAwdieQa
- T8gALa65+guYuVmB579kLpFwXvyfrfumJhR7WfpyGUfaWpb1QMIhtNBoRDcMVL6CTw16 9w== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2130.oracle.com with ESMTP id 316u8qt33u-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 26 May 2020 14:14:02 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04QEDXRD025856;
- Tue, 26 May 2020 14:14:02 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3020.oracle.com with ESMTP id 317dksgcmg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 26 May 2020 14:14:01 +0000
-Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04QEDtWp027965;
- Tue, 26 May 2020 14:13:56 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 26 May 2020 07:13:54 -0700
-Date: Tue, 26 May 2020 17:13:46 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Gaurav Pathak <gauravpathak129@gmail.com>
-Subject: Re: [PATCH] Removing ununsed variable int lo, hi, int data and int i
- from comedi/drivers/dt2814.c.
-Message-ID: <20200526141346.GV30374@kadam>
-References: <20200524113613.GA19734@xebrium.com>
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D459685ABF
+ for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 14:31:14 +0000 (UTC)
+IronPort-SDR: SEdbUs+DzgJDGdtLRAk47/IuiVHDA5SGbE6YH85PcSVkeB7DcmJzmSI3IPWA2phhJxheQlRxRj
+ Y4h1MRRKlXJQ==
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 May 2020 07:31:14 -0700
+IronPort-SDR: LHLSiFElEiSRmOblMHMvnw15oAJVq/ZJUCnkUSwiK8UrdP2FId8zaPoddZB5WI5qH0UMWTyK55
+ /tJ3dlmMwM9Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,437,1583222400"; 
+ d="scan'208,223";a="375715781"
+Received: from kuha.fi.intel.com ([10.237.72.162])
+ by fmsmga001.fm.intel.com with SMTP; 26 May 2020 07:31:11 -0700
+Received: by kuha.fi.intel.com (sSMTP sendmail emulation);
+ Tue, 26 May 2020 17:31:10 +0300
+Date: Tue, 26 May 2020 17:31:10 +0300
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH] media: ipu3: add a module to probe sensors via ACPI
+Message-ID: <20200526143110.GC3284396@kuha.fi.intel.com>
+References: <12fbe3f5c6a16c5f3447adbc09fe27ceb2b16823.1589625807.git.mchehab+huawei@kernel.org>
+ <20200517103659.GS17578@paasikivi.fi.intel.com>
+ <20200520094400.5137e7f2@coco.lan>
+ <20200520082608.GV20066@paasikivi.fi.intel.com>
+ <20200520131830.3ff45919@coco.lan>
+ <CAHp75VduEGyzobm0hkXzWmFfZb-uMAEWG-wc89b7M7zVzZ_4LA@mail.gmail.com>
+ <20200522115736.10cca8eb@coco.lan>
 MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="17pEHd4RhPHOinZp"
 Content-Disposition: inline
-In-Reply-To: <20200524113613.GA19734@xebrium.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9632
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- malwarescore=0 bulkscore=0
- spamscore=0 suspectscore=0 mlxscore=0 adultscore=0 mlxlogscore=878
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2005260109
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9632
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxscore=0
- priorityscore=1501 spamscore=0 cotscore=-2147483648 suspectscore=0
- phishscore=0 clxscore=1011 mlxlogscore=907 bulkscore=0 adultscore=0
- lowpriorityscore=0 impostorscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2005260109
+In-Reply-To: <20200522115736.10cca8eb@coco.lan>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,25 +76,270 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, abbotti@mev.co.uk,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
+ Tian Shu Qiu <tian.shu.qiu@intel.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Your subject doesn't use the correct patch prefix please use.
 
-[PATCH] Staging: comedi: dt2814: remove unused assignments
+--17pEHd4RhPHOinZp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Please resend a v2.
+On Fri, May 22, 2020 at 11:57:36AM +0200, Mauro Carvalho Chehab wrote:
+> Em Thu, 21 May 2020 11:00:19 +0300
+> Andy Shevchenko <andy.shevchenko@gmail.com> escreveu:
+> 
+> > +Cc: Heikki (swnode expert)
+> > 
+> > On Wed, May 20, 2020 at 2:19 PM Mauro Carvalho Chehab
+> > <mchehab+huawei@kernel.org> wrote:
+> > > Em Wed, 20 May 2020 11:26:08 +0300
+> > > Sakari Ailus <sakari.ailus@linux.intel.com> escreveu:  
+> > 
+> > ...
+> > 
+> > > As I said, the problem is not probing the sensor via ACPI, but, instead,
+> > > to be able receive platform-specific data.  
+> > 
+> > There is no problem with swnodes, except missing parts (*).
+> > I have Skylake laptop with IPU3 and with half-baked ACPI tables, but
+> > since we have drivers in place with fwnode support, we only need to
+> > recreate fwnode graph in some board file to compensate the gap in
+> > ACPI.
+> > 
+> > *) Missing part is graph support for swnodes. With that done it will
+> > be feasible to achieve the rest.
+> > I forgot if we have anything for this already done. Heikki?
+> 
+> Hmm... I guess I should try this approach. I never heard about swnodes
+> before. Do you have already some patch with the needed swnodes setup,
+> and the missing parts to recreate the fwnode graph?
 
-Correct the references to Sparse as well like Luc said.
+Here you go. I tested it with this code:
 
-regards,
-dan carpenter
+        static const struct software_node nodes[];
+
+        static const struct property_entry ep0_props[] = {
+               PROPERTY_ENTRY_REF("remote-endpoint", &nodes[5]),
+               { }
+        };
+
+        static const struct property_entry ep1_props[] = {
+               PROPERTY_ENTRY_REF("remote-endpoint", &nodes[2]),
+               { }
+        };
+
+        static const struct software_node nodes[] = {
+               { "dev0" },
+               { "port0", &nodes[0] },
+               { "endpoint", &nodes[1], ep0_props },
+               { "dev1" },
+               { "port0", &nodes[3] },
+               { "endpoint", &nodes[4], ep1_props },
+               { }
+        };
+
+        void test(void)
+        {
+                const struct software_node *swnode;
+                struct fwnode_handle *fwnode;
+
+                software_node_register_nodes(nodes);
+
+                fwnode = fwnode_graph_get_remote_port_parent(software_node_fwnode(&nodes[5]));
+                swnode = to_software_node(fwnode);
+                printk("first parent: %s\n", swnode->name);
+
+                fwnode = fwnode_graph_get_remote_port_parent(software_node_fwnode(&nodes[2]));
+                swnode = to_software_node(fwnode);
+                printk("second parent: %s\n", swnode->name);
+
+                software_node_unregister_nodes(nodes);
+        }
+
+thanks,
+
+-- 
+heikki
+
+--17pEHd4RhPHOinZp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment;
+	filename="0001-software-node-Add-support-for-fwnode_graph-family-of.patch"
+
+From c6f8f2253b09e68bfb74a9110165f04fc2f50c51 Mon Sep 17 00:00:00 2001
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Date: Mon, 19 Aug 2019 11:09:41 +0300
+Subject: [PATCH] software node: Add support for fwnode_graph* family of
+ functions
+
+This implements the remaining .graph_* callbacks in the
+fwnode operations vector for the software nodes. That makes
+the fwnode_graph*() functions available in the drivers also
+when software nodes are used.
+
+The implementation tries to mimic the "OF graph" as much as
+possible, but there is no support for the "reg" device
+property. The ports will need to have the index in their
+name which starts with "port" (for example "port0", "port1",
+...) and endpoints will use the index of the software node
+that is given to them during creation. The port nodes can
+also be grouped under a specially named "ports" subnode,
+just like in DT, if necessary.
+
+The remote-endpoints are reference properties under the
+endpoint nodes that are named "remote-endpoint".
+
+Signed-off-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+---
+ drivers/base/swnode.c | 109 +++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 108 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/base/swnode.c b/drivers/base/swnode.c
+index de8d3543e8fe3..7359b3f4e5daa 100644
+--- a/drivers/base/swnode.c
++++ b/drivers/base/swnode.c
+@@ -536,6 +536,108 @@ software_node_get_reference_args(const struct fwnode_handle *fwnode,
+ 	return 0;
+ }
+ 
++static struct fwnode_handle *
++swnode_graph_find_next_port(const struct fwnode_handle *parent,
++			    struct fwnode_handle *port)
++{
++	struct fwnode_handle *old = port;
++
++	while ((port = software_node_get_next_child(parent, old))) {
++		if (!strncmp(to_swnode(port)->node->name, "port", 4))
++			return port;
++		fwnode_handle_put(old);
++		old = port;
++	}
++
++	return NULL;
++}
++
++static struct fwnode_handle *
++software_node_graph_get_next_endpoint(const struct fwnode_handle *fwnode,
++				      struct fwnode_handle *endpoint)
++{
++	struct swnode *swnode = to_swnode(fwnode);
++	struct fwnode_handle *old = endpoint;
++	struct fwnode_handle *parent;
++	struct fwnode_handle *port;
++
++	if (!swnode)
++		return NULL;
++
++	if (endpoint) {
++		port = software_node_get_parent(endpoint);
++		parent = software_node_get_parent(port);
++	} else {
++		parent = software_node_get_named_child_node(fwnode, "ports");
++		if (!parent)
++			parent = software_node_get(&swnode->fwnode);
++
++		port = swnode_graph_find_next_port(parent, NULL);
++	}
++
++	for (; port; port = swnode_graph_find_next_port(parent, port)) {
++		endpoint = software_node_get_next_child(port, old);
++		fwnode_handle_put(old);
++		if (endpoint)
++			break;
++	}
++
++	fwnode_handle_put(port);
++	software_node_put(parent);
++
++	return endpoint;
++}
++
++static struct fwnode_handle *
++software_node_graph_get_remote_endpoint(const struct fwnode_handle *fwnode)
++{
++	struct swnode *swnode = to_swnode(fwnode);
++	const struct software_node_ref_args *ref;
++	const struct property_entry *prop;
++
++	if (!swnode)
++		return NULL;
++
++	prop = property_entry_get(swnode->node->properties, "remote-endpoint");
++	if (!prop || prop->type != DEV_PROP_REF || prop->is_inline)
++		return NULL;
++
++	ref = prop->pointer;
++
++	return software_node_get(software_node_fwnode(ref[0].node));
++}
++
++static struct fwnode_handle *
++software_node_graph_get_port_parent(struct fwnode_handle *fwnode)
++{
++	struct swnode *swnode = to_swnode(fwnode);
++	struct fwnode_handle *parent;
++
++	if (!strcmp(swnode->parent->node->name, "ports"))
++		parent = &swnode->parent->parent->fwnode;
++	else
++		parent = &swnode->parent->fwnode;
++
++	return software_node_get(parent);
++}
++
++static int
++software_node_graph_parse_endpoint(const struct fwnode_handle *fwnode,
++				   struct fwnode_endpoint *endpoint)
++{
++	struct swnode *swnode = to_swnode(fwnode);
++	int ret;
++
++	ret = kstrtou32(swnode->parent->node->name + 4, 10, &endpoint->port);
++	if (ret)
++		return ret;
++
++	endpoint->id = swnode->id;
++	endpoint->local_fwnode = fwnode;
++
++	return 0;
++}
++
+ static const struct fwnode_operations software_node_ops = {
+ 	.get = software_node_get,
+ 	.put = software_node_put,
+@@ -547,7 +649,12 @@ static const struct fwnode_operations software_node_ops = {
+ 	.get_parent = software_node_get_parent,
+ 	.get_next_child_node = software_node_get_next_child,
+ 	.get_named_child_node = software_node_get_named_child_node,
+-	.get_reference_args = software_node_get_reference_args
++	.get_reference_args = software_node_get_reference_args,
++
++	.graph_get_next_endpoint = software_node_graph_get_next_endpoint,
++	.graph_get_remote_endpoint = software_node_graph_get_remote_endpoint,
++	.graph_get_port_parent = software_node_graph_get_port_parent,
++	.graph_parse_endpoint = software_node_graph_parse_endpoint,
+ };
+ 
+ /* -------------------------------------------------------------------------- */
+-- 
+2.26.2
+
+
+--17pEHd4RhPHOinZp
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--17pEHd4RhPHOinZp--
