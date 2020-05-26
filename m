@@ -1,73 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 265791E299C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 20:04:27 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 658D41E29EC
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 20:21:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C20ED8601B;
-	Tue, 26 May 2020 18:04:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 80CA786481;
+	Tue, 26 May 2020 18:21:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vSht+PWwjiD4; Tue, 26 May 2020 18:04:25 +0000 (UTC)
+	with ESMTP id AneLi1ydIZV8; Tue, 26 May 2020 18:21:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B657D86E89;
-	Tue, 26 May 2020 18:04:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7EAD280C75;
+	Tue, 26 May 2020 18:21:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 43A4B1BF3D1
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 18:04:22 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EC4B61BF83E
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 18:21:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3E178860F1
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 18:04:22 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E972385C08
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 18:21:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xbEUmtsm-rfT for <devel@linuxdriverproject.org>;
- Tue, 26 May 2020 18:04:21 +0000 (UTC)
+ with ESMTP id KP5q-Qky8xJ3 for <devel@linuxdriverproject.org>;
+ Tue, 26 May 2020 18:21:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
- [209.85.166.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 89CBD8601B
- for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 18:04:21 +0000 (UTC)
-Received: by mail-io1-f68.google.com with SMTP id r2so12748205ioo.4
- for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 11:04:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ClJL8gB+/7Ulq3yj2f4VaDBjcjvT7VkWGg/z9gQ4pgg=;
- b=TYqS1hHS4zHoZNNy15L+UInrStp1w5bfvWEarfgX8EI0CbWC5XJEz0whOOWz6lBkCB
- VRUpkl86mkHS1KWtsGlOFd8G7aiQqbfqE3b46JxP4z15cjidAmOdyJcQ8maev/FpVXUY
- RsDrjEENk+tq9+vYZgg9jB5tdyowygMneG7F2J2hjk9dtevlP6FAiT51JsD2SOkhrIuA
- ifgt6rDWXGZxR3MCw9iu6zfC2/RPadpBmWNqeoztYDwihTpHTSelDgX9fJpAUjYLuOTJ
- lACWr4XTAYaNpLIaanm18dya38vSvJb03Ong8Ka7/O5xQ+xrlYGNSANuFIifCy1zzLxM
- prgg==
-X-Gm-Message-State: AOAM531+w1wRLacskHa/nWtXeuV4Ze1u9XJ1C/LtwH5tL0hWKrmLGEuo
- TV51IeLRsqSWNGAmO9sEYQ==
-X-Google-Smtp-Source: ABdhPJzcu2nCj6F92lx7P/df1l59GGQNg9IGF9YDymeeq6DRFL67TpPCdRsq+oEeB/mS2xXLEmpasQ==
-X-Received: by 2002:a05:6602:2c8f:: with SMTP id
- i15mr11103155iow.45.1590516260900; 
- Tue, 26 May 2020 11:04:20 -0700 (PDT)
-Received: from xps15 ([64.188.179.252])
- by smtp.gmail.com with ESMTPSA id z13sm319397ilh.82.2020.05.26.11.04.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2020 11:04:19 -0700 (PDT)
-Received: (nullmailer pid 80209 invoked by uid 1000);
- Tue, 26 May 2020 18:04:18 -0000
-Date: Tue, 26 May 2020 12:04:18 -0600
-From: Rob Herring <robh@kernel.org>
-To: Xin Ji <xji@analogixsemi.com>
-Subject: Re: [PATCH v11 1/2] dt-bindings: drm/bridge: anx7625: MIPI to DP
- transmitter DT schema
-Message-ID: <20200526180418.GA80145@bogus>
-References: <cover.1589511894.git.xji@analogixsemi.com>
- <393386c0a18753cb4b3f695348fe506a192ea82a.1589511894.git.xji@analogixsemi.com>
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 86166859CC
+ for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 18:21:19 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04QIHqUn084835;
+ Tue, 26 May 2020 18:21:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=w5YSxrWisiQhUtrrv6OkREhFo/E7+LzoqjnDGHNDDLg=;
+ b=iJUi8XvUCqPEQ75J2/9X0aUHPKk8W95D7etKmeJtY7vFK/e3PBMpt6qodpsefBKmp9CK
+ 8/MmA65GN8QvmMsnVtvtxp13LP0HWHocK9SHZkE1fNo4gJqFbFkyC+9IddiXBCgKKBej
+ +6cwXIJqvUT3ET65pHCU813qfThFX8kNbL03UbvUo5bEPoF5+mSoDl1cfxeNgSEYipwp
+ VpEwj/8kUO4v89zG32suBgJiJIWDomuJt0CC1bDkWy4pR5KeFGcjAYKzo1swoSFubGxf
+ fp5GgwUIQJUPavzMGsit5szBKYY3ripx768kg8Ab95I6WCyX1lzwbFs6d8IcRfgVyBG6 dA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 318xbjufk7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 26 May 2020 18:21:18 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04QIIxUh100695;
+ Tue, 26 May 2020 18:21:18 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 317ddpbhuy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 26 May 2020 18:21:18 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04QILFbE008571;
+ Tue, 26 May 2020 18:21:16 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 26 May 2020 11:21:14 -0700
+Date: Tue, 26 May 2020 21:21:06 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: gaurav <gauravpathak129@gmail.com>
+Subject: Re: [PATCH v2] Staging: comedi: dt2814: remove unused assignments
+Message-ID: <20200526174813.GB30374@kadam>
+References: <20200526150954.GA30374@kadam>
+ <20200526155016.9146-1-gauravpathak129@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <393386c0a18753cb4b3f695348fe506a192ea82a.1589511894.git.xji@analogixsemi.com>
+In-Reply-To: <20200526155016.9146-1-gauravpathak129@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9633
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ bulkscore=0 mlxscore=0
+ phishscore=0 adultscore=0 suspectscore=0 spamscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005260142
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9633
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ spamscore=0 mlxscore=0
+ lowpriorityscore=0 priorityscore=1501 phishscore=0 cotscore=-2147483648
+ suspectscore=0 bulkscore=0 clxscore=1015 impostorscore=0 malwarescore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2005260142
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,31 +98,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Nicolas Boichat <drinkcat@chromium.org>, devicetree@vger.kernel.org,
- David Airlie <airlied@linux.ie>, Jonas Karlman <jonas@kwiboo.se>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Neil Armstrong <narmstrong@baylibre.com>, Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Pi-Hsun Shih <pihsun@chromium.org>, Sam Ravnborg <sam@ravnborg.org>,
- Dan Carpenter <dan.carpenter@oracle.com>, Sheng Pan <span@analogixsemi.com>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, abbotti@mev.co.uk,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, 15 May 2020 13:49:20 +0800, Xin Ji wrote:
-> anx7625: MIPI to DP transmitter DT schema
-> 
-> Signed-off-by: Xin Ji <xji@analogixsemi.com>
-> ---
->  .../bindings/display/bridge/analogix,anx7625.yaml  | 95 ++++++++++++++++++++++
->  1 file changed, 95 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-> 
+On Tue, May 26, 2020 at 09:20:16PM +0530, gaurav wrote:
+                                          ^^^^^^
+So very close except your from header isn't right.  Just fix that and
+send a v3.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
