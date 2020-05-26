@@ -1,84 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0E2D1E212C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 13:48:06 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 74BAB22D44;
-	Tue, 26 May 2020 11:48:03 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PvbCyeePKjJm; Tue, 26 May 2020 11:48:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E472422B7A;
-	Tue, 26 May 2020 11:48:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 74B621BF846
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 11:47:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 175AF1E2358
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 May 2020 15:51:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0C3A285F09
- for <devel@linuxdriverproject.org>; Tue, 26 May 2020 11:47:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2CB3A86199;
+	Tue, 26 May 2020 13:51:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gR7tX4TFAApo; Tue, 26 May 2020 13:51:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 05FD486008;
+	Tue, 26 May 2020 13:51:01 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C7E41BF3A1
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 13:50:58 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 914EC204E7
+ for <devel@linuxdriverproject.org>; Tue, 26 May 2020 13:50:58 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d-sEuBUGU9di for <devel@linuxdriverproject.org>;
- Tue, 26 May 2020 11:47:56 +0000 (UTC)
+ with ESMTP id LBFRaI3sYXRw for <devel@linuxdriverproject.org>;
+ Tue, 26 May 2020 13:50:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
- [209.85.166.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7B7CA85E8A
- for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 11:47:55 +0000 (UTC)
-Received: by mail-io1-f68.google.com with SMTP id k18so21645553ion.0
- for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 04:47:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=hJWyNDI0dfOMiXPBsmO+dJ6NmJrMxzXQ5Ah4k+Qs48w=;
- b=Ln9sdbULjWwPzlacZB8rZ6PRBCoMN35xWcPIhFiVHRN+l+p5kz033Lg4NZbcE9qlSC
- 8/8I1bJPinluxO1gQSp4mVEi7GJeMgX6NS8doJOdA/HFrCChbWzfg0DDlLAFYo19MK2T
- oQ71pbogTkXQvYihDrqpUBUsdiI8WTR+CTNfdY2BCdZQxYRGic3AAf/GBLVJ4kWXSXzP
- mv+Q1/lQ778qIFZm7oL7XykcUCYX0NONhMYNIKn924VyhMy8e3N0kXZdQxaz71qslH/8
- G6g79t7cfjrCF9Z3AZUsup+qMxxavvIC19G/oIMhkgEj4J8fUkleuEd29ZVR0Ui2ImWu
- wfAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hJWyNDI0dfOMiXPBsmO+dJ6NmJrMxzXQ5Ah4k+Qs48w=;
- b=t7N1xY073xKxo9ZLkpwq0Bbz8af7johEN3HVYFEKjwYvRszHAuSwP3SNW0b+3I6bOz
- qLyena07XMYf5NBCOvhchep9Tuyvgu66D3lMoqx+2m4g9QOtnZEm2ixlOZj4O+05jo+m
- GprAAVhfTffpwWFr8T8GTaHQJd4D+/5OIjng4ovjajqqJOdXfj8aoXSZzFMqW167wR8t
- PI1TH5vOmFzkkPcVqBDWZ01YgDd3Twd/0r9IPTo51/VhDkdUI0v4/3gBzhXuzoWF4I+p
- eKXpdbVfacV7sKbfEdDAb05DJyS8bFbFudOx2d6Wyq0AkArMKmljjMhASWiI8K3JPofE
- ZlDw==
-X-Gm-Message-State: AOAM5327M7m8QaDA5tpV+OgMcNjaQlCSobg73PrLOrcXBwIKzg1vMW4D
- DdnMRmS725tEwZaEu6HacPpiYg==
-X-Google-Smtp-Source: ABdhPJy0M+WccaWArZBw7Fw3A9iFpuwKZUZ+p5F5jSHlp7eANhyKNnAqMHBtfFpufyqF/l/67UYxdg==
-X-Received: by 2002:a02:948e:: with SMTP id x14mr557913jah.3.1590493663850;
- Tue, 26 May 2020 04:47:43 -0700 (PDT)
-Received: from [172.22.22.4] (c-73-185-129-58.hsd1.mn.comcast.net.
- [73.185.129.58])
- by smtp.googlemail.com with ESMTPSA id v76sm11165378ill.73.2020.05.26.04.47.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 May 2020 04:47:43 -0700 (PDT)
-Subject: Re: [greybus-dev] [PATCH] staging: greybus: loopback: fix a spelling
- error.
-To: Till Varoquaux <till.varoquaux@gmail.com>,
- kernel-janitors@vger.kernel.org, pure.logic@nexus-software.ie
-References: <20200518051314.1785567-1-till.varoquaux@gmail.com>
-From: Alex Elder <elder@linaro.org>
-Message-ID: <3f610a0c-fb15-e929-0f94-447f732659a0@linaro.org>
-Date: Tue, 26 May 2020 06:47:41 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by silver.osuosl.org (Postfix) with ESMTPS id BD44B204D3
+ for <devel@driverdev.osuosl.org>; Tue, 26 May 2020 13:50:56 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04QDmn4A125702;
+ Tue, 26 May 2020 13:50:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=rLDlQKBEIHrnN7J+s/D6Z8tjQiOaDK1huwzT3h6OJlg=;
+ b=WsYabgce9/2oFmPNh4TH25fTbTiZi7pfda0t2AjCmHw8SWketeaN9vjNSZelR54w4iOI
+ SJzj37sGnPo2ZiC5p1u2UMOmu9iWCQPN+cEGEtjTtUXNHmGFAt0bhL1iNGE1WXcTaqcW
+ hPKwnoDwmwP8myVonXG9RMGU/rrfdPdRmpjpeZIKpGStmvk/MKT88RRd64fkpT4oCWFR
+ jWaExWNRrPedqZuGFrPDzKhqPrErR2wEBGfYqQX4KaQGram0WHOHCnUuAqRz/QDVLZ/9
+ fBkl5ZpWAgwqbv0xc4VW6puouyTD124s6A9JpIfHBmofLWujJCH/5b6pvb5DXaaSC9wO BQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 318xe19yjn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 26 May 2020 13:50:56 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04QDgqlV123191;
+ Tue, 26 May 2020 13:50:55 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3030.oracle.com with ESMTP id 317drxg5f7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 26 May 2020 13:50:55 +0000
+Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04QDos7M014143;
+ Tue, 26 May 2020 13:50:54 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 26 May 2020 06:50:53 -0700
+Date: Tue, 26 May 2020 16:50:48 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: Re: [PATCH] staging: vt6656: Fix vnt_tx_usb_header static checker
+ warning
+Message-ID: <20200526135048.GU30374@kadam>
+References: <9818e564-81f6-a683-caa0-69423fded401@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200518051314.1785567-1-till.varoquaux@gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <9818e564-81f6-a683-caa0-69423fded401@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9632
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ phishscore=0 malwarescore=0
+ mlxlogscore=999 adultscore=0 suspectscore=0 bulkscore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005260105
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9632
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxlogscore=999
+ adultscore=0 cotscore=-2147483648 mlxscore=0 bulkscore=0
+ priorityscore=1501 phishscore=0 lowpriorityscore=0 malwarescore=0
+ clxscore=1015 impostorscore=0 suspectscore=0 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005260105
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,42 +99,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
- trivial@kernel.org, Johan Hovold <johan@kernel.org>,
- linux-kernel@vger.kernel.org, greybus-dev@lists.linaro.org
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-wireless@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 5/25/20 1:10 AM, Till Varoquaux wrote:
-> Successed -> succeeded.
+On Sun, May 24, 2020 at 12:12:41AM +0100, Malcolm Priestley wrote:
+> drivers/staging/vt6656/rxtx.c:729 vnt_beacon_xmit()
+> warn: struct type mismatch 'vnt_beacon_buffer vs vnt_tx_usb_header'
 > 
-> Signed-off-by: Till Varoquaux <till.varoquaux@gmail.com>
-
-Looks good.
-
-Reviewed-by: Alex Elder <elder@linaro.org>
-
-> ---
->   drivers/staging/greybus/loopback.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Since the only part of vnt_beacon_buffer is used remove and
+> replace it with vnt_tx_usb_header.
 > 
-> diff --git a/drivers/staging/greybus/loopback.c b/drivers/staging/greybus/loopback.c
-> index 583d9708a191..2471448ba42a 100644
-> --- a/drivers/staging/greybus/loopback.c
-> +++ b/drivers/staging/greybus/loopback.c
-> @@ -135,7 +135,7 @@ static ssize_t name##_##field##_show(struct device *dev,	\
->   			    char *buf)					\
->   {									\
->   	struct gb_loopback *gb = dev_get_drvdata(dev);			\
-> -	/* Report 0 for min and max if no transfer successed */		\
-> +	/* Report 0 for min and max if no transfer succeeded */		\
->   	if (!gb->requests_completed)					\
->   		return sprintf(buf, "0\n");				\
->   	return sprintf(buf, "%" #type "\n", gb->name.field);		\
-> 
+> Fixes: 9deca1e3e2b6 ("staging: vt6656: vnt_beacon_xmit use extra_tx_headroom.")
 
+It's not really a bug fix.  It's just a cleanup.  But whatever...
+
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
+
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+
+Thanks!
+
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
