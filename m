@@ -1,49 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F9F21E3424
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 02:47:30 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C40251E34D4
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 03:42:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 42477885DC;
-	Wed, 27 May 2020 00:47:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E1E7B869C0;
+	Wed, 27 May 2020 01:42:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DAQ3VyDW2w8v; Wed, 27 May 2020 00:47:28 +0000 (UTC)
+	with ESMTP id olMuXbf9m1DZ; Wed, 27 May 2020 01:42:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 57D6F885A8;
-	Wed, 27 May 2020 00:47:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DF95B86144;
+	Wed, 27 May 2020 01:42:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2A1261BF9B2
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 00:47:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CC5211BF82B
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 01:42:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1D23D87B4B
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 00:47:24 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BE3B2878BC
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 01:42:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SrqVvfXIQpXu for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 00:47:23 +0000 (UTC)
+ with ESMTP id h5gzBnCJ9cMo for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 01:42:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail2.yoshida-g.ac.jp (210197103105.cidr.odn.ne.jp
- [210.197.103.105])
- by whitealder.osuosl.org (Postfix) with ESMTP id 58D8587942
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 00:47:23 +0000 (UTC)
-Received: from User (unknown [51.120.74.68])
- by mail2.yoshida-g.ac.jp (Postfix) with ESMTPA id 923649BD7FE;
- Wed, 27 May 2020 00:08:22 +0900 (JST)
-From: "Ms. Reem Al-Hashimi"<employ1@yoshida-g.ac.jp>
-Subject: Re: Am Still Waiting For Your Reply.....
-Date: Tue, 26 May 2020 15:08:36 -0000
+Received: from mail.sgcmedia.net.vn (unknown [210.211.99.246])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D1C678789E
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 01:42:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.sgcmedia.net.vn (Postfix) with ESMTP id 7F961190B86;
+ Tue, 26 May 2020 20:15:07 +0700 (+07)
+Received: from mail.sgcmedia.net.vn ([127.0.0.1])
+ by localhost (mail.sgcmedia.net.vn [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id OSJVxSFMtr1B; Tue, 26 May 2020 20:15:07 +0700 (+07)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.sgcmedia.net.vn (Postfix) with ESMTP id 5A688190CEE;
+ Tue, 26 May 2020 20:15:03 +0700 (+07)
+X-Virus-Scanned: amavisd-new at sgcmedia.net.vn
+Received: from mail.sgcmedia.net.vn ([127.0.0.1])
+ by localhost (mail.sgcmedia.net.vn [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id UDmPMwBVGGYv; Tue, 26 May 2020 20:15:03 +0700 (+07)
+Received: from Germany-RDP1.sumiagro.local (unknown [52.178.12.210])
+ by mail.sgcmedia.net.vn (Postfix) with ESMTPSA id B8B441A404F;
+ Tue, 26 May 2020 20:14:58 +0700 (+07)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200527004724.1D23D87B4B@whitealder.osuosl.org>
+Content-Description: Mail message body
+Subject: Non-Recourse Loans
+To: Recipients <notreply@investmentleasing.com>
+From: "Mr. Andi" <notreply@investmentleasing.com>
+Date: Tue, 26 May 2020 13:14:50 +0000
+Message-Id: <20200526131458.B8B441A404F@mail.sgcmedia.net.vn>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,21 +66,168 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemalhashimi1@daum.net
+Reply-To: investmentleasingjk@financier.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds assist Corona virus Symptoms and Causes.
+Sir,
 
-Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+We are pleased to inform you that Investment & Leasing HK Limited is offering 95% LTV non-recourse loans with a 3.5% interest rate per annual for a period of 10-years + 2 years grace period with no prepayment penalties.
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+Let us know if you are interested to provide you with more information, you can contact us through the following
+Email address: andi@investmentleasinghk.com.
 
-If you can handle the fund in a good investment. reply on this email only: reemalhashimi@daum.net
-Regards,
-Ms. Reem
+
+Andi  Suprianto, OM
+Investment & Leasing HK Limited
+Bank Instrument, Monetization, Assets Management & Financial Specialist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+This email is intended only for the named recipient. If you receive this email and you are not the intended recipient please delete immediately. Email communications are not secure, for this reason Investment & Leasing HK Limited guarantee the security of this email or its contents or that it remains virus free once sent.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
