@@ -1,53 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0181C1E41B9
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 14:13:57 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1400086D27;
-	Wed, 27 May 2020 12:13:55 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6OwC8DBr51vj; Wed, 27 May 2020 12:13:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F126E86D2B;
-	Wed, 27 May 2020 12:13:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 176B81BF2FC
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 12:13:49 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 41FF21E4194
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 14:09:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 13700882AD
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 12:13:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DC6DD887C7;
+	Wed, 27 May 2020 12:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qFaSsI9WbJzn; Wed, 27 May 2020 12:09:03 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 547B58879D;
+	Wed, 27 May 2020 12:09:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DDB021BF2FC
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 12:08:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id D6411203F7
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 12:08:59 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wrh7EuYpXlwt for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 12:13:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BCC6C8805D
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 12:13:47 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id D415AAE2D;
- Wed, 27 May 2020 11:55:06 +0000 (UTC)
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>
-Subject: [RFC 50/50] staging: vchiq: Move vchiq.h into include directory
-Date: Wed, 27 May 2020 13:53:55 +0200
-Message-Id: <20200527115400.31391-51-nsaenzjulienne@suse.de>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200527115400.31391-1-nsaenzjulienne@suse.de>
+ with ESMTP id 2k4RHHXSL+lB for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 12:08:58 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id C86E3203F0
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 12:08:58 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1643E207D8;
+ Wed, 27 May 2020 12:08:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1590581338;
+ bh=QQD+MRgE+NZNCZ1eRvLYNsmu3HPx3aINjpU48jwRlJg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ppw1YZ13U3GlFvOUOKJHjPS6spIo3N1LnVyxUGcYWXLlt024/UzwJ/j8caj9QRbTT
+ aStNnpVrgk/9GGow9w2VyKFQ6ePWmKMXiHP945Qbwoml51r0Kleg1cpF40zR8TI9kv
+ Tv3jem1MlMHO38AXGJOvAA8k+fHHZha6t1JWxNVs=
+Date: Wed, 27 May 2020 14:08:55 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: Re: [RFC 00/50] staging: vchiq: Getting rid of the vchi/vchiq split
+Message-ID: <20200527120855.GA429709@kroah.com>
 References: <20200527115400.31391-1-nsaenzjulienne@suse.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200527115400.31391-1-nsaenzjulienne@suse.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,177 +66,50 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, kernel-list@raspberrypi.com,
- laurent.pinchart@ideasonboard.com, linux-kernel@vger.kernel.org,
- gregkh@linuxfoundation.org
+ linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ laurent.pinchart@ideasonboard.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-To make the separation clear between vchiq's header files and vchiq.h,
-which is to be used by services and is the 'public' API, move it into a
-dedicated includes directory.
+On Wed, May 27, 2020 at 01:53:05PM +0200, Nicolas Saenz Julienne wrote:
+> vchi acts as a mid layer between vchiq and its kernel services, while
+> arguably providing little to no benefit: half of the functions exposed
+> are a 1:1 copy of vchiq's, and the rest provide some functionality which
+> can be easly integrated into vchiq without all the churn. Moreover it
+> has been found in the past as a blockage to further fixes in vchiq as
+> every change needed its vchi counterpart, if even possible.
+> 
+> Hence this series, which merges all vchi functionality into vchiq and
+> provies a simpler and more concise API to services.
+> 
+> I'm aware that kernel's vchi API tries to mimic its userspace
+> counterpart (or vice versa). Obviously this breaks the parity, but I
+> don't think it's a sane goal to have. There is little sense or gain from
+> it, and adds impossible constraints to upstreaming the driver.
+> 
+> Overall the series falls short of removing 1500 lines of code, which is
+> pretty neat on itself.
+> 
+> So far it has been tested trough bcm2835-camera, audio and vchiq-test. I
+> can't do much about vc-sm-cma for now, but the changes are done in a way
+> that shouldn't affect its behaviour.
+> 
+> Note that the series builds up on RPi/Laurent's camera support series[1]
+> and can't yet be merged. We'd have to coordinate here. We could either
+> wait for the vc_sm_cma rework (if it's not going to take months and
+> months to finish), or factor out all the vc-sm-cma stuff, merge that into
+> the downstream kernel and take the rest of the series on top of
+> Laurent's mmal-vchiq changes.
 
-Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
----
- drivers/staging/vc04_services/Makefile                         | 2 +-
- drivers/staging/vc04_services/bcm2835-audio/Makefile           | 2 +-
- drivers/staging/vc04_services/bcm2835-audio/bcm2835.h          | 2 +-
- .../{interface/vchiq_arm => include/linux/raspberrypi}/vchiq.h | 0
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h | 2 +-
- .../staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h    | 2 +-
- drivers/staging/vc04_services/vc-sm-cma/Makefile               | 1 -
- drivers/staging/vc04_services/vc-sm-cma/vc_sm.c                | 2 +-
- drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.c       | 2 +-
- drivers/staging/vc04_services/vchiq-mmal/Makefile              | 1 +
- drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c          | 3 +--
- 11 files changed, 9 insertions(+), 10 deletions(-)
- rename drivers/staging/vc04_services/{interface/vchiq_arm => include/linux/raspberrypi}/vchiq.h (100%)
+These look great, but due to the dependancy, I can't take them all.
 
-diff --git a/drivers/staging/vc04_services/Makefile b/drivers/staging/vc04_services/Makefile
-index e32c0744e7fc..e1de39303ffe 100644
---- a/drivers/staging/vc04_services/Makefile
-+++ b/drivers/staging/vc04_services/Makefile
-@@ -14,5 +14,5 @@ obj-$(CONFIG_VIDEO_ISP_BCM2835)		+= bcm2835-isp/
- obj-$(CONFIG_BCM_VC_SM_CMA) 		+= vc-sm-cma/
- obj-$(CONFIG_BCM2835_VCHIQ_MMAL)	+= vchiq-mmal/
- 
--ccflags-y += -D__VCCOREVER__=0x04000000
-+ccflags-y += -I $(srctree)/$(src)/include  -D__VCCOREVER__=0x04000000
- 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/Makefile b/drivers/staging/vc04_services/bcm2835-audio/Makefile
-index 13fa6d7d9745..d59fe4dde615 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/Makefile
-+++ b/drivers/staging/vc04_services/bcm2835-audio/Makefile
-@@ -2,4 +2,4 @@
- obj-$(CONFIG_SND_BCM2835)	+= snd-bcm2835.o
- snd-bcm2835-objs		:= bcm2835.o bcm2835-ctl.o bcm2835-pcm.o bcm2835-vchiq.o
- 
--ccflags-y += -I $(srctree)/$(src)/.. -D__VCCOREVER__=0x04000000
-+ccflags-y += -I $(srctree)/$(src)/../include -D__VCCOREVER__=0x04000000
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-index ca220f5230ec..1b36475872d6 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-@@ -6,10 +6,10 @@
- 
- #include <linux/device.h>
- #include <linux/wait.h>
-+#include <linux/raspberrypi/vchiq.h>
- #include <sound/core.h>
- #include <sound/pcm.h>
- #include <sound/pcm-indirect.h>
--#include "interface/vchiq_arm/vchiq.h"
- 
- #define MAX_SUBSTREAMS   (8)
- #define AVAIL_SUBSTREAMS_MASK  (0xff)
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq.h b/drivers/staging/vc04_services/include/linux/raspberrypi/vchiq.h
-similarity index 100%
-rename from drivers/staging/vc04_services/interface/vchiq_arm/vchiq.h
-rename to drivers/staging/vc04_services/include/linux/raspberrypi/vchiq.h
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
-index 8a27f3d7217e..e67692879249 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
-@@ -10,10 +10,10 @@
- #include <linux/kref.h>
- #include <linux/rcupdate.h>
- #include <linux/wait.h>
-+#include <linux/raspberrypi/vchiq.h>
- 
- #include "vchiq_cfg.h"
- 
--#include "vchiq.h"
- 
- /* Do this so that we can test-build the code on non-rpi systems */
- #if IS_ENABLED(CONFIG_RASPBERRYPI_FIRMWARE)
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
-index f285d754ad28..3653fd99d8a1 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_ioctl.h
-@@ -5,7 +5,7 @@
- #define VCHIQ_IOCTLS_H
- 
- #include <linux/ioctl.h>
--#include "vchiq.h"
-+#include <linux/raspberrypi/vchiq.h>
- 
- #define VCHIQ_IOC_MAGIC 0xc4
- #define VCHIQ_INVALID_HANDLE (~0)
-diff --git a/drivers/staging/vc04_services/vc-sm-cma/Makefile b/drivers/staging/vc04_services/vc-sm-cma/Makefile
-index 77d173694fbf..c92a5775c62e 100644
---- a/drivers/staging/vc04_services/vc-sm-cma/Makefile
-+++ b/drivers/staging/vc04_services/vc-sm-cma/Makefile
-@@ -1,6 +1,5 @@
- ccflags-y += \
- 	-I$(srctree)/$(src)/../ \
--	-I$(srctree)/$(src)/../interface/vchi \
- 	-I$(srctree)/$(src)/../interface/vchiq_arm\
- 	-I$(srctree)/$(src)/../include
- 
-diff --git a/drivers/staging/vc04_services/vc-sm-cma/vc_sm.c b/drivers/staging/vc04_services/vc-sm-cma/vc_sm.c
-index e4f7bdeef66d..cc69ce932317 100644
---- a/drivers/staging/vc04_services/vc-sm-cma/vc_sm.c
-+++ b/drivers/staging/vc04_services/vc-sm-cma/vc_sm.c
-@@ -46,9 +46,9 @@
- #include <linux/seq_file.h>
- #include <linux/syscalls.h>
- #include <linux/types.h>
-+#include <linux/raspberrypi/vchiq.h>
- #include <asm/cacheflush.h>
- 
--#include "vchiq.h"
- #include "vchiq_connected.h"
- #include "vc_sm_cma_vchi.h"
- 
-diff --git a/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.c b/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.c
-index 2c65416cd331..8d8eda1a8142 100644
---- a/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.c
-+++ b/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.c
-@@ -18,8 +18,8 @@
- #include <linux/semaphore.h>
- #include <linux/slab.h>
- #include <linux/types.h>
-+#include <linux/raspberrypi/vchiq.h>
- 
--#include "vchiq.h"
- #include "vc_sm_cma_vchi.h"
- 
- #define VC_SM_VER  1
-diff --git a/drivers/staging/vc04_services/vchiq-mmal/Makefile b/drivers/staging/vc04_services/vchiq-mmal/Makefile
-index f8164c33aec3..b2a830f48acc 100644
---- a/drivers/staging/vc04_services/vchiq-mmal/Makefile
-+++ b/drivers/staging/vc04_services/vchiq-mmal/Makefile
-@@ -5,4 +5,5 @@ obj-$(CONFIG_BCM2835_VCHIQ_MMAL) += bcm2835-mmal-vchiq.o
- 
- ccflags-y += \
- 	-I$(srctree)/$(src)/.. \
-+	-I$(srctree)/$(src)/../include \
- 	-D__VCCOREVER__=0x04000000
-diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-index 2101b79780eb..e057e21961d5 100644
---- a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-+++ b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-@@ -23,6 +23,7 @@
- #include <linux/slab.h>
- #include <linux/completion.h>
- #include <linux/vmalloc.h>
-+#include <linux/raspberrypi/vchiq.h>
- #include <media/videobuf2-vmalloc.h>
- 
- #include "mmal-common.h"
-@@ -32,8 +33,6 @@
- 
- #include "vc-sm-cma/vc_sm_knl.h"
- 
--#include "interface/vchiq_arm/vchiq.h"
--
- /*
-  * maximum number of components supported.
-  * This matches the maximum permitted by default on the VPU
--- 
-2.26.2
+But I can take the first 10, so I did that, they are now queued up,
+thanks!
 
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
