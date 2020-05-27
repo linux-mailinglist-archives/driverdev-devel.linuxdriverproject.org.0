@@ -1,90 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B1661E4E84
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 21:48:28 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DC81888085;
-	Wed, 27 May 2020 19:48:25 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rukb7+L+QPAD; Wed, 27 May 2020 19:48:25 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9924A8805A;
-	Wed, 27 May 2020 19:48:24 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CB52F1BF59A
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 19:48:22 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 197411E4F58
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 22:33:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A71B92214F
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 19:48:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 80AA525304;
+	Wed, 27 May 2020 20:33:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CElvY-NxaSLW; Wed, 27 May 2020 20:33:28 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id BA76D2048C;
+	Wed, 27 May 2020 20:33:26 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B45A31BF591
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 20:33:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id B086C87ED5
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 20:33:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D0spiCyVfeYo for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 19:48:21 +0000 (UTC)
+ with ESMTP id ec4DM9wEEQLM for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 20:33:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by silver.osuosl.org (Postfix) with ESMTPS id C93AA204CF
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 19:48:20 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04RJllua002046;
- Wed, 27 May 2020 19:48:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=iOFWFzT/Y8/tUUAy74tEmOHpVPIVu/JZN3B4CWNmoFc=;
- b=gT6d1H7MgY2dPrU62J379tyWxzjCNMi6rd/JliS22w51oR7VrccOeuawOeT032H5UQXj
- u96XknxM+sL/+Os7zbLe+j/Mmxghu4Evwkim264LF15uUSyilJ35qrOdRPPwq1f6MPUG
- A0Molfq6IEu5jwpLkIQaZea0rkwvC9Hpnxsfr5ovMDScObpIJ1GdZq0I+0pawZHPtyCg
- PGYZnfwAoYEMxDDm24biJ1bQ/GNN0E6kGnr2kq4Bpxsj+ZGXwV+9j3d7Aj4JaChF/dzQ
- acjWq3cSkRKTbIH12tTU1JTl8Qe92Ds6pdsc2hgV9hSGgUbFSjigUKZ6fMnJejox37QJ AA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 318xbk1gf3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 27 May 2020 19:48:19 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04RJlZN1004381;
- Wed, 27 May 2020 19:48:19 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 317j5stf3e-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 27 May 2020 19:48:19 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04RJmIUG021190;
- Wed, 27 May 2020 19:48:18 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 27 May 2020 12:48:17 -0700
-Date: Wed, 27 May 2020 22:48:11 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Pascal Terjan <pterjan@google.com>
-Subject: Re: [PATCH] staging: rtl8723bs: Use shared header constants
-Message-ID: <20200527194811.GF30374@kadam>
-References: <20200523212919.33181-1-pterjan@google.com>
+Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
+ [209.85.166.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CDBF487E71
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 20:33:21 +0000 (UTC)
+Received: by mail-io1-f66.google.com with SMTP id o5so27552873iow.8
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 13:33:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2vFN875M4SjcSJqsQBhIyGl6yme7p3cXKTVvGnFDckQ=;
+ b=PWYVMjGMInGK/+VGo90K1Nt077ISBvqH8S5m6aLr4ibsjLTafr454aQn5QUd9Jb3hg
+ HIU8mhDByYhLX3UkQt4D2Rzx+UVqcITBJt/Z4Nm6cp0g3Yl09HlbCDBmvalwwApZDcJq
+ TCSN2E+kQC1owKCySYdCL/ZBpO/l+v9tEX/zkwIqcVmYC3Es00307vvVuukW+gfBKFav
+ i6oSBJGUvh2sDvYIrnmTx+zjY2VjsXPx1P13677f7kwCF/waz1sJrfeR5w+b0s69jvIE
+ AHkw/MwxAJolk8NT1IA/Xyxgf38aptnsu1Ger4NNw9zCeR9Z9AU3V+o4nn5nRSj+QM8o
+ ELDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2vFN875M4SjcSJqsQBhIyGl6yme7p3cXKTVvGnFDckQ=;
+ b=MxLk4eKC20sX2yD4tcYwQ/7as302nqwQqkeXzCa5LKSAA+8ymuW7E5bCnyYjIAAdmG
+ 4c5Re7qvDt86LVWwV2zSVK3En6RxCJc4QCximgCpLkTt0+4SeKA1FmJujCbQkF2M+BCm
+ RIddo/XUrXrrcZNVsOGhu04kaQO2/8V/b00v3kLgJL4coTRrjnX2VaZgl5t5PZFmNNWq
+ hiwOfmium0VdgvesTD89PP5de+yG4yRMK0uDqBAbzcITzYws7KUVs9Fhe9dTG7VPATV7
+ 4fkwjZMNjy+jh8p0dd3LD0cEnyaoxaJ8/ZmVIHLf+f+hXAGJQby3GN32FM6D+hBX6UE6
+ xQNA==
+X-Gm-Message-State: AOAM530rKCjMmHw1ln9m0tKBr3PGqAC5/WSO2aSP6Yi1YOPMTh+dV5ni
+ /wxbKyhUPOEH5wfl8SSqtxxkZcHebqcPuX6tXX0QqQ==
+X-Google-Smtp-Source: ABdhPJwjayx9asTvHrdVtxj1V1NSaSKRT0BosTcJ5cpULOtZMGwSZrsfDFwEsny8NbcaKy/c0xKEWbch/jHI5WEaREE=
+X-Received: by 2002:a02:3b4b:: with SMTP id i11mr7539961jaf.16.1590611600730; 
+ Wed, 27 May 2020 13:33:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200523212919.33181-1-pterjan@google.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9633
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- spamscore=0 suspectscore=0
- mlxlogscore=999 mlxscore=0 adultscore=0 phishscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2005270151
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9633
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- spamscore=0 mlxscore=0
- lowpriorityscore=0 priorityscore=1501 phishscore=0 cotscore=-2147483648
- suspectscore=0 bulkscore=0 clxscore=1015 impostorscore=0 malwarescore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2005270151
+References: <20200523212919.33181-1-pterjan@google.com>
+ <20200527194811.GF30374@kadam>
+In-Reply-To: <20200527194811.GF30374@kadam>
+From: Pascal Terjan <pterjan@google.com>
+Date: Wed, 27 May 2020 21:33:03 +0100
+Message-ID: <CAANdO=LqcHOzxSjudw+G+292sjguOoA-E2y4iAFZtCfa0UFe1A@mail.gmail.com>
+Subject: Re: [PATCH] staging: rtl8723bs: Use shared header constants
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,50 +87,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, May 23, 2020 at 10:29:19PM +0100, Pascal Terjan wrote:
-> This is one of the 9 drivers redefining rfc1042_header.
-> 
+On Wed, 27 May 2020 at 20:48, Dan Carpenter <dan.carpenter@oracle.com> wrote:
+>
+> On Sat, May 23, 2020 at 10:29:19PM +0100, Pascal Terjan wrote:
+> > This is one of the 9 drivers redefining rfc1042_header.
+> >
+>
+> This is how the patch looks like in my email client:
+>
+> https://marc.info/?l=linux-driver-devel&m=159026973821890&w=2
+>
+> Do you see how the subject is far away from the body of the commit
+> message?  I normally only read the subject or the body when I'm
+> reviewing patches so it's good if the body is clear on its own.  Maybe
+> write something like:
+>
+> "This driver creates a local definitions of "rtw_rfc1042_header" and
+> "rtw_bridge_tunnel_header" but it should just use the standard definitions
+> from cfg80211.h."
 
-This is how the patch looks like in my email client:
+Thanks, I see both together when writing the commit message and need
+to remember they are actually separate.
 
-https://marc.info/?l=linux-driver-devel&m=159026973821890&w=2
+> >  void _rtw_init_sta_recv_priv(struct sta_recv_priv *psta_recvpriv)
+> > @@ -1625,11 +1622,11 @@ sint wlanhdr_to_ethhdr(union recv_frame *precvframe)
+> >       psnap_type = ptr+pattrib->hdrlen + pattrib->iv_len+SNAP_SIZE;
+> >       /* convert hdr + possible LLC headers into Ethernet header */
+> >       /* eth_type = (psnap_type[0] << 8) | psnap_type[1]; */
+> > -     if ((!memcmp(psnap, rtw_rfc1042_header, SNAP_SIZE) &&
+> > -             (memcmp(psnap_type, SNAP_ETH_TYPE_IPX, 2)) &&
+> > -             (memcmp(psnap_type, SNAP_ETH_TYPE_APPLETALK_AARP, 2))) ||
+> > -             /* eth_type != ETH_P_AARP && eth_type != ETH_P_IPX) || */
+> > -              !memcmp(psnap, rtw_bridge_tunnel_header, SNAP_SIZE)) {
+> > +     if ((!memcmp(psnap, rfc1042_header, SNAP_SIZE) &&
+> > +          memcmp(psnap_type, SNAP_ETH_TYPE_IPX, 2) &&
+> > +          memcmp(psnap_type, SNAP_ETH_TYPE_APPLETALK_AARP, 2)) ||
+> > +         /* eth_type != ETH_P_AARP && eth_type != ETH_P_IPX) || */
+> > +         !memcmp(psnap, bridge_tunnel_header, SNAP_SIZE)) {
+> >               /* remove RFC1042 or Bridge-Tunnel encapsulation and replace EtherType */
+> >               bsnaphdr = true;
+>
+> Your indenting is correct, but I would probably do that in a separate
+> patch.  It makes it harder to review.  Also probably delete the
+> commented out code.  Do you see how if we don't touch the indenting then
+> it doesn't raise the question about if we should delete the comments as
+> well?
 
-Do you see how the subject is far away from the body of the commit
-message?  I normally only read the subject or the body when I'm
-reviewing patches so it's good if the body is clear on its own.  Maybe
-write something like:
-
-"This driver creates a local definitions of "rtw_rfc1042_header" and
-"rtw_bridge_tunnel_header" but it should just use the standard definitions
-from cfg80211.h."
-
->  void _rtw_init_sta_recv_priv(struct sta_recv_priv *psta_recvpriv)
-> @@ -1625,11 +1622,11 @@ sint wlanhdr_to_ethhdr(union recv_frame *precvframe)
->  	psnap_type = ptr+pattrib->hdrlen + pattrib->iv_len+SNAP_SIZE;
->  	/* convert hdr + possible LLC headers into Ethernet header */
->  	/* eth_type = (psnap_type[0] << 8) | psnap_type[1]; */
-> -	if ((!memcmp(psnap, rtw_rfc1042_header, SNAP_SIZE) &&
-> -		(memcmp(psnap_type, SNAP_ETH_TYPE_IPX, 2)) &&
-> -		(memcmp(psnap_type, SNAP_ETH_TYPE_APPLETALK_AARP, 2))) ||
-> -		/* eth_type != ETH_P_AARP && eth_type != ETH_P_IPX) || */
-> -		 !memcmp(psnap, rtw_bridge_tunnel_header, SNAP_SIZE)) {
-> +	if ((!memcmp(psnap, rfc1042_header, SNAP_SIZE) &&
-> +	     memcmp(psnap_type, SNAP_ETH_TYPE_IPX, 2) &&
-> +	     memcmp(psnap_type, SNAP_ETH_TYPE_APPLETALK_AARP, 2)) ||
-> +	    /* eth_type != ETH_P_AARP && eth_type != ETH_P_IPX) || */
-> +	    !memcmp(psnap, bridge_tunnel_header, SNAP_SIZE)) {
->  		/* remove RFC1042 or Bridge-Tunnel encapsulation and replace EtherType */
->  		bsnaphdr = true;
-
-Your indenting is correct, but I would probably do that in a separate
-patch.  It makes it harder to review.  Also probably delete the
-commented out code.  Do you see how if we don't touch the indenting then
-it doesn't raise the question about if we should delete the comments as
-well?
-
-regards,
-dan carpenter
-
+I initially didn't want to change it but checkpatch was sad which
+makes me sad, maybe I should have cleaned up this area in a first
+trivial patch before touching that line.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
