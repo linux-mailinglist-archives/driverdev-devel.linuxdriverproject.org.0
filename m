@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C81D1E3D3F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 11:06:50 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 339D71E3D3A
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 11:06:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B2CBB23B31;
-	Wed, 27 May 2020 09:06:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2D01F88552;
+	Wed, 27 May 2020 09:06:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nj7UnHSBdtW0; Wed, 27 May 2020 09:06:47 +0000 (UTC)
+	with ESMTP id Ao8DX8flVn9C; Wed, 27 May 2020 09:06:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A3C9E20432;
-	Wed, 27 May 2020 09:06:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 962AE87D5D;
+	Wed, 27 May 2020 09:06:44 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4FD071BF2EF
+ by ash.osuosl.org (Postfix) with ESMTP id 6E0C91BF2EF
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 May 2020 09:06:37 +0000 (UTC)
+ Wed, 27 May 2020 09:06:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4C75687D5D
+ by hemlock.osuosl.org (Postfix) with ESMTP id 658A587D5D
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 May 2020 09:06:37 +0000 (UTC)
+ Wed, 27 May 2020 09:06:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xHWQgFQCrBku
+ with ESMTP id nG3kIOnEk5YS
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 09:06:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
+ [68.232.154.123])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E764E87D3D
  for <driverdev-devel@linuxdriverproject.org>;
  Wed, 27 May 2020 09:06:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
- [216.71.150.166])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EBD6887D3D
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 May 2020 09:06:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
  t=1590570397; x=1622106397;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=lsUcpKtRbtwIVfqJipCwSMyz8FtKI9qpl8FjLw2PMSo=;
- b=y2cDPEjCS101OJjnpNFo8cdaF/DYHLpKmtgJwMN36HfpLDwuJT/9acfD
- X+TWQqCJ24WFMOi6LLf9m/nPL6YoFa1T2SvRDerflwXrio3Gi1NDuYFKb
- evuSnq5vxN7tsSa/1r7nv7c7Yfl9Ljd2Va+AMTBMn25rmxt88zJmBgI9m
- J0beW2vYAoUU3leKDKIc/OhXzumao0rUs3CX43xB3RFfFj4jW4qMT9eR+
- 2rkPlDZaIZISx5zooTlx0mHYJucax1yIyukSnde+e/hnT7L0vlAYXtqHW
- Y6QtJMOplrmnwXkfRj88mhmjaND/1no9oYRN6js3aAO94LK1NVYqxlJ1k w==;
-IronPort-SDR: 1j0tLSS/i3BabXnffbGGi6SM6o6z71ACMDogRbKzxjDqWAtCuy3pq/HXFq6eCjcVpCwJTIF7Y/
- 47w32dNCL4EcicfFuV5bQcSenV70Wj0LtwnifnVNxMbA5gbqgtN9X9xUsS9VviP94bZGpR5Z4k
- GJlLy4E7mAjXxN72YX0NG/K7oVPKD3n91KJdM/vtuT2r+7uw3wmGSaSzuTE2YZvtY70PCFKGTs
- V6ByKCBsRRI4QZI1oOwwGXjqrMQVdmeE6P1eAUbBa0qLeX0QWmaEiXaVH91yUcOtHm6xa/QKE5
- KpI=
-X-IronPort-AV: E=Sophos;i="5.73,440,1583218800"; d="scan'208";a="77204595"
+ bh=qHSHd1bgmgLlhngnky1syAKjrwWciKU5ySfx008erzA=;
+ b=MzsCPVTAWpUNKbYiHQJSdAUskJdE0hVffvGQsVosOMFF5aVnfmO19vN5
+ Oo75NahKF+Fh2NMF+r1i40f73DfSFqzq7VrxClLoHsYp41yCN29FHU0fG
+ cSj3u9pSgwtuFm9Q2N3QSh4rFL/ekaAX1BLCpAYbFkVcvrqEuPM4Ek10h
+ yU8YZMSIEZ26K7RUrThizmcKXP18Y/ZmNXE7rmLhxHjyyc1Yni299kgEh
+ SAl3PYsMcgbg8fzt4bhqLS6dUwEg0uehB57yDZF6Yx6HLXOLyiDNrXg8q
+ hjONH9jO5eLMll4VQ7mLl0utTjE8o6Ddkt5URUejyIPasgnaaxWIzwgEA g==;
+IronPort-SDR: yVXOOwX0QQWb8rRcKDqq81HXC+fOA7If8M2vGB4me/1fCAk2fcKBM7xqdYG9bf/f6l0LCjmLDU
+ IpYYUE73swjsfxUQy6bblSRJNlUm26tMc3Zm7xoSPgnccRmPWk4aCwpGyjWDmEq7gXXWddqiNO
+ HBaerpZLhagYDZNM+q2fsvs4T2DDYUfJcy+26JuqI2KlaNERxvpZClD9tqBBWfACSLbTPKpfcr
+ RURCZDDXoSDUUMNk5teHcBmBEom7nAXb2jm2paXo0YM78qGDhpuxL/AexaDA0ZthNVuLA5NfqF
+ yqk=
+X-IronPort-AV: E=Sophos;i="5.73,440,1583218800"; d="scan'208";a="74590217"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
  27 May 2020 02:06:37 -0700
 Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 27 May 2020 02:06:36 -0700
+ 15.1.1713.5; Wed, 27 May 2020 02:06:30 -0700
 Received: from localhost.localdomain (10.10.115.15) by
  chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Wed, 27 May 2020 02:06:35 -0700
+ 15.1.1713.5 via Frontend Transport; Wed, 27 May 2020 02:06:36 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH 04/10] staging: most: usb: return 0 instead of variable
-Date: Wed, 27 May 2020 11:06:21 +0200
-Message-ID: <1590570387-27069-5-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH 05/10] staging: most: usb: move allocation of URB out of
+ critical section
+Date: Wed, 27 May 2020 11:06:22 +0200
+Message-ID: <1590570387-27069-6-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1590570387-27069-1-git-send-email-christian.gromm@microchip.com>
 References: <1590570387-27069-1-git-send-email-christian.gromm@microchip.com>
@@ -93,34 +94,45 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch returns 0 instead of variable in case of invalid parameter
-has been passed to function to increase readability.
+This patch puts the call to usb_alloc_urb() before the critical
+section starts that is protected with the io_mutex lock. This is
+to make the section as short as possible and to use the regular
+GFP_KERNEL flag.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
 ---
- drivers/staging/most/usb/usb.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/most/usb/usb.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/most/usb/usb.c b/drivers/staging/most/usb/usb.c
-index 64005b6..a605e0f 100644
+index a605e0f..534825f 100644
 --- a/drivers/staging/most/usb/usb.c
 +++ b/drivers/staging/most/usb/usb.c
-@@ -192,12 +192,12 @@ static inline int start_sync_ep(struct usb_device *usb_dev, u16 ep)
- static unsigned int get_stream_frame_size(struct device *dev,
- 					  struct most_channel_config *cfg)
- {
--	unsigned int frame_size = 0;
-+	unsigned int frame_size;
- 	unsigned int sub_size = cfg->subbuffer_size;
+@@ -467,18 +467,16 @@ static int hdm_enqueue(struct most_interface *iface, int channel,
+ 	if (iface->num_channels <= channel || channel < 0)
+ 		return -ECHRNG;
  
- 	if (!sub_size) {
- 		dev_warn(dev, "Misconfig: Subbuffer size zero.\n");
--		return frame_size;
-+		return 0;
++	urb = usb_alloc_urb(NO_ISOCHRONOUS_URB, GFP_KERNEL);
++	if (!urb)
++		return -ENOMEM;
++
+ 	conf = &mdev->conf[channel];
+ 
+ 	mutex_lock(&mdev->io_mutex);
+ 	if (!mdev->usb_device) {
+ 		retval = -ENODEV;
+-		goto unlock_io_mutex;
+-	}
+-
+-	urb = usb_alloc_urb(NO_ISOCHRONOUS_URB, GFP_ATOMIC);
+-	if (!urb) {
+-		retval = -ENOMEM;
+-		goto unlock_io_mutex;
++		goto err_free_urb;
  	}
- 	switch (cfg->data_type) {
- 	case MOST_CH_ISOC:
+ 
+ 	if ((conf->direction & MOST_CH_TX) && mdev->padding_active[channel] &&
 -- 
 2.7.4
 
