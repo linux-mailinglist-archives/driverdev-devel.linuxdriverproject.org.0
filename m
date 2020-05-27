@@ -1,47 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2D4E1E40A7
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 13:54:42 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E24F1E40B5
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 13:55:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E2DC86D8C;
-	Wed, 27 May 2020 11:54:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1235187E3B;
+	Wed, 27 May 2020 11:55:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kb-YT8Ifdn0m; Wed, 27 May 2020 11:54:40 +0000 (UTC)
+	with ESMTP id uiCCYYPNINKz; Wed, 27 May 2020 11:54:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0576286D2B;
-	Wed, 27 May 2020 11:54:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9D27087E57;
+	Wed, 27 May 2020 11:54:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2F8F21BF5A2
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 11:54:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 485711BF5A2
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 11:54:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2C52B86D36
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 11:54:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 43AC024856
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 11:54:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 13OaqvGO4fyp for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 11:54:29 +0000 (UTC)
+ with ESMTP id Oifs-0ugrlwx for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 11:54:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 634B286D2A
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 11:54:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 5500C23E65
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 11:54:30 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 788BDACF2;
- Wed, 27 May 2020 11:54:30 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 58AD0AC5B;
+ Wed, 27 May 2020 11:54:31 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: bcm-kernel-feedback-list@broadcom.com,
  linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [RFC 17/50] staging: vchi_common: Get rid of all unused definitions
-Date: Wed, 27 May 2020 13:53:22 +0200
-Message-Id: <20200527115400.31391-18-nsaenzjulienne@suse.de>
+Subject: [RFC 18/50] staging: vc04_services: vc-sm-cma: Get rid of the
+ multiple connections option
+Date: Wed, 27 May 2020 13:53:23 +0200
+Message-Id: <20200527115400.31391-19-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200527115400.31391-1-nsaenzjulienne@suse.de>
 References: <20200527115400.31391-1-nsaenzjulienne@suse.de>
@@ -66,101 +67,191 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There is a series of structures and enums defined but never used. Get
-rid of them.
+Multiple connections are not handled by the IO thread, so it's not
+really necessary to handle them on initialization.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- .../interface/vchi/vchi_common.h              | 65 -------------------
- 1 file changed, 65 deletions(-)
+ .../staging/vc04_services/vc-sm-cma/vc_sm.c   |  3 +-
+ .../vc04_services/vc-sm-cma/vc_sm_cma_vchi.c  | 67 ++++++-------------
+ .../vc04_services/vc-sm-cma/vc_sm_cma_vchi.h  |  1 -
+ 3 files changed, 23 insertions(+), 48 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchi/vchi_common.h b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
-index 0f79bea4757d..e07376fe4dfd 100644
---- a/drivers/staging/vc04_services/interface/vchi/vchi_common.h
-+++ b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
-@@ -10,23 +10,7 @@ enum vchi_flags {
- 	VCHI_FLAGS_BLOCK_UNTIL_OP_COMPLETE   = 0x1,   // waits for message to be received, or sent (NB. not the same as being seen on other side)
- 	VCHI_FLAGS_CALLBACK_WHEN_OP_COMPLETE = 0x2,   // run a callback when message sent
- 	VCHI_FLAGS_BLOCK_UNTIL_QUEUED        = 0x4,   // return once the transfer is in a queue ready to go
--	VCHI_FLAGS_ALLOW_PARTIAL             = 0x8,
- 	VCHI_FLAGS_BLOCK_UNTIL_DATA_READ     = 0x10,
--	VCHI_FLAGS_CALLBACK_WHEN_DATA_READ   = 0x20,
--
--	VCHI_FLAGS_ALIGN_SLOT            = 0x000080,  // internal use only
--	VCHI_FLAGS_BULK_AUX_QUEUED       = 0x010000,  // internal use only
--	VCHI_FLAGS_BULK_AUX_COMPLETE     = 0x020000,  // internal use only
--	VCHI_FLAGS_BULK_DATA_QUEUED      = 0x040000,  // internal use only
--	VCHI_FLAGS_BULK_DATA_COMPLETE    = 0x080000,  // internal use only
--	VCHI_FLAGS_INTERNAL              = 0xFF0000
--};
--
--// constants for vchi_crc_control()
--enum vchi_crc_control {
--	VCHI_CRC_NOTHING = -1,
--	VCHI_CRC_PER_SERVICE = 0,
--	VCHI_CRC_EVERYTHING = 1,
+diff --git a/drivers/staging/vc04_services/vc-sm-cma/vc_sm.c b/drivers/staging/vc04_services/vc-sm-cma/vc_sm.c
+index 3f95ea90c08a..e660f546a7e4 100644
+--- a/drivers/staging/vc04_services/vc-sm-cma/vc_sm.c
++++ b/drivers/staging/vc04_services/vc-sm-cma/vc_sm.c
+@@ -1532,8 +1532,7 @@ static void vc_sm_connected_init(void)
+ 	}
+ 
+ 	/* Initialize an instance of the shared memory service. */
+-	sm_state->sm_handle = vc_sm_cma_vchi_init(instance, 1,
+-						  vc_sm_vpu_event);
++	sm_state->sm_handle = vc_sm_cma_vchi_init(instance, vc_sm_vpu_event);
+ 	if (!sm_state->sm_handle) {
+ 		pr_err("[%s]: failed to initialize shared memory service\n",
+ 		       __func__);
+diff --git a/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.c b/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.c
+index 32706eb2838b..72b09685db31 100644
+--- a/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.c
++++ b/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.c
+@@ -46,8 +46,7 @@ struct sm_cmd_rsp_blk {
  };
  
- //callback reasons when an event occurs on a service
-@@ -47,58 +31,9 @@ enum vchi_callback_reason {
- 	VCHI_CALLBACK_BULK_RECEIVE_ABORTED,
- };
+ struct sm_instance {
+-	u32 num_connections;
+-	struct vchi_service *service[VCHI_MAX_NUM_CONNECTIONS];
++	struct vchi_service *service;
+ 	struct task_struct *io_thread;
+ 	struct completion io_cmplt;
  
--// service control options
--enum vchi_service_option {
--	VCHI_SERVICE_OPTION_MIN,
--
--	VCHI_SERVICE_OPTION_TRACE,
--	VCHI_SERVICE_OPTION_SYNCHRONOUS,
--
--	VCHI_SERVICE_OPTION_MAX
--};
--
- //Callback used by all services / bulk transfers
- typedef void (*vchi_callback)(void *callback_param, //my service local param
- 			      enum vchi_callback_reason reason,
- 			      void *handle); //for transmitting msg's only
+@@ -187,13 +186,13 @@ static int vc_sm_cma_vchi_videocore_io(void *arg)
  
--/*
-- * Define vector struct for scatter-gather (vector) operations
-- * Vectors can be nested - if a vector element has negative length, then
-- * the data pointer is treated as pointing to another vector array, with
-- * '-vec_len' elements. Thus to append a header onto an existing vector,
-- * you can do this:
-- *
-- * void foo(const struct vchi_msg_vector *v, int n)
-- * {
-- *    struct vchi_msg_vector nv[2];
-- *    nv[0].vec_base = my_header;
-- *    nv[0].vec_len = sizeof my_header;
-- *    nv[1].vec_base = v;
-- *    nv[1].vec_len = -n;
-- *    ...
-- *
-- */
--struct vchi_msg_vector {
--	const void *vec_base;
--	int32_t vec_len;
--};
+ 	while (1) {
+ 		if (svc_use)
+-			vchi_service_release(instance->service[0]);
++			vchi_service_release(instance->service);
+ 		svc_use = 0;
+ 
+ 		if (wait_for_completion_interruptible(&instance->io_cmplt))
+ 			continue;
+ 
+-		vchi_service_use(instance->service[0]);
++		vchi_service_use(instance->service);
+ 		svc_use = 1;
+ 
+ 		do {
+@@ -214,7 +213,7 @@ static int vc_sm_cma_vchi_videocore_io(void *arg)
+ 
+ 			/* Send the command */
+ 			status =
+-				bcm2835_vchi_msg_queue(instance->service[0],
++				bcm2835_vchi_msg_queue(instance->service,
+ 						       cmd->msg, cmd->length);
+ 			if (status) {
+ 				pr_err("%s: failed to queue message (%d)",
+@@ -237,7 +236,7 @@ static int vc_sm_cma_vchi_videocore_io(void *arg)
+ 
+ 		} while (1);
+ 
+-		while (!vchi_msg_hold(instance->service[0], (void **)&reply,
++		while (!vchi_msg_hold(instance->service, (void **)&reply,
+ 				       &reply_len, VCHI_FLAGS_NONE, &msg)) {
+ 			if (reply->trans_id & 0x80000000) {
+ 				/* Async event or cmd from the VPU */
+@@ -286,21 +285,20 @@ static void vc_sm_cma_vchi_callback(void *param,
+ }
+ 
+ struct sm_instance *vc_sm_cma_vchi_init(struct vchiq_instance *vchiq_instance,
+-					unsigned int num_connections,
+ 					vpu_event_cb vpu_event)
+ {
+-	u32 i;
++	struct service_creation params = {
++		.version = VCHI_VERSION_EX(VC_SM_VER, VC_SM_MIN_VER),
++		.service_id = VC_SM_SERVER_NAME,
++		.callback = vc_sm_cma_vchi_callback,
++		.callback_param = NULL,
++	};
+ 	struct sm_instance *instance;
+ 	int status;
++	int i;
+ 
+ 	pr_debug("%s: start", __func__);
+ 
+-	if (num_connections > VCHI_MAX_NUM_CONNECTIONS) {
+-		pr_err("%s: unsupported number of connections %u (max=%u)",
+-		       __func__, num_connections, VCHI_MAX_NUM_CONNECTIONS);
 -
--/*
-- * Iterator structure for reading ahead through received message queue.
-- * Allocated by client, initialised by vchi_msg_look_ahead. Fields are for
-- * internal VCHI use only.
-- * Iterates over messages in queue at the instant of the call to
-- * vchi_msg_lookahead - will not proceed to messages received since.
-- * Behaviour is undefined if an iterator is used again after messages for that
-- * service are removed/dequeued by any means other than vchi_msg_iter_...
-- * calls on the iterator itself.
-- */
--struct vchi_msg_iter {
--	struct opaque_vchi_service_t *service;
--	void *last;
--	void *next;
--	void *remove;
--};
+-		goto err_null;
+-	}
+ 	/* Allocate memory for this instance */
+ 	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
+ 
+@@ -317,25 +315,15 @@ struct sm_instance *vc_sm_cma_vchi_init(struct vchiq_instance *vchiq_instance,
+ 		init_completion(&instance->free_blk[i].cmplt);
+ 		list_add(&instance->free_blk[i].head, &instance->free_list);
+ 	}
++	params.callback_param = instance;
+ 
+ 	/* Open the VCHI service connections */
+-	instance->num_connections = num_connections;
+-	for (i = 0; i < num_connections; i++) {
+-		struct service_creation params = {
+-			.version = VCHI_VERSION_EX(VC_SM_VER, VC_SM_MIN_VER),
+-			.service_id = VC_SM_SERVER_NAME,
+-			.callback = vc_sm_cma_vchi_callback,
+-			.callback_param = instance,
+-		};
 -
- #endif // VCHI_COMMON_H_
+-		status = vchi_service_open(vchiq_instance,
+-					   &params, &instance->service[i]);
+-		if (status) {
+-			pr_err("%s: failed to open VCHI service (%d)",
+-			       __func__, status);
+-
+-			goto err_close_services;
+-		}
++	status = vchi_service_open(vchiq_instance, &params, &instance->service);
++	if (status) {
++		pr_err("%s: failed to open VCHI service (%d)",
++		       __func__, status);
++
++		goto err_close_services;
+ 	}
+ 
+ 	/* Create the thread which takes care of all io to/from videoocore. */
+@@ -354,12 +342,8 @@ struct sm_instance *vc_sm_cma_vchi_init(struct vchiq_instance *vchiq_instance,
+ 	return instance;
+ 
+ err_close_services:
+-	for (i = 0; i < instance->num_connections; i++) {
+-		if (instance->service[i])
+-			vchi_service_close(instance->service[i]);
+-	}
++	vchi_service_close(instance->service);
+ 	kfree(instance);
+-err_null:
+ 	pr_debug("%s: FAILED", __func__);
+ 	return NULL;
+ }
+@@ -367,7 +351,6 @@ struct sm_instance *vc_sm_cma_vchi_init(struct vchiq_instance *vchiq_instance,
+ int vc_sm_cma_vchi_stop(struct sm_instance **handle)
+ {
+ 	struct sm_instance *instance;
+-	u32 i;
+ 
+ 	if (!handle) {
+ 		pr_err("%s: invalid pointer to handle %p", __func__, handle);
+@@ -381,14 +364,8 @@ int vc_sm_cma_vchi_stop(struct sm_instance **handle)
+ 
+ 	instance = *handle;
+ 
+-	/* Close all VCHI service connections */
+-	for (i = 0; i < instance->num_connections; i++) {
+-		s32 success;
+-
+-		vchi_service_use(instance->service[i]);
+-
+-		success = vchi_service_close(instance->service[i]);
+-	}
++	vchi_service_use(instance->service);
++	vchi_service_close(instance->service);
+ 
+ 	kfree(instance);
+ 
+diff --git a/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.h b/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.h
+index 44cc389364f4..09ef0fc59566 100644
+--- a/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.h
++++ b/drivers/staging/vc04_services/vc-sm-cma/vc_sm_cma_vchi.h
+@@ -29,7 +29,6 @@ typedef void (*vpu_event_cb)(struct sm_instance *instance,
+  * Initialize the shared memory service, opens up vchi connection to talk to it.
+  */
+ struct sm_instance *vc_sm_cma_vchi_init(struct vchiq_instance *vchiq_instance,
+-					unsigned int num_connections,
+ 					vpu_event_cb vpu_event);
+ 
+ /*
 -- 
 2.26.2
 
