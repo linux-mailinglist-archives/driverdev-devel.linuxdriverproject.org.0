@@ -1,75 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E0BE1E39EF
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 09:12:19 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3A9CB88648;
-	Wed, 27 May 2020 07:12:17 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SZB002LfTn0f; Wed, 27 May 2020 07:12:17 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A7472883CA;
-	Wed, 27 May 2020 07:12:16 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8A9DE1BF423
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:14 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 53C4A1E39F1
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 09:12:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8785886B02
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EAD6286B18;
+	Wed, 27 May 2020 07:12:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8qNlFu4DY_8b; Wed, 27 May 2020 07:12:18 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 961EA86B1A;
+	Wed, 27 May 2020 07:12:17 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0006A1BF423
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id F08178846B
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:15 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HkdbaX2_lMyq for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 07:12:13 +0000 (UTC)
+ with ESMTP id qcPgz055YGb7 for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 07:12:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 493CB869C0
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 07:12:13 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id v63so11431152pfb.10
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 00:12:13 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 749608833F
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 07:12:15 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id y198so11445634pfb.4
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 00:12:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Qw/QOLBu9d2B+96STuqYNI0AftO5l6SG5yefrjTDHdQ=;
- b=rAvssvWz49+fXzXPapINBcDmFBTZ01RO2hMId+vgCJN3AG63BmjX55x7SQCy71kRyl
- Aq0VWotduyCwmPny7lrc0pWTiCgpE0weYmufy41TJVpo1hIV/C2GkMOzqcQzhjRhKz1+
- r/3q1R8nKhc3wAdHpKSCi/CO48ZFFlGTCM2OUa+PNJbGUpzypAhFiqxYq7rnduqbTk4j
- PJz2M1SmoOlh5WLkVTvtL/NyMWz2pHepmil5fNaJhItpgj4fT/Zb4biKCGcYNTRp32lA
- tR+jWjuGDJ+jG9ggkd6y1wPjtHhMpR0j8LjE7SWvY/P4Xf3NvfZ4WG+bPRHcSt04qoZr
- 86SA==
+ bh=TS7T0GnvahIo34Ueh1mEB91ydpyvQ6Kv78CuMyjghNI=;
+ b=TF+ZnVGlHYlycvaTVaXADyYL0RJeFIrCgBOXxgVjtkEbW1aFo47roQVqe4rimM5XaO
+ 0jyPywtYKRd5OylJ6q2ztpi5amDIDSk4F/HP1rcZS61pV+2bP3Et1MOVRJECN4eq3V8K
+ FhE0s9dL0s1W8dAdY7kR8nRl9Cae8qgIRE7TTpJvULSdbuSW46zLeHNOj6acvZ2i0BfU
+ pyr8DtUCyPOWPD0v9PLq5XCcVmfBlD0cEbSbuEt9ikkbHzhXwLtO6p2lZgfzYwu/t6dL
+ vDoVwfTgGtDeyjnENBL9+L74uybPBlYZvUrtsfs5J6Wrz90fcfapibK46F9n+2Hs1C3F
+ Tw6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Qw/QOLBu9d2B+96STuqYNI0AftO5l6SG5yefrjTDHdQ=;
- b=YH/GhfE3kyMkpcLdrzZ67SC0JFB8aLZrTu+iotaErWqccilHr5g31qzCpFqPrRyzpc
- yNVM6yYFghRMrcktFofEZdDPAkn4P6R9nML4Sk1yfG2GDzSyKY2HVRcihmc8y8Ueg3c6
- eZg2LUo69quQvuM/5PuuXqtJTraKxYYvL+CZIz6WGIneLbB6l3pf2NqEip+1T72LYE/v
- d4tfgedx5aNKD1hxnFueTC7azk0mt7kT9axTdM0d0j88J+7iaT3kq3+BHVz2KNxUkJEI
- G875kmsnfCH4QKUHx3FD/8Rt8GxxRLJn+a1j9+UwXVl9upArJLbDqeA9Xdqzov/QPRai
- VBDQ==
-X-Gm-Message-State: AOAM533WSEHH40O66QYYyCSx7aSsQ++xxPmysKTk4ubrui+5oYSj2hf7
- PeIDNSKUQtnvbLK3OLD5CWI=
-X-Google-Smtp-Source: ABdhPJwiMdlTneuDy4qlJ6WknGzBgbOnwG5sxxkqaefuDqkk6jhGJu9u7DEVNg4VjcPowgRDxL0hMg==
-X-Received: by 2002:a63:3c0a:: with SMTP id j10mr2734873pga.35.1590563532903; 
- Wed, 27 May 2020 00:12:12 -0700 (PDT)
+ bh=TS7T0GnvahIo34Ueh1mEB91ydpyvQ6Kv78CuMyjghNI=;
+ b=P7J7IDeHKUNJr55dMPxz0hvrvgpgQ77+0J97gOKnesyKL10lME3BjPG4xAWMLfrMBR
+ w6T0U1sUbwCuP0U0RSYIjvL+Xnro598nEFTUboeYBlTgdslPhgt2j1ukJgwtEKz0T3im
+ S7anrCc7qLk+0fIIYdm7C7lxNbC2+M3Q8Hwc9nEUF/slTc2epQt/beN5ws9SXmmeASLy
+ SZshIzUAc6HxxqpFUP2sySvbDKaRFDVHsrgMy5U8K4E6094lwNcj/4b27pcmaWKCTMHy
+ FeWocfcB6wtBXHvzUG4LCUqryJVR4tIPn12NxtCpDIjdaHHugGm140RJURLM+zE8IenK
+ uLJw==
+X-Gm-Message-State: AOAM5335IQs6yuXlFhfNDpsbp/1iQw0r3+v8kymHEkHhEyi+c1tD7dAd
+ YK3ApF605PRs4XiePsFbFn0=
+X-Google-Smtp-Source: ABdhPJwQC4jQeNUEVSfWcbDH8TBVkeO48J33ab8uL53x2ElsZaurgFDeuYMlkbqz8HFBeHrwQ0mRWQ==
+X-Received: by 2002:a62:a50a:: with SMTP id v10mr2720546pfm.134.1590563535044; 
+ Wed, 27 May 2020 00:12:15 -0700 (PDT)
 Received: from localhost.localdomain ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id 10sm1306431pfx.138.2020.05.27.00.12.11
+ by smtp.gmail.com with ESMTPSA id 10sm1306431pfx.138.2020.05.27.00.12.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2020 00:12:12 -0700 (PDT)
+ Wed, 27 May 2020 00:12:14 -0700 (PDT)
 From: Nathan Chancellor <natechancellor@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH 2/7] media: atomisp: Remove second increment of count in
- atomisp_subdev_probe
-Date: Wed, 27 May 2020 00:11:45 -0700
-Message-Id: <20200527071150.3381228-3-natechancellor@gmail.com>
+Subject: [PATCH 3/7] media: atomisp: Add stub for atomisp_mrfld_power
+Date: Wed, 27 May 2020 00:11:46 -0700
+Message-Id: <20200527071150.3381228-4-natechancellor@gmail.com>
 X-Mailer: git-send-email 2.27.0.rc0
 In-Reply-To: <20200527071150.3381228-1-natechancellor@gmail.com>
 References: <20200527071150.3381228-1-natechancellor@gmail.com>
@@ -98,33 +97,63 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Clang warns:
 
-../drivers/staging/media/atomisp/pci/atomisp_v4l2.c:1097:3: warning:
-variable 'count' is incremented both in the loop header and in the loop
-body [-Wfor-loop-analysis]
-                count++;
-                ^
+../drivers/staging/media/atomisp/pci/atomisp_v4l2.c:764:12: warning:
+unused function 'atomisp_mrfld_power' [-Wunused-function]
+static int atomisp_mrfld_power(struct atomisp_device *isp, bool enable)
+           ^
 
-This was probably unintentional, remove it.
+Use an '#if 0' preprocessor define to hide the broken code, leaving the
+FIXME comment intact, and creating an atomisp_mrfld_power stub function
+that just returns 0.
 
+Fixes: 95d1f398c4dc ("media: atomisp: keep the ISP powered on when setting it")
 Link: https://github.com/ClangBuiltLinux/linux/issues/1036
-Reported-by: kbuild test robot <lkp@intel.com>
 Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
 ---
- drivers/staging/media/atomisp/pci/atomisp_v4l2.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/media/atomisp/pci/atomisp_v4l2.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
-index 694268d133c0..c42999a55303 100644
+index c42999a55303..41aa6018d254 100644
 --- a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
 +++ b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
-@@ -1094,7 +1094,6 @@ static int atomisp_subdev_probe(struct atomisp_device *isp)
- 		if (camera_count)
- 			break;
- 		msleep(SUBDEV_WAIT_TIMEOUT);
--		count++;
- 	}
- 	/* Wait more time to give more time for subdev init code to finish */
- 	msleep(5 * SUBDEV_WAIT_TIMEOUT);
+@@ -736,6 +736,8 @@ static int atomisp_mrfld_pre_power_down(struct atomisp_device *isp)
+ * WA for DDR DVFS enable/disable
+ * By default, ISP will force DDR DVFS 1600MHz before disable DVFS
+ */
++/* FIXME: at least with ISP2401, the code below causes the driver to break */
++#if 0
+ static void punit_ddr_dvfs_enable(bool enable)
+ {
+ 	int door_bell = 1 << 8;
+@@ -820,20 +822,23 @@ static int atomisp_mrfld_power(struct atomisp_device *isp, bool enable)
+ 	dev_err(isp->dev, "IUNIT power-%s timeout.\n", enable ? "on" : "off");
+ 	return -EBUSY;
+ }
++#else
++static int atomisp_mrfld_power(struct atomisp_device *isp, bool enable)
++{
++	return 0;
++}
++#endif
+ 
+ /* Workaround for pmu_nc_set_power_state not ready in MRFLD */
+ int atomisp_mrfld_power_down(struct atomisp_device *isp)
+ {
+-	return 0;
+-// FIXME: at least with ISP2401, the code below causes the driver to break
+-//	return atomisp_mrfld_power(isp, false);
++	return atomisp_mrfld_power(isp, false);
+ }
+ 
+ /* Workaround for pmu_nc_set_power_state not ready in MRFLD */
+ int atomisp_mrfld_power_up(struct atomisp_device *isp)
+ {
+ 	return 0;
+-// FIXME: at least with ISP2401, the code below causes the driver to break
+ //	return atomisp_mrfld_power(isp, true);
+ }
+ 
 -- 
 2.27.0.rc0
 
