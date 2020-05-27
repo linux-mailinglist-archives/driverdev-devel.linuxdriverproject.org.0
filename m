@@ -2,73 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D57931E39F8
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 09:12:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BD0951E39F7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 09:12:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 622AC86B81;
-	Wed, 27 May 2020 07:12:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6FCC986B70;
+	Wed, 27 May 2020 07:12:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XYCBJUtFntrB; Wed, 27 May 2020 07:12:29 +0000 (UTC)
+	with ESMTP id vlHldr1kTkzd; Wed, 27 May 2020 07:12:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2D2E186B68;
-	Wed, 27 May 2020 07:12:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3224D86B39;
+	Wed, 27 May 2020 07:12:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E8D3C1BF423
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0A22A1BF423
  for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D873B203E5
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 05BEB86B63
  for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lvtjpT3sfvRS for <devel@linuxdriverproject.org>;
+ with ESMTP id Y9fmHlO0_ZsG for <devel@linuxdriverproject.org>;
  Wed, 27 May 2020 07:12:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
  [209.85.215.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 4387520479
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 07:12:22 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id m1so5114292pgk.1
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 00:12:22 -0700 (PDT)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8B2B586B5A
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 07:12:24 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id r10so11350406pgv.8
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 00:12:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Tbgdqd+TXdAk8QNQkvpAeStL9yrt3nZfFNT/1PFaGls=;
- b=k1qgL0z6SiL5RJ1jy1ddTv2tly55L3zXvSGIJ+d1Q8l14IIWnU8jdo/ew4J/MGZ1a1
- ghhp01Z2ro6ZZW20+RGtLXPi4dzOcPrC5WNO8MTcS3Bgp+gvUyu/hj2LrSIZjOZ0Trc3
- IqDmuUKZZtuZ6g73xrRk3FBEWp6nqRS7HyxoMZFLM5w+X/RQoi6fPntepT9EBWnM6Jig
- doZXNjAdevq31/+HN5f/EnFXd/8pj6dfnCNgGsSmeuBxuiopt7x2NIrxPpGnLz+2CtiS
- j810vjU2dvanzhLIukM3tlZDPZSv+/KOeBVqFZTQtzfYghYrcWM1AseG/12XCcrjs2Yn
- i87Q==
+ bh=BtFr88iS5dYVk9M5situj/cALZfUmfJBkWJmVOPGwiA=;
+ b=QpCpctZfSnLodygNVJlSPBKkfII/mNnwqTkUPiqiLyWUfdkWaLBSnzHx/wkWxck/sr
+ Ea4ImcUsTN9O73vlU31Py0Lno77YlTqpgiQUGnGQoypdkLvlLAEAazyPBrVhqz1zK0YS
+ a/GdQnliziiDEZ23uu0dvDu2R8CwnWG91rb0ADbH83+3FeAFOYzRU7t46KYUswvh3g1V
+ bsqbHBrOJ/mb9LRdgiYOHrVETupl8qryK3Ayvh8rNES9NZooxr/ysSji89BodjEzPU5J
+ bNzyPtN36GPUjguXy8xoGGru+rhEGfIryQPVI2bHohuYltYUmSsDIyeB8pKud8TlKGxI
+ vgnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Tbgdqd+TXdAk8QNQkvpAeStL9yrt3nZfFNT/1PFaGls=;
- b=SAPUG9G5A+sRabwzArrRzG1Higzd9owQAi/HXFDMyxRqC9mUgyffE6hhxI5BCxyQNV
- g+GVUP7Yi6+7zc8IOdRYZZ+agovPfmIf4xl9tkesfYPze21i5NFKAEnI0RS14iTbjt9+
- /5BKKOLxOBHTy4C0/rCAS/U+xedObQYyJ7/N/YI5h7+C+QC6Rt7f4Eei9pDSh1LpD4lz
- bKcxsYF4gjuG7K6MnqqzAzCbNDKXdOwpNYKyprVzX1CfA6eSH9pbSoaaDhANK24NJMkj
- 8YPUED6zaSBnC9kLw4lJ9W066VEQo4S+OYkBGblcM2EGar/GOvc3O+BECRXeu3ziLfl3
- Cevg==
-X-Gm-Message-State: AOAM532XLXE6pljdZh6LernhZZunNjrACaYJpdr4wQHXsVWQJDY2MoT8
- sjb/X6+TE9i1jejl/Tj95JA=
-X-Google-Smtp-Source: ABdhPJw6D1VZU/JVVsKGh8KLCigxn0+ldfpgARKsTpPYazxQ5VDfKfusD5Y37w56dI+8FS7LCXPvtw==
-X-Received: by 2002:a63:78b:: with SMTP id 133mr2796179pgh.161.1590563541617; 
- Wed, 27 May 2020 00:12:21 -0700 (PDT)
+ bh=BtFr88iS5dYVk9M5situj/cALZfUmfJBkWJmVOPGwiA=;
+ b=HRfQW3N+MXlisQCDN3OA2VKNshEBMhfqmk9MeFifSS+OwFeDHXI7y7PfRVIX4M0+Q6
+ 7du2m6SAzirn46WmcaQzA5WMSH7G8yBX5UUhFVQqYysYOcLjKKqD8UJKAK2D24XQDD93
+ Hmg18NYW9bbO9o/vjJcBap82Ba9ZSb5TT5tHHO0OTWIlWpb1lgX07Mi6IF9u4Y0DUiYf
+ +7+aNKcl3Is5OS+zQj8l3VqJGffQh4vomkh+D/Nf3Gysq52+2MVxvtbbsFPeUa40XBk/
+ 668ED0I3MgMyrHh3hP1Q/rlldU1nlg0/DwJXWSiSrQuWJ0n/NU5BsxTtxG92gP7jdd+X
+ Dvkg==
+X-Gm-Message-State: AOAM530N+ni5xvlv0BmrWiXqumpgSgaC5Lyq9VTxKjh3/HIPi8gnfG7W
+ 0OkR1DHr9rpgZgEZx+4HXdM=
+X-Google-Smtp-Source: ABdhPJwrauMbNSEdWNH+N5a3rZnBfOIKgD1AmNbuhOdA/dbXFJh9XOpUE81ASBgklIFa4/rbx/Uoxg==
+X-Received: by 2002:a63:ad0b:: with SMTP id g11mr2665934pgf.275.1590563544076; 
+ Wed, 27 May 2020 00:12:24 -0700 (PDT)
 Received: from localhost.localdomain ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id 10sm1306431pfx.138.2020.05.27.00.12.20
+ by smtp.gmail.com with ESMTPSA id 10sm1306431pfx.138.2020.05.27.00.12.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2020 00:12:21 -0700 (PDT)
+ Wed, 27 May 2020 00:12:23 -0700 (PDT)
 From: Nathan Chancellor <natechancellor@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH 6/7] media: atomisp: Avoid overflow in compute_blending
-Date: Wed, 27 May 2020 00:11:49 -0700
-Message-Id: <20200527071150.3381228-7-natechancellor@gmail.com>
+Subject: [PATCH 7/7] media: atomisp: Remove binary_supports_input_format
+Date: Wed, 27 May 2020 00:11:50 -0700
+Message-Id: <20200527071150.3381228-8-natechancellor@gmail.com>
 X-Mailer: git-send-email 2.27.0.rc0
 In-Reply-To: <20200527071150.3381228-1-natechancellor@gmail.com>
 References: <20200527071150.3381228-1-natechancellor@gmail.com>
@@ -97,43 +97,66 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Clang warns:
 
-drivers/staging/media/atomisp/pci/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c:129:35:
-warning: implicit conversion from 'unsigned long' to 'int32_t' (aka
-'int') changes value from 18446744073709543424 to -8192
-[-Wconstant-conversion]
-        return MAX(MIN(isp_strength, 0), -XNR_BLENDING_SCALE_FACTOR);
-        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+drivers/staging/media/atomisp/pci/runtime/binary/src/binary.c:1707:64:
+warning: implicit conversion from enumeration type 'const enum
+ia_css_frame_format' to different enumeration type 'enum
+atomisp_input_format' [-Wenum-conversion]
+        binary_supports_input_format(xcandidate, req_in_info->format));
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~             ~~~~~~~~~~~~~^~~~~~
 
-XNR_BLENDING_SCALE_FACTOR is BIT(13), or 8192, which will easily fit
-into a signed 32-bit integer. However, it is an unsigned long, which
-means that negating it is the same as subtracting that value from
-ULONG_MAX + 1, which causes it to be larger than a signed 32-bit
-integer so it gets implicitly converted.
+As it turns out, binary_supports_input_format only asserts that
+xcandidate is not NULL and just returns true so this call is never
+actually made.
 
-We can avoid this by using the variable isp_scale, which holds the value
-of XNR_BLENDING_SCALE_FACTOR already, where the implicit conversion from
-unsigned long to s32 already happened. If that were to ever overflow,
-clang would warn: https://godbolt.org/z/EeSxLG
+There are other functions that are called that assert info is not NULL
+so this function actually serves no purpose. Remove it. It can be
+brought back if needed later.
 
 Link: https://github.com/ClangBuiltLinux/linux/issues/1036
 Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
 ---
- .../atomisp/pci/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c      | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../atomisp/pci/runtime/binary/src/binary.c   | 21 -------------------
+ 1 file changed, 21 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c b/drivers/staging/media/atomisp/pci/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
-index a9db6366d20b..629f07faf20a 100644
---- a/drivers/staging/media/atomisp/pci/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
-+++ b/drivers/staging/media/atomisp/pci/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
-@@ -126,7 +126,7 @@ compute_blending(int strength)
- 	 * exactly as s0.11 fixed point, but -1.0 can.
- 	 */
- 	isp_strength = -(((strength * isp_scale) + offset) / host_scale);
--	return MAX(MIN(isp_strength, 0), -XNR_BLENDING_SCALE_FACTOR);
-+	return MAX(MIN(isp_strength, 0), -isp_scale);
+diff --git a/drivers/staging/media/atomisp/pci/runtime/binary/src/binary.c b/drivers/staging/media/atomisp/pci/runtime/binary/src/binary.c
+index 2a23b7c6aeeb..0be2331c66cd 100644
+--- a/drivers/staging/media/atomisp/pci/runtime/binary/src/binary.c
++++ b/drivers/staging/media/atomisp/pci/runtime/binary/src/binary.c
+@@ -857,18 +857,6 @@ binary_supports_output_format(const struct ia_css_binary_xinfo *info,
+ 	return false;
  }
  
- void
+-#ifdef ISP2401
+-static bool
+-binary_supports_input_format(const struct ia_css_binary_xinfo *info,
+-			     enum atomisp_input_format format)
+-{
+-	assert(info);
+-	(void)format;
+-
+-	return true;
+-}
+-#endif
+-
+ static bool
+ binary_supports_vf_format(const struct ia_css_binary_xinfo *info,
+ 			  enum ia_css_frame_format format)
+@@ -1699,15 +1687,6 @@ ia_css_binary_find(struct ia_css_binary_descr *descr,
+ 					    binary_supports_output_format(xcandidate, req_bin_out_info->format));
+ 			continue;
+ 		}
+-#ifdef ISP2401
+-		if (!binary_supports_input_format(xcandidate, descr->stream_format)) {
+-			ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
+-					    "ia_css_binary_find() [%d] continue: !%d\n",
+-					    __LINE__,
+-					    binary_supports_input_format(xcandidate, req_in_info->format));
+-			continue;
+-		}
+-#endif
+ 		if (xcandidate->num_output_pins > 1 &&
+ 		    /* in case we have a second output pin, */
+ 		    req_vf_info                   && /* and we need vf output. */
 -- 
 2.27.0.rc0
 
