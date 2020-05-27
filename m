@@ -1,79 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6925E1E3D42
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 11:06:53 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CF031E3D90
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 11:28:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1EB2388788;
-	Wed, 27 May 2020 09:06:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E1AB287DA6;
+	Wed, 27 May 2020 09:28:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2im982UybtQy; Wed, 27 May 2020 09:06:51 +0000 (UTC)
+	with ESMTP id tX7peGV4WykA; Wed, 27 May 2020 09:28:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CF9978878A;
-	Wed, 27 May 2020 09:06:50 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C0718665D;
+	Wed, 27 May 2020 09:28:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 140041BF2EF
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 May 2020 09:06:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 524251BF2EF
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 09:28:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0C85587D86
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 May 2020 09:06:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4BD2B86689
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 09:28:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ER6tCDH-V2rh
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 May 2020 09:06:44 +0000 (UTC)
+ with ESMTP id raNJlJF4vghT for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 09:28:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
- [216.71.150.166])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C887287943
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 May 2020 09:06:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1590570405; x=1622106405;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version;
- bh=YT1p2jkhQjEOh+Toh8EnfM+hDVS9WGd+MEUj6fk8RGk=;
- b=EmAVqnhr8j+nPINdTgczZ3ITEzy1YYZaRxnWkGvRsMudl4yeU4mtxMkH
- nsbrmH2Sdxz/d13sNl9Shnt0UppYVyd8Xt4NNboc081PDngMVshExTwRK
- vJN1nEyGYVlr+5zjUDEfTrjB+OnZVkly8tEJqcNIgNJrSFENwevmepwqT
- pXDMSsx13odfMM6ZB03Tfs1Ty7VrPf9iGvW5NqvfwUTalQG7wZHECZ5CV
- Qo89BHY2kzI2qw2BFwwQuo2PYX+wKrqIzeRS4pVOBFT++d7JOPvc5un2B
- eRrsDpySQunkemGGKsEWShiStcLGLomLl/ejBpLPhjIGJHY+LZCX6Mefz Q==;
-IronPort-SDR: 1GoF4Q1UpYguWjtUqN+Lvi3TYgQf7dU2/KSUKFlEKneT6u6gclI+2jdMS4N7h4nVSjFdF1Vuje
- mO5el0pc51INc/7y+5WLGyXkfZtGFOQg3o0RPZKXiKHElRuD+l5OK0fJXf5T+2/6GD2gEGbFB6
- 4ccrlF0uPzgJOXtCpJNINwY4BihGikXeg73ChEcC6n4DpyDfCCjt+2ZbX56Kr7K27Y1SeMxIQh
- AiVCQHcaRH/Mug4yiXSN7VZ4VKaQ1qd27VLH66XeiXrrs+dZBeYVpXmiSfjNyDjIj1Lrp+iA+L
- tg0=
-X-IronPort-AV: E=Sophos;i="5.73,440,1583218800"; d="scan'208";a="77204630"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 27 May 2020 02:06:44 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 27 May 2020 02:06:43 -0700
-Received: from localhost.localdomain (10.10.115.15) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Wed, 27 May 2020 02:06:42 -0700
-From: Christian Gromm <christian.gromm@microchip.com>
-To: <gregkh@linuxfoundation.org>
-Subject: [PATCH 10/10] staging: most: usb: use function sysfs_streq
-Date: Wed, 27 May 2020 11:06:27 +0200
-Message-ID: <1590570387-27069-11-git-send-email-christian.gromm@microchip.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1590570387-27069-1-git-send-email-christian.gromm@microchip.com>
-References: <1590570387-27069-1-git-send-email-christian.gromm@microchip.com>
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6E4D08665D
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 09:28:40 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id h4so2359239wmb.4
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 02:28:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=UOZ4TdRb4/KFLMrC2D7QMXdefrcaEXMwfgRoi1sbd/Q=;
+ b=U5jx1ifCmAPQLrF4lQpHeszasidAtNNLotv9zcG99g13vROWxDed5gRCbq3W/BYOkV
+ wsgo17Qp0k6IIT4UBTieJqTfddBUNVgmgXBJzATQI/GwCpZy8EKfG93YN/FbljB8L09p
+ Y8TNeG+saf3ZWQHfiNHzA5btQaUeBHLpuIPtD1J0xjR7nvALQRWseevgJLuKBKRLeQmn
+ MTKDcqbHB6Np4cFdjw4CwyMGmpa2DS0OHtaHKEQZ6i5H3mooYRi0vm1Ko0P8krKDWR/l
+ CFLh63JA00OEhnsPf6cBz9GvMvhtFJo3TedTHWPgzXDyrv0R4bWsPT6wqgmNVamP1Lpc
+ 34OQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=UOZ4TdRb4/KFLMrC2D7QMXdefrcaEXMwfgRoi1sbd/Q=;
+ b=dIx0/W6aZPXTpPy4/2l7bcpk4Q2Oi0ozXfa1FcoJNoXg070Mx88rtlVAJQYuoig2z0
+ XgYn5fHVoyXGbZtdPLWvoRE/DqJbMtF/dgl6UVMFoILqPhudE8uSLxzNgQoAHO1X+CWL
+ 55GQJzbBNTGnw9ZWM9DhIeHefPJIdQfuceYHyApzOz+tcNZPN/vvoXZlnAVGG/9swo6U
+ A6+8ep/K7KzLvN9UtdbXmGOnS0eJAF7/OAioc9bWC7olWBVmmxjGmn1XB0lJAnLnruxJ
+ 0EpgpivJiQhpeypmou2/Cx4tmrkrQ4/Jmi7XxoHopf8FAuaExtM92ll7X55ttd8VUT6U
+ W1zQ==
+X-Gm-Message-State: AOAM5331vJRfVbAAeVPl0+u8oFEdZk5TgrKgdtd8nvKOtkmykmaBbjOB
+ dxhWWh2GMs9YwpYzNEeuo51jzLi6
+X-Google-Smtp-Source: ABdhPJynQ6CB0JjJsiR8oJ+WiMDtN2/HN8/BLl9PbHjY1lScggdj2naaoMkU3EHmRRlY6mQNNPLqPQ==
+X-Received: by 2002:a7b:cb4e:: with SMTP id v14mr3686418wmj.54.1590571718787; 
+ Wed, 27 May 2020 02:28:38 -0700 (PDT)
+Received: from [192.168.43.18] ([85.255.237.0])
+ by smtp.gmail.com with ESMTPSA id u3sm2349648wmg.38.2020.05.27.02.28.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 27 May 2020 02:28:38 -0700 (PDT)
+Subject: [PATCH] staging: vt6656: Fix warning: unused variable vnt_frame_time
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+References: <202005241918.IseLzHqZ%lkp@intel.com>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Message-ID: <41690fb4-fa4d-ffc3-0eb0-2879de2cee1a@gmail.com>
+Date: Wed, 27 May 2020 10:28:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
+In-Reply-To: <202005241918.IseLzHqZ%lkp@intel.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,69 +88,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Christian Gromm <christian.gromm@microchip.com>,
- driverdev-devel@linuxdriverproject.org, linux-usb@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, clang-built-linux@googlegroups.com,
+ kbuild-all@lists.01.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch replaces function strcmp() with sysfs_streq() to compare
-strings provided via sysfs.
+In commit 3436accadc3f
+("staging: vt6656: Move vnt_get_frame_time and vnt_get_phy_field to rxtx")
+not quite all of the code was removed.
 
-Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Remove unused vnt_frame_time variable.
+
+Reported-by: kbuild test robot <lkp@intel.com>
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
- drivers/staging/most/usb/usb.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/vt6656/rxtx.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/staging/most/usb/usb.c b/drivers/staging/most/usb/usb.c
-index 1c4bdb8..df5876c 100644
---- a/drivers/staging/most/usb/usb.c
-+++ b/drivers/staging/most/usb/usb.c
-@@ -808,7 +808,7 @@ static int get_stat_reg_addr(const struct regs *regs, int size,
- 	int i;
+diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
+index 5530c06ffd40..5dd6b4d2bf20 100644
+--- a/drivers/staging/vt6656/rxtx.c
++++ b/drivers/staging/vt6656/rxtx.c
+@@ -39,10 +39,6 @@ static const u16 vnt_time_stampoff[2][MAX_RATE] = {
+ #define DATADUR_B       10
+ #define DATADUR_A       11
  
- 	for (i = 0; i < size; i++) {
--		if (!strcmp(name, regs[i].name)) {
-+		if (sysfs_streq(name, regs[i].name)) {
- 			*reg_addr = regs[i].reg;
- 			return 0;
- 		}
-@@ -828,10 +828,10 @@ static ssize_t value_show(struct device *dev, struct device_attribute *attr,
- 	u16 reg_addr;
- 	int err;
- 
--	if (!strcmp(name, "arb_address"))
-+	if (sysfs_streq(name, "arb_address"))
- 		return snprintf(buf, PAGE_SIZE, "%04x\n", dci_obj->reg_addr);
- 
--	if (!strcmp(name, "arb_value"))
-+	if (sysfs_streq(name, "arb_value"))
- 		reg_addr = dci_obj->reg_addr;
- 	else if (get_static_reg_addr(ro_regs, name, &reg_addr) &&
- 		 get_static_reg_addr(rw_regs, name, &reg_addr))
-@@ -858,14 +858,14 @@ static ssize_t value_store(struct device *dev, struct device_attribute *attr,
- 	if (err)
- 		return err;
- 
--	if (!strcmp(name, "arb_address")) {
-+	if (sysfs_streq(name, "arb_address")) {
- 		dci_obj->reg_addr = val;
- 		return count;
- 	}
- 
--	if (!strcmp(name, "arb_value"))
-+	if (sysfs_streq(name, "arb_value"))
- 		err = drci_wr_reg(usb_dev, dci_obj->reg_addr, val);
--	else if (!strcmp(name, "sync_ep"))
-+	else if (sysfs_streq(name, "sync_ep"))
- 		err = start_sync_ep(usb_dev, val);
- 	else if (!get_static_reg_addr(rw_regs, name, &reg_addr))
- 		err = drci_wr_reg(usb_dev, reg_addr, val);
+-static const u16 vnt_frame_time[MAX_RATE] = {
+-	10, 20, 55, 110, 24, 36, 48, 72, 96, 144, 192, 216
+-};
+-
+ static const u8 vnt_phy_signal[] = {
+ 	0x00,	/* RATE_1M  */
+ 	0x01,	/* RATE_2M  */
 -- 
-2.7.4
-
+2.27.0.rc0
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
