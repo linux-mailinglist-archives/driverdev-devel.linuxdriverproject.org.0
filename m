@@ -2,75 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B8BF1E39F3
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 09:12:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A5E21E39F5
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 09:12:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C3A5586B1C;
-	Wed, 27 May 2020 07:12:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2D13886B59;
+	Wed, 27 May 2020 07:12:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IBDymWjt7a6w; Wed, 27 May 2020 07:12:21 +0000 (UTC)
+	with ESMTP id dfysGN6hBsfG; Wed, 27 May 2020 07:12:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 905A086B08;
-	Wed, 27 May 2020 07:12:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B04286B2A;
+	Wed, 27 May 2020 07:12:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B0A7C1BF423
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:18 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 523631BF423
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id ABEF3811E3
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4EE858845D
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZhZdGNahRXs8 for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 07:12:18 +0000 (UTC)
+ with ESMTP id pq+Ydr8CNjsH for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 07:12:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 066AD87898
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 07:12:18 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id x11so8816344plv.9
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 00:12:18 -0700 (PDT)
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DB7C4883CA
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 07:12:19 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id ci21so1161508pjb.3
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 00:12:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=o9MqodWCLjikP8AmTG/rqhpi4jiJNC1PbUROm6v1d2Y=;
- b=cJB55FZzIe+wbZbOjO4+gkJQe15YMlmFQTxt+DZL0GpogJ10Wqsx3OHLygNdzhlD5t
- qE7H8Jj4R+LviV2dMs8V7qO5bBlsYuG68ANB7g0XTKFzNNeT0SXRE6zDFXFCxmznfA0v
- mN5KMi5gIwI48uC8b0Kcgk4k/59LITp4LV3NEwAqBrNzC7VqiBGxnIumjWCigThafMq3
- B6nQmRcMCtEBFe8j8GqQkP9nw6oMqmMpWAHy/oAYFQnqJTvKLst21e2EXIA7wlvDmudE
- U2eAYVMwlIYwiraTrd8FmigcrRtv/pRy5jFwCFoJ5eV++L8RCEmfTVmIq6A1BuASY/d+
- 6ORA==
+ bh=YnWT8s8ink/KeJFRPdHxxy0KnE9QXS2EIJkcc7O9gtk=;
+ b=DM3vqxu8dRtwoGww+IORQKfTTdW1nnuAvY8aRKzh62Cx8kqBbcP5lV1qm8URdE5NwI
+ c2s+2BV+jhzfiL+hWF6uvl3M3rc4SZRksRliKnmNBhwzO3LalGMUVe/pJ2seJegirKxY
+ 3aOolQxZqc5UnpX0y292F3vEt7C88vjlI+mWd1ad8e7/AVNK0GAZHXd/EGkAQqw/UBTH
+ 4FdXsSMJJ6gziYNmWfGWpUTvBl7utKor+c7qe3gR/aiDXEO/tQmdBPMArs0FI5akiEKH
+ M//WCYPyz0r/qDeJbXVWbWEsEqaiuJB+R7TwqXi3Sib+9NJec9jV4Mz0yT4Sowh2E8du
+ Rn4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=o9MqodWCLjikP8AmTG/rqhpi4jiJNC1PbUROm6v1d2Y=;
- b=Kxoc0Jc+qKW8XJFCHoKPlg+LJUzGs6VcQgNryWF0SXrdFzHZwjT3ueaoNbNlLeBcoq
- wMdqYc5SkDVwdzcsMaap0ov9AiwxbE8MUkS7/1mYG/Wy+mrQEqdB/7YhjAsQdcpUR/u2
- ez7cjVPVIzU2FiZccKVnhLLLKMS/R0+eahlUuNml4y3L5gIeLCuHVCLz96w4pePpW2UF
- t+UKaw0A3E0pVrHuu7hrMSH2gJcLJC0B3SR2zksjQt0QZF9+NjQs6nfrRsvD6CU+MoYG
- uFuJUty05pi/zbQ2K038vu418zWoUVYa570RWG/PuSXn/3kkTjHzI4QTIYkhLhgjq1c4
- AkAg==
-X-Gm-Message-State: AOAM533LOKeEoUnHpmUjVyPL/yhA/n/kNwQroKhVjVCfkbJ5FoX7lYKC
- xRegwmqMHcvecrPz3Z6qkSc=
-X-Google-Smtp-Source: ABdhPJxoHRdGCzwo58GDaHJ6G/BJrSAN4ab49i2zjyZzqDrlxy7DIG+b4ZCydP80auPUjGxfCvGnNg==
-X-Received: by 2002:a17:902:8d8d:: with SMTP id
- v13mr4730527plo.67.1590563537552; 
- Wed, 27 May 2020 00:12:17 -0700 (PDT)
+ bh=YnWT8s8ink/KeJFRPdHxxy0KnE9QXS2EIJkcc7O9gtk=;
+ b=c9ift7pVOOfqIZ7tUWMIJfJG1egjSTbzgspxmMgUnQNNXa9sZaJZ9bNThEjB/A+A/t
+ JXwGEHZAO588FiSOYAQsAQRcflOiIK2Mf1yrvFVCyc8HWLP3O4lwxzwZynXceJsTGuLg
+ 9wDErZRD0adYub80wTVG2rrqY7idEQNiuPN/rU6OhvbDKEZ3vOQJpR8oZt2kKq4Dm1wK
+ jJCAV1lVzbkywvE/8QjgYrHXhYMyRM/s6/C4urccyco8baT3C3ztKW2up7npLZvJjY/N
+ ON2iHyclFowjmFB7XG0x8bSn1kQfH7SYWFsoDVcuYaSL4OttwozeOk03abexdLeVRjOD
+ Bi5A==
+X-Gm-Message-State: AOAM5330mPQpU2MtGR+toQjxsLml8skfWs6dP3OkcIyfM6n58YaUuZji
+ FayIu77TsHd0GCJ0THGscnk=
+X-Google-Smtp-Source: ABdhPJyFCpOYMkAVV78W52jBC29vXxFB27ZW9sqjVDAn5HIxYxToCi4u+31xoW8h3BEW8uRCIWxYTw==
+X-Received: by 2002:a17:902:fe81:: with SMTP id
+ x1mr4672432plm.239.1590563539414; 
+ Wed, 27 May 2020 00:12:19 -0700 (PDT)
 Received: from localhost.localdomain ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id 10sm1306431pfx.138.2020.05.27.00.12.15
+ by smtp.gmail.com with ESMTPSA id 10sm1306431pfx.138.2020.05.27.00.12.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2020 00:12:16 -0700 (PDT)
+ Wed, 27 May 2020 00:12:18 -0700 (PDT)
 From: Nathan Chancellor <natechancellor@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH 4/7] media: atomisp: Remove unnecessary NULL checks in
- ia_css_pipe_load_extension
-Date: Wed, 27 May 2020 00:11:47 -0700
-Message-Id: <20200527071150.3381228-5-natechancellor@gmail.com>
+Subject: [PATCH 5/7] media: atomisp: Remove unnecessary NULL check in
+ atomisp_param
+Date: Wed, 27 May 2020 00:11:48 -0700
+Message-Id: <20200527071150.3381228-6-natechancellor@gmail.com>
 X-Mailer: git-send-email 2.27.0.rc0
 In-Reply-To: <20200527071150.3381228-1-natechancellor@gmail.com>
 References: <20200527071150.3381228-1-natechancellor@gmail.com>
@@ -99,57 +99,45 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Clang warns:
 
-../drivers/staging/media/atomisp/pci/sh_css.c:8537:14: warning: address
-of 'pipe->output_stage' will always evaluate to 'true'
+drivers/staging/media/atomisp/pci/atomisp_cmd.c:4278:17: warning:
+address of 'config->info' will always evaluate to 'true'
 [-Wpointer-bool-conversion]
-                if (&pipe->output_stage)
-                ~~   ~~~~~~^~~~~~~~~~~~
-../drivers/staging/media/atomisp/pci/sh_css.c:8545:14: warning: address
-of 'pipe->vf_stage' will always evaluate to 'true'
-[-Wpointer-bool-conversion]
-                if (&pipe->vf_stage)
-                ~~   ~~~~~~^~~~~~~~
+                if (!&config->info) {
+                    ~ ~~~~~~~~^~~~
 
-output_stage and vf_stage are pointers in the middle of a struct, their
-addresses cannot be NULL if pipe is not NULL and pipe is already checked
-for NULL in this function. Simplify this if block.
+config cannot be NULL because it comes from an ioctl, which ensures that
+the user is not giving us an invalid pointer through copy_from_user. If
+config is not NULL, info cannot be NULL. Remove this check.
 
 Link: https://github.com/ClangBuiltLinux/linux/issues/1036
 Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
 ---
- drivers/staging/media/atomisp/pci/sh_css.c | 19 +++----------------
- 1 file changed, 3 insertions(+), 16 deletions(-)
+ drivers/staging/media/atomisp/pci/atomisp_cmd.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/sh_css.c b/drivers/staging/media/atomisp/pci/sh_css.c
-index d77432254a2c..b8626cdb2436 100644
---- a/drivers/staging/media/atomisp/pci/sh_css.c
-+++ b/drivers/staging/media/atomisp/pci/sh_css.c
-@@ -8533,22 +8533,9 @@ ia_css_pipe_load_extension(struct ia_css_pipe *pipe,
- 	}
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+index 5be690f876c1..105c5aeb83ac 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+@@ -4264,7 +4264,6 @@ int atomisp_set_parameters(struct video_device *vdev,
+ int atomisp_param(struct atomisp_sub_device *asd, int flag,
+ 		  struct atomisp_parm *config)
+ {
+-	struct atomisp_device *isp = asd->isp;
+ 	struct ia_css_pipe_config *vp_cfg =
+ 		    &asd->stream_env[ATOMISP_INPUT_STREAM_GENERAL].
+ 		    pipe_configs[IA_CSS_PIPE_ID_VIDEO];
+@@ -4275,10 +4274,6 @@ int atomisp_param(struct atomisp_sub_device *asd, int flag,
+ 		    atomisp_css_get_dvs_grid_info(
+ 			&asd->params.curr_grid_info);
  
- 	if (firmware->info.isp.type == IA_CSS_ACC_OUTPUT)
--	{
--		if (&pipe->output_stage)
--			append_firmware(&pipe->output_stage, firmware);
--		else {
--			IA_CSS_LEAVE_ERR_PRIVATE(IA_CSS_ERR_INTERNAL_ERROR);
--			return IA_CSS_ERR_INTERNAL_ERROR;
+-		if (!&config->info) {
+-			dev_err(isp->dev, "ERROR: NULL pointer in grid_info\n");
+-			return -EINVAL;
 -		}
--	} else if (firmware->info.isp.type == IA_CSS_ACC_VIEWFINDER)
--	{
--		if (&pipe->vf_stage)
--			append_firmware(&pipe->vf_stage, firmware);
--		else {
--			IA_CSS_LEAVE_ERR_PRIVATE(IA_CSS_ERR_INTERNAL_ERROR);
--			return IA_CSS_ERR_INTERNAL_ERROR;
--		}
--	}
-+		append_firmware(&pipe->output_stage, firmware);
-+	else if (firmware->info.isp.type == IA_CSS_ACC_VIEWFINDER)
-+		append_firmware(&pipe->vf_stage, firmware);
- 	err = acc_load_extension(firmware);
+ 		atomisp_curr_user_grid_info(asd, &config->info);
  
- 	IA_CSS_LEAVE_ERR_PRIVATE(err);
+ 		/* We always return the resolution and stride even if there is
 -- 
 2.27.0.rc0
 
