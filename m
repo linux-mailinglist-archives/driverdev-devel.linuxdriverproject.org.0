@@ -1,80 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 709A41E4AB4
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 18:45:41 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 144911E4BC0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 19:20:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CCA5725048;
-	Wed, 27 May 2020 16:45:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B804088865;
+	Wed, 27 May 2020 17:20:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xjPjrtNMj9s6; Wed, 27 May 2020 16:45:37 +0000 (UTC)
+	with ESMTP id Dg2++jQP5+Oy; Wed, 27 May 2020 17:20:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4676E24FA8;
-	Wed, 27 May 2020 16:45:35 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 22766884D0;
+	Wed, 27 May 2020 17:20:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9091A1BF834
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 16:45:25 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EA49D1BF343
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 17:20:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7C01D24C93
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 16:45:25 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E6C85884D0
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 17:20:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iw9TzZ3gIBJU for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 16:45:24 +0000 (UTC)
+ with ESMTP id bAbLGddee6wx for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 17:20:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
- [209.85.216.65])
- by silver.osuosl.org (Postfix) with ESMTPS id B48E924C8E
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 16:45:24 +0000 (UTC)
-Received: by mail-pj1-f65.google.com with SMTP id s69so1746757pjb.4
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 09:45:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=HOBnpx8HZKNA2mYIrdIzHPO79IIq+OTFtfJlgxpJynw=;
- b=p4Ckd5waAaTuvezAffm07NRV85HZodPW8wNla6B8uK/gXbUpwtX5HwUMRwlRt3Fdfh
- q2Giqjv+VG1ScvnivS3X3fmz31jXmDS8roFzNGnrS/HiWq4o8MSg+UyNhvKCbCsQv4vy
- FtPuEoMZSz1dZ7J4ExxMdMRMPIc2OOJiB5+mnuGh5KbMyuqRgRDnFgVlUIb/DoqtyC1I
- um+HfeHStBaBKv54odL4+T7QBiDqyR3cntNfh9Y+8us1fkWTCMz7Hk8KQCyhqH2EAGjP
- 9GWSvpiZGfyqffIG24RHMBYKSuKLiAR9TGMuhGwYrfr9IwDxVlFuqDBtCi3JGA1g0DZb
- nqDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=HOBnpx8HZKNA2mYIrdIzHPO79IIq+OTFtfJlgxpJynw=;
- b=dKpMb5kI8HyPq2ZEWOMd/sGFukq6UlR0DqG0c61j7XATtQLzK//5dYMiZpB8vvYvMz
- BkhpL2cft8X+Sr69EA4MtM2PlCucjCFHxGYX85iIVplD8Ab3ep9POloyh0HkmUbEpa95
- ag1eFrfZa7+FMTXf5mm3tE05FK2T+1uYrh1FMWhwTV5BOYQXh0/U340wYFVQ42Xalv+l
- QkIsY3xjCS3keRnyRhfO1Cw4cIZReBQD22suB6LAAoAmn5cEksJrek7pejANrIOLmOfX
- X1+NtIQ/CoNax3kNir2HEdWqI7AUg5Bqwhyv0H1KuOkxaXk3BGYmv6EZgYNlKiD5GL5G
- DmDQ==
-X-Gm-Message-State: AOAM533z5qARCk32DdSLZc9P4XlSFOaWk3V0XvKPAYaPps+JezCmR/EW
- wHnaD2YEpy819g1bdy0WybE=
-X-Google-Smtp-Source: ABdhPJxqHB/iYSQ/+IIgLYnRKb0OQneD8BTKop/Sw/gGN6GWtWYe7tcz1W0KOcQOXoNpZgVtiC+KMQ==
-X-Received: by 2002:a17:902:a584:: with SMTP id
- az4mr6717595plb.201.1590597924251; 
- Wed, 27 May 2020 09:45:24 -0700 (PDT)
-Received: from ubuntu-s3-xlarge-x86 ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id c12sm3147692pjm.46.2020.05.27.09.45.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2020 09:45:23 -0700 (PDT)
-Date: Wed, 27 May 2020 09:45:21 -0700
-From: Nathan Chancellor <natechancellor@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 53FA188498
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 17:20:41 +0000 (UTC)
+Received: from coco.lan (ip5f5ad5c5.dynamic.kabel-deutschland.de
+ [95.90.213.197])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id AC8692073B;
+ Wed, 27 May 2020 17:20:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1590600041;
+ bh=BwfETRuJsL3qxCceuWp5lO2rCBH9kkdeXqZIQKna8jE=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=1sKXXvkamBoUL16wZ4XHWdwrTVmgmTBcJV3j3m57/HWK/XIH3YIkOGUNaIuQomyX6
+ ntKTBzOgv4YDBU7y/4JAtsh4+0m1MD9J9RXVS6mxLfDt4tjyC40YsbxliF06Wn4bRv
+ qTINIUYSgVbDIvsiXDsnXmp9GK/b+mEe1kVtSZRY=
+Date: Wed, 27 May 2020 19:20:36 +0200
+From: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: Nathan Chancellor <natechancellor@gmail.com>
 Subject: Re: [PATCH 0/7] media: atomisp: Address several clang warnings
-Message-ID: <20200527164521.GA1239557@ubuntu-s3-xlarge-x86>
+Message-ID: <20200527192036.2575daf5@coco.lan>
+In-Reply-To: <20200527164521.GA1239557@ubuntu-s3-xlarge-x86>
 References: <20200527071150.3381228-1-natechancellor@gmail.com>
  <20200527104525.5e6cd93b@coco.lan>
+ <20200527164521.GA1239557@ubuntu-s3-xlarge-x86>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200527104525.5e6cd93b@coco.lan>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,63 +75,71 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, May 27, 2020 at 10:45:25AM +0200, Mauro Carvalho Chehab wrote:
-> Em Wed, 27 May 2020 00:11:43 -0700
-> Nathan Chancellor <natechancellor@gmail.com> escreveu:
-> 
-> > Hi all,
+Em Wed, 27 May 2020 09:45:21 -0700
+Nathan Chancellor <natechancellor@gmail.com> escreveu:
+
+> On Wed, May 27, 2020 at 10:45:25AM +0200, Mauro Carvalho Chehab wrote:
+> > Em Wed, 27 May 2020 00:11:43 -0700
+> > Nathan Chancellor <natechancellor@gmail.com> escreveu:
+> >   
+> > > Hi all,
+> > > 
+> > > This series aims to clean up the code while addressing the majority of
+> > > clang warnings in this driver, some found by the 0day bot and others
+> > > found by me.
+> > > 
+> > > There are several enum conversion warnings that happen, which I do not
+> > > really know how to solve without understanding how exactly this driver
+> > > works. I would appreciate some guidance or a solution. Below are the
+> > > warnings, sorry for not wrapping them but they would be hard to read
+> > > otherwise.  
 > > 
-> > This series aims to clean up the code while addressing the majority of
-> > clang warnings in this driver, some found by the 0day bot and others
-> > found by me.
+> > ...   
+> > > ../drivers/staging/media/atomisp//pci/atomisp_compat_css20.h:117:22: note: expanded from macro 'CSS_ID'
+> > > #define CSS_ID(val)     (IA_ ## val)  
+> > ...
 > > 
-> > There are several enum conversion warnings that happen, which I do not
-> > really know how to solve without understanding how exactly this driver
-> > works. I would appreciate some guidance or a solution. Below are the
-> > warnings, sorry for not wrapping them but they would be hard to read
-> > otherwise.
+> > I actually wrote a patch getting rid of this ugly thing:
+> > 
+> > 	https://git.linuxtv.org/mchehab/experimental.git/commit/?h=atomisp_v3&id=cf6a15543ace1e99364911c0b7a2f6b8f2f43021
+> > 
+> > This one was already submitted upstream (not merged yet), but there
+> > are also lots of other patches on my working tree.  
 > 
-> ... 
-> > ../drivers/staging/media/atomisp//pci/atomisp_compat_css20.h:117:22: note: expanded from macro 'CSS_ID'
-> > #define CSS_ID(val)     (IA_ ## val)
-> ...
+> Ah excellent, that makes the warnings a lot more readable. I am still
+> not sure how to reconcile the differences, it might be easier to just
+> change the types in the struct to int.
 > 
-> I actually wrote a patch getting rid of this ugly thing:
+> ../drivers/staging/media/atomisp/pci/atomisp_subdev.c:49:68: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
+>         { V4L2_MBUS_FMT_CUSTOM_NV21, 12, 12, IA_CSS_FRAME_FORMAT_NV21, 0, IA_CSS_FRAME_FORMAT_NV21 },
+>         ~                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~
+> ../drivers/staging/media/atomisp/pci/atomisp_subdev.c:49:39: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
+>         { V4L2_MBUS_FMT_CUSTOM_NV21, 12, 12, IA_CSS_FRAME_FORMAT_NV21, 0, IA_CSS_FRAME_FORMAT_NV21 },
+>         ~                                    ^~~~~~~~~~~~~~~~~~~~~~~~
+> ../drivers/staging/media/atomisp/pci/atomisp_subdev.c:48:68: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
+>         { V4L2_MBUS_FMT_CUSTOM_NV12, 12, 12, IA_CSS_FRAME_FORMAT_NV12, 0, IA_CSS_FRAME_FORMAT_NV12 },
+>         ~                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~
+> ../drivers/staging/media/atomisp/pci/atomisp_subdev.c:48:39: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
+>         { V4L2_MBUS_FMT_CUSTOM_NV12, 12, 12, IA_CSS_FRAME_FORMAT_NV12, 0, IA_CSS_FRAME_FORMAT_NV12 },
+>         ~                                    ^~~~~~~~~~~~~~~~~~~~~~~~
+> ../drivers/staging/media/atomisp/pci/atomisp_subdev.c:47:34: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
+>         { MEDIA_BUS_FMT_JPEG_1X8, 8, 8, IA_CSS_FRAME_FORMAT_BINARY_8, 0, ATOMISP_INPUT_FORMAT_BINARY_8 },
+>         ~                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 5 warnings generated.
+
+Well, I guess we should just get rid of the duplication there,
+
 > 
-> 	https://git.linuxtv.org/mchehab/experimental.git/commit/?h=atomisp_v3&id=cf6a15543ace1e99364911c0b7a2f6b8f2f43021
+> > I'll try to apply your patch series on it, once I'll be able to
+> > fix a bug with mmap support.  
 > 
-> This one was already submitted upstream (not merged yet), but there
-> are also lots of other patches on my working tree.
+> It looks like all of them apply to your experimental branch aside from
+> patch 3, which you handled in a different way.
 
-Ah excellent, that makes the warnings a lot more readable. I am still
-not sure how to reconcile the differences, it might be easier to just
-change the types in the struct to int.
+Ok. I'll apply your patch series on my tree.
 
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:49:68: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { V4L2_MBUS_FMT_CUSTOM_NV21, 12, 12, IA_CSS_FRAME_FORMAT_NV21, 0, IA_CSS_FRAME_FORMAT_NV21 },
-        ~                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:49:39: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { V4L2_MBUS_FMT_CUSTOM_NV21, 12, 12, IA_CSS_FRAME_FORMAT_NV21, 0, IA_CSS_FRAME_FORMAT_NV21 },
-        ~                                    ^~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:48:68: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { V4L2_MBUS_FMT_CUSTOM_NV12, 12, 12, IA_CSS_FRAME_FORMAT_NV12, 0, IA_CSS_FRAME_FORMAT_NV12 },
-        ~                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:48:39: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { V4L2_MBUS_FMT_CUSTOM_NV12, 12, 12, IA_CSS_FRAME_FORMAT_NV12, 0, IA_CSS_FRAME_FORMAT_NV12 },
-        ~                                    ^~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:47:34: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { MEDIA_BUS_FMT_JPEG_1X8, 8, 8, IA_CSS_FRAME_FORMAT_BINARY_8, 0, ATOMISP_INPUT_FORMAT_BINARY_8 },
-        ~                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-5 warnings generated.
-
-> I'll try to apply your patch series on it, once I'll be able to
-> fix a bug with mmap support.
-
-It looks like all of them apply to your experimental branch aside from
-patch 3, which you handled in a different way.
-
-Cheers,
-Nathan
+Thanks,
+Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
