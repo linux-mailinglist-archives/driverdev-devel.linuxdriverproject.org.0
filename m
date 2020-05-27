@@ -1,48 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5A021E40A4
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 13:54:38 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D924C1E409F
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 13:54:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B10482474E;
-	Wed, 27 May 2020 11:54:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8EF8C887B1;
+	Wed, 27 May 2020 11:54:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id utEJTd+0YVz1; Wed, 27 May 2020 11:54:35 +0000 (UTC)
+	with ESMTP id LeV67ZQZMsil; Wed, 27 May 2020 11:54:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1F12924912;
-	Wed, 27 May 2020 11:54:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0FA2B8876A;
+	Wed, 27 May 2020 11:54:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4FD8C1BF5A2
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 11:54:22 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2BB3E1BF5A2
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 11:54:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4C79A875E0
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 11:54:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 251FB2322B
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 11:54:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id myY5Hl47j7J0 for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 11:54:21 +0000 (UTC)
+ with ESMTP id M4IWaL6xMUAY for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 11:54:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7113E875B4
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 11:54:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 1FD812045E
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 11:54:22 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 77FDCAF16;
- Wed, 27 May 2020 11:54:22 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 37455AF38;
+ Wed, 27 May 2020 11:54:23 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: bcm-kernel-feedback-list@broadcom.com,
  linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [RFC 10/50] staging: vchiq: Get rid of VCHIQ_SERVICE_OPENEND callback
- reason
-Date: Wed, 27 May 2020 13:53:15 +0200
-Message-Id: <20200527115400.31391-11-nsaenzjulienne@suse.de>
+Subject: [RFC 11/50] staging: vchi: Get rid of all useless callback reasons
+Date: Wed, 27 May 2020 13:53:16 +0200
+Message-Id: <20200527115400.31391-12-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200527115400.31391-1-nsaenzjulienne@suse.de>
 References: <20200527115400.31391-1-nsaenzjulienne@suse.de>
@@ -67,49 +66,74 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Nobody uses it and it's routinely discarded in vchi.
+They are neither produced nor expected, so just delete them.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- .../vc04_services/interface/vchiq_arm/vchiq_core.c       | 9 ---------
- .../vc04_services/interface/vchiq_arm/vchiq_shim.c       | 4 ----
- 2 files changed, 13 deletions(-)
+ .../interface/vchi/vchi_common.h              | 40 ++-----------------
+ 1 file changed, 3 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-index ef31e541c902..ae9183db44ee 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-@@ -1484,15 +1484,6 @@ parse_open(struct vchiq_state *state, struct vchiq_header *header)
- 					: VCHIQ_SRVSTATE_OPEN);
- 			}
+diff --git a/drivers/staging/vc04_services/interface/vchi/vchi_common.h b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
+index 7fc04e38936d..0f79bea4757d 100644
+--- a/drivers/staging/vc04_services/interface/vchi/vchi_common.h
++++ b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
+@@ -31,8 +31,6 @@ enum vchi_crc_control {
  
--			service->remoteport = remoteport;
--			service->client_id = ((int *)header->data)[1];
--			if (make_service_callback(service, VCHIQ_SERVICE_OPENED,
--				NULL, NULL) == VCHIQ_RETRY) {
--				/* Bail out if not ready */
--				service->remoteport = VCHIQ_PORT_FREE;
--				goto bail_not_ready;
--			}
+ //callback reasons when an event occurs on a service
+ enum vchi_callback_reason {
+-	VCHI_CALLBACK_REASON_MIN,
 -
- 			/* Success - the message has been dealt with */
- 			unlock_service(service);
- 			return 1;
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-index 55f9e34ea50e..75d87b6992c4 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-@@ -461,10 +461,6 @@ static enum vchiq_status shim_callback(enum vchiq_reason reason,
- 				  VCHI_CALLBACK_SERVICE_CLOSED, NULL);
- 		break;
+ 	/*
+ 	 * This indicates that there is data available handle is the msg id that
+ 	 * was transmitted with the data
+@@ -41,44 +39,12 @@ enum vchi_callback_reason {
+ 	 * Tasks get kicked by the callback, reset their event and try and read
+ 	 * from the fifo until it fails
+ 	 */
++	VCHI_CALLBACK_SERVICE_CLOSED,
+ 	VCHI_CALLBACK_MSG_AVAILABLE,
+-	VCHI_CALLBACK_MSG_SENT,
+-	VCHI_CALLBACK_MSG_SPACE_AVAILABLE, // XXX not yet implemented
+-
+-	// This indicates that a transfer from the other side has completed
+-	VCHI_CALLBACK_BULK_RECEIVED,
+-	//This indicates that data queued up to be sent has now gone
+-	//handle is the msg id that was used when sending the data
+ 	VCHI_CALLBACK_BULK_SENT,
+-	VCHI_CALLBACK_BULK_RX_SPACE_AVAILABLE, // XXX not yet implemented
+-	VCHI_CALLBACK_BULK_TX_SPACE_AVAILABLE, // XXX not yet implemented
+-
+-	VCHI_CALLBACK_SERVICE_CLOSED,
+-
+-	/*
+-	 * this side has sent XOFF to peer due to lack of data consumption by
+-	 * service (suggests the service may need to take some recovery action
+-	 * if it has been deliberately holding off consuming data)
+-	 */
+-	VCHI_CALLBACK_SENT_XOFF,
+-	VCHI_CALLBACK_SENT_XON,
+-
+-	// indicates that a bulk transfer has finished reading the source buffer
+-	VCHI_CALLBACK_BULK_DATA_READ,
+-
+-	// power notification events (currently host side only)
+-	VCHI_CALLBACK_PEER_OFF,
+-	VCHI_CALLBACK_PEER_SUSPENDED,
+-	VCHI_CALLBACK_PEER_ON,
+-	VCHI_CALLBACK_PEER_RESUMED,
+-	VCHI_CALLBACK_FORCED_POWER_OFF,
+-
+-	// some extra notifications provided by vchiq_arm
+-	VCHI_CALLBACK_SERVICE_OPENED,
+-	VCHI_CALLBACK_BULK_RECEIVE_ABORTED,
++	VCHI_CALLBACK_BULK_RECEIVED,
+ 	VCHI_CALLBACK_BULK_TRANSMIT_ABORTED,
+-
+-	VCHI_CALLBACK_REASON_MAX
++	VCHI_CALLBACK_BULK_RECEIVE_ABORTED,
+ };
  
--	case VCHIQ_SERVICE_OPENED:
--		/* No equivalent VCHI reason */
--		break;
--
- 	case VCHIQ_BULK_TRANSMIT_ABORTED:
- 		service->callback(service->callback_param,
- 				  VCHI_CALLBACK_BULK_TRANSMIT_ABORTED,
+ // service control options
 -- 
 2.26.2
 
