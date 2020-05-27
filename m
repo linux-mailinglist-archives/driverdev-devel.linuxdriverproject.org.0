@@ -1,73 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 197411E4F58
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 22:33:30 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1295F1E4F92
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 22:51:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 80AA525304;
-	Wed, 27 May 2020 20:33:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 76DA686E97;
+	Wed, 27 May 2020 20:51:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CElvY-NxaSLW; Wed, 27 May 2020 20:33:28 +0000 (UTC)
+	with ESMTP id OqX02G2XnhKi; Wed, 27 May 2020 20:51:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BA76D2048C;
-	Wed, 27 May 2020 20:33:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 176E6847D3;
+	Wed, 27 May 2020 20:51:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B45A31BF591
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 20:33:22 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B9EED1BF591
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 20:50:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B086C87ED5
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 20:33:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A8685203D2
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 20:50:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ec4DM9wEEQLM for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 20:33:21 +0000 (UTC)
+ with ESMTP id 8miC5o4a01nr for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 20:50:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
- [209.85.166.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CDBF487E71
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 20:33:21 +0000 (UTC)
-Received: by mail-io1-f66.google.com with SMTP id o5so27552873iow.8
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 13:33:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2vFN875M4SjcSJqsQBhIyGl6yme7p3cXKTVvGnFDckQ=;
- b=PWYVMjGMInGK/+VGo90K1Nt077ISBvqH8S5m6aLr4ibsjLTafr454aQn5QUd9Jb3hg
- HIU8mhDByYhLX3UkQt4D2Rzx+UVqcITBJt/Z4Nm6cp0g3Yl09HlbCDBmvalwwApZDcJq
- TCSN2E+kQC1owKCySYdCL/ZBpO/l+v9tEX/zkwIqcVmYC3Es00307vvVuukW+gfBKFav
- i6oSBJGUvh2sDvYIrnmTx+zjY2VjsXPx1P13677f7kwCF/waz1sJrfeR5w+b0s69jvIE
- AHkw/MwxAJolk8NT1IA/Xyxgf38aptnsu1Ger4NNw9zCeR9Z9AU3V+o4nn5nRSj+QM8o
- ELDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2vFN875M4SjcSJqsQBhIyGl6yme7p3cXKTVvGnFDckQ=;
- b=MxLk4eKC20sX2yD4tcYwQ/7as302nqwQqkeXzCa5LKSAA+8ymuW7E5bCnyYjIAAdmG
- 4c5Re7qvDt86LVWwV2zSVK3En6RxCJc4QCximgCpLkTt0+4SeKA1FmJujCbQkF2M+BCm
- RIddo/XUrXrrcZNVsOGhu04kaQO2/8V/b00v3kLgJL4coTRrjnX2VaZgl5t5PZFmNNWq
- hiwOfmium0VdgvesTD89PP5de+yG4yRMK0uDqBAbzcITzYws7KUVs9Fhe9dTG7VPATV7
- 4fkwjZMNjy+jh8p0dd3LD0cEnyaoxaJ8/ZmVIHLf+f+hXAGJQby3GN32FM6D+hBX6UE6
- xQNA==
-X-Gm-Message-State: AOAM530rKCjMmHw1ln9m0tKBr3PGqAC5/WSO2aSP6Yi1YOPMTh+dV5ni
- /wxbKyhUPOEH5wfl8SSqtxxkZcHebqcPuX6tXX0QqQ==
-X-Google-Smtp-Source: ABdhPJwjayx9asTvHrdVtxj1V1NSaSKRT0BosTcJ5cpULOtZMGwSZrsfDFwEsny8NbcaKy/c0xKEWbch/jHI5WEaREE=
-X-Received: by 2002:a02:3b4b:: with SMTP id i11mr7539961jaf.16.1590611600730; 
- Wed, 27 May 2020 13:33:20 -0700 (PDT)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id A0E7920033
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 20:50:39 +0000 (UTC)
+IronPort-SDR: n/GOyz9EUWV0PzNB9oDIByDrtf/EL4XpdqYG8m4CJTCHxYlJxPopHkBPOQ16smLm+AY0iGwtCx
+ 3FliN9CSBJnQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2020 13:50:39 -0700
+IronPort-SDR: +LjnRvr7W+ORLgP4pBsmSukYqhRQIkz87chfKX/wstN1yrVvKriQJzJ+h3N0JSdaHjlWAUODg1
+ Z1N5T6XouhAA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,442,1583222400"; d="scan'208";a="442670289"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga005.jf.intel.com with ESMTP; 27 May 2020 13:50:37 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1je30W-000Da4-Ua; Thu, 28 May 2020 04:50:36 +0800
+Date: Thu, 28 May 2020 04:50:09 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:readfile] BUILD SUCCESS
+ 7a5125bbbabf1d3655640e59db556fb2aefaec6a
+Message-ID: <5eced281.u2Ed6S2kRNpygdbX%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-References: <20200523212919.33181-1-pterjan@google.com>
- <20200527194811.GF30374@kadam>
-In-Reply-To: <20200527194811.GF30374@kadam>
-From: Pascal Terjan <pterjan@google.com>
-Date: Wed, 27 May 2020 21:33:03 +0100
-Message-ID: <CAANdO=LqcHOzxSjudw+G+292sjguOoA-E2y4iAFZtCfa0UFe1A@mail.gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: Use shared header constants
-To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,62 +67,129 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 27 May 2020 at 20:48, Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> On Sat, May 23, 2020 at 10:29:19PM +0100, Pascal Terjan wrote:
-> > This is one of the 9 drivers redefining rfc1042_header.
-> >
->
-> This is how the patch looks like in my email client:
->
-> https://marc.info/?l=linux-driver-devel&m=159026973821890&w=2
->
-> Do you see how the subject is far away from the body of the commit
-> message?  I normally only read the subject or the body when I'm
-> reviewing patches so it's good if the body is clear on its own.  Maybe
-> write something like:
->
-> "This driver creates a local definitions of "rtw_rfc1042_header" and
-> "rtw_bridge_tunnel_header" but it should just use the standard definitions
-> from cfg80211.h."
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  readfile
+branch HEAD: 7a5125bbbabf1d3655640e59db556fb2aefaec6a  readfile: add test_readfile
 
-Thanks, I see both together when writing the commit message and need
-to remember they are actually separate.
+elapsed time: 1188m
 
-> >  void _rtw_init_sta_recv_priv(struct sta_recv_priv *psta_recvpriv)
-> > @@ -1625,11 +1622,11 @@ sint wlanhdr_to_ethhdr(union recv_frame *precvframe)
-> >       psnap_type = ptr+pattrib->hdrlen + pattrib->iv_len+SNAP_SIZE;
-> >       /* convert hdr + possible LLC headers into Ethernet header */
-> >       /* eth_type = (psnap_type[0] << 8) | psnap_type[1]; */
-> > -     if ((!memcmp(psnap, rtw_rfc1042_header, SNAP_SIZE) &&
-> > -             (memcmp(psnap_type, SNAP_ETH_TYPE_IPX, 2)) &&
-> > -             (memcmp(psnap_type, SNAP_ETH_TYPE_APPLETALK_AARP, 2))) ||
-> > -             /* eth_type != ETH_P_AARP && eth_type != ETH_P_IPX) || */
-> > -              !memcmp(psnap, rtw_bridge_tunnel_header, SNAP_SIZE)) {
-> > +     if ((!memcmp(psnap, rfc1042_header, SNAP_SIZE) &&
-> > +          memcmp(psnap_type, SNAP_ETH_TYPE_IPX, 2) &&
-> > +          memcmp(psnap_type, SNAP_ETH_TYPE_APPLETALK_AARP, 2)) ||
-> > +         /* eth_type != ETH_P_AARP && eth_type != ETH_P_IPX) || */
-> > +         !memcmp(psnap, bridge_tunnel_header, SNAP_SIZE)) {
-> >               /* remove RFC1042 or Bridge-Tunnel encapsulation and replace EtherType */
-> >               bsnaphdr = true;
->
-> Your indenting is correct, but I would probably do that in a separate
-> patch.  It makes it harder to review.  Also probably delete the
-> commented out code.  Do you see how if we don't touch the indenting then
-> it doesn't raise the question about if we should delete the comments as
-> well?
+configs tested: 102
+configs skipped: 1
 
-I initially didn't want to change it but checkpatch was sad which
-makes me sad, maybe I should have cleaned up this area in a first
-trivial patch before touching that line.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+mips                malta_kvm_guest_defconfig
+arm                         socfpga_defconfig
+nds32                             allnoconfig
+mips                          malta_defconfig
+arc                              alldefconfig
+arm                         orion5x_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+nds32                               defconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                              defconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+openrisc                         allyesconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+x86_64               randconfig-a006-20200527
+x86_64               randconfig-a002-20200527
+x86_64               randconfig-a005-20200527
+x86_64               randconfig-a003-20200527
+x86_64               randconfig-a004-20200527
+x86_64               randconfig-a001-20200527
+i386                 randconfig-a001-20200527
+i386                 randconfig-a004-20200527
+i386                 randconfig-a003-20200527
+i386                 randconfig-a006-20200527
+i386                 randconfig-a002-20200527
+i386                 randconfig-a005-20200527
+i386                 randconfig-a013-20200527
+i386                 randconfig-a015-20200527
+i386                 randconfig-a012-20200527
+i386                 randconfig-a011-20200527
+i386                 randconfig-a016-20200527
+i386                 randconfig-a014-20200527
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                              allnoconfig
+s390                                defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                                allnoconfig
+um                                  defconfig
+um                               allyesconfig
+um                               allmodconfig
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
