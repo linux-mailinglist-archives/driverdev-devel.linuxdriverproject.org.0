@@ -1,66 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5F4D1E3CB7
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 10:54:24 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C3B8823B2B;
-	Wed, 27 May 2020 08:54:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CDaKhDwmW-fd; Wed, 27 May 2020 08:54:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 56F3E2011A;
-	Wed, 27 May 2020 08:54:21 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A0EAA1BF844
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 08:54:18 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D2271E3CBB
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 10:54:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 99E0F86949
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 08:54:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6C87D86B2A;
+	Wed, 27 May 2020 08:54:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BC0izjLN_3GL; Wed, 27 May 2020 08:54:51 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 572D984432;
+	Wed, 27 May 2020 08:54:50 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A3DE91BF844
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 08:54:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9F2A6876E7
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 08:54:48 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JuJikcrgb7yN for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 08:54:18 +0000 (UTC)
+ with ESMTP id b4pbdFdxdp7h for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 08:54:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
- [209.85.166.198])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E925584432
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 08:54:17 +0000 (UTC)
-Received: by mail-il1-f198.google.com with SMTP id c29so4506458ilf.20
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 01:54:17 -0700 (PDT)
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 636C5876C4
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 08:54:47 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id c3so18917059wru.12
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 01:54:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=ZMCzFBVJDRT5IaHoNBcbsiWhHcA1gtpx/p/q/7NaI7M=;
+ b=aZOQea4w62/wofb5itJP9RhDG/qVhl3KmsEZpqIavK/T3iZ0tsc8bep4lCEaQ9Pu/8
+ LY/cZDZ5oeU1k0ZPk1yvtXnUhAn/oHU3zYyQPBIM14nUmqZsGbcl/P/x+JBVV97vbyWn
+ TUoLzVL/XVpBy1i12iv0uyo5PZ6E+752b7o09QXn6Qc/GQOxPWkSUJUIPYArHjLwvXPt
+ jH9qwYZscglAFM3cyHWXoVPuV/UAqTbld7zeTl4Cw419P3ZxoIUS2VLMDASbp9Hz4IVI
+ gxAE+yLDL6RjjWoczOR1ZadlfmfaSY/YmrjuHv3lAKGf9lIllSC1C5RkJqO2zUoxwpCe
+ b3lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:date:message-id:subject:from:to;
- bh=ZHI11N//sJVG+YwAmx5GjEx0JsAlT/tR96kXBprpZ4I=;
- b=CPDX72Vpoc/5LKB0BpjTjEgA2/hbH+HqTQqNF/S65w8x+y5lDS1RXAt5rmYlB60PE+
- ZNKh5vWCEtKmjOeNY3CL1U4eq1mb0pPP7ufCYpXUsj4VSZ8JifOdGp2IW46YtKUTAKKp
- KqhIFTy5AVpcpsXAttQwUyjBUGwsVB0TPLxsImexK2S5Zt3vLJDbhlti6aEsQ7yutwgQ
- 6e+BsoC+tosZq/UBADGbzorIb+FjfhDNtItnfju6rBmBvCiKVutTFtyEtHkigjxVaaAA
- fAjT20mvmZnHaX4Bbx3iZNYqSzrxWkuhFqGuHW9PNYy58nbqFFDJUU3HMlIMqoh1sa5I
- juCg==
-X-Gm-Message-State: AOAM530W6gmjT0DerkSKmT/2KBhi68RYzoqwXcdYNOuITwE1jfaFrva8
- m+Xeq5dJpJlDqPbaSTxJBsIrSSLj95gM9OpkbvxkijK0Q0r9
-X-Google-Smtp-Source: ABdhPJxkjDq3z5l9yAW41Kdctcg+iQ2G+i1GAK9TFtWH+NrEpIwhDhfzR7u+epipnIJAcReVJgh71U3Bes+ndI3L//cGDcltqmxO
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=ZMCzFBVJDRT5IaHoNBcbsiWhHcA1gtpx/p/q/7NaI7M=;
+ b=NSE1aSW0sNopLZwODIN8sLQt7nReeUwqQeOziWLuF6Ow2K14ODU7ivykxFqkklbQEz
+ Ocx74atV3FbYLpJr15gYPrlLDfN7SCbbJiQPZaEwUjGHQtj4altwzRmL58kXMYQdAesi
+ fFuxGvHQvU11Ac8o8zduU3FvRZWFV48av2zyuxpfLOMGlLTftoIanmetyKQId7+vKBuM
+ OS0qXla2PWOQ8Sc5g7pTOmQm05BP7l0OGxAQT9q/0pU++XZ2Th1Ib6PapUDbr8JJJZMf
+ 6gOt1dv5ji24EaohHwOUeA4J9qYjo2Yv80ICVuJpo/gUez3CDq4buBzGTitSaL555LsG
+ DX5w==
+X-Gm-Message-State: AOAM533F4uLuY3ncpZry3M+UBp72FSFxQcxN5gMlrfMccgqi0AdtVh5m
+ W15WzzAfSQgAh64+kqfxqTk=
+X-Google-Smtp-Source: ABdhPJzMa+N07uavW4Kr44sxtOgMfVSk5G63jBtadVDWDn0ZAZpEIWwB2u+pOmhc62L31ZY4H8fklg==
+X-Received: by 2002:adf:e587:: with SMTP id l7mr17115499wrm.352.1590569685800; 
+ Wed, 27 May 2020 01:54:45 -0700 (PDT)
+Received: from [192.168.43.18] ([85.255.237.0])
+ by smtp.gmail.com with ESMTPSA id i21sm2201111wml.5.2020.05.27.01.54.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 27 May 2020 01:54:45 -0700 (PDT)
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: Malcolm Priestley <tvboxspy@gmail.com>
+Subject: [PATCH 2/2] staging: vt6656: Move vnt_tx_usb_header to vnt_tx_context
+Message-ID: <aa6257eb-1758-4e75-ab39-2a15ff6ffa7c@gmail.com>
+Date: Wed, 27 May 2020 09:54:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-Received: by 2002:a05:6602:2dd4:: with SMTP id
- l20mr20302859iow.13.1590569657245; 
- Wed, 27 May 2020 01:54:17 -0700 (PDT)
-Date: Wed, 27 May 2020 01:54:17 -0700
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <0000000000006925ea05a69d5bfb@google.com>
-Subject: WARNING in binder_transaction_buffer_release (2)
-From: syzbot <syzbot+e113a0b970b7b3f394ba@syzkaller.appspotmail.com>
-To: arve@android.com, christian@brauner.io, devel@driverdev.osuosl.org, 
- gregkh@linuxfoundation.org, joel@joelfernandes.org, 
- linux-kernel@vger.kernel.org, maco@android.com, 
- syzkaller-bugs@googlegroups.com, tkjos@android.com, tkjos@google.com
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,97 +85,265 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+Move the USB element out of vnt_tx_packet and vnt_beacon_xmit to
+vnt_tx_context with sk_buff passed in parameters with the data now
+between skb->data and skb->len.
 
-syzbot found the following crash on:
+The vnt_tx_usb header is moved from vnt_tx_buffer to usbpipe.h with the
+size added to extra_tx_headroom the largest possible size.
 
-HEAD commit:    44456565 Merge tag 'io_uring-5.7-2020-05-22' of git://git...
-git tree:       upstream
-console output: https://syzkaller.appspot.com/x/log.txt?x=12990cba100000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=b3368ce0cc5f5ace
-dashboard link: https://syzkaller.appspot.com/bug?extid=e113a0b970b7b3f394ba
-compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=165b01e2100000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=14706016100000
+The CONTEXT enums types are aligned with usb ones and CONTEXT_MGMT_PACKET
+is removed and is never be used.
 
-The bug was bisected to:
+The skb_push in vnt_tx_packet is now only ever used with
+vnt_get_hdr_size with variables tx_bytes and tx_header_size removed.
 
-commit 44d8047f1d87adc2fd7eccc88533794f6d88c15e
-Author: Todd Kjos <tkjos@android.com>
-Date:   Tue Aug 28 20:46:25 2018 +0000
+buf_len in vnt_usb_send_context is no longer used and replaced with
+urb->actual_length in vnt_tx_context_complete.
 
-    binder: use standard functions to allocate fds
-
-bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=134e254a100000
-final crash:    https://syzkaller.appspot.com/x/report.txt?x=10ce254a100000
-console output: https://syzkaller.appspot.com/x/log.txt?x=174e254a100000
-
-IMPORTANT: if you fix the bug, please add the following tag to the commit:
-Reported-by: syzbot+e113a0b970b7b3f394ba@syzkaller.appspotmail.com
-Fixes: 44d8047f1d87 ("binder: use standard functions to allocate fds")
-
-------------[ cut here ]------------
-WARNING: CPU: 1 PID: 7071 at drivers/android/binder.c:2348 binder_transaction_buffer_release+0x601/0x8a0 drivers/android/binder.c:2348
-Kernel panic - not syncing: panic_on_warn set ...
-CPU: 1 PID: 7071 Comm: syz-executor142 Not tainted 5.7.0-rc6-syzkaller #0
-Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
-Call Trace:
- __dump_stack lib/dump_stack.c:77 [inline]
- dump_stack+0x188/0x20d lib/dump_stack.c:118
- panic+0x2e3/0x75c kernel/panic.c:221
- __warn.cold+0x2f/0x35 kernel/panic.c:582
- report_bug+0x27b/0x2f0 lib/bug.c:195
- fixup_bug arch/x86/kernel/traps.c:175 [inline]
- fixup_bug arch/x86/kernel/traps.c:170 [inline]
- do_error_trap+0x12b/0x220 arch/x86/kernel/traps.c:267
- do_invalid_op+0x32/0x40 arch/x86/kernel/traps.c:286
- invalid_op+0x23/0x30 arch/x86/entry/entry_64.S:1027
-RIP: 0010:binder_transaction_buffer_release+0x601/0x8a0 drivers/android/binder.c:2348
-Code: bb fd 31 ff 41 89 c5 89 c6 e8 bb ff 81 fb 45 85 ed 0f 85 f9 4b 01 00 48 8d 45 40 48 89 44 24 28 e9 fa fa ff ff e8 2f fe 81 fb <0f> 0b e9 87 fc ff ff e8 23 fe 81 fb 4c 8b 44 24 20 48 89 d8 45 31
-RSP: 0018:ffffc900018e7620 EFLAGS: 00010293
-RAX: ffff8880a12da5c0 RBX: 0000000000000058 RCX: 1ffff1101425b55b
-RDX: 0000000000000000 RSI: ffffffff85f136f1 RDI: ffff88809db1c048
-RBP: ffff88809290a080 R08: ffff8880a12da5c0 R09: fffff5200031cee7
-R10: ffffc900018e7737 R11: fffff5200031cee6 R12: ffff88809187a040
-R13: 0000000000000060 R14: ffff88809db1c000 R15: 0000000000000060
- binder_transaction+0x146d/0x6500 drivers/android/binder.c:3486
- binder_thread_write+0x818/0x2560 drivers/android/binder.c:3796
- binder_ioctl_write_read drivers/android/binder.c:4847 [inline]
- binder_ioctl+0x1008/0x1862 drivers/android/binder.c:5024
- vfs_ioctl fs/ioctl.c:47 [inline]
- ksys_ioctl+0x11a/0x180 fs/ioctl.c:771
- __do_sys_ioctl fs/ioctl.c:780 [inline]
- __se_sys_ioctl fs/ioctl.c:778 [inline]
- __x64_sys_ioctl+0x6f/0xb0 fs/ioctl.c:778
- do_syscall_64+0xf6/0x7d0 arch/x86/entry/common.c:295
- entry_SYSCALL_64_after_hwframe+0x49/0xb3
-RIP: 0033:0x44b749
-Code: e8 5c d9 02 00 48 83 c4 18 c3 0f 1f 80 00 00 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 0f 83 bb d0 fb ff c3 66 2e 0f 1f 84 00 00 00 00
-RSP: 002b:00007f65c624dce8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
-RAX: ffffffffffffffda RBX: 00000000006ddc48 RCX: 000000000044b749
-RDX: 0000000020000540 RSI: 00000000c0306201 RDI: 0000000000000003
-RBP: 00000000006ddc40 R08: 0000000000000000 R09: 0000000000000000
-R10: 0000000000000000 R11: 0000000000000246 R12: 00000000006ddc4c
-R13: 00007ffd9783511f R14: 00007f65c624e9c0 R15: 00000000006ddc4c
-Kernel Offset: disabled
-Rebooting in 86400 seconds..
-
-
+Signed-off-by: Malcolm Priestley <tvboxspy@gmail.com>
 ---
-This bug is generated by a bot. It may contain errors.
-See https://goo.gl/tpsmEJ for more information about syzbot.
-syzbot engineers can be reached at syzkaller@googlegroups.com.
+ drivers/staging/vt6656/device.h   |  4 +---
+ drivers/staging/vt6656/main_usb.c |  3 ++-
+ drivers/staging/vt6656/rxtx.c     | 30 +++++-------------------------
+ drivers/staging/vt6656/rxtx.h     |  7 -------
+ drivers/staging/vt6656/usbpipe.c  | 21 +++++++++++++++------
+ drivers/staging/vt6656/usbpipe.h  |  9 ++++++++-
+ 6 files changed, 31 insertions(+), 43 deletions(-)
 
-syzbot will keep track of this bug report. See:
-https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
-For information about bisection process see: https://goo.gl/tpsmEJ#bisection
-syzbot can test patches for this bug, for details see:
-https://goo.gl/tpsmEJ#testing-patches
+diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
+index d89f564a13c4..947530fefe94 100644
+--- a/drivers/staging/vt6656/device.h
++++ b/drivers/staging/vt6656/device.h
+@@ -206,8 +206,7 @@ struct vnt_rsp_card_init {
+  * Enum of context types for SendPacket
+  */
+ enum {
+-	CONTEXT_DATA_PACKET = 1,
+-	CONTEXT_MGMT_PACKET,
++	CONTEXT_DATA_PACKET = 0,
+ 	CONTEXT_BEACON_PACKET
+ };
+ 
+@@ -239,7 +238,6 @@ struct vnt_usb_send_context {
+ 	void *priv;
+ 	struct sk_buff *skb;
+ 	void *tx_buffer;
+-	unsigned int buf_len;
+ 	u32 frame_len;
+ 	u16 tx_hdr_size;
+ 	u16 tx_rate;
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index c0169e32621b..8bf851c53f4e 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -1043,7 +1043,8 @@ vt6656_probe(struct usb_interface *intf, const struct usb_device_id *id)
+ 	ieee80211_hw_set(priv->hw, SUPPORTS_PS);
+ 	ieee80211_hw_set(priv->hw, PS_NULLFUNC_STACK);
+ 
+-	priv->hw->extra_tx_headroom = sizeof(struct vnt_tx_buffer);
++	priv->hw->extra_tx_headroom =
++		sizeof(struct vnt_tx_buffer) + sizeof(struct vnt_tx_usb_header);
+ 	priv->hw->max_signal = 100;
+ 
+ 	SET_IEEE80211_DEV(priv->hw, &intf->dev);
+diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
+index 05b9a9ee0e33..5530c06ffd40 100644
+--- a/drivers/staging/vt6656/rxtx.c
++++ b/drivers/staging/vt6656/rxtx.c
+@@ -512,7 +512,6 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 	struct vnt_tx_fifo_head *tx_buffer_head;
+ 	struct vnt_usb_send_context *tx_context;
+ 	unsigned long flags;
+-	u16 tx_bytes, tx_header_size;
+ 	u8 pkt_type;
+ 
+ 	hdr = (struct ieee80211_hdr *)(skb->data);
+@@ -557,21 +556,11 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 		return -ENOMEM;
+ 	}
+ 
+-	tx_header_size = vnt_get_hdr_size(info);
+-	tx_bytes = tx_header_size + skb->len;
+-	tx_header_size += sizeof(struct vnt_tx_usb_header);
+-
+-	tx_buffer = skb_push(skb, tx_header_size);
++	tx_buffer = skb_push(skb, vnt_get_hdr_size(info));
++	tx_context->tx_buffer = tx_buffer;
+ 	tx_buffer_head = &tx_buffer->fifo_head;
+ 
+-	/* Fill USB header */
+-	tx_buffer->usb.tx_byte_count = cpu_to_le16(tx_bytes);
+-	tx_buffer->usb.pkt_no = tx_context->pkt_no;
+-	tx_buffer->usb.type = 0x00;
+-
+ 	tx_context->type = CONTEXT_DATA_PACKET;
+-	tx_context->tx_buffer = skb->data;
+-	tx_context->buf_len = skb->len;
+ 
+ 	/*Set fifo controls */
+ 	if (pkt_type == PK_TYPE_11A)
+@@ -624,7 +613,7 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 
+ 	spin_lock_irqsave(&priv->lock, flags);
+ 
+-	if (vnt_tx_context(priv, tx_context)) {
++	if (vnt_tx_context(priv, tx_context, skb)) {
+ 		dev_kfree_skb(tx_context->skb);
+ 		spin_unlock_irqrestore(&priv->lock, flags);
+ 		return -EIO;
+@@ -639,14 +628,13 @@ int vnt_tx_packet(struct vnt_private *priv, struct sk_buff *skb)
+ 
+ static int vnt_beacon_xmit(struct vnt_private *priv, struct sk_buff *skb)
+ {
+-	struct vnt_tx_usb_header *usb;
+ 	struct vnt_tx_short_buf_head *short_head;
+ 	struct ieee80211_tx_info *info;
+ 	struct vnt_usb_send_context *context;
+ 	struct ieee80211_mgmt *mgmt_hdr;
+ 	unsigned long flags;
+ 	u32 frame_size = skb->len + 4;
+-	u16 current_rate, count;
++	u16 current_rate;
+ 
+ 	spin_lock_irqsave(&priv->lock, flags);
+ 
+@@ -663,7 +651,6 @@ static int vnt_beacon_xmit(struct vnt_private *priv, struct sk_buff *skb)
+ 
+ 	mgmt_hdr = (struct ieee80211_mgmt *)skb->data;
+ 	short_head = skb_push(skb, sizeof(*short_head));
+-	count = skb->len;
+ 
+ 	if (priv->bb_type == BB_TYPE_11A) {
+ 		current_rate = RATE_6M;
+@@ -706,18 +693,11 @@ static int vnt_beacon_xmit(struct vnt_private *priv, struct sk_buff *skb)
+ 	if (priv->seq_counter > 0x0fff)
+ 		priv->seq_counter = 0;
+ 
+-	usb = skb_push(skb, sizeof(*usb));
+-	usb->tx_byte_count = cpu_to_le16(count);
+-	usb->pkt_no = context->pkt_no;
+-	usb->type = 0x01;
+-
+ 	context->type = CONTEXT_BEACON_PACKET;
+-	context->tx_buffer = usb;
+-	context->buf_len = skb->len;
+ 
+ 	spin_lock_irqsave(&priv->lock, flags);
+ 
+-	if (vnt_tx_context(priv, context))
++	if (vnt_tx_context(priv, context, skb))
+ 		ieee80211_free_txskb(priv->hw, context->skb);
+ 
+ 	spin_unlock_irqrestore(&priv->lock, flags);
+diff --git a/drivers/staging/vt6656/rxtx.h b/drivers/staging/vt6656/rxtx.h
+index f3c7b99cda73..6ca2ca32d036 100644
+--- a/drivers/staging/vt6656/rxtx.h
++++ b/drivers/staging/vt6656/rxtx.h
+@@ -159,14 +159,7 @@ struct vnt_tx_fifo_head {
+ 	__le16 current_rate;
+ } __packed;
+ 
+-struct vnt_tx_usb_header {
+-	u8 type;
+-	u8 pkt_no;
+-	__le16 tx_byte_count;
+-} __packed;
+-
+ struct vnt_tx_buffer {
+-	struct vnt_tx_usb_header usb;
+ 	struct vnt_tx_fifo_head fifo_head;
+ 	union vnt_tx_head tx_head;
+ } __packed;
+diff --git a/drivers/staging/vt6656/usbpipe.c b/drivers/staging/vt6656/usbpipe.c
+index 2164f45e13ab..82b774be6485 100644
+--- a/drivers/staging/vt6656/usbpipe.c
++++ b/drivers/staging/vt6656/usbpipe.c
+@@ -428,7 +428,8 @@ static void vnt_tx_context_complete(struct urb *urb)
+ 
+ 	switch (urb->status) {
+ 	case 0:
+-		dev_dbg(&priv->usb->dev, "Write %d bytes\n", context->buf_len);
++		dev_dbg(&priv->usb->dev,
++			"Write %d bytes\n", urb->actual_length);
+ 		break;
+ 	case -ECONNRESET:
+ 	case -ENOENT:
+@@ -453,17 +454,25 @@ static void vnt_tx_context_complete(struct urb *urb)
+ }
+ 
+ int vnt_tx_context(struct vnt_private *priv,
+-		   struct vnt_usb_send_context *context)
++		   struct vnt_usb_send_context *context,
++		   struct sk_buff *skb)
+ {
+-	int status;
++	struct vnt_tx_usb_header *usb;
+ 	struct urb *urb;
++	int status;
++	u16 count = skb->len;
++
++	usb = skb_push(skb, sizeof(*usb));
++	usb->tx_byte_count = cpu_to_le16(count);
++	usb->pkt_no = context->pkt_no;
++	usb->type = context->type;
+ 
+ 	if (test_bit(DEVICE_FLAGS_DISCONNECTED, &priv->flags)) {
+ 		context->in_use = false;
+ 		return -ENODEV;
+ 	}
+ 
+-	if (context->buf_len > MAX_TOTAL_SIZE_WITH_ALL_HEADERS) {
++	if (skb->len > MAX_TOTAL_SIZE_WITH_ALL_HEADERS) {
+ 		context->in_use = false;
+ 		return -E2BIG;
+ 	}
+@@ -477,8 +486,8 @@ int vnt_tx_context(struct vnt_private *priv,
+ 	usb_fill_bulk_urb(urb,
+ 			  priv->usb,
+ 			  usb_sndbulkpipe(priv->usb, 3),
+-			  context->tx_buffer,
+-			  context->buf_len,
++			  skb->data,
++			  skb->len,
+ 			  vnt_tx_context_complete,
+ 			  context);
+ 
+diff --git a/drivers/staging/vt6656/usbpipe.h b/drivers/staging/vt6656/usbpipe.h
+index 1f0b2566c288..52c2a928c9c1 100644
+--- a/drivers/staging/vt6656/usbpipe.h
++++ b/drivers/staging/vt6656/usbpipe.h
+@@ -41,6 +41,12 @@ struct vnt_interrupt_data {
+ 	u8 sw[2];
+ } __packed;
+ 
++struct vnt_tx_usb_header {
++	u8 type;
++	u8 pkt_no;
++	__le16 tx_byte_count;
++} __packed;
++
+ #define VNT_REG_BLOCK_SIZE	64
+ 
+ int vnt_control_out(struct vnt_private *priv, u8 request, u16 value,
+@@ -57,6 +63,7 @@ int vnt_control_out_blocks(struct vnt_private *priv,
+ int vnt_start_interrupt_urb(struct vnt_private *priv);
+ int vnt_submit_rx_urb(struct vnt_private *priv, struct vnt_rcb *rcb);
+ int vnt_tx_context(struct vnt_private *priv,
+-		   struct vnt_usb_send_context *context);
++		   struct vnt_usb_send_context *context,
++		   struct sk_buff *skb);
+ 
+ #endif /* __USBPIPE_H__ */
+-- 
+2.27.0.rc0
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
