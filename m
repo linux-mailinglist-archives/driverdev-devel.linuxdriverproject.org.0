@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E48A01E39EB
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 09:12:14 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA3C71E39ED
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 May 2020 09:12:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 86C2F87C8A;
-	Wed, 27 May 2020 07:12:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D25E86B19;
+	Wed, 27 May 2020 07:12:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sCCC-bFZFAq5; Wed, 27 May 2020 07:12:13 +0000 (UTC)
+	with ESMTP id 0NiwJPsS_sMg; Wed, 27 May 2020 07:12:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 030DC878C0;
-	Wed, 27 May 2020 07:12:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C93F7863AC;
+	Wed, 27 May 2020 07:12:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 110241BF423
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E7CDE1BF423
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0DCD88836C
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E4BD58836C
+ for <devel@linuxdriverproject.org>; Wed, 27 May 2020 07:12:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Nbh8Fw8lycP8 for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 07:12:08 +0000 (UTC)
+ with ESMTP id 3dS7fZ2SljVN for <devel@linuxdriverproject.org>;
+ Wed, 27 May 2020 07:12:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
- [209.85.216.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D793E8833F
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 07:12:08 +0000 (UTC)
-Received: by mail-pj1-f66.google.com with SMTP id ci23so1114906pjb.5
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 00:12:08 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 671DC8833F
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 07:12:11 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id b190so11429874pfg.6
+ for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 00:12:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=sCw1lGoEROKmEmhA5JVEoEjAugXh66VFW++dgNmaAuk=;
- b=ktoSMEguPJ8tS33p/nXe54OWEs5xrsGaluX65sfrK1qZgEjolWUpZbQ/S7VI4s6oZ4
- nA3+mHOUhZA3ZnCNQ0SJTs/GN5EWsYQlVzcg4VJA4awizjKbDq5MnPt9Vdy6MVyd3bZc
- 5iy5OHwyoVNF62TFO5iiYt9rzAGbk6rQXMQ+61QhD7fivlin/wC/iC90kq0MegokddOa
- NKcvgvTgpfMoD94+VCqADurNp8HK+uxzZ0eQEf3Qs7sp3p9AGqMKqGAXMGASuWMNeFw0
- +lVF+m5bmZvmK1VHBhqJxIMwGvqs3cleEoXElwbgiVtLwsDFy4wzyB+11GeqpQqzuzN1
- U35w==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=lhqAHEvRLnCQw7o+jUfsPtsKFyOebABISvsPaRwN9pA=;
+ b=tqxJOttPm9K91CJ00mLJnUiAm1t1uMYT9X8Uz2q1H8u9cWNxW1ufnkn62fGcdyZewN
+ 2+9ifHAzzHrwSgF7fZcih1x3rXo5v9q6lIJRcqUw3kMRr29v7wuE1aATEWiY0a1OsTx4
+ HafOHxpmDKCCFWMX70fPy0aPqsABeWUCUuERe5uOwWo1cxhFPfYjFVW+aqSaGBcF11oN
+ UT+X71CayWscpuzgUOtuN2809KmW3/BQjrcbddJGInKHdb4bsnaSKRUQj44HEvaIfOYo
+ kDvygzPkh025tfoujSQyefU39dt/TUqTWQvz1LgeRmjYVAN1vJ9pYe/Qel+Aj6OPCyIm
+ RjVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=sCw1lGoEROKmEmhA5JVEoEjAugXh66VFW++dgNmaAuk=;
- b=DiOwRPd7CBzpJqLWB22bnt2vjTrCNYKl9VSKmMXDCpRzOoQryWUcuppW7q6pvFSa7h
- rPZjVl60hDRjJoCZpLMDmVdgePtggxPJGulwLtIdKzn0TzLvROMHupjjHCfS/0JxDLn3
- YKpV1jSvtyAzVhzP6OJ0M1fg3KuBcUn59AaTqTXlDgXAjIB3ITkfKE/J+t/n2y29E3et
- uMdvIowqNHPaegneEuRX4xe7ggUdcQEYaPpuwHn2SGiGCU1rHhtvBIYa3lD+vkeovbIH
- lrSBUxsC9KuNBEfc60JdOWiRe/CtRbOwgPabZhrNjOCg6sKxNR0/AmKpeGY/uyaIRqd+
- xOng==
-X-Gm-Message-State: AOAM533kaduv4tx77Zmi2qWENtP+E1BsIYRjxUEW0pnEJeRe+An5355X
- BD1PS+mwU9Yl9MShOfIDoso=
-X-Google-Smtp-Source: ABdhPJzwIynGMI15C5qfyiQfZjRwRIe6ucirx2w/s3fNOvKzhAtovIMVsZLNyXAeslflPbOp07qhmQ==
-X-Received: by 2002:a17:90a:248c:: with SMTP id
- i12mr3442044pje.213.1590563528110; 
- Wed, 27 May 2020 00:12:08 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=lhqAHEvRLnCQw7o+jUfsPtsKFyOebABISvsPaRwN9pA=;
+ b=ZUU+q5Y6x4BBI1NwmyIqu4yTuFJStWAdYHncDsXfGOzSRg7hlfV26uTR7MwWTPswVc
+ 6yKxAsk1kbffvcPP+alxElbKCovkqjn1NvvbjxQYM4M64xntqOl342gXLVqNx0SxrpEX
+ DbifP9vwtNTFGj8Yt6K1X4FklKOlUXAiQ9xRtXgeSJDeYQSV2VK0/mnP5tnT66bCZHpy
+ E/xZU0Ekls4ubhJIgrCcaogSGfsta97R0TFrl2r4hA8YHrxpxwMlXKY3gelm15ls0yn0
+ /wMRuwtzwtcKn+VNEc872vSpDmwZUxibJpdmeH+tKKWWTy/T1yrdo3UW9Q04pGRKUzbi
+ yyng==
+X-Gm-Message-State: AOAM532NQGteFO9QMSlP2le0FDwvXOVKwil+HsCNAgh/+G+BgcSgk1TY
+ CHTUZT0+yV7mPZD9cDBRX+E=
+X-Google-Smtp-Source: ABdhPJxJ26ZoY/VgMQTRMEVnpnq9cud32xiSg/d3bcZs3eFcYav/pHsIvDXVtq4L/0Mqm9sua55Yiw==
+X-Received: by 2002:a62:7c02:: with SMTP id x2mr2597592pfc.70.1590563530733;
+ Wed, 27 May 2020 00:12:10 -0700 (PDT)
 Received: from localhost.localdomain ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id 10sm1306431pfx.138.2020.05.27.00.12.06
+ by smtp.gmail.com with ESMTPSA id 10sm1306431pfx.138.2020.05.27.00.12.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2020 00:12:07 -0700 (PDT)
+ Wed, 27 May 2020 00:12:10 -0700 (PDT)
 From: Nathan Chancellor <natechancellor@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH 0/7] media: atomisp: Address several clang warnings
-Date: Wed, 27 May 2020 00:11:43 -0700
-Message-Id: <20200527071150.3381228-1-natechancellor@gmail.com>
+Subject: [PATCH 1/7] media: atomisp: Clean up if block in sh_css_sp_init_stage
+Date: Wed, 27 May 2020 00:11:44 -0700
+Message-Id: <20200527071150.3381228-2-natechancellor@gmail.com>
 X-Mailer: git-send-email 2.27.0.rc0
+In-Reply-To: <20200527071150.3381228-1-natechancellor@gmail.com>
+References: <20200527071150.3381228-1-natechancellor@gmail.com>
 MIME-Version: 1.0
+X-Patchwork-Bot: notify
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,91 +86,89 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, clang-built-linux@googlegroups.com,
- linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ clang-built-linux@googlegroups.com,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi all,
+Clang warns:
 
-This series aims to clean up the code while addressing the majority of
-clang warnings in this driver, some found by the 0day bot and others
-found by me.
+../drivers/staging/media/atomisp/pci/sh_css_sp.c:1039:23: warning:
+address of 'binary->in_frame_info' will always evaluate to 'true'
+[-Wpointer-bool-conversion]
+                } else if (&binary->in_frame_info) {
+                       ~~   ~~~~~~~~^~~~~~~~~~~~~
 
-There are several enum conversion warnings that happen, which I do not
-really know how to solve without understanding how exactly this driver
-works. I would appreciate some guidance or a solution. Below are the
-warnings, sorry for not wrapping them but they would be hard to read
-otherwise.
+in_frame_info is not a pointer so if binary is not NULL, in_frame_info's
+address cannot be NULL. Change this to an else since it will always be
+evaluated as one.
 
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:49:65: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { V4L2_MBUS_FMT_CUSTOM_NV21, 12, 12, CSS_FRAME_FORMAT_NV21, 0, CSS_FRAME_FORMAT_NV21 },
-        ~                                                              ^~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat.h:101:32: note: expanded from macro 'CSS_FRAME_FORMAT_NV21'
-#define CSS_FRAME_FORMAT_NV21           CSS_ID(CSS_FRAME_FORMAT_NV21)
-                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat_css20.h:117:22: note: expanded from macro 'CSS_ID'
-#define CSS_ID(val)     (IA_ ## val)
-                         ^~~~~~~~~~
-<scratch space>:69:1: note: expanded from here
-IA_CSS_FRAME_FORMAT_NV21
-^~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:49:39: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { V4L2_MBUS_FMT_CUSTOM_NV21, 12, 12, CSS_FRAME_FORMAT_NV21, 0, CSS_FRAME_FORMAT_NV21 },
-        ~                                    ^~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat.h:101:32: note: expanded from macro 'CSS_FRAME_FORMAT_NV21'
-#define CSS_FRAME_FORMAT_NV21           CSS_ID(CSS_FRAME_FORMAT_NV21)
-                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat_css20.h:117:22: note: expanded from macro 'CSS_ID'
-#define CSS_ID(val)     (IA_ ## val)
-                         ^~~~~~~~~~
-<scratch space>:68:1: note: expanded from here
-IA_CSS_FRAME_FORMAT_NV21
-^~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:48:65: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { V4L2_MBUS_FMT_CUSTOM_NV12, 12, 12, CSS_FRAME_FORMAT_NV12, 0, CSS_FRAME_FORMAT_NV12 },
-        ~                                                              ^~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat.h:99:32: note: expanded from macro 'CSS_FRAME_FORMAT_NV12'
-#define CSS_FRAME_FORMAT_NV12           CSS_ID(CSS_FRAME_FORMAT_NV12)
-                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat_css20.h:117:22: note: expanded from macro 'CSS_ID'
-#define CSS_ID(val)     (IA_ ## val)
-                         ^~~~~~~~~~
-<scratch space>:67:1: note: expanded from here
-IA_CSS_FRAME_FORMAT_NV12
-^~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:48:39: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { V4L2_MBUS_FMT_CUSTOM_NV12, 12, 12, CSS_FRAME_FORMAT_NV12, 0, CSS_FRAME_FORMAT_NV12 },
-        ~                                    ^~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat.h:99:32: note: expanded from macro 'CSS_FRAME_FORMAT_NV12'
-#define CSS_FRAME_FORMAT_NV12           CSS_ID(CSS_FRAME_FORMAT_NV12)
-                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat_css20.h:117:22: note: expanded from macro 'CSS_ID'
-#define CSS_ID(val)     (IA_ ## val)
-                         ^~~~~~~~~~
-<scratch space>:66:1: note: expanded from here
-IA_CSS_FRAME_FORMAT_NV12
-^~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp/pci/atomisp_subdev.c:47:34: warning: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Wenum-conversion]
-        { MEDIA_BUS_FMT_JPEG_1X8, 8, 8, CSS_FRAME_FORMAT_BINARY_8, 0, ATOMISP_INPUT_FORMAT_BINARY_8 },
-        ~                               ^~~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat.h:118:35: note: expanded from macro 'CSS_FRAME_FORMAT_BINARY_8'
-#define CSS_FRAME_FORMAT_BINARY_8       CSS_ID(CSS_FRAME_FORMAT_BINARY_8)
-                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../drivers/staging/media/atomisp//pci/atomisp_compat_css20.h:117:22: note: expanded from macro 'CSS_ID'
-#define CSS_ID(val)     (IA_ ## val)
-                         ^~~~~~~~~~
-<scratch space>:65:1: note: expanded from here
-IA_CSS_FRAME_FORMAT_BINARY_8
-^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-5 warnings generated.
+While we are here, clean up this if block. The contents of both if
+blocks are the same but a check against "stage == 0" is added when
+ISP2401 is defined. USE_INPUT_SYSTEM_VERSION_2401 is only defined when
+isp2401_system_global.h is included, which only happens when ISP2401. In
+other words, USE_INPUT_SYSTEM_VERSION_2401 always requires ISP2401 to be
+defined so the '#ifndef ISP2401' makes no sense. Remove that part of the
+block to simplify everything.
 
-Please let me know if there are any comments, cheers!
-Nathan
+Link: https://github.com/ClangBuiltLinux/linux/issues/1036
+Reported-by: kbuild test robot <lkp@intel.com>
+Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
+---
+ drivers/staging/media/atomisp/pci/sh_css_sp.c | 27 +++----------------
+ 1 file changed, 4 insertions(+), 23 deletions(-)
 
+diff --git a/drivers/staging/media/atomisp/pci/sh_css_sp.c b/drivers/staging/media/atomisp/pci/sh_css_sp.c
+index e574396ad0f4..e242a539d3d8 100644
+--- a/drivers/staging/media/atomisp/pci/sh_css_sp.c
++++ b/drivers/staging/media/atomisp/pci/sh_css_sp.c
+@@ -1015,34 +1015,15 @@ sh_css_sp_init_stage(struct ia_css_binary *binary,
+ 		return err;
+ 
+ #ifdef USE_INPUT_SYSTEM_VERSION_2401
+-#ifndef ISP2401
+-	if (args->in_frame)
+-	{
+-		pipe = find_pipe_by_num(sh_css_sp_group.pipe[thread_id].pipe_num);
+-		if (!pipe)
+-			return IA_CSS_ERR_INTERNAL_ERROR;
+-		ia_css_get_crop_offsets(pipe, &args->in_frame->info);
+-	} else if (&binary->in_frame_info)
+-	{
++	if (stage == 0) {
+ 		pipe = find_pipe_by_num(sh_css_sp_group.pipe[thread_id].pipe_num);
+ 		if (!pipe)
+ 			return IA_CSS_ERR_INTERNAL_ERROR;
+-		ia_css_get_crop_offsets(pipe, &binary->in_frame_info);
+-#else
+-	if (stage == 0)
+-	{
+-		if (args->in_frame) {
+-			pipe = find_pipe_by_num(sh_css_sp_group.pipe[thread_id].pipe_num);
+-			if (!pipe)
+-				return IA_CSS_ERR_INTERNAL_ERROR;
++
++		if (args->in_frame)
+ 			ia_css_get_crop_offsets(pipe, &args->in_frame->info);
+-		} else if (&binary->in_frame_info) {
+-			pipe = find_pipe_by_num(sh_css_sp_group.pipe[thread_id].pipe_num);
+-			if (!pipe)
+-				return IA_CSS_ERR_INTERNAL_ERROR;
++		else
+ 			ia_css_get_crop_offsets(pipe, &binary->in_frame_info);
+-		}
+-#endif
+ 	}
+ #else
+ 	(void)pipe; /*avoid build warning*/
+
+base-commit: 938b29db3aa9c293c7c1366b16e55e308f1a1ddd
+-- 
+2.27.0.rc0
 
 _______________________________________________
 devel mailing list
