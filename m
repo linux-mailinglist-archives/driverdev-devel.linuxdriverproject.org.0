@@ -1,58 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DB9E1E5759
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 May 2020 08:14:48 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 457711E5751
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 May 2020 08:14:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CB3B086F73;
-	Thu, 28 May 2020 06:14:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 36F92875D1;
+	Thu, 28 May 2020 06:14:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lCXH-d-V6me4; Thu, 28 May 2020 06:14:45 +0000 (UTC)
+	with ESMTP id gHMA4j4XuKz2; Thu, 28 May 2020 06:14:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1618A86F13;
-	Thu, 28 May 2020 06:14:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B514587DDF;
+	Thu, 28 May 2020 06:14:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9B5301BF9B9
- for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:28 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D32CD1BF9B9
+ for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9829186D7B
- for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:28 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D030D88911
+ for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GScpJPqLvhq4 for <devel@linuxdriverproject.org>;
- Thu, 28 May 2020 06:14:25 +0000 (UTC)
+ with ESMTP id nn6ZybejqJ15 for <devel@linuxdriverproject.org>;
+ Thu, 28 May 2020 06:14:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DFFA586D20
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EA8AE888A4
  for <devel@driverdev.osuosl.org>; Thu, 28 May 2020 06:14:25 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
  [95.90.213.197])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 94BE22078C;
+ by mail.kernel.org (Postfix) with ESMTPSA id 9850820899;
  Thu, 28 May 2020 06:14:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1590646465;
- bh=5SUnx6Cx/3SsU3rxuMAruQ7MwuxBkvNw8KolDqWYV74=;
- h=From:To:Cc:Subject:Date:From;
- b=AR2OIgDo4R3fz2MxnbMorkhIUFNeUUj5ghYp3xoSY8UXw09/A7qARy3PikXKtmkBX
- 7znceZzF+dfgUywTsUIZOrpAWWRP2d2J+QN5Tu3hEFIx7zFSVu+YeMkQC87lxAMoSe
- zy+/3DI4lbLaEoOIuOcd+Nm9BjYB9vKXvJ8pe208=
+ bh=DjmJm0c6hUdHH4PGQZbBqFRsmurjCQhBjKplPNOt/zk=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=eccda4rCAt0hes5LRagQLn8mRhqMlrcGE6ifx1sE+He25hmUVBcxMlkBpf2D781UP
+ uKYBFSLoJgCN4ZURDb2uPtwiljDGX1YmhjyebT4uuxDmBoOX2f4X28tLrAOmfinyX7
+ 2lNrfXaJDVwgWqSCGkJFVmDAQgKSjTfDMVmh0aPs=
 Received: from mchehab by mail.kernel.org with local (Exim 4.93)
  (envelope-from <mchehab@kernel.org>)
- id 1jeBo7-000VH0-IQ; Thu, 28 May 2020 08:14:23 +0200
+ id 1jeBo7-000VH3-Ki; Thu, 28 May 2020 08:14:23 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH 00/20] More atomisp fixes and cleanups
-Date: Thu, 28 May 2020 08:14:00 +0200
-Message-Id: <cover.1590646166.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 01/20] media: atomisp: simplify hive_isp_css_mm_hrt wrapper
+Date: Thu, 28 May 2020 08:14:01 +0200
+Message-Id: <a2ee05f441b2e84a3b5b048fe0fc96883e9b49a6.1590646166.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <cover.1590646166.git.mchehab+huawei@kernel.org>
+References: <cover.1590646166.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -74,119 +76,293 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Most of this series are working at the memory management abstraction.
+The code there is a wrapper for hmm/ wrapper. Simplify it,
+and get rid of ION-specific code.
 
-The last patch contain an important bug fix: the logic which configures 
-the hardware pipelines add some "delay frames" that are NULL, causing
-the driver to crash when userspace selects a resolution different
-than the sensor resolution.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ drivers/staging/media/atomisp/Makefile        |  5 --
+ .../media/atomisp/include/hmm/hmm_bo.h        |  9 ---
+ .../staging/media/atomisp/pci/atomisp_acc.c   |  2 +-
+ .../staging/media/atomisp/pci/atomisp_ioctl.c | 35 ---------
+ .../media/atomisp/pci/atomisp_subdev.c        |  5 --
+ .../atomisp/pci/hrt/hive_isp_css_mm_hrt.c     | 77 +++----------------
+ .../atomisp/pci/hrt/hive_isp_css_mm_hrt.h     | 12 ---
+ .../media/atomisp/pci/ia_css_memory_access.c  |  1 -
+ 8 files changed, 13 insertions(+), 133 deletions(-)
 
-It took me a lot of time debugging it, due to all the weirdness and
-abstractions with the mm/ allocation, plus the 4+ abstraction
-layers that it takes for the driver to actually do something.
-
-We should try to get rid of at least some of the layers as soon as
-possible, as it takes a lot of time to debug certain things with all
-those layers.
-
-Mauro Carvalho Chehab (20):
-  media: atomisp: simplify hive_isp_css_mm_hrt wrapper
-  media: atomisp: get rid of the hrt/hive_isp_css_mm_hrt abstraction
-    layer
-  media: atomisp: reduce abstraction at ia_css_memory_access
-  media: atomisp: go one step further to drop ia_css_memory_access.c
-  media: atomisp: get rid of mmgr_load and mmgr_store
-  media: atomisp: get rid of unused memory_realloc code
-  media: atomisp: change the type returned by mmgr alloc
-  media: atomisp: get rid of memory_access.c
-  media: atomisp: hmm_bo: untag user pointers
-  media: atomisp: add debug message to help debugging hmm code
-  media: atomisp: use Yocto Aero default hmm pool sizes
-  media: atomisp: get rid of a warning message
-  media: atomisp: fix driver caps
-  media: atomisp: use pin_user_pages() for memory allocation
-  media: atomisp: add debug for hmm alloc
-  media: atomisp: improve warning for IRQ enable function
-  media: atomisp: add debug functions for received events
-  media: atomisp: add more comments about frame allocation
-  media: atomisp: remove kvmalloc/kvcalloc abstractions
-  media: atomisp: avoid OOPS due to non-existing ref_frames
-
- drivers/staging/media/atomisp/Makefile        |   8 -
- .../staging/media/atomisp/include/hmm/hmm.h   |   7 +-
- .../media/atomisp/include/hmm/hmm_bo.h        |  11 +-
- .../media/atomisp/include/linux/atomisp.h     |   2 +
- .../staging/media/atomisp/pci/atomisp_acc.c   |  27 ++-
- .../staging/media/atomisp/pci/atomisp_cmd.c   |   2 +-
- .../media/atomisp/pci/atomisp_compat.h        |   2 +-
- .../media/atomisp/pci/atomisp_compat_css20.c  |  19 +-
- .../staging/media/atomisp/pci/atomisp_fops.c  |   3 -
- .../staging/media/atomisp/pci/atomisp_ioctl.c |  48 +----
- .../media/atomisp/pci/atomisp_subdev.c        |   8 +-
- .../staging/media/atomisp/pci/atomisp_v4l2.c  |  30 +--
- .../base/refcount/interface/ia_css_refcount.h |  13 +-
- .../atomisp/pci/base/refcount/src/refcount.c  |  19 +-
- .../pci/hive_isp_css_common/host/debug.c      |  15 +-
- .../hive_isp_css_common/host/debug_private.h  |   9 +-
- .../hive_isp_css_include/host/debug_public.h  |   5 +-
- .../memory_access/memory_access.h             | 174 ------------------
- .../pci/hive_isp_css_include/memory_realloc.h |  38 ----
- .../staging/media/atomisp/pci/hive_types.h    |   3 -
- drivers/staging/media/atomisp/pci/hmm/hmm.c   |  35 +++-
- .../staging/media/atomisp/pci/hmm/hmm_bo.c    | 153 +++------------
- .../atomisp/pci/hrt/hive_isp_css_mm_hrt.c     | 124 -------------
- .../atomisp/pci/hrt/hive_isp_css_mm_hrt.h     |  57 ------
- .../media/atomisp/pci/ia_css_frame_public.h   |   2 +-
- .../media/atomisp/pci/ia_css_memory_access.c  |  85 ---------
- .../staging/media/atomisp/pci/ia_css_pipe.h   |   2 +-
- .../pci/isp/kernels/bh/bh_2/ia_css_bh.host.c  |   1 -
- .../isp/kernels/dvs/dvs_1.0/ia_css_dvs.host.c |   5 +-
- .../isp/kernels/dvs/dvs_1.0/ia_css_dvs.host.h |   2 +-
- .../raw_aa_binning_1.0/ia_css_raa.host.c      |   1 -
- .../isp/kernels/ref/ref_1.0/ia_css_ref.host.c |  13 +-
- .../kernels/ref/ref_1.0/ia_css_ref_param.h    |   4 +-
- .../kernels/sdis/sdis_1.0/ia_css_sdis.host.c  |  13 +-
- .../kernels/sdis/sdis_2/ia_css_sdis2.host.c   |   9 +-
- .../kernels/tnr/tnr_1.0/ia_css_tnr_param.h    |   2 +-
- .../media/atomisp/pci/memory_realloc.c        |  81 --------
- .../media/atomisp/pci/mmu/sh_mmu_mrfld.c      |   1 -
- .../atomisp/pci/runtime/binary/src/binary.c   |   8 +-
- .../pci/runtime/debug/src/ia_css_debug.c      |   5 +-
- .../atomisp/pci/runtime/event/src/event.c     |   1 -
- .../frame/interface/ia_css_frame_comm.h       |   4 +-
- .../atomisp/pci/runtime/frame/src/frame.c     |  38 ++--
- .../isp_param/interface/ia_css_isp_param.h    |   2 +-
- .../pci/runtime/isp_param/src/isp_param.c     |  15 +-
- .../pci/runtime/pipeline/src/pipeline.c       |   5 +-
- .../pci/runtime/queue/src/queue_access.c      |  11 +-
- .../runtime/rmgr/interface/ia_css_rmgr_vbuf.h |   3 +-
- .../atomisp/pci/runtime/rmgr/src/rmgr_vbuf.c  |   6 +-
- .../runtime/spctrl/interface/ia_css_spctrl.h  |   2 +-
- .../atomisp/pci/runtime/spctrl/src/spctrl.c   |  17 +-
- drivers/staging/media/atomisp/pci/sh_css.c    |  52 ++----
- .../media/atomisp/pci/sh_css_firmware.c       |   9 +-
- .../media/atomisp/pci/sh_css_firmware.h       |   2 +-
- .../media/atomisp/pci/sh_css_host_data.c      |   2 +-
- .../media/atomisp/pci/sh_css_internal.h       |  76 ++++----
- .../media/atomisp/pci/sh_css_metrics.c        |   9 +-
- .../staging/media/atomisp/pci/sh_css_mmu.c    |   1 -
- .../media/atomisp/pci/sh_css_param_dvs.c      |  21 +--
- .../media/atomisp/pci/sh_css_param_shading.c  |   3 +-
- .../staging/media/atomisp/pci/sh_css_params.c | 161 ++++++++--------
- .../staging/media/atomisp/pci/sh_css_params.h |  12 +-
- drivers/staging/media/atomisp/pci/sh_css_sp.c |  18 +-
- .../staging/media/atomisp/pci/sh_css_struct.h |   2 +-
- 64 files changed, 437 insertions(+), 1081 deletions(-)
- delete mode 100644 drivers/staging/media/atomisp/pci/hive_isp_css_include/memory_access/memory_access.h
- delete mode 100644 drivers/staging/media/atomisp/pci/hive_isp_css_include/memory_realloc.h
- delete mode 100644 drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.c
- delete mode 100644 drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.h
- delete mode 100644 drivers/staging/media/atomisp/pci/ia_css_memory_access.c
- delete mode 100644 drivers/staging/media/atomisp/pci/memory_realloc.c
-
+diff --git a/drivers/staging/media/atomisp/Makefile b/drivers/staging/media/atomisp/Makefile
+index c7a55d059425..b48eb7946a58 100644
+--- a/drivers/staging/media/atomisp/Makefile
++++ b/drivers/staging/media/atomisp/Makefile
+@@ -327,11 +327,6 @@ INCLUDES_cht += \
+ #	-I$(atomisp)/pci/css_2401_system/hrt/ \
+ #	-I$(atomisp)/pci/css_2401_system/hive_isp_css_2401_system_generated/ \
+ 
+-
+-ifeq ($(CONFIG_ION),y)
+-INCLUDES += -I$(srctree)/drivers/staging/android/ion
+-endif
+-
+ DEFINES := -DHRT_HW -DHRT_ISP_CSS_CUSTOM_HOST -DHRT_USE_VIR_ADDRS -D__HOST__
+ #DEFINES += -DUSE_DYNAMIC_BIN
+ #DEFINES += -DISP_POWER_GATING
+diff --git a/drivers/staging/media/atomisp/include/hmm/hmm_bo.h b/drivers/staging/media/atomisp/include/hmm/hmm_bo.h
+index f847d1de860e..7fcb93b6c0f5 100644
+--- a/drivers/staging/media/atomisp/include/hmm/hmm_bo.h
++++ b/drivers/staging/media/atomisp/include/hmm/hmm_bo.h
+@@ -77,9 +77,6 @@ enum hmm_bo_type {
+ 	HMM_BO_PRIVATE,
+ 	HMM_BO_SHARE,
+ 	HMM_BO_USER,
+-#ifdef CONFIG_ION
+-	HMM_BO_ION,
+-#endif
+ 	HMM_BO_LAST,
+ };
+ 
+@@ -111,9 +108,6 @@ struct hmm_bo_device {
+ 
+ 	/* list lock is used to protect the entire_bo_list */
+ 	spinlock_t	list_lock;
+-#ifdef CONFIG_ION
+-	struct ion_client	*iclient;
+-#endif
+ 	int flag;
+ 
+ 	/* linked list for entire buffer object */
+@@ -142,9 +136,6 @@ struct hmm_buffer_object {
+ 	struct hmm_page_object	*page_obj;	/* physical pages */
+ 	int		from_highmem;
+ 	int		mmap_count;
+-#ifdef CONFIG_ION
+-	struct ion_handle	*ihandle;
+-#endif
+ 	int		status;
+ 	int		mem_type;
+ 	void		*vmap_addr; /* kernel virtual address by vmap */
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_acc.c b/drivers/staging/media/atomisp/pci/atomisp_acc.c
+index 21337c23bfa8..bb1f60fab786 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_acc.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_acc.c
+@@ -355,7 +355,7 @@ int atomisp_acc_map(struct atomisp_sub_device *asd, struct atomisp_acc_map *map)
+ 		pgnr = DIV_ROUND_UP(map->length, PAGE_SIZE);
+ 		cssptr = hrt_isp_css_mm_alloc_user_ptr(map->length,
+ 						       map->user_ptr,
+-						       pgnr, HRT_USR_PTR,
++						       pgnr,
+ 						       (map->flags & ATOMISP_MAP_FLAG_CACHED));
+ 	} else {
+ 		/* Allocate private buffer. */
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+index 39400a8677aa..8aea90ecd508 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+@@ -1205,41 +1205,6 @@ static int atomisp_qbuf(struct file *file, void *fh, struct v4l2_buffer *buf)
+ 		}
+ 
+ 		attributes.pgnr = pgnr;
+-		attributes.type = HRT_USR_PTR;
+-#ifdef CONFIG_ION
+-		if (!atomisp_hw_is_isp2401) {
+-			if (buf->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_ION)
+-					attributes.type = HRT_USR_ION;
+-		} else {
+-			if (buf->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_ION) {
+-				attributes.type = HRT_USR_ION;
+-				if (asd->ion_dev_fd->val !=  ION_FD_UNSET) {
+-					dev_dbg(isp->dev, "ION buffer queued, share_fd=%lddev_fd=%d.\n",
+-						buf->m.userptr, asd->ion_dev_fd->val);
+-					/*
+-					* Make sure the shared fd we just got
+-					* from user space isn't larger than
+-					* the space we have for it.
+-					*/
+-					if ((buf->m.userptr &
+-					    (ATOMISP_ION_DEVICE_FD_MASK)) != 0) {
+-						dev_err(isp->dev,
+-							"Error: v4l2 buffer fd:0X%0lX > 0XFFFF.\n",
+-							buf->m.userptr);
+-						ret = -EINVAL;
+-						goto error;
+-					}
+-					buf->m.userptr |= asd->ion_dev_fd->val <<
+-							ATOMISP_ION_DEVICE_FD_OFFSET;
+-				} else {
+-					dev_err(isp->dev, "v4l2 buffer type is ION, \
+-							but no dev fd set from userspace.\n");
+-					ret = -EINVAL;
+-					goto error;
+-				}
+-			}
+-		}
+-#endif
+ 		ret = atomisp_css_frame_map(&handle, &frame_info,
+ 					    (void __user *)buf->m.userptr,
+ 					    0, &attributes);
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_subdev.c b/drivers/staging/media/atomisp/pci/atomisp_subdev.c
+index d3206ddf3b65..830aefad9312 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_subdev.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_subdev.c
+@@ -1223,11 +1223,6 @@ static int isp_subdev_init_entities(struct atomisp_sub_device *asd)
+ 		asd->select_isp_version = v4l2_ctrl_new_custom(&asd->ctrl_handler,
+ 							       &ctrl_select_isp_version,
+ 							       NULL);
+-#if 0 /* #ifdef CONFIG_ION */
+-		asd->ion_dev_fd = v4l2_ctrl_new_custom(&asd->ctrl_handler,
+-						       &ctrl_ion_dev_fd,
+-						       NULL);
+-#endif
+ 	}
+ 
+ 	/* Make controls visible on subdev as well. */
+diff --git a/drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.c b/drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.c
+index 236f27b50386..14e02fd76ddf 100644
+--- a/drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.c
++++ b/drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.c
+@@ -24,85 +24,32 @@
+ 
+ #define __page_align(size)	(((size) + (PAGE_SIZE - 1)) & (~(PAGE_SIZE - 1)))
+ 
+-static void __user *my_userptr;
+-static unsigned int my_num_pages;
+-static enum hrt_userptr_type my_usr_type;
+-
+-void hrt_isp_css_mm_set_user_ptr(void __user *userptr,
+-				 unsigned int num_pages,
+-				 enum hrt_userptr_type type)
+-{
+-	my_userptr = userptr;
+-	my_num_pages = num_pages;
+-	my_usr_type = type;
+-}
+-
+-static ia_css_ptr __hrt_isp_css_mm_alloc(size_t bytes,
+-	const void __user *userptr,
+-	unsigned int num_pages,
+-	enum hrt_userptr_type type,
+-	bool cached)
+-{
+-#ifdef CONFIG_ION
+-	if (type == HRT_USR_ION)
+-		return hmm_alloc(bytes, HMM_BO_ION, 0,
+-				 userptr, cached);
+-
+-#endif
+-	if (type == HRT_USR_PTR) {
+-		if (!userptr)
+-			return hmm_alloc(bytes, HMM_BO_PRIVATE, 0,
+-					 NULL, cached);
+-		else {
+-			if (num_pages < ((__page_align(bytes)) >> PAGE_SHIFT))
+-				dev_err(atomisp_dev,
+-					"user space memory size is less than the expected size..\n");
+-			else if (num_pages > ((__page_align(bytes))
+-					      >> PAGE_SHIFT))
+-				dev_err(atomisp_dev,
+-					"user space memory size is large than the expected size..\n");
+-
+-			return hmm_alloc(bytes, HMM_BO_USER, 0,
+-					 userptr, cached);
+-		}
+-	} else {
+-		dev_err(atomisp_dev, "user ptr type is incorrect.\n");
+-		return 0;
+-	}
+-}
+-
+ ia_css_ptr hrt_isp_css_mm_alloc(size_t bytes)
+ {
+-	return __hrt_isp_css_mm_alloc(bytes, my_userptr,
+-				      my_num_pages, my_usr_type, false);
++	return hmm_alloc(bytes, HMM_BO_PRIVATE, 0, NULL, false);
+ }
+ 
+ ia_css_ptr hrt_isp_css_mm_alloc_user_ptr(size_t bytes,
+ 	const void __user *userptr,
+ 	unsigned int num_pages,
+-	enum hrt_userptr_type type,
+ 	bool cached)
+ {
+-	return __hrt_isp_css_mm_alloc(bytes, userptr, num_pages,
+-				      type, cached);
++	if (num_pages < ((__page_align(bytes)) >> PAGE_SHIFT))
++		dev_err(atomisp_dev,
++			"user space memory size is less than the expected size..\n");
++	else if (num_pages > ((__page_align(bytes))
++				>> PAGE_SHIFT))
++		dev_err(atomisp_dev,
++			"user space memory size is large than the expected size..\n");
++
++	return hmm_alloc(bytes, HMM_BO_USER, 0,
++			    userptr, cached);
+ }
+ 
+ ia_css_ptr hrt_isp_css_mm_alloc_cached(size_t bytes)
+ {
+-	if (!my_userptr)
+-		return hmm_alloc(bytes, HMM_BO_PRIVATE, 0, NULL,
++	return hmm_alloc(bytes, HMM_BO_PRIVATE, 0, NULL,
+ 				 HMM_CACHED);
+-	else {
+-		if (my_num_pages < ((__page_align(bytes)) >> PAGE_SHIFT))
+-			dev_err(atomisp_dev,
+-				"user space memory size is less than the expected size..\n");
+-		else if (my_num_pages > ((__page_align(bytes)) >> PAGE_SHIFT))
+-			dev_err(atomisp_dev,
+-				"user space memory size is large than the expected size..\n");
+-
+-		return hmm_alloc(bytes, HMM_BO_USER, 0,
+-				 my_userptr, HMM_CACHED);
+-	}
+ }
+ 
+ ia_css_ptr hrt_isp_css_mm_calloc(size_t bytes)
+diff --git a/drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.h b/drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.h
+index 818ecf90b1f5..e4c90c268c42 100644
+--- a/drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.h
++++ b/drivers/staging/media/atomisp/pci/hrt/hive_isp_css_mm_hrt.h
+@@ -25,27 +25,15 @@
+ 
+ #define HRT_BUF_FLAG_CACHED BIT(0)
+ 
+-enum hrt_userptr_type {
+-	HRT_USR_PTR = 0,
+-#ifdef CONFIG_ION
+-	HRT_USR_ION,
+-#endif
+-};
+-
+ struct hrt_userbuffer_attr {
+-	enum hrt_userptr_type	type;
+ 	unsigned int		pgnr;
+ };
+ 
+-void hrt_isp_css_mm_set_user_ptr(void __user *userptr,
+-				 unsigned int num_pages, enum hrt_userptr_type);
+-
+ /* Allocate memory, returns a virtual address */
+ ia_css_ptr hrt_isp_css_mm_alloc(size_t bytes);
+ ia_css_ptr hrt_isp_css_mm_alloc_user_ptr(size_t bytes,
+ 	const void __user *userptr,
+ 	unsigned int num_pages,
+-	enum hrt_userptr_type,
+ 	bool cached);
+ ia_css_ptr hrt_isp_css_mm_alloc_cached(size_t bytes);
+ 
+diff --git a/drivers/staging/media/atomisp/pci/ia_css_memory_access.c b/drivers/staging/media/atomisp/pci/ia_css_memory_access.c
+index 8d1356047448..6084d54acac3 100644
+--- a/drivers/staging/media/atomisp/pci/ia_css_memory_access.c
++++ b/drivers/staging/media/atomisp/pci/ia_css_memory_access.c
+@@ -80,6 +80,5 @@ mmgr_mmap(const void __user *ptr, const size_t size,
+ 
+ 	return hrt_isp_css_mm_alloc_user_ptr(
+ 		   size, ptr, userbuffer_attr->pgnr,
+-		   userbuffer_attr->type,
+ 		   attribute & HRT_BUF_FLAG_CACHED);
+ }
 -- 
 2.26.2
-
 
 _______________________________________________
 devel mailing list
