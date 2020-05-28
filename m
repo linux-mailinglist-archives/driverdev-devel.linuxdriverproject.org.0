@@ -2,59 +2,68 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B7071E51E8
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 May 2020 01:40:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A57C1E52B5
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 May 2020 03:12:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC66988AA6;
-	Wed, 27 May 2020 23:40:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D04838890A;
+	Thu, 28 May 2020 01:12:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d577LYMMhjQE; Wed, 27 May 2020 23:40:50 +0000 (UTC)
+	with ESMTP id 2hnpofESPs6D; Thu, 28 May 2020 01:12:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 42050889D5;
-	Wed, 27 May 2020 23:40:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C58978890E;
+	Thu, 28 May 2020 01:12:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C93A71BF392
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 23:40:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 697931BF47F
+ for <devel@linuxdriverproject.org>; Thu, 28 May 2020 01:12:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C063D20396
- for <devel@linuxdriverproject.org>; Wed, 27 May 2020 23:40:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6659186F06
+ for <devel@linuxdriverproject.org>; Thu, 28 May 2020 01:12:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sIIoN7zAp0zf for <devel@linuxdriverproject.org>;
- Wed, 27 May 2020 23:40:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 94FF32014A
- for <devel@driverdev.osuosl.org>; Wed, 27 May 2020 23:40:46 +0000 (UTC)
-IronPort-SDR: a+SBRO6JNo893tHkIhIomyYTlS2y5TYn/OI/wacW2OmZgpvT+AH8bFRdOFok+so6tNk0YsZOQp
- GOB3ncUvMGUw==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 May 2020 16:40:45 -0700
-IronPort-SDR: 3J3XfP6b2a6O+ZcvLMOEN0i6qhM0Acu0oFwXOONOyu+7WTrg4r08kM6MGMmWTKhLIW4qcIW3h5
- CTqZRCuZGDdA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,442,1583222400"; d="scan'208";a="376183547"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 27 May 2020 16:40:44 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1je5f9-000IGy-BV; Thu, 28 May 2020 07:40:43 +0800
-Date: Thu, 28 May 2020 07:40:06 +0800
-From: kbuild test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-next] BUILD SUCCESS
- 46d26819a5056f4831649c5887ad5c71a16d86f7
-Message-ID: <5ecefa56.uy48ynudI+xce34M%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id L3ssBJh2tJAK for <devel@linuxdriverproject.org>;
+ Thu, 28 May 2020 01:12:21 +0000 (UTC)
+X-Greylist: delayed 00:10:02 by SQLgrey-1.7.6
+Received: from sonic309-26.consmr.mail.ir2.yahoo.com
+ (sonic309-26.consmr.mail.ir2.yahoo.com [77.238.179.84])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BB63686E5E
+ for <devel@linuxdriverproject.org>; Thu, 28 May 2020 01:12:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1590628338; bh=Do4PB9n5L/oUYayFqH6Fq6gAAnMVW+U6x2Q2dpapzLI=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=iEXQVix8x9ZwvOzXPqOLaEQwEWaDk/mjmZirGmFVuk7r1Dmd9Txw0lVxgHrisMtCz+0SiYdUwNlLBQY/Go1tD1WlMEL/EtP9gXTvqfQaN10i8Cg9WEcKxhLA0VOrqJyQMyY+YC5ZrpYzUGQqJNKcuzW7I4TxTUlYx0MIGCrMk6QbT/EEplVesnd6cGdniT0ACBIVBgMH5F3wpuh4ylNzenhEW57V6hv11DNaQFzWvwKWbUhyewKxisCssV49b4KnR+/gGYCHom8cbtcK9AhqvXRZp0J//V93hpC1ZbqrsB0OAnV8XYS22UivE8Jml/DiW7B9t3a5vYc646kuh/YZ5w==
+X-YMail-OSG: 1azHipYVM1l3vP7lr6bP.RjbINbJYsxRNBxxf7G4F.84fxBWBiAiIx3V1Dt4f6y
+ pyz1YOtqa.IaqsJN8I.qQM5EWlPvjqbkSGVB5dapJQY.Dh4SFq7NevMirljt4mGAMnsptfj5YoF.
+ L2N3mRcbNdwwwmkh8gwY3rIQ9kM66uZjZJXbvKWPW6yo2ZKlO8.sS4WbOMCkDKJVqKDAj4_Us2oN
+ rEexdGJAydXysNbOZ3a1tis5FbMjOAbSZX6zoZA19GnLrJ7cBrt0Q2EvmHTfAiTMoChHKqi.Ombp
+ oHf7cYi8rzEpsWHvERIaBWG1OJPyYtQ_qOYLg.QW7rrijujf8a91OjjQZQfp8BZu9fJt4hPlLIbS
+ TpmVNv.4j6WKSeNrXQGXxhiLNtq_OwiqwXO9RjH_5lTbptYOvw039mWdIfnAj6_0HJFplnqRsR28
+ 1N73U.wJ_5dxpQOyz1ka1TOr1lgKuKbQy0u5FxZt9e2JGuDAUQx6CaUmqxTF8epGg7FottltCWGe
+ KTeePaMxH1LL6Czhuj3JUES4oBGl12ZLyb43pb_cfxpXbQWfzijCpATOBzezJTlo8E8XleqsI3ow
+ kEN_aWglp..pzSUqIq5VVKIdFw.MeQyWSyTgLemw8yBqwK2r6KpoBpzjVzn_xnYTfEImewdmQNey
+ hi0VYAC2lBYgOug1ZJuJ.fkm7ikrXwQjZiR9PjfUfbp39nd7L6u6JyXAYkhKhx28LyASJfSY3UsA
+ CGeBGh9zZKPvcsqLOmD.FT6ibQ3jrlfvTM_tYAD6E9hJaFQulS8WcZPf1xp4LWyIot0JtzF.YsTW
+ aZrWE1j1Urt_h37YbJ6N6I1BXp9rrM74_HKqbNbOv_xzI6P3gbnzaQ.GslHD2NIlhfkE70MLXfSC
+ daBgCUnQVmZ.Px.F6zbiV2z4.7uSvm9kozYzH25XQyFpRYSaO.sRiTltD8ssg8lS74OOW9hK_ZQD
+ W04mltYo_QHMdpAFPOWszEDvSSlECaNMhXBnvibaJlXADqubWQmF1NP6gcgLlEpTjCJYIByygFIT
+ 1s99rbukwNjChuQzac_E4OMED_qDbhwg3MakP.xuoAHAe_OwDahBYEoXkAe8yqmZPkIN.m9xGxYq
+ g1tiV3mCG_YyiRDPnrh_TkCizpcsxBz07AEDpo7IZZGisT6_fPgYKJtad8KFfOtVcw89fKW0gzk1
+ 2dmmcfCHhWxex1jTqTp9aZOOz2Tf_avr6.NIzKekxAo72.Yte7sbTm4paq3pnTk3OSIolQdqlitw
+ 2lVSs9_fyJ95WRCEK1MH4ojqNheNGuuClMtOBfJmWd2srm1LejJPo5JExaX_d9F9K8f96
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic309.consmr.mail.ir2.yahoo.com with HTTP; Thu, 28 May 2020 01:12:18 +0000
+Date: Thu, 28 May 2020 00:52:08 +0000 (UTC)
+From: Abderazack zebdani <Abdurazackzebdani@yandex.com>
+Message-ID: <1946617426.1218564.1590627128308@mail.yahoo.com>
+Subject: Greetings My Dear Friend,
 MIME-Version: 1.0
+References: <1946617426.1218564.1590627128308.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.15959 YMailNodin Mozilla/5.0 (Windows NT 6.1;
+ rv:76.0) Gecko/20100101 Firefox/76.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,118 +76,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: mohammedbenanni@yandex.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-next
-branch HEAD: 46d26819a5056f4831649c5887ad5c71a16d86f7  software node: implement software_node_unregister()
-
-elapsed time: 1524m
-
-configs tested: 90
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm                                 defconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm                              allyesconfig
-sh                           se7724_defconfig
-arm                            mmp2_defconfig
-mips                        maltaup_defconfig
-arm                        realview_defconfig
-arm                      footbridge_defconfig
-arm                      jornada720_defconfig
-mips                     loongson1c_defconfig
-mips                    maltaup_xpa_defconfig
-arm                           tegra_defconfig
-mips                            e55_defconfig
-arc                     nsimosci_hs_defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                              defconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-arc                                 defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-arc                              allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                              allnoconfig
-s390                                defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                                allnoconfig
-um                               allmodconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgoKR3JlZXRpbmdzIE15IERlYXIgRnJpZW5kLAoKQmVmb3JlIEkgaW50cm9kdWNlIG15c2VsZiwg
+SSB3aXNoIHRvIGluZm9ybSB5b3UgdGhhdCB0aGlzIGxldHRlciBpcyBub3QgYSBob2F4IG1haWwg
+YW5kIEkgdXJnZSB5b3UgdG8gdHJlYXQgaXQgc2VyaW91cy5UaGlzIGxldHRlciBtdXN0IGNvbWUg
+dG8geW91IGFzIGEgYmlnIHN1cnByaXNlLCBidXQgSSBiZWxpZXZlIGl0IGlzIG9ubHkgYSBkYXkg
+dGhhdCBwZW9wbGUgbWVldCBhbmQgYmVjb21lIGdyZWF0IGZyaWVuZHMgYW5kIGJ1c2luZXNzIHBh
+cnRuZXJzLiBQbGVhc2UgSSB3YW50IHlvdSB0byByZWFkIHRoaXMgbGV0dGVyIHZlcnkgY2FyZWZ1
+bGx5IGFuZCBJIG11c3QgYXBvbG9naXplIGZvciBiYXJnaW5nIHRoaXMgbWVzc2FnZSBpbnRvIHlv
+dXIgbWFpbCBib3ggd2l0aG91dCBhbnkgZm9ybWFsIGludHJvZHVjdGlvbiBkdWUgdG8gdGhlIHVy
+Z2VuY3kgYW5kIGNvbmZpZGVudGlhbGl0eSBvZiB0aGlzIGJ1c2luZXNzIGFuZCBJIGtub3cgdGhh
+dCB0aGlzIG1lc3NhZ2Ugd2lsbCBjb21lIHRvIHlvdSBhcyBhIHN1cnByaXNlLiBQbGVhc2UgdGhp
+cyBpcyBub3QgYSBqb2tlIGFuZCBJIHdpbGwgbm90IGxpa2UgeW91IHRvIGpva2Ugd2l0aCBpdCBv
+ayxXaXRoIGR1ZSByZXNwZWN0IHRvIHlvdXIgcGVyc29uIGFuZCBtdWNoIHNpbmNlcml0eSBvZiBw
+dXJwb3NlLCBJIG1ha2UgdGhpcyBjb250YWN0IHdpdGggeW91IGFzIEkgYmVsaWV2ZSB0aGF0IHlv
+dSBjYW4gYmUgb2YgZ3JlYXQgYXNzaXN0YW5jZSB0byBtZS4gTXkgbmFtZSBpcyBNci5BYmRlcmF6
+YWNremViZGFuaSwgZnJvbSBCdXJraW5hIEZhc28sIFdlc3QgQWZyaWNhLiBJIHdvcmsgaW4gQmFu
+ayBPZiBBZnJpY2EgKEJPQSkgYXMgdGVsZXggbWFuYWdlciwgcGxlYXNlIHNlZSB0aGlzIGFzIGEg
+Y29uZmlkZW50aWFsIG1lc3NhZ2UgYW5kIGRvIG5vdCByZXZlYWwgaXQgdG8gYW5vdGhlciBwZXJz
+b24gYW5kIGxldCBtZSBrbm93IHdoZXRoZXIgeW91IGNhbiBiZSBvZiBhc3Npc3RhbmNlIHJlZ2Fy
+ZGluZyBteSBwcm9wb3NhbCBiZWxvdyBiZWNhdXNlIGl0IGlzIHRvcCBzZWNyZXQuCgpJIGFtIGFi
+b3V0IHRvIHJldGlyZSBmcm9tIGFjdGl2ZSBCYW5raW5nIHNlcnZpY2UgdG8gc3RhcnQgYSBuZXcg
+bGlmZSBidXQgSSBhbSBza2VwdGljYWwgdG8gcmV2ZWFsIHRoaXMgcGFydGljdWxhciBzZWNyZXQg
+dG8gYSBzdHJhbmdlci4gWW91IG11c3QgYXNzdXJlIG1lIHRoYXQgZXZlcnl0aGluZyB3aWxsIGJl
+IGhhbmRsZWQgY29uZmlkZW50aWFsbHkgYmVjYXVzZSB3ZSBhcmUgbm90IGdvaW5nIHRvIHN1ZmZl
+ciBhZ2FpbiBpbiBsaWZlLiBJdCBoYXMgYmVlbiAxMCB5ZWFycyBub3cgdGhhdCBtb3N0IG9mIHRo
+ZSBncmVlZHkgQWZyaWNhbiBQb2xpdGljaWFucyB1c2VkIG91ciBiYW5rIHRvIGxhdW5kZXIgbW9u
+ZXkgb3ZlcnNlYXMgdGhyb3VnaCB0aGUgaGVscCBvZiB0aGVpciBQb2xpdGljYWwgYWR2aXNlcnMu
+IE1vc3Qgb2YgdGhlIGZ1bmRzIHdoaWNoIHRoZXkgdHJhbnNmZXJyZWQgb3V0IG9mIHRoZSBzaG9y
+ZXMgb2YgQWZyaWNhIHdlcmUgZ29sZCBhbmQgb2lsIG1vbmV5IHRoYXQgd2FzIHN1cHBvc2VkIHRv
+IGhhdmUgYmVlbiB1c2VkIHRvIGRldmVsb3AgdGhlIGNvbnRpbmVudC4gVGhlaXIgUG9saXRpY2Fs
+IGFkdmlzZXJzIGFsd2F5cyBpbmZsYXRlZCB0aGUgYW1vdW50cyBiZWZvcmUgdHJhbnNmZXJyaW5n
+IHRvIGZvcmVpZ24gYWNjb3VudHMsIHNvIEkgYWxzbyB1c2VkIHRoZSBvcHBvcnR1bml0eSB0byBk
+aXZlcnQgcGFydCBvZiB0aGUgZnVuZHMgaGVuY2UgSSBhbSBhd2FyZSB0aGF0IHRoZXJlIGlzIG5v
+IG9mZmljaWFsIHRyYWNlIG9mIGhvdyBtdWNoIHdhcyB0cmFuc2ZlcnJlZCBhcyBhbGwgdGhlIGFj
+Y291bnRzIHVzZWQgZm9yIHN1Y2ggdHJhbnNmZXJzIHdlcmUgYmVpbmcgY2xvc2VkIGFmdGVyIHRy
+YW5zZmVyLiBJIGFjdGVkIGFzIHRoZSBCYW5rIE9mZmljZXIgdG8gbW9zdCBvZiB0aGUgcG9saXRp
+Y2lhbnMgYW5kIHdoZW4gSSBkaXNjb3ZlcmVkIHRoYXQgdGhleSB3ZXJlIHVzaW5nIG1lIHRvIHN1
+Y2NlZWQgaW4gdGhlaXIgZ3JlZWR5IGFjdDsgSSBhbHNvIGNsZWFuZWQgc29tZSBvZiB0aGVpciBi
+YW5raW5nIHJlY29yZHMgZnJvbSB0aGUgQmFuayBmaWxlcyBhbmQgbm8gb25lIGNhcmVkIHRvIGFz
+ayBtZSBiZWNhdXNlIHRoZSBtb25leSB3YXMgdG9vIG11Y2ggZm9yIHRoZW0gdG8gY29udHJvbC4g
+VGhleSBsYXVuZGVyZWQgb3ZlciAkNWJpbGxpb24gRG9sbGFycyBkdXJpbmcgdGhlIHByb2Nlc3Mu
+CgpCZWZvcmUgSSBzZW5kIHRoaXMgbWVzc2FnZSB0byB5b3UsIEkgaGF2ZSBhbHJlYWR5IGRpdmVy
+dGVkICgkMTAuNW1pbGxpb24gRG9sbGFycykgdG8gYW4gZXNjcm93IGFjY291bnQgYmVsb25naW5n
+IHRvIG5vIG9uZSBpbiB0aGUgYmFuay4gVGhlIGJhbmsgaXMgYW54aW91cyBub3cgdG8ga25vdyB3
+aG8gdGhlIGJlbmVmaWNpYXJ5IHRvIHRoZSBmdW5kcyBpcyBiZWNhdXNlIHRoZXkgaGF2ZSBtYWRl
+IGEgbG90IG9mIHByb2ZpdHMgd2l0aCB0aGUgZnVuZHMuIEl0IGlzIG1vcmUgdGhhbiBFaWdodCB5
+ZWFycyBub3cgYW5kIG1vc3Qgb2YgdGhlIHBvbGl0aWNpYW5zIGFyZSBubyBsb25nZXIgdXNpbmcg
+b3VyIGJhbmsgdG8gdHJhbnNmZXIgZnVuZHMgb3ZlcnNlYXMuIFRoZSAoJDEwLjVtaWxsaW9uIERv
+bGxhcnMpIGhhcyBiZWVuIGxheWluZyB3YXN0ZSBpbiBvdXIgYmFuayBhbmQgSSBkb27igJl0IHdh
+bnQgdG8gcmV0aXJlIGZyb20gdGhlIGJhbmsgd2l0aG91dCB0cmFuc2ZlcnJpbmcgdGhlIGZ1bmRz
+IHRvIGEgZm9yZWlnbiBhY2NvdW50IHRvIGVuYWJsZSBtZSBzaGFyZSB0aGUgcHJvY2VlZHMgd2l0
+aCB0aGUgcmVjZWl2ZXIgKGEgZm9yZWlnbmVyKS4gVGhlIG1vbmV5IHdpbGwgYmUgc2hhcmVkIDYw
+JSBmb3IgbWUgYW5kIDQwJSBmb3IgeW91LiBUaGVyZSBpcyBubyBvbmUgY29taW5nIHRvIGFzayB5
+b3UgYWJvdXQgdGhlIGZ1bmRzIGJlY2F1c2UgSSBzZWN1cmVkIGV2ZXJ5dGhpbmcuIEkgb25seSB3
+YW50IHlvdSB0byBhc3Npc3QgbWUgYnkgcHJvdmlkaW5nIGEgcmVsaWFibGUgYmFuayBhY2NvdW50
+IHdoZXJlIHRoZSBmdW5kcyBjYW4gYmUgdHJhbnNmZXJyZWQuCgpZb3UgYXJlIG5vdCB0byBmYWNl
+IGFueSBkaWZmaWN1bHRpZXMgb3IgbGVnYWwgaW1wbGljYXRpb25zIGFzIEkgYW0gZ29pbmcgdG8g
+aGFuZGxlIHRoZSB0cmFuc2ZlciBwZXJzb25hbGx5LiBJZiB5b3UgYXJlIGNhcGFibGUgb2YgcmVj
+ZWl2aW5nIHRoZSBmdW5kcywgZG8gbGV0IG1lIGtub3cgaW1tZWRpYXRlbHkgdG8gZW5hYmxlIG1l
+IGdpdmUgeW91IGEgZGV0YWlsZWQgaW5mb3JtYXRpb24gb24gd2hhdCB0byBkby4gRm9yIG1lLCBJ
+IGhhdmUgbm90IHN0b2xlbiB0aGUgbW9uZXkgZnJvbSBhbnlvbmUgYmVjYXVzZSB0aGUgb3RoZXIg
+cGVvcGxlIHRoYXQgdG9vayB0aGUgd2hvbGUgbW9uZXkgZGlkIG5vdCBmYWNlIGFueSBwcm9ibGVt
+cy4gVGhpcyBpcyBteSBjaGFuY2UgdG8gZ3JhYiBteSBvd24gbGlmZSBvcHBvcnR1bml0eSBidXQg
+eW91IG11c3Qga2VlcCB0aGUgZGV0YWlscyBvZiB0aGUgZnVuZHMgc2VjcmV0IHRvIGF2b2lkIGFu
+eSBsZWFrYWdlcyBhcyBubyBvbmUgaW4gdGhlIGJhbmsga25vd3MgYWJvdXQgbXkgcGxhbnMuUGxl
+YXNlIGdldCBiYWNrIHRvIG1lIGlmIHlvdSBhcmUgaW50ZXJlc3RlZCBhbmQgY2FwYWJsZSB0byBo
+YW5kbGUgdGhpcyBwcm9qZWN0LCBJIHNoYWxsIGludGltYXRlIHlvdSBvbiB3aGF0IHRvIGRvIHdo
+ZW4gSSBoZWFyIGZyb20geW91ciBjb25maXJtYXRpb24gYW5kIGFjY2VwdGFuY2UuSWYgeW91IGFy
+ZSBjYXBhYmxlIG9mIGJlaW5nIG15IHRydXN0ZWQgYXNzb2NpYXRlLCBkbyBkZWNsYXJlIHlvdXIg
+Y29uc2VudCB0byBtZSBJIGFtIGxvb2tpbmcgZm9yd2FyZCB0byBoZWFyIGZyb20geW91IGltbWVk
+aWF0ZWx5IGZvciBmdXJ0aGVyIGluZm9ybWF0aW9uLgoKVGhhbmtzIHdpdGggbXkgYmVzdCByZWdh
+cmRzLgpNci5BYmRlcmF6YWNrIHplYmRhbmkuClRlbGV4IE1hbmFnZXIKQmFuayBPZiBBZnJpY2Eg
+KEJPQSkKQnVya2luYSBGYXNvLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9y
+ZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcml2ZXJkZXYtZGV2ZWwK
