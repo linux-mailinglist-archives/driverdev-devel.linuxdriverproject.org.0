@@ -1,57 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B26931E5750
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 May 2020 08:14:35 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6147020529;
-	Thu, 28 May 2020 06:14:33 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zT34+23S3udp; Thu, 28 May 2020 06:14:31 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 08DBC2078D;
-	Thu, 28 May 2020 06:14:29 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A66051BF27F
- for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:26 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE0DD1E5762
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 May 2020 08:14:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A3ACD86F35
- for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 68B4186F96;
+	Thu, 28 May 2020 06:14:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JEZnClB5WiOJ; Thu, 28 May 2020 06:14:54 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F373786D7B;
+	Thu, 28 May 2020 06:14:52 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BBDF11BF27F
+ for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id AB1AA20529
+ for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:31 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id t5y3w2PdTPO8 for <devel@linuxdriverproject.org>;
+ with ESMTP id uoYbgrWKnlQm for <devel@linuxdriverproject.org>;
  Thu, 28 May 2020 06:14:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4F10086F13
+ by silver.osuosl.org (Postfix) with ESMTPS id 5E2442046A
  for <devel@driverdev.osuosl.org>; Thu, 28 May 2020 06:14:26 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
  [95.90.213.197])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0BC7E21531;
+ by mail.kernel.org (Postfix) with ESMTPSA id 175C721548;
  Thu, 28 May 2020 06:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1590646466;
- bh=ZKvnU11AYCI4nr14Od48MkcRV6UFQGKSgsFvtzY9Xzo=;
+ bh=wIU4L8fcCAnFawFS/JHH3TeHXuSwoOH6ncEx3KzNzKo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Lhjwa0b16YpYAmcC4+PzODNoHUNCGunmtwLvMIWSFeR+l5O7f+ytrLEbBvgRtKeWI
- bzC4JfLVDrO9JdQ1igoLVQ4TUEusniyzD4KsOEz1MIIZ5Jlf9v8jBWsaF6WRbW1AtP
- uwxz1WJBN8s0tEJytO3i3au36IxARt4x0CBtxnis=
+ b=T/qtPvxl8+9ryvCQsEIR04LiXUn4RZQPIGlxf6RJuZnQ4puKNFYrConlYOzQ7ulLq
+ MPmR1fUKoT7aoZdV18wj3UmVJMGNQNvYmmyKqKgDnnddy76gv2/165GVNELqvmNU7s
+ zB6tb3Vsn7o1LyJ39YaS5nz1oDtkokkeHBUQDz3k=
 Received: from mchehab by mail.kernel.org with local (Exim 4.93)
  (envelope-from <mchehab@kernel.org>)
- id 1jeBo8-000VHg-1t; Thu, 28 May 2020 08:14:24 +0200
+ id 1jeBo8-000VHk-2w; Thu, 28 May 2020 08:14:24 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH 09/20] media: atomisp: hmm_bo: untag user pointers
-Date: Thu, 28 May 2020 08:14:09 +0200
-Message-Id: <393aa7e874d454fe1509393e9544f13767a720ee.1590646166.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 10/20] media: atomisp: add debug message to help debugging hmm
+ code
+Date: Thu, 28 May 2020 08:14:10 +0200
+Message-Id: <a4b9ab6712e830e101ffa0f16c8bfe933db77bac.1590646166.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1590646166.git.mchehab+huawei@kernel.org>
 References: <cover.1590646166.git.mchehab+huawei@kernel.org>
@@ -76,29 +77,32 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The kernel ABI was extended to allow pass tagged user pointers.
+The hmm code is partially based on a fork from 3.10 code,
+and has bugs.
 
-Untag the pointers in this function.
+Add debug there to help tracking what happens there.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/media/atomisp/pci/hmm/hmm_bo.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/staging/media/atomisp/pci/hmm/hmm_bo.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c b/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-index 492b76c29490..6fce8c95be1d 100644
+index 6fce8c95be1d..b6dcd246d7af 100644
 --- a/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
 +++ b/drivers/staging/media/atomisp/pci/hmm/hmm_bo.c
-@@ -997,6 +997,9 @@ static int alloc_user_pages(struct hmm_buffer_object *bo,
- 	 * Handle frame buffer allocated in other kerenl space driver
- 	 * and map to user space
- 	 */
+@@ -1015,6 +1015,11 @@ static int alloc_user_pages(struct hmm_buffer_object *bo,
+ 		bo->mem_type = HMM_BO_MEM_TYPE_USER;
+ 	}
+ 
++	dev_dbg(atomisp_dev, "%s: %d %s pages were allocated as 0x%08x\n",
++		__func__,
++		bo->pgnr,
++		bo->mem_type == HMM_BO_MEM_TYPE_USER ? "user" : "pfn", page_nr);
 +
-+	userptr = untagged_addr(userptr);
-+
- 	if (vma->vm_flags & (VM_IO | VM_PFNMAP)) {
- 		page_nr = get_pfnmap_pages(current, current->mm,
- 					   (unsigned long)userptr,
+ 	/* can be written by caller, not forced */
+ 	if (page_nr != bo->pgnr) {
+ 		dev_err(atomisp_dev,
 -- 
 2.26.2
 
