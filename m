@@ -2,56 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A33061E574F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 May 2020 08:14:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 02A461E5753
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 May 2020 08:14:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2092E88ADA;
-	Thu, 28 May 2020 06:14:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F09E488B00;
+	Thu, 28 May 2020 06:14:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9kvtkkqG0pFr; Thu, 28 May 2020 06:14:32 +0000 (UTC)
+	with ESMTP id EpLAVZgt9lux; Thu, 28 May 2020 06:14:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 92AFC888A4;
-	Thu, 28 May 2020 06:14:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 653A688906;
+	Thu, 28 May 2020 06:14:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1EAC31BF27F
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 45B401BF9B9
  for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1C85086F13
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4346F88911
  for <devel@linuxdriverproject.org>; Thu, 28 May 2020 06:14:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cNYSAtACmAie for <devel@linuxdriverproject.org>;
+ with ESMTP id epir3r9DS9Sg for <devel@linuxdriverproject.org>;
  Thu, 28 May 2020 06:14:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A12E686F33
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A70418890C
  for <devel@driverdev.osuosl.org>; Thu, 28 May 2020 06:14:26 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
  [95.90.213.197])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 637BE21789;
+ by mail.kernel.org (Postfix) with ESMTPSA id 68FD0217D9;
  Thu, 28 May 2020 06:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1590646466;
- bh=FFacg2LI3B8uvGksofjyggRrq/IHXFJRTIjx2hOCKbk=;
+ bh=uBy5kxUajtC2nsXNNqnEPQCQYgSHTgqmWl9q6BG1w+c=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SPtksYLIxkSgYa61xmec6R6qmo8mKlZLvBTBAv4/HgnCHCZ2p7YfizKGuTpHuDMKd
- uAyVYBr5992J/wYNsokbG1ZT9QnD8Rfp/omhjqTVZOZdYoKgmMbhhvYxHP+ftNNs16
- /M4Hg2zaljErYIR7btNumiyuMgTTxO5eTidlrsj0=
+ b=BWQrQtVZR6RADZaCAqyFRXUXcBrR307Xicqm2veaEjsf1d5XQyWcfZ2WVNQ5YMgQY
+ 0arNolYeNNWB5ReY/C8etab0VjcRrGnTuq0GYLCWc/Xb0wv42FMYuqW+aeP/73KMhW
+ sGV553fNtmGziZ2E67nlA+LJPB+3g9WYBj9s69mM=
 Received: from mchehab by mail.kernel.org with local (Exim 4.93)
  (envelope-from <mchehab@kernel.org>)
- id 1jeBo8-000VIJ-BS; Thu, 28 May 2020 08:14:24 +0200
+ id 1jeBo8-000VIO-E3; Thu, 28 May 2020 08:14:24 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH 17/20] media: atomisp: add debug functions for received events
-Date: Thu, 28 May 2020 08:14:17 +0200
-Message-Id: <6c48944c0e456c58f0bf42b6ec0a7c360719e6b8.1590646166.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 18/20] media: atomisp: add more comments about frame allocation
+Date: Thu, 28 May 2020 08:14:18 +0200
+Message-Id: <bf30f5f87766059bbb5afeeb55ccdeba8a0211fd.1590646166.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1590646166.git.mchehab+huawei@kernel.org>
 References: <cover.1590646166.git.mchehab+huawei@kernel.org>
@@ -76,83 +76,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-For debugging purposes, it helps to know what event
-was actually received.
+The frame allocation logic happens differently for userptr
+or normal mmap. On a quick look, this sounded to be unbalanced,
+but the logic should actually work for both cases.
+
+Add an extra comment to reflect it.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/media/atomisp/pci/atomisp_compat_css20.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/staging/media/atomisp/pci/atomisp_ioctl.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c b/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c
-index 5718010a0bf6..f7c3fdd5f670 100644
---- a/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c
-@@ -4523,6 +4523,7 @@ int atomisp_css_isr_thread(struct atomisp_device *isp,
- 		atomisp_css_temp_pipe_to_pipe_id(asd, &current_event);
- 		switch (current_event.event.type) {
- 		case IA_CSS_EVENT_TYPE_OUTPUT_FRAME_DONE:
-+			dev_dbg(isp->dev, "event: Output frame done");
- 			frame_done_found[asd->index] = true;
- 			atomisp_buf_done(asd, 0, IA_CSS_BUFFER_TYPE_OUTPUT_FRAME,
- 					 current_event.pipe, true, stream_id);
-@@ -4531,6 +4532,7 @@ int atomisp_css_isr_thread(struct atomisp_device *isp,
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+index 8783d4b59f6d..765e1a8c31fa 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+@@ -1052,7 +1052,7 @@ int __atomisp_reqbufs(struct file *file, void *fh,
+ 	atomisp_alloc_css_stat_bufs(asd, stream_id);
  
- 			break;
- 		case IA_CSS_EVENT_TYPE_SECOND_OUTPUT_FRAME_DONE:
-+			dev_dbg(isp->dev, "event: Second output frame done");
- 			frame_done_found[asd->index] = true;
- 			atomisp_buf_done(asd, 0, IA_CSS_BUFFER_TYPE_SEC_OUTPUT_FRAME,
- 					 current_event.pipe, true, stream_id);
-@@ -4539,18 +4541,21 @@ int atomisp_css_isr_thread(struct atomisp_device *isp,
+ 	/*
+-	 * for user pointer type, buffers are not really allcated here,
++	 * for user pointer type, buffers are not really allocated here,
+ 	 * buffers are setup in QBUF operation through v4l2_buffer structure
+ 	 */
+ 	if (req->memory == V4L2_MEMORY_USERPTR)
+@@ -1225,6 +1225,10 @@ static int atomisp_qbuf(struct file *file, void *fh, struct v4l2_buffer *buf)
+ 		buf->flags |= V4L2_BUF_FLAG_MAPPED;
+ 		buf->flags |= V4L2_BUF_FLAG_QUEUED;
+ 		buf->flags &= ~V4L2_BUF_FLAG_DONE;
++
++		/*
++		 * For mmap, frames were allocated at request buffers
++		 */
+ 	}
  
- 			break;
- 		case IA_CSS_EVENT_TYPE_3A_STATISTICS_DONE:
-+			dev_dbg(isp->dev, "event: 3A stats frame done");
- 			atomisp_buf_done(asd, 0,
- 					 IA_CSS_BUFFER_TYPE_3A_STATISTICS,
- 					 current_event.pipe,
- 					 false, stream_id);
- 			break;
- 		case IA_CSS_EVENT_TYPE_METADATA_DONE:
-+			dev_dbg(isp->dev, "event: metadata frame done");
- 			atomisp_buf_done(asd, 0,
- 					 IA_CSS_BUFFER_TYPE_METADATA,
- 					 current_event.pipe,
- 					 false, stream_id);
- 			break;
- 		case IA_CSS_EVENT_TYPE_VF_OUTPUT_FRAME_DONE:
-+			dev_dbg(isp->dev, "event: VF output frame done");
- 			atomisp_buf_done(asd, 0,
- 					 IA_CSS_BUFFER_TYPE_VF_OUTPUT_FRAME,
- 					 current_event.pipe, true, stream_id);
-@@ -4559,6 +4564,7 @@ int atomisp_css_isr_thread(struct atomisp_device *isp,
- 
- 			break;
- 		case IA_CSS_EVENT_TYPE_SECOND_VF_OUTPUT_FRAME_DONE:
-+			dev_dbg(isp->dev, "event: second VF output frame done");
- 			atomisp_buf_done(asd, 0,
- 					 IA_CSS_BUFFER_TYPE_SEC_VF_OUTPUT_FRAME,
- 					 current_event.pipe, true, stream_id);
-@@ -4566,15 +4572,18 @@ int atomisp_css_isr_thread(struct atomisp_device *isp,
- 
- 			break;
- 		case IA_CSS_EVENT_TYPE_DIS_STATISTICS_DONE:
-+			dev_dbg(isp->dev, "event: dis stats frame done");
- 			atomisp_buf_done(asd, 0,
- 					 IA_CSS_BUFFER_TYPE_DIS_STATISTICS,
- 					 current_event.pipe,
- 					 false, stream_id);
- 			break;
- 		case IA_CSS_EVENT_TYPE_PIPELINE_DONE:
-+			dev_dbg(isp->dev, "event: pipeline done");
- 			css_pipe_done[asd->index] = true;
- 			break;
- 		case IA_CSS_EVENT_TYPE_ACC_STAGE_COMPLETE:
-+			dev_dbg(isp->dev, "event: acc stage done");
- 			atomisp_acc_done(asd, current_event.event.fw_handle);
- 			break;
- 		default:
+ done:
 -- 
 2.26.2
 
