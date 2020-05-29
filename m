@@ -1,108 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3D2B1E7CF4
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 May 2020 14:16:42 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2206B88473;
-	Fri, 29 May 2020 12:16:40 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tf5rOFQTu6oh; Fri, 29 May 2020 12:16:39 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AC70388498;
-	Fri, 29 May 2020 12:16:37 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BE8CD1BF2C7
- for <devel@linuxdriverproject.org>; Fri, 29 May 2020 12:16:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id EB1011E811D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 May 2020 17:02:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BB53F893A0
- for <devel@linuxdriverproject.org>; Fri, 29 May 2020 12:16:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 45B4F8883D;
+	Fri, 29 May 2020 15:02:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xEbbmJ5vlVjQ; Fri, 29 May 2020 15:02:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id A237988493;
+	Fri, 29 May 2020 15:02:07 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BBCDE1BF3CA
+ for <devel@linuxdriverproject.org>; Fri, 29 May 2020 15:01:58 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B843F86F0A
+ for <devel@linuxdriverproject.org>; Fri, 29 May 2020 15:01:58 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fcAb-Fqr76zO for <devel@linuxdriverproject.org>;
- Fri, 29 May 2020 12:16:21 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2047.outbound.protection.outlook.com [40.107.220.47])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1BDB689381
- for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 12:16:21 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ojbcsufxtbn1d/eCL4rfY4tBdh1IfHYmn67suBSMrm/fBgvBfJTHr6KSVdxoebivmyHvV/eSjuyG1XJ85taf4FauU0XR5KjLu7bvbfIXyA+iDIgQve73SAz1JjUL2EQm9rkS3CSRdd8Ox4CXcZrvRVVolAH2QBaBBzBM/aq5aNe6tfik4l/90txYnDX8t0zIh9WZPvRmYy+Gjt27Lq1Qs11PK7LisOzOP64aQ+ospADPsEvqC2bvW3N7Nq67SJT01cA09QkWP8wuqzDyxL2WxQZq892ZeHvRM63Z00VzURKTMmOpr0GV5v591w68AiyWQNl4k68wwXAXulYJzVBJPQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ncc4rr4btJgO8hnZufKIQBuXetY6zG5M1KWBLZTNeqA=;
- b=drDtDrTtI9V5mixvpC48wE88CxURUyyHBIw4blvfUcCG9G7dQtX0IX2JO2zSGTBwBiWpR5roaXzvrRt2Y66ss6zsGgnFTvD5iPcgOAl4v6DYq+7fqKaS1Ip+AtEraEOMjygWcDNz7x+mVEMApYFlrUT2W1fGFg79LrPwUNnssLCtuQ7HJ5Hd12b6OvcSgKQB7nIFWdNNLW13v2lkENHbkOfYzkDvDtu053v0LXOX+i9o4Eu0OKQW0tguGzTjbzsAJpkJI4OnZihfqK3SwSHYbcgPR43L47KahAL/Y5+2lAAIH90fL+1w6MHm11Bzo6l/LHzyf9+yLm1vrNWlFcU8Yw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ncc4rr4btJgO8hnZufKIQBuXetY6zG5M1KWBLZTNeqA=;
- b=dsSfl8Kpj6aHkJdSu6VcVxlN9WpehiMXQRqnVf7e40qVyaZjAfnxdGrUDEBO1DHErGFUCt0Iji+egF39J3QnuGropWKt9j9Eb+PQSoJKqcN6CTom0D5Yne4IXqCMjzyZv2GxbHwRev3g2kICEXGy2QF7rvfKQq9p6yDPZM6EQlU=
-Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
- header.d=none;driverdev.osuosl.org; dmarc=none action=none
- header.from=silabs.com;
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
- by SN6PR11MB2781.namprd11.prod.outlook.com (2603:10b6:805:62::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3045.19; Fri, 29 May
- 2020 12:16:20 +0000
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::c504:2d66:a8f7:2336]) by SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::c504:2d66:a8f7:2336%7]) with mapi id 15.20.3045.018; Fri, 29 May 2020
- 12:16:19 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: devel@driverdev.osuosl.org,
-	linux-wireless@vger.kernel.org
-Subject: [PATCH 2/2] staging: wfx: drop useless loop
-Date: Fri, 29 May 2020 14:16:03 +0200
-Message-Id: <20200529121603.1050891-2-Jerome.Pouiller@silabs.com>
+ with ESMTP id gBR42Biqw_QI for <devel@linuxdriverproject.org>;
+ Fri, 29 May 2020 15:01:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CD68C86EEE
+ for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 15:01:56 +0000 (UTC)
+Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
+ [95.90.213.197])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 753AA20776;
+ Fri, 29 May 2020 15:01:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1590764516;
+ bh=OkGr1wyY4tvroJ3UDFTTFl/XE5q2AgcowgjQvdCNFUY=;
+ h=From:To:Cc:Subject:Date:From;
+ b=L6+WZb5fsbnG1o1SSyv+j4PuZHaz/aPo97ofpBnjY40eU3mGBtHcXXCxoU2NQQD1f
+ 0uhBXQb+dvRBmpHlxXt8zVhHrctF4GEFU22OvFj6bUduLcHCiBfDRUVUONYkA64RyL
+ Xs7OQ/aNkArjHjXTPd650VlG+JywR8GgVNsoLqiI=
+Received: from mchehab by mail.kernel.org with local (Exim 4.93)
+ (envelope-from <mchehab@kernel.org>)
+ id 1jegWA-001c0A-2q; Fri, 29 May 2020 17:01:54 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: 
+Subject: [PATCH] media: atomisp: get rid of set_fs() dirty hacks
+Date: Fri, 29 May 2020 17:01:50 +0200
+Message-Id: <4b9033cb779d5efef4193ceb15f4614f9960a104.1590764497.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200529121603.1050891-1-Jerome.Pouiller@silabs.com>
-References: <20200529121603.1050891-1-Jerome.Pouiller@silabs.com>
-X-ClientProxiedBy: DM6PR06CA0051.namprd06.prod.outlook.com
- (2603:10b6:5:54::28) To SN6PR11MB2718.namprd11.prod.outlook.com
- (2603:10b6:805:63::18)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pc-42.silabs.com (2a01:e35:2435:66a0:544b:f17b:7ae8:fb7) by
- DM6PR06CA0051.namprd06.prod.outlook.com (2603:10b6:5:54::28) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3045.19 via Frontend Transport; Fri, 29 May 2020 12:16:18 +0000
-X-Mailer: git-send-email 2.26.2
-X-Originating-IP: [2a01:e35:2435:66a0:544b:f17b:7ae8:fb7]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 80edc95c-0eea-42a6-45fb-08d803ca1822
-X-MS-TrafficTypeDiagnostic: SN6PR11MB2781:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <SN6PR11MB2781542E49561D38717674D4938F0@SN6PR11MB2781.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:5236;
-X-Forefront-PRVS: 04180B6720
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: hT2korUCUsNxtROMM/jOqBihZOQqm0ylpa9vZazXhDaL17RMstvFFJmdUIWb2LA/5SMEk50n2UaMYjveXLPMu6uuiN/wjKY5KNAoirgdWkuTKfzwkJLmjHsyXBYLCfpg3KphbstzZgnHXTOTRakVzCFjWQM7pJW+XJEM5WZ9BwSEagq3DTpLnVoBPKCA75vqGQ05PettjIM2Nzz3wmiEJIje7PjmUAU+1cFHhtQllpzIh4fgvNHCggL5xzTBysyvZOP+6rfT/TXYVpIYGskAib+OIhm7ljZG2GYL6yGp75EOQVnh15m3bpqJt5I3MIE2
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(136003)(396003)(346002)(39850400004)(366004)(376002)(478600001)(186003)(5660300002)(8936002)(7696005)(16526019)(52116002)(2616005)(8676002)(1076003)(86362001)(6486002)(66476007)(66556008)(66946007)(316002)(66574014)(83380400001)(6666004)(107886003)(54906003)(2906002)(4326008)(36756003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: 6Z518fM5lZW0PY5+WkN9Nhw5JSoGM96tltzIBXB8mrzLgjepWVOHu8PZUW7PQXMmMPmMFvxgDBboAr7Pob/WBx3BsCSrZyH7g2S/wtloC/E2nlkj5uo7rjA1Wd8icYHZ7X0UXnZdi2AikxLXFOImyhFP5RzcfgFC67/ojnADTfqAQYS5Z488nTCE+0wi7dDup4OUYnbXsBjetvl0nrpJD13VzeCmiWPbU+XGDjjKJxMPFatmrBtoO+6o9N5eKYsRP57ddEqq1Fhmf7lZjBTz2X+1SJfPFSOXSRgbZLVymUiIYC7Lw35iZEe1sMjgknM82YlriXpIxsU1F2tV03eRorvRDE7zTboZfjc/hTb5C0cBfdn0Iol7vRXmCc6MEq+G6wgyHX1v+wGz3as3vDJFSX9WDsH7/FbsDqlCa2H6eI4pB2LFXWJe/Rc6k5ffnGNf8L67iMFHv43qCjBRMJHKZ08K8RxPeidpRgiTROfC2Jy41/0rfKYLWHbHPrMDUpvbuGM+DBXt8w8lf3pRB82m8E8iwKRuqOmTZlAHsveO+j8=
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 80edc95c-0eea-42a6-45fb-08d803ca1822
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 May 2020 12:16:19.8780 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: NmgdZoO7XC6hCnmzzOWpDpoVmTR0Jw+0v+RgKKmpVECj4Sr8wiLOXqLMQAiENglcYqFFC9a4xx056l9v2xiDhw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2781
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,36 +66,247 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Christoph Hellwig <hch@lst.de>,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKSXQg
-aXMgZ3VhcmFudGVlIHRoYXQgdGhlIGxvb3Agd2lsbCBzdG9wIGF0IGZpcnN0IGl0ZXJhdGlvbi4g
-U28gZHJvcCB0aGUKbG9vcC4KCkZpeGVzOiA2YmY0MThjNTBmOThhICgic3RhZ2luZzogd2Z4OiBj
-aGFuZ2UgdGhlIHdheSB0byBjaG9vc2UgZnJhbWUgdG8gc2VuZCIpClNpZ25lZC1vZmYtYnk6IErD
-qXLDtG1lIFBvdWlsbGVyIDxqZXJvbWUucG91aWxsZXJAc2lsYWJzLmNvbT4KLS0tCiBkcml2ZXJz
-L3N0YWdpbmcvd2Z4L3F1ZXVlLmMgfCAxOSArKysrKysrKy0tLS0tLS0tLS0tCiAxIGZpbGUgY2hh
-bmdlZCwgOCBpbnNlcnRpb25zKCspLCAxMSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
-ZXJzL3N0YWdpbmcvd2Z4L3F1ZXVlLmMgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L3F1ZXVlLmMKaW5k
-ZXggNzVkZjRhY2EyOWFjMy4uOTNlYTJiNzJmZWJkMCAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFn
-aW5nL3dmeC9xdWV1ZS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvcXVldWUuYwpAQCAtMjkx
-LDE1ICsyOTEsMTIgQEAgc3RydWN0IGhpZl9tc2cgKndmeF90eF9xdWV1ZXNfZ2V0KHN0cnVjdCB3
-ZnhfZGV2ICp3ZGV2KQogCiAJaWYgKGF0b21pY19yZWFkKCZ3ZGV2LT50eF9sb2NrKSkKIAkJcmV0
-dXJuIE5VTEw7Ci0KLQlmb3IgKDs7KSB7Ci0JCXNrYiA9IHdmeF90eF9xdWV1ZXNfZ2V0X3NrYih3
-ZGV2KTsKLQkJaWYgKCFza2IpCi0JCQlyZXR1cm4gTlVMTDsKLQkJc2tiX3F1ZXVlX3RhaWwoJndk
-ZXYtPnR4X3BlbmRpbmcsIHNrYik7Ci0JCXdha2VfdXAoJndkZXYtPnR4X2RlcXVldWUpOwotCQl0
-eF9wcml2ID0gd2Z4X3NrYl90eF9wcml2KHNrYik7Ci0JCXR4X3ByaXYtPnhtaXRfdGltZXN0YW1w
-ID0ga3RpbWVfZ2V0KCk7Ci0JCXJldHVybiAoc3RydWN0IGhpZl9tc2cgKilza2ItPmRhdGE7Ci0J
-fQorCXNrYiA9IHdmeF90eF9xdWV1ZXNfZ2V0X3NrYih3ZGV2KTsKKwlpZiAoIXNrYikKKwkJcmV0
-dXJuIE5VTEw7CisJc2tiX3F1ZXVlX3RhaWwoJndkZXYtPnR4X3BlbmRpbmcsIHNrYik7CisJd2Fr
-ZV91cCgmd2Rldi0+dHhfZGVxdWV1ZSk7CisJdHhfcHJpdiA9IHdmeF9za2JfdHhfcHJpdihza2Ip
-OworCXR4X3ByaXYtPnhtaXRfdGltZXN0YW1wID0ga3RpbWVfZ2V0KCk7CisJcmV0dXJuIChzdHJ1
-Y3QgaGlmX21zZyAqKXNrYi0+ZGF0YTsKIH0KLS0gCjIuMjYuMgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxp
-bnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qu
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+This file was based on an older version of the V4L2 compat32
+code, which had this ugly hack.
+
+Change the code to remove the hack. Yet, the entire compat32
+code is currently commented out. So, let's add a FIXME note
+at the code, as we may need to check if some of the atomisp
+specific ioctls would require it.
+
+It is not worth to do such checks now, as we may get rid
+of several of them while cleaning up other things while
+at staging.
+
+Reported-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ drivers/staging/media/atomisp/TODO            |  3 +
+ .../atomisp/pci/atomisp_compat_ioctl32.c      | 89 ++++++++++---------
+ 2 files changed, 52 insertions(+), 40 deletions(-)
+
+diff --git a/drivers/staging/media/atomisp/TODO b/drivers/staging/media/atomisp/TODO
+index e58643a9de43..9e46015ebcd5 100644
+--- a/drivers/staging/media/atomisp/TODO
++++ b/drivers/staging/media/atomisp/TODO
+@@ -161,6 +161,9 @@ TODO
+     for this driver until the other work is done, as there will be a lot
+     of code churn until this driver becomes functional again.
+ 
++16. Fix the compat32 code and remove the comment preventing it to be
++    called.
++
+ Limitations
+ ===========
+ 
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c b/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c
+index 3079043f1fac..e2e3a242b95d 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c
+@@ -847,9 +847,17 @@ static long atomisp_do_compat_ioctl(struct file *file,
+ 		struct atomisp_metadata_with_type md_with_type;
+ 		struct atomisp_sensor_ae_bracketing_lut lut;
+ 	} karg;
+-	mm_segment_t old_fs;
+-	void __user *up = compat_ptr(arg);
++	void __user *p32 = compat_ptr(arg);
++	void __user *new_p64 = NULL;
+ 	long err = -ENOIOCTLCMD;
++	int compatible_arg = 1;
++
++	/*
++	 * FIXME: should verify if any of the functions below will be
++	 * setting a pointer. If so, compatible_arg should be zeroed.
++	 *
++	 * Please see v4l2-compat-ioctl32.c for more details
++	 */
+ 
+ 	/* First, convert the command. */
+ 	switch (cmd) {
+@@ -936,130 +944,131 @@ static long atomisp_do_compat_ioctl(struct file *file,
+ 	switch (cmd) {
+ 	case ATOMISP_IOC_G_HISTOGRAM:
+ 	case ATOMISP_IOC_S_HISTOGRAM:
+-		err = get_atomisp_histogram32(&karg.his, up);
++		err = get_atomisp_histogram32(&karg.his, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_DIS_STAT:
+-		err = get_atomisp_dis_statistics32(&karg.dis_s, up);
++		err = get_atomisp_dis_statistics32(&karg.dis_s, p32);
+ 		break;
+ 	case ATOMISP_IOC_S_DIS_COEFS:
+-		err = get_atomisp_dis_coefficients32(&karg.dis_c, up);
++		err = get_atomisp_dis_coefficients32(&karg.dis_c, p32);
+ 		break;
+ 	case ATOMISP_IOC_S_DIS_VECTOR:
+-		err = get_atomisp_dvs_6axis_config32(&karg.dvs_c, up);
++		err = get_atomisp_dvs_6axis_config32(&karg.dvs_c, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_3A_STAT:
+-		err = get_atomisp_3a_statistics32(&karg.s3a_s, up);
++		err = get_atomisp_3a_statistics32(&karg.s3a_s, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_ISP_GDC_TAB:
+ 	case ATOMISP_IOC_S_ISP_GDC_TAB:
+-		err = get_atomisp_morph_table32(&karg.mor_t, up);
++		err = get_atomisp_morph_table32(&karg.mor_t, p32);
+ 		break;
+ 	case ATOMISP_IOC_S_ISP_FPN_TABLE:
+-		err = get_v4l2_framebuffer32(&karg.v4l2_buf, up);
++		err = get_v4l2_framebuffer32(&karg.v4l2_buf, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_ISP_OVERLAY:
+ 	case ATOMISP_IOC_S_ISP_OVERLAY:
+-		err = get_atomisp_overlay32(&karg.overlay, up);
++		err = get_atomisp_overlay32(&karg.overlay, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_SENSOR_CALIBRATION_GROUP:
+-		err = get_atomisp_calibration_group32(&karg.cal_grp, up);
++		err = get_atomisp_calibration_group32(&karg.cal_grp, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_LOAD:
+-		err = get_atomisp_acc_fw_load32(&karg.acc_fw_load, up);
++		err = get_atomisp_acc_fw_load32(&karg.acc_fw_load, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_S_ARG:
+ 	case ATOMISP_IOC_ACC_DESTAB:
+-		err = get_atomisp_acc_fw_arg32(&karg.acc_fw_arg, up);
++		err = get_atomisp_acc_fw_arg32(&karg.acc_fw_arg, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_SENSOR_PRIV_INT_DATA:
+ 	case ATOMISP_IOC_G_MOTOR_PRIV_INT_DATA:
+-		err = get_v4l2_private_int_data32(&karg.v4l2_pri_data, up);
++		err = get_v4l2_private_int_data32(&karg.v4l2_pri_data, p32);
+ 		break;
+ 	case ATOMISP_IOC_S_ISP_SHD_TAB:
+-		err = get_atomisp_shading_table32(&karg.shd_tbl, up);
++		err = get_atomisp_shading_table32(&karg.shd_tbl, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_MAP:
+ 	case ATOMISP_IOC_ACC_UNMAP:
+-		err = get_atomisp_acc_map32(&karg.acc_map, up);
++		err = get_atomisp_acc_map32(&karg.acc_map, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_S_MAPPED_ARG:
+-		err = get_atomisp_acc_s_mapped_arg32(&karg.acc_map_arg, up);
++		err = get_atomisp_acc_s_mapped_arg32(&karg.acc_map_arg, p32);
+ 		break;
+ 	case ATOMISP_IOC_S_PARAMETERS:
+-		err = get_atomisp_parameters32(&karg.param, up);
++		err = get_atomisp_parameters32(&karg.param, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_LOAD_TO_PIPE:
+ 		err = get_atomisp_acc_fw_load_to_pipe32(&karg.acc_fw_to_pipe,
+-							up);
++							p32);
+ 		break;
+ 	case ATOMISP_IOC_G_METADATA:
+-		err = get_atomisp_metadata_stat32(&karg.md, up);
++		err = get_atomisp_metadata_stat32(&karg.md, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_METADATA_BY_TYPE:
+ 		err = get_atomisp_metadata_by_type_stat32(&karg.md_with_type,
+-			up);
++			p32);
+ 		break;
+ 	case ATOMISP_IOC_S_SENSOR_AE_BRACKETING_LUT:
+-		err = get_atomisp_sensor_ae_bracketing_lut(&karg.lut, up);
++		err = get_atomisp_sensor_ae_bracketing_lut(&karg.lut, p32);
+ 		break;
+ 	}
+ 	if (err)
+ 		return err;
+ 
+-	old_fs = get_fs();
+-	set_fs(KERNEL_DS);
+-	err = native_ioctl(file, cmd, (unsigned long)&karg);
+-	set_fs(old_fs);
++	if (compatible_arg)
++		err = native_ioctl(file, cmd, (unsigned long)p32);
++	else
++		err = native_ioctl(file, cmd, (unsigned long)new_p64);
++
+ 	if (err)
+ 		return err;
+ 
+ 	switch (cmd) {
+ 	case ATOMISP_IOC_G_HISTOGRAM:
+-		err = put_atomisp_histogram32(&karg.his, up);
++		err = put_atomisp_histogram32(&karg.his, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_DIS_STAT:
+-		err = put_atomisp_dis_statistics32(&karg.dis_s, up);
++		err = put_atomisp_dis_statistics32(&karg.dis_s, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_3A_STAT:
+-		err = put_atomisp_3a_statistics32(&karg.s3a_s, up);
++		err = put_atomisp_3a_statistics32(&karg.s3a_s, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_ISP_GDC_TAB:
+-		err = put_atomisp_morph_table32(&karg.mor_t, up);
++		err = put_atomisp_morph_table32(&karg.mor_t, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_ISP_OVERLAY:
+-		err = put_atomisp_overlay32(&karg.overlay, up);
++		err = put_atomisp_overlay32(&karg.overlay, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_SENSOR_CALIBRATION_GROUP:
+-		err = put_atomisp_calibration_group32(&karg.cal_grp, up);
++		err = put_atomisp_calibration_group32(&karg.cal_grp, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_LOAD:
+-		err = put_atomisp_acc_fw_load32(&karg.acc_fw_load, up);
++		err = put_atomisp_acc_fw_load32(&karg.acc_fw_load, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_S_ARG:
+ 	case ATOMISP_IOC_ACC_DESTAB:
+-		err = put_atomisp_acc_fw_arg32(&karg.acc_fw_arg, up);
++		err = put_atomisp_acc_fw_arg32(&karg.acc_fw_arg, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_SENSOR_PRIV_INT_DATA:
+ 	case ATOMISP_IOC_G_MOTOR_PRIV_INT_DATA:
+-		err = put_v4l2_private_int_data32(&karg.v4l2_pri_data, up);
++		err = put_v4l2_private_int_data32(&karg.v4l2_pri_data, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_MAP:
+ 	case ATOMISP_IOC_ACC_UNMAP:
+-		err = put_atomisp_acc_map32(&karg.acc_map, up);
++		err = put_atomisp_acc_map32(&karg.acc_map, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_S_MAPPED_ARG:
+-		err = put_atomisp_acc_s_mapped_arg32(&karg.acc_map_arg, up);
++		err = put_atomisp_acc_s_mapped_arg32(&karg.acc_map_arg, p32);
+ 		break;
+ 	case ATOMISP_IOC_ACC_LOAD_TO_PIPE:
+ 		err = put_atomisp_acc_fw_load_to_pipe32(&karg.acc_fw_to_pipe,
+-							up);
++							p32);
+ 		break;
+ 	case ATOMISP_IOC_G_METADATA:
+-		err = put_atomisp_metadata_stat32(&karg.md, up);
++		err = put_atomisp_metadata_stat32(&karg.md, p32);
+ 		break;
+ 	case ATOMISP_IOC_G_METADATA_BY_TYPE:
+ 		err = put_atomisp_metadata_by_type_stat32(&karg.md_with_type,
+-			up);
++			p32);
+ 		break;
+ 	}
+ 
+-- 
+2.26.2
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
