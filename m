@@ -1,75 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DC711E6E77
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 May 2020 00:16:59 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3900A1E71CD
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 May 2020 02:54:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F1A5587152;
-	Thu, 28 May 2020 22:16:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6D61221FFB;
+	Fri, 29 May 2020 00:54:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kd0bsrXf9mfC; Thu, 28 May 2020 22:16:57 +0000 (UTC)
+	with ESMTP id 6wuuVsWuc100; Fri, 29 May 2020 00:54:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6FC5F87200;
-	Thu, 28 May 2020 22:16:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EA5B521515;
+	Fri, 29 May 2020 00:53:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 308331BF35D
- for <devel@linuxdriverproject.org>; Thu, 28 May 2020 22:16:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D89591BF33E
+ for <devel@linuxdriverproject.org>; Fri, 29 May 2020 00:53:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 29E1687E96
- for <devel@linuxdriverproject.org>; Thu, 28 May 2020 22:16:53 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C85CF88278
+ for <devel@linuxdriverproject.org>; Fri, 29 May 2020 00:53:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tIaFaK1pDZnx for <devel@linuxdriverproject.org>;
- Thu, 28 May 2020 22:16:52 +0000 (UTC)
+ with ESMTP id wTwJgVyNx7Ok for <devel@linuxdriverproject.org>;
+ Fri, 29 May 2020 00:53:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from hqnvemgate26.nvidia.com (hqnvemgate26.nvidia.com
- [216.228.121.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 77594875B7
- for <devel@driverdev.osuosl.org>; Thu, 28 May 2020 22:16:52 +0000 (UTC)
-Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
- hqnvemgate26.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
- id <B5ed038480000>; Thu, 28 May 2020 15:16:40 -0700
-Received: from hqmail.nvidia.com ([172.20.161.6])
- by hqpgpgate101.nvidia.com (PGP Universal service);
- Thu, 28 May 2020 15:16:52 -0700
-X-PGP-Universal: processed;
- by hqpgpgate101.nvidia.com on Thu, 28 May 2020 15:16:52 -0700
-Received: from [10.2.165.30] (10.124.1.5) by HQMAIL107.nvidia.com
- (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Thu, 28 May
- 2020 22:16:51 +0000
-Subject: Re: [PATCH] staging: tegra-video: fix V4L2 dependency
-To: Arnd Bergmann <arnd@arndb.de>, <soc@kernel.org>, Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>
-References: <20200527221327.3339232-1-arnd@arndb.de>
-From: Sowjanya Komatineni <skomatineni@nvidia.com>
-Message-ID: <18bd4587-2dd9-dfae-110d-7dfa0378c84d@nvidia.com>
-Date: Thu, 28 May 2020 15:16:55 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CA7B28825B
+ for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 00:53:55 +0000 (UTC)
+IronPort-SDR: 7YKuXhsvseG5YobostIhVA+5Px5G0hJKgQstOZixOv8cdyGKTVjM6z4NER3XupplKe1qZ2WpOY
+ 4mRUjnfg0pRQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 May 2020 17:53:54 -0700
+IronPort-SDR: cREMe2tk8/Wm5uvjCbnc8jc92UX5BPwCayPo8yq2aI1lHpMl87BFx/XTdgDdtj8ZFMscM41dGA
+ KBJuiABkwXkw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,446,1583222400"; d="scan'208";a="469333608"
+Received: from lkp-server02.sh.intel.com (HELO 5e8f22f9921b) ([10.239.97.151])
+ by fmsmga006.fm.intel.com with ESMTP; 28 May 2020 17:53:53 -0700
+Received: from kbuild by 5e8f22f9921b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jeTHU-0000DY-O1; Fri, 29 May 2020 00:53:52 +0000
+Date: Fri, 29 May 2020 08:53:09 +0800
+From: kbuild test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-next] BUILD SUCCESS
+ 36cf583eaff3458abbfac144c5e4d417a23fa1a1
+Message-ID: <5ed05cf5.d0Wgv/B5KUyHFbND%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <20200527221327.3339232-1-arnd@arndb.de>
-X-Originating-IP: [10.124.1.5]
-X-ClientProxiedBy: HQMAIL105.nvidia.com (172.20.187.12) To
- HQMAIL107.nvidia.com (172.20.187.13)
-Content-Language: en-US
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
- t=1590704200; bh=KRzV9XAoyrXw+hQeehBeTuzVXVGZIKME8Bedl58yFSs=;
- h=X-PGP-Universal:Subject:To:CC:References:From:Message-ID:Date:
- User-Agent:MIME-Version:In-Reply-To:X-Originating-IP:
- X-ClientProxiedBy:Content-Type:Content-Transfer-Encoding:
- Content-Language;
- b=r5fl4xdqNc4K6HuHfzbSjNVFNdH2Ypwrct9hbAzN7915HhzPM2fb3qlXl4ROaUF66
- Zx58SJLHvzFa7eiN5OaKVZVjT3ha0jqniUMoqTv4fGYhBH60pMLFpinqYctaBvfRZf
- HvXGhBaoHTn3vwEXXrZkRKRvxTUZJCwd4mSoR1i5vlwx40LlEzIdYkVvSgDFdjW18e
- Z5JvwJYvh1EBSECNe2mYvdY+G4kK57w7PdijtRIr7eu2ONHTePwpDySYdxNvWA8t7l
- sUgXKjX2UHXRhEkz8RIrJUim2I7Vhxyx/uTszuBWdWPs7GuW0ceBq/LLCVYIPCj77e
- bUVSFjLslZfIg==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,48 +67,144 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- linux-tegra@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Dmitry Osipenko <digetx@gmail.com>, Thierry Reding <treding@nvidia.com>,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-next
+branch HEAD: 36cf583eaff3458abbfac144c5e4d417a23fa1a1  staging: vchiq: Get rid of VCHIQ_SERVICE_OPENEND callback reason
 
-On 5/27/20 3:13 PM, Arnd Bergmann wrote:
-> Rather than using a dependency on VIDEO_V4L2, this driver uses
-> "select", which fails when other dependencies are missing:
->
-> WARNING: unmet direct dependencies detected for VIDEO_V4L2
->    Depends on [n]: MEDIA_SUPPORT [=y] && (I2C [=y] || I2C [=y]=n) && VIDEO_DEV [=n]
->    Selected by [y]:
->    - VIDEO_TEGRA [=y] && STAGING [=y] && STAGING_MEDIA [=y] && MEDIA_SUPPORT [=y] && TEGRA_HOST1X [=y]
-> (plus an endless stream of link errors for other drivers that
-> depend on VIDEO_V4L2 but are now lacking their dependencies)
->
-> Fixes: 3d8a97eabef0 ("media: tegra-video: Add Tegra210 Video input driver")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->   drivers/staging/media/tegra-video/Kconfig | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/media/tegra-video/Kconfig b/drivers/staging/media/tegra-video/Kconfig
-> index 3f03b5b39e6c..f6c61ec74386 100644
-> --- a/drivers/staging/media/tegra-video/Kconfig
-> +++ b/drivers/staging/media/tegra-video/Kconfig
-> @@ -2,7 +2,7 @@
->   config VIDEO_TEGRA
->   	tristate "NVIDIA Tegra VI driver"
->   	depends on TEGRA_HOST1X
-> -	select VIDEO_V4L2
-> +	depends on VIDEO_V4L2
->   	select MEDIA_CONTROLLER
->   	select VIDEOBUF2_DMA_CONTIG
->   	help
-Acked-by: Sowjanya Komatineni <skomatineni@nvidia.com>
+elapsed time: 2204m
+
+configs tested: 117
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm                              allyesconfig
+arm                               allnoconfig
+arm                              allmodconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+sh                           se7724_defconfig
+arm                            mmp2_defconfig
+mips                        maltaup_defconfig
+arm                        realview_defconfig
+arm                      footbridge_defconfig
+arm                      jornada720_defconfig
+m68k                            mac_defconfig
+arc                     nsimosci_hs_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                              allnoconfig
+ia64                                defconfig
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                              allnoconfig
+m68k                             allmodconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+arc                              allyesconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20200527
+x86_64               randconfig-a002-20200527
+x86_64               randconfig-a005-20200527
+x86_64               randconfig-a003-20200527
+x86_64               randconfig-a004-20200527
+x86_64               randconfig-a001-20200527
+i386                 randconfig-a001-20200527
+i386                 randconfig-a004-20200527
+i386                 randconfig-a003-20200527
+i386                 randconfig-a006-20200527
+i386                 randconfig-a002-20200527
+i386                 randconfig-a005-20200527
+x86_64               randconfig-a013-20200528
+x86_64               randconfig-a015-20200528
+x86_64               randconfig-a012-20200528
+x86_64               randconfig-a016-20200528
+x86_64               randconfig-a014-20200528
+x86_64               randconfig-a011-20200528
+i386                 randconfig-a013-20200528
+i386                 randconfig-a011-20200528
+i386                 randconfig-a012-20200528
+i386                 randconfig-a015-20200528
+i386                 randconfig-a016-20200528
+i386                 randconfig-a014-20200528
+i386                 randconfig-a013-20200527
+i386                 randconfig-a015-20200527
+i386                 randconfig-a012-20200527
+i386                 randconfig-a011-20200527
+i386                 randconfig-a016-20200527
+i386                 randconfig-a014-20200527
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+s390                              allnoconfig
+s390                                defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+sparc                               defconfig
+sparc64                           allnoconfig
+sparc                            allyesconfig
+sparc64                             defconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                               allmodconfig
+um                                  defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
