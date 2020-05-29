@@ -1,66 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E4181E884C
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 May 2020 22:01:04 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4272389428;
-	Fri, 29 May 2020 20:01:03 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qdNziXonx6Uq; Fri, 29 May 2020 20:01:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B6EB5893FA;
-	Fri, 29 May 2020 20:01:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 27B881BF5F6
- for <devel@linuxdriverproject.org>; Fri, 29 May 2020 20:00:58 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 424521E884F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 May 2020 22:01:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1B898873DC
- for <devel@linuxdriverproject.org>; Fri, 29 May 2020 20:00:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D4D10874C7;
+	Fri, 29 May 2020 20:01:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6o7ixGX7KBh9; Fri, 29 May 2020 20:01:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A734187534;
+	Fri, 29 May 2020 20:01:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5D8991BF5F6
+ for <devel@linuxdriverproject.org>; Fri, 29 May 2020 20:01:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 586EF89413
+ for <devel@linuxdriverproject.org>; Fri, 29 May 2020 20:01:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lOnunMPlLiUt for <devel@linuxdriverproject.org>;
- Fri, 29 May 2020 20:00:57 +0000 (UTC)
+ with ESMTP id yM2ZWflDLO7x for <devel@linuxdriverproject.org>;
+ Fri, 29 May 2020 20:00:59 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.75])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B366587565
- for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 20:00:56 +0000 (UTC)
+Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.73])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 04AD2893E9
+ for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 20:00:58 +0000 (UTC)
 Received: from threadripper.lan ([149.172.98.151]) by mrelayeu.kundenserver.de
  (mreue109 [212.227.15.145]) with ESMTPA (Nemesis) id
- 1MkHEN-1jGNZx1rr7-00kj3D; Fri, 29 May 2020 22:00:40 +0200
+ 1MvbO4-1ipghK3Ghq-00saMm; Fri, 29 May 2020 22:00:40 +0200
 From: Arnd Bergmann <arnd@arndb.de>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH 2/9] staging: media: atomisp: declare 'struct device' before
- using it
-Date: Fri, 29 May 2020 22:00:24 +0200
-Message-Id: <20200529200031.4117841-2-arnd@arndb.de>
+Subject: [PATCH 3/9] staging: media: atomisp: annotate an unused function
+Date: Fri, 29 May 2020 22:00:25 +0200
+Message-Id: <20200529200031.4117841-3-arnd@arndb.de>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200529200031.4117841-1-arnd@arndb.de>
 References: <20200529200031.4117841-1-arnd@arndb.de>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:TarMTBYqeIin+lnZ4LmtumzaUlpm/qpb9KM44D2gAllthm2qRrv
- sC59cp8NfYINafBl2Vdc62hWHo8PDCDo5gs0KXVFJdxzbDBwGr4kaKkbTYcUeIN0dbHDuoz
- x+49RaodJ9WvlUyCSTRvFKe7lQKlToCkknwxWKJl5seuW//ppuMJfKGprZ3FdStSX5dMU0A
- 9jyc66JdrDYJbBpjyGtng==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:agZbiHQ3QcI=:7qYJ0h5aCaOWsSDNrfq5CH
- qaSr3TmIoq2uEzVm8Q7EqUphclJUPPAOLl4X9InIsqvKpB/MO6s6tK7c6/oFcxLuCEhrufKts
- rQhxrNL/DMp+rVq2OHDexV/7svguarZHyvz/aL/kvxF+EeaGeORpdobYZ8Umt+BnPBSFJCU2X
- ID5vVJpkDdEAGHNtZI4amT7klgTwhc26+FEvCBxUG62XtIIs1vXbYFr6Ux25buwq8qX363OKM
- ELr+FHf1xwaybM/zakqPZStMWMWl+dovCRCEIT65T9l977Su/eq6+wk1sBe1vbkYZYuGY4J11
- G6AVkYWewWpiMKaGj5IOlAKINVKBjMxBley9rYMhC/jwSEwJyX2U3ecpYzK9/Vp4ZzNDdCZRg
- En9kgVOksCPW2MU1+xscYSqz65A7PlaELeuk7iRYe4DWjJU6o/gPlzOT+zKi01rMmbFtzHA2y
- +nX2ALvZOplgWBWgqroORiZZkkc8KOi1vQO/2vht/UNAS/JyvINYVaCClu5kpvnF0DGLvlSKg
- 2oyYb+p/IAvi7W/CF1DjQK8tTw0suXiX6hk55fxTr34BheDzFfVqMmmAciDThPBWmqKTUxJcp
- QBswMwwhZcID8mDzAUtl+4IAOF4GyD44+txsmQe2vmFVGxb+ayQ2bYho1A1pPranfCgarRjy6
- 6z59byyo8t+fD40ar3uOqJX0+M9Ifqdi9QLtid2FrBBoj5omZbVM6QvAzcuVLNkq9E//x5H0q
- Be08aE3Oy/+iIgHrnah8QttnzCe8lPPW6uzS1x/36ZAe9KVnGZ6XBkvDEZihRf9P5bSq1EFuI
- 7IWstP1FHkMkbUL5HAqq9Yi8KKU8GtFDYlUGR4OxKuDJolWZeA=
+X-Provags-ID: V03:K1:lfZ3e7lRj4Ybe7StyQFbwkg2UGWjMbId3/8VrkKq0pNLWCLtM32
+ kC18Il1MDaISgD8gL2sMI5OwZFnVA3Rp33VA5sfA/Q7v/zYyARV33SRjZVjcGToRqQsksR5
+ KzWi9fEMSZvDjbXjeXC4SnaJQNdaCvhSbb99ZlJqDMlLiXk9jIhHcedSRmM/hNHAvuF0OTP
+ t2vLHRR7riPg7pNu9GOXw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+LkRWSfmL0E=:9l56I5kcdmKr3QZXmDnZ+S
+ sXoyK6fxxiDQqDFYRgOZG2PDT38WNHL+fT4N0cyDhyxZ4bsn77lxBIDZ31hbz3aM8pQ0DgzXK
+ rovnECe6vjyY2EnMqLW62m45LXfkPeJ/hyTQ96DYeDNdWNFQof98gkgpEMlMVgQ4yimM5fIbC
+ Qhv4IDC+Sx/28RHUQduOzPVCauzNO3zTnm3HyYj9+b5FSUJakM9WfHP2SWtW7+iNuRUs7JcEd
+ QlZLrH+IADO71tIplE+RSZITLkv6YlQH3ccpo7CEBx+MXImuJWD5deMVvVKKGzD+IFhjg8nPn
+ e/m2nQion0ZiG5uVTKvBdNxwjVhGw4noq4xdvayzpCgjjU4P4ZtUhUfIWs5qkxFRK6ymof5Me
+ SKpsU/bV/yROi3suZ3+Z3Irscj5+UrIm1uUfudlpYAvb5qMUOtxMixamm51+lWJylZqFaSfGY
+ gOFfr21E/HeWSr8IRE6+MUjXGaycqP9gwBEnGtpo89kk7tHdDdoeSbFK32BXB4llhRfNU8Anh
+ 2P7352T7x4aTMG1aj9lSUhXv8IM/IMWCuKrsbm1Rl4h52PZAZor/fRo6fqfsguCY/nil7xaxa
+ 6PlYDAvOdVDjaN4JcyvOK33SLdNQlJSPaZMIraTwRpn3HIkyP1h74NRReHH2lWgJ7eFZLCfEc
+ bF8eHDs7hMIrsall0NEeNunR8yKDu/k7EHvejkji6GpHpl7aVFE37fEiuu3n8zs6c2UKSofRn
+ z6tyFC9id+MrlOQLkqqoeEzmtEG6POwljWd0GxEJvar1K+zhPo4Ra7SHUrkyQCalwrJ9TGg4o
+ 3n+z/OwgfyZ88xgp90YW//B2L/jkaQ3Fh1dLg0ZoJtaVp5icug=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,31 +80,35 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In some configurations, including this header leads to a warning:
+atomisp_mrfld_power() has no more callers and produces
+a warning:
 
-drivers/staging/media/atomisp//pci/sh_css_firmware.h:41:38: error: declaration of 'struct device' will not be visible outside of this function [-Werror,-Wvisibility]
+drivers/staging/media/atomisp/pci/atomisp_v4l2.c:764:12: error: unused function 'atomisp_mrfld_power' [-Werror,-Wunused-function]
 
-Make sure the struct tag is known before declaring a function
-that uses it as an argument.
+Mark the function as unused while the PM code is being
+debugged, expecting that it will be used again in the
+future and should not just be removed.
 
-Fixes: 9d4fa1a16b28 ("media: atomisp: cleanup directory hierarchy")
+Fixes: 95d1f398c4dc ("media: atomisp: keep the ISP powered on when setting it")
 Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- drivers/staging/media/atomisp/pci/sh_css_firmware.h | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/media/atomisp/pci/atomisp_v4l2.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/sh_css_firmware.h b/drivers/staging/media/atomisp/pci/sh_css_firmware.h
-index f6253392a6c9..317559c7689f 100644
---- a/drivers/staging/media/atomisp/pci/sh_css_firmware.h
-+++ b/drivers/staging/media/atomisp/pci/sh_css_firmware.h
-@@ -37,6 +37,7 @@ extern unsigned int sh_css_num_binaries;
- char
- *sh_css_get_fw_version(void);
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
+index 694268d133c0..10abb35ba0e0 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
+@@ -761,7 +761,8 @@ static void punit_ddr_dvfs_enable(bool enable)
+ 		pr_info("DDR DVFS, door bell is not cleared within 3ms\n");
+ }
  
-+struct device;
- bool
- sh_css_check_firmware_version(struct device *dev, const char *fw_data);
- 
+-static int atomisp_mrfld_power(struct atomisp_device *isp, bool enable)
++static __attribute__((unused)) int
++atomisp_mrfld_power(struct atomisp_device *isp, bool enable)
+ {
+ 	unsigned long timeout;
+ 	u32 val = enable ? MRFLD_ISPSSPM0_IUNIT_POWER_ON :
 -- 
 2.26.2
 
