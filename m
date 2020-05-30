@@ -2,80 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 391C71E8D49
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 May 2020 04:57:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AB1D1E8D4F
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 May 2020 05:00:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 96D9F893D2;
-	Sat, 30 May 2020 02:57:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A90AE89428;
+	Sat, 30 May 2020 03:00:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UL9skHkYAr-X; Sat, 30 May 2020 02:57:42 +0000 (UTC)
+	with ESMTP id IX+7yjPhvDfV; Sat, 30 May 2020 03:00:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AC9FD892AF;
-	Sat, 30 May 2020 02:57:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1DC4B89341;
+	Sat, 30 May 2020 03:00:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1605E1BF5AE
- for <devel@linuxdriverproject.org>; Sat, 30 May 2020 02:57:40 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1CA361BF5AE
+ for <devel@linuxdriverproject.org>; Sat, 30 May 2020 03:00:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E032C21567
- for <devel@linuxdriverproject.org>; Sat, 30 May 2020 02:57:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 19C5486A39
+ for <devel@linuxdriverproject.org>; Sat, 30 May 2020 03:00:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7L3TUCDq-CVB for <devel@linuxdriverproject.org>;
- Sat, 30 May 2020 02:57:39 +0000 (UTC)
+ with ESMTP id 9Tu3Ti3KIt7d for <devel@linuxdriverproject.org>;
+ Sat, 30 May 2020 03:00:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
- [209.85.216.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 0222E203EA
- for <devel@driverdev.osuosl.org>; Sat, 30 May 2020 02:57:38 +0000 (UTC)
-Received: by mail-pj1-f68.google.com with SMTP id k2so2261913pjs.2
- for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 19:57:38 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 85D90869F8
+ for <devel@driverdev.osuosl.org>; Sat, 30 May 2020 03:00:36 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id o6so786584pgh.2
+ for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 20:00:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=if6Kiedn+UJmCI3/EUhY4zmCmyfoaJuGcUVlUj9uKZs=;
- b=nRo1FWr6/J08csd5YTfXQi7muv6m3m8HaqiPrcRSRleWkrnixq+NlKd1iFJYv/5FIm
- ZV/GjVFWp7hsJK9OqQ2siN6e1OsCHll0+dTRnz2QJ1V5Vam8p1Ez69xy/XtGWltYLqC2
- kZA0SlkmB6g6uYIQ6ShNZY6L56H/3G0iXcTb2sipjpkrKTqbnKHCm7O4/dL5+Vw4jUI6
- URRW91r7HGhn3zrY3malFPE4BnyoWy59M+3vstpq/jJ9IKaGFN+l2WQwV3HovVcBlaN3
- Zb74l/18YwnZDC95U2+Wk/FmTnOVTOPv7A0PKPXqPF5EyEjedECoNWjUc9zKx9JFbW7M
- H5LA==
+ bh=YMRN0wSsDj4YeK0mPPFUdkTPLMlDL25YvZpi9MUfAXY=;
+ b=PwG1wnMplph6a7K2rReSmViHb4/8f5VwWV08D3jshZYYBWN6v0jdB5yN5G0uRUmAWT
+ FHrCHBCAFzCeLNedigwdrUhyL0bMCJ0dyPHNlJkmECXytoZIJiq/DHCSd14+4mtncVdU
+ FDe3WhMx/vgbmWlvVF8ZWoYRYBuT4oziIqC2+y/4pNjZdiw7xVZrEQfJozuDMea/m02y
+ XqwCVI+uukcTJrKm/QNkcUUlBv6PonWcYrhx8DMAxEeeaMutF6OKe2V1QBEPmfIsBygy
+ GKip2PzZvBMa8U00SJPBd7o2qBRAQAZkn8kNYD1IWX4d5Ki+vFdlYdGubUCMcAU3+JaX
+ 23qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=if6Kiedn+UJmCI3/EUhY4zmCmyfoaJuGcUVlUj9uKZs=;
- b=D6qBIx+HGItM6XZzB0oOMKmQmWMOJmec1nQAoehF8ENhHEfsEiRs0r4rt7yVregyQY
- ojPVKIZX3eQ79nC6ZaSzP50K3ixcLj19e9xtOOgIHJGdqD7deQzUXpLDyCNGOQ0RJxD3
- PTa9ETjILz4RqKgAg4II7jSU5ITpVnhzQhMo036YGkJSRD09axxWOUrKgSfnbMiONbbs
- Vct4d2FrSD6wTOt+SVC4MLl21cCG0qgWYP7X0Ujp8hJl1PUX4ahNxHtxYms21njQAozN
- DFrVLecFFginwXcSbeJGRBSHeT8iicRjyhMq++4niVI46vJGHZTKdt2zSgh293CjZha1
- p/bQ==
-X-Gm-Message-State: AOAM533U8kkWipEK6FYfHxMn8CBl4p3VLAoIh7xG2N+FRzpIyXUbhxiI
- Lro42yd0ZSqXF5ziIJQasu0lTvBu
-X-Google-Smtp-Source: ABdhPJws4M1VtYgZQKyx750y6ALke8WHGLS3lix0xK9zPan/4iWuiY8FwmB51H/WRIbkr8vGyX9S/A==
-X-Received: by 2002:a17:902:b40e:: with SMTP id
- x14mr1160203plr.285.1590807458510; 
- Fri, 29 May 2020 19:57:38 -0700 (PDT)
+ bh=YMRN0wSsDj4YeK0mPPFUdkTPLMlDL25YvZpi9MUfAXY=;
+ b=EDd1h/EaHHRLACQNYVouGTSHMULplEvo9ncI9AyQMOsXt03tdk7/vHoSS9Y2mnm7+1
+ +R8RpIhQKqvrK80n4uil0Wp3svDFAynbqtjFvQpEFbmyO9lXCS6oZfIuR4F1PpejR/Cf
+ /70L4pcVKemCo/U4L3GDRty1iw6zmeZ6mB0COWxiB83XJHwU4Y563GT0kIXwtIrqUpfJ
+ rPuCkf5XMNO4clYY51Ntq8tsrozx/A+6xyoopSynDqEOGisg89xLnYcuhlcdJb7ynuP+
+ y2FK/S7jB2TewplX+FplDH87USFyAivgJrxTG2+jlaAUj8KGPqzDftewi+2/0skGlLst
+ XhrA==
+X-Gm-Message-State: AOAM530LCDoand4uhvMozAH4ghCu6Qk5RROxcx8gGZrZl8oIqdQKgpzn
+ H07SdkE9TxjSy8yviVzdQaY=
+X-Google-Smtp-Source: ABdhPJw7clXcDuDY7GMB5jjhBjvxVkDCV+qtLZEpQR/N8sHEQ049wXM2f3hCnUQNnxMGCS1QjW7jFQ==
+X-Received: by 2002:a63:a51b:: with SMTP id n27mr11250321pgf.40.1590807636020; 
+ Fri, 29 May 2020 20:00:36 -0700 (PDT)
 Received: from ubuntu-s3-xlarge-x86 ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id q145sm8359604pfq.128.2020.05.29.19.57.37
+ by smtp.gmail.com with ESMTPSA id t12sm649218pjf.3.2020.05.29.20.00.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 May 2020 19:57:38 -0700 (PDT)
-Date: Fri, 29 May 2020 19:57:35 -0700
+ Fri, 29 May 2020 20:00:35 -0700 (PDT)
+Date: Fri, 29 May 2020 20:00:33 -0700
 From: Nathan Chancellor <natechancellor@gmail.com>
 To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 5/9] staging: media: atomisp: fix stack overflow in
- init_pipe_defaults()
-Message-ID: <20200530025735.GC1367069@ubuntu-s3-xlarge-x86>
+Subject: Re: [PATCH 7/9] staging: media: atomisp: fix enum type mixups
+Message-ID: <20200530030033.GD1367069@ubuntu-s3-xlarge-x86>
 References: <20200529200031.4117841-1-arnd@arndb.de>
- <20200529200031.4117841-5-arnd@arndb.de>
+ <20200529200031.4117841-7-arnd@arndb.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200529200031.4117841-5-arnd@arndb.de>
+In-Reply-To: <20200529200031.4117841-7-arnd@arndb.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,82 +95,78 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, May 29, 2020 at 10:00:27PM +0200, Arnd Bergmann wrote:
-> When building with clang, multiple copies of the structures to be
-> initialized are passed around on the stack and copied locally, using an
-> insane amount of stack space:
+On Fri, May 29, 2020 at 10:00:29PM +0200, Arnd Bergmann wrote:
+> Some function calls pass an incorrect enum type:
 > 
-> drivers/staging/media/atomisp/pci/sh_css.c:2371:1: error: stack frame size of 26864 bytes in function 'create_pipe' [-Werror,-Wframe-larger-than=]
+> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:858:16: error: implicit conversion from enumeration type 'input_system_ID_t' to different enumeration type 'gp_device_ID_t' [-Werror,-Wenum-conversion]
+>         gp_device_rst(INPUT_SYSTEM0_ID);
+>         ~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~
+> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:860:19: error: implicit conversion from enumeration type 'input_system_ID_t' to different enumeration type 'gp_device_ID_t' [-Werror,-Wenum-conversion]
+>         input_switch_rst(INPUT_SYSTEM0_ID);
+>         ~~~~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~
+> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:876:27: error: implicit conversion from enumeration type 'input_system_cfg_flag_t' to different enumeration type 'input_system_connection_t' [-Werror,-Wenum-conversion]
+>                 config.multicast[i]              = INPUT_SYSTEM_CFG_FLAG_RESET;
+>                                                  ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:1326:32: error: implicit conversion from enumeration type 'input_system_ID_t' to different enumeration type 'gp_device_ID_t' [-Werror,-Wenum-conversion]
+>         input_selector_cfg_for_sensor(INPUT_SYSTEM0_ID);
+>         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~
+> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:1329:19: error: implicit conversion from enumeration type 'input_system_ID_t' to different enumeration type 'gp_device_ID_t' [-Werror,-Wenum-conversion]
+>         input_switch_cfg(INPUT_SYSTEM0_ID, &config.input_switch_cfg);
+>         ~~~~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~
 > 
-> Use constantly-allocated variables plus an explicit memcpy()
-> to avoid that.
+> INPUT_SYSTEM0_ID is zero, so use the corresponding zero-value
+> of the expected types instead.
 > 
-> Fixes: 6dc9a2568f84 ("media: atomisp: convert default struct values to use compound-literals with designated initializers")
+> Fixes: a49d25364dfb ("staging/atomisp: Add support for the Intel IPU v2")
 > Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+
+Huh weird that I did not see this warning but you do randconfigs so
+that's expected.
 
 Reviewed-by: Nathan Chancellor <natechancellor@gmail.com>
 
 > ---
->  drivers/staging/media/atomisp/pci/sh_css.c | 16 +++++++++++-----
->  1 file changed, 11 insertions(+), 5 deletions(-)
+>  .../pci/hive_isp_css_common/host/input_system.c        | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 > 
-> diff --git a/drivers/staging/media/atomisp/pci/sh_css.c b/drivers/staging/media/atomisp/pci/sh_css.c
-> index e91c6029c651..1e8b9d637116 100644
-> --- a/drivers/staging/media/atomisp/pci/sh_css.c
-> +++ b/drivers/staging/media/atomisp/pci/sh_css.c
-> @@ -2264,6 +2264,12 @@ static enum ia_css_err
->  init_pipe_defaults(enum ia_css_pipe_mode mode,
->  		   struct ia_css_pipe *pipe,
->  		   bool copy_pipe) {
-> +	static const struct ia_css_pipe default_pipe = IA_CSS_DEFAULT_PIPE;
-> +	static const struct ia_css_preview_settings preview = IA_CSS_DEFAULT_PREVIEW_SETTINGS;
-> +	static const struct ia_css_capture_settings capture = IA_CSS_DEFAULT_CAPTURE_SETTINGS;
-> +	static const struct ia_css_video_settings video = IA_CSS_DEFAULT_VIDEO_SETTINGS;
-> +	static const struct ia_css_yuvpp_settings yuvpp = IA_CSS_DEFAULT_YUVPP_SETTINGS;
-> +
->  	if (!pipe)
->  	{
->  		IA_CSS_ERROR("NULL pipe parameter");
-> @@ -2271,14 +2277,14 @@ init_pipe_defaults(enum ia_css_pipe_mode mode,
+> diff --git a/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c b/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c
+> index 2114cf4f3fda..aa0f0fca9346 100644
+> --- a/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c
+> +++ b/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c
+> @@ -855,9 +855,9 @@ input_system_error_t input_system_configuration_reset(void)
+>  
+>  	input_system_network_rst(INPUT_SYSTEM0_ID);
+>  
+> -	gp_device_rst(INPUT_SYSTEM0_ID);
+> +	gp_device_rst(GP_DEVICE0_ID);
+>  
+> -	input_switch_rst(INPUT_SYSTEM0_ID);
+> +	input_switch_rst(GP_DEVICE0_ID);
+>  
+>  	//target_rst();
+>  
+> @@ -873,7 +873,7 @@ input_system_error_t input_system_configuration_reset(void)
+>  
+>  	for (i = 0; i < N_CSI_PORTS; i++) {
+>  		config.csi_buffer_flags[i]	 = INPUT_SYSTEM_CFG_FLAG_RESET;
+> -		config.multicast[i]		 = INPUT_SYSTEM_CFG_FLAG_RESET;
+> +		config.multicast[i]		 = INPUT_SYSTEM_DISCARD_ALL;
 >  	}
 >  
->  	/* Initialize pipe to pre-defined defaults */
-> -	*pipe = IA_CSS_DEFAULT_PIPE;
-> +	memcpy(pipe, &default_pipe, sizeof(default_pipe));
+>  	config.source_type_flags				 = INPUT_SYSTEM_CFG_FLAG_RESET;
+> @@ -1323,10 +1323,10 @@ static input_system_error_t configuration_to_registers(void)
+>  	} // end of switch (source_type)
 >  
->  	/* TODO: JB should not be needed, but temporary backward reference */
->  	switch (mode)
->  	{
->  	case IA_CSS_PIPE_MODE_PREVIEW:
->  		pipe->mode = IA_CSS_PIPE_ID_PREVIEW;
-> -		pipe->pipe_settings.preview = IA_CSS_DEFAULT_PREVIEW_SETTINGS;
-> +		memcpy(&pipe->pipe_settings.preview, &preview, sizeof(preview));
->  		break;
->  	case IA_CSS_PIPE_MODE_CAPTURE:
->  		if (copy_pipe) {
-> @@ -2286,11 +2292,11 @@ init_pipe_defaults(enum ia_css_pipe_mode mode,
->  		} else {
->  			pipe->mode = IA_CSS_PIPE_ID_CAPTURE;
->  		}
-> -		pipe->pipe_settings.capture = IA_CSS_DEFAULT_CAPTURE_SETTINGS;
-> +		memcpy(&pipe->pipe_settings.capture, &capture, sizeof(capture));
->  		break;
->  	case IA_CSS_PIPE_MODE_VIDEO:
->  		pipe->mode = IA_CSS_PIPE_ID_VIDEO;
-> -		pipe->pipe_settings.video = IA_CSS_DEFAULT_VIDEO_SETTINGS;
-> +		memcpy(&pipe->pipe_settings.video, &video, sizeof(video));
->  		break;
->  	case IA_CSS_PIPE_MODE_ACC:
->  		pipe->mode = IA_CSS_PIPE_ID_ACC;
-> @@ -2300,7 +2306,7 @@ init_pipe_defaults(enum ia_css_pipe_mode mode,
->  		break;
->  	case IA_CSS_PIPE_MODE_YUVPP:
->  		pipe->mode = IA_CSS_PIPE_ID_YUVPP;
-> -		pipe->pipe_settings.yuvpp = IA_CSS_DEFAULT_YUVPP_SETTINGS;
-> +		memcpy(&pipe->pipe_settings.yuvpp, &yuvpp, sizeof(yuvpp));
->  		break;
->  	default:
->  		return IA_CSS_ERR_INVALID_ARGUMENTS;
+>  	// Set input selector.
+> -	input_selector_cfg_for_sensor(INPUT_SYSTEM0_ID);
+> +	input_selector_cfg_for_sensor(GP_DEVICE0_ID);
+>  
+>  	// Set input switch.
+> -	input_switch_cfg(INPUT_SYSTEM0_ID, &config.input_switch_cfg);
+> +	input_switch_cfg(GP_DEVICE0_ID, &config.input_switch_cfg);
+>  
+>  	// Set input formatters.
+>  	// AM: IF are set dynamically.
 > -- 
 > 2.26.2
 > 
