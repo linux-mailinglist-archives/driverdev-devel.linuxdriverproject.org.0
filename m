@@ -1,83 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B27B1E8D3D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 May 2020 04:49:53 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83EE31E8D41
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 May 2020 04:56:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0D37F26150;
-	Sat, 30 May 2020 02:49:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DC72E89428;
+	Sat, 30 May 2020 02:56:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GvcCsDYVpJdu; Sat, 30 May 2020 02:49:49 +0000 (UTC)
+	with ESMTP id HZjkQ2jrg1Pp; Sat, 30 May 2020 02:56:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9B92A22176;
-	Sat, 30 May 2020 02:49:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4A84D88BA4;
+	Sat, 30 May 2020 02:56:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A68281BF5AE
- for <devel@linuxdriverproject.org>; Sat, 30 May 2020 02:49:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 416531BF5AE
+ for <devel@linuxdriverproject.org>; Sat, 30 May 2020 02:55:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9B64A87C5C
- for <devel@linuxdriverproject.org>; Sat, 30 May 2020 02:49:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3DFDB86FAE
+ for <devel@linuxdriverproject.org>; Sat, 30 May 2020 02:55:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zx166BxdYCEp for <devel@linuxdriverproject.org>;
- Sat, 30 May 2020 02:49:45 +0000 (UTC)
+ with ESMTP id H3HWxbyZvO72 for <devel@linuxdriverproject.org>;
+ Sat, 30 May 2020 02:55:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0F1B587C24
- for <devel@driverdev.osuosl.org>; Sat, 30 May 2020 02:49:45 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id t7so1955967plr.0
- for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 19:49:45 -0700 (PDT)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3631886F77
+ for <devel@driverdev.osuosl.org>; Sat, 30 May 2020 02:55:57 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id y17so150619plb.8
+ for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 19:55:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=jje/5IhObPA+c/Zlgq/cyu1iClYpt6YXbC2KMGtWJ1c=;
- b=QUyCXkd6w4TSACol46z3Gx6W2n3kUCK+8h+LbabWwqqVD4q+NDYDlx+XuZz9SMeV+H
- RK4Ic4L+HC/nL8X+xf1LbOxaf2Z5Ij7qpnJb1QEpWMzi2y7IcArbWXq8CaLFavl8twNf
- XrGY6ZtISspjuPqv+1FQ1MnyBFw4D2lKsT2So2PWms/wt56Wdax+r/vjX88jXdAgKYyz
- toJfO5F06w8IaKELpseQUTbUHFBVhVlemU2XVha/ikPdBLGmjxfI0lmh8A03glHK1Pmt
- VGztEC/L4lR+sY2rKnVw50NyZiQREMHx/5dlS82ighK1UG04GScb3dKgRf+TVkGjhm4Q
- VDCA==
+ bh=CdjRzSLuSxdNQv4Fy/DVTwbAer3PT1/PyJX0XOYAdI8=;
+ b=uwGG9xxjFgXIoH2AhNGEZHm8vi/Oj3qBxj+eiVdAJAG+2A3+4WlG49qD/YqwMSGfuK
+ A/dY6zGtDSTOocmqQdLMBr0XVqLUiJ0kH866NkdvZqraIuCGhSIoH60lHyYVi/hu+WyF
+ bJ3kleTuhomiZ/yUdaCb0eM0e/VM75ZX3xNQ/EiyneIr/M1BNP+BvjttpJCLlgB4e+8f
+ YI4UW3ORk/2RjgV9+eCadAjxNcJTy77A462TEtEEprlkoVJtChi4w/DYACQjWm9/p4J4
+ rzmm8rIMxMaCvQ0MdTh+2R+m0X+au4eFY2vhlahBAzGIFiYBo+F6stHuDuTaRl34Y+5u
+ puGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=jje/5IhObPA+c/Zlgq/cyu1iClYpt6YXbC2KMGtWJ1c=;
- b=RGqq39FcEO1zWO0fXdI22BCsJLbG95Ap8rKL1gVMc0zmowvDifLGrt+v8YfkFjG0qU
- OZvKDYlIcOU5c9JO5lM1VNlY9Kto4CqWO93xaOWtdGbV85xf+am1oHcr9wF1t8gt1emM
- 8rz8T/k4Lnz0CYpObJSzcDcIidYZV8nYofvWbxbyyxglOPDDVCuytaJfOPffAaM2rPM5
- X8q/K9zpVMVa1MELTWiczajLaKsUuF8wk7TsPcVmBIpSDiXkWzXq0gOiJ94xeu8PiO9F
- qm1iknhwmxdKM22HidZOD6oiArrbHwXLi2D2yBTSONIoP797zw3rH6tlWwtSHlrbqp6y
- rtHw==
-X-Gm-Message-State: AOAM530SqkGSJAqdSSOfh0XGBDmBfwoESKrC0JZC2wl1DUjBJos3Q43G
- n5ozlD7R2NCp3tKgYBDx7PM=
-X-Google-Smtp-Source: ABdhPJxTeWn0FvpILXqo3qkIDS/w90I1CeZQxKUvYGbAScVlB0GHDDPiBWH3nr72JkpLJ1+zCBz+Cw==
-X-Received: by 2002:a17:902:70c3:: with SMTP id
- l3mr11275860plt.70.1590806984520; 
- Fri, 29 May 2020 19:49:44 -0700 (PDT)
+ bh=CdjRzSLuSxdNQv4Fy/DVTwbAer3PT1/PyJX0XOYAdI8=;
+ b=SuOBwM8Jiu47GGnTyWkw0M1My+x3BIXRUDGg/hmsycsctRyDE7Assnb/Ey9h3j72cY
+ wri8YBbBmVBVVak0GUozow3yC/+byyTvuyFgt7N2YmGuRVE4lZD/5jxEa1nfNMbS+6jX
+ Sp+AEldQj8fwczoh69TIjOf97n+2zJQsVyFJrxdhG5pZxD4jjpUNiDoclfwUpcTQveX7
+ SejWvN6dyWhY67nwIbUJSIj4XJelpoU+yg9eyw8HPjtSJDG87SQqUrUw57xOQgXRmAFv
+ uHP3vC5cUY6E6CvcSX32OJ0K683pTOI4pChhnIQabkE3cgWfElyC62NHfc9j1NKMROPa
+ Prsg==
+X-Gm-Message-State: AOAM531mZvvDZ/KiPLal/FlhbrpUOU8eK0qIVIc3a91IXjX13FtQrPII
+ 6YesJy06EBbJR4PjrolhOcTsm+ar
+X-Google-Smtp-Source: ABdhPJxuWfMwbpudVyes0d/7k96w4zqeY7CYoSCL6/wC0SOuddrFsF1PiwqVWIuOMpbvU2ETNY96mg==
+X-Received: by 2002:a17:902:8f96:: with SMTP id
+ z22mr11361146plo.24.1590807356637; 
+ Fri, 29 May 2020 19:55:56 -0700 (PDT)
 Received: from ubuntu-s3-xlarge-x86 ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id fa19sm672964pjb.18.2020.05.29.19.49.43
+ by smtp.gmail.com with ESMTPSA id o201sm8932310pfd.115.2020.05.29.19.55.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 May 2020 19:49:43 -0700 (PDT)
-Date: Fri, 29 May 2020 19:49:41 -0700
+ Fri, 29 May 2020 19:55:55 -0700 (PDT)
+Date: Fri, 29 May 2020 19:55:53 -0700
 From: Nathan Chancellor <natechancellor@gmail.com>
 To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 1/9] staging: media: atomisp: fix incorrect NULL pointer
- check
-Message-ID: <20200530024941.GA1287405@ubuntu-s3-xlarge-x86>
+Subject: Re: [PATCH 2/9] staging: media: atomisp: declare 'struct device'
+ before using it
+Message-ID: <20200530025553.GA1367069@ubuntu-s3-xlarge-x86>
 References: <20200529200031.4117841-1-arnd@arndb.de>
- <CAKwvOdnND7XFgr7W9PvZAikJB1nKxB4K5N-oP0YrBT74oX_C9g@mail.gmail.com>
- <CAK8P3a2UKC=s7re2P+qfxz8eqeC+yCcPGuYKkgji9N_ugdgWhg@mail.gmail.com>
- <CAK8P3a3u9fs9pSOXSkrmO=xNWUZ5fxZnL_O=f=0BDZ8DkHNYWQ@mail.gmail.com>
+ <20200529200031.4117841-2-arnd@arndb.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAK8P3a3u9fs9pSOXSkrmO=xNWUZ5fxZnL_O=f=0BDZ8DkHNYWQ@mail.gmail.com>
+In-Reply-To: <20200529200031.4117841-2-arnd@arndb.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,48 +88,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>,
- Nick Desaulniers <ndesaulniers@google.com>,
- LKML <linux-kernel@vger.kernel.org>,
- clang-built-linux <clang-built-linux@googlegroups.com>,
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ clang-built-linux@googlegroups.com,
  Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, May 29, 2020 at 10:31:44PM +0200, Arnd Bergmann wrote:
-> On Fri, May 29, 2020 at 10:23 PM Arnd Bergmann <arnd@arndb.de> wrote:
-> >
-> > On Fri, May 29, 2020 at 10:04 PM 'Nick Desaulniers' via Clang Built
-> > Linux <clang-built-linux@googlegroups.com> wrote:
-> > >
-> > > See also Nathan's 7 patch series.
-> > > https://lore.kernel.org/lkml/20200527071150.3381228-1-natechancellor@gmail.com/
-> > >
-> > > Might be some overlap between series?
-> > >
-> >
-> > Probably. I really should have checked when I saw the number of warnings.
-> >
-> > At least this gives Mauro a chance to double-check the changes and see if
-> > Nathan and I came to different conclusions on any of them.
+On Fri, May 29, 2020 at 10:00:24PM +0200, Arnd Bergmann wrote:
+> In some configurations, including this header leads to a warning:
 > 
-> I checked now and found that the overlap is smaller than I expected.
-> In each case, Nathans' solution seems more complete than mine,
-> so this patch ("staging: media: atomisp: fix incorrect NULL pointer check")
-> and also "staging: media: atomisp: fix a type conversion warning" can be
-> dropped, but I think the others are still needed.
+> drivers/staging/media/atomisp//pci/sh_css_firmware.h:41:38: error: declaration of 'struct device' will not be visible outside of this function [-Werror,-Wvisibility]
 > 
->         Arnd
+> Make sure the struct tag is known before declaring a function
+> that uses it as an argument.
+> 
+> Fixes: 9d4fa1a16b28 ("media: atomisp: cleanup directory hierarchy")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Thanks for double checking! I will read through the rest of the series
-and review as I can.
+Reviewed-by: Nathan Chancellor <natechancellor@gmail.com>
 
-Cheers,
-Nathan
+> ---
+>  drivers/staging/media/atomisp/pci/sh_css_firmware.h | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/staging/media/atomisp/pci/sh_css_firmware.h b/drivers/staging/media/atomisp/pci/sh_css_firmware.h
+> index f6253392a6c9..317559c7689f 100644
+> --- a/drivers/staging/media/atomisp/pci/sh_css_firmware.h
+> +++ b/drivers/staging/media/atomisp/pci/sh_css_firmware.h
+> @@ -37,6 +37,7 @@ extern unsigned int sh_css_num_binaries;
+>  char
+>  *sh_css_get_fw_version(void);
+>  
+> +struct device;
+>  bool
+>  sh_css_check_firmware_version(struct device *dev, const char *fw_data);
+>  
+> -- 
+> 2.26.2
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
