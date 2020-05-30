@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 844F11E8E53
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 May 2020 08:56:15 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8142A1E8E57
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 May 2020 08:56:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 263E6884D6;
-	Sat, 30 May 2020 06:56:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B5BA6875FB;
+	Sat, 30 May 2020 06:56:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EBDV2UJswZSx; Sat, 30 May 2020 06:56:13 +0000 (UTC)
+	with ESMTP id jCC8pooxDupy; Sat, 30 May 2020 06:56:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 01AB1883F4;
-	Sat, 30 May 2020 06:56:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 567F3874AE;
+	Sat, 30 May 2020 06:56:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B4D881BF870
- for <devel@linuxdriverproject.org>; Sat, 30 May 2020 06:56:04 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 043991BF870
+ for <devel@linuxdriverproject.org>; Sat, 30 May 2020 06:56:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B1DD98941C
+ by silver.osuosl.org (Postfix) with ESMTP id ECD0226261
  for <devel@linuxdriverproject.org>; Sat, 30 May 2020 06:56:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eLLu3fonUpH8 for <devel@linuxdriverproject.org>;
+ with ESMTP id Ti9iJOXTJNGR for <devel@linuxdriverproject.org>;
  Sat, 30 May 2020 06:56:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6B547893CB
+ by silver.osuosl.org (Postfix) with ESMTPS id 6DC552154A
  for <devel@driverdev.osuosl.org>; Sat, 30 May 2020 06:56:03 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
  [95.90.213.197])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0EA3B208FE;
+ by mail.kernel.org (Postfix) with ESMTPSA id 16A0520C09;
  Sat, 30 May 2020 06:56:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1590821763;
- bh=TIOaXsWSG7sEJuTqxa/iOgSPHzI2wAnWFU+P+tAaXCc=;
+ bh=3goC8OB6qeZ0rHTPEgwao31zlEt51Co3ej14dAQU+3k=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=2s9qZ+SIeiWKPzz4kCdekqUzm8qgexQ3hDkY1GWOhRQ06gF9IzYxC8sdp1iJjc7SX
- 4JxdLcNerHgxssA5wTc2peqilSvSnB34AMkW08/0ps4F3TKzmwHQxwp6fczH+0DNH/
- 7GmqY7Yn/1UYaz674b1YVbrzhEnuYhAUcpZpwNAQ=
+ b=NMaHqJFaAlu1/ddoZC959Yhj39KFFJUMCmDIGbmv6mPvBMnOHUew6sansjyZpGEzl
+ uFZzMXJB+xwuDGv/A0gIHYCYXRzlCK0XkEsLSVexN2EObdt6VvrACf6C6osqrEgrdW
+ 5Z+7mOg5Ng4Iq7Id68OE6Hbm3IyevwOnEm3TGQVU=
 Received: from mchehab by mail.kernel.org with local (Exim 4.93)
  (envelope-from <mchehab@kernel.org>)
- id 1jevPU-001hov-Vl; Sat, 30 May 2020 08:56:00 +0200
+ id 1jevPV-001hoz-0Q; Sat, 30 May 2020 08:56:01 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH v2 11/41] media: atomisp: use Yocto Aero default hmm pool sizes
-Date: Sat, 30 May 2020 08:55:28 +0200
-Message-Id: <76f602ad6fcd43480976fde6e7dd7b4c6edfa074.1590821410.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v2 12/41] media: atomisp: get rid of a warning message
+Date: Sat, 30 May 2020 08:55:29 +0200
+Message-Id: <f4f659f8de12e2ad175772be0579ba3c524c2f52.1590821410.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1590821410.git.mchehab+huawei@kernel.org>
 References: <cover.1590821410.git.mchehab+huawei@kernel.org>
@@ -77,46 +77,75 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Yocto Aero driver has a different default for hmm pools.
+There's a warning message about an unused code. The code that
+were using it were commented out, due to a problem causing the
+firmware load to fail on the machines we're using for testing.
 
-Use the definitions there.
+Change the place where we're commenting the code out, in order
+to avoid the warning.
 
+Fixes: 95d1f398c4dc ("media: atomisp: keep the ISP powered on when setting it")
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/media/atomisp/pci/atomisp_v4l2.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ .../staging/media/atomisp/pci/atomisp_v4l2.c   | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
-index d795fe49130c..b30a2e54067c 100644
+index b30a2e54067c..c89d477a3948 100644
 --- a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
 +++ b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
-@@ -56,21 +56,21 @@ module_param(skip_fwload, uint, 0644);
- MODULE_PARM_DESC(skip_fwload, "Skip atomisp firmware load");
+@@ -734,6 +734,10 @@ static int atomisp_mrfld_pre_power_down(struct atomisp_device *isp)
+ * WA for DDR DVFS enable/disable
+ * By default, ISP will force DDR DVFS 1600MHz before disable DVFS
+ */
++
++#if 0
++// Used only by atomisp_mrfld_power
++
+ static void punit_ddr_dvfs_enable(bool enable)
+ {
+ 	int door_bell = 1 << 8;
+@@ -758,9 +762,12 @@ static void punit_ddr_dvfs_enable(bool enable)
+ 	if (max_wait == -1)
+ 		pr_info("DDR DVFS, door bell is not cleared within 3ms\n");
+ }
++#endif
  
- /* set reserved memory pool size in page */
--static unsigned int repool_pgnr;
-+static unsigned int repool_pgnr = 32768;
- module_param(repool_pgnr, uint, 0644);
- MODULE_PARM_DESC(repool_pgnr,
--		 "Set the reserved memory pool size in page (default:0)");
-+		 "Set the reserved memory pool size in page (default:32768)");
+ static int atomisp_mrfld_power(struct atomisp_device *isp, bool enable)
+ {
++// FIXME: at least with ISP2401, the code below causes the driver to break
++#if 0
+ 	unsigned long timeout;
+ 	u32 val = enable ? MRFLD_ISPSSPM0_IUNIT_POWER_ON :
+ 			   MRFLD_ISPSSPM0_IUNIT_POWER_OFF;
+@@ -817,22 +824,21 @@ static int atomisp_mrfld_power(struct atomisp_device *isp, bool enable)
  
- /* set dynamic memory pool size in page */
- unsigned int dypool_pgnr = UINT_MAX;
- module_param(dypool_pgnr, uint, 0644);
- MODULE_PARM_DESC(dypool_pgnr,
--		 "Set the dynamic memory pool size in page (default:0)");
-+		 "Set the dynamic memory pool size in page (default: unlimited)");
+ 	dev_err(isp->dev, "IUNIT power-%s timeout.\n", enable ? "on" : "off");
+ 	return -EBUSY;
++#else
++	return 0;
++#endif
+ }
  
--bool dypool_enable;
-+bool dypool_enable = true;
- module_param(dypool_enable, bool, 0644);
- MODULE_PARM_DESC(dypool_enable,
--		 "dynamic memory pool enable/disable (default:disable)");
-+		 "dynamic memory pool enable/disable (default:enabled)");
+ /* Workaround for pmu_nc_set_power_state not ready in MRFLD */
+ int atomisp_mrfld_power_down(struct atomisp_device *isp)
+ {
+-	return 0;
+-// FIXME: at least with ISP2401, the code below causes the driver to break
+-//	return atomisp_mrfld_power(isp, false);
++	return atomisp_mrfld_power(isp, false);
+ }
  
- /* memory optimization: deferred firmware loading */
- bool defer_fw_load;
+ /* Workaround for pmu_nc_set_power_state not ready in MRFLD */
+ int atomisp_mrfld_power_up(struct atomisp_device *isp)
+ {
+-	return 0;
+-// FIXME: at least with ISP2401, the code below causes the driver to break
+-//	return atomisp_mrfld_power(isp, true);
++	return atomisp_mrfld_power(isp, true);
+ }
+ 
+ int atomisp_runtime_suspend(struct device *dev)
 -- 
 2.26.2
 
