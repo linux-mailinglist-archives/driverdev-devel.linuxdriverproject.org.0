@@ -1,79 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1AB1D1E8D4F
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 May 2020 05:00:42 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 671371E8D57
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 May 2020 05:03:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A90AE89428;
-	Sat, 30 May 2020 03:00:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 371738855B;
+	Sat, 30 May 2020 03:03:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IX+7yjPhvDfV; Sat, 30 May 2020 03:00:39 +0000 (UTC)
+	with ESMTP id 1SW-8jl6RoKe; Sat, 30 May 2020 03:03:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1DC4B89341;
-	Sat, 30 May 2020 03:00:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 43EBE88542;
+	Sat, 30 May 2020 03:03:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1CA361BF5AE
- for <devel@linuxdriverproject.org>; Sat, 30 May 2020 03:00:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C4C571BF5AE
+ for <devel@linuxdriverproject.org>; Sat, 30 May 2020 03:03:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 19C5486A39
- for <devel@linuxdriverproject.org>; Sat, 30 May 2020 03:00:37 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C15DB875E0
+ for <devel@linuxdriverproject.org>; Sat, 30 May 2020 03:03:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9Tu3Ti3KIt7d for <devel@linuxdriverproject.org>;
- Sat, 30 May 2020 03:00:36 +0000 (UTC)
+ with ESMTP id mdvra6s8yF3a for <devel@linuxdriverproject.org>;
+ Sat, 30 May 2020 03:03:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 85D90869F8
- for <devel@driverdev.osuosl.org>; Sat, 30 May 2020 03:00:36 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id o6so786584pgh.2
- for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 20:00:36 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3AE66875F5
+ for <devel@driverdev.osuosl.org>; Sat, 30 May 2020 03:03:28 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id g5so716733pfm.10
+ for <devel@driverdev.osuosl.org>; Fri, 29 May 2020 20:03:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=YMRN0wSsDj4YeK0mPPFUdkTPLMlDL25YvZpi9MUfAXY=;
- b=PwG1wnMplph6a7K2rReSmViHb4/8f5VwWV08D3jshZYYBWN6v0jdB5yN5G0uRUmAWT
- FHrCHBCAFzCeLNedigwdrUhyL0bMCJ0dyPHNlJkmECXytoZIJiq/DHCSd14+4mtncVdU
- FDe3WhMx/vgbmWlvVF8ZWoYRYBuT4oziIqC2+y/4pNjZdiw7xVZrEQfJozuDMea/m02y
- XqwCVI+uukcTJrKm/QNkcUUlBv6PonWcYrhx8DMAxEeeaMutF6OKe2V1QBEPmfIsBygy
- GKip2PzZvBMa8U00SJPBd7o2qBRAQAZkn8kNYD1IWX4d5Ki+vFdlYdGubUCMcAU3+JaX
- 23qw==
+ bh=lD81mgG/12hqGQg2aqU3rSKCdgjuziiyCs+2dP2qbOo=;
+ b=ityY1Ou5U0JYYPc9su4dmvgyxPHl+4KRZEEUcOGyG7/Wk+a2vYXxgq2wW20UDKgiC5
+ fXrXJkCpBoGec4P/BYCH/CrWKvnLYsPdrLJmOYQHvgCCDc7HC9YTQH/VgB0jdNNzhj8g
+ q3JnOqYABqpvEp3bnMgF+g6FeaV2LkqPmyvZaoqCDKw9nmIM5ITMwondHDoYknykBGMs
+ OyhikiT5xS87XVjVvUPX49ztKl9eDK1OXUxFY0TaNeiApjsM8TSItbPGDBvSuI+tNeR3
+ MgwYpDnZObsf7rBVFjGGCZnWtDO1DBZbde3Iw+dQDomAAaIhJk7nxd8sH0H36Bfu1erW
+ 0WuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=YMRN0wSsDj4YeK0mPPFUdkTPLMlDL25YvZpi9MUfAXY=;
- b=EDd1h/EaHHRLACQNYVouGTSHMULplEvo9ncI9AyQMOsXt03tdk7/vHoSS9Y2mnm7+1
- +R8RpIhQKqvrK80n4uil0Wp3svDFAynbqtjFvQpEFbmyO9lXCS6oZfIuR4F1PpejR/Cf
- /70L4pcVKemCo/U4L3GDRty1iw6zmeZ6mB0COWxiB83XJHwU4Y563GT0kIXwtIrqUpfJ
- rPuCkf5XMNO4clYY51Ntq8tsrozx/A+6xyoopSynDqEOGisg89xLnYcuhlcdJb7ynuP+
- y2FK/S7jB2TewplX+FplDH87USFyAivgJrxTG2+jlaAUj8KGPqzDftewi+2/0skGlLst
- XhrA==
-X-Gm-Message-State: AOAM530LCDoand4uhvMozAH4ghCu6Qk5RROxcx8gGZrZl8oIqdQKgpzn
- H07SdkE9TxjSy8yviVzdQaY=
-X-Google-Smtp-Source: ABdhPJw7clXcDuDY7GMB5jjhBjvxVkDCV+qtLZEpQR/N8sHEQ049wXM2f3hCnUQNnxMGCS1QjW7jFQ==
-X-Received: by 2002:a63:a51b:: with SMTP id n27mr11250321pgf.40.1590807636020; 
- Fri, 29 May 2020 20:00:36 -0700 (PDT)
+ bh=lD81mgG/12hqGQg2aqU3rSKCdgjuziiyCs+2dP2qbOo=;
+ b=KaXlIx18CiNk99h0rcnByBXU2AHj/PSuvFweXQUtek+hx95rMKQmBOK9q0OCdSYsBP
+ pmOuG8Kx1KaVNmzJYRrBv1H4JgIwh8FpO1ijmS4AZO7GnyKZrR8iL71JkPmQFUU801C7
+ n0t30yEdvv1mIobvMQBo53IwfuCEUGg+sQZDSma1vDnaDAz1KMosRR5gFt1OYQf0ybfh
+ QZUGk+swOoaqB4adorEQtxJQJp6MToBNbS2WSJtOn9WtiWnoCgjzrPZ2w7QFFfG2dpQ5
+ zEmYOJjjz2ZoDCR57FwJ5W59OtX8siPpRaG66PiIYtp9oywYQDIPkSgVrvvwWqTAgHXj
+ vGIg==
+X-Gm-Message-State: AOAM530cgRuThLGjGMRVg8D+B5YVo1Fiil7/uLXhzLxe/nPLCKtvLqmi
+ w5bIKcdZc5EAgh/cppzA7pA=
+X-Google-Smtp-Source: ABdhPJyNWwxM3/2LAqCuRV+dyq6JiviqHnMEX14ZqdM1pdy7feq+oOMYehiBKKSZFBwo1kgplIwDmA==
+X-Received: by 2002:a63:e54d:: with SMTP id z13mr8836678pgj.78.1590807807646; 
+ Fri, 29 May 2020 20:03:27 -0700 (PDT)
 Received: from ubuntu-s3-xlarge-x86 ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id t12sm649218pjf.3.2020.05.29.20.00.34
+ by smtp.gmail.com with ESMTPSA id m18sm669003pjl.14.2020.05.29.20.03.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 May 2020 20:00:35 -0700 (PDT)
-Date: Fri, 29 May 2020 20:00:33 -0700
+ Fri, 29 May 2020 20:03:27 -0700 (PDT)
+Date: Fri, 29 May 2020 20:03:25 -0700
 From: Nathan Chancellor <natechancellor@gmail.com>
 To: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 7/9] staging: media: atomisp: fix enum type mixups
-Message-ID: <20200530030033.GD1367069@ubuntu-s3-xlarge-x86>
+Subject: Re: [PATCH 8/9] staging: media: atomisp: disable all custom formats
+Message-ID: <20200530030325.GE1367069@ubuntu-s3-xlarge-x86>
 References: <20200529200031.4117841-1-arnd@arndb.de>
- <20200529200031.4117841-7-arnd@arndb.de>
+ <20200529200031.4117841-8-arnd@arndb.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200529200031.4117841-7-arnd@arndb.de>
+In-Reply-To: <20200529200031.4117841-8-arnd@arndb.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,78 +95,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, May 29, 2020 at 10:00:29PM +0200, Arnd Bergmann wrote:
-> Some function calls pass an incorrect enum type:
+On Fri, May 29, 2020 at 10:00:30PM +0200, Arnd Bergmann wrote:
+> clang points out the usage of an incorrect enum type in the
+> list of supported image formats:
 > 
-> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:858:16: error: implicit conversion from enumeration type 'input_system_ID_t' to different enumeration type 'gp_device_ID_t' [-Werror,-Wenum-conversion]
->         gp_device_rst(INPUT_SYSTEM0_ID);
->         ~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~
-> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:860:19: error: implicit conversion from enumeration type 'input_system_ID_t' to different enumeration type 'gp_device_ID_t' [-Werror,-Wenum-conversion]
->         input_switch_rst(INPUT_SYSTEM0_ID);
->         ~~~~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~
-> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:876:27: error: implicit conversion from enumeration type 'input_system_cfg_flag_t' to different enumeration type 'input_system_connection_t' [-Werror,-Wenum-conversion]
->                 config.multicast[i]              = INPUT_SYSTEM_CFG_FLAG_RESET;
->                                                  ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:1326:32: error: implicit conversion from enumeration type 'input_system_ID_t' to different enumeration type 'gp_device_ID_t' [-Werror,-Wenum-conversion]
->         input_selector_cfg_for_sensor(INPUT_SYSTEM0_ID);
->         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~
-> drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c:1329:19: error: implicit conversion from enumeration type 'input_system_ID_t' to different enumeration type 'gp_device_ID_t' [-Werror,-Wenum-conversion]
->         input_switch_cfg(INPUT_SYSTEM0_ID, &config.input_switch_cfg);
->         ~~~~~~~~~~~~~~~~ ^~~~~~~~~~~~~~~~
+> drivers/staging/media/atomisp/pci/atomisp_subdev.c:49:65: error: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Werror,-Wenum-conversion]
+>         { V4L2_MBUS_FMT_CUSTOM_NV21, 12, 12, CSS_FRAME_FORMAT_NV21, 0, CSS_FRAME_FORMAT_NV21 },
+> drivers/staging/media/atomisp/pci/atomisp_subdev.c:49:39: error: implicit conversion from enumeration type 'enum ia_css_frame_format' to different enumeration type 'enum atomisp_input_format' [-Werror,-Wenum-conversion]
+>         { V4L2_MBUS_FMT_CUSTOM_NV21, 12, 12, CSS_FRAME_FORMAT_NV21, 0, CSS_FRAME_FORMAT_NV21 },
+>         { V4L2_MBUS_FMT_CUSTOM_NV12, 12, 12, CSS_FRAME_FORMAT_NV12, 0, CSS_FRAME_FORMAT_NV12 },
+>         { MEDIA_BUS_FMT_JPEG_1X8, 8, 8, CSS_FRAME_FORMAT_BINARY_8, 0, ATOMISP_INPUT_FORMAT_BINARY_8 },
 > 
-> INPUT_SYSTEM0_ID is zero, so use the corresponding zero-value
-> of the expected types instead.
+> Checking the git history, I found a commit that disabled one such case
+> because it did not work. It seems likely that the incorrect enum was
+> part of the original problem and that the others do not work either,
+> or have never been tested.
 > 
-> Fixes: a49d25364dfb ("staging/atomisp: Add support for the Intel IPU v2")
+> Disable all the ones that cause a warning.
+> 
+> Fixes: cb02ae3d71ea ("media: staging: atomisp: Disable custom format for now")
 > Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Huh weird that I did not see this warning but you do randconfigs so
-that's expected.
+I have this patch in my local tree and debated sending it myself. I
+think that this is the right fix for now, as the driver is being cleaned
+up. Maybe add a FIXME like the rest of this driver?
+
+Regardless of that last point:
 
 Reviewed-by: Nathan Chancellor <natechancellor@gmail.com>
 
 > ---
->  .../pci/hive_isp_css_common/host/input_system.c        | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+>  drivers/staging/media/atomisp/pci/atomisp_subdev.c | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c b/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c
-> index 2114cf4f3fda..aa0f0fca9346 100644
-> --- a/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c
-> +++ b/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_system.c
-> @@ -855,9 +855,9 @@ input_system_error_t input_system_configuration_reset(void)
->  
->  	input_system_network_rst(INPUT_SYSTEM0_ID);
->  
-> -	gp_device_rst(INPUT_SYSTEM0_ID);
-> +	gp_device_rst(GP_DEVICE0_ID);
->  
-> -	input_switch_rst(INPUT_SYSTEM0_ID);
-> +	input_switch_rst(GP_DEVICE0_ID);
->  
->  	//target_rst();
->  
-> @@ -873,7 +873,7 @@ input_system_error_t input_system_configuration_reset(void)
->  
->  	for (i = 0; i < N_CSI_PORTS; i++) {
->  		config.csi_buffer_flags[i]	 = INPUT_SYSTEM_CFG_FLAG_RESET;
-> -		config.multicast[i]		 = INPUT_SYSTEM_CFG_FLAG_RESET;
-> +		config.multicast[i]		 = INPUT_SYSTEM_DISCARD_ALL;
->  	}
->  
->  	config.source_type_flags				 = INPUT_SYSTEM_CFG_FLAG_RESET;
-> @@ -1323,10 +1323,10 @@ static input_system_error_t configuration_to_registers(void)
->  	} // end of switch (source_type)
->  
->  	// Set input selector.
-> -	input_selector_cfg_for_sensor(INPUT_SYSTEM0_ID);
-> +	input_selector_cfg_for_sensor(GP_DEVICE0_ID);
->  
->  	// Set input switch.
-> -	input_switch_cfg(INPUT_SYSTEM0_ID, &config.input_switch_cfg);
-> +	input_switch_cfg(GP_DEVICE0_ID, &config.input_switch_cfg);
->  
->  	// Set input formatters.
->  	// AM: IF are set dynamically.
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp_subdev.c b/drivers/staging/media/atomisp/pci/atomisp_subdev.c
+> index 46590129cbe3..8bce466cc128 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp_subdev.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp_subdev.c
+> @@ -44,9 +44,11 @@ const struct atomisp_in_fmt_conv atomisp_in_fmt_conv[] = {
+>  	{ MEDIA_BUS_FMT_SRGGB12_1X12, 12, 12, ATOMISP_INPUT_FORMAT_RAW_12, CSS_BAYER_ORDER_RGGB, CSS_FORMAT_RAW_12 },
+>  	{ MEDIA_BUS_FMT_UYVY8_1X16, 8, 8, ATOMISP_INPUT_FORMAT_YUV422_8, 0, ATOMISP_INPUT_FORMAT_YUV422_8 },
+>  	{ MEDIA_BUS_FMT_YUYV8_1X16, 8, 8, ATOMISP_INPUT_FORMAT_YUV422_8, 0, ATOMISP_INPUT_FORMAT_YUV422_8 },
+> +#if 0
+>  	{ MEDIA_BUS_FMT_JPEG_1X8, 8, 8, CSS_FRAME_FORMAT_BINARY_8, 0, ATOMISP_INPUT_FORMAT_BINARY_8 },
+>  	{ V4L2_MBUS_FMT_CUSTOM_NV12, 12, 12, CSS_FRAME_FORMAT_NV12, 0, CSS_FRAME_FORMAT_NV12 },
+>  	{ V4L2_MBUS_FMT_CUSTOM_NV21, 12, 12, CSS_FRAME_FORMAT_NV21, 0, CSS_FRAME_FORMAT_NV21 },
+> +#endif
+>  	{ V4L2_MBUS_FMT_CUSTOM_YUV420, 12, 12, ATOMISP_INPUT_FORMAT_YUV420_8_LEGACY, 0, ATOMISP_INPUT_FORMAT_YUV420_8_LEGACY },
+>  #if 0
+>  	{ V4L2_MBUS_FMT_CUSTOM_M10MO_RAW, 8, 8, CSS_FRAME_FORMAT_BINARY_8, 0, ATOMISP_INPUT_FORMAT_BINARY_8 },
 > -- 
 > 2.26.2
 > 
