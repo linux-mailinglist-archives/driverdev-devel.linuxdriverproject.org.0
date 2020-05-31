@@ -1,77 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C14711E9990
-	for <lists+driverdev-devel@lfdr.de>; Sun, 31 May 2020 19:43:31 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 24BD11E99D8
+	for <lists+driverdev-devel@lfdr.de>; Sun, 31 May 2020 20:26:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D370D87E41;
-	Sun, 31 May 2020 17:43:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 201FA85F60;
+	Sun, 31 May 2020 18:26:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jl7D0KI7N9ty; Sun, 31 May 2020 17:43:28 +0000 (UTC)
+	with ESMTP id nITxlcMZ5BuW; Sun, 31 May 2020 18:26:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F0FDF87CC9;
-	Sun, 31 May 2020 17:43:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DA56785166;
+	Sun, 31 May 2020 18:26:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D44891BF3BD
- for <devel@linuxdriverproject.org>; Sun, 31 May 2020 17:43:24 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 08F1A1BF57B
+ for <devel@linuxdriverproject.org>; Sun, 31 May 2020 18:26:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C132287CC9
- for <devel@linuxdriverproject.org>; Sun, 31 May 2020 17:43:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id F10512049D
+ for <devel@linuxdriverproject.org>; Sun, 31 May 2020 18:26:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y8JM8E0wD20r for <devel@linuxdriverproject.org>;
- Sun, 31 May 2020 17:43:22 +0000 (UTC)
+ with ESMTP id iSbAJTmSmleM for <devel@linuxdriverproject.org>;
+ Sun, 31 May 2020 18:26:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
- [209.85.216.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A0B7F87C76
- for <devel@driverdev.osuosl.org>; Sun, 31 May 2020 17:43:22 +0000 (UTC)
-Received: by mail-pj1-f68.google.com with SMTP id q9so3897059pjm.2
- for <devel@driverdev.osuosl.org>; Sun, 31 May 2020 10:43:22 -0700 (PDT)
+Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
+ [209.85.208.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8D95B20341
+ for <devel@driverdev.osuosl.org>; Sun, 31 May 2020 18:26:26 +0000 (UTC)
+Received: by mail-lj1-f194.google.com with SMTP id u10so4132889ljj.9
+ for <devel@driverdev.osuosl.org>; Sun, 31 May 2020 11:26:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=++n8hYI7Hh/vLPZoLCJ3ybLJ1cQuKKnfR3srqDdsFqA=;
- b=or7Yj6wbWRbcUof3aPMTrXzC6Vty0IKsuZmHclnbXMuzVoBys6Mf1FIMscIynDJG4I
- jaUtSxKzb7THMZ9depepNWDU9biPH8AbtWckODKKo016njYRuf+6Wiyt0DcofFSZ2D3d
- Jz43SrssK8bQEA4tfA7lNsZzVIFhMD6JKWzt27HDjtu3HGFFmwBEJ4aOEmzPMzRgotES
- FroUj8Pb4c9SOJHpa4iVAAMGPCjVXErhF0DbjXOZLo2rm5XJGRZ8yWQ004O23DcjLMa0
- pGNjAiQoBykDUKUlpSQxVs7aoRyil/npFOg0ptyn5hbfbOsfeGZymGSFRL00a1/lH82+
- prVA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LhUKdkxEft6nfXa1bSZjn8ZV2z/LvCOdEDYS/DQ0vVs=;
+ b=L5wYfa5jjbO3UasXEK47PX2DzUNEb/iXxOA1wo11xyBqd+YwfEFz1YQKpmevBRqrrQ
+ H+9I2EWB5kF8Q3wkorqFNuCGL6Xnn8ACBEhShq6f4LoaYhotoq38vQxyQZ6s1/4JAgce
+ FahBshoFpH2ttRXvhXVPtQlRpnQz32VvJLzslGS/uASlenPlzKnyjsJfMiLoPxW2kXfJ
+ nS8LQrxFgBmY28W1i44Jm/Kk4Ogc4nICy1Iz5nRFiPADUOUWfoLI7F3qD3RsLbz6d1dp
+ 99uHVNFhDMRnB0a/A0jpqSAo/LCIW+6ZUdpsy0SaGoELyGtG8CicbqlXpO653QWdtdyb
+ SanA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=++n8hYI7Hh/vLPZoLCJ3ybLJ1cQuKKnfR3srqDdsFqA=;
- b=LNOXGFb29geKnoOYGpAVf7zcAIxFhSIcpYvfZKWx5wPaH2Kzszg80xihMjqiwiwIKk
- EWYAesR6qCR9AcrW+UywOnQGRj1X6YRLrNOQ0hEScCYI5WROu8mGaZ1+nz/Uc55T3E7f
- pIp//I2siVlR6eXaIqR96aCE8s9mHjs+a7T3dV6CLJDCQYPerTsbkc0pzkZ8yDOUWvo2
- +Kw4d4Q43yWHUOETNCEZtPGngOMwZ+PZ4fuUm+2Y/TVuNccGX2TURleAibiYhDRnjCj9
- YsV7k+UBN7g0p5ReLhFpjs2xy51QBNCUK/Qc9VF3CBpDI++VPtJ0oD+tjjA2kvHFJ92Z
- K9DA==
-X-Gm-Message-State: AOAM531I+tr3txKY4RJSw0b8dxPiCB6gp+xNVOADOWeGrZ8gPB3C+06n
- d951zCzmtbhuZu9QkwS9n4M=
-X-Google-Smtp-Source: ABdhPJzHSnEPb3AH9bRq0HQlO7tVo/4iay4/TCFEo5BBOG4UwnaAMCFunroy+R9JYQsAk3PbMUCO2A==
-X-Received: by 2002:a17:90a:32ee:: with SMTP id
- l101mr13742252pjb.213.1590947002134; 
- Sun, 31 May 2020 10:43:22 -0700 (PDT)
-Received: from jordon-HP-15-Notebook-PC.domain.name ([122.167.39.216])
- by smtp.gmail.com with ESMTPSA id go1sm4922841pjb.26.2020.05.31.10.43.18
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 31 May 2020 10:43:21 -0700 (PDT)
-From: Souptick Joarder <jrdr.linux@gmail.com>
-To: gregkh@linuxfoundation.org, jane.pnx9@gmail.com, simon@nikanor.nu,
- harshjain32@gmail.com, linux.bhar@gmail.com, festevam@gmail.com,
- jeremy@azazel.net
-Subject: [PATCH] staging: kpc2000: kpc_dma: Convert get_user_pages() -->
- pin_user_pages()
-Date: Sun, 31 May 2020 23:21:31 +0530
-Message-Id: <1590947491-11194-1-git-send-email-jrdr.linux@gmail.com>
-X-Mailer: git-send-email 1.9.1
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LhUKdkxEft6nfXa1bSZjn8ZV2z/LvCOdEDYS/DQ0vVs=;
+ b=IqkN/H5OljTN1J8oweqEPZX7QbiRQAy0L7846t311Lz21AfgT5YnPQ6+RcfWB9zPMF
+ 8Sfmrp1aQu3O7aBRyxHaYgZ65yX9xqwWLtNmLQ8E1WyaUfcwXxno1Ao3WR2WrvmG/Vg6
+ SDYLG1moHibw4TMfqPeT6ehvR24tluJSZiFjI66UlZKCEpO4W0nY1BI5rRziY15c3Qj1
+ jjlqTKneOp0juzMpRwAB+XlDmXJb8J+eGrSVB9exYQhRB1U9JZkSpctYscbyD2S7H/Fv
+ 4sdBeEn3CrYcNlMvg4c/Ib/7QFZFBWEtmgtB3bS+n8GjMjyBKGwZeM0HYf0Psa1R7mYM
+ RT6w==
+X-Gm-Message-State: AOAM531iwAryS478ORU75o5OJk+fS1f5OB7EnBqtKAIpkV3i35rsqECd
+ 58O/8qH3jpUbmohTDCfb5gA=
+X-Google-Smtp-Source: ABdhPJz0rUAOzlz9y9LZbKi8Su6ICT/PIqmYq6NxSCagYLO4x0cgipgUTrymIwWMLEWcKltLeRUcIw==
+X-Received: by 2002:a2e:b550:: with SMTP id a16mr6854221ljn.345.1590949584594; 
+ Sun, 31 May 2020 11:26:24 -0700 (PDT)
+Received: from alpha (84.188.smarthome.spb.ru. [80.249.188.84])
+ by smtp.gmail.com with ESMTPSA id a8sm3396969ljp.102.2020.05.31.11.26.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 31 May 2020 11:26:23 -0700 (PDT)
+Received: (nullmailer pid 42072 invoked by uid 1000);
+ Sun, 31 May 2020 18:31:11 -0000
+From: Ivan Safonov <insafonov@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2] staging:r8723bs: remove wrappers around skb_clone() and
+ remove unnecessary in_interrupt() call
+Date: Sun, 31 May 2020 21:17:52 +0300
+Message-Id: <20200531181751.41830-1-insafonov@gmail.com>
+X-Mailer: git-send-email 2.26.2
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,93 +86,89 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, John Hubbard <jhubbard@nvidia.com>,
- linux-kernel@vger.kernel.org, Souptick Joarder <jrdr.linux@gmail.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, R Veera Kumar <vkor@vkten.in>,
+ Ivan Safonov <insafonov@gmail.com>,
+ Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>,
+ YueHaibing <yuehaibing@huawei.com>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Hariprasad Kelam <hariprasad.kelam@gmail.com>, linux-kernel@vger.kernel.org,
+ Hans de Goede <hdegoede@redhat.com>, Lukasz Szczesny <luk@wybcz.pl>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Shobhit Kukreti <shobhitkukreti@gmail.com>, Pascal Terjan <pterjan@google.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In 2019, we introduced pin_user_pages*() and now we are converting
-get_user_pages*() to the new API as appropriate. [1] & [2] could
-be referred for more information.
+Wrappers around skb_clone() do not simplify the driver code.
 
-When pin_user_pages() returns numbers of partially mapped pages,
-those pages were not unpinned as part of error handling. Fixed
-it as part of this patch.
+The skb_clone() is always called from an interrupt handler,
+so use GFP_ATOMIC allocation only.
 
-[1] Documentation/core-api/pin_user_pages.rst
-
-[2] "Explicit pinning of user-space pages":
-        https://lwn.net/Articles/807108/
-
-Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-Cc: John Hubbard <jhubbard@nvidia.com>
+Signed-off-by: Ivan Safonov <insafonov@gmail.com>
 ---
-Hi,
+Changes in v2:
+  - in_interrupt() removal has been described.
 
-I'm compile tested this, but unable to run-time test, so any testing
-help is much appriciated.
+ drivers/staging/rtl8723bs/include/osdep_service.h | 3 ---
+ drivers/staging/rtl8723bs/os_dep/osdep_service.c  | 5 -----
+ drivers/staging/rtl8723bs/os_dep/recv_linux.c     | 2 +-
+ 3 files changed, 1 insertion(+), 9 deletions(-)
 
- drivers/staging/kpc2000/kpc_dma/fileops.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-index 8975346..29bab13 100644
---- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-+++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-@@ -48,6 +48,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 	u64 card_addr;
- 	u64 dma_addr;
- 	u64 user_ctl;
-+	int nr_pages = 0;
+diff --git a/drivers/staging/rtl8723bs/include/osdep_service.h b/drivers/staging/rtl8723bs/include/osdep_service.h
+index 5f681899bbec..be34e279670b 100644
+--- a/drivers/staging/rtl8723bs/include/osdep_service.h
++++ b/drivers/staging/rtl8723bs/include/osdep_service.h
+@@ -94,7 +94,6 @@ void _kfree(u8 *pbuf, u32 sz);
  
- 	ldev = priv->ldev;
+ struct sk_buff *_rtw_skb_alloc(u32 sz);
+ struct sk_buff *_rtw_skb_copy(const struct sk_buff *skb);
+-struct sk_buff *_rtw_skb_clone(struct sk_buff *skb);
+ int _rtw_netif_rx(_nic_hdl ndev, struct sk_buff *skb);
  
-@@ -76,13 +77,15 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ #define rtw_malloc(sz)			_rtw_malloc((sz))
+@@ -103,9 +102,7 @@ int _rtw_netif_rx(_nic_hdl ndev, struct sk_buff *skb);
+ #define rtw_skb_alloc(size) _rtw_skb_alloc((size))
+ #define rtw_skb_alloc_f(size, mstat_f)	_rtw_skb_alloc((size))
+ #define rtw_skb_copy(skb)	_rtw_skb_copy((skb))
+-#define rtw_skb_clone(skb)	_rtw_skb_clone((skb))
+ #define rtw_skb_copy_f(skb, mstat_f)	_rtw_skb_copy((skb))
+-#define rtw_skb_clone_f(skb, mstat_f)	_rtw_skb_clone((skb))
+ #define rtw_netif_rx(ndev, skb) _rtw_netif_rx(ndev, skb)
  
- 	// Lock the user buffer pages in memory, and hold on to the page pointers (for the sglist)
- 	mmap_read_lock(current->mm);      /*  get memory map semaphore */
--	rv = get_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE | FOLL_GET, acd->user_pages, NULL);
-+	rv = pin_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE, acd->user_pages, NULL);
- 	mmap_read_unlock(current->mm);        /*  release the semaphore */
- 	if (rv != acd->page_count) {
--		dev_err(&priv->ldev->pldev->dev, "Couldn't get_user_pages (%ld)\n", rv);
-+		dev_err(&priv->ldev->pldev->dev, "Couldn't pin_user_pages (%ld)\n", rv);
-+		nr_pages = rv;
- 		goto err_get_user_pages;
- 	}
+ extern void _rtw_init_queue(struct __queue	*pqueue);
+diff --git a/drivers/staging/rtl8723bs/os_dep/osdep_service.c b/drivers/staging/rtl8723bs/os_dep/osdep_service.c
+index 4238209ec175..6d443197a0cf 100644
+--- a/drivers/staging/rtl8723bs/os_dep/osdep_service.c
++++ b/drivers/staging/rtl8723bs/os_dep/osdep_service.c
+@@ -47,11 +47,6 @@ inline struct sk_buff *_rtw_skb_copy(const struct sk_buff *skb)
+ 	return skb_copy(skb, in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
+ }
  
-+	nr_pages = acd->page_count;
- 	// Allocate and setup the sg_table (scatterlist entries)
- 	rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE - 1), iov_len, GFP_KERNEL);
- 	if (rv) {
-@@ -189,10 +192,9 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 	sg_free_table(&acd->sgt);
-  err_dma_map_sg:
-  err_alloc_sg_table:
--	for (i = 0 ; i < acd->page_count ; i++)
--		put_page(acd->user_pages[i]);
+-inline struct sk_buff *_rtw_skb_clone(struct sk_buff *skb)
+-{
+-	return skb_clone(skb, in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
+-}
 -
-  err_get_user_pages:
-+	if (nr_pages > 0)
-+		unpin_user_pages(acd->user_pages, nr_pages);
- 	kfree(acd->user_pages);
-  err_alloc_userpages:
- 	kfree(acd);
-@@ -217,8 +219,7 @@ void  transfer_complete_cb(struct aio_cb_data *acd, size_t xfr_count, u32 flags)
- 
- 	dma_unmap_sg(&acd->ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, acd->ldev->dir);
- 
--	for (i = 0 ; i < acd->page_count ; i++)
--		put_page(acd->user_pages[i]);
-+	unpin_user_pages(acd->user_pages, acd->page_count);
- 
- 	sg_free_table(&acd->sgt);
- 
+ inline int _rtw_netif_rx(_nic_hdl ndev, struct sk_buff *skb)
+ {
+ 	skb->dev = ndev;
+diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+index eb4d1c3008fe..b2a1bbb30df6 100644
+--- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+@@ -110,7 +110,7 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
+ 			if (memcmp(pattrib->dst, myid(&padapter->eeprompriv), ETH_ALEN)) {
+ 				if (bmcast) {
+ 					psta = rtw_get_bcmc_stainfo(padapter);
+-					pskb2 = rtw_skb_clone(pkt);
++					pskb2 = skb_clone(pkt, GFP_ATOMIC);
+ 				} else {
+ 					psta = rtw_get_stainfo(pstapriv, pattrib->dst);
+ 				}
 -- 
-1.9.1
+2.26.2
 
 _______________________________________________
 devel mailing list
