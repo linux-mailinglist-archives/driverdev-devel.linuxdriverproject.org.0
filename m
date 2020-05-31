@@ -1,69 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A51E11E9A7A
-	for <lists+driverdev-devel@lfdr.de>; Sun, 31 May 2020 23:15:45 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9E151E9A6E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 31 May 2020 23:01:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 02FFE85F45;
-	Sun, 31 May 2020 21:15:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C201287B77;
+	Sun, 31 May 2020 21:01:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 42y3R9-j56Yu; Sun, 31 May 2020 21:15:43 +0000 (UTC)
+	with ESMTP id PXoox787+n4Q; Sun, 31 May 2020 21:01:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 14BF28480D;
-	Sun, 31 May 2020 21:15:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E30A7873DE;
+	Sun, 31 May 2020 21:01:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3495D1BF37A
- for <devel@linuxdriverproject.org>; Sun, 31 May 2020 21:15:40 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 104151BF3D6
+ for <devel@linuxdriverproject.org>; Sun, 31 May 2020 21:01:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3116E867C5
- for <devel@linuxdriverproject.org>; Sun, 31 May 2020 21:15:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id EE9B3856BF
+ for <devel@linuxdriverproject.org>; Sun, 31 May 2020 21:01:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bySJK75Fqk9L for <devel@linuxdriverproject.org>;
- Sun, 31 May 2020 21:15:39 +0000 (UTC)
-X-Greylist: delayed 02:59:59 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0151.hostedemail.com
- [216.40.44.151])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2F8A986767
- for <devel@driverdev.osuosl.org>; Sun, 31 May 2020 21:15:39 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave06.hostedemail.com (Postfix) with ESMTP id 4EEBF8123E32
- for <devel@driverdev.osuosl.org>; Sun, 31 May 2020 17:37:06 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay03.hostedemail.com (Postfix) with ESMTP id 7F546837F253;
- Sun, 31 May 2020 17:37:03 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2194:2199:2393:2559:2562:2828:2904:3138:3139:3140:3141:3142:3352:3622:3865:3867:3868:3870:3871:3872:3873:3874:4321:5007:6119:6742:10004:10400:10848:11026:11232:11657:11658:11914:12043:12296:12297:12438:12740:12760:12895:13019:13069:13311:13357:13439:14659:14721:21080:21627:21990:30012:30054:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: cup30_260de1426d76
-X-Filterd-Recvd-Size: 2605
-Received: from XPS-9350.home (unknown [47.151.136.130])
- (Authenticated sender: joe@perches.com)
- by omf02.hostedemail.com (Postfix) with ESMTPA;
- Sun, 31 May 2020 17:37:01 +0000 (UTC)
-Message-ID: <24e0f572511724ea338f8802fde2ad3a359ea8d5.camel@perches.com>
-Subject: Re: [PATCH] staging:r8723bs: remove wrappers around skb_clone()
-From: Joe Perches <joe@perches.com>
-To: Ivan Safonov <insafonov@gmail.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Date: Sun, 31 May 2020 10:36:59 -0700
-In-Reply-To: <8e4df253-e021-6c29-96ab-24eed9b61eb2@gmail.com>
-References: <20200531160843.39120-1-insafonov@gmail.com>
- <7bf8612d3708b811e026daec5c7a1486c5954905.camel@perches.com>
- <8e4df253-e021-6c29-96ab-24eed9b61eb2@gmail.com>
-User-Agent: Evolution 3.36.2-0ubuntu1 
+ with ESMTP id 5Cy1yS-zV-2U for <devel@linuxdriverproject.org>;
+ Sun, 31 May 2020 21:01:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from asavdk4.altibox.net (asavdk4.altibox.net [109.247.116.15])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 213728561D
+ for <devel@driverdev.osuosl.org>; Sun, 31 May 2020 21:01:32 +0000 (UTC)
+Received: from ravnborg.org (unknown [158.248.194.18])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by asavdk4.altibox.net (Postfix) with ESMTPS id AFC83804BB;
+ Sun, 31 May 2020 23:01:28 +0200 (CEST)
+Date: Sun, 31 May 2020 23:01:27 +0200
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Colin King <colin.king@canonical.com>
+Subject: Re: [PATCH] staging: fbtft: fb_st7789v: make HSD20_IPS numeric and
+ not a string
+Message-ID: <20200531210127.GD138722@ravnborg.org>
+References: <20200521135038.345878-1-colin.king@canonical.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200521135038.345878-1-colin.king@canonical.com>
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=G88y7es5 c=1 sm=1 tr=0
+ a=UWs3HLbX/2nnQ3s7vZ42gw==:117 a=UWs3HLbX/2nnQ3s7vZ42gw==:17
+ a=kj9zAlcOel0A:10 a=DfNHnWVPAAAA:8 a=e5mUnYsNAAAA:8
+ a=O1M_s53xj7QJbslopEUA:9 a=CjuIK1q_8ugA:10 a=rjTVMONInIDnV1a_A2c_:22
+ a=Vxmtnl_E_bksehYqCbjh:22
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,50 +64,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, R Veera Kumar <vkor@vkten.in>,
- Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>,
- YueHaibing <yuehaibing@huawei.com>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Hariprasad Kelam <hariprasad.kelam@gmail.com>, linux-kernel@vger.kernel.org,
- Hans de Goede <hdegoede@redhat.com>, Lukasz Szczesny <luk@wybcz.pl>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
- Shobhit Kukreti <shobhitkukreti@gmail.com>, Pascal Terjan <pterjan@google.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Oliver Graute <oliver.graute@kococonnector.com>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, 2020-05-31 at 20:28 +0300, Ivan Safonov wrote:
-> On 5/31/20 7:15 PM, Joe Perches wrote:
-> > On Sun, 2020-05-31 at 19:08 +0300, Ivan Safonov wrote:
-> > > Wrappers around skb_clone() do not simplify the driver code.
-> > []
-> > > -inline struct sk_buff *_rtw_skb_clone(struct sk_buff *skb)
-> > > -{
-> > > -	return skb_clone(skb, in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
-> > > -}
-> > > -
-> > []
-> > > diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-> > []
-> > > @@ -110,7 +110,7 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
-> > >   			if (memcmp(pattrib->dst, myid(&padapter->eeprompriv), ETH_ALEN)) {
-> > >   				if (bmcast) {
-> > >   					psta = rtw_get_bcmc_stainfo(padapter);
-> > > -					pskb2 = rtw_skb_clone(pkt);
-> > > +					pskb2 = skb_clone(pkt, GFP_ATOMIC);
-> > 
-> > Why make every clone allocation GFP_ATOMIC ?
+Hi Colin/Greg.
+
+On Thu, May 21, 2020 at 02:50:38PM +0100, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
 > 
-> The rtw_os_recv_indicate_pkt() is always called from an interrupt handler.
+> Currently HSD20_IPS is defined as "true" and will always result in a
+> non-zero result even if it is defined as "false" because it is an array
+> and that will never be zero. Fix this by defining it as an integer 1
+> rather than a literal string.
+> 
+> Addessses-Coverity: ("Array compared against 0")
+> Fixes: f03c9b788472 ("staging: fbtft: fb_st7789v: Initialize the Display")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  drivers/staging/fbtft/fb_st7789v.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/fbtft/fb_st7789v.c b/drivers/staging/fbtft/fb_st7789v.c
+> index ebc17e05ecd0..3a280cc1892c 100644
+> --- a/drivers/staging/fbtft/fb_st7789v.c
+> +++ b/drivers/staging/fbtft/fb_st7789v.c
+> @@ -24,7 +24,7 @@
+>  	"D0 05 0A 09 08 05 2E 44 45 0F 17 16 2B 33\n" \
+>  	"D0 05 0A 09 08 05 2E 43 45 0F 16 16 2B 33"
+>  
+> -#define HSD20_IPS "true"
+> +#define HSD20_IPS 1
+>  
+>  /**
+>   * enum st7789v_command - ST7789V display controller commands
 
-It'd be better to indicate you know that in the changelog
-as the subject and changelog just shows removing wrappers
-and the patch code does not agree with that.
+Patch does not apply to drm-misc-next, seems to be a staging thing.
+So do not expext the DRM people to pick it up.
 
+	Sam
 
-
+> -- 
+> 2.25.1
+> 
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
