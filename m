@@ -1,80 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1322A1EA1F6
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jun 2020 12:37:06 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CC681EA216
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jun 2020 12:45:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 659A087918;
-	Mon,  1 Jun 2020 10:37:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D4631231A1;
+	Mon,  1 Jun 2020 10:45:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JdRRNFBTXuxm; Mon,  1 Jun 2020 10:37:03 +0000 (UTC)
+	with ESMTP id GFkFlis6Csmu; Mon,  1 Jun 2020 10:45:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4AD1486CD4;
-	Mon,  1 Jun 2020 10:37:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EF87422836;
+	Mon,  1 Jun 2020 10:45:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7038A1BF401
- for <devel@linuxdriverproject.org>; Mon,  1 Jun 2020 10:37:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 384CA1BF401
+ for <devel@linuxdriverproject.org>; Mon,  1 Jun 2020 10:45:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6CFFE86CD4
- for <devel@linuxdriverproject.org>; Mon,  1 Jun 2020 10:37:01 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 34C9F87A78
+ for <devel@linuxdriverproject.org>; Mon,  1 Jun 2020 10:45:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i5RPG1dp6zDw for <devel@linuxdriverproject.org>;
- Mon,  1 Jun 2020 10:37:00 +0000 (UTC)
+ with ESMTP id 0_xQveSp5QFQ for <devel@linuxdriverproject.org>;
+ Mon,  1 Jun 2020 10:45:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
- [209.85.218.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 932D780862
- for <devel@driverdev.osuosl.org>; Mon,  1 Jun 2020 10:37:00 +0000 (UTC)
-Received: by mail-ej1-f68.google.com with SMTP id n24so8759598ejd.0
- for <devel@driverdev.osuosl.org>; Mon, 01 Jun 2020 03:37:00 -0700 (PDT)
+Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com
+ [209.85.208.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 290FE87A76
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jun 2020 10:45:31 +0000 (UTC)
+Received: by mail-ed1-f68.google.com with SMTP id l1so6051189ede.11
+ for <devel@driverdev.osuosl.org>; Mon, 01 Jun 2020 03:45:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Ue0RfH9mcbqs6OOPuFsUYFCC+BDZdNW72pIEeu8wOoQ=;
- b=vQ6Vo707SyMJYC2o7E4SAZHV0ChEQ6uOuBoo1FhRe6Y2LzEE/tDgIowjO+yTsr2h5m
- Obxj2Pm690sgAl7DlOlFoZuTcDP3ya+7SX5tniddKmZUCYtP2hazox3naifTG+rHcSaI
- /9W5pJcENZZDXUSIxRy6btgH84K+BME1O8VHU/HF05xOsDMdSvTnN8MYdAYcMz7TxCiP
- zkWQSqUKQpl2u+gpiNeE5eo79+pBvLGeZ1FRFP6VcPE1B3ZkEfjnhtdlCr1W9vGcuQkl
- RJYPlTOQUFH2Y6nuMOXHzcEwQB+PYSwr2zPQKe/keW2FU8ofFsgvU6rsMoqz2uioI2Dy
- XQrQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=AQCWkDRq2fhfxdoPdO9VTDnwBK6o27h3tUHRPkDXm2M=;
+ b=e6PjRJPOmtFkfuUv9375vTAtLHEE81iHXsUcTZeDIaicRpjzz3zh6/4s+CP+KJbHq0
+ 9yFdmTj0dMewxswB6bd/1UIAB1hJGNKyD9Uo+JRQraQ16zN4w9+2BuFzqJdVn+MLF/Gr
+ skjGuUgM7/opznglu3d0lFNxD/HwQGREr7xJvuc+5V6WOFPWdcBwmopOeNjkcRMWKmeg
+ rbw0PAFrTI7nGUHONO8OtPtCXWXAR9y4kJsYEQsC8LQYeWWL1l8t4q4I1m7YcUxmLG5t
+ ovbqwkk6JU6biOoLcxX8MMIYEWtpei463MPawitarFfVcxyDNzNbYH0O8aVV7GRyosMi
+ vWRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Ue0RfH9mcbqs6OOPuFsUYFCC+BDZdNW72pIEeu8wOoQ=;
- b=ff2Kil2YNNe69NFEbNdYk5xHBdtAnR0GO+c2HIJBGFq4VoGw5gNafIEBbqARNopIGV
- Xal8NRhj3eYjbpGSSddG4louyZOxz2M4POWmHOFFavWScwNGlLVRZHkfRMfd2mCYVrrv
- 7U7dsyRtMMFt+5X0qTFgvSHc9i/BVdc8EkQCOzifSsj2yPRMYcbJaB9S75sjfUz6+seO
- NXQU1gIMbsXZEImTrIypn9byxMfcXNDAjridd+nVc9hslyBkGmk7ofAwtbNh4aBcnAyw
- X7pjApR5fMvmucq8qr54QYjizy5rvcoC3ua6Ncfj6d9+lu1sKmyZcBvlZREDQyLPjGA5
- Tuog==
-X-Gm-Message-State: AOAM533YJoZKgkPxLJ+f9OjnJxTcxaBk7DheMVUqNYMvV+NPjm8MAYJb
- 9A2SgB5b1jrd3ABeM5KzM84=
-X-Google-Smtp-Source: ABdhPJykpSExvDz3HfRnnW9p+LN7xTwwzRdDp8ESAGy1qxIfQmdKdE058SE2ntN2E5PZ594+wkFXTg==
-X-Received: by 2002:a17:906:11d9:: with SMTP id
- o25mr3418753eja.377.1591007818872; 
- Mon, 01 Jun 2020 03:36:58 -0700 (PDT)
-Received: from ubuntu (host-85-26-109-233.dynamic.voo.be. [85.26.109.233])
- by smtp.gmail.com with ESMTPSA id ch14sm15746997edb.33.2020.06.01.03.36.58
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=AQCWkDRq2fhfxdoPdO9VTDnwBK6o27h3tUHRPkDXm2M=;
+ b=FBB97805I+/0cMnkUcmjKfREBeT4R2ELsvdVbV9GzjG4FQh3SmmJwvPjJ1RaEGzAht
+ QZaPXF1IrAtserftDLlNo0R/Q0DwUSBXhlPD8D22kM6pcjwIYgdatGtWpv0h59fqlVqL
+ z5N67dwuwpMziowyvt6p4y1ErMCCDk4ztfcebnuFR/6ZLLd1h9ISllXVlFCUQNmAB6I1
+ 9CX2xNhkXj3VGg/I72+WGvXVx1CC+wrww/Off8rNaUVAbCn3247KklPFid7yZZdxxDUh
+ XV6nJV+gqr1GDQkydsUYFsgdEKfg6E+Yy7q9/iAtBzrFnJ+zZGB5hKG2cKvmwq2hMXS6
+ xhVw==
+X-Gm-Message-State: AOAM531kcBh3S/yFXM2XAwY41lUNMvmaPFFvgoebZU8Gd81leVhrNIPB
+ TcueS/gQb7TkU8yU/a/0vrg=
+X-Google-Smtp-Source: ABdhPJwCI8kOy/Wj8syQKlllWZd6n9UrlrKdjr1Mn56O/Q0uCz9gJxrvUKgqALFfIXue4utIqXp3xQ==
+X-Received: by 2002:a50:f9cc:: with SMTP id a12mr4160580edq.227.1591008329663; 
+ Mon, 01 Jun 2020 03:45:29 -0700 (PDT)
+Received: from ubuntu.localdomain (host-85-26-109-233.dynamic.voo.be.
+ [85.26.109.233])
+ by smtp.gmail.com with ESMTPSA id sa19sm8360923ejb.15.2020.06.01.03.45.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Jun 2020 03:36:58 -0700 (PDT)
-Date: Mon, 1 Jun 2020 12:36:55 +0200
+ Mon, 01 Jun 2020 03:45:28 -0700 (PDT)
 From: Jil Rouceau <jilrouceau@gmail.com>
-To: Benjamin Poirier <benjamin.poirier@gmail.com>
-Subject: Re: [PATCH] staging: qlge: qlge_main.c: fixed spaces coding style
+To: manishc@marvell.com
+Subject: [PATCH v2] staging: qlge: qlge_main.c: fixed spaces coding style
  issues
-Message-ID: <20200601123326.2d755bfa@ubuntu>
-In-Reply-To: <20200601051947.GA12667@f3>
-References: <20200529151749.34018-1-jilrouceau@gmail.com>
- <20200601051947.GA12667@f3>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+Date: Mon,  1 Jun 2020 12:44:16 +0200
+Message-Id: <20200601104416.102566-1-jilrouceau@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -89,26 +86,111 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
- manishc@marvell.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ Jil Rouceau <jilrouceau@gmail.com>, netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, 1 Jun 2020 14:19:47 +0900
-Benjamin Poirier <benjamin.poirier@gmail.com> wrote:
+Fixed the missing spaces before and after binary operators.
 
-> On 2020-05-29 17:17 +0200, Jil Rouceau wrote:
-> > Fixed the missing spaces before and after binary operators.
-> > 
-> > Signed-off-by: Jil Rouceau <jilrouceau@gmail.com>  
-> 
-> This patch does not apply cleanly. I think your base tree is missing
-> commit ec269f1250c6 ("staging: qlge: Remove unnecessary spaces in
-> qlge_main.c").
+Signed-off-by: Jil Rouceau <jilrouceau@gmail.com>
+---
+Changes in v2:
+	- Based tree changed from Linus' to linux-next.
 
-Indeed, I was using Linus' tree instead of linux-next, thank you.
+ drivers/staging/qlge/qlge_main.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
+index 402edaeffe12..1650de13842f 100644
+--- a/drivers/staging/qlge/qlge_main.c
++++ b/drivers/staging/qlge/qlge_main.c
+@@ -687,7 +687,7 @@ static int ql_get_8000_flash_params(struct ql_adapter *qdev)
+ 
+ 	size = sizeof(struct flash_params_8000) / sizeof(u32);
+ 	for (i = 0; i < size; i++, p++) {
+-		status = ql_read_flash_word(qdev, i+offset, p);
++		status = ql_read_flash_word(qdev, i + offset, p);
+ 		if (status) {
+ 			netif_err(qdev, ifup, qdev->ndev,
+ 				  "Error reading flash.\n");
+@@ -750,7 +750,7 @@ static int ql_get_8012_flash_params(struct ql_adapter *qdev)
+ 		return -ETIMEDOUT;
+ 
+ 	for (i = 0; i < size; i++, p++) {
+-		status = ql_read_flash_word(qdev, i+offset, p);
++		status = ql_read_flash_word(qdev, i + offset, p);
+ 		if (status) {
+ 			netif_err(qdev, ifup, qdev->ndev,
+ 				  "Error reading flash.\n");
+@@ -1528,7 +1528,7 @@ static void ql_process_mac_rx_page(struct ql_adapter *qdev,
+ 			struct iphdr *iph =
+ 				(struct iphdr *)((u8 *)addr + hlen);
+ 			if (!(iph->frag_off &
+-				htons(IP_MF|IP_OFFSET))) {
++				htons(IP_MF | IP_OFFSET))) {
+ 				skb->ip_summed = CHECKSUM_UNNECESSARY;
+ 				netif_printk(qdev, rx_status, KERN_DEBUG,
+ 					     qdev->ndev,
+@@ -1635,7 +1635,7 @@ static void ql_process_mac_rx_skb(struct ql_adapter *qdev,
+ 			struct iphdr *iph = (struct iphdr *)skb->data;
+ 
+ 			if (!(iph->frag_off &
+-				htons(IP_MF|IP_OFFSET))) {
++				htons(IP_MF | IP_OFFSET))) {
+ 				skb->ip_summed = CHECKSUM_UNNECESSARY;
+ 				netif_printk(qdev, rx_status, KERN_DEBUG,
+ 					     qdev->ndev,
+@@ -1924,7 +1924,7 @@ static void ql_process_mac_split_rx_intr(struct ql_adapter *qdev,
+ 			struct iphdr *iph = (struct iphdr *)skb->data;
+ 
+ 			if (!(iph->frag_off &
+-				htons(IP_MF|IP_OFFSET))) {
++				htons(IP_MF | IP_OFFSET))) {
+ 				skb->ip_summed = CHECKSUM_UNNECESSARY;
+ 				netif_printk(qdev, rx_status, KERN_DEBUG, qdev->ndev,
+ 					     "TCP checksum done!\n");
+@@ -4547,7 +4547,7 @@ static void ql_timer(struct timer_list *t)
+ 		return;
+ 	}
+ 
+-	mod_timer(&qdev->timer, jiffies + (5*HZ));
++	mod_timer(&qdev->timer, jiffies + (5 * HZ));
+ }
+ 
+ static int qlge_probe(struct pci_dev *pdev,
+@@ -4619,7 +4619,7 @@ static int qlge_probe(struct pci_dev *pdev,
+ 	 * the bus goes dead
+ 	 */
+ 	timer_setup(&qdev->timer, ql_timer, TIMER_DEFERRABLE);
+-	mod_timer(&qdev->timer, jiffies + (5*HZ));
++	mod_timer(&qdev->timer, jiffies + (5 * HZ));
+ 	ql_link_off(qdev);
+ 	ql_display_dev_info(ndev);
+ 	atomic_set(&qdev->lb_count, 0);
+@@ -4753,7 +4753,7 @@ static void qlge_io_resume(struct pci_dev *pdev)
+ 		netif_err(qdev, ifup, qdev->ndev,
+ 			  "Device was not running prior to EEH.\n");
+ 	}
+-	mod_timer(&qdev->timer, jiffies + (5*HZ));
++	mod_timer(&qdev->timer, jiffies + (5 * HZ));
+ 	netif_device_attach(ndev);
+ }
+ 
+@@ -4815,7 +4815,7 @@ static int qlge_resume(struct pci_dev *pdev)
+ 			return err;
+ 	}
+ 
+-	mod_timer(&qdev->timer, jiffies + (5*HZ));
++	mod_timer(&qdev->timer, jiffies + (5 * HZ));
+ 	netif_device_attach(ndev);
+ 
+ 	return 0;
+-- 
+2.25.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
