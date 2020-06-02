@@ -1,84 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BAE01EBBB1
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Jun 2020 14:30:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 324731EBBDA
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Jun 2020 14:39:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 31F0886267;
-	Tue,  2 Jun 2020 12:30:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D27778820F;
+	Tue,  2 Jun 2020 12:39:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uE2rOJdFzTaD; Tue,  2 Jun 2020 12:30:17 +0000 (UTC)
+	with ESMTP id LMAjAfDz6bh0; Tue,  2 Jun 2020 12:39:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C9570860D1;
-	Tue,  2 Jun 2020 12:30:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0D90C87BC0;
+	Tue,  2 Jun 2020 12:39:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 53CF71BF33D
- for <devel@linuxdriverproject.org>; Tue,  2 Jun 2020 12:30:14 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7D64F1BF33D
+ for <devel@linuxdriverproject.org>; Tue,  2 Jun 2020 12:39:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4925D204B4
- for <devel@linuxdriverproject.org>; Tue,  2 Jun 2020 12:30:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7A04087BC0
+ for <devel@linuxdriverproject.org>; Tue,  2 Jun 2020 12:39:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NTtZsiN1zcTJ for <devel@linuxdriverproject.org>;
- Tue,  2 Jun 2020 12:30:13 +0000 (UTC)
+ with ESMTP id tpAAdQ21mzjY for <devel@linuxdriverproject.org>;
+ Tue,  2 Jun 2020 12:39:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by silver.osuosl.org (Postfix) with ESMTPS id 3C4402044F
- for <devel@driverdev.osuosl.org>; Tue,  2 Jun 2020 12:30:13 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D77B287B4A
+ for <devel@driverdev.osuosl.org>; Tue,  2 Jun 2020 12:39:51 +0000 (UTC)
 Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 052CMgWu171643;
- Tue, 2 Jun 2020 12:30:01 GMT
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 052CcSIv001774;
+ Tue, 2 Jun 2020 12:39:43 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : references : mime-version : content-type :
  in-reply-to; s=corp-2020-01-29;
- bh=lu3BbalZdQaF6ggOh0dU1HA0oIChyA8n999bSv8rs1I=;
- b=CV1fSdhuZ0iQ3oob4rEqjrNg24OX373xXBOPl1MYMnHZ+u9uHPq2swUHPIQeBLeslUiX
- F+0N4Tgi0js6b9BgLW0nH54Su+lgf64krT/SddzqlAK8t3jKwzgJ3wim7zt9xtrK9yZN
- AAyzcpKLqd4PWVaftAf/MOefzKXmPyIZIyX3lHNYdvIJQRfluRzzWYJuuOSCdlj1rKsk
- HSbfYeH7HxXNc1LxsBkYS/mwjhbiKdgfWsO2g8lzPJRYTU+wh5MrbvV1GFOdB6USgQf5
- 4R0lFB5Vz63JGGC6H14lpzjc1j6BqiAazYj3RKg7MAgXol3sMApfg2VCZkrYnl3DI2xe Gg== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 31dkrugt0n-1
+ bh=+hHvUJaPYzsi+fcWNIuGDxfwGDP2NYDK2A8UukYwLsg=;
+ b=uzsmwn7YqvyQ9EzQ2iEowprkxDu+h0QW+mTPgk/n+d/ws9CfK8jJe+OY/4p6ntObBilj
+ Kv7SKNlgcxGB8BeOHAZd2jNNlIqiMWeq7PcQmXHQF2g8q2aeNA5c4dTwRuZVp4C/jPEd
+ X1cyqsLoNmwDPfRnKVBIteRPu48AmNrF85QWtYyUXn7yrtPXMy5CnonvcdgjUcTv/TC/
+ 2R4LVXu55RXdqwP19B4SBQlT3S36d12TbEkA7ciWxs38ebbE2NiXIWKwYbVJyztFsrgB
+ Qs2gdYJdTsALUuy+0NSoRBmnd8Gsn+QhsBfaVTn8Q407dniu+dRSdbGpQkMUbyTEFKr+ 5g== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 31dkruguax-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 02 Jun 2020 12:30:01 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 052CHPkG125784;
- Tue, 2 Jun 2020 12:30:00 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 31c12p3dr8-1
+ Tue, 02 Jun 2020 12:39:43 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 052CcLPP008707;
+ Tue, 2 Jun 2020 12:39:42 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by userp3020.oracle.com with ESMTP id 31dju1bseu-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 02 Jun 2020 12:30:00 +0000
-Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 052CTo0j015127;
- Tue, 2 Jun 2020 12:29:54 GMT
+ Tue, 02 Jun 2020 12:39:42 +0000
+Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 052Cdflg021562;
+ Tue, 2 Jun 2020 12:39:41 GMT
 Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 02 Jun 2020 05:29:50 -0700
-Date: Tue, 2 Jun 2020 15:29:40 +0300
+ with ESMTP ; Tue, 02 Jun 2020 05:39:40 -0700
+Date: Tue, 2 Jun 2020 15:39:30 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
 To: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-Subject: Re: [RESEND PATCH v1 3/6] staging: greybus: audio: Resolve
- compilation errors for GB codec module
-Message-ID: <20200602122940.GF30374@kadam>
+Subject: Re: [RESEND PATCH v1 4/6] staging: greybus: audio: Resolve
+ compilation error in topology parser
+Message-ID: <20200602123930.GG30374@kadam>
 References: <cover.1591040859.git.vaibhav.sr@gmail.com>
- <cce5aa43533d872d84be1abc514074a7705f9a54.1591040859.git.vaibhav.sr@gmail.com>
+ <6131fec4cf9e18dbf70fa7f992de9d588299ee18.1591040859.git.vaibhav.sr@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <cce5aa43533d872d84be1abc514074a7705f9a54.1591040859.git.vaibhav.sr@gmail.com>
+In-Reply-To: <6131fec4cf9e18dbf70fa7f992de9d588299ee18.1591040859.git.vaibhav.sr@gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9639
  signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- phishscore=0 malwarescore=0
- adultscore=0 suspectscore=0 spamscore=0 bulkscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006020088
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxlogscore=999
+ phishscore=0 malwarescore=0 mlxscore=0 adultscore=0 bulkscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2006020089
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9639
  signatures=668686
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
@@ -86,7 +86,7 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
  mlxscore=0 lowpriorityscore=0 suspectscore=0 malwarescore=0 clxscore=1015
  adultscore=0 mlxlogscore=999 cotscore=-2147483648 phishscore=0 bulkscore=0
  impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006020088
+ engine=8.12.0-2004280000 definitions=main-2006020089
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,41 +112,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jun 02, 2020 at 10:51:12AM +0530, Vaibhav Agarwal wrote:
-> Due to dependencies on ASoC framework changes, GB dummy codec module
-> compilation is currently disabled. This patch updates codec driver as
-> per the latest ASoC APIs.
+On Tue, Jun 02, 2020 at 10:51:13AM +0530, Vaibhav Agarwal wrote:
+> Fix compilation errors for GB Audio topology parser code with recent
+> kernel versions.
 > 
 > Signed-off-by: Vaibhav Agarwal <vaibhav.sr@gmail.com>
 > ---
->  drivers/staging/greybus/audio_codec.c | 87 +++++++++++++--------------
->  drivers/staging/greybus/audio_codec.h |  2 +-
->  2 files changed, 44 insertions(+), 45 deletions(-)
+>  drivers/staging/greybus/audio_topology.c | 130 +++++++++++------------
+>  1 file changed, 61 insertions(+), 69 deletions(-)
 > 
-> diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
-> index a2ee587e5a79..bbd072acda5c 100644
-> --- a/drivers/staging/greybus/audio_codec.c
-> +++ b/drivers/staging/greybus/audio_codec.c
-> @@ -832,7 +832,7 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
->  int gbaudio_register_module(struct gbaudio_module_info *module)
->  {
->  	int ret;
-> -	struct snd_soc_codec *codec;
-> +	struct snd_soc_component *component;
+> diff --git a/drivers/staging/greybus/audio_topology.c b/drivers/staging/greybus/audio_topology.c
+> index 4ac30accf226..7d5e87341a5c 100644
+> --- a/drivers/staging/greybus/audio_topology.c
+> +++ b/drivers/staging/greybus/audio_topology.c
+> @@ -5,8 +5,8 @@
+>   * Copyright 2015-2016 Linaro Ltd.
+>   */
+>  
+> +#include <linux/greybus.h>
+>  #include "audio_codec.h"
+> -#include "greybus_protocols.h"
+>  
+>  #define GBAUDIO_INVALID_ID	0xFF
+>  
+> @@ -165,15 +165,15 @@ static int gbcodec_mixer_ctl_info(struct snd_kcontrol *kcontrol,
+>  	struct gbaudio_ctl_pvt *data;
+>  	struct gb_audio_ctl_elem_info *info;
+>  	struct gbaudio_module_info *module;
+> -	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
+> -	struct gbaudio_codec_info *gbcodec = snd_soc_codec_get_drvdata(codec);
+> +	struct snd_soc_component *comp = snd_soc_kcontrol_component(kcontrol);
+> +	struct gbaudio_codec_info *gb = snd_soc_component_get_drvdata(comp);
 
-I quite like the "component" pointer because it's assigned once at the
-start of the function and used consistently throughout.  The other
-pointers I complained about were just temporary pointers which meant
-different things depending on which line you were on.  They made the
-code harder to read.
+Please rename "gbcodec" in a different patch.  It's not related to
+fixing the compile.
 
-My only quible is that in the next patch it's called "comp" and here
-it's called "component".  Let's just use "comp" for all the local
-variables.
-
+Otherwise it seems okay.
 
 regards,
 dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
