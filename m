@@ -1,76 +1,92 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4FD71EC212
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Jun 2020 20:46:37 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8304F1EC237
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Jun 2020 20:56:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 77446884EF;
-	Tue,  2 Jun 2020 18:46:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D86D62282E;
+	Tue,  2 Jun 2020 18:56:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4xlyY8IDPPd6; Tue,  2 Jun 2020 18:46:35 +0000 (UTC)
+	with ESMTP id TG5l+3QEdPg3; Tue,  2 Jun 2020 18:56:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E3F4D88437;
-	Tue,  2 Jun 2020 18:46:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0BFEE227FA;
+	Tue,  2 Jun 2020 18:56:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D29011BF5B3
- for <devel@linuxdriverproject.org>; Tue,  2 Jun 2020 18:46:32 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3BA341BF97E
+ for <devel@linuxdriverproject.org>; Tue,  2 Jun 2020 18:56:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CF6078655C
- for <devel@linuxdriverproject.org>; Tue,  2 Jun 2020 18:46:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3883E879AB
+ for <devel@linuxdriverproject.org>; Tue,  2 Jun 2020 18:56:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LZ3C7DIyfvGf for <devel@linuxdriverproject.org>;
- Tue,  2 Jun 2020 18:46:32 +0000 (UTC)
+ with ESMTP id C1ZuhyvKB4CV for <devel@linuxdriverproject.org>;
+ Tue,  2 Jun 2020 18:56:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 582EE80ACB
- for <devel@driverdev.osuosl.org>; Tue,  2 Jun 2020 18:46:32 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id r10so5491688pgv.8
- for <devel@driverdev.osuosl.org>; Tue, 02 Jun 2020 11:46:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=KjGFYyFxgPYs05yaRJGkiTGGqOdTYKxkxLdoLAX2dfc=;
- b=umDxVyYdwoQVgslyAnCov/qRec06itnasXt33K/1Tx+Q8ZmZvHyxMaMvFdd28DbusM
- 00OSH9nQ3R40zOLyUUXqK4jyjOKSjW5IZxLS+ityplv0VxKv8HxdfUDHTVT7PQKaoSeB
- CIRzOgqkQJ56y9F5GjagLKE5/3qqD8eGm3UZA6j2Ujd5zNrI2Q8Qat3qcFHeqOL3uKbo
- LaQsDdUIxL9GPZoHUNdLRXS1BBeitjt7kbbmGf2Al1kpzpNbAUm3iZg1x6oA7jGpcBh+
- hrI64AI9nCHF3YvHI0J1geuB6VLPTt20Gw0XZYK0+rAKn2jSk24PzrIGOl4HCvLJQKn3
- ZT+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=KjGFYyFxgPYs05yaRJGkiTGGqOdTYKxkxLdoLAX2dfc=;
- b=tbYOtTK1Ofm+NsLsoF7UwByEvuGUT9hE22DhacsmKalLUllgc6SUHfI2JUur9yf5yT
- k2ssrdVyHByfFl058Hai3+gkoF0u+sSr0vqcqz6z8BQE2eAxAxh5KRZeirHloyYYZ9Hq
- jAPLmuZ74ltBiZNc0IcYwWKuBIpGlnie5lZKN4jnFFiD3DhIJEWbozo/zm+xi28Oyik+
- lqVOrw7wh6XXqdx2LX+gsaCoaU/Q344ZW/ru5xV8EQ4TncO3jpa+F8cwn+XlrBlLEQnk
- izspGqVggYBNH8KpY6chh1OqXizKxWHKtAN1RQ4xkJTphp6xyjboZADbdbZKZJhRvEuJ
- vbPQ==
-X-Gm-Message-State: AOAM533Oh+geWUZb/+kNMT4UtG6C6J486gMH4GIes9EQWdrwnaa/o4OC
- RiY7+wdczj54bhEH9XY+mYI=
-X-Google-Smtp-Source: ABdhPJzXP7o7aqixQ14sESQ0eCXX2+MysWeKa5rOX2JW53KzJBa/ov2sDcBhfSB4Q3HNGTYycAWfDQ==
-X-Received: by 2002:aa7:9910:: with SMTP id z16mr3427117pff.53.1591123591678; 
- Tue, 02 Jun 2020 11:46:31 -0700 (PDT)
-Received: from jordon-HP-15-Notebook-PC.domain.name ([122.171.172.1])
- by smtp.gmail.com with ESMTPSA id o21sm3056833pfp.12.2020.06.02.11.46.26
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 02 Jun 2020 11:46:30 -0700 (PDT)
-From: Souptick Joarder <jrdr.linux@gmail.com>
-To: gregkh@linuxfoundation.org, jamal.k.shareef@gmail.com,
- dan.carpenter@oracle.com, marcgonzalez@google.com,
- hariprasad.kelam@gmail.com, tasman@leaflabs.com, nachukannan@gmail.com
-Subject: [PATCH] staging: vc04_services: Convert get_user_pages*() -->
- pin_user_pages*()
-Date: Wed,  3 Jun 2020 00:24:17 +0530
-Message-Id: <1591124057-27696-1-git-send-email-jrdr.linux@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 87C458699B
+ for <devel@driverdev.osuosl.org>; Tue,  2 Jun 2020 18:56:36 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 052Im6fp051721;
+ Tue, 2 Jun 2020 18:56:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=cXPrppqHkISNja9HBBAo1BlILsN/hj+lR9AXtTE7Oqg=;
+ b=r4tSOSiVMkAr27VpbEFsxdwU0zDXaaAlwtJmlrb5MFmhCaQLiP8j7sjCey8GkSZJk8FP
+ i7EYa02Fp54yAunSzoeeDKr34Q0R36DetpIeEcTWv/e0mkt4AUGIP3OjmjmRBAHkhcGg
+ gzPZcgzprojEeDtiL+umetqDLWt09r+gdUVM9lutwtc9zPDWqgEQGr93jMSRQpcZXm5w
+ vj2lTB87ucqtdIdcGvuuyl0EDM6m/7IoWsAOnZqdhSGIxV7a7SxP5+nMX1izytj2mEQS
+ dLlGO8AKsJpAt6OJ0t2aVmLn2080na2Q6LCyXgxKqgUsEyH7EyrF6Q8C7v5acev7STWe ow== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 31dkrujp4v-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 02 Jun 2020 18:56:35 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 052InGW0040278;
+ Tue, 2 Jun 2020 18:56:35 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 31c1dxr5bj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 02 Jun 2020 18:56:35 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 052IuXGL007999;
+ Tue, 2 Jun 2020 18:56:34 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 02 Jun 2020 11:56:33 -0700
+Date: Tue, 2 Jun 2020 21:56:26 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Pascal Terjan <pterjan@google.com>
+Subject: Re: [PATCH] staging: rtl8712: switch to common ieee80211 headers
+Message-ID: <20200602185626.GJ30374@kadam>
+References: <20200601202410.124593-1-pterjan@google.com>
+ <e668fc72-9103-70cd-e545-095e88c53dcf@lwfinger.net>
+ <CAANdO=KBPh81Jaxhta8k3ipnwWbr5xdhTuRW6GNEZsTTpyMjXQ@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAANdO=KBPh81Jaxhta8k3ipnwWbr5xdhTuRW6GNEZsTTpyMjXQ@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9640
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ mlxlogscore=999
+ spamscore=0 bulkscore=0 adultscore=0 suspectscore=0 mlxscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2006020136
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9640
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ priorityscore=1501
+ mlxscore=0 lowpriorityscore=0 suspectscore=0 malwarescore=0 clxscore=1011
+ adultscore=0 mlxlogscore=999 cotscore=-2147483648 phishscore=0 bulkscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2006020136
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,79 +99,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, John Hubbard <jhubbard@nvidia.com>,
- linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
- Souptick Joarder <jrdr.linux@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ linux-kernel@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In 2019, we introduced pin_user_pages*() and now we are converting
-get_user_pages*() to the new API as appropriate. [1] & [2] could
-be referred for more information.
+On Tue, Jun 02, 2020 at 04:58:46PM +0100, Pascal Terjan wrote:
+> On Tue, 2 Jun 2020 at 15:57, Larry Finger <Larry.Finger@lwfinger.net> wrote:
+> >
+> > On 6/1/20 3:24 PM, Pascal Terjan wrote:
+> > > This patch switches to <linux/ieee80211.h> and <net/cfg80211.h> and
+> > > deletes a lot of duplicate definitions plus many unused ones.
+> > >
+> > > Non obvious changes:
+> > > - struct ieee80211_ht_cap is different enough that I preferred to keep
+> > >    (and rename) it for now.
+> > > - mcs_rate in translate_scan was not read after being set, so I deleted
+> > >    that part rather than using the renamed struct
+> > > - WLAN_CAPABILITY_BSS is replaced with WLAN_CAPABILITY_ESS which is the
+> > >    corresponding one with same value
+> > >
+> > > Signed-off-by: Pascal Terjan <pterjan@google.com>
+> >
+> > This patch does not apply to the staging repo, current mainline, or
+> > wireless-drivers-next. Where did you intend it to go? Staging is the correct tree.
+> 
+> It was against staging-testing as there is a (trivial) merge conflict
+> in there with https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?h=staging-testing&id=2aaeaaff1ae21b2817256435c7fc0095eeda61ae
+> which is also in staging-next
+> What is the best practice in such case?
 
-[1] Documentation/core-api/pin_user_pages.rst
+It has to apply against staging-next so that's fine.
 
-[2] "Explicit pinning of user-space pages":
-        https://lwn.net/Articles/807108/
+> 
+> Thanks to kbuild test robot I found that it is failing to build there
+> because I forgot to add a dependency on CFG80211 in Kconfig, so I will
+> need to send a v2.
 
-Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-Cc: John Hubbard <jhubbard@nvidia.com>
----
-Hi,
+Yup.
 
-I'm compile tested this, but unable to run-time test, so any testing
-help is much appriciated.
-
- .../vc04_services/interface/vchiq_arm/vchiq_2835_arm.c   | 16 +++++-----------
- 1 file changed, 5 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-index 38a13e4..4616013 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-@@ -287,12 +287,8 @@ int vchiq_dump_platform_state(void *dump_context)
- 			     pagelistinfo->num_pages, pagelistinfo->dma_dir);
- 	}
- 
--	if (pagelistinfo->pages_need_release) {
--		unsigned int i;
--
--		for (i = 0; i < pagelistinfo->num_pages; i++)
--			put_page(pagelistinfo->pages[i]);
--	}
-+	if (pagelistinfo->pages_need_release)
-+		unpin_user_pages(pagelistinfo->pages, pagelistinfo->num_pages);
- 
- 	dma_free_coherent(g_dev, pagelistinfo->pagelist_buffer_size,
- 			  pagelistinfo->pagelist, pagelistinfo->dma_addr);
-@@ -395,7 +391,7 @@ int vchiq_dump_platform_state(void *dump_context)
- 		}
- 		/* do not try and release vmalloc pages */
- 	} else {
--		actual_pages = get_user_pages_fast(
-+		actual_pages = pin_user_pages_fast(
- 					  (unsigned long)buf & PAGE_MASK,
- 					  num_pages,
- 					  type == PAGELIST_READ,
-@@ -407,10 +403,8 @@ int vchiq_dump_platform_state(void *dump_context)
- 				       __func__, actual_pages, num_pages);
- 
- 			/* This is probably due to the process being killed */
--			while (actual_pages > 0) {
--				actual_pages--;
--				put_page(pages[actual_pages]);
--			}
-+			if (actual_pages > 0)
-+				unpin_user_pages(pages, actual_pages);
- 			cleanup_pagelistinfo(pagelistinfo);
- 			return NULL;
- 		}
--- 
-1.9.1
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
