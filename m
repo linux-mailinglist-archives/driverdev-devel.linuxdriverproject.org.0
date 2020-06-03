@@ -1,78 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A98A1ED0FE
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jun 2020 15:38:43 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A8E11ED527
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jun 2020 19:42:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BA9F487D15;
-	Wed,  3 Jun 2020 13:38:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DAB2E22D22;
+	Wed,  3 Jun 2020 17:42:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vpj7wG5IUTf0; Wed,  3 Jun 2020 13:38:41 +0000 (UTC)
+	with ESMTP id VThLLhqqC273; Wed,  3 Jun 2020 17:42:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BF7F187C98;
-	Wed,  3 Jun 2020 13:38:40 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by silver.osuosl.org (Postfix) with ESMTP id B1CFD203C2;
+	Wed,  3 Jun 2020 17:42:38 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EE9C81BF408
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  3 Jun 2020 13:38:37 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 962F91BF859
+ for <devel@linuxdriverproject.org>; Wed,  3 Jun 2020 17:42:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E6A4687CEE
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  3 Jun 2020 13:38:37 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 921AD86948
+ for <devel@linuxdriverproject.org>; Wed,  3 Jun 2020 17:42:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GbZVRSGtiOEy
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  3 Jun 2020 13:38:36 +0000 (UTC)
+ with ESMTP id 2sa10uO6_m-N for <devel@linuxdriverproject.org>;
+ Wed,  3 Jun 2020 17:42:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f67.google.com (mail-ed1-f67.google.com
- [209.85.208.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8146287D39
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  3 Jun 2020 13:38:36 +0000 (UTC)
-Received: by mail-ed1-f67.google.com with SMTP id ce8so1769116edb.8
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 03 Jun 2020 06:38:36 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 199598693B
+ for <devel@driverdev.osuosl.org>; Wed,  3 Jun 2020 17:42:35 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id p21so2199075pgm.13
+ for <devel@driverdev.osuosl.org>; Wed, 03 Jun 2020 10:42:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:sender:from:date:message-id:subject:to;
- bh=H8rDQEJouwBJIElP/Vpqq+PrvTZxQQy2H7A/MvyMMB0=;
- b=gPrdCeOEMpO9a4dWmearLYnx06VC1jVqWRRw982QZRtetHtRvOAtmL5Prnn899GWG+
- TmCIsIhus9C9eYRjXJg+u0uRMvjFLA1f1BdPKYHur2syDeFyg8HZP1Mt1uHj1v+PMUwq
- wA3NybniCc9FaoCt0w+J/Qtp3vW2/w034WJvp6x5wUQ3yezzekoYuWxqnjffb1j+xjff
- d/4/lPJxww8IbzELUz3cHXkpNHBGsFedwSWahmjf8TYDTB5eiv7jAeIVrT2Q2nHJM+Sw
- 7DPNFHXqBqUIfPZ9oFII7FGpsomINLGrUPkZkmxSQrOPLVxzbbT9k7+5ADJnlb6PprlL
- RWyA==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=11EqLqigawu5AuEW1gFIrsexclHL8DCzdN7DBjvUYqA=;
+ b=FjvdkIGnkijqmFETxqkZf5cAQNGKa8CDBDXF341jBrf8KsuUMNBzJ29u/nR6jxPLo4
+ NiRWSZCxY3INhSncwcwGBs6uJcXk3VO2LUAjvY+bypo+TwXm5kjCMoUmsMcNefMAopvf
+ y2hkLrMDXaiYxZE4t+TNnzG75E8fNRxWptRgs6pYZhmQCbfGFpXXa0TU/yMAF9g/pU30
+ WatGmVvuokLk4Pn6dw4TACOawdbu7wjZWRpOAhOhiFS+OTMDm+/I6XkxHh8iTPqzed4N
+ 3lNZzWqg7uuRHCAnNwAO359O9bioWtq2WciiPOqUNQm3sPq2KvFC4ZsB8QA3qOR3tRzQ
+ hlNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:sender:from:date
- :message-id:subject:to;
- bh=H8rDQEJouwBJIElP/Vpqq+PrvTZxQQy2H7A/MvyMMB0=;
- b=Qq285foeED6efX1+JPRKsusqGZnVNQFjZDirVAofbEsTFCicxVNkcIUq+FUYEFqHe7
- E8QDXVg9ZK/Ctwvcb3lSZJlBjTtuFL5dayjyzUXbUoiszMiB/G3D71TqsL1Gf833LJnN
- 6u3YBDUVDKiuP3/Kv14cEuVdGRFdsd2fvCf/09SstepwJsWos19G2CQyGu/3RQvkUw6J
- eGhz4/XCEvgrhDzNKPA2KIfGNSkb7fVC4BP9uJyHAgeAo2W5Vibug1PssulBSt23Y+c+
- KeQTvdMkgcxG1WOUmlVzQS8BQYa96WEFPKwGgJIFHqiCPJRckv9v3OPK505VzXyFMj1w
- LEfQ==
-X-Gm-Message-State: AOAM532XS1oO/5wqmSZwUicB6bhPJQIvYIfl2YaG2HImAa4lqDl64I9b
- LaRxNQJjHaiK7HXvI8jWvJNh5UtHBZjW5eiw8oE=
-X-Google-Smtp-Source: ABdhPJy+5xP8XiPsJmKQ4talUUDJzm9Lzmq+ZJ0WafCR2435QD+2dUn3hJBTwwqSjnrRTvLzIA73YWcnnWxFcC93kak=
-X-Received: by 2002:a50:f297:: with SMTP id f23mr6245780edm.222.1591191514905; 
- Wed, 03 Jun 2020 06:38:34 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=11EqLqigawu5AuEW1gFIrsexclHL8DCzdN7DBjvUYqA=;
+ b=lW7SLo2Fl9yidYfgJHa+pvCDj5fOS/bb6rgwSR9gNJvX0Xk+PIqPWyFyc7AU28uLSr
+ dnhpTcyX6UuqlbL6rO8fom8Rt57xgPfE1SjNzT1YsqoM7LirqUDHktqDWmS6LeMEvsW1
+ IA0iJkUI+xMcr4QFZyQfH3GUIEhzI9ZB6ySAk7dPbHkz9R/LrJ6TmklHB7ggHonQW74V
+ 9vC0fE6Shzp+bVoH0JDJzmER82feWnOmhzKCzHkNjumF4OfebaQotI4/HarL//ZiL/Qm
+ SXGd5zUZbNdXuZEswP81LlauYiEAvnBM7YOoysGfaZsKDb5mBVPDmkUPmk9rWcSFoDOy
+ R1eQ==
+X-Gm-Message-State: AOAM531ApxUi04NqIi6uMOF4VuJqwBDC6JoeeB/6mbfDdytN+IhdM2gB
+ JGnuT4K5bmxEPN7JIrllt7M=
+X-Google-Smtp-Source: ABdhPJzyIQBGa1ntOKSqo1SvAnBFrCrm6S7cNpV+bs4hx8uQCJMs5mKCao88L4qsI/tdDw36VJZWCA==
+X-Received: by 2002:aa7:9431:: with SMTP id y17mr238635pfo.33.1591206154354;
+ Wed, 03 Jun 2020 10:42:34 -0700 (PDT)
+Received: from gmail.com ([192.55.55.41])
+ by smtp.gmail.com with ESMTPSA id nl8sm3772210pjb.13.2020.06.03.10.42.28
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 03 Jun 2020 10:42:33 -0700 (PDT)
+Date: Wed, 3 Jun 2020 23:12:25 +0530
+From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [RESEND PATCH v1 6/6] staging: greybus: audio: Enable GB codec,
+ audio module compilation.
+Message-ID: <20200603174222.GB21465@gmail.com>
+References: <cover.1591040859.git.vaibhav.sr@gmail.com>
+ <77cfc355b87ee21636430f787764700de1983f38.1591040859.git.vaibhav.sr@gmail.com>
+ <20200602125715.GI30374@kadam>
 MIME-Version: 1.0
-Received: by 2002:a50:5210:0:0:0:0:0 with HTTP;
- Wed, 3 Jun 2020 06:38:34 -0700 (PDT)
-From: "Mrs.Susan Jones" <sus.wifejones@gmail.com>
-Date: Wed, 3 Jun 2020 14:38:34 +0100
-X-Google-Sender-Auth: HQ2vCdUlLzLkg-AiNShlb19QbzE
-Message-ID: <CAAFTEYFqaSy819zkpXV4OgK3Ru9xp5vu3Zhi9O1Xu51MJHdHyA@mail.gmail.com>
-Subject: HELLO: I AM MRS SUSAN JONES
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <20200602125715.GI30374@kadam>
+User-Agent: Mutt/1.10.1+3 (f9293d646485) (2018-09-22)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,55 +89,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: susanjones.wife@gmail.com
+Cc: devel@driverdev.osuosl.org, alsa-devel@alsa-project.org,
+ Alex Elder <elder@kernel.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Greer <mgreer@animalcreek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Takashi Iwai <tiwai@suse.com>,
+ Jaroslav Kysela <perex@perex.cz>, greybus-dev@lists.linaro.org,
+ Mark Brown <broonie@kernel.org>, Johan Hovold <johan@kernel.org>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-OUR GOLDEN OPPORTUNITY
+On Tue, Jun 02, 2020 at 03:57:15PM +0300, Dan Carpenter wrote:
+> On Tue, Jun 02, 2020 at 10:51:15AM +0530, Vaibhav Agarwal wrote:
+> > Currently, GB codec and audio module is conditionally compiled based on
+> > GREYBUS_AUDIO_MSM8994. However, audio module is not dependent on MSM8994
+> > platform and can be used generically with any platform that follows
+> > GB Audio class specification.
+> > 
+> > Also, GB codec driver corresponds to dummy codec represented by I2S port
+> > available on Toshiba AP Bridge. Added config option for the same in
+> > kconfig file and accordingly updated Makefile.
+> > 
+> 
+> This commit message was a bit confusing to me.  Just say:
+> 
+> "Currently you can't enable the Grey Bus Audio Codec because there is no
+> entry for it in the Kconfig file.  Originally the config name was going
+> to be AUDIO_MSM8994 but that's not correct because other types of
+> hardware are supported now.  I have chosen the name AUDIO_APB_CODEC
+> instead.  Also I had to update the dependencies for GREYBUS_AUDIO to
+> make the compile work."
+> 
+> Otherwise this looks fine.
 
-Hello Dear Friend,
+Thanks Dan for sharing your valuable feedback. I'll make the suggested 
+changes for the complete series in v2 patchset.
 
-Complement of the day, i hope you are doing great today. However, I am
-Mrs.Susan Jones, an auditor with one of the new generation banks here
-in Burkina Faso.
+regards,
+vaibhav
 
-I am writing you this letter based on the latest development at my
-Department. i discovered some abandoned huge amount of money, Ten
-Million, Five hundred thousand  United States Dollars.($10.500.000).
-Now I am only contacting you as a foreigner because this money cannot
-be approved to a local bank account here, but can only be approved to
-any foreign account and foreign beneficiary because the money is in US
-dollars
-
-This will be  a legitimate transaction once you accept to build trust
-with me and follow simple instruction doing the transfer process,
-until the total sum transfer out of the bank here to your own bank
-account any where in the world, and I agreed to share the total money
-50/50 with you once you successful confirmed it in your bank account.
-But any expenses doing the transfer process will be deduct from the
-amount before sharing, If you are interested to work with me and
-provide a good receiving bank account, get back to me as soon as
-possible with the following details below.
-
-Your full name
-Your Profession
-Your direct mobile phone number
-Your Scanned International passport or any of your identity
-
-NOTE: PLEASE IT YOU ARE NOT INTERESTED DON'T BORDER TO RESPOND BACK TO
-AVOID TIME WASTED.
-
-As soon as I receive these data's, I will forward to you the
-application form which you will send to the bank for the claim and
-transfer of the fund into your bank account as the  new beneficial.
-
-I am waiting to hear from you soon
-
-Yours
-Mrs.Susan Jones
+> 
+> regards,
+> dan carpenter
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
