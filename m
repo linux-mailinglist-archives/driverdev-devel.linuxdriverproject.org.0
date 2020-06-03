@@ -1,71 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63C851ED0F6
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jun 2020 15:36:26 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A98A1ED0FE
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jun 2020 15:38:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D55D386A2B;
-	Wed,  3 Jun 2020 13:36:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BA9F487D15;
+	Wed,  3 Jun 2020 13:38:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eXORZJGyce78; Wed,  3 Jun 2020 13:36:24 +0000 (UTC)
+	with ESMTP id Vpj7wG5IUTf0; Wed,  3 Jun 2020 13:38:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A752C86A51;
-	Wed,  3 Jun 2020 13:36:23 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id BF7F187C98;
+	Wed,  3 Jun 2020 13:38:40 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7C63B1BF9B3
- for <devel@linuxdriverproject.org>; Wed,  3 Jun 2020 13:36:21 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EE9C81BF408
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  3 Jun 2020 13:38:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 791C586A51
- for <devel@linuxdriverproject.org>; Wed,  3 Jun 2020 13:36:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E6A4687CEE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  3 Jun 2020 13:38:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id O0E_DC_tRIgR for <devel@linuxdriverproject.org>;
- Wed,  3 Jun 2020 13:36:21 +0000 (UTC)
+ with ESMTP id GbZVRSGtiOEy
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  3 Jun 2020 13:38:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f196.google.com (mail-il1-f196.google.com
- [209.85.166.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E527286A2B
- for <devel@linuxdriverproject.org>; Wed,  3 Jun 2020 13:36:20 +0000 (UTC)
-Received: by mail-il1-f196.google.com with SMTP id 9so2440953ilg.12
- for <devel@linuxdriverproject.org>; Wed, 03 Jun 2020 06:36:20 -0700 (PDT)
+Received: from mail-ed1-f67.google.com (mail-ed1-f67.google.com
+ [209.85.208.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8146287D39
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  3 Jun 2020 13:38:36 +0000 (UTC)
+Received: by mail-ed1-f67.google.com with SMTP id ce8so1769116edb.8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 03 Jun 2020 06:38:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:reply-to:sender:from:date:message-id:subject:to;
  bh=H8rDQEJouwBJIElP/Vpqq+PrvTZxQQy2H7A/MvyMMB0=;
- b=t5mBSzuQgaR+ZWfhVkb/ko7/F7NEiv+WZzXxM00rkgAJUoS2chMmOtcRcs0ZjJ4of5
- wf2g9HIpSJCygI5TEFbDi/L2J104RHrNU9DWyWx/NUvscqJR7aZ+p7x1uUIDsL220iPw
- uxAOdynKu+/ENT1wbNrMsdifgB8OHGCsjUEY9JZy0DuoXEGIA9FCR5Cdd5jDdKcuMT+T
- 3OxkXIW0VuPPhsmJEILBj7xBq+h+qGEXo2S8J+oEO0QeeLMQ53/1RusYu/9hFA7TKM6n
- sD6+BMU28Q672rJowD9OpheLrKrs1srQz2nQQknYmh9t8SIg8SchYAE+0lXTiECkgQAi
- G8PA==
+ b=gPrdCeOEMpO9a4dWmearLYnx06VC1jVqWRRw982QZRtetHtRvOAtmL5Prnn899GWG+
+ TmCIsIhus9C9eYRjXJg+u0uRMvjFLA1f1BdPKYHur2syDeFyg8HZP1Mt1uHj1v+PMUwq
+ wA3NybniCc9FaoCt0w+J/Qtp3vW2/w034WJvp6x5wUQ3yezzekoYuWxqnjffb1j+xjff
+ d/4/lPJxww8IbzELUz3cHXkpNHBGsFedwSWahmjf8TYDTB5eiv7jAeIVrT2Q2nHJM+Sw
+ 7DPNFHXqBqUIfPZ9oFII7FGpsomINLGrUPkZkmxSQrOPLVxzbbT9k7+5ADJnlb6PprlL
+ RWyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:reply-to:sender:from:date
  :message-id:subject:to;
  bh=H8rDQEJouwBJIElP/Vpqq+PrvTZxQQy2H7A/MvyMMB0=;
- b=g4bss1y4M3wZETDyWBIieKeKLWvHscdy9C2z4QCGfVln1lChVDEpj4WNfp8Cv+ETQx
- WJev8JuniYxXpKPbShlNsElGEGkLTLYDg8yi/D77TqPjv4pqUi8dax7WqyorPeNnMkMd
- S68gDVw68/FqCCJbdv3FZRiXv5SURDHHjZQimNU1uV7C2HhGBAHLoZ2QVAdrYOR3S0BB
- I8yqY/fW4kFpzm4YurHSCT6FM/pAOKETMFCbp7lt8W+kZJT6SUSkB+kV4+DoB15fmXvB
- ac+Ga4s9aE0PQ4vVm2ESwqvSGVpsAGsGivuGmghuGSes1Mn/ui5yHZTYTQfy4gmYSJLv
- EM0A==
-X-Gm-Message-State: AOAM533fRcqnDAW9Ua8Z8wd2I5210FUw2pGzL/LAIVsfKjV0Wl3v+XKh
- dXFfuvxQSY5m43jrdPOEb1srKjGlf1OqZqEGdbU=
-X-Google-Smtp-Source: ABdhPJzGkiGcWf7wo+U6sdZRZSt1myvnY08cyqJXmBsREu3XWFQj5ehzxpUJ5RykXda31U32XrQqAGROr5we1HcYIUo=
-X-Received: by 2002:a92:4812:: with SMTP id v18mr3999735ila.78.1591191380035; 
- Wed, 03 Jun 2020 06:36:20 -0700 (PDT)
+ b=Qq285foeED6efX1+JPRKsusqGZnVNQFjZDirVAofbEsTFCicxVNkcIUq+FUYEFqHe7
+ E8QDXVg9ZK/Ctwvcb3lSZJlBjTtuFL5dayjyzUXbUoiszMiB/G3D71TqsL1Gf833LJnN
+ 6u3YBDUVDKiuP3/Kv14cEuVdGRFdsd2fvCf/09SstepwJsWos19G2CQyGu/3RQvkUw6J
+ eGhz4/XCEvgrhDzNKPA2KIfGNSkb7fVC4BP9uJyHAgeAo2W5Vibug1PssulBSt23Y+c+
+ KeQTvdMkgcxG1WOUmlVzQS8BQYa96WEFPKwGgJIFHqiCPJRckv9v3OPK505VzXyFMj1w
+ LEfQ==
+X-Gm-Message-State: AOAM532XS1oO/5wqmSZwUicB6bhPJQIvYIfl2YaG2HImAa4lqDl64I9b
+ LaRxNQJjHaiK7HXvI8jWvJNh5UtHBZjW5eiw8oE=
+X-Google-Smtp-Source: ABdhPJy+5xP8XiPsJmKQ4talUUDJzm9Lzmq+ZJ0WafCR2435QD+2dUn3hJBTwwqSjnrRTvLzIA73YWcnnWxFcC93kak=
+X-Received: by 2002:a50:f297:: with SMTP id f23mr6245780edm.222.1591191514905; 
+ Wed, 03 Jun 2020 06:38:34 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a05:6e02:14d4:0:0:0:0 with HTTP; Wed, 3 Jun 2020 06:36:19
- -0700 (PDT)
+Received: by 2002:a50:5210:0:0:0:0:0 with HTTP;
+ Wed, 3 Jun 2020 06:38:34 -0700 (PDT)
 From: "Mrs.Susan Jones" <sus.wifejones@gmail.com>
-Date: Wed, 3 Jun 2020 14:36:19 +0100
-X-Google-Sender-Auth: Qf7urAS6hlBlCqM6A1UHI2S03EY
-Message-ID: <CAFU9QzuQJQNpf_3+rFwG=Kjp43Sgf0effVhG43=sEFsrbJgvGg@mail.gmail.com>
+Date: Wed, 3 Jun 2020 14:38:34 +0100
+X-Google-Sender-Auth: HQ2vCdUlLzLkg-AiNShlb19QbzE
+Message-ID: <CAAFTEYFqaSy819zkpXV4OgK3Ru9xp5vu3Zhi9O1Xu51MJHdHyA@mail.gmail.com>
 Subject: HELLO: I AM MRS SUSAN JONES
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
