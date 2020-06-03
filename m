@@ -2,61 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1437D1EC9F1
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jun 2020 09:01:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1887B1ECA67
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Jun 2020 09:21:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B34A4887C8;
-	Wed,  3 Jun 2020 07:01:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D21868863E;
+	Wed,  3 Jun 2020 07:21:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8Fd57ie4e4uq; Wed,  3 Jun 2020 07:01:33 +0000 (UTC)
+	with ESMTP id leeWwSqOuWx8; Wed,  3 Jun 2020 07:21:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 90C0688781;
-	Wed,  3 Jun 2020 07:01:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5443988618;
+	Wed,  3 Jun 2020 07:21:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1553A1BF3E9
- for <devel@linuxdriverproject.org>; Wed,  3 Jun 2020 07:01:09 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F3CB1BF5A4
+ for <devel@linuxdriverproject.org>; Wed,  3 Jun 2020 07:21:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0A3A520477
- for <devel@linuxdriverproject.org>; Wed,  3 Jun 2020 07:01:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3BC1F885B6
+ for <devel@linuxdriverproject.org>; Wed,  3 Jun 2020 07:21:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OmUIS2Ou9-aa for <devel@linuxdriverproject.org>;
- Wed,  3 Jun 2020 07:01:06 +0000 (UTC)
+ with ESMTP id BLGgSfqcflvW for <devel@linuxdriverproject.org>;
+ Wed,  3 Jun 2020 07:21:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 2DBD12155D
- for <devel@driverdev.osuosl.org>; Wed,  3 Jun 2020 07:01:06 +0000 (UTC)
-Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
- [95.90.213.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B8EEF2087D;
- Wed,  3 Jun 2020 07:01:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591167666;
- bh=yEWmdMtfWS+RkXWM/jVffJ8ardkXYMIQy2MCeetwIjg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=DWwT3pqmxcbM45q/Ny5q3T+WUlRxKPU+34+S6DAhz7aSDaB8PMXzjUF44WeVfNGSy
- n1dTNLsBg9jhaBCkMOr5xTwjucxLm6knssFQQ+hKDbpZs/g1FTfPQot5BrofpYEQ7L
- AkCdbjLCEiHsNAzTT+JVYmdGW9KTX5I18AmUP5fE=
-Received: from mchehab by mail.kernel.org with local (Exim 4.93)
- (envelope-from <mchehab@kernel.org>)
- id 1jgNOZ-004j9A-QQ; Wed, 03 Jun 2020 09:01:03 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Linux Media Mailing List <linux-media@vger.kernel.org>
-Subject: [PATCH 15/15] media: atomisp: get rid of a string_support.h
- abstraction layer
-Date: Wed,  3 Jun 2020 09:01:01 +0200
-Message-Id: <be4b9e888184bc10c16b180096ee2592cd42f5f1.1591167358.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <cover.1591167358.git.mchehab+huawei@kernel.org>
-References: <cover.1591167358.git.mchehab+huawei@kernel.org>
+Received: from mail-ed1-f65.google.com (mail-ed1-f65.google.com
+ [209.85.208.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6D5D58863B
+ for <devel@driverdev.osuosl.org>; Wed,  3 Jun 2020 07:21:09 +0000 (UTC)
+Received: by mail-ed1-f65.google.com with SMTP id q13so864610edi.3
+ for <devel@driverdev.osuosl.org>; Wed, 03 Jun 2020 00:21:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=vx88ON+UFkh4ABL4pG0NLQrIOYVxNTrYi/4Z1S6HqD0=;
+ b=IAg+5xLRZzwyGbrxX9Rzj7OnPMwvzGLL89Sm6t83HFvFgL7NGNjIQLmX1vpE+JINIS
+ J5eEaBrkKDoLfGDZl3crJ+demFCbj9cHh1lMVIiYlicK2LCxq8//D4l4VvKr2xafya7g
+ jVoOBD0pczObp0mdAkeEOL+yRTdqFEg+3YLb9kRIhmw5ZAkuiNAntkTK4vFdgVFajF8e
+ n7AydUd5nUTiPjX8Lfg5m5KwZzCWju8U66BugFGvln4ZK3QNgcjUrfZw8rVBAEpNSMBE
+ IuCX9baC1tGFkh0PBMmRLQmLr1+jBaUAeDnMA/aRuTEHa7M+pxjndAZOiKKKAap52j9x
+ uLzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=vx88ON+UFkh4ABL4pG0NLQrIOYVxNTrYi/4Z1S6HqD0=;
+ b=jbXPQMQCYDcvCprn8x08CePWAG/iCOmxHorRKBfjXETIDNlQ14x+uwgDTyV177/Vpc
+ IwSqFnb1JGa2IZhppvqQ8kMfehxUxuvwISBUMlTo3QVmX++3JQH2vWDQSCiLbJRRk8QT
+ ah+rqPnPKb1bY83x/mr9NcUAsPN73CYDKcAEaP6gKGFbSK5HFpZ2+zfHUGniEv5gMBak
+ UJjcPK4yKEOx/VVw4NzYTeaQzj1PFe4kCOJpNF/1ku2fQnX1nAvADEP4utOXXiQpQoDp
+ ZzIadntoQ86LuofCHVqfgpj/Vi29docUZlrMb5amGlbdr2TBR4YDLAURVa30gBKWqV3F
+ cGXg==
+X-Gm-Message-State: AOAM533RPm9NcOsYCdwjgC+mTuk+8I0svVCagA+vWX5ypqoVkWIbF6KA
+ xUhZbdMDIu75tuH8MwTSFjJCgB/daFFWpuUC28s=
+X-Google-Smtp-Source: ABdhPJwmdM5w+wpG3NvGjmBSOxvp4xsPeTmXq+Vn3nyCXpZ25dAZ8+aqdBMSaYx84/mjwo1aJgr7Em+RGwUoS6B3vVM=
+X-Received: by 2002:a05:6402:c09:: with SMTP id
+ co9mr17346326edb.238.1591168867615; 
+ Wed, 03 Jun 2020 00:21:07 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 2002:a54:28ce:0:0:0:0:0 with HTTP;
+ Wed, 3 Jun 2020 00:21:07 -0700 (PDT)
+From: "Ms. Anita Kwassou" <samolele9@gmail.com>
+Date: Wed, 3 Jun 2020 09:21:07 +0200
+Message-ID: <CAF0XWJ_CmXJ+8Xn4Sro2pdEjV5sH0MAm85dYhX2EL4Fsfc__0Q@mail.gmail.com>
+Subject: =?UTF-8?B?0KHQutGK0L8g0L/RgNC40Y/RgtC10LssIGhlbGxv?=
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,461 +81,65 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: anitkwas@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Some parts of the driver have their own implementation of
-memcpy() & friends. Replace all of them by strscpy().
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- .../pci/hive_isp_css_include/string_support.h | 165 ------------------
- .../ctc/ctc_1.0/ia_css_ctc_table.host.c       |   3 +-
- .../kernels/gc/gc_1.0/ia_css_gc_table.host.c  |   3 +-
- .../kernels/gc/gc_2/ia_css_gc2_table.host.c   |   3 +-
- .../xnr/xnr_1.0/ia_css_xnr_table.host.c       |   3 +-
- .../pci/runtime/debug/src/ia_css_debug.c      |  45 +++--
- .../pci/runtime/isys/src/virtual_isys.c       |  29 +--
- .../media/atomisp/pci/sh_css_firmware.c       |   2 +-
- 8 files changed, 38 insertions(+), 215 deletions(-)
- delete mode 100644 drivers/staging/media/atomisp/pci/hive_isp_css_include/string_support.h
-
-diff --git a/drivers/staging/media/atomisp/pci/hive_isp_css_include/string_support.h b/drivers/staging/media/atomisp/pci/hive_isp_css_include/string_support.h
-deleted file mode 100644
-index 7805b40a1855..000000000000
---- a/drivers/staging/media/atomisp/pci/hive_isp_css_include/string_support.h
-+++ /dev/null
-@@ -1,165 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0 */
--/*
-- * Support for Intel Camera Imaging ISP subsystem.
-- * Copyright (c) 2015, Intel Corporation.
-- *
-- * This program is free software; you can redistribute it and/or modify it
-- * under the terms and conditions of the GNU General Public License,
-- * version 2, as published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope it will be useful, but WITHOUT
-- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-- * more details.
-- */
--
--#ifndef __STRING_SUPPORT_H_INCLUDED__
--#define __STRING_SUPPORT_H_INCLUDED__
--#include <platform_support.h>
--#include <type_support.h>
--
--/*
-- * For all non microsoft cases, we need the following functions
-- */
--
--/* @brief Copy from src_buf to dest_buf.
-- *
-- * @param[out] dest_buf. Destination buffer to copy to
-- * @param[in]  dest_size. The size of the destination buffer in bytes
-- * @param[in]  src_buf. The source buffer
-- * @param[in]  src_size. The size of the source buffer in bytes
-- * @return     0 on success, error code on failure
-- * @return     -EINVAL on Invalid arguments
-- * @return     ERANGE on Destination size too small
-- */
--static inline int memcpy_s(
--    void *dest_buf,
--    size_t dest_size,
--    const void *src_buf,
--    size_t src_size)
--{
--	if ((!src_buf) || (!dest_buf)) {
--		/* Invalid arguments*/
--		return -EINVAL;
--	}
--
--	if ((dest_size < src_size) || (src_size == 0)) {
--		/* Destination too small*/
--		return ERANGE;
--	}
--
--	memcpy(dest_buf, src_buf, src_size);
--	return 0;
--}
--
--/* @brief Get the length of the string, excluding the null terminator
-- *
-- * @param[in]  src_str. The source string
-- * @param[in]  max_len. Look only for max_len bytes in the string
-- * @return     Return the string length excluding null character
-- * @return     Return max_len if no null character in the first max_len bytes
-- * @return     Returns 0 if src_str is NULL
-- */
--static size_t strnlen_s(
--    const char *src_str,
--    size_t max_len)
--{
--	size_t ix;
--
--	if (!src_str) {
--		/* Invalid arguments*/
--		return 0;
--	}
--
--	for (ix = 0; ix < max_len && src_str[ix] != '\0'; ix++)
--		;
--
--	/* On Error, it will return src_size == max_len*/
--	return ix;
--}
--
--/* @brief Copy string from src_str to dest_str
-- *
-- * @param[out] dest_str. Destination buffer to copy to
-- * @param[in]  dest_size. The size of the destination buffer in bytes
-- * @param[in]  src_str. The source buffer
-- * @param[in]  src_size. The size of the source buffer in bytes
-- * @return     Returns 0 on success
-- * @return     Returns -EINVAL on invalid arguments
-- * @return     Returns ERANGE on destination size too small
-- */
--static inline int strncpy_s(
--    char *dest_str,
--    size_t dest_size,
--    const char *src_str,
--    size_t src_size)
--{
--	size_t len;
--
--	if (!dest_str) {
--		/* Invalid arguments*/
--		return -EINVAL;
--	}
--
--	if ((!src_str) || (dest_size == 0)) {
--		/* Invalid arguments*/
--		dest_str[0] = '\0';
--		return -EINVAL;
--	}
--
--	len = strnlen_s(src_str, src_size);
--
--	if (len >= dest_size) {
--		/* Destination too small*/
--		dest_str[0] = '\0';
--		return ERANGE;
--	}
--
--	/* dest_str is big enough for the len */
--	strncpy(dest_str, src_str, len);
--	dest_str[len] = '\0';
--	return 0;
--}
--
--/* @brief Copy string from src_str to dest_str
-- *
-- * @param[out] dest_str. Destination buffer to copy to
-- * @param[in]  dest_size. The size of the destination buffer in bytes
-- * @param[in]  src_str. The source buffer
-- * @return     Returns 0 on success
-- * @return     Returns -EINVAL on invalid arguments
-- * @return     Returns ERANGE on destination size too small
-- */
--static inline int strcpy_s(
--    char *dest_str,
--    size_t dest_size,
--    const char *src_str)
--{
--	size_t len;
--
--	if (!dest_str) {
--		/* Invalid arguments*/
--		return -EINVAL;
--	}
--
--	if ((!src_str) || (dest_size == 0)) {
--		/* Invalid arguments*/
--		dest_str[0] = '\0';
--		return -EINVAL;
--	}
--
--	len = strnlen_s(src_str, dest_size);
--
--	if (len >= dest_size) {
--		/* Destination too small*/
--		dest_str[0] = '\0';
--		return ERANGE;
--	}
--
--	/* dest_str is big enough for the len */
--	strncpy(dest_str, src_str, len);
--	dest_str[len] = '\0';
--	return 0;
--}
--
--#endif /* __STRING_SUPPORT_H_INCLUDED__ */
-diff --git a/drivers/staging/media/atomisp/pci/isp/kernels/ctc/ctc_1.0/ia_css_ctc_table.host.c b/drivers/staging/media/atomisp/pci/isp/kernels/ctc/ctc_1.0/ia_css_ctc_table.host.c
-index 454697c05b56..f13b79586963 100644
---- a/drivers/staging/media/atomisp/pci/isp/kernels/ctc/ctc_1.0/ia_css_ctc_table.host.c
-+++ b/drivers/staging/media/atomisp/pci/isp/kernels/ctc/ctc_1.0/ia_css_ctc_table.host.c
-@@ -13,8 +13,9 @@
-  * more details.
-  */
- 
-+#include <linux/string.h> /* for memcpy() */
-+
- #include <type_support.h>
--#include <string_support.h> /* memcpy */
- #include "system_global.h"
- #include "vamem.h"
- #include "ia_css_types.h"
-diff --git a/drivers/staging/media/atomisp/pci/isp/kernels/gc/gc_1.0/ia_css_gc_table.host.c b/drivers/staging/media/atomisp/pci/isp/kernels/gc/gc_1.0/ia_css_gc_table.host.c
-index 08e173fff6e0..f48f876777dc 100644
---- a/drivers/staging/media/atomisp/pci/isp/kernels/gc/gc_1.0/ia_css_gc_table.host.c
-+++ b/drivers/staging/media/atomisp/pci/isp/kernels/gc/gc_1.0/ia_css_gc_table.host.c
-@@ -13,8 +13,9 @@
-  * more details.
-  */
- 
-+#include <linux/string.h> /* for memcpy() */
-+
- #include <type_support.h>
--#include <string_support.h> /* memcpy */
- #include "system_global.h"
- #include "vamem.h"
- #include "ia_css_types.h"
-diff --git a/drivers/staging/media/atomisp/pci/isp/kernels/gc/gc_2/ia_css_gc2_table.host.c b/drivers/staging/media/atomisp/pci/isp/kernels/gc/gc_2/ia_css_gc2_table.host.c
-index fddb9e2ec24e..7eadb31268eb 100644
---- a/drivers/staging/media/atomisp/pci/isp/kernels/gc/gc_2/ia_css_gc2_table.host.c
-+++ b/drivers/staging/media/atomisp/pci/isp/kernels/gc/gc_2/ia_css_gc2_table.host.c
-@@ -13,8 +13,9 @@
-  * more details.
-  */
- 
-+#include <linux/string.h> /* for memcpy() */
-+
- #include <type_support.h>
--#include <string_support.h> /* memcpy */
- #include "system_global.h"
- #include "vamem.h"
- #include "ia_css_types.h"
-diff --git a/drivers/staging/media/atomisp/pci/isp/kernels/xnr/xnr_1.0/ia_css_xnr_table.host.c b/drivers/staging/media/atomisp/pci/isp/kernels/xnr/xnr_1.0/ia_css_xnr_table.host.c
-index b892dd8ebc2e..5566f3c16aac 100644
---- a/drivers/staging/media/atomisp/pci/isp/kernels/xnr/xnr_1.0/ia_css_xnr_table.host.c
-+++ b/drivers/staging/media/atomisp/pci/isp/kernels/xnr/xnr_1.0/ia_css_xnr_table.host.c
-@@ -13,8 +13,9 @@
-  * more details.
-  */
- 
-+#include <linux/string.h> /* for memcpy() */
-+
- #include <type_support.h>
--#include <string_support.h> /* memcpy */
- #include "system_global.h"
- #include "vamem.h"
- #include "ia_css_types.h"
-diff --git a/drivers/staging/media/atomisp/pci/runtime/debug/src/ia_css_debug.c b/drivers/staging/media/atomisp/pci/runtime/debug/src/ia_css_debug.c
-index f64d8243400b..2bca27a04b02 100644
---- a/drivers/staging/media/atomisp/pci/runtime/debug/src/ia_css_debug.c
-+++ b/drivers/staging/media/atomisp/pci/runtime/debug/src/ia_css_debug.c
-@@ -31,6 +31,8 @@
- #define __INLINE_STREAM2MMIO__
- #endif
- 
-+#include <linux/string.h> /* for strscpy() */
-+
- #include "ia_css_debug.h"
- #include "ia_css_debug_pipe.h"
- #include "ia_css_irq.h"
-@@ -47,7 +49,6 @@
- #include "system_local.h"
- #include "assert_support.h"
- #include "print_support.h"
--#include "string_support.h"
- 
- #include "fifo_monitor.h"
- 
-@@ -2769,8 +2770,9 @@ ia_css_debug_pipe_graph_dump_stage(
- 				 stage->binary->info->blob->name, stage->stage_num);
- 	} else if (stage->firmware) {
- 		bin_type = "firmware";
--		strncpy_s(blob_name, sizeof(blob_name),
--			  IA_CSS_EXT_ISP_PROG_NAME(stage->firmware), sizeof(blob_name));
-+
-+		strscpy(blob_name, IA_CSS_EXT_ISP_PROG_NAME(stage->firmware),
-+			sizeof(blob_name));
- 	}
- 
- 	/* Guard in case of binaries that don't have any binary_info */
-@@ -2836,10 +2838,8 @@ ia_css_debug_pipe_graph_dump_stage(
- 				while (ei[p] != ',')
- 					p--;
- 				/* Last comma found, copy till that comma */
--				strncpy_s(enable_info1,
--					  sizeof(enable_info1),
--					  ei, p);
--				enable_info1[p] = '\0';
-+				strscpy(enable_info1, ei,
-+                                        p > sizeof(enable_info1) ? sizeof(enable_info1) : p);
- 
- 				ei += p + 1;
- 				l = strlen(ei);
-@@ -2849,10 +2849,10 @@ ia_css_debug_pipe_graph_dump_stage(
- 					/* we cannot use ei as argument because
- 					 * it is not guaranteed dword aligned
- 					 */
--					strncpy_s(enable_info2,
--						  sizeof(enable_info2),
--						  ei, l);
--					enable_info2[l] = '\0';
-+
-+					strscpy(enable_info2, ei,
-+						l > sizeof(enable_info2) ? sizeof(enable_info2) : l);
-+
- 					snprintf(enable_info, sizeof(enable_info), "%s\\n%s",
- 						 enable_info1, enable_info2);
- 
-@@ -2861,10 +2861,10 @@ ia_css_debug_pipe_graph_dump_stage(
- 					p = ENABLE_LINE_MAX_LENGTH;
- 					while (ei[p] != ',')
- 						p--;
--					strncpy_s(enable_info2,
--						  sizeof(enable_info2),
--						  ei, p);
--					enable_info2[p] = '\0';
-+
-+					strscpy(enable_info2, ei,
-+						p > sizeof(enable_info2) ? sizeof(enable_info2) : p);
-+
- 					ei += p + 1;
- 					l = strlen(ei);
- 
-@@ -2873,9 +2873,8 @@ ia_css_debug_pipe_graph_dump_stage(
- 						/* we cannot use ei as argument because
- 						* it is not guaranteed dword aligned
- 						*/
--						strcpy_s(enable_info3,
--							 sizeof(enable_info3), ei);
--						enable_info3[l] = '\0';
-+						strscpy(enable_info3, ei,
-+							sizeof(enable_info3));
- 						snprintf(enable_info, sizeof(enable_info),
- 							 "%s\\n%s\\n%s",
- 							 enable_info1, enable_info2,
-@@ -2885,13 +2884,11 @@ ia_css_debug_pipe_graph_dump_stage(
- 						p = ENABLE_LINE_MAX_LENGTH;
- 						while (ei[p] != ',')
- 							p--;
--						strncpy_s(enable_info3,
--							  sizeof(enable_info3),
--							  ei, p);
--						enable_info3[p] = '\0';
-+						strscpy(enable_info3, ei,
-+							p > sizeof(enable_info3) ? sizeof(enable_info3) : p);
- 						ei += p + 1;
--						strcpy_s(enable_info3,
--							 sizeof(enable_info3), ei);
-+						strscpy(enable_info3, ei,
-+							sizeof(enable_info3));
- 						snprintf(enable_info, sizeof(enable_info),
- 							 "%s\\n%s\\n%s",
- 							 enable_info1, enable_info2,
-diff --git a/drivers/staging/media/atomisp/pci/runtime/isys/src/virtual_isys.c b/drivers/staging/media/atomisp/pci/runtime/isys/src/virtual_isys.c
-index 95cf6ac342b6..b3c6831cb9e3 100644
---- a/drivers/staging/media/atomisp/pci/runtime/isys/src/virtual_isys.c
-+++ b/drivers/staging/media/atomisp/pci/runtime/isys/src/virtual_isys.c
-@@ -13,6 +13,8 @@
-  * more details.
-  */
- 
-+#include <linux/string.h> /* for memcpy() */
-+
- #include "system_global.h"
- 
- #ifdef USE_INPUT_SYSTEM_VERSION_2401
-@@ -20,7 +22,6 @@
- #include "ia_css_isys.h"
- #include "ia_css_debug.h"
- #include "math_support.h"
--#include "string_support.h"
- #include "virtual_isys.h"
- #include "isp.h"
- #include "sh_css_defs.h"
-@@ -650,14 +651,8 @@ static bool calculate_tpg_cfg(
-     input_system_cfg_t		*isys_cfg,
-     pixelgen_tpg_cfg_t		*cfg)
- {
--	(void)channel;
--	(void)input_port;
-+	memcpy(cfg, &isys_cfg->tpg_port_attr, sizeof(pixelgen_tpg_cfg_t));
- 
--	memcpy_s(
--	    (void *)cfg,
--	    sizeof(pixelgen_tpg_cfg_t),
--	    (void *)(&isys_cfg->tpg_port_attr),
--	    sizeof(pixelgen_tpg_cfg_t));
- 	return true;
- }
- 
-@@ -667,14 +662,8 @@ static bool calculate_prbs_cfg(
-     input_system_cfg_t		*isys_cfg,
-     pixelgen_prbs_cfg_t		*cfg)
- {
--	(void)channel;
--	(void)input_port;
-+	memcpy(cfg, &isys_cfg->prbs_port_attr, sizeof(pixelgen_prbs_cfg_t));
- 
--	memcpy_s(
--	    (void *)cfg,
--	    sizeof(pixelgen_prbs_cfg_t),
--	    (void *)(&isys_cfg->prbs_port_attr),
--	    sizeof(pixelgen_prbs_cfg_t));
- 	return true;
- }
- 
-@@ -692,12 +681,10 @@ static bool calculate_be_cfg(
-     bool				metadata,
-     csi_rx_backend_cfg_t		*cfg)
- {
--	memcpy_s(
--	    (void *)(&cfg->lut_entry),
--	    sizeof(csi_rx_backend_lut_entry_t),
--	    metadata ? (void *)(&input_port->metadata.backend_lut_entry) :
--	    (void *)(&input_port->csi_rx.backend_lut_entry),
--	    sizeof(csi_rx_backend_lut_entry_t));
-+	memcpy(&cfg->lut_entry,
-+	      metadata ? &input_port->metadata.backend_lut_entry :
-+			 &input_port->csi_rx.backend_lut_entry,
-+	      sizeof(csi_rx_backend_lut_entry_t));
- 
- 	cfg->csi_mipi_cfg.virtual_channel = isys_cfg->csi_port_attr.ch_id;
- 	if (metadata) {
-diff --git a/drivers/staging/media/atomisp/pci/sh_css_firmware.c b/drivers/staging/media/atomisp/pci/sh_css_firmware.c
-index d464052a3d2d..2daee7d85631 100644
---- a/drivers/staging/media/atomisp/pci/sh_css_firmware.c
-+++ b/drivers/staging/media/atomisp/pci/sh_css_firmware.c
-@@ -13,6 +13,7 @@
-  * more details.
-  */
- 
-+#include <linux/string.h> /* for memcpy() */
- #include <linux/slab.h>
- #include <linux/vmalloc.h>
- 
-@@ -28,7 +29,6 @@
- #include "ia_css_isp_param.h"
- 
- #include "assert_support.h"
--#include "string_support.h"
- 
- #include "isp.h"				/* PMEM_WIDTH_LOG2 */
- 
--- 
-2.26.2
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+0KHQutGK0L8g0L/RgNC40Y/RgtC10LssDQoNCtCf0LjRiNCwINCy0Lgg0L7RgiDQn9Cw0YDQsNCz
+0LLQsNC5INCyINC60L7QvNCw0L3QtNC40YDQvtCy0LrQsCDRgSDQvdC+0LLQsNGC0LAg0LzQuA0K
+0L/QsNGA0YLQvdGM0L7RgCDRgdC70LXQtCDRg9GB0L/QtdGI0L3QvtGC0L4g0L/RgNC10LLQtdC2
+0LTQsNC90LUg0L3QsCDRgdGA0LXQtNGB0YLQstCw0YLQsCDQsiDRgNCw0LfQvNC10YAg0L3QsCAk
+DQo1LDUg0LzQuNC70LjQvtC90LAuDQoNCtCU0LAsINC60LDQutGC0L4g0LLQuCDQutCw0LfQsNGF
+INC/0YDQtdC00LgsINC90LUg0YHRitC8INCw0LvRh9C10L0g0YfQvtCy0LXQuiDQuCDRgdGK0YnQ
+viDQvtCx0LjRh9Cw0LwNCtGA0LDQt9C/0L7Qt9C90LDQudGC0LUg0YPRgdC40LvQuNGP0YLQsCDQ
+vdCwINC90Y/QutC+0LPQviwg0LHQtdC3INC30L3QsNGH0LXQvdC40LUg0LrQsNC60YrQsiDQvNC+
+0LbQtSDQtNCwINC1INC/0YDQvtCx0LvQtdC80YrRgiwNCtCp0LUg0LLQuCDQv9C+0LzQvtC70Y8g
+0LTQsCDRgdC1INGB0LLRitGA0LbQtdGC0LUg0YEg0LzQvtGPINGB0LXQutGA0LXRgtCw0YA6DQoN
+CtCTLdC20LAg0JDQvdC40YLQsCDQmtCy0LDRgdGDDQrQldC70LXQutGC0YDQvtC90L3QsCDQv9C+
+0YnQsDogYW5pdGt3YXNAZ21haWwuY29tDQoNCtCTLdC20LAg0JDQvdC40YLQsCDRidC1INCy0Lgg
+0LjQt9C/0YDQsNGC0Lgg0L7RgdC10LzQtNC10YHQtdGCINGF0LjQu9GP0LTQuCDQtNC+0LvQsNGA
+0LAgKDgwIDAwMC4wMCDRidCw0YLRgdC60LgNCtC00L7Qu9Cw0YDQsCksINC60L7QuNGC0L4NCtGJ
+0LUg0LHRitC00LUg0L/RgNC10YXQstGK0YDQu9C10L0g0LrRitC8INCy0LDRgSDQsiDQvNC10LbQ
+tNGD0L3QsNGA0L7QtNC90LAg0LLQuNC30L7QstCwINC60LDRgNGC0LAg0LfQsCDQsdCw0L3QutC+
+0LzQsNGCLA0KDQrQlNCw0LLQsNC8INCy0Lgg0YLQvtCy0LAg0L7QsdC10LfRidC10YLQtdC90LjQ
+tSDQt9CwINCy0YHQuNGH0LrQuCDQstCw0YjQuCDQv9GA0LXQtNC40YjQvdC4INGD0YHQuNC70LjR
+jyDQuCDRgdGD0LzQsNGC0LANCtC40L3QstC10YHRgtC40YDQsNGF0YLQtSDQsiDQv9GA0L7RhtC1
+0YHQsCDQvdCwINC/0YDQtdCy0L7QtCwg0L3QviDQvdC1INC80L7QttCw0YXRgtC1INC00LAg0LfQ
+sNCy0YrRgNGI0LjRgtC1DQrRgSDQvNC10L0g0LfQsNGA0LDQtNC4INGB0YLRgNCw0YUg0Lgg0L3Q
+tdCy0LXRgNC40LUuDQoNCtCQ0Lcg0YHRitGJ0L4g0LLQuCDQtNCw0LLQsNC8INGC0LDQt9C4INC8
+0LDQu9C60LAg0YHRg9C80LAg0LrQsNGC0L4g0L/RgNC40LfQvdCw0YLQtdC70L3QvtGB0YIg0LfQ
+sCDQkdC+0LMNCtCx0LXQt9C60YDQsNC50L3QuCDQvNC40LvQvtGB0YLQuCDQtNCwINGB0LHRitC0
+0L3QsCDQsiDRgtCw0LfQuCDQvNC+0Y8g0LzQtdGH0YLQsCwg0LAg0YHRitGJ0L4g0Lgg0LfQsA0K
+0LLQvtC00LXQudC60Lgg0LzQtSDRgdC/0L7QutC+0LnQvdC+INCyINGC0LDQt9C4INGB0YLRgNCw
+0L3QsC4NCg0K0KHQstGK0YDQttC10YLQtSDRgdC1INGBINCzLdC20LAg0JDQvdC40YLQsCDQuCDQ
+vtCx0YHRitC00LXRgtC1INGBINC90LXQs9C+INC60LDQuiDQuNGB0LrQsNGC0LUg0LHQsNC90LrQ
+vtC80LDRgtCwDQrQuNC30L/RgNCw0YLQtdC90L4g0LTQviDQstCw0YEg0Lgg0YHQtSDQvtC/0LjR
+gtCw0LnRgtC1INC00LAg0LzQtSDQuNC90YTQvtGA0LzQuNGA0LDRgtC1INCy0LXQtNC90LDQs9Cw
+INGJ0L7QvCDQv9C+0LvRg9GH0LjRgtC1INC60LDRgNGC0LDRgtCwLg0KDQrQndCw0Lkt0LTQvtCx
+0YDQuCDQv9C+0LbQtdC70LDQvdC40Y8sDQrQk9C+0YHQv9C+0LTQuNC9INCh0LDQvCDQntC70LXQ
+u9C1DQoNCg0KbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1t
+bW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tDQoNCg0KRGVhciBmcmllbmQsDQoNCkkg
+YW0gd3JpdGluZyB0byB5b3UgZnJvbSBQYXJhZ3VheSBvbiBhIGJ1c2luZXNzIHRyaXAgd2l0aCBt
+eSBuZXcNCnBhcnRuZXIgYWZ0ZXIgdGhlIHN1Y2Nlc3NmdWwgdHJhbnNmZXIgb2YgdGhlIGZ1bmRz
+IGluIHRoZSBhbW91bnQgb2YgJA0KNS41IG1pbGxpb24uDQoNClllcywgYXMgSSB0b2xkIHlvdSBi
+ZWZvcmUsIEkgYW0gbm90IGEgZ3JlZWR5IHBlcnNvbiBhbmQgYWxzbyBsaWtlIHRvDQpyZWNvZ25p
+emUgdGhlIGVmZm9ydHMgb2Ygc29tZW9uZSwgbm8gbWF0dGVyIHdoYXQgbWlnaHQgYmUgdGhlIHBy
+b2JsZW0sDQpJIHdpbGwgcmVxdWVzdCB5b3UgdG8gY29udGFjdCBteSBzZWNyZXRhcnk6DQoNCk1z
+LiBBbml0YSBLd2Fzc291DQpFLU1haWw6IGFuaXRrd2FzQGdtYWlsLmNvbQ0KDQpNcy4gQW5pdGEg
+d2lsbCBzZW5kIHlvdSBFaWdodHkgVGhvdXNhbmQgZG9sbGFycyAoVVMkODAuMDAwLjAwKSB3aGlj
+aA0KaXMgYmVlbiByb2xsZWQgdG8geW91IGludG8gYW4gaW50ZXJuYXRpb25hbCBBVE0gdmlzYSBj
+YXJkLA0KDQpJIGdpdmUgeW91IHRoaXMgY29tcGVuc2F0aW9uIGZvciBhbGwgeW91ciBwYXN0IGVm
+Zm9ydHMgYW5kIHRoZSBhbW91bnQNCnlvdSBpbnZlc3RlZCBpbiB0aGUgdHJhbnNsYXRpb24gcHJv
+Y2VzcywgYnV0IHlvdSBjb3VsZG4ndCBjb21wbGV0ZQ0Kd2l0aCBtZSBiZWNhdXNlIG9mIGZlYXIg
+YW5kIGRpc2JlbGlldmUuDQoNCkkgYW0gYWxzbyBnaXZpbmcgdG8geW91IHRoaXMgc21hbGwgYW1v
+dW50IGFzIGFuIGFwcHJlY2lhdGlvbiBmb3IgR29kJ3MNCmVuZGxlc3MgbWVyY2llcyB0byBtYWtl
+IGluIHRoaXMgbXkgZHJlYW0gY29tZSB0cnVlLCBhbmQgYWxzbyBmb3INCmxlYWRpbmcgbWUgcGVh
+Y2VmdWxseSB0byB0aGlzIGNvdW50cnkuDQoNCkNvbnRhY3QgTXMuIEFuaXRhIGFuZCBkaXNjdXNz
+IHdpdGggaGltIG9uIGhvdyB5b3Ugd2FudCB0aGUgQVRNIGNhcmQNCnNlbnQgdG8geW91IGFuZCB0
+cnkgdG8gaW5mb3JtIG1lIGFzIHNvb24gYXMgeW91IHJlY2VpdmVkIHRoZSBjYXJkLg0KDQpCZXN0
+IHdpc2hlcywNCk1yLiBTYW0gT2xlbGUNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2pl
+Y3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
