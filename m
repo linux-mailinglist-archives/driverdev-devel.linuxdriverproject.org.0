@@ -1,65 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 154161EE753
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Jun 2020 17:06:24 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8DAAC1EE896
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Jun 2020 18:28:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4C40588227;
-	Thu,  4 Jun 2020 15:06:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8984D24C8F;
+	Thu,  4 Jun 2020 16:28:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EWHmoPMdl5KW; Thu,  4 Jun 2020 15:06:20 +0000 (UTC)
+	with ESMTP id sOw-aXlI8-Eg; Thu,  4 Jun 2020 16:28:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9D32188212;
-	Thu,  4 Jun 2020 15:06:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 297D124BB3;
+	Thu,  4 Jun 2020 16:28:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2A54C1BF299
- for <devel@linuxdriverproject.org>; Thu,  4 Jun 2020 15:06:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4AB311BF338
+ for <devel@linuxdriverproject.org>; Thu,  4 Jun 2020 16:28:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EAAEF86C72
- for <devel@linuxdriverproject.org>; Thu,  4 Jun 2020 15:06:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4677886D88
+ for <devel@linuxdriverproject.org>; Thu,  4 Jun 2020 16:28:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rj3Nny_iJvoQ for <devel@linuxdriverproject.org>;
- Thu,  4 Jun 2020 15:06:14 +0000 (UTC)
+ with ESMTP id ZQHFYXT5PJHo for <devel@linuxdriverproject.org>;
+ Thu,  4 Jun 2020 16:28:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E7F7D86C3B
- for <devel@driverdev.osuosl.org>; Thu,  4 Jun 2020 15:06:10 +0000 (UTC)
-IronPort-SDR: V4GzE3Ju9DYIJkFaUgimT0AF4twW17yQeeBLY5PF97W3dgRvnnfPC36zzLfEynLC74Ry3QHEsJ
- oZhnLeujgE2g==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2020 08:05:53 -0700
-IronPort-SDR: HRM8jDe7P+G5Zgjy1TnzJJucuXEQ6HMKMi2ROvIfC1Ge6bv3mBEk82cX2giJaqO78Bj1A8U/4M
- iiy7oSN/LwuQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,472,1583222400"; d="scan'208";a="257754021"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by fmsmga007.fm.intel.com with ESMTP; 04 Jun 2020 08:05:40 -0700
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1jgrR1-00ArEa-5g; Thu, 04 Jun 2020 18:05:35 +0300
-Date: Thu, 4 Jun 2020 18:05:35 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Jim Quinlan <james.quinlan@broadcom.com>
-Subject: Re: [PATCH v3 09/13] device core: Introduce multiple dma pfn offsets
-Message-ID: <20200604150535.GB2428291@smile.fi.intel.com>
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C07A786D38
+ for <devel@driverdev.osuosl.org>; Thu,  4 Jun 2020 16:28:48 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id r15so6319380wmh.5
+ for <devel@driverdev.osuosl.org>; Thu, 04 Jun 2020 09:28:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CvFBAxlrt2J9jb0QdDsGu7K922VoXgCGTJpM/HBK+Qk=;
+ b=Nwm8d//+sjH3Z9mufLz/+WKylqV8GnlqZP5cDZilNehMRs3XQT7l8Tg489oBe2Bv5H
+ K23RVr8/sl/WjZcrBeLCXT1Z5LKkPJSqD059Mdrq9I69Yz6Dg0doVUUnBcL4wDHjhYva
+ Qf30ZckaVxPcfdXWBXJlmMCnpDqNXJqy90Nhs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CvFBAxlrt2J9jb0QdDsGu7K922VoXgCGTJpM/HBK+Qk=;
+ b=uUhsw47Fx4g+bJWahUhE0Izc7lS96NuM996VoG6ADtgiK7KkUB8iYXHTrWrQ08Q3d8
+ qqHF1e8Lx1F5+9uWtUgx2ojKWrKBuPXVltMoIrYo1CezTlTvYwhkxozq0SjYtw0pr6MC
+ Fv2DRddU1V7YiCtw5zG/SLD4bhM3pvfe4HwNRUyvoHUJtIeLBz3XYDlrFb1xF/idGkC0
+ 1y9iDI1m53DXwBOpDNAZqgP4Uu2i+m4SQGU0r0bwl5Yd44kUEGJv7RJWKmnxJmugndZJ
+ MtCSMtrgD3wpVZrgqXPPsibTzIGgvEIHvGD/gkJCwlL4xD2ouwT5nXsu+rogLhvlTt91
+ sU2A==
+X-Gm-Message-State: AOAM532LWlC0/QYJaXeFY/4PFJDUiz7G23kBEwDNIg29dqGI/sVitUpJ
+ XlvWQDI6WAK2MojgvVm+D2BkW4dj5w1g/+E+3v/JbA==
+X-Google-Smtp-Source: ABdhPJxNGHB1SSXPUoFwXoNSi05e8v/wl0KgveYrZK14zPrtDm8asHl5Z5GTJTxfyjyWg62aQanc89ULkV9YeVvY+YQ=
+X-Received: by 2002:a1c:62d6:: with SMTP id w205mr4493336wmb.97.1591288126871; 
+ Thu, 04 Jun 2020 09:28:46 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200603192058.35296-1-james.quinlan@broadcom.com>
  <20200603192058.35296-10-james.quinlan@broadcom.com>
  <09c451e24f62e226e1ceaa0fe5d0a81109cace74.camel@suse.de>
  <CA+-6iNz1-1wOurKoOJzhbVL0_YP7dbmp0wy1GWkLW_61yhRXyA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CA+-6iNz1-1wOurKoOJzhbVL0_YP7dbmp0wy1GWkLW_61yhRXyA@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+ <20200604150535.GB2428291@smile.fi.intel.com>
+In-Reply-To: <20200604150535.GB2428291@smile.fi.intel.com>
+From: Jim Quinlan <james.quinlan@broadcom.com>
+Date: Thu, 4 Jun 2020 12:28:34 -0400
+Message-ID: <CA+-6iNxze_tfWBsE0FkSFcWgihx=CHgNBiHi=BUC+9_=x-TtUA@mail.gmail.com>
+Subject: Re: [PATCH v3 09/13] device core: Introduce multiple dma pfn offsets
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,39 +129,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jun 04, 2020 at 10:35:12AM -0400, Jim Quinlan wrote:
-> On Thu, Jun 4, 2020 at 9:53 AM Nicolas Saenz Julienne
-> <nsaenzjulienne@suse.de> wrote:
-> > On Wed, 2020-06-03 at 15:20 -0400, Jim Quinlan wrote:
+Hi Andy,
 
-...
+On Thu, Jun 4, 2020 at 11:05 AM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Thu, Jun 04, 2020 at 10:35:12AM -0400, Jim Quinlan wrote:
+> > On Thu, Jun 4, 2020 at 9:53 AM Nicolas Saenz Julienne
+> > <nsaenzjulienne@suse.de> wrote:
+> > > On Wed, 2020-06-03 at 15:20 -0400, Jim Quinlan wrote:
+>
+> ...
+>
+> > > > +     phys = virt_to_phys(ret);
+> > > > +     pfn =  phys >> PAGE_SHIFT;
+> > >
+> > > nit: not sure it really pays off to have a pfn variable here.
+> > Did it for readability; the compiler's optimization should take care
+> > of any extra variables.  But I can switch if you insist.
+>
+> One side note: please, try to get familiar with existing helpers in the kernel.
+> For example, above line is like
+>
+>         pfn = PFN_DOWN(phys);
+I just used the term in the original code; will change to PFN_DOWN().
 
-> > > +     phys = virt_to_phys(ret);
-> > > +     pfn =  phys >> PAGE_SHIFT;
-> >
-> > nit: not sure it really pays off to have a pfn variable here.
-> Did it for readability; the compiler's optimization should take care
-> of any extra variables.  But I can switch if you insist.
+>
+> ...
+>
+> > > > +     if (!WARN_ON(!dev) && dev->dma_pfn_offset_map)
+>
+> > > > +             *dma_handle -= PFN_PHYS(
+> > > > +                     dma_pfn_offset_from_phys_addr(dev, phys));
+>
+> Don't do such indentation, esp. we have now 100! :-)
 
-One side note: please, try to get familiar with existing helpers in the kernel.
-For example, above line is like
-
-	pfn = PFN_DOWN(phys);
-
-...
-
-> > > +     if (!WARN_ON(!dev) && dev->dma_pfn_offset_map)
-
-> > > +             *dma_handle -= PFN_PHYS(
-> > > +                     dma_pfn_offset_from_phys_addr(dev, phys));
-
-Don't do such indentation, esp. we have now 100! :-)
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Got it.  Thanks,
+Jim Quinlan
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
