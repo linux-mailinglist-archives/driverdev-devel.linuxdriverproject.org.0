@@ -1,53 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4E3B1EFBDD
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jun 2020 16:51:43 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C77681EFE9D
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jun 2020 19:14:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7DA9C88CE8;
-	Fri,  5 Jun 2020 14:51:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7A58B875D7;
+	Fri,  5 Jun 2020 17:14:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z3+qqeceSWsD; Fri,  5 Jun 2020 14:51:41 +0000 (UTC)
+	with ESMTP id MYefzBS8HinM; Fri,  5 Jun 2020 17:14:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2AA2288235;
-	Fri,  5 Jun 2020 14:51:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F224784C3C;
+	Fri,  5 Jun 2020 17:14:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 270301BF5F4
- for <devel@linuxdriverproject.org>; Fri,  5 Jun 2020 14:51:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A9E141BF30B
+ for <devel@linuxdriverproject.org>; Fri,  5 Jun 2020 17:14:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 15D632578F
- for <devel@linuxdriverproject.org>; Fri,  5 Jun 2020 14:51:37 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9545A23307
+ for <devel@linuxdriverproject.org>; Fri,  5 Jun 2020 17:14:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QZ9oznv1riaX for <devel@linuxdriverproject.org>;
- Fri,  5 Jun 2020 14:51:31 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.foescocursos.es (unknown [146.255.98.26])
- by silver.osuosl.org (Postfix) with ESMTPS id CE45C25716
- for <devel@driverdev.osuosl.org>; Fri,  5 Jun 2020 14:51:30 +0000 (UTC)
-Received: from 143.red-83-52-2.dynamicip.rima-tde.net
- (143.red-83-52-2.dynamicip.rima-tde.net [83.52.2.143])
- by mail.foescocursos.es (Postfix) with ESMTPSA id 2C639B0BC0
- for <devel@driverdev.osuosl.org>; Fri,  5 Jun 2020 16:50:46 +0200 (CEST)
-Authentication-Results: mail.foescocursos.es;
- spf=pass (sender IP is 83.52.2.143) smtp.mailfrom=info14@foescoformacion.es
- smtp.helo=143.red-83-52-2.dynamicip.rima-tde.net
-Received-SPF: pass (mail.foescocursos.es: connection is authenticated)
+ with ESMTP id ctnlNvDcStUN for <devel@linuxdriverproject.org>;
+ Fri,  5 Jun 2020 17:14:20 +0000 (UTC)
+X-Greylist: delayed 00:05:57 by SQLgrey-1.7.6
+Received: from mail-qv1-f68.google.com (mail-qv1-f68.google.com
+ [209.85.219.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2541D20371
+ for <devel@driverdev.osuosl.org>; Fri,  5 Jun 2020 17:14:20 +0000 (UTC)
+Received: by mail-qv1-f68.google.com with SMTP id cv17so5020747qvb.13
+ for <devel@driverdev.osuosl.org>; Fri, 05 Jun 2020 10:14:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20150623.gappssmtp.com; s=20150623;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=41FYPole99m3v6lC0GIqr4V55A/d/jnjjKgUOpu4n94=;
+ b=1IMBW+XzfsCx1tCVpcGRzt74dpwHtBSFNsEjfN7Ic6MFqZ+oUwjAeyj54JL6OnyjVe
+ 1Zx8bKoJ4RUpZlw4dzhAIopzEpMsQpulK9ZjqH2jAF8LYA5hjqLkMFim4mqcsWTh+IpT
+ GWOBcBNUPndtXVrsVkjpD8jpJb46mp43OWdAu9D9NYNAq+67Ulma+0GZR9pMC7W26Fnh
+ AZmRQQknEgca3WEtkAVkaPHkm9JhQ+EqTlC/ddMsphtuFFxCsbPhrsV1HNesnGosGkDZ
+ BiF+B8LqPh1nWf5BXGir659WlKmAnwow7rgt/OWihurQpV2AO+nSCO+CcWi9EU6+oPZs
+ 8IuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=41FYPole99m3v6lC0GIqr4V55A/d/jnjjKgUOpu4n94=;
+ b=JWiQG3J4mMuQioNIcpJC7uePb7nZIXd26laFQ3JgA48SQAaNrGNJMLwgIeez+eLiyO
+ TSSSmCbcKhpEgm2eD22c1MlhqkVIGisnUvnHGcwfcUBCsDgEIsezUyEEAnHNI2SNa6X/
+ ctBrLq4Q6QMenG+z9EQ2wWRw8QwTNYJGzbyY0sEIsIOFcOFAqr1Ya1vWSF3zQqFcO70I
+ D6Jj96heetS9x3bpctn0KR8LIlQ/2JO0ZzLfCyu/vMib1aPtmmgIpjy8yb98iffeWkKs
+ sGVA0W2lZy7OAVGdsjFlOJ4LHNpjCRwYG1eSTRRDaxC1m/k4Y5DvEeVFwyZTm6cTs9c3
+ AaBg==
+X-Gm-Message-State: AOAM530AL2WSy5QH9QxH+8AKCUeokYtlBDpftt6GkvEEKZ9vahHwkR1Q
+ Z+di5J4Gn0XoS4qfoPb7YZ7sTkMLUlmXJBZQ
+X-Google-Smtp-Source: ABdhPJyn1telDZ5FqrTxUYY8AmIMYbMLLU9NL1zo2VrgBXk49DRIzQpbEYzJCmUAKuE4zcNpLnYXtA==
+X-Received: by 2002:ad4:418f:: with SMTP id e15mr10756123qvp.184.1591376902144; 
+ Fri, 05 Jun 2020 10:08:22 -0700 (PDT)
+Received: from skullcanyon ([192.222.193.21])
+ by smtp.gmail.com with ESMTPSA id 22sm305478qkd.18.2020.06.05.10.08.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Jun 2020 10:08:21 -0700 (PDT)
+Message-ID: <21efb826506f23d348fa58ca8b29eaca8c9dae55.camel@ndufresne.ca>
+Subject: Re: [PATCH 1/3] media: uapi: h264: update reference lists
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Jernej Skrabec <jernej.skrabec@siol.net>, paul.kocialkowski@bootlin.com,
+ mripard@kernel.org
+Date: Fri, 05 Jun 2020 13:08:19 -0400
+In-Reply-To: <20200604185745.23568-2-jernej.skrabec@siol.net>
+References: <20200604185745.23568-1-jernej.skrabec@siol.net>
+ <20200604185745.23568-2-jernej.skrabec@siol.net>
+User-Agent: Evolution 3.36.2 (3.36.2-1.fc32) 
 MIME-Version: 1.0
-From: info14@foescoformacion.es
-To: devel@driverdev.osuosl.org
-Subject: Cursos Bonificables JUNIO 2020 (Empleados activos y en ERTE)
-X-Mailer: Smart_Send_4_3_3
-Date: Fri, 5 Jun 2020 16:47:37 -0700
-Message-ID: <5616479590896147948838@DESKTOP-EEN1J8F>
-X-Priority: 1
-X-MSMail-Priority: High
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,70 +88,105 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: info14@foescoformacion.es
-Content-Type: multipart/mixed; boundary="===============6585672450489492011=="
+Cc: devel@driverdev.osuosl.org, jonas@kwiboo.se, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, wens@csie.org, hverkuil-cisco@xs4all.nl,
+ mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============6585672450489492011==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-Cursos Bonificables JUNIO 2020 (Empleados activos y en ERTE)
-
-
-Buenos d=EDas
-
-
-
-Se encuentra abierto el plazo de inscripci=F3n de Cursos Bonificables para =
-empleados en activo y en situaci=F3n de ERTE (JUNIO 2020)
-
-
-Todos los cursos son totalmente Bonificables con cargo al Cr=E9dito de Form=
-aci=F3n 2020 que dispone vuestra empresa.
-
-Se realizan en modalidad individual E-learning a trav=E9s de la plataforma =
-web y con total flexibilidad horaria.
-
-
-Dese=E1is que os mandemos la informaci=F3n=3F
-
-
-Saludos cordiales.
-
-
-Alex Pons
-Director departamento formaci=F3n.
-
-FOESCO Formaci=F3n Estatal Continua.
-Entidad Organizadora: B171823AP
-www.foesco.com
-
-e-mail:     cursos@foesco.net
-Tel:     910 323 794
-
-
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Si no desea recibir mas informaci=F3n de FOESCO responda a este correo con =
-la palabra BAJA en el asunto.
-
---===============6585672450489492011==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============6585672450489492011==--
+TGUgamV1ZGkgMDQganVpbiAyMDIwIMOgIDIwOjU3ICswMjAwLCBKZXJuZWogU2tyYWJlYyBhIMOp
+Y3JpdCA6Cj4gV2hlbiBkZWFsaW5nIHdpdGggd2l0aCBpbnRlcmxhY2VkIGZyYW1lcywgcmVmZXJl
+bmNlIGxpc3RzIG11c3QgdGVsbCBpZgo+IGVhY2ggcGFydGljdWxhciByZWZlcmVuY2UgaXMgbWVh
+bnQgZm9yIHRvcCBvciBib3R0b20gZmllbGQuIFRoaXMgaW5mbwo+IGlzIGN1cnJlbnRseSBub3Qg
+cHJvdmlkZWQgYXQgYWxsIGluIHRoZSBIMjY0IHJlbGF0ZWQgY29udHJvbHMuCj4gCj4gTWFrZSBy
+ZWZlcmVuY2UgbGlzdHMgaG9sZCBhIHN0cnVjdHVyZSB3aGljaCB3aWxsIGFsc28gaG9sZCBmbGFn
+cyBhbG9uZwo+IGluZGV4IGludG8gRFBCIGFycmF5LiBGbGFncyB3aWxsIHRlbGwgaWYgcmVmZXJl
+bmNlIGlzIG1lYW50IGZvciB0b3Agb3IKPiBib3R0b20gZmllbGQuCj4gCj4gQ3VycmVudGx5IHRo
+ZSBvbmx5IHVzZXIgb2YgdGhlc2UgbGlzdHMgaXMgQ2VkcnVzIHdoaWNoIGlzIGp1c3QgY29tcGls
+ZQo+IGZpeGVkIGhlcmUuIEFjdHVhbCB1c2FnZSBvZiBuZXdseSBpbnRyb2R1Y2VkIGZsYWdzIHdp
+bGwgY29tZSBpbgo+IGZvbGxvd2luZyBjb21taXQuCj4gCj4gU2lnbmVkLW9mZi1ieTogSmVybmVq
+IFNrcmFiZWMgPGplcm5lai5za3JhYmVjQHNpb2wubmV0PgoKVGhpcyBsb29rcyBsaWtlIHRoZSBy
+aWdodCBhcHByb2FjaCB0byBtZSBhbmQgaXMgZXh0ZW5zaWJsZSBpZiBhbnl0aGluZwplbHNlIGlz
+IG5lZWRlZCBmb3IgTVZDIGFuZCBTVkMgc3BlY2lhbCByZWZlcmVuY2luZyAoYXQgbGVhc3Qgd2ls
+bCBiZQplbm91Z2ggZm9yIHdoYXQgSC4yNjQgYWN0dWFsbHkgc3VwcG9ydHMgaW4gdGhpcyByZWdh
+cmQpLgoKUmV2aWV3ZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29s
+bGFib3JhLmNvbT4KCj4gLS0tCj4gIC4uLi9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdCAg
+ICAgICAgICAgICB8IDQwICsrKysrKysrKysrKysrKysrKy0KPiAgLi4uL3N0YWdpbmcvbWVkaWEv
+c3VueGkvY2VkcnVzL2NlZHJ1c19oMjY0LmMgIHwgIDYgKy0tCj4gIGluY2x1ZGUvbWVkaWEvaDI2
+NC1jdHJscy5oICAgICAgICAgICAgICAgICAgICB8IDEyICsrKysrLQo+ICAzIGZpbGVzIGNoYW5n
+ZWQsIDUxIGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL0Rv
+Y3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdCBi
+L0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJz
+dAo+IGluZGV4IGQwZDUwNmE0NDRiMS4uNmMzNmQyOThkYjIwIDEwMDY0NAo+IC0tLSBhL0RvY3Vt
+ZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdAo+ICsr
+KyBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVj
+LnJzdAo+IEBAIC0xODQzLDEwICsxODQzLDEwIEBAIGVudW0gdjRsMl9tcGVnX3ZpZGVvX2gyNjRf
+aGllcmFyY2hpY2FsX2NvZGluZ190eXBlIC0KPiAgICAgICogLSBfX3UzMgo+ICAgICAgICAtIGBg
+c2xpY2VfZ3JvdXBfY2hhbmdlX2N5Y2xlYGAKPiAgICAgICAgLQo+IC0gICAgKiAtIF9fdTgKPiAr
+ICAgICogLSBzdHJ1Y3QgOmM6dHlwZTpgdjRsMl9oMjY0X3JlZmVyZW5jZWAKPiAgICAgICAgLSBg
+YHJlZl9waWNfbGlzdDBbMzJdYGAKPiAgICAgICAgLSBSZWZlcmVuY2UgcGljdHVyZSBsaXN0IGFm
+dGVyIGFwcGx5aW5nIHRoZSBwZXItc2xpY2UgbW9kaWZpY2F0aW9ucwo+IC0gICAgKiAtIF9fdTgK
+PiArICAgICogLSBzdHJ1Y3QgOmM6dHlwZTpgdjRsMl9oMjY0X3JlZmVyZW5jZWAKPiAgICAgICAg
+LSBgYHJlZl9waWNfbGlzdDFbMzJdYGAKPiAgICAgICAgLSBSZWZlcmVuY2UgcGljdHVyZSBsaXN0
+IGFmdGVyIGFwcGx5aW5nIHRoZSBwZXItc2xpY2UgbW9kaWZpY2F0aW9ucwo+ICAgICAgKiAtIF9f
+dTMyCj4gQEAgLTE5MjYsNiArMTkyNiw0MiBAQCBlbnVtIHY0bDJfbXBlZ192aWRlb19oMjY0X2hp
+ZXJhcmNoaWNhbF9jb2RpbmdfdHlwZSAtCj4gICAgICAgIC0gYGBjaHJvbWFfb2Zmc2V0WzMyXVsy
+XWBgCj4gICAgICAgIC0KPiAgCj4gK2BgUGljdHVyZSBSZWZlcmVuY2VgYAo+ICsKPiArLi4gYzp0
+eXBlOjogdjRsMl9oMjY0X3JlZmVyZW5jZQo+ICsKPiArLi4gY3NzY2xhc3M6OiBsb25ndGFibGUK
+PiArCj4gKy4uIGZsYXQtdGFibGU6OiBzdHJ1Y3QgdjRsMl9oMjY0X3JlZmVyZW5jZQo+ICsgICAg
+OmhlYWRlci1yb3dzOiAgMAo+ICsgICAgOnN0dWItY29sdW1uczogMAo+ICsgICAgOndpZHRoczog
+ICAgICAgMSAxIDIKPiArCj4gKyAgICAqIC0gX191MTYKPiArICAgICAgLSBgYGZsYWdzYGAKPiAr
+ICAgICAgLSBTZWUgOnJlZjpgUGljdHVyZSBSZWZlcmVuY2UgRmxhZ3MgPGgyNjRfcmVmZXJlbmNl
+X2ZsYWdzPmAKPiArICAgICogLSBfX3U4Cj4gKyAgICAgIC0gYGBpbmRleGBgCj4gKyAgICAgIC0K
+PiArCj4gKy4uIF9oMjY0X3JlZmVyZW5jZV9mbGFnczoKPiArCj4gK2BgUGljdHVyZSBSZWZlcmVu
+Y2UgRmxhZ3NgYAo+ICsKPiArLi4gY3NzY2xhc3M6OiBsb25ndGFibGUKPiArCj4gKy4uIGZsYXQt
+dGFibGU6Ogo+ICsgICAgOmhlYWRlci1yb3dzOiAgMAo+ICsgICAgOnN0dWItY29sdW1uczogMAo+
+ICsgICAgOndpZHRoczogICAgICAgMSAxIDIKPiArCj4gKyAgICAqIC0gYGBWNEwyX0gyNjRfUkVG
+RVJFTkNFX0ZMQUdfVE9QX0ZJRUxEYGAKPiArICAgICAgLSAweDAwMDAwMDAxCj4gKyAgICAgIC0K
+PiArICAgICogLSBgYFY0TDJfSDI2NF9SRUZFUkVOQ0VfRkxBR19CT1RUT01fRklFTERgYAo+ICsg
+ICAgICAtIDB4MDAwMDAwMDIKPiArICAgICAgLQo+ICsKPiAgYGBWNEwyX0NJRF9NUEVHX1ZJREVP
+X0gyNjRfREVDT0RFX1BBUkFNUyAoc3RydWN0KWBgCj4gICAgICBTcGVjaWZpZXMgdGhlIGRlY29k
+ZSBwYXJhbWV0ZXJzIChhcyBleHRyYWN0ZWQgZnJvbSB0aGUgYml0c3RyZWFtKQo+ICAgICAgZm9y
+IHRoZSBhc3NvY2lhdGVkIEgyNjQgc2xpY2UgZGF0YS4gVGhpcyBpbmNsdWRlcyB0aGUgbmVjZXNz
+YXJ5Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2Vk
+cnVzX2gyNjQuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gy
+NjQuYwo+IGluZGV4IDU0ZWUyYWE0MjNlMi4uY2NlNTI3YmJkZjg2IDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gyNjQuYwo+ICsrKyBiL2Ry
+aXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gyNjQuYwo+IEBAIC0xNjYs
+OCArMTY2LDggQEAgc3RhdGljIHZvaWQgY2VkcnVzX3dyaXRlX2ZyYW1lX2xpc3Qoc3RydWN0IGNl
+ZHJ1c19jdHggKmN0eCwKPiAgCj4gIHN0YXRpYyB2b2lkIF9jZWRydXNfd3JpdGVfcmVmX2xpc3Qo
+c3RydWN0IGNlZHJ1c19jdHggKmN0eCwKPiAgCQkJCSAgIHN0cnVjdCBjZWRydXNfcnVuICpydW4s
+Cj4gLQkJCQkgICBjb25zdCB1OCAqcmVmX2xpc3QsIHU4IG51bV9yZWYsCj4gLQkJCQkgICBlbnVt
+IGNlZHJ1c19oMjY0X3NyYW1fb2ZmIHNyYW0pCj4gKwkJCQkgICBjb25zdCBzdHJ1Y3QgdjRsMl9o
+MjY0X3JlZmVyZW5jZSAqcmVmX2xpc3QsCj4gKwkJCQkgICB1OCBudW1fcmVmLCBlbnVtIGNlZHJ1
+c19oMjY0X3NyYW1fb2ZmIHNyYW0pCj4gIHsKPiAgCWNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaDI2
+NF9kZWNvZGVfcGFyYW1zICpkZWNvZGUgPSBydW4tPmgyNjQuZGVjb2RlX3BhcmFtczsKPiAgCXN0
+cnVjdCB2YjJfcXVldWUgKmNhcF9xOwo+IEBAIC0xODgsNyArMTg4LDcgQEAgc3RhdGljIHZvaWQg
+X2NlZHJ1c193cml0ZV9yZWZfbGlzdChzdHJ1Y3QgY2VkcnVzX2N0eCAqY3R4LAo+ICAJCWludCBi
+dWZfaWR4Owo+ICAJCXU4IGRwYl9pZHg7Cj4gIAo+IC0JCWRwYl9pZHggPSByZWZfbGlzdFtpXTsK
+PiArCQlkcGJfaWR4ID0gcmVmX2xpc3RbaV0uaW5kZXg7Cj4gIAkJZHBiID0gJmRlY29kZS0+ZHBi
+W2RwYl9pZHhdOwo+ICAKPiAgCQlpZiAoIShkcGItPmZsYWdzICYgVjRMMl9IMjY0X0RQQl9FTlRS
+WV9GTEFHX0FDVElWRSkpCj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvbWVkaWEvaDI2NC1jdHJscy5o
+IGIvaW5jbHVkZS9tZWRpYS9oMjY0LWN0cmxzLmgKPiBpbmRleCAwODBmZDEyOTNjNDIuLjliMWNi
+YzliYzM4ZSAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL21lZGlhL2gyNjQtY3RybHMuaAo+ICsrKyBi
+L2luY2x1ZGUvbWVkaWEvaDI2NC1jdHJscy5oCj4gQEAgLTE0MCw2ICsxNDAsMTQgQEAgc3RydWN0
+IHY0bDJfaDI2NF9wcmVkX3dlaWdodF90YWJsZSB7Cj4gICNkZWZpbmUgVjRMMl9IMjY0X1NMSUNF
+X0ZMQUdfRElSRUNUX1NQQVRJQUxfTVZfUFJFRAkweDA0Cj4gICNkZWZpbmUgVjRMMl9IMjY0X1NM
+SUNFX0ZMQUdfU1BfRk9SX1NXSVRDSAkJMHgwOAo+ICAKPiArI2RlZmluZSBWNEwyX0gyNjRfUkVG
+RVJFTkNFX0ZMQUdfVE9QX0ZJRUxECQkweDAxCj4gKyNkZWZpbmUgVjRMMl9IMjY0X1JFRkVSRU5D
+RV9GTEFHX0JPVFRPTV9GSUVMRAkJMHgwMgo+ICsKPiArc3RydWN0IHY0bDJfaDI2NF9yZWZlcmVu
+Y2Ugewo+ICsJX191OCBmbGFnczsKPiArCV9fdTggaW5kZXg7Cj4gK307Cj4gKwo+ICBzdHJ1Y3Qg
+djRsMl9jdHJsX2gyNjRfc2xpY2VfcGFyYW1zIHsKPiAgCS8qIFNpemUgaW4gYnl0ZXMsIGluY2x1
+ZGluZyBoZWFkZXIgKi8KPiAgCV9fdTMyIHNpemU7Cj4gQEAgLTE4Miw4ICsxOTAsOCBAQCBzdHJ1
+Y3QgdjRsMl9jdHJsX2gyNjRfc2xpY2VfcGFyYW1zIHsKPiAgCSAqIEVudHJpZXMgb24gZWFjaCBs
+aXN0IGFyZSBpbmRpY2VzIGludG8KPiAgCSAqIHY0bDJfY3RybF9oMjY0X2RlY29kZV9wYXJhbXMu
+ZHBiW10uCj4gIAkgKi8KPiAtCV9fdTggcmVmX3BpY19saXN0MFszMl07Cj4gLQlfX3U4IHJlZl9w
+aWNfbGlzdDFbMzJdOwo+ICsJc3RydWN0IHY0bDJfaDI2NF9yZWZlcmVuY2UgcmVmX3BpY19saXN0
+MFszMl07Cj4gKwlzdHJ1Y3QgdjRsMl9oMjY0X3JlZmVyZW5jZSByZWZfcGljX2xpc3QxWzMyXTsK
+PiAgCj4gIAlfX3UzMiBmbGFnczsKPiAgfTsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
+b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
