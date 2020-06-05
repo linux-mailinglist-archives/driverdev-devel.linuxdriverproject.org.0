@@ -2,75 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C6491EEFD9
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jun 2020 05:22:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D62591EF113
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Jun 2020 08:01:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8CE92220C2;
-	Fri,  5 Jun 2020 03:22:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 874E1220EF;
+	Fri,  5 Jun 2020 06:01:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2Ou2IyzFTcQj; Fri,  5 Jun 2020 03:22:42 +0000 (UTC)
+	with ESMTP id JekkFGTypV31; Fri,  5 Jun 2020 06:01:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B57F9204BC;
-	Fri,  5 Jun 2020 03:22:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DB3AE203D2;
+	Fri,  5 Jun 2020 06:01:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 31BA41BF97F
- for <devel@linuxdriverproject.org>; Fri,  5 Jun 2020 03:22:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E9AB71BF82D
+ for <devel@linuxdriverproject.org>; Fri,  5 Jun 2020 06:00:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2E57286D02
- for <devel@linuxdriverproject.org>; Fri,  5 Jun 2020 03:22:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E3C128771E
+ for <devel@linuxdriverproject.org>; Fri,  5 Jun 2020 06:00:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m8tU5vBRYk2v for <devel@linuxdriverproject.org>;
- Fri,  5 Jun 2020 03:22:35 +0000 (UTC)
+ with ESMTP id jqDJK4q2ZOpx for <devel@linuxdriverproject.org>;
+ Fri,  5 Jun 2020 06:00:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E368986C3A
- for <devel@driverdev.osuosl.org>; Fri,  5 Jun 2020 03:22:35 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id r10so4465324pgv.8
- for <devel@driverdev.osuosl.org>; Thu, 04 Jun 2020 20:22:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0BsPlBCClkNY3i19jkCcpmxryGhoEl1mZzp7w55xl5k=;
- b=NeGwUC5SuWEfR36Y2HWPbDGCVuTwY3L6o3gm4YbT6IoH+Rj+6El+FYcN/56JxNZ+oO
- bTRhTltrhc+Ffwikfu/W8ddkhlceItIcenPlaR2KQ7iqGJqnHqt3IH9T0tHB0xSHwet4
- FG7ZCQzpNkJGFhgY4NgBjN3Nzv1tHo5Lh+jWlK8kaIMBXNMDcCfLRhCpM0s+MIZ4rv+D
- 7jTlQMsbHXUm1/vBnTfNwfGc2yHXzG2UXCHffwM6/SWYmarIjfEy72pAbEfGow8g+gSS
- PB6b/03bgu7bQq3MQ2P9p72etuZ51h6xArh/42oDdyGpHEn5SCZnaguxp0I3LTIcsM/n
- jgGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0BsPlBCClkNY3i19jkCcpmxryGhoEl1mZzp7w55xl5k=;
- b=EjrHkH53KjrbHcRD9xdjibddtd5WtN44PrexRqo118qPeMESbb9924dz1JdXxh6xpH
- 77Yhb11bbSNs4gcgfs2hF5Ww/+ycqMjkjWgEr4YzIScADfW2NMQedAlbgxGSmIlAZaDm
- WkaSkzPzSxZmXM+fGzEamSL7RVzjNZ0hujY53jegHUgbcZaj7fgbPwG9oGeW4G7cXLFp
- 1VGZrpQ3obz5M5UwBmLO7fk8m3FKAoMFKdsw46uliswnK+4mVgm2JFZIzK3vPZfcCP3W
- kV9Oi+/S/8DecRuQfqkxZfbYkFUk6oasK+f3OiKEahhOeni3Z8jDvj12SpcOgUtfqnF8
- +KKQ==
-X-Gm-Message-State: AOAM530bpGAAI4PxKFCLtz3K8xJLpbKMP65s6Syy3aKmxZLVB70EUHvu
- 4UqK1D6ODUBZdYAh4k8xiKQ=
-X-Google-Smtp-Source: ABdhPJytvjFMr1e82qYio8uFLx+ShTDgJaWolaqdqqamVortvV8WNBsc755YCgcIe15apNvm12G5aw==
-X-Received: by 2002:a63:c948:: with SMTP id y8mr7468775pgg.118.1591327355373; 
- Thu, 04 Jun 2020 20:22:35 -0700 (PDT)
-Received: from localhost.localdomain ([223.29.222.28])
- by smtp.gmail.com with ESMTPSA id nl8sm7685405pjb.13.2020.06.04.20.22.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Jun 2020 20:22:34 -0700 (PDT)
-From: Divyansh Kamboj <kambojdivyansh2000@gmail.com>
-To: abbotti@mev.co.uk
-Subject: [PATCH] Staging: comedi: Added blank lines to fix coding style issue
-Date: Fri,  5 Jun 2020 08:51:40 +0530
-Message-Id: <20200605032140.31287-1-kambojdivyansh2000@gmail.com>
-X-Mailer: git-send-email 2.26.2
+Received: from hqnvemgate24.nvidia.com (hqnvemgate24.nvidia.com
+ [216.228.121.143])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B5DF9876EF
+ for <devel@driverdev.osuosl.org>; Fri,  5 Jun 2020 06:00:53 +0000 (UTC)
+Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
+ hqnvemgate24.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5ed9df320001>; Thu, 04 Jun 2020 22:59:14 -0700
+Received: from hqmail.nvidia.com ([172.20.161.6])
+ by hqpgpgate101.nvidia.com (PGP Universal service);
+ Thu, 04 Jun 2020 23:00:53 -0700
+X-PGP-Universal: processed;
+ by hqpgpgate101.nvidia.com on Thu, 04 Jun 2020 23:00:53 -0700
+Received: from [10.26.75.201] (10.124.1.5) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Fri, 5 Jun
+ 2020 06:00:49 +0000
+Subject: Re: [PATCH] media: staging: tegra-vde: add missing
+ pm_runtime_put_autosuspend
+To: Navid Emamdoost <navid.emamdoost@gmail.com>, Dmitry Osipenko
+ <digetx@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, Thierry Reding
+ <thierry.reding@gmail.com>, <linux-media@vger.kernel.org>,
+ <linux-tegra@vger.kernel.org>, <devel@driverdev.osuosl.org>,
+ <linux-kernel@vger.kernel.org>
+References: <20200602054841.15746-1-navid.emamdoost@gmail.com>
+From: Jon Hunter <jonathanh@nvidia.com>
+Message-ID: <7061eb81-c00c-9978-5e4b-f9896c0ffd5e@nvidia.com>
+Date: Fri, 5 Jun 2020 07:00:47 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
+In-Reply-To: <20200602054841.15746-1-navid.emamdoost@gmail.com>
+X-Originating-IP: [10.124.1.5]
+X-ClientProxiedBy: HQMAIL101.nvidia.com (172.20.187.10) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1591336754; bh=0dUrBQuoU0VRakO1MH9S67i+J3/nQDDpMEAcgsefyrU=;
+ h=X-PGP-Universal:Subject:To:CC:References:From:Message-ID:Date:
+ User-Agent:MIME-Version:In-Reply-To:X-Originating-IP:
+ X-ClientProxiedBy:Content-Type:Content-Language:
+ Content-Transfer-Encoding;
+ b=R2Vq88wUbD09A+WcyBIhBotOM28XgztvZhV8dSXRV85oGVoan2uEgy1pSjb3Holxt
+ PvIsxh7u7siC7ICTBTkp+RRjCSDJ17jxniW5x/LqC8+sy/xSRamXN1pcd3DQGpoyUE
+ oSQ2GQ4Et0c32vMLlCHe2mYcxvHnoZ1pxHZTRNIOWlriT750mG73hET133SuVnQn9P
+ t/zp6OrtY/4DkBAZQlMFcxwxJHcbTD5D6hVbvYAH7U8QAEC2bhCsU45h5JUVHdpGtg
+ Ht/FOCL/0+Q/ZdMo4937jJhuU7DmdlB2Lgj1MCKiPWZ6DXVYWm78r4CCA8aLtrChA+
+ ZcQyme+ON5FcQ==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,51 +87,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- kambojdivyansh2000@gmail.com
+Cc: emamd001@umn.edu, kjlu@umn.edu, wu000273@umn.edu, smccaman@umn.edu
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixed a coding style issue by adding a blank line after declarations
 
-Signed-off-by: Divyansh Kamboj <kambojdivyansh2000@gmail.com>
----
- drivers/staging/comedi/comedi_fops.c | 3 +++
- 1 file changed, 3 insertions(+)
+On 02/06/2020 06:48, Navid Emamdoost wrote:
+> Call to pm_runtime_get_sync increments counter even in case of
+> failure leading to incorrect ref count.
+> Call pm_runtime_put_autosuspend if pm_runtime_get_sync fails.
+> 
+> Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
+> ---
+>  drivers/staging/media/tegra-vde/vde.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/tegra-vde/vde.c b/drivers/staging/media/tegra-vde/vde.c
+> index d3e63512a765..52cdd4a91e93 100644
+> --- a/drivers/staging/media/tegra-vde/vde.c
+> +++ b/drivers/staging/media/tegra-vde/vde.c
+> @@ -776,8 +776,10 @@ static int tegra_vde_ioctl_decode_h264(struct tegra_vde *vde,
+>  		goto release_dpb_frames;
+>  
+>  	ret = pm_runtime_get_sync(dev);
+> -	if (ret < 0)
+> +	if (ret < 0) {
+> +		pm_runtime_put_autosuspend(dev);
+>  		goto unlock;
+> +	}
+>  
+>  	/*
+>  	 * We rely on the VDE registers reset value, otherwise VDE
 
-diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
-index e85a99b68f31..3f70e5dfac39 100644
---- a/drivers/staging/comedi/comedi_fops.c
-+++ b/drivers/staging/comedi/comedi_fops.c
-@@ -2169,6 +2169,7 @@ static long comedi_unlocked_ioctl(struct file *file, unsigned int cmd,
- 		break;
- 	case COMEDI_CHANINFO: {
- 		struct comedi_chaninfo it;
-+
- 		if (copy_from_user(&it, (void __user *)arg, sizeof(it)))
- 			rc = -EFAULT;
- 		else
-@@ -2177,6 +2178,7 @@ static long comedi_unlocked_ioctl(struct file *file, unsigned int cmd,
- 	}
- 	case COMEDI_RANGEINFO: {
- 		struct comedi_rangeinfo it;
-+
- 		if (copy_from_user(&it, (void __user *)arg, sizeof(it)))
- 			rc = -EFAULT;
- 		else
-@@ -2249,6 +2251,7 @@ static long comedi_unlocked_ioctl(struct file *file, unsigned int cmd,
- 	}
- 	case COMEDI_INSN: {
- 		struct comedi_insn insn;
-+
- 		if (copy_from_user(&insn, (void __user *)arg, sizeof(insn)))
- 			rc = -EFAULT;
- 		else
+Please use the put in the error path.
+
+Jon
+
 -- 
-2.26.2
-
+nvpublic
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
