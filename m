@@ -2,55 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 111861F240A
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jun 2020 01:19:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AFE401F241E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jun 2020 01:20:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AF895869BE;
-	Mon,  8 Jun 2020 23:19:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 67D38869BB;
+	Mon,  8 Jun 2020 23:20:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T9sjoYqt3m2A; Mon,  8 Jun 2020 23:19:23 +0000 (UTC)
+	with ESMTP id DKkiel9a9rrB; Mon,  8 Jun 2020 23:20:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56F9486930;
-	Mon,  8 Jun 2020 23:19:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B13498698F;
+	Mon,  8 Jun 2020 23:20:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E89731BF381
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:19:20 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E45241BF381
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:20:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E5432866C8
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:19:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B1C9120367
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:20:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yDptBA5sgSCV for <devel@linuxdriverproject.org>;
- Mon,  8 Jun 2020 23:19:20 +0000 (UTC)
+ with ESMTP id wGchX3Ppn6sn for <devel@linuxdriverproject.org>;
+ Mon,  8 Jun 2020 23:20:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 16F4E86500
- for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 23:19:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 541AD20133
+ for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 23:20:12 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E66172089D;
- Mon,  8 Jun 2020 23:19:18 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id E385B2083E;
+ Mon,  8 Jun 2020 23:20:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591658359;
- bh=y5Y0wWeH8BGIJjmf28U0mdwIVqHJMGZ1uVis5+Oh1g0=;
+ s=default; t=1591658412;
+ bh=mTiX6BVUQ3jkX0Jh2seMK/MdH4mnuw+Iqv/QKtJSdaw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=qJQp5vf88XveBh43Yhe81B+mgBjG9ZgPPwlcYPYEmZ7WkcK54Ld/5xHFUdpANgwco
- R2MYCa0meR0TpX4qtaTfmOL4o2EuFGaLqhjWte8CCM13ZNd/HO+2BWhCC9Ov1U9gp/
- U7GoxJtxhKEXr7CmCrx2Dh/CSqJlHiWsrK6L6lYg=
+ b=qKgvNP0N3CNMBG+tALDLCf1u6go5NV7yncc+aIHUYQvPuJ43OlG4s5rlLD07z+ACk
+ bbtkliuqL2qJxxng2XSCZyNfkD95os1vS480LstmAF8hNC841l82VRhJLsHLVKqRFL
+ Zl9pgXGe0sDXnXrTE68oegudT8hjNQWzg31BsRBI=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 025/175] media: staging: ipu3: Fix stale list
- entries on parameter queue failure
-Date: Mon,  8 Jun 2020 19:16:18 -0400
-Message-Id: <20200608231848.3366970-25-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 061/175] staging: android: ion: use vmap instead
+ of vm_map_ram
+Date: Mon,  8 Jun 2020 19:16:54 -0400
+Message-Id: <20200608231848.3366970-61-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200608231848.3366970-1-sashal@kernel.org>
 References: <20200608231848.3366970-1-sashal@kernel.org>
@@ -69,195 +69,92 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Tomasz Figa <tfiga@chromium.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
- linux-media@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Peter Zijlstra <peterz@infradead.org>, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, dri-devel@lists.freedesktop.org,
+ Michael Kelley <mikelley@microsoft.com>, Paul Mackerras <paulus@ozlabs.org>,
+ Will Deacon <will@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Sasha Levin <sashal@kernel.org>, Wei Liu <wei.liu@kernel.org>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Christoph Hellwig <hch@lst.de>,
+ David Airlie <airlied@linux.ie>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Gao Xiang <xiang@kernel.org>, Laura Abbott <labbott@redhat.com>,
+ Nitin Gupta <ngupta@vflare.org>, devel@driverdev.osuosl.org,
+ Vasily Gorbik <gor@linux.ibm.com>, Haiyang Zhang <haiyangz@microsoft.com>,
+ linaro-mm-sig@lists.linaro.org, Christophe Leroy <christophe.leroy@c-s.fr>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ Minchan Kim <minchan@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Johannes Weiner <hannes@cmpxchg.org>,
+ Andrew Morton <akpm@linux-foundation.org>, Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Tomasz Figa <tfiga@chromium.org>
+From: Christoph Hellwig <hch@lst.de>
 
-[ Upstream commit 735a02f1bbc2c5e6e9cdbf0222948ff03ff7ab2d ]
+[ Upstream commit 5bf9917452112694b2c774465ee4dbe441c84b77 ]
 
-When queuing parameters fails, current code bails out without deleting
-the corresponding vb2 buffer from the driver buffer list, but the buffer
-is returned to vb2. This leads to stale list entries and a crash when
-the driver stops streaming:
+vm_map_ram can keep mappings around after the vm_unmap_ram.  Using that
+with non-PAGE_KERNEL mappings can lead to all kinds of aliasing issues.
 
-[  224.935561] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  224.998932] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  225.064430] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  225.128534] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  225.194945] ipu3-imgu 0000:00:05.0: set parameters failed.
-[  225.360363] ------------[ cut here ]------------
-[  225.360372] WARNING: CPU: 0 PID: 6704 at
-drivers/media/common/videobuf2/videobuf2-core.c:927
-vb2_buffer_done+0x20f/0x21a [videobuf2_common]
-[  225.360374] Modules linked in: snd_seq_dummy snd_seq snd_seq_device
-veth bridge stp llc tun nf_nat_tftp nf_conntrack_tftp nf_nat_ftp
-nf_conntrack_ftp esp6 ah6 ip6t_REJECT ip6t_ipv6header cmac rfcomm uinput
-ipu3_imgu(C) ipu3_cio2 iova videobuf2_v4l2 videobuf2_common
-videobuf2_dma_sg videobuf2_memops ov13858 ov5670 v4l2_fwnode dw9714
-acpi_als xt_MASQUERADE fuse iio_trig_sysfs cros_ec_sensors_ring
-cros_ec_light_prox cros_ec_sensors cros_ec_sensors_core
-industrialio_triggered_buffer kfifo_buf industrialio
-cros_ec_sensorsupport cdc_ether btusb btrtl btintel btbcm usbnet
-bluetooth ecdh_generic ecc hid_google_hammer iwlmvm iwl7000_mac80211
-r8152 mii lzo_rle lzo_compress iwlwifi zram cfg80211 joydev
-[  225.360400] CPU: 0 PID: 6704 Comm: CameraDeviceOps Tainted: G
-C        5.4.30 #5
-[  225.360402] Hardware name: HP Soraka/Soraka, BIOS
-Google_Soraka.10431.106.0 12/03/2019
-[  225.360405] RIP: 0010:vb2_buffer_done+0x20f/0x21a [videobuf2_common]
-[  225.360408] Code: 5e 41 5f 5d e9 e0 16 5a d4 41 8b 55 08 48 c7 c7 8f
-8b 5c c0 48 c7 c6 36 9a 5c c0 44 89 f9 31 c0 e8 a5 1c 5b d4 e9 53 fe ff
-ff <0f> 0b eb a3 e8 12 d7 43 d4 eb 97 0f 1f 44 00 00 55 48 89 e5 41 56
-[  225.360410] RSP: 0018:ffff9468ab32fba8 EFLAGS: 00010297
-[  225.360412] RAX: ffff8aa7a51577a8 RBX: dead000000000122 RCX:
-ffff8aa7a51577a8
-[  225.360414] RDX: 0000000000000000 RSI: 0000000000000006 RDI:
-ffff8aa7a5157400
-[  225.360416] RBP: ffff9468ab32fbd8 R08: ffff8aa64e47e600 R09:
-0000000000000000
-[  225.360418] R10: 0000000000000000 R11: ffffffffc06036e6 R12:
-dead000000000100
-[  225.360420] R13: ffff8aa7820f1940 R14: ffff8aa7a51577a8 R15:
-0000000000000006
-[  225.360422] FS:  00007c1146ffd700(0000) GS:ffff8aa7baa00000(0000)
-knlGS:0000000000000000
-[  225.360424] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  225.360426] CR2: 00007aea3473a000 CR3: 00000000537d6004 CR4:
-00000000003606f0
-[  225.360427] Call Trace:
-[  225.360434]  imgu_return_all_buffers+0x6f/0x8e [ipu3_imgu]
-[  225.360438]  imgu_vb2_stop_streaming+0xd6/0xf0 [ipu3_imgu]
-[  225.360441]  __vb2_queue_cancel+0x33/0x22d [videobuf2_common]
-[  225.360443]  vb2_core_streamoff+0x16/0x78 [videobuf2_common]
-[  225.360448]  __video_do_ioctl+0x33d/0x42a
-[  225.360452]  video_usercopy+0x34a/0x615
-[  225.360455]  ? video_ioctl2+0x16/0x16
-[  225.360458]  v4l2_ioctl+0x46/0x53
-[  225.360462]  do_vfs_ioctl+0x50a/0x787
-[  225.360465]  ksys_ioctl+0x58/0x83
-[  225.360468]  __x64_sys_ioctl+0x1a/0x1e
-[  225.360470]  do_syscall_64+0x54/0x68
-[  225.360474]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
-[  225.360476] RIP: 0033:0x7c118030f497
-[  225.360479] Code: 8a 66 90 48 8b 05 d1 d9 2b 00 64 c7 00 26 00 00 00
-48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f
-05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d a1 d9 2b 00 f7 d8 64 89 01 48
-[  225.360480] RSP: 002b:00007c1146ffa5a8 EFLAGS: 00000246 ORIG_RAX:
-0000000000000010
-[  225.360483] RAX: ffffffffffffffda RBX: 00007c1140010018 RCX:
-00007c118030f497
-[  225.360484] RDX: 00007c114001019c RSI: 0000000040045613 RDI:
-000000000000004c
-[  225.360486] RBP: 00007c1146ffa700 R08: 00007c1140010048 R09:
-0000000000000000
-[  225.360488] R10: 0000000000000000 R11: 0000000000000246 R12:
-00007c11400101b0
-[  225.360489] R13: 00007c1140010200 R14: 00007c1140010048 R15:
-0000000000000001
-[  225.360492] ---[ end trace 73625ecfbd1c930e ]---
-[  225.360498] general protection fault: 0000 [#1] PREEMPT SMP PTI
-[  225.360501] CPU: 0 PID: 6704 Comm: CameraDeviceOps Tainted: G
-WC        5.4.30 #5
-[  225.360502] Hardware name: HP Soraka/Soraka, BIOS
-Google_Soraka.10431.106.0 12/03/2019
-[  225.360505] RIP: 0010:imgu_return_all_buffers+0x52/0x8e [ipu3_imgu]
-[  225.360507] Code: d4 49 8b 85 70 0a 00 00 49 81 c5 70 0a 00 00 49 39
-c5 74 3b 49 bc 00 01 00 00 00 00 ad de 49 8d 5c 24 22 4c 8b 30 48 8b 48
-08 <49> 89 4e 08 4c 89 31 4c 89 20 48 89 58 08 48 8d b8 58 fc ff ff 44
-[  225.360509] RSP: 0018:ffff9468ab32fbe8 EFLAGS: 00010293
-[  225.360511] RAX: ffff8aa7a51577a8 RBX: dead000000000122 RCX:
-dead000000000122
-[  225.360512] RDX: 0000000000000000 RSI: 0000000000000006 RDI:
-ffff8aa7a5157400
-[  225.360514] RBP: ffff9468ab32fc18 R08: ffff8aa64e47e600 R09:
-0000000000000000
-[  225.360515] R10: 0000000000000000 R11: ffffffffc06036e6 R12:
-dead000000000100
-[  225.360517] R13: ffff8aa7820f1940 R14: dead000000000100 R15:
-0000000000000006
-[  225.360519] FS:  00007c1146ffd700(0000) GS:ffff8aa7baa00000(0000)
-knlGS:0000000000000000
-[  225.360521] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  225.360523] CR2: 00007aea3473a000 CR3: 00000000537d6004 CR4:
-00000000003606f0
-[  225.360525] Call Trace:
-[  225.360528]  imgu_vb2_stop_streaming+0xd6/0xf0 [ipu3_imgu]
-[  225.360531]  __vb2_queue_cancel+0x33/0x22d [videobuf2_common]
-[  225.360534]  vb2_core_streamoff+0x16/0x78 [videobuf2_common]
-[  225.360537]  __video_do_ioctl+0x33d/0x42a
-[  225.360540]  video_usercopy+0x34a/0x615
-[  225.360542]  ? video_ioctl2+0x16/0x16
-[  225.360546]  v4l2_ioctl+0x46/0x53
-[  225.360548]  do_vfs_ioctl+0x50a/0x787
-[  225.360551]  ksys_ioctl+0x58/0x83
-[  225.360554]  __x64_sys_ioctl+0x1a/0x1e
-[  225.360556]  do_syscall_64+0x54/0x68
-[  225.360559]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
-[  225.360561] RIP: 0033:0x7c118030f497
-[  225.360563] Code: 8a 66 90 48 8b 05 d1 d9 2b 00 64 c7 00 26 00 00 00
-48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f
-05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d a1 d9 2b 00 f7 d8 64 89 01 48
-[  225.360565] RSP: 002b:00007c1146ffa5a8 EFLAGS: 00000246 ORIG_RAX:
-0000000000000010
-[  225.360567] RAX: ffffffffffffffda RBX: 00007c1140010018 RCX:
-00007c118030f497
-[  225.360569] RDX: 00007c114001019c RSI: 0000000040045613 RDI:
-000000000000004c
-[  225.360570] RBP: 00007c1146ffa700 R08: 00007c1140010048 R09:
-0000000000000000
-[  225.360572] R10: 0000000000000000 R11: 0000000000000246 R12:
-00007c11400101b0
-[  225.360574] R13: 00007c1140010200 R14: 00007c1140010048 R15:
-0000000000000001
-[  225.360576] Modules linked in: snd_seq_dummy snd_seq snd_seq_device
-veth bridge stp llc tun nf_nat_tftp nf_conntrack_tftp nf_nat_ftp
-nf_conntrack_ftp esp6 ah6 ip6t_REJECT ip6t_ipv6header cmac rfcomm uinput
-ipu3_imgu(C) ipu3_cio2 iova videobuf2_v4l2 videobuf2_common
-videobuf2_dma_sg videobuf2_memops ov13858 ov567
-
-Fix this by moving the list_del() call just below the list_first_entry()
-call when the buffer no longer needs to be in the list.
-
-Fixes: 8ecc7c9da013 ("media: staging/intel-ipu3: parameter buffer refactoring")
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Bingbu Cao <bingbu.cao@intel.com>
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Acked-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: Christophe Leroy <christophe.leroy@c-s.fr>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: David Airlie <airlied@linux.ie>
+Cc: Gao Xiang <xiang@kernel.org>
+Cc: Haiyang Zhang <haiyangz@microsoft.com>
+Cc: Johannes Weiner <hannes@cmpxchg.org>
+Cc: "K. Y. Srinivasan" <kys@microsoft.com>
+Cc: Laura Abbott <labbott@redhat.com>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Cc: Michael Kelley <mikelley@microsoft.com>
+Cc: Minchan Kim <minchan@kernel.org>
+Cc: Nitin Gupta <ngupta@vflare.org>
+Cc: Robin Murphy <robin.murphy@arm.com>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Stephen Hemminger <sthemmin@microsoft.com>
+Cc: Sumit Semwal <sumit.semwal@linaro.org>
+Cc: Wei Liu <wei.liu@kernel.org>
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Cc: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+Cc: Paul Mackerras <paulus@ozlabs.org>
+Cc: Vasily Gorbik <gor@linux.ibm.com>
+Cc: Will Deacon <will@kernel.org>
+Link: http://lkml.kernel.org/r/20200414131348.444715-4-hch@lst.de
+Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/ipu3/ipu3.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/android/ion/ion_heap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/ipu3/ipu3.c b/drivers/staging/media/ipu3/ipu3.c
-index 06a61f31ca50..eb16394acf96 100644
---- a/drivers/staging/media/ipu3/ipu3.c
-+++ b/drivers/staging/media/ipu3/ipu3.c
-@@ -261,6 +261,7 @@ int imgu_queue_buffers(struct imgu_device *imgu, bool initial, unsigned int pipe
+diff --git a/drivers/staging/android/ion/ion_heap.c b/drivers/staging/android/ion/ion_heap.c
+index 473b465724f1..0755b11348ed 100644
+--- a/drivers/staging/android/ion/ion_heap.c
++++ b/drivers/staging/android/ion/ion_heap.c
+@@ -99,12 +99,12 @@ int ion_heap_map_user(struct ion_heap *heap, struct ion_buffer *buffer,
  
- 			ivb = list_first_entry(&imgu_pipe->nodes[node].buffers,
- 					       struct imgu_vb2_buffer, list);
-+			list_del(&ivb->list);
- 			vb = &ivb->vbb.vb2_buf;
- 			r = imgu_css_set_parameters(&imgu->css, pipe,
- 						    vb2_plane_vaddr(vb, 0));
-@@ -274,7 +275,6 @@ int imgu_queue_buffers(struct imgu_device *imgu, bool initial, unsigned int pipe
- 			vb2_buffer_done(vb, VB2_BUF_STATE_DONE);
- 			dev_dbg(&imgu->pci_dev->dev,
- 				"queue user parameters %d to css.", vb->index);
--			list_del(&ivb->list);
- 		} else if (imgu_pipe->queue_enabled[node]) {
- 			struct imgu_css_buffer *buf =
- 				imgu_queue_getbuf(imgu, node, pipe);
+ static int ion_heap_clear_pages(struct page **pages, int num, pgprot_t pgprot)
+ {
+-	void *addr = vm_map_ram(pages, num, -1, pgprot);
++	void *addr = vmap(pages, num, VM_MAP, pgprot);
+ 
+ 	if (!addr)
+ 		return -ENOMEM;
+ 	memset(addr, 0, PAGE_SIZE * num);
+-	vm_unmap_ram(addr, num);
++	vunmap(addr);
+ 
+ 	return 0;
+ }
 -- 
 2.25.1
 
