@@ -1,71 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 253821F1C63
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Jun 2020 17:49:13 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE1651F1F72
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Jun 2020 21:02:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 39B0A86439;
-	Mon,  8 Jun 2020 15:49:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 219CF2049A;
+	Mon,  8 Jun 2020 19:02:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G6jc5wDH5tyT; Mon,  8 Jun 2020 15:49:10 +0000 (UTC)
+	with ESMTP id 6UDqY9PGIzwh; Mon,  8 Jun 2020 19:02:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2DFD2840A3;
-	Mon,  8 Jun 2020 15:49:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2482020784;
+	Mon,  8 Jun 2020 19:02:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5A23E1BF370
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 15:49:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0F0DC1BF39C
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 19:01:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5592986228
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 15:49:07 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0B9A1860D1
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 19:01:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fugXh9ZBLgh2 for <devel@linuxdriverproject.org>;
- Mon,  8 Jun 2020 15:49:05 +0000 (UTC)
+ with ESMTP id VrB5a7Gc11pi for <devel@linuxdriverproject.org>;
+ Mon,  8 Jun 2020 19:01:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C1F978621E
- for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 15:49:04 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id l26so4852wme.3
- for <devel@driverdev.osuosl.org>; Mon, 08 Jun 2020 08:49:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
+ [209.85.208.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C988084E7C
+ for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 19:01:56 +0000 (UTC)
+Received: by mail-lj1-f195.google.com with SMTP id x18so5412582lji.1
+ for <devel@driverdev.osuosl.org>; Mon, 08 Jun 2020 12:01:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3Zatdh65W3aH6MhJdNTH/AWqzt1N9QOAuNbG/kKQoQk=;
- b=XPgpdZtMZfiMPg5da4wdaof5iSzhA/ZVCghQbqTrDuqbo6ZHBkJ+6hzW6Rtuswt2th
- CucS7L68rAc9A2OMX3t2hThgLQkSf86045BbVp0BSipvykLwZzc3TREpeZqGeurMVBb8
- 4aYqZctCI+0ceRS4poPN+NvTaALqxbr51DJqY=
+ :cc; bh=5FucO5MLasbHMeieVZwCp4so/qb2dT28pU+uSLCZS5M=;
+ b=Bm96wzx0eHCz9RVuq8YNY58shtaHHnB0Q2i9bRONPfy8EScS//y6ohWKHkIHW1evs6
+ qW3VIGSO2fGXHsCHMHBzCM80juJ/J881xgkO8F4JtSprjriAw5t+MlLILZazFAkfaqGk
+ Knt2BOl49N22NIhY+7vKxYJ4GljKzQbml8k7WmtwiQLhwrwlE3qoDBsU5br0UArdqdiR
+ Ct/oF6vYlm8MRDgiXJ9G3QvVM+ankc6052/xviSY1stfz+eG9N01ckbDKtG+sBElCMNZ
+ vRksYctqar0jOmETl3d0vc/39iseMz60xrjFgzmA86tJxT17cAnsLpV6JORtB+qWK38l
+ dvcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=3Zatdh65W3aH6MhJdNTH/AWqzt1N9QOAuNbG/kKQoQk=;
- b=jEAy5/mnplQulZxH5jhCl30y73z75VGAj7a20ajpb6A/7DssbRrgYOkuJ3CdNeGCMl
- qqCoemWBLdjWsUXQW9Psj/dH/6d97S69BC4/eShtjoeJc73C9MpxU8Tx2LC6U1+yOtKr
- L0CSYBUCHWjsa/Wi9un3+eREgweRCZAYqETCD62Wm3RK3DIGqder0fKBLEbZyf49tRl7
- nrpzrPDEbKq9zVEvznBIZCJjJNEx3ytvRyrzWR0jcyNmv2d3rc+2IbY4xWP3dG96yt4d
- 5AnMdFab6UaOMtaEW3vKlaiPzRWYQEq8kOg971JTPSBpo3ItVz25yFB/NSCsjRZ4f0VO
- z0JA==
-X-Gm-Message-State: AOAM532Tyaav74jKdyMcb8IX4jJwGXNxfsS1C3W3KUyP5ktBN67C0DfL
- yvHgnolVeJ3wTWQdMavZeIcuEJYramuaBhO7BstEuQ==
-X-Google-Smtp-Source: ABdhPJwc8WgkB5baQneSP3O56E527r0CcFTd8E6eqmfIQH4X1bWsduigHTlQQV7Hic/QVkEEt7XICj+d1DgqVMzgDVk=
-X-Received: by 2002:a7b:c44a:: with SMTP id l10mr19134wmi.92.1591631342886;
- Mon, 08 Jun 2020 08:49:02 -0700 (PDT)
+ bh=5FucO5MLasbHMeieVZwCp4so/qb2dT28pU+uSLCZS5M=;
+ b=QOgHXA7+mTPrB/7Iuwa3QyGrouvIL9mewDP4d8OJX0Eb8OgcQLBcCq93qT1Yy8Yv53
+ hEe17ePBTLyY2UXaNZJMyFPeByteudi18WkjT1bE0Yxk8k/vimX0pFSlOunZ2yCTB/Pu
+ a/U3NHJIAmrazrltCVzNI+jLlJ+U9NJcuGd5RDQbIR33iT1txBDs4NNbB4OLuGfFdDyw
+ JsJfyPgzQ4gE/KbGEldz/mInGiI25aL8faueKSW9yR3F8aj6/q+zxQ7+UAFKUusPmltv
+ NIU7oyfyEUmFlQR4ki1Cygx1+hac1waa7j+ZFz/AUW/mt0SRcNq/HpHyMwCyL3FE8C2e
+ /ekA==
+X-Gm-Message-State: AOAM530d+Rqq6U6aPTMSoX3FGj/CMGOLCAgOMNcRbqXdjGHMScaTSib3
+ YrF2g154ZhCkIOxnHKJzouAjoDUogQe1KHLWlrA=
+X-Google-Smtp-Source: ABdhPJw7CT7C9gP/zfojSads0VPQlRMkA55J0SyhS9SBc/vqgzoDP/Y0/OEuWgFVVqr4DuBR/kNmBGxB/DyDxjRTUok=
+X-Received: by 2002:a2e:83c7:: with SMTP id s7mr12178294ljh.68.1591642914410; 
+ Mon, 08 Jun 2020 12:01:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200605212706.7361-1-james.quinlan@broadcom.com>
- <20200605212706.7361-9-james.quinlan@broadcom.com>
- <20200607164950.GX2428291@smile.fi.intel.com>
-In-Reply-To: <20200607164950.GX2428291@smile.fi.intel.com>
-From: Jim Quinlan <james.quinlan@broadcom.com>
-Date: Mon, 8 Jun 2020 11:48:51 -0400
-Message-ID: <CA+-6iNyL12Z+igSrWnsmTzrwzyyeDtSK-9ULiZe0MwM5LO5bjQ@mail.gmail.com>
-Subject: Re: [PATCH v4 08/12] device core: Introduce multiple dma pfn offsets
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+References: <1590947491-11194-1-git-send-email-jrdr.linux@gmail.com>
+ <7e725dd0-7423-b85b-ff56-9705419d13b9@nvidia.com>
+In-Reply-To: <7e725dd0-7423-b85b-ff56-9705419d13b9@nvidia.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Date: Tue, 9 Jun 2020 00:31:42 +0530
+Message-ID: <CAFqt6zbsNcHWF-0Na2xMKdJQs2kVkLHTCw=cytvdo+z-axx97Q@mail.gmail.com>
+Subject: Re: [PATCH] staging: kpc2000: kpc_dma: Convert get_user_pages() -->
+ pin_user_pages()
+To: John Hubbard <jhubbard@nvidia.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,135 +81,168 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rich Felker <dalias@libc.org>,
- "open list:SUPERH" <linux-sh@vger.kernel.org>, David Airlie <airlied@linux.ie>,
- "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
- <linux-pci@vger.kernel.org>, Hanjun Guo <guohanjun@huawei.com>,
- "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
- <linux-remoteproc@vger.kernel.org>,
- "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Julien Grall <julien.grall@arm.com>, "H. Peter Anvin" <hpa@zytor.com>,
- Will Deacon <will@kernel.org>, Christoph Hellwig <hch@lst.de>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Wolfram Sang <wsa@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- Russell King <linux@armlinux.org.uk>,
- "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
- Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>,
- "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>,
- Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
- Ohad Ben-Cohen <ohad@wizery.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
- <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- Suzuki K Poulose <suzuki.poulose@arm.com>,
- Dan Williams <dan.j.williams@intel.com>, Maxime Ripard <mripard@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Borislav Petkov <bp@alien8.de>,
- Yong Deng <yong.deng@magewell.com>, Santosh Shilimkar <ssantosh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
- Saravana Kannan <saravanak@google.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Oliver Neukum <oneukum@suse.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- open list <linux-kernel@vger.kernel.org>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
- Mark Brown <broonie@kernel.org>, Stefano Stabellini <sstabellini@kernel.org>,
- Daniel Vetter <daniel@ffwll.ch>, Sudeep Holla <sudeep.holla@arm.com>,
- "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Bharath Vedartham <linux.bhar@gmail.com>, harshjain32@gmail.com,
+ Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ =?UTF-8?Q?Simon_Sandstr=C3=B6m?= <simon@nikanor.nu>, jane.pnx9@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Andy,
-
-On Sun, Jun 7, 2020 at 12:500f9bfe0fb8840b268af1bbcc51f1cd440514e PM
-Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
+On Mon, Jun 1, 2020 at 7:15 AM John Hubbard <jhubbard@nvidia.com> wrote:
 >
-> On Fri, Jun 05, 2020 at 05:26:48PM -0400, Jim Quinlan wrote:
-> > The new field in struct device 'dma_pfn_offset_map' is used to facilitate
-> > the use of single or multiple pfn offsets between cpu addrs and dma addrs.
-> > It subsumes the role of dev->dma_pfn_offset -- a uniform offset.
+> On 2020-05-31 10:51, Souptick Joarder wrote:
+> > In 2019, we introduced pin_user_pages*() and now we are converting
+> > get_user_pages*() to the new API as appropriate. [1] & [2] could
+> > be referred for more information.
 > >
-> > The function of_dma_get_range() has been modified to take two additional
-> > arguments: the "map", which is an array that holds the information
-> > regarding the pfn offset regions, and map_size, which is the size in bytes
-> > of the map array.
+> > When pin_user_pages() returns numbers of partially mapped pages,
+> > those pages were not unpinned as part of error handling. Fixed
+> > it as part of this patch.
 > >
-> > of_dma_configure() is the typical manner to set pfn offsets but there are a
-> > number of ad hoc assignments to dev->dma_pfn_offset in the kernel driver
-> > code.  These cases now invoke the function
-> > dma_attach_uniform_pfn_offset(dev, pfn_offset).
 >
-> ...
+> Hi Souptick,
 >
-> > +             int ret = dma_attach_uniform_pfn_offset
-> > +                             (dev, keystone_dma_pfn_offset);
+> btw, Bharath (+cc) attempted to do the "put" side of this, last year.
+> That got as far as a v4 patch [1], and then I asked him to let me put
+> it into my tree. But then it didn't directly apply anymore after the
+> whole design moved to pin+unpin, and so here we are now.
 >
-> It's strange indentation. Have you configured your editor correctly?
-> Seems to me as fit on one line.
-I'm using emacs with the c-style set to linux.  I may have some custom
-tweaks; I'll check into it.  But I think I can fix most of your
-objections by using the max_line_length of 100.
+>
+> If Bharath is still doing kernel work, you might offer him a Co-Developed-by:
+> tag (see https://www.kernel.org/doc/html/v4.17/process/submitting-patches.html).
+
+Sure, will add him as *Co-Developed-by*
+>
+> Anyway, I'd recommend splitting the bug fix(es) into it at least one
+> separate patch. That's a "best practice", and I don't see any reason
+> not to do it here, even though the bugs are not huge.
+>
+> Also I think there may be more than one bug to fix, because I just
+> noticed that the pre-existing code is doing set_page_dirty(), when
+> it should be doing set_page_dirty_lock(). See below.
+>
+>
+> > [1] Documentation/core-api/pin_user_pages.rst
+> >
+> > [2] "Explicit pinning of user-space pages":
+> >          https://lwn.net/Articles/807108/
+> >
+> > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+> > Cc: John Hubbard <jhubbard@nvidia.com>
+> > ---
+> > Hi,
+> >
+> > I'm compile tested this, but unable to run-time test, so any testing
+> > help is much appriciated.
+> >
+> >   drivers/staging/kpc2000/kpc_dma/fileops.c | 15 ++++++++-------
+> >   1 file changed, 8 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
+> > index 8975346..29bab13 100644
+> > --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
+> > +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+> > @@ -48,6 +48,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+> >       u64 card_addr;
+> >       u64 dma_addr;
+> >       u64 user_ctl;
+> > +     int nr_pages = 0;
+>
+> Probably best to correct the "rv" type as well: it should be an int, rather
+> than a long.
+
+Noted.
 
 >
-> > +             dev_err(dev, "set dma_pfn_offset%08lx%s\n",
-> > +                     dev->dma_pfn_offset, ret ? " failed" : "");
+> >
+> >       ldev = priv->ldev;
+> >
+> > @@ -76,13 +77,15 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+> >
+> >       // Lock the user buffer pages in memory, and hold on to the page pointers (for the sglist)
+> >       mmap_read_lock(current->mm);      /*  get memory map semaphore */
+> > -     rv = get_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE | FOLL_GET, acd->user_pages, NULL);
+> > +     rv = pin_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE, acd->user_pages, NULL);
+> >       mmap_read_unlock(current->mm);        /*  release the semaphore */
+> >       if (rv != acd->page_count) {
+> > -             dev_err(&priv->ldev->pldev->dev, "Couldn't get_user_pages (%ld)\n", rv);
+> > +             dev_err(&priv->ldev->pldev->dev, "Couldn't pin_user_pages (%ld)\n", rv);
+> > +             nr_pages = rv;
+> >               goto err_get_user_pages;
+> >       }
+> >
+> > +     nr_pages = acd->page_count;
+> >       // Allocate and setup the sg_table (scatterlist entries)
+> >       rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE - 1), iov_len, GFP_KERNEL);
+> >       if (rv) {
+> > @@ -189,10 +192,9 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+> >       sg_free_table(&acd->sgt);
+> >    err_dma_map_sg:
+> >    err_alloc_sg_table:
 >
-> ...
->
-> > +     *map_size = (num_ranges + 1) * sizeof(**map);
-> > +     r = kzalloc(*map_size, GFP_KERNEL);
->
-> kcalloc()
-Since I have to calculate the size anyway I thought kzalloc was fine.
-I'll switch.
->
-> > +     if (!r)
-> > +             return -ENOMEM;
->
-> ...
->
-> > +             r->pfn_offset = PFN_DOWN(range.cpu_addr)
-> > +                     - PFN_DOWN(range.bus_addr);
->
-> Ditto (indentation).
->
-> ...
->
->
-> > +             unsigned long dma_pfn_offset
-> > +                     = dma_pfn_offset_from_phys_addr(dev, paddr);
->
-> Ditto.
->
-> ...
->
-> > +             unsigned long dma_pfn_offset
-> > +                     = dma_pfn_offset_from_dma_addr(dev, dev_addr);
->
-> Ditto.
->
-> Check entire your series for a such, please!
+> So now we end up with two unnecessary labels. Probably best to delete two of these
+> three and name the remaining one appropriately:
 
-Will do,
-Thanks
-Jim Quinlan
+Hmm, I thought about it. But later decided to wait for review comments
+on the same in v1.
+I will remove it now.
+
 >
+>   err_dma_map_sg:
+>   err_alloc_sg_table:
+>   err_get_user_pages:
+>
+> > -     for (i = 0 ; i < acd->page_count ; i++)
+> > -             put_page(acd->user_pages[i]);
+> > -
+> >    err_get_user_pages:
+> > +     if (nr_pages > 0)
+> > +             unpin_user_pages(acd->user_pages, nr_pages);
+> >       kfree(acd->user_pages);
+> >    err_alloc_userpages:
+> >       kfree(acd);
+> > @@ -217,8 +219,7 @@ void  transfer_complete_cb(struct aio_cb_data *acd, size_t xfr_count, u32 flags)
+> >
+>
+> There is code up here (not shown in this diff), that does a set_page_dirty().
+> First of all, that should be set_page_dirty_lock(), and second, maybe (or maybe not)
+> it can all be done after the dma_unmap_sg(), at the same time as the unpin, via
+> unpin_user_pages_dirty_lock(). In fact, it's misleading at best to leave those
+> pages mapped, because there is an interval in there after set_page_dirty() and
+> before put_page(), in which the device could be running and setting pages dirty.
+> (Remember that writeback attempts can be happening concurrently with all of this,
+> and writeback is deeply involved with page dirtiness.)
+>
+> I remember Bharath wrestled with this in an earlier conversion attempt (back when
+> we were only converting the "put_page" side of things), let me see if I can dig up
+> that email thread for some guidance...OK, in [1] it appears that everyone
+> finally settled on keeping the PageReserved check, but OK to move everything below
+> the dma_unmap_sg() call.
+>
+> [1] https://lore.kernel.org/r/20190720173214.GA4250@bharath12345-Inspiron-5559
+
+Well, I need to rework on this based on the above feedback and
+suggestions. Will post the
+new series.
+
+>
+>
+> >       dma_unmap_sg(&acd->ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, acd->ldev->dir);
+> >
+> > -     for (i = 0 ; i < acd->page_count ; i++)
+> > -             put_page(acd->user_pages[i]);
+> > +     unpin_user_pages(acd->user_pages, acd->page_count);
+> >
+> >       sg_free_table(&acd->sgt);
+> >
+> >
+>
+> thanks,
 > --
-> With Best Regards,
-> Andy Shevchenko
->
->
+> John Hubbard
+> NVIDIA
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
