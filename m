@@ -1,60 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D31361F1BC6
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Jun 2020 17:13:57 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 253821F1C63
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Jun 2020 17:49:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 12A522206E;
-	Mon,  8 Jun 2020 15:13:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 39B0A86439;
+	Mon,  8 Jun 2020 15:49:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jQydlywDoqap; Mon,  8 Jun 2020 15:13:55 +0000 (UTC)
+	with ESMTP id G6jc5wDH5tyT; Mon,  8 Jun 2020 15:49:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1DDD520524;
-	Mon,  8 Jun 2020 15:13:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2DFD2840A3;
+	Mon,  8 Jun 2020 15:49:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D038E1BF370
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 15:13:51 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5A23E1BF370
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 15:49:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CCB9088020
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 15:13:51 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5592986228
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 15:49:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VB1dbrRKSaz1 for <devel@linuxdriverproject.org>;
- Mon,  8 Jun 2020 15:13:50 +0000 (UTC)
+ with ESMTP id fugXh9ZBLgh2 for <devel@linuxdriverproject.org>;
+ Mon,  8 Jun 2020 15:49:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BB05087EB0
- for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 15:13:50 +0000 (UTC)
-IronPort-SDR: 90Z/kdhcYc1yF1myXci9c4v1QsK9JiUt2aGLesed57B2zZ1+UBdpcK76YN5x58Fjq5AWUfQfO2
- IuUuSspS44rw==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jun 2020 08:13:50 -0700
-IronPort-SDR: iYLbYIxGQ77ULdDbGYISLGJsLSpUV8C7AoUeC6XHZut9F0Dy2op7fsX3Q3r0uxq2wYIVDONv3e
- MqLVQTbMF48Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,487,1583222400"; d="scan'208";a="270544361"
-Received: from lkp-server01.sh.intel.com (HELO 7b2aeca65b2f) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 08 Jun 2020 08:13:48 -0700
-Received: from kbuild by 7b2aeca65b2f with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1jiJT9-00000m-Oo; Mon, 08 Jun 2020 15:13:47 +0000
-Date: Mon, 08 Jun 2020 23:12:52 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- 1e7ca0c860376c5d19eac6adcea72fedc0746113
-Message-ID: <5ede5574.yQKSQpWonbd1HKPd%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C1F978621E
+ for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 15:49:04 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id l26so4852wme.3
+ for <devel@driverdev.osuosl.org>; Mon, 08 Jun 2020 08:49:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=3Zatdh65W3aH6MhJdNTH/AWqzt1N9QOAuNbG/kKQoQk=;
+ b=XPgpdZtMZfiMPg5da4wdaof5iSzhA/ZVCghQbqTrDuqbo6ZHBkJ+6hzW6Rtuswt2th
+ CucS7L68rAc9A2OMX3t2hThgLQkSf86045BbVp0BSipvykLwZzc3TREpeZqGeurMVBb8
+ 4aYqZctCI+0ceRS4poPN+NvTaALqxbr51DJqY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=3Zatdh65W3aH6MhJdNTH/AWqzt1N9QOAuNbG/kKQoQk=;
+ b=jEAy5/mnplQulZxH5jhCl30y73z75VGAj7a20ajpb6A/7DssbRrgYOkuJ3CdNeGCMl
+ qqCoemWBLdjWsUXQW9Psj/dH/6d97S69BC4/eShtjoeJc73C9MpxU8Tx2LC6U1+yOtKr
+ L0CSYBUCHWjsa/Wi9un3+eREgweRCZAYqETCD62Wm3RK3DIGqder0fKBLEbZyf49tRl7
+ nrpzrPDEbKq9zVEvznBIZCJjJNEx3ytvRyrzWR0jcyNmv2d3rc+2IbY4xWP3dG96yt4d
+ 5AnMdFab6UaOMtaEW3vKlaiPzRWYQEq8kOg971JTPSBpo3ItVz25yFB/NSCsjRZ4f0VO
+ z0JA==
+X-Gm-Message-State: AOAM532Tyaav74jKdyMcb8IX4jJwGXNxfsS1C3W3KUyP5ktBN67C0DfL
+ yvHgnolVeJ3wTWQdMavZeIcuEJYramuaBhO7BstEuQ==
+X-Google-Smtp-Source: ABdhPJwc8WgkB5baQneSP3O56E527r0CcFTd8E6eqmfIQH4X1bWsduigHTlQQV7Hic/QVkEEt7XICj+d1DgqVMzgDVk=
+X-Received: by 2002:a7b:c44a:: with SMTP id l10mr19134wmi.92.1591631342886;
+ Mon, 08 Jun 2020 08:49:02 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200605212706.7361-1-james.quinlan@broadcom.com>
+ <20200605212706.7361-9-james.quinlan@broadcom.com>
+ <20200607164950.GX2428291@smile.fi.intel.com>
+In-Reply-To: <20200607164950.GX2428291@smile.fi.intel.com>
+From: Jim Quinlan <james.quinlan@broadcom.com>
+Date: Mon, 8 Jun 2020 11:48:51 -0400
+Message-ID: <CA+-6iNyL12Z+igSrWnsmTzrwzyyeDtSK-9ULiZe0MwM5LO5bjQ@mail.gmail.com>
+Subject: Re: [PATCH v4 08/12] device core: Introduce multiple dma pfn offsets
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,187 +78,135 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rich Felker <dalias@libc.org>,
+ "open list:SUPERH" <linux-sh@vger.kernel.org>, David Airlie <airlied@linux.ie>,
+ "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
+ <linux-pci@vger.kernel.org>, Hanjun Guo <guohanjun@huawei.com>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
+ "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Julien Grall <julien.grall@arm.com>, "H. Peter Anvin" <hpa@zytor.com>,
+ Will Deacon <will@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Wolfram Sang <wsa@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ Russell King <linux@armlinux.org.uk>,
+ "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>,
+ "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
+ Ohad Ben-Cohen <ohad@wizery.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
+ <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Suzuki K Poulose <suzuki.poulose@arm.com>,
+ Dan Williams <dan.j.williams@intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ Yong Deng <yong.deng@magewell.com>, Santosh Shilimkar <ssantosh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
+ Saravana Kannan <saravanak@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Oliver Neukum <oneukum@suse.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ open list <linux-kernel@vger.kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ Mark Brown <broonie@kernel.org>, Stefano Stabellini <sstabellini@kernel.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Sudeep Holla <sudeep.holla@arm.com>,
+ "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  debugfs_cleanup
-branch HEAD: 1e7ca0c860376c5d19eac6adcea72fedc0746113  debugfs: remove return value of debugfs_create_devm_seqfile()
+Hi Andy,
 
-elapsed time: 483m
+On Sun, Jun 7, 2020 at 12:500f9bfe0fb8840b268af1bbcc51f1cd440514e PM
+Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Fri, Jun 05, 2020 at 05:26:48PM -0400, Jim Quinlan wrote:
+> > The new field in struct device 'dma_pfn_offset_map' is used to facilitate
+> > the use of single or multiple pfn offsets between cpu addrs and dma addrs.
+> > It subsumes the role of dev->dma_pfn_offset -- a uniform offset.
+> >
+> > The function of_dma_get_range() has been modified to take two additional
+> > arguments: the "map", which is an array that holds the information
+> > regarding the pfn offset regions, and map_size, which is the size in bytes
+> > of the map array.
+> >
+> > of_dma_configure() is the typical manner to set pfn offsets but there are a
+> > number of ad hoc assignments to dev->dma_pfn_offset in the kernel driver
+> > code.  These cases now invoke the function
+> > dma_attach_uniform_pfn_offset(dev, pfn_offset).
+>
+> ...
+>
+> > +             int ret = dma_attach_uniform_pfn_offset
+> > +                             (dev, keystone_dma_pfn_offset);
+>
+> It's strange indentation. Have you configured your editor correctly?
+> Seems to me as fit on one line.
+I'm using emacs with the c-style set to linux.  I may have some custom
+tweaks; I'll check into it.  But I think I can fix most of your
+objections by using the max_line_length of 100.
 
-configs tested: 160
-configs skipped: 13
+>
+> > +             dev_err(dev, "set dma_pfn_offset%08lx%s\n",
+> > +                     dev->dma_pfn_offset, ret ? " failed" : "");
+>
+> ...
+>
+> > +     *map_size = (num_ranges + 1) * sizeof(**map);
+> > +     r = kzalloc(*map_size, GFP_KERNEL);
+>
+> kcalloc()
+Since I have to calculate the size anyway I thought kzalloc was fine.
+I'll switch.
+>
+> > +     if (!r)
+> > +             return -ENOMEM;
+>
+> ...
+>
+> > +             r->pfn_offset = PFN_DOWN(range.cpu_addr)
+> > +                     - PFN_DOWN(range.bus_addr);
+>
+> Ditto (indentation).
+>
+> ...
+>
+>
+> > +             unsigned long dma_pfn_offset
+> > +                     = dma_pfn_offset_from_phys_addr(dev, paddr);
+>
+> Ditto.
+>
+> ...
+>
+> > +             unsigned long dma_pfn_offset
+> > +                     = dma_pfn_offset_from_dma_addr(dev, dev_addr);
+>
+> Ditto.
+>
+> Check entire your series for a such, please!
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-m68k                         amcore_defconfig
-mips                       rbtx49xx_defconfig
-um                                  defconfig
-sh                     magicpanelr2_defconfig
-powerpc                      ep88xc_defconfig
-sh                ecovec24-romimage_defconfig
-sparc64                          allmodconfig
-powerpc                  mpc885_ads_defconfig
-mips                           xway_defconfig
-arm                       cns3420vb_defconfig
-m68k                          sun3x_defconfig
-sparc                       sparc32_defconfig
-riscv                          rv32_defconfig
-arm                           h3600_defconfig
-powerpc                    mvme5100_defconfig
-openrisc                 simple_smp_defconfig
-sh                           se7705_defconfig
-mips                     decstation_defconfig
-arm                              zx_defconfig
-mips                        nlm_xlr_defconfig
-sh                             shx3_defconfig
-c6x                        evmc6678_defconfig
-arc                 nsimosci_hs_smp_defconfig
-arm                        mvebu_v5_defconfig
-arm                          iop32x_defconfig
-arm                            mps2_defconfig
-mips                  cavium_octeon_defconfig
-nds32                               defconfig
-sparc64                             defconfig
-sh                           se7343_defconfig
-mips                         tb0226_defconfig
-h8300                    h8300h-sim_defconfig
-arc                          axs101_defconfig
-sh                           se7724_defconfig
-arm                       aspeed_g5_defconfig
-arm                            dove_defconfig
-xtensa                           alldefconfig
-arm                         shannon_defconfig
-arm                         socfpga_defconfig
-sh                   sh7724_generic_defconfig
-arc                                 defconfig
-um                                allnoconfig
-powerpc                    amigaone_defconfig
-arc                        nsim_700_defconfig
-arm                          exynos_defconfig
-arc                            hsdk_defconfig
-m68k                        m5272c3_defconfig
-m68k                        stmark2_defconfig
-arm                     davinci_all_defconfig
-mips                  maltasmvp_eva_defconfig
-arm                            xcep_defconfig
-arm                         mv78xx0_defconfig
-c6x                        evmc6457_defconfig
-m68k                        mvme16x_defconfig
-ia64                      gensparse_defconfig
-s390                             allmodconfig
-arm                            zeus_defconfig
-sh                           se7206_defconfig
-sh                          rsk7203_defconfig
-sh                          polaris_defconfig
-arm                       omap2plus_defconfig
-i386                             alldefconfig
-parisc                generic-32bit_defconfig
-arm                          ep93xx_defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-xtensa                              defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-i386                 randconfig-a001-20200607
-i386                 randconfig-a006-20200607
-i386                 randconfig-a002-20200607
-i386                 randconfig-a005-20200607
-i386                 randconfig-a004-20200607
-i386                 randconfig-a003-20200607
-x86_64               randconfig-a002-20200607
-x86_64               randconfig-a001-20200607
-x86_64               randconfig-a006-20200607
-x86_64               randconfig-a003-20200607
-x86_64               randconfig-a004-20200607
-x86_64               randconfig-a005-20200607
-i386                 randconfig-a014-20200607
-i386                 randconfig-a015-20200607
-i386                 randconfig-a011-20200607
-i386                 randconfig-a016-20200607
-i386                 randconfig-a012-20200607
-i386                 randconfig-a013-20200607
-i386                 randconfig-a014-20200608
-i386                 randconfig-a011-20200608
-i386                 randconfig-a015-20200608
-i386                 randconfig-a016-20200608
-i386                 randconfig-a012-20200608
-i386                 randconfig-a013-20200608
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-um                               allmodconfig
-um                               allyesconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Will do,
+Thanks
+Jim Quinlan
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
