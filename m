@@ -1,95 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03A801F2059
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Jun 2020 21:57:37 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 459121F220D
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jun 2020 01:06:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EA997875E9;
-	Mon,  8 Jun 2020 19:57:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0611322699;
+	Mon,  8 Jun 2020 23:06:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z5SjY28YIJvB; Mon,  8 Jun 2020 19:57:34 +0000 (UTC)
+	with ESMTP id 9MDilScHI9Pd; Mon,  8 Jun 2020 23:06:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AB34186223;
-	Mon,  8 Jun 2020 19:57:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 31C28221F0;
+	Mon,  8 Jun 2020 23:06:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9AE9F1BF393
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 19:57:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E67FF1BF381
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:06:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 964AF86DC1
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 19:57:31 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E25F887750
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:06:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2nvUgZosVqqS for <devel@linuxdriverproject.org>;
- Mon,  8 Jun 2020 19:57:31 +0000 (UTC)
+ with ESMTP id VHAUVQxXMATC for <devel@linuxdriverproject.org>;
+ Mon,  8 Jun 2020 23:06:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0694286223
- for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 19:57:30 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 058JqQeF116937;
- Mon, 8 Jun 2020 19:57:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=KDFjcWm9j7Q4j8SV51GuXqHkSHKfdCAlDd8oZwlZJUU=;
- b=gZsTvqRsizIQv9Mzkcr+RseyRpK3il3RRv9/9k8lzK42626sp7VrkybGtYtNxvzIccLq
- vipb0Wtj7op1BhCJjlIp9qFscdQlJE1EOU5jlis2mlbLzdN9r3LAY16jtlvhGlSF+qz7
- Vym2RtTw7hjIPKiauZMVc2hvuFPojcAsqfgHjHdau5LbihbjtnTNiuXAlSlUE28WDdX0
- Y+PMcNNSjD2qA2PJpL0FXqWOCDAq2tNmBKDJihAALw9zheMBlgbfl65iBpkIL0IWO1hM
- Xxq2HXeBZ11ImUTaCnEi3hcGvLtPhvV+Yw6ZEWbY/cClkQ+1MzusFDbCnuvMOkk2hST7 Bw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 31g3smrp1w-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 08 Jun 2020 19:57:30 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 058JsJHo017653;
- Mon, 8 Jun 2020 19:55:29 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3020.oracle.com with ESMTP id 31gn23sput-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 08 Jun 2020 19:55:29 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 058JtSb7014764;
- Mon, 8 Jun 2020 19:55:28 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 08 Jun 2020 12:55:28 -0700
-Date: Mon, 8 Jun 2020 22:55:21 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [PATCH] staging: kpc2000: kpc_dma: Convert get_user_pages() -->
- pin_user_pages()
-Message-ID: <20200608195520.GB30374@kadam>
-References: <1590947491-11194-1-git-send-email-jrdr.linux@gmail.com>
- <7e725dd0-7423-b85b-ff56-9705419d13b9@nvidia.com>
- <CAFqt6zbsNcHWF-0Na2xMKdJQs2kVkLHTCw=cytvdo+z-axx97Q@mail.gmail.com>
- <20200608191459.GZ30374@kadam>
- <CAFqt6zYqnRWYSKoZ2yAdcAK7WWa311Mmmc3Y3dm8CO9r79ZtYg@mail.gmail.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4DE1987742
+ for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 23:06:17 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2D02F20812;
+ Mon,  8 Jun 2020 23:06:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1591657577;
+ bh=EKcNGXPVsXSo798RYkf9ibs72j1OBs1xifDbNicZdtQ=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=jhnVAD6CsmlWxXOjH/NTd2dB+dcBM+KF5x478dLyosgMmjGuSHZ/GE6/aSLCOj8Fd
+ raGXBcjYZkN5/7CWHnatcOBrNZ1R753eyeSkr6Z06ycFYx5RArMnYm2GQK7tFny5cu
+ ZXatgC74TS/k4CMyuo9yr9FDje03ZKU6Mqw+TrC0=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.7 007/274] media: staging: imgu: do not hold
+ spinlock during freeing mmu page table
+Date: Mon,  8 Jun 2020 19:01:40 -0400
+Message-Id: <20200608230607.3361041-7-sashal@kernel.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200608230607.3361041-1-sashal@kernel.org>
+References: <20200608230607.3361041-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAFqt6zYqnRWYSKoZ2yAdcAK7WWa311Mmmc3Y3dm8CO9r79ZtYg@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9646
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- suspectscore=2 mlxscore=0
- phishscore=0 adultscore=0 bulkscore=0 malwarescore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006080138
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9646
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- priorityscore=1501
- lowpriorityscore=0 impostorscore=0 cotscore=-2147483648 suspectscore=2
- spamscore=0 bulkscore=0 malwarescore=0 phishscore=0 mlxscore=0
- mlxlogscore=999 clxscore=1015 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2006080138
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,54 +69,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Bharath Vedartham <linux.bhar@gmail.com>, harshjain32@gmail.com,
- Greg KH <gregkh@linuxfoundation.org>, John Hubbard <jhubbard@nvidia.com>,
- linux-kernel@vger.kernel.org,
- Simon =?iso-8859-1?Q?Sandstr=F6m?= <simon@nikanor.nu>, jane.pnx9@gmail.com
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Tomasz Figa <tfiga@chromium.org>, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Bingbu Cao <bingbu.cao@intel.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jun 09, 2020 at 01:03:51AM +0530, Souptick Joarder wrote:
-> On Tue, Jun 9, 2020 at 12:47 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
-> >
-> > On Tue, Jun 09, 2020 at 12:31:42AM +0530, Souptick Joarder wrote:
-> > > > > @@ -189,10 +192,9 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
-> > > > >       sg_free_table(&acd->sgt);
-> > > > >    err_dma_map_sg:
-> > > > >    err_alloc_sg_table:
-> > > >
-> > > > So now we end up with two unnecessary labels. Probably best to delete two of these
-> > > > three and name the remaining one appropriately:
-> > >
-> > > Hmm, I thought about it. But later decided to wait for review comments
-> > > on the same in v1.
-> > > I will remove it now.
-> >
-> > These are all unrelated to pin_user_pages().  Please don't do it in the
-> > same patch. Staging code is there because it's ugly...  If you don't
-> > want to do unrelated changes to label names then you don't have to.
-> 
-> What I am planning is to put this changes in a series. One patch will take care
-> of pin_user_pages() related changes, 2nd patch will take care of minor bug
-> fix in error path + level correction and 3rd patch
-> will take care of set_page_dirty() -> set_page_dirty_lock().
+From: Bingbu Cao <bingbu.cao@intel.com>
 
+[ Upstream commit e1ebe9f9c88e5a78fcc4670a9063c9b3cd87dda4 ]
 
-Always do bug fixes first.  Always do the easiest least controversial
-after first.
+ImgU need set the mmu page table in memory as uncached, and set back
+to write-back when free the page table by set_memory_wb(),
+set_memory_wb() can not do flushing without interrupt, so the spinlock
+should not be hold during ImgU page alloc and free, the interrupt
+should be enabled during memory cache flush.
 
-Do the error handling bug first.  Change "rv" to int.  That's closely
-related to the error handling.  Then set_page_dirty_lock().  Then the
-conversion to pin_user_pages().
+This patch release spinlock before freeing pages table.
 
-Then if you want you can do any unrelated clean ups and error label
-renames as patch 4.
+Signed-off-by: Bingbu Cao <bingbu.cao@intel.com>
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/staging/media/ipu3/ipu3-mmu.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/media/ipu3/ipu3-mmu.c b/drivers/staging/media/ipu3/ipu3-mmu.c
+index 5f3ff964f3e7..cb9bf5fb29a5 100644
+--- a/drivers/staging/media/ipu3/ipu3-mmu.c
++++ b/drivers/staging/media/ipu3/ipu3-mmu.c
+@@ -174,8 +174,10 @@ static u32 *imgu_mmu_get_l2pt(struct imgu_mmu *mmu, u32 l1pt_idx)
+ 	spin_lock_irqsave(&mmu->lock, flags);
+ 
+ 	l2pt = mmu->l2pts[l1pt_idx];
+-	if (l2pt)
+-		goto done;
++	if (l2pt) {
++		spin_unlock_irqrestore(&mmu->lock, flags);
++		return l2pt;
++	}
+ 
+ 	spin_unlock_irqrestore(&mmu->lock, flags);
+ 
+@@ -190,8 +192,9 @@ static u32 *imgu_mmu_get_l2pt(struct imgu_mmu *mmu, u32 l1pt_idx)
+ 
+ 	l2pt = mmu->l2pts[l1pt_idx];
+ 	if (l2pt) {
++		spin_unlock_irqrestore(&mmu->lock, flags);
+ 		imgu_mmu_free_page_table(new_l2pt);
+-		goto done;
++		return l2pt;
+ 	}
+ 
+ 	l2pt = new_l2pt;
+@@ -200,7 +203,6 @@ static u32 *imgu_mmu_get_l2pt(struct imgu_mmu *mmu, u32 l1pt_idx)
+ 	pteval = IPU3_ADDR2PTE(virt_to_phys(new_l2pt));
+ 	mmu->l1pt[l1pt_idx] = pteval;
+ 
+-done:
+ 	spin_unlock_irqrestore(&mmu->lock, flags);
+ 	return l2pt;
+ }
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
