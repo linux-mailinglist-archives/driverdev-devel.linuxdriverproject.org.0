@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25B3E1F22D2
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jun 2020 01:11:40 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A45961F2403
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jun 2020 01:19:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 80DC522654;
-	Mon,  8 Jun 2020 23:11:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 813348698F;
+	Mon,  8 Jun 2020 23:19:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oQFu+EF4oSNa; Mon,  8 Jun 2020 23:11:37 +0000 (UTC)
+	with ESMTP id KpRZdz5teFRX; Mon,  8 Jun 2020 23:19:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D360F21509;
-	Mon,  8 Jun 2020 23:11:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9DDCF8691E;
+	Mon,  8 Jun 2020 23:19:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 787E41BF381
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:11:33 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7C7971BF381
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:18:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6B3BA21509
- for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:11:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 702C18665F
+ for <devel@linuxdriverproject.org>; Mon,  8 Jun 2020 23:18:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mm2BKozqUa-X for <devel@linuxdriverproject.org>;
- Mon,  8 Jun 2020 23:11:32 +0000 (UTC)
+ with ESMTP id NDJv23k6J1Q6 for <devel@linuxdriverproject.org>;
+ Mon,  8 Jun 2020 23:18:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 7F60D204FB
- for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 23:11:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E1DD686500
+ for <devel@driverdev.osuosl.org>; Mon,  8 Jun 2020 23:18:57 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4CA7520B80;
- Mon,  8 Jun 2020 23:11:31 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D3A052083E;
+ Mon,  8 Jun 2020 23:18:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591657892;
- bh=iN4uu/SZtCI23lgelTAMXjz+AGc7s2h6+bTtogWffiQ=;
+ s=default; t=1591658337;
+ bh=Z16FR46Wfib9ObRljsI1+fcv3Z7krEYvl7iFsM+AQ1E=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jWWYwh4UuThnu1ZfiBHM4XKxI4kOzGsbl1UmdZ9Yc5TvwB8h9zE9Ah1lVTs0DTPmU
- iZqCeKnYq7l5qNBGFGI5LxnqcmZxESzY0kMXpda1SXzyaQniJmNUTWSs/Qt5+esSKO
- 35tDIsE5MBlFmOH4rsIkmQzfzdqUy1gsV08unFB4=
+ b=PJRRCIJZnJZyCqWKOipkwMHBZMblHLBwvFMh0HtZ5qZnm7q+vb5V5bDWDRSf1xvBy
+ b8zRYTKfrJ8h4zVPHrO85nfZlyOBX1GXDqF/H97G4rK5BdYe2KEOZ18Hn+z8kQhIqr
+ 800IX81HAhqB4Ywou/KARP5BvXE4Cmcb9sjR1yn8=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.7 247/274] staging: greybus: sdio: Respect the
- cmd->busy_timeout from the mmc core
-Date: Mon,  8 Jun 2020 19:05:40 -0400
-Message-Id: <20200608230607.3361041-247-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 007/175] media: staging: imgu: do not hold
+ spinlock during freeing mmu page table
+Date: Mon,  8 Jun 2020 19:16:00 -0400
+Message-Id: <20200608231848.3366970-7-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200608230607.3361041-1-sashal@kernel.org>
-References: <20200608230607.3361041-1-sashal@kernel.org>
+In-Reply-To: <20200608231848.3366970-1-sashal@kernel.org>
+References: <20200608231848.3366970-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -70,72 +70,71 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Ulf Hansson <ulf.hansson@linaro.org>, Alex Elder <elder@kernel.org>,
- greybus-dev@lists.linaro.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Johan Hovold <johan@kernel.org>
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Tomasz Figa <tfiga@chromium.org>, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Bingbu Cao <bingbu.cao@intel.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Ulf Hansson <ulf.hansson@linaro.org>
+From: Bingbu Cao <bingbu.cao@intel.com>
 
-[ Upstream commit a389087ee9f195fcf2f31cd771e9ec5f02c16650 ]
+[ Upstream commit e1ebe9f9c88e5a78fcc4670a9063c9b3cd87dda4 ]
 
-Using a fixed 1s timeout for all commands is a bit problematic.
+ImgU need set the mmu page table in memory as uncached, and set back
+to write-back when free the page table by set_memory_wb(),
+set_memory_wb() can not do flushing without interrupt, so the spinlock
+should not be hold during ImgU page alloc and free, the interrupt
+should be enabled during memory cache flush.
 
-For some commands it means waiting longer than needed for the timeout to
-expire, which may not a big issue, but still. For other commands, like for
-an erase (CMD38) that uses a R1B response, may require longer timeouts than
-1s. In these cases, we may end up treating the command as it failed, while
-it just needed some more time to complete successfully.
+This patch release spinlock before freeing pages table.
 
-Fix the problem by respecting the cmd->busy_timeout, which is provided by
-the mmc core.
-
-Cc: Rui Miguel Silva <rmfrfs@gmail.com>
-Cc: Johan Hovold <johan@kernel.org>
-Cc: Alex Elder <elder@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: greybus-dev@lists.linaro.org
-Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
-Acked-by: Rui Miguel Silva <rmfrfs@gmail.com>
-Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Link: https://lore.kernel.org/r/20200414161413.3036-20-ulf.hansson@linaro.org
-Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+Signed-off-by: Bingbu Cao <bingbu.cao@intel.com>
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/greybus/sdio.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ drivers/staging/media/ipu3/ipu3-mmu.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/greybus/sdio.c b/drivers/staging/greybus/sdio.c
-index 68c5718be827..c4b16bb5c1a4 100644
---- a/drivers/staging/greybus/sdio.c
-+++ b/drivers/staging/greybus/sdio.c
-@@ -411,6 +411,7 @@ static int gb_sdio_command(struct gb_sdio_host *host, struct mmc_command *cmd)
- 	struct gb_sdio_command_request request = {0};
- 	struct gb_sdio_command_response response;
- 	struct mmc_data *data = host->mrq->data;
-+	unsigned int timeout_ms;
- 	u8 cmd_flags;
- 	u8 cmd_type;
- 	int i;
-@@ -469,9 +470,12 @@ static int gb_sdio_command(struct gb_sdio_host *host, struct mmc_command *cmd)
- 		request.data_blksz = cpu_to_le16(data->blksz);
+diff --git a/drivers/staging/media/ipu3/ipu3-mmu.c b/drivers/staging/media/ipu3/ipu3-mmu.c
+index 3d969b0522ab..abcf1f3e5f63 100644
+--- a/drivers/staging/media/ipu3/ipu3-mmu.c
++++ b/drivers/staging/media/ipu3/ipu3-mmu.c
+@@ -174,8 +174,10 @@ static u32 *imgu_mmu_get_l2pt(struct imgu_mmu *mmu, u32 l1pt_idx)
+ 	spin_lock_irqsave(&mmu->lock, flags);
+ 
+ 	l2pt = mmu->l2pts[l1pt_idx];
+-	if (l2pt)
+-		goto done;
++	if (l2pt) {
++		spin_unlock_irqrestore(&mmu->lock, flags);
++		return l2pt;
++	}
+ 
+ 	spin_unlock_irqrestore(&mmu->lock, flags);
+ 
+@@ -190,8 +192,9 @@ static u32 *imgu_mmu_get_l2pt(struct imgu_mmu *mmu, u32 l1pt_idx)
+ 
+ 	l2pt = mmu->l2pts[l1pt_idx];
+ 	if (l2pt) {
++		spin_unlock_irqrestore(&mmu->lock, flags);
+ 		imgu_mmu_free_page_table(new_l2pt);
+-		goto done;
++		return l2pt;
  	}
  
--	ret = gb_operation_sync(host->connection, GB_SDIO_TYPE_COMMAND,
--				&request, sizeof(request), &response,
--				sizeof(response));
-+	timeout_ms = cmd->busy_timeout ? cmd->busy_timeout :
-+		GB_OPERATION_TIMEOUT_DEFAULT;
-+
-+	ret = gb_operation_sync_timeout(host->connection, GB_SDIO_TYPE_COMMAND,
-+					&request, sizeof(request), &response,
-+					sizeof(response), timeout_ms);
- 	if (ret < 0)
- 		goto out;
+ 	l2pt = new_l2pt;
+@@ -200,7 +203,6 @@ static u32 *imgu_mmu_get_l2pt(struct imgu_mmu *mmu, u32 l1pt_idx)
+ 	pteval = IPU3_ADDR2PTE(virt_to_phys(new_l2pt));
+ 	mmu->l1pt[l1pt_idx] = pteval;
  
+-done:
+ 	spin_unlock_irqrestore(&mmu->lock, flags);
+ 	return l2pt;
+ }
 -- 
 2.25.1
 
