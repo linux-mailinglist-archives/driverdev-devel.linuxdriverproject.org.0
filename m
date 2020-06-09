@@ -1,69 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D8601F30B0
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jun 2020 03:02:50 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7265D1F341D
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jun 2020 08:30:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DF006227CD;
-	Tue,  9 Jun 2020 01:02:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CE913871CC;
+	Tue,  9 Jun 2020 06:30:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hJLVLavYDVjc; Tue,  9 Jun 2020 01:02:47 +0000 (UTC)
+	with ESMTP id ETGmSUwQwhPC; Tue,  9 Jun 2020 06:30:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E2E8922253;
-	Tue,  9 Jun 2020 01:02:45 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B4278706A;
+	Tue,  9 Jun 2020 06:30:47 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0ACCE1BF4D8
- for <devel@linuxdriverproject.org>; Tue,  9 Jun 2020 01:02:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8BCA51BF339
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jun 2020 06:30:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0769987880
- for <devel@linuxdriverproject.org>; Tue,  9 Jun 2020 01:02:42 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 87C0787C0E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jun 2020 06:30:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7M0RbTIaSUio for <devel@linuxdriverproject.org>;
- Tue,  9 Jun 2020 01:02:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from delivery.mailguard.neotel.co.za
- (delivery.mailguard.neotel.co.za [41.168.2.23])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3E82386CE1
- for <devel@driverdev.osuosl.org>; Tue,  9 Jun 2020 01:02:39 +0000 (UTC)
-Received: from SEC-NGP-AG07 ([192.168.202.37]) by
- delivery.mailguard.neotel.co.za with Microsoft SMTPSVC(7.5.7601.17514); 
- Tue, 9 Jun 2020 02:44:24 +0200
-Received: from sec-ngp.spt01.e-purifier.com ([192.168.201.1]) by
- SEC-NGP-AG07.neotel.e-purifier.co.za with Microsoft SMTPSVC(7.5.7601.17514); 
- Tue, 9 Jun 2020 02:43:05 +0200
-Received: from localhost (localhost [127.0.0.1])
- by sec-ngp.spt01.e-purifier.com (Postfix) with ESMTP id 9F022102DEB3;
- Tue,  9 Jun 2020 02:41:39 +0200 (SAST)
-X-Virus-Scanned: by SpamTitan at spt01.e-purifier.com
-Received: from sec-ngp.spt01.e-purifier.com (localhost [127.0.0.1])
- by sec-ngp.spt01.e-purifier.com (Postfix) with ESMTP id 93778102953D;
- Tue,  9 Jun 2020 01:43:57 +0200 (SAST)
-Authentication-Results: sec-ngp.spt01.e-purifier.com; x-trusted-ip=pass
-Received: from R2D2.ihcp.local (unknown [41.76.207.171])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sec-ngp.spt01.e-purifier.com (Postfix) with ESMTPS id 88DE4102952B;
- Tue,  9 Jun 2020 01:43:55 +0200 (SAST)
-Received: from [103.141.136.27] [192.168.5.4] by R2D2.ihcp.local with ESMTP
- (SMTPD-12.4.1.15) id 5db9000763a165f5; Tue, 9 Jun 2020 01:44:36 +0200
+ with ESMTP id jlxwbzUxDUGL
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jun 2020 06:30:44 +0000 (UTC)
+X-Greylist: delayed 00:17:38 by SQLgrey-1.7.6
+Received: from GWA8.newtekwebhosting.com (gwa8.newtekwebhosting.com
+ [63.134.207.40])
+ by whitealder.osuosl.org (Postfix) with ESMTP id D30DD876FD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jun 2020 06:30:44 +0000 (UTC)
+Received: from mailx6.newtekwebhosting.com (mail.newtekzero.com
+ [216.119.115.204]) by GWA8.newtekwebhosting.com with SMTP
+ (version=TLS\Tls12 cipher=Aes256 bits=256);
+ Mon, 8 Jun 2020 23:11:25 -0700
+Received: from User (UnknownHost [45.182.176.18]) by
+ mailx6.newtekwebhosting.com with SMTP; 
+ Mon, 8 Jun 2020 23:10:48 -0700
+From: "Coca-Cola"<programdirector@minnslectures.org>
+Subject: COCA-COLA LOTTERY ORGANIZATION
+Date: Mon, 8 Jun 2020 23:10:48 -0700
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: BUSINESS LOAN OFFER : Contact us TODAY - DETAILS  - - - 
-To: Recipients <careers1@intercare.co.za>
-From: "Direct Finance" <careers1@intercare.co.za>
-Date: Mon, 08 Jun 2020 16:45:03 -0700
-Message-Id: <202006090144128.SM484257@[103.141.136.27]>
-X-OriginalArrivalTime: 09 Jun 2020 00:43:05.0675 (UTC)
- FILETIME=[F04BB1B0:01D63DF6]
-x-archived: yes
-x-dbused: RGF0YSBTb3VyY2U9MTkyLjE2OC4yMDEuMjc=
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200609063045.87C0787C0E@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,26 +64,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: pay@androidmobilepay.com
+Reply-To: charltonnewmanus1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Applicant,
+COCA-COLA LOTTERY ORGANIZATION
+TICKET FREE/ONLINE E-MAIL ADDRESS WINNINGS DEPARTMENT.
 
-Our Business Loan APPLICATION is available . Contact us / details below and we will get back to you with more information also with our T's and C's to apply.
+Greetings Winner,
 
-Greetings,
+If you are the correct owner of this email address? If yes then be glad
+this day as the result of the Coca-Cola lotto online e-mail address
+free-ticket winning draws of January, 2020 held in United States of
+America has just been released and we are glad to announce to you that
+your email address won you the sweepstakes in the first category and you
+are entitled to claim the sum of Three Million Five Hundred Thousand
+United States Dollars(US$3,500,000.00). Your email address was entered
+for the online draw on this ticket No: 546-373-66773 and won on this
+Lucky No: (14)-(8)-(5)-(19)-(28)-(12)-(30).
 
-Alec V. Kerrylton
-Senior Marketing Officer
-C- Direct finance
-P - +1 (305) 504 - 2129
-F-   +1 (305) 504 - 2130
+On how to receive your won prize of US$3.5M. (Three Million Five Hundred
+Thousand United States Dollars Only) to enable Mr. Newman Charlton ascertain
+you as the rightful winner and receiver of the US$3.5 million dollars
+US, MAKE SURE you include the below listed information in your contact
+email to him.
 
-- Our professional, experienced and qualified staff will contact you once you send an email to: pay@androidmobilepay.com
+Your complete official names, country of origin and country of
+residence/work, contact telephone and mobile numbers, address, amount
+won, free ticket and lucky numbers, date of draw. OPTIONAL: - [Sex, age,
+occupation and job title].
 
+Just in case you are thinking of how you won without entering then know
+again that this very draw of the Coca-Cola Lottery Organization in which
+you have emerged as a winner was a free ticket online email address
+draws were thousands of email addresses was collected from almost all
+world wide websites and used for the online draws/sweepstakes and during
+winners selection your email address came out among the first ten which
+won you the lottery in the first winnings category and entitles you to
+claim the US$3,500,000.00 dollars
+
+Yours Faithfully,
+Mr. Newman Charlton
+COCA-COLA LOTTERY ORGANIZATION.
+Online Winning Notification Department
+Tel: +1-416-500-7403
 
 
 _______________________________________________
