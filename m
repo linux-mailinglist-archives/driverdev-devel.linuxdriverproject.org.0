@@ -1,80 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D515A1F5B16
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jun 2020 20:23:37 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C813C89343;
-	Wed, 10 Jun 2020 18:23:35 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Oq09YPK+ejpO; Wed, 10 Jun 2020 18:23:35 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC134892B4;
-	Wed, 10 Jun 2020 18:23:34 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 19DB21BF313
- for <devel@linuxdriverproject.org>; Wed, 10 Jun 2020 18:23:33 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E58F71F5B4E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jun 2020 20:36:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 14E17882CE
- for <devel@linuxdriverproject.org>; Wed, 10 Jun 2020 18:23:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9841B88365;
+	Wed, 10 Jun 2020 18:36:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DSpKgBo7T43o; Wed, 10 Jun 2020 18:36:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 63BDD88222;
+	Wed, 10 Jun 2020 18:36:47 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A93E1BF313
+ for <devel@linuxdriverproject.org>; Wed, 10 Jun 2020 18:36:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 650082275A
+ for <devel@linuxdriverproject.org>; Wed, 10 Jun 2020 18:36:42 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WDEkmLasr4g8 for <devel@linuxdriverproject.org>;
- Wed, 10 Jun 2020 18:23:32 +0000 (UTC)
+ with ESMTP id yNhhnFF3oGzV for <devel@linuxdriverproject.org>;
+ Wed, 10 Jun 2020 18:36:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8D91E88237
- for <devel@driverdev.osuosl.org>; Wed, 10 Jun 2020 18:23:32 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id y18so1272240plr.4
- for <devel@driverdev.osuosl.org>; Wed, 10 Jun 2020 11:23:32 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1728021513
+ for <devel@driverdev.osuosl.org>; Wed, 10 Jun 2020 18:36:41 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id r18so1341493pgk.11
+ for <devel@driverdev.osuosl.org>; Wed, 10 Jun 2020 11:36:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=Eyo+7zh1L4jeDWREBakg6eAo0YMYPGwdx3QTIkC3cqE=;
- b=a5YWD529dgAdWo2ddTqn+wtR9NFsHDhDH9quAab1/Ts3LSpxdlSdxy6dn8UU0GmYJg
- mF2n+LTmi5kCWCRmW9o+w4lNEWGgoOk4zlw2My0hTdaZrNFXacyNCFGb3+7n4Ab2nC6N
- DusWKIIlMvWFsrA0CRBntWUVRbH7QMccO/RQD7cQ85pCqC8xtPC3uW01YHIYWtChIbIr
- MKkdZHznXgRBPNojpB8Jdq2lamuckQvYy0OBF/tMLdUqaQV+bhucitSwmnuYioDBWav7
- ZxeY74vjeQr250yLyShoxh4o49WZ/SkYC6Yp2etGuaMrgCe4BUV5Q+tC6+w5HUtpy8Qw
- QbPQ==
+ bh=yw3q9eI6lwTKHkfbX8g8ks9O/Eo9T2Je00bLzcJ2GYc=;
+ b=NOE0YlfB0mY/JBt1JlVH902N0/uUPHd7L9Kahu8HrCsJ9M2i7PnznTAA3N78Oif8tk
+ axxD9WhHeKXlpUIEILYwj69M74f0/48wJl4fqEB/f+bsGLV7D4Og5MohtjSlmnzURMxN
+ ONq4eO27y2e5oJqz+WjB8h5yBSe5Mcp4tyA5TUgT525dxI3IqvgFer5AwVZX2U/hlLur
+ Axs6ej3TVkd2M8JHVIG57jgn+4gaElz0Eq/R4qSMuib8Z9Kv8mhHDAuQgIJ5vTj1+Ax8
+ pWgWLin/eyXmmCMdh6rQsrjP9QCVviX42skFA18m000+M0UU3YSKJlm/syX0sQBHHH7/
+ oRZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Eyo+7zh1L4jeDWREBakg6eAo0YMYPGwdx3QTIkC3cqE=;
- b=Ry2OB396Bhish7UimFoXdRoLuz6uruhBYNyxkqSY0Q9J2C7k/69VybOurhetwztOwI
- x6Pz8ZZlK1YBcHT2H19OA5tT2auvkhRWBCd5Mg1oP9nKR8TAdkhiOqp+mZLX0zBrRC24
- AQOp8+GxEpe33UFvjnoT1WjEYd4GCRCdgxjO7fdDNiDzM/7h15NfPzkE7CR9VYKoJd4z
- M6fiioqtmSgw/q3IjnKBmwnfNlu01zxF7J0WAfavK+GvDgJq54hs8lXMYlVYBBgZGzw2
- d3JLSzStRhP+XbUSvtFKKjBmS1W1flAS4elr+vSEL4VA5BlSzRSzsSxUdaVnoVLiyHPp
- /ODQ==
-X-Gm-Message-State: AOAM5334qoYd/2iZ8iPQWQhn8wDju1TrQhOaJzR50rRsor0w43IlsjDO
- fo8FiTUZktZfumOMhkw3rG0=
-X-Google-Smtp-Source: ABdhPJwlTj9PIl3lYfVxAKZJrGw9skNy0yB4QNbnAqbu5kbKDhGJt6xeQOyHbSMwPeJUry2pOcPQXQ==
-X-Received: by 2002:a17:90b:e8f:: with SMTP id
- fv15mr4538238pjb.47.1591813411940; 
- Wed, 10 Jun 2020 11:23:31 -0700 (PDT)
+ bh=yw3q9eI6lwTKHkfbX8g8ks9O/Eo9T2Je00bLzcJ2GYc=;
+ b=UdVTw/yeSnqG+04sLqmkTDLm8nzQKxR/DBH4r0orhXBgDMu/X13uqgCDJCUe3h0H6X
+ Gy4XDvqlDqRvZJYZeaG1ljcg5k4zv5+TC4HKGHEPwbcacU7REWIHZwl8Zg/tEwj6R73m
+ YRFt+as446XhgGZzHwdM//gR4iU8N+lSNLMTtkE9Lfi3CjhGAnnSUJUfsC25vcFbAa55
+ ojLLK0cCgQ45sWmp1Bqgo1nihKJFyjlk6ryO3LWg+30MAKxJvxGAF7n7ADO2EF3ipPrC
+ QwBasTdaVjy6eMg6PxFYXIDjmgP+QRK1fOYVUoLVr6ezOLAnQFhba6zsWsj28XcVkaw8
+ HoGg==
+X-Gm-Message-State: AOAM5332PrBsBUeE+9meTAWT3Y8KT0rvdIButehy8Of5w5W9Kmg4Izys
+ h3twGQJGgqU3Qu7uLxBsn2Ik0vmWLTjfwQus
+X-Google-Smtp-Source: ABdhPJx9yBS3TpsCYB0M2k/HUJCqFbrfJDrQFqu6V3G1g3niXzTVJlGN/tj/FlKmZYYb2YwY0BjsVg==
+X-Received: by 2002:a63:c04b:: with SMTP id z11mr3760360pgi.215.1591814200411; 
+ Wed, 10 Jun 2020 11:36:40 -0700 (PDT)
 Received: from gmail.com ([192.55.54.40])
- by smtp.gmail.com with ESMTPSA id 140sm577886pfv.38.2020.06.10.11.23.27
+ by smtp.gmail.com with ESMTPSA id p31sm483529pgb.46.2020.06.10.11.36.35
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 10 Jun 2020 11:23:31 -0700 (PDT)
-Date: Wed, 10 Jun 2020 23:53:24 +0530
+ Wed, 10 Jun 2020 11:36:39 -0700 (PDT)
+Date: Thu, 11 Jun 2020 00:06:32 +0530
 From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-To: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2 0/6] Enable Greybus Audio codec driver
-Message-ID: <20200610182322.GC21465@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH v2 4/6] staging: greybus: audio: Resolve compilation
+ error in topology parser
+Message-ID: <20200610183630.GA26807@gmail.com>
 References: <cover.1591802243.git.vaibhav.sr@gmail.com>
- <20200610173711.GK5005@sirena.org.uk>
+ <7cbb81585474e895faa842e2af05ec3fb2079386.1591802243.git.vaibhav.sr@gmail.com>
+ <20200610174535.GB4151@kadam>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200610173711.GK5005@sirena.org.uk>
+In-Reply-To: <20200610174535.GB4151@kadam>
 User-Agent: Mutt/1.10.1+3 (f9293d646485) (2018-09-22)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -94,40 +95,65 @@ Cc: devel@driverdev.osuosl.org, alsa-devel@alsa-project.org,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Greer <mgreer@animalcreek.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Takashi Iwai <tiwai@suse.com>,
  Jaroslav Kysela <perex@perex.cz>, greybus-dev@lists.linaro.org,
- Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org
+ Mark Brown <broonie@kernel.org>, Johan Hovold <johan@kernel.org>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 10, 2020 at 06:37:11PM +0100, Mark Brown wrote:
-> On Wed, Jun 10, 2020 at 10:58:24PM +0530, Vaibhav Agarwal wrote:
-> > The existing GB Audio codec driver is dependent on MSM8994 Audio driver.
-> > During the development stage, this dependency was configured due to
-> > various changes involved in MSM Audio driver to enable addtional codec
-> > card and some of the changes proposed in mainline ASoC framework.
+On Wed, Jun 10, 2020 at 08:45:35PM +0300, Dan Carpenter wrote:
+> On Wed, Jun 10, 2020 at 10:58:28PM +0530, Vaibhav Agarwal wrote:
+> > @@ -437,11 +433,12 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+> >  	struct gbaudio_module_info *module;
+> >  	struct snd_soc_dapm_widget_list *wlist = snd_kcontrol_chip(kcontrol);
+> >  	struct snd_soc_dapm_widget *widget = wlist->widgets[0];
+> > -	struct snd_soc_codec *codec = widget->codec;
+> > -	struct gbaudio_codec_info *gb = snd_soc_codec_get_drvdata(codec);
+> > +	struct device *codec_dev = widget->dapm->dev;
+> > +	struct gbaudio_codec_info *gb = dev_get_drvdata(codec_dev);
+> > +	struct snd_soc_dapm_update *update = NULL;
+>                                     ^^^^^^^^^^^^^
 > 
-> I'm not sure why you're copying me on a staging driver?  I don't recall
-> the base driver having been submitted properly yet.
+> >  	struct gb_bundle *bundle;
+> >  
+> > -	dev_dbg(codec->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
+> > +	dev_dbg(codec_dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
+> >  	module = find_gb_module(gb, kcontrol->id.name);
+> >  	if (!module)
+> >  		return -EINVAL;
+> > @@ -458,17 +455,13 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+> >  	max = le32_to_cpu(info->value.integer.max);
+> >  	mask = (1 << fls(max)) - 1;
+> >  	val = ucontrol->value.integer.value[0] & mask;
+> > -	connect = !!val;
+> >  
+> >  	/* update ucontrol */
+> >  	if (gbvalue.value.integer_value[0] != val) {
+> >  		for (wi = 0; wi < wlist->num_widgets; wi++) {
+> >  			widget = wlist->widgets[wi];
+> > -
+> > -			widget->value = val;
+> > -			widget->dapm->update = NULL;
+> > -			snd_soc_dapm_mixer_update_power(widget, kcontrol,
+> > -							connect);
+> > +			snd_soc_dapm_mixer_update_power(widget->dapm, kcontrol,
+> > +							val, update);
+>                                                              ^^^^^^
+> Always NULL.  Just delete the update variable.
 
-Hi Mark,
-
-With patch#6 in this series, I'm proposing some of the (dummy) helper 
-APIs required to link DAPM DAI widgets for the GB Audio modules 
-added/removed dynamically.
-
-Eventually, I would like to propose relevant changes in snd-soc APIs to 
-enable dynamic linking of DAI widgets for the modules added and 
-remove/free component controls for the module removed.
-
-I'm seeking your opinion on the proposed changes. And as per the 
-recommendation I'm sharing the changes with ASoC mailing list as well.
-
-Kindly suggest me the preferred way to follow on this thread. 
+Aah, my bad! Thanks Dan for sharing your comments. I'll fix this while 
+sharing next patchset.
 
 --
 Regards,
 Vaibhav
+
+> 
+> regards,
+> dan carpenter
+> 
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
