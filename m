@@ -2,79 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E164D1F5A59
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jun 2020 19:29:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 72B2E1F5A5E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jun 2020 19:29:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AE482892B5;
-	Wed, 10 Jun 2020 17:29:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 04A3D89335;
+	Wed, 10 Jun 2020 17:29:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PMtVwGfeIWn7; Wed, 10 Jun 2020 17:29:19 +0000 (UTC)
+	with ESMTP id IEqOk7WRsx89; Wed, 10 Jun 2020 17:29:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 29DB78927A;
-	Wed, 10 Jun 2020 17:29:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 237E489293;
+	Wed, 10 Jun 2020 17:29:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 09D7B1BF5A9
- for <devel@linuxdriverproject.org>; Wed, 10 Jun 2020 17:29:17 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 52DB91BF5A9
+ for <devel@linuxdriverproject.org>; Wed, 10 Jun 2020 17:29:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 01C13203A5
- for <devel@linuxdriverproject.org>; Wed, 10 Jun 2020 17:29:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4FBE987609
+ for <devel@linuxdriverproject.org>; Wed, 10 Jun 2020 17:29:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bgtv73ae3APu for <devel@linuxdriverproject.org>;
- Wed, 10 Jun 2020 17:29:16 +0000 (UTC)
+ with ESMTP id d5MBainxXNTl for <devel@linuxdriverproject.org>;
+ Wed, 10 Jun 2020 17:29:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
- [209.85.216.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 17B6520368
- for <devel@driverdev.osuosl.org>; Wed, 10 Jun 2020 17:29:16 +0000 (UTC)
-Received: by mail-pj1-f65.google.com with SMTP id i12so1101609pju.3
- for <devel@driverdev.osuosl.org>; Wed, 10 Jun 2020 10:29:16 -0700 (PDT)
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 53886875EA
+ for <devel@driverdev.osuosl.org>; Wed, 10 Jun 2020 17:29:27 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id n9so1220471plk.1
+ for <devel@driverdev.osuosl.org>; Wed, 10 Jun 2020 10:29:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Y6k/7QsHaLDLvfshfaz5BRU4ZY9fb7OyvkPWjkbCUPQ=;
- b=i8/yyzCM9b20RAxBiypRxbSOUWLB/v8YvSqCyJn/V2O+/ntCgJ8nWUklji3KjTydfo
- X6krgZqofgBk44Z6cBw1wSQqkibasy6WtaWl4TjSHJuufhOQs9G3EO3qKRNRO8/Pt8pM
- 8o69hFFvQYYzFT2knESwDsYL4Kn9kX6TxdZxOqtJua04JpAoSPjYVppreIYD6xbmXcck
- wSCS+d68caY8esVchPIs5/UnltJWwvA0I7kMAseyFnXtViPNyur6q5xxXn8lQMMJP/jV
- gs+/1j3Ha0iLqUTwI42V80GyVsm1zgtmPVbQaR0uf8QxYLkF7HpW7/3KKIa3ohr75hHL
- dz6g==
+ bh=NtbNmsonDMoekdi5axaMguk/gVcbR6PjQHj/vYuOxjU=;
+ b=tC4zy1lnWK7eL+yQAvAi8uzjPY313RVnma1F67Rr5dZZR0Flk38BbMaKlhAt2wngT8
+ h85Koqo6nB4VpOw8yRSFAUAtbBr+k1I1n3piokoO9ObXro6u291mBgEpfFgwGG0GSCMu
+ uFt/+wLW0RrDUr3pB8yU46UZtzZPO8LyoQU1xbHyReXFF0K+wqdQIOlYBPDLwZtkl2f2
+ Z9gK/aIL7tEnO3Xc8m46xz2OHUr+09PjMSHvx8TRcdw+fUsUS8j2RXtU8Qc1g594H2b4
+ rc+CmEQuO2zQvBNY0lCNu6N0P9OatrKvEw9914Atmh9Zn+zuimbcJ6FI6nD43Y3EGZvg
+ gtUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Y6k/7QsHaLDLvfshfaz5BRU4ZY9fb7OyvkPWjkbCUPQ=;
- b=oT90Qs/P1zuhyFtcmnKmt4rRZjR3lABw1cPVzHzoAMToHNH/nPFQjMWinojwmYXuPi
- I6pZFB9L6Kb4ZgrTfPjjX36KychfWJ8LTH4Ei5mQMVBD2ocyWO6lt0jYPg9XCegEjhfP
- 6NHePDHGkZanY+LofVllpLLXelxjjQDh6+5+4GKXuxju/h5d6ugpGUGfzjCHNI09puWH
- RjHW0iVUAr7xYjDXe7Zw9dlVix/OkyN159f73tAWCWNy7qT0i+cZTf0ZDenMRSJpJla8
- NbQZzokiJonBOQ1RwZpg6F7K4biDcjLyVHlUjjAdyElQQi8ESTdowzJ1LqTYaKhac6M7
- wqkw==
-X-Gm-Message-State: AOAM530Z5X9XcBYaWKi4p+12K2zSoOfIXhi5cKvVKL+3LGHy4GhKXUYL
- 7jUPqPRwGQomsBZspH2cuJM=
-X-Google-Smtp-Source: ABdhPJyHSF6BBRt+DRbRAiQl9cvHyZSZn5HFwRHbESmV4SGcQ/a+q3ZlJDKRx4M7S8rCGDXeGQDBXA==
-X-Received: by 2002:a17:90b:252:: with SMTP id
- fz18mr3757996pjb.96.1591810155527; 
- Wed, 10 Jun 2020 10:29:15 -0700 (PDT)
+ bh=NtbNmsonDMoekdi5axaMguk/gVcbR6PjQHj/vYuOxjU=;
+ b=p0s5ahOKHVbLH9QqV45tt+S9bpVtZaNMV0s30hF3diRY7VjMVHOnXmgNMafWbvmx+A
+ 1dUaofxITNk+FOyH5Xa7JS+fm21knUOwRx+ZVQW5q8cBGSoh8PibOTPJmoLCTt+rGVG1
+ B+eIAKJWiTtBsFumz7U7LTn63OV0SIIbH96gutVhEXLFK43XYpCdHyN/k0vz/vR/6qfF
+ cTYJyni1BuHfx7yNIr8najMikgivWt4CrwDP35J9CjgM6x8X5ahPRMIKrk4Ur6YPCcpX
+ 3gva83OH1/zjlUditJBVt+vE/qUa4rGy0ISM9WhUYgdl1fSYHFiY5VMEzKVFWPfxRaoh
+ DSWA==
+X-Gm-Message-State: AOAM533cSmjijtNdQYg+r6PFrYd+/C2A1/X67Mb3JpZSixzozRWs576U
+ IQjG+vXxwXjJE40fzazgxdo=
+X-Google-Smtp-Source: ABdhPJwkzJ7/R5LBy0d9NtZ4D2amddsknI0JxJCpfrvGpTDPcyZcSxuoBTOwnuz8K6+OT5WdH0OVhQ==
+X-Received: by 2002:a17:90a:7bc3:: with SMTP id
+ d3mr3943890pjl.98.1591810166766; 
+ Wed, 10 Jun 2020 10:29:26 -0700 (PDT)
 Received: from cvds-vagarw7.iind.intel.com ([192.55.54.40])
- by smtp.googlemail.com with ESMTPSA id l83sm490470pfd.150.2020.06.10.10.29.05
+ by smtp.googlemail.com with ESMTPSA id l83sm490470pfd.150.2020.06.10.10.29.16
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 10 Jun 2020 10:29:15 -0700 (PDT)
+ Wed, 10 Jun 2020 10:29:25 -0700 (PDT)
 From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Alex Elder <elder@kernel.org>, Johan Hovold <johan@kernel.org>,
  Mark Greer <mgreer@animalcreek.com>, Takashi Iwai <tiwai@suse.com>,
  Jaroslav Kysela <perex@perex.cz>, Mark Brown <broonie@kernel.org>,
  Liam Girdwood <lgirdwood@gmail.com>
-Subject: [PATCH v2 1/6] staging: greybus: audio: Update snd_jack FW usage as
- per new APIs
-Date: Wed, 10 Jun 2020 22:58:25 +0530
-Message-Id: <48ba07c38dc72d272dda4d4d2c3fe3690ee71eb3.1591802243.git.vaibhav.sr@gmail.com>
+Subject: [PATCH v2 2/6] staging: greybus: audio: Maintain jack list within GB
+ Audio module
+Date: Wed, 10 Jun 2020 22:58:26 +0530
+Message-Id: <af932176026ef8f7940cb35f515c9e1b7e5dc69f.1591802243.git.vaibhav.sr@gmail.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1591802243.git.vaibhav.sr@gmail.com>
 References: <cover.1591802243.git.vaibhav.sr@gmail.com>
@@ -100,146 +100,311 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-snd_soc_jack APIs are modified in recent kernel versions. This patch
-updates the codec driver to resolve the compilation errors related to
-jack framework.
+As per the current implementation for GB codec driver, a jack list is
+maintained for each module. And it expects the list to be populated by
+the snd_soc_jack structure which would require modifications in
+mainstream code.
+
+However, this is not a necessary requirement and the list can be easily
+maintained within gbaudio_module_info as well. This patch provides the
+relevant changes for the same.
 
 Signed-off-by: Vaibhav Agarwal <vaibhav.sr@gmail.com>
 ---
- drivers/staging/greybus/audio_codec.c | 54 +++++++++++++++++++++------
- 1 file changed, 42 insertions(+), 12 deletions(-)
+ drivers/staging/greybus/audio_codec.c  | 74 +++++++++++++-------------
+ drivers/staging/greybus/audio_codec.h  | 10 +++-
+ drivers/staging/greybus/audio_module.c | 15 +++---
+ 3 files changed, 53 insertions(+), 46 deletions(-)
 
 diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
-index 08746c85dea6..5d3a5e6a8fe6 100644
+index 5d3a5e6a8fe6..6dc4ee2bfb37 100644
 --- a/drivers/staging/greybus/audio_codec.c
 +++ b/drivers/staging/greybus/audio_codec.c
-@@ -709,17 +709,26 @@ static struct snd_soc_dai_driver gbaudio_dai[] = {
- };
- 
- static int gbaudio_init_jack(struct gbaudio_module_info *module,
--			     struct snd_soc_codec *codec)
-+			     struct snd_soc_card *card)
+@@ -712,6 +712,7 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
+ 			     struct snd_soc_card *card)
  {
  	int ret;
-+	struct snd_soc_jack_pin *headset, *button;
++	struct gbaudio_jack *jack, *n;
+ 	struct snd_soc_jack_pin *headset, *button;
  
  	if (!module->jack_mask)
- 		return 0;
+@@ -726,14 +727,16 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
  
- 	snprintf(module->jack_name, NAME_SIZE, "GB %d Headset Jack",
- 		 module->dev_id);
--	ret = snd_soc_jack_new(codec, module->jack_name, module->jack_mask,
--			       &module->headset_jack);
-+
-+	headset = devm_kzalloc(module->dev, sizeof(*headset), GFP_KERNEL);
-+	if (!headset)
-+		return -ENOMEM;
-+
-+	headset->pin = module->jack_name;
-+	headset->mask = module->jack_mask;
-+
-+	ret = snd_soc_card_jack_new(card, module->jack_name, module->jack_mask,
-+				    &module->headset_jack, headset, 1);
+ 	headset->pin = module->jack_name;
+ 	headset->mask = module->jack_mask;
+-
+ 	ret = snd_soc_card_jack_new(card, module->jack_name, module->jack_mask,
+-				    &module->headset_jack, headset, 1);
++				    &module->headset.jack, headset, 1);
  	if (ret) {
  		dev_err(module->dev, "Failed to create new jack\n");
  		return ret;
-@@ -730,11 +739,21 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
- 
- 	snprintf(module->button_name, NAME_SIZE, "GB %d Button Jack",
- 		 module->dev_id);
--	ret = snd_soc_jack_new(codec, module->button_name, module->button_mask,
--			       &module->button_jack);
-+	button = devm_kzalloc(module->dev, sizeof(*button), GFP_KERNEL);
-+	if (!button) {
-+		ret = -ENOMEM;
-+		goto free_headset;
-+	}
-+
-+	button->pin = module->button_name;
-+	button->mask = module->button_mask;
-+
-+	ret = snd_soc_card_jack_new(card, module->button_name,
-+				    module->button_mask, &module->button_jack,
-+				    button, 1);
- 	if (ret) {
- 		dev_err(module->dev, "Failed to create button jack\n");
--		return ret;
-+		goto free_headset;
  	}
  
++	/* Add to module's jack list */
++	list_add(&module->headset.list, &module->jack_list);
++
+ 	if (!module->button_mask)
+ 		return 0;
+ 
+@@ -742,20 +745,22 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
+ 	button = devm_kzalloc(module->dev, sizeof(*button), GFP_KERNEL);
+ 	if (!button) {
+ 		ret = -ENOMEM;
+-		goto free_headset;
++		goto free_jacks;
+ 	}
+ 
+ 	button->pin = module->button_name;
+ 	button->mask = module->button_mask;
+-
+ 	ret = snd_soc_card_jack_new(card, module->button_name,
+-				    module->button_mask, &module->button_jack,
++				    module->button_mask, &module->button.jack,
+ 				    button, 1);
+ 	if (ret) {
+ 		dev_err(module->dev, "Failed to create button jack\n");
+-		goto free_headset;
++		goto free_jacks;
+ 	}
+ 
++	/* Add to module's jack list */
++	list_add(&module->button.list, &module->jack_list);
++
  	/*
-@@ -750,7 +769,7 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
+ 	 * Currently, max 4 buttons are supported with following key mapping
+ 	 * BTN_0 = KEY_MEDIA
+@@ -765,56 +770,54 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
+ 	 */
+ 
+ 	if (module->button_mask & SND_JACK_BTN_0) {
+-		ret = snd_jack_set_key(module->button_jack.jack, SND_JACK_BTN_0,
++		ret = snd_jack_set_key(module->button.jack.jack, SND_JACK_BTN_0,
  				       KEY_MEDIA);
  		if (ret) {
  			dev_err(module->dev, "Failed to set BTN_0\n");
--			return ret;
-+			goto free_button;
+-			goto free_button;
++			goto free_jacks;
  		}
  	}
  
-@@ -759,7 +778,7 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
+ 	if (module->button_mask & SND_JACK_BTN_1) {
+-		ret = snd_jack_set_key(module->button_jack.jack, SND_JACK_BTN_1,
++		ret = snd_jack_set_key(module->button.jack.jack, SND_JACK_BTN_1,
  				       KEY_VOICECOMMAND);
  		if (ret) {
  			dev_err(module->dev, "Failed to set BTN_1\n");
--			return ret;
-+			goto free_button;
+-			goto free_button;
++			goto free_jacks;
  		}
  	}
  
-@@ -768,7 +787,7 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
+ 	if (module->button_mask & SND_JACK_BTN_2) {
+-		ret = snd_jack_set_key(module->button_jack.jack, SND_JACK_BTN_2,
++		ret = snd_jack_set_key(module->button.jack.jack, SND_JACK_BTN_2,
  				       KEY_VOLUMEUP);
  		if (ret) {
  			dev_err(module->dev, "Failed to set BTN_2\n");
--			return ret;
-+			goto free_button;
+-			goto free_button;
++			goto free_jacks;
  		}
  	}
  
-@@ -777,7 +796,7 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
+ 	if (module->button_mask & SND_JACK_BTN_3) {
+-		ret = snd_jack_set_key(module->button_jack.jack, SND_JACK_BTN_3,
++		ret = snd_jack_set_key(module->button.jack.jack, SND_JACK_BTN_3,
  				       KEY_VOLUMEDOWN);
  		if (ret) {
  			dev_err(module->dev, "Failed to set BTN_0\n");
--			return ret;
-+			goto free_button;
+-			goto free_button;
++			goto free_jacks;
  		}
  	}
  
-@@ -788,6 +807,16 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
+ 	/* FIXME
+ 	 * verify if this is really required
+ 	set_bit(INPUT_PROP_NO_DUMMY_RELEASE,
+-		module->button_jack.jack->input_dev->propbit);
++		module->button.jack.jack->input_dev->propbit);
  	*/
  
  	return 0;
-+
-+free_button:
-+	snd_device_free(card->snd_card, module->button_jack.jack);
-+	list_del(&module->button_jack.list);
-+
-+free_headset:
-+	snd_device_free(card->snd_card, module->headset_jack.jack);
-+	list_del(&module->headset_jack.list);
-+
-+	return ret;
+ 
+-free_button:
+-	snd_device_free(card->snd_card, module->button_jack.jack);
+-	list_del(&module->button_jack.list);
+-
+-free_headset:
+-	snd_device_free(card->snd_card, module->headset_jack.jack);
+-	list_del(&module->headset_jack.list);
++free_jacks:
++	list_for_each_entry_safe(jack, n, &module->jack_list, list) {
++		snd_device_free(card->snd_card, jack->jack.jack);
++		list_del(&jack->list);
++	}
+ 
+ 	return ret;
  }
+@@ -824,7 +827,7 @@ int gbaudio_register_module(struct gbaudio_module_info *module)
+ 	int ret;
+ 	struct snd_soc_codec *codec;
+ 	struct snd_card *card;
+-	struct snd_soc_jack *jack = NULL;
++	struct gbaudio_jack *jack = NULL;
  
- int gbaudio_register_module(struct gbaudio_module_info *module)
-@@ -815,7 +844,7 @@ int gbaudio_register_module(struct gbaudio_module_info *module)
- 		return -EINVAL;
+ 	if (!gbcodec) {
+ 		dev_err(module->dev, "GB Codec not yet probed\n");
+@@ -869,11 +872,9 @@ int gbaudio_register_module(struct gbaudio_module_info *module)
+ 		 * register jack devices for this module
+ 		 * from codec->jack_list
+ 		 */
+-		list_for_each_entry(jack, &codec->jack_list, list) {
+-			if ((jack == &module->headset_jack) ||
+-			    (jack == &module->button_jack))
+-				snd_device_register(codec->card->snd_card,
+-						    jack->jack);
++		list_for_each_entry(jack, &module->jack_list, list) {
++			snd_device_register(codec->card->snd_card,
++					    jack->jack.jack);
+ 		}
+ #endif
  	}
+@@ -957,7 +958,7 @@ void gbaudio_unregister_module(struct gbaudio_module_info *module)
+ {
+ 	struct snd_soc_codec *codec = gbcodec->codec;
+ 	struct snd_card *card = codec->card->snd_card;
+-	struct snd_soc_jack *jack, *next_j;
++	struct gbaudio_jack *jack, *n;
+ 	int mask;
  
--	ret = gbaudio_init_jack(module, codec);
-+	ret = gbaudio_init_jack(module, component->card);
- 	if (ret) {
- 		up_write(&card->controls_rwsem);
- 		return ret;
-@@ -942,7 +971,8 @@ void gbaudio_unregister_module(struct gbaudio_module_info *module)
+ 	dev_dbg(codec->dev, "Unregister %s module\n", module->name);
+@@ -970,20 +971,19 @@ void gbaudio_unregister_module(struct gbaudio_module_info *module)
+ 	mutex_unlock(&gbcodec->lock);
  
  #ifdef CONFIG_SND_JACK
- 	/* free jack devices for this module from codec->jack_list */
--	list_for_each_entry_safe(jack, next_j, &codec->jack_list, list) {
-+	list_for_each_entry_safe(jack, next_j, &component->card->jack_list,
-+				 list) {
- 		if (jack == &module->headset_jack)
+-	/* free jack devices for this module from codec->jack_list */
+-	list_for_each_entry_safe(jack, next_j, &component->card->jack_list,
+-				 list) {
+-		if (jack == &module->headset_jack)
++	/* free jack devices for this module jack_list */
++	list_for_each_entry_safe(jack, n, &module->jack_list, list) {
++		if (jack == &module->headset)
  			mask = GBCODEC_JACK_MASK;
- 		else if (jack == &module->button_jack)
+-		else if (jack == &module->button_jack)
++		else if (jack == &module->button)
+ 			mask = GBCODEC_JACK_BUTTON_MASK;
+ 		else
+ 			mask = 0;
+ 		if (mask) {
+ 			dev_dbg(module->dev, "Report %s removal\n",
+-				jack->jack->id);
+-			snd_soc_jack_report(jack, 0, mask);
+-			snd_device_free(codec->card->snd_card, jack->jack);
++				jack->jack.jack->id);
++			snd_soc_jack_report(&jack->jack, 0, mask);
++			snd_device_free(codec->card->snd_card, jack->jack.jack);
+ 			list_del(&jack->list);
+ 		}
+ 	}
+diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
+index cb5d271da1a5..af9195eceb3a 100644
+--- a/drivers/staging/greybus/audio_codec.h
++++ b/drivers/staging/greybus/audio_codec.h
+@@ -106,6 +106,11 @@ enum gbaudio_module_state {
+ 	GBAUDIO_MODULE_ON,
+ };
+ 
++struct gbaudio_jack {
++	struct snd_soc_jack jack;
++	struct list_head list;
++};
++
+ struct gbaudio_module_info {
+ 	/* module info */
+ 	struct device *dev;
+@@ -130,8 +135,8 @@ struct gbaudio_module_info {
+ 	int jack_mask;
+ 	int button_mask;
+ 	int button_status;
+-	struct snd_soc_jack headset_jack;
+-	struct snd_soc_jack button_jack;
++	struct gbaudio_jack headset;
++	struct gbaudio_jack button;
+ 
+ 	/* connection info */
+ 	struct gb_connection *mgmt_connection;
+@@ -155,6 +160,7 @@ struct gbaudio_module_info {
+ 	struct list_head widget_list;
+ 	struct list_head ctl_list;
+ 	struct list_head widget_ctl_list;
++	struct list_head jack_list;
+ 
+ 	struct gb_audio_topology *topology;
+ };
+diff --git a/drivers/staging/greybus/audio_module.c b/drivers/staging/greybus/audio_module.c
+index 300a2b4f3fc7..16f60256adb2 100644
+--- a/drivers/staging/greybus/audio_module.c
++++ b/drivers/staging/greybus/audio_module.c
+@@ -21,8 +21,8 @@ static int gbaudio_request_jack(struct gbaudio_module_info *module,
+ 				struct gb_audio_jack_event_request *req)
+ {
+ 	int report;
+-	struct snd_jack *jack = module->headset_jack.jack;
+-	struct snd_jack *btn_jack = module->button_jack.jack;
++	struct snd_jack *jack = module->headset.jack.jack;
++	struct snd_jack *btn_jack = module->button.jack.jack;
+ 
+ 	if (!jack) {
+ 		dev_err_ratelimited(module->dev,
+@@ -38,11 +38,11 @@ static int gbaudio_request_jack(struct gbaudio_module_info *module,
+ 	if (req->event == GB_AUDIO_JACK_EVENT_REMOVAL) {
+ 		module->jack_type = 0;
+ 		if (btn_jack && module->button_status) {
+-			snd_soc_jack_report(&module->button_jack, 0,
++			snd_soc_jack_report(&module->button.jack, 0,
+ 					    module->button_mask);
+ 			module->button_status = 0;
+ 		}
+-		snd_soc_jack_report(&module->headset_jack, 0,
++		snd_soc_jack_report(&module->headset.jack, 0,
+ 				    module->jack_mask);
+ 		return 0;
+ 	}
+@@ -61,7 +61,7 @@ static int gbaudio_request_jack(struct gbaudio_module_info *module,
+ 				     module->jack_type, report);
+ 
+ 	module->jack_type = report;
+-	snd_soc_jack_report(&module->headset_jack, report, module->jack_mask);
++	snd_soc_jack_report(&module->headset.jack, report, module->jack_mask);
+ 
+ 	return 0;
+ }
+@@ -70,7 +70,7 @@ static int gbaudio_request_button(struct gbaudio_module_info *module,
+ 				  struct gb_audio_button_event_request *req)
+ {
+ 	int soc_button_id, report;
+-	struct snd_jack *btn_jack = module->button_jack.jack;
++	struct snd_jack *btn_jack = module->button.jack.jack;
+ 
+ 	if (!btn_jack) {
+ 		dev_err_ratelimited(module->dev,
+@@ -124,7 +124,7 @@ static int gbaudio_request_button(struct gbaudio_module_info *module,
+ 
+ 	module->button_status = report;
+ 
+-	snd_soc_jack_report(&module->button_jack, report, module->button_mask);
++	snd_soc_jack_report(&module->button.jack, report, module->button_mask);
+ 
+ 	return 0;
+ }
+@@ -258,6 +258,7 @@ static int gb_audio_probe(struct gb_bundle *bundle,
+ 	INIT_LIST_HEAD(&gbmodule->widget_list);
+ 	INIT_LIST_HEAD(&gbmodule->ctl_list);
+ 	INIT_LIST_HEAD(&gbmodule->widget_ctl_list);
++	INIT_LIST_HEAD(&gbmodule->jack_list);
+ 	gbmodule->dev = dev;
+ 	snprintf(gbmodule->name, NAME_SIZE, "%s.%s", dev->driver->name,
+ 		 dev_name(dev));
 -- 
 2.26.2
 
