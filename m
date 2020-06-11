@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9418C1F6387
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Jun 2020 10:26:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BF2E51F63D1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Jun 2020 10:41:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C96BD87971;
-	Thu, 11 Jun 2020 08:26:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7336487999;
+	Thu, 11 Jun 2020 08:41:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hyKjJ5JK65V2; Thu, 11 Jun 2020 08:26:22 +0000 (UTC)
+	with ESMTP id kU6vSB3XZV0c; Thu, 11 Jun 2020 08:41:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AC5A087949;
-	Thu, 11 Jun 2020 08:26:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 957DF8799D;
+	Thu, 11 Jun 2020 08:41:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B76E01BF3BB
- for <devel@linuxdriverproject.org>; Thu, 11 Jun 2020 08:26:19 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9DCA31BF3BB
+ for <devel@linuxdriverproject.org>; Thu, 11 Jun 2020 08:41:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AF97987949
- for <devel@linuxdriverproject.org>; Thu, 11 Jun 2020 08:26:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9A5B388744
+ for <devel@linuxdriverproject.org>; Thu, 11 Jun 2020 08:41:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Vr7rd98pc4hL for <devel@linuxdriverproject.org>;
- Thu, 11 Jun 2020 08:26:19 +0000 (UTC)
+ with ESMTP id uRDYwQVOyDAL for <devel@linuxdriverproject.org>;
+ Thu, 11 Jun 2020 08:41:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1C545878DF
- for <devel@driverdev.osuosl.org>; Thu, 11 Jun 2020 08:26:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 720FE886FC
+ for <devel@driverdev.osuosl.org>; Thu, 11 Jun 2020 08:41:38 +0000 (UTC)
 Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 67677207C3;
- Thu, 11 Jun 2020 08:26:18 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C1BA8207C3;
+ Thu, 11 Jun 2020 08:41:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591863978;
- bh=YUMp2q/HufrKUWQR8d10DU5EVMYQ+RTK4Ary2FsUxpg=;
+ s=default; t=1591864898;
+ bh=QsS/tOLm0lwVFkLv1bvdt7t2u82usdSBFhe+D9o/m6U=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=g92fsaSSZ1PFMOpD75oQHjkFfyB+k99l45z3iWHzROPI9k1izAbq8oCEuWP9DUh/L
- obOLjjf6Z8QST/NJgwjuLosUkGdMBxHzWtEHhuygRAsfE9IDGk7WpAhK+TtBWi1Uiw
- Ag9Vn2pyP1D/znXiB2AG+PfUPIIy6uIlJDb7jgZo=
-Date: Thu, 11 Jun 2020 09:26:16 +0100
+ b=bGxrGjOWwMM0evGPt5Ai7y8Msl/Mu9rWs4Jh+j+NCI+6ybG4fyAaQG95heLlaEva3
+ 18bYty9pvqxD+hm6te8k4z6gksi6PrmTG4hZWVEF1PU7wVevrLjQuqzz9Dv5e4v7Yd
+ RktG4MAt4nWzQJi9xmao8Qt2Svg+PlTXwDUaGDd4=
+Date: Thu, 11 Jun 2020 09:41:36 +0100
 From: Mark Brown <broonie@kernel.org>
-To: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>
 Subject: Re: [PATCH v2 0/6] Enable Greybus Audio codec driver
-Message-ID: <20200611082616.GA4671@sirena.org.uk>
+Message-ID: <20200611084135.GB4671@sirena.org.uk>
 References: <cover.1591802243.git.vaibhav.sr@gmail.com>
  <20200610173711.GK5005@sirena.org.uk>
- <20200610182322.GC21465@gmail.com>
+ <20200610180118.GZ3720@piout.net>
 MIME-Version: 1.0
-In-Reply-To: <20200610182322.GC21465@gmail.com>
+In-Reply-To: <20200610180118.GZ3720@piout.net>
 X-Cookie: I like your SNOOPY POSTER!!
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -68,70 +68,52 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, alsa-devel@alsa-project.org,
- Alex Elder <elder@kernel.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Greer <mgreer@animalcreek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Takashi Iwai <tiwai@suse.com>,
- Jaroslav Kysela <perex@perex.cz>, greybus-dev@lists.linaro.org,
- Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============8832314157513235345=="
+ Alex Elder <elder@kernel.org>, Vaibhav Agarwal <vaibhav.sr@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mark Greer <mgreer@animalcreek.com>, Takashi Iwai <tiwai@suse.com>,
+ greybus-dev@lists.linaro.org, Johan Hovold <johan@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============2071751787773542114=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============8832314157513235345==
+--===============2071751787773542114==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Dxnq1zWXvFF0Q93v"
+	protocol="application/pgp-signature"; boundary="Yylu36WmvOXNoKYn"
 Content-Disposition: inline
 
 
---Dxnq1zWXvFF0Q93v
+--Yylu36WmvOXNoKYn
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jun 10, 2020 at 11:53:24PM +0530, Vaibhav Agarwal wrote:
+On Wed, Jun 10, 2020 at 08:01:18PM +0200, Alexandre Belloni wrote:
 
-> With patch#6 in this series, I'm proposing some of the (dummy) helper=20
-> APIs required to link DAPM DAI widgets for the GB Audio modules=20
-> added/removed dynamically.
+> My point was that if we were to keep that driver, the goal would be to
+> have it out of staging instead of simply making it compile.
 
-> Eventually, I would like to propose relevant changes in snd-soc APIs to=
-=20
-> enable dynamic linking of DAI widgets for the modules added and=20
-> remove/free component controls for the module removed.
+Yes, definitely - that should be the goal for anything in staging.
 
-> I'm seeking your opinion on the proposed changes. And as per the=20
-> recommendation I'm sharing the changes with ASoC mailing list as well.
-
-These are proposed incremental changes to an out of tree driver that has
-never been submitted.  I don't know what the current code looks like,
-what it's supposed to be doing or anything like that so I've no idea
-what's going on or why.
-
-> Kindly suggest me the preferred way to follow on this thread.=20
-
-This is effectively out of tree code, until someone submits it properly
-I'm not sure it's useful to submit incremental patches upstream.
-
---Dxnq1zWXvFF0Q93v
+--Yylu36WmvOXNoKYn
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl7h6qcACgkQJNaLcl1U
-h9ClMQf5AfzPskdM7GJn5Lf8DIJciRGrA08Te9rvY3eabhXU4aiMCp9lBF1prenp
-QGLxYB+mW1bdfMOqVwzmQlVKZ6OtZ9IinlKhqWn6cea9eWK3aGo8uaGjp3H8tJp1
-HYpMyoBfCedLFxL/YGlhxn2yj5k++pPtDS+6NwEYuec1FV3k46hzKfmzr5BJzgcp
-LYLZT8n/3S+AJoCb7NRY07Ptz1+Qev16y+Ta45oolFnFceewDJ+jxt4w7+BLVwJt
-rAchPXSGY0SgPhSDu/hPcKODETZ7O2UloPGht/R5SG8Fzabg6ngJqujyawqzDddL
-TYo4fg6SQ2NWig21RJ9+2byMqNbgPg==
-=yLco
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl7h7j8ACgkQJNaLcl1U
+h9B1NQf/eAOKPLkgcd+pMevL+wJlH7JsRYzk65f9i97F+wSsVXn1QDXkKiiOR1bD
+rkFO3C0++31H/brsYSkLpsxhMtika0T1WqwxskXs5xER584Xt9SEfONh6yX7Uzyq
+Recbx5h8Hwq16z0jC2SAemnXl2pbz5LMQYGIPP9jj6gRY4KImCCSqPbl763oYHKE
+jvUH4vyHODWSzAmSYqGv3lIkRE/oZbcNKatDxgPzFrcXFilmuZt/hRt+PPQ5vtiK
+r/9vWSGxW/UO6K39svmHjEMOQXtGC8S70/GT1ODLxesgEqRX3NCHZAuWR3TOFfM4
+nHoamPxEb2LydXYOKZmETMIlngmTcw==
+=nIE1
 -----END PGP SIGNATURE-----
 
---Dxnq1zWXvFF0Q93v--
+--Yylu36WmvOXNoKYn--
 
---===============8832314157513235345==
+--===============2071751787773542114==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -142,4 +124,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============8832314157513235345==--
+--===============2071751787773542114==--
