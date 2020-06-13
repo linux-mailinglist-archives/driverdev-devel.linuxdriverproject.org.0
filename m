@@ -1,71 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34EF31F83F7
-	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Jun 2020 17:37:22 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DEEA1F8475
+	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Jun 2020 19:37:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BD68B87B1F;
-	Sat, 13 Jun 2020 15:37:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F01252153B;
+	Sat, 13 Jun 2020 17:37:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2eb4gpQCeeTX; Sat, 13 Jun 2020 15:37:19 +0000 (UTC)
+	with ESMTP id FVeKa8A8BKyu; Sat, 13 Jun 2020 17:37:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A1CA087330;
-	Sat, 13 Jun 2020 15:37:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5CC6B21505;
+	Sat, 13 Jun 2020 17:37:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 13E861BF2EF
- for <devel@linuxdriverproject.org>; Sat, 13 Jun 2020 15:37:17 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C2EE1BF616
+ for <devel@linuxdriverproject.org>; Sat, 13 Jun 2020 17:37:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0F8E5882C7
- for <devel@linuxdriverproject.org>; Sat, 13 Jun 2020 15:37:17 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 87A6B8890B
+ for <devel@linuxdriverproject.org>; Sat, 13 Jun 2020 17:37:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kb-Tmj8A1YEP for <devel@linuxdriverproject.org>;
- Sat, 13 Jun 2020 15:37:16 +0000 (UTC)
+ with ESMTP id shJzbCvFqD0m for <devel@linuxdriverproject.org>;
+ Sat, 13 Jun 2020 17:37:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic306-20.consmr.mail.gq1.yahoo.com
- (sonic306-20.consmr.mail.gq1.yahoo.com [98.137.68.83])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9DDD8882BE
- for <devel@driverdev.osuosl.org>; Sat, 13 Jun 2020 15:37:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1592062636; bh=EdQ6J0sRRv3XBxt3j7IlulUVvRg4uKdicik//r5GkY8=;
- h=Date:From:Reply-To:To:Subject:References:From:Subject;
- b=hgXkWVa9fvC6PxSuomiSXx7SSHJ9NUGAfReAeLKT98CSBkNq1BQ3DgzwTYT+PmtUrb2TznLjQcb5bydseTjM+yOZcH6XOEaSVDs1a5tJu0LCMegN+4IEbxBGk02V6omKzGlT8kHLRY4yKUBdPwzNPl3furLxPSuapUE81UgvnzK0O4U2arA8bfwLRJI8pFrZ3wfg4wZhYrSigb+/CkwAHz6CkG0IFd1KNXdZ3OHCDaby/xtJY8TYfGLXR6JuUbKLAeKAIIbKJeugpDE548iV5kBKFMSQAv+HssEFwuhCm2oewMxmyzVpO+rMAi7t/ZCb9TlJRUoEAz+d3wHDiEhtgQ==
-X-YMail-OSG: bPMiqXgVM1kaz47SqK9MOUmnJbg1x_zCob5ClTnd6mNhvOtfl7CpTbd6WFFYKWm
- N02F9Mk_5BHm.XQeHwPt97BMGv.NcPaLRVEi4MBdeUHhw7MSo60wPstoFoHDGHJy3MPOxqbAESWP
- YIyvPTnsZehMYChNsC1CLHk0z72n3AYVisCVXvKPT9B928QHczShIaAfvVX8VYYe_DWNKQEdgb7Y
- MAuogipQ.d2Bx_z3MNRJcDCaRt7hM7THE6qbdjTu9itVJThkmV3GdBpkWmOApZKYjp3reV71.8sQ
- mZgh9Myd3qvEZKwn8Yhme3SiaAn5X4grO2cMY4bF17NsgL85YisK_fHwK6P9xM1gkFXN9uT74Fwx
- eF_5UljzY0AepExWUHWvgX8.6l67t4Pz4cqH2VNTxruH.ff7v7BZJcY4E8jp4Izz.3xq4xUULvGE
- fYWaoOr6ILcAfEKKZwFtb0i2exz_5c8dtx9L2t3y3tU3rMTa5K19pfI6nIfki7zRtZlfwag203au
- Pm2bo1A.5boOvMzNVlQ3rVHX9P3NDFbrL39jJxPsnUxkmtoTLiOAZyFUPEiisIowP0e9bP8kRbOS
- M3SZRzmuGWxJVExaMF8CUZvTC4rBfUxa0b4zZnATTlCvcSJvGfAFdkqNt6nYJSoS32daso_cdpqO
- FkgheooSIoTg3Sr_fZdWL9PprBCJ9wSqhPmpv.buSzmcKqbY_0W5oUnfnc.lekVC1cFXoXP1Y51G
- ZkGUb._GzTE7sUmFb9krNugOUFuQlphoYVdqEA56LvHLIhAKWDUsaMQiTKUu86EfAJ_QjK3ps45_
- mBxLvdFlACMiQ0bc3h9BQryoIFO4P1rgamQkzZ99hS9M0mMKqlbijtcUkblu76WFlWWfGS8Y4F7w
- QX5JSNIy4R5shFecYLJEI2kDduAKp80o9xOZACf9K8QiZkUUHyZgwulFQXZKnSKKbiuek5igc7sE
- Lt.73acGpgErY9JIUgWiNv8zWMrf.75zVlztc9_gVERJhWucrdUFPuMamPbh1Vpj.sk9gxyvGGZ.
- RFGov2rP.FC8epEzDKIqmee6sh.SebwDoptEQ6avwjz0QAFfYdd9rKv0rWx1zYB50jqxeypqwdoY
- Nezn9bPQwGntr9U_kMWQV69Xzcd3HN05XgyuIP7njaQhhc_XkySYiXK8Q62dGEqoIc.TQfde5zVi
- vELp3G41NmvOTpH752sTX7EydG1KPbwb5rES4L2e8RhKR_GJg_32sjcTnk4WFODpSq6TEF1uJn.d
- M3v9D5RIYfWeIN4SJWeHptSEqeEfhNLgBBVFVDokVXs.Mgo7DnFK5jrHHQWnE7w--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic306.consmr.mail.gq1.yahoo.com with HTTP; Sat, 13 Jun 2020 15:37:16 +0000
-Date: Sat, 13 Jun 2020 15:37:11 +0000 (UTC)
-From: Rose Gomo <rose_gomo101@yahoo.com>
-To: rose_gomo101@yahoo.com
-Message-ID: <1421986951.272985.1592062631383@mail.yahoo.com>
-Subject: Dear Good Friend.
+Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
+ [209.85.216.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9CA11888DE
+ for <devel@driverdev.osuosl.org>; Sat, 13 Jun 2020 17:37:15 +0000 (UTC)
+Received: by mail-pj1-f68.google.com with SMTP id i4so5199947pjd.0
+ for <devel@driverdev.osuosl.org>; Sat, 13 Jun 2020 10:37:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=7hwEyyxwUYdF2Guu+e/vMTnzyE7eAhVBBsibSIizD8I=;
+ b=ZK3+qRQ9MEgzaQnN0sw5cx1VU8LUSl6sYcO1FgxX0/z+6z4802WNxcKc1SToc+Dpdx
+ Oa3hXj2d+tz9W4Yo9N9WfOwy4jR54GMTrsYzTrazR/MCA1T2/f0fXuMADHlEfv8aboFH
+ zLZxrJGblUY3cuiGsske4xmoJTgpBCprbZVhplNFzdnaCXMwfyYMXlGme8HVI+Sk6uv4
+ AoOTT5pytSEx8cBR4hsjIy1uXARh5PNEfeBn25YWaVDevjuPIP59EW36ilfbCgfQxm5j
+ QQIZzlcV7DlSleYRzGoWJ8nhld0I0HtVnPPgz3c8UqZElPKaMUBAE1WGHuyza58tGghk
+ CuoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=7hwEyyxwUYdF2Guu+e/vMTnzyE7eAhVBBsibSIizD8I=;
+ b=dfB/XO7DNsHC0k/7phqiLswUidBF9qvaDmHSMkJQCff6GyxAko04+83DVas4Mjl2KD
+ Emm1e1R3ptlNtbBsn2lPwODd76oEdza3mmGahtPua/b678TTh6p+flupQrLbZGcbNyFm
+ FoLkxOcwqGvECWbWQjhS2ekJ3Md9oZ9rGlAjWDltmwd2/hWRlHwjSRMbLQnacap+pqSg
+ 8lEcvQefjHynnQzfITd4YnIDNv6M0i+DptkzuYPA6kBrsXa3c3EtjBE1d3h2m2uSbpTT
+ 1CjWf4R0m7bxyNeqez/kCK6mKHf1JQu2KBTYyM/0rdwZ0G4ZVoGhCv889YjB7kAAh04K
+ 3SEg==
+X-Gm-Message-State: AOAM530DNeeCDdnFTHBYt+uSWViWKzpH49NTXU3Oi/ISTcjzHUR1RQ+A
+ IwFdHJV5n/bb9V7EhXUBgNc=
+X-Google-Smtp-Source: ABdhPJxYsfjAFdm78oynRBxtOMyhELttPaW0N0G0PuldldL+YPOprKPLiuk5Bl3IXWBnbWB6DhakbA==
+X-Received: by 2002:a17:90a:aa8f:: with SMTP id
+ l15mr4546515pjq.211.1592069835215; 
+ Sat, 13 Jun 2020 10:37:15 -0700 (PDT)
+Received: from ASMDT.1 ([114.125.253.62])
+ by smtp.gmail.com with ESMTPSA id y7sm9321768pfq.43.2020.06.13.10.37.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 13 Jun 2020 10:37:14 -0700 (PDT)
+To: gregkh@linuxfoundation.org
+From: Dio Putra <dioput12@gmail.com>
+Subject: [PATCH] staging: android: ashmem.c: Cleanup
+Message-ID: <4ba43a70-c29f-6c41-9c81-66a25b0432af@gmail.com>
+Date: Sun, 14 Jun 2020 00:37:09 +0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-References: <1421986951.272985.1592062631383.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16119 YMailNodin Mozilla/4.0 (compatible; MSIE 8.0;
- Windows NT 6.1; Trident/4.0; GTB7.5; SLCC2; .NET CLR 2.0.50727;
- .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,20 +86,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: rose_gomo101@yahoo.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, tkjos@android.com, linux-kernel@vger.kernel.org,
+ arve@android.com, joel@joelfernandes.org, maco@android.com,
+ christian@brauner.io
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciBHb29kIEZyaWVuZC4KClBsZWFzZSBjYW4geW91IGhlbHAgbWUgdG8gcmVjZWl2ZSB0aGUg
-ZnVuZCBJIGluaGVyaXRlZCBmcm9tIG15IGZhdGhlciB0byB5b3VyIGFjY291bnQgaW4geW91ciBj
-b3VudHJ5IGZvciBidXNpbmVzcyBpbnZlc3RtZW50PyBSaWdodCBub3cgdGhlIGZ1bmQgaXMgaW4g
-dGhlIGJhbmsgaGVyZSB3aGVyZSBteSBmYXRoZXIgZGVwb3NpdGVkIGl0IGJlZm9yZSBoZSBkaWVk
-IGFuZCB0aGUgYW1vdW50IGlzIOKCrDIuNW1pbGxpb24gRXVyb3MgKFR3byBNaWxsaW9uIEZpdmUg
-SHVuZHJlZCBUaG91c2FuZCBFdXJvcykKClBsZWFzZSBpZiB5b3UgYXJlIGludGVyZXN0ZWQgeW91
-IGNhbiBjb250YWN0IG1lIGFzIHNvb24gYXMgcG9zc2libGUgZm9yIG1vcmUgZGV0YWlscy4KCkJl
-c3QgcmVnYXJkcwpSb3NlIEdvbW8uCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qu
-b3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaXZlcmRldi1kZXZlbAo=
+Minor cleanup to make file_operations const once again.
+
+Signed-off-by: Dio Putra <dioput12@gmail.com>
+---
+ drivers/staging/android/ashmem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+base-commit: aa5af974127d317071d6225a0f3678c5f520e7ce
+diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
+index 8044510d8ec6..fbb6ac9ba1ab 100644
+--- a/drivers/staging/android/ashmem.c
++++ b/drivers/staging/android/ashmem.c
+@@ -367,7 +367,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
+ 
+ static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
+ {
+-	static struct file_operations vmfile_fops;
++	static const struct file_operations vmfile_fops;
+ 	struct ashmem_area *asma = file->private_data;
+ 	int ret = 0;
+ 
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
