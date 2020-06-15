@@ -1,91 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 457691F9F11
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jun 2020 20:08:41 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F05A1F9F7A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jun 2020 20:40:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E04FE24FFE;
-	Mon, 15 Jun 2020 18:08:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5C62586B60;
+	Mon, 15 Jun 2020 18:40:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id saQaXlaNOiOx; Mon, 15 Jun 2020 18:08:38 +0000 (UTC)
+	with ESMTP id YSAtVSoVjyWf; Mon, 15 Jun 2020 18:40:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8DB8B23335;
-	Mon, 15 Jun 2020 18:08:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D85E586ACA;
+	Mon, 15 Jun 2020 18:40:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8C7141BF3FB
- for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 18:08:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C41BF1BF3FB
+ for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 18:40:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7DDB820443
- for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 18:08:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id ACB5D24F76
+ for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 18:40:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DQrDFQqBIEEd for <devel@linuxdriverproject.org>;
- Mon, 15 Jun 2020 18:08:32 +0000 (UTC)
+ with ESMTP id VYjyOUtYdL8Y for <devel@linuxdriverproject.org>;
+ Mon, 15 Jun 2020 18:40:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by silver.osuosl.org (Postfix) with ESMTPS id 39B1220426
- for <devel@driverdev.osuosl.org>; Mon, 15 Jun 2020 18:08:32 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05FI7hca026496;
- Mon, 15 Jun 2020 18:08:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=EdV85x/l0ZQB7qs/RGol05XelTO/TGwy+i5Nwcf8gRM=;
- b=ksIm2T40o14OrDnPOVl41oLfXflESyB3DKHmSrY07W8hiE/Z7QLC5o1aUTaHPRbSwzbu
- 9c0NwLH9cAIIrEop8mGTFh8G1XGbz9PddITo/iGjFqouwLRZRmyMPkuv312Tprpn0qqE
- vsgCBz56dXPpSbVxKCQXClzuApbPztWVszZo40Z9/pDvMf5EwgQrvvf51uoX9UnrZp3o
- w/4xkBk0XXZDlc2YcrCzTOExgRGYIv3Y4giKzpy8SzyD0DJs8FkiFKoy2usbln1dH7C7
- /e2gagyqK7O847BIeVNSzHbKNPgl/68telPWwh1LacJqZVCnTiRrQlKn7a2GbDXIJ48j 0Q== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 31p6s22cke-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 15 Jun 2020 18:08:31 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05FHwvkZ051587;
- Mon, 15 Jun 2020 18:08:30 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 31p6de1e1n-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 15 Jun 2020 18:08:30 +0000
-Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 05FI8G7g031730;
- Mon, 15 Jun 2020 18:08:17 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 15 Jun 2020 11:08:15 -0700
-Date: Mon, 15 Jun 2020 21:07:53 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Waiman Long <longman@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8870224E4B
+ for <devel@driverdev.osuosl.org>; Mon, 15 Jun 2020 18:40:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592246429;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3LdVapGy9WTsAkwpfNEzCTfQe3Pij8/lM5ySXZsHExs=;
+ b=OvjaSOOCfyp307NW0Ll0v8HBOtktVG83FBcqFzJ1QSR5rShNapnPdRP4kax9ApS19ZA8eP
+ zODD4GVwCIlP6FCFeiKCeDK6hOgdKoUvRXwL2J6jdxsT+heXdTtquL9P+XZptqtG1ekpr3
+ 29TEnsoBdGPs2biowVKGBTC+bNdH1ac=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-513-n3G_ZfGUONug8wkjJytxqA-1; Mon, 15 Jun 2020 14:40:12 -0400
+X-MC-Unique: n3G_ZfGUONug8wkjJytxqA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E5F43184D144;
+ Mon, 15 Jun 2020 18:40:06 +0000 (UTC)
+Received: from llong.remote.csb (ovpn-117-41.rdu2.redhat.com [10.10.117.41])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3972B5D9CC;
+ Mon, 15 Jun 2020 18:40:00 +0000 (UTC)
 Subject: Re: [PATCH 1/2] mm, treewide: Rename kzfree() to kfree_sensitive()
-Message-ID: <20200615180753.GJ4151@kadam>
+To: Dan Carpenter <dan.carpenter@oracle.com>
 References: <20200413211550.8307-1-longman@redhat.com>
- <20200413211550.8307-2-longman@redhat.com>
+ <20200413211550.8307-2-longman@redhat.com> <20200615180753.GJ4151@kadam>
+From: Waiman Long <longman@redhat.com>
+Organization: Red Hat
+Message-ID: <9d084be2-29a3-7757-9386-20dbaeb5fc24@redhat.com>
+Date: Mon, 15 Jun 2020 14:39:59 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200413211550.8307-2-longman@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=2
- adultscore=0 bulkscore=0
- phishscore=0 malwarescore=0 spamscore=0 mlxlogscore=930 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006150134
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 impostorscore=0
- clxscore=1011 mlxscore=0 mlxlogscore=944 priorityscore=1501 phishscore=0
- malwarescore=0 suspectscore=2 spamscore=0 cotscore=-2147483648 bulkscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006150135
+In-Reply-To: <20200615180753.GJ4151@kadam>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,57 +102,63 @@ Cc: linux-cifs@vger.kernel.org, linux-wireless@vger.kernel.org,
  Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>,
  linux-wpan@vger.kernel.org, wireguard@lists.zx2c4.com,
  linux-ppp@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Apr 13, 2020 at 05:15:49PM -0400, Waiman Long wrote:
-> diff --git a/mm/slab_common.c b/mm/slab_common.c
-> index 23c7500eea7d..c08bc7eb20bd 100644
-> --- a/mm/slab_common.c
-> +++ b/mm/slab_common.c
-> @@ -1707,17 +1707,17 @@ void *krealloc(const void *p, size_t new_size, gfp_t flags)
->  EXPORT_SYMBOL(krealloc);
->  
->  /**
-> - * kzfree - like kfree but zero memory
-> + * kfree_sensitive - Clear sensitive information in memory before freeing
->   * @p: object to free memory of
->   *
->   * The memory of the object @p points to is zeroed before freed.
-> - * If @p is %NULL, kzfree() does nothing.
-> + * If @p is %NULL, kfree_sensitive() does nothing.
->   *
->   * Note: this function zeroes the whole allocated buffer which can be a good
->   * deal bigger than the requested buffer size passed to kmalloc(). So be
->   * careful when using this function in performance sensitive code.
->   */
-> -void kzfree(const void *p)
-> +void kfree_sensitive(const void *p)
->  {
->  	size_t ks;
->  	void *mem = (void *)p;
-> @@ -1725,10 +1725,10 @@ void kzfree(const void *p)
->  	if (unlikely(ZERO_OR_NULL_PTR(mem)))
->  		return;
->  	ks = ksize(mem);
-> -	memset(mem, 0, ks);
-> +	memzero_explicit(mem, ks);
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-This is an unrelated bug fix.  It really needs to be pulled into a
-separate patch by itself and back ported to stable kernels.
+On 6/15/20 2:07 PM, Dan Carpenter wrote:
+> On Mon, Apr 13, 2020 at 05:15:49PM -0400, Waiman Long wrote:
+>> diff --git a/mm/slab_common.c b/mm/slab_common.c
+>> index 23c7500eea7d..c08bc7eb20bd 100644
+>> --- a/mm/slab_common.c
+>> +++ b/mm/slab_common.c
+>> @@ -1707,17 +1707,17 @@ void *krealloc(const void *p, size_t new_size, gfp_t flags)
+>>   EXPORT_SYMBOL(krealloc);
+>>   
+>>   /**
+>> - * kzfree - like kfree but zero memory
+>> + * kfree_sensitive - Clear sensitive information in memory before freeing
+>>    * @p: object to free memory of
+>>    *
+>>    * The memory of the object @p points to is zeroed before freed.
+>> - * If @p is %NULL, kzfree() does nothing.
+>> + * If @p is %NULL, kfree_sensitive() does nothing.
+>>    *
+>>    * Note: this function zeroes the whole allocated buffer which can be a good
+>>    * deal bigger than the requested buffer size passed to kmalloc(). So be
+>>    * careful when using this function in performance sensitive code.
+>>    */
+>> -void kzfree(const void *p)
+>> +void kfree_sensitive(const void *p)
+>>   {
+>>   	size_t ks;
+>>   	void *mem = (void *)p;
+>> @@ -1725,10 +1725,10 @@ void kzfree(const void *p)
+>>   	if (unlikely(ZERO_OR_NULL_PTR(mem)))
+>>   		return;
+>>   	ks = ksize(mem);
+>> -	memset(mem, 0, ks);
+>> +	memzero_explicit(mem, ks);
+>          ^^^^^^^^^^^^^^^^^^^^^^^^^
+> This is an unrelated bug fix.  It really needs to be pulled into a
+> separate patch by itself and back ported to stable kernels.
+>
+>>   	kfree(mem);
+>>   }
+>> -EXPORT_SYMBOL(kzfree);
+>> +EXPORT_SYMBOL(kfree_sensitive);
+>>   
+>>   /**
+>>    * ksize - get the actual amount of memory allocated for a given object
+> regards,
+> dan carpenter
+>
+Thanks for the suggestion. I will break it out and post a version soon.
 
->  	kfree(mem);
->  }
-> -EXPORT_SYMBOL(kzfree);
-> +EXPORT_SYMBOL(kfree_sensitive);
->  
->  /**
->   * ksize - get the actual amount of memory allocated for a given object
+Cheers,
+Longman
 
-regards,
-dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
