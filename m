@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D2AC1FA145
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jun 2020 22:19:00 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C36241FA16C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jun 2020 22:27:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 42AE888846;
-	Mon, 15 Jun 2020 20:18:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 726EC24BF8;
+	Mon, 15 Jun 2020 20:27:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wrHUOWgvyGVL; Mon, 15 Jun 2020 20:18:58 +0000 (UTC)
+	with ESMTP id 8ZVXdg73+eYi; Mon, 15 Jun 2020 20:27:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9C25B88773;
-	Mon, 15 Jun 2020 20:18:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2A42E203BA;
+	Mon, 15 Jun 2020 20:27:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F11F71BF3CA
- for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 20:18:55 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 03ECA1BF3CA
+ for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 20:27:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E227787D87
- for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 20:18:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E13FB203AE
+ for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 20:27:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id u-P3G5bQkKTr for <devel@linuxdriverproject.org>;
- Mon, 15 Jun 2020 20:18:55 +0000 (UTC)
+ with ESMTP id FrndORiCbl3f for <devel@linuxdriverproject.org>;
+ Mon, 15 Jun 2020 20:27:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 08FAF87D47
- for <devel@driverdev.osuosl.org>; Mon, 15 Jun 2020 20:18:54 +0000 (UTC)
-IronPort-SDR: ZHcRfVpSmmYidLSUAMO1saD2g3F65k4TJRlvGhSnEupmf9jpBR3J3ARppes+25/4eYddwhyuXo
- s+ifGmzokwWA==
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9C71C203AB
+ for <devel@driverdev.osuosl.org>; Mon, 15 Jun 2020 20:27:15 +0000 (UTC)
+IronPort-SDR: 3O1JLa+wQU7R6Wb4YP2hHdBqyxPOqqBzo8pseJekJDfQyPBr8Ntk88K5olTYKMQ9IpYTPMIIix
+ 2mU3buGdsivw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2020 13:18:54 -0700
-IronPort-SDR: aRt+VxMG5V0GnUuR1s7YPUwehGQv8G/Eq67xHTSFkqKhq3CWiljiMxbs1e8mSvsnb+z395Dmgy
- jpAIoOb1Fuew==
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2020 13:27:14 -0700
+IronPort-SDR: iMKpO246HE/WqsWlbLCbcb+iB1aS25T+fZOJR5T2Rp1DI1+eRiXCj4aRXbUJuCCFJGyQTxwuzV
+ V9ndyAQzSmtA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,516,1583222400"; d="scan'208";a="290815986"
+X-IronPort-AV: E=Sophos;i="5.73,516,1583222400"; d="scan'208";a="261202321"
 Received: from lkp-server02.sh.intel.com (HELO ec7aa6149bd9) ([10.239.97.151])
- by orsmga002.jf.intel.com with ESMTP; 15 Jun 2020 13:18:52 -0700
+ by fmsmga007.fm.intel.com with ESMTP; 15 Jun 2020 13:27:13 -0700
 Received: from kbuild by ec7aa6149bd9 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1jkvZE-0000C0-6V; Mon, 15 Jun 2020 20:18:52 +0000
-Date: Tue, 16 Jun 2020 04:18:21 +0800
+ id 1jkvhI-0000Ck-Gk; Mon, 15 Jun 2020 20:27:12 +0000
+Date: Tue, 16 Jun 2020 04:26:16 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:readfile] BUILD SUCCESS
- fd5cf2d6f921ca0f8f777d8833a0a3e5100bc515
-Message-ID: <5ee7d78d.Np/+1pDwhkSGQR4V%lkp@intel.com>
+Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
+ 8b905726a5dd443ac67f92fe9d4768335f19332d
+Message-ID: <5ee7d968.EZT8jFnq9FoGbUBH%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,25 +73,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  readfile
-branch HEAD: fd5cf2d6f921ca0f8f777d8833a0a3e5100bc515  selftests: add readfile(2) selftests
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  debugfs_cleanup
+branch HEAD: 8b905726a5dd443ac67f92fe9d4768335f19332d  debugfs: remove return value of debugfs_create_devm_seqfile()
 
-elapsed time: 483m
+elapsed time: 487m
 
-configs tested: 98
+configs tested: 103
 configs skipped: 1
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
 
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
 arm64                            allyesconfig
 arm64                               defconfig
 arm64                            allmodconfig
 arm64                             allnoconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm                             pxa_defconfig
+um                           x86_64_defconfig
+mips                      pic32mzda_defconfig
+arm                       versatile_defconfig
+ia64                      gensparse_defconfig
 i386                              allnoconfig
 i386                             allyesconfig
 i386                                defconfig
