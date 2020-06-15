@@ -1,61 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44B3D1F96A0
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jun 2020 14:35:00 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 998981F96AC
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jun 2020 14:36:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9F97A86DCC;
-	Mon, 15 Jun 2020 12:34:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C673424F51;
+	Mon, 15 Jun 2020 12:36:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g4LKFOQw01VP; Mon, 15 Jun 2020 12:34:57 +0000 (UTC)
+	with ESMTP id 62MKvKJsIqYO; Mon, 15 Jun 2020 12:36:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8EEBD86C67;
-	Mon, 15 Jun 2020 12:34:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D6A062314A;
+	Mon, 15 Jun 2020 12:36:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A3C6E1BF420
- for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 12:34:54 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2DFA91BF420
+ for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 12:36:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9FFF786DCB
- for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 12:34:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2AB5987FDA
+ for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 12:36:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Te-sIEqdChHs for <devel@linuxdriverproject.org>;
- Mon, 15 Jun 2020 12:34:52 +0000 (UTC)
+ with ESMTP id 57V3biiJu2cR for <devel@linuxdriverproject.org>;
+ Mon, 15 Jun 2020 12:36:52 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7099386C67
- for <devel@driverdev.osuosl.org>; Mon, 15 Jun 2020 12:34:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A15C487FC8
+ for <devel@driverdev.osuosl.org>; Mon, 15 Jun 2020 12:36:52 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A97A02076A;
- Mon, 15 Jun 2020 12:34:51 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id E323B206D7;
+ Mon, 15 Jun 2020 12:36:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592224492;
- bh=pNOetLVtZRG2fbCc3C2vy0lTqxav4Zkaq+VhJKAi9xs=;
+ s=default; t=1592224612;
+ bh=MLaz9Lh1fa6o0lqJXRQNSErh5KCNk+V5uBZbIEvmyBA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bYQoNejN7Wl6z1zgAQEittcbfoy14EFCmsV9ZNIch7IpLkTEorON1IXETisNTSpbJ
- /46VDugqsbns3ihaOeFhTIp7Hd5u91327GzSjt/ysVzrtnvA3VuUhyR1wYnmo2ogaK
- qUTn21WrXp9UzkJC1xE7ZZKqkvsGGGAipgCioVCs=
-Date: Mon, 15 Jun 2020 14:34:39 +0200
+ b=f5wM4r/qTZh2Gd/MrVZAAxieeBAcKNrUg01uSmxjMC3u5RYWnyavygGbZTl2XKqaA
+ e1/gA37Wvyg0cZw1jS5WU7VPSXJaVsvVe65KEHAyGQSs9Xk1CNBM5PBNL6wO/fcT2Y
+ XP5kUxvdiMdB0Iqkmm5M5/BRDNTGHrz5i2N4kJwo=
+Date: Mon, 15 Jun 2020 14:36:39 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Ricardo Ferreira <rikajff@gmail.com>
-Subject: Re: [PATCH] Staging: rtl8712: Addressed checkpatch.pl issues related
- to macro parameter wrapping in parentheses.
-Message-ID: <20200615123439.GB943330@kroah.com>
-References: <20200614135125.19502-1-rikajff@gmail.com>
- <20200614140531.GA2661398@kroah.com>
- <CACtES-qmpRJ2mk+1vhsJm55G6j6U1+rLB1t2izHwJ1u4_eUKHw@mail.gmail.com>
+Subject: Re: [PATCH v2] Staging: rtl8712: Addressed checkpatch.pl issues
+ related to macro parameter wrapping in parentheses.
+Message-ID: <20200615123639.GC943330@kroah.com>
+References: <20200614173146.28292-1-rikajff@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CACtES-qmpRJ2mk+1vhsJm55G6j6U1+rLB1t2izHwJ1u4_eUKHw@mail.gmail.com>
+In-Reply-To: <20200614173146.28292-1-rikajff@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,8 +68,7 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org,
  Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ linux-kernel@vger.kernel.org, Nishka Dasgupta <nishkadg.linux@gmail.com>,
  Dan Carpenter <dan.carpenter@oracle.com>,
  Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
@@ -79,40 +76,21 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Jun 15, 2020 at 10:28:51AM +0100, Ricardo Ferreira wrote:
-> On Sun, 14 Jun 2020 at 15:05, Greg Kroah-Hartman
-> <gregkh@linuxfoundation.org> wrote:
-> >
-> > On Sun, Jun 14, 2020 at 02:51:25PM +0100, Ricardo Ferreira wrote:
-> > >  #define init_h2fwcmd_w_parm_no_rsp(pcmd, pparm, code) \
-> > >  do {\
-> > > -     INIT_LIST_HEAD(&pcmd->list);\
-> > > -     pcmd->cmdcode = code;\
-> > > -     pcmd->parmbuf = (u8 *)(pparm);\
-> > > -     pcmd->cmdsz = sizeof(*pparm);\
-> > > -     pcmd->rsp = NULL;\
-> > > -     pcmd->rspsz = 0;\
-> > > +     INIT_LIST_HEAD(&(pcmd)->list);\
-> > > +     (pcmd)->cmdcode = code;\
-> > > +     (pcmd)->parmbuf = (u8 *)((pparm));\
-> > > +     (pcmd)->cmdsz = sizeof(*(pparm));\
-> > > +     (pcmd)->rsp = NULL;\
-> > > +     (pcmd)->rspsz = 0;\
-> > >  } while (0)
-> >
-> > Does that change really make any sense?  checkpatch is a nice hint,
-> > sometimes it is not correct...
+On Sun, Jun 14, 2020 at 06:31:46PM +0100, Ricardo Ferreira wrote:
+> Attempting to wet my feet in kernel patch submission by submitting a checkstyle
+> fix for the rtl8712 driver.
 > 
-> (Replying again since I mistakenly sent my comments only to Greg...)
-> 
-> Yeah I was over-eager and applied some of checkpatche's patches
-> without thinking twice... I guess the parenthesis wrapping only makes
-> sense when you have an operator (either binary or unary). I've
-> rechecked each macro identified by checkpatch to see if there is a
-> need for parenthesis wrapping in their current usage.
+> Signed-off-by: Ricardo Ferreira <rikajff@gmail.com>
+> ---
 
-Yes, please do that, and also test-build your patches.  Sending patches
-that break the build are a sure way to make maintainers grumpy :)
+What changed from v1?
+
+Always put that below the --- line, so please fix this up and do a v3.
+
+Also, your changelog text is very odd, do you see other commits in the
+kernel for these files that say things that way?  Please try to follow
+how others do things.  Also read the documentation for how to make a
+good changelog text, that will help out a lot.
 
 thanks,
 
