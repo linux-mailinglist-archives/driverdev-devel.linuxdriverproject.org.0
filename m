@@ -1,61 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C81B1F8D5D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jun 2020 07:43:21 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E3501F9360
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Jun 2020 11:29:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7DDAA241A8;
-	Mon, 15 Jun 2020 05:43:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C3DEB886F8;
+	Mon, 15 Jun 2020 09:29:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qm3QMvMI7IO2; Mon, 15 Jun 2020 05:43:18 +0000 (UTC)
+	with ESMTP id Puq+yxEXtWhZ; Mon, 15 Jun 2020 09:29:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3F49224981;
-	Mon, 15 Jun 2020 05:43:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 85630882B5;
+	Mon, 15 Jun 2020 09:29:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1B4B91BF97D
- for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 05:43:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 898171BF4E6
+ for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 09:29:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 07DBB240DF
- for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 05:43:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 79A5824A75
+ for <devel@linuxdriverproject.org>; Mon, 15 Jun 2020 09:29:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wbbAp3spVdOJ for <devel@linuxdriverproject.org>;
- Mon, 15 Jun 2020 05:43:07 +0000 (UTC)
+ with ESMTP id Uw1DB4wfO+Sz for <devel@linuxdriverproject.org>;
+ Mon, 15 Jun 2020 09:29:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 565B020434
- for <devel@driverdev.osuosl.org>; Mon, 15 Jun 2020 05:43:07 +0000 (UTC)
-Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
- [95.90.213.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D627F2070E;
- Mon, 15 Jun 2020 05:43:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592199787;
- bh=i+KcznjcHmFJXCMts75e4liweyEkr+LWYq1E5sBldjU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hxWwBhqMMBx3qmznipb/y2csGiLWi1WNhOYFFa/PHNKmaNcxazt6OYtWOn1lZewDg
- JfBfku8IMnhAgVsqaFPIvo+gWvgaScSJp3/C2qX16nQQ596fH1C/76oYZaIFahfVeI
- QIUt08pndiHgPuJWifq4HXp2TkNdpIrsOI3x7DP8=
-Received: from mchehab by mail.kernel.org with local (Exim 4.93)
- (envelope-from <mchehab@kernel.org>)
- id 1jkhtg-009hQx-Ni; Mon, 15 Jun 2020 07:43:04 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Linux Media Mailing List <linux-media@vger.kernel.org>
-Subject: [PATCH 2/2] media: atomisp: fix help message for ISP2401 selection
-Date: Mon, 15 Jun 2020 07:43:04 +0200
-Message-Id: <52b8bb5c7ebf039b4b7f72f250cbe897a0671b34.1592199777.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <a6fa7016f510f13ed6e31052b8bcf83e4680d899.1592199777.git.mchehab+huawei@kernel.org>
-References: <a6fa7016f510f13ed6e31052b8bcf83e4680d899.1592199777.git.mchehab+huawei@kernel.org>
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 05AFF227FC
+ for <devel@driverdev.osuosl.org>; Mon, 15 Jun 2020 09:29:04 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id u26so13659884wmn.1
+ for <devel@driverdev.osuosl.org>; Mon, 15 Jun 2020 02:29:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9EDtJNfX1SAp0MBHTf1DDs5zKPsOXN9CX0Ktu243vuw=;
+ b=sFuFpUNqWigBExkx20jCEZPeFLzamfwkmd3Fd/Id0kN+BJSI0pQipK/DaO2A3lrwMA
+ r4pb6FvIjue2bc3TDHLA11I1TH6OUg74T89Y0OMml13+StHNUHubqjFhdkfMMo4TzVz1
+ tdt0i9mG1xZF8Ifj1x4Oso7dVuQmfC9H3wWvi6OjXRdIQsoyny/UYUy1Uf+5NUObR07l
+ LtfmZPtN7+aUIl7PAqgKUmryDf+QtcyhDMLs76/30/hVtxi1PdqJBWNffbqcRInb73Fb
+ N+LRVLIPkuZvITgrdHkVq4XAFRoprFGy5aahYrY2Zl1TtuqUG7wibz0J7UvnUoU4drLQ
+ KCAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9EDtJNfX1SAp0MBHTf1DDs5zKPsOXN9CX0Ktu243vuw=;
+ b=FxmOp8QdP9lJalZezw7bC62qfMM0BjbtW413Jr4BIZw+kZUUtqbP9iwX3g7mqj6wgz
+ a1qKf6UrOFESXXNdr5us5U/nGm67yXsD9m87YoVtaSLjS7X7JNvW7kHcw442OEao6Drf
+ UjOLyicp2KoCe8OTDm/ykwit/PADprxFzGjKFdt+UX69zTd0acTavI1rsox1HrwB1USJ
+ 0UrZY4qUBTFcVnH2OM9nLnhtovml+Gk70klG39qEg0vpOveUHcVWrVprRvt4xLyJpg0S
+ KjuqkLg5Pgx0ri1NbPkSQI/5roo7OUM7e4bbTXRewG+CvmX+h+/GwHV43ejYK8E/2wp1
+ VAuw==
+X-Gm-Message-State: AOAM531PbkBMmQvItGTK5HRCG87V4rQgCowinIFG6d6SC+eleTop9AaA
+ wgc6A8fShHfPkiBDmMyrJPJsH55DVf6oMBOoq7k=
+X-Google-Smtp-Source: ABdhPJyCePymwAb915SzpAfLx2XsbhZ2ocwEbcv4PcsBnWgEQHMoHAZiY8Vqju7OcjmQszvVxsVQQkKUSvdBuewdn3U=
+X-Received: by 2002:a1c:7c0e:: with SMTP id x14mr11600752wmc.1.1592213342244; 
+ Mon, 15 Jun 2020 02:29:02 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200614135125.19502-1-rikajff@gmail.com>
+ <20200614140531.GA2661398@kroah.com>
+In-Reply-To: <20200614140531.GA2661398@kroah.com>
+From: Ricardo Ferreira <rikajff@gmail.com>
+Date: Mon, 15 Jun 2020 10:28:51 +0100
+Message-ID: <CACtES-qmpRJ2mk+1vhsJm55G6j6U1+rLB1t2izHwJ1u4_eUKHw@mail.gmail.com>
+Subject: Re: [PATCH] Staging: rtl8712: Addressed checkpatch.pl issues related
+ to macro parameter wrapping in parentheses.
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,40 +81,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: devel@driverdev.osuosl.org,
+ Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Nishka Dasgupta <nishkadg.linux@gmail.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I'm pretty sure I named this right, but it sounds that I ended
-doing something weird maybe while solving some conflict.
+On Sun, 14 Jun 2020 at 15:05, Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+>
+> On Sun, Jun 14, 2020 at 02:51:25PM +0100, Ricardo Ferreira wrote:
+> >  #define init_h2fwcmd_w_parm_no_rsp(pcmd, pparm, code) \
+> >  do {\
+> > -     INIT_LIST_HEAD(&pcmd->list);\
+> > -     pcmd->cmdcode = code;\
+> > -     pcmd->parmbuf = (u8 *)(pparm);\
+> > -     pcmd->cmdsz = sizeof(*pparm);\
+> > -     pcmd->rsp = NULL;\
+> > -     pcmd->rspsz = 0;\
+> > +     INIT_LIST_HEAD(&(pcmd)->list);\
+> > +     (pcmd)->cmdcode = code;\
+> > +     (pcmd)->parmbuf = (u8 *)((pparm));\
+> > +     (pcmd)->cmdsz = sizeof(*(pparm));\
+> > +     (pcmd)->rsp = NULL;\
+> > +     (pcmd)->rspsz = 0;\
+> >  } while (0)
+>
+> Does that change really make any sense?  checkpatch is a nice hint,
+> sometimes it is not correct...
 
-So, fix the title of this config var.
+(Replying again since I mistakenly sent my comments only to Greg...)
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- drivers/staging/media/atomisp/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Yeah I was over-eager and applied some of checkpatche's patches
+without thinking twice... I guess the parenthesis wrapping only makes
+sense when you have an operator (either binary or unary). I've
+rechecked each macro identified by checkpatch to see if there is a
+need for parenthesis wrapping in their current usage.
 
-diff --git a/drivers/staging/media/atomisp/Kconfig b/drivers/staging/media/atomisp/Kconfig
-index fea06cb0eb48..37577bb72998 100644
---- a/drivers/staging/media/atomisp/Kconfig
-+++ b/drivers/staging/media/atomisp/Kconfig
-@@ -22,7 +22,7 @@ config VIDEO_ATOMISP
- 	  module will be called atomisp
- 
- config VIDEO_ATOMISP_ISP2401
--	bool "VIDEO_ATOMISP_ISP2401"
-+	bool "Use Intel Atom ISP on Cherrytail/Anniedale (ISP2401)"
- 	depends on VIDEO_ATOMISP
- 	help
- 	  Enable support for Atom ISP2401-based boards.
--- 
-2.26.2
-
+Regards,
+Ricardo Ferreira.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
