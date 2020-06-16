@@ -1,64 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C8C71FB4E2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jun 2020 16:48:27 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A25AB1FB57A
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jun 2020 17:05:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 31D3B89498;
-	Tue, 16 Jun 2020 14:48:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 789DF26258;
+	Tue, 16 Jun 2020 15:05:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WbjeJMdqXChY; Tue, 16 Jun 2020 14:48:24 +0000 (UTC)
+	with ESMTP id TuplaP935kMZ; Tue, 16 Jun 2020 15:05:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 85E908937D;
-	Tue, 16 Jun 2020 14:48:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7D4BF26249;
+	Tue, 16 Jun 2020 15:05:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DFC8D1BF870
- for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 14:48:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E805F1BF3C9
+ for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 15:05:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DB37F89382
- for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 14:48:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E3E5C87E38
+ for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 15:05:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tmtHmptBCHkh for <devel@linuxdriverproject.org>;
- Tue, 16 Jun 2020 14:48:19 +0000 (UTC)
+ with ESMTP id HI0q004U5PUx for <devel@linuxdriverproject.org>;
+ Tue, 16 Jun 2020 15:05:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7D87B891D0
- for <devel@driverdev.osuosl.org>; Tue, 16 Jun 2020 14:48:19 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 3F73AAAE8;
- Tue, 16 Jun 2020 14:48:18 +0000 (UTC)
-Received: by ds.suse.cz (Postfix, from userid 10065)
- id 50CC9DA7C3; Tue, 16 Jun 2020 16:48:04 +0200 (CEST)
-Date: Tue, 16 Jun 2020 16:48:04 +0200
-From: David Sterba <dsterba@suse.cz>
-To: Waiman Long <longman@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3EE1788794
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jun 2020 15:05:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592319936;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=rXbjvJPZU9GzTq8LOO4SZ69J1AJAOxGiWdFnkvpgDCI=;
+ b=HXehFBmmXrJjPB68vZLiUa43vbIhWhl/xo31Y43zN+K7lI7kZ3VFPelGQqBvrx53NkSvyh
+ tTAuQ/xDSObfzwhjkj9Q5TK5ehgxrG7yGSF/TX/vewwhnxWtdOiwIJBgEAw6VNtIxWxnK3
+ APBRtIwZWyOT5cpFEzcUZkWaZVpxR9k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-347-rhm5WjahMFKJc8Xm5_1I2g-1; Tue, 16 Jun 2020 11:05:32 -0400
+X-MC-Unique: rhm5WjahMFKJc8Xm5_1I2g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B20C100CCC9;
+ Tue, 16 Jun 2020 15:05:27 +0000 (UTC)
+Received: from llong.remote.csb (ovpn-114-156.rdu2.redhat.com [10.10.114.156])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 897CF7890A;
+ Tue, 16 Jun 2020 15:05:22 +0000 (UTC)
 Subject: Re: [PATCH v4 3/3] btrfs: Use kfree() in btrfs_ioctl_get_subvol_info()
-Message-ID: <20200616144804.GD27795@twin.jikos.cz>
-Mail-Followup-To: dsterba@suse.cz, Waiman Long <longman@redhat.com>,
- Andrew Morton <akpm@linux-foundation.org>,
+To: dsterba@suse.cz, Andrew Morton <akpm@linux-foundation.org>,
  David Howells <dhowells@redhat.com>,
  Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- James Morris <jmorris@namei.org>,
- "Serge E. Hallyn" <serge@hallyn.com>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Joe Perches <joe@perches.com>, Matthew Wilcox <willy@infradead.org>,
- David Rientjes <rientjes@google.com>,
- Michal Hocko <mhocko@suse.com>,
+ James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>, Joe Perches
+ <joe@perches.com>, Matthew Wilcox <willy@infradead.org>,
+ David Rientjes <rientjes@google.com>, Michal Hocko <mhocko@suse.com>,
  Johannes Weiner <hannes@cmpxchg.org>,
  Dan Carpenter <dan.carpenter@oracle.com>,
  "Jason A . Donenfeld" <Jason@zx2c4.com>, linux-mm@kvack.org,
  keyrings@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-crypto@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-amlogic@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-amlogic@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
  virtualization@lists.linux-foundation.org, netdev@vger.kernel.org,
  linux-ppp@vger.kernel.org, wireguard@lists.zx2c4.com,
@@ -69,14 +79,20 @@ Mail-Followup-To: dsterba@suse.cz, Waiman Long <longman@redhat.com>,
  kasan-dev@googlegroups.com, linux-bluetooth@vger.kernel.org,
  linux-wpan@vger.kernel.org, linux-sctp@vger.kernel.org,
  linux-nfs@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
- linux-security-module@vger.kernel.org,
- linux-integrity@vger.kernel.org
+ linux-security-module@vger.kernel.org, linux-integrity@vger.kernel.org
 References: <20200616015718.7812-1-longman@redhat.com>
  <20200616015718.7812-4-longman@redhat.com>
+ <20200616144804.GD27795@twin.jikos.cz>
+From: Waiman Long <longman@redhat.com>
+Organization: Red Hat
+Message-ID: <75152002-5f02-04b6-a811-29ef79961e0b@redhat.com>
+Date: Tue, 16 Jun 2020 11:05:22 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200616015718.7812-4-longman@redhat.com>
-User-Agent: Mutt/1.5.23.1-rc1 (2014-03-12)
+In-Reply-To: <20200616144804.GD27795@twin.jikos.cz>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,62 +105,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: dsterba@suse.cz
-Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, Michal Hocko <mhocko@suse.com>,
- linux-btrfs@vger.kernel.org, Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- David Sterba <dsterba@suse.cz>, David Howells <dhowells@redhat.com>,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
- kasan-dev@googlegroups.com, linux-stm32@st-md-mailman.stormreply.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- linux-scsi@vger.kernel.org, James Morris <jmorris@namei.org>,
- Matthew Wilcox <willy@infradead.org>, linux-wpan@vger.kernel.org,
- David Rientjes <rientjes@google.com>, Dan Carpenter <dan.carpenter@oracle.com>,
- linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org,
- linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, virtualization@lists.linux-foundation.org,
- linux-integrity@vger.kernel.org, linux-nfs@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
- Johannes Weiner <hannes@cmpxchg.org>, Joe Perches <joe@perches.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, netdev@vger.kernel.org,
- wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Jun 15, 2020 at 09:57:18PM -0400, Waiman Long wrote:
-> In btrfs_ioctl_get_subvol_info(), there is a classic case where kzalloc()
-> was incorrectly paired with kzfree(). According to David Sterba, there
-> isn't any sensitive information in the subvol_info that needs to be
-> cleared before freeing. So kfree_sensitive() isn't really needed,
-> use kfree() instead.
-> 
-> Reported-by: David Sterba <dsterba@suse.cz>
-> Signed-off-by: Waiman Long <longman@redhat.com>
-> ---
->  fs/btrfs/ioctl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/fs/btrfs/ioctl.c b/fs/btrfs/ioctl.c
-> index f1dd9e4271e9..e8f7c5f00894 100644
-> --- a/fs/btrfs/ioctl.c
-> +++ b/fs/btrfs/ioctl.c
-> @@ -2692,7 +2692,7 @@ static int btrfs_ioctl_get_subvol_info(struct file *file, void __user *argp)
->  	btrfs_put_root(root);
->  out_free:
->  	btrfs_free_path(path);
-> -	kfree_sensitive(subvol_info);
-> +	kfree(subvol_info);
+On 6/16/20 10:48 AM, David Sterba wrote:
+> On Mon, Jun 15, 2020 at 09:57:18PM -0400, Waiman Long wrote:
+>> In btrfs_ioctl_get_subvol_info(), there is a classic case where kzalloc()
+>> was incorrectly paired with kzfree(). According to David Sterba, there
+>> isn't any sensitive information in the subvol_info that needs to be
+>> cleared before freeing. So kfree_sensitive() isn't really needed,
+>> use kfree() instead.
+>>
+>> Reported-by: David Sterba <dsterba@suse.cz>
+>> Signed-off-by: Waiman Long <longman@redhat.com>
+>> ---
+>>   fs/btrfs/ioctl.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/fs/btrfs/ioctl.c b/fs/btrfs/ioctl.c
+>> index f1dd9e4271e9..e8f7c5f00894 100644
+>> --- a/fs/btrfs/ioctl.c
+>> +++ b/fs/btrfs/ioctl.c
+>> @@ -2692,7 +2692,7 @@ static int btrfs_ioctl_get_subvol_info(struct file *file, void __user *argp)
+>>   	btrfs_put_root(root);
+>>   out_free:
+>>   	btrfs_free_path(path);
+>> -	kfree_sensitive(subvol_info);
+>> +	kfree(subvol_info);
+> I would rather merge a patch doing to kzfree -> kfree instead of doing
+> the middle step to switch it to kfree_sensitive. If it would help
+> integration of your patchset I can push it to the next rc so there are
+> no kzfree left in the btrfs code. Treewide change like that can take
+> time so it would be one less problem to care about for you.
+>
+Sure, I will move it forward in the patch series.
 
-I would rather merge a patch doing to kzfree -> kfree instead of doing
-the middle step to switch it to kfree_sensitive. If it would help
-integration of your patchset I can push it to the next rc so there are
-no kzfree left in the btrfs code. Treewide change like that can take
-time so it would be one less problem to care about for you.
+Thanks,
+Longman
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
