@@ -2,78 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5DE91FBF88
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jun 2020 22:01:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3895F1FBFFE
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jun 2020 22:27:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 51D11895E2;
-	Tue, 16 Jun 2020 20:01:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C892895E6;
+	Tue, 16 Jun 2020 20:27:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MZ3moQjRR1-s; Tue, 16 Jun 2020 20:01:45 +0000 (UTC)
+	with ESMTP id h1i2h33vtBRE; Tue, 16 Jun 2020 20:27:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F12BF895C8;
-	Tue, 16 Jun 2020 20:01:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 02C2989097;
+	Tue, 16 Jun 2020 20:27:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 882051BF3DD
- for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 20:01:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B4751BF484
+ for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 20:27:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 83610895C0
- for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 20:01:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 877D187821
+ for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 20:27:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xF++kEkIPBqI for <devel@linuxdriverproject.org>;
- Tue, 16 Jun 2020 20:01:41 +0000 (UTC)
+ with ESMTP id BBHf0HgtQmB8 for <devel@linuxdriverproject.org>;
+ Tue, 16 Jun 2020 20:27:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [207.211.31.81])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5EC18895B6
- for <devel@driverdev.osuosl.org>; Tue, 16 Jun 2020 20:01:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592337700;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=IZuHuVBorvvnUwBUanoxn5EJfFFGTbG0F4JYxmnKd8I=;
- b=gwuk/kzdb3Ik/Dhd6PCUCPRmNEObII+9CwrZ/qJl/8ZMzV9Julk2/PzPS1Kt5wSfmj85JW
- GcpiGRFXoqunERmt75RXVaWyPWzbgwxA9xXkyR72DbZB1LRzKAyBx7Ars6UjCB0BBiDDAL
- Uk6QmjDdivEAi3x3XULlpxOBCWEX8XA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-195-RsA5jiRVM622hegDVDAGvA-1; Tue, 16 Jun 2020 16:01:36 -0400
-X-MC-Unique: RsA5jiRVM622hegDVDAGvA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AD51C8035E9;
- Tue, 16 Jun 2020 20:01:28 +0000 (UTC)
-Received: from llong.remote.csb (ovpn-114-156.rdu2.redhat.com [10.10.114.156])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4F41719D71;
- Tue, 16 Jun 2020 20:01:20 +0000 (UTC)
-Subject: Re: [PATCH v4 0/3] mm, treewide: Rename kzfree() to kfree_sensitive()
-To: Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>, 
- David Howells <dhowells@redhat.com>,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Matthew Wilcox <willy@infradead.org>, David Rientjes <rientjes@google.com>
-References: <20200616015718.7812-1-longman@redhat.com>
- <fe3b9a437be4aeab3bac68f04193cb6daaa5bee4.camel@perches.com>
-From: Waiman Long <longman@redhat.com>
-Organization: Red Hat
-Message-ID: <7662bfe8-b279-f98c-3ae3-c3b889aea1f5@redhat.com>
-Date: Tue, 16 Jun 2020 16:01:19 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <fe3b9a437be4aeab3bac68f04193cb6daaa5bee4.camel@perches.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
+ [209.85.128.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BF7F88773C
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jun 2020 20:27:44 +0000 (UTC)
+Received: by mail-wm1-f67.google.com with SMTP id r15so4423563wmh.5
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jun 2020 13:27:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=TP+qVkiiShfjmlFDbsqkgBgPwSAQSfed1CQJN6zPUxk=;
+ b=gr8WqzTiJH5/qGRblApIlRwJH/SNUnkL4qmGG1sfC9DOsHAsztaMCuE5weVAhdagn9
+ ZhMXhqwkCBimhxY8N5suO671XSrEsPZbe55+qMFuWhZpj/zZAh3Hlk2fnfYFvWXr3MYu
+ XZLHo6HJPW2C3bbomOmD9zoXdz292J0BSegHJWROMDLPSaUHRRMpt89ydKlPWyOQrmKV
+ O1Sh5MCM6nuMAyK1v6VAVqYyFPd80/rm8fjpv80QpzVYjcYkINat+9UNy/dzK8R7cWi1
+ sqKaoHh4yMcGtFbtVG3y0Q7gjaAd/f8MTQL9KBLmuWtE4yyJ55zQ85fZn8eROBy8Q3JE
+ CYsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=TP+qVkiiShfjmlFDbsqkgBgPwSAQSfed1CQJN6zPUxk=;
+ b=lFWx4hNLXDqyntBtSG7GIe+8totnLtehAcXXy/EfyDQ6K2oJe9501qHCzuXHLOJlVp
+ 7ZLdVmXFDxKJiCehS6cYt6GZ9LLzqx4LIpdZSAMX5j47T1HH2RFc9fjxQTkDLv9qcNfO
+ 8YSgII2pcAqjnA6vRRMouZn9KB/hHo5v+CKeY4tEklbngFD1HYjoBI8fct/3flnDFI4V
+ xdIqKRogyzgthZ8CTHKIkFozYTqTyU+gwHggkVJje76jD3ZmccHl5kJ3PeCwkQfOTDeV
+ sT5k8GEM3mAcGRALPB/IAgR30PQppOQl9MBmhMS8txMGsURDlkWM2j3JVx9FLLHgfxZD
+ A1yQ==
+X-Gm-Message-State: AOAM532HOwE9JrzwwCGc+iWfLolt3pga/fNItV2bW7qDQGzB7UahzKkq
+ h5aG6llEefGJva+U26CUeOY=
+X-Google-Smtp-Source: ABdhPJwEY5epIaFIhnATfuW+CIIqe71BHWTH/FHA2pkTWaiEXvs0EaLM7g5IIC4RthxqcP9xDHULZg==
+X-Received: by 2002:a7b:cc08:: with SMTP id f8mr5270576wmh.106.1592339263257; 
+ Tue, 16 Jun 2020 13:27:43 -0700 (PDT)
+Received: from localhost.localdomain ([95.145.157.140])
+ by smtp.googlemail.com with ESMTPSA id a3sm29421673wrp.91.2020.06.16.13.27.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 16 Jun 2020 13:27:42 -0700 (PDT)
+From: dan love <danlovecomputing@gmail.com>
+X-Google-Original-From: dan love <danlove99@hotmail.co.uk>
+To: danlove99@hotmail.co.uk
+Subject: [PATCH] Fixed styling issues by adding blank line after definitions.
+Date: Tue, 16 Jun 2020 21:26:55 +0100
+Message-Id: <20200616202658.4844-1-danlove99@hotmail.co.uk>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,74 +81,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, Michal Hocko <mhocko@suse.com>,
- linux-btrfs@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm@kvack.org,
- linux-sctp@vger.kernel.org, target-devel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, linux-scsi@vger.kernel.org,
- kasan-dev@googlegroups.com, linux-wpan@vger.kernel.org,
- Dan Carpenter <dan.carpenter@oracle.com>, linux-pm@vger.kernel.org,
- ecryptfs@vger.kernel.org, linux-fscrypt@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- virtualization@lists.linux-foundation.org, linux-nfs@vger.kernel.org,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
- David Sterba <dsterba@suse.cz>, linux-bluetooth@vger.kernel.org,
- linux-security-module@vger.kernel.org, keyrings@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
- Johannes Weiner <hannes@cmpxchg.org>, linux-integrity@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, wireguard@lists.zx2c4.com,
- linux-ppp@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Xin Tan <tanxin.ctf@gmail.com>,
+ Xiyu Yang <xiyuyang19@fudan.edu.cn>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ abbotti@mev.co.uk, Al Viro <viro@zeniv.linux.org.uk>,
+ Michel Lespinasse <walken@google.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 6/16/20 2:53 PM, Joe Perches wrote:
-> On Mon, 2020-06-15 at 21:57 -0400, Waiman Long wrote:
->>   v4:
->>    - Break out the memzero_explicit() change as suggested by Dan Carpenter
->>      so that it can be backported to stable.
->>    - Drop the "crypto: Remove unnecessary memzero_explicit()" patch for
->>      now as there can be a bit more discussion on what is best. It will be
->>      introduced as a separate patch later on after this one is merged.
-> To this larger audience and last week without reply:
-> https://lore.kernel.org/lkml/573b3fbd5927c643920e1364230c296b23e7584d.camel@perches.com/
->
-> Are there _any_ fastpath uses of kfree or vfree?
->
-> Many patches have been posted recently to fix mispairings
-> of specific types of alloc and free functions.
->
-> To eliminate these mispairings at a runtime cost of four
-> comparisons, should the kfree/vfree/kvfree/kfree_const
-> functions be consolidated into a single kfree?
->
-> Something like the below:
->
->     void kfree(const void *addr)
->     {
->     	if (is_kernel_rodata((unsigned long)addr))
->     		return;
->
->     	if (is_vmalloc_addr(addr))
->     		_vfree(addr);
->     	else
->     		_kfree(addr);
->     }
->
->     #define kvfree		kfree
->     #define vfree		kfree
->     #define kfree_const	kfree
->
->
-How about adding CONFIG_DEBUG_VM code to check for invalid address 
-ranges in kfree() and vfree()? By doing this, we can catch unmatched 
-pairing in debug mode, but won't have the overhead when debug mode is off.
+Signed-off-by: dan love <danlove99@hotmail.co.uk>
+---
+ drivers/staging/comedi/comedi_fops.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Thought?
-
-Cheers,
-Longman
+diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
+index e85a99b68f31..3f70e5dfac39 100644
+--- a/drivers/staging/comedi/comedi_fops.c
++++ b/drivers/staging/comedi/comedi_fops.c
+@@ -2169,6 +2169,7 @@ static long comedi_unlocked_ioctl(struct file *file, unsigned int cmd,
+ 		break;
+ 	case COMEDI_CHANINFO: {
+ 		struct comedi_chaninfo it;
++
+ 		if (copy_from_user(&it, (void __user *)arg, sizeof(it)))
+ 			rc = -EFAULT;
+ 		else
+@@ -2177,6 +2178,7 @@ static long comedi_unlocked_ioctl(struct file *file, unsigned int cmd,
+ 	}
+ 	case COMEDI_RANGEINFO: {
+ 		struct comedi_rangeinfo it;
++
+ 		if (copy_from_user(&it, (void __user *)arg, sizeof(it)))
+ 			rc = -EFAULT;
+ 		else
+@@ -2249,6 +2251,7 @@ static long comedi_unlocked_ioctl(struct file *file, unsigned int cmd,
+ 	}
+ 	case COMEDI_INSN: {
+ 		struct comedi_insn insn;
++
+ 		if (copy_from_user(&insn, (void __user *)arg, sizeof(insn)))
+ 			rc = -EFAULT;
+ 		else
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
