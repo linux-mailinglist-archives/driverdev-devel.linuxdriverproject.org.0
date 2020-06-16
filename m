@@ -1,59 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B76641FECD2
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 09:49:38 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A7B51FEE23
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 10:55:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 96CCF885D0;
-	Thu, 18 Jun 2020 07:49:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 98FB187ECA;
+	Thu, 18 Jun 2020 08:55:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g2QSt1+yzjfv; Thu, 18 Jun 2020 07:49:36 +0000 (UTC)
+	with ESMTP id A7O6lk9IsANC; Thu, 18 Jun 2020 08:55:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 153FE8857C;
-	Thu, 18 Jun 2020 07:49:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A17F587F65;
+	Thu, 18 Jun 2020 08:55:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AB6AE1BF37E
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 07:49:32 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AFABC1BF215
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 08:55:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A6E5120117
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 07:49:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AAD9387ECA
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 08:55:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OJQwFUmIHevF for <devel@linuxdriverproject.org>;
- Thu, 18 Jun 2020 07:49:32 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 0A2DC20035
- for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 07:49:31 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4A0C32166E;
- Thu, 18 Jun 2020 07:49:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592466571;
- bh=ibQowcpRzi2x8YPw80J2WJshf2seNC5tdBtJjm5PzI4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=K8KN03xnv/ctc/iYQwbIHSiYIxPTFGKl+ydkKjqiJVpBfjSPxIvYyQ9GDvPcR2d55
- 0cwTariGM9z6Q1uhJ8I/ReYD3ZVcWydA6wM/FOH1viaLqYuw+t0tkEHXT+PxBBEUL1
- 3dCxg8ieQ/f4oUeL9I9WSPNfuUnUeABcPqXz/kRE=
-Date: Thu, 18 Jun 2020 09:49:24 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Tyler Shetrompf <tyler@shetrompf.com>
-Subject: Re: [PATCH] Staging: comedi: comedi_fops: fixed a blank line coding
- style issue
-Message-ID: <20200618074924.GA187169@kroah.com>
-References: <20200610195923.GA12602@archlinux.localdomain>
+ with ESMTP id D7S2PEd4Dqy5 for <devel@linuxdriverproject.org>;
+ Thu, 18 Jun 2020 08:55:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.plustecnonegocios.com.ar (unknown [190.210.65.97])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1AF7487EB4
+ for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 08:55:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.plustecnonegocios.com.ar (Postfix) with ESMTP id CE1B7302F535;
+ Wed, 17 Jun 2020 05:32:13 -0300 (-03)
+Received: from mail.plustecnonegocios.com.ar ([127.0.0.1])
+ by localhost (mail.plustecnonegocios.com.ar [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id VxrGFWbQpYNr; Wed, 17 Jun 2020 05:32:12 -0300 (-03)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.plustecnonegocios.com.ar (Postfix) with ESMTP id 1D5012DF3A6C;
+ Tue, 16 Jun 2020 13:17:37 -0300 (-03)
+X-Virus-Scanned: amavisd-new at plustecnonegocios.com.ar
+Received: from mail.plustecnonegocios.com.ar ([127.0.0.1])
+ by localhost (mail.plustecnonegocios.com.ar [127.0.0.1]) (amavisd-new,
+ port 10026)
+ with ESMTP id Z9fJMTVGvABE; Tue, 16 Jun 2020 13:17:36 -0300 (-03)
+Received: from [66.154.113.245] (unknown [192.168.1.3])
+ by mail.plustecnonegocios.com.ar (Postfix) with ESMTP id 659062C15A8A;
+ Tue, 16 Jun 2020 09:09:30 -0300 (-03)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200610195923.GA12602@archlinux.localdomain>
+Content-Description: Mail message body
+Subject: Read and get back to me urgent.
+To: Recipients <rm640572@gmail.com>
+From: "Mrs.Maria Roche" <rm640572@gmail.com>
+Date: Tue, 16 Jun 2020 05:09:29 -0700
+Message-Id: <20200616120931.659062C15A8A@mail.plustecnonegocios.com.ar>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,27 +68,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: mr9702033@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 10, 2020 at 07:59:23PM +0000, Tyler Shetrompf wrote:
-> Fixed a coding style issue.
-> 
-> Signed-off-by: Tyler Shetrompf <tyler@shetrompf.com>
-> ---
->  drivers/staging/comedi/comedi_fops.c | 3 +++
->  1 file changed, 3 insertions(+)
-
-Someone else sent this same patch 5 days before you did:
-	https://lore.kernel.org/r/20200605032140.31287-1-kambojdivyansh2000@gmail.com
-
-Sorry,
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGVsbG8gRGVhcgoKTXkgbmFtZSBpcyBNcnMuTWFyaWEgUm9jaGUsIHNoYXJpbmcgdGhpcyBoZWFy
+dGJyZWFraW5nIG1lc3NhZ2Ugd2l0aCB5b3UuIEkgZG9u4oCZdCBrbm93IHlvdSBidXQgbXkgaGVh
+cnQgaXMgYnJlYWtpbmcgdGhhdCB0aGUgd29ybGQgd2lsbCBzb29uIGxvb3NlIG1lLgoKTXkgZGVh
+ciwgaXMgdW5mb3J0dW5hdGUgbXkgaHVzYmFuZCBkaWVkIG91dCBvZiB0aGlzIGNvcm9uYSB2aXJ1
+cyAoQ09WSUQgMTkpIHdoaWNoIEkgaGF2ZSB0ZXN0ZWQgcG9zaXRpdmUuCgpPdXQgb2YgdGhlIHBy
+ZXNlbnQgc2l0dWF0aW9uIG9mIG15IGhlYWx0aCBub3cgSSBkb24ndCB0aGluayBJIGNhbiBzdXJ2
+aXZlIHRoaXMsIHBsZWFzZSBJIHdhbnQgdG8gZW50cnVzdCBhIHN1bSBvZiBVUyQzLjggTWlsbGlv
+biBpbnRvIHlvdXIgY2FyZSBmb3IgYSBodW1hbml0YXJpYW4gc2VydmljZS4KCkdldCBiYWNrIHRv
+IG1lIGFzIHNvb24gYXMgcG9zc2libGUgZm9yIG15IGNvbmZpcm1hdGlvbiBvdmVyIHlvdXIgY2Fw
+YWJpbGl0eSB0aGF0IHlvdSBjYW4gaGFuZGxlIHRoaXMgcHJvamVjdC4KClBsZWFzZSByZXBseSB1
+cmdlbnRseSBmb3IgbW9yZSBkZXRhaWxzLgoKUmVwbHkgdG8gRW1haWw6IG1yOTcwMjAzM0BnbWFp
+bC5jb20KCllvdXJzIHNpbmNlcmVseSwKCk1ycy5NYXJpYSBSb2NoZS4KX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
+QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
+Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
