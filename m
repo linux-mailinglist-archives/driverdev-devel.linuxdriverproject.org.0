@@ -1,59 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 512C11FB209
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jun 2020 15:26:46 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DCEB1FB200
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jun 2020 15:25:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5E9E4893D4;
-	Tue, 16 Jun 2020 13:26:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BFCCB89499;
+	Tue, 16 Jun 2020 13:25:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m0inl30Gttr8; Tue, 16 Jun 2020 13:26:42 +0000 (UTC)
+	with ESMTP id 9vgFJiStfBiW; Tue, 16 Jun 2020 13:25:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F2E92887A7;
-	Tue, 16 Jun 2020 13:26:38 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1871B89484;
+	Tue, 16 Jun 2020 13:25:53 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 446E91BF317
- for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 13:26:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 296991BF317
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 16 Jun 2020 13:25:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3EDEC24BDF
- for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 13:26:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 25FB887335
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 16 Jun 2020 13:25:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NZm4eJnMZ5Ho for <devel@linuxdriverproject.org>;
- Tue, 16 Jun 2020 13:26:34 +0000 (UTC)
+ with ESMTP id dS5K33SqCjJL
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 16 Jun 2020 13:25:50 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from eu-smtp-1.mimecast.com (eu-smtp-delivery-1.mimecast.com
- [195.130.217.221])
- by silver.osuosl.org (Postfix) with ESMTPS id 3B10824B78
- for <devel@driverdev.osuosl.org>; Tue, 16 Jun 2020 13:26:33 +0000 (UTC)
+Received: from eu-smtp-delivery-1.mimecast.com (eu-smtp-1.mimecast.com
+ [91.220.42.220])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BF4A28730F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 16 Jun 2020 13:25:49 +0000 (UTC)
 Received: from OWAHOSTNAME (57.67.213.99 [57.67.213.99]) (Using TLS) by
- relay.mimecast.com with ESMTP id uk-mta-150-ZlNWnVt-M6y5UI8rJTWJ9g-1; Tue,
- 16 Jun 2020 14:19:39 +0100
-X-MC-Unique: ZlNWnVt-M6y5UI8rJTWJ9g-1
-Received: from ONEGDAMX009.ONE.OFC.LOC (172.18.40.127) by
- ONEGDAMX007.ONE.OFC.LOC (172.18.42.152) with Microsoft SMTP Server (TLS) id
- 14.3.487.0; Tue, 16 Jun 2020 15:18:38 +0200
+ relay.mimecast.com with ESMTP id uk-mta-160-uorq5fs_MvW4DpsYgMs2ww-15; Tue,
+ 16 Jun 2020 14:24:11 +0100
+X-MC-Unique: uorq5fs_MvW4DpsYgMs2ww-15
 Received: from ONEGDAMX008.ONE.OFC.LOC (172.18.40.3) by
- ONEGDAMX009.ONE.OFC.LOC (172.18.40.127) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 16 Jun 2020 15:18:38 +0200
+ ONEGDAMX007.ONE.OFC.LOC (172.18.42.152) with Microsoft SMTP Server (TLS) id
+ 14.3.487.0; Tue, 16 Jun 2020 15:22:15 +0200
+Received: from ONEGDAMX008.ONE.OFC.LOC (172.18.40.3) by
+ ONEGDAMX008.ONE.OFC.LOC (172.18.40.3) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Jun 2020 15:22:15 +0200
 Received: from User (92.111.87.130) by ONEGDAMX008.ONE.OFC.LOC (172.18.40.3)
  with Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport; Tue, 16 Jun
- 2020 15:18:33 +0200
+ 2020 15:22:10 +0200
 From: HSBC London Office <info@dialog-ca.com>
 Subject: Urgent Alert From Bank About Your Funds???
-Date: Tue, 16 Jun 2020 06:18:37 -0700
+Date: Tue, 16 Jun 2020 06:22:15 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <9fb20a4f8312461ebed1707d8cd7c229@ONEGDAMX008.ONE.OFC.LOC>
+Message-ID: <2bb2695ace3f42b7993e1802f5e891d7@ONEGDAMX008.ONE.OFC.LOC>
 To: Undisclosed recipients:;
 X-Mimecast-Spam-Score: 34
 X-Mimecast-Originator: dialog-ca.com
