@@ -1,91 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25DF51FB445
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jun 2020 16:27:05 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B125D890E3;
-	Tue, 16 Jun 2020 14:27:02 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J9VZZzpC0FEZ; Tue, 16 Jun 2020 14:27:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 45F1A890C6;
-	Tue, 16 Jun 2020 14:27:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4320E1BF870
- for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 14:26:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C8C71FB4E2
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jun 2020 16:48:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3E9E588BCD
- for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 14:26:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 31D3B89498;
+	Tue, 16 Jun 2020 14:48:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WbjeJMdqXChY; Tue, 16 Jun 2020 14:48:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 85E908937D;
+	Tue, 16 Jun 2020 14:48:24 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DFC8D1BF870
+ for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 14:48:21 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id DB37F89382
+ for <devel@linuxdriverproject.org>; Tue, 16 Jun 2020 14:48:21 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xwSDs9TjANTf for <devel@linuxdriverproject.org>;
- Tue, 16 Jun 2020 14:26:58 +0000 (UTC)
+ with ESMTP id tmtHmptBCHkh for <devel@linuxdriverproject.org>;
+ Tue, 16 Jun 2020 14:48:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AC48D8893B
- for <devel@driverdev.osuosl.org>; Tue, 16 Jun 2020 14:26:58 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05GELOZQ057447;
- Tue, 16 Jun 2020 14:26:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=UepsmQC/DlQFZ6+UxfaNjoC9RmBOSxOKZ2W1AkmRQd8=;
- b=WvEeJyFmKL8HM4eLekulNPcOb25Sw7YajmFzrepd+1TsQe+PNe2o6it9fFwXghV3FsHv
- QdrFGubdjTeCc6kAWKTDSEoqMv3it70YtNHwfwRr3qSfXcxJVIBcqm6X7SGsetYqkHWx
- H7ruRtQFUVaMSNzeIOu+jnB9ul0qpA74I5CLeOsjFOWmZFGD+qOJ1lRDn7UN2JHhoajF
- f/9ecfn6gkdb7upj+cJi6IY4VZZEPZcXh9vvLg7+i5e+33eQa6zJ2K1MWUsjTMUYhONT
- ZCDycK9k04JLa7cAHqpl868otcTeoTLOGNWMgNDyB7bEprwRuViNVIe1IhKb+72uVtQ1 Lw== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 31p6e5y3y1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 16 Jun 2020 14:26:56 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05GEODoW027404;
- Tue, 16 Jun 2020 14:26:56 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3030.oracle.com with ESMTP id 31p6s7kbhq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 16 Jun 2020 14:26:56 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 05GEQfNL026862;
- Tue, 16 Jun 2020 14:26:42 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 16 Jun 2020 07:26:41 -0700
-Date: Tue, 16 Jun 2020 17:26:24 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7D87B891D0
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jun 2020 14:48:19 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id 3F73AAAE8;
+ Tue, 16 Jun 2020 14:48:18 +0000 (UTC)
+Received: by ds.suse.cz (Postfix, from userid 10065)
+ id 50CC9DA7C3; Tue, 16 Jun 2020 16:48:04 +0200 (CEST)
+Date: Tue, 16 Jun 2020 16:48:04 +0200
+From: David Sterba <dsterba@suse.cz>
 To: Waiman Long <longman@redhat.com>
-Subject: Re: [PATCH v4 2/3] mm, treewide: Rename kzfree() to kfree_sensitive()
-Message-ID: <20200616142624.GO4282@kadam>
+Subject: Re: [PATCH v4 3/3] btrfs: Use kfree() in btrfs_ioctl_get_subvol_info()
+Message-ID: <20200616144804.GD27795@twin.jikos.cz>
+Mail-Followup-To: dsterba@suse.cz, Waiman Long <longman@redhat.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ David Howells <dhowells@redhat.com>,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ James Morris <jmorris@namei.org>,
+ "Serge E. Hallyn" <serge@hallyn.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ Joe Perches <joe@perches.com>, Matthew Wilcox <willy@infradead.org>,
+ David Rientjes <rientjes@google.com>,
+ Michal Hocko <mhocko@suse.com>,
+ Johannes Weiner <hannes@cmpxchg.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ "Jason A . Donenfeld" <Jason@zx2c4.com>, linux-mm@kvack.org,
+ keyrings@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-crypto@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
+ virtualization@lists.linux-foundation.org, netdev@vger.kernel.org,
+ linux-ppp@vger.kernel.org, wireguard@lists.zx2c4.com,
+ linux-wireless@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-scsi@vger.kernel.org, target-devel@vger.kernel.org,
+ linux-btrfs@vger.kernel.org, linux-cifs@vger.kernel.org,
+ linux-fscrypt@vger.kernel.org, ecryptfs@vger.kernel.org,
+ kasan-dev@googlegroups.com, linux-bluetooth@vger.kernel.org,
+ linux-wpan@vger.kernel.org, linux-sctp@vger.kernel.org,
+ linux-nfs@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
+ linux-security-module@vger.kernel.org,
+ linux-integrity@vger.kernel.org
 References: <20200616015718.7812-1-longman@redhat.com>
- <20200616015718.7812-3-longman@redhat.com>
+ <20200616015718.7812-4-longman@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200616015718.7812-3-longman@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- suspectscore=0
- mlxlogscore=886 adultscore=0 phishscore=0 bulkscore=0 spamscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006160106
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9653
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 adultscore=0
- mlxscore=0 phishscore=0 mlxlogscore=893 lowpriorityscore=0 clxscore=1011
- suspectscore=0 spamscore=0 bulkscore=0 malwarescore=0 impostorscore=0
- cotscore=-2147483648 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006160106
+In-Reply-To: <20200616015718.7812-4-longman@redhat.com>
+User-Agent: Mutt/1.5.23.1-rc1 (2014-03-12)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,6 +89,7 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: dsterba@suse.cz
 Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, Michal Hocko <mhocko@suse.com>,
  linux-btrfs@vger.kernel.org, Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
  David Sterba <dsterba@suse.cz>, David Howells <dhowells@redhat.com>,
@@ -106,35 +98,53 @@ Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, Michal Hocko <mhocko@suse.com>,
  devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
  linux-scsi@vger.kernel.org, James Morris <jmorris@namei.org>,
  Matthew Wilcox <willy@infradead.org>, linux-wpan@vger.kernel.org,
- David Rientjes <rientjes@google.com>, linux-pm@vger.kernel.org,
- ecryptfs@vger.kernel.org, linux-fscrypt@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- virtualization@lists.linux-foundation.org, linux-integrity@vger.kernel.org,
- linux-nfs@vger.kernel.org, Linus Torvalds <torvalds@linux-foundation.org>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, linux-security-module@vger.kernel.org,
- target-devel@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
- linux-crypto@vger.kernel.org, Johannes Weiner <hannes@cmpxchg.org>,
- Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, netdev@vger.kernel.org,
+ David Rientjes <rientjes@google.com>, Dan Carpenter <dan.carpenter@oracle.com>,
+ linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org,
+ linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, virtualization@lists.linux-foundation.org,
+ linux-integrity@vger.kernel.org, linux-nfs@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
+ linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ Johannes Weiner <hannes@cmpxchg.org>, Joe Perches <joe@perches.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, netdev@vger.kernel.org,
  wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Last time you sent this we couldn't decide which tree it should go
-through.  Either the crypto tree or through Andrew seems like the right
-thing to me.
+On Mon, Jun 15, 2020 at 09:57:18PM -0400, Waiman Long wrote:
+> In btrfs_ioctl_get_subvol_info(), there is a classic case where kzalloc()
+> was incorrectly paired with kzfree(). According to David Sterba, there
+> isn't any sensitive information in the subvol_info that needs to be
+> cleared before freeing. So kfree_sensitive() isn't really needed,
+> use kfree() instead.
+> 
+> Reported-by: David Sterba <dsterba@suse.cz>
+> Signed-off-by: Waiman Long <longman@redhat.com>
+> ---
+>  fs/btrfs/ioctl.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/fs/btrfs/ioctl.c b/fs/btrfs/ioctl.c
+> index f1dd9e4271e9..e8f7c5f00894 100644
+> --- a/fs/btrfs/ioctl.c
+> +++ b/fs/btrfs/ioctl.c
+> @@ -2692,7 +2692,7 @@ static int btrfs_ioctl_get_subvol_info(struct file *file, void __user *argp)
+>  	btrfs_put_root(root);
+>  out_free:
+>  	btrfs_free_path(path);
+> -	kfree_sensitive(subvol_info);
+> +	kfree(subvol_info);
 
-Also the other issue is that it risks breaking things if people add
-new kzfree() instances while we are doing the transition.  Could you
-just add a "#define kzfree kfree_sensitive" so that things continue to
-compile and we can remove it in the next kernel release?
-
-regards,
-dan carpenter
-
+I would rather merge a patch doing to kzfree -> kfree instead of doing
+the middle step to switch it to kfree_sensitive. If it would help
+integration of your patchset I can push it to the next rc so there are
+no kzfree left in the btrfs code. Treewide change like that can take
+time so it would be one less problem to care about for you.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
