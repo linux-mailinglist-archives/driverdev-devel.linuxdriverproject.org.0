@@ -1,76 +1,100 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7430D1FD557
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 21:21:49 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E83C91FD746
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 23:31:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B4A848841E;
-	Wed, 17 Jun 2020 19:21:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9FDDD87A88;
+	Wed, 17 Jun 2020 21:31:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Dy-9KDUHVwpb; Wed, 17 Jun 2020 19:21:47 +0000 (UTC)
+	with ESMTP id PoR3tKibscUn; Wed, 17 Jun 2020 21:31:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A9BB6883A2;
-	Wed, 17 Jun 2020 19:21:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6BB7186931;
+	Wed, 17 Jun 2020 21:31:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1BD1D1BF429
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:21:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 938FE1BF342
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 21:31:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 12F6188672
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:21:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8F7108777C
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 21:31:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jwCMidQUmHSk for <devel@linuxdriverproject.org>;
- Wed, 17 Jun 2020 19:21:43 +0000 (UTC)
+ with ESMTP id ZCJKmGg58DPy for <devel@linuxdriverproject.org>;
+ Wed, 17 Jun 2020 21:31:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
- [209.85.208.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7AB3388619
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 19:21:43 +0000 (UTC)
-Received: by mail-lj1-f196.google.com with SMTP id 9so4297712ljv.5
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 12:21:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=I6zPV8zobDf9HXBdYcU6mVid6vbxVvMja1AcfqC3AhY=;
- b=f9SMlyM/U0Pqzn1ZfwPovFVY6pZbMaVNMoLSufan6Hon09QmB+eZa9nTGXfGxBQyIe
- PQULWwLtmklVkIMpg9pFaEPTNvi2LC9IcxyTkpI/nBKVXWG3U0wSSuyj8AbbZMKiq4EL
- OwS61L9Q6Exu+JDkyDU+jwWBB4UHVz/IkhsdeBAJdL60GDpDSexutvvHvx7VHaAPNwb0
- FnlqEr9i019s7c+rJ7WxAlpIIYFqrnAFs8U6vfs8J2tYfCZFlRTNQg6JB5oYjGsmP5Iz
- rqP5WAiuJJNGDIoK/swk2D9TyycjNZRhwlFDD2mZ41qIct+Dy4I6wr1vYDthC2JvIh/L
- vNVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=I6zPV8zobDf9HXBdYcU6mVid6vbxVvMja1AcfqC3AhY=;
- b=qFAAh0c6qeZkotQZ7dXs9rOLbFhFaARB4MNDckb0fgW61dk2lfYy9mOKTKmcboK8hH
- Y9m0kE6SjGtae+23Tpr07Yb0qrBy2vRn4Cdf0n9N9T0vV6kbYDBJlfE2RP0lrfDERAE4
- tOHbO0NwVmocDD3pzjTWETXzxemxUVbPBiegOw2WA59pdoTEawjn9sCBzhlWTT0wJdH5
- cwgb0BuAYT2JfwfLNFlVCadQWwvgoo0zOzAMdroyUyK9dE6l6i1+7SnFuLzk3/B1XhOx
- zmIPuhcBu3qvs29yQvWQQh+OXhS8txsqNEI9Hcd3vgjezyUA1ymHUYdfICS3CWVTtM3x
- ePCA==
-X-Gm-Message-State: AOAM5318wE6YEeU6ad+CiXl1yri435XUwLeD2fG1s/XazD3hC3owJbXJ
- m22ItJGhjr4zH3KzeN3HRGOyPRdXs8jijsGmTS0=
-X-Google-Smtp-Source: ABdhPJy/zgi6evi5V74dtl6A1Gnb2qzWqwv0aC2J/qtn2wVcoQui5pDVfUgL66fQBPwxEv0f/1kKdEbuFTWgUKo0FhA=
-X-Received: by 2002:a2e:7215:: with SMTP id n21mr333356ljc.315.1592421701149; 
- Wed, 17 Jun 2020 12:21:41 -0700 (PDT)
+Received: from mail.ispras.ru (mail.ispras.ru [83.149.199.45])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DDBC486931
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 21:31:16 +0000 (UTC)
+Received: from [192.168.1.8] (unknown [213.87.137.195])
+ by mail.ispras.ru (Postfix) with ESMTPSA id 54355BFD1E;
+ Thu, 18 Jun 2020 00:31:03 +0300 (MSK)
+To: Joe Perches <joe@perches.com>, Waiman Long <longman@redhat.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ David Howells <dhowells@redhat.com>,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ Matthew Wilcox <willy@infradead.org>, David Rientjes <rientjes@google.com>
+References: <20200616015718.7812-1-longman@redhat.com>
+ <fe3b9a437be4aeab3bac68f04193cb6daaa5bee4.camel@perches.com>
+From: Denis Efremov <efremov@ispras.ru>
+Autocrypt: addr=efremov@ispras.ru; keydata=
+ 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
+Subject: Re: [PATCH v4 0/3] mm, treewide: Rename kzfree() to kfree_sensitive()
+Message-ID: <17e4fede-bab0-d93c-6964-69decc889d7d@ispras.ru>
+Date: Thu, 18 Jun 2020 00:31:01 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-References: <1592360843-3440-1-git-send-email-jrdr.linux@gmail.com>
- <1592360843-3440-2-git-send-email-jrdr.linux@gmail.com>
- <20200617111321.GP4282@kadam>
- <CAFqt6zYHXmoCrWLEru2FZsRnXptFERJv1qiDFPip=q_cZaZEBg@mail.gmail.com>
- <20200617175918.GO4151@kadam>
-In-Reply-To: <20200617175918.GO4151@kadam>
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Date: Thu, 18 Jun 2020 00:59:57 +0530
-Message-ID: <CAFqt6za2Npg147p=47_PKjGehKKP=s5dgtu1O=nrrPePxjXPkg@mail.gmail.com>
-Subject: Re: [PATCH 1/4] staging: kpc2000: Unpin partial pinned pages
-To: Dan Carpenter <dan.carpenter@oracle.com>
+In-Reply-To: <fe3b9a437be4aeab3bac68f04193cb6daaa5bee4.camel@perches.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,104 +107,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Bharath Vedartham <linux.bhar@gmail.com>, harshjain32@gmail.com,
- John Hubbard <jhubbard@nvidia.com>, Greg KH <gregkh@linuxfoundation.org>,
- =?UTF-8?Q?Simon_Sandstr=C3=B6m?= <simon@nikanor.nu>,
- linux-kernel@vger.kernel.org, pakki001@umn.edu, ldufour@linux.ibm.com,
- Michel Lespinasse <walken@google.com>, jane.pnx9@gmail.com
+Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, Michal Hocko <mhocko@suse.com>,
+ linux-btrfs@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ linux-sctp@vger.kernel.org, target-devel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, linux-scsi@vger.kernel.org,
+ kasan-dev@googlegroups.com, linux-wpan@vger.kernel.org,
+ Dan Carpenter <dan.carpenter@oracle.com>, linux-pm@vger.kernel.org,
+ ecryptfs@vger.kernel.org, linux-fscrypt@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ virtualization@lists.linux-foundation.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ David Sterba <dsterba@suse.cz>, linux-bluetooth@vger.kernel.org,
+ linux-security-module@vger.kernel.org, keyrings@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ Johannes Weiner <hannes@cmpxchg.org>, linux-integrity@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, wireguard@lists.zx2c4.com,
+ linux-ppp@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 17, 2020 at 11:29 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> On Wed, Jun 17, 2020 at 11:13:32PM +0530, Souptick Joarder wrote:
-> > On Wed, Jun 17, 2020 at 4:43 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
-> > >
-> > > On Wed, Jun 17, 2020 at 07:57:20AM +0530, Souptick Joarder wrote:
-> > > > There is a bug, when get_user_pages() failed but partially pinned
-> > > > pages are not unpinned. Fixed it.
-> > > >
-> > > > Also, int is more appropriate type for rv. Changed it.
-> > > >
-> > > > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-> > > > Cc: John Hubbard <jhubbard@nvidia.com>
-> > > > Cc: Bharath Vedartham <linux.bhar@gmail.com>
-> > > > Cc: Dan Carpenter <dan.carpenter@oracle.com>
-> > > > ---
-> > > >  drivers/staging/kpc2000/kpc_dma/fileops.c | 6 +++++-
-> > > >  1 file changed, 5 insertions(+), 1 deletion(-)
-> > > >
-> > > > diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > > > index 8975346..b136353 100644
-> > > > --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > > > +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > > > @@ -35,7 +35,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
-> > > >                           unsigned long iov_base, size_t iov_len)
-> > > >  {
-> > > >       unsigned int i = 0;
-> > > > -     long rv = 0;
-> > > > +     int rv = 0;
-> > > >       struct kpc_dma_device *ldev;
-> > > >       struct aio_cb_data *acd;
-> > > >       DECLARE_COMPLETION_ONSTACK(done);
-> > > > @@ -193,6 +193,10 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
-> > > >               put_page(acd->user_pages[i]);
-> > >                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> > > >
-> > > >   err_get_user_pages:
-> > > > +     if (rv > 0) {
-> > > > +             for (i = 0; i < rv; i++)
-> > > > +                     put_pages(acd->user_pages[i])
-> > >                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> > >
-> > > > +     }
-> > >
-> > > This isn't a complete fix.  "rv" is the negative error code but here we
-> > > are returning a positive value on this path.
-> >
-> > In case of error of get_user_pages(), it will return -errno, 0 and 3rd one is
-> > (rv > 0 && rv != acd->page_count). When rv is -errno or 0 there is no need
-> > to call put_pages() in error path. But for 3rd case partially mapped pages
-> > need to unpin.
-> >
-> > Correct me if I am missing anything.
-> >
->
->    182                  kfree(acd);
->    183          }
->    184          return rv;
->    185
->    186   err_descr_too_many:
->    187          unlock_engine(ldev);
->    188          dma_unmap_sg(&ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, ldev->dir);
->    189          sg_free_table(&acd->sgt);
->    190   err_dma_map_sg:
->    191   err_alloc_sg_table:
->    192          for (i = 0 ; i < acd->page_count ; i++)
->    193                  put_page(acd->user_pages[i]);
->    194
->    195   err_get_user_pages:
->    196          if (rv > 0) {
->                     ^^^^^^
-> "rv" is positive.
->
->    197                  for (i = 0; i < rv; i++)
->    198                          put_pages(acd->user_pages[i])
->    199          }
->    200          kfree(acd->user_pages);
->    201   err_alloc_userpages:
->    202          kfree(acd);
->    203          dev_dbg(&priv->ldev->pldev->dev, "%s returning with error %ld\n", __func__, rv);
->    204          return rv;
->                        ^^
-> "rv" is still positive but it should be -EFAULT.
->
 
-Ahh,  my mistake. Will correct it in v2.
-Do other patches in the series looks good ?
+
+On 6/16/20 9:53 PM, Joe Perches wrote:
+> On Mon, 2020-06-15 at 21:57 -0400, Waiman Long wrote:
+>>  v4:
+>>   - Break out the memzero_explicit() change as suggested by Dan Carpenter
+>>     so that it can be backported to stable.
+>>   - Drop the "crypto: Remove unnecessary memzero_explicit()" patch for
+>>     now as there can be a bit more discussion on what is best. It will be
+>>     introduced as a separate patch later on after this one is merged.
+> 
+> To this larger audience and last week without reply:
+> https://lore.kernel.org/lkml/573b3fbd5927c643920e1364230c296b23e7584d.camel@perches.com/
+> 
+> Are there _any_ fastpath uses of kfree or vfree?
+> 
+> Many patches have been posted recently to fix mispairings
+> of specific types of alloc and free functions.
+
+I've prepared a coccinelle script to highlight these mispairings in a function
+a couple of days ago: https://lkml.org/lkml/2020/6/5/953
+I've listed all the fixes in the commit message. 
+
+Not so many mispairings actually, and most of them are harmless like:
+kmalloc(E) -> kvfree(E)
+
+However, coccinelle script can't detect cross-functions mispairings, i.e.
+allocation in one function, free in another funtion.
+
+Thanks,
+Denis
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
