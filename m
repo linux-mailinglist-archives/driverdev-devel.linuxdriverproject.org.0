@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 697B61FC77C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 09:32:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3F651FC7ED
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 09:53:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5EAB687921;
-	Wed, 17 Jun 2020 07:32:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 50B9D87969;
+	Wed, 17 Jun 2020 07:53:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M06KbDgtE20s; Wed, 17 Jun 2020 07:32:05 +0000 (UTC)
+	with ESMTP id TvvA7VjFOXva; Wed, 17 Jun 2020 07:53:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E489878D8;
-	Wed, 17 Jun 2020 07:32:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8C6FA8792F;
+	Wed, 17 Jun 2020 07:53:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A0E7A1BF321
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 07:32:02 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 186B01BF321
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 07:53:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9DDCF88693
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 07:32:02 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 09FA520436
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 07:53:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9zwBCN08lUIo for <devel@linuxdriverproject.org>;
- Wed, 17 Jun 2020 07:32:01 +0000 (UTC)
+ with ESMTP id WSJeL5V9ANwh for <devel@linuxdriverproject.org>;
+ Wed, 17 Jun 2020 07:53:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B36E888689
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 07:32:01 +0000 (UTC)
-IronPort-SDR: ca31cVS68nyPQxZkJo9lO4vhuObORkQgJjqC3OntpTtkzpoz7zfccZQe42j5Gs69nXDmDcSYpY
- yhLe0XKjlEyg==
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0AFA92042C
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 07:53:13 +0000 (UTC)
+IronPort-SDR: rKnA4iIrjN/e605ibyoiAwWEcinIwOI9wXgN+7OdMOy7WJlRtdZNb+ttdUREclX3K5VxozUjOa
+ km6IhgNEzJsQ==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jun 2020 00:32:00 -0700
-IronPort-SDR: OZqUU3CwklgV3wYiDmpWU2idOlW2tRqDmB9PY119t1Ma+Mr3l5MTQXvqlJNIjNx+Qb33rVOCoX
- lf9lgS2EcqDg==
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jun 2020 00:53:13 -0700
+IronPort-SDR: uP++3XezOYTWTFyiZdiREBDdi4WrXZedWY5ySwqudNkGg+fsPKrMOzSDnpxUXanswvVC2RPWpc
+ aJeGvjNlKmzw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,521,1583222400"; d="scan'208";a="351998192"
+X-IronPort-AV: E=Sophos;i="5.73,521,1583222400"; d="scan'208";a="263243892"
 Received: from lkp-server02.sh.intel.com (HELO 19cb4f8aa5d7) ([10.239.97.151])
- by orsmga001.jf.intel.com with ESMTP; 17 Jun 2020 00:31:59 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 17 Jun 2020 00:53:11 -0700
 Received: from kbuild by 19cb4f8aa5d7 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1jlSYA-00003q-Rv; Wed, 17 Jun 2020 07:31:58 +0000
-Date: Wed, 17 Jun 2020 15:31:44 +0800
+ id 1jlSsh-00004Q-3M; Wed, 17 Jun 2020 07:53:11 +0000
+Date: Wed, 17 Jun 2020 15:53:01 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-linus] BUILD SUCCESS
- b65a2d8c8614386f7e8d38ea150749f8a862f431
-Message-ID: <5ee9c6e0.9Xia7VDHlctwsQZQ%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 98fe05e21a6e0ca242e974650ed58b64813cb2dc
+Message-ID: <5ee9cbdd.kVPGCvyITz5SztYs%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -73,13 +73,13 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
-branch HEAD: b65a2d8c8614386f7e8d38ea150749f8a862f431  Staging: rtl8723bs: prevent buffer overflow in update_sta_support_rate()
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 98fe05e21a6e0ca242e974650ed58b64813cb2dc  staging: rtl8712: Remove unnecesary else after return statement.
 
-elapsed time: 724m
+elapsed time: 720m
 
-configs tested: 111
-configs skipped: 2
+configs tested: 113
+configs skipped: 1
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
@@ -102,10 +102,6 @@ um                           x86_64_defconfig
 mips                      pic32mzda_defconfig
 arm                       versatile_defconfig
 ia64                      gensparse_defconfig
-arm                         ebsa110_defconfig
-powerpc                     mpc512x_defconfig
-sh                        sh7757lcr_defconfig
-arm                           sunxi_defconfig
 i386                              allnoconfig
 i386                             allyesconfig
 i386                                defconfig
@@ -163,6 +159,12 @@ x86_64               randconfig-a016-20200615
 x86_64               randconfig-a012-20200615
 x86_64               randconfig-a014-20200615
 x86_64               randconfig-a013-20200615
+x86_64               randconfig-a015-20200617
+x86_64               randconfig-a011-20200617
+x86_64               randconfig-a016-20200617
+x86_64               randconfig-a014-20200617
+x86_64               randconfig-a012-20200617
+x86_64               randconfig-a013-20200617
 i386                 randconfig-a015-20200615
 i386                 randconfig-a011-20200615
 i386                 randconfig-a014-20200615
