@@ -2,90 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A305E1FD534
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 21:10:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7430D1FD557
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 21:21:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3A8F28841A;
-	Wed, 17 Jun 2020 19:10:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B4A848841E;
+	Wed, 17 Jun 2020 19:21:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 87o3Bl2msrfJ; Wed, 17 Jun 2020 19:10:21 +0000 (UTC)
+	with ESMTP id Dy-9KDUHVwpb; Wed, 17 Jun 2020 19:21:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AA4EA88293;
-	Wed, 17 Jun 2020 19:10:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A9BB6883A2;
+	Wed, 17 Jun 2020 19:21:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E20301BF429
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:10:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1BD1D1BF429
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:21:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DB99A8944C
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:10:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 12F6188672
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:21:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dZ6UHTpgXD+X for <devel@linuxdriverproject.org>;
- Wed, 17 Jun 2020 19:10:18 +0000 (UTC)
+ with ESMTP id jwCMidQUmHSk for <devel@linuxdriverproject.org>;
+ Wed, 17 Jun 2020 19:21:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 57799884CD
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 19:10:18 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05HJ2vLf142471;
- Wed, 17 Jun 2020 19:10:12 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=mhAjOCK0qv8EHbqezwl/u4xE0OuLg6vcd5uRS+AMk4U=;
- b=ejG5Xxf8X/NVgYvzKEpOt60d6ryq+DukRJeSDhaICKwOl+ecUmj68ZQ7iwMfvdNHA5Sr
- eH1NtD4x6q5/NfrJWvL7T3xu2I40rzi1rgAILePdPyVDxlH+hi2t02aENtyZgQfNE1aX
- OViMBo4chvaSeIyRc/R65/9aehkpQjDyHZaTtesH/rgIhJEcv2EDPrz5mWstjMnwiQV3
- f0nrnxhn3L44nz6KbztfwE5Meq6bB3Qg3zv/3hBnsGhkmQFHDX+8sgrFX+bFXar343Lf
- d2CDm4P78EGwcIgkaKRpaonNAZXiIDkEXjcSLRxUUtNYVfzvyC9+G3KRPadSRlRawqRG oA== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2120.oracle.com with ESMTP id 31qeckus38-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 17 Jun 2020 19:10:12 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05HJ3fW4082324;
- Wed, 17 Jun 2020 19:10:12 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3020.oracle.com with ESMTP id 31q65y2yrw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 17 Jun 2020 19:10:11 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 05HJAAO2005034;
- Wed, 17 Jun 2020 19:10:10 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 17 Jun 2020 12:10:09 -0700
-Date: Wed, 17 Jun 2020 22:10:02 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Zhixu Zhao <zhixu001@126.com>
-Subject: Re: [PATCH v2] staging: gasket: core: Fix a coding style issue in
- gasket_core.c
-Message-ID: <20200617191002.GP4151@kadam>
-References: <20200617161127.32006-1-zhixu001@126.com>
+Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
+ [209.85.208.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7AB3388619
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 19:21:43 +0000 (UTC)
+Received: by mail-lj1-f196.google.com with SMTP id 9so4297712ljv.5
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 12:21:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=I6zPV8zobDf9HXBdYcU6mVid6vbxVvMja1AcfqC3AhY=;
+ b=f9SMlyM/U0Pqzn1ZfwPovFVY6pZbMaVNMoLSufan6Hon09QmB+eZa9nTGXfGxBQyIe
+ PQULWwLtmklVkIMpg9pFaEPTNvi2LC9IcxyTkpI/nBKVXWG3U0wSSuyj8AbbZMKiq4EL
+ OwS61L9Q6Exu+JDkyDU+jwWBB4UHVz/IkhsdeBAJdL60GDpDSexutvvHvx7VHaAPNwb0
+ FnlqEr9i019s7c+rJ7WxAlpIIYFqrnAFs8U6vfs8J2tYfCZFlRTNQg6JB5oYjGsmP5Iz
+ rqP5WAiuJJNGDIoK/swk2D9TyycjNZRhwlFDD2mZ41qIct+Dy4I6wr1vYDthC2JvIh/L
+ vNVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=I6zPV8zobDf9HXBdYcU6mVid6vbxVvMja1AcfqC3AhY=;
+ b=qFAAh0c6qeZkotQZ7dXs9rOLbFhFaARB4MNDckb0fgW61dk2lfYy9mOKTKmcboK8hH
+ Y9m0kE6SjGtae+23Tpr07Yb0qrBy2vRn4Cdf0n9N9T0vV6kbYDBJlfE2RP0lrfDERAE4
+ tOHbO0NwVmocDD3pzjTWETXzxemxUVbPBiegOw2WA59pdoTEawjn9sCBzhlWTT0wJdH5
+ cwgb0BuAYT2JfwfLNFlVCadQWwvgoo0zOzAMdroyUyK9dE6l6i1+7SnFuLzk3/B1XhOx
+ zmIPuhcBu3qvs29yQvWQQh+OXhS8txsqNEI9Hcd3vgjezyUA1ymHUYdfICS3CWVTtM3x
+ ePCA==
+X-Gm-Message-State: AOAM5318wE6YEeU6ad+CiXl1yri435XUwLeD2fG1s/XazD3hC3owJbXJ
+ m22ItJGhjr4zH3KzeN3HRGOyPRdXs8jijsGmTS0=
+X-Google-Smtp-Source: ABdhPJy/zgi6evi5V74dtl6A1Gnb2qzWqwv0aC2J/qtn2wVcoQui5pDVfUgL66fQBPwxEv0f/1kKdEbuFTWgUKo0FhA=
+X-Received: by 2002:a2e:7215:: with SMTP id n21mr333356ljc.315.1592421701149; 
+ Wed, 17 Jun 2020 12:21:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200617161127.32006-1-zhixu001@126.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9655
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- spamscore=0
- phishscore=0 bulkscore=0 malwarescore=0 mlxscore=0 adultscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006170144
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9655
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- cotscore=-2147483648 malwarescore=0
- clxscore=1011 adultscore=0 suspectscore=0 spamscore=0 lowpriorityscore=0
- mlxlogscore=999 priorityscore=1501 bulkscore=0 phishscore=0 mlxscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006170144
+References: <1592360843-3440-1-git-send-email-jrdr.linux@gmail.com>
+ <1592360843-3440-2-git-send-email-jrdr.linux@gmail.com>
+ <20200617111321.GP4282@kadam>
+ <CAFqt6zYHXmoCrWLEru2FZsRnXptFERJv1qiDFPip=q_cZaZEBg@mail.gmail.com>
+ <20200617175918.GO4151@kadam>
+In-Reply-To: <20200617175918.GO4151@kadam>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Date: Thu, 18 Jun 2020 00:59:57 +0530
+Message-ID: <CAFqt6za2Npg147p=47_PKjGehKKP=s5dgtu1O=nrrPePxjXPkg@mail.gmail.com>
+Subject: Re: [PATCH 1/4] staging: kpc2000: Unpin partial pinned pages
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,52 +83,104 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Richard Yeh <rcy@google.com>,
- Rob Springer <rspringer@google.com>, Joe Perches <joe@perches.com>,
- Todd Poynor <toddpoynor@google.com>
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Bharath Vedartham <linux.bhar@gmail.com>, harshjain32@gmail.com,
+ John Hubbard <jhubbard@nvidia.com>, Greg KH <gregkh@linuxfoundation.org>,
+ =?UTF-8?Q?Simon_Sandstr=C3=B6m?= <simon@nikanor.nu>,
+ linux-kernel@vger.kernel.org, pakki001@umn.edu, ldufour@linux.ibm.com,
+ Michel Lespinasse <walken@google.com>, jane.pnx9@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jun 18, 2020 at 12:11:27AM +0800, Zhixu Zhao wrote:
-> diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
-> index 67325fbaf760..28dab302183b 100644
-> --- a/drivers/staging/gasket/gasket_core.c
-> +++ b/drivers/staging/gasket/gasket_core.c
-> @@ -261,6 +261,7 @@ static int gasket_map_pci_bar(struct gasket_dev *gasket_dev, int bar_num)
->  	const struct gasket_driver_desc *driver_desc =
->  		internal_desc->driver_desc;
->  	ulong desc_bytes = driver_desc->bar_descriptions[bar_num].size;
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Get rid of this as well (below).
+On Wed, Jun 17, 2020 at 11:29 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+>
+> On Wed, Jun 17, 2020 at 11:13:32PM +0530, Souptick Joarder wrote:
+> > On Wed, Jun 17, 2020 at 4:43 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> > >
+> > > On Wed, Jun 17, 2020 at 07:57:20AM +0530, Souptick Joarder wrote:
+> > > > There is a bug, when get_user_pages() failed but partially pinned
+> > > > pages are not unpinned. Fixed it.
+> > > >
+> > > > Also, int is more appropriate type for rv. Changed it.
+> > > >
+> > > > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+> > > > Cc: John Hubbard <jhubbard@nvidia.com>
+> > > > Cc: Bharath Vedartham <linux.bhar@gmail.com>
+> > > > Cc: Dan Carpenter <dan.carpenter@oracle.com>
+> > > > ---
+> > > >  drivers/staging/kpc2000/kpc_dma/fileops.c | 6 +++++-
+> > > >  1 file changed, 5 insertions(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
+> > > > index 8975346..b136353 100644
+> > > > --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
+> > > > +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+> > > > @@ -35,7 +35,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+> > > >                           unsigned long iov_base, size_t iov_len)
+> > > >  {
+> > > >       unsigned int i = 0;
+> > > > -     long rv = 0;
+> > > > +     int rv = 0;
+> > > >       struct kpc_dma_device *ldev;
+> > > >       struct aio_cb_data *acd;
+> > > >       DECLARE_COMPLETION_ONSTACK(done);
+> > > > @@ -193,6 +193,10 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+> > > >               put_page(acd->user_pages[i]);
+> > >                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> > > >
+> > > >   err_get_user_pages:
+> > > > +     if (rv > 0) {
+> > > > +             for (i = 0; i < rv; i++)
+> > > > +                     put_pages(acd->user_pages[i])
+> > >                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> > >
+> > > > +     }
+> > >
+> > > This isn't a complete fix.  "rv" is the negative error code but here we
+> > > are returning a positive value on this path.
+> >
+> > In case of error of get_user_pages(), it will return -errno, 0 and 3rd one is
+> > (rv > 0 && rv != acd->page_count). When rv is -errno or 0 there is no need
+> > to call put_pages() in error path. But for 3rd case partially mapped pages
+> > need to unpin.
+> >
+> > Correct me if I am missing anything.
+> >
+>
+>    182                  kfree(acd);
+>    183          }
+>    184          return rv;
+>    185
+>    186   err_descr_too_many:
+>    187          unlock_engine(ldev);
+>    188          dma_unmap_sg(&ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, ldev->dir);
+>    189          sg_free_table(&acd->sgt);
+>    190   err_dma_map_sg:
+>    191   err_alloc_sg_table:
+>    192          for (i = 0 ; i < acd->page_count ; i++)
+>    193                  put_page(acd->user_pages[i]);
+>    194
+>    195   err_get_user_pages:
+>    196          if (rv > 0) {
+>                     ^^^^^^
+> "rv" is positive.
+>
+>    197                  for (i = 0; i < rv; i++)
+>    198                          put_pages(acd->user_pages[i])
+>    199          }
+>    200          kfree(acd->user_pages);
+>    201   err_alloc_userpages:
+>    202          kfree(acd);
+>    203          dev_dbg(&priv->ldev->pldev->dev, "%s returning with error %ld\n", __func__, rv);
+>    204          return rv;
+>                        ^^
+> "rv" is still positive but it should be -EFAULT.
+>
 
-> +	struct gasket_bar_data *data;
->  	int ret;
->  
->  	if (desc_bytes == 0)
-> @@ -270,31 +271,32 @@ static int gasket_map_pci_bar(struct gasket_dev *gasket_dev, int bar_num)
->  		/* not PCI: skip this entry */
->  		return 0;
->  	}
-> +
-> +	data = &gasket_dev->bar_data[bar_num];
-
-It would be better to do this in the declaration block so you can change
-the earlier two uses in this function:
-
-+	struct gasket_bar_data *data = &gasket_dev->bar_data[bar_num];
--	ulong desc_bytes = driver_desc->bar_descriptions[bar_num].size;
-+	ulong desc_bytes = data->size;
-
-...
-
--	if (driver_desc->bar_descriptions[bar_num].type != PCI_BAR) {
-+	if (data->type != PCI_BAR) {
-
-regards,
-dan carpenter
+Ahh,  my mistake. Will correct it in v2.
+Do other patches in the series looks good ?
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
