@@ -1,72 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0FBD1FC6D0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 09:12:22 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D5F0D886A9;
-	Wed, 17 Jun 2020 07:12:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PUCFk2S2Cfvc; Wed, 17 Jun 2020 07:12:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 481EA88443;
-	Wed, 17 Jun 2020 07:12:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D09BD1BF321
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 07:12:16 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 697B61FC77C
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 09:32:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CC1B0877AA
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 07:12:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5EAB687921;
+	Wed, 17 Jun 2020 07:32:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id M06KbDgtE20s; Wed, 17 Jun 2020 07:32:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E489878D8;
+	Wed, 17 Jun 2020 07:32:05 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A0E7A1BF321
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 07:32:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9DDCF88693
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 07:32:02 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D27yS751WDab for <devel@linuxdriverproject.org>;
- Wed, 17 Jun 2020 07:12:16 +0000 (UTC)
+ with ESMTP id 9zwBCN08lUIo for <devel@linuxdriverproject.org>;
+ Wed, 17 Jun 2020 07:32:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f67.google.com (mail-ej1-f67.google.com
- [209.85.218.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 026A28778C
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 07:12:16 +0000 (UTC)
-Received: by mail-ej1-f67.google.com with SMTP id y13so1170676eju.2
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 00:12:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=E5EcWVbc+7tsS+GAmjqiwsU8zuC9ZQ4KDsXaJSfWulo=;
- b=XNJEtBPArl1pKM0msD4JaXHpWMBFiplHmCpOxH7moyMNwsGscQW7QJE+FUtu+n0zg2
- fICUV3+VBfkQBcUk8oDqhyme3L0XUYx58lxNiX92CRpoQeHOuoK8uv9hwabd5B83z8m0
- ug97mj6Dag6qErzNq8c5LlXhoB9jStSKPVx94j64JXACgec2bvc7ZoIGwCmUDzn9SuRx
- HIbiL/Iaeb0l2xbQSIxBiRDSk2UA+Un/PtOKNHVigsWcmJ6Tb6SVbtMK8G3CEsB5f5Z6
- oMKV29z76mW7BKM/nc0NTOHiqPEHrWnoDBzpEPIUwrhRij72s82jGDJIvgqMhGbBwubZ
- YF4Q==
-X-Gm-Message-State: AOAM533ZfUBPKlAQq9I7wfz2t4C4vE5VCGoen9P9OG25qKf83AB1gAwQ
- EchoqvQKlQfF342CNq7WbRM=
-X-Google-Smtp-Source: ABdhPJzxXEZ/32Vk1uutSgWgDm/2Kml+FRFv6q/oUOzaHXvM3d9a7wcEm5DrSyb0iZ8v3ZPtZ+pKKg==
-X-Received: by 2002:a17:906:2581:: with SMTP id
- m1mr6681797ejb.89.1592377934427; 
- Wed, 17 Jun 2020 00:12:14 -0700 (PDT)
-Received: from localhost (ip-37-188-158-19.eurotel.cz. [37.188.158.19])
- by smtp.gmail.com with ESMTPSA id g22sm12516138ejo.1.2020.06.17.00.12.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2020 00:12:13 -0700 (PDT)
-Date: Wed, 17 Jun 2020 09:12:12 +0200
-From: Michal Hocko <mhocko@kernel.org>
-To: Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH v4 0/3] mm, treewide: Rename kzfree() to kfree_sensitive()
-Message-ID: <20200617071212.GJ9499@dhcp22.suse.cz>
-References: <20200616015718.7812-1-longman@redhat.com>
- <fe3b9a437be4aeab3bac68f04193cb6daaa5bee4.camel@perches.com>
- <20200616230130.GJ27795@twin.jikos.cz>
- <20200617003711.GD8681@bombadil.infradead.org>
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B36E888689
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 07:32:01 +0000 (UTC)
+IronPort-SDR: ca31cVS68nyPQxZkJo9lO4vhuObORkQgJjqC3OntpTtkzpoz7zfccZQe42j5Gs69nXDmDcSYpY
+ yhLe0XKjlEyg==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jun 2020 00:32:00 -0700
+IronPort-SDR: OZqUU3CwklgV3wYiDmpWU2idOlW2tRqDmB9PY119t1Ma+Mr3l5MTQXvqlJNIjNx+Qb33rVOCoX
+ lf9lgS2EcqDg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,521,1583222400"; d="scan'208";a="351998192"
+Received: from lkp-server02.sh.intel.com (HELO 19cb4f8aa5d7) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 17 Jun 2020 00:31:59 -0700
+Received: from kbuild by 19cb4f8aa5d7 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jlSYA-00003q-Rv; Wed, 17 Jun 2020 07:31:58 +0000
+Date: Wed, 17 Jun 2020 15:31:44 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-linus] BUILD SUCCESS
+ b65a2d8c8614386f7e8d38ea150749f8a862f431
+Message-ID: <5ee9c6e0.9Xia7VDHlctwsQZQ%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200617003711.GD8681@bombadil.infradead.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,65 +67,138 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "Jason A . Donenfeld" <Jason@zx2c4.com>, linux-btrfs@vger.kernel.org,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>, dsterba@suse.cz,
- David Howells <dhowells@redhat.com>, linux-mm@kvack.org,
- linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, linux-scsi@vger.kernel.org,
- James Morris <jmorris@namei.org>, kasan-dev@googlegroups.com,
- linux-wpan@vger.kernel.org, David Rientjes <rientjes@google.com>,
- Waiman Long <longman@redhat.com>, Dan Carpenter <dan.carpenter@oracle.com>,
- linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org,
- linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, virtualization@lists.linux-foundation.org,
- linux-integrity@vger.kernel.org, linux-nfs@vger.kernel.org,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
- Johannes Weiner <hannes@cmpxchg.org>, Joe Perches <joe@perches.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- netdev@vger.kernel.org, wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue 16-06-20 17:37:11, Matthew Wilcox wrote:
-> On Wed, Jun 17, 2020 at 01:01:30AM +0200, David Sterba wrote:
-> > On Tue, Jun 16, 2020 at 11:53:50AM -0700, Joe Perches wrote:
-> > > On Mon, 2020-06-15 at 21:57 -0400, Waiman Long wrote:
-> > > >  v4:
-> > > >   - Break out the memzero_explicit() change as suggested by Dan Carpenter
-> > > >     so that it can be backported to stable.
-> > > >   - Drop the "crypto: Remove unnecessary memzero_explicit()" patch for
-> > > >     now as there can be a bit more discussion on what is best. It will be
-> > > >     introduced as a separate patch later on after this one is merged.
-> > > 
-> > > To this larger audience and last week without reply:
-> > > https://lore.kernel.org/lkml/573b3fbd5927c643920e1364230c296b23e7584d.camel@perches.com/
-> > > 
-> > > Are there _any_ fastpath uses of kfree or vfree?
-> > 
-> > I'd consider kfree performance critical for cases where it is called
-> > under locks. If possible the kfree is moved outside of the critical
-> > section, but we have rbtrees or lists that get deleted under locks and
-> > restructuring the code to do eg. splice and free it outside of the lock
-> > is not always possible.
-> 
-> Not just performance critical, but correctness critical.  Since kvfree()
-> may allocate from the vmalloc allocator, I really think that kvfree()
-> should assert that it's !in_atomic().  Otherwise we can get into trouble
-> if we end up calling vfree() and have to take the mutex.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-linus
+branch HEAD: b65a2d8c8614386f7e8d38ea150749f8a862f431  Staging: rtl8723bs: prevent buffer overflow in update_sta_support_rate()
 
-FWIW __vfree already checks for atomic context and put the work into a
-deferred context. So this should be safe. It should be used as a last
-resort, though.
+elapsed time: 724m
 
--- 
-Michal Hocko
-SUSE Labs
+configs tested: 111
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                         axm55xx_defconfig
+mips                         bigsur_defconfig
+mips                      bmips_stb_defconfig
+c6x                              allyesconfig
+sh                            migor_defconfig
+arm                             pxa_defconfig
+um                           x86_64_defconfig
+mips                      pic32mzda_defconfig
+arm                       versatile_defconfig
+ia64                      gensparse_defconfig
+arm                         ebsa110_defconfig
+powerpc                     mpc512x_defconfig
+sh                        sh7757lcr_defconfig
+arm                           sunxi_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a006-20200615
+i386                 randconfig-a002-20200615
+i386                 randconfig-a001-20200615
+i386                 randconfig-a004-20200615
+i386                 randconfig-a005-20200615
+i386                 randconfig-a003-20200615
+x86_64               randconfig-a015-20200615
+x86_64               randconfig-a011-20200615
+x86_64               randconfig-a016-20200615
+x86_64               randconfig-a012-20200615
+x86_64               randconfig-a014-20200615
+x86_64               randconfig-a013-20200615
+i386                 randconfig-a015-20200615
+i386                 randconfig-a011-20200615
+i386                 randconfig-a014-20200615
+i386                 randconfig-a013-20200615
+i386                 randconfig-a016-20200615
+i386                 randconfig-a012-20200615
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                                allnoconfig
+um                                  defconfig
+um                               allmodconfig
+um                               allyesconfig
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
