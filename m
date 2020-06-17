@@ -1,71 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BCD11FD435
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 20:17:59 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6AC6088E52;
-	Wed, 17 Jun 2020 18:17:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5jaNfxV1-hmK; Wed, 17 Jun 2020 18:17:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6398488E10;
-	Wed, 17 Jun 2020 18:17:55 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 566AD1BF86D
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 18:17:53 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 232801FD4E5
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 20:52:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5055A88175
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 18:17:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C2338825B;
+	Wed, 17 Jun 2020 18:52:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jn8pwHNW11rL; Wed, 17 Jun 2020 18:52:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 324E08811F;
+	Wed, 17 Jun 2020 18:52:26 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7D1861BF395
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 18:52:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 79BD6873F1
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 18:52:23 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6XxI+ZGf-XuV for <devel@linuxdriverproject.org>;
- Wed, 17 Jun 2020 18:17:51 +0000 (UTC)
+ with ESMTP id cG6_ZznYjDa9 for <devel@linuxdriverproject.org>;
+ Wed, 17 Jun 2020 18:52:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E102888092
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 18:17:50 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id l17so2786076wmj.0
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 11:17:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GNuW4DLwTBQChO/w6b63g3sIOzooS9NaSBa2XKqAsPk=;
- b=HVVJWkZDZZh62rgq5TcwWzj9OGMbS5g6A+QBmiSeKSYjT0/p83zMoQ9AZA3Z9n7Z49
- GXrBxj7XUuvFMqtuvLnFTb8nq8u9TM1v8LXIS02nv/Yw2VdJzkZgEMb6U04FXzZhPsVK
- 2snCp+BSgajYbGyTk5E3ht5PP5Gw49UtFVcp4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GNuW4DLwTBQChO/w6b63g3sIOzooS9NaSBa2XKqAsPk=;
- b=BcxJzlEC0y2KvG/ECVsYHGN9h1VNnRVvGsBZDssr84P2wp38g18xuvclwlMA4AsffB
- 1WjTQ4GsgIkhN6Pv7/gbsRNcooMUdCtraxfEj7b63au056/eyjYkHMy6dmz8UprG0Js5
- A3GS1tRMezb1wN3Rwd13gCKllvpTh/DkvmECNeezxx7w6gGdzBBBBe9pjg4Mp5SjAXSU
- h8+hk904YSNTvMZNjcW9mSq//5zbCVdTvVSFNbC1rIjN4yyGIU9GQBg4MloCORmTDv+1
- mOm4zaVN7SohJjiWWubMtazEdJuiKR0ePu2oGea7DVL+UJk739M/3fG4UhMCIv+Q1klQ
- bHNg==
-X-Gm-Message-State: AOAM532H0zL1tXn3Q79zWAB1ICRiAyqaVq+oEozqKH0SYyZMHelLqexY
- QNgNsp1mnyYa+YF3sCyUfNaOFrQuONXnmUpV9uZGvQ==
-X-Google-Smtp-Source: ABdhPJwCOCarFnPVmCXyp4cpXzJ0uN1eXKFwmPhHXPanOof81T2/N88OZe8pdxgNQo+BB3gZ7h7B9fOBg7JidDi7Ss0=
-X-Received: by 2002:a7b:c44a:: with SMTP id l10mr40352wmi.92.1592417868643;
- Wed, 17 Jun 2020 11:17:48 -0700 (PDT)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CB227873E4
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 18:52:18 +0000 (UTC)
+Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
+ [95.90.213.197])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 70612217BA;
+ Wed, 17 Jun 2020 18:52:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1592419938;
+ bh=DpQjYZZeTM+uzWHwycplncpFlO5eCkii+KlRTUKLv3g=;
+ h=From:To:Cc:Subject:Date:From;
+ b=MsE1/7k7pdJT7KPjfFOk7ftsiAOyCPYA0BoXHNOD9lZbABn6UjJixFoKQ7BD4HTUr
+ bdT2WxqPHgIZdOZOXwGGwJavpLlzcYXJgeQW3mGUhkTT7tjjkPkOSk+xRPRDrVY53H
+ IPwdU+ZNMlWn8v4TGQCvr31Gs/358Es9aRFHjvUw=
+Received: from mchehab by mail.kernel.org with local (Exim 4.93)
+ (envelope-from <mchehab@kernel.org>)
+ id 1jldAV-00C8Ae-Sb; Wed, 17 Jun 2020 20:52:15 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Linux Media Mailing List <linux-media@vger.kernel.org>
+Subject: [RFC 0/4] Don't do tuning zigzag using the very same frequency
+Date: Wed, 17 Jun 2020 20:52:10 +0200
+Message-Id: <cover.1592419750.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20200616205533.3513-1-james.quinlan@broadcom.com>
- <20200616205533.3513-9-james.quinlan@broadcom.com>
- <b0feb616-63f3-8563-fbc1-663816d344ea@arm.com>
-In-Reply-To: <b0feb616-63f3-8563-fbc1-663816d344ea@arm.com>
-From: Jim Quinlan <james.quinlan@broadcom.com>
-Date: Wed, 17 Jun 2020 14:17:36 -0400
-Message-ID: <CA+-6iNxUymRBQY-xEVFXBQsAPXKCB4X9knFNSgNvtUwEUYpKTA@mail.gmail.com>
-Subject: Re: [PATCH v5 08/12] device core: Introduce multiple dma pfn offsets
-To: Robin Murphy <robin.murphy@arm.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,377 +66,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rich Felker <dalias@libc.org>,
- "open list:SUPERH" <linux-sh@vger.kernel.org>, David Airlie <airlied@linux.ie>,
- "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
- <linux-pci@vger.kernel.org>, Hanjun Guo <guohanjun@huawei.com>,
- "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
- <linux-remoteproc@vger.kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Julien Grall <julien.grall@arm.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- "H. Peter Anvin" <hpa@zytor.com>, Will Deacon <will@kernel.org>,
- Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>,
- "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Wolfram Sang <wsa@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- Russell King <linux@armlinux.org.uk>,
- "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
- Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>,
- "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>,
- Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
- Ohad Ben-Cohen <ohad@wizery.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
- <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- Suzuki K Poulose <suzuki.poulose@arm.com>, Maxime Ripard <mripard@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Borislav Petkov <bp@alien8.de>,
- "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
- Yong Deng <yong.deng@magewell.com>, Santosh Shilimkar <ssantosh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
- Saravana Kannan <saravanak@google.com>,
+Cc: devel@driverdev.osuosl.org, Sean Young <sean@mess.org>,
+ Arnd Bergmann <arnd@arndb.de>, Marc Gonzalez <marc.w.gonzalez@free.fr>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Oliver Neukum <oneukum@suse.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- open list <linux-kernel@vger.kernel.org>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
- Mark Brown <broonie@kernel.org>, Stefano Stabellini <sstabellini@kernel.org>,
- Daniel Vetter <daniel@ffwll.ch>, Sudeep Holla <sudeep.holla@arm.com>,
- "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
- "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+ Masahiro Yamada <masahiroy@kernel.org>, Brad Love <brad@nextdimension.cc>,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 17, 2020 at 9:00 AM Robin Murphy <robin.murphy@arm.com> wrote:
->
-> Hi Jim,
->
-> Thanks for taking this on!
+Marc reported on IRC that the zigzag code is trying to tune several times using
+the same frequency with si2168. Well, this is not how this would be supposed
+to do: it should try with different frequencies each time.
 
-Hi Robin,
+Change the core to use the one-shot mode if the frontend doesn't report a
+frequency step. This will default to the current behavior, except that tuning
+should be faster.
 
->
-> On 2020-06-16 21:55, Jim Quinlan wrote:
-> > The new field in struct device 'dma_pfn_offset_map' is used to facilitate
-> > the use of single or multiple pfn offsets between cpu addrs and dma addrs.
-> > It subsumes the role of dev->dma_pfn_offset -- a uniform offset.
->
-> This isn't just about offsets - it should (eventually) subsume
-> bus_dma_limit as well, so I'd be inclined to call it something like
-> "dma_ranges"/"dma_range_map"/"dma_regions"/etc.
-I will change my wording here.
+Yet, probably the right thing to do is to implement a frequency shift at such
+frontends, as otherwise  tuning may have problems. So, produce a warning
+on such cases, in order for the FE driver to be fixed.
 
->
-> > The function of_dma_get_range() has been modified to take two additional
-> > arguments: the "map", which is an array that holds the information
-> > regarding the pfn offset regions, and map_size, which is the size in bytes
-> > of the map array.
-> >
-> > of_dma_configure() is the typical manner to set pfn offsets but there are a
-> > number of ad hoc assignments to dev->dma_pfn_offset in the kernel driver
-> > code.  These cases now invoke the function
-> > dma_attach_uniform_pfn_offset(dev, pfn_offset).
->
-> I'm also not convinced that sticking to the PFN paradigm is necessarily
-> the right way to go - when there's only a single nicely-aligned offset
-> to consider then an unsigned long that's immune to PAE/LPAE/etc.
-> disruption is indeed the cheapest and easiest option from core code's
-> PoV. However it already means that all the users have to do some degree
-> of conversion back and forth between PFNs and usable addresses; once the
-> core code itself also has to start bouncing back and forth between
-> addresses and PFNs internally then we end up effectively just doing work
-> to cancel out other work, and the whole lot would end up simpler and
-> more efficient if the API worked purely in terms of addresses.
-If you want me to change the paradigm to an address offset, I will.
-If so please specify its type: dma_addr_t, phys_addr_t, or u64?
+Mauro Carvalho Chehab (4):
+  media: atomisp: fix identation at I2C Kconfig menu
+  media: atomisp: fix help message for ISP2401 selection
+  media: dvb_frontend: move algo-specific settings to a function
+  media: dvb_frontend: disable zigzag mode if not possible
 
->
-> [...]
-> > diff --git a/drivers/of/address.c b/drivers/of/address.c
-> > index 8eea3f6e29a4..767fa3b492c8 100644
-> > --- a/drivers/of/address.c
-> > +++ b/drivers/of/address.c
-> > @@ -918,12 +918,48 @@ void __iomem *of_io_request_and_map(struct device_node *np, int index,
-> >   }
-> >   EXPORT_SYMBOL(of_io_request_and_map);
-> >
-> > +static int dma_attach_pfn_offset_map(struct device_node *node, int num_ranges,
-> > +                                  struct bus_dma_region **map, size_t *map_size)
-> > +{
-> > +     struct of_range_parser parser;
-> > +     struct of_range range;
-> > +     struct bus_dma_region *r;
-> > +
-> > +     *map_size = (num_ranges + 1) * sizeof(**map);
-> > +     r = kcalloc(num_ranges + 1, sizeof(**map), GFP_KERNEL);
-> > +     if (!r)
-> > +             return -ENOMEM;
-> > +     *map = r;
-> > +
-> > +     of_dma_range_parser_init(&parser, node);
-> > +     /*
-> > +      * Record all info for DMA ranges array.  We could
-> > +      * just use the of_range struct, but if we did that it
->
-> Not making the entire DMA API depend on OF is a far better justification
-> for having its own dedicated structure.
->
-> > +      * would require more calculations for phys_to_dma and
-> > +      * dma_to_phys conversions.
-> > +      */
->
-> However that part is pretty much nonsense. Consider your "efficient"
-> operation for looking up and consuming a DMA offset:
->
->         API                             caller
-> 1. load cpu_start
-> 2. compare addr >= cpu_start
-> 3. load cpu_end
-> 4. compare addr <= cpu_end
-> 5. load pfn_offset
-> 6.                              shift pfn_offset << PAGE_SHIFT
-> 7.                              add "offset" + addr
-> 8.                              [use the result]
->
-> versus the "more calculations" approach (once the PFN cruft is peeled away):
->
->         API                             caller
-> 1. load cpu_addr
-> 2. compare addr >= cpu_addr
-> 3. subtract addr - cpu_addr
-> 4. load size
-> 5. compare "addr_offset" < size
-> 6. load dma_start
-> 7. add dma_start + "addr_offset"
-> 8.                              [use the result]
->
-> Oh look, it's the exact same number of memory accesses and ALU
-> operations, but with a smaller code footprint (assuming, reasonably,
-> more than one caller) and less storage overhead ;)
-I feel you have conflated two independent issues to get your
-comparison.  Issue one is having two  extra fields -- cpu_end, dma_end
--- and issue two is using address verses PFN offsets.  If you look at
-both code sequences when using an address offset verses PFN offset,
-the of_range way requires an extra computation.  Do you  agree?
+ drivers/media/dvb-core/dvb_frontend.c         | 231 ++++++++++--------
+ drivers/staging/media/atomisp/Kconfig         |   2 +-
+ drivers/staging/media/atomisp/i2c/Kconfig     |  74 +++---
+ .../staging/media/atomisp/i2c/ov5693/Kconfig  |  12 -
+ 4 files changed, 171 insertions(+), 148 deletions(-)
+ delete mode 100644 drivers/staging/media/atomisp/i2c/ov5693/Kconfig
 
->
-> Basically, having this degree of redundancy is somewhere between silly
-> and actively harmful (what if pfn_offset gets out of sync with
-> cpu_start/dma_start?
-How can this happen if the range map is set once and passed as a const
-structure?
+-- 
+2.26.2
 
-> What if cpu_end/dma_end don't represent equivalent lengths?)
-They are set once using the same +size operation so they must be
-equal.  They are not changed after they are set.
 
-Nonetheless, I really don't care which way we do it.  If you want me
-to have an of_range-like structure I am fine with that.
-
->
-> > +     for_each_of_range(&parser, &range) {
-> > +             r->cpu_start = range.cpu_addr;
-> > +             r->cpu_end = r->cpu_start + range.size - 1;
-> > +             r->dma_start = range.bus_addr;
-> > +             r->dma_end = r->dma_start + range.size - 1;
-> > +             r->pfn_offset = PFN_DOWN(range.cpu_addr) - PFN_DOWN(range.bus_addr);
-> > +             r++;
-> > +     }
-> > +     return 0;
-> > +}
-> > +
-> >   /**
-> >    * of_dma_get_range - Get DMA range info
-> >    * @np:             device node to get DMA range info
-> >    * @dma_addr:       pointer to store initial DMA address of DMA range
-> >    * @paddr:  pointer to store initial CPU address of DMA range
-> >    * @size:   pointer to store size of DMA range
-> > + * @map:     pointer to a pointer of an array of structs.  This is updated
-> > + *           to point to NULL (no offsets needed) or kmalloc'd array of
-> > + *           structs.  In the latter case, it is the caller's obligation to
-> > + *           kfree the array in the case it is no longer in use.
-> > + * @map_size:        updated to be the size in bytes of memory allocated to the map
-> >    *
-> >    * Look in bottom up direction for the first "dma-ranges" property
-> >    * and parse it.
-> > @@ -932,10 +968,11 @@ EXPORT_SYMBOL(of_io_request_and_map);
-> >    *  CPU addr (phys_addr_t)  : pna cells
-> >    *  size                    : nsize cells
-> >    *
-> > - * It returns -ENODEV if "dma-ranges" property was not found
-> > - * for this device in DT.
-> > + * It returns -ENODEV if "dma-ranges" property was not found for this
-> > + * device in the DT.
-> >    */
-> > -int of_dma_get_range(struct device_node *np, u64 *dma_addr, u64 *paddr, u64 *size)
-> > +int of_dma_get_range(struct device_node *np, u64 *dma_addr, u64 *paddr,
-> > +                  u64 *size, struct bus_dma_region **map, size_t *map_size)
->
-> dma_addr, paddr and size don't really make much sense any more when we
-> could be handling multiple ranges - it would seem logical to simplify
-> the interface entirely:
->
-> struct bus_dma_region *of_dma_get_range(struct device_node *np);
->
-> which returns either a valid map, NULL if dma-ranges is absent, or an
-> ERR_PTR.
-Fair enough, I'll change this.  As you may have guessed I typically
-lean towards just changing the minimal code I need to change and
-preserving the rest.
-
->
-> >   {
-> >       struct device_node *node = of_node_get(np);
-> >       const __be32 *ranges = NULL;
-> > @@ -944,7 +981,10 @@ int of_dma_get_range(struct device_node *np, u64 *dma_addr, u64 *paddr, u64 *siz
-> >       bool found_dma_ranges = false;
-> >       struct of_range_parser parser;
-> >       struct of_range range;
-> > -     u64 dma_start = U64_MAX, dma_end = 0, dma_offset = 0;
-> > +     phys_addr_t cpu_start = ~(phys_addr_t)0;
-> > +     u64 dma_start = U64_MAX, dma_end = 0;
-> > +     bool offset_map_needed = false;
-> > +     int num_ranges = 0;
-> >
-> >       while (node) {
-> >               ranges = of_get_property(node, "dma-ranges", &len);
-> [...]
-> > diff --git a/include/linux/device.h b/include/linux/device.h
-> > index 15460a5ac024..a17da8e271a2 100644
-> > --- a/include/linux/device.h
-> > +++ b/include/linux/device.h
-> > @@ -492,7 +492,7 @@ struct dev_links_info {
-> >    *          such descriptors.
-> >    * @bus_dma_limit: Limit of an upstream bridge or bus which imposes a smaller
-> >    *          DMA limit than the device itself supports.
-> > - * @dma_pfn_offset: offset of DMA memory range relatively of RAM
-> > + * @dma_pfn_offset_map: offset map for DMA memory range relatively of RAM
-> >    * @dma_parms:      A low level driver may set these to teach IOMMU code about
-> >    *          segment limitations.
-> >    * @dma_pools:      Dma pools (if dma'ble device).
-> > @@ -577,7 +577,7 @@ struct device {
-> >                                            64 bit addresses for consistent
-> >                                            allocations such descriptors. */
-> >       u64             bus_dma_limit;  /* upstream dma constraint */
-> > -     unsigned long   dma_pfn_offset;
-> > +     struct bus_dma_region *dma_pfn_offset_map;
->
-> I think it's a very good idea for this to be const.
-Agree.
-
->
-> >       struct device_dma_parameters *dma_parms;
-> >
-> [...]
-> > diff --git a/kernel/dma/mapping.c b/kernel/dma/mapping.c
-> > index 98e3d873792e..20149a29d136 100644
-> > --- a/kernel/dma/mapping.c
-> > +++ b/kernel/dma/mapping.c
-> > @@ -11,6 +11,7 @@
-> >   #include <linux/dma-noncoherent.h>
-> >   #include <linux/export.h>
-> >   #include <linux/gfp.h>
-> > +#include <linux/limits.h>
-> >   #include <linux/of_device.h>
-> >   #include <linux/slab.h>
-> >   #include <linux/vmalloc.h>
-> > @@ -407,3 +408,41 @@ unsigned long dma_get_merge_boundary(struct device *dev)
-> >       return ops->get_merge_boundary(dev);
-> >   }
-> >   EXPORT_SYMBOL_GPL(dma_get_merge_boundary);
-> > +
-> > +/**
-> > + * dma_attach_uniform_pfn_offset - Assign scalar offset for all addresses.
-> > + * @dev:     device pointer; needed to "own" the alloced memory.
-> > + * @pfn_offset:      offset to apply when converting from phys addr
-> > + *           to dma addr and vice versa.
-> > + *
-> > + * This is for the simple case of a uniform offset which requires
-> > + * no bounds calculations for its use.
->
-> That's crap - just because we've been (mostly) getting away without them
-> doesn't mean bounds checks aren't relevant to a uniform offset. Take a
-> look at this saga for an example of phys_to_dma() on something *below*
-> the offset being a very nasty problem indeed:
->
-> https://lore.kernel.org/linux-arm-kernel/9bbd87c2-5b6c-069c-dd22-5105dc827428@ti.com/
-Fair enough, I would love to have bounds for this and enforce them.
-The problem is that all of the drivers that are setting the offset do
-not indicate what the bounds actually are.  How do I get around this
-(other than removing my comment)?
-
->
-> >  It is the equivalent the role
-> > + * of the former dev->dma_pfn_offset; ie it is just blindly added
-> > + * or subtracted in all cases.
-> > + *
-> > + * It returns -ENOMEM if out of memory, -ENODEV if dev == NULL, otherwise 0.
-> > + */
-> > +int dma_attach_uniform_pfn_offset(struct device *dev, unsigned long pfn_offset)
-> > +{
-> > +     struct bus_dma_region *map;
-> > +
-> > +     if (!dev)
-> > +             return -ENODEV;
-> > +
-> > +     if (!pfn_offset)
-> > +             return 0;
-> > +
-> > +     map = devm_kcalloc(dev, 2, sizeof(*map), GFP_KERNEL);
->
-> Nope, if you want to call this from bus notifiers then it can't use
-> devres - see the list_empty(&dev->devres_head) check in really_probe().
-> However, I think those platform-level cases are probably better off
-> statically allocating a single map for all devices to share (I had an
-> idea about doing similar in the DT code, but that could be a future
-> optimisation); this function is really only needed for nasty
-> driver-level hacks like the sunxi ones.
-Yes, but there are a decent number of these drivers.  To be clear, you
-have reservations but no change in code is required?
-
->
-> And for those driver-level hacks, I think it would also be worth being a
-> bit cleverer here, i.e. not blindly replacing any existing ranges (but
-> returning success if the desired offset is already in place).
-Got it.
-
->
-> > +     if (!map)
-> > +             return -ENOMEM;
-> > +
-> > +     map->pfn_offset = pfn_offset;
-> > +     map->cpu_start = 0;
-> > +     map->cpu_end = PHYS_ADDR_MAX;
-> > +     map->dma_start = 0;
-> > +     map->dma_end = ~(dma_addr_t)0;
->
-> As above, allowing these to be out-of-sync with the fundamental
-> constraints of dma_pfn_offset seems really bad - there is no valid DMA
-> address corresponding to cpu_start and no representable physical address
-> corresponding to dma_end, and no good can come of that. But of course
-> getting rid of the redundancy entirely is even better.
-Understood.
-
-Thanks much for your time and review,
-Jim Quinlan
-
->
-> Robin.
->
-> > +     dev->dma_pfn_offset_map = map;
-> > +
-> > +     return 0;
-> > +}
-> > +EXPORT_SYMBOL_GPL(dma_attach_uniform_pfn_offset);
-> >
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
