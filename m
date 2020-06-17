@@ -1,58 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D38801FD52D
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 21:08:13 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A305E1FD534
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 21:10:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0F6ED21543;
-	Wed, 17 Jun 2020 19:08:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3A8F28841A;
+	Wed, 17 Jun 2020 19:10:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OWqpD52qO2Pu; Wed, 17 Jun 2020 19:08:09 +0000 (UTC)
+	with ESMTP id 87o3Bl2msrfJ; Wed, 17 Jun 2020 19:10:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2000D22735;
-	Wed, 17 Jun 2020 19:08:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AA4EA88293;
+	Wed, 17 Jun 2020 19:10:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DE6911BF429
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:08:03 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E20301BF429
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:10:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CD1A721567
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:08:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DB99A8944C
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 19:10:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cBbGDgsh2JUX for <devel@linuxdriverproject.org>;
- Wed, 17 Jun 2020 19:08:01 +0000 (UTC)
+ with ESMTP id dZ6UHTpgXD+X for <devel@linuxdriverproject.org>;
+ Wed, 17 Jun 2020 19:10:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 19CBC21549
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 19:08:01 +0000 (UTC)
-Received: from coco.lan (ip5f5ad5c5.dynamic.kabel-deutschland.de
- [95.90.213.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8348C212CC;
- Wed, 17 Jun 2020 19:07:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592420880;
- bh=e/5+Rb5G33cHdb0vaSQhP5UBxDZid2EqzR4REteNm0g=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=ijyw4jYzonC/TpUxkUJcYLfLFvoV/dmUA8cVBeRHaoHrHlBI7zK+yMx9+lllc15a/
- WuEhuYKCU3ar0yPMOCqvBCBoGM3ojMuJYBnwdCzSXD0Lie1rzsM2M0s2x+/8tp4Z0i
- 8xRnltLkln8admHqJZo1pd6PJRKGyBPVv6kXccOE=
-Date: Wed, 17 Jun 2020 21:07:55 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Linux Media Mailing List <linux-media@vger.kernel.org>
-Subject: Re: [RFC 0/4] Don't do tuning zigzag using the very same frequency
-Message-ID: <20200617210755.1138caa2@coco.lan>
-In-Reply-To: <cover.1592419750.git.mchehab+huawei@kernel.org>
-References: <cover.1592419750.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 57799884CD
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 19:10:18 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05HJ2vLf142471;
+ Wed, 17 Jun 2020 19:10:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=mhAjOCK0qv8EHbqezwl/u4xE0OuLg6vcd5uRS+AMk4U=;
+ b=ejG5Xxf8X/NVgYvzKEpOt60d6ryq+DukRJeSDhaICKwOl+ecUmj68ZQ7iwMfvdNHA5Sr
+ eH1NtD4x6q5/NfrJWvL7T3xu2I40rzi1rgAILePdPyVDxlH+hi2t02aENtyZgQfNE1aX
+ OViMBo4chvaSeIyRc/R65/9aehkpQjDyHZaTtesH/rgIhJEcv2EDPrz5mWstjMnwiQV3
+ f0nrnxhn3L44nz6KbztfwE5Meq6bB3Qg3zv/3hBnsGhkmQFHDX+8sgrFX+bFXar343Lf
+ d2CDm4P78EGwcIgkaKRpaonNAZXiIDkEXjcSLRxUUtNYVfzvyC9+G3KRPadSRlRawqRG oA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2120.oracle.com with ESMTP id 31qeckus38-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 17 Jun 2020 19:10:12 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05HJ3fW4082324;
+ Wed, 17 Jun 2020 19:10:12 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3020.oracle.com with ESMTP id 31q65y2yrw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 17 Jun 2020 19:10:11 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 05HJAAO2005034;
+ Wed, 17 Jun 2020 19:10:10 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 17 Jun 2020 12:10:09 -0700
+Date: Wed, 17 Jun 2020 22:10:02 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Zhixu Zhao <zhixu001@126.com>
+Subject: Re: [PATCH v2] staging: gasket: core: Fix a coding style issue in
+ gasket_core.c
+Message-ID: <20200617191002.GP4151@kadam>
+References: <20200617161127.32006-1-zhixu001@126.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200617161127.32006-1-zhixu001@126.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9655
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ spamscore=0
+ phishscore=0 bulkscore=0 malwarescore=0 mlxscore=0 adultscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2006170144
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9655
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ cotscore=-2147483648 malwarescore=0
+ clxscore=1011 adultscore=0 suspectscore=0 spamscore=0 lowpriorityscore=0
+ mlxlogscore=999 priorityscore=1501 bulkscore=0 phishscore=0 mlxscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2006170144
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,42 +98,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Sean Young <sean@mess.org>,
- Arnd Bergmann <arnd@arndb.de>, Marc Gonzalez <marc.w.gonzalez@free.fr>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Masahiro Yamada <masahiroy@kernel.org>, Brad Love <brad@nextdimension.cc>,
- linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Richard Yeh <rcy@google.com>,
+ Rob Springer <rspringer@google.com>, Joe Perches <joe@perches.com>,
+ Todd Poynor <toddpoynor@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Wed, 17 Jun 2020 20:52:10 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> escreveu:
+On Thu, Jun 18, 2020 at 12:11:27AM +0800, Zhixu Zhao wrote:
+> diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
+> index 67325fbaf760..28dab302183b 100644
+> --- a/drivers/staging/gasket/gasket_core.c
+> +++ b/drivers/staging/gasket/gasket_core.c
+> @@ -261,6 +261,7 @@ static int gasket_map_pci_bar(struct gasket_dev *gasket_dev, int bar_num)
+>  	const struct gasket_driver_desc *driver_desc =
+>  		internal_desc->driver_desc;
+>  	ulong desc_bytes = driver_desc->bar_descriptions[bar_num].size;
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Get rid of this as well (below).
 
-> Marc reported on IRC that the zigzag code is trying to tune several times using
-> the same frequency with si2168. Well, this is not how this would be supposed
-> to do: it should try with different frequencies each time.
-> 
-> Change the core to use the one-shot mode if the frontend doesn't report a
-> frequency step. This will default to the current behavior, except that tuning
-> should be faster.
-> 
-> Yet, probably the right thing to do is to implement a frequency shift at such
-> frontends, as otherwise  tuning may have problems. So, produce a warning
-> on such cases, in order for the FE driver to be fixed.
-> 
+> +	struct gasket_bar_data *data;
+>  	int ret;
+>  
+>  	if (desc_bytes == 0)
+> @@ -270,31 +271,32 @@ static int gasket_map_pci_bar(struct gasket_dev *gasket_dev, int bar_num)
+>  		/* not PCI: skip this entry */
+>  		return 0;
+>  	}
+> +
+> +	data = &gasket_dev->bar_data[bar_num];
 
+It would be better to do this in the declaration block so you can change
+the earlier two uses in this function:
 
-> Mauro Carvalho Chehab (4):
->   media: atomisp: fix identation at I2C Kconfig menu
->   media: atomisp: fix help message for ISP2401 selection
++	struct gasket_bar_data *data = &gasket_dev->bar_data[bar_num];
+-	ulong desc_bytes = driver_desc->bar_descriptions[bar_num].size;
++	ulong desc_bytes = data->size;
 
-Those two patches are unrelated. Please ignore it on the context of this RFC.
+...
 
+-	if (driver_desc->bar_descriptions[bar_num].type != PCI_BAR) {
++	if (data->type != PCI_BAR) {
 
-Thanks,
-Mauro
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
