@@ -1,76 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 328171FC432
-	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 04:38:43 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 514081FC5D8
+	for <lists+driverdev-devel@lfdr.de>; Wed, 17 Jun 2020 07:55:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1AAF6895EC;
-	Wed, 17 Jun 2020 02:38:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E6FBB21561;
+	Wed, 17 Jun 2020 05:55:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9CM7prxSUMpC; Wed, 17 Jun 2020 02:38:40 +0000 (UTC)
+	with ESMTP id TtF4yx8gG00U; Wed, 17 Jun 2020 05:55:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BB0F8895E3;
-	Wed, 17 Jun 2020 02:38:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 58F2820403;
+	Wed, 17 Jun 2020 05:55:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5A0291BF38E
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 02:38:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C3E991BF844
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 05:54:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5680B87AFD
- for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 02:38:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C0BA5883AF
+ for <devel@linuxdriverproject.org>; Wed, 17 Jun 2020 05:54:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id duT3Tf3vFEaY for <devel@linuxdriverproject.org>;
- Wed, 17 Jun 2020 02:38:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
- [209.85.216.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AE7C287AF7
- for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 02:38:37 +0000 (UTC)
-Received: by mail-pj1-f66.google.com with SMTP id a45so1786022pje.1
- for <devel@driverdev.osuosl.org>; Tue, 16 Jun 2020 19:38:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=2fsUbTxVXQuihX2yvqrI7NERARlbGjrtDeHmGabbVEU=;
- b=Wf5TG5YNvh6DHTC/0T6jlYTVpC4iC7DxxYZmDDnkhjXp536NkdxWm88Xc4J+bSnhkH
- pPqZvmVLxyBCwN+rMxsmAOcEavVUAAT9tvmQpYsT5PIltn3AoItPSFrjbCDfSX5j+8Gp
- ayPi4vydHAbNWSTSGGNfhgIF5Vfs0m6UvO5h2JPnMXaB3TuPChe3uqaIldWV+XuszzXx
- x3OXFPcJMUlK0HQ+TYRTuEE/PgNNmuLsua23gcqWw6xaLxBR/bx6TYTRqY+uLBwZFw0f
- f1zQtKBH2ctsK2HVIKauwSXsrUwZr+wAbgBh+Y+VxapXOdzZHbuek2uhLdS3vDaTBYRL
- JJtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=2fsUbTxVXQuihX2yvqrI7NERARlbGjrtDeHmGabbVEU=;
- b=iELphLf40OiRdUPCEMTpxDLCO6LbZ2b3VtWGk5XNA6nAhfcRsmwOSMiwsFB/iekP89
- pWGJAxxRaDrdU+zjC8xxM3MAxhbJeYXA0qPdiVELf2aMn/pWq9z3y7f+obJg8WYCfAiQ
- C9VJGzqYBS7Nn31OZ2KMCh+KA+kv18f73oMY036VLulHAkD8zODIdy48up/sbJwywW+G
- xPXdAT1ajaeQIcfaPsLwZYJnsf9lrtdfNfzASEQc02Mhx5pocmgZs+8lOCX/Tinq62Em
- 7x6kAWreMG+JzowStnPgMhc6Wvf12uEHTbXahGyhuSxkDwL7fg/PESm0T3YYl1ioXkO9
- B2mQ==
-X-Gm-Message-State: AOAM530FeLu6EKCOdT2v2JnpcVGqpuH8sJk7DVkDsCkWn7TbrqiNUN5L
- CEhXEdT/MpFeNUudEPHawMM=
-X-Google-Smtp-Source: ABdhPJwi59hfult5Zg7AIgt1J9g2XkeDyBiXVlRPd6nR92yvVk9hrW3BpM0C20966+Kv7H45oOHGxg==
-X-Received: by 2002:a17:90a:de95:: with SMTP id
- n21mr5731559pjv.100.1592361517243; 
- Tue, 16 Jun 2020 19:38:37 -0700 (PDT)
-Received: from jordon-HP-15-Notebook-PC.domain.name ([122.171.213.184])
- by smtp.gmail.com with ESMTPSA id s11sm17806105pfh.204.2020.06.16.19.38.34
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 16 Jun 2020 19:38:36 -0700 (PDT)
-From: Souptick Joarder <jrdr.linux@gmail.com>
-To: rspringer@google.com, toddpoynor@google.com, benchan@chromium.org,
- gregkh@linuxfoundation.org
-Subject: [PATCH v2] staging: gasket: Convert get_user_pages*() -->
- pin_user_pages*()
-Date: Wed, 17 Jun 2020 08:15:30 +0530
-Message-Id: <1592361930-3813-1-git-send-email-jrdr.linux@gmail.com>
-X-Mailer: git-send-email 1.9.1
+ with ESMTP id Wa7K6cNqeMrg for <devel@linuxdriverproject.org>;
+ Wed, 17 Jun 2020 05:54:58 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8E26688398
+ for <devel@driverdev.osuosl.org>; Wed, 17 Jun 2020 05:54:58 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id C1F682073E;
+ Wed, 17 Jun 2020 05:54:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1592373298;
+ bh=CZ5HCt+0GUicwcyUHaA/NsM5WdKI29lnhh1xbvG3IC8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=g0Sb2PPmzBlg03Sx0ki76X7WpR+ZAP+lfkzqhUZwSCcUQnZABPGmwfJLNs3sZaOWJ
+ Mhknm/iwa6Ga34gkVOWHQK65vwqLgocpColXC+cvLZvEW9tAqeSES2yiQlqtbdnNnB
+ 9XTU3uKKIIBXVSIZsKYQ61M3Ic2whfYDaEMrKX10=
+Date: Wed, 17 Jun 2020 07:54:55 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: dan love <danlovecomputing@gmail.com>
+Subject: Re: [PATCH] Fixed styling issues by adding blank line after
+ definitions.
+Message-ID: <20200617055455.GA25631@kroah.com>
+References: <20200616202658.4844-1-danlove99@hotmail.co.uk>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200616202658.4844-1-danlove99@hotmail.co.uk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,72 +66,90 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, John Hubbard <jhubbard@nvidia.com>,
- linux-kernel@vger.kernel.org, Dan Carpenter <dan.carpenter@oracle.com>,
- Souptick Joarder <jrdr.linux@gmail.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Xin Tan <tanxin.ctf@gmail.com>,
+ Xiyu Yang <xiyuyang19@fudan.edu.cn>, linux-kernel@vger.kernel.org,
+ danlove99@hotmail.co.uk, abbotti@mev.co.uk, Al Viro <viro@zeniv.linux.org.uk>,
+ Michel Lespinasse <walken@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In 2019, we introduced pin_user_pages*() and now we are converting
-get_user_pages*() to the new API as appropriate. [1] & [2] could
-be referred for more information.
+On Tue, Jun 16, 2020 at 09:26:55PM +0100, dan love wrote:
+> Signed-off-by: dan love <danlove99@hotmail.co.uk>
+> ---
+>  drivers/staging/comedi/comedi_fops.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
+> index e85a99b68f31..3f70e5dfac39 100644
+> --- a/drivers/staging/comedi/comedi_fops.c
+> +++ b/drivers/staging/comedi/comedi_fops.c
+> @@ -2169,6 +2169,7 @@ static long comedi_unlocked_ioctl(struct file *file, unsigned int cmd,
+>  		break;
+>  	case COMEDI_CHANINFO: {
+>  		struct comedi_chaninfo it;
+> +
+>  		if (copy_from_user(&it, (void __user *)arg, sizeof(it)))
+>  			rc = -EFAULT;
+>  		else
+> @@ -2177,6 +2178,7 @@ static long comedi_unlocked_ioctl(struct file *file, unsigned int cmd,
+>  	}
+>  	case COMEDI_RANGEINFO: {
+>  		struct comedi_rangeinfo it;
+> +
+>  		if (copy_from_user(&it, (void __user *)arg, sizeof(it)))
+>  			rc = -EFAULT;
+>  		else
+> @@ -2249,6 +2251,7 @@ static long comedi_unlocked_ioctl(struct file *file, unsigned int cmd,
+>  	}
+>  	case COMEDI_INSN: {
+>  		struct comedi_insn insn;
+> +
+>  		if (copy_from_user(&insn, (void __user *)arg, sizeof(insn)))
+>  			rc = -EFAULT;
+>  		else
+> -- 
+> 2.17.1
+> 
+> _______________________________________________
+> devel mailing list
+> devel@linuxdriverproject.org
+> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
-[1] Documentation/core-api/pin_user_pages.rst
-
-[2] "Explicit pinning of user-space pages":
-	https://lwn.net/Articles/807108/
-
-Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-Acked-by: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: John Hubbard <jhubbard@nvidia.com>
-Cc: Dan Carpenter <dan.carpenter@oracle.com>
-
----
 Hi,
 
-I'm compile tested this, but unable to run-time test, so any testing
-help is much appriciated.
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
-v2: 
-	Added review tag.
+You are receiving this message because of the following common error(s)
+as indicated below:
 
- drivers/staging/gasket/gasket_page_table.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what is needed in order to
+  properly describe the change.
 
-diff --git a/drivers/staging/gasket/gasket_page_table.c b/drivers/staging/gasket/gasket_page_table.c
-index f6d7157..d712ad4 100644
---- a/drivers/staging/gasket/gasket_page_table.c
-+++ b/drivers/staging/gasket/gasket_page_table.c
-@@ -449,7 +449,7 @@ static bool gasket_release_page(struct page *page)
- 
- 	if (!PageReserved(page))
- 		SetPageDirty(page);
--	put_page(page);
-+	unpin_user_page(page);
- 
- 	return true;
- }
-@@ -486,12 +486,12 @@ static int gasket_perform_mapping(struct gasket_page_table *pg_tbl,
- 			ptes[i].dma_addr = pg_tbl->coherent_pages[0].paddr +
- 					   off + i * PAGE_SIZE;
- 		} else {
--			ret = get_user_pages_fast(page_addr - offset, 1,
-+			ret = pin_user_pages_fast(page_addr - offset, 1,
- 						  FOLL_WRITE, &page);
- 
- 			if (ret <= 0) {
- 				dev_err(pg_tbl->device,
--					"get user pages failed for addr=0x%lx, offset=0x%lx [ret=%d]\n",
-+					"pin user pages failed for addr=0x%lx, offset=0x%lx [ret=%d]\n",
- 					page_addr, offset, ret);
- 				return ret ? ret : -ENOMEM;
- 			}
--- 
-1.9.1
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what a proper Subject: line should
+  look like.
 
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
