@@ -1,52 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A39BA1FE367
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 04:09:56 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 024EE1FECCE
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 09:48:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE6F8876BE;
-	Thu, 18 Jun 2020 02:09:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 03A7886B60;
+	Thu, 18 Jun 2020 07:48:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5i1GNQ+Gc+dY; Thu, 18 Jun 2020 02:09:54 +0000 (UTC)
+	with ESMTP id dZ0AW3cElDdW; Thu, 18 Jun 2020 07:48:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F39E186DDC;
-	Thu, 18 Jun 2020 02:09:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EFFF586A3D;
+	Thu, 18 Jun 2020 07:47:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 793051BF3D6
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 02:09:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 418451BF37E
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 07:47:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6AD762036D
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 02:09:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 38A2786AE3
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 07:47:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id odLRuis9BS7p for <devel@linuxdriverproject.org>;
- Thu, 18 Jun 2020 02:09:51 +0000 (UTC)
-X-Greylist: delayed 00:58:48 by SQLgrey-1.7.6
-Received: from lxserver.georg-reischl.de (mail.georg-reischl.de [80.153.22.92])
- by silver.osuosl.org (Postfix) with ESMTP id EEEE720364
- for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 02:09:50 +0000 (UTC)
-Received: from lxserver.georg-reischl.de (localhost [127.0.0.1])
- by lxserver.georg-reischl.de (Postfix) with ESMTP id E82703A5CD1;
- Thu, 18 Jun 2020 02:54:46 +0200 (CEST)
-Received: by lxserver.georg-reischl.de (Postfix, from userid 1001)
- id D93C53A5CE0; Thu, 18 Jun 2020 02:54:46 +0200 (CEST)
-Received: from [185.234.217.156] (unknown [185.234.217.156])
- by lxserver.georg-reischl.de (Postfix) with ESMTPA id 6BE1B3A5CD1;
- Thu, 18 Jun 2020 02:54:43 +0200 (CEST)
+ with ESMTP id m1oyvQSsLQfR for <devel@linuxdriverproject.org>;
+ Thu, 18 Jun 2020 07:47:57 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 86ABF86A3D
+ for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 07:47:57 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id CD2042166E;
+ Thu, 18 Jun 2020 07:47:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1592466477;
+ bh=uN0TGa/T7pPRO9EFXsTyPP8pb9QfsOxNueiaH6cBEEI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=tLXMoTqzkPPPNMphukDIi+S1xDuWNkqoJpP6PiqTa5/VBfFNnbGTRRdlUFkIZyKrc
+ yAggmB0Rf6lkOcF3bzxf4MAld23WB8IsJ7FyWb2H7Qjgk1mmrKf4YqNB+U4WhUSl76
+ 8qEzGi9pYaojDeglSgKCaAVB73qv9Y0sTGGJ7BKM=
+Date: Thu, 18 Jun 2020 09:47:50 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: "Rodolfo C. Villordo" <rodolfovillordo@gmail.com>
+Subject: Re: [PATCH] staging: gasket: replace symbolic permissions
+Message-ID: <20200618074750.GA186463@kroah.com>
+References: <20200601005240.6315-1-rodolfovillordo@gmail.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: MY DONATION FOR THE LESS PRIVILEGED IN THIS TIME OF PANDEMIC
-To: Recipients <NAME@brownrice.com>
-From: "CHRISTY MCCOOL" <NAME@brownrice.com>
-Date: Wed, 17 Jun 2020 17:54:42 -0700
-X-Virus-Scanned: ClamAV using ClamSMTP
-Message-Id: <20200618020952.6AD762036D@silver.osuosl.org>
+Content-Disposition: inline
+In-Reply-To: <20200601005240.6315-1-rodolfovillordo@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,17 +65,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: christymccool12@outlook.com
+Cc: devel@driverdev.osuosl.org, Richard Yeh <rcy@google.com>,
+ Todd Poynor <toddpoynor@google.com>, Rob Springer <rspringer@google.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Mon, Jun 01, 2020 at 12:52:40AM +0000, Rodolfo C. Villordo wrote:
+> WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal permissions '0444'.
+> +               .attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
+> warning detected by checkpatch.pl
+> 
+> Signed-off-by: Rodolfo C. Villordo <rodolfovillordo@gmail.com>
+> ---
+>  drivers/staging/gasket/gasket_sysfs.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/gasket/gasket_sysfs.h b/drivers/staging/gasket/gasket_sysfs.h
+> index ab5aa351d555..d5e167dfbe76 100644
+> --- a/drivers/staging/gasket/gasket_sysfs.h
+> +++ b/drivers/staging/gasket/gasket_sysfs.h
+> @@ -71,7 +71,7 @@ struct gasket_sysfs_attribute {
+>  
+>  #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)                     \
+>  	{                                                                      \
+> -		.attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
+> +		.attr = __ATTR(_name, 0444, _show_function, NULL),          \
 
-?I write to ask for your consent to carry out humanitarian projects and help the less privileged in this time of pandemic all over the world, I suffer from advanced cancer that prevents me from realizing my dreams. The doctor informed me that my days are numbered due to my degrading health. That's why I want to send you this sum of money ($4,000,000.00) Four million dollars so you can use it to help orphanages, the homeless and widows in this time this deathly virus (Covid 19) that is holding the world into ransom. 35% for you while you use 65% for the project, if you think you can give these poor children and the poor widow a glimpse of hope and joy, let me know by replying to my private email that is (christymccool12@outlook.com) Thank you for your cooperation and assistance.
+What about using __ATTR_RO() instead?
 
+thanks,
 
-CHRISTY MCCOOL
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
