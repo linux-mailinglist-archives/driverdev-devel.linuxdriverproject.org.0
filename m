@@ -2,55 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9814B1FDB4F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 03:11:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98E0D1FDB50
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 03:11:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3704886C93;
-	Thu, 18 Jun 2020 01:11:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4BCE086D23;
+	Thu, 18 Jun 2020 01:11:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id smFtZod0VrN9; Thu, 18 Jun 2020 01:11:55 +0000 (UTC)
+	with ESMTP id k0IcfcA7flCS; Thu, 18 Jun 2020 01:11:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 880F986BA3;
-	Thu, 18 Jun 2020 01:11:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 64B0486CF5;
+	Thu, 18 Jun 2020 01:11:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 30DE11BF9C1
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:11:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2CEAB1BF31F
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:11:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2DC658801A
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:11:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 297A98805A
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:11:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3Mg1MBcH4Y1W for <devel@linuxdriverproject.org>;
- Thu, 18 Jun 2020 01:11:51 +0000 (UTC)
+ with ESMTP id UdSFl8HxCc9k for <devel@linuxdriverproject.org>;
+ Thu, 18 Jun 2020 01:11:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4FB9088007
- for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 01:11:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8705488007
+ for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 01:11:52 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6613021974;
- Thu, 18 Jun 2020 01:11:50 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9D45220B1F;
+ Thu, 18 Jun 2020 01:11:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592442711;
- bh=tXZguFDtMNtJqm3M9bfTwLckJP+68oggVDjUs9RehoA=;
+ s=default; t=1592442712;
+ bh=qnZJ+y88am70vNTm8oIcf5bPU1V80wtwWA+jUDlUqHA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=E/xBmkX8lgGJH6ECqJnnT64IrHI8qV/pUlg0PLHIMvqM+TrpjiYk1ClP4IqDylMuU
- cpI7brpOCvGlyeX5lG36xrzmVEmCXozUEdbUBTzkr7ImmRA3HS2XwKtI2bm7VB7ylR
- NZjgZ10npJlP9wQywcXAMdCgbHZvO17s3DFxYtYM=
+ b=O1VnLVW4y8xjGucdJTIU3QSgfVqN8ALaPNxrzYmGPeHDS4XWp7n8trbcqVJaLbJCw
+ mjcvlLCt/aObGHtBFq3v0SxiL25yybk5BaQS+I3OnOeoebDGUb2dvotV2+FvbOhAQ+
+ 9o8OdtRKMnv9egfbZ+lm0ikBUPZww5J9bqDW57RQ=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.7 171/388] staging: sm750fb: add missing case while
- setting FB_VISUAL
-Date: Wed, 17 Jun 2020 21:04:28 -0400
-Message-Id: <20200618010805.600873-171-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.7 172/388] staging: wfx: avoid compiler warning on
+ empty array
+Date: Wed, 17 Jun 2020 21:04:29 -0400
+Message-Id: <20200618010805.600873-172-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200618010805.600873-1-sashal@kernel.org>
 References: <20200618010805.600873-1-sashal@kernel.org>
@@ -69,42 +69,80 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
- Sasha Levin <sashal@kernel.org>
+Cc: Sasha Levin <sashal@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ Arnd Bergmann <arnd@arndb.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Matej Dujava <mdujava@kocurkovo.cz>
+From: Arnd Bergmann <arnd@arndb.de>
 
-[ Upstream commit fa90133377f4a7f15a937df6ad55133bb57c5665 ]
+[ Upstream commit 2eeefd3787fdc6319124945d453774be95b97897 ]
 
-Switch statement does not contain all cases: 8, 16, 24, 32.
-This patch will add missing one (24)
+When CONFIG_OF is disabled, gcc-9 produces a warning about the
+wfx_sdio_of_match[] array having a declaration without a dimension:
 
-Fixes: 81dee67e215b ("staging: sm750fb: add sm750 to staging")
-Signed-off-by: Matej Dujava <mdujava@kocurkovo.cz>
-Link: https://lore.kernel.org/r/1588277366-19354-2-git-send-email-mdujava@kocurkovo.cz
+drivers/staging/wfx/bus_sdio.c:159:34: error: array 'wfx_sdio_of_match' assumed to have one element [-Werror]
+  159 | static const struct of_device_id wfx_sdio_of_match[];
+      |                                  ^~~~~~~~~~~~~~~~~
+
+Move the proper declaration up and out of the #ifdef instead.
+
+Fixes: a7a91ca5a23d ("staging: wfx: add infrastructure for new driver")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Cc: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Link: https://lore.kernel.org/r/20200429142119.1735196-1-arnd@arndb.de
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/sm750fb/sm750.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/wfx/bus_sdio.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-index 59568d18ce23..5b72aa81d94c 100644
---- a/drivers/staging/sm750fb/sm750.c
-+++ b/drivers/staging/sm750fb/sm750.c
-@@ -898,6 +898,7 @@ static int lynxfb_set_fbinfo(struct fb_info *info, int index)
- 		fix->visual = FB_VISUAL_PSEUDOCOLOR;
- 		break;
- 	case 16:
-+	case 24:
- 	case 32:
- 		fix->visual = FB_VISUAL_TRUECOLOR;
- 		break;
+diff --git a/drivers/staging/wfx/bus_sdio.c b/drivers/staging/wfx/bus_sdio.c
+index dedc3ff58d3e..c2e4bd1e3b0a 100644
+--- a/drivers/staging/wfx/bus_sdio.c
++++ b/drivers/staging/wfx/bus_sdio.c
+@@ -156,7 +156,13 @@ static const struct hwbus_ops wfx_sdio_hwbus_ops = {
+ 	.align_size		= wfx_sdio_align_size,
+ };
+ 
+-static const struct of_device_id wfx_sdio_of_match[];
++static const struct of_device_id wfx_sdio_of_match[] = {
++	{ .compatible = "silabs,wfx-sdio" },
++	{ .compatible = "silabs,wf200" },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, wfx_sdio_of_match);
++
+ static int wfx_sdio_probe(struct sdio_func *func,
+ 			  const struct sdio_device_id *id)
+ {
+@@ -248,15 +254,6 @@ static const struct sdio_device_id wfx_sdio_ids[] = {
+ };
+ MODULE_DEVICE_TABLE(sdio, wfx_sdio_ids);
+ 
+-#ifdef CONFIG_OF
+-static const struct of_device_id wfx_sdio_of_match[] = {
+-	{ .compatible = "silabs,wfx-sdio" },
+-	{ .compatible = "silabs,wf200" },
+-	{ },
+-};
+-MODULE_DEVICE_TABLE(of, wfx_sdio_of_match);
+-#endif
+-
+ struct sdio_driver wfx_sdio_driver = {
+ 	.name = "wfx-sdio",
+ 	.id_table = wfx_sdio_ids,
+@@ -264,6 +261,6 @@ struct sdio_driver wfx_sdio_driver = {
+ 	.remove = wfx_sdio_remove,
+ 	.drv = {
+ 		.owner = THIS_MODULE,
+-		.of_match_table = of_match_ptr(wfx_sdio_of_match),
++		.of_match_table = wfx_sdio_of_match,
+ 	}
+ };
 -- 
 2.25.1
 
