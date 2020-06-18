@@ -1,56 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E39FB1FDC5B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 03:19:15 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8D71F870EF;
-	Thu, 18 Jun 2020 01:19:14 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zqUp6nzn6cdf; Thu, 18 Jun 2020 01:19:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E41A78699E;
-	Thu, 18 Jun 2020 01:19:12 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B5A381BF31F
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:19:10 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2818B1FDC5C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 03:19:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B267F86439
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:19:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7AE7B8764B;
+	Thu, 18 Jun 2020 01:19:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Au9qJND+BHi8; Thu, 18 Jun 2020 01:19:16 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id DB78786FBB;
+	Thu, 18 Jun 2020 01:19:14 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AAB471BF31F
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:19:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A6CFB86FD3
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:19:12 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dDYEimRQlHET for <devel@linuxdriverproject.org>;
- Thu, 18 Jun 2020 01:19:10 +0000 (UTC)
+ with ESMTP id MkNbGsdS4Z6Y for <devel@linuxdriverproject.org>;
+ Thu, 18 Jun 2020 01:19:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4EC6684543
- for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 01:19:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 82BD08699E
+ for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 01:19:11 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 50E0221D7E;
- Thu, 18 Jun 2020 01:19:09 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9BAD221D90;
+ Thu, 18 Jun 2020 01:19:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592443150;
- bh=JS+n9eHJSbbyBwQT+4ZlUCQqCKe0Fm6rnx22FfFJZq4=;
+ s=default; t=1592443151;
+ bh=tXZguFDtMNtJqm3M9bfTwLckJP+68oggVDjUs9RehoA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=EUaN5itMJaj+MG5mIlP7aU/Vs7zm6dXmjB5LVNWVGd/hEKogk/k2VmH/xM3rwhcki
- CqQBKlGwOmx6rethrCK3PLwjYvybJWsjY4sD95JYGchKFA6dAEidIRGdUaB6/1z50p
- KBjs9XcLkdlZj0SUcZseN79bWJQKUHBjVOrFc2+s=
+ b=Hu8wbbD1ONcjaDunbL1pXAFR5efvZsUyYJaqAhtBK8W90iKze4VDgwdAjuFNACvKr
+ xuO/+R+SHfCuyVUkD9+gIFC4qJ9PEi2AZjyw3m0JUfLIOKW9GMhfbuJKkSDiYiLZE/
+ O/JJuFQb4jOBSUyK2LzfCEgOoXFKoXo0Hjkn2sS4=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 118/266] staging: wilc1000: Increase the size of
- wid_list array
-Date: Wed, 17 Jun 2020 21:14:03 -0400
-Message-Id: <20200618011631.604574-118-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 119/266] staging: sm750fb: add missing case while
+ setting FB_VISUAL
+Date: Wed, 17 Jun 2020 21:14:04 -0400
+Message-Id: <20200618011631.604574-119-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200618011631.604574-1-sashal@kernel.org>
 References: <20200618011631.604574-1-sashal@kernel.org>
@@ -69,58 +69,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org,
- Ajay Singh <ajay.kathat@microchip.com>, Oscar Carter <oscar.carter@gmx.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-wireless@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
+ Sasha Levin <sashal@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Oscar Carter <oscar.carter@gmx.com>
+From: Matej Dujava <mdujava@kocurkovo.cz>
 
-[ Upstream commit a4338ed2e1cf724563956ec5f91deeaabfedbe23 ]
+[ Upstream commit fa90133377f4a7f15a937df6ad55133bb57c5665 ]
 
-Increase by one the size of wid_list array as index variable can reach a
-value of 5. If this happens, an out-of-bounds access is performed.
+Switch statement does not contain all cases: 8, 16, 24, 32.
+This patch will add missing one (24)
 
-Also, use a #define instead of a hard-coded literal for the new array
-size.
-
-Addresses-Coverity-ID: 1451981 ("Out-of-bounds access")
-Fixes: f5a3cb90b802d ("staging: wilc1000: add passive scan support")
-Acked-by: Ajay Singh <ajay.kathat@microchip.com>
-Signed-off-by: Oscar Carter <oscar.carter@gmx.com>
-Link: https://lore.kernel.org/r/20200504150911.4470-1-oscar.carter@gmx.com
+Fixes: 81dee67e215b ("staging: sm750fb: add sm750 to staging")
+Signed-off-by: Matej Dujava <mdujava@kocurkovo.cz>
+Link: https://lore.kernel.org/r/1588277366-19354-2-git-send-email-mdujava@kocurkovo.cz
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/wilc1000/wilc_hif.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/staging/sm750fb/sm750.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/wilc1000/wilc_hif.c b/drivers/staging/wilc1000/wilc_hif.c
-index 77d0732f451b..221e3d93db14 100644
---- a/drivers/staging/wilc1000/wilc_hif.c
-+++ b/drivers/staging/wilc1000/wilc_hif.c
-@@ -12,6 +12,8 @@
- #define WILC_FALSE_FRMWR_CHANNEL		100
- #define WILC_MAX_RATES_SUPPORTED		12
- 
-+#define WILC_SCAN_WID_LIST_SIZE		6
-+
- struct wilc_rcvd_mac_info {
- 	u8 status;
- };
-@@ -233,7 +235,7 @@ int wilc_scan(struct wilc_vif *vif, u8 scan_source, u8 scan_type,
- 	      void *user_arg, struct cfg80211_scan_request *request)
- {
- 	int result = 0;
--	struct wid wid_list[5];
-+	struct wid wid_list[WILC_SCAN_WID_LIST_SIZE];
- 	u32 index = 0;
- 	u32 i, scan_timeout;
- 	u8 *buffer;
+diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
+index 59568d18ce23..5b72aa81d94c 100644
+--- a/drivers/staging/sm750fb/sm750.c
++++ b/drivers/staging/sm750fb/sm750.c
+@@ -898,6 +898,7 @@ static int lynxfb_set_fbinfo(struct fb_info *info, int index)
+ 		fix->visual = FB_VISUAL_PSEUDOCOLOR;
+ 		break;
+ 	case 16:
++	case 24:
+ 	case 32:
+ 		fix->visual = FB_VISUAL_TRUECOLOR;
+ 		break;
 -- 
 2.25.1
 
