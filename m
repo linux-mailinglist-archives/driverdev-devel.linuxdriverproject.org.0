@@ -1,119 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DA661FF748
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 17:40:51 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D7EB1FF87F
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 18:03:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A16A4896A4;
-	Thu, 18 Jun 2020 15:40:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3223587C2B;
+	Thu, 18 Jun 2020 16:03:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nEic71th3Lam; Thu, 18 Jun 2020 15:40:49 +0000 (UTC)
+	with ESMTP id 2wwXwZbVhzIZ; Thu, 18 Jun 2020 16:03:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 29F5689477;
-	Thu, 18 Jun 2020 15:40:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EFA13878C8;
+	Thu, 18 Jun 2020 16:03:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7D5E21BF2F4
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 15:40:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 916551BF2F4
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 16:03:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4FDB32625C
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 15:40:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 76DD92051A
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 16:03:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nL1Tswosnt1k for <devel@linuxdriverproject.org>;
- Thu, 18 Jun 2020 15:40:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mailout1.w1.samsung.com (mailout1.w1.samsung.com
- [210.118.77.11])
- by silver.osuosl.org (Postfix) with ESMTPS id A6E5226285
- for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 15:40:37 +0000 (UTC)
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200618154036euoutp018ce82f917360928bae6dbdef6ba2f7f5~ZrZ21nEdS1844818448euoutp01K
- for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 15:40:36 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
- 20200618154036euoutp018ce82f917360928bae6dbdef6ba2f7f5~ZrZ21nEdS1844818448euoutp01K
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1592494836;
- bh=RMBhG1Fw6ugPclokWBJRv00vV8Qg1yQmDHqJxe7Y93k=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=QZy6brriuE+JlpxBYK/yvbi6pE6pAz+WGlL7ttKfFzftt9fDBEUrrEw6hOx3xd9k8
- FH3IO8v4Ybe06ehSXUp05eJrdLiA7nKIqTyzhS2Uj8PM/H/jyDOaPNWiZ5d8Yhr/e9
- h5f8zS6aSDsX6Q9nK5G3qLbl6Fi8gyh7mstTNU/I=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20200618154035eucas1p117a6a9102b0d7e4a1993743678c0a19b~ZrZ2komC01248212482eucas1p14;
- Thu, 18 Jun 2020 15:40:35 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
- eusmges3new.samsung.com (EUCPMTA) with SMTP id 4E.60.60698.3FA8BEE5; Thu, 18
- Jun 2020 16:40:35 +0100 (BST)
-Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20200618154035eucas1p24774788a08a2d2a0a7e24c8755c885ed~ZrZ2QXB0R0607806078eucas1p2l;
- Thu, 18 Jun 2020 15:40:35 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
- eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20200618154035eusmtrp2e6f73cde99b8d3900a2790d28e272d8d~ZrZ2PoLOU0370403704eusmtrp2u;
- Thu, 18 Jun 2020 15:40:35 +0000 (GMT)
-X-AuditID: cbfec7f5-a0fff7000001ed1a-4a-5eeb8af3b678
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms1.samsung.com (EUCPMTA) with SMTP id 96.FE.08375.3FA8BEE5; Thu, 18
- Jun 2020 16:40:35 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200618154034eusmtip14d2941d234d8a5183f57af3dab10a663~ZrZ1ZHKzG2819228192eusmtip1a;
- Thu, 18 Jun 2020 15:40:34 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v6 30/36] staging: tegra-vde: fix common struct sg_table
- related issues
-Date: Thu, 18 Jun 2020 17:39:51 +0200
-Message-Id: <20200618153956.29558-31-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200618153956.29558-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0WSf0yMcRzHfZ/nueeezp2erjbflTFntcWEZXwtWqw/Hv6gYUwSh2cd7i67
- q/TjD1epueNKmlVX0lSi7tw5KYVyiWOXmJQfCS2jnDrpx6olup7iv9fnx/vz/ny++1K4+AvP
- lzqmjGNVSqlcQgqImifjL1YO6ZzRqysHViB96zMM3co389Cfmhwc3W+Z4KOqwR6AXo+4SJRe
- aibRjarHGCppDEFnDFcJNPy6G0PWng4eaqsvItF5yx0e0g4bSGRq7uKja9ZJDNl+fuGh8fpi
- IsybMRYbAfOx4RHBPBgtIZg6QxefsVZqSaZ29DOPabxs5DOfztkx5nbZaaZzqgdnct9WAObe
- Ow3J6NMHSCaruhIwQ9bFEZ6Rgo1HWfmxBFa1KvSQQPYyy4yf/OqZqCnfrwHFIh3woCC9Fv7o
- +ErqgIAS09cBbP89xOOCYQDT35cQXDAE4BvXNzAn0Y/aAFeoANDQnIq7CzMSY06Am0l6DdT1
- 60g3+9AZAD7VC92M0y0EbBkLdrM3vQ+OdX6e0RK0PzQ6jZibRXQorGu2kpzZElhleTjT4zGd
- d9gzZtaDdA4FM5yFs03h8E2bjc+xN/xur57lRfBP3RWME6QD2N1q4nPBeQDb0vJn7wmBH1on
- pidR0+sFQnP9KjdCejO8UEtyuAC+7ffi9l8AL9bk4VxaBM9mirkZAdBgv/nP1fby1WwLA/sr
- IPc6OQCee8e/AJYY/juVAFAJFrLxakUMqw5WsqeC1FKFOl4ZE3QkVmEF03/PMWUfuQsaJg83
- AZoCEqGod7czWsyTJqiTFE0AUrjER7TluSNaLDoqTUpmVbEHVfFyVt0E/ChCslAUfLXvgJiO
- kcaxJ1j2JKuaq2KUh68GXEk6btGmyUoDO8oLurrnr5Pv8RTuCsPGx12bVL3ZPhucSwu85vX+
- LlOYhK7EgpSpoj3Pp+zt+m2m9SZH+L0U/+V4buG3Io1zfWLHpeQ4PcmPjIzYutO7EQ/dG4Xy
- /Np9+8JDGjIFKcsE2ysGBi0yujS1TjvxS3xzx+7ssdh5URJCLZOuWY6r1NK/niSrNncDAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrFIsWRmVeSWpSXmKPExsVy+t/xu7qfu17HGeyYIWnRe+4kk8XGGetZ
- Lf5vm8hssefML3aL1R8fM1pc+fqezaJ58Xo2i5WrjzJZLNhvbdEyaxGLxZcrD5ksNj2+xmpx
- edccNoueDVtZLTq/zGKzWHvkLrvFsk1/mCwOfnjCavFz1zwWB2GPNfPWMHrc23eYxWPvtwUs
- Hjtn3WX32LSqk81j+7cHrB77565h97jffZzJY/OSeo/b/x4ze0y+sZzRY/fNBjaP3uZ3bB59
- W1YxenzeJBfAH6VnU5RfWpKqkJFfXGKrFG1oYaRnaGmhZ2RiqWdobB5rZWSqpG9nk5Kak1mW
- WqRvl6CXcaFvPXPBM/6KhqXRDYzzeLsYOTkkBEwker8dZOxi5OIQEljKKPH34F9miISMxMlp
- DawQtrDEn2tdbBBFnxglLj3dwgKSYBMwlOh6C5EQEehklJjW/ZEdxGEWuMEiMXfLB3aQKmGB
- cIlrG3rAxrIIqEqseb2GCcTmFbCT2HlkExvECnmJ1RsOgNVwAsVPH28FWy0kYCvx/EMb2wRG
- vgWMDKsYRVJLi3PTc4sN9YoTc4tL89L1kvNzNzEC43HbsZ+bdzBe2hh8iFGAg1GJh/dFyOs4
- IdbEsuLK3EOMEhzMSiK8TmdPxwnxpiRWVqUW5ccXleakFh9iNAU6aiKzlGhyPjBV5JXEG5oa
- mltYGpobmxubWSiJ83YIHIwREkhPLEnNTk0tSC2C6WPi4JRqYJST2DZtxd3HkuESWjuv5wjL
- Flrdri0rmbiOw9rW6cfXJbq/CmaUJ+wOWDdd/9NXEce11kXiAqxPw2rKzUS3Ll+4RTvi88Sl
- u34eadaZa+eVmP/iy+EJMbbXp9xonbvp8vbo2X9nNB61S5HifzDhzAN+o6gspwtCnn85tl++
- U85y+2bBlu1dVpZKLMUZiYZazEXFiQDLpozC3QIAAA==
-X-CMS-MailID: 20200618154035eucas1p24774788a08a2d2a0a7e24c8755c885ed
-X-Msg-Generator: CA
-X-RootMTR: 20200618154035eucas1p24774788a08a2d2a0a7e24c8755c885ed
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200618154035eucas1p24774788a08a2d2a0a7e24c8755c885ed
-References: <20200618153956.29558-1-m.szyprowski@samsung.com>
- <CGME20200618154035eucas1p24774788a08a2d2a0a7e24c8755c885ed@eucas1p2.samsung.com>
+ with ESMTP id GnREwD5MO7Gh for <devel@linuxdriverproject.org>;
+ Thu, 18 Jun 2020 16:03:35 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ej1-f67.google.com (mail-ej1-f67.google.com
+ [209.85.218.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id D066E20361
+ for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 16:03:34 +0000 (UTC)
+Received: by mail-ej1-f67.google.com with SMTP id dp18so6962519ejc.8
+ for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 09:03:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZTPuttmyD/g1HHmZ6U47P/FAUm11ksITEEPsRfBCiqg=;
+ b=Ufp+9pPu5ZJanpPXh6jW749X1WmOo5C0ZkfpNw0LFLUeZ4LvCGFj2PMRBjk1b5vjxu
+ JuLqd0cTR9nwMYXFee4tMQy625hPPNx/mC9hFo/ZWJiFp8pSG2aLJPjKX1tfGH2rTcid
+ Cdj+tbwxl5tsNHy6stgu+ErwoWQg6+Xdgv5SWlFdcohZn9H8H7kOjwa3WiXwN0XkKXx6
+ j3jz+TO8rUNJKfmp65CysYKAoKgcL6MB/oxp36qI/UA+7LlA27pmwuAp6LiLCorzRvzW
+ 1JO8Kxv2dKYDSckyi2sc3O94l7e6Zwr/xA9dCGbPFrQNhs9rB8CGyhs/JIy1ktqWuq/J
+ 32sg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZTPuttmyD/g1HHmZ6U47P/FAUm11ksITEEPsRfBCiqg=;
+ b=skDNf0Ro4J8eBc8DCLdeAKD3h9XFCU9gPGWSLzEd+Eye+85Syk8qtarpxoL8Q2uHmI
+ +zdSK4A7YAnywEIrtFrhcVrx4/wMpB10ma2GMW4tur0g+zTk2riml42F7pRj9yPYXUv1
+ tp5zPYduU1VimWGMYv5T+7KPXvrVdXVmzDRrplXjSv85GfHzepTW+vScjznVn4y7A7h1
+ SS1pPvTwOBP1yL7GP5puFMM/Q6FiColLxq+pZXQfaaXbGfltQbVFTpON39xZ6RQoUlRO
+ C5/zhEp8v5W0LLfjhXrvYt07fhRUBr0L/+wGG+HMOuU80ZkFcOvI3PDFDMz5XlxAvKiz
+ E6zQ==
+X-Gm-Message-State: AOAM5317ezp79SQ2BAyJjm+UG4HzZBqSMpx5x429t/H/sKWw1AXjbol+
+ M+349j2ZCJZjIgu5ZovnSp8=
+X-Google-Smtp-Source: ABdhPJzGkER2hN6AIMIPCJUIaA8ZJigbh8kHbNx0PXztec3GbN26Km2ciH60Uo1ICppWIF0C62qhAQ==
+X-Received: by 2002:a17:906:5595:: with SMTP id
+ y21mr4691332ejp.61.1592496213136; 
+ Thu, 18 Jun 2020 09:03:33 -0700 (PDT)
+Received: from garrit-VirtualBox.fritz.box ([94.31.102.44])
+ by smtp.gmail.com with ESMTPSA id e17sm2627838eja.51.2020.06.18.09.03.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Jun 2020 09:03:32 -0700 (PDT)
+From: Garrit Franke <garritfranke@gmail.com>
+To: nsaenzjulienne@suse.de, gregkh@linuxfoundation.org,
+ devel@driverdev.osuosl.org
+Subject: [PATCH] staging: vc04_services: vchiq_arm: replace bitshift with BIT
+ macro
+Date: Thu, 18 Jun 2020 18:02:59 +0200
+Message-Id: <20200618160258.77915-1-garritfranke@gmail.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,69 +86,102 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- linux-tegra@vger.kernel.org, Dmitry Osipenko <digetx@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
-MIME-Version: 1.0
+Cc: Garrit Franke <garritfranke@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The Documentation/DMA-API-HOWTO.txt states that the dma_map_sg() function
-returns the number of the created entries in the DMA address space.
-However the subsequent calls to the dma_sync_sg_for_{device,cpu}() and
-dma_unmap_sg must be called with the original number of the entries
-passed to the dma_map_sg().
+This should prevent possible overflowing bits by using the BIT macro in
+vchiq_core
 
-struct sg_table is a common structure used for describing a non-contiguous
-memory buffer, used commonly in the DRM and graphics subsystems. It
-consists of a scatterlist with memory pages and DMA addresses (sgl entry),
-as well as the number of scatterlist entries: CPU pages (orig_nents entry)
-and DMA mapped pages (nents entry).
-
-It turned out that it was a common mistake to misuse nents and orig_nents
-entries, calling DMA-mapping functions with a wrong number of entries or
-ignoring the number of mapped entries returned by the dma_map_sg()
-function.
-
-To avoid such issues, lets use a common dma-mapping wrappers operating
-directly on the struct sg_table objects and use scatterlist page
-iterators where possible. This, almost always, hides references to the
-nents and orig_nents entries, making the code robust, easier to follow
-and copy/paste safe.
-
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Reviewed-by: Dmitry Osipenko <digetx@gmail.com>
+Signed-off-by: Garrit Franke <garritfranke@gmail.com>
 ---
- drivers/staging/media/tegra-vde/iommu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../interface/vchiq_arm/vchiq_core.c          | 22 +++++++++----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/media/tegra-vde/iommu.c b/drivers/staging/media/tegra-vde/iommu.c
-index 6af863d92123..adf8dc7ee25c 100644
---- a/drivers/staging/media/tegra-vde/iommu.c
-+++ b/drivers/staging/media/tegra-vde/iommu.c
-@@ -36,8 +36,8 @@ int tegra_vde_iommu_map(struct tegra_vde *vde,
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index ae9183db44ee..5a6d2bd59ec0 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -39,9 +39,9 @@ struct vchiq_openack_payload {
+ };
  
- 	addr = iova_dma_addr(&vde->iova, iova);
+ enum {
+-	QMFLAGS_IS_BLOCKING     = (1 << 0),
+-	QMFLAGS_NO_MUTEX_LOCK   = (1 << 1),
+-	QMFLAGS_NO_MUTEX_UNLOCK = (1 << 2)
++	QMFLAGS_IS_BLOCKING     = BIT(0),
++	QMFLAGS_NO_MUTEX_LOCK   = BIT(1),
++	QMFLAGS_NO_MUTEX_UNLOCK = BIT(2)
+ };
  
--	size = iommu_map_sg(vde->domain, addr, sgt->sgl, sgt->nents,
--			    IOMMU_READ | IOMMU_WRITE);
-+	size = iommu_map_sgtable(vde->domain, addr, sgt,
-+				 IOMMU_READ | IOMMU_WRITE);
- 	if (!size) {
- 		__free_iova(&vde->iova, iova);
- 		return -ENXIO;
+ /* we require this for consistency between endpoints */
+@@ -526,14 +526,14 @@ request_poll(struct vchiq_state *state, struct vchiq_service *service,
+ 		do {
+ 			value = atomic_read(&service->poll_flags);
+ 		} while (atomic_cmpxchg(&service->poll_flags, value,
+-			value | (1 << poll_type)) != value);
++			value | BIT(poll_type)) != value);
+ 
+ 		do {
+ 			value = atomic_read(&state->poll_services[
+ 				service->localport>>5]);
+ 		} while (atomic_cmpxchg(
+ 			&state->poll_services[service->localport>>5],
+-			value, value | (1 << (service->localport & 0x1f)))
++			value, value | BIT((service->localport & 0x1f)))
+ 			!= value);
+ 	}
+ 
+@@ -1287,19 +1287,19 @@ poll_services(struct vchiq_state *state)
+ 
+ 		flags = atomic_xchg(&state->poll_services[group], 0);
+ 		for (i = 0; flags; i++) {
+-			if (flags & (1 << i)) {
++			if (flags & BIT(i)) {
+ 				struct vchiq_service *service =
+ 					find_service_by_port(state,
+ 						(group<<5) + i);
+ 				u32 service_flags;
+ 
+-				flags &= ~(1 << i);
++				flags &= ~BIT(i);
+ 				if (!service)
+ 					continue;
+ 				service_flags =
+ 					atomic_xchg(&service->poll_flags, 0);
+ 				if (service_flags &
+-					(1 << VCHIQ_POLL_REMOVE)) {
++					BIT(VCHIQ_POLL_REMOVE)) {
+ 					vchiq_log_info(vchiq_core_log_level,
+ 						"%d: ps - remove %d<->%d",
+ 						state->id, service->localport,
+@@ -1317,7 +1317,7 @@ poll_services(struct vchiq_state *state)
+ 						request_poll(state, service,
+ 							VCHIQ_POLL_REMOVE);
+ 				} else if (service_flags &
+-					(1 << VCHIQ_POLL_TERMINATE)) {
++					BIT(VCHIQ_POLL_TERMINATE)) {
+ 					vchiq_log_info(vchiq_core_log_level,
+ 						"%d: ps - terminate %d<->%d",
+ 						state->id, service->localport,
+@@ -1328,11 +1328,11 @@ poll_services(struct vchiq_state *state)
+ 						request_poll(state, service,
+ 							VCHIQ_POLL_TERMINATE);
+ 				}
+-				if (service_flags & (1 << VCHIQ_POLL_TXNOTIFY))
++				if (service_flags & BIT(VCHIQ_POLL_TXNOTIFY))
+ 					notify_bulks(service,
+ 						&service->bulk_tx,
+ 						1/*retry_poll*/);
+-				if (service_flags & (1 << VCHIQ_POLL_RXNOTIFY))
++				if (service_flags & BIT(VCHIQ_POLL_RXNOTIFY))
+ 					notify_bulks(service,
+ 						&service->bulk_rx,
+ 						1/*retry_poll*/);
 -- 
-2.17.1
+2.25.1
 
 _______________________________________________
 devel mailing list
