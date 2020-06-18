@@ -1,56 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D9C31FDB43
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 03:11:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E63711FDB48
+	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 03:11:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 27DAD86CF5;
-	Thu, 18 Jun 2020 01:11:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8EF968834C;
+	Thu, 18 Jun 2020 01:11:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nr2aI1q8OZQw; Thu, 18 Jun 2020 01:11:18 +0000 (UTC)
+	with ESMTP id VOE81b0JBLL7; Thu, 18 Jun 2020 01:11:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 13B4186C37;
-	Thu, 18 Jun 2020 01:11:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1A33E8810B;
+	Thu, 18 Jun 2020 01:11:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B1F6F1BF31F
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:11:16 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DCB621BF31F
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:11:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AEABC86C37
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:11:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D9C8988007
+ for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 01:11:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lqUVxW9Qk-DD for <devel@linuxdriverproject.org>;
- Thu, 18 Jun 2020 01:11:16 +0000 (UTC)
+ with ESMTP id 4ZVZ80i8TJsW for <devel@linuxdriverproject.org>;
+ Thu, 18 Jun 2020 01:11:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 48D0386C11
- for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 01:11:16 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6762F87E76
+ for <devel@driverdev.osuosl.org>; Thu, 18 Jun 2020 01:11:17 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 71C5C21924;
- Thu, 18 Jun 2020 01:11:15 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 92C4F221EA;
+ Thu, 18 Jun 2020 01:11:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592442676;
- bh=xC3ut97fD0MLy+ms/mdfMJmo3sbdH9ILWuWNS4B9O7c=;
+ s=default; t=1592442677;
+ bh=/K41qGCOksYUWpJHCUej+cRAGtzlKjR6qaDmvAdcVdA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=WleStMkcanoz3earSaN8IuNkZTyFu60xn9H0akxxLdKXDPOGHnffoS1NCmqFkCE83
- 8IictTTZ5wH0BfCUK92TgtjeSPCFUDtcWBfBNlwMb/gAh121/54th0XYRnRXUmpd5L
- b76epCNtZwGnXDjbIkLS9Sbe8+kak8YsPMMRj0V0=
+ b=YQGX1gns+BFm8e+yPfaJH+SlQ1RzaQ6NJWKjdU6BLmdyGQV8/YkMYByBAvDVo8Yvu
+ zGsKrUairgqWLsvbawh3SsnI2DVQ1960teXzGb6n4DAuOP5msQiJFfS4VTLA9sK8ry
+ 0Ur5pXS4GnvIFYXnY1dYkGvl/+HTm50f2XQu/7rk=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.7 144/388] staging: wfx: fix overflow in frame
- counters
-Date: Wed, 17 Jun 2020 21:04:01 -0400
-Message-Id: <20200618010805.600873-144-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.7 145/388] staging: wfx: fix double init of
+ tx_policy_upload_work
+Date: Wed, 17 Jun 2020 21:04:02 -0400
+Message-Id: <20200618010805.600873-145-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200618010805.600873-1-sashal@kernel.org>
 References: <20200618010805.600873-1-sashal@kernel.org>
@@ -77,29 +77,25 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKWyBV
-cHN0cmVhbSBjb21taXQgODcwNjYxNzNlMzRiMGNhNWQwNDFkNTUxOWU2YmIwMzBiMTk1ODE4NCBd
-CgpJdCBoYXMgYmVlbiByZXBvcnRlZCB0aGF0IHRyeWluZyB0byBzZW5kIHNtYWxsIHBhY2tldHMg
-b2YgZGF0YSBjb3VsZApwcm9kdWNlIGEgImluY29uc2lzdGVudCBub3RpZmljYXRpb24iIHdhcm5p
-bmcuCgpJdCBzZWVtcyB0aGF0IGluIHNvbWUgY2lyY3Vtc3RhbmNlcywgdGhlIG51bWJlciBvZiBm
-cmFtZSBxdWV1ZWQgaW4gdGhlCmRyaXZlciBjb3VsZCBncmVhdGx5IGluY3JlYXNlIGFuZCBleGNl
-ZWQgVUNIQVJfTUFYLiBTbyB0aGUgZmllbGQKImJ1ZmZlcmVkIiBmcm9tIHN0cnVjdCBzdGFfcHJp
-diBjYW4gb3ZlcmZsb3cuCgpKdXN0IGluY3JlYXNlIHRoZSBzaXplIG9mICJidWVmZmVyZWQiIHRv
-IGZpeCB0aGUgcHJvYmxlbS4KCkZpeGVzOiA3ZDJkMmJmZGViODIgKCJzdGFnaW5nOiB3Zng6IHJl
-bG9jYXRlICJidWZmZXJlZCIgaW5mb3JtYXRpb24gdG8gc3RhX3ByaXYiKQpTaWduZWQtb2ZmLWJ5
-OiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Ckxpbms6IGh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMjAyMDA0MjcxMzQwMzEuMzIzNDAzLTEwLUplcm9tZS5Q
-b3VpbGxlckBzaWxhYnMuY29tClNpZ25lZC1vZmYtYnk6IEdyZWcgS3JvYWgtSGFydG1hbiA8Z3Jl
-Z2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+ClNpZ25lZC1vZmYtYnk6IFNhc2hhIExldmluIDxzYXNo
-YWxAa2VybmVsLm9yZz4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5oIHwgMiArLQogMSBm
-aWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuaCBiL2RyaXZlcnMvc3RhZ2luZy93Zngvc3RhLmgKaW5k
-ZXggY2Y5OWE4YTc0YTgxLi5hY2U4NDVmOWVkMTQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2lu
-Zy93Zngvc3RhLmgKKysrIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuaApAQCAtMzcsNyArMzcs
-NyBAQCBzdHJ1Y3Qgd2Z4X2dycF9hZGRyX3RhYmxlIHsKIHN0cnVjdCB3Znhfc3RhX3ByaXYgewog
-CWludCBsaW5rX2lkOwogCWludCB2aWZfaWQ7Ci0JdTggYnVmZmVyZWRbSUVFRTgwMjExX05VTV9U
-SURTXTsKKwlpbnQgYnVmZmVyZWRbSUVFRTgwMjExX05VTV9USURTXTsKIAkvLyBFbnN1cmUgYXRv
-bWljaXR5IG9mICJidWZmZXJlZCIgYW5kIGNhbGxzIHRvIGllZWU4MDIxMV9zdGFfc2V0X2J1ZmZl
-cmVkKCkKIAlzcGlubG9ja190IGxvY2s7CiB9OwotLSAKMi4yNS4xCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxA
-bGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVj
-dC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+cHN0cmVhbSBjb21taXQgNmFlMDg3OGI0ODAwYzcwNDJkMzVjMGZiNGM2YmFhYmI2MjYyMWVjYyBd
+CgpUaGUgd29ya19zdHJ1Y3QgdHhfcG9saWN5X3VwbG9hZF93b3JrIHdhcyBpbml0aWFsaXplZCB0
+d2ljZS4KCkZpeGVzOiA5OTg3OTEyMWJmYmIgKCJzdGFnaW5nOiB3Zng6IGZpeCB0aGUgY2FjaGUg
+b2YgcmF0ZSBwb2xpY2llcyBvbiBpbnRlcmZhY2UgcmVzZXQiKQpTaWduZWQtb2ZmLWJ5OiBKw6ly
+w7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Ckxpbms6IGh0dHBzOi8v
+bG9yZS5rZXJuZWwub3JnL3IvMjAyMDA0MjcxMzQwMzEuMzIzNDAzLTEyLUplcm9tZS5Qb3VpbGxl
+ckBzaWxhYnMuY29tClNpZ25lZC1vZmYtYnk6IEdyZWcgS3JvYWgtSGFydG1hbiA8Z3JlZ2toQGxp
+bnV4Zm91bmRhdGlvbi5vcmc+ClNpZ25lZC1vZmYtYnk6IFNhc2hhIExldmluIDxzYXNoYWxAa2Vy
+bmVsLm9yZz4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jIHwgMSAtCiAxIGZpbGUgY2hh
+bmdlZCwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy93Zngvc3Rh
+LmMgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jCmluZGV4IDk2OWQ3YTRhN2ZiZC4uYjRjZDdj
+YjFjZTU2IDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jCisrKyBiL2RyaXZl
+cnMvc3RhZ2luZy93Zngvc3RhLmMKQEAgLTEwNDksNyArMTA0OSw2IEBAIGludCB3ZnhfYWRkX2lu
+dGVyZmFjZShzdHJ1Y3QgaWVlZTgwMjExX2h3ICpodywgc3RydWN0IGllZWU4MDIxMV92aWYgKnZp
+ZikKIAlpbml0X2NvbXBsZXRpb24oJnd2aWYtPnNjYW5fY29tcGxldGUpOwogCUlOSVRfV09SSygm
+d3ZpZi0+c2Nhbl93b3JrLCB3ZnhfaHdfc2Nhbl93b3JrKTsKIAotCUlOSVRfV09SSygmd3ZpZi0+
+dHhfcG9saWN5X3VwbG9hZF93b3JrLCB3ZnhfdHhfcG9saWN5X3VwbG9hZF93b3JrKTsKIAltdXRl
+eF91bmxvY2soJndkZXYtPmNvbmZfbXV0ZXgpOwogCiAJaGlmX3NldF9tYWNhZGRyKHd2aWYsIHZp
+Zi0+YWRkcik7Ci0tIAoyLjI1LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qu
+b3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaXZlcmRldi1kZXZlbAo=
