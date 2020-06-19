@@ -2,90 +2,80 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEA9120032A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jun 2020 10:03:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CD29A2003D7
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jun 2020 10:27:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A31F288E0F;
-	Fri, 19 Jun 2020 08:03:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6D98F88E3B;
+	Fri, 19 Jun 2020 08:27:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wu90J2lLVsx9; Fri, 19 Jun 2020 08:03:37 +0000 (UTC)
+	with ESMTP id weJEohC30FiT; Fri, 19 Jun 2020 08:27:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9F6C488C9F;
-	Fri, 19 Jun 2020 08:03:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E3A3888E16;
+	Fri, 19 Jun 2020 08:27:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 59AB01BF23F
- for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 08:03:34 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id ECDAC1BF37B
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 08:27:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5266088DDE
- for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 08:03:34 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E968A896D5
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 08:27:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v37v47AvS6X4 for <devel@linuxdriverproject.org>;
- Fri, 19 Jun 2020 08:03:31 +0000 (UTC)
+ with ESMTP id MZ9GgaC51UPE for <devel@linuxdriverproject.org>;
+ Fri, 19 Jun 2020 08:27:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5645988C9F
- for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 08:03:31 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05J7vJqF059174;
- Fri, 19 Jun 2020 08:03:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=xEU8+BG5WDf89HFXRTc9CWHMnYULgKeN/ikjmBRtzSY=;
- b=nxBqBRmNRCkbQMiPtVhnFJqMGJOOS9o58am1We3Qj1xEXVK2rMOqSROlatxqlNjwi9BC
- wx/fw1wsQGAGI9KJNFpvogZJz/6nUdT0dUznRDbeffRkPf/1dBofXnfAH18/p0cufh7H
- WBYro/M2f+XJkURm0lRNbxXAgzz5f6YO+//OrPBxHgvMeKCY7jPbTIJEjFTkW0ar+08V
- l5KtzpJh2v6vTe4wxVYL6ZzTc5/yU7Cp++MzMzZX9KxASGolRsK6S8CvS5eG7efDJhrO
- Cy8hPDurWJK3OC2DTC4z84kNj9B6uozPkoZJ2Bca/a4gRbVSYAlmzQDf9NmW4or06Ed5 7w== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 31qecm3wfx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 19 Jun 2020 08:03:30 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05J7xFPq106416;
- Fri, 19 Jun 2020 08:01:29 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 31q66r3hdt-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 19 Jun 2020 08:01:29 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 05J81S6w026868;
- Fri, 19 Jun 2020 08:01:28 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 19 Jun 2020 01:01:27 -0700
-Date: Fri, 19 Jun 2020 11:01:22 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Garrit Franke <garritfranke@gmail.com>
-Subject: Re: [PATCH] staging: vc04_services: vchiq_arm: replace bitshift with
- BIT macro
-Message-ID: <20200619080121.GV4151@kadam>
-References: <20200618160258.77915-1-garritfranke@gmail.com>
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 29267880C7
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 08:27:17 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id b27so8195076qka.4
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 01:27:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=gHRO6u53fICxpVEP0QhHKvY/XKkf310c1oLvKRI/vuQ=;
+ b=Rd8C+Aa2deIZLBQoqhRSSDJ1aEEQQJ4chyGZ6tJROToja0WjQU0vGuFdeLXJj0+Y6P
+ 0rs6oE7UChzpbRU99ZenQAAcsIISjoPEGMLHwNHBmVABtErAentMmxrWSnVCe9cgtDhn
+ pn47NaBswHuzBtqotO5cTqzztbHMmZXBz0/SquKdT/jqYiQdy1zI+9EwulWEc4BNTazx
+ gYFJc3OOPU7g2H8DsuAUiKO0iZn4k2xWviZ0ctDM89z9qzzAwtqNnD0OpqsrNWW5EyW/
+ fQg7g+oAiv4ioTydeQ0KA9KY7TWESUhn4zyc1Q9BCCWm/EFwQRWv/VgYXrK7Vo5y5/gI
+ BbQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=gHRO6u53fICxpVEP0QhHKvY/XKkf310c1oLvKRI/vuQ=;
+ b=Blv5oIadAlJ8nDqdWcLUbZYUjhjGfubvq9t5R/FuQr+aRU5LQiTIUf6banFpcaTuQz
+ ivGGoNRSwqRgFHz6prtaET7Svo/Gsbg4WE7KPK4Lh2xrnpSu3L4SANl0TMPCOc0EcGgA
+ kmB7w27OuUwDx/I769W7sySPeUuySM6wIjyWQ0zKZApBMEFAz4z/2MvND6/HOMTEz4D6
+ JXrg++l3DQv2N5JN0HXrDhJMomoVPCiicwwM38QVahRjkgyvbX381jt4SJ45ZxOv4hgz
+ aGNrqY0WkENVySL7USqKexpEaQvhA14L8vjYQFHAxcn6mfh8tlwVnmS99B9tptauhgJM
+ frrw==
+X-Gm-Message-State: AOAM532FuXfmGoOGfWlNFEg+F3SfoyER0K99mWnMDLQvdXYuF0YDyRSF
+ 9mUX7TceVG6gu1e8J5pGCCU=
+X-Google-Smtp-Source: ABdhPJzBngVrHQEWjHdgpo7pKCGKg4TafzzHNdsOgG4sXtHASTuG4EtIpKHKoYyVi38p5pWUqK7elw==
+X-Received: by 2002:a37:90f:: with SMTP id 15mr2357299qkj.339.1592555236064;
+ Fri, 19 Jun 2020 01:27:16 -0700 (PDT)
+Received: from ip-172-31-24-31.ec2.internal
+ (ec2-54-234-246-66.compute-1.amazonaws.com. [54.234.246.66])
+ by smtp.gmail.com with ESMTPSA id x4sm5077822qtj.50.2020.06.19.01.27.15
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 19 Jun 2020 01:27:15 -0700 (PDT)
+Date: Fri, 19 Jun 2020 08:27:14 +0000
+From: Rodolfo C Villordo <rodolfovillordo@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: gasket: replace symbolic permissions
+Message-ID: <20200619082714.GA7780@ip-172-31-24-31.ec2.internal>
+References: <20200601005240.6315-1-rodolfovillordo@gmail.com>
+ <20200618074750.GA186463@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200618160258.77915-1-garritfranke@gmail.com>
+In-Reply-To: <20200618074750.GA186463@kroah.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9656
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- adultscore=0 phishscore=0
- mlxscore=0 bulkscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006190057
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9656
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- cotscore=-2147483648 malwarescore=0
- clxscore=1015 adultscore=0 suspectscore=0 spamscore=0 lowpriorityscore=0
- mlxlogscore=999 priorityscore=1501 bulkscore=0 phishscore=0 mlxscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006190057
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,70 +88,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- nsaenzjulienne@suse.de
+Cc: devel@driverdev.osuosl.org, Richard Yeh <rcy@google.com>,
+ Todd Poynor <toddpoynor@google.com>, Rob Springer <rspringer@google.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jun 18, 2020 at 06:02:59PM +0200, Garrit Franke wrote:
-> This should prevent possible overflowing bits by using the BIT macro in
-> vchiq_core
-
-There is no reason to think that these will overflow.  For that to
-happen we would need to be using a 64bit with a 1 << 31 shift.
-
-			if (flags & BIT(i)) {
-                            ^^^^^
-Is "flags" a 64 bit and can "i" go up to 31?  Just say that it's a clean
-up.
-
+On Thu, Jun 18, 2020 at 09:47:50AM +0200, Greg Kroah-Hartman wrote:
+> On Mon, Jun 01, 2020 at 12:52:40AM +0000, Rodolfo C. Villordo wrote:
+> > WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal permissions '0444'.
+> > +               .attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
+> > warning detected by checkpatch.pl
+> > 
+> > Signed-off-by: Rodolfo C. Villordo <rodolfovillordo@gmail.com>
+> > ---
+> >  drivers/staging/gasket/gasket_sysfs.h | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/gasket/gasket_sysfs.h b/drivers/staging/gasket/gasket_sysfs.h
+> > index ab5aa351d555..d5e167dfbe76 100644
+> > --- a/drivers/staging/gasket/gasket_sysfs.h
+> > +++ b/drivers/staging/gasket/gasket_sysfs.h
+> > @@ -71,7 +71,7 @@ struct gasket_sysfs_attribute {
+> >  
+> >  #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)                     \
+> >  	{                                                                      \
+> > -		.attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
+> > +		.attr = __ATTR(_name, 0444, _show_function, NULL),          \
 > 
-> Signed-off-by: Garrit Franke <garritfranke@gmail.com>
-> ---
->  .../interface/vchiq_arm/vchiq_core.c          | 22 +++++++++----------
->  1 file changed, 11 insertions(+), 11 deletions(-)
+> What about using __ATTR_RO() instead?
 > 
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> index ae9183db44ee..5a6d2bd59ec0 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> @@ -39,9 +39,9 @@ struct vchiq_openack_payload {
->  };
->  
->  enum {
-> -	QMFLAGS_IS_BLOCKING     = (1 << 0),
-> -	QMFLAGS_NO_MUTEX_LOCK   = (1 << 1),
-> -	QMFLAGS_NO_MUTEX_UNLOCK = (1 << 2)
-> +	QMFLAGS_IS_BLOCKING     = BIT(0),
-> +	QMFLAGS_NO_MUTEX_LOCK   = BIT(1),
-> +	QMFLAGS_NO_MUTEX_UNLOCK = BIT(2)
->  };
->  
->  /* we require this for consistency between endpoints */
-> @@ -526,14 +526,14 @@ request_poll(struct vchiq_state *state, struct vchiq_service *service,
->  		do {
->  			value = atomic_read(&service->poll_flags);
->  		} while (atomic_cmpxchg(&service->poll_flags, value,
-> -			value | (1 << poll_type)) != value);
-> +			value | BIT(poll_type)) != value);
->  
->  		do {
->  			value = atomic_read(&state->poll_services[
->  				service->localport>>5]);
->  		} while (atomic_cmpxchg(
->  			&state->poll_services[service->localport>>5],
-> -			value, value | (1 << (service->localport & 0x1f)))
-> +			value, value | BIT((service->localport & 0x1f)))
-                                           ^                         ^
-Too many parentheses.
 
-Otherwise it looks fine.
+I'm not sure if __ATTR_RO() is a good match here. The
+GASKET_SYSFS_RO() is invoked with different show functions across the
+code. These functions don't follow the name pattern attr_name_show
+used in __ATTR_RO(). Please correct me if I misunderstood anything.
 
-regards,
-dan carpenter
+### from include/linux/sysfs.h ###
+#define __ATTR_RO(_name) {                                              \
+        .attr   = { .name = __stringify(_name), .mode = 0444 },         \
+        .show   = _name##_show,                                         \
+}
+###
 
+### macro usage across the driver: ###
+$ grep GASKET_SYSFS_RO drivers/staging/gasket/*
+drivers/staging/gasket/apex_driver.c:   GASKET_SYSFS_RO(node_0_page_table_entries, sysfs_show,
+drivers/staging/gasket/apex_driver.c:   GASKET_SYSFS_RO(node_0_simple_page_table_entries, sysfs_show,
+drivers/staging/gasket/apex_driver.c:   GASKET_SYSFS_RO(node_0_num_mapped_pages, sysfs_show,
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(bar_offsets, gasket_sysfs_data_show, ATTR_BAR_OFFSETS),
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(bar_sizes, gasket_sysfs_data_show, ATTR_BAR_SIZES),
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(driver_version, gasket_sysfs_data_show,
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(framework_version, gasket_sysfs_data_show,
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(device_type, gasket_sysfs_data_show, ATTR_DEVICE_TYPE),
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(revision, gasket_sysfs_data_show,
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(pci_address, gasket_sysfs_data_show, ATTR_PCI_ADDRESS),
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(status, gasket_sysfs_data_show, ATTR_STATUS),
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(is_device_owned, gasket_sysfs_data_show,
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(device_owner, gasket_sysfs_data_show,
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(write_open_count, gasket_sysfs_data_show,
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(reset_count, gasket_sysfs_data_show, ATTR_RESET_COUNT),
+drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(user_mem_ranges, gasket_sysfs_data_show,
+drivers/staging/gasket/gasket_interrupt.c:      GASKET_SYSFS_RO(interrupt_counts, interrupt_sysfs_show,
+###
+
+Thank you!
+
+> thanks,
+> 
+> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
