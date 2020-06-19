@@ -1,86 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 464C2200B73
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jun 2020 16:30:23 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F2E67200B7F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jun 2020 16:31:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 46A23899F8;
-	Fri, 19 Jun 2020 14:30:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 020AA2288E;
+	Fri, 19 Jun 2020 14:31:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7OY5kmSDZEkM; Fri, 19 Jun 2020 14:30:21 +0000 (UTC)
+	with ESMTP id 72Hagds9a-Hc; Fri, 19 Jun 2020 14:31:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C03E9899BD;
-	Fri, 19 Jun 2020 14:30:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EA56721F76;
+	Fri, 19 Jun 2020 14:31:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E6D4C1BF860
- for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 14:30:17 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F3101BF860
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 14:31:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DC04A8951F
- for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 14:30:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6C00A87293
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 14:31:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 96uSpyczVg9m for <devel@linuxdriverproject.org>;
- Fri, 19 Jun 2020 14:30:17 +0000 (UTC)
+ with ESMTP id m3GToERxga3s for <devel@linuxdriverproject.org>;
+ Fri, 19 Jun 2020 14:31:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by whitealder.osuosl.org (Postfix) with ESMTPS id ECFBF89514
- for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 14:30:16 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05JEDCmA158837;
- Fri, 19 Jun 2020 14:30:16 GMT
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B96E386F99
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 14:31:40 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05JEBuqI170324;
+ Fri, 19 Jun 2020 14:31:39 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
- bh=rogk33tCLb714YF5tgoNqkyveFcOFQsCLb6Cz+GSq0k=;
- b=zV8TEMGvvNfbISMYwnSqPuACfelJaCsusMmgz6xP4P6Hv0fL0LnzGdgOVTYIItGtkVOx
- dSpLwOnTK6UmGibPbtXkSvYawRsrTWR09g4Qs9mige6QVGhujOKXWRFzOYa5nnZIGIkk
- bCqRI7oPs3eaCJkTUGD3rGwgAWv93XMFSjYfwf04/h70FUpDcWPWvxxVGqPF7N5FbY/d
- rRBrlirr/LWTU7pPzQ+1Pk5CRCswJG4ORHZvtJQQa2C09LyYBhvslZJQ1BEOqcRZXccl
- 21Kx75qEn1jzBp/QRlTVKOmHlrpZcz7X7sxVt/rbq9982H5M63qQoKJsVj05dmI43gPp ZA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 31qecm5jvm-1
+ bh=jcaWTu8TTCJeW29NCwS+6EkwN/A4iYHkwPeu7/XE5+w=;
+ b=HB16Npk3IdUUXMSCubMX27cGZ5Zz/7geIv+Cwo8d9vCVNpO0Ra7n/MjO2i0sqNiyffer
+ LN5FylgO8zg8yyL5+uj8JF2FEgOTptnaURKmf1g7hg80T7UfQHY0bx1SaCZK4nPbNpeu
+ PvMuf5y/zc5b2FaW4Izqu5nswgQLatEGsj43TnUnGalKqLz9j3HSMTJHm/SoDsEthbCK
+ aKiYoSrJ2RsgYzv4dZ60Yy82LRsZoGsOqAlUsONPtuMxPixz55r4d5gZqKj/g+2wuAMp
+ Hzu3EM4g9pso0jqn6KLCawECehVTeNafxgY+omGwal6/8NY6vjgDm1eyRTiCQf8Ciy1h /g== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 31q66071be-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 19 Jun 2020 14:30:16 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05JE9PYR111479;
- Fri, 19 Jun 2020 14:30:15 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 31q66vm1rw-1
+ Fri, 19 Jun 2020 14:31:39 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05JEDHj2140785;
+ Fri, 19 Jun 2020 14:31:39 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 31q66rjw5f-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 19 Jun 2020 14:30:15 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 05JEUE3V027999;
- Fri, 19 Jun 2020 14:30:14 GMT
+ Fri, 19 Jun 2020 14:31:38 +0000
+Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 05JEVb3K028572;
+ Fri, 19 Jun 2020 14:31:38 GMT
 Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 19 Jun 2020 07:30:13 -0700
-Date: Fri, 19 Jun 2020 17:30:07 +0300
+ with ESMTP ; Fri, 19 Jun 2020 07:31:37 -0700
+Date: Fri, 19 Jun 2020 17:31:32 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Michael Tretter <m.tretter@pengutronix.de>
-Subject: [PATCH] media: allegro: Fix some NULL vs IS_ERR() checks in probe
-Message-ID: <20200619143007.GC267142@mwanda>
+To: nsaenzjulienne@suse.de
+Subject: [bug report] staging: vchiq_arm: use list_for_each_entry when
+ accessing bulk_waiter_list
+Message-ID: <20200619143132.GE267142@mwanda>
 MIME-Version: 1.0
 Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9656
  signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxlogscore=999
- bulkscore=0 adultscore=0 phishscore=0 suspectscore=0 mlxscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2006190106
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ adultscore=0 phishscore=0
+ mlxscore=0 bulkscore=0 malwarescore=0 mlxlogscore=999 suspectscore=3
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2006190106
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9656
  signatures=668680
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- cotscore=-2147483648 malwarescore=0
- clxscore=1011 adultscore=0 suspectscore=0 spamscore=0 lowpriorityscore=0
- mlxlogscore=999 priorityscore=1501 bulkscore=0 phishscore=0 mlxscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ lowpriorityscore=0 malwarescore=0
+ bulkscore=0 phishscore=0 adultscore=0 priorityscore=1501 mlxscore=0
+ spamscore=0 clxscore=1015 mlxlogscore=999 suspectscore=3 impostorscore=0
+ cotscore=-2147483648 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2004280000 definitions=main-2006190106
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -94,55 +94,73 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The devm_ioremap() function doesn't return error pointers, it returns
-NULL on error.
+Hello Nicolas Saenz Julienne,
 
-Fixes: f20387dfd065 ("media: allegro: add Allegro DVT video IP core driver")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/staging/media/allegro-dvt/allegro-core.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+The patch 46e4b9ec4fa4: "staging: vchiq_arm: use list_for_each_entry
+when accessing bulk_waiter_list" from Nov 20, 2018, leads to the
+following static checker warning:
 
-diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
-index 70f133a842dd..3ed66aae741d 100644
---- a/drivers/staging/media/allegro-dvt/allegro-core.c
-+++ b/drivers/staging/media/allegro-dvt/allegro-core.c
-@@ -3065,9 +3065,9 @@ static int allegro_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
- 	regs = devm_ioremap(&pdev->dev, res->start, resource_size(res));
--	if (IS_ERR(regs)) {
-+	if (!regs) {
- 		dev_err(&pdev->dev, "failed to map registers\n");
--		return PTR_ERR(regs);
-+		return -ENOMEM;
- 	}
- 	dev->regmap = devm_regmap_init_mmio(&pdev->dev, regs,
- 					    &allegro_regmap_config);
-@@ -3085,9 +3085,9 @@ static int allegro_probe(struct platform_device *pdev)
- 	sram_regs = devm_ioremap(&pdev->dev,
- 				 sram_res->start,
- 				 resource_size(sram_res));
--	if (IS_ERR(sram_regs)) {
-+	if (!sram_regs) {
- 		dev_err(&pdev->dev, "failed to map sram\n");
--		return PTR_ERR(sram_regs);
-+		return -ENOMEM;
- 	}
- 	dev->sram = devm_regmap_init_mmio(&pdev->dev, sram_regs,
- 					  &allegro_sram_config);
--- 
-2.27.0
+	drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:427 vchiq_blocking_bulk_transfer()
+	warn: iterator used outside loop: 'waiter'
 
+drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+   417          mutex_lock(&instance->bulk_waiter_list_mutex);
+   418          list_for_each_entry(waiter, &instance->bulk_waiter_list, list) {
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+The list iterator is always non-NULL.
+
+   419                  if (waiter->pid == current->pid) {
+   420                          list_del(&waiter->list);
+   421                          break;
+   422                  }
+   423          }
+   424          mutex_unlock(&instance->bulk_waiter_list_mutex);
+   425  
+   426          if (waiter) {
+                    ^^^^^^
+In the original code "waiter" was only non-NULL if we found the correct
+pid, but now it's always non-NULL.
+
+   427                  struct vchiq_bulk *bulk = waiter->bulk_waiter.bulk;
+   428  
+   429                  if (bulk) {
+   430                          /* This thread has an outstanding bulk transfer. */
+   431                          if ((bulk->data != data) ||
+   432                                  (bulk->size != size)) {
+   433                                  /* This is not a retry of the previous one.
+   434                                   * Cancel the signal when the transfer
+   435                                   * completes.
+   436                                   */
+   437                                  spin_lock(&bulk_waiter_spinlock);
+   438                                  bulk->userdata = NULL;
+   439                                  spin_unlock(&bulk_waiter_spinlock);
+   440                          }
+   441                  }
+   442          }
+   443  
+   444          if (!waiter) {
+                    ^^^^^^^
+This is dead code now.  I'm a bit surprised this bug didn't show up
+during testing.
+
+   445                  waiter = kzalloc(sizeof(struct bulk_waiter_node), GFP_KERNEL);
+   446                  if (!waiter) {
+   447                          vchiq_log_error(vchiq_core_log_level,
+   448                                  "%s - out of memory", __func__);
+   449                          return VCHIQ_ERROR;
+   450                  }
+   451          }
+   452  
+   453          status = vchiq_bulk_transfer(handle, data, size, &waiter->bulk_waiter,
+
+regards,
+dan carpenter
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
