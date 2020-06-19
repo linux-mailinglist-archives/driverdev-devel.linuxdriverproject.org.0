@@ -1,49 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D3D31FFD55
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jun 2020 23:23:44 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEA9120032A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jun 2020 10:03:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E7F0D266DD;
-	Thu, 18 Jun 2020 21:23:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A31F288E0F;
+	Fri, 19 Jun 2020 08:03:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id I4RisdLJPZ4W; Thu, 18 Jun 2020 21:23:42 +0000 (UTC)
+	with ESMTP id wu90J2lLVsx9; Fri, 19 Jun 2020 08:03:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 487B31FFFE;
-	Thu, 18 Jun 2020 21:23:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9F6C488C9F;
+	Fri, 19 Jun 2020 08:03:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7C6011BF2C1
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 21:23:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 59AB01BF23F
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 08:03:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 745D189866
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 21:23:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5266088DDE
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 08:03:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i3g-6IOktBg6 for <devel@linuxdriverproject.org>;
- Thu, 18 Jun 2020 21:23:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from interkad.alt.ru (interkad.alt.ru [80.247.111.66])
- by hemlock.osuosl.org (Postfix) with ESMTP id 965428977C
- for <devel@linuxdriverproject.org>; Thu, 18 Jun 2020 21:23:37 +0000 (UTC)
-Received: from User ([41.215.171.84] RDNS failed) by interkad.alt.ru with
- Microsoft SMTPSVC(6.0.3790.3959); Fri, 19 Jun 2020 04:23:30 +0700
-From: "Martins"<clffmartns@gmail.com>
-Subject: Re: UNCLAIMED Consignments/Boxes Deposited
-Date: Thu, 18 Jun 2020 14:23:43 -0700
+ with ESMTP id v37v47AvS6X4 for <devel@linuxdriverproject.org>;
+ Fri, 19 Jun 2020 08:03:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5645988C9F
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 08:03:31 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05J7vJqF059174;
+ Fri, 19 Jun 2020 08:03:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=xEU8+BG5WDf89HFXRTc9CWHMnYULgKeN/ikjmBRtzSY=;
+ b=nxBqBRmNRCkbQMiPtVhnFJqMGJOOS9o58am1We3Qj1xEXVK2rMOqSROlatxqlNjwi9BC
+ wx/fw1wsQGAGI9KJNFpvogZJz/6nUdT0dUznRDbeffRkPf/1dBofXnfAH18/p0cufh7H
+ WBYro/M2f+XJkURm0lRNbxXAgzz5f6YO+//OrPBxHgvMeKCY7jPbTIJEjFTkW0ar+08V
+ l5KtzpJh2v6vTe4wxVYL6ZzTc5/yU7Cp++MzMzZX9KxASGolRsK6S8CvS5eG7efDJhrO
+ Cy8hPDurWJK3OC2DTC4z84kNj9B6uozPkoZJ2Bca/a4gRbVSYAlmzQDf9NmW4or06Ed5 7w== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 31qecm3wfx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Fri, 19 Jun 2020 08:03:30 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05J7xFPq106416;
+ Fri, 19 Jun 2020 08:01:29 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 31q66r3hdt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 19 Jun 2020 08:01:29 +0000
+Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 05J81S6w026868;
+ Fri, 19 Jun 2020 08:01:28 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 19 Jun 2020 01:01:27 -0700
+Date: Fri, 19 Jun 2020 11:01:22 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Garrit Franke <garritfranke@gmail.com>
+Subject: Re: [PATCH] staging: vc04_services: vchiq_arm: replace bitshift with
+ BIT macro
+Message-ID: <20200619080121.GV4151@kadam>
+References: <20200618160258.77915-1-garritfranke@gmail.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <INTER-FWjwP4aiKTs3s0000b934@interkad.alt.ru>
-X-OriginalArrivalTime: 18 Jun 2020 21:23:33.0967 (UTC)
- FILETIME=[B8BB85F0:01D645B6]
+Content-Disposition: inline
+In-Reply-To: <20200618160258.77915-1-garritfranke@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9656
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ adultscore=0 phishscore=0
+ mlxscore=0 bulkscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2006190057
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9656
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ cotscore=-2147483648 malwarescore=0
+ clxscore=1015 adultscore=0 suspectscore=0 spamscore=0 lowpriorityscore=0
+ mlxlogscore=999 priorityscore=1501 bulkscore=0 phishscore=0 mlxscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2006190057
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,25 +98,70 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: cliffmartinsen@gmail.com
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ nsaenzjulienne@suse.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello a Request For Partnership.
-I am particularly happy dealing with a person of your caliber who knows what international business is all about. This business is purely base on trust and it's 100% risk free business and I understand your willingness to assist me in actualizing this deal. As I told you in my first email, all I need from you is a confirmation that you can handle this deal in question, and then all the details will be given to you as we progress. My name is Mr.Martins Clifford, a Vault Manager with a Private Security Firm in Ghana. Having worked with this security company for the past 18 Years with dedication and having nothing to write home about. Hence I have to package this deal for our betterment.
+On Thu, Jun 18, 2020 at 06:02:59PM +0200, Garrit Franke wrote:
+> This should prevent possible overflowing bits by using the BIT macro in
+> vchiq_core
 
-There is this UNCLAIMED Consignments/Boxes Deposited in our Company's Vault for the past 15 years ago, and nobody has ever shown up for the claims and collection till date. Having made inquiry and investigation why these Consignments/Boxes has not been claimed by their depositors/Owners,only discovered they are late/dead for the past 10 year ago, no forwarding contact Addresses of these late depositors/Owners and every effort to locate any of their surviving relatives or close family members proof abortive.
+There is no reason to think that these will overflow.  For that to
+happen we would need to be using a 64bit with a 1 << 31 shift.
 
-Just few Months ago, the Management and board of directors of our company met and resolved to dispose All Unclaimed Consignments/Boxes that has exceeded the period of 9-10 years without their depositors coming for claims and collection be dislodged from the Vault and disposed, So as to create space to accommodate incoming Deposit. Actually, Many Consignments where dislodged from the Vault for disposal but being the Vault Manager, I decided to checkmate and to know the true contents of these boxes/consignments. After scanning these few Consignments electronically, I discovered their contents to be fiscal cash running into Millions of United States of American Dollars in $100 dollars bills/notes.
+			if (flags & BIT(i)) {
+                            ^^^^^
+Is "flags" a 64 bit and can "i" go up to 31?  Just say that it's a clean
+up.
 
-It may interest you to note that none of the staff or management of our company know anything relating to this development till date, I contacted you believing that you could be of a great assistance and help me to legally secure and claim these Trunk Boxes from our company for collection and further delivery to your country. While I shall join you in your country immediately after the collection and delivery is madeto your country where I shall meet you for the Disbursement/Sharing of the proceeds of the Consignments/ Boxes  50% / 50% with you.
+> 
+> Signed-off-by: Garrit Franke <garritfranke@gmail.com>
+> ---
+>  .../interface/vchiq_arm/vchiq_core.c          | 22 +++++++++----------
+>  1 file changed, 11 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> index ae9183db44ee..5a6d2bd59ec0 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+> @@ -39,9 +39,9 @@ struct vchiq_openack_payload {
+>  };
+>  
+>  enum {
+> -	QMFLAGS_IS_BLOCKING     = (1 << 0),
+> -	QMFLAGS_NO_MUTEX_LOCK   = (1 << 1),
+> -	QMFLAGS_NO_MUTEX_UNLOCK = (1 << 2)
+> +	QMFLAGS_IS_BLOCKING     = BIT(0),
+> +	QMFLAGS_NO_MUTEX_LOCK   = BIT(1),
+> +	QMFLAGS_NO_MUTEX_UNLOCK = BIT(2)
+>  };
+>  
+>  /* we require this for consistency between endpoints */
+> @@ -526,14 +526,14 @@ request_poll(struct vchiq_state *state, struct vchiq_service *service,
+>  		do {
+>  			value = atomic_read(&service->poll_flags);
+>  		} while (atomic_cmpxchg(&service->poll_flags, value,
+> -			value | (1 << poll_type)) != value);
+> +			value | BIT(poll_type)) != value);
+>  
+>  		do {
+>  			value = atomic_read(&state->poll_services[
+>  				service->localport>>5]);
+>  		} while (atomic_cmpxchg(
+>  			&state->poll_services[service->localport>>5],
+> -			value, value | (1 << (service->localport & 0x1f)))
+> +			value, value | BIT((service->localport & 0x1f)))
+                                           ^                         ^
+Too many parentheses.
 
-Should you need to see the copies of the deposit Documents covering these Boxes issued to the late depositor by the management of our company, I will not hesitate to present them to your perusal and study. Kindly forward your full contact Address, direct Telephone, cell phone and fax numbers known to me. I can guarantee you that if only you give me a chance and corporate with me within the next fourteen (14) working days from today the consignment will be released and delivered to your doorstep in your country. I know how to handle this and immediately after the completion of this transaction I will personally destroy and delete every information leading to the completion of this transaction this is to assure you that I will not leave any traces.
-Best Regards.
-Martins Clifford.
-(Vault Manager).
+Otherwise it looks fine.
+
+regards,
+dan carpenter
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
