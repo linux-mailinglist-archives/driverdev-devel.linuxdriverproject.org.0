@@ -1,119 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16C5C2006AF
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jun 2020 12:37:51 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B99EA2007A1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jun 2020 13:20:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A66CF207A6;
-	Fri, 19 Jun 2020 10:37:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3822887AB1;
+	Fri, 19 Jun 2020 11:20:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CU1GSf8WY5Yw; Fri, 19 Jun 2020 10:37:49 +0000 (UTC)
+	with ESMTP id iXctn7xR-nCx; Fri, 19 Jun 2020 11:20:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 05A4D27D1E;
-	Fri, 19 Jun 2020 10:37:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D25687AB7;
+	Fri, 19 Jun 2020 11:20:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1A4E01BF35A
- for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 10:37:28 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EE3EE1BF5A8
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 11:20:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0DF0D27B3A
- for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 10:37:28 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E4704899A9
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 11:20:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bTFOGIh3Cq+6 for <devel@linuxdriverproject.org>;
- Fri, 19 Jun 2020 10:37:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mailout1.w1.samsung.com (mailout1.w1.samsung.com
- [210.118.77.11])
- by silver.osuosl.org (Postfix) with ESMTPS id 24CD322170
- for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 10:37:17 +0000 (UTC)
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200619103715euoutp013abc6fe4ddfdceb00b09477e7beb7a75~Z66SgM4AU1896418964euoutp01N
- for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 10:37:15 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
- 20200619103715euoutp013abc6fe4ddfdceb00b09477e7beb7a75~Z66SgM4AU1896418964euoutp01N
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1592563035;
- bh=RMBhG1Fw6ugPclokWBJRv00vV8Qg1yQmDHqJxe7Y93k=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eS9XS1GW8iDugjgH85Zq2VIEXYFnUiVAtSr3whwJaqABUF5Bq/tii2YyKEqcpmht3
- CWIN69bGM3gua45w3GUxKUNns47yXIyyCDfXPvez1+wT1rQqSYk8OJXmOyBENmFTPS
- Qj0gphunlZ7QBWBd3QpsozJ8yEWwpOqJSKWND4ow=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTP id
- 20200619103715eucas1p2ad1ec44f1b69aa83e98bc848af6927ee~Z66SSagFB3081930819eucas1p2t;
- Fri, 19 Jun 2020 10:37:15 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
- eusmges3new.samsung.com (EUCPMTA) with SMTP id 9C.9C.06318.B559CEE5; Fri, 19
- Jun 2020 11:37:15 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20200619103714eucas1p18db6efd1a380fc0bdb16174ee85036fa~Z66R5XCac0493704937eucas1p18;
- Fri, 19 Jun 2020 10:37:14 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200619103714eusmtrp1f60c74a1fbb850448d1cac3b7fb23832~Z66R4rTjx1007310073eusmtrp1D;
- Fri, 19 Jun 2020 10:37:14 +0000 (GMT)
-X-AuditID: cbfec7f5-38bff700000018ae-88-5eec955b3ef3
-Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
- eusmgms1.samsung.com (EUCPMTA) with SMTP id EF.EA.06314.A559CEE5; Fri, 19
- Jun 2020 11:37:14 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20200619103713eusmtip26f278a5ab64dc87293551fc5392692d2~Z66RB0RDS0246802468eusmtip2l;
- Fri, 19 Jun 2020 10:37:13 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v7 31/36] staging: tegra-vde: fix common struct sg_table
- related issues
-Date: Fri, 19 Jun 2020 12:36:31 +0200
-Message-Id: <20200619103636.11974-32-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200619103636.11974-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0VSe0hTURzu7D52Hc5u0/BYkTAwKdIye5wozCLoQBEFRVSk3fKm0qax66Mi
- yNKyqZOeVKtkrYdvV8vUllqzfJSm5ivNrMTsbS915CNr27X67/t9v+/j+36HwxCKd9QUJjIq
- htdEcSolLSOLqoYa/Lae+RwyN7ncBenqH0nQzXMmCv0uOkGg0rphKcr93gNQy+BXGiVeMdEo
- O7dSggz3lqAkvZFEAy3dEmTuaaNQs+UijdJu3KaQdkBPo/yHXVJ03TwqQdZvbyg0ZMkgg91x
- XkYewC/LH5C4zGYg8R19lxSbc7Q0Lra9pvC9S3lS/Cq1WoJvXT2IO8d6CHyqPRPgux0JNNYl
- fqFxemEOwP3m6esmbpEtDeNVkXG8Zk7QdllEY7qJ2PN24t6Ea1sTQIY8BbgwkJ0PR8qrCAdW
- sFkAllQsTgEyOx4AsFRbQItDP4Bd/b30X4e1oYEUF5kAGrNeUv8sNsMzqUNFswEwpS/F6fBg
- jwBYo3N1YIKtI2Hdz0AHdmc3w/bKDKeGZH3g49PPnV45GwTrTtooMc0b5t647+znYuc/JVmd
- YZDVMfCa9jwhilbCvtb0cYM7/FhdKBXxNFh7Ko0UDYkAdtfnS8UhDcDmw+eAqFoCX9QP22sw
- 9nozockyR6SXw94Pl4GDhqwbbO+bJB7gBk8WnSVEWg6PHVWI6hlQX13wL9ba2DReDUPrC7NU
- fKATAF4Yy6aPA2/9/zADADnAk48V1OG8EBjFx/sLnFqIjQr33xmtNgP796sdqx4sAeWjOyoA
- ywClq/z9hk8hCoqLE/apKwBkCKWHfMWT2hCFPIzbt5/XRIdqYlW8UAGmMqTSUx5o/LBNwYZz
- Mfxunt/Da/5uJYzLlASgpvx2PbCcbZTp1QVGV595eE388EK685BHc8nU1oi1yyxar7vbwoN9
- Cze1GZMnPw0rM/lsDFzl9sq3Izp+UbH3+pEf+SqDvy1yacnl1b7xxE4utMmjJrZBLw/y+6U5
- PnvaggP1K8N+1zzSNSVVKVTR797mDXQLBZ9nefkcnpA6yBFKUojgAmYRGoH7A/SHOch6AwAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrBIsWRmVeSWpSXmKPExsVy+t/xe7pRU9/EGfR1G1n0njvJZLFxxnpW
- i//bJjJb7Dnzi91i9cfHjBZXvr5ns2hevJ7NYuXqo0wWC/ZbW7TMWsRi8eXKQyaLTY+vsVpc
- 3jWHzaJnw1ZWi84vs9gs1h65y26xbNMfJouDH56wWvzcNY/FQdhjzbw1jB739h1m8dj7bQGL
- x85Zd9k9Nq3qZPPY/u0Bq8f+uWvYPe53H2fy2Lyk3uP2v8fMHpNvLGf02H2zgc2jt/kdm0ff
- llWMHp83yQXwR+nZFOWXlqQqZOQXl9gqRRtaGOkZWlroGZlY6hkam8daGZkq6dvZpKTmZJal
- FunbJehlXOhbz1zwjL+iYWl0A+M83i5GTg4JAROJg+fPs4DYQgJLGSVOn/GAiMtInJzWwAph
- C0v8udbF1sXIBVTziVFi2YxtzCAJNgFDia63EAkRgU5GiWndH9lBHGaBGywSc7d8AHI4OIQF
- wiWmXXMCaWARUJU4NeUWO4jNK2AncWbSN6gN8hKrNxwAG8oJFH/dcpAV4iJbieUL3jNPYORb
- wMiwilEktbQ4Nz232FCvODG3uDQvXS85P3cTIzAWtx37uXkH46WNwYcYBTgYlXh4X4S8jhNi
- TSwrrsw9xCjBwawkwut09nScEG9KYmVValF+fFFpTmrxIUZToKMmMkuJJucD00ReSbyhqaG5
- haWhubG5sZmFkjhvh8DBGCGB9MSS1OzU1ILUIpg+Jg5OqQbG+EXGBwvK983/t677hEFoT4dW
- j0jMvrcd9zV2rCn6vHTTY6Mdq3TX6M724XY+blp5P6f2DZ+Of9pcxTsBc/o7TnmdZ1m4w1WO
- n4nz+wyNtxWfu7+FSN+yzVpwdN17v+LTD5MN7m+aueHlxLo0H5EnT9rjfuyvtb7arOysYKfp
- sWleUmn8rKynSizFGYmGWsxFxYkAiNRTk9sCAAA=
-X-CMS-MailID: 20200619103714eucas1p18db6efd1a380fc0bdb16174ee85036fa
-X-Msg-Generator: CA
-X-RootMTR: 20200619103714eucas1p18db6efd1a380fc0bdb16174ee85036fa
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200619103714eucas1p18db6efd1a380fc0bdb16174ee85036fa
-References: <20200619103636.11974-1-m.szyprowski@samsung.com>
- <CGME20200619103714eucas1p18db6efd1a380fc0bdb16174ee85036fa@eucas1p1.samsung.com>
+ with ESMTP id fLcgWPtDUhlh for <devel@linuxdriverproject.org>;
+ Fri, 19 Jun 2020 11:20:52 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
+ [209.85.216.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3987C8995E
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 11:20:52 +0000 (UTC)
+Received: by mail-pj1-f65.google.com with SMTP id jz3so3963827pjb.0
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 04:20:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=82ZpbBZmPoGIYKi4X7qcLJ5HQ4WEhVLHyB6WAT9TAf0=;
+ b=Qp8Q9pfVq4nvwh6FnwFgq7Znv4j/DRaBmokxtOX1ZhMXVj5GXEDHQXAEnDUVjx/w1G
+ /ozgQc8nEg2xz9P+4Qxi3DHkpFNMhNx68JhdDbLQ/miLZA+aTWjjMblh6VfVuXPWsC+h
+ SmV5bfiwmgeDi4O6RkbuKD4Jt323+fmp9EHm6OTQDg/+z2SHoWQwJXPhhzoTN1N9ucj5
+ SVSGBOalCNu9G9LxaKkQJFcxF07PBMlmk9RDW+uzZ7/wtyIoRS7eiLewuXrc0l+Wnb2d
+ e22z2bRpIqV1S7REW41RP3SVLNg/9AnPqLnZtUARdfStpF8Brz9ZT9MSIVsmH5E1IMaD
+ /FqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=82ZpbBZmPoGIYKi4X7qcLJ5HQ4WEhVLHyB6WAT9TAf0=;
+ b=Mc1sH/KTuUd+PHaQsDvdkLoHBOHS6d6HBahhEICR7UEkC8JFT9T5h2KoCRGJekUw3E
+ HwGAWMaaSfDa60yiD11VwXIC6EUUJ29oEycrMmxBVAGUz/owmpv7HEkeUWLcUV+5ObB0
+ rrXNKPbpD02wLBmEX15SflRhSHrUydBbSvy1sdGIHEwGHePmxoYJniDIZknY2mmwOdk9
+ 83v2MZh1ePjqlyR43c2DHjjI6wxN/lcTWH3OTYsADN5Sd/Z5RLSqasSdfuXCMTukFIob
+ tAQ0UzwRaaRKpAwvaBdWxQuuIxistyEEgszhB5r+hOpCBoM7XrnkxcvEBReeomyNLBjE
+ tjLg==
+X-Gm-Message-State: AOAM5322QlKAof2EpyqT+pcTUic9h4/rsN8iOtfvlJcQnauFTSH0Aicx
+ ap2M+1P/BD964yVxKCg5XPA=
+X-Google-Smtp-Source: ABdhPJyQKktAbGK2vaOg44HxDtXF1HuPiQA4UzHMXBleJHDMQxcSuLf0QiMtAnnd8U/Ema9XVF+7lg==
+X-Received: by 2002:a17:90a:7c48:: with SMTP id
+ e8mr2988145pjl.235.1592565651563; 
+ Fri, 19 Jun 2020 04:20:51 -0700 (PDT)
+Received: from cvds-vagarw7.iind.intel.com ([192.55.55.41])
+ by smtp.googlemail.com with ESMTPSA id d9sm4974293pgg.74.2020.06.19.04.20.44
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 19 Jun 2020 04:20:50 -0700 (PDT)
+From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Alex Elder <elder@kernel.org>, Johan Hovold <johan@kernel.org>,
+ Mark Greer <mgreer@animalcreek.com>
+Subject: [PATCH v3 0/6] Enable Greybus Audio codec driver
+Date: Fri, 19 Jun 2020 16:50:20 +0530
+Message-Id: <cover.1592537217.git.vaibhav.sr@gmail.com>
+X-Mailer: git-send-email 2.26.2
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,69 +86,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- linux-tegra@vger.kernel.org, Dmitry Osipenko <digetx@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ linux-kernel@vger.kernel.org, Vaibhav Agarwal <vaibhav.sr@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The Documentation/DMA-API-HOWTO.txt states that the dma_map_sg() function
-returns the number of the created entries in the DMA address space.
-However the subsequent calls to the dma_sync_sg_for_{device,cpu}() and
-dma_unmap_sg must be called with the original number of the entries
-passed to the dma_map_sg().
+The existing GB Audio codec driver is dependent on MSM8994 Audio driver.
+During the development stage, this dependency was configured due to
+various changes involved in MSM Audio driver to enable addtional codec
+card and some of the changes proposed in mainline ASoC framework.
+However, these are not the real dependencies and some of them can be
+easily removed.
 
-struct sg_table is a common structure used for describing a non-contiguous
-memory buffer, used commonly in the DRM and graphics subsystems. It
-consists of a scatterlist with memory pages and DMA addresses (sgl entry),
-as well as the number of scatterlist entries: CPU pages (orig_nents entry)
-and DMA mapped pages (nents entry).
+The folowing patch series includes the changes to resolve unnecessary
+depedencies and make the codec driver functional with the latest kernel.
 
-It turned out that it was a common mistake to misuse nents and orig_nents
-entries, calling DMA-mapping functions with a wrong number of entries or
-ignoring the number of mapped entries returned by the dma_map_sg()
-function.
+Patch 1,2: Incudes jack framework related changes.
+Patch 3,4,5: Resolves compilation error observed with the latest kernel and
+also provides helper APIs required to allow dynamic addition/removal of
+modules.
+Patch 6: Finally provides config options and related Makefile changes to
+enable GB Codec driver.
 
-To avoid such issues, lets use a common dma-mapping wrappers operating
-directly on the struct sg_table objects and use scatterlist page
-iterators where possible. This, almost always, hides references to the
-nents and orig_nents entries, making the code robust, easier to follow
-and copy/paste safe.
+Thanks to Alexandre for raising the headsup [1] and motivating me to provide
+the necessary changes.
 
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Reviewed-by: Dmitry Osipenko <digetx@gmail.com>
----
- drivers/staging/media/tegra-vde/iommu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+This patchset is intended to resolve the componentization issue only.
+And as per the suggestion [2] from Mark, I'll share a separate patch series
+aligned to ASoC tree. Once the relevant changes are accepted in snd-soc
+framework, I'll share relevant patches to pull GB Audio out of the
+staging tree.
 
-diff --git a/drivers/staging/media/tegra-vde/iommu.c b/drivers/staging/media/tegra-vde/iommu.c
-index 6af863d92123..adf8dc7ee25c 100644
---- a/drivers/staging/media/tegra-vde/iommu.c
-+++ b/drivers/staging/media/tegra-vde/iommu.c
-@@ -36,8 +36,8 @@ int tegra_vde_iommu_map(struct tegra_vde *vde,
- 
- 	addr = iova_dma_addr(&vde->iova, iova);
- 
--	size = iommu_map_sg(vde->domain, addr, sgt->sgl, sgt->nents,
--			    IOMMU_READ | IOMMU_WRITE);
-+	size = iommu_map_sgtable(vde->domain, addr, sgt,
-+				 IOMMU_READ | IOMMU_WRITE);
- 	if (!size) {
- 		__free_iova(&vde->iova, iova);
- 		return -ENXIO;
+[1] https://lore.kernel.org/lkml/20200507212912.599433-1-alexandre.belloni@bootlin.com/
+[2] https://lore.kernel.org/alsa-devel/20200612160620.GK5396@sirena.org.uk/
+
+v1:
+- Include the changes for the review comments suggested by Dan
+- Rebase to latest staging-next
+
+v2:
+- Avoid defining unused 'update' pointer
+- Fix the missing connect bool value required during mixer_update_power
+- Added Reviewed-by tag from Dan
+- Rebase to latest staging-next
+
+Vaibhav Agarwal (6):
+  staging: greybus: audio: Update snd_jack FW usage as per new APIs
+  staging: greybus: audio: Maintain jack list within GB Audio module
+  staging: greybus: audio: Resolve compilation errors for GB codec
+    module
+  staging: greybus: audio: Resolve compilation error in topology parser
+  staging: greybus: audio: Add helper APIs for dynamic audio modules
+  staging: greybus: audio: Enable GB codec, audio module compilation.
+
+ drivers/staging/greybus/Kconfig          |  14 +-
+ drivers/staging/greybus/Makefile         |   6 +-
+ drivers/staging/greybus/audio_codec.c    | 178 +++++++++++---------
+ drivers/staging/greybus/audio_codec.h    |  12 +-
+ drivers/staging/greybus/audio_helper.c   | 197 +++++++++++++++++++++++
+ drivers/staging/greybus/audio_helper.h   |  17 ++
+ drivers/staging/greybus/audio_module.c   |  15 +-
+ drivers/staging/greybus/audio_topology.c | 123 +++++++-------
+ 8 files changed, 409 insertions(+), 153 deletions(-)
+ create mode 100644 drivers/staging/greybus/audio_helper.c
+ create mode 100644 drivers/staging/greybus/audio_helper.h
+
+
+base-commit: 98fe05e21a6e0ca242e974650ed58b64813cb2dc
 -- 
-2.17.1
+2.26.2
 
 _______________________________________________
 devel mailing list
