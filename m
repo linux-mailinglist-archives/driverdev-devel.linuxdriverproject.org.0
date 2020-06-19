@@ -1,81 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EA572007AD
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jun 2020 13:21:47 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DDEC287A9B;
-	Fri, 19 Jun 2020 11:21:45 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MfujANAW-wls; Fri, 19 Jun 2020 11:21:45 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9800B87A5E;
-	Fri, 19 Jun 2020 11:21:44 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 43AFD1BF5A8
- for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 11:21:42 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 464C2200B73
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jun 2020 16:30:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 406158998C
- for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 11:21:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 46A23899F8;
+	Fri, 19 Jun 2020 14:30:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7OY5kmSDZEkM; Fri, 19 Jun 2020 14:30:21 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id C03E9899BD;
+	Fri, 19 Jun 2020 14:30:20 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E6D4C1BF860
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 14:30:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id DC04A8951F
+ for <devel@linuxdriverproject.org>; Fri, 19 Jun 2020 14:30:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1YbZK+SIvcSd for <devel@linuxdriverproject.org>;
- Fri, 19 Jun 2020 11:21:41 +0000 (UTC)
+ with ESMTP id 96uSpyczVg9m for <devel@linuxdriverproject.org>;
+ Fri, 19 Jun 2020 14:30:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BD6CE8998A
- for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 11:21:41 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id e18so4372788pgn.7
- for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 04:21:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=pMnJVRRzK09/VbvKw7yuFnugcGkqSr1qw4/Z5xsvw+g=;
- b=JNqbP6+cXWUBzXZrKR7UOEA8LVJbGNaUA0+H4KgGXU0knATtP5jR10SCoEKZ4P+2zd
- 11XoPqIS3xPiISe8/vnOeFNnUm5OvqzszeRZBwCoNR5gSnzDaNzIz4ZSHVLAqrEbbKC7
- ASdhtKm+gGdEzXL3PU7s8WGlWWdy9LWO9lrcWkdNFxLMdM2dFDVzMdSc6Sq3kQ472g7/
- Hhlw99uPuRgeTizlE8BLanl6bOb0gRfsC0G0STym3pEnfewEOMdl8y6lXBRcNZsD6E06
- dTNVgFeW4uzQ99D9n4OGJfu6W2V4svMvMBlpPw905f37t6NI13QZ4PJ/PrxGmVgHj5LP
- RJYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=pMnJVRRzK09/VbvKw7yuFnugcGkqSr1qw4/Z5xsvw+g=;
- b=ghwj1P2Vd31RB/9pBSBe9aHoibrjB/hsXkUXtThWhcsNr1SN4Rp0RxCeKHeP2jSj/Z
- l8A13ZGOm5ZpJKbSKQmKF2tBwWcZRPXf7oiMj9pZ/XwhXsk86ekMLhJYhl4CwfXAhZXD
- v3v7VMWoMbW5JRiK7GSAfLggdTdzH6BAV8grbFL13FSF0U0rMRL/Bx99XBPG7UtSpnqK
- AOG+gqHF9KLCIT6+JauMDCczBi1z6Cij7XDssmcyBiqKoSMhePmJCv5KV7RVx93A4DY7
- cGGzTY9TQ2Nk1kPDJFk6FfBFk/rKGwJMjL3So2d4dSwYIurP2oTMWUoJSmBM7xTnpoHj
- m9RQ==
-X-Gm-Message-State: AOAM532femIB0sIfHXAPmEJ7iF91WW5ItUf/a54l7TzG7MEU3WdCXt1g
- z2FppsdoZUwJIA3A2TMMNqo=
-X-Google-Smtp-Source: ABdhPJxipZmj5Iz98CdyoTS3c4ColLD2W0ESzWGhlG9bBctqOh2MzBwx8a9qabDG4nUQ8N1Fdzcz8w==
-X-Received: by 2002:a62:1c46:: with SMTP id c67mr7524623pfc.170.1592565701246; 
- Fri, 19 Jun 2020 04:21:41 -0700 (PDT)
-Received: from cvds-vagarw7.iind.intel.com ([192.55.55.41])
- by smtp.googlemail.com with ESMTPSA id d9sm4974293pgg.74.2020.06.19.04.21.33
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 19 Jun 2020 04:21:40 -0700 (PDT)
-From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Alex Elder <elder@kernel.org>, Johan Hovold <johan@kernel.org>,
- Mark Greer <mgreer@animalcreek.com>
-Subject: [PATCH v3 6/6] staging: greybus: audio: Enable GB codec,
- audio module compilation.
-Date: Fri, 19 Jun 2020 16:50:26 +0530
-Message-Id: <e9aaa09c6688aa5ed8bddf51f5cd402bb8cf39b3.1592537217.git.vaibhav.sr@gmail.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <cover.1592537217.git.vaibhav.sr@gmail.com>
-References: <cover.1592537217.git.vaibhav.sr@gmail.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id ECFBF89514
+ for <devel@driverdev.osuosl.org>; Fri, 19 Jun 2020 14:30:16 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05JEDCmA158837;
+ Fri, 19 Jun 2020 14:30:16 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
+ bh=rogk33tCLb714YF5tgoNqkyveFcOFQsCLb6Cz+GSq0k=;
+ b=zV8TEMGvvNfbISMYwnSqPuACfelJaCsusMmgz6xP4P6Hv0fL0LnzGdgOVTYIItGtkVOx
+ dSpLwOnTK6UmGibPbtXkSvYawRsrTWR09g4Qs9mige6QVGhujOKXWRFzOYa5nnZIGIkk
+ bCqRI7oPs3eaCJkTUGD3rGwgAWv93XMFSjYfwf04/h70FUpDcWPWvxxVGqPF7N5FbY/d
+ rRBrlirr/LWTU7pPzQ+1Pk5CRCswJG4ORHZvtJQQa2C09LyYBhvslZJQ1BEOqcRZXccl
+ 21Kx75qEn1jzBp/QRlTVKOmHlrpZcz7X7sxVt/rbq9982H5M63qQoKJsVj05dmI43gPp ZA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 31qecm5jvm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Fri, 19 Jun 2020 14:30:16 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05JE9PYR111479;
+ Fri, 19 Jun 2020 14:30:15 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3020.oracle.com with ESMTP id 31q66vm1rw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 19 Jun 2020 14:30:15 +0000
+Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 05JEUE3V027999;
+ Fri, 19 Jun 2020 14:30:14 GMT
+Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 19 Jun 2020 07:30:13 -0700
+Date: Fri, 19 Jun 2020 17:30:07 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Michael Tretter <m.tretter@pengutronix.de>
+Subject: [PATCH] media: allegro: Fix some NULL vs IS_ERR() checks in probe
+Message-ID: <20200619143007.GC267142@mwanda>
 MIME-Version: 1.0
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9656
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxlogscore=999
+ bulkscore=0 adultscore=0 phishscore=0 suspectscore=0 mlxscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2006190106
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9656
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ cotscore=-2147483648 malwarescore=0
+ clxscore=1011 adultscore=0 suspectscore=0 spamscore=0 lowpriorityscore=0
+ mlxlogscore=999 priorityscore=1501 bulkscore=0 phishscore=0 mlxscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2006190106
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,78 +94,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Vaibhav Agarwal <vaibhav.sr@gmail.com>, linux-kernel@vger.kernel.org,
- greybus-dev@lists.linaro.org, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Currently you can't enable the Gey Bus Audio Codec because there is no
-entry for it in the Kconfig file. Originally the config name was going
-to be AUDIO_MSM8994 but that's not correct because other types of
-hardware are supported now. I have chosen the name AUDIO_APB_CODEC
-instead.  Also I had to update the dependencies for GREYBUS_AUDIO to
-make the compile work.
+The devm_ioremap() function doesn't return error pointers, it returns
+NULL on error.
 
-Signed-off-by: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+Fixes: f20387dfd065 ("media: allegro: add Allegro DVT video IP core driver")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 ---
- drivers/staging/greybus/Kconfig  | 14 +++++++++++++-
- drivers/staging/greybus/Makefile |  4 ++--
- 2 files changed, 15 insertions(+), 3 deletions(-)
+ drivers/staging/media/allegro-dvt/allegro-core.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/greybus/Kconfig b/drivers/staging/greybus/Kconfig
-index 9389e7a922fa..927cfa4bc989 100644
---- a/drivers/staging/greybus/Kconfig
-+++ b/drivers/staging/greybus/Kconfig
-@@ -3,7 +3,7 @@ if GREYBUS
- 
- config GREYBUS_AUDIO
- 	tristate "Greybus Audio Class driver"
--	depends on SOUND
-+	depends on SOUND && SND_SOC
- 	help
- 	  Select this option if you have a device that follows the
- 	  Greybus Audio Class specification.
-@@ -11,6 +11,18 @@ config GREYBUS_AUDIO
- 	  To compile this code as a module, chose M here: the module
- 	  will be called gb-audio.ko
- 
-+config GREYBUS_AUDIO_APB_CODEC
-+	tristate "Greybus APBridge Audio codec driver"
-+	depends on SND_SOC && GREYBUS_AUDIO
-+	help
-+	  Select this option if you have a Toshiba APB device that has I2S
-+          ports and acts as a Greybus "Dummy codec". This device is a
-+          bridge from an APB-I2S port to a Unipro network.
-+
-+	  To compile this code as a module, chose M here: the module
-+	  will be called gb-audio-codec.ko
-+
-+
- config GREYBUS_BOOTROM
- 	tristate "Greybus Bootrom Class driver"
- 	help
-diff --git a/drivers/staging/greybus/Makefile b/drivers/staging/greybus/Makefile
-index 3b4b6cabff19..7c5e89622334 100644
---- a/drivers/staging/greybus/Makefile
-+++ b/drivers/staging/greybus/Makefile
-@@ -40,8 +40,8 @@ gb-audio-manager-y	:= audio_manager.o audio_manager_module.o
- #ccflags-y += -DGB_AUDIO_MANAGER_SYSFS
- #endif
- 
--obj-$(CONFIG_GREYBUS_AUDIO_MSM8994)	+= gb-audio-codec.o
--obj-$(CONFIG_GREYBUS_AUDIO_MSM8994)	+= gb-audio-module.o
-+obj-$(CONFIG_GREYBUS_AUDIO_APB_CODEC)  	+= gb-audio-codec.o
-+obj-$(CONFIG_GREYBUS_AUDIO_APB_CODEC)	+= gb-audio-module.o
- obj-$(CONFIG_GREYBUS_AUDIO)		+= gb-audio-gb.o
- obj-$(CONFIG_GREYBUS_AUDIO)		+= gb-audio-apbridgea.o
- obj-$(CONFIG_GREYBUS_AUDIO)		+= gb-audio-manager.o
+diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
+index 70f133a842dd..3ed66aae741d 100644
+--- a/drivers/staging/media/allegro-dvt/allegro-core.c
++++ b/drivers/staging/media/allegro-dvt/allegro-core.c
+@@ -3065,9 +3065,9 @@ static int allegro_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 	regs = devm_ioremap(&pdev->dev, res->start, resource_size(res));
+-	if (IS_ERR(regs)) {
++	if (!regs) {
+ 		dev_err(&pdev->dev, "failed to map registers\n");
+-		return PTR_ERR(regs);
++		return -ENOMEM;
+ 	}
+ 	dev->regmap = devm_regmap_init_mmio(&pdev->dev, regs,
+ 					    &allegro_regmap_config);
+@@ -3085,9 +3085,9 @@ static int allegro_probe(struct platform_device *pdev)
+ 	sram_regs = devm_ioremap(&pdev->dev,
+ 				 sram_res->start,
+ 				 resource_size(sram_res));
+-	if (IS_ERR(sram_regs)) {
++	if (!sram_regs) {
+ 		dev_err(&pdev->dev, "failed to map sram\n");
+-		return PTR_ERR(sram_regs);
++		return -ENOMEM;
+ 	}
+ 	dev->sram = devm_regmap_init_mmio(&pdev->dev, sram_regs,
+ 					  &allegro_sram_config);
 -- 
-2.26.2
+2.27.0
 
 _______________________________________________
 devel mailing list
