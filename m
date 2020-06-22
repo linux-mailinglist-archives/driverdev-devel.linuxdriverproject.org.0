@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B91F0203267
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jun 2020 10:48:32 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 93B88203269
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jun 2020 10:48:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5394D884DE;
-	Mon, 22 Jun 2020 08:48:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 258E1215DF;
+	Mon, 22 Jun 2020 08:48:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9vjDWLQNEI7W; Mon, 22 Jun 2020 08:48:31 +0000 (UTC)
+	with ESMTP id JBTYKE7xvXgc; Mon, 22 Jun 2020 08:48:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6C80488364;
-	Mon, 22 Jun 2020 08:48:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E79EE2154E;
+	Mon, 22 Jun 2020 08:48:32 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3DC301BF488
+ by ash.osuosl.org (Postfix) with ESMTP id F00191BF488
  for <driverdev-devel@linuxdriverproject.org>;
  Mon, 22 Jun 2020 08:48:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 310592154E
+ by silver.osuosl.org (Postfix) with ESMTP id EC39F21539
  for <driverdev-devel@linuxdriverproject.org>;
  Mon, 22 Jun 2020 08:48:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s9zWB+uiWjtl
+ with ESMTP id ql2OMHWPIe9E
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 22 Jun 2020 08:48:24 +0000 (UTC)
+ Mon, 22 Jun 2020 08:48:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
- [68.232.147.91])
- by silver.osuosl.org (Postfix) with ESMTPS id 8D04C21539
+Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
+ [68.232.149.84])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7C362203D1
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 22 Jun 2020 08:48:24 +0000 (UTC)
+ Mon, 22 Jun 2020 08:48:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1592815704; x=1624351704;
+ t=1592815705; x=1624351705;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=KY3d1JIhI9yHA9QoKxiMFSNmYtxSWWKQoiqpjcR9JEQ=;
- b=OLoxvW9lQ5ArSr7oAm4YGTG3Ljd7OImKAncc091/qYFX6Nv5p4BEMxwt
- w9MvLyEGKhYNLm/Q92rEtkgfmhmCmeOl28KY479hV/yaOEkddQgrtkELO
- FtL4RxALMqsZlzdctXqV5kX302sNPlyrf0YOqxR6QZJoaFqfYnxOQ+fjs
- YFsSv1nob1sL2rtKi0uCc8Z/cBvTnQqBrS23IJcwYhzY0igE/WC/wrsEM
- Ov8M+h9BIzLm5nta7utHwDms66sJx1wXYLDjtzgOnMxiTCtcZy6/S493U
- cR1mS4bwgj9VeXblrD6H1GQsIe9gZim5c+1JQvtXJb0eZly5Vnv03R/4b Q==;
-IronPort-SDR: Nw3+B7oxe7GJGSIpsFBSzaCeW0ntB0CvQh4+CTgbns2aSI69zD1z/Gg8oTDYwbUEV6Vde0lf8o
- heovKqIyvfRF5HNQUCiurQoH+ST9M7goGK5e/yX3Y3LCMWaxDoEVhZb0HU9VxlEZ72uaXjvcA0
- fTKzfyewt80QX3kC3y18j4G0/oyuuObVWLiTx9pIndEtcFj+p4cdTTfRj5SFQAmBwGo44z+OcS
- KUmdkb9jiC8eSZktqk1LmCF9cPtpXs8oHb+nCH42Vhh5UAZHVrsOGoVWp2AoNsiWQ8CrXidYHL
- gxk=
-X-IronPort-AV: E=Sophos;i="5.75,266,1589266800"; d="scan'208";a="84541922"
+ bh=4y4zOs9Jn9Db7bTxZUXiANWY5j7HdRIw1UoZx7b1E3Y=;
+ b=DH/I+Dy58XH0scslhru6EzMg/X37PaB8WxfSDlNLVZMV2Qg512eggNrB
+ wwyDvUPNXlh/iYjWDq/Ol+moAFVW7YyTdOMqRJHdL5JrehpkOwVqRiiVM
+ XLz3FftQQN+Ji4eU8ZKVv6kk8KI8LVe3sYkMkRFepSE+l433KugIGcClb
+ 6iwiCTb0WtY1QLHvnPE0XXrpKMwXEAsAkyXhra/4J5He8a4kjV7U78cKS
+ plVUeuDtjrFGfI+pI2fLVkOUN34ZfmuY9PEqGp0hdxG7uvRBspQYHy1BS
+ nElNTD8CgMYDxpI56IBu137YjJPJbiqQ8YyLQuFn6M1K8QZ2m0jZ3q74R g==;
+IronPort-SDR: Elp+G/9e8GUz3P95AnCA52Y5jeewCTcYp+trj5+/Jd04wuaM52FXJ3NStVWuUTD/OUZEVhD9Cz
+ 0t1yiD36hnFTb+UR9u5HSCnbswDGgFgk3eEg0DNqHLHbnZs9ejVbT6X5iWoYrVYYkz9EQgPRqZ
+ RpwAbPH5QUg0ONlDSzw+PfLRD+7D+0RUjz1zb1e+PVXX6rbmj8kMQUUjK4xayOmSR/pGSXPyT4
+ sGZkXpRs3K54p6/c06E0UeK64onN24nw7nfjw1K+5uiFuC2JPV4ubzWQGtKjT3VWHQdzBP37vD
+ QcA=
+X-IronPort-AV: E=Sophos;i="5.75,266,1589266800"; d="scan'208";a="79291321"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 22 Jun 2020 01:48:24 -0700
+ by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 22 Jun 2020 01:48:25 -0700
 Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
  chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Mon, 22 Jun 2020 01:48:24 -0700
+ 15.1.1979.3; Mon, 22 Jun 2020 01:48:25 -0700
 Received: from kar-sv-agl01.mchp-main.com (10.10.115.15) by
  chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
- 15.1.1979.3 via Frontend Transport; Mon, 22 Jun 2020 01:48:23 -0700
+ 15.1.1979.3 via Frontend Transport; Mon, 22 Jun 2020 01:48:24 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH 5/6] staging: most: cdev: fix return values
-Date: Mon, 22 Jun 2020 10:48:14 +0200
-Message-ID: <1592815695-19305-6-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH 6/6] staging: most: cdev: simplify list iteration
+Date: Mon, 22 Jun 2020 10:48:15 +0200
+Message-ID: <1592815695-19305-7-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1592815695-19305-1-git-send-email-christian.gromm@microchip.com>
 References: <1592815695-19305-1-git-send-email-christian.gromm@microchip.com>
@@ -93,45 +93,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch makes use of the proper return values when reporting
-an error to the caller.
+This patch uses a less confusing list traversing structure to
+either return an item of the list that meets the prerequisites
+or NULL otherwise.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 ---
- drivers/staging/most/cdev/cdev.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/most/cdev/cdev.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/most/cdev/cdev.c b/drivers/staging/most/cdev/cdev.c
-index d374cc0..aa7d7af 100644
+index aa7d7af..0448807 100644
 --- a/drivers/staging/most/cdev/cdev.c
 +++ b/drivers/staging/most/cdev/cdev.c
-@@ -326,7 +326,7 @@ static int comp_disconnect_channel(struct most_interface *iface, int channel_id)
+@@ -66,19 +66,16 @@ static struct comp_channel *get_channel(struct most_interface *iface, int id)
+ {
+ 	struct comp_channel *c, *tmp;
+ 	unsigned long flags;
+-	int found_channel = 0;
  
- 	c = get_channel(iface, channel_id);
- 	if (!c)
--		return -ENXIO;
-+		return -EINVAL;
+ 	spin_lock_irqsave(&ch_list_lock, flags);
+ 	list_for_each_entry_safe(c, tmp, &channel_list, list) {
+ 		if ((c->iface == iface) && (c->channel_id == id)) {
+-			found_channel = 1;
+-			break;
++			spin_unlock_irqrestore(&ch_list_lock, flags);
++			return c;
+ 		}
+ 	}
+ 	spin_unlock_irqrestore(&ch_list_lock, flags);
+-	if (!found_channel)
+-		return NULL;
+-	return c;
++	return NULL;
+ }
  
- 	mutex_lock(&c->io_mutex);
- 	spin_lock(&c->unlink);
-@@ -360,7 +360,7 @@ static int comp_rx_completion(struct mbo *mbo)
- 
- 	c = get_channel(mbo->ifp, mbo->hdm_channel_id);
- 	if (!c)
--		return -ENXIO;
-+		return -EINVAL;
- 
- 	spin_lock(&c->unlink);
- 	if (!c->access_ref || !c->dev) {
-@@ -390,7 +390,7 @@ static int comp_tx_completion(struct most_interface *iface, int channel_id)
- 
- 	c = get_channel(iface, channel_id);
- 	if (!c)
--		return -ENXIO;
-+		return -EINVAL;
- 
- 	if ((channel_id < 0) || (channel_id >= iface->num_channels)) {
- 		dev_warn(c->dev, "Channel ID out of range\n");
+ static void stop_channel(struct comp_channel *c)
 -- 
 2.7.4
 
