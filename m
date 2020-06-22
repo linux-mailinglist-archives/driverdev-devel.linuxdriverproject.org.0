@@ -1,74 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 720BC2030B8
-	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jun 2020 09:38:59 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5595203261
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Jun 2020 10:48:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BFBE488C52;
-	Mon, 22 Jun 2020 07:38:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DE29C884A8;
+	Mon, 22 Jun 2020 08:48:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Le-6UKcWNABv; Mon, 22 Jun 2020 07:38:57 +0000 (UTC)
+	with ESMTP id fexG3DRinPRH; Mon, 22 Jun 2020 08:48:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 48C9388928;
-	Mon, 22 Jun 2020 07:38:57 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id D069388364;
+	Mon, 22 Jun 2020 08:48:24 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D04391BF314
- for <devel@linuxdriverproject.org>; Mon, 22 Jun 2020 07:38:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9286D1BF488
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Jun 2020 08:48:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CA962203EA
- for <devel@linuxdriverproject.org>; Mon, 22 Jun 2020 07:38:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7EDA72155D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Jun 2020 08:48:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9W3ROR0p9X0N for <devel@linuxdriverproject.org>;
- Mon, 22 Jun 2020 07:38:53 +0000 (UTC)
+ with ESMTP id Jayddhh3-qMo
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Jun 2020 08:48:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
- [209.85.160.194])
- by silver.osuosl.org (Postfix) with ESMTPS id ACB5C20025
- for <devel@driverdev.osuosl.org>; Mon, 22 Jun 2020 07:38:53 +0000 (UTC)
-Received: by mail-qt1-f194.google.com with SMTP id i3so2428281qtq.13
- for <devel@driverdev.osuosl.org>; Mon, 22 Jun 2020 00:38:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=pFf+0uM7OhIyngSgu5Yj3nmTerq75fKAoaRpUy4UdZc=;
- b=bTVxwjJv+BTutnnXMZTcEX3+yPsFy6WBiq161bQHyVik5hKmDYVz6l3cXO9z35R9M7
- ycQUCVSiaYVFbU6w+1WTRaBAZV9ldva9qanfc1jYpovqrquAv4/jL1+xXqTJAcoeou+o
- PMLpwjGVL0NKZuj9lg1bwKpePJCe5tULsWUfkWfwapaMcELKPAhQ2LPuerMI+rpMbSgf
- u0hUvagxULfqU5kCvRVB016gWF1LgC3hLeScJ/VigNKOGXvCrndZyv+jix5YCMWZXDqz
- aQLT3gkFHPkujKYdmcrstb7SGKFiQhap0PPmpiazbezehuq/szKbWCDJRgkPbizzx3dj
- pFBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=pFf+0uM7OhIyngSgu5Yj3nmTerq75fKAoaRpUy4UdZc=;
- b=jtnmXCuE6qXdgc+qmmkmCIzFtyG+joEkmtbGaMch2sS4fDiG6Eq9/bgttoQJJfjDPs
- LUTgZOeoPcCZKtHJUF/xhNoUwjksz4XipiDlTaTFii80ruNdcyPKGeUJs0f7Vv6xRQKN
- PNSzFKSNOU5ftRh+yDNx4K2c6+J/gepfJ797pXNfMosPD99IfNXApFe9Z1FeoW9Mel3l
- mnO0qHpHyuC51n0lFrIhkW2sqfjLIwlfuO4TlI4bGyepfTpIGC5nNcPTqIGyRviiIDLg
- 4bhVYqF60cZ+WAWuBqn86KDUe5XA9mxTUCNFcItanlyeFrxe9cSCGxhxuc8z0MGIeKc2
- D/ZA==
-X-Gm-Message-State: AOAM531uf/+o1SWpYDQeV6c77bAbeLDOLkB1q/VEJtKvjKJhHe4Gk6ws
- RUe/rPTGjovwR6cqzbPv0xU=
-X-Google-Smtp-Source: ABdhPJyOjIb0iw1iEKpl95OKmTjBr1Oy0RUGpwzNGuopcAG0sGqjFXgoB4uVMm0o57J4Hut2uISUIQ==
-X-Received: by 2002:ac8:3f75:: with SMTP id w50mr9210884qtk.123.1592811532729; 
- Mon, 22 Jun 2020 00:38:52 -0700 (PDT)
-Received: from ip-172-31-24-31.ec2.internal
- (ec2-54-234-246-66.compute-1.amazonaws.com. [54.234.246.66])
- by smtp.gmail.com with ESMTPSA id p26sm632325qkm.76.2020.06.22.00.38.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Jun 2020 00:38:52 -0700 (PDT)
-From: "Rodolfo C. Villordo" <rodolfovillordo@gmail.com>
-To: 
-Subject: [PATCH v2] staging: gasket: replace symbolic permissions
-Date: Mon, 22 Jun 2020 07:36:12 +0000
-Message-Id: <20200622073612.12282-1-rodolfovillordo@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
+ [68.232.147.91])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1B804203D1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Jun 2020 08:48:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1592815701; x=1624351701;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=fzLknJMe77mrm+Hrun7TSv4WNCPQrd/Cwi0X8tRSoow=;
+ b=Aacu20GQnzZ6tFuuKO4v4Ufk4Rz9k/lnoyuGCNpBosAZUJyHpjb7aekK
+ HyxNcLmoXpZYyDXtaUfd1DCJeLSco0hNEfw92ipYNGyieNNJrazrcJ58h
+ 8TuFPNludrUV1qfIDETYJFvb1HcutBBwUbNGWwPtxkyHX1GUjhx0R0M61
+ M5s4p+pDlgKPP3ZSBMl3fTk3rFP+3mTb7AcpnshwjN97NALn1yv/tRFdc
+ u3WCm/2C9rqnGyypkqeHypV0yoNf4ACoEY390J8NC2aD6bbryPB6Kl7k+
+ BNEwQckO4hFMbG4Xl6yRi+l0rA5eEmuckfwP5UsE3flTIPfWNAEXPZdwC w==;
+IronPort-SDR: AUOV0VL+8xzjlf7lolbDs0hEbOLRCqlakgoTQg52V/sDOfwirJw4nHrY7vvCBeX3kcPN1pdq6g
+ Vs3B3+rfsAdJ99qVkhVEoZp9jXvwQl3JqmU7HPr2VNOiWCszS496gareLZQZTpOJrxR666R6ID
+ bGplsSnBwmXg9x/qIguW4T608iWJeuEDiTiZ4iJ1OFsTrIPOBjlEVBuhkFvMHBnzT6PSSFG5nf
+ odRi7pqBjduDF7RG8Tda9P/TOiu+nneaNCVvhgyUERWFBclYzKiPBzqYPN2Av6PZqSB5AYYAlq
+ 960=
+X-IronPort-AV: E=Sophos;i="5.75,266,1589266800"; d="scan'208";a="84541900"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 22 Jun 2020 01:48:19 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1979.3; Mon, 22 Jun 2020 01:48:18 -0700
+Received: from kar-sv-agl01.mchp-main.com (10.10.115.15) by
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
+ 15.1.1979.3 via Frontend Transport; Mon, 22 Jun 2020 01:48:17 -0700
+From: Christian Gromm <christian.gromm@microchip.com>
+To: <gregkh@linuxfoundation.org>
+Subject: [PATCH 0/6] staging: most: cdev: clean-up and improvements
+Date: Mon, 22 Jun 2020 10:48:09 +0200
+Message-ID: <1592815695-19305-1-git-send-email-christian.gromm@microchip.com>
+X-Mailer: git-send-email 2.7.4
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,62 +83,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, rodolfovillordo@gmail.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Richard Yeh <rcy@google.com>, Rob Springer <rspringer@google.com>,
- Todd Poynor <toddpoynor@google.com>
-MIME-Version: 1.0
+Cc: Christian Gromm <christian.gromm@microchip.com>,
+ driverdev-devel@linuxdriverproject.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal permissions '0444'.
-+               .attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
-warning detected by checkpatch.pl
+Patch set to fix minor issues and improve things a little.
 
-Unable to use __ATTR_RO(). Driver has multiple files using the same show
-function:
+Christian Gromm (6):
+  staging: most: cdev: remove noisy log messages
+  staging: most: cdev: use dev_*() functions to print messages
+  staging: most: cdev: remove overcautious parameter checking
+  staging: most: cdev: fix up parenthesizing
+  staging: most: cdev: fix return values
+  staging: most: cdev: simplify list iteration
 
-$ grep GASKET_SYSFS_RO drivers/staging/gasket/*
-drivers/staging/gasket/apex_driver.c:   GASKET_SYSFS_RO(node_0_page_table_entries, sysfs_show,
-drivers/staging/gasket/apex_driver.c:   GASKET_SYSFS_RO(node_0_simple_page_table_entries, sysfs_show,
-drivers/staging/gasket/apex_driver.c:   GASKET_SYSFS_RO(node_0_num_mapped_pages, sysfs_show,
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(bar_offsets, gasket_sysfs_data_show, ATTR_BAR_OFFSETS),
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(bar_sizes, gasket_sysfs_data_show, ATTR_BAR_SIZES),
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(driver_version, gasket_sysfs_data_show,
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(framework_version, gasket_sysfs_data_show,
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(device_type, gasket_sysfs_data_show, ATTR_DEVICE_TYPE),
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(revision, gasket_sysfs_data_show,
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(pci_address, gasket_sysfs_data_show, ATTR_PCI_ADDRESS),
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(status, gasket_sysfs_data_show, ATTR_STATUS),
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(is_device_owned, gasket_sysfs_data_show,
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(device_owner, gasket_sysfs_data_show,
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(write_open_count, gasket_sysfs_data_show,
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(reset_count, gasket_sysfs_data_show, ATTR_RESET_COUNT),
-drivers/staging/gasket/gasket_core.c:   GASKET_SYSFS_RO(user_mem_ranges, gasket_sysfs_data_show,
-drivers/staging/gasket/gasket_interrupt.c:      GASKET_SYSFS_RO(interrupt_counts, interrupt_sysfs_show,
+ drivers/staging/most/cdev/cdev.c | 49 +++++++++++-----------------------------
+ 1 file changed, 13 insertions(+), 36 deletions(-)
 
-Signed-off-by: Rodolfo C. Villordo <rodolfovillordo@gmail.com>
----
- drivers/staging/gasket/gasket_sysfs.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/gasket/gasket_sysfs.h b/drivers/staging/gasket/gasket_sysfs.h
-index ab5aa351d555..d5e167dfbe76 100644
---- a/drivers/staging/gasket/gasket_sysfs.h
-+++ b/drivers/staging/gasket/gasket_sysfs.h
-@@ -71,7 +71,7 @@ struct gasket_sysfs_attribute {
- 
- #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)                     \
- 	{                                                                      \
--		.attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
-+		.attr = __ATTR(_name, 0444, _show_function, NULL),          \
- 		.data.attr_type = _attr_type                                   \
- 	}
- 
 -- 
-2.17.1
+2.7.4
 
 _______________________________________________
 devel mailing list
