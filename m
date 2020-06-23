@@ -1,46 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 489E6205784
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jun 2020 18:45:47 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B989C205780
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jun 2020 18:45:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CE5602E030;
-	Tue, 23 Jun 2020 16:45:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 756208771E;
+	Tue, 23 Jun 2020 16:45:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tmfp5E-Isxxa; Tue, 23 Jun 2020 16:45:44 +0000 (UTC)
+	with ESMTP id dNNzBqDI7w4a; Tue, 23 Jun 2020 16:45:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5EDC32DFF2;
-	Tue, 23 Jun 2020 16:45:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5A3F8876F7;
+	Tue, 23 Jun 2020 16:45:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 611DB1BF568
- for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:13 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BC3C11BF568
+ for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5E24087A11
- for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B8FC788334
+ for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Go6mxUPTYTco for <devel@linuxdriverproject.org>;
- Tue, 23 Jun 2020 16:45:13 +0000 (UTC)
+ with ESMTP id wGcLzr6j0Vsg for <devel@linuxdriverproject.org>;
+ Tue, 23 Jun 2020 16:45:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D051E89789
- for <devel@driverdev.osuosl.org>; Tue, 23 Jun 2020 16:45:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E44788826B
+ for <devel@driverdev.osuosl.org>; Tue, 23 Jun 2020 16:45:13 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 0B796B03F;
+ by mx2.suse.de (Postfix) with ESMTP id 810E8AEDD;
  Tue, 23 Jun 2020 16:45:11 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 08/50] staging: mmal-vchiq: Always return the param size from
- param_get
-Date: Tue, 23 Jun 2020 18:41:54 +0200
-Message-Id: <20200623164235.29566-9-nsaenzjulienne@suse.de>
+Subject: [PATCH 09/50] staging: mmal-vchiq: If the VPU returns an error,
+ don't negate it
+Date: Tue, 23 Jun 2020 18:41:55 +0200
+Message-Id: <20200623164235.29566-10-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200623164235.29566-1-nsaenzjulienne@suse.de>
 References: <20200623164235.29566-1-nsaenzjulienne@suse.de>
@@ -70,16 +70,11 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Dave Stevenson <dave.stevenson@raspberrypi.org>
 
-mmal-vchiq is a reimplementation of the userland library for MMAL.
-When getting a parameter, the client provides the storage and
-the size of the storage. The VPU then returns the size of the
-parameter that it wished to return, and as much as possible of
-that parameter is returned to the client.
-
-The implementation previously only returned the size provided
-by the VPU should it exceed the buffer size. So for parameters
-such as the supported encodings list the client had no idea
-how much of the provided storage had been populated.
+There is an enum for the errors that the VPU can return.
+port_parameter_get was negating that value, but also using -EINVAL
+from the Linux error codes.
+Pass the VPU error code as positive values. Should the function
+need to pass a Linux failure, then return that as negative.
 
 Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
 Signed-off-by: Jacopo Mondi <jacopo@jmondi.org>
@@ -89,23 +84,19 @@ Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-index c598a10452be..df2957abc37c 100644
+index df2957abc37c..a7ab0e521184 100644
 --- a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
 +++ b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-@@ -1282,11 +1282,12 @@ static int port_parameter_get(struct vchiq_mmal_instance *instance,
- 		 */
- 		memcpy(value, &rmsg->u.port_parameter_get_reply.value,
- 		       *value_size);
--		*value_size = rmsg->u.port_parameter_get_reply.size;
- 	} else {
- 		memcpy(value, &rmsg->u.port_parameter_get_reply.value,
- 		       rmsg->u.port_parameter_get_reply.size);
+@@ -1270,7 +1270,8 @@ static int port_parameter_get(struct vchiq_mmal_instance *instance,
+ 		goto release_msg;
  	}
-+	/* Always report the size of the returned parameter to the caller */
-+	*value_size = rmsg->u.port_parameter_get_reply.size;
  
- 	pr_debug("%s:result:%d component:0x%x port:%d parameter:%d\n", __func__,
- 		 ret, port->component->handle, port->handle, parameter_id);
+-	ret = -rmsg->u.port_parameter_get_reply.status;
++	ret = rmsg->u.port_parameter_get_reply.status;
++
+ 	/* port_parameter_get_reply.size includes the header,
+ 	 * whilst *value_size doesn't.
+ 	 */
 -- 
 2.27.0
 
