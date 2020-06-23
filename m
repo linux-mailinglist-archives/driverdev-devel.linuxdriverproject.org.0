@@ -2,44 +2,44 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0BD20205782
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jun 2020 18:45:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B04F3205781
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jun 2020 18:45:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6B41F898F8;
-	Tue, 23 Jun 2020 16:45:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 20F99898C1;
+	Tue, 23 Jun 2020 16:45:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QYuM7JQaX9CG; Tue, 23 Jun 2020 16:45:42 +0000 (UTC)
+	with ESMTP id tTp1EX6STyUu; Tue, 23 Jun 2020 16:45:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DC619897CA;
-	Tue, 23 Jun 2020 16:45:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 904D489789;
+	Tue, 23 Jun 2020 16:45:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8B9A51BF969
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 757AB1BF568
  for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 88C3588334
+ by silver.osuosl.org (Postfix) with ESMTP id 666FD20381
  for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X4AOL3vf7aMf for <devel@linuxdriverproject.org>;
+ with ESMTP id OoNOC5qE8aqa for <devel@linuxdriverproject.org>;
  Tue, 23 Jun 2020 16:45:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4D96188325
+ by silver.osuosl.org (Postfix) with ESMTPS id B0947204C9
  for <devel@driverdev.osuosl.org>; Tue, 23 Jun 2020 16:45:14 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 80FEDAEF3;
+ by mx2.suse.de (Postfix) with ESMTP id E12C6AECB;
  Tue, 23 Jun 2020 16:45:12 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 11/50] staging: vchiq_arm: Add a matching unregister call
-Date: Tue, 23 Jun 2020 18:41:57 +0200
-Message-Id: <20200623164235.29566-12-nsaenzjulienne@suse.de>
+Subject: [PATCH 12/50] staging: vchi: Get rid of all useless callback reasons
+Date: Tue, 23 Jun 2020 18:41:58 +0200
+Message-Id: <20200623164235.29566-13-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200623164235.29566-1-nsaenzjulienne@suse.de>
 References: <20200623164235.29566-1-nsaenzjulienne@suse.de>
@@ -56,42 +56,83 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jacopo Mondi <jacopo@jmondi.org>,
- kernel-list@raspberrypi.com, linux-kernel@vger.kernel.org,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- laurent.pinchart@ideasonboard.com, Phil Elwell <phil@raspberrypi.com>,
- linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org, kernel-list@raspberrypi.com,
+ linux-kernel@vger.kernel.org, Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Phil Elwell <phil@raspberrypi.com>
+They are neither produced nor expected, so just delete them.
 
-All the registered children of vchiq have a corresponding call to
-platform_device_unregister except bcm2835_audio. Fix that.
-
-Fixes: 25c7597af20d ("staging: vchiq_arm: Register a platform device for audio")
-
-Signed-off-by: Phil Elwell <phil@raspberrypi.com>
-Signed-off-by: Jacopo Mondi <jacopo@jmondi.org>
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 1 +
- 1 file changed, 1 insertion(+)
+ .../interface/vchi/vchi_common.h              | 40 ++-----------------
+ 1 file changed, 3 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-index 28ea8c3a4cba..355590f1e130 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-@@ -2805,6 +2805,7 @@ static int vchiq_probe(struct platform_device *pdev)
+diff --git a/drivers/staging/vc04_services/interface/vchi/vchi_common.h b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
+index 7fc04e38936d..0f79bea4757d 100644
+--- a/drivers/staging/vc04_services/interface/vchi/vchi_common.h
++++ b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
+@@ -31,8 +31,6 @@ enum vchi_crc_control {
  
- static int vchiq_remove(struct platform_device *pdev)
- {
-+	platform_device_unregister(bcm2835_audio);
- 	platform_device_unregister(bcm2835_camera);
- 	vchiq_debugfs_deinit();
- 	device_destroy(vchiq_class, vchiq_devid);
+ //callback reasons when an event occurs on a service
+ enum vchi_callback_reason {
+-	VCHI_CALLBACK_REASON_MIN,
+-
+ 	/*
+ 	 * This indicates that there is data available handle is the msg id that
+ 	 * was transmitted with the data
+@@ -41,44 +39,12 @@ enum vchi_callback_reason {
+ 	 * Tasks get kicked by the callback, reset their event and try and read
+ 	 * from the fifo until it fails
+ 	 */
++	VCHI_CALLBACK_SERVICE_CLOSED,
+ 	VCHI_CALLBACK_MSG_AVAILABLE,
+-	VCHI_CALLBACK_MSG_SENT,
+-	VCHI_CALLBACK_MSG_SPACE_AVAILABLE, // XXX not yet implemented
+-
+-	// This indicates that a transfer from the other side has completed
+-	VCHI_CALLBACK_BULK_RECEIVED,
+-	//This indicates that data queued up to be sent has now gone
+-	//handle is the msg id that was used when sending the data
+ 	VCHI_CALLBACK_BULK_SENT,
+-	VCHI_CALLBACK_BULK_RX_SPACE_AVAILABLE, // XXX not yet implemented
+-	VCHI_CALLBACK_BULK_TX_SPACE_AVAILABLE, // XXX not yet implemented
+-
+-	VCHI_CALLBACK_SERVICE_CLOSED,
+-
+-	/*
+-	 * this side has sent XOFF to peer due to lack of data consumption by
+-	 * service (suggests the service may need to take some recovery action
+-	 * if it has been deliberately holding off consuming data)
+-	 */
+-	VCHI_CALLBACK_SENT_XOFF,
+-	VCHI_CALLBACK_SENT_XON,
+-
+-	// indicates that a bulk transfer has finished reading the source buffer
+-	VCHI_CALLBACK_BULK_DATA_READ,
+-
+-	// power notification events (currently host side only)
+-	VCHI_CALLBACK_PEER_OFF,
+-	VCHI_CALLBACK_PEER_SUSPENDED,
+-	VCHI_CALLBACK_PEER_ON,
+-	VCHI_CALLBACK_PEER_RESUMED,
+-	VCHI_CALLBACK_FORCED_POWER_OFF,
+-
+-	// some extra notifications provided by vchiq_arm
+-	VCHI_CALLBACK_SERVICE_OPENED,
+-	VCHI_CALLBACK_BULK_RECEIVE_ABORTED,
++	VCHI_CALLBACK_BULK_RECEIVED,
+ 	VCHI_CALLBACK_BULK_TRANSMIT_ABORTED,
+-
+-	VCHI_CALLBACK_REASON_MAX
++	VCHI_CALLBACK_BULK_RECEIVE_ABORTED,
+ };
+ 
+ // service control options
 -- 
 2.27.0
 
