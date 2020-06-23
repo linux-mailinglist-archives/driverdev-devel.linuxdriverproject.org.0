@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E84CF205581
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jun 2020 17:07:49 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 222F3205584
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jun 2020 17:07:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5B7DB87650;
-	Tue, 23 Jun 2020 15:07:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7A2FE88EE5;
+	Tue, 23 Jun 2020 15:07:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XRrLTTfhgzpK; Tue, 23 Jun 2020 15:07:47 +0000 (UTC)
+	with ESMTP id QIlo7ZbQewB6; Tue, 23 Jun 2020 15:07:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 24D4687646;
-	Tue, 23 Jun 2020 15:07:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8D26D88E4E;
+	Tue, 23 Jun 2020 15:07:48 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9D4B01BF3ED
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0969C1BF3ED
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 23 Jun 2020 15:07:43 +0000 (UTC)
+ Tue, 23 Jun 2020 15:07:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 97A29265F5
+ by hemlock.osuosl.org (Postfix) with ESMTP id 06893896B5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 23 Jun 2020 15:07:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DH805WS+5Ynj
  for <driverdev-devel@linuxdriverproject.org>;
  Tue, 23 Jun 2020 15:07:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hhP4j5khtzJC
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 23 Jun 2020 15:07:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
- [68.232.149.84])
- by silver.osuosl.org (Postfix) with ESMTPS id 250E622CB0
+Received: from esa4.microchip.iphmx.com (esa4.microchip.iphmx.com
+ [68.232.154.123])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5979F896AF
  for <driverdev-devel@linuxdriverproject.org>;
- Tue, 23 Jun 2020 15:07:42 +0000 (UTC)
+ Tue, 23 Jun 2020 15:07:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1592924862; x=1624460862;
+ t=1592924863; x=1624460863;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=XcyqNwuuPxGlJh6h+8Uk+TXiK1g0N2GqZz/9Q9mXsZI=;
- b=q2TutqGpv7eeyzRAAwSeuC4PXD6KRvPPKfl/GT8qpIEP92QGTKY/hMQS
- zN05WFeARfhwK93oaKVZo4Pm2eXICv6WuvAeyH08c3W0ZFBdqcZh2ixnC
- j7ZaTA96rGxJFZRMhFSXyrhwhdUlW6YoDfUJHingmGwy2WUhmVT3EyVOF
- xuvKorRPp14wr6Zlv/Xf6yE1ZIqNP5Tthd+BH52Y/IlineuY8KZOAM9rg
- Zl671rv7ssPKSX2AtKl6k+Zf4SWkTQGOFAnFlFINgRvmayiSN69kBQs0H
- 7k2ezvh4i5IWmp3FBPDZxllC3QrSSuH+DXdiEtqHlQijhFSU8eZFw1b7g A==;
-IronPort-SDR: 4s4Zot1C4x6ArXHENCynXG4PTjLMJrIc+q8/vrjQcYOMp9jxPdboOyHYQoQ6xNgeggkUaEjlAd
- 5dcka8yql6K+dydBRTOC2Qkape8XkTXhRdO5Jx7hZQCCICTSQnR0I7efKJSnFVjrx1AkJ9BEuB
- L3hC1B9os2bMzHYwn+yqlSuh+zsCYsO5V3LKDo0FH/BdafWjtk4/XfKMajGO3zmSBXumDeTSm8
- wX0vXqQzOtiJ6oAcAhsletOR9E2xx2gwfMPixeeuJ66Fz/NBQ1E6soMRB2f+Us9MgbeCh1ySIv
- IvQ=
-X-IronPort-AV: E=Sophos;i="5.75,271,1589266800"; d="scan'208";a="79465024"
+ bh=fA0e+6zkM5uM0pTDaGzW8uzxsS4L3Ag9PwEP9nno9Ts=;
+ b=H83bCJHrP8OtZB0zu0cvWb/BBJ7iIlX6MO7+XYgrze9x/M/CUZ+clPeF
+ FQDk57FafaWPfzuX421D9D9ZgGbeAV8+kfHhFVqlGzofzztsOLVmB+lx6
+ 64hGfR00trIqmnGzCudsSN6Vwjk3M1sVXAcEz53GenPIOs71gpGMsAxml
+ DMgGgWysEWmjsrM2c3NKkCK64d6xyouCu22X9TkJF8K2yK9x3dgz1v22E
+ p5o0UPmv0OUJfOjjhHep/gPQWff1YBB3F02jc+UL9XYvp7CcAm818CJok
+ SZD3tFgad6CKo7euY9mDQA3EADwuYiy0+3tmYZ6ZFGEnkwK4fieaIohQ3 g==;
+IronPort-SDR: 34m7V7gUiUJ4tLDjWnZJ3OloYGmcmJ5QUILGulA9PKjqhcLc5BmR95uQWsL9t18KV6ZuSdIVWp
+ dRo4j9qQA6n1FNdDqjXxzLxxeMXQ4hofL9JpuFB/a2ZpuzOIPJJzrdpcv3/Ov1oPmgF+CV8lWS
+ DNVVJEhf/VWCils0D2q7GXOcKKT4rNmGF+FdjFhe/FWNkPHqefrByOdYgj/GrdE1IUn6PbL65g
+ fCVfBa4eucBb+Oqy2KfZcMUZAZO8iz1tn0glYxIHDxpld1uRDQ5Nkbyom5vGyCl6g3ybsr7ca9
+ JWM=
+X-IronPort-AV: E=Sophos;i="5.75,271,1589266800"; d="scan'208";a="77572786"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 23 Jun 2020 08:07:41 -0700
+ by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 23 Jun 2020 08:07:42 -0700
 Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Tue, 23 Jun 2020 08:07:29 -0700
+ 15.1.1979.3; Tue, 23 Jun 2020 08:07:31 -0700
 Received: from kar-sv-agl01.mchp-main.com (10.10.115.15) by
  chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
- 15.1.1979.3 via Frontend Transport; Tue, 23 Jun 2020 08:07:40 -0700
+ 15.1.1979.3 via Frontend Transport; Tue, 23 Jun 2020 08:07:41 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
-Subject: [PATCH 3/5] staging: most: sound: fix return values
-Date: Tue, 23 Jun 2020 17:07:33 +0200
-Message-ID: <1592924855-25569-4-git-send-email-christian.gromm@microchip.com>
+Subject: [PATCH 4/5] staging: most: sound: fix white spaces
+Date: Tue, 23 Jun 2020 17:07:34 +0200
+Message-ID: <1592924855-25569-5-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1592924855-25569-1-git-send-email-christian.gromm@microchip.com>
 References: <1592924855-25569-1-git-send-email-christian.gromm@microchip.com>
@@ -93,68 +93,111 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch returns the proper values when reporting an error
-to the caller.
+This patch removes unnecessary empty lines.
 
 Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 ---
- drivers/staging/most/sound/sound.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ drivers/staging/most/sound/sound.c | 15 ---------------
+ 1 file changed, 15 deletions(-)
 
 diff --git a/drivers/staging/most/sound/sound.c b/drivers/staging/most/sound/sound.c
-index 80a8feb..467faa1 100644
+index 467faa1..7c56cdb 100644
 --- a/drivers/staging/most/sound/sound.c
 +++ b/drivers/staging/most/sound/sound.c
-@@ -278,6 +278,7 @@ static int pcm_open(struct snd_pcm_substream *substream)
- 	struct channel *channel = substream->private_data;
- 	struct snd_pcm_runtime *runtime = substream->runtime;
- 	struct most_channel_config *cfg = channel->cfg;
-+	int ret;
+@@ -50,10 +50,8 @@ struct channel {
+ 	unsigned int period_pos;
+ 	unsigned int buffer_pos;
+ 	bool is_stream_running;
+-
+ 	struct task_struct *playback_task;
+ 	wait_queue_head_t playback_waitq;
+-
+ 	void (*copy_fn)(void *alsa, void *most, unsigned int bytes);
+ };
  
- 	channel->substream = substream;
- 
-@@ -290,11 +291,12 @@ static int pcm_open(struct snd_pcm_substream *substream)
- 		}
+@@ -176,7 +174,6 @@ static struct channel *get_channel(struct most_interface *iface,
+ 		if ((channel->iface == iface) && (channel->id == channel_id))
+ 			return channel;
  	}
- 
--	if (most_start_channel(channel->iface, channel->id, &comp)) {
-+	ret = most_start_channel(channel->iface, channel->id, &comp);
-+	if (ret) {
- 		pr_err("most_start_channel() failed!\n");
- 		if (cfg->direction == MOST_CH_TX)
- 			kthread_stop(channel->playback_task);
--		return -EBUSY;
-+		return ret;
- 	}
- 
- 	runtime->hw = channel->pcm_hardware;
-@@ -444,7 +446,7 @@ static int split_arg_list(char *buf, u16 *ch_num, char **sample_res)
- 
- err:
- 	pr_err("Bad PCM format\n");
--	return -EIO;
-+	return -EINVAL;
+-
+ 	return NULL;
  }
  
- static const struct sample_resolution_info {
-@@ -469,7 +471,7 @@ static int audio_set_hw_params(struct snd_pcm_hardware *pcm_hw,
- 			goto found;
+@@ -220,7 +217,6 @@ static bool copy_data(struct channel *channel, struct mbo *mbo)
+ 		channel->period_pos -= runtime->period_size;
+ 		return true;
  	}
- 	pr_err("Unsupported PCM format\n");
--	return -EIO;
-+	return -EINVAL;
+-
+ 	return false;
+ }
  
- found:
- 	if (!ch_num) {
-@@ -580,7 +582,7 @@ static int audio_probe_channel(struct most_interface *iface, int channel_id,
- 	if (get_channel(iface, channel_id)) {
- 		pr_err("channel (%s:%d) is already linked\n",
- 		       iface->description, channel_id);
--		return -EINVAL;
-+		return -EEXIST;
+@@ -260,7 +256,6 @@ static int playback_thread(void *data)
+ 		if (period_elapsed)
+ 			snd_pcm_period_elapsed(channel->substream);
  	}
+-
+ 	return 0;
+ }
  
- 	if (cfg->direction == MOST_CH_TX) {
+@@ -320,7 +315,6 @@ static int pcm_close(struct snd_pcm_substream *substream)
+ 	if (channel->cfg->direction == MOST_CH_TX)
+ 		kthread_stop(channel->playback_task);
+ 	most_stop_channel(channel->iface, channel->id, &comp);
+-
+ 	return 0;
+ }
+ 
+@@ -364,10 +358,8 @@ static int pcm_prepare(struct snd_pcm_substream *substream)
+ 
+ 	if (!channel->copy_fn)
+ 		return -EINVAL;
+-
+ 	channel->period_pos = 0;
+ 	channel->buffer_pos = 0;
+-
+ 	return 0;
+ }
+ 
+@@ -441,7 +433,6 @@ static int split_arg_list(char *buf, u16 *ch_num, char **sample_res)
+ 	*sample_res = strsep(&buf, ".\n");
+ 	if (!*sample_res)
+ 		goto err;
+-
+ 	return 0;
+ 
+ err:
+@@ -619,7 +610,6 @@ static int audio_probe_channel(struct most_interface *iface, int channel_id,
+ 	strscpy(pcm->name, device_name, sizeof(pcm->name));
+ 	snd_pcm_set_ops(pcm, direction, &pcm_ops);
+ 	snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_VMALLOC, NULL, 0, 0);
+-
+ 	return 0;
+ 
+ err_free_adpt:
+@@ -690,15 +680,11 @@ static int audio_rx_completion(struct mbo *mbo)
+ 
+ 	if (!channel)
+ 		return -EINVAL;
+-
+ 	if (channel->is_stream_running)
+ 		period_elapsed = copy_data(channel, mbo);
+-
+ 	most_put_mbo(mbo);
+-
+ 	if (period_elapsed)
+ 		snd_pcm_period_elapsed(channel->substream);
+-
+ 	return 0;
+ }
+ 
+@@ -753,7 +739,6 @@ static int __init audio_init(void)
+ 		pr_err("Failed to register %s configfs subsys\n", comp.name);
+ 		most_deregister_component(&comp);
+ 	}
+-
+ 	return ret;
+ }
+ 
 -- 
 2.7.4
 
