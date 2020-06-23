@@ -1,46 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B989C205780
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jun 2020 18:45:40 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B70020578E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jun 2020 18:45:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 756208771E;
-	Tue, 23 Jun 2020 16:45:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AE70F2E018;
+	Tue, 23 Jun 2020 16:45:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dNNzBqDI7w4a; Tue, 23 Jun 2020 16:45:39 +0000 (UTC)
+	with ESMTP id WHZvXvFKioaG; Tue, 23 Jun 2020 16:45:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5A3F8876F7;
-	Tue, 23 Jun 2020 16:45:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 893CC2DF55;
+	Tue, 23 Jun 2020 16:45:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BC3C11BF568
- for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:14 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 186881BF568
+ for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B8FC788334
- for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 14F15263D6
+ for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wGcLzr6j0Vsg for <devel@linuxdriverproject.org>;
+ with ESMTP id RbrEgbK4OANr for <devel@linuxdriverproject.org>;
  Tue, 23 Jun 2020 16:45:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E44788826B
+ by silver.osuosl.org (Postfix) with ESMTPS id CDA7320381
  for <devel@driverdev.osuosl.org>; Tue, 23 Jun 2020 16:45:13 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 810E8AEDD;
- Tue, 23 Jun 2020 16:45:11 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 0B2E9AEE5;
+ Tue, 23 Jun 2020 16:45:12 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 09/50] staging: mmal-vchiq: If the VPU returns an error,
- don't negate it
-Date: Tue, 23 Jun 2020 18:41:55 +0200
-Message-Id: <20200623164235.29566-10-nsaenzjulienne@suse.de>
+Subject: [PATCH 10/50] staging: mmal-vchiq: Fix formatting errors in
+ mmal_parameters.h
+Date: Tue, 23 Jun 2020 18:41:56 +0200
+Message-Id: <20200623164235.29566-11-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200623164235.29566-1-nsaenzjulienne@suse.de>
 References: <20200623164235.29566-1-nsaenzjulienne@suse.de>
@@ -60,43 +60,124 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, Jacopo Mondi <jacopo@jmondi.org>,
  kernel-list@raspberrypi.com, linux-kernel@vger.kernel.org,
  Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- laurent.pinchart@ideasonboard.com,
- Dave Stevenson <dave.stevenson@raspberrypi.org>,
+ Naushir Patuck <naush@raspberrypi.com>, laurent.pinchart@ideasonboard.com,
  linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Dave Stevenson <dave.stevenson@raspberrypi.org>
+From: Naushir Patuck <naush@raspberrypi.com>
 
-There is an enum for the errors that the VPU can return.
-port_parameter_get was negating that value, but also using -EINVAL
-from the Linux error codes.
-Pass the VPU error code as positive values. Should the function
-need to pass a Linux failure, then return that as negative.
+No functional changes in this commit.
 
-Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
+- Remove erroneous whitespace.
+- Remove _t postfix label on structs and enums.
+
+Signed-off-by: Naushir Patuck <naush@raspberrypi.com>
 Signed-off-by: Jacopo Mondi <jacopo@jmondi.org>
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .../bcm2835-camera/bcm2835-camera.c           |  2 +-
+ .../vchiq-mmal/mmal-parameters.h              | 32 +++++++++----------
+ 2 files changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-index df2957abc37c..a7ab0e521184 100644
---- a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-+++ b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-@@ -1270,7 +1270,8 @@ static int port_parameter_get(struct vchiq_mmal_instance *instance,
- 		goto release_msg;
- 	}
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+index 73b2354a6bb7..df90c1f9d148 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
++++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+@@ -1497,7 +1497,7 @@ static int get_num_cameras(struct vchiq_mmal_instance *instance,
+ {
+ 	int ret;
+ 	struct vchiq_mmal_component  *cam_info_component;
+-	struct mmal_parameter_camera_info_t cam_info = {0};
++	struct mmal_parameter_camera_info cam_info = {0};
+ 	u32 param_size = sizeof(cam_info);
+ 	int i;
  
--	ret = -rmsg->u.port_parameter_get_reply.status;
-+	ret = rmsg->u.port_parameter_get_reply.status;
-+
- 	/* port_parameter_get_reply.size includes the header,
- 	 * whilst *value_size doesn't.
- 	 */
+diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-parameters.h b/drivers/staging/vc04_services/vchiq-mmal/mmal-parameters.h
+index f4ac5a6149ea..a1e39b1b1701 100644
+--- a/drivers/staging/vc04_services/vchiq-mmal/mmal-parameters.h
++++ b/drivers/staging/vc04_services/vchiq-mmal/mmal-parameters.h
+@@ -23,21 +23,21 @@
+ #define MMAL_PARAMETERS_H
+ 
+ /** Common parameter ID group, used with many types of component. */
+-#define MMAL_PARAMETER_GROUP_COMMON            (0 << 16)
++#define MMAL_PARAMETER_GROUP_COMMON		(0 << 16)
+ /** Camera-specific parameter ID group. */
+-#define MMAL_PARAMETER_GROUP_CAMERA            (1 << 16)
++#define MMAL_PARAMETER_GROUP_CAMERA		(1 << 16)
+ /** Video-specific parameter ID group. */
+-#define MMAL_PARAMETER_GROUP_VIDEO             (2 << 16)
++#define MMAL_PARAMETER_GROUP_VIDEO		(2 << 16)
+ /** Audio-specific parameter ID group. */
+-#define MMAL_PARAMETER_GROUP_AUDIO             (3 << 16)
++#define MMAL_PARAMETER_GROUP_AUDIO		(3 << 16)
+ /** Clock-specific parameter ID group. */
+-#define MMAL_PARAMETER_GROUP_CLOCK             (4 << 16)
++#define MMAL_PARAMETER_GROUP_CLOCK		(4 << 16)
+ /** Miracast-specific parameter ID group. */
+-#define MMAL_PARAMETER_GROUP_MIRACAST       (5 << 16)
++#define MMAL_PARAMETER_GROUP_MIRACAST		(5 << 16)
+ 
+ /* Common parameters */
+ enum mmal_parameter_common_type {
+-		/**< Never a valid parameter ID */
++	/**< Never a valid parameter ID */
+ 	MMAL_PARAMETER_UNUSED = MMAL_PARAMETER_GROUP_COMMON,
+ 
+ 		/**< MMAL_PARAMETER_ENCODING_T */
+@@ -341,7 +341,7 @@ enum mmal_parameter_imagefx {
+ 	MMAL_PARAM_IMAGEFX_CARTOON,
+ };
+ 
+-enum MMAL_PARAM_FLICKERAVOID_T {
++enum MMAL_PARAM_FLICKERAVOID {
+ 	MMAL_PARAM_FLICKERAVOID_OFF,
+ 	MMAL_PARAM_FLICKERAVOID_AUTO,
+ 	MMAL_PARAM_FLICKERAVOID_50HZ,
+@@ -723,7 +723,7 @@ struct mmal_parameter_imagefx_parameters {
+ #define MMAL_PARAMETER_CAMERA_INFO_MAX_FLASHES 2
+ #define MMAL_PARAMETER_CAMERA_INFO_MAX_STR_LEN 16
+ 
+-struct mmal_parameter_camera_info_camera_t {
++struct mmal_parameter_camera_info_camera {
+ 	u32 port_id;
+ 	u32 max_width;
+ 	u32 max_height;
+@@ -731,7 +731,7 @@ struct mmal_parameter_camera_info_camera_t {
+ 	u8 camera_name[MMAL_PARAMETER_CAMERA_INFO_MAX_STR_LEN];
+ };
+ 
+-enum mmal_parameter_camera_info_flash_type_t {
++enum mmal_parameter_camera_info_flash_type {
+ 	/* Make values explicit to ensure they match values in config ini */
+ 	MMAL_PARAMETER_CAMERA_INFO_FLASH_TYPE_XENON = 0,
+ 	MMAL_PARAMETER_CAMERA_INFO_FLASH_TYPE_LED   = 1,
+@@ -739,16 +739,16 @@ enum mmal_parameter_camera_info_flash_type_t {
+ 	MMAL_PARAMETER_CAMERA_INFO_FLASH_TYPE_MAX = 0x7FFFFFFF
+ };
+ 
+-struct mmal_parameter_camera_info_flash_t {
+-	enum mmal_parameter_camera_info_flash_type_t flash_type;
++struct mmal_parameter_camera_info_flash {
++	enum mmal_parameter_camera_info_flash_type flash_type;
+ };
+ 
+-struct mmal_parameter_camera_info_t {
++struct mmal_parameter_camera_info {
+ 	u32 num_cameras;
+ 	u32 num_flashes;
+-	struct mmal_parameter_camera_info_camera_t
+-				cameras[MMAL_PARAMETER_CAMERA_INFO_MAX_CAMERAS];
+-	struct mmal_parameter_camera_info_flash_t
++	struct mmal_parameter_camera_info_camera
++		cameras[MMAL_PARAMETER_CAMERA_INFO_MAX_CAMERAS];
++	struct mmal_parameter_camera_info_flash
+ 				flashes[MMAL_PARAMETER_CAMERA_INFO_MAX_FLASHES];
+ };
+ 
 -- 
 2.27.0
 
