@@ -1,46 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2CEE205785
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 489E6205784
 	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jun 2020 18:45:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8643488F6F;
+	by silver.osuosl.org (Postfix) with ESMTP id CE5602E030;
 	Tue, 23 Jun 2020 16:45:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PcWEqex6QZIT; Tue, 23 Jun 2020 16:45:40 +0000 (UTC)
+	with ESMTP id tmfp5E-Isxxa; Tue, 23 Jun 2020 16:45:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7EA5988D6D;
-	Tue, 23 Jun 2020 16:45:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5EDC32DFF2;
+	Tue, 23 Jun 2020 16:45:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 00AF41BF568
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 611DB1BF568
  for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F1D51876D2
- for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5E24087A11
+ for <devel@linuxdriverproject.org>; Tue, 23 Jun 2020 16:45:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P8hSMFUwzMup for <devel@linuxdriverproject.org>;
- Tue, 23 Jun 2020 16:45:12 +0000 (UTC)
+ with ESMTP id Go6mxUPTYTco for <devel@linuxdriverproject.org>;
+ Tue, 23 Jun 2020 16:45:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 58C30876D7
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D051E89789
  for <devel@driverdev.osuosl.org>; Tue, 23 Jun 2020 16:45:12 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 88BC7B066;
- Tue, 23 Jun 2020 16:45:10 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 0B796B03F;
+ Tue, 23 Jun 2020 16:45:11 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH 07/50] staging: mmal-vchiq: Fix client_component for 64 bit
- kernel
-Date: Tue, 23 Jun 2020 18:41:53 +0200
-Message-Id: <20200623164235.29566-8-nsaenzjulienne@suse.de>
+Subject: [PATCH 08/50] staging: mmal-vchiq: Always return the param size from
+ param_get
+Date: Tue, 23 Jun 2020 18:41:54 +0200
+Message-Id: <20200623164235.29566-9-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200623164235.29566-1-nsaenzjulienne@suse.de>
 References: <20200623164235.29566-1-nsaenzjulienne@suse.de>
@@ -70,62 +70,42 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Dave Stevenson <dave.stevenson@raspberrypi.org>
 
-The MMAL client_component field is used with the event
-mechanism to allow the client to identify the component for
-which the event is generated.
-The field is only 32bits in size, therefore we can't use a
-pointer to the component in a 64 bit kernel.
+mmal-vchiq is a reimplementation of the userland library for MMAL.
+When getting a parameter, the client provides the storage and
+the size of the storage. The VPU then returns the size of the
+parameter that it wished to return, and as much as possible of
+that parameter is returned to the client.
 
-Component handles are already held in an array per VCHI
-instance, so use the array index as the client_component handle
-to avoid having to create a new IDR for this purpose.
+The implementation previously only returned the size provided
+by the VPU should it exceed the buffer size. So for parameters
+such as the supported encodings list the client had no idea
+how much of the provided storage had been populated.
 
 Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
 Signed-off-by: Jacopo Mondi <jacopo@jmondi.org>
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c | 8 +++++++-
- drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h | 1 +
- 2 files changed, 8 insertions(+), 1 deletion(-)
+ drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-index 48feeef60091..c598a10452be 100644
+index c598a10452be..df2957abc37c 100644
 --- a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
 +++ b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-@@ -943,7 +943,7 @@ static int create_component(struct vchiq_mmal_instance *instance,
- 
- 	/* build component create message */
- 	m.h.type = MMAL_MSG_TYPE_COMPONENT_CREATE;
--	m.u.component_create.client_component = (u32)(unsigned long)component;
-+	m.u.component_create.client_component = component->client_component;
- 	strncpy(m.u.component_create.name, name,
- 		sizeof(m.u.component_create.name));
- 
-@@ -1662,6 +1662,12 @@ int vchiq_mmal_component_init(struct vchiq_mmal_instance *instance,
- 		goto unlock;
+@@ -1282,11 +1282,12 @@ static int port_parameter_get(struct vchiq_mmal_instance *instance,
+ 		 */
+ 		memcpy(value, &rmsg->u.port_parameter_get_reply.value,
+ 		       *value_size);
+-		*value_size = rmsg->u.port_parameter_get_reply.size;
+ 	} else {
+ 		memcpy(value, &rmsg->u.port_parameter_get_reply.value,
+ 		       rmsg->u.port_parameter_get_reply.size);
  	}
++	/* Always report the size of the returned parameter to the caller */
++	*value_size = rmsg->u.port_parameter_get_reply.size;
  
-+	/* We need a handle to reference back to our component structure.
-+	 * Use the array index in instance->component rather than rolling
-+	 * another IDR.
-+	 */
-+	component->client_component = idx;
-+
- 	ret = create_component(instance, component, name);
- 	if (ret < 0) {
- 		pr_err("%s: failed to create component %d (Not enough GPU mem?)\n",
-diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h
-index df608585063b..1dc81ecf9268 100644
---- a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h
-+++ b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h
-@@ -92,6 +92,7 @@ struct vchiq_mmal_component {
- 	struct vchiq_mmal_port input[MAX_PORT_COUNT]; /* input ports */
- 	struct vchiq_mmal_port output[MAX_PORT_COUNT]; /* output ports */
- 	struct vchiq_mmal_port clock[MAX_PORT_COUNT]; /* clock ports */
-+	u32 client_component;	/* Used to ref back to client struct */
- };
- 
- int vchiq_mmal_init(struct vchiq_mmal_instance **out_instance);
+ 	pr_debug("%s:result:%d component:0x%x port:%d parameter:%d\n", __func__,
+ 		 ret, port->component->handle, port->handle, parameter_id);
 -- 
 2.27.0
 
