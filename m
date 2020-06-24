@@ -1,52 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40E3E20755F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 16:13:45 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A1C6320761E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 16:53:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 456F8896B4;
-	Wed, 24 Jun 2020 14:13:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 15FFA22882;
+	Wed, 24 Jun 2020 14:53:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FTUOqVsDRxDc; Wed, 24 Jun 2020 14:13:43 +0000 (UTC)
+	with ESMTP id ihn+22c1eO9A; Wed, 24 Jun 2020 14:53:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3EDCA895B3;
-	Wed, 24 Jun 2020 14:13:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 048DA22234;
+	Wed, 24 Jun 2020 14:53:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1A5701BF5A4
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:13:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ED5341BF5A4
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:52:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1755C887A7
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:13:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E928888267
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:52:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mnur2ZYqlG7v for <devel@linuxdriverproject.org>;
- Wed, 24 Jun 2020 14:13:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BDF2D88005
- for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 14:13:38 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 81222AD4B;
- Wed, 24 Jun 2020 14:13:36 +0000 (UTC)
-Message-ID: <d4aa38dc0cbedd31530abf0aedbe57be22f84f88.camel@suse.de>
-Subject: Re: [PATCH 15/50] staging: vchi: Unify struct shim_service and
- struct vchi_service_handle
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Date: Wed, 24 Jun 2020 16:13:35 +0200
-In-Reply-To: <20200624141141.GA30990@kadam>
-References: <20200623164235.29566-1-nsaenzjulienne@suse.de>
- <20200623164235.29566-16-nsaenzjulienne@suse.de>
- <20200624141141.GA30990@kadam>
-User-Agent: Evolution 3.36.3 
+ with ESMTP id lQBoV8f19Kru for <devel@linuxdriverproject.org>;
+ Wed, 24 Jun 2020 14:52:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1BCDE8801A
+ for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 14:52:56 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 70DC320768;
+ Wed, 24 Jun 2020 14:52:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1593010375;
+ bh=hKmGmSC9xKTCf7lKHaapRGzqdChdaLEB6DXAWD8Qde8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=18rDFvSPwlbcr568/S5o0ulxaiBng2umL68WZE7Gn3lPelYVsylFSO6HBMbl8OJ5y
+ kOAPshUeLYFDRilCyMNQ+cyFgyDaSTqyRpqAtnry/ccNY1YA6SnQQ60+TXOAq7sETn
+ Q7riK6XjUUvKv7diy3O+vZ/RRe2MIztTSWv4jNio=
+Date: Wed, 24 Jun 2020 16:52:54 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH v7 00/17] wilc1000: move out of staging
+Message-ID: <20200624145254.GA1876138@kroah.com>
+References: <20200623110000.31559-1-ajay.kathat@microchip.com>
+ <87ftaketkw.fsf@tynnyri.adurom.net>
+ <20200624091000.GD1731290@kroah.com>
+ <87366kztcr.fsf@codeaurora.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <87366kztcr.fsf@codeaurora.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,81 +68,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, laurent.pinchart@ideasonboard.com,
- kernel-list@raspberrypi.com, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============4665606543493014169=="
+Cc: devel@driverdev.osuosl.org, Ajay.Kathat@microchip.com,
+ Venkateswara.Kaja@microchip.com, linux-wireless@vger.kernel.org,
+ Nicolas.Ferre@microchip.com, Sripad.Balwadgi@microchip.com,
+ johannes@sipsolutions.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Wed, Jun 24, 2020 at 12:49:24PM +0300, Kalle Valo wrote:
+> Greg KH <gregkh@linuxfoundation.org> writes:
+> 
+> > On Wed, Jun 24, 2020 at 11:50:07AM +0300, Kalle Valo wrote:
+> >> <Ajay.Kathat@microchip.com> writes:
+> >> 
+> >> > From: Ajay Singh <ajay.kathat@microchip.com>
+> >> >
+> >> > This patch series is to review and move wilc1000 driver out of staging.
+> >> > Most of the review comments received in [1] & [2] are addressed in the
+> >> > latest code.
+> >> > Please review and provide your inputs.
+> >> >
+> >> > [1]. https://lore.kernel.org/linux-wireless/1537957525-11467-1-git-send-email-ajay.kathat@microchip.com/
+> >> > [2]. https://lore.kernel.org/linux-wireless/1562896697-8002-1-git-send-email-ajay.kathat@microchip.com/
+> >> >
+> >> > Changes since v6:
+> >> >  - added Reviewed-by tag received for DT binding document patch earlier.
+> >> >    * https://lore.kernel.org/linux-wireless/20200405013235.GA24105@bogus
+> >> >  - merged latest driver and included --base commit as suggested.
+> >> 
+> >> Greg, in preparation for moving the driver to drivers/net/wireless can I
+> >> ask you to not to take wilc1000 patches for the time being? I think that
+> >> way it would be easier to move the driver between trees if there are no
+> >> changes after v5.8-rc1. Or is there a better way handle the move?
+> >
+> > The best way is for there to be a series of patches that just adds the
+> > driver to the "real" part of the tree, and when that is merged, let me
+> > know and I will just delete the driver version in the staging tree.
+> >
+> > Does that work for you?
+> 
+> It would be fine for me but won't that approach break the build (eg.
+> allyesconfig) due to two duplicate versions of the same driver in
+> wireless-drivers-next?
 
---===============4665606543493014169==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-D6XZ5Zq2MMerpxiHnmSD"
+For maybe one day, yes, but that's all.
 
+> What I was thinking that Ajay would create a patch moving the driver
+> from drivers/staging/wilc1000 to
+> drivers/net/wireless/microchip/wilc1000. Using 'git mv' and 'git
+> format-patch --find-renames' the patch should be really small, mostly
+> just renames and small changes to Kconfig, Makefile and MAINTAINERS
+> files. But this of course would require that there are no wilc1000
+> patches in your tree until you get the driver move commit during the
+> next merge window, otherwise we would see conflicts between staging-next
+> and wireless-drivers-next.
+> 
+> But I don't have any strong opinions, whatever is easiest for everyone :)
 
---=-D6XZ5Zq2MMerpxiHnmSD
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+It's kind of hard to review patches that do moves, but if you all want
+to do that, that's fine with me.
 
-On Wed, 2020-06-24 at 17:11 +0300, Dan Carpenter wrote:
-> On Tue, Jun 23, 2020 at 06:42:01PM +0200, Nicolas Saenz Julienne wrote:
-> > @@ -437,12 +432,10 @@ static void service_free(struct shim_service *ser=
-vice)
-> > =20
-> >  int32_t vchi_service_open(struct vchiq_instance *instance,
-> >  	struct service_creation *setup,
-> > -	struct vchi_service_handle **handle)
-> > +	struct vchi_service **service)
-> >  {
-> > -	struct shim_service *service =3D service_alloc(instance, setup);
-> > -
-> > -	*handle =3D (struct vchi_service_handle *)service;
-> > =20
-> > +	*service =3D service_alloc(instance, setup);
-> >  	if (service) {
->=20
-> This should be checking "*service".
->=20
+Note, I can't guarantee that I'll not take any wilc1000 patches, I'll
+probably forget, but git mv will handle all of that just fine.
 
-Of course, thanks!
+thanks,
 
-Reards,
-Nicolas
-
-
-
---=-D6XZ5Zq2MMerpxiHnmSD
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl7zX48ACgkQlfZmHno8
-x/5i/Qf/Rep33QfS1bSFPqml0IX6kfyvuerSi3oN3ZCHXzvIJEZN/Ffytl7MiODb
-Zqd/ysG9Tkyx8SLCYW4tKmJwvSrfn3TJM4mtfHpEYcmjr9pUNVXVhf1WhsWMAna+
-3UVSV3KNfKoCK4kJK9oDl6w20j3oW5JjTnVOwm1seC4jJrpa4ZXL8ufr55BjTucg
-HleB4wa5SNcUs3NNhywa1bk6PfOWmnt9S7qQycGaOLeBhiXHS9HH9q1HL6S8Glnl
-kD1XfTqUs1XMwDJ/wPWSAnjgiWID4bF6c0ys5OOoGy1Q5CF1hnWHmn9mKfyNw+n1
-+HZvhgJpSG/7SBLRKHGG31TX9Gnzvg==
-=OTJq
------END PGP SIGNATURE-----
-
---=-D6XZ5Zq2MMerpxiHnmSD--
-
-
---===============4665606543493014169==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============4665606543493014169==--
-
