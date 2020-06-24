@@ -1,73 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 906DC206F64
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 10:50:37 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D6582206F92
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 11:01:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3A6198937B;
-	Wed, 24 Jun 2020 08:50:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 30C2E87617;
+	Wed, 24 Jun 2020 09:01:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sjwRxHcj27od; Wed, 24 Jun 2020 08:50:36 +0000 (UTC)
+	with ESMTP id J41X5t5OiVRc; Wed, 24 Jun 2020 09:01:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 54E198887C;
-	Wed, 24 Jun 2020 08:50:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 69DC5875B6;
+	Wed, 24 Jun 2020 09:01:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 435191BF97C
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 08:50:25 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 905AD1BF307
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 09:01:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3C86A860A8
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 08:50:25 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8838D86BF2
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 09:01:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1KpIMxfQoqH2 for <devel@linuxdriverproject.org>;
- Wed, 24 Jun 2020 08:50:23 +0000 (UTC)
+ with ESMTP id P6zdiY8b31b1 for <devel@linuxdriverproject.org>;
+ Wed, 24 Jun 2020 09:01:06 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from m43-7.mailgun.net (m43-7.mailgun.net [69.72.43.7])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3A3AC87D9D
- for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 08:50:19 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1592988620; h=Content-Type: MIME-Version: Message-ID:
- In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
- bh=VUDZ7CIdCQG2R0dxVIRY2kHAUR5DLpmrneQaOynhiIw=;
- b=O/99HLuvsTsxFFGkVxmLDljq7nPSsXlr5fTNY2VZFNs5Q58kv+N30elXz4scbCwhULpIjdjJ
- aApSrAmDQ6gVLzH2a0HhMbr3d6hnZq5gxF9E8fCj76e6+B2UEOGrCtRQxPadI+puimhBAyoV
- 4/I3xTg2V59XirsT4L4/RrlD81Y=
-X-Mailgun-Sending-Ip: 69.72.43.7
-X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n02.prod.us-west-2.postgun.com with SMTP id
- 5ef313c63a8a8b20b8351877 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Wed, 24 Jun 2020 08:50:14
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 86C3AC433CA; Wed, 24 Jun 2020 08:50:14 +0000 (UTC)
-Received: from tynnyri.adurom.net (tynnyri.adurom.net [51.15.11.48])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 50C06C43395;
- Wed, 24 Jun 2020 08:50:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 50C06C43395
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=none smtp.mailfrom=kvalo@codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: <Ajay.Kathat@microchip.com>
-Subject: Re: [PATCH v7 00/17] wilc1000: move out of staging
+Received: from sipsolutions.net (s3.sipsolutions.net [144.76.43.62])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9BC778742C
+ for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 09:01:06 +0000 (UTC)
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.93) (envelope-from <johannes@sipsolutions.net>)
+ id 1jo1HE-00BFXD-1e; Wed, 24 Jun 2020 11:01:04 +0200
+Message-ID: <11b8d5a5631cc472fce17638ff9e1dfef8750628.camel@sipsolutions.net>
+Subject: Re: [PATCH v7 06/17] wilc1000: add cfg80211.c
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Ajay.Kathat@microchip.com, linux-wireless@vger.kernel.org
+Date: Wed, 24 Jun 2020 11:00:52 +0200
+In-Reply-To: <20200623110000.31559-7-ajay.kathat@microchip.com>
 References: <20200623110000.31559-1-ajay.kathat@microchip.com>
-Date: Wed, 24 Jun 2020 11:50:07 +0300
-In-Reply-To: <20200623110000.31559-1-ajay.kathat@microchip.com> (Ajay Kathat's
- message of "Tue, 23 Jun 2020 11:00:04 +0000")
-Message-ID: <87ftaketkw.fsf@tynnyri.adurom.net>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+ <20200623110000.31559-7-ajay.kathat@microchip.com>
+User-Agent: Evolution 3.36.3 (3.36.3-1.fc32) 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -82,42 +58,110 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Venkateswara.Kaja@microchip.com,
- Sripad.Balwadgi@microchip.com, gregkh@linuxfoundation.org,
- linux-wireless@vger.kernel.org, Nicolas.Ferre@microchip.com,
- johannes@sipsolutions.net
+ gregkh@linuxfoundation.org, Nicolas.Ferre@microchip.com,
+ Sripad.Balwadgi@microchip.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-<Ajay.Kathat@microchip.com> writes:
+On Tue, 2020-06-23 at 11:00 +0000, Ajay.Kathat@microchip.com wrote:
+> 
+> +struct wilc_p2p_pub_act_frame {
+> +	u8 category;
+> +	u8 action;
+> +	u8 oui[3];
+> +	u8 oui_type;
+> +	u8 oui_subtype;
+> +	u8 dialog_token;
+> +	u8 elem[];
+> +} __packed;
+> +
+> +struct wilc_vendor_specific_ie {
+> +	u8 tag_number;
+> +	u8 tag_len;
+> +	u8 oui[3];
+> +	u8 oui_type;
+> +	u8 attr[];
+> +} __packed;
+> +
+> +struct wilc_attr_entry {
+> +	u8  attr_type;
+> +	__le16 attr_len;
+> +	u8 val[];
+> +} __packed;
+> +
+> +struct wilc_attr_oper_ch {
+> +	u8 attr_type;
+> +	__le16 attr_len;
+> +	u8 country_code[IEEE80211_COUNTRY_STRING_LEN];
+> +	u8 op_class;
+> +	u8 op_channel;
+> +} __packed;
+> +
+> +struct wilc_attr_ch_list {
+> +	u8 attr_type;
+> +	__le16 attr_len;
+> +	u8 country_code[IEEE80211_COUNTRY_STRING_LEN];
+> +	u8 elem[];
+> +} __packed;
+> +
+> +struct wilc_ch_list_elem {
+> +	u8 op_class;
+> +	u8 no_of_channels;
+> +	u8 ch_list[];
+> +} __packed;
 
-> From: Ajay Singh <ajay.kathat@microchip.com>
->
-> This patch series is to review and move wilc1000 driver out of staging.
-> Most of the review comments received in [1] & [2] are addressed in the
-> latest code.
-> Please review and provide your inputs.
->
-> [1]. https://lore.kernel.org/linux-wireless/1537957525-11467-1-git-send-email-ajay.kathat@microchip.com/
-> [2]. https://lore.kernel.org/linux-wireless/1562896697-8002-1-git-send-email-ajay.kathat@microchip.com/
->
-> Changes since v6:
->  - added Reviewed-by tag received for DT binding document patch earlier.
->    * https://lore.kernel.org/linux-wireless/20200405013235.GA24105@bogus
->  - merged latest driver and included --base commit as suggested.
+It seems like these should be used from ieee80211.h, and/or added there
+if they don't already exist?
 
-Greg, in preparation for moving the driver to drivers/net/wireless can I
-ask you to not to take wilc1000 patches for the time being? I think that
-way it would be easier to move the driver between trees if there are no
-changes after v5.8-rc1. Or is there a better way handle the move?
+> +static int wilc_wfi_cfg_copy_wpa_info(struct wilc_wfi_key *key_info,
+> +				      struct key_params *params)
+> +{
+> +	kfree(key_info->key);
+> +
+> +	key_info->key = kmemdup(params->key, params->key_len, GFP_KERNEL);
+> +	if (!key_info->key)
+> +		return -ENOMEM;
+> +
+> +	kfree(key_info->seq);
+> +
+> +	if (params->seq_len > 0) {
+> +		key_info->seq = kmemdup(params->seq, params->seq_len,
+> +					GFP_KERNEL);
+> +		if (!key_info->seq)
+> +			return -ENOMEM;
 
-I have not reviewed the latest version yet but I'm hoping it's ready
-now. I would also appreciate comments from other people about the
-readiness of this driver.
+you may leak key_info->key here?
 
--- 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+> +static inline void wilc_wfi_cfg_parse_ch_attr(u8 *buf, u32 len, u8 sta_ch)
+
+That's a bit big to be forced inline, imho. if it's used only once the
+compiler will inline it anyway.
+
+> +	d = (struct wilc_p2p_pub_act_frame *)(&mgmt->u.action);
+> +	if (d->oui_subtype != GO_NEG_REQ && d->oui_subtype != GO_NEG_RSP &&
+> +	    d->oui_subtype != P2P_INV_REQ && d->oui_subtype != P2P_INV_RSP)
+> +		goto out_rx_mgmt;
+> +
+> +	vendor_ie = cfg80211_find_vendor_ie(WLAN_OUI_WFA, WLAN_OUI_TYPE_WFA_P2P,
+> +					    buff + ie_offset, size - ie_offset);
+> +	if (!vendor_ie)
+> +		goto out_rx_mgmt;
+> +
+> +	p = (struct wilc_vendor_specific_ie *)vendor_ie;
+> +	wilc_wfi_cfg_parse_ch_attr(p->attr, p->tag_len - 4, vif->wilc->sta_ch);
+
+but overall, why do you even need this? I don't think this is normally
+handled in the driver, but wpa_s?
+
+
+Anyway, I'm not convinced that we should really keep kicking this back
+over minor issues like this ... better to merge it and fix later, imho.
+
+johannes
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
