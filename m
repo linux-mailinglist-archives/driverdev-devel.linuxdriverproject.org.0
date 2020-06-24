@@ -2,67 +2,65 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFEA62071D2
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 13:09:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DFDA620726E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 13:47:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5E2CA895B7;
-	Wed, 24 Jun 2020 11:09:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 181FC893F0;
+	Wed, 24 Jun 2020 11:47:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id miK82YOnQCmn; Wed, 24 Jun 2020 11:09:12 +0000 (UTC)
+	with ESMTP id 5g7BKEDOA-rm; Wed, 24 Jun 2020 11:47:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 80B3389568;
-	Wed, 24 Jun 2020 11:09:11 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 81B7A889D1;
+	Wed, 24 Jun 2020 11:47:08 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DC2BB1BF599
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 24 Jun 2020 11:09:08 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DA3941BF599
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 11:47:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D8DA987736
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 24 Jun 2020 11:09:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D6D68886FB
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 11:47:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f-WqJi+I1Rd2
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 24 Jun 2020 11:09:06 +0000 (UTC)
-X-Greylist: delayed 00:30:07 by SQLgrey-1.7.6
-Received: from eu-smtp-delivery-41.mimecast.com
- (eu-smtp-delivery-41.mimecast.com [185.58.87.41])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A35E386CE7
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 24 Jun 2020 11:09:05 +0000 (UTC)
-Received: from OWAHOSTNAME (57.67.213.98 [57.67.213.98]) (Using TLS) by
- relay.mimecast.com with ESMTP id uk-mta-29-yWGjP0_IOoaQFXp7cBsH8w-17; Wed,
- 24 Jun 2020 11:38:50 +0100
-X-MC-Unique: yWGjP0_IOoaQFXp7cBsH8w-17
-Received: from ONEGDAMX008.ONE.OFC.LOC (172.18.40.3) by
- ONEGDAMX006.ONE.OFC.LOC (172.18.42.151) with Microsoft SMTP Server (TLS) id
- 14.3.487.0; Wed, 24 Jun 2020 12:37:53 +0200
-Received: from ONEGDAMX009.ONE.OFC.LOC (172.18.40.127) by
- ONEGDAMX008.ONE.OFC.LOC (172.18.40.3) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 24 Jun 2020 12:37:52 +0200
-Received: from User (92.111.87.130) by ONEGDAMX009.ONE.OFC.LOC (172.18.40.127)
- with Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport;
- Wed, 24 Jun 2020 12:37:47 +0200
-From: HSBC London Office <admin@desaseni.com>
-Subject: Very Important From Bank (ABOUT YOUR FUNDS)
-Date: Wed, 24 Jun 2020 03:37:52 -0700
+ with ESMTP id wB-8tXzQbORj for <devel@linuxdriverproject.org>;
+ Wed, 24 Jun 2020 11:47:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from lb2-smtp-cloud7.xs4all.net (lb2-smtp-cloud7.xs4all.net
+ [194.109.24.28])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DEE9588705
+ for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 11:47:04 +0000 (UTC)
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id o3rljtvnKx3Ajo3rojjFim; Wed, 24 Jun 2020 13:47:02 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1592999222; bh=0N5Pf8Y/JNRKBG/KjHTyL7Jl316+lteapCAvH0k5IAU=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=wcDBGubuJirFwVCybDoTMNCTSSYLIqvHwwUt3h9tHhIDSKZ3o/yS7ZERA52WfwVXk
+ wK9wnOfqaVrhrxssHMtaXBei++8oHpmCkE+t0+wnyZIpcP856qVZRs3Z+G2HTv6b75
+ SPtqPMW9BtMJPDJNaI2bMTUF5hfh4u+vNXuILysSJ5/7BFzzg7xrnwFSNan9/I1iDx
+ 60QWgNfFq8KeRtbpI2HFiYQ79Wv2mzULwQudHWGb8AbH8lTPdwIryU/A1VVRBimQao
+ z4YPDXcT+pRe/jbZ0e9cUYHzTnZO1jnzIVkvecbXAY42AiERx55SwopC0sZV/nCQuw
+ uS/2n10J391Lg==
+Subject: Re: [PATCH] staging: media: soc_camera: Enclose macro with parentheses
+To: Guilherme Ricioli <guilherme.riciolic@gmail.com>,
+ linux-media@vger.kernel.org
+References: <1587758184-17867-1-git-send-email-guilherme.riciolic@gmail.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <be40fdf1-b75d-bca0-f1eb-798f234df7ac@xs4all.nl>
+Date: Wed, 24 Jun 2020 13:46:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <d1d37a1a2a884658aaf9ec48a4af306f@ONEGDAMX009.ONE.OFC.LOC>
-To: Undisclosed recipients:;
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUK126A6 smtp.mailfrom=admin@desaseni.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: desaseni.com
+In-Reply-To: <1587758184-17867-1-git-send-email-guilherme.riciolic@gmail.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfAItO1RfSTL7qNqv6XXo3S3PnTFX5rVX8z5QJbSqlin67t3YYsAb6H8ofboI785WCy0Xvkpk1g3fknj5W7vDUzTgYA3ik86mkMHsn3vhnjxeWIA263+q
+ u5CSl5mTXhgJCTXndmJh4FDSkcdkIIwJgFnbwy5W7fDQALrFQOpYQBhRrZg3J7EOLbk5JwWmQPXcI/6jPyV4hoOZVn8n+K1ebvncHCMxexOKoiF89FyP5Q+w
+ 4BhyzF/NsWsvFYDF3YvoO4itHNZMWvAPUcF/j3Jj6XAnhc2DnykLluy25ryB6WTCXgWkrfHwRruReKiD/nBsS8FHzxXkEtejkarjoQKjMp3P74HpTihxiJ1L
+ C73lC3jBA3afnCjFr78wZkFf30s9VfCEYVEeWy+XpOOffeHjnH9/kDxfJ158S8FQca9VdKhy
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,32 +73,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: henrybanko1970@yahoo.co.jp
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, mchehab@kernel.org,
+ lkcamp@lists.libreplanetbr.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-HSBC BANK PLC LONDON.(REGISTERED NO.1026167). 
-ADDRESS:8 CANADA SQUARE, CANARY WHARF, LONDON E14 5HQ, UK..
+On 24/04/2020 21:56, Guilherme Ricioli wrote:
+> Fix checkpatch error "ERROR: Macros with complex values should be
+> enclosed in parentheses" in soc_camera.c:241.
+> 
+> Signed-off-by: Guilherme Ricioli <guilherme.riciolic@gmail.com>
+> ---
+>  drivers/staging/media/soc_camera/soc_camera.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/soc_camera/soc_camera.c b/drivers/staging/media/soc_camera/soc_camera.c
+> index 39f513f..c2f96ea 100644
+> --- a/drivers/staging/media/soc_camera/soc_camera.c
+> +++ b/drivers/staging/media/soc_camera/soc_camera.c
+> @@ -238,8 +238,8 @@ unsigned long soc_camera_apply_board_flags(struct soc_camera_subdev_desc *ssdd,
+>  }
+>  EXPORT_SYMBOL(soc_camera_apply_board_flags);
+>  
+> -#define pixfmtstr(x) (x) & 0xff, ((x) >> 8) & 0xff, ((x) >> 16) & 0xff, \
+> -	((x) >> 24) & 0xff
+> +#define pixfmtstr(x) ((x) & 0xff, ((x) >> 8) & 0xff, ((x) >> 16) & 0xff, \
+> +	((x) >> 24) & 0xff)
+>  
+>  static int soc_camera_try_fmt(struct soc_camera_device *icd,
+>  			      struct v4l2_format *f)
+> 
 
-Attn: Beneficiary,
+Thank you for the patch, but this driver is deprecated and in fact depends on BROKEN
+(so it is never build).
 
-We write to inform you that Series of meetings have been held with the Secretary General of United Nations,U.S Department of State and Africa Union Organization this ended last week.
+Because of that I'll drop this patch.
 
-During the meeting we discovered that you have not receive your funds due to past corrupt Government Officials who almost held the funds to themselves for their selfish reason and some individuals who have taken advantage of your fund all in an attempt to defraud you, which has led to unnecessary delay in releasing the funds to you.
+Regards,
 
-The United Nations/ U.S. Department of State and Africa Union Organization have successfully passed a payment mandate to our bank, to clear all over due Contract funds, Lottery winnings and Inheritance funds owed to you and other individuals/organizations who have been found not to have receive their long overdue payment.
-
-A woman by name (MRS: CINDY MAY A CITIZEN OF USA) came to our office with an application stating that you gave her the power of attorney to be the beneficiary of your Outstanding funds. She made us to believe that you are dead and that she is your next of kin. We decided to send you email through this address hoping to find out if you are dead or alive and also to find out if you at any time gave her the power of attorney to represent you but we decided to contact you before we can take any action because of the sensitivity nature of the transaction and the amount of money that is involved:
-
-For immediate release of your funds to you legally as the legal recipient if you did not authorize Cindy May, you are required to send YOUR FULL NAME, CURRENT ADDRESS, CELL PHONE AND FAX NUMBER if any for onward proceeding on how you are going to receive the said funds legally without any problem either now or in future. Treat as urgent.
-
-Yours Sincerely,
-
-Mr. Noel Quinn
-HSBC Chief Executive Officer .
-
+	Hans
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
