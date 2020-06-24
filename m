@@ -1,61 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1C6320761E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 16:53:06 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DBA1A2076AF
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 17:09:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 15FFA22882;
-	Wed, 24 Jun 2020 14:53:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4961C8614E;
+	Wed, 24 Jun 2020 15:09:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ihn+22c1eO9A; Wed, 24 Jun 2020 14:53:02 +0000 (UTC)
+	with ESMTP id pbGxQs-GDcTm; Wed, 24 Jun 2020 15:09:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 048DA22234;
-	Wed, 24 Jun 2020 14:53:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A7DBC86081;
+	Wed, 24 Jun 2020 15:09:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id ED5341BF5A4
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:52:56 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CF69A1BF369
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 15:08:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E928888267
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:52:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CC27188383
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 15:08:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lQBoV8f19Kru for <devel@linuxdriverproject.org>;
- Wed, 24 Jun 2020 14:52:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1BCDE8801A
- for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 14:52:56 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 70DC320768;
- Wed, 24 Jun 2020 14:52:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593010375;
- bh=hKmGmSC9xKTCf7lKHaapRGzqdChdaLEB6DXAWD8Qde8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=18rDFvSPwlbcr568/S5o0ulxaiBng2umL68WZE7Gn3lPelYVsylFSO6HBMbl8OJ5y
- kOAPshUeLYFDRilCyMNQ+cyFgyDaSTqyRpqAtnry/ccNY1YA6SnQQ60+TXOAq7sETn
- Q7riK6XjUUvKv7diy3O+vZ/RRe2MIztTSWv4jNio=
-Date: Wed, 24 Jun 2020 16:52:54 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH v7 00/17] wilc1000: move out of staging
-Message-ID: <20200624145254.GA1876138@kroah.com>
-References: <20200623110000.31559-1-ajay.kathat@microchip.com>
- <87ftaketkw.fsf@tynnyri.adurom.net>
- <20200624091000.GD1731290@kroah.com>
- <87366kztcr.fsf@codeaurora.org>
+ with ESMTP id IvDKFUQFMvXc for <devel@linuxdriverproject.org>;
+ Wed, 24 Jun 2020 15:08:58 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
+ [209.85.208.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0723088355
+ for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 15:08:58 +0000 (UTC)
+Received: by mail-lj1-f194.google.com with SMTP id n23so2943048ljh.7
+ for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 08:08:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OJu1Q0OHeIZeVEh+ckAdP5ZEp1YytGAeyJAi+Zqho8o=;
+ b=TDWmm+sfBmEAHIhAD02JMvmJrggOBK77LVf6ttg1uMpkQdgH3FO0cT95zb8WwaQwTY
+ x4wH+pcwf/tAQ0xOXg46gDjlozBqMfiBYY/iEnoMLwd4w6UJYHCr6z8eL1d9W+y6e85k
+ 5qg1ferl6r/GRDevW4sjloXzJI5ewMwM+QlytNusMfAIQB0CEdmYp0G7KOzSW5Ed0FXT
+ IWW1Qwb5EDhWKq0M+ZTh9ppYeDK+xIyumu4u1GfUqXzvVtu+6xGAWEVvFZIiiHe2AyQ6
+ FTX8AS2PiEMgI+c9BFDDXyeU/auyjMNU8oN2KqRZ6ihAGdiGrPZhYB7zPxxT+NBGpIum
+ mQ6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OJu1Q0OHeIZeVEh+ckAdP5ZEp1YytGAeyJAi+Zqho8o=;
+ b=kBCz4+tlpZEgh+l4hadPG+MKyWJRx4EPGqqU2ROMOK5+2rSKwe0uWXTm3TmYs+6zeU
+ spvszTg1t3UsIsMgUBfWVUhAtGfJy5tt3s9eCyX0gQMp982l3lrfl400XUUzaWBkHrgI
+ af6MN3hfh4caCQhAJiX6SetghzdTKmWdkowdXynuCtfjl+7+cdFgZTfgVAg41vYeaGV/
+ EaQLNnndVmGcw5Il0pkgmOFjgHLgJ4BvZ4Tyqj3cx2h28IcI78VbY/IKD4sV2WcFj9Np
+ S74afslyneLe6VADVjgm+ex3yc8IXZ7uNPuMNutkEk17fVY4SfqF5NrJffbktpsYlm3R
+ o+UA==
+X-Gm-Message-State: AOAM531yEFaH1Ytzm0FJv3Og6WBMbIH/zv0+6KKoHW/G2RRAqN78BzwL
+ 8NPfLLfoKbgHbq+ykaFI5u0=
+X-Google-Smtp-Source: ABdhPJziT+8B80my7R9pbnPEEhLTjHgFhdsFgVB2yEpHxvGMDM9iqS0l4bcw31+Nyzs3kOiL43/4rg==
+X-Received: by 2002:a2e:4b12:: with SMTP id y18mr12711346lja.117.1593011335949; 
+ Wed, 24 Jun 2020 08:08:55 -0700 (PDT)
+Received: from localhost.localdomain (79-139-237-54.dynamic.spd-mgts.ru.
+ [79.139.237.54])
+ by smtp.gmail.com with ESMTPSA id z1sm4182049lja.47.2020.06.24.08.08.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 24 Jun 2020 08:08:55 -0700 (PDT)
+From: Dmitry Osipenko <digetx@gmail.com>
+To: Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>
+Subject: [PATCH v2 0/4] Tegra Video Decoder driver power management corrections
+Date: Wed, 24 Jun 2020 18:08:43 +0300
+Message-Id: <20200624150847.22672-1-digetx@gmail.com>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87366kztcr.fsf@codeaurora.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,74 +87,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Ajay.Kathat@microchip.com,
- Venkateswara.Kaja@microchip.com, linux-wireless@vger.kernel.org,
- Nicolas.Ferre@microchip.com, Sripad.Balwadgi@microchip.com,
- johannes@sipsolutions.net
+Cc: linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jun 24, 2020 at 12:49:24PM +0300, Kalle Valo wrote:
-> Greg KH <gregkh@linuxfoundation.org> writes:
-> 
-> > On Wed, Jun 24, 2020 at 11:50:07AM +0300, Kalle Valo wrote:
-> >> <Ajay.Kathat@microchip.com> writes:
-> >> 
-> >> > From: Ajay Singh <ajay.kathat@microchip.com>
-> >> >
-> >> > This patch series is to review and move wilc1000 driver out of staging.
-> >> > Most of the review comments received in [1] & [2] are addressed in the
-> >> > latest code.
-> >> > Please review and provide your inputs.
-> >> >
-> >> > [1]. https://lore.kernel.org/linux-wireless/1537957525-11467-1-git-send-email-ajay.kathat@microchip.com/
-> >> > [2]. https://lore.kernel.org/linux-wireless/1562896697-8002-1-git-send-email-ajay.kathat@microchip.com/
-> >> >
-> >> > Changes since v6:
-> >> >  - added Reviewed-by tag received for DT binding document patch earlier.
-> >> >    * https://lore.kernel.org/linux-wireless/20200405013235.GA24105@bogus
-> >> >  - merged latest driver and included --base commit as suggested.
-> >> 
-> >> Greg, in preparation for moving the driver to drivers/net/wireless can I
-> >> ask you to not to take wilc1000 patches for the time being? I think that
-> >> way it would be easier to move the driver between trees if there are no
-> >> changes after v5.8-rc1. Or is there a better way handle the move?
-> >
-> > The best way is for there to be a series of patches that just adds the
-> > driver to the "real" part of the tree, and when that is merged, let me
-> > know and I will just delete the driver version in the staging tree.
-> >
-> > Does that work for you?
-> 
-> It would be fine for me but won't that approach break the build (eg.
-> allyesconfig) due to two duplicate versions of the same driver in
-> wireless-drivers-next?
+Hello,
 
-For maybe one day, yes, but that's all.
+This small series addresses a Runtime PM issue that was discovered during
+of Tegra VI driver reviewing by balancing RPM usage count on RPM resume
+failure. Secondly it fixes reboot on some Tegra devices due to bootloader
+expecting VDE power partition to be ON at the boot time, which wasn't
+happening in case of a warm re-booting (i.e. by PMC resetting).
 
-> What I was thinking that Ajay would create a patch moving the driver
-> from drivers/staging/wilc1000 to
-> drivers/net/wireless/microchip/wilc1000. Using 'git mv' and 'git
-> format-patch --find-renames' the patch should be really small, mostly
-> just renames and small changes to Kconfig, Makefile and MAINTAINERS
-> files. But this of course would require that there are no wilc1000
-> patches in your tree until you get the driver move commit during the
-> next merge window, otherwise we would see conflicts between staging-next
-> and wireless-drivers-next.
-> 
-> But I don't have any strong opinions, whatever is easiest for everyone :)
+Changelog:
 
-It's kind of hard to review patches that do moves, but if you all want
-to do that, that's fine with me.
+v2: - Extended the commit's message of the "Balance runtime PM use-count on
+      resume failure" patch.
 
-Note, I can't guarantee that I'll not take any wilc1000 patches, I'll
-probably forget, but git mv will handle all of that just fine.
+    - Re-send for 5.9 inclusion.
 
-thanks,
+Dmitry Osipenko (4):
+  media: staging: tegra-vde: Balance runtime PM use-count on resume
+    failure
+  media: staging: tegra-vde: Runtime PM is always available on Tegra
+  media: staging: tegra-vde: Turn ON power domain on shutdown
+  media: staging: tegra-vde: Power-cycle hardware on probe
 
-greg k-h
+ drivers/staging/media/tegra-vde/vde.c | 45 +++++++++++++++++----------
+ 1 file changed, 29 insertions(+), 16 deletions(-)
+
+-- 
+2.26.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
