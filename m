@@ -1,93 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D163320755A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 16:12:19 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 40E3E20755F
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 16:13:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C338D22D10;
-	Wed, 24 Jun 2020 14:12:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 456F8896B4;
+	Wed, 24 Jun 2020 14:13:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uqnzkFn1dz8F; Wed, 24 Jun 2020 14:12:17 +0000 (UTC)
+	with ESMTP id FTUOqVsDRxDc; Wed, 24 Jun 2020 14:13:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id EF9FA228E2;
-	Wed, 24 Jun 2020 14:12:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3EDCA895B3;
+	Wed, 24 Jun 2020 14:13:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D53E21BF5A4
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:12:12 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1A5701BF5A4
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:13:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8908C1FCA0
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:12:11 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1755C887A7
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 14:13:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lYsPuPgGE22L for <devel@linuxdriverproject.org>;
- Wed, 24 Jun 2020 14:12:04 +0000 (UTC)
+ with ESMTP id mnur2ZYqlG7v for <devel@linuxdriverproject.org>;
+ Wed, 24 Jun 2020 14:13:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by silver.osuosl.org (Postfix) with ESMTPS id D488D22882
- for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 14:12:03 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05OEBwC7006530;
- Wed, 24 Jun 2020 14:12:01 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=tZbJARBoBOEe+Fn51mD/p0NNYyeLkR1+TWw+J8vnbyY=;
- b=xSoC32Tmdso9FbJx1huDnOr2Z4vUsuBkNth1U43gz/XWKNUfMobufb7CGtQP1Z3s6bOV
- ZsezNNN99SbGhLlDsfaNPYZo3sHLNzMGe8XCiq+fmt/+b5r9vRgV+aAcILVYxgQK80vJ
- OJQc1Hau2Tos1Y8KhkTBm1z5V0nodK2OLb4FsxL4ZnYqmG7mUMTdCQtihCHNu0nPkovb
- qocZX70G533YHQm5xHjuZgG+qoqsb1cRRf9l17A7xLfTL2Jav8IRt7KvjbaYd+UXDYgz
- G3AMYATZ3Wr4Lz2ISma63y6biRwrMH/Pwknzzsnjuo3TRaJEfYmQET1V+bpfmqyNH8Xt Ng== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2120.oracle.com with ESMTP id 31uustu3gy-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 24 Jun 2020 14:12:01 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05OE8IiG098287;
- Wed, 24 Jun 2020 14:12:00 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3020.oracle.com with ESMTP id 31uur7e5ag-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 24 Jun 2020 14:12:00 +0000
-Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 05OEBqRE021959;
- Wed, 24 Jun 2020 14:11:53 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 24 Jun 2020 14:11:52 +0000
-Date: Wed, 24 Jun 2020 17:11:41 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BDF2D88005
+ for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 14:13:38 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 81222AD4B;
+ Wed, 24 Jun 2020 14:13:36 +0000 (UTC)
+Message-ID: <d4aa38dc0cbedd31530abf0aedbe57be22f84f88.camel@suse.de>
 Subject: Re: [PATCH 15/50] staging: vchi: Unify struct shim_service and
  struct vchi_service_handle
-Message-ID: <20200624141141.GA30990@kadam>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Date: Wed, 24 Jun 2020 16:13:35 +0200
+In-Reply-To: <20200624141141.GA30990@kadam>
 References: <20200623164235.29566-1-nsaenzjulienne@suse.de>
  <20200623164235.29566-16-nsaenzjulienne@suse.de>
+ <20200624141141.GA30990@kadam>
+User-Agent: Evolution 3.36.3 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200623164235.29566-16-nsaenzjulienne@suse.de>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9662
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- spamscore=0 malwarescore=0
- suspectscore=2 mlxlogscore=999 adultscore=0 phishscore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006240102
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9662
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=2
- bulkscore=0
- cotscore=-2147483648 malwarescore=0 mlxscore=0 clxscore=1011
- lowpriorityscore=0 mlxlogscore=999 phishscore=0 priorityscore=1501
- spamscore=0 impostorscore=0 adultscore=0 classifier=spam adjust=0
- reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006240103
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,60 +63,77 @@ Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
  linux-kernel@vger.kernel.org, laurent.pinchart@ideasonboard.com,
  kernel-list@raspberrypi.com, linux-arm-kernel@lists.infradead.org,
  linux-rpi-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4665606543493014169=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jun 23, 2020 at 06:42:01PM +0200, Nicolas Saenz Julienne wrote:
-> @@ -437,12 +432,10 @@ static void service_free(struct shim_service *service)
->  
->  int32_t vchi_service_open(struct vchiq_instance *instance,
->  	struct service_creation *setup,
-> -	struct vchi_service_handle **handle)
-> +	struct vchi_service **service)
->  {
-> -	struct shim_service *service = service_alloc(instance, setup);
-> -
-> -	*handle = (struct vchi_service_handle *)service;
->  
-> +	*service = service_alloc(instance, setup);
->  	if (service) {
 
-This should be checking "*service".
+--===============4665606543493014169==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-D6XZ5Zq2MMerpxiHnmSD"
 
->  		struct vchiq_service_params params;
->  		enum vchiq_status status;
-> @@ -450,27 +443,25 @@ int32_t vchi_service_open(struct vchiq_instance *instance,
->  		memset(&params, 0, sizeof(params));
->  		params.fourcc = setup->service_id;
->  		params.callback = shim_callback;
-> -		params.userdata = service;
-> +		params.userdata = *service;
->  		params.version = setup->version.version;
->  		params.version_min = setup->version.version_min;
->  
->  		status = vchiq_open_service(instance, &params,
-> -			&service->handle);
-> +			&((*service)->handle));
->  		if (status != VCHIQ_SUCCESS) {
-> -			service_free(service);
-> -			service = NULL;
-> -			*handle = NULL;
-> +			service_free(*service);
-> +			*service = NULL;
->  		}
->  	}
->  
-> -	return service ? 0 : -1;
-> +	return *service ? 0 : -1;
->  }
->  EXPORT_SYMBOL(vchi_service_open);
->  
 
-regards,
-dan carpenter
+--=-D6XZ5Zq2MMerpxiHnmSD
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, 2020-06-24 at 17:11 +0300, Dan Carpenter wrote:
+> On Tue, Jun 23, 2020 at 06:42:01PM +0200, Nicolas Saenz Julienne wrote:
+> > @@ -437,12 +432,10 @@ static void service_free(struct shim_service *ser=
+vice)
+> > =20
+> >  int32_t vchi_service_open(struct vchiq_instance *instance,
+> >  	struct service_creation *setup,
+> > -	struct vchi_service_handle **handle)
+> > +	struct vchi_service **service)
+> >  {
+> > -	struct shim_service *service =3D service_alloc(instance, setup);
+> > -
+> > -	*handle =3D (struct vchi_service_handle *)service;
+> > =20
+> > +	*service =3D service_alloc(instance, setup);
+> >  	if (service) {
+>=20
+> This should be checking "*service".
+>=20
+
+Of course, thanks!
+
+Reards,
+Nicolas
+
+
+
+--=-D6XZ5Zq2MMerpxiHnmSD
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl7zX48ACgkQlfZmHno8
+x/5i/Qf/Rep33QfS1bSFPqml0IX6kfyvuerSi3oN3ZCHXzvIJEZN/Ffytl7MiODb
+Zqd/ysG9Tkyx8SLCYW4tKmJwvSrfn3TJM4mtfHpEYcmjr9pUNVXVhf1WhsWMAna+
+3UVSV3KNfKoCK4kJK9oDl6w20j3oW5JjTnVOwm1seC4jJrpa4ZXL8ufr55BjTucg
+HleB4wa5SNcUs3NNhywa1bk6PfOWmnt9S7qQycGaOLeBhiXHS9HH9q1HL6S8Glnl
+kD1XfTqUs1XMwDJ/wPWSAnjgiWID4bF6c0ys5OOoGy1Q5CF1hnWHmn9mKfyNw+n1
++HZvhgJpSG/7SBLRKHGG31TX9Gnzvg==
+=OTJq
+-----END PGP SIGNATURE-----
+
+--=-D6XZ5Zq2MMerpxiHnmSD--
+
+
+--===============4665606543493014169==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============4665606543493014169==--
+
