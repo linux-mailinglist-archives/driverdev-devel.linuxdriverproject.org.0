@@ -1,51 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C5D720711A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 12:26:36 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DFEA62071D2
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 13:09:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A592E87586;
-	Wed, 24 Jun 2020 10:26:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5E2CA895B7;
+	Wed, 24 Jun 2020 11:09:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Iei_NArMHp-U; Wed, 24 Jun 2020 10:26:34 +0000 (UTC)
+	with ESMTP id miK82YOnQCmn; Wed, 24 Jun 2020 11:09:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 85517873E9;
-	Wed, 24 Jun 2020 10:26:33 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 80B3389568;
+	Wed, 24 Jun 2020 11:09:11 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 82B4D1BF57F
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 10:26:31 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DC2BB1BF599
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 24 Jun 2020 11:09:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7F2EA873E9
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 10:26:31 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D8DA987736
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 24 Jun 2020 11:09:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FwZoz_01qspG for <devel@linuxdriverproject.org>;
- Wed, 24 Jun 2020 10:26:30 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C613A873B6
- for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 10:26:30 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 164E5ADB5;
- Wed, 24 Jun 2020 10:26:28 +0000 (UTC)
-Message-ID: <307f381cbe4976c200dbcdf0670f79a6a55bf726.camel@suse.de>
-Subject: Re: [PATCH 03/50] staging: mmal-vchiq: Avoid use of bool in structures
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Joe Perches <joe@perches.com>, gregkh@linuxfoundation.org
-Date: Wed, 24 Jun 2020 12:26:21 +0200
-In-Reply-To: <25a963df43bfa4a1099b6813bb35d9c5a6184578.camel@perches.com>
-References: <20200623164235.29566-1-nsaenzjulienne@suse.de>
- <20200623164235.29566-4-nsaenzjulienne@suse.de>
- <25a963df43bfa4a1099b6813bb35d9c5a6184578.camel@perches.com>
-User-Agent: Evolution 3.36.3 
+ with ESMTP id f-WqJi+I1Rd2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 24 Jun 2020 11:09:06 +0000 (UTC)
+X-Greylist: delayed 00:30:07 by SQLgrey-1.7.6
+Received: from eu-smtp-delivery-41.mimecast.com
+ (eu-smtp-delivery-41.mimecast.com [185.58.87.41])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A35E386CE7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 24 Jun 2020 11:09:05 +0000 (UTC)
+Received: from OWAHOSTNAME (57.67.213.98 [57.67.213.98]) (Using TLS) by
+ relay.mimecast.com with ESMTP id uk-mta-29-yWGjP0_IOoaQFXp7cBsH8w-17; Wed,
+ 24 Jun 2020 11:38:50 +0100
+X-MC-Unique: yWGjP0_IOoaQFXp7cBsH8w-17
+Received: from ONEGDAMX008.ONE.OFC.LOC (172.18.40.3) by
+ ONEGDAMX006.ONE.OFC.LOC (172.18.42.151) with Microsoft SMTP Server (TLS) id
+ 14.3.487.0; Wed, 24 Jun 2020 12:37:53 +0200
+Received: from ONEGDAMX009.ONE.OFC.LOC (172.18.40.127) by
+ ONEGDAMX008.ONE.OFC.LOC (172.18.40.3) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 24 Jun 2020 12:37:52 +0200
+Received: from User (92.111.87.130) by ONEGDAMX009.ONE.OFC.LOC (172.18.40.127)
+ with Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport;
+ Wed, 24 Jun 2020 12:37:47 +0200
+From: HSBC London Office <admin@desaseni.com>
+Subject: Very Important From Bank (ABOUT YOUR FUNDS)
+Date: Wed, 24 Jun 2020 03:37:52 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <d1d37a1a2a884658aaf9ec48a4af306f@ONEGDAMX009.ONE.OFC.LOC>
+To: Undisclosed recipients:;
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUK126A6 smtp.mailfrom=admin@desaseni.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: desaseni.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,83 +75,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jacopo Mondi <jacopo@jmondi.org>,
- kernel-list@raspberrypi.com, linux-kernel@vger.kernel.org,
- laurent.pinchart@ideasonboard.com,
- Dave Stevenson <dave.stevenson@raspberrypi.org>,
- linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============8174082285155521554=="
+Reply-To: henrybanko1970@yahoo.co.jp
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+HSBC BANK PLC LONDON.(REGISTERED NO.1026167). 
+ADDRESS:8 CANADA SQUARE, CANARY WHARF, LONDON E14 5HQ, UK..
 
---===============8174082285155521554==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-FOp+GqeSI2bnqbVaozq5"
+Attn: Beneficiary,
 
+We write to inform you that Series of meetings have been held with the Secretary General of United Nations,U.S Department of State and Africa Union Organization this ended last week.
 
---=-FOp+GqeSI2bnqbVaozq5
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+During the meeting we discovered that you have not receive your funds due to past corrupt Government Officials who almost held the funds to themselves for their selfish reason and some individuals who have taken advantage of your fund all in an attempt to defraud you, which has led to unnecessary delay in releasing the funds to you.
 
-On Tue, 2020-06-23 at 15:11 -0700, Joe Perches wrote:
-> On Tue, 2020-06-23 at 18:41 +0200, Nicolas Saenz Julienne wrote:
-> > From: Dave Stevenson <dave.stevenson@raspberrypi.org>
-> >=20
-> > Fixes up a checkpatch error "Avoid using bool structure members
-> > because of possible alignment issues".
-> []
-> > diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-> > b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-> []
-> > @@ -1754,7 +1754,7 @@ int vchiq_mmal_component_enable(struct
-> > vchiq_mmal_instance *instance,
-> > =20
-> >  	ret =3D enable_component(instance, component);
-> >  	if (ret =3D=3D 0)
-> > -		component->enabled =3D true;
-> > +		component->enabled =3D 1;
->=20
-> This change does not match the commit description.
->=20
-> Also, checkpatch does not emit a warning here.
+The United Nations/ U.S. Department of State and Africa Union Organization have successfully passed a payment mandate to our bank, to clear all over due Contract funds, Lottery winnings and Inheritance funds owed to you and other individuals/organizations who have been found not to have receive their long overdue payment.
 
-Fair enough I'll drop it for v2.
+A woman by name (MRS: CINDY MAY A CITIZEN OF USA) came to our office with an application stating that you gave her the power of attorney to be the beneficiary of your Outstanding funds. She made us to believe that you are dead and that she is your next of kin. We decided to send you email through this address hoping to find out if you are dead or alive and also to find out if you at any time gave her the power of attorney to represent you but we decided to contact you before we can take any action because of the sensitivity nature of the transaction and the amount of money that is involved:
 
-Regards,
-Nicolas
+For immediate release of your funds to you legally as the legal recipient if you did not authorize Cindy May, you are required to send YOUR FULL NAME, CURRENT ADDRESS, CELL PHONE AND FAX NUMBER if any for onward proceeding on how you are going to receive the said funds legally without any problem either now or in future. Treat as urgent.
 
+Yours Sincerely,
 
---=-FOp+GqeSI2bnqbVaozq5
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl7zKk0ACgkQlfZmHno8
-x/6Zegf/eT/eppMsIFinxWFgrJmWBBu9iC3muOwrgv74O+kaKnIBS5woWnRQcq6O
-dDXD3an0w5+W3ii/d+2xvRfk22sX/GPMYzxyeoKpIY8xvt813ZAq+g28Z8zYTmQi
-t+7TIcvSVonEdlEE3gY3E7VNlGplzl8SB+mlnPyApt1y0yGf4ZNyY3s8mLfSSkon
-740q+B+2IjMpqo9/JsTffvhWko7qdcxAxf80FpaAPHXEqgh3uuLanTILk0evUQNw
-R0reYZeMVJP1CQ8Dh+wcZgFdVBYyeYHTi4+b1q2Y0XJE0CbRdERe1e79VRb22bs6
-xDfwtcmNocKWnHHxiv6A0sjm0HSoMg==
-=CSKG
------END PGP SIGNATURE-----
-
---=-FOp+GqeSI2bnqbVaozq5--
-
-
---===============8174082285155521554==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Mr. Noel Quinn
+HSBC Chief Executive Officer .
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============8174082285155521554==--
-
