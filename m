@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5B16207B64
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 20:20:54 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61B14207B66
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jun 2020 20:21:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E7F7B8651C;
-	Wed, 24 Jun 2020 18:20:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6E232877D3;
+	Wed, 24 Jun 2020 18:21:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dzcbKihVf9Fl; Wed, 24 Jun 2020 18:20:52 +0000 (UTC)
+	with ESMTP id 3RPop5W8NMNe; Wed, 24 Jun 2020 18:20:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7E21886447;
-	Wed, 24 Jun 2020 18:20:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 549C38773E;
+	Wed, 24 Jun 2020 18:20:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 90AFA1BF97C
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 18:20:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2C7991BF40E
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 18:20:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8D5718773E
- for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 18:20:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 28C7C8773E
+ for <devel@linuxdriverproject.org>; Wed, 24 Jun 2020 18:20:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iVVcYDs56nF0 for <devel@linuxdriverproject.org>;
+ with ESMTP id WLRMWQZDX6U5 for <devel@linuxdriverproject.org>;
  Wed, 24 Jun 2020 18:20:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com
- [209.85.128.47])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3C67B877D3
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4302E877E8
  for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 18:20:46 +0000 (UTC)
-Received: by mail-wm1-f47.google.com with SMTP id o2so3445754wmh.2
+Received: by mail-wm1-f65.google.com with SMTP id q15so3198659wmj.2
  for <devel@driverdev.osuosl.org>; Wed, 24 Jun 2020 11:20:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6Vleye7CC8rp9HmgWi8FAgP7rYcGWjtwE7dt8Z3MwY4=;
- b=jCQ1uYsB4U63S3rHflAJNyX6222z3WhCOta6eutYbKFPmc/AcWK8S8+tqvN/YbnVH3
- xBpMYwgo8Szf4n1Hz5uTPIa4aD5Ze8BOHkeQJiOUUjvbIY32wXONIO466363yb3yXoQW
- Ar9x5sRpamgIALfwpB8gkEO8DnB6z3g75e/IfzL05m+P0Nj4QCCrJM6DUS7UiqIzCxAx
- V1HJjT1KhMCZx/FBRy5z6qykineFleOwEE9olWXb8quOfs4uyPrX/GS0DWOEzC6BQeYO
- InE/KYxLK9nUSKBd6Hbmm+gQ0SPjLzDJqkARZLTWxCe7io8bg9YUA0PzAz56yuF/qRMn
- 9fTQ==
+ bh=ZTPuttmyD/g1HHmZ6U47P/FAUm11ksITEEPsRfBCiqg=;
+ b=vBAcW/ETMVFAe2v8wH1JPsxRSfCknsE9S2FUghuQnumEISjON6TvlRAC0mo7ZIzPBZ
+ hpY5H7ywtoBYvecZniyZ4c/Q3eV34tnq6vhc8C65ULY8t6y0PnX8bEwrbcoWj9NId7sH
+ 6jtLfCGxOlabzYWBTaJBUgvBZ0GXN+EeD/Ew+41FQbiJKyj5KjsCnMtnwAfsI25aMQgj
+ OcmlOST3zjJcKV1yRfSKuosq6HJTi6ek3obFGdXv4r1Y44hKxdXpz3/XgDno//eVsobx
+ dTY2wgCT77eSplLXi9hEEPKaVNGXuT+P/rJ6RJzKI5aL6rl3Ebk+Ddu1rwpF6Q1UviVf
+ QVZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6Vleye7CC8rp9HmgWi8FAgP7rYcGWjtwE7dt8Z3MwY4=;
- b=JN2gKF95I+qmqBeyX4rN8q7HooHI+PIP0w3NtHNBP1V/pAEVE4j2/V9Es9o9c7cLAj
- CCs6f2k4x6VUEt3Ra6LFcPebuWqnCWbJNbSfL8jnTzufz/OnisH3H0qB8UFSnnKoHubo
- 9WmvVIzytr/qdC3OBep1sdwRDffIaN/88yFdkgH+DixOqbuuLL6HB3dtB1S1S3aycZHw
- SsCb3ttlMyulpzTR3hLepfBezf4W9jZdiz3gp9uKGPuTr6DKzWQmOrfPZ4a3ix9bVgKN
- yTYgQrtatBqrde+y8I+zw/xXUJXp7iKw4rC1PoucqY+n7LDXbGUyNd3oPISBjHt+Oajd
- 92oQ==
-X-Gm-Message-State: AOAM531zvYn7TvtimR6C6LzFZ4zK/aQt/p3U1J8brkb0gUDpqCMyEPcj
- UrCo3U8U2WZ5C/hoMMzADPg=
-X-Google-Smtp-Source: ABdhPJyZzGiM75u54h28sYyOyG8YEivuGmMOz1X1Kltj2RuOa4YyW9kE8HqIjE+rymAEjMZgjAyZTw==
-X-Received: by 2002:a1c:4e10:: with SMTP id g16mr29920990wmh.98.1593022843708; 
- Wed, 24 Jun 2020 11:20:43 -0700 (PDT)
+ bh=ZTPuttmyD/g1HHmZ6U47P/FAUm11ksITEEPsRfBCiqg=;
+ b=SrL3KCrybZuVC9Q9Cr3V2CJ+SBkXiW+kiRL0xgTSNuw34vrCa//E4C0MQqdD2bWbtu
+ oH+Zww6U/fp4LKAlsPckem1ltIpvtaTWimBOpKy+hTZBB6crEijXL9MiHfbLqNmPxplQ
+ iOqQD8FwhmQFzXheqdZvdRoAj3gCI514es46LVsMmbX63AveU75iC83Ho2nfmGKOSb9h
+ O2VfCM6Klx3NlvsyqSX8YbAy+1LwbVhXkPCNV1aLlVd6MhP6dVT+8idLvstsesohlOlA
+ UApbX5iEulXd5GUbkcKj/n23EfyDqkMFs2/5iRf/pTl4+9frj3+vqAPsEtGkTSP7qRcU
+ nxhw==
+X-Gm-Message-State: AOAM531RGC9dp+o57sL0zusuB5mu4FMnAjMF61M85mR/DP3jyqDFxnU1
+ bIpzPk5Cay/ANcmDHWLNKdI=
+X-Google-Smtp-Source: ABdhPJz7WAwW8HPbEVbmMx5qyMQkDpuzU1l8abY/AaWFINez+D/6loXx01m1Cky/22DLqtqlri6Hag==
+X-Received: by 2002:a7b:cb59:: with SMTP id v25mr4285223wmj.141.1593022844541; 
+ Wed, 24 Jun 2020 11:20:44 -0700 (PDT)
 Received: from garrit-VirtualBox.fritz.box ([94.31.102.44])
- by smtp.gmail.com with ESMTPSA id w13sm28532046wrr.67.2020.06.24.11.20.42
+ by smtp.gmail.com with ESMTPSA id w13sm28532046wrr.67.2020.06.24.11.20.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2020 11:20:43 -0700 (PDT)
+ Wed, 24 Jun 2020 11:20:44 -0700 (PDT)
 From: Garrit Franke <garritfranke@gmail.com>
 To: dan.carpenter@oracle.com
-Subject: [PATCH v2 0/2] staging: vc04_services: vchiq_arm: replace bitshift
+Subject: [PATCH v2 1/2] staging: vc04_services: vchiq_arm: replace bitshift
  with BIT macro
-Date: Wed, 24 Jun 2020 20:20:33 +0200
-Message-Id: <20200624182035.16740-1-garritfranke@gmail.com>
+Date: Wed, 24 Jun 2020 20:20:34 +0200
+Message-Id: <20200624182035.16740-2-garritfranke@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200619080121.GV4151@kadam>
 References: <20200619080121.GV4151@kadam>
@@ -93,21 +93,94 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Dan,
+This should prevent possible overflowing bits by using the BIT macro in
+vchiq_core
 
-thanks for your review. Yes, this is supposed to be a cleanup. I didn't
-make that clear. I removed the unnecessary parentheses, as suggested.
-
-Regards,
-Garrit Franke
-
-Garrit Franke (2):
-  staging: vc04_services: vchiq_arm: replace bitshift with BIT macro
-  staging: vc04_services: vchiq_arm: Remove unnecessary parens
-
+Signed-off-by: Garrit Franke <garritfranke@gmail.com>
+---
  .../interface/vchiq_arm/vchiq_core.c          | 22 +++++++++----------
  1 file changed, 11 insertions(+), 11 deletions(-)
 
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index ae9183db44ee..5a6d2bd59ec0 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -39,9 +39,9 @@ struct vchiq_openack_payload {
+ };
+ 
+ enum {
+-	QMFLAGS_IS_BLOCKING     = (1 << 0),
+-	QMFLAGS_NO_MUTEX_LOCK   = (1 << 1),
+-	QMFLAGS_NO_MUTEX_UNLOCK = (1 << 2)
++	QMFLAGS_IS_BLOCKING     = BIT(0),
++	QMFLAGS_NO_MUTEX_LOCK   = BIT(1),
++	QMFLAGS_NO_MUTEX_UNLOCK = BIT(2)
+ };
+ 
+ /* we require this for consistency between endpoints */
+@@ -526,14 +526,14 @@ request_poll(struct vchiq_state *state, struct vchiq_service *service,
+ 		do {
+ 			value = atomic_read(&service->poll_flags);
+ 		} while (atomic_cmpxchg(&service->poll_flags, value,
+-			value | (1 << poll_type)) != value);
++			value | BIT(poll_type)) != value);
+ 
+ 		do {
+ 			value = atomic_read(&state->poll_services[
+ 				service->localport>>5]);
+ 		} while (atomic_cmpxchg(
+ 			&state->poll_services[service->localport>>5],
+-			value, value | (1 << (service->localport & 0x1f)))
++			value, value | BIT((service->localport & 0x1f)))
+ 			!= value);
+ 	}
+ 
+@@ -1287,19 +1287,19 @@ poll_services(struct vchiq_state *state)
+ 
+ 		flags = atomic_xchg(&state->poll_services[group], 0);
+ 		for (i = 0; flags; i++) {
+-			if (flags & (1 << i)) {
++			if (flags & BIT(i)) {
+ 				struct vchiq_service *service =
+ 					find_service_by_port(state,
+ 						(group<<5) + i);
+ 				u32 service_flags;
+ 
+-				flags &= ~(1 << i);
++				flags &= ~BIT(i);
+ 				if (!service)
+ 					continue;
+ 				service_flags =
+ 					atomic_xchg(&service->poll_flags, 0);
+ 				if (service_flags &
+-					(1 << VCHIQ_POLL_REMOVE)) {
++					BIT(VCHIQ_POLL_REMOVE)) {
+ 					vchiq_log_info(vchiq_core_log_level,
+ 						"%d: ps - remove %d<->%d",
+ 						state->id, service->localport,
+@@ -1317,7 +1317,7 @@ poll_services(struct vchiq_state *state)
+ 						request_poll(state, service,
+ 							VCHIQ_POLL_REMOVE);
+ 				} else if (service_flags &
+-					(1 << VCHIQ_POLL_TERMINATE)) {
++					BIT(VCHIQ_POLL_TERMINATE)) {
+ 					vchiq_log_info(vchiq_core_log_level,
+ 						"%d: ps - terminate %d<->%d",
+ 						state->id, service->localport,
+@@ -1328,11 +1328,11 @@ poll_services(struct vchiq_state *state)
+ 						request_poll(state, service,
+ 							VCHIQ_POLL_TERMINATE);
+ 				}
+-				if (service_flags & (1 << VCHIQ_POLL_TXNOTIFY))
++				if (service_flags & BIT(VCHIQ_POLL_TXNOTIFY))
+ 					notify_bulks(service,
+ 						&service->bulk_tx,
+ 						1/*retry_poll*/);
+-				if (service_flags & (1 << VCHIQ_POLL_RXNOTIFY))
++				if (service_flags & BIT(VCHIQ_POLL_RXNOTIFY))
+ 					notify_bulks(service,
+ 						&service->bulk_rx,
+ 						1/*retry_poll*/);
 -- 
 2.25.1
 
