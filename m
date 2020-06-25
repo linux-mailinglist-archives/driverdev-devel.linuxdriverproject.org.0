@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0207220A3EA
-	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jun 2020 19:23:54 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 78FC720A3EB
+	for <lists+driverdev-devel@lfdr.de>; Thu, 25 Jun 2020 19:24:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 738B5232F2;
-	Thu, 25 Jun 2020 17:23:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A4E6586EC9;
+	Thu, 25 Jun 2020 17:24:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7sAF9q1ZAGXT; Thu, 25 Jun 2020 17:23:51 +0000 (UTC)
+	with ESMTP id C1a4R5ZGKdzG; Thu, 25 Jun 2020 17:24:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7660320532;
-	Thu, 25 Jun 2020 17:23:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 99552865D6;
+	Thu, 25 Jun 2020 17:24:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BA5681BF336
- for <devel@linuxdriverproject.org>; Thu, 25 Jun 2020 17:23:47 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 24C501BF336
+ for <devel@linuxdriverproject.org>; Thu, 25 Jun 2020 17:24:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B6DFE8884C
- for <devel@linuxdriverproject.org>; Thu, 25 Jun 2020 17:23:47 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 212EC81E90
+ for <devel@linuxdriverproject.org>; Thu, 25 Jun 2020 17:24:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ALd8O5j0Ec4h for <devel@linuxdriverproject.org>;
- Thu, 25 Jun 2020 17:23:47 +0000 (UTC)
+ with ESMTP id VYTN1CqMhVFa for <devel@linuxdriverproject.org>;
+ Thu, 25 Jun 2020 17:24:09 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 242FF887D3
- for <devel@driverdev.osuosl.org>; Thu, 25 Jun 2020 17:23:47 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 98FC5865D6
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jun 2020 17:24:09 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 57D4720773;
- Thu, 25 Jun 2020 17:23:46 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D735F20773;
+ Thu, 25 Jun 2020 17:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593105826;
- bh=CA8sK1iaFslFSn8XGSDmoUdnBkprbim1itFO/LPNh/Y=;
+ s=default; t=1593105849;
+ bh=ERYgcYUp0xp8dcvgh/Kv/HPBnf41UK731QAjGSqQBp0=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=zvjAC9yYbAgnqLTGPS1P81nV2NWhnDq+aLq1948TpmmXlp9JIBddj6DSbePiKRdzP
- iy5BNoaAgBHoUFOgS0kGB3GkvEaZumFrUl7SwWZmL4RR43hRLyeYmKCl2GZYUuz4u5
- kVEtEG49aDmjyQnuUopYz7ozKlvFsewDUnfTZTho=
-Date: Thu, 25 Jun 2020 19:23:42 +0200
+ b=geSBgMNE3dvqSAP8s354iMk3AMtHB96CoB3rnE+tJuj/99rX4k7k00Zm9A56vR/Rp
+ vl6XxHYznexewuyKGA0fuAiJoLKxaKfOiRGbxPZ8b5ypRnvCR0tkgpN3rJpnqiHjYd
+ ZPw7kaPi1XNk1TLqjAU1d7maABn+Qt4jkjTvphLA=
+Date: Thu, 25 Jun 2020 19:24:05 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Coiby Xu <coiby.xu@gmail.com>
-Subject: Re: [PATCH 2/2] fix else after return or break
-Message-ID: <20200625172342.GA3965841@kroah.com>
+Subject: Re: [PATCH 1/2] fix trailing */ in block comment
+Message-ID: <20200625172405.GB3965841@kroah.com>
 References: <20200625153614.63912-1-coiby.xu@gmail.com>
- <20200625153614.63912-3-coiby.xu@gmail.com>
+ <20200625153614.63912-2-coiby.xu@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200625153614.63912-3-coiby.xu@gmail.com>
+In-Reply-To: <20200625153614.63912-2-coiby.xu@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,13 +75,13 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jun 25, 2020 at 11:36:14PM +0800, Coiby Xu wrote:
+On Thu, Jun 25, 2020 at 11:36:13PM +0800, Coiby Xu wrote:
 > Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
 > ---
->  drivers/staging/qlge/qlge_dbg.c  | 23 ++++++++++-------------
->  drivers/staging/qlge/qlge_main.c |  8 ++++----
->  drivers/staging/qlge/qlge_mpi.c  |  4 ++--
->  3 files changed, 16 insertions(+), 19 deletions(-)
+>  drivers/staging/qlge/qlge_main.c |  3 ++-
+>  drivers/staging/qlge/qlge_mpi.c  | 10 ++++++----
+>  2 files changed, 8 insertions(+), 5 deletions(-)
+> 
 
 Hi,
 
