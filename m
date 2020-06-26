@@ -2,57 +2,61 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3596A20AA82
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 04:52:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 68B3220AACF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 05:38:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4DEF784870;
-	Fri, 26 Jun 2020 02:52:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 96C8C86F55;
+	Fri, 26 Jun 2020 03:38:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bCtWzHJf5LqI; Fri, 26 Jun 2020 02:52:20 +0000 (UTC)
+	with ESMTP id Ub5wI0UHHmgw; Fri, 26 Jun 2020 03:38:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B8C318443E;
-	Fri, 26 Jun 2020 02:52:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 476CA86C31;
+	Fri, 26 Jun 2020 03:38:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5CCA31BF2FD
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 02:52:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BD5891BF410
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 03:38:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 44D9C2014B
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 02:52:17 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B2E1B204A3
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 03:38:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vPsw-+A75HZY for <devel@linuxdriverproject.org>;
- Fri, 26 Jun 2020 02:52:16 +0000 (UTC)
+ with ESMTP id TjogYclgVK4n for <devel@linuxdriverproject.org>;
+ Fri, 26 Jun 2020 03:38:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
- [213.167.242.64])
- by silver.osuosl.org (Postfix) with ESMTPS id 3BF5B20012
- for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 02:52:16 +0000 (UTC)
-Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
- [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 54C3A72E;
- Fri, 26 Jun 2020 04:52:12 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1593139932;
- bh=pLPiGK32i9S/WgqxebyEuTDQ6+h/C1q6kiKNEQ7LQxk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=wHCNSxsdtrCIIfoR+T/5jxEzHDQ7sG/hOJNbP9iS2M9Zl2EuTqBws4dVrPZFcsJkw
- bDWMliIM8NcYVXXHj2d1i1HA3NeJyd0nBROww1i1+JDa2QKxswwFYEAGdPyddH6YEg
- KH6Os7VE7SLZAGW9QUTGGocbnMgzfAVPlY/NfHtI=
-Date: Fri, 26 Jun 2020 05:52:09 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: B K Karthik <bkkarthik@pesu.pes.edu>
-Subject: Re: [PATCH] fixing ERROR: Macros with complex values must be
- enclosed within parentheses.
-Message-ID: <20200626025209.GA5865@pendragon.ideasonboard.com>
-References: <20200626021723.len2cts3ffq4wimq@pesu-pes-edu>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by silver.osuosl.org (Postfix) with ESMTPS id 771EC20427
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 03:38:09 +0000 (UTC)
+IronPort-SDR: 7v9Q0YS5XNNqJzHLhGWFoIPG1rLv+r9I2Z9pq4W9mr8rg6ASs1OrftsbAFJqITgKP6zW3zlK7O
+ wXXXcWRAHnlQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9663"; a="210248754"
+X-IronPort-AV: E=Sophos;i="5.75,282,1589266800"; d="scan'208";a="210248754"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Jun 2020 20:38:08 -0700
+IronPort-SDR: +gYFmxF+ARguOY+pyEGtrLMc7uU6ovs3EFeiUhlZlPp/vjrtr+Kl4ZP9YubFuihHWB0k97t1t8
+ bVQ2DKa0GTYw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,282,1589266800"; d="scan'208";a="479698371"
+Received: from lkp-server01.sh.intel.com (HELO 538b5e3c8319) ([10.239.97.150])
+ by fmsmga006.fm.intel.com with ESMTP; 25 Jun 2020 20:38:07 -0700
+Received: from kbuild by 538b5e3c8319 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jofBm-0001z7-PJ; Fri, 26 Jun 2020 03:38:06 +0000
+Date: Fri, 26 Jun 2020 11:37:08 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 92cd1b5d65f5c67147c7da39a3c2ad7e6ff81027
+Message-ID: <5ef56d64.Q+bCp4rEr0P9CewF%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200626021723.len2cts3ffq4wimq@pesu-pes-edu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,54 +69,147 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Karthik,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 92cd1b5d65f5c67147c7da39a3c2ad7e6ff81027  staging: ion: fix common struct sg_table related issues
 
-Thank you for the patch.
+elapsed time: 725m
 
-On Thu, Jun 25, 2020 at 10:17:23PM -0400, B K Karthik wrote:
-> soc_camera.c:
-> 
-> fixing ERROR: Macros with complex values must be enclused within parentheses.
-> 
-> Signed-off-by: B K Karthik <karthik.bk2000@live.com>
-> ---
->  drivers/staging/media/soc_camera/soc_camera.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/media/soc_camera/soc_camera.c b/drivers/staging/media/soc_camera/soc_camera.c
-> index 39f513f69b89..f609ecf6691c 100644
-> --- a/drivers/staging/media/soc_camera/soc_camera.c
-> +++ b/drivers/staging/media/soc_camera/soc_camera.c
-> @@ -238,8 +238,7 @@ unsigned long soc_camera_apply_board_flags(struct soc_camera_subdev_desc *ssdd,
->  }
->  EXPORT_SYMBOL(soc_camera_apply_board_flags);
->  
-> -#define pixfmtstr(x) (x) & 0xff, ((x) >> 8) & 0xff, ((x) >> 16) & 0xff, \
-> -	((x) >> 24) & 0xff
-> +#define pixfmtstr(x) ((x) & 0xff, ((x) >> 8) & 0xff, ((x) >> 16) & 0xff, ((x) >> 24) & 0xff)
+configs tested: 120
+configs skipped: 5
 
-This won't work. Try to compile this driver with CONFIG_DYNAMIC_DEBUG
-and the compiler will tell you why.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Regardless, drivers/staging/media/soc_camera/soc_camera.c is in staging
-because it will be removed from the kernel, cleanups for this file won't
-be accepted.
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arc                     haps_hs_smp_defconfig
+s390                             allyesconfig
+powerpc                          g5_defconfig
+mips                        jmr3927_defconfig
+sh                           se7751_defconfig
+arm                       imx_v6_v7_defconfig
+arm                            xcep_defconfig
+arm                      pxa255-idp_defconfig
+arm                          tango4_defconfig
+arm                       mainstone_defconfig
+arm                          moxart_defconfig
+m68k                            q40_defconfig
+sh                          sdk7786_defconfig
+arm                            mps2_defconfig
+s390                              allnoconfig
+arm                             pxa_defconfig
+arm                         lpc18xx_defconfig
+mips                           ip27_defconfig
+arm                     eseries_pxa_defconfig
+mips                      loongson3_defconfig
+i386                             alldefconfig
+nds32                             allnoconfig
+sh                           se7724_defconfig
+mips                     loongson1b_defconfig
+parisc                            allnoconfig
+arm                            lart_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a004-20200624
+x86_64               randconfig-a002-20200624
+x86_64               randconfig-a003-20200624
+x86_64               randconfig-a005-20200624
+x86_64               randconfig-a001-20200624
+x86_64               randconfig-a006-20200624
+i386                 randconfig-a002-20200624
+i386                 randconfig-a006-20200624
+i386                 randconfig-a003-20200624
+i386                 randconfig-a001-20200624
+i386                 randconfig-a005-20200624
+i386                 randconfig-a004-20200624
+i386                 randconfig-a013-20200624
+i386                 randconfig-a016-20200624
+i386                 randconfig-a012-20200624
+i386                 randconfig-a014-20200624
+i386                 randconfig-a011-20200624
+i386                 randconfig-a015-20200624
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                                allnoconfig
+um                                  defconfig
+um                               allmodconfig
+um                               allyesconfig
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
 
->  static int soc_camera_try_fmt(struct soc_camera_device *icd,
->  			      struct v4l2_format *f)
-
--- 
-Regards,
-
-Laurent Pinchart
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
