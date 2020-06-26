@@ -1,88 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE14A20A9CE
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 02:17:30 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AED2220AA6D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 04:23:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 70509891D8;
-	Fri, 26 Jun 2020 00:17:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D76A86DD9;
+	Fri, 26 Jun 2020 02:23:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zgf+f1I9NdYd; Fri, 26 Jun 2020 00:17:29 +0000 (UTC)
+	with ESMTP id KnFZAX07GOCx; Fri, 26 Jun 2020 02:23:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DFEFD87DDB;
-	Fri, 26 Jun 2020 00:17:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BCE0386DA3;
+	Fri, 26 Jun 2020 02:23:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A50681BF9B6
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 00:17:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B00431BF2FD
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 02:23:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A170687DDB
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 00:17:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A560787FB6
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 02:23:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KMbWzoLrJf-T for <devel@linuxdriverproject.org>;
- Fri, 26 Jun 2020 00:17:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
- [209.85.167.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CD92B87D9C
- for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 00:17:25 +0000 (UTC)
-Received: by mail-lf1-f65.google.com with SMTP id g139so4185428lfd.10
- for <devel@driverdev.osuosl.org>; Thu, 25 Jun 2020 17:17:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KK6PtY8pcNXP5gzO5UgZaFW1H+cyyPPgMqvwAKW3sW8=;
- b=DLDmezHNEgW1lPl4CVB6KIX1vPcwpTxUVTM8PWvkbEDV0UunB4q9ZHgWkv6bmRxAcm
- qs+Dk3PuIFz6zX2IiC8la9qDO4rTowUU0wkMmpzK7fT6DDeFat8Dqy/iRRWQp9kaS1gp
- SBpyRgRS3iGiKaey6Ta77m/LqxIasW/jX3GMPH2j2rlnMNJr7ddz7x/tFGy1lwzuosS/
- uxKXrpZ08sjUkCy++4BCOflkY8gJPzX8GWXhw/vtE+WYT1lG81ojrQal5p6EdwO2iHOt
- NCGHd8US2Ki/CkqgYPAJicC8HMkbeBW9gJjvh3xQEAqab5WwxBDDcEnK2r69ErVcf+vS
- odXw==
+ with ESMTP id rc2JmFFJcSXA for <devel@linuxdriverproject.org>;
+ Fri, 26 Jun 2020 02:23:13 +0000 (UTC)
+X-Greylist: delayed 12:32:12 by SQLgrey-1.7.6
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BF2E587D36
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 02:23:13 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id u9so92435pls.13
+ for <devel@driverdev.osuosl.org>; Thu, 25 Jun 2020 19:23:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
+ h=from:date:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=C9cKwuo46T4OQrYiN0jf2d+XY2/rTSOAO5/07IXErvU=;
+ b=E9IDCNPQpqP3Bmq1JubBLUBuabW2Gp9yfeXWaGS+Ca3o4tXDoyzU4KFTn9e5GBXiob
+ HTiI7bkgOza+4JTxAFlf2i4AG6AAsWbVulxePySyjzKh1U9Oaw1/khBoxjd1yLp7SiH2
+ wYzmX2dCzYNHF/7+kBx7F4UTgl3Dx81kmsJF8V4PZqvhVCm4SbomesBNboWU/slBlY4E
+ /coqKN+MZbwGG1W+pmAHtiahyNhySVmNL6IL7bAQHBl7Do/HK0ZKgRJfjzm3Y1wIovKs
+ 2MDa9nlofzzLGl+jNQIt1sXdfZQ8yipLNuB/xLWEUlu60tg60WYfVRg1T59c63AbSSg1
+ +qvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=KK6PtY8pcNXP5gzO5UgZaFW1H+cyyPPgMqvwAKW3sW8=;
- b=HVoLndxKJ0ggsXKm04G93ZfpL8U/XiE+ZnQr+IDAFm7LcNEZKo2F4psgSqR6Xww0eF
- tzKTZKTk8Araj8LY8aRsYRstRvTIX1VAZDQ4K+w6Lw/jQ0Th1JUyqkOd5Zo1gnKkzmW1
- vTX3WULN6ByBs6C4A/SEBtAoec9P0K8h21Syz3JE8VaQalOJU16dUQp1HuVlmYxlBITT
- wg8PeMnbWeksjsKsB8TY+CUtPF9YusN72Mvd+VATIF2H7x9NtsmyCMnYyBcYAkc7UOBx
- oSOZWOk8Q6xbJn6Y5xZTtDxLt9uK0SRwl1f6D6GjzbbhIr5bBhuYXVlBWKFEcIxxn56Z
- 1oJA==
-X-Gm-Message-State: AOAM53318Y6kT/7C2WGsaaoPouFjQT6KfljGdvBygJjQt3VICNqy06/b
- RQBnMhHoYvty+lCWpACpqK0=
-X-Google-Smtp-Source: ABdhPJzauRiZb4C+F6R6DOWxZgKYoDplYwoRTe7M+AlkO2GC5Qkor2GNAAJoT96EMiuI02kB1VpN3g==
-X-Received: by 2002:a19:911:: with SMTP id 17mr319525lfj.80.1593130643810;
- Thu, 25 Jun 2020 17:17:23 -0700 (PDT)
-Received: from [192.168.2.145] (79-139-237-54.dynamic.spd-mgts.ru.
- [79.139.237.54])
- by smtp.googlemail.com with ESMTPSA id y25sm1177397ljc.29.2020.06.25.17.17.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 25 Jun 2020 17:17:22 -0700 (PDT)
-Subject: Re: [PATCH v2 0/4] Tegra Video Decoder driver power management
- corrections
-From: Dmitry Osipenko <digetx@gmail.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20200624150847.22672-1-digetx@gmail.com>
- <90323aa6-38b5-0a45-69a7-ccf380690a78@xs4all.nl>
- <23cbaa18-9461-8f72-3d43-aa14cd0c1095@gmail.com>
-Message-ID: <0e14df05-8299-52d6-df8f-0dd476f4109d@gmail.com>
-Date: Fri, 26 Jun 2020 03:17:21 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ h=x-gm-message-state:from:date:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=C9cKwuo46T4OQrYiN0jf2d+XY2/rTSOAO5/07IXErvU=;
+ b=c6o+IeGhJMkYon8JRTLRL2vSw706ADBq+YzikzWUC8dprcVaaNAJ1avTnVVnaxvdJK
+ eTSLMxmKVzjK5v7RbM643gDJ2m40MIMAu22DVSxjDNYN8AOGZhvhtMWS4BoR7OHoJA6V
+ OErg2oVnz8sYh/KO7/z18pNV//j5zJtWCNto0zSo+Q2vf0Z08f1+rkBgK1CPJuGlvVB0
+ wrj1vgu+u230KOnW7p1iP4cXHqPuDAM+K+YBkVPVEwvcvanxL5LroziHvMG8evEPuiXG
+ 1791+iwAwsdhOkdNo1QvypWeZY/JJQn1Uhm0Nqyy+7GjuK1+LEH5k464XecnzJTaCsEX
+ SgIQ==
+X-Gm-Message-State: AOAM532PN6K3VywqJ3nlhvjuzNNmghk+gQlwBUCm939ZhQUHyEAJUiip
+ b5q3MZBR6N4FEntvppiAkvPYmxfpTHdD6A==
+X-Google-Smtp-Source: ABdhPJzsojEVWEwDErVET3M62SJCkzIEavMN3mExLU5NPys9mAJyxcRvlnQsml/NFgA9Wp6Rd43sCw==
+X-Received: by 2002:a05:6a00:15c3:: with SMTP id
+ o3mr609027pfu.304.1593137850548; 
+ Thu, 25 Jun 2020 19:17:30 -0700 (PDT)
+Received: from localhost ([2406:7400:73:e1a0:908:f18a:1156:5c38])
+ by smtp.gmail.com with ESMTPSA id m7sm21416701pgg.69.2020.06.25.19.17.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Jun 2020 19:17:29 -0700 (PDT)
+From: B K Karthik <bkkarthik@pesu.pes.edu>
+X-Google-Original-From: B K Karthik <karthik.bk2000@live.com>
+Date: Thu, 25 Jun 2020 22:17:23 -0400
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] fixing ERROR: Macros with complex values must be enclosed
+ within parentheses.
+Message-ID: <20200626021723.len2cts3ffq4wimq@pesu-pes-edu>
 MIME-Version: 1.0
-In-Reply-To: <23cbaa18-9461-8f72-3d43-aa14cd0c1095@gmail.com>
-Content-Language: en-US
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,34 +91,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============6674877529382890567=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-MjQuMDYuMjAyMCAxODoyMywgRG1pdHJ5IE9zaXBlbmtvINC/0LjRiNC10YI6Cj4gMjQuMDYuMjAy
-MCAxODoxNiwgSGFucyBWZXJrdWlsINC/0LjRiNC10YI6Cj4+IE9uIDI0LzA2LzIwMjAgMTc6MDgs
-IERtaXRyeSBPc2lwZW5rbyB3cm90ZToKPj4+IEhlbGxvLAo+Pj4KPj4+IFRoaXMgc21hbGwgc2Vy
-aWVzIGFkZHJlc3NlcyBhIFJ1bnRpbWUgUE0gaXNzdWUgdGhhdCB3YXMgZGlzY292ZXJlZCBkdXJp
-bmcKPj4+IG9mIFRlZ3JhIFZJIGRyaXZlciByZXZpZXdpbmcgYnkgYmFsYW5jaW5nIFJQTSB1c2Fn
-ZSBjb3VudCBvbiBSUE0gcmVzdW1lCj4+PiBmYWlsdXJlLiBTZWNvbmRseSBpdCBmaXhlcyByZWJv
-b3Qgb24gc29tZSBUZWdyYSBkZXZpY2VzIGR1ZSB0byBib290bG9hZGVyCj4+PiBleHBlY3Rpbmcg
-VkRFIHBvd2VyIHBhcnRpdGlvbiB0byBiZSBPTiBhdCB0aGUgYm9vdCB0aW1lLCB3aGljaCB3YXNu
-J3QKPj4+IGhhcHBlbmluZyBpbiBjYXNlIG9mIGEgd2FybSByZS1ib290aW5nIChpLmUuIGJ5IFBN
-QyByZXNldHRpbmcpLgo+Pgo+PiBDYW4geW91IHJlYmFzZSB0aGlzIG9uIHRvcCBvZiB0aGUgbWVk
-aWFfdHJlZSBtYXN0ZXIgYnJhbmNoPyBJIHRoaW5rIGEgdmFyaWFudAo+PiBvZiBwYXRjaCAxIGhh
-cyBhbHJlYWR5IGJlZW4gYXBwbGllZC4gSSBmb3VuZCBhIG1haWwgdG9kYXkgd2hlcmUgeW91IG1l
-bnRpb25lZAo+PiB0aGF0IHlvdSBwcmVmZXJyZWQgeW91ciB2ZXJzaW9uIChpdCBsb29rcyBsaWtl
-IEkgbWlzc2VkIHRoYXQpIHNvIHlvdSdsbCBuZWVkIHRvCj4+IHJld29yayBwYXRjaCAxLgo+IAo+
-IEhlbGxvIEhhbnMsCj4gCj4gSSdsbCB0YWtlIGEgbG9vayBhdCB3aGF0IHBhdGNoZXMgaGFzIGJl
-ZW4gYXBwbGllZCwgbXkgYmFkIGZvciBzZW5kaW5nCj4gdGhlIHYyIHRvbyBsYXRlLiBUaGFuayB5
-b3UgZm9yIHRoZSBoZWFkcyB1cCEKPiAKCkkgdGVzdGVkIHRoZSBhbHJlYWR5LWFwcGxpZWQgdmFy
-aWFudCBvZiB0aGUgcGF0Y2ggMSBhbmQgaXQgaGFzIHRoZSBzYW1lCmJlaGF2aW91ciBhcyBteSB2
-YXJpYW50LCBzbyBpdCdzIG9rYXkuCgpXb3VsZCB5b3Ugd2FudCBtZSB0byBzZW5kIGEgdjMgd2l0
-aG91dCB0aGUgY29uZmxpY3RpbmcgcGF0Y2ggMSBvciB5b3UKY291bGQgYXBwbHkgdGhlIHBhdGNo
-ZXMgMi00IGZyb20gdGhpcyBzZXJpZXM/Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2pl
-Y3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+
+--===============6674877529382890567==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="wtu5diuv5qrhk3yt"
+Content-Disposition: inline
+
+
+--wtu5diuv5qrhk3yt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+soc_camera.c:
+
+fixing ERROR: Macros with complex values must be enclused within parenthese=
+s.
+
+Signed-off-by: B K Karthik <karthik.bk2000@live.com>
+---
+ drivers/staging/media/soc_camera/soc_camera.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/staging/media/soc_camera/soc_camera.c b/drivers/stagin=
+g/media/soc_camera/soc_camera.c
+index 39f513f69b89..f609ecf6691c 100644
+--- a/drivers/staging/media/soc_camera/soc_camera.c
++++ b/drivers/staging/media/soc_camera/soc_camera.c
+@@ -238,8 +238,7 @@ unsigned long soc_camera_apply_board_flags(struct soc_c=
+amera_subdev_desc *ssdd,
+ }
+ EXPORT_SYMBOL(soc_camera_apply_board_flags);
+=20
+-#define pixfmtstr(x) (x) & 0xff, ((x) >> 8) & 0xff, ((x) >> 16) & 0xff, \
+-	((x) >> 24) & 0xff
++#define pixfmtstr(x) ((x) & 0xff, ((x) >> 8) & 0xff, ((x) >> 16) & 0xff, (=
+(x) >> 24) & 0xff)
+=20
+ static int soc_camera_try_fmt(struct soc_camera_device *icd,
+ 			      struct v4l2_format *f)
+--=20
+2.20.1
+
+
+--wtu5diuv5qrhk3yt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl71WrMACgkQ471Q5AHe
+Z2rirQv/QQcRtEifvypBhlZr7yuzX+8HlXqUu66cTwep5gDD2GoI/xmoiGSbzQic
+AOIOMWsTQYKGU6VATt4FfVmsrSuXXiFcWwYJwmtlp51oAmph7quEXEiwQgYPjURT
+YLEXzPt4OcK2VTJFm4nveRGzsIhJX3Zh1SqQ2/Jx1mr9mRa3AyBPCrLarx+wmkbf
+LAg3jNHVq778Q69YyEfIpVMw1l39zh/OZnukEJF1JHPXIRIKwxwAluIT9E12uWgv
+KJwYZKtXvCCE+PEA5EZeXGE00N9ZfUO98JfVShwddu4YuN7b978ukqmNZsaz1dY5
+EX2HByFbOMQbXrHe+58QA7Qqw2K/d3RmE+66cq9xCbSctdTerUkzkbM4wEeukBCw
+81PQIHIp0fupT0TGNVgPRZXm8jcpOd7R7pQDYMM5j/R2iCFiR+Bq+zq7ZkZOTBec
+OGD1q1DiOZpr/kBA9Fxp1OHfj9KVaUHI5o7dZk79XErxfkCgghLeEHG8ojsAwytI
+YWOpUkjF
+=N+em
+-----END PGP SIGNATURE-----
+
+--wtu5diuv5qrhk3yt--
+
+--===============6674877529382890567==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============6674877529382890567==--
