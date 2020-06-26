@@ -1,72 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FFD920ACA5
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 08:58:32 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C31420ACBC
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 09:05:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 39B0B883A8;
-	Fri, 26 Jun 2020 06:58:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C875A21514;
+	Fri, 26 Jun 2020 07:04:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vewVTMhy66Su; Fri, 26 Jun 2020 06:58:30 +0000 (UTC)
+	with ESMTP id XoI36m8cXdPP; Fri, 26 Jun 2020 07:04:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 49239883C0;
-	Fri, 26 Jun 2020 06:58:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AF7E5204B0;
+	Fri, 26 Jun 2020 07:04:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6001F1BF3F6
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 06:58:27 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 84D4F1BF2E4
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 07:04:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5CB4F85D8F
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 06:58:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 76C3F20427
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 07:04:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7imrDgJDx2pu for <devel@linuxdriverproject.org>;
- Fri, 26 Jun 2020 06:58:25 +0000 (UTC)
+ with ESMTP id pX3AFn1nrkln for <devel@linuxdriverproject.org>;
+ Fri, 26 Jun 2020 07:04:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from lb3-smtp-cloud7.xs4all.net (lb3-smtp-cloud7.xs4all.net
  [194.109.24.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 662F685D87
- for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 06:58:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id BA8A3203C9
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 07:04:50 +0000 (UTC)
 Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
  by smtp-cloud7.xs4all.net with ESMTPA
- id oiJVjZpLgxmkVoiJZjgaTI; Fri, 26 Jun 2020 08:58:22 +0200
+ id oiPkjZs2zxmkVoiPnjgcOX; Fri, 26 Jun 2020 09:04:48 +0200
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1593154702; bh=R6Ir/Bz75ZuOudF6KyzPGOEaxClJeiHyCzSqQo5MsMQ=;
+ t=1593155088; bh=ceiS8X0a/T8n2G9HxSQDEohcZdRIaL0oajOjS5qQDmE=;
  h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
  Subject;
- b=VUQyqp4fpNHEEBJ7tqRiL6kX8TE90+9Ueif61BuvbZCy335uBrqwDpy6hnA7wSFFW
- J16jrFXDlILKoJdBsY2yN47tkOiMReQoY0F9eUGHdr1BBYdyfpUEEJ0l5FZQq3R8mU
- dZaxFJt67FA+oz0STAsyQ9j+XHa4oKTiz0cVb/nOjZ+41WXSH3WOZi10lwxzr5BlVW
- XvClmBSB155wsE+FanYyqcfI7QM0IL5Zoz9vxiH3zPH8qPOALzIxToaJXOpD47zME6
- KKT1CEufKEM0jJxNgJt3dJkQXIzaOpNtvwX04WYx9+SZREE+0T8x1GAyzM+hk/zV07
- FKyaaUxM77IAA==
-Subject: Re: [PATCH v2 0/4] Tegra Video Decoder driver power management
- corrections
-To: Dmitry Osipenko <digetx@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20200624150847.22672-1-digetx@gmail.com>
- <90323aa6-38b5-0a45-69a7-ccf380690a78@xs4all.nl>
- <23cbaa18-9461-8f72-3d43-aa14cd0c1095@gmail.com>
- <0e14df05-8299-52d6-df8f-0dd476f4109d@gmail.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <e41ff660-6c6c-d603-c767-34e7f4b4a23d@xs4all.nl>
-Date: Fri, 26 Jun 2020 08:58:17 +0200
+ b=kLEN7hSsUo47oYT2bPdkUyNB4miZEUOG5lWvIw+FufiSXmpS6tgfHk1p27tw/YVBD
+ zFzTDM4NOjDVun+K0BMx4LkowhBfZrJDYPIq9fh6PY2mRjoVVl1aGTSBsI13es9GYq
+ tYHJKRpVQQV+bzkiKNR2yTj3GLasxCEpKqERN1/khcnUlNkevdiUnbvcgzUf0yfCHC
+ zv/j4HREjaoY+Ud+uKuPkp4OdBFE8nm9szCWtWPgJ9qR3ocFuNsw6dZNh3ArIYYmzq
+ JD0nvdgZ7Kz7GpRA9tzmjmxvVNDrl7Z1Jr2p8kAEdEWrcW8U8r93MxKmOaE2O1a71K
+ OWTDHU2uwXMHg==
+Subject: Re: [PATCH 1/1] staging: media: soc_camera: Adding parentheses to
+ macro defination at line 241, Clearing alignment issues at lines 410 and
+ 1270, fixing return values at EPOLLERR
+To: B K Karthik <bkkarthik@pesu.pes.edu>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+References: <20200625153516.fibpfsodnogrimlh@pesu-pes-edu>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <22595721-02ef-5a18-a8d1-4ff13e475556@xs4all.nl>
+Date: Fri, 26 Jun 2020 09:04:44 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <0e14df05-8299-52d6-df8f-0dd476f4109d@gmail.com>
+In-Reply-To: <20200625153516.fibpfsodnogrimlh@pesu-pes-edu>
 Content-Language: en-US
-X-CMAE-Envelope: MS4wfPLvU4k9HoHcsriBfUKOvb1jI4bhwxiauTAC9rGOgP28MbgwWKOlxenX5oo62ZWwMWqckA5P6RtdkVpGxhVm/RgmH3edVm1o86fl/r+1N8w+Ohwly0ZA
- +bnnPZohhYlepqoQUcBy4KrNDAloZOAclQ9KJYO6vae8dXFpzf1BAGJ5bMcik5bIvmqu5GGRZq5Ng/NdoDk8ZlmdDYJNFMC5Pc5jg0Jd91X2T5B1iAqzpz1I
- fruTlmbflCZy3U/dKwB9pK02fZ0adpyGBRnMRzR6VgXzOvMnhXviimkwcrv8p3e5vPlGBmMOFmUEOHyalREmtKst3yKT103wlYG9sgkfU61Ns3l19BDuIjwQ
- 5gJAb+9dP2ZvKSa4nfvxNuaV/rl2tiQYFANyPf8tfOmK3ifqIKsb9e58EadMV6iL6RDR6/rR
+X-CMAE-Envelope: MS4wfHr6XR8BFES7dxrSAz95dmhJGUMH2r1/dTccd2dOBbncwo52cfqgjPoNLB0Fe6MbTeaDcJdK2Nw5mlQ+vFtRsK8yPV34nIpWD0kJqYb2nXY56xcU43A3
+ B7dBreZ9yhTUn/Qf1cZsWZxSybS6xRehVDt9czUF5oA5JdMryuW0KN2w3F3ha1wYDSxoR9mva0m1zrcK12mvAENwhZQVxb3c/XRGQSM4Jcp/IJRsImY6UMNS
+ QPM/cBbJSfCkfEHMrM1P1flCFMoW1p2HDmIx8iiMJ7ZjcGJaT+prWUnI7W8dArrsekC0MRJSnENqFLv4yIMzWGus3vHzeeK1caFW8r7eXW5zQ2TMBjroLQXJ
+ m2WIiB/yREEzmjuvFEnOjNoK3W9c3rhy7WgenWHulABJJViK6Ljo+eHUTma6CiGT5Pg954h6
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,37 +79,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMjYvMDYvMjAyMCAwMjoxNywgRG1pdHJ5IE9zaXBlbmtvIHdyb3RlOgo+IDI0LjA2LjIwMjAg
-MTg6MjMsIERtaXRyeSBPc2lwZW5rbyDQv9C40YjQtdGCOgo+PiAyNC4wNi4yMDIwIDE4OjE2LCBI
-YW5zIFZlcmt1aWwg0L/QuNGI0LXRgjoKPj4+IE9uIDI0LzA2LzIwMjAgMTc6MDgsIERtaXRyeSBP
-c2lwZW5rbyB3cm90ZToKPj4+PiBIZWxsbywKPj4+Pgo+Pj4+IFRoaXMgc21hbGwgc2VyaWVzIGFk
-ZHJlc3NlcyBhIFJ1bnRpbWUgUE0gaXNzdWUgdGhhdCB3YXMgZGlzY292ZXJlZCBkdXJpbmcKPj4+
-PiBvZiBUZWdyYSBWSSBkcml2ZXIgcmV2aWV3aW5nIGJ5IGJhbGFuY2luZyBSUE0gdXNhZ2UgY291
-bnQgb24gUlBNIHJlc3VtZQo+Pj4+IGZhaWx1cmUuIFNlY29uZGx5IGl0IGZpeGVzIHJlYm9vdCBv
-biBzb21lIFRlZ3JhIGRldmljZXMgZHVlIHRvIGJvb3Rsb2FkZXIKPj4+PiBleHBlY3RpbmcgVkRF
-IHBvd2VyIHBhcnRpdGlvbiB0byBiZSBPTiBhdCB0aGUgYm9vdCB0aW1lLCB3aGljaCB3YXNuJ3QK
-Pj4+PiBoYXBwZW5pbmcgaW4gY2FzZSBvZiBhIHdhcm0gcmUtYm9vdGluZyAoaS5lLiBieSBQTUMg
-cmVzZXR0aW5nKS4KPj4+Cj4+PiBDYW4geW91IHJlYmFzZSB0aGlzIG9uIHRvcCBvZiB0aGUgbWVk
-aWFfdHJlZSBtYXN0ZXIgYnJhbmNoPyBJIHRoaW5rIGEgdmFyaWFudAo+Pj4gb2YgcGF0Y2ggMSBo
-YXMgYWxyZWFkeSBiZWVuIGFwcGxpZWQuIEkgZm91bmQgYSBtYWlsIHRvZGF5IHdoZXJlIHlvdSBt
-ZW50aW9uZWQKPj4+IHRoYXQgeW91IHByZWZlcnJlZCB5b3VyIHZlcnNpb24gKGl0IGxvb2tzIGxp
-a2UgSSBtaXNzZWQgdGhhdCkgc28geW91J2xsIG5lZWQgdG8KPj4+IHJld29yayBwYXRjaCAxLgo+
-Pgo+PiBIZWxsbyBIYW5zLAo+Pgo+PiBJJ2xsIHRha2UgYSBsb29rIGF0IHdoYXQgcGF0Y2hlcyBo
-YXMgYmVlbiBhcHBsaWVkLCBteSBiYWQgZm9yIHNlbmRpbmcKPj4gdGhlIHYyIHRvbyBsYXRlLiBU
-aGFuayB5b3UgZm9yIHRoZSBoZWFkcyB1cCEKPj4KPiAKPiBJIHRlc3RlZCB0aGUgYWxyZWFkeS1h
-cHBsaWVkIHZhcmlhbnQgb2YgdGhlIHBhdGNoIDEgYW5kIGl0IGhhcyB0aGUgc2FtZQo+IGJlaGF2
-aW91ciBhcyBteSB2YXJpYW50LCBzbyBpdCdzIG9rYXkuCj4gCj4gV291bGQgeW91IHdhbnQgbWUg
-dG8gc2VuZCBhIHYzIHdpdGhvdXQgdGhlIGNvbmZsaWN0aW5nIHBhdGNoIDEgb3IgeW91Cj4gY291
-bGQgYXBwbHkgdGhlIHBhdGNoZXMgMi00IGZyb20gdGhpcyBzZXJpZXM/Cj4gCgpJJ2xsIG1hcmsg
-MS80IGFzIHN1cGVyc2VkZWQgYW5kIHdpbGwgYXBwbHkgcGF0Y2hlcyAyLTQuIE5vIG5lZWQgZm9y
-IHlvdQp0byBkbyBhbnl0aGluZy4KClJlZ2FyZHMsCgoJSGFucwpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGlu
-dXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+The soc_camera driver obsolete and depends on BROKEN. And in fact, I'm
+working on removing it. So I'll drop this patch for those reasons.
+
+Regards,
+
+	Hans
+
+On 25/06/2020 17:35, B K Karthik wrote:
+> staging: media: soc_camera: soc_camera.c: Clearing coding-style problem
+> "Macros with complex values should be enclosed in parentheses" in line 241 by adding parentheses.
+> staging: media: soc_camera: soc_camera.c: Clearing coding-style problem
+> "Alignment should match open parenthesis" by adding tab spaces in line 410.
+> staging: media: soc_camera: soc_camera.c: Clearing coding-style problem
+> "return of an errno should typically be negative" by adding a "-" in front of EPOLLER in line 812.
+> staging: media: soc_camera: soc_camera.c: Clearing coding-style problem
+> "Alignment should match open parenthesis" by adding tab spaces in line 1270.
+> 
+> Signed-off-by: B K Karthik <karthik.bk2000@live.com>
+> ---
+>  drivers/staging/media/soc_camera/soc_camera.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/staging/media/soc_camera/soc_camera.c b/drivers/staging/media/soc_camera/soc_camera.c
+> index 39f513f69b89..66a14ebd8093 100644
+> --- a/drivers/staging/media/soc_camera/soc_camera.c
+> +++ b/drivers/staging/media/soc_camera/soc_camera.c
+> @@ -238,8 +238,8 @@ unsigned long soc_camera_apply_board_flags(struct soc_camera_subdev_desc *ssdd,
+>  }
+>  EXPORT_SYMBOL(soc_camera_apply_board_flags);
+>  
+> -#define pixfmtstr(x) (x) & 0xff, ((x) >> 8) & 0xff, ((x) >> 16) & 0xff, \
+> -	((x) >> 24) & 0xff
+> +#define pixfmtstr(x) ((x) & 0xff, ((x) >> 8) & 0xff, ((x) >> 16) & 0xff, \
+> +	((x) >> 24) & 0xff)
+>  
+>  static int soc_camera_try_fmt(struct soc_camera_device *icd,
+>  			      struct v4l2_format *f)
+> @@ -407,7 +407,7 @@ static int soc_camera_dqbuf(struct file *file, void *priv,
+>  }
+>  
+>  static int soc_camera_create_bufs(struct file *file, void *priv,
+> -			    struct v4l2_create_buffers *create)
+> +			    		struct v4l2_create_buffers *create)
+>  {
+>  	struct soc_camera_device *icd = file->private_data;
+>  	int ret;
+> @@ -806,10 +806,10 @@ static __poll_t soc_camera_poll(struct file *file, poll_table *pt)
+>  {
+>  	struct soc_camera_device *icd = file->private_data;
+>  	struct soc_camera_host *ici = to_soc_camera_host(icd->parent);
+> -	__poll_t res = EPOLLERR;
+> +	__poll_t res = -EPOLLERR;
+>  
+>  	if (icd->streamer != file)
+> -		return EPOLLERR;
+> +		return -EPOLLERR;
+>  
+>  	mutex_lock(&ici->host_lock);
+>  	res = ici->ops->poll(file, pt);
+> @@ -1267,7 +1267,7 @@ static int soc_camera_i2c_init(struct soc_camera_device *icd,
+>  	}
+>  
+>  	subdev = v4l2_i2c_new_subdev_board(&ici->v4l2_dev, adap,
+> -				shd->board_info, NULL);
+> +						shd->board_info, NULL);
+>  	if (!subdev) {
+>  		ret = -ENODEV;
+>  		goto ei2cnd;
+> 
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
