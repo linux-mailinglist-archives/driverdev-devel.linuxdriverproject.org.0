@@ -1,80 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3022B20B4C7
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 17:37:52 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 095D420B4CC
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 17:38:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DDDF888726;
-	Fri, 26 Jun 2020 15:37:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CB0922046F;
+	Fri, 26 Jun 2020 15:38:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qFArtsE0TEbp; Fri, 26 Jun 2020 15:37:50 +0000 (UTC)
+	with ESMTP id o1bwWJWV7HRK; Fri, 26 Jun 2020 15:38:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5E7AF88427;
-	Fri, 26 Jun 2020 15:37:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 62AAE20198;
+	Fri, 26 Jun 2020 15:38:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B29E51BF295
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 15:37:48 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E01B81BF295
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 15:38:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AE1B18601E
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 15:37:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CB798200E5
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 15:38:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mKcLJqT2aGSC for <devel@linuxdriverproject.org>;
- Fri, 26 Jun 2020 15:37:48 +0000 (UTC)
+ with ESMTP id gm63Beoauget for <devel@linuxdriverproject.org>;
+ Fri, 26 Jun 2020 15:38:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qv1-f65.google.com (mail-qv1-f65.google.com
- [209.85.219.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0A9D284DDC
- for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 15:37:48 +0000 (UTC)
-Received: by mail-qv1-f65.google.com with SMTP id g11so4683209qvs.2
- for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 08:37:47 -0700 (PDT)
+Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
+ [209.85.160.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id C40F92002E
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 15:38:28 +0000 (UTC)
+Received: by mail-qt1-f193.google.com with SMTP id z2so7779168qts.5
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 08:38:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OPSNsR3EOIFVWGXNCRzLROUQIZEmtZcUpU/rvcMJfzQ=;
- b=RyAO/OAWnxDcBcMg3o+SzNFzw0pQO5CARemsH79PlOlCMchDPEjihKT4whLrXSufcH
- k0nbF7dc79rmEEhJnR2Nkx3+Cl3GbW62D7aKxYh+vIdqBzgiGhbRpjLnxP0fKUY/Ofca
- fGLTFCiS13+0SsrcrRTqia9XE/84OMKwF8km0UcR6vTCsLc0cMmrVvdMOD0KGXxYcW2t
- 9YHQdniME/NuMQBRAx4nNyY7SnaXvKgrzI2fQOY5Yejpy7joBYumS3eGFPv77sQEHVGR
- 5DBZcHv6goHINFTe/q/A8my5HDzJ3hR7EY9jArYjuZlayvATn9j3VaLbZ90G0ZtGkiis
- oLCw==
+ bh=o2Ikny20NfFg5ztOT9jAikHgTETSs1qvvd29P7rUpwk=;
+ b=KctYodQaUev1ai4UhpD8v7HeRQ1nE5DkSA/YHk67OSvh1IkDnPE7ajWn/DAeNHOGCF
+ fyzEJcP+tALrgcJ1i87NF9E0p320bHQWVwdwErj8didSW50bdbm6bk9VSLoMsfYQJrOP
+ yQOjSoYsuW7crDXe2CIJfb/V2TEWMfH0Tih4SBB0XeMjjx5pfjC4FFYtCMA5yzUOq2S2
+ b6vSyNV3mg1pziGKybKV/Kyeu25pb6IS5gNGx2rT13Hl2hb3Ng6QSRldjAM8GFjoFr/3
+ CE0dg6Dq+JETFSiYejiDyC+/BfnXGL+bQ1OZWugOTHU9Bk1CWsZ8r0FgWEcB/4ILHG4R
+ KXYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=OPSNsR3EOIFVWGXNCRzLROUQIZEmtZcUpU/rvcMJfzQ=;
- b=TdwZU2BrA+iBUUcpK7rXa1aUwhj5AFWDFFh1doIY82jMeF4Om+Pu6MtXdXNWzQAsmc
- XoFAfA3LQFfpQ/0i6hgq1jtlDoUAhATEFye7NWHeTjjrUkJXWus+uJihyQqaRDft8jwK
- ix42njA919qwa8imUBOHLTkG0+ZZQw+QIBPdDiikNJ2wFMOahLDVy+rB6UCEvHtKGXHO
- xNsJFcPx5u8dgKHb1zMHL9wfDx1GPLFMWRyhefZhbqMT1psSuLajSaMfIAHpS/zcvn6F
- r0a/LG+wQa29P41K6U6fZ2Tlih8nwZa4J16e8MEfHJ6oomx41RpjaPK7WNWl6stclO2g
- 2zow==
-X-Gm-Message-State: AOAM530E04gbehbJmkBuM4/Oqsd0KYmnKgadisp2O+RMXL3ppiC2MnAA
- HvAhOeIVZ3RNsjZ//FQEaEM=
-X-Google-Smtp-Source: ABdhPJw65YClvhV1Pv4cS7AotaqwRxuOlsyG5XSPm8R1eZtUhBUHVXQ5LHaHzftWT3LiWNMfNa49fA==
-X-Received: by 2002:ad4:57b2:: with SMTP id g18mr3658374qvx.207.1593185866967; 
- Fri, 26 Jun 2020 08:37:46 -0700 (PDT)
+ bh=o2Ikny20NfFg5ztOT9jAikHgTETSs1qvvd29P7rUpwk=;
+ b=X9HdazvOIOf3qTgYcBf42q3j2U2J+sOYZHPTeOeFpIw1J5KM3q9mErdb/L9cnahpCY
+ 0aJygrVdOJ3RScHc0DCYxSw0GSrS3XL41Qh7/FfIqFqOye8AzceFN96KLXblgSUyIJax
+ DySr1zGkuWcll6+k5A+xoXHRpMulgD3otixVHitqQwC7PMthPL4Yplc6UxOgPlEHSqvs
+ XxgyKouD+QYApci+8Bmr1pfN09RFP/pPJd5HgnHTSj9nKX1BvtB+taJIujHZUC+Wk4Q0
+ Ovr6mxD7abr1FmcLqh0hsSt577vCBJjAQG9EiBJn9oMOsIvZcny8mnXnuXcF5eWI8YM9
+ vXOQ==
+X-Gm-Message-State: AOAM531ALu7odYEIMPk0M93fAZPCmAqNmmCarbzKCYlD8NQjS5SDJJAa
+ kgUyWXVYVKqFdmw0MCF66wQ=
+X-Google-Smtp-Source: ABdhPJzqsrT4UOsb4GHqiS3w6FcocsJ90qUR+xiX55JN9a0QBfF1+uiMfkCrKM4mwQvMVWMvzKffsg==
+X-Received: by 2002:ac8:6746:: with SMTP id n6mr3421897qtp.307.1593185907777; 
+ Fri, 26 Jun 2020 08:38:27 -0700 (PDT)
 Received: from mooncell.myfiosgateway.com
  (pool-173-75-208-99.phlapa.fios.verizon.net. [173.75.208.99])
- by smtp.gmail.com with ESMTPSA id y40sm9719918qtc.29.2020.06.26.08.37.46
+ by smtp.gmail.com with ESMTPSA id y40sm9719918qtc.29.2020.06.26.08.38.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2020 08:37:46 -0700 (PDT)
+ Fri, 26 Jun 2020 08:38:27 -0700 (PDT)
 From: Brooke Basile <brookebasile@gmail.com>
 To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
  straube.linux@gmail.com, colin.king@canonical.com
-Subject: [PATCH 3/4] staging: rtl8188eu: Fix indentation
-Date: Fri, 26 Jun 2020 11:36:40 -0400
-Message-Id: <20200626153639.8097-3-brookebasile@gmail.com>
+Subject: [PATCH 4/4] staging: rtl8188eu: Replace function name with __func__
+Date: Fri, 26 Jun 2020 11:36:42 -0400
+Message-Id: <20200626153639.8097-4-brookebasile@gmail.com>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20200626153639.8097-2-brookebasile@gmail.com>
+In-Reply-To: <20200626153639.8097-3-brookebasile@gmail.com>
 References: <20200626153639.8097-1-brookebasile@gmail.com>
  <20200626153639.8097-2-brookebasile@gmail.com>
+ <20200626153639.8097-3-brookebasile@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -96,56 +97,32 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Fix the following checkpatch warning:
-	WARNING: suspect code indent for conditional statements (16, 32)
+	WARNING: Prefer using '"%s...", __func__' to using 'rtw_get_bcn_info', this function's name, in a string
 
 Signed-off-by: Brooke Basile <brookebasile@gmail.com>
 ---
- .../staging/rtl8188eu/core/rtw_ieee80211.c    | 30 +++++++++----------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_ieee80211.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-index 44a25d29f1d3..bf6b2fe9735f 100644
+index bf6b2fe9735f..0c43c0dcf95c 100644
 --- a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
 +++ b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-@@ -494,23 +494,23 @@ void rtw_get_sec_ie(u8 *in_ie, uint in_len, u8 *rsn_ie, u16 *rsn_len, u8 *wpa_ie
- 		authmode = in_ie[cnt];
+@@ -986,10 +986,10 @@ void rtw_get_bcn_info(struct wlan_network *pnetwork)
+ 		if (bencrypt)
+ 			pnetwork->BcnInfo.encryp_protocol = ENCRYP_PROTOCOL_WEP;
+ 	}
+-	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("rtw_get_bcn_info: pnetwork->encryp_protocol is %x\n",
+-		 pnetwork->BcnInfo.encryp_protocol));
+-	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("rtw_get_bcn_info: pnetwork->encryp_protocol is %x\n",
+-		 pnetwork->BcnInfo.encryp_protocol));
++	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("%s: pnetwork->encryp_protocol is %x\n",
++		 __func__, pnetwork->BcnInfo.encryp_protocol));
++	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("%s: pnetwork->encryp_protocol is %x\n",
++		 __func__, pnetwork->BcnInfo.encryp_protocol));
+ 	rtw_get_cipher_info(pnetwork);
  
- 		if ((authmode == _WPA_IE_ID_) && (!memcmp(&in_ie[cnt + 2], &wpa_oui[0], 4))) {
--				RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_,
--					 ("\n rtw_get_wpa_ie: sec_idx =%d in_ie[cnt+1]+2 =%d\n",
--					 sec_idx, in_ie[cnt + 1] + 2));
--
--				if (wpa_ie) {
--					memcpy(wpa_ie, &in_ie[cnt], in_ie[cnt + 1] + 2);
--
--					for (i = 0; i < (in_ie[cnt + 1] + 2); i += 8) {
--						RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_,
--							 ("\n %2x,%2x,%2x,%2x,%2x,%2x,%2x,%2x\n",
--							 wpa_ie[i], wpa_ie[i + 1], wpa_ie[i + 2], wpa_ie[i + 3], wpa_ie[i + 4],
--							 wpa_ie[i + 5], wpa_ie[i + 6], wpa_ie[i + 7]));
--					}
-+			RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_,
-+				 ("\n rtw_get_wpa_ie: sec_idx =%d in_ie[cnt+1]+2 =%d\n",
-+				 sec_idx, in_ie[cnt + 1] + 2));
-+
-+			if (wpa_ie) {
-+				memcpy(wpa_ie, &in_ie[cnt], in_ie[cnt + 1] + 2);
-+
-+				for (i = 0; i < (in_ie[cnt + 1] + 2); i += 8) {
-+					RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_,
-+						 ("\n %2x,%2x,%2x,%2x,%2x,%2x,%2x,%2x\n",
-+						 wpa_ie[i], wpa_ie[i + 1], wpa_ie[i + 2], wpa_ie[i + 3], wpa_ie[i + 4],
-+						 wpa_ie[i + 5], wpa_ie[i + 6], wpa_ie[i + 7]));
- 				}
-+			}
- 
--				*wpa_len = in_ie[cnt + 1] + 2;
--				cnt += in_ie[cnt + 1] + 2;  /* get next */
-+			*wpa_len = in_ie[cnt + 1] + 2;
-+			cnt += in_ie[cnt + 1] + 2;  /* get next */
- 		} else {
- 			if (authmode == _WPA2_IE_ID_) {
- 				RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_,
+ 	/* get bwmode and ch_offset */
 -- 
 2.27.0
 
