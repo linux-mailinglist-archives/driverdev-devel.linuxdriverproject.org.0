@@ -1,60 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CE9D20B3F4
-	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 16:47:53 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C066224BE8;
-	Fri, 26 Jun 2020 14:47:51 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id up5Nh1kEsGw3; Fri, 26 Jun 2020 14:47:51 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 03E6E232A7;
-	Fri, 26 Jun 2020 14:47:50 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B56C41BF3DE
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 14:47:23 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E25220B410
+	for <lists+driverdev-devel@lfdr.de>; Fri, 26 Jun 2020 17:00:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id ACDE7876BF
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 14:47:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F346487E64;
+	Fri, 26 Jun 2020 15:00:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3OVS25oMLYpr; Fri, 26 Jun 2020 15:00:27 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0FFD48733E;
+	Fri, 26 Jun 2020 15:00:27 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B3E7F1BF3DE
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 15:00:24 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id A8ACC88751
+ for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 15:00:24 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QZ55w81qtyQY for <devel@linuxdriverproject.org>;
- Fri, 26 Jun 2020 14:47:23 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0CA8987698
- for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 14:47:23 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 72E7B2053B;
- Fri, 26 Jun 2020 14:47:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593182842;
- bh=eMZncK8eiSRxgmFvB1YKwD/xSxVgTemsMnIedQb9Ih0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=b7zVpiO7xA2FIw9s2Y9fXIg1W1kqkRQm6qRWswguknf+BUEytKGJxeqgOpOmaAtSq
- gJyQWn7DUUN+ECerxBdtKvsW7bP61hbkmePT5VDaIR/WQcMai5/anJ6PrcWnPiWzkQ
- 5eiwu/OKpXbweTTO5ABPvMtfb0P2x/aCVrUQv7vw=
-Date: Fri, 26 Jun 2020 16:47:18 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH] staging: media: usbvision: removing prohibited space
- before ',' (ctx:WxW)
-Message-ID: <20200626144718.GA1218319@kroah.com>
-References: <20200626143205.xns6nwggskssujao@pesu-pes-edu>
- <a9efda13-4425-8cb0-5854-8421f6c14181@xs4all.nl>
+ with ESMTP id j-uZOCgLaq6G for <devel@linuxdriverproject.org>;
+ Fri, 26 Jun 2020 15:00:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 93F4788713
+ for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 15:00:22 +0000 (UTC)
+IronPort-SDR: OWCYGCB9UGNvWccke0JsnYNiXtrfB28um5uXzfdBcmPbASzQmLzCQ3+kSKmA+cth/bZnyjseYL
+ F3y56Qcdvxrw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9663"; a="206866518"
+X-IronPort-AV: E=Sophos;i="5.75,284,1589266800"; d="scan'208";a="206866518"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jun 2020 08:00:21 -0700
+IronPort-SDR: yHl0O8SJJXKqifHtnUd6rN0qqjbg+YRRAnToPjCoKu1gXAK69IhBXcq/RzLn3wgWDRa3+tnRcI
+ tJQN/277K2hA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,284,1589266800"; d="scan'208";a="312340678"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by fmsmga002.fm.intel.com with ESMTP; 26 Jun 2020 08:00:19 -0700
+Received: from andy by smile with local (Exim 4.94)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1jopq1-00GC6h-0d; Fri, 26 Jun 2020 18:00:21 +0300
+Date: Fri, 26 Jun 2020 18:00:21 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH 0/7] Some atomisp fixes and improvements
+Message-ID: <20200626150021.GY3703480@smile.fi.intel.com>
+References: <cover.1593180146.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <a9efda13-4425-8cb0-5854-8421f6c14181@xs4all.nl>
+In-Reply-To: <cover.1593180146.git.mchehab+huawei@kernel.org>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,41 +71,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
- B K Karthik <bkkarthik@pesu.pes.edu>, linux-kernel@vger.kernel.org,
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
  linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jun 26, 2020 at 04:36:52PM +0200, Hans Verkuil wrote:
-> On 26/06/2020 16:32, B K Karthik wrote:
-> > fixing ERROR: space prohibited before that ',' (ctx:WxW)
-> > 
-> > Signed-off-by: B K Karthik <karthik.bk2000@live.com>
+On Fri, Jun 26, 2020 at 04:04:52PM +0200, Mauro Carvalho Chehab wrote:
+> Those patches are meant to improve device detection by the atomisp driver,
+> relying on ACPI bios when possible.
 > 
-> usbvision is another driver that is scheduled for removal by the end of the year,
-> so I won't apply this patch.
+> It also adds a basis for using ACPI PM, but only if the DSDT tables have
+> a description about how to turn on the resources needed by the cameras.
 > 
-> > ---
-> >  drivers/staging/media/usbvision/usbvision-i2c.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/media/usbvision/usbvision-i2c.c b/drivers/staging/media/usbvision/usbvision-i2c.c
-> > index 6e4df3335b1b..010ad03c6ec1 100644
-> > --- a/drivers/staging/media/usbvision/usbvision-i2c.c
-> > +++ b/drivers/staging/media/usbvision/usbvision-i2c.c
-> > @@ -32,7 +32,7 @@ MODULE_PARM_DESC(i2c_debug, "enable debug messages [i2c]");
-> >  #define PDEBUG(level, fmt, args...) { \
-> >  		if (i2c_debug & (level)) \
-> >  			printk(KERN_INFO KBUILD_MODNAME ":[%s:%d] " fmt, \
-> > -				__func__, __LINE__ , ## args); \
-> > +				__func__, __LINE__, ## args); \
-> 
-> Actually, older (buggy) gcc compiler needed a space there, if memory serves.
+> At least on the device I'm using for tests, this is not the case.
 
-Yes, that will break on old versions of gcc.  crazy...
+Is this in your experimental tree? I'll rebase mine on top and test.
+After I will send the rest from my series and give a tag to this.
+
+> 
+> Mauro Carvalho Chehab (7):
+>   media: atomisp: reorganize the code under gmin_subdev_add()
+>   media: atomisp: Prepare sensor support for ACPI PM
+>   media: atomisp: properly parse CLK PMIC on newer devices
+>   media: atomisp: fix call to g_frame_interval
+>   media: atomisp: print info if gpio0 and gpio2 were detected
+>   media: atomisp: split add from find subdev
+>   media: atomisp: place all gpio parsing together
+> 
+>  .../staging/media/atomisp/pci/atomisp_cmd.c   |   2 +-
+>  .../media/atomisp/pci/atomisp_gmin_platform.c | 393 ++++++++++++------
+>  2 files changed, 267 insertions(+), 128 deletions(-)
+> 
+> -- 
+> 2.26.2
+> 
+> 
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 _______________________________________________
 devel mailing list
