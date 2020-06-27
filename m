@@ -1,82 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E525B20BD4E
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jun 2020 01:59:08 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9334220BD5A
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jun 2020 02:06:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7C3A886D48;
-	Fri, 26 Jun 2020 23:59:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0605587E6D;
+	Sat, 27 Jun 2020 00:06:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GWKL2v0gFADV; Fri, 26 Jun 2020 23:59:06 +0000 (UTC)
+	with ESMTP id 9Roe-omjlkjK; Sat, 27 Jun 2020 00:06:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3E9DC86D50;
-	Fri, 26 Jun 2020 23:59:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 69E7087ACE;
+	Sat, 27 Jun 2020 00:06:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1A5F41BF20D
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 23:59:04 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B8BD51BF584
+ for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 00:06:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 704E886CC5
- for <devel@linuxdriverproject.org>; Fri, 26 Jun 2020 23:57:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B37F4250D0
+ for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 00:06:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T6iMmkuZ40tl for <devel@linuxdriverproject.org>;
- Fri, 26 Jun 2020 23:57:34 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
- [209.85.216.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DD42D86C53
- for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 23:57:34 +0000 (UTC)
-Received: by mail-pj1-f65.google.com with SMTP id f6so1579688pjq.5
- for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 16:57:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:date:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=rsEV3VWlPvkhUXAUMqPfLhxZXBvMiVayXQJsZCVog6Q=;
- b=qaJFgFOqAcU29/5kD0f06Npxd2Dlxs2CofOxWIM1ri/KxJeD3CMMJ59rQmHzFucJ8B
- nh+vDWWb+BZtfjTYdIbBpJMUOu030FU6Y+BhUOavRYl3MX0jA7NtmJIIxBGfckqOL/pZ
- kGNCyhm8AjNr+poSF74dgm1gYnHVvWwFl6PRIPz/nC9ezwCvaDSGHLApTFGq4E3djAey
- yUqEr0GP9DqRyggZnLAydyoons0pEOwnqNWJ18syoG1G3wnz8VxgY5IZ6Vtn3vNhFbSW
- Uv2UMMCUu0B/IhXD3Ex/l0STcGim+cHLqzPyHuLLt/r3fWRgJ4wjhZFK77Xhna4/Ftor
- QMVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=rsEV3VWlPvkhUXAUMqPfLhxZXBvMiVayXQJsZCVog6Q=;
- b=QbPN6v8NNONJIKxMIdN6GX7yWW9xQmgviuj1NHTXESZlqzSVEZtTXRPwNpdUHuwjUe
- 1temN9BHUPRUU3QiPi3kxyyDRLq7Wp82yAkE2tO4R3A0+zyb+UN6EWt7gCulW+wa49Tr
- hMXkLVJGv5t0fktnbagXeMcRChOUajafwtCMobKUkioAWIFiYrkdCTrRkdFjT9F0gA9c
- 3bs7NZap9KuPI9Ho2G7GJpfXECS5TsUlV0qYUnv22cDaGHrjnCpeIP0tQ/es0T+i0Kb9
- agRVJMdAlGafwgj9scRIINBy6xo9QrCGlNKd5CZx4Kepa789h+1AjCQDwup17FPXbSnT
- oxcA==
-X-Gm-Message-State: AOAM531SPOkMyiYEJ8CCvtFI6rB+sPdCFnRICRsZJWhJtg30LgH4rfeN
- MNgMbmvRZyfTC0MJz/GlI0M=
-X-Google-Smtp-Source: ABdhPJzVai7R7S/T4iw8i1jkT9aJDWWEaEIMVs2EARAOFCaoDxYnib5o0dCMspzPd8YqYik5vgix9g==
-X-Received: by 2002:a17:90b:50d:: with SMTP id
- r13mr5872471pjz.94.1593215854419; 
- Fri, 26 Jun 2020 16:57:34 -0700 (PDT)
-Received: from localhost ([2001:e42:102:1532:160:16:113:140])
- by smtp.gmail.com with ESMTPSA id t5sm5081758pgl.38.2020.06.26.16.57.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2020 16:57:33 -0700 (PDT)
-From: Coiby Xu <coiby.xu@gmail.com>
-X-Google-Original-From: Coiby Xu <Coiby.Xu@gmail.com>
-Date: Sat, 27 Jun 2020 07:57:25 +0800
-To: Joe Perches <joe@perches.com>
+ with ESMTP id OurKCn7EZbKd for <devel@linuxdriverproject.org>;
+ Sat, 27 Jun 2020 00:06:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0206.hostedemail.com
+ [216.40.44.206])
+ by silver.osuosl.org (Postfix) with ESMTPS id 18B862502F
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 00:06:39 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave08.hostedemail.com (Postfix) with ESMTP id C08C2182D3515
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 00:06:38 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id 25C3A100E7B42;
+ Sat, 27 Jun 2020 00:06:36 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:960:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1538:1593:1594:1711:1714:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3351:3622:3866:3867:3870:3871:3872:4321:5007:10004:10400:10848:11026:11232:11658:11914:12296:12297:12740:12760:12895:13069:13311:13357:13439:14659:14721:14819:21080:21627:21990:30054:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: roof26_4408f0826e59
+X-Filterd-Recvd-Size: 1693
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf18.hostedemail.com (Postfix) with ESMTPA;
+ Sat, 27 Jun 2020 00:06:34 +0000 (UTC)
+Message-ID: <324448187976fc690ea63f1c18e063fb0b09f740.camel@perches.com>
 Subject: Re: [PATCH 2/2] staging: qlge: fix else after return or break
-Message-ID: <20200626235725.2rcpisito2253jhm@Rk>
+From: Joe Perches <joe@perches.com>
+To: Coiby Xu <coiby.xu@gmail.com>
+Date: Fri, 26 Jun 2020 17:06:33 -0700
+In-Reply-To: <20200626235725.2rcpisito2253jhm@Rk>
 References: <20200625215755.70329-1-coiby.xu@gmail.com>
  <20200625215755.70329-3-coiby.xu@gmail.com>
  <049f51497b84e55e61aca989025b64493287cbab.camel@perches.com>
+ <20200626235725.2rcpisito2253jhm@Rk>
+User-Agent: Evolution 3.36.2-0ubuntu1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <049f51497b84e55e61aca989025b64493287cbab.camel@perches.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,66 +81,27 @@ Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  open list <linux-kernel@vger.kernel.org>,
  "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jun 25, 2020 at 03:13:14PM -0700, Joe Perches wrote:
->On Fri, 2020-06-26 at 05:57 +0800, Coiby Xu wrote:
->> Remove unnecessary elses after return or break.
->
->unrelated trivia:
->
->> diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
->[]
->> @@ -1391,12 +1391,11 @@ static void ql_dump_cam_entries(struct ql_adapter *qdev)
->>  			pr_err("%s: Failed read of mac index register\n",
->>  			       __func__);
->>  			return;
->> -		} else {
->> -			if (value[0])
->> -				pr_err("%s: CAM index %d CAM Lookup Lower = 0x%.08x:%.08x, Output = 0x%.08x\n",
->> -				       qdev->ndev->name, i, value[1], value[0],
->> -				       value[2]);
->
->looks like all of these could use netdev_err
->
->				netdev_err(qdev, "etc...",
->					   i, value[1], value[0], value[2]);
->
->etc...
+On Sat, 2020-06-27 at 07:57 +0800, Coiby Xu wrote:
+> On Thu, Jun 25, 2020 at 03:13:14PM -0700, Joe Perches wrote:
+> > On Fri, 2020-06-26 at 05:57 +0800, Coiby Xu wrote:
+> > > Remove unnecessary elses after return or break.
+> > 
+> > unrelated trivia:
+[]
+> > looks like all of these could use netdev_err
+[]
+> should we also replace all pr_errs with netdev_err in
+> ql_dump_* functions?
 
-Should we also replace all pr_errs with netdev_err in
-ql_dump_* functions? I'm not sure how we will use ql_dump_*. For example,
-ql_dump_regs is not referred by any kernel source, so I guess it's for
-the sole purpose of debugging the driver by the developer. But one
-pr_err in ql_dump_routing_entries which is called by dl_dump_regs doesn't
-prints out the device name whereas the other does,
+Ideally, anywhere a struct netdevice * is available, it should
+be used to output netdev_<level> in preference to pr_<level>.
 
-> void ql_dump_routing_entries(struct ql_adapter *qdev)
-> {
-> 	int i;
-> 	u32 value;
->
-> 	i = ql_sem_spinlock(qdev, SEM_RT_IDX_MASK);
-> 	if (i)
-> 		return;
-> 	for (i = 0; i < 16; i++) {
-> 		value = 0;
-> 		if (ql_get_routing_reg(qdev, i, &value)) {
-> 			pr_err("%s: Failed read of routing index register\n",
-> 			       __func__);
-> 			break;
-> 		}
-> 		if (value)
-> 			pr_err("%s: Routing Mask %d = 0x%.08x\n",
-> 			       qdev->ndev->name, i, value);
-> 	}
 
---
-Best regards,
-Coiby
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
