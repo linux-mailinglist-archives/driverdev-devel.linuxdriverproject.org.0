@@ -2,77 +2,91 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F25320C2AC
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jun 2020 17:19:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EEDC420C347
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jun 2020 19:21:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0FA29204A6;
-	Sat, 27 Jun 2020 15:19:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 67A9020C92;
+	Sat, 27 Jun 2020 17:21:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cXFTkr8c2zvX; Sat, 27 Jun 2020 15:19:18 +0000 (UTC)
+	with ESMTP id waR0OHYfD5XB; Sat, 27 Jun 2020 17:21:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F309D2094E;
-	Sat, 27 Jun 2020 15:18:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3ADDC204B8;
+	Sat, 27 Jun 2020 17:21:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C10041BF362
- for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 15:18:24 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8253C1BF421
+ for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 17:21:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BBB0C88521
- for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 15:18:24 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7EF9E8665F
+ for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 17:21:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bRMUe4d0OaXH for <devel@linuxdriverproject.org>;
- Sat, 27 Jun 2020 15:18:24 +0000 (UTC)
+ with ESMTP id ZQIQinaC_Ulb for <devel@linuxdriverproject.org>;
+ Sat, 27 Jun 2020 17:21:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BE597882EC
- for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 15:18:23 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id q5so12244068wru.6
- for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 08:18:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NU9KLKmGGGJvPp19RkXwDYHc15SB6HnPK2Xb5FuPPA4=;
- b=XH43tNwpFGVVg3khLEQCBEjs5TPlPP9gLywPjk21fGzPdo08pV/4IsbQ3xbnt6zguI
- 34/BM7kHcr83thA+8JeKs2tZwUcf7RpuRWltaQ/d+MXOtCth+luDRGg2kliElojRGebs
- AGtG30W/wLSG7gIbidZ9MjgqxGIFREqrSvAd9l3EvzrK1mChlQeera9mahWjvkJwe9lA
- htYb7UzQz27bWO/RT2bzisDOFZYPAqyfAT2mhtSkAAcxGEZvK0eQhVnS6DjoaDId6Rtb
- Er6ODEGGwoCPRNMl8/kWoD7pGufUexrNcMX18xvsuaTv6wsdxXDtEyLZv7dIvVtPoyOI
- pSQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NU9KLKmGGGJvPp19RkXwDYHc15SB6HnPK2Xb5FuPPA4=;
- b=WorNOyG9666Vs7KjcCuqztAUW4RZAEyGvZcxpsAUgzkxlKOUVombgz2JUfK8hqpLl7
- jMBOQ1n1hIhQ6I/cha2iNztQ0rrKQTaYqvLL7X7cEcdva8e/w/4VIZBdwQTc3RCDv0J5
- X9kPyIxft5x4ckPKL21KLLkzhdoSACD53oWVTHFhWddyyPth9VUXfvpC70WXE2fpMYAZ
- Bj9DIpJle9BcjJpIHU6Y0+CxXSIctBCtkXarw+/7w8fFmMoPN6jTOSEtqgt9dcKfge5i
- g00rNGHxRhHDZMvz2PD+/Xed8ExjEf2GTZYIG3V0/AFi6/Tq0+pCTauEDFanUd13lLxS
- DZPw==
-X-Gm-Message-State: AOAM533E5vU7tPA8kEtDFqfUEoaeWMejeG8NcLCZI3Oqgww4uRmR+3Qw
- dqL2CtkzUVm0LTIvFwGZtsU=
-X-Google-Smtp-Source: ABdhPJwHF8Cc75NiCoqdWLrfa/FPxGFh0JpjLi0WPGU7UIEedQzFzmb0A4CuVxua7FvyHzOO96fVKQ==
-X-Received: by 2002:adf:9062:: with SMTP id h89mr8288825wrh.285.1593271102040; 
- Sat, 27 Jun 2020 08:18:22 -0700 (PDT)
-Received: from localhost.localdomain
- (dslb-178-006-252-175.178.006.pools.vodafone-ip.de. [178.6.252.175])
- by smtp.gmail.com with ESMTPSA id o7sm20454932wmb.9.2020.06.27.08.18.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 27 Jun 2020 08:18:21 -0700 (PDT)
-From: Michael Straube <straube.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8188eu: remove unnecessary comments in
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 00746863F2
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 17:21:40 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05RHIY2d000973;
+ Sat, 27 Jun 2020 17:21:40 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=LUgv2ai4XEX3a2xqOW2NrWKmstTZTlq2pfjO0fUqyck=;
+ b=E0r9PeddBLS9PhOBIj1dpbDd19j1A/9pL4r4I/EsN6Z5VXOK3j2PegkLsL33gs4ZlepL
+ lTGgbfiwYnmAoTy22aOIDoYFkRg3GysGA/U9SQ+AwJHj2m66hbC3qIOoU5p4f6efApAN
+ ObJvEoKe1kD+uqz9pPnkEheMCp6DAks16H8Czp2/l9A4tY/Y8F8IEscwrERS/V+zfJwI
+ 7WQdJvKEBA3D4HOMM0T2MK1VExaFw+xFI3OodPcI7GW1F0SQztFtB4lktn7JrFJYd+2d
+ LEW+0yXD2t67Im3C/NyIvOCtvsgDpZCNjHoBiVlzBtRgTvYYbHfWd+8iDhNbcjPaU5eq GA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2120.oracle.com with ESMTP id 31wxrms9rs-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Sat, 27 Jun 2020 17:21:39 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 05RHEWAJ157563;
+ Sat, 27 Jun 2020 17:21:39 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3020.oracle.com with ESMTP id 31wwx1879j-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 27 Jun 2020 17:21:39 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 05RHLagF007667;
+ Sat, 27 Jun 2020 17:21:37 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Sat, 27 Jun 2020 10:21:36 -0700
+Date: Sat, 27 Jun 2020 20:21:30 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Michael Straube <straube.linux@gmail.com>
+Subject: Re: [PATCH] staging: rtl8188eu: remove unnecessary comments in
  hal8188e_phy_cfg.h
-Date: Sat, 27 Jun 2020 17:15:44 +0200
-Message-Id: <20200627151544.11251-1-straube.linux@gmail.com>
-X-Mailer: git-send-email 2.27.0
+Message-ID: <20200627172130.GK2549@kadam>
+References: <20200627151544.11251-1-straube.linux@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200627151544.11251-1-straube.linux@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9665
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ suspectscore=0
+ adultscore=0 mlxscore=0 spamscore=0 bulkscore=0 malwarescore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2004280000 definitions=main-2006270125
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9665
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ mlxlogscore=999
+ priorityscore=1501 impostorscore=0 bulkscore=0 clxscore=1015
+ malwarescore=0 phishscore=0 adultscore=0 cotscore=-2147483648
+ lowpriorityscore=0 suspectscore=0 spamscore=0 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2006270125
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,81 +99,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry.Finger@lwfinger.net
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove unnecessary comments in hal8188e_phy_cfg.h to improve
-readability and clear multiple blank lines checkpatch issues.
+On Sat, Jun 27, 2020 at 05:15:44PM +0200, Michael Straube wrote:
+> @@ -145,21 +138,7 @@ struct bb_reg_def {
+>  				 */
+>  };
+>  
+> -/*------------------------------Define structure----------------------------*/
+> -
+> -
+> -/*------------------------Export global variable----------------------------*/
+> -/*------------------------Export global variable----------------------------*/
+> -
+> -
+> -/*------------------------Export Marco Definition---------------------------*/
+> -/*------------------------Export Marco Definition---------------------------*/
+> -
+> -
+> -/*--------------------------Exported Function prototype---------------------*/
+> -/*  */
+>  /*  BB and RF register read/write */
 
-CHECK: Please don't use multiple blank lines
+You can probably delete this line as well.  ;)
 
-Signed-off-by: Michael Straube <straube.linux@gmail.com>
----
- .../rtl8188eu/include/hal8188e_phy_cfg.h      | 23 -------------------
- 1 file changed, 23 deletions(-)
+> -/*  */
+>  
+>  /* Read initi reg value for tx power setting. */
+>  void rtl8192c_PHY_GetHWRegOriginalValue(struct adapter *adapter);
 
-diff --git a/drivers/staging/rtl8188eu/include/hal8188e_phy_cfg.h b/drivers/staging/rtl8188eu/include/hal8188e_phy_cfg.h
-index 0c5b2b0948f5..78b44bf55f28 100644
---- a/drivers/staging/rtl8188eu/include/hal8188e_phy_cfg.h
-+++ b/drivers/staging/rtl8188eu/include/hal8188e_phy_cfg.h
-@@ -7,8 +7,6 @@
- #ifndef __INC_HAL8188EPHYCFG_H__
- #define __INC_HAL8188EPHYCFG_H__
- 
--
--/*--------------------------Define Parameters-------------------------------*/
- #define LOOP_LIMIT			5
- #define MAX_STALL_TIME			50		/* us */
- #define AntennaDiversityValue		0x80
-@@ -17,11 +15,6 @@
- 
- #define MAX_AGGR_NUM			0x07
- 
--
--/*--------------------------Define Parameters-------------------------------*/
--
--
--/*------------------------------Define structure----------------------------*/
- enum sw_chnl_cmd_id {
- 	CmdID_End,
- 	CmdID_SetTxPowerLevel,
-@@ -145,21 +138,7 @@ struct bb_reg_def {
- 				 */
- };
- 
--/*------------------------------Define structure----------------------------*/
--
--
--/*------------------------Export global variable----------------------------*/
--/*------------------------Export global variable----------------------------*/
--
--
--/*------------------------Export Marco Definition---------------------------*/
--/*------------------------Export Marco Definition---------------------------*/
--
--
--/*--------------------------Exported Function prototype---------------------*/
--/*  */
- /*  BB and RF register read/write */
--/*  */
- 
- /* Read initi reg value for tx power setting. */
- void rtl8192c_PHY_GetHWRegOriginalValue(struct adapter *adapter);
-@@ -181,8 +160,6 @@ void PHY_EnableHostClkReq(struct adapter *adapter);
- 
- bool SetAntennaConfig92C(struct adapter *adapter, u8 defaultant);
- 
--/*--------------------------Exported Function prototype---------------------*/
--
- #define PHY_SetMacReg	PHY_SetBBReg
- 
- #define	SIC_HW_SUPPORT			0
--- 
-2.27.0
+regards,
+dan carpenter
 
 _______________________________________________
 devel mailing list
