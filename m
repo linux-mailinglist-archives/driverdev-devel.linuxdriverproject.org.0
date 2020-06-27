@@ -2,80 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DB6F20BEED
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jun 2020 08:08:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BE8B20BF21
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jun 2020 09:03:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D03EC25784;
-	Sat, 27 Jun 2020 06:08:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 85EAD204CA;
+	Sat, 27 Jun 2020 07:03:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bTOCD-Ccvu0Q; Sat, 27 Jun 2020 06:08:13 +0000 (UTC)
+	with ESMTP id MXRbgdrokIG9; Sat, 27 Jun 2020 07:03:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 45F12204BC;
-	Sat, 27 Jun 2020 06:08:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E5F5C20134;
+	Sat, 27 Jun 2020 07:03:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 71F4C1BF418
- for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 06:08:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CA4CE1BF418
+ for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 07:03:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6EDAD86EB3
- for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 06:08:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C34A287A05
+ for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 07:03:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n8r7HQZc5q1f for <devel@linuxdriverproject.org>;
- Sat, 27 Jun 2020 06:08:08 +0000 (UTC)
-X-Greylist: delayed 01:16:11 by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3AE0786EB2
- for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 06:08:08 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id i4so5841299pjd.0
- for <devel@driverdev.osuosl.org>; Fri, 26 Jun 2020 23:08:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
- h=from:date:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=gtmGpW21SyNiDgvXMh+8DiMIETkQ9kJybZA1frDwgbo=;
- b=pDNCTrB3ZFp49fu1m/cIDeOovHxi7U2+qFg3Y1RBH1bVnUf4jiE4QdPPtF5aT9cuDs
- 5Y855FtE7yLDZrDbsrqVZlk+PLkC1bkU1WxXdm1yj7u+D6efBtITTOdp1iJJIiTxG3FC
- uRLHn/PNBZwwZG1fbYA1WBy0xHVWLDHfY4RbyczyvfMCmQVGahZ1OZ+ftk0ZSZd3KQre
- LBsrRUdVl4ZXr9Uao4E2lHEBSwm7gqqlOI3yzD/Va2VLn7fNTkU5S+bEKWJMzL4iNZS8
- /miqRlnZHNXhHe6/94aUYx5Kyq+jNsnGQaCMrblKS5Z3vnvdXnuhh0lFyhwD1qYEcvBF
- KbvA==
+ with ESMTP id KK-aYIVfBWDS for <devel@linuxdriverproject.org>;
+ Sat, 27 Jun 2020 07:03:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 252EE879FD
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 07:03:27 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id x3so105760pfo.9
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 00:03:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=FsrSKJ+gJUACgrGolhsPdd0vgGMvepJqfy8379JcKu4=;
+ b=EvUBhtFbdA5q/Ln7/JmYkJ4WCSQYr0FDka6B0ToibqDo+KoRIWa5csnmBSRVgeVZpD
+ 3SycW07fCAwTdh+u5tC0gQuOD9UiiaFw8Pzh8+WwWoF+ppc6VrAXas0XCfYV9gXA5Cah
+ O5dfGYTYYOddR91unI7zbYt5VMmXuBus/0h6Y=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=gtmGpW21SyNiDgvXMh+8DiMIETkQ9kJybZA1frDwgbo=;
- b=pRsRfKrdTliWeoKcjQY9rZ5t5v0OW1RuWv68yYqrKyhqpnwKNRykvrVUn6eNF6gnPW
- 8UEYd+FzAS0PSoW9p+ftsQlwkIrXALf1RQXp7X2o8IteOAqREKN3atN7FySt69RRgpAa
- WL1iVWaAXzSTaskoRv7cPsQPDZZyKi2vrNOtRkSAeHSpU7BPqrKy3bG6HhLhOuFjSzME
- 3pik+J1LHiu8MZdy0mkjwYlIYXJr77Zz5fBXs0/n4Nj67gOUppDeMaUaR88UMyGPbL67
- HSzAd3coTRUQxUg3VkqRdECLzg8DCSS/Aq1e0b58lYWfrNVN1/OmHLyrHFfSmTBMyZ+H
- olMA==
-X-Gm-Message-State: AOAM531ZmTXlXbb/bp0XgS0j0dEpHzyFulv7NM6XNF8yEUgRNmHBDskT
- IIuRoSZqwWe9uPF8UVQKKsvDR6+QYZxPpQ==
-X-Google-Smtp-Source: ABdhPJzOj7jeZpv1+qG45pcMxryGt8tD6hrSSPeZ1vjoz3D7oBfTKsDKIdE57PLoNbpgdqliPbyhJQ==
-X-Received: by 2002:a17:902:854c:: with SMTP id
- d12mr5535900plo.343.1593238087725; 
- Fri, 26 Jun 2020 23:08:07 -0700 (PDT)
-Received: from localhost ([2406:7400:73:59a9:908:f18a:1156:5c38])
- by smtp.gmail.com with ESMTPSA id x17sm12623639pjr.29.2020.06.26.23.08.05
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=FsrSKJ+gJUACgrGolhsPdd0vgGMvepJqfy8379JcKu4=;
+ b=LRKa1lbvfrOUPEr7uBD0gZDg/TiZD/F0cXYtKuIm7W+VqEpmA5M39moCIiNpW0bdMt
+ Qh5sQd80tFOfYwFMU76iUVBRYP8SMDDW8E5gbYy737IIgbQYYPzRy+TPBqqMpX/yI60T
+ VyyeshbT8BcxY9RUcqD9ZLExOkzU+xvinTj/Xwj7sNr3DNNHOZ5Jh+LEnGnekKroJe7E
+ q8cDjapnmmb7I23PVx7HS5zh1EKDhPA6Ufwz8VvApqtLkJHsNOJ9r1jQCBmalTvswq6L
+ Ajgj75D6FfsoK6lu/cmS01a671tSgnpf36OKepnMa2mt4m9AOCpsnw+0kiPspI398lcE
+ ADOw==
+X-Gm-Message-State: AOAM531jT7Tj6IGjeX3Opkis6EC++DLYlY2wYXXOqh1QbSjC7+3UjUoq
+ 3De96cMGlwPSHs8vrzys4LTU0g==
+X-Google-Smtp-Source: ABdhPJyZFG/mi1UZ8xodyex8KRwcp8OsluVaczS/+idWJyqCQQeS3g8ufLKi4ZbrLW2qKEXgiYfBLw==
+X-Received: by 2002:a62:5c85:: with SMTP id q127mr5814143pfb.311.1593241406667; 
+ Sat, 27 Jun 2020 00:03:26 -0700 (PDT)
+Received: from drinkcat2.tpe.corp.google.com
+ ([2401:fa00:1:b:d8b7:33af:adcb:b648])
+ by smtp.gmail.com with ESMTPSA id u4sm28133269pfl.102.2020.06.27.00.03.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2020 23:08:06 -0700 (PDT)
-From: B K Karthik <bkkarthik@pesu.pes.edu>
-X-Google-Original-From: B K Karthik <karthik.bk2000@live.com>
-Date: Sat, 27 Jun 2020 02:07:58 -0400
-To: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- netdev@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] qlge.h: Adding the missing blank line after declarations
-Message-ID: <20200627060758.aqcqs763rjoxn6cp@pesu-pes-edu>
+ Sat, 27 Jun 2020 00:03:25 -0700 (PDT)
+From: Nicolas Boichat <drinkcat@chromium.org>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH 0/4] Detect and remove trace_printk
+Date: Sat, 27 Jun 2020 15:03:03 +0800
+Message-Id: <20200627070307.516803-1-drinkcat@chromium.org>
+X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
 MIME-Version: 1.0
-User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,73 +81,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6928252500014799042=="
+Cc: Peter Chen <peter.chen@nxp.com>,
+ "Guilherme G . Piccoli" <gpiccoli@canonical.com>,
+ Rafael Aquini <aquini@redhat.com>, Sam Ravnborg <sam@ravnborg.org>,
+ David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Todor Tomov <todor.too@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ David Howells <dhowells@redhat.com>, Tiezhu Yang <yangtiezhu@loongson.cn>,
+ Will Deacon <will@kernel.org>,
+ Christian Brauner <christian.brauner@ubuntu.com>,
+ Kees Cook <keescook@chromium.org>, devel@driverdev.osuosl.org,
+ Stephen Rothwell <sfr@canb.auug.org.au>,
+ Nicolas Boichat <drinkcat@chromium.org>, Jayshri Pawar <jpawar@cadence.com>,
+ Masahiro Yamada <masahiroy@kernel.org>,
+ Alexei Starovoitov <alexei.starovoitov@gmail.com>,
+ Jason Gunthorpe <jgg@ziepe.ca>, Andy Gross <agross@kernel.org>,
+ Tomas Winkler <tomas.winkler@intel.com>, Alexey Dobriyan <adobriyan@gmail.com>,
+ linux-media@vger.kernel.org, Pawel Laszczak <pawell@cadence.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Arnd Bergmann <arnd@arndb.de>,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ Chao Yu <chao@kernel.org>, Steven Rostedt <rostedt@goodmis.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Ingo Molnar <mingo@redhat.com>,
+ Roger Quadros <rogerq@ti.com>, Felipe Balbi <balbi@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ dri-devel@lists.freedesktop.org, linux-usb@vger.kernel.org,
+ linux-f2fs-devel@lists.sourceforge.net,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Divya Indi <divya.indi@oracle.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+trace_printk is meant as a debugging tool, and should not be
+compiled into production code without specific debug Kconfig
+options enabled or source code changes.
 
---===============6928252500014799042==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uc3xmhwmmyrchpyj"
-Content-Disposition: inline
+Patches 1 to 3 remove/disable trace_printk that should not
+be enabled by default.
 
+Patch 4 adds a config option that can be used to detect such
+trace_printk at compile time (instead of printing a nasty
+warning at runtime).
 
---uc3xmhwmmyrchpyj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Nicolas Boichat (4):
+  usb: cdns3: gadget: Replace trace_printk by dev_dbg
+  media: atomisp: Replace trace_printk by pr_info
+  media: camss: vfe: Use trace_printk for debugging only
+  kernel/trace: Add TRACING_ALLOW_PRINTK config option
 
-Signed-off-by: B K Karthik <karthik.bk2000@live.com>
----
- drivers/staging/qlge/qlge.h | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/i915/Kconfig.debug              |  4 ++--
+ .../media/platform/qcom/camss/camss-vfe-4-1.c   |  2 ++
+ .../media/platform/qcom/camss/camss-vfe-4-7.c   |  2 ++
+ drivers/staging/media/atomisp/pci/hmm/hmm.c     | 10 +++++-----
+ drivers/usb/cdns3/gadget.c                      |  2 +-
+ fs/f2fs/Kconfig                                 |  1 +
+ include/linux/kernel.h                          | 17 ++++++++++++++++-
+ kernel/trace/Kconfig                            | 10 ++++++++++
+ samples/Kconfig                                 |  2 ++
+ 9 files changed, 41 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/qlge/qlge.h b/drivers/staging/qlge/qlge.h
-index fc8c5ca8935d..0b971a633001 100644
---- a/drivers/staging/qlge/qlge.h
-+++ b/drivers/staging/qlge/qlge.h
-@@ -2224,6 +2224,7 @@ static inline void ql_write_db_reg_relaxed(u32 val, v=
-oid __iomem *addr)
- static inline u32 ql_read_sh_reg(__le32  *addr)
- {
- 	u32 reg;
-+
- 	reg =3D  le32_to_cpu(*addr);
- 	rmb();
- 	return reg;
---=20
-2.20.1
-
-
---uc3xmhwmmyrchpyj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl724j4ACgkQ471Q5AHe
-Z2qsiwv/ePdacbSqM7HjdTGbMfaQorE4XMc5+PfBqp9J4zHmenJXvSWW5dBhoS3r
-PikmkdGfXpx95NW4V9i6FKWvikrMv/4wSwhkA9IwzLX8UXm/hK+qUBd8axHf2lxI
-TQiqvIZYRi29CveRcxedUk1ABBARBCG4ULtleTJ6SSS8ISWUGRFek52FkKaoM0Pg
-eHQqZJvBo3bQjpZdq4337knL0Xt3la1ZZxfz8ku6Ihd3CcQ/qa3Sq+eVzPtr/qpG
-E90WoWBKMpjbyzjPpcZymW0nEHroIvryPRCUdGYomoHq+ep+VllFAxANTlOKpS+z
-UnylebC5mFe8YZsvleF4Sj5fR0VUp8q0NIqCfnEQdhdESn5hX5SfutLXE5hcWOhI
-l0AzFcaknLaTUXAHPfJ4vsQaGaCS2yKal07y2y55urwe7Vv9AnbZAjg2ZF4AzVRm
-gRJfNEToUoYSFP7MAhQu6zLvToI7m4Mu6XV0yfKPX5c39a/7p68WaBGNrzN+Ybaa
-yy7DoEiq
-=35Tf
------END PGP SIGNATURE-----
-
---uc3xmhwmmyrchpyj--
-
---===============6928252500014799042==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+2.27.0.212.ge8ba1cc988-goog
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============6928252500014799042==--
