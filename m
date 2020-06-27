@@ -1,70 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8AF3620C029
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jun 2020 10:28:46 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6EBFA20C060
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jun 2020 10:50:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 100938724A;
-	Sat, 27 Jun 2020 08:28:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3D2408881F;
+	Sat, 27 Jun 2020 08:50:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1aVTSUIXIvQh; Sat, 27 Jun 2020 08:28:44 +0000 (UTC)
+	with ESMTP id C56D0KVEPwgT; Sat, 27 Jun 2020 08:50:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1784786D8A;
-	Sat, 27 Jun 2020 08:28:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A8B1E88354;
+	Sat, 27 Jun 2020 08:50:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 07F441BF3F4
- for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 08:28:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 055101BF3F4
+ for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 08:50:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 041BA88292
- for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 08:28:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id F274288354
+ for <devel@linuxdriverproject.org>; Sat, 27 Jun 2020 08:50:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YT-+pyku3NfT for <devel@linuxdriverproject.org>;
- Sat, 27 Jun 2020 08:28:39 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from lb3-smtp-cloud7.xs4all.net (lb3-smtp-cloud7.xs4all.net
- [194.109.24.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E805A8826E
- for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 08:28:38 +0000 (UTC)
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud7.xs4all.net with ESMTPA
- id p6CNjiPG4xmkVp6CQjl6zN; Sat, 27 Jun 2020 10:28:36 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1593246516; bh=9dCkr8q438k8a7OtUe9GHrF8GoB3+P1Sq6GHRgD7MMo=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=Ga4etwEjjiKjj4nIxTE1CvhQoVlaFwKxNCgSY6sfpcsZqEg6oiAcX9F1hc+lwW++U
- V0kIs/HxfCz1VN1NgmEDyPBofpaGADSKhaHNUoMd1PD6wyf+3JGQzq5y/oM7vmsflj
- 7tYJPNoA23X85YXZI9ThqqXtiFBFK5prRYsJsILnRr1lpfYVFw5FpKu1yCm7BxyWWZ
- 19AQP6iXvlOVWcVotor1SripoZ0cp4kDqjKIaBvxZmc3euhTsyc8Q1ap3oguA8j68/
- xedaWGveGcfJnMOtxuynQamYa94SA+p28rI50UPRuI2hFtRgF3BkJKW3uJ80QsQx4/
- 7ggGu0Vm5mQ9Q==
-Subject: Re: [PATCH] staging: media: usbvision: removing prohibited space
- before ',' (ctx:WxW)
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- B K KARTHIK PES2201800185STUDENT ECE DeptPESU EC Campus
- <bkkarthik@pesu.pes.edu>
-References: <20200626143205.xns6nwggskssujao@pesu-pes-edu>
- <CAAhDqq0tSftPxMWGeVy3mp4DGDN3o0uQwTqVbjYUwjqzWpbibQ@mail.gmail.com>
- <20200627050745.GD226238@kroah.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <f73c5a69-1bf9-d80d-2399-ef18ce78b8ac@xs4all.nl>
-Date: Sat, 27 Jun 2020 10:28:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ with ESMTP id PZ9qzXB1Kk3O for <devel@linuxdriverproject.org>;
+ Sat, 27 Jun 2020 08:50:48 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0230.hostedemail.com
+ [216.40.44.230])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 17F7288349
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 08:50:48 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave04.hostedemail.com (Postfix) with ESMTP id EBC941800BC46
+ for <devel@driverdev.osuosl.org>; Sat, 27 Jun 2020 08:33:01 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay02.hostedemail.com (Postfix) with ESMTP id 9F58615C5;
+ Sat, 27 Jun 2020 08:32:59 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:69:355:379:599:968:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3353:3622:3865:3866:3867:3868:3870:3871:3872:4250:4321:5007:6119:7903:10004:10400:10848:11232:11658:11914:12043:12295:12296:12297:12683:12740:12760:12895:13069:13161:13229:13311:13357:13439:14096:14097:14659:14721:14777:21080:21433:21451:21627:21819:30022:30029:30054:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: frame01_50165cf26e5c
+X-Filterd-Recvd-Size: 2354
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf07.hostedemail.com (Postfix) with ESMTPA;
+ Sat, 27 Jun 2020 08:32:58 +0000 (UTC)
+Message-ID: <7120d8c862b2e647acac0302a8d014bb02d9150e.camel@perches.com>
+Subject: Re: RT_TRACE in drivers/staging/rtl8188eu
+From: Joe Perches <joe@perches.com>
+To: Greg KH <greg@kroah.com>
+Date: Sat, 27 Jun 2020 01:32:57 -0700
+In-Reply-To: <20200627081834.GA1550330@kroah.com>
+References: <ddebd1bd14f5a8dd0b01a02e794662224894f46f.camel@perches.com>
+ <20200627080128.GA1547070@kroah.com>
+ <fa75f7c44c296ab7aae8755d84717b0020c2e115.camel@perches.com>
+ <20200627081834.GA1550330@kroah.com>
+User-Agent: Evolution 3.36.2-0ubuntu1 
 MIME-Version: 1.0
-In-Reply-To: <20200627050745.GD226238@kroah.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfP9bgrYsjbNib59VOH2MNZMoeUze+VQAk3Xl6GQlkUNZRlsnHFWYe79nxsesg/Ysz9pF6xPWzoV1Mc3eMQlijsfTLWZEPQegM/l0N+JNTfOc98eveA4D
- dsYguGkiA+mPxJtKclNksyR7PAPEIwsp4T9dzMQy9uoo8YIDol91L3ZqrxkzidfK7rSVGduunsbMJRBXmk0cvwVEAVjtSdGDjemNfKLlWnlDE259Y7tYyoSt
- opCEXH+wrnKCSGFob0XxANQ+1m16grx8ee/JaEZU05CCLCQpjEuL2CKQVeAnAgjyUaL/aevg+PncqZbSgTPCCObtq/D96ilmKEBe61pz5gIKsDhwjP9x4s1z
- diM9QE5e
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,55 +76,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+Cc: devel <devel@driverdev.osuosl.org>,
+ Larry Finger <Larry.Finger@lwfinger.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 27/06/2020 07:07, Greg Kroah-Hartman wrote:
+On Sat, 2020-06-27 at 10:18 +0200, Greg KH wrote:
+> On Sat, Jun 27, 2020 at 01:12:42AM -0700, Joe Perches wrote:
+> > On Sat, 2020-06-27 at 10:01 +0200, Greg KH wrote:
+> > > On Sat, Jun 27, 2020 at 12:33:56AM -0700, Joe Perches wrote:
+> > > > There are 3 parts of the email.
+> > > > 
+> > > > 1: A description and patch for a logging defect
+> > > > 2: A script to go along with the patch to do conversions
+> > > > 3: Current diff for this defect
+> > > > 
+> > > > ------------------------------------------------------------------------
+> > > > -
+> > > > 
+> > > > The macro below in drivers/staging/rtl8188eu/include/rtw_debug.h
+> > > > is defective as it emits multiple pr_info calls for each use
+> > > > so the logging in dmesg is discontinuous.
+> > > 
+> > > I recommend just deleting it.  As it's obviously incorrect, and any
+> > > "real" tracing should just use the real tracing infrastructure, this is
+> > > not needed and can be removed.
+> > 
+> > Don't get hung up on the name.
+> > 
+> > It's not used for tracing, it's effectively just
+> > a debugging mechanism, the same in all the other
+> > rtl staging drivers.
 > 
-> A: http://en.wikipedia.org/wiki/Top_post
-> Q: Were do I find info about this thing called top-posting?
-> A: Because it messes up the order in which people normally read text.
-> Q: Why is top-posting such a bad thing?
-> A: Top-posting.
-> Q: What is the most annoying thing in e-mail?
-> 
-> A: No.
-> Q: Should I include quotations after my reply?
-> 
-> http://daringfireball.net/2007/07/on_top
-> 
-> On Fri, Jun 26, 2020 at 11:42:49AM -0400, B K KARTHIK PES2201800185STUDENT ECE DeptPESU EC Campus wrote:
->> Oh, I'm sorry but wouldn't it be helpful if we had a file that lists
->> all drivers that are scheduled for removal?
-> 
-> The TODO file in the directory for the driver should have this
-> information in it.  I don't know if all of the media drivers have this,
-> if not, then there is no way you could have known this.
+> Ok, then it should be converted to "normal" dev_*() functions, where
+> needed, the others deleted entirely (the dev_info attempts...)
 
-They have, and in addition the Kconfig entry will mention that the driver
-is deprecated.
+Nope.
 
-TODO of usbvision:
+These are the same as uses in drivers/net/wireless/realtek/rtlwifi.
 
-The driver is deprecated and scheduled for removal by the end
-of 2020.
+$ git grep -w RT_TRACE drivers/net/wireless/realtek | wc -l
+2847
 
-In order to prevent removal the following actions would have to
-be taken:
 
-- clean up the code
-- convert to the vb2 framework
-- fix the disconnect and free-on-last-user handling (i.e., add
-  a release callback for struct v4l2_device and rework the code
-  to use that correctly).
-
-Regards,
-
-	Hans
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
