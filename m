@@ -1,77 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30A8B20C727
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Jun 2020 10:52:49 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BF2720C76B
+	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Jun 2020 12:43:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D9A5A87583;
-	Sun, 28 Jun 2020 08:52:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 06F562094C;
+	Sun, 28 Jun 2020 10:43:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l-o1UDO3X79r; Sun, 28 Jun 2020 08:52:46 +0000 (UTC)
+	with ESMTP id fliF2ABFvZZt; Sun, 28 Jun 2020 10:43:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 857E38746D;
-	Sun, 28 Jun 2020 08:52:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BEE39204C6;
+	Sun, 28 Jun 2020 10:43:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9E9511BF3EE
- for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 08:52:43 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 79D301BF3DC
+ for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 10:43:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9AF5386044
- for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 08:52:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 76F4B8815C
+ for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 10:43:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2L3Wf0-EOuUf for <devel@linuxdriverproject.org>;
- Sun, 28 Jun 2020 08:52:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lf1-f65.google.com (mail-lf1-f65.google.com
- [209.85.167.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 66FB786008
- for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 08:52:42 +0000 (UTC)
-Received: by mail-lf1-f65.google.com with SMTP id c21so7333268lfb.3
- for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 01:52:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=w38Y8yxu4MKegaI5pBElo84tfeOSHB1ejr/b3/cR6eU=;
- b=O6NqFRzWJX78J4vEWx0oo1/fTHQy9kAM5vi1pJNgnTmQhe5LJEYrbMVTZM21GNOeVH
- f3DjF65fuIECCBWbVXny9PtBLKXcbrwSFmXd9sGAm9H7z/iPR6JTJyWA35ZThg2/XXTH
- ZzCRqPIJ1P8Fq17MP+f7sksyZY7WZOUX0PSB9tgpc64hRKOCUhkt34fKkt577ytMrrmh
- I6uS/OnwOcSVjDdGrjvpQ6H3y8Rqpk303k7M8YV77ilLLuc9NFXrZErNif1wctyQR3Tf
- +nhq9B0yUQL3Z8cHs/mtR2WuXaBe2Voy3HfDni5x3pnG1q/kPDozyDtFoLSAL7ArNEiP
- ojow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=w38Y8yxu4MKegaI5pBElo84tfeOSHB1ejr/b3/cR6eU=;
- b=NmiTddEJ69zjvhtVNRmjtKWlQvtgsKJYXftf64aCLO4BI4XvPzeDCjSaHJ4Yx+PLVY
- 7w/J4me7qbs6J5REMFMnqDJmJ7vISOeYpHCPLwFmo0d1tLX9UeRHvxPrEkWq/6TdDbp4
- 4xwTg7l4dIugApKm0jYdcxEWdkZ/o0EhoiEzJl86+b1NoAs483aGiIVjgi3Ub/0DjLGG
- VYFjt7rBofVET1i1yWpq1SZXcKMBCIkIcUbzGTHbOCQ7VKgXGGIAeplV9s++bOUGHoze
- ddM2gsSL8yWetAzuHvrfwiPsV3Zpp47Q09mkXUS+3sZPoOKvKmCHJs22iqknlR89e6J3
- kd3Q==
-X-Gm-Message-State: AOAM532aExNEj7rsXtT12htaFcBAEt9Ez7yCAiCMwPIbbXPGi5AVm/+p
- E4qaxK9dw0HInesfUMHggEm7Lw==
-X-Google-Smtp-Source: ABdhPJyRU6TN9BUAhZaYhRu/7Z0K4iWkCB9SP1Qhbq9oEAAcVtojLAY7Bc6abcf8oxSe7mLzo+e6AA==
-X-Received: by 2002:ac2:5e29:: with SMTP id o9mr6186604lfg.196.1593334360072; 
- Sun, 28 Jun 2020 01:52:40 -0700 (PDT)
-Received: from genomnajs.lan
- (c-d63ee155.152980-0-69706f6e6c79.bbcust.telenor.se. [85.225.62.214])
- by smtp.gmail.com with ESMTPSA id y143sm7037306lff.88.2020.06.28.01.52.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 28 Jun 2020 01:52:39 -0700 (PDT)
-From: Linus Walleij <linus.walleij@linaro.org>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v3] staging: wfx: Get descriptors for GPIOs
-Date: Sun, 28 Jun 2020 10:52:36 +0200
-Message-Id: <20200628085236.707579-1-linus.walleij@linaro.org>
-X-Mailer: git-send-email 2.25.4
+ with ESMTP id cw1ikba2gvGk for <devel@linuxdriverproject.org>;
+ Sun, 28 Jun 2020 10:43:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 684018820A
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 10:43:06 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5FA9720768;
+ Sun, 28 Jun 2020 10:43:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1593340986;
+ bh=h3Qshe51OzCHk0VzoKOsxqxRXkQqAn4qbWRLY7XHqdM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Lof7SL/AP1E5uY0JfQ11YfEWu721qbIILr3k1zUtDoOnELCIB08KtUhaHBjBh8Q7P
+ 6/zleA0a3JupyIC4LjAKMBLLGBbweFTh3X8yoww2VVMsbesyjFqb6COmxM2ZziRGHF
+ Cpd5svgHHBD3EgT4UAnK+eQbqq0qCreRlhws0k+E=
+Date: Sun, 28 Jun 2020 12:43:02 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v3] staging: wfx: Get descriptors for GPIOs
+Message-ID: <20200628104302.GA305213@kroah.com>
+References: <20200628085236.707579-1-linus.walleij@linaro.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200628085236.707579-1-linus.walleij@linaro.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,108 +65,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Linus Walleij <linus.walleij@linaro.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-VGhlIGNvZGUgaGFzIHRoZSBmdW5jdGlvbmFsaXR5IHRvIGluc2VydCB0aGUgR1BJTyBsaW5lcyB1
-c2luZwp0aGUgZ2xvYmFsIEdQSU8gbnVtYmVycyB0aHJvdWdoIG1vZHVsZSBwYXJhbWV0ZXJzLgoK
-QXMgd2UgYXJlIGNsZWFybHkgZGVwcmVjYXRpbmcgdGhlIHVzZSBvZiBnbG9iYWwgR1BJTyBudW1i
-ZXJzCmxvb2sgdXAgdGhlIEdQSU8gZGVzY3JpcHRvcnMgZnJvbSB0aGUgZGV2aWNlIGluc3RlYWQu
-IFRoaXMKdXN1YWxseSBmYWxscyBiYWNrIHRvIGRldmljZSBoYXJkd2FyZSBkZXNjcmlwdGlvbnMg
-dXNpbmcgZS5nLgpkZXZpY2UgdHJlZSBvciBBQ1BJLiBUaGlzIGRldmljZSBjbGVhcmx5IHN1cHBv
-cnRzIGRldmljZQp0cmVlIHdoZW4gdXNlZCBvdmVyIFNQSSBmb3IgZXhhbXBsZS4KCkZvciBleGFt
-cGxlLCB0aGlzIGNhbiBiZSBzdXBwbGllZCBpbiB0aGUgZGV2aWNlIHRyZWUgbGlrZSBzbzoKCiAg
-d2Z4QDB4MDEgewogICAgICBjb21wYXRpYmxlID0gInNpbGFicyx3ZjIwMCI7CiAgICAgIHJlc2V0
-LWdwaW9zID0gPCZncGlvMCAxPjsKICAgICAgd2FrZXVwLWdwaW9zID0gPCZncGlvMCAyPjsKICB9
-OwoKQ2M6IErDqXLDtG1lIFBvdWlsbGVyIDxqZXJvbWUucG91aWxsZXJAc2lsYWJzLmNvbT4KU2ln
-bmVkLW9mZi1ieTogTGludXMgV2FsbGVpaiA8bGludXMud2FsbGVpakBsaW5hcm8ub3JnPgotLS0K
-Q2hhbmdlTG9nIHYyLT52MzoKLSBFUlJfQ0FTVCBub3QgUFRSX0NBU1QKQ2hhbmdlTG9nIHYxLT52
-MjoKLSBGaXhlZCBhIGNhc3QgYW5kIGEgdmFyaWFibGUgbmFtZS4KLSBJIHN0aWxsIGRvbid0IGtu
-b3cgaG93IHRvIGNvbXBpbGUgdGhpcyBidXQgaGV5IHRoZSB6ZXJvZGF5CiAgcm9ib3QgZG9lcy4K
-LS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2J1c19zcGkuYyB8IDExICsrKysrLS0tLQogZHJpdmVy
-cy9zdGFnaW5nL3dmeC9tYWluLmMgICAgfCA0MiArKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLQogZHJpdmVycy9zdGFnaW5nL3dmeC9tYWluLmggICAgfCAgMiAtLQogMyBmaWxlcyBj
-aGFuZ2VkLCA5IGluc2VydGlvbnMoKyksIDQ2IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvc3RhZ2luZy93ZngvYnVzX3NwaS5jIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9idXNfc3Bp
-LmMKaW5kZXggZThkYTYxZmIwOTZiLi44OGNhNWQ0NTNlODMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
-c3RhZ2luZy93ZngvYnVzX3NwaS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvYnVzX3NwaS5j
-CkBAIC04LDcgKzgsNiBAQAogICovCiAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+CiAjaW5jbHVk
-ZSA8bGludXgvZGVsYXkuaD4KLSNpbmNsdWRlIDxsaW51eC9ncGlvLmg+CiAjaW5jbHVkZSA8bGlu
-dXgvZ3Bpby9jb25zdW1lci5oPgogI2luY2x1ZGUgPGxpbnV4L3NwaS9zcGkuaD4KICNpbmNsdWRl
-IDxsaW51eC9pbnRlcnJ1cHQuaD4KQEAgLTIxLDEwICsyMCw2IEBACiAjaW5jbHVkZSAibWFpbi5o
-IgogI2luY2x1ZGUgImJoLmgiCiAKLXN0YXRpYyBpbnQgZ3Bpb19yZXNldCA9IC0yOwotbW9kdWxl
-X3BhcmFtKGdwaW9fcmVzZXQsIGludCwgMDY0NCk7Ci1NT0RVTEVfUEFSTV9ERVNDKGdwaW9fcmVz
-ZXQsICJncGlvIG51bWJlciBmb3IgcmVzZXQuIC0xIGZvciBub25lLiIpOwotCiAjZGVmaW5lIFNF
-VF9XUklURSAweDdGRkYgICAgICAgIC8qIHVzYWdlOiBhbmQgb3BlcmF0aW9uICovCiAjZGVmaW5l
-IFNFVF9SRUFEIDB4ODAwMCAgICAgICAgIC8qIHVzYWdlOiBvciBvcGVyYXRpb24gKi8KIApAQCAt
-MjExLDEwICsyMDYsMTQgQEAgc3RhdGljIGludCB3Znhfc3BpX3Byb2JlKHN0cnVjdCBzcGlfZGV2
-aWNlICpmdW5jKQogCQlidXMtPm5lZWRfc3dhYiA9IHRydWU7CiAJc3BpX3NldF9kcnZkYXRhKGZ1
-bmMsIGJ1cyk7CiAKLQlidXMtPmdwaW9fcmVzZXQgPSB3ZnhfZ2V0X2dwaW8oJmZ1bmMtPmRldiwg
-Z3Bpb19yZXNldCwgInJlc2V0Iik7CisJYnVzLT5ncGlvX3Jlc2V0ID0gZGV2bV9ncGlvZF9nZXRf
-b3B0aW9uYWwoJmZ1bmMtPmRldiwgInJlc2V0IgorCQkJCQkJICBHUElPRF9PVVRfSElHSCk7CisJ
-aWYgKElTX0VSUihidXMtPmdwaW9fcmVzZXQpKQorCQlyZXR1cm4gUFRSX0VSUihidXMtPmdwaW9f
-cmVzZXQpOwogCWlmICghYnVzLT5ncGlvX3Jlc2V0KSB7CiAJCWRldl93YXJuKCZmdW5jLT5kZXYs
-ICJ0cnkgdG8gbG9hZCBmaXJtd2FyZSBhbnl3YXlcbiIpOwogCX0gZWxzZSB7CisJCWdwaW9kX3Nl
-dF9jb25zdW1lcl9uYW1lKGJ1cy0+Z3Bpb19yZXNldCwgIndmeCByZXNldCIpOwogCQlpZiAoc3Bp
-X2dldF9kZXZpY2VfaWQoZnVuYyktPmRyaXZlcl9kYXRhICYgV0ZYX1JFU0VUX0lOVkVSVEVEKQog
-CQkJZ3Bpb2RfdG9nZ2xlX2FjdGl2ZV9sb3coYnVzLT5ncGlvX3Jlc2V0KTsKIAkJZ3Bpb2Rfc2V0
-X3ZhbHVlX2NhbnNsZWVwKGJ1cy0+Z3Bpb19yZXNldCwgMSk7CmRpZmYgLS1naXQgYS9kcml2ZXJz
-L3N0YWdpbmcvd2Z4L21haW4uYyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvbWFpbi5jCmluZGV4IDZi
-ZDk2ZjQ3NjM4OC4uZDkwMTY5ZmUxODUxIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvd2Z4
-L21haW4uYworKysgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L21haW4uYwpAQCAtMTMsNyArMTMsNiBA
-QAogI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgogI2luY2x1ZGUgPGxpbnV4L29mLmg+CiAjaW5j
-bHVkZSA8bGludXgvb2ZfbmV0Lmg+Ci0jaW5jbHVkZSA8bGludXgvZ3Bpby5oPgogI2luY2x1ZGUg
-PGxpbnV4L2dwaW8vY29uc3VtZXIuaD4KICNpbmNsdWRlIDxsaW51eC9tbWMvc2Rpb19mdW5jLmg+
-CiAjaW5jbHVkZSA8bGludXgvc3BpL3NwaS5oPgpAQCAtNDEsMTAgKzQwLDYgQEAgTU9EVUxFX0RF
-U0NSSVBUSU9OKCJTaWxpY29uIExhYnMgODAyLjExIFdpcmVsZXNzIExBTiBkcml2ZXIgZm9yIFdG
-eCIpOwogTU9EVUxFX0FVVEhPUigiSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBz
-aWxhYnMuY29tPiIpOwogTU9EVUxFX0xJQ0VOU0UoIkdQTCIpOwogCi1zdGF0aWMgaW50IGdwaW9f
-d2FrZXVwID0gLTI7Ci1tb2R1bGVfcGFyYW0oZ3Bpb193YWtldXAsIGludCwgMDY0NCk7Ci1NT0RV
-TEVfUEFSTV9ERVNDKGdwaW9fd2FrZXVwLCAiZ3BpbyBudW1iZXIgZm9yIHdha2V1cC4gLTEgZm9y
-IG5vbmUuIik7Ci0KICNkZWZpbmUgUkFURVRBQl9FTlQoX3JhdGUsIF9yYXRlaWQsIF9mbGFncykg
-eyBcCiAJLmJpdHJhdGUgID0gKF9yYXRlKSwgICBcCiAJLmh3X3ZhbHVlID0gKF9yYXRlaWQpLCBc
-CkBAIC0xNzAsMzggKzE2NSw2IEBAIGJvb2wgd2Z4X2FwaV9vbGRlcl90aGFuKHN0cnVjdCB3Znhf
-ZGV2ICp3ZGV2LCBpbnQgbWFqb3IsIGludCBtaW5vcikKIAlyZXR1cm4gZmFsc2U7CiB9CiAKLXN0
-cnVjdCBncGlvX2Rlc2MgKndmeF9nZXRfZ3BpbyhzdHJ1Y3QgZGV2aWNlICpkZXYsCi0JCQkgICAg
-ICAgaW50IG92ZXJyaWRlLCBjb25zdCBjaGFyICpsYWJlbCkKLXsKLQlzdHJ1Y3QgZ3Bpb19kZXNj
-ICpyZXQ7Ci0JY2hhciBsYWJlbF9idWZbMjU2XTsKLQotCWlmIChvdmVycmlkZSA+PSAwKSB7Ci0J
-CXNucHJpbnRmKGxhYmVsX2J1Ziwgc2l6ZW9mKGxhYmVsX2J1ZiksICJ3ZnhfJXMiLCBsYWJlbCk7
-Ci0JCXJldCA9IEVSUl9QVFIoZGV2bV9ncGlvX3JlcXVlc3Rfb25lKGRldiwgb3ZlcnJpZGUsCi0J
-CQkJCQkgICAgR1BJT0ZfT1VUX0lOSVRfTE9XLAotCQkJCQkJICAgIGxhYmVsX2J1ZikpOwotCQlp
-ZiAoIXJldCkKLQkJCXJldCA9IGdwaW9fdG9fZGVzYyhvdmVycmlkZSk7Ci0JfSBlbHNlIGlmIChv
-dmVycmlkZSA9PSAtMSkgewotCQlyZXQgPSBOVUxMOwotCX0gZWxzZSB7Ci0JCXJldCA9IGRldm1f
-Z3Bpb2RfZ2V0KGRldiwgbGFiZWwsIEdQSU9EX09VVF9MT1cpOwotCX0KLQlpZiAoSVNfRVJSX09S
-X05VTEwocmV0KSkgewotCQlpZiAoIXJldCB8fCBQVFJfRVJSKHJldCkgPT0gLUVOT0VOVCkKLQkJ
-CWRldl93YXJuKGRldiwgImdwaW8gJXMgaXMgbm90IGRlZmluZWRcbiIsIGxhYmVsKTsKLQkJZWxz
-ZQotCQkJZGV2X3dhcm4oZGV2LCAiZXJyb3Igd2hpbGUgcmVxdWVzdGluZyBncGlvICVzXG4iLAot
-CQkJCSBsYWJlbCk7Ci0JCXJldCA9IE5VTEw7Ci0JfSBlbHNlIHsKLQkJZGV2X2RiZyhkZXYsICJ1
-c2luZyBncGlvICVkIGZvciAlc1xuIiwKLQkJCWRlc2NfdG9fZ3BpbyhyZXQpLCBsYWJlbCk7Ci0J
-fQotCXJldHVybiByZXQ7Ci19Ci0KIC8qIE5PVEU6IHdmeF9zZW5kX3BkcygpIGRlc3Ryb3kgYnVm
-ICovCiBpbnQgd2Z4X3NlbmRfcGRzKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCB1OCAqYnVmLCBzaXpl
-X3QgbGVuKQogewpAQCAtMzQwLDcgKzMwMywxMCBAQCBzdHJ1Y3Qgd2Z4X2RldiAqd2Z4X2luaXRf
-Y29tbW9uKHN0cnVjdCBkZXZpY2UgKmRldiwKIAltZW1jcHkoJndkZXYtPnBkYXRhLCBwZGF0YSwg
-c2l6ZW9mKCpwZGF0YSkpOwogCW9mX3Byb3BlcnR5X3JlYWRfc3RyaW5nKGRldi0+b2Zfbm9kZSwg
-ImNvbmZpZy1maWxlIiwKIAkJCQkmd2Rldi0+cGRhdGEuZmlsZV9wZHMpOwotCXdkZXYtPnBkYXRh
-LmdwaW9fd2FrZXVwID0gd2Z4X2dldF9ncGlvKGRldiwgZ3Bpb193YWtldXAsICJ3YWtldXAiKTsK
-Kwl3ZGV2LT5wZGF0YS5ncGlvX3dha2V1cCA9IGRldm1fZ3Bpb2RfZ2V0KGRldiwgIndha2V1cCIs
-IEdQSU9EX0lOKTsKKwlpZiAoSVNfRVJSKHdkZXYtPnBkYXRhLmdwaW9fd2FrZXVwKSkKKwkJcmV0
-dXJuIEVSUl9DQVNUKHdkZXYtPnBkYXRhLmdwaW9fd2FrZXVwKTsKKwlncGlvZF9zZXRfY29uc3Vt
-ZXJfbmFtZSh3ZGV2LT5wZGF0YS5ncGlvX3dha2V1cCwgIndmeCB3YWtldXAiKTsKIAl3Znhfc2xf
-ZmlsbF9wZGF0YShkZXYsICZ3ZGV2LT5wZGF0YSk7CiAKIAltdXRleF9pbml0KCZ3ZGV2LT5jb25m
-X211dGV4KTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy93ZngvbWFpbi5oIGIvZHJpdmVy
-cy9zdGFnaW5nL3dmeC9tYWluLmgKaW5kZXggZjgzMmNlNDA5ZmRhLi5jNTlkMzc1ZGQzYWQgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy93ZngvbWFpbi5oCisrKyBiL2RyaXZlcnMvc3RhZ2lu
-Zy93ZngvbWFpbi5oCkBAIC0zOCw4ICszOCw2IEBAIHN0cnVjdCB3ZnhfZGV2ICp3ZnhfaW5pdF9j
-b21tb24oc3RydWN0IGRldmljZSAqZGV2LAogaW50IHdmeF9wcm9iZShzdHJ1Y3Qgd2Z4X2RldiAq
-d2Rldik7CiB2b2lkIHdmeF9yZWxlYXNlKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2KTsKIAotc3RydWN0
-IGdwaW9fZGVzYyAqd2Z4X2dldF9ncGlvKHN0cnVjdCBkZXZpY2UgKmRldiwgaW50IG92ZXJyaWRl
-LAotCQkJICAgICAgIGNvbnN0IGNoYXIgKmxhYmVsKTsKIGJvb2wgd2Z4X2FwaV9vbGRlcl90aGFu
-KHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCBpbnQgbWFqb3IsIGludCBtaW5vcik7CiBpbnQgd2Z4X3Nl
-bmRfcGRzKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2LCB1OCAqYnVmLCBzaXplX3QgbGVuKTsKIAotLSAK
-Mi4yNS40CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-ZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJp
-dmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYt
-ZGV2ZWwK
+On Sun, Jun 28, 2020 at 10:52:36AM +0200, Linus Walleij wrote:
+> The code has the functionality to insert the GPIO lines using
+> the global GPIO numbers through module parameters.
+> =
+
+> As we are clearly deprecating the use of global GPIO numbers
+> look up the GPIO descriptors from the device instead. This
+> usually falls back to device hardware descriptions using e.g.
+> device tree or ACPI. This device clearly supports device
+> tree when used over SPI for example.
+> =
+
+> For example, this can be supplied in the device tree like so:
+> =
+
+>   wfx@0x01 {
+>       compatible =3D "silabs,wf200";
+>       reset-gpios =3D <&gpio0 1>;
+>       wakeup-gpios =3D <&gpio0 2>;
+>   };
+> =
+
+> Cc: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+> ---
+> ChangeLog v2->v3:
+> - ERR_CAST not PTR_CAST
+> ChangeLog v1->v2:
+> - Fixed a cast and a variable name.
+> - I still don't know how to compile this but hey the zeroday
+>   robot does.
+
+I can build this on my desktop, and this patch still blows up the build.
+What is wrong with your setup that this doesn't build for you?
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
