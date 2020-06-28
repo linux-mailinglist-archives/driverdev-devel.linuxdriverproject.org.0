@@ -2,58 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4A5220C76C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Jun 2020 12:45:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E85220C99F
+	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Jun 2020 20:32:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9FDB12012D;
-	Sun, 28 Jun 2020 10:45:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 63B57204F4;
+	Sun, 28 Jun 2020 18:32:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AZCo3g3Teyss; Sun, 28 Jun 2020 10:45:09 +0000 (UTC)
+	with ESMTP id abpjlqdqHnMF; Sun, 28 Jun 2020 18:32:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9017F204C6;
-	Sun, 28 Jun 2020 10:45:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 635C2203EC;
+	Sun, 28 Jun 2020 18:32:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7DC341BF3DC
- for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 10:45:02 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 876CF1BF228
+ for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 18:32:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7AABA8815C
- for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 10:45:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8128A86DFC
+ for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 18:32:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dG2m8L0ervOw for <devel@linuxdriverproject.org>;
- Sun, 28 Jun 2020 10:45:02 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 227AC88163
- for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 10:45:02 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7D8DF20768;
- Sun, 28 Jun 2020 10:45:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593341102;
- bh=KpjKUXDxWiQue3Fow1c9uEPqwe7AZKvspU0yRQg5oGE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=qLEQWbjovpe/rT8Y1k8KeJCXOBebPMbKMV3DUnX2IymfKNqgDRWhmd2FMTKn3NWeJ
- kOjAqTN+BtnbDRMOX5JlIj2PSv4QFQE0uc2lE9U/YnM31Cmo32t6s//s1Y0bpor+7Y
- 56eU7BFY1fiL3HS90WPDDRPp/vr6p4CU6jXaHBYI=
-Date: Sun, 28 Jun 2020 12:44:59 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v3] staging: wfx: Get descriptors for GPIOs
-Message-ID: <20200628104459.GA314754@kroah.com>
-References: <20200628085236.707579-1-linus.walleij@linaro.org>
- <20200628104302.GA305213@kroah.com>
+ with ESMTP id RDfj0rDuyjhY for <devel@linuxdriverproject.org>;
+ Sun, 28 Jun 2020 18:32:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ej1-f65.google.com (mail-ej1-f65.google.com
+ [209.85.218.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A201B86DDE
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 18:32:42 +0000 (UTC)
+Received: by mail-ej1-f65.google.com with SMTP id w16so14422172ejj.5
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 11:32:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=C/AWghi0ggAWezCdD0yzAwGjS2bjfVCfdqGQLJ4bXU8=;
+ b=nx+0kA+ECOlB14AL7pgiSQnrsiMxEe8HCxwIzpw2ZGRZowJfqoNOtpp4pqy2G/GB6j
+ deCGnBoDWpT4ikeuzV7fKfcpkUEp8TkaA2Y3TXvFf67w5CVhsD5dEZhkWCsjjLBxDXRL
+ z6+l3hUPdMtICfRpl+DLSCiKu4qCwytIdgzaU9mz1RMzLYFGh7acjLXtsqG0S4gSh9wp
+ EwXV8YyDfU6vbcvK+YxLVvx/UmGy0VeY8kwKXVrLDHzTUMNpzEVKmoge2UrFuTTQmJMv
+ b6oKji/Su81LhtZgzkiY3ax25ipANws3bsyOPolbymdqYSHBdM67i4mSsRKxju0eqTtx
+ 4m1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=C/AWghi0ggAWezCdD0yzAwGjS2bjfVCfdqGQLJ4bXU8=;
+ b=Sg7+Rje3BCNrNzI73OWhTX0CWawUqcp8nG99x/6NS3GmBFxUFR1x3KFm5BDKna9kIn
+ mC45kcI0K+vcfkSCQs3rpMmpVvqWJRIIyGQ3VfIgbsutdgz0gQLyvP7rWYb3bbWCkhFi
+ kQxdUJW9jnKMWbUXQ4Qj4yZXgInoEqKQY1zWf68dTGjFdgHuPEtpeJU//iNGVL06u2az
+ e69ABYMLUqF/5QnsEJaH7GMjp8a3uca8vtGirNIzLwWlKG+n9JWRTpztmbpnqG1GWPJ9
+ 0ZZYFAEYZkpW3rbiOTLNWsyBMYExtb5klSrNYLW2McZ000J5wt0umQc5RaXkJKqHm5XU
+ xQUw==
+X-Gm-Message-State: AOAM531PMLdTWZrIzh6RasdR9S2tKL5fUMmq+fFNnUHjw8GHCT4GK6pf
+ gnPOv/zUk4KwxM6nuh2MbNc=
+X-Google-Smtp-Source: ABdhPJyvwPcq95vvTuR+o/TTUFOP15mBB7xzZmq1WM82o9xgVvgxv4b43wqxyszfzIqe0nboQmjAdw==
+X-Received: by 2002:a17:906:2b0e:: with SMTP id
+ a14mr10659475ejg.459.1593369160913; 
+ Sun, 28 Jun 2020 11:32:40 -0700 (PDT)
+Received: from localhost.localdomain
+ ([2a02:a03f:b7f9:7600:f145:9a83:6418:5a5c])
+ by smtp.gmail.com with ESMTPSA id v5sm7349888ejj.61.2020.06.28.11.32.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 28 Jun 2020 11:32:40 -0700 (PDT)
+From: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+To: Adham Abozaeid <adham.abozaeid@microchip.com>,
+ Ajay Singh <ajay.kathat@microchip.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging/wilc1000: let wilc_mac_xmit() to NETDEV_TX_OK
+Date: Sun, 28 Jun 2020 20:32:37 +0200
+Message-Id: <20200628183237.74749-1-luc.vanoostenryck@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200628104302.GA305213@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,41 +87,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gU3VuLCBKdW4gMjgsIDIwMjAgYXQgMTI6NDM6MDJQTSArMDIwMCwgR3JlZyBLSCB3cm90ZToK
-PiBPbiBTdW4sIEp1biAyOCwgMjAyMCBhdCAxMDo1MjozNkFNICswMjAwLCBMaW51cyBXYWxsZWlq
-IHdyb3RlOgo+ID4gVGhlIGNvZGUgaGFzIHRoZSBmdW5jdGlvbmFsaXR5IHRvIGluc2VydCB0aGUg
-R1BJTyBsaW5lcyB1c2luZwo+ID4gdGhlIGdsb2JhbCBHUElPIG51bWJlcnMgdGhyb3VnaCBtb2R1
-bGUgcGFyYW1ldGVycy4KPiA+IAo+ID4gQXMgd2UgYXJlIGNsZWFybHkgZGVwcmVjYXRpbmcgdGhl
-IHVzZSBvZiBnbG9iYWwgR1BJTyBudW1iZXJzCj4gPiBsb29rIHVwIHRoZSBHUElPIGRlc2NyaXB0
-b3JzIGZyb20gdGhlIGRldmljZSBpbnN0ZWFkLiBUaGlzCj4gPiB1c3VhbGx5IGZhbGxzIGJhY2sg
-dG8gZGV2aWNlIGhhcmR3YXJlIGRlc2NyaXB0aW9ucyB1c2luZyBlLmcuCj4gPiBkZXZpY2UgdHJl
-ZSBvciBBQ1BJLiBUaGlzIGRldmljZSBjbGVhcmx5IHN1cHBvcnRzIGRldmljZQo+ID4gdHJlZSB3
-aGVuIHVzZWQgb3ZlciBTUEkgZm9yIGV4YW1wbGUuCj4gPiAKPiA+IEZvciBleGFtcGxlLCB0aGlz
-IGNhbiBiZSBzdXBwbGllZCBpbiB0aGUgZGV2aWNlIHRyZWUgbGlrZSBzbzoKPiA+IAo+ID4gICB3
-ZnhAMHgwMSB7Cj4gPiAgICAgICBjb21wYXRpYmxlID0gInNpbGFicyx3ZjIwMCI7Cj4gPiAgICAg
-ICByZXNldC1ncGlvcyA9IDwmZ3BpbzAgMT47Cj4gPiAgICAgICB3YWtldXAtZ3Bpb3MgPSA8Jmdw
-aW8wIDI+Owo+ID4gICB9Owo+ID4gCj4gPiBDYzogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5w
-b3VpbGxlckBzaWxhYnMuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogTGludXMgV2FsbGVpaiA8bGlu
-dXMud2FsbGVpakBsaW5hcm8ub3JnPgo+ID4gLS0tCj4gPiBDaGFuZ2VMb2cgdjItPnYzOgo+ID4g
-LSBFUlJfQ0FTVCBub3QgUFRSX0NBU1QKPiA+IENoYW5nZUxvZyB2MS0+djI6Cj4gPiAtIEZpeGVk
-IGEgY2FzdCBhbmQgYSB2YXJpYWJsZSBuYW1lLgo+ID4gLSBJIHN0aWxsIGRvbid0IGtub3cgaG93
-IHRvIGNvbXBpbGUgdGhpcyBidXQgaGV5IHRoZSB6ZXJvZGF5Cj4gPiAgIHJvYm90IGRvZXMuCj4g
-Cj4gSSBjYW4gYnVpbGQgdGhpcyBvbiBteSBkZXNrdG9wLCBhbmQgdGhpcyBwYXRjaCBzdGlsbCBi
-bG93cyB1cCB0aGUgYnVpbGQuCgpPaCwgYW5kIGhlcmUncyB0aGUgYnJlYWthZ2U6CgpyaXZlcnMv
-c3RhZ2luZy93ZngvYnVzX3NwaS5jOiBJbiBmdW5jdGlvbiDigJh3Znhfc3BpX3Byb2Jl4oCZOgpk
-cml2ZXJzL3N0YWdpbmcvd2Z4L2J1c19zcGkuYzoyMDk6NjM6IGVycm9yOiBleHBlY3RlZCDigJgp
-4oCZIGJlZm9yZSDigJhHUElPRF9PVVRfSElHSOKAmQogIDIwOSB8ICBidXMtPmdwaW9fcmVzZXQg
-PSBkZXZtX2dwaW9kX2dldF9vcHRpb25hbCgmZnVuYy0+ZGV2LCAicmVzZXQiCiAgICAgIHwgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBeCiAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICApCiAgMjEwIHwgICAgICAgICBHUElPRF9PVVRfSElHSCk7CiAgICAg
-IHwgICAgICAgICB+fn5+fn5+fn5+fn5+fgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
-b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+The method ndo_start_xmit() is defined as returning an 'netdev_tx_t',
+which is a typedef for an enum type defining 'NETDEV_TX_OK' but this
+driver returns '0' instead of 'NETDEV_TX_OK'.
+
+Fix this by returning ''NETDEV_TX_OK' instead of 0.
+
+Signed-off-by: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+---
+ drivers/staging/wilc1000/netdev.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/wilc1000/netdev.c b/drivers/staging/wilc1000/netdev.c
+index fda0ab97b02c..be3ae5486f44 100644
+--- a/drivers/staging/wilc1000/netdev.c
++++ b/drivers/staging/wilc1000/netdev.c
+@@ -678,14 +678,14 @@ netdev_tx_t wilc_mac_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 
+ 	if (skb->dev != ndev) {
+ 		netdev_err(ndev, "Packet not destined to this device\n");
+-		return 0;
++		return NETDEV_TX_OK;
+ 	}
+ 
+ 	tx_data = kmalloc(sizeof(*tx_data), GFP_ATOMIC);
+ 	if (!tx_data) {
+ 		dev_kfree_skb(skb);
+ 		netif_wake_queue(ndev);
+-		return 0;
++		return NETDEV_TX_OK;
+ 	}
+ 
+ 	tx_data->buff = skb->data;
+@@ -710,7 +710,7 @@ netdev_tx_t wilc_mac_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 		srcu_read_unlock(&wilc->srcu, srcu_idx);
+ 	}
+ 
+-	return 0;
++	return NETDEV_TX_OK;
+ }
+ 
+ static int wilc_mac_close(struct net_device *ndev)
+-- 
+2.27.0
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
