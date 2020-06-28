@@ -1,78 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E85220C99F
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Jun 2020 20:32:52 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A020020C9A5
+	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Jun 2020 20:39:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 63B57204F4;
-	Sun, 28 Jun 2020 18:32:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5B0F788252;
+	Sun, 28 Jun 2020 18:39:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id abpjlqdqHnMF; Sun, 28 Jun 2020 18:32:48 +0000 (UTC)
+	with ESMTP id 1N1-La2SBWgl; Sun, 28 Jun 2020 18:39:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 635C2203EC;
-	Sun, 28 Jun 2020 18:32:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CE0FA88035;
+	Sun, 28 Jun 2020 18:39:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 876CF1BF228
- for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 18:32:43 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D269E1BF228
+ for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 18:39:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8128A86DFC
- for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 18:32:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CED6D88035
+ for <devel@linuxdriverproject.org>; Sun, 28 Jun 2020 18:39:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RDfj0rDuyjhY for <devel@linuxdriverproject.org>;
- Sun, 28 Jun 2020 18:32:43 +0000 (UTC)
+ with ESMTP id rC3v3QYM8f2V for <devel@linuxdriverproject.org>;
+ Sun, 28 Jun 2020 18:39:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f65.google.com (mail-ej1-f65.google.com
- [209.85.218.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A201B86DDE
- for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 18:32:42 +0000 (UTC)
-Received: by mail-ej1-f65.google.com with SMTP id w16so14422172ejj.5
- for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 11:32:42 -0700 (PDT)
+Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
+ [209.85.208.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7AE1987FCC
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 18:39:39 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id d18so5381525edv.6
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 11:39:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=C/AWghi0ggAWezCdD0yzAwGjS2bjfVCfdqGQLJ4bXU8=;
- b=nx+0kA+ECOlB14AL7pgiSQnrsiMxEe8HCxwIzpw2ZGRZowJfqoNOtpp4pqy2G/GB6j
- deCGnBoDWpT4ikeuzV7fKfcpkUEp8TkaA2Y3TXvFf67w5CVhsD5dEZhkWCsjjLBxDXRL
- z6+l3hUPdMtICfRpl+DLSCiKu4qCwytIdgzaU9mz1RMzLYFGh7acjLXtsqG0S4gSh9wp
- EwXV8YyDfU6vbcvK+YxLVvx/UmGy0VeY8kwKXVrLDHzTUMNpzEVKmoge2UrFuTTQmJMv
- b6oKji/Su81LhtZgzkiY3ax25ipANws3bsyOPolbymdqYSHBdM67i4mSsRKxju0eqTtx
- 4m1w==
+ bh=lm0EvFj5SQqQjjPPBO8iNtNM6ecOSgXLk09O7mbVMlw=;
+ b=AzDgpAan7U2t78PhMuTnRQwakm9/ua25ia2AGWFY6rYOUeUUiNEy9HDehVBbNLiPmU
+ wADNS+4eA9YrFDVIydHVvI3SCEU7HRYxR7+g58LfvzAlk9JGjy9G/44lWo+/b51GoLxZ
+ AsNcgQdQcDtiXscmmxcqEBgN0jQXl8Re6yuIFhifWqLONr1T9fPCEMZD+tBnjCJ4iAc5
+ ciNdDZPVUOYLny0Bhbk4tuFhdJApxf2Cr2TRGZbXMqLBcmhFQybpuNvDnWXhLSw2mXBD
+ F7jgBCFE61B9FDNbJVopmADEuubNvwfCLV80MQZunRcpyAMlHeCSYq7/aZTs/RgGPhpV
+ wq4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=C/AWghi0ggAWezCdD0yzAwGjS2bjfVCfdqGQLJ4bXU8=;
- b=Sg7+Rje3BCNrNzI73OWhTX0CWawUqcp8nG99x/6NS3GmBFxUFR1x3KFm5BDKna9kIn
- mC45kcI0K+vcfkSCQs3rpMmpVvqWJRIIyGQ3VfIgbsutdgz0gQLyvP7rWYb3bbWCkhFi
- kQxdUJW9jnKMWbUXQ4Qj4yZXgInoEqKQY1zWf68dTGjFdgHuPEtpeJU//iNGVL06u2az
- e69ABYMLUqF/5QnsEJaH7GMjp8a3uca8vtGirNIzLwWlKG+n9JWRTpztmbpnqG1GWPJ9
- 0ZZYFAEYZkpW3rbiOTLNWsyBMYExtb5klSrNYLW2McZ000J5wt0umQc5RaXkJKqHm5XU
- xQUw==
-X-Gm-Message-State: AOAM531PMLdTWZrIzh6RasdR9S2tKL5fUMmq+fFNnUHjw8GHCT4GK6pf
- gnPOv/zUk4KwxM6nuh2MbNc=
-X-Google-Smtp-Source: ABdhPJyvwPcq95vvTuR+o/TTUFOP15mBB7xzZmq1WM82o9xgVvgxv4b43wqxyszfzIqe0nboQmjAdw==
-X-Received: by 2002:a17:906:2b0e:: with SMTP id
- a14mr10659475ejg.459.1593369160913; 
- Sun, 28 Jun 2020 11:32:40 -0700 (PDT)
+ bh=lm0EvFj5SQqQjjPPBO8iNtNM6ecOSgXLk09O7mbVMlw=;
+ b=RMy4H6hAKQ/EgDcPsELD5ApnzomFPFkNIxI5sMK1UfDPiBCfodSsgQ18gPN4lfc5Mw
+ WeTfST+7I6gWixcLmSoHww4niNgihSjjlFjjzuACtLQWzOtbMBcgcjnd32gFOwC1Q3uQ
+ tvRGP7d+ecpaJJL1ABCejiJ6FczgwllPZq39qo13/hQlvPa0YKQmE+sCjfmsBAR5sUbp
+ uvGMkKAoupi5wZJ5ZbPr9R0twyS7ZbxUz2mJtm0MfbEdUuvjDf4KrYv1TbquMKJpIaMz
+ VpH/XMfmiZnN/4VsJEJsfHSUfYK6eQ3hvE2WdCJ7hLFCfUzrggy664/Ta0nr9bxKQbl8
+ 3U4g==
+X-Gm-Message-State: AOAM533IBtit6+hSW9lggmXzmUgfJ1HTqT1GrcTsJIZ13vLJ3FEOchvX
+ TBi18tTLYQjGlBtgmu7gvxo=
+X-Google-Smtp-Source: ABdhPJzkAToo93OpIPSXT3A97figlkjnzzRq/XOS6rmjm9XAFRSpYUlX+ZbyEr7BGtc3IuK4QptnAA==
+X-Received: by 2002:aa7:d297:: with SMTP id w23mr13400049edq.49.1593369577818; 
+ Sun, 28 Jun 2020 11:39:37 -0700 (PDT)
 Received: from localhost.localdomain
  ([2a02:a03f:b7f9:7600:f145:9a83:6418:5a5c])
- by smtp.gmail.com with ESMTPSA id v5sm7349888ejj.61.2020.06.28.11.32.39
+ by smtp.gmail.com with ESMTPSA id d20sm1016070edy.9.2020.06.28.11.39.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 28 Jun 2020 11:32:40 -0700 (PDT)
+ Sun, 28 Jun 2020 11:39:37 -0700 (PDT)
 From: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
-To: Adham Abozaeid <adham.abozaeid@microchip.com>,
- Ajay Singh <ajay.kathat@microchip.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging/wilc1000: let wilc_mac_xmit() to NETDEV_TX_OK
-Date: Sun, 28 Jun 2020 20:32:37 +0200
-Message-Id: <20200628183237.74749-1-luc.vanoostenryck@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: ks7010: fix ks_wlan_start_xmit()'s return type
+Date: Sun, 28 Jun 2020 20:39:26 +0200
+Message-Id: <20200628183926.74908-1-luc.vanoostenryck@gmail.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -87,54 +84,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 The method ndo_start_xmit() is defined as returning an 'netdev_tx_t',
-which is a typedef for an enum type defining 'NETDEV_TX_OK' but this
-driver returns '0' instead of 'NETDEV_TX_OK'.
+which is a typedef for an enum type, but the implementation in this
+driver returns an 'int'.
 
-Fix this by returning ''NETDEV_TX_OK' instead of 0.
+Fix this by returning 'netdev_tx_t' in this driver too and
+usind 'NETDEV_TX_OK' instead of 0 accordingly.
 
 Signed-off-by: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
 ---
- drivers/staging/wilc1000/netdev.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/ks7010/ks_wlan_net.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/netdev.c b/drivers/staging/wilc1000/netdev.c
-index fda0ab97b02c..be3ae5486f44 100644
---- a/drivers/staging/wilc1000/netdev.c
-+++ b/drivers/staging/wilc1000/netdev.c
-@@ -678,14 +678,14 @@ netdev_tx_t wilc_mac_xmit(struct sk_buff *skb, struct net_device *ndev)
- 
- 	if (skb->dev != ndev) {
- 		netdev_err(ndev, "Packet not destined to this device\n");
--		return 0;
-+		return NETDEV_TX_OK;
- 	}
- 
- 	tx_data = kmalloc(sizeof(*tx_data), GFP_ATOMIC);
- 	if (!tx_data) {
- 		dev_kfree_skb(skb);
- 		netif_wake_queue(ndev);
--		return 0;
-+		return NETDEV_TX_OK;
- 	}
- 
- 	tx_data->buff = skb->data;
-@@ -710,7 +710,7 @@ netdev_tx_t wilc_mac_xmit(struct sk_buff *skb, struct net_device *ndev)
- 		srcu_read_unlock(&wilc->srcu, srcu_idx);
- 	}
- 
--	return 0;
-+	return NETDEV_TX_OK;
+diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
+index 211dd4a11cac..334ae1ded684 100644
+--- a/drivers/staging/ks7010/ks_wlan_net.c
++++ b/drivers/staging/ks7010/ks_wlan_net.c
+@@ -46,7 +46,7 @@ struct wep_key {
+  */
+ static int ks_wlan_open(struct net_device *dev);
+ static void ks_wlan_tx_timeout(struct net_device *dev, unsigned int txqueue);
+-static int ks_wlan_start_xmit(struct sk_buff *skb, struct net_device *dev);
++static netdev_tx_t ks_wlan_start_xmit(struct sk_buff *skb, struct net_device *dev);
+ static int ks_wlan_close(struct net_device *dev);
+ static void ks_wlan_set_rx_mode(struct net_device *dev);
+ static struct net_device_stats *ks_wlan_get_stats(struct net_device *dev);
+@@ -2511,7 +2511,7 @@ void ks_wlan_tx_timeout(struct net_device *dev, unsigned int txqueue)
  }
  
- static int wilc_mac_close(struct net_device *ndev)
+ static
+-int ks_wlan_start_xmit(struct sk_buff *skb, struct net_device *dev)
++netdev_tx_t ks_wlan_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ {
+ 	struct ks_wlan_private *priv = netdev_priv(dev);
+ 	int ret;
 -- 
 2.27.0
 
