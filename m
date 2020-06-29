@@ -1,46 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DDA820CF74
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:35 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D89620CF7E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:11:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D111C8940D;
-	Mon, 29 Jun 2020 15:10:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8B22A2283A;
+	Mon, 29 Jun 2020 15:11:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L2wU9slW-bRO; Mon, 29 Jun 2020 15:10:33 +0000 (UTC)
+	with ESMTP id r8JPI7+ruFEj; Mon, 29 Jun 2020 15:11:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4914A893E3;
-	Mon, 29 Jun 2020 15:10:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 86AB1204F2;
+	Mon, 29 Jun 2020 15:10:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 587D91BF958
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:10 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 162A21BF35F
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 54BE9893C4
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:10 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 03B9F2284F
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h7kLMOvSHyKP for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 15:10:09 +0000 (UTC)
+ with ESMTP id m8KJCFexywoe for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 15:10:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C078C893C7
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:10:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 87F4220774
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:10:10 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 58767B03F;
+ by mx2.suse.de (Postfix) with ESMTP id BF806B048;
  Mon, 29 Jun 2020 15:10:08 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 37/47] staging: vchiq: Get rid of unnecessary definitions
- in vchiq_if.h
-Date: Mon, 29 Jun 2020 17:09:35 +0200
-Message-Id: <20200629150945.10720-38-nsaenzjulienne@suse.de>
+Subject: [PATCH v2 38/47] staging: vchiq: Make vchiq_add_service() local
+Date: Mon, 29 Jun 2020 17:09:36 +0200
+Message-Id: <20200629150945.10720-39-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200629150945.10720-1-nsaenzjulienne@suse.de>
 References: <20200629150945.10720-1-nsaenzjulienne@suse.de>
@@ -66,63 +65,50 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Those functions don't actually exist, nor have any use, nor the macros.
+The function is being exported although there is no use for it outside
+of vchiq's core code. Keep it local then.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- .../interface/vchiq_arm/vchiq_if.h              | 17 -----------------
- 1 file changed, 17 deletions(-)
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 3 +--
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h  | 3 ---
+ 2 files changed, 1 insertion(+), 5 deletions(-)
 
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index dddd5ea5d917..1a050ac116fa 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -271,7 +271,7 @@ enum vchiq_status vchiq_connect(struct vchiq_instance *instance)
+ }
+ EXPORT_SYMBOL(vchiq_connect);
+ 
+-enum vchiq_status vchiq_add_service(
++static enum vchiq_status vchiq_add_service(
+ 	struct vchiq_instance             *instance,
+ 	const struct vchiq_service_params *params,
+ 	unsigned int       *phandle)
+@@ -308,7 +308,6 @@ enum vchiq_status vchiq_add_service(
+ 
+ 	return status;
+ }
+-EXPORT_SYMBOL(vchiq_add_service);
+ 
+ enum vchiq_status vchiq_open_service(
+ 	struct vchiq_instance             *instance,
 diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
-index b3d4c14536bd..407e7dc31108 100644
+index 407e7dc31108..b852980447dc 100644
 --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
 +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
-@@ -8,11 +8,9 @@
- 
- #define VCHIQ_SLOT_SIZE     4096
- #define VCHIQ_MAX_MSG_SIZE  (VCHIQ_SLOT_SIZE - sizeof(struct vchiq_header))
--#define VCHIQ_CHANNEL_SIZE  VCHIQ_MAX_MSG_SIZE /* For backwards compatibility */
- 
- #define VCHIQ_MAKE_FOURCC(x0, x1, x2, x3) \
- 			(((x0) << 24) | ((x1) << 16) | ((x2) << 8) | (x3))
--#define VCHIQ_GET_SERVICE_USERDATA(service) vchiq_get_service_userdata(service)
- 
- enum vchiq_reason {
- 	VCHIQ_SERVICE_OPENED,         /* service, -, -             */
-@@ -92,7 +90,6 @@ struct vchiq_config {
- };
- 
- struct vchiq_instance;
--typedef void (*vchiq_remote_callback)(void *cb_arg);
- 
+@@ -94,9 +94,6 @@ struct vchiq_instance;
  extern enum vchiq_status vchiq_initialise(struct vchiq_instance **pinstance);
  extern enum vchiq_status vchiq_shutdown(struct vchiq_instance *instance);
-@@ -118,25 +115,11 @@ extern enum vchiq_status vchiq_bulk_transmit(unsigned int service,
- extern enum vchiq_status vchiq_bulk_receive(unsigned int service,
- 	void *data, unsigned int size, void *userdata,
- 	enum vchiq_bulk_mode mode);
--extern enum vchiq_status vchiq_bulk_transmit_handle(unsigned int service,
--	const void *offset, unsigned int size,
--	void *userdata,	enum vchiq_bulk_mode mode);
--extern enum vchiq_status vchiq_bulk_receive_handle(unsigned int service,
--	void *offset, unsigned int size, void *userdata,
--	enum vchiq_bulk_mode mode);
- extern int   vchiq_get_client_id(unsigned int service);
- extern void *vchiq_get_service_userdata(unsigned int service);
- extern void vchiq_get_config(struct vchiq_config *config);
- extern enum vchiq_status vchiq_set_service_option(unsigned int service,
- 	enum vchiq_service_option option, int value);
--
--extern enum vchiq_status vchiq_remote_use(struct vchiq_instance *instance,
--	vchiq_remote_callback callback, void *cb_arg);
--extern enum vchiq_status vchiq_remote_release(struct vchiq_instance *instance);
--
--extern enum vchiq_status vchiq_dump_phys_mem(unsigned int service,
--	void *ptr, size_t num_bytes);
--
- extern enum vchiq_status vchiq_get_peer_version(unsigned int handle,
-       short *peer_version);
- extern void vchiq_msg_queue_push(unsigned handle, struct vchiq_header *header);
+ extern enum vchiq_status vchiq_connect(struct vchiq_instance *instance);
+-extern enum vchiq_status vchiq_add_service(struct vchiq_instance *instance,
+-	const struct vchiq_service_params *params,
+-	unsigned int *pservice);
+ extern enum vchiq_status vchiq_open_service(struct vchiq_instance *instance,
+ 	const struct vchiq_service_params *params,
+ 	unsigned int *pservice);
 -- 
 2.27.0
 
