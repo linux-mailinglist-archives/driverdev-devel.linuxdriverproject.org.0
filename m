@@ -1,46 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9532A20CF6A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:24 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 33A0B20CF66
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 05B33888B0;
-	Mon, 29 Jun 2020 15:10:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D94988764E;
+	Mon, 29 Jun 2020 15:10:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rG2egrVh7ygZ; Mon, 29 Jun 2020 15:10:21 +0000 (UTC)
+	with ESMTP id qcT-v_SiYqto; Mon, 29 Jun 2020 15:10:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 72D2C887A6;
-	Mon, 29 Jun 2020 15:10:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 38FCB87626;
+	Mon, 29 Jun 2020 15:10:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 444051BF35F
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 685BF1BF35F
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 41459875EA
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:00 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 63CB4875E0
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Z_6HlLgGChdw for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 15:09:59 +0000 (UTC)
+ with ESMTP id 4SFB_MeM3MJg for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 15:10:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id ADA10875BB
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:09:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 25E3F875E2
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:10:00 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 42DA2AF70;
+ by mx2.suse.de (Postfix) with ESMTP id ABE2BAF72;
  Mon, 29 Jun 2020 15:09:58 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 13/47] staging: vc04_services: bcm2835-audio: Use
- vchi_msg_hold()
-Date: Mon, 29 Jun 2020 17:09:11 +0200
-Message-Id: <20200629150945.10720-14-nsaenzjulienne@suse.de>
+Subject: [PATCH v2 14/47] staging: vchi: Get rid of vchi_msg_dequeue()
+Date: Mon, 29 Jun 2020 17:09:12 +0200
+Message-Id: <20200629150945.10720-15-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200629150945.10720-1-nsaenzjulienne@suse.de>
 References: <20200629150945.10720-1-nsaenzjulienne@suse.de>
@@ -66,68 +65,82 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-vchi_msg_dequeue() provides the same functionality as vchi_msg_hold()
-except it copies the message data as opposed to the later which provides
-the data in place.
-
-The copying is done on a local variable, so there is no need to keep the
-message out the function's bounds, so use vchi_msg_hold() instead.
+Nobody uses it. Get rid of it.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- .../bcm2835-audio/bcm2835-vchiq.c             | 25 +++++++++++--------
- 1 file changed, 14 insertions(+), 11 deletions(-)
+ .../vc04_services/interface/vchi/vchi.h       |  7 ----
+ .../interface/vchiq_arm/vchiq_shim.c          | 39 -------------------
+ 2 files changed, 46 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-index 62eef233275f..5018b5baa009 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-@@ -94,31 +94,34 @@ static void audio_vchi_callback(void *param,
- 				void *msg_handle)
- {
- 	struct bcm2835_audio_instance *instance = param;
--	struct vc_audio_msg m;
--	int msg_len;
-+	struct vchi_held_msg handle;
-+	struct vc_audio_msg *m;
-+	unsigned size;
- 	int status;
+diff --git a/drivers/staging/vc04_services/interface/vchi/vchi.h b/drivers/staging/vc04_services/interface/vchi/vchi.h
+index ff302e6b8b1b..a369feb3a448 100644
+--- a/drivers/staging/vc04_services/interface/vchi/vchi.h
++++ b/drivers/staging/vc04_services/interface/vchi/vchi.h
+@@ -93,13 +93,6 @@ extern int32_t vchi_service_release(struct vchi_service *service);
+ extern int vchi_queue_kernel_message(struct vchi_service *service, void *data,
+ 				     unsigned int size);
  
- 	if (reason != VCHI_CALLBACK_MSG_AVAILABLE)
- 		return;
- 
--	status = vchi_msg_dequeue(instance->service,
--				  &m, sizeof(m), &msg_len, VCHI_FLAGS_NONE);
-+	status = vchi_msg_hold(instance->service, (void **)&m, &size,
-+			       VCHI_FLAGS_NONE, &handle);
- 	if (status)
- 		return;
- 
--	if (m.type == VC_AUDIO_MSG_TYPE_RESULT) {
--		instance->result = m.result.success;
-+	if (m->type == VC_AUDIO_MSG_TYPE_RESULT) {
-+		instance->result = m->result.success;
- 		complete(&instance->msg_avail_comp);
--	} else if (m.type == VC_AUDIO_MSG_TYPE_COMPLETE) {
--		if (m.complete.cookie1 != VC_AUDIO_WRITE_COOKIE1 ||
--		    m.complete.cookie2 != VC_AUDIO_WRITE_COOKIE2)
-+	} else if (m->type == VC_AUDIO_MSG_TYPE_COMPLETE) {
-+		if (m->complete.cookie1 != VC_AUDIO_WRITE_COOKIE1 ||
-+		    m->complete.cookie2 != VC_AUDIO_WRITE_COOKIE2)
- 			dev_err(instance->dev, "invalid cookie\n");
- 		else
- 			bcm2835_playback_fifo(instance->alsa_stream,
--					      m.complete.count);
-+					      m->complete.count);
- 	} else {
--		dev_err(instance->dev, "unexpected callback type=%d\n", m.type);
-+		dev_err(instance->dev, "unexpected callback type=%d\n", m->type);
- 	}
-+
-+	vchi_held_msg_release(&handle);
+-// Routine to receive a msg from a service
+-// Dequeue is equivalent to hold, copy into client buffer, release
+-extern int32_t vchi_msg_dequeue(struct vchi_service *service, void *data,
+-				uint32_t max_data_size_to_read,
+-				uint32_t *actual_msg_size,
+-				enum vchi_flags flags);
+-
+ // Routine to look at a message in place.
+ // The message is dequeued, so the caller is left holding it; the descriptor is
+ // filled in and must be released when the user has finished with the message.
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+index 39502786b41c..53e0357d4aba 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+@@ -160,45 +160,6 @@ int32_t vchi_bulk_queue_transmit(struct vchi_service *service,
  }
+ EXPORT_SYMBOL(vchi_bulk_queue_transmit);
  
- static int
+-/***********************************************************
+- * Name: vchi_msg_dequeue
+- *
+- * Arguments:  struct vchi_service *service,
+- *             void *data,
+- *             uint32_t max_data_size_to_read,
+- *             uint32_t *actual_msg_size
+- *             enum vchi_flags flags
+- *
+- * Description: Routine to dequeue a message into the supplied buffer
+- *
+- * Returns: int32_t - success == 0
+- *
+- ***********************************************************/
+-int32_t vchi_msg_dequeue(struct vchi_service *service, void *data,
+-			 uint32_t max_data_size_to_read,
+-			 uint32_t *actual_msg_size, enum vchi_flags flags)
+-{
+-	struct vchiq_header *header;
+-
+-	WARN_ON((flags != VCHI_FLAGS_NONE) &&
+-		(flags != VCHI_FLAGS_BLOCK_UNTIL_OP_COMPLETE));
+-
+-	if (flags == VCHI_FLAGS_NONE)
+-		if (vchiu_queue_is_empty(&service->queue))
+-			return -1;
+-
+-	header = vchiu_queue_pop(&service->queue);
+-
+-	memcpy(data, header->data, header->size < max_data_size_to_read ?
+-		header->size : max_data_size_to_read);
+-
+-	*actual_msg_size = header->size;
+-
+-	vchiq_release_message(service->handle, header);
+-
+-	return 0;
+-}
+-EXPORT_SYMBOL(vchi_msg_dequeue);
+ 
+ /***********************************************************
+  * Name: vchi_held_msg_release
 -- 
 2.27.0
 
