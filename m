@@ -1,86 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CBB420CE7E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 14:19:45 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 72D3620CECF
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 15:26:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5B01B25DFC;
-	Mon, 29 Jun 2020 12:19:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4C3E488888;
+	Mon, 29 Jun 2020 13:26:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e+HuEDNeyPxT; Mon, 29 Jun 2020 12:19:41 +0000 (UTC)
+	with ESMTP id mlnjYfUQI9q8; Mon, 29 Jun 2020 13:26:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5F53C204A8;
-	Mon, 29 Jun 2020 12:19:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3FF6988495;
+	Mon, 29 Jun 2020 13:26:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A82E81BF2F1
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 12:19:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CC6891BF385
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 13:26:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B2EBA893C1
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 12:19:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C6C4C884D9
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 13:26:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Yendb1eu75-w for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 12:19:32 +0000 (UTC)
+ with ESMTP id 8tH92CUx2m-2 for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 13:26:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8D23C892A3
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 12:19:32 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id 17so15892609wmo.1
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 05:19:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=BWB95FXlnWSWC7pmv6iNCOZmz4YpgGsIhyG2MjJbpo4=;
- b=N58gW58idePYUeGL1drtPtk1W+iqzF24SWCw2HBLAV0vp3qEuHkZW2dI/4ssxsgyre
- XhAlPO1jp2eEvhOD9QYPTKxs9mPdUcxOMQq/W5Ooy2mc3XBGsAC41oGpQq8+T6CnCxbA
- vkGQ3CRVkU6lJSFGwBdggPw0a1ag6LWmNwh/umdnv/G0LSbWWTCohGmlBcNHDS01jF1I
- Msp3cIpwCA27zcn/0Z9nPbZQsy5wiSzmGJSGK7hBDgl/iNP1on9n3h5LT3USl4Y6YZcO
- fzmt+JXbP+CgWRe+LEpEbT26gEEaBXVexzbh4EWcF3YLe7pOd9S52sP3K3bS4CjME0et
- PoLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=BWB95FXlnWSWC7pmv6iNCOZmz4YpgGsIhyG2MjJbpo4=;
- b=WuWL8Gg7lx+8D2ahRKdG+M4oOhr//GhNKrro8TR0uEvgfcueh49f1SW52a3MOdPRRZ
- +Srm45L4J51jjY19dbiuFG4UtS9D7lyXUeSs/5HX/eCa2smkYXyWUJhQyV83XoOaTj78
- 1XIfALn9Ek7iSPLgVCNpEjve6Ino699n5h/c+NyLxt2y8gpsydjlMK+H5b0yuIuW7Eg2
- jJmgY3S9RF/0aXFQ6CFodIQLblzGI76f+5YPEuJFha/gj+4WmvKqDjr27nRFPK2bY37x
- IIc7HoAJo2n4IENZMhz4wZZpLy1+yO4hlJccfUfX4ErRCo3Cc7OqKja9zqr3mdwh74yT
- 81mw==
-X-Gm-Message-State: AOAM531kJNd9R2rxvzkr995IEWrFL71U9MasDuHGCZ9/F0BoqGMw6Y1T
- 9a96RxySVMPNIsVc9SS/n4o=
-X-Google-Smtp-Source: ABdhPJxsJ/a8uRcZMmS5qF2+741IxPP19IPww3Tkszrt9a6qnKY1QTB+KhKgqwkCkqeaasFsid3Mnw==
-X-Received: by 2002:a1c:5f45:: with SMTP id t66mr17358596wmb.144.1593433170908; 
- Mon, 29 Jun 2020 05:19:30 -0700 (PDT)
-Received: from [192.168.178.22]
- (dslb-178-011-230-168.178.011.pools.vodafone-ip.de. [178.11.230.168])
- by smtp.gmail.com with ESMTPSA id p8sm12250146wrq.29.2020.06.29.05.19.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jun 2020 05:19:30 -0700 (PDT)
-Subject: Re: [PATCH] staging: rtl8188eu: include: ieee80211.h: fixed multiple
- blank line coding style issues.
-To: B K Karthik <bkkarthik@pesu.pes.edu>,
- Larry Finger <Larry.Finger@lwfinger.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-References: <20200629080927.ivzvczusduxtrc2g@pesu-pes-edu>
-From: Michael Straube <straube.linux@gmail.com>
-Message-ID: <e3b9a1f7-b0ad-1815-df0f-733203d09602@gmail.com>
-Date: Mon, 29 Jun 2020 14:17:03 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 81CCA88495
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 13:26:15 +0000 (UTC)
+Received: from pali.im (pali.im [31.31.79.79])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 32DDC23D6A;
+ Mon, 29 Jun 2020 13:26:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1593437175;
+ bh=hOJIPbJXPvorQtrhgyqOIr37k404XP7JJGNJCE8s+Y8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=MAX6lR6wO0zARsIgVfVNexIL/S+5tt+gFwta5XG+JfKdCl2/tbJ4ltJxUO2OPNrKa
+ GixHl/5xiVLA0/rMJNNFIA3gXA3qacdPqgt4MG48tHiIWMumQBXzIHFPtRCObTrojs
+ IE9fAP73j8zkayeTR3FtmWStj0DR0SLZ9TEq4/3I=
+Received: by pali.im (Postfix)
+ id EE3E381F; Mon, 29 Jun 2020 15:26:12 +0200 (CEST)
+Date: Mon, 29 Jun 2020 15:26:12 +0200
+From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
+To: Ajay.Kathat@microchip.com
+Subject: Re: [PATCH v7 00/17] wilc1000: move out of staging
+Message-ID: <20200629132612.nl6rfpihzlii6ilh@pali>
+References: <20200623110000.31559-1-ajay.kathat@microchip.com>
 MIME-Version: 1.0
-In-Reply-To: <20200629080927.ivzvczusduxtrc2g@pesu-pes-edu>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200623110000.31559-1-ajay.kathat@microchip.com>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,26 +67,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Venkateswara.Kaja@microchip.com,
+ Sripad.Balwadgi@microchip.com, gregkh@linuxfoundation.org,
+ linux-wireless@vger.kernel.org, Nicolas.Ferre@microchip.com,
+ johannes@sipsolutions.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Tuesday 23 June 2020 11:00:04 Ajay.Kathat@microchip.com wrote:
+> This patch series is to review and move wilc1000 driver out of staging.
+> Most of the review comments received in [1] & [2] are addressed in the
+> latest code.
+> Please review and provide your inputs.
 
-On 2020-06-29 10:09, B K Karthik wrote:
-> removed multiple blank lines to improve code readability.
-> 
-> Signed-off-by: B K Karthik <karthik.bk2000@live.com>
-> ---
->   drivers/staging/rtl8188eu/include/ieee80211.h | 9 ---------
->   1 file changed, 9 deletions(-)
+Hello Ajay! Could you please move SDIO vendor/device ID definitions from
+driver code wilc1000/sdio.c to common file include/linux/mmc/sdio_ids.h?
 
-Hi, those lines are already removed in
-
-commit 5bfb7eadc5874a3a08dd173d66a16a1ed0548444 ("staging: rtl8188eu: remove blank lines in header files")
-
-regards,
-Michael
+Similar cleanup was recently finished for all existing non-staging drivers:
+https://lore.kernel.org/linux-mmc/20200522144412.19712-1-pali@kernel.org/
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
