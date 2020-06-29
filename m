@@ -1,45 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D9EF820CF80
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:11:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id ECD3F20CF6B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7A6FC888A6;
-	Mon, 29 Jun 2020 15:11:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7DEF0893F6;
+	Mon, 29 Jun 2020 15:10:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iAwam7LzqX43; Mon, 29 Jun 2020 15:11:17 +0000 (UTC)
+	with ESMTP id xw+vrMiCvB1x; Mon, 29 Jun 2020 15:10:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C9D28888BC;
-	Mon, 29 Jun 2020 15:10:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 12CB2893CF;
+	Mon, 29 Jun 2020 15:10:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0F1851BF35F
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:15 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 221571BF35F
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 07A1C204F2
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:15 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1EF38893C4
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gvlWcZuLD+A2 for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 15:10:12 +0000 (UTC)
+ with ESMTP id puhUNUSscUDj for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 15:10:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by silver.osuosl.org (Postfix) with ESMTPS id 3128C2283A
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8EC86893CE
  for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:10:03 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id B65DAAF84;
- Mon, 29 Jun 2020 15:10:01 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 289C4AF8A;
+ Mon, 29 Jun 2020 15:10:02 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 21/47] staging: vchi: Get rid of effect less expression
-Date: Mon, 29 Jun 2020 17:09:19 +0200
-Message-Id: <20200629150945.10720-22-nsaenzjulienne@suse.de>
+Subject: [PATCH v2 22/47] staging: vchiq: Introduce vchiq_validate_params()
+Date: Mon, 29 Jun 2020 17:09:20 +0200
+Message-Id: <20200629150945.10720-23-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200629150945.10720-1-nsaenzjulienne@suse.de>
 References: <20200629150945.10720-1-nsaenzjulienne@suse.de>
@@ -65,27 +65,71 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-It was probably there to trick compilers into ignoring unused variables,
-which isn't needed in Linux.
+When adding a new service validate the configuration parameters
+provided, and remove unnecessary checks in vchi, now that we have
+validated service's config.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c | 2 --
- 1 file changed, 2 deletions(-)
+ .../interface/vchiq_arm/vchiq_core.c              | 15 +++++++++++++++
+ .../interface/vchiq_arm/vchiq_shim.c              |  4 ----
+ 2 files changed, 15 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index e0027148963e..0a2419bd305b 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -2265,6 +2265,16 @@ vchiq_init_state(struct vchiq_state *state, struct vchiq_slot_zero *slot_zero)
+ 	return VCHIQ_ERROR;
+ }
+ 
++static int vchiq_validate_params(const struct vchiq_service_params *params)
++{
++	if (!params->callback || !params->fourcc) {
++		vchiq_loud_error("Can't add service, invalid params\n");
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ /* Called from application thread when a client or server service is created. */
+ struct vchiq_service *
+ vchiq_add_service_internal(struct vchiq_state *state,
+@@ -2275,8 +2285,13 @@ vchiq_add_service_internal(struct vchiq_state *state,
+ 	struct vchiq_service *service;
+ 	struct vchiq_service __rcu **pservice = NULL;
+ 	struct vchiq_service_quota *service_quota;
++	int ret;
+ 	int i;
+ 
++	ret = vchiq_validate_params(params);
++	if (ret)
++		return NULL;
++
+ 	service = kmalloc(sizeof(*service), GFP_KERNEL);
+ 	if (!service)
+ 		return service;
 diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-index f2998c0ca5b1..b4884d0b82cd 100644
+index b4884d0b82cd..3ce4b7b5d55e 100644
 --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
 +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-@@ -288,8 +288,6 @@ static struct vchi_service *service_alloc(struct vchiq_instance *instance,
- {
- 	struct vchi_service *service = kzalloc(sizeof(struct vchi_service), GFP_KERNEL);
+@@ -271,15 +271,11 @@ static enum vchiq_status shim_callback(enum vchiq_reason reason,
+ 	struct vchi_service *service =
+ 		(struct vchi_service *)VCHIQ_GET_SERVICE_USERDATA(handle);
  
--	(void)instance;
+-	if (!service->callback)
+-		goto release;
 -
- 	if (service) {
- 		if (!vchiu_queue_init(&service->queue, 64)) {
- 			service->callback = setup->callback;
+ 	if (reason == VCHIQ_MESSAGE_AVAILABLE)
+ 		vchiu_queue_push(&service->queue, header);
+ 
+ 	service->callback(service->callback_param, reason, bulk_user);
+ 
+-release:
+ 	return VCHIQ_SUCCESS;
+ }
+ 
 -- 
 2.27.0
 
