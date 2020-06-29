@@ -1,45 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F90B20CF6E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:29 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D48320CF7A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 197B789402;
-	Mon, 29 Jun 2020 15:10:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CB50B8890E;
+	Mon, 29 Jun 2020 15:10:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EtOuTLeMO7QL; Mon, 29 Jun 2020 15:10:27 +0000 (UTC)
+	with ESMTP id zbJGU8RO9Bs9; Mon, 29 Jun 2020 15:10:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8D1F1893C7;
-	Mon, 29 Jun 2020 15:10:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B2FD7888CB;
+	Mon, 29 Jun 2020 15:10:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 15EA91BF35F
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:06 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D5DA1BF35F
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 12FBD893C7
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:06 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6A871887BD
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2CUnsUS1Tleq for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 15:10:05 +0000 (UTC)
+ with ESMTP id dGMGhDCzjWpi for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 15:10:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8122D893C4
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DF2E086DAB
  for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:10:05 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id BAA9AAF94;
- Mon, 29 Jun 2020 15:10:03 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 259F6AFA8;
+ Mon, 29 Jun 2020 15:10:04 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 26/47] staging: vchiq: Export vchiq_get_service_userdata()
-Date: Mon, 29 Jun 2020 17:09:24 +0200
-Message-Id: <20200629150945.10720-27-nsaenzjulienne@suse.de>
+Subject: [PATCH v2 27/47] staging: vchiq: Export vchiq_msg_queue_push
+Date: Mon, 29 Jun 2020 17:09:25 +0200
+Message-Id: <20200629150945.10720-28-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200629150945.10720-1-nsaenzjulienne@suse.de>
 References: <20200629150945.10720-1-nsaenzjulienne@suse.de>
@@ -65,25 +65,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This is for service's callbacks to get their private data.
+vchiq consumer drivers may need to use this function in order to get the
+benefits of vchiq's per service message queueing mechanism.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c | 1 +
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-index 2382dfb914ae..bb69c91c44b0 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-@@ -332,6 +332,7 @@ vchiq_get_service_userdata(unsigned int handle)
- 	rcu_read_unlock();
- 	return userdata;
- }
-+EXPORT_SYMBOL(vchiq_get_service_userdata);
- 
- static void
- mark_service_closing_internal(struct vchiq_service *service, int sh_thread)
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
+index 8fd51d885a18..c99caa3add57 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
+@@ -107,6 +107,7 @@ extern enum vchiq_status vchiq_use_service(unsigned int service);
+ extern enum vchiq_status vchiq_release_service(unsigned int service);
+ extern enum vchiq_status vchiq_queue_kernel_message(unsigned int handle,
+ 						    void *context, size_t size);
++extern void vchiq_msg_queue_push(unsigned handle, struct vchiq_header *header);
+ extern void           vchiq_release_message(unsigned int service,
+ 	struct vchiq_header *header);
+ extern enum vchiq_status vchiq_bulk_transmit(unsigned int service,
 -- 
 2.27.0
 
