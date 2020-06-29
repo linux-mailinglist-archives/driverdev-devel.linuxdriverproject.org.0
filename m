@@ -1,73 +1,141 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 878C320CD05
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 09:43:23 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27F8720CD14
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 09:58:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 47B5025D66;
-	Mon, 29 Jun 2020 07:43:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 57F3887582;
+	Mon, 29 Jun 2020 07:58:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QBYd7m0hozBo; Mon, 29 Jun 2020 07:43:20 +0000 (UTC)
+	with ESMTP id eRGQ3xLYDeKw; Mon, 29 Jun 2020 07:58:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AB9B120450;
-	Mon, 29 Jun 2020 07:43:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AC2288739F;
+	Mon, 29 Jun 2020 07:58:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C1B951BF399
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 07:43:17 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 67D351BF399
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 07:58:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BE921886D8
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 07:43:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6452A87434
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 07:58:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EjSr6Leopcna for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 07:43:17 +0000 (UTC)
+ with ESMTP id 2-kmXocxtFl5 for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 07:58:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
- [209.85.208.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C510788558
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 07:43:16 +0000 (UTC)
-Received: by mail-lj1-f195.google.com with SMTP id s9so16852922ljm.11
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 00:43:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BpT/uyybih139D6iFg4rZyoObC79oxCiEs6azBpE2YE=;
- b=eWOMDIcdNKPnqKniUzovXY9ZtuhkPQPMFwvo/irWwVreZ1aIiZuPeRfAqTXShwB7Sb
- RDxHc8rjn8Rztt8wazdog8y0VRuZqMXYlxePeEiyyyPvMWCqQ9uF8I3nvsY+RQPGT7B/
- dLAL+3GtmuEGEp3GfaYDKP1cjUNZKPZHWBgNtAp1zAZzO14ZIBxmHf2paDSVt2tfYmQx
- 39yHRymhOJcDTEkusaRiN2juiIBr0yOuVQuiSoEtbi7IWRlo8jkvdY3TfWBg2OOv/h4O
- 3y4cWBDi4G2UmjIM8Di0+0vGelZs1/e+q/HZ0Kl0haE4BYixGu+sTOJ+plptiYkMkReA
- lMEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BpT/uyybih139D6iFg4rZyoObC79oxCiEs6azBpE2YE=;
- b=EvwTJ/D78rHd5VA2SvAoiqSjQ2DkEKqVdvI36uFduxgk2E2HSzliFZyXmmY6SkrpXH
- SlLJ7rlPk2vDV5uXLZ4VMMg/vNuoOMRyDD/h5FuXGaQho6zRa2vsIc2lJBbdE74rscmy
- UD37SHBgta+Y5B9DPETojOtmWwWbx8FvLhnsP52pcuPzxkLw2PuknWMRpH5bnv1fyhmA
- cUj1ZM+3vO+ezryfFicgii/5910x5HjYH6Ujjl8n4v8H4c0aDwTGiYq1Cc2h2W5v1UVq
- v2aRGEkUpj+1nNmdY+tqw7gTT3uvrzBXySJ2QBwXTYi71k3k6xTOS7ZtTcTqhFYVT3mr
- aTtg==
-X-Gm-Message-State: AOAM530dryFGKWwduKEOZCOE91hliRWLmF2eXWtP+rqkHgA1wSSU0nB9
- Upg5pv9Oozwt8PN459F5rhZxgG3/JR25FeLk499CwQ==
-X-Google-Smtp-Source: ABdhPJw7yeKkbKPWP4mXfSYYqEDtum3zLDjdN8GDjfwrFqZ7YKutP6wIttG5AalTozR+fFq8ban51FPPfG1rw4k/c6E=
-X-Received: by 2002:a2e:350a:: with SMTP id z10mr7103214ljz.104.1593416594822; 
- Mon, 29 Jun 2020 00:43:14 -0700 (PDT)
+Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
+ [68.232.149.84])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 24B4A8739F
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 07:58:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1593417493; x=1624953493;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=YRxFko49T/RkTyYo5LydKE3gdEuk4o7OwqcKxxEnhm4=;
+ b=C4PXKphtal8gn4ig05KoEvBcgpZu1HS80RB08Pu+IfrWmhFjSDUNFgdQ
+ IUa7NxEwa+xBF7nPxj9BAHyymS9YO2/185JBMoHLrFgNG210Lm9TzCF05
+ ev+l8vHriDlvTFLtXxRn8DerfLTstr4qoBNBHhyoiw0sFLdVSX9masmG4
+ jQN4uXLcQPpQgpY5NE1qz1HFyZ3rx15xerdCsgkduxAM0IAM9fg6arqJr
+ 4kaGK5Ek33A4DkJdodkw3fDr2UVpO/+rCR/cF5MOEYcxKz7WJoGSsXvcW
+ ELM35ZMIx2frmVt6W89wKUsPngFqJywKbhKkNello3MvADLAkKzCdgtJ2 w==;
+IronPort-SDR: KimqwOEICyCQsndK3x2OUhXf5pbJPm2F6UnHTRODQQVfS7xU8PBwQrQm0Znt9xsjd6Y0N9CdHi
+ 67oOmV7Jzwpm4R5t0wePftcohW1D2MW2apsNCdgtUXV9ye9QAqS3TS7H9X+hpVx2X2K+qjzVrR
+ iFoMnqVZs+k+28O3P40JckZkpRmTUqcqhoh1I9huUYFb//pElmFL3DzWCyLXwq8Oz11RXycAMI
+ 32ilmqlWxsj2p1UzVr6ax74yV+wdm0PlzG8Nl81R4wrqpg5nmbZqOZifh0cTEuHNvbhHYFb/3+
+ 11A=
+X-IronPort-AV: E=Sophos;i="5.75,294,1589266800"; d="scan'208";a="80042894"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 29 Jun 2020 00:58:12 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1979.3; Mon, 29 Jun 2020 00:57:54 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.71) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3 via Frontend
+ Transport; Mon, 29 Jun 2020 00:57:55 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=oGYPx51bqXylkdw/3pS+7vHtblY3Yf/fLPAJixEIhzyyuozt9G8LAT0VlMldHERPdilBLS+ZhafJsQ8t5Z1I/IESzf8TLUNzu6YhrJwtpapEs/R+R+GmApuz7bRbUKPko1WIaSHfzullgV7U1kJDGMwROGBKBh47h64xXRK+f15iSBP3Yzz6vpJgC16AbuKFwCM/Mg60k6tdW0IIoTdVmMDLJgr6Vs2PwO/+PK89t6oDK6ROZcgFrSYU54k6l6T8QjBO7xeZEqIyxSaSjFhIXh+AaIZr2htIJXR4XCX61UC8TVojNfbm4mbC9YooRLJEIdsb+lgS3hg0RVnI0hw/wA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Xg3yeOWd2KZKnrbwXZ1HFczYIm/VMiEqtO92m6zu8Q8=;
+ b=RC0jy44JbUpA/aFz4Qe7Cv1THCekhHuv7s6CVRIwv2SM9HsTVQQoHvOhBbCOXo6oFKzo1R6xvU7pIUmvEieiaEkDgh+UGHvi0IuGNEqD/9T/Ny76mYiKBJ+5Kq24Xh/KDakJfDMUYmNAW/xxdqUDXN0Rsu6rFgGOLLCx8mDofhtLT8kFmAYgzE9uaTPtH6WRtF6xXybUUQvFVFBMGpONaEw/pdwatKF9pkDQsOVCG1O8mfrJ9Vzg6wZEEjqKRSIA9QJ67rUgG31uuvK/p2YXuxs7MxkUEppXYFzCVaTXF8gZI+CIrYd0F2Yhmkdjv6pqbxzInu+JKwni+oLnzAyz7Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Xg3yeOWd2KZKnrbwXZ1HFczYIm/VMiEqtO92m6zu8Q8=;
+ b=R3sHFEMciqcbghEgOCGyWbU0E5e23SQt2LqlKQNlQz2hFFTXsS8uOFemUbqH0mUszNz0hzgtqL+c0JedOnq2LUmCYJ2Lcsjm4MNX1X0LTxMfS26x1t/Gop9klKqVjy5alDCWv1bkLylo32F9jhXjWqSoo2JK6nYaoMEqaV5u/fc=
+Received: from MWHPR11MB0061.namprd11.prod.outlook.com (2603:10b6:301:65::37)
+ by MWHPR1101MB2205.namprd11.prod.outlook.com (2603:10b6:301:59::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3131.21; Mon, 29 Jun
+ 2020 07:58:10 +0000
+Received: from MWHPR11MB0061.namprd11.prod.outlook.com
+ ([fe80::839:6dcc:f6ca:c110]) by MWHPR11MB0061.namprd11.prod.outlook.com
+ ([fe80::839:6dcc:f6ca:c110%5]) with mapi id 15.20.3131.026; Mon, 29 Jun 2020
+ 07:58:09 +0000
+From: <Nicolas.Ferre@microchip.com>
+To: <luc.vanoostenryck@gmail.com>, <adham.abozaeid@microchip.com>,
+ <Ajay.Kathat@microchip.com>, <gregkh@linuxfoundation.org>,
+ <kvalo@codeaurora.org>
+Subject: Re: [PATCH] staging/wilc1000: let wilc_mac_xmit() to NETDEV_TX_OK
+Thread-Topic: [PATCH] staging/wilc1000: let wilc_mac_xmit() to NETDEV_TX_OK
+Thread-Index: AQHWTesHl2p6IKflZUGXS90sZNaWRg==
+Date: Mon, 29 Jun 2020 07:58:09 +0000
+Message-ID: <8a2f50dc-2cbe-64e4-438c-4320bb574f4f@microchip.com>
+References: <20200628183237.74749-1-luc.vanoostenryck@gmail.com>
+In-Reply-To: <20200628183237.74749-1-luc.vanoostenryck@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=microchip.com;
+x-originating-ip: [2a01:cb1c:8c:b200:48f4:f3d1:160f:9dcb]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 0f0df8e5-d09f-47d3-e92a-08d81c022a4c
+x-ms-traffictypediagnostic: MWHPR1101MB2205:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <MWHPR1101MB2205BDBFAE52AE9858248379E06E0@MWHPR1101MB2205.namprd11.prod.outlook.com>
+x-bypassexternaltag: True
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-forefront-prvs: 044968D9E1
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: EE/i1N9M8uVwlBptaOofCPXXkdtdLh26Wz4rR56eU3MDW2mNndNPLi2P+KszUyzGoS5RytWuZNYOY3I8kDs3ctst8zvJVlcRnXVPzy8kEIml8ubnPJriba4H5Cok2JvVi0nI4rnojspRFCtzb+i+yHtgjHy1nvZoGgNDC8ldkoifIjbo5bAgUnszsf7w5EFKk12vOeg1Y930gnAz3J4l+iYDvUr+StjbDnyRSOOgywbqAYMH34W9FbFXMTnkoPB2KriJpe3pent6Aq8eH7DjjLYTtMo24bZe8RwNaTvA5kMccBjMFqAIly1ScwrWJ40DrOdmd/mXQCnsUP91iNchXplgf7nwDQYZY40PNxQ3ffslA+awog0Q/QBx1b9uMDF/
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR11MB0061.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(366004)(136003)(39860400002)(376002)(396003)(346002)(6506007)(86362001)(53546011)(2616005)(6512007)(31696002)(83380400001)(71200400001)(54906003)(478600001)(2906002)(6486002)(4326008)(31686004)(186003)(8676002)(66476007)(66446008)(5660300002)(66556008)(76116006)(36756003)(316002)(8936002)(110136005)(66946007)(91956017)(64756008)(43740500002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: uRP9mmhXKgFaO6Pfs1kcUlAD7BuE0zPYa8rNbFLlWKTMx9+xvAXwHSPnmAUGUm+Sv8+HHGNmlxJ82Qn8Q+o4VNmRmROLH6VKSn2AzasuR6zBIbGrX3Jo3l6nRVNlzxDcYLiZJ2gcpOn5mz4/FtEzyU8VhH4kPg4u0agSWb6f4KoImNp1qg5vsPxul/rxt/Un3V16e61Fx2cQ2X8S2uUKqW5AHK2D8sDnQmA1K9JuUVf9RjN8l+pRYOfHlBJObsj71JbVje4411pzmPsIOW5zYlEwoPFScXvHJpv29Uay75KNxbe2D1nSB8iKXYQ9sEl0LkJTjIktt+HH4hqI3hTxWvRKTN2ynugaCLb9HKKZbHKneIoA31SfaegPCOGgrPjlX4Ig1b89/FzR5yFCbJQu8FPvlYXju95O5SLYCy4FL0Q/PbEDPx3C/wkV+oPd45bVzeHVBgIWe7WSKeyDT00b1D3/AZuJIV5Vc+LUMznf9nlwUZkRe6HhAXWiymMrgJzzRcELiFsqxn/GgonkD1aif+pkkC+Wdr8AjJyqckSeUhM=
+Content-ID: <0937E8E2F395B749BB5BB95C20BC8D24@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-References: <20200628085236.707579-1-linus.walleij@linaro.org>
- <20200628104302.GA305213@kroah.com>
-In-Reply-To: <20200628104302.GA305213@kroah.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 29 Jun 2020 09:43:04 +0200
-Message-ID: <CACRpkdaCUzC3b5FuHf+T2Dt+kKjcSjstckK=Wnn3BCXi6wD1sA@mail.gmail.com>
-Subject: Re: [PATCH v3] staging: wfx: Get descriptors for GPIOs
-To: Greg KH <gregkh@linuxfoundation.org>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR11MB0061.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0f0df8e5-d09f-47d3-e92a-08d81c022a4c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Jun 2020 07:58:09.5942 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: IzzZAPdFENlras2QwTFl+rgA0DAJZjVnlkN4VC05SsOdB8iJ5I4+EsCInall0/yB7Ab01OTPDShfwq5k6b/efmFeKLvE6HahH1SZOFdvtzc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1101MB2205
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,32 +148,83 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Jun 28, 2020 at 12:43 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-> On Sun, Jun 28, 2020 at 10:52:36AM +0200, Linus Walleij wrote:
+Luc,
 
-> > ChangeLog v2->v3:
-> > - ERR_CAST not PTR_CAST
-> > ChangeLog v1->v2:
-> > - Fixed a cast and a variable name.
-> > - I still don't know how to compile this but hey the zeroday
-> >   robot does.
->
-> I can build this on my desktop, and this patch still blows up the build.
-> What is wrong with your setup that this doesn't build for you?
+Thanks for your patch...
 
-Don't know exactly, probably that all my builds are so ARM-fixated.
-I'll try to learn my way around the x86 config properly so I can
-properly compile-test this, the other patch I managed to test
-after a long menuconfig session.
+On 28/06/2020 at 20:32, Luc Van Oostenryck wrote:
+> The method ndo_start_xmit() is defined as returning an 'netdev_tx_t',
+> which is a typedef for an enum type defining 'NETDEV_TX_OK' but this
+> driver returns '0' instead of 'NETDEV_TX_OK'.
+> 
+> Fix this by returning ''NETDEV_TX_OK' instead of 0.
+> 
+> Signed-off-by: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+> ---
+>   drivers/staging/wilc1000/netdev.c | 6 +++---
 
-Yours,
-Linus Walleij
+... would it be possible that you re-spin it so that it applies to the 
+new location of this driver:
+drivers/net/wireless/microchip/wilc1000/netdev.c
+
+You can rebase your patch on the wireless-driver-next tree with 
+wilc1000-move-out-of-staging branch:
+
+tree: 
+git://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-next.git
+branch: wilc1000-move-out-of-staging
+
+(Then you can also review the subject line of your patch, BTW)
+
+Thanks for your help. Best regards,
+   Nicolas
+
+>   1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/wilc1000/netdev.c b/drivers/staging/wilc1000/netdev.c
+> index fda0ab97b02c..be3ae5486f44 100644
+> --- a/drivers/staging/wilc1000/netdev.c
+> +++ b/drivers/staging/wilc1000/netdev.c
+> @@ -678,14 +678,14 @@ netdev_tx_t wilc_mac_xmit(struct sk_buff *skb, struct net_device *ndev)
+> 
+>          if (skb->dev != ndev) {
+>                  netdev_err(ndev, "Packet not destined to this device\n");
+> -               return 0;
+> +               return NETDEV_TX_OK;
+>          }
+> 
+>          tx_data = kmalloc(sizeof(*tx_data), GFP_ATOMIC);
+>          if (!tx_data) {
+>                  dev_kfree_skb(skb);
+>                  netif_wake_queue(ndev);
+> -               return 0;
+> +               return NETDEV_TX_OK;
+>          }
+> 
+>          tx_data->buff = skb->data;
+> @@ -710,7 +710,7 @@ netdev_tx_t wilc_mac_xmit(struct sk_buff *skb, struct net_device *ndev)
+>                  srcu_read_unlock(&wilc->srcu, srcu_idx);
+>          }
+> 
+> -       return 0;
+> +       return NETDEV_TX_OK;
+>   }
+> 
+>   static int wilc_mac_close(struct net_device *ndev)
+> --
+> 2.27.0
+> 
+
+
+-- 
+Nicolas Ferre
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
