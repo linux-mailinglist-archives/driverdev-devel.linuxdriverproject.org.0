@@ -1,106 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E32AA20CC43
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 06:04:15 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C835220CC9B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 07:30:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D108D8848C;
-	Mon, 29 Jun 2020 04:04:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CCE5D87555;
+	Mon, 29 Jun 2020 05:30:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hjNzsSy2KhKH; Mon, 29 Jun 2020 04:04:13 +0000 (UTC)
+	with ESMTP id 8e2a98VPfoT8; Mon, 29 Jun 2020 05:30:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2EDBF86D03;
-	Mon, 29 Jun 2020 04:04:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A9D178752D;
+	Mon, 29 Jun 2020 05:30:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 27EC81BF584
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 04:04:10 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0599B1BF3C0
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 05:30:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 231A2891F1
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 04:04:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id F3C2187533
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 05:30:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5RVHFER7XWxj for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 04:04:08 +0000 (UTC)
+ with ESMTP id vRXQNGivZSuP for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 05:30:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from EUR05-AM6-obe.outbound.protection.outlook.com
- (mail-am6eur05on2055.outbound.protection.outlook.com [40.107.22.55])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 92F87891EE
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 04:04:08 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ft6yglmTHDVtktlMCxhD3ymSmvoGXhnIDhqDHVQvr9GCpl/gEIJPktMMYuPzjL/N0uoBSlJRaAB+yDuK+yqPAwvWwW6YjTjdNg4izkml65jp6JQ2Z065mPV9S+qr31jOhCSZd/5s1xinsQej+FXh6r2cvRgPjpon8lkQRFM7CWBXLwhBuVSKGGOx6aswBKpEs1sWiXM/5NsLM/RHElyvUTGxhKB7S0MMpbHQAdOTnHjZWGnCMYefHdLIq+11h5JpPllQ9oQYyZoYoL86MIRtAjtPrzO0sc0g+/ycLyMLkNIBObcE5Iy6xDtICIM2IVXBKKLEd0Otx2NGMHo8O2JLjw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mbKZYLhhSZayRn3tTTgkkMtREn3iOksaorqNPNx6jKw=;
- b=dY4SWRWXZAR+OzMdKJESp1Fg/Yd65biXL30q/ouFgXLfc+kclwQB5Jp0csFkjDQTuROGKcCNNgHo4TLFzNseX4kFQR9nVd0lzPBAlag9j1ZWhhvgALXaRlPxpldDQKqhy0+AucSF4s+Q/Lkc5o0liWKT8P6mfJw9Hhf38LuUlTDwR9HgsorKWWJSeuI160H2ReaNEAFlPAweeBu/5GlztIcoPobffO9qHLbt8uwYG2y1an2esZnmB9Y47bjG0/BuLpcYQZOc5LzxBmpxh7eZFWcUILgTgemggfLVmmqdKrm1V9N3aG9v9K6+wxFwZdz06AT4Pd8jKoEfd6d//P2Yjg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mbKZYLhhSZayRn3tTTgkkMtREn3iOksaorqNPNx6jKw=;
- b=Sx1YMjRU9TVbQBX+5GNLK8ucd4kUsPr6T8rASCYgOmOv01+6F95YmMJPSB5r+ELfllGgp06LK3yPXXYG1paGWW/nPpk0amj/Kl+ClnHchKeP+Rkepel0pfqk6U0qTtbvx5ygGEgxlkffltdeDIF7igqfW5C80KgEOHNL/JED9u0=
-Received: from AM7PR04MB7157.eurprd04.prod.outlook.com (2603:10a6:20b:118::20)
- by AM6PR04MB5320.eurprd04.prod.outlook.com (2603:10a6:20b:3::27) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3131.20; Mon, 29 Jun
- 2020 03:31:11 +0000
-Received: from AM7PR04MB7157.eurprd04.prod.outlook.com
- ([fe80::1101:adaa:ee89:af2a]) by AM7PR04MB7157.eurprd04.prod.outlook.com
- ([fe80::1101:adaa:ee89:af2a%3]) with mapi id 15.20.3131.027; Mon, 29 Jun 2020
- 03:31:11 +0000
-From: Peter Chen <peter.chen@nxp.com>
-To: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH 1/4] usb: cdns3: gadget: Replace trace_printk by dev_dbg
-Thread-Topic: [PATCH 1/4] usb: cdns3: gadget: Replace trace_printk by dev_dbg
-Thread-Index: AQHWTFEU7Ns/P6zMj06V9UlvThL4Oaju8vKA
-Date: Mon, 29 Jun 2020 03:31:11 +0000
-Message-ID: <20200629033134.GA30684@b29397-desktop>
-References: <20200627070307.516803-1-drinkcat@chromium.org>
- <20200627070307.516803-2-drinkcat@chromium.org>
-In-Reply-To: <20200627070307.516803-2-drinkcat@chromium.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: chromium.org; dkim=none (message not signed)
- header.d=none;chromium.org; dmarc=none action=none header.from=nxp.com;
-x-originating-ip: [119.31.174.67]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 19f9d785-7766-4c26-5286-08d81bdcdec2
-x-ms-traffictypediagnostic: AM6PR04MB5320:
-x-microsoft-antispam-prvs: <AM6PR04MB53209C23033CCB5B5DE292CF8B6E0@AM6PR04MB5320.eurprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6430;
-x-forefront-prvs: 044968D9E1
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: wOY4bwYTyOMFB6cCYp4abZPoOGUTO0s+HfgQNJnOKMgSoMN5Pk6EomxRk+Sqa4yVPhN9H2xSp28MMQKnvopGWxEn+JoVfOFr2lYLN6U7zrxOYZeytPyZ3A3XjEK4mV/UPyxrebMSHn66xuptz7uczTOR/ZSiklPzC7HtlOWZV0mcD5A4LDQmsyalyNjDyGPAT1tY7jtUnDRG0uAj8+jBkNwZQhP0V7kBJGrRW5BLwrdhcChjM5m0ifl7YNmZLsFVEZ9fX1fCIpYVvke7LARciBPuvkaNO2QtZzKI4FNx0bTRK57eiQ3TL9rtFFulO61Wkds5gjALGubHD1okUI8QmQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM7PR04MB7157.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(7916004)(366004)(136003)(376002)(346002)(396003)(39860400002)(6486002)(66946007)(91956017)(76116006)(66476007)(83380400001)(66556008)(64756008)(66446008)(86362001)(54906003)(8676002)(8936002)(6506007)(53546011)(5660300002)(44832011)(186003)(4326008)(4744005)(26005)(478600001)(9686003)(6512007)(33716001)(71200400001)(33656002)(6916009)(1076003)(7416002)(7406005)(2906002)(316002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: UJBNCRkEMWrUuyeIaNECfY/rPk198XO/0DkgAID4y8CVG/DFFsq1Y+exsmDroSy319akil2gX5VNSsJT7Serzf7ZpxTYf8JuCRQUcqba3eQ3mHOQlIKbxOzUwBgDSjSOr5+5DHbqtWHYMPGcPaLbb/xpT4SGsfPxMCXqq7kYl86JdBQEMVIVw02QfWN3a5NZ5IOOgEh/nCG28qrnsCbbT8TGtGzKyylYclqh0AGLG9bDtNCKhnsv+47v9FvJ8cYYjr5vh7/YD2JKP+V3X22HL5xq+yJ2iwMorzuaS1oHJjzD6atvrNI6ujmFd+p9IGf69S2kGMm9zyv1sD7nfvtUJz1Q9k0zRcsecotU7/IJnUeDdwIvCgkLt0kC2xe7ldwXmzrMoiLmEsNo8KKWXIOAvTCn/Aud3ru3YQC8j9rCNwiLSCB+owhStUOg8qj71DONhWQGFZQt9ws1SXJvpXTBWpM7HtEZbGMTkZ1fsU/23pA=
-x-ms-exchange-transport-forked: True
-Content-ID: <8E174474B701384BA7BA90CB938E0144@eurprd04.prod.outlook.com>
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6BAD28752D
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 05:30:10 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id f2so6638175plr.8
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 22:30:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=RTxiRpvzpRJD0gmX8PNYXY4R+aOe0063njB+b000qww=;
+ b=kzY0/e2RlK+glH8fy5i/IPcEaya89/gQceJy2XZKwDnqL9d5r3Ads9fMwoiYC8dQFl
+ tGsiAxw6E1ivm5fMdTBlKLC2CDsBgTh3imQyb0NLPG4Sg5A1O/hEpKhplEcaBlh9nFfL
+ Bxft3462dCCwN5bySfhnFQFNHIAa2M3LEyxk5MmP0XFEQeHAXPnJCeza+8oisGQWe0gI
+ krWpMT5EVtn8JYUJrsUv9ZV7lUlvL56dzOCzpnbcGqzgd+vLGAM2gNEZw+2prJ4zsXrL
+ 5/s+Jtx8Qj6WEw7yVEHmakIDZ98JG8s3oDxv5v5RMik7n8iIZMkwxQk4GDBv+HcOeKOR
+ tt/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=RTxiRpvzpRJD0gmX8PNYXY4R+aOe0063njB+b000qww=;
+ b=XY2f2GyHslo2NNJyF9J52/pyiDxNXryhAO2jUfiW+t0FyNycvThwh7XbYmJMy8auwu
+ SpfHHFvEpUvV4Q03tRYTLYz8TyAWftT7X5LBsU5q3ZI/fukjeHF7jchr4ss9mssQLvlz
+ lomxm4ozyIc5GcqM2fbCHR3GkA+FKCmWMDMlpHgWvsv2DcrG5agrPCPhf1H2rlpCf0PQ
+ k6aTZALm/sCdZWam6oBE2h8BJi4nMmnwGTpkwvfi1cIYdv+x632nEWeeIKXnQUP0O43G
+ L2dAGNqoneqYSvwj+MU2sOsOtJ/Zcc5RT/6T/+1/SMon4K4hyejOLL4Py/Gu1/rPaYp0
+ CXTg==
+X-Gm-Message-State: AOAM533vqKLfLX/XwT0IcGnLhX5Lof0oxfFBOgdW+9K3iuE4uwYG32UA
+ q9WnQBKfbJy7fBSFzJPi7jQ=
+X-Google-Smtp-Source: ABdhPJzbaDbjKQDAWCduVkv0WZ13VTrbYwK7Ufzf0M0t0w6OPbJqunP2vGqA4bI1Cdxiyv0yoaY3PQ==
+X-Received: by 2002:a17:90b:381:: with SMTP id
+ ga1mr16047548pjb.232.1593408609732; 
+ Sun, 28 Jun 2020 22:30:09 -0700 (PDT)
+Received: from f3 (ae055068.dynamic.ppp.asahi-net.or.jp. [14.3.55.68])
+ by smtp.gmail.com with ESMTPSA id nl5sm19526826pjb.36.2020.06.28.22.30.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 28 Jun 2020 22:30:08 -0700 (PDT)
+Date: Mon, 29 Jun 2020 14:30:04 +0900
+From: Benjamin Poirier <benjamin.poirier@gmail.com>
+To: Coiby Xu <coiby.xu@gmail.com>
+Subject: Re: [PATCH v2 4/4] staging: qlge: replace pr_err with netdev_err
+Message-ID: <20200629053004.GA6165@f3>
+References: <20200627145857.15926-1-coiby.xu@gmail.com>
+ <20200627145857.15926-5-coiby.xu@gmail.com>
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: AM7PR04MB7157.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 19f9d785-7766-4c26-5286-08d81bdcdec2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Jun 2020 03:31:11.6315 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: gr8Ppd6maaY3NNnKCQ+jMhOUPQz4dm45gkCxdQGca7AZAdp/+jHYXfUeMOAv+ojAUhzes2JwFn5zGfzxHrCiUQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR04MB5320
+Content-Disposition: inline
+In-Reply-To: <20200627145857.15926-5-coiby.xu@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,83 +88,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "Guilherme G . Piccoli" <gpiccoli@canonical.com>,
- Rafael Aquini <aquini@redhat.com>, Sam Ravnborg <sam@ravnborg.org>,
- David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Todor Tomov <todor.too@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- David Howells <dhowells@redhat.com>, Tiezhu Yang <yangtiezhu@loongson.cn>,
- Will Deacon <will@kernel.org>,
- Christian Brauner <christian.brauner@ubuntu.com>,
- Kees Cook <keescook@chromium.org>,
- "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Stephen Rothwell <sfr@canb.auug.org.au>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Jayshri Pawar <jpawar@cadence.com>, Masahiro Yamada <masahiroy@kernel.org>,
- Alexei Starovoitov <alexei.starovoitov@gmail.com>,
- Jason Gunthorpe <jgg@ziepe.ca>, Andy Gross <agross@kernel.org>,
- Tomas Winkler <tomas.winkler@intel.com>, Alexey Dobriyan <adobriyan@gmail.com>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- Pawel Laszczak <pawell@cadence.com>, Daniel Vetter <daniel@ffwll.ch>,
- Arnd Bergmann <arnd@arndb.de>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- Chao Yu <chao@kernel.org>, Jani Nikula <jani.nikula@linux.intel.com>,
- Steven Rostedt <rostedt@goodmis.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Jaegeuk Kim <jaegeuk@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Ingo Molnar <mingo@redhat.com>,
- Roger Quadros <rogerq@ti.com>, Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-f2fs-devel@lists.sourceforge.net"
- <linux-f2fs-devel@lists.sourceforge.net>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Colin Ian King <colin.king@canonical.com>,
- Andrew Morton <akpm@linux-foundation.org>, Divya Indi <divya.indi@oracle.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
+ <GR-Linux-NIC-Dev@marvell.com>, Manish Chopra <manishc@marvell.com>,
+ gregkh@linuxfoundation.org, open list <linux-kernel@vger.kernel.org>,
+ "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>,
+ joe@perches.com, dan.carpenter@oracle.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 20-06-27 15:03:04, Nicolas Boichat wrote:
-> trace_printk should not be used in production code, replace it
-> call with dev_dbg.
-> 
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> 
-> ---
-> 
-> Unclear why a trace_printk was used in the first place, it's
-> possible that some rate-limiting is necessary here.
-> 
->  drivers/usb/cdns3/gadget.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/cdns3/gadget.c b/drivers/usb/cdns3/gadget.c
-> index 5e24c2e57c0d8c8..c303ab7c62d1651 100644
-> --- a/drivers/usb/cdns3/gadget.c
-> +++ b/drivers/usb/cdns3/gadget.c
-> @@ -421,7 +421,7 @@ static int cdns3_start_all_request(struct cdns3_device *priv_dev,
->  		if ((priv_req->flags & REQUEST_INTERNAL) ||
->  		    (priv_ep->flags & EP_TDLCHK_EN) ||
->  			priv_ep->use_streams) {
-> -			trace_printk("Blocking external request\n");
-> +			dev_dbg(priv_dev->dev, "Blocking external request\n");
->  			return ret;
->  		}
->  	}
-> -- 
-
-Reviewed-by: Peter Chen <peter.chen@nxp.com>
-
--- 
-
-Thanks,
-Peter Chen
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gMjAyMC0wNi0yNyAyMjo1OCArMDgwMCwgQ29pYnkgWHUgd3JvdGU6ClsuLi5dCj4gIHZvaWQg
+cWxfZHVtcF9xZGV2KHN0cnVjdCBxbF9hZGFwdGVyICpxZGV2KQo+ICB7Cj4gQEAgLTE2MTEsOTkg
+KzE2MTgsMTAwIEBAIHZvaWQgcWxfZHVtcF9xZGV2KHN0cnVjdCBxbF9hZGFwdGVyICpxZGV2KQo+
+ICAjaWZkZWYgUUxfQ0JfRFVNUAo+ICB2b2lkIHFsX2R1bXBfd3FpY2Ioc3RydWN0IHdxaWNiICp3
+cWljYikKPiAgewo+IC0JcHJfZXJyKCJEdW1waW5nIHdxaWNiIHN0dWZmLi4uXG4iKTsKPiAtCXBy
+X2Vycigid3FpY2ItPmxlbiA9IDB4JXhcbiIsIGxlMTZfdG9fY3B1KHdxaWNiLT5sZW4pKTsKPiAt
+CXByX2Vycigid3FpY2ItPmZsYWdzID0gJXhcbiIsIGxlMTZfdG9fY3B1KHdxaWNiLT5mbGFncykp
+Owo+IC0JcHJfZXJyKCJ3cWljYi0+Y3FfaWRfcnNzID0gJWRcbiIsCj4gLQkgICAgICAgbGUxNl90
+b19jcHUod3FpY2ItPmNxX2lkX3JzcykpOwo+IC0JcHJfZXJyKCJ3cWljYi0+cmlkID0gMHgleFxu
+IiwgbGUxNl90b19jcHUod3FpY2ItPnJpZCkpOwo+IC0JcHJfZXJyKCJ3cWljYi0+d3FfYWRkciA9
+IDB4JWxseFxuIiwKPiAtCSAgICAgICAodW5zaWduZWQgbG9uZyBsb25nKWxlNjRfdG9fY3B1KHdx
+aWNiLT5hZGRyKSk7Cj4gLQlwcl9lcnIoIndxaWNiLT53cV9jbnNtcl9pZHhfYWRkciA9IDB4JWxs
+eFxuIiwKPiAtCSAgICAgICAodW5zaWduZWQgbG9uZyBsb25nKWxlNjRfdG9fY3B1KHdxaWNiLT5j
+bnNtcl9pZHhfYWRkcikpOwo+ICsJbmV0ZGV2X2VycihxZGV2LT5uZGV2LCAiRHVtcGluZyB3cWlj
+YiBzdHVmZi4uLlxuIik7Cgpkcml2ZXJzL3N0YWdpbmcvcWxnZS9xbGdlX2RiZy5jOjE2MjE6MTM6
+IGVycm9yOiDigJhxZGV24oCZIHVuZGVjbGFyZWQgKGZpcnN0IHVzZSBpbiB0aGlzIGZ1bmN0aW9u
+KTsgZGlkIHlvdSBtZWFuIOKAmGNkZXbigJk/CiAxNjIxIHwgIG5ldGRldl9lcnIocWRldi0+bmRl
+diwgIkR1bXBpbmcgd3FpY2Igc3R1ZmYuLi5cbiIpOwogICAgICB8ICAgICAgICAgICAgIF5+fn4K
+ICAgICAgfCAgICAgICAgICAgICBjZGV2CgpbLi4uXQphbmQgbWFueSBtb3JlIGxpa2UgdGhhdAoK
+QW55d2F5cywgcWxnZV9kYmcuaCBpcyBhIGR1bXBzdGVyLiBJdCBoYXMgaHVuZHJlZHMgb2YgbGlu
+ZXMgb2YgY29kZQpiaXRyb3R0aW5nIGF3YXkgaW4gaWZkZWYgbGFuZC4gU2VlIHRoaXMgY29tbWVu
+dCBmcm9tIERhdmlkIE1pbGxlciBvbiB0aGUKdG9waWMgb2YgaWZkZWYnZWQgZGVidWdnaW5nIGNv
+ZGU6Cmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL25ldGRldi8yMDIwMDMwMy4xNDU5MTYuMTUwNjA2
+NjUxMDkyODAyMDE5My5kYXZlbUBkYXZlbWxvZnQubmV0LwpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
+cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
