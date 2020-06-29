@@ -1,46 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9468720CF5D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:03 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C7B9E20CF5F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4C98B2286F;
-	Mon, 29 Jun 2020 15:10:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 12721887A3;
+	Mon, 29 Jun 2020 15:10:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XI7sGU7itxBT; Mon, 29 Jun 2020 15:10:00 +0000 (UTC)
+	with ESMTP id I961y-feLDDA; Mon, 29 Jun 2020 15:10:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 61036204F2;
-	Mon, 29 Jun 2020 15:09:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0667988798;
+	Mon, 29 Jun 2020 15:10:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E5A6A1BF35F
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:09:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1179E1BF966
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:09:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E20A5875EA
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:09:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0EA2D88798
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:09:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8obHrIpRAoWs for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 15:09:55 +0000 (UTC)
+ with ESMTP id C7AQoCYNh4FX for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 15:09:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 237D9875E2
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:09:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 17CEA86DAB
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:09:56 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id A8C62AF44;
- Mon, 29 Jun 2020 15:09:53 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 5EB98AF2C;
+ Mon, 29 Jun 2020 15:09:54 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 03/47] staging: mmal-vchiq: Fixup vchiq-mmal include
- ordering
-Date: Mon, 29 Jun 2020 17:09:01 +0200
-Message-Id: <20200629150945.10720-4-nsaenzjulienne@suse.de>
+Subject: [PATCH v2 04/47] staging: mmal-vchiq: Fix client_component for 64 bit
+ kernel
+Date: Mon, 29 Jun 2020 17:09:02 +0200
+Message-Id: <20200629150945.10720-5-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200629150945.10720-1-nsaenzjulienne@suse.de>
 References: <20200629150945.10720-1-nsaenzjulienne@suse.de>
@@ -70,42 +70,62 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Dave Stevenson <dave.stevenson@raspberrypi.org>
 
-There were dependencies on including the headers in the correct
-order. Fix up the headers so that they include the other
-headers that they depend on themselves.
+The MMAL client_component field is used with the event
+mechanism to allow the client to identify the component for
+which the event is generated.
+The field is only 32bits in size, therefore we can't use a
+pointer to the component in a 64 bit kernel.
+
+Component handles are already held in an array per VCHI
+instance, so use the array index as the client_component handle
+to avoid having to create a new IDR for this purpose.
 
 Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.org>
 Signed-off-by: Jacopo Mondi <jacopo@jmondi.org>
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- drivers/staging/vc04_services/vchiq-mmal/mmal-msg.h   | 1 +
+ drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c | 8 +++++++-
  drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h | 1 +
- 2 files changed, 2 insertions(+)
+ 2 files changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-msg.h b/drivers/staging/vc04_services/vchiq-mmal/mmal-msg.h
-index 43cc59316f90..91f9b400d8dc 100644
---- a/drivers/staging/vc04_services/vchiq-mmal/mmal-msg.h
-+++ b/drivers/staging/vc04_services/vchiq-mmal/mmal-msg.h
-@@ -38,6 +38,7 @@
- #include "mmal-msg-common.h"
- #include "mmal-msg-format.h"
- #include "mmal-msg-port.h"
-+#include "mmal-vchiq.h"
+diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
+index 6404d4e60350..3bc04f2ea53a 100644
+--- a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
++++ b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
+@@ -943,7 +943,7 @@ static int create_component(struct vchiq_mmal_instance *instance,
  
- enum mmal_msg_type {
- 	MMAL_MSG_TYPE_QUIT = 1,
+ 	/* build component create message */
+ 	m.h.type = MMAL_MSG_TYPE_COMPONENT_CREATE;
+-	m.u.component_create.client_component = (u32)(unsigned long)component;
++	m.u.component_create.client_component = component->client_component;
+ 	strncpy(m.u.component_create.name, name,
+ 		sizeof(m.u.component_create.name));
+ 
+@@ -1662,6 +1662,12 @@ int vchiq_mmal_component_init(struct vchiq_mmal_instance *instance,
+ 		goto unlock;
+ 	}
+ 
++	/* We need a handle to reference back to our component structure.
++	 * Use the array index in instance->component rather than rolling
++	 * another IDR.
++	 */
++	component->client_component = idx;
++
+ 	ret = create_component(instance, component, name);
+ 	if (ret < 0) {
+ 		pr_err("%s: failed to create component %d (Not enough GPU mem?)\n",
 diff --git a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h
-index cca7289761c2..df608585063b 100644
+index df608585063b..1dc81ecf9268 100644
 --- a/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h
 +++ b/drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.h
-@@ -16,6 +16,7 @@
- #ifndef MMAL_VCHIQ_H
- #define MMAL_VCHIQ_H
+@@ -92,6 +92,7 @@ struct vchiq_mmal_component {
+ 	struct vchiq_mmal_port input[MAX_PORT_COUNT]; /* input ports */
+ 	struct vchiq_mmal_port output[MAX_PORT_COUNT]; /* output ports */
+ 	struct vchiq_mmal_port clock[MAX_PORT_COUNT]; /* clock ports */
++	u32 client_component;	/* Used to ref back to client struct */
+ };
  
-+#include "mmal-common.h"
- #include "mmal-msg-format.h"
- 
- #define MAX_PORT_COUNT 4
+ int vchiq_mmal_init(struct vchiq_mmal_instance **out_instance);
 -- 
 2.27.0
 
