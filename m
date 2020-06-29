@@ -1,81 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1E1820CF39
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 16:43:48 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B2F520CF6C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 30BCF875FB;
-	Mon, 29 Jun 2020 14:43:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AC1C32288F;
+	Mon, 29 Jun 2020 15:10:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ac8yIXazYru2; Mon, 29 Jun 2020 14:43:46 +0000 (UTC)
+	with ESMTP id NLVb+pz+hE9u; Mon, 29 Jun 2020 15:10:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0974486E51;
-	Mon, 29 Jun 2020 14:43:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 33D79228A0;
+	Mon, 29 Jun 2020 15:10:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1BD051BF375
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 14:43:44 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CAD501BF35F
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:09:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0D0D88724A
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 14:43:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AB5ED20774
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:09:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NNjEs971AetW for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 14:43:43 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
- [209.85.216.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 60E3986E51
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 14:43:43 +0000 (UTC)
-Received: by mail-pj1-f65.google.com with SMTP id i4so8125215pjd.0
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 07:43:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=jLORGp6VfrDrQA8PpUsXn5+mhrmQSe4/xK3Vs+cmlnA=;
- b=CN262X2BWpTSqbB1xZLnzt3P6PXjtlLIfYiIegWD8/RQLngh8QXv28Rke8t+T7ErjV
- 0xoehil5YqUKWFNf9122vK/5Bl/5hRrynVReUB3J5JnMTxyoit84XWPf/TXz1ioFztsx
- AHVRLwqLna0A2h1BfWLa6SpiqcFSvanAVPhajVV+GYLDx6Q8/BDHlmGdGmlSXzWQ/ZTX
- IFWxdidVNy4yIbMMgL2eFDLZh1gon3kWRo1AzuR3WxbQGW5UDDAdyMMFy5F/qo91WYm7
- qo+N+qOh3A/N7rL4UKaOo4Xf7ki/gntOiUCTeRRDcT02wPU4+AzS2xOjl9YaWxHfl1JS
- T3HA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=jLORGp6VfrDrQA8PpUsXn5+mhrmQSe4/xK3Vs+cmlnA=;
- b=WhWSppSio/Ia6Tzg6zF08Ez57kiqk9zdJVFjGA5+/124jqefAhUbfcMuiKIt5N8vDp
- 5f0cMpkUWpv1LtKHXpS5B76yxoksbPk16i3Z5HN3TOznedT+NWTBYvkKHfCwhsgwwsd6
- DxqHzkU+Seds45e3fnLeWG6HKsKExlZVkp7UsPQTALErOTv/ocV3AHY7b2CbFIqGHy8X
- /XQNqNb70nxS73mwAIDSWJXhsejkajSRvI84wr01cdNyknqHts9rHIkiSLifUYtpkaFi
- IKUnKYyIWDhMtHJ77kjTA5VGJXXvvf4iuAiaFCS3tAkXTqM/GkcW8siI+a3BjbIN3zu1
- 60Kg==
-X-Gm-Message-State: AOAM532rN3zZTzAqf31N+kv7ikqlTU62qi3keFFOvVG0kQl4Pbvnlg+N
- eL8OUh17snff9m2AEGzRtYEn9Q==
-X-Google-Smtp-Source: ABdhPJyirQnsQiQuhswSo/uIYV1ui5LyLyvg/sRt0KpvA9WEl1ByzdHprHAFfNPsV1N0i2xDWfS+Eg==
-X-Received: by 2002:a17:90a:a413:: with SMTP id
- y19mr4591589pjp.59.1593441822678; 
- Mon, 29 Jun 2020 07:43:42 -0700 (PDT)
-Received: from localhost ([2406:7400:73:703c:908:f18a:1156:5c38])
- by smtp.gmail.com with ESMTPSA id s9sm101062pgo.22.2020.06.29.07.43.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jun 2020 07:43:41 -0700 (PDT)
-Date: Mon, 29 Jun 2020 10:43:36 -0400
-From: B K Karthik <bkkarthik@pesu.pes.edu>
-To: B K Karthik <karthik.bk2000@live.com>
-Subject: Re: [PATCH] staging: media: atomisp: i2c: atomisp-ov2680.c: fixed a
- brace coding style issue.
-Message-ID: <20200629144336.fhykjoqrhfhifmes@pesu-pes-edu>
-References: <20200628043833.3dodctrmkec6aoe5@pesu-pes-edu>
+ with ESMTP id Oxz9F3EbbLzF for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 15:09:55 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1AF40204F2
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:09:55 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id A0D01AED7;
+ Mon, 29 Jun 2020 15:09:52 +0000 (UTC)
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH v2 00/47] staging: vchiq: Getting rid of the vchi/vchiq split
+Date: Mon, 29 Jun 2020 17:08:58 +0200
+Message-Id: <20200629150945.10720-1-nsaenzjulienne@suse.de>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-In-Reply-To: <20200628043833.3dodctrmkec6aoe5@pesu-pes-edu>
-User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,97 +54,155 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============0379332551794073242=="
+Cc: devel@driverdev.osuosl.org, kernel-list@raspberrypi.com,
+ linux-kernel@vger.kernel.org, Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+vchi acts as a mid layer between vchiq and its kernel services, while
+arguably providing little to no benefit: half of the functions exposed
+are a 1:1 copy of vchiq's, and the rest provide some functionality which
+can be easly integrated into vchiq without all the churn. Moreover it
+has been found in the past as a blockage to further fixes in vchiq as
+every change needed its vchi counterpart, if even possible.
 
---===============0379332551794073242==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="i3ho2sv5roir6t7m"
-Content-Disposition: inline
+Hence this series, which merges all vchi functionality into vchiq and
+provies a simpler and more concise API to services.
 
+I'm aware that kernel's vchi API tries to mimic its userspace
+counterpart (or vice versa). Obviously this breaks the parity, but I
+don't think it's a sane goal to have. There is little sense or gain from
+it, and adds impossible constraints to upstreaming the driver.
 
---i3ho2sv5roir6t7m
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Overall this fall short of removing 1100 lines of code, which is pretty
+neat on itself.
 
-Did this get burried in along with a bunch of other patches? I am sending t=
-his email only because I did not recieve a negetive acknowledgement on the =
-patch.
+So far it has been tested trough bcm2835-camera, audio and vchiq-test. I
+can't do much about vc-sm-cma for now as it's only available downstream,
+but I made sure not to break anything and will provide some patches for
+the RPi devs to pick-up, so as to make their life easier.
 
-I apologize if this message was hurtful / disrespectfull in any manner,
-thank you for reading this message.
+Note that in order to keep the divergence between the downstream and
+upstream versions of this as small as possible I picked up some
+mmal-vchiq patches that might not be absolutely necessary to the goal of
+the series.
 
-karthik
+Regards,
+Nicolas
 
-On 20/06/28 12:38AM, B K Karthik wrote:
-> Fixed a coding style issue.
->=20
-> Signed-off-by: B K Karthik <karthik.bk2000@live.com>
-> ---
->  drivers/staging/media/atomisp/i2c/atomisp-ov2680.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->=20
-> diff --git a/drivers/staging/media/atomisp/i2c/atomisp-ov2680.c b/drivers=
-/staging/media/atomisp/i2c/atomisp-ov2680.c
-> index 90d125ba080f..c90730513438 100644
-> --- a/drivers/staging/media/atomisp/i2c/atomisp-ov2680.c
-> +++ b/drivers/staging/media/atomisp/i2c/atomisp-ov2680.c
-> @@ -495,11 +495,11 @@ static int ov2680_h_flip(struct v4l2_subdev *sd, s3=
-2 value)
->  	ret =3D ov2680_read_reg(client, 1, OV2680_MIRROR_REG, &val);
->  	if (ret)
->  		return ret;
-> -	if (value) {
-> +	if (value)
->  		val |=3D OV2680_FLIP_MIRROR_BIT_ENABLE;
-> -	} else {
-> +	else
->  		val &=3D ~OV2680_FLIP_MIRROR_BIT_ENABLE;
-> -	}
-> +
->  	ret =3D ov2680_write_reg(client, 1,
->  			       OV2680_MIRROR_REG, val);
->  	if (ret)
-> --
-> 2.20.1
+Previous versions:
+ v1: https://www.spinics.net/lists/arm-kernel/msg816310.html
+ RFC: https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg2174964.html
 
+Changes since v1:
+ - Remove "staging: mmal-vchiq: Avoid use of bool in structures"
+ - Fix issue pointed out by Dan Carpenter
+ - Fix unwarranted include in "staging: vchiq: Move vchiq.h into include directory"
 
+---
 
---i3ho2sv5roir6t7m
-Content-Type: application/pgp-signature; name="signature.asc"
+Dave Stevenson (6):
+  staging: mmal-vchiq: Make timeout a defined parameter
+  staging: mmal-vchiq: Make a mmal_buf struct for passing parameters
+  staging: mmal-vchiq: Fixup vchiq-mmal include ordering
+  staging: mmal-vchiq: Fix client_component for 64 bit kernel
+  staging: mmal-vchiq: Always return the param size from param_get
+  staging: mmal-vchiq: If the VPU returns an error, don't negate it
 
------BEGIN PGP SIGNATURE-----
+Naushir Patuck (1):
+  staging: mmal-vchiq: Fix formatting errors in mmal_parameters.h
 
-iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl75/hgACgkQ471Q5AHe
-Z2o9Zwv/W+4Q3b66dFYLTKnXoigYHIbecsuAc0LMW5V2VSXQJ8dq+DsCFvawZMh3
-UmbKaZsk033rYkKxbc1rubekPkm1eQ0kAY2iG6j+sIPnYtlUpkLRT6fU6vclZkAO
-gliHVAn1j0aB483pR6TJY0ek+ieMra9a7cetHsDHwzjdFQsheKDmEvtwjSYo5CCY
-0gImXtqo0md5TaiCmATWZ8GA6iOFcgOA+AHxhHN/s/SJ+CmZ2Ep4JGbPiaOCZcvq
-YjwBI15IiHVfJ8DDiYbemJvZRkZdKmgh8oIFDKS0jyFcGBn6fBkhWregLs9tqhyu
-PaSgKyS4nCIXL0mSDv87nPH8pq8DTfmFb6LEA09slsKzwMBUgESCywCLX0jiWTSn
-q0Y+CaE5mdKQBkOkizun3BuHbu43YDHKTy4qHNBDnTrLdltAKFjvxfvh6Sixfsvj
-1tEo886KYQETUjkIdmdCkjs5FT5uRDF+XGjCH2MxY/uxmq/LkxMOLY/IMGjMPf9U
-TkhSrXDs
-=Ikkk
------END PGP SIGNATURE-----
+Nicolas Saenz Julienne (39):
+  staging: vchi: Get rid of all useless callback reasons
+  staging: vchi: Get rid of vchi_msg_peek()
+  staging: vchi: Get rid of struct vchi_instance_handle
+  staging: vchi: Unify struct shim_service and struct
+    vchi_service_handle
+  staging: vc04_services: bcm2835-audio: Use vchi_msg_hold()
+  staging: vchi: Get rid of vchi_msg_dequeue()
+  staging: vchi_common: Get rid of all unused definitions
+  staging: vchi: Get rid of unnecessary defines
+  staging: vc04_services: Get rid of vchi_cfg.h
+  staging: vchi: Get rid of flags argument in vchi_msg_hold()
+  staging: vchi: Use enum vchiq_bulk_mode instead of vchi's transmission
+    flags
+  staging: vchi: Use vchiq's enum vchiq_reason
+  staging: vchi: Get rid of effect less expression
+  staging: vchiq: Introduce vchiq_validate_params()
+  staging: vchiq: Move message queue into struct vchiq_service
+  staging: vchiq: Get rid of vchiq_util.h
+  staging: vchi: Expose struct vchi_service
+  staging: vchiq: Export vchiq_get_service_userdata()
+  staging: vchiq: Export vchiq_msg_queue_push
+  staging: vchi: Get rid of vchiq_shim's message callback
+  staging: vchiq: Don't use a typedef for vchiq_callback
+  staging: vchi: Use struct vchiq_service_params
+  staging: vchi: Get rid of struct vchi_service
+  staging: vchiq: Pass vchiq's message when holding a message
+  staging: vchi: Rework vchi_msg_hold() to match vchiq_msg_hold()
+  staging: vchiq: Unify fourcc definition mechanisms
+  staging: vchi: Get rid of struct vchiq_instance forward declaration
+  staging: vchi: Don't include vchiq_core.h
+  staging: vchiq: Get rid of unnecessary definitions in vchiq_if.h
+  staging: vchiq: Make vchiq_add_service() local
+  staging: vchiq: Move definitions only used by core into core header
+  staging: vchi: Get rid of vchi_bulk_queue_receive()
+  staging: vchi: Get rid of vchi_bulk_queue_transmit()
+  staging: vchi: Move vchi_queue_kernel_message() into vchiq
+  staging: vchiq: Get rid of vchi
+  staging: vchiq: Move conditional barrier definition into vchiq_core.h
+  staging: vchiq: Use vchiq.h as the main header file for services
+  staging: vchiq: Move defines into core header
+  staging: vchiq: Move vchiq.h into include directory
 
---i3ho2sv5roir6t7m--
+Phil Elwell (1):
+  staging: vchiq_arm: Add a matching unregister call
 
---===============0379332551794073242==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+ drivers/staging/vc04_services/Makefile        |   4 +-
+ .../vc04_services/bcm2835-audio/Makefile      |   2 +-
+ .../bcm2835-audio/bcm2835-vchiq.c             | 100 ++-
+ .../vc04_services/bcm2835-audio/bcm2835.h     |   4 +-
+ .../bcm2835-audio/vc_vchi_audioserv_defs.h    |   5 +-
+ .../bcm2835-camera/bcm2835-camera.c           |  66 +-
+ .../linux/raspberrypi/vchiq.h}                |  67 +-
+ .../vc04_services/interface/{vchi => }/TODO   |   0
+ .../vc04_services/interface/vchi/vchi.h       | 159 -----
+ .../vc04_services/interface/vchi/vchi_cfg.h   | 238 -------
+ .../interface/vchi/vchi_common.h              | 138 ----
+ .../vc04_services/interface/vchiq_arm/vchiq.h |  21 -
+ .../interface/vchiq_arm/vchiq_2835_arm.c      |   1 +
+ .../interface/vchiq_arm/vchiq_arm.c           |  88 ++-
+ .../interface/vchiq_arm/vchiq_core.c          |  97 ++-
+ .../interface/vchiq_arm/vchiq_core.h          |  46 +-
+ .../interface/vchiq_arm/vchiq_ioctl.h         |   2 +-
+ .../interface/vchiq_arm/vchiq_shim.c          | 617 ------------------
+ .../interface/vchiq_arm/vchiq_util.c          |  85 ---
+ .../interface/vchiq_arm/vchiq_util.h          |  50 --
+ .../staging/vc04_services/vchiq-mmal/Makefile |   1 +
+ .../vc04_services/vchiq-mmal/mmal-common.h    |   5 +
+ .../vc04_services/vchiq-mmal/mmal-msg.h       |   2 +-
+ .../vchiq-mmal/mmal-parameters.h              |  32 +-
+ .../vc04_services/vchiq-mmal/mmal-vchiq.c     | 228 ++++---
+ .../vc04_services/vchiq-mmal/mmal-vchiq.h     |   5 +-
+ 26 files changed, 458 insertions(+), 1605 deletions(-)
+ rename drivers/staging/vc04_services/{interface/vchiq_arm/vchiq_if.h => include/linux/raspberrypi/vchiq.h} (56%)
+ rename drivers/staging/vc04_services/interface/{vchi => }/TODO (100%)
+ delete mode 100644 drivers/staging/vc04_services/interface/vchi/vchi.h
+ delete mode 100644 drivers/staging/vc04_services/interface/vchi/vchi_cfg.h
+ delete mode 100644 drivers/staging/vc04_services/interface/vchi/vchi_common.h
+ delete mode 100644 drivers/staging/vc04_services/interface/vchiq_arm/vchiq.h
+ delete mode 100644 drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+ delete mode 100644 drivers/staging/vc04_services/interface/vchiq_arm/vchiq_util.c
+ delete mode 100644 drivers/staging/vc04_services/interface/vchiq_arm/vchiq_util.h
+
+-- 
+2.27.0
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0379332551794073242==--
