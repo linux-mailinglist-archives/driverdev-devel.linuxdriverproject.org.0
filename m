@@ -1,45 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33A0B20CF66
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B10D620CF67
 	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 17:10:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D94988764E;
-	Mon, 29 Jun 2020 15:10:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 28BF1893DD;
+	Mon, 29 Jun 2020 15:10:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qcT-v_SiYqto; Mon, 29 Jun 2020 15:10:17 +0000 (UTC)
+	with ESMTP id 41FqGEFsWZkT; Mon, 29 Jun 2020 15:10:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 38FCB87626;
-	Mon, 29 Jun 2020 15:10:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9FBF2893D2;
+	Mon, 29 Jun 2020 15:10:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 685BF1BF35F
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 444D91BF35F
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 63CB4875E0
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:01 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 41701875E2
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 15:10:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4SFB_MeM3MJg for <devel@linuxdriverproject.org>;
+ with ESMTP id 09qLh9f73IRF for <devel@linuxdriverproject.org>;
  Mon, 29 Jun 2020 15:10:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 25E3F875E2
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 88843875BB
  for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 15:10:00 +0000 (UTC)
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id ABE2BAF72;
- Mon, 29 Jun 2020 15:09:58 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 13B0FAF76;
+ Mon, 29 Jun 2020 15:09:59 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v2 14/47] staging: vchi: Get rid of vchi_msg_dequeue()
-Date: Mon, 29 Jun 2020 17:09:12 +0200
-Message-Id: <20200629150945.10720-15-nsaenzjulienne@suse.de>
+Subject: [PATCH v2 15/47] staging: vchi_common: Get rid of all unused
+ definitions
+Date: Mon, 29 Jun 2020 17:09:13 +0200
+Message-Id: <20200629150945.10720-16-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200629150945.10720-1-nsaenzjulienne@suse.de>
 References: <20200629150945.10720-1-nsaenzjulienne@suse.de>
@@ -65,82 +66,101 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Nobody uses it. Get rid of it.
+There is a series of structures and enums defined but never used. Get
+rid of them.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
- .../vc04_services/interface/vchi/vchi.h       |  7 ----
- .../interface/vchiq_arm/vchiq_shim.c          | 39 -------------------
- 2 files changed, 46 deletions(-)
+ .../interface/vchi/vchi_common.h              | 65 -------------------
+ 1 file changed, 65 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchi/vchi.h b/drivers/staging/vc04_services/interface/vchi/vchi.h
-index ff302e6b8b1b..a369feb3a448 100644
---- a/drivers/staging/vc04_services/interface/vchi/vchi.h
-+++ b/drivers/staging/vc04_services/interface/vchi/vchi.h
-@@ -93,13 +93,6 @@ extern int32_t vchi_service_release(struct vchi_service *service);
- extern int vchi_queue_kernel_message(struct vchi_service *service, void *data,
- 				     unsigned int size);
+diff --git a/drivers/staging/vc04_services/interface/vchi/vchi_common.h b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
+index 0f79bea4757d..e07376fe4dfd 100644
+--- a/drivers/staging/vc04_services/interface/vchi/vchi_common.h
++++ b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
+@@ -10,23 +10,7 @@ enum vchi_flags {
+ 	VCHI_FLAGS_BLOCK_UNTIL_OP_COMPLETE   = 0x1,   // waits for message to be received, or sent (NB. not the same as being seen on other side)
+ 	VCHI_FLAGS_CALLBACK_WHEN_OP_COMPLETE = 0x2,   // run a callback when message sent
+ 	VCHI_FLAGS_BLOCK_UNTIL_QUEUED        = 0x4,   // return once the transfer is in a queue ready to go
+-	VCHI_FLAGS_ALLOW_PARTIAL             = 0x8,
+ 	VCHI_FLAGS_BLOCK_UNTIL_DATA_READ     = 0x10,
+-	VCHI_FLAGS_CALLBACK_WHEN_DATA_READ   = 0x20,
+-
+-	VCHI_FLAGS_ALIGN_SLOT            = 0x000080,  // internal use only
+-	VCHI_FLAGS_BULK_AUX_QUEUED       = 0x010000,  // internal use only
+-	VCHI_FLAGS_BULK_AUX_COMPLETE     = 0x020000,  // internal use only
+-	VCHI_FLAGS_BULK_DATA_QUEUED      = 0x040000,  // internal use only
+-	VCHI_FLAGS_BULK_DATA_COMPLETE    = 0x080000,  // internal use only
+-	VCHI_FLAGS_INTERNAL              = 0xFF0000
+-};
+-
+-// constants for vchi_crc_control()
+-enum vchi_crc_control {
+-	VCHI_CRC_NOTHING = -1,
+-	VCHI_CRC_PER_SERVICE = 0,
+-	VCHI_CRC_EVERYTHING = 1,
+ };
  
--// Routine to receive a msg from a service
--// Dequeue is equivalent to hold, copy into client buffer, release
--extern int32_t vchi_msg_dequeue(struct vchi_service *service, void *data,
--				uint32_t max_data_size_to_read,
--				uint32_t *actual_msg_size,
--				enum vchi_flags flags);
--
- // Routine to look at a message in place.
- // The message is dequeued, so the caller is left holding it; the descriptor is
- // filled in and must be released when the user has finished with the message.
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-index 39502786b41c..53e0357d4aba 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-@@ -160,45 +160,6 @@ int32_t vchi_bulk_queue_transmit(struct vchi_service *service,
- }
- EXPORT_SYMBOL(vchi_bulk_queue_transmit);
+ //callback reasons when an event occurs on a service
+@@ -47,58 +31,9 @@ enum vchi_callback_reason {
+ 	VCHI_CALLBACK_BULK_RECEIVE_ABORTED,
+ };
  
--/***********************************************************
-- * Name: vchi_msg_dequeue
-- *
-- * Arguments:  struct vchi_service *service,
-- *             void *data,
-- *             uint32_t max_data_size_to_read,
-- *             uint32_t *actual_msg_size
-- *             enum vchi_flags flags
-- *
-- * Description: Routine to dequeue a message into the supplied buffer
-- *
-- * Returns: int32_t - success == 0
-- *
-- ***********************************************************/
--int32_t vchi_msg_dequeue(struct vchi_service *service, void *data,
--			 uint32_t max_data_size_to_read,
--			 uint32_t *actual_msg_size, enum vchi_flags flags)
--{
--	struct vchiq_header *header;
+-// service control options
+-enum vchi_service_option {
+-	VCHI_SERVICE_OPTION_MIN,
 -
--	WARN_ON((flags != VCHI_FLAGS_NONE) &&
--		(flags != VCHI_FLAGS_BLOCK_UNTIL_OP_COMPLETE));
+-	VCHI_SERVICE_OPTION_TRACE,
+-	VCHI_SERVICE_OPTION_SYNCHRONOUS,
 -
--	if (flags == VCHI_FLAGS_NONE)
--		if (vchiu_queue_is_empty(&service->queue))
--			return -1;
+-	VCHI_SERVICE_OPTION_MAX
+-};
 -
--	header = vchiu_queue_pop(&service->queue);
--
--	memcpy(data, header->data, header->size < max_data_size_to_read ?
--		header->size : max_data_size_to_read);
--
--	*actual_msg_size = header->size;
--
--	vchiq_release_message(service->handle, header);
--
--	return 0;
--}
--EXPORT_SYMBOL(vchi_msg_dequeue);
+ //Callback used by all services / bulk transfers
+ typedef void (*vchi_callback)(void *callback_param, //my service local param
+ 			      enum vchi_callback_reason reason,
+ 			      void *handle); //for transmitting msg's only
  
- /***********************************************************
-  * Name: vchi_held_msg_release
+-/*
+- * Define vector struct for scatter-gather (vector) operations
+- * Vectors can be nested - if a vector element has negative length, then
+- * the data pointer is treated as pointing to another vector array, with
+- * '-vec_len' elements. Thus to append a header onto an existing vector,
+- * you can do this:
+- *
+- * void foo(const struct vchi_msg_vector *v, int n)
+- * {
+- *    struct vchi_msg_vector nv[2];
+- *    nv[0].vec_base = my_header;
+- *    nv[0].vec_len = sizeof my_header;
+- *    nv[1].vec_base = v;
+- *    nv[1].vec_len = -n;
+- *    ...
+- *
+- */
+-struct vchi_msg_vector {
+-	const void *vec_base;
+-	int32_t vec_len;
+-};
+-
+-/*
+- * Iterator structure for reading ahead through received message queue.
+- * Allocated by client, initialised by vchi_msg_look_ahead. Fields are for
+- * internal VCHI use only.
+- * Iterates over messages in queue at the instant of the call to
+- * vchi_msg_lookahead - will not proceed to messages received since.
+- * Behaviour is undefined if an iterator is used again after messages for that
+- * service are removed/dequeued by any means other than vchi_msg_iter_...
+- * calls on the iterator itself.
+- */
+-struct vchi_msg_iter {
+-	struct opaque_vchi_service_t *service;
+-	void *last;
+-	void *next;
+-	void *remove;
+-};
+-
+ #endif // VCHI_COMMON_H_
 -- 
 2.27.0
 
