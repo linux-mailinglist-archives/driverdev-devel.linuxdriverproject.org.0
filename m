@@ -1,81 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C835220CC9B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 07:30:19 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69BAB20CCA1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jun 2020 07:57:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CCE5D87555;
-	Mon, 29 Jun 2020 05:30:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1DA588934B;
+	Mon, 29 Jun 2020 05:57:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8e2a98VPfoT8; Mon, 29 Jun 2020 05:30:17 +0000 (UTC)
+	with ESMTP id 8FwG4x9o1KMf; Mon, 29 Jun 2020 05:57:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A9D178752D;
-	Mon, 29 Jun 2020 05:30:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8846888C45;
+	Mon, 29 Jun 2020 05:57:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0599B1BF3C0
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 05:30:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0ADB01BF3C0
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 05:57:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F3C2187533
- for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 05:30:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 07C9185F8D
+ for <devel@linuxdriverproject.org>; Mon, 29 Jun 2020 05:57:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vRXQNGivZSuP for <devel@linuxdriverproject.org>;
- Mon, 29 Jun 2020 05:30:10 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6BAD28752D
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 05:30:10 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id f2so6638175plr.8
- for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 22:30:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=RTxiRpvzpRJD0gmX8PNYXY4R+aOe0063njB+b000qww=;
- b=kzY0/e2RlK+glH8fy5i/IPcEaya89/gQceJy2XZKwDnqL9d5r3Ads9fMwoiYC8dQFl
- tGsiAxw6E1ivm5fMdTBlKLC2CDsBgTh3imQyb0NLPG4Sg5A1O/hEpKhplEcaBlh9nFfL
- Bxft3462dCCwN5bySfhnFQFNHIAa2M3LEyxk5MmP0XFEQeHAXPnJCeza+8oisGQWe0gI
- krWpMT5EVtn8JYUJrsUv9ZV7lUlvL56dzOCzpnbcGqzgd+vLGAM2gNEZw+2prJ4zsXrL
- 5/s+Jtx8Qj6WEw7yVEHmakIDZ98JG8s3oDxv5v5RMik7n8iIZMkwxQk4GDBv+HcOeKOR
- tt/Q==
+ with ESMTP id z2N0nWMlUvCH for <devel@linuxdriverproject.org>;
+ Mon, 29 Jun 2020 05:57:39 +0000 (UTC)
+X-Greylist: delayed 00:22:47 by SQLgrey-1.7.6
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4362985F74
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 05:57:39 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id f9so7443673pfn.0
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jun 2020 22:57:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
+ h=from:date:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=PLzwnsru7uXe97PgGUdN3v/8H1BV8GdZHweH5WV3o2U=;
+ b=JC4covp7h9MQ3mBo81HAG9L6bvM7ALyvFFOlzv1szglIjAQAgR6eIwR4u9QSJo808B
+ 8onNGyokVvlDJsQutaNoEmLLINhSi0ekzZsiVYMMBy9Yu5lx5RHlp1OdUJs3h+yAmYGT
+ ge6s0nXoIZQ2+qd4gkxbMXRzHO+E/Saj/nKyqmmj/2mCCXwqJq6/n6Z1Vc8wUwl1Qfmg
+ ywResd9LwvA+CRCIoSSTIrR/ZkSl0vUF9fH2KYIfAhC3lztDOiUTJZKgFmly2lO/WDRG
+ vB4BZVVn8FUgEa8rIUF0Lumknwvl1VPXdz7u5YGv+jP/Zyl7rQzFD3VtCHgKy7PlADXJ
+ NCxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=RTxiRpvzpRJD0gmX8PNYXY4R+aOe0063njB+b000qww=;
- b=XY2f2GyHslo2NNJyF9J52/pyiDxNXryhAO2jUfiW+t0FyNycvThwh7XbYmJMy8auwu
- SpfHHFvEpUvV4Q03tRYTLYz8TyAWftT7X5LBsU5q3ZI/fukjeHF7jchr4ss9mssQLvlz
- lomxm4ozyIc5GcqM2fbCHR3GkA+FKCmWMDMlpHgWvsv2DcrG5agrPCPhf1H2rlpCf0PQ
- k6aTZALm/sCdZWam6oBE2h8BJi4nMmnwGTpkwvfi1cIYdv+x632nEWeeIKXnQUP0O43G
- L2dAGNqoneqYSvwj+MU2sOsOtJ/Zcc5RT/6T/+1/SMon4K4hyejOLL4Py/Gu1/rPaYp0
- CXTg==
-X-Gm-Message-State: AOAM533vqKLfLX/XwT0IcGnLhX5Lof0oxfFBOgdW+9K3iuE4uwYG32UA
- q9WnQBKfbJy7fBSFzJPi7jQ=
-X-Google-Smtp-Source: ABdhPJzbaDbjKQDAWCduVkv0WZ13VTrbYwK7Ufzf0M0t0w6OPbJqunP2vGqA4bI1Cdxiyv0yoaY3PQ==
-X-Received: by 2002:a17:90b:381:: with SMTP id
- ga1mr16047548pjb.232.1593408609732; 
- Sun, 28 Jun 2020 22:30:09 -0700 (PDT)
-Received: from f3 (ae055068.dynamic.ppp.asahi-net.or.jp. [14.3.55.68])
- by smtp.gmail.com with ESMTPSA id nl5sm19526826pjb.36.2020.06.28.22.30.06
+ h=x-gm-message-state:from:date:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=PLzwnsru7uXe97PgGUdN3v/8H1BV8GdZHweH5WV3o2U=;
+ b=MhM30AMuz7AYeWR8kgnewpO76SVuqfr2nP4oYM8V/LYwM5NHQx4BiV7ylZgJ3zkpaT
+ PcYOgVDDtmnnA2GCUyxfVjbpG1EAFgLbbek6s1aQMJFVUaJ6YBhl0X2HIH/sPNSSGpqc
+ V45tYTkqSpg7KtJkQvYm0LwLrhiOktkM9uC7R+OZAnmX79FrnlxBfcFIdjHZbe9bkHMr
+ FRz+5T9DGxd5WDNlw44WWg+fPFTyRpfpNBetMOJm5/7myl4PyhgeNR3JR7lxnCJqy5i8
+ fAG951ckyfIWeFCgbXn/LzSCx9TO5vgyjqNGVdlVUS8vflP0sVt5f4ZBK1GjbW/+2Szw
+ 0MXA==
+X-Gm-Message-State: AOAM530f/SL3mMqQEYgzk5KRHvIYFN6p4GMpL8Mae8jeMS4lrvWjUjh6
+ i1mbLKj5lsoTKd+DwjwdmRvYc2gI5+OllQ==
+X-Google-Smtp-Source: ABdhPJy2baizvtZuar/8Tzvq2EPS2YQ/BGUWe9ZloTvm/n4kPDa662zfVUL6W0omlAfsTOfrPFo/1w==
+X-Received: by 2002:a63:1119:: with SMTP id g25mr8721160pgl.126.1593408891526; 
+ Sun, 28 Jun 2020 22:34:51 -0700 (PDT)
+Received: from localhost ([2406:7400:73:703c:908:f18a:1156:5c38])
+ by smtp.gmail.com with ESMTPSA id fv7sm14248389pjb.22.2020.06.28.22.34.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 28 Jun 2020 22:30:08 -0700 (PDT)
-Date: Mon, 29 Jun 2020 14:30:04 +0900
-From: Benjamin Poirier <benjamin.poirier@gmail.com>
-To: Coiby Xu <coiby.xu@gmail.com>
-Subject: Re: [PATCH v2 4/4] staging: qlge: replace pr_err with netdev_err
-Message-ID: <20200629053004.GA6165@f3>
-References: <20200627145857.15926-1-coiby.xu@gmail.com>
- <20200627145857.15926-5-coiby.xu@gmail.com>
+ Sun, 28 Jun 2020 22:34:50 -0700 (PDT)
+From: B K Karthik <bkkarthik@pesu.pes.edu>
+X-Google-Original-From: B K Karthik <karthik.bk2000@live.com>
+Date: Mon, 29 Jun 2020 01:34:42 -0400
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Larry Finger <Larry.Finger@lwfinger.net>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: rtl8188eu: include: hal8188e_rate_adaptive.h: fixed
+ a blank space coding style issue
+Message-ID: <20200629053442.eob7oixlxbs5rh33@pesu-pes-edu>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200627145857.15926-5-coiby.xu@gmail.com>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,40 +87,91 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
- <GR-Linux-NIC-Dev@marvell.com>, Manish Chopra <manishc@marvell.com>,
- gregkh@linuxfoundation.org, open list <linux-kernel@vger.kernel.org>,
- "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>,
- joe@perches.com, dan.carpenter@oracle.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1041297321299956166=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gMjAyMC0wNi0yNyAyMjo1OCArMDgwMCwgQ29pYnkgWHUgd3JvdGU6ClsuLi5dCj4gIHZvaWQg
-cWxfZHVtcF9xZGV2KHN0cnVjdCBxbF9hZGFwdGVyICpxZGV2KQo+ICB7Cj4gQEAgLTE2MTEsOTkg
-KzE2MTgsMTAwIEBAIHZvaWQgcWxfZHVtcF9xZGV2KHN0cnVjdCBxbF9hZGFwdGVyICpxZGV2KQo+
-ICAjaWZkZWYgUUxfQ0JfRFVNUAo+ICB2b2lkIHFsX2R1bXBfd3FpY2Ioc3RydWN0IHdxaWNiICp3
-cWljYikKPiAgewo+IC0JcHJfZXJyKCJEdW1waW5nIHdxaWNiIHN0dWZmLi4uXG4iKTsKPiAtCXBy
-X2Vycigid3FpY2ItPmxlbiA9IDB4JXhcbiIsIGxlMTZfdG9fY3B1KHdxaWNiLT5sZW4pKTsKPiAt
-CXByX2Vycigid3FpY2ItPmZsYWdzID0gJXhcbiIsIGxlMTZfdG9fY3B1KHdxaWNiLT5mbGFncykp
-Owo+IC0JcHJfZXJyKCJ3cWljYi0+Y3FfaWRfcnNzID0gJWRcbiIsCj4gLQkgICAgICAgbGUxNl90
-b19jcHUod3FpY2ItPmNxX2lkX3JzcykpOwo+IC0JcHJfZXJyKCJ3cWljYi0+cmlkID0gMHgleFxu
-IiwgbGUxNl90b19jcHUod3FpY2ItPnJpZCkpOwo+IC0JcHJfZXJyKCJ3cWljYi0+d3FfYWRkciA9
-IDB4JWxseFxuIiwKPiAtCSAgICAgICAodW5zaWduZWQgbG9uZyBsb25nKWxlNjRfdG9fY3B1KHdx
-aWNiLT5hZGRyKSk7Cj4gLQlwcl9lcnIoIndxaWNiLT53cV9jbnNtcl9pZHhfYWRkciA9IDB4JWxs
-eFxuIiwKPiAtCSAgICAgICAodW5zaWduZWQgbG9uZyBsb25nKWxlNjRfdG9fY3B1KHdxaWNiLT5j
-bnNtcl9pZHhfYWRkcikpOwo+ICsJbmV0ZGV2X2VycihxZGV2LT5uZGV2LCAiRHVtcGluZyB3cWlj
-YiBzdHVmZi4uLlxuIik7Cgpkcml2ZXJzL3N0YWdpbmcvcWxnZS9xbGdlX2RiZy5jOjE2MjE6MTM6
-IGVycm9yOiDigJhxZGV24oCZIHVuZGVjbGFyZWQgKGZpcnN0IHVzZSBpbiB0aGlzIGZ1bmN0aW9u
-KTsgZGlkIHlvdSBtZWFuIOKAmGNkZXbigJk/CiAxNjIxIHwgIG5ldGRldl9lcnIocWRldi0+bmRl
-diwgIkR1bXBpbmcgd3FpY2Igc3R1ZmYuLi5cbiIpOwogICAgICB8ICAgICAgICAgICAgIF5+fn4K
-ICAgICAgfCAgICAgICAgICAgICBjZGV2CgpbLi4uXQphbmQgbWFueSBtb3JlIGxpa2UgdGhhdAoK
-QW55d2F5cywgcWxnZV9kYmcuaCBpcyBhIGR1bXBzdGVyLiBJdCBoYXMgaHVuZHJlZHMgb2YgbGlu
-ZXMgb2YgY29kZQpiaXRyb3R0aW5nIGF3YXkgaW4gaWZkZWYgbGFuZC4gU2VlIHRoaXMgY29tbWVu
-dCBmcm9tIERhdmlkIE1pbGxlciBvbiB0aGUKdG9waWMgb2YgaWZkZWYnZWQgZGVidWdnaW5nIGNv
-ZGU6Cmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL25ldGRldi8yMDIwMDMwMy4xNDU5MTYuMTUwNjA2
-NjUxMDkyODAyMDE5My5kYXZlbUBkYXZlbWxvZnQubmV0LwpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
-cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+
+--===============1041297321299956166==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="h7dv7tjs5edeqagw"
+Content-Disposition: inline
+
+
+--h7dv7tjs5edeqagw
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+added blank space around arithmetic operators to improve readability
+
+Signed-off-by: B K Karthik <karthik.bk2000@live.com>
+---
+ .../rtl8188eu/include/hal8188e_rate_adaptive.h       | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/include/hal8188e_rate_adaptive.h b/d=
+rivers/staging/rtl8188eu/include/hal8188e_rate_adaptive.h
+index 5b59c25e4c8a..79c0d2f9961e 100644
+--- a/drivers/staging/rtl8188eu/include/hal8188e_rate_adaptive.h
++++ b/drivers/staging/rtl8188eu/include/hal8188e_rate_adaptive.h
+@@ -35,17 +35,17 @@
+ #define GET_TX_REPORT_TYPE1_RERTY_0(__pAddr)			\
+ 	LE_BITS_TO_4BYTE(__pAddr, 0, 16)
+ #define GET_TX_REPORT_TYPE1_RERTY_1(__pAddr)			\
+-	LE_BITS_TO_1BYTE(__pAddr+2, 0, 8)
++	LE_BITS_TO_1BYTE(__pAddr + 2, 0, 8)
+ #define GET_TX_REPORT_TYPE1_RERTY_2(__pAddr)			\
+-	LE_BITS_TO_1BYTE(__pAddr+3, 0, 8)
++	LE_BITS_TO_1BYTE(__pAddr + 3, 0, 8)
+ #define GET_TX_REPORT_TYPE1_RERTY_3(__pAddr)			\
+-	LE_BITS_TO_1BYTE(__pAddr+4, 0, 8)
++	LE_BITS_TO_1BYTE(__pAddr + 4, 0, 8)
+ #define GET_TX_REPORT_TYPE1_RERTY_4(__pAddr)			\
+-	LE_BITS_TO_1BYTE(__pAddr+4+1, 0, 8)
++	LE_BITS_TO_1BYTE(__pAddr + 4 + 1, 0, 8)
+ #define GET_TX_REPORT_TYPE1_DROP_0(__pAddr)			\
+-	LE_BITS_TO_1BYTE(__pAddr+4+2, 0, 8)
++	LE_BITS_TO_1BYTE(__pAddr + 4 + 2, 0, 8)
+ #define GET_TX_REPORT_TYPE1_DROP_1(__pAddr)			\
+-	LE_BITS_TO_1BYTE(__pAddr+4+3, 0, 8)
++	LE_BITS_TO_1BYTE(__pAddr + 4 + 3, 0, 8)
+=20
+ /*  End rate adaptive define */
+=20
+--=20
+2.20.1
+
+
+--h7dv7tjs5edeqagw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl75fXIACgkQ471Q5AHe
+Z2pF2QwAj3e+d2jjhvUgSJyfTQ7y8RzV08p6OhTRDmWuq735at2sKKu3SPmnD6QX
+48B4WPqOg+ltGQXw+PYeNjQJYHkoVTb/qfxHvXhxLD8fubc7Z4EI7/aDHMsVeW7x
+dQlRV7J3lBSNup6CDYm4fi5xNzcmpr1YUpeDVYF7JEYfJDPxcqdusr+OOuuqgaJy
+D7NTD/cTopgjzLE6RmSPWQFm/vX+g8EYCYKl/gl1sjWL14AomX4qxeDa8fRFTa8X
+rD/wTn75fJnxCZ6QQ+PvBFZDQ2G1sPSCG2Q/iSUYa0Ko7JDMu5NgdeAJlDARN0HU
+wnW33NJ6V1fTD/qscWMsGqK+MVVBq6psL7/GREnvdwnqZ4u42smzh+zab8SDo0xd
+lT0Qok+pACeG2YzrEvGYElJpc46h+Ooaccgzm3vXMrJq4P/dK0Gn/e5Siq+okj8U
+UOus+gsojl58/ZEobu+LTPUh4NKo9AdEB5H9Bnkz/9+lmyXc/kWs8hRUZ9aQlLTF
+YtO2xcBX
+=Zy66
+-----END PGP SIGNATURE-----
+
+--h7dv7tjs5edeqagw--
+
+--===============1041297321299956166==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============1041297321299956166==--
