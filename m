@@ -2,62 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C39420EA12
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jun 2020 02:22:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A749B20EB67
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jun 2020 04:22:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5F1212107A;
-	Tue, 30 Jun 2020 00:22:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2AAF62206D;
+	Tue, 30 Jun 2020 02:22:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PMpXFUlpVneG; Tue, 30 Jun 2020 00:22:03 +0000 (UTC)
+	with ESMTP id VNUt6tgAp3bH; Tue, 30 Jun 2020 02:22:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1E85B204E0;
-	Tue, 30 Jun 2020 00:22:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9BD5020399;
+	Tue, 30 Jun 2020 02:22:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0BE8A1BF2CD
- for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 00:21:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C0B331BF25B
+ for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 02:22:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 001FB879A1
- for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 00:21:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BD28987C02
+ for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 02:22:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TSf18cPonlhW for <devel@linuxdriverproject.org>;
- Tue, 30 Jun 2020 00:21:58 +0000 (UTC)
+ with ESMTP id eWcj1tK5WLJ8 for <devel@linuxdriverproject.org>;
+ Tue, 30 Jun 2020 02:22:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3388A87916
- for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 00:21:58 +0000 (UTC)
-IronPort-SDR: QPswKXNQudSYvp7JXrd0F38cS1SF4VJVbbbWcNJcv30ImBwXR8/S6stwPUOVTioFZBTnF0I/xo
- oFY4GmBvrLBQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9666"; a="164124081"
-X-IronPort-AV: E=Sophos;i="5.75,296,1589266800"; d="scan'208";a="164124081"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jun 2020 17:21:57 -0700
-IronPort-SDR: uFo1DjG2lFl3tWiiThk/w1Pa3wYAvMyqFCs9B2cLu5NLrbfBM82rcdEwHqkNv2MoqRiq+RpfWh
- buypqklnGrTw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,296,1589266800"; d="scan'208";a="266335275"
-Received: from pl-dbox.sh.intel.com (HELO intel.com) ([10.239.159.39])
- by fmsmga008.fm.intel.com with ESMTP; 29 Jun 2020 17:21:54 -0700
-Date: Tue, 30 Jun 2020 08:21:52 +0800
-From: Philip Li <philip.li@intel.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [kbuild-all] Re: [PATCH v1 1/4] qlge/qlge_main.c: use genric
- power management
-Message-ID: <20200630002152.GA15435@intel.com>
-References: <202006300026.hCr1U7Sc%lkp@intel.com>
- <20200629173116.GA3269550@bjorn-Precision-5520>
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1788B87BFF
+ for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 02:22:33 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id d194so5832468pga.13
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 19:22:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=90iGbWnZQvzyoyYYX1aI3WuUPDwZTHkcVJZ1gtygVfs=;
+ b=B8on8zwCEHxEEytA265c1m/uSWXHG5+LH9fkpt16It4D+dnPiQ1JgcNgigITKJuKuY
+ rOiEn3BbZ3OAf5yprtQvaeSrqajiNj3juoILKsAi55q6nFZxMVRy5r4iI1AxdNRPQyF+
+ 0/QgmBsRol2GgmCERGh2mYmKj8JPYYvH1nXtJdkpwWUNMuo8FPUioX89AG0hfFp3/Cne
+ Z/dTpIrjfSpS4yeP88KBIjgnU7OVgQgtrTiuDXvnarGUrjwJ4wYcIxiUg5VuNjbbl6Is
+ ZZn6U6HMBuzvimnOYufosYBcf18gexZYcmJLH/86b+1kUx7kH2HhZTIBeg4afKoVCZxa
+ mffQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=90iGbWnZQvzyoyYYX1aI3WuUPDwZTHkcVJZ1gtygVfs=;
+ b=RIuGRuPmzcd/mchMc6HkQdceTCPjinhisHp3g2ZTZowzRcYH28Z4H+92tXhrN211N4
+ 37+KwB26/VNwWIE7irsGgHN9uSCaPAQFEcEZUxcuLtI7u9pzg10kQq3P3399uTh5W9ZV
+ 5uycNX0N9dBvJ1gl+NW9J5izASx31vfjBwQVQNX4ENQ56GW3R7WaidsUIBgsiUL+NfbP
+ AEjTZhin2Z62ijFSdwBoXBkVxx7sKj+21GW1q0VaiZyTTc/qOrK/ZXzwVePh8hE+ZZQD
+ EZ3UaGoGnz9gUzITSQDfylttfgcvhIHanqzMdhGZg7VXvZq0iVTrXN67lYVeMCPFsgcB
+ FEWw==
+X-Gm-Message-State: AOAM533Ad11awdvZanuRqDdqL+ko1oTUM0HndzHlXQIE6Bd+eMscLMT0
+ YR64fk/RCe1Mo7G0K534EyU=
+X-Google-Smtp-Source: ABdhPJyiBmGpHuEUFMc0bYmUbStDsACPIG/Qk5JupF0XACmd6kClws1TCwfbftRdnqGPXP5PKMVa/Q==
+X-Received: by 2002:a63:b18:: with SMTP id 24mr13544182pgl.406.1593483752755; 
+ Mon, 29 Jun 2020 19:22:32 -0700 (PDT)
+Received: from simon-pc (n11923716050.netvigator.com. [119.237.16.50])
+ by smtp.gmail.com with ESMTPSA id n11sm914545pgm.1.2020.06.29.19.22.30
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 29 Jun 2020 19:22:32 -0700 (PDT)
+Date: Tue, 30 Jun 2020 10:22:28 +0800
+From: Simon Fong <simon.fodin@gmail.com>
+To: Larry.Finger@lwfinger.net
+Subject: [PATCH] rtl8188eu: core: Fix WARNING of Block comments
+Message-ID: <20200630022228.GA580@simon-pc>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200629173116.GA3269550@bjorn-Precision-5520>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,75 +83,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
- kbuild-all@lists.01.org, Manish Chopra <manishc@marvell.com>,
- Vaibhav Gupta <vaibhavgupta40@gmail.com>,
- Vaibhav Gupta <vaibhav.varodek@gmail.com>, skhan@linuxfoundation.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, bjorn@helgaas.com
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ simon.fodin@gmail.com, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Jun 29, 2020 at 12:31:16PM -0500, Bjorn Helgaas wrote:
-> Vaibhav: s/genric/generic/ in the subject
-> 
-> On Tue, Jun 30, 2020 at 12:09:36AM +0800, kernel test robot wrote:
-> > Hi Vaibhav,
-> > 
-> > Thank you for the patch! Yet something to improve:
-> > 
-> > [auto build test ERROR on staging/staging-testing]
-> > [also build test ERROR on v5.8-rc3 next-20200629]
-> > [If your patch is applied to the wrong git tree, kindly drop us a note.
-> > And when submitting patch, we suggest to use  as documented in
-> > https://git-scm.com/docs/git-format-patch]
-> > 
-> > url:    https://github.com/0day-ci/linux/commits/Vaibhav-Gupta/drivers-staging-use-generic-power-management/20200629-163141
-> > base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git 347fa58ff5558075eec98725029c443c80ffbf4a
-> > config: x86_64-rhel-7.6 (attached as .config)
-> > compiler: gcc-9 (Debian 9.3.0-13) 9.3.0
-> > reproduce (this is a W=1 build):
-> >         # save the attached .config to linux build tree
-> >         make W=1 ARCH=x86_64 
-> > 
-> > If you fix the issue, kindly add following tag as appropriate
-> > Reported-by: kernel test robot <lkp@intel.com>
-> 
-> If the patch has already been merged and we need an incremental patch
-> that fixes *only* the build issue, I think it's fine to add a
-> "Reported-by" tag.
-> 
-> But if this patch hasn't been merged anywhere, I think adding the
-> "Reported-by" tag would be pointless and distracting.  This report
-> should result in a v2 posting of the patch with the build issue fixed.
-> 
-> There will be no evidence of the problem in the v2 patch.  The patch
-> itself contains other changes unrelated to the build issue, so
-> "Reported-by" makes so sense for them.  I would treat this as just
-> another review comment, and we don't usually credit those in the
-> commit log (though it's nice if they're mentioned in the v2 cover
-> letter so reviewers know what changed and why).
-> 
-> Is there any chance kbuild could be made smart enough to suggest the
-> tag only when it finds an issue in some list of published trees?
-Thanks a lot for the suggestion. As of now, this is a recommendation,
-and user may judge based on own situation to add "as appropriate".
-Meanwhile, we will continue making the bot better.
+Fixed a WARNING of Block comments use * on subsequent lines.
 
-> 
-> > All errors (new ones prefixed by >>):
-> > 
-> >    drivers/staging/qlge/qlge_main.c: In function 'qlge_resume':
-> > >> drivers/staging/qlge/qlge_main.c:4793:17: error: 'pdev' undeclared (first use in this function); did you mean 'qdev'?
-> >     4793 |  pci_set_master(pdev);
-> >          |                 ^~~~
-> >          |                 qdev
-> > ...
-> _______________________________________________
-> kbuild-all mailing list -- kbuild-all@lists.01.org
-> To unsubscribe send an email to kbuild-all-leave@lists.01.org
+Signed-off-by: Simon Fong <simon.fodin@gmail.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+index 9caf7041ad60..bceae18e4373 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_recv.c
++++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+@@ -163,12 +163,12 @@ int rtw_enqueue_recvframe(struct recv_frame *precvframe, struct __queue *queue)
+ }
+ 
+ /*
+-caller : defrag ; recvframe_chk_defrag in recv_thread  (passive)
+-pframequeue: defrag_queue : will be accessed in recv_thread  (passive)
+-
+-using spinlock to protect
+-
+-*/
++ * caller : defrag ; recvframe_chk_defrag in recv_thread  (passive)
++ * pframequeue: defrag_queue : will be accessed in recv_thread  (passive)
++ *
++ * using spinlock to protect
++ *
++ */
+ 
+ void rtw_free_recvframe_queue(struct __queue *pframequeue,  struct __queue *pfree_recv_queue)
+ {
+-- 
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
