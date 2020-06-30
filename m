@@ -1,76 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C59120EFC9
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jun 2020 09:44:36 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 70AC020EFCA
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jun 2020 09:44:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D34A386D42;
-	Tue, 30 Jun 2020 07:44:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 17B00884B2;
+	Tue, 30 Jun 2020 07:44:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oFEx1uiNztEx; Tue, 30 Jun 2020 07:44:34 +0000 (UTC)
+	with ESMTP id iWvFTMDAiSS9; Tue, 30 Jun 2020 07:44:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A7E0586935;
-	Tue, 30 Jun 2020 07:44:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 88B3D88437;
+	Tue, 30 Jun 2020 07:44:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 56D411BF29A
- for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 07:44:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 34C2F1BF29A
+ for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 07:44:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 530CE86D22
- for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 07:44:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2DE7888437
+ for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 07:44:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z0cTOD9fm7Sy for <devel@linuxdriverproject.org>;
- Tue, 30 Jun 2020 07:44:30 +0000 (UTC)
+ with ESMTP id Zhp+UuRDx7er for <devel@linuxdriverproject.org>;
+ Tue, 30 Jun 2020 07:44:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CFFDA86935
- for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 07:44:30 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id f2so8144398plr.8
- for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 00:44:30 -0700 (PDT)
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 94E578841A
+ for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 07:44:35 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id gc9so2640598pjb.2
+ for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 00:44:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=IQZ0v72A1nwBi+dtLOqVNnehvx96WQ1i1bGMN4I9JcY=;
- b=XNNzML7QP2g/BVO/rIU4GyM6fsPoLTPI3AXcvi1lDz0mbGoN+RGl2UN/NG1OpPSj4a
- YRyC7PGhI7hRLHH5QxueLZFEDB6q5h5T1fkAKVpOLzZaFZJq0Hjvhv7OEtAee00ez2LE
- ILGfM0Zv94QEbVIay4Sw7q5XvxZ9zon0Gp0IHV8aQ/FdL5Th37skTepdeNHqF7SMELbF
- Zpc/uVrF9ZO6jCKdHelDQ+utsogwZeEr+EZPiEW5qnwwluGVCHd9iA4WGgCL9+/6uva1
- Sk/BAJVG+Q5FAMhR8oTPtFyKT9h++sYkWjmwXeFYzKXD/ZidmtzSl0F2huDeaLvvlSl0
- xUDQ==
+ bh=sVK5V/4PBzeYWjMj+/BOipu6Mqur09tAOGAuoqIzEPw=;
+ b=bHwvxnfk/4rv5l902jpKhPfmpGks9NYfD6z8bU6lXaQ++Ss8cARLGhUr1mCI299/Ri
+ MtjVixl0k6CTlphPiWnx+fWwIkhbH0TQfZsUO1eRNpjf1/trfVLP1WW49zCv8Kb9qPvz
+ F5269NB9yyeOS1agBK2DXaTVHESxtI5v4Ftp5vlhuIJbmUQysIA5qSYdawgrZkFqnWFo
+ 1vTIocvjWkkyX5r/m9lJrfXiIyuZwWKOdvWDkVAnWtHgOTirKfmd2gxLZwFl0Wghu3NV
+ /U1JYNWVbDDsxT9UOgCd30DPK1nH7WhKzfs603mT1OrF/Pald320eI/bbe2EE/zMfrR5
+ IKkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=IQZ0v72A1nwBi+dtLOqVNnehvx96WQ1i1bGMN4I9JcY=;
- b=rJiUDPoKCjm85b5cd7ZJRFnanrCojgI3xlJ6eMhrPSBGfw3X76mtsU2+aBvWid6Pq/
- eoV9uI1oq9Ts0+ySUkUMHo8suYu22pkNPE/s30hI+GbJiPMlPAg7mScB5CEcWjpRakOe
- mhdcBapbzmq9zxP4hNK728M0fWvqPxxkd2Aeyh8jIhNUzERojR7nbONeY4zmUmA/72I8
- 8i6iqpEpWfIJE7VVB4Yi394mXkzxeBo6B6k+uMoW6+BhjZW9aQ9sGYczufC7lo7QHujg
- Ufmn89zZkgaMVn6rVpXOILTmYUSmJ50JG2smlxZQ2XqGlwshQ+hIdMTKlEcIizNDH582
- P2RA==
-X-Gm-Message-State: AOAM533ogYfGdBfAxQOLs1TZaCx2mH7rivXGz9NtjK14A3kyA10Py6iy
- otwdP++ZCkl6sVZId44cxww=
-X-Google-Smtp-Source: ABdhPJyM3PhIfiACdVMemPHU1vHfpeVF0l5A+OnyqiMT0sDXntN3OJFcG2Ucdk77Mh5UV3QYsy69iQ==
-X-Received: by 2002:a17:902:a982:: with SMTP id
- bh2mr16846646plb.2.1593503070423; 
- Tue, 30 Jun 2020 00:44:30 -0700 (PDT)
+ bh=sVK5V/4PBzeYWjMj+/BOipu6Mqur09tAOGAuoqIzEPw=;
+ b=jMSzajuesKyOIbDj5IO/VfQd1zzWK2Fz2464p8edcyqVdW4k8nXnShCQoRLC0FCCSj
+ GVEOJOtwiQiVAwJ+Dfvh32ZFjCSizLloqZ39TKiBdY4o6o09TMxdn7HpQJvQ8nKmbfBi
+ 5LB/Uqj7CGdZVRUHUt5CtW7yBbVB9TbcBo+HcfFjUtEJrI6TyX5lE3o7I5KlEcpCHl0b
+ wSfmhyE0L9zvr3auLUs1+SVbDE+BYAahfa5fk+zpfvHPlQokwhJge8liI481J1LCfwUa
+ nA63JkoY7Q8xxGbKs/GWhU/KQWsQ3B7fRx5z+Tg1qqC5xVT0/Gs4Iya+ryMGzU0VJSzS
+ XvMg==
+X-Gm-Message-State: AOAM532NovSiSYD6bFB+JwW2MuX3nOVdHqWdsCC0L3yNv9UFbLye+TQ5
+ IijNZO7vdmH236FIwZ899X0=
+X-Google-Smtp-Source: ABdhPJzq1rYQk6wf24CmsFZCONIfWMH8K7yvJ9eYrKxRrMFc52O14Ueg3KnsHOsz4Um9iK1YNuhxIw==
+X-Received: by 2002:a17:902:6945:: with SMTP id
+ k5mr16235242plt.336.1593503075145; 
+ Tue, 30 Jun 2020 00:44:35 -0700 (PDT)
 Received: from jordon-HP-15-Notebook-PC.domain.name ([122.182.225.143])
- by smtp.gmail.com with ESMTPSA id w1sm1754276pfq.53.2020.06.30.00.44.26
+ by smtp.gmail.com with ESMTPSA id w1sm1754276pfq.53.2020.06.30.00.44.31
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 30 Jun 2020 00:44:29 -0700 (PDT)
+ Tue, 30 Jun 2020 00:44:34 -0700 (PDT)
 From: Souptick Joarder <jrdr.linux@gmail.com>
 To: jane.pnx9@gmail.com, ldufour@linux.ibm.com, gregkh@linuxfoundation.org,
  harshjain32@gmail.com, pakki001@umn.edu
-Subject: [PATCH v2 3/4] staging: kpc2000: kpc_dma: Convert get_user_pages()
- --> pin_user_pages()
-Date: Tue, 30 Jun 2020 13:22:18 +0530
-Message-Id: <1593503539-18649-4-git-send-email-jrdr.linux@gmail.com>
+Subject: [PATCH v2 4/4] staging: kpc2000: kpc_dma: Remove additional goto
+ statements
+Date: Tue, 30 Jun 2020 13:22:19 +0530
+Message-Id: <1593503539-18649-5-git-send-email-jrdr.linux@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1593503539-18649-1-git-send-email-jrdr.linux@gmail.com>
 References: <1593503539-18649-1-git-send-email-jrdr.linux@gmail.com>
@@ -96,66 +96,82 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In 2019, we introduced pin_user_pages*() and now we are converting
-get_user_pages*() to the new API as appropriate. [1] & [2] could
-be referred for more information. This is case 2 as per document [1].
-
-[1] Documentation/core-api/pin_user_pages.rst
-
-[2] "Explicit pinning of user-space pages":
-        https://lwn.net/Articles/807108/
+As 3 goto level referring to same common code, those can be
+accomodated with a single goto level and renameing it to
+unpin_pages. Set the -ERRNO when returning partial mapped
+pages in more appropriate place.
 
 Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
 Cc: John Hubbard <jhubbard@nvidia.com>
 Cc: Bharath Vedartham <linux.bhar@gmail.com>
 Cc: Dan Carpenter <dan.carpenter@oracle.com>
 ---
- drivers/staging/kpc2000/kpc_dma/fileops.c | 13 +++++--------
- 1 file changed, 5 insertions(+), 8 deletions(-)
+ drivers/staging/kpc2000/kpc_dma/fileops.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-index 08d90a6..8cd20ad 100644
+index 8cd20ad..d21a4fd 100644
 --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
 +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-@@ -76,10 +76,10 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 
- 	// Lock the user buffer pages in memory, and hold on to the page pointers (for the sglist)
- 	mmap_read_lock(current->mm);      /*  get memory map semaphore */
--	rv = get_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE | FOLL_GET, acd->user_pages, NULL);
-+	rv = pin_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE, acd->user_pages, NULL);
+@@ -35,7 +35,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 			    unsigned long iov_base, size_t iov_len)
+ {
+ 	unsigned int i = 0;
+-	int rv = 0;
++	int rv = 0, nr_pages = 0;
+ 	struct kpc_dma_device *ldev;
+ 	struct aio_cb_data *acd;
+ 	DECLARE_COMPLETION_ONSTACK(done);
+@@ -79,22 +79,27 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 	rv = pin_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE, acd->user_pages, NULL);
  	mmap_read_unlock(current->mm);        /*  release the semaphore */
  	if (rv != acd->page_count) {
--		dev_err(&priv->ldev->pldev->dev, "Couldn't get_user_pages (%d)\n", rv);
-+		dev_err(&priv->ldev->pldev->dev, "Couldn't pin_user_pages (%d)\n", rv);
- 		goto err_get_user_pages;
++		nr_pages = rv;
++		if (rv > 0)
++			rv = -EFAULT;
++
+ 		dev_err(&priv->ldev->pldev->dev, "Couldn't pin_user_pages (%d)\n", rv);
+-		goto err_get_user_pages;
++		goto unpin_pages;
+ 	}
++	nr_pages = acd->page_count;
+ 
+ 	// Allocate and setup the sg_table (scatterlist entries)
+ 	rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE - 1), iov_len, GFP_KERNEL);
+ 	if (rv) {
+ 		dev_err(&priv->ldev->pldev->dev, "Couldn't alloc sg_table (%d)\n", rv);
+-		goto err_alloc_sg_table;
++		goto unpin_pages;
  	}
  
-@@ -189,13 +189,11 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 	// Setup the DMA mapping for all the sg entries
+ 	acd->mapped_entry_count = dma_map_sg(&ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, ldev->dir);
+ 	if (acd->mapped_entry_count <= 0) {
+ 		dev_err(&priv->ldev->pldev->dev, "Couldn't dma_map_sg (%d)\n", acd->mapped_entry_count);
+-		goto err_dma_map_sg;
++		goto unpin_pages;
+ 	}
+ 
+ 	// Calculate how many descriptors are actually needed for this transfer.
+@@ -187,15 +192,10 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 	unlock_engine(ldev);
+ 	dma_unmap_sg(&ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, ldev->dir);
  	sg_free_table(&acd->sgt);
-  err_dma_map_sg:
-  err_alloc_sg_table:
--	for (i = 0 ; i < acd->page_count ; i++)
--		put_page(acd->user_pages[i]);
-+	unpin_user_pages(acd->user_pages, acd->page_count);
+- err_dma_map_sg:
+- err_alloc_sg_table:
+-	unpin_user_pages(acd->user_pages, acd->page_count);
  
-  err_get_user_pages:
- 	if (rv > 0) {
--		for (i = 0; i < rv; i++)
--			put_pages(acd->user_pages[i]);
-+		unpin_user_pages(acd->user_pages, rv);
- 		rv = -EFAULT;
- 	}
+- err_get_user_pages:
+-	if (rv > 0) {
+-		unpin_user_pages(acd->user_pages, rv);
+-		rv = -EFAULT;
+-	}
++ unpin_pages:
++	if (nr_pages > 0)
++		unpin_user_pages(acd->user_pages, nr_pages);
  	kfree(acd->user_pages);
-@@ -222,8 +220,7 @@ void  transfer_complete_cb(struct aio_cb_data *acd, size_t xfr_count, u32 flags)
- 			set_page_dirty_lock(acd->user_pages[i]);
- 	}
- 
--	for (i = 0 ; i < acd->page_count ; i++)
--		put_page(acd->user_pages[i]);
-+	unpin_user_pages(acd->user_pages, acd->page_count);
- 
- 	sg_free_table(&acd->sgt);
- 
+  err_alloc_userpages:
+ 	kfree(acd);
 -- 
 1.9.1
 
