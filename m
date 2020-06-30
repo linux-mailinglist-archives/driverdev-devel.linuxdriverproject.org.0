@@ -1,74 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8AE0C20EDA2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jun 2020 07:40:55 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F19C20EFC3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jun 2020 09:44:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 17BC221135;
-	Tue, 30 Jun 2020 05:40:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 40D7E884BB;
+	Tue, 30 Jun 2020 07:44:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6foTNKmYgR63; Tue, 30 Jun 2020 05:40:52 +0000 (UTC)
+	with ESMTP id Q-pmgKrcBa3F; Tue, 30 Jun 2020 07:44:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 495FD20377;
-	Tue, 30 Jun 2020 05:40:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ABCCE8841A;
+	Tue, 30 Jun 2020 07:44:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 56D731BF287
- for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 05:40:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 483551BF29A
+ for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 07:44:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4FA0C86D78
- for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 05:40:49 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 44C7586D22
+ for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 07:44:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oPfZQb4j8RJs for <devel@linuxdriverproject.org>;
- Tue, 30 Jun 2020 05:40:48 +0000 (UTC)
-X-Greylist: delayed 00:49:22 by SQLgrey-1.7.6
-Received: from mail-ot1-f74.google.com (mail-ot1-f74.google.com
- [209.85.210.74])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 987EC86D31
- for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 05:40:48 +0000 (UTC)
-Received: by mail-ot1-f74.google.com with SMTP id n9so8000696otj.18
- for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 22:40:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=vSqeEeckvpRbZGibNjwUaMyXm8VkQnSd56e/epMHyVQ=;
- b=gyNi5aATe8TqHE7u6B+wIEwHg193GUJBNOD+RzKybJOneonjln50tdgpwT43fJ/Ths
- 8dFI5YKs37yghC22E/N+87q5OGQUfcGqRPEuzA2jrf8AQ+hlNUnYSSxNLePtmV7PQemM
- /YDnZE9BBFUxFo9T2OEttT/2WczcCMclSAM1gnLmg1VU2LbaUV0JN8t9ovWkuasnGbTe
- 6RglnmmOKNPkyucnT56IJXlkjCwDXBUvd7ypX5cTWV1EdocXxIbZFOz6T63wT+Lh6KOW
- 0JrJozUoxWuPBBQXzwzzBQai85mW3u1RNbD49V3jotfI9QHsoE0opMlsUwvXc72e0oY8
- Xn+w==
+ with ESMTP id XpTd-uHdkkZ6 for <devel@linuxdriverproject.org>;
+ Tue, 30 Jun 2020 07:44:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BCB8A86D42
+ for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 07:44:11 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id u5so9063731pfn.7
+ for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 00:44:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=pl+ivQzyTZFWjfiMczmUWs/8JK6z1fCNvXNXKidR1Rk=;
+ b=M5bDGFygd1tmBJiJTP+BT5CtnP9TTXwFpjEryFSPhHSUZ3sMpqRDh7R3ZpjzBtEZlE
+ 0YLE70QmU2MaTu/56knV0rDP/OS3AIyy8+mDFNrCDAesDzQoifokO1zSJjPEhZbB/b3a
+ jRemQ1oUpVArI5IQPxqSdA9jzE4mpckGaTA0GB2LzbgeSOCmCvFGdq6ciikKKC0OgtFF
+ A2BuHJaZD69QbnQYd9Z5GqTMIRDPi385wlmbY0CbeeEKKF11sxLaYnvcFpdgNq2DZdmg
+ wA3vWB+xrJ2bCp+qPxF1XO6J2+ZjVaTfI8jMa6T04uzlt0oVTkimBSd6QneIWPeU3mMG
+ sTCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=vSqeEeckvpRbZGibNjwUaMyXm8VkQnSd56e/epMHyVQ=;
- b=ZFtIerACdGeJlaiPqzYxHz42fL5g4xbarkJ1mgZlsY9XEWbNYTwwVT/6XQA0ljlmTW
- yETgR+HwtXvnkkpHGL91r0vbbGSGV72XamfLwIxVA4+LdvN4XvBQDS+826Y0qff2BK5n
- lYGlh1qeeHS5W/7oB6UVRJEGNUsABk+Au3FDm1jsTxPlNPDemUNiS9niI3qexYk7czzX
- hYx5yxTwx0p0qHz/PUK9RxJ5DgKHoPc4xMKn4pa1llPtv0vEWQmPaJsEA8i3UOcmD1aP
- obVc8IvTR4buxdSOM9buNXWHfNUPRkTV1l18L9GCwqRwWpxId6hLhcyjavixdJwzlw48
- l0kg==
-X-Gm-Message-State: AOAM532BZ+N79qlMf1QrDRrBKvPRDPDqh3uHfS0iNldYF5LQSqLu25Qg
- n5oBzAwMh+AGnnjNJ2VpI8QXk8oCzJXQFg==
-X-Google-Smtp-Source: ABdhPJyU53scu18O26IxLx2seqo1666FrNwEmW6JQE0uTUsyEEKPzVYVNeqyTCA7tMSuyMdT+nkhBbNQt05sKQ==
-X-Received: by 2002:a25:f509:: with SMTP id a9mr32741555ybe.227.1593492328741; 
- Mon, 29 Jun 2020 21:45:28 -0700 (PDT)
-Date: Mon, 29 Jun 2020 21:45:17 -0700
-Message-Id: <20200630044518.1084468-1-davidgow@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
-Subject: [PATCH] clk: staging: Specify IOMEM dependency for Xilinx Clocking
- Wizard driver
-From: David Gow <davidgow@google.com>
-To: Soren Brinkmann <soren.brinkmann@xilinx.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Stephen Boyd <sboyd@kernel.org>, 
- Michael Turquette <mturquette@baylibre.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=pl+ivQzyTZFWjfiMczmUWs/8JK6z1fCNvXNXKidR1Rk=;
+ b=Yr0+lrD/fjoursQEWMy5T7uVFzVaOHIJX7yffQy+oiI/oXdXQJu4f8ysFI6i6HRr6d
+ 83Aess35zc9+Pcsx94QfSm+emHfDfjhqu+PK/UU9Tk3i7nJFFkYydtD+ML+EKAc1Lnpd
+ nQCa1dZr4ORs25a55bD5j45fqD0kllrXdSN96yao2y8MCW2OPHzQzjHMt32dWsy6OThR
+ mQkCetedimhXHDh6Z8j8e8etBjGZxQ2K4+MxNJqN6P+VYFxR/Suo0WO5uMcYrP1nf6ii
+ CJmm5mr3JXx+l2v1Vywhavc8nPIFjf2IOp9PQBKmn7fxE3xqnjV1RVbyUJSo31bX8Cos
+ g5AQ==
+X-Gm-Message-State: AOAM530eHwymGNAzlnLnk2sL3E8LIoZYT/VqjNFMWFOGSAJXBfyKjV1U
+ +g2f1XJj0RsOOKesPXo+9AOPUQDnEh4=
+X-Google-Smtp-Source: ABdhPJxl+dRWQC+dLyZWXlMuchrOSBVSXZODFQ9NQMp3xoyIw07f+vKDkpi4poj+UZu6F8YeetrC4Q==
+X-Received: by 2002:a63:5808:: with SMTP id m8mr13948390pgb.110.1593503051368; 
+ Tue, 30 Jun 2020 00:44:11 -0700 (PDT)
+Received: from jordon-HP-15-Notebook-PC.domain.name ([122.182.225.143])
+ by smtp.gmail.com with ESMTPSA id w1sm1754276pfq.53.2020.06.30.00.44.07
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 30 Jun 2020 00:44:10 -0700 (PDT)
+From: Souptick Joarder <jrdr.linux@gmail.com>
+To: jane.pnx9@gmail.com, ldufour@linux.ibm.com, gregkh@linuxfoundation.org,
+ harshjain32@gmail.com, pakki001@umn.edu
+Subject: [PATCH v2 0/4] staging: kpc2000: kpc_dma: Few clean up and Convert to
+ pin_user_pages()
+Date: Tue, 30 Jun 2020 13:22:15 +0530
+Message-Id: <1593503539-18649-1-git-send-email-jrdr.linux@gmail.com>
+X-Mailer: git-send-email 1.9.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,40 +82,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Brendan Higgins <brendanhiggins@google.com>,
- linux-clk@vger.kernel.org, David Gow <davidgow@google.com>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Bharath Vedartham <linux.bhar@gmail.com>,
+ John Hubbard <jhubbard@nvidia.com>, linux-kernel@vger.kernel.org,
+ Souptick Joarder <jrdr.linux@gmail.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The Xilinx Clocking Wizard driver uses the devm_ioremap_resource
-function, but does not specify a dependency on IOMEM in Kconfig. This
-causes a build failure on architectures without IOMEM, for example, UML
-(notably with make allyesconfig).
+This series contains few clean up, minor bug fixes and
+Convert get_user_pages() to pin_user_pages().
 
-Fix this by making CONFIG_COMMON_CLK_XLNX_CLKWZRD depend on CONFIG_IOMEM.
+I'm compile tested this, but unable to run-time test,
+so any testing help is much appriciated.
 
-Signed-off-by: David Gow <davidgow@google.com>
----
- drivers/staging/clocking-wizard/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v2:
+	Address Dan's review comments to return -ERRNO for partially
+	mapped pages and changed the other patches in series accordingly.
+	Minor update in change logs.
 
-diff --git a/drivers/staging/clocking-wizard/Kconfig b/drivers/staging/clocking-wizard/Kconfig
-index 04be22dca9b6..69cf51445f08 100644
---- a/drivers/staging/clocking-wizard/Kconfig
-+++ b/drivers/staging/clocking-wizard/Kconfig
-@@ -5,6 +5,6 @@
- 
- config COMMON_CLK_XLNX_CLKWZRD
- 	tristate "Xilinx Clocking Wizard"
--	depends on COMMON_CLK && OF
-+	depends on COMMON_CLK && OF && IOMEM
- 	help
- 	  Support for the Xilinx Clocking Wizard IP core clock generator.
+Cc: John Hubbard <jhubbard@nvidia.com>
+Cc: Bharath Vedartham <linux.bhar@gmail.com>
+Cc: Dan Carpenter <dan.carpenter@oracle.com>
+
+
+Souptick Joarder (4):
+  staging: kpc2000: kpc_dma: Unpin partial pinned pages
+  staging: kpc2000: kpc_dma: Convert set_page_dirty() -->     
+    set_page_dirty_lock()
+  staging: kpc2000: kpc_dma: Convert get_user_pages() -->     
+    pin_user_pages()
+  staging: kpc2000: kpc_dma: Remove additional goto statements
+
+ drivers/staging/kpc2000/kpc_dma/fileops.c | 38 ++++++++++++++++---------------
+ 1 file changed, 20 insertions(+), 18 deletions(-)
+
 -- 
-2.27.0.212.ge8ba1cc988-goog
+1.9.1
 
 _______________________________________________
 devel mailing list
