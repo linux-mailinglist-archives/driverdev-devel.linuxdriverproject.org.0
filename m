@@ -1,140 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0B2520EBE7
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jun 2020 05:17:11 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AEB8C20ECC0
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jun 2020 06:42:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0ECAF86AC9;
-	Tue, 30 Jun 2020 03:17:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E381388221;
+	Tue, 30 Jun 2020 04:42:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T9oBuAvzZ6Fp; Tue, 30 Jun 2020 03:17:09 +0000 (UTC)
+	with ESMTP id ZUghRW7WQCtd; Tue, 30 Jun 2020 04:42:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C660E86AC4;
-	Tue, 30 Jun 2020 03:17:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3C157881DC;
+	Tue, 30 Jun 2020 04:42:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B1FB21BF870
- for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 03:17:06 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A51991BF304
+ for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 04:41:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id ABAAF2010A
- for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 03:17:06 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A1CDC855B5
+ for <devel@linuxdriverproject.org>; Tue, 30 Jun 2020 04:41:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Pm6+pkItuuQw for <devel@linuxdriverproject.org>;
- Tue, 30 Jun 2020 03:17:05 +0000 (UTC)
+ with ESMTP id FT2d8JQdN8Xu for <devel@linuxdriverproject.org>;
+ Tue, 30 Jun 2020 04:41:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa3.microchip.iphmx.com (esa3.microchip.iphmx.com
- [68.232.153.233])
- by silver.osuosl.org (Postfix) with ESMTPS id 6CCB120348
- for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 03:17:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1593487025; x=1625023025;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=eF7/2U667xS+89eN//YAmoJuD5HQu7GqPyx0qJJpXx4=;
- b=DN197/UmNYgnGmDP/vtvcNV66sPzenXriX7tHoyeP2RN4n4iZyHz3p27
- afGjTKg49H8VvqiSVoANQ+HxC6If5cQtcmF2KjyJ6QxUgnFi47Zi+n2j3
- cPlMrjSsc3Nz3oRLAjwGqSCgeNlD0WOwdvdJuGrO34CdJegt8/C5BST3A
- wan1wJaIof2XUEybNyfDRlIdUSy3FOdzic4NJnF5X0fgwLd0zNX7fPr5v
- JSV2AQL+OpvChpkX7PricCdlX0pB7HFJUkhKYV2QIB+vssXkeg6FjImxA
- SGND6L03RrPXgduFWIRAajHMDNWiDoovErsEwdDTyds5lNqNZSdORaKIW A==;
-IronPort-SDR: /UJ6+GygTyRttc1j+/3xk1S/JZ7ArdGvhBZoLMwunRupzgTzUidWvGgzTT1MoebggArEgbrlFG
- oQeE8IpwPNg4k13LB7CeqAoNbivOTziryYsrvpzpKoS1wCjd0v2cJ6hW98QPyDFWxzxbF/xCXx
- EkgGEKrxCU4zoP+vHHfL0e4np0Bkg5K9LkXUGUM9YiRq3xy/ddy3gb7j87hxVPce7oNyS5xyKv
- 23+8apj4xda4/T5SY9WMH52y800XqqtiihPAmbllSw1mbh2mlhJqlPTEPb2PdA1KnKIVWjaF/+
- va8=
-X-IronPort-AV: E=Sophos;i="5.75,296,1589266800"; d="scan'208";a="82003439"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 29 Jun 2020 20:17:04 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Mon, 29 Jun 2020 20:16:47 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.71) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3 via Frontend
- Transport; Mon, 29 Jun 2020 20:16:47 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=F9Ubp34BUiggKo9Ved2E4kaWn9QKlvtpR/lzBLSrhrFIFOmUFsB80czBDVJD3O1dgEmYRmgaE/vcirpaY6PHUQ1nkG786ZyyJqTZf3IuJEoVh+d79LtPkXvJuMKkGsq2Sdujmv7aXUcKyaECm/5ZAuVTRo5Ww1A1gADnwq9lMFqJI1Yb3Nbohe3hR/OOW66KBmNmyil/HAhKPtaCscpLlZ+J98nn3J0GTZw5ovbyUGHn7211qU8txzVRC1qN4hMroOpOz7becI2G4l3uKsGAvyXywZtjXxxIMqAgY96/kJi5f9/7DzyK58+KDUX40ID8ycjolO6WKniy7WbZAs5T+w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=eF7/2U667xS+89eN//YAmoJuD5HQu7GqPyx0qJJpXx4=;
- b=W2b4CjtO6C8pGa4Tsbtc9tvk92vqPLoOAMF9IOWQYvVKxnaErYEnlEw9gF5rDhXT85CAoXMTsScGMkcALrlvpsrblO5ODQfUGfIyUp0Aw/psD2/tYoymWmxceCORxIPBlvtjmCtcndqwF/lSQq8VPJ78tmpC+23ZbkOu+LH6uLJWtK3hkKXgmabT95oXlzHZM0DS2KjuVoJh38SNpeulNAT/O35GAyv6wrXXD94pa8pIZr5LsG1gCPxthmyoPqNNYaBRidKWiNgGgN6umsbpInM2Hj4NEkoQjnxdlNoM01oUEFr6wRmhWs7JonPtfPTQtop541uJXOGfrX3tRUA9iA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=eF7/2U667xS+89eN//YAmoJuD5HQu7GqPyx0qJJpXx4=;
- b=AuA+1KxAqRw0fjaaoAnear39hxZkTiFu9SbgtyVjdutSRMHgOwB/sDv9LNjhPLVUFcuAhbckwSxz/Ayy/P3zh8LMa35KLDf5eiQw5pFQU7gVnSMznmZ+SC3VXsaQ/EKbzvWE/TwAJCKX155NI3GKlBHn0OPPrp1xVRlIzn/5OL0=
-Received: from MN2PR11MB4030.namprd11.prod.outlook.com (2603:10b6:208:156::32)
- by MN2PR11MB3774.namprd11.prod.outlook.com (2603:10b6:208:fa::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3131.23; Tue, 30 Jun
- 2020 03:17:01 +0000
-Received: from MN2PR11MB4030.namprd11.prod.outlook.com
- ([fe80::3874:6ace:6aec:deed]) by MN2PR11MB4030.namprd11.prod.outlook.com
- ([fe80::3874:6ace:6aec:deed%7]) with mapi id 15.20.3131.028; Tue, 30 Jun 2020
- 03:17:01 +0000
-From: <Ajay.Kathat@microchip.com>
-To: <pali@kernel.org>
-Subject: Re: [PATCH v7 00/17] wilc1000: move out of staging
-Thread-Topic: [PATCH v7 00/17] wilc1000: move out of staging
-Thread-Index: AQHWSU1z8nHvJKTVrkqyNvSWLHZdH6jvnxsAgADoIAA=
-Date: Tue, 30 Jun 2020 03:17:01 +0000
-Message-ID: <c23ca5da-b9db-5e98-94e4-edc84ded9611@microchip.com>
-References: <20200623110000.31559-1-ajay.kathat@microchip.com>
- <20200629132612.nl6rfpihzlii6ilh@pali>
-In-Reply-To: <20200629132612.nl6rfpihzlii6ilh@pali>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
-authentication-results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=microchip.com;
-x-originating-ip: [49.207.206.48]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: fdb4d1af-80e8-451c-34bf-08d81ca40e95
-x-ms-traffictypediagnostic: MN2PR11MB3774:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR11MB37743CCDAC38E621A3610E04E36F0@MN2PR11MB3774.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-forefront-prvs: 0450A714CB
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: TzK4R0Px6mxmWsLyGMHN4FeMRv5scIeO/d9mdsAUJNcgH0uI5s+JVmx6hUqpIhyD0SB2UgNCa4FJPwviSvSd1Rn3yM9t6tnfQOms/b//O9SRbtrVk3Sukyy2QxSs5Qh+qBnKRKKNttlyw9ygUwNXmQThvfqWEavkAKRsUZ4QdhTh6xk/NOWo0DGx53HwCGq5w1gfHS1MxW5WWEUO/dme3Pn1ip92FVL95s8j4hJjEYNpeXoddoXKrcbNStq4auguobW4yA08Cl+BqsIBsm4leS+/cGgCnJS3aLPRh8COOHYlJ3SiAhqpMEFYUSO8b/uoQzX9C+o8ver5vNSklufhnZZT1oioJj/pkEkqQF+54uG1onA99CdWAytsvgnfHaGLYgNJHONPdwkwGdQ07ylXwvMIF8ChQoO7X7RXePnYneOvYXKMHxcPhv3oNlONZnKic/ZHDtEFz9ShnpzqKf+Z2g==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR11MB4030.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(376002)(346002)(136003)(366004)(396003)(39860400002)(36756003)(83380400001)(8936002)(6512007)(53546011)(55236004)(316002)(54906003)(107886003)(71200400001)(6506007)(6916009)(4326008)(2616005)(86362001)(6486002)(8676002)(76116006)(66556008)(66476007)(66446008)(478600001)(64756008)(186003)(966005)(2906002)(31686004)(26005)(4744005)(66946007)(31696002)(5660300002)(91956017)(43740500002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: ZAS/dl8cUEPXBG7uwkpUVfWGVaoFdCTb3MAfR5Lh0XSnJWea0AGkZsV40FwuAjLb+tBL3mmzkhfvq1Kj2RRRknuoNFOcgt1ZMQ/i+H8WwP0k+qyUwnLQRdZBFyAqascmTKB7kl0051TVw6OvTMus3QRCl1/qOYpsh5XXSavEqhjcnFzin0ljBYN96DemM0jipRDX5O7Q8zPRkJ63lKUC16pJlFBrJFzk4RRkeyZ90IiAvQwPZa+BReQ/xZrxxS/zVyYnJ8j6yXZke7htYRMwqaZAViO6etmCsdGdxkzgxt8mW18QFBsi+elc8dO9tcO4XiGNY8Va5heqM5+NhS7ewCgM7ff8yoxaVRyzQQnsaM85MbH6/pRWRM52kjADNzqPhMHVi9MBPSxQg3Y+N2TwI6vH47eCrjjkKemeXQNgc5exkHyCZ+1yLJ/8KtGAl0i4hPTt09JpSXB9pwQSeBZ0oU7IWA0Xu/KAeDt+qJVYxCg=
-Content-ID: <65F9A0FE50CC5E499FB96DB7C34C2575@namprd11.prod.outlook.com>
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0A71F85593
+ for <devel@driverdev.osuosl.org>; Tue, 30 Jun 2020 04:41:57 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id x8so7075295plm.10
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jun 2020 21:41:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=/4EbjWc3OcYBVYlmz6RH6shyF/Bf9W7LIE0MBGcrCAc=;
+ b=MzAXhvAodARvduNMO3wJCALgHXwOz8vGXAsrWe4j14bZ2ULzrL+S2QmffOpsHzIEMT
+ tn1fyGE5N5lupBTHUVdykDNyFMkcRe4H+JGWXpvAR3qmt7ZMHSrTbn20zTmBrBKkD1Nx
+ PuYFnAKh6fq3w0QOex6KtrSpnSYyVda1XZ6lZQ7ez2K3zQW5lrq6QgDdeDtp0cs6xXUl
+ /Sgrg9Txp5ac4SGiCK5HeMR3qLjs7+GeoMqsk5aZ6bAlCAGEzHY92STFFdZ77DJ7FG/w
+ c1IuS2qkKnZITN74FmVqu3ooHjdQStSUwqqEpODEWSSRp/U5+mM7ksTtPGGxwKLrsf+M
+ POKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=/4EbjWc3OcYBVYlmz6RH6shyF/Bf9W7LIE0MBGcrCAc=;
+ b=HidN9+DBohqHYsx6P9jot5vqNtXKbbORpbp729ugdvfMlSnQvmKfW+jo6WzHqHvu36
+ oIca4uP258WnnhZ+yb+fnATt787wbiOfwcx3TxgpSXpP2LD24OftkgCHxq0hWjApMqS2
+ 9TzbQ78b1a/4hY80zo/UqYDk7wR+OR4wYwSN7AcCy9bDMRO7AKx4Pkg4tEzmHEb+KEhT
+ K/1SCru/Ll/t4mTXKAxjme/eZlO1RBPjg883OZxZn954mtQ4JbJJm4utvr6S5OgZEg+/
+ Ya/zyuvI5tkML5V4+L2FDjty1S/QdyIaLDNitBXAgLKbJ9e2E2DI4Q8VowlMKpagv+rZ
+ mpWw==
+X-Gm-Message-State: AOAM532ofZnwSs6lRl3CpqROhc2DtHkcokO5cyKDWs5BlNBLi2tXCNl4
+ DYEZY5xWZJ7hMOIroIp44vo=
+X-Google-Smtp-Source: ABdhPJzKSASVm1LZHs45CVwtA2XbE2R50KOnbmEaHjY91c/pCVPXpQnXpGKdEO4YpUBb/wyvVFxfoA==
+X-Received: by 2002:a17:90a:ac05:: with SMTP id
+ o5mr21099604pjq.228.1593492116510; 
+ Mon, 29 Jun 2020 21:41:56 -0700 (PDT)
+Received: from f3 (ae055068.dynamic.ppp.asahi-net.or.jp. [14.3.55.68])
+ by smtp.gmail.com with ESMTPSA id nv9sm929621pjb.6.2020.06.29.21.41.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Jun 2020 21:41:55 -0700 (PDT)
+Date: Tue, 30 Jun 2020 13:41:51 +0900
+From: Benjamin Poirier <benjamin.poirier@gmail.com>
+To: Coiby Xu <coiby.xu@gmail.com>
+Subject: Re: [PATCH v2 4/4] staging: qlge: replace pr_err with netdev_err
+Message-ID: <20200630044151.GA125790@f3>
+References: <20200627145857.15926-1-coiby.xu@gmail.com>
+ <20200627145857.15926-5-coiby.xu@gmail.com>
+ <20200629053004.GA6165@f3> <20200629174352.euw4lckze2k7xtbm@Rk>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR11MB4030.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fdb4d1af-80e8-451c-34bf-08d81ca40e95
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Jun 2020 03:17:01.6679 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: lSdFTaqSTx8y3D9KgyU7LoLgP+ORKu1mjamPMD9lvlxtYSWcQ8Kyyu8yLJkz58rpJbhpWmMZ5ZVOB5ntgv2GrMN0cuD0lAUF44i8mkLBqJg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3774
+Content-Disposition: inline
+In-Reply-To: <20200629174352.euw4lckze2k7xtbm@Rk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,33 +89,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Venkateswara.Kaja@microchip.com,
- Sripad.Balwadgi@microchip.com, gregkh@linuxfoundation.org,
- linux-wireless@vger.kernel.org, Nicolas.Ferre@microchip.com,
- johannes@sipsolutions.net
+Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
+ <GR-Linux-NIC-Dev@marvell.com>, Manish Chopra <manishc@marvell.com>,
+ gregkh@linuxfoundation.org, open list <linux-kernel@vger.kernel.org>,
+ "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>,
+ joe@perches.com, dan.carpenter@oracle.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-DQoNCk9uIDI5LzA2LzIwIDY6NTYgcG0sIFBhbGkgUm9ow6FyIHdyb3RlOg0KPiBFWFRFUk5BTCBF
-TUFJTDogRG8gbm90IGNsaWNrIGxpbmtzIG9yIG9wZW4gYXR0YWNobWVudHMgdW5sZXNzIHlvdSBr
-bm93IHRoZSBjb250ZW50IGlzIHNhZmUNCj4gDQo+IE9uIFR1ZXNkYXkgMjMgSnVuZSAyMDIwIDEx
-OjAwOjA0IEFqYXkuS2F0aGF0QG1pY3JvY2hpcC5jb20gd3JvdGU6DQo+PiBUaGlzIHBhdGNoIHNl
-cmllcyBpcyB0byByZXZpZXcgYW5kIG1vdmUgd2lsYzEwMDAgZHJpdmVyIG91dCBvZiBzdGFnaW5n
-Lg0KPj4gTW9zdCBvZiB0aGUgcmV2aWV3IGNvbW1lbnRzIHJlY2VpdmVkIGluIFsxXSAmIFsyXSBh
-cmUgYWRkcmVzc2VkIGluIHRoZQ0KPj4gbGF0ZXN0IGNvZGUuDQo+PiBQbGVhc2UgcmV2aWV3IGFu
-ZCBwcm92aWRlIHlvdXIgaW5wdXRzLg0KPiANCj4gSGVsbG8gQWpheSEgQ291bGQgeW91IHBsZWFz
-ZSBtb3ZlIFNESU8gdmVuZG9yL2RldmljZSBJRCBkZWZpbml0aW9ucyBmcm9tDQo+IGRyaXZlciBj
-b2RlIHdpbGMxMDAwL3NkaW8uYyB0byBjb21tb24gZmlsZSBpbmNsdWRlL2xpbnV4L21tYy9zZGlv
-X2lkcy5oPw0KPiANCg0KQ3VycmVudGx5LCB0aGUgd2lsYzEwMDAgZHJpdmVyIG1vdmVtZW50IGNo
-YW5nZXMgYXJlIHByZXNlbnQgaW4gdG9waWMNCmJyYW5jaCBhbmQgeWV0IHRvIGJlIG1lcmdlZCB0
-byBtYXN0ZXIgYnJhbmNoLiBXb3VsZCBpdCBiZSBva2F5IHRvIHN1Ym1pdA0KdGhlIG5ldyBwYXRj
-aCBvbmNlIGRyaXZlciBpcyBtZXJnZWQgdG8gJ3dpcmVsZXNzLWRyaXZlci1uZXh0JyBtYXN0ZXIg
-YW5kDQpicmFuY2ggaXMgcHVsbGVkIGludG8gR3JlZydzIHN0YWdpbmcgcmVwby4NCg0KUmVnYXJk
-cywNCkFqYXkNCg0KPiBTaW1pbGFyIGNsZWFudXAgd2FzIHJlY2VudGx5IGZpbmlzaGVkIGZvciBh
-bGwgZXhpc3Rpbmcgbm9uLXN0YWdpbmcgZHJpdmVyczoNCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5v
-cmcvbGludXgtbW1jLzIwMjAwNTIyMTQ0NDEyLjE5NzEyLTEtcGFsaUBrZXJuZWwub3JnLw0KPiAK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFp
-bGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5s
-aW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+T24gMjAyMC0wNi0zMCAwMTo0MyArMDgwMCwgQ29pYnkgWHUgd3JvdGU6Cj4gT24gTW9uLCBKdW4g
+MjksIDIwMjAgYXQgMDI6MzA6MDRQTSArMDkwMCwgQmVuamFtaW4gUG9pcmllciB3cm90ZToKPiA+
+IE9uIDIwMjAtMDYtMjcgMjI6NTggKzA4MDAsIENvaWJ5IFh1IHdyb3RlOgo+ID4gWy4uLl0KPiA+
+ID4gIHZvaWQgcWxfZHVtcF9xZGV2KHN0cnVjdCBxbF9hZGFwdGVyICpxZGV2KQo+ID4gPiAgewo+
+ID4gPiBAQCAtMTYxMSw5OSArMTYxOCwxMDAgQEAgdm9pZCBxbF9kdW1wX3FkZXYoc3RydWN0IHFs
+X2FkYXB0ZXIgKnFkZXYpCj4gPiA+ICAjaWZkZWYgUUxfQ0JfRFVNUAo+ID4gPiAgdm9pZCBxbF9k
+dW1wX3dxaWNiKHN0cnVjdCB3cWljYiAqd3FpY2IpCj4gPiA+ICB7Cj4gPiA+IC0JcHJfZXJyKCJE
+dW1waW5nIHdxaWNiIHN0dWZmLi4uXG4iKTsKPiA+ID4gLQlwcl9lcnIoIndxaWNiLT5sZW4gPSAw
+eCV4XG4iLCBsZTE2X3RvX2NwdSh3cWljYi0+bGVuKSk7Cj4gPiA+IC0JcHJfZXJyKCJ3cWljYi0+
+ZmxhZ3MgPSAleFxuIiwgbGUxNl90b19jcHUod3FpY2ItPmZsYWdzKSk7Cj4gPiA+IC0JcHJfZXJy
+KCJ3cWljYi0+Y3FfaWRfcnNzID0gJWRcbiIsCj4gPiA+IC0JICAgICAgIGxlMTZfdG9fY3B1KHdx
+aWNiLT5jcV9pZF9yc3MpKTsKPiA+ID4gLQlwcl9lcnIoIndxaWNiLT5yaWQgPSAweCV4XG4iLCBs
+ZTE2X3RvX2NwdSh3cWljYi0+cmlkKSk7Cj4gPiA+IC0JcHJfZXJyKCJ3cWljYi0+d3FfYWRkciA9
+IDB4JWxseFxuIiwKPiA+ID4gLQkgICAgICAgKHVuc2lnbmVkIGxvbmcgbG9uZylsZTY0X3RvX2Nw
+dSh3cWljYi0+YWRkcikpOwo+ID4gPiAtCXByX2Vycigid3FpY2ItPndxX2Nuc21yX2lkeF9hZGRy
+ID0gMHglbGx4XG4iLAo+ID4gPiAtCSAgICAgICAodW5zaWduZWQgbG9uZyBsb25nKWxlNjRfdG9f
+Y3B1KHdxaWNiLT5jbnNtcl9pZHhfYWRkcikpOwo+ID4gPiArCW5ldGRldl9lcnIocWRldi0+bmRl
+diwgIkR1bXBpbmcgd3FpY2Igc3R1ZmYuLi5cbiIpOwo+ID4gCj4gPiBkcml2ZXJzL3N0YWdpbmcv
+cWxnZS9xbGdlX2RiZy5jOjE2MjE6MTM6IGVycm9yOiDigJhxZGV24oCZIHVuZGVjbGFyZWQgKGZp
+cnN0IHVzZSBpbiB0aGlzIGZ1bmN0aW9uKTsgZGlkIHlvdSBtZWFuIOKAmGNkZXbigJk/Cj4gPiAx
+NjIxIHwgIG5ldGRldl9lcnIocWRldi0+bmRldiwgIkR1bXBpbmcgd3FpY2Igc3R1ZmYuLi5cbiIp
+Owo+ID4gICAgICB8ICAgICAgICAgICAgIF5+fn4KPiA+ICAgICAgfCAgICAgICAgICAgICBjZGV2
+Cj4gPiAKPiA+IFsuLi5dCj4gPiBhbmQgbWFueSBtb3JlIGxpa2UgdGhhdAo+ID4gCj4gPiBBbnl3
+YXlzLCBxbGdlX2RiZy5oIGlzIGEgZHVtcHN0ZXIuIEl0IGhhcyBodW5kcmVkcyBvZiBsaW5lcyBv
+ZiBjb2RlCj4gPiBiaXRyb3R0aW5nIGF3YXkgaW4gaWZkZWYgbGFuZC4gU2VlIHRoaXMgY29tbWVu
+dCBmcm9tIERhdmlkIE1pbGxlciBvbiB0aGUKPiA+IHRvcGljIG9mIGlmZGVmJ2VkIGRlYnVnZ2lu
+ZyBjb2RlOgo+ID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbmV0ZGV2LzIwMjAwMzAzLjE0NTkx
+Ni4xNTA2MDY2NTEwOTI4MDIwMTkzLmRhdmVtQGRhdmVtbG9mdC5uZXQvCj4gCj4gVGhhbmsgeW91
+IGZvciBzcG90dGluZyB0aGlzIHByb2JsZW0hIFRoaXMgaXNzdWUgY291bGQgYmUgZml4ZWQgYnkK
+PiBwYXNzaW5nIHFkZXYgdG8gcWxfZHVtcF93cWljYi4gT3IgYXJlIHlvdSBzdWdnZXN0aW5nIHdl
+IGNvbXBsZXRlbHkKPiByZW1vdmUgcWxnZV9kYmcgc2luY2UgaXQncyBvbmx5IGZvciB0aGUgcHVy
+cG9zZSBvZiBkZWJ1Z2dpbmcgdGhlIGRyaXZlcgo+IGJ5IHRoZSBkZXZlbG9wZXI/CgpBdCAyMDAw
+IGxpbmVzLCBxbGdlX2RiZy5jIGFsb25lIGlzIGxhcmdlciB0aGFuIHNvbWUgZW50aXJlIGV0aGVy
+bmV0CmRyaXZlcnMuIE1vc3Qgb2Ygd2hhdCBpdCBkb2VzIGlzIGR1bXAga2VybmVsIGRhdGEgc3Ry
+dWN0dXJlcyBvciBwY2kKbWVtb3J5IG1hcHBlZCByZWdpc3RlcnMgdG8gZG1lc2cuIFRoZXJlIGFy
+ZSBiZXR0ZXIgZmFjaWxpdGllcyBmb3IgdGhhdC4KTXkgdGhpbmtpbmcgaXMgbm90IHNpbXBseSB0
+byBkZWxldGUgcWxnZV9kYmcuYyBidXQgdG8gcmVwbGFjZSBpdCwgbWFraW5nCnN1cmUgdGhhdCBt
+b3N0IG9mIHRoZSBzYW1lIGluZm9ybWF0aW9uIGlzIHN0aWxsIGF2YWlsYWJsZS4gRm9yIGRhdGEK
+c3RydWN0dXJlcywgY3Jhc2ggb3IgZHJnbiBjYW4gYmUgdXNlZDsgcG9zc2libHkgd2l0aCBhIHNj
+cmlwdCBmb3IgdGhlCmxhdHRlciB3aGljaCBmb3JtYXRzIHRoZSBkYXRhLiBGb3IgcGNpIHJlZ2lz
+dGVycywgdGhleSBzaG91bGQgYmUKaW5jbHVkZWQgaW4gdGhlIGV0aHRvb2wgcmVnaXN0ZXIgZHVt
+cCBhbmQgYSBwYXRjaCBhZGRlZCB0byBldGh0b29sIHRvCnByZXR0eSBwcmludCB0aGVtLiBUaGF0
+J3Mgd2hhdCBvdGhlciBkcml2ZXJzIGxpa2UgZTEwMDBlIGRvLiBGb3IgdGhlCiJjb3JlZHVtcCIs
+IGRldmxpbmsgaGVhbHRoIGNhbiBiZSB1c2VkLgoKVGhlIHFsZ2VfZm9yY2VfY29yZWR1bXAgbW9k
+dWxlIG9wdGlvbiBzaG91bGQgYWxzbyBiZSByZW1vdmVkLiBBdCB0aGUKbW9tZW50LCBjYWxsaW5n
+IHRoZSBldGh0b29sIHJlZ2lzdGVyIGR1bXAgZnVuY3Rpb24gd2l0aCB0aGF0IG9wdGlvbgplbmFi
+bGVkIGRvZXMgYSBoZXhkdW1wIG9mIGEgMTc2ayBzdHJ1Y3QgdG8gZG1lc2cuIFRoYXQncyBzaGFt
+ZWZ1bC4KCj4gCj4gQnR3LCBJJ20gY3VyaW91cyBob3cgeW91IG1ha2UgdGhpcyBjb21waWxpbmcg
+ZXJyb3Igb2NjdXIuIERvIHlvdSBtYW51YWxseSB0cmlnZ2VyCj4gaXQgdmlhICJRTF9DQl9EVU1Q
+PTEgbWFrZSBNPWRyaXZlcnMvc3RhZ2luZy9xbGdlIiBvciB1c2Ugc29tZSBhdXRvbWF0ZQo+IHRv
+b2xzPwoKSSBqdXN0IHVuY29tbWVudGVkIHRoZSBkZWZpbmVzIGluIHFsZ2UuaApfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QK
+ZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVy
+cHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
