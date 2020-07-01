@@ -2,59 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0BCF210C62
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Jul 2020 15:37:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B18C7210E21
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Jul 2020 16:55:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E11A684475;
-	Wed,  1 Jul 2020 13:37:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1C55A89415;
+	Wed,  1 Jul 2020 14:55:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jnPv8cML8zDq; Wed,  1 Jul 2020 13:37:14 +0000 (UTC)
+	with ESMTP id DhoJgrsg7q8n; Wed,  1 Jul 2020 14:55:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A74F089463;
-	Wed,  1 Jul 2020 13:37:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D1AB3890E0;
+	Wed,  1 Jul 2020 14:55:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6BDD11BF419
- for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 13:37:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E812E1BF32B
+ for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 14:55:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D69E8203A4
- for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 13:37:10 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BC9B726798
+ for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 14:55:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y5+xu6IT0sxn for <devel@linuxdriverproject.org>;
- Wed,  1 Jul 2020 13:37:09 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 9866B26509
- for <devel@driverdev.osuosl.org>; Wed,  1 Jul 2020 13:37:09 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id CC4B2206BE;
- Wed,  1 Jul 2020 13:37:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593610629;
- bh=5tE183U8HFGTx/+i+OpSh5OTZevNZV/V9TLpzYw5pNg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ekY7/q4M/OQJAUogvbtk46eVfBh6fcvVNLe+hB3hDOIwzt/yQhwN4fOHMQvssxpk1
- ZSrnoVf1wlxRs87yKDS7Nc6+guH/ikDHGBOEDHnObFaOHuXKl/V5zq2ZwkVn8WdIwf
- Kgv4Wa0A6RRuq05bALEenfzGgWnRnEeZSpxTWNNI=
-Date: Wed, 1 Jul 2020 15:36:55 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-Subject: Re: [PATCH v3 6/6] staging: greybus: audio: Enable GB codec, audio
- module compilation.
-Message-ID: <20200701133655.GA2373798@kroah.com>
-References: <cover.1592537217.git.vaibhav.sr@gmail.com>
- <e9aaa09c6688aa5ed8bddf51f5cd402bb8cf39b3.1592537217.git.vaibhav.sr@gmail.com>
+ with ESMTP id 3QAzCuSrZ3Nd for <devel@linuxdriverproject.org>;
+ Wed,  1 Jul 2020 14:55:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 96EE626730
+ for <devel@driverdev.osuosl.org>; Wed,  1 Jul 2020 14:55:28 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id u185so9075519pfu.1
+ for <devel@driverdev.osuosl.org>; Wed, 01 Jul 2020 07:55:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KwS0U3wkRWjqeFU6cmJ2Tga5ln6uuM49Bbda6HKBXmc=;
+ b=PIh8cTNCf6N9+aDs88nBOGP0uMZvFU+a+UdEQjOgUv0PkE8df8Er3LCZR8xbBhvZly
+ QiYImNoN6h9jAaa1g9p2WajZR+ax7Bn1VZSHUqXsn3ndFLgzwhVZalrkoqKnN4llwL1k
+ gDshYBM1Xu1t16rce5ZEXKlK9swJIMJMMEr1/u8kKmE3QFgsTkPiAF8QADO3i74F1zWc
+ zUSFHxJLGSAakxKwOOUwZq+XDp8rsTMu6JSJHb7Vy6naXMVgx/fPNXCMffpjPh/BhEnA
+ p7pxro7oPXtPx0t1rTlkAHvy0p6Hudrwa+3Jv9kJ0GIATnxh+JVz7sBkruDxrc/Vv4iP
+ OJPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KwS0U3wkRWjqeFU6cmJ2Tga5ln6uuM49Bbda6HKBXmc=;
+ b=rfJtQHwKX6V+G6fhvNSWo/HoLIaIJ6uJfK83CwaXoHCeWJzJcwG9aHrrkSJjN+cPN0
+ kbyCrwgwR/dfWLXiAkZKyjiJuornCbDttwAqbvZRGjUECqQ7NcxqQG40ksMQw8zSai+u
+ 86ijKD/3FAcCE1FNCAG/GtPKoo6O6thehonlmIGlVFf8yCDKmU+exBDdm9V224yMyIXP
+ AocvoqaJNuTyDj2Jebl6E8wrlq/DMS+1QyPWS3eNLTRcJLIxizlWTtgWUyIDht293/Ty
+ uajsrRDKEwtbr283vGsCZuM/yv7tkXC3p8kGREIb+oTSYKqvkVQImspQbPqeSo15Ciq3
+ i6Mg==
+X-Gm-Message-State: AOAM532yGkMsvXgSmBsyszTp8tok4LlsG8wo9I/N58OtTa9UArGMi1Oo
+ NBOqnQgDRcqLGyZS0BDY5oY=
+X-Google-Smtp-Source: ABdhPJwYoENA8gQ4mtFH5RzePHCtQD1Z/Qi9qE1QPH1/CEQ+ToA/uJwiGDUWDFUlwtFwORb8UsSung==
+X-Received: by 2002:aa7:90c8:: with SMTP id k8mr7205258pfk.5.1593615327982;
+ Wed, 01 Jul 2020 07:55:27 -0700 (PDT)
+Received: from localhost.localdomain ([125.62.107.222])
+ by smtp.googlemail.com with ESMTPSA id kx3sm5442630pjb.32.2020.07.01.07.55.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 01 Jul 2020 07:55:27 -0700 (PDT)
+From: Puranjay Mohan <puranjay12@gmail.com>
+To: Larry.Finger@lwfinger.net
+Subject: [PATCH] Drivers: rtl8188eu: core: Fix coding style issue
+Date: Wed,  1 Jul 2020 20:24:57 +0530
+Message-Id: <20200701145457.9562-1-puranjay12@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e9aaa09c6688aa5ed8bddf51f5cd402bb8cf39b3.1592537217.git.vaibhav.sr@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,36 +83,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alex Elder <elder@kernel.org>, Mark Greer <mgreer@animalcreek.com>,
- linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>,
- greybus-dev@lists.linaro.org, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ Puranjay Mohan <puranjay12@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Jun 19, 2020 at 04:50:26PM +0530, Vaibhav Agarwal wrote:
-> Currently you can't enable the Gey Bus Audio Codec because there is no
-> entry for it in the Kconfig file. Originally the config name was going
-> to be AUDIO_MSM8994 but that's not correct because other types of
-> hardware are supported now. I have chosen the name AUDIO_APB_CODEC
-> instead.  Also I had to update the dependencies for GREYBUS_AUDIO to
-> make the compile work.
-> 
-> Signed-off-by: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-> Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
-> ---
->  drivers/staging/greybus/Kconfig  | 14 +++++++++++++-
->  drivers/staging/greybus/Makefile |  4 ++--
->  2 files changed, 15 insertions(+), 3 deletions(-)
+Use %s and  __func__ in place of function names.
+This solves following checkpatch.pl warning
+WARNING: Prefer using '"%s...", __func__' to using 'rtw_do_join', this function's name, in a string
 
-Can you fix the build issues found by the bot and resend?
+Signed-off-by: Puranjay Mohan <puranjay12@gmail.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_ioctl_set.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-thanks,
+diff --git a/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c b/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c
+index 7bb26c362b10..9cc77ab4fd6b 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c
++++ b/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c
+@@ -25,7 +25,7 @@ u8 rtw_do_join(struct adapter *padapter)
+ 	phead = get_list_head(queue);
+ 	plist = phead->next;
+ 
+-	RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_info_, ("\n rtw_do_join: phead = %p; plist = %p\n\n\n", phead, plist));
++	RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_info_, ("\n %s: phead = %p; plist = %p\n\n\n", __func__, phead, plist));
+ 
+ 	pmlmepriv->cur_network.join_res = -2;
+ 
+-- 
+2.27.0
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
