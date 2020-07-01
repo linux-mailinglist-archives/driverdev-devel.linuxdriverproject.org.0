@@ -2,75 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCD1C211109
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Jul 2020 18:49:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 369C7211169
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Jul 2020 18:58:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 959F48954C;
-	Wed,  1 Jul 2020 16:49:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ECE2E8926D;
+	Wed,  1 Jul 2020 16:58:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2tA6I8SJMQXQ; Wed,  1 Jul 2020 16:49:30 +0000 (UTC)
+	with ESMTP id zPRGBWncgGuf; Wed,  1 Jul 2020 16:58:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 26BE089415;
-	Wed,  1 Jul 2020 16:49:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A776486DE7;
+	Wed,  1 Jul 2020 16:57:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 14F931BF868
- for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 16:49:29 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3CB341BF868
+ for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 16:57:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 116358A9F7
- for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 16:49:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 394A38926D
+ for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 16:57:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z6xdreF6JWuB for <devel@linuxdriverproject.org>;
- Wed,  1 Jul 2020 16:49:28 +0000 (UTC)
+ with ESMTP id HrFLo9dZtI7A for <devel@linuxdriverproject.org>;
+ Wed,  1 Jul 2020 16:57:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
- [209.85.216.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1C7FF8A9C9
- for <devel@driverdev.osuosl.org>; Wed,  1 Jul 2020 16:49:28 +0000 (UTC)
-Received: by mail-pj1-f66.google.com with SMTP id a9so798048pjh.5
- for <devel@driverdev.osuosl.org>; Wed, 01 Jul 2020 09:49:28 -0700 (PDT)
+Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
+ [209.85.222.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8A2A38925C
+ for <devel@driverdev.osuosl.org>; Wed,  1 Jul 2020 16:57:56 +0000 (UTC)
+Received: by mail-qk1-f196.google.com with SMTP id e11so22881514qkm.3
+ for <devel@driverdev.osuosl.org>; Wed, 01 Jul 2020 09:57:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=vI6gy/BQmKGVnvRCjRKUqB8Aaf0/siwXKBwcZ/RvlFQ=;
- b=uS1ngtV06+ibIy7BC1VMuDObb8Q0N4F2ySdBjn3Mu+7bJ+zcpJeKMR09ud4BYh8ykY
- PtGzsHCiaIP/Cqp6eWWa5gYvvDWnLjSxcSmQHWcl2dkvqfgv0T+qzRGdLNhkaLVtJqp9
- azk+HwmF7ANYINDYc+qxB/kHzb153vYFoWEpElK5ehF5bnzcutvUVWJ+1k5Syk6SbQm8
- lMWIRIlJxEPnQQQSIJWkz6K6fufneh9WQkIRayP7T740WHYhpJXQWgHhzR5V/GCebwlo
- AhUeJjt4je6Pa9WhHN/JiIVZYXIMiR5D2xXULVfSlaij56tPDfXTqMXLr28ZWClU2L3M
- AcAg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=i9+/GjSEEc7IqDOjdKKSFi+z5g58JvqTZ3s2qbSX/ko=;
+ b=MMK43FUauGm3oj5f7opsVcbfLUNZIlw8GnpDKA6hed3fTx0bebwdaAyx+DHfuBE6K/
+ N/pW9Y5hn+sxxc/0TpUJAWSCp0KTyvLhBIQ58FwNsiCC48obtyqfLyXSiPhtdY/G0FZL
+ gJNRFKgm5iCGGlZ9foLJ+cGtmxnBOLPU2H8qcB1Ry3eqEeVjFepn0VH53WzLTGFbkDeT
+ fWXEvd8UrixukXFBYoZgMjMbumGEPtsvbH0dlOkqzQgnrjWxKrubLqgtqNLSYkY7EVFl
+ z58XUD4keZZfbJVjsJ084CNsTQiGl4jFKB8kkvBhjXOD5IrAuvUFX065SWCDh/AFFoa1
+ zQgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=vI6gy/BQmKGVnvRCjRKUqB8Aaf0/siwXKBwcZ/RvlFQ=;
- b=offGmDbUgWkNhjGaE8SLtcnFe6U8j8vWwejzWVnenAmd7JRZX0JgcTrsw6/1EoEhnT
- PTjrFCeRPXBIgpiKpriFruz1zGIzkd4IypsEIp1IiNuk6tacW8ORpTjfYU4HkIfd3fCu
- WReE28fmfdeWe57VZGx+KECoppDiccqdiJ9M65TnuTJJ6ILYOIglz00qMIqf6luszC5+
- Rp9uPcRe0S3PPlEVBNYZ3xNornMLWALHC4Q3GikDywbC3yXddvH7R+NgxzugM4GAN6R1
- d4ky9ZmVIudUlQQ0utVf6IGYstE02K4QcZ7l8avX0xCYZlty+Drv/xWTHdEe5cYAIE+P
- 1LBg==
-X-Gm-Message-State: AOAM532UqhSQW74BdSuj/l0OwYpPMqLtjKnyduteCazREv7NxmSggkPw
- HYWPlz3+91Y4bpkwL8UBG+M=
-X-Google-Smtp-Source: ABdhPJzSpu8yGeFP+GzyEybUVtNPrGp7KzIjkWRSocFZg5FH1LYFxmnwcmssvlHFkT2CAJLDzffvAg==
-X-Received: by 2002:a17:90a:d30c:: with SMTP id
- p12mr7873993pju.4.1593622167420; 
- Wed, 01 Jul 2020 09:49:27 -0700 (PDT)
-Received: from localhost.localdomain ([103.88.59.57])
- by smtp.googlemail.com with ESMTPSA id s9sm6470611pjz.2.2020.07.01.09.49.23
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=i9+/GjSEEc7IqDOjdKKSFi+z5g58JvqTZ3s2qbSX/ko=;
+ b=XSJJW3m/A2ssKt1iP8L3DgplsjIr4LUoEuu5uPDkvqnp6LQnIRJSSaMR2YD717ZViZ
+ 94K8ceArdKGkDG3P2n54gdZq8pRUBsqES0s3VVGe60VQz4QP2w2+cuVGStCiP43zbuM5
+ icKeXNepea6Qm7ibMqEUw32Y7utwpB9NGnHmm2DIimk4pwegW9gI8mM4gAxG/E/B4STR
+ Xxjtxm8JLhRJSA4ZyioFBUS8Sl2Muzwa4Ggwk1kePmm/lO6RvzA7ELt393g+Hg8vFnF4
+ fGLzkUhm6KJNqXgrhXbmA3A+v7pwc/l2pGMLZX9999RUnfqYKrq+xJiNq4uy6HmSFJcN
+ p8vQ==
+X-Gm-Message-State: AOAM530lO4elx34sU+jQ9ng+XgBPVfzeOiNdINXYt430cqqTUV9Q9aUG
+ OCMYOV7tXWUibWplvnUEtac=
+X-Google-Smtp-Source: ABdhPJwzcGwP45fgxdx3hTw2Gc6eeWQuIs5EbzTQ/zMhxXEnqeVCPSJQa+6Nzqb3BwHdWxd8IzU0kQ==
+X-Received: by 2002:a37:a8c7:: with SMTP id
+ r190mr23770720qke.156.1593622675667; 
+ Wed, 01 Jul 2020 09:57:55 -0700 (PDT)
+Received: from localhost.localdomain
+ (dslb-178-011-230-214.178.011.pools.vodafone-ip.de. [178.11.230.214])
+ by smtp.gmail.com with ESMTPSA id x14sm5890229qki.65.2020.07.01.09.57.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 01 Jul 2020 09:49:26 -0700 (PDT)
-From: Baidyanath Kundu <kundubaidya99@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] Staging: atomisp: Fix __func__ style warnings
-Date: Wed,  1 Jul 2020 22:18:42 +0530
-Message-Id: <20200701164842.1325-1-kundubaidya99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ Wed, 01 Jul 2020 09:57:55 -0700 (PDT)
+From: Michael Straube <straube.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rtl8188eu: remove unused parameter
+Date: Wed,  1 Jul 2020 18:54:59 +0200
+Message-Id: <20200701165459.8904-1-straube.linux@gmail.com>
+X-Mailer: git-send-email 2.27.0
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,145 +85,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Baidyanath Kundu <kundubaidya99@gmail.com>,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Larry.Finger@lwfinger.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This patch fixes the checkpatch.pl warning:
+Remove unused parameter 'padapter' from rtw_os_xmit_resource_alloc().
 
-Prefer using '"%s...", __func__' to using '<function name>',
-this function's name, in a string
-
-Signed-off-by: Baidyanath Kundu <kundubaidya99@gmail.com>
+Signed-off-by: Michael Straube <straube.linux@gmail.com>
 ---
- .../atomisp/pci/base/refcount/src/refcount.c  | 28 +++++++++----------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_xmit.c      | 6 +++---
+ drivers/staging/rtl8188eu/include/xmit_osdep.h | 3 +--
+ drivers/staging/rtl8188eu/os_dep/xmit_linux.c  | 3 +--
+ 3 files changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/base/refcount/src/refcount.c b/drivers/staging/media/atomisp/pci/base/refcount/src/refcount.c
-index cf02737cf8d4..a9c881631f4a 100644
---- a/drivers/staging/media/atomisp/pci/base/refcount/src/refcount.c
-+++ b/drivers/staging/media/atomisp/pci/base/refcount/src/refcount.c
-@@ -48,7 +48,7 @@ static struct ia_css_refcount_entry *refcount_find_entry(ia_css_ptr ptr,
- 		return NULL;
- 	if (!myrefcount.items) {
- 		ia_css_debug_dtrace(IA_CSS_DEBUG_ERROR,
--				    "refcount_find_entry(): Ref count not initialized!\n");
-+				    "%s(): Ref count not initialized!\n", __func__);
- 		return NULL;
- 	}
+diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+index 258531bc1408..1b12afd33d95 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
++++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+@@ -124,10 +124,10 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+ 		pxmitbuf->ext_tag = false;
  
-@@ -73,12 +73,12 @@ int ia_css_refcount_init(uint32_t size)
- 
- 	if (size == 0) {
- 		ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
--				    "ia_css_refcount_init(): Size of 0 for Ref count init!\n");
-+				    "%s(): Size of 0 for Ref count init!\n", __func__);
- 		return -EINVAL;
- 	}
- 	if (myrefcount.items) {
- 		ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
--				    "ia_css_refcount_init(): Ref count is already initialized\n");
-+				    "%s(): Ref count is already initialized\n", __func__);
- 		return -EINVAL;
- 	}
- 	myrefcount.items =
-@@ -99,7 +99,7 @@ void ia_css_refcount_uninit(void)
- 	u32 i;
- 
- 	ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
--			    "ia_css_refcount_uninit() entry\n");
-+			    "%s() entry\n", __func__);
- 	for (i = 0; i < myrefcount.size; i++) {
- 		/* driver verifier tool has issues with &arr[i]
- 		   and prefers arr + i; as these are actually equivalent
-@@ -120,7 +120,7 @@ void ia_css_refcount_uninit(void)
- 	myrefcount.items = NULL;
- 	myrefcount.size = 0;
- 	ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
--			    "ia_css_refcount_uninit() leave\n");
-+			    "%s() leave\n", __func__);
- }
- 
- ia_css_ptr ia_css_refcount_increment(s32 id, ia_css_ptr ptr)
-@@ -133,7 +133,7 @@ ia_css_ptr ia_css_refcount_increment(s32 id, ia_css_ptr ptr)
- 	entry = refcount_find_entry(ptr, false);
- 
- 	ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
--			    "ia_css_refcount_increment(%x) 0x%x\n", id, ptr);
-+			    "%s(%x) 0x%x\n", __func__, id, ptr);
- 
- 	if (!entry) {
- 		entry = refcount_find_entry(ptr, true);
-@@ -145,7 +145,7 @@ ia_css_ptr ia_css_refcount_increment(s32 id, ia_css_ptr ptr)
- 
- 	if (entry->id != id) {
- 		ia_css_debug_dtrace(IA_CSS_DEBUG_ERROR,
--				    "ia_css_refcount_increment(): Ref count IDS do not match!\n");
-+				    "%s(): Ref count IDS do not match!\n", __func__);
- 		return mmgr_NULL;
- 	}
- 
-@@ -165,7 +165,7 @@ bool ia_css_refcount_decrement(s32 id, ia_css_ptr ptr)
- 	struct ia_css_refcount_entry *entry;
- 
- 	ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
--			    "ia_css_refcount_decrement(%x) 0x%x\n", id, ptr);
-+			    "%s(%x) 0x%x\n", __func__, id, ptr);
- 
- 	if (ptr == mmgr_NULL)
- 		return false;
-@@ -175,7 +175,7 @@ bool ia_css_refcount_decrement(s32 id, ia_css_ptr ptr)
- 	if (entry) {
- 		if (entry->id != id) {
- 			ia_css_debug_dtrace(IA_CSS_DEBUG_ERROR,
--					    "ia_css_refcount_decrement(): Ref count IDS do not match!\n");
-+					    "%s(): Ref count IDS do not match!\n", __func__);
- 			return false;
+ 		/* Tx buf allocation may fail sometimes, so sleep and retry. */
+-		res = rtw_os_xmit_resource_alloc(padapter, pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
++		res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
+ 		if (res == _FAIL) {
+ 			msleep(10);
+-			res = rtw_os_xmit_resource_alloc(padapter, pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
++			res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
+ 			if (res == _FAIL)
+ 				goto exit;
  		}
- 		if (entry->count > 0) {
-@@ -225,8 +225,8 @@ void ia_css_refcount_clear(s32 id, clear_func clear_func_ptr)
- 	u32 count = 0;
+@@ -162,7 +162,7 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+ 		pxmitbuf->padapter = padapter;
+ 		pxmitbuf->ext_tag = true;
  
- 	assert(clear_func_ptr);
--	ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE, "ia_css_refcount_clear(%x)\n",
--			    id);
-+	ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE, "%s(%x)\n",
-+			    __func__, id);
+-		res = rtw_os_xmit_resource_alloc(padapter, pxmitbuf, max_xmit_extbuf_size + XMITBUF_ALIGN_SZ);
++		res = rtw_os_xmit_resource_alloc(pxmitbuf, max_xmit_extbuf_size + XMITBUF_ALIGN_SZ);
+ 		if (res == _FAIL) {
+ 			res = _FAIL;
+ 			goto exit;
+diff --git a/drivers/staging/rtl8188eu/include/xmit_osdep.h b/drivers/staging/rtl8188eu/include/xmit_osdep.h
+index 5283a6d53700..5fd8ca51f156 100644
+--- a/drivers/staging/rtl8188eu/include/xmit_osdep.h
++++ b/drivers/staging/rtl8188eu/include/xmit_osdep.h
+@@ -22,8 +22,7 @@ int rtw_xmit_entry(struct sk_buff *pkt, struct  net_device *pnetdev);
  
- 	for (i = 0; i < myrefcount.size; i++) {
- 		/* driver verifier tool has issues with &arr[i]
-@@ -236,14 +236,14 @@ void ia_css_refcount_clear(s32 id, clear_func clear_func_ptr)
- 		entry = myrefcount.items + i;
- 		if ((entry->data != mmgr_NULL) && (entry->id == id)) {
- 			ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
--					    "ia_css_refcount_clear: %x: 0x%x\n",
-+					    "%s: %x: 0x%x\n", __func__,
- 					    id, entry->data);
- 			if (clear_func_ptr) {
- 				/* clear using provided function */
- 				clear_func_ptr(entry->data);
- 			} else {
- 				ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
--						    "ia_css_refcount_clear: using hmm_free: no clear_func\n");
-+						    "%s: using hmm_free: no clear_func\n", __func__);
- 				hmm_free(entry->data);
- 			}
+ void rtw_os_xmit_schedule(struct adapter *padapter);
  
-@@ -260,7 +260,7 @@ void ia_css_refcount_clear(s32 id, clear_func clear_func_ptr)
- 		}
- 	}
- 	ia_css_debug_dtrace(IA_CSS_DEBUG_TRACE,
--			    "ia_css_refcount_clear(%x): cleared %d\n", id,
-+			    "%s(%x): cleared %d\n", __func__, id,
- 			    count);
- }
+-int rtw_os_xmit_resource_alloc(struct adapter *padapter,
+-			       struct xmit_buf *pxmitbuf, u32 alloc_sz);
++int rtw_os_xmit_resource_alloc(struct xmit_buf *pxmitbuf, u32 alloc_sz);
+ void rtw_os_xmit_resource_free(struct xmit_buf *pxmitbuf);
+ 
+ void rtw_os_pkt_complete(struct adapter *padapter, struct sk_buff *pkt);
+diff --git a/drivers/staging/rtl8188eu/os_dep/xmit_linux.c b/drivers/staging/rtl8188eu/os_dep/xmit_linux.c
+index 017e1d628461..3ca1dc30efb7 100644
+--- a/drivers/staging/rtl8188eu/os_dep/xmit_linux.c
++++ b/drivers/staging/rtl8188eu/os_dep/xmit_linux.c
+@@ -14,8 +14,7 @@
+ #include <xmit_osdep.h>
+ #include <osdep_intf.h>
+ 
+-int rtw_os_xmit_resource_alloc(struct adapter *padapter,
+-			       struct xmit_buf *pxmitbuf, u32 alloc_sz)
++int rtw_os_xmit_resource_alloc(struct xmit_buf *pxmitbuf, u32 alloc_sz)
+ {
+ 	int i;
  
 -- 
-2.17.1
+2.27.0
 
 _______________________________________________
 devel mailing list
