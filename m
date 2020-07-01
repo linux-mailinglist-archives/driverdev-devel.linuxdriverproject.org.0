@@ -2,47 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4703C2116D9
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 01:53:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CF75E2116AF
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 01:34:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B4A358957C;
-	Wed,  1 Jul 2020 23:53:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E907789563;
+	Wed,  1 Jul 2020 23:34:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IhmgBy9C3-AU; Wed,  1 Jul 2020 23:53:51 +0000 (UTC)
+	with ESMTP id bsjlNPMKNFmd; Wed,  1 Jul 2020 23:34:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3586C89563;
-	Wed,  1 Jul 2020 23:53:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5617F89577;
+	Wed,  1 Jul 2020 23:34:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 230301BF5A2
- for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 23:53:48 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 41FF31BF5A2
+ for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 23:34:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1E7868957A
- for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 23:53:48 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3E65E8AA34
+ for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 23:34:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lZaIPp35Sfe1 for <devel@linuxdriverproject.org>;
- Wed,  1 Jul 2020 23:53:46 +0000 (UTC)
+ with ESMTP id GitfS9xr2hzg for <devel@linuxdriverproject.org>;
+ Wed,  1 Jul 2020 23:34:26 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from server.altonwebs.com (unknown [164.138.21.248])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3F30489563
- for <devel@driverdev.osuosl.org>; Wed,  1 Jul 2020 23:53:46 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0FA6E8AA2E
+ for <devel@linuxdriverproject.org>; Wed,  1 Jul 2020 23:34:26 +0000 (UTC)
 Received: from 2340.ir (unknown [46.249.32.77])
- by server.altonwebs.com (Postfix) with ESMTPA id 363D61B8130
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 00:51:12 +0430 (+0430)
+ by server.altonwebs.com (Postfix) with ESMTPA id B119F17D93D
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 00:51:17 +0430 (+0430)
 Authentication-Results: server.altonwebs.com;
  spf=pass (sender IP is 46.249.32.77) smtp.mailfrom=support@2340.ir
  smtp.helo=2340.ir
 Received-SPF: pass (server.altonwebs.com: connection is authenticated)
 From: support@2340.ir
-To: devel@driverdev.osuosl.org
+To: devel@linuxdriverproject.org
 Subject: OFFIZIELLE GEWINNBENACHRITIGUNG  NT60K
-Date: 1 Jul 2020 10:20:31 +0330
-Message-ID: <20200701102031.C809D96C7299E059@2340.ir>
+Date: 1 Jul 2020 10:20:36 +0330
+Message-ID: <20200701102036.D02CE78C8952F607@2340.ir>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
