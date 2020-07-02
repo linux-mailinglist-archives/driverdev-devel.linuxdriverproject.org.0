@@ -2,58 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD6DA211BEB
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 08:22:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B8F4211C23
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 08:49:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BA9D62631D;
-	Thu,  2 Jul 2020 06:22:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8B4B0263D9;
+	Thu,  2 Jul 2020 06:49:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eWdvDPAYR3Fb; Thu,  2 Jul 2020 06:22:43 +0000 (UTC)
+	with ESMTP id KSREnyZzA0UR; Thu,  2 Jul 2020 06:49:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2419026316;
-	Thu,  2 Jul 2020 06:22:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A486B253CA;
+	Thu,  2 Jul 2020 06:49:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8E5151BF5F5
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 06:22:41 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1B14C1BF5F5
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 06:49:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 08C3025028
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 06:22:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 175598AA8E
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 06:49:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SY6H-mRIaaJr for <devel@linuxdriverproject.org>;
- Thu,  2 Jul 2020 06:22:40 +0000 (UTC)
+ with ESMTP id SN6xzEOkHCje for <devel@linuxdriverproject.org>;
+ Thu,  2 Jul 2020 06:49:16 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 689D125014
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 06:22:40 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9E4E6208FE;
- Thu,  2 Jul 2020 06:22:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593670960;
- bh=qUQS9WYY2oyPoyjWnwNnXzFofBRbxf66JWC23zR+dmg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=eD3QrVuRFDGGm+yneWPwxxH3MDozAE/nJv3qw1VtkUU4u1TFVfHL6nKN8bh3AFjZl
- HvxdAyLmRcyg69neowIqz7aPtdSKdO0/V3g8josGClm/nT5ueqPrM5O0s3ctiX/VIu
- 3KZC5qesHo1FikB0Z2VT+rMdufrMDcRnp7gYx7Ik=
-Date: Thu, 2 Jul 2020 08:19:42 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: B K Karthik <bkkarthik@pesu.pes.edu>
-Subject: Re: [PATCH] staging: rtl8188eu: include: rtw_cmd.h: fixed a blank
- space coding style issue.
-Message-ID: <20200702061942.GA935451@kroah.com>
-References: <20200702045004.5wp7fnzw5pg4yov5@pesu-pes-edu>
+Received: from m43-7.mailgun.net (m43-7.mailgun.net [69.72.43.7])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9E4C08A932
+ for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 06:49:13 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1593672556; h=Content-Type: MIME-Version: Message-ID:
+ In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
+ bh=Z1FQKJa+CcrDHMyZpRsA52XudrtWn5rPp4C8kePR6JE=;
+ b=GYqJ5eLDv+8xBkmbjBxYdycb4fbgfaZatQDk6CC/0MVuVPgOBooaJ/jB3Wi2mOYyGOrLwImG
+ wjQMcoHiVxWVXKIDKFbD3t0OxAoXAFLQz+f9fJ6GcO/VreElFNg1AhC39Ovw+GJI5RyalAoQ
+ xGpDNpamjcBRtnvwUA9OCCmy92g=
+X-Mailgun-Sending-Ip: 69.72.43.7
+X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n05.prod.us-west-2.postgun.com with SMTP id
+ 5efd8363117610c7ff8f3d59 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 02 Jul 2020 06:49:07
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id C95F2C433CA; Thu,  2 Jul 2020 06:49:06 +0000 (UTC)
+Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
+ [88.114.240.156])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 317DDC433C6;
+ Thu,  2 Jul 2020 06:49:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 317DDC433C6
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: <Nicolas.Ferre@microchip.com>
+Subject: Re: [PATCH] staging/wilc1000: let wilc_mac_xmit() to NETDEV_TX_OK
+References: <20200628183237.74749-1-luc.vanoostenryck@gmail.com>
+ <8a2f50dc-2cbe-64e4-438c-4320bb574f4f@microchip.com>
+Date: Thu, 02 Jul 2020 09:48:59 +0300
+In-Reply-To: <8a2f50dc-2cbe-64e4-438c-4320bb574f4f@microchip.com> (Nicolas
+ Ferre's message of "Mon, 29 Jun 2020 07:58:09 +0000")
+Message-ID: <87eepubeec.fsf@codeaurora.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200702045004.5wp7fnzw5pg4yov5@pesu-pes-edu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,46 +83,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Larry Finger <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org, Ajay.Kathat@microchip.com,
+ gregkh@linuxfoundation.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, adham.abozaeid@microchip.com,
+ luc.vanoostenryck@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 02, 2020 at 12:50:04AM -0400, B K Karthik wrote:
-> add blank spaces for improved code readability.
-> 
-> Signed-off-by: B K Karthik <karthik.bk2000@live.com>
-> ---
->  drivers/staging/rtl8188eu/include/rtw_cmd.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8188eu/include/rtw_cmd.h b/drivers/staging/rtl8188eu/include/rtw_cmd.h
-> index fa5e212fc9e0..002a797c6d0a 100644
-> --- a/drivers/staging/rtl8188eu/include/rtw_cmd.h
-> +++ b/drivers/staging/rtl8188eu/include/rtw_cmd.h
-> @@ -115,7 +115,7 @@ struct	setopmode_parm {
->   */
-> 
->  #define RTW_SSID_SCAN_AMOUNT 9 /*  for WEXT_CSCAN_AMOUNT 9 */
-> -#define RTW_CHANNEL_SCAN_AMOUNT (14+37)
-> +#define RTW_CHANNEL_SCAN_AMOUNT (14 + 37)
->  struct sitesurvey_parm {
->  	int scan_mode;	/* active: 1, passive: 0 */
->  	u8 ssid_num;
+<Nicolas.Ferre@microchip.com> writes:
 
-You sent 8 patches, some of them duplicates (I think), with no sense of
-what order to apply these in.
+> Luc,
+>
+> Thanks for your patch...
+>
+> On 28/06/2020 at 20:32, Luc Van Oostenryck wrote:
+>> The method ndo_start_xmit() is defined as returning an 'netdev_tx_t',
+>> which is a typedef for an enum type defining 'NETDEV_TX_OK' but this
+>> driver returns '0' instead of 'NETDEV_TX_OK'.
+>> 
+>> Fix this by returning ''NETDEV_TX_OK' instead of 0.
+>> 
+>> Signed-off-by: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+>> ---
+>>   drivers/staging/wilc1000/netdev.c | 6 +++---
+>
+> ... would it be possible that you re-spin it so that it applies to the 
+> new location of this driver:
+> drivers/net/wireless/microchip/wilc1000/netdev.c
+>
+> You can rebase your patch on the wireless-driver-next tree with 
+> wilc1000-move-out-of-staging branch:
+>
+> tree: 
+> git://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-next.git
+> branch: wilc1000-move-out-of-staging
+>
+> (Then you can also review the subject line of your patch, BTW)
 
-Please resend them all as a patch series, properly numbered, so that I
-have a chance to figure this out, I have dropped all of your patches
-from my review queue.
+And also cc linux-wireless so that our patchwork sees it (not sure if
+the original patch had it or not, just making sure), more info in the
+link below.
 
-thanks,
-
-greg k-h
-
+-- 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
