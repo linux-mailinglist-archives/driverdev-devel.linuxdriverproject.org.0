@@ -2,74 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B8F4211C23
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 08:49:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09DAF211C56
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 09:02:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8B4B0263D9;
-	Thu,  2 Jul 2020 06:49:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2FF0326426;
+	Thu,  2 Jul 2020 07:02:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KSREnyZzA0UR; Thu,  2 Jul 2020 06:49:20 +0000 (UTC)
+	with ESMTP id sKaF-Rf9NaLI; Thu,  2 Jul 2020 07:02:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A486B253CA;
-	Thu,  2 Jul 2020 06:49:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B90E22634A;
+	Thu,  2 Jul 2020 07:02:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1B14C1BF5F5
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 06:49:17 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 139201BF5F5
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 07:01:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 175598AA8E
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 06:49:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1062788D23
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 07:01:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SN6xzEOkHCje for <devel@linuxdriverproject.org>;
- Thu,  2 Jul 2020 06:49:16 +0000 (UTC)
+ with ESMTP id kkRHoxBwibTn for <devel@linuxdriverproject.org>;
+ Thu,  2 Jul 2020 07:01:58 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from m43-7.mailgun.net (m43-7.mailgun.net [69.72.43.7])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9E4C08A932
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 06:49:13 +0000 (UTC)
+Received: from mail29.static.mailgun.info (mail29.static.mailgun.info
+ [104.130.122.29])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9BB6688A7E
+ for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 07:01:55 +0000 (UTC)
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1593672556; h=Content-Type: MIME-Version: Message-ID:
+ s=smtp; t=1593673318; h=Content-Type: MIME-Version: Message-ID:
  In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
- bh=Z1FQKJa+CcrDHMyZpRsA52XudrtWn5rPp4C8kePR6JE=;
- b=GYqJ5eLDv+8xBkmbjBxYdycb4fbgfaZatQDk6CC/0MVuVPgOBooaJ/jB3Wi2mOYyGOrLwImG
- wjQMcoHiVxWVXKIDKFbD3t0OxAoXAFLQz+f9fJ6GcO/VreElFNg1AhC39Ovw+GJI5RyalAoQ
- xGpDNpamjcBRtnvwUA9OCCmy92g=
-X-Mailgun-Sending-Ip: 69.72.43.7
+ bh=vV+WEa9lR4z9vQ/BiZfiSTXTYWp+rAsHXFb2XHfCL/c=;
+ b=C5nMJne0ififfUm9pUVsb6ZLPO8+fIgbBDmJyPLcmc5yuKHFFpWlBmk9o1bv1ytU94YamgMn
+ B5fiZ1+krSpVVeVhoqvhkn/juKrWaLMKrxjiDZNVsfN1YDEoCwNlXkb9zeBXo06opY4Mh7Ag
+ 8d5kwbsHtNzGBlcw5q/ufHASN/c=
+X-Mailgun-Sending-Ip: 104.130.122.29
 X-Mailgun-Sid: WyI2ZDRhNSIsICJkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n05.prod.us-west-2.postgun.com with SMTP id
- 5efd8363117610c7ff8f3d59 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 02 Jul 2020 06:49:07
+ smtp-out-n04.prod.us-west-2.postgun.com with SMTP id
+ 5efd861ef3deea03f39121f2 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 02 Jul 2020 07:00:46
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id C95F2C433CA; Thu,  2 Jul 2020 06:49:06 +0000 (UTC)
-Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
- [88.114.240.156])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ id 9B456C433C8; Thu,  2 Jul 2020 07:00:46 +0000 (UTC)
+Received: from tynnyri.adurom.net (tynnyri.adurom.net [51.15.11.48])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 317DDC433C6;
- Thu,  2 Jul 2020 06:49:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 317DDC433C6
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 6DB04C433C6;
+ Thu,  2 Jul 2020 07:00:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 6DB04C433C6
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  spf=none smtp.mailfrom=kvalo@codeaurora.org
 From: Kalle Valo <kvalo@codeaurora.org>
-To: <Nicolas.Ferre@microchip.com>
-Subject: Re: [PATCH] staging/wilc1000: let wilc_mac_xmit() to NETDEV_TX_OK
-References: <20200628183237.74749-1-luc.vanoostenryck@gmail.com>
- <8a2f50dc-2cbe-64e4-438c-4320bb574f4f@microchip.com>
-Date: Thu, 02 Jul 2020 09:48:59 +0300
-In-Reply-To: <8a2f50dc-2cbe-64e4-438c-4320bb574f4f@microchip.com> (Nicolas
- Ferre's message of "Mon, 29 Jun 2020 07:58:09 +0000")
-Message-ID: <87eepubeec.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+To: <Ajay.Kathat@microchip.com>
+Subject: Re: [PATCH] wilc1000: move wilc driver out of staging
+References: <20200625123712.14156-1-ajay.kathat@microchip.com>
+Date: Thu, 02 Jul 2020 10:00:40 +0300
+In-Reply-To: <20200625123712.14156-1-ajay.kathat@microchip.com> (Ajay Kathat's
+ message of "Thu, 25 Jun 2020 12:37:23 +0000")
+Message-ID: <875zb6e6zr.fsf@tynnyri.adurom.net>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -83,48 +82,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Ajay.Kathat@microchip.com,
- gregkh@linuxfoundation.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, adham.abozaeid@microchip.com,
- luc.vanoostenryck@gmail.com
+Cc: devel@driverdev.osuosl.org, Venkateswara.Kaja@microchip.com,
+ Sripad.Balwadgi@microchip.com, gregkh@linuxfoundation.org,
+ linux-wireless@vger.kernel.org, Nicolas.Ferre@microchip.com,
+ johannes@sipsolutions.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-<Nicolas.Ferre@microchip.com> writes:
+<Ajay.Kathat@microchip.com> writes:
 
-> Luc,
+> From: Ajay Singh <ajay.kathat@microchip.com>
 >
-> Thanks for your patch...
+> WILC1000 is an IEEE 802.11 b/g/n IoT link controller module. The
+> WILC1000 connects to Microchip AVR/SMART MCUs, SMART MPUs, and other
+> processors with minimal resource requirements with a simple
+> SPI/SDIO-to-Wi-Fi interface.
 >
-> On 28/06/2020 at 20:32, Luc Van Oostenryck wrote:
->> The method ndo_start_xmit() is defined as returning an 'netdev_tx_t',
->> which is a typedef for an enum type defining 'NETDEV_TX_OK' but this
->> driver returns '0' instead of 'NETDEV_TX_OK'.
->> 
->> Fix this by returning ''NETDEV_TX_OK' instead of 0.
->> 
->> Signed-off-by: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
->> ---
->>   drivers/staging/wilc1000/netdev.c | 6 +++---
+> WILC1000 driver has been part of staging for few years. With
+> contributions from the community, it has improved significantly. Full
+> driver review has helped in achieving the current state.
+> The details for those reviews are captured in 1 & 2.
 >
-> ... would it be possible that you re-spin it so that it applies to the 
-> new location of this driver:
-> drivers/net/wireless/microchip/wilc1000/netdev.c
+> [1]. https://lore.kernel.org/linux-wireless/1537957525-11467-1-git-send-email-ajay.kathat@microchip.com/
+> [2]. https://lore.kernel.org/linux-wireless/1562896697-8002-1-git-send-email-ajay.kathat@microchip.com/
 >
-> You can rebase your patch on the wireless-driver-next tree with 
-> wilc1000-move-out-of-staging branch:
+> Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
+> ---
 >
-> tree: 
-> git://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-next.git
-> branch: wilc1000-move-out-of-staging
+> As suggested, keeping all the changes in single commit with file rename
+> so it's easy to move out of staging [3].
 >
-> (Then you can also review the subject line of your patch, BTW)
+> Please choose whichever option you prefer between the git mv or patch series
+> sent last Tuesday. The resulting driver is the same as no patch has been
+> queued in between.
+>
+> [3]. https://lore.kernel.org/linux-wireless/20200623110000.31559-1-ajay.kathat@microchip.com/
 
-And also cc linux-wireless so that our patchwork sees it (not sure if
-the original patch had it or not, just making sure), more info in the
-link below.
+As discussed with Greg I created an immutable branch for this and merged
+the branch to wireless-drivers-next:
+
+5625f965d764 wilc1000: move wilc driver out of staging
+
+Greg, here's the location of the immutable branch:
+
+git://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-next.git wilc1000-move-out-of-staging
 
 -- 
 https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
