@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AD42212158
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 12:32:34 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 007E387BB3;
-	Thu,  2 Jul 2020 10:32:33 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x2muiovc8wja; Thu,  2 Jul 2020 10:32:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 025D7878B3;
-	Thu,  2 Jul 2020 10:32:31 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 268111BF35D
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 10:32:30 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D73CA21215A
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 12:32:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7755F8AA3D
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 10:32:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 859718AA9B;
+	Thu,  2 Jul 2020 10:32:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id C2K3zVy4sntS; Thu,  2 Jul 2020 10:32:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 092B28A6D8;
+	Thu,  2 Jul 2020 10:32:36 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 88C6A1BF35D
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 10:32:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 82A27878BA
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 10:32:33 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n8yofkTU1H7C for <devel@linuxdriverproject.org>;
- Thu,  2 Jul 2020 10:32:24 +0000 (UTC)
+ with ESMTP id PP9LG7tjuppJ for <devel@linuxdriverproject.org>;
+ Thu,  2 Jul 2020 10:32:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6861F8A6D8
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 10:32:24 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2A3BE878B3
+ for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 10:32:33 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A9D622073E;
- Thu,  2 Jul 2020 10:32:23 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5F68420747;
+ Thu,  2 Jul 2020 10:32:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593685944;
- bh=3uzJdXDmT8FY4gyQ3T1UaSqZ+EEfCJDFv/7k1CeXfD8=;
+ s=default; t=1593685953;
+ bh=enD74GEcyPx4GL7iY06xo1k0ra+cf1sbekcCKhJ09Cc=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=IGUBpkAPA0NkoiCzhPgZFHqDh6lfLSNQu4VZJ8IBc9WLGvJ3w8qytgEiD0tCh6YTn
- tmEFrv2Og4IT6Zb2Jkwq0lJQtp1NTNZ66IueddDwUe78HyBiePV4Dc5He5iDLRbify
- DT1TVhrdVF+rP3XO/V/DRmoYcLqXFNdaqYK0QSI0=
-Date: Thu, 2 Jul 2020 12:32:27 +0200
+ b=H302ipcR8A1ukgCHgd47fGV/ik8fiGCINT2Qdp0wj5Li5gWW1M+DFvTYXeypnz9sC
+ K//rtH52//aBy3eoANq3H0/64IGxoV+tSduQhe/AFMYtsPtURtxDxRVjtMLnKXkQRU
+ IdLoHNqajHhE6JCdBvg9OP2naXnjgpwXu4BLRTyw=
+Date: Thu, 2 Jul 2020 12:32:36 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Ard Biesheuvel <ardb@kernel.org>
-Subject: Re: [RFC PATCH 1/7] staging/rtl8192e: switch to RC4 library interface
-Message-ID: <20200702103227.GB1238594@kroah.com>
+Subject: Re: [RFC PATCH 2/7] staging/rtl8192u: switch to RC4 library interface
+Message-ID: <20200702103236.GC1238594@kroah.com>
 References: <20200702101947.682-1-ardb@kernel.org>
- <20200702101947.682-2-ardb@kernel.org>
+ <20200702101947.682-3-ardb@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200702101947.682-2-ardb@kernel.org>
+In-Reply-To: <20200702101947.682-3-ardb@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,7 +78,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 02, 2020 at 12:19:41PM +0200, Ard Biesheuvel wrote:
+On Thu, Jul 02, 2020 at 12:19:42PM +0200, Ard Biesheuvel wrote:
 > Switch to the ARC4 library interface, to remove the pointless
 > dependency on the skcipher API, from which we will hopefully be
 > able to drop ecb(arc4) skcipher support.
