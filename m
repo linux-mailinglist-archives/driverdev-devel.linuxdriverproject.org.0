@@ -1,80 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A9EB212207
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 13:20:23 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E0E31212219
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 13:22:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E94EC8A8AE;
-	Thu,  2 Jul 2020 11:20:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E08108B142;
+	Thu,  2 Jul 2020 11:22:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lyEHxUAY7PxZ; Thu,  2 Jul 2020 11:20:20 +0000 (UTC)
+	with ESMTP id JAYTeP1mnZTA; Thu,  2 Jul 2020 11:22:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 33F938A88B;
-	Thu,  2 Jul 2020 11:20:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E04018B139;
+	Thu,  2 Jul 2020 11:22:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B37A71BF59B
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 11:20:18 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CE8801BF59B
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 11:22:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B056189021
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 11:20:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CB1718A8B6
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 11:22:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QT7Ig43vqWGb for <devel@linuxdriverproject.org>;
- Thu,  2 Jul 2020 11:20:18 +0000 (UTC)
+ with ESMTP id R-nc8RnLWqCl for <devel@linuxdriverproject.org>;
+ Thu,  2 Jul 2020 11:22:19 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 55BB489018
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 11:20:18 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id 72so619895ple.0
- for <devel@driverdev.osuosl.org>; Thu, 02 Jul 2020 04:20:18 -0700 (PDT)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 330818A88B
+ for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 11:22:19 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id d194so9950533pga.13
+ for <devel@driverdev.osuosl.org>; Thu, 02 Jul 2020 04:22:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
  h=from:date:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=w32r7hP9DyDdYKhcgit4fHbtLWUQgHNgxb3Y7c+rxpY=;
- b=hH8W2oJbiuals+PcHNVm7hmYsiZVfkIogdIqUTC/fcLnRcsKxm0SLQ0Aw0GPyUEQvD
- DFGHstWxhDzx/isFWh3bBA6DI6XGcr9l3O6eKLR/KVJ/xawPke0g5fkaowESqirepd/e
- ljSR8p+931wEQpbx5RLhIBPKAsXx/lkiPQPxyiX0z+Lj3cywCoPwBbcQasOB1DZjBThT
- Z/ziutu/3kLUjYccx5OqoevdLU4DQ9eghMNqNXntzBcVrXjGFSivF5RopNbZ2i6RdW87
- z6phHTamPlFf6PrXQfhpCgsqDu0mCfQc/z2aFgfn0VUMrhmXV5QUdJB2XAIapqfuESag
- gvZQ==
+ :user-agent; bh=nt96k6iAKxqAFLPuGZvFYf33kEJ+/jRhegvfMeKc9Xs=;
+ b=fPOtA6Tb7M5g4NKvW+QtMg8fBqYNtKBM0zq7JWAD5tEQeaj7a4EM4Uwc8uLzIuzjWI
+ lbG7Pi2tuDApXckkKxuI9NGIwojlLArPSNCQkO2WZT6Go6TGqWFNIF8agRJawsmk2BUF
+ fxDy/cKeelxjZ/sjBTk2pGEsZs+VLxn4V0OtgejWlUeQ5R63qL9ZVtiaHWobJp516QXY
+ OSoIZN2tdyuLKfX62JLAE9riYDmbWzIrcecj61ogKcf1FvfEJTpzBB/cvYAVRzRsa9TA
+ pLaN7Qpa3lDyBw1JNQrfaojZ1EPM8m5MhRRpFtm7yPOO/g+PnRZYHdz9SImPFIJNEZwr
+ WAmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:date:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=w32r7hP9DyDdYKhcgit4fHbtLWUQgHNgxb3Y7c+rxpY=;
- b=nKHi9bcnD7MfiI/vvJabPWq8yzlSTybykSQ9uJpoBoq/HIU/faMP3DuqUx/uTRbGeA
- h8ulfypJY76t3FGDbo0X2HKXISWdgKwSWIM0/W1cj9tev1y9EGI+Q6oZhf3q1ZyzuOiS
- jSNkSqbwQ+fAPYItc0TQEI0tQLupzfe+mce+Bo1qD66dCDXBOZVgWyD1CDcb+wc+mhc9
- P/3RqdTiPq7CuDaqlSDsTL8VEjx7qBQcXuWmKHpSPbn4g2BFIcijBVknavCoE7ZVH6x/
- hAqD1eKIryMEZYrABkP2vHhxnFLvzajNv4mLaITFNDVZl70/T7Wk+qqbrR3OF6oEzDuG
- 0MDw==
-X-Gm-Message-State: AOAM5317P5svGg9l9T7kP0UXFURrs9nqfIYaMec5W+qL3g4H1eXh+X96
- I2OiPEpHoH/hc8xefcDM5ZSd/Q==
-X-Google-Smtp-Source: ABdhPJxyKrvnwA/G6ip9llUHSVcbD3cH52NH4wYdGk7r+mRgXdFqnKp1QbolGJ5p5x4+nIk9t/TDeg==
-X-Received: by 2002:a17:90a:2562:: with SMTP id
- j89mr29546187pje.218.1593688817973; 
- Thu, 02 Jul 2020 04:20:17 -0700 (PDT)
+ bh=nt96k6iAKxqAFLPuGZvFYf33kEJ+/jRhegvfMeKc9Xs=;
+ b=rhS71/dmVP0dak49FwqEu9zi5EPALkZ+2ja51U6Z/QHHaC1e7hpoFy3FRcjr4wp0Uq
+ qTumuvpdW6xcJ2S0hEYP6xrYQJ5eBBfAzLLI4kC04+3oWx2ijlEQvId8+PTLP8M7aNK3
+ Fs0/f6fSKlKqg4eyA2AJ1NFa1fOHchHaYST2oqE+ETB+7xoudXMjHR4AI/L1H5ObyCcs
+ dt59XbThfphjzOjkyo3gX1AMr+YZ7FDGc45mZNNm2b6SDxvBKaGHw/KfdS/EYUp3dbY4
+ L+NcYbszutjlV6N2CsZFLmucIOUCHY6smr0pfOUVfEDM0CqUBM+xMLuh/v0zu5xQq3sx
+ uohA==
+X-Gm-Message-State: AOAM533xc9hTu6H8uBCNuDzc4xukm3dYp8YvnTjuCYygC3D5JBG6zEej
+ IGiHyrGiNjmwp4nb/bg3KIy+TQ==
+X-Google-Smtp-Source: ABdhPJydMbhu4w4dIm3e/HYEXc5ZMYlZN68Nglf/tCAmFxbrbQ+hA0WwrlNL0s0aS9y6fW5p5PNPhA==
+X-Received: by 2002:a63:f814:: with SMTP id n20mr23250319pgh.92.1593688938793; 
+ Thu, 02 Jul 2020 04:22:18 -0700 (PDT)
 Received: from localhost ([2406:7400:73:3271:908:f18a:1156:5c38])
- by smtp.gmail.com with ESMTPSA id a68sm7979172pje.35.2020.07.02.04.20.16
+ by smtp.gmail.com with ESMTPSA id 7sm8674767pgw.85.2020.07.02.04.22.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 04:20:17 -0700 (PDT)
+ Thu, 02 Jul 2020 04:22:17 -0700 (PDT)
 From: B K Karthik <bkkarthik@pesu.pes.edu>
 X-Google-Original-From: B K Karthik <karthik.bk2000@live.com>
-Date: Thu, 2 Jul 2020 07:20:09 -0400
+Date: Thu, 2 Jul 2020 07:22:10 -0400
 To: Larry Finger <Larry.Finger@lwfinger.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Michael Straube <straube.linux@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8188eu: include: rtw_recv.h: fixed a blank space
- coding style issue.
-Message-ID: <20200702112009.6qe6v3rb5n7jklsh@pesu-pes-edu>
+Subject: [PATCH 1/2] staging: rtl8188eu: include: rtw_pwrctrl.h: fixed
+ multiple parentheses coding style issues.
+Message-ID: <20200702112210.th4aiiszhdtufbpe@pesu-pes-edu>
 MIME-Version: 1.0
 User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -89,66 +87,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8925782895555610032=="
+Content-Type: multipart/mixed; boundary="===============0493105767742547129=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============8925782895555610032==
+--===============0493105767742547129==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ec5skvv4ljvpvhat"
+	protocol="application/pgp-signature"; boundary="ekcxpik5lw6jcut3"
 Content-Disposition: inline
 
 
---ec5skvv4ljvpvhat
+--ekcxpik5lw6jcut3
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-added blank spaces to improve code readability.
+add parentheses since complex valued macros must be enclosed within parentheses.
 
 Signed-off-by: B K Karthik <karthik.bk2000@live.com>
 ---
- drivers/staging/rtl8188eu/include/rtw_recv.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8188eu/include/rtw_pwrctrl.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/include/rtw_recv.h b/drivers/staging/rtl8188eu/include/rtw_recv.h
-index e383cb119e1b..b281b9e7fcea 100644
---- a/drivers/staging/rtl8188eu/include/rtw_recv.h
-+++ b/drivers/staging/rtl8188eu/include/rtw_recv.h
-@@ -13,7 +13,7 @@
- #define NR_RECVFRAME 256
+diff --git a/drivers/staging/rtl8188eu/include/rtw_pwrctrl.h b/drivers/staging/rtl8188eu/include/rtw_pwrctrl.h
+index 404634999e35..c89328142731 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_pwrctrl.h
++++ b/drivers/staging/rtl8188eu/include/rtw_pwrctrl.h
+@@ -84,7 +84,7 @@ struct reportpwrstate_parm {
+ 	unsigned short rsvd;
+ };
 
- #define RXFRAME_ALIGN	8
--#define RXFRAME_ALIGN_SZ	(1<<RXFRAME_ALIGN)
-+#define RXFRAME_ALIGN_SZ	(1 << RXFRAME_ALIGN)
+-#define LPS_DELAY_TIME	1*HZ /*  1 sec */
++#define LPS_DELAY_TIME	(1*HZ) /*  1 sec */
 
- #define MAX_RXFRAME_CNT	512
- #define MAX_RX_NUMBLKS		(32)
+ #define EXE_PWR_NONE	0x01
+ #define EXE_PWR_IPS		0x02
+@@ -201,7 +201,7 @@ struct pwrctrl_priv {
+ };
+
+ #define rtw_get_ips_mode_req(pwrctrlpriv) \
+-	(pwrctrlpriv)->ips_mode_req
++	((pwrctrlpriv)->ips_mode_req)
+
+ #define rtw_ips_mode_req(pwrctrlpriv, ips_mode) \
+ 	((pwrctrlpriv)->ips_mode_req = (ips_mode))
 --
 2.20.1
 
 
---ec5skvv4ljvpvhat
+--ekcxpik5lw6jcut3
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl79wukACgkQ471Q5AHe
-Z2qzmwv9HGfnIeRPc6bPWSi8yr+D5OnkpdgD8B/keJnaXqqaCWdHHRyko+of2Jlu
-xe/xqU3pTln6YyynMYXIx3A+lXmbRKHr269OGMztg9VV2smu8sS3EXODg8G7GnjH
-VfHa2vRcyHhyWQnT3TrZ+6rntn15wWuhHRVtTlTCO2BcUX9YPvm3OPL7UPZJk2MI
-zZw8vyFwK76dvDZDJl8ZI+7wZefqxKiMXnSOVC2SzKiVUbvn+ExYbXk3BSABquIy
-v6gn4/ZBIZTFECdDOxWsqPvzDBoW72KrihP5BFUUMBlF/ZQ2B2zckHXnCYYwyBnl
-AIpb5Tk0pkyVDqxWXX4M4GlF6Rmd8NjDN3N4tCEH3ba8duJvWFKkYGoq+sMUkcc0
-SKyWziXwBRlE8t8ZICiXYfsOBV0SkVTO3iC8j4lzY38H8V8uP90iNrV0TwY+E+Ra
-G9TPLU619Cx1D2J5m0DUkG4F7txUViM7Wgrl10tBGSqQj1SJZXyTSvzQ1wCCBDIx
-QvShBdK2
-=ukqj
+iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl79w2IACgkQ471Q5AHe
+Z2rdZgv+PEEd2Ajt0okuG+6fIqzpISYZ/28PJjGjrCVHhXZtavp3LSNrCKIdMCW6
+ib6K4zOhMrHNgOd97ktSdq/uRaP2dN0cpXOhzbo1zzHcR27F6t4j7wAMnyHwA3o+
+OOK/sPiUkhibXeggNQPqVSVXASBIowpHk4EbJ3QVwSYjhFYGQDz02Jn1qovs1F63
+VSBuRBS0iQ9EDoENbWgnLxdirSL+aeXHEWTc4ZhM44bq2NCcmXdLcoBMdGIc5TUZ
+dliMSNXrehaFZ8yEiT8NAVNzc29MtS2s8Cki9RMEvTH2kxFHTYM3mYacWv9JlJ2u
+BBGB5h61u/TmGuzqcYwcdu1xfAj1FBCFdsMHPD/SKsYjrKD/v/CgiixKuSWc0Kla
+VjKwXYqIXPugV0rH6HZMyBxTezhhKblr0dXectcGErf+6s5RqkBtW2ZcKtOIaaYE
+gbcjSHHgSDhHMZUed9UsfvTzqJn18rJF6K7KVEIbAf2ia5LJLmJ0PWuiBE99Qair
+A8zGIgg/
+=hbqL
 -----END PGP SIGNATURE-----
 
---ec5skvv4ljvpvhat--
+--ekcxpik5lw6jcut3--
 
---===============8925782895555610032==
+--===============0493105767742547129==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -159,4 +166,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============8925782895555610032==--
+--===============0493105767742547129==--
