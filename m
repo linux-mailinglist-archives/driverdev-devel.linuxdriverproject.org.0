@@ -1,140 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F963211D04
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 09:30:46 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CBE3211F04
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 10:40:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7E8CB2636C;
-	Thu,  2 Jul 2020 07:30:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A5F1F8B29A;
+	Thu,  2 Jul 2020 08:40:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BwiBdzR-nA4A; Thu,  2 Jul 2020 07:30:42 +0000 (UTC)
+	with ESMTP id OKi+hSWwLHQR; Thu,  2 Jul 2020 08:40:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C808926387;
-	Thu,  2 Jul 2020 07:30:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2EC9C8B27E;
+	Thu,  2 Jul 2020 08:40:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2374B1BF2B5
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 07:30:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6A1211BF3C1
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 08:40:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1EFC888DA8
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 07:30:37 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 669FC89192
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 08:40:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id epfg5KhVquUm for <devel@linuxdriverproject.org>;
- Thu,  2 Jul 2020 07:30:35 +0000 (UTC)
+ with ESMTP id lbnaN3PA4Q-i for <devel@linuxdriverproject.org>;
+ Thu,  2 Jul 2020 08:40:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa1.microchip.iphmx.com (esa1.microchip.iphmx.com
- [68.232.147.91])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D0BC688DA5
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 07:30:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1593675035; x=1625211035;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=UbsXvqA1Xhr/Ai4N8FnYZ9+dcxnKGhe5ZQL6IEeZrqQ=;
- b=eJYR1FTo78W1GrasOEdOAifVr51ojxUHgb71cnqwqXp0C0zC1/y3OSha
- RmdcQ5sB3yQR1rcbyxFEm/VGyh2mVqlqHW4Sn1jDdYxf0p+W5REVPtMWU
- A2/Di5C5Boln6KZfocs2BfLudrDHzU4CGWgVG5V4zMng6mo1TYtunohN+
- Md4ngeCo8ptwjbjqlocv8d/79oRp3mwlViWNxU/82xdwj0eap6HrmcjBe
- 0CQGFeQ2ESzGiop6kWWw8CUQbDIY4OAowgdNmbczwRStjQAP27+ATtcXf
- 33uVFdyeSI8SZMOGYFTN0DVvaah3iY1DcKvwMDwp3L6xdefda6QZeBRC9 w==;
-IronPort-SDR: XBDtDpIkXM6jLwv6w1kD8zWCNlALaJ+ok3ueqpikEVIfCBdLO57A1AntdAjAyGXSf00pglTsPK
- XlA/fO9aWi9rwnujky5HbEIMwN8X0QhJmMBo1a5L+9KEGB0Ws69wbwR0xX7X2J76ZPin6HllB+
- zXsgV/E/ow3TmoTnGut0D8ktW+oLdLdSyJLs+pUdbGQQxq4p9hvH9KyAaPHll67EWYx700MrJh
- pUtopy6sLjX0u0LqNlT7OrVGsn5TnaUy2rQUIrzPWNaaSPMCO8kCgf9S9NncoSBTmJJJpng0fx
- 598=
-X-IronPort-AV: E=Sophos;i="5.75,303,1589266800"; d="scan'208";a="85962205"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 02 Jul 2020 00:30:34 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Thu, 2 Jul 2020 00:30:34 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3
- via Frontend Transport; Thu, 2 Jul 2020 00:30:34 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=h6Da5ZwGAucbrrarFPNLgQkpGeLN2CSO0V8FDyxZ6yMbgHsiuP1tJ6Jj/tkO+fyZ0AaWt3h029NVB6jMyztUbNQKqZl+CiWVPnrOi3biswMtiCT9Y0pdlttOuaVH50UNKCNd87AzS8yWfFgPHKgk5UOqNQ3hUAY0eR6SVBd/OW3QwyixGF+/dC6cJXU/dCBQuVrOEEsHEgRvMpxehalVamqwTtqpbWyqL44hFQjIYKvXs/Ro4ku/HIJT001LwRjkbOMqTwyQAAVaf1t79WDBl1DL7zxrhCWdSy/7UdpFEL7gSDi/57aiB9b9JnlnV9I3CPXpDAucjbPGMGRSDHnZqw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UbsXvqA1Xhr/Ai4N8FnYZ9+dcxnKGhe5ZQL6IEeZrqQ=;
- b=AfuTVOzNgi0vSQXgqyin0zScyAp0GE8FeoTlsk+3K9bIrjy84TG19cZI9+EKK69b95Y9kr1k2P2bieZb56nafLCXftDWPuzusvWeiFC+MSQvkCQ94JZktZsPqN5AeBsAd0SREuyCxdQDKOkGBtsVoU3eEIX/ioDgKGmpAKobOPzwqrGfAAJPQAB1pPELEDLGVLrQGPBtmoICjeu3vPGVOIdrMLo4KETPpzK7alIr0gQHVsz5cgms0pjWh458c0mz08zUhFaP4Q/0ansci0jMcIE+4BmJMMm4zafFW2i3XA7y2httGa4D4LlSipSxEwqQoEZUmujQeJ7+RK77XtbNuw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UbsXvqA1Xhr/Ai4N8FnYZ9+dcxnKGhe5ZQL6IEeZrqQ=;
- b=NU3n5Sh0MKkgaMlZS8hVXPZWorswhsrRvLzRGq/5lBO6RSPJuq6/9MFftDjwQJt9TNPt7dE3K3maCVANim3skX9ZCUeDhq+/ca3L+/jbBeULTEvKWmrDkTm4PFJUKcw9wV9FEV972qj4agcNH5x8JbyIat06zxufDg8Lr4ft6XY=
-Received: from MN2PR11MB4030.namprd11.prod.outlook.com (2603:10b6:208:156::32)
- by MN2PR11MB3823.namprd11.prod.outlook.com (2603:10b6:208:f9::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3153.22; Thu, 2 Jul
- 2020 07:30:31 +0000
-Received: from MN2PR11MB4030.namprd11.prod.outlook.com
- ([fe80::3874:6ace:6aec:deed]) by MN2PR11MB4030.namprd11.prod.outlook.com
- ([fe80::3874:6ace:6aec:deed%7]) with mapi id 15.20.3131.036; Thu, 2 Jul 2020
- 07:30:31 +0000
-From: <Ajay.Kathat@microchip.com>
-To: <kvalo@codeaurora.org>
-Subject: Re: [PATCH] wilc1000: move wilc driver out of staging
-Thread-Topic: [PATCH] wilc1000: move wilc driver out of staging
-Thread-Index: AQHWSu1f9HixhD7k+UOCPxtNASiGMqjz52OQgAAIFQA=
-Date: Thu, 2 Jul 2020 07:30:31 +0000
-Message-ID: <a09157e8-6464-9d48-5d5d-fc168e1b85dc@microchip.com>
-References: <20200625123712.14156-1-ajay.kathat@microchip.com>
- <875zb6e6zr.fsf@tynnyri.adurom.net>
-In-Reply-To: <875zb6e6zr.fsf@tynnyri.adurom.net>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
-authentication-results: codeaurora.org; dkim=none (message not signed)
- header.d=none;codeaurora.org; dmarc=none action=none
- header.from=microchip.com;
-x-originating-ip: [49.207.198.61]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 32cf921c-a19a-4cb7-5390-08d81e59cd4f
-x-ms-traffictypediagnostic: MN2PR11MB3823:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR11MB3823FA7517679D4FB95691CBE36D0@MN2PR11MB3823.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:2399;
-x-forefront-prvs: 0452022BE1
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: UZs6D6wuXO8uQNcQUXZLYZpiJ6fJlyHGK7FEJXVk6RvkDBcHopXDs+1DsHFScGApW6LEpzvOKpJ2wV/VxEF3ED2Ke+8budMeuOWTSCgYeFCvm60nrbKj8cqEdUfquRItiRtL97fWYDFvnr09WrAICAvBthdO41Ce3ddJg4fDzxO2Oak1RmrWLDOM3DYDtoncpL52tAMLrtIvU8VKm8Yfs5CgZjA99xQ5d+c5bgo9/jZsHCyo+8BfGa5fFBate2Me20PONjI8xYA/xWdE9TWhJ7fjd5sMlXkwXlsoLGF4RlspE7Rx7e3bEjUl/CIv7KYpayKytI+zyqhA+iZzbYTB0t0eIVvN3/ZIIfEskQBkJSHTAnyOupzfCyZbb5Bj7jaSSXgXbpeKIeJ1AL47142Aqt1unO8SeVLnneVk/beEducHVnZfl8rGd9fHoJ7HICtL3ouvs3MtoPwQzeo3/PdePA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR11MB4030.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(396003)(136003)(346002)(39860400002)(376002)(366004)(66556008)(64756008)(6506007)(478600001)(4326008)(53546011)(107886003)(55236004)(86362001)(31686004)(8936002)(6512007)(316002)(5660300002)(2906002)(8676002)(91956017)(36756003)(54906003)(66946007)(66476007)(76116006)(31696002)(71200400001)(66446008)(2616005)(6486002)(186003)(26005)(6916009)(966005)(43740500002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: b6CAqJ5gw5jE9N1mOHjH2yKKU2M31jOzHZypi2HuTt6ndfZYNzoTBombto79VMAZL320SnINDYa8oPDWSfGb18hDGo9jH7UN5iu//UQIC9bP7G3QipMgtZUKXvxla0gmbKvPTDJoYbk2WD5s/M0/eWn9N4p5TE1F3O15UywC1MzL7LgHv8VgvT/+2qzxQkYyanrWmsYqQnIOeiAlq3v/U2EupklwqqcFbdGLTKcBO7IiFUHSHIM8WKrmxHrfPhEkzeltnQ4jnEB2X3Vn1I3dFO2xeJQuLLlXlwC2xoRIreJGeZ7aopx9UfAhrHmhn+U6gZWHNjxU65hJVEpe1VqjGBpEzMR4dprfZ7M7W1W208ITEpa8uQF/YAuksXCuOXTSTJwOyIdOv1rlT+8ZYPobcAiPZtLXlzyV92SqhsLCdJXsYK6S2hoMMyj47et3nQr/9DkSKz+NPBrq9h3KVJga6jlDjlvygqYW6wbNcSAyqPE=
-Content-ID: <0C3FDED834C0A94CB64F0415FFB27B51@namprd11.prod.outlook.com>
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6971689186
+ for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 08:40:38 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id d4so13126251pgk.4
+ for <devel@driverdev.osuosl.org>; Thu, 02 Jul 2020 01:40:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=AeaSQtniWWM8/+wvy+sNNOb5mUXTofHpZfTaKxLBkbQ=;
+ b=kTA4ijKUtPHNOdbN4/HxBECG3ezs51LEBwwhOeipwdFlT36npD9ZKZ2+qmhO1450ps
+ RL/Dem+OAh+3tbDe+BCkAOcuyXCFAninLQcVRea4hlxR8Fe8uo+nCvtfq43NJ4DEWYEU
+ w7kD9FGt7st0z+uIplB/Es5l7RQh+PlaC/kdZYNPFDSFSNi7AkenrrEvglQ5w8OxS4m4
+ 3Oc53SufLILp0GEgwJd5+5xHMJ46N+lTccv22o8rFf+ecZLfK1R62Mk33tEai8Uhmphu
+ PRJVK3NE87HKldsnSF6D1Q35G8Pl9eo3VO0GzolZHZhzztTA6xqNcO1wSY1BvfxLxtnL
+ /E/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=AeaSQtniWWM8/+wvy+sNNOb5mUXTofHpZfTaKxLBkbQ=;
+ b=nLqbYHOY/bu5GSh/51igEYHzij1HP6Sc8NMOsOij77EwGvpfdrFYwRzRoRIL9vXch4
+ KRhqiS/SZ94QA4kiwOdFhlKEgphSjtsDTAbl0g5KsZbrEIfFkWEFRrP7GIWc2v5BpeHa
+ HabwX6HZ6MeB3qyo75maZtY/teREvmTxYTU4eA6bWpGTEOpy8bmTKKJxb8ViwsY9YeyR
+ 0yu3L0Fw7xIvoAhGJIUyh2rfP6cK+6qgTWF2Pyn4vzb+h45uv5Wa1xU6Z2W9ECRqCrbK
+ mdgNj9NeSJ9Xw2uZEr3IOJVUnSQknUTqUpgsrUjxT9z7m0AashPHcyr/NweFFKFLztI6
+ YnQQ==
+X-Gm-Message-State: AOAM530oWuauXCQizmmiVS0vs8agRt6HnLBQSQaNtRjcsDM/P/gI7JBR
+ +WmJgKmxRqUARv7bbHsORYxX0/VgOM1c7iWi
+X-Google-Smtp-Source: ABdhPJz/MSY1IXTrNWGABV1mCQ83a+iIMGDqFayYtGn8InuPZTa1IJZ+Y39vR35ar8BjH5EGMNm9nA==
+X-Received: by 2002:a62:c584:: with SMTP id j126mr4164201pfg.213.1593679237913; 
+ Thu, 02 Jul 2020 01:40:37 -0700 (PDT)
+Received: from blackclown ([103.88.83.142])
+ by smtp.gmail.com with ESMTPSA id ia13sm7153883pjb.42.2020.07.02.01.40.34
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 02 Jul 2020 01:40:37 -0700 (PDT)
+Date: Thu, 2 Jul 2020 14:10:22 +0530
+From: Suraj Upadhyay <usuraj35@gmail.com>
+To: manishc@marvell.com, gregkh@linuxfoundation.org
+Subject: [PATCH] staging: qlge: qlge_ethtool.c: Proper indentation.
+Message-ID: <20200702084022.GA1586@blackclown>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR11MB4030.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 32cf921c-a19a-4cb7-5390-08d81e59cd4f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Jul 2020 07:30:31.6416 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: V+e1Njocz8hNZAcobUETLiT00QTvrwJ0arW2s5H+pWtvgJFUK5BXZxERa2erjvHL9/yRl0gxE0JdLAWXe7fPdrZCOl1j+WId67zmyBX6LNE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3823
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,69 +82,83 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Venkateswara.Kaja@microchip.com,
- Sripad.Balwadgi@microchip.com, gregkh@linuxfoundation.org,
- linux-wireless@vger.kernel.org, Nicolas.Ferre@microchip.com,
- johannes@sipsolutions.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============0288130375649210401=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
-
-On 02/07/20 12:30 pm, Kalle Valo wrote:
-> EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
-> 
-> <Ajay.Kathat@microchip.com> writes:
-> 
->> From: Ajay Singh <ajay.kathat@microchip.com>
->>
->> WILC1000 is an IEEE 802.11 b/g/n IoT link controller module. The
->> WILC1000 connects to Microchip AVR/SMART MCUs, SMART MPUs, and other
->> processors with minimal resource requirements with a simple
->> SPI/SDIO-to-Wi-Fi interface.
->>
->> WILC1000 driver has been part of staging for few years. With
->> contributions from the community, it has improved significantly. Full
->> driver review has helped in achieving the current state.
->> The details for those reviews are captured in 1 & 2.
->>
->> [1]. https://lore.kernel.org/linux-wireless/1537957525-11467-1-git-send-email-ajay.kathat@microchip.com/
->> [2]. https://lore.kernel.org/linux-wireless/1562896697-8002-1-git-send-email-ajay.kathat@microchip.com/
->>
->> Signed-off-by: Ajay Singh <ajay.kathat@microchip.com>
->> ---
->>
->> As suggested, keeping all the changes in single commit with file rename
->> so it's easy to move out of staging [3].
->>
->> Please choose whichever option you prefer between the git mv or patch series
->> sent last Tuesday. The resulting driver is the same as no patch has been
->> queued in between.
->>
->> [3]. https://lore.kernel.org/linux-wireless/20200623110000.31559-1-ajay.kathat@microchip.com/
-> 
-> As discussed with Greg I created an immutable branch for this and merged
-> the branch to wireless-drivers-next:
-
-Thanks Kalle.
+--===============0288130375649210401==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="45Z9DzgjV8m4Oswq"
+Content-Disposition: inline
 
 
-If my understanding is correct, we have to use 'wireless-driver-next'
-master branch to submit new patches for wilc1000. right?
+--45Z9DzgjV8m4Oswq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> 
-> 5625f965d764 wilc1000: move wilc driver out of staging
-> 
-> Greg, here's the location of the immutable branch:
-> 
-> git://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-next.git wilc1000-move-out-of-staging
-> 
-> --
-> https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
-> 
+Remove extra indentations from if-statement.
+
+Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
+---
+ drivers/staging/qlge/qlge_ethtool.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/qlge/qlge_ethtool.c b/drivers/staging/qlge/qlg=
+e_ethtool.c
+index 949abd53a7a9..16fcdefa9687 100644
+--- a/drivers/staging/qlge/qlge_ethtool.c
++++ b/drivers/staging/qlge/qlge_ethtool.c
+@@ -528,8 +528,8 @@ void ql_check_lb_frame(struct ql_adapter *qdev,
+ 	if ((*(skb->data + 3) =3D=3D 0xFF) &&
+ 	    (*(skb->data + frame_size / 2 + 10) =3D=3D 0xBE) &&
+ 	    (*(skb->data + frame_size / 2 + 12) =3D=3D 0xAF)) {
+-			atomic_dec(&qdev->lb_count);
+-			return;
++		atomic_dec(&qdev->lb_count);
++		return;
+ 	}
+ }
+=20
+--=20
+2.17.1
+
+
+--45Z9DzgjV8m4Oswq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl79nW0ACgkQ+gRsbIfe
+746epxAAqhB9h48Tx5kPCpUxqOqszOxrTaar0H8mC+KqZmVXOyjquvNRKpeV6Lg/
+D5ImRvLVMkWzMu7hqxFY0S89Mg/CQznGJJeaBaU8WyVfR7UJJOTk5mlRDMPc5IlW
+E++xnUQtf786os2G7DZBYoBWGompSWFVb8/aI+nef9yBPaUSJVmxcp3HNM+UW3pb
+Sl0h7oiHfHVDSgvV1mWNurUSX9u6sGutK0DXPkeeJEbt33x3GPRNcKbIDTH19mfA
+GHYY+aE+xpLim9Jt9oVFjR2d/Q2YGz7bgxoQaEIBmRpHU4xTPKwph31cTmO/e6PJ
+ebHHsFaeEQVIEWYoSKZI+1fi1FY2NWk8ySnbclCqG/itFLCDlXomV9rhBeEYT0KY
+xEEPZYTtmTuECjPuDAyw5ii7KwTDWE0ja2rqrt515kEr5uV5RCHNucmzUn9kH6+3
+HLsk8JfzQU2y1uCwI8QfXSF5nSJSOFp4QWoScF5vHvhpC3u4TSQELzXv7iyunXNV
+Cy2OBT9HgdK+HF/XvmyQ/dQUHkAH+UB5sif8Pdjod7z+KKnqjTO1vHR7sCqTjrUO
+wB/zIJWiSd4mz4aMoDiLyoHE9HiBLvDFbSwF2ueqGGEEGMQv9nn7EG7FaGN9vQ1P
+cSpXrKQ2zwfG2HrLjZ7SB5bAx26rhnd/cCgvwvzveuQlfhOnUIM=
+=blIl
+-----END PGP SIGNATURE-----
+
+--45Z9DzgjV8m4Oswq--
+
+--===============0288130375649210401==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============0288130375649210401==--
