@@ -1,45 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8171F212CE4
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 21:13:55 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FD8F212CE6
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 21:14:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C3A618A7ED;
-	Thu,  2 Jul 2020 19:13:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 96E1788D54;
+	Thu,  2 Jul 2020 19:13:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id slV3Q2KSOitL; Thu,  2 Jul 2020 19:13:53 +0000 (UTC)
+	with ESMTP id Pl0FxeXX_TLc; Thu,  2 Jul 2020 19:13:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 935958A722;
-	Thu,  2 Jul 2020 19:13:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7592F88D5C;
+	Thu,  2 Jul 2020 19:13:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A960E1BF379
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 19:13:50 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2910F1BF379
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 19:13:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A62858A5F1
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 19:13:50 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 238B28A334
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 19:13:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AZMyGXmALsE5 for <devel@linuxdriverproject.org>;
- Thu,  2 Jul 2020 19:13:49 +0000 (UTC)
+ with ESMTP id vFyJ9KwPb4LF for <devel@linuxdriverproject.org>;
+ Thu,  2 Jul 2020 19:13:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A52B78A5EE
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 19:13:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4C2A58A722
+ for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 19:13:54 +0000 (UTC)
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id 0740E2A6086
+ (Authenticated sender: koike) with ESMTPSA id AD2C22A5F9E
 From: Helen Koike <helen.koike@collabora.com>
 To: devicetree@vger.kernel.org, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 3/9] media: staging: dt-bindings: rkisp1: re-order
- properties
-Date: Thu,  2 Jul 2020 16:13:16 -0300
-Message-Id: <20200702191322.2639681-4-helen.koike@collabora.com>
+Subject: [PATCH v4 4/9] media: staging: dt-bindings: rkisp1: fix "no reg"
+ error in parent node
+Date: Thu,  2 Jul 2020 16:13:17 -0300
+Message-Id: <20200702191322.2639681-5-helen.koike@collabora.com>
 X-Mailer: git-send-email 2.26.0
 In-Reply-To: <20200702191322.2639681-1-helen.koike@collabora.com>
 References: <20200702191322.2639681-1-helen.koike@collabora.com>
@@ -67,99 +67,33 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Organize properties order in dt-binbings to move it out of staging.
+Fix the following error found with make ARCH=arm64 dt_binding_check:
 
-On top: compatible, reg and interrupts.
-Then alphabetical order, then properties starting with '#'.
+Documentation/devicetree/bindings/media/rockchip-isp1.example.dts:24.27-101.11:
+Warning (unit_address_vs_reg): /example-0/parent@0: node has a unit name, but no reg or ranges property
 
+Reported-by: Johan Jonker <jbx6244@gmail.com>
 Signed-off-by: Helen Koike <helen.koike@collabora.com>
-
 ---
 
-V2:
+V3:
 - this is a new patch in the series
 ---
- .../bindings/media/rockchip-isp1.yaml         | 32 +++++++++----------
- 1 file changed, 16 insertions(+), 16 deletions(-)
+ .../Documentation/devicetree/bindings/media/rockchip-isp1.yaml   | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index 8c7904845788d..e5b9c0574e352 100644
+index e5b9c0574e352..4d111ef2e89c7 100644
 --- a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 +++ b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -23,19 +23,6 @@ properties:
-   interrupts:
-     maxItems: 1
+@@ -126,6 +126,7 @@ examples:
+     #include <dt-bindings/power/rk3399-power.h>
  
--  iommus:
--    maxItems: 1
--
--  power-domains:
--    maxItems: 1
--
--  phys:
--    maxItems: 1
--    description: phandle for the PHY port
--
--  phy-names:
--    const: dphy
--
-   clocks:
-     items:
-       - description: ISP clock
-@@ -52,6 +39,19 @@ properties:
-       - const: hclk_isp
-       - const: hclk_isp_wrap
+     parent0: parent@0 {
++        reg = <0 0>;
+         #address-cells = <2>;
+         #size-cells = <2>;
  
-+  iommus:
-+    maxItems: 1
-+
-+  phys:
-+    maxItems: 1
-+    description: phandle for the PHY port
-+
-+  phy-names:
-+    const: dphy
-+
-+  power-domains:
-+    maxItems: 1
-+
-   # See ./video-interfaces.txt for details
-   ports:
-     type: object
-@@ -110,10 +110,10 @@ required:
-   - interrupts
-   - clocks
-   - clock-names
--  - power-domains
-   - iommus
-   - phys
-   - phy-names
-+  - power-domains
-   - ports
- 
- additionalProperties: false
-@@ -139,19 +139,19 @@ examples:
-             clock-names = "clk_isp",
-                           "aclk_isp", "aclk_isp_wrap",
-                           "hclk_isp", "hclk_isp_wrap";
--            power-domains = <&power RK3399_PD_ISP0>;
-             iommus = <&isp0_mmu>;
-             phys = <&dphy>;
-             phy-names = "dphy";
-+            power-domains = <&power RK3399_PD_ISP0>;
- 
-             ports {
-                 #address-cells = <1>;
-                 #size-cells = <0>;
- 
-                 port@0 {
-+                    reg = <0>;
-                     #address-cells = <1>;
-                     #size-cells = <0>;
--                    reg = <0>;
- 
-                     mipi_in_wcam: endpoint@0 {
-                         reg = <0>;
 -- 
 2.26.0
 
