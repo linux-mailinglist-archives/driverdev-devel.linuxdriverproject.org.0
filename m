@@ -1,83 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BA022121F0
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 13:16:13 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57C5B2121F7
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 13:17:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7798C27344;
-	Thu,  2 Jul 2020 11:16:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0F0F08A89C;
+	Thu,  2 Jul 2020 11:17:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6F6u5FxBqC10; Thu,  2 Jul 2020 11:16:09 +0000 (UTC)
+	with ESMTP id AKFPV688Ogu3; Thu,  2 Jul 2020 11:17:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 48D5F26BD5;
-	Thu,  2 Jul 2020 11:16:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5E6C98A883;
+	Thu,  2 Jul 2020 11:17:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DB2E41BF59B
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 11:16:05 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 14F531BF59B
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 11:17:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D7F2F88FAD
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 11:16:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0E9768B110
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 11:17:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 56fpUABHSRu3 for <devel@linuxdriverproject.org>;
- Thu,  2 Jul 2020 11:16:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2D94588FA9
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 11:16:04 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id u5so12414454pfn.7
- for <devel@driverdev.osuosl.org>; Thu, 02 Jul 2020 04:16:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
- h=from:date:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=Qrvb9nofOcphMhPvn7rhmWkgGEuaksdRhmOaMZHUskk=;
- b=q1tlZJccCFLKiPQ/B2sC/vDQU5b/O+7mvoncg0hJaJt6QweyYmQV4qNQmntWnC2ZG6
- 620otiEomwaTtEn6zINRnpFA37xc059rchr5UYDrEMiKHffYM0YthZ62ESZQ8JfxSxvI
- 4yPqmUrnbvrzKbexHh/xqmTd68zs9trc1uVdUuxiHfUqeoKSTal1YPYH96umePhBtVLg
- MBeQBh+6Oij38m453JqZ4UpklIksz1WSIjdkB3H0VNrXldSIdZImcld/iM+H5Xpi5AMj
- j5gE/TeJIzVlu0emm4UqUkGz2Bh1iHv6100K3hhnmUgRyFlvo/pPlVrtnz7wXM8vy1rW
- jlSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=Qrvb9nofOcphMhPvn7rhmWkgGEuaksdRhmOaMZHUskk=;
- b=uYPrjaObvtMMaAspn9SVU7TsqE7x67WuARTnz8aFGeMp4eqLQV2B9La3cNUG1DKOhQ
- tMDPyxkcJWTGVfHDrMIt6vLf22EqgdcuxlZWhEPcBrDWNRWeScoYPsiOBmAYao5lr9r3
- +1/IbWqcYjhOljB8Fd/7Z6stNwzLvfR6gpfweNS9gvo3VTc8I2Bzx/Mc0iG/Ab0G7YyS
- nX1KkGVDvAUM4KjHrVQNjx6Z0UWY3APkcWI/8rYyzfFIcE8EqvfiFiCP864V9Qv6u6r0
- TcCYHqyt964q+5IxkL4oloJPpunYxhtpV3uHnM6+gbG6Y2aRgh9Xl3NQ3B8P26xS2vXP
- lvgg==
-X-Gm-Message-State: AOAM531ZAnwZeAuX9IJeUyoVhWUZ01OJfUg3xX4peoL5xgx+SYjkHJKZ
- uggBNMKBsLoqVFoKxT03GFeEBw==
-X-Google-Smtp-Source: ABdhPJyhLd/8NX87aLg4uj6IPzpgTgUg5wAdDZI704xXtpl5sgn32mtenwtWMbVTFLzfDJMFS9r5Jg==
-X-Received: by 2002:a63:d44e:: with SMTP id i14mr9483301pgj.280.1593688564494; 
- Thu, 02 Jul 2020 04:16:04 -0700 (PDT)
-Received: from localhost ([2406:7400:73:3271:908:f18a:1156:5c38])
- by smtp.gmail.com with ESMTPSA id s22sm8492352pgv.43.2020.07.02.04.16.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 04:16:03 -0700 (PDT)
-From: B K Karthik <bkkarthik@pesu.pes.edu>
-X-Google-Original-From: B K Karthik <karthik.bk2000@live.com>
-Date: Thu, 2 Jul 2020 07:15:56 -0400
-To: Larry Finger <Larry.Finger@lwfinger.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dan Carpenter <dan.carpenter@oracle.com>,
- Kees Cook <keescook@chromium.org>,
- Michael Straube <straube.linux@gmail.com>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8188eu: include: rtl8188e_xmit.h: fixed multiple
- blank space coding style issues
-Message-ID: <20200702111556.uswbq7umpigltvfk@pesu-pes-edu>
+ with ESMTP id VjnGevuQ+pZ0 for <devel@linuxdriverproject.org>;
+ Thu,  2 Jul 2020 11:17:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sonic304-9.consmr.mail.bf2.yahoo.com
+ (sonic304-9.consmr.mail.bf2.yahoo.com [74.6.128.32])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 390A98B10D
+ for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 11:17:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1593688637; bh=NQQqU1PeFJSsC+ymHCz198coL/kqcVSY9gUcHqcpdis=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=N9tEYM+n8kQNbuEPAzSkjiZZGySPYreaB5MMOhYyApJUDxhxiywFyOnTym9JdHHCjLc6D5VXVgQF9t0ob2qKJ6NrNs6ciLNbBCll2oF8vwFx6RXiLSDJLSvQJKo5MRzHrjQIInDi5+aIAeVHYdf/VGJX2Z80n6kjzo0HHL3V6bK9k6Jt5ZvD1fr1LQu56VIZX0RHuGmRoGWu/9v/z46D8OSFMNtmhjpCTl4CJ0SCf+JfsA6JdYeXaFuaay61Lp7xIsxQ+60p9zheIqmH93BfgHac3GDUfT6wfQkfmkY7/Pmlsa5loWWD/QnY3j5XoeUzy5cjuiltMFtSGRfEeiQwYw==
+X-YMail-OSG: qWAgW9AVM1mKcE4TtsTMr0u4c0AJG7Ym_OmPYPEe56GkeuF_u3u_jO4ykMJ6TTs
+ RdeVVt.CQWw0VtzDZE6rVYtl8UqMf8NvUFi6xOqyu8SZ7uxtROH3Lwr_fxQspr3xLjrMfs2Q5Czl
+ Xr32ujysSF7LBY7zU0oVV_GMnlIH5JoP16zdSvfXweL8RF48eAphsnD_AW28f6rtZH_gQByDXdAb
+ Mt31lMSsiayHWyaLs8ZDAPQSLjXE_5skI8FtnHnAzYhNKk0_MVApuAjjVjqaw.dvSFiS44NcVjVn
+ PsVmH16gfRukhpOECL67By_9_eHFa9aUhQGShqZ0bO9A8u5edFKgeJU5Me5DleQrAmulGPYd1kRL
+ 3yYEc1rsCW49kKRejOoq9H.GEHgaYkRKvxztleVLgrivnfVqlmDh1YKRfbQbshV0RGCziJIAftvc
+ bqq1TXGLEF1HFG_jzLGdc9ZvipkMUmkNKjj5CJR4t4OSITeUdsGPyHF3IaUwA3wjJ8XVPxC5vzL0
+ mjXBrJ8pa2dh3Z03jkvM0z6nQAnBncJGgkDsJ1VkShpYBbkCmxpwgUr_C9JM4JuP5TMRw0NzMEu0
+ AtXxw.fW.kh3Xb498qFBcYNAcpzyTZEJi7WHCBCImTiGXSmcyypuQsrsl45rkCdnNsAYMK3UF6PN
+ jNeAvYM8Ue0njGsf3MU3Hp3OF0SfZM4WaEf6U3c.09PIu7CMaGWAXV1kJrCIX659oO9rkcwkCvZc
+ GvYulY21XUGNuBtY.ablJxv6zXuoGER8Vmrwv_KnmVyUtRs.blKGfhdzCkeFPxZNnMo0uIFdWO4_
+ mIE_TVd8wHC6LiQOEQa.3aPqn0BA70EdeedQ2JXTJ6BjrMuY4eJankBIm3W0qEomhBafspcQwc0f
+ FpMFaU2LZqtPDyoLWT_WonKTOZfFUaSMR.x9meStPUSe4RPqfAeX5bAWc.Ue27njZymwX7cC4zoT
+ 5VAQvwwc.SudJm6eIJAWe4zpDGzhQlYbTpA39KaBn9xfojoFWGB.oBGfODwP39ez7DnY9cYKDz9S
+ 5TLanCUhYHlzbfgCPtwJ7pPsltnpJNKnjuxaAcz3scM_CsqpHsnamoA6LRIr1f73iMJz1w7JgbZo
+ Ugv0O3QHCZGPfmR7.yUtIhn1VYpl3U6qD41VNv27rBEqLbEdAyb1oFmV7M6MnLfbYfBlATHgKUsO
+ 3hLdCZw5vU9_79hk5rDcapRXnsVzxm.QUH98te4YbDOewmZveK2qbJKBOH6t5Dg7xB9KKY18gxfv
+ 3jqb8DGPAH3I6..iY_7W58fyMlZ82rw5NN9_OwQpdsfjBXP_n6wI5lNroMpzYb6iF93guVQ--
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic304.consmr.mail.bf2.yahoo.com with HTTP; Thu, 2 Jul 2020 11:17:17 +0000
+Date: Thu, 2 Jul 2020 11:17:14 +0000 (UTC)
+From: Marilis Mannik <mariliis.manniik@gmail.com>
+Message-ID: <1717199438.168680.1593688634093@mail.yahoo.com>
+Subject: Urgent From Hospital
 MIME-Version: 1.0
-User-Agent: NeoMutt/20180716
+References: <1717199438.168680.1593688634093.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16197 YMailNodin Mozilla/5.0 (Windows NT 6.1; Win64;
+ x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116
+ Safari/537.36
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,101 +77,68 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6878122001800420758=="
+Reply-To: manniik.mariliis@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============6878122001800420758==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xqnxwb3h3522s2yn"
-Content-Disposition: inline
-
-
---xqnxwb3h3522s2yn
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-added blank spaces to improve code readability. (coding style issue)
-
-Signed-off-by: B K Karthik <karthik.bk2000@live.com>
----
- drivers/staging/rtl8188eu/include/rtl8188e_xmit.h | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h b/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-index 49884cceb349..c115007d883d 100644
---- a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-+++ b/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-@@ -30,11 +30,11 @@
- #define SET_EARLYMODE_LEN2_1(__pAddr, __Value)			\
- 	SET_BITS_TO_LE_4BYTE(__pAddr, 28, 4, __Value)
- #define SET_EARLYMODE_LEN2_2(__pAddr, __Value)			\
--	SET_BITS_TO_LE_4BYTE(__pAddr+4, 0, 8, __Value)
-+	SET_BITS_TO_LE_4BYTE(__pAddr + 4, 0, 8, __Value)
- #define SET_EARLYMODE_LEN3(__pAddr, __Value)			\
--	SET_BITS_TO_LE_4BYTE(__pAddr+4, 8, 12, __Value)
-+	SET_BITS_TO_LE_4BYTE(__pAddr + 4, 8, 12, __Value)
- #define SET_EARLYMODE_LEN4(__pAddr, __Value)			\
--	SET_BITS_TO_LE_4BYTE(__pAddr+4, 20, 12, __Value)
-+	SET_BITS_TO_LE_4BYTE(__pAddr + 4, 20, 12, __Value)
-
- /*  */
- /* defined for TX DESC Operation */
-@@ -100,7 +100,7 @@ enum TXDESC_SC {
-
- #define txdesc_set_ccx_sw_88e(txdesc, value) \
- 	do { \
--		((struct txdesc_88e *)(txdesc))->sw1 = (((value)>>8) & 0x0f); \
-+		((struct txdesc_88e *)(txdesc))->sw1 = (((value) >> 8) & 0x0f); \
- 		((struct txdesc_88e *)(txdesc))->sw0 = ((value) & 0xff); \
- 	} while (0)
-
-@@ -138,9 +138,9 @@ struct txrpt_ccx_88e {
- 	u8 sw0;
- };
-
--#define txrpt_ccx_sw_88e(txrpt_ccx) ((txrpt_ccx)->sw0 + ((txrpt_ccx)->sw1<<8))
-+#define txrpt_ccx_sw_88e(txrpt_ccx) ((txrpt_ccx)->sw0 + ((txrpt_ccx)->sw1 << 8))
- #define txrpt_ccx_qtime_88e(txrpt_ccx)			\
--	((txrpt_ccx)->ccx_qtime0+((txrpt_ccx)->ccx_qtime1<<8))
-+	((txrpt_ccx)->ccx_qtime0+((txrpt_ccx)->ccx_qtime1 << 8))
-
- void rtl8188e_fill_fake_txdesc(struct adapter *padapter, u8 *pDesc,
- 			       u32 BufferLen, u8 IsPsPoll, u8 IsBTQosNull);
---
-2.20.1
-
-
---xqnxwb3h3522s2yn
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl79wesACgkQ471Q5AHe
-Z2pFJgv/emdhtEWGrr3W/IhgH3IZ9XcWq4f1F7W1J998aP05iui9L01qxL2vvmmZ
-pXRGfhAtSDwpES+AoBP0kdVpbRhAQswAwHhyD1YIa6muiJifKJaCL8HrI5qnlA+X
-5Q+PrHIfqS5FD4YrjFIckf+AZ26F5npD/BtYASVDCq+9r7/gcqeLhPYqsVVSh7+0
-Sb29Qw3WMrzlH8YG6F3H47VKZMktJsqNsjqqc2DcJGXdooghpAqbXq8EEcR1ciTU
-EUdUKwUfbqKKUJriU1aBxD3RtMBdVkNcL1oBV3gfqeQoIXGZNxOTMg7nGv49Qrvq
-vAJHnMMykBfhkA/p1q4tb1drA0iG77DzhLe1GOXpWxdao8Dfy42jP9FKr/AGhNjN
-PcSTqs4bjxWTxkLDdPzzi4XK9k+U+Lu9qQu7P1Vl3brjlloKmnaXVu1nOEv4DjL9
-V9WgDiqtYvOLsO/vkBoP4KA/ju05YaV+T7V6n6F/InGwQNhfTf0PgW4eZOxp+7Kw
-vPyFW8AL
-=N8aX
------END PGP SIGNATURE-----
-
---xqnxwb3h3522s2yn--
-
---===============6878122001800420758==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============6878122001800420758==--
+CgpIZWxsb8KgTXnCoEJlbG92ZWQKdGhpc8KgaXPCoE1zwqBNYXJpbGlzwqBNYW5uaWvCoGZyb23C
+oEVzdG9uaWHCoHdyaXRpbmfCoGZyb23CoHRoZcKgaG9zcGl0YWzCoGhlcmXCoGluwqBJdm9yecKg
+Q29hc3Q7RGVhcsKgScKgd2FudMKgeW91wqB0b8Kga25vd8KgdGhhdMKgSSdtwqBkeWluZ8KgaGVy
+ZcKgaW7CoHRoaXPCoGhvc3BpdGFswqByaWdodMKgbm93wqB3aGljaMKgacKgZG9uJ3TCoGtub3fC
+oGlmwqBpwqB3aWxswqBzZWXCoHNvbWXCoGZld8KgZGF5c8KgdG/CoGNvbWUuCgpNecKgQmVsb3Zl
+ZCzCoGnCoHdhc8KgaW5mb3JtZWTCoGJ5wqBtecKgZG9jdG9ywqB0aGF0wqBpwqBnb3TCoHBvaXNv
+bmVkwqBhbmTCoGl0wqBhZmZlY3RlZMKgbXnCoGxpdmVywqBhbmTCoGnCoGNhbsKgb25secKgbGl2
+ZcKgZm9ywqBzb21lwqBkYXlzLsKgVGhlwqByZWFzb27CoHdoecKgacKgY29udGFjdGVkwqB5b3XC
+oHRvZGF5wqBpc8KgYmVjYXVzZcKgacKga25vd8KgdGhhdMKgbXnCoHN0ZXDCoG1vdGhlcsKgd2Fu
+dGVkwqB0b8Kga2lsbMKgbWXCoGFuZMKgdGFrZcKgbXnCoGluaGVyaXRhbmNlwqBmcm9twqBtecKg
+bGF0ZcKgRmF0aGVyLsKgScKgaGF2ZcKgYcKgbGl0dGxlwqBhZG9wdGVkwqBjaGlsZMKgbmFtZWTC
+oEFuZHJld8KgQy7CoE1hbm5pa8KgdGhhdMKgacKgYWRvcHRlZMKgaW7CoHRoaXPCoENvdW50cnnC
+oHdoZW7CoG15wqBsYXRlwqBGYXRoZXLCoHdhc8KgYWxpdmXCoGFuZMKgJDMuNcKgbWlsbGlvbsKg
+RG9sbGFyc8KgacKgaW5oZXJpdGVkwqBmcm9twqBtecKgbGF0ZcKgZmF0aGVyLsKgTXnCoHN0ZXDC
+oG1vdGhlcsKgYW5kwqBoZXLCoGNoaWxkcmVuwqB0aGV5wqBhcmXCoGFmdGVywqBBbmRyZXfCoHJp
+Z2h0wqBub3fCoGJlY2F1c2XCoHRoZXnCoGZvdW5kwqBvdXTCoHRoYXTCoEFuZHJld8Kgd2FzwqBh
+d2FyZcKgb2bCoHRoZcKgcG9pc29uLMKgYW5kwqBiZWNhdXNlwqBpwqBoYW5kZWTCoHRoZcKgZG9j
+dW1lbnRzwqBvZsKgdGhlwqBmdW5kwqBvdmVywqB0b8KgaGltwqB0aGXCoGRhecKgbXnCoHN0ZXDC
+oE1vdGhlcsKgcG9pc29uZWTCoG15wqBmb29kLMKgZm9ywqB0aGF0wqByZWFzb27CoHRoZXnCoGRv
+wqBub3TCoHdhbnTCoEFuZHJld8KgdG/CoGV4cG9zZcKgdGhlbSzCoHNvwqB0aGV5wqBhcmXCoGRv
+aW5nwqBldmVyeXRoaW5nwqBwb3NzaWJsZcKgdG/CoGtpbGzCoGhpbS4KCk15wqBCZWxvdmVkLMKg
+cGxlYXNlwqBpwqB3YW50wqB5b3XCoHRvwqBoZWxwwqBoaW3CoG91dMKgb2bCoHRoaXPCoGNvdW50
+cnnCoHdpdGjCoHRoZcKgbW9uZXkswqBoZcKgaXPCoHRoZcKgb25secKgb25lwqB0YWtpbmfCoGdv
+b2TCoGNhcmXCoG9mwqBtZcKgaGVyZcKgaW7CoHRoaXPCoGhvc3BpdGFswqByaWdodMKgbm93wqBh
+bmTCoGV2ZW7CoHRoaXPCoGVtYWlswqB5b3XCoGFyZcKgcmVhZGluZ8Kgbm93wqBoZcKgaXPCoHRo
+ZcKgb25lwqBoZWxwaW5nwqBtZcKgb3V0LsKgScKgd2FudMKgeW91wqB0b8KgZ2V0wqBiYWNrwqB0
+b8KgbWXCoHNvwqB0aGF0wqBoZcKgd2lsbMKgZ2l2ZcKgeW91wqB0aGXCoGRvY3VtZW50c8Kgb2bC
+oHRoZcKgZnVuZMKgYW5kwqBoZcKgd2lsbMKgZGlyZWN0wqB5b3XCoHRvwqBhwqB3ZWxswqBrbm93
+bsKgbGF3eWVywqB0aGF0wqBpwqBoYXZlwqBhcHBvaW50ZWQswqB0aGXCoGxhd3llcsKgd2lsbMKg
+YXNzaXN0wqB5b3XCoHRvwqBjaGFuZ2XCoHRoZcKgZG9jdW1lbnRzwqBvZsKgdGhlwqBmdW5kwqB0
+b8KgeW91csKgbmFtZcKgdG/CoGVuYWJsZcKgdGhlwqBiYW5rwqB0cmFuc2ZlcsKgdGhlwqBtb25l
+ecKgdG/CoHlvdS4uCgpUaGlzwqBpc8KgdGhlwqBmYXZvcsKgacKgbmVlZMKgd2hlbsKgeW91wqBo
+YXZlwqBnb3R0ZW7CoHRoZcKgZnVuZDoKCigxKcKgS2VlcMKgMzAlwqBvZsKgdGhlwqBtb25lecKg
+Zm9ywqBBbmRyZXfCoHVudGlswqBoZcKgZmluaXNowqBoaXPCoHN0dWRpZXPCoHRvwqBiZWNvbWXC
+oGHCoG1hbsKgYXPCoGhlwqBoYXPCoGJlZW7CoHRoZXJlwqBmb3LCoG1lwqBhc8KgbXnCoGxvdmVs
+ecKgU29uwqBhbmTCoGnCoHByb21pc2VkwqB0b8Kgc3VwcG9ydMKgaGltwqBpbsKgbGlmZcKgdG/C
+oGJlY29tZcKgYcKgbWVkaWNhbMKgRG9jdG9ywqBiZWNhdXNlwqBoZcKgYWx3YXlzwqBkZXNpcmXC
+oGZvcsKgaXTCoHdpdGjCoHRoZcKgc2Nob2xhcnNoaXDCoGhlwqBoYWTCoHdvbsKgc2/CoGZhci7C
+oEnCoHdhbnTCoHlvdcKgdG/CoHRha2XCoGhpbcKgYWxvbmfCoHdpdGjCoHlvdcKgdG/CoHlvdXLC
+oGNvdW50cnnCoGFuZMKgZXN0YWJsaXNowqBoaW3CoGFzwqB5b3VywqBzb24uCgooMinCoEdpdmXC
+oDIwJcKgb2bCoHRoZcKgbW9uZXnCoHRvwqBoYW5kaWNhcMKgcGVvcGxlwqBhbmTCoGNoYXJpdHnC
+oG9yZ2FuaXphdGlvbi7CoFRoZcKgcmVtYWluaW5nwqA1MCXCoHNob3VsZMKgYmXCoHlvdXJzwqBm
+b3LCoHlvdXLCoGhlbHDCoHRvwqBBbmRyZXcuCgpOb3RlO8KgVGhpc8Kgc2hvdWxkwqBiZcKgYcKg
+Y29kZcKgYmV0d2VlbsKgeW91wqBhbmTCoG15wqBzb27CoEFuZHJld8KgaW7CoHRoaXPCoHRyYW5z
+YWN0aW9uwqAiSG9zcGl0YWwiwqBhbnnCoG1haWzCoGZyb23CoGhpbSzCoHRoZcKgTGF3eWVywqBo
+ZcKgd2lsbMKgZGlyZWN0wqB5b3XCoHRvLMKgd2l0aG91dMKgdGhpc8KgY29kZcKgIkhvc3BpdGFs
+IsKgaXPCoG5vdMKgZnJvbcKgdGhlwqBBbmRyZXcswqB0aGXCoExhd3llcsKgb3LCoG15c2VsZsKg
+YXPCoGnCoGRvbid0wqBrbm93wqB3aGF0wqB3aWxswqBoYXBwZW7CoHRvwqBtZcKgaW7CoHRoZcKg
+bmV4dMKgZmV3wqBob3Vycy4KCkZpbmFsbHkswqB3cml0ZcKgbWXCoGJhY2vCoHNvwqB0aGF0wqBB
+bmRyZXfCoHdpbGzCoHNlbmTCoHlvdcKgaGlzwqBwaWN0dXJlc8KgdG/CoGJlwqBzdXJlwqBvZsKg
+d2hvbcKgeW91wqBhcmXCoGRlYWxpbmfCoHdpdGguwqBBbmRyZXfCoGlzwqAxNHllYXJzwqBub3cs
+wqB0aGVyZWZvcmXCoGd1aWRlwqBoaW0uwqBBbmTCoGlmwqBpwqBkb24ndMKgaGVhcsKgZnJvbcKg
+eW91wqBpwqB3aWxswqBsb29rwqBmb3LCoGFub3RoZXLCoHBlcnNvbsKgb3LCoGFuecKgb3JnYW5p
+emF0aW9uLgoKTWF5wqBBbG1pZ2h0ecKgR29kwqBibGVzc8KgeW91wqBhbmTCoHVzZcKgeW91wqB0
+b8KgYWNjb21wbGlzaMKgbXnCoHdpc2guwqBQcmF5wqBmb3LCoG1lwqBhbHdheXMuCk1zwqBNYXJp
+bGlzwqBNYW5uaWsKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDov
+L2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVy
+ZGV2LWRldmVsCg==
