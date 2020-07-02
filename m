@@ -1,62 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CCEB2117B3
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 03:23:16 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D50EA211ACC
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jul 2020 06:02:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3678D89319;
-	Thu,  2 Jul 2020 01:23:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 339028B640;
+	Thu,  2 Jul 2020 04:02:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4m_oaeoxPVFM; Thu,  2 Jul 2020 01:23:13 +0000 (UTC)
+	with ESMTP id 2mTnwjpIcwTU; Thu,  2 Jul 2020 04:02:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id ABF8A89317;
-	Thu,  2 Jul 2020 01:23:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 30D8B8B649;
+	Thu,  2 Jul 2020 04:02:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 11A591BF2B8
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 01:23:11 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 359D51BF966
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 04:02:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0D15A8A6C9
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 01:23:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2A4F2255B4
+ for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 04:02:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xl3U3a-mrtKG for <devel@linuxdriverproject.org>;
- Thu,  2 Jul 2020 01:23:09 +0000 (UTC)
+ with ESMTP id ooFvqRegQ+3A for <devel@linuxdriverproject.org>;
+ Thu,  2 Jul 2020 04:02:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DA2468A6C0
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 01:23:09 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0D06E20748;
- Thu,  2 Jul 2020 01:23:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593652989;
- bh=7q/Jn05xenrj87leqnZtfVjiwdpZVJxdfTwBAn5Es/E=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Mpv8Pdh5qKQY1vHvvHojHOAeHnbCnDJklZ7eJI7KY6TRz88ubcR+T5KBJ/NMQo1cT
- f4nvIH/9J6i1nUV+XGevKdSJeoZfkijkoRVVonIP9jMEG/s2wmQirzCrOS/lVz4zAA
- gFJBIbxKeKi83Xg+K+JcJBVIPCq3nKmReZXUy3CY=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.7 12/53] staging: wfx: fix coherency of hif_scan()
- prototype
-Date: Wed,  1 Jul 2020 21:21:21 -0400
-Message-Id: <20200702012202.2700645-12-sashal@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200702012202.2700645-1-sashal@kernel.org>
-References: <20200702012202.2700645-1-sashal@kernel.org>
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by silver.osuosl.org (Postfix) with ESMTPS id B0C57255A6
+ for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 04:02:43 +0000 (UTC)
+IronPort-SDR: d+pcmowYQ1yg1oe+9VSBQCBWQaYU7ZFzRMNIF+P9FsDHXlSiepKMVbeukq1e2LjT5CVllLBxTm
+ xSSj1LpSeDGw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9669"; a="134240792"
+X-IronPort-AV: E=Sophos;i="5.75,302,1589266800"; d="scan'208";a="134240792"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jul 2020 21:02:43 -0700
+IronPort-SDR: W2gPb+5J9CCjhvIPVpQz+X3TgIiYwb94ACOUM+6Zt5nMQ9w57iRgaXSteAEUmO+lRyKG+CzAPG
+ a0iV+t/iBw8w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,302,1589266800"; d="scan'208";a="266967574"
+Received: from lkp-server01.sh.intel.com (HELO 28879958b202) ([10.239.97.150])
+ by fmsmga008.fm.intel.com with ESMTP; 01 Jul 2020 21:02:41 -0700
+Received: from kbuild by 28879958b202 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jqqQr-0003TN-15; Thu, 02 Jul 2020 04:02:41 +0000
+Date: Thu, 02 Jul 2020 12:00:56 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ efa30b82ac7553c25405ac56034aecf03c182033
+Message-ID: <5efd5bf8.2lunqkdPl0pBrp86%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,75 +69,138 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKWyBV
-cHN0cmVhbSBjb21taXQgMjlkZTUyM2E2MjcwYTMwOGQxMmQyMWY0ZmVjZjUyZGFjNDkxZTIyNiBd
-CgpUaGUgZnVuY3Rpb24gaGlmX3NjYW4oKSByZXR1cm4gdGhlIHRpbWVvdXQgZm9yIHRoZSBjb21w
-bGV0aW9uIG9mIHRoZQpzY2FuIHJlcXVlc3QuIEl0IGlzIHRoZSBvbmx5IGZ1bmN0aW9uIGZyb20g
-aGlmX3R4LmMgdGhhdCByZXR1cm4gYW5vdGhlcgp0aGluZyB0aGFuIGp1c3QgYW4gZXJyb3IgY29k
-ZS4gVGhpcyBiZWhhdmlvciBpcyBub3QgY29oZXJlbnQgd2l0aCB0aGUKcmVzdCBvZiBmaWxlLiBX
-b3JzZSwgaWYgdmFsdWUgcmV0dXJuZWQgaXMgcG9zaXRpdmUsIHRoZSBjYWxsZXIgY2FuJ3QKbWFr
-ZSBzYXkgaWYgaXQgaXMgYSB0aW1lb3V0IG9yIHRoZSB2YWx1ZSByZXR1cm5lZCBieSB0aGUgaGFy
-ZHdhcmUuCgpVbmlmb3JtaXplIEFQSSB3aXRoIG90aGVyIEhJRiBmdW5jdGlvbnMsIG9ubHkgcmV0
-dXJuIHRoZSBlcnJvciBjb2RlIGFuZApwYXNzIHRpbWVvdXQgd2l0aCBwYXJhbWV0ZXJzLgoKU2ln
-bmVkLW9mZi1ieTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29t
-PgpMaW5rOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIwMjAwNTI5MTIxMjU2LjEwNDU1MjEt
-MS1KZXJvbWUuUG91aWxsZXJAc2lsYWJzLmNvbQpTaWduZWQtb2ZmLWJ5OiBHcmVnIEtyb2FoLUhh
-cnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgpTaWduZWQtb2ZmLWJ5OiBTYXNoYSBM
-ZXZpbiA8c2FzaGFsQGtlcm5lbC5vcmc+Ci0tLQogZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHgu
-YyB8IDYgKysrKy0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl90eC5oIHwgMiArLQogZHJpdmVy
-cy9zdGFnaW5nL3dmeC9zY2FuLmMgICB8IDYgKysrLS0tCiAzIGZpbGVzIGNoYW5nZWQsIDggaW5z
-ZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcv
-d2Z4L2hpZl90eC5jIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHguYwppbmRleCAyMGIzMDQ1
-ZDc2Njc0Li4xNWZmNjBhNTg0NjY4IDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvd2Z4L2hp
-Zl90eC5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy93ZngvaGlmX3R4LmMKQEAgLTIyMiw3ICsyMjIs
-NyBAQCBpbnQgaGlmX3dyaXRlX21pYihzdHJ1Y3Qgd2Z4X2RldiAqd2RldiwgaW50IHZpZl9pZCwg
-dTE2IG1pYl9pZCwgdm9pZCAqdmFsLAogfQogCiBpbnQgaGlmX3NjYW4oc3RydWN0IHdmeF92aWYg
-Knd2aWYsIHN0cnVjdCBjZmc4MDIxMV9zY2FuX3JlcXVlc3QgKnJlcSwKLQkgICAgIGludCBjaGFu
-X3N0YXJ0X2lkeCwgaW50IGNoYW5fbnVtKQorCSAgICAgaW50IGNoYW5fc3RhcnRfaWR4LCBpbnQg
-Y2hhbl9udW0sIGludCAqdGltZW91dCkKIHsKIAlpbnQgcmV0LCBpOwogCXN0cnVjdCBoaWZfbXNn
-ICpoaWY7CkBAIC0yNjksMTEgKzI2OSwxMyBAQCBpbnQgaGlmX3NjYW4oc3RydWN0IHdmeF92aWYg
-Knd2aWYsIHN0cnVjdCBjZmc4MDIxMV9zY2FuX3JlcXVlc3QgKnJlcSwKIAl0bW9fY2hhbl9mZyA9
-IDUxMiAqIFVTRUNfUEVSX1RVICsgYm9keS0+cHJvYmVfZGVsYXk7CiAJdG1vX2NoYW5fZmcgKj0g
-Ym9keS0+bnVtX29mX3Byb2JlX3JlcXVlc3RzOwogCXRtbyA9IGNoYW5fbnVtICogbWF4KHRtb19j
-aGFuX2JnLCB0bW9fY2hhbl9mZykgKyA1MTIgKiBVU0VDX1BFUl9UVTsKKwlpZiAodGltZW91dCkK
-KwkJKnRpbWVvdXQgPSB1c2Vjc190b19qaWZmaWVzKHRtbyk7CiAKIAl3ZnhfZmlsbF9oZWFkZXIo
-aGlmLCB3dmlmLT5pZCwgSElGX1JFUV9JRF9TVEFSVF9TQ0FOLCBidWZfbGVuKTsKIAlyZXQgPSB3
-ZnhfY21kX3NlbmQod3ZpZi0+d2RldiwgaGlmLCBOVUxMLCAwLCBmYWxzZSk7CiAJa2ZyZWUoaGlm
-KTsKLQlyZXR1cm4gcmV0ID8gcmV0IDogdXNlY3NfdG9famlmZmllcyh0bW8pOworCXJldHVybiBy
-ZXQ7CiB9CiAKIGludCBoaWZfc3RvcF9zY2FuKHN0cnVjdCB3ZnhfdmlmICp3dmlmKQpkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHguaCBiL2RyaXZlcnMvc3RhZ2luZy93Zngv
-aGlmX3R4LmgKaW5kZXggZjg1MjBhMTRjMTRjZC4uN2EyMTMzODQ3MGVlYiAxMDA2NDQKLS0tIGEv
-ZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfdHguaAorKysgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L2hp
-Zl90eC5oCkBAIC00Myw3ICs0Myw3IEBAIGludCBoaWZfcmVhZF9taWIoc3RydWN0IHdmeF9kZXYg
-KndkZXYsIGludCB2aWZfaWQsIHUxNiBtaWJfaWQsCiBpbnQgaGlmX3dyaXRlX21pYihzdHJ1Y3Qg
-d2Z4X2RldiAqd2RldiwgaW50IHZpZl9pZCwgdTE2IG1pYl9pZCwKIAkJICB2b2lkICpidWYsIHNp
-emVfdCBidWZfc2l6ZSk7CiBpbnQgaGlmX3NjYW4oc3RydWN0IHdmeF92aWYgKnd2aWYsIHN0cnVj
-dCBjZmc4MDIxMV9zY2FuX3JlcXVlc3QgKnJlcTgwMjExLAotCSAgICAgaW50IGNoYW5fc3RhcnQs
-IGludCBjaGFuX251bSk7CisJICAgICBpbnQgY2hhbl9zdGFydCwgaW50IGNoYW5fbnVtLCBpbnQg
-KnRpbWVvdXQpOwogaW50IGhpZl9zdG9wX3NjYW4oc3RydWN0IHdmeF92aWYgKnd2aWYpOwogaW50
-IGhpZl9qb2luKHN0cnVjdCB3ZnhfdmlmICp3dmlmLCBjb25zdCBzdHJ1Y3QgaWVlZTgwMjExX2Jz
-c19jb25mICpjb25mLAogCSAgICAgc3RydWN0IGllZWU4MDIxMV9jaGFubmVsICpjaGFubmVsLCBj
-b25zdCB1OCAqc3NpZCwgaW50IHNzaWRsZW4pOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5n
-L3dmeC9zY2FuLmMgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L3NjYW4uYwppbmRleCA5YWExNDMzMWFm
-ZmQ2Li5kNDdiOGEzYmE0MDNjIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvd2Z4L3NjYW4u
-YworKysgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L3NjYW4uYwpAQCAtNTYsMTAgKzU2LDEwIEBAIHN0
-YXRpYyBpbnQgc2VuZF9zY2FuX3JlcShzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZiwKIAl3ZnhfdHhfbG9j
-a19mbHVzaCh3dmlmLT53ZGV2KTsKIAl3dmlmLT5zY2FuX2Fib3J0ID0gZmFsc2U7CiAJcmVpbml0
-X2NvbXBsZXRpb24oJnd2aWYtPnNjYW5fY29tcGxldGUpOwotCXRpbWVvdXQgPSBoaWZfc2Nhbih3
-dmlmLCByZXEsIHN0YXJ0X2lkeCwgaSAtIHN0YXJ0X2lkeCk7Ci0JaWYgKHRpbWVvdXQgPCAwKSB7
-CisJcmV0ID0gaGlmX3NjYW4od3ZpZiwgcmVxLCBzdGFydF9pZHgsIGkgLSBzdGFydF9pZHgsICZ0
-aW1lb3V0KTsKKwlpZiAocmV0KSB7CiAJCXdmeF90eF91bmxvY2sod3ZpZi0+d2Rldik7Ci0JCXJl
-dHVybiB0aW1lb3V0OworCQlyZXR1cm4gLUVJTzsKIAl9CiAJcmV0ID0gd2FpdF9mb3JfY29tcGxl
-dGlvbl90aW1lb3V0KCZ3dmlmLT5zY2FuX2NvbXBsZXRlLCB0aW1lb3V0KTsKIAlpZiAocmVxLT5j
-aGFubmVsc1tzdGFydF9pZHhdLT5tYXhfcG93ZXIgIT0gd3ZpZi0+dmlmLT5ic3NfY29uZi50eHBv
-d2VyKQotLSAKMi4yNS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpo
-dHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cml2ZXJkZXYtZGV2ZWwK
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: efa30b82ac7553c25405ac56034aecf03c182033  staging: rtl8188eu: core: Fix coding style issue
+
+elapsed time: 725m
+
+configs tested: 110
+configs skipped: 4
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                       aspeed_g4_defconfig
+m68k                       m5249evb_defconfig
+arm                            mmp2_defconfig
+sh                            shmin_defconfig
+powerpc                      pmac32_defconfig
+parisc                           allmodconfig
+arm                          pxa3xx_defconfig
+arm                       imx_v6_v7_defconfig
+powerpc                      ppc6xx_defconfig
+mips                          ath25_defconfig
+parisc                generic-64bit_defconfig
+mips                        jmr3927_defconfig
+mips                 decstation_r4k_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a002-20200701
+i386                 randconfig-a001-20200701
+i386                 randconfig-a006-20200701
+i386                 randconfig-a005-20200701
+i386                 randconfig-a004-20200701
+i386                 randconfig-a003-20200701
+x86_64               randconfig-a012-20200701
+x86_64               randconfig-a016-20200701
+x86_64               randconfig-a014-20200701
+x86_64               randconfig-a011-20200701
+x86_64               randconfig-a015-20200701
+x86_64               randconfig-a013-20200701
+i386                 randconfig-a011-20200701
+i386                 randconfig-a015-20200701
+i386                 randconfig-a014-20200701
+i386                 randconfig-a016-20200701
+i386                 randconfig-a012-20200701
+i386                 randconfig-a013-20200701
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
