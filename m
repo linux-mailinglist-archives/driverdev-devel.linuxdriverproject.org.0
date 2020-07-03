@@ -2,58 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 21070213661
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Jul 2020 10:29:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 156BC213A11
+	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Jul 2020 14:29:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 558F3265E8;
-	Fri,  3 Jul 2020 08:29:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DD269266D1;
+	Fri,  3 Jul 2020 12:28:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id idDkhBK1j0d4; Fri,  3 Jul 2020 08:29:44 +0000 (UTC)
+	with ESMTP id Dwe3jo-LCgcI; Fri,  3 Jul 2020 12:28:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E61B8204D7;
-	Fri,  3 Jul 2020 08:29:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7360E26634;
+	Fri,  3 Jul 2020 12:28:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6B94B1BF4E7
- for <devel@linuxdriverproject.org>; Fri,  3 Jul 2020 08:29:41 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D96601BF302
+ for <devel@linuxdriverproject.org>; Fri,  3 Jul 2020 12:28:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6798489769
- for <devel@linuxdriverproject.org>; Fri,  3 Jul 2020 08:29:41 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D403688DBE
+ for <devel@linuxdriverproject.org>; Fri,  3 Jul 2020 12:28:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Dzg69xRwvnjF for <devel@linuxdriverproject.org>;
- Fri,  3 Jul 2020 08:29:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D629889767
- for <devel@driverdev.osuosl.org>; Fri,  3 Jul 2020 08:29:40 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 135B32070C;
- Fri,  3 Jul 2020 08:29:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593764980;
- bh=8mmFmW6cUt+EbHQpKYu02Q4WprFtOJ0ua5Nssd8Jh4E=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=P5z4ksxbRmk955dydovHqKknEpTfroEE8ghw9KRRrFGPMq+Wvy7YJEuu4doF0bUhm
- bGCS99vPdnfnKEuJ6tikeMWpIHU50/yIkdOLzPhL0HlgTAbZ/eMEZ3L8pSWEJoph80
- BmvfmGyJSqovHi8qRLhBL4WOGjkmQQJnMBmJeLKk=
-Date: Fri, 3 Jul 2020 10:29:44 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: B K Karthik <bkkarthik@pesu.pes.edu>
-Subject: Re: [PATCH] staging: rtl8188eu: include: rtl8188e_xmit.h: fixed
- multiple blank space coding style issues
-Message-ID: <20200703082944.GA2399223@kroah.com>
-References: <20200702111556.uswbq7umpigltvfk@pesu-pes-edu>
+ with ESMTP id wofFU34t0jVE for <devel@linuxdriverproject.org>;
+ Fri,  3 Jul 2020 12:28:51 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
+ [209.85.208.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 451EC88DBC
+ for <devel@driverdev.osuosl.org>; Fri,  3 Jul 2020 12:28:51 +0000 (UTC)
+Received: by mail-ed1-f66.google.com with SMTP id d18so21902820edv.6
+ for <devel@driverdev.osuosl.org>; Fri, 03 Jul 2020 05:28:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MdPnMWpdzrbRt67bwm1DSi25zLJwZoxDBnLs4+Vo1Kc=;
+ b=LeMr/3viJFTLuBiXm/1Gt2XOp4NVt1yhM5S3mpv6VmpbHpvTW4gvNROilqjboxI90e
+ CHB658uMrK6NWt/ID3/dbE4aRCfOphioEgOf9uRpa/cr3z8+QVl8WZkJWSUHjh8ShbRx
+ Ck+4JK7AblunoWpQLcXnqSKbmMzB1ktpxgIGKS/UIgqNwIZj/pWxtDXa2ZF+OBwksdWd
+ unlgRahUuLGiSJwi75cDzeYLJb4Un8fZ+gxVtda7AzZTN0vjQFuP3Xydl4+7A32eZpv3
+ mhi9TDvp5Xh+8tY6JrzML8UW9y4juWEbAGP7kQ9oGT+LYXRHOqPrjjOUtzLx+98zdX7T
+ BX/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MdPnMWpdzrbRt67bwm1DSi25zLJwZoxDBnLs4+Vo1Kc=;
+ b=jDgX6AUN+oxQDHLim43OpTC6TN8+cWniTZUxJKQOUWprZrq0KouxrR1FkINTzjPbUa
+ S9G931UiC52JKHJPyigN4XEsNWuFv5vCUCgW8dRsQgAYi64+Xdkq0A111ToBByn/gaqF
+ oclpJuW37U79QGk+l7pCXZGGjPpxO4+gM6vgBkIPTULnob4gP5erSPNBMutoIdOhc/4y
+ dLKvVLMy7rdizE1A3n8KK2/wa1wzJUnzK++tGBqMh17GGaDgToEhusHTkmf+AC8XiKVC
+ AKB7vHM6LTgJD0ZBnZQaQxJWLJ6sw3oZXE8dEM7LrNWu951YBcwKxSu2IYLUqW9zQyeq
+ ZhYQ==
+X-Gm-Message-State: AOAM533PIBV0m7DW1Q24zlpCjfG3zTVjP8AUQDRMPg0jWtjPB84BEldl
+ IdROicrcFa6PpHPVGgZigmM=
+X-Google-Smtp-Source: ABdhPJyuADDVczzLUiRgHzdRGkfyQZ3YqlbQwkJymMzIlE8zKSBrh4pk7w+rI9DPgXDii1avw4XleQ==
+X-Received: by 2002:a50:a701:: with SMTP id h1mr39251800edc.170.1593779329629; 
+ Fri, 03 Jul 2020 05:28:49 -0700 (PDT)
+Received: from localhost.localdomain
+ (ipservice-092-219-207-057.092.219.pools.vodafone-ip.de. [92.219.207.57])
+ by smtp.gmail.com with ESMTPSA id v5sm8979874eje.88.2020.07.03.05.28.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Jul 2020 05:28:49 -0700 (PDT)
+From: Michael Straube <straube.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH 1/2] staging: rtl8192u: remove GPL boiler plate text
+Date: Fri,  3 Jul 2020 14:26:03 +0200
+Message-Id: <20200703122604.12096-1-straube.linux@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200702111556.uswbq7umpigltvfk@pesu-pes-edu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,78 +84,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Kees Cook <keescook@chromium.org>,
- linux-kernel@vger.kernel.org, Dan Carpenter <dan.carpenter@oracle.com>,
- Larry Finger <Larry.Finger@lwfinger.net>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 02, 2020 at 07:15:56AM -0400, B K Karthik wrote:
-> added blank spaces to improve code readability. (coding style issue)
-> 
-> Signed-off-by: B K Karthik <karthik.bk2000@live.com>
-> ---
->  drivers/staging/rtl8188eu/include/rtl8188e_xmit.h | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h b/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-> index 49884cceb349..c115007d883d 100644
-> --- a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-> +++ b/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-> @@ -30,11 +30,11 @@
->  #define SET_EARLYMODE_LEN2_1(__pAddr, __Value)			\
->  	SET_BITS_TO_LE_4BYTE(__pAddr, 28, 4, __Value)
->  #define SET_EARLYMODE_LEN2_2(__pAddr, __Value)			\
-> -	SET_BITS_TO_LE_4BYTE(__pAddr+4, 0, 8, __Value)
-> +	SET_BITS_TO_LE_4BYTE(__pAddr + 4, 0, 8, __Value)
->  #define SET_EARLYMODE_LEN3(__pAddr, __Value)			\
-> -	SET_BITS_TO_LE_4BYTE(__pAddr+4, 8, 12, __Value)
-> +	SET_BITS_TO_LE_4BYTE(__pAddr + 4, 8, 12, __Value)
->  #define SET_EARLYMODE_LEN4(__pAddr, __Value)			\
-> -	SET_BITS_TO_LE_4BYTE(__pAddr+4, 20, 12, __Value)
-> +	SET_BITS_TO_LE_4BYTE(__pAddr + 4, 20, 12, __Value)
-> 
->  /*  */
->  /* defined for TX DESC Operation */
-> @@ -100,7 +100,7 @@ enum TXDESC_SC {
-> 
->  #define txdesc_set_ccx_sw_88e(txdesc, value) \
->  	do { \
-> -		((struct txdesc_88e *)(txdesc))->sw1 = (((value)>>8) & 0x0f); \
-> +		((struct txdesc_88e *)(txdesc))->sw1 = (((value) >> 8) & 0x0f); \
->  		((struct txdesc_88e *)(txdesc))->sw0 = ((value) & 0xff); \
->  	} while (0)
-> 
-> @@ -138,9 +138,9 @@ struct txrpt_ccx_88e {
->  	u8 sw0;
->  };
-> 
-> -#define txrpt_ccx_sw_88e(txrpt_ccx) ((txrpt_ccx)->sw0 + ((txrpt_ccx)->sw1<<8))
-> +#define txrpt_ccx_sw_88e(txrpt_ccx) ((txrpt_ccx)->sw0 + ((txrpt_ccx)->sw1 << 8))
->  #define txrpt_ccx_qtime_88e(txrpt_ccx)			\
-> -	((txrpt_ccx)->ccx_qtime0+((txrpt_ccx)->ccx_qtime1<<8))
-> +	((txrpt_ccx)->ccx_qtime0+((txrpt_ccx)->ccx_qtime1 << 8))
-> 
->  void rtl8188e_fill_fake_txdesc(struct adapter *padapter, u8 *pDesc,
->  			       u32 BufferLen, u8 IsPsPoll, u8 IsBTQosNull);
-> --
-> 2.20.1
-> 
+The SPDX identifier is a legally binding shorthand, which
+can be used instead of the full boiler plate text.
 
+The file ieee80211_module.c has a proper SPDX line, so the
+GPL boiler plate text is not needed.
 
-I asked you to resend all patches as a patch series, not just resend the
-patches you previously sent me in random order.  Also, this one has
-changed from the first time you sent it, so it needs to be a v2 patch,
-right?
+Signed-off-by: Michael Straube <straube.linux@gmail.com>
+---
+ .../rtl8192u/ieee80211/ieee80211_module.c        | 16 ----------------
+ 1 file changed, 16 deletions(-)
 
-Again, all patches from you are now dropped from my queue, please fix up
-and resend as asked for.
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+index a5a1b14f5a40..c52540b734fd 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+@@ -9,22 +9,6 @@
+  *  <jkmaline@cc.hut.fi>
+  *  Copyright (c) 2002-2003, Jouni Malinen <jkmaline@cc.hut.fi>
+  *
+- *  This program is free software; you can redistribute it and/or modify it
+- *  under the terms of version 2 of the GNU General Public License as
+- *  published by the Free Software Foundation.
+- *
+- *  This program is distributed in the hope that it will be useful, but WITHOUT
+- *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+- *  FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+- *  more details.
+- *
+- *  You should have received a copy of the GNU General Public License along with
+- *  this program; if not, write to the Free Software Foundation, Inc., 59
+- *  Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+- *
+- *  The full GNU General Public License is included in this distribution in the
+- *  file called LICENSE.
+- *
+  *  Contact Information:
+  *  James P. Ketrenos <ipw2100-admin@linux.intel.com>
+  *  Intel Corporation, 5200 N.E. Elam Young Parkway, Hillsboro, OR 97124-6497
+-- 
+2.27.0
 
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
