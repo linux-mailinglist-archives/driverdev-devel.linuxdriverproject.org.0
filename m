@@ -1,68 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4EC2212FD4
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Jul 2020 01:04:31 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DEFB213430
+	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Jul 2020 08:30:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E1E4E87AB4;
-	Thu,  2 Jul 2020 23:04:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E0CD988C36;
+	Fri,  3 Jul 2020 06:30:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yrukh_OAnU08; Thu,  2 Jul 2020 23:04:29 +0000 (UTC)
+	with ESMTP id eAgJFecnrZoq; Fri,  3 Jul 2020 06:30:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 92A9B85E65;
-	Thu,  2 Jul 2020 23:04:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CA25388C33;
+	Fri,  3 Jul 2020 06:30:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0AC9D1BF2FE
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 23:04:27 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 580171BF5D7
+ for <devel@linuxdriverproject.org>; Fri,  3 Jul 2020 06:30:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 05C008961D
- for <devel@linuxdriverproject.org>; Thu,  2 Jul 2020 23:04:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5479687D28
+ for <devel@linuxdriverproject.org>; Fri,  3 Jul 2020 06:30:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JXlsYZD0MBtU for <devel@linuxdriverproject.org>;
- Thu,  2 Jul 2020 23:04:26 +0000 (UTC)
+ with ESMTP id cb1MrN0SqKzB for <devel@linuxdriverproject.org>;
+ Fri,  3 Jul 2020 06:30:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 70DB38961C
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 23:04:26 +0000 (UTC)
-Received: from mail-ot1-f52.google.com (mail-ot1-f52.google.com
- [209.85.210.52])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1766B208E4
- for <devel@driverdev.osuosl.org>; Thu,  2 Jul 2020 23:04:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593731066;
- bh=kbiQ3OWz9EhhS/Tlb7ohnigA/7ugcibWgJNgPfbWUpA=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=S1KCNpG9Pv4STc7dA1EIUYmAJMxBx5FwUZImnnnqH2/lfWVOZF+CqdOBuTtfkBHuq
- Y79CA8eKcotSs/YlBBV0FUEOAuDC5VJa9eJgO2+8gpTiyvAHCcXZW86dLe9UkMudqY
- KJZeeIVM2C71UrOUS4zwAPgGcwv5l109snz7DFaU=
-Received: by mail-ot1-f52.google.com with SMTP id t18so12569847otq.5
- for <devel@driverdev.osuosl.org>; Thu, 02 Jul 2020 16:04:26 -0700 (PDT)
-X-Gm-Message-State: AOAM533ZJl9mg1HL3DAoWGAEiq8JKkfLzBLlDfCOUGOhGgUdhrlnUjlD
- RyBqUVtwTzzhSZZKGg9UlfQ0h6RjpSjWvzyYQU0=
-X-Google-Smtp-Source: ABdhPJxz9/D9QobsXbtfi8ziJpmocwg7uy05KVbIQy4z+mCS1flap37AIc4xZoibn5TtrTKeVtMwq2b2dTsAvOaFY3g=
-X-Received: by 2002:a9d:5a12:: with SMTP id v18mr27802873oth.90.1593731065360; 
- Thu, 02 Jul 2020 16:04:25 -0700 (PDT)
+Received: from mail-vs1-f67.google.com (mail-vs1-f67.google.com
+ [209.85.217.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B8F4B87D1B
+ for <devel@driverdev.osuosl.org>; Fri,  3 Jul 2020 06:30:37 +0000 (UTC)
+Received: by mail-vs1-f67.google.com with SMTP id m25so16536776vsp.8
+ for <devel@driverdev.osuosl.org>; Thu, 02 Jul 2020 23:30:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=K4CTOkloIJSngYKP9mYdXYRzGngQiHdh+SB3XRrQL7w=;
+ b=RgKdKXB1RGn9Zl3WeaqKIP/k/A+DXNglNKPOVbE9c6+WpA1mM46zKKrY32uDDnrQoA
+ YNGiJMVO2zbHDdneDG2dmEYbBAI5TNUrvQ5B6vGd1AYv1VGPANZH510/A/esAHxq/mP6
+ CUB5r4WEBRdC8OGLXe+OKs8NWnBnSxfPSrD2ln+8cuzO/5pOrYCBk+u2g6EtB76IBpdF
+ K32Wvv58Hm7AsnRiaPd6abKMZNiVaH3O9Yy4KxgMoKoDscu3qimIlf5X9MKPsz/e+xNp
+ wKBxrEN9MOQDfEPicfypVgrPfjfUpcwuxSBh3VT69Brq8UEMLHW+g9Ny/jphlwKDlxYP
+ LGhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=K4CTOkloIJSngYKP9mYdXYRzGngQiHdh+SB3XRrQL7w=;
+ b=VLD1Rurpf6WD+4wheCwfwNYZF0UqfXRLVK6pgBHjC1My4nQqJp6MIsIOGLfgepOaSu
+ 1Xv7v/9UHstEKyW4SyixDbBJDahJV+dsJekswACtz4l1lP0DIAAC0bblNU1Z0aErbH3N
+ Rr6HeF5q/ynfUNGw4mZSjFH3TInhVVkZOQpLYyDMt6JQG9cxmlga/zs1lA6cqaRn2fQ1
+ myVQ7iHgebgnbvhyKiD/pj1rauyZS5jRJcwCcBSvnZ0WwF4lDPCHDVdMGKrTbMi9Mh+W
+ wcYn8lFadnvxEeWfiJJC2eNMQ+nrxr/hd3eZVsB1HD/5vctmwqlBBInC9hmj/Uhp3HhI
+ U7IQ==
+X-Gm-Message-State: AOAM532MeZV8/NfDCuFs48zFuNtWDPzL7oveI/KtpuwdBVYzbBm8x2QH
+ 1PBq3jAoGYRRNOGDfzY+MWOcjVRNaX/iddkCsGo=
+X-Google-Smtp-Source: ABdhPJyFlr0qEIYFkZ5F4P9NqPrjy6PHLc2lkC9tuBddmoGutZTuHxrOvaPN/Mn4860Mx5DPCVFTT9IqZGI4YyfycKU=
+X-Received: by 2002:a67:8cc7:: with SMTP id
+ o190mr25922203vsd.168.1593757836584; 
+ Thu, 02 Jul 2020 23:30:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200702101947.682-1-ardb@kernel.org>
- <20200702101947.682-5-ardb@kernel.org>
- <20200702175022.GA2753@sol.localdomain>
- <CAMj1kXFen1nickdZab0s8iY7SgauoH56VginEoPdxaAAL2qENw@mail.gmail.com>
-In-Reply-To: <CAMj1kXFen1nickdZab0s8iY7SgauoH56VginEoPdxaAAL2qENw@mail.gmail.com>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Fri, 3 Jul 2020 01:04:14 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXG7i1isB9cV57ccaOZhrG3s7x+nKGozzTewuE9uWvX_wg@mail.gmail.com>
-Message-ID: <CAMj1kXG7i1isB9cV57ccaOZhrG3s7x+nKGozzTewuE9uWvX_wg@mail.gmail.com>
-Subject: Re: [RFC PATCH 4/7] crypto: remove ARC4 support from the skcipher API
-To: Eric Biggers <ebiggers@kernel.org>
+References: <cover.1592537217.git.vaibhav.sr@gmail.com>
+ <e9aaa09c6688aa5ed8bddf51f5cd402bb8cf39b3.1592537217.git.vaibhav.sr@gmail.com>
+ <20200701133655.GA2373798@kroah.com>
+In-Reply-To: <20200701133655.GA2373798@kroah.com>
+From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+Date: Fri, 3 Jul 2020 12:00:00 +0530
+Message-ID: <CAAs3648mdWoeByMP_4s3Rcu4fbbChTW9C8s=DeyQQ=g_=W_EbA@mail.gmail.com>
+Subject: Re: [PATCH v3 6/6] staging: greybus: audio: Enable GB codec, audio
+ module compilation.
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,80 +83,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-nfs@vger.kernel.org,
- Herbert Xu <herbert@gondor.apana.org.au>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Marcel Holtmann <marcel@holtmann.org>, linux-wireless@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Trond Myklebust <trond.myklebust@hammerspace.com>,
- "J. Bruce Fields" <bfields@fieldses.org>, Chuck Lever <chuck.lever@oracle.com>,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- Anna Schumaker <anna.schumaker@netapp.com>, netdev@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>, Denis Kenzior <denkenz@gmail.com>
+Cc: devel@driverdev.osuosl.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alex Elder <elder@kernel.org>, Mark Greer <mgreer@animalcreek.com>,
+ linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>,
+ greybus-dev@lists.linaro.org, Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 2 Jul 2020 at 20:21, Ard Biesheuvel <ardb@kernel.org> wrote:
->
-> On Thu, 2 Jul 2020 at 19:50, Eric Biggers <ebiggers@kernel.org> wrote:
+On Wed, Jul 01, 2020 at 03:36:55PM +0200, Greg Kroah-Hartman wrote:
+> On Fri, Jun 19, 2020 at 04:50:26PM +0530, Vaibhav Agarwal wrote:
+> > Currently you can't enable the Gey Bus Audio Codec because there is no
+> > entry for it in the Kconfig file. Originally the config name was going
+> > to be AUDIO_MSM8994 but that's not correct because other types of
+> > hardware are supported now. I have chosen the name AUDIO_APB_CODEC
+> > instead.  Also I had to update the dependencies for GREYBUS_AUDIO to
+> > make the compile work.
 > >
-> > [+linux-wireless, Marcel Holtmann, and Denis Kenzior]
-> >
-> > On Thu, Jul 02, 2020 at 12:19:44PM +0200, Ard Biesheuvel wrote:
-> > > Remove the generic ecb(arc4) skcipher, which is slightly cumbersome from
-> > > a maintenance perspective, since it does not quite behave like other
-> > > skciphers do in terms of key vs IV lifetime. Since we are leaving the
-> > > library interface in place, which is used by the various WEP and TKIP
-> > > implementations we have in the tree, we can safely drop this code now
-> > > it no longer has any users.
-> > >
-> > > Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
-> >
-> > Last year there was a discussion where it was mentioned that iwd uses
-> > "ecb(arc4)" via AF_ALG.  So can we really remove it yet?
-> > See https://lkml.kernel.org/r/97BB95F6-4A4C-4984-9EAB-6069E19B4A4F@holtmann.org
-> > Note that the code isn't in "iwd" itself but rather in "libell" which iwd
-> > depends on: https://git.kernel.org/pub/scm/libs/ell/ell.git/
-> >
-> > Apparently it also uses md4 and ecb(des) too.
-> >
+> > Signed-off-by: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+> > Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > ---
+> >  drivers/staging/greybus/Kconfig  | 14 +++++++++++++-
+> >  drivers/staging/greybus/Makefile |  4 ++--
+> >  2 files changed, 15 insertions(+), 3 deletions(-)
 >
-> Ah yes, I remember now :-(
->
-> > Marcel and Denis, what's your deprecation plan for these obsolete and insecure
-> > algorithms?
-> >
->
-> Given Denis's statement:
->
->   It sounds to me like it was broken and should be fixed.  So our vote /
->   preference is to have ARC4 fixed to follow the proper semantics.  We
->   can deal with the kernel behavioral change on our end easily enough;
->   the required workarounds are the worse evil.
->
-> I would think that an ABI break is not the end of the world for them,
-> and given how trivial it is to implement RC4 in C, the workaround
-> should be to simply implement RC4 in user space, and not even bother
-> trying to use AF_ALG to get at ecb(arc4)
->
-> (same applies to md4 and ecb(des) btw)
->
-> There will always be a long tail of use cases, and at some point, we
-> just have to draw the line and remove obsolete and insecure cruft,
-> especially when it impedes progress on other fronts.
->
+> Can you fix the build issues found by the bot and resend?
 
-I have ported iwd to Nettle's LGPL 2.1 implementation of ARC4, and the
-diffstat is
+Sure Greg, I'll share the updated patch set with fixes for the issues
+reported.
 
- src/crypto.c      | 80 ++++++++++++--------
- src/main.c        |  8 --
- unit/test-eapol.c |  3 +-
- 3 files changed, 51 insertions(+), 40 deletions(-)
+--
+thanks,
+vaibhav
 
-https://git.kernel.org/pub/scm/linux/kernel/git/ardb/iwd.git/log/?h=arc4-cleanup
+>
+> thanks,
+>
+> greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
