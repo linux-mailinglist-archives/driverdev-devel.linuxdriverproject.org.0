@@ -1,70 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDB912144A4
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Jul 2020 11:18:50 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 65A11875A7;
-	Sat,  4 Jul 2020 09:18:49 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3s6CzEjW1tcG; Sat,  4 Jul 2020 09:18:48 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 44D2986FA2;
-	Sat,  4 Jul 2020 09:18:48 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9716F1BF298
- for <devel@linuxdriverproject.org>; Sat,  4 Jul 2020 09:18:46 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9AC092145C0
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Jul 2020 14:13:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 90950885DD
- for <devel@linuxdriverproject.org>; Sat,  4 Jul 2020 09:18:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD41E884BE;
+	Sat,  4 Jul 2020 12:13:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p0hy4DqvgC1n; Sat,  4 Jul 2020 12:13:35 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 29FA1883DE;
+	Sat,  4 Jul 2020 12:13:34 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5F9621BF366
+ for <devel@linuxdriverproject.org>; Sat,  4 Jul 2020 12:13:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5BB7B88F34
+ for <devel@linuxdriverproject.org>; Sat,  4 Jul 2020 12:13:32 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SVbG5imXMAwU for <devel@linuxdriverproject.org>;
- Sat,  4 Jul 2020 09:18:46 +0000 (UTC)
+ with ESMTP id If-3ziWxJYOx for <devel@linuxdriverproject.org>;
+ Sat,  4 Jul 2020 12:13:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic317-34.consmr.mail.ne1.yahoo.com
- (sonic317-34.consmr.mail.ne1.yahoo.com [66.163.184.45])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E2AD3885B4
- for <devel@driverdev.osuosl.org>; Sat,  4 Jul 2020 09:18:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1593854325; bh=0Wk2wk7l68zfqyTY1J9wiN0/3v3jJL0DInEeUBx3Qp0=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=Nc4RKDMpieJHwvezEy/TDsSPbVpM43JU8q8d/NFuXBswWIL0VXPTZbRnEE+DSy2UuYxBSj62DcaBNztwE2onMOT8YemZuul5crYk1QvV5aefkcnEoSFBfr7CzsL4Vs67A47u1EKddfIQBn891gZrPvKWZsRUY+7Kzt7OIaO2iZ+MIKZBw5W+5SqaVhdoK+NwpFs1r7icGN+lUprBnFnFKmP+M0V9k0tMeseIg0QXtsgX3RKg5ob4jt0gAtCrdooa3kBH+ERoYypHFiDCgQ+gx1kcV27jS3gh8RkGaoD0eFbd5JDnM/Cg8MDxGEy7zZxnQ97fptF5X/UhkcdjFYxCFg==
-X-YMail-OSG: Xp6ELycVM1n_uh9nWOlPA1BZtjSdoouJlybZz6rmidaP1wjAsbQhS301glJEs1r
- TZm4jWWYzlxf.8s6Y.UPDphC6FRYMByRdhTUVwjEKZkvFLITVYQMaCbaJlZ27u4FoAz2WsHgy4KK
- V3H6MQTQ5JpKUsnUGiZsAdxAritxH33WNG33N8sNOJbDPY35WANNwipvYjlndLYK6uiJa7bjwNXc
- sMBEL4M9QV7Ktn3uoVRfcNGwDr._Baw4NmZvcgcQFW75nozTnCu_s9Ws11xn48x67sdDutmEhUKB
- wtwUXqgWc46QkHP9.djCQED4btDpgTQ41.oOVDSlE33q77Jiq0beRu9jCodIqY0L0sDQxej.e5VW
- OzNkaoe8Wz5tUAp4kF0VF616iqBYykhK_7giX8eqsOTxZ9FSORaIoquZJvsW1JAGAliPq2Jkbl8d
- E.T9ACodxJi14P6zTGlaffhUkGNbjGpRAvLwmTwt128jyC5bT9K7sa2qBHNtNHatBZpke8iBIVdi
- oI5ac_Yovfpht13Xr4zMwq2q0JeIRXNSzgeukT8oiVuWqqXCb0f0qHGjGqUDIpJbWNCPI_0O3UOv
- bYLf1RD9SiiZAhAhnrJnBoxya_qXza06.TY9jUby2Kvjs7_g2fOUZ_2K4G3r1clGslQ.CpNbk3Zo
- DaLPzR4lFtE6utSeHnvx2iY2O3UKUjCOFjgrasX1SjSAd60BOOqHYZZm6tk9fNZpn7.GU0FWt5AW
- ENPf.fdyhAzr1JhZpWvtWwSo.IKBfGPGNimzUvrmgUUpKCX24HZiSEinEt41y.22NQ7hZOmSN2fR
- _n9quN0w32BUnwpQsnGx6OtlssInS_rNapLMYg_NAk95eD0hJQyjcYshCuPOgy20XpVT.tulE6UC
- W4Bs9jBf_hlZriLPrhKkOviyqhpJPRaNdvn9AkV6Od9de0nRJWdf3tfKHxq_uPiU78Z9EQWYRi27
- MTtZ715yeEGMXTDIVEW6JlFDl3SHYQbK3pFdoXDR.Yb98m8xYF4cTNzQ15W5QNOKJR6UIAFRmdDe
- k.najvBMH_Q.oQTBPc5rVCDJISow5Az9dHkOAGqTEIG1IfougFJZHXRKpCB2DufJ6TrbbMQdZZV.
- ENa5tf3oUFu41SdTtJiTxqWl6k5TieNeteOSEhWBftaWgskzzId6eEIDogLR9w0eHb6RcBu9TJKj
- 5ABT3cBNwa.HWQmbCRCnX_TwVPN9wJRgAAq9.uG9R01Z3wKI1h6hAEic75JN7lr1lzKf77d6_Gyr
- yHYH75WGJgkNfI5tC3d9z2KX7EEgosyEmgADQ8enjC5TN61Npdu4RQzy8Y.uv8AK19I8_MRt4
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic317.consmr.mail.ne1.yahoo.com with HTTP; Sat, 4 Jul 2020 09:18:45 +0000
-Date: Sat, 4 Jul 2020 09:18:41 +0000 (UTC)
-From: "Mr.Bonson Mikeil" <gabreilthomas02@gmail.com>
-Message-ID: <1347427678.2357249.1593854321621@mail.yahoo.com>
-Subject: Dear Friend You Have A Good News.
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 65B7688F2E
+ for <devel@driverdev.osuosl.org>; Sat,  4 Jul 2020 12:13:31 +0000 (UTC)
+IronPort-SDR: 86ntPuO3m6ybR66jQBiz8lLapve3ieAmI7eg9UGbkkLXQXKacG9F1elL5lKP7pFXimqoZICtM1
+ Gl62xF4u4TwA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9671"; a="146336845"
+X-IronPort-AV: E=Sophos;i="5.75,311,1589266800"; d="scan'208";a="146336845"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jul 2020 05:13:31 -0700
+IronPort-SDR: 1zchO837yHqQUMBaMEBQGzs3WSJBlJmnyRhUAFMBwGdfXlQdcfmOl05Wh94S5P2BfKQyXxRNQG
+ P4dF/UnU+ZUw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,311,1589266800"; d="scan'208";a="313516259"
+Received: from lkp-server01.sh.intel.com (HELO 6dc8ab148a5d) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 04 Jul 2020 05:13:29 -0700
+Received: from kbuild by 6dc8ab148a5d with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jrh2u-0000fL-Ru; Sat, 04 Jul 2020 12:13:28 +0000
+Date: Sat, 4 Jul 2020 20:12:55 +0800
+From: kernel test robot <lkp@intel.com>
+To: Jacopo Mondi <jacopo@jmondi.org>
+Subject: [staging:staging-testing 32/135]
+ drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c:1722:6: warning:
+ Variable 'ret' is reassigned a value before the old one has been used.
+Message-ID: <202007042049.xOFBnCX8%lkp@intel.com>
 MIME-Version: 1.0
-References: <1347427678.2357249.1593854321621.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16197 YMailNodin Mozilla/5.0 (Windows NT 6.1; Win64;
- x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163
- Safari/537.36
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,28 +71,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: pt822249@gmail.com
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kbuild-all@lists.01.org, Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+head:   14442181d20490945f341644bb8257e334b01447
+commit: b18ee53ad297264a79cf4ea566663f20786b6455 [32/135] staging: bcm2835: Break MMAL support out from camera
+compiler: gcc-9 (Debian 9.3.0-14) 9.3.0
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
 
-Dear Friend You Have A Good News.
+cppcheck warnings: (new ones prefixed by >>)
 
-I am happy to inform you about my success in getting the funds Transferred with the cooperation of a new partner from Vietnam who is an international business man. Due to your effort, sincerity, courage and trust worthiness you showed to me, I am compensating you with the sum of USD $1,800,000.00 (One Million Eight Hundred Thousand US Dollars).
+>> drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c:1722:6: warning: Variable 'ret' is reassigned a value before the old one has been used. [redundantAssignment]
+    ret = destroy_component(instance, component);
+        ^
+   drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c:1720:7: note: Variable 'ret' is reassigned a value before the old one has been used.
+     ret = disable_component(instance, component);
+         ^
+   drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c:1722:6: note: Variable 'ret' is reassigned a value before the old one has been used.
+    ret = destroy_component(instance, component);
+        ^
 
-I have authorized the Bank where I deposited the money to pay you Without any delay as soon as you contact my account Officer Mr Philip Thomas Be informed that Mr Keth Albah is aware of your payment and will be waiting to hear from you to process your payment, therefore Feel Free to contact Mr Philip Thomas and tell him how you want to receive your money $1,800,000.00.
+vim +/ret +1722 drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
 
-Contact person Mr Philip Thomas Contact Email ( pt822249@gmail.com ) Remember to forward your current Telephone Wattsap number to him for easy communication and for urgent payment.
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1707  
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1708  /*
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1709   * cause a mmal component to be destroyed
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1710   */
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1711  int vchiq_mmal_component_finalise(struct vchiq_mmal_instance *instance,
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1712  				  struct vchiq_mmal_component *component)
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1713  {
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1714  	int ret;
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1715  
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1716  	if (mutex_lock_interruptible(&instance->vchiq_mutex))
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1717  		return -EINTR;
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1718  
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1719  	if (component->enabled)
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1720  		ret = disable_component(instance, component);
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1721  
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27 @1722  	ret = destroy_component(instance, component);
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1723  
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1724  	mutex_unlock(&instance->vchiq_mutex);
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1725  
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1726  	return ret;
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1727  }
+b18ee53ad29726 drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c Jacopo Mondi 2020-06-23  1728  EXPORT_SYMBOL_GPL(vchiq_mmal_component_finalise);
+7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1729  
 
-Please do let me know immediately you receive your money so that we can share the joy together after all the suffering at that time.
+:::::: The code at line 1722 was first introduced by commit
+:::::: 7b3ad5abf027b7643b38c4006d7f4ce47a86dd3a staging: Import the BCM2835 MMAL-based V4L2 camera driver.
 
-Congratulations
+:::::: TO: Eric Anholt <eric@anholt.net>
+:::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
-Best Regards.
-Mr.Bonson Mikeil
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
