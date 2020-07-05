@@ -1,83 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2F1E214D27
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F21CB214D28
 	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Jul 2020 16:36:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 087612210F;
+	by whitealder.osuosl.org (Postfix) with ESMTP id AF59E8813C;
 	Sun,  5 Jul 2020 14:36:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id siBDKfn0ulmb; Sun,  5 Jul 2020 14:36:12 +0000 (UTC)
+	with ESMTP id svTHEZ0yvPG0; Sun,  5 Jul 2020 14:36:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C53CC21FFB;
-	Sun,  5 Jul 2020 14:36:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B25FD8813E;
+	Sun,  5 Jul 2020 14:36:12 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 09ABF1BF36F
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E93D1BF36F
  for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Jul 2020 14:36:07 +0000 (UTC)
+ Sun,  5 Jul 2020 14:36:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 019F521FFB
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9B617887D3
  for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Jul 2020 14:36:07 +0000 (UTC)
+ Sun,  5 Jul 2020 14:36:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rmvau6ay+JRf
+ with ESMTP id UdZ8FTLViQ6q
  for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Jul 2020 14:36:06 +0000 (UTC)
+ Sun,  5 Jul 2020 14:36:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
- [209.85.222.196])
- by silver.osuosl.org (Postfix) with ESMTPS id E42792151E
+Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
+ [209.85.160.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D7081887B3
  for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Jul 2020 14:36:05 +0000 (UTC)
-Received: by mail-qk1-f196.google.com with SMTP id b4so32633476qkn.11
+ Sun,  5 Jul 2020 14:36:08 +0000 (UTC)
+Received: by mail-qt1-f193.google.com with SMTP id o38so27180773qtf.6
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 05 Jul 2020 07:36:05 -0700 (PDT)
+ Sun, 05 Jul 2020 07:36:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=DkzjwPbsfeKhMi5QxxfbRe9NdzcReAbrYkuMUC8TAWw=;
- b=ro8dmdSgYMpoz5/ugolEbxI1hMohYYvg9TDaJp8QnUCzRwZWmCnZbAWDQnuLm+rv3W
- 9UREc/oyaqdMilH3uEYU4+7npiD4h+gF3xhUYcznt1zYv7cpzAT20i4g2Y07j7O9qGe4
- EAD+V+YNQGZatVNphFS2P4oOJS49JMXbAleAKwCaMjPQSV3S81k99d+VuiCavS3qn2BJ
- nz8R/MI+pdP/fNqp6dVOaEZKLNx5dT1KX/Vc8iukowkEOW7qYrIeARJ4X75foLJfoSim
- P8J6MZXWUkXMr3JAofsXQLDGFb04GlsbiTjWtfuJxB+Y139W9a3md03q+wcuGXnOAmHo
- MkJg==
+ bh=Sx5/1vcogzavzK2rKv1PhFCty04Pv813I6Tq6fAZhBU=;
+ b=G7xu1RTY7jYRcB6kTYVO0+oP7CQk0uhl8mEGvc8ibVC0XmcKyq+FC+I2GLaDU0hHHj
+ jZVpRBw57LNmujzHPN18a2DKvAxo+SYcIFFI1z4R9IsRyUBadyiSW9j7m1VjSNLc6WGU
+ U/x38zUocXIgeIQVaXbGTF20HAYdxzeiEb2iUYMc9o0DeAYUgW3PpfDAURUuQ3jw0L+j
+ lsm3PMUTtLbVodhjoMWM+G2oIHiKEIdWNaoza/qrXIDDghWe/s75hY+3vEgVx64VPKyN
+ hAlcXBo6c3FPSPYrcyv275HouV1bEoStozuUIeXwecPCPwqg/Nh08TtaqXMYOn2VcGc9
+ Lc0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=DkzjwPbsfeKhMi5QxxfbRe9NdzcReAbrYkuMUC8TAWw=;
- b=X3OcN5PnbWPN6Me5A8Tcud5zwvk5kmWaRYDk7IxDBeSX7cR3xw+t//37k4Z2iBdp8U
- HFGwdXLOkhcKU3tdNbcpM6TqW9uqSYruzO1qiBPSLYB933jmKab+7g1Ig44w9nepu4UI
- E/T+NSmpp7FL3ab0hiQ/DecoMPrnrRGz2vjh2uYnoBmoVffRCStLyXUJNVMv6Mi7U/ZP
- QS9lmoRXckp+3XJUuvGx+nJQyv8ZTTyaqqGcalu1xeSlCOWYQcjC4Q2PRiyI11b0hRQm
- Mf/h7NFV9GbXs7MKuENhM2Bt89QJhSoEUJM38O6HYwE4vQ4uU8fnWGLhxFnavITYZtdt
- PaOg==
-X-Gm-Message-State: AOAM532IGJ9LdoO9r+yjlP76CgwDHbXNP8GJO8mNPnF9gJA2+KwbTxmz
- IPW85Nu+z10iTq+qk7fQP9CpqT8ygSxKGA==
-X-Google-Smtp-Source: ABdhPJxcF78LYhEyIekv2ADaO355DVClBWVvcreUOdPlgtM8AGbksgShxucSpRXtTX6aQ8Kv/Utc/w==
-X-Received: by 2002:ae9:ed8e:: with SMTP id
- c136mr43106208qkg.374.1593959764925; 
- Sun, 05 Jul 2020 07:36:04 -0700 (PDT)
+ bh=Sx5/1vcogzavzK2rKv1PhFCty04Pv813I6Tq6fAZhBU=;
+ b=pkxsU8Qx6yeNrHltSG044KfOhlbJOMKBLFlWPVpJtnOCQJh0bUVXB8+c80E6DTle9E
+ 631ZLYtIHpulv5MMpwT3lFaJ70Y3aj/D6JpRqoUmyxEycvFm7lwgdNVRLwG/ym/70O2W
+ JyUaG7sg9az7MEmc11kA8RKysp8bq2aBM32VGpXnF2SpTzWTdAGB7n+8/gpibGZkXDJW
+ UWtM2FFGP5HK+hpDrqlkc2gEL8Vozg6finTvAH2SwpmiG2Lh6YYJyyZw1leo3oyscJwr
+ pqZPpMWAGgQt63tLHzUFMsCKw7PNw0qFbxUZBYoJnWdcbF2WCydulw/+lLkKFF3iZtTE
+ mwWw==
+X-Gm-Message-State: AOAM533Lk9lxR6mgcBiwvbxmj9qv6wn1mWxSsZGyKRUO/BrLHyR0V7jr
+ LdpbdiiwHmuIegt7AKK+1LA=
+X-Google-Smtp-Source: ABdhPJxoCtAph/runQGay9wNHhQ6CrLfEigB8T78LgHSs5TAHCrdx6NwtBB/ndnLHC6QLeRf5/1Lhw==
+X-Received: by 2002:ac8:d86:: with SMTP id s6mr16272800qti.343.1593959767874; 
+ Sun, 05 Jul 2020 07:36:07 -0700 (PDT)
 Received: from localhost.localdomain ([2804:14d:7481:1475:569e:3621:89b:963e])
  by smtp.gmail.com with ESMTPSA id
- j198sm15903286qke.71.2020.07.05.07.36.02
+ j198sm15903286qke.71.2020.07.05.07.36.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Jul 2020 07:36:04 -0700 (PDT)
+ Sun, 05 Jul 2020 07:36:07 -0700 (PDT)
 From: Mauro Dreissig <mukadr@gmail.com>
 To: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
  florian.c.schilhabel@googlemail.com, driverdev-devel@linuxdriverproject.org
-Subject: [PATCH v2 1/5] staging: rtl8712: Replace constant 49152 with
- expression 48 * 1024
-Date: Sun,  5 Jul 2020 11:35:48 -0300
-Message-Id: <20200705143552.9368-2-mukadr@gmail.com>
+Subject: [PATCH v2 2/5] staging: rtl8712: Simplify expressions with boolean
+ logic
+Date: Sun,  5 Jul 2020 11:35:49 -0300
+Message-Id: <20200705143552.9368-3-mukadr@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200705143552.9368-1-mukadr@gmail.com>
 References: <20200705143552.9368-1-mukadr@gmail.com>
@@ -99,26 +98,63 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This way we don't need the comment stating that 49152 equals 48k.
+Simplify some expressions by using boolean operations.
 
 Signed-off-by: Mauro Dreissig <mukadr@gmail.com>
 ---
- drivers/staging/rtl8712/hal_init.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8712/hal_init.c     | 4 ++--
+ drivers/staging/rtl8712/osdep_intf.h   | 2 +-
+ drivers/staging/rtl8712/rtl8712_recv.c | 5 ++---
+ 3 files changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712/hal_init.c
-index 7293cdc3a43b..1f5ba9cbe951 100644
+index 1f5ba9cbe951..d3fc6fa9a715 100644
 --- a/drivers/staging/rtl8712/hal_init.c
 +++ b/drivers/staging/rtl8712/hal_init.c
-@@ -27,7 +27,7 @@
- #include "usb_osintf.h"
+@@ -99,12 +99,12 @@ static void fill_fwpriv(struct _adapter *adapter, struct fw_priv *fwpriv)
+ 	default:
+ 		fwpriv->rf_config = RTL8712_RFC_1T2R;
+ 	}
+-	fwpriv->mp_mode = (regpriv->mp_mode == 1) ? 1 : 0;
++	fwpriv->mp_mode = (regpriv->mp_mode == 1);
+ 	/* 0:off 1:on 2:auto */
+ 	fwpriv->vcs_type = regpriv->vrtl_carrier_sense;
+ 	fwpriv->vcs_mode = regpriv->vcs_type; /* 1:RTS/CTS 2:CTS to self */
+ 	/* default enable turbo_mode */
+-	fwpriv->turbo_mode = ((regpriv->wifi_test == 1) ? 0 : 1);
++	fwpriv->turbo_mode = (regpriv->wifi_test != 1);
+ 	fwpriv->low_power_mode = regpriv->low_power;
+ }
  
- #define FWBUFF_ALIGN_SZ 512
--#define MAX_DUMP_FWSZ	49152 /*default = 49152 (48k)*/
-+#define MAX_DUMP_FWSZ (48 * 1024)
+diff --git a/drivers/staging/rtl8712/osdep_intf.h b/drivers/staging/rtl8712/osdep_intf.h
+index 2cc25db1a91d..9e75116c987e 100644
+--- a/drivers/staging/rtl8712/osdep_intf.h
++++ b/drivers/staging/rtl8712/osdep_intf.h
+@@ -17,7 +17,7 @@
+ #include "osdep_service.h"
+ #include "drv_types.h"
  
- static void rtl871x_load_fw_cb(const struct firmware *firmware, void *context)
- {
+-#define RND4(x)	(((x >> 2) + (((x & 3) == 0) ?  0 : 1)) << 2)
++#define RND4(x)	(((x >> 2) + ((x & 3) != 0)) << 2)
+ 
+ struct intf_priv {
+ 	u8 *intf_dev;
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index c513cda2a49e..d83f421acfc1 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -143,9 +143,8 @@ static void update_recvframe_attrib_from_recvstat(struct rx_pkt_attrib *pattrib,
+ 	/*TODO:
+ 	 * Offset 0
+ 	 */
+-	pattrib->bdecrypted = ((le32_to_cpu(prxstat->rxdw0) & BIT(27)) >> 27)
+-				 ? 0 : 1;
+-	pattrib->crc_err = (le32_to_cpu(prxstat->rxdw0) & BIT(14)) >> 14;
++	pattrib->bdecrypted = (le32_to_cpu(prxstat->rxdw0) & BIT(27)) == 0;
++	pattrib->crc_err = (le32_to_cpu(prxstat->rxdw0) & BIT(14)) != 0;
+ 	/*Offset 4*/
+ 	/*Offset 8*/
+ 	/*Offset 12*/
 -- 
 2.25.1
 
