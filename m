@@ -2,88 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECC7A216EB1
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jul 2020 16:27:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B91C21762A
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jul 2020 20:16:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5C21289A09;
-	Tue,  7 Jul 2020 14:27:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 01C2F899D3;
+	Tue,  7 Jul 2020 18:16:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cE9LPoB-p-bf; Tue,  7 Jul 2020 14:27:52 +0000 (UTC)
+	with ESMTP id oQCCQkSC5FPb; Tue,  7 Jul 2020 18:16:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 71DED899FB;
-	Tue,  7 Jul 2020 14:27:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DB428899A6;
+	Tue,  7 Jul 2020 18:16:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E10051BF3C4
- for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 14:27:48 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C9EB21BF97C
+ for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 18:16:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CE9F820477
- for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 14:27:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A762D860FF
+ for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 18:14:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WGjWPMd52sCV for <devel@linuxdriverproject.org>;
- Tue,  7 Jul 2020 14:27:47 +0000 (UTC)
+ with ESMTP id tol0wAezqHru for <devel@linuxdriverproject.org>;
+ Tue,  7 Jul 2020 18:14:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by silver.osuosl.org (Postfix) with ESMTPS id D637720366
- for <devel@driverdev.osuosl.org>; Tue,  7 Jul 2020 14:27:47 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 067ERkbM128986;
- Tue, 7 Jul 2020 14:27:46 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : sender
- : to : cc : subject : message-id : mime-version : content-type;
- s=corp-2020-01-29; bh=4/u4U7jK1VK0xejwbRx/+sf3ijmyInp/T6rdQ1y4D+Q=;
- b=owfM7Li3Uw91OPywA42kQrOt5oI1Wq9V9AyvLQea/xo0KUKHxD+GJGB+fsmE4jtYOke7
- pJ+tE/E+6svShagee0UBT4b77LJ45sR7Qjgfhf+pbXRVYNn+SfeGvUdl41/sZTY6JZ8Y
- 38t8CqOcSV+Dx+W2T2sTgYCzj259vgItnYfhQRWN8fMxWWJVN70Tg68hrW0D8vOotxLf
- 8jYWDd5DQCmR60sfww0OkT5JE5FE4eB2eFswWKRZaqf3cir0TtuNmFTIGQlLi+aMpvRw
- 33s/AMMOJ5cxcjaNXy4u2gZ0ozAWKLvyveUU3ZBqHdehVciMjpQ5TnTCKHYGKfiCVaDm BQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2130.oracle.com with ESMTP id 323wacgmua-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 07 Jul 2020 14:27:46 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 067EOFxI175165;
- Tue, 7 Jul 2020 14:27:45 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3030.oracle.com with ESMTP id 3233px88kq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 07 Jul 2020 14:27:45 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 067ERgBV010953;
- Tue, 7 Jul 2020 14:27:42 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 07 Jul 2020 07:27:41 -0700
-Date: Tue, 7 Jul 2020 17:27:36 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jacopo Mondi <jacopo@jmondi.org>
-Subject: [staging:staging-testing 32/135]
- drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c:1722:6: warning:
- Variable 'ret' is reassigned a value before the old one has been used.
-Message-ID: <20200707142736.GD2549@kadam>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 396DE85F8E
+ for <devel@driverdev.osuosl.org>; Tue,  7 Jul 2020 18:14:42 +0000 (UTC)
+Received: from embeddedor (unknown [200.39.26.250])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A74F92065F;
+ Tue,  7 Jul 2020 18:14:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1594145682;
+ bh=uD2w603wgU0bU7XLH2y1Ntci6dAVVpbixOgMNfmbeas=;
+ h=Date:From:To:Cc:Subject:From;
+ b=RwJ3LiHsX5bikASuTHCgtD+BwMWe7tD8wJ9BzgYPDgL8VRca8j5L35IZw2bxdEWcd
+ aFljhWi1gYx0Ne4A9lKHr3HqXIMqn48Iz2FjdcbrJY+zi3+fZvnc5W7BK7KaTxAViD
+ J054kC/aCUOCAfOfLTi60DKHwXvyOwMVR4gV75y4=
+Date: Tue, 7 Jul 2020 13:20:08 -0500
+From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: rtl8188eu: Use fallthrough pseudo-keyword
+Message-ID: <20200707182008.GA341@embeddedor>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9674
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- adultscore=0 spamscore=0
- mlxscore=0 mlxlogscore=999 bulkscore=0 phishscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2007070107
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9674
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 priorityscore=1501
- phishscore=0 spamscore=0 mlxlogscore=999 adultscore=0 cotscore=-2147483648
- suspectscore=0 impostorscore=0 bulkscore=0 mlxscore=0 clxscore=1011
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2004280000 definitions=main-2007070108
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,63 +64,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kbuild-all@lists.01.org, Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-head:   14442181d20490945f341644bb8257e334b01447
-commit: b18ee53ad297264a79cf4ea566663f20786b6455 [32/135] staging: bcm2835: Break MMAL support out from camera
-compiler: gcc-9 (Debian 9.3.0-14) 9.3.0
+Replace the existing /* fall through */ comments and its variants with
+the new pseudo-keyword macro fallthrough[1]. Also, remove unnecessary
+fall-through markings when it is the case.
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+[1] https://www.kernel.org/doc/html/latest/process/deprecated.html?highlight=fallthrough#implicit-switch-case-fall-through
 
-cppcheck warnings: (new ones prefixed by >>)
-
->> drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c:1722:6: warning: Variable 'ret' is reassigned a value before the old one has been used. [redundantAssignment]
-    ret = destroy_component(instance, component);
-        ^
-   drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c:1720:7: note: Variable 'ret' is reassigned a value before the old one has been used.
-     ret = disable_component(instance, component);
-         ^
-   drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c:1722:6: note: Variable 'ret' is reassigned a value before the old one has been used.
-    ret = destroy_component(instance, component);
-        ^
-
-vim +/ret +1722 drivers/staging/vc04_services/vchiq-mmal/mmal-vchiq.c
-
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1711  int vchiq_mmal_component_finalise(struct vchiq_mmal_instance *instance,
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1712  				  struct vchiq_mmal_component *component)
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1713  {
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1714  	int ret;
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1715  
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1716  	if (mutex_lock_interruptible(&instance->vchiq_mutex))
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1717  		return -EINTR;
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1718  
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1719  	if (component->enabled)
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1720  		ret = disable_component(instance, component);
-                                                                                                                ^^^^^^
-Not used.
-
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1721  
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27 @1722  	ret = destroy_component(instance, component);
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1723  
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1724  	mutex_unlock(&instance->vchiq_mutex);
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1725  
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1726  	return ret;
-7b3ad5abf027b7 drivers/staging/media/platform/bcm2835/mmal-vchiq.c   Eric Anholt  2017-01-27  1727  }
-
+Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+ drivers/staging/rtl8188eu/core/rtw_mlme_ext.c    |    2 +-
+ drivers/staging/rtl8188eu/hal/usb_halinit.c      |    2 +-
+ drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+index 8d035f67ef61..414f1834657a 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+@@ -4133,7 +4133,7 @@ void mgt_dispatcher(struct adapter *padapter, struct recv_frame *precv_frame)
+ 			ptable->func = &OnAuth;
+ 		else
+ 			ptable->func = &OnAuthClient;
+-		/* fall through */
++		fallthrough;
+ 	case WIFI_ASSOCREQ:
+ 	case WIFI_REASSOCREQ:
+ 	case WIFI_PROBEREQ:
+diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+index 16a57b31a439..114638f6f719 100644
+--- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
++++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+@@ -1728,7 +1728,7 @@ void rtw_hal_get_hwreg(struct adapter *Adapter, u8 variable, u8 *val)
+ 	switch (variable) {
+ 	case HW_VAR_BASIC_RATE:
+ 		*((u16 *)(val)) = Adapter->HalData->BasicRateSet;
+-		/* fall through */
++		fallthrough;
+ 	case HW_VAR_TXPAUSE:
+ 		val[0] = usb_read8(Adapter, REG_TXPAUSE);
+ 		break;
+diff --git a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
+index 3cd6da1f843d..a80c7f3b86d1 100644
+--- a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
++++ b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
+@@ -400,7 +400,7 @@ static void usb_read_port_complete(struct urb *purb, struct pt_regs *regs)
+ 		case -ENODEV:
+ 		case -ESHUTDOWN:
+ 			adapt->bSurpriseRemoved = true;
+-			/* fall through */
++			fallthrough;
+ 		case -ENOENT:
+ 			adapt->bDriverStopped = true;
+ 			RT_TRACE(_module_hci_ops_os_c_, _drv_err_,
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
