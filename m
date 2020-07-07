@@ -1,71 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FD152166F2
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jul 2020 09:01:44 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 15C8D216CD8
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jul 2020 14:30:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B8BC78876A;
-	Tue,  7 Jul 2020 07:01:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7A0EB2902A;
+	Tue,  7 Jul 2020 12:30:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id o2ABdyRYf9cq; Tue,  7 Jul 2020 07:01:42 +0000 (UTC)
+	with ESMTP id 3WARjuf9vMVI; Tue,  7 Jul 2020 12:30:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 87A408887F;
-	Tue,  7 Jul 2020 07:01:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7C50427147;
+	Tue,  7 Jul 2020 12:30:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2536C1BF29D
- for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 07:01:38 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 209BF1BF232
+ for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 12:30:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 217E687AE8
- for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 07:01:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1A79E888F6
+ for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 12:30:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D6N4ShB4emsm for <devel@linuxdriverproject.org>;
- Tue,  7 Jul 2020 07:01:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-vs1-f65.google.com (mail-vs1-f65.google.com
- [209.85.217.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 55C7B87A55
- for <devel@driverdev.osuosl.org>; Tue,  7 Jul 2020 07:01:37 +0000 (UTC)
-Received: by mail-vs1-f65.google.com with SMTP id v1so21956815vsb.10
- for <devel@driverdev.osuosl.org>; Tue, 07 Jul 2020 00:01:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=qbsHVyeK2Vstzqb6QmhJv9+M3wOOHcWN7GhZMwhEauo=;
- b=EEyqfv3lnLwactKiE8HZ/CTLLA9oHPzdCHG+biD5AwMuhpZB+6M4SlswZoR/xFBP/T
- 7BVPdd4f+5VxTBjYxixYeitZbYSKWgJJKhSWFL5MxXSr7PKGu3zp/5IMUVhFpv3V/Wdt
- CjZU+UXTjLwhhLIQOa+VmBjJNqT/DdPK3ndHY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=qbsHVyeK2Vstzqb6QmhJv9+M3wOOHcWN7GhZMwhEauo=;
- b=K4tHVTyIGvamS5KRkChlJkWV3mYGdQyqG9cdGmnKzCwSD1VA/KmwT0mdKJLvkSue69
- c+2u1zI691ghsoKz520VUQhF//Vn9Z6NoSv3M2YBcNxoxda+pX0YPMyG1FGpXCGoNxRl
- 50vJz1rUhL7JvkE8ODLRQhi/eNc+BhF2yuupWf2GmU9UCMh6dsEbPLWxd3r3XBdWxvXI
- ripSeK/2YeX+6phN0Ut+UGSerDSJJEpAAtTcvcid952wNweUqHqXbY/G5x+3RbX9EGmD
- ehBx8PezbH4GvN8ofKLkN8igAHuhrtCjXSduCAqb9a0RL6vAVLvyE0rEyFiCNpVoDcoW
- BdJw==
-X-Gm-Message-State: AOAM530/wz8zCJjD81LECT2NZ1/az0A2sDWtK21EBxdPd5SAtjbO1U5B
- 6+w4goRCMDeUefPo2jjsLy0S2w6W1+AuQGJ0PqLUag==
-X-Google-Smtp-Source: ABdhPJwA2s7xYWSfCkrCts/eUUgdQUXG/H9gqkpnvbcbSGwQe1S7omc1CbDKZxVIZgleI9cmUmc7kJ36DVKAqlSmoE0=
-X-Received: by 2002:a67:8e49:: with SMTP id q70mr3322116vsd.14.1594105296201; 
- Tue, 07 Jul 2020 00:01:36 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1591345160.git.xji@analogixsemi.com>
- <a18316c118c7b8ac201911b0b96d41c84653a00f.1591345160.git.xji@analogixsemi.com>
-In-Reply-To: <a18316c118c7b8ac201911b0b96d41c84653a00f.1591345160.git.xji@analogixsemi.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Tue, 7 Jul 2020 15:01:25 +0800
-Message-ID: <CANMq1KDnoLSUxxYr82o=1eGBR7E3PxoYUr8h1sEVTyqYyHCC-Q@mail.gmail.com>
-Subject: Re: [PATCH v13 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
- DP
-To: Xin Ji <xji@analogixsemi.com>
+ with ESMTP id OGKtIQOKufKL for <devel@linuxdriverproject.org>;
+ Tue,  7 Jul 2020 12:30:05 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from sa-prd-fep-043.btinternet.com (mailomta21-sa.btinternet.com
+ [213.120.69.27])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 155B588844
+ for <devel@driverdev.osuosl.org>; Tue,  7 Jul 2020 12:30:04 +0000 (UTC)
+Received: from sa-prd-rgout-003.btmx-prd.synchronoss.net ([10.2.38.6])
+ by sa-prd-fep-043.btinternet.com with ESMTP id
+ <20200707123003.MLIX26847.sa-prd-fep-043.btinternet.com@sa-prd-rgout-003.btmx-prd.synchronoss.net>;
+ Tue, 7 Jul 2020 13:30:03 +0100
+Authentication-Results: btinternet.com;
+ auth=pass (LOGIN) smtp.auth=j.oldman998@btinternet.com
+X-Originating-IP: [31.53.71.41]
+X-OWM-Source-IP: 31.53.71.41 (GB)
+X-OWM-Env-Sender: j.oldman998@btinternet.com
+X-VadeSecure-score: verdict=clean score=0/300, class=clean
+X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduiedrudehgdegiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemuceutffkvffkuffjvffgnffgvefqofdpqfgfvfenuceurghilhhouhhtmecufedtudenucenucfjughrpefhvffufffkofestddtredtredttdenucfhrhhomheplfhohhhnucfqlhgumhgrnhcuoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqnecuggftrfgrthhtvghrnhepgeeftdfhfeeuiefhgfekfeethedutddtfeduteevleevfedvfefhjeeijefhgffgnecukfhppeefuddrheefrdejuddrgedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehhvghlohephhgvnhhrhidrhhhomhgvpdhinhgvthepfedurdehfedrjedurdeguddpmhgrihhlfhhrohhmpeeojhhohhhnrdholhgumhgrnhesphholhgvhhhilhhlrdgtohdruhhkqedprhgtphhtthhopeeouggvvhgvlhesughrihhvvghruggvvhdrohhsuhhoshhlrdhorhhgqedprhgtphhtthhopeeoghhrvghgkhhhsehlihhnuhigfhhouhhnuggrthhiohhnrdhorheqpdhrtghpthhtohepoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqpdhrtghpthhtohepoehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgheq
+X-RazorGate-Vade-Verdict: clean 0
+X-RazorGate-Vade-Classification: clean
+Received: from henry.home (31.53.71.41) by
+ sa-prd-rgout-003.btmx-prd.synchronoss.net (5.8.340) (authenticated as
+ j.oldman998@btinternet.com)
+ id 5ED9AFBE059B295B; Tue, 7 Jul 2020 13:30:03 +0100
+From: John Oldman <john.oldman@polehill.co.uk>
+To: gregkh@linuxfoundation.or
+Subject: [PATCH] staging: rtl8723bs: Using comparison to true is error prone
+Date: Tue,  7 Jul 2020 13:29:54 +0100
+Message-Id: <20200707122954.30418-1-john.oldman@polehill.co.uk>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,136 +67,297 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>, Pi-Hsun Shih <pihsun@chromium.org>,
- Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Shawn Ku <shawnku@google.com>, Jonas Karlman <jonas@kwiboo.se>,
- lkml <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>,
- Sheng Pan <span@analogixsemi.com>
+Cc: devel@driverdev.osuosl.org, John Oldman <john.oldman@polehill.co.uk>,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jun 9, 2020 at 3:20 PM Xin Ji <xji@analogixsemi.com> wrote:
->
-> The ANX7625 is an ultra-low power 4K Mobile HD Transmitter designed
-> for portable device. It converts MIPI DSI/DPI to DisplayPort 1.3 4K.
->
-> Signed-off-by: Xin Ji <xji@analogixsemi.com>
-> ---
->  drivers/gpu/drm/bridge/analogix/Kconfig   |    9 +
->  drivers/gpu/drm/bridge/analogix/Makefile  |    1 +
->  drivers/gpu/drm/bridge/analogix/anx7625.c | 1999 +++++++++++++++++++++++++++++
->  drivers/gpu/drm/bridge/analogix/anx7625.h |  397 ++++++
->  4 files changed, 2406 insertions(+)
->  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
->  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
->
-> [snip]
-> +static int anx7625_parse_dt(struct device *dev,
-> +                           struct anx7625_platform_data *pdata)
-> +{
-> +       struct device_node *np = dev->of_node;
-> +       struct device_node *panel_node, *out_ep;
-> +
-> +       pdata->node.mipi_dsi_host_node = of_graph_get_remote_node(np, 0, 0);
-> +       if (!pdata->node.mipi_dsi_host_node) {
-> +               DRM_DEV_ERROR(dev, "fail to get internal panel.\n");
-> +               return -EPROBE_DEFER;
+clear below issues reported by checkpatch.pl:
 
-This does not look correct. I don't think of_graph_get_remote_node
-will ever return NULL if the device tree is configured properly, and
-it's useless to retry later (EPROBE_DEFER). You should just fail (e.g.
-return EINVAL).
+CHECK: Using comparison to false is error prone
+CHECK: Using comparison to true is error prone
 
-> +       }
-> +
-> +       of_node_put(pdata->node.mipi_dsi_host_node);
+Signed-off-by: John Oldman <john.oldman@polehill.co.uk>
+---
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c | 70 ++++++++++-----------
+ 1 file changed, 32 insertions(+), 38 deletions(-)
 
-You are using pdata->node.mipi_dsi_host_node in other places in the
-code, so I don't think it's ok to call of_node_put?
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index 50a3c2c3a8d2..27f990a01a23 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -313,7 +313,7 @@ static int rtw_net_set_mac_address(struct net_device *pnetdev, void *p)
+ 	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(pnetdev);
+ 	struct sockaddr *addr = p;
 
-> +       DRM_DEV_DEBUG_DRIVER(dev, "found dsi host node.\n");
-> +
-> +       pdata->node.panel_node = of_graph_get_port_by_id(np, 1);
-> +       if (!pdata->node.panel_node) {
-> +               DRM_DEV_ERROR(dev, "fail to get panel node.\n");
-> +               return -EPROBE_DEFER;
+-	if (padapter->bup == false) {
++	if (!padapter->bup) {
+ 		/* DBG_871X("r8711_net_set_mac_address(), MAC =%x:%x:%x:%x:%x:%x\n", addr->sa_data[0], addr->sa_data[1], addr->sa_data[2], addr->sa_data[3], */
+ 		/* addr->sa_data[4], addr->sa_data[5]); */
+ 		memcpy(padapter->eeprompriv.mac_addr, addr->sa_data, ETH_ALEN);
+@@ -897,12 +897,12 @@ int _netdev_open(struct net_device *pnetdev)
 
--EINVAL.
+ 	padapter->netif_up = true;
 
-> +       }
-> +
-> +       of_node_put(pdata->node.panel_node);
-> +       out_ep = of_get_child_by_name(pdata->node.panel_node,
-> +                                     "endpoint");
-> +       if (!out_ep) {
-> +               DRM_DEV_DEBUG_DRIVER(dev, "cannot get endpoint.\n");
+-	if (pwrctrlpriv->ps_flag == true) {
++	if (pwrctrlpriv->ps_flag) {
+ 		padapter->net_closed = false;
+ 		goto netdev_open_normal_process;
+ 	}
 
-DRM_DEV_ERROR seems more appropriate
+-	if (padapter->bup == false) {
++	if (!padapter->bup) {
+ 		padapter->bDriverStopped = false;
+ 		padapter->bSurpriseRemoved = false;
+ 		padapter->bCardDisableWOHSM = false;
+@@ -964,7 +964,7 @@ int netdev_open(struct net_device *pnetdev)
+ 	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(pnetdev);
+ 	struct pwrctrl_priv *pwrctrlpriv = adapter_to_pwrctl(padapter);
 
-> +               return -EPROBE_DEFER;
+-	if (pwrctrlpriv->bInSuspend == true) {
++	if (pwrctrlpriv->bInSuspend) {
+ 		DBG_871X("+871x_drv - drv_open, bInSuspend =%d\n", pwrctrlpriv->bInSuspend);
+ 		return 0;
+ 	}
+@@ -1041,7 +1041,7 @@ void rtw_ips_dev_unload(struct adapter *padapter)
+ 	DBG_871X("====> %s...\n", __func__);
 
--EINVAL
 
-> +       }
-> +
-> +       panel_node = of_graph_get_remote_port_parent(out_ep);
-> +       of_node_put(out_ep);
-> +       pdata->panel = of_drm_find_panel(panel_node);
-> +       DRM_DEV_DEBUG_DRIVER(dev, "get panel node.\n");
-> +
-> +       of_node_put(panel_node);
-> +       if (IS_ERR_OR_NULL(pdata->panel))
-> +               return -EPROBE_DEFER;
+-	if (padapter->bSurpriseRemoved == false)
++	if (!padapter->bSurpriseRemoved)
+ 		rtw_hal_deinit(padapter);
+ }
 
-of_drm_find_panel cannot return NULL, so, do this instead:
+@@ -1052,7 +1052,7 @@ static int pm_netdev_open(struct net_device *pnetdev, u8 bnormal)
 
-if (IS_ERR(pdata->panel))
-   return PTR_ERR(pdata->panel);
+ 	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(pnetdev);
 
-(which actually _may_ return EPROBE_DEFER)
+-	if (true == bnormal) {
++	if (bnormal) {
+ 		if (mutex_lock_interruptible(&(adapter_to_dvobj(padapter)->hw_init_mutex)) == 0) {
+ 			status = _netdev_open(pnetdev);
+ 			mutex_unlock(&(adapter_to_dvobj(padapter)->hw_init_mutex));
+@@ -1071,7 +1071,7 @@ static int netdev_close(struct net_device *pnetdev)
 
-> +
-> +       return 0;
-> +}
-> [snip]
-> +static int anx7625_i2c_probe(struct i2c_client *client,
-> +                            const struct i2c_device_id *id)
-> +{
-> +       struct anx7625_data *platform;
-> +       struct anx7625_platform_data *pdata;
-> +       int ret = 0;
-> +       struct device *dev = &client->dev;
-> +
-> +       if (!i2c_check_functionality(client->adapter,
-> +                                    I2C_FUNC_SMBUS_I2C_BLOCK)) {
-> +               DRM_DEV_ERROR(dev, "anx7625's i2c bus doesn't support\n");
-> +               return -ENODEV;
-> +       }
-> +
-> +       platform = kzalloc(sizeof(*platform), GFP_KERNEL);
-> +       if (!platform) {
-> +               DRM_DEV_ERROR(dev, "fail to allocate driver data\n");
-> +               return -ENOMEM;
-> +       }
-> +
-> +       pdata = &platform->pdata;
-> +
-> +       ret = anx7625_parse_dt(dev, pdata);
-> +       if (ret) {
-> +               DRM_DEV_ERROR(dev, "fail to parse devicetree.\n");
+ 	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+871x_drv - drv_close\n"));
 
-Please do not print this error (or at least not if err == -EPROBE_DEFER).
+-	if (pwrctl->bInternalAutoSuspend == true) {
++	if (pwrctl->bInternalAutoSuspend) {
+ 		/* rtw_pwr_wakeup(padapter); */
+ 		if (pwrctl->rf_pwrstate == rf_off)
+ 			pwrctl->ps_flag = true;
+@@ -1134,7 +1134,7 @@ void rtw_dev_unload(struct adapter *padapter)
 
-> +               goto free_platform;
-> +       }
+ 	RT_TRACE(_module_hci_intfs_c_, _drv_notice_, ("+%s\n", __func__));
+
+-	if (padapter->bup == true) {
++	if (padapter->bup) {
+ 		DBG_871X("===> %s\n", __func__);
+
+ 		padapter->bDriverStopped = true;
+@@ -1149,7 +1149,7 @@ void rtw_dev_unload(struct adapter *padapter)
+ 		if (!pwrctl->bInternalAutoSuspend)
+ 			rtw_stop_drv_threads(padapter);
+
+-		while (atomic_read(&(pcmdpriv->cmdthd_running)) == true) {
++		while (atomic_read(&pcmdpriv->cmdthd_running)) {
+ 			if (cnt > 5) {
+ 				DBG_871X("stop cmdthd timeout\n");
+ 				break;
+@@ -1163,7 +1163,8 @@ void rtw_dev_unload(struct adapter *padapter)
+ 		RT_TRACE(_module_hci_intfs_c_, _drv_notice_, ("@ %s: stop thread complete!\n", __func__));
+
+ 		/* check the status of IPS */
+-		if (rtw_hal_check_ips_status(padapter) == true || pwrctl->rf_pwrstate == rf_off) { /* check HW status and SW state */
++		if (rtw_hal_check_ips_status(padapter) || pwrctl->rf_pwrstate == rf_off) {
++			/* check HW status and SW state */
+ 			DBG_871X_LEVEL(_drv_always_, "%s: driver in IPS-FWLPS\n", __func__);
+ 			pdbgpriv->dbg_dev_unload_inIPS_cnt++;
+ 			LeaveAllPowerSaveMode(padapter);
+@@ -1171,11 +1172,10 @@ void rtw_dev_unload(struct adapter *padapter)
+ 			DBG_871X_LEVEL(_drv_always_, "%s: driver not in IPS\n", __func__);
+ 		}
+
+-		if (padapter->bSurpriseRemoved == false) {
++		if (!padapter->bSurpriseRemoved) {
+ 			hal_btcoex_IpsNotify(padapter, pwrctl->ips_mode_req);
+ #ifdef CONFIG_WOWLAN
+-			if (pwrctl->bSupportRemoteWakeup == true &&
+-				pwrctl->wowlan_mode == true) {
++			if (pwrctl->bSupportRemoteWakeup && pwrctl->wowlan_mode) {
+ 				DBG_871X_LEVEL(_drv_always_, "%s bSupportRemoteWakeup ==true  do not run rtw_hal_deinit()\n", __func__);
+ 			}
+ 			else
+@@ -1235,7 +1235,7 @@ static int rtw_suspend_free_assoc_resource(struct adapter *padapter)
+ 	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY))
+ 		rtw_indicate_scan_done(padapter, 1);
+
+-	if (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true) {
++	if (check_fwstate(pmlmepriv, _FW_UNDER_LINKING)) {
+ 		DBG_871X_LEVEL(_drv_always_, "%s: fw_under_linking\n", __func__);
+ 		rtw_indicate_disconnect(padapter);
+ 	}
+@@ -1259,7 +1259,7 @@ void rtw_suspend_wow(struct adapter *padapter)
+ 	DBG_871X("wowlan_mode: %d\n", pwrpriv->wowlan_mode);
+ 	DBG_871X("wowlan_pno_enable: %d\n", pwrpriv->wowlan_pno_enable);
+
+-	if (pwrpriv->wowlan_mode == true) {
++	if (pwrpriv->wowlan_mode) {
+ 		if (pnetdev)
+ 			rtw_netif_stop_queue(pnetdev);
+ 		/*  1. stop thread */
+@@ -1283,8 +1283,7 @@ void rtw_suspend_wow(struct adapter *padapter)
+ 		poidparam.subcode = WOWLAN_ENABLE;
+ 		padapter->HalFunc.SetHwRegHandler(padapter, HW_VAR_WOWLAN, (u8 *)&poidparam);
+ 		if (rtw_chk_roam_flags(padapter, RTW_ROAM_ON_RESUME)) {
+-			if (check_fwstate(pmlmepriv, WIFI_STATION_STATE)
+-				&& check_fwstate(pmlmepriv, _FW_LINKED)) {
++			if (check_fwstate(pmlmepriv, WIFI_STATION_STATE) && check_fwstate(pmlmepriv, _FW_LINKED)) {
+ 				DBG_871X("%s %s(" MAC_FMT "), length:%d assoc_ssid.length:%d\n", __func__,
+ 						pmlmepriv->cur_network.network.Ssid.Ssid,
+ 						MAC_ARG(pmlmepriv->cur_network.network.MacAddress),
+@@ -1297,7 +1296,7 @@ void rtw_suspend_wow(struct adapter *padapter)
+
+ 		DBG_871X_LEVEL(_drv_always_, "%s: wowmode suspending\n", __func__);
+
+-		if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY) == true) {
++		if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY)) {
+ 			DBG_871X_LEVEL(_drv_always_, "%s: fw_under_survey\n", __func__);
+ 			rtw_indicate_scan_done(padapter, 1);
+ 			clr_fwstate(pmlmepriv, _FW_UNDER_SURVEY);
+@@ -1313,8 +1312,7 @@ void rtw_suspend_wow(struct adapter *padapter)
+ 			DBG_871X_LEVEL(_drv_always_, "%s: pno: %d\n", __func__, pwrpriv->wowlan_pno_enable);
+ 		else
+ 			rtw_set_ps_mode(padapter, PS_MODE_DTIM, 0, 0, "WOWLAN");
+-	}
+-	else {
++	} else {
+ 		DBG_871X_LEVEL(_drv_always_, "%s: ### ERROR ### wowlan_mode =%d\n", __func__, pwrpriv->wowlan_mode);
+ 	}
+ 	DBG_871X("<== " FUNC_ADPT_FMT " exit....\n", FUNC_ADPT_ARG(padapter));
+@@ -1385,10 +1383,8 @@ static void rtw_suspend_normal(struct adapter *padapter)
+
+ 	rtw_suspend_free_assoc_resource(padapter);
+
+-	if ((rtw_hal_check_ips_status(padapter) == true)
+-		|| (adapter_to_pwrctl(padapter)->rf_pwrstate == rf_off)) {
++	if ((rtw_hal_check_ips_status(padapter)) || (adapter_to_pwrctl(padapter)->rf_pwrstate == rf_off))
+ 		DBG_871X_LEVEL(_drv_always_, "%s: ### ERROR #### driver in IPS ####ERROR###!!!\n", __func__);
+-	}
+
+ 	rtw_dev_unload(padapter);
+
+@@ -1415,7 +1411,7 @@ int rtw_suspend_common(struct adapter *padapter)
+
+ 	pwrpriv->bInSuspend = true;
+
+-	while (pwrpriv->bips_processing == true)
++	while (pwrpriv->bips_processing)
+ 		msleep(1);
+
+ 	if ((!padapter->bup) || (padapter->bDriverStopped) || (padapter->bSurpriseRemoved)) {
+@@ -1433,24 +1429,24 @@ int rtw_suspend_common(struct adapter *padapter)
+ 	rtw_stop_cmd_thread(padapter);
+
+ 	/*  wait for the latest FW to remove this condition. */
+-	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
++	if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
+ 		hal_btcoex_SuspendNotify(padapter, 0);
+ 		DBG_871X("WIFI_AP_STATE\n");
+-	} else if (check_fwstate(pmlmepriv, WIFI_STATION_STATE) == true) {
++	} else if (check_fwstate(pmlmepriv, WIFI_STATION_STATE)) {
+ 		hal_btcoex_SuspendNotify(padapter, 1);
+ 		DBG_871X("STATION\n");
+ 	}
+
+ 	rtw_ps_deny_cancel(padapter, PS_DENY_SUSPEND);
+
+-	if (check_fwstate(pmlmepriv, WIFI_STATION_STATE) == true) {
++	if (check_fwstate(pmlmepriv, WIFI_STATION_STATE)) {
+ 	#ifdef CONFIG_WOWLAN
+ 		if (check_fwstate(pmlmepriv, _FW_LINKED))
+ 			pwrpriv->wowlan_mode = true;
+-		else if (pwrpriv->wowlan_pno_enable == true)
++		else if (pwrpriv->wowlan_pno_enable)
+ 			pwrpriv->wowlan_mode |= pwrpriv->wowlan_pno_enable;
+
+-		if (pwrpriv->wowlan_mode == true)
++		if (pwrpriv->wowlan_mode)
+ 			rtw_suspend_wow(padapter);
+ 		else
+ 			rtw_suspend_normal(padapter);
+@@ -1458,7 +1454,7 @@ int rtw_suspend_common(struct adapter *padapter)
+ 	#else /* CONFIG_WOWLAN */
+ 		rtw_suspend_normal(padapter);
+ 	#endif /* CONFIG_WOWLAN */
+-	} else if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
++	} else if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
+ 	#ifdef CONFIG_AP_WOWLAN
+ 		rtw_suspend_ap_wow(padapter);
+ 	#else
+@@ -1513,7 +1509,7 @@ int rtw_resume_process_wow(struct adapter *padapter)
+ 	pwrpriv->pno_in_resume = true;
+ #endif
+
+-	if (pwrpriv->wowlan_mode == true) {
++	if (pwrpriv->wowlan_mode) {
+ 		rtw_set_ps_mode(padapter, PS_MODE_ACTIVE, 0, 0, "WOWLAN");
+
+ 		pwrpriv->bFwCurrentInPSMode = false;
+@@ -1553,8 +1549,7 @@ int rtw_resume_process_wow(struct adapter *padapter)
+ 			else
+ 				rtw_netif_wake_queue(pnetdev);
+ 		}
+-	}
+-	else {
++	} else {
+ 		DBG_871X_LEVEL(_drv_always_, "%s: ### ERROR ### wowlan_mode =%d\n", __func__, pwrpriv->wowlan_mode);
+ 	}
+
+@@ -1584,7 +1579,7 @@ int rtw_resume_process_wow(struct adapter *padapter)
+ 		}
+ 	}
+
+-	if (pwrpriv->wowlan_mode == true) {
++	if (pwrpriv->wowlan_mode) {
+ 		pwrpriv->bips_processing = false;
+ 		_set_timer(&padapter->mlmepriv.dynamic_chk_timer, 2000);
+ 	} else {
+@@ -1730,7 +1725,6 @@ static int rtw_resume_process_normal(struct adapter *padapter)
+ 		rtw_signal_process(padapter->pid[1], SIGUSR2);
+ 	}
+
+-
+ 	if (check_fwstate(pmlmepriv, WIFI_STATION_STATE)) {
+ 		DBG_871X(FUNC_ADPT_FMT " fwstate:0x%08x - WIFI_STATION_STATE\n", FUNC_ADPT_ARG(padapter), get_fwstate(pmlmepriv));
+
+@@ -1762,9 +1756,9 @@ int rtw_resume_common(struct adapter *padapter)
+ 	DBG_871X_LEVEL(_drv_always_, "resume start\n");
+ 	DBG_871X("==> %s (%s:%d)\n", __func__, current->comm, current->pid);
+
+-	if (check_fwstate(pmlmepriv, WIFI_STATION_STATE) == true) {
++	if (check_fwstate(pmlmepriv, WIFI_STATION_STATE)) {
+ 	#ifdef CONFIG_WOWLAN
+-		if (pwrpriv->wowlan_mode == true)
++		if (pwrpriv->wowlan_mode)
+ 			rtw_resume_process_wow(padapter);
+ 		else
+ 			rtw_resume_process_normal(padapter);
+@@ -1772,7 +1766,7 @@ int rtw_resume_common(struct adapter *padapter)
+ 		rtw_resume_process_normal(padapter);
+ 	#endif
+
+-	} else if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
++	} else if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
+ 	#ifdef CONFIG_AP_WOWLAN
+ 		rtw_resume_process_ap_wow(padapter);
+ 	#else
+--
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
