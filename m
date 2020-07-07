@@ -2,70 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2AC32160A9
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Jul 2020 22:54:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FD152166F2
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jul 2020 09:01:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2EEB188C05;
-	Mon,  6 Jul 2020 20:54:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B8BC78876A;
+	Tue,  7 Jul 2020 07:01:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aWj6QYetCKAb; Mon,  6 Jul 2020 20:53:58 +0000 (UTC)
+	with ESMTP id o2ABdyRYf9cq; Tue,  7 Jul 2020 07:01:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9CB8C87E5F;
-	Mon,  6 Jul 2020 20:53:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 87A408887F;
+	Tue,  7 Jul 2020 07:01:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5E2621BF966
- for <devel@linuxdriverproject.org>; Mon,  6 Jul 2020 20:53:55 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2536C1BF29D
+ for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 07:01:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5988B888B9
- for <devel@linuxdriverproject.org>; Mon,  6 Jul 2020 20:53:55 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 217E687AE8
+ for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 07:01:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MT6LL5x4gK6B for <devel@linuxdriverproject.org>;
- Mon,  6 Jul 2020 20:53:54 +0000 (UTC)
+ with ESMTP id D6N4ShB4emsm for <devel@linuxdriverproject.org>;
+ Tue,  7 Jul 2020 07:01:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic316-12.consmr.mail.bf2.yahoo.com
- (sonic316-12.consmr.mail.bf2.yahoo.com [74.6.130.122])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BBBB287E75
- for <devel@driverdev.osuosl.org>; Mon,  6 Jul 2020 20:53:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1594068833; bh=V/xD043VdamLc6OfaqB/7lmArPz28JfCMgD/S7Y8km8=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=hqB+orxxk6kEegv9wV19xOfW2fYGCdrXeY/aEPExF8nOdkPMWttUiHZPPXXHIzsCMM0IEgNRkT10f7QB+yVgkvTIGQVq5fqY7MGH9oGFJ/6ixplW0+oXnFLdtmnt7qRTANvV4vicQP5obEnoeqIhsjVIY6ycRFlh3YJ+dXgx9l/jGvyDp8OWiN93ZNuT4Yo4lAn72Iry3GITm37d0gtf9hFtcMbMzW8A+fD4iEmfHkVJAQXWbNUKQbHAVnTwu3LbRRJiKtFoMf8UZKHaoCzyPtUfVbIgKqBRwDQrf5DK/o7ZGldJzZBbXfsWY8rowFq16izWpatmtUFh75wUN4O5YA==
-X-YMail-OSG: .6xNDTUVM1kPu5NJk5yPHgmvRXB.Dxsojb63j3SV_VN6yM3Xzwbxyg7eIFPxmLR
- 0rK3p41LefAL_nSQjq9iAaScMDkoyBBBsUdkKNj8LoiUukPiFBgEOALqrZaXi0LQhZZ2Va_QTlBA
- 8H40dhDMymZkhlaTbLJonjA.fsKIzw9BEdzBAFDYx.Nr1hKk2Jm6oXfHe7MAjwhhsUl3xQmpjP2A
- EMP4KLLGoqjWT1uQjPLNuK81i5dLUqdCBJu77z6iHqnMH9hUSqiW4fTnwOa06EpmHZ2FcgVh2QMp
- XGz0KW8B2SZ1R6FptEZzaYrJOEjA17tH8M0TG7nfUe4yRqVP31BGLaVg.ofgZuIomFUHMckR4BBM
- a7vJ2JEuZeO8tyl4kqOSgh95jNIcGyvo.pX2h_FWCvu1HVEcFkhpM3PbRCiCafMDPdy.LydXqur2
- hcCUubue2zCZEErVCb3O597k9u6Pbmt2KF93.5QMHXwSPl5jO_aaEr4nub2NakJlLaqKAC.9oAEI
- 1_YZzXskG2VyL2hAERBxVrHXSHdiUcDycd0lUPcfANbxUIgqyxrUfYRcVCYWhMHX6zt8yCHtGrXU
- p89cZ.n39xnKPVtfXD0S5hqRtD.NP6MDhH1ukIgG46NLd9GBVnMdxJqPb.ohVYUDWlTfW89KAJiy
- KmmPUi8Tz6rhu.Tb0MKYJTwxxPmCVnyjYlh_0EyJuWMiy55nD3JL5gIVy6BlQdHfZNE3T97lw01t
- 6ogtsswhuWZq7ECpXjleUEE9p7akx0v0xgjEdYmCP9hUk3jFC0EpI5r9WPo5ghZ_L3PioqHwZ74m
- kvgQAP.iRNmJcRUW77smchhvw7DiCYzjVAJWUf1yJHEjzhelV44wanUf.tQUusUIAXMqihCmD8Cy
- UukTTc3yH2cx.JKK4Cp2OW5BEuzvlUlkoDRG8rVDzV5yJ0748PzZpToASvXYWB2eNfbJaAvB5fCM
- IzAOCYr1o1JGpTqFoSmCWJrXwH8kXbJlrffGeOJBXABv6kJs2chIXUxD179ln51Kw98C.NGkM.Dw
- I1I0VkmBH1k0kq.GA1vpO2Twf7bM3WZg7dc4tSdD1MQR9V_PIlUGObs5E.3dKMLREAImtXoXzpZl
- TnL6VaZHP3mwVNmVQv05E5SNTsn.COzn9AFDwNqHVWmBktfVphOrH6TVcqwNq9LsAalpyEtLEwHl
- u47Rzc3ol.kir9ZInVjejDV4yvjNeJuF.e2ojDRmb7xYdC17sgq2EDOMRPrJeDPDRYN6FCaiWPXA
- ClTqaWMTk6eePczzRjJERk3ZkTPOnG2hkYbnwp5k7IIsHFuBZd8FmbnDg8goa_tZyAiPdDHKZtRo
- 6Bw--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic316.consmr.mail.bf2.yahoo.com with HTTP; Mon, 6 Jul 2020 20:53:53 +0000
-Date: Mon, 6 Jul 2020 20:53:51 +0000 (UTC)
-From: "Mrs. Maria Nelsoma" <myself.esteemed4@yahoo.com>
-Message-ID: <923843915.1464484.1594068831509@mail.yahoo.com>
-Subject: RE; KINDLY ACCEPT MY FUND PROPOSAL
+Received: from mail-vs1-f65.google.com (mail-vs1-f65.google.com
+ [209.85.217.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 55C7B87A55
+ for <devel@driverdev.osuosl.org>; Tue,  7 Jul 2020 07:01:37 +0000 (UTC)
+Received: by mail-vs1-f65.google.com with SMTP id v1so21956815vsb.10
+ for <devel@driverdev.osuosl.org>; Tue, 07 Jul 2020 00:01:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qbsHVyeK2Vstzqb6QmhJv9+M3wOOHcWN7GhZMwhEauo=;
+ b=EEyqfv3lnLwactKiE8HZ/CTLLA9oHPzdCHG+biD5AwMuhpZB+6M4SlswZoR/xFBP/T
+ 7BVPdd4f+5VxTBjYxixYeitZbYSKWgJJKhSWFL5MxXSr7PKGu3zp/5IMUVhFpv3V/Wdt
+ CjZU+UXTjLwhhLIQOa+VmBjJNqT/DdPK3ndHY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qbsHVyeK2Vstzqb6QmhJv9+M3wOOHcWN7GhZMwhEauo=;
+ b=K4tHVTyIGvamS5KRkChlJkWV3mYGdQyqG9cdGmnKzCwSD1VA/KmwT0mdKJLvkSue69
+ c+2u1zI691ghsoKz520VUQhF//Vn9Z6NoSv3M2YBcNxoxda+pX0YPMyG1FGpXCGoNxRl
+ 50vJz1rUhL7JvkE8ODLRQhi/eNc+BhF2yuupWf2GmU9UCMh6dsEbPLWxd3r3XBdWxvXI
+ ripSeK/2YeX+6phN0Ut+UGSerDSJJEpAAtTcvcid952wNweUqHqXbY/G5x+3RbX9EGmD
+ ehBx8PezbH4GvN8ofKLkN8igAHuhrtCjXSduCAqb9a0RL6vAVLvyE0rEyFiCNpVoDcoW
+ BdJw==
+X-Gm-Message-State: AOAM530/wz8zCJjD81LECT2NZ1/az0A2sDWtK21EBxdPd5SAtjbO1U5B
+ 6+w4goRCMDeUefPo2jjsLy0S2w6W1+AuQGJ0PqLUag==
+X-Google-Smtp-Source: ABdhPJwA2s7xYWSfCkrCts/eUUgdQUXG/H9gqkpnvbcbSGwQe1S7omc1CbDKZxVIZgleI9cmUmc7kJ36DVKAqlSmoE0=
+X-Received: by 2002:a67:8e49:: with SMTP id q70mr3322116vsd.14.1594105296201; 
+ Tue, 07 Jul 2020 00:01:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <923843915.1464484.1594068831509.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16197 YMailNodin Mozilla/5.0 (Windows NT 6.1;
- ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116
- Safari/537.36
+References: <cover.1591345160.git.xji@analogixsemi.com>
+ <a18316c118c7b8ac201911b0b96d41c84653a00f.1591345160.git.xji@analogixsemi.com>
+In-Reply-To: <a18316c118c7b8ac201911b0b96d41c84653a00f.1591345160.git.xji@analogixsemi.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Tue, 7 Jul 2020 15:01:25 +0800
+Message-ID: <CANMq1KDnoLSUxxYr82o=1eGBR7E3PxoYUr8h1sEVTyqYyHCC-Q@mail.gmail.com>
+Subject: Re: [PATCH v13 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
+ DP
+To: Xin Ji <xji@analogixsemi.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,64 +78,137 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: myself.esteemed@yahoo.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Shawn Ku <shawnku@google.com>, Jonas Karlman <jonas@kwiboo.se>,
+ lkml <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>,
+ Sheng Pan <span@analogixsemi.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTrCoE1ycy7CoE1hcmlhwqBOZWxzb21hCgpJwqBhbcKgTXJzLsKgTWFyaWHCoE5lbHNvbWHC
-oFdob8KgbWFycmllZMKgdG/CoE1yLsKgUm9iZXJ0wqBOZWxzb21hwqB3aG/CoHdvcmtlZMKgaW7C
-oE1hbnnCoEVtYmFzc3nCoGxpa2XCoFVTQSzCoEFVU1RSQUxJQcKgQU5EwqBGUkFOQ0XCoGJlZm9y
-ZcKgaGXCoGZpbmFsbHnCoGVuZMKgdXDCoGluwqBCZW5pbsKgUmVwdWJsaWMuwqDCoFdlwqB3ZXJl
-wqBtYXJyaWVkwqBmb3LCoDI1wqB5ZWFyc8Kgd2l0aG91dMKgYcKgY2hpbGQuwqBIZcKgZGllZMKg
-YWZ0ZXLCoGHCoGJyaWVmwqBpbGxuZXNzwqB0aGF0wqBsYXN0ZWTCoGZvcsKgb25secKgZm91csKg
-ZGF5cy7CoEJlZm9yZcKgaGlzwqBkZWF0aMKgd2XCoHdlcmXCoGJvdGjCoGJvcm7CoGFnYWluwqBD
-aHJpc3RpYW4uCgpTaW5jZcKgaGlzwqBkZWF0aMKgScKgZGVjaWRlZMKgbm90wqB0b8KgcmVtYXJy
-ecKgb3LCoGdldMKgYcKgY2hpbGTCoG91dHNpZGXCoG15wqBtYXRyaW1vbmlhbMKgaG9tZcKgd2hp
-Y2jCoHRoZcKgQmlibGXCoGlzwqBhZ2FpbnN0LsKgV2hlbsKgbXnCoGxhdGXCoGh1c2JhbmTCoHdh
-c8KgYWxpdmXCoGhlwqBkZXBvc2l0ZWTCoHRoZcKgc3VtwqBvZsKgJDQuMsKgRm91csKgTWlsbGlv
-bsKgVHdvwqBodW5kcmVkwqBUaG91c2FuZMKgRG9sbGFyc8KgKDQuMinCoE1pbGxpb27CoFUuUy7C
-oERvbGxhcnMpwqBpbsKgdGhlwqBiYW5rwqBoZXJlwqBpbsKgYcKgZml4ZWTCoHN1c3BlbnNlwqBh
-Y2NvdW50wqBhbmTCoGhlwqBkZWNsYXJlwqB0aGXCoGZ1bmTCoHdoZXJlwqBtYWRlwqBmb3LCoG91
-csKgZmFtaWx5wqBpbnRlbmRpbmfCoGJ1c2luZXNzLAoKUHJlc2VudGx5LMKgScKgYW3CoHZlcnnC
-oHNpY2vCoGF0wqB0aGXCoENlbnRyZcKgTmF0aW9uYWzCoEhvc3BpdGFsaWVywqBldMKgVW5pdmVy
-c2l0YWlyZcKgKENOSFUpwqBIb3NwaXRhbMKgaGVyZcKgaW7CoEJlbmluwqBSZXB1YmxpYyzCoG15
-wqBkb2N0b3LCoHRvbGTCoG1lwqB0aGF0wqBJwqBoYXZlwqBzZXJpb3VzwqBjYW5jZXLCoHdoaWNo
-wqB0aGXCoGRvY3RvcsKgZ2F2ZcKgbWXCoG5vwqBhc3N1cmFuY2XCoG9mwqBzdXJ2aXZpbmfCoGl0
-wqBhbmTCoEnCoGhhdmXCoGZld8KgdGltZcKgdG/CoGxpdmXCoGhlcmXCoG9uwqBlYXJ0aC7CoEnC
-oGRlY2lkZWTCoHRvwqB1c2XCoHRoYXTCoGZ1bmTCoHRvwqBoZWxwwqB0aGXCoG9ycGhhbmFnZXMs
-wqB3aWRvd3MswqBhbmTCoHRoZcKgTGVzc8KgUHJpdmlsZWdlwqBvbmVzwqBhbGzCoG92ZXLCoHRo
-ZcKgd29ybGQuwqDCoEhhdmluZ8Kga25vd27CoG15wqBjb25kaXRpb27CoGFjY29yZGluZ8KgdG/C
-oHRoZcKgZG9jdG9ywqBJwqBkZWNpZGVkwqB0b8KgZG9uYXRlwqB0aGlzwqBmdW5kwqB0b8KgYcKg
-Y2h1cmNowqBvcsKgaW5kaXZpZHVhbMKgdGhhdMKgd2lsbMKgdXRpbGl6ZcKgdGhpc8KgbW9uZXnC
-oHRoZcKgd2F5wqBJwqB3aXNowqBiecKgaGVscGluZ8KgdGhlwqBob3VzZcKgb2bCoEdvZMKgb3LC
-oGJ1aWxkaW5nLgoKVGhlwqBCaWJsZcKgbWFkZcKgdXPCoHRvwqB1bmRlcnN0YW5kwqB0aGF0wqBi
-bGVzc2VkwqBpc8KgdGhlwqBoYW5kwqB0aGF0wqBnaXZldGguwqBJwqB0b29rwqB0aGlzwqBkZWNp
-c2lvbsKgYmVjYXVzZcKgScKgZG9u4oCZdMKgaGF2ZcKgYW55wqBjaGlsZMKgdGhhdMKgd2lsbMKg
-aW5oZXJpdMKgdGhpc8KgbW9uZXkuwqBJwqBkb27igJl0wqB3YW50wqBhwqBzaXR1YXRpb27CoHdo
-ZXJlwqB0aGlzwqBtb25lecKgd2lsbMKgYmXCoHVzZWTCoGluwqBhbsKgdW5nb2RsecKgd2F5LsKg
-VGhpc8KgaXPCoHdoecKgScKgYW3CoHRha2luZ8KgdGhpc8KgZGVjaXNpb24uwqBJwqBhbcKgbm90
-wqBhZnJhaWTCoG9mwqBkZWF0aMKgaGVuY2XCoEnCoGtub3fCoHdoZXJlwqBJwqBhbcKgZ29pbmcu
-wqBJwqBrbm93wqB0aGF0wqBJwqBhbcKgZ29pbmfCoHRvwqBiZcKgaW7CoHRoZcKgYm9zb23CoG9m
-wqB0aGXCoExvcmQuCgrCoFdpdGjCoEdvZMKgYWxswqB0aGluZ3PCoGFyZcKgcG9zc2libGUuwqBB
-c8Kgc29vbsKgYXPCoEnCoHJlY2VpdmXCoHlvdXLCoHJlcGx5wqBJwqBzaGFsbMKgZ2l2ZcKgeW91
-wqB0aGXCoGNvbnRhY3TCoG9mwqB0aGXCoGJhbmvCoGhlcmXCoGluwqBCZW5pbsKgUmVwdWJsaWPC
-oHdoZXJlwqBtecKgaHVzYmFuZMKgZGVwb3NpdGVkwqB0aGXCoG1vbmV5LsKgScKgd2FudMKgeW91
-wqBhbmTCoHRoZcKgY2h1cmNowqB0b8KgYWx3YXlzwqBwcmF5wqBmb3LCoG1lwqBiZWNhdXNlwqB0
-aGXCoGxvcmTCoGlzwqBtecKgc2hlcGhlcmQswqBtecKgaGFwcGluZXNzwqBpc8KgdGhhdMKgScKg
-bGl2ZWTCoGHCoGxpZmXCoG9mwqBhwqB3b3J0aHnCoG9mwqBlbXVsYXRpb25zLgoKV2hvc29ldmVy
-wqB0aGF0wqB3YW50c8KgdG/CoHNlcnZlwqB0aGXCoExvcmTCoG11c3TCoHNlcnZlwqBoaW3CoGlu
-wqBzcGlyaXTCoGFuZMKgVHJ1dGguwqBQbGVhc2XCoGFsd2F5c8KgYmXCoHByYXllcmZ1bMKgYWxs
-wqB0aHJvdWdowqB5b3VywqBsaWZlLsKgUGxlYXNlwqBhc3N1cmXCoG1lwqB0aGF0wqB5b3XCoHdp
-bGzCoGFjdMKgYWNjb3JkaW5nbHnCoGFzwqBJwqBTdGF0ZWTCoGhlcmVpbi7CoFRoYXTCoHlvdcKg
-d2lsbMKgbm90wqBiZXRyYXnCoG1lwqBvcsKgeW91wqBzaGFsbMKgdGFrZcKgYW7CoE9hdGjCoG9m
-wqB0aGlzwqBmdW5kwqB0aGF0wqB5b3XCoHdpbGzCoG5ldmVywqBnb8KgYWdhaW5zdMKgbXnCoGxh
-c3TCoHdpc2guCgpEb8Kgbm90wqBiZcKgYWZyYWlkwqBvZsKgdGhlwqBiYW5rwqB3aGVyZcKgdGhl
-wqBmdW5kwqB3YXPCoGRlcG9zaXRlZMKgYmVjYXVzZcKgdGhlwqBiYW5rwqBtecKgaHVzYmFuZMKg
-ZGVwb3NpdGVkwqB0aGlzwqBmdW5kwqBoYXPCoGFzwqBDb3JyZXNwb25kaW5nwqBvcsKgQWZmaWxp
-YXRlZMKgQmFua8KgaW7CoEV1cm9wZcKgYW5kwqBVbml0ZWTCoFN0YXRlLgoKUmVtYWluwqBibGVz
-c2VkwqBpbsKgdGhlwqBMb3JkLgoKWW91cnMsCk1ycy7CoE1hcmlhwqBOZWxzb21hCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlz
-dApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2
-ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Tue, Jun 9, 2020 at 3:20 PM Xin Ji <xji@analogixsemi.com> wrote:
+>
+> The ANX7625 is an ultra-low power 4K Mobile HD Transmitter designed
+> for portable device. It converts MIPI DSI/DPI to DisplayPort 1.3 4K.
+>
+> Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> ---
+>  drivers/gpu/drm/bridge/analogix/Kconfig   |    9 +
+>  drivers/gpu/drm/bridge/analogix/Makefile  |    1 +
+>  drivers/gpu/drm/bridge/analogix/anx7625.c | 1999 +++++++++++++++++++++++++++++
+>  drivers/gpu/drm/bridge/analogix/anx7625.h |  397 ++++++
+>  4 files changed, 2406 insertions(+)
+>  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
+>  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
+>
+> [snip]
+> +static int anx7625_parse_dt(struct device *dev,
+> +                           struct anx7625_platform_data *pdata)
+> +{
+> +       struct device_node *np = dev->of_node;
+> +       struct device_node *panel_node, *out_ep;
+> +
+> +       pdata->node.mipi_dsi_host_node = of_graph_get_remote_node(np, 0, 0);
+> +       if (!pdata->node.mipi_dsi_host_node) {
+> +               DRM_DEV_ERROR(dev, "fail to get internal panel.\n");
+> +               return -EPROBE_DEFER;
+
+This does not look correct. I don't think of_graph_get_remote_node
+will ever return NULL if the device tree is configured properly, and
+it's useless to retry later (EPROBE_DEFER). You should just fail (e.g.
+return EINVAL).
+
+> +       }
+> +
+> +       of_node_put(pdata->node.mipi_dsi_host_node);
+
+You are using pdata->node.mipi_dsi_host_node in other places in the
+code, so I don't think it's ok to call of_node_put?
+
+> +       DRM_DEV_DEBUG_DRIVER(dev, "found dsi host node.\n");
+> +
+> +       pdata->node.panel_node = of_graph_get_port_by_id(np, 1);
+> +       if (!pdata->node.panel_node) {
+> +               DRM_DEV_ERROR(dev, "fail to get panel node.\n");
+> +               return -EPROBE_DEFER;
+
+-EINVAL.
+
+> +       }
+> +
+> +       of_node_put(pdata->node.panel_node);
+> +       out_ep = of_get_child_by_name(pdata->node.panel_node,
+> +                                     "endpoint");
+> +       if (!out_ep) {
+> +               DRM_DEV_DEBUG_DRIVER(dev, "cannot get endpoint.\n");
+
+DRM_DEV_ERROR seems more appropriate
+
+> +               return -EPROBE_DEFER;
+
+-EINVAL
+
+> +       }
+> +
+> +       panel_node = of_graph_get_remote_port_parent(out_ep);
+> +       of_node_put(out_ep);
+> +       pdata->panel = of_drm_find_panel(panel_node);
+> +       DRM_DEV_DEBUG_DRIVER(dev, "get panel node.\n");
+> +
+> +       of_node_put(panel_node);
+> +       if (IS_ERR_OR_NULL(pdata->panel))
+> +               return -EPROBE_DEFER;
+
+of_drm_find_panel cannot return NULL, so, do this instead:
+
+if (IS_ERR(pdata->panel))
+   return PTR_ERR(pdata->panel);
+
+(which actually _may_ return EPROBE_DEFER)
+
+> +
+> +       return 0;
+> +}
+> [snip]
+> +static int anx7625_i2c_probe(struct i2c_client *client,
+> +                            const struct i2c_device_id *id)
+> +{
+> +       struct anx7625_data *platform;
+> +       struct anx7625_platform_data *pdata;
+> +       int ret = 0;
+> +       struct device *dev = &client->dev;
+> +
+> +       if (!i2c_check_functionality(client->adapter,
+> +                                    I2C_FUNC_SMBUS_I2C_BLOCK)) {
+> +               DRM_DEV_ERROR(dev, "anx7625's i2c bus doesn't support\n");
+> +               return -ENODEV;
+> +       }
+> +
+> +       platform = kzalloc(sizeof(*platform), GFP_KERNEL);
+> +       if (!platform) {
+> +               DRM_DEV_ERROR(dev, "fail to allocate driver data\n");
+> +               return -ENOMEM;
+> +       }
+> +
+> +       pdata = &platform->pdata;
+> +
+> +       ret = anx7625_parse_dt(dev, pdata);
+> +       if (ret) {
+> +               DRM_DEV_ERROR(dev, "fail to parse devicetree.\n");
+
+Please do not print this error (or at least not if err == -EPROBE_DEFER).
+
+> +               goto free_platform;
+> +       }
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
