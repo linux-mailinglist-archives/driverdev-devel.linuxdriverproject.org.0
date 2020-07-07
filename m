@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B91C21762A
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jul 2020 20:16:13 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 01C2F899D3;
-	Tue,  7 Jul 2020 18:16:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oQCCQkSC5FPb; Tue,  7 Jul 2020 18:16:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DB428899A6;
-	Tue,  7 Jul 2020 18:16:08 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C9EB21BF97C
- for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 18:16:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B2546217807
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jul 2020 21:38:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A762D860FF
- for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 18:14:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 05B4389368;
+	Tue,  7 Jul 2020 19:38:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id aaqMfNT+DYfu; Tue,  7 Jul 2020 19:38:29 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2DDDF89354;
+	Tue,  7 Jul 2020 19:38:28 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AD55C1BF300
+ for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 19:38:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7F7FF25173
+ for <devel@linuxdriverproject.org>; Tue,  7 Jul 2020 19:38:25 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tol0wAezqHru for <devel@linuxdriverproject.org>;
- Tue,  7 Jul 2020 18:14:42 +0000 (UTC)
+ with ESMTP id Ui6zZSJ5aGR4 for <devel@linuxdriverproject.org>;
+ Tue,  7 Jul 2020 19:38:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 396DE85F8E
- for <devel@driverdev.osuosl.org>; Tue,  7 Jul 2020 18:14:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 7B52224AF8
+ for <devel@driverdev.osuosl.org>; Tue,  7 Jul 2020 19:38:24 +0000 (UTC)
 Received: from embeddedor (unknown [200.39.26.250])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A74F92065F;
- Tue,  7 Jul 2020 18:14:40 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id CF410206BE;
+ Tue,  7 Jul 2020 19:38:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1594145682;
- bh=uD2w603wgU0bU7XLH2y1Ntci6dAVVpbixOgMNfmbeas=;
+ s=default; t=1594150704;
+ bh=IxkmBRf5TYZxdfGV0Qe1Hi63hNYzahR8LL/gGB7loAc=;
  h=Date:From:To:Cc:Subject:From;
- b=RwJ3LiHsX5bikASuTHCgtD+BwMWe7tD8wJ9BzgYPDgL8VRca8j5L35IZw2bxdEWcd
- aFljhWi1gYx0Ne4A9lKHr3HqXIMqn48Iz2FjdcbrJY+zi3+fZvnc5W7BK7KaTxAViD
- J054kC/aCUOCAfOfLTi60DKHwXvyOwMVR4gV75y4=
-Date: Tue, 7 Jul 2020 13:20:08 -0500
+ b=hhI/dZxFPsgY9dhg9vOlTbYpMfFkqPTyr0+UEOgByk2BnO84qOVYZVVxKHrBO7C7A
+ hJUeSnJoab7xuA1DSbipg5hQnT0bYgP7ZJCzutcRa3QODOjaRROpsPcq4F9IIsy1/8
+ WpE5+Xm+cNW/bms0PyNBV9/zIi347LqKtmWESEuQ=
+Date: Tue, 7 Jul 2020 14:43:50 -0500
 From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Larry Finger <Larry.Finger@lwfinger.net>,
+To: Forest Bond <forest@alittletooquiet.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: rtl8188eu: Use fallthrough pseudo-keyword
-Message-ID: <20200707182008.GA341@embeddedor>
+Subject: [PATCH] staging: vt6655: Use fallthrough pseudo-keyword
+Message-ID: <20200707194350.GA3255@embeddedor>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.9.4 (2018-02-28)
@@ -79,50 +79,74 @@ fall-through markings when it is the case.
 
 Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 ---
- drivers/staging/rtl8188eu/core/rtw_mlme_ext.c    |    2 +-
- drivers/staging/rtl8188eu/hal/usb_halinit.c      |    2 +-
- drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c |    2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/vt6655/channel.c |    2 +-
+ drivers/staging/vt6655/key.c     |    6 +++---
+ drivers/staging/vt6656/channel.c |    2 +-
+ drivers/staging/vt6656/key.c     |    2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-index 8d035f67ef61..414f1834657a 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-@@ -4133,7 +4133,7 @@ void mgt_dispatcher(struct adapter *padapter, struct recv_frame *precv_frame)
- 			ptable->func = &OnAuth;
- 		else
- 			ptable->func = &OnAuthClient;
+diff --git a/drivers/staging/vt6655/channel.c b/drivers/staging/vt6655/channel.c
+index 62a85c1ca6c4..889fc22f19bd 100644
+--- a/drivers/staging/vt6655/channel.c
++++ b/drivers/staging/vt6655/channel.c
+@@ -133,7 +133,7 @@ void vnt_init_bands(struct vnt_private *priv)
+ 
+ 		priv->hw->wiphy->bands[NL80211_BAND_5GHZ] =
+ 						&vnt_supported_5ghz_band;
+-	/* fallthrough */
++		fallthrough;
+ 	case RF_RFMD2959:
+ 	case RF_AIROHA:
+ 	case RF_AL2230S:
+diff --git a/drivers/staging/vt6655/key.c b/drivers/staging/vt6655/key.c
+index 4d6b48fd119d..94665ddc36a5 100644
+--- a/drivers/staging/vt6655/key.c
++++ b/drivers/staging/vt6655/key.c
+@@ -51,15 +51,15 @@ static int vnt_set_keymode(struct ieee80211_hw *hw, u8 *mac_addr,
+ 		/* default key last entry */
+ 		entry = MAX_KEY_TABLE - 1;
+ 		key->hw_key_idx = entry;
 -		/* fall through */
 +		fallthrough;
- 	case WIFI_ASSOCREQ:
- 	case WIFI_REASSOCREQ:
- 	case WIFI_PROBEREQ:
-diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-index 16a57b31a439..114638f6f719 100644
---- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
-+++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-@@ -1728,7 +1728,7 @@ void rtw_hal_get_hwreg(struct adapter *Adapter, u8 variable, u8 *val)
- 	switch (variable) {
- 	case HW_VAR_BASIC_RATE:
- 		*((u16 *)(val)) = Adapter->HalData->BasicRateSet;
+ 	case VNT_KEY_ALLGROUP:
+ 		key_mode |= VNT_KEY_ALLGROUP;
+ 		if (onfly_latch)
+ 			key_mode |= VNT_KEY_ONFLY_ALL;
 -		/* fall through */
 +		fallthrough;
- 	case HW_VAR_TXPAUSE:
- 		val[0] = usb_read8(Adapter, REG_TXPAUSE);
+ 	case VNT_KEY_GROUP_ADDRESS:
+ 		key_mode |= mode;
+-		/* fall through */
++		fallthrough;
+ 	case VNT_KEY_GROUP:
+ 		key_mode |= (mode << 4);
+ 		key_mode |= VNT_KEY_GROUP;
+diff --git a/drivers/staging/vt6656/channel.c b/drivers/staging/vt6656/channel.c
+index 5d57d34577f5..7855689af7cb 100644
+--- a/drivers/staging/vt6656/channel.c
++++ b/drivers/staging/vt6656/channel.c
+@@ -145,7 +145,7 @@ void vnt_init_bands(struct vnt_private *priv)
+ 
+ 		priv->hw->wiphy->bands[NL80211_BAND_5GHZ] =
+ 						&vnt_supported_5ghz_band;
+-	/* fallthrough */
++		fallthrough;
+ 	case RF_AL2230:
+ 	case RF_AL2230S:
+ 	case RF_VT3226:
+diff --git a/drivers/staging/vt6656/key.c b/drivers/staging/vt6656/key.c
+index c66cb53cfc09..70f75c5760ce 100644
+--- a/drivers/staging/vt6656/key.c
++++ b/drivers/staging/vt6656/key.c
+@@ -67,7 +67,7 @@ static int vnt_set_keymode(struct ieee80211_hw *hw, u8 *mac_addr,
+ 		/* default key last entry */
+ 		entry = MAX_KEY_TABLE - 1;
+ 		key->hw_key_idx = entry;
+-		/* fall through */
++		fallthrough;
+ 	case VNT_KEY_GROUP_ADDRESS:
+ 		key_mode = mode | (mode << 4);
  		break;
-diff --git a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
-index 3cd6da1f843d..a80c7f3b86d1 100644
---- a/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
-+++ b/drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c
-@@ -400,7 +400,7 @@ static void usb_read_port_complete(struct urb *purb, struct pt_regs *regs)
- 		case -ENODEV:
- 		case -ESHUTDOWN:
- 			adapt->bSurpriseRemoved = true;
--			/* fall through */
-+			fallthrough;
- 		case -ENOENT:
- 			adapt->bDriverStopped = true;
- 			RT_TRACE(_module_hci_ops_os_c_, _drv_err_,
 
 _______________________________________________
 devel mailing list
