@@ -1,112 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3587B21830A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jul 2020 11:01:14 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04B97218372
+	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jul 2020 11:23:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B717088B97;
-	Wed,  8 Jul 2020 09:01:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 33A4B86DA3;
+	Wed,  8 Jul 2020 09:22:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y4LoRsGxEs0z; Wed,  8 Jul 2020 09:01:12 +0000 (UTC)
+	with ESMTP id OgDEu2hawc_B; Wed,  8 Jul 2020 09:22:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 53D1488B3B;
-	Wed,  8 Jul 2020 09:01:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CE4B385F33;
+	Wed,  8 Jul 2020 09:22:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6E2231BF23F
- for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 09:01:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 71B9F1BF36C
+ for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 09:22:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6A76D887A7
- for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 09:01:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6E0DB863E0
+ for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 09:22:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Hgk4phvXhgkN for <devel@linuxdriverproject.org>;
- Wed,  8 Jul 2020 09:01:08 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam11on2106.outbound.protection.outlook.com [40.107.236.106])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4E776886D1
- for <devel@driverdev.osuosl.org>; Wed,  8 Jul 2020 09:01:08 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IfaDtY3PefrHLfIHKHLD3NzrDJ2xN7ojXughXqqUzAcf3zbbokO+5KaKdKngXjsPusZI+bhfIn58qi1+prTcr96ckDUoa2XtDvteRNAwXLKfVpT+N4ouH436BgKykiGsUc/c2oiYqfW5AT2rIOUl92NcDy2x46jPPlF6dShn+RJYrxoTsgWGeNMzJ1nsYL2crvNuyrknQJYJOz464RNCxpdzConlaohkwxcTazH/ZBiS6HoTS8tFtm289y4a1/OAMnUowLTTgJ3Tg654YgckjgNsEcRKiq3uH5myfFYp4h2VTZUTtdlUaResXzbAIJyRpm5d9yL+sMCKi1W+wBpcog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zQOZLqjxSfbqZWNqmN7724Narzb9PECHFpapDriZArQ=;
- b=KZaT5z29A/+IpYtvrVOf96mV0SME3HoEywqTpcQRl5z51H7M3Cvul1heZAgxISDSPaTppJDJPKBEVzqoE9POZMcz9sirk+m0hfypSX2qyENnqDzL38q7sKNVLFsaBgwlFYuf4YSzYGX53hvsL8diswXP5KnDhKuNkGukmtzBUCaNDRG0ubhGVWGCyU1I5sseWvAojCIfyu1vNI12guAuK1r2RtTJdVgdYAqAOnBnpMVm/CdPICeHQgT6F+bOMqV6L86IDrLRGDrsDbwhn585/4aIgQ2IBXfHWX3PcubQ0GSLRJcc5Sob0FuNr5rHC5f3c61ByMvUmMF4Suf2VTs3Og==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zQOZLqjxSfbqZWNqmN7724Narzb9PECHFpapDriZArQ=;
- b=pRRJg/QLso13fh/MrydfM7D6NYtPzzV7tkMTTYSo9dfVvblDPfup8smGLmMHwrM45kc10BIqmklRALM+jZVRp72gutAS0cAKYBwgqxlxpqueWP2lCO/ZPjWP23RaOVNIdVY97N/CSOMpvdMu1miVtcqz8dk1XFd2x8k4JByoOnQ=
-Authentication-Results: analogixsemi.com; dkim=none (message not signed)
- header.d=none;analogixsemi.com; dmarc=none action=none
- header.from=analogixsemi.com;
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by BYAPR04MB6150.namprd04.prod.outlook.com (2603:10b6:a03:e3::26)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3153.20; Wed, 8 Jul
- 2020 09:01:04 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::844e:398b:2165:631b]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::844e:398b:2165:631b%5]) with mapi id 15.20.3153.030; Wed, 8 Jul 2020
- 09:01:04 +0000
-Date: Wed, 8 Jul 2020 17:00:55 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v13 2/2] drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to
- DP
-Message-ID: <20200708090055.GA21256@xin-VirtualBox>
-References: <cover.1591345160.git.xji@analogixsemi.com>
- <a18316c118c7b8ac201911b0b96d41c84653a00f.1591345160.git.xji@analogixsemi.com>
- <CANMq1KDnoLSUxxYr82o=1eGBR7E3PxoYUr8h1sEVTyqYyHCC-Q@mail.gmail.com>
-Content-Disposition: inline
-In-Reply-To: <CANMq1KDnoLSUxxYr82o=1eGBR7E3PxoYUr8h1sEVTyqYyHCC-Q@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-ClientProxiedBy: HK2PR04CA0050.apcprd04.prod.outlook.com
- (2603:1096:202:14::18) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
+ with ESMTP id h9mbo66mvLXH for <devel@linuxdriverproject.org>;
+ Wed,  8 Jul 2020 09:22:51 +0000 (UTC)
+X-Greylist: delayed 00:08:13 by SQLgrey-1.7.6
+Received: from smtp.al2klimov.de (smtp.al2klimov.de [78.46.175.9])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 100FB86038
+ for <devel@driverdev.osuosl.org>; Wed,  8 Jul 2020 09:22:50 +0000 (UTC)
+Received: from authenticated-user (PRIMARY_HOSTNAME [PUBLIC_IP])
+ by smtp.al2klimov.de (Postfix) with ESMTPA id EE037BC0D9;
+ Wed,  8 Jul 2020 09:14:34 +0000 (UTC)
+From: "Alexander A. Klimov" <grandmaster@al2klimov.de>
+To: marvin24@gmx.de, gregkh@linuxfoundation.org, ac100@lists.launchpad.net,
+ linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] Replace HTTP links with HTTPS ones: STAGING - NVIDIA
+ COMPLIANT EMBEDDED CONTROLLER INTERFACE (nvec)
+Date: Wed,  8 Jul 2020 11:14:28 +0200
+Message-Id: <20200708091428.13554-1-grandmaster@al2klimov.de>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from xin-VirtualBox (114.247.245.254) by
- HK2PR04CA0050.apcprd04.prod.outlook.com (2603:1096:202:14::18) with Microsoft
- SMTP Server (version=TLS1_0, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id
- 15.20.3174.21 via Frontend Transport; Wed, 8 Jul 2020 09:01:03 +0000
-X-Originating-IP: [114.247.245.254]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 2b4f2af2-59cf-4d7a-014a-08d8231d71c7
-X-MS-TrafficTypeDiagnostic: BYAPR04MB6150:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BYAPR04MB6150A52AE3DFF8CBE7C2954EC7670@BYAPR04MB6150.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4941;
-X-Forefront-PRVS: 04583CED1A
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: IGe+cPMhHPGUK9qLwGgH9XH6BVrjIlL+TAQjk232qTRlbvgarpQzHFVuBDGbMd8bz229RmkSIAu7xIjDizIgKP5IxzjULzqCfaiXvneIRHqwOIWiPcec99Ll4QXCWiIlAfB3Hubgvm4Ouul7aSxUFKIG3IebNK+w9zEUCgk1Wf/1Swxl5oroFEDDytXaUrQY1et5hGXGcFblCC1zOvKlqOpu0kvZHK8SEwbonTq4zk7tG8Vul/dVXtFlYNsl9st6WL94ZAVLZrLr9Uz9pIWhoBGswCvChm3nr1gLDYaf9FSkybYBDhZIfXDKFZXQvbxVEkLHXOXlX9cCgl3gFyMPHg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(396003)(366004)(39840400004)(376002)(136003)(346002)(107886003)(478600001)(26005)(54906003)(186003)(16526019)(6496006)(52116002)(8676002)(4326008)(66946007)(66476007)(66556008)(7416002)(83380400001)(9686003)(33656002)(86362001)(33716001)(53546011)(316002)(1076003)(956004)(6916009)(5660300002)(2906002)(55016002)(6666004)(8936002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: 2kijO3D/ojoPCbtqnEjVgoBnXfciXJsKZS90n1HrWYhLQb8ERkhM3qushxjj9440lyOj7/Ow6XUsnp0vJFR7d8Z8czWXs29kEaZTD7XTTw0lXQlc29qcftCSTRbrPNrJhLt9zd4JxYCX+/jUC017Av5sYCjbhI45uHM4J9iduth8qh57e2IpOAcyT6rlImZWOdOkxo5A0IsVwoD2DujvB2pbKh72jyB3AjMBPJtV6Gu0AChWTTAugOBdftfAd5Uc0hMJ6EOUnJSk5bAg18lOvQWqnL0MpwcXFIuvSZAbxnAfrTGhA3VGn4ZqoSi4SMNFBsN6EN35YDjas54RUIIsW+jMpBMyHSUqYUq99QVznjO7f37V9sjBhugJbUmNL1Ebv+u5TZVyBS7wIzfl6nwKqoPDWTZTCqWkZ0BW6fNvH9ni7ReP5sD6VQOBMWqNu72sI3cT69H3djo7rJhsIdcOqng75sBJshdKqm71VBXZttiZPyUsJjsSkQVEmYRlF4zJ
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2b4f2af2-59cf-4d7a-014a-08d8231d71c7
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jul 2020 09:01:04.6520 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Am/QYnQSOUVEyos+VV7DPcX4FUv1yLzypaxF8A3fOfWbkeCdOEieBXmstyvbW6HNWZSaeav6gw+ypsk2/TEcRQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB6150
+X-Spamd-Bar: +++++
+Authentication-Results: smtp.al2klimov.de;
+ auth=pass smtp.auth=aklimov@al2klimov.de
+ smtp.mailfrom=grandmaster@al2klimov.de
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,144 +59,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jernej Skrabec <jernej.skrabec@siol.net>,
- Pi-Hsun Shih <pihsun@chromium.org>, Neil Armstrong <narmstrong@baylibre.com>,
- David Airlie <airlied@linux.ie>, Jonas Karlman <jonas@kwiboo.se>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Dan Carpenter <dan.carpenter@oracle.com>, Sheng Pan <span@analogixsemi.com>
+Cc: "Alexander A. Klimov" <grandmaster@al2klimov.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jul 07, 2020 at 03:01:25PM +0800, Nicolas Boichat wrote:
+Rationale:
+Reduces attack surface on kernel devs opening the links for MITM
+as HTTPS traffic is much harder to manipulate.
 
-Hi Nicolas, thanks for the replay.
+Deterministic algorithm:
+For each file:
+  If not .svg:
+    For each line:
+      If doesn't contain `\bxmlns\b`:
+        For each link, `\bhttp://[^# \t\r\n]*(?:\w|/)`:
+	  If neither `\bgnu\.org/license`, nor `\bmozilla\.org/MPL\b`:
+            If both the HTTP and HTTPS versions
+            return 200 OK and serve the same content:
+              Replace HTTP with HTTPS.
 
-> On Tue, Jun 9, 2020 at 3:20 PM Xin Ji <xji@analogixsemi.com> wrote:
-> >
-> > The ANX7625 is an ultra-low power 4K Mobile HD Transmitter designed
-> > for portable device. It converts MIPI DSI/DPI to DisplayPort 1.3 4K.
-> >
-> > Signed-off-by: Xin Ji <xji@analogixsemi.com>
-> > ---
-> >  drivers/gpu/drm/bridge/analogix/Kconfig   |    9 +
-> >  drivers/gpu/drm/bridge/analogix/Makefile  |    1 +
-> >  drivers/gpu/drm/bridge/analogix/anx7625.c | 1999 +++++++++++++++++++++++++++++
-> >  drivers/gpu/drm/bridge/analogix/anx7625.h |  397 ++++++
-> >  4 files changed, 2406 insertions(+)
-> >  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
-> >  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
-> >
-> > [snip]
-> > +static int anx7625_parse_dt(struct device *dev,
-> > +                           struct anx7625_platform_data *pdata)
-> > +{
-> > +       struct device_node *np = dev->of_node;
-> > +       struct device_node *panel_node, *out_ep;
-> > +
-> > +       pdata->node.mipi_dsi_host_node = of_graph_get_remote_node(np, 0, 0);
-> > +       if (!pdata->node.mipi_dsi_host_node) {
-> > +               DRM_DEV_ERROR(dev, "fail to get internal panel.\n");
-> > +               return -EPROBE_DEFER;
-> 
-> This does not look correct. I don't think of_graph_get_remote_node
-> will ever return NULL if the device tree is configured properly, and
-> it's useless to retry later (EPROBE_DEFER). You should just fail (e.g.
-> return EINVAL).
-OK
-> 
-> > +       }
-> > +
-> > +       of_node_put(pdata->node.mipi_dsi_host_node);
-> 
-> You are using pdata->node.mipi_dsi_host_node in other places in the
-> code, so I don't think it's ok to call of_node_put?
-I'll move the related code to here.
-> 
-> > +       DRM_DEV_DEBUG_DRIVER(dev, "found dsi host node.\n");
-> > +
-> > +       pdata->node.panel_node = of_graph_get_port_by_id(np, 1);
-> > +       if (!pdata->node.panel_node) {
-> > +               DRM_DEV_ERROR(dev, "fail to get panel node.\n");
-> > +               return -EPROBE_DEFER;
-> 
-> -EINVAL.
-OK
-> 
-> > +       }
-> > +
-> > +       of_node_put(pdata->node.panel_node);
-> > +       out_ep = of_get_child_by_name(pdata->node.panel_node,
-> > +                                     "endpoint");
-> > +       if (!out_ep) {
-> > +               DRM_DEV_DEBUG_DRIVER(dev, "cannot get endpoint.\n");
-> 
-> DRM_DEV_ERROR seems more appropriate
-OK, also I'll remove drm_panel based on Sam comment.
-> 
-> > +               return -EPROBE_DEFER;
-> 
-> -EINVAL
-OK
-> 
-> > +       }
-> > +
-> > +       panel_node = of_graph_get_remote_port_parent(out_ep);
-> > +       of_node_put(out_ep);
-> > +       pdata->panel = of_drm_find_panel(panel_node);
-> > +       DRM_DEV_DEBUG_DRIVER(dev, "get panel node.\n");
-> > +
-> > +       of_node_put(panel_node);
-> > +       if (IS_ERR_OR_NULL(pdata->panel))
-> > +               return -EPROBE_DEFER;
-> 
-> of_drm_find_panel cannot return NULL, so, do this instead:
-> 
-> if (IS_ERR(pdata->panel))
->    return PTR_ERR(pdata->panel);
-> 
-> (which actually _may_ return EPROBE_DEFER)
-I'll remove drm_panel, use panel_bridge.
-> 
-> > +
-> > +       return 0;
-> > +}
-> > [snip]
-> > +static int anx7625_i2c_probe(struct i2c_client *client,
-> > +                            const struct i2c_device_id *id)
-> > +{
-> > +       struct anx7625_data *platform;
-> > +       struct anx7625_platform_data *pdata;
-> > +       int ret = 0;
-> > +       struct device *dev = &client->dev;
-> > +
-> > +       if (!i2c_check_functionality(client->adapter,
-> > +                                    I2C_FUNC_SMBUS_I2C_BLOCK)) {
-> > +               DRM_DEV_ERROR(dev, "anx7625's i2c bus doesn't support\n");
-> > +               return -ENODEV;
-> > +       }
-> > +
-> > +       platform = kzalloc(sizeof(*platform), GFP_KERNEL);
-> > +       if (!platform) {
-> > +               DRM_DEV_ERROR(dev, "fail to allocate driver data\n");
-> > +               return -ENOMEM;
-> > +       }
-> > +
-> > +       pdata = &platform->pdata;
-> > +
-> > +       ret = anx7625_parse_dt(dev, pdata);
-> > +       if (ret) {
-> > +               DRM_DEV_ERROR(dev, "fail to parse devicetree.\n");
-> 
-> Please do not print this error (or at least not if err == -EPROBE_DEFER).
-OK
-> 
-> > +               goto free_platform;
-> > +       }
+Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
+---
+ Continuing my work started at 93431e0607e5.
+ See also: git log --oneline '--author=Alexander A. Klimov <grandmaster@al2klimov.de>' v5.7..master
+ (Actually letting a shell for loop submit all this stuff for me.)
+
+ If there are any URLs to be removed completely or at least not HTTPSified:
+ Just clearly say so and I'll *undo my change*.
+ See also: https://lkml.org/lkml/2020/6/27/64
+
+ If there are any valid, but yet not changed URLs:
+ See: https://lkml.org/lkml/2020/6/26/837
+
+ If you apply the patch, please let me know.
+
+
+ drivers/staging/nvec/README | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/nvec/README b/drivers/staging/nvec/README
+index 0e2d5c4c875f..510e6933f402 100644
+--- a/drivers/staging/nvec/README
++++ b/drivers/staging/nvec/README
+@@ -10,5 +10,5 @@ but the source code[1] of the published nvec reference drivers can be a guide.
+ This driver is currently only used by the AC100 project[2], but it is likely,
+ that other Tegra boards (not yet mainlined, if ever) also use it.
+ 
+-[1] e.g. http://nv-tegra.nvidia.com/gitweb/?p=linux-2.6.git;a=tree;f=arch/arm/mach-tegra/nvec;hb=android-tegra-2.6.32
++[1] e.g. https://nv-tegra.nvidia.com/gitweb/?p=linux-2.6.git;a=tree;f=arch/arm/mach-tegra/nvec;hb=android-tegra-2.6.32
+ [2] http://gitorious.org/ac100, http://launchpad.net/ac100
+-- 
+2.27.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
