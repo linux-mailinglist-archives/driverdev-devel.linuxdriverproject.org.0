@@ -1,47 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44FC2217CA2
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E6F2217CA1
 	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jul 2020 03:38:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B2AED2474E;
+	by hemlock.osuosl.org (Postfix) with ESMTP id A39CA89381;
 	Wed,  8 Jul 2020 01:38:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XrT+if4cK2nk; Wed,  8 Jul 2020 01:38:32 +0000 (UTC)
+	with ESMTP id 4UUIcyXZT88T; Wed,  8 Jul 2020 01:38:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F41FD22610;
-	Wed,  8 Jul 2020 01:38:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 29B3589224;
+	Wed,  8 Jul 2020 01:38:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 767801BF3E9
- for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 01:38:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 097A31BF3E9
+ for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 01:38:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 71F4322610
- for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 01:38:28 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 03FA223E8D
+ for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 01:38:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hUBMbD-Gnl2f for <devel@linuxdriverproject.org>;
- Wed,  8 Jul 2020 01:38:28 +0000 (UTC)
+ with ESMTP id XpftbuEzPtbN for <devel@linuxdriverproject.org>;
+ Wed,  8 Jul 2020 01:38:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from spam.dsnw.net (spam.dsnw.net [112.171.175.131])
- by silver.osuosl.org (Postfix) with ESMTP id D77A72107F
- for <devel@driverdev.osuosl.org>; Wed,  8 Jul 2020 01:38:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6982D2107F
+ for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 01:38:29 +0000 (UTC)
 Received: from unknown (HELO daesin.net) (ds01@180.214.237.159)
- by 112.171.175.131 with ESMTP; 8 Jul 2020 10:30:53 +0900
+ by 112.171.175.131 with ESMTP; 8 Jul 2020 10:30:56 +0900
 X-Original-SENDERIP: 180.214.237.159
 X-Original-SENDERCOUNTRY: VN, Vietnam 
 X-Original-MAILFROM: ds01@daesin.net
-X-Original-RCPTTO: devel@driverdev.osuosl.org
+X-Original-RCPTTO: devel@linuxdriverproject.org
 From: Mrs. Stephanie Bruno <ds01@daesin.net>
-To: devel@driverdev.osuosl.org
+To: devel@linuxdriverproject.org
 Subject: My dear friend,
-Date: 07 Jul 2020 18:30:48 -0700
-Message-ID: <20200707183047.94D031CBBCF50A2C@daesin.net>
+Date: 07 Jul 2020 18:30:50 -0700
+Message-ID: <20200707183048.3546178977327067@daesin.net>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
