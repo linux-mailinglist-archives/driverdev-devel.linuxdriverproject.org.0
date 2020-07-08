@@ -1,48 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E6F2217CA1
-	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jul 2020 03:38:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C8739217DB6
+	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jul 2020 05:43:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A39CA89381;
-	Wed,  8 Jul 2020 01:38:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 56D278776D;
+	Wed,  8 Jul 2020 03:43:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4UUIcyXZT88T; Wed,  8 Jul 2020 01:38:32 +0000 (UTC)
+	with ESMTP id pmNIaCYccXua; Wed,  8 Jul 2020 03:43:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 29B3589224;
-	Wed,  8 Jul 2020 01:38:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 40A2B87701;
+	Wed,  8 Jul 2020 03:43:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 097A31BF3E9
- for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 01:38:30 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 340141BF8A8
+ for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 03:43:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 03FA223E8D
- for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 01:38:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2EBAC88AE9
+ for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 03:43:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XpftbuEzPtbN for <devel@linuxdriverproject.org>;
- Wed,  8 Jul 2020 01:38:29 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from spam.dsnw.net (spam.dsnw.net [112.171.175.131])
- by silver.osuosl.org (Postfix) with ESMTP id 6982D2107F
- for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 01:38:29 +0000 (UTC)
-Received: from unknown (HELO daesin.net) (ds01@180.214.237.159)
- by 112.171.175.131 with ESMTP; 8 Jul 2020 10:30:56 +0900
-X-Original-SENDERIP: 180.214.237.159
-X-Original-SENDERCOUNTRY: VN, Vietnam 
-X-Original-MAILFROM: ds01@daesin.net
-X-Original-RCPTTO: devel@linuxdriverproject.org
-From: Mrs. Stephanie Bruno <ds01@daesin.net>
-To: devel@linuxdriverproject.org
-Subject: My dear friend,
-Date: 07 Jul 2020 18:30:50 -0700
-Message-ID: <20200707183048.3546178977327067@daesin.net>
+ with ESMTP id a9bVAzLHe8CC for <devel@linuxdriverproject.org>;
+ Wed,  8 Jul 2020 03:43:42 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
+ [209.85.210.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3CC6588AE7
+ for <devel@driverdev.osuosl.org>; Wed,  8 Jul 2020 03:43:42 +0000 (UTC)
+Received: by mail-ot1-f65.google.com with SMTP id w17so28104751otl.4
+ for <devel@driverdev.osuosl.org>; Tue, 07 Jul 2020 20:43:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=mHwnZGqBxO1eR5fw/gOLrflI6sKMZmZB5dQJW/fz1OI=;
+ b=Fe+Nkt75c5SHX6EoJc25ohkfwpVvt9Shez4gGJsFcnlofCj1p4EV0/9LYeXnB7Ps5I
+ GbuUp7Z9dTQ77ECCS2E3WkR/9ObL4djO5nw+5lALHOqtF+X3XwCoWSAyNqBy41djgYc+
+ E36Ge2uQyBowWhOaERpqgUrExPkfmEUp60YAiYcfYIoCEJ4GxhSXJM4C44UUVdAKgptU
+ BzkgjU5yxVVL/jD+u5cU4WT57KieNFDZ/83O+CbyRoYpVJ5FSBPy6+vLcAmH+5aLHsrU
+ 2d644BAm8cYMwpkzlShwpkcSY0FWHEBC8SU+QSuKgaTjXfzcJJnkF3rYniKnfCr8PmW8
+ LRjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=mHwnZGqBxO1eR5fw/gOLrflI6sKMZmZB5dQJW/fz1OI=;
+ b=cLfrbRFSgpmmGsY+29prMyyh8/vbvyisBXwXeX8BRSFyLnEh8p3vb3o/2YJJYhL4iE
+ aPuUxEA5tOFlphuZi93YVCSYTrGKEMzNWMfF4giEygnegi0KEiwLvckhclfXlByTVSOn
+ qW6xsgLIPR8x27T3XBAE3liTnToqgxFflqlNCDKbTZfvCEBSqEVEP0VjzbV6Jfw4Bwpn
+ jH5sDRX/dFZnoNWSQNVQ7UoBeXFzZncTFlIwpcSLsiSUPqOOlNl9ARH1JFeUIPOy6x98
+ yGv9v8VqAfsPmfM44n/FjeRZz8Bt+N7Wwm8vmQQX83ZtipB26AXzNoiruG6KTRlhQHPm
+ Nx/Q==
+X-Gm-Message-State: AOAM531MsNDDyHnnEfPaLEzasC+XOPV38SWt+yh95CsxSedzRGDMMTcY
+ pCvS2TWEEXn7EEi0cDBecd7/FqAelscA60m1dNgvpA==
+X-Google-Smtp-Source: ABdhPJzAu9QJrh4zqPuK1ULgvhkk3S7kmolCzNiGAneauQgVnQWUl8xkvWerju6/BQBeQKcs2e83J8fINMSb4CvYdms=
+X-Received: by 2002:a9d:7303:: with SMTP id e3mr40868563otk.221.1594179821275; 
+ Tue, 07 Jul 2020 20:43:41 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200414134629.54567-1-orjan.eide@arm.com>
+ <20200414141849.55654-1-orjan.eide@arm.com>
+ <20200414142810.GA958163@kroah.com>
+ <CALAqxLX-SUhHPH6ewt-s9cEMc8DtMTgXem=JruAkLofuJf1syg@mail.gmail.com>
+ <20200416102508.GA820251@kroah.com>
+ <20200420082207.ui7iyg7dsnred2vv@wittgenstein>
+ <CALAqxLW-txNEqW=P_9VTxvOVu_fgpjzHHDbR5BhtpYwhg1SXgw@mail.gmail.com>
+ <20200421080544.GA611314@kroah.com> <20200703070403.GB2221524@kroah.com>
+In-Reply-To: <20200703070403.GB2221524@kroah.com>
+From: John Stultz <john.stultz@linaro.org>
+Date: Tue, 7 Jul 2020 20:43:30 -0700
+Message-ID: <CALAqxLUHT=CGNxffz+3G-bUNc2FM_TawDrymFN+S=ZiPcM9pkg@mail.gmail.com>
+Subject: Re: [PATCH] staging: android: ion: Skip sync if not mapped
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,43 +86,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrsstephaniebrun@onlinebobks.net
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: driverdevel <devel@driverdev.osuosl.org>, nd <nd@arm.com>,
+ Todd Kjos <tkjos@android.com>, Lecopzer Chen <lecopzer.chen@mediatek.com>,
+ Arnd Bergmann <arnd@arndb.de>, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ lkml <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Christian Brauner <christian@brauner.io>,
+ Anders Pedersen <anders.pedersen@arm.com>, Laura Abbott <laura@labbott.name>,
+ Joel Fernandes <joel@joelfernandes.org>,
+ "Darren Hart \(VMware\)" <dvhart@infradead.org>,
+ =?UTF-8?Q?=C3=98rjan_Eide?= <orjan.eide@arm.com>,
+ Laura Abbott <labbott@redhat.com>, Martijn Coenen <maco@android.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ Christian Brauner <christian.brauner@ubuntu.com>, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-TXkgZGVhciBmcmllbmQsCiAKR3JlZXRpbmdzIHRvIHlvdSBhbmQgeW91ciBmYW1pbHkgZnJvbSBt
-eSBzaW5jZXJlIGhlYXJ0LgpJdCBtaWdodCBiZSBhIHN1cnByaXNlIHRvIHlvdSByZWFkaW5nIGZy
-b20gbWUgYWdhaW4gYXMgSSBoYWQgCndyaXR0ZW4gYW4gZWFybGllciBlbWFpbCB0byB5b3UgYnV0
-IHdpdGhvdXQgcmVzcG9uc2UuCiAKUHJlc2VudGx5LCBJJ20gaW4gdGhlIGhvc3BpdGFsIHdoZXJl
-IEkgYW0gdW5kZXJnb2luZyB0cmVhdG1lbnQgCmZvciBFc29waGFnZWFsIENhbmNlci4gVG9kYXkg
-bXkgRG9jdG9yIHRvbGQgbWUgdGhhdCBJIHdpbGwgbm90IApsaXZlIHVwIHRvIDYwIGRheXMuIEkg
-YW0gTXJzLiBTdGVwaGFuaWUgQnJ1bm8sIHdpZG93IHRvIGxhdGUgCkNvbG9uZWwgQW5kcmUgQnJ1
-bm8sIGZvcm1lciBkZXB1dHkgZGVmZW5jZSBhdHRhY2jQuSB0byBCZW5pbiAKY29uc3VsYXRlIGlu
-IENyb2F0aWEuIE15IGh1c2JhbmQgd2FzIGtpbGxlZCBieSB0aG9zZSB3aG8gd2VyZSAKZW52aW91
-cyBvZiBoaXMgcG9zaXRpb24gaW4gdGhlIHNhbWUgb2ZmaWNlLgogCk5vdyB0aGVyZSBpcyAxLjYg
-TWlsbGlvbiBEb2xsYXJzIG15IGxhdGUgaHVzYmFuZCBkZXBvc2l0ZWQgaW4gYSAKYmFuayBoZXJl
-IGluIEJlbmluLgpCZWZvcmUgaGlzIGRlYXRoIGhlIHZvd2VkIHRvIHVzZSBoaXMgd2VhbHRoIGZv
-ciB0aGUgb3JwaGFuYWdlcy4gSSAKaGF2ZSBkZWNpZGVkIHRvIGRvbmF0ZSB0aGlzIG1vbmV5IHRv
-IGFuIGluZGl2aWR1YWwsIHdobyB3aWxsIAp1dGlsaXNlIGl0IGluIGZ1bGZpbG1lbnQgb2YgdGhl
-IGxhc3QgcmVxdWVzdCBvZiBteSBodXNiYW5kLgogClJlcGx5IHdpdGggeW91ciBmdWxsIG5hbWVz
-LCBwaG9uZSBudW1iZXIsIGFkZHJlc3MgYW5kIG9jY3VwYXRpb24uIApJIHdpbGwgZ2l2ZSB5b3Ug
-bW9yZSBkZXRhaWxzIGFmdGVyIGNvbnNpZGVyYXRpb24uCllvdXJzIFNpbmNlcmVseSwKTXJzLiBT
-dGVwaGFuaWUgQnJ1bm8KWW91IGNhbiBhbHNvIGNvbnRhY3QgbWUgb24gbXkgcHJpdmF0ZSBlbW1h
-aWw6IAptcnNzdGVwaGFuaWVicnVub0BvbmxpbmVib2Jrcy5uZXQKCgrigJxESVNDTEFJTUVSOiBU
-aGlzIGUtbWVsIGFuZCBhbnkgZmlsZXMgdHJhbnNtaXR0ZWQgd2l0aCBpdCBhcmUgCmludGVuZGVk
-IG9ubHkgZm9yIHRoZSB1c2Ugb2YgdGhlIHJlY2lwaWVudChzKSBuYW1lZCBhYm92ZSBhbmQgbWF5
-IApjb250YWluIGNvbmZpZGVudGlhbCBpbmZvcm1hdGlvbi4gWW91IGFyZSBoZXJlYnkgbm90aWZp
-ZWQgdGhhdCAKdGhlIHRha2luZyBvZiBhbnkgYWN0aW9uIGluIHJlbGlhbmNlIHVwb24sIG9yIGFu
-eSByZXZpZXcsIApyZXRyYW5zbWlzc2lvbiwgZGlzc2VtaW5hdGlvbiwgZGlzdHJpYnV0aW9uLCBw
-cmludGluZyBvciBjb3B5aW5nIApvZiB0aGlzIG1lc3NhZ2Ugb3IgYW55IHBhcnQgdGhlcmVvZiBi
-eSBhbnlvbmUgb3RoZXIgdGhhbiB0aGUgCnJlY2lwaWVudChzKSBpcyBzdHJpY3RseSBwcm9oaWJp
-dGVkLiBJZiB5b3UgaGF2ZSByZWNlaXZlZCB0aGlzIAptZXNzYWdlIGluIGVycm9yLCB5b3Ugc2hv
-dWxkIGRlbGV0ZSBpdCBpbW1lZGlhdGVseSBhbmQgYWR2aXNlIHRoZSAKc2VuZGVyIGJ5IHJldHVy
-biBlLW1lbC4gT3BpbmlvbnMsIGNvbmNsdXNpb25zIGFuZCBvdGhlciAKaW5mb3JtYXRpb24gaW4g
-dGhpcyBtZXNzYWdlIHRoYXQgZG8gbm90IHJlbGF0ZSB0byB0aGUgTUJTUCBzaGFsbCAKYmUgdW5k
-ZXJzdG9vZCBhcyBuZWl0aGVyIGdpdmVuIG5vciBlbmRvcnNlZCBieSB0aGUgTUJTUC4KX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBs
-aXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRy
-aXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Fri, Jul 3, 2020 at 12:03 AM Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+> On Tue, Apr 21, 2020 at 10:05:44AM +0200, Greg Kroah-Hartman wrote:
+> > On Mon, Apr 20, 2020 at 01:03:39PM -0700, John Stultz wrote:
+> > > The dmabuf heaps have been in an official kernel now for all of three
+> > > weeks. So yea, we can "delete [ION] and see who even notices", but I
+> > > worry that may seem a bit like contempt for the folks doing the work
+> > > on transitioning over, which doesn't help getting them to participate
+> > > within the community.
+> >
+> > But they aren't participating in the community today as no one is
+> > touching the ion code.  So I fail to see how keeping a dead-end-version
+> > of ion in the kernel tree really affects anyone these days.
+>
+> So, any thoughts here?  What's the timeline for ion being able to be
+> removed that you are comfortable with?
+
+Sorry for the slow reply.  So my earlier plan was to drop it after the next LTS?
+
+thanks
+-john
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
