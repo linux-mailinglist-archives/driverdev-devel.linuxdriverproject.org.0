@@ -2,60 +2,52 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5981C218C54
-	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jul 2020 17:57:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 632C3218FBB
+	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Jul 2020 20:31:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0E06A868B6;
-	Wed,  8 Jul 2020 15:57:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A23BD87BE8;
+	Wed,  8 Jul 2020 18:31:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vLNNtzkfroH4; Wed,  8 Jul 2020 15:57:24 +0000 (UTC)
+	with ESMTP id SGYs9Rfn7HqN; Wed,  8 Jul 2020 18:31:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 19CD286957;
-	Wed,  8 Jul 2020 15:57:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E94A87BE9;
+	Wed,  8 Jul 2020 18:31:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4D0FF1BF5DD
- for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 15:57:21 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3D3611BF575
+ for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 18:31:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 43DBE88D5D
- for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 15:57:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 335B82357A
+ for <devel@linuxdriverproject.org>; Wed,  8 Jul 2020 18:31:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AY2oivkZ5-xJ for <devel@linuxdriverproject.org>;
- Wed,  8 Jul 2020 15:57:19 +0000 (UTC)
+ with ESMTP id 1tGk8xqU08iM for <devel@linuxdriverproject.org>;
+ Wed,  8 Jul 2020 18:31:27 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs24.siol.net [185.57.226.215])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D29D088BC3
- for <devel@driverdev.osuosl.org>; Wed,  8 Jul 2020 15:57:18 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id D1C385245C3;
- Wed,  8 Jul 2020 17:57:15 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at psrvmta09.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta09.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id eJi2L-kAwrmu; Wed,  8 Jul 2020 17:57:15 +0200 (CEST)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id 41CAA52483D;
- Wed,  8 Jul 2020 17:57:15 +0200 (CEST)
-Received: from jernej-laptop.localnet (cpe-194-152-20-232.static.triera.net
- [194.152.20.232]) (Authenticated sender: jernej.skrabec@siol.net)
- by mail.siol.net (Postfix) with ESMTPA id 197785245C3;
- Wed,  8 Jul 2020 17:57:11 +0200 (CEST)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Subject: Re: [PATCH 1/3] media: uapi: h264: update reference lists
-Date: Wed, 08 Jul 2020 17:57:11 +0200
-Message-ID: <3602665.eG79kSnugm@jernej-laptop>
-In-Reply-To: <CAAEAJfAx4=RGJBVPccVFNYxNUqom7tkQD=J9oMfqajGxn6k+Zg@mail.gmail.com>
-References: <20200604185745.23568-1-jernej.skrabec@siol.net>
- <20200604185745.23568-2-jernej.skrabec@siol.net>
- <CAAEAJfAx4=RGJBVPccVFNYxNUqom7tkQD=J9oMfqajGxn6k+Zg@mail.gmail.com>
+Received: from smtp.al2klimov.de (smtp.al2klimov.de [78.46.175.9])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5AF5220512
+ for <devel@driverdev.osuosl.org>; Wed,  8 Jul 2020 18:31:27 +0000 (UTC)
+Received: from authenticated-user (PRIMARY_HOSTNAME [PUBLIC_IP])
+ by smtp.al2klimov.de (Postfix) with ESMTPA id 06A2ABC0CB;
+ Wed,  8 Jul 2020 18:31:23 +0000 (UTC)
+From: "Alexander A. Klimov" <grandmaster@al2klimov.de>
+To: marvin24@gmx.de, gregkh@linuxfoundation.org, ac100@lists.launchpad.net,
+ linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] Staging: nvec: Replace HTTP links with HTTPS ones
+Date: Wed,  8 Jul 2020 20:31:17 +0200
+Message-Id: <20200708183117.16563-1-grandmaster@al2klimov.de>
+In-Reply-To: <20200708101858.GL2549@kadam>
+References: <20200708101858.GL2549@kadam>
 MIME-Version: 1.0
+X-Spamd-Bar: +++++
+Authentication-Results: smtp.al2klimov.de;
+ auth=pass smtp.auth=aklimov@al2klimov.de
+ smtp.mailfrom=grandmaster@al2klimov.de
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,230 +60,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jonas Karlman <jonas@kwiboo.se>,
- Greg KH <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Maxime Ripard <mripard@kernel.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Chen-Yu Tsai <wens@csie.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-media <linux-media@vger.kernel.org>
+Cc: "Alexander A. Klimov" <grandmaster@al2klimov.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi!
+Rationale:
+Reduces attack surface on kernel devs opening the links for MITM
+as HTTPS traffic is much harder to manipulate.
 
-Dne sreda, 08. julij 2020 ob 15:28:52 CEST je Ezequiel Garcia napisal(a):
-> Hello Jernej,
-> 
-> I'd like to post a new H264 uAPI cleanup series soon,
-> would you mind resending this, or otherwise do you
-> mind if I include this patch in the series?
+Deterministic algorithm:
+For each file:
+  If not .svg:
+    For each line:
+      If doesn't contain `\bxmlns\b`:
+        For each link, `\bhttp://[^# \t\r\n]*(?:\w|/)`:
+	  If neither `\bgnu\.org/license`, nor `\bmozilla\.org/MPL\b`:
+            If both the HTTP and HTTPS versions
+            return 200 OK and serve the same content:
+              Replace HTTP with HTTPS.
 
-I don't mind at all. Currently my focus was elsewhere...
+Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
+---
+ Continuing my work started at 93431e0607e5.
+ See also: git log --oneline '--author=Alexander A. Klimov <grandmaster@al2klimov.de>' v5.7..master
+ (Actually letting a shell for loop submit all this stuff for me.)
 
-> 
-> See below for a tiny comment.
-> 
-> On Thu, 4 Jun 2020 at 15:55, Jernej Skrabec <jernej.skrabec@siol.net> wrote:
-> > When dealing with with interlaced frames, reference lists must tell if
-> > each particular reference is meant for top or bottom field. This info
-> > is currently not provided at all in the H264 related controls.
-> > 
-> > Make reference lists hold a structure which will also hold flags along
-> > index into DPB array. Flags will tell if reference is meant for top or
-> > bottom field.
-> > 
-> > Currently the only user of these lists is Cedrus which is just compile
-> > fixed here. Actual usage of newly introduced flags will come in
-> > following commit.
-> > 
-> > Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
-> > ---
-> > 
-> >  .../media/v4l/ext-ctrls-codec.rst             | 40 ++++++++++++++++++-
-> >  .../staging/media/sunxi/cedrus/cedrus_h264.c  |  6 +--
-> >  include/media/h264-ctrls.h                    | 12 +++++-
-> >  3 files changed, 51 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> > b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst index
-> > d0d506a444b1..6c36d298db20 100644
-> > --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> > +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> > @@ -1843,10 +1843,10 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type
-> > -> 
-> >      * - __u32
-> >      
-> >        - ``slice_group_change_cycle``
-> >        -
-> > 
-> > -    * - __u8
-> > +    * - struct :c:type:`v4l2_h264_reference`
-> > 
-> >        - ``ref_pic_list0[32]``
-> >        - Reference picture list after applying the per-slice modifications
-> > 
-> > -    * - __u8
-> > +    * - struct :c:type:`v4l2_h264_reference`
-> > 
-> >        - ``ref_pic_list1[32]``
-> >        - Reference picture list after applying the per-slice modifications
-> >      
-> >      * - __u32
-> > 
-> > @@ -1926,6 +1926,42 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type
-> > -
-> > 
-> >        - ``chroma_offset[32][2]``
-> >        -
-> > 
-> > +``Picture Reference``
-> > +
-> > +.. c:type:: v4l2_h264_reference
-> > +
-> > +.. cssclass:: longtable
-> > +
-> > +.. flat-table:: struct v4l2_h264_reference
-> > +    :header-rows:  0
-> > +    :stub-columns: 0
-> > +    :widths:       1 1 2
-> > +
-> > +    * - __u16
-> > +      - ``flags``
-> > +      - See :ref:`Picture Reference Flags <h264_reference_flags>`
-> > +    * - __u8
-> > +      - ``index``
-> > +      -
-> > +
-> > +.. _h264_reference_flags:
-> > +
-> > +``Picture Reference Flags``
-> > +
-> > +.. cssclass:: longtable
-> > +
-> > +.. flat-table::
-> > +    :header-rows:  0
-> > +    :stub-columns: 0
-> > +    :widths:       1 1 2
-> > +
-> > +    * - ``V4L2_H264_REFERENCE_FLAG_TOP_FIELD``
-> > +      - 0x00000001
-> > +      -
-> > +    * - ``V4L2_H264_REFERENCE_FLAG_BOTTOM_FIELD``
-> > +      - 0x00000002
-> > +      -
-> > +
-> > 
-> >  ``V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS (struct)``
-> >  
-> >      Specifies the decode parameters (as extracted from the bitstream)
-> >      for the associated H264 slice data. This includes the necessary
-> > 
-> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> > b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c index
-> > 54ee2aa423e2..cce527bbdf86 100644
-> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-> > @@ -166,8 +166,8 @@ static void cedrus_write_frame_list(struct cedrus_ctx
-> > *ctx,> 
-> >  static void _cedrus_write_ref_list(struct cedrus_ctx *ctx,
-> >  
-> >                                    struct cedrus_run *run,
-> > 
-> > -                                  const u8 *ref_list, u8 num_ref,
-> > -                                  enum cedrus_h264_sram_off sram)
-> > +                                  const struct v4l2_h264_reference
-> > *ref_list, +                                  u8 num_ref, enum
-> > cedrus_h264_sram_off sram)> 
-> >  {
-> >  
-> >         const struct v4l2_ctrl_h264_decode_params *decode =
-> >         run->h264.decode_params; struct vb2_queue *cap_q;
-> > 
-> > @@ -188,7 +188,7 @@ static void _cedrus_write_ref_list(struct cedrus_ctx
-> > *ctx,> 
-> >                 int buf_idx;
-> >                 u8 dpb_idx;
-> > 
-> > -               dpb_idx = ref_list[i];
-> > +               dpb_idx = ref_list[i].index;
-> > 
-> >                 dpb = &decode->dpb[dpb_idx];
-> >                 
-> >                 if (!(dpb->flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE))
-> > 
-> > diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
-> > index 080fd1293c42..9b1cbc9bc38e 100644
-> > --- a/include/media/h264-ctrls.h
-> > +++ b/include/media/h264-ctrls.h
-> > @@ -140,6 +140,14 @@ struct v4l2_h264_pred_weight_table {
-> > 
-> >  #define V4L2_H264_SLICE_FLAG_DIRECT_SPATIAL_MV_PRED    0x04
-> >  #define V4L2_H264_SLICE_FLAG_SP_FOR_SWITCH             0x08
-> > 
-> > +#define V4L2_H264_REFERENCE_FLAG_TOP_FIELD             0x01
-> > +#define V4L2_H264_REFERENCE_FLAG_BOTTOM_FIELD          0x02
-> > +
-> > +struct v4l2_h264_reference {
-> > +       __u8 flags;
-> > +       __u8 index;
-> > +};
-> > +
-> > 
-> >  struct v4l2_ctrl_h264_slice_params {
-> >  
-> >         /* Size in bytes, including header */
-> >         __u32 size;
-> > 
-> > @@ -182,8 +190,8 @@ struct v4l2_ctrl_h264_slice_params {
-> > 
-> >          * Entries on each list are indices into
-> >          * v4l2_ctrl_h264_decode_params.dpb[].
-> >          */
-> > 
-> > -       __u8 ref_pic_list0[32];
-> > -       __u8 ref_pic_list1[32];
-> > +       struct v4l2_h264_reference ref_pic_list0[32];
-> > +       struct v4l2_h264_reference ref_pic_list1[32];
-> 
-> Could we use a macro for "32" here? Something like:
-> 
-> #define V4L2_H264_REF_PIC_LIST_LEN (V4L2_H264_NUM_DPB_ENTRIES * 2).
-> 
-> Does it make sense to add a comment as well?
-> 
-> I was thinking something along these lines:
-> 
-> """
-> Pictures in the DPB can be a frame, a complementary field pair or a
-> single field.
+ If there are any URLs to be removed completely or at least not HTTPSified:
+ Just clearly say so and I'll *undo my change*.
+ See also: https://lkml.org/lkml/2020/6/27/64
 
-To be honest, I don't know if user has a free choice to select same or 
-different destination (capture) buffer for another field. I never tested it and 
-I'm not sure how to test it with ffmpeg. HW deinterlacing cores on Allwinner 
-SoCs support only interleaved fields as a input, that's why I never though 
-about separate fields.
+ If there are any valid, but yet not changed URLs:
+ See: https://lkml.org/lkml/2020/6/26/837
 
-Best regards,
-Jernej
-
-> Therefore, reference pictures lists need twice as much entries, so it
-> can reference
-> either field of a field pair.
-> """
-> 
-> While it doesn't replace proper H264 specification reading,
-> it would add some clarity.
-> 
-> Thanks,
-> Ezequiel
+ If you apply the patch, please let me know.
 
 
+ drivers/staging/nvec/README | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/staging/nvec/README b/drivers/staging/nvec/README
+index 0e2d5c4c875f..510e6933f402 100644
+--- a/drivers/staging/nvec/README
++++ b/drivers/staging/nvec/README
+@@ -10,5 +10,5 @@ but the source code[1] of the published nvec reference drivers can be a guide.
+ This driver is currently only used by the AC100 project[2], but it is likely,
+ that other Tegra boards (not yet mainlined, if ever) also use it.
+ 
+-[1] e.g. http://nv-tegra.nvidia.com/gitweb/?p=linux-2.6.git;a=tree;f=arch/arm/mach-tegra/nvec;hb=android-tegra-2.6.32
++[1] e.g. https://nv-tegra.nvidia.com/gitweb/?p=linux-2.6.git;a=tree;f=arch/arm/mach-tegra/nvec;hb=android-tegra-2.6.32
+ [2] http://gitorious.org/ac100, http://launchpad.net/ac100
+-- 
+2.27.0
 
 _______________________________________________
 devel mailing list
