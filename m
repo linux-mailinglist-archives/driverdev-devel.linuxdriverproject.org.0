@@ -1,125 +1,105 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18988219C7E
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Jul 2020 11:43:19 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 97E7C219D1C
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Jul 2020 12:10:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D37AF86E9F;
-	Thu,  9 Jul 2020 09:42:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 33372888C9;
+	Thu,  9 Jul 2020 10:10:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EgXe2YLIy0cn; Thu,  9 Jul 2020 09:42:46 +0000 (UTC)
+	with ESMTP id i+69fCKDd5dX; Thu,  9 Jul 2020 10:10:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 718DB8655C;
-	Thu,  9 Jul 2020 09:42:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6A2E888959;
+	Thu,  9 Jul 2020 10:10:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3647D1BF82F
- for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 09:42:43 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 51DC51BF37C
+ for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 10:10:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 326B089480
- for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 09:42:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4D74F87DFE
+ for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 10:10:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VPrj+lieZ9ad for <devel@linuxdriverproject.org>;
- Thu,  9 Jul 2020 09:42:42 +0000 (UTC)
-X-Greylist: delayed 00:09:50 by SQLgrey-1.7.6
-Received: from comms.puri.sm (comms.puri.sm [159.203.221.185])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A45B589410
- for <devel@driverdev.osuosl.org>; Thu,  9 Jul 2020 09:42:42 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by comms.puri.sm (Postfix) with ESMTP id 0DED0DF318;
- Thu,  9 Jul 2020 02:32:51 -0700 (PDT)
-Received: from comms.puri.sm ([127.0.0.1])
- by localhost (comms.puri.sm [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SiFGFKONXNrc; Thu,  9 Jul 2020 02:32:50 -0700 (PDT)
-To: slongerbeam@gmail.com, p.zabel@pengutronix.de,
- "mchehab@kernel.org" <mchehab@kernel.org>
-From: Martin Kepplinger <martin.kepplinger@puri.sm>
-Subject: nxp imx8m CSI drivers
-Autocrypt: addr=martin.kepplinger@puri.sm; keydata=
- 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
- ekMtxgNYb/8oDry09UFHbGHLsWn6oBo=
-Message-ID: <cbfdb81f-9a09-2ad1-4b51-54e10f678358@puri.sm>
-Date: Thu, 9 Jul 2020 11:32:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-Content-Language: en-US
+ with ESMTP id Mb7siO9yzCmP for <devel@linuxdriverproject.org>;
+ Thu,  9 Jul 2020 10:10:14 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2068.outbound.protection.outlook.com [40.107.220.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9507387DCA
+ for <devel@driverdev.osuosl.org>; Thu,  9 Jul 2020 10:10:14 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=d3WiwjaXhgiEuBd5YwoqQAiac/xd0b9PhkgdxP+wvbLwNPdrTj4wGKRBwEczJssvzo3ipNvNU9dz8hTrNvdqRmifA9vR19Bt9ms6iG0k7bWHfqyZrGpBmwc7hozBTLzIOGHUJd2X95fbMoIaW6OalA/9XsJ+tvkgW0jRu9h+0ajuQKAZpRLHmWwOQXfyNP2cyZSkpmFMjGvv6dKiWbZ641qakt9qPzwYvhezvE5oYF1v2e5793lbwnGCeLnlQS4m8IEB3uncc5vdRNyxttrEObytDg/weHnGcprcKbFuBgVfyT+rIwLunGva/KPuDn5Dr3UEKwjZABe2mQqjkBI1UA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ol3dRKNgADGK16AMVrjax0PuaNNuME7LlA8b3xyKLzA=;
+ b=SDrMWZUrbubPilQ0O3scDhDnD53ebodVa8U5hWVbOkZbtMxsrwCcCQewvjg9C8NlSnZXJvG1486xVrbr+g5Dzq02Z1rE3ikXzkL25TeqGhfprrC0sGqxtWznDpbMogF3qsfE/m+U0F2+lbpYB8I3hVi28T0pk7vn+BnTUTGnbnTkaOd8XFaP0deA1rzUTDtnSIF7xjxjzPZlpkFBU5BacH5y3gGlB03Z4swkarosXMyhXs2a+SiQ3JuAceOvvLVVI7I52dkL6CmGiNSalim/LtiSAiFByZz4DXd6VCNmr8JIyLX0PufqsO0J68iRZCdm/PIwC02t91FwGFJlfVEhhQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ol3dRKNgADGK16AMVrjax0PuaNNuME7LlA8b3xyKLzA=;
+ b=bg0B6E/Sh/dR7aO4yw9c6r+mpCEWEojmm+0Ep6xaU18XULkAERro/DaAK6WBGDo8nQeVUYPosb+ab6Ev1Ql0DQL68gikSHUKwbUBUb2AIR/h8K2lcXJZJq4SaVPj39qpfZZwxwjGm5R6GEnPPCwtlKEeiXMZhj/0IIXxW09u+AY=
+Authentication-Results: oracle.com; dkim=none (message not signed)
+ header.d=none;oracle.com; dmarc=none action=none header.from=silabs.com;
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
+ by SN6PR11MB2655.namprd11.prod.outlook.com (2603:10b6:805:62::33)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.22; Thu, 9 Jul
+ 2020 10:10:13 +0000
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::b412:798b:f6bd:3e6d]) by SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::b412:798b:f6bd:3e6d%5]) with mapi id 15.20.3174.022; Thu, 9 Jul 2020
+ 10:10:13 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: dan.carpenter@oracle.com
+Subject: Re: [bug report] staging: wfx: load the firmware faster
+Date: Thu, 09 Jul 2020 12:09:12 +0200
+Message-ID: <1713581.OkoCJHJxr1@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <20200709092629.GA15532@mwanda>
+References: <20200709092629.GA15532@mwanda>
+X-ClientProxiedBy: PR2PR09CA0009.eurprd09.prod.outlook.com
+ (2603:10a6:101:16::21) To SN6PR11MB2718.namprd11.prod.outlook.com
+ (2603:10b6:805:63::18)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from pc-42.localnet (37.71.187.125) by
+ PR2PR09CA0009.eurprd09.prod.outlook.com (2603:10a6:101:16::21) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3174.20 via Frontend Transport; Thu, 9 Jul 2020 10:10:12 +0000
+X-Originating-IP: [37.71.187.125]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: bf2a6b9e-ab6d-4ea8-07a8-08d823f04511
+X-MS-TrafficTypeDiagnostic: SN6PR11MB2655:
+X-Microsoft-Antispam-PRVS: <SN6PR11MB2655AFCA333A024BCB171BC393640@SN6PR11MB2655.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: S/7RVkT2H/b8wCLApVFTiMW5wPn841MK+NrteIDf9PnjLh1rIKl74qdse/UmhBF2x3YUvZzS59Z6wTlAbspBvGscqyawstasjQV5o+WyxkApVyXY/4C0Fgn44zF5tI6yIiBdejIEmoqH1tCVGDSKWZ+hfHwhFnN3frXE4jFWuE5IYv3f+kkXvOPSzxI4GPJiP4fPoeWcrnKcOwtb1spqWuKnfUrxdslAlZVWShCd4CptLk3DE7VkBgEUPABEqWvuSzG4xIvWf7y831e5pf0LpfQowaM771n9UfB5Bao58bod9jr3OH43ShMEMyk2/RcBEjTE8TyG0FCpTigyz0TXDAlOHb6Q8jh4aX35xJthCIL62zY0m99RRKn/H7+JEyquyY3o6xMLXomKMQfVnA0wJg9Ug3yHHPzHo1+6bwdoQyb0pX5nzPVTL3t8n1qDe/j3QcSJO0YsCKfxV2bT5u63Yw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(366004)(396003)(376002)(136003)(39860400002)(346002)(478600001)(26005)(4326008)(966005)(86362001)(52116002)(6916009)(956004)(2906002)(186003)(16526019)(83380400001)(6506007)(66574015)(4744005)(33716001)(8936002)(8676002)(5660300002)(36916002)(316002)(66556008)(66946007)(66476007)(6486002)(9686003)(6512007)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: kM6JyLpJ3IwqRWsNSLrxlVk7jJdM35/fKCYl+nrhRJkc0c2lEtMVIJ/r55I4kSQ879DxtGpXToFrth/FHsV9XQqX9s/e1OlLdcDvOb+0w4nxkNkNQCd5561X/JLXD6uLLLoEoCvGsuARyZS3NMjdQC+Wgzq2JaoubS3FCnyBPlbOhPXjiNk1G5Gt+ccphY1vZ2kCoxaI+u7XCtHbpNvw9vK3EG2558f19phCC89OtYRk6iukNWfk1KpZ04caZ4L2NIFA1i6qTQW/LeVTO32xPjHDj8eTq3eZ4jxCc+QmvVqqwN6P0V49tFmk6UQjjHWH3ZTh1C+CpM1miruFtaiNCJmEZgvHjmHRHiADgPDSnTV7djlk6JbTbyTuXxTw6+WDJOPQ+eRVNa97N4Lu9xIs7kQaa3Pb6ZuCGAEHLjkxrbBRM/me3m5HbGYlrG5QUibdY8f1zVicxMfml4DBQuNxJdnRiX3mSVElZcZbdgkpYDQ=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bf2a6b9e-ab6d-4ea8-07a8-08d823f04511
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2020 10:10:13.2981 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: TqmdgMDpquowDoM55uZYk/owzsUoFJjAfFO6KQH4MW0xMBcTWuSaZBNa5+Aly7QtvCIKRpe9uWQMMogTXcqT8w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2655
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -132,57 +112,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, "kernel@puri.sm" <kernel@puri.sm>,
- NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-hi linux-media people,
+On Thursday 9 July 2020 11:26:29 CEST dan.carpenter@oracle.com wrote:
+> Hello J=E9r=F4me Pouiller,
+> =
 
-TL-DR: when exactly is "sd->entity.function == MEDIA_ENT_F_VID_MUX"?
+> The patch a9408ad79ff3: "staging: wfx: load the firmware faster" from
+> Jul 1, 2020, leads to the following static checker warning:
+> =
+
+>         drivers/staging/wfx/fwio.c:192 upload_firmware()
+>         error: uninitialized symbol 'bytes_done'.
+
+Hello Dan,
+
+Colin has reacted faster:
+   https://lkml.org/lkml/2020/7/6/387
+
+BTW, I though gcc was able to detect that, but I didn't get any warning =
+
+on my side.
 
 
-I try to use the camera on our librem5-devkit (imx8mq): I try to use
-only mainline drivers except for "mxc-mipi-csi2_yav" taken from
-linux-imx (which we can prepare to submit if a PoC works. This is the
-tree I'm experimenting with:
+-- =
 
-https://source.puri.sm/martin.kepplinger/linux-next/-/commits/5.8-rc4/librem5___csi
+J=E9r=F4me Pouiller
 
-* "imx7-media-csi" / imx-media-capture / imx-media-utils currently in
-staging (that should work according to NXP)
-* ov5640 mainline driver
-* mxc-mipi-csi2_yav from NXP tree (linux-imx) with
-v4l2_subdev_video_ops' mipi_csis_g_parm and mipi_csis_s_parm callbacks
-removed (due to missing API in mainline)
 
-the drivers probe and run but the following fails when trying to use the
-camera (gstreamer):
-
-in imx-media-utils' imx_media_pipeline_set_stream() the call to
-v4l2_subdev_call(sd, video, s_stream, 1) returns with 32 (broken pipe)
-and thus the application that tries to use the camera too.
-
-One problem is definitely the trees' last commit (that I did as a
-workaround) in this tree that makes the drivers probe but only by
-ignoring this probably needed check:
-
-imx7-media-csi's imx7_csi_notify_bound() callback implementation gets
-called during startup. But if (WARN_ON(sd->entity.function !=
-MEDIA_ENT_F_VID_MUX)) is true so this is the wrong type of subdev (?).
-
-I just want to put this out there and check if the general approach is
-valid at all and if there's anything that comes to your mind.
-
-thanks a lot,
-                              martin
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
