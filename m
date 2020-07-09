@@ -1,78 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F0DA219DBA
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Jul 2020 12:28:13 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B5E2219DC0
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Jul 2020 12:28:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A8B32266B3;
-	Thu,  9 Jul 2020 10:28:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F0A1688C0B;
+	Thu,  9 Jul 2020 10:28:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C9U5lCqSXhmu; Thu,  9 Jul 2020 10:28:08 +0000 (UTC)
+	with ESMTP id gXkbwpmCscNJ; Thu,  9 Jul 2020 10:28:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0ECCD26AD9;
-	Thu,  9 Jul 2020 10:28:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 773DB88C0E;
+	Thu,  9 Jul 2020 10:28:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3A4BD1BF37C
- for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 10:28:04 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3262A1BF37C
+ for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 10:28:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 34646897D0
- for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 10:28:04 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2B8B120025
+ for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 10:28:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IUMwJ0c-cmxT for <devel@linuxdriverproject.org>;
- Thu,  9 Jul 2020 10:28:03 +0000 (UTC)
+ with ESMTP id sHxfpCu-zkUr for <devel@linuxdriverproject.org>;
+ Thu,  9 Jul 2020 10:28:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
- [209.85.216.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 69055896F8
- for <devel@driverdev.osuosl.org>; Thu,  9 Jul 2020 10:28:03 +0000 (UTC)
-Received: by mail-pj1-f68.google.com with SMTP id md7so919172pjb.1
- for <devel@driverdev.osuosl.org>; Thu, 09 Jul 2020 03:28:03 -0700 (PDT)
+Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
+ [209.85.216.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7A38F26B51
+ for <devel@driverdev.osuosl.org>; Thu,  9 Jul 2020 10:28:11 +0000 (UTC)
+Received: by mail-pj1-f65.google.com with SMTP id ch3so912445pjb.5
+ for <devel@driverdev.osuosl.org>; Thu, 09 Jul 2020 03:28:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=gMInGCJv+7mdmv/65/Ja8VjAfNFSxDzLB2atwsF/3Ag=;
- b=Dz6OiIF2irE2tFbqqWZ5zZLSGFdY8D649ohNXoDhXKIDKIpn3z9nUeU8i4Ylc8+YSV
- KqnCLHO6WPhkvMuWPm4+L0S+aNbMPF8bbV2CU6FCY5pmiK4fcn/GseNw/wwokRQ40rpD
- r2XpjzxHsGpRctNcMhohqc0pvC8IAztAJVWYNtD8Uh1cP64jcASqF6b9LeKpMQjC/iLU
- JAPsjLVDzrYcDnlaXhZJu9+NeqoXqNlVXX7t0YxP5B2zr89QNCacbQ9/SPxcLkE9T4I8
- 0xg6hdYVjp1xsEGLipzKJlbVxgP8+ysY5SywrZkKXUnL/p+tqitRBL+9eYtkHkAVpyez
- Mcjg==
+ bh=7sIbETW3uJnbzMUlyea9DImVmPFKh7zywB3W58k34fc=;
+ b=e+hQgyGWzv34cxToa3rNYDn1MJaWIkJvIZS6kKpZRu7K2+GCZW3Y3l9wRLDQ9mJRyO
+ 3n2AA0TTJX17zt+Q7hDSMr7t+do6N5D1cDWO1aqz+gWFRGo+b02fFcDuIxIOGr38bTgd
+ mArjpN6TZbwHuweba+qdIytGWqP/+hvcKDkIVXi7hXPKm9SGtBVyoe6aDIgU55pcZKCb
+ SaapVqS34QsLUzGzmAZOpInXskeaBxxEOjGOscw33aRq4oFDn/HDtcHUkdlAzK2jKb7m
+ Qld+9MlufiFn0GTdVkNMAPUppNOiy8kmBCj0+fibsbgPYQDbb8It+JjqoRZFs054kYzi
+ kB7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=gMInGCJv+7mdmv/65/Ja8VjAfNFSxDzLB2atwsF/3Ag=;
- b=eqwPg+CpWYLCNIeRUY6ZAnbxb+yDS9bjaFX3tY9eW/9/HhD1oD/rUClQ4XCebcZOKX
- p2TyfCX/O+bnSlF4SYgm6NAsaOau6OAnHfgOg/voyj9bRANajBSpnQO0qzL+9gPUB4xn
- wZIo012Ap5Cxh/5wYZ25Q9Hnzh2jeKU1t8c0zko4x7fj1F0frOT4yWC9fU1+nqN7ozHj
- pNDYlgh1Bx8kb1GxGTFc6Pw3Gq+M8KQ1AJO3mbsl06JR/VJSgHyLdcVRxl/+tSs0ojW4
- lEd1A1ikY+zzzT/QBypvtL7HvpddjgydARuD3B0Qk2uVBm+BwgTQDgWV4q4oNuVoYgOP
- tX2Q==
-X-Gm-Message-State: AOAM530xXXCpJpbhuAIZq7pZIwg8npibF+gZctYEArErOkVWnsElKs0A
- 8gW2fDldXqVVOl1PD3iVuQI=
-X-Google-Smtp-Source: ABdhPJwpPYUaljtRABdoWYH1y0DgwHOfq1d/rgZB1y5OsK7OARDbytOV9BczuAw6KbgZ0XvxQuwFng==
-X-Received: by 2002:a17:90b:3684:: with SMTP id
- mj4mr14751186pjb.66.1594290482901; 
- Thu, 09 Jul 2020 03:28:02 -0700 (PDT)
+ bh=7sIbETW3uJnbzMUlyea9DImVmPFKh7zywB3W58k34fc=;
+ b=Ct0ezt40oO0Eq74oAypATmXg8eOnPZt7PjIQle2bHMTyfKLGGz7/93iwKc3NtcwvY2
+ 6O5MlH05GJ6jee3KcWlznZ+K1faXCY0FAydj/QzhH3danGGdcOLrXl+14kQZu9kBILjL
+ hZTRKdqegMjgrHR6So9xFkTG/ru/w5xK4d+qVwSGbLS+FFuWsuzN/cxjOgBgWikQIwja
+ 7L2ZE9hY8H6+PAPTzfxDnBSWBU9617Iij7IIBywe5yNbfNHCfMKvzCN6HZCkBW30KmWp
+ 7cA2WoFN/GgvPuDtE9eS2XxtdEatEoVbfvY56NLNTGaMfZF6KAqKn3dtOY4fF1yrZz4/
+ WS9w==
+X-Gm-Message-State: AOAM532TjFEFnTl6tVMk2xC8Yciat5Pmy/w/eYyMB+BzeF7rOV9z6EAO
+ b/J4AlHYW65VaHwHYf+ulOo=
+X-Google-Smtp-Source: ABdhPJzhG+Pl9Q9GCF92OOHthDcS3VhET6Qilx0hb0VRCkoWmuuYaF8JtUZnAkHw1YF+04gM9teytg==
+X-Received: by 2002:a17:90a:324c:: with SMTP id
+ k70mr14963645pjb.18.1594290490957; 
+ Thu, 09 Jul 2020 03:28:10 -0700 (PDT)
 Received: from cvds-vagarw7.iind.intel.com ([192.55.54.40])
- by smtp.googlemail.com with ESMTPSA id y8sm2125163pju.49.2020.07.09.03.27.55
+ by smtp.googlemail.com with ESMTPSA id y8sm2125163pju.49.2020.07.09.03.28.03
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 09 Jul 2020 03:28:02 -0700 (PDT)
+ Thu, 09 Jul 2020 03:28:10 -0700 (PDT)
 From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Alex Elder <elder@kernel.org>, Johan Hovold <johan@kernel.org>,
  Mark Greer <mgreer@animalcreek.com>
-Subject: [PATCH v4 3/7] staging: greybus: audio: Resolve compilation errors
- for GB codec module
-Date: Thu,  9 Jul 2020 15:57:19 +0530
-Message-Id: <dd66a960fca186da055600fe1e622b7a814cb543.1594290158.git.vaibhav.sr@gmail.com>
+Subject: [PATCH v4 4/7] staging: greybus: audio: Resolve compilation error in
+ topology parser
+Date: Thu,  9 Jul 2020 15:57:20 +0530
+Message-Id: <2542330352ae1d01469a616ea45edb461615e072.1594290158.git.vaibhav.sr@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <cover.1594290158.git.vaibhav.sr@gmail.com>
 References: <cover.1594290158.git.vaibhav.sr@gmail.com>
@@ -98,271 +98,404 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Due to dependencies on ASoC framework changes, GB dummy codec module
-compilation is currently disabled. This patch updates codec driver as
-per the latest ASoC APIs.
+Fix compilation errors for GB Audio topology parser code with recent
+kernel versions.
 
 Signed-off-by: Vaibhav Agarwal <vaibhav.sr@gmail.com>
 Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 ---
- drivers/staging/greybus/audio_codec.c | 88 +++++++++++++--------------
- drivers/staging/greybus/audio_codec.h |  2 +-
- 2 files changed, 44 insertions(+), 46 deletions(-)
+ drivers/staging/greybus/audio_topology.c | 123 +++++++++++------------
+ 1 file changed, 57 insertions(+), 66 deletions(-)
 
-diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
-index 6dc4ee2bfb37..0ecdba27086b 100644
---- a/drivers/staging/greybus/audio_codec.c
-+++ b/drivers/staging/greybus/audio_codec.c
-@@ -825,7 +825,7 @@ static int gbaudio_init_jack(struct gbaudio_module_info *module,
- int gbaudio_register_module(struct gbaudio_module_info *module)
- {
- 	int ret;
--	struct snd_soc_codec *codec;
-+	struct snd_soc_component *comp;
- 	struct snd_card *card;
- 	struct gbaudio_jack *jack = NULL;
+diff --git a/drivers/staging/greybus/audio_topology.c b/drivers/staging/greybus/audio_topology.c
+index 4ac30accf226..ad88d3127a60 100644
+--- a/drivers/staging/greybus/audio_topology.c
++++ b/drivers/staging/greybus/audio_topology.c
+@@ -5,8 +5,8 @@
+  * Copyright 2015-2016 Linaro Ltd.
+  */
  
-@@ -834,8 +834,8 @@ int gbaudio_register_module(struct gbaudio_module_info *module)
- 		return -EAGAIN;
- 	}
++#include <linux/greybus.h>
+ #include "audio_codec.h"
+-#include "greybus_protocols.h"
  
--	codec = gbcodec->codec;
--	card = codec->card->snd_card;
-+	comp = gbcodec->component;
-+	card = comp->card->snd_card;
+ #define GBAUDIO_INVALID_ID	0xFF
  
- 	down_write(&card->controls_rwsem);
+@@ -165,15 +165,15 @@ static int gbcodec_mixer_ctl_info(struct snd_kcontrol *kcontrol,
+ 	struct gbaudio_ctl_pvt *data;
+ 	struct gb_audio_ctl_elem_info *info;
+ 	struct gbaudio_module_info *module;
+-	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
+-	struct gbaudio_codec_info *gbcodec = snd_soc_codec_get_drvdata(codec);
++	struct snd_soc_component *comp = snd_soc_kcontrol_component(kcontrol);
++	struct gbaudio_codec_info *gbcodec = snd_soc_component_get_drvdata(comp);
  
-@@ -847,33 +847,33 @@ int gbaudio_register_module(struct gbaudio_module_info *module)
+-	dev_dbg(codec->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
++	dev_dbg(comp->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
+ 	data = (struct gbaudio_ctl_pvt *)kcontrol->private_value;
+ 	info = (struct gb_audio_ctl_elem_info *)data->info;
+ 
+ 	if (!info) {
+-		dev_err(codec->dev, "NULL info for %s\n", uinfo->id.name);
++		dev_err(comp->dev, "NULL info for %s\n", uinfo->id.name);
  		return -EINVAL;
  	}
  
--	ret = gbaudio_init_jack(module, component->card);
-+	ret = gbaudio_init_jack(module, comp->card);
+@@ -201,7 +201,7 @@ static int gbcodec_mixer_ctl_info(struct snd_kcontrol *kcontrol,
+ 		strlcpy(uinfo->value.enumerated.name, name, NAME_SIZE);
+ 		break;
+ 	default:
+-		dev_err(codec->dev, "Invalid type: %d for %s:kcontrol\n",
++		dev_err(comp->dev, "Invalid type: %d for %s:kcontrol\n",
+ 			info->type, kcontrol->id.name);
+ 		break;
+ 	}
+@@ -216,11 +216,11 @@ static int gbcodec_mixer_ctl_get(struct snd_kcontrol *kcontrol,
+ 	struct gbaudio_ctl_pvt *data;
+ 	struct gb_audio_ctl_elem_value gbvalue;
+ 	struct gbaudio_module_info *module;
+-	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
+-	struct gbaudio_codec_info *gb = snd_soc_codec_get_drvdata(codec);
++	struct snd_soc_component *comp = snd_soc_kcontrol_component(kcontrol);
++	struct gbaudio_codec_info *gb = snd_soc_component_get_drvdata(comp);
+ 	struct gb_bundle *bundle;
+ 
+-	dev_dbg(codec->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
++	dev_dbg(comp->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
+ 	module = find_gb_module(gb, kcontrol->id.name);
+ 	if (!module)
+ 		return -EINVAL;
+@@ -239,7 +239,7 @@ static int gbcodec_mixer_ctl_get(struct snd_kcontrol *kcontrol,
+ 	gb_pm_runtime_put_autosuspend(bundle);
+ 
  	if (ret) {
- 		up_write(&card->controls_rwsem);
+-		dev_err_ratelimited(codec->dev, "%d:Error in %s for %s\n", ret,
++		dev_err_ratelimited(comp->dev, "%d:Error in %s for %s\n", ret,
+ 				    __func__, kcontrol->id.name);
  		return ret;
  	}
+@@ -262,7 +262,7 @@ static int gbcodec_mixer_ctl_get(struct snd_kcontrol *kcontrol,
+ 				le32_to_cpu(gbvalue.value.enumerated_item[1]);
+ 		break;
+ 	default:
+-		dev_err(codec->dev, "Invalid type: %d for %s:kcontrol\n",
++		dev_err(comp->dev, "Invalid type: %d for %s:kcontrol\n",
+ 			info->type, kcontrol->id.name);
+ 		ret = -EINVAL;
+ 		break;
+@@ -278,11 +278,11 @@ static int gbcodec_mixer_ctl_put(struct snd_kcontrol *kcontrol,
+ 	struct gbaudio_ctl_pvt *data;
+ 	struct gb_audio_ctl_elem_value gbvalue;
+ 	struct gbaudio_module_info *module;
+-	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
+-	struct gbaudio_codec_info *gb = snd_soc_codec_get_drvdata(codec);
++	struct snd_soc_component *comp = snd_soc_kcontrol_component(kcontrol);
++	struct gbaudio_codec_info *gb = snd_soc_component_get_drvdata(comp);
+ 	struct gb_bundle *bundle;
  
- 	if (module->dapm_widgets)
--		snd_soc_dapm_new_controls(&codec->dapm, module->dapm_widgets,
-+		snd_soc_dapm_new_controls(&comp->dapm, module->dapm_widgets,
- 					  module->num_dapm_widgets);
- 	if (module->controls)
--		snd_soc_add_codec_controls(codec, module->controls,
--					   module->num_controls);
-+		snd_soc_add_component_controls(comp, module->controls,
-+					       module->num_controls);
- 	if (module->dapm_routes)
--		snd_soc_dapm_add_routes(&codec->dapm, module->dapm_routes,
-+		snd_soc_dapm_add_routes(&comp->dapm, module->dapm_routes,
- 					module->num_dapm_routes);
+-	dev_dbg(codec->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
++	dev_dbg(comp->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
+ 	module = find_gb_module(gb, kcontrol->id.name);
+ 	if (!module)
+ 		return -EINVAL;
+@@ -309,7 +309,7 @@ static int gbcodec_mixer_ctl_put(struct snd_kcontrol *kcontrol,
+ 				cpu_to_le32(ucontrol->value.enumerated.item[1]);
+ 		break;
+ 	default:
+-		dev_err(codec->dev, "Invalid type: %d for %s:kcontrol\n",
++		dev_err(comp->dev, "Invalid type: %d for %s:kcontrol\n",
+ 			info->type, kcontrol->id.name);
+ 		ret = -EINVAL;
+ 		break;
+@@ -328,7 +328,7 @@ static int gbcodec_mixer_ctl_put(struct snd_kcontrol *kcontrol,
+ 	gb_pm_runtime_put_autosuspend(bundle);
  
- 	/* card already instantiated, create widgets here only */
--	if (codec->card->instantiated) {
--		snd_soc_dapm_link_component_dai_widgets(codec->card,
--							&codec->dapm);
-+	if (comp->card->instantiated) {
-+		snd_soc_dapm_link_component_dai_widgets(comp->card,
-+							&comp->dapm);
- #ifdef CONFIG_SND_JACK
- 		/*
- 		 * register jack devices for this module
- 		 * from codec->jack_list
- 		 */
- 		list_for_each_entry(jack, &module->jack_list, list) {
--			snd_device_register(codec->card->snd_card,
-+			snd_device_register(comp->card->snd_card,
- 					    jack->jack.jack);
- 		}
- #endif
-@@ -883,9 +883,9 @@ int gbaudio_register_module(struct gbaudio_module_info *module)
- 	list_add(&module->list, &gbcodec->module_list);
- 	mutex_unlock(&gbcodec->lock);
- 
--	if (codec->card->instantiated)
--		ret = snd_soc_dapm_new_widgets(&codec->dapm);
--	dev_dbg(codec->dev, "Registered %s module\n", module->name);
-+	if (comp->card->instantiated)
-+		ret = snd_soc_dapm_new_widgets(comp->card);
-+	dev_dbg(comp->dev, "Registered %s module\n", module->name);
- 
- 	up_write(&card->controls_rwsem);
- 	return ret;
-@@ -956,18 +956,18 @@ static void gbaudio_codec_cleanup(struct gbaudio_module_info *module)
- 
- void gbaudio_unregister_module(struct gbaudio_module_info *module)
- {
--	struct snd_soc_codec *codec = gbcodec->codec;
--	struct snd_card *card = codec->card->snd_card;
-+	struct snd_soc_component *comp = gbcodec->component;
-+	struct snd_card *card = comp->card->snd_card;
- 	struct gbaudio_jack *jack, *n;
- 	int mask;
- 
--	dev_dbg(codec->dev, "Unregister %s module\n", module->name);
-+	dev_dbg(comp->dev, "Unregister %s module\n", module->name);
- 
- 	down_write(&card->controls_rwsem);
- 	mutex_lock(&gbcodec->lock);
- 	gbaudio_codec_cleanup(module);
- 	list_del(&module->list);
--	dev_dbg(codec->dev, "Process Unregister %s module\n", module->name);
-+	dev_dbg(comp->dev, "Process Unregister %s module\n", module->name);
- 	mutex_unlock(&gbcodec->lock);
- 
- #ifdef CONFIG_SND_JACK
-@@ -983,99 +983,97 @@ void gbaudio_unregister_module(struct gbaudio_module_info *module)
- 			dev_dbg(module->dev, "Report %s removal\n",
- 				jack->jack.jack->id);
- 			snd_soc_jack_report(&jack->jack, 0, mask);
--			snd_device_free(codec->card->snd_card, jack->jack.jack);
-+			snd_device_free(comp->card->snd_card,
-+					jack->jack.jack);
- 			list_del(&jack->list);
- 		}
- 	}
- #endif
- 
- 	if (module->dapm_routes) {
--		dev_dbg(codec->dev, "Removing %d routes\n",
-+		dev_dbg(comp->dev, "Removing %d routes\n",
- 			module->num_dapm_routes);
--		snd_soc_dapm_del_routes(&codec->dapm, module->dapm_routes,
-+		snd_soc_dapm_del_routes(&comp->dapm, module->dapm_routes,
- 					module->num_dapm_routes);
- 	}
- 	if (module->controls) {
--		dev_dbg(codec->dev, "Removing %d controls\n",
-+		dev_dbg(comp->dev, "Removing %d controls\n",
- 			module->num_controls);
--		snd_soc_remove_codec_controls(codec, module->controls,
-+		snd_soc_remove_codec_controls(comp, module->controls,
- 					      module->num_controls);
- 	}
- 	if (module->dapm_widgets) {
--		dev_dbg(codec->dev, "Removing %d widgets\n",
-+		dev_dbg(comp->dev, "Removing %d widgets\n",
- 			module->num_dapm_widgets);
--		snd_soc_dapm_free_controls(&codec->dapm, module->dapm_widgets,
-+		snd_soc_dapm_free_controls(&comp->dapm, module->dapm_widgets,
- 					   module->num_dapm_widgets);
+ 	if (ret) {
+-		dev_err_ratelimited(codec->dev, "%d:Error in %s for %s\n", ret,
++		dev_err_ratelimited(comp->dev, "%d:Error in %s for %s\n", ret,
+ 				    __func__, kcontrol->id.name);
  	}
  
--	dev_dbg(codec->dev, "Unregistered %s module\n", module->name);
-+	dev_dbg(comp->dev, "Unregistered %s module\n", module->name);
+@@ -352,11 +352,7 @@ static int gbcodec_mixer_dapm_ctl_info(struct snd_kcontrol *kcontrol,
+ 	int platform_max, platform_min;
+ 	struct gbaudio_ctl_pvt *data;
+ 	struct gb_audio_ctl_elem_info *info;
+-	struct snd_soc_dapm_widget_list *wlist = snd_kcontrol_chip(kcontrol);
+-	struct snd_soc_dapm_widget *widget = wlist->widgets[0];
+-	struct snd_soc_codec *codec = widget->codec;
  
- 	up_write(&card->controls_rwsem);
- }
- EXPORT_SYMBOL(gbaudio_unregister_module);
+-	dev_dbg(codec->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
+ 	data = (struct gbaudio_ctl_pvt *)kcontrol->private_value;
+ 	info = (struct gb_audio_ctl_elem_info *)data->info;
  
- /*
-- * codec driver ops
-+ * component driver ops
-  */
--static int gbcodec_probe(struct snd_soc_codec *codec)
-+static int gbcodec_probe(struct snd_soc_component *comp)
- {
- 	int i;
- 	struct gbaudio_codec_info *info;
- 	struct gbaudio_codec_dai *dai;
+@@ -387,11 +383,11 @@ static int gbcodec_mixer_dapm_ctl_get(struct snd_kcontrol *kcontrol,
+ 	struct gbaudio_module_info *module;
+ 	struct snd_soc_dapm_widget_list *wlist = snd_kcontrol_chip(kcontrol);
+ 	struct snd_soc_dapm_widget *widget = wlist->widgets[0];
+-	struct snd_soc_codec *codec = widget->codec;
+-	struct gbaudio_codec_info *gb = snd_soc_codec_get_drvdata(codec);
++	struct device *codec_dev = widget->dapm->dev;
++	struct gbaudio_codec_info *gb = dev_get_drvdata(codec_dev);
+ 	struct gb_bundle *bundle;
  
--	info = devm_kzalloc(codec->dev, sizeof(*info), GFP_KERNEL);
-+	info = devm_kzalloc(comp->dev, sizeof(*info), GFP_KERNEL);
- 	if (!info)
- 		return -ENOMEM;
+-	dev_dbg(codec->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
++	dev_dbg(codec_dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
+ 	module = find_gb_module(gb, kcontrol->id.name);
+ 	if (!module)
+ 		return -EINVAL;
+@@ -415,7 +411,7 @@ static int gbcodec_mixer_dapm_ctl_get(struct snd_kcontrol *kcontrol,
+ 	gb_pm_runtime_put_autosuspend(bundle);
  
--	info->dev = codec->dev;
-+	info->dev = comp->dev;
- 	INIT_LIST_HEAD(&info->module_list);
- 	mutex_init(&info->lock);
- 	INIT_LIST_HEAD(&info->dai_list);
- 
- 	/* init dai_list used to maintain runtime stream info */
- 	for (i = 0; i < ARRAY_SIZE(gbaudio_dai); i++) {
--		dai = devm_kzalloc(codec->dev, sizeof(*dai), GFP_KERNEL);
-+		dai = devm_kzalloc(comp->dev, sizeof(*dai), GFP_KERNEL);
- 		if (!dai)
- 			return -ENOMEM;
- 		dai->id = gbaudio_dai[i].id;
- 		list_add(&dai->list, &info->dai_list);
+ 	if (ret) {
+-		dev_err_ratelimited(codec->dev, "%d:Error in %s for %s\n", ret,
++		dev_err_ratelimited(codec_dev, "%d:Error in %s for %s\n", ret,
+ 				    __func__, kcontrol->id.name);
+ 		return ret;
  	}
+@@ -437,11 +433,11 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 	struct gbaudio_module_info *module;
+ 	struct snd_soc_dapm_widget_list *wlist = snd_kcontrol_chip(kcontrol);
+ 	struct snd_soc_dapm_widget *widget = wlist->widgets[0];
+-	struct snd_soc_codec *codec = widget->codec;
+-	struct gbaudio_codec_info *gb = snd_soc_codec_get_drvdata(codec);
++	struct device *codec_dev = widget->dapm->dev;
++	struct gbaudio_codec_info *gb = dev_get_drvdata(codec_dev);
+ 	struct gb_bundle *bundle;
  
--	info->codec = codec;
--	snd_soc_codec_set_drvdata(codec, info);
-+	info->component = comp;
-+	snd_soc_component_set_drvdata(comp, info);
- 	gbcodec = info;
- 
--	device_init_wakeup(codec->dev, 1);
-+	device_init_wakeup(comp->dev, 1);
- 	return 0;
- }
- 
--static int gbcodec_remove(struct snd_soc_codec *codec)
-+static void gbcodec_remove(struct snd_soc_component *comp)
- {
- 	/* Empty function for now */
--	return 0;
-+	return;
- }
- 
--static int gbcodec_write(struct snd_soc_codec *codec, unsigned int reg,
-+static int gbcodec_write(struct snd_soc_component *comp, unsigned int reg,
- 			 unsigned int value)
- {
- 	return 0;
- }
- 
--static unsigned int gbcodec_read(struct snd_soc_codec *codec,
-+static unsigned int gbcodec_read(struct snd_soc_component *comp,
- 				 unsigned int reg)
- {
- 	return 0;
- }
- 
--static struct snd_soc_codec_driver soc_codec_dev_gbaudio = {
-+static const struct snd_soc_component_driver soc_codec_dev_gbaudio = {
- 	.probe	= gbcodec_probe,
- 	.remove	= gbcodec_remove,
- 
- 	.read = gbcodec_read,
- 	.write = gbcodec_write,
+-	dev_dbg(codec->dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
++	dev_dbg(codec_dev, "Entered %s:%s\n", __func__, kcontrol->id.name);
+ 	module = find_gb_module(gb, kcontrol->id.name);
+ 	if (!module)
+ 		return -EINVAL;
+@@ -464,11 +460,8 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 	if (gbvalue.value.integer_value[0] != val) {
+ 		for (wi = 0; wi < wlist->num_widgets; wi++) {
+ 			widget = wlist->widgets[wi];
 -
--	.idle_bias_off = true,
--	.ignore_pmdown_time = 1,
- };
+-			widget->value = val;
+-			widget->dapm->update = NULL;
+-			snd_soc_dapm_mixer_update_power(widget, kcontrol,
+-							connect);
++			snd_soc_dapm_mixer_update_power(widget->dapm, kcontrol,
++							connect, NULL);
+ 		}
+ 		gbvalue.value.integer_value[0] =
+ 			cpu_to_le32(ucontrol->value.integer.value[0]);
+@@ -484,7 +477,7 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 		gb_pm_runtime_put_autosuspend(bundle);
  
- #ifdef CONFIG_PM
-@@ -1099,13 +1097,13 @@ static const struct dev_pm_ops gbaudio_codec_pm_ops = {
- 
- static int gbaudio_codec_probe(struct platform_device *pdev)
+ 		if (ret) {
+-			dev_err_ratelimited(codec->dev,
++			dev_err_ratelimited(codec_dev,
+ 					    "%d:Error in %s for %s\n", ret,
+ 					    __func__, kcontrol->id.name);
+ 			return ret;
+@@ -553,11 +546,11 @@ static int gbcodec_enum_ctl_get(struct snd_kcontrol *kcontrol,
+ 				struct snd_ctl_elem_value *ucontrol)
  {
--	return snd_soc_register_codec(&pdev->dev, &soc_codec_dev_gbaudio,
-+	return devm_snd_soc_register_component(&pdev->dev,
-+			&soc_codec_dev_gbaudio,
- 			gbaudio_dai, ARRAY_SIZE(gbaudio_dai));
- }
+ 	int ret, ctl_id;
+-	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
++	struct snd_soc_component *comp = snd_soc_kcontrol_component(kcontrol);
++	struct gbaudio_codec_info *gb = snd_soc_component_get_drvdata(comp);
+ 	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
+ 	struct gb_audio_ctl_elem_value gbvalue;
+ 	struct gbaudio_module_info *module;
+-	struct gbaudio_codec_info *gb = snd_soc_codec_get_drvdata(codec);
+ 	struct gb_bundle *bundle;
  
- static int gbaudio_codec_remove(struct platform_device *pdev)
+ 	module = find_gb_module(gb, kcontrol->id.name);
+@@ -580,7 +573,7 @@ static int gbcodec_enum_ctl_get(struct snd_kcontrol *kcontrol,
+ 	gb_pm_runtime_put_autosuspend(bundle);
+ 
+ 	if (ret) {
+-		dev_err_ratelimited(codec->dev, "%d:Error in %s for %s\n", ret,
++		dev_err_ratelimited(comp->dev, "%d:Error in %s for %s\n", ret,
+ 				    __func__, kcontrol->id.name);
+ 		return ret;
+ 	}
+@@ -598,11 +591,11 @@ static int gbcodec_enum_ctl_put(struct snd_kcontrol *kcontrol,
+ 				struct snd_ctl_elem_value *ucontrol)
  {
--	snd_soc_unregister_codec(&pdev->dev);
- 	return 0;
- }
+ 	int ret, ctl_id;
+-	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
++	struct snd_soc_component *comp = snd_soc_kcontrol_component(kcontrol);
++	struct gbaudio_codec_info *gb = snd_soc_component_get_drvdata(comp);
+ 	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
+ 	struct gb_audio_ctl_elem_value gbvalue;
+ 	struct gbaudio_module_info *module;
+-	struct gbaudio_codec_info *gb = snd_soc_codec_get_drvdata(codec);
+ 	struct gb_bundle *bundle;
  
-diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
-index af9195eceb3a..ce15e800e607 100644
---- a/drivers/staging/greybus/audio_codec.h
-+++ b/drivers/staging/greybus/audio_codec.h
-@@ -66,7 +66,7 @@ struct gbaudio_codec_dai {
+ 	module = find_gb_module(gb, kcontrol->id.name);
+@@ -613,13 +606,13 @@ static int gbcodec_enum_ctl_put(struct snd_kcontrol *kcontrol,
+ 	if (ctl_id < 0)
+ 		return -EINVAL;
  
- struct gbaudio_codec_info {
- 	struct device *dev;
--	struct snd_soc_codec *codec;
-+	struct snd_soc_component *component;
- 	struct list_head module_list;
- 	/* to maintain runtime stream params for each DAI */
- 	struct list_head dai_list;
+-	if (ucontrol->value.enumerated.item[0] > e->max - 1)
++	if (ucontrol->value.enumerated.item[0] > e->items - 1)
+ 		return -EINVAL;
+ 	gbvalue.value.enumerated_item[0] =
+ 		cpu_to_le32(ucontrol->value.enumerated.item[0]);
+ 
+ 	if (e->shift_l != e->shift_r) {
+-		if (ucontrol->value.enumerated.item[1] > e->max - 1)
++		if (ucontrol->value.enumerated.item[1] > e->items - 1)
+ 			return -EINVAL;
+ 		gbvalue.value.enumerated_item[1] =
+ 			cpu_to_le32(ucontrol->value.enumerated.item[1]);
+@@ -637,8 +630,8 @@ static int gbcodec_enum_ctl_put(struct snd_kcontrol *kcontrol,
+ 	gb_pm_runtime_put_autosuspend(bundle);
+ 
+ 	if (ret) {
+-		dev_err_ratelimited(codec->dev, "%d:Error in %s for %s\n", ret,
+-				    __func__, kcontrol->id.name);
++		dev_err_ratelimited(comp->dev, "%d:Error in %s for %s\n",
++				    ret, __func__, kcontrol->id.name);
+ 	}
+ 
+ 	return ret;
+@@ -659,13 +652,13 @@ static int gbaudio_tplg_create_enum_kctl(struct gbaudio_module_info *gb,
+ 	gb_enum = &ctl->info.value.enumerated;
+ 
+ 	/* since count=1, and reg is dummy */
+-	gbe->max = le32_to_cpu(gb_enum->items);
++	gbe->items = le32_to_cpu(gb_enum->items);
+ 	gbe->texts = gb_generate_enum_strings(gb, gb_enum);
+ 
+ 	/* debug enum info */
+-	dev_dbg(gb->dev, "Max:%d, name_length:%d\n", gbe->max,
++	dev_dbg(gb->dev, "Max:%d, name_length:%d\n", gbe->items,
+ 		le16_to_cpu(gb_enum->names_length));
+-	for (i = 0; i < gbe->max; i++)
++	for (i = 0; i < gbe->items; i++)
+ 		dev_dbg(gb->dev, "src[%d]: %s\n", i, gbe->texts[i]);
+ 
+ 	*kctl = (struct snd_kcontrol_new)
+@@ -720,8 +713,8 @@ static int gbcodec_enum_dapm_ctl_get(struct snd_kcontrol *kcontrol,
+ 	struct snd_soc_dapm_widget *widget = wlist->widgets[0];
+ 	struct gbaudio_module_info *module;
+ 	struct gb_audio_ctl_elem_value gbvalue;
+-	struct snd_soc_codec *codec = widget->codec;
+-	struct gbaudio_codec_info *gb = snd_soc_codec_get_drvdata(codec);
++	struct device *codec_dev = widget->dapm->dev;
++	struct gbaudio_codec_info *gb = dev_get_drvdata(codec_dev);
+ 	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
+ 	struct gb_bundle *bundle;
+ 
+@@ -745,7 +738,7 @@ static int gbcodec_enum_dapm_ctl_get(struct snd_kcontrol *kcontrol,
+ 	gb_pm_runtime_put_autosuspend(bundle);
+ 
+ 	if (ret) {
+-		dev_err_ratelimited(codec->dev, "%d:Error in %s for %s\n", ret,
++		dev_err_ratelimited(codec_dev, "%d:Error in %s for %s\n", ret,
+ 				    __func__, kcontrol->id.name);
+ 		return ret;
+ 	}
+@@ -768,12 +761,12 @@ static int gbcodec_enum_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 	struct snd_soc_dapm_widget *widget = wlist->widgets[0];
+ 	struct gb_audio_ctl_elem_value gbvalue;
+ 	struct gbaudio_module_info *module;
+-	struct snd_soc_codec *codec = widget->codec;
+-	struct gbaudio_codec_info *gb = snd_soc_codec_get_drvdata(codec);
++	struct device *codec_dev = widget->dapm->dev;
++	struct gbaudio_codec_info *gb = dev_get_drvdata(codec_dev);
+ 	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
+ 	struct gb_bundle *bundle;
+ 
+-	if (ucontrol->value.enumerated.item[0] > e->max - 1)
++	if (ucontrol->value.enumerated.item[0] > e->items - 1)
+ 		return -EINVAL;
+ 
+ 	module = find_gb_module(gb, kcontrol->id.name);
+@@ -797,7 +790,7 @@ static int gbcodec_enum_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 	gb_pm_runtime_put_autosuspend(bundle);
+ 
+ 	if (ret) {
+-		dev_err_ratelimited(codec->dev, "%d:Error in %s for %s\n", ret,
++		dev_err_ratelimited(codec_dev, "%d:Error in %s for %s\n", ret,
+ 				    __func__, kcontrol->id.name);
+ 		return ret;
+ 	}
+@@ -814,7 +807,7 @@ static int gbcodec_enum_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 	}
+ 
+ 	if (e->shift_l != e->shift_r) {
+-		if (ucontrol->value.enumerated.item[1] > e->max - 1)
++		if (ucontrol->value.enumerated.item[1] > e->items - 1)
+ 			return -EINVAL;
+ 		val |= ucontrol->value.enumerated.item[1] << e->shift_r;
+ 		mask |= e->mask << e->shift_r;
+@@ -837,16 +830,14 @@ static int gbcodec_enum_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 		gb_pm_runtime_put_autosuspend(bundle);
+ 
+ 		if (ret) {
+-			dev_err_ratelimited(codec->dev,
++			dev_err_ratelimited(codec_dev,
+ 					    "%d:Error in %s for %s\n", ret,
+ 					    __func__, kcontrol->id.name);
+ 		}
+ 		for (wi = 0; wi < wlist->num_widgets; wi++) {
+ 			widget = wlist->widgets[wi];
+-
+-			widget->value = val;
+-			widget->dapm->update = NULL;
+-			snd_soc_dapm_mux_update_power(widget, kcontrol, mux, e);
++			snd_soc_dapm_mux_update_power(widget->dapm, kcontrol,
++						      val, e, NULL);
+ 		}
+ 	}
+ 
+@@ -868,13 +859,13 @@ static int gbaudio_tplg_create_enum_ctl(struct gbaudio_module_info *gb,
+ 	gb_enum = &ctl->info.value.enumerated;
+ 
+ 	/* since count=1, and reg is dummy */
+-	gbe->max = le32_to_cpu(gb_enum->items);
++	gbe->items = le32_to_cpu(gb_enum->items);
+ 	gbe->texts = gb_generate_enum_strings(gb, gb_enum);
+ 
+ 	/* debug enum info */
+-	dev_dbg(gb->dev, "Max:%d, name_length:%d\n", gbe->max,
++	dev_dbg(gb->dev, "Max:%d, name_length:%d\n", gbe->items,
+ 		le16_to_cpu(gb_enum->names_length));
+-	for (i = 0; i < gbe->max; i++)
++	for (i = 0; i < gbe->items; i++)
+ 		dev_dbg(gb->dev, "src[%d]: %s\n", i, gbe->texts[i]);
+ 
+ 	*kctl = (struct snd_kcontrol_new)
+@@ -935,12 +926,12 @@ static int gbaudio_widget_event(struct snd_soc_dapm_widget *w,
+ {
+ 	int wid;
+ 	int ret;
+-	struct snd_soc_codec *codec = w->codec;
+-	struct gbaudio_codec_info *gbcodec = snd_soc_codec_get_drvdata(codec);
++	struct device *codec_dev = w->dapm->dev;
++	struct gbaudio_codec_info *gbcodec = dev_get_drvdata(codec_dev);
+ 	struct gbaudio_module_info *module;
+ 	struct gb_bundle *bundle;
+ 
+-	dev_dbg(codec->dev, "%s %s %d\n", __func__, w->name, event);
++	dev_dbg(codec_dev, "%s %s %d\n", __func__, w->name, event);
+ 
+ 	/* Find relevant module */
+ 	module = find_gb_module(gbcodec, w->name);
+@@ -950,7 +941,7 @@ static int gbaudio_widget_event(struct snd_soc_dapm_widget *w,
+ 	/* map name to widget id */
+ 	wid = gbaudio_map_widgetname(module, w->name);
+ 	if (wid < 0) {
+-		dev_err(codec->dev, "Invalid widget name:%s\n", w->name);
++		dev_err(codec_dev, "Invalid widget name:%s\n", w->name);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -973,7 +964,7 @@ static int gbaudio_widget_event(struct snd_soc_dapm_widget *w,
+ 		break;
+ 	}
+ 	if (ret)
+-		dev_err_ratelimited(codec->dev,
++		dev_err_ratelimited(codec_dev,
+ 				    "%d: widget, event:%d failed:%d\n", wid,
+ 				    event, ret);
+ 
 -- 
 2.27.0
 
