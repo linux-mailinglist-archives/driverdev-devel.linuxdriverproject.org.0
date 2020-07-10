@@ -1,67 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EC4921B440
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Jul 2020 13:47:32 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F0BA321BCF2
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Jul 2020 20:28:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3C5C0897C2;
-	Fri, 10 Jul 2020 11:47:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CED0A89C58;
+	Fri, 10 Jul 2020 18:28:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zusZa6pHnAOT; Fri, 10 Jul 2020 11:47:29 +0000 (UTC)
+	with ESMTP id xebyampSeovl; Fri, 10 Jul 2020 18:28:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D8966897AC;
-	Fri, 10 Jul 2020 11:47:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E8CFA89C53;
+	Fri, 10 Jul 2020 18:28:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9246E1BF319
- for <devel@linuxdriverproject.org>; Fri, 10 Jul 2020 11:47:26 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 599C61BF3E1
+ for <devel@linuxdriverproject.org>; Fri, 10 Jul 2020 18:28:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8EAE487521
- for <devel@linuxdriverproject.org>; Fri, 10 Jul 2020 11:47:26 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4731089C53
+ for <devel@linuxdriverproject.org>; Fri, 10 Jul 2020 18:28:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PuyN3BInZfk4 for <devel@linuxdriverproject.org>;
- Fri, 10 Jul 2020 11:47:25 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id 6N4MNA-nfJ8V for <devel@linuxdriverproject.org>;
+ Fri, 10 Jul 2020 18:28:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2CB50874DC
- for <devel@driverdev.osuosl.org>; Fri, 10 Jul 2020 11:47:25 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4438A89C52
+ for <devel@driverdev.osuosl.org>; Fri, 10 Jul 2020 18:28:16 +0000 (UTC)
+Received: from embeddedor (unknown [200.39.25.189])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6754220748;
- Fri, 10 Jul 2020 11:47:24 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2D42D2075D;
+ Fri, 10 Jul 2020 18:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1594381645;
- bh=aUbwxnhzldFAyuc22ri8g/HTDk1iwKiwpZ+hqPfkEHs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VibZTirQJPPjJ3rrQpdxKJ4MYdLx87y9kuzMC9NGruczENB+5AOjZpIgjhY3PS+/R
- Ag6paHYL9nM46UmUV26gCErmpI70+/pMalhu6hVRd0P+yrLK7U5BrpqRXxVzvjOdUD
- MVc0jTZFSJEK60uBjeFWGCrnv6HC77WEcYE0hg64=
-Date: Fri, 10 Jul 2020 13:47:30 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH] staging: android: ion: Skip sync if not mapped
-Message-ID: <20200710114730.GA1349359@kroah.com>
-References: <20200414134629.54567-1-orjan.eide@arm.com>
- <20200414141849.55654-1-orjan.eide@arm.com>
- <20200414142810.GA958163@kroah.com>
- <CALAqxLX-SUhHPH6ewt-s9cEMc8DtMTgXem=JruAkLofuJf1syg@mail.gmail.com>
- <20200416102508.GA820251@kroah.com>
- <20200420082207.ui7iyg7dsnred2vv@wittgenstein>
- <CALAqxLW-txNEqW=P_9VTxvOVu_fgpjzHHDbR5BhtpYwhg1SXgw@mail.gmail.com>
- <20200421080544.GA611314@kroah.com>
- <20200703070403.GB2221524@kroah.com>
- <CALAqxLUHT=CGNxffz+3G-bUNc2FM_TawDrymFN+S=ZiPcM9pkg@mail.gmail.com>
+ s=default; t=1594405696;
+ bh=znLxL7QxKrQnwkFsgsEFQvbCS0/u/STlDOmErC2vb38=;
+ h=Date:From:To:Cc:Subject:From;
+ b=RrL4eFoQQU5pUrPGbbtbsYS48NPO24Wmkdm9W+LOygckMHyzZ2xx84sGlIc7t7ktP
+ 27miComXyAVgz2Dqt3gKhBOgMM9VoPrZdfnhac6dEeI2aES04WsYJBkkzBL469GyMr
+ egg+AZ+92tD/5eRLJOP4URgfPIRyf8c+GH643QZk=
+Date: Fri, 10 Jul 2020 13:33:50 -0500
+From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: rts5208: Assign array_size() to a variable
+Message-ID: <20200710183350.GA8376@embeddedor>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CALAqxLUHT=CGNxffz+3G-bUNc2FM_TawDrymFN+S=ZiPcM9pkg@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,52 +63,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>, Laura Abbott <labbott@redhat.com>,
- Todd Kjos <tkjos@android.com>, Lecopzer Chen <lecopzer.chen@mediatek.com>,
- Arnd Bergmann <arnd@arndb.de>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- lkml <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Christian Brauner <christian.brauner@ubuntu.com>,
- Anders Pedersen <anders.pedersen@arm.com>,
- Joel Fernandes <joel@joelfernandes.org>,
- "Darren Hart \(VMware\)" <dvhart@infradead.org>,
- Laura Abbott <laura@labbott.name>, nd <nd@arm.com>,
- Martijn Coenen <maco@android.com>,
- =?iso-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>,
- Christian Brauner <christian@brauner.io>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jul 07, 2020 at 08:43:30PM -0700, John Stultz wrote:
-> On Fri, Jul 3, 2020 at 12:03 AM Greg Kroah-Hartman
-> <gregkh@linuxfoundation.org> wrote:
-> > On Tue, Apr 21, 2020 at 10:05:44AM +0200, Greg Kroah-Hartman wrote:
-> > > On Mon, Apr 20, 2020 at 01:03:39PM -0700, John Stultz wrote:
-> > > > The dmabuf heaps have been in an official kernel now for all of three
-> > > > weeks. So yea, we can "delete [ION] and see who even notices", but I
-> > > > worry that may seem a bit like contempt for the folks doing the work
-> > > > on transitioning over, which doesn't help getting them to participate
-> > > > within the community.
-> > >
-> > > But they aren't participating in the community today as no one is
-> > > touching the ion code.  So I fail to see how keeping a dead-end-version
-> > > of ion in the kernel tree really affects anyone these days.
-> >
-> > So, any thoughts here?  What's the timeline for ion being able to be
-> > removed that you are comfortable with?
-> 
-> Sorry for the slow reply.  So my earlier plan was to drop it after the next LTS?
+Assign array_size() to variable _size_ and use it in multiple places.
 
-Ok, fair enough, we can wait until January.
+This issue was found with the help of Coccinelle and, audited and fixed
+manually.
 
-thanks,
+Addresses-KSPP-ID: https://github.com/KSPP/linux/issues/83
+Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+---
+ drivers/staging/rts5208/rtsx_chip.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-greg k-h
+diff --git a/drivers/staging/rts5208/rtsx_chip.c b/drivers/staging/rts5208/rtsx_chip.c
+index c6f9375468eb..ee9ddc4eb94d 100644
+--- a/drivers/staging/rts5208/rtsx_chip.c
++++ b/drivers/staging/rts5208/rtsx_chip.c
+@@ -1440,6 +1440,7 @@ int rtsx_write_cfg_seq(struct rtsx_chip *chip, u8 func, u16 addr, u8 *buf,
+ 	u16 aligned_addr = addr - offset;
+ 	int dw_len, i, j;
+ 	int retval;
++	size_t size;
+ 
+ 	if (!buf)
+ 		return STATUS_NOMEM;
+@@ -1451,11 +1452,12 @@ int rtsx_write_cfg_seq(struct rtsx_chip *chip, u8 func, u16 addr, u8 *buf,
+ 
+ 	dev_dbg(rtsx_dev(chip), "dw_len = %d\n", dw_len);
+ 
+-	data = vzalloc(array_size(dw_len, 4));
++	size = array_size(dw_len, 4);
++	data = vzalloc(size);
+ 	if (!data)
+ 		return STATUS_NOMEM;
+ 
+-	mask = vzalloc(array_size(dw_len, 4));
++	mask = vzalloc(size);
+ 	if (!mask) {
+ 		vfree(data);
+ 		return STATUS_NOMEM;
+@@ -1471,10 +1473,8 @@ int rtsx_write_cfg_seq(struct rtsx_chip *chip, u8 func, u16 addr, u8 *buf,
+ 		}
+ 	}
+ 
+-	print_hex_dump_bytes(KBUILD_MODNAME ": ", DUMP_PREFIX_NONE, mask,
+-			     dw_len * 4);
+-	print_hex_dump_bytes(KBUILD_MODNAME ": ", DUMP_PREFIX_NONE, data,
+-			     dw_len * 4);
++	print_hex_dump_bytes(KBUILD_MODNAME ": ", DUMP_PREFIX_NONE, mask, size);
++	print_hex_dump_bytes(KBUILD_MODNAME ": ", DUMP_PREFIX_NONE, data, size);
+ 
+ 	for (i = 0; i < dw_len; i++) {
+ 		retval = rtsx_write_cfg_dw(chip, func, aligned_addr + i * 4,
+-- 
+2.27.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
