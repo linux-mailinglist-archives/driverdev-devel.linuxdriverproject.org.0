@@ -2,72 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D99BC21AAFC
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Jul 2020 00:54:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1470521AFAA
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Jul 2020 08:45:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A4B918989B;
-	Thu,  9 Jul 2020 22:54:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EFBEC89B50;
+	Fri, 10 Jul 2020 06:45:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TfhSIT-0F-QC; Thu,  9 Jul 2020 22:54:55 +0000 (UTC)
+	with ESMTP id 82aei+MCeluO; Fri, 10 Jul 2020 06:45:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C9CC48986A;
-	Thu,  9 Jul 2020 22:54:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5F4B78933D;
+	Fri, 10 Jul 2020 06:45:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7564C1BF310
- for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 22:54:53 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BCE6D1BF333
+ for <devel@linuxdriverproject.org>; Fri, 10 Jul 2020 06:45:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7206686DB2
- for <devel@linuxdriverproject.org>; Thu,  9 Jul 2020 22:54:53 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B82F78933D
+ for <devel@linuxdriverproject.org>; Fri, 10 Jul 2020 06:45:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4RN9xwJl4mF8 for <devel@linuxdriverproject.org>;
- Thu,  9 Jul 2020 22:54:52 +0000 (UTC)
+ with ESMTP id Amy4APPIwTDl for <devel@linuxdriverproject.org>;
+ Fri, 10 Jul 2020 06:45:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
- [209.85.208.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 103FF86BA1
- for <devel@driverdev.osuosl.org>; Thu,  9 Jul 2020 22:54:52 +0000 (UTC)
-Received: by mail-ed1-f66.google.com with SMTP id by13so3086051edb.11
- for <devel@driverdev.osuosl.org>; Thu, 09 Jul 2020 15:54:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=h3E9CmP5pzqqITk3EJ5pCRFF7120Umpn5DkCt3PZmyI=;
- b=oiAxobyVHtmcT1uDdRMJ5KCPYgiJcvwg0bT1wajNVARoK+DbSmJJH5GxohbU2nIXcM
- Md7jqXoAgG2YNCHynS+jYIxySL/eeY/W5eQ2bBGiSkR9ZLPebSPskM/5ojc9HlENFh7m
- ZY28rYsR19yHA+3606f8FYuhvf0kWd9VKB2VQI5iRidasRanhGt9foQatc3RxeUF2q5n
- 1aVv2B23MxyAfxPBr/YN1YDItdj/K45hkyB9lWfpYiZfBSjubtYSnVMNfCi6gSk9ju0P
- r6QBZRTmNEEhhPCz5z7twQtfxrWiWI3qT7jG4ZixRQXIgjBAxm4HLaiX+LX9dutby4d0
- jFcg==
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1D1A288DF2
+ for <devel@driverdev.osuosl.org>; Fri, 10 Jul 2020 06:45:37 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id 207so2123817pfu.3
+ for <devel@driverdev.osuosl.org>; Thu, 09 Jul 2020 23:45:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HJUQ2Pd7TJkImq79MbbmeRR4vOSl3IUThdPOJ2RuPkM=;
+ b=UYFps1qc9r4yUJciGWoc6eYA8p17nl0cKxmW5fNy55sBoKDNEy6mttr1/iezNHu2Ys
+ dSGM2vNXaEB60P3PSceO79MgqvVFSqlobE0EDna6S4jfOtTYszpaGxN02R2NLo08RF94
+ PCoq8LXIptWbC/T89YXodZjGubAkTp1PapvIY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=h3E9CmP5pzqqITk3EJ5pCRFF7120Umpn5DkCt3PZmyI=;
- b=mknTgs1gW/oP2n+EbOwhBSDaElvMT9mdamHLGRry0DkbzF5LVxBayzW6IRj0V89HGP
- FOtDF6OPcllk+9Gy1Ecp87btyRojDj0EC7mEwn8RNsnJQrLwMW0aVQ7BxNfbUDchNjRv
- xfCt33MeTB9MRJxuFRDQT0KSGZcRZ4pyyrgQm9AoEm5QF+u0lliS4p+hMJbYOY2xf2Bi
- WtXqwFfEc8tlfgYOlM3e80PgCPrwodvRJk+X0yphE4wWDNgS+rEq5WoI5vcbkelaPEyA
- AKVdOz96RQaOctseLMhMuyc3gn5SWtW79Y5B0BeBmjjF/r7b2Oxuqccf8DWzR4XWEG4V
- JeUw==
-X-Gm-Message-State: AOAM532fSOgdDYLiLaxHUYyDQp4SZg0ovLjAQc9vf22R5DzVE2alCfua
- eRPuaaG2u4QKvES0LS0Gq1dna9PEvAaYTw1pAwTRnQ==
-X-Google-Smtp-Source: ABdhPJz9uaSIXcnqe4UJG/4qyWvxlwUPgsKdudNjp8UAkBRNtmqP10AQmMtpHxhnQTomWWTQ1SKnxvYiDJCH0O5UzlM=
-X-Received: by 2002:a50:c355:: with SMTP id q21mr71840462edb.121.1594335290245; 
- Thu, 09 Jul 2020 15:54:50 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HJUQ2Pd7TJkImq79MbbmeRR4vOSl3IUThdPOJ2RuPkM=;
+ b=Br3sKSreeRFIUdCo4WduRUQxyMfPEeD2ruYN4SUUgk2iLbN+imK9seJlv2Fd+eaZZc
+ lMD3nlqcE1AHh0vhu0hMOhoPoZBCF7360NFYt01UMvV4Tz1aXwVNmxGGdl2Cv2W3G2Pl
+ jjIdh5Sv2wjrnBJWgX9eIF6sIphtM3jYawgHBViKp9RRHGqH1436LMUgWQHPbku7bvlT
+ S+vOl9xFkmdc7qKVGE+lS3aJdDfFOZXmdWUgJooOkLil2athzC0zYv+YOa80lnp1T9W1
+ QO68d4BvfQgLUUNbqLvfO2oCc/0XbtvJo3LL7WA3wrCaWLm07M1SduEqEiaf7A00r9Cw
+ iJGw==
+X-Gm-Message-State: AOAM533w76AjVscqLmlh1La+SsxkYnQ8o6/6N6TO66Iji3A668qZLAoU
+ MuHuY+p6Aga+WlrqSGmyidKPoA==
+X-Google-Smtp-Source: ABdhPJzM+mh9VDZS1ApjNT2oXZNIWcf2wPn7lRZ1OaFiAESlm/XJ5L+agLdQ2nCEk/plUCh78OX1oA==
+X-Received: by 2002:a62:5bc5:: with SMTP id p188mr64279447pfb.56.1594363536634; 
+ Thu, 09 Jul 2020 23:45:36 -0700 (PDT)
+Received: from drinkcat2.tpe.corp.google.com
+ ([2401:fa00:1:b:7220:84ff:fe09:41dc])
+ by smtp.gmail.com with ESMTPSA id e8sm4955029pfl.125.2020.07.09.23.45.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 09 Jul 2020 23:45:36 -0700 (PDT)
+From: Nicolas Boichat <drinkcat@chromium.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [RESEND PATCH] media: atomisp: Replace trace_printk by pr_info
+Date: Fri, 10 Jul 2020 14:45:29 +0800
+Message-Id: <20200710144520.RESEND.1.Id0f52f486e277b5af30babac8ba6b09589962a68@changeid>
+X-Mailer: git-send-email 2.27.0.383.g050319c2ae-goog
 MIME-Version: 1.0
-References: <20200709223948.1051613-1-jannh@google.com>
-In-Reply-To: <20200709223948.1051613-1-jannh@google.com>
-From: Todd Kjos <tkjos@google.com>
-Date: Thu, 9 Jul 2020 15:54:38 -0700
-Message-ID: <CAHRSSEwAZEgLKCYa-+uOB7xuNKs1z9gkr5PWCHLcKc1mZpcgoQ@mail.gmail.com>
-Subject: Re: [PATCH resend] binder: Prevent context manager from incrementing
- ref 0
-To: Jann Horn <jannh@google.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,111 +81,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Mattias Nissler <mnissler@google.com>, Joel Fernandes <joel@joelfernandes.org>,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
+Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@chromium.org>,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 9, 2020 at 3:40 PM Jann Horn <jannh@google.com> wrote:
->
-> Binder is designed such that a binder_proc never has references to
-> itself. If this rule is violated, memory corruption can occur when a
-> process sends a transaction to itself; see e.g.
-> <https://syzkaller.appspot.com/bug?extid=09e05aba06723a94d43d>.
->
-> There is a remaining edgecase through which such a transaction-to-self
-> can still occur from the context of a task with BINDER_SET_CONTEXT_MGR
-> access:
->
->  - task A opens /dev/binder twice, creating binder_proc instances P1
->    and P2
->  - P1 becomes context manager
->  - P2 calls ACQUIRE on the magic handle 0, allocating index 0 in its
->    handle table
->  - P1 dies (by closing the /dev/binder fd and waiting a bit)
->  - P2 becomes context manager
->  - P2 calls ACQUIRE on the magic handle 0, allocating index 1 in its
->    handle table
->    [this triggers a warning: "binder: 1974:1974 tried to acquire
->    reference to desc 0, got 1 instead"]
->  - task B opens /dev/binder once, creating binder_proc instance P3
->  - P3 calls P2 (via magic handle 0) with (void*)1 as argument (two-way
->    transaction)
->  - P2 receives the handle and uses it to call P3 (two-way transaction)
->  - P3 calls P2 (via magic handle 0) (two-way transaction)
->  - P2 calls P2 (via handle 1) (two-way transaction)
->
-> And then, if P2 does *NOT* accept the incoming transaction work, but
-> instead closes the binder fd, we get a crash.
->
-> Solve it by preventing the context manager from using ACQUIRE on ref 0.
-> There shouldn't be any legitimate reason for the context manager to do
-> that.
->
-> Additionally, print a warning if someone manages to find another way to
-> trigger a transaction-to-self bug in the future.
->
-> Cc: stable@vger.kernel.org
-> Fixes: 457b9a6f09f0 ("Staging: android: add binder driver")
-> Signed-off-by: Jann Horn <jannh@google.com>
+trace_printk should not be used in production code, replace it
+call with pr_info.
 
-Nice catch.
+Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+---
+Sent this before as part of a series (whose 4th patch was a
+change that allows to detect such trace_printk), but maybe it's
+easier to get individual maintainer attention by splitting it.
 
-Acked-by: Todd Kjos <tkjos@google.com>
+ drivers/staging/media/atomisp/pci/hmm/hmm.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-> ---
-> sending again because I forgot to CC LKML the first time... sorry about
-> the spam.
->
->  drivers/android/binder.c | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> index f50c5f182bb5..cac65ff3a257 100644
-> --- a/drivers/android/binder.c
-> +++ b/drivers/android/binder.c
-> @@ -2982,6 +2982,12 @@ static void binder_transaction(struct binder_proc *proc,
->                         goto err_dead_binder;
->                 }
->                 e->to_node = target_node->debug_id;
-> +               if (WARN_ON(proc == target_proc)) {
-> +                       return_error = BR_FAILED_REPLY;
-> +                       return_error_param = -EINVAL;
-> +                       return_error_line = __LINE__;
-> +                       goto err_invalid_target_handle;
-> +               }
->                 if (security_binder_transaction(proc->tsk,
->                                                 target_proc->tsk) < 0) {
->                         return_error = BR_FAILED_REPLY;
-> @@ -3635,10 +3641,16 @@ static int binder_thread_write(struct binder_proc *proc,
->                                 struct binder_node *ctx_mgr_node;
->                                 mutex_lock(&context->context_mgr_node_lock);
->                                 ctx_mgr_node = context->binder_context_mgr_node;
-> -                               if (ctx_mgr_node)
-> +                               if (ctx_mgr_node) {
-> +                                       if (ctx_mgr_node->proc == proc) {
-> +                                               binder_user_error("%d:%d context manager tried to acquire desc 0\n");
-> +                                               mutex_unlock(&context->context_mgr_node_lock);
-> +                                               return -EINVAL;
-> +                                       }
->                                         ret = binder_inc_ref_for_node(
->                                                         proc, ctx_mgr_node,
->                                                         strong, NULL, &rdata);
-> +                               }
->                                 mutex_unlock(&context->context_mgr_node_lock);
->                         }
->                         if (ret)
->
-> base-commit: 2a89b99f580371b86ae9bafd6cbeccd3bfab524a
-> --
-> 2.27.0.389.gc38d7665816-goog
->
+diff --git a/drivers/staging/media/atomisp/pci/hmm/hmm.c b/drivers/staging/media/atomisp/pci/hmm/hmm.c
+index 42fef17798622f1..2bd39b4939f16d2 100644
+--- a/drivers/staging/media/atomisp/pci/hmm/hmm.c
++++ b/drivers/staging/media/atomisp/pci/hmm/hmm.c
+@@ -735,11 +735,11 @@ ia_css_ptr hmm_host_vaddr_to_hrt_vaddr(const void *ptr)
+ 
+ void hmm_show_mem_stat(const char *func, const int line)
+ {
+-	trace_printk("tol_cnt=%d usr_size=%d res_size=%d res_cnt=%d sys_size=%d  dyc_thr=%d dyc_size=%d.\n",
+-		     hmm_mem_stat.tol_cnt,
+-		     hmm_mem_stat.usr_size, hmm_mem_stat.res_size,
+-		     hmm_mem_stat.res_cnt, hmm_mem_stat.sys_size,
+-		     hmm_mem_stat.dyc_thr, hmm_mem_stat.dyc_size);
++	pr_info("tol_cnt=%d usr_size=%d res_size=%d res_cnt=%d sys_size=%d  dyc_thr=%d dyc_size=%d.\n",
++		hmm_mem_stat.tol_cnt,
++		hmm_mem_stat.usr_size, hmm_mem_stat.res_size,
++		hmm_mem_stat.res_cnt, hmm_mem_stat.sys_size,
++		hmm_mem_stat.dyc_thr, hmm_mem_stat.dyc_size);
+ }
+ 
+ void hmm_init_mem_stat(int res_pgnr, int dyc_en, int dyc_pgnr)
+-- 
+2.27.0.383.g050319c2ae-goog
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
