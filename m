@@ -1,71 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D35921C341
-	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Jul 2020 11:10:55 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 598EA21C431
+	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Jul 2020 14:35:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7BE822154C;
-	Sat, 11 Jul 2020 09:10:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 470C6898E4;
+	Sat, 11 Jul 2020 12:35:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2TkuiprTFN-R; Sat, 11 Jul 2020 09:10:51 +0000 (UTC)
+	with ESMTP id 8+V5W-l-05eY; Sat, 11 Jul 2020 12:35:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B36C220405;
-	Sat, 11 Jul 2020 09:10:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B85E3897D6;
+	Sat, 11 Jul 2020 12:35:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B10431BF3BA
- for <devel@linuxdriverproject.org>; Sat, 11 Jul 2020 09:10:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DD5281BF573
+ for <devel@linuxdriverproject.org>; Sat, 11 Jul 2020 12:35:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A8FDA20405
- for <devel@linuxdriverproject.org>; Sat, 11 Jul 2020 09:10:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CD6E1204E0
+ for <devel@linuxdriverproject.org>; Sat, 11 Jul 2020 12:35:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mVyRlBgs5fWx for <devel@linuxdriverproject.org>;
- Sat, 11 Jul 2020 09:10:46 +0000 (UTC)
-X-Greylist: delayed 00:15:24 by SQLgrey-1.7.6
-Received: from sonic312-53.consmr.mail.bf2.yahoo.com
- (sonic312-53.consmr.mail.bf2.yahoo.com [74.6.128.115])
- by silver.osuosl.org (Postfix) with ESMTPS id CE1D520399
- for <devel@driverdev.osuosl.org>; Sat, 11 Jul 2020 09:10:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1594458644; bh=AEu8nK9QzTA2tbqo2l5BVwPShMs+2VsmLoZOZv6b3Lc=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=UkN5v1ppi0lZhY6hI2lYOX58kT6wJvZ6TmQAkluMDaWaPQvckhJ0npWFZqQcM/e7TVNZckVXNCCm/RgjwK2gD2R22DZv8XEA/JcFrZe6NOlis9NamkSYVBdL6aM4tiUgJ7icRJ2KeHwNLbpoxcJTBHQZckIlWcCncVxbfhj4n6InFRcLVPZaH0/FPcvtCLa/dDJEaQ5QxscmhBWJNh/lpXH6LZwVpodqwJorY++1MQTOR2cAcVMnfMHjdxusStirKjvoe1jSCTJugd+2QhlI+mFV4BzreIbeKoltj1u6PsUnHtw79whFM18xcyUCgRl0O/ThAfyl5nlcvuthbTYuNg==
-X-YMail-OSG: 7oJUZ4gVM1kxxJVO_pZZtRgK5.cfjo.RKs8P7Wpt2qG5rpmvX86i.GWSSBPyBB_
- bqxklRdkOSC6ldvTcCIwsgi2yZPR_pGic_SlSE.UCwDEUAPB.Jqx5PiWD08F95w9vwJfIAkSVllO
- 7itjaPH91UZY_4vd4bKnDQj9M0jjCuvDWKR1nOfi_7cPIQFslV1OFBFinKgDY6q1ZIgr9XYC.PMe
- 4SfVHVj1xkjCZUlX3AYkjRNmytBgFh5qzOrp1F_XJ3X_6anYTjVlGClDbV7rtcr1WBbZ9tKpPGiG
- iPitgfkqfClSgwKUWt9FNUmsveCyu6WgkW0VOM1hJFroGsmcRviZxftM9mPB3MH7hh4nlsJPNquM
- OxP9ct2InvOkj069Eu2NBmlyQYuwVOGBq4QC2EBMkJC5BerOT5mRzznVQW0Wssh4R9TgWSGHXCr2
- uT4.OAfCB5Eh9PJBSsYJkK70_OuXc5clQJOiUOW5YXMgsoAj1YvTWTVtakaGGW1KCJc9b.pv.o.Y
- SgX9OSYFhKT.Kq8eLadkrd85PG2KkCvyxvXrs08FkQF8jUGOdfpO6Sz0MedE3HSR8AMXVTNoEteA
- WGSsOJmUoU76eDU89_stUHoaQFLKzCcNWwGjWPTn4bKbQAZffiP.zDezegwtuAGgiLXXY8Qq2BzJ
- 6C7FBMHQ._XBuA497iRJ2EpHKQDYOqkhM6cfHwnpShRiWtrhHDKlSsigl_5_THiSC1dDuSFTG3ME
- 1JjSaWHnYQebA1UmdBBGoMtXbdg.Unr03kCAy6JYiOX8uBe.qzjSqXSDdNyJylu.g9ZtlYzqb_vr
- DMpsEnabJJYK4HSuuq0VLDselhIsWrUuHliDVNGjP4mm6iW7kB0z3gI.VQo2RhPetEZvI4uSFaow
- 66KD0Cq4xqebZr_uqojvIiNuI1EAKbsliU7PHNm3En3lViqSwq18bmirM4iIOv9._u6sTm.Xyq3e
- 0VaeMS3uCOJzhZ_Ce6XcBSB8YO6.SSSNe_ZXQ5BygxzfNbiO3VcvFzG4.VJsGlkiOaQts9.O6E9Q
- LFwZnN7dxG45px0x.aTqQil_1eKdVejHScMyDNb5R67c.Mkqhcj.arpKIia0F0yPdvzBUxo6GCFK
- Zm_pNIcer1s2Mqi03XljewkFvyAnehqABR.smX3zn9Oi6RxmpzVfDSwU2FkCbDUrPbvwkCcU8L9P
- mKiGC4qZtMFpUQxH3y6G4luRtPOWR90HYcJYSPl5VhSI.wkZiTMY4tcslEUUE2.2bIqXdj2ZacUD
- scqHclKyVsYHphTYiBLNiNMEZPr7ZcANSV0dldSnjhXq31yXtjFQXINwdTWobrucP_XmVJxtO0y5
- vuypibSBdWg9UEf68WveCFgUfCkI2GUlF
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic312.consmr.mail.bf2.yahoo.com with HTTP; Sat, 11 Jul 2020 09:10:44 +0000
-Date: Sat, 11 Jul 2020 08:39:41 +0000 (UTC)
-From: "Mrs. Maureen Hinckley" <mau37@hgvt.in>
-Message-ID: <1951584041.46322.1594456781742@mail.yahoo.com>
-Subject: RE
+ with ESMTP id 1Nci16LjWK-O for <devel@linuxdriverproject.org>;
+ Sat, 11 Jul 2020 12:35:49 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
+ [209.85.214.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id B59B020507
+ for <devel@driverdev.osuosl.org>; Sat, 11 Jul 2020 12:35:49 +0000 (UTC)
+Received: by mail-pl1-f193.google.com with SMTP id q17so3348023pls.9
+ for <devel@driverdev.osuosl.org>; Sat, 11 Jul 2020 05:35:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=36WcEQAUH1mKZZkQq7Ag/oNpXtMLgwjbol+RbIVU1ME=;
+ b=szfGIZb/K3Wsqmw1uVWSAPepQUrayVwnAQwtLFRXbVb8sJJ0/TutnVaczxzXRIRgPy
+ 7XDb3zLW88nICz7hS1VsY8g2jA2hnEgjzPgvMBmwsWeSGw57NuC/dytPw8HfTFyMAoCk
+ JsoK/vF7UZ1pVLupcJ1zmYH7FbP3JOttpmyZoC8aFF7kHDRiJtI1cxHUcNI/2yUZFuaA
+ 45MmS5uahTscYkCzsRYP9DRH+ouuFf9mnZsPSvQZM2eUWwLiYxLDYkPJLDhhne/sdqnX
+ x9TBPn0a3JYBduGG1kLt9W1a/VcBifv2Y8gV2zHHeAp9gmWHosCD7z753TeUR63mUHg1
+ Zg0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=36WcEQAUH1mKZZkQq7Ag/oNpXtMLgwjbol+RbIVU1ME=;
+ b=Q/T4oRHZSyRPNxSdiNusKwtnITl+N1NdxtZbXJ8eSmV8i3ZJWV1wBQW6ZfV1BwbfyD
+ JwbK6C/GLqkVQqdvX2kxZPj+xtDzz+nft1qYHywcUr8WNLjxbcRoy9KeoBzi2jGrjnZp
+ +XtwA4jmXKBKrSGTky33f9BzropW9IifZYHpez8QkUAqEBlN63VZ5ku0C5lJ3fe0clwm
+ hAKjkq1tOfcsqqOI/n/bZUrLgSR9YNfHBOmZooL6FnoNjik5TKnSvqmBIwpJW19ZVSLd
+ 7tFw2Q3fk/+q7oh7E9vWmIoOvwPvpP0Vnocna9f99Lb1KU5kLg0eynO0of7qzdpPfv2B
+ FDMg==
+X-Gm-Message-State: AOAM530JH+zpFLjklNvzbzyzIaG6VJUDXCFZF7aFDhVDP6MDVbq6do46
+ 6jcwsPO1W9yFA7kNCCwTY2NC80rZxa9jbw==
+X-Google-Smtp-Source: ABdhPJzcy7LYLPaz+ONUlYoEzAUwBeSvrHUypYHJNfM7aQFTO4/iqIhcXb5yOEYYYZWq/U12uHbWPA==
+X-Received: by 2002:a17:902:6acc:: with SMTP id
+ i12mr58265738plt.75.1594470949240; 
+ Sat, 11 Jul 2020 05:35:49 -0700 (PDT)
+Received: from blackclown ([103.88.82.158])
+ by smtp.gmail.com with ESMTPSA id b24sm8601682pgn.8.2020.07.11.05.35.46
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Sat, 11 Jul 2020 05:35:48 -0700 (PDT)
+Date: Sat, 11 Jul 2020 18:05:33 +0530
+From: Suraj Upadhyay <usuraj35@gmail.com>
+To: gregkh@linuxfoundation.org, abbotti@mev.co.uk, hsweeten@visionengravers.com
+Subject: [PATCH] staging: comedi: s626: Remove pci-dma-compat wrapper APIs.
+Message-ID: <20200711123533.GA15038@blackclown>
 MIME-Version: 1.0
-References: <1951584041.46322.1594456781742.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16271 YMailNodin Mozilla/5.0 (Windows NT 10.0; Win64;
- x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138
- Safari/537.36
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,17 +83,202 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: maurhinck8@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============3683742441835575237=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgpJIGFtIE1hdXJlZW4gSGluY2tsZXkgYW5kIG15IGZvdW5kYXRpb24gaXMgZG9uYXRpbmcgKEZp
-dmUgaHVuZHJlZCBhbmQgZmlmdHkgdGhvdXNhbmQgVVNEKSB0byB5b3UuIENvbnRhY3QgdXMgdmlh
-IG15IGVtYWlsIGF0IChtYXVyaGluY2s4QGdtYWlsLmNvbSkgZm9yIGZ1cnRoZXIgZGV0YWlscy4K
-CkJlc3QgUmVnYXJkcywKTXJzLiBNYXVyZWVuIEhpbmNrbGV5LApDb3B5cmlnaHQgwqkyMDIwIFRo
-ZSBNYXVyZWVuIEhpbmNrbGV5IEZvdW5kYXRpb24gQWxsIFJpZ2h0cyBSZXNlcnZlZC4KX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBs
-aXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRy
-aXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+
+--===============3683742441835575237==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="6c2NcOVqGQ03X4Wi"
+Content-Disposition: inline
+
+
+--6c2NcOVqGQ03X4Wi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+The legacy API wrappers in include/linux/pci-dma-compat.h
+should go away as it creates unnecessary midlayering
+for include/linux/dma-mapping.h APIs, instead use dma-mapping.h
+APIs directly.
+
+The patch has been generated with the coccinelle script below
+and compile-tested.
+
+@@@@
+- PCI_DMA_BIDIRECTIONAL
++ DMA_BIDIRECTIONAL
+
+@@@@
+- PCI_DMA_TODEVICE
++ DMA_TO_DEVICE
+
+@@@@
+- PCI_DMA_FROMDEVICE
++ DMA_FROM_DEVICE
+
+@@@@
+- PCI_DMA_NONE
++ DMA_NONE
+
+@@ expression E1, E2, E3; @@
+- pci_alloc_consistent(E1, E2, E3)
++ dma_alloc_coherent(&E1->dev, E2, E3, GFP_ATOMIC)
+
+@@ expression E1, E2, E3; @@
+- pci_zalloc_consistent(E1, E2, E3)
++ dma_alloc_coherent(&E1->dev, E2, E3, GFP_ATOMIC)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_free_consistent(E1, E2, E3, E4)
++ dma_free_coherent(&E1->dev, E2, E3, E4)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_map_single(E1, E2, E3, E4)
++ dma_map_single(&E1->dev, E2, E3, (enum dma_data_direction)E4)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_unmap_single(E1, E2, E3, E4)
++ dma_unmap_single(&E1->dev, E2, E3, (enum dma_data_direction)E4)
+
+@@ expression E1, E2, E3, E4, E5; @@
+- pci_map_page(E1, E2, E3, E4, E5)
++ dma_map_page(&E1->dev, E2, E3, E4, (enum dma_data_direction)E5)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_unmap_page(E1, E2, E3, E4)
++ dma_unmap_page(&E1->dev, E2, E3, (enum dma_data_direction)E4)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_map_sg(E1, E2, E3, E4)
++ dma_map_sg(&E1->dev, E2, E3, (enum dma_data_direction)E4)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_unmap_sg(E1, E2, E3, E4)
++ dma_unmap_sg(&E1->dev, E2, E3, (enum dma_data_direction)E4)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_dma_sync_single_for_cpu(E1, E2, E3, E4)
++ dma_sync_single_for_cpu(&E1->dev, E2, E3, (enum dma_data_direction)E4)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_dma_sync_single_for_device(E1, E2, E3, E4)
++ dma_sync_single_for_device(&E1->dev, E2, E3, (enum dma_data_direction)E4)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_dma_sync_sg_for_cpu(E1, E2, E3, E4)
++ dma_sync_sg_for_cpu(&E1->dev, E2, E3, (enum dma_data_direction)E4)
+
+@@ expression E1, E2, E3, E4; @@
+- pci_dma_sync_sg_for_device(E1, E2, E3, E4)
++ dma_sync_sg_for_device(&E1->dev, E2, E3, (enum dma_data_direction)E4)
+
+@@ expression E1, E2; @@
+- pci_dma_mapping_error(E1, E2)
++ dma_mapping_error(&E1->dev, E2)
+
+@@ expression E1, E2; @@
+- pci_set_consistent_dma_mask(E1, E2)
++ dma_set_coherent_mask(&E1->dev, E2)
+
+@@ expression E1, E2; @@
+- pci_set_dma_mask(E1, E2)
++ dma_set_mask(&E1->dev, E2)
+
+Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
+---
+	This change is proposed by Christoph Hellwig <hch@infradead.org>
+	in the post https://marc.info/?l=3Dkernel-janitors&m=3D158745678307186&w=
+=3D4
+	on kernel-janitors Mailing List.
+
+ drivers/staging/comedi/drivers/s626.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/staging/comedi/drivers/s626.c b/drivers/staging/comedi=
+/drivers/s626.c
+index 084a8e7b9fc2..c159416662fd 100644
+--- a/drivers/staging/comedi/drivers/s626.c
++++ b/drivers/staging/comedi/drivers/s626.c
+@@ -2130,13 +2130,15 @@ static int s626_allocate_dma_buffers(struct comedi_=
+device *dev)
+ 	void *addr;
+ 	dma_addr_t appdma;
+=20
+-	addr =3D pci_alloc_consistent(pcidev, S626_DMABUF_SIZE, &appdma);
++	addr =3D dma_alloc_coherent(&pcidev->dev, S626_DMABUF_SIZE, &appdma,
++				  GFP_ATOMIC);
+ 	if (!addr)
+ 		return -ENOMEM;
+ 	devpriv->ana_buf.logical_base =3D addr;
+ 	devpriv->ana_buf.physical_base =3D appdma;
+=20
+-	addr =3D pci_alloc_consistent(pcidev, S626_DMABUF_SIZE, &appdma);
++	addr =3D dma_alloc_coherent(&pcidev->dev, S626_DMABUF_SIZE, &appdma,
++				  GFP_ATOMIC);
+ 	if (!addr)
+ 		return -ENOMEM;
+ 	devpriv->rps_buf.logical_base =3D addr;
+@@ -2154,13 +2156,13 @@ static void s626_free_dma_buffers(struct comedi_dev=
+ice *dev)
+ 		return;
+=20
+ 	if (devpriv->rps_buf.logical_base)
+-		pci_free_consistent(pcidev, S626_DMABUF_SIZE,
+-				    devpriv->rps_buf.logical_base,
+-				    devpriv->rps_buf.physical_base);
++		dma_free_coherent(&pcidev->dev, S626_DMABUF_SIZE,
++				  devpriv->rps_buf.logical_base,
++				  devpriv->rps_buf.physical_base);
+ 	if (devpriv->ana_buf.logical_base)
+-		pci_free_consistent(pcidev, S626_DMABUF_SIZE,
+-				    devpriv->ana_buf.logical_base,
+-				    devpriv->ana_buf.physical_base);
++		dma_free_coherent(&pcidev->dev, S626_DMABUF_SIZE,
++				  devpriv->ana_buf.logical_base,
++				  devpriv->ana_buf.physical_base);
+ }
+=20
+ static int s626_initialize(struct comedi_device *dev)
+--=20
+2.17.1
+
+
+--6c2NcOVqGQ03X4Wi
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIyBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl8JsgwACgkQ+gRsbIfe
+7474BQ/4kb5fufct1WPXGSk5GazzpLTQpggErwbo+mTWR8xrR0hu0JEkSq3rlcJC
+PlyH5wxUTm6AJM6ub8UbDbrIiFCoGvFW/wPKyBgdVFnkrEf5GbPg4QuGD0eEOegC
+EDJ34j2meK2fPpOhvKh8I7mk/YXVl0uNB3CTul9GLzAC/NQG3GERX1g3JZsDo+Ib
+5sNly1D6mRr2WOxaTOGGLK+JI5PXeQ5jT8x40Q6TwEfZNDFA1A6diStFLOAusNA0
+txdSpArNNXJGjxSITQi7Gw4Ifp0g8MW0WnYjL/f4eYVqbGstVo6JYTjI+iwt1aPe
+pJpQlNYlXmELft+vVFIq++I6/mIbdxuRjzOKI5e5FJ5/GQpU9nnxlCaW00/c3p0A
+8ioeIhy0pI3JekPsDrw5pF5xUZZxXUbHiIxgzrts54g17isyQFwoh0mTnvmANlcz
+LTVV9U0xjeQEc3btQMG3c6JWGQ2gpyFDA89Out1769HJvBpuWBzbytUtFVnTKizp
+FFV+3c8RjyIih39KvNVE89zay2Y+EFSeiEl3oYhFX9digbSP+ErIQcu0YYaV4k+Q
+FjIMZB1j/tBHshL5TwWbU20naZXbrmgReJkvdJwCb292ehp/kFDfV35VFi9qTJD7
+D5TH075SMqXfsPrBMuZha868gzaO4dzfmiqAkZEcJ4QLNQ78Mg==
+=YDlr
+-----END PGP SIGNATURE-----
+
+--6c2NcOVqGQ03X4Wi--
+
+--===============3683742441835575237==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3683742441835575237==--
