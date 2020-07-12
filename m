@@ -1,60 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86BAD21C7C8
-	for <lists+driverdev-devel@lfdr.de>; Sun, 12 Jul 2020 08:49:12 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D30AA21C7D0
+	for <lists+driverdev-devel@lfdr.de>; Sun, 12 Jul 2020 09:06:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3287F87B21;
-	Sun, 12 Jul 2020 06:49:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 762E98888D;
+	Sun, 12 Jul 2020 07:06:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X4OAj6VQ9DoI; Sun, 12 Jul 2020 06:49:10 +0000 (UTC)
+	with ESMTP id 7rIT2U0InWSg; Sun, 12 Jul 2020 07:06:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B2F6875AC;
-	Sun, 12 Jul 2020 06:49:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6AB2488363;
+	Sun, 12 Jul 2020 07:06:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0CEB91BF5A1
- for <devel@linuxdriverproject.org>; Sun, 12 Jul 2020 06:49:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 709481BF2A2
+ for <devel@linuxdriverproject.org>; Sun, 12 Jul 2020 07:06:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 09836875EF
- for <devel@linuxdriverproject.org>; Sun, 12 Jul 2020 06:49:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6D17287926
+ for <devel@linuxdriverproject.org>; Sun, 12 Jul 2020 07:06:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7SCrbCtrGWmq for <devel@linuxdriverproject.org>;
- Sun, 12 Jul 2020 06:49:07 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 94DCF875AC
- for <devel@driverdev.osuosl.org>; Sun, 12 Jul 2020 06:49:07 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E0F902070B;
- Sun, 12 Jul 2020 06:49:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1594536547;
- bh=5hFYggtmbXm1gzSEr54Yj77nGkufnmMGvt4v1b7+Ipw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=aIGs5Cp0OxptNj1SWHeexH94IqDvPPv9ejS7Vw2/TuxPR8u3vdnSFsDxkn+sSUqad
- Y4WzgEHqz2npBxJu549T6szFh9R6YQbpqr0GqVwtln1B6Ic0MoD72cWHXFmQbFMSzg
- oDEJ+gwoJbh5qA4RiiKSsg7o/fdOoFxRf/Z7Mr9I=
-Date: Sun, 12 Jul 2020 08:49:09 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH] clk: staging: Specify IOMEM dependency for Xilinx
- Clocking Wizard driver
-Message-ID: <20200712064909.GC2920853@kroah.com>
-References: <20200630044518.1084468-1-davidgow@google.com>
- <159448501081.1987609.2376410636031633673@swboyd.mtv.corp.google.com>
+ with ESMTP id dZA-hOHem_Kt for <devel@linuxdriverproject.org>;
+ Sun, 12 Jul 2020 07:06:35 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7290B8791D
+ for <devel@driverdev.osuosl.org>; Sun, 12 Jul 2020 07:06:35 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id ch3so4624704pjb.5
+ for <devel@driverdev.osuosl.org>; Sun, 12 Jul 2020 00:06:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=1RQK81eHkq8yc1kfeadt5EYNtBGoEuKdAYto1gErhzc=;
+ b=A0MiyFddpyFuTHAgIm24ljX0OliA2LRGPrT4rgFhlZRP981ZJCrPmM/PDO50nc62e4
+ N/rhxwgbehdppico+uJVvsRJT9GlYP2fKVHP5Z5MVJBKvayG6qoqv6UGA6nEHzSTWixQ
+ vZPl1u5j1pdzi4AQ5mY7DvEaZ5G9CTraR628BLzAysBM8NxX0J7248dt1ctP3cdTGBdk
+ 4ki6077MMSTgRqm6lPK9P6tjua8ucbOZ/LQ0tqhWI+k64ZJkdSAkTbe9yA81/eW2enWE
+ /K1jpszIdHOy5nZdvHh0BxyGIc/0mp5mALu5dh0nqHX8V6HzhYNVN3zUfH8SnB0eYmXo
+ whDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=1RQK81eHkq8yc1kfeadt5EYNtBGoEuKdAYto1gErhzc=;
+ b=hES6BcLRy2JLISd3NmFZHv9dLWYZV6YFCccYYWxkDGFTVHmzUy8ldqUPPg+X2PqQUL
+ vq8ZTavI92uyICnFFNTpjKNzVAL/eY6MbNNyffNLFHt8019hs7qTbgX9xw60Lyt96Tef
+ 4YgFkZfmCpmhivXVnPvuqyuksWYAIe6AokpMHWAshNTMlNlOp6QSgwYlBwUfbhkd+Q5/
+ lf4q3Zox/EdK2JlveNcHE6mwGHhH8HMNogpSdRW7SdwORCbbCY+4PgSwaKP6/AUjWxw/
+ TM87166lHQhrYiZhbV/W6ip9/sbU1jHq1/VLZV09Uu5TInTrMY4SSv736h0wwKqZqxl7
+ kQBg==
+X-Gm-Message-State: AOAM530fVpPZm7HVT3dURMovE4OFhnA05HWVoNVQ9uO42bnBwseSnk+i
+ 2BE5uZ5u0CN/DovYxryj2X4=
+X-Google-Smtp-Source: ABdhPJygtYo9+UK8o8C4+DXRTtWC3sAw9KxKlFMCS9b4ib9pPE7diULd0c7YtsZYkelgaMh1SkiiFQ==
+X-Received: by 2002:a17:90a:fd12:: with SMTP id
+ cv18mr14477227pjb.66.1594537594990; 
+ Sun, 12 Jul 2020 00:06:34 -0700 (PDT)
+Received: from saurav ([203.187.233.95])
+ by smtp.gmail.com with ESMTPSA id g8sm10338465pgr.70.2020.07.12.00.06.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 12 Jul 2020 00:06:34 -0700 (PDT)
+Date: Sun, 12 Jul 2020 12:36:28 +0530
+From: Saurav Girepunje <saurav.girepunje@gmail.com>
+To: abbotti@mev.co.uk, hsweeten@visionengravers.com,
+ gregkh@linuxfoundation.org, saurav.girepunje@gmail.com,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] Staging: comedi: driver: Remove condition with no effect
+Message-ID: <20200712070628.GA18340@saurav>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <159448501081.1987609.2376410636031633673@swboyd.mtv.corp.google.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,36 +86,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Michael Turquette <mturquette@baylibre.com>,
- Brendan Higgins <brendanhiggins@google.com>, linux-kernel@vger.kernel.org,
- David Gow <davidgow@google.com>, linux-clk@vger.kernel.org,
- Soren Brinkmann <soren.brinkmann@xilinx.com>
+Cc: saurav.girepunje@hotmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Jul 11, 2020 at 09:30:10AM -0700, Stephen Boyd wrote:
-> Quoting David Gow (2020-06-29 21:45:17)
-> > The Xilinx Clocking Wizard driver uses the devm_ioremap_resource
-> > function, but does not specify a dependency on IOMEM in Kconfig. This
-> > causes a build failure on architectures without IOMEM, for example, UML
-> > (notably with make allyesconfig).
-> > 
-> > Fix this by making CONFIG_COMMON_CLK_XLNX_CLKWZRD depend on CONFIG_IOMEM.
-> > 
-> > Signed-off-by: David Gow <davidgow@google.com>
-> > ---
-> 
-> This driver is in the process of being destaged to drivers/clk/
-> 
-> Greg, should I pick this one up?
+Remove below warning in das1800.c
+WARNING: possible condition with no effect (if == else)
 
-Sure, if I haven't already.
+Signed-off-by: Saurav Girepunje <saurav.girepunje@gmail.com>
+---
+ drivers/staging/comedi/drivers/das1800.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/comedi/drivers/das1800.c b/drivers/staging/comedi/drivers/das1800.c
+index f16aa7e9f4f3..7ab72e83d3d0 100644
+--- a/drivers/staging/comedi/drivers/das1800.c
++++ b/drivers/staging/comedi/drivers/das1800.c
+@@ -1299,12 +1299,6 @@ static int das1800_attach(struct comedi_device *dev,
+ 			outb(DAC(i), dev->iobase + DAS1800_SELECT);
+ 			outw(0, dev->iobase + DAS1800_DAC);
+ 		}
+-	} else if (board->id == DAS1800_ID_AO) {
+-		/*
+-		 * 'ao' boards have waveform analog outputs that are not
+-		 * currently supported.
+-		 */
+-		s->type		= COMEDI_SUBD_UNUSED;
+ 	} else {
+ 		s->type		= COMEDI_SUBD_UNUSED;
+ 	}
+-- 
+2.20.1
 
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
