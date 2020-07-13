@@ -2,51 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E02B121D29D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Jul 2020 11:13:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E5BAC21D593
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Jul 2020 14:14:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 73CC180869;
-	Mon, 13 Jul 2020 09:13:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9485687798;
+	Mon, 13 Jul 2020 12:14:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ytb809EQMH0r; Mon, 13 Jul 2020 09:13:20 +0000 (UTC)
+	with ESMTP id Rn_bXntRsS0H; Mon, 13 Jul 2020 12:14:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0495F86F43;
-	Mon, 13 Jul 2020 09:13:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 732D486F73;
+	Mon, 13 Jul 2020 12:14:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1EE8D1BF410
- for <devel@linuxdriverproject.org>; Mon, 13 Jul 2020 09:13:18 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DB0F81BF3F6
+ for <devel@linuxdriverproject.org>; Mon, 13 Jul 2020 12:14:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 07EDE893CD
- for <devel@linuxdriverproject.org>; Mon, 13 Jul 2020 09:13:18 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D199486F73
+ for <devel@linuxdriverproject.org>; Mon, 13 Jul 2020 12:14:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yuUv+hf-HRyc for <devel@linuxdriverproject.org>;
- Mon, 13 Jul 2020 09:13:16 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp.al2klimov.de (smtp.al2klimov.de [78.46.175.9])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 878EC893CC
- for <devel@driverdev.osuosl.org>; Mon, 13 Jul 2020 09:13:16 +0000 (UTC)
-Received: from authenticated-user (PRIMARY_HOSTNAME [PUBLIC_IP])
- by smtp.al2klimov.de (Postfix) with ESMTPA id 18357BC078;
- Mon, 13 Jul 2020 09:13:11 +0000 (UTC)
-From: "Alexander A. Klimov" <grandmaster@al2klimov.de>
-To: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca,
- samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org,
- speakup@linux-speakup.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] Staging: speakup: Replace HTTP links with HTTPS ones
-Date: Mon, 13 Jul 2020 11:13:05 +0200
-Message-Id: <20200713091305.32708-1-grandmaster@al2klimov.de>
+ with ESMTP id oSGHlZ17p4pd for <devel@linuxdriverproject.org>;
+ Mon, 13 Jul 2020 12:14:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3CA4C86DFA
+ for <devel@driverdev.osuosl.org>; Mon, 13 Jul 2020 12:14:44 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id ls15so6169392pjb.1
+ for <devel@driverdev.osuosl.org>; Mon, 13 Jul 2020 05:14:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=2P82DVa0uA6ZsAd3NB4q4eF6eR6EDSKhk3gZmaYEnrI=;
+ b=OY1u+H7TOfRirjsCn6YZ4ohxeV6a0pnQ8m6WWhPNUDRlvXcaIj2MdZ0bIJ7+lMr5H5
+ mi+DErEvZIBa7esEYaKuMK333QVLsFQEwO7baTFTH/6sq9xwUL2hKD+X/dBRNg+WlZ5F
+ HQH7T1i2KCC1N0vlTy7cJWKYzdsWPLtY6WpRDF9ZUQp3HhxYCFklkqhOZoZpKCGbPBwZ
+ QJF0T8HSWxscPIEocZP0eQxckDS6xq3GJM4F3SKP0YTZiBDAzwlBi06T8FxYUb8rv1uv
+ bNj7sI/h3oobmnw4zOWTdd+Ybpv+YXgFdX5G9W6L6LKyCgnmkpPqgwqBYdjAZhwqEz2V
+ 5DSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=2P82DVa0uA6ZsAd3NB4q4eF6eR6EDSKhk3gZmaYEnrI=;
+ b=eZ0CNFk4x3vRzqeRVEIh7it0sA66c5J/8j9vqPzXv+uMR8ayCDfws8JBw3qGZB5r78
+ O87Q5baUnLx+pPfUjXk257E/NylOy4rAhDWECconQMdNdQNKVylAI72dvrF+f/Fpf8hn
+ qcrhLFDf+j9qHTP3fmkBFxoaieSd8GCLojbKudfdi0moUH9ckrk9JQc925/6NISMTteL
+ GUpjIeEh9QSSu+5E/lW/tCvrE30ljczsqgB2FUb8tVABcEKZjFNdfBXnM3laIIgrj0pi
+ VYiCAGowTxh05wEnZQD6Q0v2gflTIGeSHX6QE1V61YPVEV95BoXx4WU60mlk0jllvpq4
+ MxPg==
+X-Gm-Message-State: AOAM530tifGixZistnw131JcN7l4divyjlCBWaHVGEXKVnI/D1yTtr+T
+ jfQWpV7LCuKB1shMz3QYpgI=
+X-Google-Smtp-Source: ABdhPJzH/Mg6FFnMjQPexZV+clQXflYEUbtTrxhI8RnnXsVRT+zfTStVRzLh9stkH84cILUtqvIocw==
+X-Received: by 2002:a17:90a:f206:: with SMTP id
+ bs6mr20065510pjb.48.1594642483042; 
+ Mon, 13 Jul 2020 05:14:43 -0700 (PDT)
+Received: from blackclown ([103.88.82.220])
+ by smtp.gmail.com with ESMTPSA id v11sm16230393pfc.108.2020.07.13.05.14.39
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 13 Jul 2020 05:14:42 -0700 (PDT)
+Date: Mon, 13 Jul 2020 17:44:27 +0530
+From: Suraj Upadhyay <usuraj35@gmail.com>
+To: manishc@marvell.com, GR-Linux-NIC-Dev@marvell.com,
+ gregkh@linuxfoundation.org
+Subject: [PATCH 0/6] staging: qlge: General cleanup and refactor.
+Message-ID: <cover.1594642213.git.usuraj35@gmail.com>
 MIME-Version: 1.0
-X-Spamd-Bar: +++++
-Authentication-Results: smtp.al2klimov.de;
- auth=pass smtp.auth=aklimov@al2klimov.de
- smtp.mailfrom=grandmaster@al2klimov.de
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,70 +84,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "Alexander A. Klimov" <grandmaster@al2klimov.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============0337243790572140137=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Rationale:
-Reduces attack surface on kernel devs opening the links for MITM
-as HTTPS traffic is much harder to manipulate.
 
-Deterministic algorithm:
-For each file:
-  If not .svg:
-    For each line:
-      If doesn't contain `\bxmlns\b`:
-        For each link, `\bhttp://[^# \t\r\n]*(?:\w|/)`:
-	  If neither `\bgnu\.org/license`, nor `\bmozilla\.org/MPL\b`:
-            If both the HTTP and HTTPS versions
-            return 200 OK and serve the same content:
-              Replace HTTP with HTTPS.
-
-Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
----
- Continuing my work started at 93431e0607e5.
- See also: git log --oneline '--author=Alexander A. Klimov <grandmaster@al2klimov.de>' v5.7..master
- (Actually letting a shell for loop submit all this stuff for me.)
-
- If there are any URLs to be removed completely or at least not just HTTPSified:
- Just clearly say so and I'll *undo my change*.
- See also: https://lkml.org/lkml/2020/6/27/64
-
- If there are any valid, but yet not changed URLs:
- See: https://lkml.org/lkml/2020/6/26/837
-
- If you apply the patch, please let me know.
-
- Sorry again to all maintainers who complained about subject lines.
- Now I realized that you want an actually perfect prefixes,
- not just subsystem ones.
- I tried my best...
- And yes, *I could* (at least half-)automate it.
- Impossible is nothing! :)
+--===============0337243790572140137==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Qxx1br4bt0+wmkIi"
+Content-Disposition: inline
 
 
- drivers/staging/speakup/spkguide.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--Qxx1br4bt0+wmkIi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/staging/speakup/spkguide.txt b/drivers/staging/speakup/spkguide.txt
-index 1e622cd34363..3782f6a09e97 100644
---- a/drivers/staging/speakup/spkguide.txt
-+++ b/drivers/staging/speakup/spkguide.txt
-@@ -1531,7 +1531,7 @@ The Free Software Foundation may publish new, revised versions
- of the GNU Free Documentation License from time to time.  Such new
- versions will be similar in spirit to the present version, but may
- differ in detail to address new problems or concerns.  See
--http://www.gnu.org/copyleft/.
-+https://www.gnu.org/copyleft/.
- 
- Each version of the License is given a distinguishing version number.
- If the Document specifies that a particular numbered version of this
--- 
-2.27.0
+Hii,
+	This patchest aims to remove several of the checkpatch.pl
+warnings and refactor some ugly while loops into for loops for better
+readability.
+Some of the issues are found with checkpatch and others were listed in
+qlge/TODO.
+
+Thanks,
+
+Suraj Upadhyay (6):
+  staging: qlge: qlge.h: Function definition arguments should have
+    names.
+  staging: qlge: qlge.h: Insert line after declaration.
+  staging: qlge: qlge_dbg: Simplify while statements
+  staging: qlge: qlge_main: Simplify while statements.
+  staging: qlge: qlge_mpi: Simplify while statements.
+  staging: qlge: qlge_ethtool: Remove one byte memset.
+
+ drivers/staging/qlge/qlge.h         |  7 +++--
+ drivers/staging/qlge/qlge_dbg.c     |  5 ++-
+ drivers/staging/qlge/qlge_ethtool.c |  4 +--
+ drivers/staging/qlge/qlge_main.c    | 49 +++++++++++++----------------
+ drivers/staging/qlge/qlge_mpi.c     | 32 +++++++++----------
+ 5 files changed, 45 insertions(+), 52 deletions(-)
+
+--=20
+2.17.1
+
+
+--Qxx1br4bt0+wmkIi
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl8MUBoACgkQ+gRsbIfe
+7454sg/8DJM1+74HINhkyKxsOhUgvby6VzO0B0iFGVivi796N9MMSjLGpth9dl29
+PLvjRCYwqpFriYMpzPJPI++RXoPXKXHrIlYgUi0kKQmB8hmYc+bhfcTNuSMEJRgF
++34nRwTJEruI8aOczBnqD3t/fNsXXappC8GIaOhqAvkZIGmw/oAHss7oNc83qgRW
+YajyFoZt1zcw2zBbch9PHFpgj/9zOZfSuy47/irzeioqYLfXSs4HcZJB08Nan5Hn
+NZc4QgW5ggu/fCg80BCaKCwiQXl7df6dKQ62+eAgt/KGKg24oGbYfYc7yNgMTYVo
+c/ihaAV3NzZPZAEnwgVU4yS3ygBavS/Dnoas5hsl/cqzdXJFiu5lewIriRl6/ldk
+y7xp71Vyxm1O22iMwZGuHCt0JUc9UsXxp8+4lROo5sz42rqD0RZnXYVT5OVSYsfF
+09mvC2u9xMvxOt4kFsPQXYeYF6nqAU0yDZJ0xpCXCrZ3d5chy3lMbxN178KH843A
+YBQ6xTsopIHEvCMaM55KckzdmKF5zwFTFlVSBsRGtQhjHGF+q/DwwTvYV58YXC0W
+3K5j2SIcWgHeA0ThmQOTkIQogHmSS2nJTh6g4mAAFXOXjGO1C4N/TigPj0G1EHsn
+oyQd0Icgj/uS/uNK+92otBPkL2J6EVHdoJaUS+gJM13WzlYAznw=
+=FhHN
+-----END PGP SIGNATURE-----
+
+--Qxx1br4bt0+wmkIi--
+
+--===============0337243790572140137==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============0337243790572140137==--
