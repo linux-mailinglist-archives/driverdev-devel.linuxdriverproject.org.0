@@ -1,77 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B98B220003
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jul 2020 23:27:11 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7588D22004C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jul 2020 23:50:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 25DA587A88;
-	Tue, 14 Jul 2020 21:27:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1E5778A2E8;
+	Tue, 14 Jul 2020 21:50:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LPi7KJd4AOBK; Tue, 14 Jul 2020 21:27:08 +0000 (UTC)
+	with ESMTP id Znj6p+z3ZsbQ; Tue, 14 Jul 2020 21:50:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D895987A4C;
-	Tue, 14 Jul 2020 21:27:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 98BC38A382;
+	Tue, 14 Jul 2020 21:50:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C32831BF362
- for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 21:27:05 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D24F01BF362
+ for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 21:50:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BFB4189973
- for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 21:27:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CE7B287CE3
+ for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 21:50:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id crvC3DSQQ7-5 for <devel@linuxdriverproject.org>;
- Tue, 14 Jul 2020 21:27:05 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
- [209.85.216.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3D43A8995D
- for <devel@driverdev.osuosl.org>; Tue, 14 Jul 2020 21:27:05 +0000 (UTC)
-Received: by mail-pj1-f68.google.com with SMTP id cm21so7790pjb.3
- for <devel@driverdev.osuosl.org>; Tue, 14 Jul 2020 14:27:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=VQGQidYI0HuOTJB5SyluznwAshWCGJHDKysMMkUDPn4=;
- b=ZS6AcdqKzLWc3bUzqs3TEDBMIlFYbIkPNHSbBeDM3U/3BJMaKti7q73i7A2usl3gqD
- x/3AhLYZGMSCE2xdZFhfopvEZGLkImAUfTAwlT70/mgJeW7FDYCjQZaaybi6poymMScf
- 7DKMmtz1w29yQodxqGxZrD6NYXuSj4hBC7/Klw8numcOagIldTz7zvROVMGgUllyel47
- Tm/Pllyhw2K7y47phPHFf7QL2EIeS+o1+rE6IvgbaRCxotIY3HZjQdDwswWYEzISiAIQ
- Ti34Klj0UhRY3Hu+7O2y88OPqm1nRGurEJI7Qd+IWwLlEYnH9BLqEVPKPPpSgYBv2Ak4
- IDbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=VQGQidYI0HuOTJB5SyluznwAshWCGJHDKysMMkUDPn4=;
- b=MCFeHTcX+HmHgyeMD04GR8dJoTqArxRAP981rgpM2mfWDgpNVBDwj/4dGdDUOsuWgW
- zTXbkuijiXV5V2LV72Y4WGP3m0pnpCGPG/yIwKTrq0A78HJ4MmFwhXgpbCZIOt99owcT
- gYx8gWeQvHzSgPyjFzqUZyHNjdKqn0srzOpO7P55B4gaJKrQnVFaJX9fRqGdIRhXr2X2
- qa8ZBoqMZhgQmboKziwpHWzIjQ8yuPrAYnkAyP0CnsEk/AHh9pJM1p7A7l5DJDPFRMPL
- F5nIphijynikYftMJrAZnNvB9svmDaecUE0U4t9tYYzdRJjDlacADFeETDWtQzEXwYKo
- 4AGw==
-X-Gm-Message-State: AOAM531m9JEE4qFWWRz+Eyl8CWU6w4QUNB/bn73MxKgGH8rF2M/rvVLP
- 6KdemF6mXK39kkxoyjgWFnA=
-X-Google-Smtp-Source: ABdhPJwWT1SaRmSOH2iD3vjhVUNof8OdjC75JYNDBceQLWgdCplk5YYEca45LTvYmpfMdRwDlpiolw==
-X-Received: by 2002:a17:90a:c003:: with SMTP id
- p3mr6678167pjt.120.1594762024854; 
- Tue, 14 Jul 2020 14:27:04 -0700 (PDT)
-Received: from arpitha-Inspiron-7570.lan ([49.206.11.188])
- by smtp.gmail.com with ESMTPSA id np5sm31274pjb.43.2020.07.14.14.27.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Jul 2020 14:27:04 -0700 (PDT)
-From: Arpitha <98.arpi@gmail.com>
-To: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
- puranjay12@gmail.com, yepeilin.cs@gmail.com
-Subject: [PATCH] staging: rtl8188eu: core: fix coding style issues
-Date: Wed, 15 Jul 2020 02:55:59 +0530
-Message-Id: <20200714212559.57584-1-98.arpi@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ with ESMTP id j81RArfA8kyz for <devel@linuxdriverproject.org>;
+ Tue, 14 Jul 2020 21:50:48 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0016.hostedemail.com
+ [216.40.44.16])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DD47E87CA9
+ for <devel@driverdev.osuosl.org>; Tue, 14 Jul 2020 21:50:48 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave02.hostedemail.com (Postfix) with ESMTP id 59ABC1800906C
+ for <devel@driverdev.osuosl.org>; Tue, 14 Jul 2020 19:22:11 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay07.hostedemail.com (Postfix) with ESMTP id 0685B181D337B;
+ Tue, 14 Jul 2020 19:22:08 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:800:960:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1543:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2693:2828:3138:3139:3140:3141:3142:3355:3622:3865:3866:3867:3868:3870:3871:3872:3874:4321:4605:5007:6691:7514:7903:10004:10400:10848:11026:11232:11658:11914:12043:12296:12297:12438:12555:12663:12740:12760:12895:12986:13439:14181:14659:14721:21080:21324:21451:21627:30054:30055:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: turn41_0b16cbc26ef3
+X-Filterd-Recvd-Size: 4228
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf18.hostedemail.com (Postfix) with ESMTPA;
+ Tue, 14 Jul 2020 19:22:06 +0000 (UTC)
+Message-ID: <ce637b26b496dd99be8f272e6ec82333338321dc.camel@perches.com>
+Subject: Re: [PATCH 6/6] staging: qlge: qlge_ethtool: Remove one byte memset.
+From: Joe Perches <joe@perches.com>
+To: Suraj Upadhyay <usuraj35@gmail.com>
+Date: Tue, 14 Jul 2020 12:22:05 -0700
+In-Reply-To: <20200714190602.GA14742@blackclown>
+References: <cover.1594642213.git.usuraj35@gmail.com>
+ <b5eb87576cef4bf1b968481d6341013e6c7e9650.1594642213.git.usuraj35@gmail.com>
+ <20200713141749.GU2549@kadam>
+ <a323c1e47e8de871ff7bb72289740cb0bc2d27f8.camel@perches.com>
+ <20200714190602.GA14742@blackclown>
+User-Agent: Evolution 3.36.3-0ubuntu1 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,69 +77,80 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Arpitha <98.arpi@gmail.com>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, GR-Linux-NIC-Dev@marvell.com,
+ manishc@marvell.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, netdev@vger.kernel.org,
+ Dan Carpenter <dan.carpenter@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixing WARNING: Prefer using '"%s...", __func__' to using 'function_name'
-in a string in rtw_ioctl_set.c
+On Wed, 2020-07-15 at 00:36 +0530, Suraj Upadhyay wrote:
+> On Tue, Jul 14, 2020 at 11:57:23AM -0700, Joe Perches wrote:
+> > On Mon, 2020-07-13 at 17:17 +0300, Dan Carpenter wrote:
+> > > On Mon, Jul 13, 2020 at 05:52:22PM +0530, Suraj Upadhyay wrote:
+> > > > Use direct assignment instead of using memset with just one byte as an
+> > > > argument.
+> > > > Issue found by checkpatch.pl.
+> > > > 
+> > > > Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
+> > > > ---
+> > > > Hii Maintainers,
+> > > > 	Please correct me if I am wrong here.
+> > > > ---
+> > > > 
+> > > >  drivers/staging/qlge/qlge_ethtool.c | 4 ++--
+> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/staging/qlge/qlge_ethtool.c b/drivers/staging/qlge/qlge_ethtool.c
+> > > > index 16fcdefa9687..d44b2dae9213 100644
+> > > > --- a/drivers/staging/qlge/qlge_ethtool.c
+> > > > +++ b/drivers/staging/qlge/qlge_ethtool.c
+> > > > @@ -516,8 +516,8 @@ static void ql_create_lb_frame(struct sk_buff *skb,
+> > > >  	memset(skb->data, 0xFF, frame_size);
+> > > >  	frame_size &= ~1;
+> > > >  	memset(&skb->data[frame_size / 2], 0xAA, frame_size / 2 - 1);
+> > > > -	memset(&skb->data[frame_size / 2 + 10], 0xBE, 1);
+> > > > -	memset(&skb->data[frame_size / 2 + 12], 0xAF, 1);
+> > > > +	skb->data[frame_size / 2 + 10] = (unsigned char)0xBE;
+> > > > +	skb->data[frame_size / 2 + 12] = (unsigned char)0xAF;
+> > > 
+> > > Remove the casting.
+> > > 
+> > > I guess this is better than the original because now it looks like
+> > > ql_check_lb_frame().  It's still really weird looking though.
+> > 
+> > There are several of these in the intel drivers too:
+> > 
+> > drivers/net/ethernet/intel/e1000/e1000_ethtool.c:       memset(&skb->data[frame_size / 2 + 10], 0xBE, 1);
+> > drivers/net/ethernet/intel/e1000/e1000_ethtool.c:       memset(&skb->data[frame_size / 2 + 12], 0xAF, 1);
+> > drivers/net/ethernet/intel/e1000e/ethtool.c:    memset(&skb->data[frame_size / 2 + 10], 0xBE, 1);
+> > drivers/net/ethernet/intel/e1000e/ethtool.c:    memset(&skb->data[frame_size / 2 + 12], 0xAF, 1);
+> > drivers/net/ethernet/intel/igb/igb_ethtool.c:   memset(&skb->data[frame_size + 10], 0xBE, 1);
+> > drivers/net/ethernet/intel/igb/igb_ethtool.c:   memset(&skb->data[frame_size + 12], 0xAF, 1);
+> > drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:       memset(&skb->data[frame_size + 10], 0xBE, 1);
+> > drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:       memset(&skb->data[frame_size + 12], 0xAF, 1);
+> > drivers/staging/qlge/qlge_ethtool.c:    memset(&skb->data[frame_size / 2 + 10], 0xBE, 1);
+> > drivers/staging/qlge/qlge_ethtool.c:    memset(&skb->data[frame_size / 2 + 12], 0xAF, 1);
+> 
+> Thanks to point this out,
+> 	I will be sending a patchset for that soon.
 
-Signed-off-by: Arpitha <98.arpi@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_ioctl_set.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c b/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c
-index 9cc77ab4fd6b..fa88e8b2852d 100644
---- a/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c
-@@ -44,12 +44,12 @@ u8 rtw_do_join(struct adapter *padapter)
- 
- 		if (!pmlmepriv->LinkDetectInfo.bBusyTraffic ||
- 		    pmlmepriv->to_roaming > 0) {
--			RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_info_, ("rtw_do_join(): site survey if scanned_queue is empty\n."));
-+			RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_info_, ("%s: site survey if scanned_queue is empty\n.", __func__));
- 			/*  submit site_survey_cmd */
- 			ret = rtw_sitesurvey_cmd(padapter, &pmlmepriv->assoc_ssid, 1, NULL, 0);
- 			if (ret != _SUCCESS) {
- 				pmlmepriv->to_join = false;
--				RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_err_, ("rtw_do_join(): site survey return error\n."));
-+				RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_err_, ("%s: site survey return error\n.", __func__));
- 			}
- 		} else {
- 			pmlmepriv->to_join = false;
-@@ -313,7 +313,7 @@ u8 rtw_set_802_11_infrastructure_mode(struct adapter *padapter,
- 	enum ndis_802_11_network_infra *pold_state = &cur_network->network.InfrastructureMode;
- 
- 	RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_notice_,
--		 ("+rtw_set_802_11_infrastructure_mode: old =%d new =%d fw_state = 0x%08x\n",
-+		 ("+%s: old =%d new =%d fw_state = 0x%08x\n", __func__,
- 		  *pold_state, networktype, get_fwstate(pmlmepriv)));
- 
- 	if (*pold_state != networktype) {
-@@ -496,7 +496,7 @@ u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep *wep)
- 		break;
- 	}
- 	RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_info_,
--		 ("rtw_set_802_11_add_wep:before memcpy, wep->KeyLength = 0x%x wep->KeyIndex = 0x%x  keyid =%x\n",
-+		 ("%s:before memcpy, wep->KeyLength = 0x%x wep->KeyIndex = 0x%x  keyid =%x\n", __func__,
- 		 wep->KeyLength, wep->KeyIndex, keyid));
- 
- 	memcpy(&psecuritypriv->dot11DefKey[keyid].skey[0],
-@@ -507,7 +507,7 @@ u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep *wep)
- 	psecuritypriv->dot11PrivacyKeyIndex = keyid;
- 
- 	RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_info_,
--		 ("rtw_set_802_11_add_wep:security key material : %x %x %x %x %x %x %x %x %x %x %x %x %x\n",
-+		 ("%s:security key material : %x %x %x %x %x %x %x %x %x %x %x %x %x\n", __func__,
- 		 psecuritypriv->dot11DefKey[keyid].skey[0],
- 		 psecuritypriv->dot11DefKey[keyid].skey[1],
- 		 psecuritypriv->dot11DefKey[keyid].skey[2],
--- 
-2.25.1
+It _might_ be useful to create and use a standard
+mechanism for the loopback functions:
+
+	<foo>create_lbtest_frame
+and
+	<foo>check_lbtest_frame
+
+Maybe use something like:
+
+	ether_loopback_frame_create
+and
+	ether_loopback_frame_check
+
 
 _______________________________________________
 devel mailing list
