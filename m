@@ -1,62 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35A2521E493
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jul 2020 02:32:33 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2CE0528940;
-	Tue, 14 Jul 2020 00:32:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g9UA2eVgK83P; Tue, 14 Jul 2020 00:32:28 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 96F6027F28;
-	Tue, 14 Jul 2020 00:32:24 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A137B1BF963
- for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 00:32:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3EF421E628
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jul 2020 05:07:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9283186D28
- for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 00:32:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A7CB986D50;
+	Tue, 14 Jul 2020 03:07:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1ugX_WnxgmOQ; Tue, 14 Jul 2020 03:07:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BCB9C86CB5;
+	Tue, 14 Jul 2020 03:07:18 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F34261BF34D
+ for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 03:07:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id EC8168A1D0
+ for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 03:07:16 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kM37oUnUzoh5 for <devel@linuxdriverproject.org>;
- Tue, 14 Jul 2020 00:32:20 +0000 (UTC)
+ with ESMTP id qcN0H2iUS05s for <devel@linuxdriverproject.org>;
+ Tue, 14 Jul 2020 03:07:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
- [209.85.166.197])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6A0E786D23
- for <devel@driverdev.osuosl.org>; Tue, 14 Jul 2020 00:32:20 +0000 (UTC)
-Received: by mail-il1-f197.google.com with SMTP id c12so10878648ilf.5
- for <devel@driverdev.osuosl.org>; Mon, 13 Jul 2020 17:32:20 -0700 (PDT)
+Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
+ [209.85.166.70])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1D7A48A1B0
+ for <devel@driverdev.osuosl.org>; Tue, 14 Jul 2020 03:07:16 +0000 (UTC)
+Received: by mail-io1-f70.google.com with SMTP id l7so5927942ioq.16
+ for <devel@driverdev.osuosl.org>; Mon, 13 Jul 2020 20:07:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:date:in-reply-to:message-id:subject
  :from:to;
- bh=OGa5G8n9bZSpejkRGng5nhRd6WfkeHtlnbdqdO/BRyQ=;
- b=mBC7Q6W2tSKBb0oI5O2ME9aFyZIetNoUsItpP7/UQvzn0zShMhFu0XigBkuAO7Rkfs
- JH0D+2IRpid/GEaskPVggFhTFpE15QQm8SKQDzoNuXrTqvOoBGiwIJZKx0ValYYEXXtn
- /i5J6YmOFFw3xR6fMX4bhoeTUa4XEh6AkKb8vNYvNWaJkx4T62k7i7vKc5tMpT6c71gu
- t9/hoPjH5ZmwC9CrpiJZv5wNNgtAbYifqVjAmJlh0zb0lSJRyTg9wDLonhgdq5M4p0m/
- NP+ZvLbHTh6wywlK+aD/N8X//4+Zz7KDbfTXx/CPRKt2BmDJpMrLtEloltfXn7ep0zQs
- 0YRQ==
-X-Gm-Message-State: AOAM530+NEmiamzIMdbVwijI8j6n6H37mNMTJQubA2dDZYqZDhvb+oSH
- GQB4CmKlxduYrTM5IToXerkI88JVYidfqG2KHDqgiKBFa/YH
-X-Google-Smtp-Source: ABdhPJx5DwzfkB6I2G9+hljAKUAib2JL32Jwa4rHT+H0YyulfDtDPBKyd9eXlIGroJVMldB3rH9jqzpI/RS4bdYj99rGyMZ2+UPE
+ bh=CImQQPkNzCU37gU91u+NKjQNkiALiZr5IDmxG884hmA=;
+ b=bKKrE2vVx8SpyBrDtqymSza+rbGBlzVdYyq7HQspMHvOjEv2UefVWkuM4G8Lki0z/r
+ Q7CvkRvmgAoLZn92OHXq8YvfRIaGN75xhBbVK76M5kXwgyE0sRB3BVgidW6MIB5De7fT
+ iTTEoMryhTPLzgVqpMqhjeAU/jvXySHO6a2uthWvbbYpBjmsR/TUdDe9YWVoRri1Xijp
+ fXhTUQ8NNa0YhSI3SI0E/d5rTZvXUrTKdQutXFk+qnxdsvsAJLkoKaPJm9tgXMq1OvHw
+ G/hy+WVAyx2347M85V6b1NAfcSO2GO+VWGUrJA2koxKvoO3PdkP0RrV/0DaNd343Jzws
+ EdxQ==
+X-Gm-Message-State: AOAM531g0tK0Uj4uQhCLyVffjInUfqQhRfqPC6Xl0Uaj89+MB4Razk9j
+ +rqCvq2YYOdfqI8jLbsje8qOL2khfdSbGoFxLhDksRyRQg8g
+X-Google-Smtp-Source: ABdhPJwjNA+uyaNgP2m65nUhSW08tT3ZjMNxC+298sH99oc4goBcR/8XSqI96Fs0ZseEY31aPHTG2LED+IzZBtPi4nAhLtcHoVLa
 MIME-Version: 1.0
-X-Received: by 2002:a05:6638:16c9:: with SMTP id
- g9mr3094436jat.118.1594686739674; 
- Mon, 13 Jul 2020 17:32:19 -0700 (PDT)
-Date: Mon, 13 Jul 2020 17:32:19 -0700
+X-Received: by 2002:a05:6638:1409:: with SMTP id
+ k9mr3644747jad.125.1594696035394; 
+ Mon, 13 Jul 2020 20:07:15 -0700 (PDT)
+Date: Mon, 13 Jul 2020 20:07:15 -0700
 In-Reply-To: <0000000000000b5f9d059aa2037f@google.com>
 X-Google-Appengine-App-Id: s~syzkaller
 X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <000000000000a5797805aa5bf03e@google.com>
+Message-ID: <000000000000b6e94b05aa5e1a1c@google.com>
 Subject: Re: possible deadlock in shmem_fallocate (4)
 From: syzbot <syzbot+7a0d9d0b26efefe61780@syzkaller.appspotmail.com>
 To: akpm@linux-foundation.org, arve@android.com, christian@brauner.io, 
@@ -85,11 +85,12 @@ syzbot has found a reproducer for the following crash on:
 
 HEAD commit:    11ba4688 Linux 5.8-rc5
 git tree:       upstream
-console output: https://syzkaller.appspot.com/x/log.txt?x=13f1bf47100000
+console output: https://syzkaller.appspot.com/x/log.txt?x=175391fb100000
 kernel config:  https://syzkaller.appspot.com/x/.config?x=a160d1053fc89af5
 dashboard link: https://syzkaller.appspot.com/bug?extid=7a0d9d0b26efefe61780
 compiler:       gcc (GCC) 10.1.0-syz 20200507
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=1181004f100000
+syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=104d9c77100000
+C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=1343e95d100000
 
 IMPORTANT: if you fix the bug, please add the following tag to the commit:
 Reported-by: syzbot+7a0d9d0b26efefe61780@syzkaller.appspotmail.com
@@ -98,9 +99,9 @@ Reported-by: syzbot+7a0d9d0b26efefe61780@syzkaller.appspotmail.com
 WARNING: possible circular locking dependency detected
 5.8.0-rc5-syzkaller #0 Not tainted
 ------------------------------------------------------
-khugepaged/1157 is trying to acquire lock:
-ffff88809272e910 (&sb->s_type->i_mutex_key#15){+.+.}-{3:3}, at: inode_lock include/linux/fs.h:800 [inline]
-ffff88809272e910 (&sb->s_type->i_mutex_key#15){+.+.}-{3:3}, at: shmem_fallocate+0x153/0xd90 mm/shmem.c:2707
+khugepaged/1158 is trying to acquire lock:
+ffff8882071865b0 (&sb->s_type->i_mutex_key#15){+.+.}-{3:3}, at: inode_lock include/linux/fs.h:800 [inline]
+ffff8882071865b0 (&sb->s_type->i_mutex_key#15){+.+.}-{3:3}, at: shmem_fallocate+0x153/0xd90 mm/shmem.c:2707
 
 but task is already holding lock:
 ffffffff89c6c260 (fs_reclaim){+.+.}-{0:0}, at: fs_reclaim_release mm/page_alloc.c:4202 [inline]
@@ -181,7 +182,7 @@ other info that might help us debug this:
 
  *** DEADLOCK ***
 
-2 locks held by khugepaged/1157:
+2 locks held by khugepaged/1158:
  #0: ffffffff89c6c260 (fs_reclaim){+.+.}-{0:0}, at: fs_reclaim_release mm/page_alloc.c:4202 [inline]
  #0: ffffffff89c6c260 (fs_reclaim){+.+.}-{0:0}, at: fs_reclaim_release mm/page_alloc.c:4198 [inline]
  #0: ffffffff89c6c260 (fs_reclaim){+.+.}-{0:0}, at: __perform_reclaim mm/page_alloc.c:4227 [inline]
@@ -190,7 +191,7 @@ other info that might help us debug this:
  #1: ffffffff89c46a90 (shrinker_rwsem){++++}-{3:3}, at: shrink_slab+0xc7/0x5c0 mm/vmscan.c:669
 
 stack backtrace:
-CPU: 0 PID: 1157 Comm: khugepaged Not tainted 5.8.0-rc5-syzkaller #0
+CPU: 1 PID: 1158 Comm: khugepaged Not tainted 5.8.0-rc5-syzkaller #0
 Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
 Call Trace:
  __dump_stack lib/dump_stack.c:77 [inline]
