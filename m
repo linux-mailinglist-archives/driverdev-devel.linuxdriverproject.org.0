@@ -1,59 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0EC821E672
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jul 2020 05:41:20 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC95C21E772
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jul 2020 07:32:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BF3088A2CE;
-	Tue, 14 Jul 2020 03:41:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 608CF2C9FD;
+	Tue, 14 Jul 2020 05:32:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WDy1yUZp6LZj; Tue, 14 Jul 2020 03:41:16 +0000 (UTC)
+	with ESMTP id z5VMIyP8wsGD; Tue, 14 Jul 2020 05:32:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D0BB8A214;
-	Tue, 14 Jul 2020 03:41:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 838E92151F;
+	Tue, 14 Jul 2020 05:32:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 732EB1BF40E
- for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 03:41:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1702D1BF2CA
+ for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 05:32:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6F36E8A211
- for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 03:41:13 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 12EBA8A8A4
+ for <devel@linuxdriverproject.org>; Tue, 14 Jul 2020 05:32:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F38g+BKPIkrN for <devel@linuxdriverproject.org>;
- Tue, 14 Jul 2020 03:41:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 098558A207
- for <devel@driverdev.osuosl.org>; Tue, 14 Jul 2020 03:41:13 +0000 (UTC)
-Received: from sol.localdomain (c-107-3-166-239.hsd1.ca.comcast.net
- [107.3.166.239])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 67C8D20890;
- Tue, 14 Jul 2020 03:41:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1594698072;
- bh=SPL3nkj9HvC2j7rtwl00nNXwS53s+StgAz1Rltp3OXE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Pn4xLHed5UErZazjYs75fzvgnaYZ3py3NH+VTIX724EC9TUqwdfrEv0jCtI5x3vj2
- EcUQBE7VdW1zx031C74H8IiVcL3J+EpURqyQwsT7kCDHC7vukx4ZThuUXuj41Abqg/
- EdHFmTdurMMLft9g//TwoWhWD6R5YzJPHJLQEJCw=
-Date: Mon, 13 Jul 2020 20:41:11 -0700
-From: Eric Biggers <ebiggers@kernel.org>
-To: Hillf Danton <hdanton@sina.com>
+ with ESMTP id xZoSARJmbxy3 for <devel@linuxdriverproject.org>;
+ Tue, 14 Jul 2020 05:32:26 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from r3-21.sinamail.sina.com.cn (r3-21.sinamail.sina.com.cn
+ [202.108.3.21])
+ by hemlock.osuosl.org (Postfix) with SMTP id 8FF048A8C5
+ for <devel@driverdev.osuosl.org>; Tue, 14 Jul 2020 05:32:25 +0000 (UTC)
+Received: from unknown (HELO localhost.localdomain)([123.123.24.222])
+ by sina.com with ESMTP
+ id 5F0D4360000359F9; Tue, 14 Jul 2020 13:32:18 +0800 (CST)
+X-Sender: hdanton@sina.com
+X-Auth-ID: hdanton@sina.com
+X-SMAIL-MID: 700190629108
+From: Hillf Danton <hdanton@sina.com>
+To: Eric Biggers <ebiggers@kernel.org>
 Subject: Re: possible deadlock in shmem_fallocate (4)
-Message-ID: <20200714034111.GD1696@sol.localdomain>
+Date: Tue, 14 Jul 2020 13:32:05 +0800
+Message-Id: <20200714053205.15240-1-hdanton@sina.com>
+In-Reply-To: <20200714034111.GD1696@sol.localdomain>
 References: <0000000000000b5f9d059aa2037f@google.com>
  <20200714033252.8748-1-hdanton@sina.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200714033252.8748-1-hdanton@sina.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,10 +59,10 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tkjos@android.com, gregkh@linuxfoundation.org,
- hughd@google.com, linux-kernel@vger.kernel.org,
- syzkaller-bugs@googlegroups.com, linux-mm@kvack.org, arve@android.com,
- Markus Elfring <Markus.Elfring@web.de>,
+Cc: devel@driverdev.osuosl.org, Hillf Danton <hdanton@sina.com>,
+ tkjos@android.com, gregkh@linuxfoundation.org, hughd@google.com,
+ linux-kernel@vger.kernel.org, syzkaller-bugs@googlegroups.com,
+ linux-mm@kvack.org, arve@android.com, Markus Elfring <Markus.Elfring@web.de>,
  syzbot <syzbot+7a0d9d0b26efefe61780@syzkaller.appspotmail.com>,
  joel@joelfernandes.org, akpm@linux-foundation.org, maco@android.com,
  christian@brauner.io
@@ -78,24 +71,80 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jul 14, 2020 at 11:32:52AM +0800, Hillf Danton wrote:
-> 
-> Add FALLOC_FL_NOBLOCK and on the shmem side try to lock inode upon the
-> new flag. And the overall upside is to keep the current gfp either in
-> the khugepaged context or not.
-> 
-> --- a/include/uapi/linux/falloc.h
-> +++ b/include/uapi/linux/falloc.h
-> @@ -77,4 +77,6 @@
->   */
->  #define FALLOC_FL_UNSHARE_RANGE		0x40
->  
-> +#define FALLOC_FL_NOBLOCK		0x80
-> +
 
-You can't add a new UAPI flag to fix a kernel-internal problem like this.
+On Mon, 13 Jul 2020 20:41:11 -0700 Eric Biggers wrote:
+> On Tue, Jul 14, 2020 at 11:32:52AM +0800, Hillf Danton wrote:
+> > 
+> > Add FALLOC_FL_NOBLOCK and on the shmem side try to lock inode upon the
+> > new flag. And the overall upside is to keep the current gfp either in
+> > the khugepaged context or not.
+> > 
+> > --- a/include/uapi/linux/falloc.h
+> > +++ b/include/uapi/linux/falloc.h
+> > @@ -77,4 +77,6 @@
+> >   */
+> >  #define FALLOC_FL_UNSHARE_RANGE		0x40
+> >  
+> > +#define FALLOC_FL_NOBLOCK		0x80
+> > +
+> 
+> You can't add a new UAPI flag to fix a kernel-internal problem like this.
 
-- Eric
+Sounds fair, see below.
+
+What the report indicates is a missing PF_MEMALLOC_NOFS and it's
+checked on the ashmem side and added as an exception before going
+to filesystem. On shmem side, no more than a best effort is paid
+on the inteded exception.
+
+--- a/drivers/staging/android/ashmem.c
++++ b/drivers/staging/android/ashmem.c
+@@ -437,6 +437,7 @@ static unsigned long
+ ashmem_shrink_scan(struct shrinker *shrink, struct shrink_control *sc)
+ {
+ 	unsigned long freed = 0;
++	bool nofs;
+ 
+ 	/* We might recurse into filesystem code, so bail out if necessary */
+ 	if (!(sc->gfp_mask & __GFP_FS))
+@@ -445,6 +446,11 @@ ashmem_shrink_scan(struct shrinker *shri
+ 	if (!mutex_trylock(&ashmem_mutex))
+ 		return -1;
+ 
++	/* enter filesystem with caution: nonblock on locking */
++	nofs = current->flags & PF_MEMALLOC_NOFS;
++	if (!nofs)
++		current->flags |= PF_MEMALLOC_NOFS;
++
+ 	while (!list_empty(&ashmem_lru_list)) {
+ 		struct ashmem_range *range =
+ 			list_first_entry(&ashmem_lru_list, typeof(*range), lru);
+@@ -472,6 +478,8 @@ ashmem_shrink_scan(struct shrinker *shri
+ 	}
+ 	mutex_unlock(&ashmem_mutex);
+ out:
++	if (!nofs)
++		current->flags &= ~PF_MEMALLOC_NOFS;
+ 	return freed;
+ }
+ 
+--- a/mm/shmem.c
++++ b/mm/shmem.c
+@@ -2728,7 +2728,12 @@ static long shmem_fallocate(struct file
+ 	if (mode & ~(FALLOC_FL_KEEP_SIZE | FALLOC_FL_PUNCH_HOLE))
+ 		return -EOPNOTSUPP;
+ 
+-	inode_lock(inode);
++	if (current->flags & PF_MEMALLOC_NOFS) {
++		/* this exception needs a best effort and no more */
++		if (!inode_trylock(inode))
++			return -EBUSY;
++	} else
++		inode_lock(inode);
+ 
+ 	if (mode & FALLOC_FL_PUNCH_HOLE) {
+ 		struct address_space *mapping = file->f_mapping;
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
