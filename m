@@ -1,95 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92374220785
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jul 2020 10:38:11 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43A5122079D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jul 2020 10:42:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1A1EE8AA49;
-	Wed, 15 Jul 2020 08:38:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 99A038AE1A;
+	Wed, 15 Jul 2020 08:42:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pQ898RwgTnLC; Wed, 15 Jul 2020 08:38:09 +0000 (UTC)
+	with ESMTP id IBBTvifZDW85; Wed, 15 Jul 2020 08:42:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B8C6A8AA34;
-	Wed, 15 Jul 2020 08:38:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0E7E58ADFE;
+	Wed, 15 Jul 2020 08:42:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 04C6F1BF407
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 08:38:08 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9196A1BF407
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 08:42:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id F3B6A8AA3D
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 08:38:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 852CE20510
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 08:42:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 04fr-8Vy8nZS for <devel@linuxdriverproject.org>;
- Wed, 15 Jul 2020 08:38:03 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C1F3189D1B
- for <devel@driverdev.osuosl.org>; Wed, 15 Jul 2020 08:38:03 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 06F8W7kg147701;
- Wed, 15 Jul 2020 08:37:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=0oIcIHic/n+18h7D2ez3Bk061rU2Mlnb/HJIfCwCVqU=;
- b=c5VIn3MtRNPOEhDMfEao95+zv9V3kIYxMcRBq6EDrPNQzGsumpbNqdjgju1O/oCBpdMx
- 8Ku3ZlFWL64vWQcTS2hobf2++tYJaP0ccPSC3FekTWvdYu5eFk7LMEiy42Pi7A9fxfIF
- +VpJDL/B+ImOoY6MAUA5jbPgRY3acGVp/NdbWDsOck2eRZdwTf8KKo7ggfxBIcqAIQgj
- A6igT30WtACoCgBCsX2LrucRHqxrGxuOmMCN1V8F9cAmn74V4QVmfGxZ1WV5br2gZUWN
- VcaEVTneH1nDxhaCdKh+8OUcbEIUxKXUKKf3NA50CAaGGhdnDl0iIC9IlxubYeO78C6F 8Q== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2130.oracle.com with ESMTP id 3274ura2kv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 15 Jul 2020 08:37:56 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 06F8XeDp042497;
- Wed, 15 Jul 2020 08:37:56 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 327q6tytyk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 15 Jul 2020 08:37:56 +0000
-Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 06F8bt7d017390;
- Wed, 15 Jul 2020 08:37:55 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 15 Jul 2020 01:37:54 -0700
-Date: Wed, 15 Jul 2020 11:37:27 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2] staging: gasket: core: Fix a coding style issue in
- gasket_core.c
-Message-ID: <20200715083727.GY2549@kadam>
-References: <20200617161127.32006-1-zhixu001@126.com>
- <20200714234440.27009-1-zhixu001@126.com>
- <20200715071748.GC2305231@kroah.com>
- <23ef3ca9616418b702df891443d0f4864edd58ff.camel@perches.com>
- <20200715075755.GA2516028@kroah.com>
+ with ESMTP id yl1CcvqXuC9Q for <devel@linuxdriverproject.org>;
+ Wed, 15 Jul 2020 08:42:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lj1-f195.google.com (mail-lj1-f195.google.com
+ [209.85.208.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 724DD203F3
+ for <devel@driverdev.osuosl.org>; Wed, 15 Jul 2020 08:42:06 +0000 (UTC)
+Received: by mail-lj1-f195.google.com with SMTP id r19so1596136ljn.12
+ for <devel@driverdev.osuosl.org>; Wed, 15 Jul 2020 01:42:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Dh5uuKPcBQ93XIoeGbLQVCWZw7SmH2LeLngrc8vlsaU=;
+ b=dC/womSB6cUdKgWDALcDXJkLV9BDxtnTs6Du7QkX55kbmyMDsyfJzp5k08+776L3EP
+ 0hgwoup0xhvtZSjtIhd5b8EN/2nsdCOCrCGpK1CyKPZ9zWGZUflzTmmuzVyXyqAe82uf
+ VwUhAhnWIl5EJDOgulV/wUisMuBrTALhfoMbFLsolnmz4BLD5dalR3eZTkmtZU9JiLZ3
+ bo/nmcjPVx34CxJENRA5ZfqEw7G2jIEWonD7flW4aoK83MMGi9njwCrD/5RxS9l1s/jn
+ 8yFhRbOHUCXzzaH0s2vwNJRIB9sQ9i24yiMgFIYnem1++kp9QVtphW77oro/UFO/CmLB
+ 50mQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Dh5uuKPcBQ93XIoeGbLQVCWZw7SmH2LeLngrc8vlsaU=;
+ b=Fgt6+Hev3Z9XSQ2AYwREU7BJH1/ILanxmQcmF7OXkAvaTleErobIn1Vhf40T+4SnU9
+ Y2rdYCQfgbpsp163Kt1/CKCymBMtpJ4RirKpiNTlhp/FyJzw8OVfp+Zhj+7ea5Lj4KzR
+ 9Gnd30V4KXeP6clsdShKbUEY8YfPYrh+lwTx5PMU/LP10yzM8jgcMuHdZtvM+EwC4DCU
+ JUh06Zqf9CZBB0SHDiwNJmct20YMELAZ6T9OZXfqgzKZOc/GIn6cbRCvHAit5GgMYtN7
+ DKBdZCgUgn+nuaCqmqWkxRDDPakr1caf2vLxwyrrwdaj7+/Cvx4f64gdJM45Zu53tCCd
+ stDA==
+X-Gm-Message-State: AOAM531xduhtVYNAErNm+d5wt8V74D98Fy3ZUkw47aR7tHkhqNb8h3PG
+ I/x1b4JXOloc54M7Bfau5Opxk7WdFVf+ed73UEV8ng==
+X-Google-Smtp-Source: ABdhPJx5py6+AL8ZGheslkm2utmIviqSjjRR/GgkPHvC9Kn6qWBAu1xb6CamzJx5lBHZ+q2niheh19pjfq37cwwCwkA=
+X-Received: by 2002:a2e:6f19:: with SMTP id k25mr4503553ljc.443.1594802524312; 
+ Wed, 15 Jul 2020 01:42:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200715075755.GA2516028@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9682
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- suspectscore=0
- phishscore=0 malwarescore=0 mlxlogscore=999 bulkscore=0 mlxscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2007150072
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9682
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 impostorscore=0
- suspectscore=0 phishscore=0 spamscore=0 mlxlogscore=999 malwarescore=0
- mlxscore=0 priorityscore=1501 adultscore=0 bulkscore=0 clxscore=1015
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2007150072
+References: <20200715044813.fww3regsgsbgyp7b@pesu-pes-edu>
+ <20200715070842.GA2303720@kroah.com>
+ <CAAhDqq3u_0wCRGDaWRGgtC6bkx6t+AubAXfnX_f7V0t10BRuuA@mail.gmail.com>
+ <20200715083144.GA2716443@kroah.com>
+In-Reply-To: <20200715083144.GA2716443@kroah.com>
+From: B K Karthik <bkkarthik@pesu.pes.edu>
+Date: Wed, 15 Jul 2020 04:41:52 -0400
+Message-ID: <CAAhDqq1hwtgqyOnfx__OFgTkm9QDs0or-Zg76cMojShCYRAN2w@mail.gmail.com>
+Subject: Re: [PATCH] staging: comedi: comedi_fops.c: changed type in
+ assignment to unsigned int *
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,48 +84,126 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Zhixu Zhao <zhixu001@126.com>, rcy@google.com, rspringer@google.com,
- Joe Perches <joe@perches.com>, toddpoynor@google.com
+Cc: devel@driverdev.osuosl.org, Xiyu Yang <xiyuyang19@fudan.edu.cn>,
+ linux-kernel@vger.kernel.org, Ian Abbott <abbotti@mev.co.uk>,
+ Al Viro <viro@zeniv.linux.org.uk>, Michel Lespinasse <walken@google.com>,
+ Divyansh Kamboj <kambojdivyansh2000@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jul 15, 2020 at 09:57:55AM +0200, Greg KH wrote:
-> On Wed, Jul 15, 2020 at 12:24:22AM -0700, Joe Perches wrote:
-> > On Wed, 2020-07-15 at 09:17 +0200, Greg KH wrote:
-> > > On Wed, Jul 15, 2020 at 07:44:40AM +0800, Zhixu Zhao wrote:
-> > > > On Thu, Jun 18, 2020 at 12:11:27AM +0800, Zhixu Zhao wrote:
-> > > > > A coding alignment issue is found by checkpatch.pl.
-> > > > > Fix it by using a temporary for gasket_dev->bar_data[bar_num].
-> > > > > 
-> > > > > Signed-off-by: Zhixu Zhao <zhixu001@126.com>
-> > > > 
-> > > > Hi, there~
-> > > > 
-> > > > Does anybody have any further comments on this?
-> > > > Can it be merged?
-> > > 
-> > > I never saw the first version of this, are you sure it got sent to the
-> > > mailing list?  It's not in any archives anywhere.
-> > 
-> > I saw it.  It's here:
-> > https://lore.kernel.org/lkml/20200617161127.32006-1-zhixu001@126.com/
-> 
-> Ah, doh, sorry.
-> 
-> Zhixu, please address the comments given to you on the series and resend
-> it as a new version.
+On Wed, Jul 15, 2020 at 4:31 AM Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+>
+> On Wed, Jul 15, 2020 at 01:56:45PM +0530, B K Karthik wrote:
+> > On Wed, Jul 15, 2020, 12:38 PM Greg Kroah-Hartman <
+> > gregkh@linuxfoundation.org> wrote:
+> >
+> > > On Wed, Jul 15, 2020 at 12:48:13AM -0400, B K Karthik wrote:
+> > > > fixed a sparse warning by changing the type in
+> > > > assignment from void [noderef] __user * to unsigned int *
+> > > > (different address space)
+> > > >
+> > > > Signed-off-by: B K Karthik <karthik.bk2000@live.com>
+> > > > ---
+> > > >  drivers/staging/comedi/comedi_fops.c | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/staging/comedi/comedi_fops.c
+> > > b/drivers/staging/comedi/comedi_fops.c
+> > > > index 3f70e5dfac39..4cc012e231b7 100644
+> > > > --- a/drivers/staging/comedi/comedi_fops.c
+> > > > +++ b/drivers/staging/comedi/comedi_fops.c
+> > > > @@ -2956,7 +2956,7 @@ static int get_compat_cmd(struct comedi_cmd *cmd,
+> > > >       cmd->scan_end_arg = v32.scan_end_arg;
+> > > >       cmd->stop_src = v32.stop_src;
+> > > >       cmd->stop_arg = v32.stop_arg;
+> > > > -     cmd->chanlist = compat_ptr(v32.chanlist);
+> > > > +     cmd->chanlist = (unsigned int *) compat_ptr(v32.chanlist);
+> > > >       cmd->chanlist_len = v32.chanlist_len;
+> > > >       cmd->data = compat_ptr(v32.data);
+> > > >       cmd->data_len = v32.data_len;
+> > >
+> > > Always run your patches through checkpatch before sending them, so you
+> > > do not have a grumpy maintainer telling you that you have to run
+> > > checkpatch on your patch before sending them.
+> > >
+> >
+> > I will. Sorry for that.
+> >
+> > But the error that's being shown in this patch is something that comes up
+> > on its own.
+>
+> No it is not.
+>
+> > git format-patch leaves trailing whitespace in blank lines.
+>
+> It does?  Where is any trailing whitespace here?  That's not the issue.
 
-He responded but not as a reply to my email.  It turns out I made a
-mistake.
+To give you an example,
+https://lore.kernel.org/lkml/20200714132350.naekk4zqivpuaedi@pesu-pes-edu/
+was a patch i submitted recently.
+This is what checkpatch has to say:
 
-Anyway, just resend, Zhixu.
+$ perl scripts/checkpatch.pl -f
+../cbridge/1407d/1/0001-drivers-staging-media-atomisp-pci-css_2401_system-ho.patch
+ERROR: trailing whitespace
+#21: FILE: ../cbridge/1407d/1/0001-drivers-staging-media-atomisp-pci-css_2401_system-ho.patch:21:
++ $
 
-regards,
-dan carpenter
+ERROR: trailing whitespace
+#23: FILE: ../cbridge/1407d/1/0001-drivers-staging-media-atomisp-pci-css_2401_system-ho.patch:23:
++ $
 
+ERROR: trailing whitespace
+#30: FILE: ../cbridge/1407d/1/0001-drivers-staging-media-atomisp-pci-css_2401_system-ho.patch:30:
++ $
+
+ERROR: trailing whitespace
+#37: FILE: ../cbridge/1407d/1/0001-drivers-staging-media-atomisp-pci-css_2401_system-ho.patch:37:
++ $
+
+ERROR: trailing whitespace
+#44: FILE: ../cbridge/1407d/1/0001-drivers-staging-media-atomisp-pci-css_2401_system-ho.patch:44:
++ $
+
+ERROR: trailing whitespace
+#51: FILE: ../cbridge/1407d/1/0001-drivers-staging-media-atomisp-pci-css_2401_system-ho.patch:51:
++-- $
+
+total: 6 errors, 0 warnings, 53 lines checked
+
+NOTE: For some of the reported defects, checkpatch may be able to
+      mechanically convert to the typical style using --fix or --fix-inplace.
+
+NOTE: Whitespace errors detected.
+      You may wish to use scripts/cleanpatch or scripts/cleanfile
+
+../cbridge/1407d/1/0001-drivers-staging-media-atomisp-pci-css_2401_system-ho.patch
+has style problems, please review.
+
+NOTE: If any of the errors are false positives, please report
+      them to the maintainer, see CHECKPATCH in MAINTAINERS.
+
+Does this happen only to patches I make? Am I making a silly mistake
+while making a patch?
+I use 'git format-patch -1' to generate the patch file.
+If I am going wrong somewhere, please let me know.
+
+>
+> > It has been reported to the maintainers.
+>
+> It was?  Where?
+
+I am extremely sorry, I should have verified if it was indeed reported
+before telling it out.
+It has not been reported (yet).
+I apologise for my mistake.
+
+thanks,
+
+karthik
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
