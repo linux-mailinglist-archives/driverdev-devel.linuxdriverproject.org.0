@@ -1,57 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03A89221762
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jul 2020 23:54:56 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 411FD221879
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 01:37:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6081222855;
-	Wed, 15 Jul 2020 21:54:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B2E7989301;
+	Wed, 15 Jul 2020 23:37:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b+hYF-gSZcsm; Wed, 15 Jul 2020 21:54:52 +0000 (UTC)
+	with ESMTP id 9ChMqhR_0kOv; Wed, 15 Jul 2020 23:37:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BFF3320452;
-	Wed, 15 Jul 2020 21:54:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 68F30891B9;
+	Wed, 15 Jul 2020 23:37:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2DC0F1BF3D2
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 21:54:49 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6ECE01BF2FB
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 23:37:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 24A218AE7C
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 21:54:49 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6B16323077
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 23:37:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qR+SR3BQZVeb for <devel@linuxdriverproject.org>;
- Wed, 15 Jul 2020 21:54:48 +0000 (UTC)
+ with ESMTP id GUEEg6Qq7WCV for <devel@linuxdriverproject.org>;
+ Wed, 15 Jul 2020 23:37:07 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from host.itspace.be (host.itspace.be [79.137.66.94])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 063AE8AE76
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 21:54:48 +0000 (UTC)
-Received: from [142.147.97.153] (unknown [142.147.97.153])
- by host.itspace.be (Postfix) with ESMTPA id 5309BC58BE5
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 20:18:43 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=deficharleroi.eu;
- s=default; t=1594837123;
- bh=nVteHk+AuHfS9z6pAQGdwUvA6aYOMRPgWfP7dTg5V9c=; l=2367;
- h=Subject:To:From;
- b=WpOQ9r84y03GkpYyASKEiXKrwmYKbUHeeHoCuZaETw78M233MzMUuXLVqwKovX315
- A9iEf6J6UewBUhji+yhnMIWftYbCZdosLQmXDlfQ7NWc8ea5UXHpqiwToSBHjEIsrU
- ZRu7Y4WZaebVO1ISFiIHG8cPzRJXljfl4qR4kJcc=
-Authentication-Results: host.itspace.be;
- spf=pass (sender IP is 142.147.97.153) smtp.mailfrom=jgillard@deficharleroi.eu
- smtp.helo=[142.147.97.153]
-Received-SPF: pass (host.itspace.be: connection is authenticated)
+Received: from www262.sakura.ne.jp (www262.sakura.ne.jp [202.181.97.72])
+ by silver.osuosl.org (Postfix) with ESMTPS id E154C2042E
+ for <devel@driverdev.osuosl.org>; Wed, 15 Jul 2020 23:37:06 +0000 (UTC)
+Received: from fsav108.sakura.ne.jp (fsav108.sakura.ne.jp [27.133.134.235])
+ by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 06FNas9G083247;
+ Thu, 16 Jul 2020 08:36:54 +0900 (JST)
+ (envelope-from penguin-kernel@I-love.SAKURA.ne.jp)
+Received: from www262.sakura.ne.jp (202.181.97.72)
+ by fsav108.sakura.ne.jp (F-Secure/fsigk_smtp/550/fsav108.sakura.ne.jp);
+ Thu, 16 Jul 2020 08:36:54 +0900 (JST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/fsav108.sakura.ne.jp)
+Received: from [192.168.1.9] (M106072142033.v4.enabler.ne.jp [106.72.142.33])
+ (authenticated bits=0)
+ by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTPSA id 06FNarZT083239
+ (version=TLSv1.2 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+ Thu, 16 Jul 2020 08:36:54 +0900 (JST)
+ (envelope-from penguin-kernel@I-love.SAKURA.ne.jp)
+Subject: [PATCH] binder: Don't use mmput() from shrinker function.
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Arve Hjonnevag <arve@android.com>, Todd Kjos <tkjos@android.com>,
+ Martijn Coenen <maco@android.com>, Joel Fernandes <joel@joelfernandes.org>,
+ Christian Brauner <christian@brauner.io>, Michal Hocko <mhocko@kernel.org>
+References: <0000000000001fbbb605aa805c9b@google.com>
+From: Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>
+Message-ID: <5ce3ee90-333e-638d-ac8c-cd6d7ab7aa3b@I-love.SAKURA.ne.jp>
+Date: Thu, 16 Jul 2020 08:36:52 +0900
+User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Hello
-To: devel@linuxdriverproject.org
-From: "Smith Kabila" <jgillard@deficharleroi.eu>
-Date: Wed, 15 Jul 2020 11:18:40 -0700
-Message-Id: <20200715215449.24A218AE7C@hemlock.osuosl.org>
+In-Reply-To: <0000000000001fbbb605aa805c9b@google.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,24 +71,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: smithmai785@gmail.com
+Cc: mark.rutland@arm.com,
+ "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ linux-mm <linux-mm@kvack.org>, alexander.shishkin@linux.intel.com,
+ syzbot <syzbot+e5344baa319c9a96edec@syzkaller.appspotmail.com>,
+ syzkaller-bugs@googlegroups.com, linux-kernel@vger.kernel.org, acme@kernel.org,
+ peterz@infradead.org, mingo@redhat.com, namhyung@kernel.org, jolsa@redhat.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good day,
+syzbot is reporting that mmput() from shrinker function has a risk of
+deadlock [1]. Don't start synchronous teardown of mm when called from
+shrinker function.
+
+[1] https://syzkaller.appspot.com/bug?id=bc9e7303f537c41b2b0cc2dfcea3fc42964c2d45
+
+Reported-by: syzbot <syzbot+1068f09c44d151250c33@syzkaller.appspotmail.com>
+Reported-by: syzbot <syzbot+e5344baa319c9a96edec@syzkaller.appspotmail.com>
+Signed-off-by: Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>
+---
+ drivers/android/binder_alloc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
+index 42c672f1584e..cbe6aa77d50d 100644
+--- a/drivers/android/binder_alloc.c
++++ b/drivers/android/binder_alloc.c
+@@ -947,7 +947,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
+ 		trace_binder_unmap_user_end(alloc, index);
+ 	}
+ 	mmap_read_unlock(mm);
+-	mmput(mm);
++	mmput_async(mm);
  
-Please permit me the time and chance to introduce myself to you. My name is Smith Kabila from Sudan in Africa, I am 16yrs of age(Male), but am presently staying in Ghana. My late father Michael Kabila was the owner of the diamond-mining co-operation company in Sudan. As a result of this, he was killed by the rebels in my country because of the political unrest in my country. Before his death, he deposited a consignment that contained, AU Gold Dust, which quantity is 950kg and a huge sum of money, in a security company in London-England, but my late father deposited it as family belongings and that was the information he told my mother as at the time of deposit, not until about one year after his death that we found out in a secret diary the true contents and the documents showing the deposit of the consignments in the security company. Like my beloved mother narrated to me, my uncles had taken over all that my father left for me over there in Sudan and I cannot go back there 
- because of the current war.
+ 	trace_binder_unmap_kernel_start(alloc, index);
  
-Just two weeks ago the security company was able to contact me and said my uncles reached out to them and trying to make claim but was declined because I am the next of kin. They are trying to take advantage of me as the only child because my mother and father got separated while I was very young.
- 
-Also during the time of deposit, my father stated in the documents that the consignment should only be released to me when I am 16yrs but I must present a foreign investor/partner who can stand as my guardian to help me invest the money in any meaningful/lucrative business in your country and also help me come over to further my education.
- 
-Right now I am not safe here and due to my bad health condition, I cannot handle this all by myself. This is why I came to seek for a trust person to stand as my foreign beneficiary/partner to receive this for me and help me invest in any profitable business in your country because this is my only hope and source of livelihood. I was lucky to have you among the list of good people out there on the humanitarian child support game which I participated as the winner.
- 
-I am anxiously waiting to hear from you so that I can forward all documentation and tell you how to make claim.
+-- 
+2.18.4
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
