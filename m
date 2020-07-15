@@ -1,64 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C9352213ED
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jul 2020 20:05:55 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88D142214CB
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jul 2020 21:02:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DA17F23119;
-	Wed, 15 Jul 2020 18:05:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 47F678B68C;
+	Wed, 15 Jul 2020 19:02:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6MYA04cPtATK; Wed, 15 Jul 2020 18:05:51 +0000 (UTC)
+	with ESMTP id NDWBhzPkDuyU; Wed, 15 Jul 2020 19:02:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E9CB320440;
-	Wed, 15 Jul 2020 18:05:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0F08F8B5D2;
+	Wed, 15 Jul 2020 19:02:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D09E21BF380
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 18:05:46 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A81001BF380
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 19:01:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BCAA92052F
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 18:05:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9F56D8B554
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 19:01:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dh3s1dh3O2dM for <devel@linuxdriverproject.org>;
- Wed, 15 Jul 2020 18:05:45 +0000 (UTC)
+ with ESMTP id dgIH7643gIof for <devel@linuxdriverproject.org>;
+ Wed, 15 Jul 2020 19:01:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0214.hostedemail.com
- [216.40.44.214])
- by silver.osuosl.org (Postfix) with ESMTPS id 5659220440
- for <devel@driverdev.osuosl.org>; Wed, 15 Jul 2020 18:05:45 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave06.hostedemail.com (Postfix) with ESMTP id 84B6E80073C7
- for <devel@driverdev.osuosl.org>; Wed, 15 Jul 2020 17:29:44 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay08.hostedemail.com (Postfix) with ESMTP id 0E7EF182CF666;
- Wed, 15 Jul 2020 17:29:42 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1437:1515:1516:1518:1534:1542:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3354:3870:3876:4321:5007:10004:10400:10848:11026:11657:11658:11914:12043:12297:12555:12683:12760:12986:13439:14181:14394:14659:14721:21080:21451:21611:21627:30054,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:11, LUA_SUMMARY:none
-X-HE-Tag: talk52_34038dd26efb
-X-Filterd-Recvd-Size: 3501
-Received: from XPS-9350.home (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf12.hostedemail.com (Postfix) with ESMTPA;
- Wed, 15 Jul 2020 17:29:41 +0000 (UTC)
-Message-ID: <818bbd25924f0c733a4a39d426fd30392d4eae80.camel@perches.com>
-Subject: [PATCH] staging: rtl*/security: Use static const in array declarations
-From: Joe Perches <joe@perches.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>
-Date: Wed, 15 Jul 2020 10:29:37 -0700
-User-Agent: Evolution 3.36.3-0ubuntu1 
+Received: from host.itspace.be (host.itspace.be [79.137.66.94])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7F0BD8B546
+ for <devel@driverdev.osuosl.org>; Wed, 15 Jul 2020 19:01:57 +0000 (UTC)
+Received: from [142.147.97.153] (unknown [142.147.97.153])
+ by host.itspace.be (Postfix) with ESMTPA id 44197CA9788
+ for <devel@driverdev.osuosl.org>; Wed, 15 Jul 2020 20:18:42 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=deficharleroi.eu;
+ s=default; t=1594837122;
+ bh=nVteHk+AuHfS9z6pAQGdwUvA6aYOMRPgWfP7dTg5V9c=; l=2367;
+ h=Subject:To:From;
+ b=Dke9FLoZq8GW7b9reP1HTcm6wXKrJFTgv4Q16H45O3vYfSE/XwFcuI4Bg4cVuENG2
+ YlQWNEYT23qNq0z5ghqvxNtDz5hw5HYSDRnmus05GAQdYMVt9Px0ly6GkkLg3Ljan3
+ ErNcYuQA6x67z3Sd1y5OA6sbKqGk8Jn2Qv8CFdLY=
+Authentication-Results: host.itspace.be;
+ spf=pass (sender IP is 142.147.97.153) smtp.mailfrom=jgillard@deficharleroi.eu
+ smtp.helo=[142.147.97.153]
+Received-SPF: pass (host.itspace.be: connection is authenticated)
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: Hello
+To: devel@driverdev.osuosl.org
+From: "Smith Kabila" <jgillard@deficharleroi.eu>
+Date: Wed, 15 Jul 2020 11:18:39 -0700
+Message-Id: <20200715190158.9F56D8B554@whitealder.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,90 +64,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel <devel@driverdev.osuosl.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Reply-To: smithmai785@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Use static const in declarations where appropriate.
-
-Signed-off-by: Joe Perches <joe@perches.com>
----
- drivers/staging/rtl8188eu/core/rtw_security.c | 4 ++--
- drivers/staging/rtl8712/rtl871x_security.c    | 2 +-
- drivers/staging/rtl8723bs/core/rtw_security.c | 6 +++---
- 3 files changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/core/rtw_security.c b/drivers/staging/rtl8188eu/core/rtw_security.c
-index f9139f72b3a7..3483c3d9cb56 100644
---- a/drivers/staging/rtl8188eu/core/rtw_security.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_security.c
-@@ -734,7 +734,7 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
- /******** SBOX Table *********/
- /*****************************/
+Good day,
  
--static  u8 sbox_table[256] = {
-+static const u8 sbox_table[256] = {
- 	0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5,
- 	0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76,
- 	0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0,
-@@ -817,7 +817,7 @@ static void next_key(u8 *key, int round)
- {
- 	u8 rcon;
- 	u8 sbox_key[4];
--	u8 rcon_table[12] = {
-+	static const u8 rcon_table[12] = {
- 		0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80,
- 		0x1b, 0x36, 0x36, 0x36
- 	};
-diff --git a/drivers/staging/rtl8712/rtl871x_security.c b/drivers/staging/rtl8712/rtl871x_security.c
-index 73e3d5ef3af2..c05010d85212 100644
---- a/drivers/staging/rtl8712/rtl871x_security.c
-+++ b/drivers/staging/rtl8712/rtl871x_security.c
-@@ -762,7 +762,7 @@ static void next_key(u8 *key, sint round)
- {
- 	u8 rcon;
- 	u8 sbox_key[4];
--	u8 rcon_table[12] = {
-+	static const u8 rcon_table[12] = {
- 		0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80,
- 		0x1b, 0x36, 0x36, 0x36
- 	};
-diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c b/drivers/staging/rtl8723bs/core/rtw_security.c
-index ec9122070e58..7f74e1d05b3a 100644
---- a/drivers/staging/rtl8723bs/core/rtw_security.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_security.c
-@@ -10,7 +10,7 @@
- #include <drv_types.h>
- #include <rtw_debug.h>
+Please permit me the time and chance to introduce myself to you. My name is Smith Kabila from Sudan in Africa, I am 16yrs of age(Male), but am presently staying in Ghana. My late father Michael Kabila was the owner of the diamond-mining co-operation company in Sudan. As a result of this, he was killed by the rebels in my country because of the political unrest in my country. Before his death, he deposited a consignment that contained, AU Gold Dust, which quantity is 950kg and a huge sum of money, in a security company in London-England, but my late father deposited it as family belongings and that was the information he told my mother as at the time of deposit, not until about one year after his death that we found out in a secret diary the true contents and the documents showing the deposit of the consignments in the security company. Like my beloved mother narrated to me, my uncles had taken over all that my father left for me over there in Sudan and I cannot go back there because 
+ of the current war.
  
--static const char *_security_type_str[] = {
-+static const char * const _security_type_str[] = {
- 	"N/A",
- 	"WEP40",
- 	"TKIP",
-@@ -842,7 +842,7 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
- /******** SBOX Table *********/
- /*****************************/
+Just two weeks ago the security company was able to contact me and said my uncles reached out to them and trying to make claim but was declined because I am the next of kin. They are trying to take advantage of me as the only child because my mother and father got separated while I was very young.
  
--	static  u8 sbox_table[256] = {
-+	static const u8 sbox_table[256] = {
- 			0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5,
- 			0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76,
- 			0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0,
-@@ -957,7 +957,7 @@ static void next_key(u8 *key, sint round)
- {
- 		u8 rcon;
- 		u8 sbox_key[4];
--		u8 rcon_table[12] = {
-+		static const u8 rcon_table[12] = {
- 			0x01, 0x02, 0x04, 0x08,
- 			0x10, 0x20, 0x40, 0x80,
- 			0x1b, 0x36, 0x36, 0x36
-
-
+Also during the time of deposit, my father stated in the documents that the consignment should only be released to me when I am 16yrs but I must present a foreign investor/partner who can stand as my guardian to help me invest the money in any meaningful/lucrative business in your country and also help me come over to further my education.
+ 
+Right now I am not safe here and due to my bad health condition, I cannot handle this all by myself. This is why I came to seek for a trust person to stand as my foreign beneficiary/partner to receive this for me and help me invest in any profitable business in your country because this is my only hope and source of livelihood. I was lucky to have you among the list of good people out there on the humanitarian child support game which I participated as the winner.
+ 
+I am anxiously waiting to hear from you so that I can forward all documentation and tell you how to make claim.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
