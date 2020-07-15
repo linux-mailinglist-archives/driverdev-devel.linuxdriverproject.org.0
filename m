@@ -1,66 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A045D22163E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jul 2020 22:31:59 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 03A89221762
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Jul 2020 23:54:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4449388031;
-	Wed, 15 Jul 2020 20:31:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6081222855;
+	Wed, 15 Jul 2020 21:54:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v5SToP9Ad1SQ; Wed, 15 Jul 2020 20:31:58 +0000 (UTC)
+	with ESMTP id b+hYF-gSZcsm; Wed, 15 Jul 2020 21:54:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AAF2E87E24;
-	Wed, 15 Jul 2020 20:31:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BFF3320452;
+	Wed, 15 Jul 2020 21:54:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D24B91BF40F
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 20:31:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2DC0F1BF3D2
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 21:54:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C01A987E36
- for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 20:31:55 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 24A218AE7C
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 21:54:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iZ0m0+CIbWGy for <devel@linuxdriverproject.org>;
- Wed, 15 Jul 2020 20:31:54 +0000 (UTC)
+ with ESMTP id qR+SR3BQZVeb for <devel@linuxdriverproject.org>;
+ Wed, 15 Jul 2020 21:54:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from hera.aquilenet.fr (hera.aquilenet.fr [185.233.100.1])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 693B987DCC
- for <devel@driverdev.osuosl.org>; Wed, 15 Jul 2020 20:31:54 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by hera.aquilenet.fr (Postfix) with ESMTP id 413A92FE3;
- Wed, 15 Jul 2020 22:31:51 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
-Received: from hera.aquilenet.fr ([127.0.0.1])
- by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ibs7Zj-7XLWF; Wed, 15 Jul 2020 22:31:50 +0200 (CEST)
-Received: from function (lfbn-bor-1-797-11.w86-234.abo.wanadoo.fr
- [86.234.239.11])
- by hera.aquilenet.fr (Postfix) with ESMTPSA id 6A5032FCD;
- Wed, 15 Jul 2020 22:31:50 +0200 (CEST)
-Received: from samy by function with local (Exim 4.94)
- (envelope-from <samuel.thibault@ens-lyon.org>)
- id 1jvo4D-000k9L-Cw; Wed, 15 Jul 2020 22:31:49 +0200
-Date: Wed, 15 Jul 2020 22:31:49 +0200
-From: Samuel Thibault <samuel.thibault@ens-lyon.org>
-To: "Alexander A. Klimov" <grandmaster@al2klimov.de>
-Subject: Re: [PATCH] Staging: speakup: Replace HTTP links with HTTPS ones
-Message-ID: <20200715203149.b6cmsku5lfrx56rm@function>
-Mail-Followup-To: Samuel Thibault <samuel.thibault@ens-lyon.org>,
- "Alexander A. Klimov" <grandmaster@al2klimov.de>,
- w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca,
- gregkh@linuxfoundation.org, speakup@linux-speakup.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-References: <20200713091305.32708-1-grandmaster@al2klimov.de>
+Received: from host.itspace.be (host.itspace.be [79.137.66.94])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 063AE8AE76
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 21:54:48 +0000 (UTC)
+Received: from [142.147.97.153] (unknown [142.147.97.153])
+ by host.itspace.be (Postfix) with ESMTPA id 5309BC58BE5
+ for <devel@linuxdriverproject.org>; Wed, 15 Jul 2020 20:18:43 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=deficharleroi.eu;
+ s=default; t=1594837123;
+ bh=nVteHk+AuHfS9z6pAQGdwUvA6aYOMRPgWfP7dTg5V9c=; l=2367;
+ h=Subject:To:From;
+ b=WpOQ9r84y03GkpYyASKEiXKrwmYKbUHeeHoCuZaETw78M233MzMUuXLVqwKovX315
+ A9iEf6J6UewBUhji+yhnMIWftYbCZdosLQmXDlfQ7NWc8ea5UXHpqiwToSBHjEIsrU
+ ZRu7Y4WZaebVO1ISFiIHG8cPzRJXljfl4qR4kJcc=
+Authentication-Results: host.itspace.be;
+ spf=pass (sender IP is 142.147.97.153) smtp.mailfrom=jgillard@deficharleroi.eu
+ smtp.helo=[142.147.97.153]
+Received-SPF: pass (host.itspace.be: connection is authenticated)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200713091305.32708-1-grandmaster@al2klimov.de>
-Organization: I am not organized
-User-Agent: NeoMutt/20170609 (1.8.3)
+Content-Description: Mail message body
+Subject: Hello
+To: devel@linuxdriverproject.org
+From: "Smith Kabila" <jgillard@deficharleroi.eu>
+Date: Wed, 15 Jul 2020 11:18:40 -0700
+Message-Id: <20200715215449.24A218AE7C@hemlock.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,61 +64,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kirk@reisers.ca, gregkh@linuxfoundation.org,
- speakup@linux-speakup.org, linux-kernel@vger.kernel.org,
- chris@the-brannons.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: smithmai785@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-QWxleGFuZGVyIEEuIEtsaW1vdiwgbGUgbHVuLiAxMyBqdWlsLiAyMDIwIDExOjEzOjA1ICswMjAw
-LCBhIGVjcml0Ogo+IFJhdGlvbmFsZToKPiBSZWR1Y2VzIGF0dGFjayBzdXJmYWNlIG9uIGtlcm5l
-bCBkZXZzIG9wZW5pbmcgdGhlIGxpbmtzIGZvciBNSVRNCj4gYXMgSFRUUFMgdHJhZmZpYyBpcyBt
-dWNoIGhhcmRlciB0byBtYW5pcHVsYXRlLgo+IAo+IERldGVybWluaXN0aWMgYWxnb3JpdGhtOgo+
-IEZvciBlYWNoIGZpbGU6Cj4gICBJZiBub3QgLnN2ZzoKPiAgICAgRm9yIGVhY2ggbGluZToKPiAg
-ICAgICBJZiBkb2Vzbid0IGNvbnRhaW4gYFxieG1sbnNcYmA6Cj4gICAgICAgICBGb3IgZWFjaCBs
-aW5rLCBgXGJodHRwOi8vW14jIFx0XHJcbl0qKD86XHd8LylgOgo+IAkgIElmIG5laXRoZXIgYFxi
-Z251XC5vcmcvbGljZW5zZWAsIG5vciBgXGJtb3ppbGxhXC5vcmcvTVBMXGJgOgo+ICAgICAgICAg
-ICAgIElmIGJvdGggdGhlIEhUVFAgYW5kIEhUVFBTIHZlcnNpb25zCj4gICAgICAgICAgICAgcmV0
-dXJuIDIwMCBPSyBhbmQgc2VydmUgdGhlIHNhbWUgY29udGVudDoKPiAgICAgICAgICAgICAgIFJl
-cGxhY2UgSFRUUCB3aXRoIEhUVFBTLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEFsZXhhbmRlciBBLiBL
-bGltb3YgPGdyYW5kbWFzdGVyQGFsMmtsaW1vdi5kZT4KClJldmlld2VkLWJ5OiBTYW11ZWwgVGhp
-YmF1bHQgPHNhbXVlbC50aGliYXVsdEBlbnMtbHlvbi5vcmc+CgpUaGFua3MhCgo+IC0tLQo+ICBD
-b250aW51aW5nIG15IHdvcmsgc3RhcnRlZCBhdCA5MzQzMWUwNjA3ZTUuCj4gIFNlZSBhbHNvOiBn
-aXQgbG9nIC0tb25lbGluZSAnLS1hdXRob3I9QWxleGFuZGVyIEEuIEtsaW1vdiA8Z3JhbmRtYXN0
-ZXJAYWwya2xpbW92LmRlPicgdjUuNy4ubWFzdGVyCj4gIChBY3R1YWxseSBsZXR0aW5nIGEgc2hl
-bGwgZm9yIGxvb3Agc3VibWl0IGFsbCB0aGlzIHN0dWZmIGZvciBtZS4pCj4gCj4gIElmIHRoZXJl
-IGFyZSBhbnkgVVJMcyB0byBiZSByZW1vdmVkIGNvbXBsZXRlbHkgb3IgYXQgbGVhc3Qgbm90IGp1
-c3QgSFRUUFNpZmllZDoKPiAgSnVzdCBjbGVhcmx5IHNheSBzbyBhbmQgSSdsbCAqdW5kbyBteSBj
-aGFuZ2UqLgo+ICBTZWUgYWxzbzogaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMjAvNi8yNy82NAo+
-IAo+ICBJZiB0aGVyZSBhcmUgYW55IHZhbGlkLCBidXQgeWV0IG5vdCBjaGFuZ2VkIFVSTHM6Cj4g
-IFNlZTogaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMjAvNi8yNi84MzcKPiAKPiAgSWYgeW91IGFw
-cGx5IHRoZSBwYXRjaCwgcGxlYXNlIGxldCBtZSBrbm93Lgo+IAo+ICBTb3JyeSBhZ2FpbiB0byBh
-bGwgbWFpbnRhaW5lcnMgd2hvIGNvbXBsYWluZWQgYWJvdXQgc3ViamVjdCBsaW5lcy4KPiAgTm93
-IEkgcmVhbGl6ZWQgdGhhdCB5b3Ugd2FudCBhbiBhY3R1YWxseSBwZXJmZWN0IHByZWZpeGVzLAo+
-ICBub3QganVzdCBzdWJzeXN0ZW0gb25lcy4KPiAgSSB0cmllZCBteSBiZXN0Li4uCj4gIEFuZCB5
-ZXMsICpJIGNvdWxkKiAoYXQgbGVhc3QgaGFsZi0pYXV0b21hdGUgaXQuCj4gIEltcG9zc2libGUg
-aXMgbm90aGluZyEgOikKPiAKPiAKPiAgZHJpdmVycy9zdGFnaW5nL3NwZWFrdXAvc3BrZ3VpZGUu
-dHh0IHwgMiArLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
-LSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3NwZWFrdXAvc3BrZ3VpZGUudHh0
-IGIvZHJpdmVycy9zdGFnaW5nL3NwZWFrdXAvc3BrZ3VpZGUudHh0Cj4gaW5kZXggMWU2MjJjZDM0
-MzYzLi4zNzgyZjZhMDllOTcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL3NwZWFrdXAv
-c3BrZ3VpZGUudHh0Cj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL3NwZWFrdXAvc3BrZ3VpZGUudHh0
-Cj4gQEAgLTE1MzEsNyArMTUzMSw3IEBAIFRoZSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb24gbWF5
-IHB1Ymxpc2ggbmV3LCByZXZpc2VkIHZlcnNpb25zCj4gIG9mIHRoZSBHTlUgRnJlZSBEb2N1bWVu
-dGF0aW9uIExpY2Vuc2UgZnJvbSB0aW1lIHRvIHRpbWUuICBTdWNoIG5ldwo+ICB2ZXJzaW9ucyB3
-aWxsIGJlIHNpbWlsYXIgaW4gc3Bpcml0IHRvIHRoZSBwcmVzZW50IHZlcnNpb24sIGJ1dCBtYXkK
-PiAgZGlmZmVyIGluIGRldGFpbCB0byBhZGRyZXNzIG5ldyBwcm9ibGVtcyBvciBjb25jZXJucy4g
-IFNlZQo+IC1odHRwOi8vd3d3LmdudS5vcmcvY29weWxlZnQvLgo+ICtodHRwczovL3d3dy5nbnUu
-b3JnL2NvcHlsZWZ0Ly4KPiAgCj4gIEVhY2ggdmVyc2lvbiBvZiB0aGUgTGljZW5zZSBpcyBnaXZl
-biBhIGRpc3Rpbmd1aXNoaW5nIHZlcnNpb24gbnVtYmVyLgo+ICBJZiB0aGUgRG9jdW1lbnQgc3Bl
-Y2lmaWVzIHRoYXQgYSBwYXJ0aWN1bGFyIG51bWJlcmVkIHZlcnNpb24gb2YgdGhpcwo+IC0tIAo+
-IDIuMjcuMAo+IAoKLS0gClNhbXVlbAogSidhaSB1biBncm9zIHByb2Jsw6htZTogaidhaSBjZXQg
-ZXhlcmNpY2Ugw6AgcmVuZHJlIGRlbWFpbiBsdW5kaSwgbWFpcyBtYQogVEkgODkgbmUgc2FpdCBw
-YXMgbGUgZmFpcmUuLi4KIEVzdC1jZSBxdWUgcXVlbHF1J3VuIHBvdXJyYWl0IG0nYWlkZXI/Pwog
-LSstIE9EIEluIEd1aWRlIGR1IE5ldW5ldSBVc2VuZXQgOiBDb21tZW50IMOnYSAhIElsIGZhdXQg
-csOpZmzDqWNoaXIgPy0rLQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpo
-dHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cml2ZXJkZXYtZGV2ZWwK
+Good day,
+ 
+Please permit me the time and chance to introduce myself to you. My name is Smith Kabila from Sudan in Africa, I am 16yrs of age(Male), but am presently staying in Ghana. My late father Michael Kabila was the owner of the diamond-mining co-operation company in Sudan. As a result of this, he was killed by the rebels in my country because of the political unrest in my country. Before his death, he deposited a consignment that contained, AU Gold Dust, which quantity is 950kg and a huge sum of money, in a security company in London-England, but my late father deposited it as family belongings and that was the information he told my mother as at the time of deposit, not until about one year after his death that we found out in a secret diary the true contents and the documents showing the deposit of the consignments in the security company. Like my beloved mother narrated to me, my uncles had taken over all that my father left for me over there in Sudan and I cannot go back there 
+ because of the current war.
+ 
+Just two weeks ago the security company was able to contact me and said my uncles reached out to them and trying to make claim but was declined because I am the next of kin. They are trying to take advantage of me as the only child because my mother and father got separated while I was very young.
+ 
+Also during the time of deposit, my father stated in the documents that the consignment should only be released to me when I am 16yrs but I must present a foreign investor/partner who can stand as my guardian to help me invest the money in any meaningful/lucrative business in your country and also help me come over to further my education.
+ 
+Right now I am not safe here and due to my bad health condition, I cannot handle this all by myself. This is why I came to seek for a trust person to stand as my foreign beneficiary/partner to receive this for me and help me invest in any profitable business in your country because this is my only hope and source of livelihood. I was lucky to have you among the list of good people out there on the humanitarian child support game which I participated as the winner.
+ 
+I am anxiously waiting to hear from you so that I can forward all documentation and tell you how to make claim.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
