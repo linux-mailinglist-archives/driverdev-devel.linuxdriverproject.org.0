@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25405221D63
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 09:28:35 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9CC3221D70
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 09:30:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BD62388D54;
-	Thu, 16 Jul 2020 07:28:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4DC58226D7;
+	Thu, 16 Jul 2020 07:30:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7lJzW2u8T6Sp; Thu, 16 Jul 2020 07:28:32 +0000 (UTC)
+	with ESMTP id O3VQO5YlH-in; Thu, 16 Jul 2020 07:30:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1048D88259;
-	Thu, 16 Jul 2020 07:28:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 61940207A9;
+	Thu, 16 Jul 2020 07:30:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 038B21BF3BF
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 07:28:30 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 45E691BF3BF
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 07:30:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F3D6C8A1FA
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 07:28:29 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3DD438A51D
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 07:30:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RZsxJYIn-WOO for <devel@linuxdriverproject.org>;
- Thu, 16 Jul 2020 07:28:29 +0000 (UTC)
+ with ESMTP id QNJWfL4PJm0F for <devel@linuxdriverproject.org>;
+ Thu, 16 Jul 2020 07:30:17 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 58F29863B7
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 07:28:29 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 193478A4DB
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 07:30:17 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B91CC206C1;
- Thu, 16 Jul 2020 07:28:28 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D622D206C1;
+ Thu, 16 Jul 2020 07:30:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1594884509;
- bh=SYcdFaf5HdYrp6/CLmW/0Fkwx9KixuSorUJatgNzvIA=;
+ s=default; t=1594884616;
+ bh=mn6iTBJseqW6x95DXLzjCrLI7Ry2VVFhniqqXYPIzaE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Ci71ZpD5S3+QhU/29ZLHmt6sx6CHBBFOvDFGEc8Idi+NVP4ztq8BTut8v79F9OD0a
- UNWgcmqvc5YkyJIBSmdbiNaQ0EhtbhDfD/Du94wgViUkTHqT2jJuQZITVXgcpgrtnT
- 5bChNpquKrkCX06aKWC/AAixLbvSh2ng4sGsm3aI=
-Date: Thu, 16 Jul 2020 09:28:23 +0200
+ b=Phc6jm75BYs2701ce9G8bX4UnXRMO9gP//NOxj7gAtA+SR+gVk+ehe0idhpetsJbC
+ 6qT1RZjEEosqxo95k/Yl4CU/mLc7bykaJGRcZSAU6YGhwz/a2yRCZIMAj+095bxmQv
+ 6PeXnkbT8e99OL/8Dd8AnTc+6KMVnZ5RGOVEV95A=
+Date: Thu, 16 Jul 2020 09:30:10 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Kees Cook <keescook@chromium.org>
-Subject: Re: [PATCH 1/3] usb: gadget: udc: Avoid tasklet passing a global
-Message-ID: <20200716072823.GA971895@kroah.com>
+Subject: Re: [PATCH 3/3] tasklet: Introduce new initialization API
+Message-ID: <20200716073010.GB971895@kroah.com>
 References: <20200716030847.1564131-1-keescook@chromium.org>
- <20200716030847.1564131-2-keescook@chromium.org>
+ <20200716030847.1564131-4-keescook@chromium.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200716030847.1564131-2-keescook@chromium.org>
+In-Reply-To: <20200716030847.1564131-4-keescook@chromium.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,43 +99,51 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jul 15, 2020 at 08:08:45PM -0700, Kees Cook wrote:
-> There's no reason for the tasklet callback to set an argument since it
-> always uses a global. Instead, use the global directly, in preparation
-> for converting the tasklet subsystem to modern callback conventions.
+On Wed, Jul 15, 2020 at 08:08:47PM -0700, Kees Cook wrote:
+> From: Romain Perier <romain.perier@gmail.com>
 > 
+> Nowadays, modern kernel subsystems that use callbacks pass the data
+> structure associated with a given callback as argument to the callback.
+> The tasklet subsystem remains one which passes an arbitrary unsigned
+> long to the callback function. This has several problems:
+> 
+> - This keeps an extra field for storing the argument in each tasklet
+>   data structure, it bloats the tasklet_struct structure with a redundant
+>   .data field
+> 
+> - No type checking can be performed on this argument. Instead of
+>   using container_of() like other callback subsystems, it forces callbacks
+>   to do explicit type cast of the unsigned long argument into the required
+>   object type.
+> 
+> - Buffer overflows can overwrite the .func and the .data field, so
+>   an attacker can easily overwrite the function and its first argument
+>   to whatever it wants.
+> 
+> Add a new tasklet initialization API, via DECLARE_TASKLET() and
+> tasklet_setup(), which will replace the existing ones.
+> 
+> This work is greatly inspired by the timer_struct conversion series,
+> see commit e99e88a9d2b0 ("treewide: setup_timer() -> timer_setup()")
+> 
+> To avoid problems with both -Wcast-function-type (which is enabled in
+> the kernel via -Wextra is several subsystems), and with mismatched
+> function prototypes when build with Control Flow Integrity enabled,
+> this adds the "use_callback" member to let the tasklet caller choose
+> which union member to call through. Once all old API uses are removed,
+> this and the .data member will be removed as well. (On 64-bit this does
+> not grow the struct size as the new member fills the hole after atomic_t,
+> which is also "int" sized.)
+> 
+> Signed-off-by: Romain Perier <romain.perier@gmail.com>
+> Co-developed-by: Allen Pais <allen.lkml@gmail.com>
+> Signed-off-by: Allen Pais <allen.lkml@gmail.com>
+> Co-developed-by: Kees Cook <keescook@chromium.org>
 > Signed-off-by: Kees Cook <keescook@chromium.org>
 > ---
->  drivers/usb/gadget/udc/snps_udc_core.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/usb/gadget/udc/snps_udc_core.c b/drivers/usb/gadget/udc/snps_udc_core.c
-> index 3fcded31405a..afdd28f332ce 100644
-> --- a/drivers/usb/gadget/udc/snps_udc_core.c
-> +++ b/drivers/usb/gadget/udc/snps_udc_core.c
-> @@ -96,9 +96,7 @@ static int stop_pollstall_timer;
->  static DECLARE_COMPLETION(on_pollstall_exit);
->  
->  /* tasklet for usb disconnect */
-> -static DECLARE_TASKLET(disconnect_tasklet, udc_tasklet_disconnect,
-> -		(unsigned long) &udc);
-> -
-> +static DECLARE_TASKLET(disconnect_tasklet, udc_tasklet_disconnect, 0);
->  
->  /* endpoint names used for print */
->  static const char ep0_string[] = "ep0in";
-> @@ -1661,7 +1659,7 @@ static void usb_disconnect(struct udc *dev)
->  /* Tasklet for disconnect to be outside of interrupt context */
->  static void udc_tasklet_disconnect(unsigned long par)
->  {
-> -	struct udc *dev = (struct udc *)(*((struct udc **) par));
-> +	struct udc *dev = udc;
->  	u32 tmp;
->  
->  	DBG(dev, "Tasklet disconnect\n");
-
-Feel free to just take this in your tree, no need to wait for the USB
-stuff to land.
+>  include/linux/interrupt.h | 24 +++++++++++++++++++++++-
+>  kernel/softirq.c          | 18 +++++++++++++++++-
+>  2 files changed, 40 insertions(+), 2 deletions(-)
 
 Reviewed-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 _______________________________________________
