@@ -1,71 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D88D322224E
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 14:21:17 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3130222424
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 15:43:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5320722270;
-	Thu, 16 Jul 2020 12:21:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5649488CA4;
+	Thu, 16 Jul 2020 13:42:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QMfaRopVhjrA; Thu, 16 Jul 2020 12:21:14 +0000 (UTC)
+	with ESMTP id L-1jjNRbhuyL; Thu, 16 Jul 2020 13:42:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 88C15204A5;
-	Thu, 16 Jul 2020 12:21:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DF62B8522B;
+	Thu, 16 Jul 2020 13:42:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 47D181BF3B9
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 12:21:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BEDEC1BF3EE
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 13:42:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3AB6B204A5
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 12:21:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B60AB27085
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 13:42:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5FAvZdkYZ2Ph for <devel@linuxdriverproject.org>;
- Thu, 16 Jul 2020 12:21:08 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic308-56.consmr.mail.ne1.yahoo.com
- (sonic308-56.consmr.mail.ne1.yahoo.com [66.163.187.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 64BF320436
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 12:21:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1594902067; bh=aZ84fmRfVoFrq92VR97+DM2dCDEPW1bCVPLe2xjRENU=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=Q37k1eAZeuCLQjZPlSmUT0K1e4wHXmvbLIcnyEuTmaF5sCmFdyyRNVTd9LympGi3Ejkn2Cl4IX0fO7Wnug485S7FpiKdm9t2T+trc/125TFNbGwMgrscBvc+pJcfvQ2owZqP9lO12kdnmWGu8kFBwt2tewLR/FfslOR2+gfyj2Eb2G+8ldPWp2+8Eb7v/PMoPVOd3rSj0QU9/GVj3c1keqGiIh+mHZO0IMrGNQfwglcp/Re/wy7fr6U5lFAj/0ZyF0VpbehnpeClNmAKeylBi+dKiP8KSYzG+ukr4Dxu1MA7qkAsBxK8i2KOBNdtetsnaOKTWH23fRrGzo7gDG+hZQ==
-X-YMail-OSG: taN3EpMVM1nnhndbgVQFDPsUhAGCawzvgwUmLwYKRnroRRqOP05Rsk6ul9vPnsF
- Dk1puDp_tYTBSmEasZKrv5XljuMdUM7MLGukY0lohunM7RUJPaq23uNUdbFu5Dxb9wEsu4GMM3pz
- fCzPLr1I3eXvCh7t3C9hAJJyc3cfhGyttkpQ1GCfSWX102L49qlfwGTnoiuvtrKuffzqDvkmgq3N
- UpbEf7hl1iwNnjCHsIrouGonBh_dkpybv18aW.55Sl2NWbCHCLb0eisafizrslie0F6ArSlU29Zd
- _zG4tYqDCYciJAFjIuQTItV2uZaEDIvfpT26KibjT.T7tfZw2D5CwgUbWBm8xwdZSh7InVGOg73D
- WSkjnwmLjSlY70gThw2PBcAKZwkOggpxaB2JiONogvDMxQF1VKXHXjldC2TltpC4SJCkCR2jOp54
- wGo65UXbDdkPHR37UlcBNa0_t8rMZlda5FXwnSs9po0vtETvs95SG699d3JZGNG9t7mg9paYspsp
- 46U..5f0P6begE7HQ1KFVDQsnoaqapA5CTJQwYKtJkf8yewo5v8PLYEtvQyLb56gFXVK3ZYcHV64
- MtW7aPNQ3JPTOcY1bHMJ2NNLpmGlDrhqHxn9aafYHtrF_Iz.teYL_YJS3p2d9I_emG7klgowIhZT
- 3nACXsB_Bw7udqDFOmOpaXNJNu6UFZHZoJDJY0r25U0VEIP0dPJqY52GyF1_JBbnydXL7Wk48qaD
- LpStkrzwGrvzkPTDXl.mWoPdsFeonJ63Avnk7DHKQr1UlmrwyGM8koY9g7nyP.Y9mtzYZj1PsLNX
- fqrD9bY2qLbZ949cxx6Z7ua9nDoa4IWNznhMG.EXxI92M.PWhatd7cTplOpEB1Y8I3NlE.aFxgg4
- PI66n6Vh9cjkLF7CZ0Ug3CyV1gM_LfmCAbSCUEVMvBQ31FmbH8QSFjyi9oxyP5H.hddpllUHWVu.
- uluVVceEvIuTTH_Jt.aUIZOz0PBvJSvadUWRTpGMcl9qZv5Wiqncn_bevk6wPh1i0gFB.R_dV0ij
- IxCYFVTyjMn7Dvk1aZSprtXyADgkOW5UuZMUtc9yVGTDaEq924HktSo8LCFJYw30pGRDwGOGn5GJ
- GbfjDQUi7WuSwr3mfAXo793gHsXtGHJWcpVg_SKhPVH4cbSbL0.T0sb6h4Rys1QPAB0z43EXtZT2
- eA7Ehsa8q.QHoP37iqibmcsa2lEn5TjafSiOXvaF1ee8OhhvC2OOvbj3K9z2C5Co3N5Rz458BaFb
- ruQi9vZZXf1ElZFKaehQutySogXeHqa72TSwtm8rOWVD9W6UXR9yA.IddfuKI1iRJ8azd4rm6TA-
- -
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic308.consmr.mail.ne1.yahoo.com with HTTP; Thu, 16 Jul 2020 12:21:07 +0000
-Date: Thu, 16 Jul 2020 12:21:07 +0000 (UTC)
-From: Aisha Gaddafi <mgovo647@yahoo.com>
-Message-ID: <1249055050.2550523.1594902067344@mail.yahoo.com>
-Subject: Hello Dear
+ with ESMTP id GuEuynUAa3vh for <devel@linuxdriverproject.org>;
+ Thu, 16 Jul 2020 13:42:53 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from www262.sakura.ne.jp (www262.sakura.ne.jp [202.181.97.72])
+ by silver.osuosl.org (Postfix) with ESMTPS id 55FFE25CF1
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 13:41:31 +0000 (UTC)
+Received: from fsav108.sakura.ne.jp (fsav108.sakura.ne.jp [27.133.134.235])
+ by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 06GDfHDn085146;
+ Thu, 16 Jul 2020 22:41:17 +0900 (JST)
+ (envelope-from penguin-kernel@i-love.sakura.ne.jp)
+Received: from www262.sakura.ne.jp (202.181.97.72)
+ by fsav108.sakura.ne.jp (F-Secure/fsigk_smtp/550/fsav108.sakura.ne.jp);
+ Thu, 16 Jul 2020 22:41:17 +0900 (JST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/fsav108.sakura.ne.jp)
+Received: from [192.168.1.9] (M106072142033.v4.enabler.ne.jp [106.72.142.33])
+ (authenticated bits=0)
+ by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTPSA id 06GDfGUv085143
+ (version=TLSv1.2 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+ Thu, 16 Jul 2020 22:41:17 +0900 (JST)
+ (envelope-from penguin-kernel@i-love.sakura.ne.jp)
+Subject: Re: [PATCH] binder: Don't use mmput() from shrinker function.
+To: Michal Hocko <mhocko@kernel.org>
+References: <0000000000001fbbb605aa805c9b@google.com>
+ <5ce3ee90-333e-638d-ac8c-cd6d7ab7aa3b@I-love.SAKURA.ne.jp>
+ <20200716083506.GA20915@dhcp22.suse.cz>
+From: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
+Message-ID: <36db7016-98d6-2c6b-110b-b2481fd480ac@i-love.sakura.ne.jp>
+Date: Thu, 16 Jul 2020 22:41:14 +0900
+User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <1249055050.2550523.1594902067344.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16271 YMailNodin Mozilla/5.0 (Windows NT 6.1; Win64;
- x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138
- Safari/537.36
+In-Reply-To: <20200716083506.GA20915@dhcp22.suse.cz>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,32 +70,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mgaddafi034@gmail.com
+Cc: mark.rutland@arm.com,
+ "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>, jolsa@redhat.com,
+ Todd Kjos <tkjos@android.com>, linux-mm <linux-mm@kvack.org>,
+ alexander.shishkin@linux.intel.com,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ syzbot <syzbot+e5344baa319c9a96edec@syzkaller.appspotmail.com>,
+ syzkaller-bugs@googlegroups.com, linux-kernel@vger.kernel.org, acme@kernel.org,
+ peterz@infradead.org, Arve Hjonnevag <arve@android.com>, mingo@redhat.com,
+ Joel Fernandes <joel@joelfernandes.org>, namhyung@kernel.org,
+ Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On 2020/07/16 17:35, Michal Hocko wrote:
+> On Thu 16-07-20 08:36:52, Tetsuo Handa wrote:
+>> syzbot is reporting that mmput() from shrinker function has a risk of
+>> deadlock [1]. Don't start synchronous teardown of mm when called from
+>> shrinker function.
+> 
+> Please add the actual lock dependency to the changelog.
+> 
+> Anyway is this deadlock real? Mayve I have missed some details but the
+> call graph points to these two paths.
+> uprobe_mmap					do_shrink_slab	
+>   uprobes_mmap_hash #lock
+>   install_breakpoint				  binder_shrink_scan
+>     set_swbp					    binder_alloc_free_page
+>       uprobe_write_opcode			      __mmput
+> 	update_ref_ctr				        uprobe_clear_state
+>     	  mutex_lock(&delayed_uprobe_lock)	          mutex_lock(&delayed_uprobe_lock);
+> 	    allocation -> reclaim
+> 
 
+static int update_ref_ctr(struct uprobe *uprobe, struct mm_struct *mm, short d) {
+  mutex_lock(&delayed_uprobe_lock);
+  ret = delayed_uprobe_add(uprobe, mm1) {
+    du = kzalloc(sizeof(*du), GFP_KERNEL) {
+      do_shrink_slab() {
+        binder_shrink_scan() {
+          binder_alloc_free_page() {
+            mmget_not_zero(mm2);
+            mmput(mm2) {
+              __mmput(mm2) {
+                uprobe_clear_state(mm2) {
+                  mutex_lock(&delayed_uprobe_lock);
+                  delayed_uprobe_remove(NULL, mm2);
+                  mutex_unlock(&delayed_uprobe_lock);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  mutex_unlock(&delayed_uprobe_lock);
+}
 
-Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh,
+> But in order for this to happen the shrinker would have to do the last
+> put on the mm. But mm cannot go away from under uprobe_mmap so those two
+> paths cannot race with each other.
 
-Hello Dear
+and mm1 != mm2 is possible, isn't it?
 
-How are you doing today,I came across your e-mail contact prior a private search while in need of your assistance.
- I hope my mail meet you in good condition of health? Dear I have decided to contact you after much thought considering the fact that we have not meet before, but because of some circumstance obliged me, I decided to contact you due to the urgency of my present situation here in the refugee camp for your rescue and also for a business venture/project which I need your assistant in this business establishment in your country as my foreign partner as well as my legal appointed trustee.
+> 
+> Unless I am missing something this is a false positive. I do not mind
+> using mmput_async from the shrinker as a workaround but the changelog
+> should be explicit about the fact.
+> 
 
-I am Aisha Muammar Gaddafi, the only daughter of the embattled president of Libya, Hon. Muammar Gaddafi. Am a single Mother and a Widow with three Children.
- I am currently residing in Burkina Faso unfortunately as a refugee. I am writing this mail with tears and sorrow from my heart asking for your urgent help. I have passed through pains and sorrowful moment since the death of my late father.
+binder_alloc_free_page() is already using mmput_async() 14 lines later.
+It just took 18 months to hit this race for the third time, for it is
+quite difficult to let the owner of mm2 to call mmput(mm2) between
+binder_alloc_free_page() calls mmget_not_zero(mm2) and mmput(mm2).
 
-At the meantime, my family is the target of Western nations led by Nato who wants to destroy my father at all costs. Our investments and bank accounts in several countries are their targets to freeze. My Father of blessed memory deposited the sum of Twenty Seven Million, Five Hundred Thousand, Dollars ($27.500.000.000) in Bank Of Africa Burkina Faso which he used my name as the next of kin. I have been commissioned by the Bank to present an interested foreign investor/partner who can stand as my trustee and receive the fund in his account for a possible investment in his country due to my refugee status here in Burkina Faso.
+The reason I added you is to see whether we can do
 
-I am in search of an honest and reliable person who will help me and stand as my trustee so that I will present him to the Bank for the transfer of the fund to his bank account overseas. I have chosen to contact you after my prayers and I believe that you will not betray my trust. But rather take me as your own sister or daughter. I am willing to negotiate investment/business profit sharing ratio with you base on the future investment earning profits.
-Apologetic for my pictures I will enclose it in my next mail and more about me when I hear from you okay. Please I want you to contact me here (mgaddafi034@gmail.com) for more details.
+ void mmput(struct mm_struct *mm)
+ {
+ 	might_sleep();
++	/* Calling mmput() from shrinker context can deadlock. */
++	WARN_ON(current->flags & PF_MEMALLOC);
+ 
+ 	if (atomic_dec_and_test(&mm->mm_users))
+ 		__mmput(mm);
+ }
 
-best regard
-Yours Sincerely.
-Aisha Gaddafi
+in order to catch this bug easier.
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
