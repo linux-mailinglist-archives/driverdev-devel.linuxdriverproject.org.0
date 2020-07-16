@@ -1,69 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8727B221E80
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 10:35:38 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53086221F24
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 10:58:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A0D628A68B;
-	Thu, 16 Jul 2020 08:35:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 049FD88E89;
+	Thu, 16 Jul 2020 08:58:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M1JyX766il9L; Thu, 16 Jul 2020 08:35:35 +0000 (UTC)
+	with ESMTP id 59VGLHR3IrDG; Thu, 16 Jul 2020 08:58:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 091008A50E;
-	Thu, 16 Jul 2020 08:35:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 03C73872D8;
+	Thu, 16 Jul 2020 08:58:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7C20E1BF312
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 08:35:16 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 855AD1BF312
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 08:58:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 67C1F2041C
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 08:35:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 81F9088E7A
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 08:58:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i-jyKHzNIEfQ for <devel@linuxdriverproject.org>;
- Thu, 16 Jul 2020 08:35:15 +0000 (UTC)
+ with ESMTP id fUUcdgkPfbPa for <devel@linuxdriverproject.org>;
+ Thu, 16 Jul 2020 08:58:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 067FD203CE
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 08:35:15 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id c80so9407144wme.0
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 01:35:14 -0700 (PDT)
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1B634872D8
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 08:58:28 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id cm21so4472112pjb.3
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 01:58:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=rU2AvrUF1MSQNhOVtZSsFfE23nrV3JkloSDmiaF1rgQ=;
+ b=K3HTu2ZmadRX8xzBvryPFb5wAdcUVb0mZ4VBzLUH2tP6diUz22RvUOt0KI03cqJtva
+ ZKtTG4JRONNq9vH0+R6FxNCksupFsjlIpa25bMtCP4y3ZUrUwo8MVneh2tUtcYpMofRx
+ CanUgsDK2xXw7GQQNnQQ1jZ8rcejE41OwnkDhu2iMGSzWq9CaLgW5RJEleHjDLGHNkKs
+ NKiPdNCvxIUlWh6UdqPWeaiZ0Ur36VLTQl+Z6E9SIA+G43rD7GQN/Ftc1+kI4Ixfd139
+ aBPbkXRGA/iBXQSsnpAJQ8lqLB/wHeqaC21gyFRZmzpyi4kltB4hQiko1yM4JqIjxG8p
+ uraw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=SCfJrST46qsDSMEeSPURbguLv5Ok1Ae63n1bRqdpvEU=;
- b=IJqFccBoRvx7f6Ye1RGR9fJGmq2/5p+WEg8CSTKC9SnAuuFJ/ew5AHUJduo9ZVdArw
- xoVTiNkYY9Fdip1z6fFL2L8HbiTbiUZSwVqj7+JtTxzXEzWIaBS3tmLiOEyT4tLlZdp9
- qrPA4s43zM0GtoOxPze8i8mvdLNo1TpwoRuqcf2zxpm3xDEaK6RwjW6D43UkmgExKJKg
- TdRH1LIFmYAjsxCg75j9BKxUvG57bjyVp4VnIbX3GbAzQW5bRMtWaljpMgLgw3v+ufrf
- qDp3ea4eWqBHcz/KbbKqzs1fIR0bjDXS0aUhWkD9Mdh1BWTTe/mN55ePwdAcW/KOy9/e
- o3cw==
-X-Gm-Message-State: AOAM532uwtlWzJ5idgJnqCb7yTAKbLZrlW5hvqWRV3IhkUwsagLR3qWd
- 17j1eqe0U2qJDyl6ldwxvqI=
-X-Google-Smtp-Source: ABdhPJykcwCVuCzDa+1jzmfvr7sUJBVtZnozf/QJbmRYAEOA1BdDzHjM4ShBya82D//FX2ojusDXsg==
-X-Received: by 2002:a1c:f60d:: with SMTP id w13mr3460331wmc.51.1594888513277; 
- Thu, 16 Jul 2020 01:35:13 -0700 (PDT)
-Received: from localhost (ip-37-188-169-187.eurotel.cz. [37.188.169.187])
- by smtp.gmail.com with ESMTPSA id j24sm8302028wrd.43.2020.07.16.01.35.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Jul 2020 01:35:12 -0700 (PDT)
-Date: Thu, 16 Jul 2020 10:35:06 +0200
-From: Michal Hocko <mhocko@kernel.org>
-To: Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>
-Subject: Re: [PATCH] binder: Don't use mmput() from shrinker function.
-Message-ID: <20200716083506.GA20915@dhcp22.suse.cz>
-References: <0000000000001fbbb605aa805c9b@google.com>
- <5ce3ee90-333e-638d-ac8c-cd6d7ab7aa3b@I-love.SAKURA.ne.jp>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=rU2AvrUF1MSQNhOVtZSsFfE23nrV3JkloSDmiaF1rgQ=;
+ b=U4c4m4e10FzZIEvNpsS3YBSyZoifj+SP5l21hSCgO7XBvB3xz6lzG1L8CstbQRQlCi
+ HkZ3fPf20w3cUeCeyy06ZiVKAtmvaH43DLGSEPVOXKaadw5PhDhVp3iZERiBbUIqoPLj
+ kgdSFz+CDdCyd9dHpXiv/O65bm89gWatrKZAMOMJfh2iEQ1T2vw604eeTb/Z1qYjB5Qz
+ 7p0i5SmwFx6XQdWvXsslaqYeqYkmukRJo6mnQfQyO+cI1nLzaNNOyfQG84l+WiJgN3y6
+ 12GDd9qvwrZ7D5bdKnSvWf0M35ZZGQlaxpxPLEphP3hLdif5znwt+ehzebisyZUl9kD7
+ KVGQ==
+X-Gm-Message-State: AOAM533vMqMww8R9J5KIMKi81zKlIcRu1KlEiR1NXFxf0NvJTL8enNqY
+ nUW7toqfmD6RUkUCy2XsK80=
+X-Google-Smtp-Source: ABdhPJw5wys6nZkU2EwXlUQZltuw00zMlClC9BBY3XvLGB5xWrjt9v+5HR5AWIyGOo0u67fCgTVgsA==
+X-Received: by 2002:a17:90a:6448:: with SMTP id
+ y8mr3846953pjm.142.1594889907702; 
+ Thu, 16 Jul 2020 01:58:27 -0700 (PDT)
+Received: from blackclown ([103.88.82.145])
+ by smtp.gmail.com with ESMTPSA id t187sm4364244pgb.76.2020.07.16.01.58.24
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 16 Jul 2020 01:58:26 -0700 (PDT)
+Date: Thu, 16 Jul 2020 14:28:11 +0530
+From: Suraj Upadhyay <usuraj35@gmail.com>
+To: gregkh@linuxfoundation.org, GR-Linux-NIC-Dev@marvell.com,
+ manishc@marvell.com
+Subject: [PATCH] staging: qlge/qlge_main.c: Replace depracated MSI API.
+Message-ID: <20200716085811.GA29239@blackclown>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5ce3ee90-333e-638d-ac8c-cd6d7ab7aa3b@I-love.SAKURA.ne.jp>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,77 +84,81 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mark.rutland@arm.com,
- "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>, jolsa@redhat.com,
- Todd Kjos <tkjos@android.com>, linux-mm <linux-mm@kvack.org>,
- alexander.shishkin@linux.intel.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- syzbot <syzbot+e5344baa319c9a96edec@syzkaller.appspotmail.com>,
- syzkaller-bugs@googlegroups.com, linux-kernel@vger.kernel.org, acme@kernel.org,
- peterz@infradead.org, Arve Hjonnevag <arve@android.com>, mingo@redhat.com,
- Joel Fernandes <joel@joelfernandes.org>, namhyung@kernel.org,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============4502576803810070921=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu 16-07-20 08:36:52, Tetsuo Handa wrote:
-> syzbot is reporting that mmput() from shrinker function has a risk of
-> deadlock [1]. Don't start synchronous teardown of mm when called from
-> shrinker function.
 
-Please add the actual lock dependency to the changelog.
+--===============4502576803810070921==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="k+w/mQv8wyuph6w0"
+Content-Disposition: inline
 
-Anyway is this deadlock real? Mayve I have missed some details but the
-call graph points to these two paths.
-uprobe_mmap					do_shrink_slab	
-  uprobes_mmap_hash #lock
-  install_breakpoint				  binder_shrink_scan
-    set_swbp					    binder_alloc_free_page
-      uprobe_write_opcode			      __mmput
-	update_ref_ctr				        uprobe_clear_state
-    	  mutex_lock(&delayed_uprobe_lock)	          mutex_lock(&delayed_uprobe_lock);
-	    allocation -> reclaim
 
-But in order for this to happen the shrinker would have to do the last
-put on the mm. But mm cannot go away from under uprobe_mmap so those two
-paths cannot race with each other.
+--k+w/mQv8wyuph6w0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Unless I am missing something this is a false positive. I do not mind
-using mmput_async from the shrinker as a workaround but the changelog
-should be explicit about the fact.
+Replace the depracated MSI API pci_enable_msi()
+with pci_alloc_irq_vectors().
 
-> [1] https://syzkaller.appspot.com/bug?id=bc9e7303f537c41b2b0cc2dfcea3fc42964c2d45
-> 
-> Reported-by: syzbot <syzbot+1068f09c44d151250c33@syzkaller.appspotmail.com>
-> Reported-by: syzbot <syzbot+e5344baa319c9a96edec@syzkaller.appspotmail.com>
-> Signed-off-by: Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>
-> ---
->  drivers/android/binder_alloc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
-> index 42c672f1584e..cbe6aa77d50d 100644
-> --- a/drivers/android/binder_alloc.c
-> +++ b/drivers/android/binder_alloc.c
-> @@ -947,7 +947,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
->  		trace_binder_unmap_user_end(alloc, index);
->  	}
->  	mmap_read_unlock(mm);
-> -	mmput(mm);
-> +	mmput_async(mm);
->  
->  	trace_binder_unmap_kernel_start(alloc, index);
->  
-> -- 
-> 2.18.4
-> 
+Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
+---
+ drivers/staging/qlge/qlge_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
--- 
-Michal Hocko
-SUSE Labs
+diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_m=
+ain.c
+index f7e26defb844..44ef00f1f8ee 100644
+--- a/drivers/staging/qlge/qlge_main.c
++++ b/drivers/staging/qlge/qlge_main.c
+@@ -3181,7 +3181,7 @@ static void ql_enable_msix(struct ql_adapter *qdev)
+ msi:
+ 	qdev->intr_count =3D 1;
+ 	if (qlge_irq_type =3D=3D MSI_IRQ) {
+-		if (!pci_enable_msi(qdev->pdev)) {
++		if (pci_alloc_irq_vectors(qdev->pdev, 1, 1, PCI_IRQ_MSI) >=3D 0) {
+ 			set_bit(QL_MSI_ENABLED, &qdev->flags);
+ 			netif_info(qdev, ifup, qdev->ndev,
+ 				   "Running with MSI interrupts.\n");
+--=20
+2.17.1
+
+
+--k+w/mQv8wyuph6w0
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl8QFqMACgkQ+gRsbIfe
+747zow//ZLAF3gs132hkWk5iOyoAp9G/oCE0GXRsND9P4To3CoYUuX5be27oZdzR
++JGvWRf2sraAene3fa+VweceoGu4kEX5mRVzRSRfAP9r/ah6Vug1bAAZ6zPFeeTx
+XFjiRqGFIDev2h5WNnGEnQQZWCtzCJbHu3+cImEkgMnfQjGOy+iPU/xJieBBQkY7
+/zMTb3+C//3VG7y1KhsW8+Wet+zv8xuPRtn+bUrNoja8Ak9pY32IThgyRu3UiNE7
+eiVvXnCz+VRF2lHP0J5lGBssZHjqni6IZ500rYxWLkATtEbN3nC73CuAx1XgIIMV
++cm/a+3y4aY8XBbPnXsG0OkxIXI5B/vsEJtGUyR5to7DVv2oPsLTPp24QVHFftqM
+vQk0wS7cZmOCTYtOJcaGMVWo8wvY2TNk4U5L7KGu5BEXHRxFkkFtD6uARS5CcciR
+lyOkNQH2dcwm+9/JD5fvGJAHL3XMnI9C3v9ludnW+GiyOrM7wZPH+6rayh+pgb/K
+PF2Ts5a/cdyjX3bfOk/xlTZZdbPT7kr4ML6AKu3+smZVoU4Jq2wLUrykuZqxcB/N
+fBIl0bSPNsqAGxKDAIN9/GYX85nlNrHoRBEgX5HYS+6lSxHBIqOmEv1YvrxmvOa5
+pcrR9R17bWpX9uW6Ndjggi4VXkfSRPfaexAUxP48zdNhA8LiaMg=
+=0UMt
+-----END PGP SIGNATURE-----
+
+--k+w/mQv8wyuph6w0--
+
+--===============4502576803810070921==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============4502576803810070921==--
