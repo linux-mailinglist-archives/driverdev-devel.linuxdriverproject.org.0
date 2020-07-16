@@ -1,73 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 730322226AE
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 17:18:07 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 75AFF2226EB
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 17:26:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7EB238B323;
-	Thu, 16 Jul 2020 15:18:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AC7CF8AA7C;
+	Thu, 16 Jul 2020 15:25:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CR2autWfn5h3; Thu, 16 Jul 2020 15:18:04 +0000 (UTC)
+	with ESMTP id AAJ946CMRRIC; Thu, 16 Jul 2020 15:25:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C29E18B2F7;
-	Thu, 16 Jul 2020 15:18:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 217098AA39;
+	Thu, 16 Jul 2020 15:25:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AD5731BF38D
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 15:18:01 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 508EB1BF38D
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 15:25:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A9C018B2EF
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 15:18:01 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 447C325ED0
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 15:25:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5VLkL6n-xKnU for <devel@linuxdriverproject.org>;
- Thu, 16 Jul 2020 15:18:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
- [209.85.221.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A68978B2EB
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 15:18:00 +0000 (UTC)
-Received: by mail-wr1-f65.google.com with SMTP id z15so7444261wrl.8
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 08:18:00 -0700 (PDT)
+ with ESMTP id pOsGZhhtW-eq for <devel@linuxdriverproject.org>;
+ Thu, 16 Jul 2020 15:25:55 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id E011823BC0
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 15:25:55 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id o22so4838706pjw.2
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 08:25:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
+ h=from:date:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=RMKMbC5jYSfPNsKIURX7KQu3FS04i/MQG7VAJB3u/Kg=;
+ b=XurTJMQXdm8hRwI+aCQKonbNg+WUWjOVflr2fLG+ZlavH5vJ3sZWzyX8e+3lQT6nww
+ Fqaj31wduC2ih/0GDg1qJMsLORsBrfa9THtII199vpWx1MCYgYjsB4Zer9F0fd+/9zwJ
+ JtBNxeGVCMYFrwK2cFVnWg3Bt1uR53YWvWjQ+L6502WZcuvEkX1zhOn3zFxCdFrtZuIm
+ tgso+MFNt5TccK0rKHVHCf15jJO02Sfz3O7no3Nrq0H5WM6Qq7osal444fjhMmWUmZG3
+ FwYshoN8R/vGAbjfoJOF8pUWL/EJ9PmS3O4VRft+4l0vnVI35R7kDBnuB3K9O+I07Kl/
+ mFag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=0H5Bd3kw4GjkewKQ3kKww4Zq5793dgkMaSPrkSNreRc=;
- b=FA55dmi3Z8cKxjprW0WE+oUBKrXoH6JIwnvdfL3cRM6is23PEPX+kEH3ZujTXoHG+3
- OoFvc0tsd2+UDWGNl5bPVasdL9dBBDQqbyNh3G/9RNN1MN3RhI1Y0WQTlpQcR705VB2j
- wK0g4GTtCEojs97Yeg91kR+76n2pHuFl07wZSrLwHGwPQ8JXUz+Q1lZczlsRqoggDrRn
- TdPpZKz8rgz2V6IyHRtXYHeEG2nFhhWAECDgYlP8rWJn8qExT1DlcV4NHDKi/49X1MLA
- dNM86TPYtBw2TLk38tcx06c9S8mgd5cj6/QQLrtdV8rrHzyFkxPyr+XDSdGKIkTAD6Gw
- 2rLQ==
-X-Gm-Message-State: AOAM5305N8j3D1Y0U1K9yRx6PfHYmTDneufFGUU2ugHK7k5xXVMThbSo
- 7WrUZL9vvh8gG1JacHSVcfo=
-X-Google-Smtp-Source: ABdhPJzWAPL7nRYRrf93ZSHHh8l/vk69TykNKhpQHF5kPWiSF8g7Pw9z/3d4LZQMoR+WzcGZhBSj6Q==
-X-Received: by 2002:adf:8521:: with SMTP id 30mr5325964wrh.238.1594912679077; 
- Thu, 16 Jul 2020 08:17:59 -0700 (PDT)
-Received: from localhost (ip-37-188-169-187.eurotel.cz. [37.188.169.187])
- by smtp.gmail.com with ESMTPSA id b17sm9755636wrp.32.2020.07.16.08.17.57
+ h=x-gm-message-state:from:date:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=RMKMbC5jYSfPNsKIURX7KQu3FS04i/MQG7VAJB3u/Kg=;
+ b=ONp7qFyK2StmqqYw7cyarB31aopc2o9jMkavnahsoihUUrY+WCJKuIzlWO3rSSFBZV
+ sFX5u9c8sd+EhPoHMxRAUJkbCvDMA5dQppXYiP+HvUgq/RCitFiAHJ+nxU/OPCDo2QQC
+ ve6kgHDpAbgEq6uzHgB2z/4hnK0viVdr0UP7pa4OlDNHdlXBptPWFcM1UqF7ZYUXqBKU
+ a54oBDIfYNLVal8ZgRsw06mTjcFFEC48jBjedB8ElzHgck5j0IO5cXL7gDnvFQn3IBGs
+ cocrrBWloJF4TaHqfmJD6GNLZU/wTUkW/xvLIUHah6dfjhlkYf+yRz62uUGBLzg2sFqC
+ 6hFQ==
+X-Gm-Message-State: AOAM531C+jeGQhofZNfm+u/H2L/WhpjWvY02yCedkEKkpoogl60Omk8l
+ AgYzLDLTaSTNLG8xG3Jyh112qQ==
+X-Google-Smtp-Source: ABdhPJw5Sm980CfM4G+paonG0HR3QSkTZxo5X/EFbD+kPoIcLmEZimn9jiNJgAXAORDPwlyuaB3YZQ==
+X-Received: by 2002:a17:90b:196:: with SMTP id t22mr753125pjs.13.1594913155420; 
+ Thu, 16 Jul 2020 08:25:55 -0700 (PDT)
+Received: from localhost ([2406:7400:73:bebb:9750:968d:7cd5:3ec7])
+ by smtp.gmail.com with ESMTPSA id c207sm5162589pfb.159.2020.07.16.08.25.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Jul 2020 08:17:57 -0700 (PDT)
-Date: Thu, 16 Jul 2020 17:17:56 +0200
-From: Michal Hocko <mhocko@kernel.org>
-To: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
-Subject: Re: [PATCH v2] binder: Don't use mmput() from shrinker function.
-Message-ID: <20200716151756.GO31089@dhcp22.suse.cz>
-References: <0000000000001fbbb605aa805c9b@google.com>
- <5ce3ee90-333e-638d-ac8c-cd6d7ab7aa3b@I-love.SAKURA.ne.jp>
- <20200716083506.GA20915@dhcp22.suse.cz>
- <36db7016-98d6-2c6b-110b-b2481fd480ac@i-love.sakura.ne.jp>
- <20200716135445.GN31089@dhcp22.suse.cz>
- <4ba9adb2-43f5-2de0-22de-f6075c1fab50@i-love.sakura.ne.jp>
+ Thu, 16 Jul 2020 08:25:53 -0700 (PDT)
+From: B K Karthik <bkkarthik@pesu.pes.edu>
+X-Google-Original-From: B K Karthik <karthik.bk2000@live.com>
+Date: Thu, 16 Jul 2020 11:25:48 -0400
+To: Ian Abbott <abbotti@mev.co.uk>,
+ H Hartley Sweeten <hsweeten@visionengravers.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Al Viro <viro@zeniv.linux.org.uk>, Vlastimil Babka <vbabka@suse.cz>,
+ Xiyu Yang <xiyuyang19@fudan.edu.cn>, Michel Lespinasse <walken@google.com>,
+ Divyansh Kamboj <kambojdivyansh2000@gmail.com>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v4] staging: comedi: comedi_fops.c: added casts to get rid of
+ sparse warnings
+Message-ID: <20200716152548.mzau4zhurwkzp5p6@pesu-pes-edu>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4ba9adb2-43f5-2de0-22de-f6075c1fab50@i-love.sakura.ne.jp>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,66 +91,96 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mark.rutland@arm.com,
- "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>, jolsa@redhat.com,
- Todd Kjos <tkjos@android.com>, linux-mm <linux-mm@kvack.org>,
- alexander.shishkin@linux.intel.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- syzbot <syzbot+e5344baa319c9a96edec@syzkaller.appspotmail.com>,
- syzkaller-bugs@googlegroups.com, linux-kernel@vger.kernel.org, acme@kernel.org,
- peterz@infradead.org, Arve Hjonnevag <arve@android.com>, mingo@redhat.com,
- Joel Fernandes <joel@joelfernandes.org>, namhyung@kernel.org,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3866557070342924446=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri 17-07-20 00:12:15, Tetsuo Handa wrote:
-> syzbot is reporting that mmput() from shrinker function has a risk of
-> deadlock [1], for delayed_uprobe_add() from update_ref_ctr() calls
-> kzalloc(GFP_KERNEL) with delayed_uprobe_lock held, and
-> uprobe_clear_state() from __mmput() also holds delayed_uprobe_lock.
-> 
-> Commit a1b2289cef92ef0e ("android: binder: drop lru lock in isolate
-> callback") replaced mmput() with mmput_async() in order to avoid sleeping
-> with spinlock held. But this patch replaces mmput() with mmput_async() in
-> order not to start __mmput() from shrinker context.
-> 
-> [1] https://syzkaller.appspot.com/bug?id=bc9e7303f537c41b2b0cc2dfcea3fc42964c2d45
-> 
-> Reported-by: syzbot <syzbot+1068f09c44d151250c33@syzkaller.appspotmail.com>
-> Reported-by: syzbot <syzbot+e5344baa319c9a96edec@syzkaller.appspotmail.com>
-> Signed-off-by: Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>
 
-Reviewed-by: Michal Hocko <mhocko@suse.com>
+--===============3866557070342924446==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jmkhzignupuhzb25"
+Content-Disposition: inline
 
-Thanks!
 
-> ---
->  drivers/android/binder_alloc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
-> index 42c672f1584e..cbe6aa77d50d 100644
-> --- a/drivers/android/binder_alloc.c
-> +++ b/drivers/android/binder_alloc.c
-> @@ -947,7 +947,7 @@ enum lru_status binder_alloc_free_page(struct list_head *item,
->  		trace_binder_unmap_user_end(alloc, index);
->  	}
->  	mmap_read_unlock(mm);
-> -	mmput(mm);
-> +	mmput_async(mm);
->  
->  	trace_binder_unmap_kernel_start(alloc, index);
->  
-> -- 
-> 2.18.4
+--jmkhzignupuhzb25
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
--- 
-Michal Hocko
-SUSE Labs
+fixed sparse warnings by adding a cast in assignment from
+void [noderef] __user * to unsigned int __force *
+and a reverse cast in argument from
+unsigned int * to  unsigned int __user * .
+
+v1 -> v2:
+- Add a reverse cast in argument
+v2 -> v3:
+- Change commit description as suggested by Ian Abott
+v3 -> v4:
+- Add versioning information in commit description
+
+Signed-off-by: B K Karthik <karthik.bk2000@live.com>
+---
+ drivers/staging/comedi/comedi_fops.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/=
+comedi_fops.c
+index 3f70e5dfac39..9cdc1e8a022d 100644
+--- a/drivers/staging/comedi/comedi_fops.c
++++ b/drivers/staging/comedi/comedi_fops.c
+@@ -2956,7 +2956,7 @@ static int get_compat_cmd(struct comedi_cmd *cmd,
+ 	cmd->scan_end_arg =3D v32.scan_end_arg;
+ 	cmd->stop_src =3D v32.stop_src;
+ 	cmd->stop_arg =3D v32.stop_arg;
+-	cmd->chanlist =3D compat_ptr(v32.chanlist);
++	cmd->chanlist =3D (unsigned int __force *)compat_ptr(v32.chanlist);
+ 	cmd->chanlist_len =3D v32.chanlist_len;
+ 	cmd->data =3D compat_ptr(v32.data);
+ 	cmd->data_len =3D v32.data_len;
+@@ -2983,7 +2983,7 @@ static int put_compat_cmd(struct comedi32_cmd_struct =
+__user *cmd32,
+ 	v32.stop_src =3D cmd->stop_src;
+ 	v32.stop_arg =3D cmd->stop_arg;
+ 	/* Assume chanlist pointer is unchanged. */
+-	v32.chanlist =3D ptr_to_compat(cmd->chanlist);
++	v32.chanlist =3D ptr_to_compat((unsigned int __user *)cmd->chanlist);
+ 	v32.chanlist_len =3D cmd->chanlist_len;
+ 	v32.data =3D ptr_to_compat(cmd->data);
+ 	v32.data_len =3D cmd->data_len;
+--=20
+2.20.1
+
+
+--jmkhzignupuhzb25
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl8QcXwACgkQ471Q5AHe
+Z2pXMwv/dD/m/gD6ll7ullSAXYCoCM7i9lvWbRpA9dp3rk3rmqQnig1pL0sM5NfN
+O+ce32drCrgL41P41bKYbZA5FzaLZnsyobrp+4uDIN4dsy+tYOxqXevIW1+7la0F
+8NsA3hbZwrTWlxXCuiGysLN3axa7/ZkVFTdgvbmo1QyZaWIUn0GEGM9Pu/+VuHJu
+X6zo0C4wgdHdxwAVOWE9q8Rf7AVC+cqLCmD32+OvyAxDONgdflijKJRJaFYnBitv
+9tcxrrvxMDcFcUp3k03NIeMj6gtyOmXjR8/6jSouGolkdwPSXe5en1f6WkciGC1N
+D6WsfImiVaOzrtZG73ga7dUPyRqj5Ra0KA2MZSuPLks1H6dGz1W4gzCO0r1FRGM0
+acxoIlW0fuFDnX2qUehcLN7ZnFy3dnVazNzzKqE3jSUIJ0Drzwljr4udE7btBITO
+LCzrHlJJVZHeUpGam5Wf/1SvDoKk0sf15Y9TGLEWXc4HYnw7ghC12L4JdvBbeKxg
+uOH84aY2
+=RRHD
+-----END PGP SIGNATURE-----
+
+--jmkhzignupuhzb25--
+
+--===============3866557070342924446==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============3866557070342924446==--
