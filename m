@@ -2,60 +2,50 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC6CF2225EE
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 16:40:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AC1F422262B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 16:51:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3031F89113;
-	Thu, 16 Jul 2020 14:40:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2CAB48914B;
+	Thu, 16 Jul 2020 14:51:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qp7LR73JcTYa; Thu, 16 Jul 2020 14:39:59 +0000 (UTC)
+	with ESMTP id XNuER7AOVxs0; Thu, 16 Jul 2020 14:51:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 12A6A890CA;
-	Thu, 16 Jul 2020 14:39:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2949F890F8;
+	Thu, 16 Jul 2020 14:51:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C4CDC1BF2F6
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 14:39:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3CA501BF2F6
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 14:51:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C1172890CA
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 14:39:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 39171890F8
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 14:51:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 70u_9KWSOkDQ for <devel@linuxdriverproject.org>;
- Thu, 16 Jul 2020 14:39:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 523E589090
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 14:39:56 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 921A5206F4;
- Thu, 16 Jul 2020 14:39:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1594910396;
- bh=8iw2omV+8rcbIE2y5sg+rVi5KY6cy+c5PEsFn625WuY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=wTqQV6KUMnjpRsu1sz4//WWIEsxgic8HNIIfQe05WfEVGsAvcynFS7DsrPSkizuIB
- MzjhcxIOYPk1cDld8mdlE/11Pi2/xcEneZ9IDPOckuftgUI2K2hKFrWyHzAR8Yim71
- nPKtVOpo6CY6nidbg3xc87XIG6JxJWCx55F8urts=
-Date: Thu, 16 Jul 2020 16:39:49 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: B K Karthik <bkkarthik@pesu.pes.edu>
-Subject: Re: [PATCH v3] staging: comedi: comedi_fops.c: added casts to get
- rid of sparse warnings
-Message-ID: <20200716143949.GA2230084@kroah.com>
-References: <20200716141747.wewrnejrygosqhd5@pesu-pes-edu>
- <20200716142537.GA2176745@kroah.com>
- <CAAhDqq3EeWGOJHaW37iQN5UgmvTf3AP10fhrVdJ5GuYjBt8f3w@mail.gmail.com>
+ with ESMTP id dT0HSVBVzF_0 for <devel@linuxdriverproject.org>;
+ Thu, 16 Jul 2020 14:51:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4A13D8910C
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 14:51:43 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1jw5EY-0008Au-F2; Thu, 16 Jul 2020 14:51:38 +0000
+From: Colin King <colin.king@canonical.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
+ devel@driverdev.osuosl.org
+Subject: [PATCH] media: atomisp: fix mask and shift operation on ISPSSPM0
+Date: Thu, 16 Jul 2020 15:51:38 +0100
+Message-Id: <20200716145138.1708693-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAAhDqq3EeWGOJHaW37iQN5UgmvTf3AP10fhrVdJ5GuYjBt8f3w@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,50 +58,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Xiyu Yang <xiyuyang19@fudan.edu.cn>,
- linux-kernel@vger.kernel.org, Ian Abbott <abbotti@mev.co.uk>,
- Al Viro <viro@zeniv.linux.org.uk>, Michel Lespinasse <walken@google.com>,
- Divyansh Kamboj <kambojdivyansh2000@gmail.com>,
- Vlastimil Babka <vbabka@suse.cz>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 16, 2020 at 10:28:06AM -0400, B K Karthik wrote:
-> On Thu, Jul 16, 2020 at 10:25 AM Greg Kroah-Hartman
-> <gregkh@linuxfoundation.org> wrote:
-> >
-> > On Thu, Jul 16, 2020 at 10:17:47AM -0400, B K Karthik wrote:
-> > > fixed sparse warnings by adding a cast in assignment from
-> > > void [noderef] __user * to unsigned int __force *
-> > > and a reverse cast in argument from
-> > > unsigned int * to  unsigned int __user * .
-> > >
-> > > Signed-off-by: B K Karthik <karthik.bk2000@live.com>
-> > > ---
-> > >  drivers/staging/comedi/comedi_fops.c | 4 ++--
-> > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > What changed from previous versions?
-> 
-> As Ian Abbott said "Minor quibble: the reverse cast is actually from
-> unsigned int * to"
-> 
-> Hence this is a change in the commit description.
+From: Colin Ian King <colin.king@canonical.com>
 
-How was anyone supposed to know this?  :)
+Currently the check on bits 25:24 on ISPSSPM0 is always 0 because
+the mask and shift operations are incorrect. Fix this by shifting
+by MRFLD_ISPSSPM0_ISPSSS_OFFSET (24 bits right) and then masking
+with RFLD_ISPSSPM0_ISPSSC_MASK (0x03) to get the appropriate 2 bits
+to check.
 
-> > That always goes below the --- line.
-> 
-> I did not understand this sir, can you please clarify?
+Addresses-Coverity: ("Operands don't affect result")
+Fixes: 0f441fd70b1e ("media: atomisp: simplify the power down/up code")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/staging/media/atomisp/pci/atomisp_v4l2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Please read the documentation for how to properly version patches, it's
-in the submitting patches document.  Do that and send a v4 for this.
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
+index d36809a0182c..a59d11aa232d 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
+@@ -755,7 +755,7 @@ static int atomisp_mrfld_power(struct atomisp_device *isp, bool enable)
+ 
+ 		/* Wait until ISPSSPM0 bit[25:24] shows the right value */
+ 		iosf_mbi_read(BT_MBI_UNIT_PMC, MBI_REG_READ, MRFLD_ISPSSPM0, &tmp);
+-		tmp = (tmp & MRFLD_ISPSSPM0_ISPSSC_MASK) >> MRFLD_ISPSSPM0_ISPSSS_OFFSET;
++		tmp = (tmp >> MRFLD_ISPSSPM0_ISPSSS_OFFSET) & MRFLD_ISPSSPM0_ISPSSC_MASK;
+ 		if (tmp == val) {
+ 			trace_ipu_cstate(enable);
+ 			return 0;
+-- 
+2.27.0
 
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
