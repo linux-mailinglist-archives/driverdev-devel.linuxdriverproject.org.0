@@ -2,83 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75AFF2226EB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 17:26:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B948D2226FC
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 17:29:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AC7CF8AA7C;
-	Thu, 16 Jul 2020 15:25:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 48C9B8AA89;
+	Thu, 16 Jul 2020 15:29:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AAJ946CMRRIC; Thu, 16 Jul 2020 15:25:59 +0000 (UTC)
+	with ESMTP id HDvBqwhoDR5y; Thu, 16 Jul 2020 15:29:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 217098AA39;
-	Thu, 16 Jul 2020 15:25:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BADF88AA33;
+	Thu, 16 Jul 2020 15:29:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 508EB1BF38D
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 15:25:57 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 11B701BF38D
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 15:29:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 447C325ED0
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 15:25:57 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0D89C875DF
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 15:29:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pOsGZhhtW-eq for <devel@linuxdriverproject.org>;
- Thu, 16 Jul 2020 15:25:55 +0000 (UTC)
+ with ESMTP id oZh6bWjOcH9o for <devel@linuxdriverproject.org>;
+ Thu, 16 Jul 2020 15:29:45 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
- [209.85.216.66])
- by silver.osuosl.org (Postfix) with ESMTPS id E011823BC0
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 15:25:55 +0000 (UTC)
-Received: by mail-pj1-f66.google.com with SMTP id o22so4838706pjw.2
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 08:25:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
- h=from:date:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=RMKMbC5jYSfPNsKIURX7KQu3FS04i/MQG7VAJB3u/Kg=;
- b=XurTJMQXdm8hRwI+aCQKonbNg+WUWjOVflr2fLG+ZlavH5vJ3sZWzyX8e+3lQT6nww
- Fqaj31wduC2ih/0GDg1qJMsLORsBrfa9THtII199vpWx1MCYgYjsB4Zer9F0fd+/9zwJ
- JtBNxeGVCMYFrwK2cFVnWg3Bt1uR53YWvWjQ+L6502WZcuvEkX1zhOn3zFxCdFrtZuIm
- tgso+MFNt5TccK0rKHVHCf15jJO02Sfz3O7no3Nrq0H5WM6Qq7osal444fjhMmWUmZG3
- FwYshoN8R/vGAbjfoJOF8pUWL/EJ9PmS3O4VRft+4l0vnVI35R7kDBnuB3K9O+I07Kl/
- mFag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:date:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=RMKMbC5jYSfPNsKIURX7KQu3FS04i/MQG7VAJB3u/Kg=;
- b=ONp7qFyK2StmqqYw7cyarB31aopc2o9jMkavnahsoihUUrY+WCJKuIzlWO3rSSFBZV
- sFX5u9c8sd+EhPoHMxRAUJkbCvDMA5dQppXYiP+HvUgq/RCitFiAHJ+nxU/OPCDo2QQC
- ve6kgHDpAbgEq6uzHgB2z/4hnK0viVdr0UP7pa4OlDNHdlXBptPWFcM1UqF7ZYUXqBKU
- a54oBDIfYNLVal8ZgRsw06mTjcFFEC48jBjedB8ElzHgck5j0IO5cXL7gDnvFQn3IBGs
- cocrrBWloJF4TaHqfmJD6GNLZU/wTUkW/xvLIUHah6dfjhlkYf+yRz62uUGBLzg2sFqC
- 6hFQ==
-X-Gm-Message-State: AOAM531C+jeGQhofZNfm+u/H2L/WhpjWvY02yCedkEKkpoogl60Omk8l
- AgYzLDLTaSTNLG8xG3Jyh112qQ==
-X-Google-Smtp-Source: ABdhPJw5Sm980CfM4G+paonG0HR3QSkTZxo5X/EFbD+kPoIcLmEZimn9jiNJgAXAORDPwlyuaB3YZQ==
-X-Received: by 2002:a17:90b:196:: with SMTP id t22mr753125pjs.13.1594913155420; 
- Thu, 16 Jul 2020 08:25:55 -0700 (PDT)
-Received: from localhost ([2406:7400:73:bebb:9750:968d:7cd5:3ec7])
- by smtp.gmail.com with ESMTPSA id c207sm5162589pfb.159.2020.07.16.08.25.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Jul 2020 08:25:53 -0700 (PDT)
-From: B K Karthik <bkkarthik@pesu.pes.edu>
-X-Google-Original-From: B K Karthik <karthik.bk2000@live.com>
-Date: Thu, 16 Jul 2020 11:25:48 -0400
-To: Ian Abbott <abbotti@mev.co.uk>,
- H Hartley Sweeten <hsweeten@visionengravers.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Al Viro <viro@zeniv.linux.org.uk>, Vlastimil Babka <vbabka@suse.cz>,
- Xiyu Yang <xiyuyang19@fudan.edu.cn>, Michel Lespinasse <walken@google.com>,
- Divyansh Kamboj <kambojdivyansh2000@gmail.com>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v4] staging: comedi: comedi_fops.c: added casts to get rid of
- sparse warnings
-Message-ID: <20200716152548.mzau4zhurwkzp5p6@pesu-pes-edu>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B307E875B6
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 15:29:45 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1B77D2065F;
+ Thu, 16 Jul 2020 15:29:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1594913385;
+ bh=W80dXnsx8xCpD4ZJDZiVreuYHVetErKPCjXzs3QZiGQ=;
+ h=Date:From:To:Cc:Subject:From;
+ b=nhMKkuL8h1iFlTPmdvCAYA7hY4RttU7BKfsBtwtmAruEV190ao2fY2n8Kam/p67Az
+ HcomLt91gviNdfpgNpTOWos7VSNNYRnn4hPEGVvKBg0qcsdZIVKCCtGNizP6SKqjM6
+ ITnzp68hCPggpIfPHWn2mvgVAaI4L0uYZK0KTgxA=
+Date: Thu, 16 Jul 2020 17:29:39 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>
+Subject: [GIT PULL] Staging/IIO driver fixes for 5.8-rc6
+Message-ID: <20200716152939.GA2378914@kroah.com>
 MIME-Version: 1.0
-User-Agent: NeoMutt/20180716
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,96 +65,97 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3866557070342924446=="
+Cc: devel@linuxdriverproject.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+The following changes since commit 9ebcfadb0610322ac537dd7aa5d9cbc2b2894c68:
 
---===============3866557070342924446==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jmkhzignupuhzb25"
-Content-Disposition: inline
+  Linux 5.8-rc3 (2020-06-28 15:00:24 -0700)
 
+are available in the Git repository at:
 
---jmkhzignupuhzb25
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/sta=
+ging-5.8-rc6
 
-fixed sparse warnings by adding a cast in assignment from
-void [noderef] __user * to unsigned int __force *
-and a reverse cast in argument from
-unsigned int * to  unsigned int __user * .
+for you to fetch changes up to ef75e14a6c935eec82abac07ab68e388514e39bc:
 
-v1 -> v2:
-- Add a reverse cast in argument
-v2 -> v3:
-- Change commit description as suggested by Ian Abott
-v3 -> v4:
-- Add versioning information in commit description
+  staging: comedi: verify array index is correct before using it (2020-07-1=
+0 14:03:00 +0200)
 
-Signed-off-by: B K Karthik <karthik.bk2000@live.com>
----
- drivers/staging/comedi/comedi_fops.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+----------------------------------------------------------------
+IIO/Staging driver fixes for 5.8-rc6
 
-diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/=
-comedi_fops.c
-index 3f70e5dfac39..9cdc1e8a022d 100644
---- a/drivers/staging/comedi/comedi_fops.c
-+++ b/drivers/staging/comedi/comedi_fops.c
-@@ -2956,7 +2956,7 @@ static int get_compat_cmd(struct comedi_cmd *cmd,
- 	cmd->scan_end_arg =3D v32.scan_end_arg;
- 	cmd->stop_src =3D v32.stop_src;
- 	cmd->stop_arg =3D v32.stop_arg;
--	cmd->chanlist =3D compat_ptr(v32.chanlist);
-+	cmd->chanlist =3D (unsigned int __force *)compat_ptr(v32.chanlist);
- 	cmd->chanlist_len =3D v32.chanlist_len;
- 	cmd->data =3D compat_ptr(v32.data);
- 	cmd->data_len =3D v32.data_len;
-@@ -2983,7 +2983,7 @@ static int put_compat_cmd(struct comedi32_cmd_struct =
-__user *cmd32,
- 	v32.stop_src =3D cmd->stop_src;
- 	v32.stop_arg =3D cmd->stop_arg;
- 	/* Assume chanlist pointer is unchanged. */
--	v32.chanlist =3D ptr_to_compat(cmd->chanlist);
-+	v32.chanlist =3D ptr_to_compat((unsigned int __user *)cmd->chanlist);
- 	v32.chanlist_len =3D cmd->chanlist_len;
- 	v32.data =3D ptr_to_compat(cmd->data);
- 	v32.data_len =3D cmd->data_len;
---=20
-2.20.1
+Here are some IIO and staging driver fixes for 5.8-rc6.
 
+The majority of fixes are for IIO drivers, resolving a number of small
+reported issues, and there are some counter fixes in here too that were
+tied to the IIO fixes.  There's only one staging driver fix here, a
+comedi fix found by code inspection.
 
---jmkhzignupuhzb25
-Content-Type: application/pgp-signature; name="signature.asc"
+All of these have been in linux-next for a while with no reported
+issues.
 
------BEGIN PGP SIGNATURE-----
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
-iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl8QcXwACgkQ471Q5AHe
-Z2pXMwv/dD/m/gD6ll7ullSAXYCoCM7i9lvWbRpA9dp3rk3rmqQnig1pL0sM5NfN
-O+ce32drCrgL41P41bKYbZA5FzaLZnsyobrp+4uDIN4dsy+tYOxqXevIW1+7la0F
-8NsA3hbZwrTWlxXCuiGysLN3axa7/ZkVFTdgvbmo1QyZaWIUn0GEGM9Pu/+VuHJu
-X6zo0C4wgdHdxwAVOWE9q8Rf7AVC+cqLCmD32+OvyAxDONgdflijKJRJaFYnBitv
-9tcxrrvxMDcFcUp3k03NIeMj6gtyOmXjR8/6jSouGolkdwPSXe5en1f6WkciGC1N
-D6WsfImiVaOzrtZG73ga7dUPyRqj5Ra0KA2MZSuPLks1H6dGz1W4gzCO0r1FRGM0
-acxoIlW0fuFDnX2qUehcLN7ZnFy3dnVazNzzKqE3jSUIJ0Drzwljr4udE7btBITO
-LCzrHlJJVZHeUpGam5Wf/1SvDoKk0sf15Y9TGLEWXc4HYnw7ghC12L4JdvBbeKxg
-uOH84aY2
-=RRHD
------END PGP SIGNATURE-----
+----------------------------------------------------------------
+Christophe JAILLET (1):
+      iio: adc: ad7780: Fix a resource handling path in 'ad7780_probe()'
 
---jmkhzignupuhzb25--
+Chuhong Yuan (1):
+      iio: mma8452: Add missed iio_device_unregister() call in mma8452_prob=
+e()
 
---===============3866557070342924446==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Dan Carpenter (1):
+      staging: comedi: verify array index is correct before using it
 
+Dinghao Liu (1):
+      iio: magnetometer: ak8974: Fix runtime PM imbalance on error
+
+Greg Kroah-Hartman (1):
+      Merge tag 'iio-fixes-for-5.8a' of git://git.kernel.org/.../jic23/iio =
+into staging-linus
+
+Jonathan Cameron (6):
+      iio:health:afe4403 Fix timestamp alignment and prevent data leak.
+      iio:health:afe4404 Fix timestamp alignment and prevent data leak.
+      iio:magnetometer:ak8974: Fix alignment and data leak issues
+      iio:humidity:hdc100x Fix alignment and data leak issues
+      iio:humidity:hts221 Fix alignment and data leak issues
+      iio:pressure:ms5611 Fix buffer element alignment
+
+Matt Ranostay (1):
+      iio: core: add missing IIO_MOD_H2/ETHANOL string identifiers
+
+Navid Emamdoost (1):
+      iio: pressure: zpa2326: handle pm_runtime_get_sync failure
+
+Nuno S=E1 (1):
+      iio: adc: adi-axi-adc: Fix object reference counting
+
+Syed Nayyar Waris (2):
+      counter: 104-quad-8: Add lock guards - differential encoder
+      counter: 104-quad-8: Add lock guards - filter clock prescaler
+
+ drivers/counter/104-quad-8.c                    | 22 ++++++++++++++++---
+ drivers/iio/accel/mma8452.c                     |  5 ++++-
+ drivers/iio/adc/ad7780.c                        |  2 +-
+ drivers/iio/adc/adi-axi-adc.c                   |  4 ++--
+ drivers/iio/health/afe4403.c                    |  9 +++++---
+ drivers/iio/health/afe4404.c                    |  8 ++++---
+ drivers/iio/humidity/hdc100x.c                  | 10 ++++++---
+ drivers/iio/humidity/hts221.h                   |  7 ++++--
+ drivers/iio/humidity/hts221_buffer.c            |  9 ++++----
+ drivers/iio/industrialio-core.c                 |  2 ++
+ drivers/iio/magnetometer/ak8974.c               | 29 +++++++++++++++------=
+----
+ drivers/iio/pressure/ms5611_core.c              | 11 +++++++---
+ drivers/iio/pressure/zpa2326.c                  |  4 +++-
+ drivers/staging/comedi/drivers/addi_apci_1500.c | 10 ++++++---
+ 14 files changed, 91 insertions(+), 41 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============3866557070342924446==--
