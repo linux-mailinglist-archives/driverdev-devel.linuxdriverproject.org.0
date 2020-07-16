@@ -1,63 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3130222424
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 15:43:00 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5649488CA4;
-	Thu, 16 Jul 2020 13:42:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L-1jjNRbhuyL; Thu, 16 Jul 2020 13:42:58 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DF62B8522B;
-	Thu, 16 Jul 2020 13:42:57 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BEDEC1BF3EE
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 13:42:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6EACD22245D
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Jul 2020 15:54:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B60AB27085
- for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 13:42:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B858E230ED;
+	Thu, 16 Jul 2020 13:54:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id daDwTDhuql5U; Thu, 16 Jul 2020 13:54:54 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 45CB62052B;
+	Thu, 16 Jul 2020 13:54:53 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 084231BF3EE
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 13:54:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 02FA2886E3
+ for <devel@linuxdriverproject.org>; Thu, 16 Jul 2020 13:54:50 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GuEuynUAa3vh for <devel@linuxdriverproject.org>;
- Thu, 16 Jul 2020 13:42:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from www262.sakura.ne.jp (www262.sakura.ne.jp [202.181.97.72])
- by silver.osuosl.org (Postfix) with ESMTPS id 55FFE25CF1
- for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 13:41:31 +0000 (UTC)
-Received: from fsav108.sakura.ne.jp (fsav108.sakura.ne.jp [27.133.134.235])
- by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 06GDfHDn085146;
- Thu, 16 Jul 2020 22:41:17 +0900 (JST)
- (envelope-from penguin-kernel@i-love.sakura.ne.jp)
-Received: from www262.sakura.ne.jp (202.181.97.72)
- by fsav108.sakura.ne.jp (F-Secure/fsigk_smtp/550/fsav108.sakura.ne.jp);
- Thu, 16 Jul 2020 22:41:17 +0900 (JST)
-X-Virus-Status: clean(F-Secure/fsigk_smtp/550/fsav108.sakura.ne.jp)
-Received: from [192.168.1.9] (M106072142033.v4.enabler.ne.jp [106.72.142.33])
- (authenticated bits=0)
- by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTPSA id 06GDfGUv085143
- (version=TLSv1.2 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
- Thu, 16 Jul 2020 22:41:17 +0900 (JST)
- (envelope-from penguin-kernel@i-love.sakura.ne.jp)
+ with ESMTP id QzVn0MlNqkWL for <devel@linuxdriverproject.org>;
+ Thu, 16 Jul 2020 13:54:49 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 297948AD99
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 13:54:49 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id 22so10391498wmg.1
+ for <devel@driverdev.osuosl.org>; Thu, 16 Jul 2020 06:54:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=65QcCnpAmDce81oUaFA3QmWLjs//tlPa4Tv3XmT8+FQ=;
+ b=OLkCkq54Rj1wVrDXBO78Smeab0KBRpwvfSt4ygh/CleWLCTQZnQoe5BE6VK4rMUPzU
+ CbGGhDsLNquRb6++fvMTMhii7dPnUKt+kL31NxCI+rGcWPgv78jkdrkxl6LaWze7e3If
+ 9KIbqe4OBjnYJaLDdkvXjTOGueWLe/tRA2jOXXkNMSmaYViXqHy/btj75PS42K/9eKoN
+ 7mDZ0a63RswOk4wNz3KtQDePgWIEBzvV8cczDOLo9LbJUDSgi+TVg9A7Fj9AV+zKMEmU
+ 7WvKfj9U0FB5YzeF4FK/jy0Jgxs26IypYlzAaZv5eVYh7m6eAk4M4RlTU5KIYwYOXkhf
+ OHXQ==
+X-Gm-Message-State: AOAM531gqKOEUemTzBbch1K7+8FWerJPqE7GF7DsSbbJDPcfSZfHRcet
+ vrh/uCuq3QjedAR5S1j7vM4=
+X-Google-Smtp-Source: ABdhPJyj2yoIu1OI5sYIfY/IP84jBUda+jO/u4IzsW4mJwUw1NjKcW5ImRsOWLC2FicYTufKJVMauQ==
+X-Received: by 2002:a05:600c:218f:: with SMTP id
+ e15mr4169276wme.63.1594907687641; 
+ Thu, 16 Jul 2020 06:54:47 -0700 (PDT)
+Received: from localhost (ip-37-188-169-187.eurotel.cz. [37.188.169.187])
+ by smtp.gmail.com with ESMTPSA id k20sm8457168wmi.27.2020.07.16.06.54.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Jul 2020 06:54:46 -0700 (PDT)
+Date: Thu, 16 Jul 2020 15:54:45 +0200
+From: Michal Hocko <mhocko@kernel.org>
+To: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
 Subject: Re: [PATCH] binder: Don't use mmput() from shrinker function.
-To: Michal Hocko <mhocko@kernel.org>
+Message-ID: <20200716135445.GN31089@dhcp22.suse.cz>
 References: <0000000000001fbbb605aa805c9b@google.com>
  <5ce3ee90-333e-638d-ac8c-cd6d7ab7aa3b@I-love.SAKURA.ne.jp>
  <20200716083506.GA20915@dhcp22.suse.cz>
-From: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
-Message-ID: <36db7016-98d6-2c6b-110b-b2481fd480ac@i-love.sakura.ne.jp>
-Date: Thu, 16 Jul 2020 22:41:14 +0900
-User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ <36db7016-98d6-2c6b-110b-b2481fd480ac@i-love.sakura.ne.jp>
 MIME-Version: 1.0
-In-Reply-To: <20200716083506.GA20915@dhcp22.suse.cz>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <36db7016-98d6-2c6b-110b-b2481fd480ac@i-love.sakura.ne.jp>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,82 +94,20 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2020/07/16 17:35, Michal Hocko wrote:
-> On Thu 16-07-20 08:36:52, Tetsuo Handa wrote:
->> syzbot is reporting that mmput() from shrinker function has a risk of
->> deadlock [1]. Don't start synchronous teardown of mm when called from
->> shrinker function.
+On Thu 16-07-20 22:41:14, Tetsuo Handa wrote:
+> On 2020/07/16 17:35, Michal Hocko wrote:
+[...]
+> > But in order for this to happen the shrinker would have to do the last
+> > put on the mm. But mm cannot go away from under uprobe_mmap so those two
+> > paths cannot race with each other.
 > 
-> Please add the actual lock dependency to the changelog.
-> 
-> Anyway is this deadlock real? Mayve I have missed some details but the
-> call graph points to these two paths.
-> uprobe_mmap					do_shrink_slab	
->   uprobes_mmap_hash #lock
->   install_breakpoint				  binder_shrink_scan
->     set_swbp					    binder_alloc_free_page
->       uprobe_write_opcode			      __mmput
-> 	update_ref_ctr				        uprobe_clear_state
->     	  mutex_lock(&delayed_uprobe_lock)	          mutex_lock(&delayed_uprobe_lock);
-> 	    allocation -> reclaim
-> 
+> and mm1 != mm2 is possible, isn't it?
 
-static int update_ref_ctr(struct uprobe *uprobe, struct mm_struct *mm, short d) {
-  mutex_lock(&delayed_uprobe_lock);
-  ret = delayed_uprobe_add(uprobe, mm1) {
-    du = kzalloc(sizeof(*du), GFP_KERNEL) {
-      do_shrink_slab() {
-        binder_shrink_scan() {
-          binder_alloc_free_page() {
-            mmget_not_zero(mm2);
-            mmput(mm2) {
-              __mmput(mm2) {
-                uprobe_clear_state(mm2) {
-                  mutex_lock(&delayed_uprobe_lock);
-                  delayed_uprobe_remove(NULL, mm2);
-                  mutex_unlock(&delayed_uprobe_lock);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  mutex_unlock(&delayed_uprobe_lock);
-}
-
-> But in order for this to happen the shrinker would have to do the last
-> put on the mm. But mm cannot go away from under uprobe_mmap so those two
-> paths cannot race with each other.
-
-and mm1 != mm2 is possible, isn't it?
-
-> 
-> Unless I am missing something this is a false positive. I do not mind
-> using mmput_async from the shrinker as a workaround but the changelog
-> should be explicit about the fact.
-> 
-
-binder_alloc_free_page() is already using mmput_async() 14 lines later.
-It just took 18 months to hit this race for the third time, for it is
-quite difficult to let the owner of mm2 to call mmput(mm2) between
-binder_alloc_free_page() calls mmget_not_zero(mm2) and mmput(mm2).
-
-The reason I added you is to see whether we can do
-
- void mmput(struct mm_struct *mm)
- {
- 	might_sleep();
-+	/* Calling mmput() from shrinker context can deadlock. */
-+	WARN_ON(current->flags & PF_MEMALLOC);
- 
- 	if (atomic_dec_and_test(&mm->mm_users))
- 		__mmput(mm);
- }
-
-in order to catch this bug easier.
-
+OK, I have missed that information. You are right. Can you make this
+into the changelog please?
+-- 
+Michal Hocko
+SUSE Labs
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
