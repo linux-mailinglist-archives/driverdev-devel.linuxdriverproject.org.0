@@ -1,75 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A543223F12
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Jul 2020 17:05:10 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 77364224208
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Jul 2020 19:42:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2AD39884DA;
-	Fri, 17 Jul 2020 15:05:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6FA9122225;
+	Fri, 17 Jul 2020 17:41:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PDhq5AjGEQuS; Fri, 17 Jul 2020 15:05:07 +0000 (UTC)
+	with ESMTP id beTIWQmd7824; Fri, 17 Jul 2020 17:41:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8CA6F884C3;
-	Fri, 17 Jul 2020 15:05:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5BAFA20336;
+	Fri, 17 Jul 2020 17:41:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C76591BF281
- for <devel@linuxdriverproject.org>; Fri, 17 Jul 2020 15:05:05 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1BEC51BF370
+ for <devel@linuxdriverproject.org>; Fri, 17 Jul 2020 17:41:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8C10A87E08
- for <devel@linuxdriverproject.org>; Fri, 17 Jul 2020 15:04:58 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 141B18679E
+ for <devel@linuxdriverproject.org>; Fri, 17 Jul 2020 17:41:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fvb+EVNKZuQM for <devel@linuxdriverproject.org>;
- Fri, 17 Jul 2020 15:04:58 +0000 (UTC)
+ with ESMTP id xaQ6HZsk5EWU for <devel@linuxdriverproject.org>;
+ Fri, 17 Jul 2020 17:41:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0B23887466
- for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 15:04:58 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id t6so6798805pgq.1
- for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 08:04:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=I3qgUlUz2ghXUHtKCviLmiSJF24mSfILYglOMEde6BY=;
- b=buf2jTJm3jP9V4ezfLOqBPmR9I3AQjlO7VvumQQZQTXquwNQYQeElGyv03QIE9TPEO
- C5A/QnBze2oTltyu672WIHcwb6YWjybrCJBQhssEw2VOUnBsHolM5/FMklDgaevMAJqG
- jlXgVVlP8nRflojMy5LTNzCjgf5XJIbXU+sLye/85YzkAMkXaoUbCJHBf4ODuX8MRsZ7
- 6GBsaDYpS1IU+f8NoWje8EBqJVYZ3fq8pljNXEc4tOk8vDoiH3YgPFnSnRYrR6bS5SmL
- 3Gdn4/UUNJ0o7LPO0lolDHxGrsdaDAjSJqfmnRISuvrYeMDGiI1qvIa3G/anTPg/DyFK
- GvMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=I3qgUlUz2ghXUHtKCviLmiSJF24mSfILYglOMEde6BY=;
- b=aBTcXciGqPhyaYnGt06VaIy3L+9wQr2fxTdXeC+tTtLxJHsM9HHArw3XreKHzY7r0g
- 7ZpTSNvX8S+Ml0/7Kty5cGOLn9zsQZdCxiJGaOwGfJlL/veNUoGSqBy8Kmj/wypPhEmy
- d9yce+NfARIXrEfdNTxDPPoXbiEv8UgFgBM8m4gkPA9o6gBTnEyBTaseuveV45h93lZG
- xwIwS9Cn0HUbt84g4JtRWb9cLjVL6IcQ0fxAl8VuyrNe3226DmCbtVoBuUPaTu3FYKcr
- zhaxhVQRfRVq2HHJHIxerT++vghXpPed7LXwyjcgWqplWX5GnlG478TWhxW3Vpb4iL+4
- yA3w==
-X-Gm-Message-State: AOAM530c8CKyz8widv8+n/cZ5jOkdjdFnNSCLoB1Pk7Uy+sygP68UVIk
- 6JtrCu3Lse4LzdlYUU/KQqY=
-X-Google-Smtp-Source: ABdhPJxkdDX1dzkcY205fCPDZe+N5VJKduAGSZLazqMLjDkc4GqKl7QI1Z0RfxivwTQcE/f+5FOYZQ==
-X-Received: by 2002:a63:531e:: with SMTP id h30mr8691437pgb.165.1594998297506; 
- Fri, 17 Jul 2020 08:04:57 -0700 (PDT)
-Received: from DV.bbrouter ([117.192.86.0])
- by smtp.gmail.com with ESMTPSA id o42sm3259180pje.10.2020.07.17.08.04.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jul 2020 08:04:56 -0700 (PDT)
-From: Darshan D V <darshandv10@gmail.com>
-To: gregkh@linuxfoundation.org, yuehaibing@huawei.com, ardb@kernel.org,
- contact@christina-quast.de
-Subject: [PATCH] staging: rtl8192e: Fixed the space and indentation coding
- styles
-Date: Fri, 17 Jul 2020 20:34:51 +0530
-Message-Id: <20200717150451.13735-1-darshandv10@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9DEB385F4D
+ for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 17:41:53 +0000 (UTC)
+Received: from mail-ot1-f48.google.com (mail-ot1-f48.google.com
+ [209.85.210.48])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5F8AD207DD
+ for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 17:41:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1595007713;
+ bh=IHtosK/cU7rm8auOB6C6086pQzaynAGkPV8Dk9VgPrY=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=dnpzmbFDpuALSjdys73ua8kwP+uNpa99Kol16c25V8MYnXE5KrYB+Ih7FUvaqod9S
+ CQiyZ9n9CSHYnUmGCnMdXDSZUvEyPdIWKMYWS1XeVoxqGhRQsVU1konXWZJBjLQrtG
+ FNG9B6OJkRqUfMlTYXwFrB510NiDAVHnRp/VxnE8=
+Received: by mail-ot1-f48.google.com with SMTP id g37so7432532otb.9
+ for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 10:41:53 -0700 (PDT)
+X-Gm-Message-State: AOAM533qwD+qPWuwVtwpsOdva6cr6DlY4yO4d201T3TuGwdsW7hcosoB
+ /rfl9fA3ZqBzfx7cvivPa4w47fqiYtT6E48UMw==
+X-Google-Smtp-Source: ABdhPJzkf9BqpjBd74nnbCjOXAfw7dQeRZj8mdtmLdN6QAW26s3IWlXrcYqoTVfbQTiEkfvKsnxzes0AvpYpbmRVQv4=
+X-Received: by 2002:a05:6830:3104:: with SMTP id
+ b4mr9971353ots.192.1595007712689; 
+ Fri, 17 Jul 2020 10:41:52 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200702191322.2639681-1-helen.koike@collabora.com>
+ <20200702191322.2639681-3-helen.koike@collabora.com>
+In-Reply-To: <20200702191322.2639681-3-helen.koike@collabora.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Fri, 17 Jul 2020 11:41:40 -0600
+X-Gmail-Original-Message-ID: <CAL_Jsq+5vW2cCz1oxVE-R3MW7gQfSHKrR_YrGm5ZHnjCCd9_Vw@mail.gmail.com>
+Message-ID: <CAL_Jsq+5vW2cCz1oxVE-R3MW7gQfSHKrR_YrGm5ZHnjCCd9_Vw@mail.gmail.com>
+Subject: Re: [PATCH v4 2/9] media: staging: dt-bindings: rkisp1: add required
+ items in i2c example
+To: Helen Koike <helen.koike@collabora.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,50 +75,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, darshandv10@gmail.com,
- linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ devicetree@vger.kernel.org, Eddie Cai <eddie.cai.linux@gmail.com>,
+ Tomasz Figa <tfiga@chromium.org>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ "heiko@sntech.de" <heiko@sntech.de>, Shunqian Zheng <zhengsq@rock-chips.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ karthik.poduval@gmail.com,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Robin Murphy <robin.murphy@arm.com>,
+ Mark Rutland <mark.rutland@arm.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>, Johan Jonker <jbx6244@gmail.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-rtllib_crypt_ccmp.c: Fixed the error - space required before the
-open parenthesis '(' on line #281.
+On Thu, Jul 2, 2020 at 1:13 PM Helen Koike <helen.koike@collabora.com> wrote:
+>
+> Add missing required items in Rockchip ISP1 dt-bindings example for
+> a complete i2c node.
+>
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> ---
+>
+> Changes in v2:
+> - new patch in the series
+> ---
+>  .../devicetree/bindings/media/rockchip-isp1.yaml             | 5 +++++
+>  1 file changed, 5 insertions(+)
+>
+> diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> index a77b6ec500c95..8c7904845788d 100644
+> --- a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> +++ b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> @@ -169,6 +169,11 @@ examples:
+>          };
+>
+>          i2c7: i2c@ff160000 {
+> +            compatible = "rockchip,rk3399-i2c";
+> +            reg = <0x0 0xff160000 0x0 0x1000>;
 
-rtllib_crypt_ccmp.c: Fixed the warning - suspect code indent for
-conditional statements on line #338
+This will give a warning now as the default cell sizes are 1.
 
-Signed-off-by: Darshan D V <darshandv10@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> +            interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH 0>;
+> +            clocks = <&cru SCLK_I2C7>, <&cru PCLK_I2C7>;
+> +            clock-names = "i2c", "pclk";
 
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-index 0cbf4a1a326b..b60e2a109ce4 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-@@ -278,7 +278,7 @@ static int rtllib_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 		int aad_len, ret;
- 
- 		req = aead_request_alloc(key->tfm, GFP_ATOMIC);
--		if(!req)
-+		if (!req)
- 			return -ENOMEM;
- 
- 		aad_len = ccmp_init_iv_and_aad(hdr, pn, iv, aad);
-@@ -337,7 +337,7 @@ static int rtllib_ccmp_set_key(void *key, int len, u8 *seq, void *priv)
- 		}
- 		if (crypto_aead_setauthsize(data->tfm, CCMP_MIC_LEN) ||
- 			crypto_aead_setkey(data->tfm, data->key, CCMP_TK_LEN))
--				return -1;
-+			return -1;
- 	} else if (len == 0) {
- 		data->key_set = 0;
- 	} else {
--- 
-2.17.1
+Just drop the unit address rather than adding all this.
 
+>              clock-frequency = <400000>;
+>              #address-cells = <1>;
+>              #size-cells = <0>;
+> --
+> 2.26.0
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
