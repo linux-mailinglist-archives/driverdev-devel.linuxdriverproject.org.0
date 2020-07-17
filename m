@@ -2,65 +2,66 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D9327224227
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Jul 2020 19:43:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 79E51224228
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Jul 2020 19:44:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 93DB187F04;
-	Fri, 17 Jul 2020 17:43:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2315587034;
+	Fri, 17 Jul 2020 17:44:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0WJGKJQloAE3; Fri, 17 Jul 2020 17:43:39 +0000 (UTC)
+	with ESMTP id Kk4T6XS7bbpA; Fri, 17 Jul 2020 17:44:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6013B87DB0;
-	Fri, 17 Jul 2020 17:43:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3490D86FBB;
+	Fri, 17 Jul 2020 17:44:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6360F1BF370
- for <devel@linuxdriverproject.org>; Fri, 17 Jul 2020 17:43:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2FAB21BF370
+ for <devel@linuxdriverproject.org>; Fri, 17 Jul 2020 17:44:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6051685F4B
- for <devel@linuxdriverproject.org>; Fri, 17 Jul 2020 17:43:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 29FB285F4B
+ for <devel@linuxdriverproject.org>; Fri, 17 Jul 2020 17:44:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7wyS9plM30mJ for <devel@linuxdriverproject.org>;
- Fri, 17 Jul 2020 17:43:36 +0000 (UTC)
+ with ESMTP id gC1E06yyl5GO for <devel@linuxdriverproject.org>;
+ Fri, 17 Jul 2020 17:44:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0528185550
- for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 17:43:36 +0000 (UTC)
-Received: from mail-oi1-f180.google.com (mail-oi1-f180.google.com
- [209.85.167.180])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C5F5685550
+ for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 17:44:14 +0000 (UTC)
+Received: from mail-ot1-f42.google.com (mail-ot1-f42.google.com
+ [209.85.210.42])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C62DD22BF5
- for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 17:43:35 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 936EA22BF5
+ for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 17:44:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595007815;
- bh=FlddXETDbcCI+jX+Y9DK4+rIepVuWv5hMCWZBOLVowY=;
+ s=default; t=1595007854;
+ bh=8KhGhYBxnfryGaCJ4USJbgh0ERjIkpbE+Ah2Ia0FzVY=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=y5Pi2lIQnfdBOI//84bhdjQC3IY36B9tgfvuVgsGZFH1r7DPsQXC2SQz4ouUB9Ls2
- xtaiOcZ2NF1EwIU/1DLWZrH854jy1zcG/o380BeunFx9u7Cu9OL/qVcg2nzb8gwBRv
- laBOx6/Z5OWb/sdAmhjUYJ0Jx42F1aVVjhR+Pbqg=
-Received: by mail-oi1-f180.google.com with SMTP id j11so8640548oiw.12
- for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 10:43:35 -0700 (PDT)
-X-Gm-Message-State: AOAM5325qanUdJBSk6xSfcRfp6WyZWggI8Edq+MAP/tear9oMLeBx3kc
- kqfpTmXFsgcFIThCYQvSriSLvlu4LkRJcr4DGw==
-X-Google-Smtp-Source: ABdhPJxdEZTKZdDAtsUce5PttY07qOuwXdkHitKzJaeRFO0Ux7K7UV3QZV8Lp1Bc30tXd9ZMF4/9alh+Z0BcnZznP+o=
-X-Received: by 2002:aca:30d2:: with SMTP id w201mr8705283oiw.147.1595007815168; 
- Fri, 17 Jul 2020 10:43:35 -0700 (PDT)
+ b=W0nYfbVjzCONNpiGooYEWPPFRXkLlokkcPhl3A1lZqCJ+5OOenlOxseUiU6mMCB/A
+ znN2y7Yk4Pb6bptYEZ5CEyHi/0plSim+pZbDtv7Pp1w2uzJFDz38fLej6XM2nNTPi5
+ 6RI7Y2NKe9s7mXZxbDZ655w3wevWqwVCFlCfXq14=
+Received: by mail-ot1-f42.google.com with SMTP id e90so7473569ote.1
+ for <devel@driverdev.osuosl.org>; Fri, 17 Jul 2020 10:44:14 -0700 (PDT)
+X-Gm-Message-State: AOAM530DycmuagDAVKMaSm6bjGE7Rxsrugnh7WPQfbWuglvjpEvlw4CK
+ ZW2meYYCfPBiD7+x4ST1Kkx7HYr6GyKtH/NAPg==
+X-Google-Smtp-Source: ABdhPJzmF19p2CWPSseEsvbYzrAu3m4cEXKROdnW9Mwivlqz1HHyHd8Lvx2gzO5P1fA1g1DlI6dgjzgfnM6jDjbbmBQ=
+X-Received: by 2002:a05:6830:3104:: with SMTP id
+ b4mr9977843ots.192.1595007853870; 
+ Fri, 17 Jul 2020 10:44:13 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200702191322.2639681-1-helen.koike@collabora.com>
- <20200702191322.2639681-4-helen.koike@collabora.com>
-In-Reply-To: <20200702191322.2639681-4-helen.koike@collabora.com>
+ <20200702191322.2639681-5-helen.koike@collabora.com>
+In-Reply-To: <20200702191322.2639681-5-helen.koike@collabora.com>
 From: Rob Herring <robh+dt@kernel.org>
-Date: Fri, 17 Jul 2020 11:43:23 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLduaH=F0G8+15PM+1GGmKBjgn7ddP+__ACezLd+ivp5w@mail.gmail.com>
-Message-ID: <CAL_JsqLduaH=F0G8+15PM+1GGmKBjgn7ddP+__ACezLd+ivp5w@mail.gmail.com>
-Subject: Re: [PATCH v4 3/9] media: staging: dt-bindings: rkisp1: re-order
- properties
+Date: Fri, 17 Jul 2020 11:44:02 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLYHY85_JhpGKwTOSP99uCER9VEf-gp3g4nFhN4ktCO3w@mail.gmail.com>
+Message-ID: <CAL_JsqLYHY85_JhpGKwTOSP99uCER9VEf-gp3g4nFhN4ktCO3w@mail.gmail.com>
+Subject: Re: [PATCH v4 4/9] media: staging: dt-bindings: rkisp1: fix "no reg"
+ error in parent node
 To: Helen Koike <helen.koike@collabora.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -94,25 +95,39 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 On Thu, Jul 2, 2020 at 1:13 PM Helen Koike <helen.koike@collabora.com> wrote:
 >
-> Organize properties order in dt-binbings to move it out of staging.
-
-typo
-
+> Fix the following error found with make ARCH=arm64 dt_binding_check:
 >
-> On top: compatible, reg and interrupts.
-> Then alphabetical order, then properties starting with '#'.
+> Documentation/devicetree/bindings/media/rockchip-isp1.example.dts:24.27-101.11:
+> Warning (unit_address_vs_reg): /example-0/parent@0: node has a unit name, but no reg or ranges property
 >
+> Reported-by: Johan Jonker <jbx6244@gmail.com>
 > Signed-off-by: Helen Koike <helen.koike@collabora.com>
->
 > ---
 >
-> V2:
+> V3:
 > - this is a new patch in the series
 > ---
->  .../bindings/media/rockchip-isp1.yaml         | 32 +++++++++----------
->  1 file changed, 16 insertions(+), 16 deletions(-)
+>  .../Documentation/devicetree/bindings/media/rockchip-isp1.yaml   | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> index e5b9c0574e352..4d111ef2e89c7 100644
+> --- a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> +++ b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> @@ -126,6 +126,7 @@ examples:
+>      #include <dt-bindings/power/rk3399-power.h>
+>
+>      parent0: parent@0 {
+> +        reg = <0 0>;
 
-Acked-by: Rob Herring <robh@kernel.org>
+Just drop the unit-address.
+
+>          #address-cells = <2>;
+>          #size-cells = <2>;
+>
+> --
+> 2.26.0
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
