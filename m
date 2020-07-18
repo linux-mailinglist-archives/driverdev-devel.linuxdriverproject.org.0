@@ -1,61 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7812224A44
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jul 2020 11:28:39 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6928F224A9E
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jul 2020 12:31:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6699488012;
-	Sat, 18 Jul 2020 09:28:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 60BFA2051C;
+	Sat, 18 Jul 2020 10:31:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1ajg23oVH-Fs; Sat, 18 Jul 2020 09:28:35 +0000 (UTC)
+	with ESMTP id fkElCFIZ8v+T; Sat, 18 Jul 2020 10:31:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E845B880C3;
-	Sat, 18 Jul 2020 09:28:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8892120498;
+	Sat, 18 Jul 2020 10:31:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DB9461BF5F5
- for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 09:28:31 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 379011BF5E9
+ for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 10:31:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D57E6880C0
- for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 09:28:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 337D320498
+ for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 10:31:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AM-Yrg7Z1LJN for <devel@linuxdriverproject.org>;
- Sat, 18 Jul 2020 09:28:28 +0000 (UTC)
+ with ESMTP id C+2FikR1iEBN for <devel@linuxdriverproject.org>;
+ Sat, 18 Jul 2020 10:31:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0478C88012
- for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 09:28:27 +0000 (UTC)
-Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
- [95.90.213.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 56DA422B4E;
- Sat, 18 Jul 2020 09:28:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595064507;
- bh=3uRg7pvFf8g1x96A1+t5IAXzYaG6T2fxriU8eQPHY2U=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VTtnPkURNhW2O/5pk6XtV2mVH6obm4Cg95If4bpND51wY3cK0W1zUMoBpVkb+qfHh
- qOpIktVijHuJl0kJH9z20slGaj0oaR9XL1dRVjts0s3p+BaYrHBa/tJfnUeztZ3vTS
- Gxkw9dlyqDB24PXD1/HB6v0dk/Piiuux/I4mSQFc=
-Received: from mchehab by mail.kernel.org with local (Exim 4.94)
- (envelope-from <mchehab@kernel.org>)
- id 1jwj8r-005wDa-Bi; Sat, 18 Jul 2020 11:28:25 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: 
-Subject: [PATCH v2 4/4] media: atomisp: get rid of version-specific
- system_local.h
-Date: Sat, 18 Jul 2020 11:28:22 +0200
-Message-Id: <1f8fd88ad2b4d22629f97d563a7951add7b323e3.1595062851.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <22a1ad531d3b2030fe0b0ffae9d883b0d5cc0406.1595062851.git.mchehab+huawei@kernel.org>
-References: <22a1ad531d3b2030fe0b0ffae9d883b0d5cc0406.1595062851.git.mchehab+huawei@kernel.org>
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7BFDE20449
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 10:31:34 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id e8so7919700pgc.5
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 03:31:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/8w1hUmAKLCqgC1Q6ZP9P8RuBo6OaxEVOjtKeU5FNxg=;
+ b=aZoWONeyN7xDbuCqgzZgVq2tCmErtKP0zODLYZzHi0Qas0Woh3Z0de4ROa5SLtp5tB
+ Ra7B9cJlFKYXoD+B1oW+u05itqIFxXeNpdb3QWakumcX6ALGqVKOxvPtyVtUMoj20suL
+ 9u9z9EMIhPLsm1+i0Ao9JhlLBK4cIugz87uKQaUe8QayAEDXqdDpJjEQZqtjCyTXud5V
+ v7OsfnM//uyle9FXqDv9EBr3FP80VTG1cggi5073p0KTlsT68zURcsp8SmH2ZEsMrAgQ
+ OJuNEN+xvgjBmdHT0DdHihkw9spwHherzjGTZr4v6atj1/QufjKeO5F7dvIKBgzr8cXI
+ HHAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/8w1hUmAKLCqgC1Q6ZP9P8RuBo6OaxEVOjtKeU5FNxg=;
+ b=DnWXHFj6tVKd/7FIvUXxmDHADjfqP5fXVEhND7/HjWOI/nKs8YcSwccCgZ0IFC1ptM
+ wkfyDVWoKyckL5YgOua/KPXKjWbg2r6SMIh9nHKA/eLBPPFSFab04+Qglz/udjDU8M78
+ Ef2JYJSkO6abvreCy41DkqYgVUxv9JsLG/g59UIbrUUJCcXEOilb8uyz0JY+gLGOuig3
+ eOPjtRmfffcQ5gDFUnOB+kqw3n4L33RpqgeE6TEECTG4fCJJNIBv+1bxr5d4v8ZdvUrB
+ q/qWeHtlRgaznrN/SERd1FhgbguXeJlE5TFJDfrG1TCCNMJ4mKXwUMeOEbtDwdALoFsp
+ K88Q==
+X-Gm-Message-State: AOAM531sL0HPwjxiuBXELCmP3Xd6qhku/HfrZ+h4odnCc4SRy/pvKwUj
+ TGvnXTXZrh/4KBo9WYwO0Q==
+X-Google-Smtp-Source: ABdhPJxtQLDsHd6/GmwVM1lEks+dSoB65AelxK3USCvo77vRW7iHRqlshIKyPNQsSrbEvzJAMx+PwQ==
+X-Received: by 2002:a63:8f08:: with SMTP id n8mr12367712pgd.9.1595068293995;
+ Sat, 18 Jul 2020 03:31:33 -0700 (PDT)
+Received: from blackbox.localdomain ([112.133.248.228])
+ by smtp.googlemail.com with ESMTPSA id e5sm5194540pjy.26.2020.07.18.03.31.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 18 Jul 2020 03:31:33 -0700 (PDT)
+From: Anoop1507 <anoop.skumar1507@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] Staging: rtl8188eu: core: Fix coding style issue
+Date: Sat, 18 Jul 2020 16:01:25 +0530
+Message-Id: <20200718103125.62528-1-anoop.skumar1507@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -69,598 +83,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Anoop S <anoop.skumar1507@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-After removing the unused 32-bits data, the isp2401_system_local.h
-now contains everything that it is needed, either by isp2401 or
-by isp2400.
+From: Anoop S <anoop.skumar1507@gmail.com>
 
-So, remove code duplication.
+This fixes the following checkpatch.pl warning
+WARNING: Prefer using '"%s...", __func__' to using 'rtw_tkip_decrypt', this function's name, in a string.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Anoop S <anoop.skumar1507@gmail.com>
 ---
- .../media/atomisp/pci/isp2400_system_local.h  | 149 -------------
- .../media/atomisp/pci/isp2401_system_local.h  | 196 -----------------
- .../staging/media/atomisp/pci/system_local.h  | 199 +++++++++++++++++-
- 3 files changed, 194 insertions(+), 350 deletions(-)
- delete mode 100644 drivers/staging/media/atomisp/pci/isp2400_system_local.h
- delete mode 100644 drivers/staging/media/atomisp/pci/isp2401_system_local.h
+ drivers/staging/rtl8188eu/core/rtw_security.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/isp2400_system_local.h b/drivers/staging/media/atomisp/pci/isp2400_system_local.h
-deleted file mode 100644
-index fb6355c7e1a3..000000000000
---- a/drivers/staging/media/atomisp/pci/isp2400_system_local.h
-+++ /dev/null
-@@ -1,149 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0 */
--/*
-- * Support for Intel Camera Imaging ISP subsystem.
-- * Copyright (c) 2010-2015, Intel Corporation.
-- *
-- * This program is free software; you can redistribute it and/or modify it
-- * under the terms and conditions of the GNU General Public License,
-- * version 2, as published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope it will be useful, but WITHOUT
-- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-- * more details.
-- */
--
--#ifndef __SYSTEM_LOCAL_H_INCLUDED__
--#define __SYSTEM_LOCAL_H_INCLUDED__
--
--#ifdef HRT_ISP_CSS_CUSTOM_HOST
--#ifndef HRT_USE_VIR_ADDRS
--#define HRT_USE_VIR_ADDRS
--#endif
--#endif
--
--#include "system_global.h"
--
--/*
-- * Cell specific address maps
-- */
--
--#define GP_FIFO_BASE   ((hrt_address)0x0000000000090104)		/* This is NOT a base address */
--
--/* ISP */
--static const hrt_address ISP_CTRL_BASE[N_ISP_ID] = {
--	(hrt_address)0x0000000000020000ULL
--};
--
--static const hrt_address ISP_DMEM_BASE[N_ISP_ID] = {
--	(hrt_address)0x0000000000200000ULL
--};
--
--static const hrt_address ISP_BAMEM_BASE[N_BAMEM_ID] = {
--	(hrt_address)0x0000000000100000ULL
--};
--
--/* SP */
--static const hrt_address SP_CTRL_BASE[N_SP_ID] = {
--	(hrt_address)0x0000000000010000ULL
--};
--
--static const hrt_address SP_DMEM_BASE[N_SP_ID] = {
--	(hrt_address)0x0000000000300000ULL
--};
--
--/* MMU */
--/*
-- * MMU0_ID: The data MMU
-- * MMU1_ID: The icache MMU
-- */
--static const hrt_address MMU_BASE[N_MMU_ID] = {
--	(hrt_address)0x0000000000070000ULL,
--	(hrt_address)0x00000000000A0000ULL
--};
--
--/* DMA */
--static const hrt_address DMA_BASE[N_DMA_ID] = {
--	(hrt_address)0x0000000000040000ULL
--};
--
--/* IRQ */
--static const hrt_address IRQ_BASE[N_IRQ_ID] = {
--	(hrt_address)0x0000000000000500ULL,
--	(hrt_address)0x0000000000030A00ULL,
--	(hrt_address)0x000000000008C000ULL,
--	(hrt_address)0x0000000000090200ULL
--};
--
--/*
--	(hrt_address)0x0000000000000500ULL};
-- */
--
--/* GDC */
--static const hrt_address GDC_BASE[N_GDC_ID] = {
--	(hrt_address)0x0000000000050000ULL,
--	(hrt_address)0x0000000000060000ULL
--};
--
--/* FIFO_MONITOR (not a subset of GP_DEVICE) */
--static const hrt_address FIFO_MONITOR_BASE[N_FIFO_MONITOR_ID] = {
--	(hrt_address)0x0000000000000000ULL
--};
--
--/*
--static const hrt_address GP_REGS_BASE[N_GP_REGS_ID] = {
--	(hrt_address)0x0000000000000000ULL};
--
--static const hrt_address GP_DEVICE_BASE[N_GP_DEVICE_ID] = {
--	(hrt_address)0x0000000000090000ULL};
--*/
--
--/* GP_DEVICE (single base for all separate GP_REG instances) */
--static const hrt_address GP_DEVICE_BASE[N_GP_DEVICE_ID] = {
--	(hrt_address)0x0000000000000000ULL
--};
--
--/*GP TIMER , all timer registers are inter-twined,
-- * so, having multiple base addresses for
-- * different timers does not help*/
--static const hrt_address GP_TIMER_BASE =
--    (hrt_address)0x0000000000000600ULL;
--/* GPIO */
--static const hrt_address GPIO_BASE[N_GPIO_ID] = {
--	(hrt_address)0x0000000000000400ULL
--};
--
--/* TIMED_CTRL */
--static const hrt_address TIMED_CTRL_BASE[N_TIMED_CTRL_ID] = {
--	(hrt_address)0x0000000000000100ULL
--};
--
--/* INPUT_FORMATTER */
--static const hrt_address INPUT_FORMATTER_BASE[N_INPUT_FORMATTER_ID] = {
--	(hrt_address)0x0000000000030000ULL,
--	(hrt_address)0x0000000000030200ULL,
--	(hrt_address)0x0000000000030400ULL,
--	(hrt_address)0x0000000000030600ULL
--}; /* memcpy() */
--
--/* INPUT_SYSTEM */
--static const hrt_address INPUT_SYSTEM_BASE[N_INPUT_SYSTEM_ID] = {
--	(hrt_address)0x0000000000080000ULL
--};
--
--/*	(hrt_address)0x0000000000081000ULL, */ /* capture A */
--/*	(hrt_address)0x0000000000082000ULL, */ /* capture B */
--/*	(hrt_address)0x0000000000083000ULL, */ /* capture C */
--/*	(hrt_address)0x0000000000084000ULL, */ /* Acquisition */
--/*	(hrt_address)0x0000000000085000ULL, */ /* DMA */
--/*	(hrt_address)0x0000000000089000ULL, */ /* ctrl */
--/*	(hrt_address)0x000000000008A000ULL, */ /* GP regs */
--/*	(hrt_address)0x000000000008B000ULL, */ /* FIFO */
--/*	(hrt_address)0x000000000008C000ULL, */ /* IRQ */
--
--/* RX, the MIPI lane control regs start at offset 0 */
--static const hrt_address RX_BASE[N_RX_ID] = {
--	(hrt_address)0x0000000000080100ULL
--};
--
--#endif /* __SYSTEM_LOCAL_H_INCLUDED__ */
-diff --git a/drivers/staging/media/atomisp/pci/isp2401_system_local.h b/drivers/staging/media/atomisp/pci/isp2401_system_local.h
-deleted file mode 100644
-index ae7dfd9ea0c4..000000000000
---- a/drivers/staging/media/atomisp/pci/isp2401_system_local.h
-+++ /dev/null
-@@ -1,196 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0 */
--/*
-- * Support for Intel Camera Imaging ISP subsystem.
-- * Copyright (c) 2015, Intel Corporation.
-- *
-- * This program is free software; you can redistribute it and/or modify it
-- * under the terms and conditions of the GNU General Public License,
-- * version 2, as published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope it will be useful, but WITHOUT
-- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-- * more details.
-- */
--
--#ifndef __SYSTEM_LOCAL_H_INCLUDED__
--#define __SYSTEM_LOCAL_H_INCLUDED__
--
--#ifdef HRT_ISP_CSS_CUSTOM_HOST
--#ifndef HRT_USE_VIR_ADDRS
--#define HRT_USE_VIR_ADDRS
--#endif
--#endif
--
--#include "system_global.h"
--
--/*
-- * Cell specific address maps
-- */
--
--#define GP_FIFO_BASE   ((hrt_address)0x0000000000090104)		/* This is NOT a base address */
--
--/* ISP */
--static const hrt_address ISP_CTRL_BASE[N_ISP_ID] = {
--	0x0000000000020000ULL
--};
--
--static const hrt_address ISP_DMEM_BASE[N_ISP_ID] = {
--	0x0000000000200000ULL
--};
--
--static const hrt_address ISP_BAMEM_BASE[N_BAMEM_ID] = {
--	0x0000000000100000ULL
--};
--
--/* SP */
--static const hrt_address SP_CTRL_BASE[N_SP_ID] = {
--	0x0000000000010000ULL
--};
--
--static const hrt_address SP_DMEM_BASE[N_SP_ID] = {
--	0x0000000000300000ULL
--};
--
--/* MMU */
--/*
-- * MMU0_ID: The data MMU
-- * MMU1_ID: The icache MMU
-- */
--static const hrt_address MMU_BASE[N_MMU_ID] = {
--	0x0000000000070000ULL,
--	0x00000000000A0000ULL
--};
--
--/* DMA */
--static const hrt_address DMA_BASE[N_DMA_ID] = {
--	0x0000000000040000ULL
--};
--
--static const hrt_address ISYS2401_DMA_BASE[N_ISYS2401_DMA_ID] = {
--	0x00000000000CA000ULL
--};
--
--/* IRQ */
--static const hrt_address IRQ_BASE[N_IRQ_ID] = {
--	0x0000000000000500ULL,
--	0x0000000000030A00ULL,
--	0x000000000008C000ULL,
--	0x0000000000090200ULL
--};
--
--/*
--	0x0000000000000500ULL};
-- */
--
--/* GDC */
--static const hrt_address GDC_BASE[N_GDC_ID] = {
--	0x0000000000050000ULL,
--	0x0000000000060000ULL
--};
--
--/* FIFO_MONITOR (not a subset of GP_DEVICE) */
--static const hrt_address FIFO_MONITOR_BASE[N_FIFO_MONITOR_ID] = {
--	0x0000000000000000ULL
--};
--
--/*
--static const hrt_address GP_REGS_BASE[N_GP_REGS_ID] = {
--	0x0000000000000000ULL};
--
--static const hrt_address GP_DEVICE_BASE[N_GP_DEVICE_ID] = {
--	0x0000000000090000ULL};
--*/
--
--/* GP_DEVICE (single base for all separate GP_REG instances) */
--static const hrt_address GP_DEVICE_BASE[N_GP_DEVICE_ID] = {
--	0x0000000000000000ULL
--};
--
--/*GP TIMER , all timer registers are inter-twined,
-- * so, having multiple base addresses for
-- * different timers does not help*/
--static const hrt_address GP_TIMER_BASE =
--    (hrt_address)0x0000000000000600ULL;
--
--/* GPIO */
--static const hrt_address GPIO_BASE[N_GPIO_ID] = {
--	0x0000000000000400ULL
--};
--
--/* TIMED_CTRL */
--static const hrt_address TIMED_CTRL_BASE[N_TIMED_CTRL_ID] = {
--	0x0000000000000100ULL
--};
--
--/* INPUT_FORMATTER */
--static const hrt_address INPUT_FORMATTER_BASE[N_INPUT_FORMATTER_ID] = {
--	0x0000000000030000ULL,
--	0x0000000000030200ULL,
--	0x0000000000030400ULL,
--	0x0000000000030600ULL
--}; /* memcpy() */
--
--/* INPUT_SYSTEM */
--static const hrt_address INPUT_SYSTEM_BASE[N_INPUT_SYSTEM_ID] = {
--	0x0000000000080000ULL
--};
--
--/*	0x0000000000081000ULL, */ /* capture A */
--/*	0x0000000000082000ULL, */ /* capture B */
--/*	0x0000000000083000ULL, */ /* capture C */
--/*	0x0000000000084000ULL, */ /* Acquisition */
--/*	0x0000000000085000ULL, */ /* DMA */
--/*	0x0000000000089000ULL, */ /* ctrl */
--/*	0x000000000008A000ULL, */ /* GP regs */
--/*	0x000000000008B000ULL, */ /* FIFO */
--/*	0x000000000008C000ULL, */ /* IRQ */
--
--/* RX, the MIPI lane control regs start at offset 0 */
--static const hrt_address RX_BASE[N_RX_ID] = {
--	0x0000000000080100ULL
--};
--
--/* IBUF_CTRL, part of the Input System 2401 */
--static const hrt_address IBUF_CTRL_BASE[N_IBUF_CTRL_ID] = {
--	0x00000000000C1800ULL,	/* ibuf controller A */
--	0x00000000000C3800ULL,	/* ibuf controller B */
--	0x00000000000C5800ULL	/* ibuf controller C */
--};
--
--/* ISYS IRQ Controllers, part of the Input System 2401 */
--static const hrt_address ISYS_IRQ_BASE[N_ISYS_IRQ_ID] = {
--	0x00000000000C1400ULL,	/* port a */
--	0x00000000000C3400ULL,	/* port b */
--	0x00000000000C5400ULL	/* port c */
--};
--
--/* CSI FE, part of the Input System 2401 */
--static const hrt_address CSI_RX_FE_CTRL_BASE[N_CSI_RX_FRONTEND_ID] = {
--	0x00000000000C0400ULL,	/* csi fe controller A */
--	0x00000000000C2400ULL,	/* csi fe controller B */
--	0x00000000000C4400ULL	/* csi fe controller C */
--};
--
--/* CSI BE, part of the Input System 2401 */
--static const hrt_address CSI_RX_BE_CTRL_BASE[N_CSI_RX_BACKEND_ID] = {
--	0x00000000000C0800ULL,	/* csi be controller A */
--	0x00000000000C2800ULL,	/* csi be controller B */
--	0x00000000000C4800ULL	/* csi be controller C */
--};
--
--/* PIXEL Generator, part of the Input System 2401 */
--static const hrt_address PIXELGEN_CTRL_BASE[N_PIXELGEN_ID] = {
--	0x00000000000C1000ULL,	/* pixel gen controller A */
--	0x00000000000C3000ULL,	/* pixel gen controller B */
--	0x00000000000C5000ULL	/* pixel gen controller C */
--};
--
--/* Stream2MMIO, part of the Input System 2401 */
--static const hrt_address STREAM2MMIO_CTRL_BASE[N_STREAM2MMIO_ID] = {
--	0x00000000000C0C00ULL,	/* stream2mmio controller A */
--	0x00000000000C2C00ULL,	/* stream2mmio controller B */
--	0x00000000000C4C00ULL	/* stream2mmio controller C */
--};
--
--#endif /* __SYSTEM_LOCAL_H_INCLUDED__ */
-diff --git a/drivers/staging/media/atomisp/pci/system_local.h b/drivers/staging/media/atomisp/pci/system_local.h
-index 7ad9cee6d550..d60591e04b61 100644
---- a/drivers/staging/media/atomisp/pci/system_local.h
-+++ b/drivers/staging/media/atomisp/pci/system_local.h
-@@ -1,10 +1,199 @@
- /* SPDX-License-Identifier: GPL-2.0 */
- /*
-- *    (c) 2020 Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-+ * Support for Intel Camera Imaging ISP subsystem.
-+ * Copyright (c) 2015, Intel Corporation.
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-+ * more details.
-  */
- 
--#ifdef ISP2401
--#  include "isp2401_system_local.h"
--#else
--#  include "isp2400_system_local.h"
-+#ifndef __SYSTEM_LOCAL_H_INCLUDED__
-+#define __SYSTEM_LOCAL_H_INCLUDED__
-+
-+#ifdef HRT_ISP_CSS_CUSTOM_HOST
-+#ifndef HRT_USE_VIR_ADDRS
-+#define HRT_USE_VIR_ADDRS
-+#endif
- #endif
-+
-+#include "system_global.h"
-+
-+/* This interface is deprecated */
-+#include "hive_types.h"
-+
-+/*
-+ * Cell specific address maps
-+ */
-+
-+#define GP_FIFO_BASE   ((hrt_address)0x0000000000090104)		/* This is NOT a base address */
-+
-+/* ISP */
-+static const hrt_address ISP_CTRL_BASE[N_ISP_ID] = {
-+	0x0000000000020000ULL
-+};
-+
-+static const hrt_address ISP_DMEM_BASE[N_ISP_ID] = {
-+	0x0000000000200000ULL
-+};
-+
-+static const hrt_address ISP_BAMEM_BASE[N_BAMEM_ID] = {
-+	0x0000000000100000ULL
-+};
-+
-+/* SP */
-+static const hrt_address SP_CTRL_BASE[N_SP_ID] = {
-+	0x0000000000010000ULL
-+};
-+
-+static const hrt_address SP_DMEM_BASE[N_SP_ID] = {
-+	0x0000000000300000ULL
-+};
-+
-+/* MMU */
-+/*
-+ * MMU0_ID: The data MMU
-+ * MMU1_ID: The icache MMU
-+ */
-+static const hrt_address MMU_BASE[N_MMU_ID] = {
-+	0x0000000000070000ULL,
-+	0x00000000000A0000ULL
-+};
-+
-+/* DMA */
-+static const hrt_address DMA_BASE[N_DMA_ID] = {
-+	0x0000000000040000ULL
-+};
-+
-+static const hrt_address ISYS2401_DMA_BASE[N_ISYS2401_DMA_ID] = {
-+	0x00000000000CA000ULL
-+};
-+
-+/* IRQ */
-+static const hrt_address IRQ_BASE[N_IRQ_ID] = {
-+	0x0000000000000500ULL,
-+	0x0000000000030A00ULL,
-+	0x000000000008C000ULL,
-+	0x0000000000090200ULL
-+};
-+
-+/*
-+	0x0000000000000500ULL};
-+ */
-+
-+/* GDC */
-+static const hrt_address GDC_BASE[N_GDC_ID] = {
-+	0x0000000000050000ULL,
-+	0x0000000000060000ULL
-+};
-+
-+/* FIFO_MONITOR (not a subset of GP_DEVICE) */
-+static const hrt_address FIFO_MONITOR_BASE[N_FIFO_MONITOR_ID] = {
-+	0x0000000000000000ULL
-+};
-+
-+/*
-+static const hrt_address GP_REGS_BASE[N_GP_REGS_ID] = {
-+	0x0000000000000000ULL};
-+
-+static const hrt_address GP_DEVICE_BASE[N_GP_DEVICE_ID] = {
-+	0x0000000000090000ULL};
-+*/
-+
-+/* GP_DEVICE (single base for all separate GP_REG instances) */
-+static const hrt_address GP_DEVICE_BASE[N_GP_DEVICE_ID] = {
-+	0x0000000000000000ULL
-+};
-+
-+/*GP TIMER , all timer registers are inter-twined,
-+ * so, having multiple base addresses for
-+ * different timers does not help*/
-+static const hrt_address GP_TIMER_BASE =
-+    (hrt_address)0x0000000000000600ULL;
-+
-+/* GPIO */
-+static const hrt_address GPIO_BASE[N_GPIO_ID] = {
-+	0x0000000000000400ULL
-+};
-+
-+/* TIMED_CTRL */
-+static const hrt_address TIMED_CTRL_BASE[N_TIMED_CTRL_ID] = {
-+	0x0000000000000100ULL
-+};
-+
-+/* INPUT_FORMATTER */
-+static const hrt_address INPUT_FORMATTER_BASE[N_INPUT_FORMATTER_ID] = {
-+	0x0000000000030000ULL,
-+	0x0000000000030200ULL,
-+	0x0000000000030400ULL,
-+	0x0000000000030600ULL
-+}; /* memcpy() */
-+
-+/* INPUT_SYSTEM */
-+static const hrt_address INPUT_SYSTEM_BASE[N_INPUT_SYSTEM_ID] = {
-+	0x0000000000080000ULL
-+};
-+
-+/*	0x0000000000081000ULL, */ /* capture A */
-+/*	0x0000000000082000ULL, */ /* capture B */
-+/*	0x0000000000083000ULL, */ /* capture C */
-+/*	0x0000000000084000ULL, */ /* Acquisition */
-+/*	0x0000000000085000ULL, */ /* DMA */
-+/*	0x0000000000089000ULL, */ /* ctrl */
-+/*	0x000000000008A000ULL, */ /* GP regs */
-+/*	0x000000000008B000ULL, */ /* FIFO */
-+/*	0x000000000008C000ULL, */ /* IRQ */
-+
-+/* RX, the MIPI lane control regs start at offset 0 */
-+static const hrt_address RX_BASE[N_RX_ID] = {
-+	0x0000000000080100ULL
-+};
-+
-+/* IBUF_CTRL, part of the Input System 2401 */
-+static const hrt_address IBUF_CTRL_BASE[N_IBUF_CTRL_ID] = {
-+	0x00000000000C1800ULL,	/* ibuf controller A */
-+	0x00000000000C3800ULL,	/* ibuf controller B */
-+	0x00000000000C5800ULL	/* ibuf controller C */
-+};
-+
-+/* ISYS IRQ Controllers, part of the Input System 2401 */
-+static const hrt_address ISYS_IRQ_BASE[N_ISYS_IRQ_ID] = {
-+	0x00000000000C1400ULL,	/* port a */
-+	0x00000000000C3400ULL,	/* port b */
-+	0x00000000000C5400ULL	/* port c */
-+};
-+
-+/* CSI FE, part of the Input System 2401 */
-+static const hrt_address CSI_RX_FE_CTRL_BASE[N_CSI_RX_FRONTEND_ID] = {
-+	0x00000000000C0400ULL,	/* csi fe controller A */
-+	0x00000000000C2400ULL,	/* csi fe controller B */
-+	0x00000000000C4400ULL	/* csi fe controller C */
-+};
-+
-+/* CSI BE, part of the Input System 2401 */
-+static const hrt_address CSI_RX_BE_CTRL_BASE[N_CSI_RX_BACKEND_ID] = {
-+	0x00000000000C0800ULL,	/* csi be controller A */
-+	0x00000000000C2800ULL,	/* csi be controller B */
-+	0x00000000000C4800ULL	/* csi be controller C */
-+};
-+
-+/* PIXEL Generator, part of the Input System 2401 */
-+static const hrt_address PIXELGEN_CTRL_BASE[N_PIXELGEN_ID] = {
-+	0x00000000000C1000ULL,	/* pixel gen controller A */
-+	0x00000000000C3000ULL,	/* pixel gen controller B */
-+	0x00000000000C5000ULL	/* pixel gen controller C */
-+};
-+
-+/* Stream2MMIO, part of the Input System 2401 */
-+static const hrt_address STREAM2MMIO_CTRL_BASE[N_STREAM2MMIO_ID] = {
-+	0x00000000000C0C00ULL,	/* stream2mmio controller A */
-+	0x00000000000C2C00ULL,	/* stream2mmio controller B */
-+	0x00000000000C4C00ULL	/* stream2mmio controller C */
-+};
-+
-+#endif /* __SYSTEM_LOCAL_H_INCLUDED__ */
+diff --git a/drivers/staging/rtl8188eu/core/rtw_security.c b/drivers/staging/rtl8188eu/core/rtw_security.c
+index 435c0fbec54a..ece5291ce7c0 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_security.c
++++ b/drivers/staging/rtl8188eu/core/rtw_security.c
+@@ -718,7 +718,7 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
+ 				res = _FAIL;
+ 			}
+ 		} else {
+-			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("rtw_tkip_decrypt: stainfo==NULL!!!\n"));
++			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo==NULL!!!\n",__func__));
+ 			res = _FAIL;
+ 		}
+ 	}
 -- 
-2.26.2
+2.27.0
 
 _______________________________________________
 devel mailing list
