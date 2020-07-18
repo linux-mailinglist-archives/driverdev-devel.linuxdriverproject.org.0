@@ -1,80 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A6D3224A0E
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jul 2020 11:14:56 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AD4E686228;
-	Sat, 18 Jul 2020 09:14:54 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qmb3XJEPLrVv; Sat, 18 Jul 2020 09:14:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F3C586200;
-	Sat, 18 Jul 2020 09:14:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6CCDC1BF5F5
- for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 09:14:50 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 02BDD224A13
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jul 2020 11:16:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6905385AE0
- for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 09:14:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 31AE7877EC;
+	Sat, 18 Jul 2020 09:16:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Mi4eyDwCpId9; Sat, 18 Jul 2020 09:16:37 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 07D94877D4;
+	Sat, 18 Jul 2020 09:16:36 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E9241BF5F5
+ for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 09:16:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 231622048D
+ for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 09:16:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W2fdxQqpL0QA for <devel@linuxdriverproject.org>;
- Sat, 18 Jul 2020 09:14:49 +0000 (UTC)
+ with ESMTP id szV7cBnhUUhr for <devel@linuxdriverproject.org>;
+ Sat, 18 Jul 2020 09:16:32 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f45.google.com (mail-pj1-f45.google.com
- [209.85.216.45])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4734F8528B
- for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 09:14:49 +0000 (UTC)
-Received: by mail-pj1-f45.google.com with SMTP id a9so1976772pjd.3
- for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 02:14:49 -0700 (PDT)
+Received: from mail-pf1-f171.google.com (mail-pf1-f171.google.com
+ [209.85.210.171])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9E10620480
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 09:16:32 +0000 (UTC)
+Received: by mail-pf1-f171.google.com with SMTP id u5so6564691pfn.7
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 02:16:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
  h=from:date:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=cKEpENRz6Co+TfaAIpmLq652jkpOnfh/vQOlcll5dLE=;
- b=zJhihHkos9vaDBR1NxjLfxGiRdluMRMauT1pn/C2UAcGOQVfDGFtWKDErCsYB/CJsR
- sbsS9X6kOuLNJ/Gv0iJrVo9CWjxRxasVJ7kYhhRPmBh2Ne7rwlnB8/q7CWz6GSfXZund
- LizhfmigqKmg20Qz/CO3yxYPWCBXxHwqBmIuegiM8YmzJAmUj2UzevEwmcYjJTAFYXHT
- /HOilfkZ5hahtLP8IzPwXZPqgkhsId6zT4Z2j/Lr9yVi/40iPkOwA2BFR8EX0JGWHry7
- nN26pMy0SgOmjzK18oL2xrnPQc8f/URxMF6G0GTlQULUHqm5NINs5RIUR7wkZe33V1MM
- zybw==
+ :user-agent; bh=C24ti86kE7NMM1lv4kv8FNrXBsCWS2j7pMpanwJHY1U=;
+ b=n3d+sUFa71nV7qDubwtx493drXVvVG0FqzGDuXSWGPr9ZkiuMhohiaZ0c8CP4ZqBPN
+ /wVWuzRkJi3pEaTslE6Pdef3NWOnjl2KCVet9On0hGRJlhlGAy5uqHjOaBsjEKvlJGjh
+ PRNQaq6Vd6NzoDczBgd1fv8UN7fk2JD4Nxo//2nE5J6vB6oTrVHels0I2z2kcBS0e6po
+ OoIr3nl9ZvtP479PsnKnvP5Zfs2xFlUp4Har+Q9d43Ok2IzQ9g9Z5IAcKyzkHkM/9dCL
+ hx4aA1Dkuc4WI9dxeM/98+d8zZNI0u5lYpjjW7zFoOzp49ohlV0XCUHYhMJBbn6jJ//f
+ TH5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:date:to:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=cKEpENRz6Co+TfaAIpmLq652jkpOnfh/vQOlcll5dLE=;
- b=ftBf6Q4rX1YBdqjx1cia02tWt8E4w0/E8MugopN/bYA/ZIzZlZzp+VJ2uuSseDdsGm
- JSIcNEbc9zncK8yCov9kkKM68R7FySLD+Kms+Ht/zRgbajNVpkrWInE1lXf4QM9zOxvA
- W3NtZHuUgoJfHJxSyCAxgNjhr3BfQamIuZsr8yWlkgHTNoQDVQtFvgJHKmptelbc8QCT
- k2za41yyze1+pY1vF8Rl65brm2d5l/0q0mmdagio6hjENwYSa6rtnbaPLWViv5+ckAey
- iSAXoKoBggdjcIE/Ox5Se4RkoOO6A52mqh4apPvPzcbfKWckdAV+hOAqIviEuebitBq+
- tBeQ==
-X-Gm-Message-State: AOAM532+uRVktq2Tc1/Cx3biw+iCytUTscpWVDZDHuGpnmCBT1kH3vkQ
- bTjmXdtzg6su0WMBVEgxjexyyg==
-X-Google-Smtp-Source: ABdhPJw6ja/5O5yRBq5e2Ea4nArJXAFPCBBMagd931AXnWOtYQEEWcFYLwOL6mpoHhHwShsW8ZT77g==
-X-Received: by 2002:a17:90b:33c2:: with SMTP id
- lk2mr5751576pjb.122.1595063688633; 
- Sat, 18 Jul 2020 02:14:48 -0700 (PDT)
+ bh=C24ti86kE7NMM1lv4kv8FNrXBsCWS2j7pMpanwJHY1U=;
+ b=oKQ9teGbedFq4Vc3vNf09BDEb1DhuA6a/TyzZSfRCs9Q7s+kvbq7Ztzc8rSK/8CAAU
+ 3xGXWd/C6CdcNDOrIw/7m+Bi9FS6ONlAo03JVKH15nYA1EaUwSoBflWIzyqkZWAEJPk1
+ fsLfN0Y3GdbXXKzuIOm+si4k6w3XIiKN6nZnSrpFNGdU8DQg4iqObDB48z6h4E1Uc8Ww
+ WURxoW/0W9FZBYW/L8Fkl6pbRdwYNEOh+YNC91tUYKiXnziyVpkCf8o3uKKKDSJ0aBqy
+ WnbjDE9oLcJkBOtlZMzb9TaXsfAvY95f3hgUhKMgu+v7I/MZky7Fr2isN5opTR7kEOia
+ LeVw==
+X-Gm-Message-State: AOAM530QQnu2hyb9B60Q0Q/H0BXrhSLn4aPnJgrPGE6OiEuFPDvyIhrx
+ 295XyB+BoRmQLWje9/MHlMaAWg==
+X-Google-Smtp-Source: ABdhPJxZsd8+37SUXd40L8uH5JQT4ipksIBm/OjaVFSnEDjV63RCt491SafxvEHFwH77tZt/vKfWlQ==
+X-Received: by 2002:a65:63c8:: with SMTP id n8mr11804090pgv.232.1595063791931; 
+ Sat, 18 Jul 2020 02:16:31 -0700 (PDT)
 Received: from localhost ([2406:7400:73:207:8b43:3062:877d:c647])
- by smtp.gmail.com with ESMTPSA id r8sm10220303pfg.147.2020.07.18.02.14.46
+ by smtp.gmail.com with ESMTPSA id o14sm4930415pjw.3.2020.07.18.02.16.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 18 Jul 2020 02:14:47 -0700 (PDT)
+ Sat, 18 Jul 2020 02:16:30 -0700 (PDT)
 From: B K Karthik <bkkarthik@pesu.pes.edu>
 X-Google-Original-From: B K Karthik <karthik.bk2000@live.com>
-Date: Sat, 18 Jul 2020 05:14:42 -0400
+Date: Sat, 18 Jul 2020 05:16:26 -0400
 To: Larry Finger <Larry.Finger@lwfinger.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Michael Straube <straube.linux@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/4] staging: rtl8188eu: include: fixed multiple blank space
+Subject: [PATCH 2/4] staging: rtl8188eu: include: fixed multiple parentheses
  coding style issues
-Message-ID: <20200718091442.xamnoawpguo42k7v@pesu-pes-edu>
+Message-ID: <20200718091626.uflhdcgkmhqij5b7@pesu-pes-edu>
 MIME-Version: 1.0
 User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -89,158 +88,194 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8015752121358491340=="
+Content-Type: multipart/mixed; boundary="===============5270911940588408704=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============8015752121358491340==
+--===============5270911940588408704==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ocvxayynsj2aaq3w"
+	protocol="application/pgp-signature"; boundary="p6ckdqruwalwg3a2"
 Content-Disposition: inline
 
 
---ocvxayynsj2aaq3w
+--p6ckdqruwalwg3a2
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-fixed multiple blank space coding style issues
-reported by checkpatch
+fixed multiple parentheses coding style issues reported by checkpatch.
 
 Signed-off-by: B K Karthik <karthik.bk2000@live.com>
 ---
- drivers/staging/rtl8188eu/include/hal_com.h       |  2 +-
- drivers/staging/rtl8188eu/include/osdep_service.h |  2 +-
- drivers/staging/rtl8188eu/include/rtl8188e_hal.h  |  2 +-
- drivers/staging/rtl8188eu/include/rtl8188e_xmit.h | 12 ++++++------
- drivers/staging/rtl8188eu/include/rtw_cmd.h       |  2 +-
- 5 files changed, 10 insertions(+), 10 deletions(-)
+ drivers/staging/rtl8188eu/include/ieee80211.h |  4 +--
+ .../staging/rtl8188eu/include/osdep_service.h |  4 +--
+ drivers/staging/rtl8188eu/include/wifi.h      | 34 +++++++++----------
+ 3 files changed, 21 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/include/hal_com.h b/drivers/staging/=
-rtl8188eu/include/hal_com.h
-index 542e6e93ff8e..da772a6ebad3 100644
---- a/drivers/staging/rtl8188eu/include/hal_com.h
-+++ b/drivers/staging/rtl8188eu/include/hal_com.h
-@@ -81,7 +81,7 @@
- #define	RATE_ALL_OFDM_AG	(RATR_6M | RATR_9M | RATR_12M | RATR_18M | \
- 				 RATR_24M | RATR_36M | RATR_48M | RATR_54M)
- #define	RATE_ALL_OFDM_1SS	(RATR_MCS0 | RATR_MCS1 | RATR_MCS2 |	\
--				 RATR_MCS3 | RATR_MCS4 | RATR_MCS5|RATR_MCS6 | \
-+				 RATR_MCS3 | RATR_MCS4 | RATR_MCS5 | RATR_MCS6 | \
- 				 RATR_MCS7)
- #define	RATE_ALL_OFDM_2SS	(RATR_MCS8 | RATR_MCS9 | RATR_MCS10 | \
- 				 RATR_MCS11 | RATR_MCS12 | RATR_MCS13 | \
+diff --git a/drivers/staging/rtl8188eu/include/ieee80211.h b/drivers/stagin=
+g/rtl8188eu/include/ieee80211.h
+index 83218e7ec0a9..a872a86f89ab 100644
+--- a/drivers/staging/rtl8188eu/include/ieee80211.h
++++ b/drivers/staging/rtl8188eu/include/ieee80211.h
+@@ -646,8 +646,8 @@ struct rtw_ieee80211_channel {
+ 	"flags:0x%08x" \
+=20
+ #define CHAN_ARG(channel) \
+-	(channel)->hw_value \
+-	, (channel)->flags \
++	((channel)->hw_value \
++	, (channel)->flags)
+=20
+ /* Parsed Information Elements */
+ struct rtw_ieee802_11_elems {
 diff --git a/drivers/staging/rtl8188eu/include/osdep_service.h b/drivers/st=
 aging/rtl8188eu/include/osdep_service.h
-index 0d3e4a6e7e85..31d897f1d21f 100644
+index 31d897f1d21f..2245cc430981 100644
 --- a/drivers/staging/rtl8188eu/include/osdep_service.h
 +++ b/drivers/staging/rtl8188eu/include/osdep_service.h
-@@ -82,7 +82,7 @@ void rtw_free_netdev(struct net_device *netdev);
+@@ -76,9 +76,9 @@ struct net_device *rtw_alloc_etherdev_with_old_priv(void =
+*old_priv);
+ void rtw_free_netdev(struct net_device *netdev);
+=20
+ #define FUNC_NDEV_FMT "%s(%s)"
+-#define FUNC_NDEV_ARG(ndev) __func__, ndev->name
++#define FUNC_NDEV_ARG(ndev) (__func__, (ndev)->name)
+ #define FUNC_ADPT_FMT "%s(%s)"
+-#define FUNC_ADPT_ARG(adapter) __func__, adapter->pnetdev->name
++#define FUNC_ADPT_ARG(adapter) (__func__, (adapter)->pnetdev->name)
 =20
  /* Macros for handling unaligned memory accesses */
 =20
--#define RTW_GET_BE24(a) ((((u32)(a)[0]) << 16) | (((u32) (a)[1]) << 8) | \
-+#define RTW_GET_BE24(a) ((((u32)(a)[0]) << 16) | (((u32)(a)[1]) << 8) | \
- 			 ((u32)(a)[2]))
+diff --git a/drivers/staging/rtl8188eu/include/wifi.h b/drivers/staging/rtl=
+8188eu/include/wifi.h
+index 791f287a546d..677827900607 100644
+--- a/drivers/staging/rtl8188eu/include/wifi.h
++++ b/drivers/staging/rtl8188eu/include/wifi.h
+@@ -143,57 +143,57 @@ enum WIFI_REG_DOMAIN {
+ #define _ORDER_		BIT(15)
 =20
- void rtw_buf_free(u8 **buf, u32 *buf_len);
-diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_hal.h b/drivers/sta=
-ging/rtl8188eu/include/rtl8188e_hal.h
-index ba7c98712934..3be28a6dbd49 100644
---- a/drivers/staging/rtl8188eu/include/rtl8188e_hal.h
-+++ b/drivers/staging/rtl8188eu/include/rtl8188e_hal.h
-@@ -104,7 +104,7 @@ enum usb_rx_agg_mode {
- 	(WMM_NORMAL_TX_TOTAL_PAGE_NUMBER + 1) /* 0xA9 */
+ #define SetToDs(pbuf)	\
+-	*(__le16 *)(pbuf) |=3D cpu_to_le16(_TO_DS_)
++	(*(__le16 *)(pbuf) |=3D cpu_to_le16(_TO_DS_))
 =20
- /* Chip specific */
--#define CHIP_BONDING_IDENTIFIER(_value)	(((_value)>>22)&0x3)
-+#define CHIP_BONDING_IDENTIFIER(_value)	(((_value) >> 22) & 0x3)
- #define CHIP_BONDING_92C_1T2R	0x1
- #define CHIP_BONDING_88C_USB_MCARD	0x2
- #define CHIP_BONDING_88C_USB_HP	0x1
-diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h b/drivers/st=
-aging/rtl8188eu/include/rtl8188e_xmit.h
-index 49884cceb349..1472c597cc53 100644
---- a/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-+++ b/drivers/staging/rtl8188eu/include/rtl8188e_xmit.h
-@@ -30,11 +30,11 @@
- #define SET_EARLYMODE_LEN2_1(__pAddr, __Value)			\
- 	SET_BITS_TO_LE_4BYTE(__pAddr, 28, 4, __Value)
- #define SET_EARLYMODE_LEN2_2(__pAddr, __Value)			\
--	SET_BITS_TO_LE_4BYTE(__pAddr+4, 0, 8, __Value)
-+	SET_BITS_TO_LE_4BYTE(__pAddr + 4, 0, 8, __Value)
- #define SET_EARLYMODE_LEN3(__pAddr, __Value)			\
--	SET_BITS_TO_LE_4BYTE(__pAddr+4, 8, 12, __Value)
-+	SET_BITS_TO_LE_4BYTE(__pAddr + 4, 8, 12, __Value)
- #define SET_EARLYMODE_LEN4(__pAddr, __Value)			\
--	SET_BITS_TO_LE_4BYTE(__pAddr+4, 20, 12, __Value)
-+	SET_BITS_TO_LE_4BYTE(__pAddr + 4, 20, 12, __Value)
+ #define GetToDs(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_TO_DS_)) !=3D 0)
 =20
- /*  */
- /* defined for TX DESC Operation */
-@@ -100,7 +100,7 @@ enum TXDESC_SC {
+ #define ClearToDs(pbuf)	\
+-	*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_TO_DS_))
++	(*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_TO_DS_)))
 =20
- #define txdesc_set_ccx_sw_88e(txdesc, value) \
- 	do { \
--		((struct txdesc_88e *)(txdesc))->sw1 =3D (((value)>>8) & 0x0f); \
-+		((struct txdesc_88e *)(txdesc))->sw1 =3D (((value) >> 8) & 0x0f); \
- 		((struct txdesc_88e *)(txdesc))->sw0 =3D ((value) & 0xff); \
+ #define SetFrDs(pbuf)	\
+-	*(__le16 *)(pbuf) |=3D cpu_to_le16(_FROM_DS_)
++	(*(__le16 *)(pbuf) |=3D cpu_to_le16(_FROM_DS_))
+=20
+ #define GetFrDs(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_FROM_DS_)) !=3D=
+ 0)
+=20
+ #define ClearFrDs(pbuf)	\
+-	*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_FROM_DS_))
++	(*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_FROM_DS_)))
+=20
+ #define get_tofr_ds(pframe)	((GetToDs(pframe) << 1) | GetFrDs(pframe))
+=20
+ #define SetMFrag(pbuf)	\
+-	*(__le16 *)(pbuf) |=3D cpu_to_le16(_MORE_FRAG_)
++	(*(__le16 *)(pbuf) |=3D cpu_to_le16(_MORE_FRAG_))
+=20
+ #define GetMFrag(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_MORE_FRAG_)) !=
+=3D 0)
+=20
+ #define ClearMFrag(pbuf)	\
+-	*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_MORE_FRAG_))
++	(*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_MORE_FRAG_)))
+=20
+ #define SetRetry(pbuf)	\
+-	*(__le16 *)(pbuf) |=3D cpu_to_le16(_RETRY_)
++	(*(__le16 *)(pbuf) |=3D cpu_to_le16(_RETRY_))
+=20
+ #define GetRetry(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_RETRY_)) !=3D =
+0)
+=20
+ #define ClearRetry(pbuf)	\
+-	*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_RETRY_))
++	(*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_RETRY_)))
+=20
+ #define SetPwrMgt(pbuf)	\
+-	*(__le16 *)(pbuf) |=3D cpu_to_le16(_PWRMGT_)
++	(*(__le16 *)(pbuf) |=3D cpu_to_le16(_PWRMGT_))
+=20
+ #define GetPwrMgt(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_PWRMGT_)) !=
+=3D 0)
+=20
+ #define ClearPwrMgt(pbuf)	\
+-	*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_PWRMGT_))
++	(*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_PWRMGT_)))
+=20
+ #define SetMData(pbuf)	\
+-	*(__le16 *)(pbuf) |=3D cpu_to_le16(_MORE_DATA_)
++	(*(__le16 *)(pbuf) |=3D cpu_to_le16(_MORE_DATA_))
+=20
+ #define GetMData(pbuf)	(((*(__le16 *)(pbuf)) & cpu_to_le16(_MORE_DATA_)) !=
+=3D 0)
+=20
+ #define ClearMData(pbuf)	\
+-	*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_MORE_DATA_))
++	(*(__le16 *)(pbuf) &=3D (~cpu_to_le16(_MORE_DATA_)))
+=20
+ #define SetPrivacy(pbuf)	\
+-	*(__le16 *)(pbuf) |=3D cpu_to_le16(_PRIVACY_)
++	(*(__le16 *)(pbuf) |=3D cpu_to_le16(_PRIVACY_))
+=20
+ #define GetPrivacy(pbuf)					\
+ 	(((*(__le16 *)(pbuf)) & cpu_to_le16(_PRIVACY_)) !=3D 0)
+@@ -228,18 +228,18 @@ enum WIFI_REG_DOMAIN {
  	} while (0)
 =20
-@@ -138,9 +138,9 @@ struct txrpt_ccx_88e {
- 	u8 sw0;
- };
+ #define SetDuration(pbuf, dur) \
+-	*(__le16 *)((size_t)(pbuf) + 2) =3D cpu_to_le16(0xffff & (dur))
++	(*(__le16 *)((size_t)(pbuf) + 2) =3D cpu_to_le16(0xffff & (dur)))
 =20
--#define txrpt_ccx_sw_88e(txrpt_ccx) ((txrpt_ccx)->sw0 + ((txrpt_ccx)->sw1<=
-<8))
-+#define txrpt_ccx_sw_88e(txrpt_ccx) ((txrpt_ccx)->sw0 + ((txrpt_ccx)->sw1 =
-<< 8))
- #define txrpt_ccx_qtime_88e(txrpt_ccx)			\
--	((txrpt_ccx)->ccx_qtime0+((txrpt_ccx)->ccx_qtime1<<8))
-+	((txrpt_ccx)->ccx_qtime0 + ((txrpt_ccx)->ccx_qtime1 << 8))
+ #define SetPriority(pbuf, tid)	\
+-	*(__le16 *)(pbuf) |=3D cpu_to_le16(tid & 0xf)
++	(*(__le16 *)(pbuf) |=3D cpu_to_le16(tid & 0xf))
 =20
- void rtl8188e_fill_fake_txdesc(struct adapter *padapter, u8 *pDesc,
- 			       u32 BufferLen, u8 IsPsPoll, u8 IsBTQosNull);
-diff --git a/drivers/staging/rtl8188eu/include/rtw_cmd.h b/drivers/staging/=
-rtl8188eu/include/rtw_cmd.h
-index fa5e212fc9e0..002a797c6d0a 100644
---- a/drivers/staging/rtl8188eu/include/rtw_cmd.h
-+++ b/drivers/staging/rtl8188eu/include/rtw_cmd.h
-@@ -115,7 +115,7 @@ struct	setopmode_parm {
-  */
+ #define GetPriority(pbuf)	((le16_to_cpu(*(__le16 *)(pbuf))) & 0xf)
 =20
- #define RTW_SSID_SCAN_AMOUNT 9 /*  for WEXT_CSCAN_AMOUNT 9 */
--#define RTW_CHANNEL_SCAN_AMOUNT (14+37)
-+#define RTW_CHANNEL_SCAN_AMOUNT (14 + 37)
- struct sitesurvey_parm {
- 	int scan_mode;	/* active: 1, passive: 0 */
- 	u8 ssid_num;
+ #define SetEOSP(pbuf, eosp)	\
+-		*(__le16 *)(pbuf) |=3D cpu_to_le16((eosp & 1) << 4)
++		(*(__le16 *)(pbuf) |=3D cpu_to_le16((eosp & 1) << 4))
+=20
+ #define SetAckpolicy(pbuf, ack)	\
+-	*(__le16 *)(pbuf) |=3D cpu_to_le16((ack & 3) << 5)
++	(*(__le16 *)(pbuf) |=3D cpu_to_le16((ack & 3) << 5))
+=20
+ #define GetAckpolicy(pbuf) (((le16_to_cpu(*(__le16 *)pbuf)) >> 5) & 0x3)
+=20
 --=20
 2.20.1
 
 
---ocvxayynsj2aaq3w
+--p6ckdqruwalwg3a2
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl8SvYEACgkQ471Q5AHe
-Z2rH6gv+JB9f+nV+qCQ5xtnIgag9pexlAWAX4Oeq1xoikQAIHLjugaLCyThe4oAy
-AfuhaVgvFMBXIwCYACz7bZB0fDZFW9wBv6yhjQKDgOkXrHC1Zgnnb8MfA0rT9oDJ
-vwweeEs1XuURsFu9aq2nTFpFdKebD3GqSx5T4cyZpQf19ClKFDGhtF3pZjmn5xmk
-MB3qEzYs5h2zoY0TH/laeUL1TR7fzzLGFbnSGrkfSfYxShqlr9abIiYRsGmfkm+G
-OgLgniwYIXG1TVGCgwTucDdt1G8gBHqR+86NemvfSOdjiI577aWcBqcWUrCqlQZA
-BS9bcdKPlKVxq+ty60UeBJd+cKgfJdjZmhROpG3M9H8TQc9XNbn28vkua9bugG+r
-qBPMAlmmASKpYxz4zNa6zSRMw3Kf4MrJ3qug5JnxFnn1L58MN4CHE4SRWZrebOdN
-TM8Xa7pkRzOtmHfSyHD0L7Aozu7p9GarAfmSIY9EvrVz0JJPynMrwXjeyxBIzuPZ
-8xAlwBsJ
-=39RY
+iQGzBAEBCgAdFiEEpIrzAt4LvWLJmKjp471Q5AHeZ2oFAl8SvekACgkQ471Q5AHe
+Z2q17Qv9EYWSTewAxPY7AdbcAU7qwWLaHeW7SlMcp+fQZoI8DqZCPkqGEso0IgN/
+q1yIwanySsm4KVYZ13yg2uWV/V0qrSjeUr16ieWxjuftSM61JfEm471JyjDv9g1M
+738qtqHPyJi47LdWUjau4frgcGbnirqUI4RpCxYiOjfYHdDBw7sYKTShx1694/UE
+CBW7NU0p1zRezoL7CYf2jADMHPqU79a2M+dSvEKdqkZz/6Bvv38vzBu59baZzEFS
+mbV5Kvlkct0eXmAeguUjzbVqTSLmkvUYf4OdiBlWj7Gl6Wr/XGOXELjWyGIl2Ol+
+F/rZVx2PqQpY9SVWWWZPJKuaxbSgzihkAK0aGoFKZOb9lmIs7kkHrM70RtDcylon
+3N3MyH99h75yPYEz5l4CGfEBzg+nHdbpylYH+0ChOIdJb2zdmjytTrpn10b08TEj
+ZwoHFS2qdEkhEOiaIIaVRmCn0YnM5J69qe44V8l4Db3Tm5+aS8KeY294jxIJSjoO
+7ayi9O3R
+=ULwM
 -----END PGP SIGNATURE-----
 
---ocvxayynsj2aaq3w--
+--p6ckdqruwalwg3a2--
 
---===============8015752121358491340==
+--===============5270911940588408704==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -251,4 +286,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============8015752121358491340==--
+--===============5270911940588408704==--
