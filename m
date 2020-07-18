@@ -1,77 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FA42224B8D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jul 2020 15:32:59 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F27B224B91
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jul 2020 15:34:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9269888168;
-	Sat, 18 Jul 2020 13:32:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3B04220458;
+	Sat, 18 Jul 2020 13:34:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eyOjLWC3rmcH; Sat, 18 Jul 2020 13:32:57 +0000 (UTC)
+	with ESMTP id e0C9OADAHMEl; Sat, 18 Jul 2020 13:34:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D807F87E46;
-	Sat, 18 Jul 2020 13:32:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 15C9120363;
+	Sat, 18 Jul 2020 13:34:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 00D191BF283
- for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 13:32:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2BE911BF283
+ for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 13:34:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F12C886207
- for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 13:32:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2817E86207
+ for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 13:34:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PWcti1JGIFGU for <devel@linuxdriverproject.org>;
- Sat, 18 Jul 2020 13:32:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7C60D85F2B
- for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 13:32:54 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id ls15so7842128pjb.1
- for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 06:32:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=GX7yez5X9ql9EcvciXmb6Gd1L93T6OzAX6ibX57rbPQ=;
- b=ZY3Y/FC1Lwnkm6dQkh4u+0S0oXj0z4ncjsGsOMNjCdooJTh65GqHkedkCNP81WXS98
- n2ejrZ8T8GFdCfiMQXNFXjwsTGbvk05p8Wmu+378uO1ilYuJ7zFsk/V0XU+haEgynerR
- m5ot6W91v/QS0qoRXMS8C610RtIabaGvxd5X60icmDFmh6w4VqkIBZngSYyJn5IvxwDD
- 6Mpoklmvj44ICRM+SpKXWJ1fsuusy127z+EsEBnD+zVfe1gzP/RWMOQUnkMrgDzV0i8Z
- 459I+EtxMpt+KZ+mWMOGkxXjmXUk1k3oZnde42iH+ePyxQraB5+EQhtFERqOiGHAOl+0
- /cxw==
+ with ESMTP id Sv8Kdzxmcq4q for <devel@linuxdriverproject.org>;
+ Sat, 18 Jul 2020 13:34:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
+ [209.85.208.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0988385F2B
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 13:34:28 +0000 (UTC)
+Received: by mail-lj1-f196.google.com with SMTP id q4so15767472lji.2
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 06:34:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=pesu-pes-edu.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PV7hHvU5WTJVLxmjDtytdt4i+Ojp5k4NkU4sJzhexD0=;
+ b=rTV+fN6SCUZ/GEu9Vs6WW3JrFjNFu1XC/ZBSCEiNkL/2M5nt8jhGAJjafm4fYUq5kJ
+ yWTP4jBeYEnOEdR1GDNp4bn/zGngGh3Ln+nHKgI7miC7SbLtf2Ua4vxQA6WZ3nVAhdn5
+ BkCFvPNIO8zHhYDpw2mDUwZUFUEq1B/uhmZ3kuRRFmBeXP79l1ku7hTfsxg+Ru2u75Ur
+ +n76KOf+GwEMIQp11ZHZy4sz0Pi36YrfodmH8JpQJsqy7GaqggIDp5MKaiNpnsyN9ZAV
+ SFAOO4rVQCDhOyuAfJ7+qZr9YjYnoN5rtfr6G6utH1KKHLQQ8WGQBsx5Yyvp/ucQlRXP
+ EyIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=GX7yez5X9ql9EcvciXmb6Gd1L93T6OzAX6ibX57rbPQ=;
- b=nSFF2xZR3ch9FsCJ8G+JaLzYzjs6ZKrsLg8vR58kb+gNnGVZmSAclL/+5uailJhBWV
- aTBUdoEu1BTvpYtj5sOyQW9a6mDD1tVJlM2bUr9FoXHPgcO72ixTApEQyWBWBk2lGUAC
- 0QpqWppmQaifSArlBy7DWBUOndH2oZk7AfvAXh36KNhCoXOywvurQH0JG7pIqoRP8VJQ
- rwpOueKA9+ySb262XqAjT17zFZ0mw89p5zoLaA2B4zfLAEjH0XiJgs9BDVReSHuy5YgS
- YBd9XJiHPk5FWVK2w6XyXvggY51F08LjJMY1s5IacHw+ks/dZ9CJTgL9Chb/RWAJEEjE
- KxjA==
-X-Gm-Message-State: AOAM5305COXdMqF/WUSCJWNwDdTMePzPEGjCO8LoPa4AKPfwThiscXj1
- g14J+gRd8t8IDbidWY9vVEo=
-X-Google-Smtp-Source: ABdhPJwyHspTs0owbnia19HlErjk8ONGVAAjGQH4tbwAhB81gov0I2Nas4/RWujZDESmokW6cBD3Tw==
-X-Received: by 2002:a17:90a:14a5:: with SMTP id
- k34mr15218415pja.37.1595079174064; 
- Sat, 18 Jul 2020 06:32:54 -0700 (PDT)
-Received: from blackclown ([103.88.82.25])
- by smtp.gmail.com with ESMTPSA id 137sm10722296pgg.72.2020.07.18.06.32.50
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 18 Jul 2020 06:32:53 -0700 (PDT)
-Date: Sat, 18 Jul 2020 19:02:38 +0530
-From: Suraj Upadhyay <usuraj35@gmail.com>
-To: sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
- tian.shu.qiu@intel.com, mchehab@kernel.org, gregkh@linuxfoundation.org
-Subject: [PATCH] staging: media: ipu3: Replace depracated MSI API.
-Message-ID: <20200718133238.GA11982@blackclown>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PV7hHvU5WTJVLxmjDtytdt4i+Ojp5k4NkU4sJzhexD0=;
+ b=hujodX294XHxpScGRBpSLrwaMXGOpcFZEi+/4B1SSHI8rJb0Sjecu9gwHrDAxnQ3uD
+ OEjpXnFRAqkZDs5QVZSIRi2ZMiVc8O0EtuLPEp1i+P7t3rDQV07CUyUZPpIN/wo/z8YL
+ 9xollwRCKQY54wAYkbW8mQagrgencDUYDokrRT4jhgsvQ9iHMk3/Tj/HH5w7fN+6ju81
+ dj5D28238/vfqJCfcX+iDygu/N6G/PcNma9Vs6+Nfz2nwEJGWAiYRJDHF18TvALEFr0S
+ RQTsOoGv5sXrgedFdfga57gCnua6D2qx6r7Ja9HFKixzAnnab2vjthUHpQwfCngtYU/S
+ Hujw==
+X-Gm-Message-State: AOAM533TkV6SdKfXg0RbYL8xYXaXD7D4c3oVd28XFqmJhHYQwL3MJoWt
+ mno6duCf6P6juFtowcA2Se9lnV3rpCN59Phka+GOcg==
+X-Google-Smtp-Source: ABdhPJwJQoFDnmj8u12dbySuIPtpBhE37a9Y8QEazqGOg3WX/XNzDLTdbwZQqca/Uv3IRrV9tsnvXH+L2dU3ba0fKEs=
+X-Received: by 2002:a2e:9b92:: with SMTP id z18mr7058455lji.364.1595079266712; 
+ Sat, 18 Jul 2020 06:34:26 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <20200718091857.quzs5sqvkjzngd6k@pesu-pes-edu>
+ <560eeb7388164e58ac0e47277fe2aec798c45a5c.camel@perches.com>
+In-Reply-To: <560eeb7388164e58ac0e47277fe2aec798c45a5c.camel@perches.com>
+From: B K Karthik <bkkarthik@pesu.pes.edu>
+Date: Sat, 18 Jul 2020 09:34:15 -0400
+Message-ID: <CAAhDqq17xt5Q9JHPw9NDnFhbp=0gYS4PJWyRwvPYKXMrN_btPQ@mail.gmail.com>
+Subject: Re: [PATCH 4/4] staging: rtl8188eu: include: placed constant on the
+ right side of the test in comparisons
+To: Joe Perches <joe@perches.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,84 +82,100 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============5702757157909106759=="
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, Larry Finger <Larry.Finger@lwfinger.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+On Sat, Jul 18, 2020 at 9:17 AM Joe Perches <joe@perches.com> wrote:
+>
+> On Sat, 2020-07-18 at 05:18 -0400, B K Karthik wrote:
+> > placed constant on the right side of the test
+> > to fix warnings issued by checkpatch
+> []
+> > diff --git a/drivers/staging/rtl8188eu/include/wifi.h b/drivers/staging/rtl8188eu/include/wifi.h
+> []
+> > @@ -326,7 +326,7 @@ static inline unsigned char *get_hdr_bssid(unsigned char *pframe)
+> >
+> >  static inline int IsFrameTypeCtrl(unsigned char *pframe)
+> >  {
+> > -     if (WIFI_CTRL_TYPE == GetFrameType(pframe))
+> > +     if (GetFrameType(pframe) == WIFI_CTRL_TYPE)
+> >               return true;
+> >       else
+> >               return false;
+>
+> Always try to improve code instead of merely shutting
+> up checkpatch warnings.
+>
+> This function should likely be written:
+>
+> static inline bool IsFrameTypeCtrl(unsigned char *pframe)
+> {
+>         return GetFrameType(pframe) == WIFI_CTRL_TYPE;
+> }
+>
+> and given it's used only once, it might be expanded
+> in that place and removed altogether.
+>
+> Something like:
+>
+> (and the memcmp below could be ether_addr_equal instead
+>  but I'm too lazy to find out if the addresses are both
+>  guaranteed to be __aligned(2) which is likely)
 
---===============5702757157909106759==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="1yeeQ81UyVL57Vl7"
-Content-Disposition: inline
+Alright, I will try to do that and send a v2 asap :)
+>
+> ---
+>  drivers/staging/rtl8188eu/hal/rtl8188e_rxdesc.c | 8 +++++---
+>  drivers/staging/rtl8188eu/include/wifi.h        | 7 -------
+>  2 files changed, 5 insertions(+), 10 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_rxdesc.c b/drivers/staging/rtl8188eu/hal/rtl8188e_rxdesc.c
+> index 7d0135fde795..a2994f9ecbde 100644
+> --- a/drivers/staging/rtl8188eu/hal/rtl8188e_rxdesc.c
+> +++ b/drivers/staging/rtl8188eu/hal/rtl8188e_rxdesc.c
+> @@ -144,10 +144,12 @@ void update_recvframe_phyinfo_88e(struct recv_frame *precvframe,
+>
+>         wlanhdr = precvframe->pkt->data;
+>
+> -       pkt_info.bPacketMatchBSSID = ((!IsFrameTypeCtrl(wlanhdr)) &&
+> -               !pattrib->icv_err && !pattrib->crc_err &&
+> +       pkt_info.bPacketMatchBSSID =
+> +               GetFrameType(wlanhdr) != WIFI_CTRL_TYPE &&
+> +               !pattrib->icv_err &&
+> +               !pattrib->crc_err &&
+>                 !memcmp(get_hdr_bssid(wlanhdr),
+> -                get_bssid(&padapter->mlmepriv), ETH_ALEN));
+> +                       get_bssid(&padapter->mlmepriv), ETH_ALEN);
+>
+>         pkt_info.bPacketToSelf = pkt_info.bPacketMatchBSSID &&
+>                                  (!memcmp(get_da(wlanhdr),
+> diff --git a/drivers/staging/rtl8188eu/include/wifi.h b/drivers/staging/rtl8188eu/include/wifi.h
+> index 791f287a546d..3998d5633860 100644
+> --- a/drivers/staging/rtl8188eu/include/wifi.h
+> +++ b/drivers/staging/rtl8188eu/include/wifi.h
+> @@ -324,13 +324,6 @@ static inline unsigned char *get_hdr_bssid(unsigned char *pframe)
+>         return sa;
+>  }
+>
+> -static inline int IsFrameTypeCtrl(unsigned char *pframe)
+> -{
+> -       if (WIFI_CTRL_TYPE == GetFrameType(pframe))
+> -               return true;
+> -       else
+> -               return false;
+> -}
+>  /*-----------------------------------------------------------------------------
+>                         Below is for the security related definition
+>  ------------------------------------------------------------------------------*/
 
+thank you for pointing me.
 
---1yeeQ81UyVL57Vl7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Replace depracated psi_enable_msi with pci_alloc_irq_vectors.
-And as a result modify how the returned value is handled.
-
-Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
----
- drivers/staging/media/ipu3/ipu3.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/media/ipu3/ipu3.c b/drivers/staging/media/ipu3=
-/ipu3.c
-index ee1bba6bdcac..54690e7442be 100644
---- a/drivers/staging/media/ipu3/ipu3.c
-+++ b/drivers/staging/media/ipu3/ipu3.c
-@@ -602,9 +602,9 @@ static irqreturn_t imgu_isr(int irq, void *imgu_ptr)
- static int imgu_pci_config_setup(struct pci_dev *dev)
- {
- 	u16 pci_command;
--	int r =3D pci_enable_msi(dev);
-+	int r =3D pci_alloc_irq_vectors(dev, 1, 1, PCI_IRQ_MSI);
-=20
--	if (r) {
-+	if (r < 0) {
- 		dev_err(&dev->dev, "failed to enable MSI (%d)\n", r);
- 		return r;
- 	}
---=20
-2.17.1
-
-
---1yeeQ81UyVL57Vl7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl8S+fYACgkQ+gRsbIfe
-746prw/8C/HY3bZaEpdYpHHSDI6ZZC1gsQki6rnqZBb3KYtGG9YXeNOAxs64ddZa
-vV+ZFo4WNxCeR0tSIEsFbDb6XnVAg6yFWrnVfOjmjkOYMYMyLLBXLYadmH24TOPb
-Ty00ZSy3GXSZ2jTQOkUVXzedF8UuWv9Br9dUfJnF1xky2a2S79HBjFL6MzacKvSF
-CsGAqrZyF7Fn5JEcU1fY78E3ma2bdhp8M/didwaixH2w1Ya1ifbwJ44hlYEtrezU
-+E6DGUh8dZgx7TVa2dqgTLR6xkrW9gUM3/U4NZ+PsTTKEzD1g+iQZaAViktldXH2
-G1qSW6qR9W26MLKEmtGWe+uwM07jnIhKc0z4GZfZv9LRNXUvKJ88fm1fomPeLiEY
-CW6vV2V3BSBSXhmrI+jVhJij997QhXFNzdVSAZkkiDOvG7ml3+LnFc4EXRE0jXGV
-cxDbjTgS/xj9seOfwzqcEeDANWPPvNCN9SClptNU/XMew5+zfVaVx0BIWwzkZiLM
-j7aPMAuya0LKbRBRIqrWrDJEjPphlVQ8PQM1bcDlb/el/IYwYcvmIWcQKQUNihX2
-Kpz77+2ww8wbbGW80EORd149V8/Gw40OAQ3T/p8ve4vJL7dhabARwFZ9J7mHP1BF
-GFXkTShwUtTqVbivZ011N1mDCUb6YjjSUoYVZP431J2cMb17sos=
-=Fu6m
------END PGP SIGNATURE-----
-
---1yeeQ81UyVL57Vl7--
-
---===============5702757157909106759==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+karthik
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============5702757157909106759==--
