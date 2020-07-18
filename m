@@ -1,72 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37709224AFF
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jul 2020 13:37:44 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1536224B2E
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Jul 2020 14:34:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5977888182;
-	Sat, 18 Jul 2020 11:37:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A63512044A;
+	Sat, 18 Jul 2020 12:34:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kP-Yv4e7ccvw; Sat, 18 Jul 2020 11:37:41 +0000 (UTC)
+	with ESMTP id lqy1I50loagH; Sat, 18 Jul 2020 12:34:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 82CDE87FB5;
-	Sat, 18 Jul 2020 11:37:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 65B11203D7;
+	Sat, 18 Jul 2020 12:34:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B0FD41BF5E0
- for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 11:37:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D6C731BF5A0
+ for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 12:34:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 989F384728
- for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 11:37:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B51B92052C
+ for <devel@linuxdriverproject.org>; Sat, 18 Jul 2020 12:34:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s5ba24I7kYHd for <devel@linuxdriverproject.org>;
- Sat, 18 Jul 2020 11:37:34 +0000 (UTC)
+ with ESMTP id XGO54m43v9yg for <devel@linuxdriverproject.org>;
+ Sat, 18 Jul 2020 12:34:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C01DD84713
- for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 11:37:34 +0000 (UTC)
-IronPort-SDR: vz860AuIaQ21lfCoilYGRV6+wby64hGopFLBN8dXmY7CkBoA7XKcpIBQ0q2jVVi1cxpcNvRNIV
- MnYoi0NDThhg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9685"; a="147239711"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 81EC820395
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 12:34:02 +0000 (UTC)
+IronPort-SDR: 3mB8+rOnDgkYPjU1W1z7IPHNk5PkeZ10Avl8n7RBtWQoN3dXCi73f3fbp5vw7bZj3TrptYPp8q
+ hxr75Gl1ZzBw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9685"; a="149729078"
 X-IronPort-AV: E=Sophos;i="5.75,367,1589266800"; 
- d="gz'50?scan'50,208,50";a="147239711"
+ d="gz'50?scan'50,208,50";a="149729078"
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jul 2020 04:37:33 -0700
-IronPort-SDR: ChjQIU5Kh033uhenWdp7Lam5sBupWz1uKs3SQg5kwgeVajO+bsE8JyLktNNERTOMbJ7NY4UMyq
- 0d4YEkAPNr2Q==
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jul 2020 05:34:01 -0700
+IronPort-SDR: nSDdt0uH6uV/z4AhjNa7pyb9R5p2RuagmFCLzoZCXRslXFKF/MbCntpGRbdTaxZOfuk4ALWoSN
+ VJ1I/K993TXg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.75,367,1589266800"; 
- d="gz'50?scan'50,208,50";a="309297830"
+ d="gz'50?scan'50,208,50";a="487244556"
 Received: from lkp-server02.sh.intel.com (HELO 50058c6ee6fc) ([10.239.97.151])
- by fmsmga004.fm.intel.com with ESMTP; 18 Jul 2020 04:37:31 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 18 Jul 2020 05:33:58 -0700
 Received: from kbuild by 50058c6ee6fc with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1jwl9m-0000lF-Gr; Sat, 18 Jul 2020 11:37:30 +0000
-Date: Sat, 18 Jul 2020 19:36:42 +0800
+ id 1jwm2P-0000mG-RG; Sat, 18 Jul 2020 12:33:57 +0000
+Date: Sat, 18 Jul 2020 20:33:11 +0800
 From: kernel test robot <lkp@intel.com>
 To: B K Karthik <bkkarthik@pesu.pes.edu>,
  Larry Finger <Larry.Finger@lwfinger.net>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Michael Straube <straube.linux@gmail.com>,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/4] staging: rtl8188eu: include: fixed multiple
- parentheses coding style issues
-Message-ID: <202007181935.ibrvwtrO%lkp@intel.com>
-References: <20200718091626.uflhdcgkmhqij5b7@pesu-pes-edu>
+Subject: Re: [PATCH 3/4] staging: rtl8188eu: include: enclosed macros in
+ do-while loops
+Message-ID: <202007182014.YxtfC7fl%lkp@intel.com>
+References: <20200718091740.mzinnyks5tjafowm@pesu-pes-edu>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="vtzGhvizbBRQ85DL"
+Content-Type: multipart/mixed; boundary="rwEMma7ioTxnRzrJ"
 Content-Disposition: inline
-In-Reply-To: <20200718091626.uflhdcgkmhqij5b7@pesu-pes-edu>
+In-Reply-To: <20200718091740.mzinnyks5tjafowm@pesu-pes-edu>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,15 +85,15 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---vtzGhvizbBRQ85DL
+--rwEMma7ioTxnRzrJ
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi K,
 
-Thank you for the patch! Perhaps something to improve:
+Thank you for the patch! Yet something to improve:
 
-[auto build test WARNING on staging/staging-testing]
+[auto build test ERROR on staging/staging-testing]
 
 url:    https://github.com/0day-ci/linux/commits/B-K-Karthik/staging-rtl8188eu-include-fixed-multiple-blank-space-coding-style-issues/20200718-172103
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git 9d5d041eebe3dcf7591ff7004896c329eb841ca6
@@ -108,7 +108,7 @@ reproduce (this is a W=1 build):
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
 
-All warnings (new ones prefixed by >>):
+All error/warnings (new ones prefixed by >>):
 
    In file included from arch/m68k/include/asm/io_mm.h:25,
                     from arch/m68k/include/asm/io.h:8,
@@ -116,8 +116,11 @@ All warnings (new ones prefixed by >>):
                     from include/linux/dma-mapping.h:11,
                     from include/linux/skbuff.h:31,
                     from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_ap.c:9:
+                    from include/uapi/linux/ethtool.h:19,
+                    from include/linux/ethtool.h:18,
+                    from include/linux/netdevice.h:37,
+                    from drivers/staging/rtl8188eu/include/osdep_service.h:23,
+                    from drivers/staging/rtl8188eu/core/rtw_efuse.c:9:
    arch/m68k/include/asm/raw_io.h: In function 'raw_rom_outsb':
    arch/m68k/include/asm/raw_io.h:83:7: warning: variable '__w' set but not used [-Wunused-but-set-variable]
       83 |  ({u8 __w, __v = (b);  u32 _addr = ((u32) (addr)); \
@@ -140,10 +143,11 @@ All warnings (new ones prefixed by >>):
      466 |   rom_out_le16(port, *buf++);
          |   ^~~~~~~~~~~~
    In file included from include/linux/kernel.h:11,
-                    from include/linux/skbuff.h:13,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_ap.c:9:
+                    from include/linux/list.h:9,
+                    from include/linux/preempt.h:11,
+                    from include/linux/spinlock.h:51,
+                    from drivers/staging/rtl8188eu/include/osdep_service.h:16,
+                    from drivers/staging/rtl8188eu/core/rtw_efuse.c:9:
    include/linux/scatterlist.h: In function 'sg_set_buf':
    arch/m68k/include/asm/page_mm.h:169:49: warning: ordered comparison of pointer with null pointer [-Wextra]
      169 | #define virt_addr_valid(kaddr) ((void *)(kaddr) >= (void *)PAGE_OFFSET && (void *)(kaddr) < high_memory)
@@ -164,12 +168,8 @@ All warnings (new ones prefixed by >>):
                     from ./arch/m68k/include/generated/asm/preempt.h:1,
                     from include/linux/preempt.h:78,
                     from include/linux/spinlock.h:51,
-                    from include/linux/seqlock.h:36,
-                    from include/linux/time.h:6,
-                    from include/linux/skbuff.h:15,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_ap.c:9:
+                    from drivers/staging/rtl8188eu/include/osdep_service.h:16,
+                    from drivers/staging/rtl8188eu/core/rtw_efuse.c:9:
    include/linux/dma-mapping.h: In function 'dma_map_resource':
    arch/m68k/include/asm/page_mm.h:169:49: warning: ordered comparison of pointer with null pointer [-Wextra]
      169 | #define virt_addr_valid(kaddr) ((void *)(kaddr) >= (void *)PAGE_OFFSET && (void *)(kaddr) < high_memory)
@@ -183,59 +183,47 @@ All warnings (new ones prefixed by >>):
    include/linux/dma-mapping.h:352:19: note: in expansion of macro 'pfn_valid'
      352 |  if (WARN_ON_ONCE(pfn_valid(PHYS_PFN(phys_addr))))
          |                   ^~~~~~~~~
+   In file included from drivers/staging/rtl8188eu/include/odm_precomp.h:26,
+                    from drivers/staging/rtl8188eu/include/rtl8188e_hal.h:21,
+                    from drivers/staging/rtl8188eu/core/rtw_efuse.c:13:
+   drivers/staging/rtl8188eu/include/odm_debug.h: At top level:
+>> drivers/staging/rtl8188eu/include/odm_debug.h:80:3: error: expected identifier or '(' before 'if'
+      80 |   if (((comp) & pDM_Odm->DebugComponents) &&   \
+         |   ^~
+>> drivers/staging/rtl8188eu/include/odm_debug.h:85:2: error: expected identifier or '(' before '}' token
+      85 |  } while (0)
+         |  ^
+>> drivers/staging/rtl8188eu/include/odm_debug.h:85:4: error: expected identifier or '(' before 'while'
+      85 |  } while (0)
+         |    ^~~~~
    In file included from include/linux/kernel.h:15,
-                    from include/linux/skbuff.h:13,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_ap.c:9:
-   drivers/staging/rtl8188eu/core/rtw_ap.c: In function 'rtw_sta_flush':
-   drivers/staging/rtl8188eu/include/osdep_service.h:79:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      79 | #define FUNC_NDEV_ARG(ndev) (__func__, (ndev)->name)
-         |                                      ^
+                    from include/linux/list.h:9,
+                    from include/linux/preempt.h:11,
+                    from include/linux/spinlock.h:51,
+                    from drivers/staging/rtl8188eu/include/osdep_service.h:16,
+                    from drivers/staging/rtl8188eu/core/rtw_efuse.c:9:
+>> drivers/staging/rtl8188eu/include/odm_debug.h:90:48: error: stray '#' in program
+      90 |    pr_info("Assertion failed! %s at ......\n", #expr); \
+         |                                                ^
    include/linux/printk.h:368:34: note: in definition of macro 'pr_info'
      368 |  printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
          |                                  ^~~~~~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_ap.c:1606:2: note: in expansion of macro 'DBG_88E'
-    1606 |  DBG_88E(FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(padapter->pnetdev));
-         |  ^~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_ap.c:1606:29: note: in expansion of macro 'FUNC_NDEV_ARG'
-    1606 |  DBG_88E(FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(padapter->pnetdev));
-         |                             ^~~~~~~~~~~~~
-   In file included from include/linux/printk.h:7,
-                    from include/linux/kernel.h:15,
-                    from include/linux/skbuff.h:13,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_ap.c:9:
->> include/linux/kern_levels.h:5:18: warning: format '%s' expects a matching 'char *' argument [-Wformat=]
-       5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-         |                  ^~~~~~
-   include/linux/kern_levels.h:14:19: note: in expansion of macro 'KERN_SOH'
-      14 | #define KERN_INFO KERN_SOH "6" /* informational */
-         |                   ^~~~~~~~
-   include/linux/printk.h:368:9: note: in expansion of macro 'KERN_INFO'
-     368 |  printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~
-   drivers/staging/rtl8188eu/include/rtw_debug.h:70:4: note: in expansion of macro 'pr_info'
-      70 |    pr_info(DRIVER_PREFIX __VA_ARGS__);  \
-         |    ^~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_ap.c:1606:2: note: in expansion of macro 'DBG_88E'
-    1606 |  DBG_88E(FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(padapter->pnetdev));
-         |  ^~~~~~~
-   In file included from drivers/staging/rtl8188eu/core/rtw_ap.c:11:
-   drivers/staging/rtl8188eu/include/osdep_service.h:78:28: note: format string is defined here
-      78 | #define FUNC_NDEV_FMT "%s(%s)"
-         |                           ~^
-         |                            |
-         |                            char *
+   In file included from drivers/staging/rtl8188eu/include/odm_precomp.h:26,
+                    from drivers/staging/rtl8188eu/include/rtl8188e_hal.h:21,
+                    from drivers/staging/rtl8188eu/core/rtw_efuse.c:13:
+   drivers/staging/rtl8188eu/include/odm_debug.h:96:2: error: expected identifier or '(' before '}' token
+      96 |  } while (0)
+         |  ^
+   drivers/staging/rtl8188eu/include/odm_debug.h:96:4: error: expected identifier or '(' before 'while'
+      96 |  } while (0)
+         |    ^~~~~
    In file included from drivers/staging/rtl8188eu/include/drv_types.h:41,
-                    from drivers/staging/rtl8188eu/core/rtw_ap.c:12:
-   At top level:
+                    from drivers/staging/rtl8188eu/core/rtw_efuse.c:10:
    drivers/staging/rtl8188eu/include/rtw_mlme_ext.h:177:3: warning: 'channel_table' defined but not used [-Wunused-const-variable=]
      177 | } channel_table[] = { { RT_CHANNEL_DOMAIN_FCC, "US" },
          |   ^~~~~~~~~~~~~
    In file included from drivers/staging/rtl8188eu/include/drv_types.h:26,
-                    from drivers/staging/rtl8188eu/core/rtw_ap.c:12:
+                    from drivers/staging/rtl8188eu/core/rtw_efuse.c:10:
    drivers/staging/rtl8188eu/include/rtw_security.h:260:28: warning: 'K' defined but not used [-Wunused-const-variable=]
      260 | static const unsigned long K[64] = {
          |                            ^
@@ -250,7 +238,8 @@ All warnings (new ones prefixed by >>):
                     from include/linux/ethtool.h:18,
                     from include/linux/netdevice.h:37,
                     from drivers/staging/rtl8188eu/include/osdep_service.h:23,
-                    from drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:9:
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:17,
+                    from drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:6:
    arch/m68k/include/asm/raw_io.h: In function 'raw_rom_outsb':
    arch/m68k/include/asm/raw_io.h:83:7: warning: variable '__w' set but not used [-Wunused-but-set-variable]
       83 |  ({u8 __w, __v = (b);  u32 _addr = ((u32) (addr)); \
@@ -277,7 +266,8 @@ All warnings (new ones prefixed by >>):
                     from include/linux/preempt.h:11,
                     from include/linux/spinlock.h:51,
                     from drivers/staging/rtl8188eu/include/osdep_service.h:16,
-                    from drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:9:
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:17,
+                    from drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:6:
    include/linux/scatterlist.h: In function 'sg_set_buf':
    arch/m68k/include/asm/page_mm.h:169:49: warning: ordered comparison of pointer with null pointer [-Wextra]
      169 | #define virt_addr_valid(kaddr) ((void *)(kaddr) >= (void *)PAGE_OFFSET && (void *)(kaddr) < high_memory)
@@ -299,7 +289,8 @@ All warnings (new ones prefixed by >>):
                     from include/linux/preempt.h:78,
                     from include/linux/spinlock.h:51,
                     from drivers/staging/rtl8188eu/include/osdep_service.h:16,
-                    from drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:9:
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:17,
+                    from drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:6:
    include/linux/dma-mapping.h: In function 'dma_map_resource':
    arch/m68k/include/asm/page_mm.h:169:49: warning: ordered comparison of pointer with null pointer [-Wextra]
      169 | #define virt_addr_valid(kaddr) ((void *)(kaddr) >= (void *)PAGE_OFFSET && (void *)(kaddr) < high_memory)
@@ -313,56 +304,86 @@ All warnings (new ones prefixed by >>):
    include/linux/dma-mapping.h:352:19: note: in expansion of macro 'pfn_valid'
      352 |  if (WARN_ON_ONCE(pfn_valid(PHYS_PFN(phys_addr))))
          |                   ^~~~~~~~~
+   In file included from drivers/staging/rtl8188eu/include/odm_precomp.h:26,
+                    from drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:6:
+   drivers/staging/rtl8188eu/include/odm_debug.h: At top level:
+>> drivers/staging/rtl8188eu/include/odm_debug.h:80:3: error: expected identifier or '(' before 'if'
+      80 |   if (((comp) & pDM_Odm->DebugComponents) &&   \
+         |   ^~
+>> drivers/staging/rtl8188eu/include/odm_debug.h:85:2: error: expected identifier or '(' before '}' token
+      85 |  } while (0)
+         |  ^
+>> drivers/staging/rtl8188eu/include/odm_debug.h:85:4: error: expected identifier or '(' before 'while'
+      85 |  } while (0)
+         |    ^~~~~
    In file included from include/linux/kernel.h:15,
                     from include/linux/list.h:9,
                     from include/linux/preempt.h:11,
                     from include/linux/spinlock.h:51,
                     from drivers/staging/rtl8188eu/include/osdep_service.h:16,
-                    from drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:9:
-   drivers/staging/rtl8188eu/core/rtw_ioctl_set.c: In function 'rtw_set_802_11_bssid_list_scan':
-   drivers/staging/rtl8188eu/include/osdep_service.h:81:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      81 | #define FUNC_ADPT_ARG(adapter) (__func__, (adapter)->pnetdev->name)
-         |                                         ^
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:17,
+                    from drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:6:
+>> drivers/staging/rtl8188eu/include/odm_debug.h:90:48: error: stray '#' in program
+      90 |    pr_info("Assertion failed! %s at ......\n", #expr); \
+         |                                                ^
    include/linux/printk.h:368:34: note: in definition of macro 'pr_info'
      368 |  printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
          |                                  ^~~~~~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:427:4: note: in expansion of macro 'DBG_88E'
-     427 |    DBG_88E(FUNC_ADPT_FMT": scan deny\n", FUNC_ADPT_ARG(padapter));
-         |    ^~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:427:42: note: in expansion of macro 'FUNC_ADPT_ARG'
-     427 |    DBG_88E(FUNC_ADPT_FMT": scan deny\n", FUNC_ADPT_ARG(padapter));
-         |                                          ^~~~~~~~~~~~~
-   In file included from include/linux/printk.h:7,
-                    from include/linux/kernel.h:15,
-                    from include/linux/list.h:9,
-                    from include/linux/preempt.h:11,
-                    from include/linux/spinlock.h:51,
-                    from drivers/staging/rtl8188eu/include/osdep_service.h:16,
-                    from drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:9:
->> include/linux/kern_levels.h:5:18: warning: format '%s' expects a matching 'char *' argument [-Wformat=]
-       5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-         |                  ^~~~~~
-   include/linux/kern_levels.h:14:19: note: in expansion of macro 'KERN_SOH'
-      14 | #define KERN_INFO KERN_SOH "6" /* informational */
-         |                   ^~~~~~~~
-   include/linux/printk.h:368:9: note: in expansion of macro 'KERN_INFO'
-     368 |  printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~
-   drivers/staging/rtl8188eu/include/rtw_debug.h:70:4: note: in expansion of macro 'pr_info'
-      70 |    pr_info(DRIVER_PREFIX __VA_ARGS__);  \
-         |    ^~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:427:4: note: in expansion of macro 'DBG_88E'
-     427 |    DBG_88E(FUNC_ADPT_FMT": scan deny\n", FUNC_ADPT_ARG(padapter));
-         |    ^~~~~~~
-   In file included from drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:9:
-   drivers/staging/rtl8188eu/include/osdep_service.h:80:28: note: format string is defined here
-      80 | #define FUNC_ADPT_FMT "%s(%s)"
-         |                           ~^
-         |                            |
-         |                            char *
-   In file included from drivers/staging/rtl8188eu/include/drv_types.h:26,
-                    from drivers/staging/rtl8188eu/core/rtw_ioctl_set.c:10:
+   In file included from drivers/staging/rtl8188eu/include/odm_precomp.h:26,
+                    from drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:6:
+   drivers/staging/rtl8188eu/include/odm_debug.h:96:2: error: expected identifier or '(' before '}' token
+      96 |  } while (0)
+         |  ^
+   drivers/staging/rtl8188eu/include/odm_debug.h:96:4: error: expected identifier or '(' before 'while'
+      96 |  } while (0)
+         |    ^~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c: In function 'odm_SetTxRPTTiming_8188E':
+>> drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:109:1: error: expected 'while' before 'static'
+     109 | static int odm_RateDown_8188E(struct odm_dm_struct *dm_odm,
+         | ^~~~~~
+>> drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:761:1: error: expected declaration or statement at end of input
+     761 | }
+         | ^
    At top level:
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:84:13: warning: 'odm_SetTxRPTTiming_8188E' defined but not used [-Wunused-function]
+      84 | static void odm_SetTxRPTTiming_8188E(struct odm_dm_struct *dm_odm,
+         |             ^~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:78:11: warning: 'PendingForRateUpFail' defined but not used [-Wunused-variable]
+      78 | static u8 PendingForRateUpFail[5] = {2, 10, 24, 40, 60};
+         |           ^~~~~~~~~~~~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:72:11: warning: 'DROPING_NECESSARY' defined but not used [-Wunused-variable]
+      72 | static u8 DROPING_NECESSARY[RATESIZE] = {
+         |           ^~~~~~~~~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:66:12: warning: 'N_THRESHOLD_LOW' defined but not used [-Wunused-variable]
+      66 | static u16 N_THRESHOLD_LOW[RATESIZE] = {
+         |            ^~~~~~~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:61:12: warning: 'N_THRESHOLD_HIGH' defined but not used [-Wunused-variable]
+      61 | static u16 N_THRESHOLD_HIGH[RATESIZE] = {
+         |            ^~~~~~~~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:55:11: warning: 'RSSI_THRESHOLD' defined but not used [-Wunused-variable]
+      55 | static u8 RSSI_THRESHOLD[RATESIZE] = {
+         |           ^~~~~~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:49:11: warning: 'RETRY_PENALTY_UP_IDX' defined but not used [-Wunused-variable]
+      49 | static u8 RETRY_PENALTY_UP_IDX[RATESIZE] = {
+         |           ^~~~~~~~~~~~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:39:11: warning: 'RETRY_PENALTY_IDX' defined but not used [-Wunused-variable]
+      39 | static u8 RETRY_PENALTY_IDX[2][RATESIZE] = {
+         |           ^~~~~~~~~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:36:11: warning: 'PT_PENALTY' defined but not used [-Wunused-variable]
+      36 | static u8 PT_PENALTY[RETRYSIZE + 1] = {34, 31, 30, 24, 0, 32};
+         |           ^~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:10:11: warning: 'RETRY_PENALTY' defined but not used [-Wunused-variable]
+      10 | static u8 RETRY_PENALTY[PERENTRY][RETRYSIZE + 1] = {
+         |           ^~~~~~~~~~~~~
+   In file included from drivers/staging/rtl8188eu/include/drv_types.h:41,
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:18,
+                    from drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:6:
+   drivers/staging/rtl8188eu/include/rtw_mlme_ext.h:177:3: warning: 'channel_table' defined but not used [-Wunused-const-variable=]
+     177 | } channel_table[] = { { RT_CHANNEL_DOMAIN_FCC, "US" },
+         |   ^~~~~~~~~~~~~
+   In file included from drivers/staging/rtl8188eu/include/drv_types.h:26,
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:18,
+                    from drivers/staging/rtl8188eu/hal/hal8188e_rate_adaptive.c:6:
    drivers/staging/rtl8188eu/include/rtw_security.h:260:28: warning: 'K' defined but not used [-Wunused-const-variable=]
      260 | static const unsigned long K[64] = {
          |                            ^
@@ -373,8 +394,12 @@ All warnings (new ones prefixed by >>):
                     from include/linux/dma-mapping.h:11,
                     from include/linux/skbuff.h:31,
                     from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_mlme.c:9:
+                    from include/uapi/linux/ethtool.h:19,
+                    from include/linux/ethtool.h:18,
+                    from include/linux/netdevice.h:37,
+                    from drivers/staging/rtl8188eu/include/osdep_service.h:23,
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:17,
+                    from drivers/staging/rtl8188eu/hal/odm.c:8:
    arch/m68k/include/asm/raw_io.h: In function 'raw_rom_outsb':
    arch/m68k/include/asm/raw_io.h:83:7: warning: variable '__w' set but not used [-Wunused-but-set-variable]
       83 |  ({u8 __w, __v = (b);  u32 _addr = ((u32) (addr)); \
@@ -397,10 +422,12 @@ All warnings (new ones prefixed by >>):
      466 |   rom_out_le16(port, *buf++);
          |   ^~~~~~~~~~~~
    In file included from include/linux/kernel.h:11,
-                    from include/linux/skbuff.h:13,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_mlme.c:9:
+                    from include/linux/list.h:9,
+                    from include/linux/preempt.h:11,
+                    from include/linux/spinlock.h:51,
+                    from drivers/staging/rtl8188eu/include/osdep_service.h:16,
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:17,
+                    from drivers/staging/rtl8188eu/hal/odm.c:8:
    include/linux/scatterlist.h: In function 'sg_set_buf':
    arch/m68k/include/asm/page_mm.h:169:49: warning: ordered comparison of pointer with null pointer [-Wextra]
      169 | #define virt_addr_valid(kaddr) ((void *)(kaddr) >= (void *)PAGE_OFFSET && (void *)(kaddr) < high_memory)
@@ -421,12 +448,9 @@ All warnings (new ones prefixed by >>):
                     from ./arch/m68k/include/generated/asm/preempt.h:1,
                     from include/linux/preempt.h:78,
                     from include/linux/spinlock.h:51,
-                    from include/linux/seqlock.h:36,
-                    from include/linux/time.h:6,
-                    from include/linux/skbuff.h:15,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_mlme.c:9:
+                    from drivers/staging/rtl8188eu/include/osdep_service.h:16,
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:17,
+                    from drivers/staging/rtl8188eu/hal/odm.c:8:
    include/linux/dma-mapping.h: In function 'dma_map_resource':
    arch/m68k/include/asm/page_mm.h:169:49: warning: ordered comparison of pointer with null pointer [-Wextra]
      169 | #define virt_addr_valid(kaddr) ((void *)(kaddr) >= (void *)PAGE_OFFSET && (void *)(kaddr) < high_memory)
@@ -440,108 +464,114 @@ All warnings (new ones prefixed by >>):
    include/linux/dma-mapping.h:352:19: note: in expansion of macro 'pfn_valid'
      352 |  if (WARN_ON_ONCE(pfn_valid(PHYS_PFN(phys_addr))))
          |                   ^~~~~~~~~
+   In file included from drivers/staging/rtl8188eu/include/odm_precomp.h:26,
+                    from drivers/staging/rtl8188eu/hal/odm.c:8:
+   drivers/staging/rtl8188eu/include/odm_debug.h: At top level:
+>> drivers/staging/rtl8188eu/include/odm_debug.h:80:3: error: expected identifier or '(' before 'if'
+      80 |   if (((comp) & pDM_Odm->DebugComponents) &&   \
+         |   ^~
+>> drivers/staging/rtl8188eu/include/odm_debug.h:85:2: error: expected identifier or '(' before '}' token
+      85 |  } while (0)
+         |  ^
+>> drivers/staging/rtl8188eu/include/odm_debug.h:85:4: error: expected identifier or '(' before 'while'
+      85 |  } while (0)
+         |    ^~~~~
    In file included from include/linux/kernel.h:15,
-                    from include/linux/skbuff.h:13,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_mlme.c:9:
-   drivers/staging/rtl8188eu/core/rtw_mlme.c: In function 'rtw_scan_timeout_handler':
-   drivers/staging/rtl8188eu/include/osdep_service.h:81:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      81 | #define FUNC_ADPT_ARG(adapter) (__func__, (adapter)->pnetdev->name)
-         |                                         ^
+                    from include/linux/list.h:9,
+                    from include/linux/preempt.h:11,
+                    from include/linux/spinlock.h:51,
+                    from drivers/staging/rtl8188eu/include/osdep_service.h:16,
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:17,
+                    from drivers/staging/rtl8188eu/hal/odm.c:8:
+>> drivers/staging/rtl8188eu/include/odm_debug.h:90:48: error: stray '#' in program
+      90 |    pr_info("Assertion failed! %s at ......\n", #expr); \
+         |                                                ^
    include/linux/printk.h:368:34: note: in definition of macro 'pr_info'
      368 |  printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
          |                                  ^~~~~~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_mlme.c:1345:2: note: in expansion of macro 'DBG_88E'
-    1345 |  DBG_88E(FUNC_ADPT_FMT" fw_state=%x\n", FUNC_ADPT_ARG(adapter), get_fwstate(pmlmepriv));
-         |  ^~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_mlme.c:1345:41: note: in expansion of macro 'FUNC_ADPT_ARG'
-    1345 |  DBG_88E(FUNC_ADPT_FMT" fw_state=%x\n", FUNC_ADPT_ARG(adapter), get_fwstate(pmlmepriv));
-         |                                         ^~~~~~~~~~~~~
-   In file included from include/linux/printk.h:7,
-                    from include/linux/kernel.h:15,
-                    from include/linux/skbuff.h:13,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_mlme.c:9:
->> include/linux/kern_levels.h:5:18: warning: format '%s' expects argument of type 'char *', but argument 3 has type 'int' [-Wformat=]
-       5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-         |                  ^~~~~~
-   include/linux/kern_levels.h:14:19: note: in expansion of macro 'KERN_SOH'
-      14 | #define KERN_INFO KERN_SOH "6" /* informational */
-         |                   ^~~~~~~~
-   include/linux/printk.h:368:9: note: in expansion of macro 'KERN_INFO'
-     368 |  printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~
-   drivers/staging/rtl8188eu/include/rtw_debug.h:70:4: note: in expansion of macro 'pr_info'
-      70 |    pr_info(DRIVER_PREFIX __VA_ARGS__);  \
-         |    ^~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_mlme.c:1345:2: note: in expansion of macro 'DBG_88E'
-    1345 |  DBG_88E(FUNC_ADPT_FMT" fw_state=%x\n", FUNC_ADPT_ARG(adapter), get_fwstate(pmlmepriv));
-         |  ^~~~~~~
-   In file included from drivers/staging/rtl8188eu/core/rtw_mlme.c:11:
-   drivers/staging/rtl8188eu/include/osdep_service.h:80:28: note: format string is defined here
-      80 | #define FUNC_ADPT_FMT "%s(%s)"
-         |                           ~^
-         |                            |
-         |                            char *
-         |                           %d
-   In file included from include/linux/printk.h:7,
-                    from include/linux/kernel.h:15,
-                    from include/linux/skbuff.h:13,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/ieee80211.h:19,
-                    from drivers/staging/rtl8188eu/core/rtw_mlme.c:9:
->> include/linux/kern_levels.h:5:18: warning: format '%x' expects a matching 'unsigned int' argument [-Wformat=]
-       5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-         |                  ^~~~~~
-   include/linux/kern_levels.h:14:19: note: in expansion of macro 'KERN_SOH'
-      14 | #define KERN_INFO KERN_SOH "6" /* informational */
-         |                   ^~~~~~~~
-   include/linux/printk.h:368:9: note: in expansion of macro 'KERN_INFO'
-     368 |  printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~
-   drivers/staging/rtl8188eu/include/rtw_debug.h:70:4: note: in expansion of macro 'pr_info'
-      70 |    pr_info(DRIVER_PREFIX __VA_ARGS__);  \
-         |    ^~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_mlme.c:1345:2: note: in expansion of macro 'DBG_88E'
-    1345 |  DBG_88E(FUNC_ADPT_FMT" fw_state=%x\n", FUNC_ADPT_ARG(adapter), get_fwstate(pmlmepriv));
-         |  ^~~~~~~
-   drivers/staging/rtl8188eu/core/rtw_mlme.c:1345:35: note: format string is defined here
-    1345 |  DBG_88E(FUNC_ADPT_FMT" fw_state=%x\n", FUNC_ADPT_ARG(adapter), get_fwstate(pmlmepriv));
-         |                                  ~^
-         |                                   |
-         |                                   unsigned int
-   In file included from drivers/staging/rtl8188eu/include/drv_types.h:41,
-                    from drivers/staging/rtl8188eu/core/rtw_mlme.c:12:
+   In file included from drivers/staging/rtl8188eu/include/odm_precomp.h:26,
+                    from drivers/staging/rtl8188eu/hal/odm.c:8:
+   drivers/staging/rtl8188eu/include/odm_debug.h:96:2: error: expected identifier or '(' before '}' token
+      96 |  } while (0)
+         |  ^
+   drivers/staging/rtl8188eu/include/odm_debug.h:96:4: error: expected identifier or '(' before 'while'
+      96 |  } while (0)
+         |    ^~~~~
+>> drivers/staging/rtl8188eu/hal/odm.c:150:6: warning: no previous prototype for 'ODM_InitDebugSetting' [-Wmissing-prototypes]
+     150 | void ODM_InitDebugSetting(struct odm_dm_struct *pDM_Odm)
+         |      ^~~~~~~~~~~~~~~~~~~~
+   drivers/staging/rtl8188eu/hal/odm.c: In function 'odm_CmnInfoInit_Debug':
+>> drivers/staging/rtl8188eu/hal/odm.c:268:1: error: expected 'while' before 'void'
+     268 | void odm_CmnInfoHook_Debug(struct odm_dm_struct *pDM_Odm)
+         | ^~~~
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+    1100 | }
+         | ^
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
+>> drivers/staging/rtl8188eu/hal/odm.c:1100:1: error: expected declaration or statement at end of input
    At top level:
+   drivers/staging/rtl8188eu/hal/odm.c:14:12: warning: 'EDCAParam' defined but not used [-Wunused-variable]
+      14 | static u32 EDCAParam[HT_IOT_PEER_MAX][3] = {
+         |            ^~~~~~~~~
+   In file included from drivers/staging/rtl8188eu/include/drv_types.h:41,
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:18,
+                    from drivers/staging/rtl8188eu/hal/odm.c:8:
    drivers/staging/rtl8188eu/include/rtw_mlme_ext.h:177:3: warning: 'channel_table' defined but not used [-Wunused-const-variable=]
      177 | } channel_table[] = { { RT_CHANNEL_DOMAIN_FCC, "US" },
          |   ^~~~~~~~~~~~~
    In file included from drivers/staging/rtl8188eu/include/drv_types.h:26,
-                    from drivers/staging/rtl8188eu/core/rtw_mlme.c:12:
+                    from drivers/staging/rtl8188eu/include/odm_precomp.h:18,
+                    from drivers/staging/rtl8188eu/hal/odm.c:8:
    drivers/staging/rtl8188eu/include/rtw_security.h:260:28: warning: 'K' defined but not used [-Wunused-const-variable=]
      260 | static const unsigned long K[64] = {
          |                            ^
 ..
 
-vim +5 include/linux/kern_levels.h
+vim +80 drivers/staging/rtl8188eu/include/odm_debug.h
 
-314ba3520e513a Joe Perches 2012-07-30  4  
-04d2c8c83d0e3a Joe Perches 2012-07-30 @5  #define KERN_SOH	"\001"		/* ASCII Start Of Header */
-04d2c8c83d0e3a Joe Perches 2012-07-30  6  #define KERN_SOH_ASCII	'\001'
-04d2c8c83d0e3a Joe Perches 2012-07-30  7  
+f9f08d70b0081c Larry Finger     2013-08-21  77  
+f9f08d70b0081c Larry Finger     2013-08-21  78  #define ODM_RT_TRACE(pDM_Odm, comp, level, fmt)				\
+14200067aff819 B K Karthik      2020-07-18  79  	do {
+f9f08d70b0081c Larry Finger     2013-08-21 @80  		if (((comp) & pDM_Odm->DebugComponents) &&			\
+f9f08d70b0081c Larry Finger     2013-08-21  81  			(level <= pDM_Odm->DebugLevel)) {			\
+c9e27530b25fd8 Mahati Chamarthy 2014-10-04  82  			pr_info("[ODM-8188E] ");				\
+f9f08d70b0081c Larry Finger     2013-08-21  83  			RT_PRINTK fmt;						\
+f9f08d70b0081c Larry Finger     2013-08-21  84  		}
+14200067aff819 B K Karthik      2020-07-18 @85  	} while (0)
+f9f08d70b0081c Larry Finger     2013-08-21  86  
+f9f08d70b0081c Larry Finger     2013-08-21  87  #define ODM_RT_ASSERT(pDM_Odm, expr, fmt)				\
+14200067aff819 B K Karthik      2020-07-18  88  	do {
+f9f08d70b0081c Larry Finger     2013-08-21  89  		if (!(expr)) {							\
+c9e27530b25fd8 Mahati Chamarthy 2014-10-04 @90  			pr_info("Assertion failed! %s at ......\n", #expr);	\
+c9e27530b25fd8 Mahati Chamarthy 2014-10-04  91  			pr_info("      ......%s,%s,line=%d\n", __FILE__,	\
+f9f08d70b0081c Larry Finger     2013-08-21  92  				__func__, __LINE__);				\
+f9f08d70b0081c Larry Finger     2013-08-21  93  			RT_PRINTK fmt;						\
+f9f08d70b0081c Larry Finger     2013-08-21  94  			ASSERT(false);						\
+f9f08d70b0081c Larry Finger     2013-08-21  95  		}
+14200067aff819 B K Karthik      2020-07-18  96  	} while (0)
+f9f08d70b0081c Larry Finger     2013-08-21  97  
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---vtzGhvizbBRQ85DL
+--rwEMma7ioTxnRzrJ
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICOHVEl8AAy5jb25maWcAlFxJc9w4sr7Pr6hwX2YO3aPNNe73QgeQBKswRRIUAVZJujDK
+H4sICF/kEl8AAy5jb25maWcAlFxJc9w4sr7Pr6hwX2YO3aPNNe73QgeQBKswRRIUAVZJujDK
 ctlWtBaHJPdrz69/meCWWMjy+CLzywSIJXeA9cvfflmw72/Pj/u3+7v9w8OPxZfD0+Fl/3b4
 tPh8/3D430UiF4XUC54I/RswZ/dP3//65+Pywx+L9799+O3k15e788Xm8PJ0eFjEz0+f7798
 h9b3z09/++VvsSxSsWriuNnySglZNJpf68t32PrXB+zo1y93d4u/r+L4H4vffzv/7eQdaSNU
@@ -1604,7 +1634,7 @@ dWb2FMSWeRmlGBqsIneXPF33iEx2mnXFOxxhmd9eSWYvbL0EcjfqG0y1PROSw8U8FefeAuyQ
 STLZt/h2REHDy94VB3BdxqheRc581QlHAZDR0w4uBs6LmfaemapSxvc6PpzIghpdfKHM+v9g
 sTNqfZoDAA==
 
---vtzGhvizbBRQ85DL
+--rwEMma7ioTxnRzrJ
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1615,4 +1645,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---vtzGhvizbBRQ85DL--
+--rwEMma7ioTxnRzrJ--
