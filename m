@@ -1,75 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D98A422523B
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Jul 2020 16:34:22 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CE4D2252B9
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Jul 2020 18:08:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A71FC87B25;
-	Sun, 19 Jul 2020 14:34:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6436E84FB9;
+	Sun, 19 Jul 2020 16:08:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iwSOhbYIFH-2; Sun, 19 Jul 2020 14:34:20 +0000 (UTC)
+	with ESMTP id MkLZAhQweiiV; Sun, 19 Jul 2020 16:08:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0900887463;
-	Sun, 19 Jul 2020 14:34:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1FA1284D56;
+	Sun, 19 Jul 2020 16:08:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 215471BF422
- for <devel@linuxdriverproject.org>; Sun, 19 Jul 2020 14:34:17 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CE15C1BF35D
+ for <devel@linuxdriverproject.org>; Sun, 19 Jul 2020 16:07:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1E37A8754B
- for <devel@linuxdriverproject.org>; Sun, 19 Jul 2020 14:34:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CB2E08673C
+ for <devel@linuxdriverproject.org>; Sun, 19 Jul 2020 16:07:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7TiGxLkLBFny for <devel@linuxdriverproject.org>;
- Sun, 19 Jul 2020 14:34:16 +0000 (UTC)
+ with ESMTP id qiJpUra5F9rx for <devel@linuxdriverproject.org>;
+ Sun, 19 Jul 2020 16:07:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8D3E987463
- for <devel@driverdev.osuosl.org>; Sun, 19 Jul 2020 14:34:16 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id u185so7794537pfu.1
- for <devel@driverdev.osuosl.org>; Sun, 19 Jul 2020 07:34:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=cGafgwhjZbI9rRStyay6bRCQergbF17/kauj57yW04s=;
- b=UL8uP2hCYUdNNJlk+Vzx7IM76dw+syvmMrQLtsEY8DyaRA2aNYZHbQO8UAj/LrBR8B
- jNDSJyEzSXLWNC5VCdh3uXt3X89nuo6YnvD0qfPhbBD3QxhiDOEKF2L/i2bWtkO6fboW
- 5yfV/p6fswda0gvCTBX953g6rr6CUgO3OiIXXzF0nzA8wx/Jawdjl/iakEyv6B8fsTJC
- Jhd9pOrQuFIuf8ndWPyda/ArxyPDwFraPSuJZdd//OmCeT1HDBk2CCgOuW0QbeRnaD1m
- He8RsEj3Kz8kHCzAdKUSsKJQ/bFJ4Vdw8T+DzF2k4Kk+94ExoY9Wn6wItnznUuE1w9Bb
- rXVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=cGafgwhjZbI9rRStyay6bRCQergbF17/kauj57yW04s=;
- b=J/+DUQo+YTCJPiha1YOcWm9QeS7XTy51Gi71zo7tmLHsj/F8/ypqusuFtvV6RwTn4A
- 8zBhg/IWMjM2q55VrQe7NAZzLbRJZVk3gtKp6bTz09iJEMpL0HiqKZlFWpESYyX4gzWJ
- X6eByVmpMcHwUtkTm+jv7My7bqZPOZ9Ek5NOd8t/+GMOGP54i7kGtcCUwcDMj3myHLwz
- ZqzKB7No1UG9hh6BSAKF0P4cG5TpQIAFqa0/bW7DVnSloXmYogBr4YjkkKRgMl1uF9fA
- ujPTTHipWLm9g66GAhY6H5r4l/jOPGL1ODsKlCixaJXglH4RHwdDosDzzwGYJVaUtFHn
- nlWg==
-X-Gm-Message-State: AOAM532DanT3xEhGAjhvnlkuNAQ1pyLy1CQChSvtUSy6QHFJ79kzxBVG
- 0NhiCV1GbAoFTA+afVKW/o1wqGNiMzQ=
-X-Google-Smtp-Source: ABdhPJxXJjkwTcPp6ikYmK99x//73VrfJdDZCPGlg20GSKcaUL3PeUoxwD7FkLb3tKUipNNE9KbStw==
-X-Received: by 2002:a63:7cf:: with SMTP id 198mr3899359pgh.309.1595169256065; 
- Sun, 19 Jul 2020 07:34:16 -0700 (PDT)
-Received: from blackclown ([103.88.82.25])
- by smtp.gmail.com with ESMTPSA id y24sm14524807pfp.217.2020.07.19.07.34.13
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 19 Jul 2020 07:34:15 -0700 (PDT)
-Date: Sun, 19 Jul 2020 20:04:04 +0530
-From: Suraj Upadhyay <usuraj35@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH v2] staging: rts5208: rtsx: Replace depracated MSI API
-Message-ID: <20200719143404.GA32519@blackclown>
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BA1CA8664C
+ for <devel@driverdev.osuosl.org>; Sun, 19 Jul 2020 16:07:58 +0000 (UTC)
+Received: from ip5f5af08c.dynamic.kabel-deutschland.de ([95.90.240.140]
+ helo=wittgenstein) by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <christian.brauner@ubuntu.com>)
+ id 1jxBqw-000719-EI; Sun, 19 Jul 2020 16:07:50 +0000
+Date: Sun, 19 Jul 2020 18:07:49 +0200
+From: Christian Brauner <christian.brauner@ubuntu.com>
+To: Randy Dunlap <rdunlap@infradead.org>
+Subject: Re: [PATCH] android: binder.h: drop a duplicated word
+Message-ID: <20200719160749.26akaqytsugbdshw@wittgenstein>
+References: <20200719002738.20210-1-rdunlap@infradead.org>
 MIME-Version: 1.0
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Disposition: inline
+In-Reply-To: <20200719002738.20210-1-rdunlap@infradead.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,130 +58,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============0985255160275320549=="
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Suren Baghdasaryan <surenb@google.com>, Hridya Valsaraju <hridya@google.com>,
+ Arve =?utf-8?B?SGrDuG5uZXbDpWc=?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
---===============0985255160275320549==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="TB36FDmn/VVEgNH/"
-Content-Disposition: inline
-
-
---TB36FDmn/VVEgNH/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Replace depracated MSI IRQ enablers and disablers
-with pci_alloc_irq_vectors and pci_free_irq_vectors respectively.
-Compile tested.
-
-Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
----
-Changes:
-	v2: Replace MSI IRQ disablers too.
----
- drivers/staging/rts5208/rtsx.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
-index e28e162d004e..898add4d1fc8 100644
---- a/drivers/staging/rts5208/rtsx.c
-+++ b/drivers/staging/rts5208/rtsx.c
-@@ -283,7 +283,7 @@ static int __maybe_unused rtsx_suspend(struct device *d=
-ev_d)
- 	}
-=20
- 	if (chip->msi_en)
--		pci_disable_msi(pci);
-+		pci_free_irq_vectors(pci);
-=20
- 	device_wakeup_enable(dev_d);
-=20
-@@ -310,7 +310,7 @@ static int __maybe_unused rtsx_resume(struct device *de=
-v_d)
- 	pci_set_master(pci);
-=20
- 	if (chip->msi_en) {
--		if (pci_enable_msi(pci) < 0)
-+		if (pci_alloc_irq_vectors(pci, 1, 1, PCI_IRQ_MSI) < 0)
- 			chip->msi_en =3D 0;
- 	}
-=20
-@@ -347,7 +347,7 @@ static void rtsx_shutdown(struct pci_dev *pci)
- 	}
-=20
- 	if (chip->msi_en)
--		pci_disable_msi(pci);
-+		pci_free_irq_vectors(pci);
-=20
- 	pci_disable_device(pci);
- }
-@@ -594,7 +594,7 @@ static void rtsx_release_resources(struct rtsx_dev *dev)
- 	if (dev->irq > 0)
- 		free_irq(dev->irq, (void *)dev);
- 	if (dev->chip->msi_en)
--		pci_disable_msi(dev->pci);
-+		pci_free_irq_vectors(dev->pci);
- 	if (dev->remap_addr)
- 		iounmap(dev->remap_addr);
-=20
-@@ -881,7 +881,7 @@ static int rtsx_probe(struct pci_dev *pci,
- 	dev_info(&pci->dev, "pci->irq =3D %d\n", pci->irq);
-=20
- 	if (dev->chip->msi_en) {
--		if (pci_enable_msi(pci) < 0)
-+		if (pci_alloc_irq_vectors(pci, 1, 1, PCI_IRQ_MSI) < 0)
- 			dev->chip->msi_en =3D 0;
- 	}
-=20
-@@ -952,7 +952,7 @@ static int rtsx_probe(struct pci_dev *pci,
- 	dev->chip->host_cmds_ptr =3D NULL;
- 	dev->chip->host_sg_tbl_ptr =3D NULL;
- 	if (dev->chip->msi_en)
--		pci_disable_msi(dev->pci);
-+		pci_free_irq_vectors(dev->pci);
- dma_alloc_fail:
- 	iounmap(dev->remap_addr);
- ioremap_fail:
---=20
-2.17.1
-
-
---TB36FDmn/VVEgNH/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl8UWdsACgkQ+gRsbIfe
-744d6w//V5XT/RC+qOEq6QsxtGsxYRx/LbqqSuE8iTOoLupVtMnl+yuxzxOEFS4c
-i/UVpZfWWd5WVSad0XoIcRfZuZwm8zxSA7/gp9CdBqHDJ3EYaqHfvxKt5443/lG2
-pX/6OHWXiv2Pgh6C0wt3PzdA4BHjWh9PSLnbXACllDsFKYVLaeK7F68GrlhGbBi6
-lPyPAX4B/LwqA7A12SwBs4YR0GA4uFzuK3L3MDwP+q5zNVrHA3D3BqOxitBuXUXi
-RHmr67BzOUeXq2YOvRBNbZXV/JII4Csk0c3/SHxHejFV/zdriPyd6oEWl5x5VB7m
-C44S0kRV712AVvw67GELkFoD58M0XRmu0pfvCyaVLnOOdkcq3ZmoZFzxa8lZX0Fq
-6+SKuYAXV+debQgW/lkUcsSq70Dmgcj7YW57cJFy7N1mzBGQXln5X1OY5GrkjXMR
-3E85kq5SzYJ0fQu2QDkcvzSAx0u1yY46yo1Zc80MBpvM+DQUKpfjNWaOR16L5Zmu
-2A7CK0LYArcp59oEONt89F2qekAj0J8qFrkVKIzQhTGFq2YPbCjQTHh9DDoBhW/+
-PKZ8mCgk91NRACZTPQAzXzzS2TWHtnWDEI3zS2J81HVG3VAq8MjuIFKBgy+IdKHN
-1o2fNqVux1uqpuoiE9s6VnKlJ/BQc3nrOflDoSbAzbeYFBK+Gp0=
-=2Oqc
------END PGP SIGNATURE-----
-
---TB36FDmn/VVEgNH/--
-
---===============0985255160275320549==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============0985255160275320549==--
+T24gU2F0LCBKdWwgMTgsIDIwMjAgYXQgMDU6Mjc6MzhQTSAtMDcwMCwgUmFuZHkgRHVubGFwIHdy
+b3RlOgo+IERyb3AgdGhlIHJlcGVhdGVkIHdvcmQgInRoZSIgaW4gYSBjb21tZW50Lgo+IAo+IFNp
+Z25lZC1vZmYtYnk6IFJhbmR5IER1bmxhcCA8cmR1bmxhcEBpbmZyYWRlYWQub3JnPgo+IENjOiBH
+cmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgo+IENjOiBBcnZl
+IEhqw7hubmV2w6VnIDxhcnZlQGFuZHJvaWQuY29tPgo+IENjOiBUb2RkIEtqb3MgPHRram9zQGFu
+ZHJvaWQuY29tPgo+IENjOiBNYXJ0aWpuIENvZW5lbiA8bWFjb0BhbmRyb2lkLmNvbT4KPiBDYzog
+Sm9lbCBGZXJuYW5kZXMgPGpvZWxAam9lbGZlcm5hbmRlcy5vcmc+Cj4gQ2M6IENocmlzdGlhbiBC
+cmF1bmVyIDxjaHJpc3RpYW5AYnJhdW5lci5pbz4KPiBDYzogSHJpZHlhIFZhbHNhcmFqdSA8aHJp
+ZHlhQGdvb2dsZS5jb20+Cj4gQ2M6IFN1cmVuIEJhZ2hkYXNhcnlhbiA8c3VyZW5iQGdvb2dsZS5j
+b20+Cj4gQ2M6IGRldmVsQGRyaXZlcmRldi5vc3Vvc2wub3JnCj4gLS0tCgpUaGFua3MhCkFja2Vk
+LWJ5OiBDaHJpc3RpYW4gQnJhdW5lciA8Y2hyaXN0aWFuLmJyYXVuZXJAdWJ1bnR1LmNvbT4KCj4g
+IGluY2x1ZGUvdWFwaS9saW51eC9hbmRyb2lkL2JpbmRlci5oIHwgICAgMiArLQo+ICAxIGZpbGUg
+Y2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPiAKPiAtLS0gbGludXgtbmV4
+dC0yMDIwMDcxNy5vcmlnL2luY2x1ZGUvdWFwaS9saW51eC9hbmRyb2lkL2JpbmRlci5oCj4gKysr
+IGxpbnV4LW5leHQtMjAyMDA3MTcvaW5jbHVkZS91YXBpL2xpbnV4L2FuZHJvaWQvYmluZGVyLmgK
+PiBAQCAtNDA0LDcgKzQwNCw3IEBAIGVudW0gYmluZGVyX2RyaXZlcl9yZXR1cm5fcHJvdG9jb2wg
+ewo+ICAKPiAgCUJSX0ZBSUxFRF9SRVBMWSA9IF9JTygncicsIDE3KSwKPiAgCS8qCj4gLQkgKiBU
+aGUgdGhlIGxhc3QgdHJhbnNhY3Rpb24gKGVpdGhlciBhIGJjVFJBTlNBQ1RJT04gb3IKPiArCSAq
+IFRoZSBsYXN0IHRyYW5zYWN0aW9uIChlaXRoZXIgYSBiY1RSQU5TQUNUSU9OIG9yCj4gIAkgKiBh
+IGJjQVRURU1QVF9BQ1FVSVJFKSBmYWlsZWQgKGUuZy4gb3V0IG9mIG1lbW9yeSkuICBObyBwYXJh
+bWV0ZXJzLgo+ICAJICovCj4gIH07Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qu
+b3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaXZlcmRldi1kZXZlbAo=
