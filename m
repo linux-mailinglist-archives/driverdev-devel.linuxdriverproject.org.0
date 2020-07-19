@@ -1,48 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED7C52254F5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Jul 2020 02:31:05 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 986A22255C7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Jul 2020 04:09:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 71A1C87E36;
-	Mon, 20 Jul 2020 00:31:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C8ED820656;
+	Mon, 20 Jul 2020 02:09:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3OYHyXnT6+it; Mon, 20 Jul 2020 00:31:03 +0000 (UTC)
+	with ESMTP id YJKd8cHZgrCZ; Mon, 20 Jul 2020 02:09:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D99B187DCE;
-	Mon, 20 Jul 2020 00:31:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8716120517;
+	Mon, 20 Jul 2020 02:09:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2FD1B1BF3EF
- for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 00:31:01 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 38A991BF397
+ for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 02:09:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2160E863A8
- for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 00:31:01 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 358EB857E2
+ for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 02:09:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ej9UujRwsvJx for <devel@linuxdriverproject.org>;
- Mon, 20 Jul 2020 00:30:59 +0000 (UTC)
-X-Greylist: delayed 01:35:42 by SQLgrey-1.7.6
+ with ESMTP id hxXCoQqHtOKv for <devel@linuxdriverproject.org>;
+ Mon, 20 Jul 2020 02:09:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.ceca.edu.mx (mail.ceca.edu.mx [187.174.101.179])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 89624863A6
- for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 00:30:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B2FF985778
+ for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 02:09:03 +0000 (UTC)
 Received: from IP-133-131.dataclub.eu ([84.38.133.131])
  (user=voicemail@ceca.edu.mx mech=CRAM-MD5 bits=0)
- by mail.ceca.edu.mx  with ESMTP id 06K0JUlo026742-06K0JUlu026742
+ by mail.ceca.edu.mx  with ESMTP id 06JMhaWb021962-06JMhaWh021962
  (version=TLSv1.0 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
- Sun, 19 Jul 2020 19:19:46 -0500
-Message-Id: <202007200019.06K0JUlo026742-06K0JUlu026742@mail.ceca.edu.mx>
+ Sun, 19 Jul 2020 17:43:52 -0500
+Message-Id: <202007192243.06JMhaWb021962-06JMhaWh021962@mail.ceca.edu.mx>
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: My COVID-19 Donation
 To: Recipients <newsletters@farms.com>
 From: newsletters@farms.com
-Date: Mon, 20 Jul 2020 02:30:46 +0200
+Date: Mon, 20 Jul 2020 00:54:19 +0200
 X-FEAS-AUTH-USER: voicemail@ceca.edu.mx
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
