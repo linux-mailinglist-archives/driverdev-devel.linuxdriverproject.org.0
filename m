@@ -1,56 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1452224E55
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Jul 2020 02:28:01 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C13E688055;
-	Sun, 19 Jul 2020 00:27:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rVE0X7sHzeuF; Sun, 19 Jul 2020 00:27:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4F86287E90;
-	Sun, 19 Jul 2020 00:27:56 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C9C1F1BF30F
- for <devel@linuxdriverproject.org>; Sun, 19 Jul 2020 00:27:54 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0021E224F2F
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Jul 2020 06:33:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C68BF85B73
- for <devel@linuxdriverproject.org>; Sun, 19 Jul 2020 00:27:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 011BB855B5;
+	Sun, 19 Jul 2020 04:33:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WFdCx9oLz6aH; Sun, 19 Jul 2020 04:33:47 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AC0A985580;
+	Sun, 19 Jul 2020 04:33:46 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 158961BF38B
+ for <devel@linuxdriverproject.org>; Sun, 19 Jul 2020 04:33:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0FD2B869E6
+ for <devel@linuxdriverproject.org>; Sun, 19 Jul 2020 04:33:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id md1ar7TUPlg2 for <devel@linuxdriverproject.org>;
- Sun, 19 Jul 2020 00:27:52 +0000 (UTC)
+ with ESMTP id BQQLSdB6v0jS for <devel@linuxdriverproject.org>;
+ Sun, 19 Jul 2020 04:33:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D80E185B5B
- for <devel@driverdev.osuosl.org>; Sun, 19 Jul 2020 00:27:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=Ytkx/iABdWSM1OWWt77vJCDOzuRIDi0fCU44Zd9lt/Y=; b=ypCsSJNjoGhGqYIsbAvJrsww3d
- zMcu0eGsxT63gAQNKl177O4oMjxLez0Z5zbDqWy+pV9DvMgEl+dviVOYgoTz48NnjKPH5KkF3f1Ck
- Ba4opGFois6UiRk3cGhoQ92TgcEV9P8NsRdoWLKdip3cPj3abdt/5EWHwAtu6hhI/GyAzYTKV6JS0
- oWpAfPzmDLKhfsimeZDWpcGw/s54TyfrF9m0IOVHhp6Uo1+gPZ6V5TYdhHaw8fe47AVCV5xHk2UhJ
- 4J6FAv5S006YeINBpgv7NL3hYlKgTwt+RuVCxmVIVndiBN4j2YC5IOjBHKqO/85tjwsiolNVo0iwp
- nOYw/oUQ==;
-Received: from [2601:1c0:6280:3f0::19c2] (helo=smtpauth.infradead.org)
- by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jwxB9-0002Vh-Uq; Sun, 19 Jul 2020 00:27:44 +0000
-From: Randy Dunlap <rdunlap@infradead.org>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] android: binder.h: drop a duplicated word
-Date: Sat, 18 Jul 2020 17:27:38 -0700
-Message-Id: <20200719002738.20210-1-rdunlap@infradead.org>
-X-Mailer: git-send-email 2.26.2
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DAAEE869C7
+ for <devel@driverdev.osuosl.org>; Sun, 19 Jul 2020 04:33:43 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id s26so7379764pfm.4
+ for <devel@driverdev.osuosl.org>; Sat, 18 Jul 2020 21:33:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=NMnuLh+n2hjqR5MnJLBU8rHuDpwc8jSXNcEkAGw08r0=;
+ b=shNpNfD7ydknC+2m8bihpNOtvb4urvKd9/86e2kcEaXXeB4oSt3iYJ4S6Ri0Ts7fYC
+ D5QmjRh1QkEdVPL70XfAEStJ0MvcigrrqJvCCFSxB1tiYER0rWojGwXJNu7k/Y5VpLmZ
+ 4uZ2KezgDGTcAj59w4wPz44oxlKCFCnp+4vSNXHbzzoRaCMBKikeSASc5+F4mwUgdvZp
+ mkGDJNp89MA16FM05n/8JA1xdHNV6ZsONqoIzhQv0ASJZw46b7w0rl+7wGgvfEAWvx/U
+ xNX8lqzdncZ09m7AfmGRAZMv7c3dpRyDbjyoM+wcLJIGD1QjjoGINkYegB7MZ5R8c0VZ
+ BVzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=NMnuLh+n2hjqR5MnJLBU8rHuDpwc8jSXNcEkAGw08r0=;
+ b=t6L9Te4cFFhAaqnbQ4SWJfJMJm2mKKfXwPi6muOJt2cl0rbyeN9WlzA1QsrE8NpWnv
+ tvzItKskZ88S/OioxVik7cU5fg59A1yyzpDry4VgA3iK7z4XhZCqvHJiO8ZZ1cpLvVWy
+ Ur9U+7nQsE9dOkjfxhQmjey6BjGYNKesr0EpCQXiXagEsEkmKues6suzVkc/+Qgca7Gb
+ mpgxTKd3jNKekni/TqC3nwwaTQjniZ3lXX5NwULGLFiue/m9rwIUprVyW1k8OV0TtR+F
+ ydEVyVefGtP9u7xkH9qX4zTkFM3YHT+xwV8ouB/BbflvNWkv1KwrjGQ0k4ERahLEx7nS
+ LZpA==
+X-Gm-Message-State: AOAM532SRw3Y2zB4A7JukwjJvc4Ww+vGtSHvtwYm95FUYyAOtUPIWg/v
+ Du9KY6zqZsyRb5zOaBMLeJs=
+X-Google-Smtp-Source: ABdhPJzJHKMcXcrP4HWoI82Bip3+QWOih5BY3UYhF0neGE8ul+At8jy/Vsx9mAekGGJvYsaIiTEp2w==
+X-Received: by 2002:a63:8dc4:: with SMTP id
+ z187mr12971922pgd.199.1595133223417; 
+ Sat, 18 Jul 2020 21:33:43 -0700 (PDT)
+Received: from blackclown ([2405:204:219:61b6:3945:8436:8c57:56d5])
+ by smtp.gmail.com with ESMTPSA id o129sm12684414pfg.14.2020.07.18.21.33.40
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Sat, 18 Jul 2020 21:33:42 -0700 (PDT)
+Date: Sun, 19 Jul 2020 10:03:24 +0530
+From: Suraj Upadhyay <usuraj35@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: Re: [PATCH v2] staging: kpc2000: Replace depracated MSI API.
+Message-ID: <20200719043324.GA28510@blackclown>
+References: <20200718154951.GA28857@blackclown>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200718154951.GA28857@blackclown>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,35 +87,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Suren Baghdasaryan <surenb@google.com>, Hridya Valsaraju <hridya@google.com>,
- =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RHJvcCB0aGUgcmVwZWF0ZWQgd29yZCAidGhlIiBpbiBhIGNvbW1lbnQuCgpTaWduZWQtb2ZmLWJ5
-OiBSYW5keSBEdW5sYXAgPHJkdW5sYXBAaW5mcmFkZWFkLm9yZz4KQ2M6IEdyZWcgS3JvYWgtSGFy
-dG1hbiA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+CkNjOiBBcnZlIEhqw7hubmV2w6VnIDxh
-cnZlQGFuZHJvaWQuY29tPgpDYzogVG9kZCBLam9zIDx0a2pvc0BhbmRyb2lkLmNvbT4KQ2M6IE1h
-cnRpam4gQ29lbmVuIDxtYWNvQGFuZHJvaWQuY29tPgpDYzogSm9lbCBGZXJuYW5kZXMgPGpvZWxA
-am9lbGZlcm5hbmRlcy5vcmc+CkNjOiBDaHJpc3RpYW4gQnJhdW5lciA8Y2hyaXN0aWFuQGJyYXVu
-ZXIuaW8+CkNjOiBIcmlkeWEgVmFsc2FyYWp1IDxocmlkeWFAZ29vZ2xlLmNvbT4KQ2M6IFN1cmVu
-IEJhZ2hkYXNhcnlhbiA8c3VyZW5iQGdvb2dsZS5jb20+CkNjOiBkZXZlbEBkcml2ZXJkZXYub3N1
-b3NsLm9yZwotLS0KIGluY2x1ZGUvdWFwaS9saW51eC9hbmRyb2lkL2JpbmRlci5oIHwgICAgMiAr
-LQogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgotLS0gbGlu
-dXgtbmV4dC0yMDIwMDcxNy5vcmlnL2luY2x1ZGUvdWFwaS9saW51eC9hbmRyb2lkL2JpbmRlci5o
-CisrKyBsaW51eC1uZXh0LTIwMjAwNzE3L2luY2x1ZGUvdWFwaS9saW51eC9hbmRyb2lkL2JpbmRl
-ci5oCkBAIC00MDQsNyArNDA0LDcgQEAgZW51bSBiaW5kZXJfZHJpdmVyX3JldHVybl9wcm90b2Nv
-bCB7CiAKIAlCUl9GQUlMRURfUkVQTFkgPSBfSU8oJ3InLCAxNyksCiAJLyoKLQkgKiBUaGUgdGhl
-IGxhc3QgdHJhbnNhY3Rpb24gKGVpdGhlciBhIGJjVFJBTlNBQ1RJT04gb3IKKwkgKiBUaGUgbGFz
-dCB0cmFuc2FjdGlvbiAoZWl0aGVyIGEgYmNUUkFOU0FDVElPTiBvcgogCSAqIGEgYmNBVFRFTVBU
-X0FDUVVJUkUpIGZhaWxlZCAoZS5nLiBvdXQgb2YgbWVtb3J5KS4gIE5vIHBhcmFtZXRlcnMuCiAJ
-ICovCiB9OwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-ZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJp
-dmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYt
-ZGV2ZWwK
+On Sat, Jul 18, 2020 at 09:19:51PM +0530, Suraj Upadhyay wrote:
+> Replace depracated pci_enable_msi with pci_alloc_irq_vectors.
+> And as a result modify how the returned value is handled.
+> 
+> Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
+> ---
+> Changes:
+> 	v2: Removed the undefined variable.
+> 	    Reported by kernel-bot.
+> 
+Don't merge it.
+This patch is incomplete.
+I have to replce pci_disable_msi too.
+I hope this didn't cause any annoyances.
+
+Thanks,
+
+Suraj Upadhyay.
+
+>  drivers/staging/kpc2000/kpc2000/core.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
+> index 358d7b2f4ad1..8339026ffb41 100644
+> --- a/drivers/staging/kpc2000/kpc2000/core.c
+> +++ b/drivers/staging/kpc2000/kpc2000/core.c
+> @@ -440,7 +440,7 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
+>  	dev_dbg(&pcard->pdev->dev,
+>  		"Using DMA mask %0llx\n", dma_get_mask(PCARD_TO_DEV(pcard)));
+>  
+> -	err = pci_enable_msi(pcard->pdev);
+> +	err = pci_alloc_irq_vectors(pcard->pdev, 1, 1, PCI_IRQ_MSI);
+>  	if (err < 0)
+>  		goto err_release_dma;
+>  
+> -- 
+> 2.17.1
+> 
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
