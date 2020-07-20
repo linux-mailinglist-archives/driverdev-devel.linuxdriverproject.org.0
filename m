@@ -1,63 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B3582257F6
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Jul 2020 08:43:34 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 693A32259DE
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Jul 2020 10:19:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B56A885E27;
-	Mon, 20 Jul 2020 06:43:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6206221511;
+	Mon, 20 Jul 2020 08:19:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tJDzplFLtt4q; Mon, 20 Jul 2020 06:43:32 +0000 (UTC)
+	with ESMTP id K8KH83MOTnfa; Mon, 20 Jul 2020 08:19:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 694D285C52;
-	Mon, 20 Jul 2020 06:43:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9CA0720789;
+	Mon, 20 Jul 2020 08:19:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2C4251BF397
- for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 06:43:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E5EDF1BF5E0
+ for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 08:19:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 043232049F
- for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 06:43:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DD49C204BF
+ for <devel@linuxdriverproject.org>; Mon, 20 Jul 2020 08:19:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kU3DIxl3cKOh for <devel@linuxdriverproject.org>;
- Mon, 20 Jul 2020 06:43:28 +0000 (UTC)
+ with ESMTP id QmmBpY8X46K2 for <devel@linuxdriverproject.org>;
+ Mon, 20 Jul 2020 08:19:17 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.mutex.one (mail.mutex.one [62.77.152.124])
- by silver.osuosl.org (Postfix) with ESMTPS id EB23520484
- for <devel@driverdev.osuosl.org>; Mon, 20 Jul 2020 06:43:27 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.mutex.one (Postfix) with ESMTP id 8ABA8BF40815;
- Mon, 20 Jul 2020 09:43:25 +0300 (EEST)
-X-Virus-Scanned: Debian amavisd-new at mail.mutex.one
-Received: from mail.mutex.one ([127.0.0.1])
- by localhost (mail.mutex.one [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aUSDTB5AIWjP; Mon, 20 Jul 2020 09:43:12 +0300 (EEST)
-Received: [127.0.0.1] (localhost [127.0.0.1])nknown [109.103.89.101])
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id C30E3204B0
+ for <devel@driverdev.osuosl.org>; Mon, 20 Jul 2020 08:19:17 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.mutex.one (Postfix) with ESMTPSA id 6ABCFBF403B7;
- Mon, 20 Jul 2020 09:43:12 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mutex.one; s=default;
- t=1595227392; bh=ab3sxIvVtMy1RpXy10nipXf7bkDHQgf370zh7TMSvNE=;
- h=From:To:Cc:Subject:Date:From;
- b=CpFPhet9j73/ovt+/LAfa/zcl+PZl6teedHLNxHqC9p7BFKqsl+/BZn5lutmWsCim
- E4paD9c/4t+6HT5A5tlWGvUrw6GlCmWe9OBC3stkWDoCkDZF8lJMYm1hDjKD90E7lQ
- bZ/cIRda5hxP2gTyrOFaJzXq9CC0WGVeeNsgzRhs=
-From: Marian Posteuca <posteuca@mutex.one>
-To: Ioana Radulescu <ruxandra.radulescu@nxp.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org
-Subject: [PATCH v2] staging: dpaa2-ethsw: fix switch/case fallthrough warning
-Date: Mon, 20 Jul 2020 09:42:05 +0300
-Message-Id: <20200720064205.10323-1-posteuca@mutex.one>
+ by mail.kernel.org (Postfix) with ESMTPSA id E68982080D;
+ Mon, 20 Jul 2020 08:19:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1595233157;
+ bh=EtZ9AhynlGhfBWyIDxGxkbdjeCY/mrbQUUjyIFA87HU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=YF/LJ8/PYqVCNTC9nEdwYHwGsSUGCAP4XblC812s9WO/qGz1FiiKuS+7eZH/otrQl
+ bc6nKiY2dclZvhOBBhCZC1flVILlCb9+wSdcCDGGygq/naFoerYbvwKGSBRJQuaXvF
+ qfuQh8WgbOH2boGqzcoGoj1gy0uvs1YAkJIx5KpU=
+Date: Mon, 20 Jul 2020 10:19:27 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Ian Abbott <abbotti@mev.co.uk>
+Subject: Re: [PATCH 0/4] staging: comedi: INSN_CONFIG_DIGITAL_TRIG fixes
+Message-ID: <20200720081927.GA688558@kroah.com>
+References: <20200717145257.112660-1-abbotti@mev.co.uk>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200717145257.112660-1-abbotti@mev.co.uk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,35 +65,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Marian Posteuca <posteuca@mutex.one>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fix the fallthrough warning that is reported by checkpatch.
+On Fri, Jul 17, 2020 at 03:52:53PM +0100, Ian Abbott wrote:
+> These patches correct problems with INSN_CONFIG_DIGITAL_TRIG comedi
+> configuration instructions in various comedi drivers, in particular the
+> use of unconstrained bit shift amounts from userspace leading to
+> undefined behaviour (although hopefully not the kernel crashy sort).
+> 
+> The patches have been marked for inclusion in the stable tree.  Note
+> that patch 4 changes a similar area of code to Dan Carpenter's commit
+> ef75e14a6c93 ("staging: comedi: verify array index is correct before
+> using it"), so I have indicated it as a prerequisite.
+> 
+> *Note to Greg KH*: I have based these patches on your "staging-linus"
+> branch due to the prerequisite ef75e14a6c93 mentioned above being
+> present in neither "staging-next" nor "staging-testing" at the time of
+> posting.
 
-Signed-off-by: Marian Posteuca <posteuca@mutex.one>
----
- drivers/staging/fsl-dpaa2/ethsw/ethsw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks for the note, all now queued up to the proper branch.
 
-diff --git a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-index 2fb75a7c9314..db10fd18914d 100644
---- a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-+++ b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-@@ -1362,7 +1362,7 @@ static int port_switchdev_blocking_event(struct notifier_block *unused,
- 		return NOTIFY_DONE;
- 
- 	switch (event) {
--	case SWITCHDEV_PORT_OBJ_ADD: /* fall through */
-+	case SWITCHDEV_PORT_OBJ_ADD:
- 	case SWITCHDEV_PORT_OBJ_DEL:
- 		return ethsw_switchdev_port_obj_event(event, dev, ptr);
- 	case SWITCHDEV_PORT_ATTR_SET:
--- 
-2.26.2
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
