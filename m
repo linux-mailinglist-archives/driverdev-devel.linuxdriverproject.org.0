@@ -1,47 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 436AF2288FB
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Jul 2020 21:17:52 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 143A722891F
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Jul 2020 21:28:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F182F2278C;
-	Tue, 21 Jul 2020 19:17:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F09DB88246;
+	Tue, 21 Jul 2020 19:28:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lnyUK+wiTk-5; Tue, 21 Jul 2020 19:17:49 +0000 (UTC)
+	with ESMTP id jqO9quKMbtMO; Tue, 21 Jul 2020 19:28:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1643E22735;
-	Tue, 21 Jul 2020 19:17:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CC488881EC;
+	Tue, 21 Jul 2020 19:28:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8487C1BF2BA
- for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 19:17:41 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 24EF31BF2BA
+ for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 19:28:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 77DE284FB0
- for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 19:17:41 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1E8F0881EC
+ for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 19:28:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 14q71cmSTGOg for <devel@linuxdriverproject.org>;
- Tue, 21 Jul 2020 19:17:40 +0000 (UTC)
+ with ESMTP id yO0b4ZfI4Zyq for <devel@linuxdriverproject.org>;
+ Tue, 21 Jul 2020 19:27:59 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from smtp.al2klimov.de (smtp.al2klimov.de [78.46.175.9])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A67B884F2A
- for <devel@driverdev.osuosl.org>; Tue, 21 Jul 2020 19:17:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 24D3C8816A
+ for <devel@driverdev.osuosl.org>; Tue, 21 Jul 2020 19:27:59 +0000 (UTC)
 Received: from authenticated-user (PRIMARY_HOSTNAME [PUBLIC_IP])
- by smtp.al2klimov.de (Postfix) with ESMTPA id 35E0FBC1AB;
- Tue, 21 Jul 2020 19:17:36 +0000 (UTC)
+ by smtp.al2klimov.de (Postfix) with ESMTPA id 4E006BC148;
+ Tue, 21 Jul 2020 19:27:56 +0000 (UTC)
 From: "Alexander A. Klimov" <grandmaster@al2klimov.de>
 To: abbotti@mev.co.uk, hsweeten@visionengravers.com,
- gregkh@linuxfoundation.org, mh12gx2825@gmail.com, ejyu99@gmail.com,
- yuehaibing@huawei.com, devel@driverdev.osuosl.org,
+ gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: comedi: ni: Replace HTTP links with HTTPS ones
-Date: Tue, 21 Jul 2020 21:17:29 +0200
-Message-Id: <20200721191729.67847-1-grandmaster@al2klimov.de>
+Subject: [PATCH] staging: comedi: pcl: Replace HTTP links with HTTPS ones
+Date: Tue, 21 Jul 2020 21:27:50 +0200
+Message-Id: <20200721192750.67925-1-grandmaster@al2klimov.de>
 MIME-Version: 1.0
 X-Spamd-Bar: +++++
 Authentication-Results: smtp.al2klimov.de;
@@ -104,252 +103,99 @@ Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
  Impossible is nothing! :)
 
 
- drivers/staging/comedi/drivers/ni_6527.c         | 2 +-
- drivers/staging/comedi/drivers/ni_65xx.c         | 2 +-
- drivers/staging/comedi/drivers/ni_660x.c         | 2 +-
- drivers/staging/comedi/drivers/ni_670x.c         | 2 +-
- drivers/staging/comedi/drivers/ni_at_a2150.c     | 2 +-
- drivers/staging/comedi/drivers/ni_at_ao.c        | 2 +-
- drivers/staging/comedi/drivers/ni_atmio.c        | 2 +-
- drivers/staging/comedi/drivers/ni_atmio16d.c     | 2 +-
- drivers/staging/comedi/drivers/ni_daq_700.c      | 4 ++--
- drivers/staging/comedi/drivers/ni_labpc.c        | 4 ++--
- drivers/staging/comedi/drivers/ni_labpc_common.c | 2 +-
- drivers/staging/comedi/drivers/ni_labpc_isadma.c | 2 +-
- drivers/staging/comedi/drivers/ni_labpc_pci.c    | 2 +-
- drivers/staging/comedi/drivers/ni_pcidio.c       | 4 ++--
- drivers/staging/comedi/drivers/ni_pcimio.c       | 2 +-
- drivers/staging/comedi/drivers/ni_routes.c       | 2 +-
- drivers/staging/comedi/drivers/ni_usb6501.c      | 2 +-
- 17 files changed, 20 insertions(+), 20 deletions(-)
+ drivers/staging/comedi/drivers/pcl711.c | 2 +-
+ drivers/staging/comedi/drivers/pcl724.c | 2 +-
+ drivers/staging/comedi/drivers/pcl726.c | 2 +-
+ drivers/staging/comedi/drivers/pcl730.c | 2 +-
+ drivers/staging/comedi/drivers/pcl812.c | 2 +-
+ drivers/staging/comedi/drivers/pcl816.c | 2 +-
+ drivers/staging/comedi/drivers/pcl818.c | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/ni_6527.c b/drivers/staging/comedi/drivers/ni_6527.c
-index 4d1eccb5041d..ba7f40b46c3a 100644
---- a/drivers/staging/comedi/drivers/ni_6527.c
-+++ b/drivers/staging/comedi/drivers/ni_6527.c
-@@ -486,6 +486,6 @@ static struct pci_driver ni6527_pci_driver = {
+diff --git a/drivers/staging/comedi/drivers/pcl711.c b/drivers/staging/comedi/drivers/pcl711.c
+index a5937206bf1c..2dbf69e30965 100644
+--- a/drivers/staging/comedi/drivers/pcl711.c
++++ b/drivers/staging/comedi/drivers/pcl711.c
+@@ -508,6 +508,6 @@ static struct comedi_driver pcl711_driver = {
  };
- module_comedi_pci_driver(ni6527_driver, ni6527_pci_driver);
+ module_comedi_driver(pcl711_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for National Instruments PCI-6527");
+ MODULE_DESCRIPTION("Comedi driver for PCL-711 compatible boards");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_65xx.c b/drivers/staging/comedi/drivers/ni_65xx.c
-index 996074e471d3..eb3f9f7109da 100644
---- a/drivers/staging/comedi/drivers/ni_65xx.c
-+++ b/drivers/staging/comedi/drivers/ni_65xx.c
-@@ -817,6 +817,6 @@ static struct pci_driver ni_65xx_pci_driver = {
+diff --git a/drivers/staging/comedi/drivers/pcl724.c b/drivers/staging/comedi/drivers/pcl724.c
+index 9c174f1f2fcf..1a5799278a7a 100644
+--- a/drivers/staging/comedi/drivers/pcl724.c
++++ b/drivers/staging/comedi/drivers/pcl724.c
+@@ -148,6 +148,6 @@ static struct comedi_driver pcl724_driver = {
  };
- module_comedi_pci_driver(ni_65xx_driver, ni_65xx_pci_driver);
+ module_comedi_driver(pcl724_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for NI PCI-65xx static dio boards");
+ MODULE_DESCRIPTION("Comedi driver for 8255 based ISA and PC/104 DIO boards");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_660x.c b/drivers/staging/comedi/drivers/ni_660x.c
-index 75d5c9c24596..e60d0125bcb2 100644
---- a/drivers/staging/comedi/drivers/ni_660x.c
-+++ b/drivers/staging/comedi/drivers/ni_660x.c
-@@ -1250,6 +1250,6 @@ static struct pci_driver ni_660x_pci_driver = {
+diff --git a/drivers/staging/comedi/drivers/pcl726.c b/drivers/staging/comedi/drivers/pcl726.c
+index 0963d85873a9..58b3d07ae907 100644
+--- a/drivers/staging/comedi/drivers/pcl726.c
++++ b/drivers/staging/comedi/drivers/pcl726.c
+@@ -418,6 +418,6 @@ static struct comedi_driver pcl726_driver = {
  };
- module_comedi_pci_driver(ni_660x_driver, ni_660x_pci_driver);
+ module_comedi_driver(pcl726_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for NI 660x counter/timer boards");
+ MODULE_DESCRIPTION("Comedi driver for Advantech PCL-726 & compatibles");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_670x.c b/drivers/staging/comedi/drivers/ni_670x.c
-index 4e4ae31c8d0b..c197e47486be 100644
---- a/drivers/staging/comedi/drivers/ni_670x.c
-+++ b/drivers/staging/comedi/drivers/ni_670x.c
-@@ -277,6 +277,6 @@ static struct pci_driver ni_670x_pci_driver = {
+diff --git a/drivers/staging/comedi/drivers/pcl730.c b/drivers/staging/comedi/drivers/pcl730.c
+index 3d1e9150e5b5..32a29129e6e8 100644
+--- a/drivers/staging/comedi/drivers/pcl730.c
++++ b/drivers/staging/comedi/drivers/pcl730.c
+@@ -345,6 +345,6 @@ static struct comedi_driver pcl730_driver = {
  };
- module_comedi_pci_driver(ni_670x_driver, ni_670x_pci_driver);
+ module_comedi_driver(pcl730_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
  MODULE_DESCRIPTION("Comedi low-level driver");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_at_a2150.c b/drivers/staging/comedi/drivers/ni_at_a2150.c
-index 76e8d047f71e..10ad7b88713e 100644
---- a/drivers/staging/comedi/drivers/ni_at_a2150.c
-+++ b/drivers/staging/comedi/drivers/ni_at_a2150.c
-@@ -777,6 +777,6 @@ static struct comedi_driver ni_at_a2150_driver = {
+diff --git a/drivers/staging/comedi/drivers/pcl812.c b/drivers/staging/comedi/drivers/pcl812.c
+index aefc1b849cf7..b87ab3840eee 100644
+--- a/drivers/staging/comedi/drivers/pcl812.c
++++ b/drivers/staging/comedi/drivers/pcl812.c
+@@ -1331,6 +1331,6 @@ static struct comedi_driver pcl812_driver = {
  };
- module_comedi_driver(ni_at_a2150_driver);
+ module_comedi_driver(pcl812_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
  MODULE_DESCRIPTION("Comedi low-level driver");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_at_ao.c b/drivers/staging/comedi/drivers/ni_at_ao.c
-index 814895d01ffa..2a0fb4d460db 100644
---- a/drivers/staging/comedi/drivers/ni_at_ao.c
-+++ b/drivers/staging/comedi/drivers/ni_at_ao.c
-@@ -369,6 +369,6 @@ static struct comedi_driver ni_at_ao_driver = {
+diff --git a/drivers/staging/comedi/drivers/pcl816.c b/drivers/staging/comedi/drivers/pcl816.c
+index d87cf6d4a161..c368a337a0ae 100644
+--- a/drivers/staging/comedi/drivers/pcl816.c
++++ b/drivers/staging/comedi/drivers/pcl816.c
+@@ -691,6 +691,6 @@ static struct comedi_driver pcl816_driver = {
  };
- module_comedi_driver(ni_at_ao_driver);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for NI AT-AO-6/10 boards");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_atmio.c b/drivers/staging/comedi/drivers/ni_atmio.c
-index 2b7bfe0dd7f3..56c78da475e7 100644
---- a/drivers/staging/comedi/drivers/ni_atmio.c
-+++ b/drivers/staging/comedi/drivers/ni_atmio.c
-@@ -354,7 +354,7 @@ static struct comedi_driver ni_atmio_driver = {
- };
- module_comedi_driver(ni_atmio_driver);
+ module_comedi_driver(pcl816_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
  MODULE_DESCRIPTION("Comedi low-level driver");
  MODULE_LICENSE("GPL");
- 
-diff --git a/drivers/staging/comedi/drivers/ni_atmio16d.c b/drivers/staging/comedi/drivers/ni_atmio16d.c
-index 0bca7d752015..dffce1aa3e69 100644
---- a/drivers/staging/comedi/drivers/ni_atmio16d.c
-+++ b/drivers/staging/comedi/drivers/ni_atmio16d.c
-@@ -724,6 +724,6 @@ static struct comedi_driver atmio16d_driver = {
+diff --git a/drivers/staging/comedi/drivers/pcl818.c b/drivers/staging/comedi/drivers/pcl818.c
+index 0af5315d4357..63e3011158f2 100644
+--- a/drivers/staging/comedi/drivers/pcl818.c
++++ b/drivers/staging/comedi/drivers/pcl818.c
+@@ -1132,6 +1132,6 @@ static struct comedi_driver pcl818_driver = {
  };
- module_comedi_driver(atmio16d_driver);
+ module_comedi_driver(pcl818_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
  MODULE_DESCRIPTION("Comedi low-level driver");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_daq_700.c b/drivers/staging/comedi/drivers/ni_daq_700.c
-index 81fd4c26a16f..d40fc89f9cef 100644
---- a/drivers/staging/comedi/drivers/ni_daq_700.c
-+++ b/drivers/staging/comedi/drivers/ni_daq_700.c
-@@ -34,8 +34,8 @@
-  *
-  * IRQ is assigned but not used.
-  *
-- * Manuals:	Register level:	http://www.ni.com/pdf/manuals/340698.pdf
-- *		User Manual:	http://www.ni.com/pdf/manuals/320676d.pdf
-+ * Manuals:	Register level:	https://www.ni.com/pdf/manuals/340698.pdf
-+ *		User Manual:	https://www.ni.com/pdf/manuals/320676d.pdf
-  */
- 
- #include <linux/module.h>
-diff --git a/drivers/staging/comedi/drivers/ni_labpc.c b/drivers/staging/comedi/drivers/ni_labpc.c
-index c6cf37ccbc92..1f4a07bd1d26 100644
---- a/drivers/staging/comedi/drivers/ni_labpc.c
-+++ b/drivers/staging/comedi/drivers/ni_labpc.c
-@@ -27,7 +27,7 @@
-  * Kernel-level ISA plug-and-play support for the lab-pc-1200 boards
-  * has not yet been added to the driver, mainly due to the fact that
-  * I don't know the device id numbers. If you have one of these boards,
-- * please file a bug report at http://comedi.org/ so I can get the
-+ * please file a bug report at https://comedi.org/ so I can get the
-  * necessary information from you.
-  *
-  * The 1200 series boards have onboard calibration dacs for correcting
-@@ -111,6 +111,6 @@ static struct comedi_driver labpc_driver = {
- };
- module_comedi_driver(labpc_driver);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for NI Lab-PC ISA boards");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_labpc_common.c b/drivers/staging/comedi/drivers/ni_labpc_common.c
-index ce0f85026277..dd97946eacaf 100644
---- a/drivers/staging/comedi/drivers/ni_labpc_common.c
-+++ b/drivers/staging/comedi/drivers/ni_labpc_common.c
-@@ -1358,6 +1358,6 @@ static void __exit labpc_common_exit(void)
- }
- module_exit(labpc_common_exit);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi helper for ni_labpc, ni_labpc_pci, ni_labpc_cs");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_labpc_isadma.c b/drivers/staging/comedi/drivers/ni_labpc_isadma.c
-index 5657736a9408..a551aca6e615 100644
---- a/drivers/staging/comedi/drivers/ni_labpc_isadma.c
-+++ b/drivers/staging/comedi/drivers/ni_labpc_isadma.c
-@@ -176,6 +176,6 @@ static void __exit ni_labpc_isadma_cleanup_module(void)
- }
- module_exit(ni_labpc_isadma_cleanup_module);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi NI Lab-PC ISA DMA support");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_labpc_pci.c b/drivers/staging/comedi/drivers/ni_labpc_pci.c
-index d7d5a7973558..ec180b0fedf7 100644
---- a/drivers/staging/comedi/drivers/ni_labpc_pci.c
-+++ b/drivers/staging/comedi/drivers/ni_labpc_pci.c
-@@ -128,5 +128,5 @@ static struct pci_driver labpc_pci_driver = {
- module_comedi_pci_driver(labpc_pci_comedi_driver, labpc_pci_driver);
- 
- MODULE_DESCRIPTION("Comedi: National Instruments Lab-PC PCI-1200 driver");
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_pcidio.c b/drivers/staging/comedi/drivers/ni_pcidio.c
-index 8f3864799c19..623f8d08d13a 100644
---- a/drivers/staging/comedi/drivers/ni_pcidio.c
-+++ b/drivers/staging/comedi/drivers/ni_pcidio.c
-@@ -33,7 +33,7 @@
-  * The PCI-6534 requires a firmware upload after power-up to work, the
-  * firmware data and instructions for loading it with comedi_config
-  * it are contained in the comedi_nonfree_firmware tarball available from
-- * http://www.comedi.org
-+ * https://www.comedi.org
-  */
- 
- #define USE_DMA
-@@ -1005,6 +1005,6 @@ static struct pci_driver ni_pcidio_pci_driver = {
- };
- module_comedi_pci_driver(ni_pcidio_driver, ni_pcidio_pci_driver);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi low-level driver");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_pcimio.c b/drivers/staging/comedi/drivers/ni_pcimio.c
-index c1d70eec24ab..6c813a490ba5 100644
---- a/drivers/staging/comedi/drivers/ni_pcimio.c
-+++ b/drivers/staging/comedi/drivers/ni_pcimio.c
-@@ -1472,6 +1472,6 @@ static struct pci_driver ni_pcimio_pci_driver = {
- };
- module_comedi_pci_driver(ni_pcimio_driver, ni_pcimio_pci_driver);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi low-level driver");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/ni_routes.c b/drivers/staging/comedi/drivers/ni_routes.c
-index 07cb970340db..c426a9286f15 100644
---- a/drivers/staging/comedi/drivers/ni_routes.c
-+++ b/drivers/staging/comedi/drivers/ni_routes.c
-@@ -556,7 +556,7 @@ static void __exit ni_routes_module_exit(void)
- module_init(ni_routes_module_init);
- module_exit(ni_routes_module_exit);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi helper for routing signals-->terminals for NI");
- MODULE_LICENSE("GPL");
- /* **** END simple module entry/exit functions **** */
-diff --git a/drivers/staging/comedi/drivers/ni_usb6501.c b/drivers/staging/comedi/drivers/ni_usb6501.c
-index 360e86a19fe3..5b6d9d783b2f 100644
---- a/drivers/staging/comedi/drivers/ni_usb6501.c
-+++ b/drivers/staging/comedi/drivers/ni_usb6501.c
-@@ -79,7 +79,7 @@
-  *	RES: 00 01 00 0C 00 08 01 00 00 00 00 02
-  *
-  *
-- *	Please  visit http://www.brickedbrain.com if you need
-+ *	Please  visit https://www.brickedbrain.com if you need
-  *	additional information or have any questions.
-  *
-  */
 -- 
 2.27.0
 
