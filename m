@@ -1,57 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E59D3227B8A
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Jul 2020 11:19:47 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 29825227DE6
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Jul 2020 12:56:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 82CC5840C2;
-	Tue, 21 Jul 2020 09:19:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B1CF18944E;
+	Tue, 21 Jul 2020 10:56:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SPuxDx1Lmuzq; Tue, 21 Jul 2020 09:19:45 +0000 (UTC)
+	with ESMTP id j6Kvmaw3Po-i; Tue, 21 Jul 2020 10:56:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BA5DE8426E;
-	Tue, 21 Jul 2020 09:19:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2A2BA8944C;
+	Tue, 21 Jul 2020 10:56:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 79C701BF2B7
- for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 09:19:42 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A2D31BF2AB
+ for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 10:56:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5DB18840A3
- for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 09:19:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7F1092600E
+ for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 10:56:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2zauNtgBeDTO for <devel@linuxdriverproject.org>;
- Tue, 21 Jul 2020 09:19:36 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from inva021.nxp.com (inva021.nxp.com [92.121.34.21])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6515C842FC
- for <devel@driverdev.osuosl.org>; Tue, 21 Jul 2020 09:19:34 +0000 (UTC)
-Received: from inva021.nxp.com (localhost [127.0.0.1])
- by inva021.eu-rdc02.nxp.com (Postfix) with ESMTP id 05BBE200854;
- Tue, 21 Jul 2020 11:19:33 +0200 (CEST)
-Received: from inva024.eu-rdc02.nxp.com (inva024.eu-rdc02.nxp.com
- [134.27.226.22])
- by inva021.eu-rdc02.nxp.com (Postfix) with ESMTP id EDDBE200431;
- Tue, 21 Jul 2020 11:19:32 +0200 (CEST)
-Received: from fsr-ub1864-126.ea.freescale.net
- (fsr-ub1864-126.ea.freescale.net [10.171.82.212])
- by inva024.eu-rdc02.nxp.com (Postfix) with ESMTP id B8F3B202A9;
- Tue, 21 Jul 2020 11:19:32 +0200 (CEST)
-From: Ioana Ciornei <ioana.ciornei@nxp.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH 6/6] staging: dpaa2-ethsw: check if there is space for a new
- VLAN
-Date: Tue, 21 Jul 2020 12:19:19 +0300
-Message-Id: <20200721091919.20394-7-ioana.ciornei@nxp.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200721091919.20394-1-ioana.ciornei@nxp.com>
-References: <20200721091919.20394-1-ioana.ciornei@nxp.com>
-X-Virus-Scanned: ClamAV using ClamSMTP
+ with ESMTP id nO-V3jaq13la for <devel@linuxdriverproject.org>;
+ Tue, 21 Jul 2020 10:56:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7743E25FA7
+ for <devel@driverdev.osuosl.org>; Tue, 21 Jul 2020 10:56:04 +0000 (UTC)
+IronPort-SDR: mmxCpEFo1CEZsOCbN6VfKD5gmge2oZL9omcbTfLkJEe62/VN/eW8rvhFpzMqTSIv89xWwVo0W7
+ KcLa07Vk6bwQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9688"; a="168243003"
+X-IronPort-AV: E=Sophos;i="5.75,378,1589266800"; d="scan'208";a="168243003"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jul 2020 03:56:04 -0700
+IronPort-SDR: cHvTGr7cPEAFpnA/X9VdQw/GpBeeRjMMS1a/UnzkT7t76sSHzTUBZRQzSFdkHU3/uldwXwMTZF
+ XO0ku48Fh40g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,378,1589266800"; d="scan'208";a="487568031"
+Received: from lkp-server02.sh.intel.com (HELO 7dd7ac9fbea4) ([10.239.97.151])
+ by fmsmga006.fm.intel.com with ESMTP; 21 Jul 2020 03:56:02 -0700
+Received: from kbuild by 7dd7ac9fbea4 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jxpwI-000045-AQ; Tue, 21 Jul 2020 10:56:02 +0000
+Date: Tue, 21 Jul 2020 18:54:32 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:driver-core-testing] BUILD SUCCESS
+ 6bdb486c5a628f7a927c2658166e3a5ef1f883e7
+Message-ID: <5f16c968.htZPgGbDZkD5I4Ro%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,75 +69,124 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Ioana Ciornei <ioana.ciornei@nxp.com>
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Avoid getting into a WARNING as below by checking, while in the prepare
-state of the transactional operation, if there is space for a new VLAN.
-If we reached the maximum number, return an appropriate error.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
+branch HEAD: 6bdb486c5a628f7a927c2658166e3a5ef1f883e7  Merge 5.8-rc6 into driver-core-next
 
-[ 6503.657564] eth3: Commit of object (id=1) failed.
-[ 6503.657588] WARNING: CPU: 2 PID: 17144 at net/switchdev/switchdev.c:277 switchdev_port_obj_add_now+0xcc/0x110
-...
-[ 6503.657628] x1 : 70887ce26695c500 x0 : 0000000000000000
-[ 6503.657630] Call trace:
-[ 6503.657633]  switchdev_port_obj_add_now+0xcc/0x110
-[ 6503.657635]  switchdev_port_obj_add+0x40/0xc0
-[ 6503.657638]  br_switchdev_port_vlan_add+0x50/0x78
-[ 6503.657640]  __vlan_add+0x2dc/0x758
-[ 6503.657642]  nbp_vlan_add+0xc0/0x180
-[ 6503.657644]  br_vlan_info.isra.0+0x68/0x128
-[ 6503.657646]  br_process_vlan_info+0x224/0x2f8
-[ 6503.657647]  br_afspec+0x158/0x188
-[ 6503.657649]  br_setlink+0x1a4/0x290
+elapsed time: 1472m
 
-Signed-off-by: Ioana Ciornei <ioana.ciornei@nxp.com>
+configs tested: 97
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+sh                               alldefconfig
+mips                         bigsur_defconfig
+arm                           sama5_defconfig
+arm                           omap1_defconfig
+mips                            e55_defconfig
+s390                          debug_defconfig
+arm                          pxa3xx_defconfig
+m68k                        m5407c3_defconfig
+sh                          sdk7780_defconfig
+c6x                         dsk6455_defconfig
+arm                           h5000_defconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+i386                              allnoconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a001-20200719
+i386                 randconfig-a006-20200719
+i386                 randconfig-a002-20200719
+i386                 randconfig-a005-20200719
+i386                 randconfig-a003-20200719
+i386                 randconfig-a004-20200719
+x86_64               randconfig-a005-20200719
+x86_64               randconfig-a002-20200719
+x86_64               randconfig-a006-20200719
+x86_64               randconfig-a001-20200719
+x86_64               randconfig-a003-20200719
+x86_64               randconfig-a004-20200719
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                                   rhel
+x86_64                                    lkp
+x86_64                              fedora-25
+
 ---
- drivers/staging/fsl-dpaa2/ethsw/ethsw.c | 21 +++++++++++++++++++--
- 1 file changed, 19 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-index c6885912c60b..19fc0401e261 100644
---- a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-+++ b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-@@ -979,10 +979,27 @@ static int port_vlans_add(struct net_device *netdev,
- 			  struct switchdev_trans *trans)
- {
- 	struct ethsw_port_priv *port_priv = netdev_priv(netdev);
--	int vid, err = 0;
-+	struct ethsw_core *ethsw = port_priv->ethsw_data;
-+	struct dpsw_attr *attr = &ethsw->sw_attr;
-+	int vid, err = 0, new_vlans = 0;
-+
-+	if (switchdev_trans_ph_prepare(trans)) {
-+		for (vid = vlan->vid_begin; vid <= vlan->vid_end; vid++)
-+			if (!port_priv->ethsw_data->vlans[vid])
-+				new_vlans++;
-+
-+		/* Check if there is space for a new VLAN */
-+		err = dpsw_get_attributes(ethsw->mc_io, 0, ethsw->dpsw_handle,
-+					  &ethsw->sw_attr);
-+		if (err) {
-+			netdev_err(netdev, "dpsw_get_attributes err %d\n", err);
-+			return err;
-+		}
-+		if (attr->max_vlans - attr->num_vlans < new_vlans)
-+			return -ENOSPC;
- 
--	if (switchdev_trans_ph_prepare(trans))
- 		return 0;
-+	}
- 
- 	for (vid = vlan->vid_begin; vid <= vlan->vid_end; vid++) {
- 		if (!port_priv->ethsw_data->vlans[vid]) {
--- 
-2.25.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
