@@ -2,45 +2,45 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9260228885
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Jul 2020 20:46:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0027322889C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Jul 2020 20:56:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DAF708820C;
-	Tue, 21 Jul 2020 18:46:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1FFA98821D;
+	Tue, 21 Jul 2020 18:56:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SDqYDyE+Qlve; Tue, 21 Jul 2020 18:46:30 +0000 (UTC)
+	with ESMTP id SyAtvH8fR3ZZ; Tue, 21 Jul 2020 18:56:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ED2598814F;
-	Tue, 21 Jul 2020 18:46:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A8ACC881EC;
+	Tue, 21 Jul 2020 18:56:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DFE3C1BF2B3
- for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 18:46:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 117291BF2B3
+ for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 18:56:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DC90F86B01
- for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 18:46:24 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0E17986B16
+ for <devel@linuxdriverproject.org>; Tue, 21 Jul 2020 18:56:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LlUTzVkz-Qya for <devel@linuxdriverproject.org>;
- Tue, 21 Jul 2020 18:46:23 +0000 (UTC)
+ with ESMTP id kgp07B-whbql for <devel@linuxdriverproject.org>;
+ Tue, 21 Jul 2020 18:56:43 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from smtp.al2klimov.de (smtp.al2klimov.de [78.46.175.9])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 819EA86AE2
- for <devel@driverdev.osuosl.org>; Tue, 21 Jul 2020 18:46:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C25C286B13
+ for <devel@driverdev.osuosl.org>; Tue, 21 Jul 2020 18:56:42 +0000 (UTC)
 Received: from authenticated-user (PRIMARY_HOSTNAME [PUBLIC_IP])
- by smtp.al2klimov.de (Postfix) with ESMTPA id 2B8A4BC148;
- Tue, 21 Jul 2020 18:46:19 +0000 (UTC)
+ by smtp.al2klimov.de (Postfix) with ESMTPA id 25D4DBC1AB;
+ Tue, 21 Jul 2020 18:56:39 +0000 (UTC)
 From: "Alexander A. Klimov" <grandmaster@al2klimov.de>
 To: abbotti@mev.co.uk, hsweeten@visionengravers.com,
  gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: comedi: amplc: Replace HTTP links with HTTPS ones
-Date: Tue, 21 Jul 2020 20:46:13 +0200
-Message-Id: <20200721184613.67596-1-grandmaster@al2klimov.de>
+Subject: [PATCH] staging: comedi: das: Replace HTTP links with HTTPS ones
+Date: Tue, 21 Jul 2020 20:56:33 +0200
+Message-Id: <20200721185633.67671-1-grandmaster@al2klimov.de>
 MIME-Version: 1.0
 X-Spamd-Bar: +++++
 Authentication-Results: smtp.al2klimov.de;
@@ -103,246 +103,98 @@ Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
  Impossible is nothing! :)
 
 
- drivers/staging/comedi/drivers/amplc_dio200.c        | 4 ++--
- drivers/staging/comedi/drivers/amplc_dio200.h        | 2 +-
- drivers/staging/comedi/drivers/amplc_dio200_common.c | 4 ++--
- drivers/staging/comedi/drivers/amplc_dio200_pci.c    | 4 ++--
- drivers/staging/comedi/drivers/amplc_pc236.c         | 4 ++--
- drivers/staging/comedi/drivers/amplc_pc236.h         | 2 +-
- drivers/staging/comedi/drivers/amplc_pc236_common.c  | 4 ++--
- drivers/staging/comedi/drivers/amplc_pc263.c         | 4 ++--
- drivers/staging/comedi/drivers/amplc_pci224.c        | 4 ++--
- drivers/staging/comedi/drivers/amplc_pci230.c        | 2 +-
- drivers/staging/comedi/drivers/amplc_pci236.c        | 4 ++--
- drivers/staging/comedi/drivers/amplc_pci263.c        | 4 ++--
- 12 files changed, 21 insertions(+), 21 deletions(-)
+ drivers/staging/comedi/drivers/das08.c     | 2 +-
+ drivers/staging/comedi/drivers/das08_isa.c | 2 +-
+ drivers/staging/comedi/drivers/das08_pci.c | 2 +-
+ drivers/staging/comedi/drivers/das16.c     | 2 +-
+ drivers/staging/comedi/drivers/das16m1.c   | 2 +-
+ drivers/staging/comedi/drivers/das1800.c   | 2 +-
+ drivers/staging/comedi/drivers/das800.c    | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/amplc_dio200.c b/drivers/staging/comedi/drivers/amplc_dio200.c
-index 26e63d64ffc6..fa19c9e7c56b 100644
---- a/drivers/staging/comedi/drivers/amplc_dio200.c
-+++ b/drivers/staging/comedi/drivers/amplc_dio200.c
-@@ -4,7 +4,7 @@
-  *
-  * Driver for Amplicon PC212E, PC214E, PC215E, PC218E, PC272E.
-  *
-- * Copyright (C) 2005-2013 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2005-2013 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 1998,2000 David A. Schleef <ds@schleef.org>
-@@ -260,6 +260,6 @@ static struct comedi_driver amplc_dio200_driver = {
- };
- module_comedi_driver(amplc_dio200_driver);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for Amplicon 200 Series ISA DIO boards");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/amplc_dio200.h b/drivers/staging/comedi/drivers/amplc_dio200.h
-index 1d81393be6df..745baaf940ee 100644
---- a/drivers/staging/comedi/drivers/amplc_dio200.h
-+++ b/drivers/staging/comedi/drivers/amplc_dio200.h
-@@ -5,7 +5,7 @@
-  * Header for amplc_dio200.c, amplc_dio200_common.c and
-  * amplc_dio200_pci.c.
-  *
-- * Copyright (C) 2005-2013 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2005-2013 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 1998,2000 David A. Schleef <ds@schleef.org>
-diff --git a/drivers/staging/comedi/drivers/amplc_dio200_common.c b/drivers/staging/comedi/drivers/amplc_dio200_common.c
-index 0b2f04b02ebc..a3454130d5f8 100644
---- a/drivers/staging/comedi/drivers/amplc_dio200_common.c
-+++ b/drivers/staging/comedi/drivers/amplc_dio200_common.c
-@@ -4,7 +4,7 @@
-  *
-  * Common support code for "amplc_dio200" and "amplc_dio200_pci".
-  *
-- * Copyright (C) 2005-2013 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2005-2013 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 1998,2000 David A. Schleef <ds@schleef.org>
-@@ -853,6 +853,6 @@ static void __exit amplc_dio200_common_exit(void)
+diff --git a/drivers/staging/comedi/drivers/das08.c b/drivers/staging/comedi/drivers/das08.c
+index 65e5f2e6c122..b50743c5b822 100644
+--- a/drivers/staging/comedi/drivers/das08.c
++++ b/drivers/staging/comedi/drivers/das08.c
+@@ -465,6 +465,6 @@ static void __exit das08_exit(void)
  }
- module_exit(amplc_dio200_common_exit);
+ module_exit(das08_exit);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi helper for amplc_dio200 and amplc_dio200_pci");
+ MODULE_DESCRIPTION("Comedi common DAS08 support module");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/amplc_dio200_pci.c b/drivers/staging/comedi/drivers/amplc_dio200_pci.c
-index 30d239731e0b..1bd7a42c8464 100644
---- a/drivers/staging/comedi/drivers/amplc_dio200_pci.c
-+++ b/drivers/staging/comedi/drivers/amplc_dio200_pci.c
-@@ -3,7 +3,7 @@
-  *
-  * Driver for Amplicon PCI215, PCI272, PCIe215, PCIe236, PCIe296.
-  *
-- * Copyright (C) 2005-2013 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2005-2013 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 1998,2000 David A. Schleef <ds@schleef.org>
-@@ -410,6 +410,6 @@ static struct pci_driver dio200_pci_pci_driver = {
+diff --git a/drivers/staging/comedi/drivers/das08_isa.c b/drivers/staging/comedi/drivers/das08_isa.c
+index b22a45bd21d1..8c4cfa821423 100644
+--- a/drivers/staging/comedi/drivers/das08_isa.c
++++ b/drivers/staging/comedi/drivers/das08_isa.c
+@@ -185,6 +185,6 @@ static struct comedi_driver das08_isa_driver = {
  };
- module_comedi_pci_driver(dio200_pci_comedi_driver, dio200_pci_pci_driver);
+ module_comedi_driver(das08_isa_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for Amplicon 200 Series PCI(e) DIO boards");
+ MODULE_DESCRIPTION("Comedi low-level driver");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/amplc_pc236.c b/drivers/staging/comedi/drivers/amplc_pc236.c
-index b7dd15f5ec63..c377af1d5246 100644
---- a/drivers/staging/comedi/drivers/amplc_pc236.c
-+++ b/drivers/staging/comedi/drivers/amplc_pc236.c
-@@ -3,7 +3,7 @@
-  * comedi/drivers/amplc_pc236.c
-  * Driver for Amplicon PC36AT DIO boards.
-  *
-- * Copyright (C) 2002 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2002 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 2000 David A. Schleef <ds@schleef.org>
-@@ -71,6 +71,6 @@ static struct comedi_driver amplc_pc236_driver = {
- 
- module_comedi_driver(amplc_pc236_driver);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for Amplicon PC36AT DIO boards");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/amplc_pc236.h b/drivers/staging/comedi/drivers/amplc_pc236.h
-index 45e933ee8735..7e72729f7492 100644
---- a/drivers/staging/comedi/drivers/amplc_pc236.h
-+++ b/drivers/staging/comedi/drivers/amplc_pc236.h
-@@ -3,7 +3,7 @@
-  * comedi/drivers/amplc_pc236.h
-  * Header for "amplc_pc236", "amplc_pci236" and "amplc_pc236_common".
-  *
-- * Copyright (C) 2002-2014 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2002-2014 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 2000 David A. Schleef <ds@schleef.org>
-diff --git a/drivers/staging/comedi/drivers/amplc_pc236_common.c b/drivers/staging/comedi/drivers/amplc_pc236_common.c
-index 01b90e4eca8a..043752663188 100644
---- a/drivers/staging/comedi/drivers/amplc_pc236_common.c
-+++ b/drivers/staging/comedi/drivers/amplc_pc236_common.c
-@@ -3,7 +3,7 @@
-  * comedi/drivers/amplc_pc236_common.c
-  * Common support code for "amplc_pc236" and "amplc_pci236".
-  *
-- * Copyright (C) 2002-2014 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2002-2014 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 2000 David A. Schleef <ds@schleef.org>
-@@ -186,6 +186,6 @@ static void __exit amplc_pc236_common_exit(void)
- }
- module_exit(amplc_pc236_common_exit);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi helper for amplc_pc236 and amplc_pci236");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/amplc_pc263.c b/drivers/staging/comedi/drivers/amplc_pc263.c
-index 84c989f12faf..68da6098ee84 100644
---- a/drivers/staging/comedi/drivers/amplc_pc263.c
-+++ b/drivers/staging/comedi/drivers/amplc_pc263.c
-@@ -2,7 +2,7 @@
- /*
-  * Driver for Amplicon PC263 relay board.
-  *
-- * Copyright (C) 2002 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2002 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 2000 David A. Schleef <ds@schleef.org>
-@@ -97,6 +97,6 @@ static struct comedi_driver amplc_pc263_driver = {
- 
- module_comedi_driver(amplc_pc263_driver);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for Amplicon PC263 relay board");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/amplc_pci224.c b/drivers/staging/comedi/drivers/amplc_pci224.c
-index 657b736ef46d..bcf6d61af863 100644
---- a/drivers/staging/comedi/drivers/amplc_pci224.c
-+++ b/drivers/staging/comedi/drivers/amplc_pci224.c
-@@ -3,7 +3,7 @@
-  * comedi/drivers/amplc_pci224.c
-  * Driver for Amplicon PCI224 and PCI234 AO boards.
-  *
-- * Copyright (C) 2005 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2005 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 1998,2000 David A. Schleef <ds@schleef.org>
-@@ -1138,6 +1138,6 @@ static struct pci_driver amplc_pci224_pci_driver = {
+diff --git a/drivers/staging/comedi/drivers/das08_pci.c b/drivers/staging/comedi/drivers/das08_pci.c
+index 7856fc13466a..1cd903336a4c 100644
+--- a/drivers/staging/comedi/drivers/das08_pci.c
++++ b/drivers/staging/comedi/drivers/das08_pci.c
+@@ -91,6 +91,6 @@ static struct pci_driver das08_pci_driver = {
  };
- module_comedi_pci_driver(amplc_pci224_driver, amplc_pci224_pci_driver);
+ module_comedi_pci_driver(das08_pci_comedi_driver, das08_pci_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for Amplicon PCI224 and PCI234 AO boards");
+ MODULE_DESCRIPTION("Comedi low-level driver");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/amplc_pci230.c b/drivers/staging/comedi/drivers/amplc_pci230.c
-index f7e673121864..8911dc2bd2c6 100644
---- a/drivers/staging/comedi/drivers/amplc_pci230.c
-+++ b/drivers/staging/comedi/drivers/amplc_pci230.c
-@@ -2570,6 +2570,6 @@ static struct pci_driver amplc_pci230_pci_driver = {
+diff --git a/drivers/staging/comedi/drivers/das16.c b/drivers/staging/comedi/drivers/das16.c
+index 81eb51b1be25..4ac2622b0fac 100644
+--- a/drivers/staging/comedi/drivers/das16.c
++++ b/drivers/staging/comedi/drivers/das16.c
+@@ -1195,6 +1195,6 @@ static struct comedi_driver das16_driver = {
  };
- module_comedi_pci_driver(amplc_pci230_driver, amplc_pci230_pci_driver);
+ module_comedi_driver(das16_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for Amplicon PCI230(+) and PCI260(+)");
+ MODULE_DESCRIPTION("Comedi driver for DAS16 compatible boards");
  MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/amplc_pci236.c b/drivers/staging/comedi/drivers/amplc_pci236.c
-index 86ea876a11be..e7f6fa4d101a 100644
---- a/drivers/staging/comedi/drivers/amplc_pci236.c
-+++ b/drivers/staging/comedi/drivers/amplc_pci236.c
-@@ -3,7 +3,7 @@
-  * comedi/drivers/amplc_pci236.c
-  * Driver for Amplicon PCI236 DIO boards.
-  *
-- * Copyright (C) 2002-2014 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2002-2014 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 2000 David A. Schleef <ds@schleef.org>
-@@ -139,6 +139,6 @@ static struct pci_driver amplc_pci236_pci_driver = {
- 
- module_comedi_pci_driver(amplc_pci236_driver, amplc_pci236_pci_driver);
- 
--MODULE_AUTHOR("Comedi http://www.comedi.org");
-+MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for Amplicon PCI236 DIO boards");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/staging/comedi/drivers/amplc_pci263.c b/drivers/staging/comedi/drivers/amplc_pci263.c
-index c3efe14020a8..9217973f1141 100644
---- a/drivers/staging/comedi/drivers/amplc_pci263.c
-+++ b/drivers/staging/comedi/drivers/amplc_pci263.c
-@@ -2,7 +2,7 @@
- /*
-  * Driver for Amplicon PCI263 relay board.
-  *
-- * Copyright (C) 2002 MEV Ltd. <http://www.mev.co.uk/>
-+ * Copyright (C) 2002 MEV Ltd. <https://www.mev.co.uk/>
-  *
-  * COMEDI - Linux Control and Measurement Device Interface
-  * Copyright (C) 2000 David A. Schleef <ds@schleef.org>
-@@ -106,6 +106,6 @@ static struct pci_driver amplc_pci263_pci_driver = {
+diff --git a/drivers/staging/comedi/drivers/das16m1.c b/drivers/staging/comedi/drivers/das16m1.c
+index 4e36377b592a..75f3dbbe97ac 100644
+--- a/drivers/staging/comedi/drivers/das16m1.c
++++ b/drivers/staging/comedi/drivers/das16m1.c
+@@ -617,6 +617,6 @@ static struct comedi_driver das16m1_driver = {
  };
- module_comedi_pci_driver(amplc_pci263_driver, amplc_pci263_pci_driver);
+ module_comedi_driver(das16m1_driver);
  
 -MODULE_AUTHOR("Comedi http://www.comedi.org");
 +MODULE_AUTHOR("Comedi https://www.comedi.org");
- MODULE_DESCRIPTION("Comedi driver for Amplicon PCI263 relay board");
+ MODULE_DESCRIPTION("Comedi driver for CIO-DAS16/M1 ISA cards");
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/staging/comedi/drivers/das1800.c b/drivers/staging/comedi/drivers/das1800.c
+index f16aa7e9f4f3..f50891a6ee7d 100644
+--- a/drivers/staging/comedi/drivers/das1800.c
++++ b/drivers/staging/comedi/drivers/das1800.c
+@@ -1359,6 +1359,6 @@ static struct comedi_driver das1800_driver = {
+ };
+ module_comedi_driver(das1800_driver);
+ 
+-MODULE_AUTHOR("Comedi http://www.comedi.org");
++MODULE_AUTHOR("Comedi https://www.comedi.org");
+ MODULE_DESCRIPTION("Comedi driver for DAS1800 compatible ISA boards");
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/staging/comedi/drivers/das800.c b/drivers/staging/comedi/drivers/das800.c
+index 8cf09ef3012f..4ea100ff6930 100644
+--- a/drivers/staging/comedi/drivers/das800.c
++++ b/drivers/staging/comedi/drivers/das800.c
+@@ -739,6 +739,6 @@ static struct comedi_driver driver_das800 = {
+ };
+ module_comedi_driver(driver_das800);
+ 
+-MODULE_AUTHOR("Comedi http://www.comedi.org");
++MODULE_AUTHOR("Comedi https://www.comedi.org");
+ MODULE_DESCRIPTION("Comedi low-level driver");
  MODULE_LICENSE("GPL");
 -- 
 2.27.0
