@@ -1,59 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70EC922A0D2
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 22:35:48 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7FD9B22A275
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Jul 2020 00:38:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 93A9D86F41;
-	Wed, 22 Jul 2020 20:35:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E881B88A6E;
+	Wed, 22 Jul 2020 22:37:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aQNL3Ue4rANq; Wed, 22 Jul 2020 20:35:42 +0000 (UTC)
+	with ESMTP id cnwPPURClu49; Wed, 22 Jul 2020 22:37:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EE36C86F28;
-	Wed, 22 Jul 2020 20:35:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 48AD588A52;
+	Wed, 22 Jul 2020 22:37:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C55DB1BF40D
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 20:35:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D5D551BF317
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 22:37:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B6C6E888AC
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 20:35:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C5C4E234AA
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 22:37:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ucqlctwb8C2c for <devel@linuxdriverproject.org>;
- Wed, 22 Jul 2020 20:35:32 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs48.siol.net [185.57.226.239])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3E7E5888A9
- for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 20:35:32 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Zimbra) with ESMTP id 232885249BF;
- Wed, 22 Jul 2020 22:35:29 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at psrvmta12.zcs-production.pri
-Received: from mail.siol.net ([127.0.0.1])
- by localhost (psrvmta12.zcs-production.pri [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id eehKRZrSUmh6; Wed, 22 Jul 2020 22:35:26 +0200 (CEST)
-Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Zimbra) with ESMTPS id B38AE524DF7;
- Wed, 22 Jul 2020 22:35:26 +0200 (CEST)
-Received: from kista.localdomain (cpe-194-152-20-232.static.triera.net
- [194.152.20.232]) (Authenticated sender: 031275009)
- by mail.siol.net (Zimbra) with ESMTPSA id 66DD25249BF;
- Wed, 22 Jul 2020 22:35:25 +0200 (CEST)
-From: Jernej Skrabec <jernej.skrabec@siol.net>
-To: mripard@kernel.org,
-	paul.kocialkowski@bootlin.com
-Subject: [PATCH v2] media: cedrus: Add support for VP8 decoding
-Date: Wed, 22 Jul 2020 22:39:09 +0200
-Message-Id: <20200722203909.42818-1-jernej.skrabec@siol.net>
-X-Mailer: git-send-email 2.27.0
+ with ESMTP id srCCm4vrxIzV for <devel@linuxdriverproject.org>;
+ Wed, 22 Jul 2020 22:37:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 58848203A6
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 22:37:36 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id w3so3448721wmi.4
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 15:37:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=EPLD4KmylubrvZlPrYeRzhNTSF5F9d9HqFUUOBroNlE=;
+ b=Z3iVN1tnN5ODnk9U9N/VZ2SSEyRhDH7E0XvoxRkqFtGSg/51hiAPJBiTB02nmKPsRa
+ t+Yh7rnZHJVRV+MCRG9V8FG9AC8TLbCG/wiYZFrQH8wCKHe54h8mpHICvzx2JqDpqSIm
+ HmHQ9By0umRvXfDgWpq8vsgfs9z1qWME109WE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=EPLD4KmylubrvZlPrYeRzhNTSF5F9d9HqFUUOBroNlE=;
+ b=oOOU2nm+BuqfTpehypRjzBNDbUNu/eFcK31Ie1nFh4ZSpNQctP3IW6Vv1d6917Jko8
+ DZDFkNH509Z5SUYjlkFK4hX7kxxLtLX3fiR1iuVI/BT70uK4OMIwJhoru/xh/tOBy1Rn
+ 956T31L+IPACwzGHkjNthqrez07yTFnrFyHuxXW9F4i9fcIs9nn74I4VTYqJK2a9Q6ac
+ Grnogp8Vlanbc/RTbDMO8dZcT4VTVh3tHqTISfWG+JmZOtx9SyxE9mw08Vb2KpJA8PBS
+ frgkZ/RB2UQc18VTSXzfVKdVeESlDsxVSVe1Cq3D1bmGLN/QF42lPkzN1Gy8VTVISrCm
+ bKuA==
+X-Gm-Message-State: AOAM530Pjlltcz/15S1nDqLU8Xp5c8uVq85OUAoVVNlvOqgReM15BcCI
+ cV71JkI0oQQf09vQdwcR7nIKoWY5MdD8zc3mnfm2Fg==
+X-Google-Smtp-Source: ABdhPJzeCxyLXOBjX8ECCtolNK2phG5un51oUmDQuJSuY/r5z3r11CHJ7w6kqOJo1D8bXdMgsi0B/ftfH8LeFBHDF70=
+X-Received: by 2002:a1c:5453:: with SMTP id p19mr1433194wmi.41.1595457453349; 
+ Wed, 22 Jul 2020 15:37:33 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200715143530.9702-1-james.quinlan@broadcom.com>
+ <20200715143530.9702-9-james.quinlan@broadcom.com>
+ <20200721125114.GA32139@lst.de>
+In-Reply-To: <20200721125114.GA32139@lst.de>
+From: Jim Quinlan <james.quinlan@broadcom.com>
+Date: Wed, 22 Jul 2020 18:37:20 -0400
+Message-ID: <CA+-6iNz4gqwi6BgeNwiR-nfLgYQa-8U4N_Sn_kb6Hn3J1UxUAQ@mail.gmail.com>
+Subject: Re: [PATCH v8 08/12] device core: Introduce DMA range map,
+ supplanting dma_pfn_offset
+To: Christoph Hellwig <hch@lst.de>, Robin Murphy <robin.murphy@arm.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,1021 +79,1895 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, wens@csie.org, ezequiel@vanguardiasur.com.ar,
- hverkuil-cisco@xs4all.nl, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Rich Felker <dalias@libc.org>,
+ "open list:SUPERH" <linux-sh@vger.kernel.org>, David Airlie <airlied@linux.ie>,
+ "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
+ <linux-pci@vger.kernel.org>, Hanjun Guo <guohanjun@huawei.com>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Julien Grall <julien.grall@arm.com>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ "H. Peter Anvin" <hpa@zytor.com>, Will Deacon <will@kernel.org>,
+ Dan Williams <dan.j.williams@intel.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ Russell King <linux@armlinux.org.uk>,
+ "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>,
+ "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
+ Ohad Ben-Cohen <ohad@wizery.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
+ <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Suzuki K Poulose <suzuki.poulose@arm.com>, Maxime Ripard <mripard@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
+ Yong Deng <yong.deng@magewell.com>, Santosh Shilimkar <ssantosh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
+ Saravana Kannan <saravanak@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Oliver Neukum <oneukum@suse.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ open list <linux-kernel@vger.kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
+ Stefano Stabellini <sstabellini@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-VP8 in Cedrus shares same engine as H264.
+On Tue, Jul 21, 2020 at 8:51 AM Christoph Hellwig <hch@lst.de> wrote:
+>
+> On Wed, Jul 15, 2020 at 10:35:11AM -0400, Jim Quinlan wrote:
+> > The new field 'dma_range_map' in struct device is used to facilitate the
+> > use of single or multiple offsets between mapping regions of cpu addrs and
+> > dma addrs.  It subsumes the role of "dev->dma_pfn_offset" which was only
+> > capable of holding a single uniform offset and had no region bounds
+> > checking.
+> >
+> > The function of_dma_get_range() has been modified so that it takes a single
+> > argument -- the device node -- and returns a map, NULL, or an error code.
+> > The map is an array that holds the information regarding the DMA regions.
+> > Each range entry contains the address offset, the cpu_start address, the
+> > dma_start address, and the size of the region.
+> >
+> > of_dma_configure() is the typical manner to set range offsets but there are
+> > a number of ad hoc assignments to "dev->dma_pfn_offset" in the kernel
+> > driver code.  These cases now invoke the function
+> > dma_attach_offset_range(dev, cpu_addr, dma_addr, size).
+>
+> So my main higher level issue here is the dma_attach_offset_range
+> function.  I think it should keep the old functionality and just
+> set a global range from 0 to (phys_addr_t)-1, and bail out if there
+> are DMA ranges already:
+>
+>         int dma_set_global_offset(struct device *dev, u64 offset);
 
-Note that it seems necessary to call bitstream parsing functions,
-to parse frame header, otherwise decoded image is garbage. This is
-contrary to what is driver supposed to do. However, values are not
-really used, so this might be acceptable. It's possible that bitstream
-parsing functions set some internal VPU state, which is later necessary
-for proper decoding. Biggest suspect is "VP8 probs update" trigger.
+Hi Christoph,
 
-Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
----
-Changes in v2:
-- rebased on top of current linux-media master branch
+I had it this way in [V1...V5] but Robin requested that for V6 I
+should change this function to
+    o add bounds to the call
+    o if there is a mapping already, check if what is requested is
+already covered and return success.
 
- drivers/staging/media/sunxi/cedrus/Makefile   |   3 +-
- drivers/staging/media/sunxi/cedrus/cedrus.c   |   8 +
- drivers/staging/media/sunxi/cedrus/cedrus.h   |  15 +
- .../staging/media/sunxi/cedrus/cedrus_dec.c   |   5 +
- .../staging/media/sunxi/cedrus/cedrus_hw.c    |   1 +
- .../staging/media/sunxi/cedrus/cedrus_regs.h  |  80 ++
- .../staging/media/sunxi/cedrus/cedrus_video.c |   9 +
- .../staging/media/sunxi/cedrus/cedrus_vp8.c   | 699 ++++++++++++++++++
- 8 files changed, 819 insertions(+), 1 deletion(-)
- create mode 100644 drivers/staging/media/sunxi/cedrus/cedrus_vp8.c
+Can you and Robin please discuss this and let me know which way to move forward?
 
-diff --git a/drivers/staging/media/sunxi/cedrus/Makefile b/drivers/staging/media/sunxi/cedrus/Makefile
-index 1bce49d3e7e2..a647b3690bf8 100644
---- a/drivers/staging/media/sunxi/cedrus/Makefile
-+++ b/drivers/staging/media/sunxi/cedrus/Makefile
-@@ -2,4 +2,5 @@
- obj-$(CONFIG_VIDEO_SUNXI_CEDRUS) += sunxi-cedrus.o
- 
- sunxi-cedrus-y = cedrus.o cedrus_video.o cedrus_hw.o cedrus_dec.o \
--		 cedrus_mpeg2.o cedrus_h264.o cedrus_h265.o
-+		 cedrus_mpeg2.o cedrus_h264.o cedrus_h265.o \
-+		 cedrus_vp8.o
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
-index bc27f9430eeb..b2f5f03ad4a3 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
-@@ -135,6 +135,13 @@ static const struct cedrus_control cedrus_controls[] = {
- 		.codec		= CEDRUS_CODEC_H265,
- 		.required	= false,
- 	},
-+	{
-+		.cfg = {
-+			.id		= V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER,
-+		},
-+		.codec		= CEDRUS_CODEC_VP8,
-+		.required	= true,
-+	},
- };
- 
- #define CEDRUS_CONTROLS_COUNT	ARRAY_SIZE(cedrus_controls)
-@@ -381,6 +388,7 @@ static int cedrus_probe(struct platform_device *pdev)
- 	dev->dec_ops[CEDRUS_CODEC_MPEG2] = &cedrus_dec_ops_mpeg2;
- 	dev->dec_ops[CEDRUS_CODEC_H264] = &cedrus_dec_ops_h264;
- 	dev->dec_ops[CEDRUS_CODEC_H265] = &cedrus_dec_ops_h265;
-+	dev->dec_ops[CEDRUS_CODEC_VP8] = &cedrus_dec_ops_vp8;
- 
- 	mutex_init(&dev->dev_mutex);
- 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h b/drivers/staging/media/sunxi/cedrus/cedrus.h
-index 96765555ab8a..9f4605afa0f4 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus.h
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
-@@ -35,6 +35,7 @@ enum cedrus_codec {
- 	CEDRUS_CODEC_MPEG2,
- 	CEDRUS_CODEC_H264,
- 	CEDRUS_CODEC_H265,
-+	CEDRUS_CODEC_VP8,
- 	CEDRUS_CODEC_LAST,
- };
- 
-@@ -75,6 +76,10 @@ struct cedrus_h265_run {
- 	const struct v4l2_ctrl_hevc_slice_params	*slice_params;
- };
- 
-+struct cedrus_vp8_run {
-+	const struct v4l2_ctrl_vp8_frame_header		*slice_params;
-+};
-+
- struct cedrus_run {
- 	struct vb2_v4l2_buffer	*src;
- 	struct vb2_v4l2_buffer	*dst;
-@@ -83,6 +88,7 @@ struct cedrus_run {
- 		struct cedrus_h264_run	h264;
- 		struct cedrus_mpeg2_run	mpeg2;
- 		struct cedrus_h265_run	h265;
-+		struct cedrus_vp8_run	vp8;
- 	};
- };
- 
-@@ -134,6 +140,14 @@ struct cedrus_ctx {
- 			void		*neighbor_info_buf;
- 			dma_addr_t	neighbor_info_buf_addr;
- 		} h265;
-+		struct {
-+			unsigned int	last_frame_p_type;
-+			unsigned int	last_filter_type;
-+			unsigned int	last_sharpness_level;
-+
-+			u8		*entropy_probs_buf;
-+			dma_addr_t	entropy_probs_buf_dma;
-+		} vp8;
- 	} codec;
- };
- 
-@@ -180,6 +194,7 @@ struct cedrus_dev {
- extern struct cedrus_dec_ops cedrus_dec_ops_mpeg2;
- extern struct cedrus_dec_ops cedrus_dec_ops_h264;
- extern struct cedrus_dec_ops cedrus_dec_ops_h265;
-+extern struct cedrus_dec_ops cedrus_dec_ops_vp8;
- 
- static inline void cedrus_write(struct cedrus_dev *dev, u32 reg, u32 val)
- {
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-index 58c48e4fdfe9..47c079f14c74 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-@@ -68,6 +68,11 @@ void cedrus_device_run(void *priv)
- 			V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS);
- 		break;
- 
-+	case V4L2_PIX_FMT_VP8_FRAME:
-+		run.vp8.slice_params = cedrus_find_control_data(ctx,
-+			V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER);
-+		break;
-+
- 	default:
- 		break;
- 	}
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-index 1744e6fcc999..cb8cabfc7cee 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-@@ -48,6 +48,7 @@ int cedrus_engine_enable(struct cedrus_ctx *ctx, enum cedrus_codec codec)
- 		break;
- 
- 	case CEDRUS_CODEC_H264:
-+	case CEDRUS_CODEC_VP8:
- 		reg |= VE_MODE_DEC_H264;
- 		break;
- 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_regs.h b/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
-index 66b152f18d17..7718c561823f 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_regs.h
-@@ -546,6 +546,7 @@
- #define VE_H264_SHS_QP_SCALING_MATRIX_DEFAULT	BIT(24)
- 
- #define VE_H264_CTRL			0x220
-+#define VE_H264_CTRL_VP8			BIT(29)
- #define VE_H264_CTRL_VLD_DATA_REQ_INT		BIT(2)
- #define VE_H264_CTRL_DECODE_ERR_INT		BIT(1)
- #define VE_H264_CTRL_SLICE_DECODE_INT		BIT(0)
-@@ -555,7 +556,12 @@
- 					 VE_H264_CTRL_SLICE_DECODE_INT)
- 
- #define VE_H264_TRIGGER_TYPE		0x224
-+#define VE_H264_TRIGGER_TYPE_PROBABILITY(x)	SHIFT_AND_MASK_BITS(x, 31, 24)
-+#define VE_H264_TRIGGER_TYPE_BIN_LENS(x)	SHIFT_AND_MASK_BITS((x) - 1, 18, 16)
- #define VE_H264_TRIGGER_TYPE_N_BITS(x)		(((x) & 0x3f) << 8)
-+#define VE_H264_TRIGGER_TYPE_VP8_GET_BITS	(15 << 0)
-+#define VE_H264_TRIGGER_TYPE_VP8_UPDATE_COEF	(14 << 0)
-+#define VE_H264_TRIGGER_TYPE_VP8_SLICE_DECODE	(10 << 0)
- #define VE_H264_TRIGGER_TYPE_AVC_SLICE_DECODE	(8 << 0)
- #define VE_H264_TRIGGER_TYPE_INIT_SWDEC		(7 << 0)
- #define VE_H264_TRIGGER_TYPE_FLUSH_BITS		(3 << 0)
-@@ -565,6 +571,7 @@
- #define VE_H264_STATUS_DECODE_ERR_INT		VE_H264_CTRL_DECODE_ERR_INT
- #define VE_H264_STATUS_SLICE_DECODE_INT		VE_H264_CTRL_SLICE_DECODE_INT
- #define VE_H264_STATUS_VLD_BUSY			BIT(8)
-+#define VE_H264_STATUS_VP8_UPPROB_BUSY		BIT(17)
- 
- #define VE_H264_STATUS_INT_MASK			VE_H264_CTRL_INT_MASK
- 
-@@ -583,10 +590,83 @@
- #define VE_H264_OUTPUT_FRAME_IDX	0x24c
- #define VE_H264_EXTRA_BUFFER1		0x250
- #define VE_H264_EXTRA_BUFFER2		0x254
-+#define VE_H264_MB_ADDR			0x260
-+#define VE_H264_ERROR_CASE		0x2b8
- #define VE_H264_BASIC_BITS		0x2dc
- #define VE_AVC_SRAM_PORT_OFFSET		0x2e0
- #define VE_AVC_SRAM_PORT_DATA		0x2e4
- 
-+#define VE_VP8_PPS			0x214
-+#define VE_VP8_PPS_PIC_TYPE_P_FRAME		BIT(31)
-+#define VE_VP8_PPS_LAST_SHARPNESS_LEVEL(v)	SHIFT_AND_MASK_BITS(v, 30, 28)
-+#define VE_VP8_PPS_LAST_PIC_TYPE_P_FRAME	BIT(27)
-+#define VE_VP8_PPS_ALTREF_SIGN_BIAS		BIT(26)
-+#define VE_VP8_PPS_GOLDEN_SIGN_BIAS		BIT(25)
-+#define VE_VP8_PPS_RELOAD_ENTROPY_PROBS		BIT(24)
-+#define VE_VP8_PPS_REFRESH_ENTROPY_PROBS	BIT(23)
-+#define VE_VP8_PPS_MB_NO_COEFF_SKIP		BIT(22)
-+#define VE_VP8_PPS_TOKEN_PARTITION(v)		SHIFT_AND_MASK_BITS(v, 21, 20)
-+#define VE_VP8_PPS_MODE_REF_LF_DELTA_UPDATE	BIT(19)
-+#define VE_VP8_PPS_MODE_REF_LF_DELTA_ENABLE	BIT(18)
-+#define VE_VP8_PPS_LOOP_FILTER_LEVEL(v)		SHIFT_AND_MASK_BITS(v, 17, 12)
-+#define VE_VP8_PPS_LOOP_FILTER_SIMPLE		BIT(11)
-+#define VE_VP8_PPS_SHARPNESS_LEVEL(v)		SHIFT_AND_MASK_BITS(v, 10, 8)
-+#define VE_VP8_PPS_LAST_LOOP_FILTER_SIMPLE	BIT(7)
-+#define VE_VP8_PPS_SEGMENTATION_ENABLE		BIT(6)
-+#define VE_VP8_PPS_MB_SEGMENT_ABS_DELTA		BIT(5)
-+#define VE_VP8_PPS_UPDATE_MB_SEGMENTATION_MAP	BIT(4)
-+#define VE_VP8_PPS_FULL_PIXEL			BIT(3)
-+#define VE_VP8_PPS_BILINEAR_MC_FILTER		BIT(2)
-+#define VE_VP8_PPS_FILTER_TYPE_SIMPLE		BIT(1)
-+#define VE_VP8_PPS_LPF_DISABLE			BIT(0)
-+
-+#define VE_VP8_QP_INDEX_DELTA		0x218
-+#define VE_VP8_QP_INDEX_DELTA_UVAC(v)		SHIFT_AND_MASK_BITS(v, 31, 27)
-+#define VE_VP8_QP_INDEX_DELTA_UVDC(v)		SHIFT_AND_MASK_BITS(v, 26, 22)
-+#define VE_VP8_QP_INDEX_DELTA_Y2AC(v)		SHIFT_AND_MASK_BITS(v, 21, 17)
-+#define VE_VP8_QP_INDEX_DELTA_Y2DC(v)		SHIFT_AND_MASK_BITS(v, 16, 12)
-+#define VE_VP8_QP_INDEX_DELTA_Y1DC(v)		SHIFT_AND_MASK_BITS(v, 11, 7)
-+#define VE_VP8_QP_INDEX_DELTA_BASE_QINDEX(v)	SHIFT_AND_MASK_BITS(v, 6, 0)
-+
-+#define VE_VP8_PART_SIZE_OFFSET		0x21c
-+#define VE_VP8_ENTROPY_PROBS_ADDR	0x250
-+#define VE_VP8_FIRST_DATA_PART_LEN	0x254
-+
-+#define VE_VP8_FSIZE			0x258
-+#define VE_VP8_FSIZE_WIDTH(w) \
-+	SHIFT_AND_MASK_BITS(DIV_ROUND_UP(w, 16), 15, 8)
-+#define VE_VP8_FSIZE_HEIGHT(h) \
-+	SHIFT_AND_MASK_BITS(DIV_ROUND_UP(h, 16), 7, 0)
-+
-+#define VE_VP8_PICSIZE			0x25c
-+#define VE_VP8_PICSIZE_WIDTH(w)			SHIFT_AND_MASK_BITS(w, 27, 16)
-+#define VE_VP8_PICSIZE_HEIGHT(h)		SHIFT_AND_MASK_BITS(h, 11, 0)
-+
-+#define VE_VP8_REC_LUMA			0x2ac
-+#define VE_VP8_FWD_LUMA			0x2b0
-+#define VE_VP8_BWD_LUMA			0x2b4
-+#define VE_VP8_REC_CHROMA		0x2d0
-+#define VE_VP8_FWD_CHROMA		0x2d4
-+#define VE_VP8_BWD_CHROMA		0x2d8
-+#define VE_VP8_ALT_LUMA			0x2e8
-+#define VE_VP8_ALT_CHROMA		0x2ec
-+
-+#define VE_VP8_SEGMENT_FEAT_MB_LV0	0x2f0
-+#define VE_VP8_SEGMENT_FEAT_MB_LV1	0x2f4
-+
-+#define VE_VP8_SEGMENT3(v)			SHIFT_AND_MASK_BITS(v, 31, 24)
-+#define VE_VP8_SEGMENT2(v)			SHIFT_AND_MASK_BITS(v, 23, 16)
-+#define VE_VP8_SEGMENT1(v)			SHIFT_AND_MASK_BITS(v, 15, 8)
-+#define VE_VP8_SEGMENT0(v)			SHIFT_AND_MASK_BITS(v, 7, 0)
-+
-+#define VE_VP8_REF_LF_DELTA		0x2f8
-+#define VE_VP8_MODE_LF_DELTA		0x2fc
-+
-+#define VE_VP8_LF_DELTA3(v)			SHIFT_AND_MASK_BITS(v, 30, 24)
-+#define VE_VP8_LF_DELTA2(v)			SHIFT_AND_MASK_BITS(v, 22, 16)
-+#define VE_VP8_LF_DELTA1(v)			SHIFT_AND_MASK_BITS(v, 14, 8)
-+#define VE_VP8_LF_DELTA0(v)			SHIFT_AND_MASK_BITS(v, 6, 0)
-+
- #define VE_ISP_INPUT_SIZE		0xa00
- #define VE_ISP_INPUT_STRIDE		0xa04
- #define VE_ISP_CTRL			0xa08
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-index 16d82309e7b6..0212054484dd 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
-@@ -48,6 +48,10 @@ static struct cedrus_format cedrus_formats[] = {
- 		.directions	= CEDRUS_DECODE_SRC,
- 		.capabilities	= CEDRUS_CAPABILITY_H265_DEC,
- 	},
-+	{
-+		.pixelformat	= V4L2_PIX_FMT_VP8_FRAME,
-+		.directions	= CEDRUS_DECODE_SRC,
-+	},
- 	{
- 		.pixelformat	= V4L2_PIX_FMT_SUNXI_TILED_NV12,
- 		.directions	= CEDRUS_DECODE_DST,
-@@ -110,6 +114,7 @@ void cedrus_prepare_format(struct v4l2_pix_format *pix_fmt)
- 	case V4L2_PIX_FMT_MPEG2_SLICE:
- 	case V4L2_PIX_FMT_H264_SLICE:
- 	case V4L2_PIX_FMT_HEVC_SLICE:
-+	case V4L2_PIX_FMT_VP8_FRAME:
- 		/* Zero bytes per line for encoded source. */
- 		bytesperline = 0;
- 		/* Choose some minimum size since this can't be 0 */
-@@ -448,6 +453,10 @@ static int cedrus_start_streaming(struct vb2_queue *vq, unsigned int count)
- 		ctx->current_codec = CEDRUS_CODEC_H265;
- 		break;
- 
-+	case V4L2_PIX_FMT_VP8_FRAME:
-+		ctx->current_codec = CEDRUS_CODEC_VP8;
-+		break;
-+
- 	default:
- 		return -EINVAL;
- 	}
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_vp8.c b/drivers/staging/media/sunxi/cedrus/cedrus_vp8.c
-new file mode 100644
-index 000000000000..93beffd07c35
---- /dev/null
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_vp8.c
-@@ -0,0 +1,699 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Cedrus VPU driver
-+ *
-+ * Copyright (c) 2019 Jernej Skrabec <jernej.skrabec@siol.net>
-+ */
-+
-+#include <linux/delay.h>
-+#include <linux/types.h>
-+
-+#include <media/videobuf2-dma-contig.h>
-+
-+#include "cedrus.h"
-+#include "cedrus_hw.h"
-+#include "cedrus_regs.h"
-+
-+#define CEDRUS_ENTROPY_PROBS_SIZE 0x2400
-+#define VP8_PROB_HALF 128
-+
-+static const u8 prob_table_init[] = {
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xB0, 0xF6, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xDF, 0xF1, 0xFC, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xF9, 0xFD, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xF4, 0xFC, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xEA, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xF6, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xEF, 0xFD, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFE, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xF8, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFB, 0xFF, 0xFE, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFD, 0xFE, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFB, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFE, 0xFD, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFA, 0xFF, 0xFE, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xD9, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xE1, 0xFC, 0xF1, 0xFD, 0xFF, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xEA, 0xFA, 0xF1, 0xFA, 0xFD, 0xFF, 0xFD, 0xFE,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xDF, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xEE, 0xFD, 0xFE, 0xFE,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xF8, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF9, 0xFE, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFD, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xF7, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFD, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFC, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFD, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFE, 0xFD, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFA, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xBA, 0xFB, 0xFA, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xEA, 0xFB, 0xF4, 0xFE,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFB, 0xFB, 0xF3, 0xFD, 0xFE, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFD, 0xFE, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xEC, 0xFD, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFB, 0xFD, 0xFD, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFE, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFE, 0xFE, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xF8, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFA, 0xFE, 0xFC, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF8, 0xFE, 0xF9, 0xFD,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFD, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF6, 0xFD, 0xFD, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFC, 0xFE, 0xFB, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFE, 0xFC, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xF8, 0xFE, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFD, 0xFF, 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFB, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xF5, 0xFB, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFD, 0xFD, 0xFE, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFB, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFC, 0xFD, 0xFE, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFC, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xF9, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFA, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xFF, 0xFF,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x91, 0x9C, 0xA3, 0x80,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6E, 0x6F, 0x96, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x78, 0x5A, 0x4F, 0x85, 0x57, 0x55, 0x50, 0x6F,
-+	0x97, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x93, 0x88, 0x12, 0x00, 0x6A, 0x91, 0x01, 0x00, 0xB3, 0x79, 0x01, 0x00,
-+	0xDF, 0x01, 0x22, 0x00, 0xD0, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x01, 0x01, 0x8F,
-+	0x0E, 0x12, 0x0E, 0x6B, 0x87, 0x40, 0x39, 0x44, 0x3C, 0x38, 0x80, 0x41,
-+	0x9F, 0x86, 0x80, 0x22, 0xEA, 0xBC, 0x80, 0x1C, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x84, 0x02, 0x04, 0x06, 0x80, 0x81, 0x82, 0x83, 0x80, 0x02, 0x04, 0x06,
-+	0x81, 0x82, 0x83, 0x84, 0x80, 0x02, 0x81, 0x04, 0x82, 0x83, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x08,
-+	0x04, 0x06, 0x80, 0x81, 0x82, 0x83, 0x0A, 0x0C, 0x84, 0x85, 0x86, 0x87,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x08, 0x04, 0x06, 0x80, 0x81,
-+	0x82, 0x83, 0x0A, 0x0C, 0x84, 0x85, 0x86, 0x87, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x83, 0x02, 0x82, 0x04, 0x80, 0x81, 0x00, 0x00, 0x80, 0x02, 0x81, 0x04,
-+	0x82, 0x06, 0x08, 0x0C, 0x83, 0x0A, 0x85, 0x86, 0x84, 0x0E, 0x87, 0x10,
-+	0x88, 0x89, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x8A, 0x02, 0x8B, 0x04, 0x8C, 0x8D, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x87, 0x02, 0x85, 0x04, 0x86, 0x06, 0x88, 0x89,
-+};
-+
-+static const u8 vp8_mv_update_prob[2][19] = {
-+	{ 237, 246, 253, 253, 254, 254, 254, 254, 254,
-+	  254, 254, 254, 254, 254, 250, 250, 252, 254, 254 },
-+	{ 231, 243, 245, 253, 254, 254, 254, 254, 254,
-+	  254, 254, 254, 254, 254, 251, 251, 254, 254, 254 }
-+};
-+
-+static uint8_t read_bits(struct cedrus_dev *dev, unsigned int bits_count,
-+			 unsigned int probability)
-+{
-+	cedrus_write(dev, VE_H264_TRIGGER_TYPE,
-+		     VE_H264_TRIGGER_TYPE_VP8_GET_BITS |
-+		     VE_H264_TRIGGER_TYPE_BIN_LENS(bits_count) |
-+		     VE_H264_TRIGGER_TYPE_PROBABILITY(probability));
-+
-+	while (cedrus_read(dev, VE_H264_STATUS) & VE_H264_STATUS_VLD_BUSY)
-+		;
-+
-+	return cedrus_read(dev, VE_H264_BASIC_BITS);
-+}
-+
-+static void get_delta_q(struct cedrus_dev *dev)
-+{
-+	if (read_bits(dev, 1, VP8_PROB_HALF)) {
-+		read_bits(dev, 4, VP8_PROB_HALF);
-+		read_bits(dev, 1, VP8_PROB_HALF);
-+	}
-+}
-+
-+static void process_segmentation_info(struct cedrus_dev *dev)
-+{
-+	int update = read_bits(dev, 1, VP8_PROB_HALF);
-+	int i;
-+
-+	if (read_bits(dev, 1, VP8_PROB_HALF)) {
-+		read_bits(dev, 1, VP8_PROB_HALF);
-+
-+		for (i = 0; i < 4; i++)
-+			if (read_bits(dev, 1, VP8_PROB_HALF)) {
-+				read_bits(dev, 7, VP8_PROB_HALF);
-+				read_bits(dev, 1, VP8_PROB_HALF);
-+			}
-+
-+		for (i = 0; i < 4; i++)
-+			if (read_bits(dev, 1, VP8_PROB_HALF)) {
-+				read_bits(dev, 6, VP8_PROB_HALF);
-+				read_bits(dev, 1, VP8_PROB_HALF);
-+			}
-+	}
-+
-+	if (update)
-+		for (i = 0; i < 3; i++)
-+			if (read_bits(dev, 1, VP8_PROB_HALF))
-+				read_bits(dev, 8, VP8_PROB_HALF);
-+}
-+
-+static void process_ref_lf_delta_info(struct cedrus_dev *dev)
-+{
-+	if (read_bits(dev, 1, VP8_PROB_HALF)) {
-+		int i;
-+
-+		for (i = 0; i < 4; i++)
-+			if (read_bits(dev, 1, VP8_PROB_HALF)) {
-+				read_bits(dev, 6, VP8_PROB_HALF);
-+				read_bits(dev, 1, VP8_PROB_HALF);
-+			}
-+
-+		for (i = 0; i < 4; i++)
-+			if (read_bits(dev, 1, VP8_PROB_HALF)) {
-+				read_bits(dev, 6, VP8_PROB_HALF);
-+				read_bits(dev, 1, VP8_PROB_HALF);
-+			}
-+	}
-+}
-+
-+static void process_ref_frame_info(struct cedrus_dev *dev)
-+{
-+	u8 refresh_golden_frame = read_bits(dev, 1, VP8_PROB_HALF);
-+	u8 refresh_alt_ref_frame = read_bits(dev, 1, VP8_PROB_HALF);
-+
-+	if (!refresh_golden_frame)
-+		read_bits(dev, 2, VP8_PROB_HALF);
-+
-+	if (!refresh_alt_ref_frame)
-+		read_bits(dev, 2, VP8_PROB_HALF);
-+
-+	read_bits(dev, 1, VP8_PROB_HALF);
-+	read_bits(dev, 1, VP8_PROB_HALF);
-+}
-+
-+static void cedrus_read_header(struct cedrus_dev *dev,
-+			       const struct v4l2_ctrl_vp8_frame_header *slice)
-+{
-+	int i, j;
-+
-+	if (VP8_FRAME_IS_KEY_FRAME(slice)) {
-+		read_bits(dev, 1, VP8_PROB_HALF);
-+		read_bits(dev, 1, VP8_PROB_HALF);
-+	}
-+
-+	if (read_bits(dev, 1, VP8_PROB_HALF))
-+		process_segmentation_info(dev);
-+
-+	read_bits(dev, 1, VP8_PROB_HALF);
-+	read_bits(dev, 6, VP8_PROB_HALF);
-+	read_bits(dev, 3, VP8_PROB_HALF);
-+
-+	if (read_bits(dev, 1, VP8_PROB_HALF))
-+		process_ref_lf_delta_info(dev);
-+
-+	read_bits(dev, 2, VP8_PROB_HALF);
-+	read_bits(dev, 7, VP8_PROB_HALF);
-+
-+	get_delta_q(dev);
-+	get_delta_q(dev);
-+	get_delta_q(dev);
-+	get_delta_q(dev);
-+	get_delta_q(dev);
-+
-+	if (!VP8_FRAME_IS_KEY_FRAME(slice))
-+		process_ref_frame_info(dev);
-+
-+	read_bits(dev, 1, VP8_PROB_HALF);
-+
-+	if (!VP8_FRAME_IS_KEY_FRAME(slice))
-+		read_bits(dev, 1, VP8_PROB_HALF);
-+
-+	cedrus_write(dev, VE_H264_TRIGGER_TYPE, VE_H264_TRIGGER_TYPE_VP8_UPDATE_COEF);
-+	while (cedrus_read(dev, VE_H264_STATUS) & VE_H264_STATUS_VP8_UPPROB_BUSY)
-+		;
-+
-+	cedrus_write(dev, VE_H264_STATUS, VE_H264_CTRL_INT_MASK);
-+
-+	if (read_bits(dev, 1, VP8_PROB_HALF))
-+		read_bits(dev, 8, VP8_PROB_HALF);
-+
-+	if (!VP8_FRAME_IS_KEY_FRAME(slice)) {
-+		read_bits(dev, 8, VP8_PROB_HALF);
-+		read_bits(dev, 8, VP8_PROB_HALF);
-+		read_bits(dev, 8, VP8_PROB_HALF);
-+
-+		if (read_bits(dev, 1, VP8_PROB_HALF)) {
-+			read_bits(dev, 8, VP8_PROB_HALF);
-+			read_bits(dev, 8, VP8_PROB_HALF);
-+			read_bits(dev, 8, VP8_PROB_HALF);
-+			read_bits(dev, 8, VP8_PROB_HALF);
-+		}
-+
-+		if (read_bits(dev, 1, VP8_PROB_HALF)) {
-+			read_bits(dev, 8, VP8_PROB_HALF);
-+			read_bits(dev, 8, VP8_PROB_HALF);
-+			read_bits(dev, 8, VP8_PROB_HALF);
-+		}
-+
-+		for (i = 0; i < 2; i++)
-+			for (j = 0; j < 19; j++)
-+				if (read_bits(dev, 1, vp8_mv_update_prob[i][j]))
-+					read_bits(dev, 7, VP8_PROB_HALF);
-+	}
-+}
-+
-+static void cedrus_vp8_update_probs(const struct v4l2_ctrl_vp8_frame_header *slice,
-+				    u8 *prob_table)
-+{
-+	int i, j, k;
-+
-+	memcpy(&prob_table[0x1008], slice->entropy_header.y_mode_probs, 4);
-+	memcpy(&prob_table[0x1010], slice->entropy_header.uv_mode_probs, 3);
-+
-+	memcpy(&prob_table[0x1018], slice->segment_header.segment_probs, 3);
-+
-+	prob_table[0x101c] = slice->prob_skip_false;
-+	prob_table[0x101d] = slice->prob_intra;
-+	prob_table[0x101e] = slice->prob_last;
-+	prob_table[0x101f] = slice->prob_gf;
-+
-+	memcpy(&prob_table[0x1020], slice->entropy_header.mv_probs[0], 19);
-+	memcpy(&prob_table[0x1040], slice->entropy_header.mv_probs[1], 19);
-+
-+	for (i = 0; i < 4; ++i)
-+		for (j = 0; j < 8; ++j)
-+			for (k = 0; k < 3; ++k)
-+				memcpy(&prob_table[i * 512 + j * 64 + k * 16],
-+				       slice->entropy_header.coeff_probs[i][j][k], 11);
-+}
-+
-+static enum cedrus_irq_status
-+cedrus_vp8_irq_status(struct cedrus_ctx *ctx)
-+{
-+	struct cedrus_dev *dev = ctx->dev;
-+	u32 reg = cedrus_read(dev, VE_H264_STATUS);
-+
-+	if (reg & (VE_H264_STATUS_DECODE_ERR_INT |
-+		   VE_H264_STATUS_VLD_DATA_REQ_INT))
-+		return CEDRUS_IRQ_ERROR;
-+
-+	if (reg & VE_H264_CTRL_SLICE_DECODE_INT)
-+		return CEDRUS_IRQ_OK;
-+
-+	return CEDRUS_IRQ_NONE;
-+}
-+
-+static void cedrus_vp8_irq_clear(struct cedrus_ctx *ctx)
-+{
-+	struct cedrus_dev *dev = ctx->dev;
-+
-+	cedrus_write(dev, VE_H264_STATUS,
-+		     VE_H264_STATUS_INT_MASK);
-+}
-+
-+static void cedrus_vp8_irq_disable(struct cedrus_ctx *ctx)
-+{
-+	struct cedrus_dev *dev = ctx->dev;
-+	u32 reg = cedrus_read(dev, VE_H264_CTRL);
-+
-+	cedrus_write(dev, VE_H264_CTRL,
-+		     reg & ~VE_H264_CTRL_INT_MASK);
-+}
-+
-+static void cedrus_vp8_setup(struct cedrus_ctx *ctx,
-+			     struct cedrus_run *run)
-+{
-+	const struct v4l2_ctrl_vp8_frame_header *slice = run->vp8.slice_params;
-+	struct vb2_queue *cap_q = &ctx->fh.m2m_ctx->cap_q_ctx.q;
-+	struct vb2_buffer *src_buf = &run->src->vb2_buf;
-+	struct cedrus_dev *dev = ctx->dev;
-+	dma_addr_t luma_addr, chroma_addr;
-+	dma_addr_t src_buf_addr;
-+	int header_size;
-+	int qindex;
-+	u32 reg;
-+
-+	cedrus_engine_enable(ctx, CEDRUS_CODEC_VP8);
-+
-+	cedrus_write(dev, VE_H264_CTRL, VE_H264_CTRL_VP8);
-+
-+	cedrus_vp8_update_probs(slice, ctx->codec.vp8.entropy_probs_buf);
-+
-+	reg = slice->first_part_size * 8;
-+	cedrus_write(dev, VE_VP8_FIRST_DATA_PART_LEN, reg);
-+
-+	header_size = VP8_FRAME_IS_KEY_FRAME(slice) ? 10 : 3;
-+
-+	reg = slice->first_part_size + header_size;
-+	cedrus_write(dev, VE_VP8_PART_SIZE_OFFSET, reg);
-+
-+	reg = vb2_plane_size(src_buf, 0) * 8;
-+	cedrus_write(dev, VE_H264_VLD_LEN, reg);
-+
-+	/*
-+	 * FIXME: There is a problem if frame header is skipped (adding
-+	 * first_part_header_bits to offset). It seems that functions
-+	 * for parsing bitstreams change internal state of VPU in some
-+	 * way that can't be otherwise set. Maybe this can be bypassed
-+	 * by somehow fixing probability table buffer?
-+	 */
-+	reg = header_size * 8;
-+	cedrus_write(dev, VE_H264_VLD_OFFSET, reg);
-+
-+	src_buf_addr = vb2_dma_contig_plane_dma_addr(src_buf, 0);
-+	cedrus_write(dev, VE_H264_VLD_END,
-+		     src_buf_addr + vb2_get_plane_payload(src_buf, 0));
-+	cedrus_write(dev, VE_H264_VLD_ADDR,
-+		     VE_H264_VLD_ADDR_VAL(src_buf_addr) |
-+		     VE_H264_VLD_ADDR_FIRST | VE_H264_VLD_ADDR_VALID |
-+		     VE_H264_VLD_ADDR_LAST);
-+
-+	cedrus_write(dev, VE_H264_TRIGGER_TYPE,
-+		     VE_H264_TRIGGER_TYPE_INIT_SWDEC);
-+
-+	cedrus_write(dev, VE_VP8_ENTROPY_PROBS_ADDR,
-+		     ctx->codec.vp8.entropy_probs_buf_dma);
-+
-+	reg = 0;
-+	switch (slice->version) {
-+	case 1:
-+		reg |= VE_VP8_PPS_FILTER_TYPE_SIMPLE;
-+		reg |= VE_VP8_PPS_BILINEAR_MC_FILTER;
-+		break;
-+	case 2:
-+		reg |= VE_VP8_PPS_LPF_DISABLE;
-+		reg |= VE_VP8_PPS_BILINEAR_MC_FILTER;
-+		break;
-+	case 3:
-+		reg |= VE_VP8_PPS_LPF_DISABLE;
-+		reg |= VE_VP8_PPS_FULL_PIXEL;
-+		break;
-+	}
-+	if (slice->segment_header.flags & V4L2_VP8_SEGMENT_HEADER_FLAG_UPDATE_MAP)
-+		reg |= VE_VP8_PPS_UPDATE_MB_SEGMENTATION_MAP;
-+	if (!(slice->segment_header.flags & V4L2_VP8_SEGMENT_HEADER_FLAG_DELTA_VALUE_MODE))
-+		reg |= VE_VP8_PPS_MB_SEGMENT_ABS_DELTA;
-+	if (slice->segment_header.flags & V4L2_VP8_SEGMENT_HEADER_FLAG_ENABLED)
-+		reg |= VE_VP8_PPS_SEGMENTATION_ENABLE;
-+	if (ctx->codec.vp8.last_filter_type)
-+		reg |= VE_VP8_PPS_LAST_LOOP_FILTER_SIMPLE;
-+	reg |= VE_VP8_PPS_SHARPNESS_LEVEL(slice->lf_header.sharpness_level);
-+	if (slice->lf_header.flags & V4L2_VP8_LF_FILTER_TYPE_SIMPLE)
-+		reg |= VE_VP8_PPS_LOOP_FILTER_SIMPLE;
-+	reg |= VE_VP8_PPS_LOOP_FILTER_LEVEL(slice->lf_header.level);
-+	if (slice->lf_header.flags & V4L2_VP8_LF_HEADER_ADJ_ENABLE)
-+		reg |= VE_VP8_PPS_MODE_REF_LF_DELTA_ENABLE;
-+	if (slice->lf_header.flags & V4L2_VP8_LF_HEADER_DELTA_UPDATE)
-+		reg |= VE_VP8_PPS_MODE_REF_LF_DELTA_UPDATE;
-+	reg |= VE_VP8_PPS_TOKEN_PARTITION(ilog2(slice->num_dct_parts));
-+	if (slice->flags & V4L2_VP8_FRAME_HEADER_FLAG_MB_NO_SKIP_COEFF)
-+		reg |= VE_VP8_PPS_MB_NO_COEFF_SKIP;
-+	reg |= VE_VP8_PPS_RELOAD_ENTROPY_PROBS;
-+	if (slice->flags & V4L2_VP8_FRAME_HEADER_FLAG_SIGN_BIAS_GOLDEN)
-+		reg |= VE_VP8_PPS_GOLDEN_SIGN_BIAS;
-+	if (slice->flags & V4L2_VP8_FRAME_HEADER_FLAG_SIGN_BIAS_ALT)
-+		reg |= VE_VP8_PPS_ALTREF_SIGN_BIAS;
-+	if (ctx->codec.vp8.last_frame_p_type)
-+		reg |= VE_VP8_PPS_LAST_PIC_TYPE_P_FRAME;
-+	reg |= VE_VP8_PPS_LAST_SHARPNESS_LEVEL(ctx->codec.vp8.last_sharpness_level);
-+	if (!(slice->flags & V4L2_VP8_FRAME_HEADER_FLAG_KEY_FRAME))
-+		reg |= VE_VP8_PPS_PIC_TYPE_P_FRAME;
-+	cedrus_write(dev, VE_VP8_PPS, reg);
-+
-+	cedrus_read_header(dev, slice);
-+
-+	/* reset registers changed by HW */
-+	cedrus_write(dev, VE_H264_CUR_MB_NUM, 0);
-+	cedrus_write(dev, VE_H264_MB_ADDR, 0);
-+	cedrus_write(dev, VE_H264_ERROR_CASE, 0);
-+
-+	reg = 0;
-+	reg |= VE_VP8_QP_INDEX_DELTA_UVAC(slice->quant_header.uv_ac_delta);
-+	reg |= VE_VP8_QP_INDEX_DELTA_UVDC(slice->quant_header.uv_dc_delta);
-+	reg |= VE_VP8_QP_INDEX_DELTA_Y2AC(slice->quant_header.y2_ac_delta);
-+	reg |= VE_VP8_QP_INDEX_DELTA_Y2DC(slice->quant_header.y2_dc_delta);
-+	reg |= VE_VP8_QP_INDEX_DELTA_Y1DC(slice->quant_header.y_dc_delta);
-+	reg |= VE_VP8_QP_INDEX_DELTA_BASE_QINDEX(slice->quant_header.y_ac_qi);
-+	cedrus_write(dev, VE_VP8_QP_INDEX_DELTA, reg);
-+
-+	reg = 0;
-+	reg |= VE_VP8_FSIZE_WIDTH(slice->width);
-+	reg |= VE_VP8_FSIZE_HEIGHT(slice->height);
-+	cedrus_write(dev, VE_VP8_FSIZE, reg);
-+
-+	reg = 0;
-+	reg |= VE_VP8_PICSIZE_WIDTH(slice->width);
-+	reg |= VE_VP8_PICSIZE_HEIGHT(slice->height);
-+	cedrus_write(dev, VE_VP8_PICSIZE, reg);
-+
-+	reg = 0;
-+	reg |= VE_VP8_SEGMENT3(slice->segment_header.quant_update[3]);
-+	reg |= VE_VP8_SEGMENT2(slice->segment_header.quant_update[2]);
-+	reg |= VE_VP8_SEGMENT1(slice->segment_header.quant_update[1]);
-+	reg |= VE_VP8_SEGMENT0(slice->segment_header.quant_update[0]);
-+	cedrus_write(dev, VE_VP8_SEGMENT_FEAT_MB_LV0, reg);
-+
-+	reg = 0;
-+	reg |= VE_VP8_SEGMENT3(slice->segment_header.lf_update[3]);
-+	reg |= VE_VP8_SEGMENT2(slice->segment_header.lf_update[2]);
-+	reg |= VE_VP8_SEGMENT1(slice->segment_header.lf_update[1]);
-+	reg |= VE_VP8_SEGMENT0(slice->segment_header.lf_update[0]);
-+	cedrus_write(dev, VE_VP8_SEGMENT_FEAT_MB_LV1, reg);
-+
-+	reg = 0;
-+	reg |= VE_VP8_LF_DELTA3(slice->lf_header.ref_frm_delta[3]);
-+	reg |= VE_VP8_LF_DELTA2(slice->lf_header.ref_frm_delta[2]);
-+	reg |= VE_VP8_LF_DELTA1(slice->lf_header.ref_frm_delta[1]);
-+	reg |= VE_VP8_LF_DELTA0(slice->lf_header.ref_frm_delta[0]);
-+	cedrus_write(dev, VE_VP8_REF_LF_DELTA, reg);
-+
-+	reg = 0;
-+	reg |= VE_VP8_LF_DELTA3(slice->lf_header.mb_mode_delta[3]);
-+	reg |= VE_VP8_LF_DELTA2(slice->lf_header.mb_mode_delta[2]);
-+	reg |= VE_VP8_LF_DELTA1(slice->lf_header.mb_mode_delta[1]);
-+	reg |= VE_VP8_LF_DELTA0(slice->lf_header.mb_mode_delta[0]);
-+	cedrus_write(dev, VE_VP8_MODE_LF_DELTA, reg);
-+
-+	luma_addr = cedrus_dst_buf_addr(ctx, run->dst->vb2_buf.index, 0);
-+	chroma_addr = cedrus_dst_buf_addr(ctx, run->dst->vb2_buf.index, 1);
-+	cedrus_write(dev, VE_VP8_REC_LUMA, luma_addr);
-+	cedrus_write(dev, VE_VP8_REC_CHROMA, chroma_addr);
-+
-+	qindex = vb2_find_timestamp(cap_q, slice->last_frame_ts, 0);
-+	if (qindex >= 0) {
-+		luma_addr = cedrus_dst_buf_addr(ctx, qindex, 0);
-+		chroma_addr = cedrus_dst_buf_addr(ctx, qindex, 1);
-+		cedrus_write(dev, VE_VP8_FWD_LUMA, luma_addr);
-+		cedrus_write(dev, VE_VP8_FWD_CHROMA, chroma_addr);
-+	} else {
-+		cedrus_write(dev, VE_VP8_FWD_LUMA, 0);
-+		cedrus_write(dev, VE_VP8_FWD_CHROMA, 0);
-+	}
-+
-+	qindex = vb2_find_timestamp(cap_q, slice->golden_frame_ts, 0);
-+	if (qindex >= 0) {
-+		luma_addr = cedrus_dst_buf_addr(ctx, qindex, 0);
-+		chroma_addr = cedrus_dst_buf_addr(ctx, qindex, 1);
-+		cedrus_write(dev, VE_VP8_BWD_LUMA, luma_addr);
-+		cedrus_write(dev, VE_VP8_BWD_CHROMA, chroma_addr);
-+	} else {
-+		cedrus_write(dev, VE_VP8_BWD_LUMA, 0);
-+		cedrus_write(dev, VE_VP8_BWD_CHROMA, 0);
-+	}
-+
-+	qindex = vb2_find_timestamp(cap_q, slice->alt_frame_ts, 0);
-+	if (qindex >= 0) {
-+		luma_addr = cedrus_dst_buf_addr(ctx, qindex, 0);
-+		chroma_addr = cedrus_dst_buf_addr(ctx, qindex, 1);
-+		cedrus_write(dev, VE_VP8_ALT_LUMA, luma_addr);
-+		cedrus_write(dev, VE_VP8_ALT_CHROMA, chroma_addr);
-+	} else {
-+		cedrus_write(dev, VE_VP8_ALT_LUMA, 0);
-+		cedrus_write(dev, VE_VP8_ALT_CHROMA, 0);
-+	}
-+
-+	cedrus_write(dev, VE_H264_CTRL, VE_H264_CTRL_VP8 |
-+		     VE_H264_CTRL_DECODE_ERR_INT |
-+		     VE_H264_CTRL_SLICE_DECODE_INT);
-+
-+	if (slice->lf_header.level) {
-+		ctx->codec.vp8.last_filter_type =
-+			!!(slice->lf_header.flags & V4L2_VP8_LF_FILTER_TYPE_SIMPLE);
-+		ctx->codec.vp8.last_frame_p_type =
-+			!VP8_FRAME_IS_KEY_FRAME(slice);
-+		ctx->codec.vp8.last_sharpness_level =
-+			slice->lf_header.sharpness_level;
-+	}
-+}
-+
-+static int cedrus_vp8_start(struct cedrus_ctx *ctx)
-+{
-+	struct cedrus_dev *dev = ctx->dev;
-+
-+	ctx->codec.vp8.entropy_probs_buf =
-+		dma_alloc_coherent(dev->dev, CEDRUS_ENTROPY_PROBS_SIZE,
-+				   &ctx->codec.vp8.entropy_probs_buf_dma,
-+				   GFP_KERNEL);
-+	if (!ctx->codec.vp8.entropy_probs_buf)
-+		return -ENOMEM;
-+
-+	memcpy(&ctx->codec.vp8.entropy_probs_buf[2048],
-+	       prob_table_init, sizeof(prob_table_init));
-+
-+	return 0;
-+}
-+
-+static void cedrus_vp8_stop(struct cedrus_ctx *ctx)
-+{
-+	struct cedrus_dev *dev = ctx->dev;
-+
-+	cedrus_engine_disable(dev);
-+
-+	dma_free_coherent(dev->dev, CEDRUS_ENTROPY_PROBS_SIZE,
-+			  ctx->codec.vp8.entropy_probs_buf,
-+			  ctx->codec.vp8.entropy_probs_buf_dma);
-+}
-+
-+static void cedrus_vp8_trigger(struct cedrus_ctx *ctx)
-+{
-+	struct cedrus_dev *dev = ctx->dev;
-+
-+	cedrus_write(dev, VE_H264_TRIGGER_TYPE,
-+		     VE_H264_TRIGGER_TYPE_VP8_SLICE_DECODE);
-+}
-+
-+struct cedrus_dec_ops cedrus_dec_ops_vp8 = {
-+	.irq_clear	= cedrus_vp8_irq_clear,
-+	.irq_disable	= cedrus_vp8_irq_disable,
-+	.irq_status	= cedrus_vp8_irq_status,
-+	.setup		= cedrus_vp8_setup,
-+	.start		= cedrus_vp8_start,
-+	.stop		= cedrus_vp8_stop,
-+	.trigger	= cedrus_vp8_trigger,
-+};
--- 
-2.27.0
+>
+>
+> otherwise there is all kinds of minor nitpicks that aren't too
+> substantial, let me know what you think of something like this
+> hacked up version:
+Kind of hard to see what you have changed but I will diff both of our
+diffs and make the changes.
 
+Thanks,
+Jim Quinlan
+Broadcom STB
 
+>
+>
+> diff --git a/arch/arm/include/asm/dma-mapping.h b/arch/arm/include/asm/dma-mapping.h
+> index bdd80ddbca3451..2405afeb79573a 100644
+> --- a/arch/arm/include/asm/dma-mapping.h
+> +++ b/arch/arm/include/asm/dma-mapping.h
+> @@ -35,8 +35,11 @@ static inline const struct dma_map_ops *get_arch_dma_ops(struct bus_type *bus)
+>  #ifndef __arch_pfn_to_dma
+>  static inline dma_addr_t pfn_to_dma(struct device *dev, unsigned long pfn)
+>  {
+> -       if (dev)
+> -               pfn -= dev->dma_pfn_offset;
+> +       if (dev) {
+> +               phys_addr_t paddr = PFN_PHYS(pfn);
+> +
+> +               pfn -= (dma_offset_from_phys_addr(dev, paddr) >> PAGE_SHIFT);
+> +       }
+>         return (dma_addr_t)__pfn_to_bus(pfn);
+>  }
+>
+> @@ -45,8 +48,7 @@ static inline unsigned long dma_to_pfn(struct device *dev, dma_addr_t addr)
+>         unsigned long pfn = __bus_to_pfn(addr);
+>
+>         if (dev)
+> -               pfn += dev->dma_pfn_offset;
+> -
+> +               pfn += (dma_offset_from_dma_addr(dev, addr) >> PAGE_SHIFT);
+>         return pfn;
+>  }
+>
+> diff --git a/arch/arm/mach-keystone/keystone.c b/arch/arm/mach-keystone/keystone.c
+> index 638808c4e12247..7539679205fbf7 100644
+> --- a/arch/arm/mach-keystone/keystone.c
+> +++ b/arch/arm/mach-keystone/keystone.c
+> @@ -8,6 +8,7 @@
+>   */
+>  #include <linux/io.h>
+>  #include <linux/of.h>
+> +#include <linux/dma-mapping.h>
+>  #include <linux/init.h>
+>  #include <linux/of_platform.h>
+>  #include <linux/of_address.h>
+> @@ -24,8 +25,6 @@
+>
+>  #include "keystone.h"
+>
+> -static unsigned long keystone_dma_pfn_offset __read_mostly;
+> -
+>  static int keystone_platform_notifier(struct notifier_block *nb,
+>                                       unsigned long event, void *data)
+>  {
+> @@ -38,9 +37,12 @@ static int keystone_platform_notifier(struct notifier_block *nb,
+>                 return NOTIFY_BAD;
+>
+>         if (!dev->of_node) {
+> -               dev->dma_pfn_offset = keystone_dma_pfn_offset;
+> -               dev_err(dev, "set dma_pfn_offset%08lx\n",
+> -                       dev->dma_pfn_offset);
+> +               int ret = dma_set_offset_range(dev, KEYSTONE_HIGH_PHYS_START,
+> +                                                   KEYSTONE_LOW_PHYS_START,
+> +                                                   KEYSTONE_HIGH_PHYS_SIZE);
+> +               dev_err(dev, "set dma_offset%08llx%s\n",
+> +                       KEYSTONE_HIGH_PHYS_START - KEYSTONE_LOW_PHYS_START,
+> +                       ret ? " failed" : "");
+>         }
+>         return NOTIFY_OK;
+>  }
+> @@ -51,11 +53,8 @@ static struct notifier_block platform_nb = {
+>
+>  static void __init keystone_init(void)
+>  {
+> -       if (PHYS_OFFSET >= KEYSTONE_HIGH_PHYS_START) {
+> -               keystone_dma_pfn_offset = PFN_DOWN(KEYSTONE_HIGH_PHYS_START -
+> -                                                  KEYSTONE_LOW_PHYS_START);
+> +       if (PHYS_OFFSET >= KEYSTONE_HIGH_PHYS_START)
+>                 bus_register_notifier(&platform_bus_type, &platform_nb);
+> -       }
+>         keystone_pm_runtime_init();
+>  }
+>
+> diff --git a/arch/sh/drivers/pci/pcie-sh7786.c b/arch/sh/drivers/pci/pcie-sh7786.c
+> index e0b568aaa7014c..e929f85c503852 100644
+> --- a/arch/sh/drivers/pci/pcie-sh7786.c
+> +++ b/arch/sh/drivers/pci/pcie-sh7786.c
+> @@ -12,6 +12,7 @@
+>  #include <linux/io.h>
+>  #include <linux/async.h>
+>  #include <linux/delay.h>
+> +#include <linux/dma-mapping.h>
+>  #include <linux/slab.h>
+>  #include <linux/clk.h>
+>  #include <linux/sh_clk.h>
+> @@ -31,6 +32,8 @@ struct sh7786_pcie_port {
+>  static struct sh7786_pcie_port *sh7786_pcie_ports;
+>  static unsigned int nr_ports;
+>  static unsigned long dma_pfn_offset;
+> +size_t memsize;
+> +u64 memstart;
+>
+>  static struct sh7786_pcie_hwops {
+>         int (*core_init)(void);
+> @@ -301,7 +304,6 @@ static int __init pcie_init(struct sh7786_pcie_port *port)
+>         struct pci_channel *chan = port->hose;
+>         unsigned int data;
+>         phys_addr_t memstart, memend;
+> -       size_t memsize;
+>         int ret, i, win;
+>
+>         /* Begin initialization */
+> @@ -368,8 +370,6 @@ static int __init pcie_init(struct sh7786_pcie_port *port)
+>         memstart = ALIGN_DOWN(memstart, memsize);
+>         memsize = roundup_pow_of_two(memend - memstart);
+>
+> -       dma_pfn_offset = memstart >> PAGE_SHIFT;
+> -
+>         /*
+>          * If there's more than 512MB of memory, we need to roll over to
+>          * LAR1/LAMR1.
+> @@ -487,7 +487,8 @@ int pcibios_map_platform_irq(const struct pci_dev *pdev, u8 slot, u8 pin)
+>
+>  void pcibios_bus_add_device(struct pci_dev *pdev)
+>  {
+> -       pdev->dev.dma_pfn_offset = dma_pfn_offset;
+> +       dma_set_offset_range(&pdev->dev, __pa(memory_start),
+> +                            __pa(memory_start) - memstart, memsize);
+>  }
+>
+>  static int __init sh7786_pcie_core_init(void)
+> diff --git a/arch/sh/kernel/dma-coherent.c b/arch/sh/kernel/dma-coherent.c
+> index d4811691b93cc1..003a91719b3794 100644
+> --- a/arch/sh/kernel/dma-coherent.c
+> +++ b/arch/sh/kernel/dma-coherent.c
+> @@ -14,6 +14,7 @@ void *arch_dma_alloc(struct device *dev, size_t size, dma_addr_t *dma_handle,
+>  {
+>         void *ret, *ret_nocache;
+>         int order = get_order(size);
+> +       phys_addr_t phys;
+>
+>         gfp |= __GFP_ZERO;
+>
+> @@ -34,12 +35,10 @@ void *arch_dma_alloc(struct device *dev, size_t size, dma_addr_t *dma_handle,
+>                 return NULL;
+>         }
+>
+> -       split_page(pfn_to_page(virt_to_phys(ret) >> PAGE_SHIFT), order);
+> -
+> -       *dma_handle = virt_to_phys(ret);
+> -       if (!WARN_ON(!dev))
+> -               *dma_handle -= PFN_PHYS(dev->dma_pfn_offset);
+> +       phys = virt_to_phys(ret);
+> +       split_page(pfn_to_page(PHYS_PFN(phys)), order);
+>
+> +       *dma_handle = (dma_addr_t)phys - dma_offset_from_phys_addr(dev, phys);
+>         return ret_nocache;
+>  }
+>
+> @@ -47,12 +46,10 @@ void arch_dma_free(struct device *dev, size_t size, void *vaddr,
+>                 dma_addr_t dma_handle, unsigned long attrs)
+>  {
+>         int order = get_order(size);
+> -       unsigned long pfn = (dma_handle >> PAGE_SHIFT);
+> +       unsigned long pfn;
+>         int k;
+>
+> -       if (!WARN_ON(!dev))
+> -               pfn += dev->dma_pfn_offset;
+> -
+> +       pfn = PHYS_PFN(dma_handle + dma_offset_from_dma_addr(dev, dma_handle));
+>         for (k = 0; k < (1 << order); k++)
+>                 __free_pages(pfn_to_page(pfn + k), 0);
+>
+> diff --git a/arch/x86/pci/sta2x11-fixup.c b/arch/x86/pci/sta2x11-fixup.c
+> index c313d784efabb9..ea3a58323f81d1 100644
+> --- a/arch/x86/pci/sta2x11-fixup.c
+> +++ b/arch/x86/pci/sta2x11-fixup.c
+> @@ -12,6 +12,7 @@
+>  #include <linux/export.h>
+>  #include <linux/list.h>
+>  #include <linux/dma-direct.h>
+> +#include <linux/dma-mapping.h>
+>  #include <asm/iommu.h>
+>
+>  #define STA2X11_SWIOTLB_SIZE (4*1024*1024)
+> @@ -133,7 +134,7 @@ static void sta2x11_map_ep(struct pci_dev *pdev)
+>         struct sta2x11_instance *instance = sta2x11_pdev_to_instance(pdev);
+>         struct device *dev = &pdev->dev;
+>         u32 amba_base, max_amba_addr;
+> -       int i;
+> +       int i, ret;
+>
+>         if (!instance)
+>                 return;
+> @@ -141,7 +142,9 @@ static void sta2x11_map_ep(struct pci_dev *pdev)
+>         pci_read_config_dword(pdev, AHB_BASE(0), &amba_base);
+>         max_amba_addr = amba_base + STA2X11_AMBA_SIZE - 1;
+>
+> -       dev->dma_pfn_offset = PFN_DOWN(-amba_base);
+> +       ret = dma_set_offset_range(dev, 0, amba_base, STA2X11_AMBA_SIZE);
+> +       if (ret)
+> +               dev_err(dev, "sta2x11: could not set DMA offset\n");
+>
+>         dev->bus_dma_limit = max_amba_addr;
+>         pci_set_consistent_dma_mask(pdev, max_amba_addr);
+> diff --git a/drivers/acpi/arm64/iort.c b/drivers/acpi/arm64/iort.c
+> index 28a6b387e80e28..a3e04c003a2187 100644
+> --- a/drivers/acpi/arm64/iort.c
+> +++ b/drivers/acpi/arm64/iort.c
+> @@ -1142,8 +1142,9 @@ void iort_dma_setup(struct device *dev, u64 *dma_addr, u64 *dma_size)
+>         *dma_addr = dmaaddr;
+>         *dma_size = size;
+>
+> -       dev->dma_pfn_offset = PFN_DOWN(offset);
+> -       dev_dbg(dev, "dma_pfn_offset(%#08llx)\n", offset);
+> +       ret = dma_set_offset_range(dev, dmaaddr + offset, dmaaddr, size);
+> +
+> +       dev_dbg(dev, "dma_offset(%#08llx)%s\n", offset, ret ? " failed!" : "");
+>  }
+>
+>  static void __init acpi_iort_register_irq(int hwirq, const char *name,
+> diff --git a/drivers/gpu/drm/sun4i/sun4i_backend.c b/drivers/gpu/drm/sun4i/sun4i_backend.c
+> index 072ea113e6be55..48a4adf1f04edc 100644
+> --- a/drivers/gpu/drm/sun4i/sun4i_backend.c
+> +++ b/drivers/gpu/drm/sun4i/sun4i_backend.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/module.h>
+>  #include <linux/of_device.h>
+>  #include <linux/of_graph.h>
+> +#include <linux/dma-mapping.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/reset.h>
+>
+> @@ -812,7 +813,9 @@ static int sun4i_backend_bind(struct device *dev, struct device *master,
+>                  * on our device since the RAM mapping is at 0 for the DMA bus,
+>                  * unlike the CPU.
+>                  */
+> -               drm->dev->dma_pfn_offset = PHYS_PFN_OFFSET;
+> +               ret = dma_set_offset_range(drm->dev, PHYS_OFFSET, 0, SZ_4G);
+> +               if (ret)
+> +                       return ret;
+>         }
+>
+>         backend->engine.node = dev->of_node;
+> diff --git a/drivers/iommu/io-pgtable-arm.c b/drivers/iommu/io-pgtable-arm.c
+> index 04fbd4bf0ff9fd..d5542df9aacc01 100644
+> --- a/drivers/iommu/io-pgtable-arm.c
+> +++ b/drivers/iommu/io-pgtable-arm.c
+> @@ -754,7 +754,7 @@ arm_lpae_alloc_pgtable(struct io_pgtable_cfg *cfg)
+>         if (cfg->oas > ARM_LPAE_MAX_ADDR_BITS)
+>                 return NULL;
+>
+> -       if (!selftest_running && cfg->iommu_dev->dma_pfn_offset) {
+> +       if (!selftest_running && cfg->iommu_dev->dma_range_map) {
+>                 dev_err(cfg->iommu_dev, "Cannot accommodate DMA offset for IOMMU page tables\n");
+>                 return NULL;
+>         }
+> diff --git a/drivers/media/platform/sunxi/sun4i-csi/sun4i_csi.c b/drivers/media/platform/sunxi/sun4i-csi/sun4i_csi.c
+> index eff34ded63055d..d6eda02fd3fc93 100644
+> --- a/drivers/media/platform/sunxi/sun4i-csi/sun4i_csi.c
+> +++ b/drivers/media/platform/sunxi/sun4i-csi/sun4i_csi.c
+> @@ -7,6 +7,7 @@
+>   */
+>
+>  #include <linux/clk.h>
+> +#include <linux/dma-mapping.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/module.h>
+>  #include <linux/mutex.h>
+> @@ -183,7 +184,9 @@ static int sun4i_csi_probe(struct platform_device *pdev)
+>                         return ret;
+>         } else {
+>  #ifdef PHYS_PFN_OFFSET
+> -               csi->dev->dma_pfn_offset = PHYS_PFN_OFFSET;
+> +               ret = dma_set_offset_range(csi->dev, PHYS_OFFSET, 0, SZ_4G);
+> +               if (ret)
+> +                       return ret;
+>  #endif
+>         }
+>
+> diff --git a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+> index 055eb0b8e39692..450fce6cd8d21b 100644
+> --- a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+> +++ b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+> @@ -898,7 +898,9 @@ static int sun6i_csi_probe(struct platform_device *pdev)
+>
+>         sdev->dev = &pdev->dev;
+>         /* The DMA bus has the memory mapped at 0 */
+> -       sdev->dev->dma_pfn_offset = PHYS_OFFSET >> PAGE_SHIFT;
+> +       ret = dma_set_offset_range(sdev->dev, PHYS_OFFSET, 0, SZ_4G);
+> +       if (ret)
+> +               return ret;
+>
+>         ret = sun6i_csi_resource_request(sdev, pdev);
+>         if (ret)
+> diff --git a/drivers/of/address.c b/drivers/of/address.c
+> index 8eea3f6e29a441..083ec3531bcceb 100644
+> --- a/drivers/of/address.c
+> +++ b/drivers/of/address.c
+> @@ -918,33 +918,33 @@ void __iomem *of_io_request_and_map(struct device_node *np, int index,
+>  }
+>  EXPORT_SYMBOL(of_io_request_and_map);
+>
+> +#ifdef CONFIG_HAS_DMA
+>  /**
+> - * of_dma_get_range - Get DMA range info
+> + * of_dma_get_range - Get DMA range info and put it into a map array
+>   * @np:                device node to get DMA range info
+> - * @dma_addr:  pointer to store initial DMA address of DMA range
+> - * @paddr:     pointer to store initial CPU address of DMA range
+> - * @size:      pointer to store size of DMA range
+> + * @map:       dma range structure to return
+>   *
+>   * Look in bottom up direction for the first "dma-ranges" property
+> - * and parse it.
+> - *  dma-ranges format:
+> + * and parse it.  Put the information into a DMA offset map array.
+> + *
+> + * dma-ranges format:
+>   *     DMA addr (dma_addr)     : naddr cells
+>   *     CPU addr (phys_addr_t)  : pna cells
+>   *     size                    : nsize cells
+>   *
+> - * It returns -ENODEV if "dma-ranges" property was not found
+> - * for this device in DT.
+> + * It returns -ENODEV if "dma-ranges" property was not found for this
+> + * device in the DT.
+>   */
+> -int of_dma_get_range(struct device_node *np, u64 *dma_addr, u64 *paddr, u64 *size)
+> +int of_dma_get_range(struct device_node *np, const struct bus_dma_region **map)
+>  {
+>         struct device_node *node = of_node_get(np);
+>         const __be32 *ranges = NULL;
+> -       int len;
+> -       int ret = 0;
+>         bool found_dma_ranges = false;
+>         struct of_range_parser parser;
+>         struct of_range range;
+> -       u64 dma_start = U64_MAX, dma_end = 0, dma_offset = 0;
+> +       struct bus_dma_region *r;
+> +       int len, num_ranges = 0;
+> +       int ret;
+>
+>         while (node) {
+>                 ranges = of_get_property(node, "dma-ranges", &len);
+> @@ -970,44 +970,34 @@ int of_dma_get_range(struct device_node *np, u64 *dma_addr, u64 *paddr, u64 *siz
+>         }
+>
+>         of_dma_range_parser_init(&parser, node);
+> +       for_each_of_range(&parser, &range)
+> +               num_ranges++;
+> +
+> +       of_dma_range_parser_init(&parser, node);
+> +
+> +       ret = -ENOMEM;
+> +       r = kcalloc(num_ranges + 1, sizeof(*r), GFP_KERNEL);
+> +       if (!r)
+> +               goto out;
+>
+> +       /*
+> +        * Record all info in the generic DMA ranges array for struct device.
+> +        */
+> +       *map = r;
+>         for_each_of_range(&parser, &range) {
+>                 pr_debug("dma_addr(%llx) cpu_addr(%llx) size(%llx)\n",
+>                          range.bus_addr, range.cpu_addr, range.size);
+> -
+> -               if (dma_offset && range.cpu_addr - range.bus_addr != dma_offset) {
+> -                       pr_warn("Can't handle multiple dma-ranges with different offsets on node(%pOF)\n", node);
+> -                       /* Don't error out as we'd break some existing DTs */
+> -                       continue;
+> -               }
+> -               dma_offset = range.cpu_addr - range.bus_addr;
+> -
+> -               /* Take lower and upper limits */
+> -               if (range.bus_addr < dma_start)
+> -                       dma_start = range.bus_addr;
+> -               if (range.bus_addr + range.size > dma_end)
+> -                       dma_end = range.bus_addr + range.size;
+> +               r->cpu_start = range.cpu_addr;
+> +               r->dma_start = range.bus_addr;
+> +               r->size = range.size;
+> +               r->offset = (u64)range.cpu_addr - (u64)range.bus_addr;
+> +               r++;
+>         }
+> -
+> -       if (dma_start >= dma_end) {
+> -               ret = -EINVAL;
+> -               pr_debug("Invalid DMA ranges configuration on node(%pOF)\n",
+> -                        node);
+> -               goto out;
+> -       }
+> -
+> -       *dma_addr = dma_start;
+> -       *size = dma_end - dma_start;
+> -       *paddr = dma_start + dma_offset;
+> -
+> -       pr_debug("final: dma_addr(%llx) cpu_addr(%llx) size(%llx)\n",
+> -                *dma_addr, *paddr, *size);
+> -
+>  out:
+>         of_node_put(node);
+> -
+>         return ret;
+>  }
+> +#endif
+>
+>  /**
+>   * of_dma_is_coherent - Check if device is coherent
+> diff --git a/drivers/of/device.c b/drivers/of/device.c
+> index 27203bfd0b22dc..0c84f42a23e42e 100644
+> --- a/drivers/of/device.c
+> +++ b/drivers/of/device.c
+> @@ -88,14 +88,14 @@ int of_device_add(struct platform_device *ofdev)
+>   */
+>  int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
+>  {
+> -       u64 dma_addr, paddr, size = 0;
+> -       int ret;
+> -       bool coherent;
+> -       unsigned long offset;
+>         const struct iommu_ops *iommu;
+> -       u64 mask, end;
+> +       const struct bus_dma_region *map = NULL;
+> +       dma_addr_t dma_start = 0;
+> +       u64 mask, end, size = 0;
+> +       bool coherent;
+> +       int ret;
+>
+> -       ret = of_dma_get_range(np, &dma_addr, &paddr, &size);
+> +       ret = of_dma_get_range(np, &map);
+>         if (ret < 0) {
+>                 /*
+>                  * For legacy reasons, we have to assume some devices need
+> @@ -104,26 +104,34 @@ int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
+>                  */
+>                 if (!force_dma)
+>                         return ret == -ENODEV ? 0 : ret;
+> -
+> -               dma_addr = offset = 0;
+>         } else {
+> -               offset = PFN_DOWN(paddr - dma_addr);
+> +               const struct bus_dma_region *r = map;
+> +               dma_addr_t dma_end = 0;
+> +
+> +               /* Determine the overall bounds of all DMA regions */
+> +               for (dma_start = ~(dma_addr_t)0; r->size; r++) {
+> +                       /* Take lower and upper limits */
+> +                       if (r->dma_start < dma_start)
+> +                               dma_start = r->dma_start;
+> +                       if (r->dma_start + r->size > dma_end)
+> +                               dma_end = r->dma_start + r->size;
+> +               }
+> +               size = dma_end - dma_start;
+>
+>                 /*
+>                  * Add a work around to treat the size as mask + 1 in case
+>                  * it is defined in DT as a mask.
+>                  */
+>                 if (size & 1) {
+> -                       dev_warn(dev, "Invalid size 0x%llx for dma-range\n",
+> -                                size);
+> +                       dev_warn(dev, "Invalid size 0x%llx for dma-range(s)\n", size);
+>                         size = size + 1;
+>                 }
+>
+>                 if (!size) {
+>                         dev_err(dev, "Adjusted size 0x%llx invalid\n", size);
+> +                       kfree(map);
+>                         return -EINVAL;
+>                 }
+> -               dev_dbg(dev, "dma_pfn_offset(%#08lx)\n", offset);
+>         }
+>
+>         /*
+> @@ -142,13 +150,11 @@ int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
+>         else if (!size)
+>                 size = 1ULL << 32;
+>
+> -       dev->dma_pfn_offset = offset;
+> -
+>         /*
+>          * Limit coherent and dma mask based on size and default mask
+>          * set by the driver.
+>          */
+> -       end = dma_addr + size - 1;
+> +       end = dma_start + size - 1;
+>         mask = DMA_BIT_MASK(ilog2(end) + 1);
+>         dev->coherent_dma_mask &= mask;
+>         *dev->dma_mask &= mask;
+> @@ -161,14 +167,17 @@ int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
+>                 coherent ? " " : " not ");
+>
+>         iommu = of_iommu_configure(dev, np);
+> -       if (PTR_ERR(iommu) == -EPROBE_DEFER)
+> +       if (PTR_ERR(iommu) == -EPROBE_DEFER) {
+> +               kfree(map);
+>                 return -EPROBE_DEFER;
+> +       }
+>
+>         dev_dbg(dev, "device is%sbehind an iommu\n",
+>                 iommu ? " " : " not ");
+>
+> -       arch_setup_dma_ops(dev, dma_addr, size, iommu, coherent);
+> +       arch_setup_dma_ops(dev, dma_start, size, iommu, coherent);
+>
+> +       dev->dma_range_map = map;
+>         return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(of_dma_configure);
+> diff --git a/drivers/of/of_private.h b/drivers/of/of_private.h
+> index edc682249c0015..768406b4156b21 100644
+> --- a/drivers/of/of_private.h
+> +++ b/drivers/of/of_private.h
+> @@ -157,12 +157,12 @@ extern void __of_sysfs_remove_bin_file(struct device_node *np,
+>  extern int of_bus_n_addr_cells(struct device_node *np);
+>  extern int of_bus_n_size_cells(struct device_node *np);
+>
+> -#ifdef CONFIG_OF_ADDRESS
+> -extern int of_dma_get_range(struct device_node *np, u64 *dma_addr,
+> -                           u64 *paddr, u64 *size);
+> +struct bus_dma_region;
+> +#if defined(CONFIG_OF_ADDRESS) && defined(CONFIG_HAS_DMA)
+> +int of_dma_get_range(struct device_node *np, const struct bus_dma_region **map);
+>  #else
+> -static inline int of_dma_get_range(struct device_node *np, u64 *dma_addr,
+> -                                  u64 *paddr, u64 *size)
+> +static inline int of_dma_get_range(struct device_node *np,
+> +               const struct bus_dma_region **map);
+>  {
+>         return -ENODEV;
+>  }
+> diff --git a/drivers/of/unittest.c b/drivers/of/unittest.c
+> index 398de04fd19c94..8d0c9bf495d2ef 100644
+> --- a/drivers/of/unittest.c
+> +++ b/drivers/of/unittest.c
+> @@ -7,6 +7,7 @@
+>
+>  #include <linux/memblock.h>
+>  #include <linux/clk.h>
+> +#include <linux/dma-mapping.h>
+>  #include <linux/err.h>
+>  #include <linux/errno.h>
+>  #include <linux/hashtable.h>
+> @@ -869,10 +870,10 @@ static void __init of_unittest_changeset(void)
+>  }
+>
+>  static void __init of_unittest_dma_ranges_one(const char *path,
+> -               u64 expect_dma_addr, u64 expect_paddr, u64 expect_size)
+> +               u64 expect_dma_addr, u64 expect_paddr)
+>  {
+>         struct device_node *np;
+> -       u64 dma_addr, paddr, size;
+> +       const struct bus_dma_region *map = NULL;
+>         int rc;
+>
+>         np = of_find_node_by_path(path);
+> @@ -881,16 +882,26 @@ static void __init of_unittest_dma_ranges_one(const char *path,
+>                 return;
+>         }
+>
+> -       rc = of_dma_get_range(np, &dma_addr, &paddr, &size);
+> -
+> +       rc = of_dma_get_range(np, &map);
+>         unittest(!rc, "of_dma_get_range failed on node %pOF rc=%i\n", np, rc);
+> +
+>         if (!rc) {
+> -               unittest(size == expect_size,
+> -                        "of_dma_get_range wrong size on node %pOF size=%llx\n", np, size);
+> +               phys_addr_t     paddr;
+> +               dma_addr_t      dma_addr;
+> +               struct device   dev_bogus;
+> +
+> +               dev_bogus.dma_range_map = map;
+> +               paddr = (phys_addr_t)expect_dma_addr +
+> +                       dma_offset_from_dma_addr(&dev_bogus, expect_dma_addr);
+> +               dma_addr = (dma_addr_t)expect_paddr -
+> +                       dma_offset_from_phys_addr(&dev_bogus, expect_paddr);
+> +
+>                 unittest(paddr == expect_paddr,
+>                          "of_dma_get_range wrong phys addr (%llx) on node %pOF", paddr, np);
+>                 unittest(dma_addr == expect_dma_addr,
+>                          "of_dma_get_range wrong DMA addr (%llx) on node %pOF", dma_addr, np);
+> +
+> +               kfree(map);
+>         }
+>         of_node_put(np);
+>  }
+> @@ -898,11 +909,14 @@ static void __init of_unittest_dma_ranges_one(const char *path,
+>  static void __init of_unittest_parse_dma_ranges(void)
+>  {
+>         of_unittest_dma_ranges_one("/testcase-data/address-tests/device@70000000",
+> -               0x0, 0x20000000, 0x40000000);
+> +               0x0, 0x20000000);
+>         of_unittest_dma_ranges_one("/testcase-data/address-tests/bus@80000000/device@1000",
+> -               0x10000000, 0x20000000, 0x40000000);
+> +               0x10000000, 0x20000000);
+> +       /* pci@90000000 has two ranges in the dma-range property */
+> +       of_unittest_dma_ranges_one("/testcase-data/address-tests/pci@90000000",
+> +               0x80000000, 0x20000000);
+>         of_unittest_dma_ranges_one("/testcase-data/address-tests/pci@90000000",
+> -               0x80000000, 0x20000000, 0x10000000);
+> +               0xc0000000, 0x40000000);
+>  }
+>
+>  static void __init of_unittest_pci_dma_ranges(void)
+> diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
+> index 9f04c30c4aaf7a..49242dd6176e30 100644
+> --- a/drivers/remoteproc/remoteproc_core.c
+> +++ b/drivers/remoteproc/remoteproc_core.c
+> @@ -519,7 +519,7 @@ static int rproc_handle_vdev(struct rproc *rproc, struct fw_rsc_vdev *rsc,
+>         /* Initialise vdev subdevice */
+>         snprintf(name, sizeof(name), "vdev%dbuffer", rvdev->index);
+>         rvdev->dev.parent = &rproc->dev;
+> -       rvdev->dev.dma_pfn_offset = rproc->dev.parent->dma_pfn_offset;
+> +       rvdev->dev.dma_range_map = rproc->dev.parent->dma_range_map;
+>         rvdev->dev.release = rproc_rvdev_release;
+>         dev_set_name(&rvdev->dev, "%s#%s", dev_name(rvdev->dev.parent), name);
+>         dev_set_drvdata(&rvdev->dev, rvdev);
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> index 1744e6fcc99980..249e4bddaa4014 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> @@ -230,8 +230,11 @@ int cedrus_hw_probe(struct cedrus_dev *dev)
+>          */
+>
+>  #ifdef PHYS_PFN_OFFSET
+> -       if (!(variant->quirks & CEDRUS_QUIRK_NO_DMA_OFFSET))
+> -               dev->dev->dma_pfn_offset = PHYS_PFN_OFFSET;
+> +       if (!(variant->quirks & CEDRUS_QUIRK_NO_DMA_OFFSET)) {
+> +               ret = dma_set_offset_range(dev->dev, PHYS_OFFSET, 0, SZ_4G);
+> +               if (ret)
+> +                       return ret;
+> +       }
+>  #endif
+>
+>         ret = of_reserved_mem_device_init(dev->dev);
+> diff --git a/drivers/usb/core/message.c b/drivers/usb/core/message.c
+> index 6197938dcc2d8f..376ca258e510bf 100644
+> --- a/drivers/usb/core/message.c
+> +++ b/drivers/usb/core/message.c
+> @@ -1956,10 +1956,10 @@ int usb_set_configuration(struct usb_device *dev, int configuration)
+>                 intf->dev.groups = usb_interface_groups;
+>                 /*
+>                  * Please refer to usb_alloc_dev() to see why we set
+> -                * dma_mask and dma_pfn_offset.
+> +                * dma_mask and dma_range_map.
+>                  */
+>                 intf->dev.dma_mask = dev->dev.dma_mask;
+> -               intf->dev.dma_pfn_offset = dev->dev.dma_pfn_offset;
+> +               intf->dev.dma_range_map = dev->dev.dma_range_map;
+>                 INIT_WORK(&intf->reset_ws, __usb_queue_reset_device);
+>                 intf->minor = -1;
+>                 device_initialize(&intf->dev);
+> diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
+> index f16c26dc079d79..1f167a2c095e9a 100644
+> --- a/drivers/usb/core/usb.c
+> +++ b/drivers/usb/core/usb.c
+> @@ -611,7 +611,7 @@ struct usb_device *usb_alloc_dev(struct usb_device *parent,
+>          * mask for the entire HCD, so don't do that.
+>          */
+>         dev->dev.dma_mask = bus->sysdev->dma_mask;
+> -       dev->dev.dma_pfn_offset = bus->sysdev->dma_pfn_offset;
+> +       dev->dev.dma_range_map = bus->sysdev->dma_range_map;
+>         set_dev_node(&dev->dev, dev_to_node(bus->sysdev));
+>         dev->state = USB_STATE_ATTACHED;
+>         dev->lpm_disable_count = 1;
+> diff --git a/include/linux/device.h b/include/linux/device.h
+> index 15460a5ac024a1..feddefcf3e5c20 100644
+> --- a/include/linux/device.h
+> +++ b/include/linux/device.h
+> @@ -492,7 +492,7 @@ struct dev_links_info {
+>   *             such descriptors.
+>   * @bus_dma_limit: Limit of an upstream bridge or bus which imposes a smaller
+>   *             DMA limit than the device itself supports.
+> - * @dma_pfn_offset: offset of DMA memory range relatively of RAM
+> + * @dma_range_map: map for DMA memory ranges relative to that of RAM
+>   * @dma_parms: A low level driver may set these to teach IOMMU code about
+>   *             segment limitations.
+>   * @dma_pools: Dma pools (if dma'ble device).
+> @@ -577,7 +577,7 @@ struct device {
+>                                              64 bit addresses for consistent
+>                                              allocations such descriptors. */
+>         u64             bus_dma_limit;  /* upstream dma constraint */
+> -       unsigned long   dma_pfn_offset;
+> +       const struct bus_dma_region *dma_range_map;
+>
+>         struct device_dma_parameters *dma_parms;
+>
+> diff --git a/include/linux/dma-direct.h b/include/linux/dma-direct.h
+> index 5184735a0fe8eb..810d27692674bc 100644
+> --- a/include/linux/dma-direct.h
+> +++ b/include/linux/dma-direct.h
+> @@ -13,16 +13,12 @@ extern unsigned int zone_dma_bits;
+>  #else
+>  static inline dma_addr_t __phys_to_dma(struct device *dev, phys_addr_t paddr)
+>  {
+> -       dma_addr_t dev_addr = (dma_addr_t)paddr;
+> -
+> -       return dev_addr - ((dma_addr_t)dev->dma_pfn_offset << PAGE_SHIFT);
+> +       return (dma_addr_t)paddr - dma_offset_from_phys_addr(dev, paddr);
+>  }
+>
+>  static inline phys_addr_t __dma_to_phys(struct device *dev, dma_addr_t dev_addr)
+>  {
+> -       phys_addr_t paddr = (phys_addr_t)dev_addr;
+> -
+> -       return paddr + ((phys_addr_t)dev->dma_pfn_offset << PAGE_SHIFT);
+> +       return (phys_addr_t)dev_addr + dma_offset_from_dma_addr(dev, dev_addr);
+>  }
+>  #endif /* !CONFIG_ARCH_HAS_PHYS_TO_DMA */
+>
+> diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
+> index a33ed3954ed465..5938c7ca2abcce 100644
+> --- a/include/linux/dma-mapping.h
+> +++ b/include/linux/dma-mapping.h
+> @@ -255,7 +255,38 @@ static inline void dma_direct_sync_sg_for_cpu(struct device *dev,
+>
+>  size_t dma_direct_max_mapping_size(struct device *dev);
+>
+> +struct bus_dma_region {
+> +       phys_addr_t     cpu_start;
+> +       dma_addr_t      dma_start;
+> +       u64             size;
+> +       u64             offset;
+> +};
+> +
+>  #ifdef CONFIG_HAS_DMA
+> +static inline u64 dma_offset_from_dma_addr(struct device *dev, dma_addr_t dma_addr)
+> +{
+> +       const struct bus_dma_region *m = dev->dma_range_map;
+> +
+> +       if (!m)
+> +               return 0;
+> +       for (; m->size; m++)
+> +               if (dma_addr >= m->dma_start && dma_addr - m->dma_start < m->size)
+> +                       return m->offset;
+> +       return 0;
+> +}
+> +
+> +static inline u64 dma_offset_from_phys_addr(struct device *dev, phys_addr_t paddr)
+> +{
+> +       const struct bus_dma_region *m = dev->dma_range_map;
+> +
+> +       if (!m)
+> +               return 0;
+> +       for (; m->size; m++)
+> +               if (paddr >= m->cpu_start && paddr - m->cpu_start < m->size)
+> +                       return m->offset;
+> +       return 0;
+> +}
+> +
+>  #include <asm/dma-mapping.h>
+>
+>  static inline const struct dma_map_ops *get_dma_ops(struct device *dev)
+> @@ -801,6 +832,9 @@ static inline void arch_teardown_dma_ops(struct device *dev)
+>  }
+>  #endif /* CONFIG_ARCH_HAS_TEARDOWN_DMA_OPS */
+>
+> +int dma_set_offset_range(struct device *dev, phys_addr_t cpu_start,
+> +               dma_addr_t dma_start, u64 size);
+> +
+>  static inline unsigned int dma_get_max_seg_size(struct device *dev)
+>  {
+>         if (dev->dma_parms && dev->dma_parms->max_segment_size)
+> diff --git a/kernel/dma/coherent.c b/kernel/dma/coherent.c
+> index 2a0c4985f38e41..751969d6185325 100644
+> --- a/kernel/dma/coherent.c
+> +++ b/kernel/dma/coherent.c
+> @@ -31,10 +31,12 @@ static inline struct dma_coherent_mem *dev_get_coherent_memory(struct device *de
+>  static inline dma_addr_t dma_get_device_base(struct device *dev,
+>                                              struct dma_coherent_mem * mem)
+>  {
+> -       if (mem->use_dev_dma_pfn_offset)
+> -               return (mem->pfn_base - dev->dma_pfn_offset) << PAGE_SHIFT;
+> -       else
+> -               return mem->device_base;
+> +       if (mem->use_dev_dma_pfn_offset) {
+> +               u64 base_addr = (u64)mem->pfn_base << PAGE_SHIFT;
+> +
+> +               return base_addr - dma_offset_from_phys_addr(dev, base_addr);
+> +       }
+> +       return mem->device_base;
+>  }
+>
+>  static int dma_init_coherent_memory(phys_addr_t phys_addr,
+> diff --git a/kernel/dma/mapping.c b/kernel/dma/mapping.c
+> index a8c18c9a796fdc..dc8017a106fd55 100644
+> --- a/kernel/dma/mapping.c
+> +++ b/kernel/dma/mapping.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/dma-noncoherent.h>
+>  #include <linux/export.h>
+>  #include <linux/gfp.h>
+> +#include <linux/limits.h>
+>  #include <linux/of_device.h>
+>  #include <linux/slab.h>
+>  #include <linux/vmalloc.h>
+> @@ -417,3 +418,62 @@ unsigned long dma_get_merge_boundary(struct device *dev)
+>         return ops->get_merge_boundary(dev);
+>  }
+>  EXPORT_SYMBOL_GPL(dma_get_merge_boundary);
+> +
+> +static bool dma_range_overlaps(struct device *dev, phys_addr_t cpu_start,
+> +               dma_addr_t dma_start, u64 size, u64 offset)
+> +{
+> +       const struct bus_dma_region *m = dev->dma_range_map;
+> +
+> +       for (m = dev->dma_range_map; m->size; m++) {
+> +               if (offset == m->offset &&
+> +                   cpu_start >= m->cpu_start &&
+> +                   size <= m->size &&
+> +                   cpu_start - m->cpu_start <= m->size - size)
+> +                       return true;
+> +       }
+> +
+> +       return false;
+> +}
+> +
+> +/**
+> + * dma_set_offset_range - Assign scalar offset for a single DMA range.
+> + * @dev:       device pointer; needed to "own" the alloced memory.
+> + * @cpu_start:  beginning of memory region covered by this offset.
+> + * @dma_start:  beginning of DMA/PCI region covered by this offset.
+> + * @size:      size of the region.
+> + *
+> + * This is for the simple case of a uniform offset which cannot
+> + * be discovered by "dma-ranges".
+> + *
+> + * It returns -ENOMEM if out of memory, -ENODEV if dev == NULL, otherwise 0.
+> + */
+> +int dma_set_offset_range(struct device *dev, phys_addr_t cpu_start,
+> +                           dma_addr_t dma_start, u64 size)
+> +{
+> +       struct bus_dma_region *map;
+> +       u64 offset = (u64)cpu_start - (u64)dma_start;
+> +
+> +       if (!offset)
+> +               return 0;
+> +
+> +       /*
+> +        * See if a map already exists and we already encompass the new range:
+> +        */
+> +       if (dev->dma_range_map) {
+> +               if (dma_range_overlaps(dev, cpu_start, dma_start, size, offset))
+> +                       return 0;
+> +               dev_err(dev, "attempt to add conflicting DMA range to existing map\n");
+> +               return -EINVAL;
+> +       }
+> +
+> +       map = kcalloc(2, sizeof(*map), GFP_KERNEL);
+> +       if (!map)
+> +               return -ENOMEM;
+> +       map[0].cpu_start = cpu_start;
+> +       map[0].dma_start = dma_start;
+> +       map[0].offset = offset;
+> +       map[0].size = size;
+> +       dev->dma_range_map = map;
+> +       return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(dma_set_offset_range);
+>
+> >
+> > Signed-off-by: Jim Quinlan <james.quinlan@broadcom.com>
+> > ---
+> >  arch/arm/include/asm/dma-mapping.h            |  9 +-
+> >  arch/arm/mach-keystone/keystone.c             | 17 ++--
+> >  arch/sh/drivers/pci/pcie-sh7786.c             |  9 +-
+> >  arch/sh/kernel/dma-coherent.c                 | 16 ++--
+> >  arch/x86/pci/sta2x11-fixup.c                  |  7 +-
+> >  drivers/acpi/arm64/iort.c                     |  5 +-
+> >  drivers/gpu/drm/sun4i/sun4i_backend.c         |  5 +-
+> >  drivers/iommu/io-pgtable-arm.c                |  2 +-
+> >  .../platform/sunxi/sun4i-csi/sun4i_csi.c      |  5 +-
+> >  .../platform/sunxi/sun6i-csi/sun6i_csi.c      |  4 +-
+> >  drivers/of/address.c                          | 95 ++++++++++---------
+> >  drivers/of/device.c                           | 47 +++++----
+> >  drivers/of/of_private.h                       |  9 +-
+> >  drivers/of/unittest.c                         | 35 +++++--
+> >  drivers/remoteproc/remoteproc_core.c          |  2 +-
+> >  .../staging/media/sunxi/cedrus/cedrus_hw.c    |  7 +-
+> >  drivers/usb/core/message.c                    |  4 +-
+> >  drivers/usb/core/usb.c                        |  2 +-
+> >  include/linux/device.h                        |  4 +-
+> >  include/linux/dma-direct.h                    | 10 +-
+> >  include/linux/dma-mapping.h                   | 43 +++++++++
+> >  include/linux/pfn.h                           |  2 +
+> >  kernel/dma/coherent.c                         | 10 +-
+> >  kernel/dma/mapping.c                          | 53 +++++++++++
+> >  24 files changed, 278 insertions(+), 124 deletions(-)
+> >
+> > diff --git a/arch/arm/include/asm/dma-mapping.h b/arch/arm/include/asm/dma-mapping.h
+> > index bdd80ddbca34..b7cdde9fb83d 100644
+> > --- a/arch/arm/include/asm/dma-mapping.h
+> > +++ b/arch/arm/include/asm/dma-mapping.h
+> > @@ -35,8 +35,9 @@ static inline const struct dma_map_ops *get_arch_dma_ops(struct bus_type *bus)
+> >  #ifndef __arch_pfn_to_dma
+> >  static inline dma_addr_t pfn_to_dma(struct device *dev, unsigned long pfn)
+> >  {
+> > -     if (dev)
+> > -             pfn -= dev->dma_pfn_offset;
+> > +     if (dev && dev->dma_range_map)
+> > +             pfn -= DMA_ADDR_PFN(dma_offset_from_phys_addr(dev, PFN_PHYS(pfn)));
+> > +
+> >       return (dma_addr_t)__pfn_to_bus(pfn);
+> >  }
+> >
+> > @@ -44,8 +45,8 @@ static inline unsigned long dma_to_pfn(struct device *dev, dma_addr_t addr)
+> >  {
+> >       unsigned long pfn = __bus_to_pfn(addr);
+> >
+> > -     if (dev)
+> > -             pfn += dev->dma_pfn_offset;
+> > +     if (dev && dev->dma_range_map)
+> > +             pfn += DMA_ADDR_PFN(dma_offset_from_dma_addr(dev, addr));
+> >
+> >       return pfn;
+> >  }
+> > diff --git a/arch/arm/mach-keystone/keystone.c b/arch/arm/mach-keystone/keystone.c
+> > index 638808c4e122..a1a19781983b 100644
+> > --- a/arch/arm/mach-keystone/keystone.c
+> > +++ b/arch/arm/mach-keystone/keystone.c
+> > @@ -8,6 +8,7 @@
+> >   */
+> >  #include <linux/io.h>
+> >  #include <linux/of.h>
+> > +#include <linux/dma-mapping.h>
+> >  #include <linux/init.h>
+> >  #include <linux/of_platform.h>
+> >  #include <linux/of_address.h>
+> > @@ -24,8 +25,6 @@
+> >
+> >  #include "keystone.h"
+> >
+> > -static unsigned long keystone_dma_pfn_offset __read_mostly;
+> > -
+> >  static int keystone_platform_notifier(struct notifier_block *nb,
+> >                                     unsigned long event, void *data)
+> >  {
+> > @@ -38,9 +37,12 @@ static int keystone_platform_notifier(struct notifier_block *nb,
+> >               return NOTIFY_BAD;
+> >
+> >       if (!dev->of_node) {
+> > -             dev->dma_pfn_offset = keystone_dma_pfn_offset;
+> > -             dev_err(dev, "set dma_pfn_offset%08lx\n",
+> > -                     dev->dma_pfn_offset);
+> > +             int ret = dma_attach_offset_range(dev, KEYSTONE_HIGH_PHYS_START,
+> > +                                               KEYSTONE_LOW_PHYS_START,
+> > +                                               KEYSTONE_HIGH_PHYS_SIZE);
+> > +             dev_err(dev, "set dma_offset%08llx%s\n",
+> > +                     KEYSTONE_HIGH_PHYS_START - KEYSTONE_LOW_PHYS_START,
+> > +                     ret ? " failed" : "");
+> >       }
+> >       return NOTIFY_OK;
+> >  }
+> > @@ -51,11 +53,8 @@ static struct notifier_block platform_nb = {
+> >
+> >  static void __init keystone_init(void)
+> >  {
+> > -     if (PHYS_OFFSET >= KEYSTONE_HIGH_PHYS_START) {
+> > -             keystone_dma_pfn_offset = PFN_DOWN(KEYSTONE_HIGH_PHYS_START -
+> > -                                                KEYSTONE_LOW_PHYS_START);
+> > +     if (PHYS_OFFSET >= KEYSTONE_HIGH_PHYS_START)
+> >               bus_register_notifier(&platform_bus_type, &platform_nb);
+> > -     }
+> >       keystone_pm_runtime_init();
+> >  }
+> >
+> > diff --git a/arch/sh/drivers/pci/pcie-sh7786.c b/arch/sh/drivers/pci/pcie-sh7786.c
+> > index e0b568aaa701..716bb99022c6 100644
+> > --- a/arch/sh/drivers/pci/pcie-sh7786.c
+> > +++ b/arch/sh/drivers/pci/pcie-sh7786.c
+> > @@ -12,6 +12,7 @@
+> >  #include <linux/io.h>
+> >  #include <linux/async.h>
+> >  #include <linux/delay.h>
+> > +#include <linux/dma-mapping.h>
+> >  #include <linux/slab.h>
+> >  #include <linux/clk.h>
+> >  #include <linux/sh_clk.h>
+> > @@ -31,6 +32,8 @@ struct sh7786_pcie_port {
+> >  static struct sh7786_pcie_port *sh7786_pcie_ports;
+> >  static unsigned int nr_ports;
+> >  static unsigned long dma_pfn_offset;
+> > +size_t memsize;
+> > +u64 memstart;
+> >
+> >  static struct sh7786_pcie_hwops {
+> >       int (*core_init)(void);
+> > @@ -301,7 +304,6 @@ static int __init pcie_init(struct sh7786_pcie_port *port)
+> >       struct pci_channel *chan = port->hose;
+> >       unsigned int data;
+> >       phys_addr_t memstart, memend;
+> > -     size_t memsize;
+> >       int ret, i, win;
+> >
+> >       /* Begin initialization */
+> > @@ -368,8 +370,6 @@ static int __init pcie_init(struct sh7786_pcie_port *port)
+> >       memstart = ALIGN_DOWN(memstart, memsize);
+> >       memsize = roundup_pow_of_two(memend - memstart);
+> >
+> > -     dma_pfn_offset = memstart >> PAGE_SHIFT;
+> > -
+> >       /*
+> >        * If there's more than 512MB of memory, we need to roll over to
+> >        * LAR1/LAMR1.
+> > @@ -487,7 +487,8 @@ int pcibios_map_platform_irq(const struct pci_dev *pdev, u8 slot, u8 pin)
+> >
+> >  void pcibios_bus_add_device(struct pci_dev *pdev)
+> >  {
+> > -     pdev->dev.dma_pfn_offset = dma_pfn_offset;
+> > +     dma_attach_offset_range(&pdev->dev, __pa(memory_start),
+> > +                             __pa(memory_start) - memstart, memsize);
+> >  }
+> >
+> >  static int __init sh7786_pcie_core_init(void)
+> > diff --git a/arch/sh/kernel/dma-coherent.c b/arch/sh/kernel/dma-coherent.c
+> > index d4811691b93c..e00f29c7c443 100644
+> > --- a/arch/sh/kernel/dma-coherent.c
+> > +++ b/arch/sh/kernel/dma-coherent.c
+> > @@ -14,6 +14,7 @@ void *arch_dma_alloc(struct device *dev, size_t size, dma_addr_t *dma_handle,
+> >  {
+> >       void *ret, *ret_nocache;
+> >       int order = get_order(size);
+> > +     phys_addr_t phys;
+> >
+> >       gfp |= __GFP_ZERO;
+> >
+> > @@ -34,11 +35,12 @@ void *arch_dma_alloc(struct device *dev, size_t size, dma_addr_t *dma_handle,
+> >               return NULL;
+> >       }
+> >
+> > -     split_page(pfn_to_page(virt_to_phys(ret) >> PAGE_SHIFT), order);
+> > +     phys = virt_to_phys(ret);
+> > +     split_page(pfn_to_page(PHYS_PFN(phys)), order);
+> >
+> > -     *dma_handle = virt_to_phys(ret);
+> > -     if (!WARN_ON(!dev))
+> > -             *dma_handle -= PFN_PHYS(dev->dma_pfn_offset);
+> > +     *dma_handle = (dma_addr_t)phys;
+> > +     if (!WARN_ON(!dev) && dev->dma_range_map)
+> > +             *dma_handle -= dma_offset_from_phys_addr(dev, phys);
+> >
+> >       return ret_nocache;
+> >  }
+> > @@ -47,11 +49,11 @@ void arch_dma_free(struct device *dev, size_t size, void *vaddr,
+> >               dma_addr_t dma_handle, unsigned long attrs)
+> >  {
+> >       int order = get_order(size);
+> > -     unsigned long pfn = (dma_handle >> PAGE_SHIFT);
+> > +     unsigned long pfn = PHYS_PFN(dma_handle);
+> >       int k;
+> >
+> > -     if (!WARN_ON(!dev))
+> > -             pfn += dev->dma_pfn_offset;
+> > +     if (!WARN_ON(!dev) && dev->dma_range_map)
+> > +             pfn += DMA_ADDR_PFN(dma_offset_from_dma_addr(dev, dma_handle));
+> >
+> >       for (k = 0; k < (1 << order); k++)
+> >               __free_pages(pfn_to_page(pfn + k), 0);
+> > diff --git a/arch/x86/pci/sta2x11-fixup.c b/arch/x86/pci/sta2x11-fixup.c
+> > index c313d784efab..74633ccf622e 100644
+> > --- a/arch/x86/pci/sta2x11-fixup.c
+> > +++ b/arch/x86/pci/sta2x11-fixup.c
+> > @@ -12,6 +12,7 @@
+> >  #include <linux/export.h>
+> >  #include <linux/list.h>
+> >  #include <linux/dma-direct.h>
+> > +#include <linux/dma-mapping.h>
+> >  #include <asm/iommu.h>
+> >
+> >  #define STA2X11_SWIOTLB_SIZE (4*1024*1024)
+> > @@ -133,7 +134,7 @@ static void sta2x11_map_ep(struct pci_dev *pdev)
+> >       struct sta2x11_instance *instance = sta2x11_pdev_to_instance(pdev);
+> >       struct device *dev = &pdev->dev;
+> >       u32 amba_base, max_amba_addr;
+> > -     int i;
+> > +     int i, ret;
+> >
+> >       if (!instance)
+> >               return;
+> > @@ -141,7 +142,9 @@ static void sta2x11_map_ep(struct pci_dev *pdev)
+> >       pci_read_config_dword(pdev, AHB_BASE(0), &amba_base);
+> >       max_amba_addr = amba_base + STA2X11_AMBA_SIZE - 1;
+> >
+> > -     dev->dma_pfn_offset = PFN_DOWN(-amba_base);
+> > +     ret = dma_attach_offset_range(dev, 0, amba_base, STA2X11_AMBA_SIZE);
+> > +     if (ret)
+> > +             dev_err(dev, "sta2x11: could not set DMA offset\n");
+> >
+> >       dev->bus_dma_limit = max_amba_addr;
+> >       pci_set_consistent_dma_mask(pdev, max_amba_addr);
+> > diff --git a/drivers/acpi/arm64/iort.c b/drivers/acpi/arm64/iort.c
+> > index 28a6b387e80e..41c2d861ce43 100644
+> > --- a/drivers/acpi/arm64/iort.c
+> > +++ b/drivers/acpi/arm64/iort.c
+> > @@ -1142,8 +1142,9 @@ void iort_dma_setup(struct device *dev, u64 *dma_addr, u64 *dma_size)
+> >       *dma_addr = dmaaddr;
+> >       *dma_size = size;
+> >
+> > -     dev->dma_pfn_offset = PFN_DOWN(offset);
+> > -     dev_dbg(dev, "dma_pfn_offset(%#08llx)\n", offset);
+> > +     ret = dma_attach_offset_range(dev, dmaaddr + offset, dmaaddr, size);
+> > +
+> > +     dev_dbg(dev, "dma_offset(%#08llx)%s\n", offset, ret ? " failed!" : "");
+> >  }
+> >
+> >  static void __init acpi_iort_register_irq(int hwirq, const char *name,
+> > diff --git a/drivers/gpu/drm/sun4i/sun4i_backend.c b/drivers/gpu/drm/sun4i/sun4i_backend.c
+> > index 072ea113e6be..cbe49a07983c 100644
+> > --- a/drivers/gpu/drm/sun4i/sun4i_backend.c
+> > +++ b/drivers/gpu/drm/sun4i/sun4i_backend.c
+> > @@ -11,6 +11,7 @@
+> >  #include <linux/module.h>
+> >  #include <linux/of_device.h>
+> >  #include <linux/of_graph.h>
+> > +#include <linux/dma-mapping.h>
+> >  #include <linux/platform_device.h>
+> >  #include <linux/reset.h>
+> >
+> > @@ -812,7 +813,9 @@ static int sun4i_backend_bind(struct device *dev, struct device *master,
+> >                * on our device since the RAM mapping is at 0 for the DMA bus,
+> >                * unlike the CPU.
+> >                */
+> > -             drm->dev->dma_pfn_offset = PHYS_PFN_OFFSET;
+> > +             ret = dma_attach_offset_range(drm->dev, PHYS_OFFSET, 0, SZ_4G);
+> > +             if (ret)
+> > +                     return ret;
+> >       }
+> >
+> >       backend->engine.node = dev->of_node;
+> > diff --git a/drivers/iommu/io-pgtable-arm.c b/drivers/iommu/io-pgtable-arm.c
+> > index 04fbd4bf0ff9..d5542df9aacc 100644
+> > --- a/drivers/iommu/io-pgtable-arm.c
+> > +++ b/drivers/iommu/io-pgtable-arm.c
+> > @@ -754,7 +754,7 @@ arm_lpae_alloc_pgtable(struct io_pgtable_cfg *cfg)
+> >       if (cfg->oas > ARM_LPAE_MAX_ADDR_BITS)
+> >               return NULL;
+> >
+> > -     if (!selftest_running && cfg->iommu_dev->dma_pfn_offset) {
+> > +     if (!selftest_running && cfg->iommu_dev->dma_range_map) {
+> >               dev_err(cfg->iommu_dev, "Cannot accommodate DMA offset for IOMMU page tables\n");
+> >               return NULL;
+> >       }
+> > diff --git a/drivers/media/platform/sunxi/sun4i-csi/sun4i_csi.c b/drivers/media/platform/sunxi/sun4i-csi/sun4i_csi.c
+> > index eff34ded6305..95a5d5655056 100644
+> > --- a/drivers/media/platform/sunxi/sun4i-csi/sun4i_csi.c
+> > +++ b/drivers/media/platform/sunxi/sun4i-csi/sun4i_csi.c
+> > @@ -7,6 +7,7 @@
+> >   */
+> >
+> >  #include <linux/clk.h>
+> > +#include <linux/dma-mapping.h>
+> >  #include <linux/interrupt.h>
+> >  #include <linux/module.h>
+> >  #include <linux/mutex.h>
+> > @@ -183,7 +184,9 @@ static int sun4i_csi_probe(struct platform_device *pdev)
+> >                       return ret;
+> >       } else {
+> >  #ifdef PHYS_PFN_OFFSET
+> > -             csi->dev->dma_pfn_offset = PHYS_PFN_OFFSET;
+> > +             ret = dma_attach_offset_range(csi->dev, PHYS_OFFSET, 0, SZ_4G);
+> > +             if (ret)
+> > +                     return ret;
+> >  #endif
+> >       }
+> >
+> > diff --git a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+> > index 055eb0b8e396..c26fc1cdd4d2 100644
+> > --- a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+> > +++ b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+> > @@ -898,7 +898,9 @@ static int sun6i_csi_probe(struct platform_device *pdev)
+> >
+> >       sdev->dev = &pdev->dev;
+> >       /* The DMA bus has the memory mapped at 0 */
+> > -     sdev->dev->dma_pfn_offset = PHYS_OFFSET >> PAGE_SHIFT;
+> > +     ret = dma_attach_offset_range(sdev->dev, PHYS_OFFSET, 0, SZ_4G);
+> > +     if (ret)
+> > +             return ret;
+> >
+> >       ret = sun6i_csi_resource_request(sdev, pdev);
+> >       if (ret)
+> > diff --git a/drivers/of/address.c b/drivers/of/address.c
+> > index 8eea3f6e29a4..5d9117a1cb16 100644
+> > --- a/drivers/of/address.c
+> > +++ b/drivers/of/address.c
+> > @@ -918,33 +918,65 @@ void __iomem *of_io_request_and_map(struct device_node *np, int index,
+> >  }
+> >  EXPORT_SYMBOL(of_io_request_and_map);
+> >
+> > +static const struct bus_dma_region *dma_create_offset_map(struct device_node *node,
+> > +                                                       int num_ranges)
+> > +{
+> > +     struct of_range_parser parser;
+> > +     struct of_range range;
+> > +     struct bus_dma_region *map, *r;
+> > +     int ret;
+> > +
+> > +     r = kcalloc(num_ranges + 1, sizeof(*r), GFP_KERNEL);
+> > +     if (!r)
+> > +             return ERR_PTR(-ENOMEM);
+> > +
+> > +     map = r;
+> > +     ret = of_dma_range_parser_init(&parser, node);
+> > +     if (ret)
+> > +             return ERR_PTR(ret);
+> > +
+> > +     /*
+> > +      * Record all info for DMA ranges array.  We use our
+> > +      * our own struct (bus_dma_region) so it is not dependent
+> > +      * on CONFIG_OF.
+> > +      */
+> > +     for_each_of_range(&parser, &range) {
+> > +             pr_debug("dma_addr(%llx) cpu_addr(%llx) size(%llx)\n",
+> > +                      range.bus_addr, range.cpu_addr, range.size);
+> > +             r->cpu_start = range.cpu_addr;
+> > +             r->dma_start = range.bus_addr;
+> > +             r->size = range.size;
+> > +             r->offset = (u64)range.cpu_addr - (u64)range.bus_addr;
+> > +             r++;
+> > +     }
+> > +     return map;
+> > +}
+> > +
+> >  /**
+> > - * of_dma_get_range - Get DMA range info
+> > + * of_dma_get_range - Get DMA range info and put it into a map array
+> >   * @np:              device node to get DMA range info
+> > - * @dma_addr:        pointer to store initial DMA address of DMA range
+> > - * @paddr:   pointer to store initial CPU address of DMA range
+> > - * @size:    pointer to store size of DMA range
+> >   *
+> >   * Look in bottom up direction for the first "dma-ranges" property
+> > - * and parse it.
+> > - *  dma-ranges format:
+> > + * and parse it.  Put the information into a DMA offset map array.
+> > + *
+> > + * dma-ranges format:
+> >   *   DMA addr (dma_addr)     : naddr cells
+> >   *   CPU addr (phys_addr_t)  : pna cells
+> >   *   size                    : nsize cells
+> >   *
+> > - * It returns -ENODEV if "dma-ranges" property was not found
+> > - * for this device in DT.
+> > + * It returns -ENODEV if "dma-ranges" property was not found for this
+> > + * device in the DT.
+> >   */
+> > -int of_dma_get_range(struct device_node *np, u64 *dma_addr, u64 *paddr, u64 *size)
+> > +const struct bus_dma_region *of_dma_get_range(struct device_node *np)
+> >  {
+> > +     const struct bus_dma_region *map = NULL;
+> >       struct device_node *node = of_node_get(np);
+> > +     struct of_range_parser parser;
+> >       const __be32 *ranges = NULL;
+> > -     int len;
+> > -     int ret = 0;
+> >       bool found_dma_ranges = false;
+> > -     struct of_range_parser parser;
+> >       struct of_range range;
+> > -     u64 dma_start = U64_MAX, dma_end = 0, dma_offset = 0;
+> > +     int len, num_ranges = 0;
+> > +     int ret = 0;
+> >
+> >       while (node) {
+> >               ranges = of_get_property(node, "dma-ranges", &len);
+> > @@ -971,42 +1003,13 @@ int of_dma_get_range(struct device_node *np, u64 *dma_addr, u64 *paddr, u64 *siz
+> >
+> >       of_dma_range_parser_init(&parser, node);
+> >
+> > -     for_each_of_range(&parser, &range) {
+> > -             pr_debug("dma_addr(%llx) cpu_addr(%llx) size(%llx)\n",
+> > -                      range.bus_addr, range.cpu_addr, range.size);
+> > -
+> > -             if (dma_offset && range.cpu_addr - range.bus_addr != dma_offset) {
+> > -                     pr_warn("Can't handle multiple dma-ranges with different offsets on node(%pOF)\n", node);
+> > -                     /* Don't error out as we'd break some existing DTs */
+> > -                     continue;
+> > -             }
+> > -             dma_offset = range.cpu_addr - range.bus_addr;
+> > -
+> > -             /* Take lower and upper limits */
+> > -             if (range.bus_addr < dma_start)
+> > -                     dma_start = range.bus_addr;
+> > -             if (range.bus_addr + range.size > dma_end)
+> > -                     dma_end = range.bus_addr + range.size;
+> > -     }
+> > -
+> > -     if (dma_start >= dma_end) {
+> > -             ret = -EINVAL;
+> > -             pr_debug("Invalid DMA ranges configuration on node(%pOF)\n",
+> > -                      node);
+> > -             goto out;
+> > -     }
+> > -
+> > -     *dma_addr = dma_start;
+> > -     *size = dma_end - dma_start;
+> > -     *paddr = dma_start + dma_offset;
+> > -
+> > -     pr_debug("final: dma_addr(%llx) cpu_addr(%llx) size(%llx)\n",
+> > -              *dma_addr, *paddr, *size);
+> > +     for_each_of_range(&parser, &range)
+> > +             num_ranges++;
+> >
+> > +     map = dma_create_offset_map(node, num_ranges);
+> >  out:
+> >       of_node_put(node);
+> > -
+> > -     return ret;
+> > +     return map ? map : ERR_PTR(ret);
+> >  }
+> >
+> >  /**
+> > diff --git a/drivers/of/device.c b/drivers/of/device.c
+> > index 27203bfd0b22..fea2f31d4245 100644
+> > --- a/drivers/of/device.c
+> > +++ b/drivers/of/device.c
+> > @@ -88,14 +88,15 @@ int of_device_add(struct platform_device *ofdev)
+> >   */
+> >  int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
+> >  {
+> > -     u64 dma_addr, paddr, size = 0;
+> > -     int ret;
+> > -     bool coherent;
+> > -     unsigned long offset;
+> >       const struct iommu_ops *iommu;
+> > -     u64 mask, end;
+> > +     const struct bus_dma_region *map;
+> > +     dma_addr_t dma_start = 0;
+> > +     u64 mask, end, size = 0;
+> > +     bool coherent;
+> > +     int ret;
+> >
+> > -     ret = of_dma_get_range(np, &dma_addr, &paddr, &size);
+> > +     map = of_dma_get_range(np);
+> > +     ret = PTR_ERR_OR_ZERO(map);
+> >       if (ret < 0) {
+> >               /*
+> >                * For legacy reasons, we have to assume some devices need
+> > @@ -105,25 +106,36 @@ int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
+> >               if (!force_dma)
+> >                       return ret == -ENODEV ? 0 : ret;
+> >
+> > -             dma_addr = offset = 0;
+> > -     } else {
+> > -             offset = PFN_DOWN(paddr - dma_addr);
+> > +             dma_start = 0;
+> > +             map = NULL;
+> > +     } else if (map) {
+> > +             const struct bus_dma_region *r = map;
+> > +             dma_addr_t dma_end = 0;
+> > +
+> > +             /* Determine the overall bounds of all DMA regions */
+> > +             for (dma_start = ~(dma_addr_t)0; r->size; r++) {
+> > +                     /* Take lower and upper limits */
+> > +                     if (r->dma_start < dma_start)
+> > +                             dma_start = r->dma_start;
+> > +                     if (r->dma_start + r->size > dma_end)
+> > +                             dma_end = r->dma_start + r->size;
+> > +             }
+> > +             size = dma_end - dma_start;
+> >
+> >               /*
+> >                * Add a work around to treat the size as mask + 1 in case
+> >                * it is defined in DT as a mask.
+> >                */
+> >               if (size & 1) {
+> > -                     dev_warn(dev, "Invalid size 0x%llx for dma-range\n",
+> > -                              size);
+> > +                     dev_warn(dev, "Invalid size 0x%llx for dma-range(s)\n", size);
+> >                       size = size + 1;
+> >               }
+> >
+> >               if (!size) {
+> >                       dev_err(dev, "Adjusted size 0x%llx invalid\n", size);
+> > +                     kfree(map);
+> >                       return -EINVAL;
+> >               }
+> > -             dev_dbg(dev, "dma_pfn_offset(%#08lx)\n", offset);
+> >       }
+> >
+> >       /*
+> > @@ -142,13 +154,11 @@ int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
+> >       else if (!size)
+> >               size = 1ULL << 32;
+> >
+> > -     dev->dma_pfn_offset = offset;
+> > -
+> >       /*
+> >        * Limit coherent and dma mask based on size and default mask
+> >        * set by the driver.
+> >        */
+> > -     end = dma_addr + size - 1;
+> > +     end = dma_start + size - 1;
+> >       mask = DMA_BIT_MASK(ilog2(end) + 1);
+> >       dev->coherent_dma_mask &= mask;
+> >       *dev->dma_mask &= mask;
+> > @@ -161,14 +171,17 @@ int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
+> >               coherent ? " " : " not ");
+> >
+> >       iommu = of_iommu_configure(dev, np);
+> > -     if (PTR_ERR(iommu) == -EPROBE_DEFER)
+> > +     if (PTR_ERR(iommu) == -EPROBE_DEFER) {
+> > +             kfree(map);
+> >               return -EPROBE_DEFER;
+> > +     }
+> >
+> >       dev_dbg(dev, "device is%sbehind an iommu\n",
+> >               iommu ? " " : " not ");
+> >
+> > -     arch_setup_dma_ops(dev, dma_addr, size, iommu, coherent);
+> > +     arch_setup_dma_ops(dev, dma_start, size, iommu, coherent);
+> >
+> > +     dev->dma_range_map = map;
+> >       return 0;
+> >  }
+> >  EXPORT_SYMBOL_GPL(of_dma_configure);
+> > diff --git a/drivers/of/of_private.h b/drivers/of/of_private.h
+> > index edc682249c00..876149e721c5 100644
+> > --- a/drivers/of/of_private.h
+> > +++ b/drivers/of/of_private.h
+> > @@ -157,14 +157,13 @@ extern void __of_sysfs_remove_bin_file(struct device_node *np,
+> >  extern int of_bus_n_addr_cells(struct device_node *np);
+> >  extern int of_bus_n_size_cells(struct device_node *np);
+> >
+> > +struct bus_dma_region;
+> >  #ifdef CONFIG_OF_ADDRESS
+> > -extern int of_dma_get_range(struct device_node *np, u64 *dma_addr,
+> > -                         u64 *paddr, u64 *size);
+> > +extern const struct bus_dma_region *of_dma_get_range(struct device_node *np);
+> >  #else
+> > -static inline int of_dma_get_range(struct device_node *np, u64 *dma_addr,
+> > -                                u64 *paddr, u64 *size)
+> > +static inline const struct bus_dma_region *of_dma_get_range(struct device_node *np)
+> >  {
+> > -     return -ENODEV;
+> > +     return ERR_PTR(-ENODEV);
+> >  }
+> >  #endif
+> >
+> > diff --git a/drivers/of/unittest.c b/drivers/of/unittest.c
+> > index 398de04fd19c..542d092f19c2 100644
+> > --- a/drivers/of/unittest.c
+> > +++ b/drivers/of/unittest.c
+> > @@ -7,6 +7,7 @@
+> >
+> >  #include <linux/memblock.h>
+> >  #include <linux/clk.h>
+> > +#include <linux/dma-mapping.h>
+> >  #include <linux/err.h>
+> >  #include <linux/errno.h>
+> >  #include <linux/hashtable.h>
+> > @@ -869,10 +870,10 @@ static void __init of_unittest_changeset(void)
+> >  }
+> >
+> >  static void __init of_unittest_dma_ranges_one(const char *path,
+> > -             u64 expect_dma_addr, u64 expect_paddr, u64 expect_size)
+> > +             u64 expect_dma_addr, u64 expect_paddr)
+> >  {
+> >       struct device_node *np;
+> > -     u64 dma_addr, paddr, size;
+> > +     const struct bus_dma_region *map = NULL;
+> >       int rc;
+> >
+> >       np = of_find_node_by_path(path);
+> > @@ -881,16 +882,27 @@ static void __init of_unittest_dma_ranges_one(const char *path,
+> >               return;
+> >       }
+> >
+> > -     rc = of_dma_get_range(np, &dma_addr, &paddr, &size);
+> > -
+> > +     map = of_dma_get_range(np);
+> > +     rc = PTR_ERR_OR_ZERO(map);
+> >       unittest(!rc, "of_dma_get_range failed on node %pOF rc=%i\n", np, rc);
+> > -     if (!rc) {
+> > -             unittest(size == expect_size,
+> > -                      "of_dma_get_range wrong size on node %pOF size=%llx\n", np, size);
+> > +
+> > +     if (!rc && map) {
+> > +             phys_addr_t     paddr;
+> > +             dma_addr_t      dma_addr;
+> > +             struct device   dev_bogus;
+> > +
+> > +             dev_bogus.dma_range_map = map;
+> > +             paddr = (phys_addr_t)expect_dma_addr
+> > +                     + dma_offset_from_dma_addr(&dev_bogus, expect_dma_addr);
+> > +             dma_addr = (dma_addr_t)expect_paddr
+> > +                     - dma_offset_from_phys_addr(&dev_bogus, expect_paddr);
+> > +
+> >               unittest(paddr == expect_paddr,
+> >                        "of_dma_get_range wrong phys addr (%llx) on node %pOF", paddr, np);
+> >               unittest(dma_addr == expect_dma_addr,
+> >                        "of_dma_get_range wrong DMA addr (%llx) on node %pOF", dma_addr, np);
+> > +
+> > +             kfree(map);
+> >       }
+> >       of_node_put(np);
+> >  }
+> > @@ -898,11 +910,14 @@ static void __init of_unittest_dma_ranges_one(const char *path,
+> >  static void __init of_unittest_parse_dma_ranges(void)
+> >  {
+> >       of_unittest_dma_ranges_one("/testcase-data/address-tests/device@70000000",
+> > -             0x0, 0x20000000, 0x40000000);
+> > +             0x0, 0x20000000);
+> >       of_unittest_dma_ranges_one("/testcase-data/address-tests/bus@80000000/device@1000",
+> > -             0x10000000, 0x20000000, 0x40000000);
+> > +             0x10000000, 0x20000000);
+> > +     /* pci@90000000 has two ranges in the dma-range property */
+> > +     of_unittest_dma_ranges_one("/testcase-data/address-tests/pci@90000000",
+> > +             0x80000000, 0x20000000);
+> >       of_unittest_dma_ranges_one("/testcase-data/address-tests/pci@90000000",
+> > -             0x80000000, 0x20000000, 0x10000000);
+> > +             0xc0000000, 0x40000000);
+> >  }
+> >
+> >  static void __init of_unittest_pci_dma_ranges(void)
+> > diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
+> > index 9f04c30c4aaf..49242dd6176e 100644
+> > --- a/drivers/remoteproc/remoteproc_core.c
+> > +++ b/drivers/remoteproc/remoteproc_core.c
+> > @@ -519,7 +519,7 @@ static int rproc_handle_vdev(struct rproc *rproc, struct fw_rsc_vdev *rsc,
+> >       /* Initialise vdev subdevice */
+> >       snprintf(name, sizeof(name), "vdev%dbuffer", rvdev->index);
+> >       rvdev->dev.parent = &rproc->dev;
+> > -     rvdev->dev.dma_pfn_offset = rproc->dev.parent->dma_pfn_offset;
+> > +     rvdev->dev.dma_range_map = rproc->dev.parent->dma_range_map;
+> >       rvdev->dev.release = rproc_rvdev_release;
+> >       dev_set_name(&rvdev->dev, "%s#%s", dev_name(rvdev->dev.parent), name);
+> >       dev_set_drvdata(&rvdev->dev, rvdev);
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> > index 1744e6fcc999..720b41eca7a3 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
+> > @@ -230,8 +230,11 @@ int cedrus_hw_probe(struct cedrus_dev *dev)
+> >        */
+> >
+> >  #ifdef PHYS_PFN_OFFSET
+> > -     if (!(variant->quirks & CEDRUS_QUIRK_NO_DMA_OFFSET))
+> > -             dev->dev->dma_pfn_offset = PHYS_PFN_OFFSET;
+> > +     if (!(variant->quirks & CEDRUS_QUIRK_NO_DMA_OFFSET)) {
+> > +             ret = dma_attach_offset_range(dev->dev, PHYS_OFFSET, 0, SZ_4G);
+> > +             if (ret)
+> > +                     return ret;
+> > +     }
+> >  #endif
+> >
+> >       ret = of_reserved_mem_device_init(dev->dev);
+> > diff --git a/drivers/usb/core/message.c b/drivers/usb/core/message.c
+> > index 6197938dcc2d..376ca258e510 100644
+> > --- a/drivers/usb/core/message.c
+> > +++ b/drivers/usb/core/message.c
+> > @@ -1956,10 +1956,10 @@ int usb_set_configuration(struct usb_device *dev, int configuration)
+> >               intf->dev.groups = usb_interface_groups;
+> >               /*
+> >                * Please refer to usb_alloc_dev() to see why we set
+> > -              * dma_mask and dma_pfn_offset.
+> > +              * dma_mask and dma_range_map.
+> >                */
+> >               intf->dev.dma_mask = dev->dev.dma_mask;
+> > -             intf->dev.dma_pfn_offset = dev->dev.dma_pfn_offset;
+> > +             intf->dev.dma_range_map = dev->dev.dma_range_map;
+> >               INIT_WORK(&intf->reset_ws, __usb_queue_reset_device);
+> >               intf->minor = -1;
+> >               device_initialize(&intf->dev);
+> > diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
+> > index f16c26dc079d..1f167a2c095e 100644
+> > --- a/drivers/usb/core/usb.c
+> > +++ b/drivers/usb/core/usb.c
+> > @@ -611,7 +611,7 @@ struct usb_device *usb_alloc_dev(struct usb_device *parent,
+> >        * mask for the entire HCD, so don't do that.
+> >        */
+> >       dev->dev.dma_mask = bus->sysdev->dma_mask;
+> > -     dev->dev.dma_pfn_offset = bus->sysdev->dma_pfn_offset;
+> > +     dev->dev.dma_range_map = bus->sysdev->dma_range_map;
+> >       set_dev_node(&dev->dev, dev_to_node(bus->sysdev));
+> >       dev->state = USB_STATE_ATTACHED;
+> >       dev->lpm_disable_count = 1;
+> > diff --git a/include/linux/device.h b/include/linux/device.h
+> > index 15460a5ac024..feddefcf3e5c 100644
+> > --- a/include/linux/device.h
+> > +++ b/include/linux/device.h
+> > @@ -492,7 +492,7 @@ struct dev_links_info {
+> >   *           such descriptors.
+> >   * @bus_dma_limit: Limit of an upstream bridge or bus which imposes a smaller
+> >   *           DMA limit than the device itself supports.
+> > - * @dma_pfn_offset: offset of DMA memory range relatively of RAM
+> > + * @dma_range_map: map for DMA memory ranges relative to that of RAM
+> >   * @dma_parms:       A low level driver may set these to teach IOMMU code about
+> >   *           segment limitations.
+> >   * @dma_pools:       Dma pools (if dma'ble device).
+> > @@ -577,7 +577,7 @@ struct device {
+> >                                            64 bit addresses for consistent
+> >                                            allocations such descriptors. */
+> >       u64             bus_dma_limit;  /* upstream dma constraint */
+> > -     unsigned long   dma_pfn_offset;
+> > +     const struct bus_dma_region *dma_range_map;
+> >
+> >       struct device_dma_parameters *dma_parms;
+> >
+> > diff --git a/include/linux/dma-direct.h b/include/linux/dma-direct.h
+> > index cdfa400f89b3..182784d28cfd 100644
+> > --- a/include/linux/dma-direct.h
+> > +++ b/include/linux/dma-direct.h
+> > @@ -15,14 +15,20 @@ static inline dma_addr_t __phys_to_dma(struct device *dev, phys_addr_t paddr)
+> >  {
+> >       dma_addr_t dev_addr = (dma_addr_t)paddr;
+> >
+> > -     return dev_addr - ((dma_addr_t)dev->dma_pfn_offset << PAGE_SHIFT);
+> > +     if (dev->dma_range_map)
+> > +             dev_addr -= dma_offset_from_phys_addr(dev, paddr);
+> > +
+> > +     return dev_addr;
+> >  }
+> >
+> >  static inline phys_addr_t __dma_to_phys(struct device *dev, dma_addr_t dev_addr)
+> >  {
+> >       phys_addr_t paddr = (phys_addr_t)dev_addr;
+> >
+> > -     return paddr + ((phys_addr_t)dev->dma_pfn_offset << PAGE_SHIFT);
+> > +     if (dev->dma_range_map)
+> > +             paddr += dma_offset_from_dma_addr(dev, dev_addr);
+> > +
+> > +     return paddr;
+> >  }
+> >  #endif /* !CONFIG_ARCH_HAS_PHYS_TO_DMA */
+> >
+> > diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
+> > index 78f677cf45ab..7c8fcac30e74 100644
+> > --- a/include/linux/dma-mapping.h
+> > +++ b/include/linux/dma-mapping.h
+> > @@ -255,7 +255,37 @@ static inline void dma_direct_sync_sg_for_cpu(struct device *dev,
+> >
+> >  size_t dma_direct_max_mapping_size(struct device *dev);
+> >
+> > +struct bus_dma_region {
+> > +     phys_addr_t     cpu_start;
+> > +     dma_addr_t      dma_start;
+> > +     u64             size;
+> > +     u64             offset;
+> > +};
+> > +
+> >  #ifdef CONFIG_HAS_DMA
+> > +int dma_attach_offset_range(struct device *dev, phys_addr_t cpu_start,
+> > +             dma_addr_t dma_start, u64 size);
+> > +
+> > +static inline u64 dma_offset_from_dma_addr(struct device *dev, dma_addr_t dma_addr)
+> > +{
+> > +     const struct bus_dma_region *m = dev->dma_range_map;
+> > +
+> > +     for (; m->size; m++)
+> > +             if (dma_addr >= m->dma_start && dma_addr - m->dma_start < m->size)
+> > +                     return m->offset;
+> > +     return 0;
+> > +}
+> > +
+> > +static inline u64 dma_offset_from_phys_addr(struct device *dev, phys_addr_t paddr)
+> > +{
+> > +     const struct bus_dma_region *m = dev->dma_range_map;
+> > +
+> > +     for (; m->size; m++)
+> > +             if (paddr >= m->cpu_start && paddr - m->cpu_start < m->size)
+> > +                     return m->offset;
+> > +     return 0;
+> > +}
+> > +
+> >  #include <asm/dma-mapping.h>
+> >
+> >  static inline const struct dma_map_ops *get_dma_ops(struct device *dev)
+> > @@ -463,6 +493,19 @@ u64 dma_get_required_mask(struct device *dev);
+> >  size_t dma_max_mapping_size(struct device *dev);
+> >  unsigned long dma_get_merge_boundary(struct device *dev);
+> >  #else /* CONFIG_HAS_DMA */
+> > +static inline u64 dma_offset_from_dma_addr(struct device *dev, dma_addr_t dma_addr)
+> > +{
+> > +     return (u64)0;
+> > +}
+> > +static inline u64 dma_offset_from_phys_addr(struct device *dev, phys_addr_t paddr)
+> > +{
+> > +     return (u64)0;
+> > +}
+> > +static int dma_attach_offset_range(struct device *dev, phys_addr_t cpu_start,
+> > +             dma_addr_t dma_start, u64 size)
+> > +{
+> > +     return -EIO;
+> > +}
+> >  static inline dma_addr_t dma_map_page_attrs(struct device *dev,
+> >               struct page *page, size_t offset, size_t size,
+> >               enum dma_data_direction dir, unsigned long attrs)
+> > diff --git a/include/linux/pfn.h b/include/linux/pfn.h
+> > index 14bc053c53d8..eddb535075a0 100644
+> > --- a/include/linux/pfn.h
+> > +++ b/include/linux/pfn.h
+> > @@ -20,5 +20,7 @@ typedef struct {
+> >  #define PFN_DOWN(x)  ((x) >> PAGE_SHIFT)
+> >  #define PFN_PHYS(x)  ((phys_addr_t)(x) << PAGE_SHIFT)
+> >  #define PHYS_PFN(x)  ((unsigned long)((x) >> PAGE_SHIFT))
+> > +#define PFN_DMA_ADDR(x)      ((dma_addr_t)(x) << PAGE_SHIFT)
+> > +#define DMA_ADDR_PFN(x)      ((unsigned long)((x) >> PAGE_SHIFT))
+> >
+> >  #endif
+> > diff --git a/kernel/dma/coherent.c b/kernel/dma/coherent.c
+> > index 2a0c4985f38e..66b1ac611c61 100644
+> > --- a/kernel/dma/coherent.c
+> > +++ b/kernel/dma/coherent.c
+> > @@ -31,10 +31,12 @@ static inline struct dma_coherent_mem *dev_get_coherent_memory(struct device *de
+> >  static inline dma_addr_t dma_get_device_base(struct device *dev,
+> >                                            struct dma_coherent_mem * mem)
+> >  {
+> > -     if (mem->use_dev_dma_pfn_offset)
+> > -             return (mem->pfn_base - dev->dma_pfn_offset) << PAGE_SHIFT;
+> > -     else
+> > -             return mem->device_base;
+> > +     if (mem->use_dev_dma_pfn_offset && dev->dma_range_map) {
+> > +             u64 dma_offset = dma_offset_from_phys_addr(dev, PFN_PHYS(mem->pfn_base));
+> > +
+> > +             return PFN_DMA_ADDR(mem->pfn_base) - dma_offset;
+> > +     }
+> > +     return mem->device_base;
+> >  }
+> >
+> >  static int dma_init_coherent_memory(phys_addr_t phys_addr,
+> > diff --git a/kernel/dma/mapping.c b/kernel/dma/mapping.c
+> > index 98e3d873792e..2c08c4991bfa 100644
+> > --- a/kernel/dma/mapping.c
+> > +++ b/kernel/dma/mapping.c
+> > @@ -11,6 +11,7 @@
+> >  #include <linux/dma-noncoherent.h>
+> >  #include <linux/export.h>
+> >  #include <linux/gfp.h>
+> > +#include <linux/limits.h>
+> >  #include <linux/of_device.h>
+> >  #include <linux/slab.h>
+> >  #include <linux/vmalloc.h>
+> > @@ -407,3 +408,55 @@ unsigned long dma_get_merge_boundary(struct device *dev)
+> >       return ops->get_merge_boundary(dev);
+> >  }
+> >  EXPORT_SYMBOL_GPL(dma_get_merge_boundary);
+> > +
+> > +/**
+> > + * dma_attach_offset_range - Assign scalar offset for a single DMA range.
+> > + * @dev:     device pointer; needed to "own" the alloced memory.
+> > + * @cpu_start:  beginning of memory region covered by this offset.
+> > + * @dma_start:  beginning of DMA/PCI region covered by this offset.
+> > + * @size:    size of the region.
+> > + *
+> > + * This is for the simple case of a uniform offset which cannot
+> > + * be discovered by "dma-ranges".
+> > + *
+> > + * It returns -ENOMEM if out of memory, -ENODEV if dev == NULL, otherwise 0.
+> > + */
+> > +int dma_attach_offset_range(struct device *dev, phys_addr_t cpu_start,
+> > +                         dma_addr_t dma_start, u64 size)
+> > +{
+> > +     struct bus_dma_region *map;
+> > +     u64 offset = (u64)cpu_start - (u64)dma_start;
+> > +
+> > +     if (!dev)
+> > +             return -ENODEV;
+> > +
+> > +     /* See if a map already exists and we already encompass the new range */
+> > +     if (dev->dma_range_map) {
+> > +             const struct bus_dma_region *m = dev->dma_range_map;
+> > +
+> > +             for (; m->size; m++)
+> > +                     if (offset == m->offset && cpu_start >= m->cpu_start
+> > +                         && size <= m->size && cpu_start - m->cpu_start <= m->size - size)
+> > +                             return 0;
+> > +
+> > +             dev_err(dev, "attempt to add conflicting DMA range to existing map\n");
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     if (!offset)
+> > +             return 0;
+> > +
+> > +     /* Don't use devm_kcalloc() since this may be called as bus a notifier */
+> > +     map = kcalloc(2, sizeof(*map), GFP_KERNEL);
+> > +     if (!map)
+> > +             return -ENOMEM;
+> > +     dev->dma_range_map = map;
+> > +
+> > +     map->cpu_start = cpu_start;
+> > +     map->dma_start = dma_start;
+> > +     map->offset = offset;
+> > +     map->size = size;
+> > +
+> > +     return 0;
+> > +}
+> > +EXPORT_SYMBOL_GPL(dma_attach_offset_range);
+> > --
+> > 2.17.1
+> ---end quoted text---
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
