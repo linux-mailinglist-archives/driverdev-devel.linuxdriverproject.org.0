@@ -1,60 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23AFA2299BC
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 16:05:36 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 15DD9229A8C
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 16:50:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 659B38819D;
-	Wed, 22 Jul 2020 14:05:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5D27020509;
+	Wed, 22 Jul 2020 14:50:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JJIvVvHBeCEY; Wed, 22 Jul 2020 14:05:34 +0000 (UTC)
+	with ESMTP id gXSW5caQWaCd; Wed, 22 Jul 2020 14:50:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4BE9488111;
-	Wed, 22 Jul 2020 14:05:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 81373204D0;
+	Wed, 22 Jul 2020 14:50:43 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F028A1BF36E
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 14:05:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0C4361BF36E
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 14:50:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EAA548857F
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 14:05:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 091AA8842D
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 14:50:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RjwdLY3u-oUv for <devel@linuxdriverproject.org>;
- Wed, 22 Jul 2020 14:05:31 +0000 (UTC)
+ with ESMTP id eseDbAAuAhP1 for <devel@linuxdriverproject.org>;
+ Wed, 22 Jul 2020 14:50:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0907B88508
- for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 14:05:31 +0000 (UTC)
-Received: from coco.lan (ip5f5ad5c5.dynamic.kabel-deutschland.de
- [95.90.213.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6A985205CB;
- Wed, 22 Jul 2020 14:05:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595426730;
- bh=iloCKMSR9b1tfTvy/7rJoAq1rMiDVjg+2iSq3QdT19U=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=iNeeTwj3TjCoEzSr90MvRIkmt/LcCd92oxk5dJb0VzqASUTyQLM+pe7WqjMEeJNMG
- Y4VfbbE9YN4YiWrBOJmYU55zvAncU0xsd8XHsQdaRBOUwEprSWaR/7ldZncgeYLoXu
- op/ZtUkB8cyVJE6ry2C54BdykodXWFHClDXjQw8w=
-Date: Wed, 22 Jul 2020 16:05:26 +0200
-From: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: Rahul Gottipati <rahul.blr97@gmail.com>
-Subject: Re: [PATCH v2 2/2] media: atomisp: Fix coding style issue - correct
- multiline comments
-Message-ID: <20200722160526.5b83341e@coco.lan>
-In-Reply-To: <c73ee9bced34777cea5b1a3a97f57c723b0a97b1.1595416585.git.rahul.blr97@gmail.com>
-References: <cover.1595416585.git.rahul.blr97@gmail.com>
- <c73ee9bced34777cea5b1a3a97f57c723b0a97b1.1595416585.git.rahul.blr97@gmail.com>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8726688424
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 14:50:37 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id f16so1509322pjt.0
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 07:50:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+ bh=5KwDFzjwATlcwnMsKxx3jtI0OOjrYoZsX8bMqHTFy80=;
+ b=a9kkA8q3PPehP2B672LSFx62bjZbNwORAao4mIGVqvOETLOs1+JfnGGkY5/Vt2yPct
+ iWFcLhSRIs+eUyGSEa0tp03mGOS5JAlegURFOMF+WdrJTL6LA55mgO2ykxE6rj/2uNbT
+ FxWpGKqZhGzKWiAwqKlWeysrCucbqQM1GD9z49aZ3beL5OVn7b/OeCrT6H4Sp0CnvAzl
+ 5jcnJjG10YUszy1axPAtoKYMhWhHlfAggdThjNI9G2Zya8wAW3vb8aklMHExaFv41RV2
+ oPj+0nG5IF8VfVleyakNLYrTx/g4EbqdDF35mEXcsim6ahhANQlpZjI/0Fys6CM6MFWU
+ +Hjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=5KwDFzjwATlcwnMsKxx3jtI0OOjrYoZsX8bMqHTFy80=;
+ b=OSMSt2JT51VO/+w2F+hFzAAkkPU9i6PzJG5nGXOm5IkVeUzxqRIWt9xJdEGNyjSUFz
+ 9/Pr9iw4NCh4yPy/mTxjpiNt1x9/y0gIGqIDEMFDIoqD/kLq4/Uods2KD5lZSudxXmcV
+ TmB6dN5Z38ikOhFm2Gwkmg0YrQypSvNATs48ex4F7h7e3nOzaWsb8FWdF3mIVLfD8WWf
+ 64AkoI416R5fDIgISA2qRAgYyMqasQpAmedJZS7gQWtl60SwD5jO1m96R1NucDT8yH58
+ ZQiIxUbH7WPkS7dT9Vpf29TDJfCmAzxG74bEVqYVb12nfN3TJi0agSRcd0HHtrxhlGD5
+ j2Lg==
+X-Gm-Message-State: AOAM530mmxJGIdyqt+emBoKyg+TrfJhwha+x6J1odZrG8ih+uiLR5owz
+ iP3EqHj9PgHzyXCwLYyludo=
+X-Google-Smtp-Source: ABdhPJwIQtkQV/Nw0j8zIa2C2+iCHblYYqg9M6w29nOlQsOIwLitKsspEQaVMSbEIiHcdZW4RrQrpg==
+X-Received: by 2002:a17:90b:1993:: with SMTP id
+ mv19mr10406755pjb.39.1595429437108; 
+ Wed, 22 Jul 2020 07:50:37 -0700 (PDT)
+Received: from rahulg-ThinkPad-T450 ([122.175.125.202])
+ by smtp.gmail.com with ESMTPSA id j26sm64267pfe.200.2020.07.22.07.50.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Jul 2020 07:50:36 -0700 (PDT)
+Date: Wed, 22 Jul 2020 20:20:32 +0530
+From: Rahul Gottipati <rahul.blr97@gmail.com>
+To: mchehab@kernel.org
+Subject: [PATCH v3 0/2] General coding style clean-up
+Message-ID: <cover.1595429109.git.rahul.blr97@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,87 +91,19 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Wed, 22 Jul 2020 17:00:52 +0530
-Rahul Gottipati <rahul.blr97@gmail.com> escreveu:
+This patchset fixes several checkpatch.pl warnings in atomisp_ioctl.c
+that have been distributed across 2 patches logically.
 
-> This fixes some coding style issues of multiline comments to
-> correct a few checkpatch.pl warnings.
-> 
-> Signed-off-by: Rahul Gottipati <rahul.blr97@gmail.com>
-> ---
-> Changes in v2:
-> 	Distributed changes across 2 patches instead of the previous 1.
->  drivers/staging/media/atomisp/pci/atomisp_ioctl.c | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-> index 9cdcbe774229..5bf3a86f98f8 100644
-> --- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-> +++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-> @@ -1281,7 +1281,8 @@ static int atomisp_qbuf(struct file *file, void *fh, struct v4l2_buffer *buf)
->  	 * But the capture number cannot be determined by HAL.
->  	 * So HAL only sets the capture number to be 1 and queue multiple
->  	 * buffers. Atomisp driver needs to check this case and re-trigger
-> -	 * CSS to do capture when new buffer is queued. */
-> +	 * CSS to do capture when new buffer is queued.
-> +	 */
->  	if (asd->continuous_mode->val &&
->  	    atomisp_subdev_source_pad(vdev)
->  	    == ATOMISP_SUBDEV_PAD_SOURCE_CAPTURE &&
-> @@ -1806,7 +1807,7 @@ static int atomisp_streamon(struct file *file, void *fh,
->  		/*
->  		 * set freq to max when streaming count > 1 which indicate
->  		 * dual camera would run
-> -		*/
-> +		 */
->  		if (atomisp_streaming_count(isp) > 1) {
->  			if (atomisp_freq_scaling(isp,
->  						 ATOMISP_DFS_MODE_MAX, false) < 0)
-> @@ -2438,7 +2439,8 @@ static int atomisp_g_ext_ctrls(struct file *file, void *fh,
->  	int i, ret = 0;
->  
->  	/* input_lock is not need for the Camera related IOCTLs
-> -	 * The input_lock downgrade the FPS of 3A*/
-> +	 * The input_lock downgrade the FPS of 3A
-> +	 */
+Rahul Gottipati (2):
+  media: atomisp: Fix coding style issue - remove beginning whitespaces
+  media: atomisp: Fix coding style issue - correct multiline comments
 
+ .../staging/media/atomisp/pci/atomisp_ioctl.c | 38 +++++++++++--------
+ 1 file changed, 23 insertions(+), 15 deletions(-)
 
-On media (and on several subsystems), we keep the first line in blank,
-on multi-line comments:
+-- 
+2.25.1
 
- 	/* 
-	 * input_lock is not need for the Camera related IOCTLs
-	 * The input_lock downgrade the FPS of 3A
-	 */
-	
->  	ret = atomisp_camera_g_ext_ctrls(file, fh, c);
->  	if (ret != -EINVAL)
->  		return ret;
-> @@ -2521,7 +2523,8 @@ static int atomisp_camera_s_ext_ctrls(struct file *file, void *fh,
->  				    v4l2_s_ctrl(NULL, isp->flash->ctrl_handler,
->  						&ctrl);
->  				/* When flash mode is changed we need to reset
-> -				 * flash state */
-> +				 * flash state
-> +				 */
->  				if (ctrl.id == V4L2_CID_FLASH_MODE) {
->  					asd->params.flash_state =
->  					    ATOMISP_FLASH_IDLE;
-> @@ -2560,7 +2563,8 @@ static int atomisp_s_ext_ctrls(struct file *file, void *fh,
->  	int i, ret = 0;
->  
->  	/* input_lock is not need for the Camera related IOCTLs
-> -	 * The input_lock downgrade the FPS of 3A*/
-> +	 * The input_lock downgrade the FPS of 3A
-> +	 */
->  	ret = atomisp_camera_s_ext_ctrls(file, fh, c);
->  	if (ret != -EINVAL)
->  		return ret;
-
-
-
-Thanks,
-Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
