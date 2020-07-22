@@ -2,76 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3685229E54
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 19:20:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D3D222A055
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 21:56:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DE850882F1;
-	Wed, 22 Jul 2020 17:20:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 77C1A87F72;
+	Wed, 22 Jul 2020 19:56:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w2r-ELmfb-L3; Wed, 22 Jul 2020 17:20:00 +0000 (UTC)
+	with ESMTP id PbisitrN9zxr; Wed, 22 Jul 2020 19:56:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 93D9488161;
-	Wed, 22 Jul 2020 17:19:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EA8A9882EE;
+	Wed, 22 Jul 2020 19:56:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 729AE1BF591
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 17:19:57 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E5321BF3F9
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 19:56:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5C88E20477
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 17:19:57 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5B28F868CB
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 19:56:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WgcYM8WuinVa for <devel@linuxdriverproject.org>;
- Wed, 22 Jul 2020 17:19:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 81DF520425
- for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 17:19:56 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id 184so2738786wmb.0
- for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 10:19:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=U9D+0Ct1EtIB5tMzgMoQL7ukxnL4Apd61YzkKS86VhM=;
- b=DJxTsMo9lMr3Kx1STp3oPnKHS4WatHi1vqKHjfXy0eJid1QxPl78X1Og4P97cYb6yS
- MzuB0zji7KW4nucHZo2iilJMfS6nMNdvwocoA69xIhtVWWjYejtkTtxLeUAIvT757+Nf
- HMb0AwX4k8F9m3HEQE1arOxAhtTGX4a6L/ZXAdpcjDQHclSF7yBbOesJMyL3md8OY9my
- w/lFX/dkk/6hb4chP1quW4Tc2RP5AlIqwQqds8zfOT1Lgq/r3W9U6btzxEUNnBdL+u8v
- 5EBMcBv4gG5GIgsmguayN5ZhTKW0el+vM0pxOMsfQLSVmYY4eDoLRwCG2fZBw4RHCXC2
- EQqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=U9D+0Ct1EtIB5tMzgMoQL7ukxnL4Apd61YzkKS86VhM=;
- b=mAPF43zoJeNJjtpC7JbEGgGNpuD+1ILx1Bc7eg5qTA2ySInG3n71WPjKaMawMKNTte
- zXwrBswEQhREVbnv3P37l4wsToiTtYP9XDA+DDh9KRZFKz6rb6hieo1IzNYNp3qzzJFW
- /YpHrpup+VS2fK40EYaSgY/V1Been2/ET0EmrY5UODkFyXIbiPcYtFCZC0Tm0nSNrgHN
- 87HME3dQpjvxxkXUwsveekXokNf5dGulHLMq+L0+aI6BnYMryIMRnZLaPZsXmrLOAubH
- GrAdAgq8wEfMje41iJj3kr/43NfQ1RKnmbTlu3b2oCC4ka5HKLNKVbGOdxpzpKq3RZ4A
- b0Sw==
-X-Gm-Message-State: AOAM531E8MORzZ2pbGQlDBNW2W+KHSTYI3iRdL0ahvVyMqUeXf8n2vEy
- vfXDLOqNmVssteZwZ2Wb0eE=
-X-Google-Smtp-Source: ABdhPJyLmldvk3KZr3KWQewC+IuIqH/xcyEwEqpjjw81ai9FHwrzinO3m7Z03bdk0T6SMxkpogj+TA==
-X-Received: by 2002:a7b:c408:: with SMTP id k8mr643545wmi.152.1595438394879;
- Wed, 22 Jul 2020 10:19:54 -0700 (PDT)
-Received: from PKL-UANJUM-LT.pkl.mentorg.com ([103.150.154.211])
- by smtp.gmail.com with ESMTPSA id c10sm632640wro.84.2020.07.22.10.19.53
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 22 Jul 2020 10:19:54 -0700 (PDT)
-Date: Wed, 22 Jul 2020 22:19:50 +0500
-From: Muhammad Usama Anjum <musamaanjum@gmail.com>
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ with ESMTP id DzBgEk3u7mbj for <devel@linuxdriverproject.org>;
+ Wed, 22 Jul 2020 19:56:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0136.hostedemail.com
+ [216.40.44.136])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9617486C63
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 19:56:11 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave07.hostedemail.com (Postfix) with ESMTP id A23CF1826D217
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 19:56:10 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay02.hostedemail.com (Postfix) with ESMTP id 7C27781EB13E;
+ Wed, 22 Jul 2020 19:56:08 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:966:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2196:2199:2393:2559:2562:2828:3138:3139:3140:3141:3142:3351:3622:3866:3867:3872:3873:4321:4385:4605:5007:6117:6119:7875:7903:10004:10400:10848:11026:11232:11473:11658:11914:12043:12048:12294:12297:12438:12740:12760:12895:13069:13311:13357:13439:14659:14721:21080:21451:21627:30012:30034:30054:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: event76_220415b26f38
+X-Filterd-Recvd-Size: 1602
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf05.hostedemail.com (Postfix) with ESMTPA;
+ Wed, 22 Jul 2020 19:56:07 +0000 (UTC)
+Message-ID: <1e38634d0f1c94eaaa2c9312ffe112734029a316.camel@perches.com>
+Subject: Re: [PATCH] staging: octeon: Indent with tabs instead of spaces
+From: Joe Perches <joe@perches.com>
+To: Muhammad Usama Anjum <musamaanjum@gmail.com>,
+ gregkh@linuxfoundation.org,  devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: octeon: Indent with tabs instead of spaces
-Message-ID: <20200722171950.GA6176@PKL-UANJUM-LT.pkl.mentorg.com>
+Date: Wed, 22 Jul 2020 12:56:06 -0700
+In-Reply-To: <20200722171950.GA6176@PKL-UANJUM-LT.pkl.mentorg.com>
+References: <20200722171950.GA6176@PKL-UANJUM-LT.pkl.mentorg.com>
+User-Agent: Evolution 3.36.3-0ubuntu1 
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,37 +80,27 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove a coding style error. It makes code more readable.
+On Wed, 2020-07-22 at 22:19 +0500, Muhammad Usama Anjum wrote:
+> Remove a coding style error. It makes code more readable.
+[]
+> diff --git a/drivers/staging/octeon/ethernet-defines.h b/drivers/staging/octeon/ethernet-defines.h
+[]
+> @@ -27,14 +27,14 @@
+>  #define REUSE_SKBUFFS_WITHOUT_FREE  1
+>  #endif
+>  
+> -#define USE_ASYNC_IOBDMA            (CONFIG_CAVIUM_OCTEON_CVMSEG_SIZE > 0)
+> +#define USE_ASYNC_IOBDMA		(CONFIG_CAVIUM_OCTEON_CVMSEG_SIZE > 0)
+>  
+>  /* Maximum number of SKBs to try to free per xmit packet. */
+> -#define MAX_OUT_QUEUE_DEPTH 1000
+> +#define MAX_OUT_QUEUE_DEPTH		1000
+>  
+>  #define FAU_TOTAL_TX_TO_CLEAN (CVMX_FAU_REG_END - sizeof(u32))
 
-Signed-off-by: Muhammad Usama Anjum <musamaanjum@gmail.com>
----
- drivers/staging/octeon/ethernet-defines.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+If you really like alignment to tabstop,
+why not align FAU_TOTAL_TX_TO_CLEAN too?
 
-diff --git a/drivers/staging/octeon/ethernet-defines.h b/drivers/staging/octeon/ethernet-defines.h
-index ef9e767b0e2e..40f91c78e462 100644
---- a/drivers/staging/octeon/ethernet-defines.h
-+++ b/drivers/staging/octeon/ethernet-defines.h
-@@ -27,14 +27,14 @@
- #define REUSE_SKBUFFS_WITHOUT_FREE  1
- #endif
- 
--#define USE_ASYNC_IOBDMA            (CONFIG_CAVIUM_OCTEON_CVMSEG_SIZE > 0)
-+#define USE_ASYNC_IOBDMA		(CONFIG_CAVIUM_OCTEON_CVMSEG_SIZE > 0)
- 
- /* Maximum number of SKBs to try to free per xmit packet. */
--#define MAX_OUT_QUEUE_DEPTH 1000
-+#define MAX_OUT_QUEUE_DEPTH		1000
- 
- #define FAU_TOTAL_TX_TO_CLEAN (CVMX_FAU_REG_END - sizeof(u32))
- #define FAU_NUM_PACKET_BUFFERS_TO_FREE (FAU_TOTAL_TX_TO_CLEAN - sizeof(u32))
- 
--#define TOTAL_NUMBER_OF_PORTS       (CVMX_PIP_NUM_INPUT_PORTS + 1)
-+#define TOTAL_NUMBER_OF_PORTS		(CVMX_PIP_NUM_INPUT_PORTS + 1)
- 
- #endif /* __ETHERNET_DEFINES_H__ */
--- 
-2.17.1
 
 _______________________________________________
 devel mailing list
