@@ -1,75 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA5AB229764
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 13:28:41 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE1BC229773
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 13:31:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0B94A220E5;
-	Wed, 22 Jul 2020 11:28:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ED09688118;
+	Wed, 22 Jul 2020 11:31:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QAPICGC6ZNIH; Wed, 22 Jul 2020 11:28:39 +0000 (UTC)
+	with ESMTP id ZD0bCEtgpjZv; Wed, 22 Jul 2020 11:31:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D06E52046C;
-	Wed, 22 Jul 2020 11:28:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 60978880F8;
+	Wed, 22 Jul 2020 11:30:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3E5FF1BF38E
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:28:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E6A621BF38E
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:30:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3AD588863B
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:28:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DB34D2046A
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:30:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XU9MmEK71hxX for <devel@linuxdriverproject.org>;
- Wed, 22 Jul 2020 11:28:35 +0000 (UTC)
+ with ESMTP id f7-4MmzMod2Q for <devel@linuxdriverproject.org>;
+ Wed, 22 Jul 2020 11:30:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C835A88638
- for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 11:28:35 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id 207so1109299pfu.3
- for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 04:28:35 -0700 (PDT)
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id DB0C120461
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 11:30:56 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id k71so1239165pje.0
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 04:30:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=QRz/9vB9ihwSFnVrvk1F21V7kn+nkhXBAC2KmN40Tc0=;
- b=XY1qaQKKsrnYf9ll7C4uW2w0IPRusZfy2PrOu9uj08G3AVQaP5wkxV+F15JCjapGKc
- 9R2oHjdDpGcMBA9QJ+/+u7FgmZzru3dVs5hWZ+8kKF/8gtzpxJ0bpFlZuDXfaaj6YrpI
- 7ldZXlmor4vRSde0w8atIcewBjpfrY/gNLL92+C5lwDMibtj1RJui0lv5nzeA7bJrYZh
- DszaLG8zsWEffvCHVY4ZKO+kB8zKZU3L2Szd9QWXcec7IGsQdc2GLj2Dk5c95cG7wwNV
- Bovh19cFku49ax7Cscg8d2QBYZmqUAf4KGpKuZlXFsa2Chlr7xklu5hTdv+0RhjYGp6r
- T5rg==
+ bh=REutpgTEY8zqFjKsJaL/pIrbvSAniP7JYrpnR8Uq2Hg=;
+ b=kPwE57tThRH2Xl2UQew/QQhJ0HEFx8Jfswz2xfdVqwfJEnOAVAQt/gxOFQAaucsGkP
+ iwTxQyDTZN9pqWHyQWba20tdpkLJC2eECm1uryNRmShampx1pE6Vqnabd5MtVoMw6sjt
+ R+ycwIZOfR1O7qUEEU+VW5xTpGSYvO1YVON5j49sDyzYwH17KCT6JRCUGuZvoh9PiFfA
+ DRZE8xEzFRyPWozCxhyMyoRKlnMCyCM8Y5O4ruvALKA/qPYA4j14X5sJUIKVOhfQHLge
+ BVw42vbho9lHN+PHthr4gTN2OkWYS5xn1ArFGBP5FXQOm6N1+ddhU1wxKIa+NP6Zwsiq
+ +xXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=QRz/9vB9ihwSFnVrvk1F21V7kn+nkhXBAC2KmN40Tc0=;
- b=g9qYGr+9pjKh1gm42TfUBP7TPwzx7CEF4KrHf5to7Qn76VOgyT1CYSM0AwCcD98RcE
- RuqxwXtEpZK8Fsz4DBI/0IteTtokVA+A3F8RIuPmwKD6KStaMd3q4vVzRQGTz9dMKvgp
- XycRw/3igl/fTuWfcPmlTn67x0w++WOZvfsCTUUWdMhyqjiaPSqrRvWzrRDotKoRcWOS
- fGFP4TogBOq3TGrnzoAsRWmOW9KT3NIn5sUIRIKQI0X3Ww4y3o1mTMa1G/ToXXB6i7gr
- 4ygMu4rVOaqTFpCnJjJ7WZqTSbKdPuByCezvLJl8uMQXeV/PNa1FQPuESFHNkhjCMBoQ
- 15Iw==
-X-Gm-Message-State: AOAM530r77R0HlKzMWHwkC/ykYfq0rWVS8uchUhVtSW+0l4wohpcn6HQ
- PD2fz+jqU799d6O+McLuYPIkolIdjOc7NA==
-X-Google-Smtp-Source: ABdhPJzDcgdGQfkQgxhAWWc78GEEPa8O65nyTUsMXpvIZZ2SjKAcsv6wDRn6VtbtRs/U0zpqzmXuoQ==
-X-Received: by 2002:a63:e241:: with SMTP id y1mr26974243pgj.410.1595417315369; 
- Wed, 22 Jul 2020 04:28:35 -0700 (PDT)
+ bh=REutpgTEY8zqFjKsJaL/pIrbvSAniP7JYrpnR8Uq2Hg=;
+ b=nH64g4KvxMoEEttFtQXro70aXqhHmWjNCEvZyhhkARiMBEZUTsjesfvcy/dclNTKKk
+ G73d7AmKX/MztvAVIn05jZI9PkRNXdOqSDFm4MH1u5q1CbP/l4RXW7TB/wuVN+I7QmoO
+ dSECOAd3pnlpMxygwAn9cStB+8EskPNAogkPGTB5JLwtjScQwVr4SfFH5DYOgHL3rFNu
+ mkAk14tECbX5uuvWSt7tVYZFOCBvIL2rUzwQkgOnTWF1F06q77dUcp+4W/iWJYbCgeoY
+ rCatPBURm7aup7kbPA3jnkGfxPACUlo2++O90ifQoJ9nVs19UDF2MsV65loC5olLNSbD
+ P8bA==
+X-Gm-Message-State: AOAM530D1X+Xj0ymRdEd6HDtBzMXz4Yphz8yvERTGiMtjDUzJAaf0Xry
+ bW1M+VyH41gbhCBxDseflZE=
+X-Google-Smtp-Source: ABdhPJyeGR7pcKdtW0vy20t9YcWddsffnZ+VrlDb2rR78ZIMmGBE0qd26bogPd3aN3sGzeQ3acYUJQ==
+X-Received: by 2002:a17:902:10e:: with SMTP id
+ 14mr24718428plb.297.1595417456363; 
+ Wed, 22 Jul 2020 04:30:56 -0700 (PDT)
 Received: from rahulg-ThinkPad-T450 ([122.175.73.180])
- by smtp.gmail.com with ESMTPSA id b8sm6681107pjd.5.2020.07.22.04.28.33
+ by smtp.gmail.com with ESMTPSA id gv16sm6507715pjb.5.2020.07.22.04.30.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Jul 2020 04:28:34 -0700 (PDT)
-Date: Wed, 22 Jul 2020 16:58:31 +0530
+ Wed, 22 Jul 2020 04:30:55 -0700 (PDT)
+Date: Wed, 22 Jul 2020 17:00:52 +0530
 From: Rahul Gottipati <rahul.blr97@gmail.com>
 To: mchehab@kernel.org
-Subject: [PATCH v2 1/2] media: atomisp: Fix coding style issue - remove
- beginning whitespaces
-Message-ID: <5b2242008c92871daa5bfb7c9c3cafbbf592228b.1595416585.git.rahul.blr97@gmail.com>
+Subject: [PATCH v2 2/2] media: atomisp: Fix coding style issue - correct
+ multiline comments
+Message-ID: <c73ee9bced34777cea5b1a3a97f57c723b0a97b1.1595416585.git.rahul.blr97@gmail.com>
 References: <cover.1595416585.git.rahul.blr97@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -94,48 +95,69 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This removes whitespaces at the beginning of a few lines to fix
-some checkpatch.pl warnings.
+This fixes some coding style issues of multiline comments to
+correct a few checkpatch.pl warnings.
 
 Signed-off-by: Rahul Gottipati <rahul.blr97@gmail.com>
 ---
 Changes in v2:
-	Distributed changes across 2 patches instead of the previous 1
-
- drivers/staging/media/atomisp/pci/atomisp_ioctl.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+	Distributed changes across 2 patches instead of the previous 1.
+ drivers/staging/media/atomisp/pci/atomisp_ioctl.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-index 9404a678fa6f..9cdcbe774229 100644
+index 9cdcbe774229..5bf3a86f98f8 100644
 --- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
 +++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-@@ -512,7 +512,7 @@ const struct atomisp_format_bridge atomisp_output_fmts[] = {
- };
+@@ -1281,7 +1281,8 @@ static int atomisp_qbuf(struct file *file, void *fh, struct v4l2_buffer *buf)
+ 	 * But the capture number cannot be determined by HAL.
+ 	 * So HAL only sets the capture number to be 1 and queue multiple
+ 	 * buffers. Atomisp driver needs to check this case and re-trigger
+-	 * CSS to do capture when new buffer is queued. */
++	 * CSS to do capture when new buffer is queued.
++	 */
+ 	if (asd->continuous_mode->val &&
+ 	    atomisp_subdev_source_pad(vdev)
+ 	    == ATOMISP_SUBDEV_PAD_SOURCE_CAPTURE &&
+@@ -1806,7 +1807,7 @@ static int atomisp_streamon(struct file *file, void *fh,
+ 		/*
+ 		 * set freq to max when streaming count > 1 which indicate
+ 		 * dual camera would run
+-		*/
++		 */
+ 		if (atomisp_streaming_count(isp) > 1) {
+ 			if (atomisp_freq_scaling(isp,
+ 						 ATOMISP_DFS_MODE_MAX, false) < 0)
+@@ -2438,7 +2439,8 @@ static int atomisp_g_ext_ctrls(struct file *file, void *fh,
+ 	int i, ret = 0;
  
- const struct atomisp_format_bridge *atomisp_get_format_bridge(
--    unsigned int pixelformat)
-+				unsigned int pixelformat)
- {
- 	unsigned int i;
+ 	/* input_lock is not need for the Camera related IOCTLs
+-	 * The input_lock downgrade the FPS of 3A*/
++	 * The input_lock downgrade the FPS of 3A
++	 */
+ 	ret = atomisp_camera_g_ext_ctrls(file, fh, c);
+ 	if (ret != -EINVAL)
+ 		return ret;
+@@ -2521,7 +2523,8 @@ static int atomisp_camera_s_ext_ctrls(struct file *file, void *fh,
+ 				    v4l2_s_ctrl(NULL, isp->flash->ctrl_handler,
+ 						&ctrl);
+ 				/* When flash mode is changed we need to reset
+-				 * flash state */
++				 * flash state
++				 */
+ 				if (ctrl.id == V4L2_CID_FLASH_MODE) {
+ 					asd->params.flash_state =
+ 					    ATOMISP_FLASH_IDLE;
+@@ -2560,7 +2563,8 @@ static int atomisp_s_ext_ctrls(struct file *file, void *fh,
+ 	int i, ret = 0;
  
-@@ -525,7 +525,7 @@ const struct atomisp_format_bridge *atomisp_get_format_bridge(
- }
- 
- const struct atomisp_format_bridge *atomisp_get_format_bridge_from_mbus(
--    u32 mbus_code)
-+				u32 mbus_code)
- {
- 	unsigned int i;
- 
-@@ -607,7 +607,7 @@ static int atomisp_enum_input(struct file *file, void *fh,
- }
- 
- static unsigned int atomisp_subdev_streaming_count(
--    struct atomisp_sub_device *asd)
-+				struct atomisp_sub_device *asd)
- {
- 	return asd->video_out_preview.capq.streaming
- 	       + asd->video_out_capture.capq.streaming
+ 	/* input_lock is not need for the Camera related IOCTLs
+-	 * The input_lock downgrade the FPS of 3A*/
++	 * The input_lock downgrade the FPS of 3A
++	 */
+ 	ret = atomisp_camera_s_ext_ctrls(file, fh, c);
+ 	if (ret != -EINVAL)
+ 		return ret;
 -- 
 2.25.1
 
