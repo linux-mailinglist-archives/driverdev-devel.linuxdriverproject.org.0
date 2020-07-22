@@ -1,80 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE1BC229773
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 13:31:02 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19EAD229859
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 14:41:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ED09688118;
-	Wed, 22 Jul 2020 11:31:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5425A86A99;
+	Wed, 22 Jul 2020 12:41:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZD0bCEtgpjZv; Wed, 22 Jul 2020 11:31:00 +0000 (UTC)
+	with ESMTP id ivAbnf85qcSn; Wed, 22 Jul 2020 12:41:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 60978880F8;
-	Wed, 22 Jul 2020 11:30:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5C2D786A94;
+	Wed, 22 Jul 2020 12:41:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E6A621BF38E
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:30:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F099A1BF383
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 12:40:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DB34D2046A
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:30:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id ECEE088206
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 12:40:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f7-4MmzMod2Q for <devel@linuxdriverproject.org>;
- Wed, 22 Jul 2020 11:30:57 +0000 (UTC)
+ with ESMTP id ovWpEhtJuzhk for <devel@linuxdriverproject.org>;
+ Wed, 22 Jul 2020 12:40:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
- [209.85.216.67])
- by silver.osuosl.org (Postfix) with ESMTPS id DB0C120461
- for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 11:30:56 +0000 (UTC)
-Received: by mail-pj1-f67.google.com with SMTP id k71so1239165pje.0
- for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 04:30:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=REutpgTEY8zqFjKsJaL/pIrbvSAniP7JYrpnR8Uq2Hg=;
- b=kPwE57tThRH2Xl2UQew/QQhJ0HEFx8Jfswz2xfdVqwfJEnOAVAQt/gxOFQAaucsGkP
- iwTxQyDTZN9pqWHyQWba20tdpkLJC2eECm1uryNRmShampx1pE6Vqnabd5MtVoMw6sjt
- R+ycwIZOfR1O7qUEEU+VW5xTpGSYvO1YVON5j49sDyzYwH17KCT6JRCUGuZvoh9PiFfA
- DRZE8xEzFRyPWozCxhyMyoRKlnMCyCM8Y5O4ruvALKA/qPYA4j14X5sJUIKVOhfQHLge
- BVw42vbho9lHN+PHthr4gTN2OkWYS5xn1ArFGBP5FXQOm6N1+ddhU1wxKIa+NP6Zwsiq
- +xXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=REutpgTEY8zqFjKsJaL/pIrbvSAniP7JYrpnR8Uq2Hg=;
- b=nH64g4KvxMoEEttFtQXro70aXqhHmWjNCEvZyhhkARiMBEZUTsjesfvcy/dclNTKKk
- G73d7AmKX/MztvAVIn05jZI9PkRNXdOqSDFm4MH1u5q1CbP/l4RXW7TB/wuVN+I7QmoO
- dSECOAd3pnlpMxygwAn9cStB+8EskPNAogkPGTB5JLwtjScQwVr4SfFH5DYOgHL3rFNu
- mkAk14tECbX5uuvWSt7tVYZFOCBvIL2rUzwQkgOnTWF1F06q77dUcp+4W/iWJYbCgeoY
- rCatPBURm7aup7kbPA3jnkGfxPACUlo2++O90ifQoJ9nVs19UDF2MsV65loC5olLNSbD
- P8bA==
-X-Gm-Message-State: AOAM530D1X+Xj0ymRdEd6HDtBzMXz4Yphz8yvERTGiMtjDUzJAaf0Xry
- bW1M+VyH41gbhCBxDseflZE=
-X-Google-Smtp-Source: ABdhPJyeGR7pcKdtW0vy20t9YcWddsffnZ+VrlDb2rR78ZIMmGBE0qd26bogPd3aN3sGzeQ3acYUJQ==
-X-Received: by 2002:a17:902:10e:: with SMTP id
- 14mr24718428plb.297.1595417456363; 
- Wed, 22 Jul 2020 04:30:56 -0700 (PDT)
-Received: from rahulg-ThinkPad-T450 ([122.175.73.180])
- by smtp.gmail.com with ESMTPSA id gv16sm6507715pjb.5.2020.07.22.04.30.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Jul 2020 04:30:55 -0700 (PDT)
-Date: Wed, 22 Jul 2020 17:00:52 +0530
-From: Rahul Gottipati <rahul.blr97@gmail.com>
-To: mchehab@kernel.org
-Subject: [PATCH v2 2/2] media: atomisp: Fix coding style issue - correct
- multiline comments
-Message-ID: <c73ee9bced34777cea5b1a3a97f57c723b0a97b1.1595416585.git.rahul.blr97@gmail.com>
-References: <cover.1595416585.git.rahul.blr97@gmail.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 569D588204
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 12:40:58 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 06MCW5va156519;
+ Wed, 22 Jul 2020 12:40:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
+ bh=v0VBTLpU3Gr1xDp+feq/2Qog62oTxx4NqFlRzE/7/Js=;
+ b=fEf52UGnoNgJBhZsL8StwqDRJDBtSmSGB03wgynx1E3XpcFTQ4+VD4p25sh4hr6++GM7
+ B+9hFErDVmlqoRR1bLeXX+az4t7ZZzSxiyAozu3UoUp3jvaRMHb5G0w36Xun5WsZKIHQ
+ JP+CAhxyh5xuuhXlD9+4QRt1TzpgvxSRTWRfCLe+D68KtCOAooQDib2Mx5t7abpQXrnu
+ hMxpTWdZHuAyw4j6H/eZBCZ6Y246TmHIeG22gMheZYPXZ3mMCiQPx/w+SSTDqlNggvz5
+ 5Afyg2uQroWbxiTGrrgfPfq4c7hljRxlJvCaH9ep3CQMwUsYajX6tAXomRI2JBDFkWxY Lg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 32bs1mjyc9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 22 Jul 2020 12:40:57 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 06MCYAHo113173;
+ Wed, 22 Jul 2020 12:38:56 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 32eej5ujgr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 22 Jul 2020 12:38:56 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 06MCctB3029969;
+ Wed, 22 Jul 2020 12:38:56 GMT
+Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 22 Jul 2020 12:38:55 +0000
+Date: Wed, 22 Jul 2020 15:38:48 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Michael Tretter <m.tretter@pengutronix.de>
+Subject: [PATCH] media: allegro: fix an error pointer vs NULL check
+Message-ID: <20200722123848.GA220681@mwanda>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <cover.1595416585.git.rahul.blr97@gmail.com>
+X-Mailer: git-send-email haha only kidding
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9689
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ bulkscore=0 phishscore=0
+ mlxlogscore=999 suspectscore=0 spamscore=0 malwarescore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2007220094
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9689
+ signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ bulkscore=0 adultscore=0
+ lowpriorityscore=0 mlxlogscore=999 malwarescore=0 clxscore=1011
+ spamscore=0 mlxscore=0 impostorscore=0 phishscore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2007220094
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,79 +94,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, sakari.ailus@linux.intel.com,
- linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, kernel-janitors@vger.kernel.org,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This fixes some coding style issues of multiline comments to
-correct a few checkpatch.pl warnings.
+The allegro_mbox_init() function returns error pointers, it never
+returns NULL.
 
-Signed-off-by: Rahul Gottipati <rahul.blr97@gmail.com>
+Fixes: 94dc76560261 ("media: allegro: rework mbox handling")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 ---
-Changes in v2:
-	Distributed changes across 2 patches instead of the previous 1.
- drivers/staging/media/atomisp/pci/atomisp_ioctl.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+ drivers/staging/media/allegro-dvt/allegro-core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-index 9cdcbe774229..5bf3a86f98f8 100644
---- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-@@ -1281,7 +1281,8 @@ static int atomisp_qbuf(struct file *file, void *fh, struct v4l2_buffer *buf)
- 	 * But the capture number cannot be determined by HAL.
- 	 * So HAL only sets the capture number to be 1 and queue multiple
- 	 * buffers. Atomisp driver needs to check this case and re-trigger
--	 * CSS to do capture when new buffer is queued. */
-+	 * CSS to do capture when new buffer is queued.
-+	 */
- 	if (asd->continuous_mode->val &&
- 	    atomisp_subdev_source_pad(vdev)
- 	    == ATOMISP_SUBDEV_PAD_SOURCE_CAPTURE &&
-@@ -1806,7 +1807,7 @@ static int atomisp_streamon(struct file *file, void *fh,
- 		/*
- 		 * set freq to max when streaming count > 1 which indicate
- 		 * dual camera would run
--		*/
-+		 */
- 		if (atomisp_streaming_count(isp) > 1) {
- 			if (atomisp_freq_scaling(isp,
- 						 ATOMISP_DFS_MODE_MAX, false) < 0)
-@@ -2438,7 +2439,8 @@ static int atomisp_g_ext_ctrls(struct file *file, void *fh,
- 	int i, ret = 0;
- 
- 	/* input_lock is not need for the Camera related IOCTLs
--	 * The input_lock downgrade the FPS of 3A*/
-+	 * The input_lock downgrade the FPS of 3A
-+	 */
- 	ret = atomisp_camera_g_ext_ctrls(file, fh, c);
- 	if (ret != -EINVAL)
- 		return ret;
-@@ -2521,7 +2523,8 @@ static int atomisp_camera_s_ext_ctrls(struct file *file, void *fh,
- 				    v4l2_s_ctrl(NULL, isp->flash->ctrl_handler,
- 						&ctrl);
- 				/* When flash mode is changed we need to reset
--				 * flash state */
-+				 * flash state
-+				 */
- 				if (ctrl.id == V4L2_CID_FLASH_MODE) {
- 					asd->params.flash_state =
- 					    ATOMISP_FLASH_IDLE;
-@@ -2560,7 +2563,8 @@ static int atomisp_s_ext_ctrls(struct file *file, void *fh,
- 	int i, ret = 0;
- 
- 	/* input_lock is not need for the Camera related IOCTLs
--	 * The input_lock downgrade the FPS of 3A*/
-+	 * The input_lock downgrade the FPS of 3A
-+	 */
- 	ret = atomisp_camera_s_ext_ctrls(file, fh, c);
- 	if (ret != -EINVAL)
- 		return ret;
+diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
+index 61beae1fca36..9f718f43282b 100644
+--- a/drivers/staging/media/allegro-dvt/allegro-core.c
++++ b/drivers/staging/media/allegro-dvt/allegro-core.c
+@@ -2952,7 +2952,7 @@ static int allegro_mcu_hw_init(struct allegro_dev *dev,
+ 					      info->mailbox_size);
+ 	dev->mbox_status = allegro_mbox_init(dev, info->mailbox_status,
+ 					     info->mailbox_size);
+-	if (!dev->mbox_command || !dev->mbox_status) {
++	if (IS_ERR(dev->mbox_command) || IS_ERR(dev->mbox_status)) {
+ 		v4l2_err(&dev->v4l2_dev,
+ 			 "failed to initialize mailboxes\n");
+ 		return -EIO;
 -- 
-2.25.1
+2.27.0
 
 _______________________________________________
 devel mailing list
