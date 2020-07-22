@@ -1,57 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13268229749
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 13:20:09 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 244ED229757
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Jul 2020 13:24:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4CF8D869FE;
-	Wed, 22 Jul 2020 11:20:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E301988651;
+	Wed, 22 Jul 2020 11:24:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cVI37D5UknvN; Wed, 22 Jul 2020 11:20:06 +0000 (UTC)
+	with ESMTP id mzi6nv+MxANH; Wed, 22 Jul 2020 11:24:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7286E869A5;
-	Wed, 22 Jul 2020 11:20:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2835B88634;
+	Wed, 22 Jul 2020 11:24:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DA5E61BF38E
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:20:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D05291BF38E
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:24:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D6E558800D
- for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:20:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CCA8987FEA
+ for <devel@linuxdriverproject.org>; Wed, 22 Jul 2020 11:24:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ad+PtezFDOjW for <devel@linuxdriverproject.org>;
- Wed, 22 Jul 2020 11:20:01 +0000 (UTC)
+ with ESMTP id ea0hriXtrYOV for <devel@linuxdriverproject.org>;
+ Wed, 22 Jul 2020 11:24:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
- [213.167.242.64])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B97B488000
- for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 11:20:01 +0000 (UTC)
-Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
- [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 66B4CAE6;
- Wed, 22 Jul 2020 13:19:57 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1595416797;
- bh=9bheVS99DQaRwwdpBomM0E03oIp9aDYofl6Bxy+lGec=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=drGfHuMEbciHC9WdUPfke/cq1AfJNe3AVSCs8hCTL+8FLoq4KrkzUo2p+hIruq9iB
- cvlqu8xThmZpjCEkJ8vm04n8/Tx+cnT/p5abshMMLD7TRk33ni6zZLe4uaNJ4dEJ90
- Eto05h81Je5fIN0sBFgs3BFkqJOUYiH7bV7zjo6U=
-Date: Wed, 22 Jul 2020 14:19:52 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: "Alexander A. Klimov" <grandmaster@al2klimov.de>
-Subject: Re: [PATCH for v5.9] media: omap: Replace HTTP links with HTTPS ones
-Message-ID: <20200722111952.GC5833@pendragon.ideasonboard.com>
-References: <20200719112133.58236-1-grandmaster@al2klimov.de>
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A272B87FE8
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 11:24:49 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id 1so1088665pfn.9
+ for <devel@driverdev.osuosl.org>; Wed, 22 Jul 2020 04:24:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+ bh=cgpkwo50wAGaYC/rXs15YWs5+nRoNKrSoWKyjDw624Q=;
+ b=qSBLnaUUV0E6FfTZgptPLGtHJKXx5OuI/cQidFb5sK6gwMt1A1UVhZTVKGPUSeRa9/
+ lcbnjA45JUxZZotbPt2qmA4PEIsDhovcD/92top2Kf4TVW9L8E199EPvp32WwPA5k6DD
+ OmfkuH+SUQWCHnGS1p7ME1Kpm11lg93Q8O0GQH+ifJZmMIGpYsYPzF6jGIPh1dfvo6TX
+ MFITft7JLUy4GVlAVczvwqOWNWe6/G8env1oFGXKbPmcf5iKMn3yB+rVxHi2bFWZwJVu
+ 9dRfTAmbqYLLyMEajCPmQ9E6rPp1PCDrW08RX/PleyTdWFNra94XtmSePX4U16nuV8Ny
+ +VQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=cgpkwo50wAGaYC/rXs15YWs5+nRoNKrSoWKyjDw624Q=;
+ b=DDQGlalfrfWUmEgzmqCpBK5DsxbH7L6rLVrnwMtK0N6sAMU4osxe945DH1l6ydW59j
+ 7lbW9SY6oqhHcEvmIWKkRD4q7HcbC/12CgnwoersKaqY3KuSTe709bEB8qVeE4m/No1P
+ L77XJuJssGOG5nz/Gk2Sy4M9BjOEkaJYf9HDbFQzC1SQj6unwZnp2xUyObEHSctjfvz5
+ hdbQCnRVlUCjvtwS2LTCGTpffachR59W/szc5AQ5UeFw/zYH6/OcQ+8H4soekY7G6MhZ
+ +dBRo9xC5OlqQa8ESM8c/CnXvfyAkc2BNwv7Khrl5X/MoJse5bZNJnbyuYm1hbl5UCGH
+ V3Qg==
+X-Gm-Message-State: AOAM5323ukLVQMbfnT+3MeluSvbmju5Qi5POwQi8Jv2viFtPwgceR1Pz
+ KqAP422b5e80d85LCBCt4mQ=
+X-Google-Smtp-Source: ABdhPJx8z9I3VJ24rt7UEKgKpY2MUAYyPCBxDm9+NsR+9yDB389i0QnBJ/AZej5bCAInZjLUszOMTw==
+X-Received: by 2002:a65:594b:: with SMTP id g11mr27736716pgu.168.1595417089231; 
+ Wed, 22 Jul 2020 04:24:49 -0700 (PDT)
+Received: from rahulg-ThinkPad-T450 ([122.175.73.180])
+ by smtp.gmail.com with ESMTPSA id c132sm23411960pfb.112.2020.07.22.04.24.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Jul 2020 04:24:48 -0700 (PDT)
+Date: Wed, 22 Jul 2020 16:54:44 +0530
+From: Rahul Gottipati <rahul.blr97@gmail.com>
+To: mchehab@kernel.org
+Subject: [PATCH v2 0/2] General coding style clean up
+Message-ID: <cover.1595416585.git.rahul.blr97@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200719112133.58236-1-grandmaster@al2klimov.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,98 +82,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, mchehab@kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, sakari.ailus@linux.intel.com,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alexander,
+This patchset fixes several checkpatch.pl warnings in atomisp_ioctl.c
+that have been distributed across 2 patches logically.
 
-Thank you for the patch.
+Rahul Gottipati (2):
+  media: atomisp: Fix coding style issue - remove beginning whitespaces
+  media: atomisp: Fix coding style issue - correct multiline comments
 
-On Sun, Jul 19, 2020 at 01:21:33PM +0200, Alexander A. Klimov wrote:
-> Rationale:
-> Reduces attack surface on kernel devs opening the links for MITM
-> as HTTPS traffic is much harder to manipulate.
-> 
-> Deterministic algorithm:
-> For each file:
->   If not .svg:
->     For each line:
->       If doesn't contain `\bxmlns\b`:
->         For each link, `\bhttp://[^# \t\r\n]*(?:\w|/)`:
-> 	  If neither `\bgnu\.org/license`, nor `\bmozilla\.org/MPL\b`:
->             If both the HTTP and HTTPS versions
->             return 200 OK and serve the same content:
->               Replace HTTP with HTTPS.
-> 
-> Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-I expect Sakari to take this patch in his tree when he will be back from
-vacation at the end of the month.
-
-> ---
->  Continuing my work started at 93431e0607e5.
->  See also: git log --oneline '--author=Alexander A. Klimov <grandmaster@al2klimov.de>' v5.7..master
->  (Actually letting a shell for loop submit all this stuff for me.)
-> 
->  If there are any URLs to be removed completely
->  or at least not (just) HTTPSified:
->  Just clearly say so and I'll *undo my change*.
->  See also: https://lkml.org/lkml/2020/6/27/64
-> 
->  If there are any valid, but yet not changed URLs:
->  See: https://lkml.org/lkml/2020/6/26/837
-> 
->  If you apply the patch, please let me know.
-> 
->  Sorry again to all maintainers who complained about subject lines.
->  Now I realized that you want an actually perfect prefixes,
->  not just subsystem ones.
->  I tried my best...
->  And yes, *I could* (at least half-)automate it.
->  Impossible is nothing! :)
-> 
-> 
->  drivers/media/platform/omap3isp/isp.c | 2 +-
->  drivers/staging/media/omap4iss/iss.c  | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/media/platform/omap3isp/isp.c b/drivers/media/platform/omap3isp/isp.c
-> index b91e472ee764..74fa67082e09 100644
-> --- a/drivers/media/platform/omap3isp/isp.c
-> +++ b/drivers/media/platform/omap3isp/isp.c
-> @@ -142,7 +142,7 @@ static struct isp_reg isp_reg_list[] = {
->   * readback the same register, in this case the revision register.
->   *
->   * See this link for reference:
-> - *   http://www.mail-archive.com/linux-omap@vger.kernel.org/msg08149.html
-> + *   https://www.mail-archive.com/linux-omap@vger.kernel.org/msg08149.html
->   */
->  void omap3isp_flush(struct isp_device *isp)
->  {
-> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
-> index 6fb60b58447a..e06ea7ea1e50 100644
-> --- a/drivers/staging/media/omap4iss/iss.c
-> +++ b/drivers/staging/media/omap4iss/iss.c
-> @@ -55,7 +55,7 @@ static void iss_print_status(struct iss_device *iss)
->   * readback the same register, in this case the revision register.
->   *
->   * See this link for reference:
-> - *   http://www.mail-archive.com/linux-omap@vger.kernel.org/msg08149.html
-> + *   https://www.mail-archive.com/linux-omap@vger.kernel.org/msg08149.html
->   */
->  static void omap4iss_flush(struct iss_device *iss)
->  {
+ .../staging/media/atomisp/pci/atomisp_ioctl.c | 20 +++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
 
 -- 
-Regards,
+2.25.1
 
-Laurent Pinchart
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
