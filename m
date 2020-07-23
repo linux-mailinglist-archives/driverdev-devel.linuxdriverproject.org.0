@@ -1,58 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E317D22B4F2
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Jul 2020 19:34:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1954922B564
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Jul 2020 20:07:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0907620791;
-	Thu, 23 Jul 2020 17:34:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1625E84E8C;
+	Thu, 23 Jul 2020 18:07:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DfYuG-mZPHTg; Thu, 23 Jul 2020 17:34:31 +0000 (UTC)
+	with ESMTP id bn9-DCClZyTz; Thu, 23 Jul 2020 18:07:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DA8A320431;
-	Thu, 23 Jul 2020 17:34:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C13884B1C;
+	Thu, 23 Jul 2020 18:07:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7BE841BF861
- for <devel@linuxdriverproject.org>; Thu, 23 Jul 2020 17:34:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C4CFE1BF3C2
+ for <devel@linuxdriverproject.org>; Thu, 23 Jul 2020 18:07:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7910A21561
- for <devel@linuxdriverproject.org>; Thu, 23 Jul 2020 17:34:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AF7162040B
+ for <devel@linuxdriverproject.org>; Thu, 23 Jul 2020 18:07:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VP1w1w892tdN for <devel@linuxdriverproject.org>;
- Thu, 23 Jul 2020 17:34:26 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 571832076E
- for <devel@driverdev.osuosl.org>; Thu, 23 Jul 2020 17:34:26 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9A64520714;
- Thu, 23 Jul 2020 17:34:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595525666;
- bh=Qhrjw7uyDWdXXIAvmKfEK6zrtiSur7oYHENRu1OnN3Q=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mPXjgtQfYvIUJ9CMdLnwxLE0QAOiL5hC7Q56P+XKldQdMheN6WLKo3IJtnaWlRm5h
- VrMruFbX9BCXuA9phurly9B34jULxl604wuZB13+rCleqogq1TvWwYw1Yb+dRr8Kr2
- vdIEEDAFwTgqFt3xMxpqtqyEZ9V2tKcGX5beBHsM=
-Date: Thu, 23 Jul 2020 19:34:29 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Muhammad Usama Anjum <musamaanjum@gmail.com>
-Subject: Re: [PATCH v2] staging: octeon: Add the license identifier
-Message-ID: <20200723173429.GA2907237@kroah.com>
-References: <20200723163150.GA10505@musamaanjum>
+ with ESMTP id FMyHhCungr5f for <devel@linuxdriverproject.org>;
+ Thu, 23 Jul 2020 18:07:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9CDDF203A8
+ for <devel@driverdev.osuosl.org>; Thu, 23 Jul 2020 18:07:31 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id o2so6042512wmh.2
+ for <devel@driverdev.osuosl.org>; Thu, 23 Jul 2020 11:07:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=wBJkfvCOZyc81ojTqQT3ESIFT3XyYfjTfodi1aPt+nE=;
+ b=vBWC4BFWxoQ3LrcjrDvJrZH7UWrLeHoqpZB96XyLvMPGCtVpHsoNpuIbJnXnjq4yWm
+ vo6uZ3g+z9vMmWdau9QLisc2cyK3UxBb7jbodkxuUjHPZgOFUtq5gH4IvoEHZjQFfz97
+ AnbnPvxHOryRiQ50xW55yVT+WWzMxinoJurb8aceqADrGP5sFZsaeR0Sd3TnjeuGhpsn
+ XJsxnoBI/9gV+dc9zVWA7hFBlnhJrjVlQTklVAw1d2htgctWIAN0P4vczHJEYMX/HChY
+ AAz4OpnATOr/UFu5HySHp4gxxFuwRLqDDmj3++ducAOukaUb3rSSJY7R48l6hq5NFrye
+ fftQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=wBJkfvCOZyc81ojTqQT3ESIFT3XyYfjTfodi1aPt+nE=;
+ b=Jl1j1cSr7MiYHCCr4pbH3jaq3SmKAZUMnJeVlHHZcXO4sjvMuk5TwiHEq+8JVU5bMP
+ a7Qxcjz57t2NsyvFrIwEsmDRLA2ahE6waUEujtVxIuVXp0wI8a0cBJhbvmtNj119j6Ml
+ TJ2GzOpiUFKd2Dyg0MEnOvI7ywLrC6MKMb4dZ8zsunYzHnzNv/CXse+elbR0LNNL9lPM
+ cF4IlbkW/6n3jAAS1W93q6+BNebNq0gQdE6xDDSFmpEJM+Q0oYeA7gL4rIddQude1U+R
+ SJJipiBHdxjzp2r1ZGSc9+rwDs17br2Eb/fLtaFTKmi+X6fiFgo9aZ7BQkjxQuDt87Gv
+ jd3A==
+X-Gm-Message-State: AOAM532QOangRNUbV2ZTWiUDu5svpD/AIJw4H//miMPbiKnmm77Qf0xe
+ E1/3R3V2mu9S/hZwgafsHe0=
+X-Google-Smtp-Source: ABdhPJykbDyBx5oqb8XWMu/eo8SzcwM1HastQpYeTmCY46cuigp/qUVDVoBkJTbZCRoy49cV9QYARQ==
+X-Received: by 2002:a1c:770f:: with SMTP id t15mr5103654wmi.22.1595527649969; 
+ Thu, 23 Jul 2020 11:07:29 -0700 (PDT)
+Received: from musamaanjum ([111.119.187.25])
+ by smtp.gmail.com with ESMTPSA id p15sm1568184wrj.61.2020.07.23.11.07.26
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 23 Jul 2020 11:07:29 -0700 (PDT)
+Date: Thu, 23 Jul 2020 23:07:23 +0500
+From: Muhammad Usama Anjum <musamaanjum@gmail.com>
+To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v3] staging: octeon: Add the license identifier
+Message-ID: <20200723180723.GA30699@musamaanjum>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200723163150.GA10505@musamaanjum>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,33 +84,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: musamaanjum@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 23, 2020 at 09:31:50PM +0500, Muhammad Usama Anjum wrote:
-> This patch fixes the checkpatch.pl warning:
-> WARNING: Missing or malformed SPDX-License-Identifier tag
-> 
-> Add a the SPDX-License-Identifier tag on line 1
-> 
-> Signed-off-by: Muhammad Usama Anjum <musamaanjum@gmail.com>
-> ---
-> Other files in this folder have GPL-2.0 license. So this file should
-> have the same license which was missing before and checkpatch.pl was
-> giving the warning.
+This patch fixes the checkpatch.pl warning:
+WARNING: Missing or malformed SPDX-License-Identifier tag
 
-Why is this information not up in the changelog area?
+Add a the SPDX-License-Identifier tag on line 1
 
-And what changeds from v1?  ALways put that below the --- line.
+Other files in this folder have GPL-2.0 license. So this file should
+have the same license which was missing before and checkpatch.pl was
+giving the warning.
 
-v3?
+Signed-off-by: Muhammad Usama Anjum <musamaanjum@gmail.com>
+---
+Changes in v3:
+  - Removed an empty line which I had added in v1
+  - Updated the commit message to include why this patch is needed
 
-thanks,
+ drivers/staging/octeon/octeon-stubs.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-greg k-h
+diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
+index d06743504f2b..3f8e5713b8a8 100644
+--- a/drivers/staging/octeon/octeon-stubs.h
++++ b/drivers/staging/octeon/octeon-stubs.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 */
+ #define CONFIG_CAVIUM_OCTEON_CVMSEG_SIZE	512
+ 
+ #ifndef XKPHYS_TO_PHYS
+-- 
+2.17.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
