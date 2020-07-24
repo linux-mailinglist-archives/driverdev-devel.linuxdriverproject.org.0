@@ -2,89 +2,65 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5826A22C395
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jul 2020 12:47:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 44C8922C58B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jul 2020 14:50:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3D39486130;
-	Fri, 24 Jul 2020 10:47:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5371186F57;
+	Fri, 24 Jul 2020 12:50:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2Kns6ojGbjtV; Fri, 24 Jul 2020 10:47:36 +0000 (UTC)
+	with ESMTP id 67tuRhw2kNRo; Fri, 24 Jul 2020 12:50:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 377F185FA0;
-	Fri, 24 Jul 2020 10:47:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 21D2086F80;
+	Fri, 24 Jul 2020 12:50:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7C5631BF2C2
- for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 10:47:33 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 838441BF29D
+ for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 12:50:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 79097883FD
- for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 10:47:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7AFD2203C8
+ for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 12:50:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ULcWY438Mvi1 for <devel@linuxdriverproject.org>;
- Fri, 24 Jul 2020 10:47:32 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D082A883ED
- for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 10:47:32 +0000 (UTC)
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 06OAlVP0035225;
- Fri, 24 Jul 2020 10:47:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=V7UTj6pGG4terJJFtG5oz1kiiwdHooz6JHEg0pNxRUA=;
- b=Nl3t6cYnYWP4Kq47QXM2ueSYx80KTMZlb3CIaZIzRxyVZEeY1wSt7C5NdiN48YwH34PH
- Zjqx7+LpBedvfrKxboy52mpRRzf6YGJdaKLD41SRgyxOX0byiM0z4TsDpnWhVVlg8ky9
- CzHnftHKUF9MzjoIz1g+B42UR0ZBVZubK4NeEa5V0F/I69zxuew5q0bTy/y3SFzVnpBq
- zW4uTznQHxJZ5VqXGGoUZbzRC5LJcVOEKgmyTZtYaKyxy9FNQagw9Bp4LbdOLC6WuryZ
- zqpL87PNTFY9nrpNg4RtRaiOcEM5r4YOHLjrHggm6s0xpamGSSaA5X16OGx4J2WugmVT 9A== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 32bs1mxf8t-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 24 Jul 2020 10:47:31 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 06OAgROR014698;
- Fri, 24 Jul 2020 10:45:31 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 32fsr74pn7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 24 Jul 2020 10:45:31 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 06OAjUjr030696;
- Fri, 24 Jul 2020 10:45:30 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 24 Jul 2020 10:45:29 +0000
-Date: Fri, 24 Jul 2020 13:45:24 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Muhammad Usama Anjum <musamaanjum@gmail.com>
-Subject: Re: [PATCH] staging: octeon: Indent with tabs instead of spaces
-Message-ID: <20200724104524.GT2549@kadam>
-References: <20200722171950.GA6176@PKL-UANJUM-LT.pkl.mentorg.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200722171950.GA6176@PKL-UANJUM-LT.pkl.mentorg.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9691
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- suspectscore=0
- bulkscore=0 mlxscore=0 spamscore=0 adultscore=0 phishscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2007240081
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9691
- signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- bulkscore=0 adultscore=0
- lowpriorityscore=0 mlxlogscore=999 malwarescore=0 clxscore=1011
- spamscore=0 mlxscore=0 impostorscore=0 phishscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2007240082
+ with ESMTP id 7PBH9exPZrea for <devel@linuxdriverproject.org>;
+ Fri, 24 Jul 2020 12:50:38 +0000 (UTC)
+X-Greylist: delayed 00:11:52 by SQLgrey-1.7.6
+Received: from aliyun-sdnproxy-3.icoremail.net (aliyun-cloud.icoremail.net
+ [47.90.104.110])
+ by silver.osuosl.org (Postfix) with SMTP id F0AF920365
+ for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 12:50:37 +0000 (UTC)
+Received: from localhost.localdomain (unknown [210.32.144.186])
+ by mail-app4 (Coremail) with SMTP id cS_KCgAnnnlG1Bpfy25GAA--.19865S4;
+ Fri, 24 Jul 2020 20:30:02 +0800 (CST)
+From: Dinghao Liu <dinghao.liu@zju.edu.cn>
+To: dinghao.liu@zju.edu.cn,
+	kjlu@umn.edu
+Subject: [PATCH] Staging: rtl8188eu: rtw_mlme: Fix uninitialized variable
+ authmode
+Date: Fri, 24 Jul 2020 20:29:55 +0800
+Message-Id: <20200724122957.30411-1-dinghao.liu@zju.edu.cn>
+X-Mailer: git-send-email 2.17.1
+X-CM-TRANSID: cS_KCgAnnnlG1Bpfy25GAA--.19865S4
+X-Coremail-Antispam: 1UD129KBjvdXoW7XF43Kr1ruFWUtr1kArW8JFb_yoWDWwb_KF
+ W8t34xXr1DAF1fCr4UGF4FqFWIvrWDZr1Iy3yktFZxuF45C3yDur9rCrnrGFW7XFW2qr9r
+ Cr4aqr1Fkr18CjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUb-kFc2x0x2IEx4CE42xK8VAvwI8IcIk0rVWrJVCq3wAFIxvE14AK
+ wVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK021l84ACjcxK6xIIjxv20x
+ vE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4UJVWxJr1l84ACjcxK6I8E
+ 87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_GcCE3s1le2I262IYc4CY6c
+ 8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_
+ Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwI
+ xGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2Y2ka0xkIwI1lc2xSY4AK
+ 67AK6ryUMxAIw28IcxkI7VAKI48JMxAIw28IcVCjz48v1sIEY20_GFWkJr1UJwCFx2IqxV
+ CFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r10
+ 6r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxV
+ WUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2IYs7xG
+ 6rW3Jr0E3s1lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JV
+ W8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUb1rW5UUUUU==
+X-CM-SenderInfo: qrrzjiaqtzq6lmxovvfxof0/1tbiAggHBlZdtPRcawARsm
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,23 +73,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Julia Lawall <julia.lawall@inria.fr>,
+ Stefano Brivio <sbrivio@redhat.com>,
+ Shreeya Patel <shreeya.patel23498@gmail.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jul 22, 2020 at 10:19:50PM +0500, Muhammad Usama Anjum wrote:
-> Remove a coding style error. It makes code more readable.
-> 
-> Signed-off-by: Muhammad Usama Anjum <musamaanjum@gmail.com>
-> ---
+The variable authmode will keep uninitialized if neither if
+statements used to initialize this variable are not triggered.
+Then authmode may contain a garbage value and influence the
+execution flow of this function.
 
-This isn't a part of the official style guide so the original is fine.
+Fix this by initializing it to zero.
 
-regards,
-dan carpenter
+Signed-off-by: Dinghao Liu <dinghao.liu@zju.edu.cn>
+---
+ drivers/staging/rtl8188eu/core/rtw_mlme.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+index 9de2d421f6b1..716f8d8a5c13 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+@@ -1711,7 +1711,7 @@ static int rtw_append_pmkid(struct adapter *Adapter, int iEntry, u8 *ie, uint ie
+ 
+ int rtw_restruct_sec_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_len)
+ {
+-	u8 authmode;
++	u8 authmode = 0;
+ 	uint ielength;
+ 	int iEntry;
+ 	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
+-- 
+2.17.1
 
 _______________________________________________
 devel mailing list
