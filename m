@@ -2,61 +2,83 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D94A922CC7F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jul 2020 19:44:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4AD4A22CCB0
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jul 2020 19:56:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4FBA888D7C;
-	Fri, 24 Jul 2020 17:44:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2C71288914;
+	Fri, 24 Jul 2020 17:56:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id waRL4zlSzc+z; Fri, 24 Jul 2020 17:44:52 +0000 (UTC)
+	with ESMTP id xFyafDfY6T+k; Fri, 24 Jul 2020 17:56:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C75A9887A4;
-	Fri, 24 Jul 2020 17:44:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A098C882FD;
+	Fri, 24 Jul 2020 17:56:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EEDBD1BF3C4
- for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 17:44:49 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9DB221BF3C4
+ for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 17:56:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E549F24A5C
- for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 17:44:49 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 99EB887E37
+ for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 17:56:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i6rvnCU5whMV for <devel@linuxdriverproject.org>;
- Fri, 24 Jul 2020 17:44:49 +0000 (UTC)
+ with ESMTP id 6sSdVi16hLRj for <devel@linuxdriverproject.org>;
+ Fri, 24 Jul 2020 17:56:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by silver.osuosl.org (Postfix) with ESMTPS id D5FEA20427
- for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 17:44:48 +0000 (UTC)
-IronPort-SDR: j27IIPVsWdx7vyArDikxt0c3yjlZvkTv8TOF01kBEbMl+Fm/tszQsCohckZby+euGj+BDq8dlF
- rR0U9kie1fmg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9692"; a="138813279"
-X-IronPort-AV: E=Sophos;i="5.75,391,1589266800"; d="scan'208";a="138813279"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jul 2020 10:44:47 -0700
-IronPort-SDR: WxBXZiIH6p6LoIgUxVvQfMA40WAYC+AYurxIzdENRVdArJVTQzhm32aAiXQWMHLz3e1S/Qsjm0
- OpJ6tjUZyxxA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,391,1589266800"; d="scan'208";a="328982125"
-Received: from lkp-server01.sh.intel.com (HELO df0563f96c37) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 24 Jul 2020 10:44:46 -0700
-Received: from kbuild by df0563f96c37 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1jz1kT-0000Sd-GO; Fri, 24 Jul 2020 17:44:45 +0000
-Date: Sat, 25 Jul 2020 01:44:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- a24c6f7bc923d5e2f3139855eb09b0d480d6b410
-Message-ID: <5f1b1e02.hm2Q3dTLqfUYfnkR%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CBC4C88179
+ for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 17:56:24 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id h1so7598635otq.12
+ for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 10:56:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=crOELoHuO5UyCHwlOjSs28KQsKC5splMHLSUwDt5LfI=;
+ b=WsYsRiGQq/Ne+jIHDnyOUOBwFQMSO8mx0SFa5Iv16nUbj/GxaWT7Oo97hPT3V+8i8E
+ 6P0QHd/ggEPcUPzWs5wlZmFqABDmPOc2y1onfiJiVNoFIeGDjo+N6AvBm97eWfW3FMrc
+ ap8Xb95k9VObNlQB34nanTazZMzARB4pnkCmjmUiEZdMftNaIJ2X3erRf9iF9/e8TkWN
+ 1PwAUM+dq/TbWBjUpfNAaEd7hHVqv8iQo3Rr+kk1IHG7kW03EFsCE1ppj42sdqT2IPMX
+ hZSwl8PKiwcp8gqEyven9Z1+daim39qVhgTxjg951sWWqg/t8T/G5kZe0P7VQaq9R9gB
+ kQ1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=crOELoHuO5UyCHwlOjSs28KQsKC5splMHLSUwDt5LfI=;
+ b=LuAjwO0tUtvGKqUaRriT2KkODrq8DfodbkWh7YVY2Dir2T5rA+k7hnR/p9k1Z2pZjw
+ +Jnmh92YE2ZEO5JP49DUQdrfDpG79KtY8XMjv1znexdAs0CVIFZBG/qdWIz3cOiJLmlt
+ VIEKVRVo6C6hPQMN0OeVTitFwP9joRHebTb4lOipHC8t/53Ufg57qXu9UC5C9U7zVlpB
+ Ci4GS1EUuUnjX06kjeqmf7SO04DCNfTDaLZsaa+JRcgjxx2Bx6Su2gGs/VGGPPFJyAwn
+ IzYS63tP7y128Sdv5/LPlrojp9TH80kuLPyfqN4avJ+VR6VRUiWapgArOfTdjS3QdmVf
+ sFcw==
+X-Gm-Message-State: AOAM533S8xDmYiR1HSrx7FBe4vrp1FIA/3+nMG4k5tg7arOpDpqQG08/
+ plJHjv6gMZW5xVEjhzqH4Rc=
+X-Google-Smtp-Source: ABdhPJzB+ySmpkZQodsm5CaoU4cuc/3IVfPnt5raiqSbjqvrnqiwWCuLSYICKSu1uPDuHLYpsteMxg==
+X-Received: by 2002:a9d:5915:: with SMTP id t21mr9702226oth.372.1595613383978; 
+ Fri, 24 Jul 2020 10:56:23 -0700 (PDT)
+Received: from localhost.localdomain (cpe-24-31-245-230.kc.res.rr.com.
+ [24.31.245.230])
+ by smtp.gmail.com with ESMTPSA id n7sm1559472ooo.38.2020.07.24.10.56.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Jul 2020 10:56:23 -0700 (PDT)
+Subject: Re: [PATCH] Staging: rtl8188eu: rtw_mlme: Fix uninitialized variable
+ authmode
+To: Dinghao Liu <dinghao.liu@zju.edu.cn>
+References: <20200724122957.30411-1-dinghao.liu@zju.edu.cn>
+ <20200724132836.GC316746@kroah.com>
+From: Larry Finger <Larry.Finger@lwfinger.net>
+Message-ID: <66d9502e-682f-6ccd-ef90-138feee0c2ae@lwfinger.net>
+Date: Fri, 24 Jul 2020 12:56:22 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <20200724132836.GC316746@kroah.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,101 +91,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kjlu@umn.edu, linux-kernel@vger.kernel.org,
+ Julia Lawall <julia.lawall@inria.fr>, Stefano Brivio <sbrivio@redhat.com>,
+ Shreeya Patel <shreeya.patel23498@gmail.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: a24c6f7bc923d5e2f3139855eb09b0d480d6b410  debugfs: Add access restriction option
+On 7/24/20 8:28 AM, Dinghao Liu wrote:
+> The variable authmode will keep uninitialized if neither if
+> statements used to initialize this variable are not triggered.
 
-elapsed time: 1338m
+Besides Greg's comment, you need to re-parse this sentence. I realize that 
+English is probably not your first language, but this one is not what you meant.
 
-configs tested: 74
-configs skipped: 1
+You likely meant "The variable authmode will remain uninitialized if all 
+statements used to initialize this variable are not triggered."
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+A possible (line-wrapped) patch to quiet the tools would be:
 
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-i386                              allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-xtensa                              defconfig
-arc                                 defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-x86_64                                   rhel
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                                  kexec
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c 
+b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+index 9de2d421f6b1..9e4d78bc9a2e 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+@@ -1729,9 +1729,11 @@ int rtw_restruct_sec_ie(struct adapter *adapter, u8 
+*in_ie, u8 *out_ie, uint in_
+         if ((ndisauthmode == Ndis802_11AuthModeWPA) ||
+             (ndisauthmode == Ndis802_11AuthModeWPAPSK))
+                 authmode = _WPA_IE_ID_;
+-       if ((ndisauthmode == Ndis802_11AuthModeWPA2) ||
+-           (ndisauthmode == Ndis802_11AuthModeWPA2PSK))
++       else if ((ndisauthmode == Ndis802_11AuthModeWPA2) ||
++                (ndisauthmode == Ndis802_11AuthModeWPA2PSK))
+                 authmode = _WPA2_IE_ID_;
++       else
++               authmode = 0;
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+         if (check_fwstate(pmlmepriv, WIFI_UNDER_WPS)) {
+                 memcpy(out_ie + ielength, psecuritypriv->wps_ie, 
+psecuritypriv->wps_ie_len);
+
+
+Yes, in this routine, it would be possible for authmode to not be set; however, 
+later code only compares it to either _WPA_IE_ID_ or _WPA2_IE_ID_. It is never 
+used in a way that an unset value could make the program flow be different by 
+arbitrarily setting the value to zero. Thus your statement "Then authmode may 
+contain a garbage value and influence the execution flow of this function." is 
+false.
+
+Larry
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
