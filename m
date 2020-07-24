@@ -1,77 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4092E22C5FD
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jul 2020 15:14:18 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9CF23204C0;
-	Fri, 24 Jul 2020 13:14:15 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0CWbJZizTihA; Fri, 24 Jul 2020 13:14:15 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2BD0122CB0;
-	Fri, 24 Jul 2020 13:14:14 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7CE0C1BF40B
- for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 13:14:11 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5434022C5FF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jul 2020 15:14:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 79A7F8860D
- for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 13:14:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E6E6288892;
+	Fri, 24 Jul 2020 13:14:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Zpii7IWNISln; Fri, 24 Jul 2020 13:14:29 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 63C068860D;
+	Fri, 24 Jul 2020 13:14:29 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D77D91BF40B
+ for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 13:14:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id C39742049B
+ for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 13:14:26 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2vkG5Vb6L+xy for <devel@linuxdriverproject.org>;
- Fri, 24 Jul 2020 13:14:11 +0000 (UTC)
+ with ESMTP id Yofa-QbdgnG2 for <devel@linuxdriverproject.org>;
+ Fri, 24 Jul 2020 13:14:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 08AF788606
- for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 13:14:11 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id e8so5177799pgc.5
- for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 06:14:11 -0700 (PDT)
+Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
+ [209.85.216.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6F230203C8
+ for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 13:14:25 +0000 (UTC)
+Received: by mail-pj1-f65.google.com with SMTP id b92so5195976pjc.4
+ for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 06:14:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:subject:message-id:mime-version:content-disposition;
- bh=43P66Fc2aAnp4qTC6waFnOvWVRLlCg4Ewg4/5+qAaPc=;
- b=iesrQsY5ydwDmsTY2kTV8vuXCi2id+5XuBiuQzA7aNjAoiWDHlSg40vlCUO7dSUxTw
- 0lPCJMsfPp1SULd/Byqd1MsVimdrS56zDGNAJCh22QjJdtNvObQf+DTa96cG0tnjy0K/
- luMX5rrKZ6yyN5c+9wfBgR3eE5QZBONaYqiqUPpGRRP/G+AgEj0APfIqObCOZ1ZKRAY7
- qzzX9QO+62y7UpIvT3WD3/E0B5/xLQwKZYvzV1WJaBpPpnDUxIgF5f3KJFMbIinyueLq
- jrycY2qU0iWYx67L5+t9AtCsWuCOio/L1iRCcMGJLAIhAmiS/UxJS6NkBRAq06+rHseA
- koeg==
+ bh=dzxDyqTxC5C7vOfI1scwv7wBqFZhHOHAY1E3Yx1fnmk=;
+ b=gCvhAN8gxAEKQC133j2Q+Rm3uTGWgxKhD0gv7q41xwW0fbceAjto7tQEgP4wUu1QUf
+ VLwLAvfF5yIxCk5qCzaKP2SBJZPNKWkcnaDxALRDetyY7IHrJNRZ+NKKWY01eCBVWiGl
+ FMiyyqXq3jWZkGlcEl+UihN1NW6aT2KLu0en+t6K4unTRJwiBsHPcLiwoq7dP9e+j2Me
+ Ks4abwmgYS4q/EN65iHht/xB9jnLyJbfYZO4g8BBhrkjyoCfRR1TTJhfrP84G3xl5+ts
+ wqaSPUTjDa+iMXVSIxgUT3X0guICOL7+JWSA2zEI92fq34KgPOjrqH5pN46qjbJrDLah
+ GqCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:subject:message-id:mime-version
  :content-disposition;
- bh=43P66Fc2aAnp4qTC6waFnOvWVRLlCg4Ewg4/5+qAaPc=;
- b=DrVatKio2ra2BIzWLFE+YK4JWvVCWRkWUWJWHo1A7a4lNuJUbnK4W7e7Qn8NbaTI2v
- X4kMrVoZXW2bCcKPfbnvl4ULjKQAatCYLVsK4eiFCsdT08u230KIE33Lvdkl83M6gfDP
- TnxqJPkYKfCBLaf/rDUrTBsXd+kmO6fRDE+he2xVCsI/ibxwPCnjtus3Wm7VnyeQ/Gz4
- ATJzM8SoYJ/+6wAd4qvFBUeEhTyNjPSF2nbzPsIc+4BU0EHofj4idu3E3ZTXm+UFu9W1
- iwRbiXKnopgFUiksojNuN9Ve23aoGjG3YNy0Gw2ZYhODLpp+j0FLa54cZ2vSVR0EEQwX
- aUvQ==
-X-Gm-Message-State: AOAM531gUq0ZcBs5+BgzERL+7cRsQn8iFHXbMRAvW5fpAs333TXW9hn0
- lOTbZDyCoaHsTZ9PNQaBub0=
-X-Google-Smtp-Source: ABdhPJxCX+WwMMOkaTap07DisAkCFoIimynX/6s/HS7vcD7LJ9fTsEUx54AZMGw7nCb9YUGc+VyEYA==
-X-Received: by 2002:a65:43c1:: with SMTP id n1mr8271003pgp.67.1595596450534;
- Fri, 24 Jul 2020 06:14:10 -0700 (PDT)
+ bh=dzxDyqTxC5C7vOfI1scwv7wBqFZhHOHAY1E3Yx1fnmk=;
+ b=RtL1FlRN07bntbl9LWeK6YDfGGHWFP+3QR7jMgRAntIfD12s9eg1UcQvQkWXDs8/y7
+ /iGqPnTpetWs9sCsMd1hNcJ5Z+q/BYCbxExy+Auzm3P3YaABhtiJyCVsUZpLybF+ECTF
+ nJJ8uxwpX3k2yUVzUOrqQ4JmlARqAcCu8fT3VW1DYhdpHxIb6n6AazoVFh6cdWAA3SyK
+ HSBmZ1eAEmNGCX4c6ZkQ2zYVnBdj2nvHXqU7O42m2t2kKvovjHSac53nqJnS06CXJF48
+ nxkyEre8FuhIGwsqhiteFuO0ZKUlyWNy2tg3Kk2Ur+SMFI07dgCYxpa/C4v4nobWELxe
+ uqAA==
+X-Gm-Message-State: AOAM531K4wbccV0jT/yRJcNG4RBvZxamT6Zowk177wJOw/3EuaoMdaQm
+ cS1Li2Q4M8tW8Kjvt3apRoQ=
+X-Google-Smtp-Source: ABdhPJwnqD+PuzPqE8lSUn06RHEbKZLPKf8OY6mWdmU+OVlpL8eg4wB7BrSKTL5Mr4WU/34dAQnhyg==
+X-Received: by 2002:a17:90a:3523:: with SMTP id
+ q32mr4964274pjb.185.1595596464961; 
+ Fri, 24 Jul 2020 06:14:24 -0700 (PDT)
 Received: from localhost ([1.22.41.181])
- by smtp.gmail.com with ESMTPSA id x9sm6192051pgr.57.2020.07.24.06.14.08
+ by smtp.gmail.com with ESMTPSA id s22sm6030243pgv.43.2020.07.24.06.14.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Jul 2020 06:14:09 -0700 (PDT)
-Date: Fri, 24 Jul 2020 18:44:03 +0530
+ Fri, 24 Jul 2020 06:14:24 -0700 (PDT)
+Date: Fri, 24 Jul 2020 18:44:20 +0530
 From: Mrinal Pandey <mrinalmni@gmail.com>
 To: gregkh@linuxfoundation.org, arve@android.com, tkjos@android.com,
  maco@android.com, joel@joelfernandes.org, christian@brauner.io,
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
  mrinalmni@gmail.com
-Subject: [PATCH 3/6] drivers: android: Remove braces for a single statement
- if-else block
-Message-ID: <20200724131403.dahfhdwa3wirzkxj@mrinalpandey>
+Subject: [PATCH 4/6] drivers: android: Fix a variable declaration coding
+ style issue
+Message-ID: <20200724131420.fkyzzgnmrmqk6dfe@mrinalpandey>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -85,75 +86,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8588937010968218146=="
+Content-Type: multipart/mixed; boundary="===============7059438904075442995=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---===============8588937010968218146==
+--===============7059438904075442995==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3bvf6kql47vqrvnj"
+	protocol="application/pgp-signature"; boundary="ps7jevsm5xmkvks7"
 Content-Disposition: inline
 
 
---3bvf6kql47vqrvnj
+--ps7jevsm5xmkvks7
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Remove braces for both if and else block as suggested by checkpatch.
+Add a blank line after variable declarations as suggested by checkpatch.
 
 Signed-off-by: Mrinal Pandey <mrinalmni@gmail.com>
 ---
- drivers/android/binder.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/android/binder.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index 5fdf982ec83b..3cf13ff16934 100644
+index 3cf13ff16934..75832f236bf9 100644
 --- a/drivers/android/binder.c
 +++ b/drivers/android/binder.c
-@@ -2759,11 +2759,10 @@ static bool binder_proc_transaction(struct binder_t=
-ransaction *t,
- 	binder_node_lock(node);
- 	if (oneway) {
- 		BUG_ON(thread);
--		if (node->has_async_transaction) {
-+		if (node->has_async_transaction)
- 			pending_async =3D true;
--		} else {
-+		else
- 			node->has_async_transaction =3D true;
--		}
- 	}
-=20
- 	binder_inner_proc_lock(proc);
+@@ -3631,6 +3631,7 @@ static int binder_thread_write(struct binder_proc *pr=
+oc,
+ 			ret =3D -1;
+ 			if (increment && !target) {
+ 				struct binder_node *ctx_mgr_node;
++
+ 				mutex_lock(&context->context_mgr_node_lock);
+ 				ctx_mgr_node =3D context->binder_context_mgr_node;
+ 				if (ctx_mgr_node)
 --=20
 2.25.1
 
 
---3bvf6kql47vqrvnj
+--ps7jevsm5xmkvks7
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEE8DwCG1PwaC2uTI99xIwpEWwxhGQFAl8a3poACgkQxIwpEWwx
-hGSkHA//RighMrxFGk+BTWAwUxsE+wTGy1Vvn0Nc1RSyxD0A6YPqaRCg4B9nGqhk
-PCyg07NT2hGY2k/V2EDplmVu5oHpQREtED06uAEZY3efi1gdFsw4fEhd08x1kpu4
-jDXzJuG2fJvfDLd49iVnfV2z5gtt8KQXyiZXZ2T/BP0w11JLJA9RcyRzAOkJUH4f
-8PtiaN1EiMsXw/wPaYRWLc+RuojZl8AfSA3dsLtT8Pb7oCgn20QUDFDFPB4MMoaZ
-ULVRGjcj81Oa4jWCTStSzzz01iywx+T+HV6nPwaV/QvZT2ga+l8c/b1H79TW4hcv
-IFex7ns9CS9t1U59DOaPHnVtapyfrkg6kONfc1++StUvuxrXaTag/2EYmc9xpoFb
-tVtlsoM/FtO+3tVC5UixIiVEGdQRdLElxvdMgnX+2I/HtT7IRyKeVjH8/J+7Akd5
-n5CaMBTHqQxbyO0J7P+gF4MF9w8EF8BlLwYTdcmM/E9ktQJOGDnH3tGifMO4b+5U
-bWOZ45mo5kN5ynkEPEdo0aPGoA2SWk1fgCZZKml5lyuKlxjsy+TpLcs9olpqx/HU
-qryOd+4lLY/mF6j+vWZ7gnVwwIe04RQYATLIXl6xBOuRUnXUVjESdtKpBHLtBv7N
-EDmO5dmBONAcpoYSE8qVyH8Y7Dh5FK+cVjwRqyuRt5I538BCuks=
-=wUz9
+iQIzBAEBCgAdFiEE8DwCG1PwaC2uTI99xIwpEWwxhGQFAl8a3qsACgkQxIwpEWwx
+hGRP9A/+LlCEIXuSRjF2CIXkRNs3TC/xhRcngfEZT/1QR8Eu1Z0JwUt9H42mptu+
+NmgJ8wXAElh7IRVhrscLUxjwyuc48APblUGNr1fDMGUw+ASQne6OUyug+KNiGw0c
+CwfAKKBu9hcw249WSK+sREfvTCh4mau8pVXfo/9EmT3CNLbqOJjIPXgZKVo13+0D
+z3IvVH5Pi6SBTcCYwvQna7xsPYfqQFRseouk6XobCqPmTtdSOmC/PEHzloWLRPPm
+DbTAzohl8XAA/CgZFDuvxaLdlwV3yiCjvDIK7MXe8U8nVmcXQtaU+3GUUArFct4T
+VbfJKOZ/XIkgl97QSsr4ZCB9T9a3OLVzsVK7tithTbbMqB7yuJZaoUoYYYnY6TXD
+u7Ou22JU9JsZVyE7j5LffDMvZaJnVo0TpxIWzpSvFL2kmkyb5rsNnQBBgzu5dLUu
+ITDhLBexx8ammY2xkKiZNeZLMNi9noiFVZX00n/HhvSLj5RiwC01Wvd6ezn3L5nw
+nraSdXJnr+4QXOuJEI2zquTP0OFi9loSav7tcaVlC+OPv7kmZV95R5oaVEfBDe9c
+vgiBHaw1OBf2y0oMYMY8nsPrfsM8zGmpasbXTboZmC4ZJwb4r48YmXFaS3tVF7ms
+Wj9mmw5E4rxKyT5RhY5r7x1twv3b9+ABKjfbBvR6oeZT0mufW90=
+=zILk
 -----END PGP SIGNATURE-----
 
---3bvf6kql47vqrvnj--
+--ps7jevsm5xmkvks7--
 
---===============8588937010968218146==
+--===============7059438904075442995==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -164,4 +159,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---===============8588937010968218146==--
+--===============7059438904075442995==--
