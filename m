@@ -1,84 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AD4A22CCB0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jul 2020 19:56:30 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BCF8722CF5F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Jul 2020 22:25:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2C71288914;
-	Fri, 24 Jul 2020 17:56:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6CE1F885DE;
+	Fri, 24 Jul 2020 20:25:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xFyafDfY6T+k; Fri, 24 Jul 2020 17:56:27 +0000 (UTC)
+	with ESMTP id WQZK-QAMXmwj; Fri, 24 Jul 2020 20:25:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A098C882FD;
-	Fri, 24 Jul 2020 17:56:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 14690876E4;
+	Fri, 24 Jul 2020 20:25:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9DB221BF3C4
- for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 17:56:25 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F21B71BF342
+ for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 20:25:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 99EB887E37
- for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 17:56:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E1836875CA
+ for <devel@linuxdriverproject.org>; Fri, 24 Jul 2020 20:25:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6sSdVi16hLRj for <devel@linuxdriverproject.org>;
- Fri, 24 Jul 2020 17:56:24 +0000 (UTC)
+ with ESMTP id 8s0QXn9l5X8o for <devel@linuxdriverproject.org>;
+ Fri, 24 Jul 2020 20:25:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
- [209.85.210.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CBC4C88179
- for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 17:56:24 +0000 (UTC)
-Received: by mail-ot1-f67.google.com with SMTP id h1so7598635otq.12
- for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 10:56:24 -0700 (PDT)
+Received: from mail-pl1-f193.google.com (mail-pl1-f193.google.com
+ [209.85.214.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0CF8A8746D
+ for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 20:25:53 +0000 (UTC)
+Received: by mail-pl1-f193.google.com with SMTP id b9so5182398plx.6
+ for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 13:25:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=crOELoHuO5UyCHwlOjSs28KQsKC5splMHLSUwDt5LfI=;
- b=WsYsRiGQq/Ne+jIHDnyOUOBwFQMSO8mx0SFa5Iv16nUbj/GxaWT7Oo97hPT3V+8i8E
- 6P0QHd/ggEPcUPzWs5wlZmFqABDmPOc2y1onfiJiVNoFIeGDjo+N6AvBm97eWfW3FMrc
- ap8Xb95k9VObNlQB34nanTazZMzARB4pnkCmjmUiEZdMftNaIJ2X3erRf9iF9/e8TkWN
- 1PwAUM+dq/TbWBjUpfNAaEd7hHVqv8iQo3Rr+kk1IHG7kW03EFsCE1ppj42sdqT2IPMX
- hZSwl8PKiwcp8gqEyven9Z1+daim39qVhgTxjg951sWWqg/t8T/G5kZe0P7VQaq9R9gB
- kQ1w==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=K7UJS4ygh33eCW7nxQsMEsiR5F+Qbliw0FCXznj2R5U=;
+ b=jCqM5jmas2FCHw6FyaOyhy+8ZPP0V2mglBljs4SR0yV/9neqZ9NKNldT1txOmz29XG
+ IR8Z34OHlZRKA0SACtetw2feaZPgts7Gz/srFsGOMdCMxVmWI74mebW0dYd3fAAZ/ovh
+ MhNFIdlF4TI/l/pv84kTegiJGT6DB4VGWdnfep3rkKPzAgoOBMUS2pB8J9BWsWo//Lhl
+ MB9xCUvZfy4e3cN2NWqN3dJccuda+/e4PMGaExNg8rZrtGMZLb55TbmtvfJ5no80y6gI
+ SoejH5EWGeynvYHtFh+pYlEVX4u8Nm2bbduR5GpnbU2r/Cu1dHUmoyVV22HAlaTRkSvD
+ iPwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=crOELoHuO5UyCHwlOjSs28KQsKC5splMHLSUwDt5LfI=;
- b=LuAjwO0tUtvGKqUaRriT2KkODrq8DfodbkWh7YVY2Dir2T5rA+k7hnR/p9k1Z2pZjw
- +Jnmh92YE2ZEO5JP49DUQdrfDpG79KtY8XMjv1znexdAs0CVIFZBG/qdWIz3cOiJLmlt
- VIEKVRVo6C6hPQMN0OeVTitFwP9joRHebTb4lOipHC8t/53Ufg57qXu9UC5C9U7zVlpB
- Ci4GS1EUuUnjX06kjeqmf7SO04DCNfTDaLZsaa+JRcgjxx2Bx6Su2gGs/VGGPPFJyAwn
- IzYS63tP7y128Sdv5/LPlrojp9TH80kuLPyfqN4avJ+VR6VRUiWapgArOfTdjS3QdmVf
- sFcw==
-X-Gm-Message-State: AOAM533S8xDmYiR1HSrx7FBe4vrp1FIA/3+nMG4k5tg7arOpDpqQG08/
- plJHjv6gMZW5xVEjhzqH4Rc=
-X-Google-Smtp-Source: ABdhPJzB+ySmpkZQodsm5CaoU4cuc/3IVfPnt5raiqSbjqvrnqiwWCuLSYICKSu1uPDuHLYpsteMxg==
-X-Received: by 2002:a9d:5915:: with SMTP id t21mr9702226oth.372.1595613383978; 
- Fri, 24 Jul 2020 10:56:23 -0700 (PDT)
-Received: from localhost.localdomain (cpe-24-31-245-230.kc.res.rr.com.
- [24.31.245.230])
- by smtp.gmail.com with ESMTPSA id n7sm1559472ooo.38.2020.07.24.10.56.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Jul 2020 10:56:23 -0700 (PDT)
-Subject: Re: [PATCH] Staging: rtl8188eu: rtw_mlme: Fix uninitialized variable
- authmode
-To: Dinghao Liu <dinghao.liu@zju.edu.cn>
-References: <20200724122957.30411-1-dinghao.liu@zju.edu.cn>
- <20200724132836.GC316746@kroah.com>
-From: Larry Finger <Larry.Finger@lwfinger.net>
-Message-ID: <66d9502e-682f-6ccd-ef90-138feee0c2ae@lwfinger.net>
-Date: Fri, 24 Jul 2020 12:56:22 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ bh=K7UJS4ygh33eCW7nxQsMEsiR5F+Qbliw0FCXznj2R5U=;
+ b=XN4ERxnv40rS40gci4Xp4KiHTPrsqJZBaVcA7moygFgvcB7eDfFpB2jVhkU8zYnlWe
+ 3vT8Z2YXp5BSavCh8WXRZm/zH9dsK266bTdGjrGPliR6Dy1t7YV8hqohi6gd3GtLNFZp
+ tUE1Cx6fh0ivU6UzfMuWshY8xhaOQdiTfyU8NEd4I0TtQRXeafVxSkpMarhBSmAEP73L
+ JmygQzjf+iMUU4EG2SJ0g+slUyXH7lh5YgLjIAA5ElnH6gYaO4DURFev7DQ5Zvu78kcn
+ ouEuuvlxBhdpNL/Q7NlqojLyeEuPJR1zu/iFJPEmcKeFzu1Wpi938gWV7Fjy19WOdjkw
+ YFig==
+X-Gm-Message-State: AOAM5317hfy9Nz68RFg9vh0nPYz0RUSCqy+I4RrltL386lbpyltEbFEs
+ aG78PfPTfLjtNbJxZcr5p4Q=
+X-Google-Smtp-Source: ABdhPJyPaK0FmkX19TnXy98oZXKvWll9K6rh852WnrMd3lFKYALsDa9r6hJKSt52OyYlh8Vyo+x6YA==
+X-Received: by 2002:a17:902:bb8a:: with SMTP id
+ m10mr9746466pls.248.1595622352157; 
+ Fri, 24 Jul 2020 13:25:52 -0700 (PDT)
+Received: from localhost.localdomain ([106.51.23.74])
+ by smtp.gmail.com with ESMTPSA id w1sm7690546pfq.53.2020.07.24.13.25.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 24 Jul 2020 13:25:51 -0700 (PDT)
+From: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+To: 
+Subject: [PATCH] Fix coding style issues
+Date: Sat, 25 Jul 2020 01:55:19 +0530
+Message-Id: <20200724202523.16829-1-anant.thazhemadam@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20200724132836.GC316746@kroah.com>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,58 +84,160 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kjlu@umn.edu, linux-kernel@vger.kernel.org,
- Julia Lawall <julia.lawall@inria.fr>, Stefano Brivio <sbrivio@redhat.com>,
- Shreeya Patel <shreeya.patel23498@gmail.com>
+Cc: Merwin Trever Ferrao <merwintf@gmail.com>, anant.thazhemadam@gmail.com,
+ devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Anoop S <anoop.skumar1507@gmail.com>,
+ Joe Perches <joe@perches.com>, Dan Carpenter <dan.carpenter@oracle.com>,
+ Larry Finger <Larry.Finger@lwfinger.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 7/24/20 8:28 AM, Dinghao Liu wrote:
-> The variable authmode will keep uninitialized if neither if
-> statements used to initialize this variable are not triggered.
+Coding style issues found were rectified
 
-Besides Greg's comment, you need to re-parse this sentence. I realize that 
-English is probably not your first language, but this one is not what you meant.
+Signed-off-by: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_security.c | 92 ++++++++++---------
+ 1 file changed, 47 insertions(+), 45 deletions(-)
 
-You likely meant "The variable authmode will remain uninitialized if all 
-statements used to initialize this variable are not triggered."
+diff --git a/drivers/staging/rtl8188eu/core/rtw_security.c b/drivers/staging/rtl8188eu/core/rtw_security.c
+index 21f6652dd69f..3111f4a899ee 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_security.c
++++ b/drivers/staging/rtl8188eu/core/rtw_security.c
+@@ -127,8 +127,8 @@ static __le32 getcrc32(u8 *buf, int len)
+ }
+ 
+ /*
+-	Need to consider the fragment  situation
+-*/
++ *	Need to consider the fragment  situation
++ */
+ void rtw_wep_encrypt(struct adapter *padapter, u8 *pxmitframe)
+ {
+ 	int	curfragnum, length;
+@@ -429,9 +429,9 @@ static const unsigned short Sbox1[2][256] = {  /* Sbox for hash (can be in ROM)
+ 	0x2DB6, 0x3C22, 0x1592, 0xC920, 0x8749, 0xAAFF, 0x5078, 0xA57A,
+ 	0x038F, 0x59F8, 0x0980, 0x1A17, 0x65DA, 0xD731, 0x84C6, 0xD0B8,
+ 	0x82C3, 0x29B0, 0x5A77, 0x1E11, 0x7BCB, 0xA8FC, 0x6DD6, 0x2C3A,
+-  },
++},
+ 
+-  {  /* second half of table is unsigned char-reversed version of first! */
++{  /* second half of table is unsigned char-reversed version of first! */
+ 	0xA5C6, 0x84F8, 0x99EE, 0x8DF6, 0x0DFF, 0xBDD6, 0xB1DE, 0x5491,
+ 	0x5060, 0x0302, 0xA9CE, 0x7D56, 0x19E7, 0x62B5, 0xE64D, 0x9AEC,
+ 	0x458F, 0x9D1F, 0x4089, 0x87FA, 0x15EF, 0xEBB2, 0xC98E, 0x0BFB,
+@@ -464,26 +464,26 @@ static const unsigned short Sbox1[2][256] = {  /* Sbox for hash (can be in ROM)
+ 	0xB62D, 0x223C, 0x9215, 0x20C9, 0x4987, 0xFFAA, 0x7850, 0x7AA5,
+ 	0x8F03, 0xF859, 0x8009, 0x171A, 0xDA65, 0x31D7, 0xC684, 0xB8D0,
+ 	0xC382, 0xB029, 0x775A, 0x111E, 0xCB7B, 0xFCA8, 0xD66D, 0x3A2C,
+-  }
++}
+ };
+ 
+- /*
+-**********************************************************************
+-* Routine: Phase 1 -- generate P1K, given TA, TK, IV32
+-*
+-* Inputs:
+-*     tk[]      = temporal key			 [128 bits]
+-*     ta[]      = transmitter's MAC address	    [ 48 bits]
+-*     iv32      = upper 32 bits of IV		  [ 32 bits]
+-* Output:
+-*     p1k[]     = Phase 1 key			  [ 80 bits]
+-*
+-* Note:
+-*     This function only needs to be called every 2**16 packets,
+-*     although in theory it could be called every packet.
+-*
+-**********************************************************************
+-*/
++/*
++ **********************************************************************
++ * Routine: Phase 1 -- generate P1K, given TA, TK, IV32
++ *
++ * Inputs:
++ *     tk[]      = temporal key			 [128 bits]
++ *     ta[]      = transmitter's MAC address	    [ 48 bits]
++ *     iv32      = upper 32 bits of IV		  [ 32 bits]
++ * Output:
++ *     p1k[]     = Phase 1 key			  [ 80 bits]
++ *
++ * Note:
++ *     This function only needs to be called every 2**16 packets,
++ *     although in theory it could be called every packet.
++ *
++ **********************************************************************
++ */
+ static void phase1(u16 *p1k, const u8 *tk, const u8 *ta, u32 iv32)
+ {
+ 	int  i;
+@@ -507,28 +507,28 @@ static void phase1(u16 *p1k, const u8 *tk, const u8 *ta, u32 iv32)
+ }
+ 
+ /*
+-**********************************************************************
+-* Routine: Phase 2 -- generate RC4KEY, given TK, P1K, IV16
+-*
+-* Inputs:
+-*     tk[]      = Temporal key			 [128 bits]
+-*     p1k[]     = Phase 1 output key		   [ 80 bits]
+-*     iv16      = low 16 bits of IV counter	    [ 16 bits]
+-* Output:
+-*     rc4key[]  = the key used to encrypt the packet   [128 bits]
+-*
+-* Note:
+-*     The value {TA, IV32, IV16} for Phase1/Phase2 must be unique
+-*     across all packets using the same key TK value. Then, for a
+-*     given value of TK[], this TKIP48 construction guarantees that
+-*     the final RC4KEY value is unique across all packets.
+-*
+-* Suggested implementation optimization: if PPK[] is "overlaid"
+-*     appropriately on RC4KEY[], there is no need for the final
+-*     for loop below that copies the PPK[] result into RC4KEY[].
+-*
+-**********************************************************************
+-*/
++ **********************************************************************
++ * Routine: Phase 2 -- generate RC4KEY, given TK, P1K, IV16
++ *
++ * Inputs:
++ *     tk[]      = Temporal key			 [128 bits]
++ *     p1k[]     = Phase 1 output key		   [ 80 bits]
++ *     iv16      = low 16 bits of IV counter	    [ 16 bits]
++ * Output:
++ *     rc4key[]  = the key used to encrypt the packet   [128 bits]
++ *
++ * Note:
++ *     The value {TA, IV32, IV16} for Phase1/Phase2 must be unique
++ *     across all packets using the same key TK value. Then, for a
++ *     given value of TK[], this TKIP48 construction guarantees that
++ *     the final RC4KEY value is unique across all packets.
++ *
++ * Suggested implementation optimization: if PPK[] is "overlaid"
++ *     appropriately on RC4KEY[], there is no need for the final
++ *     for loop below that copies the PPK[] result into RC4KEY[].
++ *
++ **********************************************************************
++ */
+ static void phase2(u8 *rc4key, const u8 *tk, const u16 *p1k, u16 iv16)
+ {
+ 	int  i;
+@@ -718,7 +718,9 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
+ 				res = _FAIL;
+ 			}
+ 		} else {
+-			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo==NULL!!!\n",__func__));
++			RT_TRACE(_module_rtl871x_security_c_, _drv_err_,
++				 ("%s: stainfo==NULL!!!\n", __func__)
++				);
+ 			res = _FAIL;
+ 		}
+ 	}
+-- 
+2.25.1
 
-A possible (line-wrapped) patch to quiet the tools would be:
-
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c 
-b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-index 9de2d421f6b1..9e4d78bc9a2e 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-@@ -1729,9 +1729,11 @@ int rtw_restruct_sec_ie(struct adapter *adapter, u8 
-*in_ie, u8 *out_ie, uint in_
-         if ((ndisauthmode == Ndis802_11AuthModeWPA) ||
-             (ndisauthmode == Ndis802_11AuthModeWPAPSK))
-                 authmode = _WPA_IE_ID_;
--       if ((ndisauthmode == Ndis802_11AuthModeWPA2) ||
--           (ndisauthmode == Ndis802_11AuthModeWPA2PSK))
-+       else if ((ndisauthmode == Ndis802_11AuthModeWPA2) ||
-+                (ndisauthmode == Ndis802_11AuthModeWPA2PSK))
-                 authmode = _WPA2_IE_ID_;
-+       else
-+               authmode = 0;
-
-         if (check_fwstate(pmlmepriv, WIFI_UNDER_WPS)) {
-                 memcpy(out_ie + ielength, psecuritypriv->wps_ie, 
-psecuritypriv->wps_ie_len);
-
-
-Yes, in this routine, it would be possible for authmode to not be set; however, 
-later code only compares it to either _WPA_IE_ID_ or _WPA2_IE_ID_. It is never 
-used in a way that an unset value could make the program flow be different by 
-arbitrarily setting the value to zero. Thus your statement "Then authmode may 
-contain a garbage value and influence the execution flow of this function." is 
-false.
-
-Larry
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
