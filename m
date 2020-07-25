@@ -2,69 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18EAD22D5A6
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jul 2020 09:06:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F0C922D5F9
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jul 2020 10:12:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0690E870DA;
-	Sat, 25 Jul 2020 07:06:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 18F6E8709F;
+	Sat, 25 Jul 2020 08:12:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s8nXj0xc9i8E; Sat, 25 Jul 2020 07:06:21 +0000 (UTC)
+	with ESMTP id JvPbU3mdNd3u; Sat, 25 Jul 2020 08:12:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6A90D8691A;
-	Sat, 25 Jul 2020 07:06:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F083286B7D;
+	Sat, 25 Jul 2020 08:12:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 78B571BF289
- for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 07:06:18 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F1351BF82C
+ for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 08:12:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7528888189
- for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 07:06:18 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6BD0F86FEC
+ for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 08:12:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sk1-yUMN5GTv for <devel@linuxdriverproject.org>;
- Sat, 25 Jul 2020 07:06:17 +0000 (UTC)
+ with ESMTP id ZQmTs-m-CkPD for <devel@linuxdriverproject.org>;
+ Sat, 25 Jul 2020 08:12:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 53F1C88157
- for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 07:06:17 +0000 (UTC)
-Received: from mail-oi1-f181.google.com (mail-oi1-f181.google.com
- [209.85.167.181])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 18EBB20758
- for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 07:06:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595660777;
- bh=2CHbIxC5Kb2WtZDnEWCdd+0JKhqhPfpbvIbPs1xwH4k=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=uwH6LviNKeZGE4LzNNRPr3R/92imSYJ2ZgeAEN7TOA44pZ/llpuI20rU+xXICJ5H7
- iRnIa6vNoOk88t2s4QrIua+pndEJwCFEk40fa+C9jcg1PPzDYwO1OvKAkEcfOMT58/
- 8fGrHKhJc+pnJgAy8JiVQAJdWl7suR/I2SAQsRGo=
-Received: by mail-oi1-f181.google.com with SMTP id e4so10017823oib.1
- for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 00:06:17 -0700 (PDT)
-X-Gm-Message-State: AOAM531QhV46L6N17cyJU3JHXq4rM0VfyeAVWzecRSUJNgIT3FB+MiyL
- qDo0naQ6rKIuNak16TDu0wG8X5L9MDpHPxNW5pk=
-X-Google-Smtp-Source: ABdhPJzidd2j+iDxB/LYtohSgN4ly7uvOdd4MMroDSUd9hpc7Iq4dbDDtkMqbNUHllGwnfIzHzQ5G/xdxanlFrdAxEY=
-X-Received: by 2002:aca:5594:: with SMTP id j142mr280999oib.33.1595660776343; 
- Sat, 25 Jul 2020 00:06:16 -0700 (PDT)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A0E8586B7D
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 08:12:04 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id f18so10229531wrs.0
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 01:12:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TRFUsEvAIwIIG2KAY4NjCWbxYEJg7r6BmKVKp0Gi2yM=;
+ b=nzLoqfMczFTLnp7VZCsxCn6ym9umeuogSpyDW4VoSXpGuvh3HEZMvN5SeeTGOJ8nk3
+ kacpbHNl+yp2k0yrn64XrQG2Mxf0XeUtcDcMcG4Wghx9IcAATqj4CtXPdJkWAPbrz/qH
+ 6vRVC0aMP1J5Ln6vlae357xnko8/QpcnV0oC/dfXlKBte2D/M0JTZSufUVu5L+D4hNXr
+ MBT41KrbuB3Mvbc9aAKnIsJLiJdZmb5m7CTgCckBVd6HOBqJ1nuEAnTSqKuirROyX0a3
+ LSapils+ZNbCcBBibOx9ePHn48i70yZpppp9HeWk9rhfie6ojT7tvvEm0JK8gHJB8NSV
+ XVVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TRFUsEvAIwIIG2KAY4NjCWbxYEJg7r6BmKVKp0Gi2yM=;
+ b=aL7p16IIuYcTclvBacjpZ1DzjW0UX+i0LXzjbiwijORiTmIpNhBfk0YmX6s33u4bjg
+ nUFi3zGJghHx1hZV9DFNkFrnR4naHuhXitCMqJE0jS1w0u96A3sNoeMTPY/KqbQkMSem
+ aGw5q0uHETYq1wP5IcJfRRu39dRjM5plcMgIZars0RgdoVvIVqYh+MgZieutIdpBQszE
+ Y6zQLhCDl7Qs9ljDfXH+T4t1ysOgvZTuVftCOTero71tM7X8EgclRalr/VqHwj+Offyu
+ WO8nx+ryRD9LbbN+urzgDZgxMm/MjqMcdsG2LaUgKFdssCBzBrgll3Hq+n5Gwz1C4Vhg
+ QXeQ==
+X-Gm-Message-State: AOAM531w4x2zFJD/4SkKooouz9BCMxLi1inighN3itkTz70OzDtb0y+l
+ QSqRu6iaARkywSbplf1UkpQ=
+X-Google-Smtp-Source: ABdhPJySD3og+Iju9VNHRQIBr9aLMq24CYh9BJ7OlyhflnkZoLNa34NmB+mmp/mLOqUKONhg5SL8aQ==
+X-Received: by 2002:adf:a3d0:: with SMTP id m16mr11194559wrb.232.1595664722950; 
+ Sat, 25 Jul 2020 01:12:02 -0700 (PDT)
+Received: from localhost.localdomain (112.red-81-32-35.dynamicip.rima-tde.net.
+ [81.32.35.112])
+ by smtp.gmail.com with ESMTPSA id n12sm3645502wrg.77.2020.07.25.01.12.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 25 Jul 2020 01:12:02 -0700 (PDT)
+From: Juan Antonio Aldea-Armenteros <juant.aldea@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] media: atomisp-mt9m114: replace fixed function names
+Date: Sat, 25 Jul 2020 10:11:08 +0200
+Message-Id: <20200725081108.272643-1-juant.aldea@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-References: <20200702101947.682-1-ardb@kernel.org>
- <20200702101947.682-5-ardb@kernel.org>
- <20200702175022.GA2753@sol.localdomain>
- <CAMj1kXFen1nickdZab0s8iY7SgauoH56VginEoPdxaAAL2qENw@mail.gmail.com>
- <CAMj1kXG7i1isB9cV57ccaOZhrG3s7x+nKGozzTewuE9uWvX_wg@mail.gmail.com>
- <CAMj1kXGiu5Wr8NAACBUtiJMY8rQAGCTOcQdK1QM6jgH-0Lm=YA@mail.gmail.com>
-In-Reply-To: <CAMj1kXGiu5Wr8NAACBUtiJMY8rQAGCTOcQdK1QM6jgH-0Lm=YA@mail.gmail.com>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Sat, 25 Jul 2020 10:06:04 +0300
-X-Gmail-Original-Message-ID: <CAMj1kXHA2R1UDcYROwiLgUQCrOpNWxt-BAP0aBD=3RP4HbcOnA@mail.gmail.com>
-Message-ID: <CAMj1kXHA2R1UDcYROwiLgUQCrOpNWxt-BAP0aBD=3RP4HbcOnA@mail.gmail.com>
-Subject: Re: [RFC PATCH 4/7] crypto: remove ARC4 support from the skcipher API
-To: Eric Biggers <ebiggers@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,96 +86,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-nfs@vger.kernel.org,
- Herbert Xu <herbert@gondor.apana.org.au>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Marcel Holtmann <marcel@holtmann.org>, linux-wireless@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Trond Myklebust <trond.myklebust@hammerspace.com>,
- "J. Bruce Fields" <bfields@fieldses.org>, Chuck Lever <chuck.lever@oracle.com>,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- Anna Schumaker <anna.schumaker@netapp.com>,
- "open list:BPF JIT for MIPS \(32-BIT AND 64-BIT\)" <netdev@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Denis Kenzior <denkenz@gmail.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Juan Antonio Aldea-Armenteros <juant.aldea@gmail.com>,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, 18 Jul 2020 at 11:18, Ard Biesheuvel <ardb@kernel.org> wrote:
->
-> On Fri, 3 Jul 2020 at 02:04, Ard Biesheuvel <ardb@kernel.org> wrote:
-> >
-> > On Thu, 2 Jul 2020 at 20:21, Ard Biesheuvel <ardb@kernel.org> wrote:
-> > >
-> > > On Thu, 2 Jul 2020 at 19:50, Eric Biggers <ebiggers@kernel.org> wrote:
-> > > >
-> > > > [+linux-wireless, Marcel Holtmann, and Denis Kenzior]
-> > > >
-> > > > On Thu, Jul 02, 2020 at 12:19:44PM +0200, Ard Biesheuvel wrote:
-> > > > > Remove the generic ecb(arc4) skcipher, which is slightly cumbersome from
-> > > > > a maintenance perspective, since it does not quite behave like other
-> > > > > skciphers do in terms of key vs IV lifetime. Since we are leaving the
-> > > > > library interface in place, which is used by the various WEP and TKIP
-> > > > > implementations we have in the tree, we can safely drop this code now
-> > > > > it no longer has any users.
-> > > > >
-> > > > > Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
-> > > >
-> > > > Last year there was a discussion where it was mentioned that iwd uses
-> > > > "ecb(arc4)" via AF_ALG.  So can we really remove it yet?
-> > > > See https://lkml.kernel.org/r/97BB95F6-4A4C-4984-9EAB-6069E19B4A4F@holtmann.org
-> > > > Note that the code isn't in "iwd" itself but rather in "libell" which iwd
-> > > > depends on: https://git.kernel.org/pub/scm/libs/ell/ell.git/
-> > > >
-> > > > Apparently it also uses md4 and ecb(des) too.
-> > > >
-> > >
-> > > Ah yes, I remember now :-(
-> > >
-> > > > Marcel and Denis, what's your deprecation plan for these obsolete and insecure
-> > > > algorithms?
-> > > >
-> > >
-> > > Given Denis's statement:
-> > >
-> > >   It sounds to me like it was broken and should be fixed.  So our vote /
-> > >   preference is to have ARC4 fixed to follow the proper semantics.  We
-> > >   can deal with the kernel behavioral change on our end easily enough;
-> > >   the required workarounds are the worse evil.
-> > >
-> > > I would think that an ABI break is not the end of the world for them,
-> > > and given how trivial it is to implement RC4 in C, the workaround
-> > > should be to simply implement RC4 in user space, and not even bother
-> > > trying to use AF_ALG to get at ecb(arc4)
-> > >
-> > > (same applies to md4 and ecb(des) btw)
-> > >
-> > > There will always be a long tail of use cases, and at some point, we
-> > > just have to draw the line and remove obsolete and insecure cruft,
-> > > especially when it impedes progress on other fronts.
-> > >
-> >
-> > I have ported iwd to Nettle's LGPL 2.1 implementation of ARC4, and the
-> > diffstat is
-> >
-> >  src/crypto.c      | 80 ++++++++++++--------
-> >  src/main.c        |  8 --
-> >  unit/test-eapol.c |  3 +-
-> >  3 files changed, 51 insertions(+), 40 deletions(-)
-> >
-> > https://git.kernel.org/pub/scm/linux/kernel/git/ardb/iwd.git/log/?h=arc4-cleanup
->
-> Marcel, Denis,
->
-> Do you have any objections to the ecb(arc4) skcipher being dropped
-> from the kernel, given the fallback i proposed above (which is a much
-> better way of doing rc4 in user space anyway)?
->
-> For libell, I would suggest dropping rc4 entirely, once iwd stops
-> relying on it, as using rc4 for tls is obsolete as well.
+There are a couple of debug messages using hardcoded function names
+instead of the preferred __func__ magic constant.
 
-Ping?
+Replace them:
+
+WARNING: Prefer using '"%s...", __func__' to using 'misensor_rmw_reg', this function's name, in a string
+215: FILE: ./media/atomisp/i2c/atomisp-mt9m114.c:215:
++       v4l2_err(client, "misensor_rmw_reg error exit, read failed\n");
+
+WARNING: Prefer using '"%s...", __func__' to using 'misensor_rmw_reg', this function's name, in a string
+236: FILE: ./media/atomisp/i2c/atomisp-mt9m114.c:236:
++       v4l2_err(client, "misensor_rmw_reg error exit, write failed\n");
+
+Signed-off-by: Juan Antonio Aldea-Armenteros <juant.aldea@gmail.com>
+---
+ drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c b/drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c
+index 0d60918a9b19..54c24bc2061d 100644
+--- a/drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c
++++ b/drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c
+@@ -212,7 +212,7 @@ misensor_rmw_reg(struct i2c_client *client, u16 data_length, u16 reg,
+ 
+ 	err = mt9m114_read_reg(client, data_length, reg, &val);
+ 	if (err) {
+-		v4l2_err(client, "misensor_rmw_reg error exit, read failed\n");
++		v4l2_err(client, "%s exit, read failed\n", __func__);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -233,7 +233,7 @@ misensor_rmw_reg(struct i2c_client *client, u16 data_length, u16 reg,
+ 
+ 	err = mt9m114_write_reg(client, data_length, reg, val);
+ 	if (err) {
+-		v4l2_err(client, "misensor_rmw_reg error exit, write failed\n");
++		v4l2_err(client, "%s error exit, write failed\n", __func__);
+ 		return -EINVAL;
+ 	}
+ 
+-- 
+2.27.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
