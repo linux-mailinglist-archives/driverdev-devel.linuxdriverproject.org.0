@@ -1,80 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 877DB22D593
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jul 2020 08:49:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A39922D597
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jul 2020 08:50:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 72B2C207A6;
-	Sat, 25 Jul 2020 06:49:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 423AD880C7;
+	Sat, 25 Jul 2020 06:50:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PIpovvu2sqAm; Sat, 25 Jul 2020 06:49:18 +0000 (UTC)
+	with ESMTP id AWDgsnZdYk5G; Sat, 25 Jul 2020 06:50:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 79A3520764;
-	Sat, 25 Jul 2020 06:49:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 71F8C87FDE;
+	Sat, 25 Jul 2020 06:50:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 950471BF82F
- for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 06:49:13 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F9A11BF82F
+ for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 06:50:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8DFC28874E
- for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 06:49:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 39B048706E
+ for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 06:50:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yAihK5SgY4Fo for <devel@linuxdriverproject.org>;
- Sat, 25 Jul 2020 06:49:12 +0000 (UTC)
+ with ESMTP id fKyH0vH0St1G for <devel@linuxdriverproject.org>;
+ Sat, 25 Jul 2020 06:50:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7C5298874C
- for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 06:49:12 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id t6so6624932pgq.1
- for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 23:49:12 -0700 (PDT)
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7E31786FEC
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 06:50:47 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id o1so5711150plk.1
+ for <devel@driverdev.osuosl.org>; Fri, 24 Jul 2020 23:50:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=AFV7XDH/YgXKegUmh6b/uhEmHTcUDP6RQlSqqYbJhi8=;
- b=CbJD3tqyQ8ITay1P85gHBf8sk0tD4maHYRoOxYhB9nk2n6W4vYLAc65nDgDCMS7dgA
- Hdnmp7MlRBOqp1d3HJ7Fc+gym10X/TnABLIkyazP4D6pX24ZC5wSD4cDiMoH74JTeRDk
- lvrs/x+j0kgzCDHAFakLO6LRZL/rP/a6IcZgedDjKs5RyY0OOTc/Lr0fSl1X2I3A7TKH
- b11w3gcRuCxleHyfbTU0n1D2t6VPPj2f7zxyXbRPq+wrDj6Wb7owxVOVoBBZ/RyGgcqI
- oe/9DBqTqGez/ZnbooQypGj9+l7otEW+4m9uWYW1ipeSvNCTeMP/xCwzHbfFzM+U9zo3
- 5y4Q==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=pAY2tvHeP21yolAuUTkdsq2ZWrtpUyWnSU7nWtm6Js0=;
+ b=TdxDp21WTv1YhoQPuyVTgx/O2Urd93QxxNBotlHTNzVb/HNG1B5fkBUUXwUGnjjrwd
+ IL6D4nfh6/CtVeGalqOccvcMVlr1Tq1NBUjoxGW0XN5Ylpc2X2+c1EtMmmGwAu4f5cae
+ Frx4AxZsBqQz9zk93xrgQ/hbNFBeKv2Hl5L732nwLU7ZXbi213gIN/w/g/zWrC6KUGuS
+ V5fQX7DqSt4MsLQ2GK7euFOVuq4Y1dU8ibUpkTq3JVKVu6nD/ngGR5y1kxMLsperjYk8
+ dXUSNDztqMzaG4HSt8+r7dBnv8GYHqAuTtbsPfb5SToQbsxG5ysZkLf1SFQiQth4THEc
+ VF6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=AFV7XDH/YgXKegUmh6b/uhEmHTcUDP6RQlSqqYbJhi8=;
- b=IPcWVXNYrpAMP1nsbr/2z4OKmUcsWUrGL0kmyUN6/Su75N1gqUFOcZ8bO/6OL8JCGw
- YYdP3qFfsXF82hTW5tIij6A1qHeHMN0eAQime3mn0t2cUkH20S+ls5Zo93w1J7nsEtY5
- JtMGfWsaef+dddp4JHaZdxuXTwChKPDw5X5vgwdX/Z8YoM4IMi/hSEqha/VlAZp+eQYV
- FMavG8b2Hhe4OzxpL4+ykCRQN7mfZnvfFikhQUbEQa3eQ9HWhl8vw6VA/qtIVqBiX8+R
- UEyGhwXWqYGuWwOVzAS7tUAXfShGsp0oo+3Htcqx894cRRjV4JT8Oji+JfXV7yjRzii9
- 3FQw==
-X-Gm-Message-State: AOAM532Vb3IjZSdWLcG3H2jBgx6y2oBvzqzrh2UajTKcajGfAWSuL24a
- rPGjgQVFrcY0UtjdUu1Yd/c=
-X-Google-Smtp-Source: ABdhPJzE3pfqMWwqLBc1loOGUeDPJ584xUrioRvUQypfXO333D26YOvEGwKbr/wfMjEqIUzbCiUWzA==
-X-Received: by 2002:a63:4b1d:: with SMTP id y29mr11753531pga.264.1595659752049; 
- Fri, 24 Jul 2020 23:49:12 -0700 (PDT)
-Received: from localhost.localdomain ([1.186.115.27])
- by smtp.gmail.com with ESMTPSA id z9sm8116559pgh.94.2020.07.24.23.49.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Jul 2020 23:49:11 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=pAY2tvHeP21yolAuUTkdsq2ZWrtpUyWnSU7nWtm6Js0=;
+ b=SR4/empbThrWk07oPYBwOcQoCvYf3PAqIgiSKB5Z/GifRXEuLYutndiYiSOM2e1Q0C
+ IL/Z9KV6yzfJamr9npveZS4qHewICG5sFRWnvDD5SPpjUGHCVPy3cvSrXlJutmRiCgxe
+ cVYcorx5VglxInVIjLW66JKFT0WzIVJaeTDpANUdAMzSK5CD1N26EEuizRKeDrKRQEJA
+ rjR7qCIsGZ3pM90WE18D/X639SOTd6Goeyg160O8FAej2cTZ+3VAqNjGB4to8pQNwfZI
+ arHS2C2+CzE+Mz+rDOLddXtHDZu9bnmsRia6xiqH6Zr4MwYMwaH4LIInzRTb8tR6m3JD
+ Ymqw==
+X-Gm-Message-State: AOAM532CgDYq3kh2EiYC1kkrgcPcnLtLJKQGA7pm3Gc+LHroB76pzVnO
+ eQsW6QO8AWKEJJYGwy90LPD7v1p4wkI=
+X-Google-Smtp-Source: ABdhPJy4kuRnILkVAvVmWm+/kdjDqMD399HL6RV2Q63lo6Dhk8Y5UdK4lP9HfhxqUqyJjFFeK48zKA==
+X-Received: by 2002:a17:90a:c715:: with SMTP id
+ o21mr9240782pjt.35.1595659846566; 
+ Fri, 24 Jul 2020 23:50:46 -0700 (PDT)
+Received: from [192.168.0.109] ([1.186.115.27])
+ by smtp.gmail.com with ESMTPSA id u13sm7361784pjy.40.2020.07.24.23.50.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Jul 2020 23:50:45 -0700 (PDT)
+Subject: Re: [PATCH v3] staging: nvec: change usage of slave to secondary
+To: Marc Dietrich <marvin24@posteo.de>
+References: <20200723151511.22193-1-bharadwaj.rohit8@gmail.com>
+ <20200724043633.7755-1-bharadwaj.rohit8@gmail.com>
+ <ac0f2bb4-7fa1-26a8-a43b-2db427188d4e@gmail.com>
+ <20200724082810.GA3977020@kroah.com>
+ <34e6c906-7def-816d-a45d-03d366f32c61@gmail.com>
+ <alpine.OSX.2.23.453.2007241829180.9201@macbook-pro.fritz.box>
+ <alpine.OSX.2.23.453.2007241835260.9201@macbook-pro.fritz.box>
+ <365fd26d-94b1-760e-48f5-bf8a85a90399@gmail.com>
+ <alpine.OSX.2.23.453.2007242238230.12486@macbook-pro.fritz.box>
 From: Rohit K Bharadwaj <bharadwaj.rohit8@gmail.com>
-To: marvin24@posteo.de,
-	gregkh@linuxfoundation.org,
-	p.zabel@pengutronix.de
-Subject: [PATCH v4] staging: nvec: change usage of slave to secondary
-Date: Sat, 25 Jul 2020 11:59:39 +0530
-Message-Id: <20200725062938.15388-1-bharadwaj.rohit8@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200724043633.7755-1-bharadwaj.rohit8@gmail.com>
-References: <20200724043633.7755-1-bharadwaj.rohit8@gmail.com>
+Message-ID: <6db6189a-3bc9-72c4-7c7c-98ab5e03a0c0@gmail.com>
+Date: Sat, 25 Jul 2020 12:20:41 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <alpine.OSX.2.23.453.2007242238230.12486@macbook-pro.fritz.box>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,81 +97,71 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-tegra@vger.kernel.org, Rohit K Bharadwaj <bharadwaj.rohit8@gmail.com>,
- devel@driverdev.osuosl.org, Dan Carpenter <dan.carpenter@oracle.com>,
- ac100@lists.launchpad.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-tegra@vger.kernel.org, Greg KH <gregkh@linuxfoundation.org>,
+ devel@driverdev.osuosl.org, p.zabel@pengutronix.de
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-changed usage of slave (which is deprecated) to secondary without breaking the driver
-
-Tested-by: Dan Carpenter <dan.carpenter@oracle.com>
-Acked-by: Marc Dietrich <marvin24@posteo.de>
-Signed-off-by: Rohit K Bharadwaj <bharadwaj.rohit8@gmail.com>
----
-v4: undo the changes (which broke the driver) to this line: if (of_property_read_u32(dev->of_node, "slave-addr", &nvec->i2c_addr)) 
-v3: change patch subject, add version history
-v2: add changelog text in body of mail
-v1: fix style issues by changing usage of slave to secondary
-
- drivers/staging/nvec/nvec.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index 360ec0407740..a7e995bfe989 100644
---- a/drivers/staging/nvec/nvec.c
-+++ b/drivers/staging/nvec/nvec.c
-@@ -718,7 +718,7 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
- 	return IRQ_HANDLED;
- }
- 
--static void tegra_init_i2c_slave(struct nvec_chip *nvec)
-+static void tegra_init_i2c_secondary(struct nvec_chip *nvec)
- {
- 	u32 val;
- 
-@@ -744,7 +744,7 @@ static void tegra_init_i2c_slave(struct nvec_chip *nvec)
- }
- 
- #ifdef CONFIG_PM_SLEEP
--static void nvec_disable_i2c_slave(struct nvec_chip *nvec)
-+static void nvec_disable_i2c_secondary(struct nvec_chip *nvec)
- {
- 	disable_irq(nvec->irq);
- 	writel(I2C_SL_NEWSL | I2C_SL_NACK, nvec->base + I2C_SL_CNFG);
-@@ -839,7 +839,7 @@ static int tegra_nvec_probe(struct platform_device *pdev)
- 	}
- 	disable_irq(nvec->irq);
- 
--	tegra_init_i2c_slave(nvec);
-+	tegra_init_i2c_secondary(nvec);
- 
- 	/* enable event reporting */
- 	nvec_toggle_global_events(nvec, true);
-@@ -913,7 +913,7 @@ static int nvec_suspend(struct device *dev)
- 	if (!err)
- 		nvec_msg_free(nvec, msg);
- 
--	nvec_disable_i2c_slave(nvec);
-+	nvec_disable_i2c_secondary(nvec);
- 
- 	return 0;
- }
-@@ -923,7 +923,7 @@ static int nvec_resume(struct device *dev)
- 	struct nvec_chip *nvec = dev_get_drvdata(dev);
- 
- 	dev_dbg(nvec->dev, "resuming\n");
--	tegra_init_i2c_slave(nvec);
-+	tegra_init_i2c_secondary(nvec);
- 	nvec_toggle_global_events(nvec, true);
- 
- 	return 0;
--- 
-2.25.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gMjUvMDcvMjAgMjoxMiBhbSwgTWFyYyBEaWV0cmljaCB3cm90ZToKPiAKPiBIaSBSb2hpdCwK
+PiAKPiBPbiBGcmksIDI0IEp1bCAyMDIwLCBSb2hpdCBLIEJoYXJhZHdhaiB3cm90ZToKPiAKPj4g
+T24gMjQvMDcvMjAgMTA6MDYgcG0sIE1hcmMgRGlldHJpY2ggd3JvdGU6Cj4+Pgo+Pj4KPj4+IE9u
+IEZyaSwgMjQgSnVsIDIwMjAsIE1hcmMgRGlldHJpY2ggd3JvdGU6Cj4+Pgo+Pj4+IEhpIFJvaGl0
+LAo+Pj4+Cj4+Pj4gT24gRnJpLCAyNCBKdWwgMjAyMCwgUm9oaXQgQmhhcmFkd2FqIHdyb3RlOgo+
+Pj4+Cj4+Pj4+IE9uIDI0LzA3LzIwIDE6NTggcG0sIEdyZWcgS0ggd3JvdGU6Cj4+Pj4+PiBPbiBG
+cmksIEp1bCAyNCwgMjAyMCBhdCAwMTo0NDoyN1BNICswNTMwLCBSb2hpdCBCaGFyYWR3YWogd3Jv
+dGU6Cj4+Pj4+Pj4gT24gMjQvMDcvMjAgMTA6MDYgYW0sIFJvaGl0IEsgQmhhcmFkd2FqIHdyb3Rl
+Ogo+Pj4+Pj4+PiBjaGFuZ2VkIHVzYWdlIG9mIHNsYXZlIChkZXByZWNhdGVkKSB0byBzZWNvbmRh
+cnkKPj4+Pj4+Pj4KPj4+Pj4+Pj4gU2lnbmVkLW9mZi1ieTogUm9oaXQgSyBCaGFyYWR3YWogPGJo
+YXJhZHdhai5yb2hpdDhAZ21haWwuY29tPgo+Pj4+Pj4+PiAtLS0KPj4+Pj4+Pj4gdjM6IGNoYW5n
+ZSBwYXRjaCBzdWJqZWN0LCBhZGQgdmVyc2lvbiBoaXN0b3J5Cj4+Pj4+Pj4+IHYyOiBhZGQgY2hh
+bmdlbG9nIHRleHQgaW4gYm9keSBvZiBtYWlsCj4+Pj4+Pj4+IHYxOiBmaXggc3R5bGUgaXNzdWVz
+IGJ5IGNoYW5naW5nIHVzYWdlIG9mIHNsYXZlIHRvIHNlY29uZGFyeQo+Pj4+Pj4+Pgo+Pj4+Pj4+
+PiDCoGRyaXZlcnMvc3RhZ2luZy9udmVjL252ZWMuYyB8IDEyICsrKysrKy0tLS0tLQo+Pj4+Pj4+
+PiDCoDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4+Pj4+
+Pj4+Cj4+Pj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbnZlYy9udmVjLmMgYi9k
+cml2ZXJzL3N0YWdpbmcvbnZlYy9udmVjLmMKPj4+Pj4+Pj4gaW5kZXggMzYwZWMwNDA3NzQwLi41
+ZDdiNjY3MTlhMzkgMTAwNjQ0Cj4+Pj4+Pj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9udmVjL252
+ZWMuYwo+Pj4+Pj4+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbnZlYy9udmVjLmMKPj4+Pj4+Pj4g
+QEAgLTcxOCw3ICs3MTgsNyBAQCBzdGF0aWMgaXJxcmV0dXJuX3QgbnZlY19pbnRlcnJ1cHQoaW50
+IGlycSwgdm9pZCAqZGV2KQo+Pj4+Pj4+PiDCoMKgwqDCoCByZXR1cm4gSVJRX0hBTkRMRUQ7Cj4+
+Pj4+Pj4+IMKgfQo+Pj4+Pj4+Pgo+Pj4+Pj4+PiAtc3RhdGljIHZvaWQgdGVncmFfaW5pdF9pMmNf
+c2xhdmUoc3RydWN0IG52ZWNfY2hpcCAqbnZlYykKPj4+Pj4+Pj4gK3N0YXRpYyB2b2lkIHRlZ3Jh
+X2luaXRfaTJjX3NlY29uZGFyeShzdHJ1Y3QgbnZlY19jaGlwICpudmVjKQo+Pj4+Pj4+PiDCoHsK
+Pj4+Pj4+Pj4gwqDCoMKgwqAgdTMyIHZhbDsKPj4+Pj4+Pj4KPj4+Pj4+Pj4gQEAgLTc0NCw3ICs3
+NDQsNyBAQCBzdGF0aWMgdm9pZCB0ZWdyYV9pbml0X2kyY19zbGF2ZShzdHJ1Y3QgbnZlY19jaGlw
+ICpudmVjKQo+Pj4+Pj4+PiDCoH0KPj4+Pj4+Pj4KPj4+Pj4+Pj4gwqAjaWZkZWYgQ09ORklHX1BN
+X1NMRUVQCj4+Pj4+Pj4+IC1zdGF0aWMgdm9pZCBudmVjX2Rpc2FibGVfaTJjX3NsYXZlKHN0cnVj
+dCBudmVjX2NoaXAgKm52ZWMpCj4+Pj4+Pj4+ICtzdGF0aWMgdm9pZCBudmVjX2Rpc2FibGVfaTJj
+X3NlY29uZGFyeShzdHJ1Y3QgbnZlY19jaGlwICpudmVjKQo+Pj4+Pj4+PiDCoHsKPj4+Pj4+Pj4g
+wqDCoMKgwqAgZGlzYWJsZV9pcnEobnZlYy0+aXJxKTsKPj4+Pj4+Pj4gwqDCoMKgwqAgd3JpdGVs
+KEkyQ19TTF9ORVdTTCB8IEkyQ19TTF9OQUNLLCBudmVjLT5iYXNlICsgSTJDX1NMX0NORkcpOwo+
+Pj4+Pj4+PiBAQCAtNzg0LDcgKzc4NCw3IEBAIHN0YXRpYyBpbnQgdGVncmFfbnZlY19wcm9iZShz
+dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+Pj4+Pj4+PiDCoMKgwqDCoCBwbGF0Zm9ybV9z
+ZXRfZHJ2ZGF0YShwZGV2LCBudmVjKTsKPj4+Pj4+Pj4gwqDCoMKgwqAgbnZlYy0+ZGV2ID0gZGV2
+Owo+Pj4+Pj4+Pgo+Pj4+Pj4+PiAtwqDCoMKgIGlmIChvZl9wcm9wZXJ0eV9yZWFkX3UzMihkZXYt
+Pm9mX25vZGUsICJzbGF2ZS1hZGRyIiwgJm52ZWMtPmkyY19hZGRyKSkgewo+Pj4+Pj4+PiArwqDC
+oMKgIGlmIChvZl9wcm9wZXJ0eV9yZWFkX3UzMihkZXYtPm9mX25vZGUsICJzZWNvbmRhcnktYWRk
+ciIsICZudmVjLT5pMmNfYWRkcikpIHsKPj4+Pj4+Pj4gwqDCoMKgwqDCoMKgwqDCoCBkZXZfZXJy
+KGRldiwgIm5vIGkyYyBhZGRyZXNzIHNwZWNpZmllZCIpOwo+Pj4+Pj4+PiDCoMKgwqDCoMKgwqDC
+oMKgIHJldHVybiAtRU5PREVWOwo+Pj4+Pj4+PiDCoMKgwqDCoCB9Cj4+Pj4KPj4+PiBhcyBDaHJp
+c3RvcGggc2FpZCwgcGxlYXNlIGRvbid0IGNoYW5nZSB0aGlzIGxpbmUuCj4+Pgo+Pj4gYXJyLCBJ
+IG1lYW50IERhbiBvZiBjb3Vyc2UgOy0pCj4+IERlYXIgYWxsLCB0aGFuayB5b3Ugc28gbXVjaCBm
+b3IgeW91ciBpbnB1dHMsIEkgd2lsbCB0cnkgdG8gbWFrZSBzb21lIG90aGVyIHBhdGNoIHdoaWNo
+IHdpbGwgbm90IGJyZWFrIHRoZSBkcml2ZXIgKGhvcGVmdWxseSA6cCksIG9yIGlmIHlvdSBnaXZl
+IG1lIHBlcm1pc3Npb24gdG8gc3VibWl0IHRoaXMgcGF0Y2ggaXRzZWxmIGJ5IGp1c3Qga2VlcGlu
+ZyB0aGlzIG9uZSBsaW5lCj4+Cj4+PiBpZiAob2ZfcHJvcGVydHlfcmVhZF91MzIoZGV2LT5vZl9u
+b2RlLCAic2xhdmUtYWRkciIsICZudmVjLT5pMmNfYWRkcikpCj4+Cj4+IHVuY2hhbmdlZCwgYW5k
+IHByb3ZpZGVkIGl0IGRvZXMgbm90IGJyZWFrIHRoZSBkcml2ZXIgYnkgZG9pbmcgc28sIEkgd291
+bGQgZ2xhZGx5IG1ha2UgdGhlIGNoYW5nZXMgYW5kIHN1Ym1pdCB2NCBvZiB0aGUgcGF0Y2guCj4g
+Cj4gcGxlYXNlIHJlc2VuZCB0aGUgcGF0Y2ggd2l0aCB0aGUgbGluZSBhYm92ZSB1bmNoYW5nZWQg
+YXMgdjQuIERvbid0IGZvcmdldCB0byB0byB1cGRhdGUgdGhlIGNoYW5nZWxvZyB0byB0aGUgY29t
+bWl0IG1lc3NhZ2UuIEkgdGVzdGVkIHlvdXIgcGF0Y2ggKHdpdGhvdXQgdGhlIGR0IHByb3BlcnR5
+IGNoYW5nZSkgYW5kIGl0IGRvZXMgbm90IGNoYW5nZSBiZWhhdm9pciAtIGFzIGV4cGVjdGVkLAo+
+IHNvIHlvdSB3aWxsIHJlY2V2aWNlIG15IEFjay4KPiAKPiBNYXJjCgpUaGFuayB5b3Ugc28gbXVj
+aCBmb3IgdGhlIHN1Z2dlc3Rpb25zIGFuZCB0aGUgQWNrIHNpciwgSSBoYXZlIG1hZGUgdGhlIG5l
+Y2Vzc2FyeSBjaGFuZ2VzIGFuZCBJIGhhdmUgc2VudCB0aGUgdjQgb2YgdGhlIHBhdGNoLgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5n
+IGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4
+ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
