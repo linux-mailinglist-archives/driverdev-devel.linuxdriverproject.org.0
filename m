@@ -2,85 +2,68 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07D3022D963
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jul 2020 20:49:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BBBF22DA9F
+	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Jul 2020 01:26:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4D0AE2048E;
-	Sat, 25 Jul 2020 18:49:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AD0652150A;
+	Sat, 25 Jul 2020 23:25:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pI+a0sKV2THw; Sat, 25 Jul 2020 18:49:26 +0000 (UTC)
+	with ESMTP id jmbYHhEnKB1c; Sat, 25 Jul 2020 23:25:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CFD642039E;
-	Sat, 25 Jul 2020 18:49:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6B7B420796;
+	Sat, 25 Jul 2020 23:25:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B92B01BF5DA
- for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 18:49:22 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 956091BF59E
+ for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 23:25:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B590F883C1
- for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 18:49:22 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 859748784E
+ for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 23:25:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1KaEPsShDiPs for <devel@linuxdriverproject.org>;
- Sat, 25 Jul 2020 18:49:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C9072883BF
- for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 18:49:21 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id l27so2316132oti.3
- for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 11:49:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rMyb1gO3q+v65MaIVuTcYIle7Wdt4tjlApNFSHQMhoA=;
- b=IeqhwkoAGMsuiqAFwxeyeJD1ArMD7DDh1kvr35hYkSEa7vAAo9Mkerlw9DBz548GNr
- bVbommZ44uBja6vI548WYNUw1Ej1QYdSa/P22PLFeltPACVePYpkYiMcMUrlQn32RRRs
- 7oyi42ibOJgz47MrzafTjWmy3YTDCYMI/TED6GK8T0VrN/JVM8Su+ZykPwimtuJTJkbA
- gMUKoEZBaAHPOkAe9lxda/858rkzDQFC4XgTs5+YPxkmpwpbnd/GCARSVHHnn1DLuVSz
- AqDR6uMAN4YzLkWREmRtyyg8LJ5JUXkVkrIoRDajGE0utbEbvT5OH8fIvERBgBc7Xme4
- veDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=rMyb1gO3q+v65MaIVuTcYIle7Wdt4tjlApNFSHQMhoA=;
- b=HKH1B7DIoDzE/Kw40oPGGMf2vCsA5GFwWMBud6eazyx7poTdQ5B+0FQg55uVTnGAbi
- +ya+rlBrrt/YPd+y+ATu/w4T4sbpy/dVqr8RczZcOoJKvuEPR66weQNu5VMIuQd67dWV
- tzgf66jHsU/jWbnTVXBZGUkJ8iggbiscszciHK/l6HWeyB7mlfBv8L9Mocdq/TEeZ/Og
- J4dOTCXArL0MfjzKtjlVh+tq9oDuLhIRKtInu/K6vcrjqVyHqIN2r7/UJ6m7pruJsynU
- QWNL/gwqdK652bltGr4OFzLfZO6M5p47Bb7VbfBHf9bayFl0Q6NesyCV197dBzwke+et
- +TdQ==
-X-Gm-Message-State: AOAM530ySPy4jWe5Nx+kB1BzzuPiMp82ESRW2feJVvnllUc38Jwy4XJn
- zorPCdRR3S1lW0inmR/Ms1Q=
-X-Google-Smtp-Source: ABdhPJwRtHGA53qzVQAfRO5i9xkHDMSRTJmtpjENMgOwLX7nr8G//q1IyCJFe1LB13PCVTz3X73oOw==
-X-Received: by 2002:a9d:5d2:: with SMTP id 76mr14224874otd.55.1595702961035;
- Sat, 25 Jul 2020 11:49:21 -0700 (PDT)
-Received: from localhost.localdomain (cpe-24-31-245-230.kc.res.rr.com.
- [24.31.245.230])
- by smtp.gmail.com with ESMTPSA id m24sm1646438oof.5.2020.07.25.11.49.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 25 Jul 2020 11:49:20 -0700 (PDT)
-Subject: Re: [PATCH 1/1] STAGING - REALTEK RTL8188EU DRIVERS: Fix Coding Style
- Error
-To: Joe Perches <joe@perches.com>,
- Anant Thazhemadam <anant.thazhemadam@gmail.com>
+ with ESMTP id Bn0sa1ov7VzR for <devel@linuxdriverproject.org>;
+ Sat, 25 Jul 2020 23:25:50 +0000 (UTC)
+X-Greylist: delayed 04:40:00 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0208.hostedemail.com
+ [216.40.44.208])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 98B0487848
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 23:25:50 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave04.hostedemail.com (Postfix) with ESMTP id CEC7218004E90
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 18:39:31 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay08.hostedemail.com (Postfix) with ESMTP id 610AD182CED2A;
+ Sat, 25 Jul 2020 18:39:29 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 20, 1.5, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2328:2393:2559:2562:2828:3138:3139:3140:3141:3142:3353:3622:3865:3867:3870:3871:3872:3873:3874:4321:5007:7903:9040:10004:10400:10848:11026:11232:11657:11658:11914:12043:12297:12438:12740:12760:12895:13069:13141:13230:13311:13357:13439:14181:14659:14721:21080:21451:21627:21740:30054:30070:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: spoon68_5e0c79a26f52
+X-Filterd-Recvd-Size: 2538
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf02.hostedemail.com (Postfix) with ESMTPA;
+ Sat, 25 Jul 2020 18:39:27 +0000 (UTC)
+Message-ID: <d4427fb12f9d4735ec82355bbe99f7b3098fc1a4.camel@perches.com>
+Subject: Re: [PATCH 1/1] STAGING - REALTEK RTL8188EU DRIVERS: Fix Coding
+ Style Error
+From: Joe Perches <joe@perches.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>, Anant Thazhemadam
+ <anant.thazhemadam@gmail.com>
+Date: Sat, 25 Jul 2020 11:39:26 -0700
+In-Reply-To: <aab59eb1-baff-5de1-4e14-88ffc42db1fe@lwfinger.net>
 References: <20200725122041.5663-1-anant.thazhemadam@gmail.com>
  <aab59eb1-baff-5de1-4e14-88ffc42db1fe@lwfinger.net>
- <d4427fb12f9d4735ec82355bbe99f7b3098fc1a4.camel@perches.com>
-From: Larry Finger <Larry.Finger@lwfinger.net>
-Message-ID: <18de15c4-1737-ae8b-b213-6f44792774be@lwfinger.net>
-Date: Sat, 25 Jul 2020 13:49:19 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+User-Agent: Evolution 3.36.3-0ubuntu1 
 MIME-Version: 1.0
-In-Reply-To: <d4427fb12f9d4735ec82355bbe99f7b3098fc1a4.camel@perches.com>
-Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,51 +79,43 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, Merwin Trever Ferrao <merwintf@gmail.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
  Anoop S <anoop.skumar1507@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 7/25/20 1:39 PM, Joe Perches wrote:
-> On Sat, 2020-07-25 at 12:47 -0500, Larry Finger wrote:
->> On 7/25/20 7:20 AM, Anant Thazhemadam wrote:
->>> Running the checkpatch.pl script on the file for which patch was created, the
->>> following error was found to exist.
->>> ERROR: space required after that ',' (ctx:VxV)
->>>
->>> Fixed the above error which was found on line #721 by inserting a blank
->>> space at the appropriate position.
-> []
->>> diff --git a/drivers/staging/rtl8188eu/core/rtw_security.c b/drivers/staging/rtl8188eu/core/rtw_security.c
-> []
->>> @@ -718,7 +718,7 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
->>>    				res = _FAIL;
->>>    			}
->>>    		} else {
->>> -			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo==NULL!!!\n",__func__));
->>> +			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo==NULL!!!\n", __func__));
->>>    			res = _FAIL;
->>>    		}
->>>    	}
->>
->> In fixing one checkpatch.pl condition, you introduced another - the resulting
->> line is too long. You should fix only one such condition, but you should fix any
->> others that are introduced. You do need to document it.
+On Sat, 2020-07-25 at 12:47 -0500, Larry Finger wrote:
+> On 7/25/20 7:20 AM, Anant Thazhemadam wrote:
+> > Running the checkpatch.pl script on the file for which patch was created, the
+> > following error was found to exist.
+> > ERROR: space required after that ',' (ctx:VxV)
+> > 
+> > Fixed the above error which was found on line #721 by inserting a blank
+> > space at the appropriate position.
+[]
+> > diff --git a/drivers/staging/rtl8188eu/core/rtw_security.c b/drivers/staging/rtl8188eu/core/rtw_security.c
+[]
+> > @@ -718,7 +718,7 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
+> >   				res = _FAIL;
+> >   			}
+> >   		} else {
+> > -			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo==NULL!!!\n",__func__));
+> > +			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo==NULL!!!\n", __func__));
+> >   			res = _FAIL;
+> >   		}
+> >   	}
 > 
-> I think that doesn't matter as it was also too long
-> before this change.
-> 
->> Patch subjects for this driver should be written as "staging: rtl8188eu: .....".
-> 
-> How likely is it that this driver would ever be
-> moved to drivers/net/wireless/realtek/rtlwifi?
+> In fixing one checkpatch.pl condition, you introduced another - the resulting 
+> line is too long. You should fix only one such condition, but you should fix any 
+> others that are introduced. You do need to document it.
 
-Very unlikely. It I wanted to undertake that kind of effort, I would switch to 
-one of the later versions from Realtek that uses nl80211/cfg80211. Despite that, 
-it is likely that only the USB driver from rtlwifi could be used.
+I think that doesn't matter as it was also too long
+before this change.
 
-Larry
+> Patch subjects for this driver should be written as "staging: rtl8188eu: .....".
 
+How likely is it that this driver would ever be
+moved to drivers/net/wireless/realtek/rtlwifi?
 
 
 _______________________________________________
