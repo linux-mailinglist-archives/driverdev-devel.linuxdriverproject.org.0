@@ -1,61 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC4F022D829
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jul 2020 16:37:38 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2493A22D8E2
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Jul 2020 19:21:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F26D186D1E;
-	Sat, 25 Jul 2020 14:37:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B4FBD87E8E;
+	Sat, 25 Jul 2020 17:21:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WbzegBl0OxYa; Sat, 25 Jul 2020 14:37:36 +0000 (UTC)
+	with ESMTP id UkzTQjdhuygw; Sat, 25 Jul 2020 17:21:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 872358659E;
-	Sat, 25 Jul 2020 14:37:35 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2EF3587CEE;
+	Sat, 25 Jul 2020 17:21:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2D9331BF2A1
- for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 14:37:33 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9A2C61BF5DC
+ for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 17:21:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2A5808654C
- for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 14:37:33 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 96BE887CEE
+ for <devel@linuxdriverproject.org>; Sat, 25 Jul 2020 17:21:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dLTVWKDJoTB4 for <devel@linuxdriverproject.org>;
- Sat, 25 Jul 2020 14:37:32 +0000 (UTC)
+ with ESMTP id nimWy51GImqZ for <devel@linuxdriverproject.org>;
+ Sat, 25 Jul 2020 17:21:27 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from re-prd-fep-046.btinternet.com (mailomta24-re.btinternet.com
- [213.120.69.117])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D88FF85D3D
- for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 14:37:31 +0000 (UTC)
-Received: from re-prd-rgout-003.btmx-prd.synchronoss.net ([10.2.54.6])
- by re-prd-fep-046.btinternet.com with ESMTP id
- <20200725143729.HBPQ4657.re-prd-fep-046.btinternet.com@re-prd-rgout-003.btmx-prd.synchronoss.net>;
- Sat, 25 Jul 2020 15:37:29 +0100
-Authentication-Results: btinternet.com;
- auth=pass (LOGIN) smtp.auth=j.oldman998@btinternet.com
-X-Originating-IP: [86.152.161.91]
-X-OWM-Source-IP: 86.152.161.91 (GB)
-X-OWM-Env-Sender: j.oldman998@btinternet.com
-X-VadeSecure-score: verdict=clean score=0/300, class=clean
-X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduiedrheehgdejlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemuceutffkvffkuffjvffgnffgvefqofdpqfgfvfenuceurghilhhouhhtmecufedtudenucenucfjughrpefhvffufffkofestddtredtredttdenucfhrhhomheplfhohhhnucfqlhgumhgrnhcuoehjohhhnhdrohhlughmrghnsehpohhlvghhihhllhdrtghordhukheqnecuggftrfgrthhtvghrnhepgeeftdfhfeeuiefhgfekfeethedutddtfeduteevleevfedvfefhjeeijefhgffgnecukfhppeekiedrudehvddrudeiuddrledunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehhvghlohephhgvnhhrhidrhhhomhgvpdhinhgvthepkeeirdduhedvrdduiedurdeluddpmhgrihhlfhhrohhmpeeojhhohhhnrdholhgumhgrnhesphholhgvhhhilhhlrdgtohdruhhkqedprhgtphhtthhopeeouggvvhgvlhesughrihhvvghruggvvhdrohhsuhhoshhlrdhorhhgqedprhgtphhtthhopeeoghhrvghgkhhhsehlihhnuhigfhhouhhnuggrthhiohhnrdhorhhgqedprhgtphhtthhopeeoghhushhtrghvohesvghmsggvugguvgguohhrrdgtohhmqedprhgtphhtthhopeeojhhohhhnrdholhgumhgrnhesphholhgvhhhilhhlrdgtohdruhhkqedprhgtphhtthhopeeolhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgqe
-X-RazorGate-Vade-Verdict: clean 0
-X-RazorGate-Vade-Classification: clean
-Received: from henry.home (86.152.161.91) by
- re-prd-rgout-003.btmx-prd.synchronoss.net (5.8.340) (authenticated as
- j.oldman998@btinternet.com)
- id 5ED9C2FD08ABC0DF; Sat, 25 Jul 2020 15:37:29 +0100
-From: John Oldman <john.oldman@polehill.co.uk>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH V3] staging: rtl8723bs: core: Using comparison to true is
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 939E687C8C
+ for <devel@driverdev.osuosl.org>; Sat, 25 Jul 2020 17:21:27 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B012A206D8;
+ Sat, 25 Jul 2020 17:21:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1595697687;
+ bh=Rteg0/PtsTehHLQ/ZXCZ6zO53UN+mrJQNeQDprdEaOs=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=x90CcWVOFR0mAI7+jp3d5kwU6PyHqj0Ewfq4evGmICrUkHABME96x452iXB5gy26Y
+ y5OXtbylWE+Gy04JXx/plhItOwYnqOoxyqE/BufC1pKTdFZjUEQFCppOc2HPR4g6rt
+ XdNMdIldldD5AeXFrdcPoG/4lCP0R4bZkmBzU9gg=
+Date: Sat, 25 Jul 2020 19:21:24 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: John Oldman <john.oldman@polehill.co.uk>
+Subject: Re: [PATCH V3] staging: rtl8723bs: core: Using comparison to true is
  error prone
-Date: Sat, 25 Jul 2020 15:37:12 +0100
-Message-Id: <20200725143712.16667-1-john.oldman@polehill.co.uk>
-X-Mailer: git-send-email 2.17.1
+Message-ID: <20200725172124.GB405510@kroah.com>
+References: <20200725143712.16667-1-john.oldman@polehill.co.uk>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200725143712.16667-1-john.oldman@polehill.co.uk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,46 +66,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, John Oldman <john.oldman@polehill.co.uk>,
- linux-kernel@vger.kernel.org, gustavo@embeddedor.com
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ gustavo@embeddedor.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-clear below issues reported by checkpatch.pl:
+On Sat, Jul 25, 2020 at 03:37:12PM +0100, John Oldman wrote:
+> clear below issues reported by checkpatch.pl:
+> 
+> CHECK: Using comparison to true is error prone
 
-CHECK: Using comparison to true is error prone
-
-Signed-off-by: John Oldman <john.oldman@polehill.co.uk>
----
-v1- First attempt: removed comparison to true.
-v2- Removed unneccessary parentheses around 'pregistrypriv->ht_enable, missed in v1.
-v3- Corrected the 'odd' subject line; moved the || and && to the end of the line.
-
- drivers/staging/rtl8723bs/core/rtw_ieee80211.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-index ca98274ae390..46fad71197b6 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-@@ -363,8 +363,9 @@ int rtw_generate_ie(struct registry_priv *pregistrypriv)
- 	}
-
- 	/* HT Cap. */
--	if (((pregistrypriv->wireless_mode&WIRELESS_11_5N) || (pregistrypriv->wireless_mode&WIRELESS_11_24N))
--		&& (pregistrypriv->ht_enable == true)) {
-+	if (((pregistrypriv->wireless_mode & WIRELESS_11_5N) ||
-+	     (pregistrypriv->wireless_mode & WIRELESS_11_24N)) &&
-+	     pregistrypriv->ht_enable) {
- 		/* todo: */
- 	}
-
---
-2.17.1
-
+Again, you did more than just this in the patch :(
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
