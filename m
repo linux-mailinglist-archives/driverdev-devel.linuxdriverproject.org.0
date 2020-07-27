@@ -1,61 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7E2222E375
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jul 2020 02:07:34 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A116522E7AB
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jul 2020 10:26:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8391B880E4;
-	Mon, 27 Jul 2020 00:07:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 84CA4880C5;
+	Mon, 27 Jul 2020 08:26:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2f63V3BU7C68; Mon, 27 Jul 2020 00:07:32 +0000 (UTC)
+	with ESMTP id qp2sfryqJLac; Mon, 27 Jul 2020 08:26:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 964A18761A;
-	Mon, 27 Jul 2020 00:07:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CB7FA8808D;
+	Mon, 27 Jul 2020 08:26:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AF04F1BF389
- for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 00:07:29 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 435331BF3EB
+ for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 08:26:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 865A720440
- for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 00:07:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3F77A86DEA
+ for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 08:26:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WEryarI3on2O for <devel@linuxdriverproject.org>;
- Mon, 27 Jul 2020 00:07:28 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 7028A20419
- for <devel@driverdev.osuosl.org>; Mon, 27 Jul 2020 00:07:28 +0000 (UTC)
-IronPort-SDR: 7X+o/5WLQiIr6ANtbZs5JVT3T8GXtGnUA0J3N1h6g8kkclDbaq6fazEFx5xRdPZ7Q9ZjEjiw1U
- DnBc7OyjGIBA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9694"; a="152195158"
-X-IronPort-AV: E=Sophos;i="5.75,400,1589266800"; d="scan'208";a="152195158"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jul 2020 17:07:27 -0700
-IronPort-SDR: sagNRbh/eLBt//aB+BdKxLD/AtjhXVe4WlDIEPGCvCtgJDM6/hgxsNi2uHmaLWMl3PPfWm9jGH
- LFuADgIhtnBA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,400,1589266800"; d="scan'208";a="273112816"
-Received: from lkp-server01.sh.intel.com (HELO df0563f96c37) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 26 Jul 2020 17:07:25 -0700
-Received: from kbuild by df0563f96c37 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1jzqft-0001iT-59; Mon, 27 Jul 2020 00:07:25 +0000
-Date: Mon, 27 Jul 2020 08:06:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- 4fb60b158afd3ac9e0fe9975aa476213f5cc0a4d
-Message-ID: <5f1e1a7f.rNRY/hXUdwgllxg1%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id sx7m8beOvD8r for <devel@linuxdriverproject.org>;
+ Mon, 27 Jul 2020 08:25:58 +0000 (UTC)
+X-Greylist: delayed 00:21:16 by SQLgrey-1.7.6
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D3CBE86DCC
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jul 2020 08:25:58 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id w17so13660332oie.6
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jul 2020 01:25:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=students-iitmandi-ac-in.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0aKrJE9Py1tsJLs5WZM0aY5vQOQN0nZ3c2moryg/s6o=;
+ b=nJNa9uz6VP84cme/Py+7ka0vfYx0GHGjSdy+npdBPeWmYgPEbYcuQSwKl70c6tQznU
+ nZWXmTV5IlZSxcu+V65H3m39JrNlWZYJa9U+P5BQ3e9i2sm3aPXlBg3gYw/OxoL0uH0K
+ AKf/FDJg+r7S9Ct4qiQbvMQTrzLzD7XsUI5P2LBVT7mRzoH8OfEgJFLMMd2A7xkJ7I8X
+ 14jGy3dttcfKGt0fMIKAmPkglAUQ9NHV84Zx/NWxR+Ymw1kzmsgPYHQn2CfM+CdTyXId
+ oF0CCY5j2SfxRJYvWZKhWjju9bXKPeaibtjN36DZAgQke7tdg/Eqe1d3QrWo2I6oEqc7
+ dluw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0aKrJE9Py1tsJLs5WZM0aY5vQOQN0nZ3c2moryg/s6o=;
+ b=d6cCXg89uYc6pPvK4rsmCJ4UP/0DYgKJoW2wDowc8lqroPHiqydPStBIHSf1lEmSbq
+ Dc7mKROcRdxa79/yGd9Tm1iH46ZIN/FCwv+bZLU62wbATnFjJw/Aijl55zj5aKFn96oQ
+ lXPVNAcqpCbplj/gX72/FuFAoVAjI96NO78/lahK+ob2m0fFvHb6qP84scTVXob08RoX
+ +X1B7n/ukbgglc8iL06uNy83xtbLcYdDcd3B0Q1CSnrKgR8vsMgdME5zoEYfpXg6uJin
+ cYJH0vgZDh7lvqETINaxOO4wMB3LAGcIxpH/3stD9Ln1scNUToaZxdAyo/at7piH6+6n
+ Plew==
+X-Gm-Message-State: AOAM531GazlZ6ZjVE0YXoxjiq+1F5Q2LAFOWYCygiXOkG+JZBn8vDimG
+ Wu+a8PrNTptZomHi321sYm/ySjUjuYWmp7yd
+X-Google-Smtp-Source: ABdhPJyLqbVZbqonRnh1UxubYv7PTVMPqTP/SSuLKnbNXZqLsYVNeIWLdbuKO4BlbLBehkSJoGEcLA==
+X-Received: by 2002:a17:90a:e96:: with SMTP id
+ 22mr6389287pjx.135.1595836595721; 
+ Mon, 27 Jul 2020 00:56:35 -0700 (PDT)
+Received: from devil-VirtualBox.www.tendawifi.com ([103.198.174.215])
+ by smtp.gmail.com with ESMTPSA id u21sm1312338pjn.27.2020.07.27.00.56.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Jul 2020 00:56:35 -0700 (PDT)
+From: Ankit <b18007@students.iitmandi.ac.in>
+To: mchehab@kernel.org
+Subject: [PATCH] Staging : media : atomisp : pci : fixed a brace coding sytle
+ issue
+Date: Mon, 27 Jul 2020 13:25:28 +0530
+Message-Id: <20200727075528.10418-1-b18007@students.iitmandi.ac.in>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -69,107 +86,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, sakari.ailus@linux.intel.com,
+ andriy.shevchenko@linux.intel.com, b18007@students.iitmandi.ac.in,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  driver-core-testing
-branch HEAD: 4fb60b158afd3ac9e0fe9975aa476213f5cc0a4d  firmware_loader: EFI firmware loader must handle pre-allocated buffer
+From: Ankit Baluni<b18007@students.iitmandi.ac.in>
 
-elapsed time: 2246m
+Fixed a coding style issue.
 
-configs tested: 80
-configs skipped: 1
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-i386                              allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-xtensa                              defconfig
-arc                                 defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a014-20200726
-x86_64               randconfig-a016-20200726
-x86_64               randconfig-a015-20200726
-x86_64               randconfig-a012-20200726
-x86_64               randconfig-a013-20200726
-x86_64               randconfig-a011-20200726
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allmodconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                                  kexec
-x86_64                                   rhel
-x86_64                                    lkp
-x86_64                              fedora-25
+Signed-off-by: Ankit Baluni<b18007@students.iitmandi.ac.in>
 
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/staging/media/atomisp/pci/atomisp_cmd.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+index 8ea65bef35d2..28b96b66f4f3 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+@@ -4981,9 +4981,8 @@ enum mipi_port_id __get_mipi_port(struct atomisp_device *isp,
+ 	case ATOMISP_CAMERA_PORT_SECONDARY:
+ 		return MIPI_PORT1_ID;
+ 	case ATOMISP_CAMERA_PORT_TERTIARY:
+-		if (MIPI_PORT1_ID + 1 != N_MIPI_PORT_ID) {
++		if (MIPI_PORT1_ID + 1 != N_MIPI_PORT_ID)
+ 			return MIPI_PORT1_ID + 1;
+-		}
+ 	/* fall through */
+ 	default:
+ 		dev_err(isp->dev, "unsupported port: %d\n", port);
+-- 
+2.25.1
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
