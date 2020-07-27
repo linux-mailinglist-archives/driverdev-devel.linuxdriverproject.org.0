@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF09F2316E9
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 02:47:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 36F3A2317B0
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 04:32:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5F851883FF;
-	Wed, 29 Jul 2020 00:47:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4AEA18848F;
+	Wed, 29 Jul 2020 02:32:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hlnj5Qm+F1Dh; Wed, 29 Jul 2020 00:47:18 +0000 (UTC)
+	with ESMTP id VjFnpoKc5R9w; Wed, 29 Jul 2020 02:32:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4F3858836C;
-	Wed, 29 Jul 2020 00:47:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AA826883F6;
+	Wed, 29 Jul 2020 02:32:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9FBD91BF9AF
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 00:47:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3F3711BF5DB
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 02:32:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6F8012044A
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 00:44:40 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 35CB820451
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 02:32:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X17nIgnHpEQV for <devel@linuxdriverproject.org>;
- Wed, 29 Jul 2020 00:44:39 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
- [213.167.242.64])
- by silver.osuosl.org (Postfix) with ESMTPS id 600A3203E9
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 00:44:39 +0000 (UTC)
-Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
- [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id EF24C563;
- Wed, 29 Jul 2020 02:44:35 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1595983476;
- bh=SXwJUww4PLDsTPPWs4BTBzqNum9zhqM0IspNl9R9qwI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=gYhN/FaqLk8fIj6ntQF/E3ZmkdVD6j+mbXx3ZTuYi/Y6Nqirs/CQTAHAF83+yQA4c
- kuC+/2f9PE2bhrsBA55C8JCbVsGDyt9KUWNwVl4IU3Hb3sMSzR5gGjcTJT+P2NHygk
- ZVjTrepYNJpL/KxMCZq3mywVeCqrYmN9Y+5m232w=
-Date: Wed, 29 Jul 2020 03:44:26 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Martin Kepplinger <martin.kepplinger@puri.sm>
-Subject: Re: nxp imx8m CSI drivers
-Message-ID: <20200729004426.GA4633@pendragon.ideasonboard.com>
-References: <cbfdb81f-9a09-2ad1-4b51-54e10f678358@puri.sm>
- <f4958d19-cc4f-8206-2dc7-e0b084c8970d@puri.sm>
+ with ESMTP id AfaEEjHByEDf for <devel@linuxdriverproject.org>;
+ Wed, 29 Jul 2020 02:31:59 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from pcmicro.com (pcmicro.com [71.165.151.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3F9E920405
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 02:31:59 +0000 (UTC)
+dkim-signature: v=1; a=rsa-sha256; d=pcmicro.com; s=dkim;
+ c=relaxed/relaxed; q=dns/txt;
+ h=From:Reply-To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ bh=AWlPLTDTeyFpOZBg3KfsRi7Ie1SI625FVLtTh3SdOt0=;
+ b=FyVmz8MeSSJMGMi1qnWnOh7Ih8zmPyKKkKmuZxF1mgcDa1t3Lfctm4AUYFq0iZ7PmqCwszO76SJIerjn2x9DSFhOn0Menduja3X0yItd1AYZOeBFEM3npAlh9MHPpKboqt0xYd9YFfTgabARXYjrmOjqadSwfxymXAdC9TCQt10=
+Received: from User (Unknown [94.102.54.247]) by pcmicro.com with ESMTP ;
+ Sun, 26 Jul 2020 17:22:19 -0700
+Message-ID: <2850E8FD-1BA1-4502-9CB0-1C0044CE1049@pcmicro.com>
+From: "COCA COLA."<mike.nospam.ehlert@pcmicro.com>
+Subject: [SPAM] [18.0] COCA-COLA LOTTERY ORGANIZATION
+Date: Sun, 26 Jul 2020 17:22:22 -0700
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <f4958d19-cc4f-8206-2dc7-e0b084c8970d@puri.sm>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Spam-Prev-Subject: COCA-COLA LOTTERY ORGANIZATION
+X-hMailServer-Spam: YES
+X-hMailServer-Reason-1: Tagged as Spam by SpamAssassin - (Score: 18)
+X-hMailServer-Reason-2: The host name specified in HELO does not match IP
+ address. - (Score: 3)
+X-hMailServer-Reason-Score: 21
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,104 +65,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, p.zabel@pengutronix.de,
- "kernel@puri.sm" <kernel@puri.sm>, NXP Linux Team <linux-imx@nxp.com>,
- Pavel Machek <pavel@ucw.cz>, slongerbeam@gmail.com,
- "mchehab@kernel.org" <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
+Reply-To: mrcjames001@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Martin,
+COCA-COLA LOTTERY ORGANIZATION
+TICKET FREE/ONLINE E-MAIL ADDRESS WINNINGS DEPARTMENT.
 
-On Tue, Jul 28, 2020 at 12:36:58PM +0200, Martin Kepplinger wrote:
-> On 09.07.20 11:32, Martin Kepplinger wrote:
-> > hi linux-media people,
-> > 
-> > TL-DR: when exactly is "sd->entity.function == MEDIA_ENT_F_VID_MUX"?
-> > 
-> > 
-> > I try to use the camera on our librem5-devkit (imx8mq): I try to use
-> > only mainline drivers except for "mxc-mipi-csi2_yav" taken from
-> > linux-imx (which we can prepare to submit if a PoC works. This is the
-> > tree I'm experimenting with:
-> > 
-> > https://source.puri.sm/martin.kepplinger/linux-next/-/commits/5.8-rc4/librem5___csi
-> > 
-> > * "imx7-media-csi" / imx-media-capture / imx-media-utils currently in
-> > staging (that should work according to NXP)
-> > * ov5640 mainline driver
-> > * mxc-mipi-csi2_yav from NXP tree (linux-imx) with
-> > v4l2_subdev_video_ops' mipi_csis_g_parm and mipi_csis_s_parm callbacks
-> > removed (due to missing API in mainline)
-> > 
-> > the drivers probe and run but the following fails when trying to use the
-> > camera (gstreamer):
-> > 
-> > in imx-media-utils' imx_media_pipeline_set_stream() the call to
-> > v4l2_subdev_call(sd, video, s_stream, 1) returns with 32 (broken pipe)
-> > and thus the application that tries to use the camera too.
-> > 
-> > One problem is definitely the trees' last commit (that I did as a
-> > workaround) in this tree that makes the drivers probe but only by
-> > ignoring this probably needed check:
-> > 
-> > imx7-media-csi's imx7_csi_notify_bound() callback implementation gets
-> > called during startup. But if (WARN_ON(sd->entity.function !=
-> > MEDIA_ENT_F_VID_MUX)) is true so this is the wrong type of subdev (?).
-> > 
-> > I just want to put this out there and check if the general approach is
-> > valid at all and if there's anything that comes to your mind.
-> 
-> (added Pavel Machek)
-> 
-> still I'm only on the librem5 Devkit: the situation regarding a tree
-> that should use the imx7-media-csi csi_bridge driver hasn't changed, see
-> above for the details. The tree I tried now is this one:
-> 
-> https://source.puri.sm/martin.kepplinger/linux-next/-/commits/5.8-rc7/librem5___csi_ml1
-> 
-> A tree that includes NXP's csi_bridge and mipi-csi drivers (and camera
-> driver) on the other hand works, and I have one based on v5.8-rcX too:
-> 
-> https://source.puri.sm/martin.kepplinger/linux-next/-/commits/5.8-rc7/librem5___csi_nxp
-> 
-> Since I want to look into a different camera driver, I might use that
-> nxp-drivers tree to work on that, but our goal is obviously to use what
-> is already in staging and should work (the csi bridge driver at least).
-> In case you know more about the v4l2 details that don't match over
-> there, please have a look.
+Greetings Winner,
 
-For what it's worth, I'm debugging a complete system memory corruption
-with the imx staging camera driver on an i.MX7D, on v5.8-rc6. The issue
-didn't occur on v5.7. I however have a fairly large number of custom
-patches that I'm in the process of upstreaming on top of mainline for
-that driver, so I can't tell yet whether the problem is in my code or in
-v5.8-rc6.
+If you are the correct owner of this email address? If yes then be glad this day as the result of the Coca-Cola lotto online e-mail address free-ticket winning draws of January 2020 ,held in United States of America has just been released and we are glad to announce to you that your email address won you the sweepstakes in the first category and you are entitled to claim the sum of One Million Two Hundred And Fifty Thousand United States Dollars(US$1,250,000.00). Your email address was entered for the online draw on this ticket No: 546-373-66773 and won on this Lucky No: (14)-(8)-(5)-(19)-(28)-(12)-(30).
 
-I haven't been able to use the staging driver as-is, neither on v5.7 nor
-on v5.8-rc6, with the camera sensor I'm working with (a Sony IMX296). I
-also get an EPIPE (32) error. Seems there's a reason why this driver is
-in staging :-) This however makes debugging more difficult as I can't
-test v5.8-rc6 without my custom changes.
+On how to receive your won prize of US$1.250,000.00M. (One Million Two Hundred And Fifty Thousand United States Dollars Only) to enable Mr.James Curtise ascertain you as the rightful winner and receiver of the US$1.250,000.00M.Make sure you include the below listed information in your contact email to him.
 
-As for MEDIA_ENT_F_VID_MUX, the check is about verifying that the device
-connected directly to the input of the CSI (*not* MIPI CSI2) is the
-video mux that selects between the MIPI CSI2 receiver and the parallel
-sensor input. On i.MX7D, this models the "CSI Input MUX Control" bit in
-register IOMUXC_GPR_GPR5. On i.MX8M, there seems to be no such mux, as
-there seems to be no parallel sensor input. It should thus be safe to
-drop the check, but other adjustements to the routing and pipeline
-configuration logic in the driver will likely be needed.
+Your complete official names, country of origin and country of residence/work, contact telephone and mobile numbers, amount won,lucky numbers, date of draw. OPTIONAL: - [Sex, age, occupation and job title].
 
--- 
-Regards,
+Just in case you are thinking of how you won without entering then know again that this very draw of the Coca-Cola Lottery Organization in which you have emerged as a winner was a free ticket online email address draws were thousands of email addresses was collected from almost all world wide websites and used for the online draws/sweepstakes and during winners selection your email address came out among the first ten which won you the lottery in the first winnings category and entitles you to claim the US$1,250,000.00 dollars.
 
-Laurent Pinchart
+
+Yours Faithfully,
+Mr.James Curtise
+COCA-COLA  LOTTERY ORGANIZATION.
+Online Winning Notification Department.
+Tel: +1-403-607-1548
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
