@@ -1,53 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8556022F896
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jul 2020 21:01:12 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA19B22F89F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jul 2020 21:02:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DD58F221D5;
-	Mon, 27 Jul 2020 19:01:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0BAED880D9;
+	Mon, 27 Jul 2020 19:02:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 56pLB1mmETof; Mon, 27 Jul 2020 19:01:09 +0000 (UTC)
+	with ESMTP id XyfL-FDmERD0; Mon, 27 Jul 2020 19:02:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 87A2822193;
-	Mon, 27 Jul 2020 19:01:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 56D7587079;
+	Mon, 27 Jul 2020 19:02:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 400ED1BF381
- for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 19:01:05 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 78E4B1BF381
+ for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 19:02:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3AE06875C7
- for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 19:01:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 700B685D11
+ for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 19:02:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fwUAeznJs+Sa for <devel@linuxdriverproject.org>;
- Mon, 27 Jul 2020 19:01:04 +0000 (UTC)
+ with ESMTP id b25pd0P0oQ_a for <devel@linuxdriverproject.org>;
+ Mon, 27 Jul 2020 19:02:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C8FEA86D05
- for <devel@driverdev.osuosl.org>; Mon, 27 Jul 2020 19:01:04 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 17B8685D56
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jul 2020 19:02:36 +0000 (UTC)
 Received: from embeddedor (187-162-31-110.static.axtel.net [187.162.31.110])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 380B120719;
- Mon, 27 Jul 2020 19:01:04 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 755752074F;
+ Mon, 27 Jul 2020 19:02:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595876464;
- bh=wE3Hk8CMHkU55vqjbAKTJHngtyL/i64i2M08p+ucCCg=;
+ s=default; t=1595876555;
+ bh=HSIZOSbBdMb6VdSL3tSd4Iq3pXLj2Kfj7HeeT8Y2K3Y=;
  h=Date:From:To:Cc:Subject:From;
- b=xKDBU0DsWSgwr5Y5+1q0LlpvFBKp+1F5cqcfIbfydCYmYd8sbBRjzDg/SfgaWe2vZ
- lcD8zn4gRwxIS8GjvbtaAMPw3iVyNqSxwrxn5b9uBZIbmMfrmWMgLkc2fHyQha7zOT
- 7DvCR2nYc107Up5gskkI0+v6L5dc3gho2/5zJmPU=
-Date: Mon, 27 Jul 2020 14:06:57 -0500
+ b=E5k8wckeCWRGKrjoXhlbhQzokEsEqXckpIR0pIo1NjAuyXsrh3cYagdMhp6swLRpF
+ dCjjPX7AQZ2KQdajj8Cv9xc4zahdLnZqf2/+spxnkNzLSx+Tzg/4vQ+FjmNUUrLqyn
+ E4boQWGCsYcxGsjsC0Hzowa5UIj1kkqel5eSAriU=
+Date: Mon, 27 Jul 2020 14:08:29 -0500
 From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH][next] staging: rtl8723bs: Use fallthrough pseudo-keyword
-Message-ID: <20200727190657.GA30194@embeddedor>
+Subject: [PATCH][next] staging: gdm724x: Use fallthrough pseudo-keyword
+Message-ID: <20200727190829.GA30332@embeddedor>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.9.4 (2018-02-28)
@@ -77,22 +77,22 @@ the new pseudo-keyword macro fallthrough[1].
 
 Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 2 +-
+ drivers/staging/gdm724x/gdm_lte.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index d6d7198dfe45..6db637701063 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -568,7 +568,7 @@ void mgt_dispatcher(struct adapter *padapter, union recv_frame *precv_frame)
- 			ptable->func = &OnAuth;
- 		else
- 			ptable->func = &OnAuthClient;
--		/* fall through */
+diff --git a/drivers/staging/gdm724x/gdm_lte.c b/drivers/staging/gdm724x/gdm_lte.c
+index eb309190f5be..571f47d39484 100644
+--- a/drivers/staging/gdm724x/gdm_lte.c
++++ b/drivers/staging/gdm724x/gdm_lte.c
+@@ -784,7 +784,7 @@ static int gdm_lte_receive_pkt(struct phy_dev *phy_dev, char *buf, int len)
+ 			return index;
+ 		dev = phy_dev->dev[index];
+ 		gdm_lte_pdn_table(dev, buf, len);
+-		/* Fall through */
 +		fallthrough;
- 	case WIFI_ASSOCREQ:
- 	case WIFI_REASSOCREQ:
- 		_mgt_dispatcher(padapter, ptable, precv_frame);
+ 	default:
+ 		ret = gdm_lte_event_send(dev, buf, len);
+ 		break;
 -- 
 2.27.0
 
