@@ -1,75 +1,90 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F74722EC3C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jul 2020 14:32:44 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2193C22ED0F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Jul 2020 15:21:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6FD8685EBE;
-	Mon, 27 Jul 2020 12:32:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4112E204F0;
+	Mon, 27 Jul 2020 13:21:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vo6au8cYcyCz; Mon, 27 Jul 2020 12:32:41 +0000 (UTC)
+	with ESMTP id rYjurhB1TI1a; Mon, 27 Jul 2020 13:21:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D803085EA4;
-	Mon, 27 Jul 2020 12:32:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1BB35204AB;
+	Mon, 27 Jul 2020 13:20:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 966BE1BF3E1
- for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 12:32:39 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 323471BF322
+ for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 13:20:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9281987C69
- for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 12:32:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2B5F38769E
+ for <devel@linuxdriverproject.org>; Mon, 27 Jul 2020 13:20:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a-BWVjKHCzn5 for <devel@linuxdriverproject.org>;
- Mon, 27 Jul 2020 12:32:39 +0000 (UTC)
-X-Greylist: delayed 00:20:32 by SQLgrey-1.7.6
-Received: from mail-wr1-f74.google.com (mail-wr1-f74.google.com
- [209.85.221.74])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B45E387C3F
- for <devel@driverdev.osuosl.org>; Mon, 27 Jul 2020 12:32:38 +0000 (UTC)
-Received: by mail-wr1-f74.google.com with SMTP id f7so3878028wrs.8
- for <devel@driverdev.osuosl.org>; Mon, 27 Jul 2020 05:32:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=3aunXEclUEnw9zzoqAt4B/Xd758KEGTBYGAew0JhOfI=;
- b=lBKpYkHXL9cr1MK5UhiU+WFNjkuT1DDsRrEWm/IjXB3rn7019pFX5OJ/MrKrZn293A
- lRpSS+pEpvHVYQW55rkeFnjRllBkf4WDcIyDNaPqLB2g/OrqGRwxBR/lLKm4/yl50jL6
- 2hV1wL3ijYQMq/E1wK46J2bsmvKeZHkqMNYNEmda8UV4UzlHb3UrPhXkktNHfxZJBiKC
- 6UYj4hI4vYvAbJ4D1El5WLNm+XGXsm1Jk1Z7TFb+/1uoTggHxQ+Nt7/gNhZTBFzZybCx
- n0lPdfmhHLEkMP1C5reJQKbRIhIWkIw2AN7RYW1KOEz3wvucSg8CxXUz4J91XgxCOKKr
- vwhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=3aunXEclUEnw9zzoqAt4B/Xd758KEGTBYGAew0JhOfI=;
- b=Na8DHPCbdo4joENVvkIF6mp5yBiH2LZrpjqZQbY6kvK829PCVBiIj6NRdD6TmUnYR1
- 1x4voWJHEKfHPAJEldZV3LvTMI9wLbzyjwSAZCPf9ZKGAHTz+NmgUIM2iZ+/beYmyTV5
- UwoG1R2IBWBmo+aXnS1tiQNHFJWFMe8+KGXO69qBN1MYefxN/f/GbHjH4TtCmPLxZE6h
- 7nA/yhaAD5nLtrkrUd0o1DBLPicISi2VT0dskA5m8Flo/cc1yw5cCQ4y8nKBzy9R8WUV
- b0xTEYY19yP08iavz6vfEoJxJB8dkjaD1nhrKmocgMKSC35t0J8mDkTz1LxB751iFeEF
- nk7g==
-X-Gm-Message-State: AOAM530NDTMrYbFeS3zXC+pJbQDg4O/07h7013BFhYqJce3qR9qhiWa6
- 9K3XHkCJfhfXSlu6u1I4JAHqQKzR/Q==
-X-Google-Smtp-Source: ABdhPJxrpqCKrJECkR7sfWmBqjKOzGM9Av+BVYwV5eq55kxVIULvn4Ac35Kxre6lCbi6EpmQr7IR2bJqKg==
-X-Received: by 2002:a17:907:7204:: with SMTP id
- dr4mr5894350ejc.258.1595851478002; 
- Mon, 27 Jul 2020 05:04:38 -0700 (PDT)
-Date: Mon, 27 Jul 2020 14:04:24 +0200
-Message-Id: <20200727120424.1627555-1-jannh@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.28.0.rc0.142.g3c755180ce-goog
-Subject: [PATCH v2] binder: Prevent context manager from incrementing ref 0
-From: Jann Horn <jannh@google.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- "=?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?=" <arve@android.com>,
- Todd Kjos <tkjos@android.com>, Martijn Coenen <maco@android.com>, 
- Joel Fernandes <joel@joelfernandes.org>,
- Christian Brauner <christian@brauner.io>
+ with ESMTP id jtneGicb2UbT for <devel@linuxdriverproject.org>;
+ Mon, 27 Jul 2020 13:20:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5EF5087677
+ for <devel@driverdev.osuosl.org>; Mon, 27 Jul 2020 13:20:53 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 06RDGwXU093400;
+ Mon, 27 Jul 2020 13:20:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=tBfbienhVFSWot4M/N0o6k7I0q1neTC6ZRkO3jt9YxE=;
+ b=EJiZs3gmYFJSMJ8cxvB5Xmb/2h5Yxym0yaAVmJs55bYeNyjJkPMOTszpivd1/fx43EP5
+ U3pnkTFxnsjk28H+0OErX1xacdpOWcaTPGDG72gTSzxJ0cm1Bhp75YfJMNNkuOH+5r2o
+ F/rDEPMIfaQNjY/bgz1XHRdZySJRU+u06h2luoOyGa0VN2agNy9aaxn59M5FRHA9BNls
+ jPLFaChGMkZalETtsw+lxurGpSOktjer19NnqQ2Xw4+8EZLG+0xPBNfPxCEZLyu4jYN1
+ Ni2/6eSZg+l+2bGA3Mk/7E4K2E710UrIsCXChrbx1HNw7g0nDeCtDF4+4YHdimio2FZE wg== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2130.oracle.com with ESMTP id 32hu1j1f9b-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Mon, 27 Jul 2020 13:20:52 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 06RDIXhU147258;
+ Mon, 27 Jul 2020 13:20:52 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3020.oracle.com with ESMTP id 32hu5qvwd9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Jul 2020 13:20:52 +0000
+Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 06RDKpbg023514;
+ Mon, 27 Jul 2020 13:20:51 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 27 Jul 2020 06:20:50 -0700
+Date: Mon, 27 Jul 2020 16:20:43 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Juan Antonio Aldea-Armenteros <juant.aldea@gmail.com>
+Subject: Re: [PATCH] media: atomisp-mt9m114: replace fixed function names
+Message-ID: <20200727132042.GE1913@kadam>
+References: <20200725081108.272643-1-juant.aldea@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200725081108.272643-1-juant.aldea@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9694
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ phishscore=0 bulkscore=0
+ malwarescore=0 suspectscore=0 spamscore=0 mlxlogscore=999 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2007270097
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9694
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ clxscore=1011
+ malwarescore=0 spamscore=0 suspectscore=0 bulkscore=0 priorityscore=1501
+ phishscore=0 mlxlogscore=999 lowpriorityscore=0 impostorscore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2007270097
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,101 +97,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Mattias Nissler <mnissler@google.com>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Binder is designed such that a binder_proc never has references to
-itself. If this rule is violated, memory corruption can occur when a
-process sends a transaction to itself; see e.g.
-<https://syzkaller.appspot.com/bug?extid=09e05aba06723a94d43d>.
+On Sat, Jul 25, 2020 at 10:11:08AM +0200, Juan Antonio Aldea-Armenteros wrote:
+> There are a couple of debug messages using hardcoded function names
+> instead of the preferred __func__ magic constant.
+> 
+> Replace them:
+> 
+> WARNING: Prefer using '"%s...", __func__' to using 'misensor_rmw_reg', this function's name, in a string
+> 215: FILE: ./media/atomisp/i2c/atomisp-mt9m114.c:215:
+> +       v4l2_err(client, "misensor_rmw_reg error exit, read failed\n");
+> 
+> WARNING: Prefer using '"%s...", __func__' to using 'misensor_rmw_reg', this function's name, in a string
+> 236: FILE: ./media/atomisp/i2c/atomisp-mt9m114.c:236:
+> +       v4l2_err(client, "misensor_rmw_reg error exit, write failed\n");
+> 
+> Signed-off-by: Juan Antonio Aldea-Armenteros <juant.aldea@gmail.com>
+> ---
+>  drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c b/drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c
+> index 0d60918a9b19..54c24bc2061d 100644
+> --- a/drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c
+> +++ b/drivers/staging/media/atomisp/i2c/atomisp-mt9m114.c
+> @@ -212,7 +212,7 @@ misensor_rmw_reg(struct i2c_client *client, u16 data_length, u16 reg,
+>  
+>  	err = mt9m114_read_reg(client, data_length, reg, &val);
+>  	if (err) {
+> -		v4l2_err(client, "misensor_rmw_reg error exit, read failed\n");
+> +		v4l2_err(client, "%s exit, read failed\n", __func__);
 
-There is a remaining edgecase through which such a transaction-to-self
-can still occur from the context of a task with BINDER_SET_CONTEXT_MGR
-access:
+Did you intend to delete the word "error"?
 
- - task A opens /dev/binder twice, creating binder_proc instances P1
-   and P2
- - P1 becomes context manager
- - P2 calls ACQUIRE on the magic handle 0, allocating index 0 in its
-   handle table
- - P1 dies (by closing the /dev/binder fd and waiting a bit)
- - P2 becomes context manager
- - P2 calls ACQUIRE on the magic handle 0, allocating index 1 in its
-   handle table
-   [this triggers a warning: "binder: 1974:1974 tried to acquire
-   reference to desc 0, got 1 instead"]
- - task B opens /dev/binder once, creating binder_proc instance P3
- - P3 calls P2 (via magic handle 0) with (void*)1 as argument (two-way
-   transaction)
- - P2 receives the handle and uses it to call P3 (two-way transaction)
- - P3 calls P2 (via magic handle 0) (two-way transaction)
- - P2 calls P2 (via handle 1) (two-way transaction)
+regards,
+dan carpenter
 
-And then, if P2 does *NOT* accept the incoming transaction work, but
-instead closes the binder fd, we get a crash.
-
-Solve it by preventing the context manager from using ACQUIRE on ref 0.
-There shouldn't be any legitimate reason for the context manager to do
-that.
-
-Additionally, print a warning if someone manages to find another way to
-trigger a transaction-to-self bug in the future.
-
-Cc: stable@vger.kernel.org
-Fixes: 457b9a6f09f0 ("Staging: android: add binder driver")
-Acked-by: Todd Kjos <tkjos@google.com>
-Signed-off-by: Jann Horn <jannh@google.com>
----
-fixed that broken binder_user_error() from the first version...
-I sent v1 while I had a dirty tree containing the missing fix. whoops.
-
- drivers/android/binder.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index f50c5f182bb5..5b310eea9e52 100644
---- a/drivers/android/binder.c
-+++ b/drivers/android/binder.c
-@@ -2982,6 +2982,12 @@ static void binder_transaction(struct binder_proc *proc,
- 			goto err_dead_binder;
- 		}
- 		e->to_node = target_node->debug_id;
-+		if (WARN_ON(proc == target_proc)) {
-+			return_error = BR_FAILED_REPLY;
-+			return_error_param = -EINVAL;
-+			return_error_line = __LINE__;
-+			goto err_invalid_target_handle;
-+		}
- 		if (security_binder_transaction(proc->tsk,
- 						target_proc->tsk) < 0) {
- 			return_error = BR_FAILED_REPLY;
-@@ -3635,10 +3641,17 @@ static int binder_thread_write(struct binder_proc *proc,
- 				struct binder_node *ctx_mgr_node;
- 				mutex_lock(&context->context_mgr_node_lock);
- 				ctx_mgr_node = context->binder_context_mgr_node;
--				if (ctx_mgr_node)
-+				if (ctx_mgr_node) {
-+					if (ctx_mgr_node->proc == proc) {
-+						binder_user_error("%d:%d context manager tried to acquire desc 0\n",
-+								  proc->pid, thread->pid);
-+						mutex_unlock(&context->context_mgr_node_lock);
-+						return -EINVAL;
-+					}
- 					ret = binder_inc_ref_for_node(
- 							proc, ctx_mgr_node,
- 							strong, NULL, &rdata);
-+				}
- 				mutex_unlock(&context->context_mgr_node_lock);
- 			}
- 			if (ret)
-
-base-commit: 2a89b99f580371b86ae9bafd6cbeccd3bfab524a
--- 
-2.28.0.rc0.142.g3c755180ce-goog
 
 _______________________________________________
 devel mailing list
