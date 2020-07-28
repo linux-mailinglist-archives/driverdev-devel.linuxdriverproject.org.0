@@ -2,85 +2,68 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D51CA231573
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 00:18:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C16372315C3
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 00:53:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D11B5884DB;
-	Tue, 28 Jul 2020 22:17:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 979BB885DB;
+	Tue, 28 Jul 2020 22:53:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Mtwx-OnCZYCH; Tue, 28 Jul 2020 22:17:58 +0000 (UTC)
+	with ESMTP id 4MhoI3X0sE+Q; Tue, 28 Jul 2020 22:53:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2F3CA8817D;
-	Tue, 28 Jul 2020 22:17:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D011787919;
+	Tue, 28 Jul 2020 22:53:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CEED41BF5AA
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 22:17:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D2681BF5AA
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 22:53:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C708388398
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 22:17:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 127A98819B
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 22:53:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Improper folded header field made up
- entirely of whitespace (char 20 hex): X-SA-Report: ...T_ADDRESS@@ for
- details.\n \n Content previ[...]
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jk2Tv9XJK8aD for <devel@linuxdriverproject.org>;
- Tue, 28 Jul 2020 22:17:55 +0000 (UTC)
+ with ESMTP id G9J+k+vOXSkV for <devel@linuxdriverproject.org>;
+ Tue, 28 Jul 2020 22:53:13 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from dec.fca.unam.mx (dec.fca.unam.mx [132.248.164.63])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8D00F8817D
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 22:17:55 +0000 (UTC)
-Received: from [20.194.2.11] (helo=User)
- by dec.fca.unam.mx with esmtpa (Exim 4.92)
- (envelope-from <lgraves@uniserve.com>)
- id 1k0XtT-0008DL-KY; Tue, 28 Jul 2020 17:16:20 -0500
-From: "R. E. Al-Hashimi"<lgraves@uniserve.com>
-Subject: Information...
-Date: Tue, 28 Jul 2020 22:16:19 -0000
+Received: from smtprelay.hostedemail.com (smtprelay0024.hostedemail.com
+ [216.40.44.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D39DA88195
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 22:53:13 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave07.hostedemail.com (Postfix) with ESMTP id EEFE918353CF1
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 18:04:27 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id 7BA03100E7B51;
+ Tue, 28 Jul 2020 18:04:25 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 20, 1.5, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2328:2393:2559:2562:2828:3138:3139:3140:3141:3142:3351:3622:3867:3871:3872:3873:4321:5007:6691:10004:10400:10848:11026:11232:11658:11914:12043:12048:12296:12297:12438:12740:12760:12895:13069:13311:13357:13439:14181:14659:14721:21080:21627:21740:30054:30070:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:2, LUA_SUMMARY:none
+X-HE-Tag: stove18_0203bed26f6b
+X-Filterd-Recvd-Size: 1690
+Received: from XPS-9350 (unknown [172.58.27.230])
+ (Authenticated sender: joe@perches.com)
+ by omf14.hostedemail.com (Postfix) with ESMTPA;
+ Tue, 28 Jul 2020 18:04:22 +0000 (UTC)
+Message-ID: <0e9fee846ac0fb28df4098e6d577e9090be38ed9.camel@perches.com>
+Subject: Re: [PATCH] staging: android: ashmem: used const keyword
+From: Joe Perches <joe@perches.com>
+To: Dhiraj Sharma <dhiraj.sharma0024@gmail.com>, gregkh@linuxfoundation.org,
+ arve@android.com, tkjos@android.com, maco@android.com,
+ joel@joelfernandes.org,  christian@brauner.io, hridya@google.com,
+ surenb@google.com
+Date: Tue, 28 Jul 2020 11:04:20 -0700
+In-Reply-To: <20200728175935.2130-1-dhiraj.sharma0024@gmail.com>
+References: <20200728175935.2130-1-dhiraj.sharma0024@gmail.com>
+User-Agent: Evolution 3.36.3-0ubuntu1 
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <E1k0XtT-0008DL-KY@dec.fca.unam.mx>
-X-SA-Score: 14.5
-X-SA-Report: Spam detection software,
- running on the system "dec.dec.fca.unam.mx", 
- has identified this incoming email as possible spam.  The original
- message has been attached to this so you can view it or label
- similar future email.  If you have any questions, see
- @@CONTACT_ADDRESS@@ for details. 
- Content preview:  My name is Reem E. Al-Hashimi, the Emirates Minister of State
- and Managing Director of the United Arab Emirates (Dubai) World Expo 2020
- Committee. I am writing to you to stand as my partner to receive [...]  
- Content analysis details:   (14.5 points, 5.0 required) 
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -1.0 ALL_TRUSTED            Passed through trusted hosts only via SMTP
- 0.0 FSL_CTYPE_WIN1251      Content-Type only seen in 419 spam
- 0.0 NSL_RCVD_HELO_USER     Received from HELO User
- 1.2 MISSING_HEADERS        Missing To: header
- 0.0 AXB_XMAILER_MIMEOLE_OL_024C2 Yet another X header trait
- 0.0 FROM_MISSP_MSFT        From misspaced + supposed Microsoft tool
- 3.4 MSOE_MID_WRONG_CASE    No description available.
- 0.0 FROM_MISSP_XPRIO       Misspaced FROM + X-Priority
- 1.9 REPLYTO_WITHOUT_TO_CC  No description available.
- 0.0 FSL_NEW_HELO_USER      Spam's using Helo and User
- 0.0 LOTS_OF_MONEY          Huge... sums of money
- 2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
- 0.0 MONEY_FROM_MISSP       Lots of money and misspaced From
- 1.0 FREEMAIL_REPLYTO       Reply-To/From or Reply-To/body contain
- different freemails
- 0.0 TO_NO_BRKTS_FROM_MSSP  Multiple header formatting problems
- 2.8 FORGED_MUA_OUTLOOK     Forged mail pretending to be from MS Outlook
- 0.0 FROM_MISSP_EH_MATCH    From misspaced, matches envelope
- 0.0 FROM_MISSP_FREEMAIL    From misspaced + freemail provider
- 2.7 ADVANCE_FEE_3_NEW_MONEY Advance Fee fraud and lots of money
-X-SA-Status: Yes
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,22 +76,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemalhashimi@daum.net
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus Symptoms and Causes.
+On Tue, 2020-07-28 at 23:29 +0530, Dhiraj Sharma wrote:
+> I ran checkpatch.pl script which reported a warning to use const keyword
+> on line 370.Therefore I made this change.
 
-Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+checkpatch is a brainless script.
+Not everything it suggests is appropriate.
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+> diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
+[]
+> @@ -367,7 +367,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
+> 
+>  static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
+>  {
+> -	static struct file_operations vmfile_fops;
+> +	static const struct file_operations vmfile_fops;
 
-If you can handle the fund in a good investment. reply on this email only: alreemhas109@daum.net     
+This can't work.
 
-Regards,
-Ms. Reem
+Please make sure to compile your proposed changes
+_before_ you post them.
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
