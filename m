@@ -1,74 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0954E2311CE
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Jul 2020 20:36:00 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 49D6F2311D3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Jul 2020 20:36:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C3B8388665;
-	Tue, 28 Jul 2020 18:35:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BA797204DC;
+	Tue, 28 Jul 2020 18:36:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VzPjTA5su4gg; Tue, 28 Jul 2020 18:35:57 +0000 (UTC)
+	with ESMTP id e0NlE8IJl6sQ; Tue, 28 Jul 2020 18:36:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2E85788607;
-	Tue, 28 Jul 2020 18:35:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 31751221C6;
+	Tue, 28 Jul 2020 18:36:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 268351BF28E
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 18:35:55 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4BF401BF28E
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 18:36:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2223B88607
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 18:35:55 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 47E9A84E7C
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 18:36:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id psv1M9oyy6hq for <devel@linuxdriverproject.org>;
- Tue, 28 Jul 2020 18:35:53 +0000 (UTC)
+ with ESMTP id 4wpbkbJ6z4K4 for <devel@linuxdriverproject.org>;
+ Tue, 28 Jul 2020 18:36:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
- [209.85.210.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1E42188602
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 18:35:53 +0000 (UTC)
-Received: by mail-ot1-f65.google.com with SMTP id p25so6265797oto.6
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 11:35:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7098B849B7
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 18:36:16 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id a15so19240075wrh.10
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 11:36:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=0Z63JKAOHq4FmpWz4KBmz4cVqOLwzIvbRITRXwRUNMg=;
- b=GPIMIt06GdktXH/MGPQAgShkUf3xRghQYf+l+eRGqs2hhNLnYxeu0YJcUSVm4aWq6+
- JnLC4qT6HYzxvFFz3ZJcvfVQgPuAgo8WKeUb8jkHnnRV+HukPiceUAjuOiCRPfqcn4Rf
- 8s5ENREcr1d5c48Aj7xQ3o6qcvLkQ4XGumU/Zj3YyTt1XPJeuhuPZsrpvUcQvFfEk68N
- IXV7CWoENQ1ufiO8hAuitfNaTEL3xyb8IGjI/q3MSvio2EQU3OQnGhSZFBe3nJbHzIlA
- 7uiqk9pMyc0ymqN60xtYwQTbpaRjrKhbYIibaO6d3GQvqyN5TLiZax4obJ1JpOGM1fED
- sF2g==
+ :cc; bh=Ag+56VHWa4UupCVslbddFog8v3QbAb1GzSUnW5D8pYk=;
+ b=PvUUgnajTgVqHh7tBRuZtFIB7BDtmLfblYvw2jEF15/d3+GlAPeqDzU78CSy/v0pSc
+ lRFq6ogjsZSCDNnqZvDLYvmrGBsDuGWMguwsPfef44qQP0JhMGjYegJNcQNw7zqiNRbQ
+ oPe6Iyj4j4DGdTKv7Om6t5OoeejJ16+aTcAjU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=0Z63JKAOHq4FmpWz4KBmz4cVqOLwzIvbRITRXwRUNMg=;
- b=KDsqCIeAHVOXC0aax2QVW+oQsFxoqfyxxT7TDsOk08XL6Q5tRbwMHtQ2RUpRFv9uYj
- 07a7Rh5oLg6cSTmBieR2m+PvWT3u7o5baABpfbeXAs9yG29PgeQzKA7MaykUwiozIe/y
- ptlmMVqVA1rCz1NpiUBbFZHl7AnucPZElfCnxtuveFpYSU/0+7OrLtb/5mI0n+fniw5N
- wWgme0FQxXFEf9vILAZ3Oacdude9/nBvet7Tw0DJ3OFQ10AifrIkmdLpQU7sGLf0lxkh
- HJyUEqy4pM4/V1D30dFunke2kuGrt1oj9h6WYQa3swWlwIqUuQ8iXofUjANz7dwRQ4P2
- cBqw==
-X-Gm-Message-State: AOAM532fsWop6T3Q6/c6i9OeWtPiiR0QWFHp2H6KhindOjGXFxN0ARaR
- uqNCkvREk8rgDDmnzC4VJBOY26h1R+muVVHHABs=
-X-Google-Smtp-Source: ABdhPJyzWjrRD0PrwzvQqD83SQdnWksQWGtydVmK8bWLCVtscOqjbdlaXNKFDL1fEPN2+nshHblWyt37hJyOEDw7PQQ=
-X-Received: by 2002:a05:6830:4c8:: with SMTP id
- s8mr24921273otd.368.1595961352281; 
- Tue, 28 Jul 2020 11:35:52 -0700 (PDT)
+ bh=Ag+56VHWa4UupCVslbddFog8v3QbAb1GzSUnW5D8pYk=;
+ b=ZbLnJWTfIG3/JKh27J0Qs2WBde+xgj2SOBga3kSf0nrGCpTynvEYX3eVwD8y7nBsyR
+ Fp0VOUOvy/pZtB37y48HxIjlyLldnDQtrjVeDOJQtCSInllnszP8Mh1FhvS8BUwS3DAu
+ dXpgvIld6mCoKcaGNK/TCDQjQeGkWvw9qHpQAMjYZ6gLaO+F1y8cJv/RAUwH/5cz6hcD
+ JsgylLJznHf0iM31qQJjYxa4WpHnuMxWKq1pqAGAH3yQKnLbC9AiEnT7lI4qSZrJ1/5Y
+ 8a/dPkWtlAGe/e5YjvY6ilj8e9P5ENaDKz6tRdpfoNKxmPq+bKpVHM92cxAKqZ4gHIbu
+ 2iYw==
+X-Gm-Message-State: AOAM530zMCgDjnTFJJ3pECU23o3+M3IGTEeaZR+GL2yUjGFhM9CswfjU
+ iRkaKfNLQDqfM94LHzSstgI4wXBOiZFL5rWLtfn+mA==
+X-Google-Smtp-Source: ABdhPJyyeHCQpGWv2ZVhb8OOYQVNDOYREJTG68F/E7l3B030xqT3Xde6PnTY6nzIbRmhmBAEDqIr9CfuhXn3sEs6Cd4=
+X-Received: by 2002:adf:ebc5:: with SMTP id v5mr22136755wrn.100.1595961374761; 
+ Tue, 28 Jul 2020 11:36:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200728175935.2130-1-dhiraj.sharma0024@gmail.com>
- <20200728182519.GA328787@kroah.com>
-In-Reply-To: <20200728182519.GA328787@kroah.com>
-From: Dhiraj Sharma <dhiraj.sharma0024@gmail.com>
-Date: Wed, 29 Jul 2020 00:05:39 +0530
-Message-ID: <CAPRy4h3RWzY0nStJzvLUJuEyxN4Pc03LiqJxie-_GWhzuZEmgA@mail.gmail.com>
-Subject: Re: [PATCH] staging: android: ashmem: used const keyword
-To: Greg KH <gregkh@linuxfoundation.org>
+References: <20200724203407.16972-1-james.quinlan@broadcom.com>
+ <20200724203407.16972-9-james.quinlan@broadcom.com>
+ <20200728123343.GA3939@lst.de>
+In-Reply-To: <20200728123343.GA3939@lst.de>
+From: Jim Quinlan <james.quinlan@broadcom.com>
+Date: Tue, 28 Jul 2020 14:36:02 -0400
+Message-ID: <CA+-6iNwRC3UZ5nMrWeBEKYDV=Jbj5Nvf9sWgY1CPXZyy9ofS4g@mail.gmail.com>
+Subject: Re: [PATCH v9 08/12] device core: Introduce DMA range map,
+ supplanting dma_pfn_offset
+To: Christoph Hellwig <hch@lst.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,56 +79,126 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tkjos@android.com,
- Suren Baghdasaryan <surenb@google.com>, linux-kernel@vger.kernel.org,
- Hridya Valsaraju <hridya@google.com>, arve@android.com, joel@joelfernandes.org,
- maco@android.com, christian@brauner.io
+Cc: Rich Felker <dalias@libc.org>,
+ "open list:SUPERH" <linux-sh@vger.kernel.org>, David Airlie <airlied@linux.ie>,
+ "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
+ <linux-pci@vger.kernel.org>, Hanjun Guo <guohanjun@huawei.com>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Julien Grall <julien.grall@arm.com>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ "H. Peter Anvin" <hpa@zytor.com>, Will Deacon <will@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ Russell King <linux@armlinux.org.uk>,
+ "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>,
+ "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
+ Ohad Ben-Cohen <ohad@wizery.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
+ <devicetree@vger.kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Arnd Bergmann <arnd@arndb.de>, Suzuki K Poulose <suzuki.poulose@arm.com>,
+ Maxime Ripard <mripard@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Borislav Petkov <bp@alien8.de>,
+ "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
+ Yong Deng <yong.deng@magewell.com>, Santosh Shilimkar <ssantosh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
+ Saravana Kannan <saravanak@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Oliver Neukum <oneukum@suse.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ open list <linux-kernel@vger.kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
+ Stefano Stabellini <sstabellini@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
+ <linux-rpi-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Alright, I have understood now that I should not trust on
-checkpatch.pl script fully but partially it is indeed helpful. Please
-don't criticize this script, it was my fault instead.
+Hi Christoph,
 
-Before submitting code changes I would test them all, sorry for
-wasting your time please ignore this patch changes now.
-
-I will not commit such foolish mistakes now.
-
-
-Thank you
-Dhiraj Sharma
-
-On Tue, Jul 28, 2020 at 11:55 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+On Tue, Jul 28, 2020 at 8:33 AM Christoph Hellwig <hch@lst.de> wrote:
 >
-> On Tue, Jul 28, 2020 at 11:29:35PM +0530, Dhiraj Sharma wrote:
-> > I ran checkpatch.pl script which reported a warning to use const keyword
-> > on line 370.Therefore I made this change.
-> >
-> > Signed-off-by: Dhiraj Sharma <dhiraj.sharma0024@gmail.com>
-> > ---
-> >  drivers/staging/android/ashmem.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
-> > index c05a214191da..f9cfa15b785f 100644
-> > --- a/drivers/staging/android/ashmem.c
-> > +++ b/drivers/staging/android/ashmem.c
-> > @@ -367,7 +367,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
-> >
-> >  static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
-> >  {
-> > -     static struct file_operations vmfile_fops;
-> > +     static const struct file_operations vmfile_fops;
+> A few tiny nitpicks:
 >
-> You have now submitted two patches that you obviously never even built,
-> which is the first step in kernel development :(
+> The subject should have the dma-mapping prefix, this doesn't
+> really touch the device core.
 >
-> Please be more careful next time.
+> > -     rc = of_dma_get_range(np, &dma_addr, &paddr, &size);
+> > +     rc = of_dma_get_range(np, &map);
+> > +     rc = PTR_ERR_OR_ZERO(map);
 >
-> greg k-h
+> I don't think you need the PTR_ERR_OR_ZERO line here, of_dma_get_range
+> returns the error.
+
+Yes, that link needs to be deleted.
+
+>
+> > +int dma_set_offset_range(struct device *dev, phys_addr_t cpu_start,
+> > +                      dma_addr_t dma_start, u64 size)hh
+> > +{
+> > +     struct bus_dma_region *map;
+> > +     u64 offset = (u64)cpu_start - (u64)dma_start;
+> > +
+> > +     if (!dev)
+> > +             return -ENODEV;
+>
+> I don't think we need the NULL protection here, all DMA API calls
+> expect a device.
+Yes, your review-patch removed it but left the comment about the
+function returning -ENODEV.  So I wasn't sure to leave it in or not.
+>
+> > +     if (!offset)
+> > +             return 0;
+> > +
+> > +     /*
+> > +      * See if a map already exists and we already encompass the new range:
+> > +      */
+> > +     if (dev->dma_range_map) {
+> > +             if (dma_range_overlaps(dev, cpu_start, dma_start, size, offset))
+> > +                     return 0;
+> > +             dev_err(dev, "attempt to add conflicting DMA range to existing map\n");
+> > +             return -EINVAL;
+> > +     }
+>
+> And here why do we need the overlap check at all?  I'd be tempted to
+> always return an error for this case.
+I believe the overlap check was your suggestion or at least in your
+review-patch?  I'm fine with just returning an error.
+
+>
+> What is the plan to merge this?  Do you want all this to go into one
+> tree, or get as many bits into the applicable trees for 5.9 and then
+> finish up for 5.10?  If the former I can apply it to the dma-mapping
+> tree and just fix up the nitpicks.
+Whatever you think is best -- I would be quite happy if you could
+accept at least the "dma_range_map" commit.   Of course I'd be most
+happy if the entire patchset were accepted, but perhaps you can just
+apply the  "dma_range_map" commit, and I will continue to bang away at
+getting the N-1 PCIe-related commits ack'd and accepted.
+
+Thanks much!
+Jim Quinlan
+Broadcom STB
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
