@@ -2,67 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C16372315C3
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 00:53:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 200172315E5
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 01:00:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 979BB885DB;
-	Tue, 28 Jul 2020 22:53:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9BCC988684;
+	Tue, 28 Jul 2020 23:00:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4MhoI3X0sE+Q; Tue, 28 Jul 2020 22:53:17 +0000 (UTC)
+	with ESMTP id fzvnci2Z2Yk7; Tue, 28 Jul 2020 23:00:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D011787919;
-	Tue, 28 Jul 2020 22:53:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A86098865A;
+	Tue, 28 Jul 2020 23:00:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1D2681BF5AA
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 22:53:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 204941BF5AA
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 23:00:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 127A98819B
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 22:53:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1B82088231
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 23:00:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G9J+k+vOXSkV for <devel@linuxdriverproject.org>;
- Tue, 28 Jul 2020 22:53:13 +0000 (UTC)
+ with ESMTP id g6vrmNcIPcaw for <devel@linuxdriverproject.org>;
+ Tue, 28 Jul 2020 23:00:20 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0024.hostedemail.com
- [216.40.44.24])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D39DA88195
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 22:53:13 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave07.hostedemail.com (Postfix) with ESMTP id EEFE918353CF1
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 18:04:27 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay01.hostedemail.com (Postfix) with ESMTP id 7BA03100E7B51;
- Tue, 28 Jul 2020 18:04:25 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 20, 1.5, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2328:2393:2559:2562:2828:3138:3139:3140:3141:3142:3351:3622:3867:3871:3872:3873:4321:5007:6691:10004:10400:10848:11026:11232:11658:11914:12043:12048:12296:12297:12438:12740:12760:12895:13069:13311:13357:13439:14181:14659:14721:21080:21627:21740:30054:30070:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:2, LUA_SUMMARY:none
-X-HE-Tag: stove18_0203bed26f6b
-X-Filterd-Recvd-Size: 1690
-Received: from XPS-9350 (unknown [172.58.27.230])
- (Authenticated sender: joe@perches.com)
- by omf14.hostedemail.com (Postfix) with ESMTPA;
- Tue, 28 Jul 2020 18:04:22 +0000 (UTC)
-Message-ID: <0e9fee846ac0fb28df4098e6d577e9090be38ed9.camel@perches.com>
-Subject: Re: [PATCH] staging: android: ashmem: used const keyword
-From: Joe Perches <joe@perches.com>
-To: Dhiraj Sharma <dhiraj.sharma0024@gmail.com>, gregkh@linuxfoundation.org,
- arve@android.com, tkjos@android.com, maco@android.com,
- joel@joelfernandes.org,  christian@brauner.io, hridya@google.com,
- surenb@google.com
-Date: Tue, 28 Jul 2020 11:04:20 -0700
-In-Reply-To: <20200728175935.2130-1-dhiraj.sharma0024@gmail.com>
-References: <20200728175935.2130-1-dhiraj.sharma0024@gmail.com>
-User-Agent: Evolution 3.36.3-0ubuntu1 
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 59759881F4
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 23:00:20 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id d4so13135783pgk.4
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 16:00:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=students-iitmandi-ac-in.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=+AGKaODfQyJlnmbVWmu1S2WmuwIYu+1OBfVfzl9nDbI=;
+ b=wSiJJlaW4Nf3Z4qC1BYYeErvnyAaxGazqwv+5vS8Ohoi9wIoC5ShcWVwNvmUC4fxN9
+ N+kZt5l9fJ7JOsJYXZGVugPArIg8ZmjE2d/llMs/V0sSE0l4mom3QlwPQ/ZbDkGmWydr
+ k0T6JKoYyjCvMkeYYmWzZTg2PX4VYFkTPN4AqpVIzU0JEhpCnzUlhqYMV/ANpxjqESNU
+ kig9iezcgZMt6WtqUq97RLf/AL6UjD8QAfNNDGs9uAv0yB/jpuoQieNXfjTLY5FFKXND
+ VzNrllBYEWkJLjT0Glw4gp2Sd2kye9ezjm3PPrxhoSpHco5rEjFNhcV4IIWn5fNOxpy8
+ f0ig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=+AGKaODfQyJlnmbVWmu1S2WmuwIYu+1OBfVfzl9nDbI=;
+ b=Lgi7UjUdJccWdAtWbULKoDKGy53LZzAUsaeucBXorS5XPQ91bhkEmxlF7AvPxc1zPd
+ qBcXMnlEDb7izucRse2rLVOwG0WBEGezeMSGvod+wJ2MLJNF4LgXXDS5NK2lQset/Bop
+ KJl3jF3uXs72YRnnA4rNw4ycvVlkTH5/fqfeyL9cRHgyiTHNA2werD7tDlYQe4t/jftK
+ vloi7HRUNMaUNRV5XhNIzkzjZ7gHztDGtyhg85YDd3LeondGc04uTnWtfeYdaiU1hC8j
+ Gbq3o7hiDFT5Z3wJzB9kpp3ECw3IOxS7RTyBByBGt9Vwrl6knT81EI8tdHIW6/g7HIeh
+ n82A==
+X-Gm-Message-State: AOAM533LFLbcv96+ZURjdz59K5wRdPqM+EjYackHob1S9i6W6w6U3u7E
+ zQmEn7SUGfWA99F1pkAliHKBVg==
+X-Google-Smtp-Source: ABdhPJzGVY0Wek05CSIAilbGSc/iC2BNuIxuZVqGpgfu+wb+W8o+Sa5WL16MSEaBgLGfrxfyolhdAA==
+X-Received: by 2002:a63:444b:: with SMTP id t11mr27226150pgk.134.1595977219750; 
+ Tue, 28 Jul 2020 16:00:19 -0700 (PDT)
+Received: from devil-VirtualBox.www.tendawifi.com ([103.198.174.215])
+ by smtp.gmail.com with ESMTPSA id 76sm105516pfu.139.2020.07.28.16.00.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Jul 2020 16:00:19 -0700 (PDT)
+From: Ankit <b18007@students.iitmandi.ac.in>
+To: mchehab@kernel.org, gregkh@linuxfoundation.org,
+ sakari.ailus@linux.intel.com, andriy.shevchenko@linux.intel.com
+Subject: [PATCH v2] Staging : media : atomisp : fixed a brace coding sytle
+ issue
+Date: Wed, 29 Jul 2020 04:29:35 +0530
+Message-Id: <20200728225935.28880-1-b18007@students.iitmandi.ac.in>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200728084341.GA1795795@kroah.com>
+References: <20200728084341.GA1795795@kroah.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -76,33 +88,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ b18007@students.iitmandi.ac.in, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2020-07-28 at 23:29 +0530, Dhiraj Sharma wrote:
-> I ran checkpatch.pl script which reported a warning to use const keyword
-> on line 370.Therefore I made this change.
+From: Ankit Baluni <b18007@students.iitmandi.ac.in>
 
-checkpatch is a brainless script.
-Not everything it suggests is appropriate.
+Removed braces for a 'if' condition as it contain only single line & 
+there is no need for braces for such case according to coding style
+rules.
 
-> diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
-[]
-> @@ -367,7 +367,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
-> 
->  static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
->  {
-> -	static struct file_operations vmfile_fops;
-> +	static const struct file_operations vmfile_fops;
+Signed-off-by: Ankit Baluni <b18007@students.iitmandi.ac.in>
 
-This can't work.
+---
+Changes in v2:
+	-Added more description about the patch.
+	-Added space before the symobol '<' in 'From'
+	 and 'Signed-off-by' line.
 
-Please make sure to compile your proposed changes
-_before_ you post them.
+ drivers/staging/media/atomisp/pci/atomisp_cmd.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+index 8ea65bef35d2..28b96b66f4f3 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+@@ -4981,9 +4981,8 @@ enum mipi_port_id __get_mipi_port(struct atomisp_device *isp,
+ 	case ATOMISP_CAMERA_PORT_SECONDARY:
+ 		return MIPI_PORT1_ID;
+ 	case ATOMISP_CAMERA_PORT_TERTIARY:
+-		if (MIPI_PORT1_ID + 1 != N_MIPI_PORT_ID) {
++		if (MIPI_PORT1_ID + 1 != N_MIPI_PORT_ID)
+ 			return MIPI_PORT1_ID + 1;
+-		}
+ 	/* fall through */
+ 	default:
+ 		dev_err(isp->dev, "unsupported port: %d\n", port);
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
