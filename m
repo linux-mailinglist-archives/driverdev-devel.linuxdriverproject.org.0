@@ -2,77 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A620B2314A8
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Jul 2020 23:33:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 907EC231519
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Jul 2020 23:46:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 94FEE8829E;
-	Tue, 28 Jul 2020 21:33:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A41B2874DA;
+	Tue, 28 Jul 2020 21:46:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w79xAWLghWsu; Tue, 28 Jul 2020 21:33:12 +0000 (UTC)
+	with ESMTP id 7KFlj-43xdbC; Tue, 28 Jul 2020 21:46:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5C49288223;
-	Tue, 28 Jul 2020 21:33:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C48E86A07;
+	Tue, 28 Jul 2020 21:46:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8522A1BF580
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 21:33:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 60A291BF580
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 21:46:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 779992000D
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 21:33:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5356D20451
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 21:46:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zwzMuB+KeBvi for <devel@linuxdriverproject.org>;
- Tue, 28 Jul 2020 21:33:07 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 0A4E920405
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 21:33:06 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id u185so11751853pfu.1
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 14:33:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=students-iitmandi-ac-in.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=CT1RfNS2wB94CWta2isV6Olvkifh5I0o1QRBEScvpF8=;
- b=kDVj7S2Jk3itKTp3Hp+e0PRGpwlzbWQsFRUUVwuq2RNjxrK0+7XeR2p6hxd7AFCWkC
- FpQZWCZZWbYSJwqQnSEhiHYDIrYX8YrFDFyEHuvUOUU91DTpaf6Rm0dGqfmZtakHDCrb
- UbvsQcS8CtG97v205FQUwrnRoGa72EBhVGP7kfh4HFAWPOteRcajuAI4boFsQTk0x341
- nX96LdH8NX/Nbag/1kI6ASSBGmjJB++gtl0j3xBNbVYpFIygaGDfhWg8C7pL03TIjza8
- YV+HaDxB4Z5AlZ/px/r6ikXCL33NSh/WRNG+rofv5uQo/mqEv2xP4cgmKwwvABzq+nHC
- c1bg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=CT1RfNS2wB94CWta2isV6Olvkifh5I0o1QRBEScvpF8=;
- b=aeo/eZzytE6nUp36CKS4eD8+BDLKBpM/BVNFyrefvJN/qOg/TFl5xgGMiZxmeH1Eip
- J8U58cRAtJrfJUPZSTUxBmXiY3HXGn7ePMFEHlO4eEiG/5JaM/mDW8R05XqeYbxtZERF
- b0sRchJtnFjCDxi8uu8Bzd5qkE6slKSYGsNcepjl6PvWYlgcOd+FS8W7rmoewY4US8M5
- gUhFQo3qFRMyxuEfRp87ThqtlpnDBoGLtlXfgPtlFGbNHVnnpFnCfoGbiVVN0B8mLCiw
- azu3qvhPDG+Ch+fWnjwbueYCNHzS0aGjCQcHPV7KJzuNkUt3uYHbY2WC2oF9Mb5BNpDM
- tR9g==
-X-Gm-Message-State: AOAM531mwKvEgk4NK8XYdqO1fF8CITfViygXCBzQK8NzEoWxohtcZH9A
- eGf9FmAJ1PsRXu2tkFetvtLgfA==
-X-Google-Smtp-Source: ABdhPJwLyHPfdyN7tFGpQLZ2/NJtjQ/xp87HFZ9wuujwjzEXtTn+a1CAnqJg/v5T7ofEdlh9wI8wiA==
-X-Received: by 2002:aa7:8d95:: with SMTP id i21mr24881049pfr.240.1595971986373; 
- Tue, 28 Jul 2020 14:33:06 -0700 (PDT)
-Received: from devil-VirtualBox.www.tendawifi.com ([103.198.174.215])
- by smtp.gmail.com with ESMTPSA id z11sm12152pfg.169.2020.07.28.14.32.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jul 2020 14:33:05 -0700 (PDT)
-From: Ankit Baluni <b18007@students.iitmandi.ac.in>
-To: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
- florian.c.schilhabel@googlemail.com, rohitsarkar5398@gmail.com,
- straube.linux@gmail.com, mukadr@gmail.com, pterjan@google.com
-Subject: [PATCH] Staging : rtl8712 : Fixed a coding sytle issue
-Date: Wed, 29 Jul 2020 03:02:31 +0530
-Message-Id: <20200728213231.26626-1-b18007@students.iitmandi.ac.in>
-X-Mailer: git-send-email 2.25.1
+ with ESMTP id vmQKFIxUQF2R for <devel@linuxdriverproject.org>;
+ Tue, 28 Jul 2020 21:46:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8A44120405
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 21:46:44 +0000 (UTC)
+IronPort-SDR: PPygzDcimtWmCq4/pRD5BSX27Fv4yOt4J23rHej2GwvCna1BGTzkDVmn4ZsroifGh2cRPO0YCU
+ is1aM+kswiSA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9696"; a="148779195"
+X-IronPort-AV: E=Sophos;i="5.75,407,1589266800"; d="scan'208";a="148779195"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Jul 2020 14:46:43 -0700
+IronPort-SDR: hfzvAC0NNCKt3IvGXtki0jo/sRKBM6/VuOfi9kZh1N6rnzfjibqWb6BNZDtMB9fbSBCbT0jqou
+ dvB70IiSk2xg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,407,1589266800"; d="scan'208";a="286302661"
+Received: from lkp-server01.sh.intel.com (HELO d27eb53fc52b) ([10.239.97.150])
+ by orsmga003.jf.intel.com with ESMTP; 28 Jul 2020 14:46:42 -0700
+Received: from kbuild by d27eb53fc52b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1k0XQn-00015N-Ka; Tue, 28 Jul 2020 21:46:41 +0000
+Date: Wed, 29 Jul 2020 05:45:44 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
+ e82507d326d05747a5fdea6065e99f5332b63ecd
+Message-ID: <5f209c88.FYajIn3yQp+F/b8+%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -86,40 +69,75 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Ankit Baluni <b18007@students.iitmandi.ac.in>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Removed braces for a 'if' condition as it contain only single line &
-there is no need for braces for such case according to coding style
-rules.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  debugfs_cleanup
+branch HEAD: e82507d326d05747a5fdea6065e99f5332b63ecd  debugfs: remove return value of debugfs_create_devm_seqfile()
 
-Signed-off-by: Ankit Baluni <b18007@students.iitmandi.ac.in>
+elapsed time: 1848m
+
+configs tested: 48
+configs skipped: 1
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
 ---
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index c6f6ccd060bb..df6ae855f3c1 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -238,9 +238,8 @@ static char *translate_scan(struct _adapter *padapter,
- 	/* parsing HT_CAP_IE */
- 	p = r8712_get_ie(&pnetwork->network.IEs[12], _HT_CAPABILITY_IE_,
- 			 &ht_ielen, pnetwork->network.IELength - 12);
--	if (p && ht_ielen > 0) {
-+	if (p && ht_ielen > 0)
- 		ht_cap = true;
--	}
- 	/* Add the protocol name */
- 	iwe.cmd = SIOCGIWNAME;
- 	if (r8712_is_cckratesonly_included(pnetwork->network.rates)) {
--- 
-2.25.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
