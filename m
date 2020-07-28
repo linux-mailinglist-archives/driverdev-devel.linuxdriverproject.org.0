@@ -2,57 +2,66 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1F91230CCD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Jul 2020 16:55:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 93C8D230CF3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Jul 2020 17:05:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A9ECE88073;
-	Tue, 28 Jul 2020 14:55:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CC0AB88055;
+	Tue, 28 Jul 2020 15:05:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sB5iXRTpY0+Y; Tue, 28 Jul 2020 14:55:02 +0000 (UTC)
+	with ESMTP id BgSYR-2OMEN6; Tue, 28 Jul 2020 15:05:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2EB7E8805C;
-	Tue, 28 Jul 2020 14:54:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 25AA287D71;
+	Tue, 28 Jul 2020 15:05:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 638871BF284
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 14:54:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2A90C1BF573
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 15:05:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6022A86A54
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 14:54:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 25E39869F4
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 15:05:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NzNUvulYWhYR for <devel@linuxdriverproject.org>;
- Tue, 28 Jul 2020 14:54:55 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id PGIMHBM3PhKx for <devel@linuxdriverproject.org>;
+ Tue, 28 Jul 2020 15:05:13 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 39F7B869F7
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 14:54:55 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 81602869E4
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 15:05:13 +0000 (UTC)
+Received: from mail-yb1-f174.google.com (mail-yb1-f174.google.com
+ [209.85.219.174])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 80642206D8;
- Tue, 28 Jul 2020 14:54:54 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3C45F22CB3
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 15:05:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595948095;
- bh=SVN9KwmFR1+HYXmkw6AaG1yThXM/tvbY75ekuEY1Jy4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=RDyWWBV7s9oUpIFrMXJUTwdJUs4PJrMio9jN2+XtavQl0ZAhxn8P4r7yhA1rKuTrW
- /Jxdnz6u0L2Wto87S7Tfn14d080ashAlWnkXtlKaE9O5N3EyD7EmKgszTJzzB736Em
- qPMtQOg7X+cf8GhtvqOyClGX1voJ+nWeuoDoqmRI=
-Date: Tue, 28 Jul 2020 16:54:47 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Dhiraj Sharma <dhiraj.sharma0024@gmail.com>
-Subject: Re: [PATCH] media: usbvision: fixed coding style
-Message-ID: <20200728145447.GB3537020@kroah.com>
-References: <20200728143004.3228-1-dhiraj.sharma0024@gmail.com>
+ s=default; t=1595948713;
+ bh=Kd8bN9GSVqE1wEKIElJMHffTgXE/l8rxxPq8mJwpeDc=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=cZ35l4imPETNfoE5SAGb6RI4G+j2qL/PGEF5B3hSK2uhOA9PtCfR+xbsDVzixo1A2
+ U1mWrKtnqnlRfjDgl7t0mtPTxggBuCYWqyzYUs26F3x7aNYdNe8/4jg/uEpfOnQw5/
+ zrPVm7uSz9hQXzOElm8GvRBKIkq0xJ4UsaYV83Oo=
+Received: by mail-yb1-f174.google.com with SMTP id q16so8582166ybk.6
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 08:05:13 -0700 (PDT)
+X-Gm-Message-State: AOAM533QOe55bu+Q6DQBKrnawNPAMJUR9UJ7uvFq66L6Adakc2vf9bQr
+ V3FTFh0j7qsjfriioz5JAwubf+PMsLgdOz8/9g==
+X-Google-Smtp-Source: ABdhPJzpT0pH6HVQkOv8owk366/uYwD6THy4gI9lAaDuq4nkmUj1h5EG+A9f/h2y+Y7mXLtporGnSUp4PvHzrT0otbo=
+X-Received: by 2002:a9d:4002:: with SMTP id m2mr24910491ote.129.1595948711211; 
+ Tue, 28 Jul 2020 08:05:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200728143004.3228-1-dhiraj.sharma0024@gmail.com>
+References: <20200724203407.16972-1-james.quinlan@broadcom.com>
+ <20200724203407.16972-9-james.quinlan@broadcom.com>
+In-Reply-To: <20200724203407.16972-9-james.quinlan@broadcom.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Tue, 28 Jul 2020 09:04:59 -0600
+X-Gmail-Original-Message-ID: <CAL_Jsq+9QE_uz+81O-Bm3xycSrJptx0xmwpPdP3x65KG00ugDQ@mail.gmail.com>
+Message-ID: <CAL_Jsq+9QE_uz+81O-Bm3xycSrJptx0xmwpPdP3x65KG00ugDQ@mail.gmail.com>
+Subject: Re: [PATCH v9 08/12] device core: Introduce DMA range map,
+ supplanting dma_pfn_offset
+To: Jim Quinlan <james.quinlan@broadcom.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,373 +74,169 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, arnd@arndb.de, linux-kernel@vger.kernel.org,
- hverkuil@xs4all.nl, stern@rowland.harvard.edu, jrdr.linux@gmail.com,
- linux-media@vger.kernel.org
+Cc: Rich Felker <dalias@libc.org>,
+ "open list:SUPERH" <linux-sh@vger.kernel.org>, David Airlie <airlied@linux.ie>,
+ PCI <linux-pci@vger.kernel.org>, Hanjun Guo <guohanjun@huawei.com>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Julien Grall <julien.grall@arm.com>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ "H. Peter Anvin" <hpa@zytor.com>, Will Deacon <will@kernel.org>,
+ Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ Russell King <linux@armlinux.org.uk>,
+ "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>,
+ "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
+ Ohad Ben-Cohen <ohad@wizery.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
+ <devicetree@vger.kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Arnd Bergmann <arnd@arndb.de>, Suzuki K Poulose <suzuki.poulose@arm.com>,
+ Maxime Ripard <mripard@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>,
+ Borislav Petkov <bp@alien8.de>,
+ "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
+ Yong Deng <yong.deng@magewell.com>, Santosh Shilimkar <ssantosh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
+ Saravana Kannan <saravanak@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Oliver Neukum <oneukum@suse.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ open list <linux-kernel@vger.kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
+ Stefano Stabellini <sstabellini@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
+ <linux-rpi-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Jul 28, 2020 at 08:00:04PM +0530, Dhiraj Sharma wrote:
-> As per eudyptula challenge task 10 I had to fix coding styles. Thus I
-> used checkpatch.pl script and fixed a chunk of warnings and few errors.
-> 
-> Signed-off-by: Dhiraj Sharma <dhiraj.sharma0024@gmail.com>
+On Fri, Jul 24, 2020 at 2:45 PM Jim Quinlan <james.quinlan@broadcom.com> wrote:
+>
+> The new field 'dma_range_map' in struct device is used to facilitate the
+> use of single or multiple offsets between mapping regions of cpu addrs and
+> dma addrs.  It subsumes the role of "dev->dma_pfn_offset" which was only
+> capable of holding a single uniform offset and had no region bounds
+> checking.
+>
+> The function of_dma_get_range() has been modified so that it takes a single
+> argument -- the device node -- and returns a map, NULL, or an error code.
+> The map is an array that holds the information regarding the DMA regions.
+> Each range entry contains the address offset, the cpu_start address, the
+> dma_start address, and the size of the region.
+>
+> of_dma_configure() is the typical manner to set range offsets but there are
+> a number of ad hoc assignments to "dev->dma_pfn_offset" in the kernel
+> driver code.  These cases now invoke the function
+> dma_attach_offset_range(dev, cpu_addr, dma_addr, size).
+>
+> Signed-off-by: Jim Quinlan <james.quinlan@broadcom.com>
 > ---
->  .../staging/media/usbvision/usbvision-video.c | 91 +++++++++++--------
->  1 file changed, 52 insertions(+), 39 deletions(-)
-> 
-> diff --git a/drivers/staging/media/usbvision/usbvision-video.c b/drivers/staging/media/usbvision/usbvision-video.c
-> index 3ea25fdcf767..8b68e99a2813 100644
-> --- a/drivers/staging/media/usbvision/usbvision-video.c
-> +++ b/drivers/staging/media/usbvision/usbvision-video.c
-> @@ -67,8 +67,8 @@
->  #ifdef USBVISION_DEBUG
->  	#define PDEBUG(level, fmt, args...) { \
->  		if (video_debug & (level)) \
-> -			printk(KERN_INFO KBUILD_MODNAME ":[%s:%d] " fmt, \
-> -				__func__, __LINE__ , ## args); \
-> +			pr_debug(KBUILD_MODNAME ":[%s:%d] " fmt, \
-> +				__func__, __LINE__, ## args); \
->  	}
->  #else
->  	#define PDEBUG(level, fmt, args...) do {} while (0)
-> @@ -79,8 +79,8 @@
->  #define DBG_MMAP	(1 << 3)
-> 
->  /* String operations */
-> -#define rmspace(str)	while (*str == ' ') str++;
-> -#define goto2next(str)	while (*str != ' ') str++; while (*str == ' ') str++;
-> +#define rmspace(str)	do { str++; } while (*str == ' ')
-> +#define goto2next(str)	do { str++; } while (*str != ' ' || *str == ' ')
-> 
-> 
->  /* sequential number of usbvision device */
-> @@ -145,27 +145,29 @@ MODULE_ALIAS(DRIVER_ALIAS);
->  static inline struct usb_usbvision *cd_to_usbvision(struct device *cd)
+
+[...]
+
+> diff --git a/drivers/of/address.c b/drivers/of/address.c
+> index 8eea3f6e29a4..4b718d199efe 100644
+> --- a/drivers/of/address.c
+> +++ b/drivers/of/address.c
+> @@ -918,33 +918,33 @@ void __iomem *of_io_request_and_map(struct device_node *np, int index,
+>  }
+>  EXPORT_SYMBOL(of_io_request_and_map);
+>
+> +#ifdef CONFIG_HAS_DMA
+>  /**
+> - * of_dma_get_range - Get DMA range info
+> + * of_dma_get_range - Get DMA range info and put it into a map array
+>   * @np:                device node to get DMA range info
+> - * @dma_addr:  pointer to store initial DMA address of DMA range
+> - * @paddr:     pointer to store initial CPU address of DMA range
+> - * @size:      pointer to store size of DMA range
+> + * @map:       dma range structure to return
+>   *
+>   * Look in bottom up direction for the first "dma-ranges" property
+> - * and parse it.
+> - *  dma-ranges format:
+> + * and parse it.  Put the information into a DMA offset map array.
+> + *
+> + * dma-ranges format:
+>   *     DMA addr (dma_addr)     : naddr cells
+>   *     CPU addr (phys_addr_t)  : pna cells
+>   *     size                    : nsize cells
+>   *
+> - * It returns -ENODEV if "dma-ranges" property was not found
+> - * for this device in DT.
+> + * It returns -ENODEV if "dma-ranges" property was not found for this
+> + * device in the DT.
+>   */
+> -int of_dma_get_range(struct device_node *np, u64 *dma_addr, u64 *paddr, u64 *size)
+> +int of_dma_get_range(struct device_node *np, const struct bus_dma_region **map)
 >  {
->  	struct video_device *vdev = to_video_device(cd);
+>         struct device_node *node = of_node_get(np);
+>         const __be32 *ranges = NULL;
+> -       int len;
+> -       int ret = 0;
+>         bool found_dma_ranges = false;
+>         struct of_range_parser parser;
+>         struct of_range range;
+> -       u64 dma_start = U64_MAX, dma_end = 0, dma_offset = 0;
+> +       struct bus_dma_region *r;
+> +       int len, num_ranges = 0;
+> +       int ret;
+>
+>         while (node) {
+>                 ranges = of_get_property(node, "dma-ranges", &len);
+> @@ -970,44 +970,35 @@ int of_dma_get_range(struct device_node *np, u64 *dma_addr, u64 *paddr, u64 *siz
+>         }
+>
+>         of_dma_range_parser_init(&parser, node);
+> +       for_each_of_range(&parser, &range)
+> +               num_ranges++;
 > +
->  	return video_get_drvdata(vdev);
->  }
-> 
-> -static ssize_t show_version(struct device *cd,
-> +static ssize_t version_show(struct device *cd,
->  			    struct device_attribute *attr, char *buf)
->  {
->  	return sprintf(buf, "%s\n", USBVISION_VERSION_STRING);
->  }
-> -static DEVICE_ATTR(version, S_IRUGO, show_version, NULL);
-> +static DEVICE_ATTR_RO(version, 0444, version_show, NULL);
-> 
-> -static ssize_t show_model(struct device *cd,
-> +static ssize_t model_show(struct device *cd,
->  			  struct device_attribute *attr, char *buf)
->  {
->  	struct video_device *vdev = to_video_device(cd);
->  	struct usb_usbvision *usbvision = video_get_drvdata(vdev);
+> +       of_dma_range_parser_init(&parser, node);
 > +
->  	return sprintf(buf, "%s\n",
->  		       usbvision_device_data[usbvision->dev_model].model_string);
->  }
-> -static DEVICE_ATTR(model, S_IRUGO, show_model, NULL);
-> +static DEVICE_ATTR_RO(model, 0444, model_show, NULL);
-> 
-> -static ssize_t show_hue(struct device *cd,
-> +static ssize_t hue_show(struct device *cd,
->  			struct device_attribute *attr, char *buf)
->  {
->  	struct video_device *vdev = to_video_device(cd);
-> @@ -175,9 +177,9 @@ static ssize_t show_hue(struct device *cd,
-> 
->  	return sprintf(buf, "%d\n", val);
->  }
-> -static DEVICE_ATTR(hue, S_IRUGO, show_hue, NULL);
-> +static DEVICE_ATTR_RO(hue, 0444, hue_show, NULL);
-> 
-> -static ssize_t show_contrast(struct device *cd,
-> +static ssize_t contrast_show(struct device *cd,
->  			     struct device_attribute *attr, char *buf)
->  {
->  	struct video_device *vdev = to_video_device(cd);
-> @@ -187,9 +189,9 @@ static ssize_t show_contrast(struct device *cd,
-> 
->  	return sprintf(buf, "%d\n", val);
->  }
-> -static DEVICE_ATTR(contrast, S_IRUGO, show_contrast, NULL);
-> +static DEVICE_ATTR_RO(contrast, 0444, contrast_show, NULL);
-> 
-> -static ssize_t show_brightness(struct device *cd,
-> +static ssize_t brightness_show(struct device *cd,
->  			       struct device_attribute *attr, char *buf)
->  {
->  	struct video_device *vdev = to_video_device(cd);
-> @@ -199,9 +201,9 @@ static ssize_t show_brightness(struct device *cd,
-> 
->  	return sprintf(buf, "%d\n", val);
->  }
-> -static DEVICE_ATTR(brightness, S_IRUGO, show_brightness, NULL);
-> +static DEVICE_ATTR_RO(brightness, 0444, brightness_show, NULL);
-> 
-> -static ssize_t show_saturation(struct device *cd,
-> +static ssize_t saturation_show(struct device *cd,
->  			       struct device_attribute *attr, char *buf)
->  {
->  	struct video_device *vdev = to_video_device(cd);
-> @@ -211,36 +213,39 @@ static ssize_t show_saturation(struct device *cd,
-> 
->  	return sprintf(buf, "%d\n", val);
->  }
-> -static DEVICE_ATTR(saturation, S_IRUGO, show_saturation, NULL);
-> +static DEVICE_ATTR_RO(saturation, 0444, saturation_show, NULL);
-> 
-> -static ssize_t show_streaming(struct device *cd,
-> +static ssize_t streaming_show(struct device *cd,
->  			      struct device_attribute *attr, char *buf)
->  {
->  	struct video_device *vdev = to_video_device(cd);
->  	struct usb_usbvision *usbvision = video_get_drvdata(vdev);
-> +
->  	return sprintf(buf, "%s\n",
->  		       YES_NO(usbvision->streaming == stream_on ? 1 : 0));
->  }
-> -static DEVICE_ATTR(streaming, S_IRUGO, show_streaming, NULL);
-> +static DEVICE_ATTR_RO(streaming, 0444, streaming_show, NULL);
-> 
-> -static ssize_t show_compression(struct device *cd,
-> +static ssize_t compression_show(struct device *cd,
->  				struct device_attribute *attr, char *buf)
->  {
->  	struct video_device *vdev = to_video_device(cd);
->  	struct usb_usbvision *usbvision = video_get_drvdata(vdev);
-> +
->  	return sprintf(buf, "%s\n",
->  		       YES_NO(usbvision->isoc_mode == ISOC_MODE_COMPRESS));
->  }
-> -static DEVICE_ATTR(compression, S_IRUGO, show_compression, NULL);
-> +static DEVICE_ATTR_RO(compression, 0444, compression_show, NULL);
-> 
->  static ssize_t show_device_bridge(struct device *cd,
->  				  struct device_attribute *attr, char *buf)
->  {
->  	struct video_device *vdev = to_video_device(cd);
->  	struct usb_usbvision *usbvision = video_get_drvdata(vdev);
-> +
->  	return sprintf(buf, "%d\n", usbvision->bridge_type);
->  }
-> -static DEVICE_ATTR(bridge, S_IRUGO, show_device_bridge, NULL);
-> +static DEVICE_ATTR_RO(bridge, 0444, show_device_bridge, NULL);
-> 
->  static void usbvision_create_sysfs(struct video_device *vdev)
->  {
-> @@ -329,7 +334,8 @@ static int usbvision_v4l2_open(struct file *file)
->  		err_code = usbvision_scratch_alloc(usbvision);
->  		if (isoc_mode == ISOC_MODE_COMPRESS) {
->  			/* Allocate intermediate decompression buffers
-> -			   only if needed */
-> +			 * only if needed
-> +			 */
->  			err_code = usbvision_decompress_alloc(usbvision);
->  		}
->  		if (err_code) {
-> @@ -344,6 +350,7 @@ static int usbvision_v4l2_open(struct file *file)
->  		/* Send init sequence only once, it's large! */
->  		if (!usbvision->initialized) {
->  			int setup_ok = 0;
-> +
->  			setup_ok = usbvision_setup(usbvision, isoc_mode);
->  			if (setup_ok)
->  				usbvision->initialized = 1;
-> @@ -400,7 +407,7 @@ static int usbvision_v4l2_close(struct file *file)
->  	mutex_unlock(&usbvision->v4l2_lock);
-> 
->  	if (r) {
-> -		printk(KERN_INFO "%s: Final disconnect\n", __func__);
-> +		pr_debug("%s: Final disconnect\n", __func__);
->  		usbvision_release(usbvision);
->  		return 0;
->  	}
-> @@ -490,7 +497,8 @@ static int vidioc_enum_input(struct file *file, void *priv,
->  		chan = vi->index + 1; /* skip Television string*/
-> 
->  	/* Determine the requested input characteristics
-> -	   specific for each usbvision card model */
-> +	 * specific for each usbvision card model
-> +	 */
->  	switch (chan) {
->  	case 0:
->  		if (usbvision_device_data[usbvision->dev_model].video_channels == 4) {
-> @@ -649,7 +657,8 @@ static int vidioc_reqbufs(struct file *file,
->  	RESTRICT_TO_RANGE(vr->count, 1, USBVISION_NUMFRAMES);
-> 
->  	/* Check input validity:
-> -	   the user must do a VIDEO CAPTURE and MMAP method. */
-> +	 * the user must do a VIDEO CAPTURE and MMAP method.
-> +	 */
->  	if (vr->memory != V4L2_MEMORY_MMAP)
->  		return -EINVAL;
-> 
-> @@ -675,7 +684,8 @@ static int vidioc_querybuf(struct file *file,
->  	struct usbvision_frame *frame;
-> 
->  	/* FIXME : must control
-> -	   that buffers are mapped (VIDIOC_REQBUFS has been called) */
-> +	 * that buffers are mapped (VIDIOC_REQBUFS has been called)
-> +	 */
->  	if (vb->index >= usbvision->num_frames)
->  		return -EINVAL;
->  	/* Updating the corresponding frame state */
-> @@ -813,6 +823,7 @@ static int vidioc_g_fmt_vid_cap(struct file *file, void *priv,
->  					struct v4l2_format *vf)
->  {
->  	struct usb_usbvision *usbvision = video_drvdata(file);
-> +
->  	vf->fmt.pix.width = usbvision->curwidth;
->  	vf->fmt.pix.height = usbvision->curheight;
->  	vf->fmt.pix.pixelformat = usbvision->palette.format;
-> @@ -897,24 +908,27 @@ static ssize_t usbvision_read(struct file *file, char __user *buf,
->  		return -EFAULT;
-> 
->  	/* This entry point is compatible with the mmap routines
-> -	   so that a user can do either VIDIOC_QBUF/VIDIOC_DQBUF
-> -	   to get frames or call read on the device. */
-> +	 * so that a user can do either VIDIOC_QBUF/VIDIOC_DQBUF
-> +	 * to get frames or call read on the device.
-> +	 */
->  	if (!usbvision->num_frames) {
->  		/* First, allocate some frames to work with
-> -		   if this has not been done with VIDIOC_REQBUF */
-> +		 * if this has not been done with VIDIOC_REQBUF
-> +		 */
->  		usbvision_frames_free(usbvision);
->  		usbvision_empty_framequeues(usbvision);
->  		usbvision_frames_alloc(usbvision, USBVISION_NUMFRAMES);
->  	}
-> 
->  	if (usbvision->streaming != stream_on) {
-> -		/* no stream is running, make it running ! */
-> +		// no stream is running, make it running !
->  		usbvision->streaming = stream_on;
->  		call_all(usbvision, video, s_stream, 1);
->  	}
-> 
->  	/* Then, enqueue as many frames as possible
-> -	   (like a user of VIDIOC_QBUF would do) */
-> +	 * (like a user of VIDIOC_QBUF would do)
-> +	 */
->  	for (i = 0; i < usbvision->num_frames; i++) {
->  		frame = &usbvision->frame[i];
->  		if (frame->grabstate == frame_state_unused) {
-> @@ -1125,7 +1139,7 @@ static int usbvision_radio_close(struct file *file)
->  	mutex_unlock(&usbvision->v4l2_lock);
-> 
->  	if (r) {
-> -		printk(KERN_INFO "%s: Final disconnect\n", __func__);
-> +		pr_debug("%s: Final disconnect\n", __func__);
->  		v4l2_fh_release(file);
->  		usbvision_release(usbvision);
->  		return 0;
-> @@ -1273,7 +1287,7 @@ static int usbvision_register_video(struct usb_usbvision *usbvision)
-> 
->  	if (video_register_device(&usbvision->vdev, VFL_TYPE_VIDEO, video_nr) < 0)
->  		goto err_exit;
-> -	printk(KERN_INFO "USBVision[%d]: registered USBVision Video device %s [v4l2]\n",
-> +	pr_debug("USBVision[%d]: registered USBVision Video device %s [v4l2]\n",
->  	       usbvision->nr, video_device_node_name(&usbvision->vdev));
-> 
->  	/* Radio Device: */
-> @@ -1284,7 +1298,7 @@ static int usbvision_register_video(struct usb_usbvision *usbvision)
->  		usbvision->rdev.device_caps = V4L2_CAP_RADIO | V4L2_CAP_TUNER;
->  		if (video_register_device(&usbvision->rdev, VFL_TYPE_RADIO, radio_nr) < 0)
->  			goto err_exit;
-> -		printk(KERN_INFO "USBVision[%d]: registered USBVision Radio device %s [v4l2]\n",
-> +		pr_debug("USBVision[%d]: registered USBVision Radio device %s [v4l2]\n",
->  		       usbvision->nr, video_device_node_name(&usbvision->rdev));
->  	}
->  	/* all done */
-> @@ -1429,7 +1443,7 @@ static int usbvision_probe(struct usb_interface *intf,
->  		ret = -ENODEV;
->  		goto err_usb;
->  	}
-> -	printk(KERN_INFO "%s: %s found\n", __func__,
-> +	pr_debug("%s: %s found\n", __func__,
->  				usbvision_device_data[model].model_string);
-> 
->  	if (usbvision_device_data[model].interface >= 0)
-> @@ -1501,8 +1515,7 @@ static int usbvision_probe(struct usb_interface *intf,
->  			goto err_pkt;
->  		}
-> 
-> -		tmp = le16_to_cpu(uif->altsetting[i].endpoint[1].desc.
-> -				      wMaxPacketSize);
-> +		tmp = le16_to_cpu(uif->altsetting[i].endpoint[1].desc.wMaxPacketSize);
->  		usbvision->alt_max_pkt_size[i] =
->  			(tmp & 0x07ff) * (((tmp & 0x1800) >> 11) + 1);
->  		PDEBUG(DBG_PROBE, "Alternate setting %i, max size= %i", i,
-> @@ -1581,7 +1594,7 @@ static void usbvision_disconnect(struct usb_interface *intf)
->  	mutex_unlock(&usbvision->v4l2_lock);
-> 
->  	if (u) {
-> -		printk(KERN_INFO "%s: In use, disconnect pending\n",
-> +		pr_debug("%s: In use, disconnect pending\n",
->  		       __func__);
->  		wake_up_interruptible(&usbvision->wait_frame);
->  		wake_up_interruptible(&usbvision->wait_stream);
-> @@ -1625,7 +1638,7 @@ static int __init usbvision_init(void)
->  	err_code = usb_register(&usbvision_driver);
-> 
->  	if (err_code == 0) {
-> -		printk(KERN_INFO DRIVER_DESC " : " USBVISION_VERSION_STRING "\n");
-> +		pr_debug(DRIVER_DESC " : " USBVISION_VERSION_STRING "\n");
->  		PDEBUG(DBG_PROBE, "success");
->  	}
->  	return err_code;
-> --
-> 2.17.1
+> +       ret = -ENOMEM;
+> +       r = kcalloc(num_ranges + 1, sizeof(*r), GFP_KERNEL);
+> +       if (!r)
+> +               goto out;
 
+AFAICT, you have the error cases covered, but you are leaking memory
+if the device is removed.
 
-Hi,
+[...]
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+> diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
+> index 9f04c30c4aaf..49242dd6176e 100644
+> --- a/drivers/remoteproc/remoteproc_core.c
+> +++ b/drivers/remoteproc/remoteproc_core.c
+> @@ -519,7 +519,7 @@ static int rproc_handle_vdev(struct rproc *rproc, struct fw_rsc_vdev *rsc,
+>         /* Initialise vdev subdevice */
+>         snprintf(name, sizeof(name), "vdev%dbuffer", rvdev->index);
+>         rvdev->dev.parent = &rproc->dev;
+> -       rvdev->dev.dma_pfn_offset = rproc->dev.parent->dma_pfn_offset;
+> +       rvdev->dev.dma_range_map = rproc->dev.parent->dma_range_map;
 
-You are receiving this message because of the following common error(s)
-as indicated below:
+But doing this means you can't just free the dma_range_map. You need
+to do a copy here or you'd have to refcount it. Or I suppose you could
+check if it the child has a different dma_range_map ptr than the
+parent.
 
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
-
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
+Rob
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
