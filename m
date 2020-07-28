@@ -1,62 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 907EC231519
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Jul 2020 23:46:50 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D51CA231573
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 00:18:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A41B2874DA;
-	Tue, 28 Jul 2020 21:46:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D11B5884DB;
+	Tue, 28 Jul 2020 22:17:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7KFlj-43xdbC; Tue, 28 Jul 2020 21:46:48 +0000 (UTC)
+	with ESMTP id Mtwx-OnCZYCH; Tue, 28 Jul 2020 22:17:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3C48E86A07;
-	Tue, 28 Jul 2020 21:46:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2F3CA8817D;
+	Tue, 28 Jul 2020 22:17:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 60A291BF580
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 21:46:45 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CEED41BF5AA
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 22:17:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5356D20451
- for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 21:46:45 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C708388398
+ for <devel@linuxdriverproject.org>; Tue, 28 Jul 2020 22:17:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+X-Amavis-Alert: BAD HEADER SECTION, Improper folded header field made up
+ entirely of whitespace (char 20 hex): X-SA-Report: ...T_ADDRESS@@ for
+ details.\n \n Content previ[...]
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vmQKFIxUQF2R for <devel@linuxdriverproject.org>;
- Tue, 28 Jul 2020 21:46:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by silver.osuosl.org (Postfix) with ESMTPS id 8A44120405
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 21:46:44 +0000 (UTC)
-IronPort-SDR: PPygzDcimtWmCq4/pRD5BSX27Fv4yOt4J23rHej2GwvCna1BGTzkDVmn4ZsroifGh2cRPO0YCU
- is1aM+kswiSA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9696"; a="148779195"
-X-IronPort-AV: E=Sophos;i="5.75,407,1589266800"; d="scan'208";a="148779195"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jul 2020 14:46:43 -0700
-IronPort-SDR: hfzvAC0NNCKt3IvGXtki0jo/sRKBM6/VuOfi9kZh1N6rnzfjibqWb6BNZDtMB9fbSBCbT0jqou
- dvB70IiSk2xg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,407,1589266800"; d="scan'208";a="286302661"
-Received: from lkp-server01.sh.intel.com (HELO d27eb53fc52b) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 28 Jul 2020 14:46:42 -0700
-Received: from kbuild by d27eb53fc52b with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1k0XQn-00015N-Ka; Tue, 28 Jul 2020 21:46:41 +0000
-Date: Wed, 29 Jul 2020 05:45:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- e82507d326d05747a5fdea6065e99f5332b63ecd
-Message-ID: <5f209c88.FYajIn3yQp+F/b8+%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id jk2Tv9XJK8aD for <devel@linuxdriverproject.org>;
+ Tue, 28 Jul 2020 22:17:55 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from dec.fca.unam.mx (dec.fca.unam.mx [132.248.164.63])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8D00F8817D
+ for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 22:17:55 +0000 (UTC)
+Received: from [20.194.2.11] (helo=User)
+ by dec.fca.unam.mx with esmtpa (Exim 4.92)
+ (envelope-from <lgraves@uniserve.com>)
+ id 1k0XtT-0008DL-KY; Tue, 28 Jul 2020 17:16:20 -0500
+From: "R. E. Al-Hashimi"<lgraves@uniserve.com>
+Subject: Information...
+Date: Tue, 28 Jul 2020 22:16:19 -0000
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <E1k0XtT-0008DL-KY@dec.fca.unam.mx>
+X-SA-Score: 14.5
+X-SA-Report: Spam detection software,
+ running on the system "dec.dec.fca.unam.mx", 
+ has identified this incoming email as possible spam.  The original
+ message has been attached to this so you can view it or label
+ similar future email.  If you have any questions, see
+ @@CONTACT_ADDRESS@@ for details. 
+ Content preview:  My name is Reem E. Al-Hashimi, the Emirates Minister of State
+ and Managing Director of the United Arab Emirates (Dubai) World Expo 2020
+ Committee. I am writing to you to stand as my partner to receive [...]  
+ Content analysis details:   (14.5 points, 5.0 required) 
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -1.0 ALL_TRUSTED            Passed through trusted hosts only via SMTP
+ 0.0 FSL_CTYPE_WIN1251      Content-Type only seen in 419 spam
+ 0.0 NSL_RCVD_HELO_USER     Received from HELO User
+ 1.2 MISSING_HEADERS        Missing To: header
+ 0.0 AXB_XMAILER_MIMEOLE_OL_024C2 Yet another X header trait
+ 0.0 FROM_MISSP_MSFT        From misspaced + supposed Microsoft tool
+ 3.4 MSOE_MID_WRONG_CASE    No description available.
+ 0.0 FROM_MISSP_XPRIO       Misspaced FROM + X-Priority
+ 1.9 REPLYTO_WITHOUT_TO_CC  No description available.
+ 0.0 FSL_NEW_HELO_USER      Spam's using Helo and User
+ 0.0 LOTS_OF_MONEY          Huge... sums of money
+ 2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
+ 0.0 MONEY_FROM_MISSP       Lots of money and misspaced From
+ 1.0 FREEMAIL_REPLYTO       Reply-To/From or Reply-To/body contain
+ different freemails
+ 0.0 TO_NO_BRKTS_FROM_MSSP  Multiple header formatting problems
+ 2.8 FORGED_MUA_OUTLOOK     Forged mail pretending to be from MS Outlook
+ 0.0 FROM_MISSP_EH_MATCH    From misspaced, matches envelope
+ 0.0 FROM_MISSP_FREEMAIL    From misspaced + freemail provider
+ 2.7 ADVANCE_FEE_3_NEW_MONEY Advance Fee fraud and lots of money
+X-SA-Status: Yes
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,75 +93,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: reemalhashimi@daum.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git  debugfs_cleanup
-branch HEAD: e82507d326d05747a5fdea6065e99f5332b63ecd  debugfs: remove return value of debugfs_create_devm_seqfile()
+My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus Symptoms and Causes.
 
-elapsed time: 1848m
+Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
 
-configs tested: 48
-configs skipped: 1
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+If you can handle the fund in a good investment. reply on this email only: alreemhas109@daum.net     
 
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Regards,
+Ms. Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
