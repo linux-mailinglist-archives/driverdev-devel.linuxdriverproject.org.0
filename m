@@ -1,78 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 815212316CC
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 02:33:38 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF09F2316E9
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 02:47:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C6A08854DF;
-	Wed, 29 Jul 2020 00:33:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5F851883FF;
+	Wed, 29 Jul 2020 00:47:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qa2FZi_zAXcu; Wed, 29 Jul 2020 00:33:36 +0000 (UTC)
+	with ESMTP id hlnj5Qm+F1Dh; Wed, 29 Jul 2020 00:47:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 91EF584C9F;
-	Wed, 29 Jul 2020 00:33:35 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4F3858836C;
+	Wed, 29 Jul 2020 00:47:17 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C20801BF9AF
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 00:33:33 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9FBD91BF9AF
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 00:47:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BB7BD876B8
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 00:33:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6F8012044A
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 00:44:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S4+38Q2dHwJq for <devel@linuxdriverproject.org>;
- Wed, 29 Jul 2020 00:33:30 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E589C86856
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 00:33:30 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id z188so4157198pfc.6
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 17:33:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=students-iitmandi-ac-in.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wlCxbIrWBhhWRU9uwjI+LO77lVNGAasnY8h/ahIaD9U=;
- b=dJe4buGtemAcApCKi0Z1BaIlZ8D4Di04AbjMQWiP+FlKXJmx14l6BqgxNk8o8J9mdM
- khwpQYdQorW7M8cQ1oxH9EidTa4qcoc1K66oMgA3VzXLX369I8TlCiS6MAgH0aD82xbh
- kie1RaKZn9mEoXu99rgOTjtn5uZ7l/xdYbIReqsL9+U+ncXF9A95JWL4+FEekNU6PZ/U
- wGrQzB5wgvBCJLR2oGUvHg5aK+1Q0+g+SFcoU/KRx8cGyGabq/EnXPRsd5W/kWpVSIc3
- pcfeDRVkh2Oemmtr+XCFU5ZDtTBKJPD1nkG8H/f1eULHaSRmjlW/0zIMGAuxoZLdPSvp
- uoUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wlCxbIrWBhhWRU9uwjI+LO77lVNGAasnY8h/ahIaD9U=;
- b=mbjzueVEYMWOAHRSujvSIxeSzqy/S+ffIRQqTzj4ILlzVFBbvIvTq8+Qjcu61eOmUh
- JMdcFqexQ3xwKSiPT11kqqBlvxlgYNvs6i9KZqGbDtMfLn0J+3EcP+2bmtt0kbgoaOUj
- TIGY85BIB8+ktubCPi39hOAljPlm37sMgog8anWKQe8Twf68pRnqBuO42IjG3rtjJ614
- Lfi4RdKzZPwRp1dr8hZefDxusQpMc2ZlObcMP3wthnXWuYuaAp330b7BfGhBPLVGNBk5
- 58MHxIzFCjY6L+Y3kEbRlThtgV1UYabVy7mEZSzcb2KV0SmVhxFNudHGAqcOgvlLEguP
- +PcQ==
-X-Gm-Message-State: AOAM530sCPo4d8z8VGNhGQnpToWO8ksZWQ24DGya2eFSGYTNXwJaY38A
- kz+4YC2aFcLJxjza+lQjiAWUXA==
-X-Google-Smtp-Source: ABdhPJw1MOImB0wnsOR3dpdVzysFulP6PJlBib1doSUT8k7yf9HKXGLyoLMtZWz0HzeqDF7r06QEkA==
-X-Received: by 2002:a62:d417:: with SMTP id a23mr28011275pfh.56.1595982810378; 
- Tue, 28 Jul 2020 17:33:30 -0700 (PDT)
-Received: from devil-VirtualBox.www.tendawifi.com ([103.198.174.215])
- by smtp.gmail.com with ESMTPSA id m17sm202547pfo.182.2020.07.28.17.33.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jul 2020 17:33:29 -0700 (PDT)
-From: Ankit Baluni <b18007@students.iitmandi.ac.in>
-To: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net,
- gregkh@linuxfoundation.org
-Subject: [PATCH] Staging : iio : Fixed a punctuation and a spelling mistake.
-Date: Wed, 29 Jul 2020 06:02:43 +0530
-Message-Id: <20200729003243.32097-1-b18007@students.iitmandi.ac.in>
-X-Mailer: git-send-email 2.25.1
+ with ESMTP id X17nIgnHpEQV for <devel@linuxdriverproject.org>;
+ Wed, 29 Jul 2020 00:44:39 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
+ [213.167.242.64])
+ by silver.osuosl.org (Postfix) with ESMTPS id 600A3203E9
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 00:44:39 +0000 (UTC)
+Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
+ [81.175.216.236])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id EF24C563;
+ Wed, 29 Jul 2020 02:44:35 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1595983476;
+ bh=SXwJUww4PLDsTPPWs4BTBzqNum9zhqM0IspNl9R9qwI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=gYhN/FaqLk8fIj6ntQF/E3ZmkdVD6j+mbXx3ZTuYi/Y6Nqirs/CQTAHAF83+yQA4c
+ kuC+/2f9PE2bhrsBA55C8JCbVsGDyt9KUWNwVl4IU3Hb3sMSzR5gGjcTJT+P2NHygk
+ ZVjTrepYNJpL/KxMCZq3mywVeCqrYmN9Y+5m232w=
+Date: Wed, 29 Jul 2020 03:44:26 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Martin Kepplinger <martin.kepplinger@puri.sm>
+Subject: Re: nxp imx8m CSI drivers
+Message-ID: <20200729004426.GA4633@pendragon.ideasonboard.com>
+References: <cbfdb81f-9a09-2ad1-4b51-54e10f678358@puri.sm>
+ <f4958d19-cc4f-8206-2dc7-e0b084c8970d@puri.sm>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <f4958d19-cc4f-8206-2dc7-e0b084c8970d@puri.sm>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,45 +65,104 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, Ankit Baluni <b18007@students.iitmandi.ac.in>
+Cc: devel@driverdev.osuosl.org, p.zabel@pengutronix.de,
+ "kernel@puri.sm" <kernel@puri.sm>, NXP Linux Team <linux-imx@nxp.com>,
+ Pavel Machek <pavel@ucw.cz>, slongerbeam@gmail.com,
+ "mchehab@kernel.org" <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Added a missing comma and changed 'it it useful' to 'it is useful'.
+Hi Martin,
 
-Signed-off-by: Ankit Baluni <b18007@students.iitmandi.ac.in>
----
- drivers/staging/iio/Documentation/overview.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Tue, Jul 28, 2020 at 12:36:58PM +0200, Martin Kepplinger wrote:
+> On 09.07.20 11:32, Martin Kepplinger wrote:
+> > hi linux-media people,
+> > 
+> > TL-DR: when exactly is "sd->entity.function == MEDIA_ENT_F_VID_MUX"?
+> > 
+> > 
+> > I try to use the camera on our librem5-devkit (imx8mq): I try to use
+> > only mainline drivers except for "mxc-mipi-csi2_yav" taken from
+> > linux-imx (which we can prepare to submit if a PoC works. This is the
+> > tree I'm experimenting with:
+> > 
+> > https://source.puri.sm/martin.kepplinger/linux-next/-/commits/5.8-rc4/librem5___csi
+> > 
+> > * "imx7-media-csi" / imx-media-capture / imx-media-utils currently in
+> > staging (that should work according to NXP)
+> > * ov5640 mainline driver
+> > * mxc-mipi-csi2_yav from NXP tree (linux-imx) with
+> > v4l2_subdev_video_ops' mipi_csis_g_parm and mipi_csis_s_parm callbacks
+> > removed (due to missing API in mainline)
+> > 
+> > the drivers probe and run but the following fails when trying to use the
+> > camera (gstreamer):
+> > 
+> > in imx-media-utils' imx_media_pipeline_set_stream() the call to
+> > v4l2_subdev_call(sd, video, s_stream, 1) returns with 32 (broken pipe)
+> > and thus the application that tries to use the camera too.
+> > 
+> > One problem is definitely the trees' last commit (that I did as a
+> > workaround) in this tree that makes the drivers probe but only by
+> > ignoring this probably needed check:
+> > 
+> > imx7-media-csi's imx7_csi_notify_bound() callback implementation gets
+> > called during startup. But if (WARN_ON(sd->entity.function !=
+> > MEDIA_ENT_F_VID_MUX)) is true so this is the wrong type of subdev (?).
+> > 
+> > I just want to put this out there and check if the general approach is
+> > valid at all and if there's anything that comes to your mind.
+> 
+> (added Pavel Machek)
+> 
+> still I'm only on the librem5 Devkit: the situation regarding a tree
+> that should use the imx7-media-csi csi_bridge driver hasn't changed, see
+> above for the details. The tree I tried now is this one:
+> 
+> https://source.puri.sm/martin.kepplinger/linux-next/-/commits/5.8-rc7/librem5___csi_ml1
+> 
+> A tree that includes NXP's csi_bridge and mipi-csi drivers (and camera
+> driver) on the other hand works, and I have one based on v5.8-rcX too:
+> 
+> https://source.puri.sm/martin.kepplinger/linux-next/-/commits/5.8-rc7/librem5___csi_nxp
+> 
+> Since I want to look into a different camera driver, I might use that
+> nxp-drivers tree to work on that, but our goal is obviously to use what
+> is already in staging and should work (the csi bridge driver at least).
+> In case you know more about the v4l2 details that don't match over
+> there, please have a look.
 
-diff --git a/drivers/staging/iio/Documentation/overview.txt b/drivers/staging/iio/Documentation/overview.txt
-index ebdc64f451d7..00409d5dab4e 100644
---- a/drivers/staging/iio/Documentation/overview.txt
-+++ b/drivers/staging/iio/Documentation/overview.txt
-@@ -9,7 +9,7 @@ The aim is to fill the gap between the somewhat similar hwmon and
- input subsystems.  Hwmon is very much directed at low sample rate
- sensors used in applications such as fan speed control and temperature
- measurement.  Input is, as its name suggests focused on input
--devices. In some cases there is considerable overlap between these and
-+devices. In some cases, there is considerable overlap between these and
- IIO.
- 
- A typical device falling into this category would be connected via SPI
-@@ -38,7 +38,7 @@ series and Analog Devices ADXL345 accelerometers.  Each buffer supports
- polling to establish when data is available.
- 
- * Trigger and software buffer support. In many data analysis
--applications it it useful to be able to capture data based on some
-+applications it is useful to be able to capture data based on some
- external signal (trigger).  These triggers might be a data ready
- signal, a gpio line connected to some external system or an on
- processor periodic interrupt.  A single trigger may initialize data
+For what it's worth, I'm debugging a complete system memory corruption
+with the imx staging camera driver on an i.MX7D, on v5.8-rc6. The issue
+didn't occur on v5.7. I however have a fairly large number of custom
+patches that I'm in the process of upstreaming on top of mainline for
+that driver, so I can't tell yet whether the problem is in my code or in
+v5.8-rc6.
+
+I haven't been able to use the staging driver as-is, neither on v5.7 nor
+on v5.8-rc6, with the camera sensor I'm working with (a Sony IMX296). I
+also get an EPIPE (32) error. Seems there's a reason why this driver is
+in staging :-) This however makes debugging more difficult as I can't
+test v5.8-rc6 without my custom changes.
+
+As for MEDIA_ENT_F_VID_MUX, the check is about verifying that the device
+connected directly to the input of the CSI (*not* MIPI CSI2) is the
+video mux that selects between the MIPI CSI2 receiver and the parallel
+sensor input. On i.MX7D, this models the "CSI Input MUX Control" bit in
+register IOMUXC_GPR_GPR5. On i.MX8M, there seems to be no such mux, as
+there seems to be no parallel sensor input. It should thus be safe to
+drop the check, but other adjustements to the routing and pipeline
+configuration logic in the driver will likely be needed.
+
 -- 
-2.25.1
+Regards,
 
+Laurent Pinchart
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
