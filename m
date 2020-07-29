@@ -1,78 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2A4123254A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 21:21:59 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C3E123254E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 21:22:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6356F87820;
-	Wed, 29 Jul 2020 19:21:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E75A585118;
+	Wed, 29 Jul 2020 19:22:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z8lA12H-p-Ge; Wed, 29 Jul 2020 19:21:58 +0000 (UTC)
+	with ESMTP id kWyKiFrjG8fq; Wed, 29 Jul 2020 19:22:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C362787762;
-	Wed, 29 Jul 2020 19:21:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ABD4B85025;
+	Wed, 29 Jul 2020 19:22:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4AEAB1BF328
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 19:21:56 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 500191BF328
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 19:22:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4481787762
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 19:21:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2992D24804
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 19:22:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Vo7fBsVGSMax for <devel@linuxdriverproject.org>;
- Wed, 29 Jul 2020 19:21:55 +0000 (UTC)
+ with ESMTP id 8sVIF7tcWS9i for <devel@linuxdriverproject.org>;
+ Wed, 29 Jul 2020 19:22:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 685EE876F4
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 19:21:55 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id b9so12306735plx.6
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 12:21:55 -0700 (PDT)
+Received: from mail-pj1-f47.google.com (mail-pj1-f47.google.com
+ [209.85.216.47])
+ by silver.osuosl.org (Postfix) with ESMTPS id 130D220497
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 19:22:03 +0000 (UTC)
+Received: by mail-pj1-f47.google.com with SMTP id mt12so2402789pjb.4
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 12:22:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=CyZyqFI+XAr4XPDXxXl/eruhWi9Hm+rYqmX4iZ+USns=;
- b=FRfOzvLbV/mf5lnlVREPCAuLLWN993iqbGhRBftPZBoNeFAkU2XbZjCgBKw0nkU6Lb
- fNIBcg/B4NcVq35Qk2vIizFFcHDK3E8/iIYDnNN9p9SdWsZZfcCuGO7da1L2SOBEr8wt
- /WcLELl09txi5pqBKeyodMdyHCeZcF3z0LXAax46+ypLjcp7zBaSoZhsoQOi/3mu5fw6
- WNZ2opzWv1EFV+mkd+IJJRvseEE/8n96xEOsGCopMjF863lK7VudXfH30A5UdyuN7UbF
- tB05rKoTI4eMN9+n+caFMzv9yWZ276cgY4EtZ1MMtrNYUPdZgC+DNbEp6Tg5vSEge9XT
- cecw==
+ bh=P2grRz9PCgk2ZeVIhCfAMiKPxOtnJvOaxKg6ZGO8mUA=;
+ b=dIX6XtBN+kUmQxdsfW7VBR+hCZQ5Fd9HKvN3ZdpR3J3i1X3bbfXMPofN8G0gh+h8Ee
+ tm2YRFo0ttxD6LqFuxHrFCWlDvrHw0sZ+0ykWXAO/+Qbgc/PxP47xZiU3w+//Yihb+0R
+ +T2rton5eG3+3k3+hjd/JIodLrXJfa4TDmBQn22vyLL+b/vezZXOj4vrSLTglbSy0ZQu
+ Gevz4Y/sV/fEEBTfsSD9E6C31xHejzWHN+1Js/xH4FYwXgdrQ5bHid2CcVvWu6NKMmGi
+ dluC+nfneIHvB3WKOMCDfW3tPYgg83AjLMCaE/B8cKDTPnHgYRuU7hcD+6O3dhWeSGdp
+ 56EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=CyZyqFI+XAr4XPDXxXl/eruhWi9Hm+rYqmX4iZ+USns=;
- b=CpUcAYmctxkgnfwLVFsPU0YrztLPP/kqiGbd/i6NT7rbEAvGsJzGcgt/SmeIra/MWn
- riFaoB3jjXZPlG3McMpDPlnH78fvmltXHxb832S0VPstOv0ZjKgdqYW6seQvDf/x+R8a
- /RrnAvuLblnTPd1uNcqIxkLrXkrU/5TL84qrY45+ZbnBC7gi3UFcnoaGKM/7Bc184DwP
- z89nPi0ALoznNy2isNLhS4W3LQ6rUrTHX7Hh1MA3HcPxZYotnpNETSQ+tmbS5/VckfDP
- n0X6WQJcTbC98LkzRM+gC1bTLCH9XVdP+mkSW2azE8uPy1FkAuMBch4LqVbKe0SVf1aY
- ot/A==
-X-Gm-Message-State: AOAM531kJv03E46GpL6EqAcwGFu4MyGNBGDnirT0SO3kXfqTRdW9ZN+t
- AzVvcYRaAylCnIeycpD4m9s=
-X-Google-Smtp-Source: ABdhPJwSMhh3G/aPj7aRHxIrocMc+jlvrmkMz+HumqEtyC+4OjsjsEBRGXKhcJLLnw6Tc4CoM8EpHg==
-X-Received: by 2002:a17:90a:ea8e:: with SMTP id
- h14mr11149292pjz.105.1596050514903; 
- Wed, 29 Jul 2020 12:21:54 -0700 (PDT)
+ bh=P2grRz9PCgk2ZeVIhCfAMiKPxOtnJvOaxKg6ZGO8mUA=;
+ b=kHMRn3xK3zyZWUSQm/4jOkrh0sxQhxzpyP1zhQbv0y5T+veGEyhkdZqhJef+FcRN6x
+ RDDOWW/u+bYn6UvTrNIKez13yaDVu1Ym8nReqL+roM6SZ0dKcRdY0aYXaaGzMKVOkxpc
+ FqMulk+b44lC1w5KQ0vsgRuA9vmOFwqzULLXHy97sRld/K3r8vtg5g8XLuOMF4Ck5CRH
+ sef9zkIDvlzb+ePCX8C38HPHN3VoKjcVOxXqKzaquYVbNzx8gI1W1r4yrHzyxrpU8wz5
+ W5LG+aJf/3gjrE6N/5fClD/eWi/RJMW0PJ62z1khpNDCr9HmYdTs+jAVbInA5KaTkJ+H
+ ydQw==
+X-Gm-Message-State: AOAM531xFENh7XBTwgqmHcH7iwvoVSdgSSaKoc15X/lzYx0nZpe7AzVf
+ mWFVuHcrPx+le4gHmD7kQ+wP42QdAmNqc3HP
+X-Google-Smtp-Source: ABdhPJx9d00VTRIC589bDdRp4nk/Do8tibFvjOXpjwsfs9SJUvWMyFY5Bjf5e4Q9DNDr7bT7Ypidjw==
+X-Received: by 2002:a17:902:6b08:: with SMTP id
+ o8mr29014174plk.104.1596050522549; 
+ Wed, 29 Jul 2020 12:22:02 -0700 (PDT)
 Received: from localhost.localdomain ([122.167.86.75])
- by smtp.googlemail.com with ESMTPSA id hg7sm599431pjb.24.2020.07.29.12.21.52
+ by smtp.googlemail.com with ESMTPSA id hg7sm599431pjb.24.2020.07.29.12.21.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2020 12:21:54 -0700 (PDT)
+ Wed, 29 Jul 2020 12:22:01 -0700 (PDT)
 From: Aditya Jain <aditya.jainadityajain.jain@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v4 0/3] Fix coding style issues in staging
-Date: Thu, 30 Jul 2020 00:51:33 +0530
-Message-Id: <20200729192136.23828-1-aditya.jainadityajain.jain@gmail.com>
+Subject: [PATCH v4 1/3] staging: rtl8723bs: Fix coding style errors
+Date: Thu, 30 Jul 2020 00:51:34 +0530
+Message-Id: <20200729192136.23828-2-aditya.jainadityajain.jain@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <CAJAoDUjVBon2iiztdER82mHgJtVS6s5XYSajbCTne0KWAzoLvg@mail.gmail.com>
+In-Reply-To: <20200729192136.23828-1-aditya.jainadityajain.jain@gmail.com>
 References: <CAJAoDUjVBon2iiztdER82mHgJtVS6s5XYSajbCTne0KWAzoLvg@mail.gmail.com>
+ <20200729192136.23828-1-aditya.jainadityajain.jain@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -95,40 +96,87 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hey everyone,
+Fixing ERROR: "foo *	bar" should be "foo *bar" in hal_phy_cfg.h
+as reported by checkpatch.pl
 
-Following the comments received I've updated the patch.
-The patch cleans up coding style issues in the file
-drivers/staging/rtl8723bs/include/hal_phy_cfg.h
+Signed-off-by: Aditya Jain <aditya.jainadityajain.jain@gmail.com>
+---
+ .../staging/rtl8723bs/include/hal_phy_cfg.h    | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-Changelog:
-
-v1:
-Fixed ERROR: "foo *	bar" should be "foo *bar" reported by
-checkpatch.pl
-
-v1 -> v2:
-Cleaned up multiline function declarations as suggested
-by Greg and adjusted spacing in macro definitions to align them.
-
-v2 -> v3:
-Broke the single patch in v2 into multiple patches with each
-patch doing one single task.
-
-v3 -> v4:
-1. Corrected the patch subject following Larry's suggestion.    
-2. Merged the second and third patches into one following Greg's 
-comment.
-3. Removed comments from the PHY_SetBWMode8723B function declaration.
-
-Aditya Jain (3):
-  staging: rtl8723bs: Fix coding style errors
-  staging: rtl8723bs: Clean up function declations
-  staging: rtl8723bs: Align macro definitions
-
- .../staging/rtl8723bs/include/hal_phy_cfg.h   | 116 +++++-------------
- 1 file changed, 32 insertions(+), 84 deletions(-)
-
+diff --git a/drivers/staging/rtl8723bs/include/hal_phy_cfg.h b/drivers/staging/rtl8723bs/include/hal_phy_cfg.h
+index 419ddb0733aa..7e48abc4c760 100644
+--- a/drivers/staging/rtl8723bs/include/hal_phy_cfg.h
++++ b/drivers/staging/rtl8723bs/include/hal_phy_cfg.h
+@@ -42,7 +42,7 @@ u32 	Data
+ 
+ u32
+ PHY_QueryRFReg_8723B(
+-struct adapter *		Adapter,
++struct adapter *Adapter,
+ u8 		eRFPath,
+ u32 			RegAddr,
+ u32 			BitMask
+@@ -50,7 +50,7 @@ u32 			BitMask
+ 
+ void
+ PHY_SetRFReg_8723B(
+-struct adapter *		Adapter,
++struct adapter *Adapter,
+ u8 		eRFPath,
+ u32 			RegAddr,
+ u32 			BitMask,
+@@ -66,7 +66,7 @@ s32 PHY_MACConfig8723B(struct adapter *padapter);
+ 
+ void
+ PHY_SetTxPowerIndex(
+-struct adapter *		Adapter,
++struct adapter *Adapter,
+ u32 				PowerIndex,
+ u8 			RFPath,
+ u8 			Rate
+@@ -74,7 +74,7 @@ u8 			Rate
+ 
+ u8
+ PHY_GetTxPowerIndex(
+-struct adapter *		padapter,
++struct adapter *padapter,
+ u8 			RFPath,
+ u8 			Rate,
+ enum CHANNEL_WIDTH		BandWidth,
+@@ -83,19 +83,19 @@ u8 			Channel
+ 
+ void
+ PHY_GetTxPowerLevel8723B(
+-struct adapter *	Adapter,
+-	s32*			powerlevel
++struct adapter *Adapter,
++	s32 *powerlevel
+ 	);
+ 
+ void
+ PHY_SetTxPowerLevel8723B(
+-struct adapter *	Adapter,
++struct adapter *Adapter,
+ u8 	channel
+ 	);
+ 
+ void
+ PHY_SetBWMode8723B(
+-struct adapter *			Adapter,
++struct adapter *Adapter,
+ enum CHANNEL_WIDTH			Bandwidth,	/*  20M or 40M */
+ unsigned char 			Offset		/*  Upper, Lower, or Don't care */
+ );
+@@ -108,7 +108,7 @@ u8 channel
+ 
+ void
+ PHY_SetSwChnlBWMode8723B(
+-struct adapter *		Adapter,
++struct adapter *Adapter,
+ u8 			channel,
+ enum CHANNEL_WIDTH		Bandwidth,
+ u8 			Offset40,
 -- 
 2.25.1
 
