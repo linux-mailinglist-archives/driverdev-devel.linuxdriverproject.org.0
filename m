@@ -1,75 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C3E123254E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 21:22:10 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E75A585118;
-	Wed, 29 Jul 2020 19:22:08 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kWyKiFrjG8fq; Wed, 29 Jul 2020 19:22:06 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id ABD4B85025;
-	Wed, 29 Jul 2020 19:22:05 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 500191BF328
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 19:22:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 42C2D232551
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 21:22:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2992D24804
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 19:22:04 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 697DF24BEF;
+	Wed, 29 Jul 2020 19:22:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id evnu1t2gm+5P; Wed, 29 Jul 2020 19:22:13 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 88A9320497;
+	Wed, 29 Jul 2020 19:22:10 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6EC591BF328
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 19:22:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6296184FB9
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 19:22:08 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8sVIF7tcWS9i for <devel@linuxdriverproject.org>;
- Wed, 29 Jul 2020 19:22:03 +0000 (UTC)
+ with ESMTP id LtEcfeX6roSw for <devel@linuxdriverproject.org>;
+ Wed, 29 Jul 2020 19:22:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f47.google.com (mail-pj1-f47.google.com
- [209.85.216.47])
- by silver.osuosl.org (Postfix) with ESMTPS id 130D220497
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 19:22:03 +0000 (UTC)
-Received: by mail-pj1-f47.google.com with SMTP id mt12so2402789pjb.4
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 12:22:03 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 130AB85258
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 19:22:06 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id f193so3072018pfa.12
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 12:22:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=P2grRz9PCgk2ZeVIhCfAMiKPxOtnJvOaxKg6ZGO8mUA=;
- b=dIX6XtBN+kUmQxdsfW7VBR+hCZQ5Fd9HKvN3ZdpR3J3i1X3bbfXMPofN8G0gh+h8Ee
- tm2YRFo0ttxD6LqFuxHrFCWlDvrHw0sZ+0ykWXAO/+Qbgc/PxP47xZiU3w+//Yihb+0R
- +T2rton5eG3+3k3+hjd/JIodLrXJfa4TDmBQn22vyLL+b/vezZXOj4vrSLTglbSy0ZQu
- Gevz4Y/sV/fEEBTfsSD9E6C31xHejzWHN+1Js/xH4FYwXgdrQ5bHid2CcVvWu6NKMmGi
- dluC+nfneIHvB3WKOMCDfW3tPYgg83AjLMCaE/B8cKDTPnHgYRuU7hcD+6O3dhWeSGdp
- 56EQ==
+ bh=sxdfgFg/+YKF2vVbSCxbDEow+54W6Crwq1vgBu5NBEs=;
+ b=luCydVO9DWb8AUtr2HzSKMOCmL4a6u5HHJ8WUXnbsPvghNMRuqUjH8IvhTSeWJ9v8t
+ lebJddla/iyAPy9GmxWlYtGhwhpqAKbt3XjBCHRe/ZP7KHrum6GkVqXlvjTSSFou5KPk
+ pJZhA56FClTffQw9gBJ+KfHzh+q7YtsxJqBZXQsBLsyimz7jUGt2DW/1SrIdZ37u4OJ3
+ 1JFeTTmNl/Gj1vTczhkuUsUsx2xAo9kVM6UA1US3KKZKegiYxBmoJD+Agxm4Tv7qCd8Z
+ xIaoazZaqfFqepWqc7Aa4Nu7Q4J+57ISA4srXQrHdzM923IoBy873FaBieqEBEmRVbon
+ KTXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=P2grRz9PCgk2ZeVIhCfAMiKPxOtnJvOaxKg6ZGO8mUA=;
- b=kHMRn3xK3zyZWUSQm/4jOkrh0sxQhxzpyP1zhQbv0y5T+veGEyhkdZqhJef+FcRN6x
- RDDOWW/u+bYn6UvTrNIKez13yaDVu1Ym8nReqL+roM6SZ0dKcRdY0aYXaaGzMKVOkxpc
- FqMulk+b44lC1w5KQ0vsgRuA9vmOFwqzULLXHy97sRld/K3r8vtg5g8XLuOMF4Ck5CRH
- sef9zkIDvlzb+ePCX8C38HPHN3VoKjcVOxXqKzaquYVbNzx8gI1W1r4yrHzyxrpU8wz5
- W5LG+aJf/3gjrE6N/5fClD/eWi/RJMW0PJ62z1khpNDCr9HmYdTs+jAVbInA5KaTkJ+H
- ydQw==
-X-Gm-Message-State: AOAM531xFENh7XBTwgqmHcH7iwvoVSdgSSaKoc15X/lzYx0nZpe7AzVf
- mWFVuHcrPx+le4gHmD7kQ+wP42QdAmNqc3HP
-X-Google-Smtp-Source: ABdhPJx9d00VTRIC589bDdRp4nk/Do8tibFvjOXpjwsfs9SJUvWMyFY5Bjf5e4Q9DNDr7bT7Ypidjw==
-X-Received: by 2002:a17:902:6b08:: with SMTP id
- o8mr29014174plk.104.1596050522549; 
- Wed, 29 Jul 2020 12:22:02 -0700 (PDT)
+ bh=sxdfgFg/+YKF2vVbSCxbDEow+54W6Crwq1vgBu5NBEs=;
+ b=a1qu2y9E7v1hU4xdErgsYR/9/yMqYyOtiieAyDV2Fn4ecbyoNttIEHLz8ovWCLm5mf
+ +ZZzK13caahsgcswELiLTPyKLFfut37fg0AAkOpPC+Mc5Gp9oml7gq87ZxHKGkp4Arcr
+ HFAZeaSxt9so00mu1DnUAOU0/gpc/ll3O8Yvh4sZZuw+ay5ZDfbh2WLCgu4OOc2+Nm75
+ nDKL2uqkFTECxUCsBAMou2wP0ymlpAP2w8UhLo0UcZrax/AStKLLoGcB/sRD+Qm7qQyy
+ asTtdL5UK9zbbyr4uJA5w+gdYk7CIeLfzg+VgLCMzFNgtV8LgyW2kzq9VBOxM6ah35cZ
+ vgAw==
+X-Gm-Message-State: AOAM530otQzkIZEaue/LRrlHA6U/4kZhZbCvoILigG6k4OwFYI0y5iNX
+ xsE8MovzIPMSapc6w3Bzt34=
+X-Google-Smtp-Source: ABdhPJyKiyRtOMcLkIJ0dDVgMCU3eDC6dC8GyPT1NQ2lR8sKkgj0IpIhsGZmgOklXEg9n0wu6RL3Ag==
+X-Received: by 2002:a63:1408:: with SMTP id u8mr31585696pgl.282.1596050525566; 
+ Wed, 29 Jul 2020 12:22:05 -0700 (PDT)
 Received: from localhost.localdomain ([122.167.86.75])
- by smtp.googlemail.com with ESMTPSA id hg7sm599431pjb.24.2020.07.29.12.21.59
+ by smtp.googlemail.com with ESMTPSA id hg7sm599431pjb.24.2020.07.29.12.22.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2020 12:22:01 -0700 (PDT)
+ Wed, 29 Jul 2020 12:22:04 -0700 (PDT)
 From: Aditya Jain <aditya.jainadityajain.jain@gmail.com>
 To: gregkh@linuxfoundation.org
-Subject: [PATCH v4 1/3] staging: rtl8723bs: Fix coding style errors
-Date: Thu, 30 Jul 2020 00:51:34 +0530
-Message-Id: <20200729192136.23828-2-aditya.jainadityajain.jain@gmail.com>
+Subject: [PATCH v4 2/3] staging: rtl8723bs: Clean up function declations
+Date: Thu, 30 Jul 2020 00:51:35 +0530
+Message-Id: <20200729192136.23828-3-aditya.jainadityajain.jain@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200729192136.23828-1-aditya.jainadityajain.jain@gmail.com>
 References: <CAJAoDUjVBon2iiztdER82mHgJtVS6s5XYSajbCTne0KWAzoLvg@mail.gmail.com>
@@ -96,87 +95,142 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Fixing ERROR: "foo *	bar" should be "foo *bar" in hal_phy_cfg.h
-as reported by checkpatch.pl
+Clean up multiline function declartions in hal_phy_cfg.h
+to improve code readablility
 
 Signed-off-by: Aditya Jain <aditya.jainadityajain.jain@gmail.com>
 ---
- .../staging/rtl8723bs/include/hal_phy_cfg.h    | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ .../staging/rtl8723bs/include/hal_phy_cfg.h   | 110 +++++-------------
+ 1 file changed, 29 insertions(+), 81 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/include/hal_phy_cfg.h b/drivers/staging/rtl8723bs/include/hal_phy_cfg.h
-index 419ddb0733aa..7e48abc4c760 100644
+index 7e48abc4c760..0eb3e57f4082 100644
 --- a/drivers/staging/rtl8723bs/include/hal_phy_cfg.h
 +++ b/drivers/staging/rtl8723bs/include/hal_phy_cfg.h
-@@ -42,7 +42,7 @@ u32 	Data
+@@ -25,37 +25,16 @@
+ /*------------------------------Define structure End----------------------------*/
  
- u32
- PHY_QueryRFReg_8723B(
--struct adapter *		Adapter,
-+struct adapter *Adapter,
- u8 		eRFPath,
- u32 			RegAddr,
- u32 			BitMask
-@@ -50,7 +50,7 @@ u32 			BitMask
+ /*--------------------------Exported Function prototype---------------------*/
+-u32
+-PHY_QueryBBReg_8723B(
+-struct adapter *Adapter,
+-u32 	RegAddr,
+-u32 	BitMask
+-	);
+-
+-void
+-PHY_SetBBReg_8723B(
+-struct adapter *Adapter,
+-u32 	RegAddr,
+-u32 	BitMask,
+-u32 	Data
+-	);
+-
+-u32
+-PHY_QueryRFReg_8723B(
+-struct adapter *Adapter,
+-u8 		eRFPath,
+-u32 			RegAddr,
+-u32 			BitMask
+-	);
+-
+-void
+-PHY_SetRFReg_8723B(
+-struct adapter *Adapter,
+-u8 		eRFPath,
+-u32 			RegAddr,
+-u32 			BitMask,
+-u32 			Data
+-	);
++u32 PHY_QueryBBReg_8723B(struct adapter *Adapter, u32 RegAddr, u32 BitMask);
++
++void PHY_SetBBReg_8723B(struct adapter *Adapter, u32 RegAddr,
++			u32 BitMask, u32 Data);
++
++u32 PHY_QueryRFReg_8723B(struct adapter *Adapter, u8 eRFPath,
++			 u32 RegAddr, u32 BitMask);
++
++void PHY_SetRFReg_8723B(struct adapter *Adapter, u8 eRFPath,
++			u32 RegAddr, u32 BitMask, u32 Data);
  
- void
- PHY_SetRFReg_8723B(
--struct adapter *		Adapter,
-+struct adapter *Adapter,
- u8 		eRFPath,
- u32 			RegAddr,
- u32 			BitMask,
-@@ -66,7 +66,7 @@ s32 PHY_MACConfig8723B(struct adapter *padapter);
+ /* MAC/BB/RF HAL config */
+ int PHY_BBConfig8723B(struct adapter *Adapter);
+@@ -64,56 +43,25 @@ int PHY_RFConfig8723B(struct adapter *Adapter);
  
- void
- PHY_SetTxPowerIndex(
--struct adapter *		Adapter,
-+struct adapter *Adapter,
- u32 				PowerIndex,
- u8 			RFPath,
- u8 			Rate
-@@ -74,7 +74,7 @@ u8 			Rate
+ s32 PHY_MACConfig8723B(struct adapter *padapter);
  
- u8
- PHY_GetTxPowerIndex(
--struct adapter *		padapter,
-+struct adapter *padapter,
- u8 			RFPath,
- u8 			Rate,
- enum CHANNEL_WIDTH		BandWidth,
-@@ -83,19 +83,19 @@ u8 			Channel
+-void
+-PHY_SetTxPowerIndex(
+-struct adapter *Adapter,
+-u32 				PowerIndex,
+-u8 			RFPath,
+-u8 			Rate
+-	);
+-
+-u8
+-PHY_GetTxPowerIndex(
+-struct adapter *padapter,
+-u8 			RFPath,
+-u8 			Rate,
+-enum CHANNEL_WIDTH		BandWidth,
+-u8 			Channel
+-	);
+-
+-void
+-PHY_GetTxPowerLevel8723B(
+-struct adapter *Adapter,
+-	s32 *powerlevel
+-	);
+-
+-void
+-PHY_SetTxPowerLevel8723B(
+-struct adapter *Adapter,
+-u8 	channel
+-	);
+-
+-void
+-PHY_SetBWMode8723B(
+-struct adapter *Adapter,
+-enum CHANNEL_WIDTH			Bandwidth,	/*  20M or 40M */
+-unsigned char 			Offset		/*  Upper, Lower, or Don't care */
+-);
+-
+-void
+-PHY_SwChnl8723B(/*  Call after initialization */
+-struct adapter *Adapter,
+-u8 channel
+-	);
+-
+-void
+-PHY_SetSwChnlBWMode8723B(
+-struct adapter *Adapter,
+-u8 			channel,
+-enum CHANNEL_WIDTH		Bandwidth,
+-u8 			Offset40,
+-u8 			Offset80
+-);
++void PHY_SetTxPowerIndex(struct adapter *Adapter, u32 PowerIndex,
++			 u8 RFPath, u8 Rate);
++
++u8 PHY_GetTxPowerIndex(struct adapter *padapter, u8 RFPath, u8 Rate,
++			enum CHANNEL_WIDTH BandWidth, u8 Channel);
++
++void PHY_GetTxPowerLevel8723B(struct adapter *Adapter, s32 *powerlevel);
++
++void PHY_SetTxPowerLevel8723B(struct adapter *Adapter, u8 channel);
++
++void PHY_SetBWMode8723B(struct adapter *Adapter, enum CHANNEL_WIDTH Bandwidth,
++			unsigned char Offset);
++
++/*  Call after initialization */
++void PHY_SwChnl8723B(struct adapter *Adapter, u8 channel);
++
++void PHY_SetSwChnlBWMode8723B(struct adapter *Adapter, u8 channel,
++				enum CHANNEL_WIDTH Bandwidth,
++				u8 Offset40, u8 Offset80);
  
- void
- PHY_GetTxPowerLevel8723B(
--struct adapter *	Adapter,
--	s32*			powerlevel
-+struct adapter *Adapter,
-+	s32 *powerlevel
- 	);
+ /*--------------------------Exported Function prototype End---------------------*/
  
- void
- PHY_SetTxPowerLevel8723B(
--struct adapter *	Adapter,
-+struct adapter *Adapter,
- u8 	channel
- 	);
- 
- void
- PHY_SetBWMode8723B(
--struct adapter *			Adapter,
-+struct adapter *Adapter,
- enum CHANNEL_WIDTH			Bandwidth,	/*  20M or 40M */
- unsigned char 			Offset		/*  Upper, Lower, or Don't care */
- );
-@@ -108,7 +108,7 @@ u8 channel
- 
- void
- PHY_SetSwChnlBWMode8723B(
--struct adapter *		Adapter,
-+struct adapter *Adapter,
- u8 			channel,
- enum CHANNEL_WIDTH		Bandwidth,
- u8 			Offset40,
 -- 
 2.25.1
 
