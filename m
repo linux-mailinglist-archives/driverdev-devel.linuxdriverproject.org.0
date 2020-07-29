@@ -1,57 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFD7B232818
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jul 2020 01:30:07 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 318F423288B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jul 2020 02:04:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 201A424B96;
-	Wed, 29 Jul 2020 23:30:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D0FE288238;
+	Thu, 30 Jul 2020 00:04:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lluL6+dlXOdJ; Wed, 29 Jul 2020 23:30:04 +0000 (UTC)
+	with ESMTP id ZcD8CABv4MSD; Thu, 30 Jul 2020 00:04:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5DED124C2A;
-	Wed, 29 Jul 2020 23:30:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B45FB8821C;
+	Thu, 30 Jul 2020 00:04:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A279B1BF86C
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 23:29:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0BC511BF9B5
+ for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 00:04:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9F03586AE0
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 23:29:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 02EAA86BB3
+ for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 00:04:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xWQKLHew7CTw for <devel@linuxdriverproject.org>;
- Wed, 29 Jul 2020 23:29:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4B5F586A8F
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 23:29:59 +0000 (UTC)
-Received: from embeddedor (187-162-31-110.static.axtel.net [187.162.31.110])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 88DEE2074B;
- Wed, 29 Jul 2020 23:29:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596065399;
- bh=soaioZgmViIAvQ3rjdV72K2mdvV/ewVmzrvk4+FNNvQ=;
- h=Date:From:To:Cc:Subject:From;
- b=wu1SMnukBBPBn8HMW/u+hp0BFMgBXRPznml6diVqbdIVBHqzrLbPyEN+dCAueapNT
- ZeEvU+pBqx387i+B/iR4/iGreTgL/KhuhKXHAAINrgvTByQjvbt/HHLoIWrBrYfXlL
- X6Hm4Z1S6OYfR202P1tL/2WgbCaPxbEFfDE/UEzE=
-Date: Wed, 29 Jul 2020 18:35:57 -0500
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH][next] staging: wfx: Use flex_array_size() helper in memcpy()
-Message-ID: <20200729233557.GA17693@embeddedor>
+ with ESMTP id MyoZhYWbE594 for <devel@linuxdriverproject.org>;
+ Thu, 30 Jul 2020 00:04:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.biobizbd.com (mail.biobizbd.com [27.147.138.30])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 539D186BB2
+ for <devel@driverdev.osuosl.org>; Thu, 30 Jul 2020 00:04:28 +0000 (UTC)
+Received: from [111.90.146.112] (unknown [111.90.146.112])
+ by mail.biobizbd.com (Postfix) with ESMTPA id 484651247DCF;
+ Thu, 30 Jul 2020 03:54:28 +0600 (+06)
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Description: Mail message body
+Subject: Aw:Re:
+To: Recipients <it@dhakacom.com>
+From: Ms Albe <it@dhakacom.com>
+Date: Thu, 30 Jul 2020 06:10:11 +0800
+X-yoursite-MailScanner-Information: Please contact the ISP for more information
+X-yoursite-MailScanner-ID: 484651247DCF.AF10A
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-SpamScore: ss
+X-yoursite-MailScanner-From: it@dhakacom.com
+Message-Id: <20200730000431.02EAA86BB3@fraxinus.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,40 +58,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: evan.aguira@hotmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Make use of the flex_array_size() helper to calculate the size of a
-flexible array member within an enclosing structure.
+Hallo! Wenn Sie ein pers=F6nliches Darlehen oder ein gewerbliches Darlehen =
+oder ein Wohnungsbaudarlehen oder ein Autokredit ben=F6tigen, k=F6nnen Sie =
+jetzt =FCber unsere E-Mail ein g=FCnstiges und legitimes Darlehen beantrage=
+n. Bitte beachten Sie, dass dieses Darlehensangebot f=FCr ernsthafte Person=
+en gedacht ist, die finanzielle Unterst=FCtzung als Darlehen ben=F6tigen.
 
-This helper offers defense-in-depth against potential integer
-overflows, while at the same time makes it explicitly clear that
-we are dealing with a flexible array member.
+-- =
 
-Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
----
- drivers/staging/wfx/hif_tx_mib.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/wfx/hif_tx_mib.c b/drivers/staging/wfx/hif_tx_mib.c
-index 1689cb42acc0..05f1e1e98af9 100644
---- a/drivers/staging/wfx/hif_tx_mib.c
-+++ b/drivers/staging/wfx/hif_tx_mib.c
-@@ -113,7 +113,7 @@ int hif_set_beacon_filter_table(struct wfx_vif *wvif, int tbl_len,
- 	if (!val)
- 		return -ENOMEM;
- 	val->num_of_info_elmts = cpu_to_le32(tbl_len);
--	memcpy(val->ie_table, tbl, tbl_len * sizeof(*tbl));
-+	memcpy(val->ie_table, tbl, flex_array_size(val, ie_table, tbl_len));
- 	ret = hif_write_mib(wvif->wdev, wvif->id,
- 			    HIF_MIB_ID_BEACON_FILTER_TABLE, val, buf_len);
- 	kfree(val);
--- 
-2.27.0
+This message has been scanned for viruses and
+dangerous content by MailScanner, and is
+believed to be clean.
 
 _______________________________________________
 devel mailing list
