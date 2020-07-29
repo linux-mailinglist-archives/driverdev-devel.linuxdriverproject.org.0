@@ -1,59 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CBB4231930
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 07:46:51 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7E20E85E03;
-	Wed, 29 Jul 2020 05:46:49 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NifIyAfukDaD; Wed, 29 Jul 2020 05:46:48 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3376785D4C;
-	Wed, 29 Jul 2020 05:46:48 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3C0691BF37F
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 05:46:46 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 18B7423192D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 07:42:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 35E4E87F34
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 05:46:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AC63288007;
+	Wed, 29 Jul 2020 05:42:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2mqFHmCg4Ypn; Wed, 29 Jul 2020 05:42:09 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id CFE4987F34;
+	Wed, 29 Jul 2020 05:42:08 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 11DE31BF37F
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 05:42:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0A1FB86B5C
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 05:42:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SKQvEBF1XxFL for <devel@linuxdriverproject.org>;
- Wed, 29 Jul 2020 05:46:45 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A4EBD8757D
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 05:46:45 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E05042076E;
- Wed, 29 Jul 2020 05:46:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596001605;
- bh=pePAJ4Ia9ZHBwn/lH6/j1CE/q64jj5R/LOQFr37raXo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=r7OIaT4YSgbGCT8Sm9BK18kqONhv+6wxyKCKzRm4k8T1jE+ejTGXOA/TITV+pVVjX
- T+hfrA3ErOUDIuv1McMGwSesdssOW+zzdhwNrBApfwlbOXlz/Q2c7XgQlI3uDengld
- mBWgJm7Na/CIqeJG8HHu4JOFzO3RXh7hWbBjpj5I=
-Date: Wed, 29 Jul 2020 07:46:37 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Dhiraj Sharma <dhiraj.sharma0024@gmail.com>
-Subject: Re: [PATCH] staging: qlge: qlge_dbg: removed comment repition
-Message-ID: <20200729054637.GA437093@kroah.com>
-References: <20200728182610.2538-1-dhiraj.sharma0024@gmail.com>
- <CAPRy4h2Kzqj449PYPjPFmd7neKLR4TTZY8wq51AWqDrTFEFGJA@mail.gmail.com>
+ with ESMTP id oyTjxSX8oORI for <devel@linuxdriverproject.org>;
+ Wed, 29 Jul 2020 05:42:06 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.foescoc.es (unknown [146.255.98.205])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D704A86AF9
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 05:42:05 +0000 (UTC)
+Received: from 195.red-83-52-1.dynamicip.rima-tde.net
+ (188.red-83-53-133.dynamicip.rima-tde.net [83.53.133.188])
+ by mail.foescoc.es (Postfix) with ESMTPSA id DD221AFF16F
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 07:39:56 +0200 (CEST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAPRy4h2Kzqj449PYPjPFmd7neKLR4TTZY8wq51AWqDrTFEFGJA@mail.gmail.com>
+From: info14@foescof.com
+To: devel@driverdev.osuosl.org
+Subject: CURSOS BONIFICABLES (AGOSTO 2020)
+X-Mailer: Smart_Send_4_3_3
+Date: Wed, 29 Jul 2020 07:34:56 -0700
+Message-ID: <47284776994641524113921@DESKTOP-EEN1J8F>
+X-Priority: 1
+X-MSMail-Priority: High
+X-PPP-Message-ID: <20200729053957.23432.27120@mail.foescoc.es>
+X-PPP-Vhost: foescof.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,50 +58,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, manishc@marvell.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: info14@foescof.com
+Content-Type: multipart/mixed; boundary="===============6108658380468725814=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-A: http://en.wikipedia.org/wiki/Top_post
-Q: Were do I find info about this thing called top-posting?
-A: Because it messes up the order in which people normally read text.
-Q: Why is top-posting such a bad thing?
-A: Top-posting.
-Q: What is the most annoying thing in e-mail?
+--===============6108658380468725814==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-A: No.
-Q: Should I include quotations after my reply?
+Buenos d=EDas
 
-http://daringfireball.net/2007/07/on_top
 
-On Wed, Jul 29, 2020 at 11:06:56AM +0530, Dhiraj Sharma wrote:
-> Hello,
 
-<snip>
+Se encuentra abierto el plazo de inscripci=F3n de Cursos Bonificables para =
+empleados en activo y en situaci=F3n de ERTE (AGOSTO 2020)
 
-It has been less than 24 hours for a simple comment cleanup patch.
-Please give maintainers time, they deal with thousands of patches a
-week.
 
-Usually, if after 2 weeks, you have not gotten a response, you can
-resend it.
+Todos los cursos son Bonificables con cargo al Cr=E9dito de Formaci=F3n 202=
+0.
 
->  I know that I should ask for reviews etc after a week but the change
-> is for my eudyptula task and until it doesn't get merged little
-> penguin will not pass the task for me so please look at it.
 
-If you knew that you should wait for at least a week, and yet you did
-not, that implies that you somehow feel this comment cleanup patch is
-more important than everyone else, which is a bit rude, don't you think?
+Dese=E1is que os mandemos la informaci=F3n=3F
 
-There are no such things as deadlines when it comes to upstream kernel
-development, sorry.
 
-greg k-h
+Saludos cordiales.
+
+
+Alex Pons
+Director departamento formaci=F3n.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B171823AP
+www.foesco.com
+
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Antes de imprimir este e-mail piense bien si es necesario hacerlo. Before p=
+rinting this e-mail please think twice if you really need it. FOESCO Tfno: =
+910 382 880 Email: cursos@foesco.com. La informaci=F3n transmitida en este =
+mensaje est=E1 dirigida solamente a las personas o entidades que figuran en=
+ el encabezamiento y contiene informaci=F3n confidencial, por lo que, si us=
+ted lo recibiera por error, por favor destr=FAyalo sin copiarlo, usarlo ni =
+distribuirlo, comunic=E1ndolo inmediatamente al emisor del mensaje. De conf=
+ormidad con lo dispuesto en el Reglamento Europeo del 2016/679, del 27 de A=
+bril de 2016, FOESCO le informa que los datos por usted suministrados ser=
+=E1n tratados con las medidas de seguridad conformes a la normativa vigente=
+ que se requiere. Dichos datos ser=E1n empleados con fines de gesti=F3n. Pa=
+ra el ejercicio de sus derechos de transparencia, informaci=F3n, acceso, re=
+ctificaci=F3n, supresi=F3n o derecho al olvido, limitaci=F3n del tratamient=
+o , portabilidad de datos y oposici=F3n de sus datos de car=E1cter personal=
+ deber=E1 dirigirse a la direcci=F3n del Responsable del tratamiento a C/ L=
+AGUNA DEL MARQUESADO N=BA10, 28021, MADRID, pulsando aqui <mailto:bajas@foe=
+sco.com=3FSubject=3DBAJA%20CORREOS> o a traves de la direcci=F3n de correo =
+electr=F3nico: bajas@foesco.com <mailto:bajas@foesco.com=3FSubject=3DBAJA%2=
+0CORREOS>
+
+--===============6108658380468725814==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============6108658380468725814==--
