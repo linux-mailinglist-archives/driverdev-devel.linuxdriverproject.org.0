@@ -1,75 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B884123194B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 08:05:56 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19458231967
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 08:19:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8888C87D15;
-	Wed, 29 Jul 2020 06:05:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B025A85F71;
+	Wed, 29 Jul 2020 06:19:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F12D84i2lcxa; Wed, 29 Jul 2020 06:05:54 +0000 (UTC)
+	with ESMTP id ZNpV2k-fpGHV; Wed, 29 Jul 2020 06:19:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CF19487C30;
-	Wed, 29 Jul 2020 06:05:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5BD5A85EC1;
+	Wed, 29 Jul 2020 06:19:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2D3B41BF332
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 06:05:51 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1BD501BF955
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 06:19:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 260CC87FD8
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 06:05:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 17E4087E80
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 06:19:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xsR+WHKGfSR3 for <devel@linuxdriverproject.org>;
- Wed, 29 Jul 2020 06:05:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
- [209.85.210.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8B59787FCC
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 06:05:50 +0000 (UTC)
-Received: by mail-ot1-f67.google.com with SMTP id p25so7342152oto.6
- for <devel@driverdev.osuosl.org>; Tue, 28 Jul 2020 23:05:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=155Y2WSS72tG/ncO6CfTu7AAxycSUP0sDEk7oKysRWQ=;
- b=EdIn9HGCHAadTqAOhR6DmfzgEOgv5+th+OM5D23I2fdbWeeE3Ek+QJHXB3tKAH1Plv
- 6nFYEplWL/aI2Pnkunfo0Wlbl62Kd8jrz8lkNkiSuNhn4tJ/PxhjOBEwr0Ce3wngroL2
- tcSIxdUENeHrG5yLF52wYe3z3ZRX+hYhavCxEFC2dmGJn5BRlk/6Sik9C1/M1PfFqa6o
- I9/lChHR4mmMis6vkEhR0pLDOyF+OKFLU/8icd2CSxAEMAaFwJ1wnA3pyUCHxkpq6r+T
- 0vb6hVJAYNLwDuoTGHVGn5tuV8qhRHV9KZlpOqScHmlX2xz3DRigMW27VMXuqIbcs8cs
- NHGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=155Y2WSS72tG/ncO6CfTu7AAxycSUP0sDEk7oKysRWQ=;
- b=ojDDk1joT2FACQohUv8iL/IsxHVyCM9smWx12NazvN7kTAcOrHH2rmKCctmicbuHQA
- TXLWlZ212ZO2mTzTvzYU0BMOGFUoreyDiGaeh9KcRcvtQQkOgGjaHAThcGXlLl/sipM0
- 4QZHFd8/8mwuptIPxPNfoNRNYsnYKoUCa4azoprDd2XN6kyJwv/KxwO8yiDOQPVt0uFj
- bXQTihnLPjuhwlAqSEqYLC6VBlpzV4QMgdYBbnpfHnURYkJgIZ1lCv2Ih9/NyfAzzaoD
- O3Bn45Ta0NASHc+cTkX8WZn2B6FNMGn3GpxwxIHPI3l4Q926GxvOLl5MFLop7Pe3zKuo
- 5aUw==
-X-Gm-Message-State: AOAM5335Yuly5QC15dp68XhETfiVSMVr0MtQh2Xwq5hHp/pxozxikRR6
- 5NWmxR5FhFwH6bZTVlpwAWB1x4sLcsmBpwRrIV4=
-X-Google-Smtp-Source: ABdhPJwKvUWGvj+0PNmbhodUFbqPrt41n++j0abnttMdz1LMf2a7SvXkzEwmhcFFMZ1mfLu8i9eImZPLd0tybgkEbHc=
-X-Received: by 2002:a05:6830:4c8:: with SMTP id
- s8mr26585768otd.368.1596002749683; 
- Tue, 28 Jul 2020 23:05:49 -0700 (PDT)
+ with ESMTP id 5dmcv820kLtA for <devel@linuxdriverproject.org>;
+ Wed, 29 Jul 2020 06:19:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from verein.lst.de (verein.lst.de [213.95.11.211])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7D97D87EB4
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 06:19:08 +0000 (UTC)
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 9F53D68B05; Wed, 29 Jul 2020 08:19:03 +0200 (CEST)
+Date: Wed, 29 Jul 2020 08:19:03 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Jim Quinlan <james.quinlan@broadcom.com>
+Subject: Re: [PATCH v9 08/12] device core: Introduce DMA range map,
+ supplanting dma_pfn_offset
+Message-ID: <20200729061903.GA31671@lst.de>
+References: <20200724203407.16972-1-james.quinlan@broadcom.com>
+ <20200724203407.16972-9-james.quinlan@broadcom.com>
+ <CAL_Jsq+9QE_uz+81O-Bm3xycSrJptx0xmwpPdP3x65KG00ugDQ@mail.gmail.com>
+ <CA+-6iNwD1ehy6LPJ6gZJjvVeTBXAG_ybhyfUHTCvsDnM-HnmXA@mail.gmail.com>
 MIME-Version: 1.0
-References: <20200728182610.2538-1-dhiraj.sharma0024@gmail.com>
- <CAPRy4h2Kzqj449PYPjPFmd7neKLR4TTZY8wq51AWqDrTFEFGJA@mail.gmail.com>
- <20200729054637.GA437093@kroah.com>
-In-Reply-To: <20200729054637.GA437093@kroah.com>
-From: Dhiraj Sharma <dhiraj.sharma0024@gmail.com>
-Date: Wed, 29 Jul 2020 11:35:36 +0530
-Message-ID: <CAPRy4h0KcCXJsg3kHurzvDKpL6mkkUAFCxFBsBaex36fOp7Low@mail.gmail.com>
-Subject: Re: [PATCH] staging: qlge: qlge_dbg: removed comment repition
-To: Greg KH <gregkh@linuxfoundation.org>
+Content-Disposition: inline
+In-Reply-To: <CA+-6iNwD1ehy6LPJ6gZJjvVeTBXAG_ybhyfUHTCvsDnM-HnmXA@mail.gmail.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,56 +59,77 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, manishc@marvell.com
+Cc: Rich Felker <dalias@libc.org>,
+ "open list:SUPERH" <linux-sh@vger.kernel.org>, David Airlie <airlied@linux.ie>,
+ PCI <linux-pci@vger.kernel.org>, Hanjun Guo <guohanjun@huawei.com>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Julien Grall <julien.grall@arm.com>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ "H. Peter Anvin" <hpa@zytor.com>, Will Deacon <will@kernel.org>,
+ Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ Russell King <linux@armlinux.org.uk>,
+ "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>,
+ "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
+ Ohad Ben-Cohen <ohad@wizery.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
+ <devicetree@vger.kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Arnd Bergmann <arnd@arndb.de>, Suzuki K Poulose <suzuki.poulose@arm.com>,
+ Maxime Ripard <mripard@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Borislav Petkov <bp@alien8.de>,
+ "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
+ Yong Deng <yong.deng@magewell.com>, Santosh Shilimkar <ssantosh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
+ Saravana Kannan <saravanak@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Oliver Neukum <oneukum@suse.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ open list <linux-kernel@vger.kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
+ Stefano Stabellini <sstabellini@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
+ <linux-rpi-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
->
-> A: http://en.wikipedia.org/wiki/Top_post
-> Q: Were do I find info about this thing called top-posting?
-> A: Because it messes up the order in which people normally read text.
-> Q: Why is top-posting such a bad thing?
-> A: Top-posting.
-> Q: What is the most annoying thing in e-mail?
->
-> A: No.
-> Q: Should I include quotations after my reply?
->
-> http://daringfireball.net/2007/07/on_top
->
+On Tue, Jul 28, 2020 at 02:24:51PM -0400, Jim Quinlan wrote:
+> I started using devm_kcalloc() but at least two reviewers convinced me
+> to just use kcalloc().  In addition, when I was using devm_kcalloc()
+> it was awkward because 'dev' is not available to this function.
+> 
+> It comes down to whether unbind/binding the device N times is actually
+> a reasonable usage.  As for my experience I've seen two cases: (1) my
+> overnight "bind/unbind the PCIe RC driver" script, and we have a
+> customer who does an unbind/bind as a hail mary to bring back life to
+> their dead EP device.  If the latter case happens repeatedly, there
+> are bigger problems.
 
-
-I will avoid such things and will do useful stuff.
-
->
-> It has been less than 24 hours for a simple comment cleanup patch.
-> Please give maintainers time, they deal with thousands of patches a
-> week.
->
-> Usually, if after 2 weeks, you have not gotten a response, you can
-> resend it.
->
-> >  I know that I should ask for reviews etc after a week but the change
-> > is for my eudyptula task and until it doesn't get merged little
-> > penguin will not pass the task for me so please look at it.
->
-> If you knew that you should wait for at least a week, and yet you did
-> not, that implies that you somehow feel this comment cleanup patch is
-> more important than everyone else, which is a bit rude, don't you think?
->
-> There are no such things as deadlines when it comes to upstream kernel
-> development, sorry.
->
-
-Alright, I will wait and hope it gets accepted before 1st August or
-else I have patience.
-
-
-Thank You
-Dhiraj Sharma
+We can't just leak the allocations.  Do you have a pointer to the
+arguments against managed resources?  I'm generally not a huge fan
+of the managed resources, but for a case like this they actually seem
+useful.  If we don't use the managed resources we'll at leat need
+to explicitly free the resources when freeing the device.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
