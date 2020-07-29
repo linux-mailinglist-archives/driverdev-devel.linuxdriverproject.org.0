@@ -2,80 +2,79 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F382231A8D
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 09:46:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A13B3231A9C
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Jul 2020 09:50:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 30FE685D7D;
-	Wed, 29 Jul 2020 07:46:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F5F285F6F;
+	Wed, 29 Jul 2020 07:50:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oQo1K4LjyzQt; Wed, 29 Jul 2020 07:46:13 +0000 (UTC)
+	with ESMTP id WFZuvGf1Z-gV; Wed, 29 Jul 2020 07:50:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 573BB857D8;
-	Wed, 29 Jul 2020 07:46:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F1812859CC;
+	Wed, 29 Jul 2020 07:50:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 44CED1BF589
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 07:46:11 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B9941BF589
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 07:50:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 40B9E8731E
- for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 07:46:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 844B62035C
+ for <devel@linuxdriverproject.org>; Wed, 29 Jul 2020 07:50:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dgNr7zE-B-RB for <devel@linuxdriverproject.org>;
- Wed, 29 Jul 2020 07:46:10 +0000 (UTC)
+ with ESMTP id g0nT7OogGZLR for <devel@linuxdriverproject.org>;
+ Wed, 29 Jul 2020 07:50:16 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5BDF6870D7
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 07:46:10 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id u10so1946060plr.7
- for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 00:46:10 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 90C7220341
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 07:50:16 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id r4so812179pls.2
+ for <devel@driverdev.osuosl.org>; Wed, 29 Jul 2020 00:50:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=students-iitmandi-ac-in.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=/Kc8o8UqCU991Vni3y/o1KBZOM15r81DSmGMs9PY1+8=;
- b=mUlP7Tu9eDU7kLyU4EQLPV0YBwq3/iDMfDoNkfp4mDqI6AhWyl9f3bBrXvbvQUzBd4
- yPX6O9aseFOlKDRrryBXjhogqmYl6lVMsvX8ei01yY78VJ2A7X74T154+EqzRAWoxPVn
- Js/wpcs25VS1jqgPYaMgO2u0A78P16DviwPms9ni6xfjFF3SfCd0GSQZZ0baBEvT0igi
- FkH0WQy9KjvoKPBxBt0DkPKGPaHSk9UL2wRvQt4c1zfKs/NKKv2dbBnL4JfA0yG7Y7nl
- 5zUDncrpl9+ucYfGw5o8QIQV90s1Y3GC1gfXyKAQhGgZ9v7O4Os0egHsN5dkgk8K/hn2
- XF+Q==
+ bh=zMRvTgAMRZWNdLWhRQAFPO8+G0B9J9srTu2Fp7kXf3M=;
+ b=Pv4PlDSvUs5rLaEoTpzciQ+hhduQt30/O4ei3UMugKzRCA2YIzqApWYMtXjPIAbAIy
+ N/++05hCgbTV/pa4HbohOHBt0ijgJXvMJC1D5y3/n6C2lKEX8O3s6LsFTM3Y9PuDZKe1
+ zkFkllMX8QCXGPDg7Fum69INLU9jom3EDUcDMFslXxykqS3PEwCPUu0sjFx3N2htljLH
+ 3TLAA7+sCo6GEk4uSv3QbxhVjFPsaf+XoRHOPZS1ITTsPeEbgiFQY6wrDZTw7BBMgpOR
+ 3bMfFbfla70s3UMXw/GVZLkMh25P/3DKF8fgIu8P2q8M7j/myo+Yymca7BlT0Tzozi/j
+ RKBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=/Kc8o8UqCU991Vni3y/o1KBZOM15r81DSmGMs9PY1+8=;
- b=rHJ8FQsKVXndFden+xU98TKKUlLKOPc5q+iYZpmmbDHoYpUZkgyVWBBhaKuZgpZCjI
- IjHuPmjQx3x9fwqA8+Wmb94OZVzr4n6zIN7GiWqcJLl/oPdClj4qF+dvERZdquFshq8q
- IbKqPiHS/y8riaHEZ4HJ0xt/TrHSUbKZkmGB3yA+kwE9HgU48aP0/sC8PgksjcaRUke2
- WaLS/USFs7f+5C40RyeIic/8YdTBtUyMXGK+He9BvO4hG23vTF3WF40qS0XLJhpolRHD
- uQvFAAuh6ihKDSBiGEKxGvB1FAHq3y8rKKHqUksGUFnCTLNA/FkXpmjyyNyUIZUP3WxQ
- ioCQ==
-X-Gm-Message-State: AOAM532GY4Bezd59bzvNc9KLdJSFkXo6mJjaoUAzn/4LHv1wit8si0Az
- Xwbih9WITJu8QFvKyoEYZmWqhw==
-X-Google-Smtp-Source: ABdhPJzhgxtOqw+ErBlwCNI6JQ8tLNWtINKyN3jyJYByNMZI9Ab/y1MtsQtE3dc2L689tAVXkn2msQ==
-X-Received: by 2002:a17:902:6b49:: with SMTP id
- g9mr25244131plt.230.1596008769862; 
- Wed, 29 Jul 2020 00:46:09 -0700 (PDT)
+ bh=zMRvTgAMRZWNdLWhRQAFPO8+G0B9J9srTu2Fp7kXf3M=;
+ b=VZfMFMl+dAyNteCkzY/IS9cofISiU+OLNR62FezpEcgh/7fuQtzk0CMjzxRy/b14i3
+ LDCXeQ07a5GUtcxqIFZlFC7Z+0WxIwqvpxuMNWGOdphU3rwJkqZsVpgETuT/2At5KZIg
+ HJNO5Su5B/pOD/fFxkDQYZgYgMkXgMb4qsbLnuZgW7Cs6CYkWa4TQR6X0bdnW6+XF0Fh
+ ipYnryvfFNlcaG011aaLjJoPSEXvhn6zb/uSV6sWgooqnnBACgCKEb5VSgLPiFcouty7
+ lCBNp8DYSBB0qRN+LcfqKoWyvZE7CWesqpUDqw0bHD2SYtqF9yCG6QhCG2b8LUy+U4e1
+ RNDQ==
+X-Gm-Message-State: AOAM532hDcDDpiYIdMbuxMKJqPyh5nmmMxvvuu/K/jF0Mz5s+f3hSZuf
+ zpXT8KyRH2p21XbbarQQ0S9xXQ==
+X-Google-Smtp-Source: ABdhPJwtuQIMJfXX6BRy9J6K7RurkEhxzJagqM0sTWR72u8s/9BgM6XzZJ/ufJM/E4li4jFFyGNZ1w==
+X-Received: by 2002:a17:90a:c693:: with SMTP id
+ n19mr8647892pjt.53.1596009016146; 
+ Wed, 29 Jul 2020 00:50:16 -0700 (PDT)
 Received: from devil-VirtualBox.www.tendawifi.com ([103.198.174.215])
- by smtp.gmail.com with ESMTPSA id o16sm1424762pfu.188.2020.07.29.00.45.57
+ by smtp.gmail.com with ESMTPSA id a67sm1406198pfa.81.2020.07.29.00.50.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2020 00:46:09 -0700 (PDT)
+ Wed, 29 Jul 2020 00:50:15 -0700 (PDT)
 From: Ankit Baluni <b18007@students.iitmandi.ac.in>
-To: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
- florian.c.schilhabel@googlemail.com, rohitsarkar5398@gmail.com,
- mukadr@gmail.com, straube.linux@gmail.com, pterjan@google.com
-Subject: [PATCH v2] Staging: rtl8712: Fixed a coding sytle issue
-Date: Wed, 29 Jul 2020 13:15:41 +0530
-Message-Id: <20200729074541.1972-1-b18007@students.iitmandi.ac.in>
+To: mchehab@kernel.org, gregkh@linuxfoundation.org,
+ sakari.ailus@linux.intel.com, andriy.shevchenko@linux.intel.com
+Subject: [PATCH v3] Staging: media: atomisp: fixed a brace coding sytle issue
+Date: Wed, 29 Jul 2020 13:19:50 +0530
+Message-Id: <20200729074950.2104-1-b18007@students.iitmandi.ac.in>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200728213231.26626-1-b18007@students.iitmandi.ac.in>
-References: <20200728213231.26626-1-b18007@students.iitmandi.ac.in>
+In-Reply-To: <20200728225935.28880-1-b18007@students.iitmandi.ac.in>
+References: <20200728225935.28880-1-b18007@students.iitmandi.ac.in>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -90,39 +89,44 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Ankit Baluni <b18007@students.iitmandi.ac.in>
+ b18007@students.iitmandi.ac.in, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Removed braces for a 'if' condition as it contain only single line &
+Removed braces for a 'if' condition as it contain only single line & 
 there is no need for braces for such case according to coding style
 rules.
 
 Signed-off-by: Ankit Baluni <b18007@students.iitmandi.ac.in>
----
-Change in -v2:
-	-Remove space before ':' in subject .
 
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 3 +--
+---
+Changes in v2:
+	-Added more description about the patch.
+	-Added space before the symobol '<' in 'From'
+	 and 'Signed-off-by' line.
+Changes in v3:
+	-Removed space before ':' in subject line.
+
+ drivers/staging/media/atomisp/pci/atomisp_cmd.c | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index c6f6ccd060bb..df6ae855f3c1 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -238,9 +238,8 @@ static char *translate_scan(struct _adapter *padapter,
- 	/* parsing HT_CAP_IE */
- 	p = r8712_get_ie(&pnetwork->network.IEs[12], _HT_CAPABILITY_IE_,
- 			 &ht_ielen, pnetwork->network.IELength - 12);
--	if (p && ht_ielen > 0) {
-+	if (p && ht_ielen > 0)
- 		ht_cap = true;
--	}
- 	/* Add the protocol name */
- 	iwe.cmd = SIOCGIWNAME;
- 	if (r8712_is_cckratesonly_included(pnetwork->network.rates)) {
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+index 8ea65bef35d2..28b96b66f4f3 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+@@ -4981,9 +4981,8 @@ enum mipi_port_id __get_mipi_port(struct atomisp_device *isp,
+ 	case ATOMISP_CAMERA_PORT_SECONDARY:
+ 		return MIPI_PORT1_ID;
+ 	case ATOMISP_CAMERA_PORT_TERTIARY:
+-		if (MIPI_PORT1_ID + 1 != N_MIPI_PORT_ID) {
++		if (MIPI_PORT1_ID + 1 != N_MIPI_PORT_ID)
+ 			return MIPI_PORT1_ID + 1;
+-		}
+ 	/* fall through */
+ 	default:
+ 		dev_err(isp->dev, "unsupported port: %d\n", port);
 -- 
 2.25.1
 
