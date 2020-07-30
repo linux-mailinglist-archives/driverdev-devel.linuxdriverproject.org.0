@@ -1,76 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 379F9233838
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jul 2020 20:14:59 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4AA952338D8
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jul 2020 21:16:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D3E2586E35;
-	Thu, 30 Jul 2020 18:14:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D91652305A;
+	Thu, 30 Jul 2020 19:16:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6EoXTGRNgKU5; Thu, 30 Jul 2020 18:14:56 +0000 (UTC)
+	with ESMTP id k2uQzEAHWi+D; Thu, 30 Jul 2020 19:16:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A8AA586DEE;
-	Thu, 30 Jul 2020 18:14:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1307F22CC6;
+	Thu, 30 Jul 2020 19:16:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 115F71BF401
- for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 18:14:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A417E1BF376
+ for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 19:15:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0DA5A8855C
- for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 18:14:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A02A188523
+ for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 19:15:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5SNRVl9quOHk for <devel@linuxdriverproject.org>;
- Thu, 30 Jul 2020 18:14:53 +0000 (UTC)
+ with ESMTP id lKDibnMyMmZK for <devel@linuxdriverproject.org>;
+ Thu, 30 Jul 2020 19:15:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 82C60884C3
- for <devel@driverdev.osuosl.org>; Thu, 30 Jul 2020 18:14:53 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id t10so9561442plz.10
- for <devel@driverdev.osuosl.org>; Thu, 30 Jul 2020 11:14:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=R3XH19x0j9mpAwBbmALhrl+K1g6ws6AmAQc8yDsKxwc=;
- b=Rd+sngN9fVYhzl82nqy0DTTR682+o7qxhCC/+ghYliHvyO1hzJDTm0Q4K9N2e2sjvd
- N6jmVrVP1K+zH7o8lQSP7igJY1O84vbHMVMFz6s9vC7DFwyG9aRzqW/9TFWhy9bGwJDD
- 8rWbAMt/fh9RSp/q+tWRyrXHkaKeB34igvVHo=
+Received: from mail-vk1-f193.google.com (mail-vk1-f193.google.com
+ [209.85.221.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B891A87F5C
+ for <devel@driverdev.osuosl.org>; Thu, 30 Jul 2020 19:15:56 +0000 (UTC)
+Received: by mail-vk1-f193.google.com with SMTP id b6so4928354vkb.6
+ for <devel@driverdev.osuosl.org>; Thu, 30 Jul 2020 12:15:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=A4NiYN/fL3K8jec2SXRSUpaYIgmwzb4CRMYaIZHw2Wc=;
+ b=Mo+shIuYgxTD570H7jADBYlG25BTBtzrCa/DMP1/ZnB6du6o7y6Iu5HbWzAN4ikxdt
+ uh0vY0TUwlLo/4mK3aDD1e2p9cYTU8AyeBViPTFM257sEPZ1poyvbt5TYlepaj0qNtEt
+ T6A5+SmbejL5NQla83ikEicCbOq8JCHEIK5sTYxlIwibfj4+c4mw1IuGemr3C8pipv3c
+ CUieCxgTJtNauBFRebXeOJmUf8NY2ibViaw3h42+IoleuNICpPq1BwhTUxp773yqsknX
+ 53x9EuiMUs4Xa7aTN7i0TnOJM4c476XqN/ron4MOlLkMmKydzur14NSGoQeUJekKCsc+
+ NoRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=R3XH19x0j9mpAwBbmALhrl+K1g6ws6AmAQc8yDsKxwc=;
- b=qXfY+dR1DfVZSnJ6GBepuvQ/Xv0AJ4VYQEsx/AJ8q9p0C4HJv0ZkxV9T2bmhVILb1y
- sfx0tjkDNqITfM0PYETL1OQYxXOqtZsaCZsm8emkroPIqP0tWMDISHUyfkknmesOxkS4
- QzyRoad3v9i4y1BCVrwA75OWeylLKXwTotJektpprnkmuJAMz2iXyBN47+0v99LNbRWY
- E+Ryp415rL2q3wEQk1PHxKeCWyk1ebugaKcbYHEGsqCQ7I3O2eT/LlZ8RH860Dz0wsyA
- yH8I+S+8MqBQZnkVDMKpWzAwQCjsec68S7i+6tiGOcFTG4xooSqQayhyv3XLondOeZ/Z
- pL1g==
-X-Gm-Message-State: AOAM5329zXsx40VymisFo0nAM1+PYMWBCuWrCvrnw2TDOGD0Dm40NlKw
- 6jscbkbNjTMopkrto72QRMPYkA==
-X-Google-Smtp-Source: ABdhPJxh4YSRJo64KtvfOflwHcynTg8W1GmMjR98OKYM43hau9SWD31eOcjpDevGju3jfuntinpu7g==
-X-Received: by 2002:a17:90a:884:: with SMTP id v4mr318901pjc.27.1596132893170; 
- Thu, 30 Jul 2020 11:14:53 -0700 (PDT)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id b63sm7067818pfg.43.2020.07.30.11.14.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Jul 2020 11:14:52 -0700 (PDT)
-Date: Thu, 30 Jul 2020 11:14:50 -0700
-From: Kees Cook <keescook@chromium.org>
-To: Thomas Gleixner <tglx@linutronix.de>
-Subject: Re: [PATCH 0/3] Modernize tasklet callback API
-Message-ID: <202007301113.45D24C9D@keescook>
-References: <20200716030847.1564131-1-keescook@chromium.org>
- <87h7tpa3hg.fsf@nanos.tec.linutronix.de>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=A4NiYN/fL3K8jec2SXRSUpaYIgmwzb4CRMYaIZHw2Wc=;
+ b=eOdzptXfevy9/p5FonFU6q0AUY8WJI8QAcBrVDqg1FKAoLBXd9Z5p2+EcdJI4pFy+v
+ yqpwQkHW/+9+SF6Rad2uUgXBosH9QLXxNZ2Xj8z9Y3K+IdewSWzQjuIEbAKPTi7mzAdS
+ jDYQdipdS2vnHPSMpY9/rXp6R+3jDcFqM4rHghmyeJUjDSRElkX4KCZ6zvx9yBxWV8t4
+ gzkGUVqZH4We3va/RGw4HhdaEmZNlzRsoH2iK+UE/WZbDF4risDkeZsTtbC8Q1R41Kro
+ Lx6jW82nr0aVhyrLOG0bRxnvK7EiwiLwqSwkkpbODdF/GngafRhMY6iSJ+boIU/dDLNM
+ FZMw==
+X-Gm-Message-State: AOAM531jM0eX1fnpoIqcoJzZ4eelRrLOzHcUhLl7H50B9dmpPWmpk5Eg
+ lJcJgrfpzoihGfC3n9JLLttQcL1euOxcIc180n9aAA==
+X-Google-Smtp-Source: ABdhPJygcFQl2Dx9t0fnHvdutxsbUiu3tCDlK/opODfvCZT9YJsnyIQJdPdlNHeffyQM0HQhM6iIbwxUr1yjzgBWlLA=
+X-Received: by 2002:a1f:96c7:: with SMTP id y190mr310774vkd.5.1596136555382;
+ Thu, 30 Jul 2020 12:15:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87h7tpa3hg.fsf@nanos.tec.linutronix.de>
+References: <20200716024527.4009170-1-surenb@google.com>
+ <CAEXW_YTps99nspdCtvMi6hO7kbpz8PgOH--g4d2-8gticrs4OQ@mail.gmail.com>
+In-Reply-To: <CAEXW_YTps99nspdCtvMi6hO7kbpz8PgOH--g4d2-8gticrs4OQ@mail.gmail.com>
+From: Suren Baghdasaryan <surenb@google.com>
+Date: Thu, 30 Jul 2020 12:15:44 -0700
+Message-ID: <CAJuCfpF7+8zex72b=sPkFjHu+emPBwzVYLdA69FqBRd2ieVVmw@mail.gmail.com>
+Subject: Re: [PATCH 1/1] staging: android: ashmem: Fix lockdep warning for
+ write operation
+To: Joel Fernandes <joel@joelfernandes.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,58 +81,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
- alsa-devel@alsa-project.org, Oscar Carter <oscar.carter@gmx.com>,
- kernel-hardening@lists.openwall.com, Peter Zijlstra <peterz@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- Allen Pais <allen.lkml@gmail.com>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, linux-input@vger.kernel.org,
- kgdb-bugreport@lists.sourceforge.net, Romain Perier <romain.perier@gmail.com>,
- Will Deacon <will@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ Hillf Danton <hdanton@sina.com>, kernel-team <kernel-team@android.com>,
+ Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>, Michal Hocko <mhocko@kernel.org>,
+ Eric Biggers <ebiggers@kernel.org>, linux-mm <linux-mm@kvack.org>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Hridya Valsaraju <hridya@google.com>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-[heavily trimmed CC list because I think lkml is ignoring this
-thread...]
-
-On Thu, Jul 30, 2020 at 09:03:55AM +0200, Thomas Gleixner wrote:
-> Kees,
-> 
-> Kees Cook <keescook@chromium.org> writes:
-> > This is the infrastructure changes to prepare the tasklet API for
-> > conversion to passing the tasklet struct as the callback argument instead
-> > of an arbitrary unsigned long. The first patch details why this is useful
-> > (it's the same rationale as the timer_struct changes from a bit ago:
-> > less abuse during memory corruption attacks, more in line with existing
-> > ways of doing things in the kernel, save a little space in struct,
-> > etc). Notably, the existing tasklet API use is much less messy, so there
-> > is less to clean up.
+On Wed, Jul 29, 2020 at 8:24 PM Joel Fernandes <joel@joelfernandes.org> wrote:
+>
+> On Wed, Jul 15, 2020 at 10:45 PM Suren Baghdasaryan <surenb@google.com> wrote:
 > >
-> > It's not clear to me which tree this should go through... Greg since it
-> > starts with a USB clean-up, -tip for timer or interrupt, or if I should
-> > just carry it. I'm open to suggestions, but if I don't hear otherwise,
-> > I'll just carry it.
+> > syzbot report [1] describes a deadlock when write operation against an
+> > ashmem fd executed at the time when ashmem is shrinking its cache results
+> > in the following lock sequence:
 > >
-> > My goal is to have this merged for v5.9-rc1 so that during the v5.10
-> > development cycle the new API will be available. The entire tree of
-> > changes is here[1] currently, but to split it up by maintainer the
-> > infrastructure changes need to be landed first.
+> > Possible unsafe locking scenario:
 > >
-> > Review and Acks appreciated! :)
-> 
-> I'd rather see tasklets vanish from the planet completely, but that's
-> going to be a daring feat. So, grudgingly:
+> >         CPU0                    CPU1
+> >         ----                    ----
+> >    lock(fs_reclaim);
+> >                                 lock(&sb->s_type->i_mutex_key#13);
+> >                                 lock(fs_reclaim);
+> >    lock(&sb->s_type->i_mutex_key#13);
+> >
+> > kswapd takes fs_reclaim and then inode_lock while generic_perform_write
+> > takes inode_lock and then fs_reclaim. However ashmem does not support
+> > writing into backing shmem with a write syscall. The only way to change
+> > its content is to mmap it and operate on mapped memory. Therefore the race
+> > that lockdep is warning about is not valid. Resolve this by introducing a
+> > separate lockdep class for the backing shmem inodes.
+> >
+> > [1]: https://lkml.kernel.org/lkml/0000000000000b5f9d059aa2037f@google.com/
+> >
+> > Signed-off-by: Suren Baghdasaryan <surenb@google.com>
+> > ---
+>
+> Once Eric's nits are resolved:
+>
+> Reviewed-by: Joel Fernandes (Google) <joel@joelfernandes.org>
 
-Understood! I will update the comments near the tasklet API.
+Thanks Joel!
+I'm fixing the nits and will report the patch shortly. One note about
+adding the "Fixes: " tag - this is a fix for a false positive lockdep
+warning and it's unclear which patch should be quoted here (I could
+not find a clear cause that started this warning). In similar
+situations, for example here: https://lkml.org/lkml/2020/6/15/958
+developers seem to skip that tag. So I'll do the same.
 
-> Acked-by: Thomas Gleixner <tglx@linutronix.de>
-
-Thanks!
-
--- 
-Kees Cook
+>
+> Thanks.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
