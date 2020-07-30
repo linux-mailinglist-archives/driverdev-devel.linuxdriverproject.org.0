@@ -1,64 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA4AF232F03
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jul 2020 10:57:42 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 896B4232F07
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jul 2020 10:59:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2CB1E241AE;
-	Thu, 30 Jul 2020 08:57:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B09F86978;
+	Thu, 30 Jul 2020 08:59:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UuhaEFvRe7BH; Thu, 30 Jul 2020 08:57:39 +0000 (UTC)
+	with ESMTP id OjcfrqgrhXIS; Thu, 30 Jul 2020 08:59:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A79E9220A9;
-	Thu, 30 Jul 2020 08:57:38 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D4A2A86972;
+	Thu, 30 Jul 2020 08:59:22 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4FAFC1BF489
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 30 Jul 2020 08:57:36 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2194B1BF345
+ for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 08:59:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4C32B870A9
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 30 Jul 2020 08:57:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1DE628805C
+ for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 08:59:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d82znQUTqMYU
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 30 Jul 2020 08:57:35 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 73C7586C3A
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 30 Jul 2020 08:57:35 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BA220206E6;
- Thu, 30 Jul 2020 08:57:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596099455;
- bh=tynLa/+J3ayFr4WdQpJKnbHExIeegUOAxTPSGQvzMa4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ExO1+JBBmdpefXIyIv2fCFJj7uQvsdiqTqdTr8CZ6y8zi6YH8jScVYcqpcljHSmAh
- dXxmpYk9zQOblC2Q9Gf6pGaBnpl8RObxWHmTbATUYx0nY3Y5wFMoinvk/jHc6gzEcJ
- d3zpQ6VxV1Pk7hh6vbLyU1I5Z/P7HCccNwzoHw0M=
-Date: Thu, 30 Jul 2020 10:57:24 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Christian.Gromm@microchip.com
-Subject: Re: [PATCH] staging: most: usb: rename most_usb.ko
-Message-ID: <20200730085724.GB826534@kroah.com>
-References: <1596040728-3353-1-git-send-email-christian.gromm@microchip.com>
- <20200729170313.GA3668028@kroah.com>
- <d7858a29d2ef846a61bc48043b40c9956965189f.camel@microchip.com>
+ with ESMTP id RJ-rkMKlaKdy for <devel@linuxdriverproject.org>;
+ Thu, 30 Jul 2020 08:59:19 +0000 (UTC)
+X-Greylist: delayed 19:01:31 by SQLgrey-1.7.6
+Received: from relay1-d.mail.gandi.net (relay1-d.mail.gandi.net
+ [217.70.183.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4C677882E1
+ for <devel@driverdev.osuosl.org>; Thu, 30 Jul 2020 08:59:18 +0000 (UTC)
+X-Originating-IP: 176.88.148.196
+Received: from [192.168.1.3] (unknown [176.88.148.196])
+ (Authenticated sender: cengiz@kernel.wtf)
+ by relay1-d.mail.gandi.net (Postfix) with ESMTPSA id 9FA0C24000C;
+ Thu, 30 Jul 2020 08:59:13 +0000 (UTC)
+From: Cengiz Can <cengiz@kernel.wtf>
+To: Dan Carpenter <dan.carpenter@oracle.com>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 30 Jul 2020 11:59:10 +0300
+Message-ID: <1739ef25b30.2bfa.85c738e3968116fc5c0dc2de74002084@kernel.wtf>
+In-Reply-To: <20200730084545.GB1793@kadam>
+References: <20200729135636.9220-1-cengiz@kernel.wtf>
+ <CAHp75VfM3OapAkYJ-sN-MG2yuGDqaqDjc6p0gXT9cHYgnH+5LQ@mail.gmail.com>
+ <20200730084545.GB1793@kadam>
+User-Agent: AquaMail/1.25.2-1666 (build: 102500007)
+Subject: Re: [PATCH] staging: atomisp: move null check to earlier point
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <d7858a29d2ef846a61bc48043b40c9956965189f.camel@microchip.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,69 +61,99 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 30, 2020 at 08:27:29AM +0000, Christian.Gromm@microchip.com wrote:
-> On Wed, 2020-07-29 at 19:03 +0200, Greg KH wrote:
-> > EXTERNAL EMAIL: Do not click links or open attachments unless you
-> > know the content is safe
-> > 
-> > On Wed, Jul 29, 2020 at 06:38:48PM +0200, Christian Gromm wrote:
-> > > To avoid a name conflict when adding the usb module to the
-> > > driver's directory in the stable branch, this patch simply
-> > > renames the kernel object.
-> > > 
-> > > Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-> > > Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > > ---
-> > >  drivers/staging/most/usb/{most_usb.ko => most-usb.ko} | Bin
-> > >  1 file changed, 0 insertions(+), 0 deletions(-)
-> > >  rename drivers/staging/most/usb/{most_usb.ko => most-usb.ko}
-> > > (100%)
-> > > 
-> > > diff --git a/drivers/staging/most/usb/most_usb.ko
-> > > b/drivers/staging/most/usb/most-usb.ko
-> > > similarity index 100%
-> > > rename from drivers/staging/most/usb/most_usb.ko
-> > > rename to drivers/staging/most/usb/most-usb.ko
-> > 
-> > You renamed a binary file??? That is not in the source tree?
-> >   
-> 
-> I know. And I was kind of confused that you chose this path (1).
-> I even had to mess up my git to do that. 
-> 
-> > 
-> > No, I mean make the patch move the .c file from staging to the
-> > drivers/most directory and adjust the Kconfig/Makefiles for that
-> > movement.
-> > 
-> 
-> Huh, but this is exactly what I wanted to do in the first place.
-> Add it to the stable branch and change the staging files to
-> avoid the conflict.
-> But then you told me to not touch the staging files. Remember?
 
-Yes, but that would have made it impossible for people to review.
 
-> Anyways, here is what I am going to do now:
-> add the usb file to the stable branch, change the name of the
-> .ko inside the stable branch and then once the staging files
-> are removed, I'll rename it again to get the old name back.
-> 
-> Does this make sense now?
+On July 30, 2020 11:48:06 Dan Carpenter <dan.carpenter@oracle.com> wrote:
 
-Yes, but I still think that's harder, just do it the original way you
-wanted to in the first place.  Now that people have had a chance to
-review it, no one has objected, so let's just do it the simple way.
+> On Wed, Jul 29, 2020 at 06:13:44PM +0300, Andy Shevchenko wrote:
+>> On Wed, Jul 29, 2020 at 5:00 PM Cengiz Can <cengiz@kernel.wtf> wrote:
+>>>
+>>> `find_gmin_subdev` function that returns a pointer to `struct
+>>> gmin_subdev` can return NULL.
+>>>
+>>> In `gmin_v2p8_ctrl` there's a call to this function but the possibility
+>>> of a NULL was not checked before its being dereferenced. ie:
+>>>
+>>> ```
+>>> /* Acquired here --------v */
+>>> struct gmin_subdev *gs = find_gmin_subdev(subdev);
+>>> int ret;
+>>> int value;
+>>>
+>>> /*  v------Dereferenced here */
+>>> if (gs->v2p8_gpio >= 0) {
+>>>  pr_info("atomisp_gmin_platform: 2.8v power on GPIO %d\n",
+>>>          gs->v2p8_gpio);
+>>>  ret = gpio_request(gs->v2p8_gpio, "camera_v2p8");
+>>>  if (!ret)
+>>>          ret = gpio_direction_output(gs->v2p8_gpio, 0);
+>>>  if (ret)
+>>>          pr_err("V2P8 GPIO initialization failed\n");
+>>> }
+>>> ```
+>>>
+>>> I have moved the NULL check before deref point.
+>>
+>> "Move the NULL check..."
+>> See Submitting Patches documentation how to avoid "This patch", "I", "we", etc.
 
-thanks,
+Noted. Sorry. I'm not a native English speaker.
 
-greg k-h
+>>
+>
+> I always feel like this is a pointless requirement.  We're turning into
+> bureaucracts.
+>
+>>
+>>> diff --git a/drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c 
+>>> b/drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c
+>>> index 0df46a1af5f0..8e9c5016f299 100644
+>>> --- a/drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c
+>>> +++ b/drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c
+>>> @@ -871,6 +871,11 @@ static int gmin_v2p8_ctrl(struct v4l2_subdev *subdev, 
+>>> int on)
+>>>  int ret;
+>>>  int value;
+>>>
+>>> +       if (!gs) {
+>>> +               pr_err("Unable to find gmin subdevice\n");
+>>
+>>> +               return -EINVAL;
+>>
+>> And here is a change of semantics...
+>
+> Yeah.  The change of semantics should be documented in the commit
+> message, but it's actually correct.  I discussed this with Mauro earlier
+> but my bug reporting script didn't CC a mailing list and I didn't
+> catch it.  Mauro suggested:
+>
+>    53  > Yet, it could make sense to have something like:
+>    54  >
+>    55  >       if (WARN_ON(!gs))
+>    56  >               return -ENODEV;
+>    57  >
+>    58  > at the beginning of the functions that call find_gmin_subdev().
+
+I will be updating v2 according to this.
+
+>
+> regards,
+> dan carpenter
+
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
