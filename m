@@ -1,62 +1,98 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D4BF233552
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jul 2020 17:27:37 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8B0223363C
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 Jul 2020 18:02:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1D8B42045B;
-	Thu, 30 Jul 2020 15:27:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CDFDD86CFD;
+	Thu, 30 Jul 2020 16:02:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r3J0Tu7WfQ2f; Thu, 30 Jul 2020 15:27:34 +0000 (UTC)
+	with ESMTP id 6fy8DU5tMP5C; Thu, 30 Jul 2020 16:02:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6142D203D3;
-	Thu, 30 Jul 2020 15:27:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 61E9B86CAE;
+	Thu, 30 Jul 2020 16:02:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D5B231BF3F6
- for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 15:27:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D44A61BF3F6
+ for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 16:02:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D1C3B86BA3
- for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 15:27:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CB89C86CAE
+ for <devel@linuxdriverproject.org>; Thu, 30 Jul 2020 16:02:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id awrnUmYAczZR for <devel@linuxdriverproject.org>;
- Thu, 30 Jul 2020 15:27:27 +0000 (UTC)
+ with ESMTP id 0ftcgoDB4ez7 for <devel@linuxdriverproject.org>;
+ Thu, 30 Jul 2020 16:02:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5A2D786B89
- for <devel@driverdev.osuosl.org>; Thu, 30 Jul 2020 15:27:27 +0000 (UTC)
-IronPort-SDR: iysZfWlEFnrHyOD1iF21KuzNXCRuiY72Ks5tWRvOz7MCC3Zt+5poeBHD2qRy61mkNrHiUlModx
- L+TpmtlajvWQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9698"; a="213153621"
-X-IronPort-AV: E=Sophos;i="5.75,414,1589266800"; d="scan'208";a="213153621"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jul 2020 08:27:26 -0700
-IronPort-SDR: g26yV/Su8scGfgM7S0/8ZPISJHutMfb1t1jnXeOJyXX3Naq2QYt6irX9HUQsLHTPvr8f9Yacrr
- zCXStoHCMcTA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,414,1589266800"; d="scan'208";a="290912874"
-Received: from black.fi.intel.com ([10.237.72.28])
- by orsmga006.jf.intel.com with ESMTP; 30 Jul 2020 08:27:25 -0700
-Received: by black.fi.intel.com (Postfix, from userid 1003)
- id A8375119; Thu, 30 Jul 2020 18:27:24 +0300 (EEST)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Sven Van Asbroeck <TheSven73@gmail.com>, devel@driverdev.osuosl.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v1] staging: fieldbus: Use %pM format specifier for MAC
- addresses
-Date: Thu, 30 Jul 2020 18:27:24 +0300
-Message-Id: <20200730152724.39250-1-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.27.0
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BA8F386447
+ for <devel@driverdev.osuosl.org>; Thu, 30 Jul 2020 16:02:24 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212])
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1k1B0g-0000qJ-T6; Thu, 30 Jul 2020 16:02:22 +0000
+To: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+ "Greg Kroah-Hartman <gregkh"@linuxfoundation.org,
+ Vaibhav Agarwal <vaibhav.sr@gmail.com>, Mark Greer <mgreer@animalcreek.com>,
+ greybus-dev@lists.linaro.org,
+ "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
+From: Colin Ian King <colin.king@canonical.com>
+Autocrypt: addr=colin.king@canonical.com; prefer-encrypt=mutual; keydata=
+ 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
+Subject: issue with uninitialized value used in a comparison in
+ gbcodec_mixer_dapm_ctl_put
+Message-ID: <7da6363c-9423-2b9f-029a-395cc8a932d7@canonical.com>
+Date: Thu, 30 Jul 2020 17:02:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,59 +105,100 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Convert to %pM instead of using custom code.
+Hi,
 
-While here, replace one time use structure by buffer on stack.
+Static analysis with Coverity has detected an uninitialized value being
+used in a comparison.  The error was detected on a recent change to
+drivers/staging/greybus/audio_topology.c however the issue actually
+dates back to the original commit:
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/staging/fieldbus/anybuss/hms-profinet.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
+commit 6339d2322c47f4b8ebabf9daf0130328ed72648b
+Author: Vaibhav Agarwal <vaibhav.agarwal@linaro.org>
+Date:   Wed Jan 13 14:07:51 2016 -0700
 
-diff --git a/drivers/staging/fieldbus/anybuss/hms-profinet.c b/drivers/staging/fieldbus/anybuss/hms-profinet.c
-index 31c43a0a5776..505480fb281d 100644
---- a/drivers/staging/fieldbus/anybuss/hms-profinet.c
-+++ b/drivers/staging/fieldbus/anybuss/hms-profinet.c
-@@ -26,10 +26,6 @@
-  * exactly as advertised.
-  */
- 
--struct msg_mac_addr {
--	u8 addr[6];
--};
--
- struct profi_priv {
- 	struct fieldbus_dev fbdev;
- 	struct anybuss_client *client;
-@@ -59,17 +55,13 @@ static int profi_id_get(struct fieldbus_dev *fbdev, char *buf,
- 			size_t max_size)
- {
- 	struct profi_priv *priv = container_of(fbdev, struct profi_priv, fbdev);
--	struct msg_mac_addr response;
-+	u8 mac[ETH_ALEN];
- 	int ret;
- 
--	ret = anybuss_recv_msg(priv->client, 0x0010, &response,
--			       sizeof(response));
-+	ret = anybuss_recv_msg(priv->client, 0x0010, &mac, sizeof(mac));
- 	if (ret < 0)
- 		return ret;
--	return snprintf(buf, max_size, "%02X:%02X:%02X:%02X:%02X:%02X\n",
--		response.addr[0], response.addr[1],
--		response.addr[2], response.addr[3],
--		response.addr[4], response.addr[5]);
-+	return snprintf(buf, max_size, "%pM\n", mac);
- }
- 
- static bool profi_enable_get(struct fieldbus_dev *fbdev)
--- 
-2.27.0
+    greybus: audio: Add topology parser for GB codec
+
+The analysis is as follows:
+
+425 static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+426                                      struct snd_ctl_elem_value
+*ucontrol)
+427 {
+428        int ret, wi, max, connect;
+429        unsigned int mask, val;
+430        struct gb_audio_ctl_elem_info *info;
+431        struct gbaudio_ctl_pvt *data;
+
+   1. var_decl: Declaring variable gbvalue without initializer.
+432        struct gb_audio_ctl_elem_value gbvalue;
+433        struct gbaudio_module_info *module;
+434        struct snd_soc_dapm_widget_list *wlist =
+snd_kcontrol_chip(kcontrol);
+435        struct snd_soc_dapm_widget *widget = wlist->widgets[0];
+436        struct device *codec_dev = widget->dapm->dev;
+437        struct gbaudio_codec_info *gb = dev_get_drvdata(codec_dev);
+438        struct gb_bundle *bundle;
+439
+
+   2. Condition 0 /* __builtin_types_compatible_p() */, taking false branch.
+   3. Condition 1 /* __builtin_types_compatible_p() */, taking true branch.
+   4. Falling through to end of if statement.
+   5. Condition !!branch, taking false branch.
+   6. Condition ({...; !!branch;}), taking false branch.
+
+440        dev_dbg(codec_dev, "Entered %s:%s\n", __func__,
+kcontrol->id.name);
+441        module = find_gb_module(gb, kcontrol->id.name);
+
+   7. Condition !module, taking false branch.
+442        if (!module)
+443                return -EINVAL;
+444
+445        data = (struct gbaudio_ctl_pvt *)kcontrol->private_value;
+446        info = (struct gb_audio_ctl_elem_info *)data->info;
+
+   8. Condition 0 /* !!(!__builtin_types_compatible_p() &&
+!__builtin_types_compatible_p()) */, taking false branch.
+447        bundle = to_gb_bundle(module->dev);
+448
+
+   9. Condition data->vcount == 2, taking true branch.
+449        if (data->vcount == 2)
+450                dev_warn(widget->dapm->dev,
+451                         "GB: Control '%s' is stereo, which is not
+supported\n",
+452                         kcontrol->id.name);
+453
+454        max = le32_to_cpu(info->value.integer.max);
+455        mask = (1 << fls(max)) - 1;
+456        val = ucontrol->value.integer.value[0] & mask;
+
+   10. Condition !!val, taking true branch.
+457        connect = !!val;
+458
+459        /* update ucontrol */
+
+Uninitialized scalar variable (UNINIT)
+   11. uninit_use: Using uninitialized value gbvalue.value.integer_value[0].
+460        if (gbvalue.value.integer_value[0] != val) {
+
+The gbvalue.value.integer_value[0] read is bogus since gbvalue was
+declared on the stack but was not initialized.  There seems to be no
+where that sets this data. I'm assuming most of the time that the
+comparison works because the garbage value is different from val and so
+the code in the if stanza is executed.
+
+Anyhow, I'm unsure what the original intent of the code was, so I've not
+attempted to fix this.
+
+Colin
+
 
 _______________________________________________
 devel mailing list
