@@ -2,73 +2,77 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A23F23459B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jul 2020 14:21:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 88D4823460E
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jul 2020 14:44:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C98B186AB7;
-	Fri, 31 Jul 2020 12:21:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B5F8486ACA;
+	Fri, 31 Jul 2020 12:44:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BTPbGSU7PeZn; Fri, 31 Jul 2020 12:21:07 +0000 (UTC)
+	with ESMTP id QSjxmZ69a0Tw; Fri, 31 Jul 2020 12:44:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E1809869E2;
-	Fri, 31 Jul 2020 12:21:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 27D438623F;
+	Fri, 31 Jul 2020 12:44:56 +0000 (UTC)
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7D73E1BF28F
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id AC01D1BF28F
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 12:21:05 +0000 (UTC)
+ Fri, 31 Jul 2020 12:44:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 66E0D2154A
+ by hemlock.osuosl.org (Postfix) with ESMTP id A85C8886D4
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 12:21:05 +0000 (UTC)
+ Fri, 31 Jul 2020 12:44:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v-9B7dm+i0Lj
+ with ESMTP id 0OVYz3D0uAmK
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 12:21:04 +0000 (UTC)
+ Fri, 31 Jul 2020 12:44:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from esa2.microchip.iphmx.com (esa2.microchip.iphmx.com
  [68.232.149.84])
- by silver.osuosl.org (Postfix) with ESMTPS id E266520396
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D4F0A8869D
  for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 12:21:03 +0000 (UTC)
+ Fri, 31 Jul 2020 12:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1596198063; x=1627734063;
+ t=1596199493; x=1627735493;
  h=from:to:cc:subject:date:message-id:mime-version;
  bh=cDNn5Pt2cvBTjI3feen1vNEeXzc+hlnJwACYVaaQluM=;
- b=Cuqa7kbcmhIq4yXq54mggH0jtNvVzjSQZ/luE+MdTTJejHH5x0Cn8Pet
- 6RL8LyopYROQ6wPfySdDoZOV/h5kSeo+7vHDUn6VPDy1QbFNOueqp9Sr8
- /I2MFqcXjRIcHu078lHzOCLRakhF8qQ8GPXT7LEZvc7a+Oiz2yuvipE+h
- EffFQz+ZOyuR4W6sP7XfbpzLxu3wikQWk3GetE7W05PC6LK+gFL/wVKGT
- 4ISAeyhZWJ8IE1KkVjD7IsGzcwHFGfRf522eUt+n1Nk+f2trCdY4d4VWQ
- CReBP8kIXMnPD1kPrsn5wIT2zF+Uap7SxRmc8Zz9zCOJxntr4W7XZ2Axs Q==;
-IronPort-SDR: 5uCtydXQXBF/8gIe/f+KCO4huaguvl+tzo8PE3ybjA0jhBBomxUAg9KjpgNZ4oEmgpf6CVDT6T
- i3LE/R5lC/k5uQJc1rR8H4NQfxoU9/tYF/fPUNGvLxa+V9lxPV/62wcBNCC7+/MVBvjwTX6YRR
- 4wg92ZomXkgt9OTta7jYNlVGRstVaobw1nq4QI53F/t28gCUfRMujYU7i0A1AASAH8LEWvW3I5
- 6v/A4DWuv3grnithyQ458vcpViSm1UZVm7znViaSDooW9tyPdg9hfSHPHiBBmOXF8jhnH47JDH
- ZVI=
-X-IronPort-AV: E=Sophos;i="5.75,418,1589266800"; d="scan'208";a="83930404"
+ b=yHrRYS9V8iKfTXdTK8OVfrj4D5Tt85sW6HRwa3seRmIqXYPK3shvKY0l
+ 9MiKwP8bGm7YTRpvNSNs8FalOG3QRnNR+xzF7cC3XgWjz6bAEOZ9MbPTz
+ uuGzmSdalEBVTW4oVn1nqicogtXOcpy+1UBWyxmS4WOLZ3IYQ471E9Ecy
+ ynZVWESCP3/iFEAqDs2s1+V6gbsNly0vc5sC2iGEnGcA9U7CPblh5AY/C
+ CkWFSD6WFc44gwQfX5SX2nZXfQEMZTf6oQ/f6tPG/jcBkzoy6BcDn3ZE6
+ KcTps6QBd8Dlg5nQqZFk6Uer2sIyktcNREjENu45MgFNkuuJ016jB2QzZ Q==;
+IronPort-SDR: xTovZtwhw0+MJfPFYeYha9ybnS7i/hmTXXYO46KXDxsZtcaXochmebZUFDJ07hVci7mWMRjONe
+ EC3VU1WaDJjFXWqRFXRmXq6f9Ml6gd5jf6lw12cp5+oeONyuwj2pacbpNh83Vq+0Uhzugz/JfF
+ 25rIw0L+Ab561O4vbtWSjURwue01SzgZ95mj2L3D3ZNeQHdy0+oHlWH9GgWB0Wi9Ff1Wr4M3m7
+ 7p6qIg43X88gI6cHc7O+aWK8ATEw8wsB2N+7MrRWf17f02iMyDbTv4Sq1SH0Gp0+D+MB5EoQhh
+ 17k=
+X-IronPort-AV: E=Sophos;i="5.75,418,1589266800"; d="scan'208";a="83934741"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
  by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 31 Jul 2020 05:21:02 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ 31 Jul 2020 05:44:47 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Fri, 31 Jul 2020 05:21:01 -0700
+ 15.1.1979.3; Fri, 31 Jul 2020 05:44:40 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1979.3; Fri, 31 Jul 2020 01:50:59 -0700
 Received: from kar-sv-agl01.mchp-main.com (10.10.115.15) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
- 15.1.1979.3 via Frontend Transport; Fri, 31 Jul 2020 05:21:00 -0700
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
+ 15.1.1979.3 via Frontend Transport; Fri, 31 Jul 2020 01:50:58 -0700
 From: Christian Gromm <christian.gromm@microchip.com>
 To: <gregkh@linuxfoundation.org>
 Subject: [PATCH v7] drivers: most: add USB adapter driver
-Date: Fri, 31 Jul 2020 14:20:58 +0200
-Message-ID: <1596198058-26541-1-git-send-email-christian.gromm@microchip.com>
+Date: Fri, 31 Jul 2020 10:50:52 +0200
+Message-ID: <1596185452-25872-1-git-send-email-christian.gromm@microchip.com>
 X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
