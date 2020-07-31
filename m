@@ -1,75 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F29C234AD3
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jul 2020 20:23:42 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C879C234C81
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jul 2020 22:50:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 60FA0887E1;
-	Fri, 31 Jul 2020 18:23:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 77B052153B;
+	Fri, 31 Jul 2020 20:50:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A30Cuia1oN6s; Fri, 31 Jul 2020 18:23:40 +0000 (UTC)
+	with ESMTP id Fq+vTY8khCyT; Fri, 31 Jul 2020 20:50:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 872FB887DC;
-	Fri, 31 Jul 2020 18:23:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 77B5820534;
+	Fri, 31 Jul 2020 20:50:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0C11E1BF9C1
- for <devel@linuxdriverproject.org>; Fri, 31 Jul 2020 18:23:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 68B041BF4DB
+ for <devel@linuxdriverproject.org>; Fri, 31 Jul 2020 20:50:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 08C268612B
- for <devel@linuxdriverproject.org>; Fri, 31 Jul 2020 18:23:37 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6548886A47
+ for <devel@linuxdriverproject.org>; Fri, 31 Jul 2020 20:50:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SeASMGQtMQcV for <devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 18:23:36 +0000 (UTC)
+ with ESMTP id KXyenAHzl3Ne for <devel@linuxdriverproject.org>;
+ Fri, 31 Jul 2020 20:50:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 42300860F9
- for <devel@driverdev.osuosl.org>; Fri, 31 Jul 2020 18:23:36 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id 88so28779308wrh.3
- for <devel@driverdev.osuosl.org>; Fri, 31 Jul 2020 11:23:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=JrC7qjycRVRdrX0NTlD/R/AKY99Uy/kwyi/myWTpiKg=;
- b=rkuLmF182iw2YqxYnqSjWWhjpbt02vob0rNC0oy3d6jv/dgO0x4P+AeBexG6N4+2Iw
- U6bjClb81TpEyNZkl20Ozo6kPvlOYEU/QMwHC3+Bm5mn4zAY0adQIBFbrTAlEEgvHar4
- qKJ3eun4Uavxz+rkd0bi4BiYSWU8XYs4RzkrjD9AOPboPYPGucw2ampAdhO/WItPFx1B
- Deg3Xj9deUniMl9PxgYhIjhocZ7nMPa0BgqRE0+aKbDChVF9Ba5f1w+OjqQMmpmwV+p8
- DIQIg53JttZDaaHUUTkmXehJPILz0rJkl3KuGYVwmBTqKPxrIfaT8w2iAzFf84iovXlA
- RnPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=JrC7qjycRVRdrX0NTlD/R/AKY99Uy/kwyi/myWTpiKg=;
- b=f32HlGBpHtrIPL6/ijbJx4FC6ksrUpcuF52KRksWwStp9nDzSEVFE3TWVnwUQxsP8W
- o94MjmzHIZrUzBsov4VEy3hV+Dt9/h8MtpboT2TXtBanxrtknLRWxwml0gEaAyROxtBw
- GaCi7V+6AO5c4FBpBfOONJ3dOVOe3OXmDLOWZyNvrueDfglIhqmbkzsT2eU8iU1BAp17
- DSRIrgG98mEypPL2VApV97KJJ+ZHDhkHm3lLwN3WUnXpJMMVfcQJFH0nQc4LU+QZvUyh
- hQgN1o42VJkgVhqBghULbEANZN7pH99UuTwHMCrRvLopoK+E0/BeW1kQLOHpiBeP6GoM
- ecUg==
-X-Gm-Message-State: AOAM532wU5eZv+Xw98g3EjzbHPYH5D1C/P5wtWtktLh2sRrjqAYASkol
- g+P7JmcLxxGw2c0AaePQNZw=
-X-Google-Smtp-Source: ABdhPJyJZTfhAEA5m+p9J5f1jm1Pp9Jm9AT8/Dj6usWq2d15BVLYRItc1jMwsQSn45jxFe3gjR3B2w==
-X-Received: by 2002:a5d:498f:: with SMTP id r15mr4881418wrq.175.1596219814513; 
- Fri, 31 Jul 2020 11:23:34 -0700 (PDT)
-Received: from tsnow (IGLD-83-130-60-139.inter.net.il. [83.130.60.139])
- by smtp.gmail.com with ESMTPSA id n5sm13890776wrx.22.2020.07.31.11.23.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 31 Jul 2020 11:23:33 -0700 (PDT)
-Date: Fri, 31 Jul 2020 21:23:30 +0300
-From: Tomer Samara <xsamarax00@gmail.com>
-To: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: netlogic: clear alignment style issues
-Message-ID: <20200731182330.GA3176@tsnow>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 78F438629C
+ for <devel@driverdev.osuosl.org>; Fri, 31 Jul 2020 20:50:27 +0000 (UTC)
+Received: from oasis.local.home (cpe-66-24-58-225.stny.res.rr.com
+ [66.24.58.225])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 50178208E4;
+ Fri, 31 Jul 2020 20:50:25 +0000 (UTC)
+Date: Fri, 31 Jul 2020 16:50:23 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: peterz@infradead.org
+Subject: Re: [PATCH] sched: Provide USF for the portable equipment.
+Message-ID: <20200731165023.11eb5d5b@oasis.local.home>
+In-Reply-To: <20200731181538.GB2674@hirez.programming.kicks-ass.net>
+References: <cover.1596101307.git.yangdongdong@xiaomi.com>
+ <1596116273-2290-1-git-send-email-contribute.kernel@gmail.com>
+ <20200731181538.GB2674@hirez.programming.kicks-ass.net>
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,35 +60,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Cc: juri.lelli@redhat.com, viresh.kumar@linaro.org, bsegall@google.com,
+ gulinghua@xiaomi.com, duhui@xiaomi.com, rocking@linux.alibaba.com,
+ devel@driverdev.osuosl.org, vincent.guittot@linaro.org, tanggeliang@xiaomi.com,
+ mingo@redhat.com, yangdongdong@xiaomi.com, mgorman@suse.de,
+ linux-pm@vger.kernel.org, fengwei@xiaomi.com,
+ Dongdong Yang <contribute.kernel@gmail.com>, dietmar.eggemann@arm.com,
+ huangqiwu@xiaomi.com, gregkh@linuxfoundation.org, rjw@rjwysocki.net,
+ linux-kernel@vger.kernel.org, zhangguoquan@xiaomi.com, taojun@xiaomi.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Clear checkpatch alignment style issues in xlr_net.c.
-    CHECK: Alignment should match open parenthesis
+On Fri, 31 Jul 2020 20:15:38 +0200
+peterz@infradead.org wrote:
 
-Signed-off-by: Tomer Samara <xsamarax00@gmail.com>
----
- drivers/staging/netlogic/xlr_net.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> On Thu, Jul 30, 2020 at 09:35:43PM +0800, Dongdong Yang wrote:
+> > diff --git a/kernel/sched/cpufreq_schedutil.c b/kernel/sched/cpufreq_schedutil.c
+> > index 7fbaee2..7bc3429 100644
+> > --- a/kernel/sched/cpufreq_schedutil.c
+> > +++ b/kernel/sched/cpufreq_schedutil.c
+> > @@ -289,12 +289,21 @@ unsigned long schedutil_cpu_util(int cpu, unsigned long util_cfs,
+> >  	return min(max, util);
+> >  }
+> >  
+> > +#ifdef CONFIG_SCHED_USF
+> > +void (*adjust_task_pred_demand)(int cpuid, unsigned long *util,
+> > +	struct rq *rq) = NULL;
+> > +EXPORT_SYMBOL(adjust_task_pred_demand);
+> > +#endif
+> > +
+> >  static unsigned long sugov_get_util(struct sugov_cpu *sg_cpu)
+> >  {
+> >  	struct rq *rq = cpu_rq(sg_cpu->cpu);
+> >  	unsigned long util = cpu_util_cfs(rq);
+> >  	unsigned long max = arch_scale_cpu_capacity(sg_cpu->cpu);
+> > -
+> > +#ifdef CONFIG_SCHED_USF
+> > +	if (adjust_task_pred_demand)
+> > +		adjust_task_pred_demand(sg_cpu->cpu, &util, rq);
+> > +#endif
+> >  	sg_cpu->max = max;
+> >  	sg_cpu->bw_dl = cpu_bw_dl(rq);  
+> 
+> NAK
 
-diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index 204fcdfc022f..69ea61faf8fa 100644
---- a/drivers/staging/netlogic/xlr_net.c
-+++ b/drivers/staging/netlogic/xlr_net.c
-@@ -355,7 +355,7 @@ static void xlr_stats(struct net_device *ndev, struct rtnl_link_stats64 *stats)
- 			    stats->rx_missed_errors);
- 
- 	stats->tx_aborted_errors = xlr_nae_rdreg(priv->base_addr,
--			TX_EXCESSIVE_COLLISION_PACKET_COUNTER);
-+						 TX_EXCESSIVE_COLLISION_PACKET_COUNTER);
- 	stats->tx_carrier_errors = xlr_nae_rdreg(priv->base_addr,
- 						 TX_DROP_FRAME_COUNTER);
- 	stats->tx_fifo_errors = xlr_nae_rdreg(priv->base_addr,
--- 
-2.25.1
+Peter,
+
+It's more informative if you include rational with a NAK.
+
+-- Steve
 
 _______________________________________________
 devel mailing list
