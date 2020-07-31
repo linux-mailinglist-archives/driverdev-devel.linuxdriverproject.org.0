@@ -2,61 +2,64 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DA87233F33
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jul 2020 08:40:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 23746234177
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jul 2020 10:46:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8BF8D88780;
-	Fri, 31 Jul 2020 06:40:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F10AF87E41;
+	Fri, 31 Jul 2020 08:46:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e7A4SF5uMmZh; Fri, 31 Jul 2020 06:40:02 +0000 (UTC)
+	with ESMTP id qIDJjzzWTQp8; Fri, 31 Jul 2020 08:46:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F0EC188702;
-	Fri, 31 Jul 2020 06:40:01 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 52F9F87582;
+	Fri, 31 Jul 2020 08:46:37 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F27D41BF40E
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 06:39:58 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B65211BF2CA
+ for <devel@linuxdriverproject.org>; Fri, 31 Jul 2020 08:46:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EF182880D0
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 06:39:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id ABBA6886D6
+ for <devel@linuxdriverproject.org>; Fri, 31 Jul 2020 08:46:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kEMt0IT+1LoW
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 06:39:58 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 49B6D880BB
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 06:39:58 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A18D220829;
- Fri, 31 Jul 2020 06:39:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596177598;
- bh=YCJoUaWR/x7qnP+PdHEOelksbMa6S31UZAJI17UwjLA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=biW43IdJG+7LIQvVu24YKluF/c9CA46sd0L/uPeA7K8sCAC10GiiKDl+zh+h/nbhS
- e0xreGMHYf6b97xkqAUTgU72aYu/An2dUsEu0lAL5Ma1Z6FY1qc1P2BVWrqQccTo2x
- JIqv+BWIZpyTZbvNR5L9A0xpTqhKt5J8I+Sguh8g=
-Date: Fri, 31 Jul 2020 08:39:45 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Christian Gromm <christian.gromm@microchip.com>
-Subject: Re: [PATCH v6] drivers: most: add USB adapter driver
-Message-ID: <20200731063945.GF1508201@kroah.com>
-References: <1596111472-21232-1-git-send-email-christian.gromm@microchip.com>
+ with ESMTP id 48ooKZUiQ1RD for <devel@linuxdriverproject.org>;
+ Fri, 31 Jul 2020 08:46:06 +0000 (UTC)
+X-Greylist: delayed 00:07:06 by SQLgrey-1.7.6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F2CCF886D1
+ for <devel@driverdev.osuosl.org>; Fri, 31 Jul 2020 08:46:05 +0000 (UTC)
+IronPort-SDR: kl7uqBs0gG24LxqBW7CYFd6cGWy/Ltr+mLCvPbD8mheSCbgqlM+tqiK/rAukFRWhAmb9uzZWuC
+ WMVsqENmehCw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9698"; a="149574679"
+X-IronPort-AV: E=Sophos;i="5.75,417,1589266800"; d="scan'208";a="149574679"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2020 01:38:59 -0700
+IronPort-SDR: ZPDFIp5v/ttJ6NXoyDJH9IqYGXvV/z1FkdimiwgE2bLRLfErahmVbxR78il4gGqhbQTFNXYlx0
+ 4WERVCq1nutg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,417,1589266800"; d="scan'208";a="365442807"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by orsmga001.jf.intel.com with ESMTP; 31 Jul 2020 01:38:56 -0700
+Received: from andy by smile with local (Exim 4.94)
+ (envelope-from <andy.shevchenko@gmail.com>)
+ id 1k1QZ6-005Gyk-Da; Fri, 31 Jul 2020 11:38:56 +0300
+Date: Fri, 31 Jul 2020 11:38:56 +0300
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+To: Cengiz Can <cengiz@kernel.wtf>
+Subject: Re: [PATCH v2] staging: atomisp: move null check to earlier point
+Message-ID: <20200731083856.GF3703480@smile.fi.intel.com>
+References: <20200730084545.GB1793@kadam>
+ <20200730221737.51569-1-cengiz@kernel.wtf>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1596111472-21232-1-git-send-email-christian.gromm@microchip.com>
+In-Reply-To: <20200730221737.51569-1-cengiz@kernel.wtf>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,82 +72,79 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdev-devel@linuxdriverproject.org, linux-usb@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, sakari.ailus@linux.intel.com, mchehab@kernel.org,
+ dan.carpenter@oracle.com, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 30, 2020 at 02:17:52PM +0200, Christian Gromm wrote:
-> This patch adds the USB driver source file most_usb.c and
-> modifies the Makefile and Kconfig accordingly.
-> 
-> Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
-> ---
-> v2:
-> Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
->         - don't remove usb driver from staging area
->         - don't touch staging/most/Kconfig
->         - remove subdirectory for USB driver and put source file into
->           drivers/most
-> v3:
->         - submitted fixes found during code audit to staging version
->           first to be able to resend single patch that adds the driver
-> v4:
-> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-> 
->         submitted patch set that fixes issues found during code audit
->         to staging version first to be able to resend single patch that
->         adds the driver. The patch series included:
-> 
->         - use function sysfs_streq
->         - add missing put_device calls
->         - use correct error codes
->         - replace code to calculate array index
->         - don't use error path to exit function on success
->         - move allocation of URB out of critical section
->         - return 0 instead of variable
->         - change return value of function drci_rd_reg
->         - don't use expressions that might fail in a declaration
->         - change order of function parameters
-> 
-> v5:
-> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-> 
->         submitted patch set that fixes issues found during code audit
->         to staging version first to be able to resend single patch that
->         adds the driver. The patch series included:
-> 
->         - init return value in default path of switch/case expression
-> 
-> v6:
-> Reported-by: Randy Dunlap <rdunlap@infradead.org>
-> 
-> 	remove dependency to NET in Kconfig file
-> 
-> 
->  drivers/most/Kconfig              |   11 +
->  drivers/most/Makefile             |    2 +
->  drivers/most/most_usb.c           | 1170 +++++++++++++++++++++++++++++++++++++
->  drivers/staging/most/Kconfig      |    2 -
->  drivers/staging/most/usb/Kconfig  |   13 -
->  drivers/staging/most/usb/Makefile |    4 -
->  drivers/staging/most/usb/usb.c    | 1170 -------------------------------------
->  7 files changed, 1183 insertions(+), 1189 deletions(-)
->  create mode 100644 drivers/most/most_usb.c
->  delete mode 100644 drivers/staging/most/usb/Kconfig
->  delete mode 100644 drivers/staging/most/usb/Makefile
->  delete mode 100644 drivers/staging/most/usb/usb.c
-> 
+On Fri, Jul 31, 2020 at 01:17:38AM +0300, Cengiz Can wrote:
+> `find_gmin_subdev` function that returns a pointer to `struct
 
-If you create this with 'git format-patch -M' we can see that this
-really is a rename/move and nothing else is changed in the file.
+func() are referred with name followed by parentheses.
 
-Can you do that here?
+> gmin_subdev` can return NULL.
 
-thanks,
+> In `gmin_v2p8_ctrl` there's a call to this function but the possibility
+> of a NULL was not checked before its being dereferenced. ie:
 
-greg k-h
+'. ie:' -> ', i.e.:'
+
+> ```
+
+Instead just shift right by two spaces.
+
+> /* Acquired here --------v */
+> struct gmin_subdev *gs = find_gmin_subdev(subdev);
+> 
+> /*  v------Dereferenced here */
+> if (gs->v2p8_gpio >= 0) {
+>     ...
+> }
+
+> ```
+
+Drop this as per above comment.
+
+> To avoid the issue, null check has been moved to an earlier point
+> and return semantics has been changed to reflect this exception.
+
+> Please do note that this change introduces a new return value to
+> `gmin_v2p8_ctrl`.
+
+This rather should explain better the semantics change, e.g.
+"Now the function() refuses to take NULL argument and returns an error. We also
+WARN() for sake of the debugging."
+
+> [NEW] - raise a WARN and return -ENODEV if there are no subdevices.
+>       - return result of `gpio_request` or `gpio_direction_output`.
+>       - return 0 if GPIO is ON.
+>       - return results of `regulator_enable` or `regulator_disable`.
+>       - according to PMIC type, return result of `axp_regulator_set`
+>         or `gmin_i2c_write`.
+>       - return -EINVAL if unknown PMIC type.
+
+This has to go after cutter '---' line below.
+
+> Caught-by: Coverity Static Analyzer CID 1465536
+
+Reported-by:
+
+And as discussed previously,
+Suggested-by: Mauro ...
+
+> Signed-off-by: Cengiz Can <cengiz@kernel.wtf>
+
+The code looks good enough (WARN() will probably go away when driver gains
+better quality).
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
