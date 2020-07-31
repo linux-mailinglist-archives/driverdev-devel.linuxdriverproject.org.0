@@ -1,59 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0567F233F05
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jul 2020 08:19:46 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DA87233F33
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Jul 2020 08:40:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 343962048B;
-	Fri, 31 Jul 2020 06:19:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8BF8D88780;
+	Fri, 31 Jul 2020 06:40:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e1UMeKW2cyhD; Fri, 31 Jul 2020 06:19:43 +0000 (UTC)
+	with ESMTP id e7A4SF5uMmZh; Fri, 31 Jul 2020 06:40:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2266E20504;
-	Fri, 31 Jul 2020 06:19:40 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id F0EC188702;
+	Fri, 31 Jul 2020 06:40:01 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AE5661BF40E
- for <devel@linuxdriverproject.org>; Fri, 31 Jul 2020 06:19:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F27D41BF40E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 Jul 2020 06:39:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A8EB5885F7
- for <devel@linuxdriverproject.org>; Fri, 31 Jul 2020 06:19:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EF182880D0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 Jul 2020 06:39:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IX0uGpMKYIz9 for <devel@linuxdriverproject.org>;
- Fri, 31 Jul 2020 06:19:35 +0000 (UTC)
+ with ESMTP id kEMt0IT+1LoW
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 Jul 2020 06:39:58 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6F4DB885D3
- for <devel@driverdev.osuosl.org>; Fri, 31 Jul 2020 06:19:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 49B6D880BB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 31 Jul 2020 06:39:58 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B92B52083B;
- Fri, 31 Jul 2020 06:19:34 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id A18D220829;
+ Fri, 31 Jul 2020 06:39:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596176375;
- bh=b1t9HytUhUU2EjOGArGZ1wc7s+rwEM++yuu4FJ5CmMo=;
+ s=default; t=1596177598;
+ bh=YCJoUaWR/x7qnP+PdHEOelksbMa6S31UZAJI17UwjLA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=w2PSvMy7G78srHkxam5ApiTQn83UAkyDjL9kZKmP1Vuy+P77dNewqL6rT1znwAJ1C
- xZnbsNS9xRGVcOSwQzqHA5DWiMY21d6huPQTx4w1OVEt9vTJCc4CrqvNhzDp2Wi5ZS
- h3rd85P9DViGe/dy4SHEl/gQfPnPSqqL6XWiPdsM=
-Date: Fri, 31 Jul 2020 08:19:22 +0200
+ b=biW43IdJG+7LIQvVu24YKluF/c9CA46sd0L/uPeA7K8sCAC10GiiKDl+zh+h/nbhS
+ e0xreGMHYf6b97xkqAUTgU72aYu/An2dUsEu0lAL5Ma1Z6FY1qc1P2BVWrqQccTo2x
+ JIqv+BWIZpyTZbvNR5L9A0xpTqhKt5J8I+Sguh8g=
+Date: Fri, 31 Jul 2020 08:39:45 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Dongdong Yang <contribute.kernel@gmail.com>
-Subject: Re: [PATCH] sched: Provide USF for the portable equipment.
-Message-ID: <20200731061922.GB1508201@kroah.com>
-References: <cover.1596101307.git.yangdongdong@xiaomi.com>
- <1596116273-2290-1-git-send-email-contribute.kernel@gmail.com>
+To: Christian Gromm <christian.gromm@microchip.com>
+Subject: Re: [PATCH v6] drivers: most: add USB adapter driver
+Message-ID: <20200731063945.GF1508201@kroah.com>
+References: <1596111472-21232-1-git-send-email-christian.gromm@microchip.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1596116273-2290-1-git-send-email-contribute.kernel@gmail.com>
+In-Reply-To: <1596111472-21232-1-git-send-email-christian.gromm@microchip.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,185 +69,78 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: juri.lelli@redhat.com, peterz@infradead.org, viresh.kumar@linaro.org,
- bsegall@google.com, gulinghua@xiaomi.com, duhui@xiaomi.com,
- rocking@linux.alibaba.com, devel@driverdev.osuosl.org,
- vincent.guittot@linaro.org, tanggeliang@xiaomi.com, mingo@redhat.com,
- yangdongdong@xiaomi.com, mgorman@suse.de, linux-pm@vger.kernel.org,
- rostedt@goodmis.org, fengwei@xiaomi.com, taojun@xiaomi.com,
- dietmar.eggemann@arm.com, huangqiwu@xiaomi.com, rjw@rjwysocki.net,
- linux-kernel@vger.kernel.org, zhangguoquan@xiaomi.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: driverdev-devel@linuxdriverproject.org, linux-usb@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 30, 2020 at 09:35:43PM +0800, Dongdong Yang wrote:
-> From: Dongdong Yang <yangdongdong@xiaomi.com>
-> =
-
-> The power consumption and UI response are more cared
-> for by the portable equipment=A0users. USF(User Sensitive
-> Feedback factor) auxiliary cpufreq governor is
-> providing more utils adjustment settings to a high
-> level by scenario identification.
-> =
-
-> >From the view of portable equipment, screen off status
-> usually stands for no request from the user, however,
-> the kernel is still expected to notify the user
-> in time on modem, network or powerkey events occur.
-> In some scenarios, such as listening to music,
-> low power processors, such as DSP, take more actions
-> and CPU load requirements cut down.=A0 It would bring
-> more power consumption benefit if high level have
-> interfaces to adjust utils according to the current
-> scenario and load.
-> =
-
-> In addition, the portable equipment user usually heavy
-> interact with devices by touch, and other peripherals.
-> The boost preemptive counts are marking the load
-> requirement urgent, vice versa. If such feedback
-> factor could be set to high level according to the
-> scenario, it would contribute to the power consumption
-> and UI response.
-> =
-
-> If no USF sysfs inode is set, and no screen on or
-> off event, adjust_task_pred_demand shall not be invoked.
-> Once sched_usf_up_l0_r/down_r/non_ux_r be set,
-> adjust_task_pred_demand_impl shall be called back
-> to update settings according to high level scenario
-> identification.
-> =
-
-> We can get about 17% mean power consumption save
-> at listening to music with speaker on "screen
-> off" scenario, as below statistical data from 7766
-> XiaoMi devices for two weeks with
-> sched_usf_non_ux_r be set:
-
-
-Nit, you can wrap your changelog text at 72 columns to make it easier to
-read.
-
-> =
-
->         day1         day2         day3         day4
-> count   7766.000000  7766.000000  7766.000000  7766.000000
-> mean    88.035525    85.500282    83.829305    86.054997
-> std     111.049980   108.258834   107.562583   108.558240
-> min     0.099000     0.037000     0.067000     0.045000
-> 25%     34.765500    34.021750    34.101500    34.423000
-> 50%     54.950000    55.286500    54.189500    54.248500
-> 75%     95.954000    93.942000    91.738000    94.0592500
-> 80%     114.675000   107.430000   106.378000   108.673000
-> 85%     137.851000   129.511000   127.156500   131.750750
-> 90%     179.669000   170.208500   164.027000   172.348000
-> 95%     272.395000   257.845500   247.750500   263.275750
-> 98%     399.034500   412.170400   391.484000   402.835600
-> =
-
->         day5         day6        day7         day8
-> count   7766.000000  7766.00000  7766.000000  7766.000000
-> mean    82.532677    79.21923    77.611380    81.075081
-> std     104.870079   101.34819   103.140037   97.506221
-> min     0.051000     0.02900     0.007000     0.068000
-> 25%     32.873000    33.44400    31.965500    33.863500
-> 50%     52.180500    51.56550    50.806500    53.080000
-> 75%     90.905750    86.82625    83.859250    89.973000
-> 80%     105.455000   99.64700    97.271000    104.225000
-> 85%     128.300000   118.47825   116.570250   126.648250
-> 90%     166.647500   149.18000   150.649500   161.087000
-> 95%     247.208500   224.36050   226.380000   245.291250
-> 98%     393.002000   347.92060   369.791800   378.778600
-> =
-
->         day9         day10        day11        day12
-> count   7766.000000  7766.000000  7766.000000  7766.000000
-> mean    79.989170    83.859417    78.032930    77.060542
-> std     104.226122   108.893043   102.561715   99.844276
-> min     0.118000     0.017000     0.028000     0.039000
-> 25%     32.056250    33.454500    31.176250    30.897750
-> 50%     51.506000    54.056000    48.969500    49.069000
-> 75%     88.513500    92.953500    83.506750    84.096000
-> 80%     102.876000   107.845000   97.717000    98.073000
-> 85%     124.363000   128.288000   118.366500   116.869250
-> 90%     160.557000   167.084000   154.342500   148.187500
-> 95%     231.149000   242.925750   236.759000   228.131250
-> 98%     367.206600   388.619100   385.269100   376.541600
-> =
-
->         day13        day14
-> count   7766.000000  7766.000000
-> mean    75.528036    73.702878
-> std     90.750594    86.796016
-> min     0.066000     0.054000
-> 25%     31.170500    31.608500
-> 50%     48.758500    49.215000
-> 75%     84.522750    83.053000
-> 80%     97.879000    94.875000
-> 85%     116.680250   113.573750
-> 90%     149.083500   144.089500
-> 95%     226.177750   211.488750
-> 98%     347.011100   331.317100
-> =
-
-> Signed-off-by: Dongdong Yang <yangdongdong@xiaomi.com>
-> Signed-off-by: Jun Tao <taojun@xiaomi.com>
-> Signed-off-by: Qiwu Huang <huangqiwu@xiaomi.com>
-> Signed-off-by: Geliang Tang <tanggeliang@xiaomi.com>
-> Signed-off-by: Peng Wang <rocking@linux.alibaba.com>
+On Thu, Jul 30, 2020 at 02:17:52PM +0200, Christian Gromm wrote:
+> This patch adds the USB driver source file most_usb.c and
+> modifies the Makefile and Kconfig accordingly.
+> 
+> Signed-off-by: Christian Gromm <christian.gromm@microchip.com>
 > ---
->  drivers/staging/Kconfig          |   2 +
->  drivers/staging/Makefile         |   1 +
->  drivers/staging/fbsched/Kconfig  |  10 ++
->  drivers/staging/fbsched/Makefile |   2 +
->  drivers/staging/fbsched/usf.c    | 351 +++++++++++++++++++++++++++++++++=
-++++++
+> v2:
+> Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+>         - don't remove usb driver from staging area
+>         - don't touch staging/most/Kconfig
+>         - remove subdirectory for USB driver and put source file into
+>           drivers/most
+> v3:
+>         - submitted fixes found during code audit to staging version
+>           first to be able to resend single patch that adds the driver
+> v4:
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> 
+>         submitted patch set that fixes issues found during code audit
+>         to staging version first to be able to resend single patch that
+>         adds the driver. The patch series included:
+> 
+>         - use function sysfs_streq
+>         - add missing put_device calls
+>         - use correct error codes
+>         - replace code to calculate array index
+>         - don't use error path to exit function on success
+>         - move allocation of URB out of critical section
+>         - return 0 instead of variable
+>         - change return value of function drci_rd_reg
+>         - don't use expressions that might fail in a declaration
+>         - change order of function parameters
+> 
+> v5:
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> 
+>         submitted patch set that fixes issues found during code audit
+>         to staging version first to be able to resend single patch that
+>         adds the driver. The patch series included:
+> 
+>         - init return value in default path of switch/case expression
+> 
+> v6:
+> Reported-by: Randy Dunlap <rdunlap@infradead.org>
+> 
+> 	remove dependency to NET in Kconfig file
+> 
+> 
+>  drivers/most/Kconfig              |   11 +
+>  drivers/most/Makefile             |    2 +
+>  drivers/most/most_usb.c           | 1170 +++++++++++++++++++++++++++++++++++++
+>  drivers/staging/most/Kconfig      |    2 -
+>  drivers/staging/most/usb/Kconfig  |   13 -
+>  drivers/staging/most/usb/Makefile |    4 -
+>  drivers/staging/most/usb/usb.c    | 1170 -------------------------------------
+>  7 files changed, 1183 insertions(+), 1189 deletions(-)
+>  create mode 100644 drivers/most/most_usb.c
+>  delete mode 100644 drivers/staging/most/usb/Kconfig
+>  delete mode 100644 drivers/staging/most/usb/Makefile
+>  delete mode 100644 drivers/staging/most/usb/usb.c
+> 
 
-Why the different names, "fbsched" and "usf"?  what does "fbsched" mean?
+If you create this with 'git format-patch -M' we can see that this
+really is a rename/move and nothing else is changed in the file.
 
->  kernel/sched/cpufreq_schedutil.c |  11 +-
-
-Why are you touching code outside of drivers/staging/ at all?  That's
-usually a good sign that this should not be a staging driver as they
-should all be self-contained so nothing else in the kernel is messed
-with.
-
-> --- a/kernel/sched/cpufreq_schedutil.c
-> +++ b/kernel/sched/cpufreq_schedutil.c
-> @@ -289,12 +289,21 @@ unsigned long schedutil_cpu_util(int cpu, unsigned =
-long util_cfs,
->  	return min(max, util);
->  }
->  =
-
-> +#ifdef CONFIG_SCHED_USF
-> +void (*adjust_task_pred_demand)(int cpuid, unsigned long *util,
-> +	struct rq *rq) =3D NULL;
-> +EXPORT_SYMBOL(adjust_task_pred_demand);
-> +#endif
-
-No #ifdef in .c code.  And why not EXPORT_SYMBOL_GPL?
-
-
-> +
->  static unsigned long sugov_get_util(struct sugov_cpu *sg_cpu)
->  {
->  	struct rq *rq =3D cpu_rq(sg_cpu->cpu);
->  	unsigned long util =3D cpu_util_cfs(rq);
->  	unsigned long max =3D arch_scale_cpu_capacity(sg_cpu->cpu);
-> -
-> +#ifdef CONFIG_SCHED_USF
-> +	if (adjust_task_pred_demand)
-> +		adjust_task_pred_demand(sg_cpu->cpu, &util, rq);
-> +#endif
-
-Again, no #ifdef in .c code should be ever done, especially for
-something as simple as this.  Otherwise the code is totally
-unmaintainable over time.
+Can you do that here?
 
 thanks,
 
