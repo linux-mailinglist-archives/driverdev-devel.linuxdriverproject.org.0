@@ -1,71 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39DEB23548E
-	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Aug 2020 00:56:17 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2D06285F7C;
-	Sat,  1 Aug 2020 22:56:15 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4FlKz-QIWHs1; Sat,  1 Aug 2020 22:56:14 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6D0CA858B5;
-	Sat,  1 Aug 2020 22:56:13 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ECFFF1BF2B6
- for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 22:56:10 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 581A323549F
+	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Aug 2020 01:28:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E8CD887B6D
- for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 22:56:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 01B1F881DE;
+	Sat,  1 Aug 2020 23:28:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZJDCFil9aqlK; Sat,  1 Aug 2020 23:28:31 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4C63A88072;
+	Sat,  1 Aug 2020 23:28:31 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BE1971BF40F
+ for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 23:28:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B8C9284E88
+ for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 23:28:28 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b58aBWR0qCg9 for <devel@linuxdriverproject.org>;
- Sat,  1 Aug 2020 22:56:10 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
- [209.85.166.197])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 38B2087B62
- for <devel@driverdev.osuosl.org>; Sat,  1 Aug 2020 22:56:10 +0000 (UTC)
-Received: by mail-il1-f197.google.com with SMTP id y82so17188281ilk.11
- for <devel@driverdev.osuosl.org>; Sat, 01 Aug 2020 15:56:10 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:date:in-reply-to:message-id:subject
- :from:to;
- bh=dOzePy5yJodn3MAztJ8MjMszFxBpzjO8+9+k54Plw7U=;
- b=PKhbENprnAP9oL96lWc/ovwembLk48iJgmc2ITV+royeHxixeCrdB2EPCKWHacJ8gJ
- OkmiDXkN7jLHYpIy2AIBRmgXu9Hzf+13AGzKdz8zGu2oiouot75p0l8F5LVVM2wrQzmk
- +G/F7SCJCtVKSu58cQI/TCeznkG4XCpZ5dO6lX8j2SS+dmyO3YTLkClNRDc9QtrkWdc3
- oOe8oRjkGpI7LdtErIb8EWKqJEOoTsboEWwpiSwi9ZeGaFE8gJL56hXXacj3JblKLU6k
- Alj9/3ihlTTl2OHBCWmrjO/q2WhOwKtJjJ7SZRYsQgRxkM24hH3H5dDn9QqrPap8q4vV
- PE8Q==
-X-Gm-Message-State: AOAM530AOEmaHFig5uTLqVW876+n5VEmGol02aSYj7BlF6QI4lJY1Cne
- 6LTqpaiYiS+L5ASHy6knTViWZmJZxCCNPy1nrk0bt0O6raBF
-X-Google-Smtp-Source: ABdhPJzoFyfIZQhNRPiFzD4/WN4vVmjC3jcEN/n2QVLjineSWA8YL2dCDfS0uwVot1kHmJxuiejHJRIs+6Vlg9DaPmCCBtbeQtI1
+ with ESMTP id ZfpePMEl9Nwa for <devel@linuxdriverproject.org>;
+ Sat,  1 Aug 2020 23:28:27 +0000 (UTC)
+X-Greylist: delayed 05:59:24 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0067.hostedemail.com
+ [216.40.44.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D68EF84691
+ for <devel@driverdev.osuosl.org>; Sat,  1 Aug 2020 23:28:27 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave01.hostedemail.com (Postfix) with ESMTP id 065BF1813C177
+ for <devel@driverdev.osuosl.org>; Sat,  1 Aug 2020 17:29:05 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay05.hostedemail.com (Postfix) with ESMTP id 953F718029137;
+ Sat,  1 Aug 2020 17:29:02 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:966:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2196:2199:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:4321:4385:5007:10004:10400:10848:11026:11232:11657:11658:11914:12043:12296:12297:12438:12740:12760:12895:13019:13069:13255:13311:13357:13439:14659:14721:21080:21451:21627:21990:30029:30054:30070:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: pets72_5b1482626f8e
+X-Filterd-Recvd-Size: 2194
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf13.hostedemail.com (Postfix) with ESMTPA;
+ Sat,  1 Aug 2020 17:29:01 +0000 (UTC)
+Message-ID: <8a8d14b2dc7a977fbda6f5f96ffd08f167c085d7.camel@perches.com>
+Subject: Re: [PATCH v2] staging: r8188eu: replace rtw_netdev_priv define
+ with inline function
+From: Joe Perches <joe@perches.com>
+To: Ivan Safonov <insafonov@gmail.com>, Larry Finger
+ <Larry.Finger@lwfinger.net>
+Date: Sat, 01 Aug 2020 10:29:00 -0700
+In-Reply-To: <20200801165220.29208-1-insafonov@gmail.com>
+References: <20200801165220.29208-1-insafonov@gmail.com>
+User-Agent: Evolution 3.36.3-0ubuntu1 
 MIME-Version: 1.0
-X-Received: by 2002:a92:79c4:: with SMTP id
- u187mr10446904ilc.194.1596322569603; 
- Sat, 01 Aug 2020 15:56:09 -0700 (PDT)
-Date: Sat, 01 Aug 2020 15:56:09 -0700
-In-Reply-To: <0000000000007450a405abd572a8@google.com>
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <000000000000b54f9f05abd8cfbb@google.com>
-Subject: Re: WARNING in hci_conn_timeout
-From: syzbot <syzbot+2446dd3cb07277388db6@syzkaller.appspotmail.com>
-To: coreteam@netfilter.org, davem@davemloft.net, devel@driverdev.osuosl.org, 
- forest@alittletooquiet.net, gregkh@linuxfoundation.org, 
- johan.hedberg@gmail.com, kaber@trash.net, kadlec@blackhole.kfki.hu, 
- kuba@kernel.org, linux-bluetooth@vger.kernel.org, 
- linux-kernel@vger.kernel.org, marcel@holtmann.org, netdev@vger.kernel.org, 
- netfilter-devel@vger.kernel.org, pablo@netfilter.org, rvarsha016@gmail.com, 
- syzkaller-bugs@googlegroups.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,33 +75,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ B K Karthik <bkkarthik@pesu.pes.edu>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-syzbot has bisected this issue to:
+On Sat, 2020-08-01 at 19:52 +0300, Ivan Safonov wrote:
+> The function guarantees type checking of arguments and return value.
+> 
+> Result of rtw_netdev_priv macro can be assigned to pointer
+> with incompatible type without warning. The function allow compiler
+> to perform this check.
+[]
+> diff --git a/drivers/staging/rtl8188eu/include/osdep_service.h b/drivers/staging/rtl8188eu/include/osdep_service.h
+[]
+> @@ -71,8 +71,11 @@ struct rtw_netdev_priv_indicator {
+>  };
+>  struct net_device *rtw_alloc_etherdev_with_old_priv(void *old_priv);
+>  
+> -#define rtw_netdev_priv(netdev)					\
+> -	(((struct rtw_netdev_priv_indicator *)netdev_priv(netdev))->priv)
+> +static inline struct adapter *rtw_netdev_priv(struct net_device *dev)
+> +{
+> +	return (((struct rtw_netdev_priv_indicator *)netdev_priv(dev))->priv);
+> +}
 
-commit 3d30311c0e4d834c94e6a27d6242a942d6a76b85
-Author: Varsha Rao <rvarsha016@gmail.com>
-Date:   Sun Oct 9 11:13:56 2016 +0000
+To be similar to existing uses, this variable name should be
+netdev not dev.  There are also unnecessary parentheses.
 
-    staging: vt6655: Removes unnecessary blank lines.
+>  void rtw_free_netdev(struct net_device *netdev);
 
-bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=17023a14900000
-start commit:   7dc6fd0f Merge branch 'i2c/for-current' of git://git.kerne..
-git tree:       upstream
-final oops:     https://syzkaller.appspot.com/x/report.txt?x=14823a14900000
-console output: https://syzkaller.appspot.com/x/log.txt?x=10823a14900000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=e59ee776d5aa8d55
-dashboard link: https://syzkaller.appspot.com/bug?extid=2446dd3cb07277388db6
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=13f781d4900000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=116a0c14900000
+Better to use netdev like this one.
 
-Reported-by: syzbot+2446dd3cb07277388db6@syzkaller.appspotmail.com
-Fixes: 3d30311c0e4d ("staging: vt6655: Removes unnecessary blank lines.")
+---
+static inline struct adapter *rtw_netdev_priv(struct net_device *netdev)
+{
+	return ((struct rtw_netdev_priv_indicator *)netdev_priv(netdev))->priv;
+}
 
-For information about bisection process see: https://goo.gl/tpsmEJ#bisection
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
