@@ -2,70 +2,78 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5215235366
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Aug 2020 18:33:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A79FD23537E
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Aug 2020 18:47:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 54D1B8623E;
-	Sat,  1 Aug 2020 16:33:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CD1BC85F5D;
+	Sat,  1 Aug 2020 16:47:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QRN0IjWly8bz; Sat,  1 Aug 2020 16:33:11 +0000 (UTC)
+	with ESMTP id jXeVkT6Mnwm9; Sat,  1 Aug 2020 16:47:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4B9868618F;
-	Sat,  1 Aug 2020 16:33:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A07B58614A;
+	Sat,  1 Aug 2020 16:47:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2B1AC1BF3F4
- for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 16:33:09 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 315391BF3F4
+ for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 16:47:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 12A72203E5
- for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 16:33:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2DDD88840C
+ for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 16:47:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b4yfcdigwsSu for <devel@linuxdriverproject.org>;
- Sat,  1 Aug 2020 16:33:07 +0000 (UTC)
+ with ESMTP id asgOvnhGGeAl for <devel@linuxdriverproject.org>;
+ Sat,  1 Aug 2020 16:47:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
- [209.85.166.200])
- by silver.osuosl.org (Postfix) with ESMTPS id 3E1A5203E7
- for <devel@driverdev.osuosl.org>; Sat,  1 Aug 2020 16:33:06 +0000 (UTC)
-Received: by mail-il1-f200.google.com with SMTP id w81so23882286ilk.23
- for <devel@driverdev.osuosl.org>; Sat, 01 Aug 2020 09:33:06 -0700 (PDT)
+Received: from mail-lj1-f193.google.com (mail-lj1-f193.google.com
+ [209.85.208.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 46E0E88409
+ for <devel@driverdev.osuosl.org>; Sat,  1 Aug 2020 16:47:28 +0000 (UTC)
+Received: by mail-lj1-f193.google.com with SMTP id x9so35508239ljc.5
+ for <devel@driverdev.osuosl.org>; Sat, 01 Aug 2020 09:47:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3DYnTPT4/sYGcNhT4ZL721tJCBoXUCz3sR7pfzy1uU0=;
+ b=c/tnSkc0+P8PGPhCHlwixhH5M9Che6g4W8HnOizbI6Bpixtff5DuH18eT/ljOHzTZ/
+ t+eDhWKmmPKLNMad9VH+bRBcXXeA8swopsk3kr3VSmj3SuOAAQSGWuCdLNIuVTqVGMIl
+ oPyohLjcoZsQBIAYmyRHnDwPn7bXnAAy7duzbgP0hHiXTYLyj9QFz9VPv+u1cbl13ob+
+ 18CEdaJvjCpt2JU8yAmexPZA4+Oc9B9foDs0lo/X2XwhlftUZj+kHWQ3zLp1cnlbpU1n
+ NJsrS5Uk2Y9BkyK/mQMkW9zjZaTFm2yw++QbEKwAKQ6NKJZ+1HqH9F6/VI07Y4w4p9oT
+ wjAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:date:in-reply-to:message-id:subject
- :from:to;
- bh=SIdCK8Q+4LKw+jmzrptYCoQd/JoF3mumY50X9Ph/hTE=;
- b=cKryOdFoH7j4IBqrw2yOPVnvg0tytCOGgxmiqcET4Of/FGDRk5T1n8SjPNvkh3zNfv
- r9QDog8vo2SVuEX1B6OqnFsqlSU0/FGn8AkV270qpsOkTL81i/b75lMsaYJGqFaduXYA
- jhzReaFfteMkG71G4vDUk/FXH/NgPjUEzG/9TEMnBkzGg8AuckhSS9lOZrMsDrH/A9OJ
- 4s09dwywYM9KFqeFF/3SUJVi17YOa0M4ERxYxP8RZc+0C6Xtr/IT5Th4YLkdAfNG011m
- d6C+vq0Uzq0vQ1/ASMhkJsx0RXh/IzrCAJc80AeDCIABxhKS25/B77mvDaRJ6mY5LZJ8
- mf+A==
-X-Gm-Message-State: AOAM531aQxoa92wr+H/d2HWwu2+Z2IBrAGLoZmlHaDanN1Eda7hl9PHp
- dAmoFwED0o8IqM3ywf6fsBx9WH9Nr/Dj6jOsz+xWacAh8bau
-X-Google-Smtp-Source: ABdhPJxr/wL4FBG9BjuUQiXlSC8n5B0989oGaJ3+8JI4slsvtNxiaGVvvNeo1Fc/qvwpgTWkAaur6QYbJbGO5vawji+M3kZenXYs
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3DYnTPT4/sYGcNhT4ZL721tJCBoXUCz3sR7pfzy1uU0=;
+ b=OvTr6Y8gmRmtOdQCyZGD5VVHcPWjwkBEXhUe62AZLLYdbi3yvANMYOe/ANUxp15k8o
+ 3U2He0qW7nK6xOqz29i8Zep3TVeCFaH3UoZZv+WrHjDc+mqIDx7WaZH1zjOXrucQSRsW
+ +Q8E8quaR9tOesbmEpGHtLnEQn9vX/maI6tpt8OB0+tHHcUpsOEaHsWbyZ3QykLjV3O6
+ 3UQf9ZaTBUc3npy+IhWLoqeo1M2KKJiN8tPOQEQ46nTdMg/RhEv5fXK5e+lwhomrZul0
+ axhRiLo4WQlEct7wM1ayCHmtJ7Byk/M47hULKc9LhN4LiNxW4LbofR/UzBLKgsPKPS03
+ +5vQ==
+X-Gm-Message-State: AOAM533OvggMfwe7O/AIUsjQh4FL2rmvzidXx1IVxExVnHOBUAnFJrLx
+ fb/f1fQMjiqunv7wVT8kLAc=
+X-Google-Smtp-Source: ABdhPJzLHuK/EGTjnr1mOGNp3uIYy6X9Kb7gQhzwVs1jqCpxMaVoelez70TMWpA2JnrgK9HfLqbhcg==
+X-Received: by 2002:a2e:9f10:: with SMTP id u16mr4362676ljk.130.1596300446230; 
+ Sat, 01 Aug 2020 09:47:26 -0700 (PDT)
+Received: from alpha (10.177.smarthome.spb.ru. [109.71.177.10])
+ by smtp.gmail.com with ESMTPSA id e12sm2452360ljk.74.2020.08.01.09.47.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 01 Aug 2020 09:47:25 -0700 (PDT)
+Received: (nullmailer pid 29254 invoked by uid 1000);
+ Sat, 01 Aug 2020 16:52:33 -0000
+From: Ivan Safonov <insafonov@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Subject: [PATCH v2] staging: r8188eu: replace rtw_netdev_priv define with
+ inline function
+Date: Sat,  1 Aug 2020 19:52:20 +0300
+Message-Id: <20200801165220.29208-1-insafonov@gmail.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-Received: by 2002:a05:6602:1343:: with SMTP id
- i3mr8889517iov.134.1596299585453; 
- Sat, 01 Aug 2020 09:33:05 -0700 (PDT)
-Date: Sat, 01 Aug 2020 09:33:05 -0700
-In-Reply-To: <000000000000f298fc05abb42b70@google.com>
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <000000000000bf03f305abd37535@google.com>
-Subject: Re: WARNING: ODEBUG bug in cancel_delayed_work
-From: syzbot <syzbot+338f014a98367a08a114@syzkaller.appspotmail.com>
-To: bhumirks@gmail.com, coreteam@netfilter.org, davem@davemloft.net, 
- devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, 
- johan.hedberg@gmail.com, kaber@trash.net, kadlec@blackhole.kfki.hu, 
- kuba@kernel.org, linux-bluetooth@vger.kernel.org, 
- linux-kernel@vger.kernel.org, marcel@holtmann.org, netdev@vger.kernel.org, 
- netfilter-devel@vger.kernel.org, pablo@netfilter.org, 
- syzkaller-bugs@googlegroups.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,33 +86,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org, Ivan Safonov <insafonov@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ B K Karthik <bkkarthik@pesu.pes.edu>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-syzbot has bisected this issue to:
+The function guarantees type checking of arguments and return value.
 
-commit 43ff7f53de2294a83dcf84b35de6ffa1ffafae9d
-Author: Bhumika Goyal <bhumirks@gmail.com>
-Date:   Thu Oct 6 18:10:01 2016 +0000
+Result of rtw_netdev_priv macro can be assigned to pointer
+with incompatible type without warning. The function allow compiler
+to perform this check.
 
-    Staging: vc04_services: vchiq_arm: Remove unused function remote_event_destroy
+Signed-off-by: Ivan Safonov <insafonov@gmail.com>
+---
+Changes in v2:
+  - add blank line after function definition;
+  - improve commit message.
+---
+ drivers/staging/rtl8188eu/include/osdep_service.h | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=107c810c900000
-start commit:   d8b9faec Merge tag 'drm-fixes-2020-07-31' of git://anongit..
-git tree:       upstream
-final oops:     https://syzkaller.appspot.com/x/report.txt?x=127c810c900000
-console output: https://syzkaller.appspot.com/x/log.txt?x=147c810c900000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=c0cfcf935bcc94d2
-dashboard link: https://syzkaller.appspot.com/bug?extid=338f014a98367a08a114
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=1111ad5c900000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=16565d5c900000
+diff --git a/drivers/staging/rtl8188eu/include/osdep_service.h b/drivers/staging/rtl8188eu/include/osdep_service.h
+index 31d897f1d21f..6ca79b5fb638 100644
+--- a/drivers/staging/rtl8188eu/include/osdep_service.h
++++ b/drivers/staging/rtl8188eu/include/osdep_service.h
+@@ -71,8 +71,11 @@ struct rtw_netdev_priv_indicator {
+ };
+ struct net_device *rtw_alloc_etherdev_with_old_priv(void *old_priv);
+ 
+-#define rtw_netdev_priv(netdev)					\
+-	(((struct rtw_netdev_priv_indicator *)netdev_priv(netdev))->priv)
++static inline struct adapter *rtw_netdev_priv(struct net_device *dev)
++{
++	return (((struct rtw_netdev_priv_indicator *)netdev_priv(dev))->priv);
++}
++
+ void rtw_free_netdev(struct net_device *netdev);
+ 
+ #define FUNC_NDEV_FMT "%s(%s)"
+-- 
+2.26.2
 
-Reported-by: syzbot+338f014a98367a08a114@syzkaller.appspotmail.com
-Fixes: 43ff7f53de22 ("Staging: vc04_services: vchiq_arm: Remove unused function remote_event_destroy")
-
-For information about bisection process see: https://goo.gl/tpsmEJ#bisection
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
