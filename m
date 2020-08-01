@@ -1,79 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFFEF2353E7
-	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Aug 2020 19:57:48 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C61F1235460
+	for <lists+driverdev-devel@lfdr.de>; Sat,  1 Aug 2020 23:01:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D81CB8839C;
-	Sat,  1 Aug 2020 17:57:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 45C2085EAC;
+	Sat,  1 Aug 2020 21:01:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tB-SpTcbMgR4; Sat,  1 Aug 2020 17:57:46 +0000 (UTC)
+	with ESMTP id 9ihG7MBWgiYN; Sat,  1 Aug 2020 21:01:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4B24288330;
-	Sat,  1 Aug 2020 17:57:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CDB3285E93;
+	Sat,  1 Aug 2020 21:01:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6054C1BF5B5
- for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 17:57:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C560E1BF4D8
+ for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 21:01:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 57E05203DD
- for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 17:57:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AA29720355
+ for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 21:01:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ppRsytQg6NGH for <devel@linuxdriverproject.org>;
- Sat,  1 Aug 2020 17:57:43 +0000 (UTC)
+ with ESMTP id U9EzGrj6tf1B for <devel@linuxdriverproject.org>;
+ Sat,  1 Aug 2020 21:01:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
- [209.85.208.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 398CB20335
- for <devel@driverdev.osuosl.org>; Sat,  1 Aug 2020 17:57:43 +0000 (UTC)
-Received: by mail-lj1-f194.google.com with SMTP id v12so5265546ljc.10
- for <devel@driverdev.osuosl.org>; Sat, 01 Aug 2020 10:57:43 -0700 (PDT)
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 89DC720131
+ for <devel@driverdev.osuosl.org>; Sat,  1 Aug 2020 21:01:04 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id k20so12133246wmi.5
+ for <devel@driverdev.osuosl.org>; Sat, 01 Aug 2020 14:01:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MVROroz657/I/Ih2063QqkFa0hHlRqGYHGpAlZxIDIU=;
- b=PKiWM1z0wSCVv5xEm41YfLhadbzphe6Czf6TvIm1dVHi8am+D8SmoENHmOuFvTb6Ks
- 2/3JCblBdYCIrzLfhImazWRAG8BMXLnhSJUF9aXJb7Uzn/1veAyCoSG260mRuGfuP4dW
- mhT9NozcmAB6SZ8zU0OGUpXbQF8ZTIRwhyMJ0d2gm8/CXx6+itzzUXF0xOcPv0XsloYs
- eRBxIFJmMADC49RR06UN0eBrG4wwgI3Q3NdGc5wRc8o1xiaFI/nKO7RhcdKXMu7trk7O
- FVN9qIXybwH3eD4I0u5JxxXy5cTirMGObNMBPG6Kudw64AtfBqipU53KTAzmW+lG6ckY
- Hp9g==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+ bh=YNOPC6OV3IJPHCoLM7Sk8cEozPcvLYb3g8nhCI3rNjw=;
+ b=ByDgdXPjj0NlssWjr8JfIFbtljdpLzNBF/AN9bUxJGEZ1lH1Q/EC3HUVuJosse5AjQ
+ J+TMbEgWjOylaIzNXKyV4X8+0xS9NTCpuCfYTP6DHcQwApbynuIOtgLpFEe4UYBf+MDc
+ ihiL2JT6oLS7nw44N4pnvQWZUiWOXsdNr0+a4X1GghhkCrtM6RVYcviJr/cgWzZFZJ23
+ jvpy7o4ds7MDq892kGoujmlEMFxsovucL7xw6bsBQVEB2oCNswdcamTSB9UcFNUniEXp
+ Y1J9StgYDbhw71oP+BveoK01u5fMv5qsjL5CNVx2s/jJqKlY3XDEOTuEyHchEL97reN9
+ aHkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MVROroz657/I/Ih2063QqkFa0hHlRqGYHGpAlZxIDIU=;
- b=gVw9zSBVc6+uYk3rf1oO5pqGEs5cIN5EqeSNhdnuL05xFs7wyJi1SeV9k4mdLgkmIA
- sKMCCp5fL1nUnao8c/YIAYtD1bXinl6TSpn2scqP1eJLpfYeOkgGcLyw2TywRD0wal5c
- J4T1/VM7pVQU1W0+qSDTFnCuzeTnWnRzadfeR5ipCofedoDR+3OeYNcZyEpvky3ojN8z
- EPYkMXB0PHv+Pv4z4IIAu8fTfqir/xHL5ygkK+7igLRbRqybGuXpsHmsfz8H9agMfdNR
- ZNcnGQKgGRPXff1gbtiuIaJhYum2FHok2dThmUimmqck6mCGU1/o5ZbgLzbAvSsXGqBq
- xnng==
-X-Gm-Message-State: AOAM533aeACgiiPA/1fIrVVoqJKlj8H744c/ZgbxPHalM1SFsTQYlkpC
- lASOEHlvN1rQnh1+x5wdEpA=
-X-Google-Smtp-Source: ABdhPJzEQqKL7E5Po5xXjYbD3pkXhwpZpVFJAQc1NLxWnKtXEi969IU4Unxd6/EEZyeXAAXvYQnZVg==
-X-Received: by 2002:a2e:b008:: with SMTP id y8mr3759143ljk.421.1596304661274; 
- Sat, 01 Aug 2020 10:57:41 -0700 (PDT)
-Received: from alpha (10.177.smarthome.spb.ru. [109.71.177.10])
- by smtp.gmail.com with ESMTPSA id d6sm2480920ljc.23.2020.08.01.10.57.40
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=YNOPC6OV3IJPHCoLM7Sk8cEozPcvLYb3g8nhCI3rNjw=;
+ b=irX3ja+tM/7xGQt1HWrMLlmzW7czEc8y7vhySOqZN6p0bSuUAV8lUa1cIkd4xjp2+c
+ CWNp9CuSGlE/hDnosnwm0zgoM6r2k0OVVC/vmmQSFnvUQCN2kscrFPZtM89FBNGFOQvA
+ EONE3kBvDzBkuzYLw94xK4dSErxugKEk9auZIdNK1zm3ocNotKFhWY4Z4ddPm9kVcm6P
+ 9/fjx319uR32mEwoxrYWyVTjI9nD3lW7thI4qPUkAuASwIrgSjGKXEUIn8cJLP2p9zmO
+ d8n7qoH45358my0DfCrAn0gBnt+yBtrGQsmlvXBnxsot873QSx4jiFiSsgviT8nV6b7K
+ WDbg==
+X-Gm-Message-State: AOAM531bomX7Bwg7XusNykNaIg8TFSCYwlw0HmV+1PW6ceVQWPqHZ2IP
+ k6MIHGPX5YiW0m2En4MiHNQ=
+X-Google-Smtp-Source: ABdhPJwLYlErY2BJuRL9fCALw6w7tFCagE0qC+VGRvhG44X5BAhDF9HYfpJt7D9szyTSUkf2FNeUJA==
+X-Received: by 2002:a1c:9a02:: with SMTP id c2mr10186406wme.16.1596315662791; 
+ Sat, 01 Aug 2020 14:01:02 -0700 (PDT)
+Received: from tsnow (IGLD-83-130-60-139.inter.net.il. [83.130.60.139])
+ by smtp.gmail.com with ESMTPSA id z6sm18344203wrs.36.2020.08.01.14.01.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 01 Aug 2020 10:57:40 -0700 (PDT)
-Received: (nullmailer pid 34162 invoked by uid 1000);
- Sat, 01 Aug 2020 18:02:52 -0000
-From: Ivan Safonov <insafonov@gmail.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>
-Subject: [PATCH v3] staging: r8188eu: replace rtw_netdev_priv define with
- inline function
-Date: Sat,  1 Aug 2020 21:02:35 +0300
-Message-Id: <20200801180235.34116-1-insafonov@gmail.com>
-X-Mailer: git-send-email 2.26.2
+ Sat, 01 Aug 2020 14:01:02 -0700 (PDT)
+Date: Sun, 2 Aug 2020 00:00:56 +0300
+From: Tomer Samara <tomersamara98@gmail.com>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: rts5208: clear alignment style issues
+Message-ID: <20200801210056.GA305272@tsnow>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,54 +82,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Ivan Safonov <insafonov@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- B K Karthik <bkkarthik@pesu.pes.edu>, linux-kernel@vger.kernel.org,
- Joe Perches <joe@perches.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The function guarantees type checking of arguments and return value.
+  Clear checkpatch alignment style issues in rtsx_transport.c.
+  CHECK: Alignment should match open parenthesis
 
-Result of rtw_netdev_priv macro can be assigned to pointer
-with incompatible type without warning. The function allow compiler
-to perform this check.
-
-Signed-off-by: Ivan Safonov <insafonov@gmail.com>
+Signed-off-by: Tomer Samara <tomersamara98@gmail.com>
 ---
-Changes in v2:
-  - add blank line after function definition;
-  - improve commit message.
+ drivers/staging/rts5208/rtsx_transport.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Changes in v3:
-  - use proper argument name;
-  - remove unnecessary parentheses.
----
- drivers/staging/rtl8188eu/include/osdep_service.h | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/include/osdep_service.h b/drivers/staging/rtl8188eu/include/osdep_service.h
-index 31d897f1d21f..b44d602e954a 100644
---- a/drivers/staging/rtl8188eu/include/osdep_service.h
-+++ b/drivers/staging/rtl8188eu/include/osdep_service.h
-@@ -71,8 +71,11 @@ struct rtw_netdev_priv_indicator {
- };
- struct net_device *rtw_alloc_etherdev_with_old_priv(void *old_priv);
+diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
+index 5f1eefe80f1e..0027bcf638ad 100644
+--- a/drivers/staging/rts5208/rtsx_transport.c
++++ b/drivers/staging/rts5208/rtsx_transport.c
+@@ -678,7 +678,7 @@ static int rtsx_transfer_buf(struct rtsx_chip *chip, u8 card, void *buf,
  
--#define rtw_netdev_priv(netdev)					\
--	(((struct rtw_netdev_priv_indicator *)netdev_priv(netdev))->priv)
-+static inline struct adapter *rtw_netdev_priv(struct net_device *netdev)
-+{
-+	return ((struct rtw_netdev_priv_indicator *)netdev_priv(netdev))->priv;
-+}
-+
- void rtw_free_netdev(struct net_device *netdev);
- 
- #define FUNC_NDEV_FMT "%s(%s)"
+ 	/* Wait for TRANS_OK_INT */
+ 	timeleft = wait_for_completion_interruptible_timeout(&trans_done,
+-			msecs_to_jiffies(timeout));
++							     msecs_to_jiffies(timeout));
+ 	if (timeleft <= 0) {
+ 		dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
+ 			__func__, __LINE__);
 -- 
-2.26.2
+2.25.1
 
 _______________________________________________
 devel mailing list
