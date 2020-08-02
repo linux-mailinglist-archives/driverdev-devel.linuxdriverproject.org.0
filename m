@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7348623561A
-	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Aug 2020 11:18:56 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F6FA23561D
+	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Aug 2020 11:22:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C727E87722;
-	Sun,  2 Aug 2020 09:18:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8A2A420472;
+	Sun,  2 Aug 2020 09:22:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3FUvzxGZIb5P; Sun,  2 Aug 2020 09:18:53 +0000 (UTC)
+	with ESMTP id hdXJTP9lSUiU; Sun,  2 Aug 2020 09:22:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE33D87747;
-	Sun,  2 Aug 2020 09:18:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AFE9820454;
+	Sun,  2 Aug 2020 09:22:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6A84F1BF421
- for <devel@linuxdriverproject.org>; Sun,  2 Aug 2020 09:18:49 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 77F4F1BF421
+ for <devel@linuxdriverproject.org>; Sun,  2 Aug 2020 09:21:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 648B58773F
- for <devel@linuxdriverproject.org>; Sun,  2 Aug 2020 09:18:49 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 750D088031
+ for <devel@linuxdriverproject.org>; Sun,  2 Aug 2020 09:21:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5BceMxlVXwNE for <devel@linuxdriverproject.org>;
- Sun,  2 Aug 2020 09:18:48 +0000 (UTC)
+ with ESMTP id ICE7oHICku29 for <devel@linuxdriverproject.org>;
+ Sun,  2 Aug 2020 09:21:56 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4717B87722
- for <devel@driverdev.osuosl.org>; Sun,  2 Aug 2020 09:18:48 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A5DF187FEA
+ for <devel@driverdev.osuosl.org>; Sun,  2 Aug 2020 09:21:56 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6EFFF2075A;
- Sun,  2 Aug 2020 09:18:47 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id BC22120738;
+ Sun,  2 Aug 2020 09:21:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596359928;
- bh=0sI0cWie9tDag5hLKiiEIxgczqIVsId5Urn4Kg/NpKw=;
+ s=default; t=1596360116;
+ bh=be34PBBJyc6qL1vpriQhJlTvltd+3yYKM1ILsPRj030=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=UjHZNGLz0TbQXYhHdW6OWrj7pa4joZga8CIPJb2UKyjNWCc1JkuPP9coatSZC0jyV
- 76oFX1J+0RfDgog+l0JGdanPNVux7AjCoFJeHhKZcx0e6zfx1/LnTpJs+QtWbUcMSb
- +f6LrpF5CFnL/fnAGeuChwsz3k3syx0mkaxhUDcg=
-Date: Sun, 2 Aug 2020 11:18:31 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+ b=A0WTxxVPKAYt+Yav8MlI4ckK6QyRkvG/FML0m7Z88nkruJRahxaqhWGEb+AXkRjoS
+ MKZz/G6tF3IFGX1oKZih/xlSeVEn6+zjW/MCk8QRzOTMnmRI/StkmDi72j3yR4zy/D
+ U3SnL26JoLWZ5CYxlPe+4kcHDgr0xab0XdCJfaD8=
+Date: Sun, 2 Aug 2020 11:21:39 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Michael Straube <straube.linux@gmail.com>
-Subject: Re: staging: most: Build error since commit "drivers: most: add USB
- adapter driver"
-Message-ID: <20200802091831.GA139182@kroah.com>
+Subject: [PATCH] staging: most: fix up movement of USB driver
+Message-ID: <20200802092139.GA140088@kroah.com>
 References: <7c18e466-0941-ee7e-9a0f-5a993c993152@gmail.com>
+ <20200802091831.GA139182@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <7c18e466-0941-ee7e-9a0f-5a993c993152@gmail.com>
+In-Reply-To: <20200802091831.GA139182@kroah.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,28 +73,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Aug 02, 2020 at 11:08:12AM +0200, Michael Straube wrote:
-> Hi,
-> 
-> with commit 97a6f772f36b7f52bcfa56a581bbd2470cffe23d ("drivers: most: add USB adapter driver")
-> I get build errors.
-> 
-> $ LANG=C make clean drivers/staging/rtl8188eu/
-> scripts/Makefile.clean:15: drivers/staging/most/usb/Makefile: No such file or directory
-> make[5]: *** No rule to make target 'drivers/staging/most/usb/Makefile'.  Stop.
-> make[4]: *** [scripts/Makefile.clean:66: drivers/staging/most/usb] Error 2
-> make[3]: *** [scripts/Makefile.clean:66: drivers/staging/most] Error 2
-> make[2]: *** [scripts/Makefile.clean:66: drivers/staging] Error 2
-> make[1]: *** [Makefile:1763: _clean_drivers] Error 2
-> make: *** [Makefile:336: __build_one_by_one] Error 2
-> 
-> Did you forgot to remove the below line from drivers/staging/most/Makefile ?
-> 
-> obj-$(CONFIG_MOST_USB)	+= usb/
+When moving the most usb driver out of staging, we forgot to remove the
+subdirectory out of the staging Makefile as well.
 
-Ugh, yes, let me go fix that up right now, sorry...
+Fixes: 97a6f772f36b ("drivers: most: add USB adapter driver")
+Cc: Christian Gromm <christian.gromm@microchip.com>
+Reported-by: Michael Straube <straube.linux@gmail.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/staging/most/Makefile | 1 -
+ 1 file changed, 1 deletion(-)
 
-greg k-h
+diff --git a/drivers/staging/most/Makefile b/drivers/staging/most/Makefile
+index a803a98654a8..7c10b84ebac0 100644
+--- a/drivers/staging/most/Makefile
++++ b/drivers/staging/most/Makefile
+@@ -6,4 +6,3 @@ obj-$(CONFIG_MOST_SOUND)	+= sound/
+ obj-$(CONFIG_MOST_VIDEO)	+= video/
+ obj-$(CONFIG_MOST_DIM2)	+= dim2/
+ obj-$(CONFIG_MOST_I2C)	+= i2c/
+-obj-$(CONFIG_MOST_USB)	+= usb/
+-- 
+2.28.0
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
