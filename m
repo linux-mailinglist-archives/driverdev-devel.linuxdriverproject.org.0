@@ -1,66 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 581A323549F
-	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Aug 2020 01:28:34 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F004E2354D2
+	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Aug 2020 03:44:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 01B1F881DE;
-	Sat,  1 Aug 2020 23:28:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AD1738788C;
+	Sun,  2 Aug 2020 01:44:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZJDCFil9aqlK; Sat,  1 Aug 2020 23:28:31 +0000 (UTC)
+	with ESMTP id I0e8t-yux2kI; Sun,  2 Aug 2020 01:44:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4C63A88072;
-	Sat,  1 Aug 2020 23:28:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1B960877E8;
+	Sun,  2 Aug 2020 01:44:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BE1971BF40F
- for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 23:28:28 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C3CD71BF3A3
+ for <devel@linuxdriverproject.org>; Sun,  2 Aug 2020 01:44:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B8C9284E88
- for <devel@linuxdriverproject.org>; Sat,  1 Aug 2020 23:28:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BC8F8877F1
+ for <devel@linuxdriverproject.org>; Sun,  2 Aug 2020 01:44:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZfpePMEl9Nwa for <devel@linuxdriverproject.org>;
- Sat,  1 Aug 2020 23:28:27 +0000 (UTC)
-X-Greylist: delayed 05:59:24 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0067.hostedemail.com
- [216.40.44.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D68EF84691
- for <devel@driverdev.osuosl.org>; Sat,  1 Aug 2020 23:28:27 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave01.hostedemail.com (Postfix) with ESMTP id 065BF1813C177
- for <devel@driverdev.osuosl.org>; Sat,  1 Aug 2020 17:29:05 +0000 (UTC)
+ with ESMTP id W2kbSuMRUtio for <devel@linuxdriverproject.org>;
+ Sun,  2 Aug 2020 01:44:40 +0000 (UTC)
+X-Greylist: delayed 07:56:43 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0232.hostedemail.com
+ [216.40.44.232])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8CD1C877E8
+ for <devel@driverdev.osuosl.org>; Sun,  2 Aug 2020 01:44:40 +0000 (UTC)
 Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
  [216.40.38.60])
- by smtprelay05.hostedemail.com (Postfix) with ESMTP id 953F718029137;
- Sat,  1 Aug 2020 17:29:02 +0000 (UTC)
+ by smtprelay02.hostedemail.com (Postfix) with ESMTP id 3E3BE12EC;
+ Sun,  2 Aug 2020 01:44:39 +0000 (UTC)
 X-Session-Marker: 6A6F6540706572636865732E636F6D
 X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:966:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2196:2199:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:4321:4385:5007:10004:10400:10848:11026:11232:11657:11658:11914:12043:12296:12297:12438:12740:12760:12895:13019:13069:13255:13311:13357:13439:14659:14721:21080:21451:21627:21990:30029:30054:30070:30091,
+ RULES_HIT:2:41:69:355:379:599:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1535:1593:1594:1606:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3354:3622:3865:3866:3867:3870:3872:4117:4321:4384:5007:6117:6119:7903:7904:10004:10848:11026:11232:11473:11658:11914:12043:12296:12297:12438:12555:12683:12740:12760:12895:13439:14659:21080:21324:21451:21611:21627:21990:30009:30012:30054:30070:30091,
  0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
  DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
  LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: pets72_5b1482626f8e
-X-Filterd-Recvd-Size: 2194
+X-HE-Tag: pail64_3c16b0526f91
+X-Filterd-Recvd-Size: 6029
 Received: from XPS-9350.home (unknown [47.151.133.149])
  (Authenticated sender: joe@perches.com)
- by omf13.hostedemail.com (Postfix) with ESMTPA;
- Sat,  1 Aug 2020 17:29:01 +0000 (UTC)
-Message-ID: <8a8d14b2dc7a977fbda6f5f96ffd08f167c085d7.camel@perches.com>
-Subject: Re: [PATCH v2] staging: r8188eu: replace rtw_netdev_priv define
- with inline function
+ by omf01.hostedemail.com (Postfix) with ESMTPA;
+ Sun,  2 Aug 2020 01:44:38 +0000 (UTC)
+Message-ID: <f8dd21b5000d4def1de9e79f32433f22da5b33d7.camel@perches.com>
+Subject: Re: [PATCH] staging: rts5208: clear alignment style issues
 From: Joe Perches <joe@perches.com>
-To: Ivan Safonov <insafonov@gmail.com>, Larry Finger
- <Larry.Finger@lwfinger.net>
-Date: Sat, 01 Aug 2020 10:29:00 -0700
-In-Reply-To: <20200801165220.29208-1-insafonov@gmail.com>
-References: <20200801165220.29208-1-insafonov@gmail.com>
+To: Tomer Samara <tomersamara98@gmail.com>, gregkh@linuxfoundation.org
+Date: Sat, 01 Aug 2020 18:44:37 -0700
+In-Reply-To: <20200801210056.GA305272@tsnow>
+References: <20200801210056.GA305272@tsnow>
 User-Agent: Evolution 3.36.3-0ubuntu1 
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -75,46 +69,154 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- B K Karthik <bkkarthik@pesu.pes.edu>, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, 2020-08-01 at 19:52 +0300, Ivan Safonov wrote:
-> The function guarantees type checking of arguments and return value.
-> 
-> Result of rtw_netdev_priv macro can be assigned to pointer
-> with incompatible type without warning. The function allow compiler
-> to perform this check.
+On Sun, 2020-08-02 at 00:00 +0300, Tomer Samara wrote:
+>   Clear checkpatch alignment style issues in rtsx_transport.c.
+>   CHECK: Alignment should match open parenthesis
 []
-> diff --git a/drivers/staging/rtl8188eu/include/osdep_service.h b/drivers/staging/rtl8188eu/include/osdep_service.h
+> diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
 []
-> @@ -71,8 +71,11 @@ struct rtw_netdev_priv_indicator {
->  };
->  struct net_device *rtw_alloc_etherdev_with_old_priv(void *old_priv);
+> @@ -678,7 +678,7 @@ static int rtsx_transfer_buf(struct rtsx_chip *chip, u8 card, void *buf,
 >  
-> -#define rtw_netdev_priv(netdev)					\
-> -	(((struct rtw_netdev_priv_indicator *)netdev_priv(netdev))->priv)
-> +static inline struct adapter *rtw_netdev_priv(struct net_device *dev)
-> +{
-> +	return (((struct rtw_netdev_priv_indicator *)netdev_priv(dev))->priv);
-> +}
+>  	/* Wait for TRANS_OK_INT */
+>  	timeleft = wait_for_completion_interruptible_timeout(&trans_done,
+> -			msecs_to_jiffies(timeout));
+> +							     msecs_to_jiffies(timeout));
+>  	if (timeleft <= 0) {
+>  		dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
+>  			__func__, __LINE__);
 
-To be similar to existing uses, this variable name should be
-netdev not dev.  There are also unnecessary parentheses.
+Always try to improve the code rather than just
+shut up checkpatch warnings.
 
->  void rtw_free_netdev(struct net_device *netdev);
+Perhaps it's more sensible to centralize the uses of
+wait_for_completion_interruptible_timeout.
 
-Better to use netdev like this one.
-
+Something like:
 ---
-static inline struct adapter *rtw_netdev_priv(struct net_device *netdev)
-{
-	return ((struct rtw_netdev_priv_indicator *)netdev_priv(netdev))->priv;
-}
+ drivers/staging/rts5208/rtsx_transport.c | 36 +++++++++++++-------------------
+ 1 file changed, 14 insertions(+), 22 deletions(-)
 
+diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
+index 5f1eefe80f1e..269ff1be7cba 100644
+--- a/drivers/staging/rts5208/rtsx_transport.c
++++ b/drivers/staging/rts5208/rtsx_transport.c
+@@ -222,12 +222,18 @@ void rtsx_send_cmd_no_wait(struct rtsx_chip *chip)
+ 	rtsx_writel(chip, RTSX_HCBCTLR, val);
+ }
+ 
++static inline bool rtsx_wait(struct completion *comp, int timeout)
++{
++	unsigned long t = msecs_to_jiffies(timeout);
++
++	return wait_for_completion_interruptible_timeout(comp, t) > 0;
++}
++
+ int rtsx_send_cmd(struct rtsx_chip *chip, u8 card, int timeout)
+ {
+ 	struct rtsx_dev *rtsx = chip->rtsx;
+ 	struct completion trans_done;
+ 	u32 val = BIT(31);
+-	long timeleft;
+ 	int err = 0;
+ 
+ 	if (card == SD_CARD)
+@@ -257,9 +263,8 @@ int rtsx_send_cmd(struct rtsx_chip *chip, u8 card, int timeout)
+ 	spin_unlock_irq(&rtsx->reg_lock);
+ 
+ 	/* Wait for TRANS_OK_INT */
+-	timeleft = wait_for_completion_interruptible_timeout(
+-		&trans_done, msecs_to_jiffies(timeout));
+-	if (timeleft <= 0) {
++
++	if (!rtsx_wait(&trans_done, timeout)) {
+ 		dev_dbg(rtsx_dev(chip), "chip->int_reg = 0x%x\n",
+ 			chip->int_reg);
+ 		err = -ETIMEDOUT;
+@@ -322,7 +327,6 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
+ 	u8 dir;
+ 	int sg_cnt, i, resid;
+ 	int err = 0;
+-	long timeleft;
+ 	struct scatterlist *sg_ptr;
+ 	u32 val = TRIG_DMA;
+ 
+@@ -419,9 +423,7 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
+ 
+ 	spin_unlock_irq(&rtsx->reg_lock);
+ 
+-	timeleft = wait_for_completion_interruptible_timeout(
+-		&trans_done, msecs_to_jiffies(timeout));
+-	if (timeleft <= 0) {
++	if (!rtsx_wait(&trans_done, timeout)) {
+ 		dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
+ 			__func__, __LINE__);
+ 		dev_dbg(rtsx_dev(chip), "chip->int_reg = 0x%x\n",
+@@ -443,9 +445,7 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
+ 	if (rtsx->trans_result == TRANS_NOT_READY) {
+ 		init_completion(&trans_done);
+ 		spin_unlock_irq(&rtsx->reg_lock);
+-		timeleft = wait_for_completion_interruptible_timeout(
+-			&trans_done, msecs_to_jiffies(timeout));
+-		if (timeleft <= 0) {
++		if (!rtsx_wait(&trans_done, timeout)) {
+ 			dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
+ 				__func__, __LINE__);
+ 			dev_dbg(rtsx_dev(chip), "chip->int_reg = 0x%x\n",
+@@ -486,7 +486,6 @@ static int rtsx_transfer_sglist_adma(struct rtsx_chip *chip, u8 card,
+ 	u8 dir;
+ 	int buf_cnt, i;
+ 	int err = 0;
+-	long timeleft;
+ 	struct scatterlist *sg_ptr;
+ 
+ 	if (!sg || (num_sg <= 0))
+@@ -563,9 +562,7 @@ static int rtsx_transfer_sglist_adma(struct rtsx_chip *chip, u8 card,
+ 
+ 		spin_unlock_irq(&rtsx->reg_lock);
+ 
+-		timeleft = wait_for_completion_interruptible_timeout(
+-			&trans_done, msecs_to_jiffies(timeout));
+-		if (timeleft <= 0) {
++		if (!rtsx_wait(&trans_done, timeout)) {
+ 			dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
+ 				__func__, __LINE__);
+ 			dev_dbg(rtsx_dev(chip), "chip->int_reg = 0x%x\n",
+@@ -590,9 +587,7 @@ static int rtsx_transfer_sglist_adma(struct rtsx_chip *chip, u8 card,
+ 	if (rtsx->trans_result == TRANS_NOT_READY) {
+ 		init_completion(&trans_done);
+ 		spin_unlock_irq(&rtsx->reg_lock);
+-		timeleft = wait_for_completion_interruptible_timeout(
+-			&trans_done, msecs_to_jiffies(timeout));
+-		if (timeleft <= 0) {
++		if (!rtsx_wait(&trans_done, timeout)) {
+ 			dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
+ 				__func__, __LINE__);
+ 			dev_dbg(rtsx_dev(chip), "chip->int_reg = 0x%x\n",
+@@ -633,7 +628,6 @@ static int rtsx_transfer_buf(struct rtsx_chip *chip, u8 card, void *buf,
+ 	u8 dir;
+ 	int err = 0;
+ 	u32 val = BIT(31);
+-	long timeleft;
+ 
+ 	if (!buf || (len <= 0))
+ 		return -EIO;
+@@ -677,9 +671,7 @@ static int rtsx_transfer_buf(struct rtsx_chip *chip, u8 card, void *buf,
+ 	spin_unlock_irq(&rtsx->reg_lock);
+ 
+ 	/* Wait for TRANS_OK_INT */
+-	timeleft = wait_for_completion_interruptible_timeout(&trans_done,
+-			msecs_to_jiffies(timeout));
+-	if (timeleft <= 0) {
++	if (!rtsx_wait(&trans_done, timeout)) {
+ 		dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
+ 			__func__, __LINE__);
+ 		dev_dbg(rtsx_dev(chip), "chip->int_reg = 0x%x\n",
 
 
 _______________________________________________
