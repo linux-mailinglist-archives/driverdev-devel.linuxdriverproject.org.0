@@ -2,77 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3732D239D78
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Aug 2020 04:20:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 463F6239D8B
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Aug 2020 04:47:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 685D587BD4;
-	Mon,  3 Aug 2020 02:20:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 518C487B77;
+	Mon,  3 Aug 2020 02:47:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1BYP44qqfSnI; Mon,  3 Aug 2020 02:20:47 +0000 (UTC)
+	with ESMTP id gbv2Vtq9PtrM; Mon,  3 Aug 2020 02:47:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 80C2087B59;
-	Mon,  3 Aug 2020 02:20:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8116487B92;
+	Mon,  3 Aug 2020 02:47:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C1C0F1BF402
- for <devel@linuxdriverproject.org>; Mon,  3 Aug 2020 02:20:43 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 192F51BF402
+ for <devel@linuxdriverproject.org>; Mon,  3 Aug 2020 02:47:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BEAC985BD5
- for <devel@linuxdriverproject.org>; Mon,  3 Aug 2020 02:20:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 15C2387B6A
+ for <devel@linuxdriverproject.org>; Mon,  3 Aug 2020 02:47:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rk2kCzamlaKi for <devel@linuxdriverproject.org>;
- Mon,  3 Aug 2020 02:20:43 +0000 (UTC)
+ with ESMTP id n7XBK4hjA-Dc for <devel@linuxdriverproject.org>;
+ Mon,  3 Aug 2020 02:47:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f182.google.com (mail-qk1-f182.google.com
- [209.85.222.182])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0D7A885BD1
- for <devel@driverdev.osuosl.org>; Mon,  3 Aug 2020 02:20:43 +0000 (UTC)
-Received: by mail-qk1-f182.google.com with SMTP id g26so34000270qka.3
- for <devel@driverdev.osuosl.org>; Sun, 02 Aug 2020 19:20:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=cetzUKXtme91v22asNs+2tSRT7pQwpfybhfcV6WixOY=;
- b=pgGnXNccoDXAEQ+C8LHTeLNeKs93SjbAaDPZvfstWlo/G1zOxuCPxH+5RwkrMKj7+w
- LTM+xea7OF5Hj4mMVu6C/WxFTfRWnX6R/hlLR5wR1N6cFAZbazMPU3KB7U+hs0CCovnU
- v9W8MC3T2ZTaqr9bQGdDk5Svj1Nkawsa/7HLPkHs2EOr7fS3MCvW8QkCnaQsLD18rAXe
- CMVu4tLru08Fh6541tvKXA2jC5f7H6HSyBMYerqLO6xxDbanXlMwMuzC4ZMP7+SjWdWb
- Fco3a8KfiS/l9k4Dyqiu9KIxnTK4dS5kUqgHpINnbBtKIdTDXiV5HjQhohRhhFoj0Z+d
- cu3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=cetzUKXtme91v22asNs+2tSRT7pQwpfybhfcV6WixOY=;
- b=rm/DGj/bknelfdlfDyYh3SQKrAOvr0DpnfADByWk6yFebQCUoJuzKjqm/Cgq5Z+e4O
- NorhkOoVEvaRHJ1PLvcPoIY/gBSTlrF6zWnnM81Q+LdBl/qrSrTMKQNt5d1uhRKRzpvo
- JnEL94O6dxHv9mmTXKtv9EGbholMZyRYCli0brcVKB1c4qeVh7r6ppD7R4qSfj/A0pTZ
- vPEMxH5Fe+7tusyKsoGQcsLWwJ4vwOpLDAqBvm7lDdIOO7u3kOUXVrdKtAdBvAINSGls
- eYlhNhLhzMsZOpDqjWCEvtTWhYweH8JolbVP37GPRNPcW+HV5O//qyJh+rbdyEdoFJi2
- YC3A==
-X-Gm-Message-State: AOAM531iLwWcs8YR7icatFHEbIQTXkp+INSe7bzTjxSylw92oeIZETWV
- jiNtF9jUOMCE3hQM1iQop3Y=
-X-Google-Smtp-Source: ABdhPJxv7dass7gytP1WrwXpJSzxnkRQ2jqaDkC+AMxQoOHYxjJNH4L8zhBw+IFXeDyenm48OtS0QA==
-X-Received: by 2002:a05:620a:65d:: with SMTP id
- a29mr14824360qka.167.1596421242062; 
- Sun, 02 Aug 2020 19:20:42 -0700 (PDT)
-Received: from localhost.localdomain ([201.82.33.19])
- by smtp.googlemail.com with ESMTPSA id
- x137sm18749297qkb.47.2020.08.02.19.20.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 02 Aug 2020 19:20:41 -0700 (PDT)
-From: Igor Matheus Andrade Torrente <igormtorrente@gmail.com>
-To: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org
-Subject: [PATCH] staging: wlan-ng: Remove repeated words in comments
-Date: Sun,  2 Aug 2020 23:20:22 -0300
-Message-Id: <20200803022022.501-1-igormtorrente@gmail.com>
-X-Mailer: git-send-email 2.27.0
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6F64B87B60
+ for <devel@driverdev.osuosl.org>; Mon,  3 Aug 2020 02:47:22 +0000 (UTC)
+IronPort-SDR: cz3Zyux1sn/UBk5M1/hNV+gwHvE2izLpQ7kXUxeEF/h+7U1CMBjWBZzmPN9HZlloCKenq/QNwD
+ NT+yu+dOVHSQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9701"; a="170140538"
+X-IronPort-AV: E=Sophos;i="5.75,428,1589266800"; d="scan'208";a="170140538"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Aug 2020 19:47:21 -0700
+IronPort-SDR: LZxA2hRJrkavRQFriR6t4Gmbzjid/AwjAb+BYfZsad5lhWM8lsd8hDaUjctOgM0ptbxbFq56CZ
+ 4JHT6RCz4IIg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,428,1589266800"; d="scan'208";a="436053334"
+Received: from lkp-server01.sh.intel.com (HELO e21119890065) ([10.239.97.150])
+ by orsmga004.jf.intel.com with ESMTP; 02 Aug 2020 19:47:20 -0700
+Received: from kbuild by e21119890065 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1k2QVT-0001oD-R4; Mon, 03 Aug 2020 02:47:19 +0000
+Date: Mon, 03 Aug 2020 10:46:23 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 5bbd90550da8f7bdac769b5825597e67183c9411
+Message-ID: <5f277a7f.nVvZ6Cts7qjdoxPl%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -86,58 +69,130 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Igor Matheus Andrade Torrente <igormtorrente@gmail.com>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove duplicate words in comments at prism2mib and prism2sta files.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: 5bbd90550da8f7bdac769b5825597e67183c9411  staging: most: fix up movement of USB driver
 
-Signed-off-by: Igor Matheus Andrade Torrente <igormtorrente@gmail.com>
+elapsed time: 721m
+
+configs tested: 103
+configs skipped: 9
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm64                            allyesconfig
+arm64                               defconfig
+powerpc                      chrp32_defconfig
+arc                 nsimosci_hs_smp_defconfig
+arm                          pxa910_defconfig
+sh                        sh7757lcr_defconfig
+sh                           se7780_defconfig
+mips                           jazz_defconfig
+mips                            ar7_defconfig
+c6x                         dsk6455_defconfig
+m68k                         amcore_defconfig
+ia64                      gensparse_defconfig
+powerpc                  mpc885_ads_defconfig
+powerpc64                           defconfig
+mips                     cu1000-neo_defconfig
+arm                            dove_defconfig
+arm                        neponset_defconfig
+sh                      rts7751r2d1_defconfig
+nios2                         3c120_defconfig
+c6x                        evmc6457_defconfig
+h8300                               defconfig
+arm                        shmobile_defconfig
+arm                            pleb_defconfig
+powerpc                mpc7448_hpc2_defconfig
+m68k                                defconfig
+arm                            zeus_defconfig
+nds32                            alldefconfig
+arc                         haps_hs_defconfig
+arm                          exynos_defconfig
+mips                      pistachio_defconfig
+arm                     am200epdkit_defconfig
+arm                         lpc32xx_defconfig
+alpha                            allyesconfig
+mips                          ath25_defconfig
+mips                      maltaaprp_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a004-20200803
+i386                 randconfig-a005-20200803
+i386                 randconfig-a001-20200803
+i386                 randconfig-a002-20200803
+i386                 randconfig-a003-20200803
+i386                 randconfig-a006-20200803
+i386                 randconfig-a004-20200802
+i386                 randconfig-a005-20200802
+i386                 randconfig-a001-20200802
+i386                 randconfig-a002-20200802
+i386                 randconfig-a003-20200802
+i386                 randconfig-a006-20200802
+i386                 randconfig-a011-20200802
+i386                 randconfig-a012-20200802
+i386                 randconfig-a015-20200802
+i386                 randconfig-a014-20200802
+i386                 randconfig-a013-20200802
+i386                 randconfig-a016-20200802
+x86_64               randconfig-a006-20200802
+x86_64               randconfig-a001-20200802
+x86_64               randconfig-a004-20200802
+x86_64               randconfig-a003-20200802
+x86_64               randconfig-a002-20200802
+x86_64               randconfig-a005-20200802
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
 ---
- drivers/staging/wlan-ng/prism2mib.c | 2 +-
- drivers/staging/wlan-ng/prism2sta.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/wlan-ng/prism2mib.c b/drivers/staging/wlan-ng/prism2mib.c
-index 7d7d77b04255..875812a391c9 100644
---- a/drivers/staging/wlan-ng/prism2mib.c
-+++ b/drivers/staging/wlan-ng/prism2mib.c
-@@ -292,7 +292,7 @@ int prism2mgmt_mibset_mibget(struct wlandevice *wlandev, void *msgp)
- 	/*
- 	 ** Determine if this is a "mibget" or a "mibset".  If this is a
- 	 ** "mibget", then make sure that the MIB may be read.  Otherwise,
--	 ** this is a "mibset" so make make sure that the MIB may be written.
-+	 ** this is a "mibset" so make sure that the MIB may be written.
- 	 */
- 
- 	isget = (msg->msgcode == DIDMSG_DOT11REQ_MIBGET);
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index 8f25496188aa..e6dcb687e7a1 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -461,7 +461,7 @@ u32 prism2sta_ifstate(struct wlandevice *wlandev, u32 ifstate)
- 		case WLAN_MSD_FWLOAD:
- 			wlandev->msdstate = WLAN_MSD_RUNNING_PENDING;
- 			/* Initialize the device+driver for full
--			 * operation. Note that this might me an FWLOAD to
-+			 * operation. Note that this might me an FWLOAD
- 			 * to RUNNING transition so we must not do a chip
- 			 * or board level reset.  Note that on failure,
- 			 * the MSD state is set to HWPRESENT because we
-@@ -1352,7 +1352,7 @@ void prism2sta_processing_defer(struct work_struct *data)
- 		 * we get back in range.  We should block transmits and
- 		 * receives in this state.  Do we need an indication here?
- 		 * Probably not since a polling user-mode element would
--		 * get this status from from p2PortStatus(FD40). What about
-+		 * get this status from p2PortStatus(FD40). What about
- 		 * p80211?
- 		 * Response:
- 		 * Block Transmits, Ignore receives of data frames
--- 
-2.27.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
