@@ -2,79 +2,84 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 547F523B492
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Aug 2020 07:47:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E5E6D23B4B6
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Aug 2020 07:58:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7319E85DFC;
-	Tue,  4 Aug 2020 05:47:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CEC698450D;
+	Tue,  4 Aug 2020 05:58:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K4ZpiD8RGibX; Tue,  4 Aug 2020 05:47:36 +0000 (UTC)
+	with ESMTP id DbgPny07jQow; Tue,  4 Aug 2020 05:58:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C7DB285B5B;
-	Tue,  4 Aug 2020 05:47:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 94317844AF;
+	Tue,  4 Aug 2020 05:58:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A44F41BF2BD
- for <devel@linuxdriverproject.org>; Tue,  4 Aug 2020 05:47:33 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C6801BF2BD
+ for <devel@linuxdriverproject.org>; Tue,  4 Aug 2020 05:58:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9F7E08781C
- for <devel@linuxdriverproject.org>; Tue,  4 Aug 2020 05:47:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7DC8520429
+ for <devel@linuxdriverproject.org>; Tue,  4 Aug 2020 05:58:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EmKuNAKaslXm for <devel@linuxdriverproject.org>;
- Tue,  4 Aug 2020 05:47:32 +0000 (UTC)
+ with ESMTP id qvqYU08EHfTs for <devel@linuxdriverproject.org>;
+ Tue,  4 Aug 2020 05:58:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BCBCC87816
- for <devel@driverdev.osuosl.org>; Tue,  4 Aug 2020 05:47:32 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id h12so10127508pgf.7
- for <devel@driverdev.osuosl.org>; Mon, 03 Aug 2020 22:47:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=vDqLDzenSWHFK8n0k98ye2lU5LkLmPsSvSRCb9qxZYw=;
- b=hVuoAigv2raGWMd83qJY6Xz7QDJMBlSMXKKSrBXoHU9m3M17SJ0c9uH6OmVJvDEF5N
- x4m6SqByvLXKRZXo592ojSYyEtM/vSn16TObpqVzepkkIa5oFHVouIlAZqGrC0iKtFxu
- n5JwBYVxv4i6Pp9FKOi27oNl62DBwhQC7jnKDiTyebSGmiFCJi/zvS8hrNAyQA6eVmqu
- u2i1M8JJ9VLoIo09Q3Op77rt3rhwbo99d+/C0DO7FHVT1AZReRC7RLVBHnDwX9uV6JXf
- duyoVekZpyrBIMsHNlVf2DbTqgD3gGzZqciEayJsPAYsloT+PjnPk1YLnlcFFSbHBedh
- iK+g==
+Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
+ [209.85.208.194])
+ by silver.osuosl.org (Postfix) with ESMTPS id 22CF320424
+ for <devel@driverdev.osuosl.org>; Tue,  4 Aug 2020 05:58:26 +0000 (UTC)
+Received: by mail-lj1-f194.google.com with SMTP id s16so26976505ljc.8
+ for <devel@driverdev.osuosl.org>; Mon, 03 Aug 2020 22:58:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=PovWtt/hyyq7GqZJhadvZnSefeeWx2retmil7K8DBl0=;
+ b=j512w+piXkOClqZwk8PPWIIwmv0LZ2ToLx2E5QqSFqoaeD8Z210SHobH0nWqZ457K6
+ 37EtTc5wYusFkJcn1CXIOuJFGrldIzv38iLCWPhavlPqOmjjQ1AV7t02LJhB0llWOuD8
+ PXpY45pb4tskFB9KonqhdxBL//A0ASC5mkelYHe4BtAt7ichpEF5SingqlUZLUHVGclZ
+ rW4+Z6zePywYsuwkHH2QF+OCzTGGZGlaxmI7R+31SSUeGC9Mjpaca05Lf9QL7p5BkLpt
+ omzrh6yFiKSIOAJXpO7jP/htzke0kGvBi6eeDRCXNkiAyLhXFE2V40g3sr4dni2+dSxu
+ iDtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=vDqLDzenSWHFK8n0k98ye2lU5LkLmPsSvSRCb9qxZYw=;
- b=h8LRNRaj6yiWoN+aLkw4m99LGdDMPXdGJ71oxW/1lzsAqMkTL5gZ3f7TNS7xS+HvcC
- IvG8M0AIbDSXdNg2W5aBgYXK8myAvjUFC2V/J7PeBbxt2aLZGYncGp+0ww9LGN3ca/im
- 66Cok6QQVlGNtF4zMKlfQHP3KLbONpSiQw7dbmAfZmXgQ+hTjEsMKzpDX7bIWVFgJr9B
- PnJ4NgGqv0g+uKITt1gmAC7uo4TdUJsKfl1Iwg9HDg/ucbauX0RBFphyzSMo9rEzHyLt
- x3NVtB6zhfuV53sC3Km7UNWvDXG3hDfa0PdvX733UhZhVlsielc7k2urUE+PeGeZ5r3E
- AOfg==
-X-Gm-Message-State: AOAM532S/Eq8rAyXPVWFLb9Q07BTPwFzbjwUzOJVmbGThNYlC3c73C/Y
- r3GpFfpp58bUP+XD+YqznlNfhg==
-X-Google-Smtp-Source: ABdhPJypAAH2b4OuHX0Wo/y3QyqH1t6HOyEPeMQOxwksBRX1krFfIabU82XdsK7AvSB1E6Vh2xzU9A==
-X-Received: by 2002:a63:210c:: with SMTP id h12mr17617691pgh.152.1596520052288; 
- Mon, 03 Aug 2020 22:47:32 -0700 (PDT)
-Received: from localhost ([122.162.244.227])
- by smtp.gmail.com with ESMTPSA id r7sm19970036pfl.186.2020.08.03.22.47.30
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 03 Aug 2020 22:47:31 -0700 (PDT)
-Date: Tue, 4 Aug 2020 11:17:28 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Dongdong Yang <contribute.kernel@gmail.com>
-Subject: Re: [PATCH v3] Provide USF for the portable equipment.
-Message-ID: <20200804054728.ojudxu5fmd54lar5@vireshk-mac-ubuntu>
-References: <cover.1596464894.git.yangdongdong@xiaomi.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=PovWtt/hyyq7GqZJhadvZnSefeeWx2retmil7K8DBl0=;
+ b=GKoN5n/VCUYruThikINzAw8F/ZronWDcEXghE03NWwWlcw4hzsqXgJC4BoTlWKmN5K
+ F9ZlL3uTXRaHIi4A4GlLdAlmQCdHP4lq6Jbl4Sg5E80HYCnTLkhhzZKeAVG+ca+J1CzF
+ 1+yUgEMgJfK2gGknbBWZah3hUfzXlt1c4wNMFAqWpaKMrBfqH564H8vkijKe2+ABFT4Z
+ FZEUYoTizIYiIxV8p632qrYUegJVV3fgo8nXcw750VimdiaWHeCAsh3tUL9iXOlEg0rg
+ hXPdPl5Pk5qWlscMUCYt4etNAhFjL2PZ7/j3cG1Au406r/23W9j9oP0RxSvzbZITptaJ
+ YQhA==
+X-Gm-Message-State: AOAM532nQBGbTJiVZ5IOBaoGultWRvSyzepDKFtY9c6+NhtLgQO41pAf
+ 3yn0QvzHLIgFlyKKPvikBpM=
+X-Google-Smtp-Source: ABdhPJw+sd1rKTXZJUSBPB0N65PD6421E06QjDff/C5/PXiL1pCUKBh5p9a8YKXRX13MwMy3rIgcRA==
+X-Received: by 2002:a2e:b55c:: with SMTP id a28mr981400ljn.107.1596520704054; 
+ Mon, 03 Aug 2020 22:58:24 -0700 (PDT)
+Received: from [192.168.2.145] (94-29-41-50.dynamic.spd-mgts.ru. [94.29.41.50])
+ by smtp.googlemail.com with ESMTPSA id m20sm6546686lfb.72.2020.08.03.22.58.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 03 Aug 2020 22:58:23 -0700 (PDT)
+Subject: Re: [PATCH v2 -next] media: staging: tegra-vde: Mark
+ tegra_vde_runtime_suspend/resume as __maybe_unused
+To: YueHaibing <yuehaibing@huawei.com>, mchehab@kernel.org,
+ gregkh@linuxfoundation.org, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ hverkuil-cisco@xs4all.nl
+References: <20200803115901.44068-1-yuehaibing@huawei.com>
+ <20200804014137.45444-1-yuehaibing@huawei.com>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <709889ed-7757-ab5b-53c9-a061ae062d08@gmail.com>
+Date: Tue, 4 Aug 2020 08:58:22 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1596464894.git.yangdongdong@xiaomi.com>
-User-Agent: NeoMutt/20170609 (1.8.3)
+In-Reply-To: <20200804014137.45444-1-yuehaibing@huawei.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,72 +92,38 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: juri.lelli@redhat.com, peterz@infradead.org, bsegall@google.com,
- gulinghua@xiaomi.com, duhui@xiaomi.com, rocking@linux.alibaba.com,
- devel@driverdev.osuosl.org, vincent.guittot@linaro.org, tanggeliang@xiaomi.com,
- mingo@redhat.com, yangdongdong@xiaomi.com, mgorman@suse.de,
- linux-pm@vger.kernel.org, rostedt@goodmis.org, fengwei@xiaomi.com,
- taojun@xiaomi.com, dietmar.eggemann@arm.com, huangqiwu@xiaomi.com,
- gregkh@linuxfoundation.org, rjw@rjwysocki.net, linux-kernel@vger.kernel.org,
- zhangguoquan@xiaomi.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 03-08-20, 22:31, Dongdong Yang wrote:
-> From: Dongdong Yang <yangdongdong@xiaomi.com>
-> =
-
-> This patch provides USF(User Sensitive Feedback factor) auxiliary
-> cpufreq governor to support high level layer sysfs inodes setting
-> for utils adjustment purpose from the identified scenario on portable
-> equipment. Because the power consumption and UI response are more cared
-> for by portable equipment=A0users. And the "screen off" status stands for
-> no request from the user, however, the kernel is still expected to
-> notify the user in time on modem, network or powerkey events occur. USF
-> provides "sched_usf_non_ux_r" sysfs inode to cut down the utils from
-> user space tasks according to high level scenario. In addition, it
-> usually hints more cpufreq demand that the preemptive counts of the
-> tasks on the cpu burst and over the user expecting completed time such
-> as the ratio sysctl_sched_latency to sysctl_sched_min_granularity on
-> "screen on" status, which more likely with more UI. The sysfs inodes
-> "sched_usf_up_l0_r" and "sched_usf_down_r" have been provided to adjust
-> the utils according to high level identified scenario to alloc the
-> cpufreq in time.
-> =
-
-> Changes in v3
->   - Move usf.c to kernel/sched.
->   - Remove trace_printk and debugfs.
->   - Add document draft.
->   - Update comments.
-> =
-
-> Changes in v2
->   - Add adjust_task_pred_set switch.
->   - Move adjust_task_pred_demand declaration into sched.h
->   - Update comments.
-
-Sending updated patchset for this isn't going to help you my friend. You ne=
-ed
-people (maintainers) to agree on the idea here first. The patch can be
-beautified later if required once the idea is agreed upon. I saw Peter alre=
-ady
-gave his NAK to it during V1. You need to discuss with people here to see w=
-hy
-they don't like it first and as Greg said earlier, this should not go to st=
-aging
-at all if it ever makes it mainline.
-
-The more versions you send now (without proper discussions first), the hard=
-er it
-will be for this stuff to get merged upstream.
-
--- =
-
-viresh
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+MDQuMDguMjAyMCAwNDo0MSwgWXVlSGFpYmluZyDQv9C40YjQtdGCOgo+IElmIENPTkZJR19QTSBp
+cyBub3Qgc2V0LCBnY2Mgd2FybnM6Cj4gCj4gZHJpdmVycy9zdGFnaW5nL21lZGlhL3RlZ3JhLXZk
+ZS92ZGUuYzo5MTY6MTI6Cj4gIHdhcm5pbmc6ICd0ZWdyYV92ZGVfcnVudGltZV9zdXNwZW5kJyBk
+ZWZpbmVkIGJ1dCBub3QgdXNlZCBbLVd1bnVzZWQtZnVuY3Rpb25dCj4gCj4gTWFrZSBpdCBfX21h
+eWJlX3VudXNlZCB0byBmaXggdGhpcy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBZdWVIYWliaW5nIDx5
+dWVoYWliaW5nQGh1YXdlaS5jb20+Cj4gLS0tCj4gdjI6IGJvdGggc3VzcGVuZCBhbmQgcmVzdW1l
+IGZ1bmN0aW9ucyBtYXJrZWQKPiAtLS0KPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3RlZ3JhLXZk
+ZS92ZGUuYyB8IDQgKystLQo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRl
+bGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvdGVncmEt
+dmRlL3ZkZS5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3RlZ3JhLXZkZS92ZGUuYwo+IGluZGV4
+IGEzYzI0ZDk2ZDViOS4uMjg4NDViNWJhZmFmIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS90ZWdyYS12ZGUvdmRlLmMKPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvdGVn
+cmEtdmRlL3ZkZS5jCj4gQEAgLTkxMyw3ICs5MTMsNyBAQCBzdGF0aWMgaXJxcmV0dXJuX3QgdGVn
+cmFfdmRlX2lzcihpbnQgaXJxLCB2b2lkICpkYXRhKQo+ICAJcmV0dXJuIElSUV9IQU5ETEVEOwo+
+ICB9Cj4gIAo+IC1zdGF0aWMgaW50IHRlZ3JhX3ZkZV9ydW50aW1lX3N1c3BlbmQoc3RydWN0IGRl
+dmljZSAqZGV2KQo+ICtzdGF0aWMgX19tYXliZV91bnVzZWQgaW50IHRlZ3JhX3ZkZV9ydW50aW1l
+X3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgdGVncmFfdmRlICp2
+ZGUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAgCWludCBlcnI7Cj4gQEAgLTkyOSw3ICs5Mjks
+NyBAQCBzdGF0aWMgaW50IHRlZ3JhX3ZkZV9ydW50aW1lX3N1c3BlbmQoc3RydWN0IGRldmljZSAq
+ZGV2KQo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCj4gLXN0YXRpYyBpbnQgdGVncmFfdmRlX3J1bnRp
+bWVfcmVzdW1lKHN0cnVjdCBkZXZpY2UgKmRldikKPiArc3RhdGljIF9fbWF5YmVfdW51c2VkIGlu
+dCB0ZWdyYV92ZGVfcnVudGltZV9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4gIAlz
+dHJ1Y3QgdGVncmFfdmRlICp2ZGUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAgCWludCBlcnI7
+Cj4gCgpUaGFua3MhCgpSZXZpZXdlZC1ieTogRG1pdHJ5IE9zaXBlbmtvIDxkaWdldHhAZ21haWwu
+Y29tPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZl
+bCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVy
+ZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2
+ZWwK
