@@ -1,85 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5E6D23B4B6
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Aug 2020 07:58:32 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C090C23B5FF
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Aug 2020 09:48:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CEC698450D;
-	Tue,  4 Aug 2020 05:58:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AD56F879A5;
+	Tue,  4 Aug 2020 07:48:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DbgPny07jQow; Tue,  4 Aug 2020 05:58:30 +0000 (UTC)
+	with ESMTP id K8J7mEn3liPW; Tue,  4 Aug 2020 07:48:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 94317844AF;
-	Tue,  4 Aug 2020 05:58:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DC41687100;
+	Tue,  4 Aug 2020 07:48:04 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8C6801BF2BD
- for <devel@linuxdriverproject.org>; Tue,  4 Aug 2020 05:58:27 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2504C1BF2A7
+ for <devel@linuxdriverproject.org>; Tue,  4 Aug 2020 07:48:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7DC8520429
- for <devel@linuxdriverproject.org>; Tue,  4 Aug 2020 05:58:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1E06885087
+ for <devel@linuxdriverproject.org>; Tue,  4 Aug 2020 07:48:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qvqYU08EHfTs for <devel@linuxdriverproject.org>;
- Tue,  4 Aug 2020 05:58:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
- [209.85.208.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 22CF320424
- for <devel@driverdev.osuosl.org>; Tue,  4 Aug 2020 05:58:26 +0000 (UTC)
-Received: by mail-lj1-f194.google.com with SMTP id s16so26976505ljc.8
- for <devel@driverdev.osuosl.org>; Mon, 03 Aug 2020 22:58:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=PovWtt/hyyq7GqZJhadvZnSefeeWx2retmil7K8DBl0=;
- b=j512w+piXkOClqZwk8PPWIIwmv0LZ2ToLx2E5QqSFqoaeD8Z210SHobH0nWqZ457K6
- 37EtTc5wYusFkJcn1CXIOuJFGrldIzv38iLCWPhavlPqOmjjQ1AV7t02LJhB0llWOuD8
- PXpY45pb4tskFB9KonqhdxBL//A0ASC5mkelYHe4BtAt7ichpEF5SingqlUZLUHVGclZ
- rW4+Z6zePywYsuwkHH2QF+OCzTGGZGlaxmI7R+31SSUeGC9Mjpaca05Lf9QL7p5BkLpt
- omzrh6yFiKSIOAJXpO7jP/htzke0kGvBi6eeDRCXNkiAyLhXFE2V40g3sr4dni2+dSxu
- iDtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PovWtt/hyyq7GqZJhadvZnSefeeWx2retmil7K8DBl0=;
- b=GKoN5n/VCUYruThikINzAw8F/ZronWDcEXghE03NWwWlcw4hzsqXgJC4BoTlWKmN5K
- F9ZlL3uTXRaHIi4A4GlLdAlmQCdHP4lq6Jbl4Sg5E80HYCnTLkhhzZKeAVG+ca+J1CzF
- 1+yUgEMgJfK2gGknbBWZah3hUfzXlt1c4wNMFAqWpaKMrBfqH564H8vkijKe2+ABFT4Z
- FZEUYoTizIYiIxV8p632qrYUegJVV3fgo8nXcw750VimdiaWHeCAsh3tUL9iXOlEg0rg
- hXPdPl5Pk5qWlscMUCYt4etNAhFjL2PZ7/j3cG1Au406r/23W9j9oP0RxSvzbZITptaJ
- YQhA==
-X-Gm-Message-State: AOAM532nQBGbTJiVZ5IOBaoGultWRvSyzepDKFtY9c6+NhtLgQO41pAf
- 3yn0QvzHLIgFlyKKPvikBpM=
-X-Google-Smtp-Source: ABdhPJw+sd1rKTXZJUSBPB0N65PD6421E06QjDff/C5/PXiL1pCUKBh5p9a8YKXRX13MwMy3rIgcRA==
-X-Received: by 2002:a2e:b55c:: with SMTP id a28mr981400ljn.107.1596520704054; 
- Mon, 03 Aug 2020 22:58:24 -0700 (PDT)
-Received: from [192.168.2.145] (94-29-41-50.dynamic.spd-mgts.ru. [94.29.41.50])
- by smtp.googlemail.com with ESMTPSA id m20sm6546686lfb.72.2020.08.03.22.58.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Aug 2020 22:58:23 -0700 (PDT)
-Subject: Re: [PATCH v2 -next] media: staging: tegra-vde: Mark
- tegra_vde_runtime_suspend/resume as __maybe_unused
-To: YueHaibing <yuehaibing@huawei.com>, mchehab@kernel.org,
- gregkh@linuxfoundation.org, thierry.reding@gmail.com, jonathanh@nvidia.com,
- hverkuil-cisco@xs4all.nl
-References: <20200803115901.44068-1-yuehaibing@huawei.com>
- <20200804014137.45444-1-yuehaibing@huawei.com>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <709889ed-7757-ab5b-53c9-a061ae062d08@gmail.com>
-Date: Tue, 4 Aug 2020 08:58:22 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ with ESMTP id Ks9VMbnRNAzm for <devel@linuxdriverproject.org>;
+ Tue,  4 Aug 2020 07:48:01 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6846584DFD
+ for <devel@driverdev.osuosl.org>; Tue,  4 Aug 2020 07:48:01 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9FB172086A;
+ Tue,  4 Aug 2020 07:48:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1596527281;
+ bh=pS1WPK1i6yro2DLNjCjUZpZoNv0ByMmOkSSvxn+6F1o=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=QR3Hg6B44CqSd0jBaGgC7l8EdzRxprSXs/tZkN+GLYXwGA0QXuHoiQay1oVd7+7iT
+ Qgog646pCVwry06e6Eb2tN1DdP9YaEKOTWpKbMGJiWdIrXaTABImI5q4i9tSZK1hUj
+ LGHwlw5aKnCqbsvuj9AeANPuw29rbzUcZwlOm7Rs=
+Date: Tue, 4 Aug 2020 09:47:41 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Dongdong Yang <contribute.kernel@gmail.com>
+Subject: Re: [PATCH v3] Provide USF for the portable equipment.
+Message-ID: <20200804074741.GA1761483@kroah.com>
+References: <cover.1596464894.git.yangdongdong@xiaomi.com>
+ <20200804054728.ojudxu5fmd54lar5@vireshk-mac-ubuntu>
+ <CADhdXfri8L6763ifBFMtP-cFSOuXO4isXhxZ4qF6M4vE=eeEjA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200804014137.45444-1-yuehaibing@huawei.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CADhdXfri8L6763ifBFMtP-cFSOuXO4isXhxZ4qF6M4vE=eeEjA@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,38 +67,154 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: juri.lelli@redhat.com, peterz@infradead.org,
+ Viresh Kumar <viresh.kumar@linaro.org>, Benjamin Segall <bsegall@google.com>,
+ gulinghua@xiaomi.com, duhui@xiaomi.com, rocking@linux.alibaba.com,
+ devel@driverdev.osuosl.org, Vincent Guittot <vincent.guittot@linaro.org>,
+ tanggeliang@xiaomi.com, mingo@redhat.com, yangdongdong@xiaomi.com,
+ mgorman@suse.de, linux-pm@vger.kernel.org,
+ Steven Rostedt <rostedt@goodmis.org>, fengwei@xiaomi.com, taojun@xiaomi.com,
+ Dietmar Eggemann <dietmar.eggemann@arm.com>, huangqiwu@xiaomi.com,
+ rjw@rjwysocki.net, linux-kernel@vger.kernel.org, zhangguoquan@xiaomi.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-MDQuMDguMjAyMCAwNDo0MSwgWXVlSGFpYmluZyDQv9C40YjQtdGCOgo+IElmIENPTkZJR19QTSBp
-cyBub3Qgc2V0LCBnY2Mgd2FybnM6Cj4gCj4gZHJpdmVycy9zdGFnaW5nL21lZGlhL3RlZ3JhLXZk
-ZS92ZGUuYzo5MTY6MTI6Cj4gIHdhcm5pbmc6ICd0ZWdyYV92ZGVfcnVudGltZV9zdXNwZW5kJyBk
-ZWZpbmVkIGJ1dCBub3QgdXNlZCBbLVd1bnVzZWQtZnVuY3Rpb25dCj4gCj4gTWFrZSBpdCBfX21h
-eWJlX3VudXNlZCB0byBmaXggdGhpcy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBZdWVIYWliaW5nIDx5
-dWVoYWliaW5nQGh1YXdlaS5jb20+Cj4gLS0tCj4gdjI6IGJvdGggc3VzcGVuZCBhbmQgcmVzdW1l
-IGZ1bmN0aW9ucyBtYXJrZWQKPiAtLS0KPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3RlZ3JhLXZk
-ZS92ZGUuYyB8IDQgKystLQo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRl
-bGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvdGVncmEt
-dmRlL3ZkZS5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3RlZ3JhLXZkZS92ZGUuYwo+IGluZGV4
-IGEzYzI0ZDk2ZDViOS4uMjg4NDViNWJhZmFmIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS90ZWdyYS12ZGUvdmRlLmMKPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvdGVn
-cmEtdmRlL3ZkZS5jCj4gQEAgLTkxMyw3ICs5MTMsNyBAQCBzdGF0aWMgaXJxcmV0dXJuX3QgdGVn
-cmFfdmRlX2lzcihpbnQgaXJxLCB2b2lkICpkYXRhKQo+ICAJcmV0dXJuIElSUV9IQU5ETEVEOwo+
-ICB9Cj4gIAo+IC1zdGF0aWMgaW50IHRlZ3JhX3ZkZV9ydW50aW1lX3N1c3BlbmQoc3RydWN0IGRl
-dmljZSAqZGV2KQo+ICtzdGF0aWMgX19tYXliZV91bnVzZWQgaW50IHRlZ3JhX3ZkZV9ydW50aW1l
-X3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgdGVncmFfdmRlICp2
-ZGUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAgCWludCBlcnI7Cj4gQEAgLTkyOSw3ICs5Mjks
-NyBAQCBzdGF0aWMgaW50IHRlZ3JhX3ZkZV9ydW50aW1lX3N1c3BlbmQoc3RydWN0IGRldmljZSAq
-ZGV2KQo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCj4gLXN0YXRpYyBpbnQgdGVncmFfdmRlX3J1bnRp
-bWVfcmVzdW1lKHN0cnVjdCBkZXZpY2UgKmRldikKPiArc3RhdGljIF9fbWF5YmVfdW51c2VkIGlu
-dCB0ZWdyYV92ZGVfcnVudGltZV9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4gIAlz
-dHJ1Y3QgdGVncmFfdmRlICp2ZGUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAgCWludCBlcnI7
-Cj4gCgpUaGFua3MhCgpSZXZpZXdlZC1ieTogRG1pdHJ5IE9zaXBlbmtvIDxkaWdldHhAZ21haWwu
-Y29tPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZl
-bCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVy
-ZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2
-ZWwK
+A: http://en.wikipedia.org/wiki/Top_post
+Q: Were do I find info about this thing called top-posting?
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
+
+A: No.
+Q: Should I include quotations after my reply?
+
+http://daringfireball.net/2007/07/on_top
+
+On Tue, Aug 04, 2020 at 03:34:25PM +0800, Dongdong Yang wrote:
+> Appreciate Viresh for your help. I thought Peter's NAK was only for the
+> initial version. I am going to upload the verified version 4. Could you
+> please kindly help to further review?
+> 
+> 1. Motivation
+> =============
+> 
+> The power consumption and UI response are more cared for by the portable
+> equipment users.
+
+That's not true, everyone cares about this.
+
+> USF(User Sensitive Feedback factor) auxiliary cpufreq
+> governor
+> is providing more utils adjustment settings to the high level by scenario
+> identification.
+
+Odd line-wrapping :(
+
+And what do you mean by "more utils adjustment settings to the high
+level by scenario identification"?  I can not parse that at all.
+
+> 2. Introduction
+> ===============
+> 
+> The USF auxiliary scheduling is based on FrameBuffer and schdeutil cpufreq
+> governor to adjust utils by the identificated scenario from User Space.
+
+What is "adjust utils"?
+
+And why is "User Space" in caps?
+
+> It is for portable equipment which "screen off" status stands for no request
+> from the user, however, the kernel is still expected to notify the user for
+> UI in
+> time on modem, network or powerkey events occur. In order to save power, the
+> sysfs inode nonux is provided to set the utils down level on userspace
+> tasks.
+
+Having custom sysfs apis is almost never a good idea.  Do other cpufreq
+governers do this?
+
+> In addition, the portable equipment users usually heavily interact with
+> devices
+> by touch, and other peripherals. On "screen on" status, The boost preemptive
+> counts are marking the load requirement urgent, vice versa. USF provides up
+> and
+> down sysfs inodes to adjust utils according to such feedback factor and the
+> level setting from the user space identified scenario.
+> 
+> adjust_task_pred_set is as the switch to enable or disable the adjustment.
+> If no USF sysfs inodes is set and no screen on or off event be received,
+> adjust_task_pred_demand shall not be executed.
+> 
+> 3. System wide settings
+> =======================
+> 
+> sched_usf_non_ux_r:
+>         The ratio of utils is cut down on screen off. The default value is
+> 0,
+
+The line-wrapping makes it almost impossible to read here, can you fix
+that up?
+
+>         which no util be adjusted on sugov calculating utils to select
+
+"sugov"?
+
+> cpufreq.
+>         Its range is [-100 , 0]. If its value falls into [-50, 0), the half
+> of
+>         utils, which calculates cpufreq, shall be  cut down. If its value
+> falls
+>         into [-100, -50), only a quarter of utils be left to continue to
+>         calculates cpufreq.
+>         It is expected to be set [-100, 0) once enter into the identificated
+>         scenario, such as listen to music on screen off, and recover to 0 on
+>         out of the scenario, such as screen on.
+
+sysfs files are "one value per file", please do not parse such complex
+things in the kernel.
+
+> 
+> sched_usf_up_l0_r:
+>         The ratio of utils is boosted up on screen on. The default value is
+> 0,
+>         which no util be adjusted on sugov calculates utils to select
+> cpufreq.
+>         Its range is [0 , 100]. If its value falls into (0, 50], a quarter
+> of
+>         extra utils, which calculates cpufreq, shall be added. If its value
+>         falls into (50, 100], the half of extra utils be added to continue
+> to
+>         calculates cpufreq.
+>         It is expected to be set (0, 100] once enter into the identificated
+>         scenario, such as browsing videolet on screen on, and recover to 0
+> on
+>         out of the scenario, such as screen off or videolet into background.
+> 
+> sched_usf_down_r:
+>         The ratio of utils is cut down on screen on. The default value is 0,
+>         which no util be adjusted on sugov calculating utils to select
+> cpufreq.
+>         Its range is [-100 , 0]. If its value falls into [-50, 0), the half
+> of
+>         utils, which calculates cpufreq, shall be  cut down. If its value
+> falls
+>         into [-100, -50), only a quarter of utils be left to continue to
+>         calculates cpufreq.
+>         It is expected to be set [-100, 0) once enter into the identificated
+>         scenario, such as browsing videolet on screen on, and recover to 0
+> on
+>         out of the scenario, such as screen off or vidolet into background.
+
+Why can't all of these work automatically?  Why do you need userspace
+interaction here?
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
