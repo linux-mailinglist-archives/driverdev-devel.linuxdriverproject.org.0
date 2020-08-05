@@ -1,50 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D38A123CB76
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Aug 2020 16:23:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DF8B323CB7F
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Aug 2020 16:30:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 23128203F5;
-	Wed,  5 Aug 2020 14:23:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 67AF987863;
+	Wed,  5 Aug 2020 14:30:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vVDEshN-IDgy; Wed,  5 Aug 2020 14:23:30 +0000 (UTC)
+	with ESMTP id QSMHlCNAmcJI; Wed,  5 Aug 2020 14:30:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6CA0920521;
-	Wed,  5 Aug 2020 14:23:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0024C876A5;
+	Wed,  5 Aug 2020 14:30:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 784081BF317
- for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 14:23:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 33CE01BF317
+ for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 14:30:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6BBD120407
- for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 14:23:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3087B86881
+ for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 14:30:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F8pofbB7+9rw for <devel@linuxdriverproject.org>;
- Wed,  5 Aug 2020 14:23:20 +0000 (UTC)
+ with ESMTP id NJdYmym4MGgN for <devel@linuxdriverproject.org>;
+ Wed,  5 Aug 2020 14:30:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by silver.osuosl.org (Postfix) with ESMTPS id EB6B8203F5
- for <devel@driverdev.osuosl.org>; Wed,  5 Aug 2020 14:23:19 +0000 (UTC)
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <colin.king@canonical.com>)
- id 1k3KK5-0004Gk-Ej; Wed, 05 Aug 2020 14:23:17 +0000
-From: Colin King <colin.king@canonical.com>
-To: =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
+Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 72B0586702
+ for <devel@driverdev.osuosl.org>; Wed,  5 Aug 2020 14:30:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=tMlw34gS6+NLjHY9pLlnAZv6Tp4OOwHaKGN71bnbpa0=; b=p8DeZzKinsTQYfTsiPWzaIThev
+ hzd5r0BTeRXvvP7YA8+omo4nLwDoXHkFucrO5R/4tJXKHZ+s5GvbH5d7R+QPIRMQfq236UPXaYgIN
+ L/WG3G1lf0/sAsa0b2uj21AgUTtHZ/RCq90TShBqT4jeijLDhpI5eVqs/SdKYtVq2vTzu+dWv23jf
+ XfGMMsDgTRbOIp+vqp565v6mLk3XzfwArM2X2OME17qgNRG+6LYKhfResSj8ID1KC7M6+Pd3soqgS
+ yTsIASL2RelHR93RaSfAP/bwGejgrBl5RGG6FS9u/rBnrWzHko3wVpePgLdP/DkSDEys4aoAmTTkf
+ 3pMRl+SQ==;
+Received: from [2601:1c0:6280:3f0::19c2]
+ by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k3KQy-0007VY-Oe; Wed, 05 Aug 2020 14:30:25 +0000
+Subject: Re: [PATCH][next] staging: wfx: fix a handful of spelling mistakes
+To: Colin King <colin.king@canonical.com>,
+ =?UTF-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <jerome.pouiller@silabs.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-Subject: [PATCH][next] staging: wfx: fix a handful of spelling mistakes
-Date: Wed,  5 Aug 2020 15:23:17 +0100
-Message-Id: <20200805142317.23845-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.27.0
+References: <20200805142317.23845-1-colin.king@canonical.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <049d06fd-0ccb-38ae-e077-4cbbd742cea0@infradead.org>
+Date: Wed, 5 Aug 2020 07:30:22 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <20200805142317.23845-1-colin.king@canonical.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,147 +75,80 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+On 8/5/20 7:23 AM, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> There are various spelling mistakes in comments and error messages.
+> Fix these.
+> 
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  drivers/staging/wfx/data_rx.c | 2 +-
+>  drivers/staging/wfx/data_tx.c | 2 +-
+>  drivers/staging/wfx/debug.c   | 4 ++--
+>  drivers/staging/wfx/hif_rx.c  | 2 +-
+>  drivers/staging/wfx/hif_tx.c  | 4 ++--
+>  drivers/staging/wfx/main.c    | 2 +-
+>  drivers/staging/wfx/main.h    | 2 +-
+>  drivers/staging/wfx/sta.c     | 2 +-
+>  8 files changed, 10 insertions(+), 10 deletions(-)
+> 
 
-There are various spelling mistakes in comments and error messages.
-Fix these.
+> diff --git a/drivers/staging/wfx/debug.c b/drivers/staging/wfx/debug.c
+> index 3f1712b7c919..e396f18747d1 100644
+> --- a/drivers/staging/wfx/debug.c
+> +++ b/drivers/staging/wfx/debug.c
+> @@ -299,7 +299,7 @@ static ssize_t wfx_send_hif_msg_read(struct file *file, char __user *user_buf,
+>  		return ret;
+>  	if (context->ret < 0)
+>  		return context->ret;
+> -	// Be carefull, write() is waiting for a full message while read()
+> +	// Be careful, write() is waiting for a full message while read()
+>  	// only return a payload
 
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/staging/wfx/data_rx.c | 2 +-
- drivers/staging/wfx/data_tx.c | 2 +-
- drivers/staging/wfx/debug.c   | 4 ++--
- drivers/staging/wfx/hif_rx.c  | 2 +-
- drivers/staging/wfx/hif_tx.c  | 4 ++--
- drivers/staging/wfx/main.c    | 2 +-
- drivers/staging/wfx/main.h    | 2 +-
- drivers/staging/wfx/sta.c     | 2 +-
- 8 files changed, 10 insertions(+), 10 deletions(-)
+	   only returns a payload
 
-diff --git a/drivers/staging/wfx/data_rx.c b/drivers/staging/wfx/data_rx.c
-index 6fb078880742..7fcbbfc53416 100644
---- a/drivers/staging/wfx/data_rx.c
-+++ b/drivers/staging/wfx/data_rx.c
-@@ -73,7 +73,7 @@ void wfx_rx_cb(struct wfx_vif *wvif,
- 	if (arg->rx_flags.encryp)
- 		hdr->flag |= RX_FLAG_DECRYPTED;
- 
--	// Block ack negociation is offloaded by the firmware. However,
-+	// Block ack negotiation is offloaded by the firmware. However,
- 	// re-ordering must be done by the mac80211.
- 	if (ieee80211_is_action(frame->frame_control) &&
- 	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
-diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
-index 3acf4eb0214d..41f9afd41e14 100644
---- a/drivers/staging/wfx/data_tx.c
-+++ b/drivers/staging/wfx/data_tx.c
-@@ -234,7 +234,7 @@ static void wfx_tx_fixup_rates(struct ieee80211_tx_rate *rates)
- 	int i;
- 	bool finished;
- 
--	// Firmware is not able to mix rates with differents flags
-+	// Firmware is not able to mix rates with different flags
- 	for (i = 0; i < IEEE80211_TX_MAX_RATES; i++) {
- 		if (rates[0].flags & IEEE80211_TX_RC_SHORT_GI)
- 			rates[i].flags |= IEEE80211_TX_RC_SHORT_GI;
-diff --git a/drivers/staging/wfx/debug.c b/drivers/staging/wfx/debug.c
-index 3f1712b7c919..e396f18747d1 100644
---- a/drivers/staging/wfx/debug.c
-+++ b/drivers/staging/wfx/debug.c
-@@ -267,7 +267,7 @@ static ssize_t wfx_send_hif_msg_write(struct file *file,
- 	if (count < sizeof(struct hif_msg))
- 		return -EINVAL;
- 
--	// wfx_cmd_send() chekc that reply buffer is wide enough, but do not
-+	// wfx_cmd_send() checks that reply buffer is wide enough, but does not
- 	// return precise length read. User have to know how many bytes should
- 	// be read. Filling reply buffer with a memory pattern may help user.
- 	memset(context->reply, 0xFF, sizeof(context->reply));
-@@ -299,7 +299,7 @@ static ssize_t wfx_send_hif_msg_read(struct file *file, char __user *user_buf,
- 		return ret;
- 	if (context->ret < 0)
- 		return context->ret;
--	// Be carefull, write() is waiting for a full message while read()
-+	// Be careful, write() is waiting for a full message while read()
- 	// only return a payload
- 	if (copy_to_user(user_buf, context->reply, count))
- 		return -EFAULT;
-diff --git a/drivers/staging/wfx/hif_rx.c b/drivers/staging/wfx/hif_rx.c
-index cc7c0cf226ba..1d32973d8ec1 100644
---- a/drivers/staging/wfx/hif_rx.c
-+++ b/drivers/staging/wfx/hif_rx.c
-@@ -118,7 +118,7 @@ static int hif_keys_indication(struct wfx_dev *wdev,
- 
- 	// SL_PUB_KEY_EXCHANGE_STATUS_SUCCESS is used by legacy secure link
- 	if (body->status && body->status != HIF_STATUS_SLK_NEGO_SUCCESS)
--		dev_warn(wdev->dev, "secure link negociation error\n");
-+		dev_warn(wdev->dev, "secure link negotiation error\n");
- 	memcpy(pubkey, body->ncp_pub_key, sizeof(pubkey));
- 	memreverse(pubkey, sizeof(pubkey));
- 	wfx_sl_check_pubkey(wdev, pubkey, body->ncp_pub_key_mac);
-diff --git a/drivers/staging/wfx/hif_tx.c b/drivers/staging/wfx/hif_tx.c
-index 5110f9b93762..11fbdb5fcecc 100644
---- a/drivers/staging/wfx/hif_tx.c
-+++ b/drivers/staging/wfx/hif_tx.c
-@@ -78,7 +78,7 @@ int wfx_cmd_send(struct wfx_dev *wdev, struct hif_msg *request,
- 
- 	wfx_bh_request_tx(wdev);
- 
--	// NOTE: no timeout is catched async is enabled
-+	// NOTE: no timeout is caught async is enabled
- 	if (async)
- 		return 0;
- 
-@@ -125,7 +125,7 @@ int wfx_cmd_send(struct wfx_dev *wdev, struct hif_msg *request,
- 
- // This function is special. After HIF_REQ_ID_SHUT_DOWN, chip won't reply to any
- // request anymore. We need to slightly hack struct wfx_hif_cmd for that job. Be
--// carefull to only call this funcion during device unregister.
-+// carefull to only call this function during device unregister.
- int hif_shutdown(struct wfx_dev *wdev)
- {
- 	int ret;
-diff --git a/drivers/staging/wfx/main.c b/drivers/staging/wfx/main.c
-index 11dfa088fc86..4263f912760b 100644
---- a/drivers/staging/wfx/main.c
-+++ b/drivers/staging/wfx/main.c
-@@ -384,7 +384,7 @@ int wfx_probe(struct wfx_dev *wdev)
- 	err = wfx_sl_init(wdev);
- 	if (err && wdev->hw_caps.capabilities.link_mode == SEC_LINK_ENFORCED) {
- 		dev_err(wdev->dev,
--			"chip require secure_link, but can't negociate it\n");
-+			"chip require secure_link, but can't negotiate it\n");
- 		goto err0;
- 	}
- 
-diff --git a/drivers/staging/wfx/main.h b/drivers/staging/wfx/main.h
-index c59d375dd3ad..63138777e72a 100644
---- a/drivers/staging/wfx/main.h
-+++ b/drivers/staging/wfx/main.h
-@@ -19,7 +19,7 @@ struct wfx_dev;
- struct hwbus_ops;
- 
- struct wfx_platform_data {
--	/* Keyset and ".sec" extention will appended to this string */
-+	/* Keyset and ".sec" extension will appended to this string */
- 	const char *file_fw;
- 	const char *file_pds;
- 	struct gpio_desc *gpio_wakeup;
-diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-index 4e30ab17a93d..ad63332f690c 100644
---- a/drivers/staging/wfx/sta.c
-+++ b/drivers/staging/wfx/sta.c
-@@ -214,7 +214,7 @@ static int wfx_get_ps_timeout(struct wfx_vif *wvif, bool *enable_ps)
- 	if (chan0 && chan1 && chan0->hw_value != chan1->hw_value &&
- 	    wvif->vif->type != NL80211_IFTYPE_AP) {
- 		// It is necessary to enable powersave if channels
--		// are differents.
-+		// are different.
- 		if (enable_ps)
- 			*enable_ps = true;
- 		if (wvif->wdev->force_ps_timeout > -1)
+>  	if (copy_to_user(user_buf, context->reply, count))
+>  		return -EFAULT;
+
+> diff --git a/drivers/staging/wfx/hif_tx.c b/drivers/staging/wfx/hif_tx.c
+> index 5110f9b93762..11fbdb5fcecc 100644
+> --- a/drivers/staging/wfx/hif_tx.c
+> +++ b/drivers/staging/wfx/hif_tx.c
+> @@ -125,7 +125,7 @@ int wfx_cmd_send(struct wfx_dev *wdev, struct hif_msg *request,
+>  
+>  // This function is special. After HIF_REQ_ID_SHUT_DOWN, chip won't reply to any
+>  // request anymore. We need to slightly hack struct wfx_hif_cmd for that job. Be
+> -// carefull to only call this funcion during device unregister.
+> +// carefull to only call this function during device unregister.
+
+      careful
+
+>  int hif_shutdown(struct wfx_dev *wdev)
+>  {
+>  	int ret;
+
+> diff --git a/drivers/staging/wfx/main.h b/drivers/staging/wfx/main.h
+> index c59d375dd3ad..63138777e72a 100644
+> --- a/drivers/staging/wfx/main.h
+> +++ b/drivers/staging/wfx/main.h
+> @@ -19,7 +19,7 @@ struct wfx_dev;
+>  struct hwbus_ops;
+>  
+>  struct wfx_platform_data {
+> -	/* Keyset and ".sec" extention will appended to this string */
+> +	/* Keyset and ".sec" extension will appended to this string */
+
+	                               will be appended
+
+
+>  	const char *file_fw;
+>  	const char *file_pds;
+>  	struct gpio_desc *gpio_wakeup;
+
+
 -- 
-2.27.0
+~Randy
 
 _______________________________________________
 devel mailing list
