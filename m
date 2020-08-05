@@ -2,57 +2,84 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35AC123CAA5
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Aug 2020 14:41:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B29FD23CAC7
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Aug 2020 14:58:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0AFDC88175;
-	Wed,  5 Aug 2020 12:41:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B5FAD881F9;
+	Wed,  5 Aug 2020 12:58:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Xouf+aSNxxLh; Wed,  5 Aug 2020 12:41:38 +0000 (UTC)
+	with ESMTP id OGJAg7aVpc2A; Wed,  5 Aug 2020 12:58:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EA09287327;
-	Wed,  5 Aug 2020 12:41:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1CD0287E9C;
+	Wed,  5 Aug 2020 12:58:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B107F1BF34E
- for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 12:41:35 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0BF411BF34E
+ for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 12:58:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AB68F86370
- for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 12:41:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 04D572052B
+ for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 12:58:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0ej7C4eP3+eA for <devel@linuxdriverproject.org>;
- Wed,  5 Aug 2020 12:41:34 +0000 (UTC)
+ with ESMTP id wKhYmwGbN+l7 for <devel@linuxdriverproject.org>;
+ Wed,  5 Aug 2020 12:58:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by hemlock.osuosl.org (Postfix) with ESMTP id AC6EF860BC
- for <devel@driverdev.osuosl.org>; Wed,  5 Aug 2020 12:41:34 +0000 (UTC)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DE2281063;
- Wed,  5 Aug 2020 05:41:33 -0700 (PDT)
-Received: from e107158-lin.cambridge.arm.com (e107158-lin.cambridge.arm.com
- [10.1.195.21])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A34A93FA1C;
- Wed,  5 Aug 2020 05:41:31 -0700 (PDT)
-Date: Wed, 5 Aug 2020 13:41:29 +0100
-From: Qais Yousef <qais.yousef@arm.com>
-To: Dongdong Yang <contribute.kernel@gmail.com>
-Subject: Re: [PATCH v4] sched: Provide USF for the portable equipment.
-Message-ID: <20200805124128.kfx7uofqnrtk6kux@e107158-lin.cambridge.arm.com>
-References: <cover.1596526941.git.yangdongdong@xiaomi.com>
- <820a185b6765d6246ac34f612faedeb35189487c.1596526941.git.yangdongdong@xiaomi.com>
- <20200804104331.6vphb2iclwz3buig@e107158-lin.cambridge.arm.com>
- <CADhdXfpxWqYEL_cWVtEAxg-3OWgVZuZ5sLzNm6G+k484kG3HRw@mail.gmail.com>
- <20200805095341.cmoxmy47ts3ntxee@e107158-lin.cambridge.arm.com>
- <CADhdXfqJhE6F9q2dhnRhZGQvgJ0GSWXG1AmgL9i+rYqAwxvZDw@mail.gmail.com>
+Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
+ [209.85.166.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 73E4C214FD
+ for <devel@driverdev.osuosl.org>; Wed,  5 Aug 2020 12:58:09 +0000 (UTC)
+Received: by mail-io1-f68.google.com with SMTP id j8so33413665ioe.9
+ for <devel@driverdev.osuosl.org>; Wed, 05 Aug 2020 05:58:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=LFybYJP0K+xpoNJr8Cd8LznlTLy8/ls0ruKF8gVrCrc=;
+ b=XGBhzGghZj17zgNv/PX3ePTOX90VbQbHien8EpuiclPdgGDihzBtlhioQKZHo8/tNS
+ UscvgxL7YUUw19Q6vo7J3nJf+NVPXRCBQv10ZDT6WOgBEV/STUh33iwil3Z3ofI7Sj93
+ jR4AJ3Rc15T4OCx7BDESaalXbDcgDO1ZcHLGQlAtY6vF6iFIzIlel+8BqHK6qiohe4Oz
+ 7GEQwblrT0rrP1Bp56YpzNF3V49UgAKMccsbZVOoRuF7apRfgPlzvRMiPaLLb8scNPD6
+ Xrh7hQFmVF5BtI+Ra1bjXXSMckPMHV9fT+Mtvpvm1jPA1/NmW6MVFB2j2/b3733AycxF
+ 8L4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LFybYJP0K+xpoNJr8Cd8LznlTLy8/ls0ruKF8gVrCrc=;
+ b=LPkdl0u+NZGs524UqMmS6FUG1kgelnfHMk/LMeMcnHZvamLvX2k7wn9fzxeUeWzCxl
+ bUs2Ip1b8eecXmcI1TmUMWAx4Uq/hgvDD3ScGRC14+upzMoqnNFo5Uj8+saPmPb1sP7W
+ 9DUybdPg3e10uLxDlYIH5FSJzLAbC1v9GawaRoSLWIRpU5bEjh4ui1lvD/0aXaqynpTK
+ sWVqIBrWPTZpjJtfzY6Qd807I/9wzMOACQ6v78wSnN6egWSW8STHOMk8LZ5GfzWFe2VV
+ bIABKNxqqvmDiBas0B5sxrrJLG7qmXQhdk4KqoNxNxgyVgaLx/mQOlRPfFkWz514oeBe
+ /rgw==
+X-Gm-Message-State: AOAM532JxMvyqhcZ6UyLwEJ0iRiKBenbnQMxWdG+8SNu2qAmKU2J0Dal
+ 9Oz9TGNSthDisod2lOTxhGVD3Q==
+X-Google-Smtp-Source: ABdhPJyrOWxqgs9tWgFajQY3gEAPaM/Qdc8BZUVmTFaz01Vj8R+YcF2s8wH3ny7m1URSfY+Oel+fbQ==
+X-Received: by 2002:a05:6638:bc2:: with SMTP id
+ g2mr4208605jad.21.1596632288715; 
+ Wed, 05 Aug 2020 05:58:08 -0700 (PDT)
+Received: from [172.22.22.26] (c-73-185-129-58.hsd1.mn.comcast.net.
+ [73.185.129.58])
+ by smtp.googlemail.com with ESMTPSA id m2sm1140711ilc.26.2020.08.05.05.58.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 05 Aug 2020 05:58:07 -0700 (PDT)
+Subject: Re: [greybus-dev] [PATCH] staging: greybus: audio: Uninitialized
+ variable in gbaudio_remove_controls()
+To: Dan Carpenter <dan.carpenter@oracle.com>, Johan Hovold
+ <johan@kernel.org>, Vaibhav Agarwal <vaibhav.sr@gmail.com>
+References: <20200804101601.GA392148@mwanda>
+From: Alex Elder <elder@linaro.org>
+Message-ID: <655f7d92-308e-6c33-e517-2142f767d114@linaro.org>
+Date: Wed, 5 Aug 2020 07:58:06 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CADhdXfqJhE6F9q2dhnRhZGQvgJ0GSWXG1AmgL9i+rYqAwxvZDw@mail.gmail.com>
-User-Agent: NeoMutt/20171215
+In-Reply-To: <20200804101601.GA392148@mwanda>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,73 +92,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
- "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- "peterz@infradead.org" <peterz@infradead.org>,
- Greg KH <gregkh@linuxfoundation.org>, "rjw@rjwysocki.net" <rjw@rjwysocki.net>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Steven Rostedt <rostedt@goodmis.org>,
- "rocking@linux.alibaba.com" <rocking@linux.alibaba.com>,
- Benjamin Segall <bsegall@google.com>, "mingo@redhat.com" <mingo@redhat.com>,
- "yangdongdong@xiaomi.com" <yangdongdong@xiaomi.com>,
- "mgorman@suse.de" <mgorman@suse.de>, Viresh Kumar <viresh.kumar@linaro.org>,
- "yanziily@xiaomi.com" <yanziily@xiaomi.com>,
- Dietmar Eggemann <Dietmar.Eggemann@arm.com>
+Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org,
+ Alex Elder <elder@kernel.org>, kernel-janitors@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 08/05/20 19:13, Dongdong Yang wrote:
-> Appreciate Qais for your clamp implementation. I would like to add traces
-> for uclamp_rq_util_with and feedback you if I run into any issues.
-
-Thanks.
-
-FYI, top posting in LKML is frowned upon. Please put your answer underneath the
-quoted text.
-
+On 8/4/20 5:16 AM, Dan Carpenter wrote:
+> The "err" variable is not meaningful so there is no need to print it.
+> It's uninitialized on the first iteration through the loop.
 > 
-> The util would not be adjusted as soon as FB screen on notification be
-> received by USF from kernel level if it is set by sched_usf_non_ux, no
-> matter whether screen on or off. However, sched_util_clamp_min/max have not
-> been recovered until user space screen on detection. The screen on response
-> would not be in time for the sensitive user when many background tasks are
-> running.  Whether the kernel module could also
-> set sched_util_clamp_min/max?
+> Fixes: 510e340efe0c ("staging: greybus: audio: Add helper APIs for dynamic audio modules")
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-For boosting, are you just changing the sysctl or are you actively using
-sched_setattr() to boost tasks too?
+This is a good fix, thanks.
 
-Please have a look at the documentation for the sysctl interface.
+Reviewed-by: Alex Elder <elder@linaro.org>
 
-	https://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git/tree/Documentation/admin-guide/sysctl/kernel.rst?h=sched/core#n1065
+> ---
+>  drivers/staging/greybus/audio_helper.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/greybus/audio_helper.c b/drivers/staging/greybus/audio_helper.c
+> index 8b100a71f02e..237531ba60f3 100644
+> --- a/drivers/staging/greybus/audio_helper.c
+> +++ b/drivers/staging/greybus/audio_helper.c
+> @@ -173,8 +173,7 @@ static int gbaudio_remove_controls(struct snd_card *card, struct device *dev,
+>  		id.index = control->index;
+>  		kctl = snd_ctl_find_id(card, &id);
+>  		if (!kctl) {
+> -			dev_err(dev, "%d: Failed to find %s\n", err,
+> -				control->name);
+> +			dev_err(dev, "Failed to find %s\n", control->name);
+>  			continue;
+>  		}
+>  		err = snd_ctl_remove(card, kctl);
+> 
 
-In summary, they just control the _allowed_ levels. So you can use it to
-cap/throttle the maximum performance level the system is running at. But you
-can't use it to boost the whole system. You must use the sched_setattr() to
-boost important tasks individually or if all the tasks are in a cgroup you
-can use that. For cgroup interface there's a caveat. If you want to use it
-let me know so I can explain how boosting would work there.
-
-I advise to use the sched_setattr() interface to target and boost those
-important tasks only. You can as well be smart and target all the background
-tasks to cap them via sched_setattr(). In this case you wouldn't have to modify
-the sysctl_sched_util_clamp_min/max.
-
-I don't see uclamp being a suitable interface for in-kernel users. PM_QOS is
-more suitable in my opinion for in-kernel users if you want to impact the
-overall system performance.
-
-I might have misunderstood what you were saying above. If so, can you please
-rephrase?
-
-Thanks
-
---
-Qais Yousef
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
