@@ -2,61 +2,75 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF8B323CB7F
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Aug 2020 16:30:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C548F23CC90
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Aug 2020 18:52:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 67AF987863;
-	Wed,  5 Aug 2020 14:30:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0F0E7878BE;
+	Wed,  5 Aug 2020 16:52:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QSMHlCNAmcJI; Wed,  5 Aug 2020 14:30:33 +0000 (UTC)
+	with ESMTP id xjyrg1OJFKEo; Wed,  5 Aug 2020 16:52:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0024C876A5;
-	Wed,  5 Aug 2020 14:30:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 08B1686055;
+	Wed,  5 Aug 2020 16:52:51 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 33CE01BF317
- for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 14:30:30 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 78D6F1BF42C
+ for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 16:52:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3087B86881
- for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 14:30:30 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 753DF88189
+ for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 16:52:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NJdYmym4MGgN for <devel@linuxdriverproject.org>;
- Wed,  5 Aug 2020 14:30:28 +0000 (UTC)
+ with ESMTP id HUKjiWmRZmIr for <devel@linuxdriverproject.org>;
+ Wed,  5 Aug 2020 16:52:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 72B0586702
- for <devel@driverdev.osuosl.org>; Wed,  5 Aug 2020 14:30:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=tMlw34gS6+NLjHY9pLlnAZv6Tp4OOwHaKGN71bnbpa0=; b=p8DeZzKinsTQYfTsiPWzaIThev
- hzd5r0BTeRXvvP7YA8+omo4nLwDoXHkFucrO5R/4tJXKHZ+s5GvbH5d7R+QPIRMQfq236UPXaYgIN
- L/WG3G1lf0/sAsa0b2uj21AgUTtHZ/RCq90TShBqT4jeijLDhpI5eVqs/SdKYtVq2vTzu+dWv23jf
- XfGMMsDgTRbOIp+vqp565v6mLk3XzfwArM2X2OME17qgNRG+6LYKhfResSj8ID1KC7M6+Pd3soqgS
- yTsIASL2RelHR93RaSfAP/bwGejgrBl5RGG6FS9u/rBnrWzHko3wVpePgLdP/DkSDEys4aoAmTTkf
- 3pMRl+SQ==;
-Received: from [2601:1c0:6280:3f0::19c2]
- by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k3KQy-0007VY-Oe; Wed, 05 Aug 2020 14:30:25 +0000
-Subject: Re: [PATCH][next] staging: wfx: fix a handful of spelling mistakes
-To: Colin King <colin.king@canonical.com>,
- =?UTF-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <jerome.pouiller@silabs.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
-References: <20200805142317.23845-1-colin.king@canonical.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <049d06fd-0ccb-38ae-e077-4cbbd742cea0@infradead.org>
-Date: Wed, 5 Aug 2020 07:30:22 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A9906880A1
+ for <devel@driverdev.osuosl.org>; Wed,  5 Aug 2020 16:52:46 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id q17so25552928pls.9
+ for <devel@driverdev.osuosl.org>; Wed, 05 Aug 2020 09:52:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=zXZGtsOURmZyHZLbU5fvxhNJ7/uuuH+Jf1Odf6vVQ/Y=;
+ b=LbdFwCwwQ9+ZYyYA91SbJw79q5NmfsQ584hs+WRyh/6ENT1awKjxbLxxdjwZpDO0gW
+ Tr8xIPC0qYpNF56Q/Vts64nXhmUpDrmJLjoqxk/snzwrty3UkfAgqdzR5hinsLeFi6zI
+ R0hscqToNuNUSjBqXpBmkZOBp4sTvJCK+24di3gbiG9OWnxJYYP1bNtXGr9Q30ftrg8q
+ vPn815m/91evw5LuxWkVMSPSZo6J39FiRaqdzSkpKUsghh81J8x/r1EPU6Nb+/hb8iwv
+ nY6iURyZ+psWPW05NKmkzHzYlTDuN6KZ6xlntRf6Sn4Wii2ZfodpTQ2Z15XVy28LdWcO
+ rpow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=zXZGtsOURmZyHZLbU5fvxhNJ7/uuuH+Jf1Odf6vVQ/Y=;
+ b=NnyMQN7yfKCv8nspZheizTEKDJwqVvKOB3d2zop5Eum7ZA2aOc/u6b3jBtChMETSmC
+ BTByQRZElYUKqRrgMAYZALUaRfCbP5FssU2DnB5q55ozkHakf2PRdWuR/WcGqtW2U1DQ
+ 62OAU1Y0N8+nYopUAcOq72MyDHeRkcEeyKttdfZ5J3FBimMZBTzo8o83kgMiClSaND7B
+ hTD+SKUB1/EbY943YLXkoboMqUIuOz1/F6sYXIJydy2gLvX06ZE6azSpLknerWyp287N
+ hX5qXvOiSIVPABF565isHCy+6ZdWUwhBVWXLAeRwqy0xHl7bhyLG463lUH4fyLKWlcPO
+ gffw==
+X-Gm-Message-State: AOAM533h/KJCUq1hG/eYJabPFREWxQ3+g4U/VoKKkaKjQyRFjzIKPYSA
+ CGvkt3cz+7XZHHTKigpWgs4sDYxb08KJr58+Wg0=
+X-Google-Smtp-Source: ABdhPJzq2IoaaG/XACuojhMxN71N1xV8rgh0jzB4NCZ3up/DasYj5P+gibCzFgPgwUVAYsmZlRJnUeV8JfW04Jc8fHk=
+X-Received: by 2002:a17:90a:148:: with SMTP id
+ z8mr4414464pje.197.1596646366165; 
+ Wed, 05 Aug 2020 09:52:46 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200805142317.23845-1-colin.king@canonical.com>
-Content-Language: en-US
+References: <cover.1594290158.git.vaibhav.sr@gmail.com>
+ <896b8e24d990f2bca5aafaebd26e37095042951e.1594290158.git.vaibhav.sr@gmail.com>
+ <7cbc0daa-993f-ffc9-78f4-b1e62fd54304@linaro.org>
+In-Reply-To: <7cbc0daa-993f-ffc9-78f4-b1e62fd54304@linaro.org>
+From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+Date: Wed, 5 Aug 2020 22:22:09 +0530
+Message-ID: <CAAs364-PFw2OGGhwBH8RB7jBPD4Xre4puu9G-7P+z6Ur_Ni-yA@mail.gmail.com>
+Subject: Re: [greybus-dev] [PATCH v4 1/7] staging: greybus: audio: Update
+ snd_jack FW usage as per new APIs
+To: Alex Elder <elder@linaro.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,87 +83,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alex Elder <elder@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>, Mark Greer <mgreer@animalcreek.com>,
+ greybus-dev@lists.linaro.org, Dan Carpenter <dan.carpenter@oracle.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 8/5/20 7:23 AM, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> There are various spelling mistakes in comments and error messages.
-> Fix these.
-> 
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> ---
->  drivers/staging/wfx/data_rx.c | 2 +-
->  drivers/staging/wfx/data_tx.c | 2 +-
->  drivers/staging/wfx/debug.c   | 4 ++--
->  drivers/staging/wfx/hif_rx.c  | 2 +-
->  drivers/staging/wfx/hif_tx.c  | 4 ++--
->  drivers/staging/wfx/main.c    | 2 +-
->  drivers/staging/wfx/main.h    | 2 +-
->  drivers/staging/wfx/sta.c     | 2 +-
->  8 files changed, 10 insertions(+), 10 deletions(-)
-> 
+On Wed, Aug 5, 2020 at 6:35 PM Alex Elder <elder@linaro.org> wrote:
+>
+> On 7/9/20 5:27 AM, Vaibhav Agarwal wrote:
+> > snd_soc_jack APIs are modified in recent kernel versions. This patch
+> > updates the codec driver to resolve the compilation errors related to
+> > jack framework.
+>
+> Greg has already accepted this series so I won't review this now.  But
+> I still wanted to provide this comment.
+>
+> It would be helpful in the future to provide a little more information
+> about the nature of the changes to these APIs.  As a reviewer I had to
+> go track them down to get a little more context about what you are doing
+> here.  So you could say something like:
+>
+>   Audio jacks are now registered at the card level rather than being
+>   associated with a CODEC.  The new card-based API allows a jack's pins
+>   to be supplied when the jack is first registered.  See: 970939964c26
+>   ("ASoC: Allow to register jacks at the card level")
+>
+> In other words, don't just say "the APIs changed," say "here is how
+> the APIs have changed."  This kind of introduction can be very helpful
+> and time saving for your reviewers.
+>
 
-> diff --git a/drivers/staging/wfx/debug.c b/drivers/staging/wfx/debug.c
-> index 3f1712b7c919..e396f18747d1 100644
-> --- a/drivers/staging/wfx/debug.c
-> +++ b/drivers/staging/wfx/debug.c
-> @@ -299,7 +299,7 @@ static ssize_t wfx_send_hif_msg_read(struct file *file, char __user *user_buf,
->  		return ret;
->  	if (context->ret < 0)
->  		return context->ret;
-> -	// Be carefull, write() is waiting for a full message while read()
-> +	// Be careful, write() is waiting for a full message while read()
->  	// only return a payload
+Thanks for the feedback Alex. I'll take care of the commit message while
+sharing similar patches.
 
-	   only returns a payload
-
->  	if (copy_to_user(user_buf, context->reply, count))
->  		return -EFAULT;
-
-> diff --git a/drivers/staging/wfx/hif_tx.c b/drivers/staging/wfx/hif_tx.c
-> index 5110f9b93762..11fbdb5fcecc 100644
-> --- a/drivers/staging/wfx/hif_tx.c
-> +++ b/drivers/staging/wfx/hif_tx.c
-> @@ -125,7 +125,7 @@ int wfx_cmd_send(struct wfx_dev *wdev, struct hif_msg *request,
->  
->  // This function is special. After HIF_REQ_ID_SHUT_DOWN, chip won't reply to any
->  // request anymore. We need to slightly hack struct wfx_hif_cmd for that job. Be
-> -// carefull to only call this funcion during device unregister.
-> +// carefull to only call this function during device unregister.
-
-      careful
-
->  int hif_shutdown(struct wfx_dev *wdev)
->  {
->  	int ret;
-
-> diff --git a/drivers/staging/wfx/main.h b/drivers/staging/wfx/main.h
-> index c59d375dd3ad..63138777e72a 100644
-> --- a/drivers/staging/wfx/main.h
-> +++ b/drivers/staging/wfx/main.h
-> @@ -19,7 +19,7 @@ struct wfx_dev;
->  struct hwbus_ops;
->  
->  struct wfx_platform_data {
-> -	/* Keyset and ".sec" extention will appended to this string */
-> +	/* Keyset and ".sec" extension will appended to this string */
-
-	                               will be appended
-
-
->  	const char *file_fw;
->  	const char *file_pds;
->  	struct gpio_desc *gpio_wakeup;
-
-
--- 
-~Randy
-
+--
+vaibhav
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
