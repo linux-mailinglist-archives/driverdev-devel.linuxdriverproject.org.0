@@ -2,47 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19D8923D40A
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 00:52:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3816F23D4F0
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 03:03:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7C23E88703;
-	Wed,  5 Aug 2020 22:52:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B91FD88778;
+	Thu,  6 Aug 2020 01:03:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1svCRs+Ugt4m; Wed,  5 Aug 2020 22:52:29 +0000 (UTC)
+	with ESMTP id vqAa3I7LrF8m; Thu,  6 Aug 2020 01:03:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0A9498868C;
-	Wed,  5 Aug 2020 22:52:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4DE05886BB;
+	Thu,  6 Aug 2020 01:03:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9D8C91BF3DB
- for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 22:52:27 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AA11E1BF9B6
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 01:03:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 99EBB8868C
- for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 22:52:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A6AA286C5D
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 01:03:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lI4+PestJeTm for <devel@linuxdriverproject.org>;
- Wed,  5 Aug 2020 22:52:26 +0000 (UTC)
-X-Greylist: delayed 00:18:00 by SQLgrey-1.7.6
-Received: from LAUDAEDITORA.LOCAL (unknown [187.72.150.252])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3D9DB88683
- for <devel@linuxdriverproject.org>; Wed,  5 Aug 2020 22:52:26 +0000 (UTC)
-BrmaOutput: [84.38.133.13]
-Received: from IP-133-13.dataclub.eu ([84.38.133.13]) (authenticated bits=0)
- by LAUDAEDITORA.LOCAL (8.12.11.20060308/8.12.11) with ESMTP id 075Nxvcu006973; 
- Wed, 5 Aug 2020 21:03:21 -0300
-Message-Id: <202008060003.075Nxvcu006973@LAUDAEDITORA.LOCAL>
+ with ESMTP id WevHXqFYIZAI for <devel@linuxdriverproject.org>;
+ Thu,  6 Aug 2020 01:03:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.enssup.gov.ma (unknown [196.200.132.158])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0FB6286C4D
+ for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 01:03:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.enssup.gov.ma (Postfix) with ESMTP id 5DE3E1B966C;
+ Wed,  5 Aug 2020 22:59:24 +0100 (+01)
+Received: from mail.enssup.gov.ma ([127.0.0.1])
+ by localhost (mail.enssup.gov.ma [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id f9vYg7XckEDi; Wed,  5 Aug 2020 22:59:24 +0100 (+01)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.enssup.gov.ma (Postfix) with ESMTP id E8ED31BA8EC;
+ Wed,  5 Aug 2020 22:59:23 +0100 (+01)
+X-Virus-Scanned: amavisd-new at enssup.gov.ma
+Received: from mail.enssup.gov.ma ([127.0.0.1])
+ by localhost (mail.enssup.gov.ma [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id 7VMqTP6Wtk-L; Wed,  5 Aug 2020 22:59:23 +0100 (+01)
+Received: from User (unknown [52.231.193.212])
+ by mail.enssup.gov.ma (Postfix) with ESMTPA id A8B2A1BA47B;
+ Wed,  5 Aug 2020 22:58:57 +0100 (+01)
+From: "Ms. Reem"<mabourse@enssup.gov.ma>
+Subject: The Fund
+Date: Wed, 5 Aug 2020 20:59:33 -0000
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Investment/Donation For Covid19
-To: "Recipients <Investment/Donation For Covid19"<contact@trademachines.com>
-From: "Investment/Donation For
- Covid19<contact@trademachines.com>"@LAUDAEDITORA.LOCAL
-Date: Thu, 06 Aug 2020 00:29:00 +0200
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200805215857.A8B2A1BA47B@mail.enssup.gov.ma>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,38 +68,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: lexinfinancialconsultant@aliyun.com
+Reply-To: reemal-hashimi@yandex.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings,
+Hello,    
 
-My name is Sofia Guang Blaschke. I am the wife of the owner of Luen Yick  Mfg Co Ltd Wuhan China.I am in hospital suffering from  covid 19 (corona virus).I am in the intensive care unit and the doctor told me that I may not survive.My husband died of covid 19 and his wish before he died is to help other people affected by covid19 and invest in the supply of personal protective equipment (PPE) to help stop the spreading of the Covid19 virus.
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE.  I write to solicit for your partnership in claiming of {us$90=Million} from a Financial Home in Cambodia.
 
-However, I came across your details on the internet while searching for a reliable  person to help me to achieve my husband wish by helping people affected by covid19 and invest in your country.It will be in my interest to transfer this fund worth $5,000,000.00 (Five million dollars) in a bank account for you to support the people affected by Covid19 in your country and  invest the rest.Can you be of help? If you are interested and ready to help please contact our financial officer so that she can guide you through to receive the money .See her contact details below:
+The Fund {us$90=Million} is my share from the (Over-invoiced) Oil/Gas deal with Cambodia/Vietnam Government within  2013/2014, however, I don't want my government to know about the fund. If this proposal interests you, let me know by sending me an email and I will send to you detailed Information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except me and I know how to carry out the entire transaction. So I am compelled to ask that you will stand on my behalf and receive this fund into any account that is solely controlled by you.
 
-Name Chen Shun
+I will compensate you with 30% of the total amount involved as gratification for being my partner in the transfer. Reply to my private email as stated: reemal-hashimi@yandex.com
 
-Company -Lexin  Financial Consultant
-
-Direct phone: +86 755 3637 8008
-
-Email-lexinfinancialconsultant@aliyun.com
-
-Address-26th Floor No. 3099 Keyuan South Road Nanshan District
-Shenzhen 518052
-China
-
-
-Best Regards
-
- Sofia Guang 
-
-Luen Yick Mfg Co Ltd Wuhan China
-10/F Flat F Block 2, Kings-ford Ind'L 
-Building 26-32
+Regards,
+Ms. Reem Ebrahim Al-Hashimi.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
