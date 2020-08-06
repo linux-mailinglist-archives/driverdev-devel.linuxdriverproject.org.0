@@ -1,61 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F36D423D530
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 03:49:58 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A87E23D80A
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 10:35:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1B1DC88134;
-	Thu,  6 Aug 2020 01:49:57 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BF38E8886C;
+	Thu,  6 Aug 2020 08:35:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wGG5euH+BPbg; Thu,  6 Aug 2020 01:49:56 +0000 (UTC)
+	with ESMTP id X-AsyNxRysoN; Thu,  6 Aug 2020 08:35:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6287D8810E;
-	Thu,  6 Aug 2020 01:49:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0D210887EB;
+	Thu,  6 Aug 2020 08:35:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 112391BF3E3
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 01:49:53 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 27AFF1BF2FE
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 08:35:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0D8C186C82
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 01:49:53 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 23A1888299
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 08:35:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0QrAd0n27OHw for <devel@linuxdriverproject.org>;
- Thu,  6 Aug 2020 01:49:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.enssup.gov.ma (unknown [196.200.132.158])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 558CA86B4F
- for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 01:49:52 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.enssup.gov.ma (Postfix) with ESMTP id 0963A1B7BA1;
- Wed,  5 Aug 2020 23:31:52 +0100 (+01)
-Received: from mail.enssup.gov.ma ([127.0.0.1])
- by localhost (mail.enssup.gov.ma [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id JhOeA_cbEhXf; Wed,  5 Aug 2020 23:31:50 +0100 (+01)
-Received: from localhost (localhost [127.0.0.1])
- by mail.enssup.gov.ma (Postfix) with ESMTP id 2FBA01B74ED;
- Wed,  5 Aug 2020 23:31:50 +0100 (+01)
-X-Virus-Scanned: amavisd-new at enssup.gov.ma
-Received: from mail.enssup.gov.ma ([127.0.0.1])
- by localhost (mail.enssup.gov.ma [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id xkEv5DABOjcD; Wed,  5 Aug 2020 23:31:50 +0100 (+01)
-Received: from User (unknown [13.69.129.118])
- by mail.enssup.gov.ma (Postfix) with ESMTPA id 39EC21B7547;
- Wed,  5 Aug 2020 23:31:42 +0100 (+01)
-From: "Ms. Reem"<mabourse@enssup.gov.ma>
-Subject: Reply...
-Date: Wed, 5 Aug 2020 21:32:01 -0000
+ with ESMTP id wgUqFbXSfZDY for <devel@linuxdriverproject.org>;
+ Thu,  6 Aug 2020 08:35:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mailgw01.mediatek.com (unknown [210.61.82.183])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9F34787FD3
+ for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 08:35:45 +0000 (UTC)
+X-UUID: 8cd07223d93d42c7a8277b8efbb372e6-20200806
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=kEwBOGJANDh+F/Q2lyt1F9uF/E41qzsa4ccuEZY+/2Q=; 
+ b=BJVzeyvLLW40XKV5p+Gpo9UcR/EDppuPMcKJfXFud4XooNiwfkNqxmQyJwdA/T80iGll5lEbBfnNuyNHemlHqr9y2+NqjmEYYgRHKMk52NG7avCyAg1J7st6Pfqn5ESEJqWMDMiP4a++5qyGPLoe0V6sGU/m4cf+bL6k8uR70Eo=;
+X-UUID: 8cd07223d93d42c7a8277b8efbb372e6-20200806
+Received: from mtkcas07.mediatek.inc [(172.21.101.84)] by mailgw01.mediatek.com
+ (envelope-from <hongxu.zhao@mediatek.com>)
+ (Cellopoint E-mail Firewall v4.1.10 Build 0809 with TLS)
+ with ESMTP id 683419550; Thu, 06 Aug 2020 16:35:39 +0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Aug 2020 16:35:36 +0800
+Received: from [10.15.20.246] (10.15.20.246) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 6 Aug 2020 16:35:35 +0800
+Message-ID: <1596702748.6258.3.camel@mbjsdccf07>
+Subject: Re: [PATCH] staging: Add Mediatek High Frequency Manager Framework
+From: hongxu.zhao <hongxu.zhao@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date: Thu, 6 Aug 2020 16:32:28 +0800
+In-Reply-To: <20200804081126.GA1765831@kroah.com>
+References: <20200804075339.9820-1-hongxu.zhao@mediatek.com>
+ <20200804081126.GA1765831@kroah.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200805223142.39EC21B7547@mail.enssup.gov.ma>
+X-TM-SNTS-SMTP: 9CDE9EA66DEF166AB7602FC000924D7C8661AC13549ABA5FDBF57EE35C7AF2B52000:8
+X-MTK: N
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,42 +72,90 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemal-hashimi@yandex.com
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ wsd_upstream@mediatek.com, Weiqi Fu <weiqi.fu@mediatek.com>,
+ Hongxu Zhao <hongxu.zhao@mediatek.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ Cunliang Du <cunliang.du@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Zhen jiang <zhen.jiang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC
+ support" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,    
+On Tue, 2020-08-04 at 10:11 +0200, Greg Kroah-Hartman wrote:
+> On Tue, Aug 04, 2020 at 03:52:49PM +0800, hongxu.zhao wrote:
+> > Add a new sensor framework into linux kernel which can support multi client request sensor data.
+> > There are the following features:
+> >     1.Ringbuffer between manager and client;
+> >     2.Kernel space user interface;
+> >     3.User space user interface with syscall;
+> >     4.Each client hang detect mechanism;
+> >     5.Polling timer management in framework no need driver concern;
+> >     6.Polling kthread work intergrated into a single kthread
+> >       worker to save system resources in framework no need driver concern;
+> >     7.Proc file system to show manager device and client details;
+> >     8.Compitable with android and widely used in many mediatek platform products;
+> > 
+> > Change-Id: I6361cdc2d51de50f66eede7df099c4575e7ec473
+> 
+> Did you not run checkpatch.pl on this?  :)
+> 
+> No need for change-id here.
+> 
+> But, most importantly, why is this in drivers/staging?  What keeps it
+> from being in the "real" part of the kernel?  I need a TODO file in the
+> directory of the driver listing what remains to be done and who is
+> responsible for doing this work and reviewing patches.
+> 
+> Can you resend this with that file added and the Change-id removed?
+> 
+> Also, why not just use the IIO interface, why are you creating
+> yet-another api for sensors?  We already have 2, making a third seems
+> like something that guarantees this will never be mergable to the
+> correct part of the kernel.
+> 
+> And finally, /proc/ is not for devices, that is what sysfs is for,
+> please use that.
 
-My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of 
+I have modified checkpatch issue, but blocked by ARCH=alpha build error
+and I can't reproduce this build error in mediatek environment. I need
+spend some time setting up an environment to solve this problem and will
+send you the latest patch together after solving the problem of alpha
+build error.
 
-State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) 
+Firstly I want keep it in the real part of kernel and I send mail to
+community to find the right maintainer, unfortunately, several emails
+were not answered.
+Secondly I found iio upstream history it also started from staging at
+the beginning, maybe staging is the best start until it become mature we
+can move it to the real part of kernel.
 
-colleagues" who has approved me to solicit for your "partnership in claiming of {us$90=Million}" 
+Actually, we have already assessed IIO subsystem, but the conclusion is
+that it doesn't meet our requirement:
+1. iio doesn't have sensor manager in kernel space.
+2. each driver under the iio subsystem needs to create workqueue or
+kthread by itself, waste system resources.
+3. iio doesn't have hang detect mechanism to detect polling thread hang.
 
-from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
+We need a sensor manager architecture in kernel space to select the best
+delay and latency that multi-client(user space or kernel space user)
+requested at the same time, and finally dispatch data to each client.
+We need lower resource comsumption, each driver can poll data by kthread
+work which intergrated into a single kthread worker to save system
+resources in framework.
+We need detect polling thread hang to decide whether to send data to
+him.
 
-The Fund {us$90=Million} is our "outstanding share from the Over-invoiced" Oil/Gas deal with 
+About proc, proc is only for High Frequency Manager Framework to show
+manager details and client details, is not for device drivers. we
+recommend device driver(like test/test_app.c) use sysfs which under High
+Frequency Manager Framework.
 
-Cambodian/Vietnam Government within  2013/2014, however, We don't want our government to know about 
-
-the fund. If this proposal interests you, let me know, by sending me an email and I will send to you 
-
-detailed information on how this business would be successfully transacted. Be informed that nobody 
-
-knows about the secret of this fund except us, and we know how to carry out the entire transaction. 
-
-So I am compelled to ask, that you will stand on our behalf and receive this fund into any account 
-
-that is solely controlled by you.
-
-We will compensate you with 30% of the total amount involved as gratification for being our partner 
-
-in this transaction. Reply to my private email as stated: reemal-hashimi@yandex.com
-
-Regards,
-Ms. Reem Ebrahim Al-Hashimi.
+Thanks.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
