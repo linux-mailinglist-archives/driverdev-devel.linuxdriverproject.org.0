@@ -1,58 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FA0023E3B1
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 23:59:27 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CA2C23E3E4
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Aug 2020 00:15:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5CB46885EB;
-	Thu,  6 Aug 2020 21:59:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DFF1488751;
+	Thu,  6 Aug 2020 22:15:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hh6VQTaMwS5y; Thu,  6 Aug 2020 21:59:25 +0000 (UTC)
+	with ESMTP id LouvrL2AHPgo; Thu,  6 Aug 2020 22:15:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 82D6188577;
-	Thu,  6 Aug 2020 21:59:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5AD0988662;
+	Thu,  6 Aug 2020 22:15:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B42C31BF20F
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 21:59:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 59D5B1BF33C
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 22:15:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B0F11885EB
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 21:59:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 55DC188662
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 22:15:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SpU23tcmk8zu for <devel@linuxdriverproject.org>;
- Thu,  6 Aug 2020 21:59:22 +0000 (UTC)
+ with ESMTP id ofOKqcKhcz+W for <devel@linuxdriverproject.org>;
+ Thu,  6 Aug 2020 22:15:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5A9B988577
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 21:59:22 +0000 (UTC)
-Subject: Re: [GIT PULL] Staging/IIO driver patches for 5.9-rc1
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CEC628861A
+ for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 22:15:39 +0000 (UTC)
+Received: from localhost (130.sub-72-107-113.myvzw.com [72.107.113.130])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6FA49221E2;
+ Thu,  6 Aug 2020 22:15:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596751162;
- bh=baS6DUd21cONNJO5/4J0WbYb6j+StksFCwz3VjEkgYE=;
- h=From:In-Reply-To:References:Date:To:Cc:From;
- b=zkJj+hdy+/G6rO6HQeIFKHrmcSJGay3sx5su48uXYPu2mh7aZ9dgXoCXAFvX40NUd
- kwYXOWDTEzj4NLHekpZVjWHa1P1avv2BLpJLydoXI8fbs8vfOY2laYGcAp55zKgmVD
- RLDM2xgYuDigeh1U5W4rgAxn27EIICj+MotSIDmk=
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <20200806123047.GA2857204@kroah.com>
-References: <20200806123047.GA2857204@kroah.com>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <20200806123047.GA2857204@kroah.com>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
- tags/staging-5.9-rc1
-X-PR-Tracked-Commit-Id: 5bbd90550da8f7bdac769b5825597e67183c9411
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: c0c419c04557117258d184876d94091d29bbd9a6
-Message-Id: <159675116218.18694.5085070310642512251.pr-tracker-bot@kernel.org>
-Date: Thu, 06 Aug 2020 21:59:22 +0000
-To: Greg KH <gregkh@linuxfoundation.org>
+ s=default; t=1596752139;
+ bh=6V+A6F9WaUs3FGFH0cDcq6c0VYlcrNfuScxXobnpo3k=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=fhmU7icYI+Tc7SdZpy0wowfM7RZbgqmTi3wJpP/mfqdrweNF2ylB0kgeJmvGZP+SC
+ r6T8pC2+JbWbuIfXwHpyb7GEcnAV5L7TkPgsr2rCnf03hFchFiYc9G78EvO+K8Lugb
+ sQim6ONph1cpwxAKr9aO6oLqE148o0w5L0GKqqtg=
+Date: Thu, 6 Aug 2020 17:15:37 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH] staging: atomisp: move null check to earlier point
+Message-ID: <20200806221537.GA703560@bjorn-Precision-5520>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200730084545.GB1793@kadam>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,28 +63,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
- devel@linuxdriverproject.org
-MIME-Version: 1.0
+Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Cengiz Can <cengiz@kernel.wtf>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The pull request you sent on Thu, 6 Aug 2020 14:30:47 +0200:
+On Thu, Jul 30, 2020 at 11:45:45AM +0300, Dan Carpenter wrote:
+> On Wed, Jul 29, 2020 at 06:13:44PM +0300, Andy Shevchenko wrote:
+> > On Wed, Jul 29, 2020 at 5:00 PM Cengiz Can <cengiz@kernel.wtf> wrote:
+> > >
+> > > `find_gmin_subdev` function that returns a pointer to `struct
+> > > gmin_subdev` can return NULL.
+> > >
+> > > In `gmin_v2p8_ctrl` there's a call to this function but the possibility
+> > > of a NULL was not checked before its being dereferenced. ie:
+> > >
+> > > ```
+> > > /* Acquired here --------v */
+> > > struct gmin_subdev *gs = find_gmin_subdev(subdev);
+> > > int ret;
+> > > int value;
+> > >
+> > > /*  v------Dereferenced here */
+> > > if (gs->v2p8_gpio >= 0) {
+> > >         pr_info("atomisp_gmin_platform: 2.8v power on GPIO %d\n",
+> > >                 gs->v2p8_gpio);
+> > >         ret = gpio_request(gs->v2p8_gpio, "camera_v2p8");
+> > >         if (!ret)
+> > >                 ret = gpio_direction_output(gs->v2p8_gpio, 0);
+> > >         if (ret)
+> > >                 pr_err("V2P8 GPIO initialization failed\n");
+> > > }
+> > > ```
+> > >
+> > > I have moved the NULL check before deref point.
+> > 
+> > "Move the NULL check..."
+> > See Submitting Patches documentation how to avoid "This patch", "I", "we", etc.
+> 
+> I always feel like this is a pointless requirement.  We're turning
+> into bureaucrats.
 
-> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.9-rc1
+There is a danger of that, and I'm more guilty than most.  But I do
+think there's value in consistent style because it allows readers to
+focus on the content instead of being distracted by different margins,
+grammar ("move vs. moved"), paragraph styles, quoting conventions,
+etc.
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/c0c419c04557117258d184876d94091d29bbd9a6
+Ideally we would scan previous commit logs (and the existing code!)
+and make new changes fit seamlessly so it looks like everything was
+done at the same time by the same person.
 
-Thank you!
+But often that doesn't happen.  Sometimes I take the liberty to tweak
+things as I apply them to try to avoid trivial rework.
 
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/prtracker.html
+Bjorn
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
