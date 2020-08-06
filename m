@@ -1,54 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A691C23E349
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 22:38:43 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FA0023E3B1
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 23:59:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AA45488710;
-	Thu,  6 Aug 2020 20:38:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5CB46885EB;
+	Thu,  6 Aug 2020 21:59:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IHK4+XrGBJk2; Thu,  6 Aug 2020 20:38:41 +0000 (UTC)
+	with ESMTP id hh6VQTaMwS5y; Thu,  6 Aug 2020 21:59:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0491D886E4;
-	Thu,  6 Aug 2020 20:38:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 82D6188577;
+	Thu,  6 Aug 2020 21:59:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A2FF01BF38C
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 20:38:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B42C31BF20F
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 21:59:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 60D6F25028
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 20:38:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B0F11885EB
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 21:59:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cI9SCZhIRJZS for <devel@linuxdriverproject.org>;
- Thu,  6 Aug 2020 20:38:36 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from relay9-d.mail.gandi.net (relay9-d.mail.gandi.net
- [217.70.183.199])
- by silver.osuosl.org (Postfix) with ESMTPS id 4885424FFE
- for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 20:38:35 +0000 (UTC)
-X-Originating-IP: 176.88.145.153
-Received: from [192.168.1.4] (unknown [176.88.145.153])
- (Authenticated sender: cengiz@kernel.wtf)
- by relay9-d.mail.gandi.net (Postfix) with ESMTPSA id 05974FF805;
- Thu,  6 Aug 2020 20:38:31 +0000 (UTC)
-From: Cengiz Can <cengiz@kernel.wtf>
+ with ESMTP id SpU23tcmk8zu for <devel@linuxdriverproject.org>;
+ Thu,  6 Aug 2020 21:59:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5A9B988577
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 21:59:22 +0000 (UTC)
+Subject: Re: [GIT PULL] Staging/IIO driver patches for 5.9-rc1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1596751162;
+ bh=baS6DUd21cONNJO5/4J0WbYb6j+StksFCwz3VjEkgYE=;
+ h=From:In-Reply-To:References:Date:To:Cc:From;
+ b=zkJj+hdy+/G6rO6HQeIFKHrmcSJGay3sx5su48uXYPu2mh7aZ9dgXoCXAFvX40NUd
+ kwYXOWDTEzj4NLHekpZVjWHa1P1avv2BLpJLydoXI8fbs8vfOY2laYGcAp55zKgmVD
+ RLDM2xgYuDigeh1U5W4rgAxn27EIICj+MotSIDmk=
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <20200806123047.GA2857204@kroah.com>
+References: <20200806123047.GA2857204@kroah.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <20200806123047.GA2857204@kroah.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+ tags/staging-5.9-rc1
+X-PR-Tracked-Commit-Id: 5bbd90550da8f7bdac769b5825597e67183c9411
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: c0c419c04557117258d184876d94091d29bbd9a6
+Message-Id: <159675116218.18694.5085070310642512251.pr-tracker-bot@kernel.org>
+Date: Thu, 06 Aug 2020 21:59:22 +0000
 To: Greg KH <gregkh@linuxfoundation.org>
-Date: Thu, 06 Aug 2020 23:38:28 +0300
-Message-ID: <173c57f19a0.2bfa.85c738e3968116fc5c0dc2de74002084@kernel.wtf>
-In-Reply-To: <20200806183933.GA2939128@kroah.com>
-References: <20200731083856.GF3703480@smile.fi.intel.com>
- <20200801220101.2783-1-cengiz@kernel.wtf>
- <173c50d7bb0.2bfa.85c738e3968116fc5c0dc2de74002084@kernel.wtf>
- <20200806183933.GA2939128@kroah.com>
-User-Agent: AquaMail/1.25.2-1672 (build: 102500008)
-Subject: Re: [PATCH v6] staging: atomisp: move null check to earlier point
-MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,44 +65,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- andy.shevchenko@gmail.com, sakari.ailus@linux.intel.com, mchehab@kernel.org,
- dan.carpenter@oracle.com, linux-media@vger.kernel.org
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, linux-kernel@vger.kernel.org,
+ devel@linuxdriverproject.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+The pull request you sent on Thu, 6 Aug 2020 14:30:47 +0200:
 
-On August 6, 2020 21:39:21 Greg KH <gregkh@linuxfoundation.org> wrote:
+> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git tags/staging-5.9-rc1
 
-> On Thu, Aug 06, 2020 at 09:34:22PM +0300, Cengiz Can wrote:
->> Hello Andy,
->>
->> Can I get some feedback on v6 please?
->
->
-> It's been 4 days, in the middle of a merge window, please give people a
-> chance to catch up on other things...
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/c0c419c04557117258d184876d94091d29bbd9a6
 
-I wasn't aware of that we're currently in a merge window. Sorry for my 
-impatience.
+Thank you!
 
->
-> and do not top post please.
-
-Sorry. I was tricked by my mobile email client.
-
->
-> thanks,
->
-> greg k-h
-
-Thanks again and I wish a smooth merge window to all maintainers.
-
-Cengiz Can
-
-
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/prtracker.html
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
