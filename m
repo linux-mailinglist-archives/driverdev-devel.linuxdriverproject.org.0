@@ -1,75 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFA8723DB89
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 18:14:23 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A18623DB8E
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 18:17:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0BBC524BB3;
-	Thu,  6 Aug 2020 16:14:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C321A885D1;
+	Thu,  6 Aug 2020 16:17:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ydZ44nmTYFVa; Thu,  6 Aug 2020 16:14:20 +0000 (UTC)
+	with ESMTP id 2kRlGIuK4yYf; Thu,  6 Aug 2020 16:17:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D562924B99;
-	Thu,  6 Aug 2020 16:14:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6147D885BB;
+	Thu,  6 Aug 2020 16:17:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 017241BF287
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 16:14:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F4561BF287
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 16:17:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F231888334
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 16:14:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2627E88391
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 16:17:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MV0f0RPdeg7n for <devel@linuxdriverproject.org>;
- Thu,  6 Aug 2020 16:14:15 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com
- [209.85.218.54])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1328E8831D
- for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 16:14:15 +0000 (UTC)
-Received: by mail-ej1-f54.google.com with SMTP id m22so7833339eje.10
- for <devel@driverdev.osuosl.org>; Thu, 06 Aug 2020 09:14:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dUhK6XxdfktnJLvVMPHZp4b3o9WzGcvCUn7lMMPRpRY=;
- b=HfTFo6+NCf3S+9swY/fTtzedig26g/bIhESx5DqzJjD9jwCMYVYCAJ5R4bYYX1iFHL
- VIUbSAxvhkjzG6ciZBhTCBev/lO/UqdxZ9W8Wqx5lgO+UIVj2VM+t7uzUerAjmP0fdfl
- tFxW8XHxFKmfxrZGYEgJ26hAeI4WJA3Y2FngZioz0t/MTTQdN15ghhB/EQPQzWI0fMBF
- qfjzLg/pO1Yl0glZRJalvO2Y6LnvTXgOzhT2/3gQ2a41cxQP+0hYlw8kfm7mrkGKgxMi
- MhBR+SHavb9nXwJbX9BDptI7gXYjP3X4vdy9eXkKFtJW2c+u3a637bDi/9t+H7ZeI3u4
- wCqQ==
+ with ESMTP id E9-9mryKvuKy for <devel@linuxdriverproject.org>;
+ Thu,  6 Aug 2020 16:17:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f43.google.com (mail-pj1-f43.google.com
+ [209.85.216.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A96C988382
+ for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 16:17:32 +0000 (UTC)
+Received: by mail-pj1-f43.google.com with SMTP id ha11so6828676pjb.1
+ for <devel@driverdev.osuosl.org>; Thu, 06 Aug 2020 09:17:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=zvufMbgkHBSjZokNTrohW1HBR5GWTEJLiYyoeQKMQoc=;
+ b=Pf6FFYC0wPxL6d8QETsIOkfOlxIwRY/C0AqdyI90hPQRstfaU9+B998DLapMl1WGNB
+ WqNSPX1Ws7YGgGUmETWrVvIdqQE+KZKu7Ow4fEGNh7jS9vd1PbSjEQxo8NGLOIbGkQnR
+ oSHKePrXKpHzckubyhQ7X72KnBZun5DiYD0CXDtPtXREXrLySRCC75b7GpvHOrtOcKt6
+ PbtvmEzLWaCG3aBEKBJSVfX28GZPbZcsQxlpYrMWr01bo5XGkJXagMq5c9Uhp15tjooh
+ GESXpv1yOSShPFWP37VfgRm+CD9yuOHPXAo8Pv868sTLAK/hmBknx2rTL5Gyent1nS+0
+ uyHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dUhK6XxdfktnJLvVMPHZp4b3o9WzGcvCUn7lMMPRpRY=;
- b=PlrANqdkxJn/cb+wG7JqhYBMPTWCIC4xUZQyPEf/ENTSB9o4qG0tQNUOhMrzH1yk15
- WMhaydieVroDnm40WLPYWgRYO5TtS2PQ5l+KFEXHnCCnl/cINA+KRJBq6uqj3WhvjrWQ
- tQfULTqdJR1uFKGW9Iuh1tXI3V1AUdT7gJ71wXgTcc5066WUygK4KGnR69TBKqVTKzS4
- QzbnVEjT6zkVC+lO+Kzu2JhIxsjgpJjhW0pBzfdmLtXAMgrHeSZ3lIpMgqwQYQcOFytI
- CIMdoJAdVt1CtpSUePm9N8LGgGAFTQinwQ4v7bD6TPQzuKE4LKpUZ1GJZnNMbo1CMrT4
- 8GBQ==
-X-Gm-Message-State: AOAM531RpP38CLLn0t+60i+Rla7rvKIM3uKXpoEknH3QcViF61r/f2iB
- HX+IN3dSqzITnyjPm6JvB1gjKLa6dxGm6T9tLSevDw==
-X-Google-Smtp-Source: ABdhPJxJI5PkLwFsxMCbJSijgov8BkA6HTM/g4dOfaBOhR8DivHf4LCdyjvKHRZzQJWu3M/JyvJujWB1lbvsAWeL0eQ=
-X-Received: by 2002:a17:906:c406:: with SMTP id
- u6mr5330651ejz.47.1596730453302; 
- Thu, 06 Aug 2020 09:14:13 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=zvufMbgkHBSjZokNTrohW1HBR5GWTEJLiYyoeQKMQoc=;
+ b=jaQD32Pn1x7HXxDmmEH+lFZrFGO5LBotmg8VRrOrHN8E8hOFYEYQUEpivfhKDwmmbg
+ CXZ/ajQ+5dQa0vz655WokysNdmlLfdakv0bPOEnZ0sDxke75HIKBMSznVJNyBXSbQ7SG
+ XFFz6lkkVEua3oGgGG5x2Y4uRPy45L9/HENefGcqwa4PQ1guH207RaiIQoJaN/IR5UB0
+ eUR0Tq8m7TwdyNa1YMdZgyS4jq1Uzwh5z6T8zp3v2aY4R8ZZhbTI5PrWlREDxve2DtPR
+ bGWR2X5CG/05SsQCnQtcl0/c47BunfsffswMUKrAsoCdcfqZOCZWExkJhbIkzr4Ikctl
+ BGgQ==
+X-Gm-Message-State: AOAM530DUxhVBcJDVAieoxrUukACoN0PovHvewgjZ5/NxpIn0Y5Wo/je
+ jkiQAT+cs9mxbIAu+lz6m1E=
+X-Google-Smtp-Source: ABdhPJyL9VQsbyt/WHVXcimDWPjM4C/e72yvdlI9/2OSl5YId8/LBG90edfhPfoQPbfaX1tEPA/pOQ==
+X-Received: by 2002:a17:902:b495:: with SMTP id
+ y21mr8136734plr.116.1596730652080; 
+ Thu, 06 Aug 2020 09:17:32 -0700 (PDT)
+Received: from gmail.com (fmdmzpr03-ext.fm.intel.com. [192.55.54.38])
+ by smtp.gmail.com with ESMTPSA id z15sm4352201pjz.12.2020.08.06.09.17.28
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 06 Aug 2020 09:17:31 -0700 (PDT)
+Date: Thu, 6 Aug 2020 21:47:25 +0530
+From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
+To: Alex Elder <elder@ieee.org>
+Subject: Re: issue with uninitialized value used in a comparison in
+ gbcodec_mixer_dapm_ctl_put
+Message-ID: <20200806161723.GA6927@gmail.com>
+References: <7da6363c-9423-2b9f-029a-395cc8a932d7@canonical.com>
+ <07ad3809-de73-9a66-0e4f-3a49f395a98a@ieee.org>
 MIME-Version: 1.0
-References: <0000000000006925ea05a69d5bfb@google.com>
- <000000000000ecb92805ac33a761@google.com>
- <CAG48ez0Rdut=HxSyKUCiCVU=zZJPR7YXcOfL3tRBXXwUS0iKxw@mail.gmail.com>
-In-Reply-To: <CAG48ez0Rdut=HxSyKUCiCVU=zZJPR7YXcOfL3tRBXXwUS0iKxw@mail.gmail.com>
-From: Todd Kjos <tkjos@google.com>
-Date: Thu, 6 Aug 2020 09:14:01 -0700
-Message-ID: <CAHRSSEyJHcjZj73SjkzavdeDnoAp2pREJxQa58k94hEph8tRwA@mail.gmail.com>
-Subject: Re: WARNING in binder_transaction_buffer_release (2)
-To: Jann Horn <jannh@google.com>
+Content-Disposition: inline
+In-Reply-To: <07ad3809-de73-9a66-0e4f-3a49f395a98a@ieee.org>
+User-Agent: Mutt/1.10.1+3 (f9293d646485) (2018-09-22)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,68 +89,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Todd Kjos <tkjos@android.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- syzbot <syzbot+e113a0b970b7b3f394ba@syzkaller.appspotmail.com>,
- syzkaller-bugs <syzkaller-bugs@googlegroups.com>,
- kernel list <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- "Joel Fernandes \(Google\)" <joel@joelfernandes.org>,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ Alex Elder <elder@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mark Greer <mgreer@animalcreek.com>, Johan Hovold <johan@kernel.org>,
+ greybus-dev@lists.linaro.org, Colin Ian King <colin.king@canonical.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 6, 2020 at 9:09 AM Jann Horn <jannh@google.com> wrote:
->
-> On Thu, Aug 6, 2020 at 1:19 PM syzbot
-> <syzbot+e113a0b970b7b3f394ba@syzkaller.appspotmail.com> wrote:
-> > syzbot suspects this issue was fixed by commit:
-> >
-> > commit 4b836a1426cb0f1ef2a6e211d7e553221594f8fc
-> > Author: Jann Horn <jannh@google.com>
-> > Date:   Mon Jul 27 12:04:24 2020 +0000
-> >
-> >     binder: Prevent context manager from incrementing ref 0
-> [...]
-> > dashboard link: https://syzkaller.appspot.com/bug?extid=e113a0b970b7b3f394ba
-> [...]
-> > If the result looks correct, please mark the issue as fixed by replying with:
-> >
-> > #syz fix: binder: Prevent context manager from incrementing ref 0
->
-> I think this issue still exists, syzbot probably just hit it in a
-> weird way that doesn't work anymore.
->
-> This warning:
->
-> case BINDER_TYPE_FD: {
->         /*
->          * No need to close the file here since user-space
->          * closes it for for successfully delivered
->          * transactions. For transactions that weren't
->          * delivered, the new fd was never allocated so
->          * there is no need to close and the fput on the
->          * file is done when the transaction is torn
->          * down.
->          */
->         WARN_ON(failed_at &&
->                 proc->tsk == current->group_leader);
-> } break;
->
-> can be false-positive if the sender and recipient of the transaction
-> are associated with the same task_struct. But there isn't really any
-> reason why you wouldn't be able to have sender and recipient in the
-> same process, as long as the binder_proc is different.
-> (binder_transaction() has a weird check that refuses transactions to
-> handle 0 based on task_struct equality - which IMO doesn't really make
-> sense -, but transactions to other handles can happen just fine even
-> if both ends are in the same task_struct.)
->
-> Maybe the best fix is just to rip out that WARN_ON()?
+On Wed, Aug 05, 2020 at 08:35:15AM -0500, Alex Elder wrote:
 
-Yes, probably so.
+<snip>
+
+> 
+> I think the fix is to add a call to this:
+> 
+>         ret = gb_audio_gb_get_control(module->mgmt_connection, data->ctl_id,
+>                                       GB_AUDIO_INVALID_INDEX, &gbvalue);
+> 
+> before the field within gbvalue is used.
+> 
+> Looking at gbcodec_mixer_dapm_ctl_get() defined just above that, it
+> seems that the call to gb_audio_gb_get_control() should be preceded
+> by a call to gb_pm_runtime_get_sync().  And given that duplication,
+> I suggest this call and the PM runtime wrapper functions should be
+> placed in a new helper function.
+> 
+> I know that Vaibhav said he would be fixing this, so I guess my
+> comments are directed at him.  Thanks for sending the patch Colin.
+> 
+> 					-Alex
+
+Thanks Alex. I'll share a patch with the proposed fix.
+
+--
+vaibhav
+
+> 
+> 
+> > Colin
+> > 
+> > 
+> 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
