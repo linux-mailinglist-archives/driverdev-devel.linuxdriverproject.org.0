@@ -1,65 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A87E23D80A
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 10:35:53 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 501DE23D963
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Aug 2020 12:47:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BF38E8886C;
-	Thu,  6 Aug 2020 08:35:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 74F7424B6B;
+	Thu,  6 Aug 2020 10:47:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X-AsyNxRysoN; Thu,  6 Aug 2020 08:35:50 +0000 (UTC)
+	with ESMTP id 5g-YdDZk3Tsd; Thu,  6 Aug 2020 10:47:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0D210887EB;
-	Thu,  6 Aug 2020 08:35:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 68C7C21FF6;
+	Thu,  6 Aug 2020 10:47:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 27AFF1BF2FE
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 08:35:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DBAFB1BF855
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 10:47:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 23A1888299
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 08:35:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D87FE86E00
+ for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 10:47:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wgUqFbXSfZDY for <devel@linuxdriverproject.org>;
- Thu,  6 Aug 2020 08:35:46 +0000 (UTC)
+ with ESMTP id 5widwz5WwnZ2 for <devel@linuxdriverproject.org>;
+ Thu,  6 Aug 2020 10:47:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mailgw01.mediatek.com (unknown [210.61.82.183])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9F34787FD3
- for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 08:35:45 +0000 (UTC)
-X-UUID: 8cd07223d93d42c7a8277b8efbb372e6-20200806
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=kEwBOGJANDh+F/Q2lyt1F9uF/E41qzsa4ccuEZY+/2Q=; 
- b=BJVzeyvLLW40XKV5p+Gpo9UcR/EDppuPMcKJfXFud4XooNiwfkNqxmQyJwdA/T80iGll5lEbBfnNuyNHemlHqr9y2+NqjmEYYgRHKMk52NG7avCyAg1J7st6Pfqn5ESEJqWMDMiP4a++5qyGPLoe0V6sGU/m4cf+bL6k8uR70Eo=;
-X-UUID: 8cd07223d93d42c7a8277b8efbb372e6-20200806
-Received: from mtkcas07.mediatek.inc [(172.21.101.84)] by mailgw01.mediatek.com
- (envelope-from <hongxu.zhao@mediatek.com>)
- (Cellopoint E-mail Firewall v4.1.10 Build 0809 with TLS)
- with ESMTP id 683419550; Thu, 06 Aug 2020 16:35:39 +0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Aug 2020 16:35:36 +0800
-Received: from [10.15.20.246] (10.15.20.246) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 6 Aug 2020 16:35:35 +0800
-Message-ID: <1596702748.6258.3.camel@mbjsdccf07>
-Subject: Re: [PATCH] staging: Add Mediatek High Frequency Manager Framework
-From: hongxu.zhao <hongxu.zhao@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Date: Thu, 6 Aug 2020 16:32:28 +0800
-In-Reply-To: <20200804081126.GA1765831@kroah.com>
-References: <20200804075339.9820-1-hongxu.zhao@mediatek.com>
- <20200804081126.GA1765831@kroah.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D15FD86D2A
+ for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 10:47:03 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1k3dQL-0005mp-8Q; Thu, 06 Aug 2020 10:47:01 +0000
+From: Colin King <colin.king@canonical.com>
+To: =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+Subject: [PATCH][next][V2] staging: wfx: fix a handful of spelling mistakes
+Date: Thu,  6 Aug 2020 11:47:01 +0100
+Message-Id: <20200806104701.46123-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9CDE9EA66DEF166AB7602FC000924D7C8661AC13549ABA5FDBF57EE35C7AF2B52000:8
-X-MTK: N
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,90 +57,160 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- wsd_upstream@mediatek.com, Weiqi Fu <weiqi.fu@mediatek.com>,
- Hongxu Zhao <hongxu.zhao@mediatek.com>,
- open list <linux-kernel@vger.kernel.org>,
- Cunliang Du <cunliang.du@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Zhen jiang <zhen.jiang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC
- support" <linux-arm-kernel@lists.infradead.org>
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, 2020-08-04 at 10:11 +0200, Greg Kroah-Hartman wrote:
-> On Tue, Aug 04, 2020 at 03:52:49PM +0800, hongxu.zhao wrote:
-> > Add a new sensor framework into linux kernel which can support multi client request sensor data.
-> > There are the following features:
-> >     1.Ringbuffer between manager and client;
-> >     2.Kernel space user interface;
-> >     3.User space user interface with syscall;
-> >     4.Each client hang detect mechanism;
-> >     5.Polling timer management in framework no need driver concern;
-> >     6.Polling kthread work intergrated into a single kthread
-> >       worker to save system resources in framework no need driver concern;
-> >     7.Proc file system to show manager device and client details;
-> >     8.Compitable with android and widely used in many mediatek platform products;
-> > 
-> > Change-Id: I6361cdc2d51de50f66eede7df099c4575e7ec473
-> 
-> Did you not run checkpatch.pl on this?  :)
-> 
-> No need for change-id here.
-> 
-> But, most importantly, why is this in drivers/staging?  What keeps it
-> from being in the "real" part of the kernel?  I need a TODO file in the
-> directory of the driver listing what remains to be done and who is
-> responsible for doing this work and reviewing patches.
-> 
-> Can you resend this with that file added and the Change-id removed?
-> 
-> Also, why not just use the IIO interface, why are you creating
-> yet-another api for sensors?  We already have 2, making a third seems
-> like something that guarantees this will never be mergable to the
-> correct part of the kernel.
-> 
-> And finally, /proc/ is not for devices, that is what sysfs is for,
-> please use that.
+From: Colin Ian King <colin.king@canonical.com>
 
-I have modified checkpatch issue, but blocked by ARCH=alpha build error
-and I can't reproduce this build error in mediatek environment. I need
-spend some time setting up an environment to solve this problem and will
-send you the latest patch together after solving the problem of alpha
-build error.
+There are various spelling mistakes in comments and error messages.
+Fix these.
 
-Firstly I want keep it in the real part of kernel and I send mail to
-community to find the right maintainer, unfortunately, several emails
-were not answered.
-Secondly I found iio upstream history it also started from staging at
-the beginning, maybe staging is the best start until it become mature we
-can move it to the real part of kernel.
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
 
-Actually, we have already assessed IIO subsystem, but the conclusion is
-that it doesn't meet our requirement:
-1. iio doesn't have sensor manager in kernel space.
-2. each driver under the iio subsystem needs to create workqueue or
-kthread by itself, waste system resources.
-3. iio doesn't have hang detect mechanism to detect polling thread hang.
+V2: add in some more fixes as spotted by Randy Dunlap
 
-We need a sensor manager architecture in kernel space to select the best
-delay and latency that multi-client(user space or kernel space user)
-requested at the same time, and finally dispatch data to each client.
-We need lower resource comsumption, each driver can poll data by kthread
-work which intergrated into a single kthread worker to save system
-resources in framework.
-We need detect polling thread hang to decide whether to send data to
-him.
+---
+ drivers/staging/wfx/data_rx.c | 2 +-
+ drivers/staging/wfx/data_tx.c | 2 +-
+ drivers/staging/wfx/debug.c   | 6 +++---
+ drivers/staging/wfx/hif_rx.c  | 2 +-
+ drivers/staging/wfx/hif_tx.c  | 4 ++--
+ drivers/staging/wfx/main.c    | 2 +-
+ drivers/staging/wfx/main.h    | 2 +-
+ drivers/staging/wfx/sta.c     | 2 +-
+ 8 files changed, 11 insertions(+), 11 deletions(-)
 
-About proc, proc is only for High Frequency Manager Framework to show
-manager details and client details, is not for device drivers. we
-recommend device driver(like test/test_app.c) use sysfs which under High
-Frequency Manager Framework.
+diff --git a/drivers/staging/wfx/data_rx.c b/drivers/staging/wfx/data_rx.c
+index 6fb078880742..7fcbbfc53416 100644
+--- a/drivers/staging/wfx/data_rx.c
++++ b/drivers/staging/wfx/data_rx.c
+@@ -73,7 +73,7 @@ void wfx_rx_cb(struct wfx_vif *wvif,
+ 	if (arg->rx_flags.encryp)
+ 		hdr->flag |= RX_FLAG_DECRYPTED;
+ 
+-	// Block ack negociation is offloaded by the firmware. However,
++	// Block ack negotiation is offloaded by the firmware. However,
+ 	// re-ordering must be done by the mac80211.
+ 	if (ieee80211_is_action(frame->frame_control) &&
+ 	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
+diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
+index 3acf4eb0214d..41f9afd41e14 100644
+--- a/drivers/staging/wfx/data_tx.c
++++ b/drivers/staging/wfx/data_tx.c
+@@ -234,7 +234,7 @@ static void wfx_tx_fixup_rates(struct ieee80211_tx_rate *rates)
+ 	int i;
+ 	bool finished;
+ 
+-	// Firmware is not able to mix rates with differents flags
++	// Firmware is not able to mix rates with different flags
+ 	for (i = 0; i < IEEE80211_TX_MAX_RATES; i++) {
+ 		if (rates[0].flags & IEEE80211_TX_RC_SHORT_GI)
+ 			rates[i].flags |= IEEE80211_TX_RC_SHORT_GI;
+diff --git a/drivers/staging/wfx/debug.c b/drivers/staging/wfx/debug.c
+index 3f1712b7c919..99c53e1afece 100644
+--- a/drivers/staging/wfx/debug.c
++++ b/drivers/staging/wfx/debug.c
+@@ -267,7 +267,7 @@ static ssize_t wfx_send_hif_msg_write(struct file *file,
+ 	if (count < sizeof(struct hif_msg))
+ 		return -EINVAL;
+ 
+-	// wfx_cmd_send() chekc that reply buffer is wide enough, but do not
++	// wfx_cmd_send() checks that reply buffer is wide enough, but does not
+ 	// return precise length read. User have to know how many bytes should
+ 	// be read. Filling reply buffer with a memory pattern may help user.
+ 	memset(context->reply, 0xFF, sizeof(context->reply));
+@@ -299,8 +299,8 @@ static ssize_t wfx_send_hif_msg_read(struct file *file, char __user *user_buf,
+ 		return ret;
+ 	if (context->ret < 0)
+ 		return context->ret;
+-	// Be carefull, write() is waiting for a full message while read()
+-	// only return a payload
++	// Be careful, write() is waiting for a full message while read()
++	// only returns a payload
+ 	if (copy_to_user(user_buf, context->reply, count))
+ 		return -EFAULT;
+ 
+diff --git a/drivers/staging/wfx/hif_rx.c b/drivers/staging/wfx/hif_rx.c
+index cc7c0cf226ba..1d32973d8ec1 100644
+--- a/drivers/staging/wfx/hif_rx.c
++++ b/drivers/staging/wfx/hif_rx.c
+@@ -118,7 +118,7 @@ static int hif_keys_indication(struct wfx_dev *wdev,
+ 
+ 	// SL_PUB_KEY_EXCHANGE_STATUS_SUCCESS is used by legacy secure link
+ 	if (body->status && body->status != HIF_STATUS_SLK_NEGO_SUCCESS)
+-		dev_warn(wdev->dev, "secure link negociation error\n");
++		dev_warn(wdev->dev, "secure link negotiation error\n");
+ 	memcpy(pubkey, body->ncp_pub_key, sizeof(pubkey));
+ 	memreverse(pubkey, sizeof(pubkey));
+ 	wfx_sl_check_pubkey(wdev, pubkey, body->ncp_pub_key_mac);
+diff --git a/drivers/staging/wfx/hif_tx.c b/drivers/staging/wfx/hif_tx.c
+index 5110f9b93762..3b5f4dcc469c 100644
+--- a/drivers/staging/wfx/hif_tx.c
++++ b/drivers/staging/wfx/hif_tx.c
+@@ -78,7 +78,7 @@ int wfx_cmd_send(struct wfx_dev *wdev, struct hif_msg *request,
+ 
+ 	wfx_bh_request_tx(wdev);
+ 
+-	// NOTE: no timeout is catched async is enabled
++	// NOTE: no timeout is caught async is enabled
+ 	if (async)
+ 		return 0;
+ 
+@@ -125,7 +125,7 @@ int wfx_cmd_send(struct wfx_dev *wdev, struct hif_msg *request,
+ 
+ // This function is special. After HIF_REQ_ID_SHUT_DOWN, chip won't reply to any
+ // request anymore. We need to slightly hack struct wfx_hif_cmd for that job. Be
+-// carefull to only call this funcion during device unregister.
++// careful to only call this function during device unregister.
+ int hif_shutdown(struct wfx_dev *wdev)
+ {
+ 	int ret;
+diff --git a/drivers/staging/wfx/main.c b/drivers/staging/wfx/main.c
+index 11dfa088fc86..4263f912760b 100644
+--- a/drivers/staging/wfx/main.c
++++ b/drivers/staging/wfx/main.c
+@@ -384,7 +384,7 @@ int wfx_probe(struct wfx_dev *wdev)
+ 	err = wfx_sl_init(wdev);
+ 	if (err && wdev->hw_caps.capabilities.link_mode == SEC_LINK_ENFORCED) {
+ 		dev_err(wdev->dev,
+-			"chip require secure_link, but can't negociate it\n");
++			"chip require secure_link, but can't negotiate it\n");
+ 		goto err0;
+ 	}
+ 
+diff --git a/drivers/staging/wfx/main.h b/drivers/staging/wfx/main.h
+index c59d375dd3ad..2457cb595b0f 100644
+--- a/drivers/staging/wfx/main.h
++++ b/drivers/staging/wfx/main.h
+@@ -19,7 +19,7 @@ struct wfx_dev;
+ struct hwbus_ops;
+ 
+ struct wfx_platform_data {
+-	/* Keyset and ".sec" extention will appended to this string */
++	/* Keyset and ".sec" extension will be appended to this string */
+ 	const char *file_fw;
+ 	const char *file_pds;
+ 	struct gpio_desc *gpio_wakeup;
+diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
+index 4e30ab17a93d..ad63332f690c 100644
+--- a/drivers/staging/wfx/sta.c
++++ b/drivers/staging/wfx/sta.c
+@@ -214,7 +214,7 @@ static int wfx_get_ps_timeout(struct wfx_vif *wvif, bool *enable_ps)
+ 	if (chan0 && chan1 && chan0->hw_value != chan1->hw_value &&
+ 	    wvif->vif->type != NL80211_IFTYPE_AP) {
+ 		// It is necessary to enable powersave if channels
+-		// are differents.
++		// are different.
+ 		if (enable_ps)
+ 			*enable_ps = true;
+ 		if (wvif->wdev->force_ps_timeout > -1)
+-- 
+2.27.0
 
-Thanks.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
