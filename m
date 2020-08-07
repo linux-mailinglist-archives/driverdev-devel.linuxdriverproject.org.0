@@ -1,91 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3942A23EAFF
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Aug 2020 11:55:43 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B85F923EDAE
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Aug 2020 15:09:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AC91A254B8;
-	Fri,  7 Aug 2020 09:55:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9534488A2D;
+	Fri,  7 Aug 2020 13:09:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JksjN2xXuz3u; Fri,  7 Aug 2020 09:55:40 +0000 (UTC)
+	with ESMTP id Ro7nXFFArsKQ; Fri,  7 Aug 2020 13:09:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 56ED4253E7;
-	Fri,  7 Aug 2020 09:55:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EC0EE88905;
+	Fri,  7 Aug 2020 13:09:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2DD2D1BF309
- for <devel@linuxdriverproject.org>; Fri,  7 Aug 2020 09:55:36 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 439281BF2AB
+ for <devel@linuxdriverproject.org>; Fri,  7 Aug 2020 13:09:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1C0C8253E7
- for <devel@linuxdriverproject.org>; Fri,  7 Aug 2020 09:55:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4007F888EC
+ for <devel@linuxdriverproject.org>; Fri,  7 Aug 2020 13:09:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cPfcWpp19qYz for <devel@linuxdriverproject.org>;
- Fri,  7 Aug 2020 09:55:35 +0000 (UTC)
+ with ESMTP id 4iJ9nyrl7VF3 for <devel@linuxdriverproject.org>;
+ Fri,  7 Aug 2020 13:09:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by silver.osuosl.org (Postfix) with ESMTPS id E637A25281
- for <devel@driverdev.osuosl.org>; Fri,  7 Aug 2020 09:55:34 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0779ml3q045938;
- Fri, 7 Aug 2020 09:55:33 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=U57hJGBvYAZAMOnQ3O6QNekgMQcBD7eYnU+p31GzweA=;
- b=y/Pbi7FUb1LHdHIpkXKGuWEqfg/BG+5bXr5kAlMt5zYIUrRf7lLNQ2KrSDsG7WUbBVpz
- SBKFdDDfxxZhEFHQeQKiarI0yYSKJSZFE8NPu7YJe6J1bTnmbwMHxi0eY0gvV0sf7aiC
- bfTPx1j9A22dXDBu23V/DD4Ae20Wp9hQlFU+PJg4CI6p+KkpKC7qJ0rSMMJLwJjzs3fZ
- 4CLWpqPsvtT02m5h4hMucPEuzVrz6jzWCr/d8NpJV8F6VcZUtlU+QwfvqOA2SznWJws2
- w4iom168FzbHNbT6HgS1NByUXbhK6YnjzYhTWgRs/Zqzkqkdmcw6p8yAtAmgqHRPLgFR Dw== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2120.oracle.com with ESMTP id 32r6fxqphu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 07 Aug 2020 09:55:33 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0779nCXk187938;
- Fri, 7 Aug 2020 09:53:33 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 32qy8q98vk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 07 Aug 2020 09:53:32 +0000
-Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0779rTWo028623;
- Fri, 7 Aug 2020 09:53:29 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 07 Aug 2020 02:53:28 -0700
-Date: Fri, 7 Aug 2020 12:53:20 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] staging: atomisp: move null check to earlier point
-Message-ID: <20200807095320.GI1793@kadam>
-References: <20200730084545.GB1793@kadam>
- <20200806221537.GA703560@bjorn-Precision-5520>
+Received: from mail-ej1-f67.google.com (mail-ej1-f67.google.com
+ [209.85.218.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4B1A9888E4
+ for <devel@driverdev.osuosl.org>; Fri,  7 Aug 2020 13:09:32 +0000 (UTC)
+Received: by mail-ej1-f67.google.com with SMTP id qc22so2025335ejb.4
+ for <devel@driverdev.osuosl.org>; Fri, 07 Aug 2020 06:09:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=C2XCXsmJyA7W5usz6rBfTizoWqy9Uyp5cHVW9IvGA2c=;
+ b=axN4FL/COED5Z5yRiWtsARF1hdhL5JgTJpfZqkBRCXe4tFeCxtQCgehSz7hPjibXzw
+ jwYp+AotTyirGdBNg0299qV5KbQxVHSXao/FMMViaFCst/9JCu9xJSDK31A3nNMqhJvE
+ RoyggGI4FWc+l3ItIb1XuejWp3OM4WSzgaWNM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=C2XCXsmJyA7W5usz6rBfTizoWqy9Uyp5cHVW9IvGA2c=;
+ b=WCcjN3wkjwJbiG0+smgHVmOCFlJOTE9HNjvFzo02/bRrn+A5AO1+jIGgt9dYySezQf
+ Eos4bcYfOv6RdvtgtX0b3yPKI+qsfJKzi8X6SxLycCurH5KTRSDuPqAGjocfhu7ZtwH2
+ duNdwmXxi4Z6ClV/xC79WZmU3RAsh7ZQ1os3VSGJwJzIkyBD0uTTR26oL/NGhZWoUPF6
+ DQiYi2TQNxts5N12YhQ97XewMgnriWLDGQABj3uzTVec/AwEZZ9MnF5CzKnhYpnAQWsH
+ 4GjI12zSpJkD/1tmwZu+8c3TshkjEpYGiX2W7KDFrYf2Irtqy42Xjw/X10rp8NwJrQ9I
+ izIQ==
+X-Gm-Message-State: AOAM533LV5k5+16NcmJ+POMbYtV6xrvDKRdb73/GGapUKlL+Jz+/xypE
+ j75YsbENNxWq9aEh2935SJLOstvWkC7HTtYm5jS+Aw==
+X-Google-Smtp-Source: ABdhPJxrEzTPKTvRkUAnTnQZpqhKI9YTMaeAolXGnU7xz6Imi4rKSsQrGfHqItdJEg+dDbPYVlolH1F5VhxwHH1WaNw=
+X-Received: by 2002:a17:906:3850:: with SMTP id
+ w16mr9706026ejc.205.1596805770763; 
+ Fri, 07 Aug 2020 06:09:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200806221537.GA703560@bjorn-Precision-5520>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9705
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- spamscore=0 bulkscore=0 mlxscore=0 mlxlogscore=999 adultscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2008070073
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9705
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- impostorscore=0 adultscore=0
- bulkscore=0 priorityscore=1501 mlxlogscore=999 phishscore=0
- lowpriorityscore=0 suspectscore=0 spamscore=0 clxscore=1015 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2008070073
+References: <20200710144520.RESEND.1.Id0f52f486e277b5af30babac8ba6b09589962a68@changeid>
+ <20200710070332.GA1175842@kroah.com>
+ <CANMq1KDcKWgyYYP_m0-WV7602g7zUbU0PPkvwXxbSTF5vFfKGQ@mail.gmail.com>
+ <CANMq1KC7CgUT+neoOUZbnr8MbDgqEikqt2vn8dxAS1rpX=C2aA@mail.gmail.com>
+ <20200807062809.GB979264@kroah.com>
+ <CANMq1KD_hJ_ST3du7dcSd8GBtdL4d-C1pWbxXz8Wu8w79-2fUg@mail.gmail.com>
+ <20200807100444.0f2d3c94@coco.lan>
+In-Reply-To: <20200807100444.0f2d3c94@coco.lan>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Fri, 7 Aug 2020 21:09:20 +0800
+Message-ID: <CANMq1KD1HDT75YqwyqW-wdGZGSjuq_GvGdwYNF2ZU8Cgx6HHEg@mail.gmail.com>
+Subject: Re: [RESEND PATCH] media: atomisp: Replace trace_printk by pr_info
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,39 +83,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Andy Shevchenko <andy.shevchenko@gmail.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, Cengiz Can <cengiz@kernel.wtf>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ lkml <linux-kernel@vger.kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
  Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Beyond that, though, I feel like the rules are stupid because I've seen
-more than a couple commit messages which were contorted to avoid
-imperative.  My own standard for commit messages is that 1) Is the
-problem explained, especially what it looks like to user space?  2) Is
-it clear what the solution is?  3)  Does the patch itself raise any
-questions that I can't figure out and which aren't explained in the
-commit message.  And I figure I'm not a domain expert but if I can
-understand the commit message probably anyone can.
+On Fri, Aug 7, 2020 at 4:04 PM Mauro Carvalho Chehab <mchehab@kernel.org> wrote:
+>
+> Em Fri, 7 Aug 2020 14:51:12 +0800
+> Nicolas Boichat <drinkcat@chromium.org> escreveu:
+>
+> > On Fri, Aug 7, 2020 at 2:28 PM Greg Kroah-Hartman
+> > <gregkh@linuxfoundation.org> wrote:
+> > >
+> > > On Fri, Aug 07, 2020 at 09:50:23AM +0800, Nicolas Boichat wrote:
+> > > > On Fri, Jul 24, 2020 at 8:41 PM Nicolas Boichat <drinkcat@chromium.org> wrote:
+> > > > >
+> > > > > On Fri, Jul 10, 2020 at 3:03 PM Greg Kroah-Hartman
+> > > > > <gregkh@linuxfoundation.org> wrote:
+> > > > > >
+> > > > > > On Fri, Jul 10, 2020 at 02:45:29PM +0800, Nicolas Boichat wrote:
+> > > > > > > trace_printk should not be used in production code, replace it
+> > > > > > > call with pr_info.
+> > > > > > >
+> > > > > > > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> > > > > > > ---
+> > > > > > > Sent this before as part of a series (whose 4th patch was a
+> > > > > > > change that allows to detect such trace_printk), but maybe it's
+> > > > > > > easier to get individual maintainer attention by splitting it.
+> > > > > >
+> > > > > > Mauro should take this soon:
+> > > > > >
+> > > > > > Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > > > >
+> > > > > Mauro: did you get a chance to look at this? (and the other similar
+> > > > > patch "media: camss: vfe: Use trace_printk for debugging only")
+> > > >
+> > > > Mauro: Another gentle ping. Thanks.
+> > >
+> > > It's the middle of the merge window, maintainers can't do anything until
+> > > after 5.9-rc1 is out, sorry.
+> >
+> > Huh, wait, looks like Mauro _did_ pick it (found it in this email
+> > "[GIT PULL for v5.8-rc7] media fixes").
+> >
+> > My bad then, I was expecting an ack ,-)
+>
+> Never expect acks. Kernel maintainers usually don't send them.
 
-We've got people who speak English as a second language and then start
-imposing pointless rules on top?  It's crazy.  I've had to ask someone
-recently to redo a commit message and it seemed very obvious they were
-focused on nonsense about imperative and avoiding saying "this patch"
-to the extent that I literally could not figure out what they were
-saying.  When I read the patch, of course, I could see what they were
-doing but from the commit message it was impossible.
+For some reasons I'm working mainly with maintainers who do ,-) I'll
+adjust my expectations, thanks.
 
-regards,
-dan carpenter
+> Yet, in the case of media, you should probably have received
+> an automatic e-mail from our patchwork instance.
 
+Nope, didn't receive anything. But I'm happy to blame gmail for that...
+
+Anyway, I'll ping you again after the merge window closes about
+"media: camss: vfe: Use trace_printk for debugging only" (I _think_
+that one didn't get merged). Hopefully not too many other
+trace_printks made it through the cracks in the meantime ,-)
+
+Thanks, have a good weekend,
+
+>
+> Thanks,
+> Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
