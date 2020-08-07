@@ -1,56 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CA2C23E3E4
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Aug 2020 00:15:44 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C86123E522
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Aug 2020 02:28:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DFF1488751;
-	Thu,  6 Aug 2020 22:15:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 964FC25304;
+	Fri,  7 Aug 2020 00:28:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LouvrL2AHPgo; Thu,  6 Aug 2020 22:15:42 +0000 (UTC)
+	with ESMTP id ylRr3G7oSYb9; Fri,  7 Aug 2020 00:28:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5AD0988662;
-	Thu,  6 Aug 2020 22:15:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3089E2157D;
+	Fri,  7 Aug 2020 00:27:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 59D5B1BF33C
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 22:15:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D763E1BF32C
+ for <devel@linuxdriverproject.org>; Fri,  7 Aug 2020 00:27:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 55DC188662
- for <devel@linuxdriverproject.org>; Thu,  6 Aug 2020 22:15:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D3B57886A7
+ for <devel@linuxdriverproject.org>; Fri,  7 Aug 2020 00:27:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ofOKqcKhcz+W for <devel@linuxdriverproject.org>;
- Thu,  6 Aug 2020 22:15:39 +0000 (UTC)
+ with ESMTP id UmEUfiCMeca6 for <devel@linuxdriverproject.org>;
+ Fri,  7 Aug 2020 00:27:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CEC628861A
- for <devel@driverdev.osuosl.org>; Thu,  6 Aug 2020 22:15:39 +0000 (UTC)
-Received: from localhost (130.sub-72-107-113.myvzw.com [72.107.113.130])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6FA49221E2;
- Thu,  6 Aug 2020 22:15:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596752139;
- bh=6V+A6F9WaUs3FGFH0cDcq6c0VYlcrNfuScxXobnpo3k=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=fhmU7icYI+Tc7SdZpy0wowfM7RZbgqmTi3wJpP/mfqdrweNF2ylB0kgeJmvGZP+SC
- r6T8pC2+JbWbuIfXwHpyb7GEcnAV5L7TkPgsr2rCnf03hFchFiYc9G78EvO+K8Lugb
- sQim6ONph1cpwxAKr9aO6oLqE148o0w5L0GKqqtg=
-Date: Thu, 6 Aug 2020 17:15:37 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH] staging: atomisp: move null check to earlier point
-Message-ID: <20200806221537.GA703560@bjorn-Precision-5520>
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B577B886A3
+ for <devel@driverdev.osuosl.org>; Fri,  7 Aug 2020 00:27:54 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id g26so302328qka.3
+ for <devel@driverdev.osuosl.org>; Thu, 06 Aug 2020 17:27:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=DGA8+gwrB3sAonXBmChAGNY7ZvvzV2hTqZrY8zZK8EE=;
+ b=Xso+VvmrMIUE21k+VszWrrK9Wx9Dkz6fhw6UZwNM31KX0l0YZsv4hPHNk6NsBhrO4/
+ EhySBd8R4ixubMzTBx47NcLptPEQcc9nhOQRSp68KR5MF7H5V+wmK/wQWIIHDavV0fkZ
+ SBKvHvdritZ9w4z/GVNAyhuj5yZkOHVWHB5YiuwjLvq9gihTrGRPhgrFnz6kLD7KFFmc
+ hyuKGOnA8rf9hKzlwP+5JbQlcQvsg8aQEn+cF8l1n95oGqvimoPoe8kUzqyAJdVU/T6M
+ VFIfkNNn2/SGiyNeFabIps/1SCSDV1oMpNeo24un+tlqQ9PIyRVW8Wu29+Ri2l+HBok/
+ n9Jg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=DGA8+gwrB3sAonXBmChAGNY7ZvvzV2hTqZrY8zZK8EE=;
+ b=T8PWodQQ6dFs5uJheQXFINxwGhYqfQXCwkW3Pxvz06kacIW/C6LS7MnnMwhq0cmBZE
+ XfY1iqSUdX5wI8a3yThvQtz/YklOQhqkg/nV+Y/nJuscjSoUCgjovPvU6UxSjE2wiBp3
+ 6Qy6zm3YhrsgCYffQAwLkeZtEK1c0NhTdkY2tzq2Q4f2Tg83QI/shOfBAMv0bQvd2ACn
+ DfbVtnZMp8e2r+GXuDVPyhdcLuGxvGyzwlCuws86ucAU3CpT6yLuw4VhSJlftiy8nWWH
+ +c3eEcVYOaTTdegMlnGGAmMrsQtpeOpE1tx5MngH6hfCqSd7rkiqqNxP8L7/45v6vTh1
+ 70uA==
+X-Gm-Message-State: AOAM53210qRVcK7U3/6kMCkA5MDh1BtNrasWZFa/fVLQWcbp16yH7J36
+ xzZWPTX1wv3yxCbCicgyoBac9LpIn/0KlDEVjQp8ww==
+X-Google-Smtp-Source: ABdhPJxYSpi1BHzeBCHwCIqOzLWVTcTjGnDSiBqngNyrcb+IxPDN8WOHCv0iGeIsP7xXL3Opes7weirBZfL8IM+8VEk=
+X-Received: by 2002:a37:a088:: with SMTP id
+ j130mr11365723qke.147.1596760073565; 
+ Thu, 06 Aug 2020 17:27:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200730084545.GB1793@kadam>
+References: <20200805112655.17696-1-colin.king@canonical.com>
+In-Reply-To: <20200805112655.17696-1-colin.king@canonical.com>
+From: Hridya Valsaraju <hridya@google.com>
+Date: Thu, 6 Aug 2020 17:27:17 -0700
+Message-ID: <CA+wgaPPL_sdo+fkQa3pqNmTadg9X6mfJZy5nyR5YTt4L6pHWtg@mail.gmail.com>
+Subject: Re: [PATCH] staging: ion: fix spelling mistake in function name
+ "detatch" -> "detach"
+To: Colin King <colin.king@canonical.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,69 +81,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+ linaro-mm-sig@lists.linaro.org, Todd Kjos <tkjos@android.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Andy Shevchenko <andy.shevchenko@gmail.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, Cengiz Can <cengiz@kernel.wtf>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+ kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ dri-devel@lists.freedesktop.org, Suren Baghdasaryan <surenb@google.com>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Laura Abbott <labbott@redhat.com>,
+ Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Jul 30, 2020 at 11:45:45AM +0300, Dan Carpenter wrote:
-> On Wed, Jul 29, 2020 at 06:13:44PM +0300, Andy Shevchenko wrote:
-> > On Wed, Jul 29, 2020 at 5:00 PM Cengiz Can <cengiz@kernel.wtf> wrote:
-> > >
-> > > `find_gmin_subdev` function that returns a pointer to `struct
-> > > gmin_subdev` can return NULL.
-> > >
-> > > In `gmin_v2p8_ctrl` there's a call to this function but the possibility
-> > > of a NULL was not checked before its being dereferenced. ie:
-> > >
-> > > ```
-> > > /* Acquired here --------v */
-> > > struct gmin_subdev *gs = find_gmin_subdev(subdev);
-> > > int ret;
-> > > int value;
-> > >
-> > > /*  v------Dereferenced here */
-> > > if (gs->v2p8_gpio >= 0) {
-> > >         pr_info("atomisp_gmin_platform: 2.8v power on GPIO %d\n",
-> > >                 gs->v2p8_gpio);
-> > >         ret = gpio_request(gs->v2p8_gpio, "camera_v2p8");
-> > >         if (!ret)
-> > >                 ret = gpio_direction_output(gs->v2p8_gpio, 0);
-> > >         if (ret)
-> > >                 pr_err("V2P8 GPIO initialization failed\n");
-> > > }
-> > > ```
-> > >
-> > > I have moved the NULL check before deref point.
-> > 
-> > "Move the NULL check..."
-> > See Submitting Patches documentation how to avoid "This patch", "I", "we", etc.
-> 
-> I always feel like this is a pointless requirement.  We're turning
-> into bureaucrats.
+On Wed, Aug 5, 2020 at 4:26 AM Colin King <colin.king@canonical.com> wrote:
+>
+> From: Colin Ian King <colin.king@canonical.com>
+>
+> There is a spelling mistake in the function name ion_dma_buf_detatch.
+> Fix it by removing the extraneous t.
+>
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
 
-There is a danger of that, and I'm more guilty than most.  But I do
-think there's value in consistent style because it allows readers to
-focus on the content instead of being distracted by different margins,
-grammar ("move vs. moved"), paragraph styles, quoting conventions,
-etc.
+Thanks Colin!
+Acked-by: Hridya Valsaraju <hridya@google.com>
 
-Ideally we would scan previous commit logs (and the existing code!)
-and make new changes fit seamlessly so it looks like everything was
-done at the same time by the same person.
-
-But often that doesn't happen.  Sometimes I take the liberty to tweak
-things as I apply them to try to avoid trivial rework.
-
-Bjorn
+>  drivers/staging/android/ion/ion.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/android/ion/ion.c
+> index 3c9f09506ffa..e1fe03ceb7f1 100644
+> --- a/drivers/staging/android/ion/ion.c
+> +++ b/drivers/staging/android/ion/ion.c
+> @@ -205,8 +205,8 @@ static int ion_dma_buf_attach(struct dma_buf *dmabuf,
+>         return 0;
+>  }
+>
+> -static void ion_dma_buf_detatch(struct dma_buf *dmabuf,
+> -                               struct dma_buf_attachment *attachment)
+> +static void ion_dma_buf_detach(struct dma_buf *dmabuf,
+> +                              struct dma_buf_attachment *attachment)
+>  {
+>         struct ion_dma_buf_attachment *a = attachment->priv;
+>         struct ion_buffer *buffer = dmabuf->priv;
+> @@ -331,7 +331,7 @@ static const struct dma_buf_ops dma_buf_ops = {
+>         .mmap = ion_mmap,
+>         .release = ion_dma_buf_release,
+>         .attach = ion_dma_buf_attach,
+> -       .detach = ion_dma_buf_detatch,
+> +       .detach = ion_dma_buf_detach,
+>         .begin_cpu_access = ion_dma_buf_begin_cpu_access,
+>         .end_cpu_access = ion_dma_buf_end_cpu_access,
+>  };
+> --
+> 2.27.0
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
