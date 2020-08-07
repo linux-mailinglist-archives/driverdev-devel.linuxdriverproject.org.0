@@ -1,48 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64AA023EF49
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Aug 2020 16:50:03 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D56723EF48
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Aug 2020 16:50:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 12A1E88B00;
-	Fri,  7 Aug 2020 14:50:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4E9DA88840;
+	Fri,  7 Aug 2020 14:50:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ewcb1fY0Bk-8; Fri,  7 Aug 2020 14:50:00 +0000 (UTC)
+	with ESMTP id M5efkDowfM6z; Fri,  7 Aug 2020 14:49:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7350C88ADB;
-	Fri,  7 Aug 2020 14:49:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 503C68841F;
+	Fri,  7 Aug 2020 14:49:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 931961BF312
+ by ash.osuosl.org (Postfix) with ESMTP id B89051BF9C1
  for <devel@linuxdriverproject.org>; Fri,  7 Aug 2020 14:49:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6253625734
+ by silver.osuosl.org (Postfix) with ESMTP id A50FB24A5C
  for <devel@linuxdriverproject.org>; Fri,  7 Aug 2020 14:49:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G3--pDjSw1Z4 for <devel@linuxdriverproject.org>;
- Fri,  7 Aug 2020 14:49:55 +0000 (UTC)
+ with ESMTP id tIc3yS7MRUG2 for <devel@linuxdriverproject.org>;
+ Fri,  7 Aug 2020 14:49:56 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from furshetcrimea.ru (mail.furshetcrimea.ru [193.27.243.220])
- by silver.osuosl.org (Postfix) with ESMTP id CCE4424A5C
- for <devel@driverdev.osuosl.org>; Fri,  7 Aug 2020 14:49:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0889125716
+ for <devel@driverdev.osuosl.org>; Fri,  7 Aug 2020 14:49:55 +0000 (UTC)
 Received: from [154.118.61.214] (account info@furshetcrimea.ru HELO
  [192.168.8.100]) by furshetcrimea.ru (CommuniGate Pro SMTP 6.1.10)
- with ESMTPA id 11097453; Fri, 07 Aug 2020 16:34:44 +0300
+ with ESMTPA id 11133008; Fri, 07 Aug 2020 17:58:16 +0300
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Bei Interesse antworten.
 To: Recipients <info@furshetcrimea.ru>
 From: info@furshetcrimea.ru
-Date: Fri, 07 Aug 2020 14:22:09 +0100
-X-Antivirus: Avast (VPS 200807-0, 08/07/2020), Outbound message
+Date: Fri, 07 Aug 2020 15:45:40 +0100
+X-Antivirus: Avast (VPS 200807-2, 08/07/2020), Outbound message
 X-Antivirus-Status: Clean
-Message-ID: <auto-000011097453@furshetcrimea.ru>
+Message-ID: <auto-000011133008@furshetcrimea.ru>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
