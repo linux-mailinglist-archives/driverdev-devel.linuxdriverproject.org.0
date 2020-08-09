@@ -1,51 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 443FB23FDC8
-	for <lists+driverdev-devel@lfdr.de>; Sun,  9 Aug 2020 13:19:03 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 445798847A;
-	Sun,  9 Aug 2020 11:19:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yxVOcxWnY0k4; Sun,  9 Aug 2020 11:18:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 90D6288485;
-	Sun,  9 Aug 2020 11:18:58 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 890421BF366
- for <devel@linuxdriverproject.org>; Sun,  9 Aug 2020 11:18:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 75ECF23FEA1
+	for <lists+driverdev-devel@lfdr.de>; Sun,  9 Aug 2020 15:58:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 85AF588281
- for <devel@linuxdriverproject.org>; Sun,  9 Aug 2020 11:18:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 65DE8882EB;
+	Sun,  9 Aug 2020 13:58:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hebTTVJrsQqd; Sun,  9 Aug 2020 13:58:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 67BAA882A7;
+	Sun,  9 Aug 2020 13:58:40 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B89031BF38E
+ for <devel@linuxdriverproject.org>; Sun,  9 Aug 2020 13:58:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id B19C387E57
+ for <devel@linuxdriverproject.org>; Sun,  9 Aug 2020 13:58:38 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id znHE7tnaSP73 for <devel@linuxdriverproject.org>;
- Sun,  9 Aug 2020 11:18:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp.smtpout.orange.fr (smtp05.smtpout.orange.fr
- [80.12.242.127])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DB49788256
- for <devel@driverdev.osuosl.org>; Sun,  9 Aug 2020 11:18:54 +0000 (UTC)
-Received: from localhost.localdomain ([93.22.150.139]) by mwinf5d61 with ME
- id DPJn2300A30hzCV03PJo69; Sun, 09 Aug 2020 13:18:52 +0200
-X-ME-Helo: localhost.localdomain
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sun, 09 Aug 2020 13:18:52 +0200
-X-ME-IP: 93.22.150.139
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: gregkh@linuxfoundation.org, sfr@canb.auug.org.au, longman@redhat.com,
- akpm@linux-foundation.org, mhocko@suse.com, hannes@cmpxchg.org
-Subject: [PATCH] staging: ks7010: Do not use GFP_KERNEL in atomic context
-Date: Sun,  9 Aug 2020 13:18:46 +0200
-Message-Id: <20200809111846.745826-1-christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.25.1
+ with ESMTP id xStGMIhfCR-H for <devel@linuxdriverproject.org>;
+ Sun,  9 Aug 2020 13:58:37 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.szap.gosnadzor.ru (unknown [213.24.167.52])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B586B87E1B
+ for <devel@driverdev.osuosl.org>; Sun,  9 Aug 2020 13:58:36 +0000 (UTC)
+Received: from User (192.168.0.10) by SQL-EX.pgen (192.168.0.3) with Microsoft
+ SMTP Server (TLS) id 15.0.516.32; Sun, 9 Aug 2020 16:58:29 +0300
+From: "Ms. Reem" <publ@szap.gosnadzor.ru>
+Subject: Re:waiting...
+Date: Sun, 9 Aug 2020 13:58:28 +0000
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <2b0184be-7468-4a4b-8578-3f6ea99ea284@SQL-EX.pgen>
+To: Undisclosed recipients:;
+X-Originating-IP: [192.168.0.10]
+X-ClientProxiedBy: SQL-EX.pgen (192.168.0.3) To SQL-EX.pgen (192.168.0.3)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,61 +57,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Reply-To: reemal-hashimi@yandex.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-A possible call chain is as follow:
-  ks_wlan_start_xmit                    (ks_wlan_net.c)
-    --> hostif_data_request             (ks_hostif.c)
-      --> michael_mic                   (ks_hostif.c)
+Hello,    
 
-'ks_wlan_start_xmit()' is a '.ndo_start_xmit()' function (see
-net_device_ops structure). Such calls are guarded by the __netif_tx_lock
-spinlock. So memory allocation must be atomic.
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) colleagues" who has approved me to solicit for your "partnership in claiming of {us$90=Million}" from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
 
-So, use GFP_ATOMIC instead of GFP_KERNEL 'in michael_mic()'
+The Fund {us$90=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam Government within  2013/2014, however, We don't want our government to know about the fund. If this proposal interests you, let me know, by sending me an email and I will send to you detailed information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except us, and we know how to carry out the entire transaction. So I am compelled to ask, that you will stand on our behalf and receive this fund into any account that is solely controlled by you.
 
-Fixes: ???
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-This is completely speculative. I don't know if the call chain given above
-if possible in RL application.
-So review carefully :)
+We will compensate you with 30% of the total amount involved as gratification for being our partner in this transaction. Reply to my private email as stated: reemal-hashimi@yandex.com
 
-If the fix is correct, it is also more the starting point of a bigger
-change, because in 'michael_mic()' there is a call to
-'crypto_alloc_shash()' and this function uses GFP_KERNEL internally (in
-'crypto_create_tfm()')
-Should this need to be changed, I don't know how 'ks_hostif.c' should be
-fixed. Changing allocation in 'crypto/api.c' looks like an overkill.
-
-In other word, I think that my patch is wrong, but don't know what else to
-propose :).
----
- drivers/staging/ks7010/ks_hostif.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-index d70b671b06aa..c66f50e4a158 100644
---- a/drivers/staging/ks7010/ks_hostif.c
-+++ b/drivers/staging/ks7010/ks_hostif.c
-@@ -212,7 +212,7 @@ michael_mic(u8 *key, u8 *data, unsigned int len, u8 priority, u8 *result)
- 	if (ret < 0)
- 		goto err_free_tfm;
- 
--	desc = kmalloc(sizeof(*desc) + crypto_shash_descsize(tfm), GFP_KERNEL);
-+	desc = kmalloc(sizeof(*desc) + crypto_shash_descsize(tfm), GFP_ATOMIC);
- 	if (!desc) {
- 		ret = -ENOMEM;
- 		goto err_free_tfm;
--- 
-2.25.1
-
+Regards,
+Ms. Reem Ebrahim Al-Hashimi.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
