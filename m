@@ -1,74 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93740241AD4
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Aug 2020 14:16:51 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8769422053;
-	Tue, 11 Aug 2020 12:16:48 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PctRM20JkJZ0; Tue, 11 Aug 2020 12:16:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CCEC72152E;
-	Tue, 11 Aug 2020 12:16:44 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8B6531BF3BB
- for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 12:16:42 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1BB8A241D14
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Aug 2020 17:22:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 87F1F85B3B
- for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 12:16:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F0AC6860B0;
+	Tue, 11 Aug 2020 15:22:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3TRfmxvffmcX; Tue, 11 Aug 2020 15:22:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9EED386031;
+	Tue, 11 Aug 2020 15:21:58 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EF4FB1BF5F4
+ for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 15:21:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id EBC2187DAF
+ for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 15:21:56 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xazkAl_TOaUN for <devel@linuxdriverproject.org>;
- Tue, 11 Aug 2020 12:16:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oo1-f67.google.com (mail-oo1-f67.google.com
- [209.85.161.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EE07485B0C
- for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 12:16:41 +0000 (UTC)
-Received: by mail-oo1-f67.google.com with SMTP id j16so2569741ooc.7
- for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 05:16:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BfaOWSVdZQ07T1WYL8SAoDKGztX/6CbsXqzUzK0St8s=;
- b=SUZSVEhCg6bsE5g5AFV3Nu7ILrIBK14FCJeQTRW4bRuMioqVg6Xp+cvlp3Yg1AIoqp
- +KJKITEVIQCC1qHMKKl6em+lfdg+/slX9FriU4yJcV/PdONBjp+w5Vg7c5lA5H/B30xo
- kbK88mNEzpr+gxCHW2krRACRsrCFrXErLis+oz+OGxiTog21ZC3h/ORMHGljsYc9qYWV
- ZeSRskj+HxmoIBBv6sNByjudCtnXj72+c/p3RBZs0DnyCBEZoD1zrdj3FaN1e60XJNeh
- zDBtXC4LSVsOIfENZwvo9yqNGeotY1MPPOUoEKYypDhOkuCUPSA4AiGeNj248+s7ZXKA
- jOMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BfaOWSVdZQ07T1WYL8SAoDKGztX/6CbsXqzUzK0St8s=;
- b=mVYKKR+VKGeqb0ja+S/idnFOC+s7CdASis43JfQmzEN1mXvg2ZrN4F0ETVm3pnr4As
- WLSiOCxSBWph9etWiTbDeuEb8J20HxK3CjprEx/hZY2AVKclYom9pZkCSYlQoTCku6yc
- aa/VSLIL8WgbnOPBEpQJR3krNkbWlhR23nOe9yBGOzjLyGAvCkL/7nxR8lCxcvGGWGI6
- Z9xlh5+AhtyrYzgZrzwGjRJ5afkIKrpYkDJO3lTfPqjY641lcaDK7hJzTgEwx4ZVho7M
- gBCboyCSWipD8+DKbSPEL9E1Qw3jfh4GvUEvXXUnf/zvp7eB7BuiHXetuESYfwbumlWE
- yoWw==
-X-Gm-Message-State: AOAM533zAlxTJArWUlvj0YnEj3dHkc4r0w2zuucmb0oc7FShOEtLfu3Y
- +nZb0WBBkJPPrZKl8VwLVFA2wYTpi/w4scBWa74=
-X-Google-Smtp-Source: ABdhPJzSaTIBww3RVWzclOnCFAapTOONrFiRaRjDySuKQvXkeW9wMlyEhPPRLW4/2hyPS3tLM0iChxXJ4fWU8jt/XPY=
-X-Received: by 2002:a4a:2c83:: with SMTP id o125mr823335ooo.84.1597148201081; 
- Tue, 11 Aug 2020 05:16:41 -0700 (PDT)
+ with ESMTP id FC0Gu5o-JzUQ for <devel@linuxdriverproject.org>;
+ Tue, 11 Aug 2020 15:21:55 +0000 (UTC)
+X-Greylist: delayed 00:08:46 by SQLgrey-1.7.6
+Received: from mail.sobczyk.com.pl (sobczyk.com.pl [91.194.229.61])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7764487CEE
+ for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 15:21:55 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.sobczyk.com.pl (Postfix) with ESMTP id A23074429B;
+ Tue, 11 Aug 2020 17:13:05 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at sobczyk.com.pl
+Received: from mail.sobczyk.com.pl ([127.0.0.1])
+ by localhost (sobczyk.com.pl [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id mwocEqEL8i4A; Tue, 11 Aug 2020 17:13:03 +0200 (CEST)
+Received: from User (unknown [52.165.21.44])
+ (Authenticated sender: rejestracja@sobczyk.com.pl)
+ by mail.sobczyk.com.pl (Postfix) with ESMTPA id E6B8A4426E;
+ Tue, 11 Aug 2020 17:12:47 +0200 (CEST)
+From: "Ms. Reem"<rejestracja@sobczyk.com.pl>
+Subject: Re:waiting...00
+Date: Tue, 11 Aug 2020 15:13:03 -0000
 MIME-Version: 1.0
-References: <20200716030847.1564131-1-keescook@chromium.org>
- <87h7tpa3hg.fsf@nanos.tec.linutronix.de> <202007301113.45D24C9D@keescook>
- <CAOMdWSJQKHAWY1P297b9koOLd8sVtezEYEyWGtymN1YeY27M6A@mail.gmail.com>
-In-Reply-To: <CAOMdWSJQKHAWY1P297b9koOLd8sVtezEYEyWGtymN1YeY27M6A@mail.gmail.com>
-From: Allen <allen.lkml@gmail.com>
-Date: Tue, 11 Aug 2020 17:46:29 +0530
-Message-ID: <CAOMdWSLef4Vy=k-Kfp8RJ++=SsMwCQTU4+hEueK_APDGvJ-PaA@mail.gmail.com>
-Subject: Re: [PATCH 0/3] Modernize tasklet callback API
-To: Kees Cook <keescook@chromium.org>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200811151305.A23074429B@mail.sobczyk.com.pl>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,34 +63,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
- alsa-devel@alsa-project.org, Oscar Carter <oscar.carter@gmx.com>,
- Kernel Hardening <kernel-hardening@lists.openwall.com>,
- Peter Zijlstra <peterz@infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- linux-input@vger.kernel.org, kgdb-bugreport@lists.sourceforge.net,
- Thomas Gleixner <tglx@linutronix.de>, Romain Perier <romain.perier@gmail.com>,
- Will Deacon <will@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Reply-To: reemal-hashimi@yandex.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Kees,
+Hello,    
 
-> >
->
-> Here's the series re-based on top of 5.8
-> https://github.com/allenpais/tasklets/tree/V3
->
-> Let me know how you would want these to be reviewed.
->
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) colleagues" who has approved me to solicit for your "partnership in claiming of {us$90=Million}" from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
 
-  I see the first set of infrastructure patches for tasklets have
-landed in Linus's tree. Good time to send out the ~200 patches?
+The Fund {us$90=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam Government within  2013/2014, however, We don't want our government to know about the fund. If this proposal interests you, let me know, by sending me an email and I will send to you detailed information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except us, and we know how to carry out the entire transaction. So I am compelled to ask, that you will stand on our behalf and receive this fund into any account that is solely controlled by you.
 
-- Allen
+We will compensate you with 30% of the total amount involved as gratification for being our partner in this transaction. Reply to my private email as stated: reemal-hashimi@yandex.com
+
+Regards,
+Ms. Reem Ebrahim Al-Hashimi.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
