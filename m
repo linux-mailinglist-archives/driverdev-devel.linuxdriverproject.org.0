@@ -1,90 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3389241991
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Aug 2020 12:20:12 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 93740241AD4
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Aug 2020 14:16:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4C3DD85E93;
-	Tue, 11 Aug 2020 10:20:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8769422053;
+	Tue, 11 Aug 2020 12:16:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4-dwNkc9AbVv; Tue, 11 Aug 2020 10:20:10 +0000 (UTC)
+	with ESMTP id PctRM20JkJZ0; Tue, 11 Aug 2020 12:16:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E921857CE;
-	Tue, 11 Aug 2020 10:20:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CCEC72152E;
+	Tue, 11 Aug 2020 12:16:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6A4EE1BF277
- for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 10:20:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8B6531BF3BB
+ for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 12:16:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 66E74857CE
- for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 10:20:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 87F1F85B3B
+ for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 12:16:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Za-HpCsvThQx for <devel@linuxdriverproject.org>;
- Tue, 11 Aug 2020 10:20:07 +0000 (UTC)
+ with ESMTP id xazkAl_TOaUN for <devel@linuxdriverproject.org>;
+ Tue, 11 Aug 2020 12:16:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 30B4F8578B
- for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 10:20:07 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 07BACeE2145102;
- Tue, 11 Aug 2020 10:19:59 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=HcDjjzqVyfcUJIc+LnJzTj0NlEAoMZO5Bzk9COQkEZM=;
- b=Yn+OBNG0P5mri8dkG+3CJNa9a7w3c9TXSS7Lx80OX1yyrbv+jMnXC1qBb2qgZomou2AU
- PksfGFHLbackgq++paNuGqKsXgdEF+ek1rZZLEzu0Z6KsyPXEC3GyzKtJZXqpL8jDMvT
- hqk4tvzWI7hdXErtss6vbfDAMc6QxwDWmRsqZOadzZrb68S8DzaHMC1h6RibhC2TEjdA
- jRvzSVuhZUUrvfNN+aS4yC2moqs7pnrRDR4tH1d7d8UO2UdIHBNg4J3BKIwla1WuoCiB
- nbQOxJ/BqfqGMYhLSp3QpMNLAV5Q5lp+smm2SO8zK3uVDmuMfy9Q1O7/u2OCvA2reMD0 dQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 32smpnbr9u-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 11 Aug 2020 10:19:59 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 07BACRU3160982;
- Tue, 11 Aug 2020 10:17:58 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3030.oracle.com with ESMTP id 32t5yyeb7g-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 11 Aug 2020 10:17:58 +0000
-Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 07BAHtfH023548;
- Tue, 11 Aug 2020 10:17:56 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 11 Aug 2020 10:17:55 +0000
-Date: Tue, 11 Aug 2020 13:17:47 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: Re: [PATCH] staging: ks7010: Do not use GFP_KERNEL in atomic context
-Message-ID: <20200811101746.GN1793@kadam>
-References: <20200809111846.745826-1-christophe.jaillet@wanadoo.fr>
+Received: from mail-oo1-f67.google.com (mail-oo1-f67.google.com
+ [209.85.161.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EE07485B0C
+ for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 12:16:41 +0000 (UTC)
+Received: by mail-oo1-f67.google.com with SMTP id j16so2569741ooc.7
+ for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 05:16:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BfaOWSVdZQ07T1WYL8SAoDKGztX/6CbsXqzUzK0St8s=;
+ b=SUZSVEhCg6bsE5g5AFV3Nu7ILrIBK14FCJeQTRW4bRuMioqVg6Xp+cvlp3Yg1AIoqp
+ +KJKITEVIQCC1qHMKKl6em+lfdg+/slX9FriU4yJcV/PdONBjp+w5Vg7c5lA5H/B30xo
+ kbK88mNEzpr+gxCHW2krRACRsrCFrXErLis+oz+OGxiTog21ZC3h/ORMHGljsYc9qYWV
+ ZeSRskj+HxmoIBBv6sNByjudCtnXj72+c/p3RBZs0DnyCBEZoD1zrdj3FaN1e60XJNeh
+ zDBtXC4LSVsOIfENZwvo9yqNGeotY1MPPOUoEKYypDhOkuCUPSA4AiGeNj248+s7ZXKA
+ jOMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BfaOWSVdZQ07T1WYL8SAoDKGztX/6CbsXqzUzK0St8s=;
+ b=mVYKKR+VKGeqb0ja+S/idnFOC+s7CdASis43JfQmzEN1mXvg2ZrN4F0ETVm3pnr4As
+ WLSiOCxSBWph9etWiTbDeuEb8J20HxK3CjprEx/hZY2AVKclYom9pZkCSYlQoTCku6yc
+ aa/VSLIL8WgbnOPBEpQJR3krNkbWlhR23nOe9yBGOzjLyGAvCkL/7nxR8lCxcvGGWGI6
+ Z9xlh5+AhtyrYzgZrzwGjRJ5afkIKrpYkDJO3lTfPqjY641lcaDK7hJzTgEwx4ZVho7M
+ gBCboyCSWipD8+DKbSPEL9E1Qw3jfh4GvUEvXXUnf/zvp7eB7BuiHXetuESYfwbumlWE
+ yoWw==
+X-Gm-Message-State: AOAM533zAlxTJArWUlvj0YnEj3dHkc4r0w2zuucmb0oc7FShOEtLfu3Y
+ +nZb0WBBkJPPrZKl8VwLVFA2wYTpi/w4scBWa74=
+X-Google-Smtp-Source: ABdhPJzSaTIBww3RVWzclOnCFAapTOONrFiRaRjDySuKQvXkeW9wMlyEhPPRLW4/2hyPS3tLM0iChxXJ4fWU8jt/XPY=
+X-Received: by 2002:a4a:2c83:: with SMTP id o125mr823335ooo.84.1597148201081; 
+ Tue, 11 Aug 2020 05:16:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200809111846.745826-1-christophe.jaillet@wanadoo.fr>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9709
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxscore=0 phishscore=0
- bulkscore=0 adultscore=0 spamscore=0 suspectscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2008110068
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9709
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 lowpriorityscore=0
- bulkscore=0 impostorscore=0 phishscore=0 clxscore=1011 spamscore=0
- malwarescore=0 adultscore=0 mlxlogscore=999 mlxscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2008110068
+References: <20200716030847.1564131-1-keescook@chromium.org>
+ <87h7tpa3hg.fsf@nanos.tec.linutronix.de> <202007301113.45D24C9D@keescook>
+ <CAOMdWSJQKHAWY1P297b9koOLd8sVtezEYEyWGtymN1YeY27M6A@mail.gmail.com>
+In-Reply-To: <CAOMdWSJQKHAWY1P297b9koOLd8sVtezEYEyWGtymN1YeY27M6A@mail.gmail.com>
+From: Allen <allen.lkml@gmail.com>
+Date: Tue, 11 Aug 2020 17:46:29 +0530
+Message-ID: <CAOMdWSLef4Vy=k-Kfp8RJ++=SsMwCQTU4+hEueK_APDGvJ-PaA@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Modernize tasklet callback API
+To: Kees Cook <keescook@chromium.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,57 +81,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, sfr@canb.auug.org.au, mhocko@suse.com,
- gregkh@linuxfoundation.org, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org, hannes@cmpxchg.org, longman@redhat.com,
- akpm@linux-foundation.org
+Cc: devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
+ alsa-devel@alsa-project.org, Oscar Carter <oscar.carter@gmx.com>,
+ Kernel Hardening <kernel-hardening@lists.openwall.com>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-input@vger.kernel.org, kgdb-bugreport@lists.sourceforge.net,
+ Thomas Gleixner <tglx@linutronix.de>, Romain Perier <romain.perier@gmail.com>,
+ Will Deacon <will@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Aug 09, 2020 at 01:18:46PM +0200, Christophe JAILLET wrote:
-> A possible call chain is as follow:
->   ks_wlan_start_xmit                    (ks_wlan_net.c)
->     --> hostif_data_request             (ks_hostif.c)
->       --> michael_mic                   (ks_hostif.c)
-> 
-> 'ks_wlan_start_xmit()' is a '.ndo_start_xmit()' function (see
-> net_device_ops structure). Such calls are guarded by the __netif_tx_lock
-> spinlock. So memory allocation must be atomic.
-> 
-> So, use GFP_ATOMIC instead of GFP_KERNEL 'in michael_mic()'
-> 
-> Fixes: ???
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> ---
-> This is completely speculative. I don't know if the call chain given above
-> if possible in RL application.
-> So review carefully :)
-> 
-> If the fix is correct, it is also more the starting point of a bigger
-> change, because in 'michael_mic()' there is a call to
-> 'crypto_alloc_shash()' and this function uses GFP_KERNEL internally (in
-> 'crypto_create_tfm()')
-> Should this need to be changed, I don't know how 'ks_hostif.c' should be
-> fixed. Changing allocation in 'crypto/api.c' looks like an overkill.
-> 
-> In other word, I think that my patch is wrong, but don't know what else to
-> propose :).
+Kees,
 
-Your patch is correct but you're also right that it's incomplete.
+> >
+>
+> Here's the series re-based on top of 5.8
+> https://github.com/allenpais/tasklets/tree/V3
+>
+> Let me know how you would want these to be reviewed.
+>
 
-If you look at drivers/staging/rtl8192e/rtllib_crypt_tkip.c then they
-declare the shash on stack instead of using crypto_alloc_shash().
-	SHASH_DESC_ON_STACK(desc, tfm_michael);
+  I see the first set of infrastructure patches for tasklets have
+landed in Linus's tree. Good time to send out the ~200 patches?
 
-That's probably what we should do here as well.  Although I don't know
-this code very well at all...  This is probably the sort of change where
-it would be good to have someone test it.
-
-regards,
-dan carpenter
-
+- Allen
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
