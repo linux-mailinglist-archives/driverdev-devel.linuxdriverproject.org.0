@@ -1,55 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 547F12411CB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Aug 2020 22:36:00 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C8F4287A6B;
-	Mon, 10 Aug 2020 20:35:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3Ge9QoePiuwB; Mon, 10 Aug 2020 20:35:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA3AF8783F;
-	Mon, 10 Aug 2020 20:35:56 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 490FE1BF3B5
- for <devel@linuxdriverproject.org>; Mon, 10 Aug 2020 20:35:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F3F92414F9
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Aug 2020 04:31:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 450B587048
- for <devel@linuxdriverproject.org>; Mon, 10 Aug 2020 20:35:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C24B0872AA;
+	Tue, 11 Aug 2020 02:31:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id S7UksDMmjPOb; Tue, 11 Aug 2020 02:31:49 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id B215B86D72;
+	Tue, 11 Aug 2020 02:31:48 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 70A321BF342
+ for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 02:31:47 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 50FC620433
+ for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 02:31:47 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FgqDKfiEokyr for <devel@linuxdriverproject.org>;
- Mon, 10 Aug 2020 20:35:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from asavdk3.altibox.net (asavdk3.altibox.net [109.247.116.14])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 80DC986FEA
- for <devel@driverdev.osuosl.org>; Mon, 10 Aug 2020 20:35:53 +0000 (UTC)
-Received: from ravnborg.org (unknown [188.228.123.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by asavdk3.altibox.net (Postfix) with ESMTPS id 176D920023;
- Mon, 10 Aug 2020 22:35:47 +0200 (CEST)
-Date: Mon, 10 Aug 2020 22:35:46 +0200
-From: Sam Ravnborg <sam@ravnborg.org>
-To: Xin Ji <xji@analogixsemi.com>
-Subject: Re: [PATCH v14 0/2] Add initial support for slimport anx7625
-Message-ID: <20200810203546.GA421906@ravnborg.org>
-References: <cover.1594283160.git.xji@analogixsemi.com>
+ with ESMTP id HgXRd7KtB5tg for <devel@linuxdriverproject.org>;
+ Tue, 11 Aug 2020 02:31:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sonic317-27.consmr.mail.bf2.yahoo.com
+ (sonic317-27.consmr.mail.bf2.yahoo.com [74.6.129.82])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9E97B2014A
+ for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 02:31:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1597113104; bh=q1YX4IpyP+PKbx7VAijOs2ehdVTRsVsSkCZU+1mNRkE=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=GqUwFtyYb16GMnTEaBCJ9mwR5iDmiAQgiYp/OGAe3BLTSwD+SjeGWrKAgGedxkpxC71e3cKN9Cd7fNQVblc+GehkL+7miXvvYa/GMQw8rW8hpuUTz/ydQVhHAJiY7xDIfqtgyJSIRjSONqwVq4o9V0Jaqx4SrxJH16dAKdi9pF170h9UInviINq5zYdvVOnKQXz/nc3yapnYGWPFS0BUWiZixtR1+rBKWYn1pvQJc92vSEujW7FnvyB1aymu5iLWQYHJKIzMQ3UqssznYqP+JVCO8ZZzYEmdK0F/eUA8HGWpksd4bHfItKrYpx9663l4kErEKj084uqdbUKqzy2T+A==
+X-YMail-OSG: Kwdx3PAVM1l1ffOJstCWLVBsybRQ65FJGP2CpLI0SzeKyU2wQ9U9t1gBxANQTIq
+ wO9WEeMDWY.8kOTIEF6DG6IlztfAJzMTA0ADeS4q8EiGySxU2Ev3c5tLeMlxzzc48OY1hh01qrjr
+ IQPGeh_13c8ktWEvOvo8FWWqGrhCyaZMoOol0_CJwDDJ1rLeNqPyzxxts5B.P8FnNd9ChBs0hyYf
+ BWIrEmtYwFmy8fVApJ7IukWETkRgYxDO06WPqkD1rVa3BYAlsaq4vyc7p2FwcugvnJAwZgHpR_qp
+ dGPYOW124ur3RHS1FJf2KOuLSNn6qRwTyjxZGnrB8g0WDQ.Jv2Rs3efcF.NGEjxasdFMgS4th7X4
+ UMhd_M3t.AkTMC2KnViuCqV43WGtChKqhNS8EHKD64QNXdYlaFe_zhsI9PQDCSUgf6hksDS4W4Gh
+ P9RYH8qfsCpT4GohClR5V.YTV5GJIXGpcUuXs8Ee1iOh7sBKR_ZzNsSIgS8JrEGOBY50AqjTmQwM
+ 4X871or7zpQF5gXaWrvvGXTnrAk9dALAPBagc3dJQcdJg.MeZQoZ5nJtKja8B9QK7YQ8Fz3QO5XC
+ 09gX7egtsw6FuU_e71Uu8gpOQj5UJ7PD3ejGce6MtXftphIiG.ONTdV98VtvqMkS0.Ik5V.QWbiq
+ iHs6yPT8kATV42sZHfL2hNxbCc10E1SAZsdqKIhRcSQ4DYl.8DT4pqNcSdmnz0wOWDt546OBduvD
+ tUIH63p6_ytY4Kac662SN2xnuB8QJs_ks7AAcVPXabZQyeNUGKpJbpWlYUem.LqDmhs2TNETB2cZ
+ HNQUVaA4sKv.bejei.VTqRM9fdB0.1VsrSGFjNxB9kFUkSoULMqmP7eocXn4F1HlmTtt5HeYBZK1
+ EZr1XmviZ8qboDQ56MrPvOTm9bxudLN4rWklwdo1aVwEKFpNxWaIF3q1aCE4tvJ.4UPsm4sfp11g
+ .kl8tULKE95znhtMa07CH_tlKy2I9DqYaLyTgzpOllXdtfHGTgBdbiJDZr_VGrwxCwVBH92I6Z0Q
+ 8fVtx51c3qXgtBb7ql4w8n0_UlLvoQmUSYg21o1cD.c6TYOyV.7WmQWRxFw9UghSCJuS7gYkLyWu
+ HAJsqmN0Xn6YSYK6Bdwq1aak4sn67cVvmq5ReV6W2K_mwYtdyqAzgD8kLJV6U7CRk488EVcBZWNp
+ FhcLyStL5a4hFKFi8YraKF9AsN6sskpzEO.k4FWN0HQOOkv26xZ9gHtUXStH3Ddl1bZTCqtRxWr.
+ XVBpi6bzm4UbGjFQL0nluwcF2iWoLM6zQUgHKx.zjWtgNtazQBbKIRGjrBlqxMJsNjmn41jyw3hB
+ WICH_zCscAumTwreEYWdDoHA6evFoh2sACqhK6AsrWsa2
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic317.consmr.mail.bf2.yahoo.com with HTTP; Tue, 11 Aug 2020 02:31:44 +0000
+Date: Tue, 11 Aug 2020 02:31:39 +0000 (UTC)
+From: "Mr.Abderazack zebdani" <abderazackzebdani22@gmail.com>
+Message-ID: <1913962002.43587.1597113099203@mail.yahoo.com>
+Subject: Greetings My Dear Friend,
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1594283160.git.xji@analogixsemi.com>
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=f+hm+t6M c=1 sm=1 tr=0
- a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
- a=kj9zAlcOel0A:10 a=e5mUnYsNAAAA:8 a=Q7Y_AtYsOxiy2qtOLeEA:9
- a=CjuIK1q_8ugA:10 a=Vxmtnl_E_bksehYqCbjh:22
+References: <1913962002.43587.1597113099203.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16455 YMailNodin Mozilla/5.0 (Windows NT 6.1)
+ AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,100 +77,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Nicolas Boichat <drinkcat@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Pi-Hsun Shih <pihsun@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Dan Carpenter <dan.carpenter@oracle.com>, Sheng Pan <span@analogixsemi.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: abderazackzebdani22@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Xin Ji.
-
-On Thu, Jul 09, 2020 at 04:31:09PM +0800, Xin Ji wrote:
-> Hi all,
-> 
-> The following series add support for the Slimport ANX7625 transmitter, a
-> ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
-> 
-> 
-> This is the v14 version, any mistakes, please let me know, I will fix it in
-> the next series.
-> 
-> Change history:
-> v14: Fix comments from Sam and Nicolas
->  - Check flags at drm_bridge_attach
->  - Use panel_bridge instead of drm_panel
->  - Fix not correct return value
-
-Sorry for ignoring this for so long time.
-The patch applies but no longer builds.
-
-I could fix it locally but wanted to know if you have a later version to
-be applied?
-
-	Sam
-
-
-> 
-> v13: Fix comments from Launrent Pinchart and Rob Herring
->  - Picked up Rob's Reviewed-By
->  - Add .detect and .get_edid interface in bridge funcs.
-> 
-> v12: Fix comments from Hsin-Yi Wang
->  - Rebase the code on kernel 5.7, fix DRM interface not match issue.
-> 
-> v11: Fix comments from Rob Herring
->  - Update commit message.
->  - Remove unused label.
-> 
-> v10: Fix comments from Rob Herring, Daniel.
->  - Fix dt_binding_check warning.
->  - Update description.
-> 
-> v9: Fix comments from Sam, Nicolas, Daniel
->  - Remove extcon interface.
->  - Remove DPI support.
->  - Fix dt_binding_check complains.
->  - Code clean up and update description.
-> 
-> v8: Fix comments from Nicolas.
->  - Fix several coding format.
->  - Update description.
-> 
-> v7:
->  - Fix critical timing(eg:odd hfp/hbp) in "mode_fixup" interface,
->    enhance MIPI RX tolerance by setting register MIPI_DIGITAL_ADJ_1 to 0x3D.
-> 
-> 
-> Xin Ji (2):
->   dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter DT schema
->   drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to DP
-> 
->  .../bindings/display/bridge/analogix,anx7625.yaml  |   95 +
->  drivers/gpu/drm/bridge/analogix/Kconfig            |    9 +
->  drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
->  drivers/gpu/drm/bridge/analogix/anx7625.c          | 1939 ++++++++++++++++++++
->  drivers/gpu/drm/bridge/analogix/anx7625.h          |  391 ++++
->  5 files changed, 2435 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
->  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
->  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
-> 
-> -- 
-> 2.7.4
-> 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgoKR3JlZXRpbmdzIE15IERlYXIgRnJpZW5kLAoKQmVmb3JlIEkgaW50cm9kdWNlIG15c2VsZiwg
+SSB3aXNoIHRvIGluZm9ybSB5b3UgdGhhdCB0aGlzIGxldHRlciBpcyBub3QgYSBob2F4IG1haWwg
+YW5kIEkgdXJnZSB5b3UgdG8gdHJlYXQgaXQgc2VyaW91cy5UaGlzIGxldHRlciBtdXN0IGNvbWUg
+dG8geW91IGFzIGEgYmlnIHN1cnByaXNlLCBidXQgSSBiZWxpZXZlIGl0IGlzIG9ubHkgYSBkYXkg
+dGhhdCBwZW9wbGUgbWVldCBhbmQgYmVjb21lIGdyZWF0IGZyaWVuZHMgYW5kIGJ1c2luZXNzIHBh
+cnRuZXJzLiBQbGVhc2UgSSB3YW50IHlvdSB0byByZWFkIHRoaXMgbGV0dGVyIHZlcnkgY2FyZWZ1
+bGx5IGFuZCBJIG11c3QgYXBvbG9naXplIGZvciBiYXJnaW5nIHRoaXMgbWVzc2FnZSBpbnRvIHlv
+dXIgbWFpbCBib3ggd2l0aG91dCBhbnkgZm9ybWFsIGludHJvZHVjdGlvbiBkdWUgdG8gdGhlIHVy
+Z2VuY3kgYW5kIGNvbmZpZGVudGlhbGl0eSBvZiB0aGlzIGJ1c2luZXNzIGFuZCBJIGtub3cgdGhh
+dCB0aGlzIG1lc3NhZ2Ugd2lsbCBjb21lIHRvIHlvdSBhcyBhIHN1cnByaXNlLiBQbGVhc2UgdGhp
+cyBpcyBub3QgYSBqb2tlIGFuZCBJIHdpbGwgbm90IGxpa2UgeW91IHRvIGpva2Ugd2l0aCBpdCBv
+ayxXaXRoIGR1ZSByZXNwZWN0IHRvIHlvdXIgcGVyc29uIGFuZCBtdWNoIHNpbmNlcml0eSBvZiBw
+dXJwb3NlLCBJIG1ha2UgdGhpcyBjb250YWN0IHdpdGggeW91IGFzIEkgYmVsaWV2ZSB0aGF0IHlv
+dSBjYW4gYmUgb2YgZ3JlYXQgYXNzaXN0YW5jZSB0byBtZS4gTXkgbmFtZSBpcyBNci5BYmRlcmF6
+YWNrIHplYmRhbmksIGZyb20gQnVya2luYSBGYXNvLCBXZXN0IEFmcmljYS4gSSB3b3JrIGluIEJh
+bmsgT2YgQWZyaWNhIChCT0EpIGFzIHRlbGV4IG1hbmFnZXIsIHBsZWFzZSBzZWUgdGhpcyBhcyBh
+IGNvbmZpZGVudGlhbCBtZXNzYWdlIGFuZCBkbyBub3QgcmV2ZWFsIGl0IHRvIGFub3RoZXIgcGVy
+c29uIGFuZCBsZXQgbWUga25vdyB3aGV0aGVyIHlvdSBjYW4gYmUgb2YgYXNzaXN0YW5jZSByZWdh
+cmRpbmcgbXkgcHJvcG9zYWwgYmVsb3cgYmVjYXVzZSBpdCBpcyB0b3Agc2VjcmV0LgoKSSBhbSBh
+Ym91dCB0byByZXRpcmUgZnJvbSBhY3RpdmUgQmFua2luZyBzZXJ2aWNlIHRvIHN0YXJ0IGEgbmV3
+IGxpZmUgYnV0IEkgYW0gc2tlcHRpY2FsIHRvIHJldmVhbCB0aGlzIHBhcnRpY3VsYXIgc2VjcmV0
+IHRvIGEgc3RyYW5nZXIuIFlvdSBtdXN0IGFzc3VyZSBtZSB0aGF0IGV2ZXJ5dGhpbmcgd2lsbCBi
+ZSBoYW5kbGVkIGNvbmZpZGVudGlhbGx5IGJlY2F1c2Ugd2UgYXJlIG5vdCBnb2luZyB0byBzdWZm
+ZXIgYWdhaW4gaW4gbGlmZS4gSXQgaGFzIGJlZW4gMTAgeWVhcnMgbm93IHRoYXQgbW9zdCBvZiB0
+aGUgZ3JlZWR5IEFmcmljYW4gUG9saXRpY2lhbnMgdXNlZCBvdXIgYmFuayB0byBsYXVuZGVyIG1v
+bmV5IG92ZXJzZWFzIHRocm91Z2ggdGhlIGhlbHAgb2YgdGhlaXIgUG9saXRpY2FsIGFkdmlzZXJz
+LiBNb3N0IG9mIHRoZSBmdW5kcyB3aGljaCB0aGV5IHRyYW5zZmVycmVkIG91dCBvZiB0aGUgc2hv
+cmVzIG9mIEFmcmljYSB3ZXJlIGdvbGQgYW5kIG9pbCBtb25leSB0aGF0IHdhcyBzdXBwb3NlZCB0
+byBoYXZlIGJlZW4gdXNlZCB0byBkZXZlbG9wIHRoZSBjb250aW5lbnQuIFRoZWlyIFBvbGl0aWNh
+bCBhZHZpc2VycyBhbHdheXMgaW5mbGF0ZWQgdGhlIGFtb3VudHMgYmVmb3JlIHRyYW5zZmVycmlu
+ZyB0byBmb3JlaWduIGFjY291bnRzLCBzbyBJIGFsc28gdXNlZCB0aGUgb3Bwb3J0dW5pdHkgdG8g
+ZGl2ZXJ0IHBhcnQgb2YgdGhlIGZ1bmRzIGhlbmNlIEkgYW0gYXdhcmUgdGhhdCB0aGVyZSBpcyBu
+byBvZmZpY2lhbCB0cmFjZSBvZiBob3cgbXVjaCB3YXMgdHJhbnNmZXJyZWQgYXMgYWxsIHRoZSBh
+Y2NvdW50cyB1c2VkIGZvciBzdWNoIHRyYW5zZmVycyB3ZXJlIGJlaW5nIGNsb3NlZCBhZnRlciB0
+cmFuc2Zlci4gSSBhY3RlZCBhcyB0aGUgQmFuayBPZmZpY2VyIHRvIG1vc3Qgb2YgdGhlIHBvbGl0
+aWNpYW5zIGFuZCB3aGVuIEkgZGlzY292ZXJlZCB0aGF0IHRoZXkgd2VyZSB1c2luZyBtZSB0byBz
+dWNjZWVkIGluIHRoZWlyIGdyZWVkeSBhY3Q7IEkgYWxzbyBjbGVhbmVkIHNvbWUgb2YgdGhlaXIg
+YmFua2luZyByZWNvcmRzIGZyb20gdGhlIEJhbmsgZmlsZXMgYW5kIG5vIG9uZSBjYXJlZCB0byBh
+c2sgbWUgYmVjYXVzZSB0aGUgbW9uZXkgd2FzIHRvbyBtdWNoIGZvciB0aGVtIHRvIGNvbnRyb2wu
+IFRoZXkgbGF1bmRlcmVkIG92ZXIgJDViaWxsaW9uIERvbGxhcnMgZHVyaW5nIHRoZSBwcm9jZXNz
+LgoKQmVmb3JlIEkgc2VuZCB0aGlzIG1lc3NhZ2UgdG8geW91LCBJIGhhdmUgYWxyZWFkeSBkaXZl
+cnRlZCAoJDEwLjVtaWxsaW9uIERvbGxhcnMpIHRvIGFuIGVzY3JvdyBhY2NvdW50IGJlbG9uZ2lu
+ZyB0byBubyBvbmUgaW4gdGhlIGJhbmsuIFRoZSBiYW5rIGlzIGFueGlvdXMgbm93IHRvIGtub3cg
+d2hvIHRoZSBiZW5lZmljaWFyeSB0byB0aGUgZnVuZHMgaXMgYmVjYXVzZSB0aGV5IGhhdmUgbWFk
+ZSBhIGxvdCBvZiBwcm9maXRzIHdpdGggdGhlIGZ1bmRzLiBJdCBpcyBtb3JlIHRoYW4gRWlnaHQg
+eWVhcnMgbm93IGFuZCBtb3N0IG9mIHRoZSBwb2xpdGljaWFucyBhcmUgbm8gbG9uZ2VyIHVzaW5n
+IG91ciBiYW5rIHRvIHRyYW5zZmVyIGZ1bmRzIG92ZXJzZWFzLiBUaGUgKCQxMC41bWlsbGlvbiBE
+b2xsYXJzKSBoYXMgYmVlbiBsYXlpbmcgd2FzdGUgaW4gb3VyIGJhbmsgYW5kIEkgZG9u4oCZdCB3
+YW50IHRvIHJldGlyZSBmcm9tIHRoZSBiYW5rIHdpdGhvdXQgdHJhbnNmZXJyaW5nIHRoZSBmdW5k
+cyB0byBhIGZvcmVpZ24gYWNjb3VudCB0byBlbmFibGUgbWUgc2hhcmUgdGhlIHByb2NlZWRzIHdp
+dGggdGhlIHJlY2VpdmVyIChhIGZvcmVpZ25lcikuIFRoZSBtb25leSB3aWxsIGJlIHNoYXJlZCA2
+MCUgZm9yIG1lIGFuZCA0MCUgZm9yIHlvdS4gVGhlcmUgaXMgbm8gb25lIGNvbWluZyB0byBhc2sg
+eW91IGFib3V0IHRoZSBmdW5kcyBiZWNhdXNlIEkgc2VjdXJlZCBldmVyeXRoaW5nLiBJIG9ubHkg
+d2FudCB5b3UgdG8gYXNzaXN0IG1lIGJ5IHByb3ZpZGluZyBhIHJlbGlhYmxlIGJhbmsgYWNjb3Vu
+dCB3aGVyZSB0aGUgZnVuZHMgY2FuIGJlIHRyYW5zZmVycmVkLgoKWW91IGFyZSBub3QgdG8gZmFj
+ZSBhbnkgZGlmZmljdWx0aWVzIG9yIGxlZ2FsIGltcGxpY2F0aW9ucyBhcyBJIGFtIGdvaW5nIHRv
+IGhhbmRsZSB0aGUgdHJhbnNmZXIgcGVyc29uYWxseS4gSWYgeW91IGFyZSBjYXBhYmxlIG9mIHJl
+Y2VpdmluZyB0aGUgZnVuZHMsIGRvIGxldCBtZSBrbm93IGltbWVkaWF0ZWx5IHRvIGVuYWJsZSBt
+ZSBnaXZlIHlvdSBhIGRldGFpbGVkIGluZm9ybWF0aW9uIG9uIHdoYXQgdG8gZG8uIEZvciBtZSwg
+SSBoYXZlIG5vdCBzdG9sZW4gdGhlIG1vbmV5IGZyb20gYW55b25lIGJlY2F1c2UgdGhlIG90aGVy
+IHBlb3BsZSB0aGF0IHRvb2sgdGhlIHdob2xlIG1vbmV5IGRpZCBub3QgZmFjZSBhbnkgcHJvYmxl
+bXMuIFRoaXMgaXMgbXkgY2hhbmNlIHRvIGdyYWIgbXkgb3duIGxpZmUgb3Bwb3J0dW5pdHkgYnV0
+IHlvdSBtdXN0IGtlZXAgdGhlIGRldGFpbHMgb2YgdGhlIGZ1bmRzIHNlY3JldCB0byBhdm9pZCBh
+bnkgbGVha2FnZXMgYXMgbm8gb25lIGluIHRoZSBiYW5rIGtub3dzIGFib3V0IG15IHBsYW5zLlBs
+ZWFzZSBnZXQgYmFjayB0byBtZSBpZiB5b3UgYXJlIGludGVyZXN0ZWQgYW5kIGNhcGFibGUgdG8g
+aGFuZGxlIHRoaXMgcHJvamVjdCwgSSBzaGFsbCBpbnRpbWF0ZSB5b3Ugb24gd2hhdCB0byBkbyB3
+aGVuIEkgaGVhciBmcm9tIHlvdXIgY29uZmlybWF0aW9uIGFuZCBhY2NlcHRhbmNlLklmIHlvdSBh
+cmUgY2FwYWJsZSBvZiBiZWluZyBteSB0cnVzdGVkIGFzc29jaWF0ZSwgZG8gZGVjbGFyZSB5b3Vy
+IGNvbnNlbnQgdG8gbWUgSSBhbSBsb29raW5nIGZvcndhcmQgdG8gaGVhciBmcm9tIHlvdSBpbW1l
+ZGlhdGVseSBmb3IgZnVydGhlciBpbmZvcm1hdGlvbi4KVGhhbmtzIHdpdGggbXkgYmVzdCByZWdh
+cmRzLgpNci5BYmRlcmF6YWNrIHplYmRhbmkuClRlbGV4IE1hbmFnZXIKQmFuayBPZiBBZnJpY2Eg
+KEJPQSkKQnVya2luYSBGYXNvLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9y
+ZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcml2ZXJkZXYtZGV2ZWwK
