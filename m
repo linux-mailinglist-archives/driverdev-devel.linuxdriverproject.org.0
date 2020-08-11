@@ -1,74 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 460CC241E90
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Aug 2020 18:46:27 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7EFDA8818E;
-	Tue, 11 Aug 2020 16:46:24 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kbwLLm45zEPr; Tue, 11 Aug 2020 16:46:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6E80F88177;
-	Tue, 11 Aug 2020 16:46:23 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 06EDB1BF2F4
- for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 16:46:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 884ED242203
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Aug 2020 23:33:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 035DE86155
- for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 16:46:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D65486398;
+	Tue, 11 Aug 2020 21:33:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2D29TQkhnESp; Tue, 11 Aug 2020 21:33:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2849786396;
+	Tue, 11 Aug 2020 21:33:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 39FE61BF276
+ for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 21:33:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 1F66622812
+ for <devel@linuxdriverproject.org>; Tue, 11 Aug 2020 21:33:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AsETSpsg3Ddz for <devel@linuxdriverproject.org>;
- Tue, 11 Aug 2020 16:46:20 +0000 (UTC)
+ with ESMTP id XQkqT4qBrogK for <devel@linuxdriverproject.org>;
+ Tue, 11 Aug 2020 21:33:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7EF0286148
- for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 16:46:20 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id p1so7083398pls.4
- for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 09:46:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SoICVdOMd4Tqpxtq18KsD1itKSO8FUEzkBoLmDLhcow=;
- b=eL59yrrKsyb0bsSfO3YV1+l0ncnOX5D2/Xs4WFvonsn6PtwdynBeH0itxm3ElutGeX
- 6q6tMvyaS0XtiDqlf1UQZbzfYUPzs+EMK0WoC+iVkOEBe/pSQbogzNeP7ZmPfdPNEu22
- LU2fNVL/yrUDiiZdpwdvIp0dM76FFcohMMTga2kvbUbFlwcYjCp6jrMEEcw3BREARxUQ
- DDPPmnYQ5+gNk5ZXw33oKflrz2xRCFnqaUx9P2Lw5zHc/UkAfeCAESRIoKZDUZhb65WX
- EifOA4elfaADtXvvtigldX2Ps4CGF4lLUh+m8PV+5KK79F5/IZOVOnnWnZaZRudo4RQc
- 6RQQ==
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id E19AE20504
+ for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 21:33:15 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id i92so2022008pje.0
+ for <devel@driverdev.osuosl.org>; Tue, 11 Aug 2020 14:33:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=1XmU1UxtFoX+JxWRWBVQUmWx0SHpCQU0BLn06Acf+NU=;
+ b=nO3gYAQ3UHUw7olEjw932d3zFLqOCCUdnacl9cVKrUgmFx2PGjAFNp8CQwEB7V4Hmy
+ FGOy733ZHh3A1xH6oKC3op8DvO/HEaTRYWhxchiQa9h8rnO5vamgJzN81P21hsQ5n8I3
+ t7TvIriH92cU2JNs0mnOTN8SDZ89gDDMfKKUs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SoICVdOMd4Tqpxtq18KsD1itKSO8FUEzkBoLmDLhcow=;
- b=fSMg6K7EEbRK8SvkcWpsDlmhBrc087OHvqTY4J1+4IcpfE2UdzPEpflXD6oGQecHtZ
- RKchtqr2I7jdwyfZ8GtrX0/fopQvPmZ0rGirU19DkUPM2H2QYTRMk08r/81zZD8ERUi0
- EWSQ5yx2Y8RU+wex32ZmX3Lw7i8We/cfTm4Yl859ckkdNiNyFyhhN8Phz+GBaqNsB91N
- JzNLtJKZszGqLHqU8HtmRyiyVLPFcrDIOvOsJ8zQ956nLwfmYzjFkzi/trGhQGEHPB+B
- h7L/Hdk5qi1ve4ts4ISubFWBW5ZGZqLLBVJzN8uPDtY7+uD31dmpJzzdou2pLmHDo4N6
- 72Zg==
-X-Gm-Message-State: AOAM532JV4oDqbEhMpOD+X8YufzvZ1wdkxh/ILlJpVs1opIZlNjmcAa/
- hOCSbwbmGBBTUF7ToXKS19IQL0opKK43/xzWNLE=
-X-Google-Smtp-Source: ABdhPJyEIOzjg18QmQ+dOADWbUqwbtJr18f5lR5OziHFc0pyu8YJaX9K7YoLYsGzJYyelYQz3gnZJ7hJy2SKUsGpMbg=
-X-Received: by 2002:a17:90a:4f45:: with SMTP id
- w5mr1974736pjl.11.1597164379902; 
- Tue, 11 Aug 2020 09:46:19 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=1XmU1UxtFoX+JxWRWBVQUmWx0SHpCQU0BLn06Acf+NU=;
+ b=fT8UBkpr7Rr5J1lut5OjgZjrl0qpLHAA6Sw5OidNF+DUsMiZqCcedgljyKgDv/5I7k
+ x1QujjgkIznYJQN1HK2zgbjZWdXd+BWCGBko2mWG1ii2NAKOLDgbXQRYpmKnnSbp7shU
+ HCG3uPvMq1Q6kc7jCunB9w0Z1AMyEc1pK4v+1pU+XtUm1r0+9g6PIeiSXZYjFYJKzLf2
+ Z1dfBq3TYt1TUGFZxy9yj/D5IGkFawSBAJ99LvAHrXRY0/6JVSi5pVD4+2lG0bxw+D8t
+ u8Uq7ST7PxOHdysf1xGXBm1msFCf1a/WWkCdv3lExoTDHmqC1cEuKqxhjlcZtka3w+EZ
+ PHAw==
+X-Gm-Message-State: AOAM532OMONTSLNfftueFKs+azo5x3SGmXR9xWKrpq4RgSlmRzPHDkxi
+ A/YayoNe1XhV5/3pMdx31g4JAg==
+X-Google-Smtp-Source: ABdhPJzVUgwczR2LI6waXoChEBBAZmQiyV+rznpXD/j383hrrCcUrIvWs+lVRQIEgQVz81ia6sNYwg==
+X-Received: by 2002:a17:90a:ccd:: with SMTP id
+ 13mr2785480pjt.123.1597181595355; 
+ Tue, 11 Aug 2020 14:33:15 -0700 (PDT)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id k12sm3694242pjp.38.2020.08.11.14.33.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Aug 2020 14:33:14 -0700 (PDT)
+Date: Tue, 11 Aug 2020 14:33:13 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Allen <allen.lkml@gmail.com>
+Subject: Re: [PATCH 0/3] Modernize tasklet callback API
+Message-ID: <202008111427.D00FCCF@keescook>
+References: <20200716030847.1564131-1-keescook@chromium.org>
+ <87h7tpa3hg.fsf@nanos.tec.linutronix.de>
+ <202007301113.45D24C9D@keescook>
+ <CAOMdWSJQKHAWY1P297b9koOLd8sVtezEYEyWGtymN1YeY27M6A@mail.gmail.com>
 MIME-Version: 1.0
-References: <a5d4bb540e606d7980d4127a82e6af9b436e0642.1596730667.git.vaibhav.sr@gmail.com>
- <20200810150356.GL1793@kadam>
-In-Reply-To: <20200810150356.GL1793@kadam>
-From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-Date: Tue, 11 Aug 2020 22:15:42 +0530
-Message-ID: <CAAs3649URK20TyU=EpfoY9ow-fK6jSjP1214KTPnUUU_t2d-7g@mail.gmail.com>
-Subject: Re: [PATCH v1] staging: greybus: audio: fix uninitialized value issue
-To: Dan Carpenter <dan.carpenter@oracle.com>
+Content-Disposition: inline
+In-Reply-To: <CAOMdWSJQKHAWY1P297b9koOLd8sVtezEYEyWGtymN1YeY27M6A@mail.gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,52 +86,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Alex Elder <elder@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Johan Hovold <johan@kernel.org>, Mark Greer <mgreer@animalcreek.com>,
- greybus-dev@lists.linaro.org, Colin Ian King <colin.king@canonical.com>,
- linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
+ alsa-devel@alsa-project.org, Oscar Carter <oscar.carter@gmx.com>,
+ Kernel Hardening <kernel-hardening@lists.openwall.com>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-input@vger.kernel.org, kgdb-bugreport@lists.sourceforge.net,
+ Thomas Gleixner <tglx@linutronix.de>, Romain Perier <romain.perier@gmail.com>,
+ Will Deacon <will@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Aug 10, 2020 at 8:34 PM Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> On Thu, Aug 06, 2020 at 09:51:57PM +0530, Vaibhav Agarwal wrote:
-> > diff --git a/drivers/staging/greybus/audio_topology.c b/drivers/staging/greybus/audio_topology.c
-> > index 2f9fdbdcd547..4b914d0edef2 100644
-> > --- a/drivers/staging/greybus/audio_topology.c
-> > +++ b/drivers/staging/greybus/audio_topology.c
-> > @@ -456,6 +456,13 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
-> >       val = ucontrol->value.integer.value[0] & mask;
-> >       connect = !!val;
-> >
-> > +     ret = gb_pm_runtime_get_sync(bundle);
-> > +     if (ret)
-> > +             return ret;
-> > +
-> > +     ret = gb_audio_gb_get_control(module->mgmt_connection, data->ctl_id,
-> > +                                   GB_AUDIO_INVALID_INDEX, &gbvalue);
->
->
-> We need to check "ret" after this.
+On Mon, Aug 03, 2020 at 02:16:15PM +0530, Allen wrote:
+> Here's the series re-based on top of 5.8
+> https://github.com/allenpais/tasklets/tree/V3
 
-Oops, my bad. Thanks Dan for reporting this. I'll share an updated patch soon.
+Great!
 
---
-regards,
-vaibhav
->
-> > +
-> >       /* update ucontrol */
-> >       if (gbvalue.value.integer_value[0] != val) {
-> >               for (wi = 0; wi < wlist->num_widgets; wi++) {
-> > @@ -466,16 +473,10 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
->
-> regards,
-> dan carpenter
->
+> Let me know how you would want these to be reviewed.
+
+Was a Coccinelle script used for any of these conversions? I wonder if
+it'd be easier to do a single treewide patch for the more mechanical
+changes.
+
+And, actually, I still think the "prepare" patches should just be
+collapsed into the actual "covert" patches -- there are only a few.
+
+After those, yeah, I think getting these sent to their respective
+maintainers is the next step.
+
+> Also, I was thinking if removing tasklets completely could be a task
+> on KSPP wiki. If yes, I did like to take ownership of that task. I have a
+> couple of ideas in mind, which could be discussed in a separate email.
+
+Sure! I will add it to the tracker. Here's for the refactoring:
+https://github.com/KSPP/linux/issues/30
+
+and here's for the removal:
+https://github.com/KSPP/linux/issues/94
+
+if you can added details/examples of how they should be removed, that'd
+help other folks too, if they wanted to jump in. :)
+
+-Kees
+
+-- 
+Kees Cook
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
