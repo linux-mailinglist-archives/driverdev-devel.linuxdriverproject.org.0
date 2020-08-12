@@ -1,57 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7768F242C81
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Aug 2020 17:57:23 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C318242C90
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Aug 2020 17:57:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2644688252;
-	Wed, 12 Aug 2020 15:57:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3EA4B86AAB;
+	Wed, 12 Aug 2020 15:57:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TuRHnKnXcwQh; Wed, 12 Aug 2020 15:57:19 +0000 (UTC)
+	with ESMTP id eIe-DIKCuXME; Wed, 12 Aug 2020 15:57:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 15B4288266;
-	Wed, 12 Aug 2020 15:57:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6703286A54;
+	Wed, 12 Aug 2020 15:57:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CD2831BF9B5
- for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 15:57:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BF9561BF9B5
+ for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 15:57:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C93A986A79
- for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 15:57:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B887E86A90
+ for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 15:57:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CRb9GTJT9qAd for <devel@linuxdriverproject.org>;
+ with ESMTP id LxKXjko_RjaI for <devel@linuxdriverproject.org>;
  Wed, 12 Aug 2020 15:57:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7BC8586A5D
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 92A6686A61
  for <devel@driverdev.osuosl.org>; Wed, 12 Aug 2020 15:57:00 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
  [95.90.213.197])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3728922B49;
+ by mail.kernel.org (Postfix) with ESMTPSA id 4FC0722D07;
  Wed, 12 Aug 2020 15:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1597247820;
- bh=F4/0N358UMInRTChm1W025kSLWvagEEmCODOlEavrPA=;
+ bh=7cQMbEqVP6QsOTdHh8KrYDnrohXVd6eK7Y95/ylle4s=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Owpp0QA19AC4Hs0o7VUlHXmV0MZOhFhBA6a7EJpbjzEEB0OuGT0scQ+QtjzoYkbp6
- Mc8vtK35EgOjCFtd0vd1cLkRSreu4Gll4ZQlkDn3hHDeO2T0AqP1Ni7P07Sw97Dwy0
- Qc93PbwQv87Ixzq1es0BC6HP1MpUR2lVmbdBMpgE=
+ b=uS0GjWiJQXGBCyMPQJMsJ6yY+Llj1rkLn83JgFy2SBA/jTg4uYjM7eR7Wp+5WB/pc
+ /Shy5ehIZfkvwvgk3BXp9MZMb38a7opKI+ONomDxakmipLrxuER4XQOZooQSUelR2V
+ aX3/c96E1l+DuFOkub9Tpnpu6tha/7Hqvptkb8GE=
 Received: from mchehab by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1k5t7a-005t6N-9b; Wed, 12 Aug 2020 17:56:58 +0200
+ id 1k5t7a-005t6Q-As; Wed, 12 Aug 2020 17:56:58 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH 18/44] staging: mfd: hi6421-spmi-pmic: cleanup OF properties
-Date: Wed, 12 Aug 2020 17:56:28 +0200
-Message-Id: <64e7e7d39b4fd738a9202d970b42b01b7bf49069.1597247164.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 19/44] staging: mfd: hi6421-spmi-pmic: change namespace on its
+ functions
+Date: Wed, 12 Aug 2020 17:56:29 +0200
+Message-Id: <245cc5ea085af9f842406e34ddb4efd20965894f.1597247164.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1597247164.git.mchehab+huawei@kernel.org>
 References: <cover.1597247164.git.mchehab+huawei@kernel.org>
@@ -71,70 +72,349 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
- linux-kernel@vger.kernel.org, mauro.chehab@huawei.com
+ linux-kernel@vger.kernel.org, mauro.chehab@huawei.com,
+ Lee Jones <lee.jones@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Simplify the names of the DT properties and do some cleanups,
-in order to better document them.
+Rename the functions used internally inside the driver in
+order for them to follow the driver's name.
+
+While here, get rid of some unused definitions at the
+header file.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 97 +++++++++++----------
+ include/linux/mfd/hi6421-spmi-pmic.h        | 51 ++++-------
+ 2 files changed, 70 insertions(+), 78 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-index f523b2d844b9..aed2d3ec2227 100644
+index aed2d3ec2227..09cedfa1e4bb 100644
 --- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
 +++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-@@ -209,37 +209,37 @@ static int get_pmic_device_tree_data(struct device_node *np, struct hisi_pmic *p
+@@ -62,7 +62,7 @@ static const struct mfd_cell hi6421v600_devs[] = {
+  * Hisilicon SoC use hardware to map PMIC register into SoC mapping.
+  * At here, we are accessing SoC register with 32-bit.
+  */
+-u32 hisi_pmic_read(struct hisi_pmic *pmic, int reg)
++u32 hi6421_spmi_pmic_read(struct hi6421_spmi_pmic *pmic, int reg)
+ {
+ 	u32 ret;
+ 	u8 read_value = 0;
+@@ -82,9 +82,9 @@ u32 hisi_pmic_read(struct hisi_pmic *pmic, int reg)
+ 	}
+ 	return (u32)read_value;
+ }
+-EXPORT_SYMBOL(hisi_pmic_read);
++EXPORT_SYMBOL(hi6421_spmi_pmic_read);
+ 
+-void hisi_pmic_write(struct hisi_pmic *pmic, int reg, u32 val)
++void hi6421_spmi_pmic_write(struct hi6421_spmi_pmic *pmic, int reg, u32 val)
+ {
+ 	u32 ret;
+ 	struct spmi_device *pdev;
+@@ -101,34 +101,36 @@ void hisi_pmic_write(struct hisi_pmic *pmic, int reg, u32 val)
+ 		return;
+ 	}
+ }
+-EXPORT_SYMBOL(hisi_pmic_write);
++EXPORT_SYMBOL(hi6421_spmi_pmic_write);
+ 
+-void hisi_pmic_rmw(struct hisi_pmic *pmic, int reg, u32 mask, u32 bits)
++void hi6421_spmi_pmic_rmw(struct hi6421_spmi_pmic *pmic, int reg,
++			  u32 mask, u32 bits)
+ {
+ 	u32 data;
+ 	unsigned long flags;
+ 
+ 	spin_lock_irqsave(&pmic->lock, flags);
+-	data = hisi_pmic_read(pmic, reg) & ~mask;
++	data = hi6421_spmi_pmic_read(pmic, reg) & ~mask;
+ 	data |= mask & bits;
+-	hisi_pmic_write(pmic, reg, data);
++	hi6421_spmi_pmic_write(pmic, reg, data);
+ 	spin_unlock_irqrestore(&pmic->lock, flags);
+ }
+-EXPORT_SYMBOL(hisi_pmic_rmw);
++EXPORT_SYMBOL(hi6421_spmi_pmic_rmw);
+ 
+-static irqreturn_t hisi_irq_handler(int irq, void *data)
++static irqreturn_t hi6421_spmi_irq_handler(int irq, void *data)
+ {
+-	struct hisi_pmic *pmic = (struct hisi_pmic *)data;
++	struct hi6421_spmi_pmic *pmic = (struct hi6421_spmi_pmic *)data;
+ 	unsigned long pending;
+ 	int i, offset;
+ 
+ 	for (i = 0; i < pmic->irqarray; i++) {
+-		pending = hisi_pmic_read(pmic, (i + pmic->irq_addr.start_addr));
++		pending = hi6421_spmi_pmic_read(pmic, (i + pmic->irq_addr.start_addr));
+ 		pending &= HISI_MASK_FIELD;
+ 		if (pending != 0)
+ 			pr_debug("pending[%d]=0x%lx\n\r", i, pending);
+ 
+-		hisi_pmic_write(pmic, (i + pmic->irq_addr.start_addr), pending);
++		hi6421_spmi_pmic_write(pmic, (i + pmic->irq_addr.start_addr),
++				       pending);
+ 
+ 		/* solve powerkey order */
+ 		if ((i == HISI_IRQ_KEY_NUM) && ((pending & HISI_IRQ_KEY_VALUE) == HISI_IRQ_KEY_VALUE)) {
+@@ -146,9 +148,9 @@ static irqreturn_t hisi_irq_handler(int irq, void *data)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static void hisi_irq_mask(struct irq_data *d)
++static void hi6421_spmi_irq_mask(struct irq_data *d)
+ {
+-	struct hisi_pmic *pmic = irq_data_get_irq_chip_data(d);
++	struct hi6421_spmi_pmic *pmic = irq_data_get_irq_chip_data(d);
+ 	u32 data, offset;
+ 	unsigned long flags;
+ 
+@@ -156,15 +158,15 @@ static void hisi_irq_mask(struct irq_data *d)
+ 	offset += pmic->irq_mask_addr.start_addr;
+ 
+ 	spin_lock_irqsave(&pmic->lock, flags);
+-	data = hisi_pmic_read(pmic, offset);
++	data = hi6421_spmi_pmic_read(pmic, offset);
+ 	data |= (1 << (irqd_to_hwirq(d) & 0x07));
+-	hisi_pmic_write(pmic, offset, data);
++	hi6421_spmi_pmic_write(pmic, offset, data);
+ 	spin_unlock_irqrestore(&pmic->lock, flags);
+ }
+ 
+-static void hisi_irq_unmask(struct irq_data *d)
++static void hi6421_spmi_irq_unmask(struct irq_data *d)
+ {
+-	struct hisi_pmic *pmic = irq_data_get_irq_chip_data(d);
++	struct hi6421_spmi_pmic *pmic = irq_data_get_irq_chip_data(d);
+ 	u32 data, offset;
+ 	unsigned long flags;
+ 
+@@ -172,26 +174,26 @@ static void hisi_irq_unmask(struct irq_data *d)
+ 	offset += pmic->irq_mask_addr.start_addr;
+ 
+ 	spin_lock_irqsave(&pmic->lock, flags);
+-	data = hisi_pmic_read(pmic, offset);
++	data = hi6421_spmi_pmic_read(pmic, offset);
+ 	data &= ~(1 << (irqd_to_hwirq(d) & 0x07));
+-	hisi_pmic_write(pmic, offset, data);
++	hi6421_spmi_pmic_write(pmic, offset, data);
+ 	spin_unlock_irqrestore(&pmic->lock, flags);
+ }
+ 
+-static struct irq_chip hisi_pmu_irqchip = {
++static struct irq_chip hi6421_spmi_pmu_irqchip = {
+ 	.name		= "hisi-irq",
+-	.irq_mask	= hisi_irq_mask,
+-	.irq_unmask	= hisi_irq_unmask,
+-	.irq_disable	= hisi_irq_mask,
+-	.irq_enable	= hisi_irq_unmask,
++	.irq_mask	= hi6421_spmi_irq_mask,
++	.irq_unmask	= hi6421_spmi_irq_unmask,
++	.irq_disable	= hi6421_spmi_irq_mask,
++	.irq_enable	= hi6421_spmi_irq_unmask,
+ };
+ 
+-static int hisi_irq_map(struct irq_domain *d, unsigned int virq,
++static int hi6421_spmi_irq_map(struct irq_domain *d, unsigned int virq,
+ 			irq_hw_number_t hw)
+ {
+-	struct hisi_pmic *pmic = d->host_data;
++	struct hi6421_spmi_pmic *pmic = d->host_data;
+ 
+-	irq_set_chip_and_handler_name(virq, &hisi_pmu_irqchip,
++	irq_set_chip_and_handler_name(virq, &hi6421_spmi_pmu_irqchip,
+ 				      handle_simple_irq, "hisi");
+ 	irq_set_chip_data(virq, pmic);
+ 	irq_set_irq_type(virq, IRQ_TYPE_NONE);
+@@ -199,12 +201,13 @@ static int hisi_irq_map(struct irq_domain *d, unsigned int virq,
+ 	return 0;
+ }
+ 
+-static const struct irq_domain_ops hisi_domain_ops = {
+-	.map	= hisi_irq_map,
++static const struct irq_domain_ops hi6421_spmi_domain_ops = {
++	.map	= hi6421_spmi_irq_map,
+ 	.xlate	= irq_domain_xlate_twocell,
+ };
+ 
+-static int get_pmic_device_tree_data(struct device_node *np, struct hisi_pmic *pmic)
++static int get_pmic_device_tree_data(struct device_node *np,
++				     struct hi6421_spmi_pmic *pmic)
+ {
  	int ret = 0;
  
- 	/*get pmic irq num*/
--	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-num",
-+	ret = of_property_read_u32_array(np, "irq-num",
- 					 &pmic->irqnum, 1);
- 	if (ret) {
--		pr_err("no hisilicon,hisi-pmic-irq-num property set\n");
-+		pr_err("no irq-num property set\n");
+@@ -247,27 +250,29 @@ static int get_pmic_device_tree_data(struct device_node *np, struct hisi_pmic *p
+ 	return ret;
+ }
+ 
+-static void hisi_pmic_irq_prc(struct hisi_pmic *pmic)
++static void hi6421_spmi_pmic_irq_prc(struct hi6421_spmi_pmic *pmic)
+ {
+ 	int i;
+ 
+ 	for (i = 0 ; i < pmic->irq_mask_addr.array; i++)
+-		hisi_pmic_write(pmic, pmic->irq_mask_addr.start_addr + i, HISI_MASK_STATE);
++		hi6421_spmi_pmic_write(pmic, pmic->irq_mask_addr.start_addr + i,
++				       HISI_MASK_STATE);
+ 
+ 	for (i = 0 ; i < pmic->irq_addr.array; i++) {
+-		unsigned int pending = hisi_pmic_read(pmic, pmic->irq_addr.start_addr + i);
++		unsigned int pending = hi6421_spmi_pmic_read(pmic, pmic->irq_addr.start_addr + i);
+ 
+ 		pr_debug("PMU IRQ address value:irq[0x%x] = 0x%x\n",
+ 			 pmic->irq_addr.start_addr + i, pending);
+-		hisi_pmic_write(pmic, pmic->irq_addr.start_addr + i, HISI_MASK_STATE);
++		hi6421_spmi_pmic_write(pmic, pmic->irq_addr.start_addr + i,
++				       HISI_MASK_STATE);
+ 	}
+ }
+ 
+-static int hisi_pmic_probe(struct spmi_device *pdev)
++static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+-	struct hisi_pmic *pmic = NULL;
++	struct hi6421_spmi_pmic *pmic = NULL;
+ 	enum of_gpio_flags flags;
+ 	int ret = 0;
+ 	int i;
+@@ -305,14 +310,14 @@ static int hisi_pmic_probe(struct spmi_device *pdev)
+ 	pmic->irq = gpio_to_irq(pmic->gpio);
+ 
+ 	/* mask && clear IRQ status */
+-	hisi_pmic_irq_prc(pmic);
++	hi6421_spmi_pmic_irq_prc(pmic);
+ 
+ 	pmic->irqs = devm_kzalloc(dev, pmic->irqnum * sizeof(int), GFP_KERNEL);
+ 	if (!pmic->irqs)
+ 		goto irq_malloc;
+ 
+ 	pmic->domain = irq_domain_add_simple(np, pmic->irqnum, 0,
+-					     &hisi_domain_ops, pmic);
++					     &hi6421_spmi_domain_ops, pmic);
+ 	if (!pmic->domain) {
+ 		dev_err(dev, "failed irq domain add simple!\n");
  		ret = -ENODEV;
- 		return ret;
+@@ -330,7 +335,7 @@ static int hisi_pmic_probe(struct spmi_device *pdev)
+ 		pr_info("[%s]. pmic->irqs[%d] = %d\n", __func__, i, pmic->irqs[i]);
  	}
  
- 	/*get pmic irq array number*/
--	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-array",
-+	ret = of_property_read_u32_array(np, "irq-array",
- 					 &pmic->irqarray, 1);
- 	if (ret) {
--		pr_err("no hisilicon,hisi-pmic-irq-array property set\n");
-+		pr_err("no irq-array property set\n");
- 		ret = -ENODEV;
- 		return ret;
- 	}
+-	ret = request_threaded_irq(pmic->irq, hisi_irq_handler, NULL,
++	ret = request_threaded_irq(pmic->irq, hi6421_spmi_irq_handler, NULL,
+ 				   IRQF_TRIGGER_LOW | IRQF_SHARED | IRQF_NO_SUSPEND,
+ 				   "pmic", pmic);
+ 	if (ret < 0) {
+@@ -365,9 +370,9 @@ static int hisi_pmic_probe(struct spmi_device *pdev)
+ 	return ret;
+ }
  
- 	/*SOC_PMIC_IRQ_MASK_0_ADDR*/
--	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-mask-addr",
-+	ret = of_property_read_u32_array(np, "irq-mask-addr",
- 					 (int *)&pmic->irq_mask_addr, 2);
- 	if (ret) {
--		pr_err("no hisilicon,hisi-pmic-irq-mask-addr property set\n");
-+		pr_err("no irq-mask-addr property set\n");
- 		ret = -ENODEV;
- 		return ret;
- 	}
+-static void hisi_pmic_remove(struct spmi_device *pdev)
++static void hi6421_spmi_pmic_remove(struct spmi_device *pdev)
+ {
+-	struct hisi_pmic *pmic = dev_get_drvdata(&pdev->dev);
++	struct hi6421_spmi_pmic *pmic = dev_get_drvdata(&pdev->dev);
  
- 	/*SOC_PMIC_IRQ0_ADDR*/
--	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-addr",
-+	ret = of_property_read_u32_array(np, "irq-addr",
- 					 (int *)&pmic->irq_addr, 2);
- 	if (ret) {
--		pr_err("no hisilicon,hisi-pmic-irq-addr property set\n");
-+		pr_err("no irq-addr property set\n");
- 		ret = -ENODEV;
- 		return ret;
- 	}
+ 	free_irq(pmic->irq, pmic);
+ 	gpio_free(pmic->gpio);
+@@ -380,15 +385,15 @@ static const struct of_device_id pmic_spmi_id_table[] = {
+ };
+ MODULE_DEVICE_TABLE(of, pmic_spmi_id_table);
+ 
+-static struct spmi_driver hisi_pmic_driver = {
++static struct spmi_driver hi6421_spmi_pmic_driver = {
+ 	.driver = {
+ 		.name	= "hi6421-spmi-pmic",
+ 		.of_match_table = pmic_spmi_id_table,
+ 	},
+-	.probe	= hisi_pmic_probe,
+-	.remove	= hisi_pmic_remove,
++	.probe	= hi6421_spmi_pmic_probe,
++	.remove	= hi6421_spmi_pmic_remove,
+ };
+-module_spmi_driver(hisi_pmic_driver);
++module_spmi_driver(hi6421_spmi_pmic_driver);
+ 
+ MODULE_DESCRIPTION("HiSilicon Hi6421v600 SPMI PMIC driver");
+ MODULE_LICENSE("GPL v2");
+diff --git a/include/linux/mfd/hi6421-spmi-pmic.h b/include/linux/mfd/hi6421-spmi-pmic.h
+index 41b61de48259..d12ad7484018 100644
+--- a/include/linux/mfd/hi6421-spmi-pmic.h
++++ b/include/linux/mfd/hi6421-spmi-pmic.h
+@@ -17,49 +17,36 @@
+ #define HISI_ECO_MODE_ENABLE		(1)
+ #define HISI_ECO_MODE_DISABLE		(0)
+ 
+-typedef int (*pmic_ocp_callback)(char *);
+-int hisi_pmic_special_ocp_register(char *power_name, pmic_ocp_callback handler);
+-
+-struct irq_mask_info {
++struct hi6421_spmi_irq_mask_info {
+ 	int start_addr;
+ 	int array;
+ };
+ 
+-struct irq_info {
++struct hi6421_spmi_irq_info {
+ 	int start_addr;
+ 	int array;
+ };
+ 
+-struct bit_info {
+-	int addr;
+-	int bit;
+-};
+-
+-struct write_lock {
+-	int addr;
+-	int val;
+-};
+-
+-struct hisi_pmic {
+-	struct resource		*res;
+-	struct device		*dev;
+-	void __iomem		*regs;
+-	spinlock_t		lock;
+-	struct irq_domain	*domain;
+-	int			irq;
+-	int			gpio;
+-	unsigned int		*irqs;
+-	int			irqnum;
+-	int			irqarray;
+-	struct irq_mask_info 	irq_mask_addr;
+-	struct irq_info		irq_addr;
++struct hi6421_spmi_pmic {
++	struct resource				*res;
++	struct device				*dev;
++	void __iomem				*regs;
++	spinlock_t				lock;
++	struct irq_domain			*domain;
++	int					irq;
++	int					gpio;
++	unsigned int				*irqs;
++	int					irqnum;
++	int					irqarray;
++	struct hi6421_spmi_irq_mask_info 	irq_mask_addr;
++	struct hi6421_spmi_irq_info		irq_addr;
+ };
+ 
+-u32 hisi_pmic_read(struct hisi_pmic *pmic, int reg);
+-void hisi_pmic_write(struct hisi_pmic *pmic, int reg, u32 val);
+-void hisi_pmic_rmw(struct hisi_pmic *pmic, int reg, u32 mask, u32 bits);
++u32 hi6421_spmi_pmic_read(struct hi6421_spmi_pmic *pmic, int reg);
++void hi6421_spmi_pmic_write(struct hi6421_spmi_pmic *pmic, int reg, u32 val);
++void hi6421_spmi_pmic_rmw(struct hi6421_spmi_pmic *pmic, int reg, u32 mask, u32 bits);
+ 
+-enum pmic_irq_list {
++enum hi6421_spmi_pmic_irq_list {
+ 	OTMP = 0,
+ 	VBUS_CONNECT,
+ 	VBUS_DISCONNECT,
 -- 
 2.26.2
 
