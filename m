@@ -1,61 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33E35242CD3
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Aug 2020 18:05:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19FB3242CD8
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Aug 2020 18:08:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1BB5188377;
-	Wed, 12 Aug 2020 16:05:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 420AB88248;
+	Wed, 12 Aug 2020 16:07:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4BR6+G4HcADl; Wed, 12 Aug 2020 16:05:29 +0000 (UTC)
+	with ESMTP id CLdieeKKB-Ob; Wed, 12 Aug 2020 16:07:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E786988326;
-	Wed, 12 Aug 2020 16:05:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D0B5188144;
+	Wed, 12 Aug 2020 16:07:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2DCC71BF4DD
- for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 16:05:27 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4BB051BF4DD
+ for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 16:07:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 09BC5203EE
- for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 16:05:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4833687C7D
+ for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 16:07:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NSuFtPxi7qCr for <devel@linuxdriverproject.org>;
- Wed, 12 Aug 2020 16:05:25 +0000 (UTC)
+ with ESMTP id e23yA6UHXLMK for <devel@linuxdriverproject.org>;
+ Wed, 12 Aug 2020 16:07:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 2CEB020021
- for <devel@driverdev.osuosl.org>; Wed, 12 Aug 2020 16:05:25 +0000 (UTC)
-Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
- [95.90.213.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9133122BED;
- Wed, 12 Aug 2020 15:57:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597247821;
- bh=sXcVriL7fW7V08fbpJ7Tb00ur8KSstDBRfxmfz6gqL0=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=d0dHZFTT9680+4uj9117Spi7g6KXrMh/kMF23zEh3NzPRsEGIg7TcEkV5+qEn2dB4
- 6Twozk5VMKujpszsxkAd3XywBxQAeWGtJdE9mZNIjjfHnhH3Fp/mhChRCDq3rCqpr3
- cqGJqyfP8yWBUpf1M/+9xW8PkSDXHcVTGrlq6G08=
-Received: from mchehab by mail.kernel.org with local (Exim 4.94)
- (envelope-from <mchehab@kernel.org>)
- id 1k5t7a-005t6Z-GD; Wed, 12 Aug 2020 17:56:58 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: 
-Subject: [PATCH 22/44] staging: mfd: hi6421-spmi-pmic: cleanup the code
-Date: Wed, 12 Aug 2020 17:56:32 +0200
-Message-Id: <53538fea80c07c4fe4d9ba158d5e2df2e1201bc8.1597247164.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <cover.1597247164.git.mchehab+huawei@kernel.org>
-References: <cover.1597247164.git.mchehab+huawei@kernel.org>
-MIME-Version: 1.0
+Received: from mail-ej1-f66.google.com (mail-ej1-f66.google.com
+ [209.85.218.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2DF4F87B05
+ for <devel@driverdev.osuosl.org>; Wed, 12 Aug 2020 16:07:53 +0000 (UTC)
+Received: by mail-ej1-f66.google.com with SMTP id qc22so2875358ejb.4
+ for <devel@driverdev.osuosl.org>; Wed, 12 Aug 2020 09:07:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=roFWW4idZSPrkc+cb/iYIWliDRvt+NhQWTQEf1GtCyw=;
+ b=ubhnaz54GTYc6qTGiyUNH9W+bQXnxPga4CQ3bqcohpsujpPNoRj/xyZ/EiTr+4kaVs
+ NgmDOE61mDvVuxyy3Aj+rJ4nyxVHVWbINKaXxrehiJnjGKibfOdzGDyYRojKj9h/wHqf
+ AZOOrWTwpLOjO2FcyyZSa1J/CZpLiQcfSFJ4N4YHX78rix1NI+XpAFhe/6wY+Smi/bYY
+ gW+bW5IgxUvNYTkR7KMVsvnc3lUO7DeFxZc6UoLF6stt1QQFuv8Q2A4XTG5DQI88zcDL
+ EIie5be8TpZYv6vxXHuz+7TLj5N3UlqcJCs46PTpppRIahRI62vVp5ituRaozhO0K1Dh
+ AcDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=roFWW4idZSPrkc+cb/iYIWliDRvt+NhQWTQEf1GtCyw=;
+ b=SOJ20vVNXsLVic2/9MT+QpPUPcTkO3NVbbcPxEh0PovJTjOEZNeIHgoJPE2206rcxK
+ 2jMYRrHpLgqkOZAUivBmf3+fZgsvksMpPAlk/2fUvtQuB38VcHbdrENZuHWPuDI5ZXAY
+ hMpKHa8HzmczqCm+nWRVb2UE2ofS9ALWR5hm1sQYeuFTk4b2SJhJF09bWBCHRmJYVMX+
+ WitkFNbI8neVaUWmaY0Rpncbilnby7XHzTHBpfmFff/dyRAvRHXdmabvDcFMR0gqrSp3
+ nZ8N3Wi/K34KKpKWUytdYGydDpg1CHgF1L7V+dlsF+s7N5CS4Z1BeRQ9j6klzlukYpuJ
+ bCKQ==
+X-Gm-Message-State: AOAM532Z0IWP20q+AheFugAuMHGewgHL7U1JdVesnuBwYjr4yXVQPi0e
+ FWttx/0BBfeE7jNj5+qcY7o=
+X-Google-Smtp-Source: ABdhPJwrSR6wbm8JIlxtPyFsKHUfOigzmG1n/hbWAdHohIrsTMtzqcSLbTnAspzlbzTVDYPig5r/Kw==
+X-Received: by 2002:a17:906:1a0f:: with SMTP id
+ i15mr500757ejf.293.1597248471360; 
+ Wed, 12 Aug 2020 09:07:51 -0700 (PDT)
+Received: from localhost.localdomain ([2001:8f8:1821:74c4:6c84:35b4:48ac:419a])
+ by smtp.gmail.com with ESMTPSA id b9sm1948823ejz.57.2020.08.12.09.07.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Aug 2020 09:07:50 -0700 (PDT)
+From: Mohammed Rushad <mohammedrushad@gmail.com>
+To: gregkh@linuxfoundation.org, john.oldman@polehill.co.uk,
+ kai.heng.feng@canonical.com, luk@wybcz.pl, vkor@vkten.in,
+ nachukannan@gmail.com, mohammedrushad@gmail.com, hdegoede@redhat.com
+Subject: [PATCH] staging: rtl8723bs: os_dep: fix function-name print using
+ __func__
+Date: Wed, 12 Aug 2020 21:37:45 +0530
+Message-Id: <20200812160745.7215-1-mohammedrushad@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,410 +84,210 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
- linux-kernel@vger.kernel.org, Jonathan Cameron <Jonathan.Cameron@Huawei.com>,
- mauro.chehab@huawei.com, Lee Jones <lee.jones@linaro.org>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There are several small cleanups that can be done in order to
-make the code more prepared to be upstreamed.
+This patch to the os_intfs.c fixes the printing of function names using
+the preferred '"%s...", __func__' and alignment issues as pointed out by
+the checkpatch.pl tool.
 
-Suggested-by: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Mohammed Rushad <mohammedrushad@gmail.com>
 ---
- drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 146 +++++++++-----------
- include/linux/mfd/hi6421-spmi-pmic.h        |  13 +-
- 2 files changed, 71 insertions(+), 88 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c | 56 +++++++++++----------
+ 1 file changed, 29 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-index d8b84d64041e..76766e7b8bf9 100644
---- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-+++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-@@ -17,26 +17,23 @@
-  *
-  */
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index 27f990a01a23..0460db4ae660 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -400,17 +400,17 @@ u16 rtw_recv_select_queue(struct sk_buff *skb)
+ 	memcpy(&eth_type, pdata + (ETH_ALEN << 1), 2);
  
--#include <linux/slab.h>
- #include <linux/delay.h>
- #include <linux/device.h>
--#include <linux/module.h>
- #include <linux/err.h>
- #include <linux/interrupt.h>
- #include <linux/io.h>
-+#include <linux/irq.h>
- #include <linux/mfd/core.h>
--#include <linux/platform_device.h>
--#include <linux/of.h>
-+#include <linux/mfd/hi6421-spmi-pmic.h>
-+#include <linux/module.h>
- #include <linux/of_address.h>
- #include <linux/of_device.h>
- #include <linux/of_gpio.h>
-+#include <linux/of.h>
- #include <linux/of_irq.h>
--#include <linux/mfd/hi6421-spmi-pmic.h>
--#include <linux/irq.h>
-+#include <linux/platform_device.h>
-+#include <linux/slab.h>
- #include <linux/spmi.h>
--#ifndef NO_IRQ
--#define NO_IRQ       0
--#endif
+ 	switch (be16_to_cpu(eth_type)) {
+-		case ETH_P_IP:
++	case ETH_P_IP:
  
- /* 8-bit register offset in PMIC */
- #define HISI_MASK_STATE			0xff
-@@ -46,12 +43,11 @@
- #define HISI_IRQ_KEY_DOWN		7
- #define HISI_IRQ_KEY_UP			6
+-			piphdr = (struct iphdr *)(pdata + ETH_HLEN);
++		piphdr = (struct iphdr *)(pdata + ETH_HLEN);
  
--/*#define HISI_NR_IRQ			25*/
--#define HISI_MASK_FIELD		0xFF
-+#define HISI_MASK_FIELD			0xFF
- #define HISI_BITS			8
+-			dscp = piphdr->tos & 0xfc;
++		dscp = piphdr->tos & 0xfc;
  
- /*define the first group interrupt register number*/
--#define HISI_PMIC_FIRST_GROUP_INT_NUM        2
-+#define HISI_PMIC_FIRST_GROUP_INT_NUM	2
+-			priority = dscp >> 5;
++		priority = dscp >> 5;
  
- static const struct mfd_cell hi6421v600_devs[] = {
- 	{ .name = "hi6421v600-regulator", },
-@@ -62,58 +58,60 @@ static const struct mfd_cell hi6421v600_devs[] = {
-  * Hisilicon SoC use hardware to map PMIC register into SoC mapping.
-  * At here, we are accessing SoC register with 32-bit.
-  */
--u32 hi6421_spmi_pmic_read(struct hi6421_spmi_pmic *pmic, int reg)
-+int hi6421_spmi_pmic_read(struct hi6421_spmi_pmic *pmic, int reg)
+-			break;
+-		default:
+-			priority = 0;
++		break;
++	default:
++		priority = 0;
+ 	}
+ 
+ 	return rtw_1d_to_queue[priority];
+@@ -539,7 +539,7 @@ u32 rtw_start_drv_threads(struct adapter *padapter)
  {
--	u32 ret;
-+	struct spmi_device *pdev;
- 	u8 read_value = 0;
--	struct spmi_device *pdev;
-+	u32 ret;
+ 	u32 _status = _SUCCESS;
  
- 	pdev = to_spmi_device(pmic->dev);
- 	if (!pdev) {
- 		pr_err("%s: pdev get failed!\n", __func__);
--		return 0;
-+		return -ENODEV;
- 	}
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+rtw_start_drv_threads\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+%s\n", __func__));
+ 	padapter->xmitThread = kthread_run(rtw_xmit_thread, padapter, "RTW_XMIT_THREAD");
+ 	if (IS_ERR(padapter->xmitThread))
+ 		_status = _FAIL;
+@@ -556,7 +556,7 @@ u32 rtw_start_drv_threads(struct adapter *padapter)
  
--	ret = spmi_ext_register_readl(pdev, reg,
--				      (unsigned char *)&read_value, 1);
-+	ret = spmi_ext_register_readl(pdev, reg, &read_value, 1);
- 	if (ret) {
- 		pr_err("%s: spmi_ext_register_readl failed!\n", __func__);
--		return 0;
-+		return ret;
- 	}
--	return (u32)read_value;
-+	return read_value;
+ void rtw_stop_drv_threads(struct adapter *padapter)
+ {
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+rtw_stop_drv_threads\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+%s\n", __func__));
+ 
+ 	rtw_stop_cmd_thread(padapter);
+ 
+@@ -710,7 +710,7 @@ u8 rtw_init_drv_sw(struct adapter *padapter)
+ {
+ 	u8 ret8 = _SUCCESS;
+ 
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+rtw_init_drv_sw\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+%s\n", __func__));
+ 
+ 	rtw_init_default_value(padapter);
+ 
+@@ -773,29 +773,29 @@ u8 rtw_init_drv_sw(struct adapter *padapter)
+ 
+ exit:
+ 
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("-rtw_init_drv_sw\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("-%s\n", __func__));
+ 
+ 	return ret8;
  }
- EXPORT_SYMBOL(hi6421_spmi_pmic_read);
  
--void hi6421_spmi_pmic_write(struct hi6421_spmi_pmic *pmic, int reg, u32 val)
-+int hi6421_spmi_pmic_write(struct hi6421_spmi_pmic *pmic, int reg, u32 val)
+ void rtw_cancel_all_timer(struct adapter *padapter)
  {
--	u32 ret;
- 	struct spmi_device *pdev;
-+	u32 ret;
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+rtw_cancel_all_timer\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+%s\n", __func__));
  
- 	pdev = to_spmi_device(pmic->dev);
- 	if (!pdev) {
- 		pr_err("%s: pdev get failed!\n", __func__);
--		return;
-+		return -ENODEV;
+ 	del_timer_sync(&padapter->mlmepriv.assoc_timer);
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("rtw_cancel_all_timer:cancel association timer complete!\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("%s:cancel association timer complete!\n", __func__));
+ 
+ 	del_timer_sync(&padapter->mlmepriv.scan_to_timer);
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("rtw_cancel_all_timer:cancel scan_to_timer!\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("%s:cancel scan_to_timer!\n", __func__));
+ 
+ 	del_timer_sync(&padapter->mlmepriv.dynamic_chk_timer);
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("rtw_cancel_all_timer:cancel dynamic_chk_timer!\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("%s:cancel dynamic_chk_timer!\n", __func__));
+ 
+ 	del_timer_sync(&(adapter_to_pwrctl(padapter)->pwr_state_check_timer));
+ 
+ 	del_timer_sync(&padapter->mlmepriv.set_scan_deny_timer);
+ 	rtw_clear_scan_deny(padapter);
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("rtw_cancel_all_timer:cancel set_scan_deny_timer!\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("%s:cancel set_scan_deny_timer!\n", __func__));
+ 
+ 	del_timer_sync(&padapter->recvpriv.signal_stat_timer);
+ 
+@@ -805,7 +805,7 @@ void rtw_cancel_all_timer(struct adapter *padapter)
+ 
+ u8 rtw_free_drv_sw(struct adapter *padapter)
+ {
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("==>rtw_free_drv_sw"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("==>%s", __func__));
+ 
+ 	free_mlme_ext_priv(&padapter->mlmeextpriv);
+ 
+@@ -829,7 +829,7 @@ u8 rtw_free_drv_sw(struct adapter *padapter)
+ 
+ 	rtw_hal_free_data(padapter);
+ 
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("<==rtw_free_drv_sw\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("<==%s\n", __func__));
+ 
+ 	/* free the old_pnetdev */
+ 	if (padapter->rereg_nd_name_priv.old_pnetdev) {
+@@ -841,7 +841,7 @@ u8 rtw_free_drv_sw(struct adapter *padapter)
+ 	if (padapter->pbuddy_adapter != NULL)
+ 		padapter->pbuddy_adapter->pbuddy_adapter = NULL;
+ 
+-	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("-rtw_free_drv_sw\n"));
++	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("-%s\n", __func__));
+ 
+ 	return _SUCCESS;
+ }
+@@ -994,7 +994,7 @@ static int  ips_netdrv_open(struct adapter *padapter)
+ 
+ 	status = rtw_hal_init(padapter);
+ 	if (status == _FAIL) {
+-		RT_TRACE(_module_os_intfs_c_, _drv_err_, ("ips_netdrv_open(): Can't init h/w!\n"));
++		RT_TRACE(_module_os_intfs_c_, _drv_err_, ("%s(): Can't init h/w!\n", __func__));
+ 		goto netdev_open_error;
  	}
  
- 	ret = spmi_ext_register_writel(pdev, reg, (unsigned char *)&val, 1);
--	if (ret) {
-+	if (ret)
- 		pr_err("%s: spmi_ext_register_writel failed!\n", __func__);
--		return;
--	}
+@@ -1007,7 +1007,7 @@ static int  ips_netdrv_open(struct adapter *padapter)
+ 
+ netdev_open_error:
+ 	/* padapter->bup = false; */
+-	DBG_871X("-ips_netdrv_open - drv_open failure, bup =%d\n", padapter->bup);
++	DBG_871X("-%s - drv_open failure, bup =%d\n", __func__, padapter->bup);
+ 
+ 	return _FAIL;
+ }
+@@ -1016,24 +1016,25 @@ static int  ips_netdrv_open(struct adapter *padapter)
+ int rtw_ips_pwr_up(struct adapter *padapter)
+ {
+ 	int result;
+-	DBG_871X("===>  rtw_ips_pwr_up..............\n");
 +
-+	return ret;
- }
- EXPORT_SYMBOL(hi6421_spmi_pmic_write);
++	DBG_871X("===>  %s..............\n", __func__);
  
--void hi6421_spmi_pmic_rmw(struct hi6421_spmi_pmic *pmic, int reg,
-+int hi6421_spmi_pmic_rmw(struct hi6421_spmi_pmic *pmic, int reg,
- 			  u32 mask, u32 bits)
+ 	result = ips_netdrv_open(padapter);
+ 
+-	DBG_871X("<===  rtw_ips_pwr_up..............\n");
++	DBG_871X("<===  %s..............\n", __func__);
+ 	return result;
+ }
+ 
+ void rtw_ips_pwr_down(struct adapter *padapter)
  {
-+	unsigned long flags;
- 	u32 data;
--	unsigned long flags;
-+	int ret;
+-	DBG_871X("===> rtw_ips_pwr_down...................\n");
++	DBG_871X("===> %s...................\n", __func__);
  
- 	spin_lock_irqsave(&pmic->lock, flags);
- 	data = hi6421_spmi_pmic_read(pmic, reg) & ~mask;
- 	data |= mask & bits;
--	hi6421_spmi_pmic_write(pmic, reg, data);
-+	ret = hi6421_spmi_pmic_write(pmic, reg, data);
- 	spin_unlock_irqrestore(&pmic->lock, flags);
-+
-+	return ret;
- }
- EXPORT_SYMBOL(hi6421_spmi_pmic_rmw);
+ 	padapter->bCardDisableWOHSM = true;
+ 	padapter->net_closed = true;
  
-@@ -124,13 +122,12 @@ static irqreturn_t hi6421_spmi_irq_handler(int irq, void *data)
- 	int i, offset;
- 
- 	for (i = 0; i < pmic->irqarray; i++) {
--		pending = hi6421_spmi_pmic_read(pmic, (i + pmic->irq_addr.start_addr));
-+		pending = hi6421_spmi_pmic_read(pmic, (i + pmic->irq_addr));
- 		pending &= HISI_MASK_FIELD;
- 		if (pending != 0)
- 			pr_debug("pending[%d]=0x%lx\n\r", i, pending);
- 
--		hi6421_spmi_pmic_write(pmic, (i + pmic->irq_addr.start_addr),
--				       pending);
-+		hi6421_spmi_pmic_write(pmic, (i + pmic->irq_addr), pending);
- 
- 		/* solve powerkey order */
- 		if ((i == HISI_IRQ_KEY_NUM) && ((pending & HISI_IRQ_KEY_VALUE) == HISI_IRQ_KEY_VALUE)) {
-@@ -155,7 +152,7 @@ static void hi6421_spmi_irq_mask(struct irq_data *d)
- 	unsigned long flags;
- 
- 	offset = (irqd_to_hwirq(d) >> 3);
--	offset += pmic->irq_mask_addr.start_addr;
-+	offset += pmic->irq_mask_addr;
- 
- 	spin_lock_irqsave(&pmic->lock, flags);
- 	data = hi6421_spmi_pmic_read(pmic, offset);
-@@ -171,7 +168,7 @@ static void hi6421_spmi_irq_unmask(struct irq_data *d)
- 	unsigned long flags;
- 
- 	offset = (irqd_to_hwirq(d) >> 3);
--	offset += pmic->irq_mask_addr.start_addr;
-+	offset += pmic->irq_mask_addr;
- 
- 	spin_lock_irqsave(&pmic->lock, flags);
- 	data = hi6421_spmi_pmic_read(pmic, offset);
-@@ -211,36 +208,32 @@ static int get_pmic_device_tree_data(struct device_node *np,
- {
- 	int ret = 0;
- 
--	/*get pmic irq num*/
--	ret = of_property_read_u32_array(np, "irq-num",
--					 &pmic->irqnum, 1);
-+	/* IRQ number */
-+	ret = of_property_read_u32(np, "irq-num", &pmic->irqnum);
- 	if (ret) {
- 		pr_err("no irq-num property set\n");
- 		ret = -ENODEV;
- 		return ret;
- 	}
- 
--	/*get pmic irq array number*/
--	ret = of_property_read_u32_array(np, "irq-array",
--					 &pmic->irqarray, 1);
-+	/* Size of IRQ array */
-+	ret = of_property_read_u32(np, "irq-array", &pmic->irqarray);
- 	if (ret) {
- 		pr_err("no irq-array property set\n");
- 		ret = -ENODEV;
- 		return ret;
- 	}
- 
--	/*SOC_PMIC_IRQ_MASK_0_ADDR*/
--	ret = of_property_read_u32_array(np, "irq-mask-addr",
--					 (int *)&pmic->irq_mask_addr, 2);
-+	/* SOC_PMIC_IRQ_MASK_0_ADDR */
-+	ret = of_property_read_u32(np, "irq-mask-addr", &pmic->irq_mask_addr);
- 	if (ret) {
- 		pr_err("no irq-mask-addr property set\n");
- 		ret = -ENODEV;
- 		return ret;
- 	}
- 
--	/*SOC_PMIC_IRQ0_ADDR*/
--	ret = of_property_read_u32_array(np, "irq-addr",
--					 (int *)&pmic->irq_addr, 2);
-+	/* SOC_PMIC_IRQ0_ADDR */
-+	ret = of_property_read_u32(np, "irq-addr", &pmic->irq_addr);
- 	if (ret) {
- 		pr_err("no irq-addr property set\n");
- 		ret = -ENODEV;
-@@ -252,18 +245,18 @@ static int get_pmic_device_tree_data(struct device_node *np,
- 
- static void hi6421_spmi_pmic_irq_prc(struct hi6421_spmi_pmic *pmic)
- {
--	int i;
-+	int i, pending;
- 
--	for (i = 0 ; i < pmic->irq_mask_addr.array; i++)
--		hi6421_spmi_pmic_write(pmic, pmic->irq_mask_addr.start_addr + i,
-+	for (i = 0 ; i < pmic->irqarray; i++)
-+		hi6421_spmi_pmic_write(pmic, pmic->irq_mask_addr + i,
- 				       HISI_MASK_STATE);
- 
--	for (i = 0 ; i < pmic->irq_addr.array; i++) {
--		unsigned int pending = hi6421_spmi_pmic_read(pmic, pmic->irq_addr.start_addr + i);
-+	for (i = 0 ; i < pmic->irqarray; i++) {
-+		pending = hi6421_spmi_pmic_read(pmic, pmic->irq_addr + i);
- 
- 		pr_debug("PMU IRQ address value:irq[0x%x] = 0x%x\n",
--			 pmic->irq_addr.start_addr + i, pending);
--		hi6421_spmi_pmic_write(pmic, pmic->irq_addr.start_addr + i,
-+			 pmic->irq_addr + i, pending);
-+		hi6421_spmi_pmic_write(pmic, pmic->irq_addr + i,
- 				       HISI_MASK_STATE);
- 	}
- }
-@@ -272,36 +265,32 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
--	struct hi6421_spmi_pmic *pmic = NULL;
--	enum of_gpio_flags flags;
--	int ret = 0;
--	int i;
-+	struct hi6421_spmi_pmic *pmic;
- 	unsigned int virq;
-+	int ret, i;
- 
- 	pmic = devm_kzalloc(dev, sizeof(*pmic), GFP_KERNEL);
- 	if (!pmic)
- 		return -ENOMEM;
- 
--	/*TODO: get pmic dts info*/
- 	ret = get_pmic_device_tree_data(np, pmic);
- 	if (ret) {
--		dev_err(&pdev->dev, "Error reading hisi pmic dts\n");
-+		dev_err(dev, "Error reading hisi pmic dts\n");
- 		return ret;
- 	}
- 
--	/* TODO: get and enable clk request */
- 	spin_lock_init(&pmic->lock);
- 
- 	pmic->dev = dev;
- 
--	pmic->gpio = of_get_gpio_flags(np, 0, &flags);
-+	pmic->gpio = of_get_gpio(np, 0);
- 	if (pmic->gpio < 0)
- 		return pmic->gpio;
- 
- 	if (!gpio_is_valid(pmic->gpio))
- 		return -EINVAL;
- 
--	ret = gpio_request_one(pmic->gpio, GPIOF_IN, "pmic");
-+	ret = devm_gpio_request_one(dev, pmic->gpio, GPIOF_IN, "pmic");
- 	if (ret < 0) {
- 		dev_err(dev, "failed to request gpio%d\n", pmic->gpio);
- 		return ret;
-@@ -309,7 +298,6 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
- 
- 	pmic->irq = gpio_to_irq(pmic->gpio);
- 
--	/* mask && clear IRQ status */
- 	hi6421_spmi_pmic_irq_prc(pmic);
- 
- 	pmic->irqs = devm_kzalloc(dev, pmic->irqnum * sizeof(int), GFP_KERNEL);
-@@ -321,27 +309,27 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
- 	if (!pmic->domain) {
- 		dev_err(dev, "failed irq domain add simple!\n");
- 		ret = -ENODEV;
--		goto irq_domain;
-+		goto irq_malloc;
- 	}
- 
- 	for (i = 0; i < pmic->irqnum; i++) {
- 		virq = irq_create_mapping(pmic->domain, i);
--		if (virq == NO_IRQ) {
--			pr_debug("Failed mapping hwirq\n");
-+		if (!virq) {
-+			dev_err(dev, "Failed mapping hwirq\n");
- 			ret = -ENOSPC;
--			goto irq_create_mapping;
-+			goto irq_malloc;
- 		}
- 		pmic->irqs[i] = virq;
--		pr_info("[%s]. pmic->irqs[%d] = %d\n", __func__, i, pmic->irqs[i]);
-+		dev_dbg(dev, "%s: pmic->irqs[%d] = %d\n",
-+			__func__, i, pmic->irqs[i]);
- 	}
- 
- 	ret = request_threaded_irq(pmic->irq, hi6421_spmi_irq_handler, NULL,
- 				   IRQF_TRIGGER_LOW | IRQF_SHARED | IRQF_NO_SUSPEND,
- 				   "pmic", pmic);
- 	if (ret < 0) {
--		dev_err(dev, "could not claim pmic %d\n", ret);
--		ret = -ENODEV;
--		goto request_theaded_irq;
-+		dev_err(dev, "could not claim pmic IRQ: error %d\n", ret);
-+		goto irq_malloc;
- 	}
- 
- 	dev_set_drvdata(&pdev->dev, pmic);
-@@ -355,18 +343,14 @@ static int hi6421_spmi_pmic_probe(struct spmi_device *pdev)
- 	ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
- 				   hi6421v600_devs, ARRAY_SIZE(hi6421v600_devs),
- 				   NULL, 0, NULL);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to add child devices: %d\n", ret);
--		return ret;
--	}
-+	if (!ret)
-+		return 0;
- 
--	return 0;
-+	dev_err(dev, "Failed to add child devices: %d\n", ret);
- 
--request_theaded_irq:
--irq_create_mapping:
--irq_domain:
- irq_malloc:
--	gpio_free(pmic->gpio);
-+	free_irq(pmic->irq, pmic);
-+
- 	return ret;
+ 	rtw_ips_dev_unload(padapter);
+ 	padapter->bCardDisableWOHSM = false;
+-	DBG_871X("<=== rtw_ips_pwr_down.....................\n");
++	DBG_871X("<=== %s.....................\n", __func__);
  }
  
-@@ -375,8 +359,6 @@ static void hi6421_spmi_pmic_remove(struct spmi_device *pdev)
- 	struct hi6421_spmi_pmic *pmic = dev_get_drvdata(&pdev->dev);
+ void rtw_ips_dev_unload(struct adapter *padapter)
+@@ -1087,7 +1088,8 @@ static int netdev_close(struct net_device *pnetdev)
  
- 	free_irq(pmic->irq, pmic);
--	gpio_free(pmic->gpio);
--	devm_kfree(&pdev->dev, pmic);
- }
+ 		rtw_dev_unload(padapter);
+ 	}
+-	else*/
++	else
++*/
+ 	if (pwrctl->rf_pwrstate == rf_on) {
+ 		DBG_871X("(2)871x_drv - drv_close, bup =%d, hw_init_completed =%d\n", padapter->bup, padapter->hw_init_completed);
  
- static const struct of_device_id pmic_spmi_id_table[] = {
-diff --git a/include/linux/mfd/hi6421-spmi-pmic.h b/include/linux/mfd/hi6421-spmi-pmic.h
-index aeff96c4a37e..ff3adfa7b3ec 100644
---- a/include/linux/mfd/hi6421-spmi-pmic.h
-+++ b/include/linux/mfd/hi6421-spmi-pmic.h
-@@ -36,16 +36,17 @@ struct hi6421_spmi_pmic {
- 	int					irq;
- 	int					gpio;
- 	unsigned int				*irqs;
-+
- 	int					irqnum;
- 	int					irqarray;
--
--	struct hi6421_spmi_irq_mask_info	irq_mask_addr;
--	struct hi6421_spmi_irq_info		irq_addr;
-+	int					irq_mask_addr;
-+	int					irq_addr;
- };
+@@ -1144,7 +1146,7 @@ void rtw_dev_unload(struct adapter *padapter)
+ 		if (padapter->intf_stop)
+ 			padapter->intf_stop(padapter);
  
--u32 hi6421_spmi_pmic_read(struct hi6421_spmi_pmic *pmic, int reg);
--void hi6421_spmi_pmic_write(struct hi6421_spmi_pmic *pmic, int reg, u32 val);
--void hi6421_spmi_pmic_rmw(struct hi6421_spmi_pmic *pmic, int reg, u32 mask, u32 bits);
-+int hi6421_spmi_pmic_read(struct hi6421_spmi_pmic *pmic, int reg);
-+int hi6421_spmi_pmic_write(struct hi6421_spmi_pmic *pmic, int reg, u32 val);
-+int hi6421_spmi_pmic_rmw(struct hi6421_spmi_pmic *pmic, int reg,
-+			 u32 mask, u32 bits);
+-		RT_TRACE(_module_hci_intfs_c_, _drv_notice_, ("@ rtw_dev_unload: stop intf complete!\n"));
++		RT_TRACE(_module_hci_intfs_c_, _drv_notice_, ("@ %s: stop intf complete!\n", __func__));
  
- enum hi6421_spmi_pmic_irq_list {
- 	OTMP = 0,
+ 		if (!pwrctl->bInternalAutoSuspend)
+ 			rtw_stop_drv_threads(padapter);
 -- 
-2.26.2
+2.17.1
 
 _______________________________________________
 devel mailing list
