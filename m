@@ -1,58 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 509FF242CA0
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Aug 2020 17:57:59 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B3E1242CA7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Aug 2020 17:58:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D5F118826B;
-	Wed, 12 Aug 2020 15:57:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 00C742000D;
+	Wed, 12 Aug 2020 15:58:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ub1eTk1sNbEa; Wed, 12 Aug 2020 15:57:57 +0000 (UTC)
+	with ESMTP id kSiwLNYUXZ+8; Wed, 12 Aug 2020 15:58:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ACB7D88248;
-	Wed, 12 Aug 2020 15:57:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1F16623424;
+	Wed, 12 Aug 2020 15:57:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 410F31BF9B5
- for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 15:57:07 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E5E01BF9B5
+ for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 15:57:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3E169881E9
- for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 15:57:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6BB3387CCB
+ for <devel@linuxdriverproject.org>; Wed, 12 Aug 2020 15:57:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VqAc1fRtqhuK for <devel@linuxdriverproject.org>;
+ with ESMTP id iDxqJUH+7qdd for <devel@linuxdriverproject.org>;
  Wed, 12 Aug 2020 15:57:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7C4E2881E1
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8B877882FC
  for <devel@driverdev.osuosl.org>; Wed, 12 Aug 2020 15:57:01 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
  [95.90.213.197])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2997323103;
+ by mail.kernel.org (Postfix) with ESMTPSA id 3A93523105;
  Wed, 12 Aug 2020 15:57:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1597247821;
- bh=0Ge6VswlmR80j30p2evfkj0Ci5lu2tDRSHfnYoCsjZI=;
+ bh=7E5ppFauk/pcJwqzL6iFg+zOH5/hrnb16rE6Hs92m2c=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VnHY8lkrUOoV9efHBIJmvk88xey5fb8VvSUqa14JbSI1/7FNbB4tuhOHORgR3m9o+
- xOGZ/47lELYLmf0VNMqGdU6QK1TB5KbMDsGPnhl5sJYFVx3wkH1kyXNsDbNAofdxSX
- KQmsJtDmul/FgKDgYc+C8Ue5Nn8bBaG8hFjP11RA=
+ b=YYQt1yGHmpZilccEBw2AzGEwSFBKmjnK5H3NI8pxQT0ArgBBQ55T/XkQm8ID/vRQC
+ M5xomb28I2noJ9KnlenoCVuJTYP1iqeHMaeuKOPAh0ng1DICJ3YXDNGJjePwVscoer
+ pukhGq45EodUAmVaEOGYKJ+IC2ZGMPGKCYYul7C4=
 Received: from mchehab by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1k5t7b-005t7O-BL; Wed, 12 Aug 2020 17:56:59 +0200
+ id 1k5t7b-005t7R-Cc; Wed, 12 Aug 2020 17:56:59 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Subject: [PATCH 39/44] staging: regulator: hi6421v600-regulator: add it to the
- building system
-Date: Wed, 12 Aug 2020 17:56:49 +0200
-Message-Id: <e760a3d286354424e98ed6425dd12892b5363915.1597247164.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 40/44] staging: regulator: hi6421v600-regulator: code cleanup
+Date: Wed, 12 Aug 2020 17:56:50 +0200
+Message-Id: <5126904942bedf04ddf3c7fb675226e235109b85.1597247164.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1597247164.git.mchehab+huawei@kernel.org>
 References: <cover.1597247164.git.mchehab+huawei@kernel.org>
@@ -72,59 +71,217 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
- linux-kernel@vger.kernel.org, mauro.chehab@huawei.com
+ linux-kernel@vger.kernel.org, Jonathan Cameron <Jonathan.Cameron@Huawei.com>,
+ mauro.chehab@huawei.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change the binding logic to ensure that the PMIC SPMI
-driver will run before the regulator code and add it to the
-building system.
+Do some code cleanup in order to make it cleaner for moving
+it out of staging in the future.
 
+Suggested-by: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/Kconfig  | 10 +++++++++-
- drivers/staging/hikey9xx/Makefile |  5 +++--
- 2 files changed, 12 insertions(+), 3 deletions(-)
+ .../staging/hikey9xx/hi6421v600-regulator.c   | 74 ++++++++-----------
+ 1 file changed, 30 insertions(+), 44 deletions(-)
 
-diff --git a/drivers/staging/hikey9xx/Kconfig b/drivers/staging/hikey9xx/Kconfig
-index 7ca083b7e94d..76267b9be562 100644
---- a/drivers/staging/hikey9xx/Kconfig
-+++ b/drivers/staging/hikey9xx/Kconfig
-@@ -15,7 +15,6 @@ config MFD_HI6421_SPMI
- 	tristate "HiSilicon Hi6421v600 SPMI PMU/Codec IC"
- 	depends on OF
- 	select MFD_CORE
--	select REGMAP_MMIO
- 	help
- 	  Add support for HiSilicon Hi6421v600 SPMI PMIC. Hi6421 includes
- 	  multi-functions, such as regulators, RTC, codec, Coulomb counter,
-@@ -25,3 +24,12 @@ config MFD_HI6421_SPMI
- 	  individual components like voltage regulators under corresponding
- 	  menus in order to enable them.
- 	  We communicate with the Hi6421v600 via a SPMI bus.
-+
-+# to be placed at drivers/regulator
-+config REGULATOR_HI6421V600
-+	tristate "HiSilicon Hi6421v600 PMIC voltage regulator support"
-+	depends on MFD_HI6421_PMIC && OF
-+	help
-+	  This driver provides support for the voltage regulators on
-+	  HiSilicon Hi6421v600 PMU / Codec IC.
-+	  This is used on Kirin 3670 boards, like HiKey 970.
-diff --git a/drivers/staging/hikey9xx/Makefile b/drivers/staging/hikey9xx/Makefile
-index 79de37da7a8f..9371dcc3d35b 100644
---- a/drivers/staging/hikey9xx/Makefile
-+++ b/drivers/staging/hikey9xx/Makefile
-@@ -1,4 +1,5 @@
- # SPDX-License-Identifier: GPL-2.0
+diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c
+index c80dfac1e4c3..29ef6bcadd84 100644
+--- a/drivers/staging/hikey9xx/hi6421v600-regulator.c
++++ b/drivers/staging/hikey9xx/hi6421v600-regulator.c
+@@ -15,29 +15,28 @@
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+- *
+  */
  
--obj-$(CONFIG_SPMI_HISI3670)	+= hisi-spmi-controller.o
--obj-$(CONFIG_MFD_HI6421_SPMI)	+= hi6421-spmi-pmic.o
-+obj-$(CONFIG_SPMI_HISI3670)		+= hisi-spmi-controller.o
-+obj-$(CONFIG_MFD_HI6421_SPMI)		+= hi6421-spmi-pmic.o
-+obj-$(CONFIG_REGULATOR_HI6421V600)	+= hi6421v600-regulator.o
+-#include <linux/slab.h>
++#include <linux/delay.h>
+ #include <linux/device.h>
+-#include <linux/module.h>
+ #include <linux/err.h>
+ #include <linux/io.h>
+-#include <linux/platform_device.h>
+-#include <linux/of.h>
+-#include <linux/of_device.h>
++#include <linux/mfd/hi6421-spmi-pmic.h>
++#include <linux/module.h>
+ #include <linux/of_address.h>
++#include <linux/of_device.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/regulator/driver.h>
+ #include <linux/regulator/machine.h>
+ #include <linux/regulator/of_regulator.h>
+-#include <linux/mfd/hi6421-spmi-pmic.h>
+-#include <linux/delay.h>
+-#include <linux/time.h>
+-#include <linux/version.h>
+ #include <linux/seq_file.h>
+-#include <linux/uaccess.h>
++#include <linux/slab.h>
+ #include <linux/spmi.h>
++#include <linux/time.h>
++#include <linux/uaccess.h>
++#include <linux/version.h>
+ 
+ #define rdev_dbg(rdev, fmt, arg...)	\
+ 		 pr_debug("%s: %s: " fmt, (rdev)->desc->name, __func__, ##arg)
+@@ -50,15 +49,16 @@ struct hi6421v600_regulator {
+ 
+ static DEFINE_MUTEX(enable_mutex);
+ 
+-/* helper function to ensure when it returns it is at least 'delay_us'
++/*
++ * helper function to ensure when it returns it is at least 'delay_us'
+  * microseconds after 'since'.
+  */
+ 
+ static int hi6421_spmi_regulator_is_enabled(struct regulator_dev *rdev)
+ {
+-	u32 reg_val;
+ 	struct hi6421v600_regulator *sreg = rdev_get_drvdata(rdev);
+ 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
++	u32 reg_val;
+ 
+ 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->enable_reg);
+ 
+@@ -136,7 +136,6 @@ static int hi6421_spmi_regulator_set_voltage_sel(struct regulator_dev *rdev,
+ 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
+ 	u32 reg_val;
+ 
+-	/* unlikely to happen. sanity test done by regulator core */
+ 	if (unlikely(selector >= rdev->desc->n_voltages))
+ 		return -EINVAL;
+ 
+@@ -158,8 +157,8 @@ static unsigned int hi6421_spmi_regulator_get_mode(struct regulator_dev *rdev)
+ {
+ 	struct hi6421v600_regulator *sreg = rdev_get_drvdata(rdev);
+ 	struct hi6421_spmi_pmic *pmic = sreg->pmic;
+-	u32 reg_val;
+ 	unsigned int mode;
++	u32 reg_val;
+ 
+ 	reg_val = hi6421_spmi_pmic_read(pmic, rdev->desc->enable_reg);
+ 
+@@ -211,13 +210,10 @@ hi6421_spmi_regulator_get_optimum_mode(struct regulator_dev *rdev,
+ {
+ 	struct hi6421v600_regulator *sreg = rdev_get_drvdata(rdev);
+ 
+-	if (load_uA || ((unsigned int)load_uA > sreg->eco_uA)) {
+-		rdev_dbg(rdev, "normal mode");
++	if (load_uA || ((unsigned int)load_uA > sreg->eco_uA))
+ 		return REGULATOR_MODE_NORMAL;
+-	} else {
+-		rdev_dbg(rdev, "idle mode");
+-		return REGULATOR_MODE_IDLE;
+-	}
++
++	return REGULATOR_MODE_IDLE;
+ }
+ 
+ static int hi6421_spmi_dt_parse(struct platform_device *pdev,
+@@ -256,8 +252,7 @@ static int hi6421_spmi_dt_parse(struct platform_device *pdev,
+ 		sreg->eco_mode_mask = 0;
+ 		sreg->eco_uA = 0;
+ 	} else {
+-		ret = of_property_read_u32(np, "eco-microamp",
+-					   &sreg->eco_uA);
++		ret = of_property_read_u32(np, "eco-microamp", &sreg->eco_uA);
+ 		if (ret) {
+ 			dev_err(dev, "missing eco-microamp property\n");
+ 			return ret;
+@@ -327,23 +322,19 @@ static struct regulator_ops hi6421_spmi_ldo_rops = {
+ 	.get_optimum_mode = hi6421_spmi_regulator_get_optimum_mode,
+ };
+ 
+-/*
+- * Used only for parsing the DT properties
+- */
+-
+ static int hi6421_spmi_regulator_probe_ldo(struct platform_device *pdev,
+ 					   struct device_node *np,
+ 					   struct hi6421_spmi_pmic *pmic)
+ {
+-	struct device *dev = &pdev->dev;
+-	struct regulator_desc *rdesc;
+-	struct regulator_dev *rdev;
+-	struct hi6421v600_regulator *sreg = NULL;
++	struct regulation_constraints *constraint;
+ 	struct regulator_init_data *initdata;
+ 	struct regulator_config config = { };
+-	struct regulation_constraints *constraint;
+-	const char *supplyname = NULL;
+-	int ret = 0;
++	struct hi6421v600_regulator *sreg;
++	struct device *dev = &pdev->dev;
++	struct regulator_desc *rdesc;
++	struct regulator_dev *rdev;
++	const char *supplyname;
++	int ret;
+ 
+ 	initdata = of_get_regulator_init_data(dev, np, NULL);
+ 	if (!initdata) {
+@@ -351,7 +342,7 @@ static int hi6421_spmi_regulator_probe_ldo(struct platform_device *pdev,
+ 		return -EINVAL;
+ 	}
+ 
+-	sreg = kzalloc(sizeof(*sreg), GFP_KERNEL);
++	sreg = devm_kzalloc(dev, sizeof(*sreg), GFP_KERNEL);
+ 	if (!sreg)
+ 		return -ENOMEM;
+ 
+@@ -370,7 +361,7 @@ static int hi6421_spmi_regulator_probe_ldo(struct platform_device *pdev,
+ 	/* parse device tree data for regulator specific */
+ 	ret = hi6421_spmi_dt_parse(pdev, sreg, rdesc);
+ 	if (ret)
+-		goto probe_end;
++		return ret;
+ 
+ 	/* hisi regulator supports two modes */
+ 	constraint = &initdata->constraints;
+@@ -391,18 +382,15 @@ static int hi6421_spmi_regulator_probe_ldo(struct platform_device *pdev,
+ 	if (IS_ERR(rdev)) {
+ 		dev_err(dev, "failed to register %s\n",
+ 			rdesc->name);
+-		ret = PTR_ERR(rdev);
+-		goto probe_end;
++		return PTR_ERR(rdev);
+ 	}
+ 
+ 	rdev_dbg(rdev, "valid_modes_mask: 0x%x, valid_ops_mask: 0x%x\n",
+ 		 constraint->valid_modes_mask, constraint->valid_ops_mask);
+ 
+ 	dev_set_drvdata(dev, rdev);
+-probe_end:
+-	if (ret)
+-		kfree(sreg);
+-	return ret;
++
++	return 0;
+ }
+ 
+ static int hi6421_spmi_regulator_probe(struct platform_device *pdev)
+@@ -414,7 +402,6 @@ static int hi6421_spmi_regulator_probe(struct platform_device *pdev)
+ 	struct hi6421_spmi_pmic *pmic;
+ 	int ret;
+ 
+-	dev_dbg(&pdev->dev, "probing hi6421v600 regulator\n");
+ 	/*
+ 	 * This driver is meant to be called by hi6421-spmi-core,
+ 	 * which should first set drvdata. If this doesn't happen, hit
+@@ -463,7 +450,6 @@ static int hi6421_spmi_regulator_remove(struct platform_device *pdev)
+ 
+ 	regulator_unregister(rdev);
+ 
+-	/* TODO: should i worry about that? devm_kzalloc */
+ 	if (rdev->desc->volt_table)
+ 		devm_kfree(&pdev->dev, (unsigned int *)rdev->desc->volt_table);
+ 
 -- 
 2.26.2
 
