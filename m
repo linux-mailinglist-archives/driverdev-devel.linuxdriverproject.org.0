@@ -1,52 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33B62243E62
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Aug 2020 19:35:14 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C7BE72440D1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Aug 2020 23:40:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1DFED88859;
-	Thu, 13 Aug 2020 17:35:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7533A88897;
+	Thu, 13 Aug 2020 21:40:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BuKkS1Lnp2em; Thu, 13 Aug 2020 17:35:11 +0000 (UTC)
+	with ESMTP id ahsfOHNbDdCh; Thu, 13 Aug 2020 21:40:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C8B05887E0;
-	Thu, 13 Aug 2020 17:35:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DCF2D88877;
+	Thu, 13 Aug 2020 21:40:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9E8761BF3EA
- for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 17:35:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2882B1BF3A0
+ for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 21:40:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9ACCF86FAF
- for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 17:35:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 24888885C7
+ for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 21:40:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TKrY5Eov6dCk for <devel@linuxdriverproject.org>;
- Thu, 13 Aug 2020 17:35:07 +0000 (UTC)
+ with ESMTP id q8dsJg4UTYvU for <devel@linuxdriverproject.org>;
+ Thu, 13 Aug 2020 21:40:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp.smtpout.orange.fr (smtp03.smtpout.orange.fr
- [80.12.242.125])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DE3E986FA5
- for <devel@driverdev.osuosl.org>; Thu, 13 Aug 2020 17:35:06 +0000 (UTC)
-Received: from localhost.localdomain ([93.22.150.113]) by mwinf5d58 with ME
- id F5b1230022T2WRZ035b16U; Thu, 13 Aug 2020 19:35:04 +0200
-X-ME-Helo: localhost.localdomain
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Thu, 13 Aug 2020 19:35:04 +0200
-X-ME-IP: 93.22.150.113
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: gregkh@linuxfoundation.org, stephen@brennan.io, rohitsarkar5398@gmail.com,
- pterjan@google.com, paulo.miguel.almeida.rodenas@gmail.com,
- okash.khawaja@gmail.com
-Subject: [PATCH] staging: rtl8192u: Do not use GFP_KERNEL in atomic context
-Date: Thu, 13 Aug 2020 19:34:58 +0200
-Message-Id: <20200813173458.758284-1-christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.25.1
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6311C88538
+ for <devel@driverdev.osuosl.org>; Thu, 13 Aug 2020 21:40:34 +0000 (UTC)
+IronPort-SDR: CJ5G1kx22/pJRdmT98Tmonh1Jma8Y2NA8r3jah5BE+6cBu98HAGqPhB65HUIIAVin2VF798VrQ
+ dTfbBnAwN3/Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9712"; a="151975840"
+X-IronPort-AV: E=Sophos;i="5.76,309,1592895600"; d="scan'208";a="151975840"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2020 14:40:33 -0700
+IronPort-SDR: bX8ONL1waEA2CrBviOzY+VKb8U80uMrAcyaqIj14Gd/WWboRHPcItAtuddgJCTpYnJBIOOL3yW
+ 0yyEl7tzj6cQ==
+X-IronPort-AV: E=Sophos;i="5.76,309,1592895600"; d="scan'208";a="439920140"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2020 14:40:31 -0700
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id 0B7A120699; Fri, 14 Aug 2020 00:40:29 +0300 (EEST)
+Date: Fri, 14 Aug 2020 00:40:29 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Suraj Upadhyay <usuraj35@gmail.com>
+Subject: Re: [PATCH] staging: media: ipu3: Replace depracated MSI API.
+Message-ID: <20200813214028.GB24582@paasikivi.fi.intel.com>
+References: <20200718133238.GA11982@blackclown>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200718133238.GA11982@blackclown>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,49 +70,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+ bingbu.cao@intel.com, mchehab@kernel.org, tian.shu.qiu@intel.com,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-'rtl8192_irq_rx_tasklet()' is a tasklet initialized in
-'rtl8192_init_priv_task()'.
-From this function it is possible to allocate some memory with the
-GFP_KERNEL flag, which is not allowed in the atomic context of a tasklet.
+Hi Suraj,
 
-Use GFP_ATOMIC instead.
+Thanks for the patch.
 
-The call chain is:
-  rtl8192_irq_rx_tasklet            (in r8192U_core.c)
-    --> rtl8192_rx_nomal            (in r8192U_core.c)
-      --> ieee80211_rx              (in ieee80211/ieee80211_rx.c)
-        --> RxReorderIndicatePacket (in ieee80211/ieee80211_rx.c)
+On Sat, Jul 18, 2020 at 07:02:38PM +0530, Suraj Upadhyay wrote:
+> Replace depracated psi_enable_msi with pci_alloc_irq_vectors.
+> And as a result modify how the returned value is handled.
+> 
+> Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
+> ---
+>  drivers/staging/media/ipu3/ipu3.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/ipu3/ipu3.c b/drivers/staging/media/ipu3/ipu3.c
+> index ee1bba6bdcac..54690e7442be 100644
+> --- a/drivers/staging/media/ipu3/ipu3.c
+> +++ b/drivers/staging/media/ipu3/ipu3.c
+> @@ -602,9 +602,9 @@ static irqreturn_t imgu_isr(int irq, void *imgu_ptr)
+>  static int imgu_pci_config_setup(struct pci_dev *dev)
+>  {
+>  	u16 pci_command;
+> -	int r = pci_enable_msi(dev);
+> +	int r = pci_alloc_irq_vectors(dev, 1, 1, PCI_IRQ_MSI);
+>  
+> -	if (r) {
+> +	if (r < 0) {
+>  		dev_err(&dev->dev, "failed to enable MSI (%d)\n", r);
+>  		return r;
+>  	}
 
-Fixes: 79a5ccd97209 ("staging: rtl8192u: fix large frame size compiler warning")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I believe fixing this requires also releasing it, i.e. a call to
+pci_free_irq_vectors(). This seems to have been missing.
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 195d963c4fbb..b6fee7230ce0 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -597,7 +597,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
- 
- 	prxbIndicateArray = kmalloc_array(REORDER_WIN_SIZE,
- 					  sizeof(struct ieee80211_rxb *),
--					  GFP_KERNEL);
-+					  GFP_ATOMIC);
- 	if (!prxbIndicateArray)
- 		return;
- 
 -- 
-2.25.1
+Kind regards,
 
+Sakari Ailus
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
