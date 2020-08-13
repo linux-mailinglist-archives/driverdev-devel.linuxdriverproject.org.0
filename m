@@ -1,65 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF00F243C2A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Aug 2020 17:07:27 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 33B62243E62
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Aug 2020 19:35:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4248886E56;
-	Thu, 13 Aug 2020 15:07:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1DFED88859;
+	Thu, 13 Aug 2020 17:35:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PrdJwETCuIgp; Thu, 13 Aug 2020 15:07:25 +0000 (UTC)
+	with ESMTP id BuKkS1Lnp2em; Thu, 13 Aug 2020 17:35:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E4DCB86E29;
-	Thu, 13 Aug 2020 15:07:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C8B05887E0;
+	Thu, 13 Aug 2020 17:35:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B11201BF333
- for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 15:07:23 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E8761BF3EA
+ for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 17:35:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AD3FB23115
- for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 15:07:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9ACCF86FAF
+ for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 17:35:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KL3pnCuz+VId for <devel@linuxdriverproject.org>;
- Thu, 13 Aug 2020 15:07:22 +0000 (UTC)
-X-Greylist: delayed 22:45:23 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0212.hostedemail.com
- [216.40.44.212])
- by silver.osuosl.org (Postfix) with ESMTPS id 6B7B722794
- for <devel@driverdev.osuosl.org>; Thu, 13 Aug 2020 15:07:22 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay04.hostedemail.com (Postfix) with ESMTP id 34F25180A9F42;
- Thu, 13 Aug 2020 15:07:21 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1542:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2693:2828:3138:3139:3140:3141:3142:3354:3622:3865:3866:3867:3868:3870:3871:3872:3874:4321:5007:7903:10004:10400:10967:11026:11232:11473:11658:11914:12043:12296:12297:12438:12555:12697:12737:12740:12760:12895:12986:13095:13181:13229:13255:13439:13870:14181:14659:14721:21080:21365:21433:21451:21627:21990:30029:30034:30054:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:2, LUA_SUMMARY:none
-X-HE-Tag: chin73_140509f26ff5
-X-Filterd-Recvd-Size: 3240
-Received: from XPS-9350.home (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf08.hostedemail.com (Postfix) with ESMTPA;
- Thu, 13 Aug 2020 15:07:19 +0000 (UTC)
-Message-ID: <6c0b063837a3a549389275c44e9512a1ffc36717.camel@perches.com>
-Subject: Re: [PATCH 35/44] staging: regulator: hi6421v600-regulator: add a
- driver-specific debug macro
-From: Joe Perches <joe@perches.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Date: Thu, 13 Aug 2020 08:07:17 -0700
-In-Reply-To: <20200813121036.126c4797@coco.lan>
-References: <cover.1597247164.git.mchehab+huawei@kernel.org>
- <7cb10b3910e9fa3e52d36e4e416030175cc761ab.1597247164.git.mchehab+huawei@kernel.org>
- <6a424468eb61e2eb9b014817819dd4da61f2ada1.camel@perches.com>
- <20200813121036.126c4797@coco.lan>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ with ESMTP id TKrY5Eov6dCk for <devel@linuxdriverproject.org>;
+ Thu, 13 Aug 2020 17:35:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp.smtpout.orange.fr (smtp03.smtpout.orange.fr
+ [80.12.242.125])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DE3E986FA5
+ for <devel@driverdev.osuosl.org>; Thu, 13 Aug 2020 17:35:06 +0000 (UTC)
+Received: from localhost.localdomain ([93.22.150.113]) by mwinf5d58 with ME
+ id F5b1230022T2WRZ035b16U; Thu, 13 Aug 2020 19:35:04 +0200
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Thu, 13 Aug 2020 19:35:04 +0200
+X-ME-IP: 93.22.150.113
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: gregkh@linuxfoundation.org, stephen@brennan.io, rohitsarkar5398@gmail.com,
+ pterjan@google.com, paulo.miguel.almeida.rodenas@gmail.com,
+ okash.khawaja@gmail.com
+Subject: [PATCH] staging: rtl8192u: Do not use GFP_KERNEL in atomic context
+Date: Thu, 13 Aug 2020 19:34:58 +0200
+Message-Id: <20200813173458.758284-1-christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -73,70 +59,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mauro.chehab@huawei.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devel@driverdev.osuosl.org, linuxarm@huawei.com, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, 2020-08-13 at 12:10 +0200, Mauro Carvalho Chehab wrote:
-> Em Wed, 12 Aug 2020 09:10:29 -0700
-> Joe Perches <joe@perches.com> escreveu:
-> 
-> > On Wed, 2020-08-12 at 17:56 +0200, Mauro Carvalho Chehab wrote:
-> > > Using dev_dbg() is not too nice, as, instead of printing the
-> > > name of the regulator, it prints "regulator.<number>", making
-> > > harder to associate what is happening with each ldo line.
-> > > 
-> > > So, add a debug-specific macro, which will print the rdev's
-> > > name, just like the regulator core.  
-> > 
-> > Seems sensible, but trivially:
-> > 
-> > > diff --git a/drivers/staging/hikey9xx/hi6421v600-regulator.c b/drivers/staging/hikey9xx/hi6421v600-regulator.c  
-> > []
-> > > @@ -209,10 +212,10 @@ static unsigned int hi6421_spmi_regulator_get_optimum_mode(struct regulator_dev
-> > >  	struct hi6421v600_regulator *sreg = rdev_get_drvdata(rdev);
-> > >  
-> > >  	if (load_uA || ((unsigned int)load_uA > sreg->eco_uA)) {
-> > > -		dev_dbg(&rdev->dev, "%s: normal mode", __func__);
-> > > +		rdev_dbg(rdev, "normal mode");
-> > >  		return REGULATOR_MODE_NORMAL;
-> > >  	} else {
-> > > -		dev_dbg(&rdev->dev, "%s: idle mode", __func__);
-> > > +		rdev_dbg(rdev, "idle mode");  
-> > 
-> > missing terminating newlines
-> 
-> As per request from Jonathan, I ended dropping those rdev_dbg()
-> on a followup patch.
-> 
-> Btw, after this changeset:
-> 
-> 	commit 563873318d328d9bbab4b00dfd835ac7c7e28697
-> 	Merge: 24532f768121 bfd8d3f23b51
-> 	Author: Linus Torvalds <torvalds@linux-foundation.org>
-> 	Date:   Mon Oct 10 09:29:50 2016 -0700
-> 
-> 	    Merge branch 'printk-cleanups'
->     
-> 	    Merge my system logging cleanups, triggered by the broken '\n' patches.
-> 
-> the printk lib will add a line feed if a "\n" is missing. I had
-> to get rid of pr_cont() & friends on that time on media, due to that. 
+'rtl8192_irq_rx_tasklet()' is a tasklet initialized in
+'rtl8192_init_priv_task()'.
+From this function it is possible to allocate some memory with the
+GFP_KERNEL flag, which is not allowed in the atomic context of a tasklet.
 
-I know.
+Use GFP_ATOMIC instead.
 
-Message formats should still end in a newline.
+The call chain is:
+  rtl8192_irq_rx_tasklet            (in r8192U_core.c)
+    --> rtl8192_rx_nomal            (in r8192U_core.c)
+      --> ieee80211_rx              (in ieee80211/ieee80211_rx.c)
+        --> RxReorderIndicatePacket (in ieee80211/ieee80211_rx.c)
 
-Any other subsystem could use a pr_cont and that
-could be added to any line without a terminating
-newline.
+Fixes: 79a5ccd97209 ("staging: rtl8192u: fix large frame size compiler warning")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+ drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Also any line without a newline will not be emitted
-until another message is emitted.
-
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+index 195d963c4fbb..b6fee7230ce0 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+@@ -597,7 +597,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
+ 
+ 	prxbIndicateArray = kmalloc_array(REORDER_WIN_SIZE,
+ 					  sizeof(struct ieee80211_rxb *),
+-					  GFP_KERNEL);
++					  GFP_ATOMIC);
+ 	if (!prxbIndicateArray)
+ 		return;
+ 
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
