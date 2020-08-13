@@ -1,79 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C72D24359F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Aug 2020 09:58:40 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6088324381B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Aug 2020 11:58:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E713A88326;
-	Thu, 13 Aug 2020 07:58:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9B8B08820C;
+	Thu, 13 Aug 2020 09:58:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tLYoELen3zpo; Thu, 13 Aug 2020 07:58:37 +0000 (UTC)
+	with ESMTP id PR82tQt+Jn13; Thu, 13 Aug 2020 09:58:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A915B882B6;
-	Thu, 13 Aug 2020 07:58:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A94208821C;
+	Thu, 13 Aug 2020 09:58:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E93301BF310
- for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 07:58:33 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AD6C51BF869
+ for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 09:58:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E59C585C06
- for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 07:58:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A27922045B
+ for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 09:58:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 151CevTEsAYC for <devel@linuxdriverproject.org>;
- Thu, 13 Aug 2020 07:58:32 +0000 (UTC)
+ with ESMTP id vc19vRTyiycN for <devel@linuxdriverproject.org>;
+ Thu, 13 Aug 2020 09:58:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 54FE185BD0
- for <devel@driverdev.osuosl.org>; Thu, 13 Aug 2020 07:58:32 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id c80so3903560wme.0
- for <devel@driverdev.osuosl.org>; Thu, 13 Aug 2020 00:58:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=nCffN1/O4aEsIe0h4ncOW5dmW5XEiYRGz9MDUW3tvf8=;
- b=noSnxdy7tWQADOLjLI6p/s/XwaJfmFMakXQjc8oYZdIfK9UdVAUnV8VA+ZuTkrl0ld
- vKNKCyg9ODvaJSrrGyU6Rn9tW4pWLmdj8+IBK5mvl0GIylT9l9KLmriF/+F8TN6RM356
- B5EQ+VxZgf0yRD2ZKTPx5RjTHjrMFT4nJDCeKZRMKLGyp7W7W0dV4LACfLVLnkqybeIo
- BJxnDuhlwRgrtrdenFPRVksbuhzsaTEzOUKf/4+8vonVt8At7t3sVLKttbLb7SOMbu9Q
- tNmKWsmtdW0cNsGzRBlgNuz7BKpvf8bCHyiAqoRr24e0aj02mdf3+ohWgBhQ7P9mzJVE
- GEeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=nCffN1/O4aEsIe0h4ncOW5dmW5XEiYRGz9MDUW3tvf8=;
- b=XbRIU+EGT2mQrJiA+J3ROzdlXFHRmXZUu54rH/TjhD5BYsyNU0T0uh1BOUOTn+x13r
- HTYuLQWNJWJvI1TdsrZAarUIybkd2GTO1KhmYruZu16JN+H9L/rBlczYdk8s1CvHL2YU
- 7rccAWCtMd1NtRxrUxuk00CqyQpLHWxfDIvmSCVMMXAAfFML6XafdPJ0Ykwu2U3Xk/ev
- 5Vd6+1sx+aUXSi/zOii0UhxhJXCdtDN7p2fKmtbSGaeafiaVt/NGKiTHBkJVCs9uDv64
- SPsUwzkfLv6RMoR+xR08ZJvqgSA6nnAJJPRQVS2w5WuDS92Tq+eQ/CmbFacdK1UvM6Yp
- J2DA==
-X-Gm-Message-State: AOAM531dHCy01sJuFVyUBrsdY7r3SFTICnEjLNYH9M5Kg19GGK3CGHOI
- BRD5ol+FLw+RpGf3vg1ds0jy0A==
-X-Google-Smtp-Source: ABdhPJyV6AY2xx7rwwOFCQ7bw3e71FK+Fkwy3fGO25tAeZ2PyRSgLKsdPeeqoOxndoTFWiSse347Lg==
-X-Received: by 2002:a1c:3b89:: with SMTP id i131mr3211258wma.30.1597305510518; 
- Thu, 13 Aug 2020 00:58:30 -0700 (PDT)
-Received: from dell ([2.27.167.73])
- by smtp.gmail.com with ESMTPSA id b2sm7616298wmj.47.2020.08.13.00.58.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Aug 2020 00:58:29 -0700 (PDT)
-Date: Thu, 13 Aug 2020 08:58:27 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4A47520013
+ for <devel@driverdev.osuosl.org>; Thu, 13 Aug 2020 09:58:32 +0000 (UTC)
+Received: from coco.lan (ip5f5ad5c5.dynamic.kabel-deutschland.de
+ [95.90.213.197])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id C8385206A4;
+ Thu, 13 Aug 2020 09:58:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597312712;
+ bh=9RgQzuhqlRmtPEcH71/uI/W3vda4Hj2yojosYlaMzQc=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=XfTzQarbNsyDPeTzjsFu2xl1etxDXCqda8LvDEXpdjegidj0Xgsr2kj27WVGm6slM
+ o8qXDSNIz8t27fK7IrRxoLEY5xrWvi+vTNigaxxqamJKt4vRAGMO9Ag7XojLkptG8B
+ OIGlea/1wskhl5ANMK5MBT5wraJ2/dxIfgFnj16o=
+Date: Thu, 13 Aug 2020 11:58:23 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Lee Jones <lee.jones@linaro.org>
 Subject: Re: [PATCH 00/44] SPMI patches needed by Hikey 970
-Message-ID: <20200813075827.GH4354@dell>
+Message-ID: <20200813115823.70f9016a@coco.lan>
+In-Reply-To: <20200813075827.GH4354@dell>
 References: <cover.1597247164.git.mchehab+huawei@kernel.org>
+ <20200813075827.GH4354@dell>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1597247164.git.mchehab+huawei@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,151 +75,203 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Rob Herring <robh+dt@kernel.org>, linux-arm-msm@vger.kernel.org,
  mauro.chehab@huawei.com, "David S. Miller" <davem@davemloft.net>,
  linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gV2VkLCAxMiBBdWcgMjAyMCwgTWF1cm8gQ2FydmFsaG8gQ2hlaGFiIHdyb3RlOgoKPiBIaSBH
-cmVnLAo+IAo+IFRoaXMgcGF0Y2ggc2VyaWVzIGlzIHBhcnQgb2YgYSB3b3JrIEknbSBkb2luZyBp
-biBvcmRlciB0byBiZSBhYmxlIHRvIHN1cHBvcnQKPiBhIEhpS2V5IDk3MCBib2FyZCB0aGF0IEkg
-cmVjZW50bHkgZ290IG9uIG15IGhhbmRzLgo+IAo+IEkgcmVjZWl2ZWQgc29tZSBmcmVlZGJhY2sg
-ZnJvbSBNYXJrIGFuZCBmcm9tIEpvbmF0aGFuIG9uIGEgZmlyc3QKPiBhdHRlbXB0IEkgbWFkZSB0
-byB1cHN0cmVhbSB0aGlzLgo+IAo+IEknbSBvcHRpbmcgdG8gc3VibWl0IGl0IHZpYSBzdGFnaW5n
-LCBiZWNhdXNlIEkgaGFkIHRvIHN0YXJ0IGZyb20gdGhlCj4gcGF0Y2ggdGhhdCBvcmlnaW5hbGx5
-IGFkZGVkIHRoaXMgZHJpdmVyIG9uIGEgNC45IEtlcm5lbCB0cmVlOgo+IAo+IAlodHRwczovL2dp
-dGh1Yi5jb20vOTZib2FyZHMtaGlrZXkvbGludXgvdHJlZS9oaWtleTk3MC12NC45Cj4gCj4gSW4g
-b3JkZXIgdG8gcHJlc2VydmUgdGhlIG9yaWdpbmFsIFNPQiBmcm9tIHRoZSBkcml2ZXIncyBhdXRo
-b3IuCj4gCj4gVGhlIHBhdGNoZXMgZm9sbG93aW5nIGl0IGFyZSBvbiB0aGUgc3RhbmRhcmQgd2F5
-OiBvbmUgcGF0Y2ggcGVyCj4gbG9naWNhbCBjaGFuZ2UuCj4gCj4gVGhpcyBpcyBwYXJ0IG9mIGEg
-YmlnZ2VyIHdvcmsgd2hvc2UgZ29hbCBpcyB0byBoYXZlIHVwc3RyZWFtIHN1cHBvcnQKPiBmb3Ig
-VVNCIGFuZCBEUk0vS01TIG9uIHN1Y2ggYm9hcmRzLiAKPiAKPiBJIHN1c3BlY3QgdGhhdCwgbWF5
-YmUgZXhjZXB0IGZvciB0aGUgRFQgcGFydCwgdGhvc2UgMyBzcGVjaWZpYyBkcml2ZXJzCj4gYXJl
-IG1vcmUgb3IgbGVzcyByZWFkeSB0byBiZSBtb3ZlZCBmcm9tIHN0YWdpbmcsIGJ1dCB0aGUgb3Ro
-ZXIKPiBkcml2ZXJzIHRoYXQgYXJlIGFsc28gcGFydCBvZiB0aGlzIGF0dGVtcHQgYXJlbid0IHJl
-YWR5LiBTcGVjaWFsbHkgdGhlCj4gRFJNIGRyaXZlciBoYXMgc29tZSBidWdzIHRoYXQgY2FtZSBm
-cm9tIHRoZSBPT1QgdmVyc2lvbi4KPiAKPiBTbywgbXkgY3VycmVudCBwbGFuIGlzIHRvIHN1Ym1p
-dCB0aG9zZSBkcml2ZXJzIHRvIHN0YWdpbmcgZm9yIDUuOQo+IGFuZCBtb3ZlIHRoZSBvbmVzIHRo
-YXQgYXJlIG9rIG91dCBvZiBzdGFnaW5nIG9uIEtlcm5lbCA1LjEwLgoKV2hhdCBhIG1lc3MuICBU
-aGlzIGlzIG5vIHdheSB0byB1cHN0cmVhbSBhIG5ldyBkcml2ZXIuCgpGaXJzdGx5LCBjb3VsZCB5
-b3UgcGxlYXNlIGFkZCB2ZXJzaW9uaW5nIHRvIHlvdXIgc3VibWlzc2lvbnMuICBJIGtub3cKdGhp
-cyBhdCBsZWFzdCB2ZXJzaW9uIDIuICBXZXJlIHRoZXJlIHByZXZpb3VzIHN1Ym1pc3Npb25zPyAg
-SXMgdGhpcwp0aGUgbGF0ZXN0PwoKU2Vjb25kbHkgYW5kIG1vcmUgaW1wb3J0YW50bHksIHlvdSBo
-YXZlIHN1Ym1pdHRlZCB3aGF0IGxvb2tzIGxpa2UgYQpuZXcgZHJpdmVyIChiZWFyaW5nIGluIG1p
-bmQgdGhhdCBJJ20gb25seSBjb25jZXJuaW5nIG15c2VsZiB3aXRoIHRoZQpNRkQgcmVsYXRlZCBj
-aGFuZ2VzKSwgdGhlbiBpbiB0aGUgc2FtZSBzdWJtaXNzaW9uIHlvdSBhcmUgYWRkaW5nIGFuZApy
-ZW1vdmluZyBsYXJnZSBjaHVua3MuICBQbGVhc2UganVzdCBzdWJtaXQgdGhlIG5ldyBkcml2ZXIs
-IG9uIGl0cyBvd24KYXMgYSBzaW5nbGUgcGF0Y2gsIGNvbXBsZXRlIHdpdGggaXRzIGFzc29jaWF0
-ZWQgTWFrZWZpbGUgYW5kIEtjb25maWcKY2hhbmdlcy4KCldoYXQgYXJlIHlvdXIgcmVhc29ucyBm
-b3Igc3VibWl0dGluZyB0aGlzIHZpYSBTdGFnaW5nPyAgSXMgaXQgbm90CnJlYWR5IHlldD8gIEFy
-ZSB0aGUgcmVzdWx0YW50IGNvbXBvbmVudHMgbm90IGF0IGEgaGlnaCBlbm91Z2ggbGV2ZWwgb2YK
-cXVhbGl0eSBvciBlbmFibGVtZW50IHRvIGdvIHN0cmFpZ2h0IGludG8gdGhlIHN1YnN5c3RlbXMs
-IHdoaWNoIGlzCm1vcmUgdHlwaWNhbD8gIEZyb20gYW4gTUZEIHBlcnNwZWN0aXZlLCBJIHdvdWxk
-IGJlIHJldmlld2luZyB0aGUKZHJpdmVyIGFzIGEgd2hvbGUgd2hlbiAoaWYpIGl0IG1vdmVzIGZy
-b20gU3RhZ2luZyBpbnRvIE1GRCBhbnl3YXksIHNvCndoeSBhcmUgeW91IGp1bXBpbmcgdGhyb3Vn
-aCBob29wcyB3aXRoIHRoaXMgYWRkaXRpb25hbCwgc2VlbWluZ2x5CnN1cGVyZmx1b3VzIHN0ZXA/
-CgpGaW5hbGx5LCB0aGUgc3ViamVjdCBvZiBhdXRob3JzaGlwIGlzIG9mdGVuIGEgY29udGVudGlv
-dXMgb25lLCBidXQKdGhpcyBpcyBhIHByb2JsZW0geW91IG5lZWQgdG8gd29yayBvdXQgd2l0aCB0
-aGUgb3JpZ2luYWwgYXV0aG9yLCBub3QKc29tZXRoaW5nIHRoYXQgc2hvdWxkIHJlcXVpcmUgc3Bl
-Y2lhbCBoYW5kaW5nIGJ5IHVwc3RyZWFtLiAgWW91IGhhdmUgYQpjb3VwbGUgb2YgY2hvaWNlcywg
-YnV0IGJlYXIgaW4gbWluZCB0aGF0IHVwc3RyZWFtaW5nIGEgbm9uLXN1aXRhYmxlCmRyaXZlciB0
-aGVuIGJyaW5naW5nIGl0IHVwIHRvIHN0YW5kYXJkIGlzIG5vdCBvbmUgb2YgdGhlbS4KCjEuIEtl
-ZXAgdGhlIG9yaWdpbmFsIGF1dGhvcidzIGF1dGhvcnNoaXAgYW5kIFNvQiwgbWFrZSB5b3VyIGNo
-YW5nZXMKICAgYW5kIGdldCB0aGVtIHRvIHJldmlldyB0byBlbnN1cmUgdGhleSBhcmUgc3RpbGwg
-aGFwcHkgYWJvdXQgYmVpbmcKICAgYXNzb2NpYXRlZCB3aXRoIHRoZSByZXN1bHRhbnQgY29kZS4g
-IEVuc3VyZSB5b3UgbWVudGlvbiBhbGwgb2YgdGhlCiAgIGNoYW5nZXMgeW91IG1ha2UgaW4gdGhl
-IGNvbW1pdCBtZXNzYWdlIGFuZCBmb2xsb3ctdXAgYnkgYWRkaW5nIHlvdXIKICAgb3duIFNvQi4K
-CjIuIFRoaXMgaXMgdGhlIGNvbnRlbnRpb3VzIGJpdC4gIElmIHlvdSd2ZSBtYWRlIGVub3VnaCBj
-aGFuZ2VzLCB0aGVyZQogICBpcyBhbiBhcmd1bWVudCBmb3IgeW91IHRvIGFkb3B0IGF1dGhvcnNo
-aXAuICBZb3Ugc2hvdWxkIGRpc2N1c3MKICAgd2l0aCB0aGUgb3JpZ2luYWwgYXV0aG9yIHdoZXRo
-ZXIgdGhleSBhcmUgaGFwcHkgZm9yIHlvdSB0byByZXRhaW4KICAgdGhlaXIgU29CLiAgTXkgc3Vn
-Z2VzdGlvbiBpcyBhbHdheXMgdHJ5IHRvIGtlZXAgdGhlIFNvQiBhcyBhIGJhcmUKICAgbWluaW11
-bSB0byBwcmVzZXJ2ZSBwYXRjaCBoaXN0b3J5IGFuZCBvdXQgb2YgcHVyZSBjb3VydGVzeS4KCj4g
-TWF1cm8gQ2FydmFsaG8gQ2hlaGFiICg0MSk6Cj4gICBzdGFnaW5nOiBzcG1pOiBoaXNpLXNwbWkt
-Y29udHJvbGxlcjogY29kaW5nIHN0eWxlIGZpeHVwCj4gICBzdGFnaW5nOiBzcG1pOiBoaXNpLXNw
-bWktY29udHJvbGxlcjogZml4IGl0IHRvIHByb2JlIHN1Y2Nlc3NmdWxseQo+ICAgc3RhZ2luZzog
-c3BtaTogaGlzaS1zcG1pLWNvbnRyb2xsZXI6IGZpeCBhIHR5cG8KPiAgIHN0YWdpbmc6IHNwbWk6
-IGhpc2ktc3BtaS1jb250cm9sbGVyOiBhZGp1c3Qgd2hpdGVzcGFjZXMgYXQgZGVmaW5lcwo+ICAg
-c3RhZ2luZzogc3BtaTogaGlzaS1zcG1pLWNvbnRyb2xsZXI6IHVzZSBsZTMyIG1hY3JvcyB3aGVy
-ZSBuZWVkZWQKPiAgIHN0YWdpbmc6IHNwbWk6IGhpc2ktc3BtaS1jb250cm9sbGVyOiBhZGQgZGVi
-dWcgd2hlbiB2YWx1ZXMgYXJlCj4gICAgIHJlYWQvd3JpdGUKPiAgIHN0YWdpbmc6IHNwbWk6IGhp
-c2ktc3BtaS1jb250cm9sbGVyOiBmaXggdGhlIGRldl9mb28oKSBsb2dpYwo+ICAgc3RhZ2luZzog
-c3BtaTogaGlzaS1zcG1pLWNvbnRyb2xsZXI6IGFkZCBpdCB0byB0aGUgYnVpbGRpbmcgc3lzdGVt
-Cj4gICBzdGFnaW5nOiBzcG1pOiBoaXNpLXNwbWktY29udHJvbGxlcjogZG8gc29tZSBjb2RlIGNs
-ZWFudXBzCj4gICBzdGFnaW5nOiBtZmQ6IGhpNjQyMS1zcG1pLXBtaWM6IGdldCByaWQgb2YgdW51
-c2VkIGNvZGUKPiAgIHN0YWdpbmc6IG1mZDogaGk2NDIxLXNwbWktcG1pYzogZGVhbCB3aXRoIG5v
-bi1zdGF0aWMgZnVuY3Rpb25zCj4gICBzdGFnaW5nOiBtZmQ6IGhpNjQyMS1zcG1pLXBtaWM6IGdl
-dCByaWQgb2YgdGhlIHN0YXRpYyB2YXJzCj4gICBzdGFnaW5nOiBtZmQ6IGhpNjQyMS1zcG1pLXBt
-aWM6IGNsZWFudXAgaGk2NDIxLXNwbWktcG1pYy5oIGhlYWRlcgo+ICAgc3RhZ2luZzogbWZkOiBo
-aTY0MjEtc3BtaS1wbWljOiBjaGFuZ2UgdGhlIGJpbmRpbmcgbG9naWMKPiAgIHN0YWdpbmc6IG1m
-ZDogaGk2NDIxLXNwbWktcG1pYzogZ2V0IHJpZCBvZiB1bnVzZWQgT0YgcHJvcGVydGllcwo+ICAg
-c3RhZ2luZzogbWZkOiBoaTY0MjEtc3BtaS1wbWljOiBjbGVhbnVwIE9GIHByb3BlcnRpZXMKPiAg
-IHN0YWdpbmc6IG1mZDogaGk2NDIxLXNwbWktcG1pYzogY2hhbmdlIG5hbWVzcGFjZSBvbiBpdHMg
-ZnVuY3Rpb25zCj4gICBzdGFnaW5nOiBtZmQ6IGhpNjQyMS1zcG1pLXBtaWM6IGZpeCBzb21lIGNv
-ZGluZyBzdHlsZSBpc3N1ZXMKPiAgIHN0YWdpbmc6IG1mZDogaGk2NDIxLXNwbWktcG1pYzogYWRk
-IGl0IHRvIHRoZSBidWlsZGluZyBzeXN0ZW0KPiAgIHN0YWdpbmc6IG1mZDogaGk2NDIxLXNwbWkt
-cG1pYzogY2xlYW51cCB0aGUgY29kZQo+ICAgc3RhZ2luZzogcmVndWxhdG9yOiBoaTY0MjF2NjAw
-LXJlZ3VsYXRvcjogZ2V0IHJpZCBvZiB1bnVzZWQgY29kZQo+ICAgc3RhZ2luZzogcmVndWxhdG9y
-OiBoaTY0MjF2NjAwLXJlZ3VsYXRvcjogcG9ydCBpdCB0byB1cHN0cmVhbQo+ICAgc3RhZ2luZzog
-cmVndWxhdG9yOiBoaTY0MjF2NjAwLXJlZ3VsYXRvcjogY29kaW5nIHN0eWxlIGZpeHVwcwo+ICAg
-c3RhZ2luZzogcmVndWxhdG9yOiBoaTY0MjF2NjAwLXJlZ3VsYXRvcjogY2hhbmdlIHRoZSBiaW5k
-aW5nIGxvZ2ljCj4gICBzdGFnaW5nOiByZWd1bGF0b3I6IGhpNjQyMXY2MDAtcmVndWxhdG9yOiBj
-bGVhbnVwIHN0cnVjdAo+ICAgICBoaXNpX3JlZ3VsYXRvcgo+ICAgc3RhZ2luZzogcmVndWxhdG9y
-OiBoaTY0MjF2NjAwLXJlZ3VsYXRvcjogY2xlYW51cCBkZWJ1ZyBtZXNzYWdlcwo+ICAgc3RhZ2lu
-ZzogcmVndWxhdG9yOiBoaTY0MjF2NjAwLXJlZ3VsYXRvcjogdXNlIHNob3J0ZXIgbmFtZXMgZm9y
-IE9GCj4gICAgIHByb3BlcnRpZXMKPiAgIHN0YWdpbmc6IHJlZ3VsYXRvcjogaGk2NDIxdjYwMC1y
-ZWd1bGF0b3I6IGJldHRlciBoYW5kbGUgbW9kZXMKPiAgIHN0YWdpbmc6IHJlZ3VsYXRvcjogaGk2
-NDIxdjYwMC1yZWd1bGF0b3I6IGNoYW5nZSBuYW1lc3BhY2UKPiAgIHN0YWdpbmc6IHJlZ3VsYXRv
-cjogaGk2NDIxdjYwMC1yZWd1bGF0b3I6IGNvbnZlcnQgdG8gdXNlIGdldC9zZXQKPiAgICAgdm9s
-dGFnZV9zZWwKPiAgIHN0YWdpbmc6IHJlZ3VsYXRvcjogaGk2NDIxdjYwMC1yZWd1bGF0b3I6IGRv
-bid0IHVzZSB1c2xlZXBfcmFuZ2UgZm9yCj4gICAgIG9mZl9vbl9kZWxheQo+ICAgc3RhZ2luZzog
-cmVndWxhdG9yOiBoaTY0MjF2NjAwLXJlZ3VsYXRvcjogYWRkIGEgZHJpdmVyLXNwZWNpZmljIGRl
-YnVnCj4gICAgIG1hY3JvCj4gICBzdGFnaW5nOiByZWd1bGF0b3I6IGhpNjQyMXY2MDAtcmVndWxh
-dG9yOiBpbml0aWFsaXplIHJhbXBfZGVsYXkKPiAgIHN0YWdpbmc6IHJlZ3VsYXRvcjogaGk2NDIx
-djYwMC1yZWd1bGF0b3I6IGNsZWFudXAgRFQgc2V0dGluZ3MKPiAgIHN0YWdpbmc6IHJlZ3VsYXRv
-cjogaGk2NDIxdjYwMC1yZWd1bGF0b3I6IGZpeCBzb21lIGNvZGluZyBzdHlsZSBpc3N1ZXMKPiAg
-IHN0YWdpbmc6IHJlZ3VsYXRvcjogaGk2NDIxdjYwMC1yZWd1bGF0b3I6IGFkZCBpdCB0byB0aGUg
-YnVpbGRpbmcKPiAgICAgc3lzdGVtCj4gICBzdGFnaW5nOiByZWd1bGF0b3I6IGhpNjQyMXY2MDAt
-cmVndWxhdG9yOiBjb2RlIGNsZWFudXAKPiAgIHN0YWdpbmc6IGhpa2V5OXh4OiBhZGQgYSBUT0RP
-IGxpc3QKPiAgIE1BSU5UQUlORVJTOiBhZGQgYW4gZW50cnkgZm9yIEhpU2lsaWNvbiA2NDIxdjYw
-MCBkcml2ZXJzCj4gICBkdDogZG9jdW1lbnQgSGlTaWxpY29uIFNQTUkgY29udHJvbGxlciBhbmQg
-bWZkL3JlZ3VsYXRvciBwcm9wZXJ0aWVzCj4gICBkdDogaGlzaWxpY29uOiBhZGQgc3VwcG9ydCBm
-b3IgdGhlIFBNSUMgZm91bmQgb24gSGlrZXkgOTcwCj4gCj4gTWF5dWxvbmcgKDMpOgo+ICAgc3Rh
-Z2luZzogc3BtaTogYWRkIEhpa2V5IDk3MCBTUE1JIGNvbnRyb2xsZXIgZHJpdmVyCj4gICBzdGFn
-aW5nOiBtZmQ6IGFkZCBhIFBNSUMgZHJpdmVyIGZvciBIaVNpbGljb24gNjQyMSBTUE1JIHZlcnNp
-b24KPiAgIHN0YWdpbmc6IHJlZ3VsYXRvcjogYWRkIGEgcmVndWxhdG9yIGRyaXZlciBmb3IgSGlT
-aWxpY29uIDY0MjF2NjAwIFNQTUkKPiAgICAgUE1JQwo+IAo+ICAuLi4vbWZkL2hpc2lsaWNvbixo
-aTY0MjEtc3BtaS1wbWljLnlhbWwgICAgICAgfCAxODIgKysrKysrKwo+ICAuLi4vc3BtaS9oaXNp
-bGljb24saGlzaS1zcG1pLWNvbnRyb2xsZXIueWFtbCAgfCAgNTQgKysKPiAgTUFJTlRBSU5FUlMg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA2ICsKPiAgLi4uL2Jvb3QvZHRz
-L2hpc2lsaWNvbi9oaTM2NzAtaGlrZXk5NzAuZHRzICAgIHwgIDE2ICstCj4gIC4uLi9ib290L2R0
-cy9oaXNpbGljb24vaGlrZXk5NzAtcG1pYy5kdHNpICAgICB8IDIwMCArKysrKysrKwo+ICBkcml2
-ZXJzL3N0YWdpbmcvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKwo+ICBkcml2
-ZXJzL3N0YWdpbmcvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwo+ICBkcml2
-ZXJzL3N0YWdpbmcvaGlrZXk5eHgvS2NvbmZpZyAgICAgICAgICAgICAgfCAgMzUgKysKPiAgZHJp
-dmVycy9zdGFnaW5nL2hpa2V5OXh4L01ha2VmaWxlICAgICAgICAgICAgIHwgICA1ICsKPiAgZHJp
-dmVycy9zdGFnaW5nL2hpa2V5OXh4L1RPRE8gICAgICAgICAgICAgICAgIHwgICA1ICsKPiAgZHJp
-dmVycy9zdGFnaW5nL2hpa2V5OXh4L2hpNjQyMS1zcG1pLXBtaWMuYyAgIHwgMzgxICsrKysrKysr
-KysrKysrCj4gIC4uLi9zdGFnaW5nL2hpa2V5OXh4L2hpNjQyMXY2MDAtcmVndWxhdG9yLmMgICB8
-IDQ3OSArKysrKysrKysrKysrKysrKysKPiAgLi4uL3N0YWdpbmcvaGlrZXk5eHgvaGlzaS1zcG1p
-LWNvbnRyb2xsZXIuYyAgIHwgMzUxICsrKysrKysrKysrKysKPiAgaW5jbHVkZS9saW51eC9tZmQv
-aGk2NDIxLXNwbWktcG1pYy5oICAgICAgICAgIHwgIDY4ICsrKwo+ICAxNCBmaWxlcyBjaGFuZ2Vk
-LCAxNzczIGluc2VydGlvbnMoKyksIDEyIGRlbGV0aW9ucygtKQo+ICBjcmVhdGUgbW9kZSAxMDA2
-NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9oaXNpbGljb24saGk2NDIx
-LXNwbWktcG1pYy55YW1sCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3Mvc3BtaS9oaXNpbGljb24saGlzaS1zcG1pLWNvbnRyb2xsZXIueWFtbAo+
-ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm02NC9ib290L2R0cy9oaXNpbGljb24vaGlrZXk5
-NzAtcG1pYy5kdHNpCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvaGlrZXk5
-eHgvS2NvbmZpZwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL2hpa2V5OXh4
-L01ha2VmaWxlCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvaGlrZXk5eHgv
-VE9ETwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL2hpa2V5OXh4L2hpNjQy
-MS1zcG1pLXBtaWMuYwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL2hpa2V5
-OXh4L2hpNjQyMXY2MDAtcmVndWxhdG9yLmMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
-c3RhZ2luZy9oaWtleTl4eC9oaXNpLXNwbWktY29udHJvbGxlci5jCj4gIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBpbmNsdWRlL2xpbnV4L21mZC9oaTY0MjEtc3BtaS1wbWljLmgKPiAKCi0tIApMZWUgSm9u
-ZXMgW+adjueQvOaWr10KU2VuaW9yIFRlY2huaWNhbCBMZWFkIC0gRGV2ZWxvcGVyIFNlcnZpY2Vz
-CkxpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBcm0gU29DcwpGb2xsb3cg
-TGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRy
-aXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Hi Lee,
+
+Em Thu, 13 Aug 2020 08:58:27 +0100
+Lee Jones <lee.jones@linaro.org> escreveu:
+
+> On Wed, 12 Aug 2020, Mauro Carvalho Chehab wrote:
+> 
+> > Hi Greg,
+> > 
+> > This patch series is part of a work I'm doing in order to be able to support
+> > a HiKey 970 board that I recently got on my hands.
+> > 
+> > I received some freedback from Mark and from Jonathan on a first
+> > attempt I made to upstream this.
+> > 
+> > I'm opting to submit it via staging, because I had to start from the
+> > patch that originally added this driver on a 4.9 Kernel tree:
+> > 
+> > 	https://github.com/96boards-hikey/linux/tree/hikey970-v4.9
+> > 
+> > In order to preserve the original SOB from the driver's author.
+> > 
+> > The patches following it are on the standard way: one patch per
+> > logical change.
+> > 
+> > This is part of a bigger work whose goal is to have upstream support
+> > for USB and DRM/KMS on such boards. 
+> > 
+> > I suspect that, maybe except for the DT part, those 3 specific drivers
+> > are more or less ready to be moved from staging, but the other
+> > drivers that are also part of this attempt aren't ready. Specially the
+> > DRM driver has some bugs that came from the OOT version.
+> > 
+> > So, my current plan is to submit those drivers to staging for 5.9
+> > and move the ones that are ok out of staging on Kernel 5.10.  
+> 
+> What a mess.  This is no way to upstream a new driver.
+> 
+> Firstly, could you please add versioning to your submissions.  I know
+> this at least version 2.  Were there previous submissions?  Is this
+> the latest?
+
+Yeah, that's the second attempt. The first one was:
+
+	https://lore.kernel.org/lkml/176043f329dfa9889f014feec04e7e1553077873.1597160086.git.mchehab+huawei@kernel.org/T/#u
+
+I was in doubt about adding a v2 in this specific case or not, 
+since I ended submitting it to the staging tree.
+
+> Secondly and more importantly, you have submitted what looks like a
+> new driver (bearing in mind that I'm only concerning myself with the
+> MFD related changes), then in the same submission you are adding and
+> removing large chunks.  Please just submit the new driver, on its own
+> as a single patch, complete with its associated Makefile and Kconfig
+> changes.
+
+I can't do like that because I'm not the author of the original patch that
+added the driver.
+
+The original patch came from the 96board's android-kernel based 4.9 tree:
+
+	https://github.com/96boards-hikey/linux/tree/hikey970-v4.9
+
+> What are your reasons for submitting this via Staging? 
+
+The main reason is to preserve both the patch authorship and its
+history.
+
+After the original patch, I wrote several incremental changes cleaning
+up the original driver and stripping parts of it that aren't needed.
+
+By preserving the history, if someone wants to restore some removed
+functionality, it is just a matter of reverting a patch.
+
+For example, the original driver had its own sysfs interface for
+debugging the regulator driver. 
+
+This is not needed for it to work. Also, the right interface for such 
+things is via configfs. Yet, someone could think on restoring such 
+feat and start from the existing code, instead of coming with 
+something else from scratch.
+
+> Is it not ready yet? 
+
+From my side, I believe that, after my changes, the code now meets
+upstream requirements, maybe except for DT (and the parsing code).
+There are a few things at the DT properties on this driver that could 
+be named on a different (more standard way). 
+
+Yet, I'm not a regular contributor for mfd/regulator/spmi. So,
+I may have missed something.
+
+> Are the resultant components not at a high enough level of
+> quality or enablement to go straight into the subsystems, which is
+> more typical?  From an MFD perspective, I would be reviewing the
+> driver as a whole when (if) it moves from Staging into MFD anyway, so
+> why are you jumping through hoops with this additional, seemingly
+> superfluous step?
+
+I'm OK if this gets reviewed by MFD people only after moving it out of
+staging. Assuming that this would be merged for Kernel 5.10, I'll
+likely send a patch moving it out of staging for 5.11. Then,
+you can do a comprehensive review.
+
+> Finally, the subject of authorship is often a contentious one, but
+> this is a problem you need to work out with the original author, not
+> something that should require special handing by upstream.  You have a
+> couple of choices, but bear in mind that upstreaming a non-suitable
+> driver then bringing it up to standard is not one of them.
+> 
+> 1. Keep the original author's authorship and SoB, make your changes
+>    and get them to review to ensure they are still happy about being
+>    associated with the resultant code.  Ensure you mention all of the
+>    changes you make in the commit message and follow-up by adding your
+>    own SoB.
+> 
+> 2. This is the contentious bit.  If you've made enough changes, there
+>    is an argument for you to adopt authorship.  You should discuss
+>    with the original author whether they are happy for you to retain
+>    their SoB.  My suggestion is always try to keep the SoB as a bare
+>    minimum to preserve patch history and out of pure courtesy.
+
+It is not only the above. Both the original author and anyone
+touching the code should comply with applicable internal policies.
+
+From my experience, dealing with such things takes a lot more of time
+then coding, as it require talking with legal departments on different
+continents, and with developers and with their bosses in order to be
+able to do things like that. 
+
+This can also be a very frustrating process. During almost 20 years of
+being the media maintainer, I've seen several cases where trying to
+enforce a folded initial patch caused devs to receive NACKS, preventing 
+them so submit otherwise good stuff.
+
+So, at the media subsystem, I'm perfectly fine if someone starts from 
+the original OOT driver, preserving its original authorships. We're
+also dealing there with the patches sent to drivers/staging/media.
+
+I'm not saying that other subsystem maintainers should do the same.
+Dealing with staging is time consuming, and I completely understand
+that most maintainers prefer to stay out of it ;-)
+
+- 
+
+Since when staging tree started, if someone has to start from the
+original patch, such things can be merged at staging. Then,
+incremental patches are applied at the top until it reaches what's
+required to be promoted.
+
+That's said, there's no hush to have those drivers out of staging.
+My end goal is to have DRM/KMS and USB support for Hikey 970. 
+
+The patchsets I have so far are at:
+
+	https://github.com/mchehab/linux/commits/hikey970/to_upstream-2.0-v1.1
+
+(this branch has the v1 of my patchset)
+
+Porting this driver is part of such effort. While this driver is
+on a good situation, the other ones may require some time to
+mature.
+
+The DRM/KMS driver for example, is not ready to be merged outside 
+staging, as it carries several bugs that came from the original
+driver and are present at the official tree at 96boards. For example,
+there is a a very dirty hack that enforces the HDMI chipset to
+only work with a limited set of resolutions that are known to work:
+
+	https://github.com/96boards-hikey/linux/blob/hikey970-v4.9/drivers/gpu/drm/hisilicon/kirin9xx/hdmi/adv7535.c#L869
+
+It also has problems reading the frequencies via EDID interface.
+Due to that, the driver fakes an EDID table:
+
+	https://github.com/96boards-hikey/linux/blob/hikey970-v4.9/drivers/gpu/drm/hisilicon/kirin9xx/hdmi/adv7535.c#L463
+
+It sounds to me that some clocks are not properly set for a random
+resolution, but fixing it is not trivial and requires deep knowledge
+about how the display registers should be tuned to better support
+resolutions. The current settings cause underflows with 1080p,
+which in turn makes the display driver to (silently) stop working.
+
+So, in summary, I believe that some drivers from my port will
+require being at staging for a while. While I was planning to
+do that on my next patch submission, placing the PM drivers
+there won't make much difference from my side, as I'll need to
+be submitting patches anyway moving drivers out of staging as
+they become ready.
+
+Thanks,
+Mauro
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
