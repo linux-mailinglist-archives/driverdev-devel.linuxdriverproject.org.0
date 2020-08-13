@@ -1,63 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7BE72440D1
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Aug 2020 23:40:41 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A5BD2443E3
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Aug 2020 05:12:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7533A88897;
-	Thu, 13 Aug 2020 21:40:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 30BD724D71;
+	Fri, 14 Aug 2020 03:12:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ahsfOHNbDdCh; Thu, 13 Aug 2020 21:40:38 +0000 (UTC)
+	with ESMTP id j66DNhGrWKhC; Fri, 14 Aug 2020 03:12:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DCF2D88877;
-	Thu, 13 Aug 2020 21:40:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AACD824C01;
+	Fri, 14 Aug 2020 03:12:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2882B1BF3A0
- for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 21:40:35 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 938C51BF9C6
+ for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 03:12:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 24888885C7
- for <devel@linuxdriverproject.org>; Thu, 13 Aug 2020 21:40:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8FF0124B3A
+ for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 03:12:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q8dsJg4UTYvU for <devel@linuxdriverproject.org>;
- Thu, 13 Aug 2020 21:40:34 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6311C88538
- for <devel@driverdev.osuosl.org>; Thu, 13 Aug 2020 21:40:34 +0000 (UTC)
-IronPort-SDR: CJ5G1kx22/pJRdmT98Tmonh1Jma8Y2NA8r3jah5BE+6cBu98HAGqPhB65HUIIAVin2VF798VrQ
- dTfbBnAwN3/Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9712"; a="151975840"
-X-IronPort-AV: E=Sophos;i="5.76,309,1592895600"; d="scan'208";a="151975840"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2020 14:40:33 -0700
-IronPort-SDR: bX8ONL1waEA2CrBviOzY+VKb8U80uMrAcyaqIj14Gd/WWboRHPcItAtuddgJCTpYnJBIOOL3yW
- 0yyEl7tzj6cQ==
-X-IronPort-AV: E=Sophos;i="5.76,309,1592895600"; d="scan'208";a="439920140"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2020 14:40:31 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 0B7A120699; Fri, 14 Aug 2020 00:40:29 +0300 (EEST)
-Date: Fri, 14 Aug 2020 00:40:29 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Suraj Upadhyay <usuraj35@gmail.com>
-Subject: Re: [PATCH] staging: media: ipu3: Replace depracated MSI API.
-Message-ID: <20200813214028.GB24582@paasikivi.fi.intel.com>
-References: <20200718133238.GA11982@blackclown>
+ with ESMTP id v4pHRna-EFj8 for <devel@linuxdriverproject.org>;
+ Fri, 14 Aug 2020 03:12:09 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.hmvi.gob.ec (unknown [186.47.21.114])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5F25520482
+ for <devel@driverdev.osuosl.org>; Fri, 14 Aug 2020 03:12:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.hmvi.gob.ec (Postfix) with ESMTP id 372D4C02CE5CE;
+ Thu, 13 Aug 2020 12:34:25 -0500 (-05)
+Received: from mail.hmvi.gob.ec ([127.0.0.1])
+ by localhost (mail.hmvi.gob.ec [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id vTTOmtlP1me7; Thu, 13 Aug 2020 12:34:24 -0500 (-05)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.hmvi.gob.ec (Postfix) with ESMTP id ED8E3C0371970;
+ Thu, 13 Aug 2020 12:22:02 -0500 (-05)
+X-Virus-Scanned: amavisd-new at hmvi.gob.ec
+Received: from mail.hmvi.gob.ec ([127.0.0.1])
+ by localhost (mail.hmvi.gob.ec [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id Inbu2GyFwEfk; Thu, 13 Aug 2020 12:22:01 -0500 (-05)
+Received: from [10.73.80.190] (unknown [105.8.3.183])
+ by mail.hmvi.gob.ec (Postfix) with ESMTPSA id 3995EC036EB90;
+ Thu, 13 Aug 2020 12:17:26 -0500 (-05)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200718133238.GA11982@blackclown>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Description: Mail message body
+Subject: =?utf-8?q?Covid_19_Wohlt=C3=A4tigkeitsfonds?=
+To: Recipients <danny.puetate@mail.hmvi.gob.ec>
+From: ''Tayeb Souami'' <danny.puetate@mail.hmvi.gob.ec>
+Date: Thu, 13 Aug 2020 19:17:06 +0200
+Message-Id: <20200813171728.3995EC036EB90@mail.hmvi.gob.ec>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,53 +66,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
- bingbu.cao@intel.com, mchehab@kernel.org, tian.shu.qiu@intel.com,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Tayebsouam.spende@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Suraj,
-
-Thanks for the patch.
-
-On Sat, Jul 18, 2020 at 07:02:38PM +0530, Suraj Upadhyay wrote:
-> Replace depracated psi_enable_msi with pci_alloc_irq_vectors.
-> And as a result modify how the returned value is handled.
-> 
-> Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
-> ---
->  drivers/staging/media/ipu3/ipu3.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/media/ipu3/ipu3.c b/drivers/staging/media/ipu3/ipu3.c
-> index ee1bba6bdcac..54690e7442be 100644
-> --- a/drivers/staging/media/ipu3/ipu3.c
-> +++ b/drivers/staging/media/ipu3/ipu3.c
-> @@ -602,9 +602,9 @@ static irqreturn_t imgu_isr(int irq, void *imgu_ptr)
->  static int imgu_pci_config_setup(struct pci_dev *dev)
->  {
->  	u16 pci_command;
-> -	int r = pci_enable_msi(dev);
-> +	int r = pci_alloc_irq_vectors(dev, 1, 1, PCI_IRQ_MSI);
->  
-> -	if (r) {
-> +	if (r < 0) {
->  		dev_err(&dev->dev, "failed to enable MSI (%d)\n", r);
->  		return r;
->  	}
-
-I believe fixing this requires also releasing it, i.e. a call to
-pci_free_irq_vectors(). This seems to have been missing.
-
--- 
-Kind regards,
-
-Sakari Ailus
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+TGllYmVyIEZyZXVuZCwKCkljaCBiaW4gSGVyciBUYXllYiBTb3VhbWksIE5ldyBKZXJzZXksIFZl
+cmVpbmlndGUgU3RhYXRlbiB2b24gQW1lcmlrYSwKZGVyIE1lZ2EtR2V3aW5uZXIgdm9uICQgMzE1
+bWlsbGlvbiBJbiBNZWdhIE1pbGxpb25zIEphY2twb3QsIHNwZW5kZSBpY2gKYW4gNSB6dWbDpGxs
+aWdlIFBlcnNvbmVuLCB3ZW5uIFNpZSBkaWVzZSBFLU1haWwgZXJoYWx0ZW4sIGRhbm4gd3VyZGUg
+SWhyZQpFLU1haWwgbmFjaCBlaW5lbSBTcGluYmFsbCBhdXNnZXfDpGhsdC5JY2ggaGFiZSBkZW4g
+Z3LDtsOfdGVuIFRlaWwgbWVpbmVzClZlcm3DtmdlbnMgYXVmIGVpbmUgUmVpaGUgdm9uIFdvaGx0
+w6R0aWdrZWl0c29yZ2FuaXNhdGlvbmVuIHVuZApPcmdhbmlzYXRpb25lbiB2ZXJ0ZWlsdC5JY2gg
+aGFiZSBtaWNoIGZyZWl3aWxsaWcgZGF6dSBlbnRzY2hpZWRlbiwgZGllClN1bW1lIHZvbiDigqwg
+Mi4wMDAuMDAwLDAwIGFuIFNpZSBhbHMgZWluZSBkZXIgYXVzZ2V3w6RobHRlbiA1IHp1IHNwZW5k
+ZW4sCnVtIG1laW5lIEdld2lubmUgenUgw7xiZXJwcsO8ZmVuLCBzZWhlbiBTaWUgYml0dGUgbWVp
+bmUgWW91IFR1YmUgU2VpdGUKdW50ZW4uCgoKVUhSIE1JQ0ggSElFUjogaHR0cHM6Ly93d3cueW91
+dHViZS5jb20vd2F0Y2g/dj1aNnVpOFpEUTZLcwoKCkRhcyBpc3QgZGVpbiBTcGVuZGVuY29kZTog
+W1RTNTMwMzQyMDE4XQoKCkFudHdvcnRlbiBTaWUgbWl0IGRlbSBTUEVOREUtQ09ERSBhbiBkaWVz
+ZQoKRS1NYWlsOlRheWVic291YW0uc3BlbmRlQGdtYWlsLmNvbQoKCkljaCBob2ZmZSwgU2llIHVu
+ZCBJaHJlIEZhbWlsaWUgZ2zDvGNrbGljaCB6dSBtYWNoZW4uCgoKR3LDvMOfZQoKSGVyciBUYXll
+YiBTb3VhbWkKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2Ry
+aXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2
+LWRldmVsCg==
