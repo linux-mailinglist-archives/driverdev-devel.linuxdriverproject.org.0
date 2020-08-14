@@ -1,78 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 180F22449C8
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Aug 2020 14:33:44 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27768244B72
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Aug 2020 16:52:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4A57F25FA7;
-	Fri, 14 Aug 2020 12:33:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A415F88CB7;
+	Fri, 14 Aug 2020 14:52:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0zVSMZV9qJ6a; Fri, 14 Aug 2020 12:33:41 +0000 (UTC)
+	with ESMTP id jOHOOWwTogKG; Fri, 14 Aug 2020 14:52:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 242D1226F5;
-	Fri, 14 Aug 2020 12:33:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6E4E488CA8;
+	Fri, 14 Aug 2020 14:52:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8D6F01BF299
- for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 12:33:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B245A1BF83A
+ for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 14:52:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7527D88B79
- for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 12:33:34 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id AA10488C3D
+ for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 14:52:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sLa1lDBis-JI for <devel@linuxdriverproject.org>;
- Fri, 14 Aug 2020 12:33:31 +0000 (UTC)
+ with ESMTP id qh7D2fKCfg-2 for <devel@linuxdriverproject.org>;
+ Fri, 14 Aug 2020 14:52:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E5C3588B74
- for <devel@driverdev.osuosl.org>; Fri, 14 Aug 2020 12:33:31 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id 74so4481254pfx.13
- for <devel@driverdev.osuosl.org>; Fri, 14 Aug 2020 05:33:31 -0700 (PDT)
+Received: from mail-oo1-f65.google.com (mail-oo1-f65.google.com
+ [209.85.161.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0C09C88C30
+ for <devel@driverdev.osuosl.org>; Fri, 14 Aug 2020 14:52:11 +0000 (UTC)
+Received: by mail-oo1-f65.google.com with SMTP id g18so1971206ooa.0
+ for <devel@driverdev.osuosl.org>; Fri, 14 Aug 2020 07:52:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=IMDtNR26hhEws5urGuPDuNDJnZY4acdKK7mNXzOEzD4=;
- b=mfmccwaVDf8eBSVHF2kqV/jf8XJvqpNdJXpniiM9SNN7/X3M3Uq4wG35Ykymlyorrp
- sNIjDj4gI2t7BgmMBn1dAujA4Vzbf9EPhZQJccpoJr3Mei1a461MYkXiwEp7JQJyUoQA
- SDhiFQ00Q+JQ6ooc5pzg5vyvIlZCDNPFueU/82a1faa079k4T+nVbBdO+qrmM4Xeh2/S
- 3wBDa1/fr3Jcsl7v1QzQ1gtVFt4CCnlH9nZYAO/I0Pa8HpE/dO5me6jgS7vDayMTRhvh
- 6Gkr+/oTvIE5DGEG29CVkWA8x6asq84pGXbiTrNIrRpF9/NyivEsY5GOH20ccLEEDjJH
- NgbQ==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=lqyz283T/dIOw03L8mirawXjATrSpRlBUoTDYx+lgsQ=;
+ b=g8mbi7cYFE18DCJozJHPY/8hmD//hKEiErDq400L0M6X/47ZHeY+iF6O9+VA0TKcWU
+ QSOZGA9prMQSh5uImcIzB9IMevpVkXXwnmtSx3hwWEM9L/AhrqVyw7k6lY4edLAuTPth
+ r0jdvThIZ2cyyP2ofL0qM+8iMCfTzK6hcDVt0OnPgLatw1ZAcMJ0cxNQpRHNOs0u5dSx
+ 7EgiTAuPTdrPggSVvoQJLTQrvAstlDLUAbqlWYAOv8wYfcK5Iquzf+zDoFldg3Hw2A+/
+ MlOHvZ5opAJWluvgRGOKFFmf7SCp7HhdY2xgGWKdDhvqYRYQdLqO7PZ5FMpuVEam7Tcy
+ tjKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=IMDtNR26hhEws5urGuPDuNDJnZY4acdKK7mNXzOEzD4=;
- b=Y/CCWc7TdeGiDp3VZcnafi4ghGMOQpB7wabhIE1bzktLyiMDsbvcxeyg2oY0hTr/4q
- W15igfsV238pCKSvEZ0Xj19CrCFi74Y9Ix5+jhdYfziVI445qLy1K8VW5HOCwLKaTaJt
- sA6sv1eI13wA5r28kQa2VghIsgNYUSy1td8jhtwvZ07ENV0xWR/WFDF5pmNtwaS5vr8z
- u1d12Ws1DhbtmuWShRGLLBUO+8eXN6+H5GIg3HC+yqi02XzD8KLRdoy6mMcAiA2vaeLB
- VrEJrwXUpIlj+5nwifJFjx00INZh7s2DQb9L1/BF7cQEASC24Dqhpb5iKp6mDD0kDX+f
- rhGA==
-X-Gm-Message-State: AOAM5336aNlx18/99y/yLbzGgE+lBBEnY2NFenAo+21JnhNhsHgRjgXZ
- 3zwqS23b7vBMs7jwTZu0X55u3gbNhpj4Z3aQlGk=
-X-Google-Smtp-Source: ABdhPJy3RUbKPHh6p35U+35BTGkwbCGSjqaHJwafgAFRFxpcyomhgV6dy29zbUSeASnLIPH8tMtY5A==
-X-Received: by 2002:a63:ce56:: with SMTP id r22mr1624540pgi.141.1597408411457; 
- Fri, 14 Aug 2020 05:33:31 -0700 (PDT)
-Received: from cvds-vagarw7.iind.intel.com ([192.55.54.40])
- by smtp.googlemail.com with ESMTPSA id x8sm9808957pfp.101.2020.08.14.05.33.24
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 14 Aug 2020 05:33:31 -0700 (PDT)
-From: Vaibhav Agarwal <vaibhav.sr@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Alex Elder <elder@kernel.org>, Johan Hovold <johan@kernel.org>,
- Mark Greer <mgreer@animalcreek.com>
-Subject: [PATCH v3] staging: greybus: audio: fix uninitialized value issue
-Date: Fri, 14 Aug 2020 18:03:15 +0530
-Message-Id: <bc4f29eb502ccf93cd2ffd98db0e319fa7d0f247.1597408126.git.vaibhav.sr@gmail.com>
-X-Mailer: git-send-email 2.27.0
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=lqyz283T/dIOw03L8mirawXjATrSpRlBUoTDYx+lgsQ=;
+ b=SxayGAdIASYugAKD/NEgJDIiHYAUqjOul/khc5d9K6eHNVjfZIZREZaw3E8+5SFxl9
+ EnH1VJHCPby2OVAKZrGQRbvBwCXcCWyNRZe6PToPOeW8+5KdmP1BsJf//A2WY8dfuoC/
+ ln3MMXHiQj/+76hTf0rfhBKVgwex182BEq/PfRx3CL/jVOSEljzQ+xzhWOx5SsmFJhKX
+ ZiOfZaYbMNgQgQ1ttWWUzVu9yj9kHgFSnJm/KSvKak2ZGGCfIFbZNVD8JH8201+9sw9z
+ cQfuJQ9ICVm4mS1QAxwhETT2bFEKWAtGFpIiiwZLvG6GUcgWEBsGx/Pxn2KH2ne243Mw
+ 3mow==
+X-Gm-Message-State: AOAM5333wJKBnXkVpSa7ZPRujrN/jBXx0H43FELD5LG2SZiGeWqgpGRQ
+ NPOu3+z1k62HRkv9j3tWwes9AIznLe4KJ+hq+E8=
+X-Google-Smtp-Source: ABdhPJyhyaeVJDtRu0rtAsW+s8cKzEnfuz2FgOGOlGGzsBlUnoYLdlkUS2EpjLEZ9JZbREQLqRMq0EIw9r224mD01Xc=
+X-Received: by 2002:a4a:3443:: with SMTP id n3mr2016918oof.30.1597416729839;
+ Fri, 14 Aug 2020 07:52:09 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 2002:a4a:eb03:0:0:0:0:0 with HTTP; Fri, 14 Aug 2020 07:52:08
+ -0700 (PDT)
+From: "MR.ANDY CECERE" <rosemarysholm@gmail.com>
+Date: Fri, 14 Aug 2020 07:52:08 -0700
+Message-ID: <CAKOwYn2tX46d+w8ggNENB_w2yYeN4O3N2+5-sse3e7rdd+4Zaw@mail.gmail.com>
+Subject: REF:- INSTRUCTION TO CREDIT YOUR ACCOUNT WITH THE SUM OF (US$5Million)
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,94 +79,59 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, greybus-dev@lists.linaro.org,
- Colin Ian King <colin.king@canonical.com>, linux-kernel@vger.kernel.org,
- Vaibhav Agarwal <vaibhav.sr@gmail.com>
+Reply-To: info.usbanking1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The current implementation for gbcodec_mixer_dapm_ctl_put() uses
-uninitialized gbvalue for comparison with updated value. This was found
-using static analysis with coverity.
+-- 
+Us Bank.1025 Connecticut Ave.
+NW, Ste. 510. Washington, DC 20036.
+Tell: (213) 537-2170
+E-mail: info.usbanking1@gmail.com
 
-Uninitialized scalar variable (UNINIT)
-11. uninit_use: Using uninitialized value
-gbvalue.value.integer_value[0].
-460        if (gbvalue.value.integer_value[0] != val) {
+REF:- INSTRUCTION TO CREDIT YOUR ACCOUNT WITH THE SUM OF (US$5Million)
 
-This patch fixes the issue with fetching the gbvalue before using it for
-    comparision.
+This is the second time we are notifying you about this said fund. After
+due vetting and evaluation of your file that was sent to us by the Nigerian
+Government in conjunction with the Ministry of Finance and Central Bank of
+the Federal Republic of Nigeria.
 
-Fixes: 6339d2322c47 ("greybus: audio: Add topology parser for GB codec")
-Reported-by: Colin Ian King <colin.king@canonical.com>
-Signed-off-by: Vaibhav Agarwal <vaibhav.sr@gmail.com>
----
-Changelog:
-v2: Fix the missing check for return value after get_control.
-v3: Use single exit path to avoid missing autosuspend sequence.
----
- drivers/staging/greybus/audio_topology.c | 29 ++++++++++++------------
- 1 file changed, 15 insertions(+), 14 deletions(-)
+This bank has an instruction to see to the immediate release of the sum of
+(US $5Million) of your claim that has been holding since is transferred
+into your bank Account from their Domiciliary Account with this bank.
 
-diff --git a/drivers/staging/greybus/audio_topology.c b/drivers/staging/greybus/audio_topology.c
-index 2f9fdbdcd547..83b38ae8908c 100644
---- a/drivers/staging/greybus/audio_topology.c
-+++ b/drivers/staging/greybus/audio_topology.c
-@@ -456,6 +456,15 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
- 	val = ucontrol->value.integer.value[0] & mask;
- 	connect = !!val;
+We were meant to understand from our findings that you have been going
+through hard ways by paying a lot of charges to see to the release of your
+fund (US$5Million), which has been the handwork of some miscreant elements
+from that Country.
 
-+	ret = gb_pm_runtime_get_sync(bundle);
-+	if (ret)
-+		return ret;
-+
-+	ret = gb_audio_gb_get_control(module->mgmt_connection, data->ctl_id,
-+				      GB_AUDIO_INVALID_INDEX, &gbvalue);
-+	if (ret)
-+		goto exit;
-+
- 	/* update ucontrol */
- 	if (gbvalue.value.integer_value[0] != val) {
- 		for (wi = 0; wi < wlist->num_widgets; wi++) {
-@@ -466,25 +475,17 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
- 		gbvalue.value.integer_value[0] =
- 			cpu_to_le32(ucontrol->value.integer.value[0]);
+We advice that you stop further communication with any correspondence from
+any bank , or anywhere concerning your funds as you will receive your fund
+from this bank if you follow our instruction.
 
--		ret = gb_pm_runtime_get_sync(bundle);
--		if (ret)
--			return ret;
--
- 		ret = gb_audio_gb_set_control(module->mgmt_connection,
- 					      data->ctl_id,
- 					      GB_AUDIO_INVALID_INDEX, &gbvalue);
--
--		gb_pm_runtime_put_autosuspend(bundle);
--
--		if (ret) {
--			dev_err_ratelimited(codec_dev,
--					    "%d:Error in %s for %s\n", ret,
--					    __func__, kcontrol->id.name);
--			return ret;
--		}
- 	}
+We know your representatives in Nigeria or anywhere will advice you to
+still go ahead with them, which will be on your own risk. Your
+(US$5Million) will reflect in your designated bank account within five Bank
+working days.
 
--	return 0;
-+exit:
-+	gb_pm_runtime_put_autosuspend(bundle);
-+	if (ret)
-+		dev_err_ratelimited(codec_dev, "%d:Error in %s for %s\n", ret,
-+				    __func__, kcontrol->id.name);
-+	return ret;
- }
+Do not go through anybody again but through this Bank if you really want
+your fund. Finally, you are advice to re-confirm these to us,
 
- #define SOC_DAPM_MIXER_GB(xname, kcount, data) \
+Your Full Name,
+Contact address,
+Occupation
+Telephone and Fax Number for easy communication.
 
-base-commit: fc80c51fd4b23ec007e88d4c688f2cac1b8648e7
---
-2.27.0
+We need your second email gmail or hotmail for security and private reasons.
 
+Yours sincerely,
+MR.ANDY CECERE,
+Tel:.(213) 537-2170
+Assistance Secretary,
+U.S Bank.
+Email address ( info.usbanking1@gmail.com )
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
