@@ -1,72 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27768244B72
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Aug 2020 16:52:17 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D2FC8244C69
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Aug 2020 18:06:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A415F88CB7;
-	Fri, 14 Aug 2020 14:52:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3978487664;
+	Fri, 14 Aug 2020 16:06:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jOHOOWwTogKG; Fri, 14 Aug 2020 14:52:14 +0000 (UTC)
+	with ESMTP id QRQPuh-Evw9Z; Fri, 14 Aug 2020 16:06:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6E4E488CA8;
-	Fri, 14 Aug 2020 14:52:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B1A8875C1;
+	Fri, 14 Aug 2020 16:06:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B245A1BF83A
- for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 14:52:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D31441BF396
+ for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 16:06:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AA10488C3D
- for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 14:52:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CFBE88762B
+ for <devel@linuxdriverproject.org>; Fri, 14 Aug 2020 16:06:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qh7D2fKCfg-2 for <devel@linuxdriverproject.org>;
- Fri, 14 Aug 2020 14:52:11 +0000 (UTC)
+ with ESMTP id 8MfcNyvJrIKu for <devel@linuxdriverproject.org>;
+ Fri, 14 Aug 2020 16:06:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oo1-f65.google.com (mail-oo1-f65.google.com
- [209.85.161.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0C09C88C30
- for <devel@driverdev.osuosl.org>; Fri, 14 Aug 2020 14:52:11 +0000 (UTC)
-Received: by mail-oo1-f65.google.com with SMTP id g18so1971206ooa.0
- for <devel@driverdev.osuosl.org>; Fri, 14 Aug 2020 07:52:11 -0700 (PDT)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 013EB875C1
+ for <devel@driverdev.osuosl.org>; Fri, 14 Aug 2020 16:06:20 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id y10so2812938plr.11
+ for <devel@driverdev.osuosl.org>; Fri, 14 Aug 2020 09:06:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=lqyz283T/dIOw03L8mirawXjATrSpRlBUoTDYx+lgsQ=;
- b=g8mbi7cYFE18DCJozJHPY/8hmD//hKEiErDq400L0M6X/47ZHeY+iF6O9+VA0TKcWU
- QSOZGA9prMQSh5uImcIzB9IMevpVkXXwnmtSx3hwWEM9L/AhrqVyw7k6lY4edLAuTPth
- r0jdvThIZ2cyyP2ofL0qM+8iMCfTzK6hcDVt0OnPgLatw1ZAcMJ0cxNQpRHNOs0u5dSx
- 7EgiTAuPTdrPggSVvoQJLTQrvAstlDLUAbqlWYAOv8wYfcK5Iquzf+zDoFldg3Hw2A+/
- MlOHvZ5opAJWluvgRGOKFFmf7SCp7HhdY2xgGWKdDhvqYRYQdLqO7PZ5FMpuVEam7Tcy
- tjKQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=SVVgujljZTtyJP6NnksQakHSy/XVCreM9mOqtMP8xFc=;
+ b=ZZIGW/jLmpzk1d8NA4T7bUfo0j+jVcUhskU2RVTwoT5W3++oJCwv4kxx/pSVQhR2D2
+ 7bj0hFcWXTSgTQBNAKKv/wwS4sLjfq86l8EUsD6rVX7UopuQucjogCN1VsoXbPEM/2/N
+ 3gksrhGnVSSTjdJD6w5hTJua7m8ryaM1egfphkOk5RV6U5r6A1CS27UuXwYKlF4zy5ey
+ bu04sjTeBTpesueoncTwVWJaBRtQF+CE488jmDuRstb2F0fPOrIYNHqWkSmY/iK5KytN
+ 8AAZuvEEKGnMA10TANHHXOYTay/MXnO5lf2UxZSE7XVMzGmyrcSfFNahn8DmgmQ305lV
+ V70w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=lqyz283T/dIOw03L8mirawXjATrSpRlBUoTDYx+lgsQ=;
- b=SxayGAdIASYugAKD/NEgJDIiHYAUqjOul/khc5d9K6eHNVjfZIZREZaw3E8+5SFxl9
- EnH1VJHCPby2OVAKZrGQRbvBwCXcCWyNRZe6PToPOeW8+5KdmP1BsJf//A2WY8dfuoC/
- ln3MMXHiQj/+76hTf0rfhBKVgwex182BEq/PfRx3CL/jVOSEljzQ+xzhWOx5SsmFJhKX
- ZiOfZaYbMNgQgQ1ttWWUzVu9yj9kHgFSnJm/KSvKak2ZGGCfIFbZNVD8JH8201+9sw9z
- cQfuJQ9ICVm4mS1QAxwhETT2bFEKWAtGFpIiiwZLvG6GUcgWEBsGx/Pxn2KH2ne243Mw
- 3mow==
-X-Gm-Message-State: AOAM5333wJKBnXkVpSa7ZPRujrN/jBXx0H43FELD5LG2SZiGeWqgpGRQ
- NPOu3+z1k62HRkv9j3tWwes9AIznLe4KJ+hq+E8=
-X-Google-Smtp-Source: ABdhPJyhyaeVJDtRu0rtAsW+s8cKzEnfuz2FgOGOlGGzsBlUnoYLdlkUS2EpjLEZ9JZbREQLqRMq0EIw9r224mD01Xc=
-X-Received: by 2002:a4a:3443:: with SMTP id n3mr2016918oof.30.1597416729839;
- Fri, 14 Aug 2020 07:52:09 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=SVVgujljZTtyJP6NnksQakHSy/XVCreM9mOqtMP8xFc=;
+ b=VFz11ge+vOsjkCHggdsCwh7uIcGi5fNdci/mwH3aDa/yErVgeQAYpB5Tjf3CqK/Vnp
+ XCZttnsvAQVLWS7eeij8Z3+uLkt+2ZpefoBL9lej/6hN9Ru1y1JqYyj8lBvjwyOsneev
+ GgNycYjRPmEdz+U2dMR/QNVVHkChJMV/+/wslI1zrmpSl47FBCjKYBqwbZdkFI3EHSge
+ WlBPFBlKJN058AAlfQ7UIHd1rxT8rd+Aa5Tw1MVAs+aWsP89/Jk7sW7wTEeE6WGGaqhE
+ M/FtQ0nEu5vyeOdjYdMDpfKT9GQAfAZY+wCb3TMKWCpTKnSxNlDSonoHfoPFYvboALvm
+ XbIQ==
+X-Gm-Message-State: AOAM531UgwhWjD9yzHCPeFVn2OhS+aPKXvvNuaoZFKPiWJlKSeGEKIhv
+ s4CgNnhrLo4oJ7mEozaIftA=
+X-Google-Smtp-Source: ABdhPJzaWHQZ9DlZxR8aScqhOBpp10HepOQyWepHBDjcHkVmyg0GkAryg0PXMwKwf4QZhhkhZUe54A==
+X-Received: by 2002:a17:902:246:: with SMTP id 64mr2507754plc.70.1597421180418; 
+ Fri, 14 Aug 2020 09:06:20 -0700 (PDT)
+Received: from localhost ([2001:e42:102:1532:160:16:113:140])
+ by smtp.gmail.com with ESMTPSA id w130sm9834458pfd.104.2020.08.14.09.06.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 14 Aug 2020 09:06:20 -0700 (PDT)
+From: Coiby Xu <coiby.xu@gmail.com>
+To: netdev@vger.kernel.org
+Subject: [RFC 1/3] Initialize devlink health dump framework for the dlge driver
+Date: Sat, 15 Aug 2020 00:05:59 +0800
+Message-Id: <20200814160601.901682-2-coiby.xu@gmail.com>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20200814160601.901682-1-coiby.xu@gmail.com>
+References: <20200814160601.901682-1-coiby.xu@gmail.com>
 MIME-Version: 1.0
-Received: by 2002:a4a:eb03:0:0:0:0:0 with HTTP; Fri, 14 Aug 2020 07:52:08
- -0700 (PDT)
-From: "MR.ANDY CECERE" <rosemarysholm@gmail.com>
-Date: Fri, 14 Aug 2020 07:52:08 -0700
-Message-ID: <CAKOwYn2tX46d+w8ggNENB_w2yYeN4O3N2+5-sse3e7rdd+4Zaw@mail.gmail.com>
-Subject: REF:- INSTRUCTION TO CREDIT YOUR ACCOUNT WITH THE SUM OF (US$5Million)
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,59 +85,189 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: info.usbanking1@gmail.com
+Cc: Michal Kubecek <mkubecek@suse.cz>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ GR-Linux-NIC-Dev@marvell.com, Manish Chopra <manishc@marvell.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ Benjamin Poirier <benjamin.poirier@gmail.com>,
+ linux-kernel-mentees@lists.linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Initialize devlink health dump framework for the dlge driver so the
+coredump could be done via devlink.
+
+Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
+---
+ drivers/staging/qlge/Makefile      |  2 +-
+ drivers/staging/qlge/qlge.h        |  9 +++++++
+ drivers/staging/qlge/qlge_health.c | 43 ++++++++++++++++++++++++++++++
+ drivers/staging/qlge/qlge_health.h |  2 ++
+ drivers/staging/qlge/qlge_main.c   | 21 +++++++++++++++
+ 5 files changed, 76 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/staging/qlge/qlge_health.c
+ create mode 100644 drivers/staging/qlge/qlge_health.h
+
+diff --git a/drivers/staging/qlge/Makefile b/drivers/staging/qlge/Makefile
+index 1dc2568e820c..0a1e4c8dd546 100644
+--- a/drivers/staging/qlge/Makefile
++++ b/drivers/staging/qlge/Makefile
+@@ -5,4 +5,4 @@
+ 
+ obj-$(CONFIG_QLGE) += qlge.o
+ 
+-qlge-objs := qlge_main.o qlge_dbg.o qlge_mpi.o qlge_ethtool.o
++qlge-objs := qlge_main.o qlge_dbg.o qlge_mpi.o qlge_ethtool.o qlge_health.o
+diff --git a/drivers/staging/qlge/qlge.h b/drivers/staging/qlge/qlge.h
+index fc8c5ca8935d..055ded6dab60 100644
+--- a/drivers/staging/qlge/qlge.h
++++ b/drivers/staging/qlge/qlge.h
+@@ -2061,6 +2061,14 @@ struct nic_operations {
+ 	int (*port_initialize) (struct ql_adapter *);
+ };
+ 
++
++
++struct qlge_devlink {
++        struct ql_adapter *qdev;
++        struct net_device *ndev;
++        struct devlink_health_reporter *reporter;
++};
++
+ /*
+  * The main Adapter structure definition.
+  * This structure has all fields relevant to the hardware.
+@@ -2078,6 +2086,7 @@ struct ql_adapter {
+ 	struct pci_dev *pdev;
+ 	struct net_device *ndev;	/* Parent NET device */
+ 
++	struct qlge_devlink *devlink;
+ 	/* Hardware information */
+ 	u32 chip_rev_id;
+ 	u32 fw_rev_id;
+diff --git a/drivers/staging/qlge/qlge_health.c b/drivers/staging/qlge/qlge_health.c
+new file mode 100644
+index 000000000000..292f6b1827e1
+--- /dev/null
++++ b/drivers/staging/qlge/qlge_health.c
+@@ -0,0 +1,43 @@
++#include "qlge.h"
++#include "qlge_health.h"
++
++static int
++qlge_reporter_coredump(struct devlink_health_reporter *reporter,
++			struct devlink_fmsg *fmsg, void *priv_ctx,
++			struct netlink_ext_ack *extack)
++{
++	return 0;
++}
++
++static const struct devlink_health_reporter_ops qlge_reporter_ops = {
++		.name = "dummy",
++		.dump = qlge_reporter_coredump,
++};
++
++int qlge_health_create_reporters(struct qlge_devlink *priv)
++{
++	int err;
++
++	struct devlink_health_reporter *reporter;
++	struct devlink *devlink;
++
++	devlink = priv_to_devlink(priv);
++	reporter =
++		devlink_health_reporter_create(devlink, &qlge_reporter_ops,
++					       0,
++					       priv);
++	if (IS_ERR(reporter)) {
++		netdev_warn(priv->ndev,
++			    "Failed to create reporter, err = %ld\n",
++			    PTR_ERR(reporter));
++		return PTR_ERR(reporter);
++	}
++	priv->reporter = reporter;
++
++	if (err)
++		return err;
++
++	return 0;
++}
++
++
+diff --git a/drivers/staging/qlge/qlge_health.h b/drivers/staging/qlge/qlge_health.h
+new file mode 100644
+index 000000000000..07d3bafab845
+--- /dev/null
++++ b/drivers/staging/qlge/qlge_health.h
+@@ -0,0 +1,2 @@
++#include <net/devlink.h>
++int qlge_health_create_reporters(struct qlge_devlink *priv);
+diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
+index 1650de13842f..b2be7f4b7dd6 100644
+--- a/drivers/staging/qlge/qlge_main.c
++++ b/drivers/staging/qlge/qlge_main.c
+@@ -42,6 +42,7 @@
+ #include <net/ip6_checksum.h>
+ 
+ #include "qlge.h"
++#include "qlge_health.h"
+ 
+ char qlge_driver_name[] = DRV_NAME;
+ const char qlge_driver_version[] = DRV_VERSION;
+@@ -4550,6 +4551,8 @@ static void ql_timer(struct timer_list *t)
+ 	mod_timer(&qdev->timer, jiffies + (5 * HZ));
+ }
+ 
++static const struct devlink_ops qlge_devlink_ops;
++
+ static int qlge_probe(struct pci_dev *pdev,
+ 		      const struct pci_device_id *pci_entry)
+ {
+@@ -4557,6 +4560,13 @@ static int qlge_probe(struct pci_dev *pdev,
+ 	struct ql_adapter *qdev = NULL;
+ 	static int cards_found;
+ 	int err = 0;
++	struct devlink *devlink;
++	struct qlge_devlink *qlge_dl;
++
++	devlink = devlink_alloc(&qlge_devlink_ops, sizeof(struct qlge_devlink));
++	if (!devlink)
++		return -ENOMEM;
++	qlge_dl = devlink_priv(devlink);
+ 
+ 	ndev = alloc_etherdev_mq(sizeof(struct ql_adapter),
+ 				 min(MAX_CPUS,
+@@ -4615,6 +4625,15 @@ static int qlge_probe(struct pci_dev *pdev,
+ 		free_netdev(ndev);
+ 		return err;
+ 	}
++
++	err = devlink_register(devlink, &pdev->dev);
++	if (err)
++		devlink_free(devlink);
++
++	qlge_health_create_reporters(qlge_dl);
++	qlge_dl->qdev = qdev;
++	qlge_dl->ndev = ndev;
++	qdev->devlink = qlge_dl;
+ 	/* Start up the timer to trigger EEH if
+ 	 * the bus goes dead
+ 	 */
+@@ -4647,6 +4666,8 @@ static void qlge_remove(struct pci_dev *pdev)
+ 	unregister_netdev(ndev);
+ 	ql_release_all(pdev);
+ 	pci_disable_device(pdev);
++	devlink_unregister(priv_to_devlink(qdev->devlink));
++	devlink_health_reporter_destroy(qdev->devlink->reporter);
+ 	free_netdev(ndev);
+ }
+ 
 -- 
-Us Bank.1025 Connecticut Ave.
-NW, Ste. 510. Washington, DC 20036.
-Tell: (213) 537-2170
-E-mail: info.usbanking1@gmail.com
+2.27.0
 
-REF:- INSTRUCTION TO CREDIT YOUR ACCOUNT WITH THE SUM OF (US$5Million)
-
-This is the second time we are notifying you about this said fund. After
-due vetting and evaluation of your file that was sent to us by the Nigerian
-Government in conjunction with the Ministry of Finance and Central Bank of
-the Federal Republic of Nigeria.
-
-This bank has an instruction to see to the immediate release of the sum of
-(US $5Million) of your claim that has been holding since is transferred
-into your bank Account from their Domiciliary Account with this bank.
-
-We were meant to understand from our findings that you have been going
-through hard ways by paying a lot of charges to see to the release of your
-fund (US$5Million), which has been the handwork of some miscreant elements
-from that Country.
-
-We advice that you stop further communication with any correspondence from
-any bank , or anywhere concerning your funds as you will receive your fund
-from this bank if you follow our instruction.
-
-We know your representatives in Nigeria or anywhere will advice you to
-still go ahead with them, which will be on your own risk. Your
-(US$5Million) will reflect in your designated bank account within five Bank
-working days.
-
-Do not go through anybody again but through this Bank if you really want
-your fund. Finally, you are advice to re-confirm these to us,
-
-Your Full Name,
-Contact address,
-Occupation
-Telephone and Fax Number for easy communication.
-
-We need your second email gmail or hotmail for security and private reasons.
-
-Yours sincerely,
-MR.ANDY CECERE,
-Tel:.(213) 537-2170
-Assistance Secretary,
-U.S Bank.
-Email address ( info.usbanking1@gmail.com )
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
