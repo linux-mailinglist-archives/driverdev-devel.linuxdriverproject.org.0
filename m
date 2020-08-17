@@ -2,68 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCEC9246304
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 11:20:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BE24246312
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 11:20:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 60296877D4;
-	Mon, 17 Aug 2020 09:20:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B79F1877EC;
+	Mon, 17 Aug 2020 09:20:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 33YzCE29sfEt; Mon, 17 Aug 2020 09:20:19 +0000 (UTC)
+	with ESMTP id wNw6ApSaQ-yZ; Mon, 17 Aug 2020 09:20:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3984F876FF;
-	Mon, 17 Aug 2020 09:20:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BB8ED87748;
+	Mon, 17 Aug 2020 09:20:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 246CB1BF423
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:20:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AC8521BF423
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:20:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 17A04204E0
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:20:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 99F2A204E0
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:20:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m14Uai-aUjLX for <devel@linuxdriverproject.org>;
- Mon, 17 Aug 2020 09:20:15 +0000 (UTC)
+ with ESMTP id hgt-IcEml8G0 for <devel@linuxdriverproject.org>;
+ Mon, 17 Aug 2020 09:20:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
- [209.85.216.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 4C0BA204C9
- for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 09:20:15 +0000 (UTC)
-Received: by mail-pj1-f68.google.com with SMTP id mt12so7516536pjb.4
- for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 02:20:15 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 09722204C9
+ for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 09:20:29 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id m34so7817803pgl.11
+ for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 02:20:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=48ZUy5TmzQBYUzPrjZvYPJeHWlYkLbZYovshPbclrcg=;
- b=FoufY+wCt538UGODDBNoxdFMHMLuyZNGQ6MHR7pZXvqvIrAnPj8PHB4pQsWp/mWg6o
- KsvcX8Y87zDteEZApNo70LMlrBVZaBliAR2vLGx60Xbo7CohHtYkdt/Mg+u50DG1h36h
- 9Fwly9brTQHjZlbl7lAqxgOWAbzrsFhJBcqUC23aSRj/VpiU2JCK2mbui+uqvhxhgmrl
- IvuQewyHW9KqIl6MAWFr6dd8dgP34kntnReO4dunTk9vfs81InEHWHE3302xh+V3TqjN
- 5ledaxK7A0foZnhRefzAA6Ra/wxb6d+K7gxqNB1TdKvqBatRR5FaVQrX9ZSt/5m+frdy
- H7BA==
+ bh=QhPrNAdoeJw7hjMh0pGw+sjN4I+tDKGZ699gTXbu9Pc=;
+ b=cTZNXtt7wNfV+e9cJ76fTsPPVQZeYJIEY2TuWXhYA+6rL5+mQtvGCpP7nLFEEHniIY
+ ttRYkgElaSdYzjheNY+aJq+wt2TbwHocg2rHezNcVM8LeXUN8gM2nT5FPn17bkKOZJ/R
+ FpcUeStKvy2IzIoPd11K1+w6c4p381QKwm4Dhy02AfZUx3SzHjBImZSC4gDgffWV6h+v
+ 8YTTF/IpemIy0SQFRYOlz4ZDOq/9HJmYTUqHCVWY4C5ejhmLcUfPEpCe73ql4ONWBhLK
+ UZXD9rMiGnEuf0tCOKH/CAPFPO+ziHa24otJgykW+Fa09Aud/a6J7DqgcJ9+cKbuVreV
+ L6OQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=48ZUy5TmzQBYUzPrjZvYPJeHWlYkLbZYovshPbclrcg=;
- b=qbsHcgn9hE82Ow4NS7xbujjiSObxlmzuIVYnCQAmU4hzy2/1CDYx4IQYemK4x498UW
- TN7N8ehY4AK+VlpNpZBkvVU61OuUgubVqYji99WQGe1YObqBdjB4C+jFa6grNCX2Tgy9
- EMi/rPDZqeNWzaScTwWAM9cokz6mt4O2/EZbTqBiEyDivYp1N+dytDM8lV3fOWt+yDmQ
- Dpwdev7FCM9NUWjAGCDYC9Y1+Tdim6gytolqwItCD2CMMrpS71b4JahqYk58Dif4zqkx
- Pp/uSP/qmlD2pqlP+H5B27Ksgjg4HHoBw+6vWldRkgxwUs00aNTd70mtAw3SJC54xZxE
- hCvg==
-X-Gm-Message-State: AOAM533qF/y2CTn0jBKSeukKREkaQqfrikASdGwfU4CVtFR/D66BVw5B
- FijNT1UU6GGqcdfKN5VcEsU=
-X-Google-Smtp-Source: ABdhPJzGq3wy6E/Dy/SnfM+UdmLXd8ExYtYFE4LwG7DZVH6d40QHdot/zCUw6TFKmzo3uMNttbjBZg==
-X-Received: by 2002:a17:902:bd85:: with SMTP id
- q5mr9922465pls.99.1597656014891; 
- Mon, 17 Aug 2020 02:20:14 -0700 (PDT)
+ bh=QhPrNAdoeJw7hjMh0pGw+sjN4I+tDKGZ699gTXbu9Pc=;
+ b=ftlxF7l3S9FRMY1aMp9Hgdj3z6cV+bCfCyON6vJr0xZLL9q7ttV60CDpPWl6tKVXxj
+ mdM2mm4ZE+A9v0XeXhE/8ayMl6W1uOjumyTk7mhIDb07dntXSb7fjPASEVoiIHuUw7E6
+ 9BxIKRzUpTmB3bvq35lgGbbwZa0XB8itPYiCbwLKW2C6jFIAE/TfEpAvADsHa8G2fF91
+ wAD8XD2p4dflNUeSDdmVmSq3hezVaVkpXhP6CIdYSt5I3UKV/JfOsiu5zk+MYga7ZuEL
+ AYKfQfmnJhNLNCiMuORYUYrsKMhARrNhioX6ea69R6BLJw/EXU2cBI8ZfN5sHW/9kMie
+ dY4Q==
+X-Gm-Message-State: AOAM531LGgArbid8SXsAoTx3l+1KbEe2fui8mJZYoLemTd4EhvacyaD8
+ yKnxmjsdkkz88JA4zm83ckI=
+X-Google-Smtp-Source: ABdhPJzDyD/NrPXHKKUPdhhRODzrKgFhi3OcVBh0EqkEsk2AwP8x+cz/Kr8PlDriSCVb6p68quAdVw==
+X-Received: by 2002:a63:4545:: with SMTP id u5mr9191366pgk.229.1597656028627; 
+ Mon, 17 Aug 2020 02:20:28 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.202.98])
- by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.20.00
+ by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.20.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 02:20:14 -0700 (PDT)
+ Mon, 17 Aug 2020 02:20:28 -0700 (PDT)
 From: Allen Pais <allen.cryptic@gmail.com>
 To: jdike@addtoit.com, richard@nod.at, anton.ivanov@cambridgegreys.com,
  3chas3@gmail.com, axboe@kernel.dk, stefanr@s5r6.in-berlin.de,
@@ -74,9 +73,10 @@ To: jdike@addtoit.com, richard@nod.at, anton.ivanov@cambridgegreys.com,
  ulf.hansson@linaro.org, mporter@kernel.crashing.org, alex.bou9@gmail.com,
  broonie@kernel.org, martyn@welchs.me.uk, manohar.vanga@gmail.com,
  mitch@sfgoth.com, davem@davemloft.net, kuba@kernel.org
-Subject: [PATCH] net: atm: convert tasklets callbacks to use from_tasklet()
-Date: Mon, 17 Aug 2020 14:46:11 +0530
-Message-Id: <20200817091617.28119-17-allen.cryptic@gmail.com>
+Subject: [PATCH] platform: goldfish: convert tasklets to use new
+ tasklet_setup() API
+Date: Mon, 17 Aug 2020 14:46:12 +0530
+Message-Id: <20200817091617.28119-18-allen.cryptic@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200817091617.28119-1-allen.cryptic@gmail.com>
 References: <20200817091617.28119-1-allen.cryptic@gmail.com>
@@ -111,27 +111,44 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 From: Allen Pais <allen.lkml@gmail.com>
 
-Update all the callbacks of all tasklets by using
-from_tasklet() and remove .data field.
+In preparation for unconditionally passing the
+struct tasklet_struct pointer to all tasklet
+callbacks, switch to using the new tasklet_setup()
+and from_tasklet() to pass the tasklet pointer explicitly.
 
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- net/atm/pppoatm.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/platform/goldfish/goldfish_pipe.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/net/atm/pppoatm.c b/net/atm/pppoatm.c
-index 579b66da1d95..3803be8470f7 100644
---- a/net/atm/pppoatm.c
-+++ b/net/atm/pppoatm.c
-@@ -416,7 +416,6 @@ static int pppoatm_assign_vcc(struct atm_vcc *atmvcc, void __user *arg)
- 	pvcc->chan.mtu = atmvcc->qos.txtp.max_sdu - PPP_HDRLEN -
- 	    (be.encaps == e_vc ? 0 : LLC_LEN);
- 	pvcc->wakeup_tasklet = tasklet_proto;
--	pvcc->wakeup_tasklet.data = (unsigned long) &pvcc->chan;
- 	err = ppp_register_channel(&pvcc->chan);
- 	if (err != 0) {
- 		kfree(pvcc);
+diff --git a/drivers/platform/goldfish/goldfish_pipe.c b/drivers/platform/goldfish/goldfish_pipe.c
+index 1ab207ec9c94..b9bead07760c 100644
+--- a/drivers/platform/goldfish/goldfish_pipe.c
++++ b/drivers/platform/goldfish/goldfish_pipe.c
+@@ -577,10 +577,10 @@ static struct goldfish_pipe *signalled_pipes_pop_front(
+ 	return pipe;
+ }
+ 
+-static void goldfish_interrupt_task(unsigned long dev_addr)
++static void goldfish_interrupt_task(struct tasklet_struct *t)
+ {
+ 	/* Iterate over the signalled pipes and wake them one by one */
+-	struct goldfish_pipe_dev *dev = (struct goldfish_pipe_dev *)dev_addr;
++	struct goldfish_pipe_dev *dev = from_tasklet(dev, t, irq_tasklet);
+ 	struct goldfish_pipe *pipe;
+ 	int wakes;
+ 
+@@ -811,8 +811,7 @@ static int goldfish_pipe_device_init(struct platform_device *pdev,
+ {
+ 	int err;
+ 
+-	tasklet_init(&dev->irq_tasklet, &goldfish_interrupt_task,
+-		     (unsigned long)dev);
++	tasklet_setup(&dev->irq_tasklet, &goldfish_interrupt_task);
+ 
+ 	err = devm_request_irq(&pdev->dev, dev->irq,
+ 			       goldfish_pipe_interrupt,
 -- 
 2.17.1
 
