@@ -1,88 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4236245E07
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 09:33:20 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28340245E5C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 09:50:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 979EE203E6;
-	Mon, 17 Aug 2020 07:33:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B590A87834;
+	Mon, 17 Aug 2020 07:50:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3bDsr5AKuoVz; Mon, 17 Aug 2020 07:33:16 +0000 (UTC)
+	with ESMTP id Cv0UANd7anzk; Mon, 17 Aug 2020 07:50:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AD2AF20378;
-	Mon, 17 Aug 2020 07:33:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7CC92877F5;
+	Mon, 17 Aug 2020 07:50:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B56821BF471
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:33:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9D8AE1BF471
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:50:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A01F120336
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:33:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9A2C487801
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:50:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WXg6NjpitJbo for <devel@linuxdriverproject.org>;
- Mon, 17 Aug 2020 07:33:08 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com
- [66.111.4.28])
- by silver.osuosl.org (Postfix) with ESMTPS id 68D861FFC1
- for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 07:33:08 +0000 (UTC)
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailout.nyi.internal (Postfix) with ESMTP id 4A88C5C00CF;
- Mon, 17 Aug 2020 03:33:07 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute1.internal (MEProxy); Mon, 17 Aug 2020 03:33:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=VmfvyfcxdbOHAJ8N+bbgNYsHoP3
- zzsZJ9lVBmrLPcWM=; b=rrYA2740t+Teny0L9++CXu2BuvIrhjOygBeEqQyqmKm
- XsPf9ti4pbxN12XQmuO3+Er+KmUoXqUCkS5PFCl57TLGZ5XFOC6j/B6WSinK5AI2
- C6Mdb/pa6k48m31tXk+D4f82kFIpV4nmPGEaTD8GbIhyUVKSXXy07FF/Q1anH8mA
- LA2ThNVg71b2cAjVzYRL7S6vtMo1E5OFbo8Jo8uBJar+PnA5VKkK97YyJs13+u7Z
- bRaF1KIcvC8MPfsdiPJFKDZQwwWtilMXEHpx3qOdrZgaQNVJexzZQiUM2PVi5Sz5
- BjjtKX9QBF27CBrZwhIaJONE6vHYozqFDE2cTfK6fpw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=Vmfvyf
- cxdbOHAJ8N+bbgNYsHoP3zzsZJ9lVBmrLPcWM=; b=FLTh58TsQxBKmeSvAEYD+P
- bkBuRcwhqCSpR1S4IcUgs72U4nPOCUDPSbsSK3cDN57zOoKNHkmq3u9LRojyUydC
- reeyhF0GIQWm4E/VnPN+lYMZDzu2Amm2Stuz/xjLqgNJzY8ED05BmhTEvtQ0pfDY
- klbN/CiDv5DCC66uyIdcQK0hDbqAMpjOhjZCpVpWPBDctICDtejIh9EI7HxY/eu4
- BpGrDpw5qfbPUSoAKw4iqAkIbNkWG73DI5oFCfDdcYmCXxdy4wj6zxh0MJK8TT2f
- +UjP4vXC1jm2ivLur5qFytXEf27wjZpXnFWkJXDQGGlwOg34TbhsLTcUocZ8c7oQ
- ==
-X-ME-Sender: <xms:szI6X53lRVn94Yl7f73oJoDRY33qMpo3OAGVsJxcS4TUbflCGUZBxw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduiedruddtvddgudduiecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecunecujfgurhepfffhvffukfhfgggtuggjsehttd
- ertddttddvnecuhfhrohhmpefirhgvghcumffjuceoghhrvghgsehkrhhorghhrdgtohhm
- qeenucggtffrrghtthgvrhhnpeevueehjefgfffgiedvudekvdektdelleelgefhleejie
- eugeegveeuuddukedvteenucfkphepkeefrdekiedrkeelrddutdejnecuvehluhhsthgv
- rhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrd
- gtohhm
-X-ME-Proxy: <xmx:szI6XwHuv-nwIg0xAyPOl50v-tw3IcCnB2DsYZDo6fYWiPdcLN0GkQ>
- <xmx:szI6X56U2TSTFYWlwPHW0DDb16E86Xr5ymmb79lA296P6jI6l0l0OA>
- <xmx:szI6X22ntUZkpY5a4PCmTDkyLhpwlWkt218KLFFixZnoAx0ar5QO-g>
- <xmx:szI6XwSHoCoB9934KNoIFfUUMpBirEf2_za9AJ7dAuK2Zq5Pb8fhPw>
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- by mail.messagingengine.com (Postfix) with ESMTPA id A963E30600B1;
- Mon, 17 Aug 2020 03:33:06 -0400 (EDT)
-Date: Mon, 17 Aug 2020 09:33:26 +0200
-From: Greg KH <greg@kroah.com>
-To: Injae Kang <abcinje@gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: fix coding style
-Message-ID: <20200817073326.GB372202@kroah.com>
-References: <20200817061520.5886-1-abcinje@gmail.com>
+ with ESMTP id WiAfos77Bm2u for <devel@linuxdriverproject.org>;
+ Mon, 17 Aug 2020 07:50:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 215F687647
+ for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 07:50:20 +0000 (UTC)
+Received: from mail.kernel.org (ip5f5ad5a3.dynamic.kabel-deutschland.de
+ [95.90.213.163])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id CEB9D207DF;
+ Mon, 17 Aug 2020 07:50:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597650620;
+ bh=pEmZ0bJwP+2jy7JV6MazNJRUpimkMGqSRi6r/UUBXcE=;
+ h=From:To:Cc:Subject:Date:From;
+ b=iO7lGho8i1sBtrmzrfWbT3D8qOHg90bwGxSGDCjffji/8hjWZ805E7LsJ41smtHML
+ YmMkrWO10hX92w47Sn53e6i9zgs85tWOyl5ZPn8xPMERnXY1CVRZ5O7ormvcXWfKzg
+ txOZJrIUz1gnaQIhcenhYVN+YbW+sDs8Ty9Q1ezI=
+Received: from mchehab by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1k7ZuL-00Bfbr-OZ; Mon, 17 Aug 2020 09:50:17 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 00/16] IOMMU driver for Kirin 960/970
+Date: Mon, 17 Aug 2020 09:49:59 +0200
+Message-Id: <cover.1597650455.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200817061520.5886-1-abcinje@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,62 +66,66 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Joerg Roedel <jroedel@suse.de>, Manivannan Sadhasivam <mani@kernel.org>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Chenfeng <puck.chen@hisilicon.com>, Joerg Roedel <joro@8bytes.org>,
+ linuxarm@huawei.com, Wei Xu <xuwei5@hisilicon.com>,
+ linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>, John Stultz <john.stultz@linaro.org>,
+ mauro.chehab@huawei.com, Suzhuangluan <suzhuangluan@hisilicon.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Aug 17, 2020 at 06:15:20AM +0000, Injae Kang wrote:
-> Fix coding style of core/rtw_cmd.c
-> 
-> Signed-off-by: Injae Kang <abcinje@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/core/rtw_cmd.c | 168 +++++++++++------------
->  1 file changed, 79 insertions(+), 89 deletions(-)
-> 
+Add a driver for the Kirin 960/970 iommu.
 
-Hi,
+As on the past series, this starts from the original 4.9 driver from
+the 96boards tree:
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+	https://github.com/96boards-hikey/linux/tree/hikey970-v4.9
 
-You are receiving this message because of the following common error(s)
-as indicated below:
+The remaining patches add SPDX headers and make it build and run with
+the upstream Kernel.
 
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
+Chenfeng (1):
+  iommu: add support for HiSilicon Kirin 960/970 iommu
 
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
+Mauro Carvalho Chehab (15):
+  iommu: hisilicon: remove default iommu_map_sg handler
+  iommu: hisilicon: map and unmap ops gained new arguments
+  iommu: hisi_smmu_lpae: rebase it to work with upstream
+  iommu: hisi_smmu: remove linux/hisi/hisi-iommu.h
+  iommu: hisilicon: cleanup its code style
+  iommu: hisi_smmu_lpae: get rid of IOMMU_SEC and IOMMU_DEVICE
+  iommu: get rid of map/unmap tile functions
+  iommu: hisi_smmu_lpae: use the right code to get domain-priv data
+  iommu: hisi_smmu_lpae: convert it to probe_device
+  iommu: add Hisilicon Kirin970 iommu at the building system
+  iommu: hisi_smmu_lpae: cleanup printk macros
+  iommu: hisi_smmu_lpae: make OF compatible more standard
+  dt: add an spec for the Kirin36x0 SMMU
+  dt: hi3670-hikey970.dts: load the SMMU driver on Hikey970
+  staging: hikey9xx: add an item about the iommu driver
 
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
+ .../iommu/hisilicon,kirin36x0-smmu.yaml       |  55 ++
+ .../boot/dts/hisilicon/hi3670-hikey970.dts    |   3 +
+ drivers/staging/hikey9xx/Kconfig              |   9 +
+ drivers/staging/hikey9xx/Makefile             |   1 +
+ drivers/staging/hikey9xx/TODO                 |   1 +
+ drivers/staging/hikey9xx/hisi_smmu.h          | 196 ++++++
+ drivers/staging/hikey9xx/hisi_smmu_lpae.c     | 648 ++++++++++++++++++
+ 7 files changed, 913 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iommu/hisilicon,kirin36x0-smmu.yaml
+ create mode 100644 drivers/staging/hikey9xx/hisi_smmu.h
+ create mode 100644 drivers/staging/hikey9xx/hisi_smmu_lpae.c
 
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
+-- 
+2.26.2
 
-thanks,
 
-greg k-h's patch email bot
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
