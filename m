@@ -1,68 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A242D2462CC
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 11:19:13 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4FD45854AF;
-	Mon, 17 Aug 2020 09:19:12 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FDHF10OwiIwj; Mon, 17 Aug 2020 09:19:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 67AD485429;
-	Mon, 17 Aug 2020 09:19:09 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8096F1BF423
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:19:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A55E2462D2
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 11:19:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 78B8E8768A
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:19:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EA05087647;
+	Mon, 17 Aug 2020 09:19:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DqsBbgAVLVhR; Mon, 17 Aug 2020 09:19:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id D708E86C18;
+	Mon, 17 Aug 2020 09:19:19 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 00C5A1BF423
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:19:18 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id F0DEE87D11
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:19:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Bd47fyYB+pAi for <devel@linuxdriverproject.org>;
- Mon, 17 Aug 2020 09:19:04 +0000 (UTC)
+ with ESMTP id JGKtnFY5x5CA for <devel@linuxdriverproject.org>;
+ Mon, 17 Aug 2020 09:19:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 849568764B
- for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 09:19:04 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id i10so2286730pgk.1
- for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 02:19:04 -0700 (PDT)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EB96987D28
+ for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 09:19:16 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id h12so7818886pgm.7
+ for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 02:19:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=H53NItB96hhK0lZMvS5UWr62MZO4kDlJxK+OZQUxxIA=;
- b=Q9//06PpCdzBcB5+2FmR3vcPX8ASc3s+ZqMBFaeRwEkDMjoO3ubFfEuRDvNyw69Dic
- A+UvP5p7Sa7LwPskN9TiPkDaTIGuH2iea/lkrw98pDSnGmsaUfJX37kbIJa1u46YHB5f
- Biss505SKwh0HAGB5MaLRxgXu1CO2EwXczixBc538BCK83Jyz086JRCbTSXgutB7e4FX
- /W9NvIU4fSh/Ib/tv7t7BztqxaZ4vcJQgOiXTE1ktzbLpdXGu8a6uU6wMvjuhA4hl/Yv
- klgo2KrIpjJmP8zUsX/rM/tO2Wej91r/JteBk1SMuYF1iBTXfyMg4piAFIrY2mqWn3/s
- KsRg==
+ bh=BhmC2dfR9Z2FpcZrdiI/rF+di1B3O2m2kCZjxi0Nzus=;
+ b=pH1u/a65jck4CF/HaoBjMB2yQ7DQRuOjq2EQe/YOxb/OD7LRTsfaGPckhcN+7n9R1u
+ 8haLtPH3/hoBwBJOPjlUu2iYNKNPElK2iQu8xAhfWEfShI0bje7FwzTh8mTzsrV2FN/G
+ T9q7gfYpRkJs922O9WCJDcFzNiLghUNavbp+zlHscWAG2oqdLCD4z56Z3vUZOyp4D6dk
+ KhQqBlfrQV46/Pb2iMfJWkdHHcpVNp7jqYJJ9NEWjQKozVbz9oxhRN55xVrJNhB3JaO3
+ Dp4F6ts/oPz/ziaWkRipTHlRzYfTQoj0G/RUnkwPSw1bnvtUKBj+EftqSWTMiaLoQ1jv
+ lH8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=H53NItB96hhK0lZMvS5UWr62MZO4kDlJxK+OZQUxxIA=;
- b=Np53DOiyZzZcnF6WkA9y5/m21YwupQZJwLukV1VWB4JYh3lALtg3MeCtB/JgiX5Pd/
- zGQ8BVz5grWAEGVHR3Z8Cqkb+L1kZggDZi5iMSOzIV4GssYceR+PZwaZ4qMxuW1w82fM
- YfAqmCZYKL/AkNcqe+LVH6tUdOsyNvINyIu/5SyE+rZy64Ut69Ih+tOnQYNgZztaZYYQ
- Pnlc8WG3LzVwe1FtkTMCNIpZN7vgNrnd3ySKkaDMVcczaHcKiVn5sxl/MU/YrdYW7Edh
- PoLPXG1l7JZZKZH/6rxHic8jh+2Omkg+jGWCoKxvlTBK4I9Ltnk/7O1C7+jNliA1HLHH
- 4B6w==
-X-Gm-Message-State: AOAM532wgDnlDGVGGah0tl6/McwzFeGEu5TVO6eRA9mYZXO3bHrFokPc
- 5wv6T0JBnPxSC9ZoqGUbdq0=
-X-Google-Smtp-Source: ABdhPJwwv5IFUmxu6OFvp0ePee/WauDvfAGFpW7BnuWSsn7pFfdtUZETkOuz5u6jMhvkrLcgz5ASfg==
-X-Received: by 2002:a63:5552:: with SMTP id f18mr8843602pgm.298.1597655944120; 
- Mon, 17 Aug 2020 02:19:04 -0700 (PDT)
+ bh=BhmC2dfR9Z2FpcZrdiI/rF+di1B3O2m2kCZjxi0Nzus=;
+ b=ma/qFHlkE9YjSKaOWLmxQu334+gRopm1ZiAlLiw1YNN5+9wZ4Hc27MnvI8FE9SqfoI
+ s77KPyycW/VZby4Lv7c9sHCkdaR6pZOUMvAp0nAxn4YgFQ22FfDS4wbI92gaU5pjwoBW
+ efZEz/I/8nvwEQFLctH8Kxyl9ow5u8OX5W6R3sdQ4rG4ayqS4ej1ToLQWHyDu6WkDWE/
+ eUOXQ+oDn/qk1e3l81GLXmzo1uSVb7vQDL7kgBaFt4ebFz8PRoN8Ok6KH3L6CEqWNcUp
+ 84WbWi2TiqGHJg2Fu1DOlvslCI1lI6g6YBYUAlqMQN3fnz+BIImb2s+OqeaxkMEO+FkS
+ SIzA==
+X-Gm-Message-State: AOAM533fMBdQfcOsqUfYVgt/F/06eAQoK48/rvccL5d1mxxD6y2l7YxD
+ C267DUw7bphKolWDLh5k3aY=
+X-Google-Smtp-Source: ABdhPJyB5tc5dUu27VbUdOZ9DzBdNo9HMZYO5yS/FgK5KFnwUfpfaMSoblaoVOfdDSu8KmjNrpWWGw==
+X-Received: by 2002:a63:2e87:: with SMTP id u129mr9420810pgu.347.1597655956522; 
+ Mon, 17 Aug 2020 02:19:16 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.202.98])
- by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.18.51
+ by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.19.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 02:19:03 -0700 (PDT)
+ Mon, 17 Aug 2020 02:19:15 -0700 (PDT)
 From: Allen Pais <allen.cryptic@gmail.com>
 To: jdike@addtoit.com, richard@nod.at, anton.ivanov@cambridgegreys.com,
  3chas3@gmail.com, axboe@kernel.dk, stefanr@s5r6.in-berlin.de,
@@ -73,10 +73,9 @@ To: jdike@addtoit.com, richard@nod.at, anton.ivanov@cambridgegreys.com,
  ulf.hansson@linaro.org, mporter@kernel.crashing.org, alex.bou9@gmail.com,
  broonie@kernel.org, martyn@welchs.me.uk, manohar.vanga@gmail.com,
  mitch@sfgoth.com, davem@davemloft.net, kuba@kernel.org
-Subject: [PATCH 1/2] hsi: nokia-modem: convert tasklets to use new
- tasklet_setup() API
-Date: Mon, 17 Aug 2020 14:46:06 +0530
-Message-Id: <20200817091617.28119-12-allen.cryptic@gmail.com>
+Subject: [PATCH] input: serio: convert tasklets to use new tasklet_setup() API
+Date: Mon, 17 Aug 2020 14:46:07 +0530
+Message-Id: <20200817091617.28119-13-allen.cryptic@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200817091617.28119-1-allen.cryptic@gmail.com>
 References: <20200817091617.28119-1-allen.cryptic@gmail.com>
@@ -119,37 +118,31 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- drivers/hsi/clients/nokia-modem.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/input/serio/hp_sdc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/hsi/clients/nokia-modem.c b/drivers/hsi/clients/nokia-modem.c
-index cd7ebf4c2e2f..36d373f089ce 100644
---- a/drivers/hsi/clients/nokia-modem.c
-+++ b/drivers/hsi/clients/nokia-modem.c
-@@ -36,9 +36,10 @@ struct nokia_modem_device {
- 	struct hsi_client	*cmt_speech;
- };
+diff --git a/drivers/input/serio/hp_sdc.c b/drivers/input/serio/hp_sdc.c
+index 13eacf6ab431..91f8253ac66a 100644
+--- a/drivers/input/serio/hp_sdc.c
++++ b/drivers/input/serio/hp_sdc.c
+@@ -301,7 +301,7 @@ static irqreturn_t hp_sdc_nmisr(int irq, void *dev_id)
  
--static void do_nokia_modem_rst_ind_tasklet(unsigned long data)
-+static void do_nokia_modem_rst_ind_tasklet(struct tasklet_struct *t)
+ unsigned long hp_sdc_put(void);
+ 
+-static void hp_sdc_tasklet(unsigned long foo)
++static void hp_sdc_tasklet(struct tasklet_struct *unused)
  {
--	struct nokia_modem_device *modem = (struct nokia_modem_device *)data;
-+	struct nokia_modem_device *modem = from_tasklet(modem, t,
-+						nokia_modem_rst_ind_tasklet);
+ 	write_lock_irq(&hp_sdc.rtq_lock);
  
- 	if (!modem)
- 		return;
-@@ -155,8 +156,8 @@ static int nokia_modem_probe(struct device *dev)
- 	modem->nokia_modem_rst_ind_irq = irq;
- 	pflags = irq_get_trigger_type(irq);
+@@ -890,7 +890,7 @@ static int __init hp_sdc_init(void)
+ 	hp_sdc_status_in8();
+ 	hp_sdc_data_in8();
  
--	tasklet_init(&modem->nokia_modem_rst_ind_tasklet,
--			do_nokia_modem_rst_ind_tasklet, (unsigned long)modem);
-+	tasklet_setup(&modem->nokia_modem_rst_ind_tasklet,
-+			do_nokia_modem_rst_ind_tasklet);
- 	err = devm_request_irq(dev, irq, nokia_modem_rst_ind_isr,
- 				pflags, "modem_rst_ind", modem);
- 	if (err < 0) {
+-	tasklet_init(&hp_sdc.task, hp_sdc_tasklet, 0);
++	tasklet_setup(&hp_sdc.task, hp_sdc_tasklet, 0);
+ 
+ 	/* Sync the output buffer registers, thus scheduling hp_sdc_tasklet. */
+ 	t_sync.actidx	= 0;
 -- 
 2.17.1
 
