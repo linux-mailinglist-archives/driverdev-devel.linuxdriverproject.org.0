@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73CD4245D8B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 09:12:28 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 059B2245D88
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 09:12:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E17D0221B5;
-	Mon, 17 Aug 2020 07:12:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A23C98687B;
+	Mon, 17 Aug 2020 07:12:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cikJhQB1NXTb; Mon, 17 Aug 2020 07:12:06 +0000 (UTC)
+	with ESMTP id VQaJbaWUBf7M; Mon, 17 Aug 2020 07:12:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7C3C920444;
-	Mon, 17 Aug 2020 07:11:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C4B128665F;
+	Mon, 17 Aug 2020 07:12:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 84B4C1BF471
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:11:20 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 616AB1BF471
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:11:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 81B4B870D7
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:11:20 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5E8D787D3B
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:11:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GByxxlBVwsW6 for <devel@linuxdriverproject.org>;
+ with ESMTP id V8yjYhKDx30b for <devel@linuxdriverproject.org>;
  Mon, 17 Aug 2020 07:11:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 52CF0873DA
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8747187C83
  for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 07:11:17 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5a3.dynamic.kabel-deutschland.de
  [95.90.213.163])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 083242224D;
+ by mail.kernel.org (Postfix) with ESMTPSA id 1F61622B45;
  Mon, 17 Aug 2020 07:11:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1597648277;
- bh=oIFZf9ouq9f6Th4SFZFv2+FmjAqixXLF2qV9fcoEkYM=;
+ bh=Nktt/voO/7pW9NRYLaDpqG4xPnYxdbU5C5SoAanc9LA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BcpLlyKh3cdxlRhDu0uJvwLxp2h/BEUcr/7y/uczxKr0JXsMnAsG7WtxRu4sE55Re
- AT4Ab4LC+NHKTCfp5PGi3icEqZRn7NfJd4N1U8It194+UWbGuJO6Ihkqs8P53lFoJ+
- seG3Bm+XPfIPMW3YU5WeNRI5Qa/Hs9J+v1KozE3c=
+ b=QSvn2ho918h7C3699hTpKBKkCCScAnga04GQ8QQLFxib+KP7buOrt8BVfQ3NnXpYz
+ RpLM6UXhQ4bwybZo855/jTA80rTOiduZSfyoV74yGvD6MfNp8QRQluaoJaGv8l1qbA
+ DsPrnqYcGSp7TipIJOUVbHRUeQ4klQWhLRiL31H4=
 Received: from mchehab by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1k7ZIZ-00Bdje-4q; Mon, 17 Aug 2020 09:11:15 +0200
+ id 1k7ZIZ-00Bdjh-6v; Mon, 17 Aug 2020 09:11:15 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3 10/44] staging: spmi: hisi-spmi-controller: do some code
- cleanups
-Date: Mon, 17 Aug 2020 09:10:29 +0200
-Message-Id: <1fa33567e21f95942d901a299d92e434d4a24b8f.1597647359.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v3 11/44] staging: mfd: add a PMIC driver for HiSilicon 6421
+ SPMI version
+Date: Mon, 17 Aug 2020 09:10:30 +0200
+Message-Id: <4ffb2694244baa47387e39e2c5d71243242c1fc1.1597647359.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1597647359.git.mchehab+huawei@kernel.org>
 References: <cover.1597647359.git.mchehab+huawei@kernel.org>
@@ -69,361 +69,970 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
+Cc: devel@driverdev.osuosl.org, Mayulong <mayulong1@huawei.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linuxarm@huawei.com,
- linux-kernel@vger.kernel.org, Jonathan Cameron <Jonathan.Cameron@Huawei.com>,
- mauro.chehab@huawei.com
+ linux-kernel@vger.kernel.org, mauro.chehab@huawei.com,
+ Lee Jones <lee.jones@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There are several minor things that can be cleanup in
-order to make this driver more prepared for leaving staging.
+From: Mayulong <mayulong1@huawei.com>
 
-Suggested-by: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Add the PMIC SPMI driver for the HiSilicon 6421v600.
+
+[mchehab+huawei@kernel.org: keep just the MFD driver on this patch,
+ and renamed filenames to better match other upstream drivers]
+
+ The compete patch is at:
+	https://github.com/96boards-hikey/linux/commit/08464419fba2
+
+Signed-off-by: Mayulong <mayulong1@huawei.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- .../staging/hikey9xx/hisi-spmi-controller.c   | 150 +++++++-----------
- 1 file changed, 61 insertions(+), 89 deletions(-)
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 759 ++++++++++++++++++++
+ include/linux/mfd/hi6421-spmi-pmic.h        | 165 +++++
+ 2 files changed, 924 insertions(+)
+ create mode 100644 drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+ create mode 100644 include/linux/mfd/hi6421-spmi-pmic.h
 
-diff --git a/drivers/staging/hikey9xx/hisi-spmi-controller.c b/drivers/staging/hikey9xx/hisi-spmi-controller.c
-index 153bcdb0cde4..513d962b8bce 100644
---- a/drivers/staging/hikey9xx/hisi-spmi-controller.c
-+++ b/drivers/staging/hikey9xx/hisi-spmi-controller.c
-@@ -2,18 +2,16 @@
- 
- #include <linux/delay.h>
- #include <linux/err.h>
-+#include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/kernel.h>
--#include <linux/platform_device.h>
--#include <linux/slab.h>
--#include <linux/of.h>
--#include <linux/interrupt.h>
- #include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/seq_file.h>
+diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+new file mode 100644
+index 000000000000..6bb0bc4b203b
+--- /dev/null
++++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
+@@ -0,0 +1,759 @@
++/*
++ * Device driver for regulators in HISI PMIC IC
++ *
++ * Copyright (c) 2013 Linaro Ltd.
++ * Copyright (c) 2011 Hisilicon.
++ *
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
 +#include <linux/slab.h>
- #include <linux/spmi.h>
- 
--#define SPMI_CONTROLLER_NAME		"spmi_controller"
--
- /*
-  * SPMI register addr
-  */
-@@ -73,27 +71,6 @@ enum spmi_controller_cmd_op_code {
- #define SPMI_CONTROLLER_TIMEOUT_US		1000
- #define SPMI_CONTROLLER_MAX_TRANS_BYTES		16
- 
--/*
-- * @base base address of the PMIC Arbiter core registers.
-- * @rdbase, @wrbase base address of the PMIC Arbiter read core registers.
-- *     For HW-v1 these are equal to base.
-- *     For HW-v2, the value is the same in eeraly probing, in order to read
-- *     PMIC_ARB_CORE registers, then chnls, and obsrvr are set to
-- *     PMIC_ARB_CORE_REGISTERS and PMIC_ARB_CORE_REGISTERS_OBS respectivly.
-- * @intr base address of the SPMI interrupt control registers
-- * @ppid_2_chnl_tbl lookup table f(SID, Periph-ID) -> channel num
-- *      entry is only valid if corresponding bit is set in valid_ppid_bitmap.
-- * @valid_ppid_bitmap bit is set only for valid ppids.
-- * @fmt_cmd formats a command to be set into PMIC_ARBq_CHNLn_CMD
-- * @chnl_ofst calculates offset of the base of a channel reg space
-- * @ee execution environment id
-- * @irq_acc0_init_val initial value of the interrupt accumulator at probe time.
-- *      Use for an HW workaround. On handling interrupts, the first accumulator
-- *      register will be compared against this value, and bits which are set at
-- *      boot will be ignored.
-- * @reserved_chnl entry of ppid_2_chnl_tbl that this driver should never touch.
-- *      value is positive channel number or negative to mark it unused.
-- */
- struct spmi_controller_dev {
- 	struct spmi_controller	*controller;
- 	struct device		*dev;
-@@ -106,14 +83,13 @@ static int spmi_controller_wait_for_done(struct device *dev,
- 					 struct spmi_controller_dev *ctrl_dev,
- 					 void __iomem *base, u8 sid, u16 addr)
- {
--	u32 status = 0;
- 	u32 timeout = SPMI_CONTROLLER_TIMEOUT_US;
--	u32 offset;
-+	u32 status, offset;
- 
- 	offset  = SPMI_APB_SPMI_STATUS_BASE_ADDR;
- 	offset += SPMI_CHANNEL_OFFSET * ctrl_dev->channel + SPMI_SLAVE_OFFSET * sid;
- 
--	while (timeout--) {
-+	do {
- 		status = readl(base + offset);
- 
- 		if (status & SPMI_APB_TRANS_DONE) {
-@@ -126,60 +102,65 @@ static int spmi_controller_wait_for_done(struct device *dev,
- 			return 0;
- 		}
- 		udelay(1);
--	}
-+	} while (timeout--);
- 
- 	dev_err(dev, "%s: timeout, status 0x%x\n", __func__, status);
- 	return -ETIMEDOUT;
- }
- 
- static int spmi_read_cmd(struct spmi_controller *ctrl,
--			 u8 opc, u8 sid, u16 addr, u8 *__buf, size_t bc)
-+			 u8 opc, u8 slave_id, u16 slave_addr, u8 *__buf, size_t bc)
- {
- 	struct spmi_controller_dev *spmi_controller = dev_get_drvdata(&ctrl->dev);
-+	u32 chnl_ofst = SPMI_CHANNEL_OFFSET * spmi_controller->channel;
- 	unsigned long flags;
- 	u8 *buf = __buf;
- 	u32 cmd, data;
- 	int rc;
--	u32 chnl_ofst = SPMI_CHANNEL_OFFSET * spmi_controller->channel;
- 	u8 op_code, i;
- 
- 	if (bc > SPMI_CONTROLLER_MAX_TRANS_BYTES) {
- 		dev_err(&ctrl->dev,
--			"spmi_controller supports 1..%d bytes per trans, but:%ld requested",
-+			"spmi_controller supports 1..%d bytes per trans, but:%ld requested\n",
- 			SPMI_CONTROLLER_MAX_TRANS_BYTES, bc);
- 		return  -EINVAL;
- 	}
- 
--	/* Check the opcode */
--	if (opc == SPMI_CMD_READ) {
-+	switch (opc) {
-+	case SPMI_CMD_READ:
- 		op_code = SPMI_CMD_REG_READ;
--	} else if (opc == SPMI_CMD_EXT_READ) {
-+		break;
-+	case SPMI_CMD_EXT_READ:
- 		op_code = SPMI_CMD_EXT_REG_READ;
--	} else if (opc == SPMI_CMD_EXT_READL) {
-+		break;
-+	case SPMI_CMD_EXT_READL:
- 		op_code = SPMI_CMD_EXT_REG_READ_L;
--	} else {
--		dev_err(&ctrl->dev, "invalid read cmd 0x%x", opc);
-+		break;
-+	default:
-+		dev_err(&ctrl->dev, "invalid read cmd 0x%x\n", opc);
- 		return -EINVAL;
- 	}
- 
- 	cmd = SPMI_APB_SPMI_CMD_EN |
- 	     (op_code << SPMI_APB_SPMI_CMD_TYPE_OFFSET) |
- 	     ((bc - 1) << SPMI_APB_SPMI_CMD_LENGTH_OFFSET) |
--	     ((sid & 0xf) << SPMI_APB_SPMI_CMD_SLAVEID_OFFSET) |  /* slvid */
--	     ((addr & 0xffff)  << SPMI_APB_SPMI_CMD_ADDR_OFFSET); /* slave_addr */
-+	     ((slave_id & 0xf) << SPMI_APB_SPMI_CMD_SLAVEID_OFFSET) |  /* slvid */
-+	     ((slave_addr & 0xffff)  << SPMI_APB_SPMI_CMD_ADDR_OFFSET); /* slave_addr */
- 
- 	spin_lock_irqsave(&spmi_controller->lock, flags);
- 
- 	writel(cmd, spmi_controller->base + chnl_ofst + SPMI_APB_SPMI_CMD_BASE_ADDR);
- 
- 	rc = spmi_controller_wait_for_done(&ctrl->dev, spmi_controller,
--					   spmi_controller->base, sid, addr);
-+					   spmi_controller->base, slave_id, slave_addr);
- 	if (rc)
- 		goto done;
- 
--	i = 0;
--	do {
--		data = readl(spmi_controller->base + chnl_ofst + SPMI_SLAVE_OFFSET * sid + SPMI_APB_SPMI_RDATA0_BASE_ADDR + i * SPMI_PER_DATAREG_BYTE);
-+	for (i = 0; bc > i * SPMI_PER_DATAREG_BYTE; i++) {
-+		data = readl(spmi_controller->base + chnl_ofst +
-+			     SPMI_SLAVE_OFFSET * slave_id +
-+			     SPMI_APB_SPMI_RDATA0_BASE_ADDR +
-+			     i * SPMI_PER_DATAREG_BYTE);
- 		data = be32_to_cpu((__be32)data);
- 		if ((bc - i * SPMI_PER_DATAREG_BYTE) >> 2) {
- 			memcpy(buf, &data, sizeof(data));
-@@ -188,63 +169,64 @@ static int spmi_read_cmd(struct spmi_controller *ctrl,
- 			memcpy(buf, &data, bc % SPMI_PER_DATAREG_BYTE);
- 			buf += (bc % SPMI_PER_DATAREG_BYTE);
- 		}
--		i++;
--	} while (bc > i * SPMI_PER_DATAREG_BYTE);
++#include <linux/delay.h>
++#include <linux/device.h>
++#include <linux/module.h>
++#include <linux/err.h>
++#include <linux/interrupt.h>
++#include <linux/io.h>
++#include <linux/platform_device.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_device.h>
++#include <linux/of_gpio.h>
++#include <linux/of_irq.h>
++#include <linux/mfd/hisi_pmic.h>
++#include <linux/irq.h>
++#include <linux/spmi.h>
++#ifndef NO_IRQ
++#define NO_IRQ       0
++#endif
++
++/* 8-bit register offset in PMIC */
++#define HISI_MASK_STATE			0xff
++
++#define HISI_IRQ_KEY_NUM		0
++#define HISI_IRQ_KEY_VALUE		0xc0
++#define HISI_IRQ_KEY_DOWN		7
++#define HISI_IRQ_KEY_UP			6
++
++/*#define HISI_NR_IRQ			25*/
++#define HISI_MASK_FIELD		0xFF
++#define HISI_BITS			8
++#define PMIC_FPGA_FLAG          1
++
++/*define the first group interrupt register number*/
++#define HISI_PMIC_FIRST_GROUP_INT_NUM        2
++
++static struct bit_info g_pmic_vbus = {0};
++#ifndef BIT
++#define BIT(x)		(0x1U << (x))
++#endif
++
++static struct hisi_pmic *g_pmic;
++static unsigned int g_extinterrupt_flag  = 0;
++static struct of_device_id of_hisi_pmic_match_tbl[] = {
++	{
++		.compatible = "hisilicon-hisi-pmic-spmi",
++	},
++	{ /* end */ }
++};
++
++/*
++ * The PMIC register is only 8-bit.
++ * Hisilicon SoC use hardware to map PMIC register into SoC mapping.
++ * At here, we are accessing SoC register with 32-bit.
++ */
++u32 hisi_pmic_read(struct hisi_pmic *pmic, int reg)
++{
++	u32 ret;
++	u8 read_value = 0;
++	struct spmi_device *pdev;
++
++	if (NULL == g_pmic) {
++		pr_err(" g_pmic  is NULL\n");
++		return 0;
 +	}
- 
- done:
- 	spin_unlock_irqrestore(&spmi_controller->lock, flags);
- 	if (rc)
- 		dev_err(&ctrl->dev,
--			"spmi read wait timeout op:0x%x sid:%d addr:0x%x bc:%ld\n",
--			opc, sid, addr, bc + 1);
-+			"spmi read wait timeout op:0x%x slave_id:%d slave_addr:0x%x bc:%ld\n",
-+			opc, slave_id, slave_addr, bc + 1);
- 	else
--		dev_dbg(&ctrl->dev, "%s: id:%d addr:0x%x, read value: %*ph\n",
--			__func__, sid, addr, (int)bc, __buf);
-+		dev_dbg(&ctrl->dev, "%s: id:%d slave_addr:0x%x, read value: %*ph\n",
-+			__func__, slave_id, slave_addr, (int)bc, __buf);
- 
- 	return rc;
- }
- 
- static int spmi_write_cmd(struct spmi_controller *ctrl,
--			  u8 opc, u8 sid, u16 addr, const u8 *__buf, size_t bc)
-+			  u8 opc, u8 slave_id, u16 slave_addr, const u8 *__buf, size_t bc)
- {
- 	struct spmi_controller_dev *spmi_controller = dev_get_drvdata(&ctrl->dev);
-+	u32 chnl_ofst = SPMI_CHANNEL_OFFSET * spmi_controller->channel;
- 	const u8 *buf = __buf;
- 	unsigned long flags;
- 	u32 cmd, data;
- 	int rc;
--	u32 chnl_ofst = SPMI_CHANNEL_OFFSET * spmi_controller->channel;
- 	u8 op_code, i;
- 
- 	if (bc > SPMI_CONTROLLER_MAX_TRANS_BYTES) {
- 		dev_err(&ctrl->dev,
--			"spmi_controller supports 1..%d bytes per trans, but:%ld requested",
-+			"spmi_controller supports 1..%d bytes per trans, but:%ld requested\n",
- 			SPMI_CONTROLLER_MAX_TRANS_BYTES, bc);
- 		return  -EINVAL;
- 	}
- 
--	/* Check the opcode */
--	if (opc == SPMI_CMD_WRITE) {
-+	switch (opc) {
-+	case SPMI_CMD_WRITE:
- 		op_code = SPMI_CMD_REG_WRITE;
--	} else if (opc == SPMI_CMD_EXT_WRITE) {
-+		break;
-+	case SPMI_CMD_EXT_WRITE:
- 		op_code = SPMI_CMD_EXT_REG_WRITE;
--	} else if (opc == SPMI_CMD_EXT_WRITEL) {
-+		break;
-+	case SPMI_CMD_EXT_WRITEL:
- 		op_code = SPMI_CMD_EXT_REG_WRITE_L;
--	} else {
--		dev_err(&ctrl->dev, "invalid write cmd 0x%x", opc);
-+		break;
-+	default:
-+		dev_err(&ctrl->dev, "invalid write cmd 0x%x\n", opc);
- 		return -EINVAL;
- 	}
- 
- 	cmd = SPMI_APB_SPMI_CMD_EN |
- 	      (op_code << SPMI_APB_SPMI_CMD_TYPE_OFFSET) |
- 	      ((bc - 1) << SPMI_APB_SPMI_CMD_LENGTH_OFFSET) |
--	      ((sid & 0xf) << SPMI_APB_SPMI_CMD_SLAVEID_OFFSET) |  /* slvid */
--	      ((addr & 0xffff)  << SPMI_APB_SPMI_CMD_ADDR_OFFSET); /* slave_addr */
-+	      ((slave_id & 0xf) << SPMI_APB_SPMI_CMD_SLAVEID_OFFSET) |
-+	      ((slave_addr & 0xffff)  << SPMI_APB_SPMI_CMD_ADDR_OFFSET);
- 
- 	/* Write data to FIFOs */
- 	spin_lock_irqsave(&spmi_controller->lock, flags);
- 
--	i = 0;
--	do {
-+	for (i = 0; bc > i * SPMI_PER_DATAREG_BYTE; i++) {
- 		data = 0;
- 		if ((bc - i * SPMI_PER_DATAREG_BYTE) >> 2) {
- 			memcpy(&data, buf, sizeof(data));
-@@ -255,23 +237,25 @@ static int spmi_write_cmd(struct spmi_controller *ctrl,
- 		}
- 
- 		writel((u32)cpu_to_be32(data),
--		       spmi_controller->base + chnl_ofst + SPMI_APB_SPMI_WDATA0_BASE_ADDR + SPMI_PER_DATAREG_BYTE * i);
--		i++;
--	} while (bc > i * SPMI_PER_DATAREG_BYTE);
-+		       spmi_controller->base + chnl_ofst +
-+		       SPMI_APB_SPMI_WDATA0_BASE_ADDR +
-+		       SPMI_PER_DATAREG_BYTE * i);
++
++	pdev = to_spmi_device(g_pmic->dev);
++	if (NULL == pdev) {
++		pr_err("%s:pdev get failed!\n", __func__);
++		return 0;
 +	}
- 
- 	/* Start the transaction */
- 	writel(cmd, spmi_controller->base + chnl_ofst + SPMI_APB_SPMI_CMD_BASE_ADDR);
- 
- 	rc = spmi_controller_wait_for_done(&ctrl->dev, spmi_controller,
--					   spmi_controller->base, sid, addr);
-+					   spmi_controller->base, slave_id,
-+					   slave_addr);
- 	spin_unlock_irqrestore(&spmi_controller->lock, flags);
- 
- 	if (rc)
--		dev_err(&ctrl->dev, "spmi write wait timeout op:0x%x sid:%d addr:0x%x bc:%ld\n",
--			opc, sid, addr, bc);
-+		dev_err(&ctrl->dev, "spmi write wait timeout op:0x%x slave_id:%d slave_addr:0x%x bc:%ld\n",
-+			opc, slave_id, slave_addr, bc);
- 	else
--		dev_dbg(&ctrl->dev, "%s: id:%d addr:0x%x, wrote value: %*ph\n",
--			__func__, sid, addr, (int)bc, __buf);
-+		dev_dbg(&ctrl->dev, "%s: id:%d slave_addr:0x%x, wrote value: %*ph\n",
-+			__func__, slave_id, slave_addr, (int)bc, __buf);
- 
- 	return rc;
- }
-@@ -281,9 +265,7 @@ static int spmi_controller_probe(struct platform_device *pdev)
- 	struct spmi_controller_dev *spmi_controller;
- 	struct spmi_controller *ctrl;
- 	struct resource *iores;
--	int ret = 0;
--
--	dev_info(&pdev->dev, "HISI SPMI probe\n");
-+	int ret;
- 
- 	ctrl = spmi_controller_alloc(&pdev->dev, sizeof(*spmi_controller));
- 	if (!ctrl) {
-@@ -293,7 +275,6 @@ static int spmi_controller_probe(struct platform_device *pdev)
- 	spmi_controller = spmi_controller_get_drvdata(ctrl);
- 	spmi_controller->controller = ctrl;
- 
--	/* NOTE: driver uses the static register mapping */
- 	iores = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	if (!iores) {
- 		dev_err(&pdev->dev, "can not get resource!\n");
-@@ -305,10 +286,7 @@ static int spmi_controller_probe(struct platform_device *pdev)
- 		dev_err(&pdev->dev, "can not remap base addr!\n");
- 		return -EADDRNOTAVAIL;
- 	}
--	dev_dbg(&pdev->dev, "spmi_add_controller base addr=0x%lx!\n",
--		(unsigned long)spmi_controller->base);
- 
--	/* Get properties from the device tree */
- 	ret = of_property_read_u32(pdev->dev.of_node, "spmi-channel",
- 				   &spmi_controller->channel);
- 	if (ret) {
-@@ -331,14 +309,8 @@ static int spmi_controller_probe(struct platform_device *pdev)
- 
- 	ret = spmi_controller_add(ctrl);
- 	if (ret)
--		goto err_add_controller;
-+		dev_err(&pdev->dev, "spmi_add_controller failed with error %d!\n", ret);
- 
--	dev_info(&pdev->dev, "spmi_add_controller initialized\n");
--	return 0;
--
--err_add_controller:
--	dev_err(&pdev->dev, "spmi_add_controller failed!\n");
--	platform_set_drvdata(pdev, NULL);
- 	return ret;
- }
- 
-@@ -346,8 +318,8 @@ static int spmi_del_controller(struct platform_device *pdev)
- {
- 	struct spmi_controller *ctrl = platform_get_drvdata(pdev);
- 
--	platform_set_drvdata(pdev, NULL);
- 	spmi_controller_remove(ctrl);
-+	kfree(ctrl);
- 	return 0;
- }
- 
-@@ -362,7 +334,7 @@ static struct platform_driver spmi_controller_driver = {
- 	.probe		= spmi_controller_probe,
- 	.remove		= spmi_del_controller,
- 	.driver		= {
--		.name	= SPMI_CONTROLLER_NAME,
-+		.name	= "hisi_spmi_controller",
- 		.of_match_table = spmi_controller_match_table,
- 	},
- };
++
++	ret = spmi_ext_register_readl(pdev, reg, (unsigned char*)&read_value, 1);/*lint !e734 !e732 */
++	if (ret) {
++		pr_err("%s:spmi_ext_register_readl failed!\n", __func__);
++		return ret;
++	}
++	return (u32)read_value;
++}
++EXPORT_SYMBOL(hisi_pmic_read);
++
++void hisi_pmic_write(struct hisi_pmic *pmic, int reg, u32 val)
++{
++	u32 ret;
++	struct spmi_device *pdev;
++
++	if (NULL == g_pmic) {
++		pr_err(" g_pmic  is NULL\n");
++		return;
++	}
++
++	pdev = to_spmi_device(g_pmic->dev);
++	if (NULL == pdev) {
++		pr_err("%s:pdev get failed!\n", __func__);
++		return;
++	}
++
++	ret = spmi_ext_register_writel(pdev, reg, (unsigned char*)&val, 1);/*lint !e734 !e732 */
++	if (ret) {
++		pr_err("%s:spmi_ext_register_writel failed!\n", __func__);
++		return ;
++	}
++}
++EXPORT_SYMBOL(hisi_pmic_write);
++
++#ifdef CONFIG_HISI_DIEID
++u32 hisi_pmic_read_sub_pmu(u8 sid, int reg)
++{
++	u32 ret;
++	u8 read_value = 0;
++	struct spmi_device *pdev;
++
++	if(strstr(saved_command_line, "androidboot.swtype=factory"))
++	{
++		if (NULL == g_pmic) {
++			pr_err(" g_pmic  is NULL\n");
++			return -1;/*lint !e570 */
++		}
++
++		pdev = to_spmi_device(g_pmic->dev);
++		if (NULL == pdev) {
++			pr_err("%s:pdev get failed!\n", __func__);
++			return -1;/*lint !e570 */
++		}
++
++		ret = spmi_ext_register_readl(pdev->ctrl, sid, reg, (unsigned char*)&read_value, 1);/*lint !e734 !e732 */
++		if (ret) {
++			pr_err("%s:spmi_ext_register_readl failed!\n", __func__);
++			return ret;
++		}
++		return (u32)read_value;
++	}
++	return  0;
++}
++EXPORT_SYMBOL(hisi_pmic_read_sub_pmu);
++
++void hisi_pmic_write_sub_pmu(u8 sid, int reg, u32 val)
++{
++	u32 ret;
++	struct spmi_device *pdev;
++	if(strstr(saved_command_line, "androidboot.swtype=factory"))
++	{
++		if (NULL == g_pmic) {
++			pr_err(" g_pmic  is NULL\n");
++			return;
++		}
++
++		pdev = to_spmi_device(g_pmic->dev);
++		if (NULL == pdev) {
++			pr_err("%s:pdev get failed!\n", __func__);
++			return;
++		}
++
++		ret = spmi_ext_register_writel(pdev->ctrl, sid, reg, (unsigned char*)&val, 1);/*lint !e734 !e732 */
++		if (ret) {
++			pr_err("%s:spmi_ext_register_writel failed!\n", __func__);
++			return ;
++		}
++	}
++
++	return ;
++}
++EXPORT_SYMBOL(hisi_pmic_write_sub_pmu);
++#endif
++
++void hisi_pmic_rmw(struct hisi_pmic *pmic, int reg,
++		     u32 mask, u32 bits)
++{
++	u32 data;
++	unsigned long flags;
++
++	if (NULL == g_pmic) {
++		pr_err(" g_pmic  is NULL\n");
++		return;
++	}
++
++	spin_lock_irqsave(&g_pmic->lock, flags);
++	data = hisi_pmic_read(pmic, reg) & ~mask;
++	data |= mask & bits;
++	hisi_pmic_write(pmic, reg, data);
++	spin_unlock_irqrestore(&g_pmic->lock, flags);
++}
++EXPORT_SYMBOL(hisi_pmic_rmw);
++
++unsigned int hisi_pmic_reg_read(int addr)
++{
++	return (unsigned int)hisi_pmic_read(g_pmic, addr);
++}
++EXPORT_SYMBOL(hisi_pmic_reg_read);
++
++void hisi_pmic_reg_write(int addr, int val)
++{
++	hisi_pmic_write(g_pmic, addr, val);
++}
++EXPORT_SYMBOL(hisi_pmic_reg_write);
++
++void hisi_pmic_reg_write_lock(int addr, int val)
++{
++	unsigned long flags;
++
++	if (NULL == g_pmic) {
++		pr_err(" g_pmic  is NULL\n");
++		return;
++	}
++
++	spin_lock_irqsave(&g_pmic->lock, flags);
++	hisi_pmic_write(g_pmic, g_pmic->normal_lock.addr, g_pmic->normal_lock.val);
++	hisi_pmic_write(g_pmic, g_pmic->debug_lock.addr, g_pmic->debug_lock.val);
++	hisi_pmic_write(g_pmic, addr, val);
++	hisi_pmic_write(g_pmic, g_pmic->normal_lock.addr, 0);
++	hisi_pmic_write(g_pmic, g_pmic->debug_lock.addr, 0);
++	spin_unlock_irqrestore(&g_pmic->lock, flags);
++}
++
++int hisi_pmic_array_read(int addr, char *buff, unsigned int len)
++{
++	unsigned int i;
++
++	if ((len > 32) || (NULL == buff)) {
++		return -EINVAL;
++	}
++
++	/*
++	 * Here is a bug in the pmu die.
++	 * the coul driver will read 4 bytes,
++	 * but the ssi bus only read 1 byte, and the pmu die
++	 * will make sampling 1/10669us about vol cur,so the driver
++	 * read the data is not the same sampling
++	 */
++	for (i = 0; i < len; i++)
++	{
++		*(buff + i) = hisi_pmic_reg_read(addr+i);
++	}
++
++	return 0;
++}
++
++int hisi_pmic_array_write(int addr, char *buff, unsigned int len)
++{
++    unsigned int i;
++
++	if ((len > 32) || (NULL == buff)) {
++		return -EINVAL;
++	}
++
++	for (i = 0; i < len; i++)
++	{
++		hisi_pmic_reg_write(addr+i, *(buff + i));
++	}
++
++	return 0;
++}
++
++static irqreturn_t hisi_irq_handler(int irq, void *data)
++{
++	struct hisi_pmic *pmic = (struct hisi_pmic *)data;
++	unsigned long pending;
++	int i, offset;
++
++	for (i = 0; i < pmic->irqarray; i++) {
++		pending = hisi_pmic_reg_read((i + pmic->irq_addr.start_addr));
++		pending &= HISI_MASK_FIELD;
++		if (pending != 0) {
++			pr_info("pending[%d]=0x%lx\n\r", i, pending);
++		}
++
++		hisi_pmic_reg_write((i + pmic->irq_addr.start_addr), pending);
++
++		/*solve powerkey order*/
++		if ((HISI_IRQ_KEY_NUM == i) && ((pending & HISI_IRQ_KEY_VALUE) == HISI_IRQ_KEY_VALUE)) {
++			generic_handle_irq(pmic->irqs[HISI_IRQ_KEY_DOWN]);
++			generic_handle_irq(pmic->irqs[HISI_IRQ_KEY_UP]);
++			pending &= (~HISI_IRQ_KEY_VALUE);
++		}
++
++		if (pending) {
++			for_each_set_bit(offset, &pending, HISI_BITS)
++				generic_handle_irq(pmic->irqs[offset + i * HISI_BITS]);/*lint !e679 */
++		}
++	}
++
++	/*Handle the second group irq if analysis the second group irq from dtsi*/
++	if (1 == g_extinterrupt_flag){
++		for (i = 0; i < pmic->irqarray1; i++) {
++			pending = hisi_pmic_reg_read((i + pmic->irq_addr1.start_addr));
++			pending &= HISI_MASK_FIELD;
++			if (pending != 0) {
++				pr_info("pending[%d]=0x%lx\n\r", i, pending);
++			}
++
++			hisi_pmic_reg_write((i + pmic->irq_addr1.start_addr), pending);
++
++			if (pending) {
++				for_each_set_bit(offset, &pending, HISI_BITS)
++					generic_handle_irq(pmic->irqs[offset + (i+HISI_PMIC_FIRST_GROUP_INT_NUM) * HISI_BITS]);/*lint !e679 */
++			}
++		}
++	}
++
++	return IRQ_HANDLED;
++}
++
++static void hisi_irq_mask(struct irq_data *d)
++{
++	struct hisi_pmic *pmic = irq_data_get_irq_chip_data(d);
++	u32 data, offset;
++	unsigned long flags;
++
++	if (NULL == g_pmic) {
++		pr_err(" g_pmic  is NULL\n");
++		return;
++	}
++
++	offset = (irqd_to_hwirq(d) >> 3);
++	if (1==g_extinterrupt_flag){
++		if ( offset < HISI_PMIC_FIRST_GROUP_INT_NUM)
++			offset += pmic->irq_mask_addr.start_addr;
++		else/*Change addr when irq num larger than 16 because interrupt addr is nonsequence*/
++			offset = offset+(pmic->irq_mask_addr1.start_addr)-HISI_PMIC_FIRST_GROUP_INT_NUM;
++	}else{
++		offset += pmic->irq_mask_addr.start_addr;
++	}
++	spin_lock_irqsave(&g_pmic->lock, flags);
++	data = hisi_pmic_reg_read(offset);
++	data |= (1 << (irqd_to_hwirq(d) & 0x07));
++	hisi_pmic_reg_write(offset, data);
++	spin_unlock_irqrestore(&g_pmic->lock, flags);
++}
++
++static void hisi_irq_unmask(struct irq_data *d)
++{
++	struct hisi_pmic *pmic = irq_data_get_irq_chip_data(d);
++	u32 data, offset;
++	unsigned long flags;
++
++	if (NULL == g_pmic) {
++		pr_err(" g_pmic  is NULL\n");
++		return;
++	}
++
++	offset = (irqd_to_hwirq(d) >> 3);
++	if (1==g_extinterrupt_flag){
++		if ( offset < HISI_PMIC_FIRST_GROUP_INT_NUM)
++			offset += pmic->irq_mask_addr.start_addr;
++		else
++			offset = offset+(pmic->irq_mask_addr1.start_addr)-HISI_PMIC_FIRST_GROUP_INT_NUM;
++	}else{
++		offset += pmic->irq_mask_addr.start_addr;
++	}
++	spin_lock_irqsave(&g_pmic->lock, flags);
++	data = hisi_pmic_reg_read(offset);
++	data &= ~(1 << (irqd_to_hwirq(d) & 0x07)); /*lint !e502 */
++	hisi_pmic_reg_write(offset, data);
++	spin_unlock_irqrestore(&g_pmic->lock, flags);
++}
++
++static struct irq_chip hisi_pmu_irqchip = {
++	.name		= "hisi-irq",
++	.irq_mask	= hisi_irq_mask,
++	.irq_unmask	= hisi_irq_unmask,
++	.irq_disable	= hisi_irq_mask,
++	.irq_enable	= hisi_irq_unmask,
++};
++
++static int hisi_irq_map(struct irq_domain *d, unsigned int virq,
++			  irq_hw_number_t hw)
++{
++	struct hisi_pmic *pmic = d->host_data;
++
++	irq_set_chip_and_handler_name(virq, &hisi_pmu_irqchip,
++				      handle_simple_irq, "hisi");
++	irq_set_chip_data(virq, pmic);
++	irq_set_irq_type(virq, IRQ_TYPE_NONE);
++
++	return 0;
++}
++
++static struct irq_domain_ops hisi_domain_ops = {
++	.map	= hisi_irq_map,
++	.xlate	= irq_domain_xlate_twocell,
++};
++
++/*lint -e570 -e64*/
++static int get_pmic_device_tree_data(struct device_node *np, struct hisi_pmic *pmic)
++{
++	int ret = 0;
++
++	/*get pmic irq num*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-num",
++						&(pmic->irqnum), 1);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-irq-num property set\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	/*get pmic irq array number*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-array",
++						&(pmic->irqarray), 1);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-irq-array property set\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	/*SOC_PMIC_IRQ_MASK_0_ADDR*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-mask-addr",
++						(int *)&pmic->irq_mask_addr, 2);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-irq-mask-addr property set\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	/*SOC_PMIC_IRQ0_ADDR*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-addr",
++						(int *)&pmic->irq_addr, 2);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-irq-addr property set\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-vbus",
++						(u32 *)&g_pmic_vbus, 2);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-vbus property\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	/*pmic lock*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-lock",
++						(int *)&pmic->normal_lock, 2);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-lock property set\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	/*pmic debug lock*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-debug-lock",
++						(int *)&pmic->debug_lock, 2);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-debug-lock property set\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	return ret;
++}/*lint -restore*/
++
++
++/*lint -e570 -e64*/
++static int get_pmic_device_tree_data1(struct device_node *np, struct hisi_pmic *pmic)
++{
++	int ret = 0;
++
++	/*get pmic irq num*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-num1",
++						&(pmic->irqnum1), 1);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-irq-num1 property set\n");
++		ret = -ENODEV;
++		pmic->irqnum1 = 0;
++		return ret;
++	}
++
++	/*get pmic irq array number*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-array1",
++						&(pmic->irqarray1), 1);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-irq-array1 property set\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	/*SOC_PMIC_IRQ_MASK_0_ADDR*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-mask-addr1",
++						(int *)&pmic->irq_mask_addr1, 2);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-irq-mask-addr1 property set\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	/*SOC_PMIC_IRQ0_ADDR*/
++	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-addr1",
++						(int *)&pmic->irq_addr1, 2);
++	if (ret) {
++		pr_err("no hisilicon,hisi-pmic-irq-addr1 property set\n");
++		ret = -ENODEV;
++		return ret;
++	}
++
++	g_extinterrupt_flag = 1;
++	return ret;
++}/*lint -restore*/
++
++int hisi_get_pmic_irq_byname(unsigned int pmic_irq_list)
++{
++	if ( NULL == g_pmic ) {
++		pr_err("[%s]g_pmic is NULL\n", __func__);
++		return -1;
++	}
++
++	if (pmic_irq_list > (unsigned int)g_pmic->irqnum) {
++		pr_err("[%s]input pmic irq number is error.\n", __func__);
++		return -1;
++	}
++	pr_info("%s:g_pmic->irqs[%d]=%d\n", __func__, pmic_irq_list, g_pmic->irqs[pmic_irq_list]);
++	return (int)g_pmic->irqs[pmic_irq_list];
++}
++EXPORT_SYMBOL(hisi_get_pmic_irq_byname);
++
++int hisi_pmic_get_vbus_status(void)
++{
++	if (0 == g_pmic_vbus.addr)
++		return -1;
++
++	if (hisi_pmic_reg_read(g_pmic_vbus.addr) & BIT(g_pmic_vbus.bit))
++		return 1;
++
++	return 0;
++}
++EXPORT_SYMBOL(hisi_pmic_get_vbus_status);
++
++static void hisi_pmic_irq_prc(struct hisi_pmic *pmic)
++{
++	int i;
++	for (i = 0 ; i < pmic->irq_mask_addr.array; i++) {
++		hisi_pmic_write(pmic, pmic->irq_mask_addr.start_addr + i, HISI_MASK_STATE);
++	}
++
++	for (i = 0 ; i < pmic->irq_addr.array; i++) {
++		unsigned int pending = hisi_pmic_read(pmic, pmic->irq_addr.start_addr + i);
++		pr_debug("PMU IRQ address value:irq[0x%x] = 0x%x\n", pmic->irq_addr.start_addr + i, pending);
++		hisi_pmic_write(pmic, pmic->irq_addr.start_addr + i, HISI_MASK_STATE);
++	}
++
++}
++
++static void hisi_pmic_irq1_prc(struct hisi_pmic *pmic)
++{
++	int i;
++	if(1 == g_extinterrupt_flag){
++		for (i = 0 ; i < pmic->irq_mask_addr1.array; i++) {
++			hisi_pmic_write(pmic, pmic->irq_mask_addr1.start_addr + i, HISI_MASK_STATE);
++		}
++
++		for (i = 0 ; i < pmic->irq_addr1.array; i++) {
++			unsigned int pending1 = hisi_pmic_read(pmic, pmic->irq_addr1.start_addr + i);
++			pr_debug("PMU IRQ address1 value:irq[0x%x] = 0x%x\n", pmic->irq_addr1.start_addr + i, pending1);
++			hisi_pmic_write(pmic, pmic->irq_addr1.start_addr + i, HISI_MASK_STATE);
++		}
++	}
++}
++
++static int hisi_pmic_probe(struct spmi_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *np = dev->of_node;
++	struct hisi_pmic *pmic = NULL;
++	enum of_gpio_flags flags;
++	int ret = 0;
++	int i;
++	unsigned int fpga_flag = 0;
++	unsigned int virq;
++
++	pmic = devm_kzalloc(dev, sizeof(*pmic), GFP_KERNEL);
++	if (!pmic) {
++		dev_err(dev, "cannot allocate hisi_pmic device info\n");
++		return -ENOMEM;
++	}
++
++	/*TODO: get pmic dts info*/
++	ret = get_pmic_device_tree_data(np, pmic);
++	if (ret) {
++		dev_err(&pdev->dev, "Error reading hisi pmic dts \n");
++		return ret;
++	}
++
++	/*get pmic dts the second group irq*/
++	ret = get_pmic_device_tree_data1(np, pmic);
++	if (ret) {
++		dev_err(&pdev->dev, "the platform don't support ext-interrupt.\n");
++	}
++
++	/* TODO: get and enable clk request */
++	spin_lock_init(&pmic->lock);
++
++	pmic->dev = dev;
++	g_pmic = pmic;
++	ret = of_property_read_u32_array(np, "hisilicon,pmic_fpga_flag", &fpga_flag, 1);
++	if (ret) {
++		pr_err("no hisilicon,pmic_fpga_flag property set\n");
++	}
++	if (PMIC_FPGA_FLAG == fpga_flag) {
++		goto after_irq_register;
++	}
++
++	pmic->gpio = of_get_gpio_flags(np, 0, &flags);
++	if (pmic->gpio < 0)
++		return pmic->gpio;
++
++	if (!gpio_is_valid(pmic->gpio))
++		return -EINVAL;
++
++	ret = gpio_request_one(pmic->gpio, GPIOF_IN, "pmic");
++	if (ret < 0) {
++		dev_err(dev, "failed to request gpio%d\n", pmic->gpio);
++		return ret;
++	}
++
++	pmic->irq = gpio_to_irq(pmic->gpio);
++
++	/* mask && clear IRQ status */
++	hisi_pmic_irq_prc(pmic);
++	/*clear && mask the new adding irq*/
++	hisi_pmic_irq1_prc(pmic);
++
++	pmic->irqnum += pmic->irqnum1;
++
++	pmic->irqs = (unsigned int *)devm_kmalloc(dev, pmic->irqnum * sizeof(int), GFP_KERNEL);
++	if (!pmic->irqs) {
++		pr_err("%s:Failed to alloc memory for pmic irq number!\n", __func__);
++		goto irq_malloc;
++	}
++	memset(pmic->irqs, 0, pmic->irqnum);
++
++	pmic->domain = irq_domain_add_simple(np, pmic->irqnum, 0,
++					     &hisi_domain_ops, pmic);
++	if (!pmic->domain) {
++		dev_err(dev, "failed irq domain add simple!\n");
++		ret = -ENODEV;
++		goto irq_domain;
++	}
++
++	for (i = 0; i < pmic->irqnum; i++) {
++		virq = irq_create_mapping(pmic->domain, i);
++		if (virq == NO_IRQ) {
++			pr_debug("Failed mapping hwirq\n");
++			ret = -ENOSPC;
++			goto irq_create_mapping;
++		}
++		pmic->irqs[i] = virq;
++		pr_info("[%s]. pmic->irqs[%d] = %d\n", __func__, i, pmic->irqs[i]);
++	}
++
++	ret = request_threaded_irq(pmic->irq, hisi_irq_handler, NULL,
++				IRQF_TRIGGER_LOW | IRQF_SHARED | IRQF_NO_SUSPEND,
++				   "pmic", pmic);
++	if (ret < 0) {
++		dev_err(dev, "could not claim pmic %d\n", ret);
++		ret = -ENODEV;
++		goto request_theaded_irq;
++	}
++
++after_irq_register:
++	return 0;
++
++
++request_theaded_irq:
++irq_create_mapping:
++irq_domain:
++irq_malloc:
++	gpio_free(pmic->gpio);
++	g_pmic = NULL;
++	return ret;
++}
++
++static void hisi_pmic_remove(struct spmi_device *pdev)
++{
++
++	struct hisi_pmic *pmic = dev_get_drvdata(&pdev->dev);
++
++	free_irq(pmic->irq, pmic);
++	gpio_free(pmic->gpio);
++	devm_kfree(&pdev->dev, pmic);
++
++}
++static int hisi_pmic_suspend(struct device *dev, pm_message_t state)
++{
++	struct hisi_pmic *pmic = dev_get_drvdata(dev);
++
++	if (NULL == pmic) {
++		pr_err("%s:pmic is NULL\n", __func__);
++		return -ENOMEM;
++	}
++
++	pr_info("%s:+\n", __func__);
++	pr_info("%s:-\n", __func__);
++
++	return 0;
++}/*lint !e715 */
++
++static int hisi_pmic_resume(struct device *dev)
++{
++	struct hisi_pmic *pmic = dev_get_drvdata(dev);
++
++	if (NULL == pmic) {
++		pr_err("%s:pmic is NULL\n", __func__);
++		return -ENOMEM;
++	}
++
++	pr_info("%s:+\n", __func__);
++	pr_info("%s:-\n", __func__);
++
++	return 0;
++}
++
++MODULE_DEVICE_TABLE(spmi, pmic_spmi_id);
++static struct spmi_driver hisi_pmic_driver = {
++	.driver = {
++		.name	= "hisi_pmic",
++		.owner  = THIS_MODULE,
++		.of_match_table = of_hisi_pmic_match_tbl,
++		.suspend = hisi_pmic_suspend,
++		.resume = hisi_pmic_resume,
++	},
++	.probe	= hisi_pmic_probe,
++	.remove	= hisi_pmic_remove,
++};
++
++static int __init hisi_pmic_init(void)
++{
++	return spmi_driver_register(&hisi_pmic_driver);
++}
++
++static void __exit hisi_pmic_exit(void)
++{
++	spmi_driver_unregister(&hisi_pmic_driver);
++}
++
++
++subsys_initcall_sync(hisi_pmic_init);
++module_exit(hisi_pmic_exit);
++
++MODULE_DESCRIPTION("PMIC driver");
++MODULE_LICENSE("GPL v2");
++
+diff --git a/include/linux/mfd/hi6421-spmi-pmic.h b/include/linux/mfd/hi6421-spmi-pmic.h
+new file mode 100644
+index 000000000000..939b36f617c1
+--- /dev/null
++++ b/include/linux/mfd/hi6421-spmi-pmic.h
+@@ -0,0 +1,165 @@
++/*
++ * Header file for device driver Hi6421 PMIC
++ *
++ * Copyright (c) 2013 Linaro Ltd.
++ * Copyright (C) 2011 Hisilicon.
++ *
++ * Guodong Xu <guodong.xu@linaro.org>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ */
++
++#ifndef	__HISI_PMIC_H
++#define	__HISI_PMIC_H
++
++#include <linux/irqdomain.h>
++
++#define HISI_REGS_ENA_PROTECT_TIME	(0) 	/* in microseconds */
++#define HISI_ECO_MODE_ENABLE		(1)
++#define HISI_ECO_MODE_DISABLE		(0)
++
++typedef int (*pmic_ocp_callback)(char *);
++extern int hisi_pmic_special_ocp_register(char *power_name, pmic_ocp_callback handler);
++
++struct irq_mask_info {
++	int start_addr;
++	int array;
++};
++
++struct irq_info {
++	int start_addr;
++	int array;
++};
++
++struct bit_info {
++	int addr;
++	int bit;
++};
++
++struct write_lock {
++	int addr;
++	int val;
++};
++
++struct hisi_pmic {
++	struct resource		*res;
++	struct device		*dev;
++	void __iomem		*regs;
++	spinlock_t		lock;
++	struct irq_domain	*domain;
++	int			irq;
++	int			gpio;
++	unsigned int	*irqs;
++	int			irqnum;
++	int			irqarray;
++	struct irq_mask_info irq_mask_addr;
++	struct irq_info irq_addr;
++	int			irqnum1;
++	int			irqarray1;
++	struct irq_mask_info irq_mask_addr1;
++	struct irq_info irq_addr1;
++	struct write_lock normal_lock;
++	struct write_lock debug_lock;
++};
++
++/* 0:disable; 1:enable */
++unsigned int get_uv_mntn_status(void);
++void clear_uv_mntn_resered_reg_bit(void);
++void set_uv_mntn_resered_reg_bit(void);
++
++#if defined(CONFIG_HISI_PMIC) || defined(CONFIG_HISI_PMIC_PMU_SPMI)
++/* Register Access Helpers */
++u32 hisi_pmic_read(struct hisi_pmic *pmic, int reg);
++void hisi_pmic_write(struct hisi_pmic *pmic, int reg, u32 val);
++void hisi_pmic_rmw(struct hisi_pmic *pmic, int reg, u32 mask, u32 bits);
++unsigned int hisi_pmic_reg_read(int addr);
++void hisi_pmic_reg_write(int addr, int val);
++void hisi_pmic_reg_write_lock(int addr, int val);
++int hisi_pmic_array_read(int addr, char *buff, unsigned int len);
++int hisi_pmic_array_write(int addr, char *buff, unsigned int len);
++extern int hisi_get_pmic_irq_byname(unsigned int pmic_irq_list);
++extern int hisi_pmic_get_vbus_status(void);
++#if defined(CONFIG_HISI_DIEID)
++u32 hisi_pmic_read_sub_pmu(u8 sid ,int reg);
++void hisi_pmic_write_sub_pmu(u8 sid ,int reg, u32 val);
++#endif
++#else
++static inline u32 hisi_pmic_read(struct hisi_pmic *pmic, int reg) { return 0; }
++static inline void hisi_pmic_write(struct hisi_pmic *pmic, int reg, u32 val) {}
++static inline void hisi_pmic_rmw(struct hisi_pmic *pmic, int reg, u32 mask, u32 bits) {}
++static inline unsigned int hisi_pmic_reg_read(int addr) { return 0; }
++static inline void hisi_pmic_reg_write(int addr, int val) {}
++static inline void hisi_pmic_reg_write_lock(int addr, int val) {}
++static inline int hisi_pmic_array_read(int addr, char *buff, unsigned int len) { return 0; }
++static inline int hisi_pmic_array_write(int addr, char *buff, unsigned int len) { return 0; }
++static inline int hisi_get_pmic_irq_byname(unsigned int pmic_irq_list) { return -1; }
++static inline int hisi_pmic_get_vbus_status(void) { return 1; }
++static inline u32 hisi_pmic_read_sub_pmu(u8 sid ,int reg) { return 0; }
++static inline void hisi_pmic_write_sub_pmu(u8 sid ,int reg, u32 val) {}
++#endif
++
++#ifdef CONFIG_HISI_HI6421V500_PMU
++enum pmic_irq_list {
++	POR_D45MR = 0,
++	VBUS_CONNECT,
++	VBUS_DISCONNECT,
++	ALARMON_R,
++	HOLD_6S,
++	HOLD_1S,
++	POWERKEY_UP,
++	POWERKEY_DOWN,
++	OCP_SCP_R,
++	COUL_R,
++	VSYS_OV,
++	VSYS_UV,
++	VSYS_PWROFF_ABS,
++	VSYS_PWROFF_DEB,
++	THSD_OTMP140,
++	THSD_OTMP125,
++	HRESETN,
++	SIM0_HPD_R = 24,
++	SIM0_HPD_F,
++	SIM0_HPD_H,
++	SIM0_HPD_L,
++	SIM1_HPD_R,
++	SIM1_HPD_F,
++	SIM1_HPD_H,
++	SIM1_HPD_L,
++	PMIC_IRQ_LIST_MAX,
++};
++#else
++enum pmic_irq_list {
++	OTMP = 0,
++	VBUS_CONNECT,
++	VBUS_DISCONNECT,
++	ALARMON_R,
++	HOLD_6S,
++	HOLD_1S,
++	POWERKEY_UP,
++	POWERKEY_DOWN,
++	OCP_SCP_R,
++	COUL_R,
++	SIM0_HPD_R,
++	SIM0_HPD_F,
++	SIM1_HPD_R,
++	SIM1_HPD_F,
++	PMIC_IRQ_LIST_MAX,
++};
++#endif
++
++#ifdef CONFIG_HISI_SR_DEBUG
++extern void get_ip_regulator_state(void);
++#endif
++#endif		/* __HISI_PMIC_H */
++
 -- 
 2.26.2
 
