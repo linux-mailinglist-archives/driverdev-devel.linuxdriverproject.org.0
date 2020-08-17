@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF253245D7E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 09:11:59 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 23C3D245DA4
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 09:13:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6E3F788193;
-	Mon, 17 Aug 2020 07:11:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B47492202C;
+	Mon, 17 Aug 2020 07:13:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2Zh7oNF1xggX; Mon, 17 Aug 2020 07:11:58 +0000 (UTC)
+	with ESMTP id 2b4MmZ+S8LUW; Mon, 17 Aug 2020 07:13:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 00C928807A;
-	Mon, 17 Aug 2020 07:11:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C38DC204E0;
+	Mon, 17 Aug 2020 07:12:01 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 419371BF969
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:11:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1CA791BF968
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:11:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3CE98203E6
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:11:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 17B52203E6
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 07:11:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xUiPBSi-Wt4s for <devel@linuxdriverproject.org>;
+ with ESMTP id U6JNPkmdG1Pq for <devel@linuxdriverproject.org>;
  Mon, 17 Aug 2020 07:11:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 9706E204DB
+ by silver.osuosl.org (Postfix) with ESMTPS id A49FB204E0
  for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 07:11:17 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5a3.dynamic.kabel-deutschland.de
  [95.90.213.163])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5362722BEF;
+ by mail.kernel.org (Postfix) with ESMTPSA id 65B8E22BF5;
  Mon, 17 Aug 2020 07:11:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1597648277;
- bh=UV1YfELGCgFxi/1ixDUOsZOV9Tr6nLf25G8A1Km/oY0=;
+ bh=pWwLRKmaSeuvsJZG9VfHjZL1DUJC8ibQUv9suo/dpVA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=O1KWfI1c8GkZQpqFjAzdZO1rN/JDmPQa/egdpmBv7yr52SQzQHm6ufMrxsKve0seC
- INKYlk3g7gVmGoXlcDQQqWZw80oDtUgoWrnXQKMB93AbtC3QLaN7sydECQ+RNVkn9g
- 0DLiXYQL20PoLz8RbHHoiJ8fa4/WNHFlCXH2fqhk=
+ b=qc0pbdFYqIjlYm9eQknKnyUfpNXRuEcbycN+fdJIfX1LaoNua829+rin22r2xiRM3
+ no3+L3SNzztxJcAlcU2Hg5GrqSc9X0lMFuRLP9d5d9vv0FldNiADAj9gbA8BLE7n85
+ e4CdJKHHeUMPzGvbngk2ojlz0qBQSzmRQ2TT/U+Q=
 Received: from mchehab by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1k7ZIZ-00Bdjw-Gk; Mon, 17 Aug 2020 09:11:15 +0200
+ id 1k7ZIZ-00Bdjz-I6; Mon, 17 Aug 2020 09:11:15 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3 16/44] staging: mfd: hi6421-spmi-pmic: change the binding
- logic
-Date: Mon, 17 Aug 2020 09:10:35 +0200
-Message-Id: <eb50392ce68bb30f64c603572cdb9c91f93ea47b.1597647359.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v3 17/44] staging: mfd: hi6421-spmi-pmic: get rid of unused OF
+ properties
+Date: Mon, 17 Aug 2020 09:10:36 +0200
+Message-Id: <332f96c178b81bf1e9908a1da2127f043909ae0c.1597647359.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1597647359.git.mchehab+huawei@kernel.org>
 References: <cover.1597647359.git.mchehab+huawei@kernel.org>
@@ -69,149 +69,279 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: mauro.chehab@huawei.com, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- devel@driverdev.osuosl.org, linuxarm@huawei.com, linux-kernel@vger.kernel.org
+Cc: devel@driverdev.osuosl.org,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linuxarm@huawei.com,
+ linux-kernel@vger.kernel.org, mauro.chehab@huawei.com,
+ Lee Jones <lee.jones@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Change the binding logic to ensure that the MFD driver
-will be load after having the SPMI controller registered.
+There are several OF properties that aren't used by Hikey 970,
+and some are not even used inside the driver.
+
+So, drop them, as as this makes easier to document what's
+actually used.
+
+If latter needed, those could be re-added later.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 84 +++++++--------------
- 1 file changed, 29 insertions(+), 55 deletions(-)
+ drivers/staging/hikey9xx/hi6421-spmi-pmic.c | 145 +-------------------
+ include/linux/mfd/hi6421-spmi-pmic.h        |  14 +-
+ 2 files changed, 7 insertions(+), 152 deletions(-)
 
 diff --git a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-index be42fed16bd2..939f7bd5d8ba 100644
+index 939f7bd5d8ba..f523b2d844b9 100644
 --- a/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
 +++ b/drivers/staging/hikey9xx/hi6421-spmi-pmic.c
-@@ -24,13 +24,14 @@
- #include <linux/err.h>
- #include <linux/interrupt.h>
- #include <linux/io.h>
-+#include <linux/mfd/core.h>
- #include <linux/platform_device.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_device.h>
- #include <linux/of_gpio.h>
- #include <linux/of_irq.h>
--#include <linux/mfd/hisi_pmic.h>
-+#include <linux/mfd/hi6421-spmi-pmic.h>
- #include <linux/irq.h>
- #include <linux/spmi.h>
- #ifndef NO_IRQ
-@@ -53,11 +54,8 @@
+@@ -49,7 +49,6 @@
+ /*#define HISI_NR_IRQ			25*/
+ #define HISI_MASK_FIELD		0xFF
+ #define HISI_BITS			8
+-#define PMIC_FPGA_FLAG          1
+ 
  /*define the first group interrupt register number*/
  #define HISI_PMIC_FIRST_GROUP_INT_NUM        2
- 
--static const struct of_device_id of_hisi_pmic_match_tbl[] = {
--	{
--		.compatible = "hisilicon-hisi-pmic-spmi",
--	},
--	{ /* end */ }
-+static const struct mfd_cell hi6421v600_devs[] = {
-+	{ .name = "hi6421v600-regulator", },
- };
- 
- /*
-@@ -477,6 +475,22 @@ static int hisi_pmic_probe(struct spmi_device *pdev)
- 		goto request_theaded_irq;
+@@ -144,24 +143,6 @@ static irqreturn_t hisi_irq_handler(int irq, void *data)
+ 		}
  	}
  
-+	dev_set_drvdata(&pdev->dev, pmic);
-+
-+	/*
-+	 * The logic below will rely that the pmic is already stored at
-+	 * drvdata.
-+	 */
-+	dev_dbg(&pdev->dev, "SPMI-PMIC: adding childs for %pOF\n",
-+		pdev->dev.of_node);
-+	ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
-+				   hi6421v600_devs, ARRAY_SIZE(hi6421v600_devs),
-+				   NULL, 0, NULL);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to add child devices: %d\n", ret);
-+		return ret;
-+	}
-+
- after_irq_register:
- 	return 0;
- 
-@@ -497,61 +511,21 @@ static void hisi_pmic_remove(struct spmi_device *pdev)
- 	devm_kfree(&pdev->dev, pmic);
+-	/*Handle the second group irq if analysis the second group irq from dtsi*/
+-	if (pmic->g_extinterrupt_flag == 1) {
+-		for (i = 0; i < pmic->irqarray1; i++) {
+-			pending = hisi_pmic_read(pmic, (i + pmic->irq_addr1.start_addr));
+-			pending &= HISI_MASK_FIELD;
+-			if (pending != 0)
+-				pr_debug("pending[%d]=0x%lx\n\r", i, pending);
+-
+-			hisi_pmic_write(pmic, (i + pmic->irq_addr1.start_addr), pending);
+-
+-			if (!pending)
+-				continue;
+-
+-			for_each_set_bit(offset, &pending, HISI_BITS)
+-				generic_handle_irq(pmic->irqs[offset + (i + HISI_PMIC_FIRST_GROUP_INT_NUM) * HISI_BITS]);
+-		}
+-	}
+-
+ 	return IRQ_HANDLED;
  }
  
--static int hisi_pmic_suspend(struct device *dev, pm_message_t state)
--{
--	struct hisi_pmic *pmic = dev_get_drvdata(dev);
-+static const struct of_device_id pmic_spmi_id_table[] = {
-+	{ .compatible = "hisilicon,hi6421-spmi-pmic" },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, pmic_spmi_id_table);
+@@ -172,19 +153,8 @@ static void hisi_irq_mask(struct irq_data *d)
+ 	unsigned long flags;
  
--	if (!pmic) {
--		pr_err("%s:pmic is NULL\n", __func__);
--		return -ENOMEM;
+ 	offset = (irqd_to_hwirq(d) >> 3);
+-	if (pmic->g_extinterrupt_flag == 1) {
+-		if (offset < HISI_PMIC_FIRST_GROUP_INT_NUM) {
+-			offset += pmic->irq_mask_addr.start_addr;
+-		} else {
+-			/*
+-			 * Change addr when irq num larger than 16 because
+-			 * interrupt addr is nonsequence
+-			 */
+-			offset = offset + (pmic->irq_mask_addr1.start_addr) - HISI_PMIC_FIRST_GROUP_INT_NUM;
+-		}
+-	} else {
+-		offset += pmic->irq_mask_addr.start_addr;
+-	}
++	offset += pmic->irq_mask_addr.start_addr;
++
+ 	spin_lock_irqsave(&pmic->lock, flags);
+ 	data = hisi_pmic_read(pmic, offset);
+ 	data |= (1 << (irqd_to_hwirq(d) & 0x07));
+@@ -199,14 +169,8 @@ static void hisi_irq_unmask(struct irq_data *d)
+ 	unsigned long flags;
+ 
+ 	offset = (irqd_to_hwirq(d) >> 3);
+-	if (pmic->g_extinterrupt_flag == 1) {
+-		if (offset < HISI_PMIC_FIRST_GROUP_INT_NUM)
+-			offset += pmic->irq_mask_addr.start_addr;
+-		else
+-			offset = offset + (pmic->irq_mask_addr1.start_addr) - HISI_PMIC_FIRST_GROUP_INT_NUM;
+-	} else {
+-		offset += pmic->irq_mask_addr.start_addr;
+-	}
++	offset += pmic->irq_mask_addr.start_addr;
++
+ 	spin_lock_irqsave(&pmic->lock, flags);
+ 	data = hisi_pmic_read(pmic, offset);
+ 	data &= ~(1 << (irqd_to_hwirq(d) & 0x07));
+@@ -280,69 +244,6 @@ static int get_pmic_device_tree_data(struct device_node *np, struct hisi_pmic *p
+ 		return ret;
+ 	}
+ 
+-	/*pmic lock*/
+-	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-lock",
+-					 (int *)&pmic->normal_lock, 2);
+-	if (ret) {
+-		pr_err("no hisilicon,hisi-pmic-lock property set\n");
+-		ret = -ENODEV;
+-		return ret;
 -	}
 -
--	pr_info("%s:+\n", __func__);
--	pr_info("%s:-\n", __func__);
+-	/*pmic debug lock*/
+-	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-debug-lock",
+-					 (int *)&pmic->debug_lock, 2);
+-	if (ret) {
+-		pr_err("no hisilicon,hisi-pmic-debug-lock property set\n");
+-		ret = -ENODEV;
+-		return ret;
+-	}
 -
--	return 0;
+-	return ret;
 -}
 -
--static int hisi_pmic_resume(struct device *dev)
+-static int get_pmic_device_tree_data1(struct device_node *np, struct hisi_pmic *pmic)
 -{
--	struct hisi_pmic *pmic = dev_get_drvdata(dev);
+-	int ret = 0;
 -
--	if (!pmic) {
--		pr_err("%s:pmic is NULL\n", __func__);
--		return -ENOMEM;
+-	/*get pmic irq num*/
+-	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-num1",
+-					 &pmic->irqnum1, 1);
+-	if (ret) {
+-		pr_err("no hisilicon,hisi-pmic-irq-num1 property set\n");
+-		ret = -ENODEV;
+-		pmic->irqnum1 = 0;
+-		return ret;
 -	}
 -
--	pr_info("%s:+\n", __func__);
--	pr_info("%s:-\n", __func__);
+-	/*get pmic irq array number*/
+-	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-array1",
+-					 &pmic->irqarray1, 1);
+-	if (ret) {
+-		pr_err("no hisilicon,hisi-pmic-irq-array1 property set\n");
+-		ret = -ENODEV;
+-		return ret;
+-	}
 -
--	return 0;
+-	/*SOC_PMIC_IRQ_MASK_0_ADDR*/
+-	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-mask-addr1",
+-					 (int *)&pmic->irq_mask_addr1, 2);
+-	if (ret) {
+-		pr_err("no hisilicon,hisi-pmic-irq-mask-addr1 property set\n");
+-		ret = -ENODEV;
+-		return ret;
+-	}
+-
+-	/*SOC_PMIC_IRQ0_ADDR*/
+-	ret = of_property_read_u32_array(np, "hisilicon,hisi-pmic-irq-addr1",
+-					 (int *)&pmic->irq_addr1, 2);
+-	if (ret) {
+-		pr_err("no hisilicon,hisi-pmic-irq-addr1 property set\n");
+-		ret = -ENODEV;
+-		return ret;
+-	}
+-
+-	pmic->g_extinterrupt_flag = 1;
+ 	return ret;
+ }
+ 
+@@ -362,26 +263,6 @@ static void hisi_pmic_irq_prc(struct hisi_pmic *pmic)
+ 	}
+ }
+ 
+-static void hisi_pmic_irq1_prc(struct hisi_pmic *pmic)
+-{
+-	int i;
+-	unsigned int pending1;
+-
+-	if (pmic->g_extinterrupt_flag == 1) {
+-		for (i = 0 ; i < pmic->irq_mask_addr1.array; i++)
+-			hisi_pmic_write(pmic, pmic->irq_mask_addr1.start_addr + i, HISI_MASK_STATE);
+-
+-		for (i = 0 ; i < pmic->irq_addr1.array; i++) {
+-			pending1 = hisi_pmic_read(pmic, pmic->irq_addr1.start_addr + i);
+-
+-			pr_debug("PMU IRQ address1 value:irq[0x%x] = 0x%x\n",
+-				 pmic->irq_addr1.start_addr + i, pending1);
+-
+-			hisi_pmic_write(pmic, pmic->irq_addr1.start_addr + i, HISI_MASK_STATE);
+-		}
+-	}
 -}
 -
--MODULE_DEVICE_TABLE(spmi, pmic_spmi_id);
- static struct spmi_driver hisi_pmic_driver = {
- 	.driver = {
--		.name	= "hisi_pmic",
--		.owner  = THIS_MODULE,
--		.of_match_table = of_hisi_pmic_match_tbl,
--		.suspend = hisi_pmic_suspend,
--		.resume = hisi_pmic_resume,
-+		.name	= "hi6421-spmi-pmic",
-+		.of_match_table = pmic_spmi_id_table,
- 	},
- 	.probe	= hisi_pmic_probe,
- 	.remove	= hisi_pmic_remove,
+ static int hisi_pmic_probe(struct spmi_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -390,7 +271,6 @@ static int hisi_pmic_probe(struct spmi_device *pdev)
+ 	enum of_gpio_flags flags;
+ 	int ret = 0;
+ 	int i;
+-	unsigned int fpga_flag = 0;
+ 	unsigned int virq;
+ 
+ 	pmic = devm_kzalloc(dev, sizeof(*pmic), GFP_KERNEL);
+@@ -404,22 +284,10 @@ static int hisi_pmic_probe(struct spmi_device *pdev)
+ 		return ret;
+ 	}
+ 
+-	/*get pmic dts the second group irq*/
+-	ret = get_pmic_device_tree_data1(np, pmic);
+-	if (ret)
+-		dev_err(&pdev->dev, "the platform don't support ext-interrupt.\n");
+-
+ 	/* TODO: get and enable clk request */
+ 	spin_lock_init(&pmic->lock);
+ 
+ 	pmic->dev = dev;
+-	ret = of_property_read_u32_array(np, "hisilicon,pmic_fpga_flag",
+-					 &fpga_flag, 1);
+-	if (ret)
+-		pr_err("no hisilicon,pmic_fpga_flag property set\n");
+-
+-	if (fpga_flag == PMIC_FPGA_FLAG)
+-		goto after_irq_register;
+ 
+ 	pmic->gpio = of_get_gpio_flags(np, 0, &flags);
+ 	if (pmic->gpio < 0)
+@@ -438,10 +306,6 @@ static int hisi_pmic_probe(struct spmi_device *pdev)
+ 
+ 	/* mask && clear IRQ status */
+ 	hisi_pmic_irq_prc(pmic);
+-	/*clear && mask the new adding irq*/
+-	hisi_pmic_irq1_prc(pmic);
+-
+-	pmic->irqnum += pmic->irqnum1;
+ 
+ 	pmic->irqs = devm_kzalloc(dev, pmic->irqnum * sizeof(int), GFP_KERNEL);
+ 	if (!pmic->irqs)
+@@ -491,7 +355,6 @@ static int hisi_pmic_probe(struct spmi_device *pdev)
+ 		return ret;
+ 	}
+ 
+-after_irq_register:
+ 	return 0;
+ 
+ request_theaded_irq:
+diff --git a/include/linux/mfd/hi6421-spmi-pmic.h b/include/linux/mfd/hi6421-spmi-pmic.h
+index 1f986dd5f31c..41b61de48259 100644
+--- a/include/linux/mfd/hi6421-spmi-pmic.h
++++ b/include/linux/mfd/hi6421-spmi-pmic.h
+@@ -48,19 +48,11 @@ struct hisi_pmic {
+ 	struct irq_domain	*domain;
+ 	int			irq;
+ 	int			gpio;
+-	unsigned int	*irqs;
++	unsigned int		*irqs;
+ 	int			irqnum;
+ 	int			irqarray;
+-	struct irq_mask_info irq_mask_addr;
+-	struct irq_info irq_addr;
+-	int			irqnum1;
+-	int			irqarray1;
+-	struct irq_mask_info irq_mask_addr1;
+-	struct irq_info irq_addr1;
+-	struct write_lock normal_lock;
+-	struct write_lock debug_lock;
+-
+-	unsigned int g_extinterrupt_flag;
++	struct irq_mask_info 	irq_mask_addr;
++	struct irq_info		irq_addr;
  };
-+module_spmi_driver(hisi_pmic_driver);
  
--static int __init hisi_pmic_init(void)
--{
--	return spmi_driver_register(&hisi_pmic_driver);
--}
--
--static void __exit hisi_pmic_exit(void)
--{
--	spmi_driver_unregister(&hisi_pmic_driver);
--}
--
--subsys_initcall_sync(hisi_pmic_init);
--module_exit(hisi_pmic_exit);
--
--MODULE_DESCRIPTION("PMIC driver");
-+MODULE_DESCRIPTION("HiSilicon Hi6421v600 SPMI PMIC driver");
- MODULE_LICENSE("GPL v2");
+ u32 hisi_pmic_read(struct hisi_pmic *pmic, int reg);
 -- 
 2.26.2
 
