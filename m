@@ -1,69 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 950952462EE
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 11:19:51 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4D1418538A;
-	Mon, 17 Aug 2020 09:19:50 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JUY4pcUmeTR9; Mon, 17 Aug 2020 09:19:49 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B2AAA853FF;
-	Mon, 17 Aug 2020 09:19:48 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A6FFE1BF423
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:19:46 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 86A99246300
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 11:20:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 947EA204C1
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:19:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0092C21515;
+	Mon, 17 Aug 2020 09:20:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ax+3HZfU7lHd; Mon, 17 Aug 2020 09:20:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 57903204C1;
+	Mon, 17 Aug 2020 09:20:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4E1141BF423
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:20:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 47E7486E88
+ for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 09:20:01 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IkcSfh6UR5Ye for <devel@linuxdriverproject.org>;
- Mon, 17 Aug 2020 09:19:45 +0000 (UTC)
+ with ESMTP id tT9rOQr+-6VL for <devel@linuxdriverproject.org>;
+ Mon, 17 Aug 2020 09:20:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 85578204B2
- for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 09:19:45 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id k13so7181238plk.13
- for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 02:19:45 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D5CC286CC5
+ for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 09:20:00 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id x6so7813195pgx.12
+ for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 02:20:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=rg9O+UuIrcRklqdLDyvqN900SVFxVyljAa/s7srCNnQ=;
- b=WvuNpwFGNWbf3ugG14n+zwKOY/otFa6nSLps1Uk3WhYO9QhlgfX29+70gj4yecSVqe
- YmEaWyKwvwZLdqCS1f4rjFzeI/WYV2mrJXFqK7u1fv3j1mD6vv7ArpSQ8eB9kebxavUo
- v4gjm/SQe2dmKaNUs5jSYqEpMcOQLTy1XStSEI/HRZPc81UrOC06O4IvkZlb9P+d+J9+
- 6iZP3dRMy48wvQtGHCCdONIoXtX+tgg7bwCEGbZzuseWjZ9rC+VhjkH7FoBRe7RFBqof
- Eu7g0wB9F52zpe5wgpjT7872Gbi0ZB7cwZGvpBfTBYz4nR6UMl9C43xvhapmPwtLTJTg
- rU/w==
+ bh=lUWUV2v5oTJVUGMm6xf12JUfYyiWzcefGfdAtQk2jwM=;
+ b=mbKVOHJMzNpskDzHydVD5JZdcRfrw+xd2+Uv78XbvKMc+387psZ2V2hk4qrHnsS81T
+ /zH73TElq4axoclHQIy0bA2CbV9hfC8GYC+eakgtOktC3A5XsD2xiPjCrklKsR3XFyFd
+ fsIOloQVGdK6RU/6EWDMjEAfDxSohJd//jLLtalmI0rGbeu1xwfLvpwSymywSxSBVX3G
+ uhosJxEfiUcPuUNVJvS0yzIPELIzVumGhuE5Qx9Ojw3cmc6kmaA4ZQewhXRClGiu+tq2
+ Aj/I10puZjlvAygrQvpRDOADkQfmJxn+4bXKvfXCvf9sZS7FhECvv/YiYSa/EN75dMVj
+ 0suw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=rg9O+UuIrcRklqdLDyvqN900SVFxVyljAa/s7srCNnQ=;
- b=FkiMWsxWk5PBJ5t1hcXRgW9QnGte2rIOAIvfmZd17zcjQIIS/TJ6Xxc3qHU9VHaolV
- OsvXM7x6AgGwE+EvbJoF6LmE8fyVAGVEpboV2Vcrqb2cfpHl39FqqZ6fCLr6tzdUw++8
- 3Mo8tG6ZYGov1YE70F18msmZCXamPpe4CkZdG3ZShMxy5Cw0OvMiJuetMaOzGbfBvb/4
- 4Xh1MK2uxQrWPRNqypr7uoBeFo3gDOhjSuNDqmpCHfAfxGpkurjTs8jBkdkiuoqys9SO
- sk9VUUWk6lDr65JZeom7fkPDpq4FIvxl3uKPQjMrxNDuTMjev9JKfd+WN3wB8AxHGmX+
- MonQ==
-X-Gm-Message-State: AOAM531dKLpTggYPQPMt/dCABFSdodXA8BkEUrkBag+2bNrKtnt1dvSX
- uKsxF/pZ+oEVgrJQUY0c1Sk=
-X-Google-Smtp-Source: ABdhPJxVPsBMIEeexKvgRfN8Y85NhtB5FsOgXp8HBPraiCyANuba28QRU7wOPQwsX7fudbCrO/coPA==
-X-Received: by 2002:a17:902:6b05:: with SMTP id
- o5mr10459515plk.173.1597655985094; 
- Mon, 17 Aug 2020 02:19:45 -0700 (PDT)
+ bh=lUWUV2v5oTJVUGMm6xf12JUfYyiWzcefGfdAtQk2jwM=;
+ b=c5xcycXw3VyPRj9sg70i3Ni+sVcYdz6Sc/Z5gIgV0wnwudWPz0eLevfi0AdUN72qCH
+ UKKjKqwMtgs1WA6Wvr2XDasZILw5Z5gqPTbYEXO78lgQhAm2Kr53lGbb5eqs+/LJp5/7
+ PApOWAzEn+XIIpqD4VI6j4+lESFNxBbdZn1DUlNCqoBliG4iIiXAjV2gcdbgkluFOjcp
+ 0D4BeT+BatCTipY1cnz71zQFvZzFsGH1de++k/7VI/FrAwgTuQNzy8uxXMYcwR/4GPOF
+ AZueywBcbqSPck2kMnjL1VXrvnUoaXpEFqVLRuXmQAWnpQlAIJLN7ye+PI4XaGTRS1iP
+ 4m5w==
+X-Gm-Message-State: AOAM531e3LzXq8lLWHgG0oHC7dnZx5Q0R+FGqAzQqB4dJr+EYpGBqJL7
+ ry7UqFh0wQRf0f6P87CH488=
+X-Google-Smtp-Source: ABdhPJxQcfdrrCrfZXVUBP2XgAqTEjdFaPRIHC7BcYbo0cXrAVQPSPy8pM2ZDmwAm4cu8q6kfjMCtw==
+X-Received: by 2002:a62:7785:: with SMTP id
+ s127mr10452297pfc.196.1597656000455; 
+ Mon, 17 Aug 2020 02:20:00 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.202.98])
- by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.19.30
+ by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.19.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 02:19:44 -0700 (PDT)
+ Mon, 17 Aug 2020 02:19:59 -0700 (PDT)
 From: Allen Pais <allen.cryptic@gmail.com>
 To: jdike@addtoit.com, richard@nod.at, anton.ivanov@cambridgegreys.com,
  3chas3@gmail.com, axboe@kernel.dk, stefanr@s5r6.in-berlin.de,
@@ -74,10 +74,10 @@ To: jdike@addtoit.com, richard@nod.at, anton.ivanov@cambridgegreys.com,
  ulf.hansson@linaro.org, mporter@kernel.crashing.org, alex.bou9@gmail.com,
  broonie@kernel.org, martyn@welchs.me.uk, manohar.vanga@gmail.com,
  mitch@sfgoth.com, davem@davemloft.net, kuba@kernel.org
-Subject: [PATCH 1/2] memstick: jmb38x: convert tasklets to use new
- tasklet_setup() API
-Date: Mon, 17 Aug 2020 14:46:09 +0530
-Message-Id: <20200817091617.28119-15-allen.cryptic@gmail.com>
+Subject: [PATCH 1/2] misc: ibmvmc: convert tasklets to use new tasklet_setup()
+ API
+Date: Mon, 17 Aug 2020 14:46:10 +0530
+Message-Id: <20200817091617.28119-16-allen.cryptic@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200817091617.28119-1-allen.cryptic@gmail.com>
 References: <20200817091617.28119-1-allen.cryptic@gmail.com>
@@ -120,36 +120,36 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- drivers/memstick/host/jmb38x_ms.c | 8 ++++----
+ drivers/misc/ibmvmc.c | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/memstick/host/jmb38x_ms.c b/drivers/memstick/host/jmb38x_ms.c
-index 4a6b866b0291..2bcf5ce113bd 100644
---- a/drivers/memstick/host/jmb38x_ms.c
-+++ b/drivers/memstick/host/jmb38x_ms.c
-@@ -603,10 +603,10 @@ static void jmb38x_ms_abort(struct timer_list *t)
- 	spin_unlock_irqrestore(&host->lock, flags);
+diff --git a/drivers/misc/ibmvmc.c b/drivers/misc/ibmvmc.c
+index 2d778d0f011e..347278c1a5e4 100644
+--- a/drivers/misc/ibmvmc.c
++++ b/drivers/misc/ibmvmc.c
+@@ -2064,10 +2064,10 @@ static void ibmvmc_handle_crq(struct ibmvmc_crq_msg *crq,
+ 	}
  }
  
--static void jmb38x_ms_req_tasklet(unsigned long data)
-+static void jmb38x_ms_req_tasklet(struct tasklet_struct *t)
+-static void ibmvmc_task(unsigned long data)
++static void ibmvmc_task(struct tasklet_struct *t)
  {
--	struct memstick_host *msh = (struct memstick_host *)data;
--	struct jmb38x_ms_host *host = memstick_priv(msh);
-+	struct jmb38x_ms_host *host = from_tasklet(host, t, notify);
-+	struct memstick_host *msh = host->msh;
- 	unsigned long flags;
- 	int rc;
+-	struct crq_server_adapter *adapter =
+-		(struct crq_server_adapter *)data;
++	struct crq_server_adapter *adapter = from_tasklet(adapter, t,
++							  work_task);
+ 	struct vio_dev *vdev = to_vio_dev(adapter->dev);
+ 	struct ibmvmc_crq_msg *crq;
+ 	int done = 0;
+@@ -2150,7 +2150,7 @@ static int ibmvmc_init_crq_queue(struct crq_server_adapter *adapter)
+ 	queue->cur = 0;
+ 	spin_lock_init(&queue->lock);
  
-@@ -868,7 +868,7 @@ static struct memstick_host *jmb38x_ms_alloc_host(struct jmb38x_ms *jm, int cnt)
- 	host->irq = jm->pdev->irq;
- 	host->timeout_jiffies = msecs_to_jiffies(1000);
+-	tasklet_init(&adapter->work_task, ibmvmc_task, (unsigned long)adapter);
++	tasklet_setup(&adapter->work_task, ibmvmc_task);
  
--	tasklet_init(&host->notify, jmb38x_ms_req_tasklet, (unsigned long)msh);
-+	tasklet_setup(&host->notify, jmb38x_ms_req_tasklet);
- 	msh->request = jmb38x_ms_submit_req;
- 	msh->set_param = jmb38x_ms_set_param;
- 
+ 	if (request_irq(vdev->irq,
+ 			ibmvmc_handle_event,
 -- 
 2.17.1
 
