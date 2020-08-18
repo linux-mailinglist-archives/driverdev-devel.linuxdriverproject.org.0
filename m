@@ -1,36 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 569362478C5
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 23:24:49 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E1CE785566;
-	Mon, 17 Aug 2020 21:24:46 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NRMGHSaErfsr; Mon, 17 Aug 2020 21:24:45 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A713485533;
-	Mon, 17 Aug 2020 21:24:44 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 07A951BF3BC
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 21:24:42 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BBCA2478C7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Aug 2020 23:25:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AE401204B1
- for <devel@linuxdriverproject.org>; Mon, 17 Aug 2020 21:24:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B7E92204D0;
+	Mon, 17 Aug 2020 21:24:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vdC3q8dSE-bq; Mon, 17 Aug 2020 21:24:56 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 6B47A20552;
+	Mon, 17 Aug 2020 21:24:47 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E5611BF969
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Aug 2020 21:24:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 02B2D8778F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Aug 2020 21:24:42 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k4jmsr5G-75u for <devel@linuxdriverproject.org>;
- Mon, 17 Aug 2020 21:24:40 +0000 (UTC)
-X-Greylist: delayed 00:05:18 by SQLgrey-1.7.6
+ with ESMTP id r8ni7LpvA+3q
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Aug 2020 21:24:41 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mollatpro (unknown [13.94.192.78])
- by silver.osuosl.org (Postfix) with ESMTP id 21FCD20034
- for <devel@driverdev.osuosl.org>; Mon, 17 Aug 2020 21:24:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 906738778E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Aug 2020 21:24:41 +0000 (UTC)
 Received: from [94.102.54.138] ([94.102.54.138]) by mollatpro with Microsoft
  SMTPSVC(8.5.9600.16384); Mon, 17 Aug 2020 23:15:26 +0200
 MIME-Version: 1.0
@@ -38,10 +42,10 @@ Content-Description: Mail message body
 Subject: Advise Me
 To: Recipients <krcarr02@gmail.com>
 From: "Lucy Woolf" <krcarr02@gmail.com>
-Date: Mon, 17 Aug 2020 21:15:24 -0700
-Message-ID: <MOLLATPROGXSXCWV8S000004c42@mollatpro>
-X-OriginalArrivalTime: 17 Aug 2020 21:15:26.0038 (UTC)
- FILETIME=[86B07760:01D674DB]
+Date: Mon, 17 Aug 2020 21:15:25 -0700
+Message-ID: <MOLLATPROyoOxg2elKW00004c59@mollatpro>
+X-OriginalArrivalTime: 17 Aug 2020 21:15:26.0599 (UTC)
+ FILETIME=[87061170:01D674DB]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
