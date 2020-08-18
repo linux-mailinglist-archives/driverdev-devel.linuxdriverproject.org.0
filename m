@@ -1,60 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4EBA2486BD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Aug 2020 16:09:56 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 85CB32486C1
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Aug 2020 16:10:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 700A020419;
-	Tue, 18 Aug 2020 14:09:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 16BA586234;
+	Tue, 18 Aug 2020 14:10:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RnOLdE+n9JQP; Tue, 18 Aug 2020 14:09:53 +0000 (UTC)
+	with ESMTP id jfPiCe920rml; Tue, 18 Aug 2020 14:10:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7724C203F9;
-	Tue, 18 Aug 2020 14:09:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0DB4F85EF5;
+	Tue, 18 Aug 2020 14:10:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D4A811BF3D0
- for <devel@linuxdriverproject.org>; Tue, 18 Aug 2020 14:09:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D65101BF3D0
+ for <devel@linuxdriverproject.org>; Tue, 18 Aug 2020 14:10:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D173D845D9
- for <devel@linuxdriverproject.org>; Tue, 18 Aug 2020 14:09:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D14AD8741F
+ for <devel@linuxdriverproject.org>; Tue, 18 Aug 2020 14:10:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3IHxaBDrz1RB for <devel@linuxdriverproject.org>;
- Tue, 18 Aug 2020 14:09:47 +0000 (UTC)
+ with ESMTP id MdFCOPd2b0XP for <devel@linuxdriverproject.org>;
+ Tue, 18 Aug 2020 14:10:43 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4FF7D854B4
- for <devel@driverdev.osuosl.org>; Tue, 18 Aug 2020 14:09:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 452DD8738B
+ for <devel@driverdev.osuosl.org>; Tue, 18 Aug 2020 14:10:43 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9567C20786;
- Tue, 18 Aug 2020 14:09:46 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 680E920738;
+ Tue, 18 Aug 2020 14:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597759787;
- bh=HgHc4ESZwhbbEAe1yXtGZBgMlETAW1fB2DVt/PGNgAg=;
+ s=default; t=1597759843;
+ bh=UHw4qYbrPzRK3neMF8n6Uj8EaiKp5P1vRzZt6PNtX6Q=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Zl5bZUyFmc5LcO7VsYG+6oHb1jwgmNvUKSUS+Re5X9wyvNupQoisEwg8uCoN7T0fr
- AF8HGohr0LWYljWy+CdrGRYPBQtq7zBpk2M5iv4UV6UczHP208ZnLKWO1uuhoAHoCa
- qnfifpuWkbsm0GcmelwQIYP6O4ZxJw/zAf2w4gss=
-Date: Tue, 18 Aug 2020 16:10:09 +0200
+ b=JwdreFb2yrFPYQ71OidGcViRAMHjNx2EJlto3t7cvzfAVHBAvG/rcRpoKuUuSsd/C
+ QEN05fF1pcFOrIg5VHA3jW/liJnwcrnTBGRtYnep+4s2FbVNFMtNiZyye8isnX11sn
+ /rgIpdipBW13EJlirv+om+qZeat8nxmJh5UtZ9rg=
+Date: Tue, 18 Aug 2020 16:11:06 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Tomer Samara <tomersamara98@gmail.com>
-Subject: Re: [PATCH v2 2/4] staging: android: Add error handling to
- ion_page_pool_shrink
-Message-ID: <20200818141009.GA562377@kroah.com>
+Subject: Re: [PATCH v2 1/4] staging: android: Replace BUG_ON with WARN_ON
+Message-ID: <20200818141106.GB562377@kroah.com>
 References: <cover.1597602783.git.tomersamara98@gmail.com>
- <73d1b8b904ae867f59e7ada14c3fb90e27f12bbb.1597602783.git.tomersamara98@gmail.com>
+ <fd55c53cb20c4887a87c05fffa28c28a740cd314.1597602783.git.tomersamara98@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <73d1b8b904ae867f59e7ada14c3fb90e27f12bbb.1597602783.git.tomersamara98@gmail.com>
+In-Reply-To: <fd55c53cb20c4887a87c05fffa28c28a740cd314.1597602783.git.tomersamara98@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,14 +79,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sun, Aug 16, 2020 at 10:24:22PM +0300, Tomer Samara wrote:
-> Add error check to ion_page_pool_shrink after calling
-> ion_page_pool_remove, due to converting BUG_ON to WARN_ON.
+On Sun, Aug 16, 2020 at 10:23:25PM +0300, Tomer Samara wrote:
+> BUG_ON() is replaced with WARN_ON at ion_page_pool.c
+
+Why?
+
+> Fixes the following issue:
+> Avoid crashing the kernel - try using WARN_ON & recovery code ratherthan BUG() or BUG_ON().
+
+Ideally you can get rid of WARN_ON() too, right?
+
+Many systems run in panic-on-warn mode, so this really does not change
+anything.  Try fixing this up properly to not crash at all.
+
 > 
 > Signed-off-by: Tomer Samara <tomersamara98@gmail.com>
+> ---
+>  drivers/staging/android/ion/ion_page_pool.c | 12 ++++++++----
+>  1 file changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/android/ion/ion_page_pool.c b/drivers/staging/android/ion/ion_page_pool.c
+> index 0198b886d906..c1b9eda35c96 100644
+> --- a/drivers/staging/android/ion/ion_page_pool.c
+> +++ b/drivers/staging/android/ion/ion_page_pool.c
+> @@ -46,11 +46,13 @@ static struct page *ion_page_pool_remove(struct ion_page_pool *pool, bool high)
+>  	struct page *page;
+>  
+>  	if (high) {
+> -		BUG_ON(!pool->high_count);
+> +		if (WARN_ON(!pool->high_count))
+> +			return NULL;
 
-So this fixes a previous patch?  That's not good, please merge them
-together so you do not cause a bug and then fix it up later on.
+And can you test this that it works properly?
 
 thanks,
 
