@@ -1,54 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6AD5D249F44
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 15:11:43 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A02E249F5E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 15:17:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3FF9A85A92;
-	Wed, 19 Aug 2020 13:11:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5F7AF873B6;
+	Wed, 19 Aug 2020 13:17:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xSKneQlNd959; Wed, 19 Aug 2020 13:11:40 +0000 (UTC)
+	with ESMTP id JyE3icu5YuZJ; Wed, 19 Aug 2020 13:17:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CBDD78594B;
-	Wed, 19 Aug 2020 13:11:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CCDAE86DEA;
+	Wed, 19 Aug 2020 13:17:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 882981BF33F
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 13:11:37 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5CBE91BF33F
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 13:17:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 75F26204D9
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 13:11:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 588E685BA9
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 13:17:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pN2Cg+f25kLC for <devel@linuxdriverproject.org>;
- Wed, 19 Aug 2020 13:11:36 +0000 (UTC)
+ with ESMTP id YDF4zlxZXxSq for <devel@linuxdriverproject.org>;
+ Wed, 19 Aug 2020 13:17:26 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 388571FD21
- for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 13:11:36 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6BC432065F;
- Wed, 19 Aug 2020 13:11:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597842695;
- bh=vxq1i+5+rO8RGMcDRwl1Kl6llTi6GXYX5kfyPA4jblo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=skOvnyoi/s8DCceKzmupkt1jYOaWtFdAAqlQ/MFXOrVpqmMQl+hsMEEjs4HBhOLQu
- 0c0ztyi4uXIKad6aYvYHUv3AbWF2jtioPUcwcQoAVMj74KG+/FMhByNjrec9UmAV0D
- o/Yb0Ae9Hr3NDLzjtRMcTZ4PqnDnfMAucqQAMsmk=
-Date: Wed, 19 Aug 2020 15:11:58 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jens Axboe <axboe@kernel.dk>
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2A17C86E1D
+ for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 13:17:25 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id 189so10745830pgg.13
+ for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 06:17:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=kernel-dk.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=jVlnd4GIq1avq9wCVX6yvVGrSg3V4B5anM3I74fUF2c=;
+ b=aq3Djs+JYVFJOgH8pCYQM/bCFdYvnEX3r7XcOPyLDVvHQpULWghKapBRR7Mrnjk+lL
+ ZI936ShOp4TWkrvbMHBKCEvkIKqzyiyTin6m81a9jqdlrP2+OEDYJcHB58jIeNBDbd8m
+ 9LbaNp3X/lBLFmvrut25w3ySdH9n0CHAUyDtUTBXXzVjGYQHigaJt+6Xuk9JIUYNhp/p
+ FgUt/Jog4wUzADpawAKv0o63MNRr6Ve3N2jd4wS1pAFyLst7H23CtCfU8iM/CPRbUYHd
+ itGN5mv4ExGtnYKFutLBYvVPG9eTW7mTEeiT/7xAmimuqFCHO0Ra40o4kXsfEZ2Savv/
+ bwyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=jVlnd4GIq1avq9wCVX6yvVGrSg3V4B5anM3I74fUF2c=;
+ b=hcW0y4Yq5+vGWcNWtuSo7hjH20MNkjHmRFStThhkh5nziVGlLEiIzCgF+tXGFp4tmR
+ cWtUerv8iQdWnNajqsyyhonW0LsnV5lB+k7nWuKU+VVliBcqG9/9Fcuj4Eoq0GaaOfin
+ d3/VUIB4z5/ONRBGaVrJnXE/5J8pOpjiLZPfMUb/ft2L2RmKkEVxW7vqhi9MN3Um6WT/
+ bOG2LZ3pNGnf1MKCfQigYycokkHtXriV6kdviDnf3bNA/UNfuBNM3V7LTokIlk50gObr
+ Oq97r5CfJAwjsS7WUCX8WNKrQc62hLu9B9Sxdd7sIvaFd/pZYmTkCKX2Ma4KB7kEFFAf
+ aBQQ==
+X-Gm-Message-State: AOAM532RBkEscNA5ZxDO0UJRJDBNroE0w+rfqqierYEGpyFMTDHvRZq7
+ 4g9B7XwPpR3dakbiSLLkmkrr0g==
+X-Google-Smtp-Source: ABdhPJxi299Hddd0S85ysgsMNI/X0B8d1WB7DsNIxo+ERAydDALt/5xQKxlJ2AQYnw532AABOTNI4Q==
+X-Received: by 2002:a62:5214:: with SMTP id g20mr19509095pfb.168.1597843045329; 
+ Wed, 19 Aug 2020 06:17:25 -0700 (PDT)
+Received: from [192.168.1.182] ([66.219.217.173])
+ by smtp.gmail.com with ESMTPSA id 193sm28368540pfu.169.2020.08.19.06.17.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 19 Aug 2020 06:17:24 -0700 (PDT)
 Subject: Re: [PATCH] block: convert tasklets to use new tasklet_setup() API
-Message-ID: <20200819131158.GA2591006@kroah.com>
+To: Greg KH <gregkh@linuxfoundation.org>
 References: <20200817091617.28119-1-allen.cryptic@gmail.com>
  <20200817091617.28119-2-allen.cryptic@gmail.com>
  <b5508ca4-0641-7265-2939-5f03cbfab2e2@kernel.dk>
@@ -58,9 +77,15 @@ References: <20200817091617.28119-1-allen.cryptic@gmail.com>
  <df645c06-c30b-eafa-4d23-826b84f2ff48@kernel.dk>
  <1597780833.3978.3.camel@HansenPartnership.com>
  <f3312928-430c-25f3-7112-76f2754df080@kernel.dk>
+ <20200819131158.GA2591006@kroah.com>
+From: Jens Axboe <axboe@kernel.dk>
+Message-ID: <4f5a225d-460f-978f-e3cf-3f505140a515@kernel.dk>
+Date: Wed, 19 Aug 2020 07:17:19 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <f3312928-430c-25f3-7112-76f2754df080@kernel.dk>
+In-Reply-To: <20200819131158.GA2591006@kroah.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,80 +124,96 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Aug 19, 2020 at 07:00:53AM -0600, Jens Axboe wrote:
-> On 8/18/20 1:00 PM, James Bottomley wrote:
-> > On Mon, 2020-08-17 at 13:02 -0700, Jens Axboe wrote:
-> >> On 8/17/20 12:48 PM, Kees Cook wrote:
-> >>> On Mon, Aug 17, 2020 at 12:44:34PM -0700, Jens Axboe wrote:
-> >>>> On 8/17/20 12:29 PM, Kees Cook wrote:
-> >>>>> On Mon, Aug 17, 2020 at 06:56:47AM -0700, Jens Axboe wrote:
-> >>>>>> On 8/17/20 2:15 AM, Allen Pais wrote:
-> >>>>>>> From: Allen Pais <allen.lkml@gmail.com>
-> >>>>>>>
-> >>>>>>> In preparation for unconditionally passing the
-> >>>>>>> struct tasklet_struct pointer to all tasklet
-> >>>>>>> callbacks, switch to using the new tasklet_setup()
-> >>>>>>> and from_tasklet() to pass the tasklet pointer explicitly.
-> >>>>>>
-> >>>>>> Who came up with the idea to add a macro 'from_tasklet' that
-> >>>>>> is just container_of? container_of in the code would be
-> >>>>>> _much_ more readable, and not leave anyone guessing wtf
-> >>>>>> from_tasklet is doing.
-> >>>>>>
-> >>>>>> I'd fix that up now before everything else goes in...
-> >>>>>
-> >>>>> As I mentioned in the other thread, I think this makes things
-> >>>>> much more readable. It's the same thing that the timer_struct
-> >>>>> conversion did (added a container_of wrapper) to avoid the
-> >>>>> ever-repeating use of typeof(), long lines, etc.
-> >>>>
-> >>>> But then it should use a generic name, instead of each sub-system 
-> >>>> using some random name that makes people look up exactly what it
-> >>>> does. I'm not huge fan of the container_of() redundancy, but
-> >>>> adding private variants of this doesn't seem like the best way
-> >>>> forward. Let's have a generic helper that does this, and use it
-> >>>> everywhere.
-> >>>
-> >>> I'm open to suggestions, but as things stand, these kinds of
-> >>> treewide
-> >>
-> >> On naming? Implementation is just as it stands, from_tasklet() is
-> >> totally generic which is why I objected to it. from_member()? Not
-> >> great with naming... But I can see this going further and then we'll
-> >> suddenly have tons of these. It's not good for readability.
-> > 
-> > Since both threads seem to have petered out, let me suggest in
-> > kernel.h:
-> > 
-> > #define cast_out(ptr, container, member) \
-> > 	container_of(ptr, typeof(*container), member)
-> > 
-> > It does what you want, the argument order is the same as container_of
-> > with the only difference being you name the containing structure
-> > instead of having to specify its type.
+On 8/19/20 6:11 AM, Greg KH wrote:
+> On Wed, Aug 19, 2020 at 07:00:53AM -0600, Jens Axboe wrote:
+>> On 8/18/20 1:00 PM, James Bottomley wrote:
+>>> On Mon, 2020-08-17 at 13:02 -0700, Jens Axboe wrote:
+>>>> On 8/17/20 12:48 PM, Kees Cook wrote:
+>>>>> On Mon, Aug 17, 2020 at 12:44:34PM -0700, Jens Axboe wrote:
+>>>>>> On 8/17/20 12:29 PM, Kees Cook wrote:
+>>>>>>> On Mon, Aug 17, 2020 at 06:56:47AM -0700, Jens Axboe wrote:
+>>>>>>>> On 8/17/20 2:15 AM, Allen Pais wrote:
+>>>>>>>>> From: Allen Pais <allen.lkml@gmail.com>
+>>>>>>>>>
+>>>>>>>>> In preparation for unconditionally passing the
+>>>>>>>>> struct tasklet_struct pointer to all tasklet
+>>>>>>>>> callbacks, switch to using the new tasklet_setup()
+>>>>>>>>> and from_tasklet() to pass the tasklet pointer explicitly.
+>>>>>>>>
+>>>>>>>> Who came up with the idea to add a macro 'from_tasklet' that
+>>>>>>>> is just container_of? container_of in the code would be
+>>>>>>>> _much_ more readable, and not leave anyone guessing wtf
+>>>>>>>> from_tasklet is doing.
+>>>>>>>>
+>>>>>>>> I'd fix that up now before everything else goes in...
+>>>>>>>
+>>>>>>> As I mentioned in the other thread, I think this makes things
+>>>>>>> much more readable. It's the same thing that the timer_struct
+>>>>>>> conversion did (added a container_of wrapper) to avoid the
+>>>>>>> ever-repeating use of typeof(), long lines, etc.
+>>>>>>
+>>>>>> But then it should use a generic name, instead of each sub-system 
+>>>>>> using some random name that makes people look up exactly what it
+>>>>>> does. I'm not huge fan of the container_of() redundancy, but
+>>>>>> adding private variants of this doesn't seem like the best way
+>>>>>> forward. Let's have a generic helper that does this, and use it
+>>>>>> everywhere.
+>>>>>
+>>>>> I'm open to suggestions, but as things stand, these kinds of
+>>>>> treewide
+>>>>
+>>>> On naming? Implementation is just as it stands, from_tasklet() is
+>>>> totally generic which is why I objected to it. from_member()? Not
+>>>> great with naming... But I can see this going further and then we'll
+>>>> suddenly have tons of these. It's not good for readability.
+>>>
+>>> Since both threads seem to have petered out, let me suggest in
+>>> kernel.h:
+>>>
+>>> #define cast_out(ptr, container, member) \
+>>> 	container_of(ptr, typeof(*container), member)
+>>>
+>>> It does what you want, the argument order is the same as container_of
+>>> with the only difference being you name the containing structure
+>>> instead of having to specify its type.
+>>
+>> Not to incessantly bike shed on the naming, but I don't like cast_out,
+>> it's not very descriptive. And it has connotations of getting rid of
+>> something, which isn't really true.
 > 
-> Not to incessantly bike shed on the naming, but I don't like cast_out,
-> it's not very descriptive. And it has connotations of getting rid of
-> something, which isn't really true.
+> I agree, if we want to bike shed, I don't like this color either.
+> 
+>> FWIW, I like the from_ part of the original naming, as it has some clues
+>> as to what is being done here. Why not just from_container()? That
+>> should immediately tell people what it does without having to look up
+>> the implementation, even before this becomes a part of the accepted
+>> coding norm.
+> 
+> Why are people hating on the well-known and used container_of()?
+> 
+> If you really hate to type the type and want a new macro, what about
+> 'container_from()'?  (noun/verb is nicer to sort symbols by...)
+> 
+> But really, why is this even needed?
 
-I agree, if we want to bike shed, I don't like this color either.
+container_from() or from_container(), either works just fine for me
+in terms of naming.
 
-> FWIW, I like the from_ part of the original naming, as it has some clues
-> as to what is being done here. Why not just from_container()? That
-> should immediately tell people what it does without having to look up
-> the implementation, even before this becomes a part of the accepted
-> coding norm.
+I think people are hating on it because it makes for _really_ long
+lines, and it's arguably cleaner/simpler to just pass in the pointer
+type instead. Then you end up with lines like this:
 
-Why are people hating on the well-known and used container_of()?
+	struct request_queue *q =                                               
+		container_of(work, struct request_queue, requeue_work.work);  
 
-If you really hate to type the type and want a new macro, what about
-'container_from()'?  (noun/verb is nicer to sort symbols by...)
+But I'm not the one that started this addition of from_tasklet(), my
+objection was adding a private macro for something that should be
+generic functionality. Hence I think we either need to provide that, or
+tell the from_tasklet() folks that they should just use container_of().
 
-But really, why is this even needed?
+-- 
+Jens Axboe
 
-thanks,
-
-greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
