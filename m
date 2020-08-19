@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D5B0249C1B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 13:46:40 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 93ED9249C2A
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 13:46:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9BDFC86B47;
-	Wed, 19 Aug 2020 11:46:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4049F87447;
+	Wed, 19 Aug 2020 11:46:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0tuQMpbH7H4z; Wed, 19 Aug 2020 11:46:33 +0000 (UTC)
+	with ESMTP id gR3+wMkAPnPr; Wed, 19 Aug 2020 11:46:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4F20F8553C;
-	Wed, 19 Aug 2020 11:46:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C26888666D;
+	Wed, 19 Aug 2020 11:46:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4650A1BF30D
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:46:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9F60D1BF9AF
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:46:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 412F08693C
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:46:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9915D86631
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:46:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XOdLP-kkCZQa for <devel@linuxdriverproject.org>;
+ with ESMTP id lznhvjVuTiLQ for <devel@linuxdriverproject.org>;
  Wed, 19 Aug 2020 11:46:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7844B86632
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BBF478666D
  for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 11:46:23 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5a3.dynamic.kabel-deutschland.de
  [95.90.213.163])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5333722CAE;
+ by mail.kernel.org (Postfix) with ESMTPSA id 6AB7022CBE;
  Wed, 19 Aug 2020 11:46:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1597837582;
- bh=rcRxeiZB6ID7SoRVN/Gwq+PJ1x5pFNlMdS23+MInkuw=;
+ bh=KWEjyOM9tGVg0C0GKN7wS+Us7AJUfqxVGXkNhaLsaFg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=1ASwfiiqzwj7YQBOKYs+mHTJX9LtqjnFKR4ZKySgYLT6gmrEqC7AcLosA7gDhsMpM
- jZrdaSc6aRNLlvnEb0MZ9eut9Au3deURrl0kgLa/6aTaRcD93+fCzHF15QNdn/JMIr
- tzzQBMCkWgZBKwgUDjzMnBq2FadquJnAaZkyG8BU=
+ b=2d6+ikCj4LW5e3rFscEobFJq1KoViLK1P0gNhihXFho2fRmADWQr/SChXiAHy7orM
+ Ir6t3VQNoQIrriwpqIkKmwpdZaQFJ1R3AWntjBaBsUYFoyqOWCRo6gi0iEU1/frgJm
+ bVJ6Yurcogb1CYrklGrGIh5Pmnjd0lT+Ow3LbpfM=
 Received: from mchehab by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1k8MXs-00Euaz-BX; Wed, 19 Aug 2020 13:46:20 +0200
+ id 1k8MXs-00Eub2-CZ; Wed, 19 Aug 2020 13:46:20 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 24/49] staging: hikey9xx/gpu: fix the DRM setting logic
-Date: Wed, 19 Aug 2020 13:45:52 +0200
-Message-Id: <32904d9c4a90d7c5153d936fc6bebc4190620587.1597833138.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 25/49] staging: hikey9xx/gpu: do some code cleanups
+Date: Wed, 19 Aug 2020 13:45:53 +0200
+Message-Id: <9fa944021373ec5b82c2c1e118c15d9effe7f964.1597833138.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1597833138.git.mchehab+huawei@kernel.org>
 References: <cover.1597833138.git.mchehab+huawei@kernel.org>
@@ -71,194 +71,220 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, Liwei Cai <cailiwei@hisilicon.com>,
  Manivannan Sadhasivam <mani@kernel.org>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-kernel@vger.kernel.org, linuxarm@huawei.com,
+ Chen Feng <puck.chen@hisilicon.com>, linuxarm@huawei.com,
  dri-devel <dri-devel@lists.freedesktop.org>,
  Xiubin Zhang <zhangxiubin1@huawei.com>, John Stultz <john.stultz@linaro.org>,
- Daniel Vetter <daniel@ffwll.ch>, mauro.chehab@huawei.com
+ Daniel Vetter <daniel@ffwll.ch>, mauro.chehab@huawei.com,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The logich which sets the MIPI parameters is currently wrong:
-it is using a value stored at cur_client, with actually points
-to the active location, and not to the one that it is about
-to be initialized.
-
-The entire logic sounds buggy, but for now let's just keep
-following it, by adding an extra var that will tell what was
-the latest attached encoder.
+- Get rid of a global var meant to store one of its priv
+  structs;
+- Change the name of the driver, in order to not be confused with
+  the kirin6220;
+- Remove some unneeded ifdef;
+- use drm_of.h helper.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- .../hikey9xx/gpu/kirin9xx_dw_drm_dsi.c        | 38 +++++++++----------
- 1 file changed, 19 insertions(+), 19 deletions(-)
+ .../staging/hikey9xx/gpu/kirin9xx_drm_drv.c   | 81 +++++++------------
+ 1 file changed, 30 insertions(+), 51 deletions(-)
 
-diff --git a/drivers/staging/hikey9xx/gpu/kirin9xx_dw_drm_dsi.c b/drivers/staging/hikey9xx/gpu/kirin9xx_dw_drm_dsi.c
-index ffc8b8e61062..39ec39a6a69b 100644
---- a/drivers/staging/hikey9xx/gpu/kirin9xx_dw_drm_dsi.c
-+++ b/drivers/staging/hikey9xx/gpu/kirin9xx_dw_drm_dsi.c
-@@ -241,7 +241,7 @@ struct dw_dsi {
- 	unsigned long mode_flags;
- 	struct gpio_desc *gpio_mux;
- 	struct dw_dsi_client client[OUT_MAX];
--	enum dsi_output_client cur_client;
-+	enum dsi_output_client cur_client, attached_client;
- 	bool enable;
+diff --git a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
+index fee686760c78..cede6ccc2dd5 100644
+--- a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
++++ b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
+@@ -25,20 +25,22 @@
+ #include <drm/drm_fb_cma_helper.h>
+ #include <drm/drm_gem_cma_helper.h>
+ #include <drm/drm_gem_framebuffer_helper.h>
++#include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
+ #include <drm/drm_vblank.h>
+ 
+ #include "kirin9xx_drm_drv.h"
+ 
+-static struct kirin_dc_ops *dc_ops;
+-
+ static int kirin_drm_kms_cleanup(struct drm_device *dev)
+ {
+ 	struct kirin_drm_private *priv = dev->dev_private;
++	static struct kirin_dc_ops const *dc_ops;
+ 
+ 	if (priv->fbdev)
+ 		priv->fbdev = NULL;
+ 
++	dc_ops = of_device_get_match_data(dev->dev);
++
+ 	drm_kms_helper_poll_fini(dev);
+ 	dc_ops->cleanup(dev);
+ 	drm_mode_config_cleanup(dev);
+@@ -78,6 +80,7 @@ static void kirin_drm_mode_config_init(struct drm_device *dev)
+ static int kirin_drm_kms_init(struct drm_device *dev)
+ {
+ 	struct kirin_drm_private *priv = dev->dev_private;
++	static struct kirin_dc_ops const *dc_ops;
+ 	int ret;
+ 
+ 	priv = devm_kzalloc(dev->dev, sizeof(*priv), GFP_KERNEL);
+@@ -92,6 +95,7 @@ static int kirin_drm_kms_init(struct drm_device *dev)
+ 	kirin_drm_mode_config_init(dev);
+ 
+ 	/* display controller init */
++	dc_ops = of_device_get_match_data(dev->dev);
+ 	ret = dc_ops->init(dev);
+ 	if (ret)
+ 		goto err_mode_config_cleanup;
+@@ -209,27 +213,17 @@ static struct drm_driver kirin_drm_driver = {
+ 	.gem_prime_vunmap	= drm_gem_cma_prime_vunmap,
+ 	.gem_prime_mmap		= drm_gem_cma_prime_mmap,
+ 
+-	.name			= "kirin",
+-	.desc			= "Hisilicon Kirin SoCs' DRM Driver",
++	.name			= "kirin9xx",
++	.desc			= "Hisilicon Kirin9xx SoCs' DRM Driver",
+ 	.date			= "20170309",
+ 	.major			= 1,
+ 	.minor			= 0,
  };
  
-@@ -330,13 +330,12 @@ EXPORT_SYMBOL(dsi_set_output_client);
- 
- #if defined (CONFIG_DRM_HISI_KIRIN970)
- static void get_dsi_dphy_ctrl(struct dw_dsi *dsi,
--							struct mipi_phy_params *phy_ctrl)
-+			      struct mipi_phy_params *phy_ctrl, u32 id)
+-#ifdef CONFIG_OF
+-/* NOTE: the CONFIG_OF case duplicates the same code as exynos or imx
+- * (or probably any other).. so probably some room for some helpers
+- */
+ static int compare_of(struct device *dev, void *data)
  {
- 	struct mipi_panel_info *mipi = NULL;
- 	struct drm_display_mode *mode = NULL;
- 	u32 dphy_req_kHz;
- 	int bpp;
--	u32 id = 0;
- 	u32 ui = 0;
- 	u32 m_pll = 0;
- 	u32 n_pll = 0;
-@@ -364,7 +363,6 @@ static void get_dsi_dphy_ctrl(struct dw_dsi *dsi,
- 	WARN_ON(!phy_ctrl);
- 	WARN_ON(!dsi);
- 
--	id = dsi->cur_client;
- 	mode = &dsi->cur_mode;
- 	mipi = &dsi->mipi;
- 
-@@ -562,13 +560,12 @@ static void get_dsi_dphy_ctrl(struct dw_dsi *dsi,
+ 	return dev->of_node == data;
  }
- #else
- static void get_dsi_phy_ctrl(struct dw_dsi *dsi,
--							struct mipi_phy_params *phy_ctrl)
-+			     struct mipi_phy_params *phy_ctrl, u32 id)
+-#else
+-static int compare_dev(struct device *dev, void *data)
+-{
+-	return dev == data;
+-}
+-#endif
+ 
+ static int kirin_drm_bind(struct device *dev)
  {
- 	struct mipi_panel_info *mipi = NULL;
- 	struct drm_display_mode *mode = NULL;
- 	u32 dphy_req_kHz;
- 	int bpp;
--	u32 id = 0;
- 	u32 ui = 0;
- 	u32 m_pll = 0;
- 	u32 n_pll = 0;
-@@ -602,7 +599,6 @@ static void get_dsi_phy_ctrl(struct dw_dsi *dsi,
- 	WARN_ON(!phy_ctrl);
- 	WARN_ON(!dsi);
+@@ -288,57 +282,30 @@ static const struct component_master_ops kirin_drm_ops = {
+ 	.unbind = kirin_drm_unbind,
+ };
  
--	id = dsi->cur_client;
- 	mode = &dsi->cur_mode;
- 	mipi = &dsi->mipi;
- 
-@@ -949,13 +945,15 @@ static void dsi_phy_tst_set(void __iomem *base, u32 reg, u32 val)
- 	writel(0x00, base + MIPIDSI_PHY_TST_CTRL0_OFFSET);
- }
- 
--static void mipi_config_dphy_spec1v2_parameter(struct dw_dsi *dsi, char __iomem *mipi_dsi_base)
-+static void mipi_config_dphy_spec1v2_parameter(struct dw_dsi *dsi,
-+					       char __iomem *mipi_dsi_base,
-+					       u32 id)
- {
- 	uint32_t i;
- 	uint32_t addr = 0;
- 	u32 lanes;
- 
--	lanes =  dsi->client[dsi->cur_client].lanes - 1;
-+	lanes =  dsi->client[id].lanes - 1;
- 	for (i = 0; i <= (lanes + 1); i++) {
- 		//Lane Transmission Property
- 		addr = MIPIDSI_PHY_TST_LANE_TRANSMISSION_PROPERTY + (i << 5);
-@@ -1027,13 +1025,13 @@ static void mipi_config_dphy_spec1v2_parameter(struct dw_dsi *dsi, char __iomem
- 	}
- }
- 
--static void dsi_mipi_init(struct dw_dsi *dsi, char __iomem *mipi_dsi_base)
-+static void dsi_mipi_init(struct dw_dsi *dsi, char __iomem *mipi_dsi_base,
-+			  u32 id)
- {
- 	u32 hline_time = 0;
- 	u32 hsa_time = 0;
- 	u32 hbp_time = 0;
- 	u64 pixel_clk = 0;
--	u32 id = 0;
- 	unsigned long dw_jiffies = 0;
- 	u32 tmp = 0;
- 	bool is_ready = false;
-@@ -1048,8 +1046,6 @@ static void dsi_mipi_init(struct dw_dsi *dsi, char __iomem *mipi_dsi_base)
- 	WARN_ON(!dsi);
- 	WARN_ON(!mipi_dsi_base);
- 
--	id = dsi->cur_client;
+-static struct device_node *kirin_get_remote_node(struct device_node *np)
+-{
+-	struct device_node *endpoint, *remote;
 -
- 	DRM_INFO("dsi_mipi_init, id=%d\n", id);
- 
- 
-@@ -1063,9 +1059,9 @@ static void dsi_mipi_init(struct dw_dsi *dsi, char __iomem *mipi_dsi_base)
- 	memset(&dsi->phy, 0, sizeof(struct mipi_phy_params));
- 
- #if defined (CONFIG_DRM_HISI_KIRIN970)
--	get_dsi_dphy_ctrl(dsi, &dsi->phy);
-+	get_dsi_dphy_ctrl(dsi, &dsi->phy, id);
- #else
--	get_dsi_phy_ctrl(dsi, &dsi->phy);
-+	get_dsi_phy_ctrl(dsi, &dsi->phy, id);
- #endif
- 
- 	rect.x = 0;
-@@ -1113,7 +1109,7 @@ static void dsi_mipi_init(struct dw_dsi *dsi, char __iomem *mipi_dsi_base)
- 	dsi_phy_tst_set(mipi_dsi_base, 0x004B, 0x1);
- 
- 	//set dphy spec parameter
--	mipi_config_dphy_spec1v2_parameter(dsi, mipi_dsi_base);
-+	mipi_config_dphy_spec1v2_parameter(dsi, mipi_dsi_base, id);
- #else
- 	/* physical configuration PLL I*/
- 	dsi_phy_tst_set(mipi_dsi_base, 0x14,
-@@ -1363,12 +1359,13 @@ static void dsi_encoder_disable(struct drm_encoder *encoder)
- 	dsi->enable = false;
- }
- 
--static int mipi_dsi_on_sub1(struct dw_dsi *dsi, char __iomem *mipi_dsi_base)
-+static int mipi_dsi_on_sub1(struct dw_dsi *dsi, char __iomem *mipi_dsi_base,
-+			    u32 id)
+-	/* get the first endpoint, in our case only one remote node
+-	 * is connected to display controller.
+-	 */
+-	endpoint = of_graph_get_next_endpoint(np, NULL);
+-	if (!endpoint) {
+-		DRM_ERROR("no valid endpoint node\n");
+-		return ERR_PTR(-ENODEV);
+-	}
+-	of_node_put(endpoint);
+-
+-	remote = of_graph_get_remote_port_parent(endpoint);
+-	if (!remote) {
+-		DRM_ERROR("no valid remote node\n");
+-		return ERR_PTR(-ENODEV);
+-	}
+-	of_node_put(remote);
+-
+-	if (!of_device_is_available(remote)) {
+-		DRM_ERROR("not available for remote node\n");
+-		return ERR_PTR(-ENODEV);
+-	}
+-
+-	return remote;
+-}
+-
+ static int kirin_drm_platform_probe(struct platform_device *pdev)
  {
- 	WARN_ON(!mipi_dsi_base);
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+ 	struct component_match *match = NULL;
+ 	struct device_node *remote;
++	static struct kirin_dc_ops const *dc_ops;
+ 	int ret;
  
- 	/* mipi init */
--	dsi_mipi_init(dsi, mipi_dsi_base);
-+	dsi_mipi_init(dsi, mipi_dsi_base, id);
- 
- 	/* dsi memory init */
- #if defined (CONFIG_DRM_HISI_KIRIN970)
-@@ -1443,7 +1440,7 @@ static void dsi_encoder_enable(struct drm_encoder *encoder)
- 		return;
+-	dc_ops = (struct kirin_dc_ops *)of_device_get_match_data(dev);
++	dc_ops = of_device_get_match_data(dev);
+ 	if (!dc_ops) {
+ 		DRM_ERROR("failed to get dt id data\n");
+ 		return -EINVAL;
  	}
  
--	mipi_dsi_on_sub1(dsi, ctx->base);
-+	mipi_dsi_on_sub1(dsi, ctx->base, dsi->attached_client);
+ 	DRM_INFO("the device node is %s\n", np->name);
+-	remote = kirin_get_remote_node(np);
+-	if (IS_ERR(remote))
+-		return PTR_ERR(remote);
++	remote = of_graph_get_remote_node(np, 0, 0);
++	if (!remote)
++		return -ENODEV;
  
- 	mipi_dsi_on_sub2(dsi, ctx->base);
+ 	DRM_INFO("the device remote node is %s\n", remote->name);
  
-@@ -1550,6 +1547,8 @@ static int dsi_host_attach(struct mipi_dsi_host *host,
- 	dsi->client[id].mode_flags = mdsi->mode_flags;
- 	dsi->client[id].phy_clock = 0;
+-	component_match_add(dev, &match, compare_of, remote);
++	drm_of_component_match_add(dev, &match, compare_of, remote);
++	of_node_put(remote);
  
-+	dsi->attached_client = id;
+ 	if (ret)
+ 		DRM_ERROR("cma device init failed!");
+@@ -347,13 +314,20 @@ static int kirin_drm_platform_probe(struct platform_device *pdev)
+ 
+ static int kirin_drm_platform_remove(struct platform_device *pdev)
+ {
++	static struct kirin_dc_ops const *dc_ops;
 +
- 	DRM_INFO("host attach, client name=[%s], id=%d\n", mdsi->name, id);
- 
++	dc_ops = of_device_get_match_data(&pdev->dev);
+ 	component_master_del(&pdev->dev, &kirin_drm_ops);
+-	dc_ops = NULL;
  	return 0;
-@@ -1959,6 +1958,7 @@ static int dsi_parse_dt(struct platform_device *pdev, struct dw_dsi *dsi)
+ }
  
- 	/* set dsi default output to panel */
- 	dsi->cur_client = OUT_PANEL;
-+	dsi->attached_client = dsi->cur_client;
+ static int kirin_drm_platform_suspend(struct platform_device *pdev, pm_message_t state)
+ {
++	static struct kirin_dc_ops const *dc_ops;
++	struct device *dev = &pdev->dev;
++
++	dc_ops = of_device_get_match_data(dev);
++
+ 	DRM_INFO("+. pdev->name is %s, m_message is %d \n", pdev->name, state.event);
+ 	if (!dc_ops) {
+ 		DRM_ERROR("dc_ops is NULL\n");
+@@ -366,6 +340,11 @@ static int kirin_drm_platform_suspend(struct platform_device *pdev, pm_message_t
  
- 	DRM_INFO("dsi  cur_client is %d  <0->hdmi;1->panel> \n", dsi->cur_client);
- 	/*dis-reset*/
+ static int kirin_drm_platform_resume(struct platform_device *pdev)
+ {
++	static struct kirin_dc_ops const *dc_ops;
++	struct device *dev = &pdev->dev;
++
++	dc_ops = of_device_get_match_data(dev);
++
+ 	if (!dc_ops) {
+ 		DRM_ERROR("dc_ops is NULL\n");
+ 		return -EINVAL;
+@@ -376,7 +355,7 @@ static int kirin_drm_platform_resume(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id kirin_drm_dt_ids[] = {
+-	{ .compatible = "hisilicon,hi3660-dpe",
++	{ .compatible = "hisilicon,kirin960-dpe",
+ 	  .data = &dss_dc_ops,
+ 	},
+ 	{ .compatible = "hisilicon,kirin970-dpe",
+@@ -392,7 +371,7 @@ static struct platform_driver kirin_drm_platform_driver = {
+ 	.suspend = kirin_drm_platform_suspend,
+ 	.resume = kirin_drm_platform_resume,
+ 	.driver = {
+-		.name = "kirin-drm",
++		.name = "kirin9xx-drm",
+ 		.of_match_table = kirin_drm_dt_ids,
+ 	},
+ };
 -- 
 2.26.2
 
