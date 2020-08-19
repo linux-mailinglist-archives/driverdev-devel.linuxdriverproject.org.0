@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BB6D249BDA
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 13:33:28 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FF39249C0F
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 13:46:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C21B781E21;
-	Wed, 19 Aug 2020 11:33:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 921F48702A;
+	Wed, 19 Aug 2020 11:46:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a1uaec9UWSM6; Wed, 19 Aug 2020 11:33:24 +0000 (UTC)
+	with ESMTP id qE-wnDnQjMH4; Wed, 19 Aug 2020 11:46:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DE7B9855DF;
-	Wed, 19 Aug 2020 11:33:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AD0398667B;
+	Wed, 19 Aug 2020 11:46:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B217D1BF30D
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:33:20 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2BFEB1BF30D
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:46:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9D06D203FE
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:33:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 279EE85569
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:46:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qr-AUgQ2DDRF for <devel@linuxdriverproject.org>;
- Wed, 19 Aug 2020 11:33:19 +0000 (UTC)
+ with ESMTP id gq7PQs9f8mnQ for <devel@linuxdriverproject.org>;
+ Wed, 19 Aug 2020 11:46:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by silver.osuosl.org (Postfix) with ESMTP id 04F80203F7
- for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 11:33:18 +0000 (UTC)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 270F11045;
- Wed, 19 Aug 2020 04:33:18 -0700 (PDT)
-Received: from [10.57.40.122] (unknown [10.57.40.122])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 39FBA3F6CF;
- Wed, 19 Aug 2020 04:33:15 -0700 (PDT)
-Subject: Re: [PATCH 00/16] IOMMU driver for Kirin 960/970
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- John Stultz <john.stultz@linaro.org>
-References: <cover.1597650455.git.mchehab+huawei@kernel.org>
- <5c7918b6-c506-680b-cb0f-9e5f6a7038d9@arm.com>
- <20200818172909.71f5243a@coco.lan>
- <79f40595-7769-aa6a-fbba-53adcffca327@arm.com>
- <CALAqxLXBYvwZ9kiKSGBeO5f-eKi2DD14QtoZgFGyGd-B7EOPQA@mail.gmail.com>
- <20200819122832.3cd5f834@coco.lan>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <a2236994-7332-2321-20a8-3348343922f9@arm.com>
-Date: Wed, 19 Aug 2020 12:33:06 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 03EC584AA7
+ for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 11:46:22 +0000 (UTC)
+Received: from mail.kernel.org (ip5f5ad5a3.dynamic.kabel-deutschland.de
+ [95.90.213.163])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7E29F20885;
+ Wed, 19 Aug 2020 11:46:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597837581;
+ bh=+NoH4YjX5TxAfeB92q3/7g03nc1yFW/oR0B99A6AIA8=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Ic+Hs2SPR5TjgN0Q8ckou8MEnmbrDMOVcj2W8hjSCq0u38W2GCsoGl09f2uLpU9Al
+ HIxIPeMTB6kZq5hWg169GVEsgyuyl159tEDpAj4/kGhH2B+yIwMzAR1ucVQJhR6B3l
+ BerRTWVmuFQT7pZZG3nReu4CGsxfb6mXqVE8M/QU=
+Received: from mchehab by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1k8MXq-00EuZw-R7; Wed, 19 Aug 2020 13:46:18 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 00/49] DRM driver for Hikey 970
+Date: Wed, 19 Aug 2020 13:45:28 +0200
+Message-Id: <cover.1597833138.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200819122832.3cd5f834@coco.lan>
-Content-Language: en-GB
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,143 +66,199 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Joerg Roedel <jroedel@suse.de>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Suzhuangluan <suzhuangluan@hisilicon.com>, linuxarm@huawei.com,
- Wei Xu <xuwei5@hisilicon.com>, lkml <linux-kernel@vger.kernel.org>,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- Chenfeng <puck.chen@hisilicon.com>, mauro.chehab@huawei.com,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>,
+ Xinliang Liu <xinliang.liu@linaro.org>,
+ Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Sam Ravnborg <sam@ravnborg.org>, Sumit Semwal <sumit.semwal@linaro.org>,
+ devel@driverdev.osuosl.org, Daniel Borkmann <daniel@iogearbox.net>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Xiubin Zhang <zhangxiubin1@huawei.com>, Wei Xu <xuwei5@hisilicon.com>,
+ David Airlie <airlied@linux.ie>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Tomi Valkeinen <tomi.valkeinen@ti.com>,
+ Bogdan Togorean <bogdan.togorean@analog.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Laurentiu Palcu <laurentiu.palcu@nxp.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Liwei Cai <cailiwei@hisilicon.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
+ Alexei Starovoitov <ast@kernel.org>, linaro-mm-sig@lists.linaro.org,
+ Rob Herring <robh+dt@kernel.org>, John Stultz <john.stultz@linaro.org>,
+ Jakub Kicinski <kuba@kernel.org>, mauro.chehab@huawei.com,
+ Rob Clark <robdclark@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Liuyao An <anliuyao@huawei.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rongrong Zou <zourongrong@gmail.com>, bpf@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 2020-08-19 11:28, Mauro Carvalho Chehab wrote:
-> Em Tue, 18 Aug 2020 15:02:54 -0700
-> John Stultz <john.stultz@linaro.org> escreveu:
-> 
->> On Tue, Aug 18, 2020 at 9:26 AM Robin Murphy <robin.murphy@arm.com> wrote:
->>> On 2020-08-18 16:29, Mauro Carvalho Chehab wrote:
->>>> Em Tue, 18 Aug 2020 15:47:55 +0100
->>>> Basically, the DT binding has this, for IOMMU:
->>>>
->>>>
->>>>        smmu_lpae {
->>>>                compatible = "hisilicon,smmu-lpae";
->>>>        };
->>>>
->>>> ...
->>>>        dpe: dpe@e8600000 {
->>>>                compatible = "hisilicon,kirin970-dpe";
->>>>                memory-region = <&drm_dma_reserved>;
->>>> ...
->>>>                iommu_info {
->>>>                        start-addr = <0x8000>;
->>>>                        size = <0xbfff8000>;
->>>>                };
->>>>        }
->>>>
->>>> This is used by kirin9xx_drm_dss.c in order to enable and use
->>>> the iommu:
->>>>
->>>>
->>>>        static int dss_enable_iommu(struct platform_device *pdev, struct dss_hw_ctx *ctx)
->>>>        {
->>>>                struct device *dev = NULL;
->>>>
->>>>                dev = &pdev->dev;
->>>>
->>>>                /* create iommu domain */
->>>>                ctx->mmu_domain = iommu_domain_alloc(dev->bus);
->>>>                if (!ctx->mmu_domain) {
->>>>                        pr_err("iommu_domain_alloc failed!\n");
->>>>                        return -EINVAL;
->>>>                }
->>>>
->>>>                iommu_attach_device(ctx->mmu_domain, dev);
->>>>
->>>>                return 0;
->>>>        }
->>>>
->>>> The only place where the IOMMU domain is used is on this part of the
->>>> code(error part simplified here) [1]:
->>>>
->>>>        void hisi_dss_smmu_on(struct dss_hw_ctx *ctx)
->>>>        {
->>>>                uint64_t fama_phy_pgd_base;
->>>>                uint32_t phy_pgd_base;
->>>> ...
->>>>                fama_phy_pgd_base = iommu_iova_to_phys(ctx->mmu_domain, 0);
->>>>                phy_pgd_base = (uint32_t)fama_phy_pgd_base;
->>>>                if (WARN_ON(!phy_pgd_base))
->>>>                        return;
->>>>
->>>>                set_reg(smmu_base + SMMU_CB_TTBR0, phy_pgd_base, 32, 0);
->>>>        }
->>>>
->>>> [1] https://github.com/mchehab/linux/commit/36da105e719b47bbe9d6cb7e5619b30c7f3eb1bd
->>>>
->>>> In other words, the driver needs to get the physical address of the frame
->>>> buffer (mapped via iommu) in order to set some DRM-specific register.
->>>>
->>>> Yeah, the above code is somewhat hackish. I would love to replace
->>>> this part by a more standard approach.
->>>
->>> OK, so from a quick look at that, my impression is that your display
->>> controller has its own MMU and you don't need to pretend to use the
->>> IOMMU API at all. Just have the DRM driver use io-pgtable directly to
->>> run its own set of ARM_32_LPAE_S1 pagetables - see Panfrost for an
->>> example (but try to ignore the wacky "Mali LPAE" format).
->>
->> Yea. For the HiKey960, there was originally a similar patch series but
->> it was refactored out and the (still out of tree) DRM driver I'm
->> carrying doesn't seem to need it (though looking we still have the
->> iommu_info subnode in the dts that maybe needs to be cleaned up).
-> 
-> Funny... while the Hikey 970 DRM driver has such IOMMU code, it
-> doesn't actually use it!
-> 
-> The driver has a function called hisi_dss_smmu_config() with
-> sets the registers on a different way in order to use IOMMU
-> or not, at the hisi_fb_pan_display() function. It can also
-> use a mode called "afbcd".
-> 
-> Well, this function sets both to false:
-> 
-> 	bool afbcd = false;
-> 	bool mmu_enable = false;
-> 
-> I ended commenting out the code which depends at the iommu
-> driver and everything is working as before.
-> 
-> So, I'll just forget about this iommu driver, as we can live
-> without that.
-> 
-> For now, I'll keep the mmu code there commented out, as
-> it could be useful on a future port for it to use io-pgtable.
-> 
-> -
-> 
-> Robin,
-> 
-> Can the Panfrost driver use io-pgtable while the KMS driver
-> won't be using it? Or this would cause it to not work?
-> 
-> My end goal here is to be able to test the Panfrost driver ;-)
+This patch series port the out-of-tree driver for Hikey 970 (which
+should also support Hikey 960) from the official 96boards tree:
 
-Yup, the GPU has its own independent MMU, so Panfrost can import display 
-buffers regardless of whether they're physically contiguous or not. 
-Since Mesa master has recently landed AFBC support, there's probably 
-more immediate benefit in getting that AFBC decoder working before the 
-display MMU (although ultimately things are likely to work better under 
-memory pressure if you don't have to rely on CMA, so it should still be 
-worth coming back to at some point).
+   https://github.com/96boards-hikey/linux/tree/hikey970-v4.9
 
-Robin.
+Based on his history, this driver seems to be originally written
+for Kernel 4.4, and was later ported to Kernel 4.9. The original
+driver used to depend on ION (from Kernel 4.4) and had its own
+implementation for FB dev API.
+
+As I need to preserve the original history (with has patches from
+both HiSilicon and from Linaro),  I'm starting from the original
+patch applied there. The remaining patches are incremental,
+and port this driver to work with upstream Kernel.
+
+This driver doesn't depend on any firmware or on any special
+userspace code. It works as-is with both X11 and Wayland.
+
+Yet, I'm submitting it via staging due to the following reasons:
+
+- It depends on the LDO3 power supply, which is provided by
+  a regulator driver that it is currently on staging;
+- Due to legal reasons, I need to preserve the authorship of
+  each one responsbile for each patch. So, I need to start from
+  the original patch from Kernel 4.4;
+- There are still some problems I need to figure out how to solve:
+   - The adv7535 can't get EDID data. Maybe it is a timing issue,
+     but it requires more research to be sure about how to solve it;
+   - The driver only accept resolutions on a defined list, as there's
+     a known bug that this driver may have troubles with random
+     resolutions. Probably due to a bug at the pixel clock settings;
+   - Sometimes (at least with 1080p), it generates LDI underflow
+     errors, which in turn causes the DRM to stop working. That
+     happens for example when using gdm on Wayland and
+     gnome on X11;
+   - Probably related to the previous issue, when the monitor
+     suspends due to DPMS, it doesn't return back to life.
+
+So, IMO, the best is to keep it on staging for a while, until those
+remaining bugs gets solved.
+
+I added this series, together with the regulator driver and
+a few other patches (including a hack to fix a Kernel 5.8 
+regression at WiFi ) at:
+
+	https://gitlab.freedesktop.org/mchehab_kernel/hikey-970/-/commits/master
+
+
+Chen Feng (1):
+  staging: hikey9xx: Add hisilicon DRM driver for hikey960/970
+
+John Stultz (1):
+  staging: hikey9xx/gpu: port it to work with Kernel v4.9
+
+Liwei Cai (2):
+  staging: hikey9xx/gpu: solve tearing issue of display
+  staging: hikey9xx/gpu: resolve the performance issue by interrupt
+    mechanism
+
+Mauro Carvalho Chehab (38):
+  staging: hikey9xx/gpu: get rid of adv7535 fork
+  staging: hikey9xx/gpu: rename the Kirin9xx namespace
+  staging: hikey9xx/gpu: get rid of kirin9xx_fbdev.c
+  staging: hikey9xx/gpu: get rid of some ifdefs
+  staging: hikey9xx/gpu: rename the config option for Kirin970
+  staging: hikey9xx/gpu: change the includes to reflect upstream
+  staging: hikey9xx/gpu: port driver to upstream kAPIs
+  staging: hikey9xx/gpu: add a copy of set_reg() function there
+  staging: hikey9xx/gpu: get rid of ION headers
+  staging: hikey9xx/gpu: add support for using a reserved CMA memory
+  staging: hikey9xx/gpu: cleanup encoder attach logic
+  staging: hikey9xx/gpu: Change the logic which sets the burst mode
+  staging: hikey9xx/gpu: fix the DRM setting logic
+  staging: hikey9xx/gpu: do some code cleanups
+  staging: hikey9xx/gpu: use default GEM_CMA fops
+  staging: hikey9xx/gpu: place vblank enable/disable at the right place
+  staging: hikey9xx/gpu: remove an uneeded hack
+  staging: hikey9xx/gpu: add a possible implementation for
+    atomic_disable
+  staging: hikey9xx/gpu: register connector
+  staging: hikey9xx/gpu: fix driver name
+  staging: hikey9xx/gpu: get rid of iommu_format
+  staging: hikey9xx/gpu: re-work the mode validation code
+  staging: hikey9xx/gpu: add support for enable/disable ldo3 regulator
+  staging: hikey9xx/gpu: add SPMI headers
+  staging: hikey9xx/gpu: solve most coding style issues
+  staging: hikey9xx/gpu: don't use iommu code
+  staging: hikey9xx/gpu: add kirin9xx driver to the building system
+  staging: hikey9xx/gpu: get rid of typedefs
+  staging: hikey9xx/gpu: get rid of input/output macros
+  staging: hikey9xx/gpu: get rid of some unused data
+  staging: hikey9xx/gpu: place common definitions at kirin9xx_dpe.h
+  staging: hikey9xx/gpu: get rid of DRM_HISI_KIRIN970
+  dts: hisilicon: hi3670.dtsi: add I2C settings
+  dts: hikey970-pinctrl.dtsi: add missing pinctrl settings
+  dt: hisilicon: add support for the PMIC found on Hikey 970
+  dts: add support for Hikey 970 DRM
+  staging: hikey9xx/gpu: drop kirin9xx_pwm
+  dt: display: Add binds for the DPE and DSI controller for Kirin
+    960/970
+
+Xiubin Zhang (7):
+  staging: hikey9xx/gpu: add support to hikey970 HDMI and panel
+  staging: hikey9xx/gpu: Solve SR Cannot Display Problems.
+  staging: hikey9xx/gpu: Solve HDMI compatibility Problem.
+  staging: hikey9xx/gpu: Support MIPI DSI 3 lanes for hikey970.
+  staging: hikey9xx/gpu: Solve SR test reset problem for hikey970.
+  staging: hikey9xx/gpu: add debug prints for this driver
+  staging: hikey9xx/gpu: Add support 10.1 inch special HDMI displays.
+
+ .../display/hisilicon,hi3660-dpe.yaml         |   99 +
+ .../display/hisilicon,hi3660-dsi.yaml         |  102 +
+ .../boot/dts/hisilicon/hi3670-hikey970.dts    |   56 +-
+ arch/arm64/boot/dts/hisilicon/hi3670.dtsi     |   77 +
+ .../boot/dts/hisilicon/hikey970-drm.dtsi      |   93 +
+ .../boot/dts/hisilicon/hikey970-pinctrl.dtsi  |  548 +++-
+ .../boot/dts/hisilicon/hikey970-pmic.dtsi     |  197 ++
+ drivers/staging/hikey9xx/Kconfig              |    3 +
+ drivers/staging/hikey9xx/Makefile             |    1 +
+ drivers/staging/hikey9xx/gpu/Kconfig          |   22 +
+ drivers/staging/hikey9xx/gpu/Makefile         |    9 +
+ drivers/staging/hikey9xx/gpu/kirin960_defs.c  |  378 +++
+ .../staging/hikey9xx/gpu/kirin960_dpe_reg.h   |  233 ++
+ drivers/staging/hikey9xx/gpu/kirin970_defs.c  |  381 +++
+ .../staging/hikey9xx/gpu/kirin970_dpe_reg.h   | 1188 ++++++++
+ drivers/staging/hikey9xx/gpu/kirin9xx_dpe.h   | 2437 +++++++++++++++++
+ .../hikey9xx/gpu/kirin9xx_drm_dpe_utils.c     | 1178 ++++++++
+ .../hikey9xx/gpu/kirin9xx_drm_dpe_utils.h     |  286 ++
+ .../staging/hikey9xx/gpu/kirin9xx_drm_drv.c   |  368 +++
+ .../staging/hikey9xx/gpu/kirin9xx_drm_drv.h   |   57 +
+ .../staging/hikey9xx/gpu/kirin9xx_drm_dss.c   | 1063 +++++++
+ .../hikey9xx/gpu/kirin9xx_drm_overlay_utils.c | 1005 +++++++
+ .../hikey9xx/gpu/kirin9xx_dw_drm_dsi.c        | 2132 ++++++++++++++
+ .../hikey9xx/gpu/kirin9xx_dw_dsi_reg.h        |  146 +
+ .../staging/hikey9xx/gpu/kirin9xx_fb_panel.h  |  191 ++
+ 25 files changed, 12229 insertions(+), 21 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/hisilicon,hi3660-dpe.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/hisilicon,hi3660-dsi.yaml
+ create mode 100644 arch/arm64/boot/dts/hisilicon/hikey970-drm.dtsi
+ create mode 100644 arch/arm64/boot/dts/hisilicon/hikey970-pmic.dtsi
+ create mode 100644 drivers/staging/hikey9xx/gpu/Kconfig
+ create mode 100644 drivers/staging/hikey9xx/gpu/Makefile
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin960_defs.c
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin960_dpe_reg.h
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin970_defs.c
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin970_dpe_reg.h
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_dpe.h
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_dpe_utils.c
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_dpe_utils.h
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.h
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_dss.c
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_overlay_utils.c
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_dw_drm_dsi.c
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_dw_dsi_reg.h
+ create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_fb_panel.h
+
+-- 
+2.26.2
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
