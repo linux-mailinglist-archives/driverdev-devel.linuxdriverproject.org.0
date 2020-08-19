@@ -1,81 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D28E924A243
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 17:00:00 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC18224A2B7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 17:21:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3AD462152A;
-	Wed, 19 Aug 2020 14:59:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7B28D85EA5;
+	Wed, 19 Aug 2020 15:21:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JvrKhj8IctZK; Wed, 19 Aug 2020 14:59:57 +0000 (UTC)
+	with ESMTP id Zv0mqTNEu-7Y; Wed, 19 Aug 2020 15:21:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 79691204B3;
-	Wed, 19 Aug 2020 14:59:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 355C985A1D;
+	Wed, 19 Aug 2020 15:21:36 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0C0411BF23B
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 14:59:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 97C0B1BF421
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 15:21:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 07BCE85FC4
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 14:59:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9142A86E4E
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 15:21:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8gHJOjlzuzPg for <devel@linuxdriverproject.org>;
- Wed, 19 Aug 2020 14:59:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
- [66.63.167.143])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CAD7785BCA
- for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 14:59:50 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by bedivere.hansenpartnership.com (Postfix) with ESMTP id D115F8EE17F;
- Wed, 19 Aug 2020 07:59:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
- s=20151216; t=1597849189;
- bh=7PMu9izfvJP0Yqog7vxhcEQb9h62GDKPX1If4m+L8R0=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=OjUAwUTp/ItAZSlbV+f5fOCaWVzt9DqIN+w9yoJxaEE0gnHE6rZZVb54+Hz0c5ZZE
- Hb/3aibCu54t6gcW2aVqbWIIDHBKiOLbR/fOvAY90fW0SUrQP0QkX8+CeCZ+PSzzdQ
- ViQuLsoRKTFDhSIJnCWv76g7gqa9l4AuHedfCKt8=
-Received: from bedivere.hansenpartnership.com ([127.0.0.1])
- by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id XOU0COqUWmkB; Wed, 19 Aug 2020 07:59:49 -0700 (PDT)
-Received: from [153.66.254.174] (c-73-35-198-56.hsd1.wa.comcast.net
- [73.35.198.56])
+ with ESMTP id 9JsticgGxq1E for <devel@linuxdriverproject.org>;
+ Wed, 19 Aug 2020 15:21:32 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from asavdk4.altibox.net (asavdk4.altibox.net [109.247.116.15])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 28D7986D7A
+ for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 15:21:31 +0000 (UTC)
+Received: from ravnborg.org (unknown [188.228.123.71])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id 6C2C88EE0E9;
- Wed, 19 Aug 2020 07:59:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
- s=20151216; t=1597849189;
- bh=7PMu9izfvJP0Yqog7vxhcEQb9h62GDKPX1If4m+L8R0=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=OjUAwUTp/ItAZSlbV+f5fOCaWVzt9DqIN+w9yoJxaEE0gnHE6rZZVb54+Hz0c5ZZE
- Hb/3aibCu54t6gcW2aVqbWIIDHBKiOLbR/fOvAY90fW0SUrQP0QkX8+CeCZ+PSzzdQ
- ViQuLsoRKTFDhSIJnCWv76g7gqa9l4AuHedfCKt8=
-Message-ID: <1597849185.3875.7.camel@HansenPartnership.com>
-Subject: Re: [PATCH] block: convert tasklets to use new tasklet_setup() API
-From: James Bottomley <James.Bottomley@HansenPartnership.com>
-To: Jens Axboe <axboe@kernel.dk>, Kees Cook <keescook@chromium.org>
-Date: Wed, 19 Aug 2020 07:59:45 -0700
-In-Reply-To: <f3312928-430c-25f3-7112-76f2754df080@kernel.dk>
-References: <20200817091617.28119-1-allen.cryptic@gmail.com>
- <20200817091617.28119-2-allen.cryptic@gmail.com>
- <b5508ca4-0641-7265-2939-5f03cbfab2e2@kernel.dk>
- <202008171228.29E6B3BB@keescook>
- <161b75f1-4e88-dcdf-42e8-b22504d7525c@kernel.dk>
- <202008171246.80287CDCA@keescook>
- <df645c06-c30b-eafa-4d23-826b84f2ff48@kernel.dk>
- <1597780833.3978.3.camel@HansenPartnership.com>
- <f3312928-430c-25f3-7112-76f2754df080@kernel.dk>
-X-Mailer: Evolution 3.26.6 
-Mime-Version: 1.0
+ by asavdk4.altibox.net (Postfix) with ESMTPS id 362B180487;
+ Wed, 19 Aug 2020 17:21:22 +0200 (CEST)
+Date: Wed, 19 Aug 2020 17:21:20 +0200
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
+Message-ID: <20200819152120.GA106437@ravnborg.org>
+References: <cover.1597833138.git.mchehab+huawei@kernel.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <cover.1597833138.git.mchehab+huawei@kernel.org>
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=aP3eV41m c=1 sm=1 tr=0
+ a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
+ a=kj9zAlcOel0A:10 a=0DMDbjpnAAAA:20 a=e5mUnYsNAAAA:8
+ a=wgkdfqopUnWM4JvIQe8A:9 a=CjuIK1q_8ugA:10 a=Vxmtnl_E_bksehYqCbjh:22
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,64 +62,221 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: ulf.hansson@linaro.org, linux-atm-general@lists.sourceforge.net,
- manohar.vanga@gmail.com, airlied@linux.ie, Allen Pais <allen.lkml@gmail.com>,
- linux-hyperv@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, anton.ivanov@cambridgegreys.com,
- devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
- linux1394-devel@lists.sourceforge.net, maximlevitsky@gmail.com, richard@nod.at,
- deller@gmx.de, jassisinghbrar@gmail.com, 3chas3@gmail.com,
- intel-gfx@lists.freedesktop.org, kuba@kernel.org, mporter@kernel.crashing.org,
- jdike@addtoit.com, oakad@yahoo.com, s.hauer@pengutronix.de,
- linux-input@vger.kernel.org, linux-um@lists.infradead.org,
- linux-block@vger.kernel.org, broonie@kernel.org,
- openipmi-developer@lists.sourceforge.net, mitch@sfgoth.com,
- linux-arm-kernel@lists.infradead.org, linux-parisc@vger.kernel.org,
- netdev@vger.kernel.org, martyn@welchs.me.uk, dmitry.torokhov@gmail.com,
- linux-mmc@vger.kernel.org, sre@kernel.org, linux-spi@vger.kernel.org,
- alex.bou9@gmail.com, Allen Pais <allen.cryptic@gmail.com>,
- stefanr@s5r6.in-berlin.de, daniel@ffwll.ch, linux-ntb@googlegroups.com,
- Romain Perier <romain.perier@gmail.com>, shawnguo@kernel.org,
- davem@davemloft.net
+Cc: Neil Armstrong <narmstrong@baylibre.com>,
+ Xinliang Liu <xinliang.liu@linaro.org>,
+ Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ devel@driverdev.osuosl.org, Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Xiubin Zhang <zhangxiubin1@huawei.com>, Wei Xu <xuwei5@hisilicon.com>,
+ David Airlie <airlied@linux.ie>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Tomi Valkeinen <tomi.valkeinen@ti.com>,
+ Bogdan Togorean <bogdan.togorean@analog.com>, Jakub Kicinski <kuba@kernel.org>,
+ Laurentiu Palcu <laurentiu.palcu@nxp.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Liwei Cai <cailiwei@hisilicon.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
+ Alexei Starovoitov <ast@kernel.org>, linaro-mm-sig@lists.linaro.org,
+ Rob Herring <robh+dt@kernel.org>, mauro.chehab@huawei.com,
+ Rob Clark <robdclark@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Liuyao An <anliuyao@huawei.com>, netdev@vger.kernel.org,
+ Rongrong Zou <zourongrong@gmail.com>, bpf@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 2020-08-19 at 07:00 -0600, Jens Axboe wrote:
-> On 8/18/20 1:00 PM, James Bottomley wrote:
-[...]
-> > Since both threads seem to have petered out, let me suggest in
-> > kernel.h:
-> > 
-> > #define cast_out(ptr, container, member) \
-> > 	container_of(ptr, typeof(*container), member)
-> > 
-> > It does what you want, the argument order is the same as
-> > container_of with the only difference being you name the containing
-> > structure instead of having to specify its type.
+Hi Mauro.
+
+On Wed, Aug 19, 2020 at 01:45:28PM +0200, Mauro Carvalho Chehab wrote:
+> This patch series port the out-of-tree driver for Hikey 970 (which
+> should also support Hikey 960) from the official 96boards tree:
 > 
-> Not to incessantly bike shed on the naming, but I don't like
-> cast_out, it's not very descriptive. And it has connotations of
-> getting rid of something, which isn't really true.
+>    https://github.com/96boards-hikey/linux/tree/hikey970-v4.9
+> 
+> Based on his history, this driver seems to be originally written
+> for Kernel 4.4, and was later ported to Kernel 4.9. The original
+> driver used to depend on ION (from Kernel 4.4) and had its own
+> implementation for FB dev API.
+> 
+> As I need to preserve the original history (with has patches from
+> both HiSilicon and from Linaro),  I'm starting from the original
+> patch applied there. The remaining patches are incremental,
+> and port this driver to work with upstream Kernel.
+> 
+> This driver doesn't depend on any firmware or on any special
+> userspace code. It works as-is with both X11 and Wayland.
+> 
+> Yet, I'm submitting it via staging due to the following reasons:
+> 
+> - It depends on the LDO3 power supply, which is provided by
+>   a regulator driver that it is currently on staging;
+> - Due to legal reasons, I need to preserve the authorship of
+>   each one responsbile for each patch. So, I need to start from
+>   the original patch from Kernel 4.4;
+> - There are still some problems I need to figure out how to solve:
+>    - The adv7535 can't get EDID data. Maybe it is a timing issue,
+>      but it requires more research to be sure about how to solve it;
+>    - The driver only accept resolutions on a defined list, as there's
+>      a known bug that this driver may have troubles with random
+>      resolutions. Probably due to a bug at the pixel clock settings;
+>    - Sometimes (at least with 1080p), it generates LDI underflow
+>      errors, which in turn causes the DRM to stop working. That
+>      happens for example when using gdm on Wayland and
+>      gnome on X11;
+>    - Probably related to the previous issue, when the monitor
+>      suspends due to DPMS, it doesn't return back to life.
+> 
+> So, IMO, the best is to keep it on staging for a while, until those
+> remaining bugs gets solved.
+> 
+> I added this series, together with the regulator driver and
+> a few other patches (including a hack to fix a Kernel 5.8 
+> regression at WiFi ) at:
+> 
+> 	https://gitlab.freedesktop.org/mchehab_kernel/hikey-970/-/commits/master
+> 
+> 
+> Chen Feng (1):
+>   staging: hikey9xx: Add hisilicon DRM driver for hikey960/970
+> 
+> John Stultz (1):
+>   staging: hikey9xx/gpu: port it to work with Kernel v4.9
+> 
+> Liwei Cai (2):
+>   staging: hikey9xx/gpu: solve tearing issue of display
+>   staging: hikey9xx/gpu: resolve the performance issue by interrupt
+>     mechanism
+> 
+> Mauro Carvalho Chehab (38):
+>   staging: hikey9xx/gpu: get rid of adv7535 fork
+Very good - I was in my mind starting a rant why we needed a fork of
+this driver, but I see it gets deleted again.
 
-Um, I thought it was exactly descriptive: you're casting to the outer
-container.  I thought about following the C++ dynamic casting style, so
-out_cast(), but that seemed a bit pejorative.  What about outer_cast()?
+I do acknowledge you need to preserve history and all -
+but this patchset is not easy to review.
 
-> FWIW, I like the from_ part of the original naming, as it has some
-> clues as to what is being done here. Why not just from_container()?
-> That should immediately tell people what it does without having to
-> look up the implementation, even before this becomes a part of the
-> accepted coding norm.
+Could you follow-up with a review-able set of patches as a follow-up
+for this?
+I spotted some wrong bridge handling in one patch but I do not know if
+this got changed in a later patch. And I lost the motivation to go
+looking for it.
 
-I'm not opposed to container_from() but it seems a little less
-descriptive than outer_cast() but I don't really care.  I always have
-to look up container_of() when I'm using it so this would just be
-another macro of that type ...
 
-James
+>   staging: hikey9xx/gpu: rename the Kirin9xx namespace
+>   staging: hikey9xx/gpu: get rid of kirin9xx_fbdev.c
+>   staging: hikey9xx/gpu: get rid of some ifdefs
+>   staging: hikey9xx/gpu: rename the config option for Kirin970
+>   staging: hikey9xx/gpu: change the includes to reflect upstream
+>   staging: hikey9xx/gpu: port driver to upstream kAPIs
+>   staging: hikey9xx/gpu: add a copy of set_reg() function there
+>   staging: hikey9xx/gpu: get rid of ION headers
+>   staging: hikey9xx/gpu: add support for using a reserved CMA memory
+>   staging: hikey9xx/gpu: cleanup encoder attach logic
+>   staging: hikey9xx/gpu: Change the logic which sets the burst mode
+>   staging: hikey9xx/gpu: fix the DRM setting logic
+>   staging: hikey9xx/gpu: do some code cleanups
+>   staging: hikey9xx/gpu: use default GEM_CMA fops
+>   staging: hikey9xx/gpu: place vblank enable/disable at the right place
+>   staging: hikey9xx/gpu: remove an uneeded hack
+>   staging: hikey9xx/gpu: add a possible implementation for
+>     atomic_disable
+>   staging: hikey9xx/gpu: register connector
+>   staging: hikey9xx/gpu: fix driver name
+>   staging: hikey9xx/gpu: get rid of iommu_format
+>   staging: hikey9xx/gpu: re-work the mode validation code
+>   staging: hikey9xx/gpu: add support for enable/disable ldo3 regulator
+>   staging: hikey9xx/gpu: add SPMI headers
+>   staging: hikey9xx/gpu: solve most coding style issues
+>   staging: hikey9xx/gpu: don't use iommu code
+>   staging: hikey9xx/gpu: add kirin9xx driver to the building system
+>   staging: hikey9xx/gpu: get rid of typedefs
+>   staging: hikey9xx/gpu: get rid of input/output macros
+>   staging: hikey9xx/gpu: get rid of some unused data
+>   staging: hikey9xx/gpu: place common definitions at kirin9xx_dpe.h
+>   staging: hikey9xx/gpu: get rid of DRM_HISI_KIRIN970
+>   dts: hisilicon: hi3670.dtsi: add I2C settings
+>   dts: hikey970-pinctrl.dtsi: add missing pinctrl settings
+>   dt: hisilicon: add support for the PMIC found on Hikey 970
+>   dts: add support for Hikey 970 DRM
+>   staging: hikey9xx/gpu: drop kirin9xx_pwm
+>   dt: display: Add binds for the DPE and DSI controller for Kirin
+>     960/970
+> 
+> Xiubin Zhang (7):
+>   staging: hikey9xx/gpu: add support to hikey970 HDMI and panel
+>   staging: hikey9xx/gpu: Solve SR Cannot Display Problems.
+>   staging: hikey9xx/gpu: Solve HDMI compatibility Problem.
+>   staging: hikey9xx/gpu: Support MIPI DSI 3 lanes for hikey970.
+>   staging: hikey9xx/gpu: Solve SR test reset problem for hikey970.
+>   staging: hikey9xx/gpu: add debug prints for this driver
+>   staging: hikey9xx/gpu: Add support 10.1 inch special HDMI displays.
+> 
+>  .../display/hisilicon,hi3660-dpe.yaml         |   99 +
+>  .../display/hisilicon,hi3660-dsi.yaml         |  102 +
+>  .../boot/dts/hisilicon/hi3670-hikey970.dts    |   56 +-
+>  arch/arm64/boot/dts/hisilicon/hi3670.dtsi     |   77 +
+>  .../boot/dts/hisilicon/hikey970-drm.dtsi      |   93 +
+>  .../boot/dts/hisilicon/hikey970-pinctrl.dtsi  |  548 +++-
+>  .../boot/dts/hisilicon/hikey970-pmic.dtsi     |  197 ++
+>  drivers/staging/hikey9xx/Kconfig              |    3 +
+>  drivers/staging/hikey9xx/Makefile             |    1 +
+>  drivers/staging/hikey9xx/gpu/Kconfig          |   22 +
+>  drivers/staging/hikey9xx/gpu/Makefile         |    9 +
+>  drivers/staging/hikey9xx/gpu/kirin960_defs.c  |  378 +++
+>  .../staging/hikey9xx/gpu/kirin960_dpe_reg.h   |  233 ++
+>  drivers/staging/hikey9xx/gpu/kirin970_defs.c  |  381 +++
+>  .../staging/hikey9xx/gpu/kirin970_dpe_reg.h   | 1188 ++++++++
+>  drivers/staging/hikey9xx/gpu/kirin9xx_dpe.h   | 2437 +++++++++++++++++
+>  .../hikey9xx/gpu/kirin9xx_drm_dpe_utils.c     | 1178 ++++++++
+>  .../hikey9xx/gpu/kirin9xx_drm_dpe_utils.h     |  286 ++
+>  .../staging/hikey9xx/gpu/kirin9xx_drm_drv.c   |  368 +++
+>  .../staging/hikey9xx/gpu/kirin9xx_drm_drv.h   |   57 +
+>  .../staging/hikey9xx/gpu/kirin9xx_drm_dss.c   | 1063 +++++++
+>  .../hikey9xx/gpu/kirin9xx_drm_overlay_utils.c | 1005 +++++++
+>  .../hikey9xx/gpu/kirin9xx_dw_drm_dsi.c        | 2132 ++++++++++++++
+>  .../hikey9xx/gpu/kirin9xx_dw_dsi_reg.h        |  146 +
+>  .../staging/hikey9xx/gpu/kirin9xx_fb_panel.h  |  191 ++
+>  25 files changed, 12229 insertions(+), 21 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/display/hisilicon,hi3660-dpe.yaml
+>  create mode 100644 Documentation/devicetree/bindings/display/hisilicon,hi3660-dsi.yaml
 
+Patch that intropduce new bindings must following the submitting patches
+guidelines for bindings. For once the subject is "dt-bindings: bla bla".
+
+	Sam
+
+>  create mode 100644 arch/arm64/boot/dts/hisilicon/hikey970-drm.dtsi
+>  create mode 100644 arch/arm64/boot/dts/hisilicon/hikey970-pmic.dtsi
+>  create mode 100644 drivers/staging/hikey9xx/gpu/Kconfig
+>  create mode 100644 drivers/staging/hikey9xx/gpu/Makefile
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin960_defs.c
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin960_dpe_reg.h
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin970_defs.c
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin970_dpe_reg.h
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_dpe.h
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_dpe_utils.c
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_dpe_utils.h
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.h
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_dss.c
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_drm_overlay_utils.c
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_dw_drm_dsi.c
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_dw_dsi_reg.h
+>  create mode 100644 drivers/staging/hikey9xx/gpu/kirin9xx_fb_panel.h
+> 
+> -- 
+> 2.26.2
+> 
+> 
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
