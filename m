@@ -1,57 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4A44249C31
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 13:46:57 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0D83249C1E
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 13:46:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 58EBA21577;
-	Wed, 19 Aug 2020 11:46:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D941D865B0;
+	Wed, 19 Aug 2020 11:46:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id grWwwMoW2h1U; Wed, 19 Aug 2020 11:46:52 +0000 (UTC)
+	with ESMTP id VwVEkHqqOR-G; Wed, 19 Aug 2020 11:46:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E50BE20517;
-	Wed, 19 Aug 2020 11:46:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 206E48671B;
+	Wed, 19 Aug 2020 11:46:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CAA2C1BF30D
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 93A691BF9AD
  for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:46:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C7C1386631
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8C6F78562A
  for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 11:46:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c+dxtnGVJJHN for <devel@linuxdriverproject.org>;
+ with ESMTP id DHh57u2UAGbt for <devel@linuxdriverproject.org>;
  Wed, 19 Aug 2020 11:46:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 07DC88667B
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 170318560C
  for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 11:46:24 +0000 (UTC)
 Received: from mail.kernel.org (ip5f5ad5a3.dynamic.kabel-deutschland.de
  [95.90.213.163])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A40C72083B;
+ by mail.kernel.org (Postfix) with ESMTPSA id B1AD122DBF;
  Wed, 19 Aug 2020 11:46:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=default; t=1597837582;
- bh=lD1z+6B6Hv/5RcoylS7Y5W+SmGK/qiZiuARtEnKUb9w=;
+ bh=ClOj9yCdunMaS320vDbGtPzjoJaPHr/Jec/oQrO5Wog=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fl0qUJV+Ju9cogwWDawaevyvFcOjBYfxwTK+81xiX8TPzd+EmfzYvfailIXS9FKaF
- hY1d4bxk0Kq1nOhb+zkLfCE0wV0SoKlH4QpyxZJxDxulQuYkKI75WcNwm4LALA8twn
- oAfzl97CdUFCwjF2bP8MdGM+BIM79RnWMdaDVdH8=
+ b=MVV06K30OMwQxMR9UYLuS5tjtvikFOPCCbBz4lYgjKxawcw5P+FsTnnDYXWE1i8/+
+ 6nzftgJ4wBkKmytQS2gjlp7HtmvtUtXbXGozU383UCoq/3B6jb6l7izdb9fJEBOriL
+ 73tA7qkvRhsEKDdLU6xURH6vvyIUnDu64g/5SiLw=
 Received: from mchehab by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1k8MXs-00EubA-Fp; Wed, 19 Aug 2020 13:46:20 +0200
+ id 1k8MXs-00EubC-Gf; Wed, 19 Aug 2020 13:46:20 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 28/49] staging: hikey9xx/gpu: remove an uneeded hack
-Date: Wed, 19 Aug 2020 13:45:56 +0200
-Message-Id: <b9ad9a5922a9e53cac02af1c2c74f4a7d2fa262d.1597833138.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 29/49] staging: hikey9xx/gpu: add a possible implementation
+ for atomic_disable
+Date: Wed, 19 Aug 2020 13:45:57 +0200
+Message-Id: <57af4d50a42f4547344ff0a67bcdc4370dbe6d24.1597833138.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1597833138.git.mchehab+huawei@kernel.org>
 References: <cover.1597833138.git.mchehab+huawei@kernel.org>
@@ -71,40 +72,43 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, Liwei Cai <cailiwei@hisilicon.com>,
  Manivannan Sadhasivam <mani@kernel.org>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Chen Feng <puck.chen@hisilicon.com>, linuxarm@huawei.com,
- dri-devel <dri-devel@lists.freedesktop.org>,
+ linux-kernel@vger.kernel.org, Wanchun Zheng <zhengwanchun@hisilicon.com>,
+ linuxarm@huawei.com, dri-devel <dri-devel@lists.freedesktop.org>,
  Xiubin Zhang <zhangxiubin1@huawei.com>, John Stultz <john.stultz@linaro.org>,
- Daniel Vetter <daniel@ffwll.ch>, mauro.chehab@huawei.com,
- linux-kernel@vger.kernel.org
+ Daniel Vetter <daniel@ffwll.ch>, mauro.chehab@huawei.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-At least on current upstream Kernels, forcing an event parse
-during init time isn't needed anymore.
+Currently, the method is empty. However, looking at the driver,
+it sounds it shouldn't be hard to implement it.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/staging/hikey9xx/gpu/kirin9xx_drm_dss.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
-index 44f7c15f386a..3d1b5f738a7f 100644
---- a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
-+++ b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
-@@ -122,11 +122,6 @@ static int kirin_drm_kms_init(struct drm_device *dev)
- 	/* init kms poll for handling hpd */
- 	drm_kms_helper_poll_init(dev);
+diff --git a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_dss.c b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_dss.c
+index e1f2557a6be1..26212c130b79 100644
+--- a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_dss.c
++++ b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_dss.c
+@@ -638,7 +638,14 @@ static void dss_plane_atomic_update(struct drm_plane *plane,
+ static void dss_plane_atomic_disable(struct drm_plane *plane,
+ 				     struct drm_plane_state *old_state)
+ {
+-	//struct dss_plane *aplane = to_dss_plane(plane);
++	// FIXME: Maybe this?
++#if 0
++	struct dss_plane *aplane = to_dss_plane(plane);
++	struct dss_crtc *acrtc = aplane->acrtc;
++
++	disable_ldi(acrtc);
++	hisifb_mctl_sw_clr(acrtc);
++#endif
+ }
  
--#if 1
--	/* force detection after connectors init */
--	(void)drm_helper_hpd_irq_event(dev);
--#endif
--
- 	return 0;
- 
- err_unbind_all:
+ static const struct drm_plane_helper_funcs dss_plane_helper_funcs = {
 -- 
 2.26.2
 
