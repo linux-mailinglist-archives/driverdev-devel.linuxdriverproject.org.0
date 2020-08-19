@@ -1,74 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59F6824A73B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 21:52:26 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CA9924A7D1
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Aug 2020 22:40:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 012F3877F2;
-	Wed, 19 Aug 2020 19:52:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BD2DD88012;
+	Wed, 19 Aug 2020 20:40:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iNy+UTe37i+p; Wed, 19 Aug 2020 19:52:23 +0000 (UTC)
+	with ESMTP id zdEcCRqRIEdz; Wed, 19 Aug 2020 20:40:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8554E877D0;
-	Wed, 19 Aug 2020 19:52:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 992D987E91;
+	Wed, 19 Aug 2020 20:40:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 87BBA1BF316
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 19:52:20 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D21591BF408
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 20:40:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7F3AC876D4
- for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 19:52:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9783386119
+ for <devel@linuxdriverproject.org>; Wed, 19 Aug 2020 20:40:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9s+yduVFc5qp for <devel@linuxdriverproject.org>;
- Wed, 19 Aug 2020 19:52:18 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6BDE787601
- for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 19:52:18 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id v6so20013302ota.13
- for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 12:52:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=20eRCPt9U7XROuUscJl4o9bl5XBe7/+hwEOIYHyciSM=;
- b=TDvGe73fi0mYFcu8gy0zyv7nAwTvj7LZXmceDEUKPP8XfBtwIw8eDnhZKXXW/8lOST
- i3mwXYbXDDRyFBEBUEFYWxYynj8XahsSAx/k6lpaNmRyovcJDE7Y/1Us5/lAXLoB+fny
- MXwugodqdfXUpnDdV+YqwtDPcrU39IcwaELeeOIEfQVGHH8qMEJzhHrmfsPm50dMtK8D
- E2hgWNg9hTGAkp/gDSRS2/SFCteSIRgMdFhm92/90JvBoxi1tgk0nM350xbrUY9djJu/
- Vayz78+1GIbV3JXLHBbEvqxWVmcLvT6HCup7VhLEysHQgvZVLA6bXvrYb7L+4t8Mxya5
- O2PA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=20eRCPt9U7XROuUscJl4o9bl5XBe7/+hwEOIYHyciSM=;
- b=KH1G5LrGBO7vIc3lNWg/00SyS5e0HCd/DfRyiIbXirp7prp8blQv+py/V1afoCloPk
- pCmK/59eqSrg6ocae57ye2OIhu0kblrYGWvuuO9kufLqObImfiFumoh/AKjbD8zrR4M6
- i7mAoV0SPu+wBnKfP4n1+YEWSL+yiCwQHniX8fBQukqep5k2ljrFAqgbmXE2pTFvBJxi
- 77MVmpXSi834G+Wq8td4FbjyjNd6vuuZYaVWEOpm2bgS7t8PbMB1UDOan0jg+shAO/Eu
- uBwtYqWy0HX32ByQnEPHTN/LCENE8IqrdbSkMj1U0X1Fui1bcgziFZHtGdMaMOMHyH+W
- Lwwg==
-X-Gm-Message-State: AOAM532l+edLEw0GjshwFWB1A1d9ubQBn5Va16oSSK/AKOhsUyyHmbdF
- 63DHNJn/B4Nkv8BHj806XjFG6J8j1N9C+aNKE+B8dg==
-X-Google-Smtp-Source: ABdhPJziBBPPuDZCBcZoysAn7wtSqkMtfGL35ZZB/FJ/a7yXT1Ut5k0YtYAU8hIkSuF0vuVhhtyHAco3tq76syVzuqI=
-X-Received: by 2002:a9d:6f8f:: with SMTP id h15mr18795170otq.221.1597866737290; 
- Wed, 19 Aug 2020 12:52:17 -0700 (PDT)
+ with ESMTP id W0-psYWJH80t for <devel@linuxdriverproject.org>;
+ Wed, 19 Aug 2020 20:40:00 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from asavdk4.altibox.net (asavdk4.altibox.net [109.247.116.15])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 76AEC860F8
+ for <devel@driverdev.osuosl.org>; Wed, 19 Aug 2020 20:40:00 +0000 (UTC)
+Received: from ravnborg.org (unknown [188.228.123.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by asavdk4.altibox.net (Postfix) with ESMTPS id D4190804B9;
+ Wed, 19 Aug 2020 22:39:54 +0200 (CEST)
+Date: Wed, 19 Aug 2020 22:39:53 +0200
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Xin Ji <xji@analogixsemi.com>
+Subject: Re: [PATCH v14 0/2] Add initial support for slimport anx7625
+Message-ID: <20200819203953.GA109541@ravnborg.org>
+References: <cover.1594283160.git.xji@analogixsemi.com>
+ <20200810203546.GA421906@ravnborg.org>
 MIME-Version: 1.0
-References: <cover.1597833138.git.mchehab+huawei@kernel.org>
- <20200819152120.GA106437@ravnborg.org>
- <20200819153045.GA18469@pendragon.ideasonboard.com>
-In-Reply-To: <20200819153045.GA18469@pendragon.ideasonboard.com>
-From: John Stultz <john.stultz@linaro.org>
-Date: Wed, 19 Aug 2020 12:52:06 -0700
-Message-ID: <CALAqxLUXnPRec3UYbMKge8yNKBagLOatOeRCagF=JEyPEfWeKA@mail.gmail.com>
-Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Content-Disposition: inline
+In-Reply-To: <20200810203546.GA421906@ravnborg.org>
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=aP3eV41m c=1 sm=1 tr=0
+ a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
+ a=kj9zAlcOel0A:10 a=e5mUnYsNAAAA:8 a=-3hZfeu0XQcix8hqga0A:9
+ a=CjuIK1q_8ugA:10 a=Vxmtnl_E_bksehYqCbjh:22
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,82 +63,128 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>, Sam Ravnborg <sam@ravnborg.org>,
- driverdevel <devel@driverdev.osuosl.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- Xiubin Zhang <zhangxiubin1@huawei.com>, Wei Xu <xuwei5@hisilicon.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Tomi Valkeinen <tomi.valkeinen@ti.com>,
- Bogdan Togorean <bogdan.togorean@analog.com>, Jakub Kicinski <kuba@kernel.org>,
- Laurentiu Palcu <laurentiu.palcu@nxp.com>,
- linux-media <linux-media@vger.kernel.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Liwei Cai <cailiwei@hisilicon.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
- Alexei Starovoitov <ast@kernel.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- Rob Herring <robh+dt@kernel.org>, mauro.chehab@huawei.com,
- Rob Clark <robdclark@chromium.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- lkml <linux-kernel@vger.kernel.org>, Liuyao An <anliuyao@huawei.com>,
- Network Development <netdev@vger.kernel.org>,
- Rongrong Zou <zourongrong@gmail.com>, BPF Mailing List <bpf@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@google.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Nicolas Boichat <drinkcat@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
+ David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Pi-Hsun Shih <pihsun@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>, Sheng Pan <span@analogixsemi.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Aug 19, 2020 at 8:31 AM Laurent Pinchart
-<laurent.pinchart@ideasonboard.com> wrote:
-> On Wed, Aug 19, 2020 at 05:21:20PM +0200, Sam Ravnborg wrote:
-> > On Wed, Aug 19, 2020 at 01:45:28PM +0200, Mauro Carvalho Chehab wrote:
-> > > This patch series port the out-of-tree driver for Hikey 970 (which
-> > > should also support Hikey 960) from the official 96boards tree:
-> > >
-> > >    https://github.com/96boards-hikey/linux/tree/hikey970-v4.9
-> > >
-> > > Based on his history, this driver seems to be originally written
-> > > for Kernel 4.4, and was later ported to Kernel 4.9. The original
-> > > driver used to depend on ION (from Kernel 4.4) and had its own
-> > > implementation for FB dev API.
-> > >
-> > > As I need to preserve the original history (with has patches from
-> > > both HiSilicon and from Linaro),  I'm starting from the original
-> > > patch applied there. The remaining patches are incremental,
-> > > and port this driver to work with upstream Kernel.
-> > >
-...
-> > > - Due to legal reasons, I need to preserve the authorship of
-> > >   each one responsbile for each patch. So, I need to start from
-> > >   the original patch from Kernel 4.4;
-...
-> > I do acknowledge you need to preserve history and all -
-> > but this patchset is not easy to review.
->
-> Why do we need to preserve history ? Adding relevant Signed-off-by and
-> Co-developed-by should be enough, shouldn't it ? Having a public branch
-> that contains the history is useful if anyone is interested, but I don't
-> think it's required in mainline.
+Hi Xin Ji.
 
-Yea. I concur with Laurent here. I'm not sure what legal reasoning you
-have on this but preserving the "absolute" history here is actively
-detrimental for review and understanding of the patch set.
+On Mon, Aug 10, 2020 at 10:35:46PM +0200, Sam Ravnborg wrote:
+> Hi Xin Ji.
+> 
+> On Thu, Jul 09, 2020 at 04:31:09PM +0800, Xin Ji wrote:
+> > Hi all,
+> > 
+> > The following series add support for the Slimport ANX7625 transmitter, a
+> > ultra-low power Full-HD 4K MIPI to DP transmitter designed for portable device.
+> > 
+> > 
+> > This is the v14 version, any mistakes, please let me know, I will fix it in
+> > the next series.
+> > 
+> > Change history:
+> > v14: Fix comments from Sam and Nicolas
+> >  - Check flags at drm_bridge_attach
+> >  - Use panel_bridge instead of drm_panel
+> >  - Fix not correct return value
+> 
+> Sorry for ignoring this for so long time.
+> The patch applies but no longer builds.
+> 
+> I could fix it locally but wanted to know if you have a later version to
+> be applied?
 
-Preserving Authorship, Signed-off-by lines and adding Co-developed-by
-lines should be sufficient to provide both atribution credit and DCO
-history.
+I took a short look at the driver today.
+I noticed following code:
+       if (!(flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR))
+                return -EINVAL;
 
-thanks
--john
+So if the display driver do not supply the DRM_BRIDGE_ATTACH_NO_CONNECTOR
+then -EINVAL is returned.
+
+But then the anx7625_bridge_attach() continues and creates a connector.
+For a new bridge driver there should be no need for the backward
+compatibility - so no need to create the connector.
+Unless the display driver needs it - but then we should fix the display
+driver and not add backward compatibility code in the bridge driver.
+
+Which display driver do you expect this bridge driver to be used with?
+
+	Sam
+
+
+
+
+> 
+> 	Sam
+> 
+> 
+> > 
+> > v13: Fix comments from Launrent Pinchart and Rob Herring
+> >  - Picked up Rob's Reviewed-By
+> >  - Add .detect and .get_edid interface in bridge funcs.
+> > 
+> > v12: Fix comments from Hsin-Yi Wang
+> >  - Rebase the code on kernel 5.7, fix DRM interface not match issue.
+> > 
+> > v11: Fix comments from Rob Herring
+> >  - Update commit message.
+> >  - Remove unused label.
+> > 
+> > v10: Fix comments from Rob Herring, Daniel.
+> >  - Fix dt_binding_check warning.
+> >  - Update description.
+> > 
+> > v9: Fix comments from Sam, Nicolas, Daniel
+> >  - Remove extcon interface.
+> >  - Remove DPI support.
+> >  - Fix dt_binding_check complains.
+> >  - Code clean up and update description.
+> > 
+> > v8: Fix comments from Nicolas.
+> >  - Fix several coding format.
+> >  - Update description.
+> > 
+> > v7:
+> >  - Fix critical timing(eg:odd hfp/hbp) in "mode_fixup" interface,
+> >    enhance MIPI RX tolerance by setting register MIPI_DIGITAL_ADJ_1 to 0x3D.
+> > 
+> > 
+> > Xin Ji (2):
+> >   dt-bindings: drm/bridge: anx7625: MIPI to DP transmitter DT schema
+> >   drm/bridge: anx7625: Add anx7625 MIPI DSI/DPI to DP
+> > 
+> >  .../bindings/display/bridge/analogix,anx7625.yaml  |   95 +
+> >  drivers/gpu/drm/bridge/analogix/Kconfig            |    9 +
+> >  drivers/gpu/drm/bridge/analogix/Makefile           |    1 +
+> >  drivers/gpu/drm/bridge/analogix/anx7625.c          | 1939 ++++++++++++++++++++
+> >  drivers/gpu/drm/bridge/analogix/anx7625.h          |  391 ++++
+> >  5 files changed, 2435 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
+> >  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.c
+> >  create mode 100644 drivers/gpu/drm/bridge/analogix/anx7625.h
+> > 
+> > -- 
+> > 2.7.4
+> > 
+> > _______________________________________________
+> > dri-devel mailing list
+> > dri-devel@lists.freedesktop.org
+> > https://lists.freedesktop.org/mailman/listinfo/dri-devel
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
