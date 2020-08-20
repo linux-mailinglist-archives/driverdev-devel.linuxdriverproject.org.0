@@ -1,60 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 037B324B055
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Aug 2020 09:48:19 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3074324B0A5
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Aug 2020 09:57:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8B5408685B;
-	Thu, 20 Aug 2020 07:48:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DD07488072;
+	Thu, 20 Aug 2020 07:57:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pArP-ngWGFFf; Thu, 20 Aug 2020 07:48:15 +0000 (UTC)
+	with ESMTP id xVKiZ3xhLqkl; Thu, 20 Aug 2020 07:57:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F4998679E;
-	Thu, 20 Aug 2020 07:48:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5D60887FEA;
+	Thu, 20 Aug 2020 07:57:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D10531BF841
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 07:48:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4C60A1BF841
+ for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 07:57:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CC69787CF9
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 07:48:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 41FEE87D5F
+ for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 07:57:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jkrhP5WQMUX9 for <devel@linuxdriverproject.org>;
- Thu, 20 Aug 2020 07:48:11 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6B27F87D15
- for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 07:48:11 +0000 (UTC)
-Received: from coco.lan (ip5f5ad5a3.dynamic.kabel-deutschland.de
- [95.90.213.163])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DF7492076E;
- Thu, 20 Aug 2020 07:48:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597909691;
- bh=g2IqS522aDpDOMRGjJhoBBKmc9vDx5nkutC89s6uJR4=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=q9mr5rBKWlaN6yOMGAvpVnslZyDPcwewIL7KGeA4ddSFK2LedtABk2YcfI/a2xWSo
- vj4XxLKWhcOWpuFnRThSQO8Cn4AnL6tc5Bg7GCM7GCId3AAXYo0vPaJOaK7wHu4CUU
- CDlaI3bQpIBtNGU4ubSBKKXxRpxl+QeouugEhmNw=
-Date: Thu, 20 Aug 2020 09:48:00 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
-Message-ID: <20200820094800.3ede7970@coco.lan>
-In-Reply-To: <CALAqxLULQvW3UikCHpEzSDnpeYnBy8wDSsWZNbSrmivQTW3_Sg@mail.gmail.com>
-References: <cover.1597833138.git.mchehab+huawei@kernel.org>
- <CALAqxLU3bt6fT4nGHZFSnzyQq4xJo2On=c_Oa9ONED9-jhaFgw@mail.gmail.com>
- <CALAqxLW98nVc-=8Q6nx-wRP1z8pzkw1_zNc9M7V3GhnJQqM9rg@mail.gmail.com>
- <CALAqxLULQvW3UikCHpEzSDnpeYnBy8wDSsWZNbSrmivQTW3_Sg@mail.gmail.com>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ with ESMTP id IUDDU2Ow37RA for <devel@linuxdriverproject.org>;
+ Thu, 20 Aug 2020 07:57:42 +0000 (UTC)
+X-Greylist: delayed 00:05:44 by SQLgrey-1.7.6
+Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
+ [209.85.218.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C737087D51
+ for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 07:57:41 +0000 (UTC)
+Received: by mail-ej1-f68.google.com with SMTP id o23so1427831ejr.1
+ for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 00:57:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=android.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3iJ9/fK5LB+6Kor9RoXGNOLvcbD9Ssuir1D7JZUYEZQ=;
+ b=vVTaDo2Ur+t1k5v/hjwxfcOoDSC6nxBbJPQAWOfhKxMOXA13Ayg65BQ4cdgIk57V4m
+ /H/zi0NyhUDS1+NL1r4L5tZdYybjr92n6LYfYS2CMej9pejnQoVFBJUczJ4zGric3avP
+ Y+2aGEJyGAYfvJvqi5EpCv/GwFeWzIgOTysDc9/D64nI/+rl1A6PJDkFacCqxlEs4ovt
+ W+tWkO72YgBOFwtQsIKMv98InuTzozuS9IENFuPIrOkO78YL7YygajKZN9i6i35MsBhN
+ YPGLtTSRax2pKNqruLk9xslwMvIe6YSR1gs/3sbg4fWiYMBQFTLyMJCO8kt7WTSfRiIq
+ pz5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3iJ9/fK5LB+6Kor9RoXGNOLvcbD9Ssuir1D7JZUYEZQ=;
+ b=sAHxtXK9yOgXbWZkKmNtxwqolKugS2dVhRIf76BnUCuHO8K3BlxfJsPti8J7pYgDtS
+ MYXMQY2eRfDV7Ee9WU8BGpvXqddz41vkB9j55ZVT5BdV4lTjQGAJYWBJlCCMs3sjmHqe
+ B9ApJWWnExoQi0t6Il+GPTC3uHN6zvut7F1n/uXmBzoZuOY05wE7I6w2U+iwVj1xT4dD
+ SrTlQQr642/1wOCBYakdKRj2jjtFfnXFB48IqtCgyl+Yqu1m1aPUWPb1sQpAu/+GFedI
+ GkfKocI8t+a3HSGfGbEIZnAnQdJagykm2v7pK6WW3p9f3XGaBGu0O3Fhnadi3VKQsiVF
+ SLZw==
+X-Gm-Message-State: AOAM533XQRREFg+UOcPAfXJNb5fPCONIX9fYMfVMFq4+inq31HIG6RCN
+ yD1t3oAx+RLVi8PXDH3ExhzeuFgFqzkMOA==
+X-Google-Smtp-Source: ABdhPJyl6aVYd1dRYJ+2QTDFpYpAk07k8IYLGLewCo+zey/nRl010HIldBrnD28vF0nrOD3pIDDQBQ==
+X-Received: by 2002:a17:906:a3d5:: with SMTP id
+ ca21mr1971315ejb.453.1597909915660; 
+ Thu, 20 Aug 2020 00:51:55 -0700 (PDT)
+Received: from maco2.ams.corp.google.com (a83-162-234-235.adsl.xs4all.nl.
+ [83.162.234.235])
+ by smtp.gmail.com with ESMTPSA id p1sm836281edu.11.2020.08.20.00.51.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 Aug 2020 00:51:55 -0700 (PDT)
+From: Martijn Coenen <maco@android.com>
+To: gregkh@linuxfoundation.org, tkjos@google.com, arve@android.com,
+ joel@joelfernandes.org, christian@brauner.io, hridya@google.com,
+ surenb@google.com
+Subject: [PATCH] binder: print warnings when detecting oneway spamming.
+Date: Thu, 20 Aug 2020 09:51:33 +0200
+Message-Id: <20200820075133.87040-1-maco@android.com>
+X-Mailer: git-send-email 2.28.0.220.ged08abb693-goog
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -68,146 +88,173 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Sam Ravnborg <sam@ravnborg.org>, Sumit Semwal <sumit.semwal@linaro.org>,
- driverdevel <devel@driverdev.osuosl.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>, Wei Xu <xuwei5@hisilicon.com>,
- David Airlie <airlied@linux.ie>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Tomi Valkeinen <tomi.valkeinen@ti.com>,
- Bogdan Togorean <bogdan.togorean@analog.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Laurentiu Palcu <laurentiu.palcu@nxp.com>,
- linux-media <linux-media@vger.kernel.org>, "open
- list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Liwei Cai <cailiwei@hisilicon.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
- Alexei Starovoitov <ast@kernel.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- mauro.chehab@huawei.com, Rob Clark <robdclark@chromium.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- lkml <linux-kernel@vger.kernel.org>, Liuyao An <anliuyao@huawei.com>,
- Daniel Vetter <daniel@ffwll.ch>, Network Development <netdev@vger.kernel.org>,
- Rongrong Zou <zourongrong@gmail.com>, BPF Mailing List <bpf@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org, maco@google.com,
+ Martijn Coenen <maco@android.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Em Wed, 19 Aug 2020 20:28:44 -0700
-John Stultz <john.stultz@linaro.org> escreveu:
+The most common cause of the binder transaction buffer filling up is a
+client rapidly firing oneway transactions into a process, before it has
+a chance to handle them. Yet the root cause of this is often hard to
+debug, because either the system or the app will stop, and by that time
+binder debug information we dump in bugreports is no longer relevant.
 
-> On Wed, Aug 19, 2020 at 7:01 PM John Stultz <john.stultz@linaro.org> wrote:
-> >
-> > On Wed, Aug 19, 2020 at 2:36 PM John Stultz <john.stultz@linaro.org> wrote:  
-> > >
-> > > On Wed, Aug 19, 2020 at 4:46 AM Mauro Carvalho Chehab
-> > > <mchehab+huawei@kernel.org> wrote:  
-> > > > So, IMO, the best is to keep it on staging for a while, until those
-> > > > remaining bugs gets solved.
-> > > >
-> > > > I added this series, together with the regulator driver and
-> > > > a few other patches (including a hack to fix a Kernel 5.8
-> > > > regression at WiFi ) at:
-> > > >
-> > > >         https://gitlab.freedesktop.org/mchehab_kernel/hikey-970/-/commits/master  
-> > >
-> > > Sorry, one more small request: Could you create a branch that only has
-> > > the DRM driver changes in it?
-> > >
-> > > The reason I ask, is that since the HiKey960 isn't affected by the
-> > > majority of the problems you listed as motivation for going through
-> > > staging. So if we can validate that your tree works fine on HiKey960,
-> > > the series can be cleaned up and submitted properly upstream to enable
-> > > that SoC, and the outstanding 970 issues can be worked out afterwards
-> > > against mainline.  
-> >
-> > Just as a heads up, I tried testing your tree with my HiKey960, and
-> > after fixing the compat string inconsistency, the drivers seem to load
-> > properly. However the drm_hwcomposer seems to have some trouble with
-> > the driver:
-> > 01-01 00:12:41.456   345   345 E hwc-drm-display-compositor: Commit
-> > test failed for display 0, FIXME
-> > 01-01 00:12:41.456   345   345 E hwc-drm-two: Failed to apply the
-> > frame composition ret=-22
-> > 01-01 00:12:41.456   351   351 E HWComposer:
-> > presentAndGetReleaseFences: present failed for display 0: BadParameter
-> > (4)
-> >
-> > I'll dig in a bit further as to why, but wanted to give you a heads up.  
-> 
-> Ok, I've mostly gotten it sorted out:
->   - You're missing a few color formats.
->   - And I re-discovered a crash that was already fixed in my tree.
-> 
-> I'll send those patches in a few here.
+This change warns as soon as a process dips below 80% of its oneway
+space (less than 100kB available in the configuration), when any one
+process is responsible for either more than 50 transactions, or more
+than 50% of the oneway space.
 
-Thank you for the patches! I'll test them with Hikey 970 in order to
-be sure they're compatible also with such SoC.
+Signed-off-by: Martijn Coenen <maco@android.com>
+---
+ drivers/android/binder.c       |  2 +-
+ drivers/android/binder_alloc.c | 49 +++++++++++++++++++++++++++++++---
+ drivers/android/binder_alloc.h |  5 +++-
+ 3 files changed, 51 insertions(+), 5 deletions(-)
 
-> 
-> That said even with the patches I've got on top of your series, I
-> still see a few issues:
+diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+index f936530a19b0..946332bc871a 100644
+--- a/drivers/android/binder.c
++++ b/drivers/android/binder.c
+@@ -3136,7 +3136,7 @@ static void binder_transaction(struct binder_proc *proc,
+ 
+ 	t->buffer = binder_alloc_new_buf(&target_proc->alloc, tr->data_size,
+ 		tr->offsets_size, extra_buffers_size,
+-		!reply && (t->flags & TF_ONE_WAY));
++		!reply && (t->flags & TF_ONE_WAY), current->tgid);
+ 	if (IS_ERR(t->buffer)) {
+ 		/*
+ 		 * -ESRCH indicates VMA cleared. The target is dying.
+diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
+index 69609696a843..76e8e633dbd4 100644
+--- a/drivers/android/binder_alloc.c
++++ b/drivers/android/binder_alloc.c
+@@ -338,12 +338,48 @@ static inline struct vm_area_struct *binder_alloc_get_vma(
+ 	return vma;
+ }
+ 
++static void debug_low_async_space_locked(struct binder_alloc *alloc, int pid)
++{
++	/*
++	 * Find the amount and size of buffers allocated by the current caller;
++	 * The idea is that once we cross the threshold, whoever is responsible
++	 * for the low async space is likely to try to send another async txn,
++	 * and at some point we'll catch them in the act. This is more efficient
++	 * than keeping a map per pid.
++	 */
++	struct rb_node *n = alloc->free_buffers.rb_node;
++	struct binder_buffer *buffer;
++	size_t buffer_size;
++	size_t total_alloc_size = 0;
++	size_t num_buffers = 0;
++
++	for (n = rb_first(&alloc->allocated_buffers); n != NULL;
++		 n = rb_next(n)) {
++		buffer = rb_entry(n, struct binder_buffer, rb_node);
++		if (buffer->pid != pid)
++			continue;
++		if (!buffer->async_transaction)
++			continue;
++		buffer_size = binder_alloc_buffer_size(alloc, buffer);
++		total_alloc_size += buffer_size;
++		num_buffers++;
++	}
++
++	// Warn if this pid has more than 50% of async space, or more than 50 txns
++	if (num_buffers > 50 || total_alloc_size > alloc->buffer_size / 4) {
++		binder_alloc_debug(BINDER_DEBUG_USER_ERROR,
++			     "%d: pid %d spamming oneway? %zd buffers allocated for a total size of %zd\n",
++			      alloc->pid, pid, num_buffers, total_alloc_size);
++	}
++}
++
+ static struct binder_buffer *binder_alloc_new_buf_locked(
+ 				struct binder_alloc *alloc,
+ 				size_t data_size,
+ 				size_t offsets_size,
+ 				size_t extra_buffers_size,
+-				int is_async)
++				int is_async,
++				int pid)
+ {
+ 	struct rb_node *n = alloc->free_buffers.rb_node;
+ 	struct binder_buffer *buffer;
+@@ -486,11 +522,16 @@ static struct binder_buffer *binder_alloc_new_buf_locked(
+ 	buffer->offsets_size = offsets_size;
+ 	buffer->async_transaction = is_async;
+ 	buffer->extra_buffers_size = extra_buffers_size;
++	buffer->pid = pid;
+ 	if (is_async) {
+ 		alloc->free_async_space -= size + sizeof(struct binder_buffer);
+ 		binder_alloc_debug(BINDER_DEBUG_BUFFER_ALLOC_ASYNC,
+ 			     "%d: binder_alloc_buf size %zd async free %zd\n",
+ 			      alloc->pid, size, alloc->free_async_space);
++		if (alloc->free_async_space < alloc->buffer_size / 10) {
++			// Start detecting spammers once we reach 80% of async space used
++			debug_low_async_space_locked(alloc, pid);
++		}
+ 	}
+ 	return buffer;
+ 
+@@ -508,6 +549,7 @@ static struct binder_buffer *binder_alloc_new_buf_locked(
+  * @offsets_size:       user specified buffer offset
+  * @extra_buffers_size: size of extra space for meta-data (eg, security context)
+  * @is_async:           buffer for async transaction
++ * @pid:				pid to attribute allocation to (used for debugging)
+  *
+  * Allocate a new buffer given the requested sizes. Returns
+  * the kernel version of the buffer pointer. The size allocated
+@@ -520,13 +562,14 @@ struct binder_buffer *binder_alloc_new_buf(struct binder_alloc *alloc,
+ 					   size_t data_size,
+ 					   size_t offsets_size,
+ 					   size_t extra_buffers_size,
+-					   int is_async)
++					   int is_async,
++					   int pid)
+ {
+ 	struct binder_buffer *buffer;
+ 
+ 	mutex_lock(&alloc->mutex);
+ 	buffer = binder_alloc_new_buf_locked(alloc, data_size, offsets_size,
+-					     extra_buffers_size, is_async);
++					     extra_buffers_size, is_async, pid);
+ 	mutex_unlock(&alloc->mutex);
+ 	return buffer;
+ }
+diff --git a/drivers/android/binder_alloc.h b/drivers/android/binder_alloc.h
+index db9c1b984695..55d8b4106766 100644
+--- a/drivers/android/binder_alloc.h
++++ b/drivers/android/binder_alloc.h
+@@ -32,6 +32,7 @@ struct binder_transaction;
+  * @offsets_size:       size of array of offsets
+  * @extra_buffers_size: size of space for other objects (like sg lists)
+  * @user_data:          user pointer to base of buffer space
++ * @pid:                pid to attribute the buffer to (caller)
+  *
+  * Bookkeeping structure for binder transaction buffers
+  */
+@@ -51,6 +52,7 @@ struct binder_buffer {
+ 	size_t offsets_size;
+ 	size_t extra_buffers_size;
+ 	void __user *user_data;
++	int    pid;
+ };
+ 
+ /**
+@@ -117,7 +119,8 @@ extern struct binder_buffer *binder_alloc_new_buf(struct binder_alloc *alloc,
+ 						  size_t data_size,
+ 						  size_t offsets_size,
+ 						  size_t extra_buffers_size,
+-						  int is_async);
++						  int is_async,
++						  int pid);
+ extern void binder_alloc_init(struct binder_alloc *alloc);
+ extern int binder_alloc_shrinker_init(void);
+ extern void binder_alloc_vma_close(struct binder_alloc *alloc);
+-- 
+2.28.0.220.ged08abb693-goog
 
-> 1) I'm seeing red-blue swap with your driver.  I need to dig a bit to
-> see what the difference is, I know gralloc has a config option for
-> this, and maybe the version of the driver I'm carrying has it wrong?
-
-There are some settings at adv7535 with regards to the colormap.
-The 4.9 fork of it has some different settings. Maybe it could
-be somehow related to it.
-
-I have here a Hikey 960, but didn't test it yet.
-
-> 2) Performance is noticeably worse. Whereas with my tree, I see close
-> to 60fps (that clk issue we mentioned earlier is why it's not exactly
-> 60) in most tests, but with yours it mostly hovers around 30some fps,
-> occasionally speeding up to 40 and then back down.
-
-That's weird, but it could be due to some settings related to CMA, IOMMU
-and/or AFBC.
-
-> Obviously with some work I suspect we'll be able to sort these out,
-> but I also do feel that the set you're starting with for upstreaming
-> is pretty old. The driver I'm carrying was heavily refactored around
-> 5.0 to share code with the existing kirin driver, in the hopes of
-> making usptreaming easier, and it seems a shame to throw that out and
-> focus your efforts on the older tree.
-> 
-> But to be fair, I've not had time to upstream the driver myself, and
-> it's obviously your choice on how you spend your time.  I am really
-> excited to see your efforts here, regardless of which driver you end
-> up pushing.
-
-On a quick look I've done, besides not having support for Hikey 970,
-the code on your tree seems to have less settings than the original
-one for Hikey 960. Yet, it should take some time to figure out what
-those extra settings are doing.
-
-Once I get this driver merged, and have USB support working fine[1],
-my plan is to compare the version from your tree, and compare
-with the one I have, in order to cleanup some stuff, check performance
-and do some other optimizations.
-
--
-
-[1] this is a little OOT here: USB has been a challenge. Depending
-on the build, I'm getting an NMI interrupt error when the USB3
-stack is loaded (usually at dwc3). The error is ESR_ELx_AET_UC.
-Unfortunately, it doesn't point to where this error is generated,
-making very hard to debug it.
-
-Thanks,
-Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
