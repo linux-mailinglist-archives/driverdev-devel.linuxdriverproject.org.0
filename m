@@ -1,62 +1,107 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D5E624C254
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Aug 2020 17:37:12 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 58EFC24C2B2
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Aug 2020 17:59:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 30B8686958;
-	Thu, 20 Aug 2020 15:37:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8D90D8822B;
+	Thu, 20 Aug 2020 15:59:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JO8c1s0LPebC; Thu, 20 Aug 2020 15:37:07 +0000 (UTC)
+	with ESMTP id gv5y1Op4CAcl; Thu, 20 Aug 2020 15:59:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B4D5A86277;
-	Thu, 20 Aug 2020 15:37:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AA4FB881BB;
+	Thu, 20 Aug 2020 15:59:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AE2281BF3C3
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 15:37:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C225E1BF386
+ for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 15:59:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A703C8803D
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 15:37:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B7F29871F0
+ for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 15:59:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IofJAAsyD4lV for <devel@linuxdriverproject.org>;
- Thu, 20 Aug 2020 15:37:03 +0000 (UTC)
+ with ESMTP id OTf91uhwDWGK for <devel@linuxdriverproject.org>;
+ Thu, 20 Aug 2020 15:59:25 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from asavdk3.altibox.net (asavdk3.altibox.net [109.247.116.14])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1D54E864E6
- for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 15:37:02 +0000 (UTC)
-Received: from ravnborg.org (unknown [188.228.123.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by asavdk3.altibox.net (Postfix) with ESMTPS id 2E3E72001E;
- Thu, 20 Aug 2020 17:36:56 +0200 (CEST)
-Date: Thu, 20 Aug 2020 17:36:54 +0200
-From: Sam Ravnborg <sam@ravnborg.org>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
-Message-ID: <20200820153654.GA190547@ravnborg.org>
-References: <cover.1597833138.git.mchehab+huawei@kernel.org>
- <20200819152120.GA106437@ravnborg.org>
- <20200819174027.70b39ee9@coco.lan>
- <20200819173558.GA3733@ravnborg.org>
- <20200820160649.54741194@coco.lan>
- <20200820144808.GA186324@ravnborg.org>
- <20200820171322.3b2e94fd@coco.lan>
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2052.outbound.protection.outlook.com [40.107.92.52])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B464A86E4E
+ for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 15:59:25 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Mi3qKJHz688QVuTLa++wjYkyRsrLjpE+987vkJQ5b9ygFfKXbZscOg/IStxQxfart0LK0d6qh3z24jzA04Z8RJftT3Kwo00tArTZOfj8K8B8VhTlsSNlnigphY93o2rJ/YeCmVb9VgV1oSwQg5PSkU/tSgeweVedBxYhREnB4NcsrerZKvphQnjM2NP+LApszNqOHqo6nXraPYBjnUYn1WbdAh07XM7g7j2wnOIs0wKlMbrRJ0HouQoNFfPZXJwNJJzETxQVIUMRX6+8TO4Tqg0ObK2VWYxtVZfm+Swkwhzmj9dlgazEY0nTvgKUXy3AWmG4RIzk/lF1miebUfhjRQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1O69ClsUGJVN6H4G61eCuDxl0C6ZU/YFqdCMqLndOzA=;
+ b=jO4E78pX9uEcR6258QerTw9H5JBZkOl6+ShYlRjQCEQZlxG9WyB07RHZI6Rha9fE4B2lCNpELiglYn3b561OQC17mxdA9JCPBMaC+OGOrzIftEIs+Wl6YqAdgiIRSzXt4+jx4cOPObeiXzYJhem72/YNxTPRtdtVTlkeCe2UD3509B923EORoBZD6mt3ReTrC3x05fM1cT6J74Y78FoSQoBTgMbcVOq5ojWS4lPz85G5VPT/Sn+E++7Wv9qSOGWR+TWwYREy+RuMFlcjaxKGawGrR34tnIFkJYQPCvKFcAUXhuBjUm4HgVB0WDInyV7f7+7MGH0DF62FPSsav/AWFg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1O69ClsUGJVN6H4G61eCuDxl0C6ZU/YFqdCMqLndOzA=;
+ b=U/OqGm3g31myIYMxD/CLizV9idytSE2bwkB6QUfv9VkfFNZbqNqd1bGuEqxrTgUZpMlDB8ojbGn0h0LfSrnbrfJMhhiuX7nfaPrELPhoJVpJ5aYp9QrTCaMP+upUQCZVEWSSAzlLIa73DpD9/zks1EFoninqdX46M/GB4HrQHGI=
+Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
+ header.d=none;driverdev.osuosl.org; dmarc=none action=none
+ header.from=silabs.com;
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
+ by SA0PR11MB4541.namprd11.prod.outlook.com (2603:10b6:806:94::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3305.25; Thu, 20 Aug
+ 2020 15:59:24 +0000
+Received: from SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::85c9:1aa9:aeab:3fa6]) by SN6PR11MB2718.namprd11.prod.outlook.com
+ ([fe80::85c9:1aa9:aeab:3fa6%4]) with mapi id 15.20.3305.026; Thu, 20 Aug 2020
+ 15:59:24 +0000
+From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+To: devel@driverdev.osuosl.org,
+	linux-wireless@vger.kernel.org
+Subject: [PATCH 01/12] staging: wfx: fix BA when device is AP and MFP is
+ enabled
+Date: Thu, 20 Aug 2020 17:58:47 +0200
+Message-Id: <20200820155858.351292-1-Jerome.Pouiller@silabs.com>
+X-Mailer: git-send-email 2.28.0
+X-ClientProxiedBy: PR0P264CA0122.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:100:1a::14) To SN6PR11MB2718.namprd11.prod.outlook.com
+ (2603:10b6:805:63::18)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200820171322.3b2e94fd@coco.lan>
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=f+hm+t6M c=1 sm=1 tr=0
- a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
- a=kj9zAlcOel0A:10 a=7gkXJVJtAAAA:8 a=VwQbUJbxAAAA:8
- a=laJNNbqgfG9yBzy7lO0A:9 a=CjuIK1q_8ugA:10 a=E9Po1WZjFZOl8hwRPBS3:22
- a=AjGcO6oz07-iQ99wixmX:22
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from 255.255.255.255 (255.255.255.255) by
+ PR0P264CA0122.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:1a::14) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3305.24 via Frontend Transport; Thu, 20 Aug 2020 15:59:22 +0000
+X-Mailer: git-send-email 2.28.0
+X-Originating-IP: [37.71.187.125]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: eb6d97bb-1d43-4c9e-8e6a-08d8452201db
+X-MS-TrafficTypeDiagnostic: SA0PR11MB4541:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <SA0PR11MB4541131B8AA0B15A4B4A9655935A0@SA0PR11MB4541.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 5rYOcSG/16rIPPSfgoilSKhosJyMGSp0WsmnDFFs8xLq5hqczey/AIpWt6kTW6JsopigG+6HJEnEFnWgdtuP3p7h/x9kvXSIBroZ1eo2QUNhg9WEBOSUzVnNkEy+Fd3wP4Y4OOkkomz+RSQY8Ea2AhLEvqDAWAfFPTtxsoV1hBEZMW1q7xWfzdyW9tO7N+WuijZRVwuJajj1jj93ni8zcShkgTKNploO4SSzzUWpmPOFnbcsZkG4sNHJ5oQ5Xm6yYgjP880rukE6SpPBgQ5QVdHFknJRl722p2KK+MX1GqSq2bkpCEvgeWQmnbKglkElOVOdruwo1wnKExfe/mNiZX3Cgn8giQA8W/RsCiKJ+KMiFOU7UyJj9+rChjUWkK0w
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(376002)(396003)(39850400004)(366004)(346002)(136003)(186003)(6666004)(2906002)(8676002)(316002)(16576012)(54906003)(956004)(26005)(66574015)(8936002)(2616005)(110011004)(52116002)(83380400001)(107886003)(1076003)(5660300002)(478600001)(36756003)(4326008)(66476007)(66556008)(66946007)(86362001)(6486002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: 3xzL8FV543G/2/LexGXYBHH6BhoHcKT56lN+pOHZxkbSS2pg1sEj4LCGmksgPuE9jUps7Wf+gFAn/3eyB1TwLFMMMzBpwoOhvRQc7VG+ECbFI6ysn+nZIVRH0efaxcmtCjNzBvtoVcqyr4qS/f3VazueVo9jz3pQT7VHK6vuwht80fL7N9Ggv+MCl29lpnkVdFkRg//WYpxlY8zqUl2HxYBKRkoFB6H2CAh4DLSSI0BLuTvwz0Hmpg7T8AEf6HOmYns0DsTux7IAUa0HjYIfb6yIFT5LxXQIeN+OUmC+h5mKfPZUjAr1a7dOqT9vH4S03jZN+3bJIaIBAcR8wK1KnLSdvSSirhRBiM4xiv4+Giu/+rINcKPa/2am0uhqOsmKVgnRw+/fuXdQX+GW0nhf+pBeb9ui2I/5lf5gcuHFEvV+vKs4SoMHU11INPPCI2lzMUdtU0SS0lb9M8n/q1xgJqFzKwewKJPRubgMhZwR4gCCZu04k8P/iAXNnxE1CPVMcs0D0UH3aRv6mjuaRkNwgVnXp7sTaPyrfD+TYPERIGDFHNDtj1vpFwItVgc5GOwLe5as0Vzx65W30Ri1CkCcWKk413iod3fJNEuYO3p0dFyct3iQqxseNwpCivM9mUT5C/eYOIMw5/vgXNDCvqHiiQ==
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: eb6d97bb-1d43-4c9e-8e6a-08d8452201db
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Aug 2020 15:59:23.7984 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Ih8L1QJ3MhX4kzZV9QjC4MhTWdAqbUfi03AhSHD2IlRUMrUtpUFS69NVdEfR22gT6Etfss2g/kSlVO/NYBu9ew==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4541
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,358 +114,67 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- devel@driverdev.osuosl.org, Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>,
- Xiubin Zhang <zhangxiubin1@huawei.com>, Wei Xu <xuwei5@hisilicon.com>,
- David Airlie <airlied@linux.ie>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Tomi Valkeinen <tomi.valkeinen@ti.com>,
- Bogdan Togorean <bogdan.togorean@analog.com>, Jakub Kicinski <kuba@kernel.org>,
- Laurentiu Palcu <laurentiu.palcu@nxp.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, Liwei Cai <cailiwei@hisilicon.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
- Alexei Starovoitov <ast@kernel.org>, linaro-mm-sig@lists.linaro.org,
- Rob Herring <robh+dt@kernel.org>, mauro.chehab@huawei.com,
- Rob Clark <robdclark@chromium.org>, linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Liuyao An <anliuyao@huawei.com>, netdev@vger.kernel.org,
- Rongrong Zou <zourongrong@gmail.com>, bpf@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Mauro.
-
-Quick feedback below.
-
-	Sam
-
-On Thu, Aug 20, 2020 at 05:13:22PM +0200, Mauro Carvalho Chehab wrote:
-> Em Thu, 20 Aug 2020 16:48:08 +0200
-> Sam Ravnborg <sam@ravnborg.org> escreveu:
-> 
-> > Hi Mauro.
-> > 
-> > On Thu, Aug 20, 2020 at 04:06:49PM +0200, Mauro Carvalho Chehab wrote:
-> > > Em Wed, 19 Aug 2020 19:35:58 +0200
-> > > Sam Ravnborg <sam@ravnborg.org> escreveu:
-> > > 
-> > > I'm already handling the other comments from your review (I'll send a
-> > > more complete comment about them after finishing),  
-> > If you get back only on things you do not understand or do not agree on
-> > that would be fine. The rest should be visible in the changelog on the
-> > updated patch - no need to do extra work here.
-> > 
-> > > but I have a doubt what you meant about this:
-> > >   
-> > > > +static int kirin_drm_bind(struct device *dev)  
-> > > > > +{
-> > > > > +	struct drm_driver *driver = &kirin_drm_driver;
-> > > > > +	struct drm_device *drm_dev;
-> > > > > +	struct kirin_drm_private *priv;
-> > > > > +	int ret;
-> > > > > +
-> > > > > +	drm_dev = drm_dev_alloc(driver, dev);
-> > > > > +	if (!drm_dev)
-> > > > > +		return -ENOMEM;
-> > > > > +
-> > > > > +	ret = kirin_drm_kms_init(drm_dev);
-> > > > > +	if (ret)
-> > > > > +		goto err_drm_dev_unref;
-> > > > > +
-> > > > > +	ret = drm_dev_register(drm_dev, 0);    
-> > > > There is better ways to do this. See drm_drv.c for the code example.  
-> > > 
-> > > Not sure if I understood your comment here. The drm_drv.c example also calls 
-> > > drm_dev_register().  
-> > 
-> > This is indeed not obvious from my comments but what I wnated to say is
-> > that the driver should embed drm_device in some struct,
-> > maybe in "struct kirin_drm_private".
-> > 
-> > This should also be part of the referenced example.
-> > 
-> > I hope this clarifies it.
-> 
-> Yeah. I was already doing those changes ;-) 
-> 
-> Something like the enclosed patch, right?
-> 
-> Btw, I'm not sure if the error handling part is ok, as I didn't check
-> what the devm stuff does at the subsystem. 
-> 
-> -
-> 
-> On a separate question, I was unable to use the helper macros,
-> as it sounds that there's no macro with this:
-> 
-> 	.dumb_create		= drm_gem_cma_dumb_create_internal,
-> 
-> The existing DRM_GEM_CMA_VMAP_DRIVER_OPS uses, instead
-> drm_gem_cma_dumb_create(). I'm not sure if this driver can use
-> such function instead.
-
-From the documentation of drm_gem_cma_dumb_create_internal:
-* It should not be used directly
-* as their &drm_driver.dumb_create callback.
-
-I would expect drm_gem_cma_dumb_create() to be the right choice.
-So you can go ahead with DRM_GEM_CMA_VMAP_DRIVER_OPS
-
-(I hope I am right, not the are	i know much about)
-
-
-> staging: hikey9xx/gpu: use drm_managed interface
->     
-> Use a more modern design for the driver binding logic by
-> using drm_managed and getting rid of drm->dev_private.
->     
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> 
-> diff --git a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
-> index c7736f4d74b7..600c89605cc0 100644
-> --- a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
-> +++ b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.c
-> @@ -29,12 +29,13 @@
->  #include <drm/drm_of.h>
->  #include <drm/drm_probe_helper.h>
->  #include <drm/drm_vblank.h>
-> +#include <drm/drm_managed.h>
->  
->  #include "kirin9xx_drm_drv.h"
->  
->  static int kirin_drm_kms_cleanup(struct drm_device *dev)
->  {
-> -	struct kirin_drm_private *priv = dev->dev_private;
-> +	struct kirin_drm_private *priv = to_drm_private(dev);
->  	static struct kirin_dc_ops const *dc_ops;
->  
->  	if (priv->fbdev)
-> @@ -45,15 +46,13 @@ static int kirin_drm_kms_cleanup(struct drm_device *dev)
->  	drm_kms_helper_poll_fini(dev);
->  	dc_ops->cleanup(dev);
-
->  	drm_mode_config_cleanup(dev);
-This should also be gone when you are using
-drmm_mode_config_init()
-
-> -	devm_kfree(dev->dev, priv);
-> -	dev->dev_private = NULL;
->  
->  	return 0;
->  }
->  
->  static void kirin_fbdev_output_poll_changed(struct drm_device *dev)
->  {
-> -	struct kirin_drm_private *priv = dev->dev_private;
-> +	struct kirin_drm_private *priv = to_drm_private(dev);
->  
->  	dsi_set_output_client(dev);
->  
-> @@ -69,18 +68,20 @@ static const struct drm_mode_config_funcs kirin_drm_mode_config_funcs = {
->  
->  static int kirin_drm_kms_init(struct drm_device *dev)
->  {
-> -	struct kirin_drm_private *priv = dev->dev_private;
-> +	struct kirin_drm_private *priv = to_drm_private(dev);
-It is assigned a few lines later.
-
->  	static struct kirin_dc_ops const *dc_ops;
->  	int ret;
->  
-> -	priv = devm_kzalloc(dev->dev, sizeof(*priv), GFP_KERNEL);
-> +	priv = drmm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
->  	if (!priv)
->  		return -ENOMEM;
-
-OK, I am confused here.
-This code allocates a struct kirin_drm_private.
-But the calling function does the same.
-What am I missing here? Coffee?
-
->  
->  	dev->dev_private = priv;
->  	dev_set_drvdata(dev->dev, dev);
->  
-> -	drm_mode_config_init(dev);
-> +	ret = drmm_mode_config_init(dev);
-> +	if (ret)
-> +		return ret;
->  
->  	dev->mode_config.min_width = 0;
->  	dev->mode_config.min_height = 0;
-> @@ -94,20 +95,20 @@ static int kirin_drm_kms_init(struct drm_device *dev)
->  	dc_ops = of_device_get_match_data(dev->dev);
->  	ret = dc_ops->init(dev);
->  	if (ret)
-> -		goto err_mode_config_cleanup;
-> +		return ret;
->  
->  	/* bind and init sub drivers */
->  	ret = component_bind_all(dev->dev, dev);
->  	if (ret) {
->  		DRM_ERROR("failed to bind all component.\n");
-> -		goto err_dc_cleanup;
-> +		return ret;
->  	}
->  
->  	/* vblank init */
->  	ret = drm_vblank_init(dev, dev->mode_config.num_crtc);
->  	if (ret) {
->  		DRM_ERROR("failed to initialize vblank.\n");
-> -		goto err_unbind_all;
-> +		return ret;
->  	}
->  	/* with irq_enabled = true, we can use the vblank feature. */
->  	dev->irq_enabled = true;
-> @@ -119,28 +120,10 @@ static int kirin_drm_kms_init(struct drm_device *dev)
->  	drm_kms_helper_poll_init(dev);
->  
->  	return 0;
-> -
-> -err_unbind_all:
-> -	component_unbind_all(dev->dev, dev);
-> -err_dc_cleanup:
-> -	dc_ops->cleanup(dev);
-> -err_mode_config_cleanup:
-> -	drm_mode_config_cleanup(dev);
-> -	devm_kfree(dev->dev, priv);
-> -	dev->dev_private = NULL;
-> -
-> -	return ret;
->  }
->  
->  DEFINE_DRM_GEM_CMA_FOPS(kirin_drm_fops);
->  
-> -static int kirin_gem_cma_dumb_create(struct drm_file *file,
-> -				     struct drm_device *dev,
-> -				     struct drm_mode_create_dumb *args)
-> -{
-> -	return drm_gem_cma_dumb_create_internal(file, dev, args);
-> -}
-> -
->  static int kirin_drm_connectors_register(struct drm_device *dev)
->  {
->  	struct drm_connector_list_iter conn_iter;
-> @@ -176,11 +159,11 @@ static int kirin_drm_connectors_register(struct drm_device *dev)
->  static struct drm_driver kirin_drm_driver = {
->  	.driver_features	= DRIVER_GEM | DRIVER_MODESET |
->  				  DRIVER_ATOMIC | DRIVER_RENDER,
-> -	.fops				= &kirin_drm_fops,
-> +	.fops			= &kirin_drm_fops,
->  
->  	.gem_free_object	= drm_gem_cma_free_object,
->  	.gem_vm_ops		= &drm_gem_cma_vm_ops,
-> -	.dumb_create		= kirin_gem_cma_dumb_create,
-> +	.dumb_create		= drm_gem_cma_dumb_create_internal,
->  
->  	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
->  	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
-> @@ -207,42 +190,48 @@ static int compare_of(struct device *dev, void *data)
->  static int kirin_drm_bind(struct device *dev)
->  {
->  	struct drm_driver *driver = &kirin_drm_driver;
-> -	struct drm_device *drm_dev;
->  	struct kirin_drm_private *priv;
-> +	struct drm_device *drm;
->  	int ret;
->  
-> -	drm_dev = drm_dev_alloc(driver, dev);
-> -	if (!drm_dev)
-> +	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
-> +	if (!priv)
->  		return -ENOMEM;
->  
-> -	ret = kirin_drm_kms_init(drm_dev);
-> +	drm = &priv->drm;
-> +
-> +	ret = devm_drm_dev_init(dev, drm, driver);
-> +	if (ret) {
-> +		kfree(priv);
-> +		return ret;
-> +	}
-> +	drmm_add_final_kfree(drm, priv);
-> +
-> +	ret = kirin_drm_kms_init(drm);
->  	if (ret)
-> -		goto err_drm_dev_unref;
-> +		return ret;
->  
-> -	ret = drm_dev_register(drm_dev, 0);
-> +	ret = drm_dev_register(drm, 0);
->  	if (ret)
-> -		goto err_kms_cleanup;
-> +		return ret;
->  
-> -	drm_fbdev_generic_setup(drm_dev, 0);
-> -	priv = drm_dev->dev_private;
-> +	drm_fbdev_generic_setup(drm, 0);
->  
->  	/* connectors should be registered after drm device register */
-> -	ret = kirin_drm_connectors_register(drm_dev);
-> +	ret = kirin_drm_connectors_register(drm);
->  	if (ret)
->  		goto err_drm_dev_unregister;
->  
->  	DRM_INFO("Initialized %s %d.%d.%d %s on minor %d\n",
->  		 driver->name, driver->major, driver->minor, driver->patchlevel,
-> -		 driver->date, drm_dev->primary->index);
-> +		 driver->date, drm->primary->index);
->  
->  	return 0;
->  
->  err_drm_dev_unregister:
-> -	drm_dev_unregister(drm_dev);
-> -err_kms_cleanup:
-> -	kirin_drm_kms_cleanup(drm_dev);
-> -err_drm_dev_unref:
-> -	drm_dev_put(drm_dev);
-> +	drm_dev_unregister(drm);
-> +	kirin_drm_kms_cleanup(drm);
-> +	drm_dev_put(drm);
->  
->  	return ret;
->  }
-> @@ -252,6 +241,7 @@ static void kirin_drm_unbind(struct device *dev)
->  	struct drm_device *drm_dev = dev_get_drvdata(dev);
->  
->  	drm_dev_unregister(drm_dev);
-I think this is not needed. But the component framework confuses me.
-
-> +	drm_atomic_helper_shutdown(drm_dev);
->  	kirin_drm_kms_cleanup(drm_dev);
->  	drm_dev_put(drm_dev);
-This should likewise go I think.
-
->  }
-> diff --git a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.h b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.h
-> index 58f6fc7be347..09255d136c54 100644
-> --- a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.h
-> +++ b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_drv.h
-> @@ -31,6 +31,7 @@ struct kirin_dc_ops {
->  };
->  
->  struct kirin_drm_private {
-> +	struct drm_device drm;
->  	struct drm_fb_helper *fbdev;
->  	struct drm_crtc *crtc[MAX_CRTC];
->  };
-> @@ -44,4 +45,6 @@ extern const struct kirin_dc_ops kirin960_dss_dc_ops;
->  extern const struct kirin_dc_ops kirin970_dss_dc_ops;
->  void dsi_set_output_client(struct drm_device *dev);
->  
-> +#define to_drm_private(d) container_of(d, struct kirin_drm_private, drm)
-> +
->  #endif /* __KIRIN_DRM_DRV_H__ */
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKVGhl
+IHByb3RlY3Rpb24gb2YgdGhlIG1hbmFnZW1lbnQgZnJhbWVzIGlzIG1haW5seSBkb25lIGJ5IG1h
+YzgwMjExLgpIb3dldmVyLCBmcmFtZXMgZm9yIHRoZSBtYW5hZ2VtZW50IG9mIHRoZSBCbG9ja0Fj
+ayBzZXNzaW9ucyBhcmUgZGlyZWN0bHkKc2VudCBieSB0aGUgZGV2aWNlLiBUaGVzZSBmcmFtZXMg
+aGF2ZSB0byBiZSBwcm90ZWN0ZWQgaWYgTUZQIGlzIGluIHVzZS4KU28gdGhlIGRyaXZlciBoYXMg
+dG8gcGFzcyB0aGUgTUZQIGNvbmZpZ3VyYXRpb24gdG8gdGhlIGRldmljZS4KClVudGlsIG5vdywg
+dGhlIEJsb2NrQWNrIG1hbmFnZW1lbnQgZnJhbWVzIHdlcmUgY29tcGxldGVseSB1bnByb3RlY3Rl
+ZAp3aGF0ZXZlciB0aGUgc3RhdHVzIG9mIHRoZSBNRlAgbmVnb3RpYXRpb24uIFNvLCBzb21lIGRl
+dmljZXMgZHJvcHBlZAp0aGVzZSBmcmFtZXMuCgpUaGUgZGV2aWNlIGhhcyB0d28ga25vYnMgdG8g
+Y29udHJvbCB0aGUgTUZQLiBPbmUgZ2xvYmFsIGFuZCBvbmUgcGVyCnN0YXRpb24uIE5vcm1hbGx5
+LCB0aGUgZHJpdmVyIHNob3VsZCBhbHdheXMgZW5hYmxlIGdsb2JhbCBNRlAuIFRoZW4gaXQKc2hv
+dWxkIGVuYWJsZSBNRlAgb24gZXZlcnkgc3RhdGlvbiB3aXRoIHdoaWNoIE1GUCB3YXMgc3VjY2Vz
+c2Z1bGx5Cm5lZ290aWF0ZWQuIFVuZm9ydHVuYXRlbHksIHRoZSBvbGRlciBmaXJtd2FyZXMgb25s
+eSBwcm92aWRlIHRoZQpnbG9iYWwgY29udHJvbC4KClNvLCB0aGlzIHBhdGNoIGVuYWJsZSBnbG9i
+YWwgTUZQIGFzIGl0IGlzIGV4cG9zZWQgaW4gdGhlIGJlYWNvbi4gVGhlbiBpdAptYXJrcyBldmVy
+eSBzdGF0aW9uIHdpdGggd2hpY2ggdGhlIE1GUCBpcyBlZmZlY3RpdmUuCgpUaHVzLCB0aGUgc3Vw
+cG9ydCBmb3IgdGhlIG9sZCBmaXJtd2FyZXMgaXMgbm90IHNvIGJhZC4gSXQgbWF5IG9ubHkKZW5j
+b3VudGVyIHNvbWUgZGlmZmljdWx0aWVzIHRvIG5lZ290aWF0ZSBCQSBzZXNzaW9ucyB3aGVuIHRo
+ZSBsb2NhbApkZXZpY2UgKHRoZSBBUCkgaXMgTUZQIGNhcGFibGUgKGllZWU4MDIxMXc9MSkgYnV0
+IHRoZSBzdGF0aW9uIGlzIG5vdC4KVGhlIG9ubHkgc29sdXRpb24gZm9yIHRoaXMgY2FzZSBpcyB0
+byB1cGdyYWRlIHRoZSBmaXJtd2FyZS4KClNpZ25lZC1vZmYtYnk6IErDqXLDtG1lIFBvdWlsbGVy
+IDxqZXJvbWUucG91aWxsZXJAc2lsYWJzLmNvbT4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L3N0
+YS5jIHwgMjIgKysrKysrKysrKysrKysrKysrKysrLQogMSBmaWxlIGNoYW5nZWQsIDIxIGluc2Vy
+dGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvd2Z4
+L3N0YS5jIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuYwppbmRleCBhZDYzMzMyZjY5MGMuLjlj
+MWM4MjIzYTQ5ZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuYworKysgYi9k
+cml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jCkBAIC00MzQsNyArNDM0LDcgQEAgaW50IHdmeF9zdGFf
+YWRkKHN0cnVjdCBpZWVlODAyMTFfaHcgKmh3LCBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlmLAog
+CXd2aWYtPmxpbmtfaWRfbWFwIHw9IEJJVChzdGFfcHJpdi0+bGlua19pZCk7CiAJV0FSTl9PTigh
+c3RhX3ByaXYtPmxpbmtfaWQpOwogCVdBUk5fT04oc3RhX3ByaXYtPmxpbmtfaWQgPj0gSElGX0xJ
+TktfSURfTUFYKTsKLQloaWZfbWFwX2xpbmsod3ZpZiwgc3RhLT5hZGRyLCAwLCBzdGFfcHJpdi0+
+bGlua19pZCk7CisJaGlmX21hcF9saW5rKHd2aWYsIHN0YS0+YWRkciwgc3RhLT5tZnAgPyAyIDog
+MCwgc3RhX3ByaXYtPmxpbmtfaWQpOwogCiAJcmV0dXJuIDA7CiB9CkBAIC00NzQsNiArNDc0LDI1
+IEBAIHN0YXRpYyBpbnQgd2Z4X3VwbG9hZF9hcF90ZW1wbGF0ZXMoc3RydWN0IHdmeF92aWYgKnd2
+aWYpCiAJcmV0dXJuIDA7CiB9CiAKK3N0YXRpYyB2b2lkIHdmeF9zZXRfbWZwX2FwKHN0cnVjdCB3
+ZnhfdmlmICp3dmlmKQoreworCXN0cnVjdCBza19idWZmICpza2IgPSBpZWVlODAyMTFfYmVhY29u
+X2dldCh3dmlmLT53ZGV2LT5odywgd3ZpZi0+dmlmKTsKKwljb25zdCBpbnQgaWVvZmZzZXQgPSBv
+ZmZzZXRvZihzdHJ1Y3QgaWVlZTgwMjExX21nbXQsIHUuYmVhY29uLnZhcmlhYmxlKTsKKwljb25z
+dCB1MTYgKnB0ciA9ICh1MTYgKiljZmc4MDIxMV9maW5kX2llKFdMQU5fRUlEX1JTTiwKKwkJCQkJ
+CSBza2ItPmRhdGEgKyBpZW9mZnNldCwKKwkJCQkJCSBza2ItPmxlbiAtIGllb2Zmc2V0KTsKKwlj
+b25zdCBpbnQgcGFpcndpc2VfY2lwaGVyX3N1aXRlX2NvdW50X29mZnNldCA9IDggLyBzaXplb2Yo
+dTE2KTsKKwljb25zdCBpbnQgcGFpcndpc2VfY2lwaGVyX3N1aXRlX3NpemUgPSA0IC8gc2l6ZW9m
+KHUxNik7CisJY29uc3QgaW50IGFrbV9zdWl0ZV9zaXplID0gNCAvIHNpemVvZih1MTYpOworCisJ
+aWYgKHB0cikgeworCQlwdHIgKz0gcGFpcndpc2VfY2lwaGVyX3N1aXRlX2NvdW50X29mZnNldDsK
+KwkJcHRyICs9IDEgKyBwYWlyd2lzZV9jaXBoZXJfc3VpdGVfc2l6ZSAqICpwdHI7CisJCXB0ciAr
+PSAxICsgYWttX3N1aXRlX3NpemUgKiAqcHRyOworCQloaWZfc2V0X21mcCh3dmlmLCAqcHRyICYg
+QklUKDcpLCAqcHRyICYgQklUKDYpKTsKKwl9Cit9CisKIGludCB3Znhfc3RhcnRfYXAoc3RydWN0
+IGllZWU4MDIxMV9odyAqaHcsIHN0cnVjdCBpZWVlODAyMTFfdmlmICp2aWYpCiB7CiAJc3RydWN0
+IHdmeF92aWYgKnd2aWYgPSAoc3RydWN0IHdmeF92aWYgKil2aWYtPmRydl9wcml2OwpAQCAtNDg4
+LDYgKzUwNyw3IEBAIGludCB3Znhfc3RhcnRfYXAoc3RydWN0IGllZWU4MDIxMV9odyAqaHcsIHN0
+cnVjdCBpZWVlODAyMTFfdmlmICp2aWYpCiAJcmV0ID0gaGlmX3N0YXJ0KHd2aWYsICZ2aWYtPmJz
+c19jb25mLCB3dmlmLT5jaGFubmVsKTsKIAlpZiAocmV0ID4gMCkKIAkJcmV0dXJuIC1FSU87CisJ
+d2Z4X3NldF9tZnBfYXAod3ZpZik7CiAJcmV0dXJuIHJldDsKIH0KIAotLSAKMi4yOC4wCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5n
+IGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4
+ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
