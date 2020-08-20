@@ -2,58 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5D0924B0FD
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Aug 2020 10:23:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B24E24B1D6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Aug 2020 11:14:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BE65487E7B;
-	Thu, 20 Aug 2020 08:23:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 32BFF87D1A;
+	Thu, 20 Aug 2020 09:14:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lMRVuqV4ELvs; Thu, 20 Aug 2020 08:23:42 +0000 (UTC)
+	with ESMTP id zmm6NgVopCvr; Thu, 20 Aug 2020 09:14:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A013887E35;
-	Thu, 20 Aug 2020 08:23:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2FBEB87729;
+	Thu, 20 Aug 2020 09:14:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 002941BF9B9
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 08:23:38 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 80F0B1BF362
+ for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 09:14:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F0926845DC
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 08:23:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7CB0D88031
+ for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 09:14:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0beaC_A6XpHz for <devel@linuxdriverproject.org>;
- Thu, 20 Aug 2020 08:23:38 +0000 (UTC)
+ with ESMTP id VugJSJsBXuoX for <devel@linuxdriverproject.org>;
+ Thu, 20 Aug 2020 09:14:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8567B845C1
- for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 08:23:38 +0000 (UTC)
-Received: from coco.lan (ip5f5ad5a3.dynamic.kabel-deutschland.de
- [95.90.213.163])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8686E22BED;
- Thu, 20 Aug 2020 08:23:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597911818;
- bh=fwGVCmgPxQ4tMxOoVebfaKdoWjHkC+p6W4oBmOn2pCQ=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=k0Qrqpn40gEcXyvKnJpr0UKl58JLXD6w6wg75Lq2H21jh3VFgBAOCOS+kekx5tu9V
- jsUl78z48aIZGiHBdWd1mOYDpQBTELDITS0xBdrtmERRoFb9QzRIeW0N/YpsPE8jit
- 7HQ7sD1Dxlw1XtG5XGuAiZ1QVR+DwoViOpFp6a28=
-Date: Thu, 20 Aug 2020 10:23:32 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH 25/49] staging: hikey9xx/gpu: do some code cleanups
-Message-ID: <20200820102332.7223d38d@coco.lan>
-In-Reply-To: <CALAqxLV-LaMPKD-ddRM1EehFh+JZfh1eUsKobXgVG9R+q0EF2w@mail.gmail.com>
-References: <cover.1597833138.git.mchehab+huawei@kernel.org>
- <9fa944021373ec5b82c2c1e118c15d9effe7f964.1597833138.git.mchehab+huawei@kernel.org>
- <CALAqxLV-LaMPKD-ddRM1EehFh+JZfh1eUsKobXgVG9R+q0EF2w@mail.gmail.com>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 703E087FEA
+ for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 09:14:27 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id m34so822599pgl.11
+ for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 02:14:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=iKNU74NJdZK5cyzQFbM7uQHSgaBwB5CboR+e0oglByo=;
+ b=f53NuOrsS3mDzLLgHf/lVcMv2rI0XJgW2xMiLctDDBFzrksxOqhcTxm1XIVQnBQkE5
+ +kMAMDdXzLKtSit04ro2JszrQPyd+kMW6DQyX3Fqi5F4PZDe779pikdz44FcUDrjmvQc
+ jjFTXmzw429GB5mNaBH2Jij5WbpAtdFvjw+D8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=iKNU74NJdZK5cyzQFbM7uQHSgaBwB5CboR+e0oglByo=;
+ b=LqjKsM2uQXJh5M1sNZaGV9bWYWmSglm9KXliLNVwfjuyvBP5GhwPBtJ3occL7qyEiI
+ 9uRgqRq9fXm2XiCG6YVWlET5DXcXspIwGyyNG57jOOLvGPQK0HZo6sffSt97x6svyhh3
+ I5SoxKa4JHRJ7+9kMr64/upU0OD+7Kppf6FwF+oVdeNuPVYA1MRo78daqqpbS9logB7T
+ ZTd2eSKFr6d2B7u+WMFRgvuN5l2fC+KYbnApknKfsAofBMWBFaD5znkheDV4+hCF2d0z
+ wUe84cIhXJxuV9RdBly6Kgkwa+9SEUGw1VAeOBQURpoPXzi2szo6Vsifp7PMAWUPruY7
+ UHZg==
+X-Gm-Message-State: AOAM533oytqH42bxcXNP99dP54QPkhtHKtJ6nhnYWED+cYKZ+QeAUFn+
+ ++tDn+tqv+UA/WmTE7Ma/Q9Ksg==
+X-Google-Smtp-Source: ABdhPJxP50eTeBITIcRQC6yWdtCxNMHAvn0Wises0b5yFF9JV14XlN/Ry4qvDKlv1dBi9YhOxSAgjA==
+X-Received: by 2002:a62:7bcf:: with SMTP id w198mr1569326pfc.90.1597914866996; 
+ Thu, 20 Aug 2020 02:14:26 -0700 (PDT)
+Received: from drinkcat2.tpe.corp.google.com
+ ([2401:fa00:1:b:7220:84ff:fe09:41dc])
+ by smtp.gmail.com with ESMTPSA id o15sm1954448pfu.167.2020.08.20.02.14.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 Aug 2020 02:14:26 -0700 (PDT)
+From: Nicolas Boichat <drinkcat@chromium.org>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Steven Rostedt <rostedt@goodmis.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v4 3/3] media: atomisp: Only use trace_printk if allowed
+Date: Thu, 20 Aug 2020 17:14:12 +0800
+Message-Id: <20200820170951.v4.3.I066d89f39023956c47fb0a42edf196b3950ffbf7@changeid>
+X-Mailer: git-send-email 2.28.0.220.ged08abb693-goog
+In-Reply-To: <20200820170951.v4.1.Ia54fe801f246a0b0aee36fb1f3bfb0922a8842b0@changeid>
+References: <20200820170951.v4.1.Ia54fe801f246a0b0aee36fb1f3bfb0922a8842b0@changeid>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -67,68 +85,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: driverdevel <devel@driverdev.osuosl.org>, Rob Herring <robh@kernel.org>,
- Liwei Cai <cailiwei@hisilicon.com>, Manivannan Sadhasivam <mani@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Xiubin Zhang <zhangxiubin1@huawei.com>, Daniel Vetter <daniel@ffwll.ch>,
- Chen Feng <puck.chen@hisilicon.com>, mauro.chehab@huawei.com,
- lkml <linux-kernel@vger.kernel.org>
+Cc: devel@driverdev.osuosl.org, Nicolas Boichat <drinkcat@chromium.org>,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-(added c/c Rob Herring)
+We added a config option CONFIG_TRACING_ALLOW_PRINTK to make sure
+that no extra trace_printk gets added to the kernel, let's use
+that in this driver to guard the trace_printk call.
 
-Em Wed, 19 Aug 2020 18:53:06 -0700
-John Stultz <john.stultz@linaro.org> escreveu:
+Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+---
 
-> On Wed, Aug 19, 2020 at 4:46 AM Mauro Carvalho Chehab
-> <mchehab+huawei@kernel.org> wrote:
-> > @@ -376,7 +355,7 @@ static int kirin_drm_platform_resume(struct platform_device *pdev)
-> >  }
-> >
-> >  static const struct of_device_id kirin_drm_dt_ids[] = {
-> > -       { .compatible = "hisilicon,hi3660-dpe",
-> > +       { .compatible = "hisilicon,kirin960-dpe",  
-> 
-> 
-> One issue, elsewhere in your patch stack you still refer to the
-> hisilicon,hi3660-dpe compatible string. This should probably be
-> consistent one way or the other.
+Technically, we could only initialize the trace_printk buffers
+when the print env is switched, to avoid the build error and
+unconditional boot-time warning, but I assume this printing
+framework will eventually get removed when the driver moves out
+of staging?
 
-Agreed with regards to consistency.
+ drivers/staging/media/atomisp/pci/atomisp_compat_css20.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-It sounds to me that calling those as Kirin 9xx (and the previous one
-as Kirin 620) is better than using the part number.
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c b/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c
+index 1b2b2c68025b4cc..020519dca1324ab 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c
+@@ -165,11 +165,13 @@ static int atomisp_css2_dbg_print(const char *fmt, va_list args)
+ 	return 0;
+ }
+ 
++#ifdef CONFIG_TRACING_ALLOW_PRINTK
+ static int atomisp_css2_dbg_ftrace_print(const char *fmt, va_list args)
+ {
+ 	ftrace_vprintk(fmt, args);
+ 	return 0;
+ }
++#endif
+ 
+ static int atomisp_css2_err_print(const char *fmt, va_list args)
+ {
+@@ -865,9 +867,11 @@ static inline int __set_css_print_env(struct atomisp_device *isp, int opt)
+ 
+ 	if (opt == 0)
+ 		isp->css_env.isp_css_env.print_env.debug_print = NULL;
++#ifdef CONFIG_TRACING_ALLOW_PRINTK
+ 	else if (opt == 1)
+ 		isp->css_env.isp_css_env.print_env.debug_print =
+ 		    atomisp_css2_dbg_ftrace_print;
++#endif
+ 	else if (opt == 2)
+ 		isp->css_env.isp_css_env.print_env.debug_print =
+ 		    atomisp_css2_dbg_print;
+-- 
+2.28.0.220.ged08abb693-goog
 
-Here, googling for "Kirin 970" gave about 6.9 million hits, while "Hi3670"
-gave only 75,5K hits.
-
-Kirin 620 has similar results: 6.85 million hits, against 61,9 hits
-for "Hi3620".
-
-With "Kirin 960", the numbers are a lot higher: had 21,4 million hits,
-against 423K hits for "Hi3660".
-
-So, my preference is to use "Kirin 620, 960 and 970" for future changes.
-
--
-
-Currently, there are already some inconsistency, as some places
-use the part number where others use "Kirin xxx" designation,
-when referring to Kirin 620, 960 and 970.
-
-I would love to make this consistent among the Kernel. However,
-I'm not sure if changing "compatible" would be acceptable
-by DT maintainers.
-
-If something like that would be OK, I can prepare a separate
-patchset to be applied at the Kernel.
-
-Thanks,
-Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
