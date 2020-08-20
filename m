@@ -1,108 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 692B824C32D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Aug 2020 18:14:54 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EC6D24C7C8
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 00:31:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9BA80220C4;
-	Thu, 20 Aug 2020 16:14:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 25BEE86B8A;
+	Thu, 20 Aug 2020 22:31:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VJUmL-LG2p0f; Thu, 20 Aug 2020 16:14:50 +0000 (UTC)
+	with ESMTP id NjbqFfY5uF-s; Thu, 20 Aug 2020 22:31:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 32E162026D;
-	Thu, 20 Aug 2020 16:14:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 35C1986B7D;
+	Thu, 20 Aug 2020 22:31:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DCD581BF2A9
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 16:14:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1F28D1BF2C0
+ for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 22:31:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D65D5226DB
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 16:14:43 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id F0B37228F1
+ for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 22:31:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vDIpUx60G5pw for <devel@linuxdriverproject.org>;
- Thu, 20 Aug 2020 16:14:42 +0000 (UTC)
+ with ESMTP id baG3Guvhx9Mn for <devel@linuxdriverproject.org>;
+ Thu, 20 Aug 2020 22:31:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2047.outbound.protection.outlook.com [40.107.93.47])
- by silver.osuosl.org (Postfix) with ESMTPS id 095772266C
- for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 16:14:42 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HJEqEOcHOIqDqsmTY7E+ERklFLIgc+Tg7h0ObsyVFwOYPv8CPy2Xd8U20vbM05/SomHep+bUqWk4MWXQ23YfZ8NpicIGl0n+9Fe73iE6jYeX0P3B3p8yk1sSblEMovY7BFGFJkmtfmK4lufqObhlnfRLLjcI69Ht45k3/zwTdAP5jNex0wm9SRqYw/PPJXQUZJAwhFzWvWX4NgOOxr/KCltFvJ5hyvGuGLDJxvuAJaM2CcgYROF+7spn8gw4WA3CThg21VoL9JY0nIjQlewigpGSCBiEzJL0k6JEmxfxtnB9cCnSkFZjJKPOjf9tXgOI5PCHv17b8va3Ofm7YGidZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UpyoGU4FzcSEiHvu1sHhSwYfCgw6bHk1zKFXGBQ+uEE=;
- b=CRZ3i9ibV5SqTMB3SOb2WSsfnB0elm4Vpi+8/E5WyctVTwoEutNYOSvOnrT0P8Hx3gOwNoHu8djg8F+kbDtj/GJbiJiTx2YRI6H+zJmVRLbjWPa3dC5+lMf+vrHtoQpGpB4TPf7OG4SuKVy06NQxWCuAnjLzndLZdIDoyjXPLWv+JmDB4U27G+N5wSVzD7POwIypMJTYHA30MosWA6vFDQY2o1ZvyRo/aPCyfPv4LboB4yALKdgP0YIGIevmtgkJ7jqCdVuH0R7Bnah/Wg/5X8tKMsWBAyzlW9tJ0Cq6hffVyUE+AmVFGMvx/Mz8687tGPmArK/1HWoUd/ykRm3PLA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UpyoGU4FzcSEiHvu1sHhSwYfCgw6bHk1zKFXGBQ+uEE=;
- b=FExzpL0nxZVFIekvyd9j0UumrM5jJizJiNYdGSt7dA+1ZeFehqM91dXenWnTHn9DEEjh3+VoXFhgRCtEMo8UAMD/fVv4r1dJsbPqVrkWO+mEfrxMrrmKvfgbb0h4UoB+rKukXPrXqs+0DYK8W2yg126yaop3AW+GZCTQxCpB5FI=
-Authentication-Results: driverdev.osuosl.org; dkim=none (message not signed)
- header.d=none;driverdev.osuosl.org; dmarc=none action=none
- header.from=silabs.com;
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com (2603:10b6:805:63::18)
- by SA0PR11MB4541.namprd11.prod.outlook.com (2603:10b6:806:94::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3305.25; Thu, 20 Aug
- 2020 15:59:36 +0000
-Received: from SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::85c9:1aa9:aeab:3fa6]) by SN6PR11MB2718.namprd11.prod.outlook.com
- ([fe80::85c9:1aa9:aeab:3fa6%4]) with mapi id 15.20.3305.026; Thu, 20 Aug 2020
- 15:59:36 +0000
-From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-To: devel@driverdev.osuosl.org,
-	linux-wireless@vger.kernel.org
-Subject: [PATCH 09/12] staging: wfx: scan while AP is supported
-Date: Thu, 20 Aug 2020 17:58:55 +0200
-Message-Id: <20200820155858.351292-9-Jerome.Pouiller@silabs.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200820155858.351292-1-Jerome.Pouiller@silabs.com>
-References: <20200820155858.351292-1-Jerome.Pouiller@silabs.com>
-X-ClientProxiedBy: PR0P264CA0122.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:1a::14) To SN6PR11MB2718.namprd11.prod.outlook.com
- (2603:10b6:805:63::18)
+Received: from mail-ej1-f65.google.com (mail-ej1-f65.google.com
+ [209.85.218.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id A945F228E2
+ for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 22:31:35 +0000 (UTC)
+Received: by mail-ej1-f65.google.com with SMTP id m22so61572eje.10
+ for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 15:31:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=SuUXRswcOeNLCip2n7MAbvqZMd+jOnXUCuYTkBD7p0U=;
+ b=fgZ1D9Tju8B8pr7drSv2uBnOnJJ4F9TWjipSfuWilX3suyse9Y/kBGn8zayEmnM3m9
+ cwKh4W2gjJyqUkkrIZSsFRtG+xYQGHZ6VzgFjYOsn4nlxwnaQZ8ffcC+VHIUYEhkWV5Y
+ xk6Ps8er0VfoqvJAzXTd0Rlgsn0nxWO8iNl9+T2YTwFzDd91KASzh/1Z6FGvNBC0IuHd
+ oIhUnf3z73ftQwdtP1t4blwW/CZzL2PMZUwSSxad+Epm90deWkSj+rwQc37BBR9sU9v3
+ gerMFt+WjkLitHdHTRtXbTNwTsQqatFOliNGrUGBjbJwddBhN7KoEOQKhWjkNtRvObLV
+ gXyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=SuUXRswcOeNLCip2n7MAbvqZMd+jOnXUCuYTkBD7p0U=;
+ b=dRuH2HX/nYPNyc2brNRSRbUGCThR8qVae3Zh8yV8+im0+l8MtZGdIRFQVpmNT5UfsM
+ ffyUtLeHiVYhvJrx6rMmxFoEvvKGCXkWYdWl2TAHxXcrVFGiP85clZGX0vqYLtuxTPDT
+ 7EcpaHhTFVmUDkH4wdNNGXly+xoT+I/QFKzwZ7NQjZ5yeiVgpOjA55d3OmFzVceBZATU
+ v1LzL6uG3nwok7/1Two5LbIDx1xEcWy4oU3LMWuJahmKbeFql4wENPz9UFKtIHdVyq8B
+ x7Mp33wQ6f/j/ce7YUU12/HSRTWlkvFIocSrGB+Hc1enltnHPlHuyGAC1lIT1xQkZX1P
+ fxAg==
+X-Gm-Message-State: AOAM532BlZOE1mnngGYnzDXcs2vKKXVIEFVY8iDJ63awqWXLVsFU7oAf
+ X7mIrqITDlx/HV4KoPbfPGhC8KTPyImjtlneGKJOOw==
+X-Google-Smtp-Source: ABdhPJyIXR6qYMtpFJDbmSSAJHv2Aynqs8K6Iicf8g+Btpd5pGPoqEqW4RIDrek9BV4Us4qvkmY8bPcQnw6hYvG1TNU=
+X-Received: by 2002:a17:906:c406:: with SMTP id u6mr81296ejz.47.1597962693551; 
+ Thu, 20 Aug 2020 15:31:33 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from 255.255.255.255 (255.255.255.255) by
- PR0P264CA0122.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:1a::14) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3305.24 via Frontend Transport; Thu, 20 Aug 2020 15:59:35 +0000
-X-Mailer: git-send-email 2.28.0
-X-Originating-IP: [37.71.187.125]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: fe2c4bb8-49ea-4d45-d954-08d84522099f
-X-MS-TrafficTypeDiagnostic: SA0PR11MB4541:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <SA0PR11MB4541F0C024EC14113E0E67EA935A0@SA0PR11MB4541.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:901;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: jpPhfUaySdeMUwWO/1z5SLf7UvffPqmAeRibJgpoVUYZCX2+QxTC0LJJW2UACfT3Xkv/igGGhCfr26tUWbHnFU9/DvHEfxYIhEJp1zkYHrWZVnglEZ3X5WEzxbRSpyolSnEc8tp9tnilNsTs1E/gx0DX1NMnu61q1OPPK7+bvU8fV6Z5ErDeWiU68cjIQF3nDcrUlIor0X7658Ba7m+1TN/Ok+Ndu0lWzPWr/NtD3LU09Iuyi9/IEsDibyPY/6baPJwsbwdxZDQPZpUn7AqbYakEIU/iU8YSPZegpJsnQe8QWS2IJqPUnfNUBB9fKDBR9uCvW/7RgBffL+ECGvbAulErFy+slQwT8egzfOC9FK8HotdSjmLurrgmhIzj3eIV
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(376002)(396003)(39850400004)(366004)(346002)(136003)(186003)(6666004)(2906002)(8676002)(316002)(16576012)(54906003)(956004)(26005)(66574015)(8936002)(2616005)(110011004)(52116002)(83380400001)(107886003)(1076003)(5660300002)(478600001)(36756003)(4326008)(66476007)(66556008)(66946007)(86362001)(6486002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: zq6AaBHPIMcS6+nvywatWBeOD7RVbiL3M8TYITeFcxzNDvYCeGkt5FAfb5wgDkNL++WEx7Bz4Yol5tTbqRCbTA2jzIiXofminMVSqfrXjcHt7h/HRsnMr6lrgoz9kUtnHSQ91ZEcq83Kd8BiTeFEuiiFYmjEE7OcfecdhosaTu8N4wMdL32zBfKKrAi/EtHu/ksTgqIhypDzVnduybvgNQuliSQHqgWiTb8TuSanUkmxVqOMGbiav4eRu0lwuojKkbGN+Nf1G/ItxOp6vyk8+poApxY+b/buzlIlVTxbPBYw0uCCK9W9hPHATanTGx/roM2m/hqlWCBdZEP2S/KLVyznWUITpZvRXfaZ81geKrjPhnNHxHnrEiHy19EuWhESo5HZYTFOc2ESCL/rgwU+sQPRx0Wde33/IF3e0gdhiJ14ncQbhr58pmOBn4U2HJpElRpbPx3kTJ0FHs6HaUDzp+14+8yyi/K3hmVHyA0pNXMwi5kvfcnDpRp2scax0lRiEwv6T/FDUV8E+W46Y/yzZMRD/Y8ucIivo7FBfCl1xb/OFNJbOefR6BU0jxXhfdrzU7QNYq3GeBRRXBHNBa4SOGt5cKMAGlPG7oLCSzsrMLCEBNMuvOKRoKhhRu2GAOrd0UuX1CpMmEadokKc97nUSg==
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fe2c4bb8-49ea-4d45-d954-08d84522099f
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Aug 2020 15:59:36.7219 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 1b0sIAjJoHK5/9k7ajTYc6sb8YMAVWGwSoKg42nzUYZyE08mzhpR6DF8i008y4vv64XLALOzgHcxrdLakG2GNw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4541
+References: <20200820115033.276111-1-maco@android.com>
+In-Reply-To: <20200820115033.276111-1-maco@android.com>
+From: Todd Kjos <tkjos@google.com>
+Date: Thu, 20 Aug 2020 15:31:21 -0700
+Message-ID: <CAHRSSExdn-aYUK-N9-ANg2Zwtm+B49qMQrLqttG+Ay6yYgiMHQ@mail.gmail.com>
+Subject: Re: [PATCH v2] ANDROID: binder: print warnings when detecting oneway
+ spamming.
+To: Martijn Coenen <maco@android.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,40 +80,214 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ LKML <linux-kernel@vger.kernel.org>, Hridya Valsaraju <hridya@google.com>,
+ =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
+ Martijn Coenen <maco@google.com>,
+ "Joel Fernandes \(Google\)" <joel@joelfernandes.org>,
+ Suren Baghdasaryan <surenb@google.com>,
+ Christian Brauner <christian@brauner.io>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKVGhl
-IGRldmljZSBpcyBhYmxlIHRvIHNjYW4gd2hpbGUgcnVubmluZyBhbiBBY2Nlc3MgUG9pbnQuIEp1
-c3QgZGVjbGFyZQppdC4KClNpZ25lZC1vZmYtYnk6IErDqXLDtG1lIFBvdWlsbGVyIDxqZXJvbWUu
-cG91aWxsZXJAc2lsYWJzLmNvbT4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L21haW4uYyB8IDEg
-KwogZHJpdmVycy9zdGFnaW5nL3dmeC9zY2FuLmMgfCA0IC0tLS0KIDIgZmlsZXMgY2hhbmdlZCwg
-MSBpbnNlcnRpb24oKyksIDQgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFn
-aW5nL3dmeC9tYWluLmMgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L21haW4uYwppbmRleCA0MjYzZjkx
-Mjc2MGIuLjVhMzAxOGUxNDQ0NSAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL3dmeC9tYWlu
-LmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9tYWluLmMKQEAgLTI4Miw2ICsyODIsNyBAQCBz
-dHJ1Y3Qgd2Z4X2RldiAqd2Z4X2luaXRfY29tbW9uKHN0cnVjdCBkZXZpY2UgKmRldiwKIAkJCQkJ
-Tkw4MDIxMV9QUk9CRV9SRVNQX09GRkxPQURfU1VQUE9SVF9XUFMyIHwKIAkJCQkJTkw4MDIxMV9Q
-Uk9CRV9SRVNQX09GRkxPQURfU1VQUE9SVF9QMlAgfAogCQkJCQlOTDgwMjExX1BST0JFX1JFU1Bf
-T0ZGTE9BRF9TVVBQT1JUXzgwMjExVTsKKwlody0+d2lwaHktPmZlYXR1cmVzIHw9IE5MODAyMTFf
-RkVBVFVSRV9BUF9TQ0FOOwogCWh3LT53aXBoeS0+ZmxhZ3MgfD0gV0lQSFlfRkxBR19BUF9QUk9C
-RV9SRVNQX09GRkxPQUQ7CiAJaHctPndpcGh5LT5mbGFncyB8PSBXSVBIWV9GTEFHX0FQX1VBUFNE
-OwogCWh3LT53aXBoeS0+ZmxhZ3MgJj0gfldJUEhZX0ZMQUdfUFNfT05fQllfREVGQVVMVDsKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy93Zngvc2Nhbi5jIGIvZHJpdmVycy9zdGFnaW5nL3dm
-eC9zY2FuLmMKaW5kZXggZTlkZTE5Nzg0ODY1Li4wMmQ0ZTY1M2Q1OTQgMTAwNjQ0Ci0tLSBhL2Ry
-aXZlcnMvc3RhZ2luZy93Zngvc2Nhbi5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy93Zngvc2Nhbi5j
-CkBAIC0xMTMsMTAgKzExMyw2IEBAIGludCB3ZnhfaHdfc2NhbihzdHJ1Y3QgaWVlZTgwMjExX2h3
-ICpodywgc3RydWN0IGllZWU4MDIxMV92aWYgKnZpZiwKIAlzdHJ1Y3Qgd2Z4X3ZpZiAqd3ZpZiA9
-IChzdHJ1Y3Qgd2Z4X3ZpZiAqKXZpZi0+ZHJ2X3ByaXY7CiAKIAlXQVJOX09OKGh3X3JlcS0+cmVx
-Lm5fY2hhbm5lbHMgPiBISUZfQVBJX01BWF9OQl9DSEFOTkVMUyk7Ci0KLQlpZiAodmlmLT50eXBl
-ID09IE5MODAyMTFfSUZUWVBFX0FQKQotCQlyZXR1cm4gLUVPUE5PVFNVUFA7Ci0KIAl3dmlmLT5z
-Y2FuX3JlcSA9IGh3X3JlcTsKIAlzY2hlZHVsZV93b3JrKCZ3dmlmLT5zY2FuX3dvcmspOwogCXJl
-dHVybiAwOwotLSAKMi4yOC4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9y
-ZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcml2ZXJkZXYtZGV2ZWwK
+On Thu, Aug 20, 2020 at 4:50 AM Martijn Coenen <maco@android.com> wrote:
+>
+> The most common cause of the binder transaction buffer filling up is a
+> client rapidly firing oneway transactions into a process, before it has
+> a chance to handle them. Yet the root cause of this is often hard to
+> debug, because either the system or the app will stop, and by that time
+> binder debug information we dump in bugreports is no longer relevant.
+>
+> This change warns as soon as a process dips below 80% of its oneway
+> space (less than 100kB available in the configuration), when any one
+> process is responsible for either more than 50 transactions, or more
+> than 50% of the oneway space.
+>
+> Signed-off-by: Martijn Coenen <maco@android.com>
+
+A few minor comment issues below. When resolved:
+Acked-by: Todd Kjos <tkjos@google.com>
+
+> ---
+> v2: fixed call-site in binder_alloc_selftest
+>
+>  drivers/android/binder.c                |  2 +-
+>  drivers/android/binder_alloc.c          | 49 +++++++++++++++++++++++--
+>  drivers/android/binder_alloc.h          |  5 ++-
+>  drivers/android/binder_alloc_selftest.c |  2 +-
+>  4 files changed, 52 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> index f936530a19b0..946332bc871a 100644
+> --- a/drivers/android/binder.c
+> +++ b/drivers/android/binder.c
+> @@ -3136,7 +3136,7 @@ static void binder_transaction(struct binder_proc *proc,
+>
+>         t->buffer = binder_alloc_new_buf(&target_proc->alloc, tr->data_size,
+>                 tr->offsets_size, extra_buffers_size,
+> -               !reply && (t->flags & TF_ONE_WAY));
+> +               !reply && (t->flags & TF_ONE_WAY), current->tgid);
+>         if (IS_ERR(t->buffer)) {
+>                 /*
+>                  * -ESRCH indicates VMA cleared. The target is dying.
+> diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
+> index 69609696a843..76e8e633dbd4 100644
+> --- a/drivers/android/binder_alloc.c
+> +++ b/drivers/android/binder_alloc.c
+> @@ -338,12 +338,48 @@ static inline struct vm_area_struct *binder_alloc_get_vma(
+>         return vma;
+>  }
+>
+> +static void debug_low_async_space_locked(struct binder_alloc *alloc, int pid)
+> +{
+> +       /*
+> +        * Find the amount and size of buffers allocated by the current caller;
+> +        * The idea is that once we cross the threshold, whoever is responsible
+> +        * for the low async space is likely to try to send another async txn,
+> +        * and at some point we'll catch them in the act. This is more efficient
+> +        * than keeping a map per pid.
+> +        */
+> +       struct rb_node *n = alloc->free_buffers.rb_node;
+> +       struct binder_buffer *buffer;
+> +       size_t buffer_size;
+> +       size_t total_alloc_size = 0;
+> +       size_t num_buffers = 0;
+> +
+> +       for (n = rb_first(&alloc->allocated_buffers); n != NULL;
+> +                n = rb_next(n)) {
+> +               buffer = rb_entry(n, struct binder_buffer, rb_node);
+> +               if (buffer->pid != pid)
+> +                       continue;
+> +               if (!buffer->async_transaction)
+> +                       continue;
+> +               buffer_size = binder_alloc_buffer_size(alloc, buffer);
+> +               total_alloc_size += buffer_size;
+> +               num_buffers++;
+> +       }
+> +
+> +       // Warn if this pid has more than 50% of async space, or more than 50 txns
+
+/* .. */
+
+Folks might be confused by 50% being calculated as (alloc->buffer_size
+/4) which on the surface looks like 25%. Maybe either change the
+comment to "25% of buffer space" or point out that async space is 50%
+of the buffer.
+
+
+> +       if (num_buffers > 50 || total_alloc_size > alloc->buffer_size / 4) {
+> +               binder_alloc_debug(BINDER_DEBUG_USER_ERROR,
+> +                            "%d: pid %d spamming oneway? %zd buffers allocated for a total size of %zd\n",
+> +                             alloc->pid, pid, num_buffers, total_alloc_size);
+> +       }
+> +}
+> +
+>  static struct binder_buffer *binder_alloc_new_buf_locked(
+>                                 struct binder_alloc *alloc,
+>                                 size_t data_size,
+>                                 size_t offsets_size,
+>                                 size_t extra_buffers_size,
+> -                               int is_async)
+> +                               int is_async,
+> +                               int pid)
+>  {
+>         struct rb_node *n = alloc->free_buffers.rb_node;
+>         struct binder_buffer *buffer;
+> @@ -486,11 +522,16 @@ static struct binder_buffer *binder_alloc_new_buf_locked(
+>         buffer->offsets_size = offsets_size;
+>         buffer->async_transaction = is_async;
+>         buffer->extra_buffers_size = extra_buffers_size;
+> +       buffer->pid = pid;
+>         if (is_async) {
+>                 alloc->free_async_space -= size + sizeof(struct binder_buffer);
+>                 binder_alloc_debug(BINDER_DEBUG_BUFFER_ALLOC_ASYNC,
+>                              "%d: binder_alloc_buf size %zd async free %zd\n",
+>                               alloc->pid, size, alloc->free_async_space);
+> +               if (alloc->free_async_space < alloc->buffer_size / 10) {
+> +                       // Start detecting spammers once we reach 80% of async space used
+
+Use /* ... */
+
+> +                       debug_low_async_space_locked(alloc, pid);
+> +               }
+>         }
+>         return buffer;
+>
+> @@ -508,6 +549,7 @@ static struct binder_buffer *binder_alloc_new_buf_locked(
+>   * @offsets_size:       user specified buffer offset
+>   * @extra_buffers_size: size of extra space for meta-data (eg, security context)
+>   * @is_async:           buffer for async transaction
+> + * @pid:                               pid to attribute allocation to (used for debugging)
+>   *
+>   * Allocate a new buffer given the requested sizes. Returns
+>   * the kernel version of the buffer pointer. The size allocated
+> @@ -520,13 +562,14 @@ struct binder_buffer *binder_alloc_new_buf(struct binder_alloc *alloc,
+>                                            size_t data_size,
+>                                            size_t offsets_size,
+>                                            size_t extra_buffers_size,
+> -                                          int is_async)
+> +                                          int is_async,
+> +                                          int pid)
+>  {
+>         struct binder_buffer *buffer;
+>
+>         mutex_lock(&alloc->mutex);
+>         buffer = binder_alloc_new_buf_locked(alloc, data_size, offsets_size,
+> -                                            extra_buffers_size, is_async);
+> +                                            extra_buffers_size, is_async, pid);
+>         mutex_unlock(&alloc->mutex);
+>         return buffer;
+>  }
+> diff --git a/drivers/android/binder_alloc.h b/drivers/android/binder_alloc.h
+> index db9c1b984695..55d8b4106766 100644
+> --- a/drivers/android/binder_alloc.h
+> +++ b/drivers/android/binder_alloc.h
+> @@ -32,6 +32,7 @@ struct binder_transaction;
+>   * @offsets_size:       size of array of offsets
+>   * @extra_buffers_size: size of space for other objects (like sg lists)
+>   * @user_data:          user pointer to base of buffer space
+> + * @pid:                pid to attribute the buffer to (caller)
+>   *
+>   * Bookkeeping structure for binder transaction buffers
+>   */
+> @@ -51,6 +52,7 @@ struct binder_buffer {
+>         size_t offsets_size;
+>         size_t extra_buffers_size;
+>         void __user *user_data;
+> +       int    pid;
+>  };
+>
+>  /**
+> @@ -117,7 +119,8 @@ extern struct binder_buffer *binder_alloc_new_buf(struct binder_alloc *alloc,
+>                                                   size_t data_size,
+>                                                   size_t offsets_size,
+>                                                   size_t extra_buffers_size,
+> -                                                 int is_async);
+> +                                                 int is_async,
+> +                                                 int pid);
+>  extern void binder_alloc_init(struct binder_alloc *alloc);
+>  extern int binder_alloc_shrinker_init(void);
+>  extern void binder_alloc_vma_close(struct binder_alloc *alloc);
+> diff --git a/drivers/android/binder_alloc_selftest.c b/drivers/android/binder_alloc_selftest.c
+> index 4151d9938255..c2b323bc3b3a 100644
+> --- a/drivers/android/binder_alloc_selftest.c
+> +++ b/drivers/android/binder_alloc_selftest.c
+> @@ -119,7 +119,7 @@ static void binder_selftest_alloc_buf(struct binder_alloc *alloc,
+>         int i;
+>
+>         for (i = 0; i < BUFFER_NUM; i++) {
+> -               buffers[i] = binder_alloc_new_buf(alloc, sizes[i], 0, 0, 0);
+> +               buffers[i] = binder_alloc_new_buf(alloc, sizes[i], 0, 0, 0, 0);
+>                 if (IS_ERR(buffers[i]) ||
+>                     !check_buffer_pages_allocated(alloc, buffers[i],
+>                                                   sizes[i])) {
+> --
+> 2.28.0.220.ged08abb693-goog
+>
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
