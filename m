@@ -1,62 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E73D24DABB
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 18:25:46 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8300024E1E6
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 22:12:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C1E8322621;
-	Fri, 21 Aug 2020 16:25:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5E7F186F1D;
+	Fri, 21 Aug 2020 20:12:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RlgXKvt41XhX; Fri, 21 Aug 2020 16:25:41 +0000 (UTC)
+	with ESMTP id Q3woyu7j35Ip; Fri, 21 Aug 2020 20:12:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D3D9C2152E;
-	Fri, 21 Aug 2020 16:25:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E184386F0E;
+	Fri, 21 Aug 2020 20:12:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3951B1BF2A7
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:25:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ABBB91BF34C
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 20:12:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 350A8886B7
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:25:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 99B7B88302
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 20:12:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ogTPSQA8e70H for <devel@linuxdriverproject.org>;
- Fri, 21 Aug 2020 16:25:35 +0000 (UTC)
+ with ESMTP id wVvKn-pxC7xw for <devel@linuxdriverproject.org>;
+ Fri, 21 Aug 2020 20:12:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A235088409
- for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 16:25:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=xuVadeWdbw5hMLtCCGfwXhTOKmF3zlYv1VDPzgpU+Gk=; b=rapGkxmx+afo18V0kOITIcUfAH
- suMc3xn/2axABqhmj29cOZIM1M1N78j0ZD7upvgrvPDhQ7QaI21WMYvfADAar+N4y5uwrxaxpYO/U
- 25eSELHH+HL5SG6j4YSXQyzFAkRf6ytxpiWOSxdgnCsE8d1G93XO4qWdD7iUQVK+UgkK261mv+wyz
- 6aq4nxIfo1b17Rf9iCp/AzAj+O0CB7B/GZSGgdNQ7iPaZtGLHh78seaj1H9IkFroE0YPHQ6oRUdCq
- lKo1XX2ZQsG6pqdOnLIQ6w3H6KGuJTLhEFbZ4jx++CRZPXssvvkC8JRVfotgrQktIsNI0HbbVRi/m
- WUdkexqA==;
-Received: from [2601:1c0:6280:3f0::19c2]
- by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k99r9-0000HT-2k; Fri, 21 Aug 2020 16:25:31 +0000
-Subject: Re: [PATCH v4 2/2] staging: android: Remove BUG from ion_system_heap.c
-To: Tomer Samara <tomersamara98@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <cover.1598023523.git.tomersamara98@gmail.com>
- <a39407f84031eaeed5e65a7aab515a079edf5fcc.1598023524.git.tomersamara98@gmail.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <3eba90dc-128f-49da-41a6-81494653d535@infradead.org>
-Date: Fri, 21 Aug 2020 09:25:26 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
+ [209.85.167.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C58FC87DAA
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 20:12:19 +0000 (UTC)
+Received: by mail-oi1-f195.google.com with SMTP id j7so2562781oij.9
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 13:12:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/qU809CtNTXkjajhW2wh13M18DwibA6ul0FCeVgUG8A=;
+ b=uNZJcPBuLQI6ASFZUw8QkZ9k3ruDXi+NR0Kt7euvSfH4mOkI5/9P8eZwp0n3pWGIA2
+ BJ4j8yy0xBhrOtnOZFZLMc7a8rXqPwypZyipI8fq6RvAnmAgwpFzG81/j/WOGXKiGiPo
+ 8VAAvITRLMHZv00OrfzzKV4vVj3SWkldqmfvMNhMXywEZI2IPy/6TmMblhy2pRgEfzgz
+ yFCi2m/o0WvrnQqp8VkEwh/4O4HMWoET8SG+sn0fYfLw24j101w3Sjs9gBVrCR3pZ9Dm
+ STC2SEsoODBbxumcSiZ4huToeiteGnz0EWJmsz9eJevZQlzg1H+uKLuUeJotQ86iS3yf
+ yOeA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/qU809CtNTXkjajhW2wh13M18DwibA6ul0FCeVgUG8A=;
+ b=bTp5kUzuxY+AgK5wN1P61iP3jtwymKF03XwI0G3LYvv5ePA6xUr1S6R+xDounZ5d2a
+ pq+mUUsz6B/1PeVjAYOQZ9hcDqb6/+quQCRRBIRct0SEqttjfp5QZ6l52tGLnOAkScvC
+ jbhmM6xRBlx9BGklnuTekdWrg/gh1/xV1MTokCKLXPTeRVwPR8gXXoYKbkWq/RT2PnA4
+ +l8/LizRvFE9wfHSPUI2NIFpG4xnHzcg03TTKIC9i9K5kOtc9gIOwyqhaFXnMQG+9eEg
+ TS0LBONtJlazseUY57JEmV+xCXX706tjr7ytPdQ6Y6Enh01ttQ1x2X2qtGmmMPuUIt+n
+ dtwQ==
+X-Gm-Message-State: AOAM532khzC92xyGwGQCrR72Lo7vn086cJEzpwjM2YSwRhFdJBJrABeh
+ qByk9n/fWVsi8X8ny+/rt+nSEi7TOB2fyX361ZViQw==
+X-Google-Smtp-Source: ABdhPJxeOwH2KU0W0WI97zQrIKn2g+YzpfFe6sDTwlBDqKWlmQ7wcHROHsB8ml5rNCQ/tdEe6QqSYj9jep2a15MAg8c=
+X-Received: by 2002:aca:1c15:: with SMTP id c21mr2982966oic.10.1598040738933; 
+ Fri, 21 Aug 2020 13:12:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <a39407f84031eaeed5e65a7aab515a079edf5fcc.1598023524.git.tomersamara98@gmail.com>
-Content-Language: en-US
+References: <cover.1597833138.git.mchehab+huawei@kernel.org>
+ <9fa944021373ec5b82c2c1e118c15d9effe7f964.1597833138.git.mchehab+huawei@kernel.org>
+ <CALAqxLV-LaMPKD-ddRM1EehFh+JZfh1eUsKobXgVG9R+q0EF2w@mail.gmail.com>
+ <20200820102332.7223d38d@coco.lan>
+In-Reply-To: <20200820102332.7223d38d@coco.lan>
+From: John Stultz <john.stultz@linaro.org>
+Date: Fri, 21 Aug 2020 13:12:06 -0700
+Message-ID: <CALAqxLV1vskvo7MFsKdCiS_XcTy76B5hu2ZfWJbY6p2fVpYCVA@mail.gmail.com>
+Subject: Re: [PATCH 25/49] staging: hikey9xx/gpu: do some code cleanups
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,52 +82,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- Suren Baghdasaryan <surenb@google.com>, Riley Andrews <riandrews@android.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Hridya Valsaraju <hridya@google.com>,
- =?UTF-8?Q?Arve_Hj=c3=b8nnev=c3=a5g?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Laura Abbott <labbott@redhat.com>,
- Martijn Coenen <maco@android.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- Christian Brauner <christian@brauner.io>
+Cc: driverdevel <devel@driverdev.osuosl.org>, Rob Herring <robh@kernel.org>,
+ Liwei Cai <cailiwei@hisilicon.com>, Manivannan Sadhasivam <mani@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linuxarm@huawei.com,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Xiubin Zhang <zhangxiubin1@huawei.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Chen Feng <puck.chen@hisilicon.com>, mauro.chehab@huawei.com,
+ lkml <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On 8/21/20 8:28 AM, Tomer Samara wrote:
-> Remove BUG() from ion_sytem_heap.c
-> 
-> this fix the following checkpatch issue:
-> Avoid crashing the kernel - try using WARN_ON &
-> recovery code ratherthan BUG() or BUG_ON().
-> 
-> Signed-off-by: Tomer Samara <tomersamara98@gmail.com>
-> ---
->  drivers/staging/android/ion/ion_system_heap.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/android/ion/ion_system_heap.c b/drivers/staging/android/ion/ion_system_heap.c
-> index eac0632ab4e8..00d6154aec34 100644
-> --- a/drivers/staging/android/ion/ion_system_heap.c
-> +++ b/drivers/staging/android/ion/ion_system_heap.c
-> @@ -30,7 +30,7 @@ static int order_to_index(unsigned int order)
->  	for (i = 0; i < NUM_ORDERS; i++)
->  		if (order == orders[i])
->  			return i;
-> -	BUG();
-> +	/* This is impossible. */
->  	return -1;
->  }
+On Thu, Aug 20, 2020 at 1:23 AM Mauro Carvalho Chehab
+<mchehab+huawei@kernel.org> wrote:
+>
+> (added c/c Rob Herring)
+>
+> Em Wed, 19 Aug 2020 18:53:06 -0700
+> John Stultz <john.stultz@linaro.org> escreveu:
+>
+> > On Wed, Aug 19, 2020 at 4:46 AM Mauro Carvalho Chehab
+> > <mchehab+huawei@kernel.org> wrote:
+> > > @@ -376,7 +355,7 @@ static int kirin_drm_platform_resume(struct platform_device *pdev)
+> > >  }
+> > >
+> > >  static const struct of_device_id kirin_drm_dt_ids[] = {
+> > > -       { .compatible = "hisilicon,hi3660-dpe",
+> > > +       { .compatible = "hisilicon,kirin960-dpe",
+> >
+> >
+> > One issue, elsewhere in your patch stack you still refer to the
+> > hisilicon,hi3660-dpe compatible string. This should probably be
+> > consistent one way or the other.
+>
+> Agreed with regards to consistency.
+>
+> It sounds to me that calling those as Kirin 9xx (and the previous one
+> as Kirin 620) is better than using the part number.
+>
+> Here, googling for "Kirin 970" gave about 6.9 million hits, while "Hi3670"
+> gave only 75,5K hits.
+>
+> Kirin 620 has similar results: 6.85 million hits, against 61,9 hits
+> for "Hi3620".
 
-Hi,
-Please explain why this is impossible.
+Hi6620 is kirin 620 I believe.
 
-If some caller calls order_to_index(5), it will return -1, yes?
+> With "Kirin 960", the numbers are a lot higher: had 21,4 million hits,
+> against 423K hits for "Hi3660".
+>
+> So, my preference is to use "Kirin 620, 960 and 970" for future changes.
 
--- 
-~Randy
+I think traditionally the DTS is developed with the hardware
+documentation sometimes before the SoC is announced, so they tend to
+stick with whatever those documents call it, rather than (later more
+google-able) marketing names.
 
+That said, I don't have a preference, as long as it's consistent, and
+we don't change compatible strings that are already upstream.
+
+> I would love to make this consistent among the Kernel. However,
+> I'm not sure if changing "compatible" would be acceptable
+> by DT maintainers.
+>
+
+Existing bindings are already ABI. So we can't change those. New
+bindings can be set to what makes the most sense.
+
+thanks
+-john
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
