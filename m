@@ -2,61 +2,61 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C17024DA60
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 18:20:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E73D24DABB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 18:25:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F2E8F21514;
-	Fri, 21 Aug 2020 16:20:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C1E8322621;
+	Fri, 21 Aug 2020 16:25:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UHOO36pLBGrT; Fri, 21 Aug 2020 16:20:10 +0000 (UTC)
+	with ESMTP id RlgXKvt41XhX; Fri, 21 Aug 2020 16:25:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7884E2048D;
-	Fri, 21 Aug 2020 16:20:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D3D9C2152E;
+	Fri, 21 Aug 2020 16:25:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E046D1BF2A7
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:20:04 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3951B1BF2A7
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:25:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DB387880DF
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:20:04 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 350A8886B7
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:25:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ccZ2vJeB9VWH for <devel@linuxdriverproject.org>;
- Fri, 21 Aug 2020 16:20:04 +0000 (UTC)
+ with ESMTP id ogTPSQA8e70H for <devel@linuxdriverproject.org>;
+ Fri, 21 Aug 2020 16:25:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7B452880BB
- for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 16:20:04 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8A95E22D2C;
- Fri, 21 Aug 2020 16:20:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598026804;
- bh=8kd2JWfylGbyX5junfsVFBIFiC5m0s7OyUEiuP3YRFk=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=gZ9jFDVwmCaXZXBb1deWpdSWZD/rmKF3B0u5K+8t27bEnrGEBC/0b7WR02YtYXraX
- JEqLUQIc9Vl3MZ8XCEEocpfmJLE4rLt6SUT6DGNsEpjBZig3QuROsnky397fnFuVCN
- p0GSoNUJ3zErU0aKjkBgbdBqvCkDVCL28GZvjCEs=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.9 19/26] cec-api: prevent leaking memory through
- hole in structure
-Date: Fri, 21 Aug 2020 12:19:30 -0400
-Message-Id: <20200821161938.349246-19-sashal@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200821161938.349246-1-sashal@kernel.org>
-References: <20200821161938.349246-1-sashal@kernel.org>
+Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A235088409
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 16:25:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=xuVadeWdbw5hMLtCCGfwXhTOKmF3zlYv1VDPzgpU+Gk=; b=rapGkxmx+afo18V0kOITIcUfAH
+ suMc3xn/2axABqhmj29cOZIM1M1N78j0ZD7upvgrvPDhQ7QaI21WMYvfADAar+N4y5uwrxaxpYO/U
+ 25eSELHH+HL5SG6j4YSXQyzFAkRf6ytxpiWOSxdgnCsE8d1G93XO4qWdD7iUQVK+UgkK261mv+wyz
+ 6aq4nxIfo1b17Rf9iCp/AzAj+O0CB7B/GZSGgdNQ7iPaZtGLHh78seaj1H9IkFroE0YPHQ6oRUdCq
+ lKo1XX2ZQsG6pqdOnLIQ6w3H6KGuJTLhEFbZ4jx++CRZPXssvvkC8JRVfotgrQktIsNI0HbbVRi/m
+ WUdkexqA==;
+Received: from [2601:1c0:6280:3f0::19c2]
+ by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k99r9-0000HT-2k; Fri, 21 Aug 2020 16:25:31 +0000
+Subject: Re: [PATCH v4 2/2] staging: android: Remove BUG from ion_system_heap.c
+To: Tomer Samara <tomersamara98@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+References: <cover.1598023523.git.tomersamara98@gmail.com>
+ <a39407f84031eaeed5e65a7aab515a079edf5fcc.1598023524.git.tomersamara98@gmail.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <3eba90dc-128f-49da-41a6-81494653d535@infradead.org>
+Date: Fri, 21 Aug 2020 09:25:26 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+In-Reply-To: <a39407f84031eaeed5e65a7aab515a079edf5fcc.1598023524.git.tomersamara98@gmail.com>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,51 +69,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linux-media@vger.kernel.org,
- devel@driverdev.osuosl.org, Sasha Levin <sashal@kernel.org>
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ Suren Baghdasaryan <surenb@google.com>, Riley Andrews <riandrews@android.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Hridya Valsaraju <hridya@google.com>,
+ =?UTF-8?Q?Arve_Hj=c3=b8nnev=c3=a5g?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Laura Abbott <labbott@redhat.com>,
+ Martijn Coenen <maco@android.com>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+On 8/21/20 8:28 AM, Tomer Samara wrote:
+> Remove BUG() from ion_sytem_heap.c
+> 
+> this fix the following checkpatch issue:
+> Avoid crashing the kernel - try using WARN_ON &
+> recovery code ratherthan BUG() or BUG_ON().
+> 
+> Signed-off-by: Tomer Samara <tomersamara98@gmail.com>
+> ---
+>  drivers/staging/android/ion/ion_system_heap.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/android/ion/ion_system_heap.c b/drivers/staging/android/ion/ion_system_heap.c
+> index eac0632ab4e8..00d6154aec34 100644
+> --- a/drivers/staging/android/ion/ion_system_heap.c
+> +++ b/drivers/staging/android/ion/ion_system_heap.c
+> @@ -30,7 +30,7 @@ static int order_to_index(unsigned int order)
+>  	for (i = 0; i < NUM_ORDERS; i++)
+>  		if (order == orders[i])
+>  			return i;
+> -	BUG();
+> +	/* This is impossible. */
+>  	return -1;
+>  }
 
-[ Upstream commit 6c42227c3467549ddc65efe99c869021d2f4a570 ]
+Hi,
+Please explain why this is impossible.
 
-Fix this smatch warning:
+If some caller calls order_to_index(5), it will return -1, yes?
 
-drivers/media/cec/core/cec-api.c:156 cec_adap_g_log_addrs() warn: check that 'log_addrs' doesn't leak information (struct has a hole after
-'features')
-
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/staging/media/cec/cec-api.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/staging/media/cec/cec-api.c b/drivers/staging/media/cec/cec-api.c
-index e274e2f223986..264bb7d1efcb8 100644
---- a/drivers/staging/media/cec/cec-api.c
-+++ b/drivers/staging/media/cec/cec-api.c
-@@ -141,7 +141,13 @@ static long cec_adap_g_log_addrs(struct cec_adapter *adap,
- 	struct cec_log_addrs log_addrs;
- 
- 	mutex_lock(&adap->lock);
--	log_addrs = adap->log_addrs;
-+	/*
-+	 * We use memcpy here instead of assignment since there is a
-+	 * hole at the end of struct cec_log_addrs that an assignment
-+	 * might ignore. So when we do copy_to_user() we could leak
-+	 * one byte of memory.
-+	 */
-+	memcpy(&log_addrs, &adap->log_addrs, sizeof(log_addrs));
- 	if (!adap->is_configured)
- 		memset(log_addrs.log_addr, CEC_LOG_ADDR_INVALID,
- 		       sizeof(log_addrs.log_addr));
 -- 
-2.25.1
+~Randy
 
 _______________________________________________
 devel mailing list
