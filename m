@@ -1,76 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A499024D880
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 17:27:18 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D47EA24D885
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 17:27:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 485D387ECA;
-	Fri, 21 Aug 2020 15:27:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EC940203D7;
+	Fri, 21 Aug 2020 15:27:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y-oP7j+7BwD7; Fri, 21 Aug 2020 15:27:15 +0000 (UTC)
+	with ESMTP id yNzuqyzHvl39; Fri, 21 Aug 2020 15:27:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2FCCC87D60;
-	Fri, 21 Aug 2020 15:27:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 42F63204B9;
+	Fri, 21 Aug 2020 15:27:49 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5E71C1BF5F8
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 15:27:13 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 476BF1BF5F8
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 15:27:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 589F087D7F
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 15:27:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 43A82203B4
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 15:27:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PTAVCQYy4myq for <devel@linuxdriverproject.org>;
- Fri, 21 Aug 2020 15:27:12 +0000 (UTC)
+ with ESMTP id GNq6Xi8fYZST for <devel@linuxdriverproject.org>;
+ Fri, 21 Aug 2020 15:27:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8C94887D60
- for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 15:27:12 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id o21so2250433wmc.0
- for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 08:27:12 -0700 (PDT)
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 49EDB20242
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 15:27:45 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id 88so2327735wrh.3
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 08:27:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=zw/VDtloWxTMBmKSwhrENnZrVtO+U7yJP3Ir4rxEdac=;
- b=QyOQFfUyFM4JBaS8ilL3u52rxZcD+q17wgykSmXsRnmcB4Ssbxj/1tNZgsLv1LYhSz
- HIpEj3W9jBmxD+vFzuyH2swn+FUK2I37JZi16oTSCg8AP7AByhvhWMwCpvCfQx5DBSNL
- evbOBIWMvL21DwF6UrxAQNIqGz6magZk09dU2kRQ8p/XyE6R4lVyyhZ9q3SUaLne7Alm
- f55D6JUfoYDw8fBzAvbIie7LC7sr9CbesYo5kbDrRQKzQLCSLa25ZzzPrak9jS/Pb9fU
- 3jAwWpvInnY2ragogDkCfSE2DaHk3u2EqSmZTGR3dsaPo4LUokGwNwq/xZQPVGudteJW
- SKfA==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=A2ib5YeLmICUMl8rksAwSuoFVXHYJ4y/hwVWZYHuMbY=;
+ b=q1l9IeVSjBMpvx9pappt54xWWzVHKZAIjcy2grhmETrscRqtkMd92gelvCAxF9/YxC
+ df2utnw/GutYtLaWTyxshKq81bXGskLk4qcfcSscEKDCL886LGJEwbC1r96+vnepfNBv
+ jkjHnEbfuoDp1u2zzg9/wRQMYc1+nwHjwzSo5R54G3vmWIpoag3D8Nw+ooApVOW1lPIL
+ 2sySVBcDBsREymUfLDG/3d/biHjObMIHhwnvYhhvHCc+2n9XpU8cgcNkZzk/MNTvt1Kj
+ Z68WE74zqAh5LRtvnrlfIyn4mnRWfq7JDcngcwi2y3FeCEqGNlMqQpe1/NrbzwXGCJjD
+ 9J8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=zw/VDtloWxTMBmKSwhrENnZrVtO+U7yJP3Ir4rxEdac=;
- b=ewrMirgemk2DWGlCVAast0fXcBxPjrkIognQQmd7oTr56OuYLm3FlwEnIUEOWbYU0/
- mRDsNFtJx13iJy3cOiHJyOesdDF4YqLY8IYVIkAVBQtitGBtxB2bdIu2scQxcKxBDozR
- cnmkh207//BRLgSuHsc70eoPnU8wHR14VqXTTwhoN+ZJ4sdzEn7+T6MnpOczdchwxMsz
- frMAD1KD3+SN7BgrXmvSwVr3L1HZT6iUHQvTMKGd8EiERtDHwOLCNF8j4QJY8fPy+gRa
- iUI/PWqRgJKg23DrlfNdvngpaXHKZspuK1uECp61YDKBIieyo5i/zMOotJpAP/D4etQF
- GQuw==
-X-Gm-Message-State: AOAM533VJJ0LISasVzUs3/zfmIjj56/39F1XJ8gtg+qe0QrendlSE8fa
- 8SIHXxNA9MLGemnyTQzrR9E=
-X-Google-Smtp-Source: ABdhPJxhWkhdDX+RnJTqaXlCpDIE7cYQ0ES9HhfiNrQ8TgSgajEZN9A9Ao5fD3ga/NMsjYjfJg7hKA==
-X-Received: by 2002:a05:600c:c7:: with SMTP id
- u7mr3881615wmm.135.1598023630998; 
- Fri, 21 Aug 2020 08:27:10 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=A2ib5YeLmICUMl8rksAwSuoFVXHYJ4y/hwVWZYHuMbY=;
+ b=ui/6qD+19h4F4dAJ+SlNphgOf5kd3v04U45LjB10i9MDuAbsRpkWJLohTTgcNInmXO
+ 50w7XkGNNAOWULlmLirZZ9LM7Y2n8AZtbmvKyWa60XntEpaFNBCefajazC3B//VYLJIb
+ azZZ767JsCEyq+ZQqJOQHi+w/ljcURoJ5PlaSYEsVnlf3EzczRgNIZFpO0EwWJxTx4CI
+ ok92NwH4oiVSqNJtI1fA3KESXPPpogPHrAqgbKqxJiTqW/qgQVzhCdThV1DW9xLq+JJa
+ KfivDXXIPTKK9lL9S2ZSxeuB5Bc2LQVKEA514mySvrzQpVkuJvv4zqw3Oww+AN5krICl
+ T9bA==
+X-Gm-Message-State: AOAM532Sm+ex2I8cg5dKRqX2zH9Lhg4C9Mk7c3ENWOYyOoJxQbL/HanY
+ 3L/Y7TXuYfvfXEswc8K6/mc=
+X-Google-Smtp-Source: ABdhPJwnHUuth1Lgg+jMpWeo2o0KMQOm5Qu+a71/U7ael4vzzcfepC1XxXX3R/e7IfVXP9rCUNyY7Q==
+X-Received: by 2002:a5d:4701:: with SMTP id y1mr3322387wrq.416.1598023663658; 
+ Fri, 21 Aug 2020 08:27:43 -0700 (PDT)
 Received: from tsnow (IGLD-83-130-85-196.inter.net.il. [83.130.85.196])
- by smtp.gmail.com with ESMTPSA id r12sm5451960wmh.46.2020.08.21.08.27.07
+ by smtp.gmail.com with ESMTPSA id i4sm4575674wrw.26.2020.08.21.08.27.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Aug 2020 08:27:10 -0700 (PDT)
-Date: Fri, 21 Aug 2020 18:27:04 +0300
+ Fri, 21 Aug 2020 08:27:43 -0700 (PDT)
+Date: Fri, 21 Aug 2020 18:27:37 +0300
 From: Tomer Samara <tomersamara98@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v4 0/2] staging: android: Remove BUG/BUG_ON from ion
-Message-ID: <cover.1598023523.git.tomersamara98@gmail.com>
+Subject: [PATCH v4 1/2] staging: android: Remove BUG_ON from ion_page_pool.c
+Message-ID: <32ea3b6d840cb56ea927400e1875d9d4db38e926.1598023524.git.tomersamara98@gmail.com>
+References: <cover.1598023523.git.tomersamara98@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <cover.1598023523.git.tomersamara98@gmail.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,32 +98,50 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Remove BUG/BUG_ON from androind/ion
+BUG_ON() is removed at ion_page_pool.c
 
+Fixes the following issue:
+Avoid crashing the kernel - try using WARN_ON & recovery code ratherthan BUG() or BUG_ON().
 
--v4:
-	some changes based on Dan Carpenter review:
-	- Remove error check at ion_page_pool_remove (conditions are impossible)
-	- Remove error check at opn_page_pool_alloc
-	- restore WARN_ON at ion_page_pool_free
-	- Remove unnecessary error check at ion_page_pool_shrink
-	- Add /* This is impossible. */ comment at order_to_index
-	- Remove error handling of order_to_index
+Signed-off-by: Tomer Samara <tomersamara98@gmail.com>
+---
+ drivers/staging/android/ion/ion_page_pool.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
--v3:
-	remove WARN/WARN_ON as Gerg KH suggests
-
--v2: 
-	add error check to order_to_index callers
-
-Tomer Samara (2):
-  staging: android: Remove BUG_ON from ion_page_pool.c
-  staging: android: Remove BUG from ion_system_heap.c
-
- drivers/staging/android/ion/ion_page_pool.c   | 6 +-----
- drivers/staging/android/ion/ion_system_heap.c | 2 +-
- 2 files changed, 2 insertions(+), 6 deletions(-)
-
+diff --git a/drivers/staging/android/ion/ion_page_pool.c b/drivers/staging/android/ion/ion_page_pool.c
+index 0198b886d906..a3ed3bfd47ee 100644
+--- a/drivers/staging/android/ion/ion_page_pool.c
++++ b/drivers/staging/android/ion/ion_page_pool.c
+@@ -46,11 +46,9 @@ static struct page *ion_page_pool_remove(struct ion_page_pool *pool, bool high)
+ 	struct page *page;
+ 
+ 	if (high) {
+-		BUG_ON(!pool->high_count);
+ 		page = list_first_entry(&pool->high_items, struct page, lru);
+ 		pool->high_count--;
+ 	} else {
+-		BUG_ON(!pool->low_count);
+ 		page = list_first_entry(&pool->low_items, struct page, lru);
+ 		pool->low_count--;
+ 	}
+@@ -65,8 +63,6 @@ struct page *ion_page_pool_alloc(struct ion_page_pool *pool)
+ {
+ 	struct page *page = NULL;
+ 
+-	BUG_ON(!pool);
+-
+ 	mutex_lock(&pool->mutex);
+ 	if (pool->high_count)
+ 		page = ion_page_pool_remove(pool, true);
+@@ -82,7 +78,7 @@ struct page *ion_page_pool_alloc(struct ion_page_pool *pool)
+ 
+ void ion_page_pool_free(struct ion_page_pool *pool, struct page *page)
+ {
+-	BUG_ON(pool->order != compound_order(page));
++	WARN_ON(pool->order != compound_order(page))
+ 
+ 	ion_page_pool_add(pool, page);
+ }
 -- 
 2.25.1
 
