@@ -1,91 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1B1D24D61E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 15:32:30 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 17DA424D634
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 15:38:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A8F0C86D1E;
-	Fri, 21 Aug 2020 13:32:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 061E321514;
+	Fri, 21 Aug 2020 13:38:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UIfOXfUqQ1Cb; Fri, 21 Aug 2020 13:32:28 +0000 (UTC)
+	with ESMTP id gzweUXu6e4f0; Fri, 21 Aug 2020 13:38:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5060E86BB3;
-	Fri, 21 Aug 2020 13:32:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 59DBC20460;
+	Fri, 21 Aug 2020 13:38:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 008811BF855
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 13:32:26 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4F4131BF855
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 13:38:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F01CB8815D
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 13:32:25 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4953586BB3
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 13:38:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xzU43sq3jV0R for <devel@linuxdriverproject.org>;
- Fri, 21 Aug 2020 13:32:25 +0000 (UTC)
+ with ESMTP id uTj00RHWkRtB for <devel@linuxdriverproject.org>;
+ Fri, 21 Aug 2020 13:37:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4940588152
- for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 13:32:25 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 07LDWKuh089069;
- Fri, 21 Aug 2020 13:32:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=XdOvmH5USVXtysoB6X6erYb50z818EW7yPrG9RtuMu0=;
- b=UZhk6k9/ysu0qPh1meR7Saz8Rf6jBkJ942tZT+iAGW+XrzcaB8FI6KwErGKCk6UYUkCg
- ZtO72YaVffsqTXiNiXGWdlCCm3nDkroyyi4OdTe7542Zu9h84+x9aVtK8Gco5K4FIs0Q
- kO/VwsUIRKj7VTiFyCEdzXmx/m6zTOx6AlrQj5sRfWITINCptSXdc8wEqNRzZZMhWZAH
- x4U041R0R/iAGuKQ6Yo6P4ZOStVV+5f5FTXXo8bjjpKJAx8bWsL7j0IEUZjGEKKzJoFG
- qxk8GCwNt28uvVe74Q833w1MLS5EfZYIWC37GOeFpx3gSYjIA71AwjKBinXnrj21aMqz jA== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2130.oracle.com with ESMTP id 32x74rp2c0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 21 Aug 2020 13:32:22 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 07LDSOt2045064;
- Fri, 21 Aug 2020 13:32:22 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3020.oracle.com with ESMTP id 332536r5xa-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 21 Aug 2020 13:32:21 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 07LDWKtj022084;
- Fri, 21 Aug 2020 13:32:20 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 21 Aug 2020 13:32:19 +0000
-Date: Fri, 21 Aug 2020 16:32:10 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Tomer Samara <tomersamara98@gmail.com>
-Subject: Re: [PATCH v3 2/2] staging: android: Remove BUG from ion_system_heap.c
-Message-ID: <20200821133210.GV1793@kadam>
-References: <cover.1597865771.git.tomersamara98@gmail.com>
- <39222c3a041708c41ab3bc1be855ac83912ee07b.1597865771.git.tomersamara98@gmail.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AC48386B4E
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 13:37:59 +0000 (UTC)
+Received: from coco.lan (ip5f5ad5bf.dynamic.kabel-deutschland.de
+ [95.90.213.191])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8FAEF2075E;
+ Fri, 21 Aug 2020 13:37:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1598017079;
+ bh=Ll99DIK1T8Lkx3D20DknnJzu5dcs03ue33YMpeTIyUU=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=QKWBRvNeIHjsvJmXUSYSgHLegxdwzMcHXG3CQqzPDoRqSjvqfitMTxyInPncgbksc
+ ewEiJwcez1JSi0ZzL0lO//cdc1CPnS2j38p1s53qqHd5jMu8h8BpHwH5ueESJ3Y407
+ MQszV343fhRhN9y+MYrw7+n6dUHclNFDknk/lK6o=
+Date: Fri, 21 Aug 2020 15:37:49 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
+Message-ID: <20200821153749.08afec86@coco.lan>
+In-Reply-To: <20200819173558.GA3733@ravnborg.org>
+References: <cover.1597833138.git.mchehab+huawei@kernel.org>
+ <20200819152120.GA106437@ravnborg.org>
+ <20200819174027.70b39ee9@coco.lan>
+ <20200819173558.GA3733@ravnborg.org>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <39222c3a041708c41ab3bc1be855ac83912ee07b.1597865771.git.tomersamara98@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9719
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=2
- mlxscore=0 spamscore=0
- phishscore=0 malwarescore=0 adultscore=0 mlxlogscore=999 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2008210124
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9719
- signatures=668679
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 impostorscore=0
- mlxlogscore=999
- priorityscore=1501 phishscore=0 spamscore=0 mlxscore=0 adultscore=0
- suspectscore=2 lowpriorityscore=0 bulkscore=0 malwarescore=0 clxscore=1015
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2008210125
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,56 +68,108 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+Cc: Neil Armstrong <narmstrong@baylibre.com>,
+ Xinliang Liu <xinliang.liu@linaro.org>,
+ Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ devel@driverdev.osuosl.org, Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Xiubin Zhang <zhangxiubin1@huawei.com>, Wei Xu <xuwei5@hisilicon.com>,
+ David Airlie <airlied@linux.ie>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Tomi Valkeinen <tomi.valkeinen@ti.com>,
+ Bogdan Togorean <bogdan.togorean@analog.com>, Jakub Kicinski <kuba@kernel.org>,
+ Laurentiu Palcu <laurentiu.palcu@nxp.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Liwei Cai <cailiwei@hisilicon.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
+ Alexei Starovoitov <ast@kernel.org>, linaro-mm-sig@lists.linaro.org,
+ Rob Herring <robh+dt@kernel.org>, mauro.chehab@huawei.com,
+ Rob Clark <robdclark@chromium.org>, linux-arm-kernel@lists.infradead.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Joel Fernandes <joel@joelfernandes.org>,
- Riley Andrews <riandrews@android.com>, Martijn Coenen <maco@android.com>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Hridya Valsaraju <hridya@google.com>, Laura Abbott <labbott@redhat.com>,
- Suren Baghdasaryan <surenb@google.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- Christian Brauner <christian@brauner.io>
+ Liuyao An <anliuyao@huawei.com>, netdev@vger.kernel.org,
+ Rongrong Zou <zourongrong@gmail.com>, bpf@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Aug 19, 2020 at 10:39:34PM +0300, Tomer Samara wrote:
-> Remove BUG()  at ion_sytem_heap.c and error handling to:
->  - free_buffer_page
->  - alloc_buffer_page
-> this fix the following checkpatch issue:
-> Avoid crashing the kernel - try using WARN_ON &
-> recovery code ratherthan BUG() or BUG_ON().
+Hi Sam,
+
+Em Wed, 19 Aug 2020 19:35:58 +0200
+Sam Ravnborg <sam@ravnborg.org> escreveu:
+
+> > +	ret = drm_bridge_attach(encoder, bridge, NULL, 0);  
+> The bridge should be attached with the falg that tell the bridge NOT to
+> create a connector.
 > 
-> Signed-off-by: Tomer Samara <tomersamara98@gmail.com>
-> ---
->  drivers/staging/android/ion/ion_system_heap.c | 15 ++++++++++++---
->  1 file changed, 12 insertions(+), 3 deletions(-)
+> The display driver shall created the connector.
 > 
-> diff --git a/drivers/staging/android/ion/ion_system_heap.c b/drivers/staging/android/ion/ion_system_heap.c
-> index eac0632ab4e8..56d53268b82c 100644
-> --- a/drivers/staging/android/ion/ion_system_heap.c
-> +++ b/drivers/staging/android/ion/ion_system_heap.c
-> @@ -30,7 +30,7 @@ static int order_to_index(unsigned int order)
->  	for (i = 0; i < NUM_ORDERS; i++)
->  		if (order == orders[i])
->  			return i;
-> -	BUG();
-> +
->  	return -1;
->  }
+> Please see how other drivers do this (but most driver uses the old
+> pattern so so look for drm_bridge_attach() with the flag argument.
 
-Just delete the BUG() and put a comment that /* This is impossible. */
-so that reviewers know that we never return -1.
+Not sure if I got what should be done here.
 
-I suspect that there are some static analysis tools which might complain
-about this -1 return.  But those tools are pretty crap.  Never change
-code just to make the tools happy.
+From what I've seen at the DRM code, one of the differences between the 
+display engine for the first Hikey board (Kirin 620 based) and 960/970
+is with regards to bridges. The first Hikey device doesn't use any
+external bridges: both panel and HDMI support are provided by the SoC.
 
-regards,
-dan carpenter
+The Hikey 960 and 970 boards may either use an external bridge
+or not. They also have two output connectors:
+
+- The first one doesn't use an external bridge. It is used
+  only together with an external daughter display panel board. 
+  It sounds that one such panels is this one:
+
+	https://www.96boards.org/blog/linksprite-hikey-aosp/
+
+  I don't have any such board. The OOT driver came with one
+  panel display, I didn't port such driver. 
+
+- The second one uses an external bridge (adv7535) which is connected
+  to the HDMI board's connector.
+
+As there's just one bridge, the driver uses this to find its
+OF data:
+
+	struct device_node *bridge_node;
+
+	bridge_node = of_graph_get_remote_port_parent(endpoint);
+	dsi->bridge = of_drm_find_bridge(bridge_node);
+
+Basically, it doesn't call drm_bridge_add(), and doesn't
+declare any struct drm_bridge_funcs fops, as there's just one
+bridge that it is always there.
+
+-
+
+That's said, when I ported the code from Kernel 4.9, I fixed
+some broken things at the hotplug logic, trying to use other
+drivers with external bridges as examples. Yet, as you noticed,
+I ended using some older bridge model.  
+
+The only other driver I found that doesn't use drm_bridge_add()
+and doesn't pass 0 as flags is this one:
+
+	drivers/gpu/drm/omapdrm/omap_drv.c
+
+Is it a good example?
+
+What I see different there there is that it calls drm_bridge_attach()
+with:
+
+	ret = drm_bridge_attach(pipe->encoder,
+				pipe->output->bridge, NULL,
+				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+
+Is adding this enough? Or should I do something else?
 
 
+Thanks,
+Mauro
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
