@@ -1,65 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B41C24D970
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 18:09:53 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEA7F24D98A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 18:14:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2915722621;
-	Fri, 21 Aug 2020 16:09:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7114086BB3;
+	Fri, 21 Aug 2020 16:14:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id du3-usgOnDzF; Fri, 21 Aug 2020 16:09:49 +0000 (UTC)
+	with ESMTP id RpOXN_H-qUIb; Fri, 21 Aug 2020 16:14:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F3B1A21514;
-	Fri, 21 Aug 2020 16:09:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 17C2686B9E;
+	Fri, 21 Aug 2020 16:14:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 482C11BF2A7
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:09:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CA0A61BF2A7
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:14:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3A6B720554
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:09:37 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C04A720554
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:14:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y+6UoKURRqWc for <devel@linuxdriverproject.org>;
- Fri, 21 Aug 2020 16:09:36 +0000 (UTC)
-X-Greylist: delayed 13:13:46 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0011.hostedemail.com
- [216.40.44.11])
- by silver.osuosl.org (Postfix) with ESMTPS id 05465203CA
- for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 16:09:35 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay01.hostedemail.com (Postfix) with ESMTP id 80432100E7B42;
- Fri, 21 Aug 2020 16:09:33 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1536:1559:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3622:3868:3870:3871:4321:5007:6120:6742:6743:7901:10004:10400:10848:11232:11658:11914:12196:12297:12663:12740:12760:12895:13069:13311:13357:13439:14659:21080:21433:21627:30054:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:2, LUA_SUMMARY:none
-X-HE-Tag: frogs77_130d49d2703a
-X-Filterd-Recvd-Size: 2436
-Received: from XPS-9350.home (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf08.hostedemail.com (Postfix) with ESMTPA;
- Fri, 21 Aug 2020 16:09:27 +0000 (UTC)
-Message-ID: <d9ea16e803e219894416894a5cbed0fac00d891e.camel@perches.com>
-Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
-From: Joe Perches <joe@perches.com>
-To: Sam Ravnborg <sam@ravnborg.org>, Mauro Carvalho Chehab
- <mchehab+huawei@kernel.org>
-Date: Fri, 21 Aug 2020 09:09:25 -0700
-In-Reply-To: <20200819204800.GA110118@ravnborg.org>
-References: <cover.1597833138.git.mchehab+huawei@kernel.org>
- <20200819152120.GA106437@ravnborg.org> <20200819174027.70b39ee9@coco.lan>
- <20200819204800.GA110118@ravnborg.org>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ with ESMTP id 5fKETXUi9LKs for <devel@linuxdriverproject.org>;
+ Fri, 21 Aug 2020 16:14:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 06F9B204D1
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 16:14:44 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 297DD20855;
+ Fri, 21 Aug 2020 16:14:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1598026483;
+ bh=6AiJeu8UD5jdIPklU0UJ85alxQ5UPRtJBuOG4bUtfxI=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=aunaR5FBdgQt5wL42NKzGamqwzNXUyi6DEPTvvWE1Dy9It7NKiCigUYdVlX7FmQ7S
+ LCg/cylpYLQ4Hwdu9QblneSmZ9OyNQ2WOECr3Qu6pp4N0jJv184wHz233y/sNsgEMV
+ VSszcKZYfstI0+vuTXEGxSMDgn6CKaQZgUVlk940=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.8 16/62] staging: rts5208: fix memleaks on error
+ handling paths in probe
+Date: Fri, 21 Aug 2020 12:13:37 -0400
+Message-Id: <20200821161423.347071-16-sashal@kernel.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200821161423.347071-1-sashal@kernel.org>
+References: <20200821161423.347071-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,39 +69,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- devel@driverdev.osuosl.org, Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>,
- Xiubin Zhang <zhangxiubin1@huawei.com>, Wei Xu <xuwei5@hisilicon.com>,
- David Airlie <airlied@linux.ie>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Tomi Valkeinen <tomi.valkeinen@ti.com>,
- Bogdan Togorean <bogdan.togorean@analog.com>, Jakub Kicinski <kuba@kernel.org>,
- Laurentiu Palcu <laurentiu.palcu@nxp.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, Liwei Cai <cailiwei@hisilicon.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
- Alexei Starovoitov <ast@kernel.org>, linaro-mm-sig@lists.linaro.org,
- Rob Herring <robh+dt@kernel.org>, mauro.chehab@huawei.com,
- Rob Clark <robdclark@chromium.org>, linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Liuyao An <anliuyao@huawei.com>, netdev@vger.kernel.org,
- Rongrong Zou <zourongrong@gmail.com>, bpf@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>
+Cc: Evgeny Novikov <novikov@ispras.ru>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ Sasha Levin <sashal@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, 2020-08-19 at 22:48 +0200, Sam Ravnborg wrote:
-> And sometimes checkpatch is just wrong.
+From: Evgeny Novikov <novikov@ispras.ru>
 
-I'm interested in examples for when checkpatch is "just wrong".
+[ Upstream commit 11507bf9a8832741db69efd32bf09a2ab26426bf ]
 
+rtsx_probe() allocates host, but does not free it on error handling
+paths. The patch adds missed scsi_host_put().
+
+Found by Linux Driver Verification project (linuxtesting.org).
+
+Signed-off-by: Evgeny Novikov <novikov@ispras.ru>
+Link: https://lore.kernel.org/r/20200623141230.7258-1-novikov@ispras.ru
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/staging/rts5208/rtsx.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
+index be0053c795b7a..937f4e732a75c 100644
+--- a/drivers/staging/rts5208/rtsx.c
++++ b/drivers/staging/rts5208/rtsx.c
+@@ -972,6 +972,7 @@ static int rtsx_probe(struct pci_dev *pci,
+ 	kfree(dev->chip);
+ chip_alloc_fail:
+ 	dev_err(&pci->dev, "%s failed\n", __func__);
++	scsi_host_put(host);
+ scsi_host_alloc_fail:
+ 	pci_release_regions(pci);
+ 	return err;
+-- 
+2.25.1
 
 _______________________________________________
 devel mailing list
