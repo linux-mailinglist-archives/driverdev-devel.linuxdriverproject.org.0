@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEA7F24D98A
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 18:14:50 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5779024D9BB
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 18:16:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7114086BB3;
-	Fri, 21 Aug 2020 16:14:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 27018886B7;
+	Fri, 21 Aug 2020 16:16:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RpOXN_H-qUIb; Fri, 21 Aug 2020 16:14:47 +0000 (UTC)
+	with ESMTP id OeA9D84+Ev9D; Fri, 21 Aug 2020 16:16:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 17C2686B9E;
-	Fri, 21 Aug 2020 16:14:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5D309886A7;
+	Fri, 21 Aug 2020 16:16:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CA0A61BF2A7
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:14:44 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E33DE1BF2A7
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:16:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C04A720554
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:14:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DFA7987CB6
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:16:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5fKETXUi9LKs for <devel@linuxdriverproject.org>;
- Fri, 21 Aug 2020 16:14:44 +0000 (UTC)
+ with ESMTP id Pgus9GWba0v4 for <devel@linuxdriverproject.org>;
+ Fri, 21 Aug 2020 16:16:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 06F9B204D1
- for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 16:14:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7651687CA3
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 16:16:05 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 297DD20855;
- Fri, 21 Aug 2020 16:14:43 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9B4192224D;
+ Fri, 21 Aug 2020 16:16:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598026483;
+ s=default; t=1598026565;
  bh=6AiJeu8UD5jdIPklU0UJ85alxQ5UPRtJBuOG4bUtfxI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=aunaR5FBdgQt5wL42NKzGamqwzNXUyi6DEPTvvWE1Dy9It7NKiCigUYdVlX7FmQ7S
- LCg/cylpYLQ4Hwdu9QblneSmZ9OyNQ2WOECr3Qu6pp4N0jJv184wHz233y/sNsgEMV
- VSszcKZYfstI0+vuTXEGxSMDgn6CKaQZgUVlk940=
+ b=1euNR5PjkRU24lbvLimBY0gknEh8yFfcH8p80Oc5BbuMfHQWxQGMZme7S/dRoSC71
+ RTAnybr45WRBKhSlqt9dbSSYj/faK0bTteoJQYC9FleDx6Xf/I0S18tTCvrRYtoDKw
+ Ds0EgRPBdxs/juoFI8sKM1vphT3XeeXWyU1qpgCw=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.8 16/62] staging: rts5208: fix memleaks on error
+Subject: [PATCH AUTOSEL 5.7 16/61] staging: rts5208: fix memleaks on error
  handling paths in probe
-Date: Fri, 21 Aug 2020 12:13:37 -0400
-Message-Id: <20200821161423.347071-16-sashal@kernel.org>
+Date: Fri, 21 Aug 2020 12:15:00 -0400
+Message-Id: <20200821161545.347622-16-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200821161423.347071-1-sashal@kernel.org>
-References: <20200821161423.347071-1-sashal@kernel.org>
+In-Reply-To: <20200821161545.347622-1-sashal@kernel.org>
+References: <20200821161545.347622-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
