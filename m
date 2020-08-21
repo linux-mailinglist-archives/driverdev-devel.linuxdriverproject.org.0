@@ -1,59 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4680224D92E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 17:57:03 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B41C24D970
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 18:09:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B75D86B81;
-	Fri, 21 Aug 2020 15:57:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2915722621;
+	Fri, 21 Aug 2020 16:09:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LRNdlC27eyDk; Fri, 21 Aug 2020 15:57:00 +0000 (UTC)
+	with ESMTP id du3-usgOnDzF; Fri, 21 Aug 2020 16:09:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 204E885FA5;
-	Fri, 21 Aug 2020 15:57:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F3B1A21514;
+	Fri, 21 Aug 2020 16:09:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1F67F1BF9BD
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 15:56:58 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 482C11BF2A7
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:09:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1B20488611
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 15:56:58 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3A6B720554
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 16:09:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NBRrSNyDjjNA for <devel@linuxdriverproject.org>;
- Fri, 21 Aug 2020 15:56:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from asavdk4.altibox.net (asavdk4.altibox.net [109.247.116.15])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E26E386E64
- for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 15:56:55 +0000 (UTC)
-Received: from ravnborg.org (unknown [188.228.123.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by asavdk4.altibox.net (Postfix) with ESMTPS id AC78180516;
- Fri, 21 Aug 2020 17:56:51 +0200 (CEST)
-Date: Fri, 21 Aug 2020 17:56:50 +0200
-From: Sam Ravnborg <sam@ravnborg.org>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+ with ESMTP id y+6UoKURRqWc for <devel@linuxdriverproject.org>;
+ Fri, 21 Aug 2020 16:09:36 +0000 (UTC)
+X-Greylist: delayed 13:13:46 by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0011.hostedemail.com
+ [216.40.44.11])
+ by silver.osuosl.org (Postfix) with ESMTPS id 05465203CA
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 16:09:35 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay01.hostedemail.com (Postfix) with ESMTP id 80432100E7B42;
+ Fri, 21 Aug 2020 16:09:33 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1536:1559:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3622:3868:3870:3871:4321:5007:6120:6742:6743:7901:10004:10400:10848:11232:11658:11914:12196:12297:12663:12740:12760:12895:13069:13311:13357:13439:14659:21080:21433:21627:30054:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:2, LUA_SUMMARY:none
+X-HE-Tag: frogs77_130d49d2703a
+X-Filterd-Recvd-Size: 2436
+Received: from XPS-9350.home (unknown [47.151.133.149])
+ (Authenticated sender: joe@perches.com)
+ by omf08.hostedemail.com (Postfix) with ESMTPA;
+ Fri, 21 Aug 2020 16:09:27 +0000 (UTC)
+Message-ID: <d9ea16e803e219894416894a5cbed0fac00d891e.camel@perches.com>
 Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
-Message-ID: <20200821155650.GB300361@ravnborg.org>
+From: Joe Perches <joe@perches.com>
+To: Sam Ravnborg <sam@ravnborg.org>, Mauro Carvalho Chehab
+ <mchehab+huawei@kernel.org>
+Date: Fri, 21 Aug 2020 09:09:25 -0700
+In-Reply-To: <20200819204800.GA110118@ravnborg.org>
 References: <cover.1597833138.git.mchehab+huawei@kernel.org>
- <20200819152120.GA106437@ravnborg.org>
- <20200819174027.70b39ee9@coco.lan>
- <20200819173558.GA3733@ravnborg.org>
- <20200821164158.22777f95@coco.lan>
+ <20200819152120.GA106437@ravnborg.org> <20200819174027.70b39ee9@coco.lan>
+ <20200819204800.GA110118@ravnborg.org>
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200821164158.22777f95@coco.lan>
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=aP3eV41m c=1 sm=1 tr=0
- a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
- a=kj9zAlcOel0A:10 a=7gkXJVJtAAAA:8 a=7oA8CBdsI_oY7ygzQxoA:9
- a=CjuIK1q_8ugA:10 a=E9Po1WZjFZOl8hwRPBS3:22
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,27 +100,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Mauro.
+On Wed, 2020-08-19 at 22:48 +0200, Sam Ravnborg wrote:
+> And sometimes checkpatch is just wrong.
 
-On Fri, Aug 21, 2020 at 04:41:58PM +0200, Mauro Carvalho Chehab wrote:
-> Another quick question:
-> 
-> Em Wed, 19 Aug 2020 19:35:58 +0200
-> Sam Ravnborg <sam@ravnborg.org> escreveu:
-> 
-> > > +#define DSS_REDUCE(x)	((x) > 0 ? ((x) - 1) : (x))  
-> > Use generic macros for this?
-> 
-> Do you know a generic macro similar to this? Or do you mean adding
-> it to include/kernel.h?
+I'm interested in examples for when checkpatch is "just wrong".
 
-It looked like something there should be a macro for.
-But I do not know one.
 
-And no, do not try to go the kernel.h route on this.
-At least not until you see more than one user.
-
-	Sam
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
