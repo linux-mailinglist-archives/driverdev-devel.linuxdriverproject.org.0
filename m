@@ -1,75 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A84124D4C5
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 14:18:40 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74F2224D4C9
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 14:20:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 32FC186A32;
-	Fri, 21 Aug 2020 12:18:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4022F88687;
+	Fri, 21 Aug 2020 12:20:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xCPJ-ed0IMfo; Fri, 21 Aug 2020 12:18:37 +0000 (UTC)
+	with ESMTP id nPEnNW2fdX76; Fri, 21 Aug 2020 12:20:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 21B4B860E6;
-	Fri, 21 Aug 2020 12:18:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9FFDB88665;
+	Fri, 21 Aug 2020 12:20:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D37FD1BF2BC
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 12:18:34 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 81E571BF2BC
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 12:20:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CD8848832B
- for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 12:18:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7C92886B67
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 12:20:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9e26qbDiFFOC for <devel@linuxdriverproject.org>;
- Fri, 21 Aug 2020 12:18:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from eu-smtp-delivery-151.mimecast.com
- (eu-smtp-delivery-151.mimecast.com [207.82.80.151])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 80408882EA
- for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 12:18:33 +0000 (UTC)
-Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
- TLS) by relay.mimecast.com with ESMTP id
- uk-mta-48-5tsXRHYdNKyZh1jxPg801Q-1; Fri, 21 Aug 2020 13:18:29 +0100
-X-MC-Unique: 5tsXRHYdNKyZh1jxPg801Q-1
-Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
- AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
- Server (TLS) id 15.0.1347.2; Fri, 21 Aug 2020 13:18:28 +0100
-Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
- AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
- Fri, 21 Aug 2020 13:18:28 +0100
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Nicolas Boichat' <drinkcat@chromium.org>
-Subject: RE: [PATCH v4 3/3] media: atomisp: Only use trace_printk if allowed
-Thread-Topic: [PATCH v4 3/3] media: atomisp: Only use trace_printk if allowed
-Thread-Index: AQHWd1MRQFeXK2GIIEihfK8khxWsrqlCP3rwgAAMdQCAACDnQP//+vQAgAARUeA=
-Date: Fri, 21 Aug 2020 12:18:28 +0000
-Message-ID: <6c5249afad274ce49e643d9b05706e3a@AcuMS.aculab.com>
+ with ESMTP id zOtJNOyHR_1o for <devel@linuxdriverproject.org>;
+ Fri, 21 Aug 2020 12:20:06 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-vs1-f67.google.com (mail-vs1-f67.google.com
+ [209.85.217.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 40AAB86B3B
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 12:20:06 +0000 (UTC)
+Received: by mail-vs1-f67.google.com with SMTP id n4so699686vsl.10
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 05:20:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=52w1cJUaQ9YanpUGNy0nDzv1xTgiDNv65mHDcwVGT/k=;
+ b=ma8DyBTio5H7kC0GIQ2hYvDq/OC2i1mxC0vGTCsokkwIOce8mzt3dmwWQ2pc7uHqhw
+ GQjt7ejyzZqestweM11fLlNXDcO8dJAf767AZFt9DXZcnqF9FCaUBsu+nP3DBFbWA/8H
+ m9IprTGaVujoL/pcNzqE6hjgEPBKQmEx73Tck=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=52w1cJUaQ9YanpUGNy0nDzv1xTgiDNv65mHDcwVGT/k=;
+ b=LNOkNSU8UARgCSRqVZGMTMmocN0fLnWQnUPuOriXGIKCRc/7dExEqWbye4fRnDdZNx
+ dujoEydeKXY4XuQOiEPoykYQFREZdMQfmJKhUbFraqC4WB3fvPubrN8d2pojEZF57BJ3
+ cnVAXFCQrasFcdqtoHCAeNOt6ik5gANYaSTbuLeVvezxyi7/myMdsr9KFXCb6zqs37Y/
+ Pag+jLya6Vri7UljalfxMv+XcV860bXUjhwMzDBqUkGTmrcj+OqU5afgIJpT+OylHAma
+ sYmxkhBkGI8ZpViCJk8IBhqFFSo2MUBH50ByXUeFAfFD61CPyn8eXvDnl8Q54ltD6XLO
+ KzgQ==
+X-Gm-Message-State: AOAM532PzBF2NU6JSw63Ugysl9YW2NhKRBydVFvyko9sY+iLxWQlxljE
+ FXo6SLRE5FQwwWZ6b2r66O/YYfBl3bYoybdFtpS4mQ==
+X-Google-Smtp-Source: ABdhPJx5f1sQLnbRNjOhBQQZgrQyMKznEcXj7NlHlGGfOAbWXzvtJyasjXRpR5CO9AqugLoE5SfHzGUP5k61w0/lFFA=
+X-Received: by 2002:a05:6102:1ca:: with SMTP id
+ s10mr1289867vsq.14.1598012403767; 
+ Fri, 21 Aug 2020 05:20:03 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200820170951.v4.1.Ia54fe801f246a0b0aee36fb1f3bfb0922a8842b0@changeid>
  <20200820170951.v4.3.I066d89f39023956c47fb0a42edf196b3950ffbf7@changeid>
  <20200820102347.15d2f610@oasis.local.home>
  <CANMq1KCoEZVj=sjxCqBhqLZKBab57+82=Rk_LN7fc3aCuNHMUw@mail.gmail.com>
  <20200820203601.4f70bf98@oasis.local.home>
- <21fae92da07c4566ba4eed3b5e1bce2d@AcuMS.aculab.com>
- <CANMq1KBvNqcdCsuDGGygYqS5+ZBw+qSVXTC+WWNycypG2=BRMQ@mail.gmail.com>
- <898c56e4b7ef4c3da1d634fdef5a8898@AcuMS.aculab.com>
- <CANMq1KDT+uecuqxXRsxv9-sMv0sGXk6ZQ3hWv0aK34dfzaJXyg@mail.gmail.com>
-In-Reply-To: <CANMq1KDT+uecuqxXRsxv9-sMv0sGXk6ZQ3hWv0aK34dfzaJXyg@mail.gmail.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
-MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
-X-Mimecast-Spam-Score: 0.001
-X-Mimecast-Originator: aculab.com
+ <CANMq1KAAgXG9MKMZ_D9zYFV-j0oVreA_AeSw-8FoyJgZ9eWQpg@mail.gmail.com>
+ <20200820215701.667f02b2@oasis.local.home>
+ <CANMq1KCpV+RKCqHsK-=Xeb+Vq28qdnBVF51rcga7m9-xjqNSCg@mail.gmail.com>
+ <20200820230105.1f9651b7@oasis.local.home>
+In-Reply-To: <20200820230105.1f9651b7@oasis.local.home>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Fri, 21 Aug 2020 20:19:52 +0800
+Message-ID: <CANMq1KAuB4fCg50=G9ed_ALaD7O8=3PWQQMZNit52As-r7to4Q@mail.gmail.com>
+Subject: Re: [PATCH v4 3/3] media: atomisp: Only use trace_printk if allowed
+To: Steven Rostedt <rostedt@goodmis.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,47 +85,120 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, Andy
- Shevchenko <andriy.shevchenko@linux.intel.com>,
+Cc: devel@driverdev.osuosl.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  Peter Zijlstra <peterz@infradead.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- lkml <linux-kernel@vger.kernel.org>, Steven Rostedt <rostedt@goodmis.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Josh Poimboeuf <jpoimboe@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Linux
- Media Mailing List <linux-media@vger.kernel.org>
+ lkml <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>,
+ Joe Perches <joe@perches.com>, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Josh Poimboeuf <jpoimboe@redhat.com>, Guenter Roeck <groeck@chromium.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From: Nicolas Boichat
-> Sent: 21 August 2020 13:07
-...
-> > You might also want a #define that can set temporarily
-> > to enable traces in a specific file/module even though
-> > CONFIG_TRACE=n.
-> 
-> I don't understand how traces are supposed to work with CONFIG_TRACE=n?
+On Fri, Aug 21, 2020 at 11:01 AM Steven Rostedt <rostedt@goodmis.org> wrote:
+>
+> On Fri, 21 Aug 2020 10:39:02 +0800
+> Nicolas Boichat <drinkcat@chromium.org> wrote:
+>
+> > I'm not sure how that helps? I mean, the use case you have in mind is
+> > somebody reusing a distro/random config and not being able to use
+> > trace_printk, right? If that config has CONFIG_DISABLE_TRACE_PRINTK=y,
+> > then the developer will still need to flip that back.
+> >
+> > Note that the option I'm added has default=y (_allow_ trace_printk),
+> > so I don't think default y or default n really matters?
+>
+> Ideally, the production system doesn't have it set. It only sets it to
+> make sure that it's clean before sending out. But then it can add it
+> back before production. Yeah, it's pretty much cutting hairs between
+> the two. I don't like either one.
+>
+> Really, if you are worried about this, just add your patch to your
+> local tree. I'm not sure this is something that can be fixed upstream.
+>
+> Another idea is to add something like below, and build with:
+>
+>  make CHECK_TRACE_PRINT=1
+>
+> This way it is a build command line option that causes the build to
+> fail if trace_printk() is added.
+>
+> This way production systems can add this to make sure their kernels are
+> free of trace_printk() but it doesn't affect the config that is used.
 
-Probably because I meant something different :-)
+(for some reason I missed this reply in the thread ,-P)
 
-You want the kernel built so that there are no (expanded)
-calls to trace_printf() but with support for modules that
-contain them.
+Thanks, that's quite a nice idea, I'll try it out (not sure if we
+still want that build_assert trick). We'd lose the automatic detection
+of issues through randconfig kernel test robot, but hopefully if
+enough distros enable it they'll start filing reports about issues.
 
-Then I can load a module into a distro kernel that
-contains trace_printf() calls for debug testing.
+And maybe we can use that in combination with a checkpatch.pl check.
 
-Which is why I was suggesting a config option that
-only rand-config builds would ever set that would
-cause the calls to generate compile-time errors.
+(it turns out I'm having a hard time finding a good spot for this test
+in our Chrome OS build infra, so an upstream-friendly solution would
+be much better ,-P)
 
-	David
-
--
-Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
-Registration No: 1397386 (Wales)
+>
+> -- Steve
+>
+> [ Not even compiled tested! ]
+>
+> diff --git a/Makefile b/Makefile
+> index 2057c92a6205..5714a738879d 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -91,6 +91,13 @@ else
+>    Q = @
+>  endif
+>
+> +ifeq ("$(origin CHECK_TRACE_PRINTK)", "command line")
+> +  KBUILD_NO_TRACE_PRINTK = $(NO_TRACE_PRINTK)
+> +endif
+> +ifndef KBUILD_NO_TRACE_PRINTK
+> +  KBUILD_NO_TRACE_PRINTK = 0
+> +endif
+> +
+>  # If the user is running make -s (silent mode), suppress echoing of
+>  # commands
+>
+> @@ -839,6 +846,10 @@ KBUILD_AFLAGS      += -gz=zlib
+>  KBUILD_LDFLAGS += --compress-debug-sections=zlib
+>  endif
+>
+> +ifeq ($(KBUILD_NO_TRACE_PRINTK),1)
+> +KBUILD_CFLAGS += -DNO_TRACE_PRINTK
+> +endif
+> +
+>  KBUILD_CFLAGS += $(DEBUG_CFLAGS)
+>  export DEBUG_CFLAGS
+>
+> diff --git a/include/linux/kernel.h b/include/linux/kernel.h
+> index 500def620d8f..bee432547d26 100644
+> --- a/include/linux/kernel.h
+> +++ b/include/linux/kernel.h
+> @@ -680,11 +680,14 @@ extern void tracing_stop(void);
+>  static inline __printf(1, 2)
+>  void ____trace_printk_check_format(const char *fmt, ...)
+>  {
+> +#ifdef NO_TRACE_PRINTK
+> +       extern void __no_trace_printk_on_build(void);
+> +       __no_trace_printk_on_build();
+> +#endif
+>  }
+>  #define __trace_printk_check_format(fmt, args...)                      \
+>  do {                                                                   \
+> -       if (0)                                                          \
+> -               ____trace_printk_check_format(fmt, ##args);             \
+> +       ____trace_printk_check_format(fmt, ##args);                     \
+>  } while (0)
+>
+>  /**
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
