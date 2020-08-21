@@ -1,73 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EC6D24C7C8
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 00:31:47 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7FC0224C90F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Aug 2020 02:18:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 25BEE86B8A;
-	Thu, 20 Aug 2020 22:31:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7AD3922DDB;
+	Fri, 21 Aug 2020 00:18:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NjbqFfY5uF-s; Thu, 20 Aug 2020 22:31:43 +0000 (UTC)
+	with ESMTP id wadYlQU9JBC1; Fri, 21 Aug 2020 00:18:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 35C1986B7D;
-	Thu, 20 Aug 2020 22:31:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 32C4622C6B;
+	Fri, 21 Aug 2020 00:18:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1F28D1BF2C0
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 22:31:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4C4461BF9C1
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 00:18:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F0B37228F1
- for <devel@linuxdriverproject.org>; Thu, 20 Aug 2020 22:31:37 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 41D0B22C6B
+ for <devel@linuxdriverproject.org>; Fri, 21 Aug 2020 00:18:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id baG3Guvhx9Mn for <devel@linuxdriverproject.org>;
- Thu, 20 Aug 2020 22:31:36 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ej1-f65.google.com (mail-ej1-f65.google.com
- [209.85.218.65])
- by silver.osuosl.org (Postfix) with ESMTPS id A945F228E2
- for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 22:31:35 +0000 (UTC)
-Received: by mail-ej1-f65.google.com with SMTP id m22so61572eje.10
- for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 15:31:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ with ESMTP id Or8PTi1IleEZ for <devel@linuxdriverproject.org>;
+ Fri, 21 Aug 2020 00:18:15 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9525E2052F
+ for <devel@driverdev.osuosl.org>; Fri, 21 Aug 2020 00:18:15 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id g33so157580pgb.4
+ for <devel@driverdev.osuosl.org>; Thu, 20 Aug 2020 17:18:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SuUXRswcOeNLCip2n7MAbvqZMd+jOnXUCuYTkBD7p0U=;
- b=fgZ1D9Tju8B8pr7drSv2uBnOnJJ4F9TWjipSfuWilX3suyse9Y/kBGn8zayEmnM3m9
- cwKh4W2gjJyqUkkrIZSsFRtG+xYQGHZ6VzgFjYOsn4nlxwnaQZ8ffcC+VHIUYEhkWV5Y
- xk6Ps8er0VfoqvJAzXTd0Rlgsn0nxWO8iNl9+T2YTwFzDd91KASzh/1Z6FGvNBC0IuHd
- oIhUnf3z73ftQwdtP1t4blwW/CZzL2PMZUwSSxad+Epm90deWkSj+rwQc37BBR9sU9v3
- gerMFt+WjkLitHdHTRtXbTNwTsQqatFOliNGrUGBjbJwddBhN7KoEOQKhWjkNtRvObLV
- gXyQ==
+ :cc; bh=3fW1Q087C3iBkzSEJJ8rBhdiCQ75ydi82R0DkuBMVmE=;
+ b=JDnN2KxHICU7mm1H4JMCGP0USSTHF246OD6RakBl6ItMd4XWgsQl6MV9sU+5gVf3BO
+ 8OZywIkjqhxHXKZMZvFXtQGB7F3PW4bfjm6AEXTiFSa788v2U17nI54KOdhbxLgeDFXW
+ jAGei6iodA7Qt/UrXwZaRW815eeNe/zl8KMak=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=SuUXRswcOeNLCip2n7MAbvqZMd+jOnXUCuYTkBD7p0U=;
- b=dRuH2HX/nYPNyc2brNRSRbUGCThR8qVae3Zh8yV8+im0+l8MtZGdIRFQVpmNT5UfsM
- ffyUtLeHiVYhvJrx6rMmxFoEvvKGCXkWYdWl2TAHxXcrVFGiP85clZGX0vqYLtuxTPDT
- 7EcpaHhTFVmUDkH4wdNNGXly+xoT+I/QFKzwZ7NQjZ5yeiVgpOjA55d3OmFzVceBZATU
- v1LzL6uG3nwok7/1Two5LbIDx1xEcWy4oU3LMWuJahmKbeFql4wENPz9UFKtIHdVyq8B
- x7Mp33wQ6f/j/ce7YUU12/HSRTWlkvFIocSrGB+Hc1enltnHPlHuyGAC1lIT1xQkZX1P
- fxAg==
-X-Gm-Message-State: AOAM532BlZOE1mnngGYnzDXcs2vKKXVIEFVY8iDJ63awqWXLVsFU7oAf
- X7mIrqITDlx/HV4KoPbfPGhC8KTPyImjtlneGKJOOw==
-X-Google-Smtp-Source: ABdhPJyIXR6qYMtpFJDbmSSAJHv2Aynqs8K6Iicf8g+Btpd5pGPoqEqW4RIDrek9BV4Us4qvkmY8bPcQnw6hYvG1TNU=
-X-Received: by 2002:a17:906:c406:: with SMTP id u6mr81296ejz.47.1597962693551; 
- Thu, 20 Aug 2020 15:31:33 -0700 (PDT)
+ bh=3fW1Q087C3iBkzSEJJ8rBhdiCQ75ydi82R0DkuBMVmE=;
+ b=s2Nj9RGqMLFxNQ6NbmidB5SLXs1NO13cz61iYthsthDbst4V1y9Tn+MdvIqScluR2b
+ lvclsElyhFe0mBAi9pMSUzWrx7qVls+q9PGS/eA0ubdMLGa8MScuadFF+Bh7jxeLp7bs
+ Vyqvcj4yISKw/hQOkusl8Yl30k7tUIdOIOJ1Oa7sljMrelstO6j7pc5EHeLVpW6M+jsY
+ zNEnX8kzwRKCjVpPoiU8I2SmKZXezq5U3Mwvd94fhHO4NHmaNmCW1nUK/PYZaA3msUa2
+ KQZMtmAWkfNX0srJApiz/9tXg8/3BJxcrNJkGwqwp3V9r2jTDFRNTcGnIgWrz2+9Qgcq
+ p6MA==
+X-Gm-Message-State: AOAM533DAA3ll8qxHLpDMHiCeb/FIU4WCR0Rhy8kyd6b0OctOGHtIa/t
+ PrD35j+ydZmsGU0dVwITmaHv5DxobEMX+xUDPgpb3aeciMI=
+X-Google-Smtp-Source: ABdhPJwjwRO6/j0Eu+XByE6acrayAh1Yc1q66vPAJYhHEFhWRkl8RXtNj/f4B8RB+n2xuUa1YMS3UI9t7X/0Ns/jHTY=
+X-Received: by 2002:a1f:2444:: with SMTP id k65mr277318vkk.33.1597968791845;
+ Thu, 20 Aug 2020 17:13:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200820115033.276111-1-maco@android.com>
-In-Reply-To: <20200820115033.276111-1-maco@android.com>
-From: Todd Kjos <tkjos@google.com>
-Date: Thu, 20 Aug 2020 15:31:21 -0700
-Message-ID: <CAHRSSExdn-aYUK-N9-ANg2Zwtm+B49qMQrLqttG+Ay6yYgiMHQ@mail.gmail.com>
-Subject: Re: [PATCH v2] ANDROID: binder: print warnings when detecting oneway
- spamming.
-To: Martijn Coenen <maco@android.com>
+References: <20200820170951.v4.1.Ia54fe801f246a0b0aee36fb1f3bfb0922a8842b0@changeid>
+ <20200820170951.v4.3.I066d89f39023956c47fb0a42edf196b3950ffbf7@changeid>
+ <20200820102347.15d2f610@oasis.local.home>
+In-Reply-To: <20200820102347.15d2f610@oasis.local.home>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Fri, 21 Aug 2020 08:13:00 +0800
+Message-ID: <CANMq1KCoEZVj=sjxCqBhqLZKBab57+82=Rk_LN7fc3aCuNHMUw@mail.gmail.com>
+Subject: Re: [PATCH v4 3/3] media: atomisp: Only use trace_printk if allowed
+To: Steven Rostedt <rostedt@goodmis.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,213 +78,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
+Cc: devel@driverdev.osuosl.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>, Hridya Valsaraju <hridya@google.com>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Martijn Coenen <maco@google.com>,
- "Joel Fernandes \(Google\)" <joel@joelfernandes.org>,
- Suren Baghdasaryan <surenb@google.com>,
- Christian Brauner <christian@brauner.io>
+ lkml <linux-kernel@vger.kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 20, 2020 at 4:50 AM Martijn Coenen <maco@android.com> wrote:
+On Thu, Aug 20, 2020 at 10:23 PM Steven Rostedt <rostedt@goodmis.org> wrote:
 >
-> The most common cause of the binder transaction buffer filling up is a
-> client rapidly firing oneway transactions into a process, before it has
-> a chance to handle them. Yet the root cause of this is often hard to
-> debug, because either the system or the app will stop, and by that time
-> binder debug information we dump in bugreports is no longer relevant.
+> On Thu, 20 Aug 2020 17:14:12 +0800
+> Nicolas Boichat <drinkcat@chromium.org> wrote:
 >
-> This change warns as soon as a process dips below 80% of its oneway
-> space (less than 100kB available in the configuration), when any one
-> process is responsible for either more than 50 transactions, or more
-> than 50% of the oneway space.
+> > Technically, we could only initialize the trace_printk buffers
+> > when the print env is switched, to avoid the build error and
+> > unconditional boot-time warning, but I assume this printing
+> > framework will eventually get removed when the driver moves out
+> > of staging?
 >
-> Signed-off-by: Martijn Coenen <maco@android.com>
+> Perhaps this should be converting into a trace event. Look at what bpf
+> did for their bpf_trace_printk().
+>
+> The more I think about it, the less I like this series.
 
-A few minor comment issues below. When resolved:
-Acked-by: Todd Kjos <tkjos@google.com>
+To make it clear, the primary goal of this series is to get rid of
+trace_printk sprinkled in the kernel by making sure some randconfig
+builds fail. Since my v2, there already has been one more added (the
+one that this patch removes), so I'd like to land 2/3 ASAP to prevent
+even more from being added.
 
-> ---
-> v2: fixed call-site in binder_alloc_selftest
->
->  drivers/android/binder.c                |  2 +-
->  drivers/android/binder_alloc.c          | 49 +++++++++++++++++++++++--
->  drivers/android/binder_alloc.h          |  5 ++-
->  drivers/android/binder_alloc_selftest.c |  2 +-
->  4 files changed, 52 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> index f936530a19b0..946332bc871a 100644
-> --- a/drivers/android/binder.c
-> +++ b/drivers/android/binder.c
-> @@ -3136,7 +3136,7 @@ static void binder_transaction(struct binder_proc *proc,
->
->         t->buffer = binder_alloc_new_buf(&target_proc->alloc, tr->data_size,
->                 tr->offsets_size, extra_buffers_size,
-> -               !reply && (t->flags & TF_ONE_WAY));
-> +               !reply && (t->flags & TF_ONE_WAY), current->tgid);
->         if (IS_ERR(t->buffer)) {
->                 /*
->                  * -ESRCH indicates VMA cleared. The target is dying.
-> diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
-> index 69609696a843..76e8e633dbd4 100644
-> --- a/drivers/android/binder_alloc.c
-> +++ b/drivers/android/binder_alloc.c
-> @@ -338,12 +338,48 @@ static inline struct vm_area_struct *binder_alloc_get_vma(
->         return vma;
->  }
->
-> +static void debug_low_async_space_locked(struct binder_alloc *alloc, int pid)
-> +{
-> +       /*
-> +        * Find the amount and size of buffers allocated by the current caller;
-> +        * The idea is that once we cross the threshold, whoever is responsible
-> +        * for the low async space is likely to try to send another async txn,
-> +        * and at some point we'll catch them in the act. This is more efficient
-> +        * than keeping a map per pid.
-> +        */
-> +       struct rb_node *n = alloc->free_buffers.rb_node;
-> +       struct binder_buffer *buffer;
-> +       size_t buffer_size;
-> +       size_t total_alloc_size = 0;
-> +       size_t num_buffers = 0;
-> +
-> +       for (n = rb_first(&alloc->allocated_buffers); n != NULL;
-> +                n = rb_next(n)) {
-> +               buffer = rb_entry(n, struct binder_buffer, rb_node);
-> +               if (buffer->pid != pid)
-> +                       continue;
-> +               if (!buffer->async_transaction)
-> +                       continue;
-> +               buffer_size = binder_alloc_buffer_size(alloc, buffer);
-> +               total_alloc_size += buffer_size;
-> +               num_buffers++;
-> +       }
-> +
-> +       // Warn if this pid has more than 50% of async space, or more than 50 txns
+Looking at your reply on 1/3, I think we are aligned on that goal? Is
+there some other approach you'd recommend?
 
-/* .. */
+Now, I'm not pretending my fixes are the best possible ones, but I
+would much rather have the burden of converting to trace events on the
+respective driver maintainers. (btw is there a short
+documentation/tutorial that I could link to in these patches, to help
+developers understand what is the recommended way now?)
 
-Folks might be confused by 50% being calculated as (alloc->buffer_size
-/4) which on the surface looks like 25%. Maybe either change the
-comment to "25% of buffer space" or point out that async space is 50%
-of the buffer.
+Thanks,
 
-
-> +       if (num_buffers > 50 || total_alloc_size > alloc->buffer_size / 4) {
-> +               binder_alloc_debug(BINDER_DEBUG_USER_ERROR,
-> +                            "%d: pid %d spamming oneway? %zd buffers allocated for a total size of %zd\n",
-> +                             alloc->pid, pid, num_buffers, total_alloc_size);
-> +       }
-> +}
-> +
->  static struct binder_buffer *binder_alloc_new_buf_locked(
->                                 struct binder_alloc *alloc,
->                                 size_t data_size,
->                                 size_t offsets_size,
->                                 size_t extra_buffers_size,
-> -                               int is_async)
-> +                               int is_async,
-> +                               int pid)
->  {
->         struct rb_node *n = alloc->free_buffers.rb_node;
->         struct binder_buffer *buffer;
-> @@ -486,11 +522,16 @@ static struct binder_buffer *binder_alloc_new_buf_locked(
->         buffer->offsets_size = offsets_size;
->         buffer->async_transaction = is_async;
->         buffer->extra_buffers_size = extra_buffers_size;
-> +       buffer->pid = pid;
->         if (is_async) {
->                 alloc->free_async_space -= size + sizeof(struct binder_buffer);
->                 binder_alloc_debug(BINDER_DEBUG_BUFFER_ALLOC_ASYNC,
->                              "%d: binder_alloc_buf size %zd async free %zd\n",
->                               alloc->pid, size, alloc->free_async_space);
-> +               if (alloc->free_async_space < alloc->buffer_size / 10) {
-> +                       // Start detecting spammers once we reach 80% of async space used
-
-Use /* ... */
-
-> +                       debug_low_async_space_locked(alloc, pid);
-> +               }
->         }
->         return buffer;
 >
-> @@ -508,6 +549,7 @@ static struct binder_buffer *binder_alloc_new_buf_locked(
->   * @offsets_size:       user specified buffer offset
->   * @extra_buffers_size: size of extra space for meta-data (eg, security context)
->   * @is_async:           buffer for async transaction
-> + * @pid:                               pid to attribute allocation to (used for debugging)
->   *
->   * Allocate a new buffer given the requested sizes. Returns
->   * the kernel version of the buffer pointer. The size allocated
-> @@ -520,13 +562,14 @@ struct binder_buffer *binder_alloc_new_buf(struct binder_alloc *alloc,
->                                            size_t data_size,
->                                            size_t offsets_size,
->                                            size_t extra_buffers_size,
-> -                                          int is_async)
-> +                                          int is_async,
-> +                                          int pid)
->  {
->         struct binder_buffer *buffer;
->
->         mutex_lock(&alloc->mutex);
->         buffer = binder_alloc_new_buf_locked(alloc, data_size, offsets_size,
-> -                                            extra_buffers_size, is_async);
-> +                                            extra_buffers_size, is_async, pid);
->         mutex_unlock(&alloc->mutex);
->         return buffer;
->  }
-> diff --git a/drivers/android/binder_alloc.h b/drivers/android/binder_alloc.h
-> index db9c1b984695..55d8b4106766 100644
-> --- a/drivers/android/binder_alloc.h
-> +++ b/drivers/android/binder_alloc.h
-> @@ -32,6 +32,7 @@ struct binder_transaction;
->   * @offsets_size:       size of array of offsets
->   * @extra_buffers_size: size of space for other objects (like sg lists)
->   * @user_data:          user pointer to base of buffer space
-> + * @pid:                pid to attribute the buffer to (caller)
->   *
->   * Bookkeeping structure for binder transaction buffers
->   */
-> @@ -51,6 +52,7 @@ struct binder_buffer {
->         size_t offsets_size;
->         size_t extra_buffers_size;
->         void __user *user_data;
-> +       int    pid;
->  };
->
->  /**
-> @@ -117,7 +119,8 @@ extern struct binder_buffer *binder_alloc_new_buf(struct binder_alloc *alloc,
->                                                   size_t data_size,
->                                                   size_t offsets_size,
->                                                   size_t extra_buffers_size,
-> -                                                 int is_async);
-> +                                                 int is_async,
-> +                                                 int pid);
->  extern void binder_alloc_init(struct binder_alloc *alloc);
->  extern int binder_alloc_shrinker_init(void);
->  extern void binder_alloc_vma_close(struct binder_alloc *alloc);
-> diff --git a/drivers/android/binder_alloc_selftest.c b/drivers/android/binder_alloc_selftest.c
-> index 4151d9938255..c2b323bc3b3a 100644
-> --- a/drivers/android/binder_alloc_selftest.c
-> +++ b/drivers/android/binder_alloc_selftest.c
-> @@ -119,7 +119,7 @@ static void binder_selftest_alloc_buf(struct binder_alloc *alloc,
->         int i;
->
->         for (i = 0; i < BUFFER_NUM; i++) {
-> -               buffers[i] = binder_alloc_new_buf(alloc, sizes[i], 0, 0, 0);
-> +               buffers[i] = binder_alloc_new_buf(alloc, sizes[i], 0, 0, 0, 0);
->                 if (IS_ERR(buffers[i]) ||
->                     !check_buffer_pages_allocated(alloc, buffers[i],
->                                                   sizes[i])) {
-> --
-> 2.28.0.220.ged08abb693-goog
->
+> -- Steve
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
