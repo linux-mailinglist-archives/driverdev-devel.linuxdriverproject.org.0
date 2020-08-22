@@ -1,57 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44FD124E625
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Aug 2020 09:47:26 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2ED7624E6B4
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Aug 2020 11:34:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0962721539;
-	Sat, 22 Aug 2020 07:47:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C1C17887F8;
+	Sat, 22 Aug 2020 09:34:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VW0X5aE3EC8w; Sat, 22 Aug 2020 07:47:23 +0000 (UTC)
+	with ESMTP id mdsfetmD6Yu8; Sat, 22 Aug 2020 09:34:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2D217214FD;
-	Sat, 22 Aug 2020 07:47:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 294FE8872A;
+	Sat, 22 Aug 2020 09:34:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 14FC71BF25B
- for <devel@linuxdriverproject.org>; Sat, 22 Aug 2020 07:47:19 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AE6E01BF5E0
+ for <devel@linuxdriverproject.org>; Sat, 22 Aug 2020 09:34:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 07D2B2079A
- for <devel@linuxdriverproject.org>; Sat, 22 Aug 2020 07:47:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AA38F87D5D
+ for <devel@linuxdriverproject.org>; Sat, 22 Aug 2020 09:34:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2JMF47Id37aH for <devel@linuxdriverproject.org>;
- Sat, 22 Aug 2020 07:47:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from proxy.usam.edu.sv (unknown [201.150.84.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 3BF5020395
- for <devel@driverdev.osuosl.org>; Sat, 22 Aug 2020 07:47:18 +0000 (UTC)
-Received: from User (unknown [52.165.21.44])
- (Authenticated sender: informacion)
- by proxy.usam.edu.sv (Postfix) with ESMTPA id 6B44A8758;
- Sat, 22 Aug 2020 01:46:45 -0600 (CST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 proxy.usam.edu.sv 6B44A8758
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=usam.edu.sv;
- s=201912; t=1598082436;
- bh=OueYEEidyAbN9ElDxSOzgjv/k2YZ7Tl5MdvafL0toYo=;
- h=Reply-To:From:Subject:Date:From;
- b=QcnXarbUq6R4FocXaOOlZzzvuSpdczFCPg3HzI5wX5+nH/8DlPgfy7Q49vmdfOwZN
- FHbBI+68OU3D4MfFcPmegDQyPn+I1b/Jc/JHSHVLUz/Nnbk3Ey+V8JrJyBd0quYSy2
- KX/7Vky3qEhjpyADYf5ytcYD90laW8wkv41n5Tkw=
-From: "Hon. Ms. Reem"<informacion@usam.edu.sv>
-Subject: My Project
-Date: Sat, 22 Aug 2020 07:47:15 -0000
+ with ESMTP id EuisNkn9wdJh for <devel@linuxdriverproject.org>;
+ Sat, 22 Aug 2020 09:34:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C661587CE4
+ for <devel@driverdev.osuosl.org>; Sat, 22 Aug 2020 09:34:27 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id a15so4022133wrh.10
+ for <devel@driverdev.osuosl.org>; Sat, 22 Aug 2020 02:34:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=5asITRPbZ4NXMNWi/OhKvzA0M2sqXcJbRzcSLzCCfjk=;
+ b=RF17qP3GY8mp7qU0/TPPiqpCST8KS4prrK/lnpCGl6+Tp3j5/bA5JgROyRABPnwXTd
+ Oo+TbHkdQy83KrZ4Y7LqWegqk66PTOuh8jomsBsFJYJARM3zSbPsv8pnmk1m6XvkorpQ
+ wEzTTFL0p8vUOXyuFUIrPZWe2FQ0WPz8hCNR7yZzE3UKUWXP0cLeDTyXuOc4xsf8TCMT
+ vNGUQqlWeZl8Nwro6KJibKQt2GfoWZ6HRgMpOMNVoIScfot/maT3Wf4e7mIcl3RkJ5Ro
+ 84kSHTQMP3QkB+mPskMUlmhj3eyQ/0gYvPIeCnzxqfcB/2CQ8XyUbgvYXJw4omgbYRPn
+ skKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=5asITRPbZ4NXMNWi/OhKvzA0M2sqXcJbRzcSLzCCfjk=;
+ b=N+IKc3YUvCDZJ0WB8YxkwLPGjmFSH+o7HTmmREPlBNPBzSxjcR/h3F9SxTzbWOYMl6
+ EbZRED9+fRi5rHQWtecaARCTXWybM9ET0ctsH6w6H22YxDtYT5T/Ie+R4iMBoEBoVyNM
+ 4jFYSQ0cCJcnxW/ZqLd78pbK1xbIPLpG3yxSi+Ovq/TnUUmLQyFA+HcwAKTWUtx02Eiz
+ yivhf9dJtS7ebRUHND2suNdoaFaN7HcakXb7FwGHeLkOzE+30it4Qx/X96bzmwXfS8gv
+ hnU5nRrTIbnHum4krk2vHOYmVBAV3ZbGwkp7yLpFmm8HlHN+fDN0p1fJaQ0Ssn9R2EJS
+ sotQ==
+X-Gm-Message-State: AOAM532G/aJrwjJiMtaKVCNLJfWZNL8F3+1talpAFWwyMVn+ZSMT6a+q
+ CJSlPF5BBZiLHHwNezp4ymg=
+X-Google-Smtp-Source: ABdhPJxuFiH+UmReuhcyyAyGrbWmKlWBl59GiciDXztDjxRwUb3dqBB2To4CpBLSVy8/FdsKID2EOA==
+X-Received: by 2002:a5d:6505:: with SMTP id x5mr6242528wru.336.1598088866260; 
+ Sat, 22 Aug 2020 02:34:26 -0700 (PDT)
+Received: from tsnow ([176.231.38.53])
+ by smtp.gmail.com with ESMTPSA id j2sm9662473wrp.46.2020.08.22.02.34.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 22 Aug 2020 02:34:25 -0700 (PDT)
+Date: Sat, 22 Aug 2020 12:34:21 +0300
+From: Tomer Samara <tomersamara98@gmail.com>
+To: Randy Dunlap <rdunlap@infradead.org>
+Subject: Re: [PATCH v4 2/2] staging: android: Remove BUG from ion_system_heap.c
+Message-ID: <20200822093421.GA6631@tsnow>
+References: <cover.1598023523.git.tomersamara98@gmail.com>
+ <a39407f84031eaeed5e65a7aab515a079edf5fcc.1598023524.git.tomersamara98@gmail.com>
+ <3eba90dc-128f-49da-41a6-81494653d535@infradead.org>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200822074719.07D2B2079A@silver.osuosl.org>
+Content-Disposition: inline
+In-Reply-To: <3eba90dc-128f-49da-41a6-81494653d535@infradead.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,22 +87,81 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: honreemebrahimal-hashimi@yandex.com
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Riley Andrews <riandrews@android.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Suren Baghdasaryan <surenb@google.com>,
+ Hridya Valsaraju <hridya@google.com>,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Laura Abbott <labbott@redhat.com>,
+ Martijn Coenen <maco@android.com>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,    
+On Fri, Aug 21, 2020 at 09:25:26AM -0700, Randy Dunlap wrote:
+> On 8/21/20 8:28 AM, Tomer Samara wrote:
+> > Remove BUG() from ion_sytem_heap.c
+> > 
+> > this fix the following checkpatch issue:
+> > Avoid crashing the kernel - try using WARN_ON &
+> > recovery code ratherthan BUG() or BUG_ON().
+> > 
+> > Signed-off-by: Tomer Samara <tomersamara98@gmail.com>
+> > ---
+> >  drivers/staging/android/ion/ion_system_heap.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/android/ion/ion_system_heap.c b/drivers/staging/android/ion/ion_system_heap.c
+> > index eac0632ab4e8..00d6154aec34 100644
+> > --- a/drivers/staging/android/ion/ion_system_heap.c
+> > +++ b/drivers/staging/android/ion/ion_system_heap.c
+> > @@ -30,7 +30,7 @@ static int order_to_index(unsigned int order)
+> >  	for (i = 0; i < NUM_ORDERS; i++)
+> >  		if (order == orders[i])
+> >  			return i;
+> > -	BUG();
+> > +	/* This is impossible. */
+> >  	return -1;
+> >  }
+> 
+> Hi,
+> Please explain why this is impossible.
+> 
+> If some caller calls order_to_index(5), it will return -1, yes?
+> 
+> -- 
+> ~Randy
+> 
 
-My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) colleagues" who has approved me to solicit for your "partnership in claiming of {us$47=Million}" from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
+As Dan Carpenter says here https://lkml.kernel.org/lkml/cover.1597865771.git.tomersamara98@gmail.com/T/#mc790b91029565b1bb0cb87997b39007d9edb6e04.
+After looking at callers we see that order_to_index called from 2 functions:
+- alloc_buffer_page called from alloc_largest_available which 
+  loop over all legit order nubmers
+  ( Flow:
+   alloc_largest_available-->alloc_buffer_page-->order_to_index
+  )
 
-The Fund {us$47=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam Government within  2013/2014, however, We don't want our government to know about the fund. If this proposal interests you, let me know, by sending me an email and I will send to you detailed information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except us, and we know how to carry out the entire transaction. So I am compelled to ask, that you will stand on our behalf and receive this fund into any account that is solely controlled by you.
+- free_buffer_page takes the order using compound_order, which return 0 or
+  the order number for the page, this function has 2 callers too,
+  ion_system_heap_allocate (which called it in case of failure at sg_alloc_table,
+  thus calling from this flow will no casue error) and ion_system_heap_free
+  (which will be called on every sg table in the buffer that allocated good,
+  meaning from this flow also error will not be created).
+  ( Flows:
+   ion_system_heap_free     --> free_buffer_page --> order_to_index
+   ion_system_heap_allocate --> free_buffer_page --> order_to_index
+  )
 
-We will compensate you with 30% of the total amount involved as gratification for being our partner in this transaction. Reply to my private email as stated: honreemebrahimal-hashimi@yandex.com
+Of course if some user will use this function with wrong order number he will be able to get this -1.
+So should I remove this comment and resotre the error checks?
+Btw, this is the same reason that I dropped the error check at ion_page_pool_shrink, so should I restore here also?
 
-Regards,
-Ms. Reem Ebrahim Al-Hashimi.
+Thanks,
+	Tomer Samara
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
