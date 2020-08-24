@@ -2,56 +2,76 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E501124EC03
-	for <lists+driverdev-devel@lfdr.de>; Sun, 23 Aug 2020 09:42:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 19D3924F14E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Aug 2020 04:51:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 41CF48598E;
-	Sun, 23 Aug 2020 07:42:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6147885A76;
+	Mon, 24 Aug 2020 02:51:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nV32Bp1KmzGU; Sun, 23 Aug 2020 07:42:34 +0000 (UTC)
+	with ESMTP id MVK_TltSF0YO; Mon, 24 Aug 2020 02:51:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 752F6859D6;
-	Sun, 23 Aug 2020 07:42:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9348A85B0C;
+	Mon, 24 Aug 2020 02:51:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A715F1BF3E3
- for <devel@linuxdriverproject.org>; Sun, 23 Aug 2020 07:42:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ECDA01BF38C
+ for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 02:51:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7FB782035B
- for <devel@linuxdriverproject.org>; Sun, 23 Aug 2020 07:42:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BC99A20471
+ for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 02:51:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7tcFyrqdU9ur for <devel@linuxdriverproject.org>;
- Sun, 23 Aug 2020 07:42:29 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from proxy.usam.edu.sv (unknown [201.150.84.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 7A13F2012F
- for <devel@driverdev.osuosl.org>; Sun, 23 Aug 2020 07:42:29 +0000 (UTC)
-Received: from User (unknown [52.165.21.44])
- (Authenticated sender: informacion)
- by proxy.usam.edu.sv (Postfix) with ESMTPA id 6006F8775;
- Sun, 23 Aug 2020 01:41:56 -0600 (CST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 proxy.usam.edu.sv 6006F8775
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=usam.edu.sv;
- s=201912; t=1598168546;
- bh=OueYEEidyAbN9ElDxSOzgjv/k2YZ7Tl5MdvafL0toYo=;
- h=Reply-To:From:Subject:Date:From;
- b=M54qN+q6Xgv9NYcn3SpqZVmBY9UFBH2JsCkh6L9SQIBl3vr+0UD3IbMNFdaDWyRGi
- r9rN2toE3ucPc8DNvojWy6uv0zdGm/TtN1qzgvxMnv5q4hBnfFiLg0ZhaGpTj3oM7j
- mWOucMn4+DGjSR8P4I4qrUdLwb49PQ5D/BoGccQo=
-From: "Hon. Ms. Reem"<informacion@usam.edu.sv>
-Subject: My Project
-Date: Sun, 23 Aug 2020 07:42:25 -0000
+ with ESMTP id cvPLS-SWZItg for <devel@linuxdriverproject.org>;
+ Mon, 24 Aug 2020 02:51:15 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1EF5120021
+ for <devel@driverdev.osuosl.org>; Mon, 24 Aug 2020 02:51:15 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id kr4so3484707pjb.2
+ for <devel@driverdev.osuosl.org>; Sun, 23 Aug 2020 19:51:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ixj5gB01vHjdElJh/8SLOq0796njYXtg704poP+WWps=;
+ b=ku3fYIbOxT8j/hVDVwLg5UOYjRgAfsEYPKU56VYLce9NBHfx6317dJ5WdatbjFTTK/
+ EcGbAJ5RrOWZUU+aQ1oztZbk+DYkqtdoxE8gF4U+hqpUday7UGCtbKhcsMUrhCKwpm9C
+ aLKhkVRTS/BukkgaoaB7QjWY37i/viEhSxIhI+89kxTgLjLBcJLO5CDPQP/l/PdL6XNS
+ NZsFrfqW7Z0Jn6+gUuL9hTej9fXMZ314foMtIUOKfnjlvU1H7L5epYjuvyFJNT1lBin8
+ aRUGwNMB0CZg42zDKFrV7h/stLBVYhopc7X34wP8aMzMahSBAT12o5F4M5A5MC0z+v1R
+ dybQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ixj5gB01vHjdElJh/8SLOq0796njYXtg704poP+WWps=;
+ b=EImOeAwuakZ4lF4RJHm9RW9+0yyLfP87Ek0kFTcQACK78o2JLW1U7k4ti8O620nt8W
+ MuKyb2JTTthgfSX0e8gILslAJwetrXVOmyjLMnHAhwvhFpyjA3druACx2SwGgBPYxJV9
+ 10Cwzg/HqaoOehKhY6yPoOAKxnM2RvXDs3+0Nw/cxI9NJdSyduceex7RPZTWlZCm25Kv
+ 9gMTdkXc/S7A5s2GYk13xVKD88CklY5hoxMic8vV8GeMjzMR4L4Cgmxq21M/y4249Zy8
+ et1KxZpPW38iO5krUMpZS8GaZqY+WpIdhEhLp+ULf/W0MxQQhwvCqVPD3Vis21B5+4s7
+ u7Pw==
+X-Gm-Message-State: AOAM533Nr6wG6NJL6IUZLz5pPTO9bxuy8B3grFb3BJAYQeGw9Fdovj9T
+ ivR2Yp8PNgAVL9ZUqy+thWBFhsaiJRFCVZXNGBM=
+X-Google-Smtp-Source: ABdhPJxq9HhdYv64CpLCCnz1nOzigdRgP5uLQe7AIncPH09UyfmbxEAvHKlqO9UJEf4CGCZm5z0VzQ==
+X-Received: by 2002:a17:90a:34c3:: with SMTP id
+ m3mr2843277pjf.71.1598237474379; 
+ Sun, 23 Aug 2020 19:51:14 -0700 (PDT)
+Received: from localhost ([2001:e42:102:1532:160:16:113:140])
+ by smtp.gmail.com with ESMTPSA id c207sm8999836pfc.64.2020.08.23.19.51.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 23 Aug 2020 19:51:13 -0700 (PDT)
+From: Coiby Xu <coiby.xu@gmail.com>
+To: devel@driverdev.osuosl.org
+Subject: [PATCH] staging: greybus: fix warnings detected by sparse
+Date: Mon, 24 Aug 2020 10:50:59 +0800
+Message-Id: <20200824025100.1068350-1-coiby.xu@gmail.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200823074230.7FB782035B@silver.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,22 +84,165 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: honreemebrahimal-hashimi@yandex.com
+Cc: Alex Elder <elder@kernel.org>, Vaibhav Agarwal <vaibhav.sr@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>, Mark Greer <mgreer@animalcreek.com>,
+ "moderated list:GREYBUS SUBSYSTEM" <greybus-dev@lists.linaro.org>,
+ open list <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,    
+This patch fix the following warnings from sparse,
 
-My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) colleagues" who has approved me to solicit for your "partnership in claiming of {us$47=Million}" from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
+$ make C=2 drivers/staging/greybus/
+drivers/staging/greybus/audio_codec.c:691:36: warning: incorrect type in initializer (different base types)
+drivers/staging/greybus/audio_codec.c:691:36:    expected unsigned long long [usertype] formats
+drivers/staging/greybus/audio_codec.c:691:36:    got restricted snd_pcm_format_t [usertype]
+drivers/staging/greybus/audio_codec.c:701:36: warning: incorrect type in initializer (different base types)
+drivers/staging/greybus/audio_codec.c:701:36:    expected unsigned long long [usertype] formats
+drivers/staging/greybus/audio_codec.c:701:36:    got restricted snd_pcm_format_t [usertype]
+drivers/staging/greybus/audio_module.c:222:25: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_module.c:222:25:    expected restricted __le16 [usertype] data_cport
+drivers/staging/greybus/audio_module.c:222:25:    got unsigned short [usertype] intf_cport_id
+drivers/staging/greybus/audio_topology.c:460:40: warning: restricted __le32 degrades to integer
+drivers/staging/greybus/audio_topology.c:691:41: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:691:41:    expected unsigned int access
+drivers/staging/greybus/audio_topology.c:691:41:    got restricted __le32 [usertype] access
+drivers/staging/greybus/audio_topology.c:746:44: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:746:44:    expected unsigned int
+drivers/staging/greybus/audio_topology.c:746:44:    got restricted __le32
+drivers/staging/greybus/audio_topology.c:748:52: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:748:52:    expected unsigned int
+drivers/staging/greybus/audio_topology.c:748:52:    got restricted __le32
+drivers/staging/greybus/audio_topology.c:802:42: warning: restricted __le32 degrades to integer
+drivers/staging/greybus/audio_topology.c:805:50: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:805:50:    expected restricted __le32
+drivers/staging/greybus/audio_topology.c:805:50:    got unsigned int
+drivers/staging/greybus/audio_topology.c:814:50: warning: restricted __le32 degrades to integer
+drivers/staging/greybus/audio_topology.c:817:58: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:817:58:    expected restricted __le32
+drivers/staging/greybus/audio_topology.c:817:58:    got unsigned int
+drivers/staging/greybus/audio_topology.c:889:25: warning: incorrect type in assignment (different base types)
+drivers/staging/greybus/audio_topology.c:889:25:    expected unsigned int access
+drivers/staging/greybus/audio_topology.c:889:25:    got restricted __le32 [usertype] access
 
-The Fund {us$47=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam Government within  2013/2014, however, We don't want our government to know about the fund. If this proposal interests you, let me know, by sending me an email and I will send to you detailed information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except us, and we know how to carry out the entire transaction. So I am compelled to ask, that you will stand on our behalf and receive this fund into any account that is solely controlled by you.
+Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
+---
+ drivers/staging/greybus/audio_codec.c    |  4 ++--
+ drivers/staging/greybus/audio_module.c   |  2 +-
+ drivers/staging/greybus/audio_topology.c | 18 +++++++++---------
+ 3 files changed, 12 insertions(+), 12 deletions(-)
 
-We will compensate you with 30% of the total amount involved as gratification for being our partner in this transaction. Reply to my private email as stated: honreemebrahimal-hashimi@yandex.com
+diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
+index 74538f8c5fa4..494aa823e998 100644
+--- a/drivers/staging/greybus/audio_codec.c
++++ b/drivers/staging/greybus/audio_codec.c
+@@ -688,7 +688,7 @@ static struct snd_soc_dai_driver gbaudio_dai[] = {
+ 		.playback = {
+ 			.stream_name = "I2S 0 Playback",
+ 			.rates = SNDRV_PCM_RATE_48000,
+-			.formats = SNDRV_PCM_FORMAT_S16_LE,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE,
+ 			.rate_max = 48000,
+ 			.rate_min = 48000,
+ 			.channels_min = 1,
+@@ -698,7 +698,7 @@ static struct snd_soc_dai_driver gbaudio_dai[] = {
+ 		.capture = {
+ 			.stream_name = "I2S 0 Capture",
+ 			.rates = SNDRV_PCM_RATE_48000,
+-			.formats = SNDRV_PCM_FORMAT_S16_LE,
++			.formats = SNDRV_PCM_FMTBIT_S16_LE,
+ 			.rate_max = 48000,
+ 			.rate_min = 48000,
+ 			.channels_min = 1,
+diff --git a/drivers/staging/greybus/audio_module.c b/drivers/staging/greybus/audio_module.c
+index 16f60256adb2..00848b84b022 100644
+--- a/drivers/staging/greybus/audio_module.c
++++ b/drivers/staging/greybus/audio_module.c
+@@ -219,7 +219,7 @@ static int gb_audio_add_data_connection(struct gbaudio_module_info *gbmodule,
+ 
+ 	greybus_set_drvdata(bundle, gbmodule);
+ 	dai->id = 0;
+-	dai->data_cport = connection->intf_cport_id;
++	dai->data_cport = cpu_to_le16(connection->intf_cport_id);
+ 	dai->connection = connection;
+ 	list_add(&dai->list, &gbmodule->data_list);
+ 
+diff --git a/drivers/staging/greybus/audio_topology.c b/drivers/staging/greybus/audio_topology.c
+index 83b38ae8908c..56bf1a4f95ad 100644
+--- a/drivers/staging/greybus/audio_topology.c
++++ b/drivers/staging/greybus/audio_topology.c
+@@ -466,7 +466,7 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 		goto exit;
+ 
+ 	/* update ucontrol */
+-	if (gbvalue.value.integer_value[0] != val) {
++	if (gbvalue.value.integer_value[0] != cpu_to_le32(val)) {
+ 		for (wi = 0; wi < wlist->num_widgets; wi++) {
+ 			widget = wlist->widgets[wi];
+ 			snd_soc_dapm_mixer_update_power(widget->dapm, kcontrol,
+@@ -689,7 +689,7 @@ static int gbaudio_tplg_create_kcontrol(struct gbaudio_module_info *gb,
+ 				return -ENOMEM;
+ 			ctldata->ctl_id = ctl->id;
+ 			ctldata->data_cport = le16_to_cpu(ctl->data_cport);
+-			ctldata->access = ctl->access;
++			ctldata->access = le32_to_cpu(ctl->access);
+ 			ctldata->vcount = ctl->count_values;
+ 			ctldata->info = &ctl->info;
+ 			*kctl = (struct snd_kcontrol_new)
+@@ -744,10 +744,10 @@ static int gbcodec_enum_dapm_ctl_get(struct snd_kcontrol *kcontrol,
+ 		return ret;
+ 	}
+ 
+-	ucontrol->value.enumerated.item[0] = gbvalue.value.enumerated_item[0];
++	ucontrol->value.enumerated.item[0] = le32_to_cpu(gbvalue.value.enumerated_item[0]);
+ 	if (e->shift_l != e->shift_r)
+ 		ucontrol->value.enumerated.item[1] =
+-			gbvalue.value.enumerated_item[1];
++			le32_to_cpu(gbvalue.value.enumerated_item[1]);
+ 
+ 	return 0;
+ }
+@@ -801,10 +801,10 @@ static int gbcodec_enum_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 	mask = e->mask << e->shift_l;
+ 
+ 	if (gbvalue.value.enumerated_item[0] !=
+-	    ucontrol->value.enumerated.item[0]) {
++	    cpu_to_le32(ucontrol->value.enumerated.item[0])) {
+ 		change = 1;
+ 		gbvalue.value.enumerated_item[0] =
+-			ucontrol->value.enumerated.item[0];
++			cpu_to_le32(ucontrol->value.enumerated.item[0]);
+ 	}
+ 
+ 	if (e->shift_l != e->shift_r) {
+@@ -813,10 +813,10 @@ static int gbcodec_enum_dapm_ctl_put(struct snd_kcontrol *kcontrol,
+ 		val |= ucontrol->value.enumerated.item[1] << e->shift_r;
+ 		mask |= e->mask << e->shift_r;
+ 		if (gbvalue.value.enumerated_item[1] !=
+-		    ucontrol->value.enumerated.item[1]) {
++		    cpu_to_le32(ucontrol->value.enumerated.item[1])) {
+ 			change = 1;
+ 			gbvalue.value.enumerated_item[1] =
+-				ucontrol->value.enumerated.item[1];
++				cpu_to_le32(ucontrol->value.enumerated.item[1]);
+ 		}
+ 	}
+ 
+@@ -887,7 +887,7 @@ static int gbaudio_tplg_create_mixer_ctl(struct gbaudio_module_info *gb,
+ 		return -ENOMEM;
+ 	ctldata->ctl_id = ctl->id;
+ 	ctldata->data_cport = le16_to_cpu(ctl->data_cport);
+-	ctldata->access = ctl->access;
++	ctldata->access = le32_to_cpu(ctl->access);
+ 	ctldata->vcount = ctl->count_values;
+ 	ctldata->info = &ctl->info;
+ 	*kctl = (struct snd_kcontrol_new)
+-- 
+2.28.0
 
-Regards,
-Ms. Reem Ebrahim Al-Hashimi.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
