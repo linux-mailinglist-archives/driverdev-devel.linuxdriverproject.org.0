@@ -2,53 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6F7D24FEDA
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Aug 2020 15:30:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C12AC24FEDB
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Aug 2020 15:30:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 686ED883DC;
-	Mon, 24 Aug 2020 13:30:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4424688388;
+	Mon, 24 Aug 2020 13:30:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4rRt43jqtRpy; Mon, 24 Aug 2020 13:30:25 +0000 (UTC)
+	with ESMTP id FGJGYh9+tTew; Mon, 24 Aug 2020 13:30:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 173298836E;
-	Mon, 24 Aug 2020 13:30:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 03F3D88338;
+	Mon, 24 Aug 2020 13:30:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 89EFC1BF291
- for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 13:30:21 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E3D291BF291
+ for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 13:30:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 82BE52034F
- for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 13:30:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E089186C0E
+ for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 13:30:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o4V0rQENxmgy for <devel@linuxdriverproject.org>;
- Mon, 24 Aug 2020 13:30:19 +0000 (UTC)
+ with ESMTP id f6r9hCFOhObx for <devel@linuxdriverproject.org>;
+ Mon, 24 Aug 2020 13:30:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id AB80D1FD21
- for <devel@driverdev.osuosl.org>; Mon, 24 Aug 2020 13:30:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0D8E086C34
+ for <devel@driverdev.osuosl.org>; Mon, 24 Aug 2020 13:30:29 +0000 (UTC)
 Received: from e123331-lin.arnhem.chello.nl (dhcp-077-251-017-237.chello.nl
  [77.251.17.237])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8A7D121741;
- Mon, 24 Aug 2020 13:30:15 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D6D5221741;
+ Mon, 24 Aug 2020 13:30:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598275819;
- bh=UJTBd0a2fi/+qhVzH81t0+Pl9MK9T779XpCt2E3ZNWE=;
+ s=default; t=1598275828;
+ bh=2RI7NADYigfgT5SfVKk0kKP23Kk5p3Z9bnGugI5+RxQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hbpzoL7s94MlSumU3NwtJOekxZDImGmSPQktelThyOvYL7ErY9UBSJd+iVDHUyZKU
- KZHSzp+9Ec/df5KELyRdmI40roHxEBgI6wkkJyNkzEnFsxe8/5ldQSmoj9ym0+PsBV
- cq/bzbuMku58QmnBNOFopa5A4r6q8cEhjHvWjQG4=
+ b=tlLZL40SrkYjdQ2Yt01tTffOJhndch4PxYPOaP41IDl1DIN+E2VTMYpNqUt//V4CI
+ NOsvAewEfyfuy2/BPlLDsTTl5nnCKX5w07gmk7WctJAwTDTIii1kBjPDp56Qxcs/B6
+ F6kLOkl+YTyxVFDdaHqu+IW4RLLNokBDpI5bhJGA=
 From: Ard Biesheuvel <ardb@kernel.org>
 To: linux-crypto@vger.kernel.org
-Subject: [PATCH v2 1/7] staging/rtl8192e: switch to RC4 library interface
-Date: Mon, 24 Aug 2020 15:29:55 +0200
-Message-Id: <20200824133001.9546-2-ardb@kernel.org>
+Subject: [PATCH v2 3/7] SUNRPC: remove RC4-HMAC-MD5 support from KerberosV
+Date: Mon, 24 Aug 2020 15:29:57 +0200
+Message-Id: <20200824133001.9546-4-ardb@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200824133001.9546-1-ardb@kernel.org>
 References: <20200824133001.9546-1-ardb@kernel.org>
@@ -78,381 +78,806 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Switch to the ARC4 library interface, to remove the pointless
-dependency on the skcipher API, from which we will hopefully be
-able to drop ecb(arc4) skcipher support.
+The RC4-HMAC-MD5 KerberosV algorithm is based on RFC 4757 [0], which
+was specifically issued for interoperability with Windows 2000, but was
+never intended to receive the same level of support. The RFC says
+
+  The IETF Kerberos community supports publishing this specification as
+  an informational document in order to describe this widely
+  implemented technology.  However, while these encryption types
+  provide the operations necessary to implement the base Kerberos
+  specification [RFC4120], they do not provide all the required
+  operations in the Kerberos cryptography framework [RFC3961].  As a
+  result, it is not generally possible to implement potential
+  extensions to Kerberos using these encryption types.  The Kerberos
+  encryption type negotiation mechanism [RFC4537] provides one approach
+  for using such extensions even when a Kerberos infrastructure uses
+  long-term RC4 keys.  Because this specification does not implement
+  operations required by RFC 3961 and because of security concerns with
+  the use of RC4 and MD4 discussed in Section 8, this specification is
+  not appropriate for publication on the standards track.
+
+  The RC4-HMAC encryption types are used to ease upgrade of existing
+  Windows NT environments, provide strong cryptography (128-bit key
+  lengths), and provide exportable (meet United States government
+  export restriction requirements) encryption.  This document describes
+  the implementation of those encryption types.
+
+Furthermore, this RFC was re-classified as 'historic' by RFC 8429 [1] in
+2018, stating that 'none of the encryption types it specifies should be
+used'
+
+Note that other outdated algorithms are left in place (some of which are
+guarded by CONFIG_SUNRPC_DISABLE_INSECURE_ENCTYPES), so this should only
+adversely affect interoperability with Windows NT/2000 systems that have
+not received any updates since 2008 (but are connected to a network
+nonetheless)
+
+[0] https://tools.ietf.org/html/rfc4757
+[1] https://tools.ietf.org/html/rfc8429
 
 Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
-Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Acked-by: J. Bruce Fields <bfields@redhat.com>
 ---
- drivers/staging/rtl8192e/Kconfig             |  4 +-
- drivers/staging/rtl8192e/rtllib_crypt_tkip.c | 70 ++++---------------
- drivers/staging/rtl8192e/rtllib_crypt_wep.c  | 72 ++++----------------
- 3 files changed, 28 insertions(+), 118 deletions(-)
+ include/linux/sunrpc/gss_krb5.h          |  11 -
+ include/linux/sunrpc/gss_krb5_enctypes.h |   9 +-
+ net/sunrpc/Kconfig                       |   1 -
+ net/sunrpc/auth_gss/gss_krb5_crypto.c    | 276 --------------------
+ net/sunrpc/auth_gss/gss_krb5_mech.c      |  95 -------
+ net/sunrpc/auth_gss/gss_krb5_seal.c      |   1 -
+ net/sunrpc/auth_gss/gss_krb5_seqnum.c    |  87 ------
+ net/sunrpc/auth_gss/gss_krb5_unseal.c    |   1 -
+ net/sunrpc/auth_gss/gss_krb5_wrap.c      |  65 +----
+ 9 files changed, 16 insertions(+), 530 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/Kconfig b/drivers/staging/rtl8192e/Kconfig
-index 1007eea6c8fc..4c440bdaaf6e 100644
---- a/drivers/staging/rtl8192e/Kconfig
-+++ b/drivers/staging/rtl8192e/Kconfig
-@@ -25,7 +25,7 @@ config RTLLIB_CRYPTO_CCMP
- config RTLLIB_CRYPTO_TKIP
- 	tristate "Support for rtllib TKIP crypto"
- 	depends on RTLLIB
--	select CRYPTO_ARC4
-+	select CRYPTO_LIB_ARC4
- 	select CRYPTO_MICHAEL_MIC
- 	default y
- 	help
-@@ -35,7 +35,7 @@ config RTLLIB_CRYPTO_TKIP
- 
- config RTLLIB_CRYPTO_WEP
- 	tristate "Support for rtllib WEP crypto"
--	select CRYPTO_ARC4
-+	select CRYPTO_LIB_ARC4
- 	depends on RTLLIB
- 	default y
- 	help
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
-index 8d2a58e706d5..8c2ff37b2d3a 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_tkip.c
-@@ -5,8 +5,9 @@
-  * Copyright (c) 2003-2004, Jouni Malinen <jkmaline@cc.hut.fi>
-  */
- 
-+#include <crypto/arc4.h>
- #include <crypto/hash.h>
--#include <crypto/skcipher.h>
-+#include <linux/fips.h>
- #include <linux/module.h>
- #include <linux/init.h>
- #include <linux/slab.h>
-@@ -16,7 +17,6 @@
- #include <linux/if_ether.h>
- #include <linux/if_arp.h>
- #include <linux/string.h>
--#include <linux/scatterlist.h>
- #include <linux/crc32.h>
- #include <linux/etherdevice.h>
- 
-@@ -45,9 +45,9 @@ struct rtllib_tkip_data {
- 	u32 dot11RSNAStatsTKIPLocalMICFailures;
- 
- 	int key_idx;
--	struct crypto_sync_skcipher *rx_tfm_arc4;
-+	struct arc4_ctx rx_ctx_arc4;
-+	struct arc4_ctx tx_ctx_arc4;
- 	struct crypto_shash *rx_tfm_michael;
--	struct crypto_sync_skcipher *tx_tfm_arc4;
- 	struct crypto_shash *tx_tfm_michael;
- 	/* scratch buffers for virt_to_page() (crypto API) */
- 	u8 rx_hdr[16];
-@@ -58,16 +58,13 @@ static void *rtllib_tkip_init(int key_idx)
- {
- 	struct rtllib_tkip_data *priv;
- 
-+	if (fips_enabled)
-+		return NULL;
-+
- 	priv = kzalloc(sizeof(*priv), GFP_ATOMIC);
- 	if (priv == NULL)
- 		goto fail;
- 	priv->key_idx = key_idx;
--	priv->tx_tfm_arc4 = crypto_alloc_sync_skcipher("ecb(arc4)", 0, 0);
--	if (IS_ERR(priv->tx_tfm_arc4)) {
--		pr_debug("Could not allocate crypto API arc4\n");
--		priv->tx_tfm_arc4 = NULL;
--		goto fail;
--	}
- 
- 	priv->tx_tfm_michael = crypto_alloc_shash("michael_mic", 0, 0);
- 	if (IS_ERR(priv->tx_tfm_michael)) {
-@@ -76,13 +73,6 @@ static void *rtllib_tkip_init(int key_idx)
- 		goto fail;
- 	}
- 
--	priv->rx_tfm_arc4 = crypto_alloc_sync_skcipher("ecb(arc4)", 0, 0);
--	if (IS_ERR(priv->rx_tfm_arc4)) {
--		pr_debug("Could not allocate crypto API arc4\n");
--		priv->rx_tfm_arc4 = NULL;
--		goto fail;
--	}
--
- 	priv->rx_tfm_michael = crypto_alloc_shash("michael_mic", 0, 0);
- 	if (IS_ERR(priv->rx_tfm_michael)) {
- 		pr_debug("Could not allocate crypto API michael_mic\n");
-@@ -94,9 +84,7 @@ static void *rtllib_tkip_init(int key_idx)
- fail:
- 	if (priv) {
- 		crypto_free_shash(priv->tx_tfm_michael);
--		crypto_free_sync_skcipher(priv->tx_tfm_arc4);
- 		crypto_free_shash(priv->rx_tfm_michael);
--		crypto_free_sync_skcipher(priv->rx_tfm_arc4);
- 		kfree(priv);
- 	}
- 
-@@ -110,11 +98,9 @@ static void rtllib_tkip_deinit(void *priv)
- 
- 	if (_priv) {
- 		crypto_free_shash(_priv->tx_tfm_michael);
--		crypto_free_sync_skcipher(_priv->tx_tfm_arc4);
- 		crypto_free_shash(_priv->rx_tfm_michael);
--		crypto_free_sync_skcipher(_priv->rx_tfm_arc4);
- 	}
--	kfree(priv);
-+	kzfree(priv);
- }
- 
- 
-@@ -289,7 +275,6 @@ static int rtllib_tkip_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	int ret = 0;
- 	u8 rc4key[16],  *icv;
- 	u32 crc;
--	struct scatterlist sg;
- 
- 	if (skb_headroom(skb) < 8 || skb_tailroom(skb) < 4 ||
- 	    skb->len < hdr_len)
-@@ -331,8 +316,6 @@ static int rtllib_tkip_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	*pos++ = (tkey->tx_iv32 >> 24) & 0xff;
- 
- 	if (!tcb_desc->bHwSec) {
--		SYNC_SKCIPHER_REQUEST_ON_STACK(req, tkey->tx_tfm_arc4);
--
- 		icv = skb_put(skb, 4);
- 		crc = ~crc32_le(~0, pos, len);
- 		icv[0] = crc;
-@@ -340,15 +323,8 @@ static int rtllib_tkip_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 		icv[2] = crc >> 16;
- 		icv[3] = crc >> 24;
- 
--		sg_init_one(&sg, pos, len+4);
--
--
--		crypto_sync_skcipher_setkey(tkey->tx_tfm_arc4, rc4key, 16);
--		skcipher_request_set_sync_tfm(req, tkey->tx_tfm_arc4);
--		skcipher_request_set_callback(req, 0, NULL, NULL);
--		skcipher_request_set_crypt(req, &sg, &sg, len + 4, NULL);
--		ret = crypto_skcipher_encrypt(req);
--		skcipher_request_zero(req);
-+		arc4_setkey(&tkey->tx_ctx_arc4, rc4key, 16);
-+		arc4_crypt(&tkey->tx_ctx_arc4, pos, pos, len + 4);
- 	}
- 
- 	tkey->tx_iv16++;
-@@ -376,9 +352,7 @@ static int rtllib_tkip_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	u8 rc4key[16];
- 	u8 icv[4];
- 	u32 crc;
--	struct scatterlist sg;
- 	int plen;
--	int err;
- 
- 	if (skb->len < hdr_len + 8 + 4)
- 		return -1;
-@@ -414,8 +388,6 @@ static int rtllib_tkip_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	pos += 8;
- 
- 	if (!tcb_desc->bHwSec || (skb->cb[0] == 1)) {
--		SYNC_SKCIPHER_REQUEST_ON_STACK(req, tkey->rx_tfm_arc4);
--
- 		if ((iv32 < tkey->rx_iv32 ||
- 		    (iv32 == tkey->rx_iv32 && iv16 <= tkey->rx_iv16)) &&
- 		    tkey->initialized) {
-@@ -439,22 +411,8 @@ static int rtllib_tkip_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 
- 		plen = skb->len - hdr_len - 12;
- 
--		sg_init_one(&sg, pos, plen+4);
--
--		crypto_sync_skcipher_setkey(tkey->rx_tfm_arc4, rc4key, 16);
--		skcipher_request_set_sync_tfm(req, tkey->rx_tfm_arc4);
--		skcipher_request_set_callback(req, 0, NULL, NULL);
--		skcipher_request_set_crypt(req, &sg, &sg, plen + 4, NULL);
--		err = crypto_skcipher_decrypt(req);
--		skcipher_request_zero(req);
--		if (err) {
--			if (net_ratelimit()) {
--				netdev_dbg(skb->dev,
--					   "Failed to decrypt received packet from %pM\n",
--					   hdr->addr2);
--			}
--			return -7;
--		}
-+		arc4_setkey(&tkey->rx_ctx_arc4, rc4key, 16);
-+		arc4_crypt(&tkey->rx_ctx_arc4, pos, pos, plen + 4);
- 
- 		crc = ~crc32_le(~0, pos, plen);
- 		icv[0] = crc;
-@@ -657,17 +615,13 @@ static int rtllib_tkip_set_key(void *key, int len, u8 *seq, void *priv)
- 	struct rtllib_tkip_data *tkey = priv;
- 	int keyidx;
- 	struct crypto_shash *tfm = tkey->tx_tfm_michael;
--	struct crypto_sync_skcipher *tfm2 = tkey->tx_tfm_arc4;
- 	struct crypto_shash *tfm3 = tkey->rx_tfm_michael;
--	struct crypto_sync_skcipher *tfm4 = tkey->rx_tfm_arc4;
- 
- 	keyidx = tkey->key_idx;
- 	memset(tkey, 0, sizeof(*tkey));
- 	tkey->key_idx = keyidx;
- 	tkey->tx_tfm_michael = tfm;
--	tkey->tx_tfm_arc4 = tfm2;
- 	tkey->rx_tfm_michael = tfm3;
--	tkey->rx_tfm_arc4 = tfm4;
- 
- 	if (len == TKIP_KEY_LEN) {
- 		memcpy(tkey->key, key, TKIP_KEY_LEN);
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_wep.c b/drivers/staging/rtl8192e/rtllib_crypt_wep.c
-index b1ea650036d2..7cdd17f907fa 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_wep.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_wep.c
-@@ -5,7 +5,8 @@
-  * Copyright (c) 2002-2004, Jouni Malinen <jkmaline@cc.hut.fi>
-  */
- 
--#include <crypto/skcipher.h>
-+#include <crypto/arc4.h>
-+#include <linux/fips.h>
- #include <linux/module.h>
- #include <linux/init.h>
- #include <linux/slab.h>
-@@ -14,7 +15,6 @@
- #include <linux/string.h>
- #include "rtllib.h"
- 
--#include <linux/scatterlist.h>
- #include <linux/crc32.h>
- 
- struct prism2_wep_data {
-@@ -23,8 +23,8 @@ struct prism2_wep_data {
- 	u8 key[WEP_KEY_LEN + 1];
- 	u8 key_len;
- 	u8 key_idx;
--	struct crypto_sync_skcipher *tx_tfm;
--	struct crypto_sync_skcipher *rx_tfm;
-+	struct arc4_ctx rx_ctx_arc4;
-+	struct arc4_ctx tx_ctx_arc4;
+diff --git a/include/linux/sunrpc/gss_krb5.h b/include/linux/sunrpc/gss_krb5.h
+index e8f8ffe7448b..91f43d86879d 100644
+--- a/include/linux/sunrpc/gss_krb5.h
++++ b/include/linux/sunrpc/gss_krb5.h
+@@ -141,14 +141,12 @@ enum sgn_alg {
+ 	SGN_ALG_MD2_5 = 0x0001,
+ 	SGN_ALG_DES_MAC = 0x0002,
+ 	SGN_ALG_3 = 0x0003,		/* not published */
+-	SGN_ALG_HMAC_MD5 = 0x0011,	/* microsoft w2k; no support */
+ 	SGN_ALG_HMAC_SHA1_DES3_KD = 0x0004
+ };
+ enum seal_alg {
+ 	SEAL_ALG_NONE = 0xffff,
+ 	SEAL_ALG_DES = 0x0000,
+ 	SEAL_ALG_1 = 0x0001,		/* not published */
+-	SEAL_ALG_MICROSOFT_RC4 = 0x0010,/* microsoft w2k; no support */
+ 	SEAL_ALG_DES3KD = 0x0002
  };
  
+@@ -316,14 +314,5 @@ gss_krb5_aes_decrypt(struct krb5_ctx *kctx, u32 offset, u32 len,
+ 		     struct xdr_buf *buf, u32 *plainoffset,
+ 		     u32 *plainlen);
  
-@@ -32,48 +32,24 @@ static void *prism2_wep_init(int keyidx)
- {
- 	struct prism2_wep_data *priv;
- 
-+	if (fips_enabled)
-+		return NULL;
-+
- 	priv = kzalloc(sizeof(*priv), GFP_ATOMIC);
- 	if (priv == NULL)
--		goto fail;
-+		return NULL;
- 	priv->key_idx = keyidx;
- 
--	priv->tx_tfm = crypto_alloc_sync_skcipher("ecb(arc4)", 0, 0);
--	if (IS_ERR(priv->tx_tfm)) {
--		pr_debug("rtllib_crypt_wep: could not allocate crypto API arc4\n");
--		priv->tx_tfm = NULL;
--		goto fail;
--	}
--	priv->rx_tfm = crypto_alloc_sync_skcipher("ecb(arc4)", 0, 0);
--	if (IS_ERR(priv->rx_tfm)) {
--		pr_debug("rtllib_crypt_wep: could not allocate crypto API arc4\n");
--		priv->rx_tfm = NULL;
--		goto fail;
--	}
+-int
+-krb5_rc4_setup_seq_key(struct krb5_ctx *kctx,
+-		       struct crypto_sync_skcipher *cipher,
+-		       unsigned char *cksum);
 -
- 	/* start WEP IV from a random value */
- 	get_random_bytes(&priv->iv, 4);
+-int
+-krb5_rc4_setup_enc_key(struct krb5_ctx *kctx,
+-		       struct crypto_sync_skcipher *cipher,
+-		       s32 seqnum);
+ void
+ gss_krb5_make_confounder(char *p, u32 conflen);
+diff --git a/include/linux/sunrpc/gss_krb5_enctypes.h b/include/linux/sunrpc/gss_krb5_enctypes.h
+index 981c89cef19d..87eea679d750 100644
+--- a/include/linux/sunrpc/gss_krb5_enctypes.h
++++ b/include/linux/sunrpc/gss_krb5_enctypes.h
+@@ -13,15 +13,13 @@
+ #ifdef CONFIG_SUNRPC_DISABLE_INSECURE_ENCTYPES
  
- 	return priv;
--
--fail:
--	if (priv) {
--		crypto_free_sync_skcipher(priv->tx_tfm);
--		crypto_free_sync_skcipher(priv->rx_tfm);
--		kfree(priv);
--	}
--	return NULL;
+ /*
+- * NB: This list includes encryption types that were deprecated
+- * by RFC 8429 (DES3_CBC_SHA1 and ARCFOUR_HMAC).
++ * NB: This list includes DES3_CBC_SHA1, which was deprecated by RFC 8429.
+  *
+  * ENCTYPE_AES256_CTS_HMAC_SHA1_96
+  * ENCTYPE_AES128_CTS_HMAC_SHA1_96
+  * ENCTYPE_DES3_CBC_SHA1
+- * ENCTYPE_ARCFOUR_HMAC
+  */
+-#define KRB5_SUPPORTED_ENCTYPES "18,17,16,23"
++#define KRB5_SUPPORTED_ENCTYPES "18,17,16"
+ 
+ #else	/* CONFIG_SUNRPC_DISABLE_INSECURE_ENCTYPES */
+ 
+@@ -32,12 +30,11 @@
+  * ENCTYPE_AES256_CTS_HMAC_SHA1_96
+  * ENCTYPE_AES128_CTS_HMAC_SHA1_96
+  * ENCTYPE_DES3_CBC_SHA1
+- * ENCTYPE_ARCFOUR_HMAC
+  * ENCTYPE_DES_CBC_MD5
+  * ENCTYPE_DES_CBC_CRC
+  * ENCTYPE_DES_CBC_MD4
+  */
+-#define KRB5_SUPPORTED_ENCTYPES "18,17,16,23,3,1,2"
++#define KRB5_SUPPORTED_ENCTYPES "18,17,16,3,1,2"
+ 
+ #endif	/* CONFIG_SUNRPC_DISABLE_INSECURE_ENCTYPES */
+ 
+diff --git a/net/sunrpc/Kconfig b/net/sunrpc/Kconfig
+index 3bcf985507be..bbbb5af0af13 100644
+--- a/net/sunrpc/Kconfig
++++ b/net/sunrpc/Kconfig
+@@ -21,7 +21,6 @@ config RPCSEC_GSS_KRB5
+ 	depends on SUNRPC && CRYPTO
+ 	depends on CRYPTO_MD5 && CRYPTO_DES && CRYPTO_CBC && CRYPTO_CTS
+ 	depends on CRYPTO_ECB && CRYPTO_HMAC && CRYPTO_SHA1 && CRYPTO_AES
+-	depends on CRYPTO_ARC4
+ 	default y
+ 	select SUNRPC_GSS
+ 	help
+diff --git a/net/sunrpc/auth_gss/gss_krb5_crypto.c b/net/sunrpc/auth_gss/gss_krb5_crypto.c
+index 794fb3001880..634b6c6e0dcb 100644
+--- a/net/sunrpc/auth_gss/gss_krb5_crypto.c
++++ b/net/sunrpc/auth_gss/gss_krb5_crypto.c
+@@ -138,135 +138,6 @@ checksummer(struct scatterlist *sg, void *data)
+ 	return crypto_ahash_update(req);
  }
  
- 
- static void prism2_wep_deinit(void *priv)
- {
--	struct prism2_wep_data *_priv = priv;
+-static int
+-arcfour_hmac_md5_usage_to_salt(unsigned int usage, u8 salt[4])
+-{
+-	unsigned int ms_usage;
 -
--	if (_priv) {
--		crypto_free_sync_skcipher(_priv->tx_tfm);
--		crypto_free_sync_skcipher(_priv->rx_tfm);
+-	switch (usage) {
+-	case KG_USAGE_SIGN:
+-		ms_usage = 15;
+-		break;
+-	case KG_USAGE_SEAL:
+-		ms_usage = 13;
+-		break;
+-	default:
+-		return -EINVAL;
 -	}
--	kfree(priv);
-+	kzfree(priv);
+-	salt[0] = (ms_usage >> 0) & 0xff;
+-	salt[1] = (ms_usage >> 8) & 0xff;
+-	salt[2] = (ms_usage >> 16) & 0xff;
+-	salt[3] = (ms_usage >> 24) & 0xff;
+-
+-	return 0;
+-}
+-
+-static u32
+-make_checksum_hmac_md5(struct krb5_ctx *kctx, char *header, int hdrlen,
+-		       struct xdr_buf *body, int body_offset, u8 *cksumkey,
+-		       unsigned int usage, struct xdr_netobj *cksumout)
+-{
+-	struct scatterlist              sg[1];
+-	int err = -1;
+-	u8 *checksumdata;
+-	u8 *rc4salt;
+-	struct crypto_ahash *md5;
+-	struct crypto_ahash *hmac_md5;
+-	struct ahash_request *req;
+-
+-	if (cksumkey == NULL)
+-		return GSS_S_FAILURE;
+-
+-	if (cksumout->len < kctx->gk5e->cksumlength) {
+-		dprintk("%s: checksum buffer length, %u, too small for %s\n",
+-			__func__, cksumout->len, kctx->gk5e->name);
+-		return GSS_S_FAILURE;
+-	}
+-
+-	rc4salt = kmalloc_array(4, sizeof(*rc4salt), GFP_NOFS);
+-	if (!rc4salt)
+-		return GSS_S_FAILURE;
+-
+-	if (arcfour_hmac_md5_usage_to_salt(usage, rc4salt)) {
+-		dprintk("%s: invalid usage value %u\n", __func__, usage);
+-		goto out_free_rc4salt;
+-	}
+-
+-	checksumdata = kmalloc(GSS_KRB5_MAX_CKSUM_LEN, GFP_NOFS);
+-	if (!checksumdata)
+-		goto out_free_rc4salt;
+-
+-	md5 = crypto_alloc_ahash("md5", 0, CRYPTO_ALG_ASYNC);
+-	if (IS_ERR(md5))
+-		goto out_free_cksum;
+-
+-	hmac_md5 = crypto_alloc_ahash(kctx->gk5e->cksum_name, 0,
+-				      CRYPTO_ALG_ASYNC);
+-	if (IS_ERR(hmac_md5))
+-		goto out_free_md5;
+-
+-	req = ahash_request_alloc(md5, GFP_NOFS);
+-	if (!req)
+-		goto out_free_hmac_md5;
+-
+-	ahash_request_set_callback(req, CRYPTO_TFM_REQ_MAY_SLEEP, NULL, NULL);
+-
+-	err = crypto_ahash_init(req);
+-	if (err)
+-		goto out;
+-	sg_init_one(sg, rc4salt, 4);
+-	ahash_request_set_crypt(req, sg, NULL, 4);
+-	err = crypto_ahash_update(req);
+-	if (err)
+-		goto out;
+-
+-	sg_init_one(sg, header, hdrlen);
+-	ahash_request_set_crypt(req, sg, NULL, hdrlen);
+-	err = crypto_ahash_update(req);
+-	if (err)
+-		goto out;
+-	err = xdr_process_buf(body, body_offset, body->len - body_offset,
+-			      checksummer, req);
+-	if (err)
+-		goto out;
+-	ahash_request_set_crypt(req, NULL, checksumdata, 0);
+-	err = crypto_ahash_final(req);
+-	if (err)
+-		goto out;
+-
+-	ahash_request_free(req);
+-	req = ahash_request_alloc(hmac_md5, GFP_NOFS);
+-	if (!req)
+-		goto out_free_hmac_md5;
+-
+-	ahash_request_set_callback(req, CRYPTO_TFM_REQ_MAY_SLEEP, NULL, NULL);
+-
+-	err = crypto_ahash_setkey(hmac_md5, cksumkey, kctx->gk5e->keylength);
+-	if (err)
+-		goto out;
+-
+-	sg_init_one(sg, checksumdata, crypto_ahash_digestsize(md5));
+-	ahash_request_set_crypt(req, sg, checksumdata,
+-				crypto_ahash_digestsize(md5));
+-	err = crypto_ahash_digest(req);
+-	if (err)
+-		goto out;
+-
+-	memcpy(cksumout->data, checksumdata, kctx->gk5e->cksumlength);
+-	cksumout->len = kctx->gk5e->cksumlength;
+-out:
+-	ahash_request_free(req);
+-out_free_hmac_md5:
+-	crypto_free_ahash(hmac_md5);
+-out_free_md5:
+-	crypto_free_ahash(md5);
+-out_free_cksum:
+-	kfree(checksumdata);
+-out_free_rc4salt:
+-	kfree(rc4salt);
+-	return err ? GSS_S_FAILURE : 0;
+-}
+-
+ /*
+  * checksum the plaintext data and hdrlen bytes of the token header
+  * The checksum is performed over the first 8 bytes of the
+@@ -284,11 +155,6 @@ make_checksum(struct krb5_ctx *kctx, char *header, int hdrlen,
+ 	u8 *checksumdata;
+ 	unsigned int checksumlen;
+ 
+-	if (kctx->gk5e->ctype == CKSUMTYPE_HMAC_MD5_ARCFOUR)
+-		return make_checksum_hmac_md5(kctx, header, hdrlen,
+-					      body, body_offset,
+-					      cksumkey, usage, cksumout);
+-
+ 	if (cksumout->len < kctx->gk5e->cksumlength) {
+ 		dprintk("%s: checksum buffer length, %u, too small for %s\n",
+ 			__func__, cksumout->len, kctx->gk5e->name);
+@@ -942,145 +808,3 @@ gss_krb5_aes_decrypt(struct krb5_ctx *kctx, u32 offset, u32 len,
+ 		ret = GSS_S_FAILURE;
+ 	return ret;
+ }
+-
+-/*
+- * Compute Kseq given the initial session key and the checksum.
+- * Set the key of the given cipher.
+- */
+-int
+-krb5_rc4_setup_seq_key(struct krb5_ctx *kctx,
+-		       struct crypto_sync_skcipher *cipher,
+-		       unsigned char *cksum)
+-{
+-	struct crypto_shash *hmac;
+-	struct shash_desc *desc;
+-	u8 Kseq[GSS_KRB5_MAX_KEYLEN];
+-	u32 zeroconstant = 0;
+-	int err;
+-
+-	dprintk("%s: entered\n", __func__);
+-
+-	hmac = crypto_alloc_shash(kctx->gk5e->cksum_name, 0, 0);
+-	if (IS_ERR(hmac)) {
+-		dprintk("%s: error %ld, allocating hash '%s'\n",
+-			__func__, PTR_ERR(hmac), kctx->gk5e->cksum_name);
+-		return PTR_ERR(hmac);
+-	}
+-
+-	desc = kmalloc(sizeof(*desc) + crypto_shash_descsize(hmac),
+-		       GFP_NOFS);
+-	if (!desc) {
+-		dprintk("%s: failed to allocate shash descriptor for '%s'\n",
+-			__func__, kctx->gk5e->cksum_name);
+-		crypto_free_shash(hmac);
+-		return -ENOMEM;
+-	}
+-
+-	desc->tfm = hmac;
+-
+-	/* Compute intermediate Kseq from session key */
+-	err = crypto_shash_setkey(hmac, kctx->Ksess, kctx->gk5e->keylength);
+-	if (err)
+-		goto out_err;
+-
+-	err = crypto_shash_digest(desc, (u8 *)&zeroconstant, 4, Kseq);
+-	if (err)
+-		goto out_err;
+-
+-	/* Compute final Kseq from the checksum and intermediate Kseq */
+-	err = crypto_shash_setkey(hmac, Kseq, kctx->gk5e->keylength);
+-	if (err)
+-		goto out_err;
+-
+-	err = crypto_shash_digest(desc, cksum, 8, Kseq);
+-	if (err)
+-		goto out_err;
+-
+-	err = crypto_sync_skcipher_setkey(cipher, Kseq, kctx->gk5e->keylength);
+-	if (err)
+-		goto out_err;
+-
+-	err = 0;
+-
+-out_err:
+-	kfree_sensitive(desc);
+-	crypto_free_shash(hmac);
+-	dprintk("%s: returning %d\n", __func__, err);
+-	return err;
+-}
+-
+-/*
+- * Compute Kcrypt given the initial session key and the plaintext seqnum.
+- * Set the key of cipher kctx->enc.
+- */
+-int
+-krb5_rc4_setup_enc_key(struct krb5_ctx *kctx,
+-		       struct crypto_sync_skcipher *cipher,
+-		       s32 seqnum)
+-{
+-	struct crypto_shash *hmac;
+-	struct shash_desc *desc;
+-	u8 Kcrypt[GSS_KRB5_MAX_KEYLEN];
+-	u8 zeroconstant[4] = {0};
+-	u8 seqnumarray[4];
+-	int err, i;
+-
+-	dprintk("%s: entered, seqnum %u\n", __func__, seqnum);
+-
+-	hmac = crypto_alloc_shash(kctx->gk5e->cksum_name, 0, 0);
+-	if (IS_ERR(hmac)) {
+-		dprintk("%s: error %ld, allocating hash '%s'\n",
+-			__func__, PTR_ERR(hmac), kctx->gk5e->cksum_name);
+-		return PTR_ERR(hmac);
+-	}
+-
+-	desc = kmalloc(sizeof(*desc) + crypto_shash_descsize(hmac),
+-		       GFP_NOFS);
+-	if (!desc) {
+-		dprintk("%s: failed to allocate shash descriptor for '%s'\n",
+-			__func__, kctx->gk5e->cksum_name);
+-		crypto_free_shash(hmac);
+-		return -ENOMEM;
+-	}
+-
+-	desc->tfm = hmac;
+-
+-	/* Compute intermediate Kcrypt from session key */
+-	for (i = 0; i < kctx->gk5e->keylength; i++)
+-		Kcrypt[i] = kctx->Ksess[i] ^ 0xf0;
+-
+-	err = crypto_shash_setkey(hmac, Kcrypt, kctx->gk5e->keylength);
+-	if (err)
+-		goto out_err;
+-
+-	err = crypto_shash_digest(desc, zeroconstant, 4, Kcrypt);
+-	if (err)
+-		goto out_err;
+-
+-	/* Compute final Kcrypt from the seqnum and intermediate Kcrypt */
+-	err = crypto_shash_setkey(hmac, Kcrypt, kctx->gk5e->keylength);
+-	if (err)
+-		goto out_err;
+-
+-	seqnumarray[0] = (unsigned char) ((seqnum >> 24) & 0xff);
+-	seqnumarray[1] = (unsigned char) ((seqnum >> 16) & 0xff);
+-	seqnumarray[2] = (unsigned char) ((seqnum >> 8) & 0xff);
+-	seqnumarray[3] = (unsigned char) ((seqnum >> 0) & 0xff);
+-
+-	err = crypto_shash_digest(desc, seqnumarray, 4, Kcrypt);
+-	if (err)
+-		goto out_err;
+-
+-	err = crypto_sync_skcipher_setkey(cipher, Kcrypt,
+-					  kctx->gk5e->keylength);
+-	if (err)
+-		goto out_err;
+-
+-	err = 0;
+-
+-out_err:
+-	kfree_sensitive(desc);
+-	crypto_free_shash(hmac);
+-	dprintk("%s: returning %d\n", __func__, err);
+-	return err;
+-}
+diff --git a/net/sunrpc/auth_gss/gss_krb5_mech.c b/net/sunrpc/auth_gss/gss_krb5_mech.c
+index a84a5b289484..ae9acf3a7389 100644
+--- a/net/sunrpc/auth_gss/gss_krb5_mech.c
++++ b/net/sunrpc/auth_gss/gss_krb5_mech.c
+@@ -51,27 +51,6 @@ static const struct gss_krb5_enctype supported_gss_krb5_enctypes[] = {
+ 	  .keyed_cksum = 0,
+ 	},
+ #endif	/* CONFIG_SUNRPC_DISABLE_INSECURE_ENCTYPES */
+-	/*
+-	 * RC4-HMAC
+-	 */
+-	{
+-	  .etype = ENCTYPE_ARCFOUR_HMAC,
+-	  .ctype = CKSUMTYPE_HMAC_MD5_ARCFOUR,
+-	  .name = "rc4-hmac",
+-	  .encrypt_name = "ecb(arc4)",
+-	  .cksum_name = "hmac(md5)",
+-	  .encrypt = krb5_encrypt,
+-	  .decrypt = krb5_decrypt,
+-	  .mk_key = NULL,
+-	  .signalg = SGN_ALG_HMAC_MD5,
+-	  .sealalg = SEAL_ALG_MICROSOFT_RC4,
+-	  .keybytes = 16,
+-	  .keylength = 16,
+-	  .blocksize = 1,
+-	  .conflen = 8,
+-	  .cksumlength = 8,
+-	  .keyed_cksum = 1,
+-	},
+ 	/*
+ 	 * 3DES
+ 	 */
+@@ -401,78 +380,6 @@ context_derive_keys_des3(struct krb5_ctx *ctx, gfp_t gfp_mask)
+ 	return -EINVAL;
  }
  
- /* Perform WEP encryption on given skb that has at least 4 bytes of headroom
-@@ -92,8 +68,6 @@ static int prism2_wep_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 				    MAX_DEV_ADDR_SIZE);
- 	u32 crc;
- 	u8 *icv;
--	struct scatterlist sg;
+-/*
+- * Note that RC4 depends on deriving keys using the sequence
+- * number or the checksum of a token.  Therefore, the final keys
+- * cannot be calculated until the token is being constructed!
+- */
+-static int
+-context_derive_keys_rc4(struct krb5_ctx *ctx)
+-{
+-	struct crypto_shash *hmac;
+-	char sigkeyconstant[] = "signaturekey";
+-	int slen = strlen(sigkeyconstant) + 1;	/* include null terminator */
+-	struct shash_desc *desc;
 -	int err;
- 
- 	if (skb_headroom(skb) < 4 || skb_tailroom(skb) < 4 ||
- 	    skb->len < hdr_len){
-@@ -131,8 +105,6 @@ static int prism2_wep_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	memcpy(key + 3, wep->key, wep->key_len);
- 
- 	if (!tcb_desc->bHwSec) {
--		SYNC_SKCIPHER_REQUEST_ON_STACK(req, wep->tx_tfm);
 -
- 		/* Append little-endian CRC32 and encrypt it to produce ICV */
- 		crc = ~crc32_le(~0, pos, len);
- 		icv = skb_put(skb, 4);
-@@ -141,14 +113,8 @@ static int prism2_wep_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 		icv[2] = crc >> 16;
- 		icv[3] = crc >> 24;
- 
--		sg_init_one(&sg, pos, len+4);
--		crypto_sync_skcipher_setkey(wep->tx_tfm, key, klen);
--		skcipher_request_set_sync_tfm(req, wep->tx_tfm);
--		skcipher_request_set_callback(req, 0, NULL, NULL);
--		skcipher_request_set_crypt(req, &sg, &sg, len + 4, NULL);
--		err = crypto_skcipher_encrypt(req);
--		skcipher_request_zero(req);
--		return err;
-+		arc4_setkey(&wep->tx_ctx_arc4, key, klen);
-+		arc4_crypt(&wep->tx_ctx_arc4, pos, pos, len + 4);
- 	}
- 
- 	return 0;
-@@ -172,8 +138,6 @@ static int prism2_wep_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 				    MAX_DEV_ADDR_SIZE);
- 	u32 crc;
- 	u8 icv[4];
--	struct scatterlist sg;
--	int err;
- 
- 	if (skb->len < hdr_len + 8)
- 		return -1;
-@@ -195,17 +159,9 @@ static int prism2_wep_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	plen = skb->len - hdr_len - 8;
- 
- 	if (!tcb_desc->bHwSec) {
--		SYNC_SKCIPHER_REQUEST_ON_STACK(req, wep->rx_tfm);
+-	dprintk("RPC:       %s: entered\n", __func__);
+-	/*
+-	 * derive cksum (aka Ksign) key
+-	 */
+-	hmac = crypto_alloc_shash(ctx->gk5e->cksum_name, 0, 0);
+-	if (IS_ERR(hmac)) {
+-		dprintk("%s: error %ld allocating hash '%s'\n",
+-			__func__, PTR_ERR(hmac), ctx->gk5e->cksum_name);
+-		err = PTR_ERR(hmac);
+-		goto out_err;
+-	}
 -
--		sg_init_one(&sg, pos, plen+4);
--		crypto_sync_skcipher_setkey(wep->rx_tfm, key, klen);
--		skcipher_request_set_sync_tfm(req, wep->rx_tfm);
--		skcipher_request_set_callback(req, 0, NULL, NULL);
--		skcipher_request_set_crypt(req, &sg, &sg, plen + 4, NULL);
--		err = crypto_skcipher_decrypt(req);
--		skcipher_request_zero(req);
+-	err = crypto_shash_setkey(hmac, ctx->Ksess, ctx->gk5e->keylength);
+-	if (err)
+-		goto out_err_free_hmac;
+-
+-
+-	desc = kmalloc(sizeof(*desc) + crypto_shash_descsize(hmac), GFP_NOFS);
+-	if (!desc) {
+-		dprintk("%s: failed to allocate hash descriptor for '%s'\n",
+-			__func__, ctx->gk5e->cksum_name);
+-		err = -ENOMEM;
+-		goto out_err_free_hmac;
+-	}
+-
+-	desc->tfm = hmac;
+-
+-	err = crypto_shash_digest(desc, sigkeyconstant, slen, ctx->cksum);
+-	kfree_sensitive(desc);
+-	if (err)
+-		goto out_err_free_hmac;
+-	/*
+-	 * allocate hash, and skciphers for data and seqnum encryption
+-	 */
+-	ctx->enc = crypto_alloc_sync_skcipher(ctx->gk5e->encrypt_name, 0, 0);
+-	if (IS_ERR(ctx->enc)) {
+-		err = PTR_ERR(ctx->enc);
+-		goto out_err_free_hmac;
+-	}
+-
+-	ctx->seq = crypto_alloc_sync_skcipher(ctx->gk5e->encrypt_name, 0, 0);
+-	if (IS_ERR(ctx->seq)) {
+-		crypto_free_sync_skcipher(ctx->enc);
+-		err = PTR_ERR(ctx->seq);
+-		goto out_err_free_hmac;
+-	}
+-
+-	dprintk("RPC:       %s: returning success\n", __func__);
+-
+-	err = 0;
+-
+-out_err_free_hmac:
+-	crypto_free_shash(hmac);
+-out_err:
+-	dprintk("RPC:       %s: returning %d\n", __func__, err);
+-	return err;
+-}
+-
+ static int
+ context_derive_keys_new(struct krb5_ctx *ctx, gfp_t gfp_mask)
+ {
+@@ -649,8 +556,6 @@ gss_import_v2_context(const void *p, const void *end, struct krb5_ctx *ctx,
+ 	switch (ctx->enctype) {
+ 	case ENCTYPE_DES3_CBC_RAW:
+ 		return context_derive_keys_des3(ctx, gfp_mask);
+-	case ENCTYPE_ARCFOUR_HMAC:
+-		return context_derive_keys_rc4(ctx);
+ 	case ENCTYPE_AES128_CTS_HMAC_SHA1_96:
+ 	case ENCTYPE_AES256_CTS_HMAC_SHA1_96:
+ 		return context_derive_keys_new(ctx, gfp_mask);
+diff --git a/net/sunrpc/auth_gss/gss_krb5_seal.c b/net/sunrpc/auth_gss/gss_krb5_seal.c
+index f1d280accf43..33061417ec97 100644
+--- a/net/sunrpc/auth_gss/gss_krb5_seal.c
++++ b/net/sunrpc/auth_gss/gss_krb5_seal.c
+@@ -214,7 +214,6 @@ gss_get_mic_kerberos(struct gss_ctx *gss_ctx, struct xdr_buf *text,
+ 		BUG();
+ 	case ENCTYPE_DES_CBC_RAW:
+ 	case ENCTYPE_DES3_CBC_RAW:
+-	case ENCTYPE_ARCFOUR_HMAC:
+ 		return gss_get_mic_v1(ctx, text, token);
+ 	case ENCTYPE_AES128_CTS_HMAC_SHA1_96:
+ 	case ENCTYPE_AES256_CTS_HMAC_SHA1_96:
+diff --git a/net/sunrpc/auth_gss/gss_krb5_seqnum.c b/net/sunrpc/auth_gss/gss_krb5_seqnum.c
+index 507105127095..fb117817ff5d 100644
+--- a/net/sunrpc/auth_gss/gss_krb5_seqnum.c
++++ b/net/sunrpc/auth_gss/gss_krb5_seqnum.c
+@@ -39,42 +39,6 @@
+ # define RPCDBG_FACILITY        RPCDBG_AUTH
+ #endif
+ 
+-static s32
+-krb5_make_rc4_seq_num(struct krb5_ctx *kctx, int direction, s32 seqnum,
+-		      unsigned char *cksum, unsigned char *buf)
+-{
+-	struct crypto_sync_skcipher *cipher;
+-	unsigned char *plain;
+-	s32 code;
+-
+-	dprintk("RPC:       %s:\n", __func__);
+-	cipher = crypto_alloc_sync_skcipher(kctx->gk5e->encrypt_name, 0, 0);
+-	if (IS_ERR(cipher))
+-		return PTR_ERR(cipher);
+-
+-	plain = kmalloc(8, GFP_NOFS);
+-	if (!plain)
+-		return -ENOMEM;
+-
+-	plain[0] = (unsigned char) ((seqnum >> 24) & 0xff);
+-	plain[1] = (unsigned char) ((seqnum >> 16) & 0xff);
+-	plain[2] = (unsigned char) ((seqnum >> 8) & 0xff);
+-	plain[3] = (unsigned char) ((seqnum >> 0) & 0xff);
+-	plain[4] = direction;
+-	plain[5] = direction;
+-	plain[6] = direction;
+-	plain[7] = direction;
+-
+-	code = krb5_rc4_setup_seq_key(kctx, cipher, cksum);
+-	if (code)
+-		goto out;
+-
+-	code = krb5_encrypt(cipher, cksum, plain, buf, 8);
+-out:
+-	kfree(plain);
+-	crypto_free_sync_skcipher(cipher);
+-	return code;
+-}
+ s32
+ krb5_make_seq_num(struct krb5_ctx *kctx,
+ 		struct crypto_sync_skcipher *key,
+@@ -85,10 +49,6 @@ krb5_make_seq_num(struct krb5_ctx *kctx,
+ 	unsigned char *plain;
+ 	s32 code;
+ 
+-	if (kctx->enctype == ENCTYPE_ARCFOUR_HMAC)
+-		return krb5_make_rc4_seq_num(kctx, direction, seqnum,
+-					     cksum, buf);
+-
+ 	plain = kmalloc(8, GFP_NOFS);
+ 	if (!plain)
+ 		return -ENOMEM;
+@@ -108,50 +68,6 @@ krb5_make_seq_num(struct krb5_ctx *kctx,
+ 	return code;
+ }
+ 
+-static s32
+-krb5_get_rc4_seq_num(struct krb5_ctx *kctx, unsigned char *cksum,
+-		     unsigned char *buf, int *direction, s32 *seqnum)
+-{
+-	struct crypto_sync_skcipher *cipher;
+-	unsigned char *plain;
+-	s32 code;
+-
+-	dprintk("RPC:       %s:\n", __func__);
+-	cipher = crypto_alloc_sync_skcipher(kctx->gk5e->encrypt_name, 0, 0);
+-	if (IS_ERR(cipher))
+-		return PTR_ERR(cipher);
+-
+-	code = krb5_rc4_setup_seq_key(kctx, cipher, cksum);
+-	if (code)
+-		goto out;
+-
+-	plain = kmalloc(8, GFP_NOFS);
+-	if (!plain) {
+-		code = -ENOMEM;
+-		goto out;
+-	}
+-
+-	code = krb5_decrypt(cipher, cksum, buf, plain, 8);
+-	if (code)
+-		goto out_plain;
+-
+-	if ((plain[4] != plain[5]) || (plain[4] != plain[6])
+-				   || (plain[4] != plain[7])) {
+-		code = (s32)KG_BAD_SEQ;
+-		goto out_plain;
+-	}
+-
+-	*direction = plain[4];
+-
+-	*seqnum = ((plain[0] << 24) | (plain[1] << 16) |
+-					(plain[2] << 8) | (plain[3]));
+-out_plain:
+-	kfree(plain);
+-out:
+-	crypto_free_sync_skcipher(cipher);
+-	return code;
+-}
+-
+ s32
+ krb5_get_seq_num(struct krb5_ctx *kctx,
+ 	       unsigned char *cksum,
+@@ -164,9 +80,6 @@ krb5_get_seq_num(struct krb5_ctx *kctx,
+ 
+ 	dprintk("RPC:       krb5_get_seq_num:\n");
+ 
+-	if (kctx->enctype == ENCTYPE_ARCFOUR_HMAC)
+-		return krb5_get_rc4_seq_num(kctx, cksum, buf,
+-					    direction, seqnum);
+ 	plain = kmalloc(8, GFP_NOFS);
+ 	if (!plain)
+ 		return -ENOMEM;
+diff --git a/net/sunrpc/auth_gss/gss_krb5_unseal.c b/net/sunrpc/auth_gss/gss_krb5_unseal.c
+index aaab91cf24c8..ba04e3ec970a 100644
+--- a/net/sunrpc/auth_gss/gss_krb5_unseal.c
++++ b/net/sunrpc/auth_gss/gss_krb5_unseal.c
+@@ -218,7 +218,6 @@ gss_verify_mic_kerberos(struct gss_ctx *gss_ctx,
+ 		BUG();
+ 	case ENCTYPE_DES_CBC_RAW:
+ 	case ENCTYPE_DES3_CBC_RAW:
+-	case ENCTYPE_ARCFOUR_HMAC:
+ 		return gss_verify_mic_v1(ctx, message_buffer, read_token);
+ 	case ENCTYPE_AES128_CTS_HMAC_SHA1_96:
+ 	case ENCTYPE_AES256_CTS_HMAC_SHA1_96:
+diff --git a/net/sunrpc/auth_gss/gss_krb5_wrap.c b/net/sunrpc/auth_gss/gss_krb5_wrap.c
+index 90b8329fef82..6be44a7ee4ac 100644
+--- a/net/sunrpc/auth_gss/gss_krb5_wrap.c
++++ b/net/sunrpc/auth_gss/gss_krb5_wrap.c
+@@ -236,26 +236,9 @@ gss_wrap_kerberos_v1(struct krb5_ctx *kctx, int offset,
+ 			       seq_send, ptr + GSS_KRB5_TOK_HDR_LEN, ptr + 8)))
+ 		return GSS_S_FAILURE;
+ 
+-	if (kctx->enctype == ENCTYPE_ARCFOUR_HMAC) {
+-		struct crypto_sync_skcipher *cipher;
+-		int err;
+-		cipher = crypto_alloc_sync_skcipher(kctx->gk5e->encrypt_name,
+-						    0, 0);
+-		if (IS_ERR(cipher))
+-			return GSS_S_FAILURE;
+-
+-		krb5_rc4_setup_enc_key(kctx, cipher, seq_send);
+-
+-		err = gss_encrypt_xdr_buf(cipher, buf,
+-					  offset + headlen - conflen, pages);
+-		crypto_free_sync_skcipher(cipher);
 -		if (err)
--			return -7;
-+		arc4_setkey(&wep->rx_ctx_arc4, key, klen);
-+		arc4_crypt(&wep->rx_ctx_arc4, pos, pos, plen + 4);
+-			return GSS_S_FAILURE;
+-	} else {
+-		if (gss_encrypt_xdr_buf(kctx->enc, buf,
+-					offset + headlen - conflen, pages))
+-			return GSS_S_FAILURE;
+-	}
++	if (gss_encrypt_xdr_buf(kctx->enc, buf,
++				offset + headlen - conflen, pages))
++		return GSS_S_FAILURE;
+ 
+ 	return (kctx->endtime < now) ? GSS_S_CONTEXT_EXPIRED : GSS_S_COMPLETE;
+ }
+@@ -316,37 +299,9 @@ gss_unwrap_kerberos_v1(struct krb5_ctx *kctx, int offset, int len,
+ 	crypt_offset = ptr + (GSS_KRB5_TOK_HDR_LEN + kctx->gk5e->cksumlength) -
+ 					(unsigned char *)buf->head[0].iov_base;
+ 
+-	/*
+-	 * Need plaintext seqnum to derive encryption key for arcfour-hmac
+-	 */
+-	if (krb5_get_seq_num(kctx, ptr + GSS_KRB5_TOK_HDR_LEN,
+-			     ptr + 8, &direction, &seqnum))
+-		return GSS_S_BAD_SIG;
+-
+-	if ((kctx->initiate && direction != 0xff) ||
+-	    (!kctx->initiate && direction != 0))
+-		return GSS_S_BAD_SIG;
+-
+ 	buf->len = len;
+-	if (kctx->enctype == ENCTYPE_ARCFOUR_HMAC) {
+-		struct crypto_sync_skcipher *cipher;
+-		int err;
+-
+-		cipher = crypto_alloc_sync_skcipher(kctx->gk5e->encrypt_name,
+-						    0, 0);
+-		if (IS_ERR(cipher))
+-			return GSS_S_FAILURE;
+-
+-		krb5_rc4_setup_enc_key(kctx, cipher, seqnum);
+-
+-		err = gss_decrypt_xdr_buf(cipher, buf, crypt_offset);
+-		crypto_free_sync_skcipher(cipher);
+-		if (err)
+-			return GSS_S_DEFECTIVE_TOKEN;
+-	} else {
+-		if (gss_decrypt_xdr_buf(kctx->enc, buf, crypt_offset))
+-			return GSS_S_DEFECTIVE_TOKEN;
+-	}
++	if (gss_decrypt_xdr_buf(kctx->enc, buf, crypt_offset))
++		return GSS_S_DEFECTIVE_TOKEN;
+ 
+ 	if (kctx->gk5e->keyed_cksum)
+ 		cksumkey = kctx->cksum;
+@@ -370,6 +325,14 @@ gss_unwrap_kerberos_v1(struct krb5_ctx *kctx, int offset, int len,
+ 
+ 	/* do sequencing checks */
+ 
++	if (krb5_get_seq_num(kctx, ptr + GSS_KRB5_TOK_HDR_LEN,
++			     ptr + 8, &direction, &seqnum))
++		return GSS_S_BAD_SIG;
 +
- 		crc = ~crc32_le(~0, pos, plen);
- 		icv[0] = crc;
- 		icv[1] = crc >> 8;
++	if ((kctx->initiate && direction != 0xff) ||
++	    (!kctx->initiate && direction != 0))
++		return GSS_S_BAD_SIG;
++
+ 	/* Copy the data back to the right position.  XXX: Would probably be
+ 	 * better to copy and encrypt at the same time. */
+ 
+@@ -605,7 +568,6 @@ gss_wrap_kerberos(struct gss_ctx *gctx, int offset,
+ 		BUG();
+ 	case ENCTYPE_DES_CBC_RAW:
+ 	case ENCTYPE_DES3_CBC_RAW:
+-	case ENCTYPE_ARCFOUR_HMAC:
+ 		return gss_wrap_kerberos_v1(kctx, offset, buf, pages);
+ 	case ENCTYPE_AES128_CTS_HMAC_SHA1_96:
+ 	case ENCTYPE_AES256_CTS_HMAC_SHA1_96:
+@@ -624,7 +586,6 @@ gss_unwrap_kerberos(struct gss_ctx *gctx, int offset,
+ 		BUG();
+ 	case ENCTYPE_DES_CBC_RAW:
+ 	case ENCTYPE_DES3_CBC_RAW:
+-	case ENCTYPE_ARCFOUR_HMAC:
+ 		return gss_unwrap_kerberos_v1(kctx, offset, len, buf,
+ 					      &gctx->slack, &gctx->align);
+ 	case ENCTYPE_AES128_CTS_HMAC_SHA1_96:
 -- 
 2.17.1
 
