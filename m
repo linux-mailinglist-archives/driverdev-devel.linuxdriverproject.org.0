@@ -1,60 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7F2024F2B8
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Aug 2020 08:49:47 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7B4324F7C7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Aug 2020 11:21:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3A63587FC3;
-	Mon, 24 Aug 2020 06:49:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B4241204F8;
+	Mon, 24 Aug 2020 09:21:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iX6zGa+qDmMT; Mon, 24 Aug 2020 06:49:46 +0000 (UTC)
+	with ESMTP id PPjJY+7V9x5d; Mon, 24 Aug 2020 09:21:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9A7EA87F52;
-	Mon, 24 Aug 2020 06:49:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 04A44204F7;
+	Mon, 24 Aug 2020 09:21:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 42A6A1BF32C
- for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 06:49:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BFDA31BF3B1
+ for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 09:21:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3DF4387F34
- for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 06:49:43 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BC3ED87A72
+ for <devel@linuxdriverproject.org>; Mon, 24 Aug 2020 09:21:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NL9Ej-y2eGpY for <devel@linuxdriverproject.org>;
- Mon, 24 Aug 2020 06:49:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5561787EE9
- for <devel@driverdev.osuosl.org>; Mon, 24 Aug 2020 06:49:41 +0000 (UTC)
-Received: from coco.lan (unknown [95.90.213.182])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BB28A2067C;
- Mon, 24 Aug 2020 06:49:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598251781;
- bh=MoR5l415tOqXO7qDvbGK3qkYCXTWIk9BbyxnSBH+NOA=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=d8Fa9jnF4RxQAHQUfTQiJnd1/Cv3peOrzUsQ+uvrMSfO9dxpXk5FFmL8qQR+62r2d
- /5Z+CzrXnWZx+hAETh664fBPlISrF9QHDL0J3KIvyrE+0W2sam4bZO9CkasBh6uuiy
- Lifm+3q0OlCTMYdbS1UXGwLbhr7/E/XclY5RLP1s=
-Date: Mon, 24 Aug 2020 08:49:30 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
-Message-ID: <20200824084853.10560ed1@coco.lan>
-In-Reply-To: <CALAqxLULQvW3UikCHpEzSDnpeYnBy8wDSsWZNbSrmivQTW3_Sg@mail.gmail.com>
-References: <cover.1597833138.git.mchehab+huawei@kernel.org>
- <CALAqxLU3bt6fT4nGHZFSnzyQq4xJo2On=c_Oa9ONED9-jhaFgw@mail.gmail.com>
- <CALAqxLW98nVc-=8Q6nx-wRP1z8pzkw1_zNc9M7V3GhnJQqM9rg@mail.gmail.com>
- <CALAqxLULQvW3UikCHpEzSDnpeYnBy8wDSsWZNbSrmivQTW3_Sg@mail.gmail.com>
-X-Mailer: Claws Mail 3.17.6 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ with ESMTP id wexEcllzNxRu for <devel@linuxdriverproject.org>;
+ Mon, 24 Aug 2020 09:21:48 +0000 (UTC)
+X-Greylist: delayed 00:05:47 by SQLgrey-1.7.6
+Received: from smtp75.iad3a.emailsrvr.com (smtp75.iad3a.emailsrvr.com
+ [173.203.187.75])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9B15B87A60
+ for <devel@driverdev.osuosl.org>; Mon, 24 Aug 2020 09:21:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=g001.emailsrvr.com;
+ s=20190322-9u7zjiwi; t=1598260560;
+ bh=uNN8RH7yD1tX56e4Kxpu5Me0wrJfDcdmUMAuerB8/Ik=;
+ h=Subject:To:From:Date:From;
+ b=xVA4KtesSPRHbx4Zmp1oT2kJsLYbtmYhBzmL2gmH245/S0dOupAxHQbSWKbqQuMim
+ PNxhjhdpJkjrhYHRMMdi24Ucy4WYpJ1YzL9YsuqWw34wXxkJyuUmJDwF/6tNzO461j
+ 9e1g1mV8TMaxTvmNaiB2XMKDebAjwP45LJxSDhR4=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+ s=20190130-41we5z8j; t=1598260560;
+ bh=uNN8RH7yD1tX56e4Kxpu5Me0wrJfDcdmUMAuerB8/Ik=;
+ h=Subject:To:From:Date:From;
+ b=kn5ejahn1loWVmHP9ZxdMhiJB3U5V3F5ejOE/ui337q4NWpfKPWR64GSGkdC6wZrj
+ 8v2RzdtCqHKJEp058oo+HuaWuWShoFzQFCId9xSGRwldgFTz2aUxFPcq19n74feQ8s
+ iJ/qUzhyQwg/KxcIDoBxBv7hLofCq9PzmnQKTZTA=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp34.relay.iad3a.emailsrvr.com (Authenticated sender:
+ abbotti-AT-mev.co.uk) with ESMTPSA id AA51D22A40; 
+ Mon, 24 Aug 2020 05:15:59 -0400 (EDT)
+Subject: Re: [PATCH] drivers: staging: comedi: fixed duplicate words from
+ checkpatch
+To: Ethan Edwards <ethancarteredwards@gmail.com>, gregkh@linuxfoundation.org
+References: <20200822202131.53kpj2gg35af6vud@archlaptop.localdomain>
+From: Ian Abbott <abbotti@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <5ede8454-31d8-25d7-c01a-7b2c94fc499e@mev.co.uk>
+Date: Mon, 24 Aug 2020 10:15:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <20200822202131.53kpj2gg35af6vud@archlaptop.localdomain>
+Content-Language: en-GB
+X-Classification-ID: 3ebe9e8a-bc3c-4e53-b469-784198286fc4-1-1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,86 +76,155 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Sam Ravnborg <sam@ravnborg.org>, Sumit Semwal <sumit.semwal@linaro.org>,
- driverdevel <devel@driverdev.osuosl.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>, Wei Xu <xuwei5@hisilicon.com>,
- David Airlie <airlied@linux.ie>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Tomi Valkeinen <tomi.valkeinen@ti.com>,
- Bogdan Togorean <bogdan.togorean@analog.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Laurentiu Palcu <laurentiu.palcu@nxp.com>,
- linux-media <linux-media@vger.kernel.org>, "open
- list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Liwei Cai <cailiwei@hisilicon.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
- Alexei Starovoitov <ast@kernel.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- mauro.chehab@huawei.com, Rob Clark <robdclark@chromium.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- lkml <linux-kernel@vger.kernel.org>, Liuyao An <anliuyao@huawei.com>,
- Daniel Vetter <daniel@ffwll.ch>, Network Development <netdev@vger.kernel.org>,
- Rongrong Zou <zourongrong@gmail.com>, BPF Mailing List <bpf@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi John,
+On 22/08/2020 21:21, Ethan Edwards wrote:
+> Fixed various different checkpatch duplicate word warnings, the TODO
+> file said to fix checkpatch warnings.
+> 
+> My old email didn't CC the mailing lists, ignore the old one, sorry.
 
-Em Wed, 19 Aug 2020 20:28:44 -0700
-John Stultz <john.stultz@linaro.org> escreveu:
+Everything above the '---' line ends up in the git commit message 
+(unless edited out manually, and Greg hates that).  The comment about 
+CC'ing email lists doesn't belong in the commit message.  Could you send 
+a '[PATCH v2]' with that line edited out and place a description of the 
+v2 changes just below the '---' line?
+
+Thanks.
+
+> 
+> Signed-off-by: Ethan Edwards <ethancarteredwards@gmail.com>
+> ---
+>   drivers/staging/comedi/comedi.h                  | 4 ++--
+>   drivers/staging/comedi/comedidev.h               | 2 +-
+>   drivers/staging/comedi/drivers/addi_apci_1564.c  | 4 ++--
+>   drivers/staging/comedi/drivers/comedi_8255.c     | 2 +-
+>   drivers/staging/comedi/drivers/ni_tiocmd.c       | 2 +-
+>   drivers/staging/comedi/drivers/pcmuio.c          | 2 +-
+>   drivers/staging/comedi/drivers/quatech_daqp_cs.c | 2 +-
+>   7 files changed, 9 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/staging/comedi/comedi.h b/drivers/staging/comedi/comedi.h
+> index 09a940066c0e..b5d00a006dbb 100644
+> --- a/drivers/staging/comedi/comedi.h
+> +++ b/drivers/staging/comedi/comedi.h
+> @@ -680,7 +680,7 @@ struct comedi_rangeinfo {
+>    * value of 1 volt.
+>    *
+>    * The only defined flag value is %RF_EXTERNAL (%0x100), indicating that the
+> - * the range needs to be multiplied by an external reference.
+> + * range needs to be multiplied by an external reference.
+>    */
+>   struct comedi_krange {
+>   	int min;
+> @@ -970,7 +970,7 @@ enum i8254_mode {
+>    *   major reasons exist why this caused major confusion for users:
+>    *   1) The register values are _NOT_ in user documentation, but rather in
+>    *     arcane locations, such as a few register programming manuals that are
+> - *     increasingly hard to find and the NI MHDDK (comments in in example code).
+> + *     increasingly hard to find and the NI MHDDK (comments in example code).
+>    *     There is no one place to find the various valid values of the registers.
+>    *   2) The register values are _NOT_ completely consistent.  There is no way to
+>    *     gain any sense of intuition of which values, or even enums one should use
+> diff --git a/drivers/staging/comedi/comedidev.h b/drivers/staging/comedi/comedidev.h
+> index 0dff1ac057cd..0e1b95ef9a4d 100644
+> --- a/drivers/staging/comedi/comedidev.h
+> +++ b/drivers/staging/comedi/comedidev.h
+> @@ -627,7 +627,7 @@ extern const struct comedi_lrange range_unknown;
+>    * @range: Array of &struct comedi_krange, one for each range.
+>    *
+>    * Each element of @range[] describes the minimum and maximum physical range
+> - * range and the type of units.  Typically, the type of unit is %UNIT_volt
+> + * and the type of units.  Typically, the type of unit is %UNIT_volt
+>    * (i.e. volts) and the minimum and maximum are in millionths of a volt.
+>    * There may also be a flag that indicates the minimum and maximum are merely
+>    * scale factors for an unknown, external reference.
+> diff --git a/drivers/staging/comedi/drivers/addi_apci_1564.c b/drivers/staging/comedi/drivers/addi_apci_1564.c
+> index fadefcb5c237..06fc7ed96200 100644
+> --- a/drivers/staging/comedi/drivers/addi_apci_1564.c
+> +++ b/drivers/staging/comedi/drivers/addi_apci_1564.c
+> @@ -544,7 +544,7 @@ static int apci1564_timer_insn_write(struct comedi_device *dev,
+>   {
+>   	struct apci1564_private *devpriv = dev->private;
+>   
+> -	/* just write the last last to the reload register */
+> +	/* just write the last to the reload register */
+>   	if (insn->n) {
+>   		unsigned int val = data[insn->n - 1];
+>   
+> @@ -628,7 +628,7 @@ static int apci1564_counter_insn_write(struct comedi_device *dev,
+>   	unsigned int chan = CR_CHAN(insn->chanspec);
+>   	unsigned long iobase = devpriv->counters + APCI1564_COUNTER(chan);
+>   
+> -	/* just write the last last to the reload register */
+> +	/* just write the last to the reload register */
+>   	if (insn->n) {
+>   		unsigned int val = data[insn->n - 1];
+>   
+> diff --git a/drivers/staging/comedi/drivers/comedi_8255.c b/drivers/staging/comedi/drivers/comedi_8255.c
+> index 3298725b9ba5..b7ca465933ee 100644
+> --- a/drivers/staging/comedi/drivers/comedi_8255.c
+> +++ b/drivers/staging/comedi/drivers/comedi_8255.c
+> @@ -248,7 +248,7 @@ EXPORT_SYMBOL_GPL(subdev_8255_mm_init);
+>    * subdev_8255_regbase - get offset of 8255 registers or call-back context
+>    * @s: comedi subdevice
+>    *
+> - * Returns the 'regbase' parameter that was previously passed to to
+> + * Returns the 'regbase' parameter that was previously passed to
+>    * subdev_8255_init() or subdev_8255_mm_init() to set up the subdevice.
+>    * Only valid if the subdevice was set up successfully.
+>    */
+> diff --git a/drivers/staging/comedi/drivers/ni_tiocmd.c b/drivers/staging/comedi/drivers/ni_tiocmd.c
+> index 2a9f7e9821a7..ab6d9e8269f3 100644
+> --- a/drivers/staging/comedi/drivers/ni_tiocmd.c
+> +++ b/drivers/staging/comedi/drivers/ni_tiocmd.c
+> @@ -286,7 +286,7 @@ int ni_tio_cmdtest(struct comedi_device *dev,
+>   		 * This should be done, but we don't yet know the actual
+>   		 * register values.  These should be tested and then documented
+>   		 * in the ni_route_values/ni_*.csv files, with indication of
+> -		 * who/when/which/how these these were tested.
+> +		 * who/when/which/how these were tested.
+>   		 * When at least a e/m/660x series have been tested, this code
+>   		 * should be uncommented:
+>   		 *
+> diff --git a/drivers/staging/comedi/drivers/pcmuio.c b/drivers/staging/comedi/drivers/pcmuio.c
+> index 7e1fc6ffb48c..b299d648a0eb 100644
+> --- a/drivers/staging/comedi/drivers/pcmuio.c
+> +++ b/drivers/staging/comedi/drivers/pcmuio.c
+> @@ -48,7 +48,7 @@
+>    *
+>    * In the 48-channel version:
+>    *
+> - * On subdev 0, the first 24 channels channels are edge-detect channels.
+> + * On subdev 0, the first 24 channels are edge-detect channels.
+>    *
+>    * In the 96-channel board you have the following channels that can do edge
+>    * detection:
+> diff --git a/drivers/staging/comedi/drivers/quatech_daqp_cs.c b/drivers/staging/comedi/drivers/quatech_daqp_cs.c
+> index 1b1efa4d31f6..fe4408ebf6b3 100644
+> --- a/drivers/staging/comedi/drivers/quatech_daqp_cs.c
+> +++ b/drivers/staging/comedi/drivers/quatech_daqp_cs.c
+> @@ -164,7 +164,7 @@ static int daqp_clear_events(struct comedi_device *dev, int loops)
+>   
+>   	/*
+>   	 * Reset any pending interrupts (my card has a tendency to require
+> -	 * require multiple reads on the status register to achieve this).
+> +	 * multiple reads on the status register to achieve this).
+>   	 */
+>   	while (--loops) {
+>   		status = inb(dev->iobase + DAQP_STATUS_REG);
+> 
 
 
-> That said even with the patches I've got on top of your series, I
-> still see a few issues:
-> 1) I'm seeing red-blue swap with your driver.  I need to dig a bit to
-> see what the difference is, I know gralloc has a config option for
-> this, and maybe the version of the driver I'm carrying has it wrong?
-
-Maybe it is due to this:
-
-	drivers/staging/hikey9xx/gpu/kirin9xx_drm_overlay_utils.c:      hal_fmt = HISI_FB_PIXEL_FORMAT_BGRA_8888;/* dss_get_format(fb->pixel_format); */
-
-It sounds to me that someone added a hack hardcoding BGRA_8888 over
-there.
-
-Btw, I removed the hack, with:
-
-
-diff --git a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_overlay_utils.c b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_overlay_utils.c
-index a68db1a27bbf..ba64aae371e4 100644
---- a/drivers/staging/hikey9xx/gpu/kirin9xx_drm_overlay_utils.c
-+++ b/drivers/staging/hikey9xx/gpu/kirin9xx_drm_overlay_utils.c
-@@ -857,7 +857,7 @@ void hisi_fb_pan_display(struct drm_plane *plane)
-        rect.right = src_w - 1;
-        rect.top = 0;
-        rect.bottom = src_h - 1;
--       hal_fmt = HISI_FB_PIXEL_FORMAT_BGRA_8888;/* dss_get_format(fb->pixel_format); */
-+       hal_fmt = dss_get_format(fb->format->format);
- 
-        DRM_DEBUG_DRIVER("channel%d: src:(%d,%d, %dx%d) crtc:(%d,%d, %dx%d), rect(%d,%d,%d,%d),fb:%dx%d, pixel_format=%d, stride=%d, paddr=0x%x, bpp=%d.\n",
-                         chn_idx, src_x, src_y, src_w, src_h,
-
-
-And now red and blue are swapped on my HDMI screen too.
-
-I'll compare this part with your version, but I guess the bug is
-on this logic.
-
-
-Thanks,
-Mauro
+-- 
+-=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
+-=( MEV Ltd. is a company registered in England & Wales. )=-
+-=( Registered number: 02862268.  Registered address:    )=-
+-=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
