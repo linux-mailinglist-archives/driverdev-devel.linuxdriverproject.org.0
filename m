@@ -1,63 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42ED62521E4
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 22:22:14 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A7555252357
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Aug 2020 00:07:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AD80021546;
-	Tue, 25 Aug 2020 20:22:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3ED10878AE;
+	Tue, 25 Aug 2020 22:07:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3j2AECVqpwJs; Tue, 25 Aug 2020 20:22:10 +0000 (UTC)
+	with ESMTP id n3arAyQVav6u; Tue, 25 Aug 2020 22:07:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C774E204FC;
-	Tue, 25 Aug 2020 20:22:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C7524878A1;
+	Tue, 25 Aug 2020 22:07:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8FED91BF3D8
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 20:22:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 751BC1BF2B5
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 22:07:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 87575882EC
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 20:22:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 71F5B87ACE
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 22:07:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y-JTdki9VYEj for <devel@linuxdriverproject.org>;
- Tue, 25 Aug 2020 20:22:04 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from asavdk3.altibox.net (asavdk3.altibox.net [109.247.116.14])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EEA07882EB
- for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 20:22:03 +0000 (UTC)
-Received: from ravnborg.org (unknown [188.228.123.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by asavdk3.altibox.net (Postfix) with ESMTPS id 199B620024;
- Tue, 25 Aug 2020 22:21:54 +0200 (CEST)
-Date: Tue, 25 Aug 2020 22:21:53 +0200
-From: Sam Ravnborg <sam@ravnborg.org>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
-Message-ID: <20200825202153.GA237836@ravnborg.org>
-References: <cover.1597833138.git.mchehab+huawei@kernel.org>
- <20200819152120.GA106437@ravnborg.org>
- <20200819174027.70b39ee9@coco.lan>
- <20200819173558.GA3733@ravnborg.org>
- <20200821155801.0b820fc6@coco.lan>
- <20200821155505.GA300361@ravnborg.org>
- <20200824180225.1a515b6a@coco.lan>
+ with ESMTP id raqquYciAMT4 for <devel@linuxdriverproject.org>;
+ Tue, 25 Aug 2020 22:07:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
+ [209.85.216.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E9E5A87AC2
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 22:07:26 +0000 (UTC)
+Received: by mail-pj1-f68.google.com with SMTP id 2so193981pjx.5
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 15:07:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DDfuEeZvkhmoX/XBxHBvhw10a3kF5GozAC7FQVyl31M=;
+ b=hiiW82z64jhCNt3G6O1Gbo3lHrfE3KuGanUIOpwd7pOWjJpHoX3aRXOeP9MNvppOW1
+ ITGK+p9JecHZWNR9soJZo5gBGMqr+t89qRspTlgSzrrAq8UmjWe9yVGqKeX/XxtHgVcm
+ gmtHfqPiTnHsiOXgCfi66YA4pkQ6BUpquoldIbo/I8JM+J9nZQLpHj9prsZt4GZsWcTp
+ 3bqxh9L/a/c/aq6FM6sibf0VOkcuKhQ552JqeNaMlBR+vuMESJ7qYjhnwQeheap2xYND
+ kLokaSIlXPQZlRIGk8gRbJFCimmNXa7VwwD/tlK/DSgcZamTMydsnG7q3GIyfx720KwY
+ PumQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DDfuEeZvkhmoX/XBxHBvhw10a3kF5GozAC7FQVyl31M=;
+ b=j8llbz4AfwhiLWtHN4Nb4NqfCl8H0fragb9hl4G23Uhqoqbg+9e+c04It14DlE/o6T
+ EUd3So5M5yUuur4cGXa2+S5zD2+AyiFQmVWiHhNwZKgUD9JE1tP2ImqFVB3ho0mQypjW
+ 4R/k4IfKLrWIFKr3WlFaZNeii4SNQ2qKY4/4pAlVztAWl9N0Rbp0hUNKue3wEQ9Y7Yfq
+ L18iRRBBpcehJw5AXs0eY994bklRAAs56a6vt645Ya+/W5drkKtfl2Wn+pKVizpwCIMt
+ DSsibCbtGj7FROdadgtqeMfUG/AHg3oVzut9ed9A6qnHcTr3cpy7dd5NmGq2R4CxF+94
+ VXrw==
+X-Gm-Message-State: AOAM532swfwvZOqNCJs7cvC71MV9MTn/rgsi3bfNHCizjbTQN2MDdbue
+ cb24GJdU55pEhN8hRpgGz7votE+LfdQPWx1CDoc=
+X-Google-Smtp-Source: ABdhPJzdVxSjyNH/rkjA1cfgXm37K+6qmC4ppHxC38w/8WOIGBgXvKCET8wbHnHpdKSj2ecCn8tUvg==
+X-Received: by 2002:a17:90b:100e:: with SMTP id
+ gm14mr3216566pjb.39.1598393246279; 
+ Tue, 25 Aug 2020 15:07:26 -0700 (PDT)
+Received: from localhost.localdomain ([49.207.215.131])
+ by smtp.gmail.com with ESMTPSA id k5sm100368pgk.78.2020.08.25.15.07.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Aug 2020 15:07:25 -0700 (PDT)
+From: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+To: anant.thazhemadam@gmail.com
+Subject: [PATCH] staging: media-atomisp : fix "dubious: !x | !y" sparse warning
+Date: Wed, 26 Aug 2020 03:34:26 +0530
+Message-Id: <20200825220437.11214-1-anant.thazhemadam@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200824180225.1a515b6a@coco.lan>
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=f+hm+t6M c=1 sm=1 tr=0
- a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
- a=kj9zAlcOel0A:10 a=e5mUnYsNAAAA:8 a=jmfwfdV-BNFhccFjUE8A:9
- a=CjuIK1q_8ugA:10 a=pBTelFdiagIA:10 a=Vxmtnl_E_bksehYqCbjh:22
- a=pHzHmUro8NiASowvMSCR:22 a=xoEH_sTeL_Rfw54TyV31:22
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,75 +84,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- devel@driverdev.osuosl.org, Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>,
- Xiubin Zhang <zhangxiubin1@huawei.com>, Wei Xu <xuwei5@hisilicon.com>,
- David Airlie <airlied@linux.ie>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Tomi Valkeinen <tomi.valkeinen@ti.com>,
- Bogdan Togorean <bogdan.togorean@analog.com>, Jakub Kicinski <kuba@kernel.org>,
- Laurentiu Palcu <laurentiu.palcu@nxp.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, Liwei Cai <cailiwei@hisilicon.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
- Alexei Starovoitov <ast@kernel.org>, linaro-mm-sig@lists.linaro.org,
- Rob Herring <robh+dt@kernel.org>, mauro.chehab@huawei.com,
- Rob Clark <robdclark@chromium.org>, linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Liuyao An <anliuyao@huawei.com>, netdev@vger.kernel.org,
- Rongrong Zou <zourongrong@gmail.com>, bpf@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Mauro.
+Upon running sparse, "warning: dubious: !x | !y" is brought to notice
+for this file. This patch fixes that warning.
 
-Laurent and I discussed this driver a little on irc.
-Some highlights:
+If there's a specific reason that this change is considered undesirable, 
+please do let me know why.
+Thanks.
 
-This parts could use register names:
-+       writel(0x2, noc_dss_base + 0xc);
-+       writel(0x2, noc_dss_base + 0x8c);
-+       writel(0x2, noc_dss_base + 0x10c);
-+       writel(0x2, noc_dss_base + 0x18c);
+Signed-off-by: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+---
+ .../media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c    | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The two nodes in the DT for DPE and DSI uses overlapping range for reg
-entries. It looks like a syscon node or some iommu thing is needed to do
-this properly.
+diff --git a/drivers/staging/media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c b/drivers/staging/media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c
+index 358cb7d2cd4c..3b850bb2d39d 100644
+--- a/drivers/staging/media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c
++++ b/drivers/staging/media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c
+@@ -58,7 +58,7 @@ sh_css_vf_downscale_log2(
+ 	unsigned int ds_log2 = 0;
+ 	unsigned int out_width;
+ 
+-	if ((!out_info) | (!vf_info))
++	if ((!out_info) || (!vf_info))
+ 		return -EINVAL;
+ 
+ 	out_width = out_info->res.width;
+-- 
+2.25.1
 
-The chain will lok like this:
-
-DPE -> DSI -> video mux -> {adv7533, panel}
-
-But drm_bridge has not yet support for such non-linear setup.
-The recommendation is to focus on the HDMI prat. Then we can later
-come up with support for a video mux.
-
-The video mux should have a dedicated node with one input node and two
-output nodes. Which is also where the gpio should be.
-
-The DSI node references two DPHY instances - should it be PHY driver(s)?
-
-Does the DSI part contain one or two instances. Clocks looks duplicated.
-
-Does the DPE and DSI share a lot of register blocks - or does it just
-look like this from a first point of view?
-
-You can read though the logs here:
-https://people.freedesktop.org/~cbrill/dri-log/index.php
-
-Could you please try to get back on some of the points above so we can
-help you move forward in the right direction.
-
-Thanks,
-	Sam
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
