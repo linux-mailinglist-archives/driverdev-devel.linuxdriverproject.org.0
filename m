@@ -2,115 +2,71 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FB75251B8D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 16:57:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37A0C251C67
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 17:37:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8F4BA885C8;
-	Tue, 25 Aug 2020 14:57:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 56A3C886D6;
+	Tue, 25 Aug 2020 15:37:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HymwgOBc5CWl; Tue, 25 Aug 2020 14:57:16 +0000 (UTC)
+	with ESMTP id lId1cXlA53Ir; Tue, 25 Aug 2020 15:37:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5B2B2882C4;
-	Tue, 25 Aug 2020 14:57:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0E01388683;
+	Tue, 25 Aug 2020 15:37:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D6DF91BF327
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 14:57:12 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B3DD61BF41B
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 15:37:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D362C87DD9
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 14:57:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AF0D522219
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 15:37:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gq6ATKqwfxWc for <devel@linuxdriverproject.org>;
- Tue, 25 Aug 2020 14:57:11 +0000 (UTC)
+ with ESMTP id tCh5UgyBQHF2 for <devel@linuxdriverproject.org>;
+ Tue, 25 Aug 2020 15:37:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com
- [213.167.242.64])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6CF2E8811E
- for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 14:57:11 +0000 (UTC)
-Received: from [192.168.0.20]
- (cpc89244-aztw30-2-0-cust3082.18-1.cable.virginm.net [86.31.172.11])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7972029E;
- Tue, 25 Aug 2020 16:57:07 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1598367428;
- bh=ApFDUDAZh97tdh8G+B/ThY2Go5hWkE36+XZ4tnyH2c0=;
- h=Reply-To:Subject:From:To:References:Date:In-Reply-To:From;
- b=H5z51FJGbyJguEYCNyY0/0s0QD+/zUvg4YVL1hh1z8W9l0P3FXK+nIXMR5QsxJhP5
- zjSr1Bx/NLsYClfN6CX2WyvpD+JJGN1xyb4lqDGiQElbT+3ciKTjR85XqTk2WkvJS1
- iqQOBoD0NV6wfHTcmWHoZlGDdtBwwk+WfEWSD9mw=
-Subject: Re: [PATCH v5 9/9] arm64: dts: renesas: salvator: add a connection
- from adv748x codec (HDMI input) to the R-Car SoC
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-To: Alex Riesen <alexander.riesen@cetitec.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- devel@driverdev.osuosl.org, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org
-References: <cover.1585852001.git.alexander.riesen@cetitec.com>
- <90f2c14fcbe5d06eefdaeadbe8a6efc8c91523f3.1585852001.git.alexander.riesen@cetitec.com>
- <fd19ca3c-e815-499e-0c46-0a4e2684b6b9@ideasonboard.com>
-Autocrypt: addr=kieran.bingham@ideasonboard.com; keydata=
- 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
- WZw01QYHU/GUV/zHJSFk
-Organization: Ideas on Board
-Message-ID: <c7d93d6c-4893-8bd0-5859-87f30389b5d5@ideasonboard.com>
-Date: Tue, 25 Aug 2020 15:57:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
+ [209.85.221.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0851F20345
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 15:37:37 +0000 (UTC)
+Received: by mail-wr1-f67.google.com with SMTP id c15so13144363wrs.11
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 08:37:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QiWW06IWe+VHrM4kR/F2lfc40IYQlHNu4dO/e0F06jo=;
+ b=KvGAEAd0OvyVMeh2NKOfrKkXjBDpUD9XSlK35v/laWG9LWTCv0zAtvEF/u9wI7i6Yc
+ 1l4Hd/9Pv2MZ4ub7JnqRhmtPFlFg8/ApuIQ3s6HNiJlEN+F8gnXQ6nb1RfhTKwqzM1Uu
+ fEGEr4KUFMVRnTUJqd4n6xw/SydHgMl/IeFaU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QiWW06IWe+VHrM4kR/F2lfc40IYQlHNu4dO/e0F06jo=;
+ b=W4qX727T8HaY8ZNY61fps1ogjnmPHJC2ofVXPR1CmgoplgD+/Juzr58vnQHML6YLBT
+ NqgVrWAazEAEL/iexeFNm/6WvF/SkXlTVY+tK6+huQn/acXxQTeWXW3swy91Czf5Gb79
+ NzhdBIaU14Rz1qNCBFUE69mzfxLbJDpJ3VsLsh1YVepPbmrmEo8moEuT2toio6JNcWP4
+ a4OKNBPIPgmAeYi3bfOcLX7lxm5eU3f0MrANicSivo2UCmEVZi1diABxZ1nuv4A83Y5A
+ RFG3aOP27/wA1lLvSVAyaRz/Oxl6S8EUpNhuNEl632dgxhmesfmC2QxRbWpUKXjcUBO/
+ bWcw==
+X-Gm-Message-State: AOAM533IHDFa+aogztyz3UptFvLXwNvgoC7pPZswTwJUBn+R3Jqf2lyi
+ DSUUti7eaC0/q6SjI0AmgRWhDkESGjdV939sgGbxkQ==
+X-Google-Smtp-Source: ABdhPJzkA/FEnRbvsbderhdII4r81LGYlNH/sKgYxDlux/BAP67c6Z42PfH4SooQdTRw5rz6G6M1mL/iLjbQ9lymr+k=
+X-Received: by 2002:adf:bb54:: with SMTP id x20mr10426414wrg.413.1598369855067; 
+ Tue, 25 Aug 2020 08:37:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <fd19ca3c-e815-499e-0c46-0a4e2684b6b9@ideasonboard.com>
-Content-Language: en-GB
+References: <20200824193036.6033-1-james.quinlan@broadcom.com>
+ <20200824193036.6033-8-james.quinlan@broadcom.com>
+ <20200825094506.GR1891694@smile.fi.intel.com>
+In-Reply-To: <20200825094506.GR1891694@smile.fi.intel.com>
+From: Jim Quinlan <james.quinlan@broadcom.com>
+Date: Tue, 25 Aug 2020 11:37:23 -0400
+Message-ID: <CA+-6iNzV5_M0g8tQEmscb_nq4s5PcS69tb9e2m8Pm1O1ifpuow@mail.gmail.com>
+Subject: Re: [PATCH v11 07/11] device-mapping: Introduce DMA range map,
+ supplanting dma_pfn_offset
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,272 +79,181 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: kieran.bingham@ideasonboard.com
+Cc: Rich Felker <dalias@libc.org>,
+ "open list:SUPERH" <linux-sh@vger.kernel.org>, David Airlie <airlied@linux.ie>,
+ "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
+ <linux-pci@vger.kernel.org>, Hanjun Guo <guohanjun@huawei.com>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
+ "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Julien Grall <julien.grall@arm.com>, "H. Peter Anvin" <hpa@zytor.com>,
+ Will Deacon <will@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
+ Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ Russell King <linux@armlinux.org.uk>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
+ Ingo Molnar <mingo@redhat.com>,
+ "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Len Brown <lenb@kernel.org>,
+ Ohad Ben-Cohen <ohad@wizery.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
+ <devicetree@vger.kernel.org>, Dan Williams <dan.j.williams@intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Borislav Petkov <bp@alien8.de>, Yong Deng <yong.deng@magewell.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
+ Felipe Balbi <balbi@kernel.org>, Saravana Kannan <saravanak@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ open list <linux-kernel@vger.kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ Stefano Stabellini <sstabellini@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Alex,
-
-On 18/06/2020 17:32, Kieran Bingham wrote:
-> Hi Alex,
-> 
-> On 02/04/2020 19:35, Alex Riesen wrote:
->> As all known variants of the Salvator board have the HDMI decoder
->> chip (the ADV7482) connected to the SSI4 on R-Car SoC, the ADV7482
->> endpoint and the connection definitions are placed in the common board
->> file.
->>
->> For the same reason, the CLK_C clock line and I2C configuration (similar
->> to the ak4613, on the same interface) are added into the common file.
->>
->> Signed-off-by: Alexander Riesen <alexander.riesen@cetitec.com>
->>
->> --
->>
->> v5: Add dummy ssi4 node to the rcar sound card in r8a77961, as the
->>     devices (Salvator-X 2nd version with R-Car M3 W+) also reference
->>     salvator-common.dtsi.
->>     Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
->>
->> v2: Also add ssi4_ctrl pin group in the sound pins. The pins are
->>     responsible for SCK4 (sample clock) WS4 and (word boundary input),
->>     and are required for SSI audio input over I2S.
->>
->>     The adv748x shall provide its own implementation of the output clock
->>     (MCLK), connected to the audio_clk_c line of the R-Car SoC.
->>
->>     If the frequency of the ADV748x MCLK were fixed, the clock
->>     implementation were not necessary, but it does not seem so: the MCLK
->>     depends on the value in a speed multiplier register and the input sample
->>     rate (48kHz).
->>
->>     Remove audio clock C from the clocks of adv7482.
->>
->>     The clocks property of the video-receiver node lists the input
->>     clocks of the device, which is quite the opposite from the
->>     original intention: the adv7482 on Salvator X boards is a
->>     provide of the MCLK clock for I2S audio output.
->>
->>     Remove old definition of &sound_card.dais and reduce size of changes
->>     in the Salvator-X specific device tree source.
->>
->>     Declare video-receiver a clock producer, as the adv748x driver
->>     implements the master clock used I2S audio output.
->>
->>     Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
->>
->> v2: The driver provides only MCLK clock, not the SCLK and LRCLK,
->>     which are part of the I2S protocol.
->>
->>     Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->> ---
->>  .../boot/dts/renesas/r8a77950-salvator-x.dts  |  3 +-
->>  arch/arm64/boot/dts/renesas/r8a77961.dtsi     |  1 +
->>  .../boot/dts/renesas/salvator-common.dtsi     | 47 +++++++++++++++++--
-
-Once again I'm back trying to test this series, and one issue I've had
-is that the board I have (r8a77951-salvator-xs.dts) isn't included in
-this DT update.
-
-For v6, Should we include the relevant changes to all the following?
-
-arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
-arch/arm64/boot/dts/renesas/r8a77951-salvator-x.dts
-arch/arm64/boot/dts/renesas/r8a77960-salvator-x.dts
-arch/arm64/boot/dts/renesas/r8a77965-salvator-x.dts
-arch/arm64/boot/dts/renesas/salvator-x.dtsi
-
-And perhaps handle the salvator-xs in a second (yet very similar) patch?
-
-arch/arm64/boot/dts/renesas/r8a77951-salvator-xs.dts
-arch/arm64/boot/dts/renesas/r8a77960-salvator-xs.dts
-arch/arm64/boot/dts/renesas/r8a77961-salvator-xs.dts
-arch/arm64/boot/dts/renesas/r8a77965-salvator-xs.dts
-arch/arm64/boot/dts/renesas/salvator-xs.dtsi
-
-I think I've added the relevant entries to my dtb, but I haven't
-successfully captured audio yet.
-
-I can see the device being listed through arecord:
-
-kbingham@salvator-xs:~$ arecord -l
-**** List of CAPTURE Hardware Devices ****
-card 0: rcarsound [rcar-sound], device 0: rsnd-dai.0-ak4613-hifi
-ak4613-hifi-0 []
-  Subdevices: 0/1
-  Subdevice #0: subdevice #0
-card 0: rcarsound [rcar-sound], device 3: rsnd-dai.3-adv748x-i2s
-adv748x.4-0070-3 []
-  Subdevices: 1/1
-  Subdevice #0: subdevice #0
+Hi Andy,
 
 
-But as yet, everything I try to record fails or is empty silence.
+On Tue, Aug 25, 2020 at 5:54 AM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Mon, Aug 24, 2020 at 03:30:20PM -0400, Jim Quinlan wrote:
+> > The new field 'dma_range_map' in struct device is used to facilitate the
+> > use of single or multiple offsets between mapping regions of cpu addrs and
+> > dma addrs.  It subsumes the role of "dev->dma_pfn_offset" which was only
+> > capable of holding a single uniform offset and had no region bounds
+> > checking.
+> >
+> > The function of_dma_get_range() has been modified so that it takes a single
+> > argument -- the device node -- and returns a map, NULL, or an error code.
+> > The map is an array that holds the information regarding the DMA regions.
+> > Each range entry contains the address offset, the cpu_start address, the
+> > dma_start address, and the size of the region.
+> >
+> > of_dma_configure() is the typical manner to set range offsets but there are
+> > a number of ad hoc assignments to "dev->dma_pfn_offset" in the kernel
+> > driver code.  These cases now invoke the function
+> > dma_attach_offset_range(dev, cpu_addr, dma_addr, size).
+>
+> ...
+>
+> > +     /*
+> > +      * Record all info in the generic DMA ranges array for struct device.
+> > +      */
+> > +     *map = r;
+> > +     for_each_of_range(&parser, &range) {
+> > +             pr_debug("dma_addr(%llx) cpu_addr(%llx) size(%llx)\n",
+> > +                      range.bus_addr, range.cpu_addr, range.size);
+> > +             r->cpu_start = range.cpu_addr;
+> > +             r->dma_start = range.bus_addr;
+> > +             r->size = range.size;
+>
+> > +             r->offset = (u64)range.cpu_addr - (u64)range.bus_addr;
+>
+> What's the point in explicit castings to the same type?
+No point.  If I have to send out another version I will fix this.
 
-Debugging ...
+>
+> > +             r++;
+> > +     }
+>
+> ...
+>
+> > +             phys_addr_t     paddr;
+> > +             dma_addr_t      dma_addr;
+> > +             struct device   dev_bogus;
+>
+> >               unittest(paddr == expect_paddr,
+> > -                      "of_dma_get_range wrong phys addr (%llx) on node %pOF", paddr, np);
+> > +                      "of_dma_get_range: wrong phys addr %llx (expecting %llx) on node %pOF\n",
+> > +                      (u64)paddr, expect_paddr, np);
+>
+> %llx -> %pap
+This was intentional -- I'm aware of %pap and %pad.  The problem is
+that %pa[pd]  print out a zero-filled 16 character number regardless
+of what the number is.  For example, 1 is "0x0000000000000001",
+whereas using %llx yields "1".
 
---
-Regards
+>
+> >               unittest(dma_addr == expect_dma_addr,
+> > -                      "of_dma_get_range wrong DMA addr (%llx) on node %pOF", dma_addr, np);
+> > +                      "of_dma_get_range: wrong DMA addr %llx (expecting %llx) on node %pOF\n",
+> > +                      (u64)dma_addr, expect_dma_addr, np);
+>
+> %llx -> %pad
+>
+> ...
+>
+> > +     if (mem->use_dev_dma_pfn_offset) {
+> > +             u64 base_addr = PFN_PHYS((u64)mem->pfn_base);
+>
+> Do we need explicit casting here?
+I don't think it is needed.  However, the "(u64)" is useless though
+since the macro recasts it to a phys_addr_t.
 
-Kieran
-
-
-
->>  3 files changed, 45 insertions(+), 6 deletions(-)
->>
->> diff --git a/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts b/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
->> index 2438825c9b22..e16c146808b6 100644
->> --- a/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
->> +++ b/arch/arm64/boot/dts/renesas/r8a77950-salvator-x.dts
->> @@ -146,7 +146,8 @@ &sata {
->>  &sound_card {
->>  	dais = <&rsnd_port0	/* ak4613 */
->>  		&rsnd_port1	/* HDMI0  */
->> -		&rsnd_port2>;	/* HDMI1  */
->> +		&rsnd_port2	/* HDMI1  */
->> +		&rsnd_port3>;	/* adv7482 hdmi-in  */
-> 
-> Ah - that was confusing at first... but HDMI0 and HDMI1 are *outputs*,
-> where of course the adv7482 is an input ;-)
-> 
-> 
-> Otherwise, I can't spot anything else yet so:
-> 
-> Reviewed-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-> 
-> But I fear there may have been some churn around here, so it would be
-> good to see a rebase too.
-> 
+If there is another version of this submission I will change this.
+>
+> > +
+> > +             return base_addr - dma_offset_from_phys_addr(dev, base_addr);
+> > +     }
+>
+> ...
+>
+> > +int dma_set_offset_range(struct device *dev, phys_addr_t cpu_start,
+> > +                      dma_addr_t dma_start, u64 size)
+> > +{
+> > +     struct bus_dma_region *map;
+> > +     u64 offset = (u64)cpu_start - (u64)dma_start;
+> > +
+> > +     if (dev->dma_range_map) {
+> > +             dev_err(dev, "attempt to add DMA range to existing map\n");
+> > +             return -EINVAL;
+> > +     }
+>
+> Wouldn't be better to do an assignment of offset here?
+IIRC this was what Christoph requested.  It has actually gone back and
+forth over the versions of this submission.
+>
+> > +     if (!offset)
+> > +             return 0;
+> > +
+> > +     map = kcalloc(2, sizeof(*map), GFP_KERNEL);
+> > +     if (!map)
+> > +             return -ENOMEM;
+> > +     map[0].cpu_start = cpu_start;
+> > +     map[0].dma_start = dma_start;
+> > +     map[0].offset = offset;
+> > +     map[0].size = size;
+> > +     dev->dma_range_map = map;
+> > +
+> > +     return 0;
+> > +}
+>
 > --
-> Kieran
-> 
-> 
-> 
->>  };
->>  
->>  &usb2_phy2 {
->> diff --git a/arch/arm64/boot/dts/renesas/r8a77961.dtsi b/arch/arm64/boot/dts/renesas/r8a77961.dtsi
->> index be3824bda632..b79907beaf31 100644
->> --- a/arch/arm64/boot/dts/renesas/r8a77961.dtsi
->> +++ b/arch/arm64/boot/dts/renesas/r8a77961.dtsi
->> @@ -861,6 +861,7 @@ rcar_sound,src {
->>  			rcar_sound,ssi {
->>  				ssi0: ssi-0 { };
->>  				ssi1: ssi-1 { };
->> +				ssi4: ssi-4 { };
->>  			};
->>  		};
->>  
->> diff --git a/arch/arm64/boot/dts/renesas/salvator-common.dtsi b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
->> index 98bbcafc8c0d..ead7f8d7a929 100644
->> --- a/arch/arm64/boot/dts/renesas/salvator-common.dtsi
->> +++ b/arch/arm64/boot/dts/renesas/salvator-common.dtsi
->> @@ -460,7 +460,7 @@ pca9654: gpio@20 {
->>  		#gpio-cells = <2>;
->>  	};
->>  
->> -	video-receiver@70 {
->> +	adv7482_hdmi_in: video-receiver@70 {
->>  		compatible = "adi,adv7482";
->>  		reg = <0x70 0x71 0x72 0x73 0x74 0x75
->>  		       0x60 0x61 0x62 0x63 0x64 0x65>;
->> @@ -469,6 +469,7 @@ video-receiver@70 {
->>  
->>  		#address-cells = <1>;
->>  		#size-cells = <0>;
->> +		#clock-cells = <0>; /* the MCLK for I2S output */
->>  
->>  		interrupt-parent = <&gpio6>;
->>  		interrupt-names = "intrq1", "intrq2";
->> @@ -510,6 +511,15 @@ adv7482_txb: endpoint {
->>  				remote-endpoint = <&csi20_in>;
->>  			};
->>  		};
->> +
->> +		port@c {
->> +			reg = <12>;
->> +
->> +			adv7482_i2s: endpoint {
->> +				remote-endpoint = <&rsnd_endpoint3>;
->> +				system-clock-direction-out;
->> +			};
->> +		};
->>  	};
->>  
->>  	csa_vdd: adc@7c {
->> @@ -684,7 +694,8 @@ sdhi3_pins_uhs: sd3_uhs {
->>  	};
->>  
->>  	sound_pins: sound {
->> -		groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a";
->> +		groups = "ssi01239_ctrl", "ssi0_data", "ssi1_data_a",
->> +			 "ssi4_data", "ssi4_ctrl";
->>  		function = "ssi";
->>  	};
->>  
->> @@ -733,8 +744,8 @@ &rcar_sound {
->>  	pinctrl-0 = <&sound_pins &sound_clk_pins>;
->>  	pinctrl-names = "default";
->>  
->> -	/* Single DAI */
->> -	#sound-dai-cells = <0>;
->> +	/* multi DAI */
->> +	#sound-dai-cells = <1>;
->>  
->>  	/* audio_clkout0/1/2/3 */
->>  	#clock-cells = <1>;
->> @@ -758,8 +769,19 @@ &rcar_sound {
->>  		 <&cpg CPG_MOD 1020>, <&cpg CPG_MOD 1021>,
->>  		 <&cpg CPG_MOD 1019>, <&cpg CPG_MOD 1018>,
->>  		 <&audio_clk_a>, <&cs2000>,
->> -		 <&audio_clk_c>,
->> +		 <&adv7482_hdmi_in>,
->>  		 <&cpg CPG_CORE CPG_AUDIO_CLK_I>;
->> +	clock-names = "ssi-all",
->> +		      "ssi.9", "ssi.8", "ssi.7", "ssi.6",
->> +		      "ssi.5", "ssi.4", "ssi.3", "ssi.2",
->> +		      "ssi.1", "ssi.0",
->> +		      "src.9", "src.8", "src.7", "src.6",
->> +		      "src.5", "src.4", "src.3", "src.2",
->> +		      "src.1", "src.0",
->> +		      "mix.1", "mix.0",
->> +		      "ctu.1", "ctu.0",
->> +		      "dvc.0", "dvc.1",
->> +		      "clk_a", "clk_b", "clk_c", "clk_i";
->>  
->>  	ports {
->>  		#address-cells = <1>;
->> @@ -777,6 +799,21 @@ rsnd_endpoint0: endpoint {
->>  				capture  = <&ssi1 &src1 &dvc1>;
->>  			};
->>  		};
->> +		rsnd_port3: port@3 {
->> +			reg = <3>;
->> +			rsnd_endpoint3: endpoint {
->> +				remote-endpoint = <&adv7482_i2s>;
->> +
->> +				dai-tdm-slot-num = <8>;
->> +				dai-tdm-slot-width = <32>;
->> +				dai-format = "left_j";
->> +				mclk-fs = <256>;
->> +				bitclock-master = <&adv7482_i2s>;
->> +				frame-master = <&adv7482_i2s>;
->> +
->> +				capture = <&ssi4>;
->> +			};
->> +		};
->>  	};
->>  };
->>  
->>
-> 
-
--- 
-Regards
---
-Kieran
+> With Best Regards,
+> Andy Shevchenko
+Thanks again,
+Jim
+>
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
