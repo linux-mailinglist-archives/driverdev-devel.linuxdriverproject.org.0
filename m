@@ -2,57 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 253D1251E6D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 19:35:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FF7B251E70
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 19:35:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AA4128835D;
-	Tue, 25 Aug 2020 17:35:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2365D88366;
+	Tue, 25 Aug 2020 17:35:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ucHPfYy24mmc; Tue, 25 Aug 2020 17:35:51 +0000 (UTC)
+	with ESMTP id L3Ii3Ki+qF3Z; Tue, 25 Aug 2020 17:35:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1701188357;
+	by whitealder.osuosl.org (Postfix) with ESMTP id EA79D88371;
 	Tue, 25 Aug 2020 17:35:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 290651BF41C
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 17:35:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 691E41BF41C
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 17:35:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 25E7588790
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 17:35:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6482B86E0D
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 17:35:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5EH3pGcC-HlM for <devel@linuxdriverproject.org>;
- Tue, 25 Aug 2020 17:35:43 +0000 (UTC)
+ with ESMTP id bZw2TQV7PdjH for <devel@linuxdriverproject.org>;
+ Tue, 25 Aug 2020 17:35:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.siol.net (mailoutvs30.siol.net [185.57.226.221])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 36044887BF
- for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 17:35:43 +0000 (UTC)
+Received: from mail.siol.net (mailoutvs40.siol.net [185.57.226.231])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2F29886CC5
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 17:35:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTP id CCD5C5247D2;
- Tue, 25 Aug 2020 19:35:40 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTP id 266975247CD;
+ Tue, 25 Aug 2020 19:35:43 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at psrvmta09.zcs-production.pri
 Received: from mail.siol.net ([127.0.0.1])
  by localhost (psrvmta09.zcs-production.pri [127.0.0.1]) (amavisd-new,
  port 10032)
- with ESMTP id Cuc8QcMBidfA; Tue, 25 Aug 2020 19:35:40 +0200 (CEST)
+ with ESMTP id zA2TNDro-sN3; Tue, 25 Aug 2020 19:35:42 +0200 (CEST)
 Received: from mail.siol.net (localhost [127.0.0.1])
- by mail.siol.net (Postfix) with ESMTPS id 85AE15247E0;
- Tue, 25 Aug 2020 19:35:40 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTPS id D1D435247BB;
+ Tue, 25 Aug 2020 19:35:42 +0200 (CEST)
 Received: from localhost.localdomain (89-212-178-211.dynamic.t-2.net
  [89.212.178.211]) (Authenticated sender: 031275009)
- by mail.siol.net (Postfix) with ESMTPSA id 3E7C75247D2;
- Tue, 25 Aug 2020 19:35:38 +0200 (CEST)
+ by mail.siol.net (Postfix) with ESMTPSA id 89D0D524801;
+ Tue, 25 Aug 2020 19:35:40 +0200 (CEST)
 From: Jernej Skrabec <jernej.skrabec@siol.net>
 To: mripard@kernel.org,
 	wens@csie.org,
 	paul.kocialkowski@bootlin.com
-Subject: [PATCH 4/5] media: cedrus: Add support for R40
-Date: Tue, 25 Aug 2020 19:35:22 +0200
-Message-Id: <20200825173523.1289379-5-jernej.skrabec@siol.net>
+Subject: [PATCH 5/5] ARM: dts: sun8i: r40: Add video engine node
+Date: Tue, 25 Aug 2020 19:35:23 +0200
+Message-Id: <20200825173523.1289379-6-jernej.skrabec@siol.net>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200825173523.1289379-1-jernej.skrabec@siol.net>
 References: <20200825173523.1289379-1-jernej.skrabec@siol.net>
@@ -78,41 +78,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Video engine in R40 is very similar to that in A33 but it runs on lower
-speed, at least according to OS images released by board designer.
+Allwinner R40 SoC has a video engine.
+
+Add a node for it.
 
 Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
 ---
- drivers/staging/media/sunxi/cedrus/cedrus.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ arch/arm/boot/dts/sun8i-r40.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
-index bc27f9430eeb..83a654a618be 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
-@@ -496,6 +496,11 @@ static const struct cedrus_variant sun8i_h3_cedrus_variant = {
- 	.mod_rate	= 402000000,
- };
+diff --git a/arch/arm/boot/dts/sun8i-r40.dtsi b/arch/arm/boot/dts/sun8i-r40.dtsi
+index 0c7526365896..7907569e7b5c 100644
+--- a/arch/arm/boot/dts/sun8i-r40.dtsi
++++ b/arch/arm/boot/dts/sun8i-r40.dtsi
+@@ -273,6 +273,17 @@ csi0: csi@1c09000 {
+ 			status = "disabled";
+ 		};
  
-+static const struct cedrus_variant sun8i_r40_cedrus_variant = {
-+	.capabilities	= CEDRUS_CAPABILITY_UNTILED,
-+	.mod_rate	= 297000000,
-+};
++		video-codec@1c0e000 {
++			compatible = "allwinner,sun8i-r40-video-engine";
++			reg = <0x01c0e000 0x1000>;
++			clocks = <&ccu CLK_BUS_VE>, <&ccu CLK_VE>,
++			<&ccu CLK_DRAM_VE>;
++			clock-names = "ahb", "mod", "ram";
++			resets = <&ccu RST_BUS_VE>;
++			interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
++			allwinner,sram = <&ve_sram 1>;
++		};
 +
- static const struct cedrus_variant sun50i_a64_cedrus_variant = {
- 	.capabilities	= CEDRUS_CAPABILITY_UNTILED |
- 			  CEDRUS_CAPABILITY_H265_DEC,
-@@ -536,6 +541,10 @@ static const struct of_device_id cedrus_dt_match[] = {
- 		.compatible = "allwinner,sun8i-h3-video-engine",
- 		.data = &sun8i_h3_cedrus_variant,
- 	},
-+	{
-+		.compatible = "allwinner,sun8i-r40-video-engine",
-+		.data = &sun8i_r40_cedrus_variant,
-+	},
- 	{
- 		.compatible = "allwinner,sun50i-a64-video-engine",
- 		.data = &sun50i_a64_cedrus_variant,
+ 		mmc0: mmc@1c0f000 {
+ 			compatible = "allwinner,sun8i-r40-mmc",
+ 				     "allwinner,sun50i-a64-mmc";
 -- 
 2.28.0
 
