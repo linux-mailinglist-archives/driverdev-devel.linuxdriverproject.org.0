@@ -1,58 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7EEC252360
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Aug 2020 00:10:16 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C118C86DEA;
-	Tue, 25 Aug 2020 22:10:14 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1MrwJRD4zp7t; Tue, 25 Aug 2020 22:10:14 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AC17886C9E;
-	Tue, 25 Aug 2020 22:10:13 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 350E71BF2B5
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 22:10:08 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 782042523B7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Aug 2020 00:37:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2CBED87ADF
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 22:10:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 67E5A880F9;
+	Tue, 25 Aug 2020 22:37:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id D-52nHmWpKGX; Tue, 25 Aug 2020 22:37:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id CF06987F81;
+	Tue, 25 Aug 2020 22:37:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9EA5D1BF2B5
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 22:37:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9B60586569
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 22:37:09 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y+7oXim0ELiX for <devel@linuxdriverproject.org>;
- Tue, 25 Aug 2020 22:10:08 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from a-mail-out-aws.streetsmartmobile.com (a-mail-out-aws.xora.com
- [18.205.89.234])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DE00287ACE
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 22:10:07 +0000 (UTC)
-X-Xora-MailScanner-From: krcarr02@gmail.com
-X-Xora-MailScanner-SpamScore: s
-X-Xora-MailScanner-SpamCheck: not spam, SpamAssassin (cached, score=1.2,
- required 6, ALL_TRUSTED -1.00, BAYES_00 -1.90,
- DATE_IN_FUTURE_06_12 1.95, DKIM_ADSP_CUSTOM_MED 0.00,
- FREEMAIL_ENVFROM_END_DIGIT 0.25, FREEMAIL_FROM 0.00,
- FREEMAIL_REPLYTO 1.00, LOTS_OF_MONEY 0.00, NML_ADSP_CUSTOM_MED 0.90)
-X-Xora-MailScanner: Found to be clean
-X-Xora-MailScanner-ID: 07PJmh3r033849
-X-Xora-MailScanner-Information: Please contact the ISP for more information
-Received: from [94.102.54.138] (a-mail-relay-snat-2200s-virt-aws.xoraint.com
- [10.95.109.158])
- by a-mail-out-aws.streetsmartmobile.com (8.14.4/8.14.4) with ESMTP id
- 07PJmh3r033849; Tue, 25 Aug 2020 14:02:44 -0700
-Message-Id: <202008252102.07PJmh3r033849@a-mail-out-aws.streetsmartmobile.com>
+ with ESMTP id eLxFTeDJwkRN for <devel@linuxdriverproject.org>;
+ Tue, 25 Aug 2020 22:37:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f68.google.com (mail-pj1-f68.google.com
+ [209.85.216.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1616B86566
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 22:37:09 +0000 (UTC)
+Received: by mail-pj1-f68.google.com with SMTP id z18so230073pjr.2
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 15:37:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=h8BiWXKFvIak7oPavGawDbOmOCv+Pubth92AHOwlC00=;
+ b=boHTh43dogQAH2Bqfwv2AXfykfHy0x+RV5X91Wvme+uBeXNlBq5si0yT4R4yZOsUq0
+ AH3lxzT7SvATWjNuMg1kjKCEEFsOjKd1lgW8cq2MWgthIcn3onDVdPGYx8mLCRRxD8dh
+ kIGSn7sDjz/48b6H4eof22zY3NeSMJQOr9sJLRMrfaUWu9jCrL8RbQrk41RLLHKv0LdG
+ fYeIG0UVr1DHBU7HT6ANghU+yok1k+s0BdOcgUv9SD6OKdMQfsnP9P52t2o4LG0mbY48
+ HdioEbfSIXJ94G8ooWpib8U3fTF5NCo89lFIyMXeTaCiEPlpQGjyxs3ZHpEpkZ4Gu1YR
+ niLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=h8BiWXKFvIak7oPavGawDbOmOCv+Pubth92AHOwlC00=;
+ b=rxUoKxGmUYrXrW2XKhc5uetEPzszpxwW5JywRdOMcbmddEkr6vUEIbN9ANtvO+S92H
+ qp5GGAQ9ldeoWcXhDcxLVcL2P3e5Gu/wsJxVhxU/RDrcTwL4a9o9BfBZZKPYbs6h6ebx
+ z4aPfDPDD5mu8zxuxBK2GXKpMvW87bkYHGZwXlo9SzVtUbb6pEm4Klnf9IoYlC8+6hx2
+ 8owW++SrzHh/dOwhVWRnAn3vqBUxrNouNG0GtaXIfnxkOV7x0+jcLp3oRx4heRqJAm7M
+ tAkONEc6U3bfpDB/yNwvJwHPJTwYiecDnn7/F+PD35ZFJkUsKkZR8Cgvsu3/2IEuM6gA
+ GXIA==
+X-Gm-Message-State: AOAM533NupfMZXyjMDuN+rLJyabL/jte2dck8sPlcCx80Uh/ANT9Fmz4
+ PSq1G+2J1s/lVMSgFYyiwPI=
+X-Google-Smtp-Source: ABdhPJwWo5oMcw5fIPVIufS5O3/R658R5fQL3Gpg+6QmXiHi7U5eHx/8KtfeJjSkYN1ZajgWH2mzJg==
+X-Received: by 2002:a17:90b:298:: with SMTP id
+ az24mr3536902pjb.192.1598395028675; 
+ Tue, 25 Aug 2020 15:37:08 -0700 (PDT)
+Received: from f3 (ae055068.dynamic.ppp.asahi-net.or.jp. [14.3.55.68])
+ by smtp.gmail.com with ESMTPSA id z25sm268312pfg.150.2020.08.25.15.37.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Aug 2020 15:37:07 -0700 (PDT)
+Date: Wed, 26 Aug 2020 07:37:02 +0900
+From: Benjamin Poirier <benjamin.poirier@gmail.com>
+To: Coiby Xu <coiby.xu@gmail.com>
+Subject: Re: [PATCH] staging: qlge: fix build breakage with dumping enabled
+Message-ID: <20200825223702.GA24803@f3>
+References: <20200821070334.738358-1-coiby.xu@gmail.com>
+ <20200821083159.GA16579@f3> <20200825111608.2hi52kcqcdjaenki@Rk>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Re: Advise Me
-To: Recipients <krcarr02@gmail.com>
-From: "Lucy Woolf" <krcarr02@gmail.com>
-Date: Tue, 25 Aug 2020 21:02:39 -0700
+Content-Disposition: inline
+In-Reply-To: <20200825111608.2hi52kcqcdjaenki@Rk>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,28 +87,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: woolflucy29@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, "supporter:QLOGIC QLGE 10Gb ETHERNET DRIVER"
+ <GR-Linux-NIC-Dev@marvell.com>, Manish Chopra <manishc@marvell.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:QLOGIC QLGE 10Gb ETHERNET DRIVER" <netdev@vger.kernel.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8gRGVhciwKCkdvb2QgZGF5IGRlYXIsIGFtIHNvcnJ5IHRvIGRpc3R1cmIgeW91IHdpdGgg
-bXkgbGlmZSBpc3N1ZSBidXQgSSBzZWVrIGZvciB5b3VyIGFkdmlzZS4gTXkgbmFtZSBpcyBMdWN5
-IFdvb2xmOyBJJ20gYSBCcml0IHdobyBsaXZlcyBpbiBEZXdzYnVyeSBFbmdsYW5kLiBJIGF0dGVu
-ZCB1bml2ZXJzaXR5IGFuZCBJIGRvIHBhcnQgdGltZSB3b3JrIGFzIGEgZHJlc3MgbWFrZXIuIEkg
-bG9zdCBteSBmYXRoZXIgaW4gYW4gYXV0byBhY2NpZGVudCBwcm9tcHRpbmcgbXkgbW90aGVy4oCZ
-cyBkZWF0aCBiZWNhdXNlIG9mIGl0LgoKTXkgRmF0aGVyLCBKYWNvYnMgV29vbGYsIHdpbGxlZCBt
-ZSBhIGxhcmdlIHBvcnRpb24gb2YgaGlzIHJlYWwgZXN0YXRlIGhvbGRpbmdzIGFuZCBpbmNvbWUg
-cHJvcGVydGllcyB2YWx1ZWQgYXQgwqM1LDcwMCwwMDAgUG91bmRzIFN0ZXJsaW5nLiBJIGhhdmUg
-eWV0IHRvIHBsYWNlIGEgY2xhaW0gb24gaXQgYnV0IHJpZ2h0IG5vdyB0aGluZ3MgYXJlIG5vdCBn
-b29kIGFuZCBJJ2QgbGlrZSB0byBoYXZlIGl0LiBNeSBGYXRoZXJzIHN0aXB1bGF0aW9uIHdhcyB0
-aGF0IEkgd2FzIGVpdGhlciAzMCB5ZWFycyBvZiBhZ2Ugb3IgbWFycmllZC4KCihBbGxvd2luZyBt
-eSBIdXNiYW5kIHRvIGJlIGluIGNvbnRyb2wpLiBJIGFtIDI2IHNvIG9ubHkgbXkgaHVzYmFuZCBj
-YW4gbWFrZSBhIGNsYWltIG9uIG15IGJlaGFsZi4gSeKAmWQgbGlrZSB0byBvZmZlciB5b3UgdGhl
-IG9wcG9ydHVuaXR5IHRvIHN0YW5kIGluIGFzIG15IEh1c2JhbmQgYW5kIHdpbGwgc2hhcmUgb2Yg
-aXQgZm9yIHlvdXIgYXNzaXN0YW5jZS4gWW91ciBpbnRlcmVzdCB3aWxsIGJlIHByb3Blcmx5IHBy
-b3RlY3RlZC4KClRoYW5rcy4KCkx1Y3kgV29vbGYuCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZl
-cnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On 2020-08-25 19:16 +0800, Coiby Xu wrote:
+[...]
+> > > @@ -1630,7 +1630,7 @@ void ql_dump_wqicb(struct wqicb *wqicb)
+> > >  		   (unsigned long long)le64_to_cpu(wqicb->cnsmr_idx_addr));
+> > >  }
+> > > 
+> > > -void ql_dump_tx_ring(struct tx_ring *tx_ring)
+> > > +void ql_dump_tx_ring(struct ql_adapter *qdev, struct tx_ring *tx_ring)
+> > >  {
+> > 
+> > This can be fixed without adding another argument:
+> > 	struct ql_adapter *qdev;
+> > 
+> > 	if (!tx_ring)
+> > 		return;
+> > 
+> > 	qdev = tx_ring->qdev;
+> > 
+> > ... similar comment for the other instances.
+> 
+> Thank you for the simpler solution!
+> 
+> For QL_OB_DUMP and QL_IB_DUMP, `struct ql_adapter *qdev` can't be
+> obtained via container_of. So qdev are still directly passed to these
+> functions.
+
+That's right; sorry I didn't check those functions earlier.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
