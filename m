@@ -1,71 +1,93 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3DAE25128B
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 09:04:37 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C4E4A8774F;
-	Tue, 25 Aug 2020 07:04:35 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ABwsQqcJ9NrY; Tue, 25 Aug 2020 07:04:35 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9DCD4867D4;
-	Tue, 25 Aug 2020 07:04:34 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 49FCA1BF2C3
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 07:04:32 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E6DD6251363
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 09:37:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3C518203D6
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 07:04:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0219B22886;
+	Tue, 25 Aug 2020 07:37:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uU6L+HBcMsSh; Tue, 25 Aug 2020 07:37:47 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 6EABF203FE;
+	Tue, 25 Aug 2020 07:37:44 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 61EB11BF2C3
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 07:37:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5E77A85116
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 07:37:42 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l8crNxTmfift for <devel@linuxdriverproject.org>;
- Tue, 25 Aug 2020 07:04:31 +0000 (UTC)
+ with ESMTP id y2cCYUlO3ri6 for <devel@linuxdriverproject.org>;
+ Tue, 25 Aug 2020 07:37:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from sonic310-13.consmr.mail.bf2.yahoo.com
- (sonic310-13.consmr.mail.bf2.yahoo.com [74.6.135.123])
- by silver.osuosl.org (Postfix) with ESMTPS id E21942001D
- for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 07:04:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1598339070; bh=I9cE52qY+/L3IUyr11oQWnUCHh04m6b8lIZvgDg8Tc0=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=fU+LBp8u5Y0RdPNK4x9gpRw2KroPDkWddS0zLaWkyrEe0WHwigPMO0cQf8ujWJRRlpTYg9sEV7o/zv0CeTiK8qVDuvtR3nKeWBJX788GzT1MxFgP1YsSpWxtoDWvbJ/615sbo+3w8LmPnrhPDvLpsZJKjMcMEmIqiew2aSClZ/6lVqUZKNScekzmL6COFQvPZBSeyZsmiMlRt4osfobzJ8NtY60hEaX33YF2otD3+lv16GA+h8OxKBEfF0orpWUYEBM9v3Pdqb3fxoa4q9sdRfhmvnSnrFIFE2DrUkgu/yQl/795SkW7Tew80EgNLIhaK46WoTQF4fbpCxotbNcCtw==
-X-YMail-OSG: Cux2HNkVM1mWpKNSqvDud34f9M1mDk6TgvxDCVo8_91kdMfqaFcSQp.zYq6w4jD
- .JRBVF2KKC0SjUsU06RDaUPtyqDc3Dtp9YZ9keDS6SL4F.tbygjFMd5vXAFq7Ky2Tfa1A8lbD06T
- M50JS3P1hO9ttCUit0SVAoOxwhFIbM.tX8LtP3gr0GZ6UuPF.j0.355NZkbPjqEBEUrDBMzBWQOo
- rBrsEVynLjIfgi7T0ZtyaFQ5BOasGXPUsgTaNm8Jz62tRi8DRA4FPeyDM5ygOL3Dg0pRy3Uvnook
- IsNVV6kxXNPySyRc1QDzwNTxozZm6p_dwje1eNH.sHj3oz1DlYRO0BETNsJnVPR0ZclrOMnPk_Ny
- Yj1fYAapfhfLdKhy2pYH4ydoVWjChkEmq0pMIAgJHxI0u1O6FNXEbv6e80W_qGv4ughxpxhuT6ED
- cwnWKut7EhLNpzc5VPrgldnNsdg8pHmUu7ZTPgQ4.VhgL_Yn9qOhi6v2avVuLFdX2fZ0V3eEVjUG
- E50eEdAkZrM62yw5o04jmcmC32B2sEHaSi0LUSgZovxVkq4HRX0O6lhlAWRxKX9GQ0dwF3fp0Df_
- hC7afg0qsOObvVtZIQfdlAPB60hgeWwMvj.eSaOtLAFBVDwWN9Kgfx3DEys5qRXXCpX5Ij49eXEY
- Srjp4CvENOUv6sj1wdztN901JS0Wb0P64JykhjnWilUmzBAh1sWvoolr7IpEAKv6je0fRBgHfmGM
- ZGU5V.C.D.L3nQ9w9tCuZuwJWUMwhDMW415sizEPn6UMgzgWF4OhS9qwPLcG..jDWl9MHsMJ.y6e
- QVhHz6XcihqMJL3z_5eYtbTB6ZO4_CSc5J22pVyp34_DlVzcdAtfRnQ2tNzeeHULlbBU_.zpGCTI
- l0It7musAXIV5RV0AlDDVi_GhAecRnA1.CSUZ6nuqWqa_WJ47Mz1GHm3CJkDCawZiWKIUuKSWKDm
- WPJ2h3Aoilgu9BJCjt8zwQeCZNUtl32ztpwGKyCuraulbD0HOG6i1JQX5UdcfUG3x4r6_V9_puxR
- tcUWx3ye9QAX2.6lG6g1ACIVst75dtz3zOB22nB1RIAJGztV7gvBlmNTrUc0564CgC2sFiJdd85Y
- 5gNgvQOGoip.Tw10nE259W4LGbaszY0kbC2e283.N4RfIKKDxsVB3SeFk2Lah2EjGJR_PAt7pC7Q
- mZoRzIyvks9apSIIDxiEYn_zL6r5YtCMvDw2oiSrxscV2yP09UCPnqYwy8KKYuKYM1gYaKgEmNyG
- B0IihVGUAFctLTGBp1.TIZGQbWM_sgDJN4iV7fYLbjB2daKVo.mX1WjKCF5YLsBhG1IA1N1mo0Fz
- 73b1FLDrPY6CVqY8EpiPTyPxNuMgeJs50iugBR16DZzxx6LsR12IjQpY1jflrUEdgY06EGKoP4XD
- vAvyu8eT20.ubwapYjuD.IBt6F2ZU8jz0ZvuzaMe1enRU5g--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic310.consmr.mail.bf2.yahoo.com with HTTP; Tue, 25 Aug 2020 07:04:30 +0000
-Date: Tue, 25 Aug 2020 07:04:28 +0000 (UTC)
-From: Sgt Vivian Robert  <sgtvivarob@gmail.com>
-Message-ID: <448853476.5259689.1598339068457@mail.yahoo.com>
-Subject: kindly respond to my mail
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D114684E5A
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 07:37:41 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 07P7ZDei193236;
+ Tue, 25 Aug 2020 07:37:40 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=yea0Yzl3MVzS3ZMBBvStQCGwcTQrcrJmt40gbGzaQqs=;
+ b=xmyrcOxJ55uSTkrT2XY5Q6jz0vgx3Kafs7gcoo1BU9/9rDwAmDZZymkPdUjouttDJLjj
+ b3K8ZiBHfplQCw7feE80XBl5OnCgg/9TadTp9hl190N6uEw6CX6EaB4P+LqCJz4UDZj3
+ WjLDR89Ntj7Zbfj40zWPJAizdNtiT2VHKx5BkzIdA1/YwoI7zAyroC3VP64sk8ytHakD
+ x8OkhjlNr7Lo9z2IYGna7SC16jgHe1rvjCX/6PapSYrmh5sqmxfvPtm+i8JdnIC4Ho7i
+ HBwzhjO1oovICRyINsQ1MZjowb0idHCUqlbWfdC/2Q1qMg0pydX7QEwg2Seiyx7RWYip xg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 333w6tq9nw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 25 Aug 2020 07:37:40 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 07P7alMC082370;
+ Tue, 25 Aug 2020 07:37:40 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 333r9jj73h-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 25 Aug 2020 07:37:40 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 07P7bRfL023102;
+ Tue, 25 Aug 2020 07:37:28 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 25 Aug 2020 00:37:27 -0700
+Date: Tue, 25 Aug 2020 10:37:13 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Alex Dewar <alex.dewar90@gmail.com>
+Subject: Re: [PATCH] staging: emxx_udc: Fix passing of NULL to
+ dma_alloc_coherent()
+Message-ID: <20200825073713.GR1793@kadam>
+References: <20200824142118.GA223827@mwanda>
+ <20200824151920.251446-1-alex.dewar90@gmail.com>
+ <20200824155712.4kgxwqiufm2ieboz@medion>
 MIME-Version: 1.0
-References: <448853476.5259689.1598339068457.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16455 YMailNodin Mozilla/5.0 (Windows NT 6.1;
- rv:79.0) Gecko/20100101 Firefox/79.0
+Content-Disposition: inline
+In-Reply-To: <20200824155712.4kgxwqiufm2ieboz@medion>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9723
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxscore=0 bulkscore=0
+ adultscore=0 spamscore=0 mlxlogscore=999 phishscore=0 suspectscore=2
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2008250057
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9723
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ impostorscore=0
+ mlxlogscore=999 suspectscore=2 phishscore=0 malwarescore=0 spamscore=0
+ priorityscore=1501 clxscore=1011 mlxscore=0 lowpriorityscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2008250057
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,40 +100,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sgtvivarob@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Saiyam Doshi <saiyamdoshi.in@gmail.com>,
+ Magnus Damm <damm+renesas@opensource.se>, YueHaibing <yuehaibing@huawei.com>,
+ linux-kernel@vger.kernel.org, "Javier F. Arias" <jarias.linux@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>,
+ Simon Horman <horms+renesas@verge.net.au>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CgpHb29kIERheSwgSSBhbSBnbGFkIHRvIGNvbnRhY3QgeW91IHRocm91Z2ggdGhpcyBtZWRpdW0g
-SeKAmW0gU2d0IFZpdmlhbiBSb2JlcnQgYW0gZnJvbSB1bml0ZWQgc3RhdGUsIDI4IHllYXJzIG9s
-ZCBzaW5nbGUgSSBhbSB0aGUgb25seSBzdXJ2aXZpbmcgY2hpbGQgb2YgbXkgbGF0ZSBwYXJlbnRz
-LCBJIGFtIEFtZXJpY2EgZmVtYWxlIHNvbGRpZXIgcHJlc2VudGx5IGluIEFmZ2hhbmlzdGFuIGZv
-ciB0aGUgdHJhaW5pbmcsIGFkdmlzaW5nIHRoZSBBZmdoYW4gZm9yY2VzIGFuZCBhbHNvIGhlbHBp
-bmcgaW4gc3RhYmlsaXppbmcgdGhlIGNvdW50cnkgYWdhaW5zdCBzZWN1cml0eSBjaGFsbGVuZ2Vz
-LCBhbSBBY3R1YWxseSBzZWVraW5nIHlvdXIgYXNzaXN0YW5jZSB0byBldmFjdWF0ZSB0aGUgc3Vt
-IG9mICQzLjUgbWlsbGlvbiwgVGhpcyBtb25leSBJIGdvdCBpdCBhcyBteSByZXdhcmQgaW4gc2Vy
-dmljZSBieSBBZmdoYW5pc3RhbiBnb3Zlcm5tZW50IHRvIHN1cHBvcnQgbWUgZm9yIG15IEdvb2Qg
-am9iIGluIHRoZWlyIGxhbmQuIFJpZ2h0IG5vdywgSSB3YW50IHlvdSB0byBzdGFuZCBhcyBteSBi
-ZW5lZmljaWFyeSBhbmQgcmVjZWl2ZSB0aGUgZnVuZCBteSBjZXJ0aWZpY2F0ZSBvZiBkZXBvc2l0
-IGZyb20gdGhlIEJhbmsgd2hlcmUgdGhpcyBmdW5kIGRlcG9zaXRlZCBhbmQgbXkgYXV0aG9yaXph
-dGlvbiBsZXR0ZXIgaXMgd2l0aCBtZSBub3cuTXkgY29udGFjdCB3aXRoIHlvdSBpcyBub3QgYnkg
-bXkgcG93ZXIgYnV0IGl0IGlzIGRpdmluZWx5IG1hZGUgZm9yIEdvZCdzIHB1cnBvc2UgdG8gYmUg
-ZnVsZmlsbGVkIGluIG91ciBsaXZlcy4gSSB3YW50IHlvdSB0byBiZSByZXN0IGFzc3VyZWQgdGhh
-dCB0aGlzIHRyYW5zYWN0aW9uIGlzIGxlZ2l0aW1hdGUgYW5kIGEgMTAwJSByaXNrIGZyZWUgaW52
-b2x2ZW1lbnQsIGFsbCB5b3UgaGF2ZSB0byBkbyBpcyB0byBrZWVwIGl0IHNlY3JldCBhbmQgY29u
-ZmlkZW50aWFsIHRvIHlvdXJzZWxmICwgdGhpcyB0cmFuc2FjdGlvbiB3aWxsIG5vdCB0YWtlIG1v
-cmUgdGhhbiA3IHdvcmtpbmcgYmFua2luZyBkYXlzIGZvciB0aGUgbW9uZXkgdG8gZ2V0IGludG8g
-eW91ciBhY2NvdW50IGJhc2VkIG9uIHlvdXIgc2luY2VyaXR5IGFuZCBjb29wZXJhdGlvbi4gaSB3
-YW50IHlvdSB0byB0YWtlIDQwJSBQZXJjZW50IG9mIHRoZSB0b3RhbCBtb25leSBmb3IgeW91ciBw
-ZXJzb25hbCB1c2UgV2hpbGUgMjAlIFBlcmNlbnQgb2YgdGhlIG1vbmV5IHdpbGwgZ28gdG8gY2hh
-cml0eSwgcGVvcGxlIGluIHRoZSBzdHJlZXQgYW5kIGhlbHBpbmcgdGhlIG9ycGhhbmFnZSB0aGUg
-cmVtYWluaW5nIDQwJSBwZXJjZW50IG9mIHRoZSB0b3RhbCBtb25leSAueW91IHdpbGwgYXNzaXN0
-IG1lIHRvIGludmVzdCBpdCBpbiBhIGdvb2QgcHJvZml0YWJsZSBWZW50dXJlIG9yIHlvdSBrZWVw
-IGl0IGZvciBtZSB1bnRpbCBJIGFycml2ZSB5b3VyIGNvdW50cnkuIElmIHlvdeKAmXJlIHdpbGxp
-bmcgdG8gYXNzaXN0IG1lIGNvbnRhY3QgbWUgdGhyb3VnaCBteSBlbWFpbCBhZGRyZXNzIOKAnHNn
-dHZpdmFyb2JAZ21haWwuY29tLgoKU2d0IFZpdmlhbiBSb2JlcnQKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxp
-bnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qu
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Mon, Aug 24, 2020 at 04:57:12PM +0100, Alex Dewar wrote:
+> On Mon, Aug 24, 2020 at 04:19:17PM +0100, Alex Dewar wrote:
+> > In nbu2ss_eq_queue() memory is allocated with dma_alloc_coherent(),
+> > though, strangely, NULL is passed as the struct device* argument. Pass
+> > the UDC's device instead.
+
+I think passing NULL was always wrong, but it used to not cause an Oops.
+This was changed a year or two ago.
+
+> > 
+> > Build-tested on x86 only.
+> > 
+> > Fixes: 33aa8d45a4fe ("staging: emxx_udc: Add Emma Mobile USB Gadget driver")
+> > Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
+> > ---
+> > 
+> > So I *think* this is the right fix, but I don't have the hardware so
+> > I've only been able to build-test it. My worry is that I could be
+> > passing in the wrong struct device* here, which would squelch the
+> > warning without fixing the breakage.
+> > 
+> > Can someone cleverer than me tell me if this makes sense?
+> > 
+> > - Alex
+> 
+> PS -- I meant to put an RFC in the subject line and an extra tag:
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> 
+
+I don't know which dev pointer we're supposed to pass...  It would be
+good to find someone to test the patch but if not then applying your
+patch is reasonable.
+
+But could you search through the file and update the rest as well.
+The dma_free_coherent() needs to be updated and there was a second
+dma_alloc_coherent() in the bug report.
+
+regards,
+dan carpenter
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
