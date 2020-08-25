@@ -1,72 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2E78251162
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 07:16:04 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E60DD251253
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 08:47:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 57B642275F;
-	Tue, 25 Aug 2020 05:16:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8A16787F6F;
+	Tue, 25 Aug 2020 06:47:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xuDni6mMMsYK; Tue, 25 Aug 2020 05:16:00 +0000 (UTC)
+	with ESMTP id 6-Kgs0D6HaUT; Tue, 25 Aug 2020 06:47:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 84A26226E5;
-	Tue, 25 Aug 2020 05:15:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5700587E58;
+	Tue, 25 Aug 2020 06:47:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C38471BF2EB
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 05:15:54 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D7A1B1BF35D
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 06:47:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BFF4788081
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 05:15:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D347F87E5F
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 06:47:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dhqEZPX7So0N for <devel@linuxdriverproject.org>;
- Tue, 25 Aug 2020 05:15:53 +0000 (UTC)
+ with ESMTP id 158MXpVRG7py for <devel@linuxdriverproject.org>;
+ Tue, 25 Aug 2020 06:47:42 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0212.hostedemail.com
- [216.40.44.212])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C799287EB5
- for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 05:15:53 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave08.hostedemail.com (Postfix) with ESMTP id 4168C182D48F3
- for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 04:56:45 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay04.hostedemail.com (Postfix) with ESMTP id B846B180A9F54;
- Tue, 25 Aug 2020 04:56:42 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:541:857:966:967:973:988:989:1260:1311:1314:1345:1437:1515:1535:1544:1711:1730:1747:1777:1792:1801:2196:2199:2393:2525:2560:2563:2682:2685:2859:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3354:3865:3867:3868:3870:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4321:4384:4385:4395:4605:5007:6119:6261:6737:6742:7875:9025:10004:10848:11026:11473:11658:11914:12043:12048:12050:12297:12438:12555:12679:12895:12986:13161:13229:13894:14096:14181:14394:14721:21080:21433:21451:21627:21740:21773:30054:30056,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:2, LUA_SUMMARY:none
-X-HE-Tag: chalk60_631385f27059
-X-Filterd-Recvd-Size: 5825
-Received: from joe-laptop.perches.com (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf08.hostedemail.com (Postfix) with ESMTPA;
- Tue, 25 Aug 2020 04:56:38 +0000 (UTC)
-From: Joe Perches <joe@perches.com>
-To: Jiri Kosina <trivial@kernel.org>, oprofile-list@lists.sf.net,
- linux-ide@vger.kernel.org, drbd-dev@lists.linbit.com,
- linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linaro-mm-sig@lists.linaro.org, intel-gfx@lists.freedesktop.org,
- linux-hwmon@vger.kernel.org, linux-input@vger.kernel.org,
- linux-bcache@vger.kernel.org, netdev@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
- linux-fsdevel@vger.kernel.org, reiserfs-devel@vger.kernel.org,
- linux-nfs@vger.kernel.org
-Subject: [PATCH 00/29] treewide: Convert comma separated statements
-Date: Mon, 24 Aug 2020 21:55:57 -0700
-Message-Id: <cover.1598331148.git.joe@perches.com>
-X-Mailer: git-send-email 2.26.0
+Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id ECE8887E58
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 06:47:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=3yMsVhcdm4uIPL75zrjrinoFwmad7XMD+ITiKRaneHM=; b=OL1yuYpSoSeg7b8RYZkspFpNgE
+ jGHr0Jo2wtiUXQ7rpIMh5dSb0GUCyHwBlhKWoWvR5STTN8EtQ8AqFoVkgeo4gjGIBPtYwVHqG7djz
+ YBGviXedA+rHXNaD2Go5H4REGoQdAM9Jm2fBSWhTWjvgaLq+f5rCttagang4GztXzIDcYFK300wOf
+ P3QzQ0YTz94jJgJpowD5eOTg1iUXDUTS7JY7N8GOgivWtNWO/QXt0wT6BUp3l7ySjBoEaR1q7Qm0o
+ o/hrUZ6HfhUO72v0t9324on7jY770IUJ8MWKvaNP9bfX1bYbze9XabV9l6UgJZStT2UjzkaxBhPjt
+ TQuBL+lQ==;
+Received: from hch by casper.infradead.org with local (Exim 4.92.3 #3 (Red Hat
+ Linux)) id 1kASjx-0000Ao-Vh; Tue, 25 Aug 2020 06:47:30 +0000
+Date: Tue, 25 Aug 2020 07:47:29 +0100
+From: Christoph Hellwig <hch@infradead.org>
+To: Tomer Samara <tomersamara98@gmail.com>
+Subject: Re: [PATCH v4 0/2] staging: android: Remove BUG/BUG_ON from ion
+Message-ID: <20200825064729.GA30014@infradead.org>
+References: <cover.1598023523.git.tomersamara98@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <cover.1598023523.git.tomersamara98@gmail.com>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,109 +66,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-s390@vger.kernel.org,
- linux-fbdev@vger.kernel.org, linux-ia64@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-block@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-kselftest@vger.kernel.org, linux-alpha@vger.kernel.org,
- sparclinux@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Riley Andrews <riandrews@android.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Suren Baghdasaryan <surenb@google.com>,
+ Hridya Valsaraju <hridya@google.com>, Arve Hj?nnev?g <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Laura Abbott <labbott@redhat.com>,
+ Martijn Coenen <maco@android.com>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-There are many comma separated statements in the kernel.
-See:https://lore.kernel.org/lkml/alpine.DEB.2.22.394.2008201856110.2524@hadrien/
+On Fri, Aug 21, 2020 at 06:27:04PM +0300, Tomer Samara wrote:
+> Remove BUG/BUG_ON from androind/ion
 
-Convert the comma separated statements that are in if/do/while blocks
-to use braces and semicolons.
-
-Many comma separated statements still exist but those are changes for
-another day.
-
-Joe Perches (29):
-  coding-style.rst: Avoid comma statements
-  alpha: Avoid comma separated statements
-  ia64: Avoid comma separated statements
-  sparc: Avoid comma separated statements
-  ata: Avoid comma separated statements
-  drbd: Avoid comma separated statements
-  lp: Avoid comma separated statements
-  dma-buf: Avoid comma separated statements
-  drm/gma500: Avoid comma separated statements
-  drm/i915: Avoid comma separated statements
-  hwmon: (scmi-hwmon): Avoid comma separated statements
-  Input: MT - Avoid comma separated statements
-  bcache: Avoid comma separated statements
-  media: Avoid comma separated statements
-  mtd: Avoid comma separated statements
-  8390: Avoid comma separated statements
-  fs_enet: Avoid comma separated statements
-  wan: sbni: Avoid comma separated statements
-  s390/tty3270: Avoid comma separated statements
-  scai/arm: Avoid comma separated statements
-  media: atomisp: Avoid comma separated statements
-  video: fbdev: Avoid comma separated statements
-  fuse: Avoid comma separated statements
-  reiserfs: Avoid comma separated statements
-  lib/zlib: Avoid comma separated statements
-  lib: zstd: Avoid comma separated statements
-  ipv6: fib6: Avoid comma separated statements
-  sunrpc: Avoid comma separated statements
-  tools: Avoid comma separated statements
-
- Documentation/process/coding-style.rst        |  17 +
- arch/alpha/kernel/pci_iommu.c                 |   8 +-
- arch/alpha/oprofile/op_model_ev4.c            |  22 +-
- arch/alpha/oprofile/op_model_ev5.c            |   8 +-
- arch/ia64/kernel/smpboot.c                    |   7 +-
- arch/sparc/kernel/smp_64.c                    |   7 +-
- drivers/ata/pata_icside.c                     |  21 +-
- drivers/block/drbd/drbd_receiver.c            |   6 +-
- drivers/char/lp.c                             |   6 +-
- drivers/dma-buf/st-dma-fence.c                |   7 +-
- drivers/gpu/drm/gma500/mdfld_intel_display.c  |  44 ++-
- drivers/gpu/drm/i915/gt/gen8_ppgtt.c          |   8 +-
- drivers/gpu/drm/i915/gt/intel_gt_requests.c   |   6 +-
- .../gpu/drm/i915/gt/selftest_workarounds.c    |   6 +-
- drivers/gpu/drm/i915/intel_runtime_pm.c       |   6 +-
- drivers/hwmon/scmi-hwmon.c                    |   6 +-
- drivers/input/input-mt.c                      |  11 +-
- drivers/md/bcache/bset.c                      |  12 +-
- drivers/md/bcache/sysfs.c                     |   6 +-
- drivers/media/i2c/msp3400-kthreads.c          |  12 +-
- drivers/media/pci/bt8xx/bttv-cards.c          |   6 +-
- drivers/media/pci/saa7134/saa7134-video.c     |   7 +-
- drivers/mtd/devices/lart.c                    |  10 +-
- drivers/net/ethernet/8390/axnet_cs.c          |  19 +-
- drivers/net/ethernet/8390/lib8390.c           |  14 +-
- drivers/net/ethernet/8390/pcnet_cs.c          |   6 +-
- .../ethernet/freescale/fs_enet/fs_enet-main.c |  11 +-
- drivers/net/wan/sbni.c                        | 101 +++---
- drivers/s390/char/tty3270.c                   |   6 +-
- drivers/scsi/arm/cumana_2.c                   |  19 +-
- drivers/scsi/arm/eesox.c                      |   9 +-
- drivers/scsi/arm/powertec.c                   |   9 +-
- .../media/atomisp/pci/atomisp_subdev.c        |   6 +-
- drivers/video/fbdev/tgafb.c                   |  12 +-
- fs/fuse/dir.c                                 |  24 +-
- fs/reiserfs/fix_node.c                        |  36 ++-
- lib/zlib_deflate/deftree.c                    |  49 ++-
- lib/zstd/compress.c                           | 120 ++++---
- lib/zstd/fse_compress.c                       |  24 +-
- lib/zstd/huf_compress.c                       |   6 +-
- net/ipv6/ip6_fib.c                            |  12 +-
- net/sunrpc/sysctl.c                           |   6 +-
- tools/lib/subcmd/help.c                       |  10 +-
- tools/power/cpupower/utils/cpufreq-set.c      |  14 +-
- tools/testing/selftests/vm/gup_benchmark.c    |  18 +-
- tools/testing/selftests/vm/userfaultfd.c      | 296 +++++++++++-------
- 46 files changed, 694 insertions(+), 382 deletions(-)
-
--- 
-2.26.0
-
+Please just remove ion.  It has been rejected and we have developed
+proper kernel subsystens to replace it.  Don't waste your time on it.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
