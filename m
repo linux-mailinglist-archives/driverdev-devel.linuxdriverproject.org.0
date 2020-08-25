@@ -1,51 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46D1B251FED
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 21:26:07 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42ED62521E4
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 22:22:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 073C8883AD;
-	Tue, 25 Aug 2020 19:26:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AD80021546;
+	Tue, 25 Aug 2020 20:22:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KYMD-mtWBuym; Tue, 25 Aug 2020 19:26:04 +0000 (UTC)
+	with ESMTP id 3j2AECVqpwJs; Tue, 25 Aug 2020 20:22:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BF65288304;
-	Tue, 25 Aug 2020 19:26:03 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C774E204FC;
+	Tue, 25 Aug 2020 20:22:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E8CB31BF404
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 19:26:01 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8FED91BF3D8
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 20:22:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E50738748E
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 19:26:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 87575882EC
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 20:22:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vdfqQ+HYhFob for <devel@linuxdriverproject.org>;
- Tue, 25 Aug 2020 19:25:59 +0000 (UTC)
+ with ESMTP id Y-JTdki9VYEj for <devel@linuxdriverproject.org>;
+ Tue, 25 Aug 2020 20:22:04 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.raffer.ru (unknown [37.18.35.45])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5323F86D89
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 19:25:58 +0000 (UTC)
-Received: from [103.151.125.123] (helo=mail.hato.com.tw)
- by mail.raffer.ru with esmtpa (Exim 4.69 (FreeBSD))
- (envelope-from <epaper@mail.hato.com.tw>) id 1k8w3l-0003ew-AD
- for devel@linuxdriverproject.org; Fri, 21 Aug 2020 05:41:37 +0400
-From: WIDOW COLON DENISE.G <epaper@mail.hato.com.tw>,
- =?UTF-8?B?wqA=?=@osuosl.org
-To: devel@linuxdriverproject.org
-Date: 20 Aug 2020 18:41:27 -0700
-Message-ID: <20200820184127.B15D914920EAB6FF@mail.hato.com.tw>
+Received: from asavdk3.altibox.net (asavdk3.altibox.net [109.247.116.14])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EEA07882EB
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 20:22:03 +0000 (UTC)
+Received: from ravnborg.org (unknown [188.228.123.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by asavdk3.altibox.net (Postfix) with ESMTPS id 199B620024;
+ Tue, 25 Aug 2020 22:21:54 +0200 (CEST)
+Date: Tue, 25 Aug 2020 22:21:53 +0200
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 00/49] DRM driver for Hikey 970
+Message-ID: <20200825202153.GA237836@ravnborg.org>
+References: <cover.1597833138.git.mchehab+huawei@kernel.org>
+ <20200819152120.GA106437@ravnborg.org>
+ <20200819174027.70b39ee9@coco.lan>
+ <20200819173558.GA3733@ravnborg.org>
+ <20200821155801.0b820fc6@coco.lan>
+ <20200821155505.GA300361@ravnborg.org>
+ <20200824180225.1a515b6a@coco.lan>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 103.151.125.123
-X-SA-Exim-Mail-From: epaper@mail.hato.com.tw
-Subject: HELLO
-X-SA-Exim-Version: 4.2
-X-SA-Exim-Scanned: No (on mail.raffer.ru); Unknown failure
+Content-Disposition: inline
+In-Reply-To: <20200824180225.1a515b6a@coco.lan>
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=f+hm+t6M c=1 sm=1 tr=0
+ a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
+ a=kj9zAlcOel0A:10 a=e5mUnYsNAAAA:8 a=jmfwfdV-BNFhccFjUE8A:9
+ a=CjuIK1q_8ugA:10 a=pBTelFdiagIA:10 a=Vxmtnl_E_bksehYqCbjh:22
+ a=pHzHmUro8NiASowvMSCR:22 a=xoEH_sTeL_Rfw54TyV31:22
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,48 +70,76 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: colondeniseglmv@outlook.fr
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Neil Armstrong <narmstrong@baylibre.com>,
+ Xinliang Liu <xinliang.liu@linaro.org>,
+ Wanchun Zheng <zhengwanchun@hisilicon.com>, linuxarm@huawei.com,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ devel@driverdev.osuosl.org, Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Xiubin Zhang <zhangxiubin1@huawei.com>, Wei Xu <xuwei5@hisilicon.com>,
+ David Airlie <airlied@linux.ie>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Tomi Valkeinen <tomi.valkeinen@ti.com>,
+ Bogdan Togorean <bogdan.togorean@analog.com>, Jakub Kicinski <kuba@kernel.org>,
+ Laurentiu Palcu <laurentiu.palcu@nxp.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Liwei Cai <cailiwei@hisilicon.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
+ Alexei Starovoitov <ast@kernel.org>, linaro-mm-sig@lists.linaro.org,
+ Rob Herring <robh+dt@kernel.org>, mauro.chehab@huawei.com,
+ Rob Clark <robdclark@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Liuyao An <anliuyao@huawei.com>, netdev@vger.kernel.org,
+ Rongrong Zou <zourongrong@gmail.com>, bpf@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8sCgpUaGFuayB5b3UgZm9yIHRoZSBhdHRlbnRpb24geW91IGdpdmUgdG8gbXkgZGVhcmVz
-dCB3aXNoLCBJIHdvdWxkIApsaWtlIHlvdSB0byBrbm93IHRoYXQgSSBkaWQgbm90IGdldCB0aGUg
-d3JvbmcgcGVyc29uIGJ5IHNlbmRpbmcgCnlvdSB0aGlzIG1lc3NhZ2UuIE15IGFyZGVudCB3aXNo
-IGhhcyBhbHdheXMgYmVlbiB0byBtZWV0IGFuIAphbm9ueW1vdXMgbmF0dXJhbCBwZXJzb24gc28g
-dGhhdCB0aGUgbGF0dGVyIGxlYWRzIHNvY2lhbCBhY3Rpb25zIAp0aHJvdWdoIGEgZm91bmRhdGlv
-bi4gSG93ZXZlciwgSSB3b3VsZCB1bmRlcnN0YW5kIHlvdXIgYW1hemVtZW50IAphdCBob3cgSSBk
-byBpdC4gTXkgbmFtZSBpcyBDT0xPTiBERU5JU0UgLkcgYm9ybiBvbiBKdWx5IDI3LCAxOTQyLCAK
-b2YgRnJlbmNoIG5hdGlvbmFsaXR5IGFuZCBJIGFtIGN1cnJlbnRseSB1bmRlciBtZWRpY2FsIApv
-YnNlcnZhdGlvbiBpbiBhIGhvc3BpdGFsIGluIFBPUlRVR0FMLiBJIGhhZCB0byBjb250YWN0IHlv
-dSBpbiAKdGhpcyB3YXkgYmVjYXVzZSBJIHdpc2ggdG8gbWFrZSBhIGRvbmF0aW9uIG9mIOKCrCAx
-LDUwMCwwMDAgdG8gaGVscCAKcGVvcGxlIGluIG5lZWQsIG1ha2UgcG9vciBmYW1pbGllcywgb3Jw
-aGFucyBoYXBweSwgaGVscCB5b3VuZyAKZW50cmVwcmVuZXVycyB3aG8gYXJlIGF0IGZ1bmRyYWlz
-aW5nIHRvIGdyb3cgdGhlaXIgYnVzaW5lc3MgCnNlY3RvcnMgLi4uIHRob3NlIGFyb3VuZCB5b3Uu
-IE15IHByb2Zlc3Npb25hbCBsaWZlIGhhcyBiZWVuIGEgCmxvbmcsIGNhbG0gcml2ZXIsIGVzcGVj
-aWFsbHkgc2luY2UgSSBoYXZlIGFsd2F5cyBsaXZlZCBmYXIgZnJvbSAKbXkgY291bnRyeS4gRmly
-c3QgaW4gS3V3YWl0LCB3aGVyZSBJIHdvcmtlZCBpbiB0aGUgcGV0cm9sZXVtIApzZWN0b3IgZm9y
-IHR3byB5ZWFycy4gVGhlbiBJIHdlbnQgdG8gdGhlIFJlcHVibGljIG9mIEJlbmluICgyMDAxKSAK
-d2hlcmUgSSBzZXQgdXAgc2V2ZXJhbCBjb21wYW5pZXMgKHJlYWwgZXN0YXRlLCBpbmR1c3RyaWFs
-IC4uLikuIApJdCBpcyBpbiB0aGlzIGNvdW50cnkgc28gd2VsY29taW5nIHRoYXQgSSBleHBlcmll
-bmNlZCByZWFsIApoYXBwaW5lc3MsIHRoYXQgb2YgYSBtYXJyaWFnZSB3aXRoIGEgQ2FuYWRpYW4g
-d2hvIGFsc28gd29ya2VkIGluIAp0aGlzIGNvdW50cnkuIFVuZm9ydHVuYXRlbHkgd2Ugd2VyZSBu
-b3QgZm9ydHVuYXRlIGVub3VnaCB0byBoYXZlIApjaGlsZHJlbi4gQWZ0ZXIgZml2ZSB5ZWFycyBv
-ZiBsaXZpbmcgdG9nZXRoZXIsIG15IGh1c2JhbmQgZGllZCAKYWZ0ZXIgYSBsb25nIGlsbG5lc3Mu
-IFNvIEkgd2FzIGxlZnQgYWxvbmUgYWdhaW4gd2l0aCBhIGJ1dGxlciBhdCAKbXkgZGlzcG9zYWwg
-YW5kIGEgZG9nIHVudGlsIHRoaXMgY2FuY2VyIGNhbWUgdG8gbGltaXQgbXkgbGlmZS4gSSAKaGF2
-ZSBiZWVuIGZpZ2h0aW5nIHRoaXMgZGlzZWFzZSBmb3IgYWxtb3N0IGZvdXIgeWVhcnMgYW5kIApt
-ZWRpY2luZSBjYW4gZG8gbm90aGluZyBtb3JlIGZvbGxvd2luZyB0aGUgcmVzdWx0cyBvZiBtZWRp
-Y2FsIApleGFtaW5hdGlvbnMgd2hpY2ggaW5kaWNhdGUgdGhhdCBteSBkYXlzIGFyZSBudW1iZXJl
-ZCwgZm9sbG93aW5nIAp0aGUgY29uZmVzc2lvbnMgb2YgbXkgZG9jdG9yLiBJIGhhZCBibG9ja2Vk
-IHRoaXMgbGFyZ2Ugc3VtIGluIG9uZSAKb2YgdGhlIEJlbmluIEJhbmtzIGZvciBhIGNvbnN0cnVj
-dGlvbiBwcm9qZWN0LiBJIHdpbGwgYmUgZ3JhdGVmdWwgCnRvIGVudHJ1c3QgdGhpcyBtb25leSB0
-byB5b3Ugc28gdGhhdCBteSBkb25hdGlvbiBwcm9qZWN0IApzdWNjZWVkcy4gSSB0YWtlIHlvdSBh
-Y2NlcHQgdGhpcywgYmVjYXVzZSBpdCBpcyBhIGdpZnQgZnJvbSBhIApkeWluZyB3b21hbiBhbmQg
-dGhhdCB3aXRob3V0IGFza2luZyBhbnl0aGluZyBpbiByZXR1cm4uIFBsZWFzZSAKcmVwbHkgdG8g
-bWUgYXMgc29vbiBhcyBwb3NzaWJsZSBhdCBteSBlbWFpbCBhZGRyZXNzLCB3aGljaCBpczogCmNv
-bG9uZGVuaXNlZ2xtdkBvdXRsb29rLmZyCgpXSURPVyBDT0xPTiBERU5JU0UgLkcKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlz
-dApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2
-ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Hi Mauro.
+
+Laurent and I discussed this driver a little on irc.
+Some highlights:
+
+This parts could use register names:
++       writel(0x2, noc_dss_base + 0xc);
++       writel(0x2, noc_dss_base + 0x8c);
++       writel(0x2, noc_dss_base + 0x10c);
++       writel(0x2, noc_dss_base + 0x18c);
+
+The two nodes in the DT for DPE and DSI uses overlapping range for reg
+entries. It looks like a syscon node or some iommu thing is needed to do
+this properly.
+
+The chain will lok like this:
+
+DPE -> DSI -> video mux -> {adv7533, panel}
+
+But drm_bridge has not yet support for such non-linear setup.
+The recommendation is to focus on the HDMI prat. Then we can later
+come up with support for a video mux.
+
+The video mux should have a dedicated node with one input node and two
+output nodes. Which is also where the gpio should be.
+
+The DSI node references two DPHY instances - should it be PHY driver(s)?
+
+Does the DSI part contain one or two instances. Clocks looks duplicated.
+
+Does the DPE and DSI share a lot of register blocks - or does it just
+look like this from a first point of view?
+
+You can read though the logs here:
+https://people.freedesktop.org/~cbrill/dri-log/index.php
+
+Could you please try to get back on some of the points above so we can
+help you move forward in the right direction.
+
+Thanks,
+	Sam
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
