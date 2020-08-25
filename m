@@ -1,59 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2977251269
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 08:52:18 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C3DAE25128B
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Aug 2020 09:04:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CA5CD86237;
-	Tue, 25 Aug 2020 06:52:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C4E4A8774F;
+	Tue, 25 Aug 2020 07:04:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jWH0QDX893Jg; Tue, 25 Aug 2020 06:52:16 +0000 (UTC)
+	with ESMTP id ABwsQqcJ9NrY; Tue, 25 Aug 2020 07:04:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B24B886256;
-	Tue, 25 Aug 2020 06:52:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9DCD4867D4;
+	Tue, 25 Aug 2020 07:04:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 74BFA1BF35D
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 06:52:13 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 49FCA1BF2C3
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 07:04:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6BF7587B05
- for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 06:52:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3C518203D6
+ for <devel@linuxdriverproject.org>; Tue, 25 Aug 2020 07:04:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nOpSbFqxW8KK for <devel@linuxdriverproject.org>;
- Tue, 25 Aug 2020 06:52:13 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 02BA087AA5
- for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 06:52:12 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 499412076C;
- Tue, 25 Aug 2020 06:52:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598338332;
- bh=ajZvLj9BjR77Id3A98oIhcvcaL+SUw6LfKF/69V/kLU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=AN/lXcIxfDf5rJ39XYKzwtM/ZtuUuqNlw9WEZeCXlOiC9jx4t9aMg77SIGfl10uMU
- ObFPWpLwJv5bhPB7R2iP4LeNNf7JDyEjiQC2oN8EotTe6EtwKeba74Go7XyM5zqMD2
- aGjmG54a6XqEz1QwkWRq6eGNYuQuTecuhWBektsM=
-Date: Tue, 25 Aug 2020 08:52:29 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH v4 0/2] staging: android: Remove BUG/BUG_ON from ion
-Message-ID: <20200825065229.GA1319770@kroah.com>
-References: <cover.1598023523.git.tomersamara98@gmail.com>
- <20200825064729.GA30014@infradead.org>
+ with ESMTP id l8crNxTmfift for <devel@linuxdriverproject.org>;
+ Tue, 25 Aug 2020 07:04:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from sonic310-13.consmr.mail.bf2.yahoo.com
+ (sonic310-13.consmr.mail.bf2.yahoo.com [74.6.135.123])
+ by silver.osuosl.org (Postfix) with ESMTPS id E21942001D
+ for <devel@driverdev.osuosl.org>; Tue, 25 Aug 2020 07:04:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1598339070; bh=I9cE52qY+/L3IUyr11oQWnUCHh04m6b8lIZvgDg8Tc0=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=fU+LBp8u5Y0RdPNK4x9gpRw2KroPDkWddS0zLaWkyrEe0WHwigPMO0cQf8ujWJRRlpTYg9sEV7o/zv0CeTiK8qVDuvtR3nKeWBJX788GzT1MxFgP1YsSpWxtoDWvbJ/615sbo+3w8LmPnrhPDvLpsZJKjMcMEmIqiew2aSClZ/6lVqUZKNScekzmL6COFQvPZBSeyZsmiMlRt4osfobzJ8NtY60hEaX33YF2otD3+lv16GA+h8OxKBEfF0orpWUYEBM9v3Pdqb3fxoa4q9sdRfhmvnSnrFIFE2DrUkgu/yQl/795SkW7Tew80EgNLIhaK46WoTQF4fbpCxotbNcCtw==
+X-YMail-OSG: Cux2HNkVM1mWpKNSqvDud34f9M1mDk6TgvxDCVo8_91kdMfqaFcSQp.zYq6w4jD
+ .JRBVF2KKC0SjUsU06RDaUPtyqDc3Dtp9YZ9keDS6SL4F.tbygjFMd5vXAFq7Ky2Tfa1A8lbD06T
+ M50JS3P1hO9ttCUit0SVAoOxwhFIbM.tX8LtP3gr0GZ6UuPF.j0.355NZkbPjqEBEUrDBMzBWQOo
+ rBrsEVynLjIfgi7T0ZtyaFQ5BOasGXPUsgTaNm8Jz62tRi8DRA4FPeyDM5ygOL3Dg0pRy3Uvnook
+ IsNVV6kxXNPySyRc1QDzwNTxozZm6p_dwje1eNH.sHj3oz1DlYRO0BETNsJnVPR0ZclrOMnPk_Ny
+ Yj1fYAapfhfLdKhy2pYH4ydoVWjChkEmq0pMIAgJHxI0u1O6FNXEbv6e80W_qGv4ughxpxhuT6ED
+ cwnWKut7EhLNpzc5VPrgldnNsdg8pHmUu7ZTPgQ4.VhgL_Yn9qOhi6v2avVuLFdX2fZ0V3eEVjUG
+ E50eEdAkZrM62yw5o04jmcmC32B2sEHaSi0LUSgZovxVkq4HRX0O6lhlAWRxKX9GQ0dwF3fp0Df_
+ hC7afg0qsOObvVtZIQfdlAPB60hgeWwMvj.eSaOtLAFBVDwWN9Kgfx3DEys5qRXXCpX5Ij49eXEY
+ Srjp4CvENOUv6sj1wdztN901JS0Wb0P64JykhjnWilUmzBAh1sWvoolr7IpEAKv6je0fRBgHfmGM
+ ZGU5V.C.D.L3nQ9w9tCuZuwJWUMwhDMW415sizEPn6UMgzgWF4OhS9qwPLcG..jDWl9MHsMJ.y6e
+ QVhHz6XcihqMJL3z_5eYtbTB6ZO4_CSc5J22pVyp34_DlVzcdAtfRnQ2tNzeeHULlbBU_.zpGCTI
+ l0It7musAXIV5RV0AlDDVi_GhAecRnA1.CSUZ6nuqWqa_WJ47Mz1GHm3CJkDCawZiWKIUuKSWKDm
+ WPJ2h3Aoilgu9BJCjt8zwQeCZNUtl32ztpwGKyCuraulbD0HOG6i1JQX5UdcfUG3x4r6_V9_puxR
+ tcUWx3ye9QAX2.6lG6g1ACIVst75dtz3zOB22nB1RIAJGztV7gvBlmNTrUc0564CgC2sFiJdd85Y
+ 5gNgvQOGoip.Tw10nE259W4LGbaszY0kbC2e283.N4RfIKKDxsVB3SeFk2Lah2EjGJR_PAt7pC7Q
+ mZoRzIyvks9apSIIDxiEYn_zL6r5YtCMvDw2oiSrxscV2yP09UCPnqYwy8KKYuKYM1gYaKgEmNyG
+ B0IihVGUAFctLTGBp1.TIZGQbWM_sgDJN4iV7fYLbjB2daKVo.mX1WjKCF5YLsBhG1IA1N1mo0Fz
+ 73b1FLDrPY6CVqY8EpiPTyPxNuMgeJs50iugBR16DZzxx6LsR12IjQpY1jflrUEdgY06EGKoP4XD
+ vAvyu8eT20.ubwapYjuD.IBt6F2ZU8jz0ZvuzaMe1enRU5g--
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic310.consmr.mail.bf2.yahoo.com with HTTP; Tue, 25 Aug 2020 07:04:30 +0000
+Date: Tue, 25 Aug 2020 07:04:28 +0000 (UTC)
+From: Sgt Vivian Robert  <sgtvivarob@gmail.com>
+Message-ID: <448853476.5259689.1598339068457@mail.yahoo.com>
+Subject: kindly respond to my mail
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200825064729.GA30014@infradead.org>
+References: <448853476.5259689.1598339068457.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16455 YMailNodin Mozilla/5.0 (Windows NT 6.1;
+ rv:79.0) Gecko/20100101 Firefox/79.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,34 +78,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
- Martijn Coenen <maco@android.com>, Tomer Samara <tomersamara98@gmail.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Joel Fernandes <joel@joelfernandes.org>, Riley Andrews <riandrews@android.com>,
- Arve Hj?nnev?g <arve@android.com>, Hridya Valsaraju <hridya@google.com>,
- Laura Abbott <labbott@redhat.com>, Suren Baghdasaryan <surenb@google.com>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: sgtvivarob@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Aug 25, 2020 at 07:47:29AM +0100, Christoph Hellwig wrote:
-> On Fri, Aug 21, 2020 at 06:27:04PM +0300, Tomer Samara wrote:
-> > Remove BUG/BUG_ON from androind/ion
-> 
-> Please just remove ion.  It has been rejected and we have developed
-> proper kernel subsystens to replace it.  Don't waste your time on it.
-
-It is going to be removed at the end of this year.  Why we keep it
-around until then, I really don't know, but John and Laura have this as
-the plan.
-
-thanks,
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgpHb29kIERheSwgSSBhbSBnbGFkIHRvIGNvbnRhY3QgeW91IHRocm91Z2ggdGhpcyBtZWRpdW0g
+SeKAmW0gU2d0IFZpdmlhbiBSb2JlcnQgYW0gZnJvbSB1bml0ZWQgc3RhdGUsIDI4IHllYXJzIG9s
+ZCBzaW5nbGUgSSBhbSB0aGUgb25seSBzdXJ2aXZpbmcgY2hpbGQgb2YgbXkgbGF0ZSBwYXJlbnRz
+LCBJIGFtIEFtZXJpY2EgZmVtYWxlIHNvbGRpZXIgcHJlc2VudGx5IGluIEFmZ2hhbmlzdGFuIGZv
+ciB0aGUgdHJhaW5pbmcsIGFkdmlzaW5nIHRoZSBBZmdoYW4gZm9yY2VzIGFuZCBhbHNvIGhlbHBp
+bmcgaW4gc3RhYmlsaXppbmcgdGhlIGNvdW50cnkgYWdhaW5zdCBzZWN1cml0eSBjaGFsbGVuZ2Vz
+LCBhbSBBY3R1YWxseSBzZWVraW5nIHlvdXIgYXNzaXN0YW5jZSB0byBldmFjdWF0ZSB0aGUgc3Vt
+IG9mICQzLjUgbWlsbGlvbiwgVGhpcyBtb25leSBJIGdvdCBpdCBhcyBteSByZXdhcmQgaW4gc2Vy
+dmljZSBieSBBZmdoYW5pc3RhbiBnb3Zlcm5tZW50IHRvIHN1cHBvcnQgbWUgZm9yIG15IEdvb2Qg
+am9iIGluIHRoZWlyIGxhbmQuIFJpZ2h0IG5vdywgSSB3YW50IHlvdSB0byBzdGFuZCBhcyBteSBi
+ZW5lZmljaWFyeSBhbmQgcmVjZWl2ZSB0aGUgZnVuZCBteSBjZXJ0aWZpY2F0ZSBvZiBkZXBvc2l0
+IGZyb20gdGhlIEJhbmsgd2hlcmUgdGhpcyBmdW5kIGRlcG9zaXRlZCBhbmQgbXkgYXV0aG9yaXph
+dGlvbiBsZXR0ZXIgaXMgd2l0aCBtZSBub3cuTXkgY29udGFjdCB3aXRoIHlvdSBpcyBub3QgYnkg
+bXkgcG93ZXIgYnV0IGl0IGlzIGRpdmluZWx5IG1hZGUgZm9yIEdvZCdzIHB1cnBvc2UgdG8gYmUg
+ZnVsZmlsbGVkIGluIG91ciBsaXZlcy4gSSB3YW50IHlvdSB0byBiZSByZXN0IGFzc3VyZWQgdGhh
+dCB0aGlzIHRyYW5zYWN0aW9uIGlzIGxlZ2l0aW1hdGUgYW5kIGEgMTAwJSByaXNrIGZyZWUgaW52
+b2x2ZW1lbnQsIGFsbCB5b3UgaGF2ZSB0byBkbyBpcyB0byBrZWVwIGl0IHNlY3JldCBhbmQgY29u
+ZmlkZW50aWFsIHRvIHlvdXJzZWxmICwgdGhpcyB0cmFuc2FjdGlvbiB3aWxsIG5vdCB0YWtlIG1v
+cmUgdGhhbiA3IHdvcmtpbmcgYmFua2luZyBkYXlzIGZvciB0aGUgbW9uZXkgdG8gZ2V0IGludG8g
+eW91ciBhY2NvdW50IGJhc2VkIG9uIHlvdXIgc2luY2VyaXR5IGFuZCBjb29wZXJhdGlvbi4gaSB3
+YW50IHlvdSB0byB0YWtlIDQwJSBQZXJjZW50IG9mIHRoZSB0b3RhbCBtb25leSBmb3IgeW91ciBw
+ZXJzb25hbCB1c2UgV2hpbGUgMjAlIFBlcmNlbnQgb2YgdGhlIG1vbmV5IHdpbGwgZ28gdG8gY2hh
+cml0eSwgcGVvcGxlIGluIHRoZSBzdHJlZXQgYW5kIGhlbHBpbmcgdGhlIG9ycGhhbmFnZSB0aGUg
+cmVtYWluaW5nIDQwJSBwZXJjZW50IG9mIHRoZSB0b3RhbCBtb25leSAueW91IHdpbGwgYXNzaXN0
+IG1lIHRvIGludmVzdCBpdCBpbiBhIGdvb2QgcHJvZml0YWJsZSBWZW50dXJlIG9yIHlvdSBrZWVw
+IGl0IGZvciBtZSB1bnRpbCBJIGFycml2ZSB5b3VyIGNvdW50cnkuIElmIHlvdeKAmXJlIHdpbGxp
+bmcgdG8gYXNzaXN0IG1lIGNvbnRhY3QgbWUgdGhyb3VnaCBteSBlbWFpbCBhZGRyZXNzIOKAnHNn
+dHZpdmFyb2JAZ21haWwuY29tLgoKU2d0IFZpdmlhbiBSb2JlcnQKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxp
+bnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qu
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
