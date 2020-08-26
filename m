@@ -1,119 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB107252716
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Aug 2020 08:35:55 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD880252A11
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Aug 2020 11:32:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8338086DB3;
-	Wed, 26 Aug 2020 06:35:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F09168689B;
+	Wed, 26 Aug 2020 09:32:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AilF8sklQ55O; Wed, 26 Aug 2020 06:35:51 +0000 (UTC)
+	with ESMTP id jXj0WCF0PAbB; Wed, 26 Aug 2020 09:32:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E559C86C53;
-	Wed, 26 Aug 2020 06:35:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9F86B868C7;
+	Wed, 26 Aug 2020 09:32:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5F9001BF475
- for <devel@linuxdriverproject.org>; Wed, 26 Aug 2020 06:35:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 792281BF324
+ for <devel@linuxdriverproject.org>; Wed, 26 Aug 2020 09:32:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 50E428682F
- for <devel@linuxdriverproject.org>; Wed, 26 Aug 2020 06:35:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7226A8704C
+ for <devel@linuxdriverproject.org>; Wed, 26 Aug 2020 09:32:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QBbA11uGnYlU for <devel@linuxdriverproject.org>;
- Wed, 26 Aug 2020 06:35:47 +0000 (UTC)
+ with ESMTP id T+RKT-KALAOP for <devel@linuxdriverproject.org>;
+ Wed, 26 Aug 2020 09:32:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mailout1.w1.samsung.com (mailout1.w1.samsung.com
- [210.118.77.11])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EA72186BC6
- for <devel@driverdev.osuosl.org>; Wed, 26 Aug 2020 06:35:46 +0000 (UTC)
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200826063545euoutp01e4a4ee69b6f1d3cc6d88413813e8ef47~uve1nsyO92034920349euoutp01S
- for <devel@driverdev.osuosl.org>; Wed, 26 Aug 2020 06:35:45 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
- 20200826063545euoutp01e4a4ee69b6f1d3cc6d88413813e8ef47~uve1nsyO92034920349euoutp01S
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1598423745;
- bh=RMBhG1Fw6ugPclokWBJRv00vV8Qg1yQmDHqJxe7Y93k=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=PKaN8Mt9QModFWcEUWlluZ3FVlR9AY1Eot8Hn6bF3l3KipPNn9efH4x6yQdgsH8uG
- /sZeMO045PbeQP6avg0ouFxKgWYXDyE2row9gJ2Qj7e97sWs/ohh3fT783TW3ri0O2
- hgVrIrWs+GUvnTTvIME3msJnegKacwEWR4aoruJk=
-Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTP id
- 20200826063544eucas1p2892e06b5f27fd3ac175767a0187bfecd~uve1TIyss0404404044eucas1p2o;
- Wed, 26 Aug 2020 06:35:44 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
- eusmges2new.samsung.com (EUCPMTA) with SMTP id 17.BD.05997.0C2064F5; Wed, 26
- Aug 2020 07:35:44 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20200826063544eucas1p230abe33c28618e82608c5b40eb50fa87~uve00eZKb0398803988eucas1p22;
- Wed, 26 Aug 2020 06:35:44 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200826063544eusmtrp1cc29caedff01a18f8127ae3390732c5d~uve0zvtIk1167511675eusmtrp1K;
- Wed, 26 Aug 2020 06:35:44 +0000 (GMT)
-X-AuditID: cbfec7f4-677ff7000000176d-e8-5f4602c0fa83
-Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
- eusmgms1.samsung.com (EUCPMTA) with SMTP id 5F.D0.06314.0C2064F5; Wed, 26
- Aug 2020 07:35:44 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20200826063543eusmtip2c16dfa5c1225eec61b01617e9c56a325~uve0EBA_s0302303023eusmtip21;
- Wed, 26 Aug 2020 06:35:43 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v9 27/32] staging: tegra-vde: fix common struct sg_table
- related issues
-Date: Wed, 26 Aug 2020 08:33:11 +0200
-Message-Id: <20200826063316.23486-28-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200826063316.23486-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0VSa0iTURjmfHel1dcWebrQYN0wSjP7ccKSkorzJxD6lWW29ENFXbapXRBa
- mVm6WVZgzRzDectL2tJZKzOvs1wmaWVo5bCkktnFJSqmuT6zf8/zvJfneQ+HI6VD9HIuVpUk
- qFXKeAXjTVnbJl5sekLsjdjcot+I9J1PCXT3RhWNZqw5JHrkmGRR+Y9BgHp+fWNQmrmKQbfL
- WwlkaghC5w0FFHL3OAlkGXxNo27bLQbpqmtpdMltYFBlyzsWFVumCNT4/SONJmxGaqcMVxgr
- AH7/uJnC9WMmCj8wvGOxpewSg+vGBmjckF/B4g9ZdgLfKzyD+6YHSXyttwTgh2+1DNanjTA4
- u6YM4FHLqtBFYd7bo4T42BRB7R98xDumK7uKTBxadFJbdFALjJJM4MVBfissHs+hMoE3J+VL
- AWx+amZF4p4ljxxzlVEAp8+9miXc35EB6xFRLwGwLfsnMT/hcpaSnr0MHwAzXZmMBy/h0wFs
- 1y/wYJJ3UNAxHuhZJOMPwLMT4R6Z4tfCi521tAdL+GA4fdNCivHksLz6yV/sNavbsy4zHi/I
- 6znYPNVFi0274WTRCCNiGfxqr2FFvBJ2XNNR4kAagM7OSlYkOgC7z90AYlcQ7O+cZDyJSN4X
- Vtn8RXkXLOwrmLt4Iex1LRbzL4RXrbmkKEvgxQtSsXsdNNjvzNs2dr2cy4/h+/xaIL5PDoC2
- 3GHiCpAb/puZACgDPkKyJiFa0GxRCSf8NMoETbIq2i/yWIIFzP6+jmm7+z6wTR1tAjwHFAsk
- JmZPhJRWpmhOJTQByJGKJZKQ5x2HpZIo5anTgvpYhDo5XtA0gRUcpfCRBBZ8CZfy0cokIU4Q
- EgX1vyrBeS3Xgpj15qDKEK8htrqi5ZBbBccjV1ywksvSV6tVkwFsRn3c79gB48PQQfMXmXx4
- jSSpMs2ZXujase3wTOzdLJ+S/ce7Rz93nwzz3SM31amCnYWlOrev/4jfj/ZU/eU1dFGc601q
- atT1PH5vZL9t3/qQMCt0hS+dwRnPrrYGyfM+5SooTYwyYAOp1ij/AKFVXqR5AwAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrJIsWRmVeSWpSXmKPExsVy+t/xe7oHmNziDS6s4rboPXeSyWLjjPWs
- Fv+3TWS22HPmF7vF6o+PGS2ufH3PZtG8eD2bxcrVR5ksFuy3tmiZtYjF4suVh0wWmx5fY7W4
- vGsOm0XPhq2sFp1fZrFZrD1yl91i2aY/TBYHPzxhtfi5ax6Lg7DHmnlrGD3u7TvM4rH32wIW
- j52z7rJ7bFrVyeax/dsDVo/9c9ewe9zvPs7ksXlJvcftf4+ZPSbfWM7osftmA5tHb/M7No++
- LasYPT5vkgvgj9KzKcovLUlVyMgvLrFVija0MNIztLTQMzKx1DM0No+1MjJV0rezSUnNySxL
- LdK3S9DLuNC3nrngGX9Fw9LoBsZ5vF2MHBwSAiYSD7YldDFycQgJLGWU2DrhMGsXIydQXEbi
- 5LQGKFtY4s+1LjaIok+MEm//bWEDSbAJGEp0vYVIiAh0MkpM6/7IDuIwC9xgkZi75QM7SJWw
- QLjEt0tfwEaxCKhKdJzbCmbzCthJ/Ju5iRlihbzE6g0HwGxOoPjx7n6wDUICthKn185gnsDI
- t4CRYRWjSGppcW56brGhXnFibnFpXrpecn7uJkZgNG479nPzDsZLG4MPMQpwMCrx8C5gc40X
- Yk0sK67MPcQowcGsJMLrdPZ0nBBvSmJlVWpRfnxRaU5q8SFGU6CjJjJLiSbnAxNFXkm8oamh
- uYWlobmxubGZhZI4b4fAwRghgfTEktTs1NSC1CKYPiYOTqkGRvVlRlMqbdNDqxZGpRxo3tRV
- qTy9uuxX4RpuH2suy9XlvXfv1tkFbCtqvary57L5j3jzPfzmTQEbc/fb8l/7dnPRrRjtsvs9
- zq1dHEE34pQZfv5q1DlWcKxhy/6ICqOyFPMY26txJs+vak7iqRCLPfRsH6vmxN367+6aqV39
- JjSVY7ZAq+sEJZbijERDLeai4kQAKYI8btwCAAA=
-X-CMS-MailID: 20200826063544eucas1p230abe33c28618e82608c5b40eb50fa87
-X-Msg-Generator: CA
-X-RootMTR: 20200826063544eucas1p230abe33c28618e82608c5b40eb50fa87
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200826063544eucas1p230abe33c28618e82608c5b40eb50fa87
-References: <20200826063316.23486-1-m.szyprowski@samsung.com>
- <CGME20200826063544eucas1p230abe33c28618e82608c5b40eb50fa87@eucas1p2.samsung.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C3EF987034
+ for <devel@driverdev.osuosl.org>; Wed, 26 Aug 2020 09:32:17 +0000 (UTC)
+Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
+ [95.90.213.197])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 58A6D2071E;
+ Wed, 26 Aug 2020 09:32:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1598434337;
+ bh=1uKAtHgq/9N9ximK/Z3MWdo14t/JYBeezQuBCqsx+Xg=;
+ h=From:To:Cc:Subject:Date:From;
+ b=zeaFssWIXmjAn2szjpkPkY3GWdKnO7C9aPjh4eih7wLsYCQ0ug4Llt63UuK1BPdKh
+ MMy41Ikb2PKjN2PQa2p2XGS+uh8yVLv8YkcLc/oN8qrmraK+FyucdLKyKa0xmWmyLO
+ L58xJ3ZLGoSPjQGKepgSL5lfYIUXHmKd61eO5mKE=
+Received: from mchehab by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1kArmx-002BZN-6P; Wed, 26 Aug 2020 11:32:15 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Linux Doc Mailing List <linux-doc@vger.kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH RFC] staging: hikey9xx: update references inside the yaml files
+Date: Wed, 26 Aug 2020 11:32:12 +0200
+Message-Id: <809bce085b0a9a9ede74d619d160e1e04723709d.1598434228.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.26.2
+MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,69 +67,71 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- linux-tegra@vger.kernel.org, Dmitry Osipenko <digetx@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
-MIME-Version: 1.0
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ Jonathan Corbet <corbet@lwn.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The Documentation/DMA-API-HOWTO.txt states that the dma_map_sg() function
-returns the number of the created entries in the DMA address space.
-However the subsequent calls to the dma_sync_sg_for_{device,cpu}() and
-dma_unmap_sg must be called with the original number of the entries
-passed to the dma_map_sg().
+The references inside those files were not assuming that
+they would end at the staging tree.
 
-struct sg_table is a common structure used for describing a non-contiguous
-memory buffer, used commonly in the DRM and graphics subsystems. It
-consists of a scatterlist with memory pages and DMA addresses (sgl entry),
-as well as the number of scatterlist entries: CPU pages (orig_nents entry)
-and DMA mapped pages (nents entry).
-
-It turned out that it was a common mistake to misuse nents and orig_nents
-entries, calling DMA-mapping functions with a wrong number of entries or
-ignoring the number of mapped entries returned by the dma_map_sg()
-function.
-
-To avoid such issues, lets use a common dma-mapping wrappers operating
-directly on the struct sg_table objects and use scatterlist page
-iterators where possible. This, almost always, hides references to the
-nents and orig_nents entries, making the code robust, easier to follow
-and copy/paste safe.
-
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Reviewed-by: Dmitry Osipenko <digetx@gmail.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/media/tegra-vde/iommu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/tegra-vde/iommu.c b/drivers/staging/media/tegra-vde/iommu.c
-index 6af863d92123..adf8dc7ee25c 100644
---- a/drivers/staging/media/tegra-vde/iommu.c
-+++ b/drivers/staging/media/tegra-vde/iommu.c
-@@ -36,8 +36,8 @@ int tegra_vde_iommu_map(struct tegra_vde *vde,
+Greg,
+
+I noticed this when running ./scripts/documentation-file-ref-check.
+
+Not sure if it is worth applying this patch, as this should be
+reverted when moving those files out of staging. 
+
+That's why I'm sending it as RFC.
+
+ drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml     | 2 +-
+ drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
+index c76093f320f1..80e74c261e05 100644
+--- a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
++++ b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
+@@ -17,7 +17,7 @@ description: |
+   node.
  
- 	addr = iova_dma_addr(&vde->iova, iova);
+   The SPMI controller part is provided by
+-  Documentation/devicetree/bindings/spmi/hisilicon,hisi-spmi-controller.yaml.
++  drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml.
  
--	size = iommu_map_sg(vde->domain, addr, sgt->sgl, sgt->nents,
--			    IOMMU_READ | IOMMU_WRITE);
-+	size = iommu_map_sgtable(vde->domain, addr, sgt,
-+				 IOMMU_READ | IOMMU_WRITE);
- 	if (!size) {
- 		__free_iova(&vde->iova, iova);
- 		return -ENXIO;
+ properties:
+   $nodename:
+diff --git a/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml b/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
+index b1cfa9c3aca6..f2a56fa4e78e 100644
+--- a/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
++++ b/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
+@@ -14,7 +14,7 @@ description: |
+   It is a MIPI System Power Management (SPMI) controller.
+ 
+   The PMIC part is provided by
+-  Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml.
++  drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml.
+ 
+ properties:
+   $nodename:
+@@ -41,7 +41,7 @@ patternProperties:
+       PMIC properties, which are specific to the used SPMI PMIC device(s).
+       When used in combination with HiSilicon 6421v600, the properties
+       are documented at
+-      Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml.
++      drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml.
+ 
+ examples:
+   - |
 -- 
-2.17.1
+2.26.2
+
 
 _______________________________________________
 devel mailing list
