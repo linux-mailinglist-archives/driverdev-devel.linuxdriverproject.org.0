@@ -1,60 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD880252A11
-	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Aug 2020 11:32:24 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 590EA252ABA
+	for <lists+driverdev-devel@lfdr.de>; Wed, 26 Aug 2020 11:52:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F09168689B;
-	Wed, 26 Aug 2020 09:32:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9E76287F8E;
+	Wed, 26 Aug 2020 09:52:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jXj0WCF0PAbB; Wed, 26 Aug 2020 09:32:22 +0000 (UTC)
+	with ESMTP id 47Rpzyo8Xz0k; Wed, 26 Aug 2020 09:52:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9F86B868C7;
-	Wed, 26 Aug 2020 09:32:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E63FF87E9D;
+	Wed, 26 Aug 2020 09:52:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 792281BF324
- for <devel@linuxdriverproject.org>; Wed, 26 Aug 2020 09:32:18 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 06EFB1BF324
+ for <devel@linuxdriverproject.org>; Wed, 26 Aug 2020 09:52:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7226A8704C
- for <devel@linuxdriverproject.org>; Wed, 26 Aug 2020 09:32:18 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EADB922865
+ for <devel@linuxdriverproject.org>; Wed, 26 Aug 2020 09:52:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T+RKT-KALAOP for <devel@linuxdriverproject.org>;
- Wed, 26 Aug 2020 09:32:17 +0000 (UTC)
+ with ESMTP id xy6BJWkeSgO6 for <devel@linuxdriverproject.org>;
+ Wed, 26 Aug 2020 09:52:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C3EF987034
- for <devel@driverdev.osuosl.org>; Wed, 26 Aug 2020 09:32:17 +0000 (UTC)
-Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
- [95.90.213.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 58A6D2071E;
- Wed, 26 Aug 2020 09:32:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598434337;
- bh=1uKAtHgq/9N9ximK/Z3MWdo14t/JYBeezQuBCqsx+Xg=;
- h=From:To:Cc:Subject:Date:From;
- b=zeaFssWIXmjAn2szjpkPkY3GWdKnO7C9aPjh4eih7wLsYCQ0ug4Llt63UuK1BPdKh
- MMy41Ikb2PKjN2PQa2p2XGS+uh8yVLv8YkcLc/oN8qrmraK+FyucdLKyKa0xmWmyLO
- L58xJ3ZLGoSPjQGKepgSL5lfYIUXHmKd61eO5mKE=
-Received: from mchehab by mail.kernel.org with local (Exim 4.94)
- (envelope-from <mchehab@kernel.org>)
- id 1kArmx-002BZN-6P; Wed, 26 Aug 2020 11:32:15 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH RFC] staging: hikey9xx: update references inside the yaml files
-Date: Wed, 26 Aug 2020 11:32:12 +0200
-Message-Id: <809bce085b0a9a9ede74d619d160e1e04723709d.1598434228.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.26.2
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by silver.osuosl.org (Postfix) with ESMTPS id C7279203EC
+ for <devel@driverdev.osuosl.org>; Wed, 26 Aug 2020 09:52:10 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 07Q9malW168699;
+ Wed, 26 Aug 2020 09:52:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=puG6dn/0ZJ/S9eYVShDLSjSPKteNXnTDwq9+go1akjA=;
+ b=wz3K0+h++jsK1mSFm80F42A8wKBHb/1KQIqOGgwGSfnKYECH26biQ3pFDGAS55vS4Xf3
+ RM7QuvSza1jG41Z7CMlMx8ULnxzPOaZeSQIEjZFdiwvPhf0oSD63jesA2Ponpu5y4NXO
+ tFR4CMbj++gRzz8ZhugnxdLtVU+ym/1LJcUXsWRzE0RxF6m1CFIUpRnJlk7e/0Xno4n9
+ Nu/2Vt35D+QE4YxjTzlQV+xqTHeq/EE3a5+FzjiX/3IXF5JfODJU2RTuBijkXi4z/NR+
+ W4wYdgqXNx9sEERAVC9PBQtrjSAvR/mAxZffqeLel7F7nIEwI+9am4zdeXET1YdQ9x1D Qg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 335gw819ft-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 26 Aug 2020 09:52:10 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 07Q9ko6O101234;
+ Wed, 26 Aug 2020 09:50:09 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 333r9kxw1r-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 26 Aug 2020 09:50:09 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 07Q9o7ql023582;
+ Wed, 26 Aug 2020 09:50:08 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 26 Aug 2020 02:50:07 -0700
+Date: Wed, 26 Aug 2020 12:50:00 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+Subject: Re: [PATCH] staging: media-atomisp : fix "dubious: !x | !y" sparse
+ warning
+Message-ID: <20200826095000.GW1793@kadam>
+References: <20200825220437.11214-1-anant.thazhemadam@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200825220437.11214-1-anant.thazhemadam@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9724
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxscore=0 bulkscore=0
+ adultscore=0 spamscore=0 mlxlogscore=999 phishscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2008260077
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9724
+ signatures=668679
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ lowpriorityscore=0
+ mlxscore=0 phishscore=0 bulkscore=0 impostorscore=0 adultscore=0
+ malwarescore=0 clxscore=1011 spamscore=0 mlxlogscore=999
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2008260078
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,72 +98,74 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- Jonathan Corbet <corbet@lwn.net>
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-The references inside those files were not assuming that
-they would end at the staging tree.
+On Wed, Aug 26, 2020 at 03:34:26AM +0530, Anant Thazhemadam wrote:
+> Upon running sparse, "warning: dubious: !x | !y" is brought to notice
+> for this file. This patch fixes that warning.
+> 
+> If there's a specific reason that this change is considered undesirable, 
+> please do let me know why.
+> Thanks.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
+Please don't put this sort of comments in the commit message.  You can
+put it under the --- cut off
 
-Greg,
+> 
+> Signed-off-by: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+> ---
+  ^^^
+here.  Then it will be removed instead of going into the permanent git
+log.
 
-I noticed this when running ./scripts/documentation-file-ref-check.
+Please always say int the commit message how the patch will affect the
+runtime behavior of the kernel.  In this case it will not affect it at
+all.  It's just a clean up.  Her is my proposed commit message if you
+want:
 
-Not sure if it is worth applying this patch, as this should be
-reverted when moving those files out of staging. 
+Subject: [PATCH] staging: media-atomisp : silence "dubious: !x | !y" warning
 
-That's why I'm sending it as RFC.
+Upon running sparse, "warning: dubious: !x | !y" is brought to notice
+for this file.  Logical and bitwise OR are basically the same in this
+context so it doesn't cause a runtime bug.  But let's change it to
+logical OR to make it cleaner and silence the Sparse warning.
 
- drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml     | 2 +-
- drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
-index c76093f320f1..80e74c261e05 100644
---- a/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
-+++ b/drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml
-@@ -17,7 +17,7 @@ description: |
-   node.
- 
-   The SPMI controller part is provided by
--  Documentation/devicetree/bindings/spmi/hisilicon,hisi-spmi-controller.yaml.
-+  drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml.
- 
- properties:
-   $nodename:
-diff --git a/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml b/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
-index b1cfa9c3aca6..f2a56fa4e78e 100644
---- a/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
-+++ b/drivers/staging/hikey9xx/hisilicon,hisi-spmi-controller.yaml
-@@ -14,7 +14,7 @@ description: |
-   It is a MIPI System Power Management (SPMI) controller.
- 
-   The PMIC part is provided by
--  Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml.
-+  drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml.
- 
- properties:
-   $nodename:
-@@ -41,7 +41,7 @@ patternProperties:
-       PMIC properties, which are specific to the used SPMI PMIC device(s).
-       When used in combination with HiSilicon 6421v600, the properties
-       are documented at
--      Documentation/devicetree/bindings/mfd/hisilicon,hi6421-spmi-pmic.yaml.
-+      drivers/staging/hikey9xx/hisilicon,hi6421-spmi-pmic.yaml.
- 
- examples:
-   - |
--- 
-2.26.2
+regards,
+dan carpenter
 
 
+
+
+
+>  .../media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c    | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c b/drivers/staging/media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c
+> index 358cb7d2cd4c..3b850bb2d39d 100644
+> --- a/drivers/staging/media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c
+> +++ b/drivers/staging/media/atomisp/pci/isp/kernels/vf/vf_1.0/ia_css_vf.host.c
+> @@ -58,7 +58,7 @@ sh_css_vf_downscale_log2(
+>  	unsigned int ds_log2 = 0;
+>  	unsigned int out_width;
+>  
+> -	if ((!out_info) | (!vf_info))
+> +	if ((!out_info) || (!vf_info))
+>  		return -EINVAL;
+>  
+>  	out_width = out_info->res.width;
+> -- 
+> 2.25.1
+> 
+> _______________________________________________
+> devel mailing list
+> devel@linuxdriverproject.org
+> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
