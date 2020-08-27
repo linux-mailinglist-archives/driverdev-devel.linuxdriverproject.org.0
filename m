@@ -1,73 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 104D5254C25
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 19:23:07 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2014254BE8
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 19:17:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A22658849C;
-	Thu, 27 Aug 2020 17:23:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C2CBB86A95;
+	Thu, 27 Aug 2020 17:17:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ETP8p4z0ZC0H; Thu, 27 Aug 2020 17:23:05 +0000 (UTC)
+	with ESMTP id UUsYvqi0hVwO; Thu, 27 Aug 2020 17:17:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 044F987FFF;
-	Thu, 27 Aug 2020 17:23:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2FB6486A73;
+	Thu, 27 Aug 2020 17:17:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 51D621BF280
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 17:23:02 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1543E1BF280
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 17:17:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1B7562266C
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 17:23:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1196286AF2
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 17:17:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lPoxXLPboBu1 for <devel@linuxdriverproject.org>;
- Thu, 27 Aug 2020 17:23:00 +0000 (UTC)
-X-Greylist: delayed 00:06:01 by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by silver.osuosl.org (Postfix) with ESMTPS id 73A98204CE
- for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 17:23:00 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id z2so1094409qtv.12
- for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 10:23:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=joelfernandes.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=/sinItkw0fMiz5k7wOtwmeJNSHN2dJzPeRRCsjiQAtw=;
- b=ShdT1Amb8cFBk7QoerCq9MBv460dUKx9sasPl2jpNbpvbgSAPVWV1LNx4tNYqtQl9s
- a8HdJGAP5RIyyGO7e0efjwna6tgvCBDt7cWACvicGcPSuDwwtI31DAPAR1z+iz0qFt+v
- 0/SjLFZFPIMFXTXQj50g4wJaPpgsQqv825O8k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=/sinItkw0fMiz5k7wOtwmeJNSHN2dJzPeRRCsjiQAtw=;
- b=mS81KhrGHvxzz6NWUKjv8liXvp4xacaF8TVcCSkUoHt2mJ+YulafpZTCgN4aEcQKfr
- BY25MBCZyuIJnV7/0kUOoU3lEhN2WKIsCt8SRGbufc9Du7yeh/S9HUiyop/9uG7SZsUA
- b6WqAgYgBnPYLfyqcGK8rKRZmNTqhfv5WxI5Xns37IVxfL/qDOxW38EulApAm3p5qu/q
- bCVOTMoUA49AFv7qzOQGB539sv/EUqbRRLRkBJ1LqT1O1vnNU3dO34LhnRTLtzFbm/C0
- gSYs2pOVcdio654IEJ5EMOi7hgQBwF8+gXK/hZazVI+PVrqkDC6Rpqe3M2pbxzPTe+nk
- onnQ==
-X-Gm-Message-State: AOAM532sOT5TU0jTCLprQ8yVW2gU9c7lCYBjRCeuaHAoeIXDLNorBqF1
- eovo1aD8CJgMg/DllB8ZRsgg837sl+X/SA==
-X-Google-Smtp-Source: ABdhPJxuoVfZ2k+iph3eNvKD2GUzguirA7HTRHhpEpY4GfJL7dVTt29kDuTvD8xTRmBEMbzNMNsKkQ==
-X-Received: by 2002:ac8:4e49:: with SMTP id e9mr18870259qtw.91.1598548617909; 
- Thu, 27 Aug 2020 10:16:57 -0700 (PDT)
-Received: from localhost ([2620:15c:6:12:cad3:ffff:feb3:bd59])
- by smtp.gmail.com with ESMTPSA id k48sm2441720qtk.44.2020.08.27.10.16.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Aug 2020 10:16:57 -0700 (PDT)
-Date: Thu, 27 Aug 2020 13:16:56 -0400
-From: Joel Fernandes <joel@joelfernandes.org>
+ with ESMTP id E-Xt+iG2nSwd for <devel@linuxdriverproject.org>;
+ Thu, 27 Aug 2020 17:17:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 109FD86AF0
+ for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 17:17:33 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 29A452087C;
+ Thu, 27 Aug 2020 17:17:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1598548652;
+ bh=PltBLwlOgKxxGKPfhP0kyIlXe7QOuvH340zu37AK8pU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=qQxS8ZMZsnBv7N611D2Tho2iEQbWLST2pzCypEmgeZ4yEWmdmyTFXZpme3ML7zC/u
+ +RNWjiZbFgVSthur1Fyuze+ggvQMEI/K0cncNdNotb0NFxNM3Tk+uU1mjftss79ar6
+ 7C3vglXoXWoOtYTmN94LSLymGwYwxgH7qzotbOlo=
+Date: Thu, 27 Aug 2020 19:17:45 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Amit Pundir <amit.pundir@linaro.org>
 Subject: Re: [PATCH] staging: ion: remove from the tree
-Message-ID: <20200827171656.GA3090278@google.com>
+Message-ID: <20200827171745.GA701089@kroah.com>
 References: <20200827123627.538189-1-gregkh@linuxfoundation.org>
  <3d8de519-65b3-123b-8ace-e820982884e0@labbott.name>
  <20200827160506.GC684514@kroah.com>
@@ -88,17 +69,17 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Christoph Hellwig <hch@infradead.org>,
- Android Kernel Team <kernel-team@android.com>, Todd Kjos <tkjos@android.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linaro-mm-sig@lists.linaro.org, Shuah Khan <shuah@kernel.org>,
+ Todd Kjos <tkjos@android.com>, Sumit Semwal <sumit.semwal@linaro.org>,
  Martijn Coenen <maco@android.com>, lkml <linux-kernel@vger.kernel.org>,
  dri-devel <dri-devel@lists.freedesktop.org>,
- Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
- linaro-mm-sig@lists.linaro.org, Hridya Valsaraju <hridya@google.com>,
+ Suren Baghdasaryan <surenb@google.com>, Christoph Hellwig <hch@infradead.org>,
+ Hridya Valsaraju <hridya@google.com>,
  Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- John Stultz <john.stultz@linaro.org>, Suren Baghdasaryan <surenb@google.com>,
- Laura Abbott <laura@labbott.name>, Shuah Khan <shuah@kernel.org>,
- Sumit Semwal <sumit.semwal@linaro.org>,
+ John Stultz <john.stultz@linaro.org>, Joel Fernandes <joel@joelfernandes.org>,
+ Laura Abbott <laura@labbott.name>,
+ Android Kernel Team <kernel-team@android.com>,
+ Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
  Christian Brauner <christian@brauner.io>
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
@@ -192,20 +173,15 @@ blems
 > mainline and Sumit is already trying to upstream that vma naming
 > patch. Removal of in-kernel ION, will just add more to that delta.
 
-So that means you now have to carry 2 patches instead of 1, right? That's n=
-ot
-that bad :-D.
+As AOSP will continue to rely on ION after December of this year, all
+you are doing is postponing the inevitable a few more months.
 
-BTW, why doesn't your mainline testing use dmabuf already?
-
-AFAIK, upstream has inertia catching up to products etc, so sooner its
-removed the better if it is mostly dead (Before it turns into ashmem which
-nobody can remove). My 2c.
+Push back on the Android team to fix up the code to not use ION, they
+know this needs to happen.
 
 thanks,
 
- - Joel
-
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
