@@ -1,80 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BF222545F7
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 15:31:37 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1E60F87C0A;
-	Thu, 27 Aug 2020 13:31:35 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qxA2F1tUH3dA; Thu, 27 Aug 2020 13:31:34 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C0A8F87BFF;
-	Thu, 27 Aug 2020 13:31:32 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BE10A1BF865
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 13:31:30 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A263254935
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 17:22:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BABC78636D
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 13:31:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9A38586A35;
+	Thu, 27 Aug 2020 15:22:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CXNKmxK5K0SU; Thu, 27 Aug 2020 15:22:28 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6F7B886073;
+	Thu, 27 Aug 2020 15:22:27 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7FD431BF40B
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 15:22:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 73C35203F6
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 15:22:25 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QJUgSnU63G0L for <devel@linuxdriverproject.org>;
- Thu, 27 Aug 2020 13:31:29 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
- [209.85.160.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A18F8848AA
- for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 13:31:29 +0000 (UTC)
-Received: by mail-qt1-f196.google.com with SMTP id 92so4481947qtb.6
- for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 06:31:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=labbott.name; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=lDczrlJd3qpi62PuNHOBqp+bVIuJaZ3CIq+6qbkhanw=;
- b=RNiGEKW35DYb/JfM8HflEt7mDoN5TTPevUjWrFEMiWnB7Nb4c3aWKy7OU/kyHLadcm
- xBs4dPO9yvjR28pNvlkIVvz1z48FwzX+Q7XHHN6Hc6GYQb3xJXyaCtC7yoF6eGgJlzB5
- q3NWsx/2aKVfGGvJjPYX2AMGRKQLIZVqtIxk0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lDczrlJd3qpi62PuNHOBqp+bVIuJaZ3CIq+6qbkhanw=;
- b=IHGO9ATNVSHAyquXtSkf8Oq+m92yvUsoQMZGspQdCrOQfEnfzfS3+4c+uwKmkaMSVW
- EfLEtZtIzolzt9vsnB0IkiVtyzFE/rE9KOfEpOHQf/V/HhV6QmlIYj8THzb4yvOUr9xm
- qKElMlMZyD9pAyVIo+VWTSF5D5khM0lMPwAugct8lXnlqzmUci4OHKoaEoPKnnIM+Fmn
- mar1teSMVFRGh31hBtDf18luFIy4uFX3bKP9Uh9Q/MXKUpGx5viQhvoW1tD9JoB8iR/3
- oCVVj507NgtGNWVRLdk3LB0Jp02waHH4zq4KCNlSa0NKRapaz0h6HAmXDgV+EBD0gAzr
- B1mw==
-X-Gm-Message-State: AOAM532cnyKXl4dOpYAqBsqpHstvXZnqF3xDGe+nJ7j0IKI/ZyrjksBq
- fZBTWdYbcr04MUw6YUOk3kE9/A==
-X-Google-Smtp-Source: ABdhPJz94NCDJe1Y3TCUAT1fErYJ7r4fw5orM7dXc6gbtDSEIf2lbXNnjENlynBt6QlAePZlj2K0AQ==
-X-Received: by 2002:ac8:4f44:: with SMTP id i4mr6328121qtw.189.1598535088575; 
- Thu, 27 Aug 2020 06:31:28 -0700 (PDT)
-Received: from [192.168.1.168] (pool-74-109-246-95.pitbpa.fios.verizon.net.
- [74.109.246.95])
- by smtp.gmail.com with ESMTPSA id i7sm1774133qkb.131.2020.08.27.06.31.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Aug 2020 06:31:28 -0700 (PDT)
-Subject: Re: [PATCH] staging: ion: remove from the tree
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, sumit.semwal@linaro.org, 
- john.stultz@linaro.org
-References: <20200827123627.538189-1-gregkh@linuxfoundation.org>
-From: Laura Abbott <laura@labbott.name>
-Message-ID: <3d8de519-65b3-123b-8ace-e820982884e0@labbott.name>
-Date: Thu, 27 Aug 2020 09:31:27 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ with ESMTP id MM0LWOuVH5Wq for <devel@linuxdriverproject.org>;
+ Thu, 27 Aug 2020 15:22:23 +0000 (UTC)
+X-Greylist: delayed 00:07:35 by SQLgrey-1.7.6
+Received: from jiexpo.com (mail.jiexpo.com [103.53.1.14])
+ by silver.osuosl.org (Postfix) with ESMTPS id 04F102046D
+ for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 15:22:23 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by jiexpo.com (Postfix) with ESMTP id E8789419BA1;
+ Thu, 27 Aug 2020 22:25:18 +0700 (WIB)
+Received: from jiexpo.com ([127.0.0.1])
+ by localhost (jiexpo.com [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id AzD_ec8BTm1s; Thu, 27 Aug 2020 22:25:18 +0700 (WIB)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by jiexpo.com (Postfix) with ESMTP id 5E2F269BEFB;
+ Thu, 27 Aug 2020 22:25:18 +0700 (WIB)
+X-Virus-Scanned: amavisd-new at jiexpo.com
+Received: from jiexpo.com ([127.0.0.1])
+ by localhost (jiexpo.com [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id BOwAhhsN6ksr; Thu, 27 Aug 2020 22:25:18 +0700 (WIB)
+Received: from User (unknown [52.165.21.44])
+ by jiexpo.com (Postfix) with ESMTPA id 5C39269BEF6;
+ Thu, 27 Aug 2020 22:24:56 +0700 (WIB)
+From: "Hon. Ms. Reem"<selvy@jiexpo.com>
+Subject: My Project
+Date: Thu, 27 Aug 2020 15:14:41 -0000
 MIME-Version: 1.0
-In-Reply-To: <20200827123627.538189-1-gregkh@linuxfoundation.org>
-Content-Language: en-US
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200827152456.5C39269BEF6@jiexpo.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,54 +68,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linaro-mm-sig@lists.linaro.org,
- Shuah Khan <shuah@kernel.org>, Todd Kjos <tkjos@android.com>,
- Martijn Coenen <maco@android.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Suren Baghdasaryan <surenb@google.com>,
- Christoph Hellwig <hch@infradead.org>, Joel Fernandes <joel@joelfernandes.org>,
- =?UTF-8?Q?Arve_Hj=c3=b8nnev=c3=a5g?= <arve@android.com>,
- Hridya Valsaraju <hridya@google.com>, kernel-team@android.com,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- Christian Brauner <christian@brauner.io>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Reply-To: honreemebrahimal-hashimi@yandex.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gOC8yNy8yMCA4OjM2IEFNLCBHcmVnIEtyb2FoLUhhcnRtYW4gd3JvdGU6Cj4gVGhlIElPTiBh
-bmRyb2lkIGNvZGUgaGFzIGxvbmcgYmVlbiBtYXJrZWQgdG8gYmUgcmVtb3ZlZCwgbm93IHRoYXQg
-d2UKPiBkbWEtYnVmIHN1cHBvcnQgbWVyZ2VkIGludG8gdGhlIHJlYWwgcGFydCBvZiB0aGUga2Vy
-bmVsLgo+IAo+IEl0IHdhcyB0aG91Z2h0IHRoYXQgd2UgY291bGQgd2FpdCB0byByZW1vdmUgdGhl
-IGlvbiBrZXJuZWwgYXQgYSBsYXRlcgo+IHRpbWUsIGJ1dCBhcyB0aGUgb3V0LW9mLXRyZWUgQW5k
-cm9pZCBmb3JrIG9mIHRoZSBpb24gY29kZSBoYXMgZGl2ZXJnZWQKPiBxdWl0ZSBhIGJpdCwgYW5k
-IGFueSBBbmRyb2lkIGRldmljZSB1c2luZyB0aGUgaW9uIGludGVyZmFjZSB1c2VzIHRoYXQKPiBm
-b3JrZWQgdmVyc2lvbiBhbmQgbm90IHRoaXMgaW4tdHJlZSB2ZXJzaW9uLCB0aGUgaW4tdHJlZSBj
-b3B5IG9mIHRoZQo+IGNvZGUgaXMgYWJhbmRvbmRlZCBhbmQgbm90IHVzZWQgYnkgYW55b25lLgo+
-IAo+IENvbWJpbmUgdGhpcyBhYmFuZG9uZWQgY29kZWJhc2Ugd2l0aCB0aGUgbmVlZCB0byBtYWtl
-IGNoYW5nZXMgdG8gaXQgaW4KPiBvcmRlciB0byBrZWVwIHRoZSBrZXJuZWwgYnVpbGRpbmcgcHJv
-cGVybHksIHdoaWNoIHRoZW4gY2F1c2VzIG1lcmdlCj4gaXNzdWVzIHdoZW4gbWVyZ2luZyB0aG9z
-ZSBjaGFuZ2VzIGludG8gdGhlIG91dC1vZi10cmVlIEFuZHJvaWQgY29kZSwgYW5kCj4geW91IGVu
-ZCB1cCB3aXRoIHR3byBkaWZmZXJlbnQgZ3JvdXBzIG9mIHBlb3BsZSAodGhlIGluLWtlcm5lbC10
-cmVlCj4gZGV2ZWxvcGVycywgYW5kIHRoZSBBbmRyb2lkIGtlcm5lbCBkZXZlbG9wZXJzKSB3aG8g
-YXJlIGJvdGggYW5ub3llZCBhdAo+IHRoZSBjdXJyZW50IHNpdHVhdGlvbi4gIEJlY2F1c2Ugb2Yg
-dGhpcyBwcm9ibGVtLCBqdXN0IGRyb3AgdGhlIGluLWtlcm5lbAo+IGNvcHkgb2YgdGhlIGlvbiBj
-b2RlIG5vdywgYXMgaXQncyBub3QgdXNlZCwgYW5kIGlzIG9ubHkgY2F1c2luZyBwcm9ibGVtcwo+
-IGZvciBldmVyeW9uZSBpbnZvbHZlZC4KPiAKPiBDYzogIkFydmUgSGrDuG5uZXbDpWciIDxhcnZl
-QGFuZHJvaWQuY29tPgo+IENjOiAiQ2hyaXN0aWFuIEvDtm5pZyIgPGNocmlzdGlhbi5rb2VuaWdA
-YW1kLmNvbT4KPiBDYzogQ2hyaXN0aWFuIEJyYXVuZXIgPGNocmlzdGlhbkBicmF1bmVyLmlvPgo+
-IENjOiBDaHJpc3RvcGggSGVsbHdpZyA8aGNoQGluZnJhZGVhZC5vcmc+Cj4gQ2M6IEhyaWR5YSBW
-YWxzYXJhanUgPGhyaWR5YUBnb29nbGUuY29tPgo+IENjOiBKb2VsIEZlcm5hbmRlcyA8am9lbEBq
-b2VsZmVybmFuZGVzLm9yZz4KPiBDYzogSm9obiBTdHVsdHogPGpvaG4uc3R1bHR6QGxpbmFyby5v
-cmc+Cj4gQ2M6IExhdXJhIEFiYm90dCA8bGF1cmFAbGFiYm90dC5uYW1lPgo+IENjOiBNYXJ0aWpu
-IENvZW5lbiA8bWFjb0BhbmRyb2lkLmNvbT4KPiBDYzogU2h1YWggS2hhbiA8c2h1YWhAa2VybmVs
-Lm9yZz4KPiBDYzogU3VtaXQgU2Vtd2FsIDxzdW1pdC5zZW13YWxAbGluYXJvLm9yZz4KPiBDYzog
-U3VyZW4gQmFnaGRhc2FyeWFuIDxzdXJlbmJAZ29vZ2xlLmNvbT4KPiBDYzogVG9kZCBLam9zIDx0
-a2pvc0BhbmRyb2lkLmNvbT4KPiBDYzogZGV2ZWxAZHJpdmVyZGV2Lm9zdW9zbC5vcmcKPiBDYzog
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IENjOiBsaW5hcm8tbW0tc2lnQGxpc3Rz
-LmxpbmFyby5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBs
-aW51eGZvdW5kYXRpb24ub3JnPgoKV2UgZGlzY3Vzc2VkIHRoaXMgYXQgdGhlIEFuZHJvaWQgTUMg
-b24gTW9uZGF5IGFuZCB0aGUgcGxhbiB3YXMgdG8KcmVtb3ZlIGl0IGFmdGVyIHRoZSBuZXh0IExU
-UyByZWxlYXNlLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
-ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
-ZXYtZGV2ZWwK
+Hello,    
+
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) colleagues" who has approved me to solicit for your "partnership in claiming of {us$47=Million}" from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
+
+The Fund {us$47=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam Government within  2013/2014, however, We don't want our government to know about the fund. If this proposal interests you, let me know, by sending me an email and I will send to you detailed information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except us, and we know how to carry out the entire transaction. So I am compelled to ask, that you will stand on our behalf and receive this fund into any account that is solely controlled by you.
+
+We will compensate you with 30% of the total amount involved as gratification for being our partner in this transaction. Reply to my private email as stated: honreemebrahimal-hashimi@yandex.com
+
+Regards,
+Ms. Reem Ebrahim Al-Hashimi.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
