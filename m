@@ -1,71 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6D7F2545ED
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 15:30:26 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BF222545F7
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 15:31:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 35D4020C92;
-	Thu, 27 Aug 2020 13:30:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1E60F87C0A;
+	Thu, 27 Aug 2020 13:31:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZGXA0wQ8KqXb; Thu, 27 Aug 2020 13:30:22 +0000 (UTC)
+	with ESMTP id qxA2F1tUH3dA; Thu, 27 Aug 2020 13:31:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A46CC20526;
-	Thu, 27 Aug 2020 13:30:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C0A8F87BFF;
+	Thu, 27 Aug 2020 13:31:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F321A1BF865
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 13:30:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BE10A1BF865
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 13:31:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EF51A8636D
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 13:30:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id BABC78636D
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 13:31:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HHW9YMvZYQvX for <devel@linuxdriverproject.org>;
- Thu, 27 Aug 2020 13:30:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 271AA848AA
- for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 13:30:13 +0000 (UTC)
-Received: by mail-wr1-f66.google.com with SMTP id c15so5376891wrs.11
- for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 06:30:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=p33Zl85F48xSFFwh9Fvb6fYwVy/Jt4DGVFmz86MHbko=;
- b=CUujgUZRienGvENy9ZeNSE4OLq/gTozkw9vqhnndn3e+Pp27upZYxzcOy348qWT4x6
- fZ9HzhrGd6ok0/lpV6XJMXIHbIrfSS3H2kc5d+JTd1lletPZjVOkUQ8WZMoDnSSylgRw
- zOHH0JLxrQJsHR8v5+SGQOGgwwu7dIE6xp9Po=
+ with ESMTP id QJUgSnU63G0L for <devel@linuxdriverproject.org>;
+ Thu, 27 Aug 2020 13:31:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
+ [209.85.160.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A18F8848AA
+ for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 13:31:29 +0000 (UTC)
+Received: by mail-qt1-f196.google.com with SMTP id 92so4481947qtb.6
+ for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 06:31:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=labbott.name; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=lDczrlJd3qpi62PuNHOBqp+bVIuJaZ3CIq+6qbkhanw=;
+ b=RNiGEKW35DYb/JfM8HflEt7mDoN5TTPevUjWrFEMiWnB7Nb4c3aWKy7OU/kyHLadcm
+ xBs4dPO9yvjR28pNvlkIVvz1z48FwzX+Q7XHHN6Hc6GYQb3xJXyaCtC7yoF6eGgJlzB5
+ q3NWsx/2aKVfGGvJjPYX2AMGRKQLIZVqtIxk0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=p33Zl85F48xSFFwh9Fvb6fYwVy/Jt4DGVFmz86MHbko=;
- b=nk+P70OsNXdhTft57UDlt4OS4xRP4aQdLghc5odPqRM4kRxFh06/9lT55amwe/TxSy
- cTIsX3UdoGtYF766/6lmN7taHXrgnSNZxJtiIoaegyz/MrnkOVBF4h6BwVgT9ceNW9M7
- RJ72pBea6Q/8BMPCOvtyar3+RVUhptHJOlVbwjouqxpXtOgLUb9vDssE6bpm+IK4rMiu
- d+MrIrC/UN8gt0c+Rpsw3kCAyPDwOCCk56IrunP/GdML3cjm7nGhfzdirp2IeMoZhdMP
- jQDPFmbHK5HlHCM9CLPhpQAWhLUjdqFgB0baspuF5OGr42arbbBwQ85m1TDqSsAJ/xNv
- XhsQ==
-X-Gm-Message-State: AOAM533O+eJRlJGzayacH4bzElVpGp/cb8BWIAhkFk89vG9Nry2Zn9ys
- 9nIkP6to7+ja6mnWQYzE7mLn74gwSBd0Cq5SWatp3A==
-X-Google-Smtp-Source: ABdhPJyMtaFishcwtzNCj7DHN/faPMoK+tSF7O0vKJaBGS+gpAIRdF6geUez9pCQeleah1w6P5SJ7nzMgTS0KKpMqRI=
-X-Received: by 2002:adf:bb54:: with SMTP id x20mr19609148wrg.413.1598535011238; 
- Thu, 27 Aug 2020 06:30:11 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=lDczrlJd3qpi62PuNHOBqp+bVIuJaZ3CIq+6qbkhanw=;
+ b=IHGO9ATNVSHAyquXtSkf8Oq+m92yvUsoQMZGspQdCrOQfEnfzfS3+4c+uwKmkaMSVW
+ EfLEtZtIzolzt9vsnB0IkiVtyzFE/rE9KOfEpOHQf/V/HhV6QmlIYj8THzb4yvOUr9xm
+ qKElMlMZyD9pAyVIo+VWTSF5D5khM0lMPwAugct8lXnlqzmUci4OHKoaEoPKnnIM+Fmn
+ mar1teSMVFRGh31hBtDf18luFIy4uFX3bKP9Uh9Q/MXKUpGx5viQhvoW1tD9JoB8iR/3
+ oCVVj507NgtGNWVRLdk3LB0Jp02waHH4zq4KCNlSa0NKRapaz0h6HAmXDgV+EBD0gAzr
+ B1mw==
+X-Gm-Message-State: AOAM532cnyKXl4dOpYAqBsqpHstvXZnqF3xDGe+nJ7j0IKI/ZyrjksBq
+ fZBTWdYbcr04MUw6YUOk3kE9/A==
+X-Google-Smtp-Source: ABdhPJz94NCDJe1Y3TCUAT1fErYJ7r4fw5orM7dXc6gbtDSEIf2lbXNnjENlynBt6QlAePZlj2K0AQ==
+X-Received: by 2002:ac8:4f44:: with SMTP id i4mr6328121qtw.189.1598535088575; 
+ Thu, 27 Aug 2020 06:31:28 -0700 (PDT)
+Received: from [192.168.1.168] (pool-74-109-246-95.pitbpa.fios.verizon.net.
+ [74.109.246.95])
+ by smtp.gmail.com with ESMTPSA id i7sm1774133qkb.131.2020.08.27.06.31.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 27 Aug 2020 06:31:28 -0700 (PDT)
+Subject: Re: [PATCH] staging: ion: remove from the tree
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, sumit.semwal@linaro.org, 
+ john.stultz@linaro.org
+References: <20200827123627.538189-1-gregkh@linuxfoundation.org>
+From: Laura Abbott <laura@labbott.name>
+Message-ID: <3d8de519-65b3-123b-8ace-e820982884e0@labbott.name>
+Date: Thu, 27 Aug 2020 09:31:27 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-References: <20200824193036.6033-1-james.quinlan@broadcom.com>
- <b19bc982-a0c4-c6ff-d8f5-650f2b3a83c8@gmail.com>
- <20200827063517.GA4637@lst.de>
-In-Reply-To: <20200827063517.GA4637@lst.de>
-From: Jim Quinlan <james.quinlan@broadcom.com>
-Date: Thu, 27 Aug 2020 09:29:59 -0400
-Message-ID: <CA+-6iNy3U9pO0Bykzgvb9n9fcsBi6FiatLdpA1s0HgQNWZ49mg@mail.gmail.com>
-Subject: Re: [PATCH v11 00/11] PCI: brcmstb: enable PCIe for STB chips
-To: Christoph Hellwig <hch@lst.de>
+In-Reply-To: <20200827123627.538189-1-gregkh@linuxfoundation.org>
+Content-Language: en-US
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,68 +87,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:SUPERH" <linux-sh@vger.kernel.org>,
- "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
- <linux-pci@vger.kernel.org>,
- "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
- <linux-remoteproc@vger.kernel.org>,
- "open list:DRM DRIVERS FOR ALLWINNER A10" <dri-devel@lists.freedesktop.org>,
- Julien Grall <julien.grall@arm.com>, "H. Peter Anvin" <hpa@zytor.com>,
- "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- Rob Herring <robh@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>,
- Saravana Kannan <saravanak@google.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- "open list:ACPI FOR ARM64 \(ACPI/arm64\)" <linux-acpi@vger.kernel.org>,
- Alan Stern <stern@rowland.harvard.edu>,
- "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>,
- "open list:ALLWINNER A10 CSI DRIVER" <linux-media@vger.kernel.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE"
- <devicetree@vger.kernel.org>, Joerg Roedel <jroedel@suse.de>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
- <linux-rpi-kernel@lists.infradead.org>,
- Dan Williams <dan.j.williams@intel.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>,
- Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, linaro-mm-sig@lists.linaro.org,
+ Shuah Khan <shuah@kernel.org>, Todd Kjos <tkjos@android.com>,
+ Martijn Coenen <maco@android.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Suren Baghdasaryan <surenb@google.com>,
+ Christoph Hellwig <hch@infradead.org>, Joel Fernandes <joel@joelfernandes.org>,
+ =?UTF-8?Q?Arve_Hj=c3=b8nnev=c3=a5g?= <arve@android.com>,
+ Hridya Valsaraju <hridya@google.com>, kernel-team@android.com,
+ =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ Christian Brauner <christian@brauner.io>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 27, 2020 at 2:35 AM Christoph Hellwig <hch@lst.de> wrote:
->
-> On Tue, Aug 25, 2020 at 10:40:27AM -0700, Florian Fainelli wrote:
-> > Hi,
-> >
-> > On 8/24/2020 12:30 PM, Jim Quinlan wrote:
-> >>
-> >> Patchset Summary:
-> >>    Enhance a PCIe host controller driver.  Because of its unusual design
-> >>    we are foced to change dev->dma_pfn_offset into a more general role
-> >>    allowing multiple offsets.  See the 'v1' notes below for more info.
-> >
-> > We are version 11 and counting, and it is not clear to me whether there is
-> > any chance of getting these patches reviewed and hopefully merged for the
-> > 5.10 merge window.
-> >
-> > There are a lot of different files being touched, so what would be the
-> > ideal way of routing those changes towards inclusion?
->
-> FYI, I offered to take the dma-mapping bits through the dma-mapping tree.
-> I have a bit of a backlog, but plan to review and if Jim is ok with that
-> apply the current version.
-Sounds good to me.
-Thanks, Jim
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gOC8yNy8yMCA4OjM2IEFNLCBHcmVnIEtyb2FoLUhhcnRtYW4gd3JvdGU6Cj4gVGhlIElPTiBh
+bmRyb2lkIGNvZGUgaGFzIGxvbmcgYmVlbiBtYXJrZWQgdG8gYmUgcmVtb3ZlZCwgbm93IHRoYXQg
+d2UKPiBkbWEtYnVmIHN1cHBvcnQgbWVyZ2VkIGludG8gdGhlIHJlYWwgcGFydCBvZiB0aGUga2Vy
+bmVsLgo+IAo+IEl0IHdhcyB0aG91Z2h0IHRoYXQgd2UgY291bGQgd2FpdCB0byByZW1vdmUgdGhl
+IGlvbiBrZXJuZWwgYXQgYSBsYXRlcgo+IHRpbWUsIGJ1dCBhcyB0aGUgb3V0LW9mLXRyZWUgQW5k
+cm9pZCBmb3JrIG9mIHRoZSBpb24gY29kZSBoYXMgZGl2ZXJnZWQKPiBxdWl0ZSBhIGJpdCwgYW5k
+IGFueSBBbmRyb2lkIGRldmljZSB1c2luZyB0aGUgaW9uIGludGVyZmFjZSB1c2VzIHRoYXQKPiBm
+b3JrZWQgdmVyc2lvbiBhbmQgbm90IHRoaXMgaW4tdHJlZSB2ZXJzaW9uLCB0aGUgaW4tdHJlZSBj
+b3B5IG9mIHRoZQo+IGNvZGUgaXMgYWJhbmRvbmRlZCBhbmQgbm90IHVzZWQgYnkgYW55b25lLgo+
+IAo+IENvbWJpbmUgdGhpcyBhYmFuZG9uZWQgY29kZWJhc2Ugd2l0aCB0aGUgbmVlZCB0byBtYWtl
+IGNoYW5nZXMgdG8gaXQgaW4KPiBvcmRlciB0byBrZWVwIHRoZSBrZXJuZWwgYnVpbGRpbmcgcHJv
+cGVybHksIHdoaWNoIHRoZW4gY2F1c2VzIG1lcmdlCj4gaXNzdWVzIHdoZW4gbWVyZ2luZyB0aG9z
+ZSBjaGFuZ2VzIGludG8gdGhlIG91dC1vZi10cmVlIEFuZHJvaWQgY29kZSwgYW5kCj4geW91IGVu
+ZCB1cCB3aXRoIHR3byBkaWZmZXJlbnQgZ3JvdXBzIG9mIHBlb3BsZSAodGhlIGluLWtlcm5lbC10
+cmVlCj4gZGV2ZWxvcGVycywgYW5kIHRoZSBBbmRyb2lkIGtlcm5lbCBkZXZlbG9wZXJzKSB3aG8g
+YXJlIGJvdGggYW5ub3llZCBhdAo+IHRoZSBjdXJyZW50IHNpdHVhdGlvbi4gIEJlY2F1c2Ugb2Yg
+dGhpcyBwcm9ibGVtLCBqdXN0IGRyb3AgdGhlIGluLWtlcm5lbAo+IGNvcHkgb2YgdGhlIGlvbiBj
+b2RlIG5vdywgYXMgaXQncyBub3QgdXNlZCwgYW5kIGlzIG9ubHkgY2F1c2luZyBwcm9ibGVtcwo+
+IGZvciBldmVyeW9uZSBpbnZvbHZlZC4KPiAKPiBDYzogIkFydmUgSGrDuG5uZXbDpWciIDxhcnZl
+QGFuZHJvaWQuY29tPgo+IENjOiAiQ2hyaXN0aWFuIEvDtm5pZyIgPGNocmlzdGlhbi5rb2VuaWdA
+YW1kLmNvbT4KPiBDYzogQ2hyaXN0aWFuIEJyYXVuZXIgPGNocmlzdGlhbkBicmF1bmVyLmlvPgo+
+IENjOiBDaHJpc3RvcGggSGVsbHdpZyA8aGNoQGluZnJhZGVhZC5vcmc+Cj4gQ2M6IEhyaWR5YSBW
+YWxzYXJhanUgPGhyaWR5YUBnb29nbGUuY29tPgo+IENjOiBKb2VsIEZlcm5hbmRlcyA8am9lbEBq
+b2VsZmVybmFuZGVzLm9yZz4KPiBDYzogSm9obiBTdHVsdHogPGpvaG4uc3R1bHR6QGxpbmFyby5v
+cmc+Cj4gQ2M6IExhdXJhIEFiYm90dCA8bGF1cmFAbGFiYm90dC5uYW1lPgo+IENjOiBNYXJ0aWpu
+IENvZW5lbiA8bWFjb0BhbmRyb2lkLmNvbT4KPiBDYzogU2h1YWggS2hhbiA8c2h1YWhAa2VybmVs
+Lm9yZz4KPiBDYzogU3VtaXQgU2Vtd2FsIDxzdW1pdC5zZW13YWxAbGluYXJvLm9yZz4KPiBDYzog
+U3VyZW4gQmFnaGRhc2FyeWFuIDxzdXJlbmJAZ29vZ2xlLmNvbT4KPiBDYzogVG9kZCBLam9zIDx0
+a2pvc0BhbmRyb2lkLmNvbT4KPiBDYzogZGV2ZWxAZHJpdmVyZGV2Lm9zdW9zbC5vcmcKPiBDYzog
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IENjOiBsaW5hcm8tbW0tc2lnQGxpc3Rz
+LmxpbmFyby5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBs
+aW51eGZvdW5kYXRpb24ub3JnPgoKV2UgZGlzY3Vzc2VkIHRoaXMgYXQgdGhlIEFuZHJvaWQgTUMg
+b24gTW9uZGF5IGFuZCB0aGUgcGxhbiB3YXMgdG8KcmVtb3ZlIGl0IGFmdGVyIHRoZSBuZXh0IExU
+UyByZWxlYXNlLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
+ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
+ZXYtZGV2ZWwK
