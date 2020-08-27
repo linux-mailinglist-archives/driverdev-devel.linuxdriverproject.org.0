@@ -2,75 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F383254DBF
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 21:00:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EAEF5254E8B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 21:30:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D2020203F6;
-	Thu, 27 Aug 2020 19:00:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 961D9204CD;
+	Thu, 27 Aug 2020 19:30:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id unoEf01PDN3o; Thu, 27 Aug 2020 19:00:32 +0000 (UTC)
+	with ESMTP id EPwg1me-x3iu; Thu, 27 Aug 2020 19:30:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 85D9E203B5;
-	Thu, 27 Aug 2020 19:00:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4B7A62041D;
+	Thu, 27 Aug 2020 19:30:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0C53F1BF869
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 19:00:24 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 027631BF3E9
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 19:30:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 08B9F86B47
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 19:00:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BF129203AC
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 19:30:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GvrlLJjo5vni for <devel@linuxdriverproject.org>;
- Thu, 27 Aug 2020 19:00:22 +0000 (UTC)
+ with ESMTP id Yd5CWGH0lYnU for <devel@linuxdriverproject.org>;
+ Thu, 27 Aug 2020 19:30:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
- [209.85.210.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8765285CA8
- for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 19:00:22 +0000 (UTC)
-Received: by mail-ot1-f66.google.com with SMTP id k20so5319177otr.1
- for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 12:00:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BWqUveoeKZMIhm3GjalPyEQmnfCWpI1alLQjjqHt+NU=;
- b=SCcrh3qeuy5Pqm6KFI/xAj5Y/ENojt7/jYbC4IkRyQsWuyYTXztzy3Y/JwrtY3NGfK
- VJA5M/PFjjZNQZgCL4ipJNIe/29Icg2ojlK0A2jBoN2fPMa3Ljmy6wP/gwYIhQzI5LFf
- x0xQLnuGiXjWg1XJngPFxg+N/oncHwtwyx/QJ1d2o4CCgIWvNNh2YmvscoicgdTapmkx
- Avigv/QQopdYQ8XfX6SK5xvTrgHlbrIT1J7hzhJtXLWN6NpzInoHSkk2n5mDMmDHnKXh
- nYZv6OIfmGztUzuVBFq6FpcWumyGQO5lvbRrUQpmA06r767ZOPzu2PJXJZFndd22/MmJ
- 50mw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BWqUveoeKZMIhm3GjalPyEQmnfCWpI1alLQjjqHt+NU=;
- b=MNZcDj+JsThXMmLrElpqRNlvmesm0Klea5AhA6mSLQF3gOa9dyV0ACI4X3zC9beZqq
- K+J5Zh+FZsp0vx0vCgoGLzOCG/VXiP+V/WM1dxPfK51GVVL9h5wKvhj3+W+/7EksiCHf
- ZZ0DiHtE4oyWdcQEuU1iEqCd4yYvKQJ7xGf8n8tGS1svr9R/aKl3EzqHR/6+tFqLaKZN
- qdhDuPj0fs0Ms2NUzcEEUOXXrGOy1mJhIPxGPR/nWU34bW3feJ8DvmL8TkbfBAF+/F+U
- 8Rn6n4zPYlE6jMZmPIN1eECJyIvBFJzwAZPaqdv+b9yICQwHmZ71It0tSIzRBDSbsJb0
- NBgw==
-X-Gm-Message-State: AOAM532I3L7spxBvEomG9xzYqUegNuJFumYzrPqj1SJfpvo0BpiOyoKJ
- sWNxLKHSBzYLIHmJo1UijFNzGbwN5Aq2BcbbLCPdXNFb1MHrNg==
-X-Google-Smtp-Source: ABdhPJy8T8ttMmxpmzdBmMLZEkAuTLQvD2G2liKWH2H+Jb7ky01tXVyV7oYkkXZ8NroZL6tIlOl+3FM2CROEfwK+7xM=
-X-Received: by 2002:a4a:aa42:: with SMTP id y2mr9682938oom.88.1598554463803;
- Thu, 27 Aug 2020 11:54:23 -0700 (PDT)
+Received: from mail.foescoc.es (mail.foescoc.es [146.255.98.200])
+ by silver.osuosl.org (Postfix) with ESMTPS id CA96620347
+ for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 19:30:20 +0000 (UTC)
+Received: from 131.red-95-120-15.dynamicip.rima-tde.net
+ (131.red-95-120-15.dynamicip.rima-tde.net [95.120.15.131])
+ by mail.foescoc.es (Postfix) with ESMTPSA id A3E1C97F267
+ for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 21:21:48 +0200 (CEST)
 MIME-Version: 1.0
-References: <20200827123627.538189-1-gregkh@linuxfoundation.org>
- <3d8de519-65b3-123b-8ace-e820982884e0@labbott.name>
- <20200827160506.GC684514@kroah.com>
- <CAMi1Hd1Ch1RWvOTnON3tsrucaKThTuGQnwNFo94GqUjufVmnOg@mail.gmail.com>
- <20200827171745.GA701089@kroah.com>
-In-Reply-To: <20200827171745.GA701089@kroah.com>
-From: John Stultz <john.stultz@linaro.org>
-Date: Thu, 27 Aug 2020 11:54:12 -0700
-Message-ID: <CALAqxLVOEBaLtkbL-OENYSK0dUc_PBo-oC=BOBFQbPh-bkWTgQ@mail.gmail.com>
-Subject: Re: [PATCH] staging: ion: remove from the tree
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: "FOESCO" <info37@foescoc.es>
+To: devel@driverdev.osuosl.org
+Subject: FOESCO Informa
+X-Mailer: Smart_Send_3_1_6
+Date: Thu, 27 Aug 2020 21:21:49 +0200
+Message-ID: <68364083680562049331359@DESKTOP-U58J4VO>
+X-PPP-Message-ID: <20200827192148.16018.30657@mail.foescoc.es>
+X-PPP-Vhost: foescoc.es
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,64 +56,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Amit Pundir <amit.pundir@linaro.org>,
- "open list:ANDROID DRIVERS" <devel@driverdev.osuosl.org>,
- Shuah Khan <shuah@kernel.org>, Todd Kjos <tkjos@android.com>,
- Sumit Semwal <sumit.semwal@linaro.org>, Martijn Coenen <maco@android.com>,
- lkml <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Suren Baghdasaryan <surenb@google.com>, Christoph Hellwig <hch@infradead.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>,
- Joel Fernandes <joel@joelfernandes.org>, Hridya Valsaraju <hridya@google.com>,
- Laura Abbott <laura@labbott.name>,
- Android Kernel Team <kernel-team@android.com>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: info37@foescoc.es
+Content-Type: multipart/mixed; boundary="===============8790961808509619185=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thu, Aug 27, 2020 at 10:17 AM Greg Kroah-Hartman
-<gregkh@linuxfoundation.org> wrote:
-> On Thu, Aug 27, 2020 at 10:31:41PM +0530, Amit Pundir wrote:
-> > I don't know what is the right thing to do here. I just want to
-> > highlight that AOSP's audio (codec2) HAL depends on the ION system
-> > heap and it will break AOSP for people who boot mainline on their
-> > devices, even for just testing purpose like we do in Linaro. Right now
-> > we need only 1 (Android specific out-of-tree) patch to boot AOSP with
-> > mainline and Sumit is already trying to upstream that vma naming
-> > patch. Removal of in-kernel ION, will just add more to that delta.
->
-> As AOSP will continue to rely on ION after December of this year, all
-> you are doing is postponing the inevitable a few more months.
->
-> Push back on the Android team to fix up the code to not use ION, they
-> know this needs to happen.
+--===============8790961808509619185==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-The point though, is your main premise that no one is using this isn't true.
+Buenos d=EDas
 
-I'm actively working with Hridya and folks on the codec2 HAL side to
-transition this on the userland side:
-  https://android-review.googlesource.com/c/platform/frameworks/av/+/1368918/3
 
-I'd like AOSP to not use ION after September (though being external I
-can't promise anything), much less continuing after December.
+Soy Alex Pons, director de FOESCO (Formaci=F3n Estatal Continua).
 
-I want this migration to happen as much as anyone.  But I'd prefer to
-keep ION in staging until after the LTS is announced. Having both
-around helps development for the transition, which helps us have a
-reliable solution, which helps vendors to migrate and be able to do
-comparative performance testing.
+Llegadas estas fechas y como cada a=F1o, recordamos a todas las empresas Es=
+pa=F1olas su derecho a consumir el Cr=E9dito de Formaci=F3n del que dispone=
+n para la formaci=F3n de sus empleados, antes de su caducidad a final de a=
+=F1o.
 
-I do appreciate that keeping it isn't free, but I also don't feel the
-chaos-monkey approach here is really motivational in the way you
-intend.
 
-thanks
--john
+Actualmente se encuentra abierto el plazo de inscripci=F3n para la Convocat=
+oria SEPTIEMBRE 2020 de Cursos Bonificables con cargo al Cr=E9dito de Forma=
+ci=F3n 2020.
+
+
+Dese=E1is que os mandemos la informaci=F3n=3F
+
+
+Quedamos a la espera de vuestra respuesta.
+
+
+Saludos cordiales.
+
+
+Alex Pons
+Director FOESCO.
+
+FOESCO Formaci=F3n Estatal Continua.
+Entidad Organizadora: B200592AA
+www.foesco.com
+e-mail:     cursos@foesco.net
+Tel:     910 323 794
+(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
+
+FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
+ cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
+pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
+ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
+
+Antes de imprimir este e-mail piense bien si es necesario hacerlo. Before p=
+rinting this e-mail please think twice if you really need it. FOESCO Tfno: =
+910 382 880 Email: cursos@foesco.com. La informaci=F3n transmitida en este =
+mensaje est=E1 dirigida solamente a las personas o entidades que figuran en=
+ el encabezamiento y contiene informaci=F3n confidencial, por lo que, si us=
+ted lo recibiera por error, por favor destr=FAyalo sin copiarlo, usarlo ni =
+distribuirlo, comunic=E1ndolo inmediatamente al emisor del mensaje. De conf=
+ormidad con lo dispuesto en el Reglamento Europeo del 2016/679, del 27 de A=
+bril de 2016, FOESCO le informa que los datos por usted suministrados ser=
+=E1n tratados con las medidas de seguridad conformes a la normativa vigente=
+ que se requiere. Dichos datos ser=E1n empleados con fines de gesti=F3n. Pa=
+ra el ejercicio de sus derechos de transparencia, informaci=F3n, acceso, re=
+ctificaci=F3n, supresi=F3n o derecho al olvido, limitaci=F3n del tratamient=
+o , portabilidad de datos y oposici=F3n de sus datos de car=E1cter personal=
+ deber=E1 dirigirse a la direcci=F3n del Responsable del tratamiento a C/ L=
+AGUNA DEL MARQUESADO N=BA10, 28021, MADRID, "PULSANDO AQUI" <mailto:bajas@f=
+oesco.com=3FSubject=3DBAJA%20CORREOS> y "ENVIAR" o a traves de la direcci=
+=F3n de correo electr=F3nico: bajas@foesco.com <mailto:bajas@foesco.com=3FS=
+ubject=3DBAJA%20CORREOS>
+
+--===============8790961808509619185==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============8790961808509619185==--
