@@ -1,61 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A263254935
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 17:22:30 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 607E1254905
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Aug 2020 17:19:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9A38586A35;
-	Thu, 27 Aug 2020 15:22:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 28A53884CA;
+	Thu, 27 Aug 2020 15:19:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CXNKmxK5K0SU; Thu, 27 Aug 2020 15:22:28 +0000 (UTC)
+	with ESMTP id cvF7l3tKcrOH; Thu, 27 Aug 2020 15:19:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6F7B886073;
-	Thu, 27 Aug 2020 15:22:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 46651884C9;
+	Thu, 27 Aug 2020 15:19:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7FD431BF40B
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 15:22:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 28C7B1BF40B
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 15:19:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 73C35203F6
- for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 15:22:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1A6C12046D
+ for <devel@linuxdriverproject.org>; Thu, 27 Aug 2020 15:19:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MM0LWOuVH5Wq for <devel@linuxdriverproject.org>;
- Thu, 27 Aug 2020 15:22:23 +0000 (UTC)
-X-Greylist: delayed 00:07:35 by SQLgrey-1.7.6
-Received: from jiexpo.com (mail.jiexpo.com [103.53.1.14])
- by silver.osuosl.org (Postfix) with ESMTPS id 04F102046D
- for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 15:22:23 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by jiexpo.com (Postfix) with ESMTP id E8789419BA1;
- Thu, 27 Aug 2020 22:25:18 +0700 (WIB)
-Received: from jiexpo.com ([127.0.0.1])
- by localhost (jiexpo.com [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id AzD_ec8BTm1s; Thu, 27 Aug 2020 22:25:18 +0700 (WIB)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by jiexpo.com (Postfix) with ESMTP id 5E2F269BEFB;
- Thu, 27 Aug 2020 22:25:18 +0700 (WIB)
-X-Virus-Scanned: amavisd-new at jiexpo.com
-Received: from jiexpo.com ([127.0.0.1])
- by localhost (jiexpo.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id BOwAhhsN6ksr; Thu, 27 Aug 2020 22:25:18 +0700 (WIB)
-Received: from User (unknown [52.165.21.44])
- by jiexpo.com (Postfix) with ESMTPA id 5C39269BEF6;
- Thu, 27 Aug 2020 22:24:56 +0700 (WIB)
-From: "Hon. Ms. Reem"<selvy@jiexpo.com>
-Subject: My Project
-Date: Thu, 27 Aug 2020 15:14:41 -0000
+ with ESMTP id XtDgPBN4OoXB for <devel@linuxdriverproject.org>;
+ Thu, 27 Aug 2020 15:19:19 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from wnew1-smtp.messagingengine.com (wnew1-smtp.messagingengine.com
+ [64.147.123.26])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9F7DF203F6
+ for <devel@driverdev.osuosl.org>; Thu, 27 Aug 2020 15:19:19 +0000 (UTC)
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailnew.west.internal (Postfix) with ESMTP id ED74F13F4;
+ Thu, 27 Aug 2020 11:19:17 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Thu, 27 Aug 2020 11:19:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm3; bh=RSXeFCAVyCX3aYLKYMbZeZXSxmS
+ Xwn7LT8+Wx3RjWNM=; b=F8l8Ojj/TBni6VehwfbAMamic7/vSaOKl9W9TvxXbrW
+ e4ejSCQ9KLMcnK/I0mLTuObu0fREP+CxjmF1mYNl7yS06CMy1KpPjZ2TlnR/JuRX
+ 2t8W50rpAzn7rUN97jVHjoIG2UQii2X0aRSs6iS/2XzQXTHbqbH6U+uS7Jbx1k77
+ yWZEvEPYyCwfTTa8dOIsal4jv5qwyRN01D6QXLmqGUfcoa41IRxVI9g0ZnAcld8Z
+ WkC1QaGEQJSq6euvS+HTfHZMKzCgMoas15qg1G4UNPy0DF48zQx4yYybxG6VqIrR
+ qGgIbD102niACW1O9JMkbxvYRhHMEwGbOfldHKBxhDw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=RSXeFC
+ AVyCX3aYLKYMbZeZXSxmSXwn7LT8+Wx3RjWNM=; b=TMmC2MtisUEs2n3TsVlool
+ qSh5Hb7qu6Cqn+vZ0sRyS7lRMj9IDL2eyeK3BgWuiBLb5p+L94ji9sCItqMFte49
+ UHqB/G0g9Qo2HLhJhTF4FxrO/AccnQF4Sq6y9dj/Br3+aKzeBaxn4RlHeMkHaLb/
+ QNwujHuojLpdLXHzmdFdJvLYdOkwfaqAwXyo2N0Niy1cCHZIn+8rb67PCMF64agt
+ rmVckLie86XWn6bbYB8Mfb32yNvQFGyVxzSjkXb+/sqfuWNod+42+Em/tKlZ+HlB
+ 1xoUQTS9SfhwrGpKN2CXkQxxzBTggOm3o3F7AnWVa9PMEppaAHyQd0j164DJE+7Q
+ ==
+X-ME-Sender: <xms:9M5HX7WZa9MJa905TVKH1aLcR44o_72vl5e7CE7zBTQpSAGN4jcCUQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduiedruddvgedgkeefucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
+ vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
+ htvghrnhepleekgeehhfdutdeljefgleejffehfffgieejhffgueefhfdtveetgeehieeh
+ gedunecukfhppeeltddrkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenuc
+ frrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:9M5HXzksu6H9NLU-JHpE44gvTZN1HLK8hg0nSDsMv-p_LtYsnOSlaQ>
+ <xmx:9M5HX3ZiWTAtHlbHOd0W_wztoEK37pGB9Ftz1nRWolT11nn7eEwKkw>
+ <xmx:9M5HX2VcMEImMZCM96eQHANOo-yedsRERAeDh6FQys9rrYlffrjZJg>
+ <xmx:9c5HX37UnQ4oOxPRjuIjQ-AQSVCndrkQ6_M4hxZwjhjNE5tstWiCgyxys8s>
+Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
+ [90.89.68.76])
+ by mail.messagingengine.com (Postfix) with ESMTPA id DD7673280068;
+ Thu, 27 Aug 2020 11:19:15 -0400 (EDT)
+Date: Thu, 27 Aug 2020 17:19:14 +0200
+From: Maxime Ripard <maxime@cerno.tech>
+To: Jernej Skrabec <jernej.skrabec@siol.net>
+Subject: Re: [PATCH 0/5] ARM: dts: sun8i: r40: Enable video decoder
+Message-ID: <20200827151914.copcle3xjn3ek6p4@gilmour.lan>
+References: <20200825173523.1289379-1-jernej.skrabec@siol.net>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200827152456.5C39269BEF6@jiexpo.com>
+In-Reply-To: <20200825173523.1289379-1-jernej.skrabec@siol.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,23 +94,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: honreemebrahimal-hashimi@yandex.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ gregkh@linuxfoundation.org, linux-sunxi@googlegroups.com,
+ linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ robh+dt@kernel.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============5942468784002304794=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,    
 
-My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) colleagues" who has approved me to solicit for your "partnership in claiming of {us$47=Million}" from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
+--===============5942468784002304794==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="iuvgwm6rpxeewgp5"
+Content-Disposition: inline
 
-The Fund {us$47=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam Government within  2013/2014, however, We don't want our government to know about the fund. If this proposal interests you, let me know, by sending me an email and I will send to you detailed information on how this business would be successfully transacted. Be informed that nobody knows about the secret of this fund except us, and we know how to carry out the entire transaction. So I am compelled to ask, that you will stand on our behalf and receive this fund into any account that is solely controlled by you.
 
-We will compensate you with 30% of the total amount involved as gratification for being our partner in this transaction. Reply to my private email as stated: honreemebrahimal-hashimi@yandex.com
+--iuvgwm6rpxeewgp5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Regards,
-Ms. Reem Ebrahim Al-Hashimi.
+On Tue, Aug 25, 2020 at 07:35:18PM +0200, Jernej Skrabec wrote:
+> Allwinner R40 SoC contains video engine very similar to that in A33.
+>=20
+> First two patches add system controller nodes and the rest of them
+> add support for Cedrus VPU.
+>=20
+> Please take a look.
+
+Applied all 5 patches, thanks
+
+Maxime
+
+--iuvgwm6rpxeewgp5
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCX0fO8gAKCRDj7w1vZxhR
+xV5NAQDF9g6AIv8B7pmqugf0GI/8cUs9e7lyAcm+Rz+TGwFkWgD/VEcDH7+c5LKz
+fF+auOAaw4kec1ruj6+uGhxwKyBSYAU=
+=FNIg
+-----END PGP SIGNATURE-----
+
+--iuvgwm6rpxeewgp5--
+
+--===============5942468784002304794==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============5942468784002304794==--
