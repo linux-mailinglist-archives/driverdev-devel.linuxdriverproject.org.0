@@ -1,72 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABA792562AE
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Aug 2020 23:56:33 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 893672562B9
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Aug 2020 00:00:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AB2AF87D57;
-	Fri, 28 Aug 2020 21:56:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1091886B87;
+	Fri, 28 Aug 2020 22:00:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mA55NPRCTw6g; Fri, 28 Aug 2020 21:56:31 +0000 (UTC)
+	with ESMTP id cu61un864Jcc; Fri, 28 Aug 2020 22:00:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 19AE7878A9;
-	Fri, 28 Aug 2020 21:56:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C6D318692F;
+	Fri, 28 Aug 2020 22:00:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BA8B41BF859
- for <devel@linuxdriverproject.org>; Fri, 28 Aug 2020 21:56:27 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2AE491BF859
+ for <devel@linuxdriverproject.org>; Fri, 28 Aug 2020 22:00:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9896C203C3
- for <devel@linuxdriverproject.org>; Fri, 28 Aug 2020 21:56:27 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 27E14878A9
+ for <devel@linuxdriverproject.org>; Fri, 28 Aug 2020 22:00:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FK28HRyruStA for <devel@linuxdriverproject.org>;
- Fri, 28 Aug 2020 21:56:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
- [209.85.166.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 4AE5020380
- for <devel@driverdev.osuosl.org>; Fri, 28 Aug 2020 21:56:26 +0000 (UTC)
-Received: by mail-io1-f68.google.com with SMTP id g128so516636iof.11
- for <devel@driverdev.osuosl.org>; Fri, 28 Aug 2020 14:56:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=bnuQFFeQy61Sm8kS2vhKjdCEzpmvVQn8pWWRcCfWkZQ=;
- b=QSs900tBr7ph7m7mgZbfXQ2EWDIwd7Yze//1CeDvX/d6dlaM4zZlhpmIiSM/qCO5T3
- YylbTTKN+elHHTB4c2OaNVJk6vxwJ8mA0B2yEggVrzn0c2d8iGL9KLkFOHtTlH+Ef9hE
- W5sJZgNmIlpp5XQHGIcU9B95QnsXtiYkVVnGVnD0hnjz6LwLSM3UTMPkstKgoreEV3dZ
- YmoSrPGkWZXs3QDr6C0IVK0pwVuffvkkm+xjxkhBiWEH8jDmt1gqfabnzVzHH9zQcUCi
- JUPLGV/DZBscg2Fr9boAVy1Af2jSynojLa4ie++CZuAO/GG/GeT7Ge5PO/09FVygH/RV
- koVg==
-X-Gm-Message-State: AOAM533Y8Pvc0deW7Yh7k4hpXLwtoOK546BLgGRhnCRop+LyHRFUhwsU
- yNmKK5K+K0ODmXokuf8afg==
-X-Google-Smtp-Source: ABdhPJxAo0CwfDWujxgV01Kcz5GmAk8vpvEoBxI69Bslbj8QJirVXxKSjpE8Ok5gcXfKWgKIkT6gaw==
-X-Received: by 2002:a5d:871a:: with SMTP id u26mr623569iom.92.1598651785621;
- Fri, 28 Aug 2020 14:56:25 -0700 (PDT)
-Received: from xps15 ([64.188.179.249])
- by smtp.gmail.com with ESMTPSA id h18sm230268iow.16.2020.08.28.14.56.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Aug 2020 14:56:24 -0700 (PDT)
-Received: (nullmailer pid 3474171 invoked by uid 1000);
- Fri, 28 Aug 2020 21:56:22 -0000
-Date: Fri, 28 Aug 2020 15:56:22 -0600
-From: Rob Herring <robh@kernel.org>
-To: Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
-Subject: Re: [PATCH v6 1/8] dt-bindings: add documentation of xilinx clocking
- wizard
-Message-ID: <20200828215622.GA3469481@bogus>
-References: <1598621996-31040-1-git-send-email-shubhrajyoti.datta@xilinx.com>
- <1598621996-31040-2-git-send-email-shubhrajyoti.datta@xilinx.com>
+ with ESMTP id tXG4m8Nd6VQV for <devel@linuxdriverproject.org>;
+ Fri, 28 Aug 2020 22:00:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from kitmail.kitsystem.co.jp
+ (113x43x246x45.ap113.ftth.arteria-hikari.net [113.43.246.45])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1EA89875CA
+ for <devel@driverdev.osuosl.org>; Fri, 28 Aug 2020 22:00:03 +0000 (UTC)
+Received: from User (unknown [13.69.129.118])
+ by kitmail.kitsystem.co.jp (Postfix) with ESMTP id F18EA4468567;
+ Sat, 29 Aug 2020 07:05:41 +0900 (JST)
+From: "Hon. Ms. Reem"<seminar@asunoshika.com>
+Subject: The Project
+Date: Fri, 28 Aug 2020 22:00:00 -0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1598621996-31040-2-git-send-email-shubhrajyoti.datta@xilinx.com>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200828220541.F18EA4468567@kitmail.kitsystem.co.jp>
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,124 +57,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org, sboyd@kernel.org,
- gregkh@linuxfoundation.org, mturquette@baylibre.com,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
+Reply-To: honreemebrahimal-hashimi@yandex.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Aug 28, 2020 at 07:09:49PM +0530, Shubhrajyoti Datta wrote:
-> Add the devicetree binding for the xilinx clocking wizard.
-> 
-> Signed-off-by: Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
-> ---
-> v6:
-> Fix a yaml warning
-> 
->  .../bindings/clock/xlnx,clocking-wizard.yaml       | 71 ++++++++++++++++++++++
->  1 file changed, 71 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/xlnx,clocking-wizard.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/clock/xlnx,clocking-wizard.yaml b/Documentation/devicetree/bindings/clock/xlnx,clocking-wizard.yaml
-> new file mode 100644
-> index 0000000..ca63593
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/xlnx,clocking-wizard.yaml
-> @@ -0,0 +1,71 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/xlnx,clocking-wizard.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Xilinx clocking wizard
-> +
-> +maintainers:
-> +  - Shubhrajyoti Datta <shubhrajyoti.datta@xilinx.com>
-> +
-> +description: |
-> +  The clocking wizard is a soft ip clocking block of Xilinx versal. It
-> +  reads required input clock frequencies from the devicetree and acts as clock
-> +  clock output.
-> +
-> +select: false
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - enum:
+Hello,    
 
-You can drop 'items' since there is only 1.
+My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of 
 
-> +          - xlnx,clocking-wizard
-> +          - xlnx,clocking-wizard-6.0
-> +
-> +  "#clock-cells":
-> +    const: 1
-> +
-> +  clocks:
-> +    description: List of clock specifiers which are external input
-> +      clocks to the given clock controller.
+State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) 
 
-Drop this. That's every 'clocks' property.
+colleagues" who has approved me to solicit for your "partnership in claiming of {us$47=Million}" 
 
-> +    items:
-> +      - description: clock input
-> +      - description: axi clock
-> +
-> +  clock-names:
-> +    items:
-> +      - const: clk_in1
-> +      - const: s_axi_aclk
-> +
-> +  speed-grade:
+from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
 
-Needs a vendor prefix.
+The Fund {us$47=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam 
 
-> +    allOf:
+Government within  2013/2014, however, We don't want our government to know about the fund. If this 
 
-You can remove the 'allOf'.
+proposal interests you, let me know, by sending me an email and I will send to you detailed 
 
-> +      - $ref: /schemas/types.yaml#/definitions/uint32
-> +      - enum: [1, 2, 3]
-> +    description:
-> +      Speed grade of the device.
-> +    maxItems: 1
+information on how this business would be successfully transacted. Be informed that nobody knows 
 
-Drop this. A 'uint32' is always 1 item.
+about the secret of this fund except us, and we know how to carry out the entire transaction. So I 
 
-> +
-> +required:
-> +  - compatible
-> +  - "#clock-cells"
-> +  - clocks
-> +  - clock-names
-> +  - speed-grade
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    clock-generator@40040000 {
-> +        #clock-cells = <1>;
-> +        reg = <0x40040000 0x1000>;
-> +        compatible = "xlnx,clk-wizard-1.0";
+am compelled to ask, that you will stand on our behalf and receive this fund into any account that 
 
-Doesn't match the schema.
+is solely controlled by you.
 
-> +        speed-grade = <1>;
-> +        clock-names = "clk_in1", "s_axi_aclk";
-> +        clocks = <&clkc 15>, <&clkc 15>;
-> +        clock-output-names = "clk_out1", "clk_out2",
-> +        "clk_out3", "clk_out4", "clk_out5",
-> +        "clk_out6", "clk_out7";
-> +    };
-> +...
-> -- 
-> 2.1.1
-> 
+We will compensate you with 30% of the total amount involved as gratification for being our partner 
+
+in this transaction. Reply to my private email as stated: honreemebrahimal-hashimi@yandex.com
+
+Regards,
+Ms. Reem Ebrahim Al-Hashimi.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
