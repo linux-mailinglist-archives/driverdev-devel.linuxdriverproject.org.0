@@ -1,50 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 893672562B9
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Aug 2020 00:00:10 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1091886B87;
-	Fri, 28 Aug 2020 22:00:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cu61un864Jcc; Fri, 28 Aug 2020 22:00:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C6D318692F;
-	Fri, 28 Aug 2020 22:00:07 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2AE491BF859
- for <devel@linuxdriverproject.org>; Fri, 28 Aug 2020 22:00:05 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id CF3AF2562FC
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Aug 2020 00:26:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 27E14878A9
- for <devel@linuxdriverproject.org>; Fri, 28 Aug 2020 22:00:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2C9F888198;
+	Fri, 28 Aug 2020 22:26:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QM+eIUV8RrDG; Fri, 28 Aug 2020 22:26:33 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 02B8088140;
+	Fri, 28 Aug 2020 22:26:33 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D22A81BF2F4
+ for <devel@linuxdriverproject.org>; Fri, 28 Aug 2020 22:26:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C940384E42
+ for <devel@linuxdriverproject.org>; Fri, 28 Aug 2020 22:26:30 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tXG4m8Nd6VQV for <devel@linuxdriverproject.org>;
- Fri, 28 Aug 2020 22:00:03 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from kitmail.kitsystem.co.jp
- (113x43x246x45.ap113.ftth.arteria-hikari.net [113.43.246.45])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1EA89875CA
- for <devel@driverdev.osuosl.org>; Fri, 28 Aug 2020 22:00:03 +0000 (UTC)
-Received: from User (unknown [13.69.129.118])
- by kitmail.kitsystem.co.jp (Postfix) with ESMTP id F18EA4468567;
- Sat, 29 Aug 2020 07:05:41 +0900 (JST)
-From: "Hon. Ms. Reem"<seminar@asunoshika.com>
-Subject: The Project
-Date: Fri, 28 Aug 2020 22:00:00 -0000
+ with ESMTP id C5YhjUewEXtH for <devel@linuxdriverproject.org>;
+ Fri, 28 Aug 2020 22:26:30 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3989484D74
+ for <devel@driverdev.osuosl.org>; Fri, 28 Aug 2020 22:26:30 +0000 (UTC)
+IronPort-SDR: 5sgd6KW6aTMP+uJapuS6YvxICsqpNiW6MFpvW00wpqUJ6zqRrXfrqQuzbVUgij8RwHCuz0LG4t
+ v14+c1daPNZw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9727"; a="157771948"
+X-IronPort-AV: E=Sophos;i="5.76,365,1592895600"; d="scan'208";a="157771948"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Aug 2020 15:26:29 -0700
+IronPort-SDR: Z/8qffyPE/kCxIbuRQMU1Hksnixb9oA3E0SYnI1xUJF0bSjj4Vw+66iSKr1Micxv0jGCfQSzrw
+ KBX2c57yuGNw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,365,1592895600"; d="scan'208";a="444998056"
+Received: from lkp-server02.sh.intel.com (HELO 301dc1beeb51) ([10.239.97.151])
+ by orsmga004.jf.intel.com with ESMTP; 28 Aug 2020 15:26:27 -0700
+Received: from kbuild by 301dc1beeb51 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kBmpH-0000Ea-8w; Fri, 28 Aug 2020 22:26:27 +0000
+Date: Sat, 29 Aug 2020 06:25:56 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ cc34073c6248e9cec801bf690d1455f264d12357
+Message-ID: <5f498474.GeVnLaihHLrDI/LT%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200828220541.F18EA4468567@kitmail.kitsystem.co.jp>
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,42 +69,114 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: honreemebrahimal-hashimi@yandex.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,    
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git  staging-testing
+branch HEAD: cc34073c6248e9cec801bf690d1455f264d12357  staging: emxx_udc: Fix passing of NULL to dma_alloc_coherent()
 
-My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state and Petroleum" also "Minister of 
+elapsed time: 723m
 
-State for International Cooperation" in UAE.  I write to you on behalf of my other "three (3) 
+configs tested: 87
+configs skipped: 8
 
-colleagues" who has approved me to solicit for your "partnership in claiming of {us$47=Million}" 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-from a Financial Home in Cambodia on their behalf and for our "Mutual Benefits".
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+x86_64                           allyesconfig
+m68k                       m5208evb_defconfig
+m68k                        mvme147_defconfig
+openrisc                    or1ksim_defconfig
+sh                           se7722_defconfig
+parisc                generic-64bit_defconfig
+mips                           rs90_defconfig
+m68k                       bvme6000_defconfig
+powerpc                  mpc866_ads_defconfig
+powerpc                     pq2fads_defconfig
+m68k                         apollo_defconfig
+m68k                             allyesconfig
+arm                            qcom_defconfig
+mips                  maltasmvp_eva_defconfig
+nios2                            allyesconfig
+nios2                            alldefconfig
+microblaze                    nommu_defconfig
+mips                malta_kvm_guest_defconfig
+mips                  cavium_octeon_defconfig
+arc                             nps_defconfig
+arm                       spear13xx_defconfig
+arc                        nsim_700_defconfig
+mips                          rb532_defconfig
+sh                          lboxre2_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a002-20200828
+i386                 randconfig-a005-20200828
+i386                 randconfig-a003-20200828
+i386                 randconfig-a004-20200828
+i386                 randconfig-a001-20200828
+i386                 randconfig-a006-20200828
+x86_64               randconfig-a015-20200828
+x86_64               randconfig-a012-20200828
+x86_64               randconfig-a016-20200828
+x86_64               randconfig-a014-20200828
+x86_64               randconfig-a011-20200828
+x86_64               randconfig-a013-20200828
+i386                 randconfig-a013-20200828
+i386                 randconfig-a012-20200828
+i386                 randconfig-a011-20200828
+i386                 randconfig-a016-20200828
+i386                 randconfig-a014-20200828
+i386                 randconfig-a015-20200828
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
 
-The Fund {us$47=Million} is our share from the (Over-invoiced) Oil/Gas deal with Cambodian/Vietnam 
-
-Government within  2013/2014, however, We don't want our government to know about the fund. If this 
-
-proposal interests you, let me know, by sending me an email and I will send to you detailed 
-
-information on how this business would be successfully transacted. Be informed that nobody knows 
-
-about the secret of this fund except us, and we know how to carry out the entire transaction. So I 
-
-am compelled to ask, that you will stand on our behalf and receive this fund into any account that 
-
-is solely controlled by you.
-
-We will compensate you with 30% of the total amount involved as gratification for being our partner 
-
-in this transaction. Reply to my private email as stated: honreemebrahimal-hashimi@yandex.com
-
-Regards,
-Ms. Reem Ebrahim Al-Hashimi.
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
